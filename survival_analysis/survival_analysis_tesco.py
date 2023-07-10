@@ -1,6 +1,5 @@
 import pandas as pd
-import numpy as np
-from lifelines import KaplanMeierFitter, CoxPHFitter
+from lifelines import CoxPHFitter
 from lifelines.utils import qth_survival_times
 
 # First, download the dataset from the link below:
