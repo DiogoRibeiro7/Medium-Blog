@@ -1,0 +1,18 @@
+# Jupyter notebook checkpoints
+.ipynb_checkpoints/
+
+# JupyterLab notebook temporary files
+.jupyter/
+
+# Jupyter notebook configuration files
+.jupyter/
+
+# Pytest cache
+__pycache__/
+
+# virtual environment
+venv/
+*.pyc
+
+# Mac OS metadata
+.DS_Store
