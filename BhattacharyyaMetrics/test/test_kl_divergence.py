@@ -1,4 +1,4 @@
-from bhattacharyya_metrics import KLDivergence
+from ..bhattacharyya_metrics import KLDivergence
 
 def test_kl_divergence():
     p = [0.4, 0.3, 0.2, 0.1]

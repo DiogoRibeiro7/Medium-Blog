@@ -1,4 +1,4 @@
-from bhattacharyya_metrics import BhattacharyyaMetrics
+from ..bhattacharyya_metrics import BhattacharyyaMetrics
 import numpy as np
 
 def test_battacharyya_distance():
