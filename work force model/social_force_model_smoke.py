@@ -1,10 +1,13 @@
 # Importing required libraries
-from scipy.spatial.distance import euclidean
+import matplotlib.pyplot as plt
+from typing import Tuple, Dict, Any
 import math
 import numpy as np
+from scipy.spatial.distance import euclidean
 
 
-def solve_advection_diffusion_eq(grid_points, diffusion_constant, velocity_field, source_term, dt, dx, dy):
+def solve_advection_diffusion_eq(grid_points: np.ndarray, diffusion_constant: float, velocity_field: Tuple[float, float],
+                                 source_term: float, dt: float, dx: float, dy: float) -> np.ndarray:
     """
     Solves the advection-diffusion equation using a finite-difference method.
 
@@ -215,7 +218,7 @@ def set_intended_speed(person, max_speed, pedestrian_density, visibility_distanc
 # print(updated_person)
 
 
-def compute_desire_force(person, intended_speed):
+def compute_desire_force(person: Dict[str, Any], intended_speed: float) -> Dict[str, Any]:
     """
     Computes the desire force for a person based on equation 1.
 
@@ -233,10 +236,17 @@ def compute_desire_force(person, intended_speed):
     # Extract current velocity of the person
     current_velocity = np.array(person.get('velocity', [0, 0]))
 
+    # Calculate the norm of the current_velocity
+    norm_current_velocity = np.linalg.norm(current_velocity)
+
+    # Check for zero norm to avoid division by zero
+    if norm_current_velocity == 0:
+        intended_speed_vector = np.array([0, 0])
+    else:
+        intended_speed_vector = intended_speed * \
+            current_velocity / norm_current_velocity
+
     # Calculate the desire force based on equation 1
-    # Adjusting intended_speed to be a vector in the direction of the current_velocity
-    intended_speed_vector = intended_speed * \
-        current_velocity / np.linalg.norm(current_velocity)
     desire_force = mass * (intended_speed_vector - current_velocity) / tau
 
     # Update the 'person' dictionary with the computed 'desire_force'
@@ -254,7 +264,7 @@ def compute_desire_force(person, intended_speed):
 # print(updated_person)
 
 
-def compute_repulsive_force(person, other_person):
+def compute_repulsive_force(person: Dict[str, Any], other_person: Dict[str, Any]) -> Dict[str, Any]:
     """
     Computes the repulsive social force between two persons based on equation 16.
 
@@ -276,8 +286,11 @@ def compute_repulsive_force(person, other_person):
     # Calculate distance between the persons
     distance = np.linalg.norm(position1 - position2)
 
-    # Calculate the normalized direction vector
-    direction_vector = (position1 - position2) / distance
+    # Check for zero distance to avoid division by zero
+    if distance == 0:
+        direction_vector = np.array([0, 0])
+    else:
+        direction_vector = (position1 - position2) / distance
 
     # Calculate the repulsive force based on equation 16
     repulsive_force = A * np.exp(-distance / B) * direction_vector
@@ -296,7 +309,7 @@ def compute_repulsive_force(person, other_person):
 # print(updated_person)
 
 
-def compute_physical_force(person, other_person):
+def compute_physical_force(person: Dict[str, Any], other_person: Dict[str, Any]) -> Dict[str, Any]:
     """
     Computes the physical interaction force between two persons based on the provided equations.
 
@@ -317,9 +330,14 @@ def compute_physical_force(person, other_person):
     velocity1 = np.array(person.get('velocity', [0, 0]))
     velocity2 = np.array(other_person.get('velocity', [0, 0]))
 
-    # Calculate distance and direction between the persons
+    # Calculate distance between the persons
     distance = np.linalg.norm(position1 - position2)
-    direction_vector = (position1 - position2) / distance
+
+    # Check for zero distance to avoid division by zero
+    if distance == 0:
+        direction_vector = np.array([0, 0])
+    else:
+        direction_vector = (position1 - position2) / distance
 
     # Calculate the tangential direction
     tangential_vector = np.array([-direction_vector[1], direction_vector[0]])
@@ -336,6 +354,7 @@ def compute_physical_force(person, other_person):
     person.setdefault('physical_forces', []).append(physical_force.tolist())
 
     return person
+
 
 # # Test the function with sample parameters
 # person1 = {'id': 1, 'position': [0, 0], 'velocity': [1, 1]}
@@ -565,9 +584,32 @@ def main_update_algorithm(input_params, grid_points, persons):
 
     return persons
 
-# Function signature corrected.
 
+def visualize_simulation(grid_points, persons):
+    """
+    Visualizes the simulation grid and the positions of the persons.
 
+    Parameters:
+    - grid_points: 2D numpy array representing the concentration at each grid point
+    - persons: List of dictionaries, each containing information about a person
+    """
+    plt.figure(figsize=(10, 10))
+
+    # Plot the heatmap for grid_points
+    plt.imshow(grid_points, cmap='coolwarm', interpolation='nearest')
+    plt.colorbar(label='Concentration')
+
+    # Extract and plot the positions of the persons
+    positions = [person['position'] for person in persons]
+    x_positions, y_positions = zip(*positions)
+    plt.scatter(x_positions, y_positions, c='black', label='Persons')
+
+    plt.title('Pedestrian Evacuation Simulation')
+    plt.xlabel('X-coordinate')
+    plt.ylabel('Y-coordinate')
+    plt.legend()
+
+    plt.show()
 # Example usage
 input_params = {
     'time_steps': 10,
@@ -587,10 +629,9 @@ input_params = {
     'dy': 0.1  # Grid spacing in y-direction
 }
 
-grid_points = np.array([[0.1, 0.2], [0.3, 0.4]])
-persons = [{'id': i, 'position': [0.0, 0.0], 'velocity': [0.0, 0.0]}
-           for i in range(5)]
+# For demonstration purposes, using random grid_points and persons data
+grid_points_demo = np.random.rand(20, 20)
+persons_demo = [{'id': i, 'position': [np.random.randint(
+    0, 10), np.random.randint(0, 10)], 'velocity': [0.0, 0.0]} for i in range(10)]
 
-# Run the main update algorithm
-updated_persons = main_update_algorithm(input_params, grid_points, persons)
-updated_persons
+visualize_simulation(grid_points_demo, persons_demo)
