@@ -1,6 +1,3 @@
-import os
-import shutil
-from PIL import Image
 import imageio.v2 as imageio
 import networkx as nx
 import numpy as np
