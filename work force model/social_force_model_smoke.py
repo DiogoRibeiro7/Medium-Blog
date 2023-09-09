@@ -632,6 +632,6 @@ input_params = {
 # For demonstration purposes, using random grid_points and persons data
 grid_points_demo = np.random.rand(20, 20)
 persons_demo = [{'id': i, 'position': [np.random.randint(
-    0, 10), np.random.randint(0, 10)], 'velocity': [0.0, 0.0]} for i in range(10)]
+    0, 20), np.random.randint(0, 20)], 'velocity': [0.0, 0.0]} for i in range(10)]
 
 visualize_simulation(grid_points_demo, persons_demo)
