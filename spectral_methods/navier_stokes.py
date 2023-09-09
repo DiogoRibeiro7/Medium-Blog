@@ -42,9 +42,11 @@ def fft_derivative_2D(f, kx, ky):
         >>> fft_derivative_2D(f, kx, ky)
     """
     f_hat = fft2(f)
+    kx, ky = np.meshgrid(kx, ky)  # Create 2D grid of wave numbers
     dfdx = np.real(ifft2(1j * kx * f_hat))
     dfdy = np.real(ifft2(1j * ky * f_hat))
     return dfdx, dfdy
+
 
 
 def navier_stokes_2D_RK4(u, v, p, rho, nu, dx, dy, dt, steps):
@@ -72,17 +74,12 @@ def navier_stokes_2D_RK4(u, v, p, rho, nu, dx, dy, dt, steps):
     N, M = u.shape
     kx = np.fft.fftfreq(N, dx)
     ky = np.fft.fftfreq(M, dy)
-    kx, ky = np.meshgrid(kx, ky)
-
+    
     for t in range(steps):
         # Compute derivatives using FFT
-        ux = fft_derivative(u, kx)
-        uy = fft_derivative(u, ky)
-        vx = fft_derivative(v, kx)
-        vy = fft_derivative(v, ky)
-        px = fft_derivative(p, kx)
-        py = fft_derivative(p, ky)
-
+        ux, uy = fft_derivative_2D(u, kx, ky)
+        vx, vy = fft_derivative_2D(v, kx, ky)
+        px, py = fft_derivative_2D(p, kx, ky)
         # Runge-Kutta 4th order for u
         k1_u = -u*ux - v*uy + (-px/rho) + nu*(ux + vy)
         k2_u = -u*(ux + k1_u*dt/2) - v*(uy + k1_u*dt/2) + \
