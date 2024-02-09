@@ -5,6 +5,7 @@ library(tm)
 library(SnowballC)
 library(cluster)
 library(irlba)
+library(e1071)
 
 # Read the data
 data <- read.csv('data.csv', stringsAsFactors = FALSE)
@@ -68,3 +69,11 @@ findTopTerms <- function(dtm, clusters, k) {
 }
 
 findTopTerms(dtm_matrix, clusters, k)
+
+
+
+# Assuming 'data' is your prepared dataset with features and 'Cluster' is the target
+svm_model <- svm(Cluster ~ ., data = data, method = "C-classification", kernel = "radial")
+
+# Predict on your dataset (or split your data into train/test sets for validation)
+predictions <- predict(svm_model, data)
