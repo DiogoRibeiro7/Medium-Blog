@@ -59,6 +59,12 @@ qqline(Carseats$Sales, col = "red")
 # Shapiro-Wilk test for the 'Sales' variable
 shapiro.test(Carseats$Sales)
 
+# Histogram with density plot for Sales
+ggplot(Carseats, aes(x=Sales)) +
+  geom_histogram(aes(y=..density..), binwidth=1, colour="black", fill="skyblue") +
+  geom_density(alpha=.2, fill="#FF6666") +
+  ggtitle("Histogram and Density Plot for Sales")
+
 # Function to create histogram, density plot, and Q-Q plot for a given variable
 plot_normality <- function(data, variable_name) {
   # Histogram and Density Plot
@@ -74,3 +80,68 @@ plot_normality <- function(data, variable_name) {
 
 # Example usage for 'Sales'
 plot_normality(Carseats, "Sales")
+
+# Relation between US and Sales
+
+# Summary statistics of Sales by US location
+aggregate(Sales ~ US, data = Carseats, FUN = function(x) c(mean = mean(x), sd = sd(x)))
+
+# Box plot of Sales by US location
+ggplot(Carseats, aes(x = US, y = Sales, fill = US)) +
+  geom_boxplot() +
+  ggtitle("Sales Distribution by US Location") +
+  xlab("Store Location in the US") +
+  ylab("Sales")
+
+# Density plot of Sales by US location
+ggplot(Carseats, aes(x = Sales, fill = US)) +
+  geom_density(alpha = 0.5) + # Adjust transparency with alpha
+  scale_fill_manual(values = c("Yes" = "blue", "No" = "red")) + # Custom colors for US and non-US
+  ggtitle("Density Plot of Sales by US Location") +
+  xlab("Sales") +
+  ylab("Density") +
+  theme_minimal() # Using a minimal theme for a cleaner look
+
+
+# Welch's t-test for difference in Sales between US and non-US stores
+t.test(Sales ~ US, data = Carseats, alternative = "two.sided", var.equal = FALSE)
+
+# Create a contingency table of ShelveLoc and US
+contingency_table <- table(Carseats$ShelveLoc, Carseats$US)
+print(contingency_table)
+
+# Perform the chi-squared test
+chi_squared_test <- chisq.test(contingency_table)
+print(chi_squared_test)
+
+# Fit a simple linear regression model
+model <- lm(Sales ~ Price, data=Carseats)
+
+# Display the summary of the model
+summary(model)
+
+
+# Visualize the regression line
+ggplot(Carseats, aes(x=Price, y=Sales)) +
+  geom_point() + # Add data points
+  geom_smooth(method="lm", color="blue") + # Add the regression line
+  ggtitle("Relationship between Price and Sales") +
+  xlab("Price") +
+  ylab("Sales")
+
+# Fit a one-way ANOVA model
+anova_model <- aov(Sales ~ ShelveLoc, data = Carseats)
+
+# Display the summary of the ANOVA model
+summary(anova_model)
+
+# Assuming the p-value was found to be significant upon manual check
+TukeyHSD(anova_model)
+
+
+ggplot(Carseats, aes(x = ShelveLoc, y = Sales, fill = ShelveLoc)) +
+  geom_boxplot() +
+  ggtitle("Sales by Shelf Location") +
+  xlab("Shelf Location") +
+  ylab("Sales")
+
