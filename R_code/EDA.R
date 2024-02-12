@@ -59,3 +59,18 @@ qqline(Carseats$Sales, col = "red")
 # Shapiro-Wilk test for the 'Sales' variable
 shapiro.test(Carseats$Sales)
 
+# Function to create histogram, density plot, and Q-Q plot for a given variable
+plot_normality <- function(data, variable_name) {
+  # Histogram and Density Plot
+  ggplot(data, aes_string(x=variable_name)) +
+    geom_histogram(aes(y=..density..), binwidth=1, colour="black", fill="skyblue") +
+    geom_density(alpha=.2, fill="#FF6666") +
+    ggtitle(paste("Histogram and Density Plot for", variable_name))
+  
+  # Q-Q Plot
+  qqnorm(data[[variable_name]], main=paste("Q-Q Plot for", variable_name))
+  qqline(data[[variable_name]], col="red")
+}
+
+# Example usage for 'Sales'
+plot_normality(Carseats, "Sales")
