@@ -47,3 +47,9 @@ shapiro.test(residuals(aov(TestScore ~ Technique * Environment, data = study_dat
 library(car)
 leveneTest(TestScore ~ Technique * Environment, data = study_data)
 
+model <- aov(TestScore ~ Technique * Environment, data = study_data)
+
+summary(model)
+
+TukeyHSD(model)
+
