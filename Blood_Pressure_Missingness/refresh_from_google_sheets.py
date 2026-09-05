@@ -1,8 +1,8 @@
-"""Refresh the privacy-safe blood-pressure analysis snapshot from Google Sheets.
+"""Refresh privacy-safe blood-pressure aggregates from a private Google Sheet.
 
-The private source sheet URL and Google service-account credentials are read from
-GitHub Actions secrets exposed as environment variables. Raw measurements are
-processed in memory and are never written to the repository.
+The source Sheet URL and Google service-account credentials are supplied through
+environment variables (normally GitHub Actions secrets). Raw health measurements
+are transformed in memory; only date-free aggregate artifacts are written.
 """
 
 from __future__ import annotations
@@ -33,9 +33,11 @@ EXPECTED_COLUMNS: tuple[str, ...] = (
     "Meal",
     "Symptoms",
 )
-
 SESSION_GAP_MINUTES = 15
 EXCEL_EPOCH = datetime(1899, 12, 30)
+SECONDS_PER_DAY = 86_400
+MICROSECONDS_PER_SECOND = 1_000_000
+MICROSECONDS_PER_DAY = SECONDS_PER_DAY * MICROSECONDS_PER_SECOND
 
 
 @dataclass(frozen=True)
@@ -56,7 +58,7 @@ class Measurement:
 
 
 def _required_env(name: str) -> str:
-    """Return a non-empty environment variable without echoing its value."""
+    """Return a required environment variable without printing its value."""
 
     value = os.environ.get(name, "").strip()
     if not value:
@@ -65,7 +67,7 @@ def _required_env(name: str) -> str:
 
 
 def fetch_sheet_values() -> list[list[Any]]:
-    """Read the private Google Sheet through gspread using secret-backed auth."""
+    """Read the private Google Sheet using secret-backed service-account auth."""
 
     sheet_url = _required_env("BLOOD_PRESSURE_SHEET_URL")
     raw_credentials = _required_env("GOOGLE_SHEETS_SERVICE_ACCOUNT_JSON")
@@ -105,15 +107,13 @@ def _is_blank(value: Any) -> bool:
 
 
 def _optional_text(value: Any) -> str | None:
-    """Normalize optional textual context without inventing negative labels."""
+    """Normalize optional text without inventing a negative category."""
 
-    if _is_blank(value):
-        return None
-    return str(value).strip()
+    return None if _is_blank(value) else str(value).strip()
 
 
 def _as_float(value: Any, field: str) -> float:
-    """Parse a required numeric source value."""
+    """Parse a required finite numeric source value."""
 
     if isinstance(value, bool) or _is_blank(value):
         raise ValueError(f"{field} is missing or non-numeric.")
@@ -127,21 +127,25 @@ def _as_float(value: Any, field: str) -> float:
 
 
 def _excel_serial_to_date(value: float) -> date:
-    """Convert an Excel/Google-Sheets serial day to a date."""
+    """Convert a finite Excel/Google-Sheets serial day to a date."""
 
-    return (EXCEL_EPOCH + timedelta(days=value)).date()
+    if not math.isfinite(value):
+        raise ValueError("date serial must be finite.")
+    try:
+        return (EXCEL_EPOCH + timedelta(days=value)).date()
+    except OverflowError as exc:
+        raise ValueError("date serial is outside the supported range.") from exc
 
 
 def _parse_source_date(value: Any) -> tuple[date, str | None]:
     """Parse one source date and report the legacy repair category, if any.
 
-    The first block in the source workbook was entered day/month but parsed by
-    the spreadsheet as month/day. For example, intended 7 April became 4 July
-    in the cell value. The affected run is explicitly constrained to the known
-    2026 legacy block where the parsed day is 7 and the parsed month is 4..12.
+    In the first legacy block, intended July dates such as 4 July were parsed by
+    Excel as 7 April. Those affected 2026 values have parsed day 7 and month
+    4..12, so swapping day and month restores 4 July through 12 July.
 
-    Two later dates were stored as text in YYYY/DD/MM form (for example
-    ``2026/14/08``) and are repaired by parsing day before month.
+    Two later rows are stored as text in YYYY/DD/MM form (for example
+    ``2026/14/08``), so they are explicitly interpreted as year/day/month.
     """
 
     if isinstance(value, (int, float)) and not isinstance(value, bool):
@@ -165,13 +169,32 @@ def _parse_source_date(value: Any) -> tuple[date, str | None]:
 
 
 def _parse_source_time(value: Any) -> time:
-    """Parse a spreadsheet serial time or a conventional clock string."""
+    """Parse a Sheet serial time in ``[0, 1)`` or a conventional clock string."""
 
     if isinstance(value, (int, float)) and not isinstance(value, bool):
-        total_seconds = int(round(float(value) * 86400.0)) % 86400
-        hour_value, remainder = divmod(total_seconds, 3600)
-        minute_value, second_value = divmod(remainder, 60)
-        return time(hour_value, minute_value, second_value)
+        serial = _as_float(value, "hour")
+        if not 0.0 <= serial < 1.0:
+            raise ValueError("numeric hour serial must be in the interval [0, 1).")
+
+        total_microseconds = int(round(serial * MICROSECONDS_PER_DAY))
+        if not 0 <= total_microseconds < MICROSECONDS_PER_DAY:
+            raise ValueError("numeric hour serial rounds outside a valid clock day.")
+
+        hour_value, remainder = divmod(
+            total_microseconds, 3_600 * MICROSECONDS_PER_SECOND
+        )
+        minute_value, remainder = divmod(
+            remainder, 60 * MICROSECONDS_PER_SECOND
+        )
+        second_value, microsecond_value = divmod(
+            remainder, MICROSECONDS_PER_SECOND
+        )
+        return time(
+            hour_value,
+            minute_value,
+            second_value,
+            microsecond_value,
+        )
 
     text = str(value).strip()
     for fmt in ("%H:%M:%S", "%H:%M"):
@@ -183,7 +206,7 @@ def _parse_source_time(value: Any) -> time:
 
 
 def _normalize_matrix(values: Sequence[Sequence[Any]]) -> list[list[Any]]:
-    """Pad sheet rows to the header width and validate the expected schema."""
+    """Pad source rows and validate the expected leading schema."""
 
     if not values:
         raise ValueError("No source rows were supplied.")
@@ -224,7 +247,7 @@ def parse_measurements(
         "Symptoms": 10,
     }
 
-    for row in matrix[1:]:
+    for row_number, row in enumerate(matrix[1:], start=2):
         date_cell = row[0]
         if isinstance(date_cell, str) and date_cell.strip().lower() == "average":
             summary_rows += 1
@@ -235,26 +258,36 @@ def parse_measurements(
         systolic_cell = row[2]
         diastolic_cell = row[3]
         if _is_blank(systolic_cell) and _is_blank(diastolic_cell):
-            if not _is_blank(row[4]) and _as_float(row[4], "placeholder diff") == 0.0:
-                blank_placeholders += 1
+            if _is_blank(row[4]):
+                continue
+            placeholder_diff = _as_float(row[4], "placeholder diff")
+            if placeholder_diff != 0.0:
+                raise ValueError(
+                    f"Row {row_number} has no pressure values but a non-zero diff."
+                )
+            blank_placeholders += 1
             continue
         if _is_blank(systolic_cell) != _is_blank(diastolic_cell):
-            raise ValueError("A source row contains only one blood-pressure component.")
+            raise ValueError(
+                f"Row {row_number} contains only one blood-pressure component."
+            )
 
         parsed_day, repair_kind = _parse_source_date(date_cell)
         if repair_kind == "excel":
             excel_repairs += 1
         elif repair_kind == "text":
             text_repairs += 1
+
         parsed_time = _parse_source_time(row[1])
         systolic = _as_float(systolic_cell, "systolic_mmHg")
         diastolic = _as_float(diastolic_cell, "diastolic_mmHg")
-        pulse_pressure = _as_float(row[4], "diff")
+        source_pulse_pressure = _as_float(row[4], "diff")
+        derived_pulse_pressure = systolic - diastolic
         bpm = _as_float(row[5], "bpm")
 
         if not math.isclose(
-            systolic - diastolic,
-            pulse_pressure,
+            derived_pulse_pressure,
+            source_pulse_pressure,
             rel_tol=0.0,
             abs_tol=1e-9,
         ):
@@ -270,7 +303,8 @@ def parse_measurements(
                 timestamp=datetime.combine(parsed_day, parsed_time),
                 systolic=systolic,
                 diastolic=diastolic,
-                pulse_pressure=pulse_pressure,
+                # Base measurements are authoritative; never publish a stale formula.
+                pulse_pressure=derived_pulse_pressure,
                 bpm=bpm,
                 pill=_optional_text(row[6]),
                 home=_optional_text(row[7]),
@@ -314,6 +348,7 @@ def parse_measurements(
         },
         "derived_field_check": {
             "pulse_pressure_mismatches_on_valid_rows": pulse_mismatches,
+            "pulse_pressure_output_policy": "derived_from_systolic_and_diastolic",
             "reported_spreadsheet_mean_pulse_pressure_mmHg": round(
                 reported_pulse_mean, 8
             ),
@@ -334,10 +369,11 @@ def sessionize(
     measurements: Sequence[Measurement],
     gap_minutes: int = SESSION_GAP_MINUTES,
 ) -> list[list[Measurement]]:
-    """Group consecutive same-day readings separated by at most ``gap_minutes``."""
+    """Group consecutive same-day readings no more than ``gap_minutes`` apart."""
 
     if gap_minutes <= 0:
         raise ValueError("gap_minutes must be positive.")
+
     sessions: list[list[Measurement]] = []
     current: list[Measurement] = []
     for measurement in sorted(measurements, key=lambda item: item.timestamp):
@@ -357,9 +393,10 @@ def sessionize(
 
 
 def build_snapshot(
-    measurements: Sequence[Measurement], sessions: Sequence[Sequence[Measurement]]
+    measurements: Sequence[Measurement],
+    sessions: Sequence[Sequence[Measurement]],
 ) -> list[dict[str, Any]]:
-    """Build one privacy-safe aggregate row for every relative calendar day."""
+    """Build one date-free aggregate row for every relative calendar day."""
 
     by_day: defaultdict[date, list[Measurement]] = defaultdict(list)
     for measurement in measurements:
@@ -388,6 +425,7 @@ def build_snapshot(
                 }
             )
             continue
+
         snapshot.append(
             {
                 "day_index": day_index,
@@ -426,12 +464,11 @@ def _write_snapshot(path: Path, snapshot: Sequence[dict[str, Any]]) -> None:
     with path.open("w", encoding="utf-8", newline="") as handle:
         writer = csv.DictWriter(handle, fieldnames=fieldnames)
         writer.writeheader()
-        for row in snapshot:
-            writer.writerow(row)
+        writer.writerows(snapshot)
 
 
 def refresh(values: Sequence[Sequence[Any]], data_dir: Path) -> dict[str, Any]:
-    """Transform private raw rows into the two public aggregate artifacts."""
+    """Transform private source rows into the two public aggregate artifacts."""
 
     measurements, audit = parse_measurements(values)
     sessions = sessionize(measurements)
@@ -471,10 +508,13 @@ def main() -> None:
     args = parse_args()
     values = fetch_sheet_values()
     audit = refresh(values, args.data_dir)
+    sessionization = audit["sessionization"]
+    if not isinstance(sessionization, dict):
+        raise TypeError("sessionization audit must be a dictionary.")
     print(
         "Refreshed privacy-safe snapshot: "
         f"{audit['valid_measurements']} readings, "
-        f"{audit['sessionization']['n_sessions']} sessions."
+        f"{sessionization['n_sessions']} sessions."
     )
 
 
