@@ -5,6 +5,10 @@ main systolic conclusions. It complements HC3 covariance by perturbing the data
 itself: each observed day is removed once and the global trend plus the gap-aware
 episode model are refitted.
 
+The episode split is frozen from the full dataset before deletion. This keeps the
+jackknife estimand fixed instead of allowing the dominant gap definition to move
+when a boundary observation is removed.
+
 The analysis is descriptive robustness checking, not a causal procedure.
 """
 
@@ -22,6 +26,8 @@ import statsmodels.api as sm
 import analysis as primary
 import gap_aware_trend_decomposition as gap_aware
 
+MIN_JACKKNIFE_EPISODE_DAYS = gap_aware.MIN_EPISODE_DAYS + 1
+
 
 def _global_trend(records: Sequence[primary.DailyRecord]) -> dict[str, float]:
     """Return the primary HC3 systolic trend for one record set."""
@@ -29,10 +35,31 @@ def _global_trend(records: Sequence[primary.DailyRecord]) -> dict[str, float]:
     return primary.linear_trend(records, "mean_systolic_mmHg")
 
 
-def _episode_model(records: Sequence[primary.DailyRecord]) -> dict[str, float]:
-    """Return the gap-aware centered episode model for one record set."""
+def _validate_jackknife_episode_size(
+    records: Sequence[primary.DailyRecord],
+    gap: gap_aware.InternalGap,
+) -> tuple[list[primary.DailyRecord], list[primary.DailyRecord]]:
+    """Validate that each frozen episode survives any one-day deletion."""
 
-    gap = gap_aware.dominant_internal_gap(records)
+    before, after = gap_aware.split_observation_episodes(records, gap)
+    if (
+        len(before) < MIN_JACKKNIFE_EPISODE_DAYS
+        or len(after) < MIN_JACKKNIFE_EPISODE_DAYS
+    ):
+        raise ValueError(
+            "Each episode requires at least "
+            f"{MIN_JACKKNIFE_EPISODE_DAYS} observed days for leave-one-day-out "
+            "influence analysis."
+        )
+    return before, after
+
+
+def _episode_model(
+    records: Sequence[primary.DailyRecord],
+    gap: gap_aware.InternalGap,
+) -> dict[str, float]:
+    """Fit the centered episode model using a fixed full-data gap definition."""
+
     before, after = gap_aware.split_observation_episodes(records, gap)
     return gap_aware._episode_centered_model(before, after)
 
@@ -67,22 +94,28 @@ def _ordinary_ols_influence(
 
 def leave_one_day_out(
     records: Sequence[primary.DailyRecord],
+    gap: gap_aware.InternalGap | None = None,
 ) -> list[dict[str, float | int | bool]]:
-    """Remove each observed day once and refit the main systolic estimands."""
+    """Remove each observed day once while holding the episode split fixed."""
 
     observed = primary.observed_records(records)
-    if len(observed) < 6:
-        raise ValueError("At least six observed days are required for jackknife checks.")
+    if len(observed) < 2 * MIN_JACKKNIFE_EPISODE_DAYS:
+        raise ValueError(
+            "At least "
+            f"{2 * MIN_JACKKNIFE_EPISODE_DAYS} observed days are required for "
+            "leave-one-day-out influence analysis."
+        )
+
+    frozen_gap = gap if gap is not None else gap_aware.dominant_internal_gap(records)
+    _validate_jackknife_episode_size(records, frozen_gap)
 
     results: list[dict[str, float | int | bool]] = []
     for removed in observed:
         retained = [
-            record
-            for record in records
-            if record.day_index != removed.day_index
+            record for record in records if record.day_index != removed.day_index
         ]
         global_fit = _global_trend(retained)
-        episode_fit = _episode_model(retained)
+        episode_fit = _episode_model(retained, frozen_gap)
         results.append(
             {
                 "removed_day_index": removed.day_index,
@@ -127,11 +160,13 @@ def leave_one_day_out(
 
 
 def summarize_influence(records: Sequence[primary.DailyRecord]) -> dict[str, object]:
-    """Build machine-readable influence and jackknife summaries."""
+    """Build machine-readable influence and leave-one-day-out summaries."""
 
+    frozen_gap = gap_aware.dominant_internal_gap(records)
+    before, after = _validate_jackknife_episode_size(records, frozen_gap)
     baseline_global = _global_trend(records)
-    baseline_episode = _episode_model(records)
-    deletions = leave_one_day_out(records)
+    baseline_episode = gap_aware._episode_centered_model(before, after)
+    deletions = leave_one_day_out(records, frozen_gap)
     diagnostics = _ordinary_ols_influence(records)
 
     global_slopes = np.asarray(
@@ -151,6 +186,14 @@ def summarize_influence(records: Sequence[primary.DailyRecord]) -> dict[str, obj
 
     return {
         "n_observed_days": len(primary.observed_records(records)),
+        "frozen_episode_definition": {
+            **frozen_gap.__dict__,
+            "pre_gap_observed_days": len(before),
+            "post_gap_observed_days": len(after),
+            "minimum_observed_days_per_episode_for_jackknife": (
+                MIN_JACKKNIFE_EPISODE_DAYS
+            ),
+        },
         "baseline": {
             "global_slope_per_30_days": float(
                 baseline_global["slope_per_30_days"]
@@ -196,6 +239,7 @@ def summarize_influence(records: Sequence[primary.DailyRecord]) -> dict[str, obj
         "ordinary_ols_influence": diagnostics,
         "interpretation": {
             "single_day_deletion_is_causal_test": False,
+            "episode_definition_recomputed_after_each_deletion": False,
             "purpose": "assess_small_sample_sensitivity_to_individual_observed_days",
         },
     }
@@ -270,7 +314,10 @@ def main() -> None:
     records = primary.load_snapshot(args.data)
     results = summarize_influence(records)
     args.output_json.parent.mkdir(parents=True, exist_ok=True)
-    args.output_json.write_text(json.dumps(results, indent=2) + "\n", encoding="utf-8")
+    args.output_json.write_text(
+        json.dumps(results, indent=2) + "\n",
+        encoding="utf-8",
+    )
     plot_leave_one_day_out(results, args.output_figure)
     print(json.dumps(results, indent=2))
 
