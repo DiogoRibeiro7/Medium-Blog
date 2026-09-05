@@ -44,9 +44,15 @@ class TrendEstimate:
 
 
 def load_observed_days(path: Path) -> list[ObservedDay]:
-    """Load observed days from the public snapshot and validate required fields."""
+    """Load observed days from the public snapshot and validate required fields.
+
+    Every calendar-day index must be unique, including unobserved rows. The
+    observation flag is restricted to the snapshot contract ``{0, 1}`` so a
+    malformed nonzero value cannot silently enter the sensitivity estimand.
+    """
 
     rows: list[ObservedDay] = []
+    seen_day_indices: set[int] = set()
     with path.open("r", encoding="utf-8", newline="") as handle:
         reader = csv.DictReader(handle)
         required = {"day_index", "observed", "n_readings", "mean_systolic_mmHg"}
@@ -54,13 +60,21 @@ def load_observed_days(path: Path) -> list[ObservedDay]:
             raise ValueError("Snapshot is missing sensitivity-analysis columns.")
 
         for row in reader:
-            if int(row["observed"]) == 0:
-                continue
             day_index = int(row["day_index"])
-            n_readings = int(row["n_readings"])
-            systolic = float(row["mean_systolic_mmHg"])
             if day_index < 0:
                 raise ValueError("day_index must be non-negative.")
+            if day_index in seen_day_indices:
+                raise ValueError("day_index values must be unique.")
+            seen_day_indices.add(day_index)
+
+            observed = int(row["observed"])
+            if observed not in (0, 1):
+                raise ValueError("observed must be 0 or 1.")
+            if observed == 0:
+                continue
+
+            n_readings = int(row["n_readings"])
+            systolic = float(row["mean_systolic_mmHg"])
             if n_readings <= 0:
                 raise ValueError("Observed days must have a positive reading count.")
             if not math.isfinite(systolic):
