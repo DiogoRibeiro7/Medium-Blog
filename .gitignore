@@ -16,3 +16,7 @@ venv/
 
 # Mac OS metadata
 .DS_Store
+
+# Private personal-health source data
+blood_pressure_tracker*.xlsx
+Blood_Pressure_Missingness/data/private/

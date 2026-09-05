@@ -1,0 +1,47 @@
+{
+  "source_rows_excluding_header": 151,
+  "valid_measurements": 144,
+  "blank_placeholder_rows": 6,
+  "spreadsheet_summary_rows": 1,
+  "date_repairs": {
+    "excel_day_month_inversion_measurements": 30,
+    "text_day_month_inversion_measurements": 2
+  },
+  "derived_field_check": {
+    "pulse_pressure_mismatches_on_valid_rows": 0,
+    "reported_spreadsheet_mean_pulse_pressure_mmHg": 38.56666667,
+    "cleaned_mean_pulse_pressure_mmHg": 40.17361111,
+    "relative_bias_percent": -3.99999999
+  },
+  "context_missingness_on_valid_measurements": {
+    "Meal": {
+      "missing": 120,
+      "rate": 0.83333333
+    },
+    "Symptoms": {
+      "missing": 129,
+      "rate": 0.89583333
+    },
+    "Pill": {
+      "missing": 0,
+      "rate": 0.0
+    },
+    "Home": {
+      "missing": 0,
+      "rate": 0.0
+    },
+    "Sleep": {
+      "missing": 0,
+      "rate": 0.0
+    }
+  },
+  "sessionization": {
+    "gap_threshold_minutes": 15,
+    "n_sessions": 79,
+    "session_size_counts": {
+      "1": 37,
+      "2": 19,
+      "3": 23
+    }
+  }
+}
