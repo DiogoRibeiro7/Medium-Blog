@@ -10,6 +10,14 @@ The source workbook is intentionally **not committed** to this public repository
 
 This is a statistical analysis, not medical advice or a clinical interpretation.
 
+## Notebook
+
+The Medium-facing executable analysis is in:
+
+- [`blood-pressure-missingness.ipynb`](blood-pressure-missingness.ipynb)
+
+The notebook contains the narrative, data-quality audit, missingness geometry, reading-vs-day weighting comparison, sampling-intensity diagnostics, HC3 robust trends, and the local-linear-trend state-space analysis. The reusable command-line implementation remains in `analysis.py`.
+
 ## 1. Data audit before modelling
 
 The workbook contains 151 rows below the header, but they are not 151 measurements.
@@ -203,17 +211,24 @@ What we can say is narrower and more defensible:
 
 The repository contains:
 
+- `blood-pressure-missingness.ipynb`: executable Medium-facing statistical analysis;
 - `data/analysis_snapshot.csv`: one row per relative calendar day, with dates removed;
 - `data/source_audit.json`: aggregate data-quality counts only;
-- `analysis.py`: validation, statistics, robust trends, and state-space smoothing;
+- `analysis.py`: reusable validation, statistics, robust trends, and state-space smoothing;
 - `figures/results.json`: machine-readable output from the analysis.
 
 The raw workbook is excluded from version control because this repository is public.
 
-To reproduce the public analysis snapshot and regenerate the figures:
+To reproduce the public analysis and regenerate the figures:
 
 ```bash
 python -m pip install -r requirements.txt
+jupyter notebook blood-pressure-missingness.ipynb
+```
+
+or use the reusable script:
+
+```bash
 python analysis.py \
   --data data/analysis_snapshot.csv \
   --audit data/source_audit.json \
