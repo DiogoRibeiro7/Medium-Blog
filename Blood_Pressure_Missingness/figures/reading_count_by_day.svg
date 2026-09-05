@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="360" viewBox="0 0 900 360">
+<rect width="100%" height="100%" fill="white"/>
+<g font-family="sans-serif" font-size="12" fill="black" stroke="black">
+<text x="450.0" y="24" text-anchor="middle" font-size="17" stroke="none">Sampling intensity across calendar days</text>
+<line x1="60" y1="45" x2="60" y2="305" stroke-width="1"/>
+<line x1="60" y1="305" x2="880" y2="305" stroke-width="1"/>
+<line x1="56" y1="305.00" x2="60" y2="305.00" stroke-width="1"/>
+<text x="52" y="309.00" text-anchor="end" stroke="none">0</text>
+<line x1="56" y1="243.10" x2="60" y2="243.10" stroke-width="1"/>
+<text x="52" y="247.10" text-anchor="end" stroke="none">5</text>
+<line x1="56" y1="181.19" x2="60" y2="181.19" stroke-width="1"/>
+<text x="52" y="185.19" text-anchor="end" stroke="none">10</text>
+<line x1="56" y1="119.29" x2="60" y2="119.29" stroke-width="1"/>
+<text x="52" y="123.29" text-anchor="end" stroke="none">15</text>
+<line x1="56" y1="57.38" x2="60" y2="57.38" stroke-width="1"/>
+<text x="52" y="61.38" text-anchor="end" stroke="none">20</text>
+<line x1="60.00" y1="305" x2="60.00" y2="309" stroke-width="1"/>
+<text x="60.00" y="325" text-anchor="middle" stroke="none">0</text>
+<line x1="190.16" y1="305" x2="190.16" y2="309" stroke-width="1"/>
+<text x="190.16" y="325" text-anchor="middle" stroke="none">10</text>
+<line x1="320.32" y1="305" x2="320.32" y2="309" stroke-width="1"/>
+<text x="320.32" y="325" text-anchor="middle" stroke="none">20</text>
+<line x1="450.48" y1="305" x2="450.48" y2="309" stroke-width="1"/>
+<text x="450.48" y="325" text-anchor="middle" stroke="none">30</text>
+<line x1="580.63" y1="305" x2="580.63" y2="309" stroke-width="1"/>
+<text x="580.63" y="325" text-anchor="middle" stroke="none">40</text>
+<line x1="710.79" y1="305" x2="710.79" y2="309" stroke-width="1"/>
+<text x="710.79" y="325" text-anchor="middle" stroke="none">50</text>
+<line x1="840.95" y1="305" x2="840.95" y2="309" stroke-width="1"/>
+<text x="840.95" y="325" text-anchor="middle" stroke="none">60</text>
+<rect x="54.88" y="280.24" width="10.25" height="24.76" fill="currentColor" stroke="none"/>
+<rect x="67.89" y="218.33" width="10.25" height="86.67" fill="currentColor" stroke="none"/>
+<rect x="80.91" y="280.24" width="10.25" height="24.76" fill="currentColor" stroke="none"/>
+<rect x="106.94" y="267.86" width="10.25" height="37.14" fill="currentColor" stroke="none"/>
+<rect x="119.95" y="255.48" width="10.25" height="49.52" fill="currentColor" stroke="none"/>
+<rect x="132.97" y="230.71" width="10.25" height="74.29" fill="currentColor" stroke="none"/>
+<rect x="145.99" y="267.86" width="10.25" height="37.14" fill="currentColor" stroke="none"/>
+<rect x="159.00" y="267.86" width="10.25" height="37.14" fill="currentColor" stroke="none"/>
+<rect x="588.53" y="280.24" width="10.25" height="24.76" fill="currentColor" stroke="none"/>
+<rect x="627.57" y="267.86" width="10.25" height="37.14" fill="currentColor" stroke="none"/>
+<rect x="640.59" y="292.62" width="10.25" height="12.38" fill="currentColor" stroke="none"/>
+<rect x="653.61" y="280.24" width="10.25" height="24.76" fill="currentColor" stroke="none"/>
+<rect x="666.62" y="280.24" width="10.25" height="24.76" fill="currentColor" stroke="none"/>
+<rect x="679.64" y="292.62" width="10.25" height="12.38" fill="currentColor" stroke="none"/>
+<rect x="692.65" y="280.24" width="10.25" height="24.76" fill="currentColor" stroke="none"/>
+<rect x="705.67" y="230.71" width="10.25" height="74.29" fill="currentColor" stroke="none"/>
+<rect x="718.68" y="267.86" width="10.25" height="37.14" fill="currentColor" stroke="none"/>
+<rect x="731.70" y="267.86" width="10.25" height="37.14" fill="currentColor" stroke="none"/>
+<rect x="770.75" y="230.71" width="10.25" height="74.29" fill="currentColor" stroke="none"/>
+<rect x="783.76" y="131.67" width="10.25" height="173.33" fill="currentColor" stroke="none"/>
+<rect x="796.78" y="45.00" width="10.25" height="260.00" fill="currentColor" stroke="none"/>
+<rect x="809.80" y="94.52" width="10.25" height="210.48" fill="currentColor" stroke="none"/>
+<rect x="822.81" y="168.81" width="10.25" height="136.19" fill="currentColor" stroke="none"/>
+<rect x="861.86" y="131.67" width="10.25" height="173.33" fill="currentColor" stroke="none"/>
+<rect x="874.88" y="230.71" width="10.25" height="74.29" fill="currentColor" stroke="none"/>
+<text x="470.0" y="350" text-anchor="middle" stroke="none">Day index from first observation</text>
+<text x="16" y="175.0" transform="rotate(-90 16 175.0)" text-anchor="middle" stroke="none">Valid readings</text>
+</g></svg>
