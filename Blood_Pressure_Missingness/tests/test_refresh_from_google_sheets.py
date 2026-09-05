@@ -2,9 +2,12 @@
 
 from __future__ import annotations
 
+import sys
 import tempfile
 import unittest
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 import refresh_from_google_sheets as refresh
 
@@ -60,6 +63,32 @@ class SourceRefreshTests(unittest.TestCase):
             snapshot = (Path(directory) / "analysis_snapshot.csv").read_text()
         self.assertIn(",40.0,", snapshot)
         self.assertNotIn("999", snapshot)
+
+    def test_non_positive_derived_pulse_pressure_is_rejected(self) -> None:
+        """Rows with systolic not greater than diastolic are invalid source data."""
+
+        for systolic, diastolic in ((80.0, 80.0), (79.0, 80.0)):
+            values = [
+                list(refresh.EXPECTED_COLUMNS),
+                [
+                    46206.0,
+                    0.5,
+                    systolic,
+                    diastolic,
+                    systolic - diastolic,
+                    70.0,
+                    "Yes",
+                    "Yes",
+                    "Yes",
+                    None,
+                    None,
+                ],
+            ]
+            with (
+                self.subTest(systolic=systolic, diastolic=diastolic),
+                self.assertRaisesRegex(ValueError, "systolic must exceed diastolic"),
+            ):
+                refresh.parse_measurements(values)
 
 
 if __name__ == "__main__":
