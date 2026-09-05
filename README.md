@@ -13,4 +13,7 @@ This project is licensed under the Apache License - see the [LICENSE](LICENSE) f
 
 Some Jupyter Notebooks that were published in my Medium Blog
 
+## Statistical case studies
+
+- [Missing Data Is Not Empty Space: Statistical Analysis of an Irregular Blood-Pressure Tracker](Blood_Pressure_Missingness/)
 
