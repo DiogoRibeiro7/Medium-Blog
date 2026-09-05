@@ -65,6 +65,14 @@ jobs:
           --output-json figures/gap_aware_trend_decomposition.json
           --output-figure figures/gap_aware_trend_decomposition.svg
 
+      - name: Regenerate day-level influence outputs
+        working-directory: Blood_Pressure_Missingness
+        run: >-
+          python day_influence_sensitivity.py
+          --data data/analysis_snapshot.csv
+          --output-json figures/day_influence_sensitivity.json
+          --output-figure figures/day_influence_sensitivity.svg
+
       - name: Validate that no raw source file was written
         run: |
           if find Blood_Pressure_Missingness -type f \( -name '*.xlsx' -o -name '*.xls' \) | grep -q .; then
