@@ -285,6 +285,11 @@ def parse_measurements(
         derived_pulse_pressure = systolic - diastolic
         bpm = _as_float(row[5], "bpm")
 
+        if derived_pulse_pressure <= 0.0:
+            raise ValueError(
+                f"Row {row_number}: systolic must exceed diastolic."
+            )
+
         if not math.isclose(
             derived_pulse_pressure,
             source_pulse_pressure,
@@ -303,7 +308,6 @@ def parse_measurements(
                 timestamp=datetime.combine(parsed_day, parsed_time),
                 systolic=systolic,
                 diastolic=diastolic,
-                # Base measurements are authoritative; never publish a stale formula.
                 pulse_pressure=derived_pulse_pressure,
                 bpm=bpm,
                 pill=_optional_text(row[6]),
@@ -321,6 +325,9 @@ def parse_measurements(
     cleaned_pulse_mean = statistics.fmean(
         measurement.pulse_pressure for measurement in measurements
     )
+    if cleaned_pulse_mean <= 0.0:
+        raise ValueError("Cleaned pulse-pressure mean must be positive.")
+
     if reported_pulse_mean is None:
         denominator = len(measurements) + blank_placeholders
         reported_pulse_mean = (
