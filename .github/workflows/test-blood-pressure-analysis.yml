@@ -1,22 +1,24 @@
-name: Test blood-pressure source refresh
+name: Test blood-pressure analysis
 
 on:
   pull_request:
     paths:
       - 'Blood_Pressure_Missingness/refresh_from_google_sheets.py'
+      - 'Blood_Pressure_Missingness/observation_process_sensitivity.py'
       - 'Blood_Pressure_Missingness/tests/**'
       - 'Blood_Pressure_Missingness/requirements.txt'
       - '.github/workflows/refresh-blood-pressure-analysis.yml'
-      - '.github/workflows/test-blood-pressure-source-refresh.yml'
+      - '.github/workflows/test-blood-pressure-analysis.yml'
   push:
     branches:
       - main
     paths:
       - 'Blood_Pressure_Missingness/refresh_from_google_sheets.py'
+      - 'Blood_Pressure_Missingness/observation_process_sensitivity.py'
       - 'Blood_Pressure_Missingness/tests/**'
       - 'Blood_Pressure_Missingness/requirements.txt'
       - '.github/workflows/refresh-blood-pressure-analysis.yml'
-      - '.github/workflows/test-blood-pressure-source-refresh.yml'
+      - '.github/workflows/test-blood-pressure-analysis.yml'
 
 permissions:
   contents: read
@@ -36,7 +38,7 @@ jobs:
       - name: Install analysis dependencies
         run: python -m pip install -r Blood_Pressure_Missingness/requirements.txt
 
-      - name: Run source-refresh regression tests
+      - name: Run blood-pressure regression tests
         run: >-
           python -m unittest discover
           -s Blood_Pressure_Missingness/tests

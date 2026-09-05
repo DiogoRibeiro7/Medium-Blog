@@ -26,9 +26,7 @@ jobs:
       - name: Install analysis dependencies
         run: python -m pip install -r Blood_Pressure_Missingness/requirements.txt
 
-      - name: Run source-refresh regression tests
-        env:
-          PYTHONPATH: Blood_Pressure_Missingness
+      - name: Run blood-pressure regression tests
         run: >-
           python -m unittest discover
           -s Blood_Pressure_Missingness/tests
@@ -43,13 +41,21 @@ jobs:
           BLOOD_PRESSURE_WORKSHEET: ${{ secrets.BLOOD_PRESSURE_WORKSHEET }}
         run: python refresh_from_google_sheets.py --data-dir data
 
-      - name: Regenerate statistical outputs
+      - name: Regenerate primary statistical outputs
         working-directory: Blood_Pressure_Missingness
         run: >-
           python analysis.py
           --data data/analysis_snapshot.csv
           --audit data/source_audit.json
           --output-dir figures
+
+      - name: Regenerate observation-process sensitivity outputs
+        working-directory: Blood_Pressure_Missingness
+        run: >-
+          python observation_process_sensitivity.py
+          --data data/analysis_snapshot.csv
+          --output-json figures/observation_process_sensitivity.json
+          --output-figure figures/observation_process_sensitivity.svg
 
       - name: Validate that no raw source file was written
         run: |
