@@ -5,6 +5,7 @@ on:
     paths:
       - 'Blood_Pressure_Missingness/refresh_from_google_sheets.py'
       - 'Blood_Pressure_Missingness/observation_process_sensitivity.py'
+      - 'Blood_Pressure_Missingness/gap_aware_trend_decomposition.py'
       - 'Blood_Pressure_Missingness/tests/**'
       - 'Blood_Pressure_Missingness/requirements.txt'
       - '.github/workflows/refresh-blood-pressure-analysis.yml'
@@ -15,6 +16,7 @@ on:
     paths:
       - 'Blood_Pressure_Missingness/refresh_from_google_sheets.py'
       - 'Blood_Pressure_Missingness/observation_process_sensitivity.py'
+      - 'Blood_Pressure_Missingness/gap_aware_trend_decomposition.py'
       - 'Blood_Pressure_Missingness/tests/**'
       - 'Blood_Pressure_Missingness/requirements.txt'
       - '.github/workflows/refresh-blood-pressure-analysis.yml'
