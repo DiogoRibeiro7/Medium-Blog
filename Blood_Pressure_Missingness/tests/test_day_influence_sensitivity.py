@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import sys
+import tempfile
 import unittest
 from pathlib import Path
 
@@ -15,7 +16,7 @@ import gap_aware_trend_decomposition as gap_aware
 
 
 class DayInfluenceSensitivityTests(unittest.TestCase):
-    """Protect small-sample influence-analysis invariants."""
+    """Protect structural invariants of the influence analysis."""
 
     @classmethod
     def setUpClass(cls) -> None:
@@ -64,29 +65,46 @@ class DayInfluenceSensitivityTests(unittest.TestCase):
             places=10,
         )
 
-    def test_current_global_and_episode_conclusions_survive_every_deletion(self) -> None:
-        """Current main claims should not hinge on one observed day."""
+    def test_episode_definition_is_frozen_from_full_dataset(self) -> None:
+        """Jackknife deletions must not redefine the dominant-gap split."""
 
-        summary = self.results["leave_one_day_out_summary"]
-        self.assertIsInstance(summary, dict)
-        self.assertTrue(
-            summary["global_interval_excludes_zero_for_all_deletions"]
+        frozen = self.results["frozen_episode_definition"]
+        self.assertIsInstance(frozen, dict)
+        gap = gap_aware.dominant_internal_gap(self.records)
+        self.assertEqual(int(frozen["start_day_index"]), gap.start_day_index)
+        self.assertEqual(int(frozen["end_day_index"]), gap.end_day_index)
+        interpretation = self.results["interpretation"]
+        self.assertIsInstance(interpretation, dict)
+        self.assertFalse(
+            interpretation["episode_definition_recomputed_after_each_deletion"]
         )
-        self.assertTrue(
-            summary["episode_level_interval_excludes_zero_for_all_deletions"]
-        )
-        self.assertLess(float(summary["global_slope_max_per_30_days"]), 0.0)
-        self.assertLess(float(summary["episode_level_difference_max_mmHg"]), 0.0)
 
-    def test_within_episode_significance_is_not_stable(self) -> None:
-        """The within-episode significance conclusion is deletion-sensitive."""
+    def test_jackknife_requires_five_days_per_episode(self) -> None:
+        """An episode with four days is valid for baseline fit but not jackknife."""
 
-        summary = self.results["leave_one_day_out_summary"]
-        self.assertIsInstance(summary, dict)
-        significant = summary["within_episode_significant_negative_deletions"]
-        self.assertIsInstance(significant, list)
-        self.assertGreater(len(significant), 0)
-        self.assertLess(len(significant), self.results["n_observed_days"])
+        rows = [
+            "day_index,observed,n_readings,n_sessions,mean_systolic_mmHg,mean_diastolic_mmHg,mean_pulse_pressure_mmHg,mean_bpm",
+            "0,1,1,1,120,80,40,70",
+            "1,1,1,1,119,79,40,70",
+            "2,1,1,1,118,78,40,70",
+            "3,1,1,1,117,77,40,70",
+            "4,0,0,0,,,,",
+            "5,0,0,0,,,,",
+            "6,0,0,0,,,,",
+            "7,0,0,0,,,,",
+            "8,0,0,0,,,,",
+            "9,1,1,1,116,76,40,70",
+            "10,1,1,1,115,75,40,70",
+            "11,1,1,1,114,74,40,70",
+            "12,1,1,1,113,73,40,70",
+            "13,1,1,1,112,72,40,70",
+        ]
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "snapshot.csv"
+            path.write_text("\n".join(rows) + "\n", encoding="utf-8")
+            records = primary.load_snapshot(path)
+        with self.assertRaisesRegex(ValueError, "at least 5 observed days"):
+            influence.summarize_influence(records)
 
     def test_influence_diagnostics_reference_observed_days(self) -> None:
         """Cook's-distance and DFBETA maxima must point to real observed days."""
