@@ -1,0 +1,66 @@
+{
+  "n_observed_days": 26,
+  "residual_model": {
+    "name": "gap_aware_common_linear",
+    "post_minus_pre_mean_difference_mmHg": -6.378728637083309,
+    "common_within_episode_slope_per_30_days": -9.157303665915597
+  },
+  "observed_order_spacing": {
+    "n_consecutive_observed_pairs": 25,
+    "calendar_gap_days_counts": {
+      "1": 20,
+      "2": 1,
+      "3": 3,
+      "33": 1
+    },
+    "n_exactly_one_day_apart": 20,
+    "n_not_one_day_apart": 5,
+    "observed_order_is_equally_spaced_daily": false,
+    "row_order_lag1_residual_correlation": -0.15754204240427347
+  },
+  "exact_calendar_lag_residual_correlations": [
+    {
+      "lag_days": 1,
+      "n_pairs": 20,
+      "pearson_r": 0.0047221859174484
+    },
+    {
+      "lag_days": 2,
+      "n_pairs": 16,
+      "pearson_r": -0.38050082332592783
+    },
+    {
+      "lag_days": 3,
+      "n_pairs": 15,
+      "pearson_r": -0.21354512933378528
+    },
+    {
+      "lag_days": 4,
+      "n_pairs": 15,
+      "pearson_r": -0.023270702436770496
+    },
+    {
+      "lag_days": 5,
+      "n_pairs": 14,
+      "pearson_r": -0.15089767997828762
+    },
+    {
+      "lag_days": 6,
+      "n_pairs": 14,
+      "pearson_r": 0.217407757280602
+    },
+    {
+      "lag_days": 7,
+      "n_pairs": 13,
+      "pearson_r": -0.11447635678535355
+    }
+  ],
+  "interpretation": {
+    "calendar_distance_preserved": true,
+    "exact_lag_pairs_restricted_to_same_gap_defined_episode": true,
+    "row_order_lag1_is_valid_hac_time_lag": false,
+    "formal_serial_independence_claimed": false,
+    "formal_autocorrelation_test_reported": false,
+    "purpose": "describe_residual_dependence_without_collapsing_calendar_gaps"
+  }
+}
