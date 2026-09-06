@@ -145,7 +145,17 @@ The current live snapshot is more robust to this particular sensitivity analysis
 
 All five intervals are now below zero. The five-parameter specification remains a **stress model, not a preferred trajectory**; the sample is still small and only eight observed days precede the long gap.
 
-## 9. State-space uncertainty
+## 9. Temporal dependence must respect calendar distance
+
+Residual dependence is assessed after removing the established gap-aware common-linear episode structure. The key complication is that consecutive observed rows are not consecutive calendar days: among the 25 adjacent observed-row pairs, the actual spacings are **20 one-day gaps, one two-day gap, three three-day gaps, and one 33-day gap**.
+
+If those 25 pairs are treated mechanically as a single row-order lag, the residual correlation is about **-0.158**. Restricting the comparison to the **20 pairs exactly one calendar day apart within the same gap-defined episode** gives an essentially zero residual correlation of about **0.005**.
+
+The longer exact-calendar-lag correlations fluctuate with small pair counts. They are therefore reported as descriptive diagnostics, not as a formal test of serial independence. In particular, this analysis does **not** use ordinary row-order Newey-West/HAC inference, because that would treat day 8 and day 41 as if they were one time step apart.
+
+The practical result is methodological: temporal dependence should be indexed by actual calendar distance, not by row position in the observed subset.
+
+## 10. State-space uncertainty
 
 A local-linear-trend Gaussian state-space model remains useful for visualising latent uncertainty across missing calendar days:
 
@@ -163,7 +173,7 @@ y_t = \mu_t + \varepsilon_t,
 
 Missing days remain missing observations. The Kalman smoother propagates uncertainty through the latent state; it does not manufacture replacement measurements.
 
-## 10. What can actually be concluded?
+## 11. What can actually be concluded?
 
 The current synthesis is:
 
@@ -172,14 +182,15 @@ The current synthesis is:
 3. The post-gap episode is about **5-6 mmHg lower** than the pre-gap episode across the tested ordinary specifications.
 4. The episode contrast survives ordinary sampling-intensity adjustments, all tested within-episode time forms, and deletion of any one observed day on the current snapshot.
 5. The inverse-intensity sampling stress specification remains inconclusive.
-6. The data cannot identify when or why the episode difference arose inside the unobserved interval.
-7. The tracker cannot identify the missingness mechanism as MCAR, MAR, or MNAR from the observed data alone.
+6. Residual-dependence diagnostics change materially when actual calendar spacing is respected; row-order adjacency is not a valid daily lag for this irregular sample.
+7. The data cannot identify when or why the episode difference arose inside the unobserved interval.
+8. The tracker cannot identify the missingness mechanism as MCAR, MAR, or MNAR from the observed data alone.
 
 The broader lesson is methodological:
 
 > **Missing data are part of the statistical process. A credible analysis should challenge the conclusions created by the observation design rather than erase the gaps and report one smooth line.**
 
-## 11. Reproducibility and privacy
+## 12. Reproducibility and privacy
 
 The repository contains:
 
@@ -189,6 +200,7 @@ The repository contains:
 - `day_influence_sensitivity.py` — Cook's distance, DFBETA, leverage, and leave-one-day-out refits;
 - `episode_observation_sensitivity.py` — episode contrast sensitivity to sampling intensity;
 - `episode_time_form_sensitivity.py` — episode contrast sensitivity to within-episode time form;
+- `temporal_dependence_diagnostics.py` — exact-calendar-lag residual diagnostics that preserve irregular spacing;
 - `validate_current_influence_findings.py` — refresh-time gate for influence conclusions;
 - `validate_current_narrative.py` — consistency gate between the current snapshot and public narrative;
 - `blood-pressure-missingness.ipynb` — executable Medium-facing synthesis;
