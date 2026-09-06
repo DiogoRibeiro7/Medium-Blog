@@ -3,6 +3,8 @@ name: Test blood-pressure analysis
 on:
   pull_request:
     paths:
+      - 'Blood_Pressure_Missingness/README.md'
+      - 'Blood_Pressure_Missingness/blood-pressure-missingness.ipynb'
       - 'Blood_Pressure_Missingness/refresh_from_google_sheets.py'
       - 'Blood_Pressure_Missingness/observation_process_sensitivity.py'
       - 'Blood_Pressure_Missingness/gap_aware_trend_decomposition.py'
@@ -19,6 +21,8 @@ on:
     branches:
       - main
     paths:
+      - 'Blood_Pressure_Missingness/README.md'
+      - 'Blood_Pressure_Missingness/blood-pressure-missingness.ipynb'
       - 'Blood_Pressure_Missingness/refresh_from_google_sheets.py'
       - 'Blood_Pressure_Missingness/observation_process_sensitivity.py'
       - 'Blood_Pressure_Missingness/gap_aware_trend_decomposition.py'
@@ -56,7 +60,7 @@ jobs:
           python validate_current_influence_findings.py
           --data data/analysis_snapshot.csv
 
-      - name: Run blood-pressure regression tests
+      - name: Run blood-pressure regression and notebook tests
         run: >-
           python -m unittest discover
           -s Blood_Pressure_Missingness/tests
