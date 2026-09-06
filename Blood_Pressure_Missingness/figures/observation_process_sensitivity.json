@@ -1,0 +1,51 @@
+{
+  "n_observed_days": 26,
+  "trend_estimates": [
+    {
+      "name": "equal_day",
+      "slope_per_30_days": -4.27560418380342,
+      "ci95_low_per_30_days": -6.5155240266693575,
+      "ci95_high_per_30_days": -2.0356843409374816,
+      "p_value": 0.0001831300050221193
+    },
+    {
+      "name": "sampling_adjusted",
+      "slope_per_30_days": -3.1548168251564364,
+      "ci95_low_per_30_days": -5.478988104116147,
+      "ci95_high_per_30_days": -0.8306455461967257,
+      "p_value": 0.007803772094799333
+    },
+    {
+      "name": "reading_weighted",
+      "slope_per_30_days": -4.881680819118074,
+      "ci95_low_per_30_days": -7.053370243865008,
+      "ci95_high_per_30_days": -2.7099913943711393,
+      "p_value": 1.0541895933437187e-05
+    },
+    {
+      "name": "capped_weight",
+      "slope_per_30_days": -4.475463396819032,
+      "ci95_low_per_30_days": -6.519709923684675,
+      "ci95_high_per_30_days": -2.4312168699533894,
+      "p_value": 1.7791529726939796e-05
+    },
+    {
+      "name": "inverse_intensity_stress",
+      "slope_per_30_days": -3.1334095539415427,
+      "ci95_low_per_30_days": -6.6164715807416705,
+      "ci95_high_per_30_days": 0.3496524728585849,
+      "p_value": 0.07786507402412321
+    }
+  ],
+  "sampling_adjustment": {
+    "covariate": "log1p_n_readings",
+    "coefficient_mmHg": -2.8055555519749813,
+    "ci95_low_mmHg": -5.099787433861604,
+    "ci95_high_mmHg": -0.5113236700883594,
+    "p_value": 0.016539482227517797
+  },
+  "interpretation": {
+    "identified_missingness_mechanism": false,
+    "inverse_intensity_is_stress_test_not_ipw": true
+  }
+}

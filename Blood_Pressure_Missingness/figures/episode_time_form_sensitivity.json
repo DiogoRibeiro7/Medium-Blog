@@ -1,0 +1,72 @@
+{
+  "dominant_internal_gap": {
+    "start_day_index": 9,
+    "end_day_index": 40,
+    "length_days": 32,
+    "left_observed_day_index": 8,
+    "right_observed_day_index": 41
+  },
+  "n_observed_days": 26,
+  "episode_sizes": {
+    "pre_gap_observed_days": 8,
+    "post_gap_observed_days": 18
+  },
+  "estimates": [
+    {
+      "name": "episode_only",
+      "n_parameters": 2,
+      "episode_difference_mmHg": -6.378728637083299,
+      "episode_ci95_low_mmHg": -10.071548915793219,
+      "episode_ci95_high_mmHg": -2.6859083583733794,
+      "episode_p_value": 0.000710462320334925,
+      "aic": 154.7114993322553,
+      "bic": 157.22769240829825
+    },
+    {
+      "name": "common_linear",
+      "n_parameters": 3,
+      "episode_difference_mmHg": -6.378728637083352,
+      "episode_ci95_low_mmHg": -10.095099269649182,
+      "episode_ci95_high_mmHg": -2.662358004517522,
+      "episode_p_value": 0.0007680599659435598,
+      "aic": 152.08235296039365,
+      "bic": 155.8566425744581
+    },
+    {
+      "name": "separate_linear_slopes",
+      "n_parameters": 4,
+      "episode_difference_mmHg": -6.378728637083325,
+      "episode_ci95_low_mmHg": -10.646777518409342,
+      "episode_ci95_high_mmHg": -2.1106797557573085,
+      "episode_p_value": 0.0033980760329855573,
+      "aic": 153.41846358805242,
+      "bic": 158.45084974013835
+    },
+    {
+      "name": "common_quadratic",
+      "n_parameters": 4,
+      "episode_difference_mmHg": -5.277114957656836,
+      "episode_ci95_low_mmHg": -9.830129985876951,
+      "episode_ci95_high_mmHg": -0.7240999294367212,
+      "episode_p_value": 0.02310634843254157,
+      "aic": 152.34392222604276,
+      "bic": 157.3763083781287
+    },
+    {
+      "name": "separate_linear_plus_common_quadratic_stress",
+      "n_parameters": 5,
+      "episode_difference_mmHg": -5.308872357803036,
+      "episode_ci95_low_mmHg": -10.421097620344238,
+      "episode_ci95_high_mmHg": -0.19664709526183444,
+      "episode_p_value": 0.04181506013853015,
+      "aic": 153.74262716709353,
+      "bic": 160.03310985720094
+    }
+  ],
+  "interpretation": {
+    "preferred_model_selected_by_this_analysis": false,
+    "stress_model_is_claimed_true_trajectory": false,
+    "common_linear_matches_gap_aware_primary_estimand": true,
+    "purpose": "test_episode_contrast_sensitivity_to_within_episode_time_form"
+  }
+}
