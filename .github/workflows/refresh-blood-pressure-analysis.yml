@@ -89,6 +89,13 @@ jobs:
           --output-json figures/episode_time_form_sensitivity.json
           --output-figure figures/episode_time_form_sensitivity.svg
 
+      - name: Regenerate temporal-dependence diagnostics
+        working-directory: Blood_Pressure_Missingness
+        run: >-
+          python temporal_dependence_diagnostics.py
+          --data data/analysis_snapshot.csv
+          --output-json figures/temporal_dependence_diagnostics.json
+
       - name: Validate current influence findings
         working-directory: Blood_Pressure_Missingness
         run: >-
