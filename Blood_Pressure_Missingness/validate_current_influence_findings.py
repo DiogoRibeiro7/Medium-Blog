@@ -3,8 +3,9 @@
 These checks are intentionally *not* ordinary code invariants. They encode the
 scientific statements currently documented for the latest committed snapshot.
 The secret-backed refresh workflow runs this module immediately after rebuilding
-all derived outputs. If new measurements change one of these conclusions, the
-refresh stops so the article and documentation can be reviewed before publication.
+all derived outputs. CI also runs it whenever the committed snapshot or influence
+analysis changes, so scientific drift is detected on the same PR that introduces
+new aggregate data.
 """
 
 from __future__ import annotations
@@ -14,6 +15,7 @@ from pathlib import Path
 
 import analysis as primary
 import day_influence_sensitivity as influence
+import gap_aware_trend_decomposition as gap_aware
 
 
 def validate_current_findings(data_path: Path) -> None:
@@ -36,6 +38,43 @@ def validate_current_findings(data_path: Path) -> None:
         raise RuntimeError(
             "Scientific finding changed: the episode-level contrast HC3 interval "
             "no longer stays below zero under every single-day deletion."
+        )
+
+    # The documented within-episode finding has three parts: the full-data point
+    # estimate is negative, its HC3 interval crosses zero, and all leave-one-day-
+    # out point estimates remain negative even though only some deletion-specific
+    # intervals exclude zero. Validate all three rather than using the count of
+    # significant deletions as a proxy for the whole statement.
+    gap = gap_aware.dominant_internal_gap(records)
+    before, after = gap_aware.split_observation_episodes(records, gap)
+    baseline_episode = gap_aware._episode_centered_model(before, after)
+    baseline_slope = float(
+        baseline_episode["common_within_episode_slope_per_30_days"]
+    )
+    baseline_low = float(
+        baseline_episode["within_slope_ci95_low_per_30_days"]
+    )
+    baseline_high = float(
+        baseline_episode["within_slope_ci95_high_per_30_days"]
+    )
+
+    if baseline_slope >= 0.0:
+        raise RuntimeError(
+            "Scientific finding changed: the baseline within-episode slope point "
+            "estimate is no longer negative."
+        )
+    if not baseline_low < 0.0 < baseline_high:
+        raise RuntimeError(
+            "Scientific finding changed: the baseline within-episode HC3 interval "
+            "no longer crosses zero."
+        )
+
+    deletion_min = float(summary["within_episode_slope_min_per_30_days"])
+    deletion_max = float(summary["within_episode_slope_max_per_30_days"])
+    if deletion_min >= 0.0 or deletion_max >= 0.0:
+        raise RuntimeError(
+            "Scientific finding changed: at least one leave-one-day-out "
+            "within-episode slope point estimate is no longer negative."
         )
 
     significant = summary["within_episode_significant_negative_deletions"]
