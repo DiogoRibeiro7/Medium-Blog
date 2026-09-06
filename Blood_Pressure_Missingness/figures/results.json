@@ -1,8 +1,8 @@
 {
   "source_audit": {
-    "source_rows_excluding_header": 151,
-    "valid_measurements": 144,
-    "blank_placeholder_rows": 6,
+    "source_rows_excluding_header": 172,
+    "valid_measurements": 171,
+    "blank_placeholder_rows": 0,
     "spreadsheet_summary_rows": 1,
     "date_repairs": {
       "excel_day_month_inversion_measurements": 30,
@@ -10,19 +10,12 @@
     },
     "derived_field_check": {
       "pulse_pressure_mismatches_on_valid_rows": 0,
-      "reported_spreadsheet_mean_pulse_pressure_mmHg": 38.56666667,
-      "cleaned_mean_pulse_pressure_mmHg": 40.17361111,
-      "relative_bias_percent": -3.99999999
+      "pulse_pressure_output_policy": "derived_from_systolic_and_diastolic",
+      "reported_spreadsheet_mean_pulse_pressure_mmHg": 40.16374269,
+      "cleaned_mean_pulse_pressure_mmHg": 40.16374269,
+      "relative_bias_percent": 0.0
     },
     "context_missingness_on_valid_measurements": {
-      "Meal": {
-        "missing": 120,
-        "rate": 0.83333333
-      },
-      "Symptoms": {
-        "missing": 129,
-        "rate": 0.89583333
-      },
       "Pill": {
         "missing": 0,
         "rate": 0.0
@@ -34,35 +27,45 @@
       "Sleep": {
         "missing": 0,
         "rate": 0.0
+      },
+      "Meal": {
+        "missing": 144,
+        "rate": 0.84210526
+      },
+      "Symptoms": {
+        "missing": 151,
+        "rate": 0.88304094
       }
     },
     "sessionization": {
       "gap_threshold_minutes": 15,
-      "n_sessions": 79,
+      "n_sessions": 87,
       "session_size_counts": {
         "1": 37,
         "2": 19,
-        "3": 23
+        "3": 29,
+        "4": 1,
+        "5": 1
       }
     }
   },
   "calendar": {
-    "n_calendar_days": 64,
-    "n_observed_days": 25,
+    "n_calendar_days": 65,
+    "n_observed_days": 26,
     "n_missing_days": 39,
-    "coverage_rate": 0.390625,
-    "missing_rate": 0.609375,
+    "coverage_rate": 0.4,
+    "missing_rate": 0.6,
     "longest_missing_run_days": 32,
     "share_of_missing_days_in_longest_run": 0.8205128205128205
   },
   "sampling": {
-    "total_valid_readings": 144,
-    "total_sessions": 79,
+    "total_valid_readings": 171,
+    "total_sessions": 87,
     "readings_per_observed_day": {
-      "mean": 5.76,
+      "mean": 6.576923076923077,
       "median": 3.0,
       "q1": 2.0,
-      "q3": 6.0,
+      "q3": 10.0,
       "min": 1.0,
       "max": 21.0
     }
@@ -70,86 +73,86 @@
   "metrics": {
     "mean_systolic_mmHg": {
       "means": {
-        "reading_weighted_mean": 115.8541666671528,
-        "equal_observed_day_mean": 118.26515151519999,
-        "difference_weighted_minus_equal_day": -2.4109848480471925
+        "reading_weighted_mean": 115.15789473684211,
+        "equal_observed_day_mean": 118.11223090615385,
+        "difference_weighted_minus_equal_day": -2.9543361693117447
       },
       "sampling_association": {
-        "pearson_r": -0.4853081187444152,
-        "pearson_p_value": 0.013928423080435567,
-        "spearman_rho": -0.4404958757074042,
-        "spearman_p_value": 0.027537936185750494
+        "pearson_r": -0.6191871247246497,
+        "pearson_p_value": 0.0007443677154026554,
+        "spearman_rho": -0.521711937220416,
+        "spearman_p_value": 0.006266668443661726
       },
       "linear_trend": {
-        "slope_per_day": -0.14225044373423135,
-        "slope_per_30_days": -4.26751331202694,
-        "ci95_low_per_30_days": -6.700575834254766,
-        "ci95_high_per_30_days": -1.8344507897991145,
-        "p_value": 0.0005866475822783187,
-        "r_squared": 0.36606098181893376
+        "slope_per_day": -0.142520139460114,
+        "slope_per_30_days": -4.27560418380342,
+        "ci95_low_per_30_days": -6.5155240266693575,
+        "ci95_high_per_30_days": -2.0356843409374816,
+        "p_value": 0.0001831300050221193,
+        "r_squared": 0.3885811361579149
       }
     },
     "mean_diastolic_mmHg": {
       "means": {
-        "reading_weighted_mean": 75.68055555513888,
-        "equal_observed_day_mean": 77.2992666156,
-        "difference_weighted_minus_equal_day": -1.6187110604611235
+        "reading_weighted_mean": 74.99415204614034,
+        "equal_observed_day_mean": 77.08705877423077,
+        "difference_weighted_minus_equal_day": -2.0929067280904263
       },
       "sampling_association": {
-        "pearson_r": -0.4637763312123165,
-        "pearson_p_value": 0.019535541323343,
-        "spearman_rho": -0.36683764354483506,
-        "spearman_p_value": 0.07126828704407222
+        "pearson_r": -0.5998016037466375,
+        "pearson_p_value": 0.0012004618822647878,
+        "spearman_rho": -0.44674537677033377,
+        "spearman_p_value": 0.022139028469874714
       },
       "linear_trend": {
-        "slope_per_day": -0.10083950638269326,
-        "slope_per_30_days": -3.025185191480798,
-        "ci95_low_per_30_days": -4.617946729737197,
-        "ci95_high_per_30_days": -1.4324236532243986,
-        "p_value": 0.00019716219470318103,
-        "r_squared": 0.3726833103291971
+        "slope_per_day": -0.1060724418173663,
+        "slope_per_30_days": -3.182173254520989,
+        "ci95_low_per_30_days": -4.710145278035061,
+        "ci95_high_per_30_days": -1.6542012310069178,
+        "p_value": 4.46795910202044e-05,
+        "r_squared": 0.4024629028508936
       }
     },
     "mean_pulse_pressure_mmHg": {
       "means": {
-        "reading_weighted_mean": 40.17361111125,
-        "equal_observed_day_mean": 40.9658849,
-        "difference_weighted_minus_equal_day": -0.792273788750002
+        "reading_weighted_mean": 40.16374269005848,
+        "equal_observed_day_mean": 41.02517213230769,
+        "difference_weighted_minus_equal_day": -0.8614294422492108
       },
       "sampling_association": {
-        "pearson_r": -0.24175037902864477,
-        "pearson_p_value": 0.24432762901787958,
-        "spearman_rho": -0.38386674061620735,
-        "spearman_p_value": 0.0581745456991517
+        "pearson_r": -0.2779540389387259,
+        "pearson_p_value": 0.16917490834508847,
+        "spearman_rho": -0.3714805746816052,
+        "spearman_p_value": 0.061688493644748536
       },
       "linear_trend": {
-        "slope_per_day": -0.04141093741652613,
-        "slope_per_30_days": -1.2423281224957838,
-        "ci95_low_per_30_days": -2.974037909081342,
-        "ci95_high_per_30_days": 0.489381664089774,
-        "p_value": 0.15970107686957047,
-        "r_squared": 0.07128758521060541
+        "slope_per_day": -0.03644769770512743,
+        "slope_per_30_days": -1.0934309311538228,
+        "ci95_low_per_30_days": -2.6994622991747548,
+        "ci95_high_per_30_days": 0.5126004368671093,
+        "p_value": 0.18207341452726344,
+        "r_squared": 0.06023542542028715
       }
     },
     "mean_bpm": {
       "means": {
-        "reading_weighted_mean": 92.46527777777779,
-        "equal_observed_day_mean": 94.0517010436,
-        "difference_weighted_minus_equal_day": -1.5864232658222193
+        "reading_weighted_mean": 92.74853801198832,
+        "equal_observed_day_mean": 94.12833245153845,
+        "difference_weighted_minus_equal_day": -1.379794439550139
       },
       "sampling_association": {
-        "pearson_r": -0.3694641942686417,
-        "pearson_p_value": 0.06911389868360994,
-        "spearman_rho": -0.22051171540474587,
-        "spearman_p_value": 0.2894996470599453
+        "pearson_r": -0.33600148478021263,
+        "pearson_p_value": 0.09330563428252493,
+        "spearman_rho": -0.1979026948638255,
+        "spearman_p_value": 0.33248982808259875
       },
       "linear_trend": {
-        "slope_per_day": -0.11408330561093837,
-        "slope_per_30_days": -3.422499168328151,
-        "ci95_low_per_30_days": -5.987855628522434,
-        "ci95_high_per_30_days": -0.8571427081338677,
-        "p_value": 0.008927146094805202,
-        "r_squared": 0.3151742977578621
+        "slope_per_day": -0.10453222777459154,
+        "slope_per_30_days": -3.135966833237746,
+        "ci95_low_per_30_days": -5.630513879281185,
+        "ci95_high_per_30_days": -0.6414197871943071,
+        "p_value": 0.013742406177388719,
+        "r_squared": 0.2822014556290725
       }
     }
   }

@@ -1,0 +1,58 @@
+{
+  "dominant_internal_gap": {
+    "start_day_index": 9,
+    "end_day_index": 40,
+    "length_days": 32,
+    "left_observed_day_index": 8,
+    "right_observed_day_index": 41
+  },
+  "n_observed_days": 26,
+  "pre_gap_episode": {
+    "n_days": 8,
+    "mean_systolic_mmHg": 122.52827380875,
+    "slope_per_30_days": 3.121777371337604,
+    "ci95_low_per_30_days": -48.577212530930886,
+    "ci95_high_per_30_days": 54.820767273606094,
+    "p_value": 0.9057904064431093
+  },
+  "post_gap_episode": {
+    "n_days": 18,
+    "mean_systolic_mmHg": 116.14954517166666,
+    "slope_per_30_days": -10.04078225436206,
+    "ci95_low_per_30_days": -19.60285561330462,
+    "ci95_high_per_30_days": -0.4787088954194979,
+    "p_value": 0.03958185575150855
+  },
+  "episode_centered_model": {
+    "pre_episode_mean_systolic_mmHg": 122.52827380874999,
+    "post_minus_pre_mean_difference_mmHg": -6.378728637083352,
+    "post_minus_pre_ci95_low_mmHg": -10.095099269649182,
+    "post_minus_pre_ci95_high_mmHg": -2.662358004517522,
+    "post_minus_pre_p_value": 0.0007680599659435598,
+    "common_within_episode_slope_per_30_days": -9.157303665915597,
+    "within_slope_ci95_low_per_30_days": -18.18553249383445,
+    "within_slope_ci95_high_per_30_days": -0.12907483799674213,
+    "within_slope_p_value": 0.046813325745779504
+  },
+  "global_trend": {
+    "slope_per_day": -0.142520139460114,
+    "slope_per_30_days": -4.27560418380342,
+    "ci95_low_per_30_days": -6.5155240266693575,
+    "ci95_high_per_30_days": -2.0356843409374816,
+    "p_value": 0.0001831300050221193,
+    "r_squared": 0.3885811361579149
+  },
+  "exact_global_slope_decomposition": {
+    "global_ols_slope_per_30_days": -4.275604183803442,
+    "within_episode_contribution_per_30_days": -0.5779695713555392,
+    "between_episode_contribution_per_30_days": -3.6976346124479074,
+    "additive_sum_per_30_days": -4.275604183803447,
+    "between_fraction_of_time_pressure_covariance": 0.8648215441586102
+  },
+  "interpretation": {
+    "is_change_point_test": false,
+    "transition_inside_gap_is_observed": false,
+    "can_identify_when_level_difference_arose": false,
+    "purpose": "separate_global_trend_into_within_and_between_episode_structure"
+  }
+}

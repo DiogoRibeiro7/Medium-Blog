@@ -1,7 +1,7 @@
 {
-  "source_rows_excluding_header": 151,
-  "valid_measurements": 144,
-  "blank_placeholder_rows": 6,
+  "source_rows_excluding_header": 172,
+  "valid_measurements": 171,
+  "blank_placeholder_rows": 0,
   "spreadsheet_summary_rows": 1,
   "date_repairs": {
     "excel_day_month_inversion_measurements": 30,
@@ -9,19 +9,12 @@
   },
   "derived_field_check": {
     "pulse_pressure_mismatches_on_valid_rows": 0,
-    "reported_spreadsheet_mean_pulse_pressure_mmHg": 38.56666667,
-    "cleaned_mean_pulse_pressure_mmHg": 40.17361111,
-    "relative_bias_percent": -3.99999999
+    "pulse_pressure_output_policy": "derived_from_systolic_and_diastolic",
+    "reported_spreadsheet_mean_pulse_pressure_mmHg": 40.16374269,
+    "cleaned_mean_pulse_pressure_mmHg": 40.16374269,
+    "relative_bias_percent": 0.0
   },
   "context_missingness_on_valid_measurements": {
-    "Meal": {
-      "missing": 120,
-      "rate": 0.83333333
-    },
-    "Symptoms": {
-      "missing": 129,
-      "rate": 0.89583333
-    },
     "Pill": {
       "missing": 0,
       "rate": 0.0
@@ -33,15 +26,25 @@
     "Sleep": {
       "missing": 0,
       "rate": 0.0
+    },
+    "Meal": {
+      "missing": 144,
+      "rate": 0.84210526
+    },
+    "Symptoms": {
+      "missing": 151,
+      "rate": 0.88304094
     }
   },
   "sessionization": {
     "gap_threshold_minutes": 15,
-    "n_sessions": 79,
+    "n_sessions": 87,
     "session_size_counts": {
       "1": 37,
       "2": 19,
-      "3": 23
+      "3": 29,
+      "4": 1,
+      "5": 1
     }
   }
 }

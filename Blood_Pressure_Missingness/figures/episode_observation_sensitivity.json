@@ -1,0 +1,87 @@
+{
+  "dominant_internal_gap": {
+    "start_day_index": 9,
+    "end_day_index": 40,
+    "length_days": 32,
+    "left_observed_day_index": 8,
+    "right_observed_day_index": 41
+  },
+  "n_observed_days": 26,
+  "episode_sizes": {
+    "pre_gap_observed_days": 8,
+    "post_gap_observed_days": 18
+  },
+  "sampling_intensity": {
+    "pre_gap_mean_readings_per_observed_day": 3.75,
+    "post_gap_mean_readings_per_observed_day": 7.833333333333333
+  },
+  "estimates": [
+    {
+      "name": "equal_day",
+      "episode_difference_mmHg": -6.378728637083352,
+      "episode_ci95_low_mmHg": -10.095099269649182,
+      "episode_ci95_high_mmHg": -2.662358004517522,
+      "episode_p_value": 0.0007680599659435598,
+      "within_episode_slope_per_30_days": -9.157303665915597,
+      "within_slope_ci95_low_per_30_days": -18.18553249383445,
+      "within_slope_ci95_high_per_30_days": -0.12907483799674213,
+      "within_slope_p_value": 0.046813325745779504
+    },
+    {
+      "name": "sampling_adjusted",
+      "episode_difference_mmHg": -4.766896892519947,
+      "episode_ci95_low_mmHg": -8.427867668651334,
+      "episode_ci95_high_mmHg": -1.1059261163885599,
+      "episode_p_value": 0.010709402400304147,
+      "within_episode_slope_per_30_days": 4.474738248093804,
+      "within_slope_ci95_low_per_30_days": -7.610281416396355,
+      "within_slope_ci95_high_per_30_days": 16.55975791258396,
+      "within_slope_p_value": 0.4680111825007125
+    },
+    {
+      "name": "reading_weighted",
+      "episode_difference_mmHg": -6.6168894105846885,
+      "episode_ci95_low_mmHg": -10.21684863326692,
+      "episode_ci95_high_mmHg": -3.016930187902457,
+      "episode_p_value": 0.0003151674132905229,
+      "within_episode_slope_per_30_days": -9.566414946671262,
+      "within_slope_ci95_low_per_30_days": -17.7156218814888,
+      "within_slope_ci95_high_per_30_days": -1.4172080118537274,
+      "within_slope_p_value": 0.021402012487917284
+    },
+    {
+      "name": "capped_weight",
+      "episode_difference_mmHg": -6.627336613767152,
+      "episode_ci95_low_mmHg": -10.08478554168798,
+      "episode_ci95_high_mmHg": -3.1698876858463243,
+      "episode_p_value": 0.00017202102448879607,
+      "within_episode_slope_per_30_days": -9.262511065199753,
+      "within_slope_ci95_low_per_30_days": -17.674281073159957,
+      "within_slope_ci95_high_per_30_days": -0.8507410572395491,
+      "within_slope_p_value": 0.030913153292997715
+    },
+    {
+      "name": "inverse_intensity_stress",
+      "episode_difference_mmHg": -5.031795982351621,
+      "episode_ci95_low_mmHg": -10.921211533422294,
+      "episode_ci95_high_mmHg": 0.857619568719052,
+      "episode_p_value": 0.09402195325481064,
+      "within_episode_slope_per_30_days": -2.7145817492354385,
+      "within_slope_ci95_low_per_30_days": -17.92217005399409,
+      "within_slope_ci95_high_per_30_days": 12.493006555523214,
+      "within_slope_p_value": 0.7264459578747456
+    }
+  ],
+  "sampling_adjustment": {
+    "covariate": "log1p_n_readings",
+    "coefficient_mmHg": -4.492608552641089,
+    "ci95_low_mmHg": -7.545487792759975,
+    "ci95_high_mmHg": -1.439729312522204,
+    "p_value": 0.003923128569381017
+  },
+  "interpretation": {
+    "identified_missingness_mechanism": false,
+    "inverse_intensity_is_stress_test_not_ipw": true,
+    "episode_split_is_gap_defined_not_estimated_from_outcomes": true
+  }
+}
