@@ -81,6 +81,14 @@ jobs:
           --output-json figures/episode_observation_sensitivity.json
           --output-figure figures/episode_observation_sensitivity.svg
 
+      - name: Regenerate episode time-form sensitivity outputs
+        working-directory: Blood_Pressure_Missingness
+        run: >-
+          python episode_time_form_sensitivity.py
+          --data data/analysis_snapshot.csv
+          --output-json figures/episode_time_form_sensitivity.json
+          --output-figure figures/episode_time_form_sensitivity.svg
+
       - name: Validate current influence findings
         working-directory: Blood_Pressure_Missingness
         run: >-
