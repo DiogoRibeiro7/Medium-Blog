@@ -17,6 +17,7 @@ import day_influence_sensitivity as influence
 import episode_observation_sensitivity as episode_observation
 import episode_time_form_sensitivity as time_form
 import gap_aware_trend_decomposition as gap_aware
+import temporal_dependence_diagnostics as temporal
 
 
 def _require(text: str, fragment: str, surface: str) -> None:
@@ -60,6 +61,7 @@ def validate_current_narrative(root: Path) -> None:
     loo = influence_result["leave_one_day_out_summary"]
     episode_obs = episode_observation.fit_episode_observation_sensitivity(records)
     time_results = time_form.fit_episode_time_form_sensitivity(records)
+    temporal_results = temporal.diagnose_temporal_dependence(records)
 
     dominant_gap = gap["dominant_internal_gap"]
     longest_gap = int(dominant_gap["length_days"])
@@ -121,6 +123,43 @@ def validate_current_narrative(root: Path) -> None:
             "all five tested within-episode time forms",
             "notebook",
         )
+
+    spacing = temporal_results["observed_order_spacing"]
+    if not isinstance(spacing, dict):
+        raise TypeError("observed_order_spacing must be a dictionary.")
+    lag_one = next(
+        item
+        for item in temporal_results["exact_calendar_lag_residual_correlations"]
+        if int(item["lag_days"]) == 1
+    )
+    _require(
+        readme,
+        f"residual correlation is about **{float(spacing['row_order_lag1_residual_correlation']):.3f}**",
+        "README",
+    )
+    _require(
+        readme,
+        (
+            f"gives an essentially zero residual correlation of about "
+            f"**{float(lag_one['pearson_r']):.3f}**"
+        ),
+        "README",
+    )
+    _require(
+        readme,
+        f"**{int(lag_one['n_pairs'])} pairs exactly one calendar day apart",
+        "README",
+    )
+    _require(
+        notebook_markdown,
+        "exact calendar-day lag within the same gap-defined episode",
+        "notebook",
+    )
+    _require(
+        notebook_markdown,
+        "row-order adjacency should not be treated as a daily time lag",
+        "notebook",
+    )
 
     _require(
         notebook_markdown,
