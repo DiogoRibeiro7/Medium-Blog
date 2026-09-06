@@ -6,6 +6,9 @@ on:
       - 'Blood_Pressure_Missingness/refresh_from_google_sheets.py'
       - 'Blood_Pressure_Missingness/observation_process_sensitivity.py'
       - 'Blood_Pressure_Missingness/gap_aware_trend_decomposition.py'
+      - 'Blood_Pressure_Missingness/day_influence_sensitivity.py'
+      - 'Blood_Pressure_Missingness/validate_current_influence_findings.py'
+      - 'Blood_Pressure_Missingness/data/analysis_snapshot.csv'
       - 'Blood_Pressure_Missingness/tests/**'
       - 'Blood_Pressure_Missingness/requirements.txt'
       - '.github/workflows/refresh-blood-pressure-analysis.yml'
@@ -17,6 +20,9 @@ on:
       - 'Blood_Pressure_Missingness/refresh_from_google_sheets.py'
       - 'Blood_Pressure_Missingness/observation_process_sensitivity.py'
       - 'Blood_Pressure_Missingness/gap_aware_trend_decomposition.py'
+      - 'Blood_Pressure_Missingness/day_influence_sensitivity.py'
+      - 'Blood_Pressure_Missingness/validate_current_influence_findings.py'
+      - 'Blood_Pressure_Missingness/data/analysis_snapshot.csv'
       - 'Blood_Pressure_Missingness/tests/**'
       - 'Blood_Pressure_Missingness/requirements.txt'
       - '.github/workflows/refresh-blood-pressure-analysis.yml'
@@ -39,6 +45,12 @@ jobs:
 
       - name: Install analysis dependencies
         run: python -m pip install -r Blood_Pressure_Missingness/requirements.txt
+
+      - name: Run refresh-sensitive findings gate
+        working-directory: Blood_Pressure_Missingness
+        run: >-
+          python validate_current_influence_findings.py
+          --data data/analysis_snapshot.csv
 
       - name: Run blood-pressure regression tests
         run: >-
