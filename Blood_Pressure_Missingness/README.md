@@ -12,61 +12,62 @@ The executable article is:
 
 - [`blood-pressure-missingness.ipynb`](blood-pressure-missingness.ipynb)
 
-The notebook now synthesises the complete analysis stack rather than reproducing only the original global trend. Its code cells call the same tested Python modules used in CI, so the notebook is a narrative layer rather than a second statistical implementation.
+The notebook synthesises the complete analysis stack and calls the same tested Python modules used in CI. It is a narrative layer rather than a second statistical implementation.
 
 ## 1. Observation design
 
-The cleaned source contains:
+The current privacy-safe snapshot, refreshed from the private Google Sheet, contains:
 
 | Item | Count |
 |---|---:|
-| Valid measurements | 144 |
-| Measurement sessions | 79 |
-| Observed calendar days | 25 |
-| Calendar days in analysis window | 64 |
+| Valid measurements | 171 |
+| Measurement sessions | 87 |
+| Observed calendar days | 26 |
+| Calendar days in analysis window | 65 |
 | Missing calendar days | 39 |
 | Longest missing run | 32 days |
 
-Calendar-day coverage is therefore only **39.1%**, and one 32-day gap accounts for **82.1% of all missing days**.
+Calendar-day coverage is therefore **40.0%**, and the 32-day gap accounts for **82.1% of all missing days**.
 
-Sampling intensity is also highly uneven: observed days contain between **1 and 21 readings**. This matters because heavily sampled days tend to have lower observed systolic means. The reading-weighted systolic mean is **115.85 mmHg**, compared with **118.27 mmHg** when each observed day receives equal weight.
+Sampling intensity remains highly uneven: observed days contain between **1 and 21 readings**. Heavily sampled days tend to have lower observed systolic means. The reading-weighted systolic mean is **115.16 mmHg**, compared with **118.11 mmHg** when each observed day receives equal weight.
 
-That alone makes a flat 144-row i.i.d. analysis a poor default.
+That makes a flat 171-row i.i.d. analysis a poor default.
 
 ## 2. Data quality before modelling
 
-The source requires explicit preprocessing rules rather than silent cleaning:
+The current live source still requires explicit preprocessing rules:
 
-- thirty early measurements require an Excel day/month inversion repair;
-- two later text dates require the same day/month correction;
-- six blank placeholder rows contain a derived pulse-pressure value of zero and would bias the spreadsheet pulse-pressure mean downward by about **4%** if treated as observations;
-- blank `Meal` and `Symptoms` fields are unknown/not-recorded values, not automatically negative labels.
+- thirty measurements require an Excel day/month inversion repair;
+- two text dates require the same day/month correction;
+- the current Sheet contains no blank placeholder measurement rows;
+- pulse pressure matches `systolic - diastolic` on every valid row in the current source;
+- blank `Meal` and `Symptoms` fields remain unknown/not-recorded values, not automatically negative labels.
 
 The public refresh code validates these rules before writing any aggregate output.
 
-## 3. Original global trend
+## 3. Global descriptive trend
 
-The original exploratory day-level model is
-
-\[
-y_t = \beta_0 + \beta_1 t + \varepsilon_t,
-\]
-
-fitted only to observed calendar days with HC3 robust covariance.
-
-For systolic pressure, the global estimate is approximately
+The day-level model
 
 \[
-\boxed{-4.27\ \text{mmHg per 30 days}}
+y_t = \beta_0 + \beta_1 t + \varepsilon_t
 \]
 
-with a 95% HC3 interval of about
+is fitted only to observed calendar days with HC3 robust covariance.
+
+For systolic pressure, the current estimate is
 
 \[
-[-6.70,-1.83].
+\boxed{-4.28\ \text{mmHg per 30 days}}
 \]
 
-That remains a useful descriptive statistic, but it is **not the final interpretation**, because the line spans a 32-day interval with no measurements.
+with 95% HC3 interval
+
+\[
+[-6.52,-2.04].
+\]
+
+This remains descriptive rather than a claim of a smooth trajectory, because the line spans a 32-day interval with no measurements.
 
 ## 4. Sensitivity to observation intensity
 
@@ -74,84 +75,79 @@ The global systolic slope remains negative under ordinary alternatives:
 
 | Specification | Slope per 30 days | 95% HC3 CI |
 |---|---:|---:|
-| Equal observed day | -4.27 | [-6.70, -1.83] |
-| Adjust for `log(1 + readings/day)` | -3.52 | [-6.00, -1.04] |
-| Reading-count weighted | -4.63 | [-6.86, -2.39] |
-| Capped reading weight | -4.49 | [-6.76, -2.22] |
-| Inverse-intensity stress | -3.34 | [-6.87, 0.19] |
+| Equal observed day | -4.28 | [-6.52, -2.04] |
+| Adjust for `log(1 + readings/day)` | -3.15 | [-5.48, -0.83] |
+| Reading-count weighted | -4.88 | [-7.05, -2.71] |
+| Capped reading weight | -4.48 | [-6.52, -2.43] |
+| Inverse-intensity stress | -3.13 | [-6.62, 0.35] |
 
 The inverse-intensity case is deliberately a **stress test, not inverse-probability weighting**. Observation probabilities and the MCAR/MAR/MNAR mechanism are not identified from this tracker.
 
 ## 5. The long gap changes the story
 
-A gap-aware decomposition splits observed days into the two episodes on either side of the unique longest internal missing run.
+The unique longest internal missing run still separates the observed data into two episodes.
 
-The pre-gap mean systolic level is about **122.53 mmHg**, and the post-gap mean is about **116.26 mmHg**. In the common-linear gap-aware model, the post-minus-pre episode contrast is approximately
-
-\[
-\boxed{-6.27\ \text{mmHg}}
-\]
-
-with HC3 interval about
+The pre-gap mean systolic level is about **122.53 mmHg**, and the post-gap mean is about **116.15 mmHg**. In the common-linear gap-aware model, the post-minus-pre episode contrast is
 
 \[
-[-10.13,-2.41].
+\boxed{-6.38\ \text{mmHg}}
 \]
 
-An exact OLS covariance decomposition shows that roughly **87% of the negative global time-pressure covariance** comes from the separation between the two observed episodes.
+with HC3 interval
 
-So the global slope should not be read as evidence of a smooth decline through the unobserved interval.
+\[
+[-10.10,-2.66].
+\]
 
-This is **not change-point detection**. There are no observations inside the 32-day gap, so the data cannot identify when, how, or why the level difference arose.
+An exact OLS covariance decomposition shows that about **86.5% of the negative global time-pressure covariance** comes from separation between the two observed episodes.
+
+The common within-episode slope is now about **-9.16 mmHg per 30 days**, with full-data HC3 interval **[-18.19, -0.13]**. Its inferential stability is still weaker than the global and episode-level results because leave-one-day-out significance depends on which observed day is removed.
+
+This is **not change-point detection**. There are no measurements inside the 32-day gap, so the data cannot identify when, how, or why the level difference arose.
 
 ## 6. Single-day influence
 
-With only 25 observed days, small-sample influence matters. Leave-one-observed-day-out refits hold the full-data episode definition fixed and remove each observed day once.
+With 26 observed days, small-sample influence still matters. Leave-one-observed-day-out refits hold the full-data episode definition fixed and remove each observed day once.
 
 On the current snapshot:
 
-- the global systolic slope remains negative after every deletion, roughly from **-4.87 to -3.78 mmHg/30d**;
-- its HC3 interval remains below zero after every deletion;
-- the episode contrast remains negative, roughly **-7.13 to -5.42 mmHg**;
-- its HC3 interval also remains below zero after every deletion.
+- the global systolic slope ranges from **-4.87 to -3.80 mmHg/30d** and its HC3 interval stays below zero after every deletion;
+- the episode contrast ranges from **-7.24 to -5.53 mmHg** and its HC3 interval also stays below zero after every deletion;
+- every within-episode point estimate remains negative, but deletion-specific significance is mixed.
 
-The common within-episode slope is less stable: its point estimate stays negative, but whether its interval excludes zero depends on which day is removed.
+So neither the global association nor the episode contrast is carried by one isolated observed day.
 
-Thus the global association and episode contrast are not artifacts of one isolated observed day, while inference on the within-episode slope is more fragile.
+## 7. Episode contrast under unequal sampling intensity
 
-## 7. Does the episode contrast survive unequal sampling intensity?
-
-Yes under ordinary choices:
+The gap-defined post-minus-pre contrast remains negative under ordinary choices:
 
 | Specification | Post - pre contrast | 95% HC3 CI |
 |---|---:|---:|
-| Equal day | -6.27 | [-10.13, -2.41] |
-| Sampling adjusted | -5.61 | [-9.98, -1.23] |
-| Reading weighted | -6.38 | [-9.99, -2.78] |
-| Capped weight | -6.52 | [-10.14, -2.91] |
-| Inverse-intensity stress | -5.41 | [-11.29, 0.48] |
+| Equal day | -6.38 | [-10.10, -2.66] |
+| Sampling adjusted | -4.77 | [-8.43, -1.11] |
+| Reading weighted | -6.62 | [-10.22, -3.02] |
+| Capped weight | -6.63 | [-10.08, -3.17] |
+| Inverse-intensity stress | -5.03 | [-10.92, 0.86] |
 
-Again, only the deliberately aggressive inverse-intensity stress case becomes inconclusive.
+Only the deliberately aggressive inverse-intensity stress case is inconclusive.
 
-## 8. Does the episode contrast depend on the within-episode time form?
+## 8. Episode contrast under alternative within-episode time forms
 
-The answer is similar:
+The current live snapshot is more robust to this particular sensitivity analysis than the earlier workbook snapshot:
 
 | Within-episode specification | Post - pre contrast | 95% HC3 CI |
 |---|---:|---:|
-| No time adjustment | -6.27 | [-10.08, -2.46] |
-| Common linear slope | -6.27 | [-10.13, -2.41] |
-| Separate linear slopes | -6.27 | [-10.65, -1.89] |
-| Common quadratic curvature | -4.86 | [-9.46, -0.27] |
-| Separate slopes + common quadratic stress | -4.90 | [-10.06, 0.25] |
+| No time adjustment | -6.38 | [-10.07, -2.69] |
+| Common linear slope | -6.38 | [-10.10, -2.66] |
+| Separate linear slopes | -6.38 | [-10.65, -2.11] |
+| Common quadratic curvature | -5.28 | [-9.83, -0.72] |
+| Separate slopes + common quadratic stress | -5.31 | [-10.42, -0.20] |
 
-The ordinary alternatives preserve a negative episode contrast. Only the most flexible five-parameter model pushes the upper interval slightly above zero.
-
-That model is explicitly a **small-sample stress specification**, not a preferred trajectory. There are only 25 observed days, including eight before the long gap.
+All five intervals are now below zero. The five-parameter specification remains a **stress model, not a preferred trajectory**; the sample is still small and only eight observed days precede the long gap.
 
 ## 9. State-space uncertainty
 
-A local-linear-trend Gaussian state-space model is still useful for visualising a latent trajectory across missing calendar days:
+A local-linear-trend Gaussian state-space model remains useful for visualising latent uncertainty across missing calendar days:
 
 \[
 y_t = \mu_t + \varepsilon_t,
@@ -169,17 +165,17 @@ Missing days remain missing observations. The Kalman smoother propagates uncerta
 
 ## 10. What can actually be concluded?
 
-The mature synthesis is narrower than a smooth-trend story and stronger than a single regression coefficient:
+The current synthesis is:
 
 1. The observed global systolic association is negative.
-2. Most of that association is structurally tied to the separation between two observed episodes around the 32-day gap.
-3. The post-gap episode is roughly **5-6 mmHg lower** than the pre-gap episode under ordinary modelling choices.
-4. That episode contrast survives ordinary sampling-intensity adjustments, ordinary within-episode functional-form alternatives, and deletion of any one observed day.
-5. Deliberately aggressive stress specifications can make the contrast inconclusive.
+2. Most of that association is structurally tied to separation between two observed episodes around the 32-day gap.
+3. The post-gap episode is about **5-6 mmHg lower** than the pre-gap episode across the tested ordinary specifications.
+4. The episode contrast survives ordinary sampling-intensity adjustments, all tested within-episode time forms, and deletion of any one observed day on the current snapshot.
+5. The inverse-intensity sampling stress specification remains inconclusive.
 6. The data cannot identify when or why the episode difference arose inside the unobserved interval.
 7. The tracker cannot identify the missingness mechanism as MCAR, MAR, or MNAR from the observed data alone.
 
-So the main lesson is methodological:
+The broader lesson is methodological:
 
 > **Missing data are part of the statistical process. A credible analysis should challenge the conclusions created by the observation design rather than erase the gaps and report one smooth line.**
 
@@ -193,12 +189,13 @@ The repository contains:
 - `day_influence_sensitivity.py` — Cook's distance, DFBETA, leverage, and leave-one-day-out refits;
 - `episode_observation_sensitivity.py` — episode contrast sensitivity to sampling intensity;
 - `episode_time_form_sensitivity.py` — episode contrast sensitivity to within-episode time form;
-- `validate_current_influence_findings.py` — refresh-time gate for snapshot-sensitive scientific claims;
+- `validate_current_influence_findings.py` — refresh-time gate for influence conclusions;
+- `validate_current_narrative.py` — consistency gate between the current snapshot and public narrative;
 - `blood-pressure-missingness.ipynb` — executable Medium-facing synthesis;
 - `data/analysis_snapshot.csv` — privacy-safe relative-day aggregate snapshot;
 - `data/source_audit.json` — aggregate source-quality audit.
 
-The raw workbook and private Google Sheet identifiers are never committed.
+The raw workbook, private Google Sheet identifiers, credentials, and calendar dates are never committed.
 
 To run the public analysis:
 
@@ -207,4 +204,4 @@ python -m pip install -r requirements.txt
 python -m unittest discover -s tests -p 'test_*.py' -v
 ```
 
-The test suite validates and executes the notebook end to end. The manual secret-backed refresh workflow rebuilds only privacy-safe aggregates and derived outputs, then opens a reviewable PR if anything changed.
+CI validates the current scientific gates and executes the notebook end to end. The manual secret-backed refresh workflow rebuilds only privacy-safe aggregates and derived outputs, then opens a reviewable PR when public aggregate results change.
