@@ -80,7 +80,9 @@ class TemperatureCovariateSensitivityTests(unittest.TestCase):
         records: list[primary.DailyTemperatureRecord] = []
         temperatures = [16.0, 18.0, 17.0, 21.0, 19.0, 23.0]
         counts = [1, 1, 1, 1, 1, 20]
-        for day_index, (temp_c, count) in enumerate(zip(temperatures, counts, strict=True)):
+        for day_index, (temp_c, count) in enumerate(
+            zip(temperatures, counts, strict=True)
+        ):
             systolic = 110.0 + 0.3 * day_index + 1.2 * (temp_c - 19.0)
             if day_index == 5:
                 systolic += 8.0
@@ -144,9 +146,10 @@ class TemperatureCovariateSensitivityTests(unittest.TestCase):
         measurements: list[Measurement] = []
         weather_times: list[datetime] = []
         weather_temperatures: list[float] = []
+        day_temperatures = [18.0, 20.0, 17.0, 23.0, 19.0, 22.0]
         tz = primary.FIANES_TIMEZONE
 
-        for index in range(6):
+        for index, base_temp in enumerate(day_temperatures):
             day_value = start + timedelta(days=index)
             measurements.append(
                 self._measurement(
@@ -158,7 +161,7 @@ class TemperatureCovariateSensitivityTests(unittest.TestCase):
                     bpm=70.0 + 0.1 * index,
                 )
             )
-            for hour, temp in ((11, 18.0 + index), (12, 20.0 + index)):
+            for hour, temp in ((11, base_temp), (12, base_temp + 2.0)):
                 weather_times.append(
                     datetime(
                         day_value.year,
