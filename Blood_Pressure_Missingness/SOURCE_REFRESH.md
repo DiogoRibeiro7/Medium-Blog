@@ -12,7 +12,7 @@ Configure these repository secrets outside the source tree:
 
 Share the private Google Sheet with the service account's `client_email` as a viewer. Do not make the Sheet public.
 
-The workflow never prints the Sheet URL, spreadsheet ID, credentials, or raw measurement rows.
+The workflow never prints the Sheet URL, spreadsheet ID, credentials, raw measurement rows, or row-level date-temperature matches.
 
 ## Refresh pipeline
 
@@ -26,9 +26,11 @@ It performs:
 4. removal of blank placeholder and spreadsheet-summary rows;
 5. 15-minute measurement-session construction;
 6. generation of the date-free daily aggregate snapshot and aggregate audit metadata;
-7. regeneration of the statistical outputs and figures;
-8. a guard that fails if an `.xlsx` or `.xls` source file appears in the project tree;
-9. creation of a pull request containing only privacy-safe generated outputs when they changed.
+7. retrieval of hourly 2 m air temperature for Fiães from Open-Meteo and in-memory matching to the actual measurement times;
+8. fitting of privacy-safe temperature-adjusted exploratory models without writing the date-temperature series;
+9. regeneration of the remaining statistical outputs and figures;
+10. a guard that fails if an `.xlsx` or `.xls` source file appears in the project tree;
+11. creation of a pull request containing only privacy-safe generated outputs when they changed.
 
 For local use, expose the same environment variables and run:
 
@@ -36,10 +38,11 @@ For local use, expose the same environment variables and run:
 cd Blood_Pressure_Missingness
 python -m pip install -r requirements.txt
 python refresh_from_google_sheets.py --data-dir data
+python temperature_covariate.py --output figures/temperature_covariate.json
 python analysis.py \
   --data data/analysis_snapshot.csv \
   --audit data/source_audit.json \
   --output-dir figures
 ```
 
-Raw rows are processed in memory by `refresh_from_google_sheets.py`; the script writes only `data/analysis_snapshot.csv` and `data/source_audit.json`.
+`refresh_from_google_sheets.py` writes only `data/analysis_snapshot.csv` and `data/source_audit.json`. `temperature_covariate.py` reuses the private Sheet in memory, joins it to Open-Meteo hourly temperature, and writes only aggregate model diagnostics to `figures/temperature_covariate.json`. It does not persist calendar dates, row-level times, row-level matched temperatures, or a day-indexed temperature series.
