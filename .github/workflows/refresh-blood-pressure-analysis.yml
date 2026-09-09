@@ -41,6 +41,16 @@ jobs:
           BLOOD_PRESSURE_WORKSHEET: ${{ secrets.BLOOD_PRESSURE_WORKSHEET }}
         run: python refresh_from_google_sheets.py --data-dir data
 
+      - name: Fit time-matched Fiães temperature covariate
+        working-directory: Blood_Pressure_Missingness
+        env:
+          BLOOD_PRESSURE_SHEET_URL: ${{ secrets.BLOOD_PRESSURE_SHEET_URL }}
+          GOOGLE_SHEETS_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SHEETS_SERVICE_ACCOUNT_JSON }}
+          BLOOD_PRESSURE_WORKSHEET: ${{ secrets.BLOOD_PRESSURE_WORKSHEET }}
+        run: >-
+          python temperature_covariate.py
+          --output figures/temperature_covariate.json
+
       - name: Regenerate primary statistical outputs
         working-directory: Blood_Pressure_Missingness
         run: >-
@@ -128,7 +138,7 @@ jobs:
         run: |
           branch='automation/blood-pressure-refresh'
           title='Refresh blood-pressure aggregate analysis'
-          body='Refreshes only privacy-safe aggregate data and derived statistical outputs from the secret-backed Google Sheet source. No raw health rows are committed.'
+          body='Refreshes only privacy-safe aggregate data and derived statistical outputs from the secret-backed Google Sheet source. Temperature is matched to private measurement times in memory; no raw health rows or date-indexed weather joins are committed.'
 
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'

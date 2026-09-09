@@ -4,8 +4,12 @@ on:
   pull_request:
     paths:
       - 'Blood_Pressure_Missingness/README.md'
+      - 'Blood_Pressure_Missingness/DATA_PRIVACY.md'
+      - 'Blood_Pressure_Missingness/SOURCE_REFRESH.md'
+      - 'Blood_Pressure_Missingness/TEMPERATURE_COVARIATE.md'
       - 'Blood_Pressure_Missingness/blood-pressure-missingness.ipynb'
       - 'Blood_Pressure_Missingness/refresh_from_google_sheets.py'
+      - 'Blood_Pressure_Missingness/temperature_covariate.py'
       - 'Blood_Pressure_Missingness/observation_process_sensitivity.py'
       - 'Blood_Pressure_Missingness/gap_aware_trend_decomposition.py'
       - 'Blood_Pressure_Missingness/day_influence_sensitivity.py'
@@ -25,8 +29,12 @@ on:
       - main
     paths:
       - 'Blood_Pressure_Missingness/README.md'
+      - 'Blood_Pressure_Missingness/DATA_PRIVACY.md'
+      - 'Blood_Pressure_Missingness/SOURCE_REFRESH.md'
+      - 'Blood_Pressure_Missingness/TEMPERATURE_COVARIATE.md'
       - 'Blood_Pressure_Missingness/blood-pressure-missingness.ipynb'
       - 'Blood_Pressure_Missingness/refresh_from_google_sheets.py'
+      - 'Blood_Pressure_Missingness/temperature_covariate.py'
       - 'Blood_Pressure_Missingness/observation_process_sensitivity.py'
       - 'Blood_Pressure_Missingness/gap_aware_trend_decomposition.py'
       - 'Blood_Pressure_Missingness/day_influence_sensitivity.py'
