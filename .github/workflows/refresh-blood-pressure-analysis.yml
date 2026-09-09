@@ -51,6 +51,16 @@ jobs:
           python temperature_covariate.py
           --output figures/temperature_covariate.json
 
+      - name: Run temperature-covariate sensitivity analysis
+        working-directory: Blood_Pressure_Missingness
+        env:
+          BLOOD_PRESSURE_SHEET_URL: ${{ secrets.BLOOD_PRESSURE_SHEET_URL }}
+          GOOGLE_SHEETS_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SHEETS_SERVICE_ACCOUNT_JSON }}
+          BLOOD_PRESSURE_WORKSHEET: ${{ secrets.BLOOD_PRESSURE_WORKSHEET }}
+        run: >-
+          python temperature_covariate_sensitivity.py
+          --output figures/temperature_covariate_sensitivity.json
+
       - name: Regenerate primary statistical outputs
         working-directory: Blood_Pressure_Missingness
         run: >-
