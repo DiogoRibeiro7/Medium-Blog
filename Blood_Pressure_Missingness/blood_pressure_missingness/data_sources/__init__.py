@@ -1,0 +1,1 @@
+"""Private source-ingestion adapters."""
