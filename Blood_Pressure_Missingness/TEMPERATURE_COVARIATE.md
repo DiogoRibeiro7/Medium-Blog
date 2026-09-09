@@ -79,6 +79,23 @@ with season, time of day, activity, sleep, medication timing, and the
 observation process. The coefficient must not be interpreted as a causal effect
 of temperature on blood pressure.
 
+## Sensitivity analysis
+
+`temperature_covariate_sensitivity.py` checks whether the temperature association
+and adjusted time trend depend strongly on three modelling choices:
+
+1. **Weather matching**: replace nearest-hour matching by linear interpolation
+   between the surrounding hourly temperatures.
+2. **Day weighting**: weight observed days by their number of blood-pressure
+   readings instead of giving every observed day equal weight.
+3. **Functional form**: add a squared centered-temperature term to allow local
+   curvature rather than forcing a globally linear temperature association.
+
+Every specification retains HC3 heteroskedasticity-robust covariance estimates.
+The sensitivity output records coefficients and simple sign-stability indicators
+across specifications. It is intended as a robustness diagnostic, not a search
+for whichever specification produces the most attractive p-value.
+
 ## Privacy boundary
 
 The temperature join happens only while the private Sheet is available in
@@ -87,11 +104,13 @@ memory. The repository does **not** persist:
 - calendar dates from the health data;
 - row-level measurement times;
 - row-level matched temperatures;
-- a day-indexed temperature series.
+- a day-indexed temperature series;
+- interpolated row-level or day-indexed temperature sequences.
 
 This matters because a detailed local weather sequence can itself act as a
 quasi-identifier for calendar dates.
 
-The committed output is only
-`figures/temperature_covariate.json`, which contains source metadata,
+The committed outputs are only
+`figures/temperature_covariate.json` and
+`figures/temperature_covariate_sensitivity.json`, containing source metadata,
 non-temporal aggregate diagnostics, and fitted model coefficients.
