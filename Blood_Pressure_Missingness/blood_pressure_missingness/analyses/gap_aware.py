@@ -24,7 +24,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import statsmodels.api as sm
 
-import analysis as primary
+from blood_pressure_missingness import public_analysis as primary
 
 DAYS_PER_REPORTING_PERIOD: Final[float] = 30.0
 MIN_EPISODE_DAYS: Final[int] = 4
