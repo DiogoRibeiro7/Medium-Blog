@@ -24,8 +24,8 @@ from typing import Final, Sequence
 import numpy as np
 import statsmodels.api as sm
 
-import analysis as primary
-import gap_aware_trend_decomposition as gap_aware
+from blood_pressure_missingness import public_analysis as primary
+from blood_pressure_missingness.analyses import gap_aware
 
 MAX_EXACT_LAG_DAYS: Final[int] = 7
 MIN_PAIRS_FOR_CORRELATION: Final[int] = 3
