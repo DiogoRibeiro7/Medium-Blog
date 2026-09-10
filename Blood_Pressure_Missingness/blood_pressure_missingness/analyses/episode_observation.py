@@ -23,8 +23,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 import statsmodels.api as sm
 
-import analysis as primary
-import gap_aware_trend_decomposition as gap_aware
+from blood_pressure_missingness import public_analysis as primary
+from blood_pressure_missingness.analyses import gap_aware
 
 DAYS_PER_REPORTING_PERIOD: Final[float] = 30.0
 SPECIFICATION_NAMES: Final[tuple[str, ...]] = (
@@ -163,9 +163,7 @@ def fit_episode_observation_sensitivity(
     )
     log_readings = np.log1p(n_readings)
 
-    equal_day, _ = _fit_model(
-        "equal_day", y, episode, within_time
-    )
+    equal_day, _ = _fit_model("equal_day", y, episode, within_time)
     sampling_adjusted, adjusted_fit = _fit_model(
         "sampling_adjusted",
         y,
