@@ -29,7 +29,7 @@ from zoneinfo import ZoneInfo
 import numpy as np
 import statsmodels.api as sm
 
-import refresh_from_google_sheets as source
+from blood_pressure_missingness.data_sources import google_sheets as source
 
 FIANES_LATITUDE = 40.994459
 FIANES_LONGITUDE = -8.525370
