@@ -21,8 +21,8 @@ from pathlib import Path
 import numpy as np
 import statsmodels.api as sm
 
-import refresh_from_google_sheets as source
-import temperature_covariate as primary
+from blood_pressure_missingness.analyses import temperature as primary
+from blood_pressure_missingness.data_sources import google_sheets as source
 
 
 @dataclass(frozen=True)
