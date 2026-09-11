@@ -106,10 +106,25 @@ class PublicOutputSchemaContractTests(unittest.TestCase):
 
     def test_observation_process_schema(self) -> None:
         payload = _load(FIGURES_DIR / "observation_process_sensitivity.json")
-        _keys(self, payload, {"n_observed_days", "trend_estimates", "sampling_adjustment", "interpretation"})
+        _keys(
+            self,
+            payload,
+            {
+                "n_observed_days",
+                "trend_estimates",
+                "sampling_adjustment",
+                "interpretation",
+            },
+        )
         self.assertIsInstance(payload["trend_estimates"], list)
         self.assertTrue(payload["trend_estimates"])
-        expected = {"name", "slope_per_30_days", "ci95_low_per_30_days", "ci95_high_per_30_days", "p_value"}
+        expected = {
+            "name",
+            "slope_per_30_days",
+            "ci95_low_per_30_days",
+            "ci95_high_per_30_days",
+            "p_value",
+        }
         for item in payload["trend_estimates"]:
             _keys(self, item, expected)
 
@@ -143,11 +158,13 @@ class PublicOutputSchemaContractTests(unittest.TestCase):
                 "most_influential_by_cooks_distance",
                 "largest_absolute_slope_dfbeta",
                 "deletions",
+                "ordinary_ols_influence",
+                "interpretation",
             },
         )
         self.assertIsInstance(payload["deletions"], list)
         self.assertTrue(payload["deletions"])
-        expected = {
+        deletion_fields = {
             "removed_day_index",
             "removed_mean_systolic_mmHg",
             "global_slope_per_30_days",
@@ -164,7 +181,29 @@ class PublicOutputSchemaContractTests(unittest.TestCase):
             "within_episode_interval_excludes_zero",
         }
         for item in payload["deletions"]:
-            _keys(self, item, expected)
+            _keys(self, item, deletion_fields)
+
+        self.assertIsInstance(payload["ordinary_ols_influence"], list)
+        self.assertTrue(payload["ordinary_ols_influence"])
+        influence_fields = {
+            "day_index",
+            "mean_systolic_mmHg",
+            "cooks_distance",
+            "leverage",
+            "dfbeta_slope",
+        }
+        for item in payload["ordinary_ols_influence"]:
+            _keys(self, item, influence_fields)
+
+        _keys(
+            self,
+            payload["interpretation"],
+            {
+                "single_day_deletion_is_causal_test",
+                "episode_definition_recomputed_after_each_deletion",
+                "purpose",
+            },
+        )
 
     def test_episode_observation_schema(self) -> None:
         payload = _load(FIGURES_DIR / "episode_observation_sensitivity.json")
@@ -197,7 +236,17 @@ class PublicOutputSchemaContractTests(unittest.TestCase):
 
     def test_episode_time_form_schema(self) -> None:
         payload = _load(FIGURES_DIR / "episode_time_form_sensitivity.json")
-        _keys(self, payload, {"dominant_internal_gap", "n_observed_days", "episode_sizes", "estimates", "interpretation"})
+        _keys(
+            self,
+            payload,
+            {
+                "dominant_internal_gap",
+                "n_observed_days",
+                "episode_sizes",
+                "estimates",
+                "interpretation",
+            },
+        )
         expected = {
             "name",
             "n_parameters",
@@ -213,7 +262,17 @@ class PublicOutputSchemaContractTests(unittest.TestCase):
 
     def test_temporal_dependence_schema(self) -> None:
         payload = _load(FIGURES_DIR / "temporal_dependence_diagnostics.json")
-        _keys(self, payload, {"n_observed_days", "residual_model", "observed_order_spacing", "exact_calendar_lag_residual_correlations", "interpretation"})
+        _keys(
+            self,
+            payload,
+            {
+                "n_observed_days",
+                "residual_model",
+                "observed_order_spacing",
+                "exact_calendar_lag_residual_correlations",
+                "interpretation",
+            },
+        )
         expected = {"lag_days", "n_pairs", "pearson_r"}
         for item in payload["exact_calendar_lag_residual_correlations"]:
             _keys(self, item, expected)
@@ -222,8 +281,22 @@ class PublicOutputSchemaContractTests(unittest.TestCase):
         path = FIGURES_DIR / "temperature_covariate.json"
         if path.exists():
             payload = _load(path)
-            _keys(self, payload, {"weather_source", "matching", "temperature_summary", "model", "privacy"})
-            _keys(self, payload["model"], {"formula", "day_weighting", "within_day_temperature", "covariance", "metrics"})
+            _keys(
+                self,
+                payload,
+                {"weather_source", "matching", "temperature_summary", "model", "privacy"},
+            )
+            _keys(
+                self,
+                payload["model"],
+                {
+                    "formula",
+                    "day_weighting",
+                    "within_day_temperature",
+                    "covariance",
+                    "metrics",
+                },
+            )
             self.assertEqual(set(payload["model"]["metrics"]), METRIC_NAMES)
 
         sensitivity_path = FIGURES_DIR / "temperature_covariate_sensitivity.json"
