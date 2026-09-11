@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import math
 import subprocess
 import sys
 import tempfile
@@ -14,6 +15,9 @@ PROJECT_DIR = Path(__file__).resolve().parent.parent
 DATA_PATH = PROJECT_DIR / "data" / "analysis_snapshot.csv"
 AUDIT_PATH = PROJECT_DIR / "data" / "source_audit.json"
 FIGURES_DIR = PROJECT_DIR / "figures"
+
+FLOAT_REL_TOL = 1e-12
+FLOAT_ABS_TOL = 1e-12
 
 REPRODUCIBLE_JSON_OUTPUTS = {
     "results.json",
@@ -41,8 +45,64 @@ def _load(path: Path) -> Any:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+def _assert_json_reproduced(
+    test: unittest.TestCase,
+    actual: Any,
+    expected: Any,
+    path: str = "<root>",
+) -> None:
+    """Compare JSON semantics exactly except for tiny floating-point roundoff."""
+
+    if isinstance(expected, dict):
+        test.assertIsInstance(actual, dict, path)
+        test.assertEqual(set(actual), set(expected), path)
+        for key in expected:
+            _assert_json_reproduced(test, actual[key], expected[key], f"{path}.{key}")
+        return
+
+    if isinstance(expected, list):
+        test.assertIsInstance(actual, list, path)
+        test.assertEqual(len(actual), len(expected), path)
+        for index, (actual_item, expected_item) in enumerate(zip(actual, expected)):
+            _assert_json_reproduced(
+                test,
+                actual_item,
+                expected_item,
+                f"{path}[{index}]",
+            )
+        return
+
+    if isinstance(expected, bool) or expected is None or isinstance(expected, str):
+        test.assertEqual(actual, expected, path)
+        return
+
+    if isinstance(expected, int):
+        test.assertIs(type(actual), int, path)
+        test.assertEqual(actual, expected, path)
+        return
+
+    if isinstance(expected, float):
+        test.assertTrue(
+            isinstance(actual, (int, float)) and not isinstance(actual, bool),
+            f"{path}: expected numeric value, got {type(actual).__name__}",
+        )
+        test.assertTrue(
+            math.isclose(
+                float(actual),
+                expected,
+                rel_tol=FLOAT_REL_TOL,
+                abs_tol=FLOAT_ABS_TOL,
+            ),
+            f"{path}: regenerated {actual!r} != committed {expected!r} within "
+            f"rtol={FLOAT_REL_TOL:g}, atol={FLOAT_ABS_TOL:g}",
+        )
+        return
+
+    test.fail(f"{path}: unsupported JSON value type {type(expected).__name__}")
+
+
 class PublicReproductionContractTests(unittest.TestCase):
-    """Require committed non-secret statistical JSON to regenerate exactly."""
+    """Require committed non-secret statistical JSON to regenerate stably."""
 
     def test_committed_public_json_is_reproducible_from_public_snapshot(self) -> None:
         with tempfile.TemporaryDirectory() as temporary_directory:
@@ -115,10 +175,11 @@ class PublicReproductionContractTests(unittest.TestCase):
 
             for name in sorted(REPRODUCIBLE_JSON_OUTPUTS):
                 with self.subTest(output=name):
-                    self.assertEqual(
+                    _assert_json_reproduced(
+                        self,
                         _load(output_dir / name),
                         _load(FIGURES_DIR / name),
-                        f"{name} is stale relative to the committed public snapshot",
+                        name,
                     )
 
     def test_secret_backed_temperature_outputs_are_outside_public_reproduction_gate(self) -> None:
