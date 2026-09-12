@@ -2,17 +2,15 @@
 
 from __future__ import annotations
 
-import sys
 import tempfile
 import unittest
 from pathlib import Path
 
-PROJECT_DIR = Path(__file__).resolve().parent.parent
-sys.path.insert(0, str(PROJECT_DIR))
+from blood_pressure_missingness import public_analysis as primary
+from blood_pressure_missingness.analyses import day_influence as influence
+from blood_pressure_missingness.analyses import gap_aware
 
-import analysis as primary
-import day_influence_sensitivity as influence
-import gap_aware_trend_decomposition as gap_aware
+PROJECT_DIR = Path(__file__).resolve().parent.parent
 
 
 class DayInfluenceSensitivityTests(unittest.TestCase):

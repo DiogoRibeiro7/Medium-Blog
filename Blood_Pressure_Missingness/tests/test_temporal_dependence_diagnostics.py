@@ -2,15 +2,13 @@
 
 from __future__ import annotations
 
-import sys
 import unittest
 from pathlib import Path
 
-PROJECT_DIR = Path(__file__).resolve().parent.parent
-sys.path.insert(0, str(PROJECT_DIR))
+from blood_pressure_missingness import public_analysis as primary
+from blood_pressure_missingness.analyses import temporal_dependence as temporal
 
-import analysis as primary
-import temporal_dependence_diagnostics as temporal
+PROJECT_DIR = Path(__file__).resolve().parent.parent
 
 
 class TemporalDependenceDiagnosticsTests(unittest.TestCase):
