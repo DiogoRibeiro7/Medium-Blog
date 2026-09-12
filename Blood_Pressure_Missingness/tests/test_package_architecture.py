@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import ast
 import importlib
 import sys
 import unittest
@@ -39,6 +40,32 @@ class PackageArchitectureTests(unittest.TestCase):
         self.assertIs(canonical.DailyRecord, legacy.DailyRecord)
         self.assertIs(canonical.load_snapshot, legacy.load_snapshot)
         self.assertIs(canonical.linear_trend, legacy.linear_trend)
+
+    def test_migrated_analyses_do_not_import_legacy_root_modules(self) -> None:
+        analyses_dir = PROJECT_DIR / "blood_pressure_missingness" / "analyses"
+        paths = tuple(
+            analyses_dir / filename
+            for filename in (
+                "gap_aware.py",
+                "day_influence.py",
+                "episode_observation.py",
+                "episode_time_form.py",
+                "temporal_dependence.py",
+            )
+        )
+        forbidden = {"analysis", "gap_aware_trend_decomposition"}
+
+        for path in paths:
+            tree = ast.parse(path.read_text(encoding="utf-8"), filename=str(path))
+            imports: set[str] = set()
+            for node in ast.walk(tree):
+                if isinstance(node, ast.Import):
+                    imports.update(alias.name for alias in node.names)
+                elif isinstance(node, ast.ImportFrom) and node.module:
+                    imports.add(node.module)
+
+            with self.subTest(path=path.name):
+                self.assertTrue(forbidden.isdisjoint(imports), imports)
 
     def test_temperature_facade_preserves_private_test_helpers(self) -> None:
         legacy = importlib.import_module("temperature_covariate_sensitivity")
