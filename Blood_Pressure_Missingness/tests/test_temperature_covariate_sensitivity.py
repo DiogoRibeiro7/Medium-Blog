@@ -3,16 +3,12 @@
 from __future__ import annotations
 
 import json
-import sys
 import unittest
 from datetime import date, datetime, timedelta
-from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-
-import temperature_covariate as primary
-import temperature_covariate_sensitivity as sensitivity
-from refresh_from_google_sheets import Measurement
+from blood_pressure_missingness.analyses import temperature as primary
+from blood_pressure_missingness.analyses import temperature_sensitivity as sensitivity
+from blood_pressure_missingness.data_sources.google_sheets import Measurement
 
 
 class TemperatureCovariateSensitivityTests(unittest.TestCase):
