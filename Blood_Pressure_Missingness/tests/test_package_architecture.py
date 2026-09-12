@@ -1,33 +1,20 @@
-"""Smoke tests for the staged blood-pressure package refactor."""
+"""Smoke tests for the canonical blood-pressure package architecture."""
 
 from __future__ import annotations
 
 import ast
 import importlib
-import importlib.util
 import subprocess
 import sys
 import tempfile
 import unittest
 from pathlib import Path
-from types import ModuleType
 
 PROJECT_DIR = Path(__file__).resolve().parent.parent
 
 
-def _load_legacy_module(module_name: str, path: Path) -> ModuleType:
-    """Load one compatibility shim by file path without mutating ``sys.path``."""
-
-    spec = importlib.util.spec_from_file_location(module_name, path)
-    if spec is None or spec.loader is None:
-        raise AssertionError(f"Cannot load compatibility shim: {path}")
-    module = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(module)
-    return module
-
-
 class PackageArchitectureTests(unittest.TestCase):
-    """Keep canonical package imports equivalent to historical module imports."""
+    """Protect the canonical package boundary after compatibility cleanup."""
 
     def test_canonical_modules_import(self) -> None:
         modules = (
@@ -66,13 +53,6 @@ class PackageArchitectureTests(unittest.TestCase):
             "blood_pressure_missingness.public_analysis",
         )
 
-    def test_public_analysis_facade_preserves_core_objects(self) -> None:
-        legacy = _load_legacy_module("legacy_analysis", PROJECT_DIR / "analysis.py")
-        canonical = importlib.import_module("blood_pressure_missingness.public_analysis")
-        self.assertIs(canonical.DailyRecord, legacy.DailyRecord)
-        self.assertIs(canonical.load_snapshot, legacy.load_snapshot)
-        self.assertIs(canonical.linear_trend, legacy.linear_trend)
-
     def test_migrated_analyses_do_not_import_legacy_root_modules(self) -> None:
         analyses_dir = PROJECT_DIR / "blood_pressure_missingness" / "analyses"
         paths = tuple(
@@ -99,16 +79,25 @@ class PackageArchitectureTests(unittest.TestCase):
             with self.subTest(path=path.name):
                 self.assertTrue(forbidden.isdisjoint(imports), imports)
 
-    def test_temperature_facade_preserves_private_test_helpers(self) -> None:
-        legacy = _load_legacy_module(
-            "legacy_temperature_covariate_sensitivity",
-            PROJECT_DIR / "temperature_covariate_sensitivity.py",
+    def test_legacy_compatibility_files_are_absent(self) -> None:
+        legacy_paths = (
+            "analysis.py",
+            "observation_process_sensitivity.py",
+            "gap_aware_trend_decomposition.py",
+            "day_influence_sensitivity.py",
+            "episode_observation_sensitivity.py",
+            "episode_time_form_sensitivity.py",
+            "temporal_dependence_diagnostics.py",
+            "refresh_from_google_sheets.py",
+            "temperature_covariate.py",
+            "temperature_covariate_sensitivity.py",
+            "validate_current_influence_findings.py",
+            "validate_current_narrative.py",
+            "blood_pressure_missingness/_compat.py",
         )
-        canonical = importlib.import_module(
-            "blood_pressure_missingness.analyses.temperature_sensitivity"
-        )
-        self.assertIs(canonical._fit_linear, legacy._fit_linear)
-        self.assertIs(canonical._fit_quadratic, legacy._fit_quadratic)
+        for relative_path in legacy_paths:
+            with self.subTest(path=relative_path):
+                self.assertFalse((PROJECT_DIR / relative_path).exists())
 
 
 if __name__ == "__main__":
