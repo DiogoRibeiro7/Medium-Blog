@@ -39,7 +39,9 @@ jobs:
           BLOOD_PRESSURE_SHEET_URL: ${{ secrets.BLOOD_PRESSURE_SHEET_URL }}
           GOOGLE_SHEETS_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SHEETS_SERVICE_ACCOUNT_JSON }}
           BLOOD_PRESSURE_WORKSHEET: ${{ secrets.BLOOD_PRESSURE_WORKSHEET }}
-        run: python refresh_from_google_sheets.py --data-dir data
+        run: >-
+          python -m blood_pressure_missingness.data_sources.google_sheets
+          --data-dir data
 
       - name: Fit time-matched Fiães temperature covariate
         working-directory: Blood_Pressure_Missingness
@@ -48,7 +50,7 @@ jobs:
           GOOGLE_SHEETS_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SHEETS_SERVICE_ACCOUNT_JSON }}
           BLOOD_PRESSURE_WORKSHEET: ${{ secrets.BLOOD_PRESSURE_WORKSHEET }}
         run: >-
-          python temperature_covariate.py
+          python -m blood_pressure_missingness.analyses.temperature
           --output figures/temperature_covariate.json
 
       - name: Run temperature-covariate sensitivity analysis
@@ -58,13 +60,13 @@ jobs:
           GOOGLE_SHEETS_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SHEETS_SERVICE_ACCOUNT_JSON }}
           BLOOD_PRESSURE_WORKSHEET: ${{ secrets.BLOOD_PRESSURE_WORKSHEET }}
         run: >-
-          python temperature_covariate_sensitivity.py
+          python -m blood_pressure_missingness.analyses.temperature_sensitivity
           --output figures/temperature_covariate_sensitivity.json
 
       - name: Regenerate primary statistical outputs
         working-directory: Blood_Pressure_Missingness
         run: >-
-          python analysis.py
+          python -m blood_pressure_missingness.public_analysis
           --data data/analysis_snapshot.csv
           --audit data/source_audit.json
           --output-dir figures
@@ -72,7 +74,7 @@ jobs:
       - name: Regenerate observation-process sensitivity outputs
         working-directory: Blood_Pressure_Missingness
         run: >-
-          python observation_process_sensitivity.py
+          python -m blood_pressure_missingness.analyses.observation_process
           --data data/analysis_snapshot.csv
           --output-json figures/observation_process_sensitivity.json
           --output-figure figures/observation_process_sensitivity.svg
@@ -80,7 +82,7 @@ jobs:
       - name: Regenerate gap-aware trend decomposition outputs
         working-directory: Blood_Pressure_Missingness
         run: >-
-          python gap_aware_trend_decomposition.py
+          python -m blood_pressure_missingness.analyses.gap_aware
           --data data/analysis_snapshot.csv
           --output-json figures/gap_aware_trend_decomposition.json
           --output-figure figures/gap_aware_trend_decomposition.svg
@@ -88,7 +90,7 @@ jobs:
       - name: Regenerate day-level influence outputs
         working-directory: Blood_Pressure_Missingness
         run: >-
-          python day_influence_sensitivity.py
+          python -m blood_pressure_missingness.analyses.day_influence
           --data data/analysis_snapshot.csv
           --output-json figures/day_influence_sensitivity.json
           --output-figure figures/day_influence_sensitivity.svg
@@ -96,7 +98,7 @@ jobs:
       - name: Regenerate episode observation-sensitivity outputs
         working-directory: Blood_Pressure_Missingness
         run: >-
-          python episode_observation_sensitivity.py
+          python -m blood_pressure_missingness.analyses.episode_observation
           --data data/analysis_snapshot.csv
           --output-json figures/episode_observation_sensitivity.json
           --output-figure figures/episode_observation_sensitivity.svg
@@ -104,7 +106,7 @@ jobs:
       - name: Regenerate episode time-form sensitivity outputs
         working-directory: Blood_Pressure_Missingness
         run: >-
-          python episode_time_form_sensitivity.py
+          python -m blood_pressure_missingness.analyses.episode_time_form
           --data data/analysis_snapshot.csv
           --output-json figures/episode_time_form_sensitivity.json
           --output-figure figures/episode_time_form_sensitivity.svg
@@ -112,14 +114,14 @@ jobs:
       - name: Regenerate temporal-dependence diagnostics
         working-directory: Blood_Pressure_Missingness
         run: >-
-          python temporal_dependence_diagnostics.py
+          python -m blood_pressure_missingness.analyses.temporal_dependence
           --data data/analysis_snapshot.csv
           --output-json figures/temporal_dependence_diagnostics.json
 
       - name: Validate current influence findings
         working-directory: Blood_Pressure_Missingness
         run: >-
-          python validate_current_influence_findings.py
+          python -m blood_pressure_missingness.validation.current_influence
           --data data/analysis_snapshot.csv
 
       - name: Validate that no raw source file was written
