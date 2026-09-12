@@ -13,9 +13,9 @@ from __future__ import annotations
 import argparse
 from pathlib import Path
 
-import analysis as primary
-import day_influence_sensitivity as influence
-import gap_aware_trend_decomposition as gap_aware
+from blood_pressure_missingness import public_analysis as primary
+from blood_pressure_missingness.analyses import day_influence as influence
+from blood_pressure_missingness.analyses import gap_aware
 
 
 def validate_current_findings(data_path: Path) -> None:

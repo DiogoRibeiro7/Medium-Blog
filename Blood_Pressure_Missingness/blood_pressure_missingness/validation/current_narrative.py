@@ -12,12 +12,12 @@ import argparse
 import json
 from pathlib import Path
 
-import analysis as primary
-import day_influence_sensitivity as influence
-import episode_observation_sensitivity as episode_observation
-import episode_time_form_sensitivity as time_form
-import gap_aware_trend_decomposition as gap_aware
-import temporal_dependence_diagnostics as temporal
+from blood_pressure_missingness import public_analysis as primary
+from blood_pressure_missingness.analyses import day_influence as influence
+from blood_pressure_missingness.analyses import episode_observation
+from blood_pressure_missingness.analyses import episode_time_form as time_form
+from blood_pressure_missingness.analyses import gap_aware
+from blood_pressure_missingness.analyses import temporal_dependence as temporal
 
 
 def _require(text: str, fragment: str, surface: str) -> None:
