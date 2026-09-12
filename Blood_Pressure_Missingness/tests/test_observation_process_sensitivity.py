@@ -3,16 +3,14 @@
 from __future__ import annotations
 
 import csv
-import sys
 import tempfile
 import unittest
 from pathlib import Path
 
-PROJECT_DIR = Path(__file__).resolve().parent.parent
-sys.path.insert(0, str(PROJECT_DIR))
+from blood_pressure_missingness import public_analysis as primary_analysis
+from blood_pressure_missingness.analyses import observation_process as sensitivity
 
-import analysis as primary_analysis
-import observation_process_sensitivity as sensitivity
+PROJECT_DIR = Path(__file__).resolve().parent.parent
 
 
 class ObservationProcessSensitivityTests(unittest.TestCase):
