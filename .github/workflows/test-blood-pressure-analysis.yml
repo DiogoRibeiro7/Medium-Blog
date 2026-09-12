@@ -25,6 +25,7 @@ on:
       - 'Blood_Pressure_Missingness/data/source_audit.json'
       - 'Blood_Pressure_Missingness/tests/**'
       - 'Blood_Pressure_Missingness/requirements.txt'
+      - 'Blood_Pressure_Missingness/pyproject.toml'
       - '.github/workflows/refresh-blood-pressure-analysis.yml'
       - '.github/workflows/test-blood-pressure-analysis.yml'
   push:
@@ -53,6 +54,7 @@ on:
       - 'Blood_Pressure_Missingness/data/source_audit.json'
       - 'Blood_Pressure_Missingness/tests/**'
       - 'Blood_Pressure_Missingness/requirements.txt'
+      - 'Blood_Pressure_Missingness/pyproject.toml'
       - '.github/workflows/refresh-blood-pressure-analysis.yml'
       - '.github/workflows/test-blood-pressure-analysis.yml'
 
@@ -71,8 +73,8 @@ jobs:
         with:
           python-version: '3.13'
 
-      - name: Install analysis dependencies
-        run: python -m pip install -r Blood_Pressure_Missingness/requirements.txt
+      - name: Install blood-pressure project
+        run: python -m pip install -e Blood_Pressure_Missingness
 
       - name: Run refresh-sensitive findings gate
         working-directory: Blood_Pressure_Missingness

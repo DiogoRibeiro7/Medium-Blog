@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "blood-pressure-missingness-case-study"
+version = "0.1.0"
+description = "Privacy-safe statistical case study of irregular blood-pressure measurements."
+readme = "README.md"
+dynamic = ["dependencies"]
+
+[tool.setuptools.dynamic]
+dependencies = {file = ["requirements.txt"]}
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["blood_pressure_missingness*"]
