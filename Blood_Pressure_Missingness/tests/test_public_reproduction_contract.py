@@ -30,9 +30,9 @@ REPRODUCIBLE_JSON_OUTPUTS = {
 }
 
 
-def _run(*args: str) -> None:
+def _run(module_name: str, *args: str) -> None:
     subprocess.run(
-        [sys.executable, *args],
+        [sys.executable, "-m", module_name, *args],
         cwd=PROJECT_DIR,
         check=True,
         stdout=subprocess.PIPE,
@@ -109,7 +109,7 @@ class PublicReproductionContractTests(unittest.TestCase):
             output_dir = Path(temporary_directory)
 
             _run(
-                "analysis.py",
+                "blood_pressure_missingness.public_analysis",
                 "--data",
                 str(DATA_PATH),
                 "--audit",
@@ -118,7 +118,7 @@ class PublicReproductionContractTests(unittest.TestCase):
                 str(output_dir),
             )
             _run(
-                "observation_process_sensitivity.py",
+                "blood_pressure_missingness.analyses.observation_process",
                 "--data",
                 str(DATA_PATH),
                 "--output-json",
@@ -127,7 +127,7 @@ class PublicReproductionContractTests(unittest.TestCase):
                 str(output_dir / "observation_process_sensitivity.svg"),
             )
             _run(
-                "gap_aware_trend_decomposition.py",
+                "blood_pressure_missingness.analyses.gap_aware",
                 "--data",
                 str(DATA_PATH),
                 "--output-json",
@@ -136,7 +136,7 @@ class PublicReproductionContractTests(unittest.TestCase):
                 str(output_dir / "gap_aware_trend_decomposition.svg"),
             )
             _run(
-                "day_influence_sensitivity.py",
+                "blood_pressure_missingness.analyses.day_influence",
                 "--data",
                 str(DATA_PATH),
                 "--output-json",
@@ -145,7 +145,7 @@ class PublicReproductionContractTests(unittest.TestCase):
                 str(output_dir / "day_influence_sensitivity.svg"),
             )
             _run(
-                "episode_observation_sensitivity.py",
+                "blood_pressure_missingness.analyses.episode_observation",
                 "--data",
                 str(DATA_PATH),
                 "--output-json",
@@ -154,7 +154,7 @@ class PublicReproductionContractTests(unittest.TestCase):
                 str(output_dir / "episode_observation_sensitivity.svg"),
             )
             _run(
-                "episode_time_form_sensitivity.py",
+                "blood_pressure_missingness.analyses.episode_time_form",
                 "--data",
                 str(DATA_PATH),
                 "--output-json",
@@ -163,7 +163,7 @@ class PublicReproductionContractTests(unittest.TestCase):
                 str(output_dir / "episode_time_form_sensitivity.svg"),
             )
             _run(
-                "temporal_dependence_diagnostics.py",
+                "blood_pressure_missingness.analyses.temporal_dependence",
                 "--data",
                 str(DATA_PATH),
                 "--output-json",
