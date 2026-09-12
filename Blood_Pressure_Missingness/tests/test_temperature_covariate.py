@@ -2,15 +2,11 @@
 
 from __future__ import annotations
 
-import sys
 import unittest
 from datetime import date, datetime, timedelta, timezone
-from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-
-import temperature_covariate as temperature
-from refresh_from_google_sheets import Measurement
+from blood_pressure_missingness.analyses import temperature
+from blood_pressure_missingness.data_sources.google_sheets import Measurement
 
 
 class TemperatureCovariateTests(unittest.TestCase):

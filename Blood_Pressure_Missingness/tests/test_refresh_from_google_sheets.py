@@ -2,14 +2,11 @@
 
 from __future__ import annotations
 
-import sys
 import tempfile
 import unittest
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-
-import refresh_from_google_sheets as refresh
+from blood_pressure_missingness.data_sources import google_sheets as refresh
 
 
 class SourceRefreshTests(unittest.TestCase):
