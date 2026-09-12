@@ -79,12 +79,14 @@ jobs:
       - name: Run refresh-sensitive findings gate
         working-directory: Blood_Pressure_Missingness
         run: >-
-          python validate_current_influence_findings.py
+          python -m blood_pressure_missingness.validation.current_influence
           --data data/analysis_snapshot.csv
 
       - name: Check public narrative against current snapshot
         working-directory: Blood_Pressure_Missingness
-        run: python validate_current_narrative.py --root .
+        run: >-
+          python -m blood_pressure_missingness.validation.current_narrative
+          --root .
 
       - name: Run blood-pressure regression and notebook tests
         run: >-
