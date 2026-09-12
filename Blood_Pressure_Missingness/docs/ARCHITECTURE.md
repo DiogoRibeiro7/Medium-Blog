@@ -1,6 +1,6 @@
 # Blood-pressure analysis architecture
 
-The project has grown from a single notebook into a small statistical-analysis system. This document defines the target structure and the staged refactor needed to reach it without silently changing any statistical result or privacy guarantee.
+The project has grown from a single notebook into a small statistical-analysis system. This document defines the canonical structure reached by the staged refactor, without changing statistical results or privacy guarantees.
 
 ## Canonical package
 
@@ -74,19 +74,19 @@ Temperature analysis is a deliberate secret-backed exception: it consumes privat
 
 ### Stage 1 — package boundary
 
-Introduce canonical package paths while retaining the existing top-level modules as the implementation source. This gives new code one stable namespace without breaking notebooks, workflows, tests, or external links.
+Canonical package paths were introduced while retaining the historical top-level modules temporarily.
 
 ### Stage 2 — invert the compatibility layer
 
-Move implementations into the package and turn the historical top-level modules into thin forwarding shims. Replace historical cross-module imports with package imports and remove `sys.path` manipulation from tests.
+Implementations were moved into the package, historical cross-module imports were replaced with package imports, and `sys.path` manipulation was removed from supported tests.
 
-### Stage 3 — extract shared primitives
+### Stage 3 — preserve numerical contracts
 
-Only after numerical equivalence is established, extract genuinely shared dataclasses and HC3 fitting utilities where this reduces duplication without changing estimating equations.
+Privacy, output-schema, and deterministic-reproduction contracts were added so structural changes could be separated from scientific changes.
 
-### Stage 4 — simplify supported interfaces
+### Stage 4 — canonical supported interfaces
 
-Update the notebook and workflows to use canonical package entry points, move analysis-specific long-form notes under `docs/`, and remove compatibility shims only when no supported surface still depends on them.
+The notebook, workflows, reproduction commands, validation gates, and regression tests now use the installed canonical package directly. The historical root forwarding shims and temporary compatibility helper have been removed because no supported surface depends on them.
 
 ## Non-negotiable refactor rule
 
