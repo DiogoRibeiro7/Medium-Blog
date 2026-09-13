@@ -51,7 +51,7 @@ jobs:
           BLOOD_PRESSURE_WORKSHEET: ${{ secrets.BLOOD_PRESSURE_WORKSHEET }}
         run: >-
           python -m blood_pressure_missingness.analyses.pulse_oximeter
-          --output figures/pulse_oximeter_diagnostics.json
+          --output data/pulse_oximeter_diagnostics.json
 
       - name: Fit time-matched Fiães temperature covariate
         working-directory: Blood_Pressure_Missingness
@@ -147,6 +147,7 @@ jobs:
           if [[ -n "$(git status --porcelain --untracked-files=all -- \
             Blood_Pressure_Missingness/data/analysis_snapshot.csv \
             Blood_Pressure_Missingness/data/source_audit.json \
+            Blood_Pressure_Missingness/data/pulse_oximeter_diagnostics.json \
             Blood_Pressure_Missingness/figures)" ]]; then
             echo 'changed=true' >> "$GITHUB_OUTPUT"
           else
@@ -168,6 +169,7 @@ jobs:
           git add \
             Blood_Pressure_Missingness/data/analysis_snapshot.csv \
             Blood_Pressure_Missingness/data/source_audit.json \
+            Blood_Pressure_Missingness/data/pulse_oximeter_diagnostics.json \
             Blood_Pressure_Missingness/figures
           git commit -m 'Refresh blood-pressure aggregate analysis'
           git push --force origin HEAD:"$branch"
