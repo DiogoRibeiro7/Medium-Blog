@@ -3,15 +3,28 @@
 from __future__ import annotations
 
 import argparse
+import csv
 import json
 import math
 import statistics
+from collections import defaultdict
 from collections.abc import Sequence
+from datetime import date
 from pathlib import Path
 from typing import Any
 
 from blood_pressure_missingness.data_sources import google_sheets as source
 from blood_pressure_missingness.data_sources.google_sheets import Measurement
+
+DAILY_SNAPSHOT_COLUMNS: tuple[str, ...] = (
+    "day_index",
+    "n_spo2_readings",
+    "mean_spo2_percent",
+    "n_bpm_spo2_readings",
+    "mean_bpm_spo2",
+    "n_paired_bpm_readings",
+    "mean_bpm_difference",
+)
 
 
 def _summary(values: Sequence[float]) -> dict[str, float | int | None]:
@@ -128,12 +141,79 @@ def build_pulse_oximeter_diagnostics(
     }
 
 
-def run_private_source_diagnostics() -> dict[str, Any]:
-    """Fetch the private Sheet and build aggregate pulse-oximeter diagnostics."""
+def build_daily_snapshot(
+    measurements: Sequence[Measurement],
+) -> list[dict[str, float | int | None]]:
+    """Build a date-free daily pulse-oximeter aggregate snapshot.
+
+    Only days with at least one pulse-oximeter value are emitted. ``day_index`` is
+    relative to the first blood-pressure measurement day, so it can be aligned to
+    the established public snapshot without exposing calendar dates.
+    """
+
+    if not measurements:
+        raise ValueError("At least one measurement is required.")
+
+    first_day = min(item.day for item in measurements)
+    by_day: defaultdict[date, list[Measurement]] = defaultdict(list)
+    for item in measurements:
+        if item.spo2 is not None or item.bpm_spo2 is not None:
+            by_day[item.day].append(item)
+
+    snapshot: list[dict[str, float | int | None]] = []
+    for current_day in sorted(by_day):
+        rows = by_day[current_day]
+        spo2 = [item.spo2 for item in rows if item.spo2 is not None]
+        bpm_spo2 = [item.bpm_spo2 for item in rows if item.bpm_spo2 is not None]
+        bpm_differences = [
+            item.bpm - item.bpm_spo2
+            for item in rows
+            if item.bpm_spo2 is not None
+        ]
+        snapshot.append(
+            {
+                "day_index": (current_day - first_day).days,
+                "n_spo2_readings": len(spo2),
+                "mean_spo2_percent": (
+                    round(statistics.fmean(spo2), 8) if spo2 else None
+                ),
+                "n_bpm_spo2_readings": len(bpm_spo2),
+                "mean_bpm_spo2": (
+                    round(statistics.fmean(bpm_spo2), 8) if bpm_spo2 else None
+                ),
+                "n_paired_bpm_readings": len(bpm_differences),
+                "mean_bpm_difference": (
+                    round(statistics.fmean(bpm_differences), 8)
+                    if bpm_differences
+                    else None
+                ),
+            }
+        )
+    return snapshot
+
+
+def write_daily_snapshot(
+    path: Path,
+    snapshot: Sequence[dict[str, float | int | None]],
+) -> None:
+    """Write the date-free pulse-oximeter daily snapshot."""
+
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("w", encoding="utf-8", newline="") as handle:
+        writer = csv.DictWriter(handle, fieldnames=DAILY_SNAPSHOT_COLUMNS)
+        writer.writeheader()
+        writer.writerows(snapshot)
+
+
+def run_private_source_outputs() -> tuple[dict[str, Any], list[dict[str, float | int | None]]]:
+    """Fetch the private Sheet and build aggregate pulse-oximeter outputs."""
 
     values = source.fetch_sheet_values()
     measurements, _ = source.parse_measurements(values)
-    return build_pulse_oximeter_diagnostics(measurements)
+    return (
+        build_pulse_oximeter_diagnostics(measurements),
+        build_daily_snapshot(measurements),
+    )
 
 
 def write_diagnostics(path: Path, diagnostics: dict[str, Any]) -> None:
@@ -152,22 +232,30 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--output",
         type=Path,
-        default=Path("figures/pulse_oximeter_diagnostics.json"),
+        default=Path("data/pulse_oximeter_diagnostics.json"),
         help="Path receiving aggregate pulse-oximeter diagnostics.",
+    )
+    parser.add_argument(
+        "--daily-output",
+        type=Path,
+        default=Path("data/pulse_oximeter_daily_snapshot.csv"),
+        help="Path receiving the date-free daily pulse-oximeter snapshot.",
     )
     return parser.parse_args()
 
 
 def main() -> None:
-    """Generate the aggregate diagnostic artifact from the private source."""
+    """Generate aggregate pulse-oximeter artifacts from the private source."""
 
     args = parse_args()
-    diagnostics = run_private_source_diagnostics()
+    diagnostics, daily_snapshot = run_private_source_outputs()
     write_diagnostics(args.output, diagnostics)
+    write_daily_snapshot(args.daily_output, daily_snapshot)
     print(
         "Wrote pulse-oximeter diagnostics: "
         f"{diagnostics['coverage']['spo2_observed']} SpO2 readings, "
-        f"{diagnostics['paired_bpm_device_agreement']['observed_pairs']} BPM pairs."
+        f"{diagnostics['paired_bpm_device_agreement']['observed_pairs']} BPM pairs, "
+        f"{len(daily_snapshot)} observed pulse-oximeter days."
     )
 
 
