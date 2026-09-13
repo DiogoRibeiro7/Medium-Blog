@@ -2,11 +2,15 @@
 
 from __future__ import annotations
 
+import json
+import tempfile
 import unittest
 from datetime import date, datetime
+from pathlib import Path
 
 from blood_pressure_missingness.analyses.pulse_oximeter import (
     build_pulse_oximeter_diagnostics,
+    write_diagnostics,
 )
 from blood_pressure_missingness.data_sources.google_sheets import Measurement
 
@@ -85,6 +89,22 @@ class PulseOximeterDiagnosticsTests(unittest.TestCase):
         self.assertEqual(agreement["minimum_difference"], -2.0)
         self.assertEqual(agreement["maximum_difference"], 2.0)
         self.assertEqual(agreement["maximum_absolute_difference"], 2.0)
+
+    def test_writer_persists_only_aggregate_diagnostics(self) -> None:
+        diagnostics = build_pulse_oximeter_diagnostics(
+            [_measurement(bpm=70.0, spo2=98.0, bpm_spo2=69.0)]
+        )
+
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "pulse_oximeter_diagnostics.json"
+            write_diagnostics(path, diagnostics)
+            payload = json.loads(path.read_text(encoding="utf-8"))
+
+        self.assertEqual(payload, diagnostics)
+        self.assertFalse(payload["interpretation"]["row_level_values_persisted"])
+        self.assertFalse(payload["interpretation"]["clinical_thresholds_applied"])
+        self.assertNotIn("timestamp", payload)
+        self.assertNotIn("date", payload)
 
     def test_empty_measurement_sequence_is_rejected(self) -> None:
         with self.assertRaisesRegex(ValueError, "At least one measurement"):
