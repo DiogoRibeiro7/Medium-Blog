@@ -33,6 +33,8 @@ Sampling intensity remains highly uneven: observed days contain between **1 and 
 
 That makes a flat 171-row i.i.d. analysis a poor default.
 
+The private source now also accepts two optional pulse-oximeter fields: `spo2` for oxygen saturation and `bpm_spo2` for the pulse reported by that same device. They remain source-specific measurements rather than replacements for the blood-pressure monitor's `bpm`. Historical rows may leave both fields blank. The refresh pipeline validates them and records aggregate coverage plus paired BPM agreement diagnostics, while the established public blood-pressure snapshot and estimands remain unchanged until the new measurements have sufficient coverage for a separate analysis.
+
 ## 2. Data quality before modelling
 
 The current live source still requires explicit preprocessing rules:
@@ -207,7 +209,7 @@ The repository contains:
 - `data/analysis_snapshot.csv` — privacy-safe relative-day aggregate snapshot;
 - `data/source_audit.json` — aggregate source-quality audit.
 
-The raw workbook, private Google Sheet identifiers, credentials, and calendar dates are never committed.
+The raw workbook, private Google Sheet identifiers, credentials, calendar dates, and row-level pulse-oximeter readings are never committed.
 
 To run the public analysis:
 

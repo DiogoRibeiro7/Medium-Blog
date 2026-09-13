@@ -32,6 +32,8 @@ EXPECTED_COLUMNS: tuple[str, ...] = (
     "Sleep",
     "Meal",
     "Symptoms",
+    "spo2",
+    "bpm_spo2",
 )
 SESSION_GAP_MINUTES = 15
 EXCEL_EPOCH = datetime(1899, 12, 30)
@@ -55,6 +57,8 @@ class Measurement:
     sleep: str | None
     meal: str | None
     symptoms: str | None
+    spo2: float | None = None
+    bpm_spo2: float | None = None
 
 
 def _required_env(name: str) -> str:
@@ -124,6 +128,12 @@ def _as_float(value: Any, field: str) -> float:
     if not math.isfinite(parsed):
         raise ValueError(f"{field} must be finite.")
     return parsed
+
+
+def _optional_float(value: Any, field: str) -> float | None:
+    """Parse an optional finite numeric source value."""
+
+    return None if _is_blank(value) else _as_float(value, field)
 
 
 def _excel_serial_to_date(value: float) -> date:
@@ -206,21 +216,33 @@ def _parse_source_time(value: Any) -> time:
 
 
 def _normalize_matrix(values: Sequence[Sequence[Any]]) -> list[list[Any]]:
-    """Pad source rows and validate the expected leading schema."""
+    """Project source rows onto the expected named schema in canonical order."""
 
     if not values:
         raise ValueError("No source rows were supplied.")
+
     header = [str(value).strip() for value in values[0]]
-    if tuple(header[: len(EXPECTED_COLUMNS)]) != EXPECTED_COLUMNS:
+    duplicate_columns = sorted(
+        name for name, count in Counter(header).items() if name and count > 1
+    )
+    if duplicate_columns:
+        joined = ", ".join(duplicate_columns)
+        raise ValueError(f"Google Sheet contains duplicate columns: {joined}.")
+
+    missing_columns = [name for name in EXPECTED_COLUMNS if name not in header]
+    if missing_columns:
+        joined = ", ".join(missing_columns)
         raise ValueError(
-            "Google Sheet columns do not match the expected blood-pressure schema."
+            "Google Sheet columns do not match the expected blood-pressure schema; "
+            f"missing: {joined}."
         )
 
-    width = len(EXPECTED_COLUMNS)
-    normalized: list[list[Any]] = [list(header[:width])]
+    indices = [header.index(name) for name in EXPECTED_COLUMNS]
+    normalized: list[list[Any]] = [list(EXPECTED_COLUMNS)]
     for row in values[1:]:
-        padded = list(row[:width]) + [None] * max(0, width - len(row))
-        normalized.append(padded[:width])
+        normalized.append(
+            [row[index] if index < len(row) else None for index in indices]
+        )
     return normalized
 
 
@@ -284,11 +306,17 @@ def parse_measurements(
         source_pulse_pressure = _as_float(row[4], "diff")
         derived_pulse_pressure = systolic - diastolic
         bpm = _as_float(row[5], "bpm")
+        spo2 = _optional_float(row[11], "spo2")
+        bpm_spo2 = _optional_float(row[12], "bpm_spo2")
 
         if derived_pulse_pressure <= 0.0:
             raise ValueError(
                 f"Row {row_number}: systolic must exceed diastolic."
             )
+        if spo2 is not None and not 0.0 <= spo2 <= 100.0:
+            raise ValueError(f"Row {row_number}: spo2 must be between 0 and 100.")
+        if bpm_spo2 is not None and bpm_spo2 <= 0.0:
+            raise ValueError(f"Row {row_number}: bpm_spo2 must be positive.")
 
         if not math.isclose(
             derived_pulse_pressure,
@@ -315,6 +343,8 @@ def parse_measurements(
                 sleep=_optional_text(row[8]),
                 meal=_optional_text(row[9]),
                 symptoms=_optional_text(row[10]),
+                spo2=spo2,
+                bpm_spo2=bpm_spo2,
             )
         )
 
@@ -344,6 +374,64 @@ def parse_measurements(
             "rate": round(missing / len(measurements), 8),
         }
 
+    spo2_values = [
+        measurement.spo2 for measurement in measurements if measurement.spo2 is not None
+    ]
+    bpm_spo2_values = [
+        measurement.bpm_spo2
+        for measurement in measurements
+        if measurement.bpm_spo2 is not None
+    ]
+    paired_bpm = [
+        (measurement.bpm, measurement.bpm_spo2)
+        for measurement in measurements
+        if measurement.bpm_spo2 is not None
+    ]
+
+    def _optional_summary(values_: Sequence[float]) -> dict[str, float | int | None]:
+        """Return aggregate coverage and descriptive statistics for optional values."""
+
+        observed = len(values_)
+        missing = len(measurements) - observed
+        return {
+            "observed": observed,
+            "missing": missing,
+            "coverage_rate": round(observed / len(measurements), 8),
+            "mean": round(statistics.fmean(values_), 8) if values_ else None,
+            "minimum": round(min(values_), 8) if values_ else None,
+            "maximum": round(max(values_), 8) if values_ else None,
+        }
+
+    bpm_differences = [
+        bp_bpm - spo2_bpm for bp_bpm, spo2_bpm in paired_bpm if spo2_bpm is not None
+    ]
+    pulse_oximeter_audit: dict[str, Any] = {
+        "spo2_percent": _optional_summary(spo2_values),
+        "bpm_spo2": _optional_summary(bpm_spo2_values),
+        "paired_bpm_device_agreement": {
+            "observed_pairs": len(bpm_differences),
+            "difference_definition": "bpm_minus_bpm_spo2",
+            "mean_difference": (
+                round(statistics.fmean(bpm_differences), 8)
+                if bpm_differences
+                else None
+            ),
+            "mean_absolute_difference": (
+                round(statistics.fmean(abs(value) for value in bpm_differences), 8)
+                if bpm_differences
+                else None
+            ),
+            "rmse": (
+                round(
+                    math.sqrt(statistics.fmean(value**2 for value in bpm_differences)),
+                    8,
+                )
+                if bpm_differences
+                else None
+            ),
+        },
+    }
+
     audit: dict[str, Any] = {
         "source_rows_excluding_header": len(matrix) - 1,
         "valid_measurements": len(measurements),
@@ -368,6 +456,7 @@ def parse_measurements(
             ),
         },
         "context_missingness_on_valid_measurements": context_payload,
+        "pulse_oximeter": pulse_oximeter_audit,
     }
     return measurements, audit
 

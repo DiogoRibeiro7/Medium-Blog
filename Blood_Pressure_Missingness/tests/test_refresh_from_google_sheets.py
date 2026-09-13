@@ -87,6 +87,113 @@ class SourceRefreshTests(unittest.TestCase):
             ):
                 refresh.parse_measurements(values)
 
+    def test_pulse_oximeter_fields_are_optional_for_historical_rows(self) -> None:
+        """Historical readings may predate pulse-oximeter collection."""
+
+        values = [
+            list(refresh.EXPECTED_COLUMNS),
+            [
+                46206.0,
+                0.5,
+                120.0,
+                80.0,
+                40.0,
+                70.0,
+                "Yes",
+                "Yes",
+                "Yes",
+                None,
+                None,
+            ],
+        ]
+
+        measurements, audit = refresh.parse_measurements(values)
+        self.assertIsNone(measurements[0].spo2)
+        self.assertIsNone(measurements[0].bpm_spo2)
+        pulse_oximeter = audit["pulse_oximeter"]
+        self.assertEqual(pulse_oximeter["spo2_percent"]["observed"], 0)
+        self.assertEqual(pulse_oximeter["bpm_spo2"]["observed"], 0)
+
+    def test_pulse_oximeter_fields_and_device_agreement_are_audited(self) -> None:
+        """SpO2 and pulse-oximeter BPM should remain source-specific measurements."""
+
+        values = [
+            list(refresh.EXPECTED_COLUMNS),
+            [
+                46206.0,
+                0.5,
+                120.0,
+                80.0,
+                40.0,
+                72.0,
+                "Yes",
+                "Yes",
+                "Yes",
+                None,
+                None,
+                98.0,
+                69.0,
+            ],
+            [
+                46207.0,
+                0.5,
+                118.0,
+                78.0,
+                40.0,
+                68.0,
+                "Yes",
+                "Yes",
+                "Yes",
+                None,
+                None,
+                97.0,
+                70.0,
+            ],
+        ]
+
+        measurements, audit = refresh.parse_measurements(values)
+        self.assertEqual(measurements[0].spo2, 98.0)
+        self.assertEqual(measurements[0].bpm_spo2, 69.0)
+
+        pulse_oximeter = audit["pulse_oximeter"]
+        self.assertEqual(pulse_oximeter["spo2_percent"]["observed"], 2)
+        self.assertEqual(pulse_oximeter["spo2_percent"]["mean"], 97.5)
+        agreement = pulse_oximeter["paired_bpm_device_agreement"]
+        self.assertEqual(agreement["difference_definition"], "bpm_minus_bpm_spo2")
+        self.assertEqual(agreement["observed_pairs"], 2)
+        self.assertEqual(agreement["mean_difference"], 0.5)
+        self.assertEqual(agreement["mean_absolute_difference"], 2.5)
+
+    def test_invalid_spo2_and_pulse_oximeter_bpm_are_rejected(self) -> None:
+        """Impossible pulse-oximeter values must fail during source validation."""
+
+        for spo2, bpm_spo2, pattern in (
+            (-1.0, 70.0, "spo2 must be between 0 and 100"),
+            (101.0, 70.0, "spo2 must be between 0 and 100"),
+            (98.0, 0.0, "bpm_spo2 must be positive"),
+        ):
+            values = [
+                list(refresh.EXPECTED_COLUMNS),
+                [
+                    46206.0,
+                    0.5,
+                    120.0,
+                    80.0,
+                    40.0,
+                    70.0,
+                    "Yes",
+                    "Yes",
+                    "Yes",
+                    None,
+                    None,
+                    spo2,
+                    bpm_spo2,
+                ],
+            ]
+            with self.subTest(spo2=spo2, bpm_spo2=bpm_spo2):
+                with self.assertRaisesRegex(ValueError, pattern):
+                    refresh.parse_measurements(values)
+
 
 if __name__ == "__main__":
     unittest.main()
