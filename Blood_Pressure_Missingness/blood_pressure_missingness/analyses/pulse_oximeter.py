@@ -2,11 +2,15 @@
 
 from __future__ import annotations
 
+import argparse
+import json
 import math
 import statistics
 from collections.abc import Sequence
+from pathlib import Path
 from typing import Any
 
+from blood_pressure_missingness.data_sources import google_sheets as source
 from blood_pressure_missingness.data_sources.google_sheets import Measurement
 
 
@@ -18,9 +22,7 @@ def _summary(values: Sequence[float]) -> dict[str, float | int | None]:
         "n": count,
         "mean": round(statistics.fmean(values), 8) if values else None,
         "median": round(statistics.median(values), 8) if values else None,
-        "sample_sd": (
-            round(statistics.stdev(values), 8) if count >= 2 else None
-        ),
+        "sample_sd": round(statistics.stdev(values), 8) if count >= 2 else None,
         "minimum": round(min(values), 8) if values else None,
         "maximum": round(max(values), 8) if values else None,
     }
@@ -124,3 +126,50 @@ def build_pulse_oximeter_diagnostics(
             "row_level_values_persisted": False,
         },
     }
+
+
+def run_private_source_diagnostics() -> dict[str, Any]:
+    """Fetch the private Sheet and build aggregate pulse-oximeter diagnostics."""
+
+    values = source.fetch_sheet_values()
+    measurements, _ = source.parse_measurements(values)
+    return build_pulse_oximeter_diagnostics(measurements)
+
+
+def write_diagnostics(path: Path, diagnostics: dict[str, Any]) -> None:
+    """Write one aggregate-only diagnostic JSON artifact."""
+
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("w", encoding="utf-8") as handle:
+        json.dump(diagnostics, handle, indent=2, sort_keys=False)
+        handle.write("\n")
+
+
+def parse_args() -> argparse.Namespace:
+    """Parse command-line arguments."""
+
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--output",
+        type=Path,
+        default=Path("figures/pulse_oximeter_diagnostics.json"),
+        help="Path receiving aggregate pulse-oximeter diagnostics.",
+    )
+    return parser.parse_args()
+
+
+def main() -> None:
+    """Generate the aggregate diagnostic artifact from the private source."""
+
+    args = parse_args()
+    diagnostics = run_private_source_diagnostics()
+    write_diagnostics(args.output, diagnostics)
+    print(
+        "Wrote pulse-oximeter diagnostics: "
+        f"{diagnostics['coverage']['spo2_observed']} SpO2 readings, "
+        f"{diagnostics['paired_bpm_device_agreement']['observed_pairs']} BPM pairs."
+    )
+
+
+if __name__ == "__main__":
+    main()
