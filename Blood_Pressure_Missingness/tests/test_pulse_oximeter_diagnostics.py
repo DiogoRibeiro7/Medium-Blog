@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import csv
 import json
 import tempfile
 import unittest
@@ -9,7 +10,10 @@ from datetime import date, datetime
 from pathlib import Path
 
 from blood_pressure_missingness.analyses.pulse_oximeter import (
+    DAILY_SNAPSHOT_COLUMNS,
+    build_daily_snapshot,
     build_pulse_oximeter_diagnostics,
+    write_daily_snapshot,
     write_diagnostics,
 )
 from blood_pressure_missingness.data_sources.google_sheets import Measurement
@@ -20,13 +24,13 @@ def _measurement(
     bpm: float,
     spo2: float | None,
     bpm_spo2: float | None,
+    day: date = date(2026, 9, 1),
 ) -> Measurement:
     """Build a minimal validated measurement for diagnostic tests."""
 
-    day = date(2026, 9, 1)
     return Measurement(
         day=day,
-        timestamp=datetime(2026, 9, 1, 12, 0),
+        timestamp=datetime.combine(day, datetime.min.time()).replace(hour=12),
         systolic=120.0,
         diastolic=80.0,
         pulse_pressure=40.0,
@@ -90,6 +94,54 @@ class PulseOximeterDiagnosticsTests(unittest.TestCase):
         self.assertEqual(agreement["maximum_difference"], 2.0)
         self.assertEqual(agreement["maximum_absolute_difference"], 2.0)
 
+    def test_daily_snapshot_uses_same_relative_day_origin(self) -> None:
+        measurements = [
+            _measurement(
+                bpm=70.0,
+                spo2=None,
+                bpm_spo2=None,
+                day=date(2026, 9, 1),
+            ),
+            _measurement(
+                bpm=72.0,
+                spo2=98.0,
+                bpm_spo2=71.0,
+                day=date(2026, 9, 3),
+            ),
+            _measurement(
+                bpm=74.0,
+                spo2=96.0,
+                bpm_spo2=76.0,
+                day=date(2026, 9, 3),
+            ),
+        ]
+
+        snapshot = build_daily_snapshot(measurements)
+
+        self.assertEqual(len(snapshot), 1)
+        self.assertEqual(snapshot[0]["day_index"], 2)
+        self.assertEqual(snapshot[0]["n_spo2_readings"], 2)
+        self.assertEqual(snapshot[0]["mean_spo2_percent"], 97.0)
+        self.assertEqual(snapshot[0]["n_paired_bpm_readings"], 2)
+        self.assertEqual(snapshot[0]["mean_bpm_difference"], -0.5)
+
+    def test_daily_snapshot_writer_has_fixed_date_free_schema(self) -> None:
+        snapshot = build_daily_snapshot(
+            [_measurement(bpm=70.0, spo2=98.0, bpm_spo2=69.0)]
+        )
+
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "pulse_oximeter_daily_snapshot.csv"
+            write_daily_snapshot(path, snapshot)
+            with path.open(newline="", encoding="utf-8") as handle:
+                rows = list(csv.DictReader(handle))
+                fieldnames = tuple(rows[0])
+
+        self.assertEqual(fieldnames, DAILY_SNAPSHOT_COLUMNS)
+        self.assertEqual(rows[0]["day_index"], "0")
+        self.assertNotIn("date", fieldnames)
+        self.assertNotIn("timestamp", fieldnames)
+
     def test_writer_persists_only_aggregate_diagnostics(self) -> None:
         diagnostics = build_pulse_oximeter_diagnostics(
             [_measurement(bpm=70.0, spo2=98.0, bpm_spo2=69.0)]
@@ -109,6 +161,8 @@ class PulseOximeterDiagnosticsTests(unittest.TestCase):
     def test_empty_measurement_sequence_is_rejected(self) -> None:
         with self.assertRaisesRegex(ValueError, "At least one measurement"):
             build_pulse_oximeter_diagnostics([])
+        with self.assertRaisesRegex(ValueError, "At least one measurement"):
+            build_daily_snapshot([])
 
 
 if __name__ == "__main__":
