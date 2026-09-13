@@ -33,7 +33,7 @@ Sampling intensity remains highly uneven: observed days contain between **1 and 
 
 That makes a flat 171-row i.i.d. analysis a poor default.
 
-The private source now also accepts two optional pulse-oximeter fields: `spo2` for oxygen saturation and `bpm_spo2` for the pulse reported by that same device. They remain source-specific measurements rather than replacements for the blood-pressure monitor's `bpm`. Historical rows may leave both fields blank. The refresh pipeline validates them and records aggregate coverage plus paired BPM agreement diagnostics, while the established public blood-pressure snapshot and estimands remain unchanged until the new measurements have sufficient coverage for a separate analysis.
+The private source also accepts two optional pulse-oximeter fields: `spo2` for oxygen saturation and `bpm_spo2` for the pulse reported by that same device. They remain source-specific measurements rather than replacements for the blood-pressure monitor's `bpm`. Historical rows may leave both fields blank. The pulse-oximeter extension has its own aggregate diagnostics, daily relative-day snapshot, and coverage-aware longitudinal analysis; none of those outputs silently changes the established blood-pressure estimands or article conclusions.
 
 ## 2. Data quality before modelling
 
@@ -175,6 +175,20 @@ y_t = \mu_t + \varepsilon_t,
 
 Missing days remain missing observations. The Kalman smoother propagates uncertainty through the latent state; it does not manufacture replacement measurements.
 
+## Pulse-oximeter extension
+
+The pulse-oximeter extension is deliberately separate from the main blood-pressure estimands. The refresh publishes three privacy-safe aggregate artifacts:
+
+- `data/pulse_oximeter_diagnostics.json` — overall coverage, same-device field completeness, descriptive SpO2 summaries, and aggregate cross-device BPM diagnostics;
+- `data/pulse_oximeter_daily_snapshot.csv` — daily relative-day counts and means for SpO2, `bpm_spo2`, and the paired difference `bpm - bpm_spo2`;
+- `data/pulse_oximeter_longitudinal_diagnostics.json` — coverage-aware descriptive time associations for daily mean SpO2 and daily mean cross-device BPM difference.
+
+The daily pulse-oximeter snapshot uses the same `day_index` origin as `data/analysis_snapshot.csv`, which permits alignment without exposing calendar dates.
+
+Longitudinal diagnostics report coverage before slopes. When there are at least four usable observed days, both equal-day and reading-count-weighted HC3 time associations are reported per 30 days. With fewer than four usable days, the output records `estimable: false` rather than fitting an unstable line.
+
+These outputs do not identify the missingness mechanism, apply clinical thresholds, establish interchangeability between the two BPM devices, or support causal interpretation. Numerical pulse-oximeter results should only be added to the public narrative after a secret-backed refresh has generated and reviewed the current aggregate artifacts.
+
 ## 11. What can actually be concluded?
 
 The current synthesis is:
@@ -194,28 +208,35 @@ The broader lesson is methodological:
 
 ## 12. Reproducibility and privacy
 
-The repository contains:
+The supported implementation lives under the canonical `blood_pressure_missingness` package. Important public surfaces include:
 
-- `analysis.py` — primary validation, descriptive statistics, HC3 trends, and state-space analysis;
-- `observation_process_sensitivity.py` — global trend sensitivity to sampling intensity;
-- `gap_aware_trend_decomposition.py` — within/between episode decomposition;
-- `day_influence_sensitivity.py` — Cook's distance, DFBETA, leverage, and leave-one-day-out refits;
-- `episode_observation_sensitivity.py` — episode contrast sensitivity to sampling intensity;
-- `episode_time_form_sensitivity.py` — episode contrast sensitivity to within-episode time form;
-- `temporal_dependence_diagnostics.py` — exact-calendar-lag residual diagnostics that preserve irregular spacing;
-- `validate_current_influence_findings.py` — refresh-time gate for influence conclusions;
-- `validate_current_narrative.py` — consistency gate between the current snapshot and public narrative;
+- `blood_pressure_missingness.public_analysis` — primary validation, descriptive statistics, HC3 trends, and state-space analysis;
+- `blood_pressure_missingness.analyses.observation_process` — global trend sensitivity to sampling intensity;
+- `blood_pressure_missingness.analyses.gap_aware` — within/between episode decomposition;
+- `blood_pressure_missingness.analyses.day_influence` — Cook's distance, DFBETA, leverage, and leave-one-day-out refits;
+- `blood_pressure_missingness.analyses.episode_observation` — episode contrast sensitivity to sampling intensity;
+- `blood_pressure_missingness.analyses.episode_time_form` — episode contrast sensitivity to within-episode time form;
+- `blood_pressure_missingness.analyses.temporal_dependence` — exact-calendar-lag residual diagnostics that preserve irregular spacing;
+- `blood_pressure_missingness.analyses.pulse_oximeter` — aggregate pulse-oximeter diagnostics and daily relative-day snapshot;
+- `blood_pressure_missingness.analyses.pulse_oximeter_longitudinal` — coverage-aware SpO2 and cross-device BPM longitudinal diagnostics;
+- `blood_pressure_missingness.validation.current_influence` — refresh-time gate for influence conclusions;
+- `blood_pressure_missingness.validation.current_narrative` — consistency gate between the current snapshot and public narrative;
 - `blood-pressure-missingness.ipynb` — executable Medium-facing synthesis;
-- `data/analysis_snapshot.csv` — privacy-safe relative-day aggregate snapshot;
-- `data/source_audit.json` — aggregate source-quality audit.
+- `data/analysis_snapshot.csv` — privacy-safe relative-day blood-pressure aggregate snapshot;
+- `data/source_audit.json` — aggregate source-quality audit;
+- `data/pulse_oximeter_diagnostics.json` — aggregate pulse-oximeter coverage and device diagnostics after refresh;
+- `data/pulse_oximeter_daily_snapshot.csv` — privacy-safe daily pulse-oximeter aggregate snapshot after refresh;
+- `data/pulse_oximeter_longitudinal_diagnostics.json` — coverage-aware pulse-oximeter longitudinal diagnostics after refresh.
 
 The raw workbook, private Google Sheet identifiers, credentials, calendar dates, and row-level pulse-oximeter readings are never committed.
 
-To run the public analysis:
+To run the public test suite:
 
 ```bash
-python -m pip install -r requirements.txt
+python -m pip install -e .
 python -m unittest discover -s tests -p 'test_*.py' -v
 ```
+
+See [`SOURCE_REFRESH.md`](SOURCE_REFRESH.md) for the canonical secret-backed refresh and local reproduction commands.
 
 CI validates the current scientific gates and executes the notebook end to end. The manual secret-backed refresh workflow rebuilds only privacy-safe aggregates and derived outputs, then opens a reviewable PR when public aggregate results change.
