@@ -1,0 +1,24 @@
+name: Request blood-pressure refresh
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/refresh-blood-pressure.request
+
+permissions:
+  actions: write
+  contents: read
+
+jobs:
+  dispatch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dispatch refresh workflow
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: >-
+          gh workflow run refresh-blood-pressure-analysis.yml
+          --repo ${{ github.repository }}
+          --ref main
