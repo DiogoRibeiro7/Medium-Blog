@@ -1,5 +1,5 @@
 # Blood-pressure refresh request
 
-request: initial-pulse-oximeter-refresh-2026-09-14
+request: retry-pulse-oximeter-refresh-after-worksheet-autodetect-2026-09-14
 
 Changing this token in a reviewed pull request triggers the secret-backed blood-pressure refresh after the change lands on `main`.
