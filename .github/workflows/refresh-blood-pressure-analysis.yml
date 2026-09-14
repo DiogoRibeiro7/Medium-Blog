@@ -33,12 +33,21 @@ jobs:
           -p 'test_*.py'
           -v
 
-      - name: Refresh privacy-safe aggregates from Google Sheets
+      - name: Resolve blood-pressure worksheet
         working-directory: Blood_Pressure_Missingness
         env:
           BLOOD_PRESSURE_SHEET_URL: ${{ secrets.BLOOD_PRESSURE_SHEET_URL }}
           GOOGLE_SHEETS_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SHEETS_SERVICE_ACCOUNT_JSON }}
           BLOOD_PRESSURE_WORKSHEET: ${{ secrets.BLOOD_PRESSURE_WORKSHEET }}
+        run: >-
+          python -m blood_pressure_missingness.data_sources.worksheet_selection
+          --github-env "$GITHUB_ENV"
+
+      - name: Refresh privacy-safe aggregates from Google Sheets
+        working-directory: Blood_Pressure_Missingness
+        env:
+          BLOOD_PRESSURE_SHEET_URL: ${{ secrets.BLOOD_PRESSURE_SHEET_URL }}
+          GOOGLE_SHEETS_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SHEETS_SERVICE_ACCOUNT_JSON }}
         run: >-
           python -m blood_pressure_missingness.data_sources.google_sheets
           --data-dir data
@@ -48,7 +57,6 @@ jobs:
         env:
           BLOOD_PRESSURE_SHEET_URL: ${{ secrets.BLOOD_PRESSURE_SHEET_URL }}
           GOOGLE_SHEETS_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SHEETS_SERVICE_ACCOUNT_JSON }}
-          BLOOD_PRESSURE_WORKSHEET: ${{ secrets.BLOOD_PRESSURE_WORKSHEET }}
         run: >-
           python -m blood_pressure_missingness.analyses.pulse_oximeter
           --output data/pulse_oximeter_diagnostics.json
@@ -67,7 +75,6 @@ jobs:
         env:
           BLOOD_PRESSURE_SHEET_URL: ${{ secrets.BLOOD_PRESSURE_SHEET_URL }}
           GOOGLE_SHEETS_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SHEETS_SERVICE_ACCOUNT_JSON }}
-          BLOOD_PRESSURE_WORKSHEET: ${{ secrets.BLOOD_PRESSURE_WORKSHEET }}
         run: >-
           python -m blood_pressure_missingness.analyses.temperature
           --output figures/temperature_covariate.json
@@ -77,7 +84,6 @@ jobs:
         env:
           BLOOD_PRESSURE_SHEET_URL: ${{ secrets.BLOOD_PRESSURE_SHEET_URL }}
           GOOGLE_SHEETS_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SHEETS_SERVICE_ACCOUNT_JSON }}
-          BLOOD_PRESSURE_WORKSHEET: ${{ secrets.BLOOD_PRESSURE_WORKSHEET }}
         run: >-
           python -m blood_pressure_missingness.analyses.temperature_sensitivity
           --output figures/temperature_covariate_sensitivity.json
