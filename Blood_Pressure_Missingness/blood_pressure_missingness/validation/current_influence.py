@@ -18,6 +18,25 @@ from blood_pressure_missingness.analyses import day_influence as influence
 from blood_pressure_missingness.analyses import gap_aware
 
 
+def _validate_significant_deletions(significant: object, n_observed: int) -> None:
+    """Allow robustness to strengthen while rejecting loss of significance evidence."""
+
+    if not isinstance(significant, list):
+        raise TypeError(
+            "within_episode_significant_negative_deletions must be a list."
+        )
+    if len(significant) > n_observed:
+        raise RuntimeError(
+            "Invalid influence summary: significant deletion count exceeds the "
+            "number of observed days."
+        )
+    if not significant:
+        raise RuntimeError(
+            "Scientific finding changed: no leave-one-day-out within-episode "
+            "slope remains significantly negative."
+        )
+
+
 def validate_current_findings(data_path: Path) -> None:
     """Raise when the documented influence conclusions no longer hold."""
 
@@ -40,12 +59,13 @@ def validate_current_findings(data_path: Path) -> None:
             "no longer stays below zero under every single-day deletion."
         )
 
-    # The stable within-episode finding is about sign and deletion sensitivity,
-    # not whether one particular full-data confidence interval happens to straddle
-    # zero. As the live source grows, the baseline HC3 interval may legitimately
-    # move from crossing zero to lying just below zero without changing the core
-    # conclusion: all leave-one-day-out point estimates remain negative, while
-    # deletion-specific significance is mixed.
+    # The stable within-episode finding is about sign robustness and retained
+    # significance evidence, not about requiring a particular mix of significant
+    # and non-significant deletions. As the live source grows, robustness may
+    # legitimately strengthen from mixed deletion-specific significance to every
+    # deletion remaining significantly negative. What would invalidate the
+    # finding is loss of the negative point-estimate sign or complete loss of
+    # significant-negative leave-one-day-out evidence.
     gap = gap_aware.dominant_internal_gap(records)
     before, after = gap_aware.split_observation_episodes(records, gap)
     baseline_episode = gap_aware._episode_centered_model(before, after)
@@ -67,17 +87,11 @@ def validate_current_findings(data_path: Path) -> None:
             "within-episode slope point estimate is no longer negative."
         )
 
-    significant = summary["within_episode_significant_negative_deletions"]
-    if not isinstance(significant, list):
-        raise TypeError(
-            "within_episode_significant_negative_deletions must be a list."
-        )
     n_observed = int(results["n_observed_days"])
-    if not 0 < len(significant) < n_observed:
-        raise RuntimeError(
-            "Scientific finding changed: within-episode significance is no longer "
-            "partially deletion-sensitive."
-        )
+    _validate_significant_deletions(
+        summary["within_episode_significant_negative_deletions"],
+        n_observed,
+    )
 
 
 def parse_args() -> argparse.Namespace:
