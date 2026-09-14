@@ -20,26 +20,26 @@ The current privacy-safe snapshot, refreshed from the private Google Sheet, cont
 
 | Item | Count |
 |---|---:|
-| Valid measurements | 171 |
-| Measurement sessions | 87 |
-| Observed calendar days | 26 |
-| Calendar days in analysis window | 65 |
-| Missing calendar days | 39 |
+| Valid measurements | 238 |
+| Measurement sessions | 108 |
+| Observed calendar days | 31 |
+| Calendar days in analysis window | 72 |
+| Missing calendar days | 41 |
 | Longest missing run | 32 days |
 
-Calendar-day coverage is therefore **40.0%**, and the 32-day gap accounts for **82.1% of all missing days**.
+Calendar-day coverage is therefore **43.1%**, and the 32-day gap accounts for **78.0% of all missing days**.
 
-Sampling intensity remains highly uneven: observed days contain between **1 and 21 readings**. Heavily sampled days tend to have lower observed systolic means. The reading-weighted systolic mean is **115.16 mmHg**, compared with **118.11 mmHg** when each observed day receives equal weight.
+Sampling intensity remains highly uneven: observed days contain between **1 and 22 readings**. Heavily sampled days tend to have lower observed systolic means. The reading-weighted systolic mean is **114.21 mmHg**, compared with **116.97 mmHg** when each observed day receives equal weight.
 
-That makes a flat 171-row i.i.d. analysis a poor default.
+That makes a flat 238-row i.i.d. analysis a poor default.
 
-The private source also accepts two optional pulse-oximeter fields: `spo2` for oxygen saturation and `bpm_spo2` for the pulse reported by that same device. They remain source-specific measurements rather than replacements for the blood-pressure monitor's `bpm`. Historical rows may leave both fields blank. The pulse-oximeter extension has its own aggregate diagnostics, daily relative-day snapshot, and coverage-aware longitudinal analysis; none of those outputs silently changes the established blood-pressure estimands or article conclusions.
+The private source also accepts two optional pulse-oximeter fields: `SpO2` for oxygen saturation and `bpm_spo2` for the pulse reported by that same device. `SpO2` is mapped internally to the lowercase `spo2` analysis field. They remain source-specific measurements rather than replacements for the blood-pressure monitor's `bpm`. Historical rows may leave both fields blank. The pulse-oximeter extension has its own aggregate diagnostics, daily relative-day snapshot, and coverage-aware longitudinal analysis; none of those outputs silently changes the established blood-pressure estimands or article conclusions.
 
 ## 2. Data quality before modelling
 
 The current live source still requires explicit preprocessing rules:
 
-- thirty measurements require an Excel day/month inversion repair;
+- thirty-seven measurements require an Excel day/month inversion repair;
 - two text dates require the same day/month correction;
 - the current Sheet contains no blank placeholder measurement rows;
 - pulse pressure matches `systolic - diastolic` on every valid row in the current source;
@@ -60,28 +60,28 @@ is fitted only to observed calendar days with HC3 robust covariance.
 For systolic pressure, the current estimate is
 
 \[
-\boxed{-4.28\ \text{mmHg per 30 days}}
+\boxed{-4.42\ \text{mmHg per 30 days}}
 \]
 
 with 95% HC3 interval
 
 \[
-[-6.52,-2.04].
+[-6.38,-2.46].
 \]
 
 This remains descriptive rather than a claim of a smooth trajectory, because the line spans a 32-day interval with no measurements.
 
 ## 4. Sensitivity to observation intensity
 
-The global systolic slope remains negative under ordinary alternatives:
+The global systolic slope remains negative under all five tested weighting and adjustment choices:
 
 | Specification | Slope per 30 days | 95% HC3 CI |
 |---|---:|---:|
-| Equal observed day | -4.28 | [-6.52, -2.04] |
-| Adjust for `log(1 + readings/day)` | -3.15 | [-5.48, -0.83] |
-| Reading-count weighted | -4.88 | [-7.05, -2.71] |
-| Capped reading weight | -4.48 | [-6.52, -2.43] |
-| Inverse-intensity stress | -3.13 | [-6.62, 0.35] |
+| Equal observed day | -4.42 | [-6.38, -2.46] |
+| Adjust for `log(1 + readings/day)` | -3.14 | [-5.05, -1.23] |
+| Reading-count weighted | -4.49 | [-6.16, -2.82] |
+| Capped reading weight | -4.51 | [-6.31, -2.72] |
+| Inverse-intensity stress | -3.43 | [-6.68, -0.18] |
 
 The inverse-intensity case is deliberately a **stress test, not inverse-probability weighting**. Observation probabilities and the MCAR/MAR/MNAR mechanism are not identified from this tracker.
 
@@ -89,69 +89,69 @@ The inverse-intensity case is deliberately a **stress test, not inverse-probabil
 
 The unique longest internal missing run still separates the observed data into two episodes.
 
-The pre-gap mean systolic level is about **122.53 mmHg**, and the post-gap mean is about **116.15 mmHg**. In the common-linear gap-aware model, the post-minus-pre episode contrast is
+The pre-gap mean systolic level is about **122.01 mmHg**, and the post-gap mean is about **115.22 mmHg**. In the common-linear gap-aware model, the post-minus-pre episode contrast is
 
 \[
-\boxed{-6.38\ \text{mmHg}}
+\boxed{-6.79\ \text{mmHg}}
 \]
 
 with HC3 interval
 
 \[
-[-10.10,-2.66].
+[-10.42,-3.17].
 \]
 
-An exact OLS covariance decomposition shows that about **86.5% of the negative global time-pressure covariance** comes from separation between the two observed episodes.
+An exact OLS covariance decomposition shows that about **79.1% of the negative global time-pressure covariance** comes from separation between the two observed episodes.
 
-The common within-episode slope is now about **-9.16 mmHg per 30 days**, with full-data HC3 interval **[-18.19, -0.13]**. Its inferential stability is still weaker than the global and episode-level results because leave-one-day-out significance depends on which observed day is removed.
+The common within-episode slope is about **-8.60 mmHg per 30 days**, with full-data HC3 interval **[-14.36, -2.84]**. On the refreshed snapshot its leave-one-day-out inference has strengthened: every deletion keeps the within-episode slope negative and its HC3 interval below zero.
 
 This is **not change-point detection**. There are no measurements inside the 32-day gap, so the data cannot identify when, how, or why the level difference arose.
 
 ## 6. Single-day influence
 
-With 26 observed days, small-sample influence still matters. Leave-one-observed-day-out refits hold the full-data episode definition fixed and remove each observed day once.
+With 31 observed days, small-sample influence still matters. Leave-one-observed-day-out refits hold the full-data episode definition fixed and remove each observed day once.
 
 On the current snapshot:
 
-- the global systolic slope ranges from **-4.87 to -3.80 mmHg/30d** and its HC3 interval stays below zero after every deletion;
-- the episode contrast ranges from **-7.24 to -5.53 mmHg** and its HC3 interval also stays below zero after every deletion;
-- every within-episode point estimate remains negative, but deletion-specific significance is mixed.
+- the global systolic slope ranges from **-4.92 to -3.99 mmHg/30d** and its HC3 interval stays below zero after every deletion;
+- the episode contrast ranges from **-7.58 to -5.87 mmHg** and its HC3 interval also stays below zero after every deletion;
+- the within-episode slope ranges from **-10.30 to -7.58 mmHg/30d**, and all 31 deletion-specific HC3 intervals remain below zero.
 
-So neither the global association nor the episode contrast is carried by one isolated observed day.
+So none of the three negative findings is carried by one isolated observed day on the current snapshot.
 
 ## 7. Episode contrast under unequal sampling intensity
 
-The gap-defined post-minus-pre contrast remains negative under ordinary choices:
+The gap-defined post-minus-pre contrast remains negative under all five tested choices:
 
 | Specification | Post - pre contrast | 95% HC3 CI |
 |---|---:|---:|
-| Equal day | -6.38 | [-10.10, -2.66] |
-| Sampling adjusted | -4.77 | [-8.43, -1.11] |
-| Reading weighted | -6.62 | [-10.22, -3.02] |
-| Capped weight | -6.63 | [-10.08, -3.17] |
-| Inverse-intensity stress | -5.03 | [-10.92, 0.86] |
+| Equal day | -6.79 | [-10.42, -3.17] |
+| Sampling adjusted | -5.46 | [-8.84, -2.07] |
+| Reading weighted | -6.67 | [-9.88, -3.47] |
+| Capped weight | -6.96 | [-10.36, -3.56] |
+| Inverse-intensity stress | -6.09 | [-11.65, -0.52] |
 
-Only the deliberately aggressive inverse-intensity stress case is inconclusive.
+Even the deliberately aggressive inverse-intensity stress contrast is now below zero. That does not identify an observation model; it only shows that this particular contrast is more robust to the tested reweighting on the refreshed snapshot.
 
 ## 8. Episode contrast under alternative within-episode time forms
 
-The current live snapshot is more robust to this particular sensitivity analysis than the earlier workbook snapshot:
+The current live snapshot remains robust to the tested time-form sensitivity analysis:
 
 | Within-episode specification | Post - pre contrast | 95% HC3 CI |
 |---|---:|---:|
-| No time adjustment | -6.38 | [-10.07, -2.69] |
-| Common linear slope | -6.38 | [-10.10, -2.66] |
-| Separate linear slopes | -6.38 | [-10.65, -2.11] |
-| Common quadratic curvature | -5.28 | [-9.83, -0.72] |
-| Separate slopes + common quadratic stress | -5.31 | [-10.42, -0.20] |
+| No time adjustment | -6.79 | [-10.48, -3.10] |
+| Common linear slope | -6.79 | [-10.42, -3.17] |
+| Separate linear slopes | -6.79 | [-11.07, -2.52] |
+| Common quadratic curvature | -6.37 | [-10.66, -2.08] |
+| Separate slopes + common quadratic stress | -6.38 | [-11.27, -1.50] |
 
 All five intervals are now below zero. The five-parameter specification remains a **stress model, not a preferred trajectory**; the sample is still small and only eight observed days precede the long gap.
 
 ## 9. Temporal dependence must respect calendar distance
 
-Residual dependence is assessed after removing the established gap-aware common-linear episode structure. The key complication is that consecutive observed rows are not consecutive calendar days: among the 25 adjacent observed-row pairs, the actual spacings are **20 one-day gaps, one two-day gap, three three-day gaps, and one 33-day gap**.
+Residual dependence is assessed after removing the established gap-aware common-linear episode structure. The key complication is that consecutive observed rows are not consecutive calendar days: among the 30 adjacent observed-row pairs, the actual spacings are **24 one-day gaps, one two-day gap, four three-day gaps, and one 33-day gap**.
 
-If those 25 pairs are treated mechanically as a single row-order lag, the residual correlation is about **-0.158**. Restricting the comparison to the **20 pairs exactly one calendar day apart within the same gap-defined episode** gives an essentially zero residual correlation of about **0.005**.
+If those 30 pairs are treated mechanically as a single row-order lag, the residual correlation is about **-0.201**. Restricting the comparison to the **24 pairs exactly one calendar day apart within the same gap-defined episode** gives an essentially zero residual correlation of about **-0.049**.
 
 The longer exact-calendar-lag correlations fluctuate with small pair counts. They are therefore reported as descriptive diagnostics, not as a formal test of serial independence. In particular, this analysis does **not** use ordinary row-order Newey-West/HAC inference, because that would treat day 8 and day 41 as if they were one time step apart.
 
@@ -183,24 +183,27 @@ The pulse-oximeter extension is deliberately separate from the main blood-pressu
 - `data/pulse_oximeter_daily_snapshot.csv` — daily relative-day counts and means for SpO2, `bpm_spo2`, and the paired difference `bpm - bpm_spo2`;
 - `data/pulse_oximeter_longitudinal_diagnostics.json` — coverage-aware descriptive time associations for daily mean SpO2 and daily mean cross-device BPM difference.
 
-The daily pulse-oximeter snapshot uses the same `day_index` origin as `data/analysis_snapshot.csv`, which permits alignment without exposing calendar dates.
+The first real secret-backed pulse refresh contains **9 SpO2 readings and 9 paired device-BPM readings**, all on one observed pulse-oximeter day. Relative to all 238 blood-pressure measurements, pulse-oximeter row coverage is therefore **3.8%**. The nine SpO2 values have mean **97.56**, median **98**, sample SD **0.88**, and range **96 to 99**. These are descriptive measurements only; no clinical threshold is applied.
 
-Longitudinal diagnostics report coverage before slopes. When there are at least four usable observed days, both equal-day and reading-count-weighted HC3 time associations are reported per 30 days. With fewer than four usable days, the output records `estimable: false` rather than fitting an unstable line.
+For the same nine paired readings, the blood-pressure monitor reports mean BPM **93.56** and the pulse oximeter mean BPM **92.44**. Defining the paired difference as `bpm - bpm_spo2`, the mean difference is **1.11 BPM**, the median difference is **1 BPM**, the mean absolute difference is **1.11 BPM**, the RMSE is **1.41 BPM**, and the maximum absolute difference is **3 BPM**. These diagnostics describe agreement on the observed pairs; they do not establish device interchangeability.
 
-These outputs do not identify the missingness mechanism, apply clinical thresholds, establish interchangeability between the two BPM devices, or support causal interpretation. Numerical pulse-oximeter results should only be added to the public narrative after a secret-backed refresh has generated and reviewed the current aggregate artifacts.
+The daily pulse-oximeter snapshot uses the same `day_index` origin as `data/analysis_snapshot.csv`, which permits alignment without exposing calendar dates. The current pulse data occur only on relative day index 71, so there is just **1 pulse-oximeter observed day across the 72-day calendar window**. Longitudinal diagnostics require at least four usable days; consequently both the SpO2 time association and the cross-device BPM-difference time association correctly report `estimable: false` rather than fitting a one-day trend.
+
+These outputs do not identify the missingness mechanism, apply clinical thresholds, establish interchangeability between the two BPM devices, or support causal interpretation.
 
 ## 11. What can actually be concluded?
 
 The current synthesis is:
 
 1. The observed global systolic association is negative.
-2. Most of that association is structurally tied to separation between two observed episodes around the 32-day gap.
-3. The post-gap episode is about **5-6 mmHg lower** than the pre-gap episode across the tested ordinary specifications.
-4. The episode contrast survives ordinary sampling-intensity adjustments, all tested within-episode time forms, and deletion of any one observed day on the current snapshot.
-5. The inverse-intensity sampling stress specification remains inconclusive.
+2. About four-fifths of that negative global time-pressure covariance is structurally tied to separation between two observed episodes around the 32-day gap.
+3. The post-gap episode is about **5.5-7.0 mmHg lower** than the pre-gap episode across the tested sampling-intensity specifications and about **6.4-6.8 mmHg lower** across the tested within-episode time forms.
+4. The episode contrast survives all tested sampling-intensity adjustments, all five tested within-episode time forms, and deletion of any one observed day on the current snapshot.
+5. The common within-episode slope is also negative under every single-day deletion, although the sampling-adjusted and inverse-intensity within-episode slope specifications remain much less precise than the equal-day fit.
 6. Residual-dependence diagnostics change materially when actual calendar spacing is respected; row-order adjacency is not a valid daily lag for this irregular sample.
 7. The data cannot identify when or why the episode difference arose inside the unobserved interval.
 8. The tracker cannot identify the missingness mechanism as MCAR, MAR, or MNAR from the observed data alone.
+9. The current pulse-oximeter sample is sufficient for descriptive SpO2 and paired-BPM device diagnostics, but not for a longitudinal trend because it covers only one observed pulse day.
 
 The broader lesson is methodological:
 

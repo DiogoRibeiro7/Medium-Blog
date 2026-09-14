@@ -1,0 +1,39 @@
+{
+  "coverage": {
+    "blood_pressure_calendar_days": 72,
+    "blood_pressure_observed_days": 31,
+    "pulse_oximeter_observed_days": 1,
+    "first_pulse_oximeter_day_index": 71,
+    "last_pulse_oximeter_day_index": 71,
+    "pulse_oximeter_span_days": 1,
+    "pulse_oximeter_coverage_of_full_calendar": 0.01388889,
+    "pulse_oximeter_coverage_of_bp_observed_days": 0.03225806,
+    "pulse_oximeter_coverage_within_its_observed_span": 1.0,
+    "total_spo2_readings": 9,
+    "total_bpm_spo2_readings": 9,
+    "total_paired_bpm_readings": 9
+  },
+  "spo2_time_association": {
+    "estimable": false,
+    "n_days": 1,
+    "minimum_days_required": 4,
+    "reason": "insufficient_observed_days",
+    "equal_day": null,
+    "reading_count_weighted": null
+  },
+  "bpm_device_difference_time_association": {
+    "estimable": false,
+    "n_days": 1,
+    "minimum_days_required": 4,
+    "reason": "insufficient_observed_days",
+    "equal_day": null,
+    "reading_count_weighted": null
+  },
+  "interpretation": {
+    "scope": "descriptive_longitudinal_diagnostics",
+    "coverage_must_be_considered_with_time_associations": true,
+    "missingness_mechanism_identified": false,
+    "clinical_thresholds_applied": false,
+    "causal_interpretation": false
+  }
+}

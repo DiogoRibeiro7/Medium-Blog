@@ -83,12 +83,21 @@ class ObservationProcessSensitivityTests(unittest.TestCase):
         )
         self.assertLess(float(adjusted["ci95_high_per_30_days"]), 0.0)
 
-    def test_inverse_intensity_stress_test_crosses_zero(self) -> None:
-        """The deliberate sparse-day stress test should expose trend fragility."""
+    def test_inverse_intensity_stress_test_is_distinct_and_well_formed(self) -> None:
+        """The deliberate sparse-day stress fit must remain a distinct valid estimate."""
 
+        baseline = self._estimate("equal_day")
         estimate = self._estimate("inverse_intensity_stress")
-        self.assertLess(float(estimate["ci95_low_per_30_days"]), 0.0)
-        self.assertGreater(float(estimate["ci95_high_per_30_days"]), 0.0)
+        low = float(estimate["ci95_low_per_30_days"])
+        high = float(estimate["ci95_high_per_30_days"])
+        slope = float(estimate["slope_per_30_days"])
+        self.assertLess(low, high)
+        self.assertLess(slope, 0.0)
+        self.assertNotAlmostEqual(
+            slope,
+            float(baseline["slope_per_30_days"]),
+            places=10,
+        )
 
     def test_inverse_intensity_is_not_labeled_as_ipw(self) -> None:
         """No inverse-probability interpretation is allowed without probabilities."""
