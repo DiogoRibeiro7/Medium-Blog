@@ -71,7 +71,7 @@ def _required_env(name: str) -> str:
 
 
 def fetch_sheet_values() -> list[list[Any]]:
-    """Read the unique private worksheet containing the canonical source schema."""
+    """Read the private Google Sheet using secret-backed service-account auth."""
 
     sheet_url = _required_env("BLOOD_PRESSURE_SHEET_URL")
     raw_credentials = _required_env("GOOGLE_SHEETS_SERVICE_ACCOUNT_JSON")
@@ -88,17 +88,19 @@ def fetch_sheet_values() -> list[list[Any]]:
 
     import gspread
 
-    from blood_pressure_missingness.data_sources.worksheet_selection import (
-        select_worksheet,
-    )
-
     client = gspread.service_account_from_dict(credentials)
     spreadsheet = client.open_by_url(sheet_url)
-    worksheet = select_worksheet(spreadsheet, worksheet_name)
+    worksheet = (
+        spreadsheet.worksheet(worksheet_name)
+        if worksheet_name
+        else spreadsheet.get_worksheet(0)
+    )
+    if worksheet is None:
+        raise RuntimeError("The Google Sheet does not contain a worksheet.")
 
     values = worksheet.get_all_values(value_render_option="UNFORMATTED_VALUE")
     if not values:
-        raise ValueError("The selected Google Sheet worksheet is empty.")
+        raise ValueError("The Google Sheet is empty.")
     return values
 
 
@@ -195,8 +197,7 @@ def _parse_source_time(value: Any) -> time:
             remainder, 60 * MICROSECONDS_PER_SECOND
         )
         second_value, microsecond_value = divmod(
-            remainder,
-            MICROSECONDS_PER_SECOND,
+            remainder, MICROSECONDS_PER_SECOND
         )
         return time(
             hour_value,
@@ -434,24 +435,27 @@ def parse_measurements(
     audit: dict[str, Any] = {
         "source_rows_excluding_header": len(matrix) - 1,
         "valid_measurements": len(measurements),
-        "blank_placeholders_excluded": blank_placeholders,
-        "summary_rows_excluded": summary_rows,
+        "blank_placeholder_rows": blank_placeholders,
+        "spreadsheet_summary_rows": summary_rows,
         "date_repairs": {
-            "excel_day_month_swaps": excel_repairs,
-            "text_year_day_month_repairs": text_repairs,
+            "excel_day_month_inversion_measurements": excel_repairs,
+            "text_day_month_inversion_measurements": text_repairs,
         },
-        "context_missingness_on_valid_measurements": context_payload,
-        "pulse_pressure_consistency": {
-            "definition": "systolic_mmHg - diastolic_mmHg",
-            "source_diff_mismatches": pulse_mismatches,
-            "published_uses_derived_values": True,
-            "reported_source_mean": round(reported_pulse_mean, 8),
-            "cleaned_measurement_mean": round(cleaned_pulse_mean, 8),
-            "difference_cleaned_minus_reported": round(
-                cleaned_pulse_mean - reported_pulse_mean,
+        "derived_field_check": {
+            "pulse_pressure_mismatches_on_valid_rows": pulse_mismatches,
+            "pulse_pressure_output_policy": "derived_from_systolic_and_diastolic",
+            "reported_spreadsheet_mean_pulse_pressure_mmHg": round(
+                reported_pulse_mean, 8
+            ),
+            "cleaned_mean_pulse_pressure_mmHg": round(cleaned_pulse_mean, 8),
+            "relative_bias_percent": round(
+                100.0
+                * (reported_pulse_mean - cleaned_pulse_mean)
+                / cleaned_pulse_mean,
                 8,
             ),
         },
+        "context_missingness_on_valid_measurements": context_payload,
         "pulse_oximeter": pulse_oximeter_audit,
     }
     return measurements, audit
@@ -459,20 +463,28 @@ def parse_measurements(
 
 def sessionize(
     measurements: Sequence[Measurement],
+    gap_minutes: int = SESSION_GAP_MINUTES,
 ) -> list[list[Measurement]]:
-    """Group measurements into sessions separated by at least 15 minutes."""
+    """Group consecutive same-day readings no more than ``gap_minutes`` apart."""
+
+    if gap_minutes <= 0:
+        raise ValueError("gap_minutes must be positive.")
 
     sessions: list[list[Measurement]] = []
-    for measurement in measurements:
-        if not sessions:
-            sessions.append([measurement])
+    current: list[Measurement] = []
+    for measurement in sorted(measurements, key=lambda item: item.timestamp):
+        if not current:
+            current = [measurement]
             continue
-        previous = sessions[-1][-1]
-        gap_minutes = (measurement.timestamp - previous.timestamp).total_seconds() / 60.0
-        if gap_minutes < SESSION_GAP_MINUTES:
-            sessions[-1].append(measurement)
+        previous = current[-1]
+        gap = (measurement.timestamp - previous.timestamp).total_seconds() / 60.0
+        if measurement.day == previous.day and gap <= gap_minutes:
+            current.append(measurement)
         else:
-            sessions.append([measurement])
+            sessions.append(current)
+            current = [measurement]
+    if current:
+        sessions.append(current)
     return sessions
 
 
@@ -480,12 +492,11 @@ def build_snapshot(
     measurements: Sequence[Measurement],
     sessions: Sequence[Sequence[Measurement]],
 ) -> list[dict[str, Any]]:
-    """Create a complete date-free calendar grid with daily aggregates."""
+    """Build one date-free aggregate row for every relative calendar day."""
 
     by_day: defaultdict[date, list[Measurement]] = defaultdict(list)
     for measurement in measurements:
         by_day[measurement.day].append(measurement)
-
     session_count_by_day: Counter[date] = Counter(
         session[0].day for session in sessions if session
     )
