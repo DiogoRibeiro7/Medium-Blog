@@ -361,8 +361,6 @@ def build_summary(
             "variable": OPEN_METEO_VARIABLE,
             "unit": "degC",
             "location": FIANES_LABEL,
-            "latitude": FIANES_LATITUDE,
-            "longitude": FIANES_LONGITUDE,
             "timezone": FIANES_TIMEZONE_NAME,
             "spatial_interpretation": (
                 "gridded model/reanalysis estimate; not an on-site thermometer"
