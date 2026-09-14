@@ -286,6 +286,16 @@ def build_longitudinal_diagnostics(
     if any(day_index not in bp_day_indices for day_index in pulse_day_indices):
         raise ValueError("Pulse-oximeter days must lie inside the blood-pressure calendar.")
 
+    observed_bp_day_indices = {
+        item.day_index for item in bp_calendar if item.observed
+    }
+    if any(
+        day_index not in observed_bp_day_indices for day_index in pulse_day_indices
+    ):
+        raise ValueError(
+            "Pulse-oximeter days must correspond to observed blood-pressure days."
+        )
+
     n_calendar_days = len(bp_calendar)
     n_bp_observed_days = sum(item.observed for item in bp_calendar)
     n_pulse_days = len(pulse_days)
