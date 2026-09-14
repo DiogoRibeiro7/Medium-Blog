@@ -8,7 +8,7 @@ Configure these repository secrets outside the source tree:
 
 - `BLOOD_PRESSURE_SHEET_URL`: the private Google Sheets URL.
 - `GOOGLE_SHEETS_SERVICE_ACCOUNT_JSON`: the complete Google service-account credential JSON.
-- `BLOOD_PRESSURE_WORKSHEET`: optional worksheet name. If omitted, the first worksheet is used.
+- `BLOOD_PRESSURE_WORKSHEET`: optional worksheet name. If omitted, the workflow resolves the unique worksheet containing the complete expected source schema.
 
 Share the private Google Sheet with the service account's `client_email` as a viewer. Do not make the Sheet public.
 
@@ -18,7 +18,7 @@ The workflow never prints the Sheet URL, spreadsheet ID, credentials, raw measur
 
 The blood-pressure source includes the established blood-pressure and context fields plus two optional measurements from the pulse oximeter:
 
-- `spo2`: oxygen saturation from the pulse oximeter;
+- `SpO2`: oxygen saturation from the pulse oximeter in the private Sheet; it is mapped internally to the lowercase `spo2` field used by the analysis code and public aggregate names;
 - `bpm_spo2`: pulse rate from that same device.
 
 The existing `bpm` field remains the pulse rate from the blood-pressure monitor. `bpm` and `bpm_spo2` are kept as distinct device-specific measurements.
@@ -27,12 +27,12 @@ Historical rows may leave the pulse-oximeter fields blank. Missing pulse-oximete
 
 ## Refresh pipeline
 
-Run the GitHub Actions workflow **Refresh blood-pressure analysis** manually.
+Run the GitHub Actions workflow **Refresh blood-pressure analysis** manually, or change the reviewed `.github/refresh-blood-pressure.request` token to request a refresh on merge.
 
 It performs:
 
 1. secret-backed authentication to Google Sheets with `gspread`;
-2. source-schema validation, including the optional `spo2` and `bpm_spo2` fields;
+2. worksheet resolution and source-schema validation, including the optional `SpO2` and `bpm_spo2` fields;
 3. the explicit legacy date repairs documented by the analysis;
 4. removal of blank placeholder and spreadsheet-summary rows;
 5. 15-minute measurement-session construction;
@@ -83,4 +83,4 @@ The source-refresh module writes only the privacy-safe blood-pressure snapshot a
 
 The temperature analysis also reuses the private Sheet in memory, joins it to Open-Meteo hourly temperature, and writes only aggregate model diagnostics. It does not persist calendar dates, row-level times, row-level matched temperatures, or a day-indexed temperature series.
 
-The established blood-pressure analysis and the pulse-oximeter extension remain separate analysis surfaces. Adding `spo2` and `bpm_spo2` does not automatically change the published blood-pressure estimands or article conclusions.
+The established blood-pressure analysis and the pulse-oximeter extension remain separate analysis surfaces. Adding `SpO2` and `bpm_spo2` to the private source does not automatically change the published blood-pressure estimands or article conclusions.
