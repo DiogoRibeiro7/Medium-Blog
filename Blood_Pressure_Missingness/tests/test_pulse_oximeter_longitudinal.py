@@ -78,6 +78,23 @@ class PulseOximeterLongitudinalTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "inside the blood-pressure calendar"):
             analysis.build_longitudinal_diagnostics(pulse_days, calendar)
 
+    def test_pulse_days_must_be_observed_bp_days(self) -> None:
+        """Pulse data cannot be attached to a BP calendar day marked unobserved."""
+
+        pulse_days = [analysis.PulseOximeterDay(2, 1, 98.0, 1, 70.0, 1, 0.0)]
+        calendar = [
+            analysis.BloodPressureCalendarDay(day_index=0, observed=True),
+            analysis.BloodPressureCalendarDay(day_index=1, observed=True),
+            analysis.BloodPressureCalendarDay(day_index=2, observed=False),
+            analysis.BloodPressureCalendarDay(day_index=3, observed=True),
+        ]
+
+        with self.assertRaisesRegex(
+            ValueError,
+            "correspond to observed blood-pressure days",
+        ):
+            analysis.build_longitudinal_diagnostics(pulse_days, calendar)
+
     def test_loader_rejects_inconsistent_count_mean_pair(self) -> None:
         """A positive count with a blank daily mean is malformed aggregate data."""
 
