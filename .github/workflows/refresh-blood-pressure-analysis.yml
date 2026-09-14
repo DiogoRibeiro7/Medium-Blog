@@ -143,6 +143,13 @@ jobs:
           python -m blood_pressure_missingness.validation.current_influence
           --data data/analysis_snapshot.csv
 
+      - name: Validate generated public artifact contracts
+        run: >-
+          python -m unittest discover
+          -s Blood_Pressure_Missingness/tests
+          -p 'test_*contract.py'
+          -v
+
       - name: Validate that no raw source file was written
         run: |
           if find Blood_Pressure_Missingness -type f \( -name '*.xlsx' -o -name '*.xls' \) | grep -q .; then
