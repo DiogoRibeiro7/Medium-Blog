@@ -32,7 +32,7 @@ EXPECTED_COLUMNS: tuple[str, ...] = (
     "Sleep",
     "Meal",
     "Symptoms",
-    "spo2",
+    "SpO2",
     "bpm_spo2",
 )
 SESSION_GAP_MINUTES = 15
