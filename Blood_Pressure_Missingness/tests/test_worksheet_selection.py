@@ -70,7 +70,7 @@ class WorksheetSelectionTests(unittest.TestCase):
             [FakeWorksheet("Old", list(EXPECTED_COLUMNS[:-2]))]
         )
 
-        with self.assertRaisesRegex(ValueError, "spo2, bpm_spo2"):
+        with self.assertRaisesRegex(ValueError, "SpO2, bpm_spo2"):
             select_worksheet(spreadsheet, "Old")
 
     def test_multiple_complete_matches_require_explicit_configuration(self) -> None:
