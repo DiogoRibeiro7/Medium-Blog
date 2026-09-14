@@ -1,48 +1,48 @@
 {
-  "n_observed_days": 26,
+  "n_observed_days": 31,
   "trend_estimates": [
     {
       "name": "equal_day",
-      "slope_per_30_days": -4.27560418380342,
-      "ci95_low_per_30_days": -6.5155240266693575,
-      "ci95_high_per_30_days": -2.0356843409374816,
-      "p_value": 0.0001831300050221193
+      "slope_per_30_days": -4.419054245497859,
+      "ci95_low_per_30_days": -6.376150065817306,
+      "ci95_high_per_30_days": -2.4619584251784135,
+      "p_value": 9.620557966164723e-06
     },
     {
       "name": "sampling_adjusted",
-      "slope_per_30_days": -3.1548168251564364,
-      "ci95_low_per_30_days": -5.478988104116147,
-      "ci95_high_per_30_days": -0.8306455461967257,
-      "p_value": 0.007803772094799333
+      "slope_per_30_days": -3.140424867778023,
+      "ci95_low_per_30_days": -5.0511266742186764,
+      "ci95_high_per_30_days": -1.2297230613373709,
+      "p_value": 0.0012756950341502678
     },
     {
       "name": "reading_weighted",
-      "slope_per_30_days": -4.881680819118074,
-      "ci95_low_per_30_days": -7.053370243865008,
-      "ci95_high_per_30_days": -2.7099913943711393,
-      "p_value": 1.0541895933437187e-05
+      "slope_per_30_days": -4.48992541202767,
+      "ci95_low_per_30_days": -6.157614044132545,
+      "ci95_high_per_30_days": -2.822236779922794,
+      "p_value": 1.314451525321314e-07
     },
     {
       "name": "capped_weight",
-      "slope_per_30_days": -4.475463396819032,
-      "ci95_low_per_30_days": -6.519709923684675,
-      "ci95_high_per_30_days": -2.4312168699533894,
-      "p_value": 1.7791529726939796e-05
+      "slope_per_30_days": -4.513789773246107,
+      "ci95_low_per_30_days": -6.30772335588798,
+      "ci95_high_per_30_days": -2.719856190604235,
+      "p_value": 8.158148893664051e-07
     },
     {
       "name": "inverse_intensity_stress",
-      "slope_per_30_days": -3.1334095539415427,
-      "ci95_low_per_30_days": -6.6164715807416705,
-      "ci95_high_per_30_days": 0.3496524728585849,
-      "p_value": 0.07786507402412321
+      "slope_per_30_days": -3.4299696991335766,
+      "ci95_low_per_30_days": -6.681137678966395,
+      "ci95_high_per_30_days": -0.17880171930075905,
+      "p_value": 0.0386631183166942
     }
   ],
   "sampling_adjustment": {
     "covariate": "log1p_n_readings",
-    "coefficient_mmHg": -2.8055555519749813,
-    "ci95_low_mmHg": -5.099787433861604,
-    "ci95_high_mmHg": -0.5113236700883594,
-    "p_value": 0.016539482227517797
+    "coefficient_mmHg": -3.077879288678842,
+    "ci95_low_mmHg": -5.097801041594112,
+    "ci95_high_mmHg": -1.0579575357635718,
+    "p_value": 0.002821742805606605
   },
   "interpretation": {
     "identified_missingness_mechanism": false,

@@ -1,0 +1,50 @@
+{
+  "n_measurements": 238,
+  "coverage": {
+    "spo2_observed": 9,
+    "spo2_coverage_rate": 0.03781513,
+    "bpm_spo2_observed": 9,
+    "bpm_spo2_coverage_rate": 0.03781513
+  },
+  "joint_field_completeness": {
+    "both_observed": 9,
+    "spo2_without_bpm_spo2": 0,
+    "bpm_spo2_without_spo2": 0,
+    "both_missing": 229
+  },
+  "spo2_percent": {
+    "n": 9,
+    "mean": 97.55555556,
+    "median": 98.0,
+    "sample_sd": 0.8819171,
+    "minimum": 96.0,
+    "maximum": 99.0
+  },
+  "bpm_spo2": {
+    "n": 9,
+    "mean": 92.44444444,
+    "median": 93.0,
+    "sample_sd": 3.6094013,
+    "minimum": 86.0,
+    "maximum": 96.0
+  },
+  "paired_bpm_device_agreement": {
+    "observed_pairs": 9,
+    "difference_definition": "bpm_minus_bpm_spo2",
+    "mean_bpm_bp_device": 93.55555556,
+    "mean_bpm_spo2_device": 92.44444444,
+    "mean_difference": 1.11111111,
+    "median_difference": 1.0,
+    "sample_sd_difference": 0.92796073,
+    "mean_absolute_difference": 1.11111111,
+    "rmse": 1.41421356,
+    "minimum_difference": 0.0,
+    "maximum_difference": 3.0,
+    "maximum_absolute_difference": 3.0
+  },
+  "interpretation": {
+    "scope": "descriptive_device_diagnostics",
+    "clinical_thresholds_applied": false,
+    "row_level_values_persisted": false
+  }
+}

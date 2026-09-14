@@ -1,18 +1,18 @@
 {
   "source_audit": {
-    "source_rows_excluding_header": 172,
-    "valid_measurements": 171,
+    "source_rows_excluding_header": 239,
+    "valid_measurements": 238,
     "blank_placeholder_rows": 0,
     "spreadsheet_summary_rows": 1,
     "date_repairs": {
-      "excel_day_month_inversion_measurements": 30,
+      "excel_day_month_inversion_measurements": 37,
       "text_day_month_inversion_measurements": 2
     },
     "derived_field_check": {
       "pulse_pressure_mismatches_on_valid_rows": 0,
       "pulse_pressure_output_policy": "derived_from_systolic_and_diastolic",
-      "reported_spreadsheet_mean_pulse_pressure_mmHg": 40.16374269,
-      "cleaned_mean_pulse_pressure_mmHg": 40.16374269,
+      "reported_spreadsheet_mean_pulse_pressure_mmHg": 40.09243697,
+      "cleaned_mean_pulse_pressure_mmHg": 40.09243697,
       "relative_bias_percent": 0.0
     },
     "context_missingness_on_valid_measurements": {
@@ -29,130 +29,155 @@
         "rate": 0.0
       },
       "Meal": {
-        "missing": 144,
-        "rate": 0.84210526
+        "missing": 190,
+        "rate": 0.79831933
       },
       "Symptoms": {
-        "missing": 151,
-        "rate": 0.88304094
+        "missing": 165,
+        "rate": 0.69327731
+      }
+    },
+    "pulse_oximeter": {
+      "spo2_percent": {
+        "observed": 9,
+        "missing": 229,
+        "coverage_rate": 0.03781513,
+        "mean": 97.55555556,
+        "minimum": 96.0,
+        "maximum": 99.0
+      },
+      "bpm_spo2": {
+        "observed": 9,
+        "missing": 229,
+        "coverage_rate": 0.03781513,
+        "mean": 92.44444444,
+        "minimum": 86.0,
+        "maximum": 96.0
+      },
+      "paired_bpm_device_agreement": {
+        "observed_pairs": 9,
+        "difference_definition": "bpm_minus_bpm_spo2",
+        "mean_difference": 1.11111111,
+        "mean_absolute_difference": 1.11111111,
+        "rmse": 1.41421356
       }
     },
     "sessionization": {
       "gap_threshold_minutes": 15,
-      "n_sessions": 87,
+      "n_sessions": 108,
       "session_size_counts": {
-        "1": 37,
+        "1": 36,
         "2": 19,
-        "3": 29,
-        "4": 1,
+        "3": 49,
+        "4": 3,
         "5": 1
       }
     }
   },
   "calendar": {
-    "n_calendar_days": 65,
-    "n_observed_days": 26,
-    "n_missing_days": 39,
-    "coverage_rate": 0.4,
-    "missing_rate": 0.6,
+    "n_calendar_days": 72,
+    "n_observed_days": 31,
+    "n_missing_days": 41,
+    "coverage_rate": 0.4305555555555556,
+    "missing_rate": 0.5694444444444444,
     "longest_missing_run_days": 32,
-    "share_of_missing_days_in_longest_run": 0.8205128205128205
+    "share_of_missing_days_in_longest_run": 0.7804878048780488
   },
   "sampling": {
-    "total_valid_readings": 171,
-    "total_sessions": 87,
+    "total_valid_readings": 238,
+    "total_sessions": 108,
     "readings_per_observed_day": {
-      "mean": 6.576923076923077,
-      "median": 3.0,
-      "q1": 2.0,
-      "q3": 10.0,
+      "mean": 7.67741935483871,
+      "median": 6.0,
+      "q1": 2.5,
+      "q3": 12.0,
       "min": 1.0,
-      "max": 21.0
+      "max": 22.0
     }
   },
   "metrics": {
     "mean_systolic_mmHg": {
       "means": {
-        "reading_weighted_mean": 115.15789473684211,
-        "equal_observed_day_mean": 118.11223090615385,
-        "difference_weighted_minus_equal_day": -2.9543361693117447
+        "reading_weighted_mean": 114.21008403373949,
+        "equal_observed_day_mean": 116.97425296580649,
+        "difference_weighted_minus_equal_day": -2.764168932066994
       },
       "sampling_association": {
-        "pearson_r": -0.6191871247246497,
-        "pearson_p_value": 0.0007443677154026554,
-        "spearman_rho": -0.521711937220416,
-        "spearman_p_value": 0.006266668443661726
+        "pearson_r": -0.6314831247633511,
+        "pearson_p_value": 0.00013918197891153283,
+        "spearman_rho": -0.6240288042732526,
+        "spearman_p_value": 0.0001759201347255498
       },
       "linear_trend": {
-        "slope_per_day": -0.142520139460114,
-        "slope_per_30_days": -4.27560418380342,
-        "ci95_low_per_30_days": -6.5155240266693575,
-        "ci95_high_per_30_days": -2.0356843409374816,
-        "p_value": 0.0001831300050221193,
-        "r_squared": 0.3885811361579149
+        "slope_per_day": -0.147301808183262,
+        "slope_per_30_days": -4.419054245497859,
+        "ci95_low_per_30_days": -6.376150065817306,
+        "ci95_high_per_30_days": -2.4619584251784135,
+        "p_value": 9.620557966164723e-06,
+        "r_squared": 0.4238915322168031
       }
     },
     "mean_diastolic_mmHg": {
       "means": {
-        "reading_weighted_mean": 74.99415204614034,
-        "equal_observed_day_mean": 77.08705877423077,
-        "difference_weighted_minus_equal_day": -2.0929067280904263
+        "reading_weighted_mean": 74.11764705806722,
+        "equal_observed_day_mean": 76.12910208032257,
+        "difference_weighted_minus_equal_day": -2.0114550222553476
       },
       "sampling_association": {
-        "pearson_r": -0.5998016037466375,
-        "pearson_p_value": 0.0012004618822647878,
-        "spearman_rho": -0.44674537677033377,
-        "spearman_p_value": 0.022139028469874714
+        "pearson_r": -0.6145123042767213,
+        "pearson_p_value": 0.00023521963647771287,
+        "spearman_rho": -0.5731025782717011,
+        "spearman_p_value": 0.0007520699615738717
       },
       "linear_trend": {
-        "slope_per_day": -0.1060724418173663,
-        "slope_per_30_days": -3.182173254520989,
-        "ci95_low_per_30_days": -4.710145278035061,
-        "ci95_high_per_30_days": -1.6542012310069178,
-        "p_value": 4.46795910202044e-05,
-        "r_squared": 0.4024629028508936
+        "slope_per_day": -0.11481795120363963,
+        "slope_per_30_days": -3.444538536109189,
+        "ci95_low_per_30_days": -4.800926923552863,
+        "ci95_high_per_30_days": -2.0881501486655147,
+        "p_value": 6.447254795071239e-07,
+        "r_squared": 0.4605792306361801
       }
     },
     "mean_pulse_pressure_mmHg": {
       "means": {
-        "reading_weighted_mean": 40.16374269005848,
-        "equal_observed_day_mean": 41.02517213230769,
-        "difference_weighted_minus_equal_day": -0.8614294422492108
+        "reading_weighted_mean": 40.09243697466386,
+        "equal_observed_day_mean": 40.84515088580646,
+        "difference_weighted_minus_equal_day": -0.7527139111425996
       },
       "sampling_association": {
-        "pearson_r": -0.2779540389387259,
-        "pearson_p_value": 0.16917490834508847,
-        "spearman_rho": -0.3714805746816052,
-        "spearman_p_value": 0.061688493644748536
+        "pearson_r": -0.2893145700924734,
+        "pearson_p_value": 0.11442487783744366,
+        "spearman_rho": -0.32602368973690804,
+        "spearman_p_value": 0.07347090110388438
       },
       "linear_trend": {
-        "slope_per_day": -0.03644769770512743,
-        "slope_per_30_days": -1.0934309311538228,
-        "ci95_low_per_30_days": -2.6994622991747548,
-        "ci95_high_per_30_days": 0.5126004368671093,
-        "p_value": 0.18207341452726344,
-        "r_squared": 0.06023542542028715
+        "slope_per_day": -0.03248385702942963,
+        "slope_per_30_days": -0.9745157108828889,
+        "ci95_low_per_30_days": -2.2751392499799543,
+        "ci95_high_per_30_days": 0.3261078282141766,
+        "p_value": 0.1419580158283371,
+        "r_squared": 0.05835259257176173
       }
     },
     "mean_bpm": {
       "means": {
-        "reading_weighted_mean": 92.74853801198832,
-        "equal_observed_day_mean": 94.12833245153845,
-        "difference_weighted_minus_equal_day": -1.379794439550139
+        "reading_weighted_mean": 93.58823529390757,
+        "equal_observed_day_mean": 94.44489336258064,
+        "difference_weighted_minus_equal_day": -0.8566580686730703
       },
       "sampling_association": {
-        "pearson_r": -0.33600148478021263,
-        "pearson_p_value": 0.09330563428252493,
-        "spearman_rho": -0.1979026948638255,
-        "spearman_p_value": 0.33248982808259875
+        "pearson_r": -0.24684334380235098,
+        "pearson_p_value": 0.18066448220022224,
+        "spearman_rho": -0.08319222442348981,
+        "spearman_p_value": 0.6563683571635434
       },
       "linear_trend": {
-        "slope_per_day": -0.10453222777459154,
-        "slope_per_30_days": -3.135966833237746,
-        "ci95_low_per_30_days": -5.630513879281185,
-        "ci95_high_per_30_days": -0.6414197871943071,
-        "p_value": 0.013742406177388719,
-        "r_squared": 0.2822014556290725
+        "slope_per_day": -0.060511028748290674,
+        "slope_per_30_days": -1.8153308624487203,
+        "ci95_low_per_30_days": -4.07490346772022,
+        "ci95_high_per_30_days": 0.4442417428227795,
+        "p_value": 0.1153426611163355,
+        "r_squared": 0.11379970710185505
       }
     }
   }

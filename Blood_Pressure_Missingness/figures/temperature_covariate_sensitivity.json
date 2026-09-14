@@ -1,0 +1,199 @@
+{
+  "purpose": "Assess sensitivity of the time and temperature associations to weather matching, day weighting, and temperature functional form.",
+  "specifications": {
+    "primary": "nearest-hour match; equal observed-day weight; linear temperature",
+    "interpolation": "linear interpolation between surrounding weather hours; equal observed-day weight; linear temperature",
+    "reading_weighted": "nearest-hour match; observed days weighted by number of readings; linear temperature",
+    "quadratic": "nearest-hour match; equal observed-day weight; linear and squared centered temperature",
+    "covariance": "HC3 heteroskedasticity-robust for every specification"
+  },
+  "metrics": {
+    "mean_systolic_mmHg": {
+      "primary_nearest_hour_equal_day_linear": {
+        "day_slope_per_30_days": -4.517829682338974,
+        "day_ci95_low_per_30_days": -6.48844135650051,
+        "day_ci95_high_per_30_days": -2.5472180081774387,
+        "day_p_value": 7.008876694120546e-06,
+        "temperature_coefficient_per_c": -0.1929486515335801,
+        "temperature_ci95_low_per_c": -0.5609973083633664,
+        "temperature_ci95_high_per_c": 0.17510000529620612,
+        "temperature_p_value": 0.30418199989094397,
+        "r_squared": 0.4470809466198328
+      },
+      "linear_interpolation_equal_day_linear": {
+        "day_slope_per_30_days": -4.5081471348025515,
+        "day_ci95_low_per_30_days": -6.4847366784393605,
+        "day_ci95_high_per_30_days": -2.531557591165742,
+        "temperature_coefficient_per_c": -0.19032618359983489,
+        "temperature_ci95_low_per_c": -0.5642804914034592,
+        "temperature_ci95_high_per_c": 0.18362812420378932,
+        "r_squared": 0.4456082340505211
+      },
+      "nearest_hour_reading_weighted_linear": {
+        "day_slope_per_30_days": -4.519907512537946,
+        "day_ci95_low_per_30_days": -6.429390955730893,
+        "day_ci95_high_per_30_days": -2.6104240693449996,
+        "temperature_coefficient_per_c": -0.19284441620389758,
+        "temperature_ci95_low_per_c": -0.5245188447342557,
+        "temperature_ci95_high_per_c": 0.13883001232646047,
+        "r_squared": 0.5319456343886286
+      },
+      "nearest_hour_equal_day_quadratic": {
+        "day_slope_per_30_days": -4.476472913955704,
+        "linear_temperature_coefficient_per_c_at_mean": -0.20851652869071247,
+        "linear_temperature_ci95_low_per_c_at_mean": -0.7105449220291139,
+        "linear_temperature_ci95_high_per_c_at_mean": 0.29351186464768897,
+        "quadratic_temperature_coefficient_per_c2": 0.004094719820515624,
+        "quadratic_temperature_ci95_low_per_c2": -0.08820243803585621,
+        "quadratic_temperature_ci95_high_per_c2": 0.09639187767688746,
+        "r_squared": 0.4473294569990943
+      },
+      "robustness": {
+        "temperature_direction_consistent_across_specs": true,
+        "day_trend_direction_consistent_across_specs": true
+      }
+    },
+    "mean_diastolic_mmHg": {
+      "primary_nearest_hour_equal_day_linear": {
+        "day_slope_per_30_days": -3.474292044937142,
+        "day_ci95_low_per_30_days": -4.897947607893845,
+        "day_ci95_high_per_30_days": -2.0506364819804395,
+        "day_p_value": 1.7261198148879745e-06,
+        "temperature_coefficient_per_c": -0.05812072033746429,
+        "temperature_ci95_low_per_c": -0.3456082016736862,
+        "temperature_ci95_high_per_c": 0.22936676099875764,
+        "temperature_p_value": 0.6919267562653725,
+        "r_squared": 0.4643420591423635
+      },
+      "linear_interpolation_equal_day_linear": {
+        "day_slope_per_30_days": -3.471872790765756,
+        "day_ci95_low_per_30_days": -4.894547470450714,
+        "day_ci95_high_per_30_days": -2.0491981110807975,
+        "temperature_coefficient_per_c": -0.05839326284098312,
+        "temperature_ci95_low_per_c": -0.35102763583186847,
+        "temperature_ci95_high_per_c": 0.23424111014990223,
+        "r_squared": 0.4642349128730541
+      },
+      "nearest_hour_reading_weighted_linear": {
+        "day_slope_per_30_days": -3.75095836358198,
+        "day_ci95_low_per_30_days": -5.493904614729816,
+        "day_ci95_high_per_30_days": -2.0080121124341437,
+        "temperature_coefficient_per_c": 0.02417829007736283,
+        "temperature_ci95_low_per_c": -0.28904818297504226,
+        "temperature_ci95_high_per_c": 0.3374047631297679,
+        "r_squared": 0.5251774223908596
+      },
+      "nearest_hour_equal_day_quadratic": {
+        "day_slope_per_30_days": -3.6139085735077696,
+        "linear_temperature_coefficient_per_c_at_mean": -0.0055650432166947095,
+        "linear_temperature_ci95_low_per_c_at_mean": -0.32373153340560873,
+        "linear_temperature_ci95_high_per_c_at_mean": 0.3126014469722193,
+        "quadratic_temperature_coefficient_per_c2": -0.013823385848561937,
+        "quadratic_temperature_ci95_low_per_c2": -0.0767333913866117,
+        "quadratic_temperature_ci95_high_per_c2": 0.049086619689487826,
+        "r_squared": 0.4694069628202513
+      },
+      "robustness": {
+        "temperature_direction_consistent_across_specs": false,
+        "day_trend_direction_consistent_across_specs": true
+      }
+    },
+    "mean_pulse_pressure_mmHg": {
+      "primary_nearest_hour_equal_day_linear": {
+        "day_slope_per_30_days": -1.0435376374018377,
+        "day_ci95_low_per_30_days": -2.32242532170239,
+        "day_ci95_high_per_30_days": 0.23535004689871464,
+        "day_p_value": 0.10975897624285746,
+        "temperature_coefficient_per_c": -0.13482793119611547,
+        "temperature_ci95_low_per_c": -0.41219032369303377,
+        "temperature_ci95_high_per_c": 0.14253446130080283,
+        "temperature_p_value": 0.3407151639486785,
+        "r_squared": 0.09040439199513084
+      },
+      "linear_interpolation_equal_day_linear": {
+        "day_slope_per_30_days": -1.036274344036788,
+        "day_ci95_low_per_30_days": -2.320233838847539,
+        "day_ci95_high_per_30_days": 0.24768515077396275,
+        "temperature_coefficient_per_c": -0.1319329207588521,
+        "temperature_ci95_low_per_c": -0.4162196049768953,
+        "temperature_ci95_high_per_c": 0.1523537634591911,
+        "r_squared": 0.08789116705970168
+      },
+      "nearest_hour_reading_weighted_linear": {
+        "day_slope_per_30_days": -0.7689491489559588,
+        "day_ci95_low_per_30_days": -1.7181958096188426,
+        "day_ci95_high_per_30_days": 0.18029751170692493,
+        "temperature_coefficient_per_c": -0.21702270628125964,
+        "temperature_ci95_low_per_c": -0.39381033692481887,
+        "temperature_ci95_high_per_c": -0.0402350756377004,
+        "r_squared": 0.16882381821177128
+      },
+      "nearest_hour_equal_day_quadratic": {
+        "day_slope_per_30_days": -0.8625643404479353,
+        "linear_temperature_coefficient_per_c_at_mean": -0.2029514854740172,
+        "linear_temperature_ci95_low_per_c_at_mean": -0.5953884047806208,
+        "linear_temperature_ci95_high_per_c_at_mean": 0.18948543383258648,
+        "quadratic_temperature_coefficient_per_c2": 0.017918105669077505,
+        "quadratic_temperature_ci95_low_per_c2": -0.04430084927868357,
+        "quadratic_temperature_ci95_high_per_c2": 0.08013706061683859,
+        "r_squared": 0.1038743650854318
+      },
+      "robustness": {
+        "temperature_direction_consistent_across_specs": true,
+        "day_trend_direction_consistent_across_specs": true
+      }
+    },
+    "mean_bpm": {
+      "primary_nearest_hour_equal_day_linear": {
+        "day_slope_per_30_days": -1.7165631291628598,
+        "day_ci95_low_per_30_days": -3.9417108530431393,
+        "day_ci95_high_per_30_days": 0.5085845947174205,
+        "day_p_value": 0.13053631467670015,
+        "temperature_coefficient_per_c": 0.1929336031688399,
+        "temperature_ci95_low_per_c": -0.1811712571961998,
+        "temperature_ci95_high_per_c": 0.5670384635338797,
+        "temperature_p_value": 0.312115079717718,
+        "r_squared": 0.15068519409009085
+      },
+      "linear_interpolation_equal_day_linear": {
+        "day_slope_per_30_days": -1.7229870041327393,
+        "day_ci95_low_per_30_days": -3.9472801039364294,
+        "day_ci95_high_per_30_days": 0.5013060956709505,
+        "temperature_coefficient_per_c": 0.19727112062651164,
+        "temperature_ci95_low_per_c": -0.18384358991097582,
+        "temperature_ci95_high_per_c": 0.5783858311639991,
+        "r_squared": 0.1509153765861424
+      },
+      "nearest_hour_reading_weighted_linear": {
+        "day_slope_per_30_days": -1.8396443972264631,
+        "day_ci95_low_per_30_days": -3.95258622300077,
+        "day_ci95_high_per_30_days": 0.27329742854784356,
+        "temperature_coefficient_per_c": 0.35761274543638844,
+        "temperature_ci95_low_per_c": -0.11943169470991416,
+        "temperature_ci95_high_per_c": 0.834657185582691,
+        "r_squared": 0.18373242629711217
+      },
+      "nearest_hour_equal_day_quadratic": {
+        "day_slope_per_30_days": -1.5723938268149662,
+        "linear_temperature_coefficient_per_c_at_mean": 0.13866413104779252,
+        "linear_temperature_ci95_low_per_c_at_mean": -0.4109405573689934,
+        "linear_temperature_ci95_high_per_c_at_mean": 0.6882688194645784,
+        "quadratic_temperature_coefficient_per_c2": 0.014274154459171962,
+        "quadratic_temperature_ci95_low_per_c2": -0.09010367461507156,
+        "quadratic_temperature_ci95_high_per_c2": 0.11865198353341548,
+        "r_squared": 0.1554894974307247
+      },
+      "robustness": {
+        "temperature_direction_consistent_across_specs": true,
+        "day_trend_direction_consistent_across_specs": true
+      }
+    }
+  },
+  "privacy": {
+    "calendar_dates_written": false,
+    "measurement_times_written": false,
+    "matched_temperature_series_written": false,
+    "interpolated_temperature_series_written": false,
+    "note": "All alternative temperature joins are computed only while private measurement timestamps are in memory."
+  }
+}

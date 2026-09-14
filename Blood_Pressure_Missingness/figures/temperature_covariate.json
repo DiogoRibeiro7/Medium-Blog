@@ -1,0 +1,85 @@
+{
+  "weather_source": {
+    "provider": "Open-Meteo Historical Weather API",
+    "model": "ecmwf_ifs",
+    "variable": "temperature_2m",
+    "unit": "degC",
+    "location": "Fi\u00e3es, Santa Maria da Feira, Portugal",
+    "timezone": "Europe/Lisbon",
+    "spatial_interpretation": "gridded model/reanalysis estimate; not an on-site thermometer"
+  },
+  "matching": {
+    "policy": "nearest available hourly temperature to each measurement time",
+    "max_allowed_offset_minutes": 60.0,
+    "n_measurements_matched": 238,
+    "n_observed_days": 31,
+    "median_match_offset_minutes": 15.0,
+    "max_match_offset_minutes": 30.0
+  },
+  "temperature_summary": {
+    "mean_of_observed_day_matched_temperature_c": 22.515673008206218,
+    "std_of_observed_day_matched_temperature_c": 4.395921203073103,
+    "min_of_observed_day_matched_temperature_c": 16.4,
+    "max_of_observed_day_matched_temperature_c": 33.957142857142856,
+    "correlation_with_day_index": -0.09513228859129723
+  },
+  "model": {
+    "formula": "daily_metric ~ day_index + (mean_time_matched_temperature_2m_c - overall_mean_temperature)",
+    "day_weighting": "equal weight per observed calendar day",
+    "within_day_temperature": "mean of temperatures matched to the actual measurement times",
+    "covariance": "HC3 heteroskedasticity-robust",
+    "metrics": {
+      "mean_systolic_mmHg": {
+        "day_slope_per_30_days": -4.517829682338974,
+        "day_ci95_low_per_30_days": -6.48844135650051,
+        "day_ci95_high_per_30_days": -2.5472180081774387,
+        "day_p_value": 7.008876694120546e-06,
+        "temperature_coefficient_per_c": -0.1929486515335801,
+        "temperature_ci95_low_per_c": -0.5609973083633664,
+        "temperature_ci95_high_per_c": 0.17510000529620612,
+        "temperature_p_value": 0.30418199989094397,
+        "r_squared": 0.4470809466198328
+      },
+      "mean_diastolic_mmHg": {
+        "day_slope_per_30_days": -3.474292044937142,
+        "day_ci95_low_per_30_days": -4.897947607893845,
+        "day_ci95_high_per_30_days": -2.0506364819804395,
+        "day_p_value": 1.7261198148879745e-06,
+        "temperature_coefficient_per_c": -0.05812072033746429,
+        "temperature_ci95_low_per_c": -0.3456082016736862,
+        "temperature_ci95_high_per_c": 0.22936676099875764,
+        "temperature_p_value": 0.6919267562653725,
+        "r_squared": 0.4643420591423635
+      },
+      "mean_pulse_pressure_mmHg": {
+        "day_slope_per_30_days": -1.0435376374018377,
+        "day_ci95_low_per_30_days": -2.32242532170239,
+        "day_ci95_high_per_30_days": 0.23535004689871464,
+        "day_p_value": 0.10975897624285746,
+        "temperature_coefficient_per_c": -0.13482793119611547,
+        "temperature_ci95_low_per_c": -0.41219032369303377,
+        "temperature_ci95_high_per_c": 0.14253446130080283,
+        "temperature_p_value": 0.3407151639486785,
+        "r_squared": 0.09040439199513084
+      },
+      "mean_bpm": {
+        "day_slope_per_30_days": -1.7165631291628598,
+        "day_ci95_low_per_30_days": -3.9417108530431393,
+        "day_ci95_high_per_30_days": 0.5085845947174205,
+        "day_p_value": 0.13053631467670015,
+        "temperature_coefficient_per_c": 0.1929336031688399,
+        "temperature_ci95_low_per_c": -0.1811712571961998,
+        "temperature_ci95_high_per_c": 0.5670384635338797,
+        "temperature_p_value": 0.312115079717718,
+        "r_squared": 0.15068519409009085
+      }
+    }
+  },
+  "privacy": {
+    "row_level_dates_written": false,
+    "row_level_times_written": false,
+    "row_level_temperatures_written": false,
+    "day_indexed_temperature_series_written": false,
+    "note": "Temperature is joined to private timestamps only in memory. Only aggregate diagnostics and coefficients are persisted."
+  }
+}

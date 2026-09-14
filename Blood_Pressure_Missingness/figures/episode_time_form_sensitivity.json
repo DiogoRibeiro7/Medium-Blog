@@ -6,61 +6,61 @@
     "left_observed_day_index": 8,
     "right_observed_day_index": 41
   },
-  "n_observed_days": 26,
+  "n_observed_days": 31,
   "episode_sizes": {
     "pre_gap_observed_days": 8,
-    "post_gap_observed_days": 18
+    "post_gap_observed_days": 23
   },
   "estimates": [
     {
       "name": "episode_only",
       "n_parameters": 2,
-      "episode_difference_mmHg": -6.378728637083299,
-      "episode_ci95_low_mmHg": -10.071548915793219,
-      "episode_ci95_high_mmHg": -2.6859083583733794,
-      "episode_p_value": 0.000710462320334925,
-      "aic": 154.7114993322553,
-      "bic": 157.22769240829825
+      "episode_difference_mmHg": -6.7927958798369215,
+      "episode_ci95_low_mmHg": -10.482115930932142,
+      "episode_ci95_high_mmHg": -3.1034758287417015,
+      "episode_p_value": 0.0003077397215862144,
+      "aic": 186.23091084175636,
+      "bic": 189.09888525072665
     },
     {
       "name": "common_linear",
       "n_parameters": 3,
-      "episode_difference_mmHg": -6.378728637083352,
-      "episode_ci95_low_mmHg": -10.095099269649182,
-      "episode_ci95_high_mmHg": -2.662358004517522,
-      "episode_p_value": 0.0007680599659435598,
-      "aic": 152.08235296039365,
-      "bic": 155.8566425744581
+      "episode_difference_mmHg": -6.792795879836932,
+      "episode_ci95_low_mmHg": -10.41912977876643,
+      "episode_ci95_high_mmHg": -3.166461980907433,
+      "episode_p_value": 0.00024124810947475,
+      "aic": 179.49514106869432,
+      "bic": 183.79710268214976
     },
     {
       "name": "separate_linear_slopes",
       "n_parameters": 4,
-      "episode_difference_mmHg": -6.378728637083325,
-      "episode_ci95_low_mmHg": -10.646777518409342,
-      "episode_ci95_high_mmHg": -2.1106797557573085,
-      "episode_p_value": 0.0033980760329855573,
-      "aic": 153.41846358805242,
-      "bic": 158.45084974013835
+      "episode_difference_mmHg": -6.792795879836996,
+      "episode_ci95_low_mmHg": -11.066775392229657,
+      "episode_ci95_high_mmHg": -2.5188163674443356,
+      "episode_p_value": 0.0018391732090027278,
+      "aic": 181.07440211767496,
+      "bic": 186.81035093561556
     },
     {
       "name": "common_quadratic",
       "n_parameters": 4,
-      "episode_difference_mmHg": -5.277114957656836,
-      "episode_ci95_low_mmHg": -9.830129985876951,
-      "episode_ci95_high_mmHg": -0.7240999294367212,
-      "episode_p_value": 0.02310634843254157,
-      "aic": 152.34392222604276,
-      "bic": 157.3763083781287
+      "episode_difference_mmHg": -6.366875096274571,
+      "episode_ci95_low_mmHg": -10.657174577937088,
+      "episode_ci95_high_mmHg": -2.076575614612053,
+      "episode_p_value": 0.003630291755102772,
+      "aic": 181.25533787014035,
+      "bic": 186.99128668808095
     },
     {
       "name": "separate_linear_plus_common_quadratic_stress",
       "n_parameters": 5,
-      "episode_difference_mmHg": -5.308872357803036,
-      "episode_ci95_low_mmHg": -10.421097620344238,
-      "episode_ci95_high_mmHg": -0.19664709526183444,
-      "episode_p_value": 0.04181506013853015,
-      "aic": 153.74262716709353,
-      "bic": 160.03310985720094
+      "episode_difference_mmHg": -6.384822866761247,
+      "episode_ci95_low_mmHg": -11.274495476097936,
+      "episode_ci95_high_mmHg": -1.4951502574245579,
+      "episode_p_value": 0.010489036023022643,
+      "aic": 182.85167535913453,
+      "bic": 190.02161138156026
     }
   ],
   "interpretation": {
