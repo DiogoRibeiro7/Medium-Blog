@@ -40,13 +40,16 @@ It performs:
 7. generation of aggregate pulse-oximeter coverage and cross-device BPM diagnostics in `data/pulse_oximeter_diagnostics.json`;
 8. generation of the date-free relative-day pulse-oximeter snapshot in `data/pulse_oximeter_daily_snapshot.csv`;
 9. generation of coverage-aware longitudinal pulse-oximeter diagnostics in `data/pulse_oximeter_longitudinal_diagnostics.json`;
-10. retrieval of hourly 2 m air temperature for Fiães from Open-Meteo and in-memory matching to the actual measurement times;
-11. fitting of privacy-safe temperature-adjusted exploratory models without writing the date-temperature series;
-12. regeneration of the remaining statistical outputs and figures;
-13. a guard that fails if an `.xlsx` or `.xls` source file appears in the project tree;
-14. creation of a pull request containing only privacy-safe generated outputs when they changed.
+10. generation of observed-window pulse coverage in `data/pulse_oximeter_observation_window.json`, using the first observed pulse day through the end of the public BP calendar;
+11. retrieval of hourly 2 m air temperature for Fiães from Open-Meteo and in-memory matching to the actual measurement times;
+12. fitting of privacy-safe temperature-adjusted exploratory models without writing the date-temperature series;
+13. regeneration of the remaining statistical outputs and figures;
+14. a guard that fails if an `.xlsx` or `.xls` source file appears in the project tree;
+15. creation of a pull request containing only privacy-safe generated outputs when they changed.
 
 The pulse-oximeter longitudinal layer reports coverage before any time association. It uses the same relative `day_index` origin as the established blood-pressure snapshot and fits descriptive HC3 time associations only when at least four usable pulse-oximeter days are available. Otherwise the output records `estimable: false` rather than producing an unstable slope.
+
+The observation-window layer answers a different question. Full-history pulse coverage uses all BP rows or calendar days as denominators, including historical periods before any pulse value is observed. The observation-window artifact instead begins at the first observed pulse day and reports day-level and reading-level capture from that point forward. This boundary is empirical: it does **not** identify the date when the device was introduced, and rows before it are not reclassified as missing pulse measurements.
 
 No clinical thresholds or causal interpretations are applied to the pulse-oximeter outputs.
 
@@ -70,6 +73,11 @@ python -m blood_pressure_missingness.analyses.pulse_oximeter_longitudinal \
   --bp-data data/analysis_snapshot.csv \
   --output data/pulse_oximeter_longitudinal_diagnostics.json
 
+python -m blood_pressure_missingness.analyses.pulse_oximeter_observation_window \
+  --pulse-data data/pulse_oximeter_daily_snapshot.csv \
+  --bp-data data/analysis_snapshot.csv \
+  --output data/pulse_oximeter_observation_window.json
+
 python -m blood_pressure_missingness.analyses.temperature \
   --output figures/temperature_covariate.json
 
@@ -79,7 +87,7 @@ python -m blood_pressure_missingness.public_analysis \
   --output-dir figures
 ```
 
-The source-refresh module writes only the privacy-safe blood-pressure snapshot and aggregate source audit. The pulse-oximeter module reuses the private Sheet in memory and writes only aggregate diagnostics plus the relative-day daily snapshot. The longitudinal pulse-oximeter module consumes only those public aggregate inputs.
+The source-refresh module writes only the privacy-safe blood-pressure snapshot and aggregate source audit. The pulse-oximeter module reuses the private Sheet in memory and writes only aggregate diagnostics plus the relative-day daily snapshot. The longitudinal and observation-window pulse modules consume only public aggregate inputs.
 
 The temperature analysis also reuses the private Sheet in memory, joins it to Open-Meteo hourly temperature, and writes only aggregate model diagnostics. It does not persist calendar dates, row-level times, row-level matched temperatures, or a day-indexed temperature series.
 
