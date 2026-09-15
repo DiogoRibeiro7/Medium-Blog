@@ -23,13 +23,15 @@ class GlobalTimeFormSensitivityTests(unittest.TestCase):
             mean_bpm=70.0,
         )
 
-    def test_non_linear_series_separates_sensitivity_estimands(self) -> None:
+    def test_non_linear_irregular_series_separates_sensitivity_estimands(self) -> None:
+        """Irregular calendar spacing should expose genuinely distinct summaries."""
+
         records = [
             self._record(0, 100.0),
-            self._record(1, 100.0),
             self._record(2, 100.0),
-            self._record(3, 110.0),
-            self._record(4, 110.0),
+            self._record(3, 100.0),
+            self._record(7, 110.0),
+            self._record(8, 110.0),
         ]
 
         results = analysis.analyze_global_time_form_sensitivity(records)
@@ -51,8 +53,13 @@ class GlobalTimeFormSensitivityTests(unittest.TestCase):
         theil_sen = estimates["theil_sen_median_pairwise_slope"][
             "estimate_per_30_days"
         ]
+
+        self.assertAlmostEqual(linear, 45.65217391304344, places=8)
+        self.assertAlmostEqual(quadratic, 43.13080495356141, places=8)
+        self.assertAlmostEqual(theil_sen, 40.17857142857143, places=8)
         self.assertNotAlmostEqual(linear, quadratic, places=8)
         self.assertNotAlmostEqual(linear, theil_sen, places=8)
+        self.assertNotAlmostEqual(quadratic, theil_sen, places=8)
 
     def test_exact_linear_series_agrees_on_point_slope(self) -> None:
         records = [
