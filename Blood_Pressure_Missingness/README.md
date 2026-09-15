@@ -33,7 +33,7 @@ Sampling intensity remains highly uneven: observed days contain between **1 and 
 
 That makes a flat 238-row i.i.d. analysis a poor default.
 
-The private source also accepts two optional pulse-oximeter fields: `SpO2` for oxygen saturation and `bpm_spo2` for the pulse reported by that same device. `SpO2` is mapped internally to the lowercase `spo2` analysis field. They remain source-specific measurements rather than replacements for the blood-pressure monitor's `bpm`. Historical rows may leave both fields blank. The pulse-oximeter extension has its own aggregate diagnostics, daily relative-day snapshot, and coverage-aware longitudinal analysis; none of those outputs silently changes the established blood-pressure estimands or article conclusions.
+The private source also accepts two optional pulse-oximeter fields: `SpO2` for oxygen saturation and `bpm_spo2` for the pulse reported by that same device. `SpO2` is mapped internally to the lowercase `spo2` analysis field. They remain source-specific measurements rather than replacements for the blood-pressure monitor's `bpm`. Historical rows may leave both fields blank. The pulse-oximeter extension has its own aggregate diagnostics, daily relative-day snapshot, coverage-aware longitudinal analysis, and observed-window coverage diagnostic; none of those outputs silently changes the established blood-pressure estimands or article conclusions.
 
 ## 2. Data quality before modelling
 
@@ -177,17 +177,20 @@ Missing days remain missing observations. The Kalman smoother propagates uncerta
 
 ## Pulse-oximeter extension
 
-The pulse-oximeter extension is deliberately separate from the main blood-pressure estimands. The refresh publishes three privacy-safe aggregate artifacts:
+The pulse-oximeter extension is deliberately separate from the main blood-pressure estimands. The refresh publishes four privacy-safe aggregate artifacts:
 
 - `data/pulse_oximeter_diagnostics.json` — overall coverage, same-device field completeness, descriptive SpO2 summaries, and aggregate cross-device BPM diagnostics;
 - `data/pulse_oximeter_daily_snapshot.csv` — daily relative-day counts and means for SpO2, `bpm_spo2`, and the paired difference `bpm - bpm_spo2`;
-- `data/pulse_oximeter_longitudinal_diagnostics.json` — coverage-aware descriptive time associations for daily mean SpO2 and daily mean cross-device BPM difference.
+- `data/pulse_oximeter_longitudinal_diagnostics.json` — coverage-aware descriptive time associations for daily mean SpO2 and daily mean cross-device BPM difference;
+- `data/pulse_oximeter_observation_window.json` — pulse capture measured only from the first observed pulse day through the end of the public BP calendar.
 
-The first real secret-backed pulse refresh contains **9 SpO2 readings and 9 paired device-BPM readings**, all on one observed pulse-oximeter day. Relative to all 238 blood-pressure measurements, pulse-oximeter row coverage is therefore **3.8%**. The nine SpO2 values have mean **97.56**, median **98**, sample SD **0.88**, and range **96 to 99**. These are descriptive measurements only; no clinical threshold is applied.
+The first real secret-backed pulse refresh contains **9 SpO2 readings and 9 paired device-BPM readings**, all on one observed pulse-oximeter day. Relative to all 238 blood-pressure measurements, pulse-oximeter row coverage is therefore **3.8%**. That is a full-history denominator and should not be read as the capture rate once pulse observations begin. The nine SpO2 values have mean **97.56**, median **98**, sample SD **0.88**, and range **96 to 99**. These are descriptive measurements only; no clinical threshold is applied.
 
 For the same nine paired readings, the blood-pressure monitor reports mean BPM **93.56** and the pulse oximeter mean BPM **92.44**. Defining the paired difference as `bpm - bpm_spo2`, the mean difference is **1.11 BPM**, the median difference is **1 BPM**, the mean absolute difference is **1.11 BPM**, the RMSE is **1.41 BPM**, and the maximum absolute difference is **3 BPM**. These diagnostics describe agreement on the observed pairs; they do not establish device interchangeability.
 
 The daily pulse-oximeter snapshot uses the same `day_index` origin as `data/analysis_snapshot.csv`, which permits alignment without exposing calendar dates. The current pulse data occur only on relative day index 71, so there is just **1 pulse-oximeter observed day across the 72-day calendar window**. Longitudinal diagnostics require at least four usable days; consequently both the SpO2 time association and the cross-device BPM-difference time association correctly report `estimable: false` rather than fitting a one-day trend.
+
+A second denominator answers a different question. Starting at the **first observed pulse day** and continuing through the end of the current BP calendar, the observable pulse window contains **1 BP-observed day with 15 BP readings**. Nine of those readings contain SpO2 and `bpm_spo2`, giving an observed-window reading-level capture of **60.0%**. This does **not** identify the true date when the pulse oximeter was introduced. The first observed pulse day is only an observable lower-bound boundary, and pre-window rows are not reclassified as missing pulse measurements.
 
 These outputs do not identify the missingness mechanism, apply clinical thresholds, establish interchangeability between the two BPM devices, or support causal interpretation.
 
@@ -203,7 +206,7 @@ The current synthesis is:
 6. Residual-dependence diagnostics change materially when actual calendar spacing is respected; row-order adjacency is not a valid daily lag for this irregular sample.
 7. The data cannot identify when or why the episode difference arose inside the unobserved interval.
 8. The tracker cannot identify the missingness mechanism as MCAR, MAR, or MNAR from the observed data alone.
-9. The current pulse-oximeter sample is sufficient for descriptive SpO2 and paired-BPM device diagnostics, but not for a longitudinal trend because it covers only one observed pulse day.
+9. The current pulse-oximeter sample is sufficient for descriptive SpO2 and paired-BPM device diagnostics, but not for a longitudinal trend because it covers only one observed pulse day. Full-history pulse coverage is **3.8%**, whereas observed-window reading capture is **60.0%**; those percentages use different denominators and answer different questions.
 
 The broader lesson is methodological:
 
@@ -222,6 +225,7 @@ The supported implementation lives under the canonical `blood_pressure_missingne
 - `blood_pressure_missingness.analyses.temporal_dependence` — exact-calendar-lag residual diagnostics that preserve irregular spacing;
 - `blood_pressure_missingness.analyses.pulse_oximeter` — aggregate pulse-oximeter diagnostics and daily relative-day snapshot;
 - `blood_pressure_missingness.analyses.pulse_oximeter_longitudinal` — coverage-aware SpO2 and cross-device BPM longitudinal diagnostics;
+- `blood_pressure_missingness.analyses.pulse_oximeter_observation_window` — coverage after pulse observations first appear, without inferring the device-introduction date;
 - `blood_pressure_missingness.validation.current_influence` — refresh-time gate for influence conclusions;
 - `blood_pressure_missingness.validation.current_narrative` — consistency gate between the current snapshot and public narrative;
 - `blood-pressure-missingness.ipynb` — executable Medium-facing synthesis;
@@ -229,7 +233,8 @@ The supported implementation lives under the canonical `blood_pressure_missingne
 - `data/source_audit.json` — aggregate source-quality audit;
 - `data/pulse_oximeter_diagnostics.json` — aggregate pulse-oximeter coverage and device diagnostics after refresh;
 - `data/pulse_oximeter_daily_snapshot.csv` — privacy-safe daily pulse-oximeter aggregate snapshot after refresh;
-- `data/pulse_oximeter_longitudinal_diagnostics.json` — coverage-aware pulse-oximeter longitudinal diagnostics after refresh.
+- `data/pulse_oximeter_longitudinal_diagnostics.json` — coverage-aware pulse-oximeter longitudinal diagnostics after refresh;
+- `data/pulse_oximeter_observation_window.json` — privacy-safe observed-window pulse coverage after refresh.
 
 The raw workbook, private Google Sheet identifiers, credentials, calendar dates, and row-level pulse-oximeter readings are never committed.
 
