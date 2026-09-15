@@ -1,0 +1,31 @@
+{
+  "window": {
+    "defined": true,
+    "definition": "first_observed_pulse_day_through_bp_calendar_end",
+    "reason": null,
+    "start_day_index": 71,
+    "end_day_index": 71,
+    "calendar_days": 1,
+    "blood_pressure_observed_days": 1,
+    "blood_pressure_readings": 15
+  },
+  "pulse_capture": {
+    "pulse_observed_days": 1,
+    "pulse_day_capture_of_bp_observed_days": 1.0,
+    "spo2_readings": 9,
+    "spo2_reading_capture_of_bp_readings": 0.6,
+    "bpm_spo2_readings": 9,
+    "bpm_spo2_reading_capture_of_bp_readings": 0.6,
+    "paired_bpm_readings": 9,
+    "paired_bpm_reading_capture_of_bp_readings": 0.6
+  },
+  "interpretation": {
+    "scope": "observed_pulse_window_coverage",
+    "window_start_is_first_observed_pulse_day": true,
+    "device_introduction_date_identified": false,
+    "pre_window_absence_treated_as_missing": false,
+    "missingness_mechanism_identified": false,
+    "clinical_thresholds_applied": false,
+    "causal_interpretation": false
+  }
+}
