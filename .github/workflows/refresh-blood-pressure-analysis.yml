@@ -70,6 +70,14 @@ jobs:
           --bp-data data/analysis_snapshot.csv
           --output data/pulse_oximeter_longitudinal_diagnostics.json
 
+      - name: Generate pulse observation-window coverage
+        working-directory: Blood_Pressure_Missingness
+        run: >-
+          python -m blood_pressure_missingness.analyses.pulse_oximeter_observation_window
+          --pulse-data data/pulse_oximeter_daily_snapshot.csv
+          --bp-data data/analysis_snapshot.csv
+          --output data/pulse_oximeter_observation_window.json
+
       - name: Fit time-matched Fiães temperature covariate
         working-directory: Blood_Pressure_Missingness
         env:
@@ -172,6 +180,7 @@ jobs:
             Blood_Pressure_Missingness/data/pulse_oximeter_diagnostics.json \
             Blood_Pressure_Missingness/data/pulse_oximeter_daily_snapshot.csv \
             Blood_Pressure_Missingness/data/pulse_oximeter_longitudinal_diagnostics.json \
+            Blood_Pressure_Missingness/data/pulse_oximeter_observation_window.json \
             Blood_Pressure_Missingness/figures)" ]]; then
             echo 'changed=true' >> "$GITHUB_OUTPUT"
           else
@@ -185,7 +194,7 @@ jobs:
         run: |
           branch='automation/blood-pressure-refresh'
           title='Refresh blood-pressure aggregate analysis'
-          body='Refreshes only privacy-safe aggregate data and derived statistical outputs from the secret-backed Google Sheet source. Pulse-oximeter coverage-aware longitudinal diagnostics and temperature matching are computed from privacy-safe aggregates or private measurements in memory; no raw health rows or calendar-dated joins are committed.'
+          body='Refreshes only privacy-safe aggregate data and derived statistical outputs from the secret-backed Google Sheet source. Pulse-oximeter longitudinal and observed-window coverage diagnostics are computed from privacy-safe aggregates; no raw health rows or calendar-dated joins are committed.'
 
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
@@ -196,6 +205,7 @@ jobs:
             Blood_Pressure_Missingness/data/pulse_oximeter_diagnostics.json \
             Blood_Pressure_Missingness/data/pulse_oximeter_daily_snapshot.csv \
             Blood_Pressure_Missingness/data/pulse_oximeter_longitudinal_diagnostics.json \
+            Blood_Pressure_Missingness/data/pulse_oximeter_observation_window.json \
             Blood_Pressure_Missingness/figures
           git commit -m 'Refresh blood-pressure aggregate analysis'
           git push --force origin HEAD:"$branch"
