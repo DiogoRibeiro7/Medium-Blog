@@ -16,6 +16,7 @@ PULSE_ARTIFACTS = {
     "pulse_oximeter_diagnostics.json",
     "pulse_oximeter_daily_snapshot.csv",
     "pulse_oximeter_longitudinal_diagnostics.json",
+    "pulse_oximeter_observation_window.json",
 }
 
 DAILY_COLUMNS = [
