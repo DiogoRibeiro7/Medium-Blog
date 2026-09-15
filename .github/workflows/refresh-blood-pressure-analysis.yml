@@ -104,6 +104,13 @@ jobs:
           --audit data/source_audit.json
           --output-dir figures
 
+      - name: Regenerate global time-form sensitivity
+        working-directory: Blood_Pressure_Missingness
+        run: >-
+          python -m blood_pressure_missingness.analyses.global_time_form
+          --data data/analysis_snapshot.csv
+          --output figures/global_time_form_sensitivity.json
+
       - name: Regenerate observation-process sensitivity outputs
         working-directory: Blood_Pressure_Missingness
         run: >-
