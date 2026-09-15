@@ -144,9 +144,9 @@ def load_pulse_oximeter_days(path: Path) -> list[PulseOximeterDay]:
                 raise ValueError("mean_spo2_percent must be between 0 and 100.")
             if mean_bpm_spo2 is not None and mean_bpm_spo2 <= 0.0:
                 raise ValueError("mean_bpm_spo2 must be positive.")
-            if n_paired > n_bpm_spo2:
+            if n_paired != n_bpm_spo2:
                 raise ValueError(
-                    "n_paired_bpm_readings cannot exceed n_bpm_spo2_readings."
+                    "n_paired_bpm_readings must equal n_bpm_spo2_readings."
                 )
             if n_spo2 == 0 and n_bpm_spo2 == 0:
                 raise ValueError(
