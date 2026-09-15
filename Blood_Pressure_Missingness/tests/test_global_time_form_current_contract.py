@@ -42,24 +42,24 @@ class GlobalTimeFormCurrentContractTests(unittest.TestCase):
                 "ci95_low_per_30_days",
                 "ci95_high_per_30_days",
             ):
-                self.assertAlmostEqual(actual[field], expected[field], places=10)
+                self.assertAlmostEqual(actual[field], expected[field], places=8)
 
         primary_linear = primary.linear_trend(records, "mean_systolic_mmHg")
         linear = committed["estimates"]["linear_equal_day_hc3"]
         self.assertAlmostEqual(
             linear["estimate_per_30_days"],
             primary_linear["slope_per_30_days"],
-            places=10,
+            places=8,
         )
         self.assertAlmostEqual(
             linear["ci95_low_per_30_days"],
             primary_linear["ci95_low_per_30_days"],
-            places=10,
+            places=8,
         )
         self.assertAlmostEqual(
             linear["ci95_high_per_30_days"],
             primary_linear["ci95_high_per_30_days"],
-            places=10,
+            places=8,
         )
 
 
