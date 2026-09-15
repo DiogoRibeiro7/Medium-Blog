@@ -10,6 +10,9 @@ from pathlib import Path
 
 from blood_pressure_missingness.analyses import pulse_oximeter as pulse
 from blood_pressure_missingness.analyses import pulse_oximeter_longitudinal as longitudinal
+from blood_pressure_missingness.analyses import (
+    pulse_oximeter_observation_window as observation_window,
+)
 from blood_pressure_missingness.data_sources import google_sheets as source
 
 
@@ -65,6 +68,7 @@ class PulseOximeterRefreshRehearsalTests(unittest.TestCase):
             diagnostics_path = data_dir / "pulse_oximeter_diagnostics.json"
             daily_path = data_dir / "pulse_oximeter_daily_snapshot.csv"
             longitudinal_path = data_dir / "pulse_oximeter_longitudinal_diagnostics.json"
+            observation_window_path = data_dir / "pulse_oximeter_observation_window.json"
 
             pulse.write_diagnostics(diagnostics_path, diagnostics)
             pulse.write_daily_snapshot(daily_path, daily_snapshot)
@@ -79,15 +83,33 @@ class PulseOximeterRefreshRehearsalTests(unittest.TestCase):
             )
             longitudinal.write_results(longitudinal_path, longitudinal_results)
 
+            bp_observation_days = observation_window.load_blood_pressure_observation_days(
+                data_dir / "analysis_snapshot.csv"
+            )
+            observation_window_results = (
+                observation_window.build_observation_window_coverage(
+                    pulse_days,
+                    bp_observation_days,
+                )
+            )
+            observation_window.write_results(
+                observation_window_path,
+                observation_window_results,
+            )
+
             self.assertTrue(diagnostics_path.exists())
             self.assertTrue(daily_path.exists())
             self.assertTrue(longitudinal_path.exists())
+            self.assertTrue(observation_window_path.exists())
 
             diagnostics_payload = json.loads(
                 diagnostics_path.read_text(encoding="utf-8")
             )
             longitudinal_payload = json.loads(
                 longitudinal_path.read_text(encoding="utf-8")
+            )
+            observation_window_payload = json.loads(
+                observation_window_path.read_text(encoding="utf-8")
             )
             with daily_path.open(newline="", encoding="utf-8") as handle:
                 daily_rows = list(csv.DictReader(handle))
@@ -100,10 +122,7 @@ class PulseOximeterRefreshRehearsalTests(unittest.TestCase):
         )
 
         self.assertEqual([int(row["day_index"]) for row in daily_rows], [0, 1, 2, 3, 4])
-        self.assertEqual(
-            tuple(daily_rows[0]),
-            pulse.DAILY_SNAPSHOT_COLUMNS,
-        )
+        self.assertEqual(tuple(daily_rows[0]), pulse.DAILY_SNAPSHOT_COLUMNS)
         self.assertNotIn("date", daily_rows[0])
         self.assertNotIn("timestamp", daily_rows[0])
 
@@ -117,6 +136,16 @@ class PulseOximeterRefreshRehearsalTests(unittest.TestCase):
             coverage["pulse_oximeter_coverage_within_its_observed_span"],
             1.0,
         )
+
+        window = observation_window_payload["window"]
+        capture = observation_window_payload["pulse_capture"]
+        self.assertTrue(window["defined"])
+        self.assertEqual(window["calendar_days"], 5)
+        self.assertEqual(window["blood_pressure_observed_days"], 5)
+        self.assertEqual(window["blood_pressure_readings"], 5)
+        self.assertEqual(capture["pulse_observed_days"], 5)
+        self.assertEqual(capture["spo2_readings"], 5)
+        self.assertEqual(capture["spo2_reading_capture_of_bp_readings"], 1.0)
 
         spo2_trend = longitudinal_payload["spo2_time_association"]
         bpm_difference_trend = longitudinal_payload[
@@ -136,6 +165,10 @@ class PulseOximeterRefreshRehearsalTests(unittest.TestCase):
         self.assertTrue(
             interpretation["coverage_must_be_considered_with_time_associations"]
         )
+
+        window_interpretation = observation_window_payload["interpretation"]
+        self.assertFalse(window_interpretation["device_introduction_date_identified"])
+        self.assertFalse(window_interpretation["pre_window_absence_treated_as_missing"])
 
 
 if __name__ == "__main__":
