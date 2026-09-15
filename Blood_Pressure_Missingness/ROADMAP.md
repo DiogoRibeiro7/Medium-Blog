@@ -11,6 +11,7 @@ The current programme already covers:
 - privacy-safe day-indexed aggregation from the private source;
 - source-quality validation and sessionisation;
 - equal-day HC3 descriptive trends;
+- global time-form sensitivity using linear HC3, quadratic endpoint-average change, and Theil–Sen slope summaries;
 - sensitivity to unequal observation intensity;
 - gap-aware decomposition into within- and between-episode components;
 - single-observed-day influence and leave-one-day-out robustness;
@@ -21,6 +22,8 @@ The current programme already covers:
 - automatic live-source refreshes without committing raw health rows;
 - scientific and narrative drift gates in CI;
 - executable Medium-facing notebook validation.
+
+The current global time-form sensitivity check is intentionally bounded. It asks whether the sign and broad magnitude of the observed global association depend on one straight-line OLS summary. It does **not** select a preferred trajectory. On the current snapshot, the equal-day linear HC3 slope, the quadratic endpoint-average change, and the Theil–Sen median pairwise slope all remain negative with 95% intervals below zero.
 
 The current findings should therefore be treated as a **completed descriptive case study for this snapshot**, not as an invitation to keep adding specifications until a preferred result appears.
 
@@ -100,7 +103,7 @@ This should remain separate from the public day-level snapshot unless a privacy-
 
 ### 7. Replication rather than specification expansion
 
-If the methodological article is extended, replication should take priority over adding further sensitivity models to the same 26 observed days.
+If the methodological article is extended, replication should take priority over adding further sensitivity models to the same 31 observed days.
 
 Useful replication targets would be another independently observed time window or another dataset with a similar irregular-observation problem. The purpose would be to test whether the methodological lessons generalise, not whether the same numerical blood-pressure result repeats.
 
@@ -111,6 +114,7 @@ Low statistical risk and suitable as maintenance work:
 - keep the notebook and README aligned with refreshed public aggregates;
 - preserve the live-source privacy boundary;
 - keep generated diagnostic JSON files reproducible from the public snapshot;
+- maintain the global time-form methods note and its narrative contract alongside refreshed outputs;
 - add archival release tags for article versions if the Medium post is published or materially revised;
 - optionally add a compact methods diagram showing source → privacy-safe aggregation → diagnostics → article.
 
