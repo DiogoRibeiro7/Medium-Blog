@@ -38,6 +38,7 @@ REQUIRED_JSON_OUTPUTS = {
     "episode_observation_sensitivity.json",
     "episode_time_form_sensitivity.json",
     "temporal_dependence_diagnostics.json",
+    "global_time_form_sensitivity.json",
 }
 
 OPTIONAL_JSON_OUTPUTS = {
@@ -259,6 +260,36 @@ class PublicOutputSchemaContractTests(unittest.TestCase):
         }
         for item in payload["estimates"]:
             _keys(self, item, expected)
+
+    def test_global_time_form_schema(self) -> None:
+        payload = _load(FIGURES_DIR / "global_time_form_sensitivity.json")
+        _keys(
+            self,
+            payload,
+            {
+                "n_observed_days",
+                "first_observed_day_index",
+                "last_observed_day_index",
+                "estimates",
+                "all_95_percent_intervals_below_zero",
+                "interpretation",
+            },
+        )
+        self.assertEqual(
+            set(payload["estimates"]),
+            {
+                "linear_equal_day_hc3",
+                "quadratic_end_to_end_average_hc3",
+                "theil_sen_median_pairwise_slope",
+            },
+        )
+        estimate_fields = {
+            "estimate_per_30_days",
+            "ci95_low_per_30_days",
+            "ci95_high_per_30_days",
+        }
+        for item in payload["estimates"].values():
+            _keys(self, item, estimate_fields)
 
     def test_temporal_dependence_schema(self) -> None:
         payload = _load(FIGURES_DIR / "temporal_dependence_diagnostics.json")

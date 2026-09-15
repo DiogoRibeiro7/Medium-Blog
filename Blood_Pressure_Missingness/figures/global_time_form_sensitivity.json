@@ -1,0 +1,31 @@
+{
+  "n_observed_days": 31,
+  "first_observed_day_index": 0,
+  "last_observed_day_index": 71,
+  "estimates": {
+    "linear_equal_day_hc3": {
+      "estimate_per_30_days": -4.419054245497843,
+      "ci95_low_per_30_days": -6.376150067385106,
+      "ci95_high_per_30_days": -2.461958423610581
+    },
+    "quadratic_end_to_end_average_hc3": {
+      "estimate_per_30_days": -4.8169367502419345,
+      "ci95_low_per_30_days": -6.683981770995479,
+      "ci95_high_per_30_days": -2.94989172948839
+    },
+    "theil_sen_median_pairwise_slope": {
+      "estimate_per_30_days": -5.101010099999996,
+      "ci95_low_per_30_days": -7.230769232307691,
+      "ci95_high_per_30_days": -2.7777777777777777
+    }
+  },
+  "all_95_percent_intervals_below_zero": true,
+  "interpretation": {
+    "purpose": "test_global_time_association_sensitivity_to_time_form_and_slope_estimator",
+    "preferred_model_selected_by_this_analysis": false,
+    "estimands_are_interchangeable": false,
+    "quadratic_summary_is_endpoint_average_change": true,
+    "theil_sen_is_median_pairwise_slope": true,
+    "causal_interpretation": false
+  }
+}
