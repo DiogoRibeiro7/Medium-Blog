@@ -8,6 +8,8 @@ The project has grown from a single notebook into a small statistical-analysis s
 Blood_Pressure_Missingness/
 ├── blood_pressure_missingness/
 │   ├── public_analysis.py
+│   ├── publication_manifest.py
+│   ├── publication_integrity.py
 │   ├── analyses/
 │   │   ├── observation_process.py
 │   │   ├── gap_aware.py
@@ -25,6 +27,7 @@ Blood_Pressure_Missingness/
 ├── data/
 ├── figures/
 ├── tests/
+├── PUBLICATION_MANIFEST.json
 └── blood-pressure-missingness.ipynb
 ```
 
@@ -44,7 +47,11 @@ Blood_Pressure_Missingness/
 
 ### Validation
 
-`validation/` contains snapshot-sensitive scientific and narrative gates. These are refresh/release safeguards rather than estimators.
+`validation/` contains snapshot-sensitive scientific and narrative gates. These are refresh safeguards rather than estimators.
+
+### Publication snapshot integrity
+
+`publication_manifest.py` computes the deterministic SHA-256 manifest for the privacy-safe publication snapshot. `publication_integrity.py` checks that the committed manifest, citation metadata, project version, and frozen archival environment remain coherent. These modules do not create tags, releases, or external publication records.
 
 ### Notebook and reporting
 
@@ -63,6 +70,9 @@ privacy-safe artifacts ──► public analysis ──► sensitivity analyses
                                   └──────────┬─────────┘
                                              ▼
                                       validation gates
+                                             │
+                                             ▼
+                                  publication snapshot
                                              │
                                              ▼
                                       notebook/reporting
