@@ -115,7 +115,7 @@ Low statistical risk and suitable as maintenance work:
 - preserve the live-source privacy boundary;
 - keep generated diagnostic JSON files reproducible from the public snapshot;
 - maintain the global time-form methods note and its narrative contract alongside refreshed outputs;
-- add archival release tags for article versions if the Medium post is published or materially revised;
+- maintain an integrity-checked publication snapshot when the article is published or materially revised;
 - optionally add a compact methods diagram showing source → privacy-safe aggregation → diagnostics → article.
 
 ## Work explicitly deferred
