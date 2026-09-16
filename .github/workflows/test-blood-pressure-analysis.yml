@@ -9,8 +9,8 @@ on:
       - 'Blood_Pressure_Missingness/TEMPERATURE_COVARIATE.md'
       - 'Blood_Pressure_Missingness/REPRODUCIBILITY.md'
       - 'Blood_Pressure_Missingness/CITATION.cff'
-      - 'Blood_Pressure_Missingness/PUBLICATION_RELEASE.md'
-      - 'Blood_Pressure_Missingness/RELEASE_MANIFEST.json'
+      - 'Blood_Pressure_Missingness/PUBLICATION_SNAPSHOT.md'
+      - 'Blood_Pressure_Missingness/PUBLICATION_MANIFEST.json'
       - 'Blood_Pressure_Missingness/blood-pressure-missingness.ipynb'
       - 'Blood_Pressure_Missingness/blood_pressure_missingness/**'
       - 'Blood_Pressure_Missingness/docs/**'
@@ -32,8 +32,8 @@ on:
       - 'Blood_Pressure_Missingness/TEMPERATURE_COVARIATE.md'
       - 'Blood_Pressure_Missingness/REPRODUCIBILITY.md'
       - 'Blood_Pressure_Missingness/CITATION.cff'
-      - 'Blood_Pressure_Missingness/PUBLICATION_RELEASE.md'
-      - 'Blood_Pressure_Missingness/RELEASE_MANIFEST.json'
+      - 'Blood_Pressure_Missingness/PUBLICATION_SNAPSHOT.md'
+      - 'Blood_Pressure_Missingness/PUBLICATION_MANIFEST.json'
       - 'Blood_Pressure_Missingness/blood-pressure-missingness.ipynb'
       - 'Blood_Pressure_Missingness/blood_pressure_missingness/**'
       - 'Blood_Pressure_Missingness/docs/**'
@@ -76,9 +76,9 @@ jobs:
           python -m blood_pressure_missingness.validation.current_narrative
           --root .
 
-      - name: Run release-readiness gate
+      - name: Run publication snapshot integrity gate
         working-directory: Blood_Pressure_Missingness
-        run: python -m blood_pressure_missingness.release_readiness --root .
+        run: python -m blood_pressure_missingness.publication_integrity --root .
 
       - name: Run blood-pressure regression and notebook tests
         run: >-
@@ -105,9 +105,9 @@ jobs:
       - name: Install local package without dependency resolution
         run: python -m pip install -e Blood_Pressure_Missingness --no-deps
 
-      - name: Run frozen release-readiness gate
+      - name: Run frozen publication snapshot integrity gate
         working-directory: Blood_Pressure_Missingness
-        run: python -m blood_pressure_missingness.release_readiness --root .
+        run: python -m blood_pressure_missingness.publication_integrity --root .
 
       - name: Run frozen-environment regression and notebook tests
         run: >-
