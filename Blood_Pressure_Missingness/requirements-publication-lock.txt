@@ -1,0 +1,77 @@
+# Frozen publication environment for the blood-pressure missingness case study.
+# Provenance: GitHub Actions run #155, PR #100 exact head
+# d97efb455e24a7aa2701ab5d732a35844279f1c9.
+# Platform used for the reference run: Ubuntu 24.04.5 LTS, Python 3.13.15.
+#
+# This file intentionally freezes the complete third-party environment observed in
+# the successful reference run. Normal development should continue to use
+# requirements.txt and its supported version ranges.
+
+asttokens==3.0.2
+attrs==26.1.0
+certifi==2026.7.22
+cffi==2.1.1
+charset-normalizer==3.5.1
+comm==0.2.3
+contourpy==1.4.0
+cryptography==50.0.1
+cycler==0.12.1
+debugpy==1.8.22
+executing==2.2.1
+fastjsonschema==2.22.2
+fonttools==4.65.0
+formulaic==1.2.2
+google-auth==2.58.0
+google-auth-oauthlib==1.4.1
+gspread==6.2.1
+idna==3.19
+interface-meta==2.0.1
+ipykernel==7.3.0
+ipython==9.17.1
+ipython-pygments-lexers==1.1.1
+jedi==0.20.0
+jsonschema==4.26.0
+jsonschema-specifications==2025.9.1
+jupyter-client==8.10.0
+jupyter-core==5.9.1
+kiwisolver==1.5.1
+matplotlib==3.11.2
+matplotlib-inline==0.2.2
+narwhals==2.26.0
+nbclient==0.11.0
+nbformat==5.11.1
+nest-asyncio2==1.7.2
+numpy==2.5.3
+oauthlib==3.3.1
+packaging==26.3
+pandas==3.0.5
+parso==0.8.7
+patsy==1.0.3
+pexpect==4.9.0
+pillow==12.3.0
+platformdirs==4.11.8
+prompt-toolkit==3.0.53
+psutil==7.2.2
+ptyprocess==0.7.0
+pure-eval==0.2.4
+pyasn1==0.6.4
+pyasn1-modules==0.4.2
+pycparser==3.0
+pygments==2.21.0
+pyparsing==3.3.2
+python-dateutil==2.9.0.post0
+pyzmq==27.2.0
+referencing==0.37.0
+requests==2.34.2
+requests-oauthlib==2.0.0
+rpds-py==2026.6.3
+scipy==1.18.1
+six==1.17.0
+stack-data==0.6.3
+statsmodels==0.15.0
+tornado==6.5.10
+traitlets==5.16.1
+typing-extensions==4.16.0
+urllib3==2.8.0
+wcwidth==0.8.3
+wrapt==2.4.1
