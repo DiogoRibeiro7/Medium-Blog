@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use this blood-pressure missingness case study, please cite the software record for the version you used."
+title: "Missing Data Is Not Empty Space: Statistical Analysis of an Irregular Blood-Pressure Tracker"
+type: software
+authors:
+  - family-names: Ribeiro
+    given-names: Diogo
+version: 0.1.0
+repository-code: "https://github.com/DiogoRibeiro7/Medium-Blog"
+url: "https://github.com/DiogoRibeiro7/Medium-Blog/tree/main/Blood_Pressure_Missingness"
+license: Apache-2.0
+keywords:
+  - missing data
+  - irregular longitudinal data
+  - blood pressure
+  - reproducible research
+  - sensitivity analysis
