@@ -76,6 +76,10 @@ jobs:
           python -m blood_pressure_missingness.validation.current_narrative
           --root .
 
+      - name: Run release-readiness gate
+        working-directory: Blood_Pressure_Missingness
+        run: python -m blood_pressure_missingness.release_readiness --root .
+
       - name: Run blood-pressure regression and notebook tests
         run: >-
           python -m unittest discover
@@ -100,6 +104,10 @@ jobs:
 
       - name: Install local package without dependency resolution
         run: python -m pip install -e Blood_Pressure_Missingness --no-deps
+
+      - name: Run frozen release-readiness gate
+        working-directory: Blood_Pressure_Missingness
+        run: python -m blood_pressure_missingness.release_readiness --root .
 
       - name: Run frozen-environment regression and notebook tests
         run: >-
