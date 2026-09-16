@@ -1,0 +1,114 @@
+name: Release blood-pressure analysis
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Exact case-study version to release (for example 0.1.0)"
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release-blood-pressure-analysis
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Check out main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Set up frozen Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13.15'
+
+      - name: Install frozen publication environment
+        working-directory: Blood_Pressure_Missingness
+        run: python -m pip install -r requirements-publication-lock.txt
+
+      - name: Install local package without dependency resolution
+        run: python -m pip install -e Blood_Pressure_Missingness --no-deps
+
+      - name: Resolve version and tag
+        id: version
+        working-directory: Blood_Pressure_Missingness
+        env:
+          REQUESTED_VERSION: ${{ inputs.version }}
+        run: |
+          package_version="$(python - <<'PY'
+          import tomllib
+          from pathlib import Path
+          with Path('pyproject.toml').open('rb') as handle:
+              print(tomllib.load(handle)['project']['version'])
+          PY
+          )"
+          if [[ "$REQUESTED_VERSION" != "$package_version" ]]; then
+            echo "Requested version '$REQUESTED_VERSION' does not match pyproject.toml version '$package_version'." >&2
+            exit 1
+          fi
+          tag="blood-pressure-missingness-v${package_version}"
+          echo "version=$package_version" >> "$GITHUB_OUTPUT"
+          echo "tag=$tag" >> "$GITHUB_OUTPUT"
+
+      - name: Run release-readiness gate
+        working-directory: Blood_Pressure_Missingness
+        run: python -m blood_pressure_missingness.release_readiness --root .
+
+      - name: Refuse duplicate tag or release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ steps.version.outputs.tag }}
+        run: |
+          if git show-ref --verify --quiet "refs/tags/$TAG"; then
+            echo "Tag $TAG already exists." >&2
+            exit 1
+          fi
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            echo "GitHub release $TAG already exists." >&2
+            exit 1
+          fi
+
+      - name: Create scoped release notes
+        working-directory: Blood_Pressure_Missingness
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+          TAG: ${{ steps.version.outputs.tag }}
+        run: |
+          cat > release-notes.md <<EOF
+          ## Blood Pressure Missingness ${VERSION}
+
+          First namespaced release of the maintained `Blood_Pressure_Missingness` case study inside the `Medium-Blog` monorepo.
+
+          This release pins:
+
+          - the privacy-safe aggregate snapshot and published derived artifacts;
+          - the executable notebook;
+          - the scoped citation metadata;
+          - the frozen publication environment;
+          - the SHA-256 integrity manifest in `Blood_Pressure_Missingness/RELEASE_MANIFEST.json`.
+
+          The release does not include raw health rows, calendar-dated private joins, Google Sheet identifiers, credentials, or other secret-backed source material.
+
+          Scientific interpretation remains bounded by the project documentation: the analyses are observational sensitivity analyses, not causal or clinical claims.
+
+          Release tag: `${TAG}`
+          EOF
+
+      - name: Create namespaced GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ steps.version.outputs.tag }}
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          gh release create "$TAG" \
+            --target "$GITHUB_SHA" \
+            --title "Blood Pressure Missingness v${VERSION}" \
+            --notes-file Blood_Pressure_Missingness/release-notes.md
