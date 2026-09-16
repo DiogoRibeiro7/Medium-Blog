@@ -37,7 +37,7 @@ jobs:
       - name: Install local package without dependency resolution
         run: python -m pip install -e Blood_Pressure_Missingness --no-deps
 
-      - name: Resolve version and tag
+      - name: Resolve version, tag, and target
         id: version
         working-directory: Blood_Pressure_Missingness
         env:
@@ -55,8 +55,10 @@ jobs:
             exit 1
           fi
           tag="blood-pressure-missingness-v${package_version}"
+          target_sha="$(git rev-parse HEAD)"
           echo "version=$package_version" >> "$GITHUB_OUTPUT"
           echo "tag=$tag" >> "$GITHUB_OUTPUT"
+          echo "target_sha=$target_sha" >> "$GITHUB_OUTPUT"
 
       - name: Run release-readiness gate
         working-directory: Blood_Pressure_Missingness
@@ -82,10 +84,15 @@ jobs:
           VERSION: ${{ steps.version.outputs.version }}
           TAG: ${{ steps.version.outputs.tag }}
         run: |
-          cat > release-notes.md <<EOF
-          ## Blood Pressure Missingness ${VERSION}
+          python - <<'PY'
+          import os
+          from pathlib import Path
 
-          First namespaced release of the maintained `Blood_Pressure_Missingness` case study inside the `Medium-Blog` monorepo.
+          version = os.environ["VERSION"]
+          tag = os.environ["TAG"]
+          notes = f"""## Blood Pressure Missingness {version}
+
+          First namespaced release of the maintained Blood_Pressure_Missingness case study inside the Medium-Blog monorepo.
 
           This release pins:
 
@@ -93,22 +100,25 @@ jobs:
           - the executable notebook;
           - the scoped citation metadata;
           - the frozen publication environment;
-          - the SHA-256 integrity manifest in `Blood_Pressure_Missingness/RELEASE_MANIFEST.json`.
+          - the SHA-256 integrity manifest in Blood_Pressure_Missingness/RELEASE_MANIFEST.json.
 
           The release does not include raw health rows, calendar-dated private joins, Google Sheet identifiers, credentials, or other secret-backed source material.
 
           Scientific interpretation remains bounded by the project documentation: the analyses are observational sensitivity analyses, not causal or clinical claims.
 
-          Release tag: `${TAG}`
-          EOF
+          Release tag: {tag}
+          """
+          Path("release-notes.md").write_text(notes, encoding="utf-8")
+          PY
 
       - name: Create namespaced GitHub release
         env:
           GH_TOKEN: ${{ github.token }}
           TAG: ${{ steps.version.outputs.tag }}
           VERSION: ${{ steps.version.outputs.version }}
+          TARGET_SHA: ${{ steps.version.outputs.target_sha }}
         run: |
           gh release create "$TAG" \
-            --target "$GITHUB_SHA" \
+            --target "$TARGET_SHA" \
             --title "Blood Pressure Missingness v${VERSION}" \
             --notes-file Blood_Pressure_Missingness/release-notes.md
