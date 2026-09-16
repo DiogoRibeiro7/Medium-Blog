@@ -52,7 +52,10 @@ class GlobalTimeFormNarrativeContractTests(unittest.TestCase):
         if payload["all_95_percent_intervals_below_zero"]:
             self.assertIn("All three current intervals are below zero.", note)
 
-        self.assertIn("not interchangeable", note)
+        self.assertIn(
+            "Numerical closeness does not make the estimands interchangeable.",
+            note,
+        )
         self.assertIn("not a search for a preferred trajectory", note)
         self.assertIn("32-day interval contains no measurements", note)
 
