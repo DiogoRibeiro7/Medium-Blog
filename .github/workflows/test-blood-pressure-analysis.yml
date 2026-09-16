@@ -21,6 +21,7 @@ on:
       - 'Blood_Pressure_Missingness/requirements-publication-lock.txt'
       - 'Blood_Pressure_Missingness/pyproject.toml'
       - '.github/workflows/refresh-blood-pressure-analysis.yml'
+      - '.github/workflows/release-blood-pressure-analysis.yml'
       - '.github/workflows/test-blood-pressure-analysis.yml'
   push:
     branches:
@@ -44,6 +45,7 @@ on:
       - 'Blood_Pressure_Missingness/requirements-publication-lock.txt'
       - 'Blood_Pressure_Missingness/pyproject.toml'
       - '.github/workflows/refresh-blood-pressure-analysis.yml'
+      - '.github/workflows/release-blood-pressure-analysis.yml'
       - '.github/workflows/test-blood-pressure-analysis.yml'
 
 permissions:
