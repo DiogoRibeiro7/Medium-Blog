@@ -6,7 +6,7 @@ This file tracks new article work without turning the repository into a publicat
 
 | Priority | Working title | Path | Theme | Status |
 | --- | --- | --- | --- | --- |
-| 1 | Twenty Seeds Are Not a Phase Diagram | [`simulation-replication-and-false-phase-changes/`](simulation-replication-and-false-phase-changes/) | simulation / statistical validation | draft |
+| 1 | Twenty Seeds Are Not a Phase Diagram | [`simulation-replication-and-false-phase-changes/`](simulation-replication-and-false-phase-changes/) | simulation / statistical validation | review |
 | 2 | When the Data Refuse a Point Estimate | [`partial-identification-without-false-precision/`](partial-identification-without-false-precision/) | partial identification / inference | draft |
 | 3 | Before Deep Learning, Look at the Geometry | [`longitudinal-clustering-before-deep-learning/`](longitudinal-clustering-before-deep-learning/) | longitudinal data / clustering | draft |
 | 4 | MCP Is Not Just Tool Calling | [`mcp-is-an-engineering-boundary/`](mcp-is-an-engineering-boundary/) | AI engineering / systems | draft |
