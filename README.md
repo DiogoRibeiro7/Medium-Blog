@@ -19,6 +19,10 @@ Historical paths are part of the public archive. They are not renamed merely to 
 
 See [`docs/REPOSITORY_ARCHITECTURE.md`](docs/REPOSITORY_ARCHITECTURE.md) for the repository contract and [`REPOSITORY_ROADMAP.md`](REPOSITORY_ROADMAP.md) for the modernization programme.
 
+## Editorial queue
+
+New article work is tracked in [`EDITORIAL_QUEUE.md`](EDITORIAL_QUEUE.md). Drafts use stable, URL-friendly project directories so each piece can grow independently into references, code, data, figures, or reproducibility material when needed.
+
 ## Maintained projects
 
 ### Blood-pressure missingness
