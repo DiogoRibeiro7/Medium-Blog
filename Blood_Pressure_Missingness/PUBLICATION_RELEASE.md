@@ -22,9 +22,35 @@ Future versions should follow the same pattern:
 blood-pressure-missingness-vMAJOR.MINOR.PATCH
 ```
 
+## Executable release-readiness gate
+
+Before considering a commit for tagging, run from this directory:
+
+```bash
+python -m blood_pressure_missingness.release_readiness --root .
+```
+
+The gate checks the tree itself. It requires:
+
+- `pyproject.toml`, `CITATION.cff`, and the namespaced release tag to agree on the version;
+- `CITATION.cff` to remain scoped to this case study and declare `Apache-2.0`;
+- `RELEASE_MANIFEST.json` to match the current integrity-tracked public artifacts exactly;
+- every archival dependency in `requirements-publication-lock.txt` to be pinned with `==`;
+- no DOI or `date-released` field before those values exist in reality.
+
+After an actual archival release exists, the DOI/date guard can be intentionally relaxed with:
+
+```bash
+python -m blood_pressure_missingness.release_readiness \
+  --root . \
+  --allow-archival-metadata
+```
+
+That flag does not create or validate a DOI. It only permits real archival metadata to be present after it has been added deliberately.
+
 ## Before creating a release
 
-1. Confirm `pyproject.toml` and `CITATION.cff` carry the same version.
+1. Run the executable release-readiness gate above.
 2. Confirm the ordinary compatibility CI job is green.
 3. Confirm the frozen `publication-lock` CI job is green.
 4. Confirm the public notebook executes from the project directory.
