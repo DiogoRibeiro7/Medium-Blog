@@ -158,6 +158,13 @@ jobs:
           --data data/analysis_snapshot.csv
           --output-json figures/temporal_dependence_diagnostics.json
 
+      - name: Regenerate public release manifest
+        working-directory: Blood_Pressure_Missingness
+        run: >-
+          python -m blood_pressure_missingness.release_manifest
+          --root .
+          --output RELEASE_MANIFEST.json
+
       - name: Validate current influence findings
         working-directory: Blood_Pressure_Missingness
         run: >-
@@ -188,7 +195,8 @@ jobs:
             Blood_Pressure_Missingness/data/pulse_oximeter_daily_snapshot.csv \
             Blood_Pressure_Missingness/data/pulse_oximeter_longitudinal_diagnostics.json \
             Blood_Pressure_Missingness/data/pulse_oximeter_observation_window.json \
-            Blood_Pressure_Missingness/figures)" ]]; then
+            Blood_Pressure_Missingness/figures \
+            Blood_Pressure_Missingness/RELEASE_MANIFEST.json)" ]]; then
             echo 'changed=true' >> "$GITHUB_OUTPUT"
           else
             echo 'changed=false' >> "$GITHUB_OUTPUT"
@@ -201,7 +209,7 @@ jobs:
         run: |
           branch='automation/blood-pressure-refresh'
           title='Refresh blood-pressure aggregate analysis'
-          body='Refreshes only privacy-safe aggregate data and derived statistical outputs from the secret-backed Google Sheet source. Pulse-oximeter longitudinal and observed-window coverage diagnostics are computed from privacy-safe aggregates; no raw health rows or calendar-dated joins are committed.'
+          body='Refreshes only privacy-safe aggregate data, derived statistical outputs, and the matching SHA-256 release manifest from the secret-backed Google Sheet source. Pulse-oximeter longitudinal and observed-window coverage diagnostics are computed from privacy-safe aggregates; no raw health rows or calendar-dated joins are committed.'
 
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
@@ -213,7 +221,8 @@ jobs:
             Blood_Pressure_Missingness/data/pulse_oximeter_daily_snapshot.csv \
             Blood_Pressure_Missingness/data/pulse_oximeter_longitudinal_diagnostics.json \
             Blood_Pressure_Missingness/data/pulse_oximeter_observation_window.json \
-            Blood_Pressure_Missingness/figures
+            Blood_Pressure_Missingness/figures \
+            Blood_Pressure_Missingness/RELEASE_MANIFEST.json
           git commit -m 'Refresh blood-pressure aggregate analysis'
           git push --force origin HEAD:"$branch"
 
