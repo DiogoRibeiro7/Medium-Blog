@@ -1,8 +1,9 @@
 # Distribution of transactions by country
 library(ggplot2)
 
-# Read the data
-data <- read.csv('data.csv', stringsAsFactors = FALSE)
+# Load the exact pinned canonical Online Retail II source.
+source("load_online_retail_ii.R")
+data <- load_online_retail_ii()
 
 data %>%
   group_by(Country) %>%
