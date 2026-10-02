@@ -1,9 +1,9 @@
 library(dplyr)
 library(lubridate)
 
-# Assuming 'data' has been read previously and is still available
-data <- read.csv('data.csv', stringsAsFactors = FALSE)
-
+# Load the exact pinned canonical Online Retail II source.
+source("load_online_retail_ii.R")
+data <- load_online_retail_ii()
 
 # Ensure Recency is calculated correctly and there are no all-NA scenarios
 data$InvoiceDate <- as.Date(data$InvoiceDate)
