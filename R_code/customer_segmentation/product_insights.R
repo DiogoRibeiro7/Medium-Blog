@@ -7,8 +7,9 @@ library(cluster)
 library(irlba)
 library(e1071)
 
-# Read the data
-data <- read.csv('data.csv', stringsAsFactors = FALSE)
+# Load the exact pinned canonical Online Retail II source.
+source("load_online_retail_ii.R")
+data <- load_online_retail_ii()
 
 # Convert Description to UTF-8, replace non-convertible characters with ""
 data$Description <- iconv(data$Description, to = "UTF-8", sub = "")
