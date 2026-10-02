@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "dataset": "online-retail-ii",
+  "repository": "DiogoRibeiro7/data",
+  "commit": "e90eed21a474c0a54ab9bf658c01dbd778bf58f1",
+  "path": "datasets/online-retail-ii/raw/online_retail_II.xlsx",
+  "sha256": "bcbe73b35f5b7babf197fb0cb983a11f5d9ff929078d4aa53d171b1f2df2e980",
+  "sheet": "Year 2010-2011",
+  "consumers": [
+    "customer_life_value/Untitled.ipynb",
+    "customer_segmentation/customer segmentation.ipynb",
+    "R_code/customer_segmentation/customer_purchase_patterns.R",
+    "R_code/customer_segmentation/customer_segmentation.R",
+    "R_code/customer_segmentation/data_analysis.R",
+    "R_code/customer_segmentation/product_insights.R",
+    "R_code/customer_segmentation/sales.R",
+    "R_code/customer_segmentation/sales_perfomance.R"
+  ]
+}

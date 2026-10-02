@@ -20,3 +20,6 @@ venv/
 # Private personal-health source data
 blood_pressure_tracker*.xlsx
 Blood_Pressure_Missingness/data/private/
+
+# Reproducible external dataset cache
+.cache/

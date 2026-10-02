@@ -1,0 +1,45 @@
+name: Online Retail II consumers
+
+on:
+  pull_request:
+    paths:
+      - "data_sources/online-retail-ii.json"
+      - "scripts/fetch_online_retail_ii.py"
+      - "scripts/validate_online_retail_consumers.py"
+      - "R_code/customer_segmentation/**"
+      - "customer_life_value/Untitled.ipynb"
+      - "customer_life_value/README.md"
+      - "customer_segmentation/customer segmentation.ipynb"
+      - ".github/workflows/online-retail-consumers.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "data_sources/online-retail-ii.json"
+      - "scripts/fetch_online_retail_ii.py"
+      - "scripts/validate_online_retail_consumers.py"
+      - "R_code/customer_segmentation/**"
+      - "customer_life_value/Untitled.ipynb"
+      - "customer_life_value/README.md"
+      - "customer_segmentation/customer segmentation.ipynb"
+      - ".github/workflows/online-retail-consumers.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: Validate pinned Online Retail II consumers
+        run: python scripts/validate_online_retail_consumers.py
