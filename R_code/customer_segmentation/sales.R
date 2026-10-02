@@ -2,8 +2,9 @@
 library(ggplot2)
 library(dplyr)
 
-# Read the data
-data <- read.csv('/path/to/your/data.csv', stringsAsFactors = FALSE)
+# Load the exact pinned canonical Online Retail II source.
+source("load_online_retail_ii.R")
+data <- load_online_retail_ii()
 
 # Convert InvoiceDate to Date type and create a TotalSales column
 data$InvoiceDate <- as.POSIXct(data$InvoiceDate, format="%m/%d/%Y %H:%M")
