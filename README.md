@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/project-logo.png" alt="Medium-Blog project logo" width="160" height="160">
+</p>
+
 # Medium-Blog
 
 [![GitHub issues](https://img.shields.io/github/issues/DiogoRibeiro7/Medium-Blog)](https://github.com/DiogoRibeiro7/Medium-Blog/issues)
