@@ -1,0 +1,4 @@
+eta=0.05: 2/eta=40.00  final loss=0.01249  sharpness last 2000 steps: median=13.677 range=[13.457, 13.907]  test acc=0.9799
+eta=0.1: 2/eta=20.00  final loss=0.00595  sharpness last 2000 steps: median=15.129 range=[14.748, 15.459]  test acc=0.9799
+eta=0.15: 2/eta=13.33  final loss=0.00404  sharpness last 2000 steps: median=13.380 range=[13.329, 13.474]  test acc=0.9774
+eta=0.3: 2/eta=6.67  final loss=0.00244  sharpness last 2000 steps: median=6.710 range=[6.684, 6.747]  test acc=0.9737
