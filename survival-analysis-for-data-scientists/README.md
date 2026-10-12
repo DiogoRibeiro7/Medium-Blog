@@ -11,7 +11,7 @@ A great deal of business data is about time until something happens: a customer 
 | 1 | Time to event, censoring and the Kaplan-Meier estimator | An acquisition budget from a customer table in which half the customers have not churned yet | [`part1/`](part1) | [Medium](https://medium.com/@diogo-ribeiro-1975/survival-analysis-for-data-scientists-27610dda2e62) |
 | 2 | Hazards, the Nelson-Aalen estimator and the log-rank test | A retention A/B test read before most customers have left | [`part2/`](part2) | [Medium](https://medium.com/@diogo-ribeiro-1975/survival-analysis-for-data-scientists-7cce086e5a50) |
 | 3 | The Cox model, checking proportional hazards and pricing customer segments | The most to pay for a customer from each lead segment | [`part3/`](part3) | [Medium](https://medium.com/@diogo-ribeiro-1975/survival-analysis-for-data-scientists-ad614e28eda8) |
-| 4 | Parametric models, accelerated failure time and the value of customers beyond the data | A five-year acquisition budget from one year of data | [`part4/`](part4) | Forthcoming |
+| 4 | Parametric models, accelerated failure time and the value of customers beyond the data | A five-year acquisition budget from one year of data | [`part4/`](part4) | [Medium](https://medium.com/@diogo-ribeiro-1975/survival-analysis-for-data-scientists-8cb8b9b61bfa) |
 | 5 | Competing risks and recurrent events | Predictive maintenance with failure and planned replacement | | Planned |
 | 6 | Machine learning for survival, and how to evaluate it | A benchmark on public data, judged by the decision it supports | | Planned |
 
