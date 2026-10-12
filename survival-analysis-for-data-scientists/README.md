@@ -11,7 +11,7 @@ A great deal of business data is about time until something happens: a customer 
 | 1 | Time to event, censoring and the Kaplan-Meier estimator | An acquisition budget from a customer table in which half the customers have not churned yet | [`part1/`](part1) | [Medium](https://medium.com/@diogo-ribeiro-1975/survival-analysis-for-data-scientists-27610dda2e62) |
 | 2 | Hazards, the Nelson-Aalen estimator and the log-rank test | A retention A/B test read before most customers have left | [`part2/`](part2) | [Medium](https://medium.com/@diogo-ribeiro-1975/survival-analysis-for-data-scientists-7cce086e5a50) |
 | 3 | The Cox model, checking proportional hazards and pricing customer segments | The most to pay for a customer from each lead segment | [`part3/`](part3) | [Medium](https://medium.com/@diogo-ribeiro-1975/survival-analysis-for-data-scientists-ad614e28eda8) |
-| 4 | Parametric models, accelerated failure time and extrapolation | Customer lifetime value beyond the observed window | | Planned |
+| 4 | Parametric models, accelerated failure time and the value of customers beyond the data | A five-year acquisition budget from one year of data | [`part4/`](part4) | Forthcoming |
 | 5 | Competing risks and recurrent events | Predictive maintenance with failure and planned replacement | | Planned |
 | 6 | Machine learning for survival, and how to evaluate it | A benchmark on public data, judged by the decision it supports | | Planned |
 
@@ -61,6 +61,14 @@ To reproduce Part 3:
 cd part3
 python cox_model.py > output.txt   # about 80 seconds
 python figures.py                  # writes four PNG files to figures/, about 75 seconds
+```
+
+To reproduce Part 4:
+
+```bash
+cd part4
+python extrapolation.py > output.txt   # about 5 minutes
+python figures.py                      # writes four PNG files to figures/, about 5 minutes
 ```
 
 Random seeds are fixed. The workflow `.github/workflows/survival-analysis-for-data-scientists.yml` reruns each part's main script on every change to this folder and fails if the output differs from the committed `output.txt`.
@@ -130,6 +138,27 @@ The main results:
 | Mean hazard ratio for 50+ employees, true 0.607: Breslow / Efron ties | 0.620 / 0.609 |
 
 All data in Part 3 are simulated.
+
+## Part 4 in brief
+
+`part4/extrapolation.py` simulates the subscription product of Parts 1 and 2 one year after launch: 6,000 customers, 30% of them arriving by referral, whose lifetimes are stretched by a time ratio of 1.43. It then:
+
+1. Fits six parametric families (exponential, Weibull, Gompertz, log-normal, log-logistic, gamma mixture) as accelerated failure time models by maximum likelihood on censored data, checked against scipy's censored-data fitting.
+2. Compares their fit to the observed year and their extrapolated five-year value of a customer, restricted and full means, and the time ratio for referral.
+3. Simulates two further businesses whose retention matches the first over its first year (a Weibull process and one with a loyal core of customers who never leave), and evaluates four rules for setting the five-year value (best AIC, AIC-weighted average, observed value plus the lowest plausible tail, observed value only) with 12, 24 and 36 months of data, 100 tables each.
+
+The main results:
+
+| Quantity | Value |
+|---|---|
+| True five-year value of a paid-channel customer: gamma mixture / Weibull / loyal core | EUR 343.26 / 304.05 / 395.15 |
+| Five-year values of the four plausible models in one table at 12 months | EUR 297.78 to 384.39 |
+| Best-AIC rule at 12 months, gamma mixture business: middle 95% of errors | EUR -68.62 to +84.42 |
+| Observed plus lowest plausible tail: overpays by more than 10% | at most 1% of tables in any business |
+| Best-AIC root mean squared error at 12 / 24 / 36 months, gamma mixture business | EUR 36.59 / 10.57 / 4.82 |
+| Time ratio for referral, gamma mixture model, mean over 100 tables (true 1.429) | 1.435 |
+
+All data in Part 4 are simulated.
 
 ## Author
 
