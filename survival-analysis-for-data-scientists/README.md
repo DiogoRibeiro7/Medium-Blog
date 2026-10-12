@@ -9,7 +9,7 @@ A great deal of business data is about time until something happens: a customer 
 | Part | Topic | Application | Folder | Article |
 |---|---|---|---|---|
 | 1 | Time to event, censoring and the Kaplan-Meier estimator | An acquisition budget from a customer table in which half the customers have not churned yet | [`part1/`](part1) | Forthcoming |
-| 2 | Hazards, Nelson-Aalen and comparing groups | A retention A/B test read with the log-rank test | | Planned |
+| 2 | Hazards, the Nelson-Aalen estimator and the log-rank test | A retention A/B test read before most customers have left | [`part2/`](part2) | Forthcoming |
 | 3 | The Cox proportional hazards model | Drivers of churn, translated into expected months | | Planned |
 | 4 | Parametric models, accelerated failure time and extrapolation | Customer lifetime value beyond the observed window | | Planned |
 | 5 | Competing risks and recurrent events | Predictive maintenance with failure and planned replacement | | Planned |
@@ -37,7 +37,7 @@ cd survival-analysis-for-data-scientists
 pip install -r requirements.txt
 ```
 
-The committed outputs were produced with Python 3.13 and the versions pinned in `requirements.txt`. Any NumPy 2.x and a recent Matplotlib should give the same numbers up to the last printed digit; `scikit-survival` is optional.
+The committed outputs were produced with Python 3.13 and the versions pinned in `requirements.txt`. Any NumPy 2.x with a recent SciPy and Matplotlib should give the same numbers up to the last printed digit; `scikit-survival` is optional.
 
 To reproduce Part 1:
 
@@ -45,6 +45,14 @@ To reproduce Part 1:
 cd part1
 python kaplan_meier.py > output.txt   # about 40 seconds
 python figures.py                     # writes four PNG files to figures/, about 2 minutes
+```
+
+To reproduce Part 2:
+
+```bash
+cd part2
+python hazards_logrank.py > output.txt   # about 25 seconds
+python figures.py                        # writes four PNG files to figures/, about 30 seconds
 ```
 
 Random seeds are fixed. The workflow `.github/workflows/survival-analysis-for-data-scientists.yml` reruns each part's main script on every change to this folder and fails if the output differs from the committed `output.txt`.
@@ -70,6 +78,29 @@ The main results:
 | Kaplan-Meier break-even when pauses are censored (pause rate half the churn rate) | EUR 223 |
 
 All data in Part 1 are simulated.
+
+## Part 2 in brief
+
+`part2/hazards_logrank.py` simulates a retention A/B test on the same product: 4,500 new customers randomised over three months to the current onboarding or a new one, analysed 3, 6, 9 and 12 months after the start. Two versions of the new onboarding are simulated: a *steady* one that lowers every customer's churn rate by 20%, and a *delay* one that halves churn for two months and raises it by half afterwards. The script:
+
+1. Estimates the cumulative hazard with a Nelson-Aalen estimator and the monthly churn rate per customer-month at risk, both written from scratch and checked against scikit-survival.
+2. Computes the true population hazard ratio when every customer's ratio is 0.8, to show how it drifts towards 1 as the arms' survivors become different kinds of customers.
+3. Implements the log-rank test with the one-step (Peto) hazard ratio, and the difference in restricted mean survival time between arms with its standard error.
+4. Runs 1,000 simulated experiments per scenario (no effect, steady, delay), comparing the log-rank test with a month-1 retention comparison and with the restricted-mean difference at each analysis date.
+
+The main results:
+
+| Quantity | Value |
+|---|---|
+| True effect on paid months in the first 12: steady / delay | +0.473 (EUR +7.10) / -0.301 (EUR -4.52) |
+| Population hazard ratio when every customer's ratio is 0.8, at months 12 and 60 | 0.855 and 0.932 |
+| Steady version detected at month 12: log-rank / month-1 comparison | 98.1% / 37.7% |
+| No effect, log-rank significant at one or more of the four dates | 13.1% |
+| Delay version at month 3: log-rank / month-1 comparison significantly in favour | 98.9% / 96.7% |
+| Delay version at month 12: log-rank finds it harmful / restricted-mean interval below zero | 98.5% / 69.9% |
+| Coverage of the 95% interval for the restricted-mean difference, all scenarios and dates | 94.2% to 96.1% |
+
+All data in Part 2 are simulated.
 
 ## Author
 
