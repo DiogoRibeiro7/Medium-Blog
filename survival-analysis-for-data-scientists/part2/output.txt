@@ -1,0 +1,49 @@
+========================================================================
+1. THE TRUE PROCESS
+========================================================================
+Control: individual churn rates ~ Gamma(shape 1.5, rate 25.0); S(1) 0.943, S(6) 0.724, S(12) 0.555
+Population hazard, control: month 0 0.0600, month 6 0.0484, month 12 0.0405
+Average hazard within month 1 (H(1) - H(0)) 0.0588; within month 12 (H(12) - H(11)) 0.0411
+steady treatment (each customer's hazard x 0.8): S(1) 0.954, S(6) 0.768, S(12) 0.614
+delay treatment (x 0.5 for two months, x 1.5 after): S(1) 0.971, S(6) 0.691, S(12) 0.476
+Population hazard ratio, steady vs control, at months 0, 3, 6, 12, 24, 60: 0.800, 0.818, 0.832, 0.855, 0.887, 0.932
+Expected paid months in the first 12: control 8.900, steady 9.373 (+0.473), delay 8.599 (-0.301)
+Value per customer over 12 months at EUR 15 margin: steady EUR +7.10, delay EUR -4.52
+Month-1 churn: control 0.0571, steady 0.0461, delay 0.0293
+Delay treatment: retention curves cross at month 4.00; hazards cross at month 2
+
+========================================================================
+2. ONE EXPERIMENT (4,500 SIGNUPS, STEADY TREATMENT), ANALYSED AT MONTH 12
+========================================================================
+Customers: control 2,250, treatment 2,250; churn observed control 898, treatment 779
+Monthly churn rate per customer-month, control, months 1, 3, 6, 9, 12: 0.0585, 0.0562, 0.0450, 0.0489, 0.0264
+  95% interval in month 1: [0.0484, 0.0686]; in month 12: [0.0053, 0.0476]
+  cancellations / customers active at the start of the month, months 1, 3, 6, 9, 12: 0.0569, 0.0547, 0.0439, 0.0477, 0.0133
+Monthly churn rate per customer-month, treatment, months 1, 3, 6, 9, 12: 0.0478, 0.0425, 0.0366, 0.0351, 0.0578
+Nelson-Aalen H(12), control: 0.5733 (true 0.5881); exp(-H) 0.5637 against Kaplan-Meier 0.5635
+Log-rank: observed 779 churns in treatment against 855.2 expected; z -3.72, p 0.0002; one-step hazard ratio 0.834
+Expected paid months in the first 12, treatment minus control: +0.424 (standard error 0.120; true +0.473)
+Check against scikit-survival: log-rank chi-square 13.8528 vs 13.8528; largest difference in Nelson-Aalen 0.0e+00
+
+========================================================================
+3. 1,000 EXPERIMENTS PER SCENARIO, EACH ANALYSED AT MONTHS 3, 6, 9, 12
+========================================================================
+scenario  look  log-rank rejects  month-1 test rejects  mean HR  RMST diff (tau)  true diff  RMST CI covers
+control      3              5.2%                  5.0%    1.003    +0.001 ( 3)     +0.000           94.8%
+control      6              4.0%                  6.0%    1.004    -0.001 ( 6)     +0.000           95.2%
+control      9              4.2%                  6.0%    1.003    -0.002 ( 9)     +0.000           96.1%
+control     12              5.7%                  6.0%    1.001    -0.001 (12)     +0.000           95.7%
+steady       3             50.1%                 26.6%    0.813    +0.045 ( 3)     +0.046           94.3%
+steady       6             86.4%                 37.7%    0.814    +0.156 ( 6)     +0.156           94.2%
+steady       9             96.4%                 37.7%    0.820    +0.303 ( 9)     +0.304           95.7%
+steady      12             98.1%                 37.7%    0.825    +0.473 (12)     +0.473           95.4%
+delay        3             98.9%                 96.7%    0.617    +0.092 ( 3)     +0.091           95.2%
+delay        6              5.9%                 99.8%    1.017    +0.067 ( 6)     +0.066           95.1%
+delay        9             83.3%                 99.8%    1.159    -0.085 ( 9)     -0.084           95.1%
+delay       12             98.5%                 99.8%    1.207    -0.303 (12)     -0.301           95.6%
+Delay scenario, log-rank significant in favour of / against the treatment: month 3 98.9% / 0.0%; month 6 1.2% / 4.7%; month 9 0.0% / 83.3%; month 12 0.0% / 98.5%
+Delay scenario, month-1 test significant in favour of the treatment: month 3 96.7%; month 6 99.8%; month 9 99.8%; month 12 99.8%
+Delay scenario at month 12: month-1 test significant in favour of the treatment 99.8%; log-rank significant in favour 0.0%; RMST(12) difference significantly negative 69.9%
+No effect, log-rank significant at one or more of the four analysis dates: 13.1%
+No effect, month-1 test significant at one or more of the four analysis dates: 8.2%
+Delay scenario at month 3: month-1 test significant in favour 96.7%; mean RMST(3) difference +0.092 months
