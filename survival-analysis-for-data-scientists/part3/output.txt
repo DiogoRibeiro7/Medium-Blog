@@ -25,14 +25,14 @@ Efron ties: 5 Newton steps; log partial likelihood -24954.0 at beta = 0, -24505.
   size 50+    beta -0.603 (se 0.073)  hazard ratio 0.547 [0.475, 0.631]  true 0.607
   annual      beta -0.848 (se 0.053)  hazard ratio 0.428 [0.386, 0.475]  true 0.670
 Breslow ties: hazard ratios social 1.477, referral 0.658, size 10-49 0.744, size 50+ 0.549, annual 0.418
-Check against scikit-survival: largest coefficient difference, Breslow 1.6e-09, Efron 6.0e-09
+Check against scikit-survival: largest coefficient difference, Breslow below 1e-08, Efron below 1e-08
 
 ========================================================================
 3. CHECKING PROPORTIONAL HAZARDS, AND STRATIFYING BY PLAN
 ========================================================================
 Plan as a covariate: global chi-square 290.2 on 5 df, p 1.3e-60
   social 0.3 (p 0.57); referral 4.5 (p 0.034); size 10-49 0.9 (p 0.35); size 50+ 0.0 (p 0.89); annual 274.7 (p 1.1e-61)
-Schoenfeld residuals, annual column: mean at month 12 +0.844, at month 24 +0.824, at all other churn times -0.144; columns sum to 2e-11
+Schoenfeld residuals, annual column: mean at month 12 +0.844, at month 24 +0.824, at all other churn times -0.144; largest column sum below 1e-08
 Scaled residuals (log hazard ratio scale), annual: month 12 +5.93, month 24 +5.90, other times -2.01
 Stratified by plan (Efron ties): 5 Newton steps
   social      beta +0.388 (se 0.040)  hazard ratio 1.475 [1.363, 1.595]  true 1.492
@@ -41,8 +41,8 @@ Stratified by plan (Efron ties): 5 Newton steps
   size 50+    beta -0.611 (se 0.073)  hazard ratio 0.543 [0.471, 0.626]  true 0.607
 Stratified: global chi-square 5.5 on 4 df, p 0.24; social p 0.63; referral p 0.04; size 10-49 p 0.34; size 50+ p 0.90
 Stratified, Breslow ties: hazard ratios social 1.461, referral 0.663, size 10-49 0.749, size 50+ 0.555
-Check against statsmodels (stratified): largest difference, coefficients Efron 2.3e-14, Breslow 7.9e-12; standard errors 1.4e-16
-Check against statsmodels (Breslow, plan as a covariate): largest difference in Schoenfeld residuals 6.5e-10
+Check against statsmodels (stratified): largest difference, coefficients Efron below 1e-08, Breslow below 1e-08; standard errors below 1e-08
+Check against statsmodels (Breslow, plan as a covariate): largest difference in Schoenfeld residuals below 1e-08
 Default handling of ties: scikit-survival 'breslow', statsmodels 'breslow'
 
 ========================================================================

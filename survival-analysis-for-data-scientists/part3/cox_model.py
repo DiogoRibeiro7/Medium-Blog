@@ -360,6 +360,12 @@ def pct(x, digits=1):
     return f"{100 * x:.{digits}f}%"
 
 
+def below(x, tol=1e-8):
+    """Agreement with a library, reported against a tolerance: the exact size of
+    differences this small depends on the machine's floating-point libraries."""
+    return f"below {tol:.0e}" if x < tol else f"{x:.1e}, above {tol:.0e}"
+
+
 def main(n_rep=500):
     rng = np.random.default_rng(SEED)
     tab = simulate_table(rng)
@@ -411,8 +417,8 @@ def main(n_rep=500):
         y = np.array(list(zip(event.astype(bool), time)), dtype=[("e", bool), ("t", float)])
         diffs = [np.max(np.abs(CoxPHSurvivalAnalysis(ties=ties, alpha=0.0).fit(X, y).coef_ - ours["beta"]))
                  for ties, ours in (("breslow", fb_all), ("efron", f))]
-        print(f"Check against scikit-survival: largest coefficient difference, Breslow {diffs[0]:.1e}, "
-              f"Efron {diffs[1]:.1e}")
+        print(f"Check against scikit-survival: largest coefficient difference, Breslow {below(diffs[0])}, "
+              f"Efron {below(diffs[1])}")
     except ImportError:
         print("Check against scikit-survival: skipped (not installed)")
 
@@ -429,7 +435,7 @@ def main(n_rep=500):
     other = ~(at12 | at24)
     print(f"Schoenfeld residuals, annual column: mean at month 12 {r_s[at12, 4].mean():+.3f}, at month 24 "
           f"{r_s[at24, 4].mean():+.3f}, at all other churn times {r_s[other, 4].mean():+.3f}; "
-          f"columns sum to {np.max(np.abs(r_s.sum(axis=0))):.0e}")
+          f"largest column sum {below(np.max(np.abs(r_s.sum(axis=0))))}")
     sc = test["scaled"]
     print(f"Scaled residuals (log hazard ratio scale), annual: month 12 {sc[at12, 4].mean():+.2f}, "
           f"month 24 {sc[at24, 4].mean():+.2f}, other times {sc[other, 4].mean():+.2f}")
@@ -451,12 +457,12 @@ def main(n_rep=500):
         res = sm.PHReg(time, X[:, :4], status=event, strata=annual, ties="efron").fit()
         res_b = sm.PHReg(time, X[:, :4], status=event, strata=annual, ties="breslow").fit()
         print(f"Check against statsmodels (stratified): largest difference, coefficients Efron "
-              f"{np.max(np.abs(res.params - fs['beta'])):.1e}, Breslow {np.max(np.abs(res_b.params - fb['beta'])):.1e}; "
-              f"standard errors {np.max(np.abs(res.bse - fs['se'])):.1e}")
+              f"{below(np.max(np.abs(res.params - fs['beta'])))}, Breslow {below(np.max(np.abs(res_b.params - fb['beta'])))}; "
+              f"standard errors {below(np.max(np.abs(res.bse - fs['se'])))}")
         sr = sm.PHReg(time, X, status=event, ties="breslow").fit().schoenfeld_residuals
         _, r_b, rows_b = schoenfeld(fb_all, X, time, event)
         print(f"Check against statsmodels (Breslow, plan as a covariate): largest difference in Schoenfeld "
-              f"residuals {np.max(np.abs(sr[rows_b] - r_b)):.1e}")
+              f"residuals {below(np.max(np.abs(sr[rows_b] - r_b)))}")
         defaults = (inspect.signature(CoxPHSurvivalAnalysis).parameters["ties"].default,
                     inspect.signature(sm.PHReg).parameters["ties"].default)
         print(f"Default handling of ties: scikit-survival '{defaults[0]}', statsmodels '{defaults[1]}'")
