@@ -1,0 +1,7 @@
+# Environment used to produce the committed output.txt files and figures.
+# Python 3.13. numpy 2.0 or later is required (np.trapezoid).
+numpy==2.5.3
+matplotlib==3.11.2
+# Optional: Part 1 checks its Kaplan-Meier estimates against this library.
+# Without it the script still runs and prints "skipped" for that check.
+scikit-survival==0.28.0

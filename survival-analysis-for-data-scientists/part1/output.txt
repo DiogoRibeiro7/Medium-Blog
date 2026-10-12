@@ -1,0 +1,50 @@
+========================================================================
+1. THE TRUE CHURN PROCESS
+========================================================================
+Individual churn rates ~ Gamma(shape 1.5, rate 25.0) per month; mean rate 0.060
+S(t) = (1 + t/25)^-1.5: S(6) 0.724, S(12) 0.555, S(24) 0.364, S(36) 0.262
+Median lifetime 14.7 months; mean lifetime 50.0 months
+Population hazard: month 0 0.0600, month 12 0.0405, month 24 0.0306 (falls by 49%)
+Expected paid months in the first 24 (restricted mean): 14.29
+Break-even acquisition cost at EUR 15 margin per month: EUR 214
+
+========================================================================
+2. ONE SNAPSHOT OF 5,000 CUSTOMERS
+========================================================================
+Customers 5,000; churn observed 2,528 (50.6%); still active at the snapshot 2,472
+Customers who signed up at least 12 months before the snapshot: 3,356; at least 24 months: 1,711
+method                   S(12)  paid months in 24  break-even CAC
+truth                    0.555              14.29         EUR 214
+drop the censored        0.251               7.98         EUR 120
+censored as active       0.621              15.90         EUR 239
+fixed horizon            0.564              14.55         EUR 218
+Kaplan-Meier             0.562              14.36         EUR 215
+Fixed horizon uses 3,356 customers for S(12) and 1,711 for the 24-month figure
+Kaplan-Meier 95% interval for S(12) (log-log): [0.547, 0.577]; Greenwood standard error 0.0077
+Average time on book (ignores censoring): 11.17 months; true mean lifetime 50.0
+Kaplan-Meier median lifetime: 14.8 months (true 14.7)
+Customers still at risk (time on book at least m months) at m = 6, 12, 24, 35: 3,050, 1,893, 627, 44; last observed cancellation at month 34.0
+Check against scikit-survival: largest difference in S 0.0e+00, in the lower confidence limit 1.8e-10
+
+========================================================================
+3. 1,000 SNAPSHOTS OF 5,000 CUSTOMERS
+========================================================================
+method                  S(12): mean      sd  paid months: mean     sd   break-even CAC 95% range
+Kaplan-Meier                 0.5553  0.0078              14.28  0.141      EUR 210 to EUR 218
+fixed horizon                0.5554  0.0084              14.28  0.219      EUR 208 to EUR 221
+drop the censored            0.2358  0.0083               7.76  0.128      EUR 113 to EUR 120
+censored as active           0.6174  0.0069              15.87  0.132      EUR 234 to EUR 242
+truth                        0.5554                      14.29
+Standard deviation, fixed horizon / Kaplan-Meier: S(12) 1.08, paid months 1.55
+Equivalent sample size: fixed horizon would need 2.4 times as many customers to match Kaplan-Meier on the 24-month figure
+Coverage of the Kaplan-Meier 95% interval for S(12): 95.4%
+Average time on book across snapshots: 10.97 months
+
+========================================================================
+4. WHEN CENSORING IS NOT INDEPENDENT OF CHURN
+========================================================================
+200 snapshots of 5,000 customers for each pause rate
+Pause rate 0.25 x churn rate: Kaplan-Meier S(12) 0.569 (truth 0.555), paid months 14.59 (truth 14.29), break-even CAC EUR 219 (truth EUR 214); censored share 55.8%
+Pause rate 0.50 x churn rate: Kaplan-Meier S(12) 0.582 (truth 0.555), paid months 14.87 (truth 14.29), break-even CAC EUR 223 (truth EUR 214); censored share 60.4%
+Pause rate 1.00 x churn rate: Kaplan-Meier S(12) 0.604 (truth 0.555), paid months 15.36 (truth 14.29), break-even CAC EUR 230 (truth EUR 214); censored share 67.1%
+With 200,000 customers and pause rate 0.50: S(12) 0.580, 95% interval [0.578, 0.583]
