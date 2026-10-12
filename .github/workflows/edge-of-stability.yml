@@ -1,0 +1,51 @@
+name: Test edge-of-stability experiments
+
+on:
+  pull_request:
+    paths:
+      - 'edge-of-stability/**'
+      - '.github/workflows/edge-of-stability.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'edge-of-stability/**'
+      - '.github/workflows/edge-of-stability.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: edge-of-stability
+    env:
+      MPLBACKEND: Agg
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: edge-of-stability/pyproject.toml
+
+      - name: Install project
+        run: python -m pip install -e ".[dev]"
+
+      - name: Run identity and estimator tests
+        run: python -m pytest -q
+
+      - name: Smoke-run every experiment (quick mode)
+        working-directory: edge-of-stability/experiments
+        run: |
+          python e1_toy_landing.py --quick
+          python e2_toy_chaos.py --quick --part wide
+          python e3_network_traces.py --quick
+          python e4_lr_sweep.py --quick
+          python e5_rescaling.py --quick
+          python e6_momentum.py --quick

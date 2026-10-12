@@ -1,0 +1,78 @@
+{
+  "doubling_points": [
+    1.0,
+    1.2360679774997898,
+    1.288031754482843,
+    1.2992279396502036,
+    1.3016289140370825,
+    1.3021432715814576,
+    1.3022534377421293
+  ],
+  "sqrt5_minus_1": 1.2360679774997898,
+  "feigenbaum_ratios": [
+    4.542933389479713,
+    4.641203785601867,
+    4.6631839258871555,
+    4.667909342704003,
+    4.668925024153581
+  ],
+  "eta_infinity_estimate": 1.3022834623012591,
+  "two_cycle_checks": {
+    "1.05": {
+      "multiplier_numeric": 0.5950000000000026,
+      "multiplier_formula": 0.5950000000000006,
+      "mean_loss_numeric": 0.023242630385487417,
+      "mean_loss_formula": 0.023242630385487545,
+      "cycle_points": [
+        0.8728715609439698,
+        1.0910894511799616
+      ]
+    },
+    "1.1": {
+      "multiplier_numeric": 0.18000000000000377,
+      "multiplier_formula": 0.17999999999999972,
+      "mean_loss_numeric": 0.04338842975206598,
+      "mean_loss_formula": 0.04338842975206614,
+      "cycle_points": [
+        0.8145516268745413,
+        1.1160629714523045
+      ]
+    },
+    "1.2": {
+      "multiplier_numeric": -0.6799999999999884,
+      "multiplier_formula": -0.6800000000000015,
+      "mean_loss_numeric": 0.07638888888888873,
+      "mean_loss_formula": 0.0763888888888889,
+      "cycle_points": [
+        0.7312902014615549,
+        1.1395384919254175
+      ]
+    }
+  },
+  "crisis": {
+    "1.99": "bounded",
+    "1.999": "bounded",
+    "2.001": "escapes",
+    "2.01": "escapes"
+  },
+  "imbalanced_starts": {
+    "1.05": {
+      "bounded": 1000,
+      "balanced_at_end": 1000
+    },
+    "1.15": {
+      "bounded": 1000,
+      "balanced_at_end": 1000
+    },
+    "1.25": {
+      "bounded": 1000,
+      "balanced_at_end": 1000
+    },
+    "1.5": {
+      "bounded": 932,
+      "balanced_at_end": 932
+    }
+  },
+  "lyapunov_max": 1.0948669346245734,
+  "fraction_positive_lyapunov_1.31_to_2": 0.9179166666666667
+}
