@@ -1,0 +1,93 @@
+========================================================================
+1. THE TRUE PROCESS AND ONE CUSTOMER TABLE
+========================================================================
+Latent hazard of deciding to leave: Weibull baseline, shape 0.8, scale 30 months; hazard ratios social 1.492, referral 0.705, size 10-49 0.779, size 50+ 0.607, annual 0.670
+Search, 1-9 employees, monthly: still a customer at 6 months 0.759, 12 0.619, 24 0.433; value over 24 months EUR 232.34
+Search, 1-9 employees, annual: still a customer at 6 months 1.000, 12 0.725, 24 0.571; value over 24 months EUR 258.70
+True value of a customer by lead segment (EUR, at that segment's mix of plans):
+  search      1-9: 236.30  10-49: 258.97    50+: 273.78
+  social      1-9: 198.82  10-49: 230.02    50+: 252.90
+  referral    1-9: 263.93  10-49: 279.28    50+: 287.86
+Customers 8,000; annual 2,126; churned 2,978 (37.2%): monthly 2,543, annual 435
+Distinct churn times 2,545; annual cancellations at month 12: 337, at month 24: 98
+  search    customers by size: 1-9 1,977, 10-49 1,428, 50+ 615
+  social    customers by size: 1-9 1,707, 10-49 558, 50+ 116
+  referral  customers by size: 1-9 543, 10-49 684, 50+ 372
+Smallest cell of segment and plan: social, 50+, annual, 57 customers; median cell 287
+
+========================================================================
+2. THE COX MODEL, FITTED FROM SCRATCH (BILLING PLAN AS A COVARIATE)
+========================================================================
+Efron ties: 5 Newton steps; log partial likelihood -24954.0 at beta = 0, -24505.9 at the maximum
+  social      beta +0.392 (se 0.040)  hazard ratio 1.480 [1.368, 1.601]  true 1.492
+  referral    beta -0.421 (se 0.059)  hazard ratio 0.657 [0.586, 0.737]  true 0.705
+  size 10-49  beta -0.297 (se 0.043)  hazard ratio 0.743 [0.683, 0.808]  true 0.779
+  size 50+    beta -0.603 (se 0.073)  hazard ratio 0.547 [0.475, 0.631]  true 0.607
+  annual      beta -0.848 (se 0.053)  hazard ratio 0.428 [0.386, 0.475]  true 0.670
+Breslow ties: hazard ratios social 1.477, referral 0.658, size 10-49 0.744, size 50+ 0.549, annual 0.418
+Check against scikit-survival: largest coefficient difference, Breslow 1.6e-09, Efron 6.0e-09
+
+========================================================================
+3. CHECKING PROPORTIONAL HAZARDS, AND STRATIFYING BY PLAN
+========================================================================
+Plan as a covariate: global chi-square 290.2 on 5 df, p 1.3e-60
+  social 0.3 (p 0.57); referral 4.5 (p 0.034); size 10-49 0.9 (p 0.35); size 50+ 0.0 (p 0.89); annual 274.7 (p 1.1e-61)
+Schoenfeld residuals, annual column: mean at month 12 +0.844, at month 24 +0.824, at all other churn times -0.144; columns sum to 2e-11
+Scaled residuals (log hazard ratio scale), annual: month 12 +5.93, month 24 +5.90, other times -2.01
+Stratified by plan (Efron ties): 5 Newton steps
+  social      beta +0.388 (se 0.040)  hazard ratio 1.475 [1.363, 1.595]  true 1.492
+  referral    beta -0.422 (se 0.059)  hazard ratio 0.656 [0.585, 0.736]  true 0.705
+  size 10-49  beta -0.295 (se 0.043)  hazard ratio 0.745 [0.684, 0.810]  true 0.779
+  size 50+    beta -0.611 (se 0.073)  hazard ratio 0.543 [0.471, 0.626]  true 0.607
+Stratified: global chi-square 5.5 on 4 df, p 0.24; social p 0.63; referral p 0.04; size 10-49 p 0.34; size 50+ p 0.90
+Stratified, Breslow ties: hazard ratios social 1.461, referral 0.663, size 10-49 0.749, size 50+ 0.555
+Check against statsmodels (stratified): largest difference, coefficients Efron 2.3e-14, Breslow 7.9e-12; standard errors 1.4e-16
+Check against statsmodels (Breslow, plan as a covariate): largest difference in Schoenfeld residuals 6.5e-10
+Default handling of ties: scikit-survival 'breslow', statsmodels 'breslow'
+
+========================================================================
+4. FROM HAZARD RATIOS TO MONTHS AND EUROS (STRATIFIED MODEL)
+========================================================================
+Referral vs search, 1-9 employees, monthly: +2.45 paid months in the first 24 (true +2.04); EUR +36.79 (true +30.60)
+Referral vs search, 1-9 employees, annual: +1.08 paid months in the first 24 (true +0.87); EUR +13.49 (true +10.85)
+Referral vs search, 50+ employees, monthly: +1.65 paid months in the first 24 (true +1.49); EUR +24.78 (true +22.33)
+Referral vs search, 50+ employees, annual: +0.67 paid months in the first 24 (true +0.59); EUR +8.35 (true +7.33)
+Search, 10-49 employees, still a customer at 6 / 12 / 18 / 24 months: true, plan as covariate, stratified
+  monthly: 0.807 / 0.688 / 0.596 / 0.521; 0.830 / 0.668 / 0.588 / 0.492; 0.806 / 0.696 / 0.599 / 0.529
+  annual : 1.000 / 0.778 / 0.778 / 0.646; 0.923 / 0.842 / 0.797 / 0.738; 1.000 / 0.771 / 0.771 / 0.638
+Value per customer by lead segment, this table (EUR): true / Kaplan-Meier per cell / plan as covariate / stratified
+  search      1-9:  236.30 /  232.39 /  237.00 /  233.04
+  search    10-49:  258.97 /  261.60 /  264.01 /  259.12
+  search      50+:  273.78 /  273.39 /  281.35 /  276.74
+  social      1-9:  198.82 /  199.71 /  201.07 /  196.00
+  social    10-49:  230.02 /  221.97 /  237.36 /  230.92
+  social      50+:  252.90 /  255.53 /  262.24 /  256.43
+  referral    1-9:  263.93 /  260.74 /  269.36 /  266.53
+  referral  10-49:  279.28 /  280.75 /  286.49 /  283.03
+  referral    50+:  287.86 /  298.59 /  295.72 /  292.55
+
+========================================================================
+5. 500 SIMULATED CUSTOMER TABLES
+========================================================================
+Kaplan-Meier per segment and plan: mean error by segment from -0.47 to +0.33 EUR; root mean squared error averaged over segments 4.97, worst segment 10.38
+    search      1-9: mean +0.33 rmse  3.19 [ -5.84,  +6.61]  10-49: mean -0.26 rmse  3.32 [ -6.52,  +6.10]    50+: mean -0.30 rmse  4.51 [ -8.52,  +8.30]
+    social      1-9: mean +0.12 rmse  3.52 [ -6.24,  +6.98]  10-49: mean -0.04 rmse  5.39 [ -9.98, +10.74]    50+: mean -0.47 rmse 10.38 [-19.31, +19.66]
+    referral    1-9: mean -0.04 rmse  5.41 [ -9.94, +10.56]  10-49: mean +0.12 rmse  4.43 [ -9.05,  +8.57]    50+: mean +0.21 rmse  4.59 [ -9.04,  +8.88]
+    mean error by plan: monthly from -0.95 to +0.62; annual from -0.15 to +0.42
+Cox, plan as a covariate: mean error by segment from +3.10 to +6.34 EUR; root mean squared error averaged over segments 5.53, worst segment 7.72
+    search      1-9: mean +3.98 rmse  4.75 [ -0.88,  +8.95]  10-49: mean +4.68 rmse  5.28 [ -0.23,  +9.34]    50+: mean +4.77 rmse  5.60 [ -0.98, +10.97]
+    social      1-9: mean +4.78 rmse  5.74 [ -1.86, +11.08]  10-49: mean +5.93 rmse  6.90 [ -0.94, +13.00]    50+: mean +6.34 rmse  7.72 [ -2.42, +14.57]
+    referral    1-9: mean +3.10 rmse  4.90 [ -4.65, +10.13]  10-49: mean +3.59 rmse  4.53 [ -2.19,  +8.88]    50+: mean +3.59 rmse  4.34 [ -1.94,  +7.89]
+    mean error by plan: monthly from +0.72 to +2.89; annual from +5.94 to +15.54
+Cox stratified by plan: mean error by segment from -0.21 to +0.25 EUR; root mean squared error averaged over segments 3.26, worst segment 4.65
+    search      1-9: mean +0.25 rmse  2.64 [ -4.57,  +5.33]  10-49: mean -0.13 rmse  2.55 [ -5.09,  +4.84]    50+: mean -0.12 rmse  3.21 [ -6.32,  +6.59]
+    social      1-9: mean +0.23 rmse  3.17 [ -5.98,  +6.38]  10-49: mean -0.21 rmse  3.62 [ -7.20,  +6.97]    50+: mean -0.17 rmse  4.65 [ -9.46,  +9.06]
+    referral    1-9: mean +0.21 rmse  3.91 [ -7.84,  +7.36]  10-49: mean -0.10 rmse  2.94 [ -6.06,  +5.29]    50+: mean -0.09 rmse  2.68 [ -6.25,  +4.80]
+    mean error by plan: monthly from -0.35 to +0.25; annual from -0.06 to +0.18
+Kaplan-Meier cells whose curve ends before month 24: 0 of 9000
+Mean hazard ratios: plan as a covariate social 1.503, referral 0.702, size 10-49 0.780, size 50+ 0.611, annual 0.407; stratified (Efron) social 1.493, referral 0.704, size 10-49 0.782, size 50+ 0.609; stratified (Breslow) social 1.481, referral 0.708, size 10-49 0.786, size 50+ 0.620
+Coverage of 95% intervals, stratified (Efron): social 95.8%, referral 95.4%, size 10-49 92.8%, size 50+ 93.4%
+Proportional-hazards test significant at 5%, plan as a covariate: social 6.8%, referral 6.2%, size 10-49 4.6%, size 50+ 4.8%, annual 100.0%, global 100.0%
+  at least one of social, referral, 10-49, 50+ significant: 20.2%
+Proportional-hazards test significant at 5%, stratified: social 7.0%, referral 6.0%, size 10-49 4.2%, size 50+ 3.6%, global 5.2%
+  at least one of social, referral, 10-49, 50+ significant: 19.2%

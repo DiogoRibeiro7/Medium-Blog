@@ -3,7 +3,9 @@
 numpy==2.5.3
 scipy==1.18.1
 matplotlib==3.11.2
-# Optional: Part 1 checks its Kaplan-Meier estimates, and Part 2 its Nelson-Aalen
-# estimates and log-rank statistic, against this library. Without it the scripts
-# still run and print "skipped" for that check.
+# Optional: the scripts check their own estimators against these libraries
+# (Kaplan-Meier in Part 1, Nelson-Aalen and log-rank in Part 2, Cox fits and
+# Schoenfeld residuals in Part 3). Without them the scripts still run and print
+# "skipped" for those checks.
 scikit-survival==0.28.0
+statsmodels==0.15.0

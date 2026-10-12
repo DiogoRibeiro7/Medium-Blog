@@ -10,7 +10,7 @@ A great deal of business data is about time until something happens: a customer 
 |---|---|---|---|---|
 | 1 | Time to event, censoring and the Kaplan-Meier estimator | An acquisition budget from a customer table in which half the customers have not churned yet | [`part1/`](part1) | [Medium](https://medium.com/@diogo-ribeiro-1975/survival-analysis-for-data-scientists-27610dda2e62) |
 | 2 | Hazards, the Nelson-Aalen estimator and the log-rank test | A retention A/B test read before most customers have left | [`part2/`](part2) | [Medium](https://medium.com/@diogo-ribeiro-1975/survival-analysis-for-data-scientists-7cce086e5a50) |
-| 3 | The Cox proportional hazards model | Drivers of churn, translated into expected months | | Planned |
+| 3 | The Cox model, checking proportional hazards and pricing customer segments | The most to pay for a customer from each lead segment | [`part3/`](part3) | Forthcoming |
 | 4 | Parametric models, accelerated failure time and extrapolation | Customer lifetime value beyond the observed window | | Planned |
 | 5 | Competing risks and recurrent events | Predictive maintenance with failure and planned replacement | | Planned |
 | 6 | Machine learning for survival, and how to evaluate it | A benchmark on public data, judged by the decision it supports | | Planned |
@@ -37,7 +37,7 @@ cd survival-analysis-for-data-scientists
 pip install -r requirements.txt
 ```
 
-The committed outputs were produced with Python 3.13 and the versions pinned in `requirements.txt`. Any NumPy 2.x with a recent SciPy and Matplotlib should give the same numbers up to the last printed digit; `scikit-survival` is optional.
+The committed outputs were produced with Python 3.13 and the versions pinned in `requirements.txt`. Any NumPy 2.x with a recent SciPy and Matplotlib should give the same numbers up to the last printed digit; `scikit-survival` and `statsmodels` are optional.
 
 To reproduce Part 1:
 
@@ -53,6 +53,14 @@ To reproduce Part 2:
 cd part2
 python hazards_logrank.py > output.txt   # about 25 seconds
 python figures.py                        # writes four PNG files to figures/, about 30 seconds
+```
+
+To reproduce Part 3:
+
+```bash
+cd part3
+python cox_model.py > output.txt   # about 80 seconds
+python figures.py                  # writes four PNG files to figures/, about 75 seconds
 ```
 
 Random seeds are fixed. The workflow `.github/workflows/survival-analysis-for-data-scientists.yml` reruns each part's main script on every change to this folder and fails if the output differs from the committed `output.txt`.
@@ -101,6 +109,27 @@ The main results:
 | Coverage of the 95% interval for the restricted-mean difference, all scenarios and dates | 94.2% to 96.1% |
 
 All data in Part 2 are simulated.
+
+## Part 3 in brief
+
+`part3/cox_model.py` simulates the customer table of a software subscription for small businesses 36 months after launch: 8,000 customers from three acquisition channels and three company sizes, on monthly billing (can cancel at any time) or annual billing (can only leave at renewal). Every customer's decision to leave follows a proportional hazards model with a Weibull baseline. The script:
+
+1. Fits the Cox model by Newton-Raphson on the partial likelihood, with Breslow's and Efron's methods for tied churn times and optional strata, checked against scikit-survival and statsmodels.
+2. Computes Schoenfeld residuals and the Grambsch-Therneau test of proportional hazards, which flags the billing plan, and refits the model stratified by plan.
+3. Converts hazard ratios into expected margin over 24 months with the Breslow estimate of the baseline cumulative hazard.
+4. Values a customer from each of nine lead segments with Kaplan-Meier curves per segment and plan, the Cox model with the plan as a covariate, and the stratified Cox model, across 500 simulated tables.
+
+The main results:
+
+| Quantity | Value |
+|---|---|
+| Value of a referral rather than a search customer over 24 months (true hazard ratio 0.705 throughout) | EUR 7.33 to EUR 30.60, by plan and company size |
+| Proportional-hazards test for the billing plan, model with plan as a covariate | significant in 500 of 500 tables |
+| Mean error in segment values: Kaplan-Meier per cell / plan as covariate / stratified Cox | -0.47 to +0.33 / +3.10 to +6.34 / -0.21 to +0.25 EUR |
+| Root mean squared error, average over segments (worst segment) | 4.97 (10.38) / 5.53 (7.72) / 3.26 (4.65) EUR |
+| Mean hazard ratio for 50+ employees, true 0.607: Breslow / Efron ties | 0.620 / 0.609 |
+
+All data in Part 3 are simulated.
 
 ## Author
 
