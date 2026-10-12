@@ -1,5 +1,6 @@
 # Environment used to produce the committed output.txt files and figures.
-# Python 3.13. numpy 2.0 or later is required (np.trapezoid).
+# Python 3.13. numpy 2.0 or later is required (np.trapezoid); scipy 1.11 or later
+# (scipy.stats.CensoredData, used in Part 4).
 numpy==2.5.3
 scipy==1.18.1
 matplotlib==3.11.2
