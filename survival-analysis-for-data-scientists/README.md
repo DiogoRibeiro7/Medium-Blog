@@ -8,8 +8,8 @@ A great deal of business data is about time until something happens: a customer 
 
 | Part | Topic | Application | Folder | Article |
 |---|---|---|---|---|
-| 1 | Time to event, censoring and the Kaplan-Meier estimator | An acquisition budget from a customer table in which half the customers have not churned yet | [`part1/`](part1) | Forthcoming |
-| 2 | Hazards, the Nelson-Aalen estimator and the log-rank test | A retention A/B test read before most customers have left | [`part2/`](part2) | Forthcoming |
+| 1 | Time to event, censoring and the Kaplan-Meier estimator | An acquisition budget from a customer table in which half the customers have not churned yet | [`part1/`](part1) | [Medium](https://medium.com/@diogo-ribeiro-1975/survival-analysis-for-data-scientists-27610dda2e62) |
+| 2 | Hazards, the Nelson-Aalen estimator and the log-rank test | A retention A/B test read before most customers have left | [`part2/`](part2) | [Medium](https://medium.com/@diogo-ribeiro-1975/survival-analysis-for-data-scientists-7cce086e5a50) |
 | 3 | The Cox proportional hazards model | Drivers of churn, translated into expected months | | Planned |
 | 4 | Parametric models, accelerated failure time and extrapolation | Customer lifetime value beyond the observed window | | Planned |
 | 5 | Competing risks and recurrent events | Predictive maintenance with failure and planned replacement | | Planned |
