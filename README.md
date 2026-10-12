@@ -43,6 +43,14 @@ A privacy-preserving statistical case study of irregular longitudinal blood-pres
 
 It is the reference for engineering quality in new maintained work, but its exact structure is **not** imposed retroactively on historical notebooks.
 
+### Forecasting after the cutoff
+
+[`post-cutoff-forecasting/`](post-cutoff-forecasting/)
+
+**Time-series foundation models against classical baselines on Portuguese electricity load published after the models were released**
+
+Chronos-2, TimesFM 2.5 and TiRex against seasonal naive and ETS baselines on hourly Portuguese load. The evaluation window starts after the last of the three models was released, and the results are compared with earlier windows that the models could have seen. The project has its own package, tests on synthetic data, a CI workflow, and a manually started workflow that runs the full experiment and opens a pull request with the results.
+
 ## Historical archive
 
 The remainder of the repository contains article-supporting material across statistics, machine learning, mathematics, data engineering, finance, forecasting, networks, and applied data science.

@@ -1,0 +1,47 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "postcutoff"
+version = "0.1.0"
+description = "Time-series foundation models against classical baselines on Portuguese electricity load published after the models were released"
+readme = "README.md"
+license = "Apache-2.0"
+requires-python = ">=3.11"
+authors = [{ name = "Diogo Ribeiro", email = "dfr@esmad.ipp.pt" }]
+dependencies = [
+    "numpy>=2.0,<2.4",
+    "pandas>=2.2,<3",
+    "statsforecast==2.1.1",
+    "holidays==0.106",
+    "matplotlib>=3.9",
+    "requests>=2.32",
+]
+
+[project.optional-dependencies]
+# torch is installed separately from the CPU wheel index; see README.md.
+models = [
+    "chronos-forecasting==2.3.2",
+    "timesfm==2.0.2",
+    "tirex-ts==1.4.2",
+    "huggingface-hub>=0.28",
+]
+dev = ["pytest>=8", "ruff==0.17.0"]
+
+[project.scripts]
+postcutoff = "postcutoff.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP"]

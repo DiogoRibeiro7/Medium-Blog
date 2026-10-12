@@ -1,0 +1,137 @@
+# Experiment definition. Every number the article reports is produced from this file,
+# the data snapshot it points to, and the code in src/postcutoff.
+
+[data]
+source = "energy-charts"
+endpoint = "https://api.energy-charts.info/public_power"
+country = "pt"
+series = "Load"
+first_day = "2022-01-01"
+# Days dropped from the end of a fresh download, so that preliminary values are not scored.
+settle_days = 3
+# Energy-Charts allows 2 requests per minute.
+pause_seconds = 35
+# More missing hours than this stops the run until someone has looked at them.
+max_missing_hours = 168
+snapshot = "data/pt_load_hourly.csv"
+manifest = "data/snapshot_manifest.json"
+attribution = "Load data: energy-charts.info (Fraunhofer ISE), licensed CC BY 4.0"
+
+# Hours that are not a forecasting problem. They are never scored, and inside a model's
+# context they are replaced by the value one week earlier.
+[[data.masks]]
+name = "iberian-blackout-2025-04-28"
+start = "2025-04-28T10:00:00Z"
+end = "2025-04-28T22:00:00Z" # exclusive
+reason = "Total blackout of the Iberian system at 12:33 CEST; load near zero until restoration in the evening"
+
+[data.anomaly]
+# An hour is flagged when it is below low or above high times the median of the same hour
+# in the previous four weeks. Flagged hours that are not masked stop the run.
+low = 0.5
+high = 2.0
+
+[design]
+context_length = 2048 # hours, about 12 weeks; the context length TiRex was trained with
+horizon = 168 # hours; lead days 1-7 are scored separately
+origin_hour_utc = 0
+quantiles = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
+seasonal_period = 168 # for the MASE scale and the reference model
+reference_model = "seasonal_naive_week"
+
+# Public release of each model's weights. Training cutoffs are not published, so the release
+# date is the only upper bound on what the model can have seen.
+[releases]
+tirex = { date = "2025-05-29", source = "arXiv:2505.23719v1, 29 May 2025" }
+timesfm25 = { date = "2025-09-15", source = "google-research/timesfm README, 'TimesFM 2.5 is out!', Sept. 15, 2025" }
+chronos2 = { date = "2025-10-20", source = "amazon-science/chronos-forecasting news and Amazon Science blog, 20 Oct 2025" }
+
+# Forecast origins: every day at origin_hour_utc between first and last origin, inclusive.
+# The four windows cover the same calendar months (November to September), so that the
+# comparison between windows is not a comparison between seasons.
+[[windows]]
+name = "2022-23"
+first_origin = "2022-11-01"
+last_origin = "2023-09-30"
+
+[[windows]]
+name = "2023-24"
+first_origin = "2023-11-01"
+last_origin = "2024-09-30"
+
+[[windows]]
+name = "2024-25"
+first_origin = "2024-11-01"
+last_origin = "2025-09-30"
+
+[[windows]]
+name = "2025-26"
+first_origin = "2025-11-01"
+last_origin = "2026-09-30"
+
+[contrast]
+# The headline comparison: windows every model could have seen against the window none could.
+before = ["2022-23", "2023-24"]
+after = ["2025-26"]
+# A placebo contrast between two windows that every model could have seen, for the size of
+# the year-to-year change that has nothing to do with a release.
+placebo_before = ["2022-23"]
+placebo_after = ["2023-24"]
+
+[models.seasonal_naive_week]
+kind = "statsforecast"
+label = "Seasonal naive (week)"
+spec = "SeasonalNaive(168)"
+
+[models.seasonal_naive_day]
+kind = "statsforecast"
+label = "Seasonal naive (day)"
+spec = "SeasonalNaive(24)"
+
+[models.ets]
+kind = "statsforecast"
+label = "ETS"
+spec = "AutoETS(24)"
+
+[models.mstl_ets]
+kind = "statsforecast"
+label = "MSTL + ETS"
+spec = "MSTL(24,168)+AutoETS(ZZN)"
+
+[models.chronos2]
+kind = "chronos2"
+label = "Chronos-2"
+repo = "amazon/chronos-2"
+revision = ""
+batch_size = 64
+
+[models.chronos2_holidays]
+kind = "chronos2"
+label = "Chronos-2 + holidays"
+repo = "amazon/chronos-2"
+revision = ""
+batch_size = 64
+covariates = ["holiday"]
+
+[models.timesfm25]
+kind = "timesfm25"
+label = "TimesFM 2.5"
+repo = "google/timesfm-2.5-200m-pytorch"
+revision = ""
+batch_size = 32
+
+[models.tirex]
+kind = "tirex"
+label = "TiRex"
+repo = "NX-AI/TiRex"
+revision = ""
+batch_size = 64
+
+[bootstrap]
+replications = 2000
+block_days = 14
+seed = 20261012
+
+[examples]
+# Origins whose full forecasts are kept in results/examples.csv for the figures.
+origins = ["2023-12-21", "2024-04-23", "2025-12-21", "2026-03-31", "2026-06-08"]
