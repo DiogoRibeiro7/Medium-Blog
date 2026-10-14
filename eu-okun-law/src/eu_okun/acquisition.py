@@ -5,14 +5,22 @@ from __future__ import annotations
 import csv
 import hashlib
 import json
-from datetime import datetime, timezone
+from collections.abc import Mapping, Sequence
+from datetime import UTC, datetime
 from pathlib import Path
-from typing import Any, Mapping, Sequence
+from typing import Any
 from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 
-from eu_okun.contract import EU27, SERIES, EurostatDataError, Observation, SeriesSpec
-from eu_okun.contract import quarter_sequence, request_url
+from eu_okun.contract import (
+    EU27,
+    SERIES,
+    EurostatDataError,
+    Observation,
+    SeriesSpec,
+    quarter_sequence,
+    request_url,
+)
 from eu_okun.jsonstat import decode_series
 
 
@@ -78,7 +86,7 @@ def save_snapshot(
         fields.extend([spec.column, f"{spec.name}_flag"])
     manifest: dict[str, Any] = {
         "source": "Eurostat Statistics API (JSON-stat 2.0)",
-        "downloaded_at_utc": datetime.now(timezone.utc).isoformat(),
+        "downloaded_at_utc": datetime.now(UTC).isoformat(),
         "period": {"start": start, "end": end, "analysis_start": "2009-Q1"},
         "countries": list(EU27), "country_quarter_rows": len(rows),
         "series": provenance,

@@ -7,8 +7,13 @@ from typing import Any
 import pytest
 
 from eu_okun.eurostat import (
-    SERIES, EurostatDataError, Observation, build_panel,
-    decode_series, quarter_sequence, request_url,
+    SERIES,
+    EurostatDataError,
+    Observation,
+    build_panel,
+    decode_series,
+    quarter_sequence,
+    request_url,
 )
 
 

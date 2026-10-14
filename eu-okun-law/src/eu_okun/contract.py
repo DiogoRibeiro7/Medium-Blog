@@ -3,8 +3,8 @@
 from __future__ import annotations
 
 import re
+from collections.abc import Mapping
 from dataclasses import dataclass
-from typing import Mapping
 from urllib.parse import urlencode
 
 API_BASE = "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data"

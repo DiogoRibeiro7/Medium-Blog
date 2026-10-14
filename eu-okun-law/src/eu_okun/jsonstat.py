@@ -3,7 +3,8 @@
 from __future__ import annotations
 
 import math
-from typing import Any, Mapping, Sequence
+from collections.abc import Mapping, Sequence
+from typing import Any
 
 from eu_okun.contract import EU27, QUARTER_RE, EurostatDataError, Observation, SeriesSpec
 
