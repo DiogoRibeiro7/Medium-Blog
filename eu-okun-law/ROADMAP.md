@@ -14,8 +14,8 @@
 - [x] Country-level coverage and quality-flag JSON audit (offline; live run pending).
 - [ ] Missingness visualization and review of survey breaks.
 - [ ] Validate labour-force survey comparability across 2021.
-- [ ] Distributed-lag OLS with HAC uncertainty; lags 0, 1, 2, 4.
-- [ ] Compare models with/without participation.
+- [x] Implement distributed-lag OLS with HAC uncertainty; lags 0, 1, 2, 4 (real-data execution pending).
+- [x] Implement paired specifications with/without participation (real-data comparison pending).
 - [ ] Time-ordered out-of-sample forecasting against persistence.
 - [ ] Document preliminary associations without causal claims.
 

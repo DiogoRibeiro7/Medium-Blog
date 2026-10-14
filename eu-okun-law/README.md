@@ -1,7 +1,7 @@
 # Okun's law revisited: an EU-27 empirical study
 
 > Status: research in progress. The current version implements Eurostat acquisition
-> and data validation, not country rankings, Bayesian estimates, or causal effects.
+> data audits and descriptive regression code, not verified empirical country rankings, Bayesian estimates, or causal effects.
 
 ## Research question
 
@@ -102,3 +102,15 @@ Eurostat and follow its reuse terms when distributing the data or results.
 ## Data-quality audit
 
 `eu-okun audit --output-dir data` checks that raw source hashes match the manifest, every EU-27 country-quarter row exists exactly once, all rates are finite and within 0–100%, and records missing values and quality flags by country. It also counts usable consecutive-quarter Okun observations with and without participation; no regression is fitted. The generated `data/coverage_audit.json` records SHA-256 hashes for the manifest and processed CSV. Coverage alone cannot establish methodological comparability, particularly around the 2021 Labour Force Survey change. A live fetch has not yet been verified in CI.
+
+## Classical baseline (research stage)
+
+After verifying a live snapshot and reviewing its audit, run:
+
+```bash
+eu-okun baseline --data-dir data --output results/ols_hac.json
+```
+
+This computes country-level ordinary least squares for unemployment-rate changes on current and 0/1/2/4 lags of GDP quarterly growth, optionally controlling for participation changes. Standard errors use an uncorrected Bartlett-kernel Newey–West HAC covariance with four lags; the output includes sample size, dates, conditioning and R-squared. The algorithm explicitly rejects rank-deficient/ill-conditioned designs and does not bridge missing calendar quarters. Models without enough complete observations are omitted, not fabricated. Concurrent GDP and participation terms mean these are descriptive associations and **not** a valid real-time forecasting experiment or causal shock responses. No empirical model is reported without source validation.
+
+A path-scoped [live validation workflow](../.github/workflows/eu-okun-law-live.yml) retrieves actual Eurostat responses, performs the provenance audit and retains an artifact for review. Live workflow success does not by itself resolve methodological comparability or survey breaks.
