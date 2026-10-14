@@ -51,6 +51,7 @@ Python 3.12 or later, from `eu-okun-law/`:
 ```bash
 poetry install --extras dev
 poetry run eu-okun fetch --end-quarter 2026-Q2 --output-dir data
+poetry run eu-okun audit --output-dir data
 poetry run pytest
 poetry run ruff check src tests
 poetry run mypy src
@@ -68,6 +69,7 @@ data/
   raw/lfsi_emp_q.json
   processed/eu27_quarterly.csv
   snapshot_manifest.json
+  coverage_audit.json
 ```
 
 A provenance manifest records exact API URLs, download time, Eurostat update
@@ -96,3 +98,7 @@ See [METHODS.md](METHODS.md), [ROADMAP.md](ROADMAP.md) and
 
 Project code/documentation use the repository's Apache 2.0 licence. Attribute
 Eurostat and follow its reuse terms when distributing the data or results.
+
+## Data-quality audit
+
+`eu-okun audit --output-dir data` checks that raw source hashes match the manifest, every EU-27 country-quarter row exists exactly once, all rates are finite and within 0–100%, and records missing values and quality flags by country. It also counts usable consecutive-quarter Okun observations with and without participation; no regression is fitted. The generated `data/coverage_audit.json` records SHA-256 hashes for the manifest and processed CSV. Coverage alone cannot establish methodological comparability, particularly around the 2021 Labour Force Survey change. A live fetch has not yet been verified in CI.
