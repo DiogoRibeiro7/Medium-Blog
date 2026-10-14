@@ -91,8 +91,10 @@ def decode_series(
             raw, flag = _cell(values, idx), _cell(statuses, idx)
             if raw is None:
                 value = None
-            elif type(raw) not in (int, float) or not math.isfinite(float(raw)):
+            elif isinstance(raw, bool) or not isinstance(raw, (int, float)):
                 raise EurostatDataError(f"Invalid numeric observation in {spec.dataset}.")
+            elif not math.isfinite(float(raw)):
+                raise EurostatDataError(f"Non-finite observation in {spec.dataset}.")
             else:
                 value = float(raw)
             if flag is not None and not isinstance(flag, str):
