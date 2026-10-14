@@ -18,10 +18,13 @@ from __future__ import annotations
 
 import time
 import tracemalloc
+from functools import lru_cache
 
 import numpy as np
 from scipy import fft as sfft
-from scipy.linalg import eig_banded, eigh
+from scipy import sparse
+from scipy.linalg import eigh, eigh_tridiagonal
+from scipy.sparse.linalg import eigsh
 
 from .problems import Problem
 
@@ -233,6 +236,32 @@ def solve_ground_state(problem: Problem, method: str, n: int, L: float,
     }
 
 
+@lru_cache(maxsize=None)
+def _oscillator_1d(method: str, n: int, L: float) -> tuple[float, float]:
+    """Lowest eigenvalue of the 1D grid oscillator and the cosine between its
+    eigenvector and the exact ground state at the nodes."""
+    x = nodes(n, L)
+    if method in FD_STENCILS:
+        coefs = FD_STENCILS[method]
+        h = 2.0 * L / (n + 1)
+        if len(coefs) == 2:      # tridiagonal: O(N) memory even for very large N
+            diag = -0.5 * coefs[0] / h**2 + 0.5 * x**2
+            off = np.full(n - 1, -0.5 * coefs[1] / h**2)
+            w, V = eigh_tridiagonal(diag, off, select="i", select_range=(0, 0))
+        else:                    # pentadiagonal: sparse shift-invert near the bottom
+            offs = list(range(-(len(coefs) - 1), len(coefs)))
+            bands = [np.full(n - abs(k), -0.5 * coefs[abs(k)] / h**2) for k in offs]
+            H = sparse.diags(bands, offs, format="csc") + sparse.diags(0.5 * x**2)
+            w, V = eigsh(H, k=1, sigma=0.0, which="LM")
+    else:
+        H1 = kinetic_1d(method, n, L) + np.diag(0.5 * x**2)
+        w, V = eigh(H1, subset_by_index=[0, 0])
+    v = V[:, 0]
+    p = np.exp(-0.5 * x**2)
+    c = abs(float(v @ p)) / (np.linalg.norm(v) * np.linalg.norm(p))
+    return float(w[0]), c
+
+
 def separable_oscillator(method: str, n: int, L: float, d: int) -> dict:
     """Exact grid answer for the d-dimensional oscillator from one 1D eigenproblem.
 
@@ -240,24 +269,8 @@ def separable_oscillator(method: str, n: int, L: float, d: int) -> dict:
     1D operators, so its lowest eigenvalue is d times the 1D one and its eigenvector is
     the d-fold tensor power of the 1D eigenvector. Nothing is extrapolated.
     """
-    x = nodes(n, L)
-    if method in FD_STENCILS:
-        # banded storage (upper form) for the finite-difference matrices
-        coefs = FD_STENCILS[method]
-        h = 2.0 * L / (n + 1)
-        bands = len(coefs) - 1
-        ab = np.zeros((bands + 1, n))
-        for off, c in enumerate(coefs):
-            ab[bands - off, off:] = -0.5 * c / h**2
-        ab[bands] += 0.5 * x**2
-        w, V = eig_banded(ab, select="i", select_range=(0, 0))
-    else:
-        H1 = kinetic_1d(method, n, L) + np.diag(0.5 * x**2)
-        w, V = eigh(H1, subset_by_index=[0, 0])
-    v = V[:, 0]
-    p = np.exp(-0.5 * x**2)
-    c = abs(float(v @ p)) / (np.linalg.norm(v) * np.linalg.norm(p))
-    E = d * float(w[0])
+    e1, c = _oscillator_1d(method, int(n), float(L))
+    E = d * e1
     return {
         "problem": "oscillator", "d": d, "method": method, "n": n, "L": L,
         "unknowns": n**d, "E": E, "E0": d / 2.0,
@@ -267,16 +280,19 @@ def separable_oscillator(method: str, n: int, L: float, d: int) -> dict:
 
 
 def oscillator_n_needed(method: str, L: float, target: float, nmax: int = 20000,
-                        metric: str = "rel_energy_error", d: int = 1) -> int | None:
-    """Smallest N per axis whose exact grid answer for the oscillator beats ``target``.
+                        metric: str = "rel_energy_error", d: int = 1,
+                        nmin: int = 2) -> int | None:
+    """Smallest N per axis from which the oscillator's exact grid error stays below target.
 
-    Bisection, assuming the error decreases with N (true for these methods until the
-    box-truncation floor). Returns None if even nmax does not reach the target.
+    Bisection, then a check at 1.25, 1.5, 2, 3 and 4 times the answer: at coarse N the
+    discretisation and box-truncation errors can cancel by accident, and an N that only
+    reaches the target by such a cancellation is rejected (the search restarts above the
+    first larger N that fails). Returns None if even nmax does not reach the target.
     """
     def err(n):
         return separable_oscillator(method, n, L, d)[metric]
 
-    lo, hi = 2, nmax
+    lo, hi = nmin, nmax
     if err(hi) >= target:
         return None
     while hi - lo > 1:
@@ -285,4 +301,8 @@ def oscillator_n_needed(method: str, L: float, target: float, nmax: int = 20000,
             hi = mid
         else:
             lo = mid
+    for k in (1.25, 1.5, 2.0, 3.0, 4.0):
+        m = min(int(np.ceil(hi * k)), nmax)
+        if err(m) >= target:
+            return oscillator_n_needed(method, L, target, nmax, metric, d, nmin=m)
     return hi

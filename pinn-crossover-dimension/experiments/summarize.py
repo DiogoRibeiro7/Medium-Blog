@@ -8,10 +8,11 @@ each grid method the script finds the cheapest saved solve that reaches it:
                    gives the N needed (minimised over box sizes); the memory is that N^d
                    times the number of grid-sized vectors measured in experiment 2;
 * ``estimated``  - coupled problem only, when no solve within the memory budget reached
-                   the target: N is taken from the largest lower dimension where one did,
-                   which the oscillator shows is how the per-axis requirement behaves
-                   (the relative energy error does not grow with d at fixed N), and the
-                   memory follows from it. Flagged in every table and figure.
+                   the target: N is the smallest that reached the same target in the
+                   highest lower dimension where any solve did (on the oscillator the
+                   relative energy error does not depend on d at fixed N; on the coupled
+                   problem the requirement grows slowly, so this understates what the
+                   grid needs). Flagged in every table and figure.
 
 For diffusion Monte Carlo, the statistical error falls as cpu^(-1/2); the CPU time
 needed to bring the standard error down to the target is (c / target)^2 with
@@ -80,11 +81,26 @@ def pinn_table(pinn):
     return table
 
 
+def stable_hits(rows, key, target):
+    """Solves from which the error stays below target for every larger N at the same box.
+
+    At coarse N the discretisation error and the box-truncation error can cancel by
+    accident; a solve that reaches the target only that way is not counted."""
+    out = []
+    for L in sorted({r["L"] for r in rows}):
+        seq = sorted((r for r in rows if r["L"] == L), key=lambda r: r["n"])
+        for i in range(len(seq)):
+            if all(r[key] <= target for r in seq[i:]):
+                out.append(seq[i])
+                break
+    return out
+
+
 def grid_match(e2, name, d, method, target, kvec, lower_dims_hits, metric="energy"):
     """Cheapest grid answer reaching ``target`` in the given metric (energy or L2)."""
     key = "rel_energy_error" if metric == "energy" else "l2_error_nodal"
     rows = [r for r in e2 if r["problem"] == name and r["d"] == d and r["method"] == method]
-    hit = [r for r in rows if r[key] <= target]
+    hit = stable_hits(rows, key, target)
     if hit:
         best = min(hit, key=lambda r: (r["peak_bytes"], r["cpu_s"]))
         return {"status": "measured", "n": best["n"], "L": best["L"],
@@ -103,11 +119,16 @@ def grid_match(e2, name, d, method, target, kvec, lower_dims_hits, metric="energ
         n, L = best
         return {"status": "separable", "n": n, "L": L, "unknowns": float(n) ** d,
                 "cpu_s": None, "memory_bytes": kvec * 8.0 * float(n) ** d}
-    # coupled: use the per-axis N from the largest lower dimension that reached it
-    if lower_dims_hits:
-        dd, n = max(lower_dims_hits)
-        return {"status": "estimated", "n": n, "from_d": dd, "unknowns": float(n) ** d,
-                "cpu_s": None, "memory_bytes": kvec * 8.0 * float(n) ** d}
+    # coupled: the smallest N per axis that reached the same target in the highest lower
+    # dimension where any solve reached it. The per-axis requirement of the coupled
+    # problem grows slowly with d, so this tends to understate what the grid needs.
+    for dd in range(d - 1, 1, -1):
+        lower = stable_hits([r for r in e2 if r["problem"] == name and r["d"] == dd
+                             and r["method"] == method], key, target)
+        if lower:
+            n = min(r["n"] for r in lower)
+            return {"status": "estimated", "n": n, "from_d": dd, "unknowns": float(n) ** d,
+                    "cpu_s": None, "memory_bytes": kvec * 8.0 * float(n) ** d}
     return {"status": "not reached"}
 
 
@@ -136,6 +157,12 @@ def main(quick: bool):
                 continue
             p = ptab[(name, d)]
             target = p["rel_energy_error_median"]
+            if target > 0.1:
+                # the PINN failed in this dimension (median energy error above 10%):
+                # there is no accuracy to match
+                summary["rows"].append({"problem": name, "d": d, "pinn": p,
+                                        "pinn_failed": True, "target": target})
+                continue
             target_l2 = p["l2_error_median"]
             row = {"problem": name, "d": d, "pinn": p, "target": target,
                    "target_l2": target_l2, "grids": {}, "grids_l2": {}}
@@ -149,7 +176,18 @@ def main(quick: bool):
                 if g2["status"] == "measured":
                     hits_l2[m].append((d, g2["n"]))
             row["dmc"] = dmc_time(e4, name, d, target)
+            row["pinn_failed"] = False
             summary["rows"].append(row)
+
+    q = config.quick_suffix(quick)
+    e5p = config.RESULTS / f"e5_dmc_at_pinn_budget{q}.json"
+    summary["dmc_at_pinn_budget"] = json.loads(e5p.read_text()) if e5p.exists() else []
+    for r in summary["dmc_at_pinn_budget"]:
+        r.pop("runs", None)
+    vfolder = config.RESULTS / ("pinn_variants_quick" if quick else "pinn_variants")
+    summary["pinn_variants"] = [
+        {k: v for k, v in json.loads(f.read_text()).items() if k != "history"}
+        for f in sorted(vfolder.glob("*.json"))] if vfolder.exists() else []
 
     # largest dimension each grid method reaches at fixed accuracy, oscillator (exact)
     caps = {"budget_5GB": config.MEMORY_BUDGET, "laptop_16GB": config.LAPTOP_MEMORY,
@@ -187,6 +225,10 @@ def main(quick: bool):
 
     for r in summary["rows"]:
         p = r["pinn"]
+        if r["pinn_failed"]:
+            lines.append(f"| {r['problem']} | {r['d']} | {p['rel_energy_error_median']:.1e} "
+                         f"(failed) | {p['cpu_s_median'] / 60:.1f} min | - | - | - | - |")
+            continue
         dmc = r["dmc"]
         dmc_s = f"{dmc['cpu_s_to_target'] / 3600:.2g} h" if dmc else "-"
         lines.append(

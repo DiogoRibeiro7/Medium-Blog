@@ -98,7 +98,7 @@ def fig3_memory(s, pinn, q):
     fig, axes = plt.subplots(1, 2, figsize=(10.5, 4.6), sharey=True)
     rss = [r.get("max_rss_bytes") for r in pinn if r.get("max_rss_bytes")]
     for ax, name in zip(axes, ("oscillator", "coupled")):
-        rows = [r for r in s["rows"] if r["problem"] == name]
+        rows = [r for r in s["rows"] if r["problem"] == name and not r["pinn_failed"]]
         for m in ("fd2", "fd4", "sinc"):
             ds, mem, solid = [], [], []
             for r in rows:
@@ -139,11 +139,13 @@ def fig3_memory(s, pinn, q):
     plt.close(fig)
 
 
-def fig4_error_vs_time(e2, e4, pinn, q, dims=(3, 5)):
-    """Energy error against CPU time for every method at two dimensions, both problems."""
-    fig, axes = plt.subplots(2, len(dims), figsize=(5.0 * len(dims), 8.2), sharey=True)
+def fig4_error_vs_time(e2, e4, pinn, s, q):
+    """Energy error against CPU time for every method, two dimensions per problem."""
+    panels = {"oscillator": (5, 8), "coupled": (5, 7)}
+    e5 = s.get("dmc_at_pinn_budget", [])
+    fig, axes = plt.subplots(2, 2, figsize=(10.5, 8.4), sharey=True)
     for i, name in enumerate(("oscillator", "coupled")):
-        for j, d in enumerate(dims):
+        for j, d in enumerate(panels[name]):
             ax = axes[i, j]
             for m in ("fd2", "fd4", "sinc"):
                 rows = [r for r in e2 if r["problem"] == name and r["d"] == d and r["method"] == m]
@@ -170,6 +172,11 @@ def fig4_error_vs_time(e2, e4, pinn, q, dims=(3, 5)):
                 c = np.median([r["rel_se"] * np.sqrt(r["cpu_s"]) for r in dr])
                 t = np.logspace(-1, 4.5, 50)
                 ax.loglog(t, c / np.sqrt(t), ls=":", color=COL["dmc"], lw=1)
+            for r in e5:
+                if r["problem"] == name and r["d"] == d:
+                    ax.errorbar([r["cpu_s"]], [r["rel_energy_error"]], yerr=[r["rel_se"]],
+                                fmt="s", ms=7, mfc=style.SURFACE, color=COL["dmc"], capsize=2,
+                                label="DMC given the PINN's CPU time")
             ax.set_title(f"{PROB[name].split(' (')[0]}, d = {d}")
             ax.set_ylim(1e-9, 1)
             ax.set_xlim(1e-3, 3e4)
@@ -191,6 +198,7 @@ def fig5_pinn_by_dimension(s, q):
     fig, axes = plt.subplots(1, 2, figsize=(10, 4.2), sharey=True)
     for ax, name in zip(axes, ("oscillator", "coupled")):
         rows = [r for r in s["rows"] if r["problem"] == name]
+        ok = [r for r in rows if not r["pinn_failed"]]
         ds = [r["d"] for r in rows]
         for r in rows:
             ax.scatter([r["d"]] * len(r["pinn"]["rel_energy_error"]),
@@ -199,7 +207,7 @@ def fig5_pinn_by_dimension(s, q):
                     color=COL["pinn"], label="PINN, Adam then L-BFGS")
         ax.semilogy(ds, [r["pinn"]["adam_only_rel_energy_error_median"] for r in rows], "--o",
                     color=COL["pinn"], alpha=0.55, label="PINN, Adam only")
-        dmc = [(r["d"], r["dmc"]["c"] / np.sqrt(r["pinn"]["cpu_s_median"])) for r in rows
+        dmc = [(r["d"], r["dmc"]["c"] / np.sqrt(r["pinn"]["cpu_s_median"])) for r in ok
                if r["dmc"]]
         if dmc:
             ax.semilogy(*zip(*dmc), "-s", color=COL["dmc"],
@@ -220,7 +228,7 @@ def main(quick):
     fig1_problems(q)
     fig2_convergence(e1, e2, q)
     fig3_memory(s, pinn, q)
-    fig4_error_vs_time(e2, e4, pinn, q)
+    fig4_error_vs_time(e2, e4, pinn, s, q)
     fig5_pinn_by_dimension(s, q)
     print("figures written to", config.FIGURES)
 
