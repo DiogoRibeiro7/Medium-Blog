@@ -1,0 +1,53 @@
+name: EU Okun empirical estimates
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "eu-okun-law/**"
+      - ".github/workflows/eu-okun-law-estimates.yml"
+permissions:
+  contents: read
+jobs:
+  estimate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install
+        working-directory: eu-okun-law
+        run: python -m pip install -e ".[dev]"
+      - name: Fetch real observations
+        working-directory: eu-okun-law
+        run: eu-okun fetch --start-quarter 2008-Q1 --end-quarter 2026-Q2 --output-dir data
+      - name: Validate sources
+        working-directory: eu-okun-law
+        run: eu-okun audit --output-dir data
+      - name: Estimate descriptive models
+        working-directory: eu-okun-law
+        run: eu-okun baseline --data-dir data --output results/ols_hac.json
+      - name: Verify expected country models
+        working-directory: eu-okun-law
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          models = json.loads(Path("results/ols_hac.json").read_text())["models"]
+          coverage = {(m["geo"], m["lags"], m["participation"]) for m in models}
+          if len(coverage) != 27 * 4 * 2:
+              raise SystemExit(f"Unexpected number of models: {len(coverage)}")
+          if any(m["n"] < 12 for m in models):
+              raise SystemExit("Insufficient observations in regression output")
+          print(f"Validated {len(models)} descriptive regressions.")
+          PY
+      - name: Archive source data and regression output
+        uses: actions/upload-artifact@v4
+        with:
+          name: eu-okun-empirical-baselines
+          path: |
+            eu-okun-law/data/
+            eu-okun-law/results/
+          retention-days: 30
+          if-no-files-found: error
