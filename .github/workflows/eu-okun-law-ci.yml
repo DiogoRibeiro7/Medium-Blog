@@ -1,0 +1,33 @@
+name: EU Okun law CI
+
+on:
+  pull_request:
+    paths:
+      - "eu-okun-law/**"
+      - ".github/workflows/eu-okun-law-ci.yml"
+  push:
+    branches: [main]
+    paths:
+      - "eu-okun-law/**"
+      - ".github/workflows/eu-okun-law-ci.yml"
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install study and quality tools
+        working-directory: eu-okun-law
+        run: python -m pip install -e ".[dev]"
+      - name: Lint
+        working-directory: eu-okun-law
+        run: ruff check src tests
+      - name: Types
+        working-directory: eu-okun-law
+        run: mypy src
+      - name: Offline tests
+        working-directory: eu-okun-law
+        run: pytest

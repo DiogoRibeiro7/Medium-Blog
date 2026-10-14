@@ -1,0 +1,11 @@
+/data/raw/
+/data/processed/
+/data/snapshot_manifest.json
+/results/
+/figures/
+/.venv/
+/.mypy_cache/
+/.pytest_cache/
+/.ruff_cache/
+__pycache__/
+*.pyc

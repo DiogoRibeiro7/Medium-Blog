@@ -1,0 +1,38 @@
+[build-system]
+requires = ["poetry-core>=2.0,<3"]
+build-backend = "poetry.core.masonry.api"
+
+[project]
+name = "eu-okun-law"
+version = "0.1.0"
+description = "Reproducible EU-27 Okun's-law study"
+readme = "README.md"
+requires-python = ">=3.12,<3.15"
+license = "Apache-2.0"
+keywords = ["econometrics", "okun-law", "eurostat", "panel-data"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8,<10", "ruff>=0.13,<1", "mypy>=1.16,<2"]
+
+[project.scripts]
+eu-okun = "eu_okun.cli:main"
+
+[tool.poetry]
+packages = [{ include = "eu_okun", from = "src" }]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "W"]
+
+[tool.mypy]
+python_version = "3.12"
+mypy_path = "src"
+files = ["src"]
+strict = true

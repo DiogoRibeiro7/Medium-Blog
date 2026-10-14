@@ -51,6 +51,12 @@ It is the reference for engineering quality in new maintained work, but its exac
 
 Chronos-2, TimesFM 2.5 and TiRex against seasonal naive and ETS baselines on hourly Portuguese load. The evaluation window starts after the last of the three models was released, and the results are compared with earlier windows that the models could have seen. The project has its own package, tests on synthetic data, a CI workflow, and a manually started workflow that runs the full experiment and opens a pull request with the results.
 
+## Research studies in development
+
+### Okun's law across the EU-27
+
+[`eu-okun-law/`](eu-okun-law/) — independently investigate the relationship between quarterly GDP growth, unemployment and labour-force participation across 27 countries. Data provenance and validation are implemented; econometric estimates and causal analysis are planned, not yet claimed.
+
 ## Historical archive
 
 The remainder of the repository contains article-supporting material across statistics, machine learning, mathematics, data engineering, finance, forecasting, networks, and applied data science.
