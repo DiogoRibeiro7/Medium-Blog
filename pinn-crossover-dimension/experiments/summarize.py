@@ -9,10 +9,11 @@ each grid method the script finds the cheapest saved solve that reaches it:
                    times the number of grid-sized vectors measured in experiment 2;
 * ``estimated``  - coupled problem only, when no solve within the memory budget reached
                    the target: N is the smallest that reached the same target in the
-                   highest lower dimension where any solve did (on the oscillator the
+                   highest lower dimension where any solve did. On the oscillator the
                    relative energy error does not depend on d at fixed N; on the coupled
-                   problem the requirement grows slowly, so this understates what the
-                   grid needs). Flagged in every table and figure.
+                   problem, in the dimensions measured, the N needed for a fixed target
+                   stays the same or falls as d grows, so these are likely upper
+                   estimates. Flagged in every table and figure.
 
 For diffusion Monte Carlo, the statistical error falls as cpu^(-1/2); the CPU time
 needed to bring the standard error down to the target is (c / target)^2 with
@@ -37,7 +38,8 @@ import config
 from pinncross.grids import oscillator_n_needed
 
 METHODS = ("fd2", "fd4", "sinc")
-BOXES = (3.5, 4.0, 4.5, 5.0, 5.5, 6.0)
+# the oscillator's exact grid answers use the same two boxes as the measured solves
+BOXES = tuple(config.GRID_L["oscillator"])
 
 
 def load(quick: bool):
@@ -120,8 +122,8 @@ def grid_match(e2, name, d, method, target, kvec, lower_dims_hits, metric="energ
         return {"status": "separable", "n": n, "L": L, "unknowns": float(n) ** d,
                 "cpu_s": None, "memory_bytes": kvec * 8.0 * float(n) ** d}
     # coupled: the smallest N per axis that reached the same target in the highest lower
-    # dimension where any solve reached it. The per-axis requirement of the coupled
-    # problem grows slowly with d, so this tends to understate what the grid needs.
+    # dimension where any solve reached it. In the dimensions measured the per-axis
+    # requirement stays the same or falls with d, so this is likely an upper estimate.
     for dd in range(d - 1, 1, -1):
         lower = stable_hits([r for r in e2 if r["problem"] == name and r["d"] == dd
                              and r["method"] == method], key, target)
@@ -235,6 +237,15 @@ def main(quick: bool):
             f"| {r['problem']} | {r['d']} | {p['rel_energy_error_median']:.1e} | "
             f"{p['cpu_s_median'] / 60:.1f} min | {fmt_grid(r['grids']['fd2'])} | "
             f"{fmt_grid(r['grids']['fd4'])} | {fmt_grid(r['grids']['sinc'])} | {dmc_s} |")
+    lines += ["", "Matched on the wavefunction (relative L2 error; nodal for the grids):", "",
+              "| problem | d | PINN L2 error | FD2 to match | FD4 to match | sinc to match |",
+              "|---|---|---|---|---|---|"]
+    for r in summary["rows"]:
+        if r["pinn_failed"]:
+            continue
+        lines.append(f"| {r['problem']} | {r['d']} | {r['target_l2']:.1e} | "
+                     f"{fmt_grid(r['grids_l2']['fd2'])} | {fmt_grid(r['grids_l2']['fd4'])} | "
+                     f"{fmt_grid(r['grids_l2']['sinc'])} |")
     (config.RESULTS / f"summary{config.quick_suffix(quick)}.md").write_text("\n".join(lines) + "\n")
     print("\n".join(lines))
     print(f"vectors per unknown: {kvec:.1f}")

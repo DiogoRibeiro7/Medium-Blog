@@ -1,0 +1,98 @@
+coupled d=2 fd2  N=  8 relE=4.41e-02 L2=1.13e-01 it=16
+coupled d=2 fd2  N= 12 relE=6.17e-02 L2=6.84e-02 it=21
+coupled d=2 fd2  N= 16 relE=6.65e-02 L2=2.85e-02 it=25
+coupled d=2 fd2  N= 24 relE=4.14e-02 L2=2.10e-02 it=34
+coupled d=2 fd2  N= 32 relE=2.44e-02 L2=1.45e-02 it=43
+coupled d=2 fd2  N= 48 relE=1.09e-02 L2=6.38e-03 it=61
+coupled d=2 fd2  N= 64 relE=6.17e-03 L2=3.52e-03 it=75
+coupled d=2 fd2  N= 96 relE=2.76e-03 L2=1.55e-03 it=107
+coupled d=2 fd2  N=128 relE=1.56e-03 L2=8.68e-04 it=137
+coupled d=2 fd4  N=  8 relE=6.75e-02 L2=9.57e-02 it=16
+coupled d=2 fd4  N= 12 relE=1.39e-02 L2=5.06e-02 it=23
+coupled d=2 fd4  N= 16 relE=7.47e-03 L2=1.79e-02 it=27
+coupled d=2 fd4  N= 20 relE=8.42e-03 L2=7.19e-03 it=32
+coupled d=2 fd4  N= 24 relE=5.90e-03 L2=5.76e-03 it=37
+coupled d=2 fd4  N= 32 relE=2.40e-03 L2=3.28e-03 it=47
+coupled d=2 fd4  N= 40 relE=1.06e-03 L2=1.59e-03 it=57
+coupled d=2 fd4  N= 48 relE=5.30e-04 L2=8.18e-04 it=66
+coupled d=2 fd4  N= 64 relE=1.75e-04 L2=2.75e-04 it=83
+coupled d=2 sinc N=  6 relE=6.85e-01 L2=5.66e-03 it=13
+coupled d=2 sinc N=  8 relE=1.40e-01 L2=8.03e-02 it=18
+coupled d=2 sinc N= 10 relE=9.91e-02 L2=7.32e-02 it=22
+coupled d=2 sinc N= 12 relE=4.37e-02 L2=4.77e-02 it=25
+coupled d=2 sinc N= 14 relE=2.16e-02 L2=3.30e-02 it=28
+coupled d=2 sinc N= 16 relE=1.05e-02 L2=2.11e-02 it=31
+coupled d=2 sinc N= 18 relE=4.97e-03 L2=1.30e-02 it=34
+coupled d=2 sinc N= 20 relE=2.33e-03 L2=7.83e-03 it=36
+coupled d=2 sinc N= 24 relE=4.93e-04 L2=2.66e-03 it=41
+coupled d=2 sinc N= 28 relE=9.98e-05 L2=8.63e-04 it=47
+coupled d=3 fd2  N=  8 relE=5.88e-02 L2=1.06e-01 it=19
+coupled d=3 fd2  N= 12 relE=9.27e-02 L2=4.87e-02 it=25
+coupled d=3 fd2  N= 16 relE=6.79e-02 L2=3.28e-02 it=30
+coupled d=3 fd2  N= 24 relE=3.28e-02 L2=1.84e-02 it=42
+coupled d=3 fd2  N= 32 relE=1.87e-02 L2=1.03e-02 it=54
+coupled d=3 fd2  N= 48 relE=8.46e-03 L2=4.50e-03 it=73
+coupled d=3 fd2  N= 64 relE=4.80e-03 L2=2.53e-03 it=93
+coupled d=3 fd2  N= 96 relE=2.15e-03 L2=1.13e-03 it=129
+coupled d=3 fd4  N=  8 relE=4.60e-02 L2=7.99e-02 it=20
+coupled d=3 fd4  N= 12 relE=1.72e-02 L2=2.38e-02 it=27
+coupled d=3 fd4  N= 16 relE=1.29e-02 L2=1.04e-02 it=32
+coupled d=3 fd4  N= 20 relE=6.74e-03 L2=7.04e-03 it=39
+coupled d=3 fd4  N= 24 relE=3.58e-03 L2=4.25e-03 it=46
+coupled d=3 fd4  N= 32 relE=1.23e-03 L2=1.57e-03 it=57
+coupled d=3 fd4  N= 40 relE=5.30e-04 L2=6.83e-04 it=69
+coupled d=3 fd4  N= 48 relE=2.63e-04 L2=3.42e-04 it=80
+coupled d=3 fd4  N= 64 relE=8.62e-05 L2=1.14e-04 it=101
+coupled d=3 sinc N=  6 relE=6.82e-01 L2=1.66e-03 it=16
+coupled d=3 sinc N=  8 relE=1.11e-01 L2=5.76e-02 it=22
+coupled d=3 sinc N= 10 relE=4.14e-02 L2=3.72e-02 it=26
+coupled d=3 sinc N= 12 relE=1.19e-02 L2=2.04e-02 it=29
+coupled d=3 sinc N= 14 relE=3.71e-03 L2=9.93e-03 it=33
+coupled d=3 sinc N= 16 relE=1.10e-03 L2=4.59e-03 it=36
+coupled d=3 sinc N= 18 relE=3.27e-04 L2=2.05e-03 it=40
+coupled d=3 sinc N= 20 relE=9.64e-05 L2=9.00e-04 it=43
+coupled d=3 sinc N= 24 relE=8.32e-06 L2=1.70e-04 it=50
+coupled d=3 sinc N= 28 relE=7.15e-07 L2=3.22e-05 it=57
+box oscillator d=1 L=3.0 N=29 E-E0=4.471e-04
+box oscillator d=1 L=3.5 N=34 E-E0=2.116e-05
+box oscillator d=1 L=4.0 N=39 E-E0=5.901e-07
+box oscillator d=1 L=4.5 N=44 E-E0=9.779e-09
+box oscillator d=1 L=5.0 N=49 E-E0=9.683e-11
+box oscillator d=1 L=5.5 N=54 E-E0=5.730e-13
+box oscillator d=1 L=6.0 N=59 E-E0=1.554e-15
+box oscillator d=1 L=6.5 N=64 E-E0=2.776e-15
+box coupled d=2 L=3.0 N=29 E-E0=2.785e-04
+box coupled d=2 L=3.5 N=34 E-E0=1.117e-05
+box coupled d=2 L=4.0 N=39 E-E0=2.550e-07
+box coupled d=2 L=4.5 N=44 E-E0=1.994e-08
+box coupled d=2 L=5.0 N=49 E-E0=-1.803e-08
+box coupled d=2 L=5.5 N=54 E-E0=1.615e-08
+box coupled d=2 L=6.0 N=59 E-E0=-1.807e-08
+box coupled d=2 L=6.5 N=64 E-E0=1.615e-08
+box coupled d=3 L=3.0 N=29 E-E0=2.242e-04
+box coupled d=3 L=3.5 N=34 E-E0=7.770e-06
+box coupled d=3 L=4.0 N=39 E-E0=1.656e-07
+box coupled d=3 L=4.5 N=44 E-E0=2.167e-09
+box coupled d=3 L=5.0 N=49 E-E0=1.479e-11
+box coupled d=3 L=5.5 N=50 E-E0=2.426e-11
+box coupled d=3 L=6.0 N=50 E-E0=2.620e-10
+box coupled d=3 L=6.5 N=50 E-E0=1.971e-09
+{'method': 'fd2', 'L': 3.5, '0.001': 54, '0.0001': 149, '1e-05': None, '1e-06': None, '1e-08': None}
+{'method': 'fd2', 'L': 4.0, '0.001': 63, '0.0001': 199, '1e-05': 603, '1e-06': 1420, '1e-08': None}
+{'method': 'fd2', 'L': 4.5, '0.001': 71, '0.0001': 224, '1e-05': 710, '1e-06': 2232, '1e-08': 14066}
+{'method': 'fd2', 'L': 5.0, '0.001': 79, '0.0001': 250, '1e-05': 790, '1e-06': 2499, '1e-08': None}
+{'method': 'fd2', 'L': 5.5, '0.001': 87, '0.0001': 275, '1e-05': 869, '1e-06': 2749, '1e-08': None}
+{'method': 'fd2', 'L': 6.0, '0.001': 94, '0.0001': 300, '1e-05': 948, '1e-06': 3000, '1e-08': None}
+{'method': 'fd4', 'L': 3.5, '0.001': 14, '0.0001': 24, '1e-05': None, '1e-06': None, '1e-08': None}
+{'method': 'fd4', 'L': 4.0, '0.001': 16, '0.0001': 30, '1e-05': 52, '1e-06': 80, '1e-08': None}
+{'method': 'fd4', 'L': 4.5, '0.001': 18, '0.0001': 34, '1e-05': 60, '1e-06': 107, '1e-08': None}
+{'method': 'fd4', 'L': 5.0, '0.001': 21, '0.0001': 37, '1e-05': 67, '1e-06': 120, '1e-08': 378}
+{'method': 'fd4', 'L': 5.5, '0.001': 23, '0.0001': 41, '1e-05': 74, '1e-06': 132, '1e-08': 417}
+{'method': 'fd4', 'L': 6.0, '0.001': 25, '0.0001': 45, '1e-05': 80, '1e-06': 144, '1e-08': 455}
+{'method': 'sinc', 'L': 3.5, '0.001': 6, '0.0001': 7, '1e-05': None, '1e-06': None, '1e-08': None}
+{'method': 'sinc', 'L': 4.0, '0.001': 7, '0.0001': 8, '1e-05': 9, '1e-06': None, '1e-08': None}
+{'method': 'sinc', 'L': 4.5, '0.001': 8, '0.0001': 9, '1e-05': 10, '1e-06': 11, '1e-08': None}
+{'method': 'sinc', 'L': 5.0, '0.001': 9, '0.0001': 10, '1e-05': 11, '1e-06': 12, '1e-08': 14}
+{'method': 'sinc', 'L': 5.5, '0.001': 10, '0.0001': 11, '1e-05': 12, '1e-06': 14, '1e-08': 15}
+{'method': 'sinc', 'L': 6.0, '0.001': 11, '0.0001': 12, '1e-05': 14, '1e-06': 15, '1e-08': 17}
+wrote /home/claude/diogoribeiro7/medium-blog/pinn-crossover-dimension/results/e1_convergence.json

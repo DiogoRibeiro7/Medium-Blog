@@ -119,12 +119,16 @@ def fig3_memory(s, pinn, q):
         if rss:
             ax.axhline(max(rss), color=COL["pinn"], lw=1.6, ls="--",
                        label="PINN (whole process, peak)")
-        for cap, lab in ((config.MEMORY_BUDGET, "5 GB (this machine)"),
-                         (config.LAPTOP_MEMORY, "16 GB laptop"),
-                         (config.WORKSTATION_MEMORY, "256 GB workstation")):
+        xmax = config.DIMS[name][-1] + 0.3
+        for cap, lab, dy in ((config.MEMORY_BUDGET, "5 GB (this machine)", 1.6),
+                             (config.LAPTOP_MEMORY, "16 GB laptop", 1.6),
+                             (config.WORKSTATION_MEMORY, "256 GB workstation", 1.6)):
             ax.axhline(cap, color=style.MUTED, lw=0.8, ls=":")
-            ax.text(rows[0]["d"] if rows else 1, cap * 1.25, lab, fontsize=8,
-                    color=style.INK2)
+            ax.text(xmax, cap * dy, lab, fontsize=8, color=style.INK2, ha="right",
+                    va="center")
+        failed = [r["d"] for r in s["rows"] if r["problem"] == name and r["pinn_failed"]]
+        for d in failed:
+            ax.text(d, 1e6, "PINN\nfailed", ha="center", fontsize=8.5, color=style.INK2)
         ax.set_title(PROB[name])
         ax.set_xlabel("dimension d")
         ax.set_xticks(config.DIMS[name])
@@ -167,16 +171,18 @@ def fig4_error_vs_time(e2, e4, pinn, s, q):
             dr = [r for r in e4["runs"] if r["problem"] == name and r["d"] == d]
             if dr:
                 ax.errorbar([r["cpu_s"] for r in dr], [r["rel_energy_error"] for r in dr],
-                            yerr=[r["rel_se"] for r in dr], fmt="s", ms=5, color=COL["dmc"],
-                            capsize=2, label="Diffusion Monte Carlo (± 1 s.e.)")
+                            yerr=[[0.0] * len(dr), [r["rel_se"] for r in dr]], fmt="s", ms=5,
+                            color=COL["dmc"], capsize=2,
+                            label="Diffusion Monte Carlo (bar: + 1 s.e.)")
                 c = np.median([r["rel_se"] * np.sqrt(r["cpu_s"]) for r in dr])
                 t = np.logspace(-1, 4.5, 50)
                 ax.loglog(t, c / np.sqrt(t), ls=":", color=COL["dmc"], lw=1)
             for r in e5:
                 if r["problem"] == name and r["d"] == d:
-                    ax.errorbar([r["cpu_s"]], [r["rel_energy_error"]], yerr=[r["rel_se"]],
-                                fmt="s", ms=7, mfc=style.SURFACE, color=COL["dmc"], capsize=2,
-                                label="DMC given the PINN's CPU time")
+                    ax.errorbar([r["cpu_s"]], [r["rel_energy_error"]],
+                                yerr=[[0.0], [r["rel_se"]]], fmt="s", ms=7, mfc=style.SURFACE,
+                                color=COL["dmc"], capsize=2,
+                                label="DMC run for the PINN's CPU time")
             ax.set_title(f"{PROB[name].split(' (')[0]}, d = {d}")
             ax.set_ylim(1e-9, 1)
             ax.set_xlim(1e-3, 3e4)
@@ -184,10 +190,19 @@ def fig4_error_vs_time(e2, e4, pinn, s, q):
                 ax.set_xlabel("CPU time (s)")
             if j == 0:
                 ax.set_ylabel("relative energy error")
-    axes[0, 0].legend(loc="lower left", fontsize=8)
+    handles, labels = {}, []
+    for a in axes.ravel():
+        for h, lab in zip(*a.get_legend_handles_labels()):
+            if lab not in handles:
+                handles[lab] = h
+                labels.append(lab)
+    fig.subplots_adjust(top=0.9)
+    fig.legend([handles[lab] for lab in labels], labels, loc="upper center", ncol=3,
+               fontsize=8.5, bbox_to_anchor=(0.5, 0.995))
     fig.text(0.01, -0.02, "Grid curves: lowest error reached for a given CPU time over the "
              "points per axis and box sizes tried. Dotted line: Monte Carlo standard error "
-             "falling as cpu^(-1/2).", fontsize=8.5, color=style.INK2, ha="left", va="top")
+             "falling as cpu^(-1/2).\nMonte Carlo markers show the measured error; the bar "
+             "adds one standard error above it.", fontsize=8.5, color=style.INK2, ha="left", va="top")
     credit(fig)
     fig.savefig(config.FIGURES / f"fig4_error_vs_cpu{q}.png")
     plt.close(fig)
@@ -211,12 +226,30 @@ def fig5_pinn_by_dimension(s, q):
                if r["dmc"]]
         if dmc:
             ax.semilogy(*zip(*dmc), "-s", color=COL["dmc"],
-                        label="DMC standard error at the PINN's CPU time")
+                        label="DMC: expected error at the PINN's CPU time")
+        m5 = [r for r in s.get("dmc_at_pinn_budget", []) if r["problem"] == name]
+        if m5:
+            ax.errorbar([r["d"] for r in m5], [r["rel_energy_error"] for r in m5],
+                        yerr=[[0.0] * len(m5), [r["rel_se"] for r in m5]], fmt="s", ms=8,
+                        mfc=style.SURFACE, color=COL["dmc"], capsize=2,
+                        label="DMC run for the PINN's CPU time (measured)")
+        for r in rows:
+            if r["pinn_failed"]:
+                ax.annotate("failed in all seeds", (r["d"], r["pinn"]["rel_energy_error_median"]),
+                            xytext=(-12, -4), textcoords="offset points", ha="right",
+                            fontsize=8.5, color=style.INK2)
         ax.set_title(PROB[name])
         ax.set_xlabel("dimension d")
         ax.set_xticks(ds)
     axes[0].set_ylabel("relative energy error")
-    axes[0].legend(loc="upper left", fontsize=8.5)
+    handles, labels = {}, []
+    for a in axes:
+        for h, lab in zip(*a.get_legend_handles_labels()):
+            if lab not in handles:
+                handles[lab] = h
+                labels.append(lab)
+    fig.legend([handles[lab] for lab in labels], labels, loc="upper center", ncol=2,
+               fontsize=8.5, bbox_to_anchor=(0.5, -0.05))
     credit(fig)
     fig.savefig(config.FIGURES / f"fig5_pinn_by_dimension{q}.png")
     plt.close(fig)
