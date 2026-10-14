@@ -8,6 +8,7 @@ from collections.abc import Sequence
 from pathlib import Path
 
 from eu_okun.audit import audit_snapshot
+from eu_okun.baseline import write_baselines
 from eu_okun.eurostat import EurostatDataError, save_snapshot
 
 
@@ -21,6 +22,9 @@ def main(argv: Sequence[str] | None = None) -> int:
     fetch.add_argument("--output-dir", type=Path, default=Path("data"))
     audit = commands.add_parser("audit", help="Audit an existing frozen Eurostat snapshot")
     audit.add_argument("--output-dir", type=Path, default=Path("data"))
+    fit = commands.add_parser("baseline", help="Fit descriptive Okun OLS/HAC baselines")
+    fit.add_argument("--data-dir", type=Path, default=Path("data"))
+    fit.add_argument("--output", type=Path, default=Path("results/ols_hac.json"))
     args = parser.parse_args(argv)
     if args.command == "fetch":
         try:
@@ -38,6 +42,13 @@ def main(argv: Sequence[str] | None = None) -> int:
         except (EurostatDataError, ValueError, OSError, KeyError, TypeError) as exc:
             parser.exit(2, f"Eurostat audit failed: {exc}\n")
         print(f"Audit complete: {target}")
+        return 0
+    if args.command == "baseline":
+        try:
+            count = write_baselines(args.data_dir, args.output)
+        except (EurostatDataError, ValueError, OSError) as exc:
+            parser.exit(2, f"Okun baseline failed: {exc}\n")
+        print(f"Saved {count} descriptive regression fits to {args.output}")
         return 0
     return 1
 
