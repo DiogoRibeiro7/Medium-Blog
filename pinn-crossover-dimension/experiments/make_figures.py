@@ -57,8 +57,8 @@ def fig1_problems(q):
         ax.set_xlabel("$x_1$")
         ax.set_ylabel("$x_2$")
         ax.grid(False)
-    fig.suptitle("Ground-state density $|\\psi_0|^2$ in two dimensions", x=0.01, ha="left",
-                 fontweight="bold")
+    fig.suptitle("Ground-state density $|\\psi_0|^2$ in two dimensions", x=0.01, y=1.04,
+                 ha="left", fontweight="bold")
     credit(fig)
     fig.savefig(config.FIGURES / f"fig1_problems{q}.png")
     plt.close(fig)
@@ -75,7 +75,7 @@ def fig2_convergence(e1, e2, q):
     ax.set_title("Oscillator (any d; exact grid answer)")
     ax.set_xlabel("points per axis, N")
     ax.set_ylabel("relative energy error")
-    ax.legend(loc="lower left")
+    ax.legend(loc="upper right", fontsize=9)
     ax = axes[1]
     for m in ("fd2", "fd4", "sinc"):
         rows = sorted((r for r in e1["coupled"] if r["method"] == m and r["d"] == 3),

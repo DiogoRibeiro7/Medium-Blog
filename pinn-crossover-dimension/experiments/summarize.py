@@ -17,6 +17,12 @@ For diffusion Monte Carlo, the statistical error falls as cpu^(-1/2); the CPU ti
 needed to bring the standard error down to the target is (c / target)^2 with
 c = median(rel_se * sqrt(cpu)) over the three run lengths.
 
+The same matching is repeated on the relative L2 error of the wavefunction (nodal error
+for the grids, which for the sinc grid equals the continuous error of its interpolant).
+Because the PINN's energy is a Rayleigh quotient, its energy error is roughly the square
+of its wavefunction error, so matching on energy asks more of the grids than matching
+on the wavefunction does.
+
 Writes results/summary.json and results/summary.md.
 """
 
@@ -74,20 +80,22 @@ def pinn_table(pinn):
     return table
 
 
-def grid_match(e2, name, d, method, target, kvec, lower_dims_hits):
+def grid_match(e2, name, d, method, target, kvec, lower_dims_hits, metric="energy"):
+    """Cheapest grid answer reaching ``target`` in the given metric (energy or L2)."""
+    key = "rel_energy_error" if metric == "energy" else "l2_error_nodal"
     rows = [r for r in e2 if r["problem"] == name and r["d"] == d and r["method"] == method]
-    hit = [r for r in rows if r["rel_energy_error"] <= target]
+    hit = [r for r in rows if r[key] <= target]
     if hit:
-        best = min(hit, key=lambda r: r["cpu_s"])
+        best = min(hit, key=lambda r: (r["peak_bytes"], r["cpu_s"]))
         return {"status": "measured", "n": best["n"], "L": best["L"],
                 "unknowns": best["unknowns"], "cpu_s": best["cpu_s"],
-                "memory_bytes": best["peak_bytes"],
-                "rel_energy_error": best["rel_energy_error"]}
+                "memory_bytes": best["peak_bytes"], "error": best[key]}
     if name == "oscillator":
         best = None
         for L in BOXES:
             n = oscillator_n_needed(method, L, target,
-                                    nmax={"fd2": 40000, "fd4": 4000, "sinc": 300}[method])
+                                    nmax={"fd2": 40000, "fd4": 4000, "sinc": 300}[method],
+                                    metric=key, d=d if metric == "l2" else 1)
             if n is not None and (best is None or n < best[0]):
                 best = (n, L)
         if best is None:
@@ -122,17 +130,24 @@ def main(quick: bool):
                "rows": []}
     for name in ("oscillator", "coupled"):
         hits_by_method = {m: [] for m in METHODS}
+        hits_l2 = {m: [] for m in METHODS}
         for d in config.DIMS[name]:
             if (name, d) not in ptab:
                 continue
             p = ptab[(name, d)]
             target = p["rel_energy_error_median"]
-            row = {"problem": name, "d": d, "pinn": p, "target": target, "grids": {}}
+            target_l2 = p["l2_error_median"]
+            row = {"problem": name, "d": d, "pinn": p, "target": target,
+                   "target_l2": target_l2, "grids": {}, "grids_l2": {}}
             for m in METHODS:
                 g = grid_match(e2, name, d, m, target, kvec, hits_by_method[m])
                 row["grids"][m] = g
                 if g["status"] == "measured":
                     hits_by_method[m].append((d, g["n"]))
+                g2 = grid_match(e2, name, d, m, target_l2, kvec, hits_l2[m], metric="l2")
+                row["grids_l2"][m] = g2
+                if g2["status"] == "measured":
+                    hits_l2[m].append((d, g2["n"]))
             row["dmc"] = dmc_time(e4, name, d, target)
             summary["rows"].append(row)
 

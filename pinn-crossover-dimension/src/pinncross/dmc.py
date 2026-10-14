@@ -11,11 +11,12 @@ and because H applied to the constant function 1 is just V,
     E0 = integral psi0 V / integral psi0,
 
 so the average potential over the walkers is an estimator of E0. The growth estimator
--log(mean weight) / tau is recorded as well. Standard errors come from block averages.
+-log(mean weight) / tau is recorded as well. Standard errors come from block averages
+over blocks of at least 5 units of imaginary time.
 
 Nothing about the answer is used: walkers start from N(0, I) and no trial wavefunction
-guides them. This is the plainest DMC there is; importance sampling would cut the
-variance by orders of magnitude.
+guides them. This is the plainest DMC there is; importance sampling with a good trial
+function would reduce both the variance and the time-step error.
 """
 
 from __future__ import annotations
@@ -35,7 +36,10 @@ def _systematic_resample(w: np.ndarray, rng: np.random.Generator) -> np.ndarray:
     return np.minimum(np.searchsorted(c, u), n - 1)
 
 
-def _block_mean(series: np.ndarray, n_blocks: int = 50) -> tuple[float, float]:
+def _block_mean(series: np.ndarray, min_block: int, max_blocks: int = 50) -> tuple[float, float]:
+    """Mean and standard error from block averages, with blocks of at least ``min_block``
+    steps so that consecutive blocks are close to independent."""
+    n_blocks = int(min(max_blocks, max(8, series.size // max(min_block, 1))))
     m = series.size // n_blocks
     blocks = series[: m * n_blocks].reshape(n_blocks, m).mean(axis=1)
     return float(blocks.mean()), float(blocks.std(ddof=1) / np.sqrt(n_blocks))
@@ -66,8 +70,11 @@ def run_dmc(problem: Problem, n_walkers: int, tau: float, n_steps: int,
             e_pot[i] = V.mean()
     cpu = time.process_time() - t_cpu
     wall = time.perf_counter() - t_wall
-    Ep, sep = _block_mean(e_pot)
-    Eg, seg = _block_mean(e_growth)
+    # walker correlations decay on an imaginary-time scale of order 1 / gap ~ 1, so the
+    # blocks span at least 5 units of imaginary time
+    block = int(np.ceil(5.0 / tau))
+    Ep, sep = _block_mean(e_pot, block)
+    Eg, seg = _block_mean(e_growth, block)
     E0 = problem.E0
     return {
         "problem": problem.name, "d": d, "g": problem.g, "method": "dmc",
