@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pinn-crossover-dimension"
+version = "0.1.0"
+description = "Where a physics-informed neural network starts to beat classical solvers for a ground state, measured against second-order and fourth-order finite differences, a spectral grid and diffusion Monte Carlo in one to eight dimensions."
+readme = "README.md"
+license = { text = "Apache-2.0" }
+authors = [{ name = "Diogo Ribeiro", email = "dfr@esmad.ipp.pt" }]
+requires-python = ">=3.10"
+dependencies = [
+    "numpy>=1.26",
+    "scipy>=1.11",
+    "jax>=0.4.30",
+    "optax>=0.2.4",
+    "matplotlib>=3.8",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
