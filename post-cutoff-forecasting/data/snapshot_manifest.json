@@ -1,0 +1,94 @@
+{
+  "source": "Energy-Charts public_power API",
+  "endpoint": "https://api.energy-charts.info/public_power",
+  "country": "pt",
+  "series": "Load",
+  "attribution": "Load data: energy-charts.info (Fraunhofer ISE), licensed CC BY 4.0",
+  "licence": "CC BY 4.0",
+  "timestamps": "start of each hour, UTC",
+  "unit": "MW",
+  "rows": 41856,
+  "missing_hours": 0,
+  "first_hour": "2022-01-01T00:00:00+00:00",
+  "last_hour": "2026-10-10T23:00:00+00:00",
+  "sha256": "f5c6c3895f9290e8da0277ca31b7198bfedeef06dd9b803418f65ea153807cc7",
+  "requests": [
+    {
+      "url": "https://api.energy-charts.info/public_power",
+      "params": {
+        "country": "pt",
+        "start": "2022-01-01",
+        "end": "2022-12-31"
+      },
+      "stamps": 8760,
+      "hours": 8760,
+      "hours_by_resolution": {
+        "60 min": 8760
+      },
+      "first": "2022-01-01T00:00:00+00:00",
+      "last": "2022-12-31T23:00:00+00:00"
+    },
+    {
+      "url": "https://api.energy-charts.info/public_power",
+      "params": {
+        "country": "pt",
+        "start": "2023-01-01",
+        "end": "2023-12-31"
+      },
+      "stamps": 8760,
+      "hours": 8760,
+      "hours_by_resolution": {
+        "60 min": 8760
+      },
+      "first": "2023-01-01T00:00:00+00:00",
+      "last": "2023-12-31T23:00:00+00:00"
+    },
+    {
+      "url": "https://api.energy-charts.info/public_power",
+      "params": {
+        "country": "pt",
+        "start": "2024-01-01",
+        "end": "2024-12-31"
+      },
+      "stamps": 8784,
+      "hours": 8784,
+      "hours_by_resolution": {
+        "60 min": 8784
+      },
+      "first": "2024-01-01T00:00:00+00:00",
+      "last": "2024-12-31T23:00:00+00:00"
+    },
+    {
+      "url": "https://api.energy-charts.info/public_power",
+      "params": {
+        "country": "pt",
+        "start": "2025-01-01",
+        "end": "2025-12-31"
+      },
+      "stamps": 8760,
+      "hours": 8760,
+      "hours_by_resolution": {
+        "60 min": 8760
+      },
+      "first": "2025-01-01T00:00:00+00:00",
+      "last": "2025-12-31T23:00:00+00:00"
+    },
+    {
+      "url": "https://api.energy-charts.info/public_power",
+      "params": {
+        "country": "pt",
+        "start": "2026-01-01",
+        "end": "2026-10-11"
+      },
+      "stamps": 6815,
+      "hours": 6815,
+      "hours_by_resolution": {
+        "60 min": 6815
+      },
+      "first": "2026-01-01T00:00:00+00:00",
+      "last": "2026-10-11T22:00:00+00:00"
+    }
+  ],
+  "cutoff": "2026-10-11T00:00:00+00:00",
+  "fetched_at": "2026-10-14T08:19:10Z"
+}

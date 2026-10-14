@@ -1,0 +1,214 @@
+{
+  "started": "2026-10-14T08:20:01Z",
+  "finished": "2026-10-14T09:08:28Z",
+  "python": "3.12.15",
+  "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+  "packages": {
+    "numpy": "2.3.5",
+    "pandas": "2.3.3",
+    "statsforecast": "2.1.1",
+    "holidays": "0.106",
+    "torch": "2.14.1+cpu",
+    "transformers": "5.19.0",
+    "chronos-forecasting": "2.3.2",
+    "timesfm": "2.0.2",
+    "tirex-ts": "1.4.2",
+    "huggingface-hub": "2.2.0"
+  },
+  "config_sha256": "d17405838b9ca55bc1af65df86db20d1eb47d68ef7bab889faa0082d28f71e51",
+  "data_sha256": "f5c6c3895f9290e8da0277ca31b7198bfedeef06dd9b803418f65ea153807cc7",
+  "data_first_hour": "2022-01-01T00:00:00+00:00",
+  "data_last_hour": "2026-10-10T23:00:00+00:00",
+  "limit_per_window": null,
+  "origins": {
+    "2022-23": {
+      "candidates": 334,
+      "scored": 334
+    },
+    "2023-24": {
+      "candidates": 335,
+      "scored": 335
+    },
+    "2024-25": {
+      "candidates": 334,
+      "scored": 327
+    },
+    "2025-26": {
+      "candidates": 334,
+      "scored": 334
+    }
+  },
+  "excluded_reasons": [
+    {
+      "window": "2024-25",
+      "reason": "forecast period contains masked hours",
+      "n": 7
+    }
+  ],
+  "imputed_hours_in_snapshot": 12,
+  "models": {
+    "seasonal_naive_week": {
+      "package": "statsforecast==2.1.1",
+      "spec": "SeasonalNaive(168)",
+      "seconds": 2.1,
+      "quantile_crossing_rate": 0.0
+    },
+    "seasonal_naive_day": {
+      "package": "statsforecast==2.1.1",
+      "spec": "SeasonalNaive(24)",
+      "seconds": 1.1,
+      "quantile_crossing_rate": 0.0
+    },
+    "ets": {
+      "package": "statsforecast==2.1.1",
+      "spec": "AutoETS(24)",
+      "seconds": 749.3,
+      "quantile_crossing_rate": 0.0
+    },
+    "mstl_ets": {
+      "package": "statsforecast==2.1.1",
+      "spec": "MSTL(24,168)+AutoETS(ZZN)",
+      "seconds": 253.2,
+      "quantile_crossing_rate": 0.0
+    },
+    "chronos2": {
+      "package": "chronos-forecasting==2.3.2",
+      "repo": "amazon/chronos-2",
+      "revision": "29ec3766d36d6f73f0696f85560a422f50e8498c",
+      "weights_file": "model.safetensors",
+      "weights_sha256": "ddcda3c7508bf2528087723e98a20707cc04b7f370ae275a9fd88078ddba4f42",
+      "weights_files_checked": [
+        "model.safetensors"
+      ],
+      "weights_last_commit": "2025-10-30T14:58:57+00:00",
+      "weights_commit_title": "Add model weights and config",
+      "covariates": [],
+      "batch_size": 64,
+      "context_length_used": 2048,
+      "model_context_length": 8192,
+      "model_quantiles": [
+        0.01,
+        0.05,
+        0.1,
+        0.15,
+        0.2,
+        0.25,
+        0.3,
+        0.35,
+        0.4,
+        0.45,
+        0.5,
+        0.55,
+        0.6,
+        0.65,
+        0.7,
+        0.75,
+        0.8,
+        0.85,
+        0.9,
+        0.95,
+        0.99
+      ],
+      "cross_learning": false,
+      "seconds": 284.0,
+      "quantile_crossing_rate": 0.00027300393841747227
+    },
+    "chronos2_holidays": {
+      "package": "chronos-forecasting==2.3.2",
+      "repo": "amazon/chronos-2",
+      "revision": "29ec3766d36d6f73f0696f85560a422f50e8498c",
+      "weights_file": "model.safetensors",
+      "weights_sha256": "ddcda3c7508bf2528087723e98a20707cc04b7f370ae275a9fd88078ddba4f42",
+      "weights_files_checked": [
+        "model.safetensors"
+      ],
+      "weights_last_commit": "2025-10-30T14:58:57+00:00",
+      "weights_commit_title": "Add model weights and config",
+      "covariates": [
+        "holiday"
+      ],
+      "batch_size": 64,
+      "context_length_used": 2048,
+      "model_context_length": 8192,
+      "model_quantiles": [
+        0.01,
+        0.05,
+        0.1,
+        0.15,
+        0.2,
+        0.25,
+        0.3,
+        0.35,
+        0.4,
+        0.45,
+        0.5,
+        0.55,
+        0.6,
+        0.65,
+        0.7,
+        0.75,
+        0.8,
+        0.85,
+        0.9,
+        0.95,
+        0.99
+      ],
+      "cross_learning": false,
+      "seconds": 559.2,
+      "quantile_crossing_rate": 0.00042069459362692447
+    },
+    "timesfm25": {
+      "package": "timesfm==2.0.2",
+      "repo": "google/timesfm-2.5-200m-pytorch",
+      "revision": "1d952420fba87f3c6dee4f240de0f1a0fbc790e3",
+      "weights_file": "model.safetensors",
+      "weights_sha256": "2f776efe6245e42b24bc4153ffdf61810140210e4bd3b01fb21f7aa779ab6ce8",
+      "weights_files_checked": [
+        "model.safetensors"
+      ],
+      "weights_last_commit": "2025-10-01T22:16:35+00:00",
+      "weights_commit_title": "Refreshed model with speed optimizations.",
+      "forecast_config": {
+        "max_context": 2048,
+        "max_horizon": 168,
+        "normalize_inputs": true,
+        "use_continuous_quantile_head": true,
+        "force_flip_invariance": true,
+        "infer_is_positive": true,
+        "fix_quantile_crossing": true,
+        "per_core_batch_size": 32
+      },
+      "seconds": 545.0,
+      "quantile_crossing_rate": 0.0
+    },
+    "tirex": {
+      "package": "tirex-ts==1.4.2",
+      "repo": "NX-AI/TiRex",
+      "revision": "63c740922493f5fbe60b277609ec62babfba2762",
+      "weights_file": "model.ckpt",
+      "weights_sha256": "b8c3f5a036c63272ce4b91c00187e26922a394cb6cb49d4e16db070ad0422314",
+      "weights_files_checked": [
+        "model.ckpt"
+      ],
+      "weights_last_commit": "2025-05-26T07:15:46+00:00",
+      "weights_commit_title": "init TiRex model repo",
+      "backend": "torch",
+      "train_ctx_len": 2048,
+      "context_length_used": 2048,
+      "model_quantiles": [
+        0.1,
+        0.2,
+        0.3,
+        0.4,
+        0.5,
+        0.6,
+        0.7,
+        0.8,
+        0.9
+      ],
+      "batch_size": 64,
+      "seconds": 508.3,
+      "quantile_crossing_rate": 0.0
+    }
+  }
+}
