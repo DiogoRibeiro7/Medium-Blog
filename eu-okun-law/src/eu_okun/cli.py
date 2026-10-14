@@ -8,7 +8,6 @@ from collections.abc import Sequence
 from pathlib import Path
 
 from eu_okun.audit import audit_snapshot
-
 from eu_okun.eurostat import EurostatDataError, save_snapshot
 
 
