@@ -1,0 +1,3 @@
+# The repository root stores CSV files in Git LFS. This project's CSV files are small and
+# are read by its CI and by the article, so they are stored as ordinary text.
+*.csv !filter !diff !merge text eol=lf

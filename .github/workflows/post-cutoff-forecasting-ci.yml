@@ -1,0 +1,52 @@
+name: Post-cutoff forecasting CI
+
+on:
+  pull_request:
+    paths:
+      - "post-cutoff-forecasting/**"
+      - ".github/workflows/post-cutoff-forecasting-ci.yml"
+      - ".github/workflows/post-cutoff-forecasting-run.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "post-cutoff-forecasting/**"
+      - ".github/workflows/post-cutoff-forecasting-ci.yml"
+      - ".github/workflows/post-cutoff-forecasting-run.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: post-cutoff-forecasting
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: Install project (without the model packages)
+        run: python -m pip install -e ".[dev]"
+
+      - name: Lint
+        run: ruff check src tests
+
+      - name: Unit and end-to-end tests on synthetic data
+        run: python -m pytest
+
+      - name: Check committed results against the committed snapshot
+        run: |
+          if [ -f results/summary.json ]; then
+            postcutoff check
+          else
+            echo "No committed results yet."
+          fi
