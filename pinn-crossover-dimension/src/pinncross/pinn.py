@@ -55,6 +55,7 @@ class PinnConfig:
     lbfgs_batch: int = 2048
     eval_points: int = 500_000
     weighting: str = "psi2"   # "psi2": standard residual |H psi - E psi|^2; "none": |E_L - E|^2
+    lbfgs_refresh: int = 0    # 0: one fixed point set for L-BFGS; K: new points every K steps
 
 
 def init_params(key, d: int, cfg: PinnConfig):
@@ -181,27 +182,38 @@ def train_pinn(problem: Problem, cfg: PinnConfig, seed: int = 0, log_every: int 
     params_adam = params
 
     # --- stage 2: L-BFGS on a fixed set of points ------------------------------------
-    Xfix = jnp.asarray(collocation(rng, cfg.lbfgs_batch, d, cfg))
+    # With lbfgs_refresh = 0 (the default) one set of points is used throughout. With
+    # lbfgs_refresh = K a fresh set is drawn every K iterations and L-BFGS restarts,
+    # since its curvature history belongs to the previous objective.
+    chunk = cfg.lbfgs_refresh if cfg.lbfgs_refresh > 0 else cfg.lbfgs_steps
+    done = 0
+    while done < cfg.lbfgs_steps:
+        Xfix = jnp.asarray(collocation(rng, cfg.lbfgs_batch, d, cfg))
 
-    def fixed_loss(p):
-        return loss(p, Xfix)
+        def fixed_loss(p, Xfix=Xfix):
+            return loss(p, Xfix)
 
-    lbfgs = optax.lbfgs()
-    l_state = lbfgs.init(params)
-    vg = optax.value_and_grad_from_state(fixed_loss)
+        lbfgs = optax.lbfgs()
+        l_state = lbfgs.init(params)
+        vg = optax.value_and_grad_from_state(fixed_loss)
 
-    @jax.jit
-    def lbfgs_step(params, state):
-        value, grads = vg(params, state=state)
-        updates, state = lbfgs.update(grads, state, params, value=value, grad=grads,
-                                      value_fn=fixed_loss)
-        return optax.apply_updates(params, updates), state, value
+        @jax.jit
+        def lbfgs_step(params, state, vg=vg, lbfgs=lbfgs, fixed_loss=fixed_loss):
+            value, grads = vg(params, state=state)
+            updates, state = lbfgs.update(grads, state, params, value=value, grad=grads,
+                                          value_fn=fixed_loss)
+            return optax.apply_updates(params, updates), state, value
 
-    for step in range(cfg.lbfgs_steps):
-        params, l_state, value = lbfgs_step(params, l_state)
-        if log_every and step % log_every == 0:
-            history.append(("lbfgs", step, float(value)))
-        if not np.isfinite(float(value)):
+        stop = False
+        for step in range(done, min(done + chunk, cfg.lbfgs_steps)):
+            params, l_state, value = lbfgs_step(params, l_state)
+            if log_every and step % log_every == 0:
+                history.append(("lbfgs", step, float(value)))
+            if not np.isfinite(float(value)):
+                stop = True
+                break
+        done += chunk
+        if stop:
             break
 
     cpu = time.process_time() - t_cpu
