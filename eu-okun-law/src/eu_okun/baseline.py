@@ -95,9 +95,9 @@ def design_matrix(
         predictors.append(values)
         response.append(unemployment - prev_unemployment)
         dates.append(quarter)
-    return np.asarray(predictors, dtype=float).reshape(-1, lags + 2 + int(participation)), np.asarray(
-        response, dtype=float
-    ), dates
+    x = np.asarray(predictors, dtype=float).reshape(-1, lags + 2 + int(participation))
+    y = np.asarray(response, dtype=float)
+    return x, y, dates
 
 
 def fit_hac(
