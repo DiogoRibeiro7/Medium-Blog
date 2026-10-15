@@ -6,7 +6,7 @@ import numpy as np
 import pytest
 
 from eu_okun.baseline import fit_hac_covariance
-from eu_okun.comparison import common_sample_designs, cumulative_gdp, fit_comparisons
+from eu_okun.comparison import common_sample_designs, cumulative_gdp
 
 
 def test_cumulative_variance_includes_off_diagonal_covariance() -> None:
