@@ -31,3 +31,7 @@ for t-1 could have been unavailable when making a real-time forecast.
 
 A future release can add synchronized time-block uncertainty for paired
 forecast errors and evaluate genuine historical data vintages.
+
+The [classical results review](docs/CLASSICAL_RESULTS_REVIEW.md) (section 7)
+re-scores these forecasts without the 2020-2021 targets, and with 2020-2021 also
+removed from training, and reports approximate HAC loss-differential ratios.
