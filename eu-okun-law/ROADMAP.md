@@ -45,10 +45,20 @@ Open items raised by the review:
 
 ## Phase 2 — Hierarchical Bayes
 
-- [ ] Country partial pooling, prior sensitivity and common shocks.
-- [ ] Posterior predictive/convergence checks and robust errors.
-- [ ] Joint posterior rank probabilities, not point ranks alone.
-- [ ] Compare predictive performance with classical baselines.
+Pre-registered in [BAYES_PROTOCOL.md](BAYES_PROTOCOL.md); results in
+[docs/HIERARCHICAL_BAYES.md](docs/HIERARCHICAL_BAYES.md).
+
+- [x] Country partial pooling, prior sensitivity and common shocks (nine fixed
+      specifications; eight pass the convergence criteria, `no_pooling` fails).
+- [x] Posterior predictive/convergence checks and robust (Student-t) errors.
+- [x] Joint posterior rank probabilities, not point ranks alone.
+- [ ] Compare predictive performance with classical baselines (expanding-window refits).
+- [ ] Address the misfits the checks found, under a new registered protocol: the models
+      understate the persistence of unemployment changes, and the i.i.d. common factor
+      is autocorrelated and correlated with average GDP growth. Candidates: a dynamic
+      (AR) factor, lagged unemployment changes in the mean equation.
+- [ ] Time-varying or regime-specific coefficients (the classical review and the
+      pandemic-excluded fit both point to a weaker association after 2021).
 
 ## Phase 3 — Structural tests
 

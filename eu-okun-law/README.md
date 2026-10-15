@@ -51,10 +51,13 @@ country membership or an additional EU aggregate series. Eurostat uses `EL` for 
 
 ## Run
 
-Python 3.12 or later, from `eu-okun-law/`:
+Python 3.12 and Poetry 2.x, from `eu-okun-law/`. `poetry.toml` keeps the environment
+project-local (`eu-okun-law/.venv`) and `poetry.lock` pins every dependency; CI installs
+from the same lock.
 
 ```bash
-poetry install --extras dev
+poetry install --extras dev        # or --all-extras
+poetry env info --path             # must print .../eu-okun-law/.venv
 poetry run eu-okun fetch --end-quarter 2026-Q2 --output-dir data
 poetry run eu-okun audit --output-dir data
 poetry run pytest
@@ -62,11 +65,14 @@ poetry run ruff check src tests
 poetry run mypy src
 ```
 
-The `dev` extra includes matplotlib for the review figures; outside development,
-install the `report` extra (`pip install -e ".[report]"`) to run `eu-okun review`.
+Poetry installs into whatever environment `VIRTUAL_ENV` names. If your shell sets it
+(for example to a conda base environment), unset it first (`env -u VIRTUAL_ENV poetry
+install ...`) and check `poetry env info --path`, or the packages land in that other
+environment.
 
-Or use `python -m pip install -e ".[dev]"` and then run `eu-okun fetch`.
-The downloader needs internet access; all automated tests are offline.
+Extras: `report` (matplotlib, for `eu-okun review` and `bayes-report` figures), `bayes`
+(NumPyro, JAX, ArviZ, for the hierarchical models) and `dev` (both, plus pytest, Ruff
+and mypy). The downloader needs internet access; all automated tests are offline.
 
 The command produces these untracked research inputs:
 
@@ -91,15 +97,15 @@ workflows below). The snapshot used for the classical results review is frozen i
 [`snapshots/eurostat-2026-10-15/`](snapshots/eurostat-2026-10-15/README.md) so that its
 numbers can be regenerated after Eurostat revises the data.
 
-## Planned analysis
+## Analysis plan
 
-Start with classical country-by-country distributed-lag regressions, HAC
-standard errors and genuine time-ordered holdouts. Compare those results with
-hierarchical partial-pooling Bayesian models, posterior country-rank
-uncertainty, shared-shock effects and regime-change sensitivity. Only then
-attempt defensible structural identification (distinguishing, for example,
-demand from productivity shocks). Investigate the Netherlands and Luxembourg
-without assuming any institutional explanation in advance.
+Classical country-by-country distributed-lag regressions with HAC standard errors
+and time-ordered holdouts (done, and independently reviewed), then hierarchical
+partial-pooling Bayesian models with posterior rank uncertainty and shared shocks
+(first stage done; see below). Predictive comparison of the two and time-varying
+coefficients come next. Only then attempt defensible structural identification
+(distinguishing, for example, demand from productivity shocks). Investigate the
+Netherlands and Luxembourg without assuming any institutional explanation in advance.
 
 See [METHODS.md](METHODS.md), [ROADMAP.md](ROADMAP.md) and
 [data/README.md](data/README.md).
@@ -162,3 +168,36 @@ eu-okun review --data-dir snapshots/eurostat-2026-10-15   --output-dir docs/revi
 - Post-2021 coefficients, country-pair differences and the value of GDP for forecasting are inconclusive or sensitivity-dependent.
 
 The report separates verified results, sensitivity-dependent results, methodological limitations and unresolved questions. Every number in it, and every judgement that depends on a number, is computed from the outputs under decision rules stated in the report; the remaining text quotes Eurostat metadata or states data-independent limitations. Regenerate it rather than editing it. In CI, the estimates workflow runs the same review on the freshly downloaded data and archives it with the other results.
+
+## Hierarchical Bayesian analysis
+
+The model, priors, sensitivity set, convergence criteria and decision rules were
+pre-registered in [BAYES_PROTOCOL.md](BAYES_PROTOCOL.md) and committed before any
+model was fitted to Eurostat data. Country Okun coefficient sums are partially
+pooled, with a common quarterly factor for cross-country dependence, country AR(1)
+Student-t errors, and Eurostat-flagged observations masked out of the likelihood.
+
+```bash
+# Expensive (about an hour on a laptop CPU for all nine specifications)
+poetry run eu-okun bayes-fit --data-dir snapshots/eurostat-2026-10-15 --output-dir results/bayes
+# Cheap: tables, figures and report from the saved draws
+poetry run eu-okun bayes-report --fits-dir results/bayes --output-dir docs/bayes   --report docs/HIERARCHICAL_BAYES.md --data-dir snapshots/eurostat-2026-10-15
+```
+
+Sampling never runs in the ordinary pull-request checks. The
+[EU Okun hierarchical Bayes](../.github/workflows/eu-okun-law-bayes.yml) workflow runs
+it on demand, or when a pull request is labelled `bayesian-sampling`, and archives the
+posterior draws. Results: [docs/HIERARCHICAL_BAYES.md](docs/HIERARCHICAL_BAYES.md).
+They are descriptive conditional associations; partial pooling identifies no shock.
+
+In brief, for the 2026-10-15 snapshot and 2009-2019:
+
+- The association between GDP growth and unemployment changes is credibly negative
+  in most EU-27 countries in every accepted specification; its size depends on the
+  error model, more than on pooling.
+- The pre-registered model fails one predictive check (it understates the persistence
+  of unemployment changes), and its common factor turns out to be correlated with
+  average GDP growth, so in factor specifications the country coefficients describe
+  the association beyond the common European cycle.
+- Of the three earlier claims, "Spain large" is supported; "Netherlands delayed" and
+  "Luxembourg weak" are not resolved under the pre-registered rules.

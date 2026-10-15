@@ -29,18 +29,49 @@ holdouts rather than shuffled cross-validation.
 The sum of growth coefficients describes a conditional relationship. It
 is *not* automatically the response to an exogenous GDP level shock.
 
-## Stage 2 — Hierarchical Bayesian estimation
+### Review of the classical results (implemented)
 
-Example partial pooling: `beta[i,k] ~ Normal(mu[k], tau[k])`.
-Specify prior scales, shared shocks, residual dependence and pooling
-assumptions. Compare static and time-varying parameters. Report convergence,
-divergences, effective sample sizes, posterior predictive diagnostics and
-sensitivity to priors and exclusion windows.
+`eu-okun review` ([docs/CLASSICAL_RESULTS_REVIEW.md](docs/CLASSICAL_RESULTS_REVIEW.md))
+recomputes every published number by an independent route (QR solve, kernel-matrix
+HAC on calendar distances, coefficient sums read off the reparameterised regression
+on `g[t]` and `g[t-k] - g[t]`) and re-estimates the same specifications on fixed
+alternative samples: pandemic excluded, 2009-2019, Eurostat-flag screened and
+post-2021. Its main finding shapes everything that follows: 2020-2021 supply most of
+the GDP variation in any sample containing them, so pandemic treatment is an explicit
+design choice, never a default.
 
-Country rankings require the joint posterior and pairwise probabilities;
-a sorted table of posterior means is not enough. Define whether an
-EU-wide coefficient means population weighting, unweighted averaging,
-a pooled estimate, or a hyperparameter. Those estimands differ.
+## Stage 2 — Hierarchical Bayesian estimation (implemented)
+
+Pre-registered in [BAYES_PROTOCOL.md](BAYES_PROTOCOL.md) before any fit to Eurostat
+data; implemented in `bayes_data.py`, `bayes_model.py`, `bayes_fit.py` and
+`bayes_report.py`; results in [docs/HIERARCHICAL_BAYES.md](docs/HIERARCHICAL_BAYES.md).
+
+```text
+du[i,t] = alpha[i] + theta[i]*g[i,t] + sum_k b[i,k]*(g[i,t-k] - g[i,t])
+          + lambda[i]*f[t] + e[i,t]
+e[i,t]  = phi[i]*e[i,t-1] + sigma[i]*eps[i,t],   eps ~ Student-t(nu)
+theta[i] ~ Normal(mu_theta, tau_theta)   (non-centred; likewise alpha, b, phi, log sigma)
+```
+
+- **Estimand.** The reparameterisation makes `theta[i]` the coefficient sum itself.
+  `mu_theta` is the *unweighted* mean of the country sums: a hyperparameter, not a
+  population-weighted EU coefficient and not a pooled regression slope.
+- **Dependence.** A common quarterly factor `f[t]` with non-negative loadings captures
+  residual co-movement across countries; country AR(1) errors capture serial
+  dependence; Student-t errors and country scales handle heavy tails and the
+  eightfold spread of residual scales.
+- **Data.** Primary sample 2009-Q2..2019-Q4 (contiguous and definition-consistent for
+  all 27 countries). Likelihood terms relying on flagged Eurostat values are masked,
+  never altered or imputed.
+- **Computation.** NUTS (NumPyro, float64), 4 chains x 1000 retained draws. A fit is
+  accepted only with R-hat <= 1.01, bulk and tail ESS >= 400, no divergences and
+  E-BFMI >= 0.3; failed fits are reported and not interpreted.
+- **Reporting.** Country ranks only as posterior rank distributions and pairwise
+  probabilities `P(theta[i] < theta[j])`; nine fixed sensitivity specifications
+  (priors, pooling, common factor, error model, participation, lag order, sample).
+
+Still to do in this stage: predictive comparison with the classical baselines
+(expanding-window refits) and time-varying coefficients.
 
 ## Stage 3 — Identification before causal language
 
