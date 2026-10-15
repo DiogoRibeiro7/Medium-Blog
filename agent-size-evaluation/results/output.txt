@@ -1,0 +1,103 @@
+
+==============================================================================
+1. Size in code tokens, and behavioural footprint outside the ticket
+==============================================================================
+reformatting only : lines +5 -1 | code tokens +0 -0
+narrow patch : lines +9 -1 | code tokens +50 -1 | acceptance example passes: True | in-scope probes correct: 100.0% | out-of-scope probes changed: 1.9%
+wide patch   : lines +3 -1 | code tokens +28 -2 | acceptance example passes: True | in-scope probes correct: 21.8% | out-of-scope probes changed: 82.9%
+
+==============================================================================
+2. Safety at the ceiling: what zero failures can and cannot show
+==============================================================================
+0 failures in  10 runs: exact one-sided 95% upper bound 25.9% (rule of three: 30.0%)
+0 failures in  20 runs: exact one-sided 95% upper bound 13.9% (rule of three: 15.0%)
+0 failures in  40 runs: exact one-sided 95% upper bound 7.2% (rule of three: 7.5%)
+0 failures in  60 runs: exact one-sided 95% upper bound 4.9% (rule of three: 5.0%)
+0 failures in 100 runs: exact one-sided 95% upper bound 3.0% (rule of three: 3.0%)
+runs needed before 0/n bounds the failure rate below 5% (one-sided exact): 59
+runs per arm needed before 0/n vs 0/n gives a Newcombe 95% upper bound <= 5 points: 73
+runs per arm  10: P(claim non-inferiority at 5 points) | harmless arm: ticket bootstrap 100%, Newcombe 0% | arm failing 10% of runs: ticket bootstrap 36%, Newcombe 0%
+runs per arm  18: P(claim non-inferiority at 5 points) | harmless arm: ticket bootstrap 100%, Newcombe 0% | arm failing 10% of runs: ticket bootstrap 15%, Newcombe 0%
+runs per arm  34: P(claim non-inferiority at 5 points) | harmless arm: ticket bootstrap 100%, Newcombe 0% | arm failing 10% of runs: ticket bootstrap 3%, Newcombe 0%
+runs per arm  74: P(claim non-inferiority at 5 points) | harmless arm: ticket bootstrap 100%, Newcombe 100% | arm failing 10% of runs: ticket bootstrap 0%, Newcombe 0%
+runs per arm 106: P(claim non-inferiority at 5 points) | harmless arm: ticket bootstrap 100%, Newcombe 100% | arm failing 10% of runs: ticket bootstrap 0%, Newcombe 0%
+
+==============================================================================
+3. Variance components and the allocation of tickets and replicates
+==============================================================================
+assumptions: ratio 0.85, effect heterogeneity tau 0.3, run log-SD 0.5
+between-ticket variance of log baseline size: 0.898 (SD 0.95); within-ticket squared CV of a run: 0.303 (CV 0.55)
+in a paired log-ratio, the between-ticket size variance cancels; tau^2 and the run noise remain
+two runs of the same arm on the same ticket differ by a factor of 1.5 or more: 58%
+R =  1 replicates per arm: tickets for 80% power at ratio 0.85: 208
+R =  2 replicates per arm: tickets for 80% power at ratio 0.85: 117
+R =  4 replicates per arm: tickets for 80% power at ratio 0.85: 72
+R =  6 replicates per arm: tickets for 80% power at ratio 0.85: 57
+R = 10 replicates per arm: tickets for 80% power at ratio 0.85: 45
+floor as R grows: 27 tickets
+ticket cost  2 episodes: optimal replicates R* = 2.6, tickets at budget 3000: 417, SE of log ratio 0.028 (vs R = 2: T = 500, SE 0.028)
+ticket cost 10 episodes: optimal replicates R* = 5.8, tickets at budget 3000: 139, SE of log ratio 0.037 (vs R = 2: T = 214, SE 0.043)
+ticket cost 40 episodes: optimal replicates R* = 11.6, tickets at budget 3000: 47, SE of log ratio 0.055 (vs R = 2: T = 68, SE 0.076)
+check, ticket cost 10, R =  1, T = 250: simulated SE 0.052, formula 0.053
+check, ticket cost 10, R =  2, T = 214: simulated SE 0.042, formula 0.043
+check, ticket cost 10, R =  4, T = 167: simulated SE 0.038, formula 0.038
+check, ticket cost 10, R =  6, T = 136: simulated SE 0.037, formula 0.037
+check, ticket cost 10, R = 10, T = 100: simulated SE 0.039, formula 0.039
+check, ticket cost 10, R = 15, T =  75: simulated SE 0.041, formula 0.042
+check, ticket cost 10, R = 20, T =  60: simulated SE 0.044, formula 0.045
+check, ticket cost 10, R = 30, T =  43: simulated SE 0.051, formula 0.051
+
+==============================================================================
+4. Estimators of the size ratio: median of ratios, geometric mean, ratio of totals
+==============================================================================
+targets: median and geometric-mean ratio = 0.85; size-weighted ratio of totals = 0.889
+T =  10, R = 2: median: power 13%, coverage 93%, mean estimate 0.878 | geomean: power 13%, coverage 95%, mean estimate 0.859 | totals: power 17%, coverage 86%, mean estimate 0.897
+T =  25, R = 2: median: power 17%, coverage 94%, mean estimate 0.873 | geomean: power 24%, coverage 94%, mean estimate 0.861 | totals: power 15%, coverage 91%, mean estimate 0.908
+T =  50, R = 2: median: power 33%, coverage 94%, mean estimate 0.860 | geomean: power 44%, coverage 95%, mean estimate 0.852 | totals: power 22%, coverage 93%, mean estimate 0.897
+T =  75, R = 2: median: power 42%, coverage 94%, mean estimate 0.860 | geomean: power 62%, coverage 96%, mean estimate 0.854 | totals: power 24%, coverage 93%, mean estimate 0.898
+T = 100, R = 2: median: power 55%, coverage 96%, mean estimate 0.857 | geomean: power 73%, coverage 96%, mean estimate 0.852 | totals: power 31%, coverage 94%, mean estimate 0.889
+T = 150, R = 2: median: power 71%, coverage 95%, mean estimate 0.858 | geomean: power 90%, coverage 96%, mean estimate 0.851 | totals: power 38%, coverage 94%, mean estimate 0.894
+T = 200, R = 2: median: power 83%, coverage 94%, mean estimate 0.853 | geomean: power 97%, coverage 95%, mean estimate 0.850 | totals: power 50%, coverage 95%, mean estimate 0.887
+
+==============================================================================
+5. Ablation: one-factor-at-a-time against a 2^(8-4) resolution IV fractional factorial
+==============================================================================
+design 16 x 8: no aliased main effects: True; no main effect aliased with a two-factor interaction (no words of length 3): True
+budget: one-at-a-time 9 configs x 30 tickets x 5 runs = 1350 episodes; factorial 16 x 30 x 3 = 1440
+one-at-a-time:
+  component 1: design's own target -0.100 | mean estimate -0.098 | CI excludes 0: 32% | shown equivalent to 0 within +-0.05 (TOST): 0% | mean CI half-width 0.129
+  component 2: design's own target -0.080 | mean estimate -0.078 | CI excludes 0: 22% | shown equivalent to 0 within +-0.05 (TOST): 0% | mean CI half-width 0.129
+  component 3: design's own target -0.060 | mean estimate -0.058 | CI excludes 0: 14% | shown equivalent to 0 within +-0.05 (TOST): 0% | mean CI half-width 0.129
+  component 4: design's own target +0.000 | mean estimate +0.002 | CI excludes 0: 4% | shown equivalent to 0 within +-0.05 (TOST): 0% | mean CI half-width 0.128
+  component 5: design's own target +0.000 | mean estimate +0.001 | CI excludes 0: 5% | shown equivalent to 0 within +-0.05 (TOST): 0% | mean CI half-width 0.128
+  component 6: design's own target +0.000 | mean estimate +0.000 | CI excludes 0: 5% | shown equivalent to 0 within +-0.05 (TOST): 0% | mean CI half-width 0.128
+  component 7: design's own target +0.000 | mean estimate +0.003 | CI excludes 0: 5% | shown equivalent to 0 within +-0.05 (TOST): 0% | mean CI half-width 0.128
+  component 8: design's own target +0.000 | mean estimate +0.002 | CI excludes 0: 5% | shown equivalent to 0 within +-0.05 (TOST): 0% | mean CI half-width 0.128
+factorial:
+  component 1: design's own target -0.100 | mean estimate -0.101 | CI excludes 0: 91% | shown equivalent to 0 within +-0.05 (TOST): 0% | mean CI half-width 0.060
+  component 2: design's own target -0.080 | mean estimate -0.080 | CI excludes 0: 74% | shown equivalent to 0 within +-0.05 (TOST): 0% | mean CI half-width 0.060
+  component 3: design's own target -0.060 | mean estimate -0.062 | CI excludes 0: 52% | shown equivalent to 0 within +-0.05 (TOST): 1% | mean CI half-width 0.061
+  component 4: design's own target -0.060 | mean estimate -0.059 | CI excludes 0: 51% | shown equivalent to 0 within +-0.05 (TOST): 1% | mean CI half-width 0.059
+  component 5: design's own target -0.060 | mean estimate -0.060 | CI excludes 0: 52% | shown equivalent to 0 within +-0.05 (TOST): 1% | mean CI half-width 0.058
+  component 6: design's own target +0.000 | mean estimate +0.000 | CI excludes 0: 6% | shown equivalent to 0 within +-0.05 (TOST): 10% | mean CI half-width 0.058
+  component 7: design's own target +0.000 | mean estimate +0.001 | CI excludes 0: 5% | shown equivalent to 0 within +-0.05 (TOST): 11% | mean CI half-width 0.058
+  component 8: design's own target +0.000 | mean estimate -0.001 | CI excludes 0: 4% | shown equivalent to 0 within +-0.05 (TOST): 10% | mean CI half-width 0.058
+
+==============================================================================
+6. Best-of-k by size: the reduction and the selection hazard
+==============================================================================
+probe detection 0%, k =  1: size vs one unselected run 1.00 | unsafe answer delivered 10.0% | no answer 0.00%
+probe detection 0%, k =  3: size vs one unselected run 0.61 | unsafe answer delivered 15.7% | no answer 0.00%
+probe detection 0%, k =  5: size vs one unselected run 0.51 | unsafe answer delivered 18.6% | no answer 0.00%
+probe detection 0%, k = 10: size vs one unselected run 0.42 | unsafe answer delivered 22.8% | no answer 0.00%
+probe detection 80%, k =  1: size vs one unselected run 1.03 | unsafe answer delivered 2.0% | no answer 7.98%
+probe detection 80%, k =  3: size vs one unselected run 0.66 | unsafe answer delivered 3.4% | no answer 0.06%
+probe detection 80%, k =  5: size vs one unselected run 0.55 | unsafe answer delivered 4.2% | no answer 0.00%
+probe detection 80%, k = 10: size vs one unselected run 0.44 | unsafe answer delivered 5.3% | no answer 0.00%
+probe detection 95%, k =  1: size vs one unselected run 1.03 | unsafe answer delivered 0.5% | no answer 9.54%
+probe detection 95%, k =  3: size vs one unselected run 0.67 | unsafe answer delivered 0.8% | no answer 0.09%
+probe detection 95%, k =  5: size vs one unselected run 0.56 | unsafe answer delivered 1.1% | no answer 0.00%
+probe detection 95%, k = 10: size vs one unselected run 0.45 | unsafe answer delivered 1.4% | no answer 0.00%
+one unselected run: unsafe 10.1%
+
+figures written to figures/
