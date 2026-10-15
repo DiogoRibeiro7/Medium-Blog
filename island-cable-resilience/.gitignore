@@ -1,0 +1,7 @@
+# Input data are fetched by fetch_data.sh and are not redistributed (CC BY-NC-SA 3.0)
+data/
+# Cached network and the counterfactual data copy built by exp4
+results/network.pkl
+results/cf_data/
+*.egg-info/
+.pytest_cache/
