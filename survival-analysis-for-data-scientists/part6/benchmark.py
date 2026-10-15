@@ -363,6 +363,9 @@ def main():
     r, c = by_rep.loc["rule of thumb"]["still jobless, top 20%"], by_rep.loc["26-week classifier"]["still jobless, top 20%"]
     print(f"Rule of thumb against 26-week classifier, top 20%: difference {(r - c).mean():+.4f} "
           f"(rule better in {int(np.sum(r > c))} of {N_REPEATS} repeats)")
+    wide = results.pivot_table(index=["repeat", "fold"], columns="model", values="still jobless, top 20%")
+    print(f"Test folds (of {len(wide)}) in which the top-20% share is higher than Cox's: " + ", ".join(
+        f"{m} {int(np.sum(wide[m] > wide['Cox']))}" for m in list(MODELS)[1:] + list(EXTRA)))
     fold = results[results.model == "Cox"]["still jobless, top 20%"]
     print(f"Spread of the top-20% share across the 50 test folds, Cox: standard deviation {fold.std():.4f}")
     print("Share of all workers still jobless at 26 weeks who are in the selected 20% (capture): " + ", ".join(

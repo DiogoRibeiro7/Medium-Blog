@@ -83,7 +83,7 @@ To reproduce Part 6 (downloads `UnempDur.csv` to `part6/data/` on first use and 
 
 ```bash
 cd part6
-python benchmark.py > output.txt   # about 2.5 minutes
+python benchmark.py > output.txt   # a little over 2 minutes
 python figures.py                  # writes four PNG files to figures/, about 2 minutes
 ```
 

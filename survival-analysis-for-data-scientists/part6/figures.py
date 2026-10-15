@@ -87,7 +87,7 @@ def figure_data(data):
     axes[1].yaxis.set_major_formatter(PERCENT)
     axes[1].set_xlabel("Weeks since losing the job (end of each two-week interval)")
     axes[1].set_title("Share re-employed in each two-week interval", loc="left", fontsize=11.5, color=INK)
-    axes[1].text(8, 0.27, "no UI claim: high re-employment\nrates in the first six weeks", color=ORANGE,
+    axes[1].text(8, 0.27, "no UI claim: re-employment rates\nhighest in the first six weeks", color=ORANGE,
                  fontsize=10, va="top")
     axes[1].text(20, 0.16, "after about 18 weeks the\ntwo groups look alike", color=INK_2, fontsize=10)
     credit(fig)
@@ -111,7 +111,7 @@ def figure_scores(results):
                "discrete-time boosting": ORANGE, "26-week classifier": AQUA, "rule of thumb": INK}
     fig, axes = plt.subplots(1, 4, figsize=(14, 6.4), sharey=True)
     fig.subplots_adjust(left=0.15, right=0.98, top=0.78, bottom=0.12, wspace=0.14)
-    header(fig, "The usual scores barely separate the models; the decision does",
+    header(fig, "Small differences on every score, and the order changes with the score",
            "Ten repeats of five-fold cross-validation: each dot is one repeat's average over its five test folds.")
     ypos = {m: len(order) - 1 - i for i, m in enumerate(order)}
     for ax, (metric, title) in zip(axes, panels):
@@ -200,7 +200,7 @@ def figure_targeting(data, pooled):
     ax.text(0.205, 0.35, "capacity: one\nworker in five", color=INK_2, fontsize=10, va="bottom")
     key = (("rule of thumb:\nUI claimants, oldest first", INK), ("26-week classifier", AQUA),
            ("discrete-time boosting", ORANGE), ("Cox", VIOLET),
-           ("random survival forest and\ndiscrete-time logistic (grey)", INK_2))
+           ("random survival forest (dotted)\nand discrete-time logistic (dashed)", INK_2))
     y = 0.60
     for text, colour in key:
         ax.text(0.61, y, text, color=colour, fontsize=10, va="top")

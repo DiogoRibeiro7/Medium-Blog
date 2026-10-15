@@ -71,6 +71,7 @@ UI share, top 20%
     rule of thumb            mean 1.0000, range over repeats 1.0000 to 1.0000; difference from Cox +0.0000 (better in 0 of 10 repeats)
 Still jobless after 26 weeks among all workers in the test folds: 0.3379
 Rule of thumb against 26-week classifier, top 20%: difference +0.0107 (rule better in 8 of 10 repeats)
+Test folds (of 50) in which the top-20% share is higher than Cox's: random survival forest 31, discrete-time logistic 17, discrete-time boosting 34, 26-week classifier 38, rule of thumb 39
 Spread of the top-20% share across the 50 test folds, Cox: standard deviation 0.0415
 Share of all workers still jobless at 26 weeks who are in the selected 20% (capture): Cox 29.8%, random survival forest 30.3%, discrete-time logistic 29.8%, discrete-time boosting 30.6%, 26-week classifier 31.3%, rule of thumb 31.9%
 Kaplan-Meier with no covariates: Brier at 26 weeks 0.2294, integrated Brier 0.2026
