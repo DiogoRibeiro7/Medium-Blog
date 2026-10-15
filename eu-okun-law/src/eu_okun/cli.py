@@ -10,8 +10,10 @@ from pathlib import Path
 from eu_okun.audit import audit_snapshot
 from eu_okun.baseline import write_baselines
 from eu_okun.comparison import write_comparisons
+from eu_okun.dependence import run_country_pairs
 from eu_okun.eurostat import EurostatDataError, save_snapshot
 from eu_okun.regimes import write_regimes
+from eu_okun.stability import write_stability
 
 
 def main(argv: Sequence[str] | None = None) -> int:
@@ -33,6 +35,9 @@ def main(argv: Sequence[str] | None = None) -> int:
     regime = commands.add_parser("regimes", help="Estimate economic-regime sensitivity")
     regime.add_argument("--data-dir", type=Path, default=Path("data"))
     regime.add_argument("--output-dir", type=Path, default=Path("results/regimes"))
+    infer = commands.add_parser("infer", help="Stability and paired country inference")
+    infer.add_argument("--data-dir", type=Path, default=Path("data"))
+    infer.add_argument("--output-dir", type=Path, default=Path("results/inference"))
     args = parser.parse_args(argv)
     if args.command == "fetch":
         try:
@@ -71,6 +76,14 @@ def main(argv: Sequence[str] | None = None) -> int:
         except (EurostatDataError, ValueError, OSError) as exc:
             parser.exit(2, f"Regime sensitivity failed: {exc}\n")
         print(f"Saved {count} regime specifications to {args.output_dir}")
+        return 0
+    if args.command == "infer":
+        try:
+            tests = write_stability(args.data_dir, args.output_dir)
+            pairs = run_country_pairs(args.data_dir, args.output_dir)
+        except (EurostatDataError, ValueError, OSError) as exc:
+            parser.exit(2, f"Inference analysis failed: {exc}\n")
+        print(f"Saved {tests} stability tests and {pairs} paired comparisons")
         return 0
     return 1
 

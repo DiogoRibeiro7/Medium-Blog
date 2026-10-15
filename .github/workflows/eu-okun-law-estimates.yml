@@ -34,6 +34,9 @@ jobs:
       - name: Run economic-regime sensitivity
         working-directory: eu-okun-law
         run: eu-okun regimes --data-dir data --output-dir results/regimes
+      - name: Stability and dependence inference
+        working-directory: eu-okun-law
+        run: eu-okun infer --data-dir data --output-dir results/inference
       - name: Verify expected country models
         working-directory: eu-okun-law
         run: |
