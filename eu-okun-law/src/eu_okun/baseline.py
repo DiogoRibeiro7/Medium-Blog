@@ -132,7 +132,9 @@ def fit_hac(
     covariance = bread @ meat @ bread
     se = np.sqrt(np.maximum(np.diag(covariance), 0))
     total = float(np.sum((y - np.mean(y)) ** 2))
-    r_squared = float("nan") if total <= 0 else 1.0 - float(np.sum(residuals**2)) / total
+    if total <= 0:
+        raise ValueError("Response has zero variance; R-squared is undefined.")
+    r_squared = 1.0 - float(np.sum(residuals**2)) / total
     return beta, se, r_squared, condition_number
 
 
