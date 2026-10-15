@@ -12,7 +12,7 @@ A great deal of business data is about time until something happens: a customer 
 | 2 | Hazards, the Nelson-Aalen estimator and the log-rank test | A retention A/B test read before most customers have left | [`part2/`](part2) | [Medium](https://medium.com/@diogo-ribeiro-1975/survival-analysis-for-data-scientists-7cce086e5a50) |
 | 3 | The Cox model, checking proportional hazards and pricing customer segments | The most to pay for a customer from each lead segment | [`part3/`](part3) | [Medium](https://medium.com/@diogo-ribeiro-1975/survival-analysis-for-data-scientists-ad614e28eda8) |
 | 4 | Parametric models, accelerated failure time and the value of customers beyond the data | A five-year acquisition budget from one year of data | [`part4/`](part4) | [Medium](https://medium.com/@diogo-ribeiro-1975/survival-analysis-for-data-scientists-8cb8b9b61bfa) |
-| 5 | Competing risks and recurrent events | Predictive maintenance with failure and planned replacement | | Planned |
+| 5 | Competing risks, recurrent events and the price of a service contract | A five-year service contract for a pump fleet with breakdowns, planned replacements and repairs | [`part5/`](part5) | Forthcoming |
 | 6 | Machine learning for survival, and how to evaluate it | A benchmark on public data, judged by the decision it supports | | Planned |
 
 ## Layout
@@ -69,6 +69,14 @@ To reproduce Part 4:
 cd part4
 python extrapolation.py > output.txt   # about 5 minutes
 python figures.py                      # writes four PNG files to figures/, about 5 minutes
+```
+
+To reproduce Part 5:
+
+```bash
+cd part5
+python competing_risks.py > output.txt   # about 15 seconds
+python figures.py                        # writes four PNG files to figures/, about 15 seconds
 ```
 
 Random seeds are fixed. The workflow `.github/workflows/survival-analysis-for-data-scientists.yml` reruns each part's main script on every change to this folder and fails if the output differs from the committed `output.txt`.
@@ -159,6 +167,26 @@ The main results:
 | Time ratio for referral, gamma mixture model, mean over 100 tables (true 1.429) | 1.435 |
 
 All data in Part 4 are simulated.
+
+## Part 5 in brief
+
+`part5/competing_risks.py` simulates a fleet of 3,000 industrial pumps installed over ten years. A pump leaves service by breaking down (a hazard that rises with age, higher for high-duty pumps) or by planned replacement (four times as frequent at sites in a modernisation programme); while in service it needs repeated repairs. The script prices a five-year service contract that pays for repairs and breakdowns until the pump leaves service. It:
+
+1. Estimates the cumulative incidence of breakdown with the Aalen-Johansen estimator and compares it with one minus Kaplan-Meier.
+2. Fits cause-specific Cox models and a Fine-Gray model for the subdistribution hazard, written from scratch.
+3. Estimates the mean cumulative function of repairs and the expected number of repairs per contract, weighting by the probability of still being in service.
+4. Prices the contract three ways (dashboard counts, one cause at a time, competing risks) by segment across 500 simulated fleets.
+
+The main results:
+
+| Quantity | Value |
+|---|---|
+| Breakdown within five years, one fleet: cumulative incidence / one minus Kaplan-Meier | 25.5% / 35.1% |
+| Programme sites, mean over 500 fleets: cause-specific / subdistribution hazard ratio for breakdown | 0.990 / 0.457 |
+| Repairs within five years, standard pumps outside the programme: per pump in service / per contract | 4.99 / 3.78 |
+| Contract price error by segment: dashboard / one cause at a time / competing risks | -24.9% to -28.9% / +27.7% to +114.6% / within 0.6% |
+
+All data in Part 5 are simulated.
 
 ## Author
 
