@@ -9,8 +9,8 @@ from pathlib import Path
 
 from eu_okun.audit import audit_snapshot
 from eu_okun.baseline import write_baselines
-from eu_okun.dependence import run_country_pairs
 from eu_okun.comparison import write_comparisons
+from eu_okun.dependence import run_country_pairs
 from eu_okun.eurostat import EurostatDataError, save_snapshot
 from eu_okun.regimes import write_regimes
 from eu_okun.stability import write_stability
