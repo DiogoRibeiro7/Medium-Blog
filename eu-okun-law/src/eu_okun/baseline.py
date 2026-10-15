@@ -141,6 +141,7 @@ def fit_hac_covariance(
         if period_index is None:
             cross = scores[lag:].T @ scores[:-lag]
         else:
+            assert periods is not None
             current = [
                 i for i, period in enumerate(periods)
                 if _quarter_before(period, lag) in period_index
