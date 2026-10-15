@@ -155,3 +155,20 @@ time-varying coefficients are separate milestones.
   countries. "Contradicted" means, in the primary fit: Luxembourg
   P(theta[LU] > mu_theta) <= 0.05; Netherlands P(lag share > 0.5) <= 0.05 (with
   theta[NL] credibly negative); Spain P(theta[ES] < mu_theta) <= 0.05.
+- First full run (1000 warm-up): seven specifications met every criterion.
+  `strong_pooling` failed with max R-hat 1.012 (phi[9], Spain's AR(1) coefficient) and
+  `no_pooling` with max R-hat 1.011 (phi[26], Slovakia's); ESS, divergences and E-BFMI
+  passed. Both were re-run with 3000 warm-up iterations, as section 6 allows, with the
+  model, priors, seed and retained draws unchanged. The first-attempt outputs are kept
+  as CI artifacts of the Bayesian workflow and in `results/bayes-first-attempt/` locally.
+- Re-run outcome: `strong_pooling` passed (max R-hat 1.007). `no_pooling` failed again
+  (max R-hat 1.0106, phi[26]); no further attempt was made, so it is reported as failed
+  and excluded from every robustness and claim judgement. The workflow now applies the
+  same single retry (`--retry-warmup 3000`).
+- Not pre-registered, added after fitting and labelled as such in the report: checks of
+  the common factor's independence assumptions (its lag-1 autocorrelation and its
+  correlation with average GDP growth and unemployment change), and a decomposition of
+  the gap to OLS into pooling (`gaussian_iid` vs OLS) and error model (`primary` vs
+  `gaussian_iid`). They were prompted by the failed lag-1 autocorrelation check and by
+  the size of that gap. They change the interpretation of `theta` in factor
+  specifications (association beyond the common European cycle), not any fit.
