@@ -12,7 +12,7 @@ import hashlib
 import itertools
 import json
 import math
-from dataclasses import asdict, dataclass
+from dataclasses import asdict, dataclass, replace
 from pathlib import Path
 
 import numpy as np
@@ -109,8 +109,6 @@ def paired_block_comparisons(
             a, b, difference, float(lo), float(hi), valid, replicates,
             p, 1.0, block_length,
         ))
-    from dataclasses import replace
-
     corrected = holm_adjust(raw_p)
     return [replace(row, holm_sign_p=p) for row, p in zip(output, corrected, strict=True)]
 

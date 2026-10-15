@@ -10,6 +10,7 @@ from __future__ import annotations
 import math
 from collections.abc import Sequence
 from dataclasses import dataclass, replace
+from pathlib import Path
 
 import numpy as np
 
@@ -179,3 +180,34 @@ def fit_stability(
         "null_sum": "Sum of post-minus-pre GDP coefficients equals zero",
         "null_joint": "All post-period interactions equal zero",
     }
+
+def write_stability(directory: Path, output_dir: Path) -> int:
+    """Audit original Eurostat data and write formal HAC stability statistics."""
+    import hashlib
+    import json
+    from dataclasses import asdict
+
+    from eu_okun.audit import audit_snapshot
+    from eu_okun.baseline import _read_panel
+
+    audit = audit_snapshot(directory)
+    final = audit["analysis_period"]["end"]
+    if not isinstance(final, str):
+        raise EurostatDataError("Invalid final quarter in audit.")
+    rows, metadata = fit_stability(
+        _read_panel(directory / "processed" / "eu27_quarterly.csv"), final
+    )
+    output_dir.mkdir(parents=True, exist_ok=True)
+    payload = {
+        "method": "Fully interacted pre/post OLS with calendar-aware HAC Wald tests",
+        "caveat": "Descriptive coefficient stability, not causal identification",
+        "snapshot_manifest_sha256": hashlib.sha256(
+            (directory / "snapshot_manifest.json").read_bytes()
+        ).hexdigest(),
+        "design": metadata,
+        "results": [asdict(row) for row in rows],
+    }
+    (output_dir / "stability.json").write_text(
+        json.dumps(payload, indent=2, allow_nan=False) + "\n", encoding="utf-8"
+    )
+    return len(rows)

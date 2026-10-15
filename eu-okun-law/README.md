@@ -128,3 +128,7 @@ The output contains `comparison.json`, `comparison.csv`, and `COMPARISON.md`. Al
 ## Macroeconomic regime sensitivity
 
 Run `eu-okun regimes --data-dir data --output-dir results/regimes` to obtain `regimes.json`, `regimes.csv` and `REGIMES.md`. Windows: full sample (2009 Q1–2026 Q2), pre-pandemic (2009–2019), 2020–2021 excluded, and post-2021 (2022 Q1 onward). The post-2021 window uses GDP lag orders 0/1 only; longer lags require more observations. All windows enforce a common EU-27 complete-case sample within that window, exclude any cross-boundary input history, and report non-estimable regimes explicitly. These are descriptive stability checks, not formal structural-break tests or causal shock estimates.
+
+## Formal pre/post stability and dependent country comparisons
+
+Run `eu-okun infer --data-dir data --output-dir results/inference` on the audited source. Fully interacted pre-2020 versus post-2021 GDP-lag (K=1) regressions produce calendar-aware HAC Wald statistics and Holm-adjusted tests of GDP-sum change. Pandemic outcomes and their input history are excluded. PT/ES/NL/LU differences use synchronized circular time-block resampling (lengths 4/8/12 quarters; seed 20261015; 999 draws). Bootstrap percentile intervals and sign frequencies are descriptive, not null-centered tests or causal rankings.
