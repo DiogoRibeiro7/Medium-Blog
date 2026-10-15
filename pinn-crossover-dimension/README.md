@@ -118,7 +118,7 @@ Matched on the wavefunction (relative L2 error; nodal for the grids):
 | `results/pinn_variants/*.json` | the PINN with fresh L-BFGS points every 500 iterations (8D coupled) |
 | `results/pinn/*.json` | one file per PINN run, with the training history |
 | `results/summary.json`, `summary.md` | the matched-accuracy comparisons |
-| `figures/` | the figures, drawn only from `results/` |
+| `figures/` | the figures and Table 1 as an image (Medium does not render Markdown tables), drawn only from `results/` |
 
 ## Limits
 
