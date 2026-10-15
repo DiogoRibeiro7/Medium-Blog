@@ -172,3 +172,10 @@ time-varying coefficients are separate milestones.
   `gaussian_iid`). They were prompted by the failed lag-1 autocorrelation check and by
   the size of that gap. They change the interpretation of `theta` in factor
   specifications (association beyond the common European cycle), not any fit.
+- Replication on Linux (Bayesian workflow run 38813919865, same lock file, snapshot,
+  seed, settings and single retry): `primary` and `strong_pooling` failed at first;
+  after the retry `primary` passed and `strong_pooling` failed again (R-hat 1.017),
+  while `no_pooling` passed. Posterior medians agree within 0.004 wherever both runs
+  accept a fit, and the claim verdicts are identical. The acceptance of
+  `strong_pooling` and `no_pooling` is therefore not stable across runs; the report
+  states the robustness judgements under both acceptance sets instead of choosing one.

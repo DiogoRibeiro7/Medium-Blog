@@ -181,7 +181,7 @@ Student-t errors, and Eurostat-flagged observations masked out of the likelihood
 # Expensive (about an hour on a laptop CPU for all nine specifications)
 poetry run eu-okun bayes-fit --data-dir snapshots/eurostat-2026-10-15 --output-dir results/bayes
 # Cheap: tables, figures and report from the saved draws
-poetry run eu-okun bayes-report --fits-dir results/bayes --output-dir docs/bayes   --report docs/HIERARCHICAL_BAYES.md --data-dir snapshots/eurostat-2026-10-15
+poetry run eu-okun bayes-report --fits-dir results/bayes --output-dir docs/bayes   --report docs/HIERARCHICAL_BAYES.md --data-dir snapshots/eurostat-2026-10-15   --replication-dir docs/bayes/replication-linux
 ```
 
 Sampling never runs in the ordinary pull-request checks. The
@@ -193,8 +193,11 @@ They are descriptive conditional associations; partial pooling identifies no sho
 In brief, for the 2026-10-15 snapshot and 2009-2019:
 
 - The association between GDP growth and unemployment changes is credibly negative
-  in most EU-27 countries in every accepted specification; its size depends on the
-  error model, more than on pooling.
+  for 15 countries in every fit accepted by either of two independent runs (together all
+  nine specifications, including the unpooled one), and for 7 more
+  (BE, DE, HU, IE, NL, PL, RO) only when estimates borrow strength across countries.
+  Its size depends on the error model, more than on pooling.
+- A second run on Linux reproduces the posterior medians within 0.004.
 - The pre-registered model fails one predictive check (it understates the persistence
   of unemployment changes), and its common factor turns out to be correlated with
   average GDP growth, so in factor specifications the country coefficients describe

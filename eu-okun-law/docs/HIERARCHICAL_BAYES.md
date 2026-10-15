@@ -13,6 +13,7 @@
 | Earlier claims | Luxembourg weak: **not resolved**; Netherlands delayed: **not resolved**; Spain large: **supported**. |
 | Magnitude | Specification-dependent: across accepted fits the median of mu_theta ranges from -0.300 to -0.181. Against OLS on the same quarters, partial pooling with OLS-like errors (`gaussian_iid`) moves country sums by a median 0.054; the primary error model (Student-t, AR(1), common factor) moves them a further median 0.096, towards zero in 27 of 27 countries. |
 | Model checks | The lag-1 autocorrelation check fails (p <= 0.05 or >= 0.95) in 9 of 9 specifications: observed 0.27, replicated means 0.02 to 0.20, so the models understate the persistence of unemployment changes. The fitted common factor is autocorrelated (median lag-1 0.75) and correlated with average GDP growth (median -0.60), although the model treats it as independent of both. In factor specifications theta therefore describes the association with each country's GDP beyond the common European cycle, not the classical coefficient sum. |
+| Replication | An independent run on a second platform (section 9) reproduces posterior medians within 0.004 where both runs accept a fit. Acceptance differs for `strong_pooling` and `no_pooling`, which sit at the R-hat threshold. Countries credibly negative in every accepted fit: 22 here, 15 under that run's acceptance set; the difference is BE, DE, HU, IE, NL, PL and RO. Claim verdicts are identical. |
 
 ## 1. Data, software and sampler
 
@@ -207,7 +208,25 @@ Not pre-registered; computed because the predictive checks and the gap to OLS ca
 
 The fitted common factor is autocorrelated (median lag-1 0.75) and correlated with average GDP growth (median -0.60), although the model treats it as independent of both. In factor specifications theta therefore describes the association with each country's GDP beyond the common European cycle, not the classical coefficient sum. Specifications without the factor estimate the classical quantity but fail the cross-country correlation check, so their intervals ignore residual dependence. A dynamic factor, or a mean equation with lagged unemployment changes, would address both problems; that is a model change for a new, separately registered protocol.
 
-## 9. Limitations
+## 9. Replication on a second platform
+
+Replication of the Bayesian fits on Linux: the same snapshot, lock file, seed and settings, with the same single retry. Tables in `replication-linux/`.
+
+| Specification | This run | Replication | Max abs. difference of country medians |
+| --- | --- | --- | ---: |
+| `primary` | accepted | accepted | 0.003 |
+| `wide_priors` | accepted | accepted | 0.003 |
+| `strong_pooling` | accepted | failed | n/a |
+| `no_pooling` | failed | accepted | n/a |
+| `no_common_factor` | accepted | accepted | 0.003 |
+| `gaussian_iid` | accepted | accepted | 0.004 |
+| `participation` | accepted | accepted | 0.004 |
+| `lags_4` | accepted | accepted | 0.004 |
+| `pandemic_excluded` | accepted | accepted | 0.003 |
+
+An independent run on a second platform (section 9) reproduces posterior medians within 0.004 where both runs accept a fit. Acceptance differs for `strong_pooling` and `no_pooling`, which sit at the R-hat threshold. Countries credibly negative in every accepted fit: 22 here, 15 under that run's acceptance set; the difference is BE, DE, HU, IE, NL, PL and RO. Claim verdicts are identical. Countries whose credible negativity depends on including the unpooled fit are credibly negative only when estimates borrow strength across countries; their sign is supported by partial pooling, not by their own data alone.
+
+## 10. Limitations
 
 - The pre-registered model understates the persistence of unemployment changes and its common factor is not independent of GDP growth (section 8). Credible intervals are conditional on that misspecified structure.
 - The coefficients are conditional associations. Contemporaneous GDP growth is not an identified shock; partial pooling does not change that.
@@ -217,10 +236,10 @@ The fitted common factor is autocorrelated (median lag-1 0.75) and correlated wi
 - Rank and pairwise probabilities inherit every modelling assumption; they are not model-free comparisons.
 - Predictive comparison with the classical baselines is not yet done.
 
-## 10. Reproduction
+## 11. Reproduction
 
 ```bash
-eu-okun bayes-report --fits-dir results/bayes --output-dir docs/bayes --report docs/HIERARCHICAL_BAYES.md --data-dir snapshots/eurostat-2026-10-15
+eu-okun bayes-report --fits-dir results/bayes --output-dir docs/bayes --report docs/HIERARCHICAL_BAYES.md --data-dir snapshots/eurostat-2026-10-15 --replication-dir docs/bayes/replication-linux
 ```
 
 Posterior draws are produced by the separate Bayesian workflow and kept as its artifact; this report and its tables are regenerated from them.
