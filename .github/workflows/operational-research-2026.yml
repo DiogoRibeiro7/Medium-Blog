@@ -1,0 +1,47 @@
+name: Test operational-research-2026
+
+on:
+  pull_request:
+    paths:
+      - 'operational-research-2026/**'
+      - '.github/workflows/operational-research-2026.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'operational-research-2026/**'
+      - '.github/workflows/operational-research-2026.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: operational-research-2026
+    env:
+      MPLBACKEND: Agg
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: operational-research-2026/pyproject.toml
+
+      - name: Install project
+        run: python -m pip install -e ".[dev]"
+
+      - name: Run model and consistency tests
+        run: python -m pytest -q
+
+      - name: Smoke-run the experiment and the figure (quick mode)
+        working-directory: operational-research-2026/experiments
+        run: |
+          python run_experiment.py --quick
+          python make_figure.py --quick

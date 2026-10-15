@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "depot-saa"
+version = "0.1.0"
+description = "Two-stage stochastic depot selection with sample average approximation: mean-forecast, quantile and scenario plans scored on fresh weeks, with a statistical optimality gap."
+readme = "README.md"
+license = { text = "Apache-2.0" }
+authors = [{ name = "Diogo Ribeiro", email = "dfr@esmad.ipp.pt" }]
+requires-python = ">=3.10"
+dependencies = [
+    "numpy>=1.26",
+    "pandas>=2.0",
+    "scipy>=1.11",
+    "xarray>=2024.1",
+    "linopy>=0.4",
+    "highspy>=1.10",
+    "matplotlib>=3.8",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

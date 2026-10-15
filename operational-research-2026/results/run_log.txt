@@ -1,0 +1,48 @@
+versions: {'highspy': '1.15.1', 'linopy': '0.10.0', 'numpy': '2.5.3', 'pandas': '3.0.5', 'xarray': '2026.9.0'}
+zones=30 candidate depots=10 seed=20261015
+mean weekly demand, all zones = 1093.3 pallets
+capacity of all candidates    = 3975 pallets/week
+fixed cost range              = EUR 3570..5860 per week
+transport cost range          = EUR 10.0..101.8 per pallet
+depots: D1(cap 400, EUR 4690), D2(cap 450, EUR 5860), D3(cap 300, EUR 3570), D4(cap 425, EUR 5750), D5(cap 425, EUR 5240), D6(cap 425, EUR 5590), D7(cap 450, EUR 5670), D8(cap 325, EUR 4440), D9(cap 450, EUR 5060), D10(cap 325, EUR 4520)
+
+test weeks (50,000): total demand mean 1093, sd 236, p10 813, p90 1404, p99 1758
+history (104): total demand mean 1103, sd 204, min 735, max 1954
+
+EV  (sample mean of history): open {D2, D3, D9}, planned 48,634
+EV  (true mean, an oracle)  : open {D2, D3, D9}, planned 48,479
+P50 (zone-wise quantiles)   : open {D2, D3, D9}, planned 46,333; sum of zone P50s 1041 vs P50 of the total 1084
+P75 (zone-wise quantiles)   : open {D2, D3, D6, D9}, planned 54,121; sum of zone P75s 1292 vs P75 of the total 1227
+P90 (zone-wise quantiles)   : open {D2, D3, D6, D9}, planned 62,016; sum of zone P90s 1568 vs P90 of the total 1320
+P95 (zone-wise quantiles)   : open {D2, D3, D6, D9, D10}, planned 69,761; sum of zone P95s 1764 vs P95 of the total 1453
+SAA (104 weeks)             : open {D2, D3, D6, D9}, in-sample 49,555; 34,330 variables, 4,160 constraints, 6.8s
+SAA with x <= d*y link rows : same design True, objective 49,555, 35,360 constraints, 29.6s
+
+scored on 50,000 new weeks (EUR/week; +/- is a 95% half-width):
+  Mean forecast      {D2, D3, D9}      cap  1200 | planned  48,634 | realised  53,252 +/- 155 | gap  -8.7% | fixed 14,490 transport 31,341 outsourcing  7,422 | own fill 95.1% | weeks outsourcing 29.2% | p95 week  90,213
+  Zone P50 forecast  {D2, D3, D9}      cap  1200 | planned  46,333 | realised  53,252 +/- 155 | gap -13.0% | fixed 14,490 transport 31,341 outsourcing  7,422 | own fill 95.1% | weeks outsourcing 29.2% | p95 week  90,213
+  Zone P75 forecast  {D2, D3, D6, D9}  cap  1625 | planned  54,121 | realised  49,344 +/-  74 | gap  +9.7% | fixed 20,080 transport 28,777 outsourcing    486 | own fill 99.7% | weeks outsourcing  2.5% | p95 week  61,512
+  Zone P90 forecast  {D2, D3, D6, D9}  cap  1625 | planned  62,016 | realised  49,344 +/-  74 | gap +25.7% | fixed 20,080 transport 28,777 outsourcing    486 | own fill 99.7% | weeks outsourcing  2.5% | p95 week  61,512
+  Zone P95 forecast  {D2, D3, D6, D9, D10} cap  1950 | planned  69,761 | realised  52,477 +/-  57 | gap +32.9% | fixed 24,600 transport 27,834 outsourcing     43 | own fill 100.0% | weeks outsourcing  0.2% | p95 week  63,866
+  SAA, 104 weeks     {D2, D3, D6, D9}  cap  1625 | planned  49,555 | realised  49,344 +/-  74 | gap  +0.4% | fixed 20,080 transport 28,777 outsourcing    486 | own fill 99.7% | weeks outsourcing  2.5% | p95 week  61,512
+
+value of the stochastic solution (EV design - SAA design, paired): 3,909 +/- 87 EUR/week = 7.9%; x52 = 203,251 EUR/year
+  SAA design cheaper in 46.2% of weeks, dearer in 53.8%
+  EV design: mean cost of weeks it outsources 74,141, of weeks it does not 44,618
+
+re-solving SAA on 10 independent histories of each length:
+   10 weeks: in-sample  49,131 (sd 3,356) | realised  50,273 (worst  53,252) | 3 distinct designs, {D2, D3, D6, D9} in 7/10 | median solve  0.64s
+        {D2, D3, D6, D9}         x7: realised  49,344
+        {D2, D3, D9}             x2: realised  53,252
+        {D2, D5, D6, D9}         x1: realised  50,820
+   26 weeks: in-sample  49,363 (sd 1,846) | realised  49,344 (worst  49,344) | 1 distinct designs, {D2, D3, D6, D9} in 10/10 | median solve  1.44s
+   52 weeks: in-sample  49,911 (sd 1,141) | realised  49,344 (worst  49,344) | 1 distinct designs, {D2, D3, D6, D9} in 10/10 | median solve  3.17s
+  104 weeks: in-sample  49,479 (sd   743) | realised  49,344 (worst  49,344) | 1 distinct designs, {D2, D3, D6, D9} in 10/10 | median solve  6.69s
+  208 weeks: in-sample  49,378 (sd   670) | realised  49,344 (worst  49,344) | 1 distinct designs, {D2, D3, D6, D9} in 10/10 | median solve 15.19s
+
+statistical lower bound (208-week SAA, 10 replications): 49,378 - 479 = 48,898
+upper bound from the best design scored, {D2, D3, D6, D9}: 49,344 + 74 = 49,418
+conservative optimality gap: 519 EUR/week = 1.05%
+designs scored in total: 4
+
+total runtime 351s
