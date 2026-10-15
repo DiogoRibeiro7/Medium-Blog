@@ -16,7 +16,7 @@
 - [ ] Validate labour-force survey comparability across 2021.
 - [x] Implement distributed-lag OLS with HAC uncertainty; lags 0, 1, 2, 4 (real-data execution pending).
 - [x] Implement paired specifications with/without participation (real-data comparison pending).
-- [ ] Time-ordered out-of-sample forecasting against persistence.
+- [x] Implement expanding-window pseudo-out-of-sample forecasting against persistence (live results pending).
 - [x] Implement common-sample cumulative coefficient HAC sensitivity and report (live verification pending).
 - [x] Implement dependence-aware paired country block bootstrap (live check pending).
 - [x] Implement formal pre/post HAC interaction stability tests (live check pending).
