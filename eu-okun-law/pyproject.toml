@@ -13,7 +13,8 @@ keywords = ["econometrics", "okun-law", "eurostat", "panel-data"]
 dependencies = ["numpy>=2.0,<3"]
 
 [project.optional-dependencies]
-dev = ["pytest>=8,<10", "ruff>=0.13,<1", "mypy>=1.16,<2"]
+report = ["matplotlib>=3.9,<4"]
+dev = ["pytest>=8,<10", "ruff>=0.13,<1", "mypy>=1.16,<2", "matplotlib>=3.9,<4"]
 
 [project.scripts]
 eu-okun = "eu_okun.cli:main"

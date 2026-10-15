@@ -1,0 +1,9 @@
+# Frozen Eurostat snapshots must stay byte-identical to the SHA-256 hashes recorded in
+# their manifests and READMEs: no Git LFS (overrides the repository-wide *.csv rule)
+# and no line-ending conversion.
+snapshots/** !filter !diff !merge -text
+
+# Generated review outputs: plain Git, LF line endings exactly as written.
+docs/review/*.csv !filter !diff !merge text eol=lf
+docs/review/*.json text eol=lf
+docs/*.md text eol=lf

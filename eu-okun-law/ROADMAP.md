@@ -1,27 +1,47 @@
 # Research roadmap
 
-## Phase 0 — Reproducible foundation (this PR)
+## Phase 0 — Reproducible foundation
 
 - [x] Define research questions, units and separate estimands.
 - [x] Select official quarterly Eurostat series and fixed EU-27 cohort.
 - [x] Add project-local environment and offline quality tests.
 - [x] Download/parse JSON-stat, preserve missing cells and flags.
 - [x] Write provenance manifest and country-quarter CSV.
-- [ ] Run a real live Eurostat download; review coverage and flags.
+- [x] Run a real live Eurostat download; review coverage and flags (CI workflows;
+      reviewed in [docs/CLASSICAL_RESULTS_REVIEW.md](docs/CLASSICAL_RESULTS_REVIEW.md), section 2).
 
 ## Phase 1 — Baselines and data audit
 
-- [x] Country-level coverage and quality-flag JSON audit (offline; live run pending).
-- [ ] Missingness visualization and review of survey breaks.
-- [ ] Validate labour-force survey comparability across 2021.
-- [x] Implement distributed-lag OLS with HAC uncertainty; lags 0, 1, 2, 4 (real-data execution pending).
-- [x] Implement paired specifications with/without participation (real-data comparison pending).
-- [x] Implement expanding-window pseudo-out-of-sample forecasting against persistence (live results pending).
-- [x] Implement common-sample cumulative coefficient HAC sensitivity and report (live verification pending).
-- [x] Implement dependence-aware paired country block bootstrap (live check pending).
-- [x] Implement formal pre/post HAC interaction stability tests (live check pending).
-- [x] Implement economic-regime sensitivity with sample-size diagnostics (live validation pending).
-- [ ] Document preliminary associations without causal claims.
+All classical results below were verified against an independent implementation on
+the frozen snapshot `snapshots/eurostat-2026-10-15` (review, section 3).
+
+- [x] Country-level coverage and quality-flag JSON audit.
+- [x] Missingness visualization and review of survey breaks (review, section 2).
+- [x] Review labour-force survey comparability across 2021: break-corrected back series
+      from 2009; Spain and France flagged "definition differs" from 2021-Q1; Netherlands
+      phase-in during 2021 (review, section 2.5).
+- [x] Implement distributed-lag OLS with HAC uncertainty; lags 0, 1, 2, 4.
+- [x] Implement paired specifications with/without participation.
+- [x] Implement expanding-window pseudo-out-of-sample forecasting against persistence.
+- [x] Implement common-sample cumulative coefficient HAC sensitivity and report.
+- [x] Implement dependence-aware paired country block bootstrap.
+- [x] Implement formal pre/post HAC interaction stability tests.
+- [x] Implement economic-regime sensitivity with sample-size diagnostics.
+- [x] Independent verification and sensitivity audit of the classical results.
+- [x] Document preliminary associations without causal claims
+      ([docs/CLASSICAL_RESULTS_REVIEW.md](docs/CLASSICAL_RESULTS_REVIEW.md)).
+
+Open items raised by the review:
+
+- [ ] Make the treatment of 2020-2021 an explicit, pre-registered choice for headline
+      tables (the published comparison includes it and is dominated by it).
+- [ ] Use Eurostat flags in estimation, not only in sensitivity checks (ES/FR from 2021,
+      DE 2020, series breaks).
+- [ ] Small-sample-valid inference for the post-2021 window (for example fixed-b
+      critical values or a bootstrap), and re-test once more quarters are available.
+- [ ] Dependence-aware tests of forecast accuracy (paired loss differentials).
+- [ ] Hours- or employment-based measures, including cross-border workers for Luxembourg.
+- [ ] Compare results across Eurostat vintages.
 
 ## Phase 2 — Hierarchical Bayes
 

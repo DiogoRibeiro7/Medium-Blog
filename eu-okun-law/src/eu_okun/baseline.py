@@ -189,9 +189,12 @@ def run_baselines(
                 if not periods:
                     continue
                 try:
-                    beta, se, r_squared, condition = fit_hac(x, y, maxlags=hac_lags)
+                    beta, covariance, r_squared, condition = fit_hac_covariance(
+                        x, y, maxlags=hac_lags, periods=periods
+                    )
                 except ValueError:
                     continue
+                se = np.sqrt(np.maximum(np.diag(covariance), 0.0))
                 names = ["intercept"] + [f"gdp_lag_{j}" for j in range(lags + 1)]
                 if participation:
                     names.append("participation_change")

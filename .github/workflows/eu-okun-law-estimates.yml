@@ -40,6 +40,12 @@ jobs:
       - name: Evaluate expanding-window forecasting
         working-directory: eu-okun-law
         run: eu-okun forecast --data-dir data --output-dir results/forecast
+      - name: Review classical results (independent verification and sensitivity)
+        working-directory: eu-okun-law
+        run: >-
+          eu-okun review --data-dir data --output-dir results/review
+          --published-dir results
+          --provenance "Outputs of the preceding steps in this workflow run"
       - name: Verify expected country models
         working-directory: eu-okun-law
         run: |
