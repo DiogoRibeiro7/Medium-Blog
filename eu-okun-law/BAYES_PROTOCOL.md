@@ -150,3 +150,8 @@ time-varying coefficients are separate milestones.
   The only real-data computation until then was a short timing run of the primary
   specification (2 chains x 600 iterations) whose convergence diagnostics, runtime
   and predictive coverage were printed; no coefficient was looked at.
+- Before any estimate was inspected: in `no_pooling` there is no `mu_theta`; the rules
+  use its definition instead, the per-draw unweighted mean of `theta[i]` over the 27
+  countries. "Contradicted" means, in the primary fit: Luxembourg
+  P(theta[LU] > mu_theta) <= 0.05; Netherlands P(lag share > 0.5) <= 0.05 (with
+  theta[NL] credibly negative); Spain P(theta[ES] < mu_theta) <= 0.05.
