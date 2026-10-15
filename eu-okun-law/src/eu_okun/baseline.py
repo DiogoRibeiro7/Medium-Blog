@@ -100,14 +100,17 @@ def design_matrix(
     return x, y, dates
 
 
-def fit_hac(
-    x: np.ndarray, y: np.ndarray, maxlags: int = 4,
+def fit_hac_covariance(
+    x: np.ndarray,
+    y: np.ndarray,
+    maxlags: int = 4,
+    periods: list[str] | None = None,
 ) -> tuple[np.ndarray, np.ndarray, float, float]:
-    """Fit full-rank OLS and Bartlett-kernel HAC covariance (no small-sample scaling).
+    """Fit OLS and return the complete Bartlett Newey-West covariance.
 
-    Regressors are fixed observed covariates. The covariance uses the usual
-    sandwich (X'X)^(-1) S (X'X)^(-1), with Bartlett weights and uncorrected
-    OLS residuals. This is descriptive, and requires a sufficiently long series.
+    When periods are supplied, HAC cross-products use calendar-quarter gaps,
+    not row offsets in an irregular complete-case sample. The reported
+    sandwich covariance has no small-sample adjustment.
     """
     if x.ndim != 2 or y.ndim != 1 or x.shape[0] != y.size:
         raise ValueError("Incompatible design and response dimensions.")
@@ -121,21 +124,49 @@ def fit_hac(
     condition_number = float(np.linalg.cond(x))
     if condition_number > 1e10:
         raise ValueError("Ill-conditioned regression design.")
+
+    period_index: dict[str, int] | None = None
+    if periods is not None:
+        if len(periods) != n or len(set(periods)) != n or periods != sorted(periods):
+            raise ValueError("Quarter periods must be unique, sorted and match the rows.")
+        for period in periods:
+            quarter_sequence(period, period)
+        period_index = {period: index for index, period in enumerate(periods)}
+
     beta, *_ = np.linalg.lstsq(x, y, rcond=None)
     residuals = y - x @ beta
     scores = x * residuals[:, None]
     meat = scores.T @ scores
     for lag in range(1, maxlags + 1):
-        cross = scores[lag:].T @ scores[:-lag]
+        if period_index is None:
+            cross = scores[lag:].T @ scores[:-lag]
+        else:
+            assert periods is not None
+            current = [
+                i for i, period in enumerate(periods)
+                if _quarter_before(period, lag) in period_index
+            ]
+            previous = [period_index[_quarter_before(periods[i], lag)] for i in current]
+            cross = scores[current].T @ scores[previous]
         meat += (1.0 - lag / (maxlags + 1.0)) * (cross + cross.T)
+
     bread = np.linalg.inv(x.T @ x)
     covariance = bread @ meat @ bread
-    se = np.sqrt(np.maximum(np.diag(covariance), 0))
+    covariance = (covariance + covariance.T) * 0.5
     total = float(np.sum((y - np.mean(y)) ** 2))
     if total <= 0:
         raise ValueError("Response has zero variance; R-squared is undefined.")
     r_squared = 1.0 - float(np.sum(residuals**2)) / total
-    return beta, se, r_squared, condition_number
+    return beta, covariance, r_squared, condition_number
+
+
+def fit_hac(
+    x: np.ndarray, y: np.ndarray, maxlags: int = 4,
+) -> tuple[np.ndarray, np.ndarray, float, float]:
+    """Preserve the original marginal-standard-error interface."""
+    beta, covariance, r_squared, condition = fit_hac_covariance(x, y, maxlags)
+    se = np.sqrt(np.maximum(np.diag(covariance), 0.0))
+    return beta, se, r_squared, condition
 
 
 def run_baselines(

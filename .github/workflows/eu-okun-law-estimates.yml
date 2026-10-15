@@ -28,6 +28,9 @@ jobs:
       - name: Estimate descriptive models
         working-directory: eu-okun-law
         run: eu-okun baseline --data-dir data --output results/ols_hac.json
+      - name: Compare cumulative GDP coefficients on common quarters
+        working-directory: eu-okun-law
+        run: eu-okun compare --data-dir data --output-dir results/comparison
       - name: Verify expected country models
         working-directory: eu-okun-law
         run: |
@@ -41,6 +44,11 @@ jobs:
           if any(m["n"] < 12 for m in models):
               raise SystemExit("Insufficient observations in regression output")
           print(f"Validated {len(models)} descriptive regressions.")
+          comparison = json.loads(Path("results/comparison/comparison.json").read_text())
+          if len(comparison["models"]) != 216:
+              raise SystemExit("Missing comparison specifications")
+          if len(comparison["sample_quarters"]) < 30:
+              raise SystemExit("Common sample unexpectedly short")
           PY
       - name: Archive source data and regression output
         uses: actions/upload-artifact@v4
