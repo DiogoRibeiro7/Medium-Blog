@@ -18,7 +18,8 @@
 - [x] Implement paired specifications with/without participation (real-data comparison pending).
 - [ ] Time-ordered out-of-sample forecasting against persistence.
 - [x] Implement common-sample cumulative coefficient HAC sensitivity and report (live verification pending).
-- [ ] Evaluate country differences with dependence-aware uncertainty and regime sensitivity.
+- [ ] Evaluate country differences with dependence-aware uncertainty.
+- [x] Implement economic-regime sensitivity with sample-size diagnostics (live validation pending).
 - [ ] Document preliminary associations without causal claims.
 
 ## Phase 2 — Hierarchical Bayes

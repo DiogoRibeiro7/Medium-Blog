@@ -124,3 +124,7 @@ eu-okun compare --data-dir data --output-dir results/comparison
 ```
 
 The output contains `comparison.json`, `comparison.csv`, and `COMPARISON.md`. All 216 country/specification models share exactly the same calendar quarters across EU-27, all four GDP lag specifications and both participation-control settings. Complete cases are intersected before fitting. The GDP coefficient sum is evaluated with the full Newey–West HAC covariance matrix, including off-diagonal covariances. Reported 95% normal-approximation intervals are for each country's descriptive coefficient sum, *not* for pairwise country differences. The report shows all EU-27 countries alphabetically for the pre-specified two-lag uncontrolled model and specification sensitivity for PT, ES, NL and LU. Do not equate the coefficient sum with a structural GDP shock, and do not infer significant rankings from overlapping or non-overlapping country intervals.
+
+## Macroeconomic regime sensitivity
+
+Run `eu-okun regimes --data-dir data --output-dir results/regimes` to obtain `regimes.json`, `regimes.csv` and `REGIMES.md`. Windows: full sample (2009 Q1–2026 Q2), pre-pandemic (2009–2019), 2020–2021 excluded, and post-2021 (2022 Q1 onward). The post-2021 window uses GDP lag orders 0/1 only; longer lags require more observations. All windows enforce a common EU-27 complete-case sample within that window, exclude any cross-boundary input history, and report non-estimable regimes explicitly. These are descriptive stability checks, not formal structural-break tests or causal shock estimates.
