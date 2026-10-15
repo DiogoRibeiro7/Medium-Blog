@@ -13,7 +13,7 @@ A great deal of business data is about time until something happens: a customer 
 | 3 | The Cox model, checking proportional hazards and pricing customer segments | The most to pay for a customer from each lead segment | [`part3/`](part3) | [Medium](https://medium.com/@diogo-ribeiro-1975/survival-analysis-for-data-scientists-ad614e28eda8) |
 | 4 | Parametric models, accelerated failure time and the value of customers beyond the data | A five-year acquisition budget from one year of data | [`part4/`](part4) | [Medium](https://medium.com/@diogo-ribeiro-1975/survival-analysis-for-data-scientists-8cb8b9b61bfa) |
 | 5 | Competing risks, recurrent events and the price of a service contract | A five-year service contract for a pump fleet with breakdowns, planned replacements and repairs | [`part5/`](part5) | Forthcoming |
-| 6 | Machine learning for survival, and how to evaluate it | A benchmark on public data, judged by the decision it supports | | Planned |
+| 6 | Machine learning models, evaluation metrics and a targeting decision on real unemployment data | Whom to offer intensive job-search support when one worker in five can get it | [`part6/`](part6) | Forthcoming |
 
 ## Layout
 
@@ -37,7 +37,7 @@ cd survival-analysis-for-data-scientists
 pip install -r requirements.txt
 ```
 
-The committed outputs were produced with Python 3.13 and the versions pinned in `requirements.txt`. Any NumPy 2.x with a recent SciPy and Matplotlib should give the same numbers up to the last printed digit; `scikit-survival` and `statsmodels` are optional.
+The committed outputs were produced with Python 3.13 and the versions pinned in `requirements.txt`. Any NumPy 2.x with a recent SciPy and Matplotlib should give the same numbers up to the last printed digit. `scikit-survival` and `statsmodels` are optional for Parts 1 to 5; Part 6 requires `scikit-survival`, `scikit-learn` and `pandas`.
 
 To reproduce Part 1:
 
@@ -77,6 +77,14 @@ To reproduce Part 5:
 cd part5
 python competing_risks.py > output.txt   # about 15 seconds
 python figures.py                        # writes four PNG files to figures/, about 15 seconds
+```
+
+To reproduce Part 6 (downloads `UnempDur.csv` to `part6/data/` on first use and checks its SHA-256 checksum; the data file is not stored in this repository):
+
+```bash
+cd part6
+python benchmark.py > output.txt   # about 2.5 minutes
+python figures.py                  # writes four PNG files to figures/, about 2 minutes
 ```
 
 Random seeds are fixed. The workflow `.github/workflows/survival-analysis-for-data-scientists.yml` reruns each part's main script on every change to this folder and fails if the output differs from the committed `output.txt`.
@@ -187,6 +195,27 @@ The main results:
 | Contract price error by segment: dashboard / one cause at a time / competing risks | -24.9% to -28.9% / +27.7% to +114.6% / within 0.6% |
 
 All data in Part 5 are simulated.
+
+## Part 6 in brief
+
+`part6/benchmark.py` uses real data: 3,343 spells of unemployment from the Displaced Worker Supplements of the US Current Population Survey of 1986 to 1992, analysed by McCall (1996) and distributed as `UnempDur` in the R package Ecdat. Spells are measured in two-week intervals and the event is re-employment. The question is which workers will still be jobless after 26 weeks, for a service that can offer intensive support to one worker in five. The script:
+
+1. Downloads the data from the Rdatasets project, checks its checksum and describes it: Kaplan-Meier curves and re-employment per interval by unemployment insurance (UI) claim.
+2. Fits six ways of ranking workers: a Cox model, a random survival forest, discrete-time logistic regression and discrete-time gradient boosting on person-period data, a logistic classifier for 26-week status with inverse probability of censoring weights, and a rule of thumb (UI claimants first, oldest first).
+3. Scores them in ten repeats of five-fold cross-validation on Harrell's C, Uno's C, the AUC and Brier score at 26 weeks, the integrated Brier score, calibration, and the share still jobless at 26 weeks among the 20% each method selects.
+
+The main results:
+
+| Quantity | Value |
+|---|---|
+| Harrell's C, five models, cross-validated | 0.6826 to 0.6886 |
+| Harrell's C fitted and scored on all data: random survival forest / discrete-time boosting | 0.7595 / 0.7303 |
+| AUC at 26 weeks: Cox / 26-week classifier / rule of thumb | 0.6832 / 0.6914 / 0.6901 |
+| Mean calibration gap over tenths of predicted risk, one repeat: Cox / random survival forest | 0.047 / 0.023 |
+| Still jobless at 26 weeks among the selected 20%: random / Cox / 26-week classifier / rule of thumb | 33.8% / 50.4% / 52.8% / 53.9% |
+| Repeats in which the rule of thumb beats Cox / the 26-week classifier | 10 of 10 / 8 of 10 |
+
+Part 6 uses public data; nothing in it is simulated.
 
 ## Author
 
