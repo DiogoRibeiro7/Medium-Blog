@@ -11,6 +11,7 @@ from eu_okun.audit import audit_snapshot
 from eu_okun.baseline import write_baselines
 from eu_okun.comparison import write_comparisons
 from eu_okun.eurostat import EurostatDataError, save_snapshot
+from eu_okun.regimes import write_regimes
 
 
 def main(argv: Sequence[str] | None = None) -> int:
@@ -29,6 +30,9 @@ def main(argv: Sequence[str] | None = None) -> int:
     compare = commands.add_parser("compare", help="Common-sample HAC country sensitivity")
     compare.add_argument("--data-dir", type=Path, default=Path("data"))
     compare.add_argument("--output-dir", type=Path, default=Path("results/comparison"))
+    regime = commands.add_parser("regimes", help="Estimate economic-regime sensitivity")
+    regime.add_argument("--data-dir", type=Path, default=Path("data"))
+    regime.add_argument("--output-dir", type=Path, default=Path("results/regimes"))
     args = parser.parse_args(argv)
     if args.command == "fetch":
         try:
@@ -60,6 +64,13 @@ def main(argv: Sequence[str] | None = None) -> int:
         except (EurostatDataError, ValueError, OSError) as exc:
             parser.exit(2, f"Comparative analysis failed: {exc}\n")
         print(f"Saved {count} common-sample comparisons to {args.output_dir}")
+        return 0
+    if args.command == "regimes":
+        try:
+            count = write_regimes(args.data_dir, args.output_dir)
+        except (EurostatDataError, ValueError, OSError) as exc:
+            parser.exit(2, f"Regime sensitivity failed: {exc}\n")
+        print(f"Saved {count} regime specifications to {args.output_dir}")
         return 0
     return 1
 
