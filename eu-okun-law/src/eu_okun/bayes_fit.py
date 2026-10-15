@@ -9,9 +9,10 @@ from __future__ import annotations
 
 import json
 import platform
+import shutil
 import time
 from collections.abc import Mapping, Sequence
-from dataclasses import asdict, dataclass
+from dataclasses import asdict, dataclass, replace
 from pathlib import Path
 from typing import Any
 
@@ -356,9 +357,15 @@ def save_fit(fit: FitResult, check: PredictiveCheck, directory: Path,
 
 def run_specifications(
     data_dir: Path, output_dir: Path, names: Sequence[str],
-    settings: SamplerSettings = PROTOCOL_SETTINGS,
+    settings: SamplerSettings = PROTOCOL_SETTINGS, retry_warmup: int | None = None,
 ) -> list[tuple[str, Diagnostics]]:
-    """Audit the snapshot, then fit and save each named specification."""
+    """Audit the snapshot, then fit and save each named specification.
+
+    With ``retry_warmup``, a specification that fails the acceptance criteria is fitted
+    once more with that many warm-up iterations (protocol, section 6: more warm-up is
+    allowed, a different model or prior is not). The first attempt is kept under
+    ``<output_dir>-first-attempt/<name>``.
+    """
     unknown = [name for name in names if name not in SPECS]
     if unknown:
         raise ValueError(f"Unknown specifications: {', '.join(unknown)}.")
@@ -372,8 +379,15 @@ def run_specifications(
         spec = SPECS[name]
         data = build_bayes_data(panel, flags, spec.windows, spec.lags)
         fit = fit_specification(data, spec, settings)
-        check = predictive_checks(fit)
-        save_fit(fit, check, output_dir / name, snapshot)
+        save_fit(fit, predictive_checks(fit), output_dir / name, snapshot)
+        if not fit.diagnostics.accepted and retry_warmup is not None:
+            first = output_dir.parent / f"{output_dir.name}-first-attempt" / name
+            if first.exists():
+                shutil.rmtree(first)
+            first.parent.mkdir(parents=True, exist_ok=True)
+            shutil.move(str(output_dir / name), str(first))
+            fit = fit_specification(data, spec, replace(settings, warmup=retry_warmup))
+            save_fit(fit, predictive_checks(fit), output_dir / name, snapshot)
         results.append((name, fit.diagnostics))
     if not results:
         raise EurostatDataError("No specification was fitted.")

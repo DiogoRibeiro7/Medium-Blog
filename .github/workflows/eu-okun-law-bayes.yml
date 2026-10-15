@@ -41,12 +41,12 @@ jobs:
           SPECS: ${{ github.event.inputs.specs || 'all' }}
         run: >-
           poetry run eu-okun bayes-fit --data-dir snapshots/eurostat-2026-10-15
-          --output-dir results/bayes --specs "$SPECS"
+          --output-dir results/bayes --specs "$SPECS" --retry-warmup 3000
       - name: Report from the posterior draws
         working-directory: eu-okun-law
         run: >-
           poetry run eu-okun bayes-report --fits-dir results/bayes
-          --output-dir results/bayes-report
+          --output-dir results/bayes-report --data-dir snapshots/eurostat-2026-10-15
       - name: Archive posterior draws, diagnostics and report
         if: always()
         uses: actions/upload-artifact@v4
@@ -54,6 +54,7 @@ jobs:
           name: eu-okun-hierarchical-bayes
           path: |
             eu-okun-law/results/bayes/
+            eu-okun-law/results/bayes-first-attempt/
             eu-okun-law/results/bayes-report/
           retention-days: 30
           if-no-files-found: error

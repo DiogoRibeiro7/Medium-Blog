@@ -69,12 +69,16 @@ def main(argv: Sequence[str] | None = None) -> int:
     bayes_fit.add_argument("--draws", type=int, default=1000)
     bayes_fit.add_argument("--target-accept", type=float, default=0.95)
     bayes_fit.add_argument("--seed", type=int, default=20261016)
+    bayes_fit.add_argument("--retry-warmup", type=int, default=None,
+                           help="Re-fit a failed specification once with this warm-up")
     bayes_report = commands.add_parser(
         "bayes-report", help="Tables, figures and report from saved Bayesian fits")
     bayes_report.add_argument("--fits-dir", type=Path, default=Path("results/bayes"))
     bayes_report.add_argument("--output-dir", type=Path, default=Path("results/bayes-report"))
     bayes_report.add_argument("--report", type=Path, default=None)
     bayes_report.add_argument("--no-figures", action="store_true")
+    bayes_report.add_argument("--data-dir", type=Path, default=None,
+                              help="Snapshot used by the fits (enables the factor checks)")
     args = parser.parse_args(argv)
     if args.command == "fetch":
         try:
@@ -149,7 +153,8 @@ def main(argv: Sequence[str] | None = None) -> int:
         settings = SamplerSettings(chains=args.chains, warmup=args.warmup, draws=args.draws,
                                    target_accept=args.target_accept, seed=args.seed)
         try:
-            results = run_specifications(args.data_dir, args.output_dir, names, settings)
+            results = run_specifications(args.data_dir, args.output_dir, names, settings,
+                                         retry_warmup=args.retry_warmup)
         except (EurostatDataError, ValueError, OSError) as exc:
             parser.exit(2, f"Bayesian fitting failed: {exc}\n")
         for name, diagnostics in results:
@@ -164,7 +169,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         output = args.output_dir
         try:
             bayes_review = write_report(args.fits_dir, output, args.report,
-                                  figures=not args.no_figures)
+                                        figures=not args.no_figures, data_dir=args.data_dir)
         except (FileNotFoundError, ValueError, OSError, KeyError) as exc:
             parser.exit(2, f"Bayesian report failed: {exc}\n")
         print(f"Report for {len(bayes_review.fits)} fits written to {args.report or output}")

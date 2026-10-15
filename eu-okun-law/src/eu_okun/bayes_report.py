@@ -12,7 +12,7 @@ import csv
 import json
 import os
 from collections.abc import Mapping, Sequence
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
 
@@ -200,6 +200,38 @@ def claim_verdict(primary: Claim, accepted: Sequence[Claim]) -> str:
     return "not resolved"
 
 
+@dataclass(frozen=True)
+class FactorCheck:
+    """Post-fit checks of the common factor's independence assumptions (median over draws)."""
+
+    spec: str
+    lag1_autocorrelation: float
+    lag1_low: float
+    lag1_high: float
+    corr_mean_gdp: float
+    corr_mean_gdp_low: float
+    corr_mean_gdp_high: float
+    corr_mean_unemployment_change: float
+
+
+def factor_checks(fit: LoadedFit, mean_gdp: np.ndarray, mean_y: np.ndarray,
+                  segment_start: np.ndarray) -> FactorCheck:
+    """The model treats f[t] as independent over time and of GDP growth; test both.
+
+    Lag-1 autocorrelation uses only pairs inside a segment. Correlations are with the
+    cross-country mean of GDP growth and of the unemployment-rate change.
+    """
+    f = fit.draws["f"]
+    inside = ~segment_start[1:]
+    lag1 = np.array([np.corrcoef(row[1:][inside], row[:-1][inside])[0, 1] for row in f])
+    with_gdp = np.array([np.corrcoef(row, mean_gdp)[0, 1] for row in f])
+    with_y = np.array([np.corrcoef(row, mean_y)[0, 1] for row in f])
+    lag_low, lag_high = credible_interval(lag1)
+    gdp_low, gdp_high = credible_interval(with_gdp)
+    return FactorCheck(fit.name, float(np.median(lag1)), lag_low, lag_high,
+                       float(np.median(with_gdp)), gdp_low, gdp_high, float(np.median(with_y)))
+
+
 # ----------------------------------------------------------------------------------
 # Formatting
 # ----------------------------------------------------------------------------------
@@ -242,6 +274,7 @@ class BayesReview:
     claims: dict[str, list[Claim]]
     ranks: np.ndarray
     pairwise: np.ndarray
+    factor: dict[str, FactorCheck] = field(default_factory=dict)
 
     @property
     def primary(self) -> LoadedFit:
@@ -251,8 +284,12 @@ class BayesReview:
         return [name for name, fit in self.fits.items() if fit.accepted]
 
 
-def build_review(fits_dir: Path) -> BayesReview:
-    """Load every fitted specification found in ``fits_dir`` (primary required)."""
+def build_review(fits_dir: Path, data_dir: Path | None = None) -> BayesReview:
+    """Load every fitted specification found in ``fits_dir`` (primary required).
+
+    With ``data_dir`` (the snapshot the fits used), the common factor of each factor
+    specification is also checked against the data.
+    """
     fits = {
         name: load_fit(fits_dir / name) for name in SPECS if (fits_dir / name / "fit.json").exists()
     }
@@ -261,7 +298,24 @@ def build_review(fits_dir: Path) -> BayesReview:
     rows = {name: country_rows(fit) for name, fit in fits.items()}
     claims = {name: evaluate_claims(fit) for name, fit in fits.items()}
     theta = fits["primary"].draws["theta"]
-    return BayesReview(fits, rows, claims, rank_distribution(theta), pairwise_probability(theta))
+    review = BayesReview(fits, rows, claims, rank_distribution(theta),
+                         pairwise_probability(theta))
+    if data_dir is not None:
+        from eu_okun.baseline import _read_panel
+        from eu_okun.bayes_data import build_bayes_data
+        from eu_okun.review import read_flags
+
+        csv_path = data_dir / "processed" / "eu27_quarterly.csv"
+        panel, flags = _read_panel(csv_path), read_flags(csv_path)
+        for name, fit in fits.items():
+            spec = SPECS[name]
+            if spec.common_factor and "f" in fit.draws:
+                data = build_bayes_data(panel, flags, spec.windows, spec.lags)
+                if list(data.quarters) != fit.summary["quarters"]:
+                    raise ValueError(f"Snapshot does not match the quarters of fit {name}.")
+                review.factor[name] = factor_checks(
+                    fit, data.g.mean(axis=0), data.y.mean(axis=0), data.segment_start)
+    return review
 
 
 def robust_signs(review: BayesReview) -> dict[str, str]:
@@ -296,6 +350,49 @@ def render(review: BayesReview, assets: str, command: str) -> str:
     env = p.summary["environment"]
     settings = p.summary["settings"]
     claims_primary = {c.claim: c for c in review.claims["primary"]}
+    mu_medians = {name: float(np.median(review.fits[name].mu_theta())) for name in accepted}
+    by_name = {name: {r.geo: r for r in review.rows[name]} for name in review.fits}
+    if "gaussian_iid" in accepted:
+        pooling = float(np.median([abs(by_name["gaussian_iid"][r.geo].theta_median
+                                       - r.classical_theta) for r in rows]))
+        error_model = float(np.median([abs(r.theta_median
+                                           - by_name["gaussian_iid"][r.geo].theta_median)
+                                       for r in rows]))
+        toward_zero = sum(abs(r.theta_median) < abs(by_name["gaussian_iid"][r.geo].theta_median)
+                          for r in rows)
+        decomposition_text = (
+            f"Against OLS on the same quarters, partial pooling with OLS-like errors "
+            f"(`gaussian_iid`) moves country sums by a median {pooling:.3f}; the primary "
+            f"error model (Student-t, AR(1), common factor) moves them a further median "
+            f"{error_model:.3f}, towards zero in {toward_zero} of {len(rows)} countries."
+        )
+    else:
+        decomposition_text = "The decomposition needs an accepted `gaussian_iid` fit."
+    p_lag = {name: fit.summary["predictive_check"]["p_value"]["lag1_autocorrelation"]
+             for name, fit in review.fits.items()}
+    misfit_lag = [name for name, value in p_lag.items() if value <= 0.05 or value >= 0.95]
+    observed_lag = p.summary["predictive_check"]["observed"]["lag1_autocorrelation"]
+    replicated_lag = {name: fit.summary["predictive_check"]["replicated_mean"]
+                      ["lag1_autocorrelation"] for name, fit in review.fits.items()}
+    persistence_text = (
+        f"The lag-1 autocorrelation check fails (p <= 0.05 or >= 0.95) in "
+        f"{len(misfit_lag)} of {len(review.fits)} specifications: observed "
+        f"{observed_lag:.2f}, replicated means {min(replicated_lag.values()):.2f} to "
+        f"{max(replicated_lag.values()):.2f}, so the models understate the persistence of "
+        "unemployment changes."
+    )
+    if "primary" in review.factor:
+        fc = review.factor["primary"]
+        factor_text = (
+            f"The fitted common factor is autocorrelated (median lag-1 "
+            f"{fc.lag1_autocorrelation:.2f}) and correlated with average GDP growth "
+            f"(median {fc.corr_mean_gdp:+.2f}), although the model treats it as independent "
+            "of both. In factor specifications theta therefore describes the association "
+            "with each country's GDP beyond the common European cycle, not the classical "
+            "coefficient sum."
+        )
+    else:
+        factor_text = "Factor checks need the snapshot (`--data-dir`)."
     verdicts = {
         claim: claim_verdict(
             claims_primary[claim],
@@ -338,6 +435,10 @@ def render(review: BayesReview, assets: str, command: str) -> str:
          "country pairs differ with posterior probability >= 0.95."],
         ["Earlier claims", "; ".join(f"{claim}: **{verdict}**" for claim, verdict in
                                       verdicts.items()) + "."],
+        ["Magnitude", f"Specification-dependent: across accepted fits the median of mu_theta "
+         f"ranges from {_fmt(min(mu_medians.values()))} to {_fmt(max(mu_medians.values()))}. "
+         + decomposition_text],
+        ["Model checks", persistence_text + " " + factor_text],
     ]
     lines += ["## Summary", ""] + _table(["Topic", "Finding"], summary_rows, "ll")
 
@@ -362,13 +463,23 @@ def render(review: BayesReview, assets: str, command: str) -> str:
     for name, fit in review.fits.items():
         d = fit.summary["diagnostics"]
         diag_rows.append([
-            f"`{name}`", SPECS[name].description, f"{d['max_rhat']:.3f}",
+            f"`{name}`", SPECS[name].description, fit.summary["settings"]["warmup"],
+            f"{d['max_rhat']:.3f}",
             f"{min(d['min_ess_bulk'], d['min_ess_tail']):.0f}", d["divergences"],
             f"{d['min_bfmi']:.2f}", f"{fit.summary['runtime_seconds'] / 60:.1f}",
             "accepted" if fit.accepted else "**failed**: " + "; ".join(d["failures"]),
         ])
-    lines += _table(["Specification", "Description", "Max R-hat", "Min ESS", "Divergences",
-                     "Min E-BFMI", "Minutes", "Status"], diag_rows, "llrrrrrl")
+    lines += _table(["Specification", "Description", "Warm-up", "Max R-hat", "Min ESS",
+                     "Divergences", "Min E-BFMI", "Minutes", "Status"], diag_rows, "llrrrrrrl")
+    longer = [name for name, fit in review.fits.items()
+              if fit.summary["settings"]["warmup"] != settings["warmup"]]
+    if longer:
+        lines += [
+            f"Re-run with longer warm-up after failing the criteria at {settings['warmup']} "
+            f"warm-up iterations, as section 6 of the protocol allows (model and priors "
+            f"unchanged; first-attempt diagnostics are in the protocol change log): "
+            f"{_names([f'`{name}`' for name in longer])}.", "",
+        ]
 
     # 3. Primary results
     lines += [
@@ -387,15 +498,11 @@ def render(review: BayesReview, assets: str, command: str) -> str:
           f"{r.lag_share_median:.2f}" if r.sign == "negative" else "n/a"] for r in rows],
         "lrrrrrr",
     )
-    shrink = [abs(r.theta_median - float(np.median(mu))) / abs(r.classical_theta
-              - float(np.median(mu))) for r in rows
-              if abs(r.classical_theta - float(np.median(mu))) > 0.05]
     lines += [
-        f"Partial pooling moves country estimates towards mu_theta: for countries whose "
-        f"OLS estimate is more than 0.05 from it, the posterior median is a median "
-        f"{100 * (1 - float(np.median(shrink))):.0f}% closer to mu_theta than OLS. Lag "
-        "share = (theta - beta0) / theta, the part of the sum carried by lagged growth, "
-        "shown only where theta is credibly negative.", "",
+        decomposition_text + " The differences from OLS are therefore not only shrinkage: "
+        "the error model and the common factor change what the coefficient measures "
+        "(section 8). Lag share = (theta - beta0) / theta, the part of the sum carried by "
+        "lagged growth, shown only where theta is credibly negative.", "",
     ]
 
     # 4. Ranks
@@ -423,9 +530,11 @@ def render(review: BayesReview, assets: str, command: str) -> str:
     for claim, verdict in verdicts.items():
         per_fit = [c for name in review.fits for c in review.claims[name] if c.claim == claim]
         holds = [c.spec for c in per_fit if c.holds]
+        fails = [f"`{c.spec}`" for c in per_fit if not c.holds and c.spec in accepted]
         claim_rows.append([claim, f"**{verdict}**", claims_primary[claim].detail,
-                           f"{len(holds)} of {len(per_fit)} fits"])
-    lines += _table(["Claim", "Verdict", "Primary fit", "Rule holds in"], claim_rows, "llll")
+                           f"{len(holds)} of {len(per_fit)} fits", _names(fails)])
+    lines += _table(["Claim", "Verdict", "Primary fit", "Rule holds in",
+                     "Fails in (accepted fits)"], claim_rows, "lllll")
 
     # 6. Sensitivity
     lines += ["## 6. Sensitivity across specifications", "",
@@ -469,9 +578,38 @@ def render(review: BayesReview, assets: str, command: str) -> str:
     lines += _table(["Specification", "50% coverage", "90% coverage", "p: lag-1 autocorr.",
                      "p: cross-country corr.", "p: mean s.d."], ppc_rows, "lrrrrr")
 
-    # 8-9. Limitations and reproduction
+    lines += [persistence_text, ""]
+
+    # 8. Post-fit checks
     lines += [
-        "## 8. Limitations", "",
+        "## 8. Checks added after fitting", "",
+        "Not pre-registered; computed because the predictive checks and the gap to OLS "
+        "called for them. They qualify the interpretation; they do not change any fit.", "",
+    ]
+    if review.factor:
+        lines += _table(
+            ["Specification", "Factor lag-1 autocorr. (90%)",
+             "Corr. with mean GDP growth (90%)", "Corr. with mean unemployment change"],
+            [[f"`{fc.spec}`",
+              f"{fc.lag1_autocorrelation:.2f} {_interval(fc.lag1_low, fc.lag1_high)}",
+              f"{fc.corr_mean_gdp:+.2f} {_interval(fc.corr_mean_gdp_low, fc.corr_mean_gdp_high)}",
+              f"{fc.corr_mean_unemployment_change:+.2f}"] for fc in review.factor.values()],
+            "lrrr",
+        )
+        lines += [factor_text + " Specifications without the factor estimate the "
+                  "classical quantity but fail the cross-country correlation check, so their "
+                  "intervals ignore residual dependence. A dynamic factor, or a mean equation "
+                  "with lagged unemployment changes, would address both problems; that is a "
+                  "model change for a new, separately registered protocol.", ""]
+    else:
+        lines += [factor_text, ""]
+
+    # 9-10. Limitations and reproduction
+    lines += [
+        "## 9. Limitations", "",
+        "- The pre-registered model understates the persistence of unemployment changes "
+        "and its common factor is not independent of GDP growth (section 8). Credible "
+        "intervals are conditional on that misspecified structure.",
         "- The coefficients are conditional associations. Contemporaneous GDP growth is "
         "not an identified shock; partial pooling does not change that.",
         "- mu_theta is an unweighted average across countries. It is not an EU-wide "
@@ -484,7 +622,7 @@ def render(review: BayesReview, assets: str, command: str) -> str:
         "- Rank and pairwise probabilities inherit every modelling assumption; they are "
         "not model-free comparisons.",
         "- Predictive comparison with the classical baselines is not yet done.", "",
-        "## 9. Reproduction", "",
+        "## 10. Reproduction", "",
         "```bash", command, "```", "",
         "Posterior draws are produced by the separate Bayesian workflow and kept as its "
         "artifact; this report and its tables are regenerated from them.", "",
@@ -507,15 +645,23 @@ def write_figures(review: BayesReview, directory: Path, source: str) -> None:
     rows = review.rows["primary"]
     ys = np.arange(len(rows))[::-1]
     mu = float(np.median(review.primary.mu_theta()))
-    fig, ax = plt.subplots(figsize=(7.6, 8.6))
+    iid = ({r.geo: r for r in review.rows["gaussian_iid"]}
+           if "gaussian_iid" in review.fits else {})
+    fig, ax = plt.subplots(figsize=(7.6, 9.2))
     for y, r in zip(ys, rows, strict=True):
-        ax.plot([r.classical_low, r.classical_high], [y + 0.17] * 2, color=ORANGE, lw=1.6,
+        ax.plot([r.classical_low, r.classical_high], [y + 0.24] * 2, color=ORANGE, lw=1.6,
                 alpha=0.55, solid_capstyle="round")
-        ax.plot([r.classical_theta], [y + 0.17], marker="o", ms=6, color=ORANGE, mec=SURFACE,
-                mew=1.2, lw=0)
-        ax.plot([r.theta_low, r.theta_high], [y - 0.17] * 2, color=BLUE, lw=1.6,
+        ax.plot([r.classical_theta], [y + 0.24], marker="o", ms=5.5, color=ORANGE,
+                mec=SURFACE, mew=1.2, lw=0)
+        if r.geo in iid:
+            q = iid[r.geo]
+            ax.plot([q.theta_low, q.theta_high], [y] * 2, color=AQUA, lw=1.6,
+                    solid_capstyle="round")
+            ax.plot([q.theta_median], [y], marker="o", ms=5.5, color=AQUA, mec=SURFACE,
+                    mew=1.2, lw=0)
+        ax.plot([r.theta_low, r.theta_high], [y - 0.24] * 2, color=BLUE, lw=1.6,
                 solid_capstyle="round")
-        ax.plot([r.theta_median], [y - 0.17], marker="o", ms=6, color=BLUE, mec=SURFACE,
+        ax.plot([r.theta_median], [y - 0.24], marker="o", ms=5.5, color=BLUE, mec=SURFACE,
                 mew=1.2, lw=0)
     ax.axvline(0, color=MUTED, lw=1)
     ax.axvline(mu, color=INK2, lw=1, ls=(0, (1, 0)), alpha=0.35)
@@ -524,14 +670,16 @@ def write_figures(review: BayesReview, directory: Path, source: str) -> None:
     ax.grid(axis="y", visible=False)
     ax.tick_params(axis="y", length=0)
     ax.set_xlabel("Sum of GDP coefficients, lags 0-2 (pp per pp), 2009-2019")
-    ax.set_title("Partial pooling pulls noisy country estimates towards the average")
+    ax.set_title("Pooling moves estimates a little; the error model moves them more")
     ax.legend(handles=[
         Line2D([], [], marker="o", color=ORANGE, lw=1.6, ms=6, label="OLS, 95% HAC interval"),
+        Line2D([], [], marker="o", color=AQUA, lw=1.6, ms=6,
+               label="Partial pooling, OLS-like errors (gaussian_iid), 90% interval"),
         Line2D([], [], marker="o", color=BLUE, lw=1.6, ms=6,
-               label="Hierarchical Bayes, 90% credible interval"),
+               label="Primary: pooling + Student-t AR(1) errors + common factor"),
         Line2D([], [], color=INK2, lw=1, alpha=0.35, label="Posterior median of mu_theta"),
     ], loc="upper left", bbox_to_anchor=(0.0, -0.075), fontsize=8.5)
-    _finish(plt, fig, directory / "shrinkage.png", source, credit_y=-0.09)
+    _finish(plt, fig, directory / "shrinkage.png", source, credit_y=-0.11)
 
     names = [r.geo for r in rows]
     fig, ax = plt.subplots(figsize=(8.2, 8.2))
@@ -585,7 +733,6 @@ def write_figures(review: BayesReview, directory: Path, source: str) -> None:
     ], loc="lower center", ncol=2, bbox_to_anchor=(0.5, -0.06))
     fig.subplots_adjust(wspace=0.08, bottom=0.16)
     _finish(plt, fig, directory / "focus_sensitivity.png", source, credit_y=-0.12)
-    del AQUA
 
 
 def write_tables(review: BayesReview, directory: Path) -> None:
@@ -623,9 +770,10 @@ def write_tables(review: BayesReview, directory: Path) -> None:
 
 def write_report(
     fits_dir: Path, output_dir: Path, report: Path | None = None, figures: bool = True,
+    data_dir: Path | None = None,
 ) -> BayesReview:
     """Build tables, figures and the Markdown report from saved fits."""
-    review = build_review(fits_dir)
+    review = build_review(fits_dir, data_dir)
     report = report or output_dir / "HIERARCHICAL_BAYES.md"
     write_tables(review, output_dir)
     if figures:
@@ -634,7 +782,8 @@ def write_report(
         write_figures(review, output_dir, source)
     assets = Path(os.path.relpath(output_dir, report.parent)).as_posix()
     command = (f"eu-okun bayes-report --fits-dir {fits_dir.as_posix()} "
-               f"--output-dir {output_dir.as_posix()} --report {report.as_posix()}")
+               f"--output-dir {output_dir.as_posix()} --report {report.as_posix()}"
+               + (f" --data-dir {data_dir.as_posix()}" if data_dir is not None else ""))
     report.parent.mkdir(parents=True, exist_ok=True)
     report.write_text(render(review, assets, command), encoding="utf-8", newline="\n")
     return review

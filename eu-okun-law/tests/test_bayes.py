@@ -289,8 +289,14 @@ def _write_fixture_fit(directory: Path, rng: np.random.Generator, pooled: bool =
         "diagnostics": {"accepted": pooled, "failures": [] if pooled else ["R-hat 1.2 > 1.01"],
                         "max_rhat": 1.0 if pooled else 1.2, "min_ess_bulk": 500.0,
                         "min_ess_tail": 450.0, "divergences": 0, "min_bfmi": 0.8},
-        "predictive_check": {"coverage_50": 0.5, "coverage_90": 0.9, "p_value": {
-            "lag1_autocorrelation": 0.4, "cross_country_correlation": 0.5, "mean_sd": 0.6}},
+        "predictive_check": {
+            "coverage_50": 0.5, "coverage_90": 0.9, "draws_used": 10,
+            "observed": {"lag1_autocorrelation": 0.2, "cross_country_correlation": 0.1,
+                         "mean_sd": 0.4},
+            "replicated_mean": {"lag1_autocorrelation": 0.18, "cross_country_correlation": 0.1,
+                                "mean_sd": 0.4},
+            "p_value": {"lag1_autocorrelation": 0.4, "cross_country_correlation": 0.5,
+                        "mean_sd": 0.6}},
         "classical_same_rows": {g: {"theta": -0.35, "se": 0.1, "ci_low": -0.55,
                                     "ci_high": -0.15, "n": 40.0} for g in EU27},
         "runtime_seconds": 12.0,
@@ -317,3 +323,62 @@ def test_report_renders_from_saved_fits(tmp_path: Path) -> None:
     for name in ("country_estimates.csv", "rank_probabilities.csv", "pairwise_probabilities.csv",
                  "claims.csv", "diagnostics.json", "shrinkage.png", "pairwise.png"):
         assert (tmp_path / "out" / name).exists()
+
+
+def test_factor_checks_detect_persistent_gdp_correlated_factor() -> None:
+    from eu_okun.bayes_report import factor_checks
+
+    rng = np.random.default_rng(4)
+    t = 60
+    gdp = rng.normal(size=t)
+    persistent = np.zeros((500, t))
+    for j in range(1, t):
+        persistent[:, j] = 0.8 * persistent[:, j - 1] + rng.normal(size=500)
+    f = persistent - 1.5 * gdp[None, :]
+    fit = LoadedFit("primary", {"countries": list(COUNTRIES)}, {"f": f})
+    starts = np.zeros(t, dtype=bool)
+    starts[0] = True
+    check = factor_checks(fit, gdp, -gdp, starts)
+    assert check.corr_mean_gdp < -0.3 and check.corr_mean_unemployment_change > 0.3
+    independent = LoadedFit("primary", {"countries": list(COUNTRIES)},
+                            {"f": rng.normal(size=(500, t))})
+    quiet = factor_checks(independent, gdp, -gdp, starts)
+    assert abs(quiet.lag1_autocorrelation) < 0.1 and abs(quiet.corr_mean_gdp) < 0.1
+
+
+def test_failed_fit_is_retried_once_with_longer_warmup(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """Protocol section 6: one re-run with more warm-up; the first attempt is kept."""
+    import eu_okun.bayes_fit as bf
+    from eu_okun.bayes_fit import Diagnostics
+
+    calls: list[int] = []
+
+    def fake_fit(data, spec, settings):  # type: ignore[no-untyped-def]
+        calls.append(settings.warmup)
+        rhat = 1.05 if len(calls) == 1 else 1.0
+        diagnostics = Diagnostics(rhat, "phi[0]", 900.0, 900.0, "x", 0, 0.8, 0, 4000)
+        return bf.FitResult(spec, data, settings, {}, diagnostics, 1.0)
+
+    saved: list[Path] = []
+    monkeypatch.setattr(bf, "audit_snapshot", lambda d: {"snapshot_manifest_sha256": "m",
+                                                         "processed_csv_sha256": "c"})
+    monkeypatch.setattr(bf, "_read_panel", lambda path: synthetic())
+    monkeypatch.setattr(bf, "read_flags", lambda path: {})
+    monkeypatch.setattr(bf, "build_bayes_data", lambda *a, **k: "data")
+    monkeypatch.setattr(bf, "fit_specification", fake_fit)
+    monkeypatch.setattr(bf, "predictive_checks", lambda fit: None)
+
+    def fake_save(fit, check, directory, snapshot):  # type: ignore[no-untyped-def]
+        directory.mkdir(parents=True, exist_ok=True)
+        (directory / "fit.json").write_text(str(fit.settings.warmup))
+        saved.append(directory)
+
+    monkeypatch.setattr(bf, "save_fit", fake_save)
+    results = bf.run_specifications(tmp_path, tmp_path / "bayes", ["primary"],
+                                    retry_warmup=3000)
+    assert calls == [1000, 3000]
+    assert results[0][1].accepted
+    assert (tmp_path / "bayes" / "primary" / "fit.json").read_text() == "3000"
+    assert (tmp_path / "bayes-first-attempt" / "primary" / "fit.json").read_text() == "1000"
