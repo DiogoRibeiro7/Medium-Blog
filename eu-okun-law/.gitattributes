@@ -3,7 +3,8 @@
 # and no line-ending conversion.
 snapshots/** !filter !diff !merge -text
 
-# Generated review outputs: plain Git, LF line endings exactly as written.
-docs/review/*.csv !filter !diff !merge text eol=lf
-docs/review/*.json text eol=lf
+# Generated report outputs (classical review, Bayesian report): plain Git, not LFS,
+# LF line endings exactly as written.
+docs/**/*.csv !filter !diff !merge text eol=lf
+docs/**/*.json text eol=lf
 docs/*.md text eol=lf
