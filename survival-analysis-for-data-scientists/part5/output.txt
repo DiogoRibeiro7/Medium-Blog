@@ -1,0 +1,55 @@
+========================================================================
+1. THE TRUE PROCESS
+========================================================================
+standard pump, other site            : within 5 years, breakdown 21.9% (without replacements 26.6%), planned replacement 23.7%; repairs per pump 3.75 in service (mean cumulative function 5.00); break-even price EUR 4,223
+standard pump, programme site        : within 5 years, breakdown 12.8% (without replacements 26.6%), planned replacement 65.1%; repairs per pump 2.39 in service (mean cumulative function 5.00); break-even price EUR 2,583
+high-duty pump, other site           : within 5 years, breakdown 35.4% (without replacements 42.6%), planned replacement 22.1%; repairs per pump 5.15 in service (mean cumulative function 7.50); break-even price EUR 6,276
+high-duty pump, programme site       : within 5 years, breakdown 20.9% (without replacements 42.6%), planned replacement 61.8%; repairs per pump 3.34 in service (mean cumulative function 7.50); break-even price EUR 3,888
+Whole fleet: breakdown within 5 years 23.9% (without replacements 33.0%); repairs per contract 3.85; break-even price EUR 4,462
+True subdistribution hazard ratio for breakdown, programme against other sites (standard duty), at ages 0.5: 0.91, 3: 0.57, 5: 0.36, 10: 0.10
+Hazard ratios: breakdown 1.8 for high duty, 1.0 for programme sites; planned replacement 4.0 for programme sites, 1.0 for high duty
+
+========================================================================
+2. ONE FLEET: 3,000 PUMPS INSTALLED OVER 10 YEARS
+========================================================================
+Pumps: high duty 1,200, at programme sites 862; broken down 721, replaced as planned 916, still in service 1,363; repairs recorded 10,419
+Whole fleet, within 5 years: breakdown, Aalen-Johansen 25.5% vs one minus Kaplan-Meier 35.1%; planned replacement 34.9%; breakdowns so far 17.7% of pumps
+  at 2 years: in service 76.1%, broken down 5.9%, replaced 18.0% (sum 100.0%); one minus Kaplan-Meier: breakdown 6.7%, replacement 18.4% (sum with in service 101.2%)
+  at 5 years: in service 39.6%, broken down 25.5%, replaced 34.9% (sum 100.0%); one minus Kaplan-Meier: breakdown 35.1%, replacement 39.1% (sum with in service 113.7%)
+  at 8 years: in service 15.9%, broken down 41.8%, replaced 42.4% (sum 100.0%); one minus Kaplan-Meier: breakdown 65.8%, replacement 53.5% (sum with in service 135.3%)
+Check against scikit-survival: largest difference in the Kaplan-Meier curve for breakdown 0.0e+00
+Cause-specific Cox, breakdown: high duty hazard ratio 1.995 [1.723, 2.310], programme site hazard ratio 1.043 [0.866, 1.256]
+Cause-specific Cox, planned replacement: high duty hazard ratio 0.953, programme site hazard ratio 3.560
+Fine-Gray, breakdown: subdistribution hazard ratios high duty 1.864, programme site 0.534
+Check against scikit-survival: largest difference in cause-specific coefficients below 1e-06
+Check: with no competing events, Fine-Gray equals Cox (largest difference below 1e-08)
+  other sites: breakdown within 5 years, Aalen-Johansen 28.4%, one minus Kaplan-Meier 34.8%; Nelson-Aalen cumulative hazard of breakdown at 5 years 0.427
+  programme sites: breakdown within 5 years, Aalen-Johansen 18.6%, one minus Kaplan-Meier 36.2%; Nelson-Aalen cumulative hazard of breakdown at 5 years 0.448
+Contract prices in this fleet (EUR): true / dashboard / one cause at a time / competing risks
+  standard pump, other site             (1,282 pumps): EUR 4,223 / EUR 2,920 / EUR 5,312 / EUR 4,176; repairs: so far 2.74, mean cumulative function 4.99, in service 3.78
+  standard pump, programme site         (518 pumps): EUR 2,583 / EUR 2,085 / EUR 5,438 / EUR 2,670; repairs: so far 1.91, mean cumulative function 5.01, in service 2.39
+  high-duty pump, other site            (856 pumps): EUR 6,276 / EUR 4,658 / EUR 8,744 / EUR 6,422; repairs: so far 3.70, mean cumulative function 7.37, in service 4.89
+  high-duty pump, programme site        (344 pumps): EUR 3,888 / EUR 3,147 / EUR 8,661 / EUR 4,457; repairs: so far 2.54, mean cumulative function 7.11, in service 3.43
+  whole fleet                           (3,000 pumps): EUR 4,462 / EUR 3,297 / EUR 6,667 / EUR 4,588
+
+========================================================================
+3. 500 SIMULATED FLEETS
+========================================================================
+standard pump, other site (true EUR 4,223):
+    dashboard            mean EUR 3,002 (-28.9% off), middle 95% EUR 2,792 to EUR 3,208
+    one cause at a time  mean EUR 5,393 (27.7% off), middle 95% EUR 5,035 to EUR 5,734
+    competing risks      mean EUR 4,222 (-0.0% off), middle 95% EUR 3,948 to EUR 4,491
+standard pump, programme site (true EUR 2,583):
+    dashboard            mean EUR 1,914 (-25.9% off), middle 95% EUR 1,657 to EUR 2,191
+    one cause at a time  mean EUR 5,373 (108.0% off), middle 95% EUR 4,653 to EUR 6,228
+    competing risks      mean EUR 2,569 (-0.6% off), middle 95% EUR 2,236 to EUR 2,924
+high-duty pump, other site (true EUR 6,276):
+    dashboard            mean EUR 4,501 (-28.3% off), middle 95% EUR 4,192 to EUR 4,822
+    one cause at a time  mean EUR 8,346 (33.0% off), middle 95% EUR 7,776 to EUR 8,892
+    competing risks      mean EUR 6,276 (0.0% off), middle 95% EUR 5,885 to EUR 6,649
+high-duty pump, programme site (true EUR 3,888):
+    dashboard            mean EUR 2,918 (-24.9% off), middle 95% EUR 2,537 to EUR 3,325
+    one cause at a time  mean EUR 8,343 (114.6% off), middle 95% EUR 7,252 to EUR 9,454
+    competing risks      mean EUR 3,885 (-0.1% off), middle 95% EUR 3,361 to EUR 4,390
+Mean hazard ratios: cause-specific high duty 1.800, programme site 0.990; Fine-Gray high duty 1.679, programme site 0.457
+Cause-specific 95% intervals cover the true hazard ratio: high duty 95.4%, programme site 94.2%; Fine-Gray hazard ratio for programme sites below 1 in 100.0% of fleets
