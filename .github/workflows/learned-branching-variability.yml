@@ -1,0 +1,50 @@
+name: Test learned-branching-variability
+
+on:
+  pull_request:
+    paths:
+      - 'learned-branching-variability/**'
+      - '.github/workflows/learned-branching-variability.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'learned-branching-variability/**'
+      - '.github/workflows/learned-branching-variability.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: learned-branching-variability
+    env:
+      MPLBACKEND: Agg
+      OMP_NUM_THREADS: '1'
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: learned-branching-variability/pyproject.toml
+
+      - name: Install project
+        run: python -m pip install -e ".[dev]"
+
+      - name: Run generator, branching and statistics tests
+        run: python -m pytest -q
+
+      - name: Smoke-run the pipeline (quick mode)
+        working-directory: learned-branching-variability/experiments
+        run: |
+          python e1_collect.py --quick
+          python e2_train.py --quick
+          python e3_evaluate.py --quick
+          python e4_analyse.py --quick

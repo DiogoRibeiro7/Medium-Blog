@@ -1,0 +1,7 @@
+training rows 184,800 from 2,286 nodes; validation nodes 531; nodes where several candidates tie for the best score 20.0%
+  learned_ratio      picks a best candidate 34.8%  best in its top 5 67.2%  chosen/best SB score: mean 0.741, median 0.798
+  learned_logratio   picks a best candidate 33.5%  best in its top 5 67.2%  chosen/best SB score: mean 0.737, median 0.791
+  pseudocost         picks a best candidate 27.1%  best in its top 5 59.1%  chosen/best SB score: mean 0.657, median 0.659
+  most_fractional    picks a best candidate 14.3%  best in its top 5 33.5%  chosen/best SB score: mean 0.435, median 0.318
+  random             picks a best candidate 5.5%  best in its top 5 14.9%  chosen/best SB score: mean 0.261, median 0.154
+kept target: ratio

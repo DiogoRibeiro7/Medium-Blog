@@ -1,0 +1,42 @@
+{
+  "learned_ratio": {
+    "nodes": 531,
+    "top1": 0.3483992467043315,
+    "top5": 0.672316384180791,
+    "mean_score_ratio": 0.7406080543101706,
+    "median_score_ratio": 0.7983151299581936
+  },
+  "learned_logratio": {
+    "nodes": 531,
+    "top1": 0.3352165725047081,
+    "top5": 0.672316384180791,
+    "mean_score_ratio": 0.7366372183510469,
+    "median_score_ratio": 0.7908250434873415
+  },
+  "pseudocost": {
+    "nodes": 531,
+    "top1": 0.2711864406779661,
+    "top5": 0.591337099811676,
+    "mean_score_ratio": 0.6574419952006532,
+    "median_score_ratio": 0.6590570740046519
+  },
+  "most_fractional": {
+    "nodes": 531,
+    "top1": 0.1431261770244821,
+    "top5": 0.3352165725047081,
+    "mean_score_ratio": 0.43501116481701607,
+    "median_score_ratio": 0.3181724218066997
+  },
+  "random": {
+    "nodes": 531,
+    "top1": 0.054613935969868174,
+    "top5": 0.1487758945386064,
+    "mean_score_ratio": 0.2607822631843801,
+    "median_score_ratio": 0.15355582380209937
+  },
+  "chosen_target": "ratio",
+  "train_rows": 184800,
+  "train_nodes": 2286,
+  "valid_nodes_with_tied_best": 0.19962335216572505,
+  "valid_median_tied_best": 1.0
+}

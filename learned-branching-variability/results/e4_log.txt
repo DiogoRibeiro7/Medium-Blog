@@ -1,0 +1,23 @@
+== test_medium: set covering 750 x 1000 (larger), 20 instances
+  learned    runs 100 | solved 100.0% | SGM CPU   13.77s (wall   14.04s) | SGM nodes      865 | python 4.08 ms/call, 16% of CPU
+  pscost     runs 100 | solved 100.0% | SGM CPU   14.41s (wall   14.67s) | SGM nodes     1249
+  relpscost  runs 100 | solved 100.0% | SGM CPU   18.40s (wall   18.78s) | SGM nodes      514
+  learned    vs default over seeds [0, 1, 2, 3, 4]: CPU x0.76 [0.70, 0.84], nodes x1.57 [1.41, 1.75] | faster on 18/20 instances, 88% of runs | one seed at a time: 0.79, 0.76, 0.73, 0.78, 0.75
+  pscost     vs default over seeds [0, 1, 2, 3, 4]: CPU x0.79 [0.72, 0.88], nodes x2.20 [2.00, 2.41] | faster on 16/20 instances, 81% of runs | one seed at a time: 0.80, 0.81, 0.80, 0.78, 0.77
+  learned vs pscost: CPU x0.96 [0.93, 0.98], nodes x0.72 [0.69, 0.74] | faster on 15/20 instances | CPU net of the Python callback x0.84 [0.81, 0.88]
+  learned net of Python callback vs default: CPU x0.67 [0.63, 0.72]
+  placebo (default vs default, 20 ordered seed pairs): CPU ratio 0.97..1.03; nodes ratio 0.94..1.07
+  default across seeds, per instance: slowest/fastest CPU median 1.13x, worst 1.28x; nodes median 1.54x, worst 2.33x; within-instance sd of log CPU 0.05
+
+== test_small: set covering 500 x 1000 (training size), 20 instances
+  fullstrong runs  40 | solved 100.0% | SGM CPU   12.65s (wall   12.86s) | SGM nodes       20
+  learned    runs 100 | solved 100.0% | SGM CPU    4.55s (wall    4.64s) | SGM nodes      183 | python 4.31 ms/call, 12% of CPU
+  pscost     runs 100 | solved 100.0% | SGM CPU    4.46s (wall    4.55s) | SGM nodes      263
+  relpscost  runs 100 | solved 100.0% | SGM CPU    6.44s (wall    6.57s) | SGM nodes       66
+  learned    vs default over seeds [0, 1, 2, 3, 4]: CPU x0.75 [0.71, 0.78], nodes x1.71 [1.52, 1.92] | faster on 20/20 instances, 100% of runs | one seed at a time: 0.73, 0.76, 0.75, 0.74, 0.75
+  pscost     vs default over seeds [0, 1, 2, 3, 4]: CPU x0.73 [0.70, 0.76], nodes x2.19 [1.86, 2.60] | faster on 20/20 instances, 100% of runs | one seed at a time: 0.73, 0.73, 0.72, 0.74, 0.75
+  fullstrong vs default over seeds [0, 1]: CPU x1.80 [1.55, 2.10], nodes x0.72 [0.58, 0.85] | faster on 0/20 instances, 0% of runs | one seed at a time: 1.77, 1.82
+  learned vs pscost: CPU x1.02 [0.99, 1.04], nodes x0.78 [0.73, 0.83] | faster on 8/20 instances | CPU net of the Python callback x0.94 [0.91, 0.97]
+  learned net of Python callback vs default: CPU x0.69 [0.65, 0.73]
+  placebo (default vs default, 20 ordered seed pairs): CPU ratio 0.95..1.06; nodes ratio 0.94..1.06
+  default across seeds, per instance: slowest/fastest CPU median 1.22x, worst 1.88x; nodes median 1.69x, worst 5.17x; within-instance sd of log CPU 0.08

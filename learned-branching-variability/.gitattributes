@@ -1,0 +1,3 @@
+results/*.csv -filter -diff -merge text
+results/*.txt text
+results/*.json text
