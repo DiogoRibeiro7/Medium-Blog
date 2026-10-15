@@ -53,6 +53,7 @@ def common_sample_designs(
     quarters: list[str],
     countries: Sequence[str] = EU27,
     lag_orders: Sequence[int] = LAG_ORDERS,
+    min_quarters: int = 30,
 ) -> tuple[dict[tuple[str, int, bool], Design], list[str]]:
     """Apply one calendar-quarter intersection to *all* model specifications.
 
@@ -75,8 +76,12 @@ def common_sample_designs(
                 candidates[(geo, lags, with_participation)] = (x, y, dates)
                 overlap.intersection_update(dates)
     common_dates = [quarter for quarter in quarters if quarter in overlap]
-    if len(common_dates) < 30:
-        raise EurostatDataError("Fewer than 30 common quarters across all countries/models.")
+    if min_quarters < 12:
+        raise ValueError("At least 12 common quarters must be requested.")
+    if len(common_dates) < min_quarters:
+        raise EurostatDataError(
+            f"Fewer than {min_quarters} common quarters across all countries/models."
+        )
     aligned: dict[tuple[str, int, bool], Design] = {}
     for key, (x, y, dates) in candidates.items():
         indices = {date: i for i, date in enumerate(dates)}
@@ -115,9 +120,12 @@ def fit_comparisons(
     countries: Sequence[str] = EU27,
     lag_orders: Sequence[int] = LAG_ORDERS,
     hac_bandwidth: int = 4,
+    min_quarters: int = 30,
 ) -> tuple[list[ComparisonRow], list[str]]:
     """Fit all specifications and reject, rather than hide, invalid models."""
-    aligned, common_dates = common_sample_designs(panel, quarters, countries, lag_orders)
+    aligned, common_dates = common_sample_designs(
+        panel, quarters, countries, lag_orders, min_quarters=min_quarters
+    )
     results: list[ComparisonRow] = []
     for geo in countries:
         for lags in lag_orders:
