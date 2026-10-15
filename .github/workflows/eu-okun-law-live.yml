@@ -19,19 +19,23 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Install study package
+      - name: Install Poetry
+        run: pipx install poetry==2.5.1
+      - name: Install locked study package (project-local .venv)
         working-directory: eu-okun-law
-        run: python -m pip install -e .
+        run: |
+          poetry check --lock
+          poetry install --no-interaction
       - name: Fetch actual quarterly Eurostat responses
         working-directory: eu-okun-law
-        run: eu-okun fetch --start-quarter 2008-Q1 --end-quarter 2026-Q2 --output-dir data
+        run: poetry run eu-okun fetch --start-quarter 2008-Q1 --end-quarter 2026-Q2 --output-dir data
       - name: Audit coverage and provenance
         working-directory: eu-okun-law
-        run: eu-okun audit --output-dir data
+        run: poetry run eu-okun audit --output-dir data
       - name: Show source coverage by country
         working-directory: eu-okun-law
         run: |
-          python - <<'PY'
+          poetry run python - <<'PY'
           import json
           from pathlib import Path
           report = json.loads(Path("data/coverage_audit.json").read_text())
