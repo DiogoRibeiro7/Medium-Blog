@@ -17,6 +17,8 @@
 - [x] Implement distributed-lag OLS with HAC uncertainty; lags 0, 1, 2, 4 (real-data execution pending).
 - [x] Implement paired specifications with/without participation (real-data comparison pending).
 - [ ] Time-ordered out-of-sample forecasting against persistence.
+- [x] Implement common-sample cumulative coefficient HAC sensitivity and report (live verification pending).
+- [ ] Evaluate country differences with dependence-aware uncertainty and regime sensitivity.
 - [ ] Document preliminary associations without causal claims.
 
 ## Phase 2 — Hierarchical Bayes
