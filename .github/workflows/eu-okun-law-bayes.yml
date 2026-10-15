@@ -1,0 +1,59 @@
+name: EU Okun hierarchical Bayes
+
+# Expensive MCMC sampling, kept out of the ordinary pull-request checks. It runs only
+# when started by hand or when a pull request touching the study is labelled
+# `bayesian-sampling`.
+on:
+  workflow_dispatch:
+    inputs:
+      specs:
+        description: "Comma-separated specification names, or 'all'"
+        default: all
+  pull_request:
+    types: [labeled]
+    paths:
+      - "eu-okun-law/**"
+      - ".github/workflows/eu-okun-law-bayes.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  sample:
+    if: github.event_name == 'workflow_dispatch' || github.event.label.name == 'bayesian-sampling'
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install Poetry
+        run: pipx install poetry==2.5.1
+      - name: Install locked study environment (project-local .venv)
+        working-directory: eu-okun-law
+        run: |
+          poetry check --lock
+          poetry install --no-interaction --extras "bayes report"
+      - name: Fit the pre-registered specifications on the frozen snapshot
+        working-directory: eu-okun-law
+        env:
+          SPECS: ${{ github.event.inputs.specs || 'all' }}
+        run: >-
+          poetry run eu-okun bayes-fit --data-dir snapshots/eurostat-2026-10-15
+          --output-dir results/bayes --specs "$SPECS"
+      - name: Report from the posterior draws
+        working-directory: eu-okun-law
+        run: >-
+          poetry run eu-okun bayes-report --fits-dir results/bayes
+          --output-dir results/bayes-report
+      - name: Archive posterior draws, diagnostics and report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: eu-okun-hierarchical-bayes
+          path: |
+            eu-okun-law/results/bayes/
+            eu-okun-law/results/bayes-report/
+          retention-days: 30
+          if-no-files-found: error
