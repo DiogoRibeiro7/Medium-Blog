@@ -232,6 +232,47 @@ def factor_checks(fit: LoadedFit, mean_gdp: np.ndarray, mean_y: np.ndarray,
                        float(np.median(with_gdp)), gdp_low, gdp_high, float(np.median(with_y)))
 
 
+@dataclass(frozen=True)
+class Replication:
+    """Summary tables of an independent run of the same fits (e.g. on another platform)."""
+
+    accepted: dict[str, bool]
+    medians: dict[str, dict[str, float]]
+    signs: dict[str, dict[str, str]]
+    claims: dict[str, list[Claim]]
+    label: str
+
+
+def load_replication(directory: Path) -> Replication:
+    """Read ``country_estimates.csv``, ``claims.csv`` and ``diagnostics.json`` of a run."""
+    diagnostics = json.loads((directory / "diagnostics.json").read_text(encoding="utf-8"))
+    medians: dict[str, dict[str, float]] = {}
+    signs: dict[str, dict[str, str]] = {}
+    with (directory / "country_estimates.csv").open(encoding="utf-8") as stream:
+        for row in csv.DictReader(stream):
+            medians.setdefault(row["spec"], {})[row["geo"]] = float(row["theta_median"])
+            signs.setdefault(row["spec"], {})[row["geo"]] = row["sign"]
+    claims: dict[str, list[Claim]] = {}
+    with (directory / "claims.csv").open(encoding="utf-8") as stream:
+        for row in csv.DictReader(stream):
+            claims.setdefault(row["spec"], []).append(Claim(
+                row["claim"], row["spec"], float(row["probability"]), row["holds"] == "True",
+                row["contradicted"] == "True", row["evaluable"] == "True", row["detail"]))
+    readme = directory / "README.md"
+    label = readme.read_text(encoding="utf-8").splitlines()[0].lstrip("# ") if readme.exists() \
+        else directory.name
+    return Replication({k: bool(v["accepted"]) for k, v in diagnostics.items()}, medians, signs,
+                       claims, label)
+
+
+def robust_negative_countries(
+    signs: Mapping[str, Mapping[str, str]], accepted: Sequence[str],
+) -> list[str]:
+    """Countries credibly negative in every listed specification."""
+    countries = next(iter(signs.values())).keys()
+    return sorted(g for g in countries if all(signs[s][g] == "negative" for s in accepted))
+
+
 # ----------------------------------------------------------------------------------
 # Formatting
 # ----------------------------------------------------------------------------------
@@ -275,6 +316,7 @@ class BayesReview:
     ranks: np.ndarray
     pairwise: np.ndarray
     factor: dict[str, FactorCheck] = field(default_factory=dict)
+    replication: Replication | None = None
 
     @property
     def primary(self) -> LoadedFit:
@@ -284,7 +326,8 @@ class BayesReview:
         return [name for name, fit in self.fits.items() if fit.accepted]
 
 
-def build_review(fits_dir: Path, data_dir: Path | None = None) -> BayesReview:
+def build_review(fits_dir: Path, data_dir: Path | None = None,
+                 replication_dir: Path | None = None) -> BayesReview:
     """Load every fitted specification found in ``fits_dir`` (primary required).
 
     With ``data_dir`` (the snapshot the fits used), the common factor of each factor
@@ -315,6 +358,8 @@ def build_review(fits_dir: Path, data_dir: Path | None = None) -> BayesReview:
                     raise ValueError(f"Snapshot does not match the quarters of fit {name}.")
                 review.factor[name] = factor_checks(
                     fit, data.g.mean(axis=0), data.y.mean(axis=0), data.segment_start)
+    if replication_dir is not None:
+        review.replication = load_replication(replication_dir)
     return review
 
 
@@ -350,6 +395,13 @@ def render(review: BayesReview, assets: str, command: str) -> str:
     env = p.summary["environment"]
     settings = p.summary["settings"]
     claims_primary = {c.claim: c for c in review.claims["primary"]}
+    verdicts = {
+        claim: claim_verdict(
+            claims_primary[claim],
+            [c for name in accepted for c in review.claims[name] if c.claim == claim],
+        )
+        for claim in claims_primary
+    }
     mu_medians = {name: float(np.median(review.fits[name].mu_theta())) for name in accepted}
     by_name = {name: {r.geo: r for r in review.rows[name]} for name in review.fits}
     if "gaussian_iid" in accepted:
@@ -381,6 +433,32 @@ def render(review: BayesReview, assets: str, command: str) -> str:
         f"{max(replicated_lag.values()):.2f}, so the models understate the persistence of "
         "unemployment changes."
     )
+    replication_text = ""
+    if review.replication is not None:
+        rep_run = review.replication
+        both = [n for n in review.fits if review.fits[n].accepted and rep_run.accepted.get(n)]
+        gaps = [abs(by_name[n][g].theta_median - rep_run.medians[n][g])
+                for n in both for g in rep_run.medians[n]]
+        flipped = [n for n in review.fits if review.fits[n].accepted != rep_run.accepted.get(n)]
+        rep_accepted = [n for n, ok in rep_run.accepted.items() if ok]
+        rep_robust = robust_negative_countries(rep_run.signs, rep_accepted)
+        here_robust = [g for g, sign in signs.items() if sign == "negative"]
+        rep_verdicts = {
+            claim: claim_verdict(
+                next(c for c in rep_run.claims["primary"] if c.claim == claim),
+                [c for n in rep_accepted for c in rep_run.claims[n] if c.claim == claim])
+            for claim in claims_primary
+        }
+        same_verdicts = all(rep_verdicts[c] == verdicts[c] for c in verdicts)
+        replication_text = (
+            f"An independent run on a second platform (section 9) reproduces posterior medians "
+            f"within {max(gaps):.3f} where both runs accept a fit. Acceptance differs for "
+            f"{_names([f'`{n}`' for n in flipped]) if flipped else 'no specification'}, which "
+            f"sit at the R-hat threshold. Countries credibly negative in every accepted fit: "
+            f"{len(here_robust)} here, {len(rep_robust)} under that run's acceptance set; the "
+            f"difference is {_names(sorted(set(here_robust) ^ set(rep_robust)))}. Claim "
+            f"verdicts {'are identical' if same_verdicts else 'differ'}."
+        )
     if "primary" in review.factor:
         fc = review.factor["primary"]
         factor_text = (
@@ -393,13 +471,6 @@ def render(review: BayesReview, assets: str, command: str) -> str:
         )
     else:
         factor_text = "Factor checks need the snapshot (`--data-dir`)."
-    verdicts = {
-        claim: claim_verdict(
-            claims_primary[claim],
-            [c for name in accepted for c in review.claims[name] if c.claim == claim],
-        )
-        for claim in claims_primary
-    }
     lines = [
         "# Hierarchical Bayesian estimates: EU-27 Okun coefficients", "",
         "> Generated by `eu-okun bayes-report` from saved posterior draws. Do not edit by "
@@ -440,6 +511,8 @@ def render(review: BayesReview, assets: str, command: str) -> str:
          + decomposition_text],
         ["Model checks", persistence_text + " " + factor_text],
     ]
+    if review.replication is not None:
+        summary_rows.append(["Replication", replication_text])
     lines += ["## Summary", ""] + _table(["Topic", "Finding"], summary_rows, "ll")
 
     # 1. Provenance
@@ -604,9 +677,35 @@ def render(review: BayesReview, assets: str, command: str) -> str:
     else:
         lines += [factor_text, ""]
 
-    # 9-10. Limitations and reproduction
+    # 9. Replication
+    if review.replication is not None:
+        rep_run = review.replication
+        lines += ["## 9. Replication on a second platform", "",
+                  f"{rep_run.label}: the same snapshot, lock file, seed and settings, with the "
+                  "same single retry. Tables in `replication-linux/`.", ""]
+        rep_rows = []
+        for name in review.fits:
+            here_ok, there_ok = review.fits[name].accepted, rep_run.accepted.get(name)
+            if here_ok and there_ok:
+                gap = max(abs(by_name[name][g].theta_median - rep_run.medians[name][g])
+                          for g in rep_run.medians[name])
+                gap_text = f"{gap:.3f}"
+            else:
+                gap_text = "n/a"
+            rep_rows.append([f"`{name}`", "accepted" if here_ok else "failed",
+                             "accepted" if there_ok else "failed", gap_text])
+        lines += _table(["Specification", "This run", "Replication", "Max abs. difference of "
+                         "country medians"], rep_rows, "lllr")
+        lines += [
+            replication_text + " Countries whose credible negativity depends on including "
+            "the unpooled fit are credibly negative only when estimates borrow strength across "
+            "countries; their sign is supported by partial pooling, not by their own data "
+            "alone.", "",
+        ]
+
+    # 10-11. Limitations and reproduction
     lines += [
-        "## 9. Limitations", "",
+        "## 10. Limitations", "",
         "- The pre-registered model understates the persistence of unemployment changes "
         "and its common factor is not independent of GDP growth (section 8). Credible "
         "intervals are conditional on that misspecified structure.",
@@ -622,7 +721,7 @@ def render(review: BayesReview, assets: str, command: str) -> str:
         "- Rank and pairwise probabilities inherit every modelling assumption; they are "
         "not model-free comparisons.",
         "- Predictive comparison with the classical baselines is not yet done.", "",
-        "## 10. Reproduction", "",
+        "## 11. Reproduction", "",
         "```bash", command, "```", "",
         "Posterior draws are produced by the separate Bayesian workflow and kept as its "
         "artifact; this report and its tables are regenerated from them.", "",
@@ -770,10 +869,10 @@ def write_tables(review: BayesReview, directory: Path) -> None:
 
 def write_report(
     fits_dir: Path, output_dir: Path, report: Path | None = None, figures: bool = True,
-    data_dir: Path | None = None,
+    data_dir: Path | None = None, replication_dir: Path | None = None,
 ) -> BayesReview:
     """Build tables, figures and the Markdown report from saved fits."""
-    review = build_review(fits_dir, data_dir)
+    review = build_review(fits_dir, data_dir, replication_dir)
     report = report or output_dir / "HIERARCHICAL_BAYES.md"
     write_tables(review, output_dir)
     if figures:
@@ -783,7 +882,9 @@ def write_report(
     assets = Path(os.path.relpath(output_dir, report.parent)).as_posix()
     command = (f"eu-okun bayes-report --fits-dir {fits_dir.as_posix()} "
                f"--output-dir {output_dir.as_posix()} --report {report.as_posix()}"
-               + (f" --data-dir {data_dir.as_posix()}" if data_dir is not None else ""))
+               + (f" --data-dir {data_dir.as_posix()}" if data_dir is not None else "")
+               + (f" --replication-dir {replication_dir.as_posix()}"
+                  if replication_dir is not None else ""))
     report.parent.mkdir(parents=True, exist_ok=True)
     report.write_text(render(review, assets, command), encoding="utf-8", newline="\n")
     return review

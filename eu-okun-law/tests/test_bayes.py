@@ -323,6 +323,13 @@ def test_report_renders_from_saved_fits(tmp_path: Path) -> None:
     for name in ("country_estimates.csv", "rank_probabilities.csv", "pairwise_probabilities.csv",
                  "claims.csv", "diagnostics.json", "shrinkage.png", "pairwise.png"):
         assert (tmp_path / "out" / name).exists()
+    # A replication run with the same tables: identical estimates, identical acceptance.
+    again = write_report(tmp_path / "fits", tmp_path / "out2", figures=False,
+                         replication_dir=tmp_path / "out")
+    assert again.replication is not None
+    text = (tmp_path / "out2" / "HIERARCHICAL_BAYES.md").read_text(encoding="utf-8")
+    assert "## 9. Replication on a second platform" in text
+    assert "within 0.000" in text and "Claim verdicts are identical" in text
 
 
 def test_factor_checks_detect_persistent_gdp_correlated_factor() -> None:

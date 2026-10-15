@@ -79,6 +79,8 @@ def main(argv: Sequence[str] | None = None) -> int:
     bayes_report.add_argument("--no-figures", action="store_true")
     bayes_report.add_argument("--data-dir", type=Path, default=None,
                               help="Snapshot used by the fits (enables the factor checks)")
+    bayes_report.add_argument("--replication-dir", type=Path, default=None,
+                              help="Summary tables of an independent run to compare with")
     args = parser.parse_args(argv)
     if args.command == "fetch":
         try:
@@ -169,7 +171,8 @@ def main(argv: Sequence[str] | None = None) -> int:
         output = args.output_dir
         try:
             bayes_review = write_report(args.fits_dir, output, args.report,
-                                        figures=not args.no_figures, data_dir=args.data_dir)
+                                        figures=not args.no_figures, data_dir=args.data_dir,
+                                        replication_dir=args.replication_dir)
         except (FileNotFoundError, ValueError, OSError, KeyError) as exc:
             parser.exit(2, f"Bayesian report failed: {exc}\n")
         print(f"Report for {len(bayes_review.fits)} fits written to {args.report or output}")
