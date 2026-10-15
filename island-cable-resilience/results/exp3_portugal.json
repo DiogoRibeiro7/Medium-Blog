@@ -1,0 +1,520 @@
+{
+ "scenarios": {
+  "in service (Sept 2026 snapshot)": [
+   {
+    "island": "S\u00e3o Miguel",
+    "cables": [
+     "azores-fiber-optic-system-afos",
+     "cam-ring",
+     "columbus-iii-azores-portugal"
+    ],
+    "landings": [
+     "Ponta Delgada, Portugal"
+    ],
+    "k": 3,
+    "lambda": 2,
+    "N_1km": 1,
+    "N_10km": 1,
+    "N_50km": 1,
+    "independent": {
+     "hours_per_year": 0.013171068786811749,
+     "episodes_per_year": 3.297133440125892e-05,
+     "faults_per_year": 0.07747309915735127,
+     "min_cut_size": 2,
+     "n_cuts": 1,
+     "upper_bound_hours_if_no_small_cut": null
+    },
+    "incident": {
+     "hours_per_year": 4.460533991974023,
+     "single_incident_hours_per_year": 4.447362923187211,
+     "episodes_per_year": 0.00602677489060786,
+     "incidents_per_year": 0.8501849015895888,
+     "p_isolating": 0.00705,
+     "mean_isolation_days": 30.916393359980585,
+     "mean_segments_per_incident": 0.091125,
+     "faults_per_year": 0.07747309915735127,
+     "n_isolating_samples": 1410
+    }
+   },
+   {
+    "island": "Terceira",
+    "cables": [
+     "azores-fiber-optic-system-afos"
+    ],
+    "landings": [
+     "Angra do Heroismo, Portugal"
+    ],
+    "k": 1,
+    "lambda": 2,
+    "N_1km": 1,
+    "N_10km": 1,
+    "N_50km": 1,
+    "independent": {
+     "hours_per_year": 0.02653360631024224,
+     "episodes_per_year": 6.642824711213869e-05,
+     "faults_per_year": 0.05512836399503243,
+     "min_cut_size": 2,
+     "n_cuts": 4,
+     "upper_bound_hours_if_no_small_cut": null
+    },
+    "incident": {
+     "hours_per_year": 3.9806590184169663,
+     "single_incident_hours_per_year": 3.954125412106724,
+     "episodes_per_year": 0.005331276972620414,
+     "incidents_per_year": 0.782295501561408,
+     "p_isolating": 0.00673,
+     "mean_isolation_days": 31.293439582832676,
+     "mean_segments_per_incident": 0.07047,
+     "faults_per_year": 0.05512836399503243,
+     "n_isolating_samples": 1346
+    }
+   },
+   {
+    "island": "Faial",
+    "cables": [
+     "azores-fiber-optic-system-afos",
+     "flores-corvo-cable-system"
+    ],
+    "landings": [
+     "Faial, Portugal"
+    ],
+    "k": 2,
+    "lambda": 2,
+    "N_1km": 1,
+    "N_10km": 1,
+    "N_50km": 1,
+    "independent": {
+     "hours_per_year": 0.008138674285624072,
+     "episodes_per_year": 2.042009227511628e-05,
+     "faults_per_year": 0.06957740576780708,
+     "min_cut_size": 2,
+     "n_cuts": 10,
+     "upper_bound_hours_if_no_small_cut": null
+    },
+    "incident": {
+     "hours_per_year": 3.519412712259825,
+     "single_incident_hours_per_year": 3.511274037974201,
+     "episodes_per_year": 0.004418444530545448,
+     "incidents_per_year": 0.7323937449242851,
+     "p_isolating": 0.006005,
+     "mean_isolation_days": 33.26563709889939,
+     "mean_segments_per_incident": 0.095,
+     "faults_per_year": 0.06957740576780709,
+     "n_isolating_samples": 1201
+    }
+   },
+   {
+    "island": "Madeira",
+    "cables": [
+     "cam-ring",
+     "continente-madeira",
+     "ellalink"
+    ],
+    "landings": [
+     "Funchal, Portugal"
+    ],
+    "k": 3,
+    "lambda": 3,
+    "N_1km": 1,
+    "N_10km": 1,
+    "N_50km": 1,
+    "independent": {
+     "hours_per_year": 1.3346350045671828e-05,
+     "episodes_per_year": 5.011767757211718e-08,
+     "faults_per_year": 0.06386825323517493,
+     "min_cut_size": 3,
+     "n_cuts": 2,
+     "upper_bound_hours_if_no_small_cut": null
+    },
+    "incident": {
+     "hours_per_year": 3.034392500323512,
+     "single_incident_hours_per_year": 3.0343791539734664,
+     "episodes_per_year": 0.004103958727111334,
+     "incidents_per_year": 0.7523205516835495,
+     "p_isolating": 0.005455,
+     "mean_isolation_days": 30.807816835457988,
+     "mean_segments_per_incident": 0.084895,
+     "faults_per_year": 0.06386825323517493,
+     "n_isolating_samples": 1091
+    }
+   },
+   {
+    "island": "Porto Santo",
+    "cables": [
+     "cam-ring"
+    ],
+    "landings": [
+     "Porto Santo, Portugal"
+    ],
+    "k": 1,
+    "lambda": 1,
+    "N_1km": 1,
+    "N_10km": 1,
+    "N_50km": 1,
+    "independent": {
+     "hours_per_year": 8.65783883593684,
+     "episodes_per_year": 0.010834083925372448,
+     "faults_per_year": 0.0650537003548895,
+     "min_cut_size": 1,
+     "n_cuts": 3,
+     "upper_bound_hours_if_no_small_cut": null
+    },
+    "incident": {
+     "hours_per_year": 10.015565761622037,
+     "single_incident_hours_per_year": 10.015558527194159,
+     "episodes_per_year": 0.012405061416270645,
+     "incidents_per_year": 0.7459431298576941,
+     "p_isolating": 0.01663,
+     "mean_isolation_days": 33.640772789384684,
+     "mean_segments_per_incident": 0.08721,
+     "faults_per_year": 0.0650537003548895,
+     "n_isolating_samples": 3326
+    }
+   }
+  ],
+  "plus New CAM Ring and Nuvem": [
+   {
+    "island": "S\u00e3o Miguel",
+    "cables": [
+     "azores-fiber-optic-system-afos",
+     "cam-ring",
+     "columbus-iii-azores-portugal",
+     "new-cam-ring",
+     "nuvem"
+    ],
+    "landings": [
+     "Ponta Delgada, Portugal",
+     "S\u00e3o Miguel, Portugal"
+    ],
+    "k": 5,
+    "lambda": 5,
+    "N_1km": 1,
+    "N_10km": 1,
+    "N_50km": 1,
+    "independent": {
+     "hours_per_year": 0.0,
+     "episodes_per_year": 0,
+     "faults_per_year": 0.1400482349661809,
+     "min_cut_size": 0,
+     "n_cuts": 0,
+     "upper_bound_hours_if_no_small_cut": 8.145451091854026e-08
+    },
+    "incident": {
+     "hours_per_year": 3.2904469355682893,
+     "single_incident_hours_per_year": 3.2904469355682893,
+     "episodes_per_year": 0.004499899867204909,
+     "incidents_per_year": 0.8107927688657495,
+     "p_isolating": 0.00555,
+     "mean_isolation_days": 30.467779216127074,
+     "mean_segments_per_incident": 0.17273,
+     "faults_per_year": 0.1400482349661809,
+     "n_isolating_samples": 1110
+    }
+   },
+   {
+    "island": "Terceira",
+    "cables": [
+     "azores-fiber-optic-system-afos",
+     "new-cam-ring"
+    ],
+    "landings": [
+     "Angra do Heroismo, Portugal",
+     "Terceira, Portugal"
+    ],
+    "k": 2,
+    "lambda": 4,
+    "N_1km": 2,
+    "N_10km": 1,
+    "N_50km": 1,
+    "independent": {
+     "hours_per_year": 4.6516966851071416e-08,
+     "episodes_per_year": 2.329065526096342e-10,
+     "faults_per_year": 0.08563881816961649,
+     "min_cut_size": 4,
+     "n_cuts": 2,
+     "upper_bound_hours_if_no_small_cut": null
+    },
+    "incident": {
+     "hours_per_year": 2.896965647702756,
+     "single_incident_hours_per_year": 2.8969656011857894,
+     "episodes_per_year": 0.004043208967367686,
+     "incidents_per_year": 0.8127052732585194,
+     "p_isolating": 0.004975,
+     "mean_isolation_days": 29.854234093975197,
+     "mean_segments_per_incident": 0.105375,
+     "faults_per_year": 0.08563881816961648,
+     "n_isolating_samples": 995
+    }
+   },
+   {
+    "island": "Faial",
+    "cables": [
+     "azores-fiber-optic-system-afos",
+     "flores-corvo-cable-system"
+    ],
+    "landings": [
+     "Faial, Portugal"
+    ],
+    "k": 2,
+    "lambda": 2,
+    "N_1km": 1,
+    "N_10km": 1,
+    "N_50km": 1,
+    "independent": {
+     "hours_per_year": 0.008138674285624072,
+     "episodes_per_year": 2.042009227511628e-05,
+     "faults_per_year": 0.06957740576780708,
+     "min_cut_size": 2,
+     "n_cuts": 10,
+     "upper_bound_hours_if_no_small_cut": null
+    },
+    "incident": {
+     "hours_per_year": 3.519412712259825,
+     "single_incident_hours_per_year": 3.511274037974201,
+     "episodes_per_year": 0.004418444530545448,
+     "incidents_per_year": 0.7323937449242851,
+     "p_isolating": 0.006005,
+     "mean_isolation_days": 33.26563709889939,
+     "mean_segments_per_incident": 0.095,
+     "faults_per_year": 0.06957740576780709,
+     "n_isolating_samples": 1201
+    }
+   },
+   {
+    "island": "Madeira",
+    "cables": [
+     "cam-ring",
+     "continente-madeira",
+     "ellalink",
+     "new-cam-ring"
+    ],
+    "landings": [
+     "Funchal, Portugal",
+     "Machico, Portugal"
+    ],
+    "k": 4,
+    "lambda": 5,
+    "N_1km": 2,
+    "N_10km": 1,
+    "N_50km": 1,
+    "independent": {
+     "hours_per_year": 0.0,
+     "episodes_per_year": 0,
+     "faults_per_year": 0.0959863050366968,
+     "min_cut_size": 0,
+     "n_cuts": 0,
+     "upper_bound_hours_if_no_small_cut": 2.3125903210157215e-09
+    },
+    "incident": {
+     "hours_per_year": 2.183053973680517,
+     "single_incident_hours_per_year": 2.183053973680517,
+     "episodes_per_year": 0.002900685042317761,
+     "incidents_per_year": 0.8371385403514461,
+     "p_isolating": 0.003465,
+     "mean_isolation_days": 31.358310505854558,
+     "mean_segments_per_incident": 0.11466,
+     "faults_per_year": 0.0959863050366968,
+     "n_isolating_samples": 693
+    }
+   },
+   {
+    "island": "Porto Santo",
+    "cables": [
+     "cam-ring"
+    ],
+    "landings": [
+     "Porto Santo, Portugal"
+    ],
+    "k": 1,
+    "lambda": 1,
+    "N_1km": 1,
+    "N_10km": 1,
+    "N_50km": 1,
+    "independent": {
+     "hours_per_year": 8.657831601508962,
+     "episodes_per_year": 0.010834056758635253,
+     "faults_per_year": 0.08997123984529992,
+     "min_cut_size": 1,
+     "n_cuts": 1,
+     "upper_bound_hours_if_no_small_cut": null
+    },
+    "incident": {
+     "hours_per_year": 10.028991987442403,
+     "single_incident_hours_per_year": 10.028991987442403,
+     "episodes_per_year": 0.012638075163673771,
+     "incidents_per_year": 0.7599564139310747,
+     "p_isolating": 0.01663,
+     "mean_isolation_days": 33.06473974332348,
+     "mean_segments_per_incident": 0.11839,
+     "faults_per_year": 0.08997123984529994,
+     "n_isolating_samples": 3326
+    }
+   }
+  ],
+  "after the old ring retires": [
+   {
+    "island": "S\u00e3o Miguel",
+    "cables": [
+     "azores-fiber-optic-system-afos",
+     "new-cam-ring",
+     "nuvem"
+    ],
+    "landings": [
+     "Ponta Delgada, Portugal",
+     "S\u00e3o Miguel, Portugal"
+    ],
+    "k": 3,
+    "lambda": 3,
+    "N_1km": 1,
+    "N_10km": 1,
+    "N_50km": 1,
+    "independent": {
+     "hours_per_year": 0.0,
+     "episodes_per_year": 0,
+     "faults_per_year": 0.11314915414632153,
+     "min_cut_size": 0,
+     "n_cuts": 0,
+     "upper_bound_hours_if_no_small_cut": 1.810100242634228e-08
+    },
+    "incident": {
+     "hours_per_year": 3.7728753304596587,
+     "single_incident_hours_per_year": 3.7728753304596587,
+     "episodes_per_year": 0.004944716767337626,
+     "incidents_per_year": 0.8159598625969678,
+     "p_isolating": 0.00606,
+     "mean_isolation_days": 31.79214223301106,
+     "mean_segments_per_incident": 0.13867,
+     "faults_per_year": 0.11314915414632153,
+     "n_isolating_samples": 1212
+    }
+   },
+   {
+    "island": "Terceira",
+    "cables": [
+     "azores-fiber-optic-system-afos",
+     "new-cam-ring"
+    ],
+    "landings": [
+     "Angra do Heroismo, Portugal",
+     "Terceira, Portugal"
+    ],
+    "k": 2,
+    "lambda": 3,
+    "N_1km": 2,
+    "N_10km": 1,
+    "N_50km": 1,
+    "independent": {
+     "hours_per_year": 4.6516966851071416e-08,
+     "episodes_per_year": 2.329065526096342e-10,
+     "faults_per_year": 0.08563881816961649,
+     "min_cut_size": 4,
+     "n_cuts": 2,
+     "upper_bound_hours_if_no_small_cut": null
+    },
+    "incident": {
+     "hours_per_year": 2.896965647702756,
+     "single_incident_hours_per_year": 2.8969656011857894,
+     "episodes_per_year": 0.004043208967367686,
+     "incidents_per_year": 0.8127052732585194,
+     "p_isolating": 0.004975,
+     "mean_isolation_days": 29.854234093975197,
+     "mean_segments_per_incident": 0.105375,
+     "faults_per_year": 0.08563881816961648,
+     "n_isolating_samples": 995
+    }
+   },
+   {
+    "island": "Faial",
+    "cables": [
+     "azores-fiber-optic-system-afos",
+     "flores-corvo-cable-system"
+    ],
+    "landings": [
+     "Faial, Portugal"
+    ],
+    "k": 2,
+    "lambda": 2,
+    "N_1km": 1,
+    "N_10km": 1,
+    "N_50km": 1,
+    "independent": {
+     "hours_per_year": 0.008138674285624072,
+     "episodes_per_year": 2.042009227511628e-05,
+     "faults_per_year": 0.06957740576780708,
+     "min_cut_size": 2,
+     "n_cuts": 10,
+     "upper_bound_hours_if_no_small_cut": null
+    },
+    "incident": {
+     "hours_per_year": 3.519412712259825,
+     "single_incident_hours_per_year": 3.511274037974201,
+     "episodes_per_year": 0.004418444530545448,
+     "incidents_per_year": 0.7323937449242851,
+     "p_isolating": 0.006005,
+     "mean_isolation_days": 33.26563709889939,
+     "mean_segments_per_incident": 0.095,
+     "faults_per_year": 0.06957740576780709,
+     "n_isolating_samples": 1201
+    }
+   },
+   {
+    "island": "Madeira",
+    "cables": [
+     "ellalink",
+     "new-cam-ring"
+    ],
+    "landings": [
+     "Funchal, Portugal",
+     "Machico, Portugal"
+    ],
+    "k": 2,
+    "lambda": 3,
+    "N_1km": 2,
+    "N_10km": 1,
+    "N_50km": 1,
+    "independent": {
+     "hours_per_year": 1.429310319507181e-05,
+     "episodes_per_year": 5.367834127267492e-08,
+     "faults_per_year": 0.05632661574451889,
+     "min_cut_size": 3,
+     "n_cuts": 2,
+     "upper_bound_hours_if_no_small_cut": null
+    },
+    "incident": {
+     "hours_per_year": 2.2478509164759486,
+     "single_incident_hours_per_year": 2.2478366233727534,
+     "episodes_per_year": 0.0029189458275188395,
+     "incidents_per_year": 0.8423931166457623,
+     "p_isolating": 0.003465,
+     "mean_isolation_days": 32.08746829977526,
+     "mean_segments_per_incident": 0.066865,
+     "faults_per_year": 0.056326615744518894,
+     "n_isolating_samples": 693
+    }
+   },
+   {
+    "island": "Porto Santo",
+    "cables": [],
+    "k": 0,
+    "note": "no cable lands here"
+   }
+  ]
+ },
+ "params": {
+  "faults_per_km_year": 0.00013333333333333334,
+  "regional_share": 0.1,
+  "local_median_km": 0.3,
+  "regional_median_km": 15.0,
+  "radius_sigma": 0.7,
+  "radius_cap_km": 150.0,
+  "wait_median_days": 21.0,
+  "wait_sigma": 0.7,
+  "fix_days": [
+   3.0,
+   10.0
+  ],
+  "zone_km": 100.0,
+  "samples": 200000,
+  "seed": 7
+ }
+}

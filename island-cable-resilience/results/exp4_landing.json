@@ -1,0 +1,101 @@
+{
+ "scenarios": {
+  "plus New CAM Ring and Nuvem, Terceira leg landed on the north coast": [
+   {
+    "island": "S\u00e3o Miguel",
+    "cables": [
+     "azores-fiber-optic-system-afos",
+     "cam-ring",
+     "columbus-iii-azores-portugal",
+     "new-cam-ring",
+     "nuvem"
+    ],
+    "landings": [
+     "Ponta Delgada, Portugal",
+     "Ribeira Grande (hypothetical), Portugal",
+     "S\u00e3o Miguel, Portugal"
+    ],
+    "k": 5,
+    "lambda": 5,
+    "N_1km": 2,
+    "N_10km": 1,
+    "N_50km": 1,
+    "independent": {
+     "hours_per_year": 0.0,
+     "episodes_per_year": 0,
+     "faults_per_year": 0.14249641191048662,
+     "min_cut_size": 0,
+     "n_cuts": 0,
+     "upper_bound_hours_if_no_small_cut": 8.145384025129933e-08
+    },
+    "incident": {
+     "hours_per_year": 2.625111226582753,
+     "single_incident_hours_per_year": 2.625111226582753,
+     "episodes_per_year": 0.0034788280650309036,
+     "incidents_per_year": 0.903591705202832,
+     "p_isolating": 0.00385,
+     "mean_isolation_days": 31.44151777445672,
+     "mean_segments_per_incident": 0.1577,
+     "faults_per_year": 0.14249641191048662,
+     "n_isolating_samples": 770
+    }
+   }
+  ],
+  "after the old ring retires, Terceira leg landed on the north coast": [
+   {
+    "island": "S\u00e3o Miguel",
+    "cables": [
+     "azores-fiber-optic-system-afos",
+     "new-cam-ring",
+     "nuvem"
+    ],
+    "landings": [
+     "Ponta Delgada, Portugal",
+     "Ribeira Grande (hypothetical), Portugal",
+     "S\u00e3o Miguel, Portugal"
+    ],
+    "k": 3,
+    "lambda": 3,
+    "N_1km": 2,
+    "N_10km": 1,
+    "N_50km": 1,
+    "independent": {
+     "hours_per_year": 0.0,
+     "episodes_per_year": 0,
+     "faults_per_year": 0.11490083376411706,
+     "min_cut_size": 0,
+     "n_cuts": 0,
+     "upper_bound_hours_if_no_small_cut": 1.8100853389177626e-08
+    },
+    "incident": {
+     "hours_per_year": 2.551209051494705,
+     "single_incident_hours_per_year": 2.551209051494705,
+     "episodes_per_year": 0.0035283723392560383,
+     "incidents_per_year": 0.9058722308744642,
+     "p_isolating": 0.003895,
+     "mean_isolation_days": 30.127312801694355,
+     "mean_segments_per_incident": 0.12684,
+     "faults_per_year": 0.11490083376411706,
+     "n_isolating_samples": 779
+    }
+   }
+  ]
+ },
+ "params": {
+  "faults_per_km_year": 0.00013333333333333334,
+  "regional_share": 0.1,
+  "local_median_km": 0.3,
+  "regional_median_km": 15.0,
+  "radius_sigma": 0.7,
+  "radius_cap_km": 150.0,
+  "wait_median_days": 21.0,
+  "wait_sigma": 0.7,
+  "fix_days": [
+   3.0,
+   10.0
+  ],
+  "zone_km": 100.0,
+  "samples": 200000,
+  "seed": 7
+ }
+}

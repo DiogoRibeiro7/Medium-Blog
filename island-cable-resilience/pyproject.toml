@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "island-cable-resilience"
+version = "0.1.0"
+description = "Edge cuts and correlated faults on the submarine cable network: how many separate incidents it takes to isolate each island, and what that does to isolation risk."
+readme = "README.md"
+license = { text = "Apache-2.0" }
+authors = [{ name = "Diogo Ribeiro", email = "dfr@esmad.ipp.pt" }]
+requires-python = ">=3.10"
+dependencies = [
+    "numpy>=1.26",
+    "networkx>=3.2",
+    "shapely>=2.0",
+    "pyproj>=3.6",
+    "ortools>=9.10",
+    "matplotlib>=3.8",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

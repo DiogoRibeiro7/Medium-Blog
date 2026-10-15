@@ -1,0 +1,44 @@
+name: Test island-cable-resilience
+
+on:
+  pull_request:
+    paths:
+      - 'island-cable-resilience/**'
+      - '.github/workflows/island-cable-resilience.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'island-cable-resilience/**'
+      - '.github/workflows/island-cable-resilience.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: island-cable-resilience
+    env:
+      MPLBACKEND: Agg
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: island-cable-resilience/pyproject.toml
+
+      - name: Install project
+        run: python -m pip install -e ".[dev]"
+
+      - name: Fetch the pinned map and coastline data
+        run: ./fetch_data.sh
+
+      - name: Run synthetic and real-data tests
+        run: python -m pytest -q

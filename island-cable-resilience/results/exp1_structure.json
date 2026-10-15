@@ -1,0 +1,8976 @@
+{
+ "zone_km": 100.0,
+ "radii_km": [
+  1.0,
+  10.0,
+  50.0
+ ],
+ "rows": [
+  {
+   "unit": 1,
+   "label": "Saint Kitts and Nevis",
+   "area_km2": 175.5378175935081,
+   "landing_stations": 1,
+   "landings": [
+    "Basseterre, Saint Kitts and Nevis"
+   ],
+   "cables": [
+    "antigua-st-kitts",
+    "saba-statia-cable-system-sscs",
+    "southern-caribbean-fiber"
+   ],
+   "k": 3,
+   "lambda": 3,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 2,
+   "label": "Antigua and Barbuda",
+   "area_km2": 281.9415343405841,
+   "landing_stations": 2,
+   "landings": [
+    "St. John\u2019s, Antigua and Barbuda",
+    "Dickenson Bay, Antigua and Barbuda"
+   ],
+   "cables": [
+    "antigua-st-kitts",
+    "eastern-caribbean-fiber-system-ecfs",
+    "southern-caribbean-fiber"
+   ],
+   "k": 3,
+   "lambda": 4,
+   "N_1km": 2,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 4,
+   "label": "Bahamas",
+   "area_km2": 1060.5526726466717,
+   "landing_stations": 3,
+   "landings": [
+    "Eight-Mile Rock, Bahamas",
+    "Hawksbill, Bahamas",
+    "Riding Point, Bahamas"
+   ],
+   "cables": [
+    "bahamas-2",
+    "bahamas-domestic-submarine-network-bdsni",
+    "bahamas-internet-cable-system-bics",
+    "grand-bahama-bimini-submarine-cable"
+   ],
+   "k": 4,
+   "lambda": 5,
+   "N_1km": 3,
+   "N_10km": 2,
+   "N_50km": 1
+  },
+  {
+   "unit": 5,
+   "label": "Bahamas",
+   "area_km2": 18.973875288268268,
+   "landing_stations": 1,
+   "landings": [
+    "Alice Town, Bahamas"
+   ],
+   "cables": [
+    "grand-bahama-bimini-submarine-cable"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 6,
+   "label": "Virgin Islands (U.S.)",
+   "area_km2": 86.17405985048441,
+   "landing_stations": 7,
+   "landings": [
+    "Great Bay, Virgin Islands (U.S.)",
+    "Little Saint James, Virgin Islands (U.S.)",
+    "Magen\u2019s Bay, VI, United States",
+    "Brewer's Bay, Virgin Islands (U.S.)",
+    "Vila Olga, Virgin Islands (U.S.)",
+    "Banana Bay, Virgin Islands (U.S.)",
+    "Flamingo Bay, Virgin Islands (U.S.)"
+   ],
+   "cables": [
+    "americas-i-north",
+    "columbus-ii-b",
+    "st-thomas-st-croix-system",
+    "taino-carib"
+   ],
+   "k": 4,
+   "lambda": 5,
+   "N_1km": 2,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 8,
+   "label": "United Kingdom",
+   "area_km2": 403.47831123350136,
+   "landing_stations": 2,
+   "landings": [
+    "Ryde, United Kingdom",
+    "Gurnard, United Kingdom"
+   ],
+   "cables": [
+    "cowes-fawley-2",
+    "portsmouth-ryde-10",
+    "portsmouth-ryde-11"
+   ],
+   "k": 3,
+   "lambda": 3,
+   "N_1km": 2,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 9,
+   "label": "Bermuda",
+   "area_km2": 65.05822565713099,
+   "landing_stations": 2,
+   "landings": [
+    "Paget, Bermuda",
+    "St. David\u2019s, Bermuda"
+   ],
+   "cables": [
+    "caribbean-bermuda-u-s-cbus",
+    "gemini-bermuda",
+    "globenet"
+   ],
+   "k": 3,
+   "lambda": 5,
+   "N_1km": 2,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 10,
+   "label": "United States",
+   "area_km2": 8780.39019531997,
+   "landing_stations": 5,
+   "landings": [
+    "Miramar, PR, United States",
+    "Punta Salinas, PR, United States",
+    "San Juan, PR, United States",
+    "Isla Verde, PR, United States",
+    "Ponce, PR, United States"
+   ],
+   "cables": [
+    "america-movil-submarine-cable-system-1-amx-1",
+    "americas-ii-west",
+    "antillas-1",
+    "arcos",
+    "brusa",
+    "global-caribbean-network-gcn",
+    "gtmo-pr",
+    "pacific-caribbean-cable-system-pccs",
+    "sint-maarten-puerto-rico-network-one-smpr-1",
+    "south-america-1-sam-1",
+    "southern-caribbean-fiber",
+    "taino-carib"
+   ],
+   "k": 12,
+   "lambda": 17,
+   "N_1km": 5,
+   "N_10km": 2,
+   "N_50km": 1
+  },
+  {
+   "unit": 11,
+   "label": "Virgin Islands (U.S.)",
+   "area_km2": 213.43312163473382,
+   "landing_stations": 3,
+   "landings": [
+    "St. Croix, Virgin Islands, Virgin Islands (U.S.)",
+    "Christiansted, Virgin Islands (U.S.)",
+    "Frederiksted, Virgin Islands (U.S.)"
+   ],
+   "cables": [
+    "americas-ii-west",
+    "global-caribbean-network-gcn",
+    "mid-atlantic-crossing-mac",
+    "south-american-crossing-sac",
+    "southern-caribbean-fiber",
+    "st-thomas-st-croix-system"
+   ],
+   "k": 6,
+   "lambda": 10,
+   "N_1km": 2,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 12,
+   "label": "Maldives",
+   "area_km2": 0.024159711390355602,
+   "landing_stations": 1,
+   "landings": [
+    "Ithaafushi, Maldives"
+   ],
+   "cables": [
+    "ithaafushi-maafushi-hulhumale"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 13,
+   "label": "Maldives",
+   "area_km2": 34.93158030828564,
+   "landing_stations": 2,
+   "landings": [
+    "Hulhumale, Maldives",
+    "Male, Maldives"
+   ],
+   "cables": [
+    "dhiraagu-cable-network",
+    "dhiraagu-slt-submarine-cable-network",
+    "domestic-submarine-cable-of-maldives-dscom",
+    "falcon",
+    "india-asia-xpress-iax",
+    "ithaafushi-maafushi-hulhumale",
+    "maldives-sri-lanka-cable-msc",
+    "nationwide-submarine-cable-ooredoo-maldives-nascom"
+   ],
+   "k": 8,
+   "lambda": 5,
+   "N_1km": 2,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 14,
+   "label": "Canada",
+   "area_km2": 109662.26170799669,
+   "landing_stations": 8,
+   "landings": [
+    "Farewell, NL, Canada",
+    "Fogo Island, NL, Canada",
+    "Cape Ray, NL, Canada",
+    "Codroy, NL, Canada",
+    "Fortune, NL, Canada",
+    "Lamaline, NL, Canada",
+    "Milton, NL, Canada",
+    "Rose Blanche, NL, Canada"
+   ],
+   "cables": [
+    "apocs-1",
+    "apocs-2",
+    "farewell-change-fogo",
+    "greenland-connect",
+    "persona",
+    "st-pierre-and-miquelon-cable"
+   ],
+   "k": 6,
+   "lambda": 5,
+   "N_1km": 4,
+   "N_10km": 4,
+   "N_50km": 2
+  },
+  {
+   "unit": 15,
+   "label": "Canada",
+   "area_km2": 250.61106740256452,
+   "landing_stations": 1,
+   "landings": [
+    "Stag Harbour, NL, Canada"
+   ],
+   "cables": [
+    "farewell-change-fogo"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 16,
+   "label": "Ireland",
+   "area_km2": 83660.59980374057,
+   "landing_stations": 20,
+   "landings": [
+    "Ballyhornan, United Kingdom",
+    "Larne, United Kingdom",
+    "Donaghadee, United Kingdom",
+    "Galway, Ireland",
+    "Portrane, Ireland",
+    "Lecanvey, Ireland",
+    "LoughShinny, Ireland",
+    "Dublin, Ireland",
+    "Clonshaugh, Ireland",
+    "Killala, Ireland",
+    "Sandymount, Ireland",
+    "Lusk, Ireland",
+    "Coleraine, United Kingdom",
+    "Cork, Ireland",
+    "Ballywater, United Kingdom",
+    "Carrickfergus, United Kingdom",
+    "Kilmore Quay, Ireland",
+    "Ballygrangans, Ireland",
+    "Ballinesker, Ireland",
+    "Whitehead, United Kingdom"
+   ],
+   "cables": [
+    "aec-1",
+    "celtixconnect-1-cc-1",
+    "emerald-bridge-fibres",
+    "esat-2",
+    "exa-express",
+    "exa-north-and-south",
+    "geo-eirgrid",
+    "havfrueaec-2",
+    "havhingstenceltixconnect-2-cc-2",
+    "iris",
+    "lanis-2",
+    "lanis-3",
+    "manx-northern-ireland",
+    "pan-european-crossing-uk-ireland",
+    "rockabill",
+    "scotland-northern-ireland-3",
+    "scotland-northern-ireland-4",
+    "sirius-north",
+    "sirius-south",
+    "solas"
+   ],
+   "k": 20,
+   "lambda": 23,
+   "N_1km": 15,
+   "N_10km": 12,
+   "N_50km": 6
+  },
+  {
+   "unit": 17,
+   "label": "Isle of Man",
+   "area_km2": 579.7507717116787,
+   "landing_stations": 5,
+   "landings": [
+    "Peel, Isle of Man",
+    "Port Grenaugh, Isle of Man",
+    "Port Erin, Isle of Man",
+    "Groudle Bay, Isle of Man",
+    "Douglas, Isle of Man"
+   ],
+   "cables": [
+    "bt-mt-1",
+    "e-llan",
+    "havhingstenceltixconnect-2-cc-2",
+    "lanis-1",
+    "lanis-2",
+    "manx-northern-ireland"
+   ],
+   "k": 6,
+   "lambda": 7,
+   "N_1km": 4,
+   "N_10km": 2,
+   "N_50km": 1
+  },
+  {
+   "unit": 18,
+   "label": "Taiwan",
+   "area_km2": 35874.10704062011,
+   "landing_stations": 9,
+   "landings": [
+    "Tanshui, Taiwan",
+    "Dawu, Taiwan",
+    "Yuanli, Taiwan",
+    "Budai, Taiwan",
+    "Taoyuan, Taiwan",
+    "Tainan, Taiwan",
+    "Toucheng, Taiwan",
+    "Fangshan, Taiwan",
+    "Pa Li, Taiwan"
+   ],
+   "cables": [
+    "apricot",
+    "asia-pacific-gateway-apg",
+    "eac-c2c",
+    "faster",
+    "flag-north-asia-loopreach-north-asia-loop",
+    "new-cross-pacific-ncp-cable-system",
+    "pacific-light-cable-network-plcn",
+    "southeast-asia-japan-cable-2-sjc2",
+    "taiwan-matsu-no-4",
+    "taiwan-penghu-kinmen-matsu-no-2-tpkm2",
+    "taiwan-penghu-kinmen-matsu-no-3-tpkm3",
+    "taiwan-strait-express-1-tse-1",
+    "topaz",
+    "tpu",
+    "trans-pacific-express-tpe-cable-system"
+   ],
+   "k": 15,
+   "lambda": 18,
+   "N_1km": 5,
+   "N_10km": 4,
+   "N_50km": 2
+  },
+  {
+   "unit": 19,
+   "label": "Taiwan",
+   "area_km2": 8.149614063926101,
+   "landing_stations": 1,
+   "landings": [
+    "Dongyin, Taiwan"
+   ],
+   "cables": [
+    "taiwan-matsu-no-4",
+    "taiwan-penghu-kinmen-matsu-no-2-tpkm2",
+    "taiwan-penghu-kinmen-matsu-no-3-tpkm3"
+   ],
+   "k": 3,
+   "lambda": 3,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 20,
+   "label": "Taiwan",
+   "area_km2": 19.64853323989761,
+   "landing_stations": 1,
+   "landings": [
+    "Nangan, Taiwan"
+   ],
+   "cables": [
+    "taiwan-matsu-no-4",
+    "taiwan-penghu-kinmen-matsu-no-3-tpkm3"
+   ],
+   "k": 2,
+   "lambda": 3,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 21,
+   "label": "Taiwan",
+   "area_km2": 3.988137438123703,
+   "landing_stations": 1,
+   "landings": [
+    "Xiju, Taiwan"
+   ],
+   "cables": [
+    "taiwan-matsu-no-4",
+    "taiwan-penghu-kinmen-matsu-no-3-tpkm3"
+   ],
+   "k": 2,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 22,
+   "label": "Indonesia",
+   "area_km2": 424.6462752455644,
+   "landing_stations": 2,
+   "landings": [
+    "Tanjung Bemban, Indonesia",
+    "Tanjung Pinggir, Indonesia"
+   ],
+   "cables": [
+    "apricot",
+    "batam-dumai-melaka-bdm",
+    "batam-rengit-cable-system-brcs",
+    "batam-singapore-cable-system-bscs",
+    "indonesia-global-gateway-igg-system",
+    "jakabare",
+    "jakarta-bangka-batam-singapore-b2js",
+    "jakarta-bangka-bintan-batam-singapore-b3js",
+    "jambi-batam-cable-system-jiba",
+    "jasuka",
+    "matrix-cable-system",
+    "moratelindo-international-cable-system-1-mic-1",
+    "palapa-ring-west",
+    "pgascom",
+    "rising-8",
+    "seax-1",
+    "thailand-indonesia-singapore-tis"
+   ],
+   "k": 17,
+   "lambda": 24,
+   "N_1km": 2,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 23,
+   "label": "Indonesia",
+   "area_km2": 126289.81693910524,
+   "landing_stations": 11,
+   "landings": [
+    "Tanjung Pakis, Indonesia",
+    "Beculuk, Indonesia",
+    "Muncar, Indonesia",
+    "Anyer, Indonesia",
+    "Jakarta, Indonesia",
+    "Banyu Urip, Indonesia",
+    "Ujung Pankah, Indonesia",
+    "Ancol, Indonesia",
+    "Puger, Indonesia",
+    "Kendal, Indonesia",
+    "Surabaya, Indonesia"
+   ],
+   "cables": [
+    "apricot",
+    "australia-singapore-cable-asc",
+    "bifrost",
+    "biznet-nusantara-cable-system-1-bncs-1",
+    "echo",
+    "indigo-west",
+    "indonesia-global-gateway-igg-system",
+    "jaka2ladema",
+    "jakabare",
+    "jakarta-bangka-batam-singapore-b2js",
+    "jakarta-bangka-bintan-batam-singapore-b3js",
+    "jalapati",
+    "jasuka",
+    "java-bali-cable-system-jbcs",
+    "java-kalimantan-sulawesi-jakasusi",
+    "javali",
+    "link-2-phase-2",
+    "link-3-phase-2",
+    "matrix-cable-system",
+    "rising-8",
+    "s-u-b-cable-system",
+    "sjjk"
+   ],
+   "k": 22,
+   "lambda": 23,
+   "N_1km": 10,
+   "N_10km": 7,
+   "N_50km": 4
+  },
+  {
+   "unit": 24,
+   "label": "Indonesia",
+   "area_km2": 731910.8096853148,
+   "landing_stations": 17,
+   "landings": [
+    "Sungai Kakap, Indonesia",
+    "Takesung, Indonesia",
+    "Sangatta, Indonesia",
+    "Singkawang, Indonesia",
+    "Tungku, Brunei",
+    "Kuching, Malaysia",
+    "Tanjung Selor, Indonesia",
+    "Banjarmasin, Indonesia",
+    "Bintulu, Malaysia",
+    "Miri, Malaysia",
+    "Kota Kinabalu, Malaysia",
+    "Sangata, Indonesia",
+    "Ketapang, Indonesia",
+    "Pontianak, Indonesia",
+    "Pankalan, Indonesia",
+    "Telisai, Brunei",
+    "Balikpapan, Indonesia"
+   ],
+   "cables": [
+    "asia-america-gateway-aag-cable-system",
+    "east-west-submarine-cable-system",
+    "indonesia-global-gateway-igg-system",
+    "jaka2ladema",
+    "jakabare",
+    "jasuka",
+    "java-kalimantan-sulawesi-jakasusi",
+    "labuan-brunei-submarine-cable",
+    "link-2-phase-1",
+    "palapa-ring-west",
+    "s-u-b-cable-system",
+    "sistem-kabel-rakyat-1malaysia-skr1m",
+    "sjjk",
+    "southeast-asia-japan-cable-sjc",
+    "tanjung-pandan-sungai-kakap",
+    "tarakan-selor-cable-system-tscs"
+   ],
+   "k": 16,
+   "lambda": 20,
+   "N_1km": 11,
+   "N_10km": 10,
+   "N_50km": 8
+  },
+  {
+   "unit": 25,
+   "label": "Indonesia",
+   "area_km2": 4465.405879805726,
+   "landing_stations": 2,
+   "landings": [
+    "Tanjung Pandan, Indonesia",
+    "Mentigi, Indonesia"
+   ],
+   "cables": [
+    "jasuka",
+    "link-3-phase-2",
+    "link-4-phase-2",
+    "tanjung-pandan-sungai-kakap"
+   ],
+   "k": 4,
+   "lambda": 6,
+   "N_1km": 2,
+   "N_10km": 2,
+   "N_50km": 1
+  },
+  {
+   "unit": 27,
+   "label": "Australia",
+   "area_km2": 2400.059139131137,
+   "landing_stations": 1,
+   "landings": [
+    "Alyangula, NT, Australia"
+   ],
+   "cables": [
+    "groote-eylandt"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 28,
+   "label": "Russia",
+   "area_km2": 75497.72219819293,
+   "landing_stations": 6,
+   "landings": [
+    "Ilyinskoye, Russia",
+    "Uglegorsk, Russia",
+    "Yuzhno-Sakhalinsk, Russia",
+    "Okhotskoe, Russia",
+    "Okha, Russia",
+    "Nevelsk, Russia"
+   ],
+   "cables": [
+    "far-east-submarine-cable-system",
+    "hokkaido-sakhalin-cable-system-hscs",
+    "polar-express",
+    "sakhalin-kuril-islands-cable",
+    "sovetskaya-gavan-ilyinskoye",
+    "sovetskaya-gavan-uglegorsk"
+   ],
+   "k": 6,
+   "lambda": 6,
+   "N_1km": 5,
+   "N_10km": 5,
+   "N_50km": 3
+  },
+  {
+   "unit": 29,
+   "label": "Norway",
+   "area_km2": 22.463477088629656,
+   "landing_stations": 2,
+   "landings": [
+    "\u00d8ygarden, Norway",
+    "Sture, Norway"
+   ],
+   "cables": [
+    "n0r5ke-viking",
+    "tampnet-north"
+   ],
+   "k": 2,
+   "lambda": 3,
+   "N_1km": 2,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 30,
+   "label": "Indonesia",
+   "area_km2": 428448.2150266494,
+   "landing_stations": 9,
+   "landings": [
+    "Padang, Indonesia",
+    "Kalianda, Indonesia",
+    "Sungsang, Indonesia",
+    "Medan, Indonesia",
+    "Panipahan, Indonesia",
+    "Dumai, Indonesia",
+    "Kuala Tungkal, Indonesia",
+    "Palembang, Indonesia",
+    "Bandar Lampung, Indonesia"
+   ],
+   "cables": [
+    "batam-dumai-melaka-bdm",
+    "biznet-nusantara-cable-system-1-bncs-1",
+    "dumai-melaka-cable-system-dmcs",
+    "indonesia-global-gateway-igg-system",
+    "jambi-batam-cable-system-jiba",
+    "jasuka",
+    "padang-tua-pejat",
+    "palapa-ring-west",
+    "pasuli",
+    "pgascom",
+    "seamewe-5",
+    "sjjk",
+    "sumatera-bangka-cable-system-sbcs"
+   ],
+   "k": 13,
+   "lambda": 17,
+   "N_1km": 5,
+   "N_10km": 5,
+   "N_50km": 5
+  },
+  {
+   "unit": 31,
+   "label": "Indonesia",
+   "area_km2": 588.3877142255976,
+   "landing_stations": 1,
+   "landings": [
+    "Tua Pejat, Indonesia"
+   ],
+   "cables": [
+    "padang-tua-pejat"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 32,
+   "label": "Greece",
+   "area_km2": 80.62694332698109,
+   "landing_stations": 2,
+   "landings": [
+    "Ermoupoli, Greece",
+    "Syros, Greece"
+   ],
+   "cables": [
+    "cyclades-a",
+    "thetis",
+    "vodafone-greece-domestic"
+   ],
+   "k": 3,
+   "lambda": 3,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 33,
+   "label": "Greece",
+   "area_km2": 198.54449015477084,
+   "landing_stations": 3,
+   "landings": [
+    "Marlas, Greece",
+    "Tinos, Greece",
+    "Agios Sostis, Greece"
+   ],
+   "cables": [
+    "cyclades-a",
+    "thetis"
+   ],
+   "k": 2,
+   "lambda": 3,
+   "N_1km": 2,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 34,
+   "label": "Greece",
+   "area_km2": 193.33990231835966,
+   "landing_stations": 2,
+   "landings": [
+    "Naousa, Greece",
+    "Filizi, Greece"
+   ],
+   "cables": [
+    "cyclades-a",
+    "cyclades-b",
+    "thetis"
+   ],
+   "k": 3,
+   "lambda": 3,
+   "N_1km": 2,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 35,
+   "label": "Greece",
+   "area_km2": 88.08385613036948,
+   "landing_stations": 2,
+   "landings": [
+    "Mykonos, Greece",
+    "Kalafati, Greece"
+   ],
+   "cables": [
+    "cyclades-a",
+    "cyclades-b",
+    "thetis"
+   ],
+   "k": 3,
+   "lambda": 3,
+   "N_1km": 2,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 36,
+   "label": "Greece",
+   "area_km2": 424.92183065180575,
+   "landing_stations": 2,
+   "landings": [
+    "Naxos, Greece",
+    "Pirgaki, Greece"
+   ],
+   "cables": [
+    "cyclades-b",
+    "thetis"
+   ],
+   "k": 2,
+   "lambda": 3,
+   "N_1km": 2,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 37,
+   "label": "Japan",
+   "area_km2": 18.958654636391042,
+   "landing_stations": 1,
+   "landings": [
+    "Awashimaura, Japan"
+   ],
+   "cables": [
+    "awashima-murakami"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 38,
+   "label": "Japan",
+   "area_km2": 363412.0870646851,
+   "landing_stations": 29,
+   "landings": [
+    "Murakami, Japan",
+    "Makurazaki, Japan",
+    "Wakkanai, Japan",
+    "Muroran, Japan",
+    "Hachinohe, Japan",
+    "It\u014d, Japan",
+    "Miura, Japan",
+    "Yuza, Japan",
+    "Minamiboso, Japan",
+    "Shima, Japan",
+    "Akita, Japan",
+    "Sapporo, Japan",
+    "Takahagi, Japan",
+    "Maruyama, Japan",
+    "Hioki, Japan",
+    "Miyazaki, Japan",
+    "Ninomiya, Japan",
+    "Chikura, Japan",
+    "Ibaraki, Japan",
+    "Sendai, Japan",
+    "Ishikari, Japan",
+    "Kitaibaraki, Japan",
+    "Wada, Japan",
+    "Kitakyushu, Japan",
+    "Fukuoka, Japan",
+    "Ajigaura, Japan",
+    "Joetsu, Japan",
+    "Emi, Japan",
+    "Toyohashi, Japan"
+   ],
+   "cables": [
+    "apcn-2",
+    "apricot",
+    "asia-direct-cable-adc",
+    "asia-pacific-gateway-apg",
+    "asia-submarine-cable-express-asecahaya-malaysia",
+    "australia-japan-cable-ajc",
+    "awashima-murakami",
+    "eac-c2c",
+    "faster",
+    "flag-north-asia-loopreach-north-asia-loop",
+    "guam-okinawa-kyushu-incheon-goki",
+    "hachijojima-mainland",
+    "hokkaido-rebun-rishiri",
+    "hokkaido-sakhalin-cable-system-hscs",
+    "izu-islands-cable-system",
+    "japan-information-highway-jih",
+    "juno",
+    "jupiter",
+    "korea-japan-cable-network-kjcn",
+    "mishima-village",
+    "miyazaki-okinawa-cable-moc",
+    "new-cross-pacific-ncp-cable-system",
+    "okinawa-cellular-cable",
+    "pacific-crossing-1-pc-1",
+    "russia-japan-cable-network-rjcn",
+    "southeast-asia-japan-cable-2-sjc2",
+    "southeast-asia-japan-cable-sjc",
+    "tata-tgn-pacific",
+    "topaz",
+    "trans-pacific-express-tpe-cable-system",
+    "unity",
+    "yuza-tobishima"
+   ],
+   "k": 32,
+   "lambda": 35,
+   "N_1km": 14,
+   "N_10km": 11,
+   "N_50km": 7
+  },
+  {
+   "unit": 39,
+   "label": "Japan",
+   "area_km2": 210.0488841092445,
+   "landing_stations": 1,
+   "landings": [
+    "Shiraho, Japan"
+   ],
+   "cables": [
+    "okinawa-miyakojima-ishigaki",
+    "yui"
+   ],
+   "k": 2,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 40,
+   "label": "Japan",
+   "area_km2": 155.29707638906692,
+   "landing_stations": 2,
+   "landings": [
+    "Gusukube, Japan",
+    "Hirara, Japan"
+   ],
+   "cables": [
+    "okinawa-miyakojima-ishigaki",
+    "yui"
+   ],
+   "k": 2,
+   "lambda": 3,
+   "N_1km": 2,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 41,
+   "label": "Japan",
+   "area_km2": 1296.1862202731566,
+   "landing_stations": 6,
+   "landings": [
+    "Yaese, Japan",
+    "Itoman, Japan",
+    "Yomitan, Japan",
+    "Naha, Japan",
+    "Nago, Japan",
+    "Komesu, Japan"
+   ],
+   "cables": [
+    "asia-submarine-cable-express-asecahaya-malaysia",
+    "guam-okinawa-kyushu-incheon-goki",
+    "japan-information-highway-jih",
+    "kitadaito-island",
+    "minamidaito-island",
+    "miyazaki-okinawa-cable-moc",
+    "okinawa-cellular-cable",
+    "okinawa-miyakojima-ishigaki",
+    "okinawa-remote-islands",
+    "yui"
+   ],
+   "k": 10,
+   "lambda": 5,
+   "N_1km": 3,
+   "N_10km": 2,
+   "N_50km": 1
+  },
+  {
+   "unit": 42,
+   "label": "Japan",
+   "area_km2": 15.083147120573312,
+   "landing_stations": 1,
+   "landings": [
+    "Kuroshima, Japan"
+   ],
+   "cables": [
+    "mishima-village"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 43,
+   "label": "Japan",
+   "area_km2": 8.417169292803646,
+   "landing_stations": 1,
+   "landings": [
+    "Takeshima, Japan"
+   ],
+   "cables": [
+    "mishima-village"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 44,
+   "label": "Japan",
+   "area_km2": 25.603362417848587,
+   "landing_stations": 1,
+   "landings": [
+    "Iojima, Japan"
+   ],
+   "cables": [
+    "mishima-village"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 45,
+   "label": "United States",
+   "area_km2": 7292.334823558436,
+   "landing_stations": 2,
+   "landings": [
+    "Hollis, AK, United States",
+    "Coffman Cove, AK, United States"
+   ],
+   "cables": [
+    "sealink",
+    "sealink-south"
+   ],
+   "k": 2,
+   "lambda": 2,
+   "N_1km": 2,
+   "N_10km": 2,
+   "N_50km": 1
+  },
+  {
+   "unit": 46,
+   "label": "United States",
+   "area_km2": 31.14455780959201,
+   "landing_stations": 1,
+   "landings": [
+    "Isle au Haut, ME, United States"
+   ],
+   "cables": [
+    "isle-au-haut-cable"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 47,
+   "label": "Japan",
+   "area_km2": 87.46467993256277,
+   "landing_stations": 1,
+   "landings": [
+    "Rebun, Japan"
+   ],
+   "cables": [
+    "hokkaido-rebun-rishiri"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 48,
+   "label": "Japan",
+   "area_km2": 177.2407173554499,
+   "landing_stations": 1,
+   "landings": [
+    "Rishirifuji, Japan"
+   ],
+   "cables": [
+    "hokkaido-rebun-rishiri"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 49,
+   "label": "Japan",
+   "area_km2": 25.180722958136172,
+   "landing_stations": 1,
+   "landings": [
+    "Yonaguni, Japan"
+   ],
+   "cables": [
+    "okinawa-remote-islands"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 50,
+   "label": "Japan",
+   "area_km2": 19.46456451948309,
+   "landing_stations": 1,
+   "landings": [
+    "Hateruma, Japan"
+   ],
+   "cables": [
+    "okinawa-remote-islands"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 51,
+   "label": "Japan",
+   "area_km2": 32.287768032663585,
+   "landing_stations": 1,
+   "landings": [
+    "Tarama, Japan"
+   ],
+   "cables": [
+    "okinawa-remote-islands"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 52,
+   "label": "Japan",
+   "area_km2": 61.17155927554355,
+   "landing_stations": 2,
+   "landings": [
+    "Kumejima, Japan",
+    "Nakadomari, Japan"
+   ],
+   "cables": [
+    "okinawa-remote-islands",
+    "yui"
+   ],
+   "k": 2,
+   "lambda": 2,
+   "N_1km": 2,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 53,
+   "label": "Japan",
+   "area_km2": 6.384626013868332,
+   "landing_stations": 1,
+   "landings": [
+    "Aguni, Japan"
+   ],
+   "cables": [
+    "okinawa-remote-islands"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 55,
+   "label": "Japan",
+   "area_km2": 25.818321500679403,
+   "landing_stations": 1,
+   "landings": [
+    "Minamidaito, Japan"
+   ],
+   "cables": [
+    "daito-loop",
+    "minamidaito-island"
+   ],
+   "k": 2,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 56,
+   "label": "Japan",
+   "area_km2": 9.013614791373968,
+   "landing_stations": 1,
+   "landings": [
+    "Kitadaito, Japan"
+   ],
+   "cables": [
+    "daito-loop",
+    "kitadaito-island"
+   ],
+   "k": 2,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 57,
+   "label": "Brazil",
+   "area_km2": 82.75737067886136,
+   "landing_stations": 1,
+   "landings": [
+    "S\u00e3o Sebasti\u00e3o da Boa Vista, Brazil"
+   ],
+   "cables": [
+    "norte-conectado-infovia-03"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 58,
+   "label": "Australia",
+   "area_km2": 4463.320954854871,
+   "landing_stations": 1,
+   "landings": [
+    "Kingscote, SA, Australia"
+   ],
+   "cables": [
+    "kangaroo-island-2"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 59,
+   "label": "Sweden",
+   "area_km2": 2957.555546158665,
+   "landing_stations": 2,
+   "landings": [
+    "Visby, Sweden",
+    "Katthammarsvik, Sweden"
+   ],
+   "cables": [
+    "bcs-east-west-interlink",
+    "oskarshamn-visby",
+    "vstervik-visby"
+   ],
+   "k": 3,
+   "lambda": 3,
+   "N_1km": 2,
+   "N_10km": 2,
+   "N_50km": 1
+  },
+  {
+   "unit": 60,
+   "label": "Finland",
+   "area_km2": 587.746857829128,
+   "landing_stations": 3,
+   "landings": [
+    "Hamn\u00e4s, Finland",
+    "Skat\u00f6rarna, Finland",
+    "Mariehamn, Finland"
+   ],
+   "cables": [
+    "bcs-north---phase-1",
+    "sto-hel-one"
+   ],
+   "k": 2,
+   "lambda": 4,
+   "N_1km": 3,
+   "N_10km": 2,
+   "N_50km": 1
+  },
+  {
+   "unit": 61,
+   "label": "Malaysia",
+   "area_km2": 143.3499721487338,
+   "landing_stations": 1,
+   "landings": [
+    "Kampung Tekek, Malaysia"
+   ],
+   "cables": [
+    "rompin-tioman-island"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 62,
+   "label": "Malaysia",
+   "area_km2": 20.6025061172875,
+   "landing_stations": 2,
+   "landings": [
+    "Pulau Perhentian Kecil, Malaysia",
+    "Pulau Perhentian Besar, Malaysia"
+   ],
+   "cables": [
+    "besut-perhentian-islands"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 63,
+   "label": "Malaysia",
+   "area_km2": 41.18159289638759,
+   "landing_stations": 1,
+   "landings": [
+    "Pantai Teluk Baharu, Malaysia"
+   ],
+   "cables": [
+    "lumut-pangkor-island"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 64,
+   "label": "France",
+   "area_km2": 8666.331054533626,
+   "landing_stations": 8,
+   "landings": [
+    "Calvi, France",
+    "St. Florent, France",
+    "Ruppione, France",
+    "Propriano, France",
+    "Bonifacio, France",
+    "Ajaccio, France",
+    "Bastia, France",
+    "L\u2019\u00cele-Rousse, France"
+   ],
+   "cables": [
+    "blue",
+    "corse-continent-4-cc4",
+    "corse-continent-5-cc5",
+    "medloop",
+    "sarco"
+   ],
+   "k": 5,
+   "lambda": 5,
+   "N_1km": 4,
+   "N_10km": 4,
+   "N_50km": 2
+  },
+  {
+   "unit": 65,
+   "label": "Italy",
+   "area_km2": 24020.325260005466,
+   "landing_stations": 8,
+   "landings": [
+    "Sassari, Italy",
+    "La Maddalena, Italy",
+    "Santa Teresa Gallura, Italy",
+    "Portoscuso, Italy",
+    "Stintino, Italy",
+    "Olbia, Italy",
+    "Golfo Aranci, Italy",
+    "Cagliari, Italy"
+   ],
+   "cables": [
+    "blue",
+    "janna",
+    "piano-isole-minori",
+    "romsar-2",
+    "sarco",
+    "unitirreno"
+   ],
+   "k": 6,
+   "lambda": 6,
+   "N_1km": 5,
+   "N_10km": 3,
+   "N_50km": 2
+  },
+  {
+   "unit": 66,
+   "label": "Italy",
+   "area_km2": 25.27656484192085,
+   "landing_stations": 1,
+   "landings": [
+    "Giglio, Italy"
+   ],
+   "cables": [
+    "romsar-2"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 67,
+   "label": "France",
+   "area_km2": 15.024519486540914,
+   "landing_stations": 1,
+   "landings": [
+    "Porquerolles, France"
+   ],
+   "cables": [
+    "les-dhyres-cable"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 68,
+   "label": "France",
+   "area_km2": 21.950115088765262,
+   "landing_stations": 2,
+   "landings": [
+    "Port-Cros, France",
+    "H\u00e9liopolis, France"
+   ],
+   "cables": [
+    "les-dhyres-cable"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 2,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 69,
+   "label": "Italy",
+   "area_km2": 16.221199559951902,
+   "landing_stations": 1,
+   "landings": [
+    "Lampedusa, Italy"
+   ],
+   "cables": [
+    "lic-lin-lamp",
+    "piano-isole-minori"
+   ],
+   "k": 2,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 70,
+   "label": "Italy",
+   "area_km2": 4.859632646480679,
+   "landing_stations": 1,
+   "landings": [
+    "Linosa, Italy"
+   ],
+   "cables": [
+    "lic-lin-lamp",
+    "piano-isole-minori"
+   ],
+   "k": 2,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 71,
+   "label": "Italy",
+   "area_km2": 25628.157342705832,
+   "landing_stations": 10,
+   "landings": [
+    "Licata, Italy",
+    "Marsala, Italy",
+    "Trapani, Italy",
+    "Isola delle Femmine, Italy",
+    "Patti, Italy",
+    "Mazara del Vallo, Italy",
+    "Palermo, Italy",
+    "Marina di Ragusa, Italy",
+    "Pozzallo, Italy",
+    "Catania, Italy"
+   ],
+   "cables": [
+    "blue",
+    "didon",
+    "epic-malta-sicily-cable-system-emscs",
+    "go-1-mediterranean-cable-system",
+    "hannibal-system",
+    "imewe",
+    "italy-libya",
+    "italy-malta",
+    "janna",
+    "lic-lin-lamp",
+    "malta-italy-interconnector",
+    "mednautilus-submarine-system",
+    "medusa-submarine-cable-system",
+    "melita-1",
+    "middle-east-north-africa-mena-cable-systemgulf-bridge-international",
+    "piano-isole-minori",
+    "seamewe-4",
+    "seamewe-5",
+    "unitirreno"
+   ],
+   "k": 19,
+   "lambda": 15,
+   "N_1km": 4,
+   "N_10km": 4,
+   "N_50km": 2
+  },
+  {
+   "unit": 72,
+   "label": "Japan",
+   "area_km2": 34.83281119371515,
+   "landing_stations": 1,
+   "landings": [
+    "Kozushima, Japan"
+   ],
+   "cables": [
+    "5-villages-6-islands"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 73,
+   "label": "Japan",
+   "area_km2": 6.232153003974199,
+   "landing_stations": 1,
+   "landings": [
+    "Shikinejima, Japan"
+   ],
+   "cables": [
+    "5-villages-6-islands"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 74,
+   "label": "Japan",
+   "area_km2": 26.9254566213935,
+   "landing_stations": 1,
+   "landings": [
+    "Niijima, Japan"
+   ],
+   "cables": [
+    "5-villages-6-islands"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 75,
+   "label": "Japan",
+   "area_km2": 5.706083291120529,
+   "landing_stations": 1,
+   "landings": [
+    "Toshima, Japan"
+   ],
+   "cables": [
+    "5-villages-6-islands"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 76,
+   "label": "Japan",
+   "area_km2": 101.39991275736004,
+   "landing_stations": 1,
+   "landings": [
+    "Oshima, Japan"
+   ],
+   "cables": [
+    "5-villages-6-islands",
+    "izu-islands-cable-system"
+   ],
+   "k": 2,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 77,
+   "label": "Japan",
+   "area_km2": 17.14653697641164,
+   "landing_stations": 1,
+   "landings": [
+    "Mikurashima, Japan"
+   ],
+   "cables": [
+    "5-villages-6-islands"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 78,
+   "label": "Japan",
+   "area_km2": 50.14330476495743,
+   "landing_stations": 1,
+   "landings": [
+    "Miyake, Japan"
+   ],
+   "cables": [
+    "5-villages-6-islands",
+    "izu-islands-cable-system"
+   ],
+   "k": 2,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 79,
+   "label": "Japan",
+   "area_km2": 1.6838806506937742,
+   "landing_stations": 1,
+   "landings": [
+    "Aogashima, Japan"
+   ],
+   "cables": [
+    "5-villages-6-islands"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 80,
+   "label": "Japan",
+   "area_km2": 84.50902423332977,
+   "landing_stations": 1,
+   "landings": [
+    "Hachijo, Japan"
+   ],
+   "cables": [
+    "5-villages-6-islands",
+    "hachijojima-mainland",
+    "izu-islands-cable-system",
+    "ogasawara-cable-network"
+   ],
+   "k": 4,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 81,
+   "label": "Japan",
+   "area_km2": 31.100863058482407,
+   "landing_stations": 1,
+   "landings": [
+    "Hahajima, Japan"
+   ],
+   "cables": [
+    "ogasawara-cable-network"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 82,
+   "label": "Japan",
+   "area_km2": 42.34576742266729,
+   "landing_stations": 1,
+   "landings": [
+    "Chichijima, Japan"
+   ],
+   "cables": [
+    "ogasawara-cable-network"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 83,
+   "label": "South Korea",
+   "area_km2": 11.24340631086886,
+   "landing_stations": 1,
+   "landings": [
+    "Udo, South Korea"
+   ],
+   "cables": [
+    "jeju-udo"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 84,
+   "label": "South Korea",
+   "area_km2": 1867.8553880363859,
+   "landing_stations": 1,
+   "landings": [
+    "Goseong-ri, South Korea"
+   ],
+   "cables": [
+    "jeju-mainland-2",
+    "jeju-mainland-3",
+    "jeju-udo"
+   ],
+   "k": 3,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 85,
+   "label": "Maldives",
+   "area_km2": 0.3087719185128808,
+   "landing_stations": 1,
+   "landings": [
+    "Dhangethi, Maldives"
+   ],
+   "cables": [
+    "dhiraagu-cable-network",
+    "domestic-submarine-cable-of-maldives-dscom"
+   ],
+   "k": 2,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 86,
+   "label": "Maldives",
+   "area_km2": 0.29903870931554866,
+   "landing_stations": 1,
+   "landings": [
+    "Maamigili, Maldives"
+   ],
+   "cables": [
+    "domestic-submarine-cable-of-maldives-dscom"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 87,
+   "label": "Maldives",
+   "area_km2": 0.3149363187008938,
+   "landing_stations": 1,
+   "landings": [
+    "Kudahuvadhoo, Maldives"
+   ],
+   "cables": [
+    "domestic-submarine-cable-of-maldives-dscom"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 88,
+   "label": "Maldives",
+   "area_km2": 0.16058209281370323,
+   "landing_stations": 1,
+   "landings": [
+    "Maafushi, Maldives"
+   ],
+   "cables": [
+    "domestic-submarine-cable-of-maldives-dscom"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 89,
+   "label": "Maldives",
+   "area_km2": 0.3610457376941275,
+   "landing_stations": 1,
+   "landings": [
+    "Velidhoo, Maldives"
+   ],
+   "cables": [
+    "domestic-submarine-cable-of-maldives-dscom"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 90,
+   "label": "Maldives",
+   "area_km2": 0.23307802999121788,
+   "landing_stations": 1,
+   "landings": [
+    "Dhuvaafaru, Maldives"
+   ],
+   "cables": [
+    "domestic-submarine-cable-of-maldives-dscom"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 91,
+   "label": "Maldives",
+   "area_km2": 0.3239607175995512,
+   "landing_stations": 1,
+   "landings": [
+    "Eydhafushi, Maldives"
+   ],
+   "cables": [
+    "dhiraagu-cable-network",
+    "domestic-submarine-cable-of-maldives-dscom",
+    "nationwide-submarine-cable-ooredoo-maldives-nascom"
+   ],
+   "k": 3,
+   "lambda": 3,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 92,
+   "label": "French Polynesia",
+   "area_km2": 1035.2513322252398,
+   "landing_stations": 5,
+   "landings": [
+    "Tautira, French Polynesia",
+    "Teahupo'o, French Polynesia",
+    "Hitia'a, French Polynesia",
+    "To'ahotu, French Polynesia",
+    "Papenoo, French Polynesia"
+   ],
+   "cables": [
+    "honotua",
+    "manatua",
+    "natitua",
+    "natitua-sud"
+   ],
+   "k": 4,
+   "lambda": 2,
+   "N_1km": 2,
+   "N_10km": 2,
+   "N_50km": 1
+  },
+  {
+   "unit": 93,
+   "label": "Indonesia",
+   "area_km2": 794165.5696440098,
+   "landing_stations": 21,
+   "landings": [
+    "Manokwari, Indonesia",
+    "Port Moresby, Papua New Guinea",
+    "Teluk, Indonesia",
+    "Nabire, Indonesia",
+    "Kota Mappi, Indonesia",
+    "Agats, Indonesia",
+    "Timika, Indonesia",
+    "Kikori, Papua New Guinea",
+    "Wewak, Papua New Guinea",
+    "Vanimo, Papua New Guinea",
+    "Madang, Papua New Guinea",
+    "Lae, Papua New Guinea",
+    "Popondetta, Papua New Guinea",
+    "Alotau, Papua New Guinea",
+    "Kerema, Papua New Guinea",
+    "Jayapura, Indonesia",
+    "Sorong, Indonesia",
+    "Fakfak, Indonesia",
+    "Kaimana, Indonesia",
+    "Sarmi, Indonesia",
+    "Merauke, Indonesia"
+   ],
+   "cables": [
+    "coral-sea-cable-system-cs",
+    "kumul-domestic-submarine-cable-system",
+    "palapa-ring-east",
+    "patara-2",
+    "pipe-pacific-cable-1-ppc-1",
+    "smpcs-packet-1",
+    "smpcs-packet-2"
+   ],
+   "k": 7,
+   "lambda": 5,
+   "N_1km": 6,
+   "N_10km": 6,
+   "N_50km": 6
+  },
+  {
+   "unit": 94,
+   "label": "Indonesia",
+   "area_km2": 3169.281715006741,
+   "landing_stations": 1,
+   "landings": [
+    "Waisai, Indonesia"
+   ],
+   "cables": [
+    "patara-2",
+    "smpcs-packet-2"
+   ],
+   "k": 2,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 95,
+   "label": "Indonesia",
+   "area_km2": 2596.03334755706,
+   "landing_stations": 1,
+   "landings": [
+    "Supiori, Indonesia"
+   ],
+   "cables": [
+    "palapa-ring-east",
+    "patara-2"
+   ],
+   "k": 2,
+   "lambda": 3,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 96,
+   "label": "Indonesia",
+   "area_km2": 5426.676420964737,
+   "landing_stations": 8,
+   "landings": [
+    "Jimbaran, Indonesia",
+    "Candikusuma, Indonesia",
+    "Padang Galak, Indonesia",
+    "Sanur, Indonesia",
+    "Seraya, Indonesia",
+    "Denpasar, Indonesia",
+    "Gianyar, Indonesia",
+    "Bali, Indonesia"
+   ],
+   "cables": [
+    "balok",
+    "denpasar-waingapu-cable-systems",
+    "indonesia-global-gateway-igg-system",
+    "jaka2ladema",
+    "jalapati",
+    "java-bali-cable-system-jbcs",
+    "javali",
+    "link-1-phase-2",
+    "link-2-phase-2"
+   ],
+   "k": 9,
+   "lambda": 8,
+   "N_1km": 6,
+   "N_10km": 4,
+   "N_50km": 2
+  },
+  {
+   "unit": 97,
+   "label": "South Korea",
+   "area_km2": 73.09274144192689,
+   "landing_stations": 1,
+   "landings": [
+    "Ulleung, South Korea"
+   ],
+   "cables": [
+    "ulleung-mainland-2"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 98,
+   "label": "Japan",
+   "area_km2": 5.000176904540837,
+   "landing_stations": 1,
+   "landings": [
+    "Tobishima, Japan"
+   ],
+   "cables": [
+    "yuza-tobishima"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 99,
+   "label": "Northern Mariana Islands",
+   "area_km2": 109.96624780145383,
+   "landing_stations": 2,
+   "landings": [
+    "Tinian, Northern Mariana Islands",
+    "San Jose, Northern Mariana Islands"
+   ],
+   "cables": [
+    "atisa",
+    "mariana-guam-cable",
+    "tpu"
+   ],
+   "k": 3,
+   "lambda": 3,
+   "N_1km": 2,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 100,
+   "label": "Philippines",
+   "area_km2": 105913.41428242174,
+   "landing_stations": 15,
+   "landings": [
+    "Claveria, Philippines",
+    "Batangas, Philippines",
+    "Matnog, Philippines",
+    "Bulan, Philippines",
+    "Pasacao, Philippines",
+    "Lucena, Philippines",
+    "Ilijan, Philippines",
+    "Baler, Philippines",
+    "San Juan, Philippines",
+    "Santa Magdalena, Philippines",
+    "Daet, Philippines",
+    "La Union, Philippines",
+    "Nasugbu, Philippines",
+    "Legazpi City, Philippines",
+    "Ballesteros, Philippines"
+   ],
+   "cables": [
+    "apcn-2",
+    "apricot",
+    "asia-america-gateway-aag-cable-system",
+    "asia-direct-cable-adc",
+    "asia-submarine-cable-express-asecahaya-malaysia",
+    "converge-domestic-submarine-cable-network-cdscn",
+    "eac-c2c",
+    "jupiter",
+    "national-digital-transmission-network-ndtn",
+    "pacific-light-cable-network-plcn",
+    "philippine-domestic-submarine-cable-network-pdscn",
+    "pldt-domestic-fiber-optic-network-dfon",
+    "sorsogon-samar-submarine-fiber-optical-interconnection-project-sssfoip",
+    "southeast-asia-japan-cable-sjc",
+    "submarine-cable-in-the-philippines-scip",
+    "tata-tgn-intra-asia-tgn-ia",
+    "tpu"
+   ],
+   "k": 17,
+   "lambda": 18,
+   "N_1km": 13,
+   "N_10km": 11,
+   "N_50km": 7
+  },
+  {
+   "unit": 101,
+   "label": "Guam",
+   "area_km2": 564.202774169914,
+   "landing_stations": 5,
+   "landings": [
+    "Tanguisson Point, Guam",
+    "Agat, Guam",
+    "Alupang, Guam",
+    "Piti, Guam",
+    "Tumon Bay, Guam"
+   ],
+   "cables": [
+    "apricot",
+    "atisa",
+    "australia-japan-cable-ajc",
+    "bifrost",
+    "echo",
+    "guam-okinawa-kyushu-incheon-goki",
+    "hantru1-cable-system",
+    "japan-guam-australia-south-jga-s",
+    "mariana-guam-cable",
+    "pipe-pacific-cable-1-ppc-1",
+    "sea-us",
+    "tata-tgn-pacific",
+    "tpu"
+   ],
+   "k": 13,
+   "lambda": 13,
+   "N_1km": 4,
+   "N_10km": 2,
+   "N_50km": 1
+  },
+  {
+   "unit": 102,
+   "label": "Canada",
+   "area_km2": 49.52383934503603,
+   "landing_stations": 2,
+   "landings": [
+    "Cape Roger Curtis, BC, Canada",
+    "Snug Cove, BC, Canada"
+   ],
+   "cables": [
+    "vancouver-bowen-island-vancouver-island"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 2,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 103,
+   "label": "Mauritius",
+   "area_km2": 1901.1568332309967,
+   "landing_stations": 3,
+   "landings": [
+    "Baie Jacotet, Mauritius",
+    "Baie du Tombeau, Mauritius",
+    "Terre Rouge, Mauritius"
+   ],
+   "cables": [
+    "lower-indian-ocean-network-lion",
+    "mauritius-and-rodrigues-submarine-cable-system-mars",
+    "meltingpot-indianoceanic-submarine-system-metiss",
+    "safe",
+    "t3"
+   ],
+   "k": 5,
+   "lambda": 5,
+   "N_1km": 2,
+   "N_10km": 2,
+   "N_50km": 1
+  },
+  {
+   "unit": 104,
+   "label": "Philippines",
+   "area_km2": 4553.05169689281,
+   "landing_stations": 8,
+   "landings": [
+    "Liloan, Philippines",
+    "Daanbantayan, Philippines",
+    "Talisay, Philippines",
+    "Toledo, Philippines",
+    "Naga, Philippines",
+    "Bogo, Philippines",
+    "San Remigio, Philippines",
+    "Cebu, Philippines"
+   ],
+   "cables": [
+    "converge-domestic-submarine-cable-network-cdscn",
+    "philippine-domestic-submarine-cable-network-pdscn",
+    "pldt-domestic-fiber-optic-network-dfon",
+    "submarine-cable-in-the-philippines-scip"
+   ],
+   "k": 4,
+   "lambda": 13,
+   "N_1km": 7,
+   "N_10km": 5,
+   "N_50km": 2
+  },
+  {
+   "unit": 105,
+   "label": "Philippines",
+   "area_km2": 11622.832949662543,
+   "landing_stations": 6,
+   "landings": [
+    "Nabas, Philippines",
+    "Roxas City, Philippines",
+    "Iloilo City, Philippines",
+    "Caticlan, Philippines",
+    "Leganes, Philippines",
+    "San Jose de Buenavista, Philippines"
+   ],
+   "cables": [
+    "boracay-palawan-submarine-cable-system-bpscs",
+    "converge-domestic-submarine-cable-network-cdscn",
+    "national-digital-transmission-network-ndtn",
+    "palawan-iloilo-cable-system",
+    "philippine-domestic-submarine-cable-network-pdscn",
+    "pldt-domestic-fiber-optic-network-dfon",
+    "submarine-cable-in-the-philippines-scip"
+   ],
+   "k": 7,
+   "lambda": 13,
+   "N_1km": 6,
+   "N_10km": 4,
+   "N_50km": 2
+  },
+  {
+   "unit": 106,
+   "label": "Philippines",
+   "area_km2": 9936.072158999528,
+   "landing_stations": 3,
+   "landings": [
+    "Roxas, Philippines",
+    "Pinamalayan, Philippines",
+    "San Jose, Philippines"
+   ],
+   "cables": [
+    "boracay-palawan-submarine-cable-system-bpscs",
+    "converge-domestic-submarine-cable-network-cdscn",
+    "national-digital-transmission-network-ndtn",
+    "philippine-domestic-submarine-cable-network-pdscn",
+    "pldt-domestic-fiber-optic-network-dfon",
+    "submarine-cable-in-the-philippines-scip"
+   ],
+   "k": 6,
+   "lambda": 11,
+   "N_1km": 3,
+   "N_10km": 3,
+   "N_50km": 1
+  },
+  {
+   "unit": 107,
+   "label": "Philippines",
+   "area_km2": 94156.97059233008,
+   "landing_stations": 11,
+   "landings": [
+    "Cagayan de Oro, Philippines",
+    "Butuan City, Philippines",
+    "Zamboanga, Philippines",
+    "Liloy, Philippines",
+    "Dipolog City, Philippines",
+    "Kinoguitan, Philippines",
+    "Cagdianao, Philippines",
+    "Surigao City, Philippines",
+    "Davao, Philippines",
+    "Buenavista, Philippines",
+    "Ozamiz City, Philippines"
+   ],
+   "cables": [
+    "apricot",
+    "bifrost",
+    "converge-domestic-submarine-cable-network-cdscn",
+    "philippine-domestic-submarine-cable-network-pdscn",
+    "pldt-domestic-fiber-optic-network-dfon",
+    "sea-us",
+    "submarine-cable-in-the-philippines-scip"
+   ],
+   "k": 7,
+   "lambda": 12,
+   "N_1km": 7,
+   "N_10km": 5,
+   "N_50km": 3
+  },
+  {
+   "unit": 108,
+   "label": "Philippines",
+   "area_km2": 12890.66586980152,
+   "landing_stations": 7,
+   "landings": [
+    "Dumaguete, Philippines",
+    "Zamboanguita, Philippines",
+    "San Carlos, Philippines",
+    "Bacolod, Philippines",
+    "Bacong, Philippines",
+    "Talisay City, Philippines",
+    "Cadiz City, Philippines"
+   ],
+   "cables": [
+    "converge-domestic-submarine-cable-network-cdscn",
+    "national-digital-transmission-network-ndtn",
+    "philippine-domestic-submarine-cable-network-pdscn",
+    "pldt-domestic-fiber-optic-network-dfon",
+    "submarine-cable-in-the-philippines-scip"
+   ],
+   "k": 5,
+   "lambda": 11,
+   "N_1km": 7,
+   "N_10km": 5,
+   "N_50km": 2
+  },
+  {
+   "unit": 109,
+   "label": "Philippines",
+   "area_km2": 19663.82327499814,
+   "landing_stations": 5,
+   "landings": [
+    "Maasin, Philippines",
+    "Ormoc, Philippines",
+    "Allen, Philippines",
+    "Palompon, Philippines",
+    "Calbayog, Philippines"
+   ],
+   "cables": [
+    "converge-domestic-submarine-cable-network-cdscn",
+    "philippine-domestic-submarine-cable-network-pdscn",
+    "pldt-domestic-fiber-optic-network-dfon",
+    "sorsogon-samar-submarine-fiber-optical-interconnection-project-sssfoip",
+    "submarine-cable-in-the-philippines-scip"
+   ],
+   "k": 5,
+   "lambda": 13,
+   "N_1km": 5,
+   "N_10km": 5,
+   "N_50km": 2
+  },
+  {
+   "unit": 110,
+   "label": "Philippines",
+   "area_km2": 948.9125127364144,
+   "landing_stations": 1,
+   "landings": [
+    "Coron, Philippines"
+   ],
+   "cables": [
+    "boracay-palawan-submarine-cable-system-bpscs",
+    "converge-domestic-submarine-cable-network-cdscn",
+    "submarine-cable-in-the-philippines-scip"
+   ],
+   "k": 3,
+   "lambda": 4,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 111,
+   "label": "Philippines",
+   "area_km2": 11479.51736158155,
+   "landing_stations": 1,
+   "landings": [
+    "Taytay, Philippines"
+   ],
+   "cables": [
+    "boracay-palawan-submarine-cable-system-bpscs",
+    "converge-domestic-submarine-cable-network-cdscn",
+    "palawan-iloilo-cable-system",
+    "submarine-cable-in-the-philippines-scip"
+   ],
+   "k": 4,
+   "lambda": 4,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 112,
+   "label": "Taiwan",
+   "area_km2": 154.0414267268576,
+   "landing_stations": 4,
+   "landings": [
+    "Jinhu Township, Taiwan",
+    "Jincheng Township, Taiwan",
+    "Guningtou, Taiwan",
+    "Lake Ci, Taiwan"
+   ],
+   "cables": [
+    "cross-straits-cable-network-cscn",
+    "taiwan-penghu-kinmen-matsu-no-2-tpkm2",
+    "taiwan-penghu-kinmen-matsu-no-3-tpkm3"
+   ],
+   "k": 3,
+   "lambda": 2,
+   "N_1km": 2,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 113,
+   "label": "Taiwan",
+   "area_km2": 66.78444611044979,
+   "landing_stations": 2,
+   "landings": [
+    "Huxi Township, Taiwan",
+    "Magong, Taiwan"
+   ],
+   "cables": [
+    "taiwan-penghu-kinmen-matsu-no-2-tpkm2",
+    "taiwan-penghu-kinmen-matsu-no-3-tpkm3"
+   ],
+   "k": 2,
+   "lambda": 3,
+   "N_1km": 2,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 114,
+   "label": "United Kingdom",
+   "area_km2": 305.19873104013027,
+   "landing_stations": 3,
+   "landings": [
+    "Belmont, United Kingdom",
+    "Gutcher, United Kingdom",
+    "Burravoe, United Kingdom"
+   ],
+   "cables": [
+    "r100-north"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 115,
+   "label": "United Kingdom",
+   "area_km2": 974.1675842058332,
+   "landing_stations": 5,
+   "landings": [
+    "Mossbank, United Kingdom",
+    "Sumburgh, United Kingdom",
+    "Skelberry, United Kingdom",
+    "Sandwick, United Kingdom",
+    "Maywick, United Kingdom"
+   ],
+   "cables": [
+    "r100-north",
+    "shefa-2"
+   ],
+   "k": 2,
+   "lambda": 3,
+   "N_1km": 2,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 116,
+   "label": "United Kingdom",
+   "area_km2": 10.276692463432372,
+   "landing_stations": 1,
+   "landings": [
+    "Fair Isle, United Kingdom"
+   ],
+   "cables": [
+    "r100-north"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 117,
+   "label": "United Kingdom",
+   "area_km2": 18.426187863062022,
+   "landing_stations": 1,
+   "landings": [
+    "Symbister, United Kingdom"
+   ],
+   "cables": [
+    "r100-north"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 118,
+   "label": "United Kingdom",
+   "area_km2": 59.02716547460589,
+   "landing_stations": 2,
+   "landings": [
+    "Gump of Spurness, United Kingdom",
+    "Scuthvie Bay, United Kingdom"
+   ],
+   "cables": [
+    "r100-north"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 2,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 119,
+   "label": "United Kingdom",
+   "area_km2": 35.65730493331379,
+   "landing_stations": 1,
+   "landings": [
+    "Odie, United Kingdom"
+   ],
+   "cables": [
+    "r100-north"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 120,
+   "label": "United Kingdom",
+   "area_km2": 33.530867049704554,
+   "landing_stations": 2,
+   "landings": [
+    "Bay of London, United Kingdom",
+    "Cusbay, United Kingdom"
+   ],
+   "cables": [
+    "r100-north"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 2,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 121,
+   "label": "United Kingdom",
+   "area_km2": 53.218395347596854,
+   "landing_stations": 2,
+   "landings": [
+    "Rapness, United Kingdom",
+    "Bay of Tuquoy, United Kingdom"
+   ],
+   "cables": [
+    "bt-highlands-and-islands-submarine-cable-system",
+    "r100-north"
+   ],
+   "k": 2,
+   "lambda": 2,
+   "N_1km": 2,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 122,
+   "label": "United Kingdom",
+   "area_km2": 559.479211760515,
+   "landing_stations": 6,
+   "landings": [
+    "Evie, United Kingdom",
+    "Westness, United Kingdom",
+    "Sandgarth, United Kingdom",
+    "Linksness, United Kingdom",
+    "Skaill, United Kingdom",
+    "Aikerness Bay, United Kingdom"
+   ],
+   "cables": [
+    "bt-highlands-and-islands-submarine-cable-system",
+    "northern-lights",
+    "r100-north"
+   ],
+   "k": 3,
+   "lambda": 2,
+   "N_1km": 2,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 124,
+   "label": "United Kingdom",
+   "area_km2": 51.168609810569166,
+   "landing_stations": 3,
+   "landings": [
+    "Quoyness, United Kingdom",
+    "Hoxa, United Kingdom",
+    "Ayre of Cara, United Kingdom"
+   ],
+   "cables": [
+    "r100-north",
+    "shefa-2"
+   ],
+   "k": 2,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 125,
+   "label": "United Kingdom",
+   "area_km2": 104.00232008963108,
+   "landing_stations": 1,
+   "landings": [
+    "Laig, United Kingdom"
+   ],
+   "cables": [
+    "r100-north"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 126,
+   "label": "United Kingdom",
+   "area_km2": 890.0662342865559,
+   "landing_stations": 6,
+   "landings": [
+    "Baile M\u00f2r, United Kingdom",
+    "Fionnaphort, United Kingdom",
+    "Scoor, United Kingdom",
+    "Duart Bay, United Kingdom",
+    "Tobermory, United Kingdom",
+    "Calgary, United Kingdom"
+   ],
+   "cables": [
+    "bt-highlands-and-islands-submarine-cable-system",
+    "r100-north"
+   ],
+   "k": 2,
+   "lambda": 2,
+   "N_1km": 2,
+   "N_10km": 2,
+   "N_50km": 1
+  },
+  {
+   "unit": 127,
+   "label": "United Kingdom",
+   "area_km2": 40.023093212896946,
+   "landing_stations": 1,
+   "landings": [
+    "Kiloran Bay, United Kingdom"
+   ],
+   "cables": [
+    "r100-north"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 128,
+   "label": "Italy",
+   "area_km2": 35.36121922455442,
+   "landing_stations": 2,
+   "landings": [
+    "Lipari, Italy",
+    "Canneto, Italy"
+   ],
+   "cables": [
+    "piano-isole-minori"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 129,
+   "label": "Italy",
+   "area_km2": 21.049644684455156,
+   "landing_stations": 1,
+   "landings": [
+    "Vulcano Bleu, Italy"
+   ],
+   "cables": [
+    "piano-isole-minori"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 130,
+   "label": "Italy",
+   "area_km2": 83.02135791033065,
+   "landing_stations": 1,
+   "landings": [
+    "Pantelleria, Italy"
+   ],
+   "cables": [
+    "piano-isole-minori"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 131,
+   "label": "Italy",
+   "area_km2": 15.196807371955394,
+   "landing_stations": 1,
+   "landings": [
+    "Levanzo, Italy"
+   ],
+   "cables": [
+    "piano-isole-minori"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 132,
+   "label": "Italy",
+   "area_km2": 11.569239180689573,
+   "landing_stations": 1,
+   "landings": [
+    "Marettimo, Italy"
+   ],
+   "cables": [
+    "piano-isole-minori"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 133,
+   "label": "Italy",
+   "area_km2": 7.672951856240689,
+   "landing_stations": 1,
+   "landings": [
+    "Ustica, Italy"
+   ],
+   "cables": [
+    "piano-isole-minori"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 134,
+   "label": "Italy",
+   "area_km2": 1.8322849351131916,
+   "landing_stations": 1,
+   "landings": [
+    "Alicudi Porto, Italy"
+   ],
+   "cables": [
+    "piano-isole-minori"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 135,
+   "label": "Italy",
+   "area_km2": 8.167227703310221,
+   "landing_stations": 1,
+   "landings": [
+    "Filicudi Porto, Italy"
+   ],
+   "cables": [
+    "piano-isole-minori"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 136,
+   "label": "Italy",
+   "area_km2": 22.013574426585794,
+   "landing_stations": 1,
+   "landings": [
+    "Malfa, Italy"
+   ],
+   "cables": [
+    "piano-isole-minori"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 137,
+   "label": "Italy",
+   "area_km2": 12.23742018402052,
+   "landing_stations": 1,
+   "landings": [
+    "Stromboli, Italy"
+   ],
+   "cables": [
+    "piano-isole-minori"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 138,
+   "label": "Italy",
+   "area_km2": 54.24159997120014,
+   "landing_stations": 1,
+   "landings": [
+    "Carloforte, Italy"
+   ],
+   "cables": [
+    "piano-isole-minori"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 139,
+   "label": "Italy",
+   "area_km2": 47.4803235640244,
+   "landing_stations": 1,
+   "landings": [
+    "Cala d'Oliva, Italy"
+   ],
+   "cables": [
+    "piano-isole-minori"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 140,
+   "label": "Italy",
+   "area_km2": 4.950111725424588,
+   "landing_stations": 2,
+   "landings": [
+    "San Domino, Italy",
+    "San Nicola di Tremiti, Italy"
+   ],
+   "cables": [
+    "piano-isole-minori"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 143,
+   "label": "Italy",
+   "area_km2": 17.092521215623947,
+   "landing_stations": 1,
+   "landings": [
+    "Ponza, Italy"
+   ],
+   "cables": [
+    "piano-isole-minori"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 144,
+   "label": "Italy",
+   "area_km2": 1.1073172073245048,
+   "landing_stations": 2,
+   "landings": [
+    "Ventotene, Italy",
+    "Santo Stefano, Italy"
+   ],
+   "cables": [
+    "piano-isole-minori"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 145,
+   "label": "Nauru",
+   "area_km2": 0.0,
+   "landing_stations": 1,
+   "landings": [
+    "Yaren, Nauru"
+   ],
+   "cables": [
+    "east-micronesia-cable-system-emcs"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 146,
+   "label": "Micronesia",
+   "area_km2": 113.68778789450992,
+   "landing_stations": 1,
+   "landings": [
+    "Kosrae, Micronesia"
+   ],
+   "cables": [
+    "east-micronesia-cable-system-emcs"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 147,
+   "label": "Micronesia",
+   "area_km2": 0.0,
+   "landing_stations": 1,
+   "landings": [
+    "Pohnpei, Micronesia"
+   ],
+   "cables": [
+    "chuuk-pohnpei-cable",
+    "east-micronesia-cable-system-emcs",
+    "hantru1-cable-system"
+   ],
+   "k": 3,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 148,
+   "label": "Kiribati",
+   "area_km2": 18.603037806259703,
+   "landing_stations": 1,
+   "landings": [
+    "Tarawa, Kiribati"
+   ],
+   "cables": [
+    "east-micronesia-cable-system-emcs"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 149,
+   "label": "Canada",
+   "area_km2": 41.56781753693332,
+   "landing_stations": 1,
+   "landings": [
+    "Haggard's Cove, BC, Canada"
+   ],
+   "cables": [
+    "connected-coast"
+   ],
+   "k": 1,
+   "lambda": 3,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 150,
+   "label": "Canada",
+   "area_km2": 533.1429916497847,
+   "landing_stations": 2,
+   "landings": [
+    "Yuquot, BC, Canada",
+    "Esperanza, BC, Canada"
+   ],
+   "cables": [
+    "connected-coast"
+   ],
+   "k": 1,
+   "lambda": 4,
+   "N_1km": 2,
+   "N_10km": 2,
+   "N_50km": 1
+  },
+  {
+   "unit": 151,
+   "label": "Canada",
+   "area_km2": 152.17562819483067,
+   "landing_stations": 1,
+   "landings": [
+    "Ahousat, BC, Canada"
+   ],
+   "cables": [
+    "connected-coast"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 152,
+   "label": "Canada",
+   "area_km2": 114.73723612382838,
+   "landing_stations": 2,
+   "landings": [
+    "Opitsat, BC, Canada",
+    "Tofino, BC, Canada"
+   ],
+   "cables": [
+    "connected-coast"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 153,
+   "label": "Canada",
+   "area_km2": 311.9284896897316,
+   "landing_stations": 2,
+   "landings": [
+    "Van Anda, BC, Canada",
+    "Gillies Bay, BC, Canada"
+   ],
+   "cables": [
+    "connected-coast"
+   ],
+   "k": 1,
+   "lambda": 3,
+   "N_1km": 2,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 154,
+   "label": "Canada",
+   "area_km2": 365.0417812237669,
+   "landing_stations": 2,
+   "landings": [
+    "Echo Bay, BC, Canada",
+    "Kwikwasut'inuxw Haxwa\u2019mis, BC, Canada"
+   ],
+   "cables": [
+    "connected-coast"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 2,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 155,
+   "label": "Canada",
+   "area_km2": 208.428717389413,
+   "landing_stations": 1,
+   "landings": [
+    "Harbledown Island, BC, Canada"
+   ],
+   "cables": [
+    "connected-coast"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 156,
+   "label": "Canada",
+   "area_km2": 218.59147085230722,
+   "landing_stations": 4,
+   "landings": [
+    "Granite Bay, BC, Canada",
+    "Bold Point, BC, Canada",
+    "Open Bay, BC, Canada",
+    "Heriot Bay, BC, Canada"
+   ],
+   "cables": [
+    "connected-coast"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 2,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 157,
+   "label": "Canada",
+   "area_km2": 76.00405437254285,
+   "landing_stations": 2,
+   "landings": [
+    "Pine Island, BC, Canada",
+    "Scarlett Point, BC, Canada"
+   ],
+   "cables": [
+    "connected-coast"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 2,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 158,
+   "label": "Canada",
+   "area_km2": 430.21600528426023,
+   "landing_stations": 1,
+   "landings": [
+    "Kaiete Point, BC, Canada"
+   ],
+   "cables": [
+    "connected-coast"
+   ],
+   "k": 1,
+   "lambda": 3,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 159,
+   "label": "Canada",
+   "area_km2": 9509.185131480392,
+   "landing_stations": 1,
+   "landings": [
+    "Tlell, BC, Canada"
+   ],
+   "cables": [
+    "connected-coast"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 160,
+   "label": "Canada",
+   "area_km2": 8.35029610070622,
+   "landing_stations": 1,
+   "landings": [
+    "Bonilla Island, BC, Canada"
+   ],
+   "cables": [
+    "connected-coast"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 161,
+   "label": "Canada",
+   "area_km2": 56.72405751728249,
+   "landing_stations": 1,
+   "landings": [
+    "Kitkatla, BC, Canada"
+   ],
+   "cables": [
+    "connected-coast"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 162,
+   "label": "Canada",
+   "area_km2": 478.29260893846634,
+   "landing_stations": 1,
+   "landings": [
+    "Oona River, BC, Canada"
+   ],
+   "cables": [
+    "connected-coast"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 163,
+   "label": "Canada",
+   "area_km2": 259.8679997170922,
+   "landing_stations": 2,
+   "landings": [
+    "Old Bella Bella, BC, Canada",
+    "Dryad Point, BC, Canada"
+   ],
+   "cables": [
+    "connected-coast"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 2,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 164,
+   "label": "Canada",
+   "area_km2": 308.9577526776029,
+   "landing_stations": 1,
+   "landings": [
+    "Bella Bella, BC, Canada"
+   ],
+   "cables": [
+    "connected-coast"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 165,
+   "label": "Canada",
+   "area_km2": 1713.3435374514127,
+   "landing_stations": 1,
+   "landings": [
+    "Tom Island, BC, Canada"
+   ],
+   "cables": [
+    "connected-coast"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 166,
+   "label": "Canada",
+   "area_km2": 244.31403677541414,
+   "landing_stations": 1,
+   "landings": [
+    "Refuge Cove, BC, Canada"
+   ],
+   "cables": [
+    "connected-coast"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 167,
+   "label": "Canada",
+   "area_km2": 131.1537539195119,
+   "landing_stations": 4,
+   "landings": [
+    "Seaford, BC, Canada",
+    "Whaletown, BC, Canada",
+    "Mansons Landing, BC, Canada",
+    "Squirrel Cove, BC, Canada"
+   ],
+   "cables": [
+    "connected-coast"
+   ],
+   "k": 1,
+   "lambda": 4,
+   "N_1km": 3,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 168,
+   "label": "Canada",
+   "area_km2": 254.73712564936744,
+   "landing_stations": 1,
+   "landings": [
+    "Surge Narrows, BC, Canada"
+   ],
+   "cables": [
+    "connected-coast"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 169,
+   "label": "Canada",
+   "area_km2": 51.88926130474961,
+   "landing_stations": 1,
+   "landings": [
+    "Gabriola, BC, Canada"
+   ],
+   "cables": [
+    "connected-coast"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 170,
+   "label": "Canada",
+   "area_km2": 51.0539385754112,
+   "landing_stations": 1,
+   "landings": [
+    "Denman Island, BC, Canada"
+   ],
+   "cables": [
+    "connected-coast"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 171,
+   "label": "Canada",
+   "area_km2": 26.66782063317382,
+   "landing_stations": 1,
+   "landings": [
+    "Hornby Island, BC, Canada"
+   ],
+   "cables": [
+    "connected-coast"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 172,
+   "label": "China",
+   "area_km2": 33840.64348000952,
+   "landing_stations": 3,
+   "landings": [
+    "Lingao, China",
+    "Lingshui, China",
+    "Wenchang, China"
+   ],
+   "cables": [
+    "haikou-beihai-cable",
+    "hainan-to-hong-kong-express-h2he",
+    "sea-h2x"
+   ],
+   "k": 3,
+   "lambda": 3,
+   "N_1km": 3,
+   "N_10km": 3,
+   "N_50km": 3
+  },
+  {
+   "unit": 173,
+   "label": "China",
+   "area_km2": 449.8116996214201,
+   "landing_stations": 1,
+   "landings": [
+    "Mamu, China"
+   ],
+   "cables": [
+    "ningbo-zhoushan-cable"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 174,
+   "label": "Cuba",
+   "area_km2": 106227.04655030573,
+   "landing_stations": 4,
+   "landings": [
+    "Cienfuegos, Cuba",
+    "Guantanamo Bay, Cuba",
+    "Santiago de Cuba, Cuba",
+    "Siboney, Cuba"
+   ],
+   "cables": [
+    "alba-1",
+    "arimao",
+    "gtmo-1",
+    "gtmo-pr"
+   ],
+   "k": 4,
+   "lambda": 5,
+   "N_1km": 4,
+   "N_10km": 3,
+   "N_50km": 2
+  },
+  {
+   "unit": 175,
+   "label": "Martinique",
+   "area_km2": 1097.4592065757531,
+   "landing_stations": 2,
+   "landings": [
+    "Schoelcher, Martinique",
+    "Le Lamentin, Martinique"
+   ],
+   "cables": [
+    "arimao",
+    "eastern-caribbean-fiber-system-ecfs",
+    "kanawa",
+    "southern-caribbean-fiber"
+   ],
+   "k": 4,
+   "lambda": 6,
+   "N_1km": 2,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 176,
+   "label": "Timor-Leste",
+   "area_km2": 28762.351090778197,
+   "landing_stations": 2,
+   "landings": [
+    "Dili, Timor-Leste",
+    "Kupang, Indonesia"
+   ],
+   "cables": [
+    "kupang-alor-cable-systems",
+    "mataram-kupang-cable-system-mkcs",
+    "palapa-ring-east",
+    "sape-labuan-bajo-ende-kupang"
+   ],
+   "k": 4,
+   "lambda": 4,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 177,
+   "label": "Taiwan",
+   "area_km2": 16.56447785133338,
+   "landing_stations": 1,
+   "landings": [
+    "Beigan, Taiwan"
+   ],
+   "cables": [
+    "taiwan-penghu-kinmen-matsu-no-3-tpkm3"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 178,
+   "label": "Taiwan",
+   "area_km2": 19.611007621032357,
+   "landing_stations": 1,
+   "landings": [
+    "Xiyu Township, Taiwan"
+   ],
+   "cables": [
+    "taiwan-penghu-kinmen-matsu-no-3-tpkm3"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 179,
+   "label": "India",
+   "area_km2": 0.637652696002677,
+   "landing_stations": 1,
+   "landings": [
+    "Amini, India"
+   ],
+   "cables": [
+    "kochi-lakshadweep-islands-kli-sofc"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 180,
+   "label": "India",
+   "area_km2": 7.906718756445881,
+   "landing_stations": 2,
+   "landings": [
+    "Agatti, India",
+    "Bangaram, India"
+   ],
+   "cables": [
+    "kochi-lakshadweep-islands-kli-sofc"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 2,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 181,
+   "label": "India",
+   "area_km2": 10.1572809636271,
+   "landing_stations": 1,
+   "landings": [
+    "Minicoy, India"
+   ],
+   "cables": [
+    "kochi-lakshadweep-islands-kli-sofc"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 182,
+   "label": "India",
+   "area_km2": 3.331812718013227,
+   "landing_stations": 1,
+   "landings": [
+    "Kalpeni, India"
+   ],
+   "cables": [
+    "kochi-lakshadweep-islands-kli-sofc"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 183,
+   "label": "India",
+   "area_km2": 0.5658039291999005,
+   "landing_stations": 1,
+   "landings": [
+    "Chetlat, India"
+   ],
+   "cables": [
+    "kochi-lakshadweep-islands-kli-sofc"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 184,
+   "label": "India",
+   "area_km2": 0.0,
+   "landing_stations": 1,
+   "landings": [
+    "Bitra, India"
+   ],
+   "cables": [
+    "kochi-lakshadweep-islands-kli-sofc"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 185,
+   "label": "India",
+   "area_km2": 1.460385642215833,
+   "landing_stations": 1,
+   "landings": [
+    "Kavaratti, India"
+   ],
+   "cables": [
+    "kochi-lakshadweep-islands-kli-sofc"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 186,
+   "label": "India",
+   "area_km2": 0.46745709743727,
+   "landing_stations": 1,
+   "landings": [
+    "Andrott, India"
+   ],
+   "cables": [
+    "kochi-lakshadweep-islands-kli-sofc"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 187,
+   "label": "India",
+   "area_km2": 7.636504102141127,
+   "landing_stations": 1,
+   "landings": [
+    "Kadmat, India"
+   ],
+   "cables": [
+    "kochi-lakshadweep-islands-kli-sofc"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 188,
+   "label": "India",
+   "area_km2": 1.4342220835560857,
+   "landing_stations": 1,
+   "landings": [
+    "Kiltan, India"
+   ],
+   "cables": [
+    "kochi-lakshadweep-islands-kli-sofc"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 189,
+   "label": "Portugal",
+   "area_km2": 752.9177011251012,
+   "landing_stations": 1,
+   "landings": [
+    "Funchal, Portugal"
+   ],
+   "cables": [
+    "cam-ring",
+    "continente-madeira",
+    "ellalink"
+   ],
+   "k": 3,
+   "lambda": 3,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 190,
+   "label": "Philippines",
+   "area_km2": 3797.977997405472,
+   "landing_stations": 2,
+   "landings": [
+    "Tagbilaran, Philippines",
+    "Baclayon, Philippines"
+   ],
+   "cables": [
+    "converge-domestic-submarine-cable-network-cdscn",
+    "philippine-domestic-submarine-cable-network-pdscn"
+   ],
+   "k": 2,
+   "lambda": 4,
+   "N_1km": 2,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 191,
+   "label": "Philippines",
+   "area_km2": 3213.4528791529606,
+   "landing_stations": 4,
+   "landings": [
+    "Placer, Philippines",
+    "Palanas, Philippines",
+    "Masbate City, Philippines",
+    "Milagros, Philippines"
+   ],
+   "cables": [
+    "converge-domestic-submarine-cable-network-cdscn",
+    "philippine-domestic-submarine-cable-network-pdscn"
+   ],
+   "k": 2,
+   "lambda": 7,
+   "N_1km": 4,
+   "N_10km": 3,
+   "N_50km": 1
+  },
+  {
+   "unit": 192,
+   "label": "Philippines",
+   "area_km2": 241.3299959685411,
+   "landing_stations": 1,
+   "landings": [
+    "Camiguin Island, Philippines"
+   ],
+   "cables": [
+    "philippine-domestic-submarine-cable-network-pdscn"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 193,
+   "label": "Philippines",
+   "area_km2": 414.11285995226154,
+   "landing_stations": 1,
+   "landings": [
+    "Siargao Island, Philippines"
+   ],
+   "cables": [
+    "philippine-domestic-submarine-cable-network-pdscn"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 194,
+   "label": "Philippines",
+   "area_km2": 20.308080136561603,
+   "landing_stations": 1,
+   "landings": [
+    "Boracay, Philippines"
+   ],
+   "cables": [
+    "boracay-palawan-submarine-cable-system-bpscs",
+    "converge-domestic-submarine-cable-network-cdscn",
+    "philippine-domestic-submarine-cable-network-pdscn"
+   ],
+   "k": 3,
+   "lambda": 5,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 195,
+   "label": "Philippines",
+   "area_km2": 704.5679369316621,
+   "landing_stations": 1,
+   "landings": [
+    "Calatrava, Philippines"
+   ],
+   "cables": [
+    "philippine-domestic-submarine-cable-network-pdscn"
+   ],
+   "k": 1,
+   "lambda": 3,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 196,
+   "label": "Philippines",
+   "area_km2": 890.4843272653527,
+   "landing_stations": 1,
+   "landings": [
+    "Boac, Philippines"
+   ],
+   "cables": [
+    "philippine-domestic-submarine-cable-network-pdscn"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 197,
+   "label": "Greece",
+   "area_km2": 80.08103959043896,
+   "landing_stations": 2,
+   "landings": [
+    "Baxedes, Greece",
+    "Perivolos, Greece"
+   ],
+   "cables": [
+    "thetis"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 2,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 198,
+   "label": "Greece",
+   "area_km2": 293.7656371396133,
+   "landing_stations": 2,
+   "landings": [
+    "Kochilari, Greece",
+    "Kardamena, Greece"
+   ],
+   "cables": [
+    "thetis"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 2,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 199,
+   "label": "Greece",
+   "area_km2": 1429.188314068567,
+   "landing_stations": 2,
+   "landings": [
+    "Kremasti, Greece",
+    "Plimmiri, Greece"
+   ],
+   "cables": [
+    "thetis"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 2,
+   "N_10km": 2,
+   "N_50km": 1
+  },
+  {
+   "unit": 200,
+   "label": "Greece",
+   "area_km2": 8285.759324225994,
+   "landing_stations": 5,
+   "landings": [
+    "Sitia, Greece",
+    "Nopigeia, Greece",
+    "Korakia, Greece",
+    "Chania, Greece",
+    "Tympaki, Greece"
+   ],
+   "cables": [
+    "2africa",
+    "apollo-east-and-west",
+    "asia-africa-europe-1-aae-1",
+    "blue",
+    "mednautilus-submarine-system",
+    "minoas-east-and-west",
+    "silphium",
+    "thetis"
+   ],
+   "k": 8,
+   "lambda": 12,
+   "N_1km": 5,
+   "N_10km": 5,
+   "N_50km": 3
+  },
+  {
+   "unit": 201,
+   "label": "Greece",
+   "area_km2": 599.0424781138388,
+   "landing_stations": 4,
+   "landings": [
+    "Kavos, Greece",
+    "Kontokali, Greece",
+    "Corfu, Greece",
+    "Kokkini, Greece"
+   ],
+   "cables": [
+    "adria-1",
+    "oteglobe-kokkini-bari",
+    "thetis"
+   ],
+   "k": 3,
+   "lambda": 5,
+   "N_1km": 3,
+   "N_10km": 2,
+   "N_50km": 1
+  },
+  {
+   "unit": 202,
+   "label": "Spain",
+   "area_km2": 3688.7633977952128,
+   "landing_stations": 4,
+   "landings": [
+    "Santa Ponsa, Spain",
+    "Mallorca, Spain",
+    "Palma, Spain",
+    "Ses Covetes, Spain"
+   ],
+   "cables": [
+    "balalink",
+    "penbal-4",
+    "penbal-5",
+    "romulo"
+   ],
+   "k": 4,
+   "lambda": 4,
+   "N_1km": 3,
+   "N_10km": 2,
+   "N_50km": 1
+  },
+  {
+   "unit": 203,
+   "label": "Spain",
+   "area_km2": 613.5496677075752,
+   "landing_stations": 1,
+   "landings": [
+    "Ibiza, Spain"
+   ],
+   "cables": [
+    "penbal-4"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 206,
+   "label": "New Zealand",
+   "area_km2": 150588.0770631892,
+   "landing_stations": 5,
+   "landings": [
+    "Fighting Bay, New Zealand",
+    "Nelson, New Zealand",
+    "Kaikoura, New Zealand",
+    "Oara, New Zealand",
+    "Christchurch, New Zealand"
+   ],
+   "cables": [
+    "aqualink",
+    "cook-strait",
+    "nelson-levin"
+   ],
+   "k": 3,
+   "lambda": 3,
+   "N_1km": 3,
+   "N_10km": 2,
+   "N_50km": 1
+  },
+  {
+   "unit": 207,
+   "label": "New Zealand",
+   "area_km2": 113969.71157250793,
+   "landing_stations": 13,
+   "landings": [
+    "Oteranga Bay, New Zealand",
+    "Takapuna, New Zealand",
+    "Levin, New Zealand",
+    "Wellington, New Zealand",
+    "Paraparaumu, New Zealand",
+    "Titahi Bay, New Zealand",
+    "Whanganui, New Zealand",
+    "Waikanae, New Zealand",
+    "New Plymouth, New Zealand",
+    "Raglan, New Zealand",
+    "Auckland, New Zealand",
+    "Mangawhai, New Zealand",
+    "Whenuapai, New Zealand"
+   ],
+   "cables": [
+    "aqualink",
+    "cook-strait",
+    "hawaiki",
+    "nelson-levin",
+    "southern-cross-cable-network-sccn",
+    "southern-cross-next",
+    "tasman-global-access-tga-cable"
+   ],
+   "k": 7,
+   "lambda": 5,
+   "N_1km": 4,
+   "N_10km": 3,
+   "N_50km": 2
+  },
+  {
+   "unit": 208,
+   "label": "Indonesia",
+   "area_km2": 11687.04280377605,
+   "landing_stations": 4,
+   "landings": [
+    "Muntok, Indonesia",
+    "Batu Prahu, Indonesia",
+    "Pesaren, Indonesia",
+    "Sungailiat, Indonesia"
+   ],
+   "cables": [
+    "biznet-nusantara-cable-system-1-bncs-1",
+    "jakarta-bangka-batam-singapore-b2js",
+    "jakarta-bangka-bintan-batam-singapore-b3js",
+    "link-4-phase-2",
+    "pasuli",
+    "sumatera-bangka-cable-system-sbcs"
+   ],
+   "k": 6,
+   "lambda": 8,
+   "N_1km": 4,
+   "N_10km": 4,
+   "N_50km": 2
+  },
+  {
+   "unit": 209,
+   "label": "Malta",
+   "area_km2": 261.2908998946035,
+   "landing_stations": 6,
+   "landings": [
+    "Mellieha, Malta",
+    "Bahar ic-Caghaq, Malta",
+    "Golden Bay, Malta",
+    "St. Paul's Bay, Malta",
+    "St. George's Bay, Malta",
+    "Balluta Bay, Malta"
+   ],
+   "cables": [
+    "epic-malta-sicily-cable-system-emscs",
+    "go-1-mediterranean-cable-system",
+    "italy-malta",
+    "malta-gozo-cable",
+    "malta-italy-interconnector",
+    "medusa-submarine-cable-system",
+    "melita-1",
+    "peace-cable"
+   ],
+   "k": 8,
+   "lambda": 7,
+   "N_1km": 3,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 210,
+   "label": "Cyprus",
+   "area_km2": 9281.629607908895,
+   "landing_stations": 4,
+   "landings": [
+    "Yeroskipos, Cyprus",
+    "Pentaskhinos, Cyprus",
+    "Girne, Cyprus",
+    "Iskele, Cyprus"
+   ],
+   "cables": [
+    "blue",
+    "cadmos",
+    "exelera-north",
+    "hawk",
+    "mednautilus-submarine-system",
+    "medusa-submarine-cable-system",
+    "peace-cable",
+    "te-northtgn-eurasiaseacomalexandrosmedex",
+    "turcyos-1",
+    "turcyos-2",
+    "ugarit"
+   ],
+   "k": 11,
+   "lambda": 11,
+   "N_1km": 4,
+   "N_10km": 4,
+   "N_50km": 2
+  },
+  {
+   "unit": 211,
+   "label": "Trinidad and Tobago",
+   "area_km2": 4832.0939412062335,
+   "landing_stations": 2,
+   "landings": [
+    "Chaguaramas, Trinidad and Tobago",
+    "Toco, Trinidad and Tobago"
+   ],
+   "cables": [
+    "deep-blue-one",
+    "eastern-caribbean-fiber-system-ecfs",
+    "ec-link",
+    "southern-caribbean-fiber",
+    "suriname-guyana-submarine-cable-system-sg-scs",
+    "tt1"
+   ],
+   "k": 6,
+   "lambda": 5,
+   "N_1km": 2,
+   "N_10km": 2,
+   "N_50km": 1
+  },
+  {
+   "unit": 212,
+   "label": "Trinidad and Tobago",
+   "area_km2": 290.8334052973918,
+   "landing_stations": 2,
+   "landings": [
+    "Rockly Bay, Trinidad and Tobago",
+    "Pigeon Point, Trinidad and Tobago"
+   ],
+   "cables": [
+    "deep-blue-one",
+    "tt1"
+   ],
+   "k": 2,
+   "lambda": 2,
+   "N_1km": 2,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 213,
+   "label": "Sri Lanka",
+   "area_km2": 66046.72000888841,
+   "landing_stations": 4,
+   "landings": [
+    "Matara, Sri Lanka",
+    "Mt. Lavinia, Sri Lanka",
+    "Colombo, Sri Lanka",
+    "Ratmalana, Sri Lanka"
+   ],
+   "cables": [
+    "bay-of-bengal-gateway-bbg",
+    "bharat-lanka-cable-system",
+    "dhiraagu-slt-submarine-cable-network",
+    "falcon",
+    "india-asia-xpress-iax",
+    "maldives-sri-lanka-cable-msc",
+    "seamewe-4",
+    "seamewe-5"
+   ],
+   "k": 8,
+   "lambda": 7,
+   "N_1km": 3,
+   "N_10km": 2,
+   "N_50km": 2
+  },
+  {
+   "unit": 214,
+   "label": "Dominican Republic",
+   "area_km2": 74340.50319635824,
+   "landing_stations": 6,
+   "landings": [
+    "Punta Cana, Dominican Republic",
+    "Cacique, Dominican Republic",
+    "Puerto Plata, Dominican Republic",
+    "Port-au-Prince, Haiti",
+    "Kaliko, Haiti",
+    "Santo Domingo, Dominican Republic"
+   ],
+   "cables": [
+    "america-movil-submarine-cable-system-1-amx-1",
+    "antillas-1",
+    "arcos",
+    "bahamas-domestic-submarine-network-bdsni",
+    "east-west-cable-ewc",
+    "fibralink",
+    "firmina",
+    "south-america-1-sam-1"
+   ],
+   "k": 8,
+   "lambda": 10,
+   "N_1km": 6,
+   "N_10km": 4,
+   "N_50km": 4
+  },
+  {
+   "unit": 215,
+   "label": "Indonesia",
+   "area_km2": 14486.20638666059,
+   "landing_stations": 5,
+   "landings": [
+    "Sape, Indonesia",
+    "Sumbawa Besar, Indonesia",
+    "Kawinda Nae, Indonesia",
+    "Bima, Indonesia",
+    "Saraemee, Indonesia"
+   ],
+   "cables": [
+    "denpasar-waingapu-cable-systems",
+    "link-1-phase-1",
+    "link-3-phase-1",
+    "mataram-kupang-cable-system-mkcs",
+    "sape-labuan-bajo-ende-kupang"
+   ],
+   "k": 5,
+   "lambda": 5,
+   "N_1km": 5,
+   "N_10km": 5,
+   "N_50km": 2
+  },
+  {
+   "unit": 216,
+   "label": "Indonesia",
+   "area_km2": 14500.230785535161,
+   "landing_stations": 2,
+   "landings": [
+    "Labuan Bajo, Indonesia",
+    "Ende, Indonesia"
+   ],
+   "cables": [
+    "mataram-kupang-cable-system-mkcs",
+    "sape-labuan-bajo-ende-kupang"
+   ],
+   "k": 2,
+   "lambda": 4,
+   "N_1km": 2,
+   "N_10km": 2,
+   "N_50km": 2
+  },
+  {
+   "unit": 217,
+   "label": "Indonesia",
+   "area_km2": 2156.13783916924,
+   "landing_stations": 2,
+   "landings": [
+    "Alor, Indonesia",
+    "Kokar, Indonesia"
+   ],
+   "cables": [
+    "kupang-alor-cable-systems",
+    "palapa-ring-east"
+   ],
+   "k": 2,
+   "lambda": 2,
+   "N_1km": 2,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 218,
+   "label": "Indonesia",
+   "area_km2": 4664.35109612714,
+   "landing_stations": 4,
+   "landings": [
+    "Lombok, Indonesia",
+    "Senggigi, Indonesia",
+    "Mataram, Indonesia",
+    "Pringgabaya, Indonesia"
+   ],
+   "cables": [
+    "balok",
+    "denpasar-waingapu-cable-systems",
+    "jaka2ladema",
+    "link-1-phase-2",
+    "link-3-phase-1",
+    "mataram-kupang-cable-system-mkcs"
+   ],
+   "k": 6,
+   "lambda": 6,
+   "N_1km": 3,
+   "N_10km": 2,
+   "N_50km": 1
+  },
+  {
+   "unit": 219,
+   "label": "Indonesia",
+   "area_km2": 10831.618418913162,
+   "landing_stations": 1,
+   "landings": [
+    "Waingapu, Indonesia"
+   ],
+   "cables": [
+    "denpasar-waingapu-cable-systems",
+    "mataram-kupang-cable-system-mkcs",
+    "palapa-ring-east"
+   ],
+   "k": 3,
+   "lambda": 3,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 220,
+   "label": "Indonesia",
+   "area_km2": 170046.13207164954,
+   "landing_stations": 10,
+   "landings": [
+    "Manado, Indonesia",
+    "Aeng Batu Batu, Indonesia",
+    "Towale, Indonesia",
+    "Bulobulo, Indonesia",
+    "Kendari, Indonesia",
+    "Luwuk, Indonesia",
+    "Tutuyan, Indonesia",
+    "Makassar, Indonesia",
+    "Kauditan, Indonesia",
+    "Toweli, Indonesia"
+   ],
+   "cables": [
+    "bifrost",
+    "indonesia-global-gateway-igg-system",
+    "jaka2ladema",
+    "java-kalimantan-sulawesi-jakasusi",
+    "link-1-phase-1",
+    "link-2-phase-1",
+    "palapa-ring-middle",
+    "s-u-b-cable-system",
+    "sea-us",
+    "smpcs-packet-1"
+   ],
+   "k": 10,
+   "lambda": 12,
+   "N_1km": 9,
+   "N_10km": 8,
+   "N_50km": 5
+  },
+  {
+   "unit": 221,
+   "label": "Palau",
+   "area_km2": 351.0245219523966,
+   "landing_stations": 1,
+   "landings": [
+    "Ngeremlengui, Palau"
+   ],
+   "cables": [
+    "echo",
+    "sea-us"
+   ],
+   "k": 2,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 222,
+   "label": "Jamaica",
+   "area_km2": 11032.89852807661,
+   "landing_stations": 9,
+   "landings": [
+    "Montego Bay, Jamaica",
+    "Negril, Jamaica",
+    "Black River, Jamaica",
+    "Bull Bay, Jamaica",
+    "Ocho Rios, Jamaica",
+    "Port Antonio, Jamaica",
+    "Harbour View, Jamaica",
+    "Copa Club, Jamaica",
+    "Morant Point, Jamaica"
+   ],
+   "cables": [
+    "alba-1",
+    "cayman-jamaica-fiber-system-cjfs",
+    "colombia-florida-express-cfx-1",
+    "east-west-cable-ewc",
+    "fibralink"
+   ],
+   "k": 5,
+   "lambda": 5,
+   "N_1km": 4,
+   "N_10km": 4,
+   "N_50km": 2
+  },
+  {
+   "unit": 223,
+   "label": "French Polynesia",
+   "area_km2": 26.74240390975821,
+   "landing_stations": 1,
+   "landings": [
+    "Rurutu, French Polynesia"
+   ],
+   "cables": [
+    "natitua-sud"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 224,
+   "label": "French Polynesia",
+   "area_km2": 28.870818150470257,
+   "landing_stations": 1,
+   "landings": [
+    "Tubuai, French Polynesia"
+   ],
+   "cables": [
+    "natitua-sud"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 225,
+   "label": "Canada",
+   "area_km2": 256.7804773536546,
+   "landing_stations": 1,
+   "landings": [
+    "Les \u00celes-de-la-Madeleine, QC, Canada"
+   ],
+   "cables": [
+    "cogim"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 226,
+   "label": "United States",
+   "area_km2": 9681.832654561895,
+   "landing_stations": 5,
+   "landings": [
+    "Port Lions, AK, United States",
+    "Ouzinkie, AK, United States",
+    "Larsen Bay, AK, United States",
+    "Kodiak, AK, United States",
+    "Narrow Cape, AK, United States"
+   ],
+   "cables": [
+    "au-aleutian",
+    "kodiak-kenai-fiber-link-kkfl"
+   ],
+   "k": 2,
+   "lambda": 3,
+   "N_1km": 3,
+   "N_10km": 2,
+   "N_50km": 2
+  },
+  {
+   "unit": 227,
+   "label": "United States",
+   "area_km2": 4091.3922427418374,
+   "landing_stations": 1,
+   "landings": [
+    "False Pass, AK, United States"
+   ],
+   "cables": [
+    "au-aleutian"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 228,
+   "label": "United States",
+   "area_km2": 348.6496805159416,
+   "landing_stations": 1,
+   "landings": [
+    "Akutan, AK, United States"
+   ],
+   "cables": [
+    "au-aleutian"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 229,
+   "label": "United States",
+   "area_km2": 2787.730427637194,
+   "landing_stations": 1,
+   "landings": [
+    "Unalaska, AK, United States"
+   ],
+   "cables": [
+    "au-aleutian"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 230,
+   "label": "United States",
+   "area_km2": 3281.64651490503,
+   "landing_stations": 1,
+   "landings": [
+    "Petersburg, AK, United States"
+   ],
+   "cables": [
+    "alaska-united-southeast-au-se",
+    "sealink"
+   ],
+   "k": 2,
+   "lambda": 4,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 231,
+   "label": "Iceland",
+   "area_km2": 102390.52825365691,
+   "landing_stations": 3,
+   "landings": [
+    "Thorlakshofn, Iceland",
+    "Landeyjar, Iceland",
+    "Seydisfjordur, Iceland"
+   ],
+   "cables": [
+    "danice",
+    "farice-1",
+    "greenland-connect",
+    "iris"
+   ],
+   "k": 4,
+   "lambda": 4,
+   "N_1km": 3,
+   "N_10km": 3,
+   "N_50km": 2
+  },
+  {
+   "unit": 232,
+   "label": "Comoros",
+   "area_km2": 1024.675181752219,
+   "landing_stations": 2,
+   "landings": [
+    "Moroni, Comoros",
+    "Chindini, Comoros"
+   ],
+   "cables": [
+    "2africa",
+    "avassa",
+    "comoros-domestic-cable-system",
+    "eastern-africa-submarine-system-eassy",
+    "fly-lion3"
+   ],
+   "k": 5,
+   "lambda": 3,
+   "N_1km": 2,
+   "N_10km": 2,
+   "N_50km": 1
+  },
+  {
+   "unit": 233,
+   "label": "Spain",
+   "area_km2": 1558.4145585965016,
+   "landing_stations": 8,
+   "landings": [
+    "Gran Canaria, Canary Islands, Spain",
+    "Sardina, Canary Islands, Spain",
+    "Alta Vista, Canary Islands, Spain",
+    "Aguimes, Canary Islands, Spain",
+    "Tarahales, Spain",
+    "Tinocas, Canary Islands, Spain",
+    "El Goro, Canary Islands, Spain",
+    "Piedra Santa, Spain"
+   ],
+   "cables": [
+    "2africa",
+    "canalink",
+    "candalta",
+    "ellalink",
+    "pencan-9",
+    "sat-3wasc",
+    "subcan-link-1",
+    "subcan-link-2",
+    "tenerife-gran-canaria",
+    "transcan-2",
+    "transcan-3",
+    "west-africa-cable-system-wacs"
+   ],
+   "k": 12,
+   "lambda": 9,
+   "N_1km": 5,
+   "N_10km": 3,
+   "N_50km": 1
+  },
+  {
+   "unit": 234,
+   "label": "Seychelles",
+   "area_km2": 164.68388100664822,
+   "landing_stations": 2,
+   "landings": [
+    "Carana, Seychelles",
+    "Victoria, Seychelles"
+   ],
+   "cables": [
+    "2africa",
+    "peace-cable",
+    "seychelles-to-east-africa-system-seas"
+   ],
+   "k": 3,
+   "lambda": 3,
+   "N_1km": 2,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 235,
+   "label": "Madagascar",
+   "area_km2": 592484.1597178981,
+   "landing_stations": 4,
+   "landings": [
+    "Mahajanga, Madagascar",
+    "Fort Dauphin, Madagascar",
+    "Toliara, Madagascar",
+    "Toamasina, Madagascar"
+   ],
+   "cables": [
+    "2africa",
+    "djibouti-africa-regional-express-1-dare-1",
+    "eastern-africa-submarine-system-eassy",
+    "lower-indian-ocean-network-lion",
+    "meltingpot-indianoceanic-submarine-system-metiss"
+   ],
+   "k": 5,
+   "lambda": 6,
+   "N_1km": 4,
+   "N_10km": 4,
+   "N_50km": 4
+  },
+  {
+   "unit": 236,
+   "label": "United Arab Emirates",
+   "area_km2": 22.05424056018448,
+   "landing_stations": 1,
+   "landings": [
+    "Sir Abu Nu'Ayr Island, United Arab Emirates"
+   ],
+   "cables": [
+    "sir-abu-nuayr-cable"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 237,
+   "label": "Cape Verde",
+   "area_km2": 961.3853886010319,
+   "landing_stations": 2,
+   "landings": [
+    "Praia, Cape Verde",
+    "Tarrafal de Santiago, Cape Verde"
+   ],
+   "cables": [
+    "cabo-verde-telecom-domestic-submarine-cable-phase-1",
+    "cabo-verde-telecom-domestic-submarine-cable-phase-2",
+    "cabo-verde-telecom-domestic-submarine-cable-phase-3",
+    "ellalink",
+    "senegal-horn-of-africa-regional-express-share-cable",
+    "west-africa-cable-system-wacs"
+   ],
+   "k": 6,
+   "lambda": 3,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 238,
+   "label": "New Caledonia",
+   "area_km2": 16571.78872263157,
+   "landing_stations": 4,
+   "landings": [
+    "Yate, New Caledonia",
+    "Mont-Dore, New Caledonia",
+    "Noumea, New Caledonia",
+    "Poindimie, New Caledonia"
+   ],
+   "cables": [
+    "gondwana-1",
+    "gondwana-2picot-2",
+    "picot-1"
+   ],
+   "k": 3,
+   "lambda": 2,
+   "N_1km": 3,
+   "N_10km": 3,
+   "N_50km": 2
+  },
+  {
+   "unit": 239,
+   "label": "New Caledonia",
+   "area_km2": 679.2605450746769,
+   "landing_stations": 1,
+   "landings": [
+    "Tadine, New Caledonia"
+   ],
+   "cables": [
+    "gondwana-2picot-2"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 240,
+   "label": "New Caledonia",
+   "area_km2": 1165.806704037466,
+   "landing_stations": 2,
+   "landings": [
+    "We, New Caledonia",
+    "Xepenehe, New Caledonia"
+   ],
+   "cables": [
+    "gondwana-2picot-2",
+    "picot-1"
+   ],
+   "k": 2,
+   "lambda": 2,
+   "N_1km": 2,
+   "N_10km": 2,
+   "N_50km": 1
+  },
+  {
+   "unit": 241,
+   "label": "New Caledonia",
+   "area_km2": 135.19966999239654,
+   "landing_stations": 1,
+   "landings": [
+    "Vao, New Caledonia"
+   ],
+   "cables": [
+    "gondwana-2picot-2"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 242,
+   "label": "Fiji",
+   "area_km2": 10893.330136488863,
+   "landing_stations": 1,
+   "landings": [
+    "Suva, Fiji"
+   ],
+   "cables": [
+    "gondwana-2picot-2",
+    "interchange-cable-network-1-icn1",
+    "southern-cross-cable-network-sccn",
+    "southern-cross-next",
+    "tonga-cable",
+    "tui-samoa"
+   ],
+   "k": 6,
+   "lambda": 6,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 243,
+   "label": "Mexico",
+   "area_km2": 478.98475336883047,
+   "landing_stations": 1,
+   "landings": [
+    "Isla de Cozumel, Mexico"
+   ],
+   "cables": [
+    "ixchel"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 244,
+   "label": "Barbados",
+   "area_km2": 444.221375107287,
+   "landing_stations": 2,
+   "landings": [
+    "Pegwell, Barbados",
+    "Needham\u2019s Point, Barbados"
+   ],
+   "cables": [
+    "southern-caribbean-fiber",
+    "x-link-submarine-cable"
+   ],
+   "k": 2,
+   "lambda": 2,
+   "N_1km": 2,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 245,
+   "label": "Tokelau",
+   "area_km2": 2.0384721076705232,
+   "landing_stations": 1,
+   "landings": [
+    "Atafu, Tokelau"
+   ],
+   "cables": [
+    "tokelau-submarine-cable"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 246,
+   "label": "Tokelau",
+   "area_km2": 1.1246967073470429,
+   "landing_stations": 1,
+   "landings": [
+    "Nukunonu, Tokelau"
+   ],
+   "cables": [
+    "southern-cross-next",
+    "tokelau-submarine-cable"
+   ],
+   "k": 2,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 247,
+   "label": "Tokelau",
+   "area_km2": 0.36205537880671024,
+   "landing_stations": 1,
+   "landings": [
+    "Fakaofo, Tokelau"
+   ],
+   "cables": [
+    "tokelau-submarine-cable"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 248,
+   "label": "Spain",
+   "area_km2": 373.5757625142345,
+   "landing_stations": 1,
+   "landings": [
+    "San Sebastian de la Gomera, Canary Islands, Spain"
+   ],
+   "cables": [
+    "la-gomera-el-hierro",
+    "tegopa"
+   ],
+   "k": 2,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 249,
+   "label": "Spain",
+   "area_km2": 301.07217002325046,
+   "landing_stations": 1,
+   "landings": [
+    "Valverde, Canary Islands, Spain"
+   ],
+   "cables": [
+    "la-gomera-el-hierro"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 250,
+   "label": "Spain",
+   "area_km2": 707.8649483518814,
+   "landing_stations": 1,
+   "landings": [
+    "Santa Cruz de La Palma, Canary Islands, Spain"
+   ],
+   "cables": [
+    "canalink",
+    "tegopa",
+    "tenerife-la-palma"
+   ],
+   "k": 3,
+   "lambda": 3,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 251,
+   "label": "Spain",
+   "area_km2": 2003.9270784734179,
+   "landing_stations": 6,
+   "landings": [
+    "Granadilla de Abona, Spain",
+    "Los Realejos, Canary Islands, Spain",
+    "El M\u00e9dano, Canary Islands, Spain",
+    "Candelaria, Canary Islands, Spain",
+    "G\u00fcimar, Canary Islands, Spain",
+    "Las Caletillas, Spain"
+   ],
+   "cables": [
+    "africa-coast-to-europe-ace",
+    "canalink",
+    "candalta",
+    "pencan-8",
+    "subcan-link-1",
+    "subcan-link-2",
+    "tegopa",
+    "tenerife-gran-canaria",
+    "tenerife-la-palma"
+   ],
+   "k": 9,
+   "lambda": 9,
+   "N_1km": 4,
+   "N_10km": 2,
+   "N_50km": 1
+  },
+  {
+   "unit": 252,
+   "label": "Spain",
+   "area_km2": 1638.2071790397492,
+   "landing_stations": 2,
+   "landings": [
+    "Morrojable, Canary Islands, Spain",
+    "Puerto del Rosario, Canary Islands, Spain"
+   ],
+   "cables": [
+    "transcan-2"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 2,
+   "N_10km": 2,
+   "N_50km": 1
+  },
+  {
+   "unit": 253,
+   "label": "Spain",
+   "area_km2": 852.1552588789435,
+   "landing_stations": 2,
+   "landings": [
+    "Arrecife, Canary Islands, Spain",
+    "Playa Blanca, Canary Islands, Spain"
+   ],
+   "cables": [
+    "transcan-2",
+    "transcan-3"
+   ],
+   "k": 2,
+   "lambda": 2,
+   "N_1km": 2,
+   "N_10km": 2,
+   "N_50km": 1
+  },
+  {
+   "unit": 254,
+   "label": "Guadeloupe",
+   "area_km2": 1474.4923437072548,
+   "landing_stations": 5,
+   "landings": [
+    "Capesterre-Belle-Eau, Guadeloupe",
+    "Saint-Fran\u00e7ois, Guadeloupe",
+    "Pointe-a-Pitre, Guadeloupe",
+    "Baillif, Guadeloupe",
+    "Baie-Mahault, Guadeloupe"
+   ],
+   "cables": [
+    "eastern-caribbean-fiber-system-ecfs",
+    "global-caribbean-network-gcn",
+    "guadeloupe-cable-des-iles-du-sud-gcis",
+    "southern-caribbean-fiber"
+   ],
+   "k": 4,
+   "lambda": 6,
+   "N_1km": 3,
+   "N_10km": 2,
+   "N_50km": 1
+  },
+  {
+   "unit": 255,
+   "label": "Guadeloupe",
+   "area_km2": 152.59762700059767,
+   "landing_stations": 1,
+   "landings": [
+    "Saint-Louis, Guadeloupe"
+   ],
+   "cables": [
+    "guadeloupe-cable-des-iles-du-sud-gcis"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 256,
+   "label": "Guadeloupe",
+   "area_km2": 4.414538209304318,
+   "landing_stations": 1,
+   "landings": [
+    "Terre-de-Haut, Guadeloupe"
+   ],
+   "cables": [
+    "guadeloupe-cable-des-iles-du-sud-gcis"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 257,
+   "label": "Guadeloupe",
+   "area_km2": 22.0547709959054,
+   "landing_stations": 1,
+   "landings": [
+    "Beausejour, Guadeloupe"
+   ],
+   "cables": [
+    "guadeloupe-cable-des-iles-du-sud-gcis"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 258,
+   "label": "British Indian Ocean Territory",
+   "area_km2": 42.03831792614218,
+   "landing_stations": 1,
+   "landings": [
+    "Diego Garcia, British Indian Ocean Territory"
+   ],
+   "cables": [
+    "oman-australia-cable-oac"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 259,
+   "label": "Cocos (Keeling) Islands",
+   "area_km2": 7.670455865152657,
+   "landing_stations": 1,
+   "landings": [
+    "West Island, Cocos (Keeling) Islands"
+   ],
+   "cables": [
+    "oman-australia-cable-oac"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 260,
+   "label": "Ascension and Tristan da Cunha",
+   "area_km2": 124.92284178278435,
+   "landing_stations": 1,
+   "landings": [
+    "Rupert's Bay, Saint Helena, Ascension and Tristan da Cunha"
+   ],
+   "cables": [
+    "equiano"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 261,
+   "label": "Norway",
+   "area_km2": 612.6811387691114,
+   "landing_stations": 1,
+   "landings": [
+    "Hitra, Norway"
+   ],
+   "cables": [
+    "n0r5ke-viking"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 262,
+   "label": "Norway",
+   "area_km2": 208.87405939256263,
+   "landing_stations": 1,
+   "landings": [
+    "Ed\u00f8ya, Norway"
+   ],
+   "cables": [
+    "n0r5ke-viking"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 263,
+   "label": "Norway",
+   "area_km2": 64.89268238991427,
+   "landing_stations": 1,
+   "landings": [
+    "Kristiansund, Norway"
+   ],
+   "cables": [
+    "n0r5ke-viking"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 264,
+   "label": "Norway",
+   "area_km2": 26.500578774503232,
+   "landing_stations": 1,
+   "landings": [
+    "Flor\u00f8, Norway"
+   ],
+   "cables": [
+    "n0r5ke-viking"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 265,
+   "label": "Cape Verde",
+   "area_km2": 741.6630675130015,
+   "landing_stations": 1,
+   "landings": [
+    "Porto Novo, Cape Verde"
+   ],
+   "cables": [
+    "cabo-verde-telecom-domestic-submarine-cable-phase-2",
+    "cabo-verde-telecom-domestic-submarine-cable-phase-3"
+   ],
+   "k": 2,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 266,
+   "label": "Cape Verde",
+   "area_km2": 220.7160780725323,
+   "landing_stations": 1,
+   "landings": [
+    "Sao Pedro, Cape Verde"
+   ],
+   "cables": [
+    "cabo-verde-telecom-domestic-submarine-cable-phase-1",
+    "cabo-verde-telecom-domestic-submarine-cable-phase-2",
+    "cabo-verde-telecom-domestic-submarine-cable-phase-3"
+   ],
+   "k": 3,
+   "lambda": 3,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 267,
+   "label": "Cape Verde",
+   "area_km2": 635.5733216502936,
+   "landing_stations": 1,
+   "landings": [
+    "Sal Rei, Cape Verde"
+   ],
+   "cables": [
+    "cabo-verde-telecom-domestic-submarine-cable-phase-1",
+    "cabo-verde-telecom-domestic-submarine-cable-phase-3"
+   ],
+   "k": 2,
+   "lambda": 3,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 268,
+   "label": "Cape Verde",
+   "area_km2": 460.23322093993534,
+   "landing_stations": 1,
+   "landings": [
+    "Sao Filipe, Cape Verde"
+   ],
+   "cables": [
+    "cabo-verde-telecom-domestic-submarine-cable-phase-3"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 269,
+   "label": "Cape Verde",
+   "area_km2": 59.78178561592552,
+   "landing_stations": 1,
+   "landings": [
+    "Nova Sintra, Cape Verde"
+   ],
+   "cables": [
+    "cabo-verde-telecom-domestic-submarine-cable-phase-3"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 270,
+   "label": "Cape Verde",
+   "area_km2": 335.7785167958001,
+   "landing_stations": 1,
+   "landings": [
+    "Tarrafal de S\u00e3o Nicolau, Cape Verde"
+   ],
+   "cables": [
+    "cabo-verde-telecom-domestic-submarine-cable-phase-1"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 271,
+   "label": "Cape Verde",
+   "area_km2": 199.18762209895874,
+   "landing_stations": 1,
+   "landings": [
+    "Murdeira, Cape Verde"
+   ],
+   "cables": [
+    "cabo-verde-telecom-domestic-submarine-cable-phase-1"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 272,
+   "label": "French Polynesia",
+   "area_km2": 16.488207337763964,
+   "landing_stations": 1,
+   "landings": [
+    "Vaitape, French Polynesia"
+   ],
+   "cables": [
+    "honotua",
+    "manatua"
+   ],
+   "k": 2,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 273,
+   "label": "Cook Islands",
+   "area_km2": 14.54817514366816,
+   "landing_stations": 1,
+   "landings": [
+    "Aitutaki, Cook Islands"
+   ],
+   "cables": [
+    "manatua"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 274,
+   "label": "Cook Islands",
+   "area_km2": 64.16467379622381,
+   "landing_stations": 1,
+   "landings": [
+    "Rarotonga, Cook Islands"
+   ],
+   "cables": [
+    "manatua"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 275,
+   "label": "Niue",
+   "area_km2": 220.5718669496344,
+   "landing_stations": 1,
+   "landings": [
+    "Alofi, Niue"
+   ],
+   "cables": [
+    "manatua"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 276,
+   "label": "Samoa",
+   "area_km2": 1134.9092486551474,
+   "landing_stations": 1,
+   "landings": [
+    "Apia, Samoa"
+   ],
+   "cables": [
+    "manatua",
+    "samoa-american-samoa-sas",
+    "tui-samoa"
+   ],
+   "k": 3,
+   "lambda": 3,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 277,
+   "label": "Saint Vincent and the Grenadines",
+   "area_km2": 20.927950652234962,
+   "landing_stations": 1,
+   "landings": [
+    "Bequia, Saint Vincent and the Grenadines"
+   ],
+   "cables": [
+    "caribbean-regional-communications-infrastructure-program-carcip"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 278,
+   "label": "Saint Vincent and the Grenadines",
+   "area_km2": 2.802560254879743,
+   "landing_stations": 1,
+   "landings": [
+    "Mustique, Saint Vincent and the Grenadines"
+   ],
+   "cables": [
+    "caribbean-regional-communications-infrastructure-program-carcip"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 279,
+   "label": "Saint Vincent and the Grenadines",
+   "area_km2": 7.653071733935967,
+   "landing_stations": 1,
+   "landings": [
+    "Canouan, Saint Vincent and the Grenadines"
+   ],
+   "cables": [
+    "caribbean-regional-communications-infrastructure-program-carcip"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 280,
+   "label": "Saint Vincent and the Grenadines",
+   "area_km2": 6.83849143382886,
+   "landing_stations": 1,
+   "landings": [
+    "Union Island, Saint Vincent and the Grenadines"
+   ],
+   "cables": [
+    "caribbean-regional-communications-infrastructure-program-carcip"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 281,
+   "label": "Grenada",
+   "area_km2": 34.1235725510315,
+   "landing_stations": 1,
+   "landings": [
+    "Carriacou, Grenada"
+   ],
+   "cables": [
+    "caribbean-regional-communications-infrastructure-program-carcip"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 282,
+   "label": "Grenada",
+   "area_km2": 313.1393730222285,
+   "landing_stations": 2,
+   "landings": [
+    "Conference, Grenada",
+    "Point Salines, Grenada"
+   ],
+   "cables": [
+    "caribbean-regional-communications-infrastructure-program-carcip",
+    "eastern-caribbean-fiber-system-ecfs",
+    "southern-caribbean-fiber"
+   ],
+   "k": 3,
+   "lambda": 4,
+   "N_1km": 2,
+   "N_10km": 2,
+   "N_50km": 1
+  },
+  {
+   "unit": 283,
+   "label": "Saint Vincent and the Grenadines",
+   "area_km2": 329.5032175422159,
+   "landing_stations": 3,
+   "landings": [
+    "Kingstown, Saint Vincent and the Grenadines",
+    "Owia, Saint Vincent and the Grenadines",
+    "Chateaubelair, Saint Vincent and the Grenadines"
+   ],
+   "cables": [
+    "caribbean-regional-communications-infrastructure-program-carcip",
+    "eastern-caribbean-fiber-system-ecfs",
+    "southern-caribbean-fiber"
+   ],
+   "k": 3,
+   "lambda": 4,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 284,
+   "label": "Denmark",
+   "area_km2": 137.39393403350104,
+   "landing_stations": 3,
+   "landings": [
+    "Laeso, Denmark",
+    "Vestero, Denmark",
+    "Osterby, Denmark"
+   ],
+   "cables": [
+    "energinet-laeso-varberg",
+    "energinet-lyngsa-laeso",
+    "kattegat-2"
+   ],
+   "k": 3,
+   "lambda": 4,
+   "N_1km": 2,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 285,
+   "label": "Indonesia",
+   "area_km2": 178.70246278217502,
+   "landing_stations": 1,
+   "landings": [
+    "Bawean, Indonesia"
+   ],
+   "cables": [
+    "sjjk"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 286,
+   "label": "Sao Tome and Principe",
+   "area_km2": 880.8896336366131,
+   "landing_stations": 1,
+   "landings": [
+    "Sao Tome, Sao Tome and Principe"
+   ],
+   "cables": [
+    "africa-coast-to-europe-ace",
+    "ultramar-ge"
+   ],
+   "k": 2,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 287,
+   "label": "Equatorial Guinea",
+   "area_km2": 14.18166560331998,
+   "landing_stations": 1,
+   "landings": [
+    "Annobon, Equatorial Guinea"
+   ],
+   "cables": [
+    "ultramar-ge"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 288,
+   "label": "Norway",
+   "area_km2": 357.31898697836687,
+   "landing_stations": 1,
+   "landings": [
+    "Br\u00f8nn\u00f8ysund, Norway"
+   ],
+   "cables": [
+    "polar-circle-cable"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 289,
+   "label": "Norway",
+   "area_km2": 142.5216025099821,
+   "landing_stations": 1,
+   "landings": [
+    "Sandnessj\u00f8en, Norway"
+   ],
+   "cables": [
+    "polar-circle-cable"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 290,
+   "label": "Denmark",
+   "area_km2": 598.0450546262982,
+   "landing_stations": 2,
+   "landings": [
+    "R\u00f8nne, Denmark",
+    "Pedersker, Denmark"
+   ],
+   "cables": [
+    "baltica",
+    "rnne-rdvig"
+   ],
+   "k": 2,
+   "lambda": 4,
+   "N_1km": 2,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 291,
+   "label": "India",
+   "area_km2": 4290.838383719719,
+   "landing_stations": 3,
+   "landings": [
+    "Sri Vijaya Puram, India",
+    "Rangat, India",
+    "Long Island, India"
+   ],
+   "cables": [
+    "chennai-andaman-nicobar-islands-cable-cani"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 292,
+   "label": "India",
+   "area_km2": 84.4889753164086,
+   "landing_stations": 1,
+   "landings": [
+    "Havelock, India"
+   ],
+   "cables": [
+    "chennai-andaman-nicobar-islands-cable-cani"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 293,
+   "label": "India",
+   "area_km2": 725.1178659030023,
+   "landing_stations": 1,
+   "landings": [
+    "Little Andaman, India"
+   ],
+   "cables": [
+    "chennai-andaman-nicobar-islands-cable-cani"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 294,
+   "label": "India",
+   "area_km2": 159.487415666893,
+   "landing_stations": 1,
+   "landings": [
+    "Car Nicobar, India"
+   ],
+   "cables": [
+    "chennai-andaman-nicobar-islands-cable-cani"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 295,
+   "label": "India",
+   "area_km2": 143.5259643571342,
+   "landing_stations": 1,
+   "landings": [
+    "Kamorta, India"
+   ],
+   "cables": [
+    "chennai-andaman-nicobar-islands-cable-cani"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 296,
+   "label": "India",
+   "area_km2": 969.6902190948477,
+   "landing_stations": 1,
+   "landings": [
+    "Great Nicobar, India"
+   ],
+   "cables": [
+    "chennai-andaman-nicobar-islands-cable-cani"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 297,
+   "label": "Solomon Islands",
+   "area_km2": 68.82365558501542,
+   "landing_stations": 1,
+   "landings": [
+    "Noro, Solomon Islands"
+   ],
+   "cables": [
+    "coral-sea-cable-system-cs"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 298,
+   "label": "Solomon Islands",
+   "area_km2": 2863.2707975011454,
+   "landing_stations": 1,
+   "landings": [
+    "Taro, Solomon Islands"
+   ],
+   "cables": [
+    "coral-sea-cable-system-cs"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 299,
+   "label": "Solomon Islands",
+   "area_km2": 5346.897673538947,
+   "landing_stations": 1,
+   "landings": [
+    "Honiara, Solomon Islands"
+   ],
+   "cables": [
+    "coral-sea-cable-system-cs"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 300,
+   "label": "Solomon Islands",
+   "area_km2": 4330.9004737279765,
+   "landing_stations": 1,
+   "landings": [
+    "Auki, Solomon Islands"
+   ],
+   "cables": [
+    "coral-sea-cable-system-cs"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 301,
+   "label": "Saint Pierre and Miquelon",
+   "area_km2": 212.7637735474829,
+   "landing_stations": 1,
+   "landings": [
+    "Miquelon-Langlade, Saint Pierre and Miquelon"
+   ],
+   "cables": [
+    "st-pierre-and-miquelon-cable"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 302,
+   "label": "Saint Pierre and Miquelon",
+   "area_km2": 29.986131291764497,
+   "landing_stations": 1,
+   "landings": [
+    "Saint-Pierre, Saint Pierre and Miquelon"
+   ],
+   "cables": [
+    "st-pierre-and-miquelon-cable"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 303,
+   "label": "United States",
+   "area_km2": 30.245713989037753,
+   "landing_stations": 1,
+   "landings": [
+    "Crescent Beach, RI, United States"
+   ],
+   "cables": [
+    "sea2shore"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 304,
+   "label": "Russia",
+   "area_km2": 3033.619169881777,
+   "landing_stations": 1,
+   "landings": [
+    "Kurilsk, Russia"
+   ],
+   "cables": [
+    "sakhalin-kuril-islands-cable"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 305,
+   "label": "Russia",
+   "area_km2": 1566.1496066372738,
+   "landing_stations": 1,
+   "landings": [
+    "Yuzhno Kurilsk, Russia"
+   ],
+   "cables": [
+    "sakhalin-kuril-islands-cable"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 306,
+   "label": "Russia",
+   "area_km2": 263.38821689937436,
+   "landing_stations": 1,
+   "landings": [
+    "Krabozavodskoye, Russia"
+   ],
+   "cables": [
+    "sakhalin-kuril-islands-cable"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 307,
+   "label": "R\u00e9union",
+   "area_km2": 2582.4245707474006,
+   "landing_stations": 3,
+   "landings": [
+    "Le Port, R\u00e9union",
+    "Sainte Marie, R\u00e9union",
+    "Saint Paul, R\u00e9union"
+   ],
+   "cables": [
+    "lower-indian-ocean-network-lion",
+    "meltingpot-indianoceanic-submarine-system-metiss",
+    "safe"
+   ],
+   "k": 3,
+   "lambda": 5,
+   "N_1km": 3,
+   "N_10km": 2,
+   "N_50km": 1
+  },
+  {
+   "unit": 308,
+   "label": "Fiji",
+   "area_km2": 5746.513610147142,
+   "landing_stations": 1,
+   "landings": [
+    "Savusavu, Fiji"
+   ],
+   "cables": [
+    "southern-cross-next",
+    "tui-samoa"
+   ],
+   "k": 2,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 309,
+   "label": "Kiribati",
+   "area_km2": 436.4664700250676,
+   "landing_stations": 1,
+   "landings": [
+    "Tabwakea, Kiribati"
+   ],
+   "cables": [
+    "southern-cross-next"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 310,
+   "label": "Tonga",
+   "area_km2": 19.413047887460113,
+   "landing_stations": 1,
+   "landings": [
+    "Pangai, Tonga"
+   ],
+   "cables": [
+    "tonga-domestic-cable-extension-tdce"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 311,
+   "label": "Tonga",
+   "area_km2": 119.43723152763177,
+   "landing_stations": 1,
+   "landings": [
+    "Neiafu, Tonga"
+   ],
+   "cables": [
+    "hawaiki",
+    "tonga-domestic-cable-extension-tdce"
+   ],
+   "k": 2,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 312,
+   "label": "Tonga",
+   "area_km2": 257.3394633768773,
+   "landing_stations": 1,
+   "landings": [
+    "Nuku'alofa, Tonga"
+   ],
+   "cables": [
+    "tonga-cable",
+    "tonga-domestic-cable-extension-tdce"
+   ],
+   "k": 2,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 313,
+   "label": "United States",
+   "area_km2": 1923.206423493001,
+   "landing_stations": 3,
+   "landings": [
+    "Makena, HI, United States",
+    "Lahaina, HI, United States",
+    "Kihei, HI, United States"
+   ],
+   "cables": [
+    "hawaii-inter-island-cable-system-hics",
+    "hawaii-island-fibre-network-hifn",
+    "paniolo-cable-network"
+   ],
+   "k": 3,
+   "lambda": 6,
+   "N_1km": 3,
+   "N_10km": 2,
+   "N_50km": 1
+  },
+  {
+   "unit": 314,
+   "label": "United States",
+   "area_km2": 10523.36605888682,
+   "landing_stations": 2,
+   "landings": [
+    "Kawaihae, HI, United States",
+    "Spencer Beach, HI, United States"
+   ],
+   "cables": [
+    "hawaii-inter-island-cable-system-hics",
+    "hawaii-island-fibre-network-hifn",
+    "honotua",
+    "paniolo-cable-network",
+    "southern-cross-cable-network-sccn"
+   ],
+   "k": 5,
+   "lambda": 7,
+   "N_1km": 2,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 315,
+   "label": "United States",
+   "area_km2": 1568.0877284947303,
+   "landing_stations": 7,
+   "landings": [
+    "Hawaii Kai, HI, United States",
+    "Makaha, HI, United States",
+    "Koko Head, HI, United States",
+    "Ko Olina, HI, United States",
+    "Keawaula, HI, United States",
+    "Kapolei, HI, United States",
+    "Kahe Point, HI, United States"
+   ],
+   "cables": [
+    "asia-america-gateway-aag-cable-system",
+    "chi",
+    "hawaii-inter-island-cable-system-hics",
+    "hawaii-island-fibre-network-hifn",
+    "hawaiki",
+    "paniolo-cable-network",
+    "sea-us",
+    "southern-cross-cable-network-sccn",
+    "telstra-endeavour"
+   ],
+   "k": 9,
+   "lambda": 13,
+   "N_1km": 6,
+   "N_10km": 3,
+   "N_50km": 1
+  },
+  {
+   "unit": 316,
+   "label": "United States",
+   "area_km2": 689.0803928003255,
+   "landing_stations": 1,
+   "landings": [
+    "Kaunakakai, HI, United States"
+   ],
+   "cables": [
+    "hawaii-island-fibre-network-hifn",
+    "paniolo-cable-network"
+   ],
+   "k": 2,
+   "lambda": 3,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 317,
+   "label": "United States",
+   "area_km2": 1463.212365628913,
+   "landing_stations": 2,
+   "landings": [
+    "Kekaha, HI, United States",
+    "Lihue, HI, United States"
+   ],
+   "cables": [
+    "hawaii-inter-island-cable-system-hics",
+    "hawaii-island-fibre-network-hifn",
+    "paniolo-cable-network"
+   ],
+   "k": 3,
+   "lambda": 3,
+   "N_1km": 2,
+   "N_10km": 2,
+   "N_50km": 1
+  },
+  {
+   "unit": 318,
+   "label": "Norway",
+   "area_km2": 11.671482290948063,
+   "landing_stations": 1,
+   "landings": [
+    "R\u00f8st, Norway"
+   ],
+   "cables": [
+    "bodo-rost-cable"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 319,
+   "label": "Malta",
+   "area_km2": 70.42615813453031,
+   "landing_stations": 1,
+   "landings": [
+    "Mgarr ix-Xini, Malta"
+   ],
+   "cables": [
+    "malta-gozo-cable"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 320,
+   "label": "Mauritius",
+   "area_km2": 99.26085050803792,
+   "landing_stations": 1,
+   "landings": [
+    "Grand Baie (Rodrigues), Mauritius"
+   ],
+   "cables": [
+    "mauritius-and-rodrigues-submarine-cable-system-mars"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 321,
+   "label": "Indonesia",
+   "area_km2": 2322.532840485748,
+   "landing_stations": 1,
+   "landings": [
+    "Yapen, Indonesia"
+   ],
+   "cables": [
+    "palapa-ring-east"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 322,
+   "label": "Indonesia",
+   "area_km2": 114.47652530497223,
+   "landing_stations": 1,
+   "landings": [
+    "Serwaru, Indonesia"
+   ],
+   "cables": [
+    "palapa-ring-east"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 323,
+   "label": "Indonesia",
+   "area_km2": 378.7046037873394,
+   "landing_stations": 1,
+   "landings": [
+    "Tiakur, Indonesia"
+   ],
+   "cables": [
+    "palapa-ring-east"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 324,
+   "label": "Indonesia",
+   "area_km2": 3254.3742913806364,
+   "landing_stations": 1,
+   "landings": [
+    "Suemlaki, Indonesia"
+   ],
+   "cables": [
+    "palapa-ring-east"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 325,
+   "label": "Indonesia",
+   "area_km2": 505.29402297754586,
+   "landing_stations": 1,
+   "landings": [
+    "Tual, Indonesia"
+   ],
+   "cables": [
+    "palapa-ring-east",
+    "smpcs-packet-2"
+   ],
+   "k": 2,
+   "lambda": 3,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 326,
+   "label": "Indonesia",
+   "area_km2": 6994.441631461804,
+   "landing_stations": 1,
+   "landings": [
+    "Kep. Aru, Indonesia"
+   ],
+   "cables": [
+    "palapa-ring-east"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 327,
+   "label": "Indonesia",
+   "area_km2": 391.226490153008,
+   "landing_stations": 1,
+   "landings": [
+    "Seba, Indonesia"
+   ],
+   "cables": [
+    "palapa-ring-east"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 328,
+   "label": "Indonesia",
+   "area_km2": 1277.2758408285295,
+   "landing_stations": 1,
+   "landings": [
+    "Baa, Indonesia"
+   ],
+   "cables": [
+    "palapa-ring-east"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 329,
+   "label": "Indonesia",
+   "area_km2": 909.0312153088277,
+   "landing_stations": 1,
+   "landings": [
+    "Bengkalis, Indonesia"
+   ],
+   "cables": [
+    "palapa-ring-west"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 330,
+   "label": "Indonesia",
+   "area_km2": 2421.155873416009,
+   "landing_stations": 1,
+   "landings": [
+    "Tebingtinggi Island, Indonesia"
+   ],
+   "cables": [
+    "palapa-ring-west"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 331,
+   "label": "Indonesia",
+   "area_km2": 395.20262650036716,
+   "landing_stations": 1,
+   "landings": [
+    "Karimun, Indonesia"
+   ],
+   "cables": [
+    "palapa-ring-west"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 332,
+   "label": "Indonesia",
+   "area_km2": 882.8768355322844,
+   "landing_stations": 1,
+   "landings": [
+    "Lingga, Indonesia"
+   ],
+   "cables": [
+    "palapa-ring-west"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 333,
+   "label": "Indonesia",
+   "area_km2": 1661.448663805182,
+   "landing_stations": 3,
+   "landings": [
+    "Ranai, Indonesia",
+    "Natuna, Indonesia",
+    "Penarik, Indonesia"
+   ],
+   "cables": [
+    "east-west-submarine-cable-system",
+    "palapa-ring-west"
+   ],
+   "k": 2,
+   "lambda": 4,
+   "N_1km": 3,
+   "N_10km": 2,
+   "N_50km": 1
+  },
+  {
+   "unit": 334,
+   "label": "Indonesia",
+   "area_km2": 94.77767619080625,
+   "landing_stations": 1,
+   "landings": [
+    "Terempa, Indonesia"
+   ],
+   "cables": [
+    "east-west-submarine-cable-system",
+    "palapa-ring-west"
+   ],
+   "k": 2,
+   "lambda": 4,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 335,
+   "label": "Indonesia",
+   "area_km2": 2947.706945421376,
+   "landing_stations": 2,
+   "landings": [
+    "Lakudo, Indonesia",
+    "Raha, Indonesia"
+   ],
+   "cables": [
+    "palapa-ring-middle"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 336,
+   "label": "Indonesia",
+   "area_km2": 4435.048358584964,
+   "landing_stations": 2,
+   "landings": [
+    "Baubau, Indonesia",
+    "Buranga, Indonesia"
+   ],
+   "cables": [
+    "palapa-ring-middle"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 337,
+   "label": "Indonesia",
+   "area_km2": 679.5909730226218,
+   "landing_stations": 1,
+   "landings": [
+    "Wawonii, Indonesia"
+   ],
+   "cables": [
+    "palapa-ring-middle"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 338,
+   "label": "Indonesia",
+   "area_km2": 2317.8506197250476,
+   "landing_stations": 1,
+   "landings": [
+    "Salakan, Indonesia"
+   ],
+   "cables": [
+    "palapa-ring-middle"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 339,
+   "label": "Indonesia",
+   "area_km2": 266.70777323925165,
+   "landing_stations": 1,
+   "landings": [
+    "Bangga, Indonesia"
+   ],
+   "cables": [
+    "palapa-ring-middle"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 340,
+   "label": "Indonesia",
+   "area_km2": 2930.583098867092,
+   "landing_stations": 1,
+   "landings": [
+    "Taliabu, Indonesia"
+   ],
+   "cables": [
+    "palapa-ring-middle"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 341,
+   "label": "Indonesia",
+   "area_km2": 591.6720485476644,
+   "landing_stations": 1,
+   "landings": [
+    "Sanana, Indonesia"
+   ],
+   "cables": [
+    "palapa-ring-middle",
+    "smpcs-packet-1"
+   ],
+   "k": 2,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 342,
+   "label": "Indonesia",
+   "area_km2": 91.5993584783568,
+   "landing_stations": 1,
+   "landings": [
+    "Ternate, Indonesia"
+   ],
+   "cables": [
+    "palapa-ring-middle",
+    "smpcs-packet-1"
+   ],
+   "k": 2,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 343,
+   "label": "Indonesia",
+   "area_km2": 105.46113709787913,
+   "landing_stations": 1,
+   "landings": [
+    "Tidore, Indonesia"
+   ],
+   "cables": [
+    "palapa-ring-middle"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 344,
+   "label": "Indonesia",
+   "area_km2": 18213.799992128155,
+   "landing_stations": 2,
+   "landings": [
+    "Sofifi, Indonesia",
+    "Tobelo, Indonesia"
+   ],
+   "cables": [
+    "palapa-ring-middle",
+    "smpcs-packet-1"
+   ],
+   "k": 2,
+   "lambda": 2,
+   "N_1km": 2,
+   "N_10km": 2,
+   "N_50km": 2
+  },
+  {
+   "unit": 345,
+   "label": "Indonesia",
+   "area_km2": 115.72003929373707,
+   "landing_stations": 1,
+   "landings": [
+    "Ondong Siau, Indonesia"
+   ],
+   "cables": [
+    "palapa-ring-middle"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 346,
+   "label": "Indonesia",
+   "area_km2": 859.418209937288,
+   "landing_stations": 1,
+   "landings": [
+    "Melonguane, Indonesia"
+   ],
+   "cables": [
+    "palapa-ring-middle"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 347,
+   "label": "Indonesia",
+   "area_km2": 2305.2369190347104,
+   "landing_stations": 1,
+   "landings": [
+    "Morotai, Indonesia"
+   ],
+   "cables": [
+    "palapa-ring-middle"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 348,
+   "label": "French Polynesia",
+   "area_km2": 19.041015148334502,
+   "landing_stations": 1,
+   "landings": [
+    "Hao, French Polynesia"
+   ],
+   "cables": [
+    "natitua"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 349,
+   "label": "French Polynesia",
+   "area_km2": 23.784861579216003,
+   "landing_stations": 1,
+   "landings": [
+    "Fakarava, French Polynesia"
+   ],
+   "cables": [
+    "natitua"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 350,
+   "label": "French Polynesia",
+   "area_km2": 1.6772215181096792,
+   "landing_stations": 1,
+   "landings": [
+    "Kaukura, French Polynesia"
+   ],
+   "cables": [
+    "natitua"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 351,
+   "label": "French Polynesia",
+   "area_km2": 2.3536295349981784,
+   "landing_stations": 1,
+   "landings": [
+    "Arutua, French Polynesia"
+   ],
+   "cables": [
+    "natitua"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 352,
+   "label": "French Polynesia",
+   "area_km2": 13.897530068823814,
+   "landing_stations": 1,
+   "landings": [
+    "Makemo, French Polynesia"
+   ],
+   "cables": [
+    "natitua"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 353,
+   "label": "French Polynesia",
+   "area_km2": 1.9487021557979585,
+   "landing_stations": 1,
+   "landings": [
+    "Rangiroa, French Polynesia"
+   ],
+   "cables": [
+    "natitua"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 354,
+   "label": "French Polynesia",
+   "area_km2": 340.8326787619667,
+   "landing_stations": 1,
+   "landings": [
+    "Hiva Oa, French Polynesia"
+   ],
+   "cables": [
+    "natitua"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 355,
+   "label": "French Polynesia",
+   "area_km2": 20.017472738166123,
+   "landing_stations": 1,
+   "landings": [
+    "Takaroa, French Polynesia"
+   ],
+   "cables": [
+    "natitua"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 356,
+   "label": "French Polynesia",
+   "area_km2": 0.7522629420003891,
+   "landing_stations": 1,
+   "landings": [
+    "Manihi, French Polynesia"
+   ],
+   "cables": [
+    "natitua"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 357,
+   "label": "French Polynesia",
+   "area_km2": 336.15515091849306,
+   "landing_stations": 1,
+   "landings": [
+    "Nuku Hiva, French Polynesia"
+   ],
+   "cables": [
+    "natitua"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 358,
+   "label": "Venezuela",
+   "area_km2": 1029.990905327089,
+   "landing_stations": 1,
+   "landings": [
+    "Porlamar, Venezuela"
+   ],
+   "cables": [
+    "venezuelan-festoon"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 359,
+   "label": "Chile",
+   "area_km2": 2474.5626285407684,
+   "landing_stations": 1,
+   "landings": [
+    "Puerto Williams, Chile"
+   ],
+   "cables": [
+    "fibra-optica-austral"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 360,
+   "label": "Maldives",
+   "area_km2": 0.2590523581207022,
+   "landing_stations": 1,
+   "landings": [
+    "Kulhudhufushi, Maldives"
+   ],
+   "cables": [
+    "dhiraagu-cable-network",
+    "nationwide-submarine-cable-ooredoo-maldives-nascom",
+    "peace-cable"
+   ],
+   "k": 3,
+   "lambda": 3,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 361,
+   "label": "Mayotte",
+   "area_km2": 381.7841495366979,
+   "landing_stations": 2,
+   "landings": [
+    "Kaweni, Mayotte",
+    "Mamoudzou, Mayotte"
+   ],
+   "cables": [
+    "avassa",
+    "fly-lion3",
+    "lower-indian-ocean-network-2-lion2"
+   ],
+   "k": 3,
+   "lambda": 3,
+   "N_1km": 2,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 362,
+   "label": "Papua New Guinea",
+   "area_km2": 1844.142427183351,
+   "landing_stations": 1,
+   "landings": [
+    "Lorengau, Papua New Guinea"
+   ],
+   "cables": [
+    "kumul-domestic-submarine-cable-system"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 363,
+   "label": "Papua New Guinea",
+   "area_km2": 35831.52186432778,
+   "landing_stations": 2,
+   "landings": [
+    "Kokopo, Papua New Guinea",
+    "Kimbe, Papua New Guinea"
+   ],
+   "cables": [
+    "kumul-domestic-submarine-cable-system"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 364,
+   "label": "Papua New Guinea",
+   "area_km2": 9313.677738512695,
+   "landing_stations": 1,
+   "landings": [
+    "Arawa, Papua New Guinea"
+   ],
+   "cables": [
+    "kumul-domestic-submarine-cable-system"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 365,
+   "label": "Papua New Guinea",
+   "area_km2": 6929.551410475672,
+   "landing_stations": 1,
+   "landings": [
+    "Kavieng, Papua New Guinea"
+   ],
+   "cables": [
+    "kumul-domestic-submarine-cable-system"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 366,
+   "label": "Papua New Guinea",
+   "area_km2": 85.86048155363584,
+   "landing_stations": 1,
+   "landings": [
+    "Daru, Papua New Guinea"
+   ],
+   "cables": [
+    "kumul-domestic-submarine-cable-system"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 367,
+   "label": "Belize",
+   "area_km2": 109.90547391151155,
+   "landing_stations": 1,
+   "landings": [
+    "San Pedro, Belize"
+   ],
+   "cables": [
+    "strategic-evolution-underwater-link-seul"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 368,
+   "label": "Malaysia",
+   "area_km2": 90.36266210216606,
+   "landing_stations": 1,
+   "landings": [
+    "Kiamsam, Malaysia"
+   ],
+   "cables": [
+    "labuan-brunei-submarine-cable"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 369,
+   "label": "Maldives",
+   "area_km2": 6.435030363123269,
+   "landing_stations": 1,
+   "landings": [
+    "Hithadhoo, Maldives"
+   ],
+   "cables": [
+    "dhiraagu-cable-network",
+    "nationwide-submarine-cable-ooredoo-maldives-nascom"
+   ],
+   "k": 2,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 370,
+   "label": "Maldives",
+   "area_km2": 0.2602275173238225,
+   "landing_stations": 1,
+   "landings": [
+    "Thinadhoo, Maldives"
+   ],
+   "cables": [
+    "nationwide-submarine-cable-ooredoo-maldives-nascom"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 371,
+   "label": "Maldives",
+   "area_km2": 0.31318945947469773,
+   "landing_stations": 1,
+   "landings": [
+    "Kolhufushi, Maldives"
+   ],
+   "cables": [
+    "nationwide-submarine-cable-ooredoo-maldives-nascom"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 372,
+   "label": "Sint Eustatius and Saba",
+   "area_km2": 19.034657190266728,
+   "landing_stations": 1,
+   "landings": [
+    "Gallows Bay, Bonaire, Sint Eustatius and Saba"
+   ],
+   "cables": [
+    "saba-statia-cable-system-sscs"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 373,
+   "label": "Sint Eustatius and Saba",
+   "area_km2": 7.064227010724187,
+   "landing_stations": 1,
+   "landings": [
+    "Great Level Bay, Bonaire, Sint Eustatius and Saba"
+   ],
+   "cables": [
+    "saba-statia-cable-system-sscs"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 374,
+   "label": "Saint Martin",
+   "area_km2": 91.63793180142453,
+   "landing_stations": 5,
+   "landings": [
+    "Great Bay Beach, Sint Maarten",
+    "Saint Maarten, Sint Maarten",
+    "St. Louis, Saint Martin",
+    "Baie Longue, Saint Martin",
+    "Marigot, Saint Martin"
+   ],
+   "cables": [
+    "eastern-caribbean-fiber-system-ecfs",
+    "global-caribbean-network-gcn",
+    "saba-statia-cable-system-sscs",
+    "sint-maarten-puerto-rico-network-one-smpr-1",
+    "southern-caribbean-fiber"
+   ],
+   "k": 5,
+   "lambda": 6,
+   "N_1km": 4,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 375,
+   "label": "Saint Barth\u00e9lemy",
+   "area_km2": 24.42381215219268,
+   "landing_stations": 1,
+   "landings": [
+    "Gustavia, Saint Barth\u00e9lemy"
+   ],
+   "cables": [
+    "global-caribbean-network-gcn",
+    "saba-statia-cable-system-sscs",
+    "southern-caribbean-fiber"
+   ],
+   "k": 3,
+   "lambda": 3,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 376,
+   "label": "Indonesia",
+   "area_km2": 681.9666030131648,
+   "landing_stations": 1,
+   "landings": [
+    "Ambon, Indonesia"
+   ],
+   "cables": [
+    "smpcs-packet-1"
+   ],
+   "k": 1,
+   "lambda": 3,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 377,
+   "label": "Indonesia",
+   "area_km2": 1898.177701724211,
+   "landing_stations": 1,
+   "landings": [
+    "Labuha, Indonesia"
+   ],
+   "cables": [
+    "smpcs-packet-1"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 378,
+   "label": "Indonesia",
+   "area_km2": 8608.756052250767,
+   "landing_stations": 1,
+   "landings": [
+    "Namlea, Indonesia"
+   ],
+   "cables": [
+    "smpcs-packet-1"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 379,
+   "label": "Indonesia",
+   "area_km2": 17346.846644953013,
+   "landing_stations": 1,
+   "landings": [
+    "Masohi, Indonesia"
+   ],
+   "cables": [
+    "smpcs-packet-1"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 380,
+   "label": "Indonesia",
+   "area_km2": 26.104483765073567,
+   "landing_stations": 1,
+   "landings": [
+    "Bandaneria, Indonesia"
+   ],
+   "cables": [
+    "smpcs-packet-1"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 381,
+   "label": "Indonesia",
+   "area_km2": 238.25308197650355,
+   "landing_stations": 1,
+   "landings": [
+    "Tarakan, Indonesia"
+   ],
+   "cables": [
+    "indonesia-global-gateway-igg-system",
+    "tarakan-selor-cable-system-tscs"
+   ],
+   "k": 2,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 382,
+   "label": "Northern Mariana Islands",
+   "area_km2": 96.98717496559274,
+   "landing_stations": 2,
+   "landings": [
+    "Sasanlagu, Northern Mariana Islands",
+    "Rota, Northern Mariana Islands"
+   ],
+   "cables": [
+    "atisa",
+    "mariana-guam-cable"
+   ],
+   "k": 2,
+   "lambda": 3,
+   "N_1km": 2,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 383,
+   "label": "Northern Mariana Islands",
+   "area_km2": 132.43783257030205,
+   "landing_stations": 2,
+   "landings": [
+    "Sugar Dock, Saipan, Northern Mariana Islands",
+    "Saipan, Northern Mariana Islands"
+   ],
+   "cables": [
+    "atisa",
+    "mariana-guam-cable"
+   ],
+   "k": 2,
+   "lambda": 2,
+   "N_1km": 2,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 384,
+   "label": "Wallis and Futuna",
+   "area_km2": 75.98521658050966,
+   "landing_stations": 1,
+   "landings": [
+    "Mata-Utu, Wallis and Futuna"
+   ],
+   "cables": [
+    "tui-samoa"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 385,
+   "label": "Wallis and Futuna",
+   "area_km2": 63.34395466555733,
+   "landing_stations": 1,
+   "landings": [
+    "Leava, Wallis and Futuna"
+   ],
+   "cables": [
+    "tui-samoa"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 386,
+   "label": "Samoa",
+   "area_km2": 1645.502400785842,
+   "landing_stations": 1,
+   "landings": [
+    "Tuasivi, Samoa"
+   ],
+   "cables": [
+    "tui-samoa"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 387,
+   "label": "Argentina",
+   "area_km2": 47135.91504445772,
+   "landing_stations": 1,
+   "landings": [
+    "Cabo Espiritu Santo, Argentina"
+   ],
+   "cables": [
+    "arsat-submarine-fiber-optic-cable"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 388,
+   "label": "Colombia",
+   "area_km2": 20.399836149534522,
+   "landing_stations": 2,
+   "landings": [
+    "San Andres, Colombia",
+    "Schooner Bight, Colombia"
+   ],
+   "cables": [
+    "america-movil-submarine-cable-system-1-amx-1",
+    "san-andres-isla-tolu-submarine-cable-sait"
+   ],
+   "k": 2,
+   "lambda": 2,
+   "N_1km": 2,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 389,
+   "label": "United States",
+   "area_km2": 364.3679882186805,
+   "landing_stations": 1,
+   "landings": [
+    "Manele Bay, HI, United States"
+   ],
+   "cables": [
+    "hawaii-island-fibre-network-hifn"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 390,
+   "label": "Chile",
+   "area_km2": 8130.720917695523,
+   "landing_stations": 2,
+   "landings": [
+    "Linao, Chile",
+    "Quellon, Chile"
+   ],
+   "cables": [
+    "fos-quellon-chacabuco",
+    "segunda-fos-canal-de-chacao"
+   ],
+   "k": 2,
+   "lambda": 2,
+   "N_1km": 2,
+   "N_10km": 2,
+   "N_50km": 2
+  },
+  {
+   "unit": 391,
+   "label": "United Kingdom",
+   "area_km2": 454.0756259117389,
+   "landing_stations": 2,
+   "landings": [
+    "Corrie, United Kingdom",
+    "Blackwaterfoot, United Kingdom"
+   ],
+   "cables": [
+    "bt-highlands-and-islands-submarine-cable-system"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 2,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 392,
+   "label": "United Kingdom",
+   "area_km2": 601.8843574885517,
+   "landing_stations": 2,
+   "landings": [
+    "Lagavulin, United Kingdom",
+    "Port Askaig, United Kingdom"
+   ],
+   "cables": [
+    "bt-highlands-and-islands-submarine-cable-system"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 2,
+   "N_10km": 2,
+   "N_50km": 1
+  },
+  {
+   "unit": 393,
+   "label": "United Kingdom",
+   "area_km2": 366.67828893737067,
+   "landing_stations": 2,
+   "landings": [
+    "Feolin Ferry, United Kingdom",
+    "Craighouse, United Kingdom"
+   ],
+   "cables": [
+    "bt-highlands-and-islands-submarine-cable-system"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 2,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 394,
+   "label": "United Kingdom",
+   "area_km2": 80.57950099706352,
+   "landing_stations": 1,
+   "landings": [
+    "Scarinish, United Kingdom"
+   ],
+   "cables": [
+    "bt-highlands-and-islands-submarine-cable-system"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 395,
+   "label": "United Kingdom",
+   "area_km2": 1618.0856306484222,
+   "landing_stations": 2,
+   "landings": [
+    "Ardvasar, United Kingdom",
+    "Dunvegan, United Kingdom"
+   ],
+   "cables": [
+    "bt-highlands-and-islands-submarine-cable-system"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 396,
+   "label": "United Kingdom",
+   "area_km2": 374.163898485697,
+   "landing_stations": 4,
+   "landings": [
+    "Ludag, United Kingdom",
+    "Balla, United Kingdom",
+    "Coilleag, United Kingdom",
+    "Holmar, United Kingdom"
+   ],
+   "cables": [
+    "bt-highlands-and-islands-submarine-cable-system"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 397,
+   "label": "United Kingdom",
+   "area_km2": 68.7017411403507,
+   "landing_stations": 1,
+   "landings": [
+    "North Bay, United Kingdom"
+   ],
+   "cables": [
+    "bt-highlands-and-islands-submarine-cable-system"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 398,
+   "label": "United Kingdom",
+   "area_km2": 2128.0521678278274,
+   "landing_stations": 2,
+   "landings": [
+    "Leverburgh, United Kingdom",
+    "Branahuie Bay, United Kingdom"
+   ],
+   "cables": [
+    "bt-highlands-and-islands-submarine-cable-system"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 399,
+   "label": "United Kingdom",
+   "area_km2": 295.6936731519481,
+   "landing_stations": 1,
+   "landings": [
+    "Lochmaddy, United Kingdom"
+   ],
+   "cables": [
+    "bt-highlands-and-islands-submarine-cable-system"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 400,
+   "label": "United Kingdom",
+   "area_km2": 3.4766729751890897,
+   "landing_stations": 1,
+   "landings": [
+    "Porthcressa Beach, United Kingdom"
+   ],
+   "cables": [
+    "isles-of-scilly-cable"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 401,
+   "label": "Micronesia",
+   "area_km2": 92.76971401007376,
+   "landing_stations": 1,
+   "landings": [
+    "Magachgil, Yap, Micronesia"
+   ],
+   "cables": [
+    "sea-us"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 402,
+   "label": "Australia",
+   "area_km2": 1714.9653742308303,
+   "landing_stations": 1,
+   "landings": [
+    "Wurrumiyanga, NT, Australia"
+   ],
+   "cables": [
+    "north-west-cable-system"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 403,
+   "label": "Aruba",
+   "area_km2": 169.76655277846075,
+   "landing_stations": 2,
+   "landings": [
+    "Baby Beach, Aruba",
+    "Hudishibana, Aruba"
+   ],
+   "cables": [
+    "alonso-de-ojeda",
+    "pacific-caribbean-cable-system-pccs"
+   ],
+   "k": 2,
+   "lambda": 2,
+   "N_1km": 2,
+   "N_10km": 2,
+   "N_50km": 1
+  },
+  {
+   "unit": 404,
+   "label": "Cura\u00e7ao",
+   "area_km2": 463.2498981276128,
+   "landing_stations": 2,
+   "landings": [
+    "Willemstad, Cura\u00e7ao",
+    "Mahuma, Cura\u00e7ao"
+   ],
+   "cables": [
+    "alonso-de-ojeda",
+    "amerigo-vespucci",
+    "ec-link",
+    "jerry-newton",
+    "pacific-caribbean-cable-system-pccs"
+   ],
+   "k": 5,
+   "lambda": 2,
+   "N_1km": 2,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 405,
+   "label": "Netherlands",
+   "area_km2": 269.1311082963609,
+   "landing_stations": 2,
+   "landings": [
+    "Kralendijk, Bonaire, Netherlands",
+    "North Salina, Bonaire, Sint Eustatius and Saba"
+   ],
+   "cables": [
+    "amerigo-vespucci",
+    "jerry-newton"
+   ],
+   "k": 2,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 406,
+   "label": "Bahamas",
+   "area_km2": 274.4838596248406,
+   "landing_stations": 1,
+   "landings": [
+    "Crooked Island, Bahamas"
+   ],
+   "cables": [
+    "arcos"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 407,
+   "label": "Bahamas",
+   "area_km2": 426.078043920236,
+   "landing_stations": 1,
+   "landings": [
+    "Cat Island, Bahamas"
+   ],
+   "cables": [
+    "arcos",
+    "bahamas-domestic-submarine-network-bdsni"
+   ],
+   "k": 2,
+   "lambda": 4,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 408,
+   "label": "Bahamas",
+   "area_km2": 193.12490256286193,
+   "landing_stations": 2,
+   "landings": [
+    "Nassau, Bahamas",
+    "Caves Point, Bahamas"
+   ],
+   "cables": [
+    "arcos",
+    "bahamas-2",
+    "bahamas-domestic-submarine-network-bdsni",
+    "bahamas-internet-cable-system-bics"
+   ],
+   "k": 4,
+   "lambda": 5,
+   "N_1km": 2,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 409,
+   "label": "Turks and Caicos Islands",
+   "area_km2": 0.9525273721770048,
+   "landing_stations": 1,
+   "landings": [
+    "Providenciales, Turks and Caicos Islands"
+   ],
+   "cables": [
+    "arcos"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 410,
+   "label": "Christmas Island",
+   "area_km2": 98.71999182002071,
+   "landing_stations": 1,
+   "landings": [
+    "Flying Fish Cove, Christmas Island"
+   ],
+   "cables": [
+    "australia-singapore-cable-asc"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 411,
+   "label": "Portugal",
+   "area_km2": 81.57933394069791,
+   "landing_stations": 1,
+   "landings": [
+    "Graciosa, Portugal"
+   ],
+   "cables": [
+    "azores-fiber-optic-system-afos",
+    "flores-corvo-cable-system"
+   ],
+   "k": 2,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 412,
+   "label": "Portugal",
+   "area_km2": 258.67881877418284,
+   "landing_stations": 1,
+   "landings": [
+    "Velas, Portugal"
+   ],
+   "cables": [
+    "azores-fiber-optic-system-afos"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 413,
+   "label": "Portugal",
+   "area_km2": 177.79578281122232,
+   "landing_stations": 1,
+   "landings": [
+    "Faial, Portugal"
+   ],
+   "cables": [
+    "azores-fiber-optic-system-afos",
+    "flores-corvo-cable-system"
+   ],
+   "k": 2,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 414,
+   "label": "Portugal",
+   "area_km2": 469.0939976193138,
+   "landing_stations": 1,
+   "landings": [
+    "Sao Mateus, Portugal"
+   ],
+   "cables": [
+    "azores-fiber-optic-system-afos"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 415,
+   "label": "Portugal",
+   "area_km2": 120.29927636777877,
+   "landing_stations": 1,
+   "landings": [
+    "Vila do Porto, Portugal"
+   ],
+   "cables": [
+    "azores-fiber-optic-system-afos"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 416,
+   "label": "Portugal",
+   "area_km2": 822.6516579154811,
+   "landing_stations": 1,
+   "landings": [
+    "Ponta Delgada, Portugal"
+   ],
+   "cables": [
+    "azores-fiber-optic-system-afos",
+    "cam-ring",
+    "columbus-iii-azores-portugal"
+   ],
+   "k": 3,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 417,
+   "label": "Portugal",
+   "area_km2": 454.0150231065995,
+   "landing_stations": 1,
+   "landings": [
+    "Angra do Heroismo, Portugal"
+   ],
+   "cables": [
+    "azores-fiber-optic-system-afos"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 418,
+   "label": "Bahamas",
+   "area_km2": 217.2305950118609,
+   "landing_stations": 1,
+   "landings": [
+    "George Town, Bahamas"
+   ],
+   "cables": [
+    "bahamas-domestic-submarine-network-bdsni"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 419,
+   "label": "Bahamas",
+   "area_km2": 87.16388158232068,
+   "landing_stations": 1,
+   "landings": [
+    "Port Nelson, Bahamas"
+   ],
+   "cables": [
+    "bahamas-domestic-submarine-network-bdsni"
+   ],
+   "k": 1,
+   "lambda": 3,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 420,
+   "label": "Bahamas",
+   "area_km2": 156.65693517698048,
+   "landing_stations": 1,
+   "landings": [
+    "Cockburn Town, Bahamas"
+   ],
+   "cables": [
+    "bahamas-domestic-submarine-network-bdsni"
+   ],
+   "k": 1,
+   "lambda": 3,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 421,
+   "label": "Bahamas",
+   "area_km2": 1328.6390645327342,
+   "landing_stations": 2,
+   "landings": [
+    "Sandy Point, Bahamas",
+    "Crown Haven, Bahamas"
+   ],
+   "cables": [
+    "bahamas-domestic-submarine-network-bdsni",
+    "bahamas-internet-cable-system-bics"
+   ],
+   "k": 2,
+   "lambda": 4,
+   "N_1km": 2,
+   "N_10km": 2,
+   "N_50km": 2
+  },
+  {
+   "unit": 422,
+   "label": "Bahamas",
+   "area_km2": 3574.0469234322118,
+   "landing_stations": 1,
+   "landings": [
+    "Fresh Creek, Bahamas"
+   ],
+   "cables": [
+    "bahamas-domestic-submarine-network-bdsni"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 423,
+   "label": "Bahamas",
+   "area_km2": 551.0500785633001,
+   "landing_stations": 2,
+   "landings": [
+    "Governors Harbor, Bahamas",
+    "Current, Bahamas"
+   ],
+   "cables": [
+    "bahamas-domestic-submarine-network-bdsni",
+    "bahamas-internet-cable-system-bics"
+   ],
+   "k": 2,
+   "lambda": 5,
+   "N_1km": 2,
+   "N_10km": 2,
+   "N_50km": 1
+  },
+  {
+   "unit": 424,
+   "label": "Bahamas",
+   "area_km2": 17.026973295793606,
+   "landing_stations": 1,
+   "landings": [
+    "Rock Sound, Bahamas"
+   ],
+   "cables": [
+    "bahamas-domestic-submarine-network-bdsni"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 425,
+   "label": "Bahamas",
+   "area_km2": 10.39653898548749,
+   "landing_stations": 1,
+   "landings": [
+    "Duncan Town, Bahamas"
+   ],
+   "cables": [
+    "bahamas-domestic-submarine-network-bdsni"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 426,
+   "label": "Bahamas",
+   "area_km2": 1580.3930378371595,
+   "landing_stations": 1,
+   "landings": [
+    "Matthew Town, Bahamas"
+   ],
+   "cables": [
+    "bahamas-domestic-submarine-network-bdsni"
+   ],
+   "k": 1,
+   "lambda": 3,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 427,
+   "label": "Bahamas",
+   "area_km2": 458.9535747885238,
+   "landing_stations": 1,
+   "landings": [
+    "Clarence Town, Bahamas"
+   ],
+   "cables": [
+    "bahamas-domestic-submarine-network-bdsni"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 428,
+   "label": "Bahamas",
+   "area_km2": 287.0865585197325,
+   "landing_stations": 1,
+   "landings": [
+    "Mayaguana, Bahamas"
+   ],
+   "cables": [
+    "bahamas-domestic-submarine-network-bdsni"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 429,
+   "label": "Australia",
+   "area_km2": 64338.708301476676,
+   "landing_stations": 3,
+   "landings": [
+    "Boat Harbour, TAS, Australia",
+    "Stanley, TAS, Australia",
+    "Four Mile Bluff, TAS, Australia"
+   ],
+   "cables": [
+    "bass-strait-1",
+    "bass-strait-2",
+    "basslink"
+   ],
+   "k": 3,
+   "lambda": 3,
+   "N_1km": 3,
+   "N_10km": 3,
+   "N_50km": 2
+  },
+  {
+   "unit": 430,
+   "label": "Sweden",
+   "area_km2": 28.054169269025564,
+   "landing_stations": 1,
+   "landings": [
+    "Stavsnas, Sweden"
+   ],
+   "cables": [
+    "bcs-north---phase-1",
+    "sweden-estonia-ee-s-1"
+   ],
+   "k": 2,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 431,
+   "label": "Portugal",
+   "area_km2": 43.74131150526881,
+   "landing_stations": 1,
+   "landings": [
+    "Porto Santo, Portugal"
+   ],
+   "cables": [
+    "cam-ring"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 433,
+   "label": "Denmark",
+   "area_km2": 0.0,
+   "landing_stations": 1,
+   "landings": [
+    "Valdemar, Denmark"
+   ],
+   "cables": [
+    "cantat-3"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 435,
+   "label": "Virgin Islands (U.K.)",
+   "area_km2": 66.55584974509455,
+   "landing_stations": 1,
+   "landings": [
+    "Tortola, Virgin Islands (U.K.)"
+   ],
+   "cables": [
+    "caribbean-bermuda-u-s-cbus",
+    "east-west-cable-ewc",
+    "eastern-caribbean-fiber-system-ecfs",
+    "pacific-caribbean-cable-system-pccs"
+   ],
+   "k": 4,
+   "lambda": 6,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 436,
+   "label": "Cayman Islands",
+   "area_km2": 46.81711146069956,
+   "landing_stations": 1,
+   "landings": [
+    "Cayman Brac, Cayman Islands"
+   ],
+   "cables": [
+    "cayman-jamaica-fiber-system-cjfs"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 437,
+   "label": "Cayman Islands",
+   "area_km2": 222.81167102145707,
+   "landing_stations": 1,
+   "landings": [
+    "Half Moon Bay, Cayman Islands"
+   ],
+   "cables": [
+    "cayman-jamaica-fiber-system-cjfs",
+    "maya-1-2"
+   ],
+   "k": 2,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 438,
+   "label": "Equatorial Guinea",
+   "area_km2": 1985.6037702750132,
+   "landing_stations": 1,
+   "landings": [
+    "Malabo, Equatorial Guinea"
+   ],
+   "cables": [
+    "ceiba-1",
+    "ceiba-2"
+   ],
+   "k": 2,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 439,
+   "label": "Comoros",
+   "area_km2": 448.5904835714217,
+   "landing_stations": 1,
+   "landings": [
+    "Mutsamudu, Comoros"
+   ],
+   "cables": [
+    "avassa",
+    "comoros-domestic-cable-system"
+   ],
+   "k": 2,
+   "lambda": 3,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 440,
+   "label": "Comoros",
+   "area_km2": 198.96156313510488,
+   "landing_stations": 1,
+   "landings": [
+    "Fomboni Moheli, Comoros"
+   ],
+   "cables": [
+    "comoros-domestic-cable-system"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 441,
+   "label": "Maldives",
+   "area_km2": 0.898042026550468,
+   "landing_stations": 1,
+   "landings": [
+    "Gan, Maldives"
+   ],
+   "cables": [
+    "dhiraagu-cable-network"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 442,
+   "label": "Maldives",
+   "area_km2": 0.35960421109203344,
+   "landing_stations": 1,
+   "landings": [
+    "Gahdhoo, Maldives"
+   ],
+   "cables": [
+    "dhiraagu-cable-network"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 443,
+   "label": "Maldives",
+   "area_km2": 1.2843505774918151,
+   "landing_stations": 1,
+   "landings": [
+    "Fuvahmulah, Maldives"
+   ],
+   "cables": [
+    "dhiraagu-cable-network"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 444,
+   "label": "Saint Lucia",
+   "area_km2": 605.131073091292,
+   "landing_stations": 2,
+   "landings": [
+    "Castries, Saint Lucia",
+    "Rodney Bay, Saint Lucia"
+   ],
+   "cables": [
+    "eastern-caribbean-fiber-system-ecfs",
+    "southern-caribbean-fiber"
+   ],
+   "k": 2,
+   "lambda": 5,
+   "N_1km": 2,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 445,
+   "label": "Anguilla",
+   "area_km2": 84.39623473859322,
+   "landing_stations": 1,
+   "landings": [
+    "The Valley, Anguilla"
+   ],
+   "cables": [
+    "eastern-caribbean-fiber-system-ecfs"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 446,
+   "label": "Dominica",
+   "area_km2": 730.3116566020528,
+   "landing_stations": 1,
+   "landings": [
+    "Roseau, Dominica"
+   ],
+   "cables": [
+    "eastern-caribbean-fiber-system-ecfs"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 447,
+   "label": "Faroe Islands",
+   "area_km2": 830.2979925151532,
+   "landing_stations": 2,
+   "landings": [
+    "Funningsfjordur, Faroe Islands",
+    "Torshavn, Faroe Islands"
+   ],
+   "cables": [
+    "farice-1",
+    "shefa-2"
+   ],
+   "k": 2,
+   "lambda": 2,
+   "N_1km": 2,
+   "N_10km": 2,
+   "N_50km": 1
+  },
+  {
+   "unit": 448,
+   "label": "Germany",
+   "area_km2": 164.74449841097498,
+   "landing_stations": 1,
+   "landings": [
+    "Puttgarden, Germany"
+   ],
+   "cables": [
+    "fehmarn-blt"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 449,
+   "label": "Portugal",
+   "area_km2": 188.75330402896506,
+   "landing_stations": 1,
+   "landings": [
+    "Flores, Portugal"
+   ],
+   "cables": [
+    "flores-corvo-cable-system"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 450,
+   "label": "Portugal",
+   "area_km2": 35.06936754307771,
+   "landing_stations": 1,
+   "landings": [
+    "Corvo, Portugal"
+   ],
+   "cables": [
+    "flores-corvo-cable-system"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 451,
+   "label": "Montserrat",
+   "area_km2": 99.59711477949351,
+   "landing_stations": 1,
+   "landings": [
+    "Bunkum Bay, Montserrat"
+   ],
+   "cables": [
+    "southern-caribbean-fiber"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 452,
+   "label": "Greenland",
+   "area_km2": 2120803.2285831785,
+   "landing_stations": 5,
+   "landings": [
+    "Nuuk, Greenland",
+    "Maniitsoq, Greenland",
+    "Sisimiut, Greenland",
+    "Aasiaat, Greenland",
+    "Qaqortoq, Greenland"
+   ],
+   "cables": [
+    "greenland-connect"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 2,
+   "N_10km": 2,
+   "N_50km": 2
+  },
+  {
+   "unit": 453,
+   "label": "Jersey",
+   "area_km2": 119.05057711097673,
+   "landing_stations": 3,
+   "landings": [
+    "Greve de Lecq, Jersey",
+    "Archirondel, Jersey",
+    "St. Ouens Bay, Jersey"
+   ],
+   "cables": [
+    "guernsey-jersey-4",
+    "ingrid",
+    "uk-channel-islands-8"
+   ],
+   "k": 3,
+   "lambda": 4,
+   "N_1km": 3,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 454,
+   "label": "Guernsey",
+   "area_km2": 62.42807860675393,
+   "landing_stations": 4,
+   "landings": [
+    "Saints Bay, Guernsey",
+    "Pembroke, Guernsey",
+    "Havelet Bay, Guernsey",
+    "L'Ancresse Bay, Guernsey"
+   ],
+   "cables": [
+    "channel-islands-9-liberty-submarine-cable",
+    "guernsey-jersey-4",
+    "high-capacity-undersea-guernsey-optical-fibre-hugo",
+    "ingrid",
+    "uk-channel-islands-7"
+   ],
+   "k": 5,
+   "lambda": 6,
+   "N_1km": 3,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 455,
+   "label": "Bahrain",
+   "area_km2": 32.099242969553885,
+   "landing_stations": 1,
+   "landings": [
+    "Al Hidd, Bahrain"
+   ],
+   "cables": [
+    "gulf-bridge-international-cable-systemmiddle-east-north-africa-cable-system-gbicsmena"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 456,
+   "label": "Marshall Islands",
+   "area_km2": 40.616073066228275,
+   "landing_stations": 1,
+   "landings": [
+    "Majuro, Marshall Islands"
+   ],
+   "cables": [
+    "hantru1-cable-system"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 457,
+   "label": "American Samoa",
+   "area_km2": 131.45476902578994,
+   "landing_stations": 1,
+   "landings": [
+    "Pago Pago, American Samoa"
+   ],
+   "cables": [
+    "hawaiki",
+    "samoa-american-samoa-sas"
+   ],
+   "k": 2,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 458,
+   "label": "French Polynesia",
+   "area_km2": 119.06145883110867,
+   "landing_stations": 1,
+   "landings": [
+    "Moorea, French Polynesia"
+   ],
+   "cables": [
+    "honotua"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 459,
+   "label": "French Polynesia",
+   "area_km2": 52.5761770828973,
+   "landing_stations": 1,
+   "landings": [
+    "Huahine, French Polynesia"
+   ],
+   "cables": [
+    "honotua"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 460,
+   "label": "French Polynesia",
+   "area_km2": 174.6081422432601,
+   "landing_stations": 1,
+   "landings": [
+    "Uturoa, French Polynesia"
+   ],
+   "cables": [
+    "honotua"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 461,
+   "label": "Vanuatu",
+   "area_km2": 912.3818935312999,
+   "landing_stations": 1,
+   "landings": [
+    "Port Vila, Vanuatu"
+   ],
+   "cables": [
+    "interchange-cable-network-1-icn1"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 462,
+   "label": "Iran",
+   "area_km2": 22.34610195569885,
+   "landing_stations": 1,
+   "landings": [
+    "Khark Island, Iran"
+   ],
+   "cables": [
+    "kuwait-iran"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 464,
+   "label": "New Caledonia",
+   "area_km2": 161.19813643424533,
+   "landing_stations": 1,
+   "landings": [
+    "Mouly, New Caledonia"
+   ],
+   "cables": [
+    "picot-1"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 465,
+   "label": "Qatar",
+   "area_km2": 0.0,
+   "landing_stations": 1,
+   "landings": [
+    "Halul Island, Qatar"
+   ],
+   "cables": [
+    "qatar-u-a-e-submarine-cable-system"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 466,
+   "label": "United Arab Emirates",
+   "area_km2": 4.0903648937482835,
+   "landing_stations": 1,
+   "landings": [
+    "Das Island, United Arab Emirates"
+   ],
+   "cables": [
+    "qatar-u-a-e-submarine-cable-system"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 470,
+   "label": "Estonia",
+   "area_km2": 1073.2718045550753,
+   "landing_stations": 1,
+   "landings": [
+    "K\u00e4rdla, Estonia"
+   ],
+   "cables": [
+    "sweden-estonia-ee-s-1"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 471,
+   "label": "China",
+   "area_km2": 13.707068877096177,
+   "landing_stations": 1,
+   "landings": [
+    "Dadeng Island, China"
+   ],
+   "cables": [
+    "cross-straits-cable-network-cscn"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 472,
+   "label": "China",
+   "area_km2": 111.81906868653566,
+   "landing_stations": 1,
+   "landings": [
+    "Guanyin Mountain, China"
+   ],
+   "cables": [
+    "cross-straits-cable-network-cscn"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 473,
+   "label": "United States",
+   "area_km2": 4116.859482375405,
+   "landing_stations": 1,
+   "landings": [
+    "Sitka, AK, United States"
+   ],
+   "cables": [
+    "alaska-united-southeast-au-se"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 474,
+   "label": "United States",
+   "area_km2": 4362.208206880659,
+   "landing_stations": 2,
+   "landings": [
+    "Angoon, AK, United States",
+    "Hawk Inlet, AK, United States"
+   ],
+   "cables": [
+    "alaska-united-southeast-au-se"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 475,
+   "label": "United States",
+   "area_km2": 553.227127811399,
+   "landing_stations": 1,
+   "landings": [
+    "Wrangell, AK, United States"
+   ],
+   "cables": [
+    "alaska-united-southeast-au-se"
+   ],
+   "k": 1,
+   "lambda": 2,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 476,
+   "label": "Micronesia",
+   "area_km2": 18.563502236633674,
+   "landing_stations": 1,
+   "landings": [
+    "Weno, Chuuk, Micronesia"
+   ],
+   "cables": [
+    "chuuk-pohnpei-cable"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 477,
+   "label": "Indonesia",
+   "area_km2": 4519.242965105114,
+   "landing_stations": 1,
+   "landings": [
+    "Madura, Indonesia"
+   ],
+   "cables": [
+    "indonesia-global-gateway-igg-system"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  },
+  {
+   "unit": 478,
+   "label": "Indonesia",
+   "area_km2": 1185.903519784469,
+   "landing_stations": 1,
+   "landings": [
+    "Bintan, Indonesia"
+   ],
+   "cables": [
+    "jakarta-bangka-bintan-batam-singapore-b3js"
+   ],
+   "k": 1,
+   "lambda": 1,
+   "N_1km": 1,
+   "N_10km": 1,
+   "N_50km": 1
+  }
+ ],
+ "skipped": {
+  "not connected to a continent in the data": 6
+ },
+ "n_islands_considered": 469,
+ "data": {
+  "fetched": "2026-09-24T06:40:37.007Z",
+  "source": "TeleGeography Submarine Cable Map (submarinecablemap.com)",
+  "licence": "CC BY-NC-SA 3.0"
+ }
+}
