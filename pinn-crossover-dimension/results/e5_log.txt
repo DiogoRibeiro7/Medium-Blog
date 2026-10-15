@@ -1,0 +1,5 @@
+oscillator d=8: DMC relE=5.54e-04 (se 1.9e-04) cpu=778s vs PINN cpu=889s
+coupled d=6: DMC relE=5.13e-04 (se 1.7e-04) cpu=550s vs PINN cpu=705s
+coupled d=7: DMC relE=1.23e-04 (se 2.7e-04) cpu=586s vs PINN cpu=786s
+coupled d=8: DMC relE=4.03e-04 (se 1.9e-04) cpu=667s vs PINN cpu=856s
+wrote /home/claude/diogoribeiro7/medium-blog/pinn-crossover-dimension/results/e5_dmc_at_pinn_budget.json
