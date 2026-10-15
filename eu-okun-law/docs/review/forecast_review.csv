@@ -1,0 +1,16 @@
+evaluation,model,origins,countries_better_mae,median_skill_vs_ar1,significantly_better,significantly_worse
+published,zero_change,34,21,0.036071449146599655,6,0
+published,historical_mean,34,21,0.015426997766765482,2,0
+published,gdp_lags,34,8,-0.06697751971882848,1,0
+published,gdp_unemployment_ar1,34,4,-0.10406540413993626,0,1
+published,gdp_ar1_participation,34,3,-0.1588049196765804,1,2
+non_pandemic_targets,zero_change,24,22,0.04947429162737782,5,0
+non_pandemic_targets,historical_mean,24,19,0.015753930098506563,2,0
+non_pandemic_targets,gdp_lags,24,15,0.01895306015119158,6,0
+non_pandemic_targets,gdp_unemployment_ar1,24,17,0.015210529128682482,1,3
+non_pandemic_targets,gdp_ar1_participation,24,10,-0.02421560813777801,2,1
+pandemic_free,zero_change,24,24,0.04260193320649708,4,0
+pandemic_free,historical_mean,24,18,0.011592132006539857,3,0
+pandemic_free,gdp_lags,24,14,0.005321440127571075,3,0
+pandemic_free,gdp_unemployment_ar1,24,12,-0.017283558995759396,1,1
+pandemic_free,gdp_ar1_participation,24,10,-0.05101648009210491,1,2

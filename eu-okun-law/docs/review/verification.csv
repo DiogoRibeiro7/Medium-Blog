@@ -1,0 +1,18 @@
+area,quantity,method,compared,max_abs_difference,tolerance,passed
+Country baselines,OLS coefficients,QR solve,918,3.2569433261464553e-15,1e-09,True
+Country baselines,marginal HAC s.e.,calendar kernel-matrix HAC,918,3.608224830031759e-15,1e-09,True
+Country comparison,GDP coefficient sum,reparameterised regression,216,7.771561172376096e-16,1e-09,True
+Country comparison,HAC s.e. of the sum,diagonal of reparameterised kernel-matrix HAC,216,6.38378239159465e-16,1e-09,True
+Country comparison,95% interval bound,estimate - 1.96 s.e.,216,1.2212453270876722e-15,1e-09,True
+Country comparison,R-squared,QR residuals,216,3.3306690738754696e-16,1e-09,True
+Country comparison,HAC covariance entries,kernel-matrix HAC,4428,3.1086244689504383e-15,1e-09,True
+Regime sensitivity,GDP coefficient sum,reparameterised regression,594,1.5543122344752192e-15,1e-09,True
+Regime sensitivity,HAC s.e. of the sum,kernel-matrix HAC,594,2.275957200481571e-15,1e-09,True
+Pre/post stability,change in GDP sum,separate pre and post fits,54,3.3861802251067274e-15,1e-09,True
+Pre/post stability,HAC s.e. of the change,summed period covariances,54,7.771561172376096e-16,1e-09,True
+Pre/post stability,joint Wald statistic,summed period covariances,54,6.821210263296962e-13,1e-06,True
+Country pairs,observed difference of sums,QR solve,18,3.0531133177191805e-16,1e-09,True
+Country pairs,bootstrap interval bounds,"same seed, re-run (reproducibility only; not independent)",36,0.0,1e-09,True
+Forecast evaluation,point forecasts,QR solve on raw panel values,5508,1.6209256159527285e-14,1e-09,True
+Forecast evaluation,MAE,recomputed from forecasts,162,0.0,1e-09,True
+Forecast evaluation,RMSE,recomputed from forecasts,162,0.0,1e-09,True
