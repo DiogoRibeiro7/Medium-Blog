@@ -124,6 +124,21 @@ autocorrelation, average cross-country correlation and country standard deviatio
   a weak association for Luxembourg, a delayed (lag-heavy) response for the
   Netherlands, and a large association for Spain. Contradictions are reported as such.
 
+Decision thresholds (90% equal-tailed credible intervals throughout):
+
+| Statement | Rule |
+| --- | --- |
+| `theta[i]` credibly negative / positive | P(theta[i] < 0) >= 0.95 / <= 0.05; otherwise "sign uncertain" |
+| Country difference supported | P(theta[i] < theta[j]) >= 0.95 or <= 0.05 |
+| Robust across specifications | the same sign classification in every **accepted** specification |
+| Luxembourg weak | P(theta[LU] > mu_theta) >= 0.95 **and** the 90% interval of theta[LU] includes zero |
+| Netherlands delayed | P(lag share > 0.5) >= 0.95, lag share = (theta - beta0) / theta, evaluated only if P(theta[NL] < 0) >= 0.95 |
+| Spain large | P(theta[ES] < mu_theta) >= 0.95 |
+
+A claim is "supported" if its rule holds in the primary and every accepted
+sensitivity fit, "contradicted" if the opposite inequality holds at the same level in
+the primary fit, and "not resolved" otherwise.
+
 ## 8. Deferred
 
 Predictive comparison with the classical baselines (expanding-window refits) and
@@ -131,4 +146,7 @@ time-varying coefficients are separate milestones.
 
 ## Change log
 
-None yet.
+- Before any estimate was inspected: added the decision thresholds of section 7.
+  The only real-data computation until then was a short timing run of the primary
+  specification (2 chains x 600 iterations) whose convergence diagnostics, runtime
+  and predictive coverage were printed; no coefficient was looked at.
