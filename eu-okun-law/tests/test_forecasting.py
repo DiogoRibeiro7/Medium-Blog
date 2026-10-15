@@ -26,7 +26,7 @@ def synthetic_panel() -> dict[tuple[str, str], dict[str, float | None]]:
             gdp = float(rng.normal())
             u += -0.2 * previous_gdp + float(rng.normal(scale=0.05))
             panel[(geo, quarter)] = {
-                "gdp": gdp, "unemployment": u, "participation": 70.0 + 0.01 * len(panel),
+                "gdp": gdp, "unemployment": u, "participation": 70.0 + 0.01 * len(panel) + float(rng.normal(scale=0.2)),
             }
             previous_gdp = gdp
     return panel
