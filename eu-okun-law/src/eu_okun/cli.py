@@ -12,6 +12,7 @@ from eu_okun.baseline import write_baselines
 from eu_okun.comparison import write_comparisons
 from eu_okun.dependence import run_country_pairs
 from eu_okun.eurostat import EurostatDataError, save_snapshot
+from eu_okun.forecasting import write_validation
 from eu_okun.regimes import write_regimes
 from eu_okun.stability import write_stability
 
@@ -38,6 +39,9 @@ def main(argv: Sequence[str] | None = None) -> int:
     infer = commands.add_parser("infer", help="Stability and paired country inference")
     infer.add_argument("--data-dir", type=Path, default=Path("data"))
     infer.add_argument("--output-dir", type=Path, default=Path("results/inference"))
+    forecast = commands.add_parser("forecast", help="Expanding-window forecast evaluation")
+    forecast.add_argument("--data-dir", type=Path, default=Path("data"))
+    forecast.add_argument("--output-dir", type=Path, default=Path("results/forecast"))
     args = parser.parse_args(argv)
     if args.command == "fetch":
         try:
@@ -84,6 +88,13 @@ def main(argv: Sequence[str] | None = None) -> int:
         except (EurostatDataError, ValueError, OSError) as exc:
             parser.exit(2, f"Inference analysis failed: {exc}\n")
         print(f"Saved {tests} stability tests and {pairs} paired comparisons")
+        return 0
+    if args.command == "forecast":
+        try:
+            count = write_validation(args.data_dir, args.output_dir)
+        except (EurostatDataError, ValueError, OSError) as exc:
+            parser.exit(2, f"Forecast evaluation failed: {exc}\n")
+        print(f"Saved {count} forecasts to {args.output_dir}")
         return 0
     return 1
 

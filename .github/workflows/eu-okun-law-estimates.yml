@@ -37,6 +37,9 @@ jobs:
       - name: Stability and dependence inference
         working-directory: eu-okun-law
         run: eu-okun infer --data-dir data --output-dir results/inference
+      - name: Evaluate expanding-window forecasting
+        working-directory: eu-okun-law
+        run: eu-okun forecast --data-dir data --output-dir results/forecast
       - name: Verify expected country models
         working-directory: eu-okun-law
         run: |
@@ -59,6 +62,11 @@ jobs:
           if regimes["windows"]["full"]["status"] != "estimated":
               raise SystemExit("Full-period regime comparison did not fit")
           print({key: val["status"] for key, val in regimes["windows"].items()})
+          forecast = json.loads(Path("results/forecast/scores.json").read_text())
+          if len(forecast["scores"]) != 162:
+              raise SystemExit("Forecast country/model coverage missing")
+          if forecast["forecast_count"] < 27 * 6 * 12:
+              raise SystemExit("Insufficient held-out forecast origins")
           PY
       - name: Archive source data and regression output
         uses: actions/upload-artifact@v4
