@@ -4,9 +4,13 @@
 numpy==2.5.3
 scipy==1.18.1
 matplotlib==3.11.2
-# Optional: the scripts check their own estimators against these libraries
-# (Kaplan-Meier in Part 1, Nelson-Aalen and log-rank in Part 2, Cox fits and
-# Schoenfeld residuals in Part 3, a Cox fit in Part 4, Kaplan-Meier and Cox fits
-# in Part 5). Without them the scripts still run and print "skipped" for those checks.
+# Required for Part 6 (machine learning models and evaluation metrics on real data).
 scikit-survival==0.28.0
+scikit-learn==1.9.1
+pandas==3.0.5
+# Optional for Parts 1 to 5, as is scikit-survival: the scripts check their own
+# estimators against these libraries (Kaplan-Meier in Part 1, Nelson-Aalen and
+# log-rank in Part 2, Cox fits and Schoenfeld residuals in Part 3, a Cox fit in
+# Part 4, Kaplan-Meier and Cox fits in Part 5). Without them the scripts still run
+# and print "skipped" for those checks.
 statsmodels==0.15.0

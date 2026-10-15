@@ -1,0 +1,95 @@
+========================================================================
+1. THE DATA
+========================================================================
+Spells 3,343; re-employed 1,986 (full-time 1,073, part-time 339, status unknown 574); still jobless when last observed 1,255; no outcome recorded 102 (treated as censored)
+Spell length in two-week intervals: median 5, longest 28 (56 weeks)
+Still jobless after 26 weeks (Kaplan-Meier): all 33.8%; filed a UI claim 45.5%, did not 18.3%
+UI claimants 1,848 (55.3%); age median 34
+Re-employment per interval, UI claimants, intervals 1-16: 0.04 0.06 0.07 0.04 0.10 0.04 0.11 0.04 0.07 0.02 0.06 0.03 0.09 0.10 0.08 0.08
+Re-employment per interval, no UI claim, intervals 1-16: 0.29 0.23 0.20 0.09 0.17 0.07 0.18 0.05 0.06 0.03 0.06 0.02 0.09 0.12 0.07 0.13
+Re-employments within the first 10 weeks (5 intervals): 71.0% of all re-employments; among non-claimants 85.7%, among claimants 53.0%
+Pairs Harrell's C can compare: 3,702,216; with the earlier re-employment in the first 10 weeks 88.9%; with the earlier re-employment by a non-claimant 65.5%
+Censored in the analysis: 1,357 (still jobless 1,255 plus 102 without an outcome)
+Person-period rows 20,887; discrete-time boosting fitted to all spells: mean predicted share still jobless at 26 weeks 0.3173
+Status at 26 weeks known for 2,290 spells; censoring-weighted share still jobless 0.3376 (Kaplan-Meier 0.3376)
+Cox hazard ratios of re-employment (all spells; dropping the 102 without an outcome): age 0.990 / 0.989; ui 0.349 / 0.348; reprate 1.615 / 1.521; disrate 0.501 / 0.520; logwage 1.299 / 1.288; tenure 0.995 / 0.995
+
+========================================================================
+2. 10 REPEATS OF 5-FOLD CROSS-VALIDATION
+========================================================================
+Harrell C
+    Cox                      mean 0.6865, range over repeats 0.6842 to 0.6878
+    random survival forest   mean 0.6837, range over repeats 0.6814 to 0.6871; difference from Cox -0.0029 (better in 1 of 10 repeats)
+    discrete-time logistic   mean 0.6865, range over repeats 0.6841 to 0.6877; difference from Cox -0.0001 (better in 2 of 10 repeats)
+    discrete-time boosting   mean 0.6886, range over repeats 0.6873 to 0.6908; difference from Cox +0.0021 (better in 10 of 10 repeats)
+    26-week classifier       mean 0.6826, range over repeats 0.6806 to 0.6844; difference from Cox -0.0039 (better in 0 of 10 repeats)
+    rule of thumb            mean 0.6794, range over repeats 0.6789 to 0.6800; difference from Cox -0.0072 (better in 0 of 10 repeats)
+Uno C
+    Cox                      mean 0.6486, range over repeats 0.6449 to 0.6500
+    random survival forest   mean 0.6456, range over repeats 0.6424 to 0.6505; difference from Cox -0.0030 (better in 2 of 10 repeats)
+    discrete-time logistic   mean 0.6487, range over repeats 0.6451 to 0.6500; difference from Cox +0.0001 (better in 10 of 10 repeats)
+    discrete-time boosting   mean 0.6499, range over repeats 0.6484 to 0.6529; difference from Cox +0.0013 (better in 8 of 10 repeats)
+    26-week classifier       mean 0.6486, range over repeats 0.6454 to 0.6509; difference from Cox +0.0000 (better in 5 of 10 repeats)
+    rule of thumb            mean 0.6463, range over repeats 0.6451 to 0.6475; difference from Cox -0.0024 (better in 1 of 10 repeats)
+AUC at 26 weeks
+    Cox                      mean 0.6832, range over repeats 0.6771 to 0.6871
+    random survival forest   mean 0.6779, range over repeats 0.6689 to 0.6826; difference from Cox -0.0052 (better in 1 of 10 repeats)
+    discrete-time logistic   mean 0.6839, range over repeats 0.6777 to 0.6876; difference from Cox +0.0007 (better in 10 of 10 repeats)
+    discrete-time boosting   mean 0.6830, range over repeats 0.6759 to 0.6867; difference from Cox -0.0002 (better in 7 of 10 repeats)
+    26-week classifier       mean 0.6914, range over repeats 0.6864 to 0.6960; difference from Cox +0.0082 (better in 10 of 10 repeats)
+    rule of thumb            mean 0.6901, range over repeats 0.6886 to 0.6918; difference from Cox +0.0069 (better in 10 of 10 repeats)
+Brier at 26 weeks
+    Cox                      mean 0.2120, range over repeats 0.2114 to 0.2128
+    random survival forest   mean 0.2117, range over repeats 0.2104 to 0.2134; difference from Cox -0.0003 (better in 7 of 10 repeats)
+    discrete-time logistic   mean 0.2108, range over repeats 0.2103 to 0.2117; difference from Cox -0.0012 (better in 10 of 10 repeats)
+    discrete-time boosting   mean 0.2101, range over repeats 0.2091 to 0.2117; difference from Cox -0.0019 (better in 10 of 10 repeats)
+    26-week classifier       mean 0.2084, range over repeats 0.2077 to 0.2098; difference from Cox -0.0036 (better in 10 of 10 repeats)
+integrated Brier
+    Cox                      mean 0.1857, range over repeats 0.1851 to 0.1872
+    random survival forest   mean 0.1828, range over repeats 0.1812 to 0.1846; difference from Cox -0.0029 (better in 10 of 10 repeats)
+    discrete-time logistic   mean 0.1839, range over repeats 0.1833 to 0.1855; difference from Cox -0.0018 (better in 10 of 10 repeats)
+    discrete-time boosting   mean 0.1814, range over repeats 0.1802 to 0.1829; difference from Cox -0.0043 (better in 10 of 10 repeats)
+calibration in the large
+    Cox                      mean 0.0065, range over repeats 0.0057 to 0.0070
+    random survival forest   mean -0.0034, range over repeats -0.0040 to -0.0020; difference from Cox -0.0099 (better in 10 of 10 repeats)
+    discrete-time logistic   mean -0.0147, range over repeats -0.0157 to -0.0141; difference from Cox -0.0212 (better in 0 of 10 repeats)
+    discrete-time boosting   mean -0.0225, range over repeats -0.0240 to -0.0212; difference from Cox -0.0290 (better in 0 of 10 repeats)
+    26-week classifier       mean -0.0100, range over repeats -0.0108 to -0.0096; difference from Cox -0.0165 (better in 0 of 10 repeats)
+still jobless, top 20%
+    Cox                      mean 0.5038, range over repeats 0.4948 to 0.5140
+    random survival forest   mean 0.5126, range over repeats 0.4890 to 0.5243; difference from Cox +0.0088 (better in 8 of 10 repeats)
+    discrete-time logistic   mean 0.5027, range over repeats 0.4977 to 0.5099; difference from Cox -0.0011 (better in 4 of 10 repeats)
+    discrete-time boosting   mean 0.5170, range over repeats 0.5062 to 0.5279; difference from Cox +0.0132 (better in 10 of 10 repeats)
+    26-week classifier       mean 0.5284, range over repeats 0.5137 to 0.5438; difference from Cox +0.0245 (better in 10 of 10 repeats)
+    rule of thumb            mean 0.5391, range over repeats 0.5330 to 0.5449; difference from Cox +0.0352 (better in 10 of 10 repeats)
+UI share, top 20%
+    Cox                      mean 1.0000, range over repeats 1.0000 to 1.0000
+    random survival forest   mean 1.0000, range over repeats 1.0000 to 1.0000; difference from Cox +0.0000 (better in 0 of 10 repeats)
+    discrete-time logistic   mean 1.0000, range over repeats 1.0000 to 1.0000; difference from Cox +0.0000 (better in 0 of 10 repeats)
+    discrete-time boosting   mean 0.9967, range over repeats 0.9910 to 1.0000; difference from Cox -0.0033 (better in 0 of 10 repeats)
+    26-week classifier       mean 0.9997, range over repeats 0.9970 to 1.0000; difference from Cox -0.0003 (better in 0 of 10 repeats)
+    rule of thumb            mean 1.0000, range over repeats 1.0000 to 1.0000; difference from Cox +0.0000 (better in 0 of 10 repeats)
+Still jobless after 26 weeks among all workers in the test folds: 0.3379
+Rule of thumb against 26-week classifier, top 20%: difference +0.0107 (rule better in 8 of 10 repeats)
+Test folds (of 50) in which the top-20% share is higher than Cox's: random survival forest 31, discrete-time logistic 17, discrete-time boosting 34, 26-week classifier 38, rule of thumb 39
+Spread of the top-20% share across the 50 test folds, Cox: standard deviation 0.0415
+Share of all workers still jobless at 26 weeks who are in the selected 20% (capture): Cox 29.8%, random survival forest 30.3%, discrete-time logistic 29.8%, discrete-time boosting 30.6%, 26-week classifier 31.3%, rule of thumb 31.9%
+Kaplan-Meier with no covariates: Brier at 26 weeks 0.2294, integrated Brier 0.2026
+
+========================================================================
+3. IN-SAMPLE AGAINST OUT-OF-SAMPLE
+========================================================================
+Cox                      Harrell C fitted and scored on all data 0.6891; cross-validated 0.6865
+random survival forest   Harrell C fitted and scored on all data 0.7595; cross-validated 0.6837
+discrete-time logistic   Harrell C fitted and scored on all data 0.6890; cross-validated 0.6865
+discrete-time boosting   Harrell C fitted and scored on all data 0.7303; cross-validated 0.6886
+
+========================================================================
+4. CALIBRATION AND TARGETING (FIRST REPEAT, OUT-OF-FOLD PREDICTIONS)
+========================================================================
+Cox                      deciles of predicted 26-week joblessness: predicted 0.094 to 0.593, observed 0.142 to 0.497; mean absolute gap 0.047; still jobless among the top 10%: 49.7%, 20%: 48.0%, 30%: 47.3%, 50%: 46.2%
+random survival forest   deciles of predicted 26-week joblessness: predicted 0.119 to 0.595, observed 0.119 to 0.493; mean absolute gap 0.023; still jobless among the top 10%: 49.3%, 20%: 51.8%, 30%: 49.4%, 50%: 45.3%
+discrete-time logistic   deciles of predicted 26-week joblessness: predicted 0.080 to 0.576, observed 0.144 to 0.500; mean absolute gap 0.044; still jobless among the top 10%: 50.0%, 20%: 47.8%, 30%: 47.8%, 50%: 46.4%
+discrete-time boosting   deciles of predicted 26-week joblessness: predicted 0.086 to 0.600, observed 0.127 to 0.530; mean absolute gap 0.037; still jobless among the top 10%: 53.0%, 20%: 51.9%, 30%: 49.3%, 50%: 45.7%
+26-week classifier       deciles of predicted 26-week joblessness: predicted 0.124 to 0.596, observed 0.185 to 0.555; mean absolute gap 0.025; still jobless among the top 10%: 55.5%, 20%: 52.1%, 30%: 49.4%, 50%: 45.6%
+rule of thumb (UI claimants, oldest first): still jobless among the top 10%: 57.3%, 20%: 53.6%, 30%: 50.6%, 50%: 46.4%
