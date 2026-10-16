@@ -269,7 +269,9 @@ set):
   fit and 18 across specifications.
 - Of the classical review's apparent differences among the four focus countries, Spain's
   more negative sum than Luxembourg's and the Netherlands' survives every specification;
-  Spain against Portugal and Luxembourg against the Netherlands do not.
+  Luxembourg against the Netherlands does not. Spain against Portugal is borderline: it
+  falls just below 0.95 in two fits here (0.947 and 0.939) and survives in an independent
+  Linux run, where one of those fits narrowly failed acceptance; it is not a robust result.
 
 ## Predictive comparison
 

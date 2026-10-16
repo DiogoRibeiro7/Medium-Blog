@@ -370,7 +370,7 @@ def render(review: RobustnessReview, assets: str, command: str) -> str:
                   f"in both runs, {len(here - rep.surviving_a)} only here and "
                   f"{len(rep.surviving_a - here)} only there; focus verdicts "
                   + ("identical." if all(rep.focus.get((v.country_a, v.country_b)) == v.verdict
-                                         for v in review.focus) else "differ (section 7)."),
+                                         for v in review.focus) else "differ (section 6)."),
                   ""]
 
     # 1. Diagnostics
