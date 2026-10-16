@@ -315,6 +315,11 @@ def _names(items: Sequence[str]) -> str:
     return items[0] if len(items) == 1 else ", ".join(items[:-1]) + " and " + items[-1]
 
 
+def _p(value: float) -> str:
+    """A bootstrap p-value of 0 means below one over the number of draws."""
+    return "<0.001" if value < 0.001 else f"{value:.3f}"
+
+
 def _code(names: Sequence[str]) -> str:
     return _names([f"`{n}`" for n in names])
 
@@ -463,8 +468,8 @@ def render(review: RobustnessReview, assets: str, command: str) -> str:
     rows = []
     for v in review.focus:
         rows.append([f"{v.country_a}-{v.country_b}",
-                     f"{v.full_estimate:+.3f} ({v.full_min_holm:.3f})",
-                     f"{v.classical_estimate:+.3f} ({v.classical_min_holm:.3f})",
+                     f"{v.full_estimate:+.3f} ({_p(v.full_min_holm)})",
+                     f"{v.classical_estimate:+.3f} ({_p(v.classical_min_holm)})",
                      "yes" if v.classical_apparent else "no", f"{v.p_primary:.3f}",
                      f"{v.p_min:.3f}-{v.p_max:.3f}", "yes" if v.survives_a else "no",
                      "yes" if v.survives_b else "no", f"**{v.verdict}**"])
@@ -551,7 +556,7 @@ def write_figures(review: RobustnessReview, directory: Path, source: str) -> Non
         for k, (stat, marker) in enumerate(zip(PREDICTIVE_STATISTICS, ("o", "s", "D"),
                                                strict=True)):
             axes[2].plot([fits[name].predictive["p_value"][stat]], [y + 0.2 * (k - 1)], marker,
-                         ms=5.5, color=(BLUE, AQUA, ORANGE)[k], mec=SURFACE, mew=0.8)
+                         ms=5.5, color=(BLUE, AQUA, INK2)[k], mec=SURFACE, mew=0.8)
     axes[0].axvline(1.01, color=MUTED, lw=1, ls=(0, (3, 2)))
     axes[0].set_title("Max R-hat (threshold 1.01)")
     axes[1].axvline(400, color=MUTED, lw=1, ls=(0, (3, 2)))
@@ -571,7 +576,7 @@ def write_figures(review: RobustnessReview, directory: Path, source: str) -> Non
         Line2D([], [], marker="o", color=BLUE, lw=0, ms=5.5, label="p: lag-1 autocorrelation"),
         Line2D([], [], marker="s", color=AQUA, lw=0, ms=5.5,
                label="p: cross-country correlation"),
-        Line2D([], [], marker="D", color=ORANGE, lw=0, ms=5.5, label="p: mean SD"),
+        Line2D([], [], marker="D", color=INK2, lw=0, ms=5.5, label="p: mean SD"),
     ], loc="lower center", ncol=5, bbox_to_anchor=(0.5, -0.08), fontsize=8)
     fig.subplots_adjust(wspace=0.1, bottom=0.18)
     _finish(plt, fig, directory / "diagnostics.png", source, credit_y=-0.12)

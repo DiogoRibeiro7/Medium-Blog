@@ -1,0 +1,137 @@
+{
+ "set_a": [
+  "primary",
+  "wide_priors",
+  "strong_pooling",
+  "no_common_factor",
+  "gaussian_iid",
+  "participation",
+  "lags_4",
+  "pandemic_excluded",
+  "lags_1"
+ ],
+ "set_b": [
+  "primary",
+  "wide_priors",
+  "strong_pooling",
+  "no_common_factor",
+  "gaussian_iid",
+  "participation",
+  "lags_4",
+  "pandemic_excluded",
+  "lags_1",
+  "time_effects",
+  "time_effects_participation",
+  "participation_no_common_factor"
+ ],
+ "envelope": {
+  "AT": [
+   5.0,
+   24.0
+  ],
+  "BE": [
+   2.0,
+   23.0
+  ],
+  "BG": [
+   3.0,
+   27.0
+  ],
+  "CY": [
+   2.0,
+   21.0
+  ],
+  "CZ": [
+   7.0,
+   24.0
+  ],
+  "DE": [
+   10.0,
+   27.0
+  ],
+  "DK": [
+   4.0,
+   27.0
+  ],
+  "EE": [
+   1.0,
+   17.0
+  ],
+  "EL": [
+   1.0,
+   16.0
+  ],
+  "ES": [
+   1.0,
+   10.0
+  ],
+  "FI": [
+   4.0,
+   22.0
+  ],
+  "FR": [
+   5.0,
+   23.0
+  ],
+  "HR": [
+   1.0,
+   23.0
+  ],
+  "HU": [
+   7.0,
+   26.0
+  ],
+  "IE": [
+   20.0,
+   27.0
+  ],
+  "IT": [
+   1.0,
+   21.0
+  ],
+  "LT": [
+   3.0,
+   21.0
+  ],
+  "LU": [
+   8.0,
+   27.0
+  ],
+  "LV": [
+   2.0,
+   21.0
+  ],
+  "MT": [
+   21.0,
+   27.0
+  ],
+  "NL": [
+   6.0,
+   27.0
+  ],
+  "PL": [
+   9.0,
+   26.0
+  ],
+  "PT": [
+   2.0,
+   23.0
+  ],
+  "RO": [
+   19.0,
+   27.0
+  ],
+  "SE": [
+   7.0,
+   23.0
+  ],
+  "SI": [
+   5.0,
+   26.0
+  ],
+  "SK": [
+   9.0,
+   27.0
+  ]
+ }
+}

@@ -137,6 +137,24 @@ prediction was computed; implemented in `predictive.py`, `bayes_predictive.py` a
   cross-country dependence. Five pre-registered comparisons per set, Holm-adjusted
   over the ten.
 
+### Amendment 2: robustness of country differences and ranks (implemented)
+
+Registered in [BAYES_PROTOCOL.md](BAYES_PROTOCOL.md), section 10, before computing any
+cross-specification result; implemented in `bayes_robustness.py`; results in
+[docs/BAYES_ROBUSTNESS.md](docs/BAYES_ROBUSTNESS.md).
+
+- **Coefficient sums.** Posterior mean, median and 90% interval of `theta[i]` from the
+  joint draws; `theta = beta0 + sum_k b_k` is verified draw by draw.
+- **Pairwise differences.** `P(theta[i] < theta[j])` from aligned joint draws. A
+  difference survives when it is credible (>= 0.95 or <= 0.05) in the same direction in
+  every accepted fit of set A (the nine pre-registered specifications plus K = 1);
+  set B adds the quarter-effect fits.
+- **Ranks.** Rank distributions per fit and the envelope of the 90% rank intervals
+  across set A; no model averaging. Positions are described only through surviving
+  pairs.
+- **Focus countries.** The six pairs among PT, ES, NL and LU against the classical
+  review's dependence-aware paired block bootstrap.
+
 Still to do in this stage: address the misfits of the posterior predictive checks
 (dynamic factor, lagged unemployment changes) and time-varying coefficients.
 

@@ -245,6 +245,32 @@ In brief:
 - An independent Linux run of the workflow gives the same four LOO verdicts and
   recovery counts within one country (tables in `docs/bayes-checks/replication-linux/`).
 
+### Robustness of country differences and ranks
+
+Amendment 2 of the protocol (section 10), registered before any cross-specification
+pairwise or rank result was computed and before the K = 1 specification (`lags_1`) was
+fitted. Results: [docs/BAYES_ROBUSTNESS.md](docs/BAYES_ROBUSTNESS.md).
+
+```bash
+poetry run eu-okun bayes-fit --data-dir snapshots/eurostat-2026-10-15 --output-dir results/bayes \
+  --specs lags_1 --retry-warmup 3000
+poetry run eu-okun bayes-robustness --fits-dir results/bayes --output-dir docs/bayes-robustness \
+  --report docs/BAYES_ROBUSTNESS.md --pairs-csv docs/review/pairs_review.csv
+```
+
+In brief (pairwise probabilities from aligned joint draws; a difference survives when it
+is credible, P >= 0.95, in the same direction in every accepted fit of the registered
+set):
+
+- 99 of 351 country pairs are credible in the primary fit, but only 59 survive every
+  accepted specification (lag orders 1, 2 and 4, priors, pooling, error model, common
+  factor, participation, pandemic exclusion); adding the quarter-effect fits leaves 59.
+- No rank is established: the median 90% rank interval spans 15 places in the primary
+  fit and 18 across specifications.
+- Of the classical review's apparent differences among the four focus countries, Spain's
+  more negative sum than Luxembourg's and the Netherlands' survives every specification;
+  Spain against Portugal and Luxembourg against the Netherlands do not.
+
 ## Predictive comparison
 
 Pre-registered in [PREDICTIVE_PROTOCOL.md](PREDICTIVE_PROTOCOL.md) before any held-out

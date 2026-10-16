@@ -58,6 +58,9 @@ Pre-registered in [BAYES_PROTOCOL.md](BAYES_PROTOCOL.md); results in
 - [x] Additive shared quarter effects with and without participation, prior predictive
       checks, posterior recovery on synthetic data and ArviZ NetCDF posterior artifacts
       (amendment 1; [docs/BAYES_MODEL_CHECKS.md](docs/BAYES_MODEL_CHECKS.md)).
+- [x] Robustness of country differences and ranks across specifications, including
+      the lag order K = 1 and the focus countries against the classical bootstrap
+      (amendment 2; [docs/BAYES_ROBUSTNESS.md](docs/BAYES_ROBUSTNESS.md)).
 - [x] Compare predictive performance with classical baselines (expanding-window refits):
       pre-registered in [PREDICTIVE_PROTOCOL.md](PREDICTIVE_PROTOCOL.md), results in
       [docs/PREDICTIVE_COMPARISON.md](docs/PREDICTIVE_COMPARISON.md). Conditional on the
