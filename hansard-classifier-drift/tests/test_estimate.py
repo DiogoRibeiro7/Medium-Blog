@@ -28,3 +28,12 @@ def test_zero_positive_stratum_keeps_uncertainty():
     theta = draw_theta(t, 5000, 0.5, seed=1)
     q = _q(theta[:, 0])
     assert q["lo"] >= 0 and q["hi"] > 0.03
+
+
+def test_fleiss_kappa_limits():
+    from hansard_drift.labels import fleiss_kappa
+
+    perfect = np.array([[3, 0], [0, 3], [3, 0], [0, 3]])
+    assert fleiss_kappa(perfect) == 1.0
+    split = np.array([[2, 1], [1, 2], [2, 1], [1, 2]])
+    assert fleiss_kappa(split) < 0

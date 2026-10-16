@@ -29,7 +29,8 @@ def main(argv=None) -> int:
     p.add_argument("--annotator", required=True)
     p = sub.add_parser("autolabel", help="label the sample from the synthetic truth (tests and CI only)")
     p.add_argument("--annotator", default="synthetic")
-    sub.add_parser("agreement", help="Cohen's kappa between annotators")
+    sub.add_parser("agreement", help="Cohen's and Fleiss' kappa between annotators, overall and by era")
+    sub.add_parser("adjudicate", help="majority vote of the annotator files into labels/labels.csv")
     sub.add_parser("estimate", help="corrected rates, precision and recall by era, decomposition, sides")
     sub.add_parser("transfer", help="dictionary against a learned classifier, within and across eras")
     sub.add_parser("figures", help="draw every figure the available results allow")
@@ -74,6 +75,14 @@ def main(argv=None) -> int:
 
         print(agreement(cfg).to_string(index=False))
         return 0
+    if cmd == "adjudicate":
+        from .labels import adjudicate
+
+        out = adjudicate(cfg)
+        print(
+            f"{len(out)} items: {int((out['discipline'] == '1').sum())} positive, {int(out['unsure'].sum())} without a majority"
+        )
+        return 0
     if cmd == "estimate":
         return _estimate(cfg)
     if cmd == "transfer":
@@ -103,9 +112,14 @@ def main(argv=None) -> int:
         return rc or _check(cfg)
     if cmd == "stage2":
         rc = _estimate(cfg)
+        from .estimate import annotator_sensitivity
+        from .labels import agreement, annotator_files
         from .report import write_report
         from .transfer import transfer
 
+        if len(annotator_files(cfg)) >= 2:
+            agreement(cfg)
+            annotator_sensitivity(cfg)
         transfer(cfg)
         _figures(cfg)
         write_report(cfg)

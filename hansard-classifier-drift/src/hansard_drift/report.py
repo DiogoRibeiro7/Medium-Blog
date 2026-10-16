@@ -151,6 +151,30 @@ def write_report(cfg: Config) -> str:
                 f"- {r['annotator_a']} vs {r['annotator_b']}: {r['items']} items, raw agreement {r['raw_agreement']:.3f}, "
                 f"Cohen's kappa {r['kappa']:.3f}"
             )
+        g = cfg.labels_dir / "agreement_by_group.csv"
+        if g.exists():
+            lines += [
+                "",
+                "| Group | Items | Fleiss' kappa | Unanimous | Majority positive |",
+                "|---|---:|---:|---:|---:|",
+            ]
+            for _, r in pd.read_csv(g).iterrows():
+                lines.append(
+                    f"| {r['group']} | {r['items']} | {r['fleiss_kappa']:.3f} | {r['unanimous']:.1%} | {r['share_positive_majority']:.1%} |"
+                )
+    sens = cfg.stage2_dir / "annotator_sensitivity.csv"
+    if sens.exists():
+        sv = pd.read_csv(sens)
+        lines += [
+            "",
+            "## Sensitivity to the annotator (corrected rate per 1,000; ratio to the reference era)",
+            "",
+            "| Labels | " + " | ".join(dict.fromkeys(sv["era"])) + " |",
+            "|---|" + "---:|" * sv["era"].nunique(),
+        ]
+        for name, g in sv.groupby("labels", sort=False):
+            cells = [f"{r['rate_median']:.1f} (×{r['ratio_to_reference_median']:.2f})" for _, r in g.iterrows()]
+            lines.append(f"| {name} | " + " | ".join(cells) + " |")
     path = cfg.root / "results" / "RESULTS.md"
     path.write_text("\n".join(lines) + "\n", encoding="utf-8")
     return str(path)
