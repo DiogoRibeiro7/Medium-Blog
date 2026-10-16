@@ -468,4 +468,23 @@ def test_dynamics_report_renders_and_replicates(tmp_path: Path,
     assert again.replication is not None and again.replication.label == "Linux replication, run 1"
     text = (tmp_path / "out2" / "BAYES_DYNAMICS.md").read_text(encoding="utf-8")
     assert "## 9. Replication on a second platform" in text
-    assert "| `ardl` | yes / yes | 0.200 / 0.200 | 0.000 | yes | yes |" in text
+    assert "| `ardl` | yes / yes | 1000 / 1000 | 0.200 / 0.200 | 0.000 | yes | yes |" in text
+    assert "Replication (Linux replication, run 1): every verdict is the same." in text
+    # A replication that crosses a threshold: the verdicts are flagged as not stable.
+    import json
+
+    summary = json.loads((replication / "dynamics.json").read_text(encoding="utf-8"))
+    summary["specifications"]["ardl"].update(lag1_p_value=0.03, persistence_fixed=False)
+    first = summary["comparisons"][0]
+    first["verdict"] = ("not distinguishable" if first["verdict"] != "not distinguishable"
+                        else "dynamic_factor better supported")
+    (replication / "dynamics.json").write_text(json.dumps(summary), encoding="utf-8")
+    flipped = dynamics.write_dynamics_report(tmp_path / "fits", tmp_path, tmp_path / "out3",
+                                             figures=False, replication_dir=replication)
+    unstable = dynamics.unstable_verdicts(flipped)
+    assert len(unstable) == 2 and "persistence verdict of `ardl`" in unstable[0]
+    assert "PSIS-LOO `dynamic_factor` against `primary`" in unstable[1]
+    text = (tmp_path / "out3" / "BAYES_DYNAMICS.md").read_text(encoding="utf-8")
+    assert "2 verdicts differ and are not treated as established" in text
+    assert "the replication gives p = 0.030, so this verdict is not stable" in text
+    assert "; not stable)" in text

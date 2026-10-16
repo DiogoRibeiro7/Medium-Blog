@@ -395,8 +395,58 @@ def _estimate(row: CountryEstimate) -> str:
     return f"{row.median:+.3f} [{row.low:+.3f}, {row.high:+.3f}]{mark}"
 
 
+def _replicated(review: DynamicsReview, name: str) -> dict[str, Any] | None:
+    if review.replication is None:
+        return None
+    found: dict[str, Any] | None = review.replication.summary["specifications"].get(name)
+    return found
+
+
+def _replicated_comparison(review: DynamicsReview, a: str, b: str) -> dict[str, Any] | None:
+    if review.replication is None:
+        return None
+    return next((c for c in review.replication.summary["comparisons"]
+                 if (c["model_a"], c["model_b"]) == (a, b)), None)
+
+
+def unstable_verdicts(review: DynamicsReview) -> list[str]:
+    """Verdicts that differ between this run and the replication, in words."""
+    out: list[str] = []
+    for name, fit in review.fits.items():
+        theirs = _replicated(review, name)
+        if theirs is None:
+            continue
+        if fit.accepted != bool(theirs["accepted"]):
+            out.append(f"the acceptance of {_code(name)}")
+        p, f = review.persistence[name], review.factor[name]
+        if p.fixed != bool(theirs["persistence_fixed"]):
+            out.append(f"the persistence verdict of {_code(name)} (p = {p.p_value:.3f} here, "
+                       f"{theirs['lag1_p_value']:.3f} in the replication)")
+        if f.modelled and theirs["rho_f"] is not None:
+            _, low, high = theirs["rho_f"]
+            if f.supported != (low > 0.0 or high < 0.0):
+                out.append(f"the factor-dynamics verdict of {_code(name)}")
+        if set(review.negative_set(name)) != set(theirs["credibly_negative"]):
+            out.append(f"the credibly negative set of {_code(name)}")
+        for claim in review.claims[name]:
+            there = theirs["claims"].get(claim.claim)
+            if there is not None and claim_status(claim) != there:
+                out.append(f'"{claim.claim}" in {_code(name)} ({claim_status(claim)} here at '
+                           f"{claim.probability:.3f}, {there} in the replication)")
+    for c in review.comparisons:
+        t = _replicated_comparison(review, c.model_a, c.model_b)
+        if t is not None and t["verdict"] != c.verdict:
+            out.append(f"PSIS-LOO {_code(c.model_a)} against {_code(c.model_b)} ({c.verdict} "
+                       f"here, {c.elpd_diff:+.1f} SE {c.se_diff:.1f}; {t['verdict']} in the "
+                       f"replication, {t['elpd_diff']:+.1f} SE {t['se_diff']:.1f})")
+    return out
+
+
 def _verdict_sentence(review: DynamicsReview, name: str) -> str:
-    """Section 11.4, conclusions: what the specification fixes and how LOO judges it."""
+    """Section 11.4, conclusions: what the specification fixes and how LOO judges it.
+
+    A verdict that the replication does not reproduce is marked as not stable.
+    """
     if not review.accepted(name):
         return (f"{_code(name)} failed the acceptance criteria, so none of its results is "
                 "used.")
@@ -404,6 +454,10 @@ def _verdict_sentence(review: DynamicsReview, name: str) -> str:
     parts = [("fixes the persistence misfit" if p.fixed else
               "does not fix the persistence misfit")
              + f" (p = {p.p_value:.3f})"]
+    theirs = _replicated(review, name)
+    if theirs is not None and p.fixed != bool(theirs["persistence_fixed"]):
+        parts[0] += (f", but the replication gives p = {theirs['lag1_p_value']:.3f}, so this "
+                     "verdict is not stable")
     if f.modelled:
         parts.append("its factor dynamics are " + ("supported" if f.supported else
                                                    "not supported")
@@ -421,6 +475,9 @@ def _verdict_sentence(review: DynamicsReview, name: str) -> str:
             parts.append("PSIS-LOO does not distinguish it from `primary`")
         if not against.reliable:
             parts[-1] += " (unreliable: Pareto k)"
+        t = _replicated_comparison(review, name, "primary")
+        if t is not None and t["verdict"] != against.verdict:
+            parts[-1] += f" (the replication: {t['verdict']}; not stable)"
     return f"{_code(name)} " + "; ".join(parts) + "."
 
 
@@ -444,9 +501,19 @@ def render(review: DynamicsReview, assets: str, command: str) -> str:
         lines.append(f"- {_verdict_sentence(review, name)}")
     against = review.comparison("ardl_dynamic_factor", "ardl")
     if against is not None:
+        t = _replicated_comparison(review, "ardl_dynamic_factor", "ardl")
         lines.append(f"- `ardl_dynamic_factor` against `ardl`: elpd difference "
                      f"{against.elpd_diff:+.1f} (SE {against.se_diff:.1f}), {against.verdict}"
-                     f"{'' if against.reliable else ' (unreliable: Pareto k)'}.")
+                     f"{'' if against.reliable else ' (unreliable: Pareto k)'}"
+                     + ("" if t is None or t["verdict"] == against.verdict else
+                        f"; the replication gives {t['elpd_diff']:+.1f} (SE {t['se_diff']:.1f}),"
+                        f" {t['verdict']}, so this verdict is not stable") + ".")
+    if review.replication is not None:
+        unstable = unstable_verdicts(review)
+        lines.append(f"- Replication ({review.replication.label}): "
+                     + ("every verdict is the same." if not unstable else
+                        f"{len(unstable)} verdicts differ and are not treated as established: "
+                        + "; ".join(unstable) + ". Every other verdict is the same."))
     primary_negative = review.negative_set("primary")
     for name in new:
         if not review.accepted(name):
@@ -674,6 +741,10 @@ def render(review: DynamicsReview, assets: str, command: str) -> str:
               "BAYES_ROBUSTNESS.md keep their own specification sets.", ""]
     for name in new:
         lines.append(f"- {_verdict_sentence(review, name)}")
+    if review.replication is not None and unstable_verdicts(review):
+        lines.append("- A verdict that the replication does not reproduce sits on its "
+                     "threshold; it is reported with both values and is not treated as "
+                     "established.")
     lines.append("")
 
     if review.replication is not None:
@@ -707,12 +778,16 @@ def _replication_section(review: DynamicsReview) -> list[str]:
                           for c in review.claims[name])
         rows.append([_code(name),
                      f"{'yes' if fit.accepted else 'no'} / {'yes' if theirs['accepted'] else 'no'}",
+                     f"{fit.summary['settings']['warmup']} / {theirs['warmup']}",
                      f"{p.p_value:.3f} / {theirs['lag1_p_value']:.3f}",
                      f"{largest:.3f}", "yes" if same_set else "**no**",
                      "yes" if same_claims else "**no**"])
-    lines += _table(["Specification", "Accepted (here / there)", "Lag-1 p (here / there)",
-                     "Largest median difference", "Same credibly negative set",
-                     "Same claim statuses"], rows, "llrrll")
+    lines += _table(["Specification", "Accepted (here / there)", "Warm-up (here / there)",
+                     "Lag-1 p (here / there)", "Largest median difference",
+                     "Same credibly negative set", "Same claim statuses"], rows, "lllrrll")
+    lines.append("A warm-up of 3000 means the first attempt failed the acceptance criteria "
+                 "and the single retry of section 6 was used.")
+    lines.append("")
     theirs_c = {(c["model_a"], c["model_b"]): c for c in rep.summary["comparisons"]}
     for c in review.comparisons:
         t = theirs_c.get((c.model_a, c.model_b))
@@ -720,6 +795,9 @@ def _replication_section(review: DynamicsReview) -> list[str]:
             lines.append(f"- LOO `{c.model_a}` vs `{c.model_b}`: {c.elpd_diff:+.1f} "
                          f"({c.se_diff:.1f}), {c.verdict} here; {t['elpd_diff']:+.1f} "
                          f"({t['se_diff']:.1f}), {t['verdict']} there.")
+    unstable = unstable_verdicts(review)
+    lines += ["", "Verdicts that differ between the two runs: "
+              + ("none." if not unstable else "; ".join(unstable) + ".")]
     return lines + [""]
 
 

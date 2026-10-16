@@ -298,12 +298,15 @@ In brief:
 - All three specifications converge at the first attempt. The common factor is strongly
   persistent: `rho_f` is 0.92 (90% interval 0.86 to 0.96), and 0.91 with the lagged
   change.
-- Only `ardl_dynamic_factor` fixes the persistence misfit (p = 0.102; it replicates a
-  lag-1 autocorrelation of 0.18 against 0.27 observed). `dynamic_factor` (p = 0.030) and
-  `ardl` (p = 0.007) narrow the gap but do not close it.
+- `ardl_dynamic_factor` fixes the persistence misfit in both runs (p = 0.102 here and
+  0.130 on Linux; it replicates a lag-1 autocorrelation of 0.18 against 0.27 observed).
+  `ardl` does not (p = 0.007 in both runs). `dynamic_factor` sits on the threshold: p is
+  0.030 here and 0.052 on Linux, so its verdict is not stable.
 - By PSIS-LOO on the 1098 cells common to all four fits, `dynamic_factor` (+15.5, SE
   5.8) and `ardl_dynamic_factor` (+26.2, SE 7.9) are better supported than `primary`;
-  `ardl` is not distinguishable from it (+14.4, SE 7.3).
+  `ardl` is not distinguishable from it (+14.4, SE 7.3). These three verdicts are the same
+  on Linux. Combining the two changes beats `ardl` here (+11.8, SE 5.7) but not on Linux
+  (+10.7, SE 5.8): not stable.
 - The country estimates change little on average: the mean is -0.200 in `primary`
   and -0.168 in `ardl_dynamic_factor`. The largest change is Spain's (-0.512 to -0.397).
   25 countries are credibly negative in `ardl_dynamic_factor` (24 in `primary`, plus
@@ -311,11 +314,14 @@ In brief:
 - On the long-run multiplier, "Luxembourg weak" holds in both ARDL fits. This follows
   from Luxembourg's negative lagged-change coefficient (about -0.4), which shrinks its
   long-run multiplier; on the short-run sum the probability is about 0.81. "Netherlands
-  delayed" falls below its threshold in every new fit. "Spain large" holds in all of
-  them.
+  delayed" falls below its threshold in every new fit, except `dynamic_factor` on Linux
+  (0.948 here). "Spain large" holds in all of them.
 - The factor stays correlated with average GDP growth (median correlation -0.50 to
   -0.68 across the new fits), so `theta` remains an association beyond the common
   European cycle.
+- An independent Linux run of the workflow reproduces the posterior medians within
+  0.006, `rho_f`, the credibly negative sets and every other verdict. The tables are in
+  `docs/bayes-dynamics/replication-linux/`.
 - The new fits are reported alongside the pre-registered results and do not replace
   the primary specification.
 

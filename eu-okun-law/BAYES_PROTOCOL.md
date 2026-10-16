@@ -464,3 +464,16 @@ beyond the common factor.
   negative set is the same under either estimand. The AR(1) factor is sampled in its
   centred form (the density of `f` given `rho_f`): this is the same model as
   section 11.2, written in a different parameterisation.
+- Amendment 3, after its fits: locally, all three specifications met every criterion at
+  the first attempt.
+  - The prior predictive check of section 9.3 was applied to the new priors (same seed
+    and draws); it is not a decision rule.
+  - Replication on Linux (Bayesian workflow run 38975791746, specs `primary` and the
+    three new ones): all four were accepted, `primary` after the retry.
+  - Medians agree within 0.006, `rho_f` and the credibly negative sets are identical.
+  - Three verdicts sit on their thresholds and differ between the runs. The report
+    states them with both values and does not treat them as established:
+    - the persistence verdict of `dynamic_factor` (p = 0.030 and 0.052);
+    - "Netherlands delayed" in `dynamic_factor` (0.948 locally);
+    - PSIS-LOO `ardl_dynamic_factor` against `ardl` (+11.8 with SE 5.7, and +10.7 with
+      SE 5.8).
