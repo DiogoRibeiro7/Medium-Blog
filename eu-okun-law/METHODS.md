@@ -173,8 +173,33 @@ in `forecast_bayes.py` and `forecast_comparison.py`; results in
   (block length 4, all countries of a quarter together) gives percentile intervals and
   null-centred p-values, Holm-adjusted over five comparisons.
 
-Still to do in this stage: address the misfits of the posterior predictive checks
-(dynamic factor, lagged unemployment changes) and time-varying coefficients.
+### Amendment 3: dynamics that address the misfits (implemented)
+
+Registered in [BAYES_PROTOCOL.md](BAYES_PROTOCOL.md), section 11, before any of its fits.
+It is implemented in `bayes_model.py` (specifications), `bayes_fit.py` (checks) and
+`bayes_dynamics.py` (report), with results in
+[docs/BAYES_DYNAMICS.md](docs/BAYES_DYNAMICS.md).
+
+- **AR(1) factor.**
+  - `f[t] = rho_f f[t-1] + sqrt(1 - rho_f^2) e[t]`, stationary with unit variance and
+    restarted at each segment's first quarter, with `rho_f = tanh(r)` and
+    `r ~ N(0, 1)`.
+  - It is sampled in the centred form, through the density of `f` given `rho_f`.
+- **Lagged change (ARDL).**
+  - `psi[i] * y[i,t-1]` enters the mean equation and replaces the AR(1) error, with
+    `psi = tanh(mu_psi + tau_psi omega)`.
+  - The likelihood conditions on each segment's first quarter.
+  - The comparable estimand is the long-run multiplier `theta_LR = theta / (1 - psi)`.
+    It has the sign of `theta` in every draw.
+- **Decision rules.**
+  - The persistence misfit is fixed when the posterior predictive p-value of the lag-1
+    autocorrelation lies in [0.05, 0.95].
+  - Factor dynamics are supported when the 90% interval of `rho_f` excludes zero.
+  - PSIS-LOO is computed on the cells common to every compared fit (2 SE rule).
+  - The claims use `theta_LR` for Luxembourg and Spain in the ARDL fits.
+  - The prior predictive check of amendment 1 is applied to the new priors.
+
+Still to do in this stage: time-varying coefficients.
 
 ## Stage 3 — Identification before causal language
 
