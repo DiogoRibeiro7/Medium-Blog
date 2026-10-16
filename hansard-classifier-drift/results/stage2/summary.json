@@ -1,0 +1,26 @@
+{
+  "label_source": "labels.csv",
+  "labelled_items": 774,
+  "strata_without_labels": [],
+  "draws": 20000,
+  "prior": 0.5,
+  "reference_era": "Weatherill",
+  "totals": {
+    "tagged": 66765,
+    "interventions": {
+      "median": 34964.5921701858,
+      "lo": 30615.708383459594,
+      "hi": 39444.054647893914
+    },
+    "precision": {
+      "median": 0.43545708361672036,
+      "lo": 0.3805835027695157,
+      "hi": 0.4912278280450275
+    },
+    "recall": {
+      "median": 0.8332624786900859,
+      "lo": 0.7693362223338855,
+      "hi": 0.8867662572819559
+    }
+  }
+}

@@ -175,6 +175,7 @@ seed = 11
 min_df = 2
 ngram_max = 2
 c = 1.0
+class_weight = "balanced"                 # positives are about one in five labelled items
 cv_folds = 5
 cv_repeats = 5
 bootstrap = 2000
