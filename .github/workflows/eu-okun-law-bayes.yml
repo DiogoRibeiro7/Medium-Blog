@@ -35,10 +35,12 @@ jobs:
         run: |
           poetry check --lock
           poetry install --no-interaction --extras "bayes report"
-      - name: Fit the pre-registered specifications on the frozen snapshot
+      - name: Fit the registered specifications on the frozen snapshot
         working-directory: eu-okun-law
         env:
           SPECS: ${{ github.event.inputs.specs || 'all' }}
+        # Each fit also writes posterior.nc (ArviZ NetCDF: posterior, sample_stats, prior,
+        # prior_predictive, observed/constant data, log_likelihood).
         run: >-
           poetry run eu-okun bayes-fit --data-dir snapshots/eurostat-2026-10-15
           --output-dir results/bayes --specs "$SPECS" --retry-warmup 3000
@@ -47,7 +49,19 @@ jobs:
         run: >-
           poetry run eu-okun bayes-report --fits-dir results/bayes
           --output-dir results/bayes-report --data-dir snapshots/eurostat-2026-10-15
-      - name: Archive posterior draws, diagnostics and report
+      - name: Posterior recovery on synthetic data (amendment 1)
+        working-directory: eu-okun-law
+        run: >-
+          poetry run eu-okun bayes-recovery --data-dir snapshots/eurostat-2026-10-15
+          --output-dir results/bayes-recovery
+      - name: Quarter effects, LOO, prior predictive and recovery report
+        if: ${{ (github.event.inputs.specs || 'all') == 'all' }}
+        working-directory: eu-okun-law
+        run: >-
+          poetry run eu-okun bayes-checks --fits-dir results/bayes
+          --data-dir snapshots/eurostat-2026-10-15 --output-dir results/bayes-checks
+          --recovery-dir results/bayes-recovery
+      - name: Archive posterior draws, NetCDF artifacts, diagnostics and reports
         if: always()
         uses: actions/upload-artifact@v4
         with:
@@ -56,5 +70,7 @@ jobs:
             eu-okun-law/results/bayes/
             eu-okun-law/results/bayes-first-attempt/
             eu-okun-law/results/bayes-report/
+            eu-okun-law/results/bayes-recovery/
+            eu-okun-law/results/bayes-checks/
           retention-days: 30
           if-no-files-found: error

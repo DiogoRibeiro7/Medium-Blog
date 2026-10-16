@@ -52,6 +52,9 @@ Pre-registered in [BAYES_PROTOCOL.md](BAYES_PROTOCOL.md); results in
       specifications; eight pass the convergence criteria, `no_pooling` fails).
 - [x] Posterior predictive/convergence checks and robust (Student-t) errors.
 - [x] Joint posterior rank probabilities, not point ranks alone.
+- [x] Additive shared quarter effects with and without participation, prior predictive
+      checks, posterior recovery on synthetic data and ArviZ NetCDF posterior artifacts
+      (amendment 1; [docs/BAYES_MODEL_CHECKS.md](docs/BAYES_MODEL_CHECKS.md)).
 - [ ] Compare predictive performance with classical baselines (expanding-window refits).
 - [ ] Address the misfits the checks found, under a new registered protocol: the models
       understate the persistence of unemployment changes, and the i.i.d. common factor

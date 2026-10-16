@@ -71,8 +71,8 @@ install ...`) and check `poetry env info --path`, or the packages land in that o
 environment.
 
 Extras: `report` (matplotlib, for `eu-okun review` and `bayes-report` figures), `bayes`
-(NumPyro, JAX, ArviZ, for the hierarchical models) and `dev` (both, plus pytest, Ruff
-and mypy). The downloader needs internet access; all automated tests are offline.
+(NumPyro, JAX, ArviZ, and h5netcdf for the NetCDF posterior artifacts) and `dev` (both,
+plus pytest, Ruff and mypy). The downloader needs internet access; all automated tests are offline.
 
 The command produces these untracked research inputs:
 
@@ -204,3 +204,38 @@ In brief, for the 2026-10-15 snapshot and 2009-2019:
   the association beyond the common European cycle.
 - Of the three earlier claims, "Spain large" is supported; "Netherlands delayed" and
   "Luxembourg weak" are not resolved under the pre-registered rules.
+
+### Shared quarter effects, prior predictive checks and recovery
+
+Amendment 1 of the protocol (section 9), registered before its fits, adds additive
+shared quarter effects (sum to zero) with and without participation, prior predictive
+checks, posterior recovery on synthetic data and ArviZ NetCDF artifacts
+(`posterior.nc` in every fit directory: posterior, sample statistics, prior, prior
+predictive, observed and constant data, pointwise log likelihood, with seeds, settings,
+versions and snapshot hashes). Results: [docs/BAYES_MODEL_CHECKS.md](docs/BAYES_MODEL_CHECKS.md).
+
+```bash
+poetry run eu-okun bayes-fit --data-dir snapshots/eurostat-2026-10-15 --output-dir results/bayes   --specs time_effects,time_effects_participation,participation_no_common_factor --retry-warmup 3000
+poetry run eu-okun bayes-export --fits-dir results/bayes --data-dir snapshots/eurostat-2026-10-15
+poetry run eu-okun bayes-recovery --data-dir snapshots/eurostat-2026-10-15 --output-dir results/bayes-recovery
+poetry run eu-okun bayes-checks --fits-dir results/bayes --data-dir snapshots/eurostat-2026-10-15   --output-dir docs/bayes-checks --report docs/BAYES_MODEL_CHECKS.md --recovery-dir results/bayes-recovery
+```
+
+In brief:
+
+- All three new specifications converge. By PSIS-LOO, additive quarter effects are
+  better supported than no shared effect (elpd +22.2, SE 9.3), and the pre-registered
+  common factor with country loadings is better supported than additive effects
+  (+23.7, SE 9.2); additive effects also under-reproduce the cross-country correlation
+  (0.095 replicated against 0.168 observed).
+- Under quarter effects `mu_theta` is -0.209 (90% interval -0.269 to -0.154), close to
+  the primary -0.198; the quarter effects correlate -0.53 with average GDP growth, so
+  they absorb part of the common GDP association.
+- The priors are generous: under `primary`, 3.9% of prior-simulated quarterly changes
+  exceed 5 pp, against a largest observed change of 3.0 pp.
+- Recovery on synthetic data: 24, 25 and 23 of 27 true country sums lie inside their
+  90% intervals (`primary`, `time_effects`, `gaussian_iid`); the primary model's
+  factor values are under-covered (32 of 43), and the `gaussian_iid` recovery fit
+  narrowly failed acceptance (max R-hat 1.0104 after the retry).
+- An independent Linux run of the workflow gives the same four LOO verdicts and
+  recovery counts within one country (tables in `docs/bayes-checks/replication-linux/`).
