@@ -244,6 +244,99 @@ holds these groups: posterior, sample statistics when available, prior, prior
 predictive, observed and constant data, and the pointwise log likelihood. It also
 records the seed, sampler settings, software versions and snapshot hashes.
 
+## 10. Amendment 2: robustness of country differences and ranks
+
+Registered on 2026-10-16. At that point the fits of sections 5 and 9 existed. No
+pairwise probability or rank distribution had been computed for any specification other
+than `primary`, and `lags_1` had not been fitted.
+
+### 10.1 One more lag order
+
+`lags_1` is `primary` with K = 1. With `primary` (K = 2) and `lags_4` (K = 4), it gives
+the lag orders 1, 2 and 4 that the classical analysis uses. K = 0 is not possible because
+the model needs at least one lag. Priors, sampler, acceptance criteria and the single
+retry follow section 6.
+
+### 10.2 Specification sets
+
+**Set A** is the registered robustness set: the nine specifications of section 5 plus
+`lags_1`.
+
+**Set B** is set A plus the three specifications of amendment 1. With quarter effects,
+`theta` measures a within-quarter association (section 9.1). Set B is therefore reported
+alongside set A and never replaces it.
+
+Only fits accepted under section 6 enter a set.
+
+### 10.3 Country summaries
+
+For every fit, from the joint draws of `theta[i]`:
+
+- the posterior mean and median;
+- the 90% equal-tailed interval;
+- P(theta[i] < 0).
+
+`theta[i]` is the coefficient sum by construction. The report also checks, draw by draw,
+that it equals `beta0[i] + sum_k b[i,k]`.
+
+### 10.4 Which country differences survive
+
+- For each fit, `P(theta[i] < theta[j])` is computed from aligned joint draws, i.e. the
+  same draw index for both countries.
+- A difference is **credible in a fit** if this probability is at least 0.95 or at most
+  0.05.
+- A difference **survives modelling and prior uncertainty** if it is credible, in the
+  same direction, in every accepted fit of set A.
+
+The report gives:
+
+- the number of the 351 pairs that survive in set A and in set B;
+- the pairs that are credible in `primary` but do not survive;
+- for each country, the number of countries it differs from robustly.
+
+### 10.5 Rank uncertainty
+
+- For every fit: the rank distribution (1 = most negative sum), the median rank and the
+  90% rank interval.
+- Across set A, the envelope from the lowest lower bound to the highest upper bound.
+  This describes rank uncertainty including model uncertainty.
+- There is no model averaging, because no weights are justified.
+
+Ranks are always reported as intervals. A country's position is described only through
+the pairwise differences that survive under 10.4.
+
+### 10.6 Portugal, Spain, the Netherlands and Luxembourg
+
+All six pairs among these countries are compared in every fit with the classical review's
+dependence-aware paired block bootstrap (`docs/review/pairs_review.csv`).
+
+**Classical apparent difference.** The Holm-adjusted sign p-value is below 0.05 at some
+block length in the pandemic-excluded sample, which is the sample closest to the Bayesian
+2009-2019 window. The full-sample results are shown alongside.
+
+**Verdict for each pair:**
+
+| Classical | Bayesian (rule 10.4) | Verdict |
+| --- | --- | --- |
+| apparent | survives | **survives** |
+| apparent | does not survive | **does not survive** |
+| not apparent | survives | **credible only in the Bayesian fits** |
+| not apparent | does not survive | **not supported by either** |
+
+### 10.7 Diagnostics and comparison with OLS
+
+For every fit, a table and a figure show:
+
+- the convergence diagnostics: maximum R-hat, minimum bulk and tail ESS, divergences,
+  minimum E-BFMI and tree-depth saturation;
+- the posterior predictive p-values of section 6.
+
+Failed fits stay listed. Country summaries sit next to the classical OLS/HAC estimates on
+the same rows.
+
+The decision rules apply to this run. A replication run on a second platform is compared
+descriptively, as in section 9.
+
 ## Change log
 
 - Before any estimate was inspected: added the decision thresholds of section 7.
