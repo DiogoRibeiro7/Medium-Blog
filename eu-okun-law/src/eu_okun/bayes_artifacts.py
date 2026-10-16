@@ -24,7 +24,7 @@ from typing import Any
 
 import numpy as np
 
-from eu_okun.bayes_data import BayesData, ardl_path
+from eu_okun.bayes_data import BayesData, ardl_path, regime_terms
 from eu_okun.bayes_model import (
     ModelSpec,
     likelihood_mask,
@@ -42,9 +42,13 @@ DIMS: dict[str, tuple[str, ...]] = {
     "b": ("country", "lag"), "mu_b": ("lag",), "f": ("quarter",),
     "quarter_effect": ("quarter",), "nu": (), "mu_theta": (), "tau_theta": (), "tau_b": (),
     "tau_quarter": (), "psi": ("country",), "mu_psi": (), "tau_psi": (), "rho_f": (),
+    "delta": ("country",), "theta_post": ("country",), "alpha_shift": ("country",),
+    "mu_delta": (), "tau_delta": (), "mu_alpha_shift": (), "tau_alpha_shift": (),
+    "log_sigma_shift": (), "kappa": ("quarter",), "tau_kappa": (),
 }
 LIKELIHOOD_PARAMETERS = ("theta", "alpha", "b", "phi", "sigma", "lam", "f", "nu", "gamma",
-                         "quarter_effect", "psi")
+                         "quarter_effect", "psi", "delta", "alpha_shift", "log_sigma_shift",
+                         "kappa")
 
 
 def _coords(data: BayesData) -> dict[str, list[str]]:
@@ -81,8 +85,8 @@ def simulate_outcomes(spec: ModelSpec, data: BayesData, draws: Mapping[str, np.n
     """
     s = draws["theta"].shape[0]
     n, t = data.y.shape
-    mean = (draws["alpha"][:, :, None] + draws["theta"][:, :, None] * data.g[None]
-            + np.einsum("ntk,snk->snt", data.z, draws["b"]))
+    theta, alpha, sigma = regime_terms(data, draws)
+    mean = alpha + theta * data.g[None] + np.einsum("ntk,snk->snt", data.z, draws["b"])
     if spec.participation:
         mean = mean + draws["gamma"][:, :, None] * data.dp[None]
     if spec.common_factor:
@@ -93,7 +97,7 @@ def simulate_outcomes(spec: ModelSpec, data: BayesData, draws: Mapping[str, np.n
         eps = rng.standard_t(np.asarray(draws["nu"]).reshape(s, 1, 1), size=(s, n, t))
     else:
         eps = rng.standard_normal((s, n, t))
-    noise = draws["sigma"][:, :, None] * eps
+    noise = sigma * eps
     if spec.lagged_outcome:
         return ardl_path(mean + noise, draws["psi"], data.y, data.segment_start)
     if not spec.ar1:

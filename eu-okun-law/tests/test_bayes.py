@@ -373,7 +373,7 @@ def test_failed_fit_is_retried_once_with_longer_warmup(
                                                          "processed_csv_sha256": "c"})
     monkeypatch.setattr(bf, "_read_panel", lambda path: synthetic())
     monkeypatch.setattr(bf, "read_flags", lambda path: {})
-    monkeypatch.setattr(bf, "build_bayes_data", lambda *a, **k: "data")
+    monkeypatch.setattr(bf, "design_for", lambda *a, **k: "data")
     monkeypatch.setattr(bf, "fit_specification", fake_fit)
     monkeypatch.setattr(bf, "predictive_checks", lambda fit: None)
 

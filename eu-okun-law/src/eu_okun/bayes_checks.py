@@ -29,7 +29,7 @@ from eu_okun.bayes_fit import (
     fit_specification,
     interval,
 )
-from eu_okun.bayes_model import AMENDMENT_1, SPECS, ModelSpec
+from eu_okun.bayes_model import AMENDMENT_1, SPECS, ModelSpec, design_for
 from eu_okun.contract import EurostatDataError
 from eu_okun.review import read_flags
 
@@ -251,7 +251,7 @@ def run_recovery(data_dir: Path, output_dir: Path, names: Sequence[str] = RECOVE
     results = []
     for name in names:
         spec = SPECS[name]
-        design = build_bayes_data(panel, flags, spec.windows, spec.lags)
+        design = design_for(spec, panel, flags)
         data, truth = recovery_data(spec, design)
         fit = fit_specification(data, spec, settings)
         if not fit.diagnostics.accepted and retry_warmup is not None:
@@ -375,13 +375,13 @@ def build_checks(fits_dir: Path, data_dir: Path, recovery_dir: Path | None = Non
     comparisons = [compare_loo(loo[a], loo[b]) for a, b in COMPARISONS if a in loo and b in loo]
     prior = []
     for spec in SPECS.values():
-        design = build_bayes_data(panel, flags, spec.windows, spec.lags)
+        design = design_for(spec, panel, flags)
         prior.append(prior_predictive_check(spec, design, draws=PRIOR_CHECK_DRAWS))
     recovery = load_recovery(recovery_dir) if recovery_dir is not None else []
     realized = {}
     for rec in recovery:
         spec = SPECS[rec.spec]
-        design = build_bayes_data(panel, flags, spec.windows, spec.lags)
+        design = design_for(spec, panel, flags)
         realized[rec.spec] = realized_hyperparameters(
             {k: v[0] for k, v in recovery_truth(spec, design).items()})
     replication = (load_checks_replication(replication_dir) if replication_dir is not None

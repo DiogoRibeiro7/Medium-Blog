@@ -8,7 +8,7 @@ here only; the rest of the package does not need the ``bayes`` extra.
 from __future__ import annotations
 
 import math
-from collections.abc import Mapping
+from collections.abc import Mapping, Sequence
 from dataclasses import dataclass, replace
 from typing import Any
 
@@ -18,7 +18,14 @@ import numpyro
 import numpyro.distributions as dist
 from numpyro.distributions import constraints
 
-from eu_okun.bayes_data import PANDEMIC_EXCLUDED_WINDOWS, PRIMARY_WINDOWS, BayesData
+from eu_okun.bayes_data import (
+    PANDEMIC_EXCLUDED_WINDOWS,
+    PRIMARY_WINDOWS,
+    BayesData,
+    build_bayes_data,
+)
+from eu_okun.contract import EU27
+from eu_okun.review import Flags, Panel
 
 LOG_SIGMA_CENTRE = math.log(0.3)
 
@@ -41,6 +48,14 @@ class ModelSpec:
     time_effects: bool = False   # additive quarter effects, sum to zero (amendment 1)
     factor_ar: bool = False      # the common factor follows a stationary AR(1) (amendment 3)
     lagged_outcome: bool = False  # psi[i] * y[i, t-1] in the mean, an ARDL (amendment 3)
+    regime_shift: bool = False   # post-2021 shift delta[i] of the GDP sum (amendment 4)
+    drift: bool = False          # common random walk kappa[t] in the GDP sum (amendment 4)
+    final_gdp_only: bool = False  # mask terms whose GDP inputs are provisional (amendment 4)
+
+    @property
+    def post_shifts(self) -> bool:
+        """Post-2021 intercept and error-scale shifts come with a shift or a drift."""
+        return self.regime_shift or self.drift
 
 
 PRIMARY = ModelSpec(
@@ -107,6 +122,39 @@ SPECS.update({
                 "and an AR(1) common factor", ar1=False, lagged_outcome=True, factor_ar=True),
     )
 })
+# Amendment 4 (section 12): regime-specific and time-varying coefficients on the
+# pandemic-excluded windows, registered before any fit.
+AMENDMENT_4: tuple[str, ...] = (
+    "regime_shift", "regime_shift_final_gdp", "pandemic_excluded_dynamic",
+    "regime_shift_dynamic", "drifting_association",
+)
+_PANDEMIC_EXCLUDED = SPECS["pandemic_excluded"]
+SPECS.update({
+    spec.name: spec
+    for spec in (
+        replace(_PANDEMIC_EXCLUDED, name="regime_shift", description="Post-2021 shifts in the "
+                "GDP coefficient sum, the intercept and the error scale", regime_shift=True),
+        replace(_PANDEMIC_EXCLUDED, name="regime_shift_final_gdp", description="regime_shift "
+                "without terms whose GDP inputs are provisional", regime_shift=True,
+                final_gdp_only=True),
+        replace(_PANDEMIC_EXCLUDED, name="pandemic_excluded_dynamic", description="The "
+                "pandemic-excluded windows with the dynamics of ardl_dynamic_factor",
+                ar1=False, lagged_outcome=True, factor_ar=True),
+        replace(_PANDEMIC_EXCLUDED, name="regime_shift_dynamic", description="regime_shift "
+                "with the dynamics of ardl_dynamic_factor", ar1=False, lagged_outcome=True,
+                factor_ar=True, regime_shift=True),
+        replace(_PANDEMIC_EXCLUDED, name="drifting_association", description="A common random "
+                "walk in the GDP coefficient sum, with the post-2021 intercept and scale "
+                "shifts", drift=True),
+    )
+})
+
+
+def design_for(spec: ModelSpec, panel: Panel, flags: Flags,
+               countries: Sequence[str] = EU27) -> BayesData:
+    """The arrays a specification is fitted on (windows, lag order and masks)."""
+    return build_bayes_data(panel, flags, spec.windows, spec.lags, countries,
+                            provisional_gdp=not spec.final_gdp_only)
 
 
 def model_inputs(data: BayesData) -> dict[str, Any]:
@@ -115,6 +163,8 @@ def model_inputs(data: BayesData) -> dict[str, Any]:
         "y": jnp.asarray(data.y), "g": jnp.asarray(data.g), "z": jnp.asarray(data.z),
         "dp": jnp.asarray(data.dp), "mask": jnp.asarray(data.mask),
         "segment_start": jnp.asarray(data.segment_start), "y_lag": jnp.asarray(data.y_lag()),
+        "post": jnp.asarray(data.post().astype(float)),
+        "gap": jnp.asarray(data.calendar_gaps()),
     }
 
 
@@ -134,13 +184,19 @@ def conditional_mean(inputs: Mapping[str, Any], params: Mapping[str, Any]) -> An
     [+ psi*y_{t-1}].
 
     Shape (N, T). ``quarter_effect`` (delta) is the additive shared quarter effect;
-    ``psi`` multiplies the lagged unemployment change of the ARDL specifications.
+    ``psi`` multiplies the lagged unemployment change of the ARDL specifications. In
+    amendment 4, theta and alpha shift after 2021 (``delta``, ``alpha_shift``) and theta
+    drifts with the common random walk ``kappa``.
     """
-    mean = (
-        params["alpha"][:, None]
-        + params["theta"][:, None] * inputs["g"]
-        + jnp.einsum("ntk,nk->nt", inputs["z"], params["b"])
-    )
+    alpha = params["alpha"][:, None]
+    theta = params["theta"][:, None]
+    if "delta" in params:
+        theta = theta + params["delta"][:, None] * inputs["post"][None, :]
+    if "kappa" in params:
+        theta = theta + params["kappa"][None, :]
+    if "alpha_shift" in params:
+        alpha = alpha + params["alpha_shift"][:, None] * inputs["post"][None, :]
+    mean = alpha + theta * inputs["g"] + jnp.einsum("ntk,nk->nt", inputs["z"], params["b"])
     if "gamma" in params:
         mean = mean + params["gamma"][:, None] * inputs["dp"]
     if "lam" in params:
@@ -202,6 +258,8 @@ def innovations(
     """
     resid = inputs["y"] - conditional_mean(inputs, params)
     sigma = params["sigma"][:, None]
+    if "log_sigma_shift" in params:
+        sigma = sigma * jnp.exp(params["log_sigma_shift"] * inputs["post"][None, :])
     if not ar1:
         return resid, jnp.broadcast_to(sigma, resid.shape)
     phi = params["phi"][:, None]
@@ -246,6 +304,8 @@ def okun_model(inputs: Mapping[str, Any], spec: ModelSpec) -> None:
         raise ValueError("An AR(1) factor needs the common factor.")
     if spec.lagged_outcome and spec.ar1:
         raise ValueError("The lagged change replaces the AR(1) error; never both.")
+    if spec.post_shifts and not spec.pooling:
+        raise ValueError("Regime shifts and drifts are only defined with partial pooling.")
     if spec.pooling:
         mu_theta = numpyro.sample("mu_theta", dist.Normal(0.0, 0.5 * s))
         tau_theta = numpyro.sample("tau_theta", dist.HalfNormal(spec.tau_theta_scale * s))
@@ -268,6 +328,27 @@ def okun_model(inputs: Mapping[str, Any], spec: ModelSpec) -> None:
             omega = numpyro.sample("psi_raw", dist.Normal(0.0, 1.0).expand((n,)).to_event(1))
             params["psi"] = numpyro.deterministic("psi", jnp.tanh(mu_psi + tau_psi * omega))
         log_sigma = _pooled("log_sigma", (n,), 1.0, 0.5, spec, LOG_SIGMA_CENTRE)
+        if spec.regime_shift:
+            # delta = mu_delta + tau_delta * raw, on the scales of theta (section 12.3).
+            mu_delta = numpyro.sample("mu_delta", dist.Normal(0.0, 0.5 * s))
+            tau_delta = numpyro.sample("tau_delta", dist.HalfNormal(spec.tau_theta_scale * s))
+            raw_delta = numpyro.sample("delta_raw",
+                                       dist.Normal(0.0, 1.0).expand((n,)).to_event(1))
+            params["delta"] = numpyro.deterministic("delta", mu_delta + tau_delta * raw_delta)
+            numpyro.deterministic("theta_post", params["theta"] + params["delta"])
+        if spec.post_shifts:
+            params["alpha_shift"] = _pooled("alpha_shift", (n,), 0.25, 0.25, spec)
+            params["log_sigma_shift"] = numpyro.sample("log_sigma_shift",
+                                                       dist.Normal(0.0, 0.5 * s))
+        if spec.drift:
+            # Random walk over calendar quarters (variance grows with the gap between
+            # sample quarters), centred so that theta[i] is the time average.
+            tau_kappa = numpyro.sample("tau_kappa", dist.HalfNormal(0.05 * s))
+            steps = numpyro.sample("kappa_raw",
+                                   dist.Normal(0.0, 1.0).expand((t - 1,)).to_event(1))
+            walk = jnp.concatenate([jnp.zeros(1), jnp.cumsum(
+                tau_kappa * jnp.sqrt(inputs["gap"][1:]) * steps)])
+            params["kappa"] = numpyro.deterministic("kappa", walk - walk.mean())
     else:
         params["theta"] = numpyro.sample(
             "theta", dist.Normal(0.0, 0.5 * s).expand((n,)).to_event(1))

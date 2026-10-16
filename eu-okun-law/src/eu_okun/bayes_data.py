@@ -8,7 +8,7 @@ likelihood (see ``BAYES_PROTOCOL.md``, section 2).
 
 from __future__ import annotations
 
-from collections.abc import Sequence
+from collections.abc import Mapping, Sequence
 from dataclasses import dataclass, field
 
 import numpy as np
@@ -24,6 +24,9 @@ PANDEMIC_EXCLUDED_WINDOWS: tuple[tuple[str, str], ...] = (
 )
 # Quarters whose values may never be used, as outcomes or as lag/difference history.
 EXCLUDED_INPUTS: tuple[tuple[str, str], ...] = (("2020-Q1", "2021-Q4"),)
+# First quarter of the post-pandemic regime (amendment 4); 2020-2021 are never sampled.
+POST_START = "2022-Q1"
+PROVISIONAL_FLAGS = frozenset({"p"})
 
 
 @dataclass(frozen=True)
@@ -68,6 +71,46 @@ class BayesData:
         lagged = np.concatenate([np.zeros_like(self.y[:, :1]), self.y[:, :-1]], axis=1)
         lagged[:, self.segment_start] = 0.0
         return lagged
+
+    def post(self) -> np.ndarray:
+        """True for quarters of the post-pandemic regime (from ``POST_START``)."""
+        return np.asarray([q >= POST_START for q in self.quarters], dtype=bool)
+
+    def calendar_gaps(self) -> np.ndarray:
+        """Calendar quarters since the previous sample quarter (zero for the first)."""
+        index = np.asarray([quarter_index(q) for q in self.quarters], dtype=float)
+        return np.concatenate([[0.0], np.diff(index)])
+
+
+def quarter_index(quarter: str) -> int:
+    """Consecutive integer for a quarter label such as ``2009-Q2``."""
+    year, q = quarter.split("-Q")
+    return int(year) * 4 + int(q) - 1
+
+
+def regime_terms(data: BayesData, draws: Mapping[str, np.ndarray],
+                 ) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
+    """theta, alpha and sigma by country and quarter, for draws with any leading shape.
+
+    ``draws`` holds country parameters of shape (..., N). Without a regime shift or a
+    drift the results keep shape (..., N, 1) and are exactly the stored parameters;
+    otherwise the post-2021 shifts (``delta``, ``alpha_shift``, ``log_sigma_shift``)
+    and the common drift ``kappa`` (..., T) are added.
+    """
+    theta = np.asarray(draws["theta"])[..., :, None]
+    alpha = np.asarray(draws["alpha"])[..., :, None]
+    sigma = np.asarray(draws["sigma"])[..., :, None]
+    post = data.post().astype(float)
+    if "delta" in draws:
+        theta = theta + np.asarray(draws["delta"])[..., :, None] * post
+    if "kappa" in draws:
+        theta = theta + np.asarray(draws["kappa"])[..., None, :]
+    if "alpha_shift" in draws:
+        alpha = alpha + np.asarray(draws["alpha_shift"])[..., :, None] * post
+    if "log_sigma_shift" in draws:
+        shift = np.asarray(draws["log_sigma_shift"])[..., None, None]
+        sigma = sigma * np.exp(shift * post)
+    return theta, alpha, sigma
 
 
 def ar1_path(e: np.ndarray, rho: np.ndarray | float, segment_start: np.ndarray) -> np.ndarray:
@@ -126,12 +169,15 @@ def build_bayes_data(
     lags: int = 2,
     countries: Sequence[str] = EU27,
     excluded: Sequence[tuple[str, str]] = EXCLUDED_INPUTS,
+    provisional_gdp: bool = True,
 ) -> BayesData:
     """Assemble model arrays; raise if any required observation is missing.
 
     Lag and difference history may come from before a window (it is observed data),
     but never from an ``excluded`` period: a window must start late enough that no
     outcome, lag or difference touches one (2022-Q3 for two GDP lags after 2021).
+    With ``provisional_gdp=False``, terms whose GDP inputs (lags 0..K) carry a
+    provisional flag are masked as well (amendment 4).
     """
     if lags < 1:
         raise ValueError("The model needs at least one GDP lag.")
@@ -166,7 +212,10 @@ def build_bayes_data(
             g[i, j] = value(geo, quarter, "gdp")
             for k in range(lags):
                 z[i, j, k] = value(geo, _quarter_before(quarter, k + 1), "gdp") - g[i, j]
-            if flagged_change(flags, geo, quarter, lags):
+            provisional = not provisional_gdp and any(
+                flags.get((geo, _quarter_before(quarter, k)), {}).get("gdp", "")
+                in PROVISIONAL_FLAGS for k in range(lags + 1))
+            if flagged_change(flags, geo, quarter, lags) or provisional:
                 mask[i, j] = False
                 reasons.setdefault(geo, []).append(quarter)
         # The AR(1) term for t uses the residual at t-1: mask it when t-1 is masked.
