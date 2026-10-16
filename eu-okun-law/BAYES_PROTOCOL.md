@@ -337,6 +337,87 @@ the same rows.
 The decision rules apply to this run. A replication run on a second platform is compared
 descriptively, as in section 9.
 
+## 11. Amendment 3: dynamics that address the misfits
+
+Registered on 2026-10-17, before any fit of the specifications below. Sections 1-10 are
+unchanged, and the pre-registered judgements keep using their own specification sets.
+
+### 11.1 The misfits
+
+The posterior predictive checks found two problems (HIERARCHICAL_BAYES.md, sections 7-8):
+
+- **Persistence.** Every specification understates the persistence of unemployment
+  changes: the observed lag-1 autocorrelation is 0.27, against replicated means of 0.02
+  to 0.20.
+- **The common factor.** It is modelled as independent over time, yet its posterior is
+  autocorrelated (median 0.75) and correlated with average GDP growth (median -0.60).
+
+### 11.2 New specifications
+
+Each specification changes the primary one as follows:
+
+| Name | Change from `primary` |
+| --- | --- |
+| `dynamic_factor` | The common factor follows a stationary AR(1) process. |
+| `ardl` | The AR(1) error is replaced by the lagged dependent variable `psi[i] * y[i,t-1]` in the mean equation, with i.i.d. Student-t errors and an i.i.d. factor. |
+| `ardl_dynamic_factor` | `ardl` with the AR(1) factor. |
+
+**The AR(1) factor.** `f[t] = rho_f f[t-1] + sqrt(1 - rho_f^2) e[t]` with `e[t] ~ N(0, 1)`.
+
+- `f` is stationary with unit variance at the first quarter of each segment, so the
+  loadings keep their scale.
+- `rho_f = tanh(r)` with `r ~ N(0, 1)`.
+
+**The lagged change.** `psi[i] = tanh(mu_psi + tau_psi * omega[i])`, with
+`mu_psi ~ N(0, 0.5)` and `tau_psi ~ HalfNormal(0.5)`, so that `|psi| < 1`.
+
+- The likelihood conditions on the first quarter of each segment: its term is not used,
+  because its lagged change lies outside the window (and is flagged for most countries
+  in 2009-Q1).
+- Terms that follow a masked term are already masked by the rule of section 2.
+
+All other priors, the sampler, the acceptance criteria and the single retry follow
+sections 4 and 6.
+
+### 11.3 Estimands
+
+**In `dynamic_factor`.** `theta[i]` keeps its meaning: the sum of GDP coefficients,
+beyond the common factor.
+
+**In the ARDL specifications.**
+
+- `theta[i]` is the *short-run* sum of the coefficients at lags 0-2.
+- The comparable total association is the long-run multiplier
+  `theta_LR[i] = theta[i] / (1 - psi[i])`. It is computed from the joint draws and
+  compared with `theta` of `primary`.
+
+### 11.4 Decision rules
+
+- **Persistence misfit.** It is **fixed** in a specification when the posterior
+  predictive p-value of the lag-1 autocorrelation lies in [0.05, 0.95].
+- **Factor dynamics.** They are **supported** when the 90% interval of `rho_f` excludes
+  zero. The correlation of the posterior factor with average GDP growth is reported
+  again; the new specifications are not expected to remove it.
+- **Model comparison: PSIS-LOO.**
+  - It is computed on the cells common to every compared fit, which excludes each
+    segment's first quarter.
+  - The comparisons are:
+    1. `dynamic_factor` against `primary`;
+    2. `ardl` against `primary`;
+    3. `ardl_dynamic_factor` against `primary`;
+    4. `ardl_dynamic_factor` against `ardl`.
+  - One model is "better supported" when the elpd difference exceeds twice its standard
+    error, as in section 9.2.
+- **Conclusions.** For each accepted new specification, the report gives:
+  - the country estimates (`theta` or `theta_LR`) next to `primary`;
+  - the countries that are credibly negative;
+  - the three earlier claims, using `theta_LR` for Luxembourg and Spain in the ARDL
+    specifications.
+- **Status of the new specifications.** They are reported **alongside** the
+  pre-registered results. A specification that fixes the misfits and is better supported
+  is described as such. It does not retroactively replace the primary specification of
+  sections 3-7.
+
 ## Change log
 
 - Before any estimate was inspected: added the decision thresholds of section 7.
