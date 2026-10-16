@@ -36,7 +36,13 @@ Opposition and when the Government had the floor.
 ## Design
 
 1. **Roles and order.** Chair speeches are identified by printed title, then by
-   parliamentary post. Speeches are put in sitting order from the TheyWorkForYou id
+   parliamentary post, then by party "Speaker" on the reigning Speaker's name, then by a
+   roster of Deputy Speakers and their terms (`config/study.toml`). The last two are needed
+   because from 2010 the record increasingly prints the Chair under a personal name with no
+   title. Roles never use the text of the speech, so the frame the sample is drawn from does
+   not depend on the dictionary. A label-free check reports, year by year, the share of
+   speeches opening with a bare "Order" that are recognised as the Chair's
+   (`results/stage1/role_by_year.csv`). Speeches are put in sitting order from the TheyWorkForYou id
    (sitting, column, paragraph). "Who had the floor" is the last Member to speak that day
    before the Chair; their side (Government or Opposition) comes from the party and the
    date. The 2010–15 coalition counts both partners as Government.
@@ -105,8 +111,9 @@ whose drift is known (`hansard-drift synth`).
 ## What this does not cover
 
 - Role detection is a classifier too. The sample is drawn from speeches classified as the
-  Chair's, so Chair speeches printed under a personal name with no post are missed and
-  not measured.
+  Chair's, so Chair speeches the rules above miss (members of the Panel of Chairs printed
+  under their own names, misprinted titles) are outside the frame and not measured.
+  `results/stage1/unclassified_order_openers.csv` lists the largest of them.
 - Hansard is an edited record. A heckle the reporters did not write down cannot be
   recovered by any classifier; the correction is for the dictionary's errors against the
   record, not for the record's errors against the Chamber.

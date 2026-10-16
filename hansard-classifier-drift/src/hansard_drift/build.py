@@ -16,7 +16,15 @@ from . import __version__
 from .config import Config
 from .data import fetch_manifest, iter_chunks
 from .dictionary import CATEGORIES, DICTIONARY_VERSION, DISCIPLINE, describe, normalise, tag_series
-from .roles import assign_era, assign_side, classify_roles, normalise_party, order_keys, speaker_surnames
+from .roles import (
+    assign_era,
+    assign_side,
+    classify_roles,
+    normalise_party,
+    order_keys,
+    roster_match,
+    speaker_surnames,
+)
 
 LIGHT_COLUMNS = [
     "id",
@@ -55,7 +63,11 @@ def _read(cfg: Config) -> tuple[pd.DataFrame, pd.DataFrame]:
     row0 = 0
     for chunk in iter_chunks(cfg):
         chunk["date"] = pd.to_datetime(chunk["date"]).dt.normalize()
-        df = classify_roles(chunk, speaker_surname=speaker_surnames(chunk["date"], cfg))
+        df = classify_roles(
+            chunk,
+            speaker_surname=speaker_surnames(chunk["date"], cfg),
+            roster_hit=roster_match(chunk["display_as"], chunk["date"], cfg),
+        )
         df = df.join(order_keys(df["id"], df["colnum"]))
         text = df["speech"].fillna("").astype(str)
         df["n_words"] = text.str.count(r"\S+").astype("int32")

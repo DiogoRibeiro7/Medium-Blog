@@ -25,11 +25,20 @@ class Government:
 
 
 @dataclass(frozen=True)
+class RosterTerm:
+    name: str
+    office: str
+    start: dt.date
+    end: dt.date
+
+
+@dataclass(frozen=True)
 class Config:
     root: Path
     raw: dict = field(repr=False)
     eras: tuple[Era, ...]
     governments: tuple[Government, ...]
+    roster: tuple[RosterTerm, ...] = ()
 
     # paths -------------------------------------------------------------
     @property
@@ -101,4 +110,7 @@ def load_config(path: str | Path) -> Config:
     governments = tuple(
         Government(start=g["start"], end=g["end"], parties=tuple(g["parties"])) for g in raw["government"]
     )
-    return Config(root=path.parent.parent, raw=raw, eras=eras, governments=governments)
+    roster = tuple(
+        RosterTerm(name=r["name"], office=r["office"], start=r["start"], end=r["end"]) for r in raw.get("roster", [])
+    )
+    return Config(root=path.parent.parent, raw=raw, eras=eras, governments=governments, roster=roster)

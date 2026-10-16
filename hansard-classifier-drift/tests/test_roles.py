@@ -94,3 +94,21 @@ def test_party_speaker_counts_only_for_the_reigning_speaker(cfg):
     out = classify_roles(df, speaker_surname=speaker_surnames(df["date"], cfg))
     assert out["role"].tolist() == ["chair", "member", "member", "chair"]
     assert out["role_source"].tolist() == ["party", "none", "none", "party"]
+
+
+def test_rostered_deputy_counts_only_inside_the_term(cfg):
+    from hansard_drift.roles import roster_match
+
+    df = pd.DataFrame(
+        {
+            "speakername": ["Dawn Primarolo", "Dawn Primarolo", "Eleanor Laing", "Eleanor Laing"],
+            "display_as": ["Dawn Primarolo", "Dawn Primarolo", "Eleanor Laing", "Eleanor Laing"],
+            "party": ["Labour", "Labour", "Conservative", "Conservative"],
+            "speech_class": ["Speech"] * 4,
+            "parliamentary_posts": [[], [], [], []],
+            "date": pd.to_datetime(["2012-05-01", "2008-05-01", "2021-02-01", "2011-02-01"]),
+        }
+    )
+    out = classify_roles(df, roster_hit=roster_match(df["display_as"], df["date"], cfg))
+    assert out["role"].tolist() == ["chair", "member", "chair", "member"]
+    assert out["role_source"].tolist() == ["roster", "none", "roster", "none"]
