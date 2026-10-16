@@ -237,3 +237,5 @@ In brief:
   90% intervals (`primary`, `time_effects`, `gaussian_iid`); the primary model's
   factor values are under-covered (32 of 43), and the `gaussian_iid` recovery fit
   narrowly failed acceptance (max R-hat 1.0104 after the retry).
+- An independent Linux run of the workflow gives the same four LOO verdicts and
+  recovery counts within one country (tables in `docs/bayes-checks/replication-linux/`).

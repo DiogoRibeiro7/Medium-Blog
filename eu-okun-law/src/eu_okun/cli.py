@@ -104,6 +104,8 @@ def main(argv: Sequence[str] | None = None) -> int:
     bayes_checks.add_argument("--report", type=Path, default=None)
     bayes_checks.add_argument("--recovery-dir", type=Path, default=None)
     bayes_checks.add_argument("--no-figures", action="store_true")
+    bayes_checks.add_argument("--replication-dir", type=Path, default=None,
+                              help="Results of an independent run to compare with")
     args = parser.parse_args(argv)
     if args.command == "fetch":
         try:
@@ -242,7 +244,8 @@ def main(argv: Sequence[str] | None = None) -> int:
         try:
             checks = write_checks_report(args.fits_dir, args.data_dir, args.output_dir,
                                          args.report, args.recovery_dir,
-                                         figures=not args.no_figures)
+                                         figures=not args.no_figures,
+                                         replication_dir=args.replication_dir)
         except (EurostatDataError, FileNotFoundError, ValueError, OSError, KeyError) as exc:
             parser.exit(2, f"Model checks failed: {exc}\n")
         print(f"Model checks written to {args.report or args.output_dir}: "

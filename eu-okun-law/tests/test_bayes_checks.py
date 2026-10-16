@@ -316,3 +316,21 @@ def test_checks_report_renders(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) 
     for name in ("model_checks.json", "quarter_effects.png", "theta_shared_effects.png",
                  "recovery.png"):
         assert (tmp_path / "out" / name).exists()
+    assert "## 6. Limitations" in report
+    # A replication with the same results: identical verdicts, same acceptance.
+    import shutil
+
+    replication = tmp_path / "replication"
+    replication.mkdir()
+    shutil.copy(tmp_path / "out" / "model_checks.json", replication / "model_checks.json")
+    for fit_dir in (tmp_path / "fits").iterdir():
+        (replication / "fits" / fit_dir.name).mkdir(parents=True)
+        shutil.copy(fit_dir / "fit.json", replication / "fits" / fit_dir.name / "fit.json")
+    again = checks.write_checks_report(tmp_path / "fits", tmp_path, tmp_path / "out2",
+                                       recovery_dir=tmp_path / "recovery", figures=False,
+                                       replication_dir=replication)
+    assert again.replication is not None
+    text = (tmp_path / "out2" / "BAYES_MODEL_CHECKS.md").read_text(encoding="utf-8")
+    assert "## 6. Replication on a second platform" in text and "## 8. Reproduction" in text
+    assert "gives the same LOO verdicts" in text
+    assert "acceptance is the same for every specification" in text

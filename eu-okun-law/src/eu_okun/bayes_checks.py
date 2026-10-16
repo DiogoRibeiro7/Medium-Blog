@@ -304,6 +304,34 @@ def load_recovery(directory: Path) -> list[Recovery]:
 # ----------------------------------------------------------------------------------
 
 
+@dataclass(frozen=True)
+class ChecksReplication:
+    """Results of an independent run of the same fits (e.g. on another platform)."""
+
+    label: str
+    comparisons: dict[tuple[str, str], tuple[float, float, str]]  # elpd diff, SE, verdict
+    recovery: dict[str, tuple[int, int, bool]]                    # theta in 90%, total, ok
+    accepted: dict[str, tuple[bool, float]]                       # spec -> accepted, R-hat
+
+
+def load_checks_replication(directory: Path) -> ChecksReplication:
+    """Read ``model_checks.json`` and ``fits/<spec>/fit.json`` of another run."""
+    checks = json.loads((directory / "model_checks.json").read_text(encoding="utf-8"))
+    comparisons = {(c["model_a"], c["model_b"]): (c["elpd_diff"], c["se_diff"], c["verdict"])
+                   for c in checks["comparisons"]}
+    recovery = {r["spec"]: (r["coverage"]["theta"][1], r["coverage"]["theta"][2],
+                            bool(r["accepted"])) for r in checks["recovery"]}
+    accepted = {}
+    for path in sorted((directory / "fits").glob("*/fit.json")):
+        diagnostics = json.loads(path.read_text(encoding="utf-8"))["diagnostics"]
+        accepted[path.parent.name] = (bool(diagnostics["accepted"]),
+                                      float(diagnostics["max_rhat"]))
+    readme = directory / "README.md"
+    label = (readme.read_text(encoding="utf-8").splitlines()[0].lstrip("# ")
+             if readme.exists() else directory.name)
+    return ChecksReplication(label, comparisons, recovery, accepted)
+
+
 @dataclass
 class ChecksReview:
     """Everything the report is generated from."""
@@ -316,6 +344,7 @@ class ChecksReview:
     prior: list[PriorPredictive]
     recovery: list[Recovery]
     realized: dict[str, dict[str, float]]           # recovery spec -> sample analogues
+    replication: ChecksReplication | None = None
 
 
 def _load(directory: Path) -> tuple[dict[str, Any], dict[str, np.ndarray]]:
@@ -325,7 +354,7 @@ def _load(directory: Path) -> tuple[dict[str, Any], dict[str, np.ndarray]]:
 
 
 def build_checks(fits_dir: Path, data_dir: Path, recovery_dir: Path | None = None,
-                 ) -> ChecksReview:
+                 replication_dir: Path | None = None) -> ChecksReview:
     """Load the fits, compute LOO, the comparisons and the prior predictive checks."""
     missing = [n for n in AMENDMENT_1 if not (fits_dir / n / "fit.json").exists()]
     if missing:
@@ -355,7 +384,10 @@ def build_checks(fits_dir: Path, data_dir: Path, recovery_dir: Path | None = Non
         design = build_bayes_data(panel, flags, spec.windows, spec.lags)
         realized[rec.spec] = realized_hyperparameters(
             {k: v[0] for k, v in recovery_truth(spec, design).items()})
-    return ChecksReview(fits, draws, data, loo, comparisons, prior, recovery, realized)
+    replication = (load_checks_replication(replication_dir) if replication_dir is not None
+                   else None)
+    return ChecksReview(fits, draws, data, loo, comparisons, prior, recovery, realized,
+                        replication)
 
 
 def _table(header: Sequence[str], rows: Sequence[Sequence[Any]], align: str = "") -> list[str]:
@@ -437,6 +469,11 @@ def render(review: ChecksReview, assets: str, command: str) -> str:
         lines.append(f"- Recovery, `{r.spec}`: {cov[1]} of {cov[2]} true country sums inside "
                      f"their 90% intervals ({'accepted' if r.accepted else 'not accepted'} "
                      f"fit, max R-hat {r.max_rhat:.4f}).")
+    if review.replication is not None:
+        same = all(review.replication.comparisons.get((c.model_a, c.model_b), (0, 0, ""))[2]
+                   == c.verdict for c in review.comparisons)
+        lines.append(f"- An independent run ({review.replication.label}) gives "
+                     f"{'the same' if same else 'different'} LOO verdicts; see section 6.")
     lines.append("")
 
     # 1. Quarter-effect specifications
@@ -591,7 +628,13 @@ def render(review: ChecksReview, assets: str, command: str) -> str:
         "import xarray as xr",
         "tree = xr.open_datatree(\"results/bayes/primary/posterior.nc\", engine=\"h5netcdf\")",
         "```", "",
-        "## 6. Limitations", "",
+    ]
+    number = 6
+    if review.replication is not None:
+        lines += _replication_section(review)
+        number += 1
+    lines += [
+        f"## {number}. Limitations", "",
         "- Quarter effects absorb every common movement, including the part of GDP growth "
         "that all countries share, so `theta` under quarter effects is a within-quarter "
         "association and not comparable one-to-one with the primary estimand.",
@@ -600,7 +643,7 @@ def render(review: ChecksReview, assets: str, command: str) -> str:
         "Temporal predictive performance is assessed separately (PREDICTIVE_PROTOCOL.md).",
         "- One synthetic data set per specification checks recovery, not calibration.",
         "- None of these models identifies a structural GDP shock.", "",
-        "## 7. Reproduction", "",
+        f"## {number + 1}. Reproduction", "",
         "```bash",
         "poetry run eu-okun bayes-fit --data-dir snapshots/eurostat-2026-10-15 "
         "--output-dir results/bayes --specs " + ",".join(AMENDMENT_1) + " --retry-warmup 3000",
@@ -612,6 +655,38 @@ def render(review: ChecksReview, assets: str, command: str) -> str:
         "```", "",
     ]
     return "\n".join(lines)
+
+
+def _replication_section(review: ChecksReview) -> list[str]:
+    rep_run = review.replication
+    assert rep_run is not None
+    lines = ["## 6. Replication on a second platform", "",
+             f"{rep_run.label}: the same snapshot, lock file, seeds, sampler settings and "
+             "single retry. Its results are in `replication-linux/`.", ""]
+    rows = []
+    for c in review.comparisons:
+        diff, se, verdict = rep_run.comparisons[(c.model_a, c.model_b)]
+        rows.append([f"`{c.model_a}`", f"`{c.model_b}`", f"{c.elpd_diff:+.1f} ({c.se_diff:.1f})",
+                     c.verdict, f"{diff:+.1f} ({se:.1f})", verdict])
+    lines += _table(["A", "B", "elpd difference (SE), this run", "Verdict",
+                     "elpd difference (SE), replication", "Verdict"], rows, "llrlrl")
+    differ = [f"`{name}` (this run {'accepted' if fit['diagnostics']['accepted'] else 'failed'}, "
+              f"replication {'accepted' if rep_run.accepted[name][0] else 'failed'}, R-hat "
+              f"{fit['diagnostics']['max_rhat']:.3f} / {rep_run.accepted[name][1]:.3f})"
+              for name, fit in review.fits.items()
+              if name in rep_run.accepted
+              and bool(fit["diagnostics"]["accepted"]) != rep_run.accepted[name][0]]
+    lines.append("- Convergence: acceptance " + ("is the same for every specification."
+                                                 if not differ else
+                                                 f"differs for {'; '.join(differ)}."))
+    for rec in review.recovery:
+        if rec.spec in rep_run.recovery:
+            in90, total, ok = rep_run.recovery[rec.spec]
+            lines.append(f"- Recovery, `{rec.spec}`: {rec.coverage['theta'][1]}/"
+                         f"{rec.coverage['theta'][2]} country sums inside 90% intervals here "
+                         f"({'accepted' if rec.accepted else 'not accepted'}), {in90}/{total} "
+                         f"in the replication ({'accepted' if ok else 'not accepted'}).")
+    return lines + [""]
 
 
 def write_figures(review: ChecksReview, directory: Path, source: str) -> None:
@@ -687,9 +762,10 @@ def write_figures(review: ChecksReview, directory: Path, source: str) -> None:
 
 def write_checks_report(fits_dir: Path, data_dir: Path, output_dir: Path,
                         report: Path | None = None, recovery_dir: Path | None = None,
-                        figures: bool = True) -> ChecksReview:
+                        figures: bool = True,
+                        replication_dir: Path | None = None) -> ChecksReview:
     """Build the checks, write their tables, figures and the Markdown report."""
-    review = build_checks(fits_dir, data_dir, recovery_dir)
+    review = build_checks(fits_dir, data_dir, recovery_dir, replication_dir)
     report = report or output_dir / "BAYES_MODEL_CHECKS.md"
     output_dir.mkdir(parents=True, exist_ok=True)
     (output_dir / "model_checks.json").write_text(json.dumps({
@@ -707,7 +783,9 @@ def write_checks_report(fits_dir: Path, data_dir: Path, output_dir: Path,
     command = (f"poetry run eu-okun bayes-checks --fits-dir {fits_dir.as_posix()} "
                f"--data-dir {data_dir.as_posix()} --output-dir {output_dir.as_posix()} "
                f"--report {report.as_posix()}"
-               + (f" --recovery-dir {recovery_dir.as_posix()}" if recovery_dir else ""))
+               + (f" --recovery-dir {recovery_dir.as_posix()}" if recovery_dir else "")
+               + (f" --replication-dir {replication_dir.as_posix()}"
+                  if replication_dir else ""))
     report.parent.mkdir(parents=True, exist_ok=True)
     report.write_text(render(review, assets, command), encoding="utf-8", newline="\n")
     return review
