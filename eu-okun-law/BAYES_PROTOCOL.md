@@ -144,6 +144,106 @@ the primary fit, and "not resolved" otherwise.
 Predictive comparison with the classical baselines (expanding-window refits) and
 time-varying coefficients are separate milestones.
 
+## 9. Amendment 1: additive quarter effects, prior predictive checks, recovery
+
+Registered on 2026-10-16, after the nine fits above and before any fit of the
+specifications below. Nothing in sections 1-7 changes: the robustness and claim
+judgements stay based on the nine original specifications.
+
+### 9.1 Additive shared quarter effects
+
+The common factor above lets each country load differently on a shared quarterly
+shock. The classical two-way analogue is an additive effect common to all countries:
+
+```text
+y[i,t] = alpha[i] + theta[i]*g[i,t] + sum_k b[i,k]*(g[i,t-k] - g[i,t])
+         [+ gamma[i]*Δp[i,t]] + delta[t] + e[i,t]
+delta ~ ZeroSumNormal(tau_delta) over the T sample quarters,   tau_delta ~ HalfNormal(0.25)
+```
+
+`delta[t]` is in pp of unemployment-rate change per quarter, and `e` is the Student-t
+AR(1) error of the primary specification.
+
+**Identification.**
+
+- The sum-to-zero constraint separates `delta` from the intercepts. `alpha[i]` carries
+  each country's average change, and `delta[t]` carries the quarter's common deviation.
+- `delta[t]` also absorbs anything common to all countries in quarter t, including
+  `mu_theta` times a GDP movement that every country shares. So `theta[i]` measures the
+  association with the country's GDP growth *beyond* the quarter's common effect.
+  `mu_theta` is identified only from cross-country differences in growth within
+  quarters. If every country grew at the same rate, `mu_theta` and `delta` would be
+  confounded.
+- Quarter effects and the common factor are never combined in one specification.
+
+**New specifications.** These complete a 2 x 2 design: with or without shared quarter
+effects, and with or without participation.
+
+| Name | Change from the primary specification |
+| --- | --- |
+| `time_effects` | the common factor is replaced by `delta[t]` |
+| `time_effects_participation` | as `time_effects`, plus `gamma[i] * Δp[i,t]`, partially pooled as in `participation` |
+| `participation_no_common_factor` | as `participation`, without the common factor |
+
+Sampler settings, acceptance criteria and the single retry are those of section 6.
+
+### 9.2 With versus without shared quarter effects
+
+These are descriptive model comparisons, not tests of a hypothesis:
+
+- **PSIS-LOO.** The expected log pointwise predictive density, leaving out one
+  unmasked cell at a time. For AR(1) errors each term is the conditional density given
+  the previous quarter. This is not temporal validation; that is the role of
+  PREDICTIVE_PROTOCOL.md.
+- **Posterior predictive check.** The average cross-country correlation from section 6.
+
+| # | Comparison | Question |
+| --- | --- | --- |
+| 1 | `time_effects` vs `no_common_factor` | Shared quarter effects, without participation |
+| 2 | `time_effects_participation` vs `participation_no_common_factor` | Shared quarter effects, with participation |
+| 3 | `time_effects` vs `primary` | Additive effects against country loadings |
+| 4 | `time_effects_participation` vs `time_effects` | Participation, given quarter effects |
+
+**Decision rule.**
+
+- One model is "better supported by LOO" when the elpd difference exceeds twice its
+  standard error. Otherwise the two are "not distinguishable".
+- Any comparison involving a fit with Pareto k > 0.7 in more than 1% of cells is
+  labelled unreliable.
+- Only fits accepted under section 6 are compared.
+
+### 9.3 Prior predictive checks
+
+For every specification, 1000 draws from the prior are each propagated to a simulated
+data set on the real design. The following are reported against the observed values:
+
+- 5%, 50% and 95% quantiles of the mean country standard deviation of `y`;
+- the same quantiles of the largest absolute change, the lag-1 autocorrelation and the
+  cross-country correlation;
+- the share of simulated changes larger than 5 pp in absolute value.
+
+The priors are fixed and are not changed in response to these checks. Implausible
+prior mass is reported as such.
+
+### 9.4 Posterior recovery on synthetic data
+
+- **Data.** For `primary`, `time_effects` and `gaussian_iid`, one data set is simulated
+  on the real design (GDP growth, masks and segments). The generating parameters are
+  fixed in code before any fit, with `mu_theta = -0.30` and `tau_theta = 0.15`.
+- **Fit.** Each data set is fitted with the protocol settings.
+- **Reported.** The coverage of the 50% and 90% intervals for the country parameters,
+  and whether the hyperparameters fall inside their 90% intervals.
+- **Interpretation.** With 27 countries, 90% coverage between 21 and 27 is consistent
+  with calibration. A single data set per specification is a recovery check, not
+  simulation-based calibration.
+
+### 9.5 Artifacts
+
+Posterior draws of every fit are also written as ArviZ-compatible NetCDF. Each file
+holds these groups: posterior, sample statistics when available, prior, prior
+predictive, observed and constant data, and the pointwise log likelihood. It also
+records the seed, sampler settings, software versions and snapshot hashes.
+
 ## Change log
 
 - Before any estimate was inspected: added the decision thresholds of section 7.
