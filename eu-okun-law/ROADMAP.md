@@ -58,6 +58,9 @@ Pre-registered in [BAYES_PROTOCOL.md](BAYES_PROTOCOL.md); results in
 - [x] Additive shared quarter effects with and without participation, prior predictive
       checks, posterior recovery on synthetic data and ArviZ NetCDF posterior artifacts
       (amendment 1; [docs/BAYES_MODEL_CHECKS.md](docs/BAYES_MODEL_CHECKS.md)).
+- [x] Robustness of country differences and ranks across specifications, including
+      the lag order K = 1 and the focus countries against the classical bootstrap
+      (amendment 2; [docs/BAYES_ROBUSTNESS.md](docs/BAYES_ROBUSTNESS.md)).
 - [x] One-quarter-ahead forecasts of hierarchical Bayesian forecasting models against the
       PR #149 classical models (nothing dated t; retrospective, not real-time)
       ([docs/FORECAST_COMPARISON.md](docs/FORECAST_COMPARISON.md)).

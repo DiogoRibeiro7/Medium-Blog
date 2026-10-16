@@ -106,6 +106,18 @@ def main(argv: Sequence[str] | None = None) -> int:
     bayes_checks.add_argument("--no-figures", action="store_true")
     bayes_checks.add_argument("--replication-dir", type=Path, default=None,
                               help="Results of an independent run to compare with")
+    bayes_robustness = commands.add_parser(
+        "bayes-robustness", help="Robustness of country differences and ranks across fits")
+    bayes_robustness.add_argument("--fits-dir", type=Path, default=Path("results/bayes"))
+    bayes_robustness.add_argument("--output-dir", type=Path,
+                                  default=Path("results/bayes-robustness"))
+    bayes_robustness.add_argument("--report", type=Path, default=None)
+    bayes_robustness.add_argument("--pairs-csv", type=Path,
+                                  default=Path("docs/review/pairs_review.csv"),
+                                  help="Classical paired bootstrap of the review")
+    bayes_robustness.add_argument("--no-figures", action="store_true")
+    bayes_robustness.add_argument("--replication-dir", type=Path, default=None,
+                                  help="Robustness tables of an independent run")
     predictive_fit = commands.add_parser(
         "predictive-fit", help="Expanding-window refits of the Bayesian models for the "
         "predictive comparison (expensive; needs the 'bayes' extra)")
@@ -306,6 +318,18 @@ def main(argv: Sequence[str] | None = None) -> int:
             parser.exit(2, f"Model checks failed: {exc}\n")
         print(f"Model checks written to {args.report or args.output_dir}: "
               f"{len(checks.comparisons)} LOO comparisons, {len(checks.prior)} prior checks")
+        return 0
+    if args.command == "bayes-robustness":
+        from eu_okun.bayes_robustness import write_robustness_report
+
+        try:
+            robustness = write_robustness_report(
+                args.fits_dir, args.output_dir, args.report, args.pairs_csv,
+                figures=not args.no_figures, replication_dir=args.replication_dir)
+        except (FileNotFoundError, ValueError, OSError, KeyError) as exc:
+            parser.exit(2, f"Robustness report failed: {exc}" + chr(10))
+        print(f"Robustness report written to {args.report or args.output_dir}: "
+              f"{int(robustness.surviving_a.sum())} pairs survive in set A")
         return 0
     if args.command == "forecast-bayes-fit":
         from eu_okun.bayes_fit import SamplerSettings
