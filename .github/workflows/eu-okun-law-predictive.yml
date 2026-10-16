@@ -1,0 +1,86 @@
+name: EU Okun predictive comparison
+
+# Expanding-window refits of the Bayesian models (PREDICTIVE_PROTOCOL.md): about two
+# CPU-hours, kept out of the ordinary pull-request checks. It runs only when started by
+# hand or when a pull request touching the study is labelled `predictive-sampling`.
+on:
+  workflow_dispatch:
+  pull_request:
+    types: [labeled]
+    paths:
+      - "eu-okun-law/**"
+      - ".github/workflows/eu-okun-law-predictive.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  refit:
+    if: github.event_name == 'workflow_dispatch' || github.event.label.name == 'predictive-sampling'
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    strategy:
+      fail-fast: false
+      matrix:
+        set: [E1, E2]
+        model: [bayes_primary, bayes_no_common_factor, bayes_gaussian_iid]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install Poetry
+        run: pipx install poetry==2.5.1
+      - name: Install locked study environment (project-local .venv)
+        working-directory: eu-okun-law
+        run: |
+          poetry check --lock
+          poetry install --no-interaction --extras "bayes report"
+      - name: Refit at every origin of the evaluation set
+        working-directory: eu-okun-law
+        run: >-
+          poetry run eu-okun predictive-fit --data-dir snapshots/eurostat-2026-10-15
+          --output-dir results/predictive --sets ${{ matrix.set }} --models ${{ matrix.model }}
+      - name: Archive predictions and refit diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: predictive-${{ matrix.set }}-${{ matrix.model }}
+          path: eu-okun-law/results/predictive/
+          retention-days: 30
+          if-no-files-found: error
+
+  report:
+    needs: refit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install Poetry
+        run: pipx install poetry==2.5.1
+      - name: Install locked study environment (project-local .venv)
+        working-directory: eu-okun-law
+        run: |
+          poetry check --lock
+          poetry install --no-interaction --extras "bayes report"
+      - name: Collect the refits
+        uses: actions/download-artifact@v4
+        with:
+          pattern: predictive-*
+          path: eu-okun-law/results/predictive
+          merge-multiple: true
+      - name: Score, test and report
+        working-directory: eu-okun-law
+        run: >-
+          poetry run eu-okun predictive-report --data-dir snapshots/eurostat-2026-10-15
+          --fits-dir results/predictive --output-dir results/predictive-report
+      - name: Archive the report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: eu-okun-predictive-report
+          path: eu-okun-law/results/predictive-report/
+          retention-days: 30
+          if-no-files-found: error

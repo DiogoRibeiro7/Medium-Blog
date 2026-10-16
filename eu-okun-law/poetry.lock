@@ -1696,11 +1696,11 @@ numba = ["numba (>=0.55)"]
 test = ["hypothesis", "packaging", "preliz (>=0.19)", "pytest", "pytest-cov", "scipy (>=1.15)"]
 
 [extras]
-bayes = ["arviz", "h5netcdf", "jax", "numpyro"]
-dev = ["arviz", "h5netcdf", "jax", "matplotlib", "mypy", "numpyro", "pytest", "ruff"]
+bayes = ["arviz", "h5netcdf", "jax", "numpyro", "scipy"]
+dev = ["arviz", "h5netcdf", "jax", "matplotlib", "mypy", "numpyro", "pytest", "ruff", "scipy"]
 report = ["matplotlib"]
 
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.12,<3.15"
-content-hash = "c45611599a2b662ccb91d32abd39ecb62f00c42df3533f6dbec60c22e1d3a299"
+content-hash = "821f1f545d33dad972d67dd6c698e611881e4022ea03abbcbe5ed80dfb7adc8d"

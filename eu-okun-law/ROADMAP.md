@@ -39,7 +39,10 @@ Open items raised by the review:
       DE 2020, series breaks).
 - [ ] Small-sample-valid inference for the post-2021 window (for example fixed-b
       critical values or a bootstrap), and re-test once more quarters are available.
-- [ ] Dependence-aware tests of forecast accuracy (paired loss differentials).
+- [ ] Dependence-aware tests of forecast accuracy (paired loss differentials). Done for
+      the conditional predictive comparison (panel Diebold-Mariano on cross-country mean
+      differentials); the t-1 forecasts of `eu-okun forecast` still use approximate
+      country-level ratios.
 - [ ] Hours- or employment-based measures, including cross-border workers for Luxembourg.
 - [ ] Compare results across Eurostat vintages.
 
@@ -55,7 +58,10 @@ Pre-registered in [BAYES_PROTOCOL.md](BAYES_PROTOCOL.md); results in
 - [x] Additive shared quarter effects with and without participation, prior predictive
       checks, posterior recovery on synthetic data and ArviZ NetCDF posterior artifacts
       (amendment 1; [docs/BAYES_MODEL_CHECKS.md](docs/BAYES_MODEL_CHECKS.md)).
-- [ ] Compare predictive performance with classical baselines (expanding-window refits).
+- [x] Compare predictive performance with classical baselines (expanding-window refits):
+      pre-registered in [PREDICTIVE_PROTOCOL.md](PREDICTIVE_PROTOCOL.md), results in
+      [docs/PREDICTIVE_COMPARISON.md](docs/PREDICTIVE_COMPARISON.md). Conditional on the
+      quarter's GDP growth; not a real-time forecast.
 - [ ] Address the misfits the checks found, under a new registered protocol: the models
       understate the persistence of unemployment changes, and the i.i.d. common factor
       is autocorrelated and correlated with average GDP growth. Candidates: a dynamic

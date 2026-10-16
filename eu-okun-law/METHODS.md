@@ -110,9 +110,35 @@ of quarterly GDP growth; `gamma` in pp per pp of participation.
   sample_stats, prior, prior_predictive, observed_data, constant_data, log_likelihood)
   with seeds, sampler settings, software versions and snapshot hashes.
 
+### Predictive comparison (implemented)
+
+Pre-registered in [PREDICTIVE_PROTOCOL.md](PREDICTIVE_PROTOCOL.md) before any held-out
+prediction was computed; implemented in `predictive.py`, `bayes_predictive.py` and
+`predictive_report.py`; results in
+[docs/PREDICTIVE_COMPARISON.md](docs/PREDICTIVE_COMPARISON.md).
+
+- **Task.** Predict `du[i,t]` from data up to t-1 plus `g[i,t]` and its lags: a
+  *conditional* prediction, the setting the Okun models describe. It is not a real-time
+  forecast (GDP growth for t is treated as known, revised data throughout).
+- **Evaluation sets.** E1 targets 2016-Q1..2019-Q4 (training from 2009-Q2); E2 targets
+  2022-Q3..2026-Q2 (training 2009-Q2..2019-Q4 plus 2022-Q3 onward). Every model is
+  re-estimated at every origin; flagged cells are not scored; all models are scored on
+  the same cells.
+- **Models.** Three Bayesian specifications (`primary`, `no_common_factor`,
+  `gaussian_iid`), with the target quarter's common factor drawn from its prior;
+  country OLS distributed lag and ARDL with exact Student-t predictive distributions;
+  zero-change, historical-mean and AR(1) benchmarks.
+- **Scores.** CRPS (primary), log predictive density, squared and absolute error,
+  interval coverage, PIT. The factor is integrated out of the log score exactly, via
+  the Student-t scale-mixture representation.
+- **Test.** For each target quarter the cross-country mean loss differential `d[t]`;
+  a Diebold-Mariano statistic on `d[t]` (Newey-West, 2 lags, Harvey-Leybourne-Newbold
+  correction, t with T-1 df). Averaging within quarters makes the test valid under any
+  cross-country dependence. Five pre-registered comparisons per set, Holm-adjusted
+  over the ten.
+
 Still to do in this stage: address the misfits of the posterior predictive checks
-(dynamic factor, lagged unemployment changes) and time-varying coefficients; the
-predictive comparison with the classical baselines is a separate milestone.
+(dynamic factor, lagged unemployment changes) and time-varying coefficients.
 
 ## Stage 3 — Identification before causal language
 
