@@ -502,10 +502,8 @@ def render(comparison: ForecastComparison, assets: str, command: str) -> str:
         lines.append(f"- Sensitivity, {name}: "
                      + (f"verdicts change for {'; '.join(changed)}." if changed
                         else "no verdict changes."))
-    best = min(MODELS, key=comparison.mean_loss)
-    best_excl = min(MODELS, key=lambda m: comparison.mean_loss(m, "crps", "excluding pandemic"))
-    lines += [f"- Lowest mean CRPS over all targets: {LABELS[best]}; outside 2020-Q1..2022-Q2: "
-              f"{LABELS[best_excl]}.", ""]
+    lines += _convergence_lines(comparison) + _accuracy_lines(comparison)
+    lines.append("")
 
     # 1. Design and records
     lines += ["## 1. Design and computation", "",
@@ -527,7 +525,9 @@ def render(comparison: ForecastComparison, assets: str, command: str) -> str:
               "Mean CRPS over target quarters of the cross-country mean (pp; lower is "
               "better). Difference A - B with its 95% bootstrap percentile interval; ratio "
               f"with its interval; null-centred bootstrap p-value, Holm-adjusted over the "
-              f"five comparisons ({REPLICATES} resamples, seed {SEED}).", ""]
+              f"five comparisons ({REPLICATES} resamples, seed {SEED}). The verdict uses the "
+              "null-centred p-value; when a few quarters dominate, the bootstrap distribution "
+              "is skewed and the percentile interval can exclude zero while p > 0.05.", ""]
     rows = [[LABELS[t.model_a], LABELS[t.model_b], f"{t.mean_a:.4f}", f"{t.mean_b:.4f}",
              f"{t.difference:+.4f} [{t.low:+.4f}, {t.high:+.4f}]",
              f"{_pct(t.ratio)} [{_pct(t.ratio_low)}, {_pct(t.ratio_high)}]", _p(t.p_value),
@@ -585,6 +585,7 @@ def render(comparison: ForecastComparison, assets: str, command: str) -> str:
                     rows)
     lines += [f"![CRPS skill relative to AR(1)]({assets}/skill.png)", "",
               f"![Quarterly CRPS differences]({assets}/quarterly_differences.png)", "",
+              *_dominance_lines(comparison), "",
               f"![Calibration]({assets}/calibration.png)", ""]
 
     # 4. Countries
@@ -632,6 +633,70 @@ def render(comparison: ForecastComparison, assets: str, command: str) -> str:
         "```", "",
     ]
     return "\n".join(lines)
+
+
+def _convergence_lines(comparison: ForecastComparison) -> list[str]:
+    """How many refits failed the acceptance criteria, and how narrowly."""
+    failed = [r for r in comparison.refits if not r["accepted"]]
+    if not failed:
+        return [f"- Convergence: all {len(comparison.refits)} refits met the acceptance "
+                "criteria."]
+    finals = [r["attempts"][-1] for r in failed]
+    parameters: dict[str, int] = {}
+    for a in finals:
+        for failure in a["failures"]:
+            if "(" in failure:
+                name = failure.rsplit("(", 1)[1].rstrip(")")
+                parameters[name] = parameters.get(name, 0) + 1
+    common = max(parameters, key=lambda k: parameters[k]) if parameters else "n/a"
+    ess = [min(a["min_ess_bulk"], a["min_ess_tail"]) for a in finals]
+    by_model = "; ".join(f"`{m}` {sum(r['model'] == m for r in failed)} of "
+                         f"{sum(r['model'] == m for r in comparison.refits)}"
+                         for m in BAYES_MODELS)
+    return [f"- Convergence: {len(failed)} of {len(comparison.refits)} refits failed the "
+            f"acceptance criteria after the single retry ({by_model}). In their final "
+            "attempts: "
+            f"R-hat at most {max(a['max_rhat'] for a in finals):.3f}, ESS at least "
+            f"{min(ess):.0f}, {sum(a['divergences'] for a in finals)} divergent transitions; "
+            f"the parameter named most often is `{common}`. Their forecasts are scored, as "
+            "registered; the sensitivity analysis without their target quarters is in "
+            "section 2."]
+
+
+def _dominance_lines(comparison: ForecastComparison) -> list[str]:
+    """Which target quarters carry the mean difference of the first three comparisons."""
+    quarters = comparison.fpanel.target_quarters
+    out = []
+    for a, b in FAMILY[:3]:
+        d = comparison.losses(a).mean(axis=0) - comparison.losses(b).mean(axis=0)
+        top = np.argsort(np.abs(d))[::-1][:2]
+        rest = np.delete(d, top)
+        out.append(f"- {LABELS[a]} minus {LABELS[b]}: largest quarterly differences "
+                   f"{quarters[top[0]]} ({d[top[0]]:+.3f}) and {quarters[top[1]]} "
+                   f"({d[top[1]]:+.3f}); mean difference {d.mean():+.4f} over all "
+                   f"{len(quarters)} quarters, {rest.mean():+.4f} without these two.")
+    return out
+
+
+def _best(comparison: ForecastComparison, loss: str, targets: str) -> str:
+    """The model with the lowest mean loss."""
+    scores = {m: comparison.mean_loss(m, loss, targets) for m in MODELS}
+    return min(scores, key=scores.__getitem__)
+
+
+def _accuracy_lines(comparison: ForecastComparison) -> list[str]:
+    """Point accuracy and calibration in one place, kept apart from the tests."""
+    out = []
+    for targets, label in (("all", "all targets"),
+                           ("excluding pandemic", "outside 2020-Q1..2022-Q2")):
+        best = {loss: _best(comparison, loss, targets)
+                for loss in ("crps", "absolute_error", "squared_error")}
+        cover = [comparison.coverage(m, targets)[1] for m in MODELS]
+        out.append(f"- Point and probabilistic accuracy, {label}: lowest CRPS "
+                   f"{LABELS[best['crps']]}, lowest MAE {LABELS[best['absolute_error']]}, "
+                   f"lowest RMSE {LABELS[best['squared_error']]}; 90% intervals cover "
+                   f"{min(cover):.0%}-{max(cover):.0%} of outcomes across models.")
+    return out
 
 
 def _bias(comparison: ForecastComparison, model: str, targets: str) -> float:

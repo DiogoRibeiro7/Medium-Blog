@@ -210,7 +210,9 @@ def test_report_renders(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None
             accepted = not (k == 0 and quarter == "2019-Q2")
             record = {"model": model, "target": quarter, "accepted": accepted,
                       "attempts": [{"accepted": accepted, "max_rhat": 1.0 if accepted else 1.02,
-                                    "runtime_seconds": 20.0}],
+                                    "min_ess_bulk": 800.0, "min_ess_tail": 700.0,
+                                    "divergences": 0, "runtime_seconds": 20.0,
+                                    "failures": [] if accepted else ["R-hat 1.02 > 1.01 (mu_s)"]}],
                       "environment": {"python": "test"},
                       "snapshot": {"manifest_sha256": "m", "processed_csv_sha256": "c"}}
             (directory / "origin.json").write_text(json.dumps(record), encoding="utf-8")
@@ -220,6 +222,7 @@ def test_report_renders(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None
                                            "without failed refits"}
     assert all(t.p_holm >= t.p_value for t in comparison.family)
     report = (tmp_path / "out" / "FORECAST_COMPARISON.md").read_text(encoding="utf-8")
+    assert "1 of 102 refits failed" in report and "`mu_s`" in report
     for heading in ("## Summary", "## 1. Design and computation",
                     "## 2. Pre-registered comparisons", "## 3. All models",
                     "## 4. Countries (descriptive)", "Retrospective, not real-time"):
