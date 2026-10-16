@@ -174,6 +174,19 @@ def main(argv: Sequence[str] | None = None) -> int:
     forecast_report.add_argument("--no-figures", action="store_true")
     forecast_report.add_argument("--replication-dir", type=Path, default=None,
                                  help="Tables of an independent run to compare with")
+    fetch_shocks_cmd = commands.add_parser(
+        "fetch-shocks", help="Download the pinned external shock series into a snapshot")
+    fetch_shocks_cmd.add_argument("--output-dir", type=Path,
+                                  default=Path("snapshots/external-shocks"))
+    identification = commands.add_parser(
+        "identification", help="Local projections on externally identified shocks")
+    identification.add_argument("--data-dir", type=Path, default=Path("data"))
+    identification.add_argument("--shocks-dir", type=Path,
+                                default=Path("snapshots/external-shocks-2026-10-16"))
+    identification.add_argument("--output-dir", type=Path,
+                                default=Path("results/identification"))
+    identification.add_argument("--report", type=Path, default=None)
+    identification.add_argument("--no-figures", action="store_true")
     args = parser.parse_args(argv)
     if args.command == "fetch":
         try:
@@ -363,6 +376,28 @@ def main(argv: Sequence[str] | None = None) -> int:
                              if t.verdict != "not distinguishable"]
         print(f"Forecast report written to {args.report or args.output_dir}; "
               f"{len(decided_forecasts)} of {len(forecasts.family)} comparisons decided")
+        return 0
+    if args.command == "fetch-shocks":
+        from eu_okun.external_shocks import fetch_shocks
+
+        try:
+            manifest = fetch_shocks(args.output_dir)
+        except (EurostatDataError, ValueError, OSError) as exc:
+            parser.exit(2, f"Shock download failed: {exc}" + chr(10))
+        print(f"Saved {len(manifest['files'])} shock files to {args.output_dir}")
+        return 0
+    if args.command == "identification":
+        from eu_okun.structural_report import write_report as write_identification
+
+        try:
+            identified = write_identification(args.data_dir, args.shocks_dir, args.output_dir,
+                                              args.report, figures=not args.no_figures)
+        except (EurostatDataError, FileNotFoundError, ValueError, OSError, KeyError) as exc:
+            parser.exit(2, f"Identification study failed: {exc}" + chr(10))
+        informative = [o for res in identified.primary.values() for o in res.okun
+                       if o.informative]
+        print(f"Identification results written to {args.report or args.output_dir}; "
+              f"{len(informative)} informative shock-conditional Okun sets")
         return 0
     if args.command == "predictive-fit":
         from eu_okun.bayes_fit import SamplerSettings

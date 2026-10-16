@@ -1,0 +1,59 @@
+{
+ "description": "Externally identified shock series for IDENTIFICATION_PROTOCOL.md",
+ "files": [
+  {
+   "key": "monetary",
+   "file": "shocks_ecb_mpd_me_m.csv",
+   "url": "https://raw.githubusercontent.com/marekjarocinski/jkshocks_update_ecb/f7ffc821b0ade71dd38539e4044e25368dfb4dc1/shocks_ecb_mpd_me_m.csv",
+   "repository": "https://github.com/marekjarocinski/jkshocks_update_ecb",
+   "commit": "f7ffc821b0ade71dd38539e4044e25368dfb4dc1",
+   "licence": "CC BY 4.0",
+   "citation": "Jarocinski, M. and Karadi, P. (2020). Deconstructing Monetary Policy Surprises - The Role of Information Shocks. AEJ: Macroeconomics 12(2). doi:10.1257/mac.20180090",
+   "sha256": "89c5b2ec39509057b3c71f44218424fc8d15d4041b16f31c96613f8fe0965534",
+   "bytes": 21768
+  },
+  {
+   "key": "oil",
+   "file": "oilSupplyNewsShocks_2025M12.xlsx",
+   "url": "https://raw.githubusercontent.com/dkaenzig/oilsupplynews/3496b6e848ba760d4be25289fc68c1e989998790/oilSupplyNewsShocks_2025M12.xlsx",
+   "repository": "https://github.com/dkaenzig/oilsupplynews",
+   "commit": "3496b6e848ba760d4be25289fc68c1e989998790",
+   "licence": "CC BY 4.0",
+   "citation": "Kaenzig, D. R. (2021). The Macroeconomic Effects of Oil Supply News: Evidence from OPEC Announcements. American Economic Review 111(4). doi:10.1257/aer.20190964",
+   "sha256": "8aa80042f84071ea310b3c2f604b177aed57ee7575e6a18aed5b8ad52ec353de",
+   "bytes": 110802
+  }
+ ],
+ "quarterly_csv_sha256": "a68ad133d19cef0d94c69202005f412bab4ebb26c811e033c3262902287888a6",
+ "aggregation": "sum of the three months of each complete quarter",
+ "coverage": {
+  "MP_median": [
+   "1999-Q1",
+   "2025-Q3"
+  ],
+  "MP_pm": [
+   "1999-Q1",
+   "2025-Q3"
+  ],
+  "CBI_median": [
+   "1999-Q1",
+   "2025-Q3"
+  ],
+  "CBI_pm": [
+   "1999-Q1",
+   "2025-Q3"
+  ],
+  "pc1_hf": [
+   "1999-Q1",
+   "2025-Q3"
+  ],
+  "oil_surprise": [
+   "1975-Q1",
+   "2025-Q4"
+  ],
+  "oil_news_shock": [
+   "1975-Q1",
+   "2025-Q4"
+  ]
+ }
+}

@@ -1,0 +1,21 @@
+{
+ "eurostat_manifest_sha256": "8a8c8a107d584ba91b61584fd29397e68ff83d82982371a35db253c0803a0464",
+ "eurostat_processed_sha256": "250a7dd94d3678ca9ee4f29567e771fb53aeadf89e1f2fd0155d2f31d6e0ec0d",
+ "shock_files": {
+  "shocks_ecb_mpd_me_m.csv": {
+   "sha256": "89c5b2ec39509057b3c71f44218424fc8d15d4041b16f31c96613f8fe0965534",
+   "commit": "f7ffc821b0ade71dd38539e4044e25368dfb4dc1",
+   "licence": "CC BY 4.0"
+  },
+  "oilSupplyNewsShocks_2025M12.xlsx": {
+   "sha256": "8aa80042f84071ea310b3c2f604b177aed57ee7575e6a18aed5b8ad52ec353de",
+   "commit": "3496b6e848ba760d4be25289fc68c1e989998790",
+   "licence": "CC BY 4.0"
+  }
+ },
+ "shock_quarterly_sha256": "a68ad133d19cef0d94c69202005f412bab4ebb26c811e033c3262902287888a6",
+ "sample_quarters": [
+  "2008-Q1",
+  "2026-Q2"
+ ]
+}

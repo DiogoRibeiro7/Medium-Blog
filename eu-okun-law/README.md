@@ -343,3 +343,36 @@ comparisons):
   changes no verdict.
 - An independent Linux run of the refits gives the same five verdicts (tables in
   `docs/forecast-comparison/replication-linux/`).
+
+## Can the relationship be read causally? (identification study)
+
+[docs/IDENTIFICATION_STUDY.md](docs/IDENTIFICATION_STUDY.md) is the methodological
+decision document. It formulates the identification problem, shows that a reduced-form
+Okun coefficient is a weighted average of shock-conditional coefficients with unknown
+weights, draws the causal graph, and evaluates recursive orderings, long-run and sign
+restrictions and external instruments, with their testable and untestable assumptions
+and the public data available. Only local projections on two externally identified
+common shocks were judged defensible; they were pre-registered in
+[IDENTIFICATION_PROTOCOL.md](IDENTIFICATION_PROTOCOL.md).
+
+```bash
+poetry install --extras "report structural"
+poetry run eu-okun identification --data-dir snapshots/eurostat-2026-10-15 \
+  --shocks-dir snapshots/external-shocks-2026-10-16 --output-dir docs/identification \
+  --report docs/IDENTIFICATION_RESULTS.md
+```
+
+The shock series (Jarociński and Karadi 2020, ECB monetary policy; Känzig 2021, oil supply
+news; both CC BY 4.0) are frozen with SHA-256 hashes and attribution in
+[snapshots/external-shocks-2026-10-16](snapshots/external-shocks-2026-10-16/README.md).
+Results: [docs/IDENTIFICATION_RESULTS.md](docs/IDENTIFICATION_RESULTS.md). In brief:
+
+- Productivity shocks, labour-supply shocks and country-specific GDP shocks cannot be
+  identified with public data for the EU-27.
+- For the two common shocks, the shock-conditional Okun coefficients are not determined
+  by 2009-2025 quarterly data: first stages are weak and every primary Anderson-Rubin
+  set is unbounded, so demand- and supply-driven Okun coefficients cannot be compared.
+- A monetary tightening moves GDP and unemployment on impact only; the primary oil
+  series is predictable from lagged EU data and is labelled "identification doubtful".
+- **Conclusion: the data do not justify a causal reading of the GDP-unemployment
+  relationship. Every Okun coefficient of this study remains a descriptive association.**
