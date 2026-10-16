@@ -339,7 +339,7 @@ descriptively, as in section 9.
 
 ## 11. Amendment 3: dynamics that address the misfits
 
-Registered on 2026-10-17, before any fit of the specifications below. Sections 1-10 are
+Registered on 2026-10-16, before any fit of the specifications below. Sections 1-10 are
 unchanged, and the pre-registered judgements keep using their own specification sets.
 
 ### 11.1 The misfits
