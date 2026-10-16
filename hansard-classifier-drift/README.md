@@ -44,7 +44,7 @@ Opposition and when the Government had the floor.
    eight discipline categories and one time-keeping category. Every call of "Order" is
    counted, so "Order. Order." is two.
 3. **Validation sample.** Chair speeches stratified by era × dictionary tag × side of the
-   floor (36 strata, about 780 speeches), drawn once with a fixed seed and shown to the
+   floor (36 strata, 773 speeches), drawn once with a fixed seed and shown to the
    annotator without the tag, the stratum or the era.
 4. **Correction.** Each stratum's share of true interventions gets a Beta posterior with a
    Jeffreys prior; stratum totals are known exactly from the full corpus, so every
