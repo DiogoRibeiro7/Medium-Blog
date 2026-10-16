@@ -88,10 +88,13 @@ def simulate_outcomes(spec: ModelSpec, data: BayesData, draws: Mapping[str, np.n
     if not spec.ar1:
         return np.asarray(mean + noise)
     phi = draws["phi"]
+    # |tanh| < 1 exactly, but wide priors can round phi to +-1 in float64; the floor keeps
+    # such near-unit-root draws finite (and visibly implausible) instead of infinite.
+    stationary = np.sqrt(np.maximum(1.0 - phi**2, 1e-12))
     e = np.empty_like(noise)
     for j in range(t):
         if data.segment_start[j]:
-            e[:, :, j] = noise[:, :, j] / np.sqrt(1.0 - phi**2)
+            e[:, :, j] = noise[:, :, j] / stationary
         else:
             e[:, :, j] = phi * e[:, :, j - 1] + noise[:, :, j]
     return np.asarray(mean + e)

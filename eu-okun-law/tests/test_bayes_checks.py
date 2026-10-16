@@ -223,6 +223,14 @@ def test_loo_comparison_rule() -> None:
 # ----------------------------------------------------------------------------------
 
 
+def test_coverage_range_matches_binomial_quantiles() -> None:
+    from eu_okun.bayes_checks import coverage_range
+
+    for total in (10, 27, 43, 100):
+        low, high = stats.binom.ppf([0.025, 0.975], total, 0.9)
+        assert coverage_range(total) == (int(low), int(high))
+
+
 def test_assess_recovery_counts_coverage() -> None:
     rng = np.random.default_rng(6)
     truth = {"theta": np.array([-0.5, -0.2, 0.1])}

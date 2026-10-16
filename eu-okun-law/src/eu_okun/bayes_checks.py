@@ -270,6 +270,21 @@ def run_recovery(data_dir: Path, output_dir: Path, names: Sequence[str] = RECOVE
     return results
 
 
+def realized_hyperparameters(truth: Mapping[str, np.ndarray]) -> dict[str, float]:
+    """Sample analogues of the hyperparameters in one simulated data set.
+
+    A posterior conditions on the 27 simulated country sums (and 43 quarter effects), so
+    it centres on their realised mean and spread rather than on the generating values.
+    """
+    theta = np.asarray(truth["theta"]).reshape(-1)
+    out = {"mu_theta": float(theta.mean()), "tau_theta": float(theta.std(ddof=1))}
+    if "quarter_effect" in truth:
+        effect = np.asarray(truth["quarter_effect"]).reshape(-1)
+        # Sum-to-zero values: sum(x^2) / (T - 1) estimates the ZeroSumNormal scale squared.
+        out["tau_quarter"] = float(np.sqrt(np.sum(effect**2) / (effect.size - 1)))
+    return out
+
+
 def load_recovery(directory: Path) -> list[Recovery]:
     """Read the ``recovery.json`` files written by ``run_recovery``."""
     out = []
@@ -300,6 +315,7 @@ class ChecksReview:
     comparisons: list[LooComparison]
     prior: list[PriorPredictive]
     recovery: list[Recovery]
+    realized: dict[str, dict[str, float]]           # recovery spec -> sample analogues
 
 
 def _load(directory: Path) -> tuple[dict[str, Any], dict[str, np.ndarray]]:
@@ -333,7 +349,13 @@ def build_checks(fits_dir: Path, data_dir: Path, recovery_dir: Path | None = Non
         design = build_bayes_data(panel, flags, spec.windows, spec.lags)
         prior.append(prior_predictive_check(spec, design, draws=PRIOR_CHECK_DRAWS))
     recovery = load_recovery(recovery_dir) if recovery_dir is not None else []
-    return ChecksReview(fits, draws, data, loo, comparisons, prior, recovery)
+    realized = {}
+    for rec in recovery:
+        spec = SPECS[rec.spec]
+        design = build_bayes_data(panel, flags, spec.windows, spec.lags)
+        realized[rec.spec] = realized_hyperparameters(
+            {k: v[0] for k, v in recovery_truth(spec, design).items()})
+    return ChecksReview(fits, draws, data, loo, comparisons, prior, recovery, realized)
 
 
 def _table(header: Sequence[str], rows: Sequence[Sequence[Any]], align: str = "") -> list[str]:
@@ -342,6 +364,28 @@ def _table(header: Sequence[str], rows: Sequence[Sequence[Any]], align: str = ""
     lines = ["| " + " | ".join(header) + " |", "| " + " | ".join(marks) + " |"]
     lines += ["| " + " | ".join(str(c) for c in row) + " |" for row in rows]
     return lines + [""]
+
+
+def _num(value: float) -> str:
+    """Two decimals, or three significant digits for very large values."""
+    return f"{value:.2f}" if abs(value) < 1000 else f"{value:.3g}"
+
+
+def coverage_range(total: int, level: float = 0.9) -> tuple[int, int]:
+    """Central 95% range of the number of true values inside ``level`` intervals.
+
+    Binomial(total, level) quantiles: the smallest counts whose cumulative probability
+    reaches 2.5% and 97.5%.
+    """
+    cdf = 0.0
+    low: int | None = None
+    for k in range(total + 1):
+        cdf += math.comb(total, k) * level**k * (1.0 - level) ** (total - k)
+        if low is None and cdf >= 0.025:
+            low = k
+        if cdf >= 0.975:
+            return (k if low is None else low), k
+    return (0 if low is None else low), total
 
 
 def _median_interval(values: np.ndarray) -> str:
@@ -378,14 +422,21 @@ def render(review: ChecksReview, assets: str, command: str) -> str:
         lines.append(f"- LOO, `{c.model_a}` vs `{c.model_b}`: elpd difference "
                      f"{c.elpd_diff:+.1f} (SE {c.se_diff:.1f}), {c.verdict}"
                      f"{'' if c.reliable else ' (unreliable: Pareto k)'}.")
-    implausible = [p.spec for p in review.prior if p.share_above_5pp > 0.01]
-    lines.append("- Prior predictive: simulated changes beyond 5 pp in absolute value exceed "
-                 f"1% of cells for {', '.join(f'`{s}`' for s in implausible) or 'no specification'}"
-                 ".")
+    implausible = [p for p in review.prior if p.share_above_5pp > 0.01]
+    primary_prior = next(p for p in review.prior if p.spec == "primary")
+    observed_max = primary_prior.observed["max_abs_change"]
+    lines.append(
+        f"- Prior predictive: simulated changes beyond 5 pp in absolute value exceed 1% of "
+        f"cells for {len(implausible)} of {len(review.prior)} specifications (primary: "
+        f"{primary_prior.share_above_5pp:.1%}; median largest simulated change "
+        f"{primary_prior.quantiles['max_abs_change'][1]:.1f} pp against {observed_max:.1f} pp "
+        "observed). The weakly informative priors put visible mass on implausibly large "
+        "quarterly changes; they are reported, not changed.")
     for r in review.recovery:
         cov = r.coverage["theta"]
         lines.append(f"- Recovery, `{r.spec}`: {cov[1]} of {cov[2]} true country sums inside "
-                     f"their 90% intervals ({'accepted' if r.accepted else 'not accepted'} fit).")
+                     f"their 90% intervals ({'accepted' if r.accepted else 'not accepted'} "
+                     f"fit, max R-hat {r.max_rhat:.4f}).")
     lines.append("")
 
     # 1. Quarter-effect specifications
@@ -474,7 +525,7 @@ def render(review: ChecksReview, assets: str, command: str) -> str:
             ("cross_country_correlation", "Cross-country correlation"))
     rows = []
     for p in review.prior:
-        rows.append([f"`{p.spec}`", *(" / ".join(f"{v:.2f}" for v in p.quantiles[k])
+        rows.append([f"`{p.spec}`", *(" / ".join(_num(v) for v in p.quantiles[k])
                                       for k, _ in keys), f"{p.share_above_5pp:.1%}"])
     observed = review.prior[0].observed
     rows.append(["**observed (primary window)**", *(f"{observed[k]:.2f}" for k, _ in keys), ""])
@@ -483,23 +534,45 @@ def render(review: ChecksReview, assets: str, command: str) -> str:
     # 4. Recovery
     lines += ["## 4. Posterior recovery on synthetic data", ""]
     if review.recovery:
+        lo27, hi27 = coverage_range(27)
         lines += ["One data set per specification, simulated on the real design from "
                   "parameters fixed in code (mu_theta = -0.30, tau_theta = 0.15), fitted with "
-                  "the protocol settings. With 27 countries, 21 to 27 true values inside the "
-                  "90% intervals is consistent with calibration. A single data set is a "
-                  "recovery check, not simulation-based calibration.", ""]
+                  f"the protocol settings. With 27 countries, {lo27} to {hi27} true values "
+                  "inside the 90% intervals is consistent with calibration (central 95% of "
+                  "the binomial distribution); the last column gives that range for each row. "
+                  "A single data set is a recovery check, not simulation-based calibration.",
+                  ""]
         rows = []
-        for r in review.recovery:
-            for name, (in50, in90, total) in r.coverage.items():
-                rows.append([f"`{r.spec}`", name, total, f"{in50} ({in50 / total:.0%})",
-                             f"{in90} ({in90 / total:.0%})"])
-        lines += _table(["Specification", "Parameter", "Values", "Inside 50%", "Inside 90%"],
-                        rows, "llrrr")
-        rows = [[f"`{r.spec}`", name, f"{t:+.3f}", f"[{lo:+.3f}, {hi:+.3f}]",
-                 "yes" if inside else "**no**"]
-                for r in review.recovery for name, (t, lo, hi, inside) in r.hyper.items()]
-        lines += _table(["Specification", "Hyperparameter", "True value", "90% interval",
-                         "Inside"], rows, "llrrl")
+        below = []
+        for rec in review.recovery:
+            for name, (in50, in90, total) in rec.coverage.items():
+                low, high = coverage_range(total)
+                flag = "" if low <= in90 <= high else " **outside**"
+                if flag:
+                    below.append(f"`{rec.spec}` {name} ({in90}/{total})")
+                rows.append([f"`{rec.spec}`", name, total, f"{in50} ({in50 / total:.0%})",
+                             f"{in90} ({in90 / total:.0%})", f"{low}-{high}{flag}"])
+        lines += _table(["Specification", "Parameter", "Values", "Inside 50%", "Inside 90%",
+                         "Consistent range"], rows, "llrrrl")
+        lines += [("90% coverage outside the range expected under calibration: "
+                   + "; ".join(below) + ". These intervals are too narrow for those "
+                   "parameters in this data set." if below else
+                   "Every 90% coverage count lies within the range expected under "
+                   "calibration."), ""]
+        rows = []
+        for rec in review.recovery:
+            sample = review.realized.get(rec.spec, {})
+            for name, (t, lo, hi, inside) in rec.hyper.items():
+                realised = sample.get(name)
+                rows.append([f"`{rec.spec}`", name, f"{t:+.3f}",
+                             "" if realised is None else f"{realised:+.3f}",
+                             f"[{lo:+.3f}, {hi:+.3f}]", "yes" if inside else "**no**"])
+        lines += ["Hyperparameters: the generating value, its realised sample analogue in "
+                  "the simulated data (the posterior conditions on the simulated country "
+                  "sums and quarter effects, so it centres on these), and the 90% interval. "
+                  "The registered check is whether the generating value lies inside.", ""]
+        lines += _table(["Specification", "Hyperparameter", "Generating value",
+                         "Realised in the data", "90% interval", "Inside"], rows, "llrrrl")
         lines += [f"![Recovery of the country sums]({assets}/recovery.png)", ""]
     else:
         lines += ["No recovery run was supplied (`--recovery-dir`).", ""]
