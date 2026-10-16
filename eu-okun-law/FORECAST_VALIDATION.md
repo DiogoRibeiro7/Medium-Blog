@@ -35,3 +35,9 @@ forecast errors and evaluate genuine historical data vintages.
 The [classical results review](docs/CLASSICAL_RESULTS_REVIEW.md) (section 7)
 re-scores these forecasts without the 2020-2021 targets, and with 2020-2021 also
 removed from training, and reports approximate HAC loss-differential ratios.
+
+The separate [predictive comparison](PREDICTIVE_PROTOCOL.md) evaluates the Okun models
+themselves, conditionally on the target quarter's GDP growth, against these
+benchmarks: hierarchical Bayesian and classical models, CRPS and log scores, and a
+panel loss-differential test that is valid under cross-country dependence. Its results
+are in [docs/PREDICTIVE_COMPARISON.md](docs/PREDICTIVE_COMPARISON.md).

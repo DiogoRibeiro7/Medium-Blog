@@ -3,7 +3,9 @@
 > Status: research in progress. Live Eurostat acquisition, data audits and the classical
 > (OLS/HAC) descriptive analyses run in CI, and their results have been independently
 > verified and stress-tested in [docs/CLASSICAL_RESULTS_REVIEW.md](docs/CLASSICAL_RESULTS_REVIEW.md).
-> There are no country rankings, Bayesian estimates or causal effects yet.
+> Pre-registered hierarchical Bayesian estimates ([docs/HIERARCHICAL_BAYES.md](docs/HIERARCHICAL_BAYES.md))
+> and a pre-registered predictive comparison ([docs/PREDICTIVE_COMPARISON.md](docs/PREDICTIVE_COMPARISON.md))
+> are available. There are no country rankings and no causal effects.
 
 ## Research question
 
@@ -70,9 +72,9 @@ Poetry installs into whatever environment `VIRTUAL_ENV` names. If your shell set
 install ...`) and check `poetry env info --path`, or the packages land in that other
 environment.
 
-Extras: `report` (matplotlib, for `eu-okun review` and `bayes-report` figures), `bayes`
-(NumPyro, JAX, ArviZ, for the hierarchical models) and `dev` (both, plus pytest, Ruff
-and mypy). The downloader needs internet access; all automated tests are offline.
+Extras: `report` (matplotlib, for the `review`, `bayes-report` and `predictive-report`
+figures), `bayes` (NumPyro, JAX, ArviZ and SciPy, for the hierarchical models and the
+predictive comparison) and `dev` (both, plus pytest, Ruff and mypy). The downloader needs internet access; all automated tests are offline.
 
 The command produces these untracked research inputs:
 
@@ -102,8 +104,9 @@ numbers can be regenerated after Eurostat revises the data.
 Classical country-by-country distributed-lag regressions with HAC standard errors
 and time-ordered holdouts (done, and independently reviewed), then hierarchical
 partial-pooling Bayesian models with posterior rank uncertainty and shared shocks
-(first stage done; see below). Predictive comparison of the two and time-varying
-coefficients come next. Only then attempt defensible structural identification
+(first stage done; see below), and a pre-registered predictive comparison of the two
+(done; see below). Time-varying coefficients and the model misfits found by the
+posterior predictive checks come next. Only then attempt defensible structural identification
 (distinguishing, for example, demand from productivity shocks). Investigate the
 Netherlands and Luxembourg without assuming any institutional explanation in advance.
 
@@ -204,3 +207,35 @@ In brief, for the 2026-10-15 snapshot and 2009-2019:
   the association beyond the common European cycle.
 - Of the three earlier claims, "Spain large" is supported; "Netherlands delayed" and
   "Luxembourg weak" are not resolved under the pre-registered rules.
+
+## Predictive comparison
+
+Pre-registered in [PREDICTIVE_PROTOCOL.md](PREDICTIVE_PROTOCOL.md) before any held-out
+prediction was computed. Each model predicts the quarter's unemployment change from data
+up to the previous quarter **plus the quarter's GDP growth** (a conditional prediction
+on revised data, not a real-time forecast), re-estimated at every origin, and every
+model is scored on the same cells.
+
+```bash
+# Expensive: 3 Bayesian specifications x 32 origins
+poetry run eu-okun predictive-fit --data-dir snapshots/eurostat-2026-10-15 --output-dir results/predictive
+# Cheap: classical predictions, scores, tests and report
+poetry run eu-okun predictive-report --data-dir snapshots/eurostat-2026-10-15   --fits-dir results/predictive --output-dir docs/predictive --report docs/PREDICTIVE_COMPARISON.md
+```
+
+The refits run in the [EU Okun predictive comparison](../.github/workflows/eu-okun-law-predictive.yml)
+workflow on demand, or when a pull request is labelled `predictive-sampling`. In brief,
+for the 2026-10-15 snapshot (mean CRPS, panel Diebold-Mariano test on cross-country mean
+loss differentials, Holm-adjusted over ten comparisons):
+
+- **2016-2019 targets.** Given the quarter's GDP growth, every Okun model has a lower
+  mean CRPS than no change. The hierarchical model's 13.5% advantage is the only decided
+  comparison, and it is no longer decided once the quarters with failed refits are
+  dropped. The registered hierarchical-versus-classical comparisons differ by 0.5-1.2%
+  (not distinguishable).
+- **2022-2026 targets.** No model using GDP growth clearly beats no change. The
+  hierarchical models score 4-9% better than the classical regressions, but not at the
+  5% familywise level (Holm p 0.05-0.13).
+- Predictive intervals are somewhat too wide (90% intervals cover 90-98% of outcomes),
+  and all models over-predict unemployment changes in 2016-2019 and under-predict them
+  after 2022.

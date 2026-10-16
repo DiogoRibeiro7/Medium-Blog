@@ -256,10 +256,30 @@ def render(comparison: Comparison, assets: str, command: str) -> str:
         lines.append("")
     decided = [t for t in family if t.verdict != "not distinguishable"]
     lines += [
-        f"{len(decided)} of the {len(family)} pre-registered comparisons are decided at the "
-        f"5% familywise level; the others are not distinguishable, which with 16 target "
-        "quarters per set does not mean equal accuracy.", "",
+        f"{len(decided)} of the {len(family)} pre-registered comparisons "
+        f"{'is' if len(decided) == 1 else 'are'} decided at the 5% familywise level; the "
+        "others are not distinguishable, which with 16 target quarters per set does not mean "
+        "equal accuracy.", "",
     ]
+    if comparison.sensitivity:
+        kept = [t for t in comparison.sensitivity if t.verdict != "not distinguishable"]
+        changed = [f"{t.evaluation} {_label(t.model_a)} vs {_label(t.model_b)}"
+                   for t, u in zip(family, comparison.sensitivity, strict=True)
+                   if t.verdict != u.verdict]
+        lines += [
+            f"Without the target quarters in which a Bayesian refit failed after the retry, "
+            f"{len(kept)} of {len(comparison.sensitivity)} comparisons are decided"
+            + (f"; the verdict changes for {'; '.join(changed)}." if changed else
+               "; no verdict changes.") + " See section 8.", ""]
+    for evaluation in sets:
+        ref = comparison.mean_loss(evaluation, "zero_change")
+        gdp_models = [m for m in MODELS if m in BAYES_MODELS or m in ("ols_dl", "ardl")]
+        beat = [_label(m) for m in gdp_models if comparison.mean_loss(evaluation, m) < ref]
+        lines.append(f"- {evaluation}: {len(beat)} of {len(gdp_models)} models that use GDP "
+                     f"growth in the target quarter {'has' if len(beat) == 1 else 'have'} a "
+                     "lower mean CRPS than zero change"
+                     + (f" ({'; '.join(beat)})." if beat else "."))
+    lines.append("")
     calibration = []
     for evaluation in sets:
         for model in ("bayes_primary", "ols_dl"):
@@ -352,6 +372,7 @@ def render(comparison: Comparison, assets: str, command: str) -> str:
               "outcome 50% and 90% of the time with its central 50% and 90% intervals "
               "(coverage in the tables of section 4).", "",
               f"![PIT histograms]({assets}/calibration.png)", ""]
+    lines += _calibration_text(comparison)
 
     # 7. Countries
     lines += _country_section(comparison)
@@ -465,6 +486,30 @@ def _dominance_text(comparison: Comparison) -> list[str]:
     return lines + [""]
 
 
+def _calibration_text(comparison: Comparison) -> list[str]:
+    """Coverage ranges and the direction of systematic errors, per evaluation set."""
+    lines = []
+    for evaluation in EVALUATION_SETS:
+        cover = [comparison.coverage(evaluation, m) for m in MODELS]
+        pit = {m: float(np.mean([p.pit for p in comparison.predictions[(evaluation, m)]]))
+               for m in MODELS}
+        low, high = min(pit.values()), max(pit.values())
+        if high < 0.5:
+            direction = ("every model's mean PIT is below 0.5: outcomes tended to fall below "
+                         "the predictions (unemployment fell faster than predicted)")
+        elif low > 0.5:
+            direction = ("every model's mean PIT is above 0.5: outcomes tended to lie above "
+                         "the predictions (unemployment fell less or rose more than predicted)")
+        else:
+            direction = "mean PIT values lie on both sides of 0.5"
+        lines.append(
+            f"- {evaluation}: across the eight models the central 50% intervals cover "
+            f"{min(c[0] for c in cover):.0%}-{max(c[0] for c in cover):.0%} of outcomes and "
+            f"the 90% intervals {min(c[1] for c in cover):.0%}-{max(c[1] for c in cover):.0%}"
+            f"; mean PIT {low:.2f}-{high:.2f}, so {direction}.")
+    return lines + [""]
+
+
 def _country_section(comparison: Comparison) -> list[str]:
     lines = ["## 7. Countries (descriptive)", "",
              "Mean CRPS by country over its scored target quarters, alphabetical. Not a "
@@ -494,7 +539,7 @@ def _country_section(comparison: Comparison) -> list[str]:
             better[evaluation] += values["bayes_primary"] < values["ols_dl"]
         rows.append(row)
     lines += _table(header, rows)
-    lines += ["Bayes primary has the lower mean CRPS than the OLS distributed lag in "
+    lines += ["Bayes primary has a lower mean CRPS than the OLS distributed lag in "
               + "; ".join(f"{better[e]} of {counted[e]} countries in {e}"
                           for e in EVALUATION_SETS) + ".", ""]
     return lines
@@ -515,7 +560,7 @@ def _interpretation(comparison: Comparison) -> list[str]:
         "- **The common factor** is unknown in a target quarter and integrated out. The "
         "posterior predictive checks showed it to be autocorrelated and correlated with "
         "average GDP growth (docs/HIERARCHICAL_BAYES.md); a dynamic factor could predict "
-        "it, which is a separate, newly registered milestone.",
+        "it, which is a separate milestone on the roadmap.",
         "- **Not covered:** joint (multivariate) scores, real-time vintages, time-varying "
         "coefficients.",
         "",

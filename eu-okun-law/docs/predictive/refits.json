@@ -1,0 +1,4618 @@
+{
+ "snapshot": {
+  "manifest_sha256": "8a8c8a107d584ba91b61584fd29397e68ff83d82982371a35db253c0803a0464",
+  "processed_csv_sha256": "250a7dd94d3678ca9ee4f29567e771fb53aeadf89e1f2fd0155d2f31d6e0ec0d"
+ },
+ "environments": [
+  {
+   "arviz": "1.3.0",
+   "jax": "0.11.2",
+   "numpy": "2.5.4",
+   "numpyro": "0.22.0",
+   "platform": "Windows-11-10.0.26200-SP0",
+   "python": "3.12.10"
+  }
+ ],
+ "refits": [
+  {
+   "evaluation": "E1",
+   "model": "bayes_primary",
+   "specification": "primary",
+   "target": "2016-Q1",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2015-Q4"
+    ]
+   ],
+   "training_quarters": 27,
+   "masked_training_terms": 23,
+   "scored_cells": 26,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.006785843615438,
+     "max_rhat_parameter": "lam[3]",
+     "min_ess_bulk": 611.1096781203809,
+     "min_ess_tail": 706.0030070089945,
+     "min_ess_parameter": "phi[9]",
+     "divergences": 0,
+     "min_bfmi": 0.5382423787871776,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 162.47891869999876
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261043,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E1",
+   "model": "bayes_primary",
+   "specification": "primary",
+   "target": "2016-Q2",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2016-Q1"
+    ]
+   ],
+   "training_quarters": 28,
+   "masked_training_terms": 24,
+   "scored_cells": 26,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0065222653485686,
+     "max_rhat_parameter": "b_raw[25,1]",
+     "min_ess_bulk": 769.5168053047651,
+     "min_ess_tail": 1175.7413790858873,
+     "min_ess_parameter": "phi[9]",
+     "divergences": 0,
+     "min_bfmi": 0.555224476973321,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 150.80518359999405
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261044,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E1",
+   "model": "bayes_primary",
+   "specification": "primary",
+   "target": "2016-Q3",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2016-Q2"
+    ]
+   ],
+   "training_quarters": 29,
+   "masked_training_terms": 25,
+   "scored_cells": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0082440319979122,
+     "max_rhat_parameter": "phi[8]",
+     "min_ess_bulk": 388.837693747691,
+     "min_ess_tail": 175.63626321277718,
+     "min_ess_parameter": "tau_b",
+     "divergences": 0,
+     "min_bfmi": 0.4965346861560883,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "ESS 176 < 400 (tau_b)"
+     ],
+     "warmup": 1000,
+     "runtime_seconds": 135.83446700000786
+    },
+    {
+     "max_rhat": 1.0069696565737412,
+     "max_rhat_parameter": "mu_log_sigma",
+     "min_ess_bulk": 815.1661660648708,
+     "min_ess_tail": 1182.8507762604738,
+     "min_ess_parameter": "tau_alpha",
+     "divergences": 0,
+     "min_bfmi": 0.5839527258695287,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 3000,
+     "runtime_seconds": 240.29986149999604
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 3000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261045,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E1",
+   "model": "bayes_primary",
+   "specification": "primary",
+   "target": "2016-Q4",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2016-Q3"
+    ]
+   ],
+   "training_quarters": 30,
+   "masked_training_terms": 25,
+   "scored_cells": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0106031387253913,
+     "max_rhat_parameter": "tau_theta",
+     "min_ess_bulk": 477.5636561006788,
+     "min_ess_tail": 464.52759670281176,
+     "min_ess_parameter": "tau_b",
+     "divergences": 0,
+     "min_bfmi": 0.5267382163579033,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "R-hat 1.011 > 1.01 (tau_theta)"
+     ],
+     "warmup": 1000,
+     "runtime_seconds": 175.893287400002
+    },
+    {
+     "max_rhat": 1.008332739073753,
+     "max_rhat_parameter": "mu_log_sigma",
+     "min_ess_bulk": 561.4746316444263,
+     "min_ess_tail": 860.7125137830859,
+     "min_ess_parameter": "phi[9]",
+     "divergences": 0,
+     "min_bfmi": 0.59235281587987,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 3000,
+     "runtime_seconds": 224.4525880000001
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 3000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261046,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E1",
+   "model": "bayes_primary",
+   "specification": "primary",
+   "target": "2017-Q1",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2016-Q4"
+    ]
+   ],
+   "training_quarters": 31,
+   "masked_training_terms": 25,
+   "scored_cells": 25,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0074038004040005,
+     "max_rhat_parameter": "tau_theta",
+     "min_ess_bulk": 470.8657378021324,
+     "min_ess_tail": 445.75793406961105,
+     "min_ess_parameter": "tau_b",
+     "divergences": 0,
+     "min_bfmi": 0.540587042791058,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 151.82372450000548
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261047,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E1",
+   "model": "bayes_primary",
+   "specification": "primary",
+   "target": "2017-Q2",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2017-Q1"
+    ]
+   ],
+   "training_quarters": 32,
+   "masked_training_terms": 27,
+   "scored_cells": 25,
+   "accepted": false,
+   "attempts": [
+    {
+     "max_rhat": 1.0118079703908378,
+     "max_rhat_parameter": "theta[9]",
+     "min_ess_bulk": 450.41292226147385,
+     "min_ess_tail": 630.8643606917075,
+     "min_ess_parameter": "theta[9]",
+     "divergences": 0,
+     "min_bfmi": 0.5350948305538303,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "R-hat 1.012 > 1.01 (theta[9])"
+     ],
+     "warmup": 1000,
+     "runtime_seconds": 157.22747569999774
+    },
+    {
+     "max_rhat": 1.015038411002185,
+     "max_rhat_parameter": "phi[9]",
+     "min_ess_bulk": 553.8490725108023,
+     "min_ess_tail": 747.5893637532756,
+     "min_ess_parameter": "phi[9]",
+     "divergences": 0,
+     "min_bfmi": 0.5856873510144611,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "R-hat 1.015 > 1.01 (phi[9])"
+     ],
+     "warmup": 3000,
+     "runtime_seconds": 166.13198449999618
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 3000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261048,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E1",
+   "model": "bayes_primary",
+   "specification": "primary",
+   "target": "2017-Q3",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2017-Q2"
+    ]
+   ],
+   "training_quarters": 33,
+   "masked_training_terms": 29,
+   "scored_cells": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0144384008772107,
+     "max_rhat_parameter": "tau_b",
+     "min_ess_bulk": 280.4232104818079,
+     "min_ess_tail": 196.54079396822047,
+     "min_ess_parameter": "tau_b",
+     "divergences": 0,
+     "min_bfmi": 0.5001279151774299,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "R-hat 1.014 > 1.01 (tau_b)",
+      "ESS 197 < 400 (tau_b)"
+     ],
+     "warmup": 1000,
+     "runtime_seconds": 149.16387629999372
+    },
+    {
+     "max_rhat": 1.0099407075851259,
+     "max_rhat_parameter": "mu_log_sigma",
+     "min_ess_bulk": 450.66416882692266,
+     "min_ess_tail": 733.7082387694148,
+     "min_ess_parameter": "tau_theta",
+     "divergences": 0,
+     "min_bfmi": 0.5601465361606117,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 3000,
+     "runtime_seconds": 223.5248883000022
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 3000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261049,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E1",
+   "model": "bayes_primary",
+   "specification": "primary",
+   "target": "2017-Q4",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2017-Q3"
+    ]
+   ],
+   "training_quarters": 34,
+   "masked_training_terms": 29,
+   "scored_cells": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0081001349375065,
+     "max_rhat_parameter": "tau_theta",
+     "min_ess_bulk": 351.780580252425,
+     "min_ess_tail": 541.0288174538913,
+     "min_ess_parameter": "tau_theta",
+     "divergences": 0,
+     "min_bfmi": 0.5026395430656948,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "ESS 352 < 400 (tau_theta)"
+     ],
+     "warmup": 1000,
+     "runtime_seconds": 180.9500912999938
+    },
+    {
+     "max_rhat": 1.006470039329181,
+     "max_rhat_parameter": "theta[9]",
+     "min_ess_bulk": 543.8610729126575,
+     "min_ess_tail": 543.4772028696754,
+     "min_ess_parameter": "tau_b",
+     "divergences": 0,
+     "min_bfmi": 0.5498034953010289,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 3000,
+     "runtime_seconds": 195.6011484999908
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 3000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261050,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E1",
+   "model": "bayes_primary",
+   "specification": "primary",
+   "target": "2018-Q1",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2017-Q4"
+    ]
+   ],
+   "training_quarters": 35,
+   "masked_training_terms": 29,
+   "scored_cells": 25,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0107709027555545,
+     "max_rhat_parameter": "mu_log_sigma",
+     "min_ess_bulk": 421.8218653247139,
+     "min_ess_tail": 603.8011888976534,
+     "min_ess_parameter": "theta[9]",
+     "divergences": 0,
+     "min_bfmi": 0.5593174260707088,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "R-hat 1.011 > 1.01 (mu_log_sigma)"
+     ],
+     "warmup": 1000,
+     "runtime_seconds": 182.20212750000064
+    },
+    {
+     "max_rhat": 1.0049855471942573,
+     "max_rhat_parameter": "b_raw[16,0]",
+     "min_ess_bulk": 441.7156890839479,
+     "min_ess_tail": 581.2483390594035,
+     "min_ess_parameter": "phi[9]",
+     "divergences": 0,
+     "min_bfmi": 0.5047363212497926,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 3000,
+     "runtime_seconds": 243.86650490001193
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 3000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261051,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E1",
+   "model": "bayes_primary",
+   "specification": "primary",
+   "target": "2018-Q2",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2018-Q1"
+    ]
+   ],
+   "training_quarters": 36,
+   "masked_training_terms": 31,
+   "scored_cells": 25,
+   "accepted": false,
+   "attempts": [
+    {
+     "max_rhat": 1.0200333430605406,
+     "max_rhat_parameter": "phi[9]",
+     "min_ess_bulk": 344.47659503686396,
+     "min_ess_tail": 692.6020536355987,
+     "min_ess_parameter": "tau_theta",
+     "divergences": 0,
+     "min_bfmi": 0.5451584200417368,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "R-hat 1.020 > 1.01 (phi[9])",
+      "ESS 344 < 400 (tau_theta)"
+     ],
+     "warmup": 1000,
+     "runtime_seconds": 180.62869260000298
+    },
+    {
+     "max_rhat": 1.0121867085457654,
+     "max_rhat_parameter": "phi[9]",
+     "min_ess_bulk": 274.9022412705778,
+     "min_ess_tail": 802.9609002420211,
+     "min_ess_parameter": "phi[9]",
+     "divergences": 0,
+     "min_bfmi": 0.6401667350293128,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "R-hat 1.012 > 1.01 (phi[9])",
+      "ESS 275 < 400 (phi[9])"
+     ],
+     "warmup": 3000,
+     "runtime_seconds": 269.1267574000085
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 3000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261052,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E1",
+   "model": "bayes_primary",
+   "specification": "primary",
+   "target": "2018-Q3",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2018-Q2"
+    ]
+   ],
+   "training_quarters": 37,
+   "masked_training_terms": 33,
+   "scored_cells": 27,
+   "accepted": false,
+   "attempts": [
+    {
+     "max_rhat": 1.010989624772717,
+     "max_rhat_parameter": "lam[9]",
+     "min_ess_bulk": 391.0901539842219,
+     "min_ess_tail": 646.156477257056,
+     "min_ess_parameter": "phi[9]",
+     "divergences": 0,
+     "min_bfmi": 0.5369764040103799,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "R-hat 1.011 > 1.01 (lam[9])",
+      "ESS 391 < 400 (phi[9])"
+     ],
+     "warmup": 1000,
+     "runtime_seconds": 181.59103279998817
+    },
+    {
+     "max_rhat": 1.014555753839726,
+     "max_rhat_parameter": "tau_log_sigma",
+     "min_ess_bulk": 498.8434358588477,
+     "min_ess_tail": 872.4056525741446,
+     "min_ess_parameter": "phi[9]",
+     "divergences": 0,
+     "min_bfmi": 0.6101148243803621,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "R-hat 1.015 > 1.01 (tau_log_sigma)"
+     ],
+     "warmup": 3000,
+     "runtime_seconds": 235.54577549999522
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 3000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261053,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E1",
+   "model": "bayes_primary",
+   "specification": "primary",
+   "target": "2018-Q4",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2018-Q3"
+    ]
+   ],
+   "training_quarters": 38,
+   "masked_training_terms": 33,
+   "scored_cells": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0071698756995426,
+     "max_rhat_parameter": "tau_theta",
+     "min_ess_bulk": 444.95944872154723,
+     "min_ess_tail": 663.8310568527764,
+     "min_ess_parameter": "phi[9]",
+     "divergences": 0,
+     "min_bfmi": 0.5647955273144162,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 157.3182264999923
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261054,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E1",
+   "model": "bayes_primary",
+   "specification": "primary",
+   "target": "2019-Q1",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2018-Q4"
+    ]
+   ],
+   "training_quarters": 39,
+   "masked_training_terms": 33,
+   "scored_cells": 25,
+   "accepted": false,
+   "attempts": [
+    {
+     "max_rhat": 1.0128242360080197,
+     "max_rhat_parameter": "lam[9]",
+     "min_ess_bulk": 339.79936789461726,
+     "min_ess_tail": 631.1437950513164,
+     "min_ess_parameter": "phi[9]",
+     "divergences": 0,
+     "min_bfmi": 0.5006103015426183,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "R-hat 1.013 > 1.01 (lam[9])",
+      "ESS 340 < 400 (phi[9])"
+     ],
+     "warmup": 1000,
+     "runtime_seconds": 120.08785740000894
+    },
+    {
+     "max_rhat": 1.0103331930784978,
+     "max_rhat_parameter": "phi[9]",
+     "min_ess_bulk": 401.4794672818823,
+     "min_ess_tail": 770.7522133645075,
+     "min_ess_parameter": "phi[9]",
+     "divergences": 0,
+     "min_bfmi": 0.5644488218348277,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "R-hat 1.010 > 1.01 (phi[9])"
+     ],
+     "warmup": 3000,
+     "runtime_seconds": 219.82378060001065
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 3000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261055,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E1",
+   "model": "bayes_primary",
+   "specification": "primary",
+   "target": "2019-Q2",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2019-Q1"
+    ]
+   ],
+   "training_quarters": 40,
+   "masked_training_terms": 35,
+   "scored_cells": 25,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0083853631393438,
+     "max_rhat_parameter": "mu_log_sigma",
+     "min_ess_bulk": 470.5181853599478,
+     "min_ess_tail": 596.9730725604265,
+     "min_ess_parameter": "phi[9]",
+     "divergences": 0,
+     "min_bfmi": 0.49068853680368596,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 136.85611059999792
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261056,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E1",
+   "model": "bayes_primary",
+   "specification": "primary",
+   "target": "2019-Q3",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2019-Q2"
+    ]
+   ],
+   "training_quarters": 41,
+   "masked_training_terms": 37,
+   "scored_cells": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0125729452718304,
+     "max_rhat_parameter": "mu_log_sigma",
+     "min_ess_bulk": 464.99765533847045,
+     "min_ess_tail": 461.87662444712777,
+     "min_ess_parameter": "tau_theta",
+     "divergences": 0,
+     "min_bfmi": 0.5589643615803911,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "R-hat 1.013 > 1.01 (mu_log_sigma)"
+     ],
+     "warmup": 1000,
+     "runtime_seconds": 199.1013598999998
+    },
+    {
+     "max_rhat": 1.0076909687664195,
+     "max_rhat_parameter": "tau_phi_logit",
+     "min_ess_bulk": 445.30118275073903,
+     "min_ess_tail": 704.3006340598929,
+     "min_ess_parameter": "phi[9]",
+     "divergences": 0,
+     "min_bfmi": 0.5681835694223688,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 3000,
+     "runtime_seconds": 219.78748509999423
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 3000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261057,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E1",
+   "model": "bayes_primary",
+   "specification": "primary",
+   "target": "2019-Q4",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2019-Q3"
+    ]
+   ],
+   "training_quarters": 42,
+   "masked_training_terms": 37,
+   "scored_cells": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0077919917723315,
+     "max_rhat_parameter": "mu_log_sigma",
+     "min_ess_bulk": 739.5897861453507,
+     "min_ess_tail": 562.9187336746816,
+     "min_ess_parameter": "lam[9]",
+     "divergences": 0,
+     "min_bfmi": 0.5812941228591179,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 91.36575889999222
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261058,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E1",
+   "model": "bayes_no_common_factor",
+   "specification": "no_common_factor",
+   "target": "2016-Q1",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2015-Q4"
+    ]
+   ],
+   "training_quarters": 27,
+   "masked_training_terms": 23,
+   "scored_cells": 26,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0056144251434953,
+     "max_rhat_parameter": "tau_phi_logit",
+     "min_ess_bulk": 525.8723600610953,
+     "min_ess_tail": 765.7576521577465,
+     "min_ess_parameter": "mu_log_sigma",
+     "divergences": 0,
+     "min_bfmi": 0.5953159108574334,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 147.7521143000049
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261043,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E1",
+   "model": "bayes_no_common_factor",
+   "specification": "no_common_factor",
+   "target": "2016-Q2",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2016-Q1"
+    ]
+   ],
+   "training_quarters": 28,
+   "masked_training_terms": 24,
+   "scored_cells": 26,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0053554882984408,
+     "max_rhat_parameter": "tau_log_sigma",
+     "min_ess_bulk": 959.2850433468874,
+     "min_ess_tail": 1554.489509149051,
+     "min_ess_parameter": "mu_log_sigma",
+     "divergences": 0,
+     "min_bfmi": 0.5814722127618005,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 125.68328310000652
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261044,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E1",
+   "model": "bayes_no_common_factor",
+   "specification": "no_common_factor",
+   "target": "2016-Q3",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2016-Q2"
+    ]
+   ],
+   "training_quarters": 29,
+   "masked_training_terms": 25,
+   "scored_cells": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.005192339992263,
+     "max_rhat_parameter": "b_raw[17,0]",
+     "min_ess_bulk": 865.546089909771,
+     "min_ess_tail": 1310.220947792467,
+     "min_ess_parameter": "mu_log_sigma",
+     "divergences": 0,
+     "min_bfmi": 0.5754361171146495,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 142.58594989999256
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261045,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E1",
+   "model": "bayes_no_common_factor",
+   "specification": "no_common_factor",
+   "target": "2016-Q4",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2016-Q3"
+    ]
+   ],
+   "training_quarters": 30,
+   "masked_training_terms": 25,
+   "scored_cells": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0048333102522273,
+     "max_rhat_parameter": "b_raw[7,1]",
+     "min_ess_bulk": 617.2271389016304,
+     "min_ess_tail": 795.7214399835669,
+     "min_ess_parameter": "mu_log_sigma",
+     "divergences": 0,
+     "min_bfmi": 0.5555179401616894,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 127.17962579999585
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261046,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E1",
+   "model": "bayes_no_common_factor",
+   "specification": "no_common_factor",
+   "target": "2017-Q1",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2016-Q4"
+    ]
+   ],
+   "training_quarters": 31,
+   "masked_training_terms": 25,
+   "scored_cells": 25,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0055617787695403,
+     "max_rhat_parameter": "b_raw[25,1]",
+     "min_ess_bulk": 814.0067195751857,
+     "min_ess_tail": 1405.5928849496202,
+     "min_ess_parameter": "mu_log_sigma",
+     "divergences": 0,
+     "min_bfmi": 0.5663509299164454,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 160.346083299999
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261047,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E1",
+   "model": "bayes_no_common_factor",
+   "specification": "no_common_factor",
+   "target": "2017-Q2",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2017-Q1"
+    ]
+   ],
+   "training_quarters": 32,
+   "masked_training_terms": 27,
+   "scored_cells": 25,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0107451202527264,
+     "max_rhat_parameter": "tau_log_sigma",
+     "min_ess_bulk": 579.448840107859,
+     "min_ess_tail": 1094.597039376184,
+     "min_ess_parameter": "mu_log_sigma",
+     "divergences": 0,
+     "min_bfmi": 0.565839319047485,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "R-hat 1.011 > 1.01 (tau_log_sigma)"
+     ],
+     "warmup": 1000,
+     "runtime_seconds": 152.55209499999182
+    },
+    {
+     "max_rhat": 1.0060155365231167,
+     "max_rhat_parameter": "phi_logit[16]",
+     "min_ess_bulk": 748.6257568147846,
+     "min_ess_tail": 1056.644116710053,
+     "min_ess_parameter": "mu_log_sigma",
+     "divergences": 0,
+     "min_bfmi": 0.6025204370246406,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 3000,
+     "runtime_seconds": 219.83605270000407
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 3000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261048,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E1",
+   "model": "bayes_no_common_factor",
+   "specification": "no_common_factor",
+   "target": "2017-Q3",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2017-Q2"
+    ]
+   ],
+   "training_quarters": 33,
+   "masked_training_terms": 29,
+   "scored_cells": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0064761445830348,
+     "max_rhat_parameter": "b_raw[6,0]",
+     "min_ess_bulk": 974.2036140200172,
+     "min_ess_tail": 1723.4814026222389,
+     "min_ess_parameter": "mu_log_sigma",
+     "divergences": 0,
+     "min_bfmi": 0.5833974607416361,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 153.43546960000822
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261049,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E1",
+   "model": "bayes_no_common_factor",
+   "specification": "no_common_factor",
+   "target": "2017-Q4",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2017-Q3"
+    ]
+   ],
+   "training_quarters": 34,
+   "masked_training_terms": 29,
+   "scored_cells": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0046193815015676,
+     "max_rhat_parameter": "alpha_raw[7]",
+     "min_ess_bulk": 801.460682103715,
+     "min_ess_tail": 1346.8724856399153,
+     "min_ess_parameter": "mu_log_sigma",
+     "divergences": 0,
+     "min_bfmi": 0.5692582872182034,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 125.74983760000032
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261050,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E1",
+   "model": "bayes_no_common_factor",
+   "specification": "no_common_factor",
+   "target": "2018-Q1",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2017-Q4"
+    ]
+   ],
+   "training_quarters": 35,
+   "masked_training_terms": 29,
+   "scored_cells": 25,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0044489132211292,
+     "max_rhat_parameter": "log_sigma_raw[5]",
+     "min_ess_bulk": 719.4668606045484,
+     "min_ess_tail": 1272.3807885303333,
+     "min_ess_parameter": "mu_log_sigma",
+     "divergences": 0,
+     "min_bfmi": 0.61401338229035,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 164.16531179999583
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261051,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E1",
+   "model": "bayes_no_common_factor",
+   "specification": "no_common_factor",
+   "target": "2018-Q2",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2018-Q1"
+    ]
+   ],
+   "training_quarters": 36,
+   "masked_training_terms": 31,
+   "scored_cells": 25,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.006508192706664,
+     "max_rhat_parameter": "alpha_raw[7]",
+     "min_ess_bulk": 708.2031851741345,
+     "min_ess_tail": 1366.9298882370406,
+     "min_ess_parameter": "mu_log_sigma",
+     "divergences": 0,
+     "min_bfmi": 0.582994245995815,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 131.79257679999864
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261052,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E1",
+   "model": "bayes_no_common_factor",
+   "specification": "no_common_factor",
+   "target": "2018-Q3",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2018-Q2"
+    ]
+   ],
+   "training_quarters": 37,
+   "masked_training_terms": 33,
+   "scored_cells": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0073446716603907,
+     "max_rhat_parameter": "log_sigma_raw[5]",
+     "min_ess_bulk": 572.0243058740132,
+     "min_ess_tail": 1243.458961136929,
+     "min_ess_parameter": "mu_log_sigma",
+     "divergences": 0,
+     "min_bfmi": 0.6075526478113894,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 153.2139676999941
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261053,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E1",
+   "model": "bayes_no_common_factor",
+   "specification": "no_common_factor",
+   "target": "2018-Q4",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2018-Q3"
+    ]
+   ],
+   "training_quarters": 38,
+   "masked_training_terms": 33,
+   "scored_cells": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.005435036423383,
+     "max_rhat_parameter": "b_raw[6,0]",
+     "min_ess_bulk": 736.0009463467717,
+     "min_ess_tail": 1065.1381179830873,
+     "min_ess_parameter": "mu_log_sigma",
+     "divergences": 0,
+     "min_bfmi": 0.6052667628028932,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 166.91466730000684
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261054,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E1",
+   "model": "bayes_no_common_factor",
+   "specification": "no_common_factor",
+   "target": "2019-Q1",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2018-Q4"
+    ]
+   ],
+   "training_quarters": 39,
+   "masked_training_terms": 33,
+   "scored_cells": 25,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0068731701336433,
+     "max_rhat_parameter": "log_sigma_raw[5]",
+     "min_ess_bulk": 660.9196762521944,
+     "min_ess_tail": 814.949582451566,
+     "min_ess_parameter": "mu_log_sigma",
+     "divergences": 0,
+     "min_bfmi": 0.6378247616011455,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 166.2012148000067
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261055,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E1",
+   "model": "bayes_no_common_factor",
+   "specification": "no_common_factor",
+   "target": "2019-Q2",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2019-Q1"
+    ]
+   ],
+   "training_quarters": 40,
+   "masked_training_terms": 35,
+   "scored_cells": 25,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0062752812980613,
+     "max_rhat_parameter": "log_sigma_raw[5]",
+     "min_ess_bulk": 652.3935563716412,
+     "min_ess_tail": 1009.5182734016737,
+     "min_ess_parameter": "mu_log_sigma",
+     "divergences": 0,
+     "min_bfmi": 0.6363871725574306,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 154.61287179999636
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261056,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E1",
+   "model": "bayes_no_common_factor",
+   "specification": "no_common_factor",
+   "target": "2019-Q3",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2019-Q2"
+    ]
+   ],
+   "training_quarters": 41,
+   "masked_training_terms": 37,
+   "scored_cells": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0046198329523837,
+     "max_rhat_parameter": "alpha_raw[7]",
+     "min_ess_bulk": 705.9136478808366,
+     "min_ess_tail": 1361.5859047059316,
+     "min_ess_parameter": "mu_log_sigma",
+     "divergences": 0,
+     "min_bfmi": 0.6279515136058569,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 164.7162546000036
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261057,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E1",
+   "model": "bayes_no_common_factor",
+   "specification": "no_common_factor",
+   "target": "2019-Q4",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2019-Q3"
+    ]
+   ],
+   "training_quarters": 42,
+   "masked_training_terms": 37,
+   "scored_cells": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.007031441525516,
+     "max_rhat_parameter": "log_sigma_raw[5]",
+     "min_ess_bulk": 679.1697557681312,
+     "min_ess_tail": 1352.4499125244154,
+     "min_ess_parameter": "mu_log_sigma",
+     "divergences": 0,
+     "min_bfmi": 0.6261696336265323,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 147.04151280000224
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261058,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E1",
+   "model": "bayes_gaussian_iid",
+   "specification": "gaussian_iid",
+   "target": "2016-Q1",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2015-Q4"
+    ]
+   ],
+   "training_quarters": 27,
+   "masked_training_terms": 23,
+   "scored_cells": 26,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0071175332701225,
+     "max_rhat_parameter": "tau_theta",
+     "min_ess_bulk": 456.24333052601156,
+     "min_ess_tail": 876.5927228456807,
+     "min_ess_parameter": "mu_log_sigma",
+     "divergences": 0,
+     "min_bfmi": 0.661835648910529,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 58.6868264000077
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261043,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E1",
+   "model": "bayes_gaussian_iid",
+   "specification": "gaussian_iid",
+   "target": "2016-Q2",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2016-Q1"
+    ]
+   ],
+   "training_quarters": 28,
+   "masked_training_terms": 24,
+   "scored_cells": 26,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.009994667160829,
+     "max_rhat_parameter": "mu_log_sigma",
+     "min_ess_bulk": 436.21441619061807,
+     "min_ess_tail": 892.6801197530937,
+     "min_ess_parameter": "mu_log_sigma",
+     "divergences": 0,
+     "min_bfmi": 0.6434630186973195,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 59.29614559999027
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261044,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E1",
+   "model": "bayes_gaussian_iid",
+   "specification": "gaussian_iid",
+   "target": "2016-Q3",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2016-Q2"
+    ]
+   ],
+   "training_quarters": 29,
+   "masked_training_terms": 25,
+   "scored_cells": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0054057236125733,
+     "max_rhat_parameter": "b[3,1]",
+     "min_ess_bulk": 466.8874807625611,
+     "min_ess_tail": 774.8563776830654,
+     "min_ess_parameter": "mu_log_sigma",
+     "divergences": 0,
+     "min_bfmi": 0.6572617814904015,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 41.09714460000396
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261045,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E1",
+   "model": "bayes_gaussian_iid",
+   "specification": "gaussian_iid",
+   "target": "2016-Q4",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2016-Q3"
+    ]
+   ],
+   "training_quarters": 30,
+   "masked_training_terms": 25,
+   "scored_cells": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0073363277684448,
+     "max_rhat_parameter": "mu_log_sigma",
+     "min_ess_bulk": 460.3535601647586,
+     "min_ess_tail": 601.3141814324507,
+     "min_ess_parameter": "mu_log_sigma",
+     "divergences": 0,
+     "min_bfmi": 0.6366693659911916,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 57.30210810000426
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261046,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E1",
+   "model": "bayes_gaussian_iid",
+   "specification": "gaussian_iid",
+   "target": "2017-Q1",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2016-Q4"
+    ]
+   ],
+   "training_quarters": 31,
+   "masked_training_terms": 25,
+   "scored_cells": 25,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0068704016038803,
+     "max_rhat_parameter": "tau_alpha",
+     "min_ess_bulk": 546.7509877860324,
+     "min_ess_tail": 780.0978991844426,
+     "min_ess_parameter": "mu_log_sigma",
+     "divergences": 0,
+     "min_bfmi": 0.6149400695880327,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 36.413667000000714
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261047,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E1",
+   "model": "bayes_gaussian_iid",
+   "specification": "gaussian_iid",
+   "target": "2017-Q2",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2017-Q1"
+    ]
+   ],
+   "training_quarters": 32,
+   "masked_training_terms": 27,
+   "scored_cells": 25,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.004655247319159,
+     "max_rhat_parameter": "b[5,0]",
+     "min_ess_bulk": 545.1265719132442,
+     "min_ess_tail": 772.2609370226171,
+     "min_ess_parameter": "mu_log_sigma",
+     "divergences": 0,
+     "min_bfmi": 0.6102863400907912,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 66.7425668000069
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261048,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E1",
+   "model": "bayes_gaussian_iid",
+   "specification": "gaussian_iid",
+   "target": "2017-Q3",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2017-Q2"
+    ]
+   ],
+   "training_quarters": 33,
+   "masked_training_terms": 29,
+   "scored_cells": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0073635188592598,
+     "max_rhat_parameter": "alpha_raw[11]",
+     "min_ess_bulk": 491.3535561718057,
+     "min_ess_tail": 876.1064454130071,
+     "min_ess_parameter": "mu_log_sigma",
+     "divergences": 0,
+     "min_bfmi": 0.6497815041917121,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 52.78434530000959
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261049,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E1",
+   "model": "bayes_gaussian_iid",
+   "specification": "gaussian_iid",
+   "target": "2017-Q4",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2017-Q3"
+    ]
+   ],
+   "training_quarters": 34,
+   "masked_training_terms": 29,
+   "scored_cells": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0045829030160718,
+     "max_rhat_parameter": "beta0[25]",
+     "min_ess_bulk": 546.6868116635771,
+     "min_ess_tail": 734.8958494974838,
+     "min_ess_parameter": "mu_log_sigma",
+     "divergences": 0,
+     "min_bfmi": 0.624333697722319,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 55.97335309999471
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261050,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E1",
+   "model": "bayes_gaussian_iid",
+   "specification": "gaussian_iid",
+   "target": "2018-Q1",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2017-Q4"
+    ]
+   ],
+   "training_quarters": 35,
+   "masked_training_terms": 29,
+   "scored_cells": 25,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0049075408152481,
+     "max_rhat_parameter": "alpha[7]",
+     "min_ess_bulk": 508.92707240957054,
+     "min_ess_tail": 1111.3098195716373,
+     "min_ess_parameter": "mu_log_sigma",
+     "divergences": 0,
+     "min_bfmi": 0.631930433227104,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 43.224628199997824
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261051,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E1",
+   "model": "bayes_gaussian_iid",
+   "specification": "gaussian_iid",
+   "target": "2018-Q2",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2018-Q1"
+    ]
+   ],
+   "training_quarters": 36,
+   "masked_training_terms": 31,
+   "scored_cells": 25,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0050902788149876,
+     "max_rhat_parameter": "alpha_raw[7]",
+     "min_ess_bulk": 715.9131669697822,
+     "min_ess_tail": 1329.432558074543,
+     "min_ess_parameter": "mu_log_sigma",
+     "divergences": 0,
+     "min_bfmi": 0.5881651151338114,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 56.72755429999961
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261052,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E1",
+   "model": "bayes_gaussian_iid",
+   "specification": "gaussian_iid",
+   "target": "2018-Q3",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2018-Q2"
+    ]
+   ],
+   "training_quarters": 37,
+   "masked_training_terms": 33,
+   "scored_cells": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0070886994322195,
+     "max_rhat_parameter": "beta0[3]",
+     "min_ess_bulk": 604.0634444465483,
+     "min_ess_tail": 1218.7770240610635,
+     "min_ess_parameter": "mu_log_sigma",
+     "divergences": 0,
+     "min_bfmi": 0.5865068386467682,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 69.57903000000806
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261053,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E1",
+   "model": "bayes_gaussian_iid",
+   "specification": "gaussian_iid",
+   "target": "2018-Q4",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2018-Q3"
+    ]
+   ],
+   "training_quarters": 38,
+   "masked_training_terms": 33,
+   "scored_cells": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0051761089240672,
+     "max_rhat_parameter": "beta0[6]",
+     "min_ess_bulk": 629.1527496375213,
+     "min_ess_tail": 1128.4842566074774,
+     "min_ess_parameter": "mu_log_sigma",
+     "divergences": 0,
+     "min_bfmi": 0.6056496580413656,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 67.27829010000278
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261054,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E1",
+   "model": "bayes_gaussian_iid",
+   "specification": "gaussian_iid",
+   "target": "2019-Q1",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2018-Q4"
+    ]
+   ],
+   "training_quarters": 39,
+   "masked_training_terms": 33,
+   "scored_cells": 25,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0048274200506555,
+     "max_rhat_parameter": "theta[15]",
+     "min_ess_bulk": 738.0085325512624,
+     "min_ess_tail": 1136.1145642593135,
+     "min_ess_parameter": "mu_log_sigma",
+     "divergences": 0,
+     "min_bfmi": 0.6063574428436239,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 67.28727889999573
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261055,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E1",
+   "model": "bayes_gaussian_iid",
+   "specification": "gaussian_iid",
+   "target": "2019-Q2",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2019-Q1"
+    ]
+   ],
+   "training_quarters": 40,
+   "masked_training_terms": 35,
+   "scored_cells": 25,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.004969273047726,
+     "max_rhat_parameter": "mu_log_sigma",
+     "min_ess_bulk": 697.9507161585371,
+     "min_ess_tail": 1450.7351472583607,
+     "min_ess_parameter": "mu_log_sigma",
+     "divergences": 0,
+     "min_bfmi": 0.6265567099857309,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 61.24596100000781
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261056,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E1",
+   "model": "bayes_gaussian_iid",
+   "specification": "gaussian_iid",
+   "target": "2019-Q3",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2019-Q2"
+    ]
+   ],
+   "training_quarters": 41,
+   "masked_training_terms": 37,
+   "scored_cells": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0055725822839157,
+     "max_rhat_parameter": "tau_theta",
+     "min_ess_bulk": 568.556995004004,
+     "min_ess_tail": 918.8196611510933,
+     "min_ess_parameter": "mu_log_sigma",
+     "divergences": 0,
+     "min_bfmi": 0.5894527528914784,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 69.57607619999908
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261057,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E1",
+   "model": "bayes_gaussian_iid",
+   "specification": "gaussian_iid",
+   "target": "2019-Q4",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2019-Q3"
+    ]
+   ],
+   "training_quarters": 42,
+   "masked_training_terms": 37,
+   "scored_cells": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0045764141447948,
+     "max_rhat_parameter": "b[24,1]",
+     "min_ess_bulk": 580.6884097809286,
+     "min_ess_tail": 1093.4678047094505,
+     "min_ess_parameter": "mu_log_sigma",
+     "divergences": 0,
+     "min_bfmi": 0.6012338281139624,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 67.40860140000586
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261058,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E2",
+   "model": "bayes_primary",
+   "specification": "primary",
+   "target": "2022-Q3",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2019-Q4"
+    ]
+   ],
+   "training_quarters": 43,
+   "masked_training_terms": 37,
+   "scored_cells": 25,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0069900374545426,
+     "max_rhat_parameter": "log_sigma_raw[9]",
+     "min_ess_bulk": 648.3566548641414,
+     "min_ess_tail": 503.5273204663443,
+     "min_ess_parameter": "tau_alpha",
+     "divergences": 0,
+     "min_bfmi": 0.5155873424895456,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 201.75879169999098
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261059,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E2",
+   "model": "bayes_primary",
+   "specification": "primary",
+   "target": "2022-Q4",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2019-Q4"
+    ],
+    [
+     "2022-Q3",
+     "2022-Q3"
+    ]
+   ],
+   "training_quarters": 44,
+   "masked_training_terms": 39,
+   "scored_cells": 25,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.007324751288772,
+     "max_rhat_parameter": "lam[9]",
+     "min_ess_bulk": 695.2020503689458,
+     "min_ess_tail": 736.1047999450675,
+     "min_ess_parameter": "mu_log_sigma",
+     "divergences": 0,
+     "min_bfmi": 0.5591394660004011,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 183.99503599999298
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261060,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E2",
+   "model": "bayes_primary",
+   "specification": "primary",
+   "target": "2023-Q1",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2019-Q4"
+    ],
+    [
+     "2022-Q3",
+     "2022-Q4"
+    ]
+   ],
+   "training_quarters": 45,
+   "masked_training_terms": 41,
+   "scored_cells": 25,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.008269035671215,
+     "max_rhat_parameter": "tau_theta",
+     "min_ess_bulk": 733.7788158265454,
+     "min_ess_tail": 849.0462032772853,
+     "min_ess_parameter": "phi[9]",
+     "divergences": 0,
+     "min_bfmi": 0.5671700535767449,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 209.87800670000433
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261061,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E2",
+   "model": "bayes_primary",
+   "specification": "primary",
+   "target": "2023-Q2",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2019-Q4"
+    ],
+    [
+     "2022-Q3",
+     "2023-Q1"
+    ]
+   ],
+   "training_quarters": 46,
+   "masked_training_terms": 43,
+   "scored_cells": 25,
+   "accepted": false,
+   "attempts": [
+    {
+     "max_rhat": 1.0112292208178608,
+     "max_rhat_parameter": "phi[9]",
+     "min_ess_bulk": 340.0358264774934,
+     "min_ess_tail": 464.603206149433,
+     "min_ess_parameter": "phi[9]",
+     "divergences": 0,
+     "min_bfmi": 0.5837971783202598,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "R-hat 1.011 > 1.01 (phi[9])",
+      "ESS 340 < 400 (phi[9])"
+     ],
+     "warmup": 1000,
+     "runtime_seconds": 199.58198750000156
+    },
+    {
+     "max_rhat": 1.0158776969476264,
+     "max_rhat_parameter": "log_sigma_raw[9]",
+     "min_ess_bulk": 349.087818090516,
+     "min_ess_tail": 524.1185144251948,
+     "min_ess_parameter": "tau_theta",
+     "divergences": 0,
+     "min_bfmi": 0.4881214326827897,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "R-hat 1.016 > 1.01 (log_sigma_raw[9])",
+      "ESS 349 < 400 (tau_theta)"
+     ],
+     "warmup": 3000,
+     "runtime_seconds": 285.62953689999995
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 3000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261062,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E2",
+   "model": "bayes_primary",
+   "specification": "primary",
+   "target": "2023-Q3",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2019-Q4"
+    ],
+    [
+     "2022-Q3",
+     "2023-Q2"
+    ]
+   ],
+   "training_quarters": 47,
+   "masked_training_terms": 45,
+   "scored_cells": 25,
+   "accepted": false,
+   "attempts": [
+    {
+     "max_rhat": 1.0115399345876448,
+     "max_rhat_parameter": "theta[9]",
+     "min_ess_bulk": 452.6338436558493,
+     "min_ess_tail": 179.15475809929563,
+     "min_ess_parameter": "tau_theta",
+     "divergences": 0,
+     "min_bfmi": 0.48250331906482136,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "R-hat 1.012 > 1.01 (theta[9])",
+      "ESS 179 < 400 (tau_theta)"
+     ],
+     "warmup": 1000,
+     "runtime_seconds": 172.06009630000335
+    },
+    {
+     "max_rhat": 1.0102803380115135,
+     "max_rhat_parameter": "mu_log_sigma",
+     "min_ess_bulk": 706.7782227562963,
+     "min_ess_tail": 709.6804882641933,
+     "min_ess_parameter": "mu_log_sigma",
+     "divergences": 0,
+     "min_bfmi": 0.6476216994251304,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "R-hat 1.010 > 1.01 (mu_log_sigma)"
+     ],
+     "warmup": 3000,
+     "runtime_seconds": 245.59775109999464
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 3000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261063,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E2",
+   "model": "bayes_primary",
+   "specification": "primary",
+   "target": "2023-Q4",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2019-Q4"
+    ],
+    [
+     "2022-Q3",
+     "2023-Q3"
+    ]
+   ],
+   "training_quarters": 48,
+   "masked_training_terms": 47,
+   "scored_cells": 24,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0056468248338177,
+     "max_rhat_parameter": "phi[9]",
+     "min_ess_bulk": 529.6897082180436,
+     "min_ess_tail": 616.686835767147,
+     "min_ess_parameter": "mu_log_sigma",
+     "divergences": 0,
+     "min_bfmi": 0.5186524555545229,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 135.71926259998872
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261064,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E2",
+   "model": "bayes_primary",
+   "specification": "primary",
+   "target": "2024-Q1",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2019-Q4"
+    ],
+    [
+     "2022-Q3",
+     "2023-Q4"
+    ]
+   ],
+   "training_quarters": 49,
+   "masked_training_terms": 50,
+   "scored_cells": 24,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0116105812468543,
+     "max_rhat_parameter": "tau_phi_logit",
+     "min_ess_bulk": 562.4149038900433,
+     "min_ess_tail": 550.769343853483,
+     "min_ess_parameter": "phi[9]",
+     "divergences": 0,
+     "min_bfmi": 0.5424798140493197,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "R-hat 1.012 > 1.01 (tau_phi_logit)"
+     ],
+     "warmup": 1000,
+     "runtime_seconds": 171.71805830000085
+    },
+    {
+     "max_rhat": 1.009043997103217,
+     "max_rhat_parameter": "mu_log_sigma",
+     "min_ess_bulk": 539.1409570696947,
+     "min_ess_tail": 645.0321561210283,
+     "min_ess_parameter": "mu_log_sigma",
+     "divergences": 0,
+     "min_bfmi": 0.4611596711889662,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 3000,
+     "runtime_seconds": 246.63726200000383
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 3000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261065,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E2",
+   "model": "bayes_primary",
+   "specification": "primary",
+   "target": "2024-Q2",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2019-Q4"
+    ],
+    [
+     "2022-Q3",
+     "2024-Q1"
+    ]
+   ],
+   "training_quarters": 50,
+   "masked_training_terms": 53,
+   "scored_cells": 25,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0052968132764348,
+     "max_rhat_parameter": "log_sigma_raw[12]",
+     "min_ess_bulk": 679.3210974461908,
+     "min_ess_tail": 1034.2672430995053,
+     "min_ess_parameter": "mu_log_sigma",
+     "divergences": 0,
+     "min_bfmi": 0.5850340096106933,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 197.77413550000347
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261066,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E2",
+   "model": "bayes_primary",
+   "specification": "primary",
+   "target": "2024-Q3",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2019-Q4"
+    ],
+    [
+     "2022-Q3",
+     "2024-Q2"
+    ]
+   ],
+   "training_quarters": 51,
+   "masked_training_terms": 55,
+   "scored_cells": 24,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0076434830302015,
+     "max_rhat_parameter": "mu_log_sigma",
+     "min_ess_bulk": 649.7229827675671,
+     "min_ess_tail": 354.6688610069309,
+     "min_ess_parameter": "phi[9]",
+     "divergences": 0,
+     "min_bfmi": 0.5782770570642816,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "ESS 355 < 400 (phi[9])"
+     ],
+     "warmup": 1000,
+     "runtime_seconds": 241.41624479999882
+    },
+    {
+     "max_rhat": 1.0045351690651472,
+     "max_rhat_parameter": "alpha_raw[15]",
+     "min_ess_bulk": 620.7310943970062,
+     "min_ess_tail": 1156.4101912163428,
+     "min_ess_parameter": "mu_log_sigma",
+     "divergences": 0,
+     "min_bfmi": 0.5537061166322796,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 3000,
+     "runtime_seconds": 260.3780321999948
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 3000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261067,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E2",
+   "model": "bayes_primary",
+   "specification": "primary",
+   "target": "2024-Q4",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2019-Q4"
+    ],
+    [
+     "2022-Q3",
+     "2024-Q3"
+    ]
+   ],
+   "training_quarters": 52,
+   "masked_training_terms": 58,
+   "scored_cells": 24,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0074592430536229,
+     "max_rhat_parameter": "mu_log_sigma",
+     "min_ess_bulk": 668.6245377966068,
+     "min_ess_tail": 490.9724601765043,
+     "min_ess_parameter": "lam[9]",
+     "divergences": 0,
+     "min_bfmi": 0.5819989443002417,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 212.59651570000278
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261068,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E2",
+   "model": "bayes_primary",
+   "specification": "primary",
+   "target": "2025-Q1",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2019-Q4"
+    ],
+    [
+     "2022-Q3",
+     "2024-Q4"
+    ]
+   ],
+   "training_quarters": 53,
+   "masked_training_terms": 61,
+   "scored_cells": 25,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.011775375323209,
+     "max_rhat_parameter": "mu_log_sigma",
+     "min_ess_bulk": 537.6554220353821,
+     "min_ess_tail": 674.637994255539,
+     "min_ess_parameter": "mu_log_sigma",
+     "divergences": 0,
+     "min_bfmi": 0.5735878319222983,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "R-hat 1.012 > 1.01 (mu_log_sigma)"
+     ],
+     "warmup": 1000,
+     "runtime_seconds": 215.04008260001137
+    },
+    {
+     "max_rhat": 1.0053201703253212,
+     "max_rhat_parameter": "mu_theta",
+     "min_ess_bulk": 688.9699400265183,
+     "min_ess_tail": 1167.1906573362833,
+     "min_ess_parameter": "mu_log_sigma",
+     "divergences": 0,
+     "min_bfmi": 0.56315991507817,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 3000,
+     "runtime_seconds": 295.7240499999898
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 3000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261069,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E2",
+   "model": "bayes_primary",
+   "specification": "primary",
+   "target": "2025-Q2",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2019-Q4"
+    ],
+    [
+     "2022-Q3",
+     "2025-Q1"
+    ]
+   ],
+   "training_quarters": 54,
+   "masked_training_terms": 63,
+   "scored_cells": 25,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.004737365510655,
+     "max_rhat_parameter": "mu_log_sigma",
+     "min_ess_bulk": 803.802111706515,
+     "min_ess_tail": 1224.5920321082292,
+     "min_ess_parameter": "mu_log_sigma",
+     "divergences": 0,
+     "min_bfmi": 0.5476434040890678,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 180.45085639999888
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261070,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E2",
+   "model": "bayes_primary",
+   "specification": "primary",
+   "target": "2025-Q3",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2019-Q4"
+    ],
+    [
+     "2022-Q3",
+     "2025-Q2"
+    ]
+   ],
+   "training_quarters": 55,
+   "masked_training_terms": 65,
+   "scored_cells": 25,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0054839356891183,
+     "max_rhat_parameter": "log_sigma_raw[4]",
+     "min_ess_bulk": 764.3006819848155,
+     "min_ess_tail": 1021.348086868021,
+     "min_ess_parameter": "mu_log_sigma",
+     "divergences": 0,
+     "min_bfmi": 0.5701844285505308,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 154.47838440000487
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261071,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E2",
+   "model": "bayes_primary",
+   "specification": "primary",
+   "target": "2025-Q4",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2019-Q4"
+    ],
+    [
+     "2022-Q3",
+     "2025-Q3"
+    ]
+   ],
+   "training_quarters": 56,
+   "masked_training_terms": 67,
+   "scored_cells": 25,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.006012504735887,
+     "max_rhat_parameter": "mu_log_sigma",
+     "min_ess_bulk": 644.4010175954635,
+     "min_ess_tail": 805.7047033887158,
+     "min_ess_parameter": "mu_log_sigma",
+     "divergences": 0,
+     "min_bfmi": 0.5029902220233877,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 175.4788372000039
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261072,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E2",
+   "model": "bayes_primary",
+   "specification": "primary",
+   "target": "2026-Q1",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2019-Q4"
+    ],
+    [
+     "2022-Q3",
+     "2025-Q4"
+    ]
+   ],
+   "training_quarters": 57,
+   "masked_training_terms": 69,
+   "scored_cells": 25,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0049850515438576,
+     "max_rhat_parameter": "mu_phi_logit",
+     "min_ess_bulk": 668.1596068524109,
+     "min_ess_tail": 726.4554455474922,
+     "min_ess_parameter": "mu_log_sigma",
+     "divergences": 0,
+     "min_bfmi": 0.5216864237812044,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 183.31845449999673
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261073,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E2",
+   "model": "bayes_primary",
+   "specification": "primary",
+   "target": "2026-Q2",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2019-Q4"
+    ],
+    [
+     "2022-Q3",
+     "2026-Q1"
+    ]
+   ],
+   "training_quarters": 58,
+   "masked_training_terms": 71,
+   "scored_cells": 25,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0072050619461927,
+     "max_rhat_parameter": "theta_raw[23]",
+     "min_ess_bulk": 632.2691186314615,
+     "min_ess_tail": 975.3485323635346,
+     "min_ess_parameter": "mu_log_sigma",
+     "divergences": 0,
+     "min_bfmi": 0.5503141214620739,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 229.76135299999441
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261074,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E2",
+   "model": "bayes_no_common_factor",
+   "specification": "no_common_factor",
+   "target": "2022-Q3",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2019-Q4"
+    ]
+   ],
+   "training_quarters": 43,
+   "masked_training_terms": 37,
+   "scored_cells": 25,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.005749147128625,
+     "max_rhat_parameter": "log_sigma_raw[5]",
+     "min_ess_bulk": 631.879536678045,
+     "min_ess_tail": 1262.452145169953,
+     "min_ess_parameter": "mu_log_sigma",
+     "divergences": 0,
+     "min_bfmi": 0.6242275431984347,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 186.6533563000121
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261059,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E2",
+   "model": "bayes_no_common_factor",
+   "specification": "no_common_factor",
+   "target": "2022-Q4",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2019-Q4"
+    ],
+    [
+     "2022-Q3",
+     "2022-Q3"
+    ]
+   ],
+   "training_quarters": 44,
+   "masked_training_terms": 39,
+   "scored_cells": 25,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0058610893609394,
+     "max_rhat_parameter": "phi_logit[13]",
+     "min_ess_bulk": 697.4875782523677,
+     "min_ess_tail": 1208.2490284743228,
+     "min_ess_parameter": "mu_log_sigma",
+     "divergences": 0,
+     "min_bfmi": 0.6226998457667604,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 181.43433950000326
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261060,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E2",
+   "model": "bayes_no_common_factor",
+   "specification": "no_common_factor",
+   "target": "2023-Q1",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2019-Q4"
+    ],
+    [
+     "2022-Q3",
+     "2022-Q4"
+    ]
+   ],
+   "training_quarters": 45,
+   "masked_training_terms": 41,
+   "scored_cells": 25,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0060237698878027,
+     "max_rhat_parameter": "log_sigma_raw[5]",
+     "min_ess_bulk": 690.6293943051902,
+     "min_ess_tail": 1231.740949383744,
+     "min_ess_parameter": "mu_log_sigma",
+     "divergences": 0,
+     "min_bfmi": 0.6120801699208627,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 151.69825780000247
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261061,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E2",
+   "model": "bayes_no_common_factor",
+   "specification": "no_common_factor",
+   "target": "2023-Q2",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2019-Q4"
+    ],
+    [
+     "2022-Q3",
+     "2023-Q1"
+    ]
+   ],
+   "training_quarters": 46,
+   "masked_training_terms": 43,
+   "scored_cells": 25,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0076987962826445,
+     "max_rhat_parameter": "log_sigma_raw[5]",
+     "min_ess_bulk": 650.2928185856896,
+     "min_ess_tail": 883.698146678879,
+     "min_ess_parameter": "mu_log_sigma",
+     "divergences": 0,
+     "min_bfmi": 0.6222539330709032,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 180.347618099986
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261062,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E2",
+   "model": "bayes_no_common_factor",
+   "specification": "no_common_factor",
+   "target": "2023-Q3",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2019-Q4"
+    ],
+    [
+     "2022-Q3",
+     "2023-Q2"
+    ]
+   ],
+   "training_quarters": 47,
+   "masked_training_terms": 45,
+   "scored_cells": 25,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0070725708879174,
+     "max_rhat_parameter": "log_sigma_raw[5]",
+     "min_ess_bulk": 558.1803224250665,
+     "min_ess_tail": 1033.7028025753868,
+     "min_ess_parameter": "mu_log_sigma",
+     "divergences": 0,
+     "min_bfmi": 0.6185450052653518,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 190.62493350000295
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261063,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E2",
+   "model": "bayes_no_common_factor",
+   "specification": "no_common_factor",
+   "target": "2023-Q4",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2019-Q4"
+    ],
+    [
+     "2022-Q3",
+     "2023-Q3"
+    ]
+   ],
+   "training_quarters": 48,
+   "masked_training_terms": 47,
+   "scored_cells": 24,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0054848881320242,
+     "max_rhat_parameter": "tau_log_sigma",
+     "min_ess_bulk": 639.4818965832004,
+     "min_ess_tail": 832.0405917071315,
+     "min_ess_parameter": "mu_log_sigma",
+     "divergences": 0,
+     "min_bfmi": 0.6272977269391357,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 175.65498579999257
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261064,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E2",
+   "model": "bayes_no_common_factor",
+   "specification": "no_common_factor",
+   "target": "2024-Q1",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2019-Q4"
+    ],
+    [
+     "2022-Q3",
+     "2023-Q4"
+    ]
+   ],
+   "training_quarters": 49,
+   "masked_training_terms": 50,
+   "scored_cells": 24,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.006348848004978,
+     "max_rhat_parameter": "log_sigma_raw[5]",
+     "min_ess_bulk": 595.0518501776181,
+     "min_ess_tail": 980.5265770261071,
+     "min_ess_parameter": "mu_log_sigma",
+     "divergences": 0,
+     "min_bfmi": 0.6251183330822374,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 176.0412909000006
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261065,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E2",
+   "model": "bayes_no_common_factor",
+   "specification": "no_common_factor",
+   "target": "2024-Q2",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2019-Q4"
+    ],
+    [
+     "2022-Q3",
+     "2024-Q1"
+    ]
+   ],
+   "training_quarters": 50,
+   "masked_training_terms": 53,
+   "scored_cells": 25,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0060726053946856,
+     "max_rhat_parameter": "log_sigma_raw[5]",
+     "min_ess_bulk": 596.7591499519232,
+     "min_ess_tail": 1194.3467133252318,
+     "min_ess_parameter": "mu_log_sigma",
+     "divergences": 0,
+     "min_bfmi": 0.6061853652201671,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 167.46622440000647
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261066,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E2",
+   "model": "bayes_no_common_factor",
+   "specification": "no_common_factor",
+   "target": "2024-Q3",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2019-Q4"
+    ],
+    [
+     "2022-Q3",
+     "2024-Q2"
+    ]
+   ],
+   "training_quarters": 51,
+   "masked_training_terms": 55,
+   "scored_cells": 24,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0064708035903016,
+     "max_rhat_parameter": "log_sigma_raw[5]",
+     "min_ess_bulk": 587.6503091711533,
+     "min_ess_tail": 1237.3282258859824,
+     "min_ess_parameter": "mu_log_sigma",
+     "divergences": 0,
+     "min_bfmi": 0.6271562841661213,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 210.05000109999673
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261067,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E2",
+   "model": "bayes_no_common_factor",
+   "specification": "no_common_factor",
+   "target": "2024-Q4",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2019-Q4"
+    ],
+    [
+     "2022-Q3",
+     "2024-Q3"
+    ]
+   ],
+   "training_quarters": 52,
+   "masked_training_terms": 58,
+   "scored_cells": 24,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0058326637000707,
+     "max_rhat_parameter": "log_sigma_raw[5]",
+     "min_ess_bulk": 598.9748255003324,
+     "min_ess_tail": 1185.942234236129,
+     "min_ess_parameter": "mu_log_sigma",
+     "divergences": 0,
+     "min_bfmi": 0.6203910298390896,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 191.67700029999833
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261068,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E2",
+   "model": "bayes_no_common_factor",
+   "specification": "no_common_factor",
+   "target": "2025-Q1",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2019-Q4"
+    ],
+    [
+     "2022-Q3",
+     "2024-Q4"
+    ]
+   ],
+   "training_quarters": 53,
+   "masked_training_terms": 61,
+   "scored_cells": 25,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.009717310036064,
+     "max_rhat_parameter": "log_sigma_raw[5]",
+     "min_ess_bulk": 540.9195673229314,
+     "min_ess_tail": 1197.8698803864343,
+     "min_ess_parameter": "mu_log_sigma",
+     "divergences": 0,
+     "min_bfmi": 0.602803400499054,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 153.64465210000344
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261069,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E2",
+   "model": "bayes_no_common_factor",
+   "specification": "no_common_factor",
+   "target": "2025-Q2",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2019-Q4"
+    ],
+    [
+     "2022-Q3",
+     "2025-Q1"
+    ]
+   ],
+   "training_quarters": 54,
+   "masked_training_terms": 63,
+   "scored_cells": 25,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0052889491828974,
+     "max_rhat_parameter": "tau_log_sigma",
+     "min_ess_bulk": 678.788785381585,
+     "min_ess_tail": 1268.0525559404134,
+     "min_ess_parameter": "mu_log_sigma",
+     "divergences": 0,
+     "min_bfmi": 0.5770867511485073,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 214.89186309999786
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261070,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E2",
+   "model": "bayes_no_common_factor",
+   "specification": "no_common_factor",
+   "target": "2025-Q3",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2019-Q4"
+    ],
+    [
+     "2022-Q3",
+     "2025-Q2"
+    ]
+   ],
+   "training_quarters": 55,
+   "masked_training_terms": 65,
+   "scored_cells": 25,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0069612639888283,
+     "max_rhat_parameter": "log_sigma_raw[5]",
+     "min_ess_bulk": 579.5702934164779,
+     "min_ess_tail": 1257.8697901437122,
+     "min_ess_parameter": "mu_log_sigma",
+     "divergences": 0,
+     "min_bfmi": 0.6415307646616178,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 210.49348140000075
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261071,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E2",
+   "model": "bayes_no_common_factor",
+   "specification": "no_common_factor",
+   "target": "2025-Q4",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2019-Q4"
+    ],
+    [
+     "2022-Q3",
+     "2025-Q3"
+    ]
+   ],
+   "training_quarters": 56,
+   "masked_training_terms": 67,
+   "scored_cells": 25,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0076794318720124,
+     "max_rhat_parameter": "log_sigma_raw[5]",
+     "min_ess_bulk": 654.4606773717122,
+     "min_ess_tail": 1333.2774137073943,
+     "min_ess_parameter": "mu_log_sigma",
+     "divergences": 0,
+     "min_bfmi": 0.5630042360518367,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 186.2319339000096
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261072,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E2",
+   "model": "bayes_no_common_factor",
+   "specification": "no_common_factor",
+   "target": "2026-Q1",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2019-Q4"
+    ],
+    [
+     "2022-Q3",
+     "2025-Q4"
+    ]
+   ],
+   "training_quarters": 57,
+   "masked_training_terms": 69,
+   "scored_cells": 25,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0087647745662887,
+     "max_rhat_parameter": "log_sigma_raw[5]",
+     "min_ess_bulk": 423.96501350266703,
+     "min_ess_tail": 1116.7671789033861,
+     "min_ess_parameter": "mu_log_sigma",
+     "divergences": 0,
+     "min_bfmi": 0.6229967548238462,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 171.35611069999868
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261073,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E2",
+   "model": "bayes_no_common_factor",
+   "specification": "no_common_factor",
+   "target": "2026-Q2",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2019-Q4"
+    ],
+    [
+     "2022-Q3",
+     "2026-Q1"
+    ]
+   ],
+   "training_quarters": 58,
+   "masked_training_terms": 71,
+   "scored_cells": 25,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.006033999291711,
+     "max_rhat_parameter": "log_sigma_raw[5]",
+     "min_ess_bulk": 475.99479334446335,
+     "min_ess_tail": 1159.8431059845252,
+     "min_ess_parameter": "mu_log_sigma",
+     "divergences": 0,
+     "min_bfmi": 0.637681194495949,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 177.63049909999245
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261074,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E2",
+   "model": "bayes_gaussian_iid",
+   "specification": "gaussian_iid",
+   "target": "2022-Q3",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2019-Q4"
+    ]
+   ],
+   "training_quarters": 43,
+   "masked_training_terms": 37,
+   "scored_cells": 25,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0057748622065557,
+     "max_rhat_parameter": "beta0[6]",
+     "min_ess_bulk": 594.1557561407094,
+     "min_ess_tail": 604.5675176901141,
+     "min_ess_parameter": "mu_log_sigma",
+     "divergences": 0,
+     "min_bfmi": 0.6129489202083878,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 75.90874170001189
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261059,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E2",
+   "model": "bayes_gaussian_iid",
+   "specification": "gaussian_iid",
+   "target": "2022-Q4",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2019-Q4"
+    ],
+    [
+     "2022-Q3",
+     "2022-Q3"
+    ]
+   ],
+   "training_quarters": 44,
+   "masked_training_terms": 39,
+   "scored_cells": 25,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0054903532740955,
+     "max_rhat_parameter": "b[24,1]",
+     "min_ess_bulk": 590.3275233710068,
+     "min_ess_tail": 1004.0830701827741,
+     "min_ess_parameter": "mu_log_sigma",
+     "divergences": 0,
+     "min_bfmi": 0.5979248786849078,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 70.76295600000594
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261060,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E2",
+   "model": "bayes_gaussian_iid",
+   "specification": "gaussian_iid",
+   "target": "2023-Q1",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2019-Q4"
+    ],
+    [
+     "2022-Q3",
+     "2022-Q4"
+    ]
+   ],
+   "training_quarters": 45,
+   "masked_training_terms": 41,
+   "scored_cells": 25,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0057240515325117,
+     "max_rhat_parameter": "theta_raw[14]",
+     "min_ess_bulk": 599.1243226751212,
+     "min_ess_tail": 1333.1036322177106,
+     "min_ess_parameter": "mu_log_sigma",
+     "divergences": 0,
+     "min_bfmi": 0.5893630457266921,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 64.43800209999608
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261061,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E2",
+   "model": "bayes_gaussian_iid",
+   "specification": "gaussian_iid",
+   "target": "2023-Q2",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2019-Q4"
+    ],
+    [
+     "2022-Q3",
+     "2023-Q1"
+    ]
+   ],
+   "training_quarters": 46,
+   "masked_training_terms": 43,
+   "scored_cells": 25,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0053280301629586,
+     "max_rhat_parameter": "b[24,1]",
+     "min_ess_bulk": 606.4820488318323,
+     "min_ess_tail": 1154.8362885975494,
+     "min_ess_parameter": "mu_log_sigma",
+     "divergences": 0,
+     "min_bfmi": 0.6316712008829382,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 61.320230600002105
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261062,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E2",
+   "model": "bayes_gaussian_iid",
+   "specification": "gaussian_iid",
+   "target": "2023-Q3",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2019-Q4"
+    ],
+    [
+     "2022-Q3",
+     "2023-Q2"
+    ]
+   ],
+   "training_quarters": 47,
+   "masked_training_terms": 45,
+   "scored_cells": 25,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.006313587743973,
+     "max_rhat_parameter": "tau_theta",
+     "min_ess_bulk": 663.9138311491511,
+     "min_ess_tail": 1321.5965437540801,
+     "min_ess_parameter": "mu_log_sigma",
+     "divergences": 0,
+     "min_bfmi": 0.6240380059557958,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 72.54016669999692
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261063,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E2",
+   "model": "bayes_gaussian_iid",
+   "specification": "gaussian_iid",
+   "target": "2023-Q4",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2019-Q4"
+    ],
+    [
+     "2022-Q3",
+     "2023-Q3"
+    ]
+   ],
+   "training_quarters": 48,
+   "masked_training_terms": 47,
+   "scored_cells": 24,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0047557461644556,
+     "max_rhat_parameter": "theta_raw[23]",
+     "min_ess_bulk": 571.5403052523608,
+     "min_ess_tail": 1316.0058997531946,
+     "min_ess_parameter": "mu_log_sigma",
+     "divergences": 0,
+     "min_bfmi": 0.6044199008178646,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 57.14954870000656
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261064,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E2",
+   "model": "bayes_gaussian_iid",
+   "specification": "gaussian_iid",
+   "target": "2024-Q1",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2019-Q4"
+    ],
+    [
+     "2022-Q3",
+     "2023-Q4"
+    ]
+   ],
+   "training_quarters": 49,
+   "masked_training_terms": 50,
+   "scored_cells": 24,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0068160993609576,
+     "max_rhat_parameter": "beta0[3]",
+     "min_ess_bulk": 675.1097800835697,
+     "min_ess_tail": 1307.724112285452,
+     "min_ess_parameter": "mu_log_sigma",
+     "divergences": 0,
+     "min_bfmi": 0.6054344183890672,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 65.55133489999571
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261065,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E2",
+   "model": "bayes_gaussian_iid",
+   "specification": "gaussian_iid",
+   "target": "2024-Q2",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2019-Q4"
+    ],
+    [
+     "2022-Q3",
+     "2024-Q1"
+    ]
+   ],
+   "training_quarters": 50,
+   "masked_training_terms": 53,
+   "scored_cells": 25,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0060397987222935,
+     "max_rhat_parameter": "b[24,1]",
+     "min_ess_bulk": 585.6751103923177,
+     "min_ess_tail": 1247.2013733411407,
+     "min_ess_parameter": "mu_log_sigma",
+     "divergences": 0,
+     "min_bfmi": 0.6194024993184198,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 60.78721510000469
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261066,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E2",
+   "model": "bayes_gaussian_iid",
+   "specification": "gaussian_iid",
+   "target": "2024-Q3",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2019-Q4"
+    ],
+    [
+     "2022-Q3",
+     "2024-Q2"
+    ]
+   ],
+   "training_quarters": 51,
+   "masked_training_terms": 55,
+   "scored_cells": 24,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.00573412077431,
+     "max_rhat_parameter": "alpha_raw[7]",
+     "min_ess_bulk": 641.8548413073565,
+     "min_ess_tail": 1244.564131803299,
+     "min_ess_parameter": "mu_log_sigma",
+     "divergences": 0,
+     "min_bfmi": 0.6188100632239487,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 73.89089760000934
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261067,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E2",
+   "model": "bayes_gaussian_iid",
+   "specification": "gaussian_iid",
+   "target": "2024-Q4",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2019-Q4"
+    ],
+    [
+     "2022-Q3",
+     "2024-Q3"
+    ]
+   ],
+   "training_quarters": 52,
+   "masked_training_terms": 58,
+   "scored_cells": 24,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0052492035087321,
+     "max_rhat_parameter": "tau_theta",
+     "min_ess_bulk": 643.3102781162377,
+     "min_ess_tail": 1151.6746888900961,
+     "min_ess_parameter": "mu_log_sigma",
+     "divergences": 0,
+     "min_bfmi": 0.6070545873827442,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 67.40925480000442
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261068,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E2",
+   "model": "bayes_gaussian_iid",
+   "specification": "gaussian_iid",
+   "target": "2025-Q1",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2019-Q4"
+    ],
+    [
+     "2022-Q3",
+     "2024-Q4"
+    ]
+   ],
+   "training_quarters": 53,
+   "masked_training_terms": 61,
+   "scored_cells": 25,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0053623284153275,
+     "max_rhat_parameter": "b_raw[15,1]",
+     "min_ess_bulk": 587.0709168121577,
+     "min_ess_tail": 629.8356424663612,
+     "min_ess_parameter": "mu_log_sigma",
+     "divergences": 0,
+     "min_bfmi": 0.6079494471976336,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 59.797353500005556
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261069,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E2",
+   "model": "bayes_gaussian_iid",
+   "specification": "gaussian_iid",
+   "target": "2025-Q2",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2019-Q4"
+    ],
+    [
+     "2022-Q3",
+     "2025-Q1"
+    ]
+   ],
+   "training_quarters": 54,
+   "masked_training_terms": 63,
+   "scored_cells": 25,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.006981570048495,
+     "max_rhat_parameter": "tau_theta",
+     "min_ess_bulk": 634.0863672247195,
+     "min_ess_tail": 664.330222078986,
+     "min_ess_parameter": "mu_log_sigma",
+     "divergences": 0,
+     "min_bfmi": 0.5989262700816644,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 72.04225799998676
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261070,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E2",
+   "model": "bayes_gaussian_iid",
+   "specification": "gaussian_iid",
+   "target": "2025-Q3",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2019-Q4"
+    ],
+    [
+     "2022-Q3",
+     "2025-Q2"
+    ]
+   ],
+   "training_quarters": 55,
+   "masked_training_terms": 65,
+   "scored_cells": 25,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0053954677181904,
+     "max_rhat_parameter": "b_raw[3,1]",
+     "min_ess_bulk": 592.4690487836556,
+     "min_ess_tail": 1158.2985300420705,
+     "min_ess_parameter": "mu_log_sigma",
+     "divergences": 0,
+     "min_bfmi": 0.6176817498182245,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 74.30192769999849
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261071,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E2",
+   "model": "bayes_gaussian_iid",
+   "specification": "gaussian_iid",
+   "target": "2025-Q4",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2019-Q4"
+    ],
+    [
+     "2022-Q3",
+     "2025-Q3"
+    ]
+   ],
+   "training_quarters": 56,
+   "masked_training_terms": 67,
+   "scored_cells": 25,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0066380251517855,
+     "max_rhat_parameter": "alpha_raw[11]",
+     "min_ess_bulk": 543.0511617941794,
+     "min_ess_tail": 1114.1944240371508,
+     "min_ess_parameter": "mu_log_sigma",
+     "divergences": 0,
+     "min_bfmi": 0.61240906475261,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 71.53786670000409
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261072,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E2",
+   "model": "bayes_gaussian_iid",
+   "specification": "gaussian_iid",
+   "target": "2026-Q1",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2019-Q4"
+    ],
+    [
+     "2022-Q3",
+     "2025-Q4"
+    ]
+   ],
+   "training_quarters": 57,
+   "masked_training_terms": 69,
+   "scored_cells": 25,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0054084626491477,
+     "max_rhat_parameter": "alpha[19]",
+     "min_ess_bulk": 501.67800176823414,
+     "min_ess_tail": 1092.5551077543334,
+     "min_ess_parameter": "mu_log_sigma",
+     "divergences": 0,
+     "min_bfmi": 0.6184221683273822,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 73.70420190000732
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261073,
+   "replicates": 4
+  },
+  {
+   "evaluation": "E2",
+   "model": "bayes_gaussian_iid",
+   "specification": "gaussian_iid",
+   "target": "2026-Q2",
+   "training_segments": [
+    [
+     "2009-Q2",
+     "2019-Q4"
+    ],
+    [
+     "2022-Q3",
+     "2026-Q1"
+    ]
+   ],
+   "training_quarters": 58,
+   "masked_training_terms": 71,
+   "scored_cells": 25,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0057619020670494,
+     "max_rhat_parameter": "alpha_raw[11]",
+     "min_ess_bulk": 540.0319862485017,
+     "min_ess_tail": 1158.6661518960193,
+     "min_ess_parameter": "mu_log_sigma",
+     "divergences": 0,
+     "min_bfmi": 0.6176791551069262,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 63.89517990000604
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261074,
+   "replicates": 4
+  }
+ ]
+}
