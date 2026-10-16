@@ -2,3 +2,4 @@
 *.psd filter=lfs diff=lfs merge=lfs -text
 Blood_Pressure_Missingness/data/analysis_snapshot.csv -filter -diff -merge text
 Blood_Pressure_Missingness/data/pulse_oximeter_daily_snapshot.csv -filter -diff -merge text
+hansard-classifier-drift/**/*.csv -filter -diff -merge text

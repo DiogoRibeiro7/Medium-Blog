@@ -36,6 +36,7 @@ class ModelSpec:
     tau_theta_scale: float = 0.25
     lags: int = 2
     windows: tuple[tuple[str, str], ...] = PRIMARY_WINDOWS
+    time_effects: bool = False   # additive quarter effects, sum to zero (amendment 1)
 
 
 PRIMARY = ModelSpec(
@@ -64,6 +65,28 @@ SPECS: dict[str, ModelSpec] = {
                 "2022-Q3..2026-Q2 as two segments", windows=PANDEMIC_EXCLUDED_WINDOWS),
     )
 }
+# The nine specifications of BAYES_PROTOCOL.md, section 5: the robustness and claim
+# judgements of section 7 use these only.
+PREREGISTERED: tuple[str, ...] = tuple(SPECS)
+# Amendment 1 (section 9): additive shared quarter effects, with and without
+# participation, registered before any fit.
+AMENDMENT_1: tuple[str, ...] = (
+    "time_effects", "time_effects_participation", "participation_no_common_factor",
+)
+SPECS.update({
+    spec.name: spec
+    for spec in (
+        replace(PRIMARY, name="time_effects", description="Additive shared quarter effects "
+                "(sum to zero) instead of the common factor", common_factor=False,
+                time_effects=True),
+        replace(PRIMARY, name="time_effects_participation", description="Additive shared "
+                "quarter effects plus the participation change", common_factor=False,
+                time_effects=True, participation=True),
+        replace(PRIMARY, name="participation_no_common_factor", description="The "
+                "participation change, no common factor and no quarter effects",
+                common_factor=False, participation=True),
+    )
+})
 
 
 def model_inputs(data: BayesData) -> dict[str, Any]:
@@ -76,7 +99,10 @@ def model_inputs(data: BayesData) -> dict[str, Any]:
 
 
 def conditional_mean(inputs: Mapping[str, Any], params: Mapping[str, Any]) -> Any:
-    """alpha + theta*g + sum_k b_k*(g_{t-k} - g_t) [+ gamma*dp] [+ lambda*f]; shape (N, T)."""
+    """alpha + theta*g + sum_k b_k*(g_{t-k} - g_t) [+ gamma*dp] [+ lambda*f] [+ delta_t].
+
+    Shape (N, T). ``quarter_effect`` (delta) is the additive shared quarter effect.
+    """
     mean = (
         params["alpha"][:, None]
         + params["theta"][:, None] * inputs["g"]
@@ -86,6 +112,8 @@ def conditional_mean(inputs: Mapping[str, Any], params: Mapping[str, Any]) -> An
         mean = mean + params["gamma"][:, None] * inputs["dp"]
     if "lam" in params:
         mean = mean + params["lam"][:, None] * params["f"][None, :]
+    if "quarter_effect" in params:
+        mean = mean + params["quarter_effect"][None, :]
     return mean
 
 
@@ -171,10 +199,18 @@ def okun_model(inputs: Mapping[str, Any], spec: ModelSpec) -> None:
         log_sigma = numpyro.sample(
             "log_sigma", dist.Normal(LOG_SIGMA_CENTRE, 1.0 * s).expand((n,)).to_event(1))
     params["sigma"] = numpyro.deterministic("sigma", jnp.exp(log_sigma))
+    if spec.common_factor and spec.time_effects:
+        raise ValueError("Quarter effects and the common factor are never combined.")
     if spec.common_factor:
         params["lam"] = numpyro.sample(
             "lam", dist.HalfNormal(0.2 * s).expand((n,)).to_event(1))
         params["f"] = numpyro.sample("f", dist.Normal(0.0, 1.0).expand((t,)).to_event(1))
+    if spec.time_effects:
+        # Sum to zero over the sample quarters: the intercepts carry the level, so the
+        # quarter effects are identified (BAYES_PROTOCOL.md, section 9.1).
+        tau_quarter = numpyro.sample("tau_quarter", dist.HalfNormal(0.25 * s))
+        params["quarter_effect"] = numpyro.sample(
+            "quarter_effect", dist.ZeroSumNormal(tau_quarter, event_shape=(t,)))
     if spec.student_t:
         params["nu"] = numpyro.sample("nu", dist.Gamma(2.0, 0.1))
     numpyro.deterministic(

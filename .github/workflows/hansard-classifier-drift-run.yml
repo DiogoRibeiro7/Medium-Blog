@@ -1,0 +1,128 @@
+name: Hansard classifier drift run
+
+# Stage 1 downloads the corpus (about 1.4 GB of parquet), tags every Chair speech, writes
+# the label-free results and draws the blind validation sample once.
+# Stage 2 needs no download: it reads the committed population counts and hand labels and
+# writes the corrected estimates, the classifier comparison and the figures.
+#
+# Start it by hand, or label a pull request that touches the study with
+# `hansard-stage1` or `hansard-stage2`. On a pull request the results are committed to
+# its branch; when started by hand they arrive in a pull request of their own.
+
+on:
+  workflow_dispatch:
+    inputs:
+      stage:
+        description: "stage1 (download, tag, sample) or stage2 (estimate from the labels)"
+        type: choice
+        options: [stage1, stage2]
+        default: stage1
+  pull_request:
+    types: [labeled]
+    paths:
+      - "hansard-classifier-drift/**"
+      - ".github/workflows/hansard-classifier-drift-run.yml"
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: hansard-classifier-drift-run
+  cancel-in-progress: false
+
+jobs:
+  run:
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      github.event.label.name == 'hansard-stage1' ||
+      github.event.label.name == 'hansard-stage2'
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    env:
+      STAGE: ${{ github.event_name == 'workflow_dispatch' && inputs.stage || (github.event.label.name == 'hansard-stage2' && 'stage2' || 'stage1') }}
+    defaults:
+      run:
+        working-directory: hansard-classifier-drift
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event_name == 'pull_request' && github.head_ref || github.ref }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install project
+        run: python -m pip install -e ".[fetch,dev]"
+
+      - name: Tests on synthetic data
+        run: python -m pytest
+
+      - name: Use a Hugging Face token if one is configured
+        if: env.STAGE == 'stage1'
+        env:
+          HF_TOKEN_SECRET: ${{ secrets.HF_TOKEN }}
+        run: |
+          if [ -n "$HF_TOKEN_SECRET" ]; then
+            echo "HF_TOKEN=$HF_TOKEN_SECRET" >> "$GITHUB_ENV"
+          else
+            echo "No HF_TOKEN secret; downloading anonymously."
+          fi
+
+      - name: Download the corpus
+        if: env.STAGE == 'stage1'
+        run: hansard-drift fetch
+
+      - name: Stage 1 - roles, tags, naive rates, lexical drift, validation sample
+        if: env.STAGE == 'stage1'
+        run: hansard-drift stage1
+
+      - name: Stage 2 - corrected estimates, classifier comparison, figures
+        if: env.STAGE == 'stage2'
+        run: hansard-drift stage2
+
+      - name: Record the exact environment
+        run: python -m pip freeze --exclude-editable > results/pip-freeze.txt
+
+      - name: Keep the built tables as an artifact
+        if: ${{ always() && env.STAGE == 'stage1' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: hansard-build-${{ github.run_id }}
+          path: hansard-classifier-drift/.cache/build/
+          retention-days: 30
+          if-no-files-found: ignore
+
+      - name: Commit the results
+        working-directory: .
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          paths="hansard-classifier-drift/results hansard-classifier-drift/figures hansard-classifier-drift/labels"
+          if [ -z "$(git status --porcelain --untracked-files=all -- $paths)" ]; then
+            echo "No changes to commit."
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add $paths
+          git commit -m "Hansard classifier drift: $STAGE results (run ${{ github.run_id }})"
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            git push origin HEAD:"${{ github.head_ref }}"
+            exit 0
+          fi
+          branch='automation/hansard-classifier-drift-run'
+          git push --force origin HEAD:"$branch"
+          base='${{ github.ref_name }}'
+          title="Hansard classifier drift: $STAGE results"
+          body="Results of workflow run ${{ github.run_id }}."
+          pr_number="$(gh pr list --state open --base "$base" --head "$branch" --json number --jq '.[0].number // empty')"
+          if [ -n "$pr_number" ]; then
+            gh pr edit "$pr_number" --title "$title" --body "$body"
+          else
+            gh pr create --base "$base" --head "$branch" --title "$title" --body "$body"
+          fi

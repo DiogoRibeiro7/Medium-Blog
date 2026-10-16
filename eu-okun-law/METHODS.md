@@ -70,6 +70,46 @@ theta[i] ~ Normal(mu_theta, tau_theta)   (non-centred; likewise alpha, b, phi, l
   probabilities `P(theta[i] < theta[j])`; nine fixed sensitivity specifications
   (priors, pooling, common factor, error model, participation, lag order, sample).
 
+### Amendment 1: shared quarter effects, prior predictive checks, recovery (implemented)
+
+Registered in [BAYES_PROTOCOL.md](BAYES_PROTOCOL.md), section 9, before any of its fits;
+implemented in `bayes_model.py`, `bayes_artifacts.py` and `bayes_checks.py`; results in
+[docs/BAYES_MODEL_CHECKS.md](docs/BAYES_MODEL_CHECKS.md).
+
+In the textbook notation
+
+```text
+du[i,t] = alpha[i] + sum(k=0..K) beta[i,k]*g[i,t-k] + gamma[i]*dp[i,t] + lambda[t] + e[i,t]
+```
+
+the models above use `beta[i,0] = theta[i] - sum_k b[i,k]` and `beta[i,k] = b[i,k]`, so the
+coefficient sum `theta[i]` is a parameter. Units: `du`, `dp`, `alpha`, `lambda` and the
+error scales in pp of the unemployment rate per quarter; `beta`, `theta` in pp per pp
+of quarterly GDP growth; `gamma` in pp per pp of participation.
+
+- **Shared quarter effects.** `lambda[t]` enters either as a common factor with
+  country loadings (`lambda[i]*f[t]`, the pre-registered specifications) or, in the
+  amendment, as an additive effect `delta[t]` common to all countries with a
+  sum-to-zero constraint (`ZeroSumNormal`, scale `tau_delta ~ HalfNormal(0.25)`).
+- **Identifiability.** The constraint separates `delta` from the intercepts. Because
+  `delta[t]` absorbs everything common to a quarter, `theta[i]` then measures the
+  association with country-specific GDP growth beyond the common quarter effect, and
+  `mu_theta` is identified only from cross-country differences in growth within
+  quarters. Factor and additive effects are never combined.
+- **Design.** With/without shared quarter effects x with/without participation
+  (`time_effects`, `time_effects_participation`, `no_common_factor`,
+  `participation_no_common_factor`), compared by PSIS-LOO and the posterior predictive
+  cross-country correlation.
+- **Prior predictive checks.** 1000 prior draws per specification propagated to
+  simulated data on the real design; quantiles of the simulated standard deviations,
+  largest changes, autocorrelation and cross-country correlation against the observed.
+- **Recovery.** One data set per specification simulated from parameters fixed in code
+  (`mu_theta = -0.30`, `tau_theta = 0.15`) on the real design, refitted with the
+  protocol settings; coverage of the 50% and 90% intervals.
+- **Artifacts.** Every fit writes `posterior.nc` (ArviZ NetCDF: posterior,
+  sample_stats, prior, prior_predictive, observed_data, constant_data, log_likelihood)
+  with seeds, sampler settings, software versions and snapshot hashes.
+
 ### Predictive comparison (implemented)
 
 Pre-registered in [PREDICTIVE_PROTOCOL.md](PREDICTIVE_PROTOCOL.md) before any held-out

@@ -53,6 +53,10 @@ Chronos-2, TimesFM 2.5 and TiRex against seasonal naive and ETS baselines on hou
 
 ## Research studies in development
 
+### Classifier drift in Hansard
+
+[`hansard-classifier-drift/`](hansard-classifier-drift/) — validates a dictionary classifier of the Chair's disciplinary interventions in the House of Commons, 1979–2021, era by era against a blind hand-labelled sample, and splits the change in its counts into a change in behaviour and a change in the instrument's precision and recall. Stage 1 (corpus, tags, naive rates, sample) runs on GitHub Actions; the corrected estimates wait for the hand labels.
+
 ### Okun's law across the EU-27
 
 [`eu-okun-law/`](eu-okun-law/) — independently investigate the relationship between quarterly GDP growth, unemployment and labour-force participation across 27 countries. Data provenance and validation are implemented; econometric estimates and causal analysis are planned, not yet claimed.

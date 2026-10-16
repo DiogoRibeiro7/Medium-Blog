@@ -18,7 +18,7 @@ from typing import Any
 
 import numpy as np
 
-from eu_okun.bayes_model import SPECS
+from eu_okun.bayes_model import PREREGISTERED, SPECS
 
 PROBABILITY = 0.95          # threshold for "credible" statements (protocol, section 7)
 CREDIBLE = 0.90             # equal-tailed credible intervals
@@ -334,7 +334,8 @@ def build_review(fits_dir: Path, data_dir: Path | None = None,
     specification is also checked against the data.
     """
     fits = {
-        name: load_fit(fits_dir / name) for name in SPECS if (fits_dir / name / "fit.json").exists()
+        name: load_fit(fits_dir / name) for name in PREREGISTERED
+        if (fits_dir / name / "fit.json").exists()
     }
     if "primary" not in fits:
         raise FileNotFoundError(f"No primary fit in {fits_dir}.")
