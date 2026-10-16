@@ -29,6 +29,8 @@ Without the target quarters in which a Bayesian refit failed after the retry, 0 
 - E1: 5 of 5 models that use GDP growth in the target quarter have a lower mean CRPS than zero change (Bayes primary; Bayes, no common factor; Bayes, Gaussian i.i.d. errors; OLS distributed lag; ARDL (OLS + lagged change)).
 - E2: 1 of 5 models that use GDP growth in the target quarter has a lower mean CRPS than zero change (Bayes primary).
 
+An independent run (Linux replication, GitHub Actions run 38879823246) gives the same verdicts except for E2 Bayes, Gaussian i.i.d. errors vs OLS distributed lag (Holm p 0.051 here, 0.048 there). See section 9.
+
 Empirical coverage of the central 50% and 90% predictive intervals: Bayes primary in E1: 57% and 95%; OLS distributed lag in E1: 61% and 96%; Bayes primary in E2: 60% and 94%; OLS distributed lag in E2: 58% and 93%.
 
 ## 1. Design
@@ -203,7 +205,28 @@ The family comparisons under the secondary losses (unadjusted p-values, descript
 | E2 | Bayes primary | ARDL (OLS + lagged change) | -0.0752 (p 0.039) | -0.0282 (p 0.059) | -0.0271 (p 0.016) |
 | E2 | Bayes primary | Zero change | -0.0271 (p 0.061) | +0.0059 (p 0.201) | +0.0139 (p 0.042) |
 
-## 9. Interpretation and limitations
+## 9. Replication on a second platform
+
+Linux replication, GitHub Actions run 38879823246: the same snapshot, lock file, seeds, sampler settings and single retry. Its tables are in `replication-linux/`. MCMC output differs between platforms in floating-point detail, so borderline convergence decisions and borderline p-values can differ.
+
+| Set | A | B | A vs B (this run) | Holm p | Verdict | A vs B (replication) | Holm p | Verdict |
+| --- | --- | --- | ---: | ---: | --- | ---: | ---: | --- |
+| E1 | Bayes primary | OLS distributed lag | -0.5% | 1.000 | not distinguishable | -0.6% | 1.000 | not distinguishable |
+| E1 | Bayes, Gaussian i.i.d. errors | OLS distributed lag | -1.2% | 1.000 | not distinguishable | -1.2% | 1.000 | not distinguishable |
+| E1 | Bayes primary | Bayes, Gaussian i.i.d. errors | +0.7% | 1.000 | not distinguishable | +0.6% | 1.000 | not distinguishable |
+| E1 | Bayes primary | ARDL (OLS + lagged change) | -0.5% | 1.000 | not distinguishable | -0.6% | 1.000 | not distinguishable |
+| E1 | Bayes primary | Zero change | -13.5% | 0.018 | bayes_primary better | -13.6% | 0.016 | bayes_primary better |
+| E2 | Bayes primary | OLS distributed lag | -6.7% | 0.061 | not distinguishable | -6.7% | 0.057 | not distinguishable |
+| E2 | Bayes, Gaussian i.i.d. errors | OLS distributed lag | -4.1% | 0.051 | not distinguishable | -4.1% | 0.048 | bayes_gaussian_iid better |
+| E2 | Bayes primary | Bayes, Gaussian i.i.d. errors | -2.8% | 0.331 | not distinguishable | -2.7% | 0.315 | not distinguishable |
+| E2 | Bayes primary | ARDL (OLS + lagged change) | -8.5% | 0.131 | not distinguishable | -8.5% | 0.126 | not distinguishable |
+| E2 | Bayes primary | Zero change | -0.3% | 1.000 | not distinguishable | -0.2% | 1.000 | not distinguishable |
+
+- Bayesian predictions: the CRPS of the 2442 Bayesian cells differs by 0.0013 on average and at most 0.0216 between the runs.
+- Target quarters with a failed refit: this run E1: 2017-Q2, 2018-Q2, 2018-Q3, 2019-Q1; E2: 2023-Q2, 2023-Q3; replication E1: 2017-Q1, 2017-Q2, 2017-Q3, 2017-Q4, 2018-Q2, 2018-Q3, 2019-Q1; E2: 2023-Q1, 2023-Q2, 2023-Q3.
+- Verdicts: identical except E2 Bayes, Gaussian i.i.d. errors vs OLS distributed lag (Holm p 0.051 here, 0.048 there). A verdict that changes between runs rests on a p-value at the threshold and is not robust.
+
+## 10. Interpretation and limitations
 
 - **What is tested.** Conditional predictive accuracy given the quarter's GDP growth, on revised data. It is neither a real-time forecast nor a causal test: a model that predicts better is not shown to have structural coefficients.
 - **Power.** 16 target quarters per set; averaging within quarters guards against cross-country dependence but leaves little information. Non-rejection is not evidence of equal accuracy.
@@ -211,12 +234,12 @@ The family comparisons under the secondary losses (unadjusted p-values, descript
 - **The common factor** is unknown in a target quarter and integrated out. The posterior predictive checks showed it to be autocorrelated and correlated with average GDP growth (docs/HIERARCHICAL_BAYES.md); a dynamic factor could predict it, which is a separate milestone on the roadmap.
 - **Not covered:** joint (multivariate) scores, real-time vintages, time-varying coefficients.
 
-## 10. Reproduction
+## 11. Reproduction
 
 ```bash
 poetry install --extras "bayes report"
 poetry run eu-okun predictive-fit --data-dir snapshots/eurostat-2026-10-15 --output-dir results/predictive
-poetry run eu-okun predictive-report --data-dir snapshots/eurostat-2026-10-15 --fits-dir results/predictive --output-dir docs/predictive --report docs/PREDICTIVE_COMPARISON.md
+poetry run eu-okun predictive-report --data-dir snapshots/eurostat-2026-10-15 --fits-dir results/predictive --output-dir docs/predictive --report docs/PREDICTIVE_COMPARISON.md --replication-dir docs/predictive/replication-linux
 ```
 
 Snapshot manifest SHA-256 `8a8c8a107d584ba91b61584fd29397e68ff83d82982371a35db253c0803a0464`. The refits run in the separate *EU Okun predictive comparison* workflow; ordinary pull-request checks never sample. `predictions.csv` holds every scored prediction of every model, `refits.json` the diagnostics of every refit.

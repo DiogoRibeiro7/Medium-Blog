@@ -109,6 +109,8 @@ def main(argv: Sequence[str] | None = None) -> int:
                                    default=Path("results/predictive-report"))
     predictive_report.add_argument("--report", type=Path, default=None)
     predictive_report.add_argument("--no-figures", action="store_true")
+    predictive_report.add_argument("--replication-dir", type=Path, default=None,
+                                   help="Tables of an independent run to compare with")
     args = parser.parse_args(argv)
     if args.command == "fetch":
         try:
@@ -233,7 +235,8 @@ def main(argv: Sequence[str] | None = None) -> int:
 
         try:
             comparison = write_predictive_report(args.data_dir, args.fits_dir, args.output_dir,
-                                                 args.report, figures=not args.no_figures)
+                                                 args.report, figures=not args.no_figures,
+                                                 replication_dir=args.replication_dir)
         except (EurostatDataError, FileNotFoundError, ValueError, OSError, KeyError) as exc:
             parser.exit(2, f"Predictive report failed: {exc}\n")
         decided = [t for t in comparison.family if t.verdict != "not distinguishable"]

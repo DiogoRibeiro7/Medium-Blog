@@ -235,7 +235,8 @@ loss differentials, Holm-adjusted over ten comparisons):
   (not distinguishable).
 - **2022-2026 targets.** No model using GDP growth clearly beats no change. The
   hierarchical models score 4-9% better than the classical regressions, but not at the
-  5% familywise level (Holm p 0.05-0.13).
+  5% familywise level (Holm p 0.05-0.13). Pooling alone sits on the threshold: Holm
+  p 0.051 here and 0.048 in an independent Linux run, so that verdict is not robust.
 - Predictive intervals are somewhat too wide (90% intervals cover 90-98% of outcomes),
   and all models over-predict unemployment changes in 2016-2019 and under-predict them
   after 2022.

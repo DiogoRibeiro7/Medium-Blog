@@ -456,6 +456,14 @@ def test_report_renders_with_the_family_and_a_failed_refit(
                  "refits.json", "crps_differentials.png", "quarterly_differentials.png",
                  "calibration.png"):
         assert (tmp_path / "out" / name).exists()
+    assert "## 9. Interpretation and limitations" in report
+    # A replication with the same tables: identical verdicts and predictions.
+    again = pr.write_report(tmp_path, tmp_path / "fits", tmp_path / "out2", figures=False,
+                            replication_dir=tmp_path / "out")
+    assert again.replication is not None and again.replication.failed["E1"] == ["2017-Q2"]
+    text = (tmp_path / "out2" / "PREDICTIVE_COMPARISON.md").read_text(encoding="utf-8")
+    assert "## 9. Replication on a second platform" in text and "## 11. Reproduction" in text
+    assert "same verdicts for all ten comparisons" in text and "at most 0.0000" in text
     with pytest.raises(FileNotFoundError, match="no refit"):
         import shutil
         shutil.rmtree(tmp_path / "fits" / "E2" / "bayes_primary" / "2023-Q1")

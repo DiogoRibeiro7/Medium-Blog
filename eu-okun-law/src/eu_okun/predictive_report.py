@@ -47,6 +47,37 @@ from eu_okun.review import read_flags
 REFERENCE = "ols_dl"
 
 
+@dataclass(frozen=True)
+class Replication:
+    """Tables of an independent run of the same refits (e.g. on another platform)."""
+
+    label: str
+    family: dict[tuple[str, str, str], tuple[float, float, str]]  # ratio, Holm p, verdict
+    failed: dict[str, list[str]]                                  # set -> target quarters
+    bayes_crps: dict[tuple[str, str, str, str], float]            # set, model, geo, quarter
+
+
+def load_replication(directory: Path) -> Replication:
+    """Read ``comparisons.csv``, ``refits.json`` and ``predictions.csv`` of another run."""
+    family = {}
+    with (directory / "comparisons.csv").open(encoding="utf-8") as stream:
+        for row in csv.DictReader(stream):
+            if row["kind"] == "family":
+                family[(row["evaluation"], row["model_a"], row["model_b"])] = (
+                    float(row["ratio"]), float(row["p_holm"]), row["verdict"])
+    refits = json.loads((directory / "refits.json").read_text(encoding="utf-8"))["refits"]
+    failed: dict[str, list[str]] = {name: [] for name in EVALUATION_SETS}
+    for record in refits:
+        if not record["accepted"] and record["target"] not in failed[record["evaluation"]]:
+            failed[record["evaluation"]].append(record["target"])
+    crps = {(p.evaluation, p.model, p.geo, p.quarter): p.crps
+            for p in read_predictions(directory / "predictions.csv") if p.model in BAYES_MODELS}
+    readme = directory / "README.md"
+    label = (readme.read_text(encoding="utf-8").splitlines()[0].lstrip("# ")
+             if readme.exists() else directory.name)
+    return Replication(label, family, {k: sorted(v) for k, v in failed.items()}, crps)
+
+
 @dataclass
 class Comparison:
     """Everything the report is generated from."""
@@ -59,6 +90,7 @@ class Comparison:
     sensitivity: list[PanelTest] = field(default_factory=list)
     failed_quarters: dict[str, list[str]] = field(default_factory=dict)
     snapshot: dict[str, str] = field(default_factory=dict)
+    replication: Replication | None = None
 
     def losses(self, evaluation: str, model: str, loss: str = "crps") -> np.ndarray:
         return loss_matrix(self.predictions[(evaluation, model)], self.pdata[evaluation], loss)
@@ -114,7 +146,8 @@ def _family_tests(comparison: Comparison, quarters: dict[str, list[int]] | None 
     return adjust_family(tests)
 
 
-def build_comparison(data_dir: Path, fits_dir: Path) -> Comparison:
+def build_comparison(data_dir: Path, fits_dir: Path,
+                     replication_dir: Path | None = None) -> Comparison:
     """Recompute the classical predictions, load the Bayesian ones and run the tests."""
     audit = audit_snapshot(data_dir)
     csv_path = data_dir / "processed" / "eu27_quarterly.csv"
@@ -150,6 +183,8 @@ def build_comparison(data_dir: Path, fits_dir: Path) -> Comparison:
                        if q not in failed[name]] for name in pdata}
         if all(len(k) >= 8 for k in keep.values()):
             comparison.sensitivity = _family_tests(comparison, keep)
+    if replication_dir is not None:
+        comparison.replication = load_replication(replication_dir)
     return comparison
 
 
@@ -280,6 +315,11 @@ def render(comparison: Comparison, assets: str, command: str) -> str:
                      "lower mean CRPS than zero change"
                      + (f" ({'; '.join(beat)})." if beat else "."))
     lines.append("")
+    if comparison.replication is not None:
+        flips = _replication_flips(comparison)
+        lines += [f"An independent run ({comparison.replication.label}) gives the same verdicts "
+                  + ("for all ten comparisons." if not flips else
+                     f"except for {'; '.join(flips)}.") + " See section 9.", ""]
     calibration = []
     for evaluation in sets:
         for model in ("bayes_primary", "ols_dl"):
@@ -411,12 +451,14 @@ def render(comparison: Comparison, assets: str, command: str) -> str:
     lines += _table(["Set", "A", "B", "Neg. log score diff.", "Squared error diff.",
                      "Absolute error diff."], rows, "lllrrr")
 
-    # 9. Interpretation
-    lines += _interpretation(comparison)
-
-    # 10. Reproduction
+    # 9. Replication (when supplied), then interpretation and reproduction
+    number = 9
+    if comparison.replication is not None:
+        lines += _replication_section(comparison)
+        number += 1
+    lines += _interpretation(comparison, number)
     lines += [
-        "## 10. Reproduction", "",
+        f"## {number + 1}. Reproduction", "",
         "```bash",
         "poetry install --extras \"bayes report\"",
         "poetry run eu-okun predictive-fit --data-dir snapshots/eurostat-2026-10-15 "
@@ -545,8 +587,59 @@ def _country_section(comparison: Comparison) -> list[str]:
     return lines
 
 
-def _interpretation(comparison: Comparison) -> list[str]:
-    lines = ["## 9. Interpretation and limitations", ""]
+def _replication_flips(comparison: Comparison) -> list[str]:
+    """Family comparisons whose verdict differs in the replication run."""
+    rep_run = comparison.replication
+    assert rep_run is not None
+    out = []
+    for t in comparison.family:
+        _, p_holm, verdict = rep_run.family[(t.evaluation, t.model_a, t.model_b)]
+        if verdict != t.verdict:
+            out.append(f"{t.evaluation} {_label(t.model_a)} vs {_label(t.model_b)} (Holm p "
+                       f"{_p(t.p_holm)} here, {_p(p_holm)} there)")
+    return out
+
+
+def _replication_section(comparison: Comparison) -> list[str]:
+    rep_run = comparison.replication
+    assert rep_run is not None
+    lines = ["## 9. Replication on a second platform", "",
+             f"{rep_run.label}: the same snapshot, lock file, seeds, sampler settings and "
+             "single retry. Its tables are in `replication-linux/`. MCMC output differs "
+             "between platforms in floating-point detail, so borderline convergence "
+             "decisions and borderline p-values can differ.", ""]
+    rows = []
+    for t in comparison.family:
+        ratio, p_holm, verdict = rep_run.family[(t.evaluation, t.model_a, t.model_b)]
+        rows.append([t.evaluation, _label(t.model_a), _label(t.model_b), _pct(t.ratio),
+                     _p(t.p_holm), t.verdict, _pct(ratio), _p(p_holm), verdict])
+    lines += _table(["Set", "A", "B", "A vs B (this run)", "Holm p", "Verdict",
+                     "A vs B (replication)", "Holm p", "Verdict"], rows, "lllrrlrrl")
+    here = {(p.evaluation, p.model, p.geo, p.quarter): p.crps
+            for (_, model), predictions in comparison.predictions.items()
+            if model in BAYES_MODELS for p in predictions}
+    gaps = [abs(here[k] - v) for k, v in rep_run.bayes_crps.items() if k in here]
+    failed_here = "; ".join(f"{k}: {', '.join(v)}" for k, v in comparison.failed_quarters.items()
+                            if v) or "none"
+    failed_there = "; ".join(f"{k}: {', '.join(v)}" for k, v in rep_run.failed.items()
+                             if v) or "none"
+    flips = _replication_flips(comparison)
+    lines += [
+        f"- Bayesian predictions: the CRPS of the {len(gaps)} Bayesian cells differs by "
+        f"{np.mean(gaps):.4f} on average and at most {max(gaps):.4f} between the runs.",
+        f"- Target quarters with a failed refit: this run {failed_here}; replication "
+        f"{failed_there}.",
+        "- Verdicts: " + ("identical for all ten comparisons." if not flips else
+                          f"identical except {'; '.join(flips)}. A verdict that changes "
+                          "between runs rests on a p-value at the threshold and is not "
+                          "robust."),
+        "",
+    ]
+    return lines
+
+
+def _interpretation(comparison: Comparison, number: int = 9) -> list[str]:
+    lines = [f"## {number}. Interpretation and limitations", ""]
     lines += [
         "- **What is tested.** Conditional predictive accuracy given the quarter's GDP "
         "growth, on revised data. It is neither a real-time forecast nor a causal test: a "
@@ -692,9 +785,9 @@ def write_tables(comparison: Comparison, directory: Path) -> None:
 
 
 def write_report(data_dir: Path, fits_dir: Path, output_dir: Path, report: Path | None = None,
-                 figures: bool = True) -> Comparison:
+                 figures: bool = True, replication_dir: Path | None = None) -> Comparison:
     """Build the comparison and write tables, figures and the Markdown report."""
-    comparison = build_comparison(data_dir, fits_dir)
+    comparison = build_comparison(data_dir, fits_dir, replication_dir)
     report = report or output_dir / "PREDICTIVE_COMPARISON.md"
     write_tables(comparison, output_dir)
     if figures:
@@ -704,7 +797,9 @@ def write_report(data_dir: Path, fits_dir: Path, output_dir: Path, report: Path 
     assets = Path(os.path.relpath(output_dir, report.parent)).as_posix()
     command = (f"poetry run eu-okun predictive-report --data-dir {data_dir.as_posix()} "
                f"--fits-dir {fits_dir.as_posix()} --output-dir {output_dir.as_posix()} "
-               f"--report {report.as_posix()}")
+               f"--report {report.as_posix()}"
+               + (f" --replication-dir {replication_dir.as_posix()}"
+                  if replication_dir is not None else ""))
     report.parent.mkdir(parents=True, exist_ok=True)
     report.write_text(render(comparison, assets, command), encoding="utf-8", newline="\n")
     return comparison
