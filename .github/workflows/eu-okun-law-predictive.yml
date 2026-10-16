@@ -1,10 +1,19 @@
 name: EU Okun predictive comparison
 
-# Expanding-window refits of the Bayesian models (PREDICTIVE_PROTOCOL.md): about two
-# CPU-hours, kept out of the ordinary pull-request checks. It runs only when started by
-# hand or when a pull request touching the study is labelled `predictive-sampling`.
+# Expanding-window refits of the Bayesian models, kept out of the ordinary pull-request
+# checks. Two studies:
+# - conditional (PREDICTIVE_PROTOCOL.md): by hand with study=conditional, or a pull
+#   request labelled `predictive-sampling`;
+# - forecast (BAYES_FORECAST_PROTOCOL.md, one quarter ahead, nothing dated t): by hand
+#   with study=forecast, or a pull request labelled `forecast-sampling`.
 on:
   workflow_dispatch:
+    inputs:
+      study:
+        description: "conditional (PREDICTIVE_PROTOCOL.md) or forecast (BAYES_FORECAST_PROTOCOL.md)"
+        type: choice
+        options: [conditional, forecast]
+        default: conditional
   pull_request:
     types: [labeled]
     paths:
@@ -16,7 +25,9 @@ permissions:
 
 jobs:
   refit:
-    if: github.event_name == 'workflow_dispatch' || github.event.label.name == 'predictive-sampling'
+    if: >-
+      (github.event_name == 'workflow_dispatch' && github.event.inputs.study != 'forecast')
+      || github.event.label.name == 'predictive-sampling'
     runs-on: ubuntu-latest
     timeout-minutes: 300
     strategy:
@@ -82,5 +93,76 @@ jobs:
         with:
           name: eu-okun-predictive-report
           path: eu-okun-law/results/predictive-report/
+          retention-days: 30
+          if-no-files-found: error
+
+  forecast-refit:
+    if: >-
+      (github.event_name == 'workflow_dispatch' && github.event.inputs.study == 'forecast')
+      || github.event.label.name == 'forecast-sampling'
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    strategy:
+      fail-fast: false
+      matrix:
+        model: [bayes_ar1, bayes_gdp_ar1, bayes_gdp_ar1_factor]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install Poetry
+        run: pipx install poetry==2.5.1
+      - name: Install locked study environment (project-local .venv)
+        working-directory: eu-okun-law
+        run: |
+          poetry check --lock
+          poetry install --no-interaction --extras "bayes report"
+      - name: Refit at every origin of the forecasting framework
+        working-directory: eu-okun-law
+        run: >-
+          poetry run eu-okun forecast-bayes-fit --data-dir snapshots/eurostat-2026-10-15
+          --output-dir results/forecast-bayes --models ${{ matrix.model }}
+      - name: Archive forecasts and refit diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: forecast-bayes-${{ matrix.model }}
+          path: eu-okun-law/results/forecast-bayes/
+          retention-days: 30
+          if-no-files-found: error
+
+  forecast-report:
+    needs: forecast-refit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install Poetry
+        run: pipx install poetry==2.5.1
+      - name: Install locked study environment (project-local .venv)
+        working-directory: eu-okun-law
+        run: |
+          poetry check --lock
+          poetry install --no-interaction --extras "bayes report"
+      - name: Collect the refits
+        uses: actions/download-artifact@v4
+        with:
+          pattern: forecast-bayes-*
+          path: eu-okun-law/results/forecast-bayes
+          merge-multiple: true
+      - name: Score, test and report
+        working-directory: eu-okun-law
+        run: >-
+          poetry run eu-okun forecast-report --data-dir snapshots/eurostat-2026-10-15
+          --fits-dir results/forecast-bayes --output-dir results/forecast-comparison
+      - name: Archive the report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: eu-okun-forecast-comparison
+          path: eu-okun-law/results/forecast-comparison/
           retention-days: 30
           if-no-files-found: error

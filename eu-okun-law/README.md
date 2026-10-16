@@ -305,3 +305,41 @@ loss differentials, Holm-adjusted over ten comparisons):
 - Predictive intervals are somewhat too wide (90% intervals cover 90-98% of outcomes),
   and all models over-predict unemployment changes in 2016-2019 and under-predict them
   after 2022.
+
+## One-quarter-ahead forecasts: hierarchical Bayes against the classical models
+
+Pre-registered in [BAYES_FORECAST_PROTOCOL.md](BAYES_FORECAST_PROTOCOL.md) before any fit
+or score. Unlike the conditional comparison above, these are genuine one-quarter-ahead
+forecasts in the PR #149 framework: the forecast for quarter t uses unemployment,
+participation and GDP growth up to t-1 only (nothing dated t), with the framework's
+origins (2018-Q1 to 2026-Q2), training rows and targets for every model. They are
+**retrospective** (revised data), not real-time forecasts from historical vintages.
+
+```bash
+# Expensive: 3 hierarchical forecasting models x 34 origins
+poetry run eu-okun forecast-bayes-fit --data-dir snapshots/eurostat-2026-10-15 --output-dir results/forecast-bayes
+# Cheap: classical forecasts (exactly those of eu-okun forecast), scores, bootstrap, report
+poetry run eu-okun forecast-report --data-dir snapshots/eurostat-2026-10-15 \
+  --fits-dir results/forecast-bayes --output-dir docs/forecast-comparison --report docs/FORECAST_COMPARISON.md
+```
+
+The refits run in the [EU Okun predictive comparison](../.github/workflows/eu-okun-law-predictive.yml)
+workflow with `study=forecast`, or when a pull request is labelled `forecast-sampling`.
+Results: [docs/FORECAST_COMPARISON.md](docs/FORECAST_COMPARISON.md). In brief, for the
+2026-10-15 snapshot (CRPS; synchronised circular block bootstrap; Holm over five
+comparisons):
+
+- **All 34 targets.** None of the five pre-registered comparisons is decided. The
+  hierarchical AR(1) + GDP-lag model scores 15.3% better than its classical counterpart,
+  mostly because the classical regressions forecast badly in 2020-Q3 and 2020-Q4 (mean
+  CRPS difference -0.046 over all quarters, -0.013 without those two); persistence keeps
+  the lowest MAE and RMSE.
+- **Outside 2020-Q1..2022-Q2 (descriptive sensitivity).** The hierarchical models beat
+  their classical counterparts by about 3% and the common factor helps further; these
+  differences are distinguishable from sampling variation in that subset.
+- **Convergence.** 31 of 102 refits miss the strict acceptance criteria after the retry
+  (R-hat up to 1.017, ESS down to 246, no divergences; mostly the population scale
+  parameter); their forecasts are scored as registered, and dropping their quarters
+  changes no verdict.
+- An independent Linux run of the refits gives the same five verdicts (tables in
+  `docs/forecast-comparison/replication-linux/`).

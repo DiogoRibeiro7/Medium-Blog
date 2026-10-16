@@ -41,3 +41,9 @@ themselves, conditionally on the target quarter's GDP growth, against these
 benchmarks: hierarchical Bayesian and classical models, CRPS and log scores, and a
 panel loss-differential test that is valid under cross-country dependence. Its results
 are in [docs/PREDICTIVE_COMPARISON.md](docs/PREDICTIVE_COMPARISON.md).
+
+Hierarchical Bayesian versions of these forecasting regressions, evaluated in this
+framework with identical origins, training rows and targets (nothing dated t), are
+compared with the six methods above in
+[docs/FORECAST_COMPARISON.md](docs/FORECAST_COMPARISON.md)
+([BAYES_FORECAST_PROTOCOL.md](BAYES_FORECAST_PROTOCOL.md)).

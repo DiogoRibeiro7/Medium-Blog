@@ -155,6 +155,24 @@ cross-specification result; implemented in `bayes_robustness.py`; results in
 - **Focus countries.** The six pairs among PT, ES, NL and LU against the classical
   review's dependence-aware paired block bootstrap.
 
+### One-quarter-ahead forecasting comparison (implemented)
+
+Pre-registered in [BAYES_FORECAST_PROTOCOL.md](BAYES_FORECAST_PROTOCOL.md); implemented
+in `forecast_bayes.py` and `forecast_comparison.py`; results in
+[docs/FORECAST_COMPARISON.md](docs/FORECAST_COMPARISON.md).
+
+- **Information set.** The PR #149 framework's: predictors dated t-1 or earlier only;
+  identical complete-case quarters, origins (34), training rows and targets for every
+  model; retrospective (revised data), not real-time.
+- **Models.** Partially pooled Student-t regressions on `du[t-1]`, optionally `g[t-1]`
+  and `g[t-2]`, and optionally a common factor integrated out for the target quarter;
+  refitted at every origin. The six classical framework models keep their exact point
+  forecasts and get OLS Student-t predictive distributions.
+- **Evaluation.** CRPS (primary), MAE, RMSE, bias, coverage, PIT, skill relative to
+  persistence and AR(1); a synchronised circular block bootstrap over target quarters
+  (block length 4, all countries of a quarter together) gives percentile intervals and
+  null-centred p-values, Holm-adjusted over five comparisons.
+
 Still to do in this stage: address the misfits of the posterior predictive checks
 (dynamic factor, lagged unemployment changes) and time-varying coefficients.
 

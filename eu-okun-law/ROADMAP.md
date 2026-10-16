@@ -61,6 +61,9 @@ Pre-registered in [BAYES_PROTOCOL.md](BAYES_PROTOCOL.md); results in
 - [x] Robustness of country differences and ranks across specifications, including
       the lag order K = 1 and the focus countries against the classical bootstrap
       (amendment 2; [docs/BAYES_ROBUSTNESS.md](docs/BAYES_ROBUSTNESS.md)).
+- [x] One-quarter-ahead forecasts of hierarchical Bayesian forecasting models against the
+      PR #149 classical models (nothing dated t; retrospective, not real-time)
+      ([docs/FORECAST_COMPARISON.md](docs/FORECAST_COMPARISON.md)).
 - [x] Compare predictive performance with classical baselines (expanding-window refits):
       pre-registered in [PREDICTIVE_PROTOCOL.md](PREDICTIVE_PROTOCOL.md), results in
       [docs/PREDICTIVE_COMPARISON.md](docs/PREDICTIVE_COMPARISON.md). Conditional on the
