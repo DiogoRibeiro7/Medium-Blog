@@ -118,6 +118,16 @@ def main(argv: Sequence[str] | None = None) -> int:
     bayes_robustness.add_argument("--no-figures", action="store_true")
     bayes_robustness.add_argument("--replication-dir", type=Path, default=None,
                                   help="Robustness tables of an independent run")
+    bayes_dynamics = commands.add_parser(
+        "bayes-dynamics", help="Amendment 3: AR(1) factor and ARDL fits against the misfits")
+    bayes_dynamics.add_argument("--fits-dir", type=Path, default=Path("results/bayes"))
+    bayes_dynamics.add_argument("--data-dir", type=Path, default=Path("data"))
+    bayes_dynamics.add_argument("--output-dir", type=Path,
+                                default=Path("results/bayes-dynamics"))
+    bayes_dynamics.add_argument("--report", type=Path, default=None)
+    bayes_dynamics.add_argument("--no-figures", action="store_true")
+    bayes_dynamics.add_argument("--replication-dir", type=Path, default=None,
+                                help="Results (dynamics.json) of an independent run")
     predictive_fit = commands.add_parser(
         "predictive-fit", help="Expanding-window refits of the Bayesian models for the "
         "predictive comparison (expensive; needs the 'bayes' extra)")
@@ -343,6 +353,18 @@ def main(argv: Sequence[str] | None = None) -> int:
             parser.exit(2, f"Robustness report failed: {exc}" + chr(10))
         print(f"Robustness report written to {args.report or args.output_dir}: "
               f"{int(robustness.surviving_a.sum())} pairs survive in set A")
+        return 0
+    if args.command == "bayes-dynamics":
+        from eu_okun.bayes_dynamics import write_dynamics_report
+
+        try:
+            dynamics = write_dynamics_report(
+                args.fits_dir, args.data_dir, args.output_dir, args.report,
+                figures=not args.no_figures, replication_dir=args.replication_dir)
+        except (EurostatDataError, FileNotFoundError, ValueError, OSError, KeyError) as exc:
+            parser.exit(2, f"Dynamics report failed: {exc}" + chr(10))
+        print(f"Dynamics report written to {args.report or args.output_dir}: "
+              f"{len(dynamics.comparisons)} LOO comparisons")
         return 0
     if args.command == "forecast-bayes-fit":
         from eu_okun.bayes_fit import SamplerSettings

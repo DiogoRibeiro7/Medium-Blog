@@ -12,9 +12,11 @@ from collections.abc import Mapping
 from dataclasses import dataclass, replace
 from typing import Any
 
+import jax
 import jax.numpy as jnp
 import numpyro
 import numpyro.distributions as dist
+from numpyro.distributions import constraints
 
 from eu_okun.bayes_data import PANDEMIC_EXCLUDED_WINDOWS, PRIMARY_WINDOWS, BayesData
 
@@ -37,6 +39,8 @@ class ModelSpec:
     lags: int = 2
     windows: tuple[tuple[str, str], ...] = PRIMARY_WINDOWS
     time_effects: bool = False   # additive quarter effects, sum to zero (amendment 1)
+    factor_ar: bool = False      # the common factor follows a stationary AR(1) (amendment 3)
+    lagged_outcome: bool = False  # psi[i] * y[i, t-1] in the mean, an ARDL (amendment 3)
 
 
 PRIMARY = ModelSpec(
@@ -90,6 +94,19 @@ SPECS.update({
 # Amendment 2 (section 10): the lag order K = 1, registered before its fit.
 AMENDMENT_2: tuple[str, ...] = ("lags_1",)
 SPECS["lags_1"] = replace(PRIMARY, name="lags_1", description="GDP lags 0..1", lags=1)
+# Amendment 3 (section 11): dynamics that address the misfits, registered before any fit.
+AMENDMENT_3: tuple[str, ...] = ("dynamic_factor", "ardl", "ardl_dynamic_factor")
+SPECS.update({
+    spec.name: spec
+    for spec in (
+        replace(PRIMARY, name="dynamic_factor", description="The common factor follows a "
+                "stationary AR(1)", factor_ar=True),
+        replace(PRIMARY, name="ardl", description="Lagged unemployment change psi*y[t-1] "
+                "instead of the AR(1) error; i.i.d. factor", ar1=False, lagged_outcome=True),
+        replace(PRIMARY, name="ardl_dynamic_factor", description="Lagged unemployment change "
+                "and an AR(1) common factor", ar1=False, lagged_outcome=True, factor_ar=True),
+    )
+})
 
 
 def model_inputs(data: BayesData) -> dict[str, Any]:
@@ -97,14 +114,27 @@ def model_inputs(data: BayesData) -> dict[str, Any]:
     return {
         "y": jnp.asarray(data.y), "g": jnp.asarray(data.g), "z": jnp.asarray(data.z),
         "dp": jnp.asarray(data.dp), "mask": jnp.asarray(data.mask),
-        "segment_start": jnp.asarray(data.segment_start),
+        "segment_start": jnp.asarray(data.segment_start), "y_lag": jnp.asarray(data.y_lag()),
     }
 
 
-def conditional_mean(inputs: Mapping[str, Any], params: Mapping[str, Any]) -> Any:
-    """alpha + theta*g + sum_k b_k*(g_{t-k} - g_t) [+ gamma*dp] [+ lambda*f] [+ delta_t].
+def likelihood_mask(mask: Any, segment_start: Any, spec: ModelSpec) -> Any:
+    """Cells whose term enters the likelihood (NumPy or JAX arrays).
 
-    Shape (N, T). ``quarter_effect`` (delta) is the additive shared quarter effect.
+    The ARDL specifications condition on each segment's first quarter, whose lagged
+    change lies outside the window (section 11.2); the others use every unmasked cell.
+    """
+    if spec.lagged_outcome:
+        return mask & ~segment_start[None, :]
+    return mask
+
+
+def conditional_mean(inputs: Mapping[str, Any], params: Mapping[str, Any]) -> Any:
+    """alpha + theta*g + sum_k b_k*(g_{t-k} - g_t) [+ gamma*dp] [+ lambda*f] [+ delta_t]
+    [+ psi*y_{t-1}].
+
+    Shape (N, T). ``quarter_effect`` (delta) is the additive shared quarter effect;
+    ``psi`` multiplies the lagged unemployment change of the ARDL specifications.
     """
     mean = (
         params["alpha"][:, None]
@@ -117,7 +147,48 @@ def conditional_mean(inputs: Mapping[str, Any], params: Mapping[str, Any]) -> An
         mean = mean + params["lam"][:, None] * params["f"][None, :]
     if "quarter_effect" in params:
         mean = mean + params["quarter_effect"][None, :]
+    if "psi" in params:
+        mean = mean + params["psi"][:, None] * inputs["y_lag"]
     return mean
+
+
+class SegmentAR1(dist.Distribution):  # type: ignore[misc]
+    """Stationary AR(1) with unit variance, restarted at each segment's first quarter.
+
+    f[t] = rho*f[t-1] + sqrt(1 - rho^2)*e[t] with e[t] ~ N(0, 1) inside a segment, and
+    f[t] ~ N(0, 1) at a segment's first quarter (section 11.2). The density is that of
+    ``f`` itself (the centred form), so the factor values are the sampled parameters.
+    """
+
+    arg_constraints = {"rho": constraints.open_interval(-1.0, 1.0)}
+    support = constraints.real_vector
+
+    def __init__(self, rho: Any, segment_start: Any, *, validate_args: bool | None = None):
+        self.rho = rho
+        self.segment_start = jnp.asarray(segment_start, dtype=bool)
+        super().__init__(batch_shape=jnp.shape(rho), event_shape=self.segment_start.shape,
+                         validate_args=validate_args)
+
+    def sample(self, key: Any, sample_shape: tuple[int, ...] = ()) -> Any:
+        e = jax.random.normal(key, sample_shape + self.batch_shape + self.event_shape)
+        rho = jnp.broadcast_to(self.rho, sample_shape + self.batch_shape)
+        scale = jnp.sqrt(1.0 - rho**2)
+
+        def step(previous: Any, inputs: tuple[Any, Any]) -> tuple[Any, Any]:
+            e_t, start = inputs
+            current = jnp.where(start, e_t, rho * previous + scale * e_t)
+            return current, current
+
+        _, path = jax.lax.scan(step, jnp.zeros_like(rho),
+                               (jnp.moveaxis(e, -1, 0), self.segment_start))
+        return jnp.moveaxis(path, 0, -1)
+
+    def log_prob(self, value: Any) -> Any:
+        rho = jnp.expand_dims(self.rho, -1)
+        lagged = jnp.concatenate([jnp.zeros_like(value[..., :1]), value[..., :-1]], axis=-1)
+        centre = jnp.where(self.segment_start, 0.0, rho * lagged)
+        scale = jnp.where(self.segment_start, 1.0, jnp.sqrt(1.0 - rho**2))
+        return jnp.sum(dist.Normal(centre, scale).log_prob(value), axis=-1)
 
 
 def innovations(
@@ -169,6 +240,12 @@ def okun_model(inputs: Mapping[str, Any], spec: ModelSpec) -> None:
     k = inputs["z"].shape[2]
     s = spec.prior_scale
     params: dict[str, Any] = {}
+    if spec.common_factor and spec.time_effects:
+        raise ValueError("Quarter effects and the common factor are never combined.")
+    if spec.factor_ar and not spec.common_factor:
+        raise ValueError("An AR(1) factor needs the common factor.")
+    if spec.lagged_outcome and spec.ar1:
+        raise ValueError("The lagged change replaces the AR(1) error; never both.")
     if spec.pooling:
         mu_theta = numpyro.sample("mu_theta", dist.Normal(0.0, 0.5 * s))
         tau_theta = numpyro.sample("tau_theta", dist.HalfNormal(spec.tau_theta_scale * s))
@@ -184,6 +261,12 @@ def okun_model(inputs: Mapping[str, Any], spec: ModelSpec) -> None:
         if spec.ar1:
             raw_phi = _pooled("phi_logit", (n,), 0.5, 0.5, spec)
             params["phi"] = numpyro.deterministic("phi", jnp.tanh(raw_phi))
+        if spec.lagged_outcome:
+            # psi = tanh(mu_psi + tau_psi * omega), so |psi| < 1 (section 11.2).
+            mu_psi = numpyro.sample("mu_psi", dist.Normal(0.0, 0.5 * s))
+            tau_psi = numpyro.sample("tau_psi", dist.HalfNormal(0.5 * s))
+            omega = numpyro.sample("psi_raw", dist.Normal(0.0, 1.0).expand((n,)).to_event(1))
+            params["psi"] = numpyro.deterministic("psi", jnp.tanh(mu_psi + tau_psi * omega))
         log_sigma = _pooled("log_sigma", (n,), 1.0, 0.5, spec, LOG_SIGMA_CENTRE)
     else:
         params["theta"] = numpyro.sample(
@@ -199,15 +282,22 @@ def okun_model(inputs: Mapping[str, Any], spec: ModelSpec) -> None:
             raw_phi = numpyro.sample(
                 "phi_logit", dist.Normal(0.0, 0.5 * s).expand((n,)).to_event(1))
             params["phi"] = numpyro.deterministic("phi", jnp.tanh(raw_phi))
+        if spec.lagged_outcome:
+            raw_psi = numpyro.sample(
+                "psi_logit", dist.Normal(0.0, 0.5 * s).expand((n,)).to_event(1))
+            params["psi"] = numpyro.deterministic("psi", jnp.tanh(raw_psi))
         log_sigma = numpyro.sample(
             "log_sigma", dist.Normal(LOG_SIGMA_CENTRE, 1.0 * s).expand((n,)).to_event(1))
     params["sigma"] = numpyro.deterministic("sigma", jnp.exp(log_sigma))
-    if spec.common_factor and spec.time_effects:
-        raise ValueError("Quarter effects and the common factor are never combined.")
     if spec.common_factor:
         params["lam"] = numpyro.sample(
             "lam", dist.HalfNormal(0.2 * s).expand((n,)).to_event(1))
-        params["f"] = numpyro.sample("f", dist.Normal(0.0, 1.0).expand((t,)).to_event(1))
+        if spec.factor_ar:
+            rho_raw = numpyro.sample("rho_f_raw", dist.Normal(0.0, 1.0 * s))
+            rho_f = numpyro.deterministic("rho_f", jnp.tanh(rho_raw))
+            params["f"] = numpyro.sample("f", SegmentAR1(rho_f, inputs["segment_start"]))
+        else:
+            params["f"] = numpyro.sample("f", dist.Normal(0.0, 1.0).expand((t,)).to_event(1))
     if spec.time_effects:
         # Sum to zero over the sample quarters: the intercepts carry the level, so the
         # quarter effects are identified (BAYES_PROTOCOL.md, section 9.1).
@@ -220,4 +310,5 @@ def okun_model(inputs: Mapping[str, Any], spec: ModelSpec) -> None:
         "beta0", params["theta"] - jnp.sum(params["b"], axis=1)
     )
     terms = pointwise_log_likelihood(inputs, params, spec)
-    numpyro.factor("log_likelihood", jnp.sum(jnp.where(inputs["mask"], terms, 0.0)))
+    used = likelihood_mask(inputs["mask"], inputs["segment_start"], spec)
+    numpyro.factor("log_likelihood", jnp.sum(jnp.where(used, terms, 0.0)))

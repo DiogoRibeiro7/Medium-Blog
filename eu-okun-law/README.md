@@ -107,8 +107,9 @@ Classical country-by-country distributed-lag regressions with HAC standard error
 and time-ordered holdouts (done, and independently reviewed), then hierarchical
 partial-pooling Bayesian models with posterior rank uncertainty and shared shocks
 (first stage done; see below), and a pre-registered predictive comparison of the two
-(done; see below). Time-varying coefficients and the model misfits found by the
-posterior predictive checks come next. Only then attempt defensible structural identification
+(done; see below). The misfits found by the posterior predictive checks are addressed
+by a registered amendment (done; see below); time-varying coefficients come next. Only then
+attempt defensible structural identification
 (distinguishing, for example, demand from productivity shocks). Investigate the
 Netherlands and Luxembourg without assuming any institutional explanation in advance.
 
@@ -272,6 +273,50 @@ set):
   Luxembourg against the Netherlands does not. Spain against Portugal is borderline: it
   falls just below 0.95 in two fits here (0.947 and 0.939) and survives in an independent
   Linux run, where one of those fits narrowly failed acceptance; it is not a robust result.
+
+### Dynamics that address the misfits
+
+Amendment 3 of the protocol (section 11), registered before any of its fits, adds three
+specifications:
+
+- `dynamic_factor`: the common factor follows a stationary AR(1);
+- `ardl`: the lagged unemployment change `psi[i] * y[i,t-1]` replaces the AR(1) error,
+  and the comparable estimand is the long-run multiplier `theta_LR = theta / (1 - psi)`;
+- `ardl_dynamic_factor`: both.
+
+Results: [docs/BAYES_DYNAMICS.md](docs/BAYES_DYNAMICS.md).
+
+```bash
+poetry run eu-okun bayes-fit --data-dir snapshots/eurostat-2026-10-15 --output-dir results/bayes \
+  --specs dynamic_factor,ardl,ardl_dynamic_factor --retry-warmup 3000
+poetry run eu-okun bayes-dynamics --fits-dir results/bayes --data-dir snapshots/eurostat-2026-10-15 \
+  --output-dir docs/bayes-dynamics --report docs/BAYES_DYNAMICS.md
+```
+
+In brief:
+
+- All three specifications converge at the first attempt. The common factor is strongly
+  persistent: `rho_f` is 0.92 (90% interval 0.86 to 0.96), and 0.91 with the lagged
+  change.
+- Only `ardl_dynamic_factor` fixes the persistence misfit (p = 0.102; it replicates a
+  lag-1 autocorrelation of 0.18 against 0.27 observed). `dynamic_factor` (p = 0.030) and
+  `ardl` (p = 0.007) narrow the gap but do not close it.
+- By PSIS-LOO on the 1098 cells common to all four fits, `dynamic_factor` (+15.5, SE
+  5.8) and `ardl_dynamic_factor` (+26.2, SE 7.9) are better supported than `primary`;
+  `ardl` is not distinguishable from it (+14.4, SE 7.3).
+- The country estimates change little on average: the mean is -0.200 in `primary`
+  and -0.168 in `ardl_dynamic_factor`. The largest change is Spain's (-0.512 to -0.397).
+  25 countries are credibly negative in `ardl_dynamic_factor` (24 in `primary`, plus
+  Malta).
+- On the long-run multiplier, "Luxembourg weak" holds in both ARDL fits. This follows
+  from Luxembourg's negative lagged-change coefficient (about -0.4), which shrinks its
+  long-run multiplier; on the short-run sum the probability is about 0.81. "Netherlands
+  delayed" falls below its threshold in every new fit. "Spain large" holds in all of
+  them.
+- The factor stays correlated with average GDP growth (about -0.65), so `theta`
+  remains an association beyond the common European cycle.
+- The new fits are reported alongside the pre-registered results and do not replace
+  the primary specification.
 
 ## Predictive comparison
 

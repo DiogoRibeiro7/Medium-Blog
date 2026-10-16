@@ -68,10 +68,12 @@ Pre-registered in [BAYES_PROTOCOL.md](BAYES_PROTOCOL.md); results in
       pre-registered in [PREDICTIVE_PROTOCOL.md](PREDICTIVE_PROTOCOL.md), results in
       [docs/PREDICTIVE_COMPARISON.md](docs/PREDICTIVE_COMPARISON.md). Conditional on the
       quarter's GDP growth; not a real-time forecast.
-- [ ] Address the misfits the checks found, under a new registered protocol: the models
-      understate the persistence of unemployment changes, and the i.i.d. common factor
-      is autocorrelated and correlated with average GDP growth. Candidates: a dynamic
-      (AR) factor, lagged unemployment changes in the mean equation.
+- [x] Address the misfits the checks found, under a new registered protocol (amendment
+      3): an AR(1) common factor and lagged unemployment changes (ARDL). Only the
+      combination fixes the persistence misfit, and both factor specifications are better
+      supported than `primary` by PSIS-LOO
+      ([docs/BAYES_DYNAMICS.md](docs/BAYES_DYNAMICS.md)). The factor stays correlated
+      with average GDP growth.
 - [ ] Time-varying or regime-specific coefficients (the classical review and the
       pandemic-excluded fit both point to a weaker association after 2021).
 

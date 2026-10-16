@@ -63,6 +63,46 @@ class BayesData:
         ones = np.ones_like(self.g)[:, :, None]
         return np.concatenate([ones, self.g[:, :, None], lagged], axis=2)
 
+    def y_lag(self) -> np.ndarray:
+        """y[i, t-1] inside a segment; zero at a segment's first quarter (never used there)."""
+        lagged = np.concatenate([np.zeros_like(self.y[:, :1]), self.y[:, :-1]], axis=1)
+        lagged[:, self.segment_start] = 0.0
+        return lagged
+
+
+def ar1_path(e: np.ndarray, rho: np.ndarray | float, segment_start: np.ndarray) -> np.ndarray:
+    """Stationary unit-variance AR(1) along the last axis, restarted at segment starts.
+
+    ``e`` holds standard normal innovations (..., T) and ``rho`` broadcasts against
+    ``e[..., 0]``: f[t] = rho*f[t-1] + sqrt(1 - rho^2)*e[t], and f = e at a start.
+    """
+    rho = np.asarray(rho, dtype=float)
+    scale = np.sqrt(np.maximum(1.0 - rho**2, 0.0))
+    f = np.empty_like(e, dtype=float)
+    for j in range(e.shape[-1]):
+        if segment_start[j]:
+            f[..., j] = e[..., j]
+        else:
+            f[..., j] = rho * f[..., j - 1] + scale * e[..., j]
+    return f
+
+
+def ardl_path(x: np.ndarray, psi: np.ndarray, y: np.ndarray,
+              segment_start: np.ndarray) -> np.ndarray:
+    """Simulate y[t] = x[t] + psi*y[t-1] along the last axis, shape (..., N, T).
+
+    ``x`` is everything except the lagged term and ``psi`` has shape (..., N). The
+    ARDL likelihood conditions on each segment's first quarter, so the simulation starts
+    there from the observed ``y`` (N, T).
+    """
+    out = np.empty(np.broadcast_shapes(x.shape, y.shape), dtype=float)
+    for j in range(out.shape[-1]):
+        if segment_start[j]:
+            out[..., j] = y[:, j]
+        else:
+            out[..., j] = x[..., j] + psi * out[..., j - 1]
+    return out
+
 
 def window_quarters(windows: Sequence[tuple[str, str]]) -> tuple[list[str], np.ndarray]:
     """Quarters of the requested windows and a flag for each segment's first quarter."""

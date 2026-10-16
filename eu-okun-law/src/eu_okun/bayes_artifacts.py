@@ -6,7 +6,9 @@ Each file is an xarray DataTree in the ArviZ group layout:
 - ``sample_stats``: divergences, energy and tree steps, when the sampler kept them;
 - ``prior`` and ``prior_predictive``: draws from the prior and data simulated from them;
 - ``observed_data`` and ``constant_data``: the outcome, regressors, mask and segments;
-- ``log_likelihood``: pointwise log densities of the unmasked cells (for PSIS-LOO).
+- ``log_likelihood``: pointwise log densities of the cells in the likelihood (for
+  PSIS-LOO): the unmasked cells, without each segment's first quarter in the ARDL
+  specifications.
 
 The root attributes record the specification, seeds, sampler settings, software versions
 and snapshot hashes. Open with ``xarray.open_datatree(path, engine="h5netcdf")`` or
@@ -22,8 +24,14 @@ from typing import Any
 
 import numpy as np
 
-from eu_okun.bayes_data import BayesData
-from eu_okun.bayes_model import ModelSpec, model_inputs, okun_model, pointwise_log_likelihood
+from eu_okun.bayes_data import BayesData, ardl_path
+from eu_okun.bayes_model import (
+    ModelSpec,
+    likelihood_mask,
+    model_inputs,
+    okun_model,
+    pointwise_log_likelihood,
+)
 
 PRIOR_DRAWS = 1000
 PRIOR_SEED = 20261017
@@ -33,10 +41,10 @@ DIMS: dict[str, tuple[str, ...]] = {
     "phi": ("country",), "sigma": ("country",), "lam": ("country",), "gamma": ("country",),
     "b": ("country", "lag"), "mu_b": ("lag",), "f": ("quarter",),
     "quarter_effect": ("quarter",), "nu": (), "mu_theta": (), "tau_theta": (), "tau_b": (),
-    "tau_quarter": (),
+    "tau_quarter": (), "psi": ("country",), "mu_psi": (), "tau_psi": (), "rho_f": (),
 }
 LIKELIHOOD_PARAMETERS = ("theta", "alpha", "b", "phi", "sigma", "lam", "f", "nu", "gamma",
-                         "quarter_effect")
+                         "quarter_effect", "psi")
 
 
 def _coords(data: BayesData) -> dict[str, list[str]]:
@@ -68,7 +76,8 @@ def simulate_outcomes(spec: ModelSpec, data: BayesData, draws: Mapping[str, np.n
 
     Uses each draw's own shared terms (factor values or quarter effects) and fresh
     Student-t or Normal innovations through the AR(1) error, with the stationary scale
-    at the first quarter of each segment.
+    at the first quarter of each segment. The ARDL specifications run the recursion in
+    the lagged change from the observed first quarter of each segment.
     """
     s = draws["theta"].shape[0]
     n, t = data.y.shape
@@ -85,6 +94,8 @@ def simulate_outcomes(spec: ModelSpec, data: BayesData, draws: Mapping[str, np.n
     else:
         eps = rng.standard_normal((s, n, t))
     noise = draws["sigma"][:, :, None] * eps
+    if spec.lagged_outcome:
+        return ardl_path(mean + noise, draws["psi"], data.y, data.segment_start)
     if not spec.ar1:
         return np.asarray(mean + noise)
     phi = draws["phi"]
@@ -175,7 +186,7 @@ def build_datatree(spec: ModelSpec, data: BayesData, samples: Mapping[str, np.nd
          "segment_start": (("quarter",), data.segment_start.astype(np.int8))},
         coords=coords)
     if log_likelihood is not None:
-        rows, columns = np.nonzero(data.mask)
+        rows, columns = np.nonzero(likelihood_mask(data.mask, data.segment_start, spec))
         labels = [f"{data.countries[i]} {data.quarters[j]}" for i, j in zip(rows, columns,
                                                                              strict=True)]
         nodes["log_likelihood"] = xr.Dataset(

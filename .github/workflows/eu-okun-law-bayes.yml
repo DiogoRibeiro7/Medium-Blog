@@ -67,6 +67,14 @@ jobs:
         run: >-
           poetry run eu-okun bayes-robustness --fits-dir results/bayes
           --output-dir results/bayes-robustness --pairs-csv docs/review/pairs_review.csv
+      - name: Dynamics that address the misfits (amendment 3)
+        if: >-
+          ${{ (github.event.inputs.specs || 'all') == 'all'
+          || contains(github.event.inputs.specs, 'ardl_dynamic_factor') }}
+        working-directory: eu-okun-law
+        run: >-
+          poetry run eu-okun bayes-dynamics --fits-dir results/bayes
+          --data-dir snapshots/eurostat-2026-10-15 --output-dir results/bayes-dynamics
       - name: Archive posterior draws, NetCDF artifacts, diagnostics and reports
         if: always()
         uses: actions/upload-artifact@v4
@@ -79,6 +87,7 @@ jobs:
             eu-okun-law/results/bayes-recovery/
             eu-okun-law/results/bayes-checks/
             eu-okun-law/results/bayes-robustness/
+            eu-okun-law/results/bayes-dynamics/
           retention-days: 30
           if-no-files-found: error
       # The report tables alone (small), for comparing runs without the posterior draws.
@@ -91,5 +100,6 @@ jobs:
             eu-okun-law/results/bayes-report/
             eu-okun-law/results/bayes-checks/
             eu-okun-law/results/bayes-robustness/
+            eu-okun-law/results/bayes-dynamics/
           retention-days: 30
           if-no-files-found: warn

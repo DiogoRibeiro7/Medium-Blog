@@ -20,8 +20,8 @@ import numpy as np
 
 from eu_okun.audit import audit_snapshot
 from eu_okun.baseline import _read_panel, fit_hac_covariance
-from eu_okun.bayes_data import BayesData, build_bayes_data
-from eu_okun.bayes_model import SPECS, ModelSpec, model_inputs, okun_model
+from eu_okun.bayes_data import BayesData, ar1_path, ardl_path, build_bayes_data
+from eu_okun.bayes_model import SPECS, ModelSpec, likelihood_mask, model_inputs, okun_model
 from eu_okun.comparison import cumulative_gdp
 from eu_okun.contract import EurostatDataError
 from eu_okun.review import read_flags
@@ -30,7 +30,8 @@ RHAT_MAX = 1.01
 ESS_MIN = 400.0
 BFMI_MIN = 0.3
 SAVED = ("theta", "beta0", "b", "alpha", "phi", "sigma", "lam", "nu", "gamma", "mu_theta",
-         "tau_theta", "mu_b", "tau_b", "f", "quarter_effect", "tau_quarter")
+         "tau_theta", "mu_b", "tau_b", "f", "quarter_effect", "tau_quarter", "psi", "mu_psi",
+         "tau_psi", "rho_f")
 
 
 @dataclass(frozen=True)
@@ -232,9 +233,12 @@ class PredictiveCheck:
 def predictive_checks(fit: FitResult, max_draws: int = 400, seed: int = 7) -> PredictiveCheck:
     """One-step-ahead interval coverage and replicated summary statistics.
 
-    One-step predictions condition on the observed previous residual (AR(1)) and the
-    posterior factor value; replications simulate whole series with fresh innovations
-    and fresh factor values. Coverage near 0.5 and 0.9 indicates calibrated intervals.
+    One-step predictions condition on the observed previous residual (AR(1)) or change
+    (ARDL) and the posterior factor value; replications simulate whole series with fresh
+    innovations and fresh factor values (an AR(1) path when the factor is dynamic). ARDL
+    replications start from the observed first quarter of each segment, on which the
+    likelihood conditions. Coverage, near 0.5 and 0.9 when intervals are calibrated, is
+    taken over the cells of the likelihood.
     """
     rng = np.random.default_rng(seed)
     data, spec = fit.data, fit.spec
@@ -245,6 +249,7 @@ def predictive_checks(fit: FitResult, max_draws: int = 400, seed: int = 7) -> Pr
     one_step = np.empty((chosen.size, n, t))
     stats: dict[str, list[float]] = {"lag1_autocorrelation": [], "cross_country_correlation": [],
                                      "mean_sd": []}
+    y_lag = data.y_lag()
     for row, d in enumerate(chosen):
         mean = _mean_without_factor(data, flat, d)
         if spec.common_factor:
@@ -253,6 +258,8 @@ def predictive_checks(fit: FitResult, max_draws: int = 400, seed: int = 7) -> Pr
             mean_obs = mean
         if spec.time_effects:
             mean_obs = mean_obs + flat["quarter_effect"][d][None, :]
+        if spec.lagged_outcome:
+            mean_obs = mean_obs + flat["psi"][d][:, None] * y_lag
         sigma = flat["sigma"][d][:, None]
         nu = float(flat["nu"][d]) if "nu" in flat else None
         resid = data.y - mean_obs
@@ -279,11 +286,17 @@ def predictive_checks(fit: FitResult, max_draws: int = 400, seed: int = 7) -> Pr
             e = noise
         replicated = mean + e
         if spec.common_factor:
-            replicated = replicated + flat["lam"][d][:, None] * rng.standard_normal((t,))[None, :]
+            fresh_factor = rng.standard_normal((t,))
+            if spec.factor_ar:
+                fresh_factor = ar1_path(fresh_factor, float(flat["rho_f"][d]),
+                                        data.segment_start)
+            replicated = replicated + flat["lam"][d][:, None] * fresh_factor[None, :]
         if spec.time_effects:
             # Fresh quarter effects from their ZeroSumNormal(tau) distribution.
             fresh = np.asarray(rng.normal(0.0, float(flat["tau_quarter"][d]), t))
             replicated = replicated + (fresh - fresh.mean())[None, :]
+        if spec.lagged_outcome:
+            replicated = ardl_path(replicated, flat["psi"][d], data.y, data.segment_start)
         for key, value in _masked_stats(data, replicated).items():
             stats[key].append(value)
     lower50, upper50 = np.quantile(one_step, [0.25, 0.75], axis=0)
@@ -291,9 +304,10 @@ def predictive_checks(fit: FitResult, max_draws: int = 400, seed: int = 7) -> Pr
     inside50 = (data.y >= lower50) & (data.y <= upper50)
     inside90 = (data.y >= lower90) & (data.y <= upper90)
     observed = _masked_stats(data, data.y)
+    cells = likelihood_mask(data.mask, data.segment_start, spec)
     return PredictiveCheck(
-        coverage_50=float(inside50[data.mask].mean()),
-        coverage_90=float(inside90[data.mask].mean()),
+        coverage_50=float(inside50[cells].mean()),
+        coverage_90=float(inside90[cells].mean()),
         observed=observed,
         replicated_mean={k: float(np.mean(v)) for k, v in stats.items()},
         p_value={k: float(np.mean(np.asarray(v) >= observed[k])) for k, v in stats.items()},
@@ -348,6 +362,8 @@ def save_fit(fit: FitResult, check: PredictiveCheck, directory: Path,
         "countries": list(fit.data.countries),
         "quarters": list(fit.data.quarters),
         "masked_terms": int((~fit.data.mask).sum()),
+        "likelihood_terms": int(likelihood_mask(fit.data.mask, fit.data.segment_start,
+                                                fit.spec).sum()),
         "masked_flagged_quarters": fit.data.masked_reasons,
         "diagnostics": {**asdict(fit.diagnostics), "accepted": fit.diagnostics.accepted,
                         "failures": fit.diagnostics.failures()},
