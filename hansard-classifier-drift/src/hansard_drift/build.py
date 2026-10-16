@@ -16,7 +16,15 @@ from . import __version__
 from .config import Config
 from .data import fetch_manifest, iter_chunks
 from .dictionary import CATEGORIES, DICTIONARY_VERSION, DISCIPLINE, describe, normalise, tag_series
-from .roles import assign_era, assign_side, classify_roles, normalise_party, order_keys
+from .roles import (
+    assign_era,
+    assign_side,
+    classify_roles,
+    normalise_party,
+    order_keys,
+    roster_match,
+    speaker_surnames,
+)
 
 LIGHT_COLUMNS = [
     "id",
@@ -30,11 +38,22 @@ LIGHT_COLUMNS = [
     "role_source",
     "name_norm",
     "speakername",
+    "display_as",
     "party_norm",
     "n_words",
+    "opens_order",
     "speech_class",
 ]
-CATEGORICAL = ["role", "chair_kind", "role_source", "name_norm", "speakername", "party_norm", "speech_class"]
+CATEGORICAL = [
+    "role",
+    "chair_kind",
+    "role_source",
+    "name_norm",
+    "speakername",
+    "display_as",
+    "party_norm",
+    "speech_class",
+]
 SIDES = ["Government", "Opposition", "Other"]
 LENGTH_THRESHOLDS = (5, 10, 20, 50)
 
@@ -43,11 +62,18 @@ def _read(cfg: Config) -> tuple[pd.DataFrame, pd.DataFrame]:
     light_parts, chair_parts = [], []
     row0 = 0
     for chunk in iter_chunks(cfg):
-        df = classify_roles(chunk)
-        df["date"] = pd.to_datetime(df["date"]).dt.normalize()
+        chunk["date"] = pd.to_datetime(chunk["date"]).dt.normalize()
+        df = classify_roles(
+            chunk,
+            speaker_surname=speaker_surnames(chunk["date"], cfg),
+            roster_hit=roster_match(chunk["display_as"], chunk["date"], cfg),
+        )
         df = df.join(order_keys(df["id"], df["colnum"]))
         text = df["speech"].fillna("").astype(str)
         df["n_words"] = text.str.count(r"\S+").astype("int32")
+        # Audit only, never used to assign roles: speeches that open with a bare "Order".
+        df["opens_order"] = text.str.match(r"\s*order\s*[.!,]", case=False).fillna(False).astype(bool)
+        df["display_as"] = df["display_as"].fillna("").astype(str)
         df["party_norm"] = df["party"].map(normalise_party)
         light = df[LIGHT_COLUMNS].copy()
         light["row"] = np.arange(row0, row0 + len(df), dtype="int64")
@@ -148,6 +174,7 @@ def write_stage1(cfg: Config, light: pd.DataFrame, chair: pd.DataFrame) -> dict:
     light.groupby(["speech_class", "role"], observed=True).size().rename("rows").reset_index().to_csv(
         d / "class_by_role.csv", index=False
     )
+    write_role_diagnostics(cfg, light)
 
     # Population of Chair speeches by stratum (era x dictionary tag x side of the floor).
     pop = (
@@ -253,6 +280,9 @@ def write_stage1(cfg: Config, light: pd.DataFrame, chair: pd.DataFrame) -> dict:
         "ids_parsed_share": float(light["k_parsed"].mean()),
         "roles": {k: int(v) for k, v in light["role"].value_counts().items()},
         "chair_by_source": {k: int(v) for k, v in chair["role_source"].value_counts().items()},
+        "order_openers_classified_as_chair": float(
+            (light.loc[light["opens_order"], "role"] == "chair").mean() if light["opens_order"].any() else np.nan
+        ),
         "chair_by_kind": {k: int(v) for k, v in chair["chair_kind"].value_counts().items()},
         "chair_speeches": int(len(chair)),
         "discipline_tagged": int(chair["d_tag"].sum()),
@@ -275,3 +305,52 @@ def _rate_row(construct: str, era: str, side: str, tagged: int, members: int, ch
         "members": members,
         "rate_per_1000": 1000 * tagged / members if members else np.nan,
     }
+
+
+def write_role_diagnostics(cfg: Config, light: pd.DataFrame) -> None:
+    """How role detection behaves year by year.
+
+    A speech that opens with a bare "Order" is almost always the Chair's, so the share of
+    such speeches classified as the Chair is a label-free check on the role detector's
+    recall, and the unclassified ones show which printed names it misses. It is a check
+    only: roles are never assigned from the text.
+    """
+    d = cfg.stage1_dir
+    year = light["date"].dt.year.rename("year")
+    chair = light["role"] == "chair"
+    by_year = (
+        light[chair].groupby([year[chair], light.loc[chair, "role_source"].astype(str)]).size().unstack(fill_value=0)
+    )
+    by_year["members"] = light[light["role"] == "member"].groupby(year).size()
+    op = light["opens_order"]
+    by_year["order_openers"] = light[op].groupby(year).size()
+    by_year["order_openers_chair"] = light[op & chair].groupby(year).size()
+    by_year = by_year.fillna(0).astype("int64")
+    by_year["order_openers_chair_share"] = by_year["order_openers_chair"] / by_year["order_openers"].replace(0, np.nan)
+    by_year.reset_index().to_csv(d / "role_by_year.csv", index=False)
+
+    era_share = light[op].groupby("era")["role"].apply(lambda r: float((r == "chair").mean()))
+    era_share.reindex(cfg.era_names).rename("order_openers_chair_share").reset_index().to_csv(
+        d / "order_openers_by_era.csv", index=False
+    )
+
+    keys = ["name_norm", "display_as", "party_norm", "role", "role_source"]
+    sp = light[light["party_norm"] == "Speaker"]
+    (
+        sp.groupby([sp["date"].dt.year.rename("year"), *[sp[k].astype(str) for k in keys]])
+        .size()
+        .rename("rows")
+        .reset_index()
+        .sort_values(["year", "rows"], ascending=[True, False])
+        .to_csv(d / "party_speaker_rows.csv", index=False)
+    )
+
+    miss = light[op & ~chair]
+    top = (
+        miss.groupby([miss["date"].dt.year.rename("year"), *[miss[k].astype(str) for k in keys]])
+        .size()
+        .rename("rows")
+        .reset_index()
+        .sort_values(["year", "rows"], ascending=[True, False])
+    )
+    top.groupby("year").head(15).to_csv(d / "unclassified_order_openers.csv", index=False)

@@ -42,3 +42,34 @@ def test_pipeline_recovers_known_drift(cfg):
     assert (cfg.root / "results" / "RESULTS.md").exists() or write_report(cfg)
     write_report(cfg)
     assert "Corrected estimates" in (cfg.root / "results" / "RESULTS.md").read_text()
+
+
+def test_panel_adjudication_and_sensitivity(cfg):
+    import numpy as np
+
+    from hansard_drift.estimate import annotator_sensitivity
+    from hansard_drift.labels import adjudicate, agreement
+
+    write_synthetic(cfg, days_per_era=10)
+    build(cfg)
+    draw(cfg)
+    autolabel(cfg, "a")
+    autolabel(cfg, "b")
+    autolabel(cfg, "c")
+    # annotator c flips a tenth of its labels
+    p = cfg.labels_dir / "labels_c.csv"
+    c = pd.read_csv(p)
+    flip = np.random.default_rng(0).random(len(c)) < 0.1
+    c.loc[flip, "discipline"] = 1 - c.loc[flip, "discipline"]
+    c.to_csv(p, index=False)
+
+    out = adjudicate(cfg)
+    truth = pd.read_parquet(cfg.cache_dir / "truth.parquet").set_index("id")["truth_discipline"]
+    assert (out.set_index("id")["discipline"].astype(int) == truth.reindex(out["id"]).to_numpy()).all()
+    a = agreement(cfg)
+    assert len(a) == 3
+    groups = pd.read_csv(cfg.labels_dir / "agreement_by_group.csv")
+    assert groups.loc[groups["group"] == "all", "fleiss_kappa"].iloc[0] > 0.6
+    estimate(cfg)
+    s = annotator_sensitivity(cfg)
+    assert set(s["labels"]) == {"panel", "a", "b", "c"}

@@ -45,7 +45,7 @@ def _model(tr: dict) -> tuple[TfidfVectorizer, LogisticRegression]:
         min_df=int(tr["min_df"]),
         sublinear_tf=True,
     )
-    clf = LogisticRegression(C=float(tr["c"]), max_iter=2000)
+    clf = LogisticRegression(C=float(tr["c"]), class_weight=tr.get("class_weight") or None, max_iter=2000)
     return vec, clf
 
 

@@ -119,7 +119,7 @@ def fig_naive_vs_corrected(cfg: Config) -> str | None:
     ax.legend(loc="upper right")
     _source(
         fig,
-        "* Hoyle: Nov 2019 to Apr 2021 only. Source: Hansard Speeches 1979-2021 (Odell, v3.1.0); hand-labelled validation sample.",
+        "* Hoyle: Nov 2019 to Apr 2021 only. Source: Hansard Speeches 1979-2021 (Odell, v3.1.0); validation sample labelled by a panel of three language models.",
     )
     name = _save(fig, cfg, "fig2_naive_vs_corrected.png")
     plt.close(fig)

@@ -57,11 +57,23 @@ def _posts_text(posts) -> str:
         return str(posts).lower()
 
 
-def classify_roles(df: pd.DataFrame) -> pd.DataFrame:
+def classify_roles(
+    df: pd.DataFrame, speaker_surname: pd.Series | None = None, roster_hit: pd.Series | None = None
+) -> pd.DataFrame:
     """Add ``role``, ``chair_kind`` and ``role_source`` to a frame of raw rows.
 
+    The Chair is recognised, in order of trust, by
+      1. the printed title ("Mr. Speaker", "Madam Deputy Speaker (...)", "The Chairman");
+      2. a parliamentary post held at the time (Speaker, Deputy Speaker, Ways and Means);
+      3. party "Speaker" on a row whose name is the reigning Speaker's. Party alone is not
+         enough: older rows carry party "Speaker" on other Members;
+      4. a Deputy Speaker on the roster in the config, inside their term, for the years
+         when the record prints them under their own name with no title and no post.
+    The text of the speech is never used, so the frame the validation sample is drawn
+    from does not depend on the dictionary being validated.
+
     role: chair | member | floor | procedural | other
-    role_source: title | post | none
+    role_source: title | post | party | roster | none
     """
     name = df["speakername"].map(normalise_name)
     posts = df["parliamentary_posts"].map(_posts_text) if "parliamentary_posts" in df else pd.Series("", index=df.index)
@@ -79,19 +91,45 @@ def classify_roles(df: pd.DataFrame) -> pd.DataFrame:
         post_deputy |= posts.str.contains(p, regex=False)
     by_post = ~is_title & ~is_elect & (post_speaker | post_deputy) & (cls == "Speech")
 
+    by_party = pd.Series(False, index=df.index)
+    if speaker_surname is not None and "party" in df:
+        party_speaker = df["party"].map(normalise_party) == "Speaker"
+        display = df["display_as"].fillna("").astype(str).str.lower() if "display_as" in df else name
+        surname = speaker_surname.reindex(df.index).fillna("").astype(str)
+        has = surname != ""
+        named = pd.Series(
+            [bool(s) and (s in n or s in d) for s, n, d in zip(surname, name, display, strict=True)], index=df.index
+        )
+        by_party = ~is_title & ~is_elect & ~by_post & party_speaker & has & named & (cls == "Speech")
+
+    by_roster = pd.Series(False, index=df.index)
+    if roster_hit is not None:
+        by_roster = ~is_title & ~is_elect & ~by_post & ~by_party & roster_hit.reindex(df.index).fillna(False)
+        by_roster &= cls == "Speech"
+
     collective = name.str.contains(_COLLECTIVE)
 
     role = np.select(
-        [is_title & ~is_elect, by_post, collective, cls == "Procedural", (cls == "Speech") & (name != "")],
-        ["chair", "chair", "floor", "procedural", "member"],
+        [
+            is_title & ~is_elect,
+            by_post,
+            by_party,
+            by_roster,
+            collective,
+            cls == "Procedural",
+            (cls == "Speech") & (name != ""),
+        ],
+        ["chair", "chair", "chair", "chair", "floor", "procedural", "member"],
         default="other",
     )
     kind = np.select(
-        [is_speaker & ~is_elect, is_deputy, is_committee, by_post & post_speaker, by_post],
-        ["speaker", "deputy", "committee", "speaker", "deputy"],
+        [is_speaker & ~is_elect, is_deputy, is_committee, by_post & post_speaker, by_post, by_party, by_roster],
+        ["speaker", "deputy", "committee", "speaker", "deputy", "speaker", "deputy"],
         default="",
     )
-    source = np.select([is_title & ~is_elect, by_post], ["title", "post"], default="none")
+    source = np.select(
+        [is_title & ~is_elect, by_post, by_party, by_roster], ["title", "post", "party", "roster"], default="none"
+    )
     out = df.copy()
     out["name_norm"] = name
     out["role"] = role
@@ -124,6 +162,25 @@ def assign_era(dates: pd.Series, cfg: Config) -> pd.Series:
     for e in cfg.eras:
         era[(d >= e.start) & (d < e.end)] = e.name
     return era
+
+
+def roster_match(display_as: pd.Series, dates: pd.Series, cfg: Config) -> pd.Series:
+    """True where the row's person is a rostered Deputy Speaker inside their term."""
+    name = display_as.fillna("").astype(str).str.strip().str.lower()
+    d = pd.to_datetime(dates).dt.date
+    hit = pd.Series(False, index=display_as.index)
+    for r in cfg.roster:
+        hit |= (name == r.name.lower()) & (d >= r.start) & (d <= r.end)
+    return hit
+
+
+def speaker_surnames(dates: pd.Series, cfg: Config) -> pd.Series:
+    """The reigning Speaker's surname, lower case, for each date ("" outside the eras)."""
+    d = pd.to_datetime(dates).dt.date
+    out = pd.Series("", index=dates.index, dtype="object")
+    for e in cfg.eras:
+        out[(d >= e.start) & (d < e.end)] = e.speaker.split()[-1].lower()
+    return out
 
 
 def assign_side(party: pd.Series, dates: pd.Series, cfg: Config) -> pd.Series:

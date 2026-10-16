@@ -41,9 +41,10 @@ def _q(x: np.ndarray) -> dict:
     return {"median": float(np.median(x)), "lo": float(np.quantile(x, 0.025)), "hi": float(np.quantile(x, 0.975))}
 
 
-def stratum_table(cfg: Config) -> tuple[pd.DataFrame, str]:
+def stratum_table(cfg: Config, labels: pd.DataFrame | None = None, source: str = "") -> tuple[pd.DataFrame, str]:
     design = pd.read_csv(cfg.labels_dir / "design.csv", dtype={"id": str})
-    labels, source = final_labels(cfg)
+    if labels is None:
+        labels, source = final_labels(cfg)
     lab = design.merge(labels, on="id", how="left")
     pop = pd.read_csv(cfg.stage1_dir / "population.csv")
     grp = (
@@ -197,3 +198,51 @@ def estimate(cfg: Config) -> dict:
     }
     (out / "summary.json").write_text(json.dumps(summary, indent=2), encoding="utf-8")
     return summary
+
+
+def annotator_sensitivity(cfg: Config) -> pd.DataFrame:
+    """The corrected numbers under each annotator's labels alone, next to the panel's.
+
+    If the conclusions hold under every annotator, they do not hinge on whose reading of
+    the codebook is taken as the reference.
+    """
+    from .labels import annotator_files, read_annotator
+
+    est = cfg.estimate
+    den = pd.read_csv(cfg.stage1_dir / "denominators.csv")
+    m_era = den.groupby("era")["members"].sum()
+    sets = [("panel", None)]
+    for f in annotator_files(cfg):
+        df = read_annotator(f)
+        df = df[df["discipline"].astype(str).isin(["0", "1"])].copy()
+        df["discipline"] = df["discipline"].astype(int)
+        sets.append((f.stem.removeprefix("labels_"), df[["id", "discipline"]]))
+    rows = []
+    for name, labels in sets:
+        t, _ = stratum_table(cfg, labels, name)
+        theta = draw_theta(t, int(est["draws"]), float(est["prior"]), int(est["seed"]))
+        weighted = theta * t["N"].to_numpy()[None, :]
+        tagged = t["d_tag"].to_numpy() == 1
+        ref = None
+        for e in [x for x in cfg.era_names if t.loc[t["era"] == x, "N"].sum() > 0]:
+            in_e = (t["era"] == e).to_numpy()
+            T = weighted[:, in_e].sum(axis=1)
+            TP = weighted[:, in_e & tagged].sum(axis=1)
+            D = float(t.loc[in_e & tagged, "N"].sum())
+            rate = 1000 * T / float(m_era[e])
+            if e == est["reference_era"]:
+                ref = rate
+            row = {"labels": name, "era": e, "labelled": int(t.loc[in_e, "n"].sum())}
+            for key, val in (("rate", rate), ("precision", TP / D), ("recall", TP / T)):
+                for stat, v in _q(val).items():
+                    row[f"{key}_{stat}"] = v
+            row["_rate"] = rate
+            rows.append(row)
+        for r in rows:
+            if r["labels"] == name and ref is not None:
+                for stat, v in _q(r["_rate"] / ref).items():
+                    r[f"ratio_to_reference_{stat}"] = v
+    out = pd.DataFrame(rows).drop(columns="_rate")
+    cfg.stage2_dir.mkdir(parents=True, exist_ok=True)
+    out.to_csv(cfg.stage2_dir / "annotator_sensitivity.csv", index=False)
+    return out

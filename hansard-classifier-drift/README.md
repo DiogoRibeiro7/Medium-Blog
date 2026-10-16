@@ -36,7 +36,13 @@ Opposition and when the Government had the floor.
 ## Design
 
 1. **Roles and order.** Chair speeches are identified by printed title, then by
-   parliamentary post. Speeches are put in sitting order from the TheyWorkForYou id
+   parliamentary post, then by party "Speaker" on the reigning Speaker's name, then by a
+   roster of Deputy Speakers and their terms (`config/study.toml`). The last two are needed
+   because from 2010 the record increasingly prints the Chair under a personal name with no
+   title. Roles never use the text of the speech, so the frame the sample is drawn from does
+   not depend on the dictionary. A label-free check reports, year by year, the share of
+   speeches opening with a bare "Order" that are recognised as the Chair's
+   (`results/stage1/role_by_year.csv`). Speeches are put in sitting order from the TheyWorkForYou id
    (sitting, column, paragraph). "Who had the floor" is the last Member to speak that day
    before the Chair; their side (Government or Opposition) comes from the party and the
    date. The 2010–15 coalition counts both partners as Government.
@@ -44,15 +50,22 @@ Opposition and when the Government had the floor.
    eight discipline categories and one time-keeping category. Every call of "Order" is
    counted, so "Order. Order." is two.
 3. **Validation sample.** Chair speeches stratified by era × dictionary tag × side of the
-   floor (36 strata, 773 speeches), drawn once with a fixed seed and shown to the
-   annotator without the tag, the stratum or the era.
-4. **Correction.** Each stratum's share of true interventions gets a Beta posterior with a
+   floor (36 strata, 775 speeches), drawn once with a fixed seed and shown to the
+   annotators without the tag, the stratum or the era.
+4. **Reference labels.** A panel of three language-model annotators (Claude Opus, Sonnet
+   and Fable), each given only the codebook and the blind items, in separate sessions with
+   no access to the other labels, the dictionary or the results. The reference label is
+   the majority vote (`hansard-drift adjudicate`). Agreement is reported overall, by era
+   and by dictionary tag (pairwise Cohen's kappa, Fleiss' kappa), because a reference whose
+   agreement falls in some eras is drifting too; and every corrected number is recomputed
+   under each annotator alone (`results/stage2/annotator_sensitivity.csv`).
+5. **Correction.** Each stratum's share of true interventions gets a Beta posterior with a
    Jeffreys prior; stratum totals are known exactly from the full corpus, so every
    quantity is a weighted sum of stratum shares, propagated by Monte Carlo (20,000 draws).
-5. **A learned classifier.** A TF-IDF logistic regression trained on the labels is
+6. **A learned classifier.** A TF-IDF logistic regression trained on the labels is
    evaluated within eras (repeated K-fold) and across eras (leave one era out), to see
    whether learning from data removes the drift or only moves it.
-6. **Lexical drift.** Label-free: the terms that most distinguish each era's Chair
+7. **Lexical drift.** Label-free: the terms that most distinguish each era's Chair
    (log-odds with an informative Dirichlet prior, Monroe, Colaresi and Quinn 2008) and the
    Jensen–Shannon divergence between eras.
 
@@ -75,7 +88,7 @@ The whole thing runs on GitHub Actions (`.github/workflows/hansard-classifier-dr
 | Stage | What it does | Trigger |
 |---|---|---|
 | 1 | download (~1.4 GB), roles, tags, naive rates, lexical drift, validation sample | label a PR `hansard-stage1`, or run the workflow with `stage1` |
-| labels | hand-label `labels/sample.csv` | `hansard-drift label --annotator NAME`, locally |
+| labels | annotator files `labels/labels_<name>.csv`, then `hansard-drift adjudicate` | locally (`hansard-drift label --annotator NAME` for a human annotator) |
 | 2 | corrected estimates, classifier comparison, figures, `results/RESULTS.md` | label a PR `hansard-stage2`, or run the workflow with `stage2` |
 
 Locally:
@@ -104,9 +117,16 @@ whose drift is known (`hansard-drift synth`).
 
 ## What this does not cover
 
+- The reference labels are three language models' reading of the codebook, not a
+  human's. The models come from one provider and may share blind spots, so agreement
+  measures consistency, not correctness. The corrections are against that reference. A
+  human annotator can be added at any time (`hansard-drift label`) and compared with
+  `hansard-drift agreement`.
+
 - Role detection is a classifier too. The sample is drawn from speeches classified as the
-  Chair's, so Chair speeches printed under a personal name with no post are missed and
-  not measured.
+  Chair's, so Chair speeches the rules above miss (members of the Panel of Chairs printed
+  under their own names, misprinted titles) are outside the frame and not measured.
+  `results/stage1/unclassified_order_openers.csv` lists the largest of them.
 - Hansard is an edited record. A heckle the reporters did not write down cannot be
   recovered by any classifier; the correction is for the dictionary's errors against the
   record, not for the record's errors against the Chamber.

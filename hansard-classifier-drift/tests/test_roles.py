@@ -76,3 +76,39 @@ def test_order_keys_sort_by_sitting_column_paragraph():
     order = k.sort_values(["k_letter", "k_col", "k_para"]).index.tolist()
     assert order == [1, 0, 3, 2]
     assert k["k_parsed"].all()
+
+
+def test_party_speaker_counts_only_for_the_reigning_speaker(cfg):
+    from hansard_drift.roles import speaker_surnames
+
+    df = pd.DataFrame(
+        {
+            "speakername": ["John Bercow", "Mr. Denzil Davies", "Lindsay Hoyle", "Lindsay Hoyle"],
+            "display_as": ["John Bercow", "Denzil Davies", "Lindsay Hoyle", "Lindsay Hoyle"],
+            "party": ["Speaker", "Speaker", "Labour", "Speaker"],
+            "speech_class": ["Speech"] * 4,
+            "parliamentary_posts": [[], [], [], []],
+            "date": pd.to_datetime(["2017-03-01", "1985-03-01", "2017-03-01", "2020-03-01"]),
+        }
+    )
+    out = classify_roles(df, speaker_surname=speaker_surnames(df["date"], cfg))
+    assert out["role"].tolist() == ["chair", "member", "member", "chair"]
+    assert out["role_source"].tolist() == ["party", "none", "none", "party"]
+
+
+def test_rostered_deputy_counts_only_inside_the_term(cfg):
+    from hansard_drift.roles import roster_match
+
+    df = pd.DataFrame(
+        {
+            "speakername": ["Dawn Primarolo", "Dawn Primarolo", "Eleanor Laing", "Eleanor Laing"],
+            "display_as": ["Dawn Primarolo", "Dawn Primarolo", "Eleanor Laing", "Eleanor Laing"],
+            "party": ["Labour", "Labour", "Conservative", "Conservative"],
+            "speech_class": ["Speech"] * 4,
+            "parliamentary_posts": [[], [], [], []],
+            "date": pd.to_datetime(["2012-05-01", "2008-05-01", "2021-02-01", "2011-02-01"]),
+        }
+    )
+    out = classify_roles(df, roster_hit=roster_match(df["display_as"], df["date"], cfg))
+    assert out["role"].tolist() == ["chair", "member", "chair", "member"]
+    assert out["role_source"].tolist() == ["roster", "none", "roster", "none"]

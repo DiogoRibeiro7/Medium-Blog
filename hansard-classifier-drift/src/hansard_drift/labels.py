@@ -87,6 +87,30 @@ def cohen_kappa(a: np.ndarray, b: np.ndarray) -> float:
     return (po - pe) / (1 - pe) if pe < 1 else 1.0
 
 
+def fleiss_kappa(votes: np.ndarray) -> float:
+    """Fleiss' kappa for an items x categories matrix of vote counts (equal raters per item)."""
+    votes = np.asarray(votes, dtype=float)
+    n = votes.sum(axis=1)
+    if len(votes) == 0 or not np.all(n == n[0]) or n[0] < 2:
+        return np.nan
+    n = n[0]
+    p_j = votes.sum(axis=0) / votes.sum()
+    p_i = (np.sum(votes**2, axis=1) - n) / (n * (n - 1))
+    pe = float(np.sum(p_j**2))
+    return (float(p_i.mean()) - pe) / (1 - pe) if pe < 1 else 1.0
+
+
+def _decisive(frames: dict[str, pd.DataFrame]) -> pd.DataFrame:
+    """One column per annotator, items labelled 0/1 by every annotator only."""
+    wide = None
+    for name, f in frames.items():
+        col = f[["id", "discipline"]].rename(columns={"discipline": name})
+        wide = col if wide is None else wide.merge(col, on="id", how="outer")
+    wide = wide.set_index("id")
+    ok = wide.isin(["0", "1", 0, 1]).all(axis=1)
+    return wide[ok].astype(int)
+
+
 def agreement(cfg: Config) -> pd.DataFrame:
     files = annotator_files(cfg)
     if len(files) < 2:
@@ -117,6 +141,63 @@ def agreement(cfg: Config) -> pd.DataFrame:
     out.to_csv(cfg.labels_dir / "agreement.csv", index=False)
     if disagreements:
         pd.concat(disagreements).to_csv(cfg.labels_dir / "disagreements.csv", index=False)
+
+    # Fleiss' kappa over all annotators, overall and within groups of the design. A
+    # reference whose agreement falls in some eras is itself drifting.
+    wide = _decisive(frames)
+    design_path = cfg.labels_dir / "design.csv"
+    if design_path.exists() and len(frames) >= 2:
+        design = pd.read_csv(design_path, dtype={"id": str}).set_index("id")
+        wide = wide.join(design[["era", "d_tag"]], how="left")
+        names = list(frames)
+        grp_rows = []
+        groups = [("all", wide)]
+        groups += [(f"era={e}", g) for e, g in wide.groupby("era", sort=False)]
+        groups += [(f"d_tag={t}", g) for t, g in wide.groupby("d_tag")]
+        for label, g in groups:
+            ones = g[names].sum(axis=1).to_numpy()
+            votes = np.column_stack([len(names) - ones, ones])
+            grp_rows.append(
+                {
+                    "group": label,
+                    "items": len(g),
+                    "fleiss_kappa": fleiss_kappa(votes),
+                    "unanimous": float(np.mean((ones == 0) | (ones == len(names)))) if len(g) else np.nan,
+                    "share_positive_majority": float(np.mean(ones * 2 > len(names))) if len(g) else np.nan,
+                }
+            )
+        pd.DataFrame(grp_rows).to_csv(cfg.labels_dir / "agreement_by_group.csv", index=False)
+    return out
+
+
+def adjudicate(cfg: Config) -> pd.DataFrame:
+    """Majority vote across the annotator files into labels/labels.csv.
+
+    An item gets the label a strict majority of all annotators gave it; with no majority
+    (for example one 1, one 0 and one unsure) it is left unsure and out of the estimates.
+    """
+    files = annotator_files(cfg)
+    if len(files) < 2:
+        raise RuntimeError("adjudication needs at least two labels_<name>.csv files")
+    frames = {f.stem.removeprefix("labels_"): read_annotator(f) for f in files}
+    names = list(frames)
+    ids = sorted(set().union(*[set(f["id"]) for f in frames.values()]))
+    vote = pd.DataFrame(index=ids)
+    for n, f in frames.items():
+        vote[n] = f.set_index("id")["discipline"].astype(str).reindex(ids).fillna("")
+    k = len(names)
+    ones = (vote == "1").sum(axis=1)
+    zeros = (vote == "0").sum(axis=1)
+    label = np.where(ones * 2 > k, "1", np.where(zeros * 2 > k, "0", ""))
+    out = pd.DataFrame(
+        {
+            "id": ids,
+            "discipline": label,
+            "unsure": np.where(label == "", 1, 0),
+            "note": [f"votes 1:{a} 0:{b} of {k}" for a, b in zip(ones, zeros, strict=True)],
+        }
+    )
+    out.to_csv(cfg.labels_dir / "labels.csv", index=False)
     return out
 
 

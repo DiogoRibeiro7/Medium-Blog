@@ -48,6 +48,88 @@ start = 2019-11-04
 end = 2021-04-30
 partial = true                             # 18 months, most of them in the hybrid Covid Parliament
 
+# Deputy Speakers who appear in the record under their own names, with no title and no
+# post, from 1997 on. A row by one of them inside their term counts as the Chair. Terms are
+# [start, end] as given in each member's Wikipedia infobox (checked 16 October 2026);
+# earlier Deputy Speakers are printed with their titles and need no roster.
+[[roster]]
+name = "Alan Haselhurst"
+office = "Chairman of Ways and Means"
+start = 1997-05-14
+end = 2010-06-08
+
+[[roster]]
+name = "Michael Martin"
+office = "First Deputy Chairman of Ways and Means"
+start = 1997-05-14
+end = 2000-10-23
+
+[[roster]]
+name = "Michael Lord"
+office = "Second Deputy Chairman of Ways and Means"
+start = 1997-05-14
+end = 2010-06-08
+
+[[roster]]
+name = "Sylvia Heal"
+office = "First Deputy Chairman of Ways and Means"
+start = 2000-10-23
+end = 2010-04-12
+
+[[roster]]
+name = "Lindsay Hoyle"
+office = "Chairman of Ways and Means"
+start = 2010-06-08
+end = 2019-11-04
+
+[[roster]]
+name = "Nigel Evans"
+office = "First Deputy Chairman of Ways and Means"
+start = 2010-06-08
+end = 2013-09-10
+
+[[roster]]
+name = "Dawn Primarolo"
+office = "Second Deputy Chairman of Ways and Means"
+start = 2010-06-09
+end = 2015-05-08
+
+[[roster]]
+name = "Eleanor Laing"
+office = "First Deputy Chairman of Ways and Means"
+start = 2013-10-16
+end = 2019-12-19
+
+[[roster]]
+name = "Natascha Engel"
+office = "Second Deputy Chairman of Ways and Means"
+start = 2015-06-03
+end = 2017-06-08
+
+[[roster]]
+name = "Rosie Winterton"
+office = "Second Deputy Chairman of Ways and Means"
+start = 2017-06-28
+end = 2019-11-06
+
+[[roster]]
+name = "Eleanor Laing"
+office = "Chairman of Ways and Means"
+start = 2020-01-07
+end = 2021-04-30
+
+[[roster]]
+name = "Rosie Winterton"
+office = "First Deputy Chairman of Ways and Means"
+start = 2020-01-07
+end = 2021-04-30
+
+[[roster]]
+name = "Nigel Evans"
+office = "Second Deputy Chairman of Ways and Means"
+start = 2020-01-07
+end = 2021-04-30
+
 # Parties in government, [start, end). The 2010-15 coalition counts both partners.
 [[government]]
 start = 1979-05-04
@@ -93,6 +175,7 @@ seed = 11
 min_df = 2
 ngram_max = 2
 c = 1.0
+class_weight = "balanced"                 # positives are about one in five labelled items
 cv_folds = 5
 cv_repeats = 5
 bootstrap = 2000
