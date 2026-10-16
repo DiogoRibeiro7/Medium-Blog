@@ -178,6 +178,18 @@ Still to do in this stage: address the misfits of the posterior predictive check
 
 ## Stage 3 — Identification before causal language
 
+**Implemented as an identification study.** See
+[docs/IDENTIFICATION_STUDY.md](docs/IDENTIFICATION_STUDY.md) (decision document),
+[IDENTIFICATION_PROTOCOL.md](IDENTIFICATION_PROTOCOL.md) (pre-registration) and
+[docs/IDENTIFICATION_RESULTS.md](docs/IDENTIFICATION_RESULTS.md) (generated results):
+lag-augmented panel local projections on externally identified ECB monetary policy and
+OPEC oil supply news shocks, with Anderson-Rubin (Fieller) sets for shock-conditional
+Okun coefficients. Recursive orderings, long-run restrictions and sign restrictions were
+evaluated and rejected; productivity, labour-supply and country-specific GDP shocks are
+not identifiable with public data. The estimates are not informative about Okun
+coefficients, so no causal claim is made.
+
+
 With reduced-form covariance `Sigma = B B'`, `B Q` has the same
 covariance for any orthogonal `Q`. A multivariate dynamic model
 therefore does not uniquely identify a structural GDP disturbance.

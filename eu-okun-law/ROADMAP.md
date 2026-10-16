@@ -77,8 +77,17 @@ Pre-registered in [BAYES_PROTOCOL.md](BAYES_PROTOCOL.md); results in
 
 ## Phase 3 — Structural tests
 
-- [ ] Formal shock identification, with demand/supply distinctions.
-- [ ] Impulse responses with stated units and assumptions.
+- [x] Identification study: the problem, a causal graph, recursive / long-run / sign /
+      external-instrument strategies, testable assumptions and public data
+      ([docs/IDENTIFICATION_STUDY.md](docs/IDENTIFICATION_STUDY.md)). Productivity,
+      labour-supply and country-specific GDP shocks are not identifiable.
+- [x] Impulse responses with stated units and assumptions for the two externally
+      identified common shocks (ECB monetary policy, OPEC oil supply news); the
+      shock-conditional Okun coefficients are uninformative
+      ([docs/IDENTIFICATION_RESULTS.md](docs/IDENTIFICATION_RESULTS.md)).
+- [ ] Monthly outcomes (unemployment, industrial production) for more power, under a new
+      registered protocol; a defended shift-share foreign-demand instrument for
+      country-specific GDP shocks.
 - [ ] Regime sensitivity, structural breaks and mechanisms.
 - [ ] Detailed alternative hypotheses for NL and LU.
 

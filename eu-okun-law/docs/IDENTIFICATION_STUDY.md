@@ -14,7 +14,7 @@ generated in [IDENTIFICATION_RESULTS.md](IDENTIFICATION_RESULTS.md).
 | Do demand-driven and productivity-driven changes in GDP have different employment effects? | **Only half answerable.** A common euro-area *demand* shock (ECB policy surprises) and a common *oil supply* shock (OPEC announcement surprises) are identified. No credible quarterly instrument exists for *productivity* shocks in EU countries. |
 | Can labour-supply shocks be distinguished from aggregate-demand shocks? | **No, with public data.** There is no defensible instrument for labour-supply shocks. Sign restrictions would give prior-dominated identified sets. |
 | Under which assumptions are country-specific GDP shocks identifiable? | **With an instrument that moves one country's GDP and affects its unemployment only through GDP. None exists for the EU-27.** Only the heterogeneous responses of countries to common, externally identified shocks are estimable. |
-| Do the data justify causal claims? | **Only conditional ones**: the average responses to the two identified shocks, under the assumptions stated below, and only where the estimates are informative. Every Okun coefficient estimated so far in this study remains a reduced-form association. |
+| Do the data justify causal claims? | **Not about the GDP-unemployment relationship.** Identification of the two common shocks is defensible, but on 2009-2025 quarterly data the shock-conditional Okun coefficients are not determined (unbounded Anderson-Rubin sets), and the primary oil series fails its predictability test (section 7.1). Every Okun coefficient estimated in this study remains a reduced-form association. |
 
 ## 1. The identification problem
 
@@ -272,6 +272,46 @@ classical, hierarchical Bayesian and predictive analyses.
 The outcome of the estimation, with its diagnostics, is reported in
 [IDENTIFICATION_RESULTS.md](IDENTIFICATION_RESULTS.md).
 
+### 7.1 Outcome of the estimation (snapshot 2026-10-15)
+
+Every number below comes from the generated results report and its tables in
+`docs/identification/`.
+
+- **Monetary policy (demand).** The shock is not predictable from lagged EU data
+  (p = 0.580), so A3 survives its only test. A +10 bp tightening lowers GDP and raises
+  unemployment **on impact only** (h = 0). At no later horizon does the 90% band exclude
+  zero. That is 2 of 27 pointwise bands, about what chance alone would produce (2.7).
+- **Oil supply (primary series).** The raw OPEC surprise, summed to quarters, **fails the
+  predictability test** (p = 0.006) and is labelled "identification doubtful". Its
+  responses (GDP *rising* after negative supply news) contradict theory and Känzig's
+  evidence. This is consistent with the quarterly sum picking up global demand news, but
+  that is an interpretation; the test only shows that A3 fails.
+- **Oil supply (VAR-based variant, pre-registered robustness).** It is not predictable
+  (p = 0.758). It gives theory-consistent responses: GDP falls and unemployment rises,
+  with bands excluding zero at h = 8 for both.
+- **Shock-conditional Okun coefficients are not determined by the data.**
+  - The first stages are weak: |t| at most 1.27 at h = 4 and 8.
+  - Every Anderson-Rubin set of the primary specifications is unbounded, so demand and
+    supply cannot be compared under the protocol's rule.
+  - The only bounded sets come from the VAR-based oil variant at h = 8, [-2.65, -0.03],
+    which is too wide to be useful, and from variants that include 2020-2021. The
+    protocol excluded 2020-2021 because the identified surprises coincide with the
+    pandemic collapse.
+
+### 7.2 Final decision
+
+- **Identification.** Causal identification of *country-specific* GDP shocks, of
+  *productivity* shocks and of *labour-supply* shocks is **not available** with public
+  data for the EU-27.
+- **Common shocks.** For two common shocks, identification is defensible in principle.
+  With 2009-2025 quarterly data, however, it **does not deliver informative
+  shock-conditional Okun coefficients**.
+- **No causal claims.** The data therefore do not justify a causal claim about how
+  unemployment responds to GDP, for any type of shock.
+- **Status of earlier results.** The Okun coefficients of this study stay descriptive,
+  reduced-form associations. That is a justified scientific result, not a gap to paper
+  over.
+
 ## 8. What additional information would be required
 
 - **Productivity.** A quarterly, utilisation-adjusted TFP series for EU countries, or
@@ -287,6 +327,9 @@ The outcome of the estimation, with its diagnostics, is reported in
   section 3.
 - **Longer, break-free samples.** These would improve power: the labour-force series
   start in 2009, and 2020-2021 must be excluded or modelled.
+- **Monthly outcomes.** Eurostat publishes monthly unemployment (`une_rt_m`) and
+  industrial production. With monthly outcomes the shocks keep their native frequency,
+  which would raise the first-stage strength. This needs a new, registered protocol.
 
 ## References
 

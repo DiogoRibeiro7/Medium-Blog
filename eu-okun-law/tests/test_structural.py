@@ -301,3 +301,31 @@ def test_identification_report_renders(tmp_path: Path, monkeypatch: pytest.Monke
                  "country_responses.csv", "provenance.json", "responses_MP.png",
                  "responses_OIL.png", "countries.png"):
         assert (tmp_path / "out" / name).exists()
+
+
+def test_committed_identification_results_reproduce(tmp_path: Path) -> None:
+    """The committed tables regenerate from the frozen snapshots (validation gate)."""
+    import csv as csv_module
+
+    from eu_okun.structural_report import write_report
+
+    root = Path(__file__).resolve().parents[1]
+    committed = root / "docs" / "identification" / "responses.csv"
+    if not committed.exists():
+        pytest.skip("No committed identification results.")
+    write_report(root / "snapshots" / "eurostat-2026-10-15",
+                 root / "snapshots" / "external-shocks-2026-10-16", tmp_path, figures=False)
+
+    def read(path: Path) -> list[dict[str, str]]:
+        with path.open(encoding="utf-8") as stream:
+            return list(csv_module.DictReader(stream))
+
+    for name in ("responses.csv", "okun_sets.csv", "predictability.csv"):
+        old, new = read(root / "docs" / "identification" / name), read(tmp_path / name)
+        assert len(old) == len(new), name
+        for a, b in zip(old, new, strict=True):
+            for key, value in a.items():
+                try:
+                    assert float(value) == pytest.approx(float(b[key]), rel=1e-7, abs=1e-9)
+                except ValueError:
+                    assert value == b[key], (name, key)

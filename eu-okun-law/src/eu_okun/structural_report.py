@@ -160,6 +160,10 @@ def render(review: IdentificationReview, assets: str, command: str) -> str:
         t = review.predictability[key]
         lines.append(f"- Predictability from lagged EU data (A3): F = {t.f_statistic:.2f}, "
                      f"p = {_p(t.p_value)}.")
+        tests = len(res.responses)
+        hits = sum(len(distinguishable(res, o)) for o in OUTCOMES)
+        lines.append(f"- Multiplicity: {hits} of {tests} pointwise 90% bands exclude zero; "
+                     f"about {0.1 * tests:.1f} would by chance if the shock had no effect.")
         lines.append("")
     comparison = _compare(review)
     lines += [comparison, ""]
@@ -241,12 +245,18 @@ def render(review: IdentificationReview, assets: str, command: str) -> str:
             for h in OKUN_HORIZONS:
                 r = next(x for x in res.responses if x.h == h and x.outcome == outcome)
                 cells.append(f"{r.estimate:+.3f} [{r.low90:+.3f}, {r.high90:+.3f}]")
-        o4 = next(o for o in res.okun if o.h == 4)
-        cells.append(o4.text())
+        cells += [next(o for o in res.okun if o.h == h).text() for h in OKUN_HORIZONS]
         rows.append(cells)
     lines += _table(["Variant", "Status", "GDP h=4 [90%]", "GDP h=8 [90%]",
-                     "Unemployment h=4 [90%]", "Unemployment h=8 [90%]", "Okun h=4 AR set"],
-                    rows, "llrrrrl")
+                     "Unemployment h=4 [90%]", "Unemployment h=8 [90%]", "Okun h=4 AR set",
+                     "Okun h=8 AR set"], rows, "llrrrrll")
+    bounded = [name for name, res in review.robustness.items()
+               if any(o.informative for o in res.okun)]
+    lines += [("Variants with a bounded Okun set at h = 4 or 8: " + ", ".join(bounded) + ". "
+               if bounded else "No variant gives a bounded Okun set. ")
+              + "Variants that include 2020-2021 rest on quarters in which the identified "
+              "surprises coincided with the pandemic collapse; the protocol excludes those "
+              "windows because the exclusion restriction (A3) is least credible there.", ""]
 
     # 6. Countries
     lines += ["## 6. Countries (descriptive)", "",
