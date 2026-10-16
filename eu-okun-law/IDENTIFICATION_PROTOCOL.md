@@ -137,4 +137,11 @@ x[i,t+h] - x[i,t-1] = a_i^h + b^h s[t] + sum_{l=1..4} ( c_l^h s[t-l] + d_l^h du[
 
 ## Change log
 
-None yet.
+- **Before any estimate on real data: the covariance of the predictability F-test (A3).**
+  - The protocol did not specify it.
+  - Simulations with about 64 quarters and nine regressors showed that HAC, HC1 and HC3
+    covariances over-reject. HC1 rejected 17% of the time at a nominal 5%.
+  - The classical F-test kept its size.
+  - Under the null the shock is independent of the lagged regressors, so its variance
+    cannot depend on them and the classical F-test is valid. It is used; a unit test
+    checks its size by simulation.

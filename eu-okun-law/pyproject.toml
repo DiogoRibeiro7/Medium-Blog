@@ -19,10 +19,12 @@ report = ["matplotlib>=3.9,<4"]
 # h5netcdf: the NetCDF4 engine ArviZ needs to write posterior artifacts.
 bayes = ["numpyro>=0.22,<0.23", "jax>=0.11,<0.12", "arviz>=1.3,<1.4", "scipy>=1.14,<2",
          "h5netcdf[h5py]>=1.4,<2"]
+# Structural identification: reading the published oil supply news shock workbook.
+structural = ["openpyxl>=3.1,<4"]
 dev = [
     "pytest>=8,<10", "ruff>=0.13,<1", "mypy>=1.16,<2", "matplotlib>=3.9,<4",
     "numpyro>=0.22,<0.23", "jax>=0.11,<0.12", "arviz>=1.3,<1.4", "scipy>=1.14,<2",
-    "h5netcdf[h5py]>=1.4,<2",
+    "h5netcdf[h5py]>=1.4,<2", "openpyxl>=3.1,<4",
 ]
 
 [project.scripts]
@@ -52,5 +54,5 @@ strict = true
 # checked.
 [[tool.mypy.overrides]]
 module = ["numpyro", "numpyro.*", "arviz", "arviz.*", "arviz_base.*", "arviz_stats.*",
-          "scipy", "scipy.*"]
+          "scipy", "scipy.*", "openpyxl", "openpyxl.*"]
 ignore_missing_imports = true
