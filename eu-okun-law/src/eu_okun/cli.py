@@ -136,6 +136,30 @@ def main(argv: Sequence[str] | None = None) -> int:
     predictive_report.add_argument("--no-figures", action="store_true")
     predictive_report.add_argument("--replication-dir", type=Path, default=None,
                                    help="Tables of an independent run to compare with")
+    forecast_fit = commands.add_parser(
+        "forecast-bayes-fit", help="Refit the hierarchical Bayesian forecasting models at "
+        "every origin of the forecasting framework (expensive; 'bayes' extra)")
+    forecast_fit.add_argument("--data-dir", type=Path, default=Path("data"))
+    forecast_fit.add_argument("--output-dir", type=Path, default=Path("results/forecast-bayes"))
+    forecast_fit.add_argument("--models", default="all",
+                              help="Comma-separated Bayesian forecasting models, or 'all'")
+    forecast_fit.add_argument("--targets", default=None,
+                              help="Comma-separated target quarters (default: every origin)")
+    forecast_fit.add_argument("--chains", type=int, default=4)
+    forecast_fit.add_argument("--warmup", type=int, default=1000)
+    forecast_fit.add_argument("--draws", type=int, default=1000)
+    forecast_fit.add_argument("--seed", type=int, default=20261016)
+    forecast_fit.add_argument("--retry-warmup", type=int, default=3000,
+                              help="Warm-up of the single retry of a failed refit (0: none)")
+    forecast_fit.add_argument("--no-resume", action="store_true")
+    forecast_report = commands.add_parser(
+        "forecast-report", help="Score and compare Bayesian and classical forecasts")
+    forecast_report.add_argument("--data-dir", type=Path, default=Path("data"))
+    forecast_report.add_argument("--fits-dir", type=Path, default=Path("results/forecast-bayes"))
+    forecast_report.add_argument("--output-dir", type=Path,
+                                 default=Path("results/forecast-comparison"))
+    forecast_report.add_argument("--report", type=Path, default=None)
+    forecast_report.add_argument("--no-figures", action="store_true")
     args = parser.parse_args(argv)
     if args.command == "fetch":
         try:
@@ -280,6 +304,38 @@ def main(argv: Sequence[str] | None = None) -> int:
             parser.exit(2, f"Model checks failed: {exc}\n")
         print(f"Model checks written to {args.report or args.output_dir}: "
               f"{len(checks.comparisons)} LOO comparisons, {len(checks.prior)} prior checks")
+        return 0
+    if args.command == "forecast-bayes-fit":
+        from eu_okun.bayes_fit import SamplerSettings
+        from eu_okun.forecast_bayes import FORECAST_SPECS, run_forecast_refits
+
+        models = list(FORECAST_SPECS) if args.models == "all" else args.models.split(",")
+        settings = SamplerSettings(chains=args.chains, warmup=args.warmup, draws=args.draws,
+                                   seed=args.seed)
+        try:
+            records = run_forecast_refits(
+                args.data_dir, args.output_dir, models, settings,
+                retry_warmup=args.retry_warmup or None,
+                targets=None if args.targets is None else args.targets.split(","),
+                resume=not args.no_resume)
+        except (EurostatDataError, ValueError, OSError) as exc:
+            parser.exit(2, f"Forecast refits failed: {exc}" + chr(10))
+        failed_refits = [f"{r['model']}/{r['target']}" for r in records if not r["accepted"]]
+        print(f"{len(records)} origins fitted; failed after the retry: "
+              f"{', '.join(failed_refits) if failed_refits else 'none'}")
+        return 0
+    if args.command == "forecast-report":
+        from eu_okun.forecast_comparison import write_report as write_forecast_report
+
+        try:
+            forecasts = write_forecast_report(args.data_dir, args.fits_dir, args.output_dir,
+                                              args.report, figures=not args.no_figures)
+        except (EurostatDataError, FileNotFoundError, ValueError, OSError, KeyError) as exc:
+            parser.exit(2, f"Forecast report failed: {exc}" + chr(10))
+        decided_forecasts = [t for t in forecasts.family
+                             if t.verdict != "not distinguishable"]
+        print(f"Forecast report written to {args.report or args.output_dir}; "
+              f"{len(decided_forecasts)} of {len(forecasts.family)} comparisons decided")
         return 0
     if args.command == "predictive-fit":
         from eu_okun.bayes_fit import SamplerSettings
