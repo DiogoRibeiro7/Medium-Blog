@@ -313,8 +313,9 @@ In brief:
   long-run multiplier; on the short-run sum the probability is about 0.81. "Netherlands
   delayed" falls below its threshold in every new fit. "Spain large" holds in all of
   them.
-- The factor stays correlated with average GDP growth (about -0.65), so `theta`
-  remains an association beyond the common European cycle.
+- The factor stays correlated with average GDP growth (median correlation -0.50 to
+  -0.68 across the new fits), so `theta` remains an association beyond the common
+  European cycle.
 - The new fits are reported alongside the pre-registered results and do not replace
   the primary specification.
 
