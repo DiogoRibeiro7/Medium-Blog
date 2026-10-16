@@ -1,0 +1,178 @@
+{
+  "package_version": "0.1.0",
+  "dictionary_version": "1.0",
+  "built_utc": "2026-10-16T08:28:02+00:00",
+  "source": {
+    "repo_id": "biglam/hansard_speech",
+    "revision": "refs/convert/parquet",
+    "commit": "bbe8ca02003a568831ad6cb90a0b9adf9f30c6b1",
+    "downloaded_utc": "2026-10-16T08:26:50+00:00",
+    "files": [
+      {
+        "name": "default/train/0000.parquet",
+        "bytes": 207607082,
+        "sha256": "a6e5669d191a6cac67213415b30c78df06c9bb369a26af30a925c814c7a5decb"
+      },
+      {
+        "name": "default/train/0001.parquet",
+        "bytes": 199515256,
+        "sha256": "083d5ec985091d327a7360c48f36116fb32cf85ca39fe97e2d49371b632279f7"
+      },
+      {
+        "name": "default/train/0002.parquet",
+        "bytes": 207747913,
+        "sha256": "605207d8aeb4b4b3966a6bcbf3ebbf638da169a8be27f8ece05f0e09cda26871"
+      },
+      {
+        "name": "default/train/0003.parquet",
+        "bytes": 216252388,
+        "sha256": "5b93ff48720cb37baecebb120b8c177225929988e0974c3b683e0de0363601bc"
+      },
+      {
+        "name": "default/train/0004.parquet",
+        "bytes": 214017549,
+        "sha256": "4829d818b67243b2e4faad6fa6618274398b59172b29909ba56f3a91e45d4174"
+      },
+      {
+        "name": "default/train/0005.parquet",
+        "bytes": 185595273,
+        "sha256": "f7cf54956f4be6abb6f6e20b38e149bd9f5587e61ae88d506300583eac8d8fab"
+      },
+      {
+        "name": "default/train/0006.parquet",
+        "bytes": 184925497,
+        "sha256": "ac8cfb28a02a0afefc111396500d1290f14a91c6695946bd1116ee4d3bb1d6e5"
+      }
+    ]
+  },
+  "rows": 2694375,
+  "first_date": "1979-05-09",
+  "last_date": "2021-04-29",
+  "sitting_days": 6484,
+  "ids_parsed_share": 0.9999495244722802,
+  "roles": {
+    "member": 2317754,
+    "procedural": 223266,
+    "chair": 115818,
+    "floor": 24140,
+    "other": 13397
+  },
+  "chair_by_source": {
+    "title": 106104,
+    "post": 9714,
+    "none": 0
+  },
+  "chair_by_kind": {
+    "speaker": 57907,
+    "deputy": 52582,
+    "committee": 5329,
+    "": 0
+  },
+  "chair_speeches": 115818,
+  "discipline_tagged": 61481,
+  "timekeeping_tagged": 4653,
+  "member_speeches": 2317754,
+  "chair_with_no_member_before": 738,
+  "dictionary": [
+    {
+      "category": "ORDER",
+      "family": "discipline",
+      "description": "a bare call of \"Order\"",
+      "patterns": [
+        "(?:^|(?<=[.!?:;] )|(?<=[.!?:;]\\\" )|(?<=order, )|(?<=order - ))order(?=\\s?[.!,;\u2014-](?: |$|\\\"))"
+      ]
+    },
+    {
+      "category": "SEAT",
+      "family": "discipline",
+      "description": "a Member told to sit down",
+      "patterns": [
+        "\\bresume (?:his|her|their|your|my) seat",
+        "\\bsit down\\b"
+      ]
+    },
+    {
+      "category": "WITHDRAW",
+      "family": "discipline",
+      "description": "a Member asked to withdraw a remark",
+      "patterns": [
+        "\\bwithdraws?\\b(?! (?:immediately )?from the (?:house|chamber))"
+      ]
+    },
+    {
+      "category": "NAME",
+      "family": "discipline",
+      "description": "a Member named",
+      "patterns": [
+        "\\bi (?:must |have to |shall )?name (?:the hon|the right hon|mr|mrs|ms|miss|dr|sir|dame)\\b"
+      ]
+    },
+    {
+      "category": "SUSPEND",
+      "family": "discipline",
+      "description": "a Member ordered out",
+      "patterns": [
+        "\\bwithdraw (?:immediately )?from the (?:house|chamber)",
+        "\\bleave the (?:house|chamber)\\b",
+        "\\bstanding order (?:no\\.? ?)?(?:42|43|44)\\b"
+      ]
+    },
+    {
+      "category": "NOISE",
+      "family": "discipline",
+      "description": "the House told to be quiet",
+      "patterns": [
+        "\\bnois(?:e|y)\\b",
+        "\\bquiet(?:er|ly)?\\b",
+        "\\bcalm\\b",
+        "\\bshout(?:ing|s|ed)?\\b",
+        "\\bbarrack(?:ing|ed)?\\b",
+        "\\bheckl(?:e|es|ed|ing)\\b",
+        "\\bsedentary\\b",
+        "\\b(?:cannot|can't|could not|couldn't|unable to) hear\\b"
+      ]
+    },
+    {
+      "category": "ADMONISH",
+      "family": "discipline",
+      "description": "conduct or language rebuked",
+      "patterns": [
+        "\\bunparliamentary\\b",
+        "\\bdisorderly\\b",
+        "\\bout of order\\b",
+        "\\bnot in order\\b",
+        "\\bintemperate\\b",
+        "\\bbehav(?:e|iour)\\b",
+        "\\bdecorum\\b",
+        "\\bnot (?:acceptable|tolerable)\\b",
+        "\\bwill not tolerate\\b",
+        "\\bmoderate (?:his|her|their|your) language\\b"
+      ]
+    },
+    {
+      "category": "NOT_POO",
+      "family": "discipline",
+      "description": "a point of order ruled out",
+      "patterns": [
+        "\\b(?:not|no) (?:a )?point of order\\b"
+      ]
+    },
+    {
+      "category": "HURRY",
+      "family": "timekeeping",
+      "description": "the House told to hurry",
+      "patterns": [
+        "\\bbe (?:brief|short|quick|succinct)\\b",
+        "\\bbrevity\\b",
+        "\\b(?:brief|short) (?:questions?|answers?|interventions?|contributions?|speech(?:es)?)\\b",
+        "\\bsuccinct\\b",
+        "\\bpithy\\b",
+        "\\btime is (?:short|limited|pressing|very short|against us)\\b",
+        "\\bas many (?:hon )?members as (?:possible|i can)\\b",
+        "\\b(?:great deal|lot) of interest\\b",
+        "\\bmany (?:hon )?members (?:wish|want|are seeking|seeking|hoping)\\b",
+        "\\btime limit\\b"
+      ]
+    }
+  ]
+}
