@@ -12,7 +12,7 @@ import platform
 import shutil
 import time
 from collections.abc import Mapping, Sequence
-from dataclasses import asdict, dataclass, replace
+from dataclasses import asdict, dataclass, field, replace
 from pathlib import Path
 from typing import Any
 
@@ -30,7 +30,7 @@ RHAT_MAX = 1.01
 ESS_MIN = 400.0
 BFMI_MIN = 0.3
 SAVED = ("theta", "beta0", "b", "alpha", "phi", "sigma", "lam", "nu", "gamma", "mu_theta",
-         "tau_theta", "mu_b", "tau_b", "f")
+         "tau_theta", "mu_b", "tau_b", "f", "quarter_effect", "tau_quarter")
 
 
 @dataclass(frozen=True)
@@ -146,6 +146,7 @@ class FitResult:
     samples: dict[str, np.ndarray]
     diagnostics: Diagnostics
     runtime_seconds: float
+    sample_stats: dict[str, np.ndarray] = field(default_factory=dict)
 
 
 def fit_specification(
@@ -171,7 +172,7 @@ def fit_specification(
     extra = {k: np.asarray(v) for k, v in mcmc.get_extra_fields(group_by_chain=True).items()}
     diagnostics = compute_diagnostics(raw, extra, settings.max_tree_depth)
     kept = {k: v for k, v in raw.items() if k in SAVED}
-    return FitResult(spec, data, settings, kept, diagnostics, runtime)
+    return FitResult(spec, data, settings, kept, diagnostics, runtime, extra)
 
 
 # ----------------------------------------------------------------------------------
@@ -250,6 +251,8 @@ def predictive_checks(fit: FitResult, max_draws: int = 400, seed: int = 7) -> Pr
             mean_obs = mean + flat["lam"][d][:, None] * flat["f"][d][None, :]
         else:
             mean_obs = mean
+        if spec.time_effects:
+            mean_obs = mean_obs + flat["quarter_effect"][d][None, :]
         sigma = flat["sigma"][d][:, None]
         nu = float(flat["nu"][d]) if "nu" in flat else None
         resid = data.y - mean_obs
@@ -277,6 +280,10 @@ def predictive_checks(fit: FitResult, max_draws: int = 400, seed: int = 7) -> Pr
         replicated = mean + e
         if spec.common_factor:
             replicated = replicated + flat["lam"][d][:, None] * rng.standard_normal((t,))[None, :]
+        if spec.time_effects:
+            # Fresh quarter effects from their ZeroSumNormal(tau) distribution.
+            fresh = np.asarray(rng.normal(0.0, float(flat["tau_quarter"][d]), t))
+            replicated = replicated + (fresh - fresh.mean())[None, :]
         for key, value in _masked_stats(data, replicated).items():
             stats[key].append(value)
     lower50, upper50 = np.quantile(one_step, [0.25, 0.75], axis=0)
@@ -330,8 +337,8 @@ def environment_versions() -> dict[str, str]:
 
 
 def save_fit(fit: FitResult, check: PredictiveCheck, directory: Path,
-             snapshot: Mapping[str, Any]) -> None:
-    """Write draws (``draws.npz``) and a JSON summary for one specification."""
+             snapshot: Mapping[str, Any], netcdf: bool = True) -> None:
+    """Write draws (``draws.npz``), a JSON summary and the NetCDF artifact of one fit."""
     directory.mkdir(parents=True, exist_ok=True)
     arrays: dict[str, Any] = dict(fit.samples)
     np.savez_compressed(directory / "draws.npz", **arrays)
@@ -353,6 +360,15 @@ def save_fit(fit: FitResult, check: PredictiveCheck, directory: Path,
     (directory / "fit.json").write_text(
         json.dumps(document, indent=1, allow_nan=False) + "\n", encoding="utf-8", newline="\n"
     )
+    if netcdf:
+        from eu_okun.bayes_artifacts import write_posterior_netcdf
+
+        write_posterior_netcdf(directory / "posterior.nc", fit.spec, fit.data, fit.samples,
+                               fit.sample_stats, {
+                                   "settings": document["settings"],
+                                   "environment": document["environment"],
+                                   "snapshot": document["snapshot"],
+                                   "diagnostics": document["diagnostics"]})
 
 
 def run_specifications(

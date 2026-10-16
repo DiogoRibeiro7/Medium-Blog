@@ -81,6 +81,29 @@ def main(argv: Sequence[str] | None = None) -> int:
                               help="Snapshot used by the fits (enables the factor checks)")
     bayes_report.add_argument("--replication-dir", type=Path, default=None,
                               help="Summary tables of an independent run to compare with")
+    bayes_export = commands.add_parser(
+        "bayes-export", help="Write ArviZ NetCDF files (posterior.nc) for saved Bayesian fits")
+    bayes_export.add_argument("--fits-dir", type=Path, default=Path("results/bayes"))
+    bayes_export.add_argument("--data-dir", type=Path, default=Path("data"))
+    bayes_export.add_argument("--specs", default="all",
+                              help="Comma-separated specification names, or 'all' (found ones)")
+    bayes_recovery = commands.add_parser(
+        "bayes-recovery", help="Posterior recovery on synthetic data (expensive; 'bayes' extra)")
+    bayes_recovery.add_argument("--data-dir", type=Path, default=Path("data"))
+    bayes_recovery.add_argument("--output-dir", type=Path, default=Path("results/bayes-recovery"))
+    bayes_recovery.add_argument("--specs", default="primary,time_effects,gaussian_iid")
+    bayes_recovery.add_argument("--chains", type=int, default=4)
+    bayes_recovery.add_argument("--warmup", type=int, default=1000)
+    bayes_recovery.add_argument("--draws", type=int, default=1000)
+    bayes_recovery.add_argument("--seed", type=int, default=20261016)
+    bayes_checks = commands.add_parser(
+        "bayes-checks", help="Quarter effects, LOO, prior predictive and recovery report")
+    bayes_checks.add_argument("--fits-dir", type=Path, default=Path("results/bayes"))
+    bayes_checks.add_argument("--data-dir", type=Path, default=Path("data"))
+    bayes_checks.add_argument("--output-dir", type=Path, default=Path("results/bayes-checks"))
+    bayes_checks.add_argument("--report", type=Path, default=None)
+    bayes_checks.add_argument("--recovery-dir", type=Path, default=None)
+    bayes_checks.add_argument("--no-figures", action="store_true")
     args = parser.parse_args(argv)
     if args.command == "fetch":
         try:
@@ -176,6 +199,54 @@ def main(argv: Sequence[str] | None = None) -> int:
         except (FileNotFoundError, ValueError, OSError, KeyError) as exc:
             parser.exit(2, f"Bayesian report failed: {exc}\n")
         print(f"Report for {len(bayes_review.fits)} fits written to {args.report or output}")
+        return 0
+    if args.command == "bayes-export":
+        from eu_okun.baseline import _read_panel
+        from eu_okun.bayes_artifacts import export_fit
+        from eu_okun.bayes_data import build_bayes_data
+        from eu_okun.bayes_model import SPECS
+        from eu_okun.review import read_flags
+
+        names = ([n for n in SPECS if (args.fits_dir / n / "draws.npz").exists()]
+                 if args.specs == "all" else args.specs.split(","))
+        try:
+            audit_snapshot(args.data_dir)
+            csv_path = args.data_dir / "processed" / "eu27_quarterly.csv"
+            panel, flags = _read_panel(csv_path), read_flags(csv_path)
+            for name in names:
+                spec = SPECS[name]
+                data = build_bayes_data(panel, flags, spec.windows, spec.lags)
+                print(f"{name}: {export_fit(args.fits_dir / name, spec, data)}")
+        except (EurostatDataError, ValueError, OSError, KeyError) as exc:
+            parser.exit(2, f"Bayesian export failed: {exc}\n")
+        return 0
+    if args.command == "bayes-recovery":
+        from eu_okun.bayes_checks import run_recovery
+        from eu_okun.bayes_fit import SamplerSettings
+
+        settings = SamplerSettings(chains=args.chains, warmup=args.warmup, draws=args.draws,
+                                   seed=args.seed)
+        try:
+            recoveries = run_recovery(args.data_dir, args.output_dir, args.specs.split(","),
+                                      settings)
+        except (EurostatDataError, ValueError, OSError) as exc:
+            parser.exit(2, f"Recovery run failed: {exc}\n")
+        for rec in recoveries:
+            inside = rec.coverage["theta"]
+            print(f"{rec.spec}: {inside[1]}/{inside[2]} country sums inside 90% intervals; "
+                  f"{'accepted' if rec.accepted else 'NOT accepted'}")
+        return 0
+    if args.command == "bayes-checks":
+        from eu_okun.bayes_checks import write_checks_report
+
+        try:
+            checks = write_checks_report(args.fits_dir, args.data_dir, args.output_dir,
+                                         args.report, args.recovery_dir,
+                                         figures=not args.no_figures)
+        except (EurostatDataError, FileNotFoundError, ValueError, OSError, KeyError) as exc:
+            parser.exit(2, f"Model checks failed: {exc}\n")
+        print(f"Model checks written to {args.report or args.output_dir}: "
+              f"{len(checks.comparisons)} LOO comparisons, {len(checks.prior)} prior checks")
         return 0
     return 1
 
