@@ -81,6 +81,34 @@ def main(argv: Sequence[str] | None = None) -> int:
                               help="Snapshot used by the fits (enables the factor checks)")
     bayes_report.add_argument("--replication-dir", type=Path, default=None,
                               help="Summary tables of an independent run to compare with")
+    predictive_fit = commands.add_parser(
+        "predictive-fit", help="Expanding-window refits of the Bayesian models for the "
+        "predictive comparison (expensive; needs the 'bayes' extra)")
+    predictive_fit.add_argument("--data-dir", type=Path, default=Path("data"))
+    predictive_fit.add_argument("--output-dir", type=Path, default=Path("results/predictive"))
+    predictive_fit.add_argument("--sets", default="all",
+                                help="Comma-separated evaluation sets (E1, E2), or 'all'")
+    predictive_fit.add_argument("--models", default="all",
+                                help="Comma-separated Bayesian models, or 'all'")
+    predictive_fit.add_argument("--targets", default=None,
+                                help="Comma-separated target quarters (default: every target)")
+    predictive_fit.add_argument("--chains", type=int, default=4)
+    predictive_fit.add_argument("--warmup", type=int, default=1000)
+    predictive_fit.add_argument("--draws", type=int, default=1000)
+    predictive_fit.add_argument("--target-accept", type=float, default=0.95)
+    predictive_fit.add_argument("--seed", type=int, default=20261016)
+    predictive_fit.add_argument("--retry-warmup", type=int, default=3000,
+                                help="Warm-up of the single retry of a failed refit (0: none)")
+    predictive_fit.add_argument("--no-resume", action="store_true",
+                                help="Refit origins that already have saved predictions")
+    predictive_report = commands.add_parser(
+        "predictive-report", help="Score, test and report the predictive comparison")
+    predictive_report.add_argument("--data-dir", type=Path, default=Path("data"))
+    predictive_report.add_argument("--fits-dir", type=Path, default=Path("results/predictive"))
+    predictive_report.add_argument("--output-dir", type=Path,
+                                   default=Path("results/predictive-report"))
+    predictive_report.add_argument("--report", type=Path, default=None)
+    predictive_report.add_argument("--no-figures", action="store_true")
     args = parser.parse_args(argv)
     if args.command == "fetch":
         try:
@@ -176,6 +204,41 @@ def main(argv: Sequence[str] | None = None) -> int:
         except (FileNotFoundError, ValueError, OSError, KeyError) as exc:
             parser.exit(2, f"Bayesian report failed: {exc}\n")
         print(f"Report for {len(bayes_review.fits)} fits written to {args.report or output}")
+        return 0
+    if args.command == "predictive-fit":
+        from eu_okun.bayes_fit import SamplerSettings
+        from eu_okun.bayes_predictive import run_predictive_refits
+        from eu_okun.predictive import BAYES_MODELS, EVALUATION_SETS
+
+        sets = list(EVALUATION_SETS) if args.sets == "all" else args.sets.split(",")
+        models = list(BAYES_MODELS) if args.models == "all" else args.models.split(",")
+        settings = SamplerSettings(chains=args.chains, warmup=args.warmup, draws=args.draws,
+                                   target_accept=args.target_accept, seed=args.seed)
+        try:
+            records = run_predictive_refits(
+                args.data_dir, args.output_dir, sets, models, settings,
+                retry_warmup=args.retry_warmup or None,
+                targets=None if args.targets is None else args.targets.split(","),
+                resume=not args.no_resume)
+        except (EurostatDataError, ValueError, OSError) as exc:
+            parser.exit(2, f"Predictive refits failed: {exc}\n")
+        failed_origins = [f"{r['evaluation']}/{r['model']}/{r['target']}" for r in records
+                          if not r["accepted"]]
+        print(f"{len(records)} origins fitted; failed after the retry: "
+              f"{', '.join(failed_origins) if failed_origins else 'none'}")
+        # Failed convergence is reported in the comparison, not treated as a crash.
+        return 0
+    if args.command == "predictive-report":
+        from eu_okun.predictive_report import write_report as write_predictive_report
+
+        try:
+            comparison = write_predictive_report(args.data_dir, args.fits_dir, args.output_dir,
+                                                 args.report, figures=not args.no_figures)
+        except (EurostatDataError, FileNotFoundError, ValueError, OSError, KeyError) as exc:
+            parser.exit(2, f"Predictive report failed: {exc}\n")
+        decided = [t for t in comparison.family if t.verdict != "not distinguishable"]
+        print(f"Predictive report written to {args.report or args.output_dir}; "
+              f"{len(decided)} of {len(comparison.family)} pre-registered comparisons decided")
         return 0
     return 1
 

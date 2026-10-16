@@ -128,7 +128,8 @@ is exact under Gaussian i.i.d. errors.
     the empirical-distribution estimator for Bayesian samples.
 - **Secondary, descriptive scores:**
   - log predictive density. For Bayesian models it is a mixture over posterior draws,
-    with the common factor integrated by 40-node Gauss-Hermite quadrature.
+    with the unknown common factor integrated out (method changed before any held-out
+    computation; see the change log).
   - RMSE of the predictive mean.
   - MAE of the predictive median.
   - empirical coverage of the central 50% and 90% predictive intervals.
@@ -186,4 +187,15 @@ genuinely. Results that contradict this expectation are reported as contradictio
 
 ## Change log
 
-None yet.
+- **Before any held-out prediction was computed: integration of the common factor in
+  the log predictive density.**
+  - Unit tests against adaptive quadrature showed that the 40-node Gauss-Hermite rule of
+    section 5 errs by up to 0.14 in log density. This happens when the innovation scale
+    is small relative to the factor loading.
+  - The replacement writes the Student-t innovation as a Gamma(nu/2, nu/2) scale mixture
+    of normals. This integrates the factor analytically:
+    `p(y) = E_w[N(y; centre, lambda^2 + scale^2 / w)]`.
+  - The remaining one-dimensional integral over log w is computed with the trapezoid
+    rule on a uniform grid covering both tails. It agrees with adaptive quadrature to
+    about 1e-12, far-tail outcomes included.
+  - This changes only the accuracy of a secondary score, not what is scored.

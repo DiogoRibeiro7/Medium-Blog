@@ -846,7 +846,7 @@ files = [
 [package.dependencies]
 numpy = [
     {version = ">=2.0.0", markers = "python_version < \"3.13\""},
-    {version = ">=2.1.0", markers = "python_version >= \"3.13\""},
+    {version = ">=2.1.0", markers = "python_version == \"3.13\""},
     {version = ">=2.3.0", markers = "python_version >= \"3.14\""},
 ]
 
@@ -1610,11 +1610,11 @@ numba = ["numba (>=0.55)"]
 test = ["hypothesis", "packaging", "preliz (>=0.19)", "pytest", "pytest-cov", "scipy (>=1.15)"]
 
 [extras]
-bayes = ["arviz", "jax", "numpyro"]
-dev = ["arviz", "jax", "matplotlib", "mypy", "numpyro", "pytest", "ruff"]
+bayes = ["arviz", "jax", "numpyro", "scipy"]
+dev = ["arviz", "jax", "matplotlib", "mypy", "numpyro", "pytest", "ruff", "scipy"]
 report = ["matplotlib"]
 
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.12,<3.15"
-content-hash = "4bc106e896d1ec27f3f5073bb7e7dc5c6d50730211b32395295699dc99cddcb8"
+content-hash = "edff070236a21ead51dda7beeab337174bae82539bf622e31383854489e7d704"
