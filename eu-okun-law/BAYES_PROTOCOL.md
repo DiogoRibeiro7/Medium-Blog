@@ -453,3 +453,14 @@ beyond the common factor.
   accept a fit, and the claim verdicts are identical. The acceptance of
   `strong_pooling` and `no_pooling` is therefore not stable across runs; the report
   states the robustness judgements under both acceptance sets instead of choosing one.
+- Amendment 3, before any of its fits: in the ARDL specifications `mu_theta` is the
+  mean of the *short-run* sums, so it is not comparable with a long-run multiplier. The
+  Luxembourg and Spain rules therefore compare `theta_LR[i]` with the per-draw
+  unweighted mean of `theta_LR` over the 27 countries, the same definition as
+  `no_pooling`'s substitute for `mu_theta`. The Netherlands rule keeps `theta` and
+  `beta0` as section 11.4 states. The long-run delayed share `(theta_LR - beta0) /
+  theta_LR` is reported as a descriptive addition, outside the rule. Because
+  `1 - psi > 0`, `theta_LR` and `theta` always have the same sign, so the credibly
+  negative set is the same under either estimand. The AR(1) factor is sampled in its
+  centred form (the density of `f` given `rho_f`): this is the same model as
+  section 11.2, written in a different parameterisation.
