@@ -1,12 +1,12 @@
 {
   "package_version": "0.1.0",
   "dictionary_version": "1.0",
-  "built_utc": "2026-10-16T08:37:27+00:00",
+  "built_utc": "2026-10-16T09:16:21+00:00",
   "source": {
     "repo_id": "biglam/hansard_speech",
     "revision": "refs/convert/parquet",
     "commit": "bbe8ca02003a568831ad6cb90a0b9adf9f30c6b1",
-    "downloaded_utc": "2026-10-16T08:35:17+00:00",
+    "downloaded_utc": "2026-10-16T09:15:00+00:00",
     "files": [
       {
         "name": "default/train/0000.parquet",
@@ -51,9 +51,9 @@
   "sitting_days": 6484,
   "ids_parsed_share": 0.9999495244722802,
   "roles": {
-    "member": 2305810,
+    "member": 2301904,
     "procedural": 223266,
-    "chair": 127762,
+    "chair": 131668,
     "floor": 24140,
     "other": 13397
   },
@@ -61,19 +61,20 @@
     "title": 106104,
     "party": 11944,
     "post": 9714,
+    "roster": 3906,
     "none": 0
   },
-  "order_openers_classified_as_chair": 0.965218912514512,
+  "order_openers_classified_as_chair": 0.9929229154407672,
   "chair_by_kind": {
     "speaker": 69851,
-    "deputy": 52582,
+    "deputy": 56488,
     "committee": 5329,
     "": 0
   },
-  "chair_speeches": 127762,
-  "discipline_tagged": 64821,
-  "timekeeping_tagged": 5348,
-  "member_speeches": 2305810,
+  "chair_speeches": 131668,
+  "discipline_tagged": 66765,
+  "timekeeping_tagged": 5972,
+  "member_speeches": 2301904,
   "chair_with_no_member_before": 803,
   "dictionary": [
     {
