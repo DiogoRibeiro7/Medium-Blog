@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "hansard-drift"
+version = "0.1.0"
+description = "Validating a dictionary classifier of Chair interventions in Hansard, era by era, and correcting the rates it produces"
+readme = "README.md"
+license = "Apache-2.0"
+requires-python = ">=3.11"
+authors = [{ name = "Diogo Ribeiro", email = "dfr@esmad.ipp.pt" }]
+dependencies = [
+    "numpy>=2.0,<3",
+    "pandas>=2.2,<4",
+    "pyarrow>=16",
+    "scipy>=1.13",
+    "scikit-learn>=1.5",
+    "matplotlib>=3.9",
+]
+
+[project.optional-dependencies]
+fetch = ["huggingface-hub>=0.28"]
+dev = ["pytest>=8", "ruff==0.17.1"]
+
+[project.scripts]
+hansard-drift = "hansard_drift.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP"]
+# Long strings in the report writer are left whole; `ruff format` keeps the code within 120.
+ignore = ["E501"]

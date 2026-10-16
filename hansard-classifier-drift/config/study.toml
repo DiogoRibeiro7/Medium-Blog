@@ -1,0 +1,103 @@
+# Study configuration. Every number the article reports is produced from this file,
+# the dictionary in src/hansard_drift/dictionary.py and the hand labels in labels/.
+
+[data]
+repo_id = "biglam/hansard_speech"          # Odell, Hansard Speeches 1979-2021 v3.1.0, CC BY 4.0
+revision = "refs/convert/parquet"          # the parquet conversion on the Hugging Face hub
+pattern = "default/train/*.parquet"
+cache_dir = ".cache/hansard"               # downloaded parquet files (not committed)
+build_dir = ".cache/build"                 # intermediate tables (not committed)
+
+# Eras are Speakerships. An era runs from the day a Speaker was elected to the day the
+# next one was; Deputy Speakers and committee chairs count in the era of the Speaker.
+# The corpus starts on 9 May 1979 and ends on 29 April 2021.
+[[eras]]
+name = "Thomas"
+speaker = "George Thomas"
+start = 1979-05-09
+end = 1983-06-15
+
+[[eras]]
+name = "Weatherill"
+speaker = "Bernard Weatherill"
+start = 1983-06-15
+end = 1992-04-27
+
+[[eras]]
+name = "Boothroyd"
+speaker = "Betty Boothroyd"
+start = 1992-04-27
+end = 2000-10-23
+
+[[eras]]
+name = "Martin"
+speaker = "Michael Martin"
+start = 2000-10-23
+end = 2009-06-22
+
+[[eras]]
+name = "Bercow"
+speaker = "John Bercow"
+start = 2009-06-22
+end = 2019-11-04
+
+[[eras]]
+name = "Hoyle"
+speaker = "Lindsay Hoyle"
+start = 2019-11-04
+end = 2021-04-30
+partial = true                             # 18 months, most of them in the hybrid Covid Parliament
+
+# Parties in government, [start, end). The 2010-15 coalition counts both partners.
+[[government]]
+start = 1979-05-04
+end = 1997-05-02
+parties = ["Conservative"]
+
+[[government]]
+start = 1997-05-02
+end = 2010-05-11
+parties = ["Labour"]
+
+[[government]]
+start = 2010-05-11
+end = 2015-05-08
+parties = ["Conservative", "Liberal Democrat"]
+
+[[government]]
+start = 2015-05-08
+end = 2021-12-31
+parties = ["Conservative"]
+
+[sample]
+# Validation sample of Chair speeches, stratified by era x dictionary tag x side of the
+# Member who last had the floor. Sizes are per stratum; a stratum smaller than its
+# target is taken whole. The sample is drawn once: `sample` refuses to overwrite it.
+seed = 20261016
+tagged_government = 30
+tagged_opposition = 30
+tagged_other = 10
+untagged_government = 25
+untagged_opposition = 25
+untagged_other = 10
+context_chars = 700                        # how much of the neighbouring speeches to show
+
+[estimate]
+draws = 20000                              # Monte Carlo draws from the stratum posteriors
+prior = 0.5                                # Beta(prior, prior) per stratum: Jeffreys
+reference_era = "Weatherill"               # decomposition baseline: the most policed era
+seed = 7
+
+[transfer]
+seed = 11
+min_df = 2
+ngram_max = 2
+c = 1.0
+cv_folds = 5
+cv_repeats = 5
+bootstrap = 2000
+
+[lexical]
+min_count = 50                             # a term must occur this often across all eras
+top_n = 20
+prior_strength = 1000.0                    # alpha_0 of the informative Dirichlet prior
