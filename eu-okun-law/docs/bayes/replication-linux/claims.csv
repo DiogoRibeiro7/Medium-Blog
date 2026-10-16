@@ -1,0 +1,28 @@
+claim,spec,probability,holds,contradicted,evaluable,detail
+Luxembourg weak,primary,0.86925,False,False,True,"P(theta_LU > mu_theta) = 0.869; 90% interval [-0.235, +0.013]"
+Netherlands delayed,primary,0.96,True,False,True,P(lag share > 0.5) = 0.960; median lag share 0.94
+Spain large,primary,0.9975,True,False,True,P(theta_ES < mu_theta) = 0.998
+Luxembourg weak,wide_priors,0.84,False,False,True,"P(theta_LU > mu_theta) = 0.840; 90% interval [-0.224, +0.013]"
+Netherlands delayed,wide_priors,0.949,False,False,True,P(lag share > 0.5) = 0.949; median lag share 0.93
+Spain large,wide_priors,0.9965,True,False,True,P(theta_ES < mu_theta) = 0.997
+Luxembourg weak,strong_pooling,0.823,False,False,True,"P(theta_LU > mu_theta) = 0.823; 90% interval [-0.230, -0.004]"
+Netherlands delayed,strong_pooling,0.9615,True,False,True,P(lag share > 0.5) = 0.962; median lag share 0.94
+Spain large,strong_pooling,0.98375,True,False,True,P(theta_ES < mu_theta) = 0.984
+Luxembourg weak,no_pooling,0.99225,True,False,True,"P(theta_LU > mu_theta) = 0.992; 90% interval [-0.108, +0.408]"
+Netherlands delayed,no_pooling,0.90625,False,False,False,theta_NL not credibly negative: rule not evaluable
+Spain large,no_pooling,1.0,True,False,True,P(theta_ES < mu_theta) = 1.000
+Luxembourg weak,no_common_factor,0.91125,False,False,True,"P(theta_LU > mu_theta) = 0.911; 90% interval [-0.263, +0.001]"
+Netherlands delayed,no_common_factor,0.98575,True,False,True,P(lag share > 0.5) = 0.986; median lag share 0.93
+Spain large,no_common_factor,0.982,True,False,True,P(theta_ES < mu_theta) = 0.982
+Luxembourg weak,gaussian_iid,0.8765,False,False,True,"P(theta_LU > mu_theta) = 0.876; 90% interval [-0.345, -0.021]"
+Netherlands delayed,gaussian_iid,0.89975,False,False,True,P(lag share > 0.5) = 0.900; median lag share 0.67
+Spain large,gaussian_iid,1.0,True,False,True,P(theta_ES < mu_theta) = 1.000
+Luxembourg weak,participation,0.85975,False,False,True,"P(theta_LU > mu_theta) = 0.860; 90% interval [-0.240, +0.014]"
+Netherlands delayed,participation,0.96425,True,False,True,P(lag share > 0.5) = 0.964; median lag share 0.95
+Spain large,participation,0.99775,True,False,True,P(theta_ES < mu_theta) = 0.998
+Luxembourg weak,lags_4,0.78725,False,False,True,"P(theta_LU > mu_theta) = 0.787; 90% interval [-0.304, -0.049]"
+Netherlands delayed,lags_4,0.995,True,False,True,P(lag share > 0.5) = 0.995; median lag share 0.89
+Spain large,lags_4,0.999,True,False,True,P(theta_ES < mu_theta) = 0.999
+Luxembourg weak,pandemic_excluded,0.922,False,False,True,"P(theta_LU > mu_theta) = 0.922; 90% interval [-0.192, +0.041]"
+Netherlands delayed,pandemic_excluded,0.878,False,False,True,P(lag share > 0.5) = 0.878; median lag share 0.92
+Spain large,pandemic_excluded,0.9995,True,False,True,P(theta_ES < mu_theta) = 1.000

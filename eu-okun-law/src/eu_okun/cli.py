@@ -57,6 +57,30 @@ def main(argv: Sequence[str] | None = None) -> int:
                         help="Description of the archived outputs, quoted in the report")
     review.add_argument("--no-figures", action="store_true",
                         help="Skip figures (matplotlib not required)")
+    bayes_fit = commands.add_parser(
+        "bayes-fit", help="Fit the pre-registered hierarchical Bayesian specifications "
+        "(expensive; needs the 'bayes' extra)")
+    bayes_fit.add_argument("--data-dir", type=Path, default=Path("data"))
+    bayes_fit.add_argument("--output-dir", type=Path, default=Path("results/bayes"))
+    bayes_fit.add_argument("--specs", default="all",
+                           help="Comma-separated specification names, or 'all'")
+    bayes_fit.add_argument("--chains", type=int, default=4)
+    bayes_fit.add_argument("--warmup", type=int, default=1000)
+    bayes_fit.add_argument("--draws", type=int, default=1000)
+    bayes_fit.add_argument("--target-accept", type=float, default=0.95)
+    bayes_fit.add_argument("--seed", type=int, default=20261016)
+    bayes_fit.add_argument("--retry-warmup", type=int, default=None,
+                           help="Re-fit a failed specification once with this warm-up")
+    bayes_report = commands.add_parser(
+        "bayes-report", help="Tables, figures and report from saved Bayesian fits")
+    bayes_report.add_argument("--fits-dir", type=Path, default=Path("results/bayes"))
+    bayes_report.add_argument("--output-dir", type=Path, default=Path("results/bayes-report"))
+    bayes_report.add_argument("--report", type=Path, default=None)
+    bayes_report.add_argument("--no-figures", action="store_true")
+    bayes_report.add_argument("--data-dir", type=Path, default=None,
+                              help="Snapshot used by the fits (enables the factor checks)")
+    bayes_report.add_argument("--replication-dir", type=Path, default=None,
+                              help="Summary tables of an independent run to compare with")
     args = parser.parse_args(argv)
     if args.command == "fetch":
         try:
@@ -123,6 +147,36 @@ def main(argv: Sequence[str] | None = None) -> int:
         print(f"Review written to {args.output_dir}; {len(result.checks)} checks, "
               f"{len(failed)} failed")
         return 1 if failed else 0
+    if args.command == "bayes-fit":
+        from eu_okun.bayes_fit import SamplerSettings, run_specifications
+        from eu_okun.bayes_model import SPECS
+
+        names = list(SPECS) if args.specs == "all" else args.specs.split(",")
+        settings = SamplerSettings(chains=args.chains, warmup=args.warmup, draws=args.draws,
+                                   target_accept=args.target_accept, seed=args.seed)
+        try:
+            results = run_specifications(args.data_dir, args.output_dir, names, settings,
+                                         retry_warmup=args.retry_warmup)
+        except (EurostatDataError, ValueError, OSError) as exc:
+            parser.exit(2, f"Bayesian fitting failed: {exc}\n")
+        for name, diagnostics in results:
+            status = "accepted" if diagnostics.accepted else "FAILED: " + "; ".join(
+                diagnostics.failures())
+            print(f"{name}: {status}")
+        # Failed convergence is a reported scientific result, not a crash.
+        return 0
+    if args.command == "bayes-report":
+        from eu_okun.bayes_report import write_report
+
+        output = args.output_dir
+        try:
+            bayes_review = write_report(args.fits_dir, output, args.report,
+                                        figures=not args.no_figures, data_dir=args.data_dir,
+                                        replication_dir=args.replication_dir)
+        except (FileNotFoundError, ValueError, OSError, KeyError) as exc:
+            parser.exit(2, f"Bayesian report failed: {exc}\n")
+        print(f"Report for {len(bayes_review.fits)} fits written to {args.report or output}")
+        return 0
     return 1
 
 
