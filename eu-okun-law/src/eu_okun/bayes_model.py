@@ -87,6 +87,9 @@ SPECS.update({
                 common_factor=False, participation=True),
     )
 })
+# Amendment 2 (section 10): the lag order K = 1, registered before its fit.
+AMENDMENT_2: tuple[str, ...] = ("lags_1",)
+SPECS["lags_1"] = replace(PRIMARY, name="lags_1", description="GDP lags 0..1", lags=1)
 
 
 def model_inputs(data: BayesData) -> dict[str, Any]:
