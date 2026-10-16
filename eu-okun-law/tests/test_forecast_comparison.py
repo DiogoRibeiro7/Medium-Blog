@@ -230,3 +230,10 @@ def test_report_renders(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None
     for name in ("forecasts.csv", "comparisons.csv", "countries.csv", "refits.json",
                  "skill.png", "quarterly_differences.png", "calibration.png", "countries.png"):
         assert (tmp_path / "out" / name).exists()
+    again = fc.write_report(tmp_path, tmp_path / "fits", tmp_path / "out2", figures=False,
+                            replication_dir=tmp_path / "out")
+    assert again.replication is not None
+    assert again.replication.failed["bayes_ar1"] == ["2019-Q2"]
+    text = (tmp_path / "out2" / "FORECAST_COMPARISON.md").read_text(encoding="utf-8")
+    assert "## 5. Replication on a second platform" in text and "## 7. Reproduction" in text
+    assert "the same verdicts for all five comparisons" in text and "at most 0.0000" in text

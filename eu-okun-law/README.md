@@ -313,3 +313,5 @@ comparisons):
   (R-hat up to 1.017, ESS down to 246, no divergences; mostly the population scale
   parameter); their forecasts are scored as registered, and dropping their quarters
   changes no verdict.
+- An independent Linux run of the refits gives the same five verdicts (tables in
+  `docs/forecast-comparison/replication-linux/`).

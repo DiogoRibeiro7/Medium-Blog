@@ -1,0 +1,5217 @@
+{
+ "snapshot": {
+  "manifest_sha256": "8a8c8a107d584ba91b61584fd29397e68ff83d82982371a35db253c0803a0464",
+  "processed_csv_sha256": "250a7dd94d3678ca9ee4f29567e771fb53aeadf89e1f2fd0155d2f31d6e0ec0d"
+ },
+ "environments": [
+  {
+   "arviz": "1.3.0",
+   "jax": "0.11.2",
+   "numpy": "2.5.4",
+   "numpyro": "0.22.0",
+   "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+   "python": "3.12.15"
+  }
+ ],
+ "refits": [
+  {
+   "model": "bayes_ar1",
+   "target": "2018-Q1",
+   "features": [
+    "du_lag1"
+   ],
+   "common_factor": false,
+   "training_first": "2009-Q3",
+   "training_last": "2017-Q4",
+   "training_quarters": 34,
+   "countries": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.005201768819347,
+     "max_rhat_parameter": "tau_s",
+     "min_ess_bulk": 494.17759475325596,
+     "min_ess_tail": 1074.514353002593,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.7130237035070766,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 20.089009799999985
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261050,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_ar1",
+   "target": "2018-Q2",
+   "features": [
+    "du_lag1"
+   ],
+   "common_factor": false,
+   "training_first": "2009-Q3",
+   "training_last": "2018-Q1",
+   "training_quarters": 35,
+   "countries": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0052054431187083,
+     "max_rhat_parameter": "tau_s",
+     "min_ess_bulk": 476.40361814461664,
+     "min_ess_tail": 942.3084492323153,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.7138363806247482,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 17.05432191700001
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261051,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_ar1",
+   "target": "2018-Q3",
+   "features": [
+    "du_lag1"
+   ],
+   "common_factor": false,
+   "training_first": "2009-Q3",
+   "training_last": "2018-Q2",
+   "training_quarters": 36,
+   "countries": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0054054107927268,
+     "max_rhat_parameter": "mu_s",
+     "min_ess_bulk": 427.62333332737677,
+     "min_ess_tail": 862.1264878386492,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.7094508030980877,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 17.020157142000016
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261052,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_ar1",
+   "target": "2018-Q4",
+   "features": [
+    "du_lag1"
+   ],
+   "common_factor": false,
+   "training_first": "2009-Q3",
+   "training_last": "2018-Q3",
+   "training_quarters": 37,
+   "countries": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0051753963163161,
+     "max_rhat_parameter": "mu_s",
+     "min_ess_bulk": 436.66211232010386,
+     "min_ess_tail": 927.8029284133185,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.7099123928240323,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 18.334472722000015
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261053,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_ar1",
+   "target": "2019-Q1",
+   "features": [
+    "du_lag1"
+   ],
+   "common_factor": false,
+   "training_first": "2009-Q3",
+   "training_last": "2018-Q4",
+   "training_quarters": 38,
+   "countries": 27,
+   "accepted": false,
+   "attempts": [
+    {
+     "max_rhat": 1.0077075373458995,
+     "max_rhat_parameter": "tau_s",
+     "min_ess_bulk": 349.9009191811924,
+     "min_ess_tail": 831.2250499652652,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.7472356141404899,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "ESS 350 < 400 (mu_s)"
+     ],
+     "warmup": 1000,
+     "runtime_seconds": 18.545995643000026
+    },
+    {
+     "max_rhat": 1.0104009338026907,
+     "max_rhat_parameter": "mu_beta[0]",
+     "min_ess_bulk": 609.976665434199,
+     "min_ess_tail": 1130.2830598108194,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.6901693863076122,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "R-hat 1.010 > 1.01 (mu_beta[0])"
+     ],
+     "warmup": 3000,
+     "runtime_seconds": 22.745733778999977
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 3000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261054,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_ar1",
+   "target": "2019-Q2",
+   "features": [
+    "du_lag1"
+   ],
+   "common_factor": false,
+   "training_first": "2009-Q3",
+   "training_last": "2019-Q1",
+   "training_quarters": 39,
+   "countries": 27,
+   "accepted": false,
+   "attempts": [
+    {
+     "max_rhat": 1.0057298600787725,
+     "max_rhat_parameter": "tau_s",
+     "min_ess_bulk": 394.7479570375458,
+     "min_ess_tail": 867.1189627813309,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.7274346128775223,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "ESS 395 < 400 (mu_s)"
+     ],
+     "warmup": 1000,
+     "runtime_seconds": 18.897186621000003
+    },
+    {
+     "max_rhat": 1.0103440707290714,
+     "max_rhat_parameter": "mu_beta[0]",
+     "min_ess_bulk": 587.3936238147816,
+     "min_ess_tail": 1086.5850452918746,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.6820048736582718,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "R-hat 1.010 > 1.01 (mu_beta[0])"
+     ],
+     "warmup": 3000,
+     "runtime_seconds": 22.987607572
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 3000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261055,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_ar1",
+   "target": "2019-Q3",
+   "features": [
+    "du_lag1"
+   ],
+   "common_factor": false,
+   "training_first": "2009-Q3",
+   "training_last": "2019-Q2",
+   "training_quarters": 40,
+   "countries": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0056236064720456,
+     "max_rhat_parameter": "tau_s",
+     "min_ess_bulk": 410.78682717950414,
+     "min_ess_tail": 914.3992843847611,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.7174921614142948,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 18.999169947999974
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261056,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_ar1",
+   "target": "2019-Q4",
+   "features": [
+    "du_lag1"
+   ],
+   "common_factor": false,
+   "training_first": "2009-Q3",
+   "training_last": "2019-Q3",
+   "training_quarters": 41,
+   "countries": 27,
+   "accepted": false,
+   "attempts": [
+    {
+     "max_rhat": 1.0064998205594629,
+     "max_rhat_parameter": "mu_s",
+     "min_ess_bulk": 368.3548245198489,
+     "min_ess_tail": 968.0204672614185,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.7159250398977725,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "ESS 368 < 400 (mu_s)"
+     ],
+     "warmup": 1000,
+     "runtime_seconds": 19.41641101800002
+    },
+    {
+     "max_rhat": 1.0101597443216423,
+     "max_rhat_parameter": "mu_beta[0]",
+     "min_ess_bulk": 536.5293637225712,
+     "min_ess_tail": 955.9991361906636,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.7036751996445143,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "R-hat 1.010 > 1.01 (mu_beta[0])"
+     ],
+     "warmup": 3000,
+     "runtime_seconds": 23.57933846000003
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 3000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261057,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_ar1",
+   "target": "2020-Q1",
+   "features": [
+    "du_lag1"
+   ],
+   "common_factor": false,
+   "training_first": "2009-Q3",
+   "training_last": "2019-Q4",
+   "training_quarters": 42,
+   "countries": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0059130667400928,
+     "max_rhat_parameter": "mu_s",
+     "min_ess_bulk": 366.4102395420147,
+     "min_ess_tail": 868.2142329826994,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.7212155671235144,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "ESS 366 < 400 (mu_s)"
+     ],
+     "warmup": 1000,
+     "runtime_seconds": 19.66136697500002
+    },
+    {
+     "max_rhat": 1.0091409973100194,
+     "max_rhat_parameter": "mu_beta[0]",
+     "min_ess_bulk": 570.317427720187,
+     "min_ess_tail": 1112.6977768128802,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.6956716486490945,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 3000,
+     "runtime_seconds": 23.66860600000001
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 3000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261058,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_ar1",
+   "target": "2020-Q2",
+   "features": [
+    "du_lag1"
+   ],
+   "common_factor": false,
+   "training_first": "2009-Q3",
+   "training_last": "2020-Q1",
+   "training_quarters": 43,
+   "countries": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.006402146175273,
+     "max_rhat_parameter": "mu_s",
+     "min_ess_bulk": 391.9214290105952,
+     "min_ess_tail": 856.2960493093296,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.7128246464974407,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "ESS 392 < 400 (mu_s)"
+     ],
+     "warmup": 1000,
+     "runtime_seconds": 19.96982352400005
+    },
+    {
+     "max_rhat": 1.009282251104701,
+     "max_rhat_parameter": "mu_beta[0]",
+     "min_ess_bulk": 565.703166337611,
+     "min_ess_tail": 938.7737235715467,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.7269278119016366,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 3000,
+     "runtime_seconds": 24.427519345000007
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 3000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261059,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_ar1",
+   "target": "2020-Q3",
+   "features": [
+    "du_lag1"
+   ],
+   "common_factor": false,
+   "training_first": "2009-Q3",
+   "training_last": "2020-Q2",
+   "training_quarters": 44,
+   "countries": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0047152066850986,
+     "max_rhat_parameter": "sigma[4]",
+     "min_ess_bulk": 548.1292751266272,
+     "min_ess_tail": 1101.8797559812097,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.7171705896635306,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 19.297350817999984
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261060,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_ar1",
+   "target": "2020-Q4",
+   "features": [
+    "du_lag1"
+   ],
+   "common_factor": false,
+   "training_first": "2009-Q3",
+   "training_last": "2020-Q3",
+   "training_quarters": 45,
+   "countries": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0045827766352307,
+     "max_rhat_parameter": "alpha_raw[14]",
+     "min_ess_bulk": 669.7566034396,
+     "min_ess_tail": 1284.525168446392,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.6935640685421539,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 19.85032094899998
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261061,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_ar1",
+   "target": "2021-Q1",
+   "features": [
+    "du_lag1"
+   ],
+   "common_factor": false,
+   "training_first": "2009-Q3",
+   "training_last": "2020-Q4",
+   "training_quarters": 46,
+   "countries": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0055329871893082,
+     "max_rhat_parameter": "alpha_raw[14]",
+     "min_ess_bulk": 691.9949764499887,
+     "min_ess_tail": 1298.5180924094097,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.6864387695772272,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 19.88237638800001
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261062,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_ar1",
+   "target": "2021-Q2",
+   "features": [
+    "du_lag1"
+   ],
+   "common_factor": false,
+   "training_first": "2009-Q3",
+   "training_last": "2021-Q1",
+   "training_quarters": 47,
+   "countries": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.005488073394943,
+     "max_rhat_parameter": "alpha_raw[14]",
+     "min_ess_bulk": 618.3276994897062,
+     "min_ess_tail": 1327.8394101997317,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.7145452024629451,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 20.501359663000017
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261063,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_ar1",
+   "target": "2021-Q3",
+   "features": [
+    "du_lag1"
+   ],
+   "common_factor": false,
+   "training_first": "2009-Q3",
+   "training_last": "2021-Q2",
+   "training_quarters": 48,
+   "countries": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0053434768923464,
+     "max_rhat_parameter": "alpha_raw[14]",
+     "min_ess_bulk": 607.8575376475271,
+     "min_ess_tail": 1190.1768728011762,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.7054823505389278,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 19.89845678900008
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261064,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_ar1",
+   "target": "2021-Q4",
+   "features": [
+    "du_lag1"
+   ],
+   "common_factor": false,
+   "training_first": "2009-Q3",
+   "training_last": "2021-Q3",
+   "training_quarters": 49,
+   "countries": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.004983180321821,
+     "max_rhat_parameter": "alpha_raw[14]",
+     "min_ess_bulk": 632.6052971622989,
+     "min_ess_tail": 1260.0243424631358,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.706154483594796,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 19.838749011000004
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261065,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_ar1",
+   "target": "2022-Q1",
+   "features": [
+    "du_lag1"
+   ],
+   "common_factor": false,
+   "training_first": "2009-Q3",
+   "training_last": "2021-Q4",
+   "training_quarters": 50,
+   "countries": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0040731236236438,
+     "max_rhat_parameter": "alpha_raw[14]",
+     "min_ess_bulk": 621.9684084572106,
+     "min_ess_tail": 1200.736917812587,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.7400441226724395,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 19.78087084899994
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261066,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_ar1",
+   "target": "2022-Q2",
+   "features": [
+    "du_lag1"
+   ],
+   "common_factor": false,
+   "training_first": "2009-Q3",
+   "training_last": "2022-Q1",
+   "training_quarters": 51,
+   "countries": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0063331444087915,
+     "max_rhat_parameter": "alpha_raw[14]",
+     "min_ess_bulk": 603.4504968450599,
+     "min_ess_tail": 1140.8964009930494,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.7060048330360637,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 20.69213362200003
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261067,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_ar1",
+   "target": "2022-Q3",
+   "features": [
+    "du_lag1"
+   ],
+   "common_factor": false,
+   "training_first": "2009-Q3",
+   "training_last": "2022-Q2",
+   "training_quarters": 52,
+   "countries": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0045389307410997,
+     "max_rhat_parameter": "alpha_raw[14]",
+     "min_ess_bulk": 565.3769194243079,
+     "min_ess_tail": 1027.7257502149494,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.6908199641779095,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 20.073891224000022
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261068,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_ar1",
+   "target": "2022-Q4",
+   "features": [
+    "du_lag1"
+   ],
+   "common_factor": false,
+   "training_first": "2009-Q3",
+   "training_last": "2022-Q3",
+   "training_quarters": 53,
+   "countries": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0049639091352711,
+     "max_rhat_parameter": "alpha_raw[14]",
+     "min_ess_bulk": 574.8316544560743,
+     "min_ess_tail": 1038.4251178841564,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.6978561182592752,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 20.55465798800003
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261069,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_ar1",
+   "target": "2023-Q1",
+   "features": [
+    "du_lag1"
+   ],
+   "common_factor": false,
+   "training_first": "2009-Q3",
+   "training_last": "2022-Q4",
+   "training_quarters": 54,
+   "countries": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.005938963752758,
+     "max_rhat_parameter": "alpha_raw[14]",
+     "min_ess_bulk": 566.9776715609308,
+     "min_ess_tail": 1099.9741167270413,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.7080123091242518,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 20.780334792999952
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261070,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_ar1",
+   "target": "2023-Q2",
+   "features": [
+    "du_lag1"
+   ],
+   "common_factor": false,
+   "training_first": "2009-Q3",
+   "training_last": "2023-Q1",
+   "training_quarters": 55,
+   "countries": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.004801332139962,
+     "max_rhat_parameter": "mu_s",
+     "min_ess_bulk": 565.0817536630354,
+     "min_ess_tail": 1059.14477190458,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.7271814516624594,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 21.053787870000065
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261071,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_ar1",
+   "target": "2023-Q3",
+   "features": [
+    "du_lag1"
+   ],
+   "common_factor": false,
+   "training_first": "2009-Q3",
+   "training_last": "2023-Q2",
+   "training_quarters": 56,
+   "countries": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0045959550049475,
+     "max_rhat_parameter": "s_raw[4]",
+     "min_ess_bulk": 532.4434672914874,
+     "min_ess_tail": 962.7688232029899,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.7190895916147587,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 21.569957940999984
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261072,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_ar1",
+   "target": "2023-Q4",
+   "features": [
+    "du_lag1"
+   ],
+   "common_factor": false,
+   "training_first": "2009-Q3",
+   "training_last": "2023-Q3",
+   "training_quarters": 57,
+   "countries": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0055183914651693,
+     "max_rhat_parameter": "alpha_raw[14]",
+     "min_ess_bulk": 487.43279295799624,
+     "min_ess_tail": 894.0873062393403,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.6932317080947642,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 21.449826671999972
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261073,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_ar1",
+   "target": "2024-Q1",
+   "features": [
+    "du_lag1"
+   ],
+   "common_factor": false,
+   "training_first": "2009-Q3",
+   "training_last": "2023-Q4",
+   "training_quarters": 58,
+   "countries": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0051114760332218,
+     "max_rhat_parameter": "alpha_raw[14]",
+     "min_ess_bulk": 497.7174622624907,
+     "min_ess_tail": 878.651967130646,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.7063797630416021,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 21.777334113999927
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261074,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_ar1",
+   "target": "2024-Q2",
+   "features": [
+    "du_lag1"
+   ],
+   "common_factor": false,
+   "training_first": "2009-Q3",
+   "training_last": "2024-Q1",
+   "training_quarters": 59,
+   "countries": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0055814850606717,
+     "max_rhat_parameter": "mu_s",
+     "min_ess_bulk": 451.15886779643125,
+     "min_ess_tail": 951.4475488911372,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.6878549934990906,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 21.75987394999993
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261075,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_ar1",
+   "target": "2024-Q3",
+   "features": [
+    "du_lag1"
+   ],
+   "common_factor": false,
+   "training_first": "2009-Q3",
+   "training_last": "2024-Q2",
+   "training_quarters": 60,
+   "countries": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0059243333186445,
+     "max_rhat_parameter": "alpha_raw[14]",
+     "min_ess_bulk": 510.79171040284206,
+     "min_ess_tail": 1061.5315234209527,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.7072616311100549,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 21.999447651999958
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261076,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_ar1",
+   "target": "2024-Q4",
+   "features": [
+    "du_lag1"
+   ],
+   "common_factor": false,
+   "training_first": "2009-Q3",
+   "training_last": "2024-Q3",
+   "training_quarters": 61,
+   "countries": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0055677410243864,
+     "max_rhat_parameter": "mu_s",
+     "min_ess_bulk": 453.0546189824842,
+     "min_ess_tail": 914.9356894881017,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.6940307397890935,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 22.116165382000077
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261077,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_ar1",
+   "target": "2025-Q1",
+   "features": [
+    "du_lag1"
+   ],
+   "common_factor": false,
+   "training_first": "2009-Q3",
+   "training_last": "2024-Q4",
+   "training_quarters": 62,
+   "countries": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0050495765124268,
+     "max_rhat_parameter": "s_raw[7]",
+     "min_ess_bulk": 436.20392136839064,
+     "min_ess_tail": 972.8110132590685,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.6888057546702399,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 23.202057402000037
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261078,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_ar1",
+   "target": "2025-Q2",
+   "features": [
+    "du_lag1"
+   ],
+   "common_factor": false,
+   "training_first": "2009-Q3",
+   "training_last": "2025-Q1",
+   "training_quarters": 63,
+   "countries": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0052488978939587,
+     "max_rhat_parameter": "mu_s",
+     "min_ess_bulk": 448.2554888259977,
+     "min_ess_tail": 1001.545981670993,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.7191170910668809,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 23.157756454000037
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261079,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_ar1",
+   "target": "2025-Q3",
+   "features": [
+    "du_lag1"
+   ],
+   "common_factor": false,
+   "training_first": "2009-Q3",
+   "training_last": "2025-Q2",
+   "training_quarters": 64,
+   "countries": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0052698977758172,
+     "max_rhat_parameter": "mu_s",
+     "min_ess_bulk": 432.0868258099041,
+     "min_ess_tail": 972.7059676804739,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.7014542032285921,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 22.970924102000026
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261080,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_ar1",
+   "target": "2025-Q4",
+   "features": [
+    "du_lag1"
+   ],
+   "common_factor": false,
+   "training_first": "2009-Q3",
+   "training_last": "2025-Q3",
+   "training_quarters": 65,
+   "countries": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0051457396638332,
+     "max_rhat_parameter": "mu_s",
+     "min_ess_bulk": 475.0146528767456,
+     "min_ess_tail": 1021.1882829693018,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.7157099940953091,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 23.164643307999995
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261081,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_ar1",
+   "target": "2026-Q1",
+   "features": [
+    "du_lag1"
+   ],
+   "common_factor": false,
+   "training_first": "2009-Q3",
+   "training_last": "2025-Q4",
+   "training_quarters": 66,
+   "countries": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0053836177100088,
+     "max_rhat_parameter": "mu_s",
+     "min_ess_bulk": 420.27291724994853,
+     "min_ess_tail": 864.6629105152214,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.7117196028601522,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 23.38821284300002
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261082,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_ar1",
+   "target": "2026-Q2",
+   "features": [
+    "du_lag1"
+   ],
+   "common_factor": false,
+   "training_first": "2009-Q3",
+   "training_last": "2026-Q1",
+   "training_quarters": 67,
+   "countries": 27,
+   "accepted": false,
+   "attempts": [
+    {
+     "max_rhat": 1.005657218474096,
+     "max_rhat_parameter": "mu_s",
+     "min_ess_bulk": 391.4749199758616,
+     "min_ess_tail": 821.2669436123626,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.7017101206354834,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "ESS 391 < 400 (mu_s)"
+     ],
+     "warmup": 1000,
+     "runtime_seconds": 23.332259038000075
+    },
+    {
+     "max_rhat": 1.0100153943852366,
+     "max_rhat_parameter": "mu_beta[0]",
+     "min_ess_bulk": 589.3591660696632,
+     "min_ess_tail": 1052.6545013540751,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.6443223212346325,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "R-hat 1.010 > 1.01 (mu_beta[0])"
+     ],
+     "warmup": 3000,
+     "runtime_seconds": 29.19244184199988
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 3000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261083,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_gdp_ar1",
+   "target": "2018-Q1",
+   "features": [
+    "du_lag1",
+    "gdp_lag1",
+    "gdp_lag2"
+   ],
+   "common_factor": false,
+   "training_first": "2009-Q3",
+   "training_last": "2017-Q4",
+   "training_quarters": 34,
+   "countries": 27,
+   "accepted": false,
+   "attempts": [
+    {
+     "max_rhat": 1.0215177310011243,
+     "max_rhat_parameter": "mu_s",
+     "min_ess_bulk": 248.26408950324998,
+     "min_ess_tail": 627.7445980182443,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.6774837304312292,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "R-hat 1.022 > 1.01 (mu_s)",
+      "ESS 248 < 400 (mu_s)"
+     ],
+     "warmup": 1000,
+     "runtime_seconds": 37.06686244599999
+    },
+    {
+     "max_rhat": 1.0049974568202547,
+     "max_rhat_parameter": "mu_beta[0]",
+     "min_ess_bulk": 389.2648264690826,
+     "min_ess_tail": 787.9612779166808,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.638928984140386,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "ESS 389 < 400 (mu_s)"
+     ],
+     "warmup": 3000,
+     "runtime_seconds": 38.854984116
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 3000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261050,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_gdp_ar1",
+   "target": "2018-Q2",
+   "features": [
+    "du_lag1",
+    "gdp_lag1",
+    "gdp_lag2"
+   ],
+   "common_factor": false,
+   "training_first": "2009-Q3",
+   "training_last": "2018-Q1",
+   "training_quarters": 35,
+   "countries": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.014929923171531,
+     "max_rhat_parameter": "mu_s",
+     "min_ess_bulk": 363.59095302281963,
+     "min_ess_tail": 743.8371686152103,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.6327578119916573,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "R-hat 1.015 > 1.01 (mu_s)",
+      "ESS 364 < 400 (mu_s)"
+     ],
+     "warmup": 1000,
+     "runtime_seconds": 33.26121821699999
+    },
+    {
+     "max_rhat": 1.0098242329106988,
+     "max_rhat_parameter": "s_raw[7]",
+     "min_ess_bulk": 408.0110300063495,
+     "min_ess_tail": 864.003316702463,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.6522022306030438,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 3000,
+     "runtime_seconds": 40.99088269000001
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 3000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261051,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_gdp_ar1",
+   "target": "2018-Q3",
+   "features": [
+    "du_lag1",
+    "gdp_lag1",
+    "gdp_lag2"
+   ],
+   "common_factor": false,
+   "training_first": "2009-Q3",
+   "training_last": "2018-Q2",
+   "training_quarters": 36,
+   "countries": 27,
+   "accepted": false,
+   "attempts": [
+    {
+     "max_rhat": 1.018486723212583,
+     "max_rhat_parameter": "mu_s",
+     "min_ess_bulk": 359.9114953196876,
+     "min_ess_tail": 829.6293166843811,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.6407325438567912,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "R-hat 1.018 > 1.01 (mu_s)",
+      "ESS 360 < 400 (mu_s)"
+     ],
+     "warmup": 1000,
+     "runtime_seconds": 32.706361714000025
+    },
+    {
+     "max_rhat": 1.0068896376739993,
+     "max_rhat_parameter": "s_raw[7]",
+     "min_ess_bulk": 389.4702364771166,
+     "min_ess_tail": 744.5005938246211,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.6512836400640866,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "ESS 389 < 400 (mu_s)"
+     ],
+     "warmup": 3000,
+     "runtime_seconds": 40.07677217899999
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 3000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261052,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_gdp_ar1",
+   "target": "2018-Q4",
+   "features": [
+    "du_lag1",
+    "gdp_lag1",
+    "gdp_lag2"
+   ],
+   "common_factor": false,
+   "training_first": "2009-Q3",
+   "training_last": "2018-Q3",
+   "training_quarters": 37,
+   "countries": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0085766465662298,
+     "max_rhat_parameter": "mu_s",
+     "min_ess_bulk": 438.6021322147307,
+     "min_ess_tail": 897.4294464273149,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.6443049552259618,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 34.399043721
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261053,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_gdp_ar1",
+   "target": "2019-Q1",
+   "features": [
+    "du_lag1",
+    "gdp_lag1",
+    "gdp_lag2"
+   ],
+   "common_factor": false,
+   "training_first": "2009-Q3",
+   "training_last": "2018-Q4",
+   "training_quarters": 38,
+   "countries": 27,
+   "accepted": false,
+   "attempts": [
+    {
+     "max_rhat": 1.0164832590382538,
+     "max_rhat_parameter": "mu_s",
+     "min_ess_bulk": 369.726445215642,
+     "min_ess_tail": 649.7643181515297,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.6302493811327866,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "R-hat 1.016 > 1.01 (mu_s)",
+      "ESS 370 < 400 (mu_s)"
+     ],
+     "warmup": 1000,
+     "runtime_seconds": 33.97773241099998
+    },
+    {
+     "max_rhat": 1.0051052000675393,
+     "max_rhat_parameter": "s_raw[7]",
+     "min_ess_bulk": 353.376017272638,
+     "min_ess_tail": 625.951756263318,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.6325287898346321,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "ESS 353 < 400 (mu_s)"
+     ],
+     "warmup": 3000,
+     "runtime_seconds": 42.424515514999996
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 3000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261054,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_gdp_ar1",
+   "target": "2019-Q2",
+   "features": [
+    "du_lag1",
+    "gdp_lag1",
+    "gdp_lag2"
+   ],
+   "common_factor": false,
+   "training_first": "2009-Q3",
+   "training_last": "2019-Q1",
+   "training_quarters": 39,
+   "countries": 27,
+   "accepted": false,
+   "attempts": [
+    {
+     "max_rhat": 1.0168391156223198,
+     "max_rhat_parameter": "mu_s",
+     "min_ess_bulk": 269.3469004664615,
+     "min_ess_tail": 748.4518818879023,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.6296579469382266,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "R-hat 1.017 > 1.01 (mu_s)",
+      "ESS 269 < 400 (mu_s)"
+     ],
+     "warmup": 1000,
+     "runtime_seconds": 34.232083699999976
+    },
+    {
+     "max_rhat": 1.0075191489276123,
+     "max_rhat_parameter": "mu_s",
+     "min_ess_bulk": 346.58600655076094,
+     "min_ess_tail": 688.1867438298032,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.6450926876825999,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "ESS 347 < 400 (mu_s)"
+     ],
+     "warmup": 3000,
+     "runtime_seconds": 42.8412749470001
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 3000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261055,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_gdp_ar1",
+   "target": "2019-Q3",
+   "features": [
+    "du_lag1",
+    "gdp_lag1",
+    "gdp_lag2"
+   ],
+   "common_factor": false,
+   "training_first": "2009-Q3",
+   "training_last": "2019-Q2",
+   "training_quarters": 40,
+   "countries": 27,
+   "accepted": false,
+   "attempts": [
+    {
+     "max_rhat": 1.023764421425069,
+     "max_rhat_parameter": "mu_s",
+     "min_ess_bulk": 230.73801056644746,
+     "min_ess_tail": 624.0925082586134,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.6455181403486115,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "R-hat 1.024 > 1.01 (mu_s)",
+      "ESS 231 < 400 (mu_s)"
+     ],
+     "warmup": 1000,
+     "runtime_seconds": 34.75656973799994
+    },
+    {
+     "max_rhat": 1.0066903492500703,
+     "max_rhat_parameter": "mu_beta[0]",
+     "min_ess_bulk": 386.0736939852665,
+     "min_ess_tail": 719.4763854891762,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.6183339520543177,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "ESS 386 < 400 (mu_s)"
+     ],
+     "warmup": 3000,
+     "runtime_seconds": 44.284940517999985
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 3000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261056,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_gdp_ar1",
+   "target": "2019-Q4",
+   "features": [
+    "du_lag1",
+    "gdp_lag1",
+    "gdp_lag2"
+   ],
+   "common_factor": false,
+   "training_first": "2009-Q3",
+   "training_last": "2019-Q3",
+   "training_quarters": 41,
+   "countries": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.018818092501195,
+     "max_rhat_parameter": "mu_s",
+     "min_ess_bulk": 292.3571862151223,
+     "min_ess_tail": 688.5254430421584,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.6627346737117592,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "R-hat 1.019 > 1.01 (mu_s)",
+      "ESS 292 < 400 (mu_s)"
+     ],
+     "warmup": 1000,
+     "runtime_seconds": 37.474919890000024
+    },
+    {
+     "max_rhat": 1.0082940438361685,
+     "max_rhat_parameter": "mu_s",
+     "min_ess_bulk": 486.93075913711624,
+     "min_ess_tail": 817.6968915951453,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.646339299262023,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 3000,
+     "runtime_seconds": 47.29766595199999
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 3000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261057,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_gdp_ar1",
+   "target": "2020-Q1",
+   "features": [
+    "du_lag1",
+    "gdp_lag1",
+    "gdp_lag2"
+   ],
+   "common_factor": false,
+   "training_first": "2009-Q3",
+   "training_last": "2019-Q4",
+   "training_quarters": 42,
+   "countries": 27,
+   "accepted": false,
+   "attempts": [
+    {
+     "max_rhat": 1.0144400849760677,
+     "max_rhat_parameter": "mu_s",
+     "min_ess_bulk": 291.82209747351266,
+     "min_ess_tail": 685.2898648880742,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.6514280415175138,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "R-hat 1.014 > 1.01 (mu_s)",
+      "ESS 292 < 400 (mu_s)"
+     ],
+     "warmup": 1000,
+     "runtime_seconds": 35.92431344900001
+    },
+    {
+     "max_rhat": 1.0082304713533856,
+     "max_rhat_parameter": "mu_beta[0]",
+     "min_ess_bulk": 349.15215815187537,
+     "min_ess_tail": 646.4207337678142,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.6529386006241931,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "ESS 349 < 400 (mu_s)"
+     ],
+     "warmup": 3000,
+     "runtime_seconds": 44.84469156600005
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 3000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261058,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_gdp_ar1",
+   "target": "2020-Q2",
+   "features": [
+    "du_lag1",
+    "gdp_lag1",
+    "gdp_lag2"
+   ],
+   "common_factor": false,
+   "training_first": "2009-Q3",
+   "training_last": "2020-Q1",
+   "training_quarters": 43,
+   "countries": 27,
+   "accepted": false,
+   "attempts": [
+    {
+     "max_rhat": 1.0160093557046437,
+     "max_rhat_parameter": "mu_s",
+     "min_ess_bulk": 273.3922337191116,
+     "min_ess_tail": 606.4556719084541,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.6711841034909162,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "R-hat 1.016 > 1.01 (mu_s)",
+      "ESS 273 < 400 (mu_s)"
+     ],
+     "warmup": 1000,
+     "runtime_seconds": 36.50986433000003
+    },
+    {
+     "max_rhat": 1.0064196683675588,
+     "max_rhat_parameter": "s_raw[7]",
+     "min_ess_bulk": 389.2505290618442,
+     "min_ess_tail": 735.8525805307266,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.6970217139776416,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "ESS 389 < 400 (mu_s)"
+     ],
+     "warmup": 3000,
+     "runtime_seconds": 45.16801379799995
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 3000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261059,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_gdp_ar1",
+   "target": "2020-Q3",
+   "features": [
+    "du_lag1",
+    "gdp_lag1",
+    "gdp_lag2"
+   ],
+   "common_factor": false,
+   "training_first": "2009-Q3",
+   "training_last": "2020-Q2",
+   "training_quarters": 44,
+   "countries": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.021307988681302,
+     "max_rhat_parameter": "mu_s",
+     "min_ess_bulk": 300.69686182455786,
+     "min_ess_tail": 606.1689229269607,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.6456115816188297,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "R-hat 1.021 > 1.01 (mu_s)",
+      "ESS 301 < 400 (mu_s)"
+     ],
+     "warmup": 1000,
+     "runtime_seconds": 37.17900006700006
+    },
+    {
+     "max_rhat": 1.0079641590812205,
+     "max_rhat_parameter": "mu_s",
+     "min_ess_bulk": 457.44721750766166,
+     "min_ess_tail": 709.5474690033966,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.6810259139738611,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 3000,
+     "runtime_seconds": 45.57116689899999
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 3000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261060,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_gdp_ar1",
+   "target": "2020-Q4",
+   "features": [
+    "du_lag1",
+    "gdp_lag1",
+    "gdp_lag2"
+   ],
+   "common_factor": false,
+   "training_first": "2009-Q3",
+   "training_last": "2020-Q3",
+   "training_quarters": 45,
+   "countries": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0095649973358274,
+     "max_rhat_parameter": "mu_s",
+     "min_ess_bulk": 465.25425108114814,
+     "min_ess_tail": 608.5382758045487,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.6300059154925705,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 39.13419481799997
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261061,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_gdp_ar1",
+   "target": "2021-Q1",
+   "features": [
+    "du_lag1",
+    "gdp_lag1",
+    "gdp_lag2"
+   ],
+   "common_factor": false,
+   "training_first": "2009-Q3",
+   "training_last": "2020-Q4",
+   "training_quarters": 46,
+   "countries": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0140421085896254,
+     "max_rhat_parameter": "mu_s",
+     "min_ess_bulk": 404.60099881934235,
+     "min_ess_tail": 740.6983400514448,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.5943050914430101,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "R-hat 1.014 > 1.01 (mu_s)"
+     ],
+     "warmup": 1000,
+     "runtime_seconds": 37.72288547700009
+    },
+    {
+     "max_rhat": 1.0058524180285116,
+     "max_rhat_parameter": "sigma[19]",
+     "min_ess_bulk": 549.7756185953995,
+     "min_ess_tail": 1041.0899598464368,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.6092624298402294,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 3000,
+     "runtime_seconds": 46.51686313999994
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 3000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261062,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_gdp_ar1",
+   "target": "2021-Q2",
+   "features": [
+    "du_lag1",
+    "gdp_lag1",
+    "gdp_lag2"
+   ],
+   "common_factor": false,
+   "training_first": "2009-Q3",
+   "training_last": "2021-Q1",
+   "training_quarters": 47,
+   "countries": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0123481769543097,
+     "max_rhat_parameter": "mu_s",
+     "min_ess_bulk": 417.5483538998501,
+     "min_ess_tail": 876.8798712462477,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.6419224929430002,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "R-hat 1.012 > 1.01 (mu_s)"
+     ],
+     "warmup": 1000,
+     "runtime_seconds": 38.60696026099981
+    },
+    {
+     "max_rhat": 1.0083275544078127,
+     "max_rhat_parameter": "tau_beta[2]",
+     "min_ess_bulk": 519.93366467147,
+     "min_ess_tail": 913.5021152901901,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.6785128870553098,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 3000,
+     "runtime_seconds": 46.451700058999904
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 3000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261063,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_gdp_ar1",
+   "target": "2021-Q3",
+   "features": [
+    "du_lag1",
+    "gdp_lag1",
+    "gdp_lag2"
+   ],
+   "common_factor": false,
+   "training_first": "2009-Q3",
+   "training_last": "2021-Q2",
+   "training_quarters": 48,
+   "countries": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.008786180879326,
+     "max_rhat_parameter": "mu_s",
+     "min_ess_bulk": 541.4478510164605,
+     "min_ess_tail": 981.9992502497915,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.6610772167139596,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 39.75642238699993
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261064,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_gdp_ar1",
+   "target": "2021-Q4",
+   "features": [
+    "du_lag1",
+    "gdp_lag1",
+    "gdp_lag2"
+   ],
+   "common_factor": false,
+   "training_first": "2009-Q3",
+   "training_last": "2021-Q3",
+   "training_quarters": 49,
+   "countries": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.009963660142889,
+     "max_rhat_parameter": "mu_s",
+     "min_ess_bulk": 492.3611667844831,
+     "min_ess_tail": 895.6075613490032,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.6838845933257065,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 41.08991377000007
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261065,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_gdp_ar1",
+   "target": "2022-Q1",
+   "features": [
+    "du_lag1",
+    "gdp_lag1",
+    "gdp_lag2"
+   ],
+   "common_factor": false,
+   "training_first": "2009-Q3",
+   "training_last": "2021-Q4",
+   "training_quarters": 50,
+   "countries": 27,
+   "accepted": false,
+   "attempts": [
+    {
+     "max_rhat": 1.009181997059677,
+     "max_rhat_parameter": "mu_s",
+     "min_ess_bulk": 377.71422087867126,
+     "min_ess_tail": 741.73205927194,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.6476995861494697,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "ESS 378 < 400 (mu_s)"
+     ],
+     "warmup": 1000,
+     "runtime_seconds": 39.775223935999975
+    },
+    {
+     "max_rhat": 1.011073823883858,
+     "max_rhat_parameter": "tau_beta[2]",
+     "min_ess_bulk": 470.9576485480183,
+     "min_ess_tail": 804.5551922041512,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.6491858488329452,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "R-hat 1.011 > 1.01 (tau_beta[2])"
+     ],
+     "warmup": 3000,
+     "runtime_seconds": 48.56512356400003
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 3000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261066,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_gdp_ar1",
+   "target": "2022-Q2",
+   "features": [
+    "du_lag1",
+    "gdp_lag1",
+    "gdp_lag2"
+   ],
+   "common_factor": false,
+   "training_first": "2009-Q3",
+   "training_last": "2022-Q1",
+   "training_quarters": 51,
+   "countries": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.01042865809546,
+     "max_rhat_parameter": "mu_s",
+     "min_ess_bulk": 493.44816850335366,
+     "min_ess_tail": 935.0240557503695,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.6117562676693493,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "R-hat 1.010 > 1.01 (mu_s)"
+     ],
+     "warmup": 1000,
+     "runtime_seconds": 40.226018895999914
+    },
+    {
+     "max_rhat": 1.0053450013014376,
+     "max_rhat_parameter": "alpha[23]",
+     "min_ess_bulk": 723.2593848180829,
+     "min_ess_tail": 1137.5752760436567,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.6492968700842287,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 3000,
+     "runtime_seconds": 49.16906816100004
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 3000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261067,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_gdp_ar1",
+   "target": "2022-Q3",
+   "features": [
+    "du_lag1",
+    "gdp_lag1",
+    "gdp_lag2"
+   ],
+   "common_factor": false,
+   "training_first": "2009-Q3",
+   "training_last": "2022-Q2",
+   "training_quarters": 52,
+   "countries": 27,
+   "accepted": false,
+   "attempts": [
+    {
+     "max_rhat": 1.0136118621129955,
+     "max_rhat_parameter": "mu_s",
+     "min_ess_bulk": 369.47583980439526,
+     "min_ess_tail": 778.4124158102993,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.6577306420498835,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "R-hat 1.014 > 1.01 (mu_s)",
+      "ESS 369 < 400 (mu_s)"
+     ],
+     "warmup": 1000,
+     "runtime_seconds": 39.90034412499995
+    },
+    {
+     "max_rhat": 1.0110227792601145,
+     "max_rhat_parameter": "tau_beta[2]",
+     "min_ess_bulk": 446.4146603224205,
+     "min_ess_tail": 846.0022489735319,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.6237805774142632,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "R-hat 1.011 > 1.01 (tau_beta[2])"
+     ],
+     "warmup": 3000,
+     "runtime_seconds": 49.84842527899991
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 3000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261068,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_gdp_ar1",
+   "target": "2022-Q4",
+   "features": [
+    "du_lag1",
+    "gdp_lag1",
+    "gdp_lag2"
+   ],
+   "common_factor": false,
+   "training_first": "2009-Q3",
+   "training_last": "2022-Q3",
+   "training_quarters": 53,
+   "countries": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0161773437556803,
+     "max_rhat_parameter": "mu_s",
+     "min_ess_bulk": 365.45763367469254,
+     "min_ess_tail": 1013.1393151714117,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.6183634667029468,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "R-hat 1.016 > 1.01 (mu_s)",
+      "ESS 365 < 400 (mu_s)"
+     ],
+     "warmup": 1000,
+     "runtime_seconds": 39.23526558699996
+    },
+    {
+     "max_rhat": 1.0059263432698111,
+     "max_rhat_parameter": "mu_s",
+     "min_ess_bulk": 597.9143127478338,
+     "min_ess_tail": 1083.114527273345,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.6638399265440597,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 3000,
+     "runtime_seconds": 49.945989602999816
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 3000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261069,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_gdp_ar1",
+   "target": "2023-Q1",
+   "features": [
+    "du_lag1",
+    "gdp_lag1",
+    "gdp_lag2"
+   ],
+   "common_factor": false,
+   "training_first": "2009-Q3",
+   "training_last": "2022-Q4",
+   "training_quarters": 54,
+   "countries": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0186596953656784,
+     "max_rhat_parameter": "mu_s",
+     "min_ess_bulk": 289.14983404394474,
+     "min_ess_tail": 779.4184692996396,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.640271393946365,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "R-hat 1.019 > 1.01 (mu_s)",
+      "ESS 289 < 400 (mu_s)"
+     ],
+     "warmup": 1000,
+     "runtime_seconds": 38.89063344299984
+    },
+    {
+     "max_rhat": 1.005893137029106,
+     "max_rhat_parameter": "mu_beta[0]",
+     "min_ess_bulk": 527.5071349703761,
+     "min_ess_tail": 919.9993809009121,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.6626427996885106,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 3000,
+     "runtime_seconds": 49.77687122599991
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 3000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261070,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_gdp_ar1",
+   "target": "2023-Q2",
+   "features": [
+    "du_lag1",
+    "gdp_lag1",
+    "gdp_lag2"
+   ],
+   "common_factor": false,
+   "training_first": "2009-Q3",
+   "training_last": "2023-Q1",
+   "training_quarters": 55,
+   "countries": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0148091055323205,
+     "max_rhat_parameter": "mu_s",
+     "min_ess_bulk": 359.5321334098847,
+     "min_ess_tail": 705.743403647001,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.5949183360861104,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "R-hat 1.015 > 1.01 (mu_s)",
+      "ESS 360 < 400 (mu_s)"
+     ],
+     "warmup": 1000,
+     "runtime_seconds": 41.06913567099991
+    },
+    {
+     "max_rhat": 1.0086616154809955,
+     "max_rhat_parameter": "tau_beta[2]",
+     "min_ess_bulk": 472.33060842769504,
+     "min_ess_tail": 875.6634815040888,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.6579764925297814,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 3000,
+     "runtime_seconds": 50.25898595300009
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 3000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261071,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_gdp_ar1",
+   "target": "2023-Q3",
+   "features": [
+    "du_lag1",
+    "gdp_lag1",
+    "gdp_lag2"
+   ],
+   "common_factor": false,
+   "training_first": "2009-Q3",
+   "training_last": "2023-Q2",
+   "training_quarters": 56,
+   "countries": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0125607322048267,
+     "max_rhat_parameter": "mu_s",
+     "min_ess_bulk": 401.2451557376526,
+     "min_ess_tail": 837.5233935842164,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.6531201822232339,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "R-hat 1.013 > 1.01 (mu_s)"
+     ],
+     "warmup": 1000,
+     "runtime_seconds": 42.03349782300006
+    },
+    {
+     "max_rhat": 1.0056958345893436,
+     "max_rhat_parameter": "mu_beta[0]",
+     "min_ess_bulk": 604.8637442991144,
+     "min_ess_tail": 1006.9597171307677,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.6205635379093539,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 3000,
+     "runtime_seconds": 52.811159338999914
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 3000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261072,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_gdp_ar1",
+   "target": "2023-Q4",
+   "features": [
+    "du_lag1",
+    "gdp_lag1",
+    "gdp_lag2"
+   ],
+   "common_factor": false,
+   "training_first": "2009-Q3",
+   "training_last": "2023-Q3",
+   "training_quarters": 57,
+   "countries": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0101866153501338,
+     "max_rhat_parameter": "tau_s",
+     "min_ess_bulk": 457.4518737399962,
+     "min_ess_tail": 733.4166652707877,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.6455730554699318,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "R-hat 1.010 > 1.01 (tau_s)"
+     ],
+     "warmup": 1000,
+     "runtime_seconds": 43.37979996100012
+    },
+    {
+     "max_rhat": 1.0098863821650035,
+     "max_rhat_parameter": "tau_beta[2]",
+     "min_ess_bulk": 491.4021445013743,
+     "min_ess_tail": 849.2184554439373,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.6292520683889977,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 3000,
+     "runtime_seconds": 52.407737920000045
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 3000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261073,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_gdp_ar1",
+   "target": "2024-Q1",
+   "features": [
+    "du_lag1",
+    "gdp_lag1",
+    "gdp_lag2"
+   ],
+   "common_factor": false,
+   "training_first": "2009-Q3",
+   "training_last": "2023-Q4",
+   "training_quarters": 58,
+   "countries": 27,
+   "accepted": false,
+   "attempts": [
+    {
+     "max_rhat": 1.0109411313814196,
+     "max_rhat_parameter": "mu_s",
+     "min_ess_bulk": 386.386814669499,
+     "min_ess_tail": 640.0464820819125,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.6193387423716626,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "R-hat 1.011 > 1.01 (mu_s)",
+      "ESS 386 < 400 (mu_s)"
+     ],
+     "warmup": 1000,
+     "runtime_seconds": 42.717340497999885
+    },
+    {
+     "max_rhat": 1.010072315295952,
+     "max_rhat_parameter": "tau_beta[2]",
+     "min_ess_bulk": 427.9418148710052,
+     "min_ess_tail": 826.9351577003538,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.6574402058089297,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "R-hat 1.010 > 1.01 (tau_beta[2])"
+     ],
+     "warmup": 3000,
+     "runtime_seconds": 52.12716517400031
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 3000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261074,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_gdp_ar1",
+   "target": "2024-Q2",
+   "features": [
+    "du_lag1",
+    "gdp_lag1",
+    "gdp_lag2"
+   ],
+   "common_factor": false,
+   "training_first": "2009-Q3",
+   "training_last": "2024-Q1",
+   "training_quarters": 59,
+   "countries": 27,
+   "accepted": false,
+   "attempts": [
+    {
+     "max_rhat": 1.0122248944416687,
+     "max_rhat_parameter": "s_raw[4]",
+     "min_ess_bulk": 369.58052202065863,
+     "min_ess_tail": 620.0220478512778,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.6433884170569042,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "R-hat 1.012 > 1.01 (s_raw[4])",
+      "ESS 370 < 400 (mu_s)"
+     ],
+     "warmup": 1000,
+     "runtime_seconds": 45.54126689500026
+    },
+    {
+     "max_rhat": 1.0126676247969326,
+     "max_rhat_parameter": "tau_beta[2]",
+     "min_ess_bulk": 428.77030481680725,
+     "min_ess_tail": 830.8016645932175,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.6485846212908292,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "R-hat 1.013 > 1.01 (tau_beta[2])"
+     ],
+     "warmup": 3000,
+     "runtime_seconds": 53.88750423700003
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 3000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261075,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_gdp_ar1",
+   "target": "2024-Q3",
+   "features": [
+    "du_lag1",
+    "gdp_lag1",
+    "gdp_lag2"
+   ],
+   "common_factor": false,
+   "training_first": "2009-Q3",
+   "training_last": "2024-Q2",
+   "training_quarters": 60,
+   "countries": 27,
+   "accepted": false,
+   "attempts": [
+    {
+     "max_rhat": 1.0126539992217651,
+     "max_rhat_parameter": "mu_s",
+     "min_ess_bulk": 343.7367913436163,
+     "min_ess_tail": 840.7695178855471,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.6517099127683685,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "R-hat 1.013 > 1.01 (mu_s)",
+      "ESS 344 < 400 (mu_s)"
+     ],
+     "warmup": 1000,
+     "runtime_seconds": 42.044114288999936
+    },
+    {
+     "max_rhat": 1.0136193417335009,
+     "max_rhat_parameter": "tau_beta[2]",
+     "min_ess_bulk": 419.90784484573186,
+     "min_ess_tail": 862.8919163835476,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.6228263283864424,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "R-hat 1.014 > 1.01 (tau_beta[2])"
+     ],
+     "warmup": 3000,
+     "runtime_seconds": 52.137648057000206
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 3000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261076,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_gdp_ar1",
+   "target": "2024-Q4",
+   "features": [
+    "du_lag1",
+    "gdp_lag1",
+    "gdp_lag2"
+   ],
+   "common_factor": false,
+   "training_first": "2009-Q3",
+   "training_last": "2024-Q3",
+   "training_quarters": 61,
+   "countries": 27,
+   "accepted": false,
+   "attempts": [
+    {
+     "max_rhat": 1.0158699547590473,
+     "max_rhat_parameter": "mu_s",
+     "min_ess_bulk": 328.709136208655,
+     "min_ess_tail": 712.4968533957626,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.6674627590377933,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "R-hat 1.016 > 1.01 (mu_s)",
+      "ESS 329 < 400 (mu_s)"
+     ],
+     "warmup": 1000,
+     "runtime_seconds": 42.43804859900001
+    },
+    {
+     "max_rhat": 1.012766739154349,
+     "max_rhat_parameter": "tau_beta[2]",
+     "min_ess_bulk": 434.6831025150839,
+     "min_ess_tail": 839.4722239375947,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.6483276732717786,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "R-hat 1.013 > 1.01 (tau_beta[2])"
+     ],
+     "warmup": 3000,
+     "runtime_seconds": 53.86045649400012
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 3000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261077,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_gdp_ar1",
+   "target": "2025-Q1",
+   "features": [
+    "du_lag1",
+    "gdp_lag1",
+    "gdp_lag2"
+   ],
+   "common_factor": false,
+   "training_first": "2009-Q3",
+   "training_last": "2024-Q4",
+   "training_quarters": 62,
+   "countries": 27,
+   "accepted": false,
+   "attempts": [
+    {
+     "max_rhat": 1.0190990984442754,
+     "max_rhat_parameter": "mu_s",
+     "min_ess_bulk": 327.5962961856155,
+     "min_ess_tail": 832.6045589176722,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.6659942080963722,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "R-hat 1.019 > 1.01 (mu_s)",
+      "ESS 328 < 400 (mu_s)"
+     ],
+     "warmup": 1000,
+     "runtime_seconds": 43.89471732900029
+    },
+    {
+     "max_rhat": 1.0101624178002162,
+     "max_rhat_parameter": "tau_beta[2]",
+     "min_ess_bulk": 440.22959273682346,
+     "min_ess_tail": 888.883118864805,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.631165966796923,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "R-hat 1.010 > 1.01 (tau_beta[2])"
+     ],
+     "warmup": 3000,
+     "runtime_seconds": 53.570685324999886
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 3000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261078,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_gdp_ar1",
+   "target": "2025-Q2",
+   "features": [
+    "du_lag1",
+    "gdp_lag1",
+    "gdp_lag2"
+   ],
+   "common_factor": false,
+   "training_first": "2009-Q3",
+   "training_last": "2025-Q1",
+   "training_quarters": 63,
+   "countries": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0124405763127824,
+     "max_rhat_parameter": "mu_s",
+     "min_ess_bulk": 323.28885499787816,
+     "min_ess_tail": 757.5732883339515,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.6639585863894909,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "R-hat 1.012 > 1.01 (mu_s)",
+      "ESS 323 < 400 (mu_s)"
+     ],
+     "warmup": 1000,
+     "runtime_seconds": 42.19820403899985
+    },
+    {
+     "max_rhat": 1.00872810871859,
+     "max_rhat_parameter": "mu_s",
+     "min_ess_bulk": 442.8810434721175,
+     "min_ess_tail": 903.9013435350404,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.632502740739551,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 3000,
+     "runtime_seconds": 53.139736550999714
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 3000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261079,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_gdp_ar1",
+   "target": "2025-Q3",
+   "features": [
+    "du_lag1",
+    "gdp_lag1",
+    "gdp_lag2"
+   ],
+   "common_factor": false,
+   "training_first": "2009-Q3",
+   "training_last": "2025-Q2",
+   "training_quarters": 64,
+   "countries": 27,
+   "accepted": false,
+   "attempts": [
+    {
+     "max_rhat": 1.0123661441818521,
+     "max_rhat_parameter": "mu_s",
+     "min_ess_bulk": 383.8875781672639,
+     "min_ess_tail": 704.1940345985361,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.6287377362563461,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "R-hat 1.012 > 1.01 (mu_s)",
+      "ESS 384 < 400 (mu_s)"
+     ],
+     "warmup": 1000,
+     "runtime_seconds": 43.903964022999844
+    },
+    {
+     "max_rhat": 1.0105161644462424,
+     "max_rhat_parameter": "tau_beta[2]",
+     "min_ess_bulk": 432.34801704960046,
+     "min_ess_tail": 814.8610694433551,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.6294747877102383,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "R-hat 1.011 > 1.01 (tau_beta[2])"
+     ],
+     "warmup": 3000,
+     "runtime_seconds": 53.46472801300024
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 3000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261080,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_gdp_ar1",
+   "target": "2025-Q4",
+   "features": [
+    "du_lag1",
+    "gdp_lag1",
+    "gdp_lag2"
+   ],
+   "common_factor": false,
+   "training_first": "2009-Q3",
+   "training_last": "2025-Q3",
+   "training_quarters": 65,
+   "countries": 27,
+   "accepted": false,
+   "attempts": [
+    {
+     "max_rhat": 1.0142432036669726,
+     "max_rhat_parameter": "tau_s",
+     "min_ess_bulk": 305.3676805018078,
+     "min_ess_tail": 581.9643462306491,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.6204462996371887,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "R-hat 1.014 > 1.01 (tau_s)",
+      "ESS 305 < 400 (mu_s)"
+     ],
+     "warmup": 1000,
+     "runtime_seconds": 45.52474266800027
+    },
+    {
+     "max_rhat": 1.0080233264134404,
+     "max_rhat_parameter": "tau_beta[2]",
+     "min_ess_bulk": 396.94162175749227,
+     "min_ess_tail": 765.0893856169554,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.6227749258336689,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "ESS 397 < 400 (mu_s)"
+     ],
+     "warmup": 3000,
+     "runtime_seconds": 55.657919214999765
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 3000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261081,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_gdp_ar1",
+   "target": "2026-Q1",
+   "features": [
+    "du_lag1",
+    "gdp_lag1",
+    "gdp_lag2"
+   ],
+   "common_factor": false,
+   "training_first": "2009-Q3",
+   "training_last": "2025-Q4",
+   "training_quarters": 66,
+   "countries": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0156968327549232,
+     "max_rhat_parameter": "mu_s",
+     "min_ess_bulk": 252.68204002432503,
+     "min_ess_tail": 788.578921078349,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.6649935454802764,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "R-hat 1.016 > 1.01 (mu_s)",
+      "ESS 253 < 400 (mu_s)"
+     ],
+     "warmup": 1000,
+     "runtime_seconds": 46.21662078700001
+    },
+    {
+     "max_rhat": 1.0081444130609565,
+     "max_rhat_parameter": "tau_beta[2]",
+     "min_ess_bulk": 498.2223271320511,
+     "min_ess_tail": 922.6829062078963,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.651310217568287,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 3000,
+     "runtime_seconds": 57.01886728799991
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 3000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261082,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_gdp_ar1",
+   "target": "2026-Q2",
+   "features": [
+    "du_lag1",
+    "gdp_lag1",
+    "gdp_lag2"
+   ],
+   "common_factor": false,
+   "training_first": "2009-Q3",
+   "training_last": "2026-Q1",
+   "training_quarters": 67,
+   "countries": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0116511269315958,
+     "max_rhat_parameter": "mu_s",
+     "min_ess_bulk": 319.8004313208711,
+     "min_ess_tail": 662.3863046315212,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.6362913519322357,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "R-hat 1.012 > 1.01 (mu_s)",
+      "ESS 320 < 400 (mu_s)"
+     ],
+     "warmup": 1000,
+     "runtime_seconds": 45.77675953100015
+    },
+    {
+     "max_rhat": 1.0077940231683091,
+     "max_rhat_parameter": "tau_beta[2]",
+     "min_ess_bulk": 442.195265372549,
+     "min_ess_tail": 851.4547328952259,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.661161722927611,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 3000,
+     "runtime_seconds": 56.08406604999982
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 3000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261083,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_gdp_ar1_factor",
+   "target": "2018-Q1",
+   "features": [
+    "du_lag1",
+    "gdp_lag1",
+    "gdp_lag2"
+   ],
+   "common_factor": true,
+   "training_first": "2009-Q3",
+   "training_last": "2017-Q4",
+   "training_quarters": 34,
+   "countries": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0109297039008116,
+     "max_rhat_parameter": "mu_s",
+     "min_ess_bulk": 358.57887735391233,
+     "min_ess_tail": 501.45219552934947,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.6057287745861536,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "R-hat 1.011 > 1.01 (mu_s)",
+      "ESS 359 < 400 (mu_s)"
+     ],
+     "warmup": 1000,
+     "runtime_seconds": 42.574576144000005
+    },
+    {
+     "max_rhat": 1.0065919496305522,
+     "max_rhat_parameter": "tau_s",
+     "min_ess_bulk": 489.95112994159217,
+     "min_ess_tail": 739.5290661625884,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.6396034140370686,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 3000,
+     "runtime_seconds": 48.99968897900001
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 3000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261050,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_gdp_ar1_factor",
+   "target": "2018-Q2",
+   "features": [
+    "du_lag1",
+    "gdp_lag1",
+    "gdp_lag2"
+   ],
+   "common_factor": true,
+   "training_first": "2009-Q3",
+   "training_last": "2018-Q1",
+   "training_quarters": 35,
+   "countries": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0080296713206736,
+     "max_rhat_parameter": "mu_s",
+     "min_ess_bulk": 549.8914952874253,
+     "min_ess_tail": 434.65767118264426,
+     "min_ess_parameter": "lam[1]",
+     "divergences": 0,
+     "min_bfmi": 0.6294702989202507,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 40.61331446899999
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261051,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_gdp_ar1_factor",
+   "target": "2018-Q3",
+   "features": [
+    "du_lag1",
+    "gdp_lag1",
+    "gdp_lag2"
+   ],
+   "common_factor": true,
+   "training_first": "2009-Q3",
+   "training_last": "2018-Q2",
+   "training_quarters": 36,
+   "countries": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0073137024169858,
+     "max_rhat_parameter": "tau_alpha",
+     "min_ess_bulk": 621.8773478949437,
+     "min_ess_tail": 511.03566695859195,
+     "min_ess_parameter": "tau_beta[2]",
+     "divergences": 0,
+     "min_bfmi": 0.6485386895162067,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 41.085118295
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261052,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_gdp_ar1_factor",
+   "target": "2018-Q4",
+   "features": [
+    "du_lag1",
+    "gdp_lag1",
+    "gdp_lag2"
+   ],
+   "common_factor": true,
+   "training_first": "2009-Q3",
+   "training_last": "2018-Q3",
+   "training_quarters": 37,
+   "countries": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.009430536502094,
+     "max_rhat_parameter": "tau_alpha",
+     "min_ess_bulk": 477.0102711881002,
+     "min_ess_tail": 613.7177180727489,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.6304440901145467,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 42.67696421200003
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261053,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_gdp_ar1_factor",
+   "target": "2019-Q1",
+   "features": [
+    "du_lag1",
+    "gdp_lag1",
+    "gdp_lag2"
+   ],
+   "common_factor": true,
+   "training_first": "2009-Q3",
+   "training_last": "2018-Q4",
+   "training_quarters": 38,
+   "countries": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0094998960936092,
+     "max_rhat_parameter": "mu_s",
+     "min_ess_bulk": 503.2196122437335,
+     "min_ess_tail": 872.4823112275245,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.5960700658940541,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 41.922451489000025
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261054,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_gdp_ar1_factor",
+   "target": "2019-Q2",
+   "features": [
+    "du_lag1",
+    "gdp_lag1",
+    "gdp_lag2"
+   ],
+   "common_factor": true,
+   "training_first": "2009-Q3",
+   "training_last": "2019-Q1",
+   "training_quarters": 39,
+   "countries": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0059407592577196,
+     "max_rhat_parameter": "mu_s",
+     "min_ess_bulk": 514.3443688025255,
+     "min_ess_tail": 569.1249293014572,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.5950627121212486,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 42.629305472
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261055,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_gdp_ar1_factor",
+   "target": "2019-Q3",
+   "features": [
+    "du_lag1",
+    "gdp_lag1",
+    "gdp_lag2"
+   ],
+   "common_factor": true,
+   "training_first": "2009-Q3",
+   "training_last": "2019-Q2",
+   "training_quarters": 40,
+   "countries": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.008265088825687,
+     "max_rhat_parameter": "tau_alpha",
+     "min_ess_bulk": 440.24477791281146,
+     "min_ess_tail": 705.623514266744,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.5588826550657697,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 42.954727225
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261056,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_gdp_ar1_factor",
+   "target": "2019-Q4",
+   "features": [
+    "du_lag1",
+    "gdp_lag1",
+    "gdp_lag2"
+   ],
+   "common_factor": true,
+   "training_first": "2009-Q3",
+   "training_last": "2019-Q3",
+   "training_quarters": 41,
+   "countries": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.007078137768946,
+     "max_rhat_parameter": "beta_raw[15,2]",
+     "min_ess_bulk": 883.5561322135518,
+     "min_ess_tail": 1085.3033940270482,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.5932435147338601,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 46.46016376099999
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261057,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_gdp_ar1_factor",
+   "target": "2020-Q1",
+   "features": [
+    "du_lag1",
+    "gdp_lag1",
+    "gdp_lag2"
+   ],
+   "common_factor": true,
+   "training_first": "2009-Q3",
+   "training_last": "2019-Q4",
+   "training_quarters": 42,
+   "countries": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0063826101529185,
+     "max_rhat_parameter": "mu_s",
+     "min_ess_bulk": 444.9213514705907,
+     "min_ess_tail": 607.7110875294501,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.6165629502606058,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 44.19369188500002
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261058,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_gdp_ar1_factor",
+   "target": "2020-Q2",
+   "features": [
+    "du_lag1",
+    "gdp_lag1",
+    "gdp_lag2"
+   ],
+   "common_factor": true,
+   "training_first": "2009-Q3",
+   "training_last": "2020-Q1",
+   "training_quarters": 43,
+   "countries": 27,
+   "accepted": false,
+   "attempts": [
+    {
+     "max_rhat": 1.0116368912352416,
+     "max_rhat_parameter": "mu_s",
+     "min_ess_bulk": 590.5149809157629,
+     "min_ess_tail": 963.7788230681978,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.6116517046944667,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "R-hat 1.012 > 1.01 (mu_s)"
+     ],
+     "warmup": 1000,
+     "runtime_seconds": 45.48578196300002
+    },
+    {
+     "max_rhat": 1.0106193129276306,
+     "max_rhat_parameter": "mu_s",
+     "min_ess_bulk": 595.648561242987,
+     "min_ess_tail": 790.3203879950437,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.6812902410824944,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "R-hat 1.011 > 1.01 (mu_s)"
+     ],
+     "warmup": 3000,
+     "runtime_seconds": 58.453450438999994
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 3000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261059,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_gdp_ar1_factor",
+   "target": "2020-Q3",
+   "features": [
+    "du_lag1",
+    "gdp_lag1",
+    "gdp_lag2"
+   ],
+   "common_factor": true,
+   "training_first": "2009-Q3",
+   "training_last": "2020-Q2",
+   "training_quarters": 44,
+   "countries": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.00495617746723,
+     "max_rhat_parameter": "tau_s",
+     "min_ess_bulk": 619.0945603015491,
+     "min_ess_tail": 503.71539666265153,
+     "min_ess_parameter": "lam[16]",
+     "divergences": 0,
+     "min_bfmi": 0.6230180950139952,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 45.988144369999986
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261060,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_gdp_ar1_factor",
+   "target": "2020-Q4",
+   "features": [
+    "du_lag1",
+    "gdp_lag1",
+    "gdp_lag2"
+   ],
+   "common_factor": true,
+   "training_first": "2009-Q3",
+   "training_last": "2020-Q3",
+   "training_quarters": 45,
+   "countries": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0052646227235724,
+     "max_rhat_parameter": "lam[10]",
+     "min_ess_bulk": 752.8653988136491,
+     "min_ess_tail": 705.3816552241641,
+     "min_ess_parameter": "lam[5]",
+     "divergences": 0,
+     "min_bfmi": 0.5893606436027125,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 47.67418278800005
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261061,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_gdp_ar1_factor",
+   "target": "2021-Q1",
+   "features": [
+    "du_lag1",
+    "gdp_lag1",
+    "gdp_lag2"
+   ],
+   "common_factor": true,
+   "training_first": "2009-Q3",
+   "training_last": "2020-Q4",
+   "training_quarters": 46,
+   "countries": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0145254164234205,
+     "max_rhat_parameter": "mu_s",
+     "min_ess_bulk": 417.9945861316974,
+     "min_ess_tail": 354.8968779762461,
+     "min_ess_parameter": "lam[14]",
+     "divergences": 0,
+     "min_bfmi": 0.6068951944491553,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "R-hat 1.015 > 1.01 (mu_s)",
+      "ESS 355 < 400 (lam[14])"
+     ],
+     "warmup": 1000,
+     "runtime_seconds": 44.711419826999986
+    },
+    {
+     "max_rhat": 1.0078757877898878,
+     "max_rhat_parameter": "mu_s",
+     "min_ess_bulk": 586.164437919807,
+     "min_ess_tail": 886.4632906545605,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.5937515507417164,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 3000,
+     "runtime_seconds": 56.522383662999914
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 3000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261062,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_gdp_ar1_factor",
+   "target": "2021-Q2",
+   "features": [
+    "du_lag1",
+    "gdp_lag1",
+    "gdp_lag2"
+   ],
+   "common_factor": true,
+   "training_first": "2009-Q3",
+   "training_last": "2021-Q1",
+   "training_quarters": 47,
+   "countries": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0072036746221962,
+     "max_rhat_parameter": "tau_beta[1]",
+     "min_ess_bulk": 505.9645766196524,
+     "min_ess_tail": 864.4981787050274,
+     "min_ess_parameter": "tau_beta[2]",
+     "divergences": 0,
+     "min_bfmi": 0.5700766176223052,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 47.97443197200005
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261063,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_gdp_ar1_factor",
+   "target": "2021-Q3",
+   "features": [
+    "du_lag1",
+    "gdp_lag1",
+    "gdp_lag2"
+   ],
+   "common_factor": true,
+   "training_first": "2009-Q3",
+   "training_last": "2021-Q2",
+   "training_quarters": 48,
+   "countries": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0112650701631736,
+     "max_rhat_parameter": "mu_s",
+     "min_ess_bulk": 500.06325961118154,
+     "min_ess_tail": 607.0419706099772,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.6361869764761973,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "R-hat 1.011 > 1.01 (mu_s)"
+     ],
+     "warmup": 1000,
+     "runtime_seconds": 47.58025077299999
+    },
+    {
+     "max_rhat": 1.0071674632398129,
+     "max_rhat_parameter": "mu_s",
+     "min_ess_bulk": 582.8820553867896,
+     "min_ess_tail": 915.8756931659831,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.6643989908862038,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 3000,
+     "runtime_seconds": 60.936038349
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 3000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261064,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_gdp_ar1_factor",
+   "target": "2021-Q4",
+   "features": [
+    "du_lag1",
+    "gdp_lag1",
+    "gdp_lag2"
+   ],
+   "common_factor": true,
+   "training_first": "2009-Q3",
+   "training_last": "2021-Q3",
+   "training_quarters": 49,
+   "countries": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0069296627440323,
+     "max_rhat_parameter": "tau_s",
+     "min_ess_bulk": 778.0692144651142,
+     "min_ess_tail": 665.1273595413825,
+     "min_ess_parameter": "lam[24]",
+     "divergences": 0,
+     "min_bfmi": 0.5737867736816279,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 49.52446917800012
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261065,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_gdp_ar1_factor",
+   "target": "2022-Q1",
+   "features": [
+    "du_lag1",
+    "gdp_lag1",
+    "gdp_lag2"
+   ],
+   "common_factor": true,
+   "training_first": "2009-Q3",
+   "training_last": "2021-Q4",
+   "training_quarters": 50,
+   "countries": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0089742357154865,
+     "max_rhat_parameter": "tau_beta[1]",
+     "min_ess_bulk": 457.55234519764673,
+     "min_ess_tail": 687.7835832019827,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.5682862705165471,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 47.071491257999924
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261066,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_gdp_ar1_factor",
+   "target": "2022-Q2",
+   "features": [
+    "du_lag1",
+    "gdp_lag1",
+    "gdp_lag2"
+   ],
+   "common_factor": true,
+   "training_first": "2009-Q3",
+   "training_last": "2022-Q1",
+   "training_quarters": 51,
+   "countries": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0052417375205434,
+     "max_rhat_parameter": "lam[12]",
+     "min_ess_bulk": 470.9291792238334,
+     "min_ess_tail": 559.0871274189666,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.6334186270687123,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 46.09262445600007
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261067,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_gdp_ar1_factor",
+   "target": "2022-Q3",
+   "features": [
+    "du_lag1",
+    "gdp_lag1",
+    "gdp_lag2"
+   ],
+   "common_factor": true,
+   "training_first": "2009-Q3",
+   "training_last": "2022-Q2",
+   "training_quarters": 52,
+   "countries": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0078951110120091,
+     "max_rhat_parameter": "tau_beta[2]",
+     "min_ess_bulk": 402.0435023651151,
+     "min_ess_tail": 431.99388335552663,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.60586009823589,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 44.63025524699992
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261068,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_gdp_ar1_factor",
+   "target": "2022-Q4",
+   "features": [
+    "du_lag1",
+    "gdp_lag1",
+    "gdp_lag2"
+   ],
+   "common_factor": true,
+   "training_first": "2009-Q3",
+   "training_last": "2022-Q3",
+   "training_quarters": 53,
+   "countries": 27,
+   "accepted": false,
+   "attempts": [
+    {
+     "max_rhat": 1.0070337851040474,
+     "max_rhat_parameter": "beta_raw[18,2]",
+     "min_ess_bulk": 382.54754634100243,
+     "min_ess_tail": 478.7828349614012,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.640242631115583,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "ESS 383 < 400 (mu_s)"
+     ],
+     "warmup": 1000,
+     "runtime_seconds": 45.62513119699997
+    },
+    {
+     "max_rhat": 1.0068525400181372,
+     "max_rhat_parameter": "mu_beta[0]",
+     "min_ess_bulk": 364.3080664286087,
+     "min_ess_tail": 433.9213523516221,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.6034499802954726,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "ESS 364 < 400 (mu_s)"
+     ],
+     "warmup": 3000,
+     "runtime_seconds": 57.67746024200005
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 3000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261069,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_gdp_ar1_factor",
+   "target": "2023-Q1",
+   "features": [
+    "du_lag1",
+    "gdp_lag1",
+    "gdp_lag2"
+   ],
+   "common_factor": true,
+   "training_first": "2009-Q3",
+   "training_last": "2022-Q4",
+   "training_quarters": 54,
+   "countries": 27,
+   "accepted": false,
+   "attempts": [
+    {
+     "max_rhat": 1.0128530614422482,
+     "max_rhat_parameter": "tau_beta[1]",
+     "min_ess_bulk": 476.6239120928997,
+     "min_ess_tail": 337.53415807566336,
+     "min_ess_parameter": "lam[6]",
+     "divergences": 0,
+     "min_bfmi": 0.6052321224349644,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "R-hat 1.013 > 1.01 (tau_beta[1])",
+      "ESS 338 < 400 (lam[6])"
+     ],
+     "warmup": 1000,
+     "runtime_seconds": 47.50784357099997
+    },
+    {
+     "max_rhat": 1.0110697049550632,
+     "max_rhat_parameter": "tau_beta[2]",
+     "min_ess_bulk": 396.25016480226014,
+     "min_ess_tail": 566.3158511168975,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.6246136694346353,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "R-hat 1.011 > 1.01 (tau_beta[2])",
+      "ESS 396 < 400 (mu_s)"
+     ],
+     "warmup": 3000,
+     "runtime_seconds": 62.1681354389998
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 3000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261070,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_gdp_ar1_factor",
+   "target": "2023-Q2",
+   "features": [
+    "du_lag1",
+    "gdp_lag1",
+    "gdp_lag2"
+   ],
+   "common_factor": true,
+   "training_first": "2009-Q3",
+   "training_last": "2023-Q1",
+   "training_quarters": 55,
+   "countries": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.025936895167751,
+     "max_rhat_parameter": "tau_beta[1]",
+     "min_ess_bulk": 231.81432332915654,
+     "min_ess_tail": 148.92134221610453,
+     "min_ess_parameter": "tau_beta[1]",
+     "divergences": 0,
+     "min_bfmi": 0.6212631879968163,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "R-hat 1.026 > 1.01 (tau_beta[1])",
+      "ESS 149 < 400 (tau_beta[1])"
+     ],
+     "warmup": 1000,
+     "runtime_seconds": 50.31370950399992
+    },
+    {
+     "max_rhat": 1.0060782879909664,
+     "max_rhat_parameter": "beta_raw[23,2]",
+     "min_ess_bulk": 422.5693713838218,
+     "min_ess_tail": 727.0401737698063,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.6194516335363841,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 3000,
+     "runtime_seconds": 62.011007659999905
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 3000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261071,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_gdp_ar1_factor",
+   "target": "2023-Q3",
+   "features": [
+    "du_lag1",
+    "gdp_lag1",
+    "gdp_lag2"
+   ],
+   "common_factor": true,
+   "training_first": "2009-Q3",
+   "training_last": "2023-Q2",
+   "training_quarters": 56,
+   "countries": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0200155691482464,
+     "max_rhat_parameter": "mu_s",
+     "min_ess_bulk": 321.67468467598536,
+     "min_ess_tail": 654.9660824225192,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.5850736222708657,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "R-hat 1.020 > 1.01 (mu_s)",
+      "ESS 322 < 400 (mu_s)"
+     ],
+     "warmup": 1000,
+     "runtime_seconds": 47.52507734999995
+    },
+    {
+     "max_rhat": 1.0073734411297244,
+     "max_rhat_parameter": "tau_beta[2]",
+     "min_ess_bulk": 530.8931750213177,
+     "min_ess_tail": 602.5779080408097,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.6051620833230876,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 3000,
+     "runtime_seconds": 61.55680830599999
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 3000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261072,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_gdp_ar1_factor",
+   "target": "2023-Q4",
+   "features": [
+    "du_lag1",
+    "gdp_lag1",
+    "gdp_lag2"
+   ],
+   "common_factor": true,
+   "training_first": "2009-Q3",
+   "training_last": "2023-Q3",
+   "training_quarters": 57,
+   "countries": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0216839614188937,
+     "max_rhat_parameter": "mu_s",
+     "min_ess_bulk": 526.691418649805,
+     "min_ess_tail": 795.7791042594514,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.6143140223985671,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "R-hat 1.022 > 1.01 (mu_s)"
+     ],
+     "warmup": 1000,
+     "runtime_seconds": 49.39122061599983
+    },
+    {
+     "max_rhat": 1.0078880980992142,
+     "max_rhat_parameter": "mu_s",
+     "min_ess_bulk": 410.02133306378073,
+     "min_ess_tail": 647.8120278672914,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.6177930785874076,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 3000,
+     "runtime_seconds": 62.791999827999916
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 3000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261073,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_gdp_ar1_factor",
+   "target": "2024-Q1",
+   "features": [
+    "du_lag1",
+    "gdp_lag1",
+    "gdp_lag2"
+   ],
+   "common_factor": true,
+   "training_first": "2009-Q3",
+   "training_last": "2023-Q4",
+   "training_quarters": 58,
+   "countries": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.011096362889768,
+     "max_rhat_parameter": "mu_s",
+     "min_ess_bulk": 476.1430120973982,
+     "min_ess_tail": 660.7314028222282,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.5871353291390687,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "R-hat 1.011 > 1.01 (mu_s)"
+     ],
+     "warmup": 1000,
+     "runtime_seconds": 50.812131148999924
+    },
+    {
+     "max_rhat": 1.009746285133527,
+     "max_rhat_parameter": "mu_s",
+     "min_ess_bulk": 439.75444565938795,
+     "min_ess_tail": 568.2396446900502,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.5878279929831175,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 3000,
+     "runtime_seconds": 64.98681455399992
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 3000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261074,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_gdp_ar1_factor",
+   "target": "2024-Q2",
+   "features": [
+    "du_lag1",
+    "gdp_lag1",
+    "gdp_lag2"
+   ],
+   "common_factor": true,
+   "training_first": "2009-Q3",
+   "training_last": "2024-Q1",
+   "training_quarters": 59,
+   "countries": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0116513241404033,
+     "max_rhat_parameter": "mu_s",
+     "min_ess_bulk": 457.6482296145894,
+     "min_ess_tail": 629.2222135333983,
+     "min_ess_parameter": "tau_beta[2]",
+     "divergences": 0,
+     "min_bfmi": 0.6192894699297429,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "R-hat 1.012 > 1.01 (mu_s)"
+     ],
+     "warmup": 1000,
+     "runtime_seconds": 49.4118524500002
+    },
+    {
+     "max_rhat": 1.0057411525465398,
+     "max_rhat_parameter": "alpha[21]",
+     "min_ess_bulk": 510.6824239350942,
+     "min_ess_tail": 791.2536292305243,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.6582358948197595,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 3000,
+     "runtime_seconds": 65.27130843200007
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 3000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261075,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_gdp_ar1_factor",
+   "target": "2024-Q3",
+   "features": [
+    "du_lag1",
+    "gdp_lag1",
+    "gdp_lag2"
+   ],
+   "common_factor": true,
+   "training_first": "2009-Q3",
+   "training_last": "2024-Q2",
+   "training_quarters": 60,
+   "countries": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.008045962012936,
+     "max_rhat_parameter": "s_raw[4]",
+     "min_ess_bulk": 468.3826137749257,
+     "min_ess_tail": 699.6787652459117,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.6041044894495541,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 51.51120810499992
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261076,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_gdp_ar1_factor",
+   "target": "2024-Q4",
+   "features": [
+    "du_lag1",
+    "gdp_lag1",
+    "gdp_lag2"
+   ],
+   "common_factor": true,
+   "training_first": "2009-Q3",
+   "training_last": "2024-Q3",
+   "training_quarters": 61,
+   "countries": 27,
+   "accepted": false,
+   "attempts": [
+    {
+     "max_rhat": 1.010758830140038,
+     "max_rhat_parameter": "mu_s",
+     "min_ess_bulk": 677.2290874408077,
+     "min_ess_tail": 723.6909822813008,
+     "min_ess_parameter": "tau_beta[2]",
+     "divergences": 0,
+     "min_bfmi": 0.5818555889979554,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "R-hat 1.011 > 1.01 (mu_s)"
+     ],
+     "warmup": 1000,
+     "runtime_seconds": 53.32496855599993
+    },
+    {
+     "max_rhat": 1.0083592090034001,
+     "max_rhat_parameter": "tau_s",
+     "min_ess_bulk": 383.52273054597777,
+     "min_ess_tail": 730.6245645728079,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.623508027117375,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "ESS 384 < 400 (mu_s)"
+     ],
+     "warmup": 3000,
+     "runtime_seconds": 64.27888557699998
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 3000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261077,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_gdp_ar1_factor",
+   "target": "2025-Q1",
+   "features": [
+    "du_lag1",
+    "gdp_lag1",
+    "gdp_lag2"
+   ],
+   "common_factor": true,
+   "training_first": "2009-Q3",
+   "training_last": "2024-Q4",
+   "training_quarters": 62,
+   "countries": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0126304038127412,
+     "max_rhat_parameter": "tau_beta[1]",
+     "min_ess_bulk": 415.377035603515,
+     "min_ess_tail": 603.5250296561279,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.5864524544117461,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "R-hat 1.013 > 1.01 (tau_beta[1])"
+     ],
+     "warmup": 1000,
+     "runtime_seconds": 52.57827588600003
+    },
+    {
+     "max_rhat": 1.006000476502815,
+     "max_rhat_parameter": "mu_s",
+     "min_ess_bulk": 467.2658586699964,
+     "min_ess_tail": 720.075640130612,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.5677973567857599,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 3000,
+     "runtime_seconds": 68.25687525800004
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 3000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261078,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_gdp_ar1_factor",
+   "target": "2025-Q2",
+   "features": [
+    "du_lag1",
+    "gdp_lag1",
+    "gdp_lag2"
+   ],
+   "common_factor": true,
+   "training_first": "2009-Q3",
+   "training_last": "2025-Q1",
+   "training_quarters": 63,
+   "countries": 27,
+   "accepted": false,
+   "attempts": [
+    {
+     "max_rhat": 1.009216811441331,
+     "max_rhat_parameter": "mu_s",
+     "min_ess_bulk": 354.50293578057676,
+     "min_ess_tail": 616.3908701583538,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.54701792455591,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "ESS 355 < 400 (mu_s)"
+     ],
+     "warmup": 1000,
+     "runtime_seconds": 48.50567813299995
+    },
+    {
+     "max_rhat": 1.0110607134323126,
+     "max_rhat_parameter": "tau_s",
+     "min_ess_bulk": 521.2257745866118,
+     "min_ess_tail": 868.4440462256014,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.611517454799727,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "R-hat 1.011 > 1.01 (tau_s)"
+     ],
+     "warmup": 3000,
+     "runtime_seconds": 63.16880410400017
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 3000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261079,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_gdp_ar1_factor",
+   "target": "2025-Q3",
+   "features": [
+    "du_lag1",
+    "gdp_lag1",
+    "gdp_lag2"
+   ],
+   "common_factor": true,
+   "training_first": "2009-Q3",
+   "training_last": "2025-Q2",
+   "training_quarters": 64,
+   "countries": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0109260594497367,
+     "max_rhat_parameter": "mu_s",
+     "min_ess_bulk": 401.28782822733336,
+     "min_ess_tail": 1054.3349005268565,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.60083587603364,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "R-hat 1.011 > 1.01 (mu_s)"
+     ],
+     "warmup": 1000,
+     "runtime_seconds": 50.5003837549998
+    },
+    {
+     "max_rhat": 1.005730187709903,
+     "max_rhat_parameter": "mu_s",
+     "min_ess_bulk": 462.8722546068753,
+     "min_ess_tail": 555.4411898814461,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.5643927152296019,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 3000,
+     "runtime_seconds": 61.51858917599975
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 3000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261080,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_gdp_ar1_factor",
+   "target": "2025-Q4",
+   "features": [
+    "du_lag1",
+    "gdp_lag1",
+    "gdp_lag2"
+   ],
+   "common_factor": true,
+   "training_first": "2009-Q3",
+   "training_last": "2025-Q3",
+   "training_quarters": 65,
+   "countries": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.0098044025651907,
+     "max_rhat_parameter": "mu_s",
+     "min_ess_bulk": 425.7486407513766,
+     "min_ess_tail": 705.053726361946,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.5689376087546884,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 1000,
+     "runtime_seconds": 53.318173602000115
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 1000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261081,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_gdp_ar1_factor",
+   "target": "2026-Q1",
+   "features": [
+    "du_lag1",
+    "gdp_lag1",
+    "gdp_lag2"
+   ],
+   "common_factor": true,
+   "training_first": "2009-Q3",
+   "training_last": "2025-Q4",
+   "training_quarters": 66,
+   "countries": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.011505435047751,
+     "max_rhat_parameter": "mu_beta[0]",
+     "min_ess_bulk": 384.17680447377614,
+     "min_ess_tail": 687.8254107581469,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.5787415707093654,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "R-hat 1.012 > 1.01 (mu_beta[0])",
+      "ESS 384 < 400 (mu_s)"
+     ],
+     "warmup": 1000,
+     "runtime_seconds": 52.46151875099986
+    },
+    {
+     "max_rhat": 1.0091483600290778,
+     "max_rhat_parameter": "mu_beta[2]",
+     "min_ess_bulk": 402.44350463245064,
+     "min_ess_tail": 416.0930322849651,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.6119261317801548,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 3000,
+     "runtime_seconds": 65.67001669899992
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 3000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261082,
+   "replicates": 4
+  },
+  {
+   "model": "bayes_gdp_ar1_factor",
+   "target": "2026-Q2",
+   "features": [
+    "du_lag1",
+    "gdp_lag1",
+    "gdp_lag2"
+   ],
+   "common_factor": true,
+   "training_first": "2009-Q3",
+   "training_last": "2026-Q1",
+   "training_quarters": 67,
+   "countries": 27,
+   "accepted": true,
+   "attempts": [
+    {
+     "max_rhat": 1.017991641138376,
+     "max_rhat_parameter": "mu_s",
+     "min_ess_bulk": 396.84856017042216,
+     "min_ess_tail": 686.0711373171431,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.5683897741609438,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": false,
+     "failures": [
+      "R-hat 1.018 > 1.01 (mu_s)",
+      "ESS 397 < 400 (mu_s)"
+     ],
+     "warmup": 1000,
+     "runtime_seconds": 54.887822269000026
+    },
+    {
+     "max_rhat": 1.0082020517316237,
+     "max_rhat_parameter": "mu_s",
+     "min_ess_bulk": 400.9450550659843,
+     "min_ess_tail": 705.858718511242,
+     "min_ess_parameter": "mu_s",
+     "divergences": 0,
+     "min_bfmi": 0.5422236572289526,
+     "tree_depth_saturated": 0,
+     "draws_total": 4000,
+     "accepted": true,
+     "failures": [],
+     "warmup": 3000,
+     "runtime_seconds": 69.7261715589998
+    }
+   ],
+   "settings": {
+    "chains": 4,
+    "warmup": 3000,
+    "draws": 1000,
+    "target_accept": 0.95,
+    "max_tree_depth": 10,
+    "seed": 20261016
+   },
+   "predictive_seed": 20261083,
+   "replicates": 4
+  }
+ ]
+}

@@ -283,6 +283,37 @@ def holm_verdicts(tests: Sequence[BootstrapComparison]) -> list[BootstrapCompari
 # ----------------------------------------------------------------------------------
 
 
+@dataclass(frozen=True)
+class ForecastReplication:
+    """Tables of an independent run of the same refits (e.g. on another platform)."""
+
+    label: str
+    family: dict[tuple[str, str], tuple[float, float, str]]       # ratio, Holm p, verdict
+    failed: dict[str, list[str]]                                  # model -> target quarters
+    bayes_crps: dict[tuple[str, str, str], float]                 # model, geo, quarter
+
+
+def load_replication(directory: Path) -> ForecastReplication:
+    """Read ``comparisons.csv``, ``refits.json`` and ``forecasts.csv`` of another run."""
+    family = {}
+    with (directory / "comparisons.csv").open(encoding="utf-8") as stream:
+        for row in csv.DictReader(stream):
+            if row["kind"] == "family":
+                family[(row["model_a"], row["model_b"])] = (
+                    float(row["ratio"]), float(row["p_holm"]), row["verdict"])
+    refits = json.loads((directory / "refits.json").read_text(encoding="utf-8"))["refits"]
+    failed: dict[str, list[str]] = {m: [] for m in BAYES_MODELS}
+    for record in refits:
+        if not record["accepted"]:
+            failed[record["model"]].append(record["target"])
+    crps = {(p.model, p.geo, p.quarter): p.crps
+            for p in read_predictions(directory / "forecasts.csv") if p.model in BAYES_MODELS}
+    readme = directory / "README.md"
+    label = (readme.read_text(encoding="utf-8").splitlines()[0].lstrip("# ")
+             if readme.exists() else directory.name)
+    return ForecastReplication(label, family, {k: sorted(v) for k, v in failed.items()}, crps)
+
+
 @dataclass
 class ForecastComparison:
     """Everything the report is generated from."""
@@ -295,6 +326,7 @@ class ForecastComparison:
     sensitivity: dict[str, list[BootstrapComparison]] = field(default_factory=dict)
     country: list[dict[str, Any]] = field(default_factory=list)
     snapshot: dict[str, str] = field(default_factory=dict)
+    replication: ForecastReplication | None = None
 
     def losses(self, model: str, loss: str = "crps") -> np.ndarray:
         return loss_array(self.predictions[model], self.fpanel, loss)
@@ -370,7 +402,8 @@ def country_heterogeneity(comparison: ForecastComparison) -> list[dict[str, Any]
     return rows
 
 
-def build_comparison(data_dir: Path, fits_dir: Path) -> ForecastComparison:
+def build_comparison(data_dir: Path, fits_dir: Path,
+                     replication_dir: Path | None = None) -> ForecastComparison:
     """Classical forecasts from the snapshot, Bayesian ones from the refits, and tests."""
     from eu_okun.audit import audit_snapshot
     from eu_okun.baseline import _read_panel
@@ -416,6 +449,8 @@ def build_comparison(data_dir: Path, fits_dir: Path) -> ForecastComparison:
                                  indices, a, b, "crps", "without failed refits", BLOCK)
             for a, b in FAMILY])
     comparison.country = country_heterogeneity(comparison)
+    if replication_dir is not None:
+        comparison.replication = load_replication(replication_dir)
     return comparison
 
 
@@ -503,6 +538,11 @@ def render(comparison: ForecastComparison, assets: str, command: str) -> str:
                      + (f"verdicts change for {'; '.join(changed)}." if changed
                         else "no verdict changes."))
     lines += _convergence_lines(comparison) + _accuracy_lines(comparison)
+    if comparison.replication is not None:
+        flips = _replication_flips(comparison)
+        lines.append(f"- Replication ({comparison.replication.label}): the same verdicts "
+                     + ("for all five comparisons." if not flips else
+                        f"except {'; '.join(flips)}.") + " See section 5.")
     lines.append("")
 
     # 1. Design and records
@@ -611,9 +651,12 @@ def render(comparison: ForecastComparison, assets: str, command: str) -> str:
               f"in {below} and against it in {above} (unadjusted, descriptive).", "",
               f"![Country skill]({assets}/countries.png)", ""]
 
-    # 5. Interpretation
+    number = 5
+    if comparison.replication is not None:
+        lines += _replication_section(comparison)
+        number += 1
     lines += [
-        "## 5. Interpretation and limitations", "",
+        f"## {number}. Interpretation and limitations", "",
         "- **Improvement, significance, causality.** A lower mean score is an improvement "
         "in this sample; the bootstrap intervals and Holm-adjusted p-values say whether it "
         "is distinguishable from sampling variation; neither says anything causal.",
@@ -625,7 +668,7 @@ def render(comparison: ForecastComparison, assets: str, command: str) -> str:
         "results.",
         "- **Power.** 34 target quarters; 'not distinguishable' never means equal accuracy.",
         "",
-        "## 6. Reproduction", "",
+        f"## {number + 1}. Reproduction", "",
         "```bash",
         "poetry run eu-okun forecast-bayes-fit --data-dir snapshots/eurostat-2026-10-15 "
         "--output-dir results/forecast-bayes",
@@ -661,6 +704,49 @@ def _convergence_lines(comparison: ForecastComparison) -> list[str]:
             f"the parameter named most often is `{common}`. Their forecasts are scored, as "
             "registered; the sensitivity analysis without their target quarters is in "
             "section 2."]
+
+
+def _replication_flips(comparison: ForecastComparison) -> list[str]:
+    rep_run = comparison.replication
+    assert rep_run is not None
+    out = []
+    for t in comparison.family:
+        _, p_holm, verdict = rep_run.family[(t.model_a, t.model_b)]
+        if verdict != t.verdict:
+            out.append(f"{LABELS[t.model_a]} vs {LABELS[t.model_b]} (Holm p {_p(t.p_holm)} "
+                       f"here, {_p(p_holm)} there)")
+    return out
+
+
+def _replication_section(comparison: ForecastComparison) -> list[str]:
+    rep_run = comparison.replication
+    assert rep_run is not None
+    lines = ["## 5. Replication on a second platform", "",
+             f"{rep_run.label}: the same snapshot, lock file, seeds, sampler settings and "
+             "single retry. Its tables are in `replication-linux/`.", ""]
+    rows = []
+    for t in comparison.family:
+        ratio, p_holm, verdict = rep_run.family[(t.model_a, t.model_b)]
+        rows.append([LABELS[t.model_a], LABELS[t.model_b], _pct(t.ratio), _p(t.p_holm),
+                     t.verdict, _pct(ratio), _p(p_holm), verdict])
+    lines += _table(["A", "B", "A vs B (this run)", "Holm p", "Verdict",
+                     "A vs B (replication)", "Holm p", "Verdict"], rows, "llrrlrrl")
+    here = {(p.model, p.geo, p.quarter): p.crps for m in BAYES_MODELS
+            for p in comparison.predictions[m]}
+    gaps = [abs(here[k] - v) for k, v in rep_run.bayes_crps.items() if k in here]
+    failed_here = {m: sorted(r["target"] for r in comparison.refits
+                             if r["model"] == m and not r["accepted"]) for m in BAYES_MODELS}
+    lines += [
+        f"- Bayesian forecasts: the CRPS of the {len(gaps)} Bayesian cells differs by "
+        f"{np.mean(gaps):.4f} on average and at most {max(gaps):.4f} between the runs.",
+        "- Failed refits: " + "; ".join(
+            f"`{m}` {len(failed_here[m])} here, {len(rep_run.failed.get(m, []))} there"
+            for m in BAYES_MODELS) + ".",
+        "- Verdicts: " + ("identical for all five comparisons." if not _replication_flips(
+            comparison) else f"identical except {'; '.join(_replication_flips(comparison))}."),
+        "",
+    ]
+    return lines
 
 
 def _dominance_lines(comparison: ForecastComparison) -> list[str]:
@@ -825,9 +911,10 @@ def write_tables(comparison: ForecastComparison, directory: Path) -> None:
 
 
 def write_report(data_dir: Path, fits_dir: Path, output_dir: Path, report: Path | None = None,
-                 figures: bool = True) -> ForecastComparison:
+                 figures: bool = True,
+                 replication_dir: Path | None = None) -> ForecastComparison:
     """Build the comparison and write tables, figures and the Markdown report."""
-    comparison = build_comparison(data_dir, fits_dir)
+    comparison = build_comparison(data_dir, fits_dir, replication_dir)
     report = report or output_dir / "FORECAST_COMPARISON.md"
     write_tables(comparison, output_dir)
     if figures:
@@ -837,7 +924,9 @@ def write_report(data_dir: Path, fits_dir: Path, output_dir: Path, report: Path 
     assets = Path(os.path.relpath(output_dir, report.parent)).as_posix()
     command = (f"poetry run eu-okun forecast-report --data-dir {data_dir.as_posix()} "
                f"--fits-dir {fits_dir.as_posix()} --output-dir {output_dir.as_posix()} "
-               f"--report {report.as_posix()}")
+               f"--report {report.as_posix()}"
+               + (f" --replication-dir {replication_dir.as_posix()}"
+                  if replication_dir is not None else ""))
     report.parent.mkdir(parents=True, exist_ok=True)
     report.write_text(render(comparison, assets, command), encoding="utf-8", newline="\n")
     return comparison
