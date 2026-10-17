@@ -571,10 +571,18 @@ def render(review: RegimesReview, assets: str, command: str) -> str:
         lines.append(f"- Common drift (`drifting_association`): D1 (2014-2019 minus "
                      f"2009-2013) {d1[0].text()}, {d1[2]}; D2 (2022-2026 minus 2014-2019) "
                      f"{d2[0].text()}, {d2[2]}.")
+    replicated = ({(x["model_a"], x["model_b"]): x
+                   for x in review.replication.summary["comparisons"]}
+                  if review.replication is not None else {})
     for c in review.comparisons:
+        t = replicated.get((c.model_a, c.model_b))
         lines.append(f"- PSIS-LOO {_code(c.model_a)} against {_code(c.model_b)}: "
                      f"{c.elpd_diff:+.1f} (SE {c.se_diff:.1f}), {c.verdict}"
-                     f"{'' if c.reliable else ' (unreliable: Pareto k)'}.")
+                     f"{'' if c.reliable else ' (unreliable: Pareto k)'}"
+                     + ("" if t is None or t["verdict"] == c.verdict else
+                        f"; the replication gives {t['elpd_diff']:+.1f} (SE "
+                        f"{t['se_diff']:.1f}), {t['verdict']}, so this verdict is not stable")
+                     + ".")
     if review.recovery is not None:
         rec = review.recovery
         lo, hi = coverage_range(rec.delta_total)
@@ -587,7 +595,9 @@ def render(review: RegimesReview, assets: str, command: str) -> str:
         unstable = unstable_verdicts(review)
         lines.append(f"- Replication ({review.replication.label}): "
                      + ("every verdict is the same." if not unstable else
-                        f"{len(unstable)} verdicts differ and are not treated as established: "
+                        (f"{len(unstable)} verdicts differ and are" if len(unstable) > 1
+                         else "1 verdict differs and is")
+                        + " not treated as established: "
                         + "; ".join(unstable) + ". Every other verdict is the same."))
     lines.append("")
 
@@ -814,7 +824,7 @@ def _replication_section(review: RegimesReview) -> list[str]:
         row = [_code(name),
                f"{'yes' if fit.accepted else 'no'} / {'yes' if t['accepted'] else 'no'}",
                f"{fit.summary['settings']['warmup']} / {t['warmup']}"]
-        if name in review.averages and "mu_delta" in t:
+        if fit.accepted and name in review.averages and "mu_delta" in t:
             here = review.averages[name]
             largest = max(abs(r.delta.median - t["countries"][r.geo]["delta_median"])
                           for r in review.shifts[name])

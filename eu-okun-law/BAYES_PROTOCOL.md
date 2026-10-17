@@ -613,3 +613,24 @@ sections 4, 6 and 11.
     - "Netherlands delayed" in `dynamic_factor` (0.948 locally);
     - PSIS-LOO `ardl_dynamic_factor` against `ardl` (+11.8 with SE 5.7, and +10.7 with
       SE 5.8).
+- Amendment 4, after its fits.
+  - **Local run.**
+    - `regime_shift`, `pandemic_excluded_dynamic` and `regime_shift_dynamic` met every
+      criterion at the first attempt.
+    - `drifting_association` passed after the single retry.
+    - `regime_shift_final_gdp` failed after the retry (R-hat 1.012 for `phi[9]`,
+      Spain's AR(1) coefficient). It is reported as failed, and the provisional-GDP
+      sensitivity cannot be judged.
+    - The amendment 3 report now restricts its context rows to the specifications
+      registered up to amendment 3, so that later fits in the same directory do not
+      change it.
+  - **Replication on Linux** (Bayesian workflow run 38983863147):
+    - the same acceptance for all six fits, including the failure of
+      `regime_shift_final_gdp`;
+    - shift medians within 0.003, and the same average, country and drift verdicts;
+    - the same recovery.
+    - One verdict sits on its threshold and differs: PSIS-LOO `drifting_association`
+      against `regime_shift` (+4.3 with SE 1.8 locally, +3.5 with SE 1.8 on Linux). It
+      is not treated as established.
+  - **Earlier dispatch.** Run 38983097415 stopped at the general report step, which
+    needs a `primary` fit; its results are not used.

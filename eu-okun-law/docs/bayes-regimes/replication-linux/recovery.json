@@ -1,0 +1,32 @@
+{
+ "accepted": true,
+ "max_rhat": 1.0078216618517868,
+ "delta_inside_90": 23,
+ "delta_total": 25,
+ "delta_inside_50": 13,
+ "theta_inside_90": 24,
+ "mu_delta": [
+  0.15,
+  0.10469523585833067,
+  0.16667159914090185,
+  0.22576589416667317,
+  1.0
+ ],
+ "realized_mean_delta": 0.16781002946609813,
+ "detected": true,
+ "settings": {
+  "chains": 4,
+  "warmup": 3000,
+  "draws": 1000,
+  "target_accept": 0.95,
+  "max_tree_depth": 10,
+  "seed": 20261016
+ },
+ "seed": 20261021,
+ "shift_truth": {
+  "mu_delta": 0.15,
+  "tau_delta": 0.1,
+  "alpha_shift_sd": 0.05
+ },
+ "runtime_seconds": 156.63647612199998
+}

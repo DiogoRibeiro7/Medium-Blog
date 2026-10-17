@@ -1,0 +1,623 @@
+{
+ "specifications": {
+  "pandemic_excluded": {
+   "accepted": true,
+   "max_rhat": 1.0072086437401098,
+   "warmup": 1000
+  },
+  "regime_shift": {
+   "accepted": true,
+   "max_rhat": 1.0093116710317245,
+   "warmup": 1000,
+   "mu_delta": {
+    "median": 0.02779888094495719,
+    "low": -0.006920450616814114,
+    "high": 0.07129004200563625
+   },
+   "mu_delta_p_rise": 0.90075,
+   "average_verdict": "no credible change",
+   "countries": {
+    "AT": {
+     "verdict": "no credible change",
+     "p_rise": 0.823,
+     "delta_median": 0.02981597944488313,
+     "post_sign": "uncertain"
+    },
+    "BE": {
+     "verdict": "no credible change",
+     "p_rise": 0.77675,
+     "delta_median": 0.025599806954041626,
+     "post_sign": "negative"
+    },
+    "BG": {
+     "verdict": "no credible change",
+     "p_rise": 0.74025,
+     "delta_median": 0.02063033792707185,
+     "post_sign": "negative"
+    },
+    "CY": {
+     "verdict": "no credible change",
+     "p_rise": 0.75575,
+     "delta_median": 0.02162970793408623,
+     "post_sign": "negative"
+    },
+    "CZ": {
+     "verdict": "no credible change",
+     "p_rise": 0.81125,
+     "delta_median": 0.02617096742946623,
+     "post_sign": "negative"
+    },
+    "DE": {
+     "verdict": "no credible change",
+     "p_rise": 0.86675,
+     "delta_median": 0.036293142314252416,
+     "post_sign": "uncertain"
+    },
+    "DK": {
+     "verdict": "no credible change",
+     "p_rise": 0.90325,
+     "delta_median": 0.04266631509961781,
+     "post_sign": "uncertain"
+    },
+    "EE": {
+     "verdict": "no credible change",
+     "p_rise": 0.8005,
+     "delta_median": 0.027099149110332635,
+     "post_sign": "negative"
+    },
+    "EL": {
+     "verdict": "no credible change",
+     "p_rise": 0.745,
+     "delta_median": 0.021642590680021168,
+     "post_sign": "negative"
+    },
+    "ES": {
+     "verdict": "not evaluable",
+     "p_rise": 0.776,
+     "delta_median": 0.025321622874060968,
+     "post_sign": "not evaluable"
+    },
+    "FI": {
+     "verdict": "no credible change",
+     "p_rise": 0.85875,
+     "delta_median": 0.03267380357476181,
+     "post_sign": "negative"
+    },
+    "FR": {
+     "verdict": "not evaluable",
+     "p_rise": 0.78325,
+     "delta_median": 0.025389461135368625,
+     "post_sign": "not evaluable"
+    },
+    "HR": {
+     "verdict": "no credible change",
+     "p_rise": 0.8,
+     "delta_median": 0.026498705658671656,
+     "post_sign": "negative"
+    },
+    "HU": {
+     "verdict": "no credible change",
+     "p_rise": 0.76975,
+     "delta_median": 0.023560271109935596,
+     "post_sign": "negative"
+    },
+    "IE": {
+     "verdict": "no credible change",
+     "p_rise": 0.54825,
+     "delta_median": 0.0017384111163223828,
+     "post_sign": "negative"
+    },
+    "IT": {
+     "verdict": "no credible change",
+     "p_rise": 0.747,
+     "delta_median": 0.020853713356299063,
+     "post_sign": "negative"
+    },
+    "LT": {
+     "verdict": "no credible change",
+     "p_rise": 0.7775,
+     "delta_median": 0.023325988669141852,
+     "post_sign": "negative"
+    },
+    "LU": {
+     "verdict": "no credible change",
+     "p_rise": 0.794,
+     "delta_median": 0.02560969603453769,
+     "post_sign": "uncertain"
+    },
+    "LV": {
+     "verdict": "no credible change",
+     "p_rise": 0.7945,
+     "delta_median": 0.02599465052230948,
+     "post_sign": "negative"
+    },
+    "MT": {
+     "verdict": "no credible change",
+     "p_rise": 0.6895,
+     "delta_median": 0.01416400303872547,
+     "post_sign": "uncertain"
+    },
+    "NL": {
+     "verdict": "no credible change",
+     "p_rise": 0.81675,
+     "delta_median": 0.027289938521775442,
+     "post_sign": "uncertain"
+    },
+    "PL": {
+     "verdict": "no credible change",
+     "p_rise": 0.8535,
+     "delta_median": 0.030857941311337858,
+     "post_sign": "negative"
+    },
+    "PT": {
+     "verdict": "no credible change",
+     "p_rise": 0.86525,
+     "delta_median": 0.03573964208725283,
+     "post_sign": "negative"
+    },
+    "RO": {
+     "verdict": "no credible change",
+     "p_rise": 0.73,
+     "delta_median": 0.017792993192226488,
+     "post_sign": "uncertain"
+    },
+    "SE": {
+     "verdict": "no credible change",
+     "p_rise": 0.8555,
+     "delta_median": 0.03209328334123393,
+     "post_sign": "negative"
+    },
+    "SI": {
+     "verdict": "no credible change",
+     "p_rise": 0.7525,
+     "delta_median": 0.021393131664931446,
+     "post_sign": "uncertain"
+    },
+    "SK": {
+     "verdict": "no credible change",
+     "p_rise": 0.73225,
+     "delta_median": 0.019750208193328025,
+     "post_sign": "uncertain"
+    }
+   }
+  },
+  "regime_shift_final_gdp": {
+   "accepted": false,
+   "max_rhat": 1.0133563387112574,
+   "warmup": 3000,
+   "mu_delta": {
+    "median": 0.024475580884186776,
+    "low": -0.012852638407829605,
+    "high": 0.07240830134166837
+   },
+   "mu_delta_p_rise": 0.84925,
+   "average_verdict": "no credible change",
+   "countries": {
+    "AT": {
+     "verdict": "no credible change",
+     "p_rise": 0.7675,
+     "delta_median": 0.027168060233701104,
+     "post_sign": "uncertain"
+    },
+    "BE": {
+     "verdict": "not evaluable",
+     "p_rise": 0.71125,
+     "delta_median": 0.019702765355858423,
+     "post_sign": "not evaluable"
+    },
+    "BG": {
+     "verdict": "not evaluable",
+     "p_rise": 0.70375,
+     "delta_median": 0.018862485229669358,
+     "post_sign": "not evaluable"
+    },
+    "CY": {
+     "verdict": "no credible change",
+     "p_rise": 0.6615,
+     "delta_median": 0.014340979191878303,
+     "post_sign": "negative"
+    },
+    "CZ": {
+     "verdict": "no credible change",
+     "p_rise": 0.7385,
+     "delta_median": 0.022038954602883763,
+     "post_sign": "negative"
+    },
+    "DE": {
+     "verdict": "not evaluable",
+     "p_rise": 0.78025,
+     "delta_median": 0.028369070341863412,
+     "post_sign": "not evaluable"
+    },
+    "DK": {
+     "verdict": "no credible change",
+     "p_rise": 0.88625,
+     "delta_median": 0.047780001636873765,
+     "post_sign": "uncertain"
+    },
+    "EE": {
+     "verdict": "no credible change",
+     "p_rise": 0.74775,
+     "delta_median": 0.024646136713074744,
+     "post_sign": "negative"
+    },
+    "EL": {
+     "verdict": "not evaluable",
+     "p_rise": 0.7275,
+     "delta_median": 0.02334071074619224,
+     "post_sign": "not evaluable"
+    },
+    "ES": {
+     "verdict": "not evaluable",
+     "p_rise": 0.71425,
+     "delta_median": 0.021618462140399593,
+     "post_sign": "not evaluable"
+    },
+    "FI": {
+     "verdict": "no credible change",
+     "p_rise": 0.80475,
+     "delta_median": 0.032270833321132536,
+     "post_sign": "uncertain"
+    },
+    "FR": {
+     "verdict": "not evaluable",
+     "p_rise": 0.7235,
+     "delta_median": 0.022597150272128122,
+     "post_sign": "not evaluable"
+    },
+    "HR": {
+     "verdict": "not evaluable",
+     "p_rise": 0.724,
+     "delta_median": 0.020530241455666585,
+     "post_sign": "not evaluable"
+    },
+    "HU": {
+     "verdict": "not evaluable",
+     "p_rise": 0.67875,
+     "delta_median": 0.015435183661268274,
+     "post_sign": "not evaluable"
+    },
+    "IE": {
+     "verdict": "no credible change",
+     "p_rise": 0.4135,
+     "delta_median": -0.003655401921720461,
+     "post_sign": "negative"
+    },
+    "IT": {
+     "verdict": "no credible change",
+     "p_rise": 0.68325,
+     "delta_median": 0.017988941506503594,
+     "post_sign": "negative"
+    },
+    "LT": {
+     "verdict": "no credible change",
+     "p_rise": 0.69775,
+     "delta_median": 0.0178425995344142,
+     "post_sign": "negative"
+    },
+    "LU": {
+     "verdict": "not evaluable",
+     "p_rise": 0.7425,
+     "delta_median": 0.021505739466197757,
+     "post_sign": "not evaluable"
+    },
+    "LV": {
+     "verdict": "no credible change",
+     "p_rise": 0.72875,
+     "delta_median": 0.021330251338864792,
+     "post_sign": "negative"
+    },
+    "MT": {
+     "verdict": "no credible change",
+     "p_rise": 0.65025,
+     "delta_median": 0.010825463782924554,
+     "post_sign": "uncertain"
+    },
+    "NL": {
+     "verdict": "not evaluable",
+     "p_rise": 0.7445,
+     "delta_median": 0.024154501738391388,
+     "post_sign": "not evaluable"
+    },
+    "PL": {
+     "verdict": "no credible change",
+     "p_rise": 0.77275,
+     "delta_median": 0.023681571486022894,
+     "post_sign": "negative"
+    },
+    "PT": {
+     "verdict": "not evaluable",
+     "p_rise": 0.83,
+     "delta_median": 0.03614855892757618,
+     "post_sign": "not evaluable"
+    },
+    "RO": {
+     "verdict": "not evaluable",
+     "p_rise": 0.72625,
+     "delta_median": 0.021050627874677763,
+     "post_sign": "not evaluable"
+    },
+    "SE": {
+     "verdict": "no credible change",
+     "p_rise": 0.8395,
+     "delta_median": 0.030685184629820467,
+     "post_sign": "negative"
+    },
+    "SI": {
+     "verdict": "no credible change",
+     "p_rise": 0.699,
+     "delta_median": 0.018038079641122383,
+     "post_sign": "negative"
+    },
+    "SK": {
+     "verdict": "no credible change",
+     "p_rise": 0.64975,
+     "delta_median": 0.013818510513696605,
+     "post_sign": "uncertain"
+    }
+   }
+  },
+  "pandemic_excluded_dynamic": {
+   "accepted": true,
+   "max_rhat": 1.0065359373001523,
+   "warmup": 1000
+  },
+  "regime_shift_dynamic": {
+   "accepted": true,
+   "max_rhat": 1.0090682873441228,
+   "warmup": 1000,
+   "mu_delta": {
+    "median": 0.026157868732741146,
+    "low": -0.006168057667629632,
+    "high": 0.0649123041148754
+   },
+   "mu_delta_p_rise": 0.90275,
+   "average_verdict": "no credible change",
+   "countries": {
+    "AT": {
+     "verdict": "no credible change",
+     "p_rise": 0.81025,
+     "delta_median": 0.02601132238245207,
+     "post_sign": "uncertain"
+    },
+    "BE": {
+     "verdict": "no credible change",
+     "p_rise": 0.82125,
+     "delta_median": 0.02634130198054829,
+     "post_sign": "uncertain"
+    },
+    "BG": {
+     "verdict": "no credible change",
+     "p_rise": 0.7915,
+     "delta_median": 0.023530430094510273,
+     "post_sign": "uncertain"
+    },
+    "CY": {
+     "verdict": "no credible change",
+     "p_rise": 0.77125,
+     "delta_median": 0.021272339828863368,
+     "post_sign": "negative"
+    },
+    "CZ": {
+     "verdict": "no credible change",
+     "p_rise": 0.8195,
+     "delta_median": 0.024030808751466702,
+     "post_sign": "negative"
+    },
+    "DE": {
+     "verdict": "no credible change",
+     "p_rise": 0.85525,
+     "delta_median": 0.03035611348033663,
+     "post_sign": "uncertain"
+    },
+    "DK": {
+     "verdict": "no credible change",
+     "p_rise": 0.889,
+     "delta_median": 0.03265484046473842,
+     "post_sign": "uncertain"
+    },
+    "EE": {
+     "verdict": "no credible change",
+     "p_rise": 0.80025,
+     "delta_median": 0.025513814684332982,
+     "post_sign": "negative"
+    },
+    "EL": {
+     "verdict": "no credible change",
+     "p_rise": 0.7555,
+     "delta_median": 0.019441852765629954,
+     "post_sign": "negative"
+    },
+    "ES": {
+     "verdict": "not evaluable",
+     "p_rise": 0.80225,
+     "delta_median": 0.024137523368079023,
+     "post_sign": "not evaluable"
+    },
+    "FI": {
+     "verdict": "no credible change",
+     "p_rise": 0.8595,
+     "delta_median": 0.03129290685384445,
+     "post_sign": "uncertain"
+    },
+    "FR": {
+     "verdict": "not evaluable",
+     "p_rise": 0.80225,
+     "delta_median": 0.023844758991935916,
+     "post_sign": "not evaluable"
+    },
+    "HR": {
+     "verdict": "no credible change",
+     "p_rise": 0.812,
+     "delta_median": 0.024967350353491263,
+     "post_sign": "negative"
+    },
+    "HU": {
+     "verdict": "no credible change",
+     "p_rise": 0.81675,
+     "delta_median": 0.02631674520497313,
+     "post_sign": "uncertain"
+    },
+    "IE": {
+     "verdict": "no credible change",
+     "p_rise": 0.61525,
+     "delta_median": 0.0042261734550000235,
+     "post_sign": "negative"
+    },
+    "IT": {
+     "verdict": "no credible change",
+     "p_rise": 0.77575,
+     "delta_median": 0.021954938756717862,
+     "post_sign": "negative"
+    },
+    "LT": {
+     "verdict": "no credible change",
+     "p_rise": 0.77225,
+     "delta_median": 0.022588601860844056,
+     "post_sign": "negative"
+    },
+    "LU": {
+     "verdict": "no credible change",
+     "p_rise": 0.79025,
+     "delta_median": 0.022734463861860413,
+     "post_sign": "uncertain"
+    },
+    "LV": {
+     "verdict": "no credible change",
+     "p_rise": 0.7845,
+     "delta_median": 0.022935838276936377,
+     "post_sign": "negative"
+    },
+    "MT": {
+     "verdict": "no credible change",
+     "p_rise": 0.7965,
+     "delta_median": 0.022354852089302747,
+     "post_sign": "uncertain"
+    },
+    "NL": {
+     "verdict": "no credible change",
+     "p_rise": 0.83275,
+     "delta_median": 0.025195054803572526,
+     "post_sign": "uncertain"
+    },
+    "PL": {
+     "verdict": "no credible change",
+     "p_rise": 0.86425,
+     "delta_median": 0.028569450189017076,
+     "post_sign": "negative"
+    },
+    "PT": {
+     "verdict": "no credible change",
+     "p_rise": 0.864,
+     "delta_median": 0.030975734672081853,
+     "post_sign": "uncertain"
+    },
+    "RO": {
+     "verdict": "no credible change",
+     "p_rise": 0.7895,
+     "delta_median": 0.02113668145277352,
+     "post_sign": "uncertain"
+    },
+    "SE": {
+     "verdict": "no credible change",
+     "p_rise": 0.8885,
+     "delta_median": 0.03169190590833424,
+     "post_sign": "negative"
+    },
+    "SI": {
+     "verdict": "no credible change",
+     "p_rise": 0.7835,
+     "delta_median": 0.021725615638734295,
+     "post_sign": "uncertain"
+    },
+    "SK": {
+     "verdict": "no credible change",
+     "p_rise": 0.76275,
+     "delta_median": 0.02158945536066132,
+     "post_sign": "uncertain"
+    }
+   }
+  },
+  "drifting_association": {
+   "accepted": true,
+   "max_rhat": 1.0068290810134695,
+   "warmup": 3000
+  }
+ },
+ "drift": {
+  "tau_kappa": {
+   "median": 0.007908104790266072,
+   "low": 0.0008575725066219391,
+   "high": 0.020645570087854337
+  },
+  "D1": {
+   "summary": {
+    "median": 0.020313030073003384,
+    "low": -0.0019170084129491905,
+    "high": 0.05276021112871862
+   },
+   "p_rise": 0.908,
+   "verdict": "no credible change"
+  },
+  "D2": {
+   "summary": {
+    "median": 0.0039951126821019005,
+    "low": -0.015920733404205398,
+    "high": 0.026969145702042615
+   },
+   "p_rise": 0.647,
+   "verdict": "no credible change"
+  }
+ },
+ "comparisons": [
+  {
+   "model_a": "regime_shift",
+   "model_b": "pandemic_excluded",
+   "elpd_diff": 10.139131548317678,
+   "se_diff": 5.835909700442665,
+   "verdict": "not distinguishable",
+   "reliable": true
+  },
+  {
+   "model_a": "drifting_association",
+   "model_b": "pandemic_excluded",
+   "elpd_diff": 13.605106692665437,
+   "se_diff": 5.985687062157847,
+   "verdict": "drifting_association better supported",
+   "reliable": true
+  },
+  {
+   "model_a": "drifting_association",
+   "model_b": "regime_shift",
+   "elpd_diff": 3.4659751443477598,
+   "se_diff": 1.8299212774492588,
+   "verdict": "not distinguishable",
+   "reliable": true
+  },
+  {
+   "model_a": "regime_shift_dynamic",
+   "model_b": "pandemic_excluded_dynamic",
+   "elpd_diff": 7.0073188719879305,
+   "se_diff": 6.855991442542773,
+   "verdict": "not distinguishable",
+   "reliable": true
+  }
+ ],
+ "recovery": {
+  "accepted": true,
+  "max_rhat": 1.0078216618517868,
+  "delta_inside_90": 23,
+  "delta_total": 25,
+  "delta_inside_50": 13,
+  "theta_inside_90": 24,
+  "mu_delta": [
+   0.15,
+   0.10469523585833067,
+   0.16667159914090185,
+   0.22576589416667317,
+   1.0
+  ],
+  "realized_mean_delta": 0.16781002946609813,
+  "detected": true
+ }
+}

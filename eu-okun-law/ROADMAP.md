@@ -74,8 +74,11 @@ Pre-registered in [BAYES_PROTOCOL.md](BAYES_PROTOCOL.md); results in
       on the threshold. Both factor specifications are better supported than `primary` by
       PSIS-LOO ([docs/BAYES_DYNAMICS.md](docs/BAYES_DYNAMICS.md)). The factor stays
       correlated with average GDP growth.
-- [ ] Time-varying or regime-specific coefficients (the classical review and the
-      pandemic-excluded fit both point to a weaker association after 2021).
+- [x] Time-varying or regime-specific coefficients (amendment 4): post-2021 shifts of
+      the coefficient sums, partially pooled, and a common random walk. No credible
+      average or country shift. The drift is better supported than a fixed coefficient by
+      PSIS-LOO, but its period contrasts are not credible
+      ([docs/BAYES_REGIMES.md](docs/BAYES_REGIMES.md)).
 
 ## Phase 3 — Structural tests
 
