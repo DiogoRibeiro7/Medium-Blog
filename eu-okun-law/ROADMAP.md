@@ -37,8 +37,13 @@ Open items raised by the review:
       tables (the published comparison includes it and is dominated by it).
 - [ ] Use Eurostat flags in estimation, not only in sensitivity checks (ES/FR from 2021,
       DE 2020, series breaks).
-- [ ] Small-sample-valid inference for the post-2021 window (for example fixed-b
-      critical values or a bootstrap), and re-test once more quarters are available.
+- [x] Small-sample-valid inference for the post-2021 window: null-imposed sieve and
+      block bootstraps of the HAC t-statistic and a size study
+      ([docs/SMALL_SAMPLE_INFERENCE.md](docs/SMALL_SAMPLE_INFERENCE.md)). None of the 14
+      published Holm-significant changes survives; the normal reference rejects 22.8% at
+      a nominal 5%.
+- [ ] Re-test the post-2021 stability once more quarters are available (needs a new
+      snapshot).
 - [ ] Dependence-aware tests of forecast accuracy (paired loss differentials). Done for
       the conditional predictive comparison (panel Diebold-Mariano on cross-country mean
       differentials); the t-1 forecasts of `eu-okun forecast` still use approximate

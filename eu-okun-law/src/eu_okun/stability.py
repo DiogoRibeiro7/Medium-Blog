@@ -7,6 +7,7 @@ or lag history. Asymptotic p-values are conditional, not causal evidence.
 
 from __future__ import annotations
 
+import csv
 import math
 from collections.abc import Sequence
 from dataclasses import dataclass, replace
@@ -180,6 +181,26 @@ def fit_stability(
         "null_sum": "Sum of post-minus-pre GDP coefficients equals zero",
         "null_joint": "All post-period interactions equal zero",
     }
+
+def classical_weaker(review_dir: Path) -> dict[str, bool]:
+    """The classical review's weaker-after-2021 rule, recomputed from its tables.
+
+    A country is in the set when every leave-one-out post-2021 sum lies above the upper
+    bound of its 2009-2019 95% interval (K = 1, without participation).
+    """
+    upper: dict[str, float] = {}
+    with (review_dir / "grid.csv").open(encoding="utf-8") as stream:
+        for row in csv.DictReader(stream):
+            if (row["sample"], row["gdp_lags"], row["participation"]) == ("pre_2020", "1",
+                                                                          "False"):
+                upper[row["geo"]] = float(row["ci_high"])
+    out: dict[str, bool] = {}
+    with (review_dir / "stability_review.csv").open(encoding="utf-8") as stream:
+        for row in csv.DictReader(stream):
+            if row["participation"] == "False":
+                out[row["geo"]] = float(row["post_loo_min"]) > upper[row["geo"]]
+    return out
+
 
 def write_stability(directory: Path, output_dir: Path) -> int:
     """Audit original Eurostat data and write formal HAC stability statistics."""

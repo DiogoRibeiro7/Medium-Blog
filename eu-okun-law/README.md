@@ -157,6 +157,43 @@ Run `eu-okun regimes --data-dir data --output-dir results/regimes` to obtain `re
 
 Run `eu-okun infer --data-dir data --output-dir results/inference` on the audited source. Fully interacted pre-2020 versus post-2021 GDP-lag (K=1) regressions produce calendar-aware HAC Wald statistics and Holm-adjusted tests of GDP-sum change. Pandemic outcomes and their input history are excluded. PT/ES/NL/LU differences use synchronized circular time-block resampling (lengths 4/8/12 quarters; seed 20261015; 999 draws). Bootstrap percentile intervals and sign frequencies are descriptive, not null-centered tests or causal rankings.
 
+### Small-sample inference for the post-2021 window
+
+[SMALL_SAMPLE_PROTOCOL.md](SMALL_SAMPLE_PROTOCOL.md), registered before any bootstrap,
+keeps the data, design, statistic and Holm family of these stability tests and replaces
+only the normal reference distribution. It uses:
+
+- null-imposed sieve (AR(1), wild) and moving-block bootstraps of the HAC t-statistic,
+  with B = 999;
+- a Monte Carlo size study (200 null data sets per test, nested bootstrap);
+- bootstrap-t intervals for the post-2021 sums.
+
+Results: [docs/SMALL_SAMPLE_INFERENCE.md](docs/SMALL_SAMPLE_INFERENCE.md).
+
+```bash
+poetry run eu-okun small-sample --data-dir snapshots/eurostat-2026-10-15 \
+  --output-dir docs/small-sample --report docs/SMALL_SAMPLE_INFERENCE.md --review-dir docs/review
+```
+
+In brief:
+
+- **Change tests.** None of the 14 published Holm-significant changes survives:
+  - 0 of 54 under the sieve bootstrap and 0 under the block bootstrap;
+  - again 0 in a repeat with B = 9999, which checks that the result is not an artefact
+    of the p-value resolution.
+- **Size of the published test.** Under each test's own fitted null, the normal
+  reference rejects 22.8% of the time at a nominal 5% (51 of 54 tests above the
+  binomial bound). The bootstrap test rejects 4.8%, which is adequate.
+- **Post-2021 sums.** Without the participation variants, the sign is reportable in 4
+  of 27 countries (BG and RO negative, DK and PL positive), against about 1.4 expected
+  by chance.
+- **Comparison.** This agrees with the hierarchical regime-shift model
+  ([docs/BAYES_REGIMES.md](docs/BAYES_REGIMES.md)), which finds no credible
+  post-2021 shift. The review's "weaker after 2021" list remains a descriptive pattern,
+  not a tested result.
+- **Run time.** The study takes about ten seconds, and a test regenerates the committed
+  tables in the ordinary CI.
+
 ## Pseudo-out-of-sample forecast validation
 
 Run `eu-okun forecast --data-dir data --output-dir results/forecast` to evaluate one-quarter-ahead unemployment-rate changes with expanding-window training. Models use lagged GDP and unemployment predictors only and are compared against zero-change, historical-mean and AR(1) benchmarks. The output includes per-origin forecasts, country metrics, and a machine-readable protocol. The design uses subsequently revised Eurostat values and assumes end-of-previous-quarter inputs were observable; therefore it is **not** a real-time or vintage-correct backtest. See [FORECAST_VALIDATION.md](FORECAST_VALIDATION.md). The pandemic targets dominate the published scores; the [review](docs/CLASSICAL_RESULTS_REVIEW.md) re-scores them without 2020-2021 (section 7).

@@ -128,6 +128,15 @@ def main(argv: Sequence[str] | None = None) -> int:
     bayes_dynamics.add_argument("--no-figures", action="store_true")
     bayes_dynamics.add_argument("--replication-dir", type=Path, default=None,
                                 help="Results (dynamics.json) of an independent run")
+    small_sample = commands.add_parser(
+        "small-sample", help="Bootstrap and size study of the pre/post stability tests "
+        "(SMALL_SAMPLE_PROTOCOL.md)")
+    small_sample.add_argument("--data-dir", type=Path, default=Path("data"))
+    small_sample.add_argument("--output-dir", type=Path, default=Path("results/small-sample"))
+    small_sample.add_argument("--report", type=Path, default=None)
+    small_sample.add_argument("--review-dir", type=Path, default=Path("docs/review"),
+                              help="Classical review tables (grid.csv, stability_review.csv)")
+    small_sample.add_argument("--no-figures", action="store_true")
     regime_recovery = commands.add_parser(
         "bayes-regime-recovery", help="Amendment 4: recovery of a known post-2021 shift on "
         "synthetic data (expensive; 'bayes' extra)")
@@ -382,6 +391,17 @@ def main(argv: Sequence[str] | None = None) -> int:
             parser.exit(2, f"Dynamics report failed: {exc}" + chr(10))
         print(f"Dynamics report written to {args.report or args.output_dir}: "
               f"{len(dynamics.comparisons)} LOO comparisons")
+        return 0
+    if args.command == "small-sample":
+        from eu_okun.small_sample import write_report as write_small_sample
+
+        try:
+            study = write_small_sample(args.data_dir, args.output_dir, args.report,
+                                       args.review_dir, figures=not args.no_figures)
+        except (EurostatDataError, FileNotFoundError, ValueError, OSError, KeyError) as exc:
+            parser.exit(2, f"Small-sample study failed: {exc}" + chr(10))
+        print(f"Small-sample report written to {args.report or args.output_dir}: "
+              f"{sum(r.survives for r in study.tests)} of {len(study.tests)} changes survive")
         return 0
     if args.command == "bayes-regime-recovery":
         from eu_okun.bayes_regimes import run_regime_recovery

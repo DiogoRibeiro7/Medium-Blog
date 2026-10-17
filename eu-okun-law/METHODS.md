@@ -40,6 +40,26 @@ post-2021. Its main finding shapes everything that follows: 2020-2021 supply mos
 the GDP variation in any sample containing them, so pandemic treatment is an explicit
 design choice, never a default.
 
+### Small-sample inference for the post-2021 window (implemented)
+
+Registered in [SMALL_SAMPLE_PROTOCOL.md](SMALL_SAMPLE_PROTOCOL.md); implemented in
+`small_sample.py`; results in
+[docs/SMALL_SAMPLE_INFERENCE.md](docs/SMALL_SAMPLE_INFERENCE.md).
+
+- **What is kept.** The published pre/post design, statistic (calendar-aware Bartlett
+  HAC t of the change in the GDP sum, bandwidth 4) and Holm family of 54 tests.
+- **Reference distributions.**
+  - Null-imposed sieve bootstrap: restricted least squares; AR(1) errors per period
+    with Rademacher-weighted innovations.
+  - Null-imposed moving-block bootstrap: blocks of 4 within each period.
+  - Bootstrapping the HAC-studentised statistic with fixed regressors reproduces its
+    fixed-b behaviour (Gonçalves and Vogelsang 2011).
+- **Survival.** A change survives when it is Holm-significant under both schemes.
+- **Size study.** Nested bootstrap tests on 200 data sets simulated from each test's
+  fitted null.
+- **Post-2021 sums.** Bootstrap-t intervals from the unrestricted sieve of the post-only
+  regression.
+
 ## Stage 2 — Hierarchical Bayesian estimation (implemented)
 
 Pre-registered in [BAYES_PROTOCOL.md](BAYES_PROTOCOL.md) before any fit to Eurostat

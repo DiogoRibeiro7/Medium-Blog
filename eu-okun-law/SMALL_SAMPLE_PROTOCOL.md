@@ -138,4 +138,16 @@ The review could not report the size or sign of any post-2021 sum.
 
 ## Change log
 
-(None yet.)
+- **After the registered run: B resolution.**
+  - With the registered `B = 999` no bootstrap p-value can fall below 1/1000. Holm
+    over 54 tests rejects the smallest p only at or below 0.05/54 = 0.00093, so a test
+    at the resolution floor could never survive. This is a design flaw that was noticed
+    only after the run.
+  - The registered analysis is unchanged. A resolution check was added and labelled as
+    not pre-registered: both schemes are repeated at bandwidth 4 with `B = 9999` and
+    fresh seeds (`[20261017, index, 200]` and `[20261017, index, 201]`).
+  - It gives the same verdict: no change survives. The smallest registered sieve
+    p-value (0.007) was above the floor, and the smallest block-scheme Holm value with
+    `B = 9999` is 0.076.
+- **Descriptive addition.** The summary also counts reportable post-2021 signs without
+  the participation variants, which are not independent of them.
