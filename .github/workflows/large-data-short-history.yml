@@ -1,0 +1,50 @@
+name: Reproduce large-data-short-history
+
+on:
+  pull_request:
+    paths:
+      - 'large-data-short-history/**'
+      - '.github/workflows/large-data-short-history.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'large-data-short-history/**'
+      - '.github/workflows/large-data-short-history.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: large-data-short-history
+    env:
+      MPLBACKEND: Agg
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: large-data-short-history/requirements.txt
+
+      - name: Install pinned dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Rerun the simulations
+        run: python large_data_short_history.py > results/output.txt
+
+      - name: Check the numbers match the committed run
+        run: git diff --exit-code -- results/output.txt
+
+      - name: Check every figure was drawn
+        run: |
+          for f in fig1_selection fig2_dependence fig3_frequency_horizon; do
+            test -s "figures/$f.png"
+          done

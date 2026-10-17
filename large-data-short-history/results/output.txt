@@ -1,0 +1,113 @@
+
+==============================================================================
+1. Selection bias does not shrink with n
+==============================================================================
+Population N = 1,000,000, population mean 0.50016, sigma_Y = 0.50000
+Selected sample: n = 50,381, propensity ratio r = 1.1
+  sample mean - population mean      = +0.0253912689
+  rho * sqrt((N-n)/n) * sigma_Y      = +0.0253912689
+  data defect correlation rho        = 0.011697
+  absolute difference (identity)     = 2.05e-16
+
+With r = 1.1 and p = 0.5: mean among the selected = 0.52381, bias = 2.38 percentage points
+Nominal 95% half-width falls below the bias once n > (1.96 sigma / bias)^2 = 1,694
+
+Monte Carlo, 4000 samples per size, population mean 0.50016
+        n |  RMSE random  RMSE selected |  95% half-width |  coverage random  coverage selected
+      100 |      5.076pp        5.606pp |         9.785pp |            94.1%              91.4%
+      300 |      2.872pp        3.756pp |         5.645pp |            95.0%              86.5%
+    1,000 |      1.583pp        2.859pp |         3.093pp |            94.9%              66.8%
+    3,000 |      0.911pp        2.552pp |         1.784pp |            95.1%              26.1%
+   10,000 |      0.493pp        2.422pp |         0.974pp |            94.9%               0.2%
+   30,000 |      0.290pp        2.395pp |         0.557pp |            94.7%               0.0%
+  100,000 |      0.151pp        2.384pp |         0.294pp |            94.9%               0.0%
+  300,000 |      0.076pp        2.384pp |         0.150pp |            95.3%               0.0%
+
+Bias-adjusted effective sample size n_eff = sigma^2 / MSE (simple-random-sample equivalent)
+  N = 255,000,000 adults, n = 250,000, bias 2.38pp (r = 1.1): n_eff = 440
+  Check against Meng (2018): f = 0.01, rho = 0.005 -> n_eff = f/(1-f)/rho^2 = 404  (Meng reports about 400)
+  Check against Bradley et al. (2021): 17pp error, benchmark 50% -> n_eff = 8.7  (they report fewer than 10)
+  Check against Bradley et al. (2021): 17pp error, benchmark 60% -> n_eff = 8.3  (they report fewer than 10)
+  |rho| needed for n_eff = 10 at n = 250,000 of 255,000,000: 0.0099
+  for comparison, rho implied by r = 1.1 at that sampling fraction: 0.00149
+  rho = 0.0099 at that fraction means a bias of 15.8pp for a 50/50 outcome, i.e. units with Y = 1 recorded 1.92 times as often as units with Y = 0
+
+==============================================================================
+2. Correlated observations: effective sample size
+==============================================================================
+AR(1), n = 10,000, 4000 series per phi
+   phi |  n(1-phi)/(1+phi)      exact  Monte Carlo |  naive 95% CI coverage
+  0.00 |          10,000.0   10,000.0      9,810.5 |                  94.8%
+  0.25 |           6,000.0    6,000.3      5,942.5 |                  87.2%
+  0.50 |           3,333.3    3,333.8      3,368.1 |                  74.3%
+  0.75 |           1,428.6    1,429.1      1,417.7 |                  54.5%
+  0.90 |             526.3      526.8        503.7 |                  35.7%
+  0.95 |             256.4      256.9        247.9 |                  24.1%
+  0.99 |              50.3       50.8         50.0 |                  10.5%
+Theoretical naive coverage at phi = 0.9: 2*Phi(1.96*sqrt(n_eff/n)) - 1 = 34.7%
+
+Clustered data, n = 1,000,000: design effect 1 + (m - 1) * ICC (Kish)
+  clusters of m = 1,000, ICC = 0.01: design effect  10.99, n_eff = 90,992
+  clusters of m = 1,000, ICC = 0.05: design effect  50.95, n_eff = 19,627
+  clusters of m =   100, ICC = 0.05: design effect   5.95, n_eff = 168,067
+  clusters of m =    10, ICC = 0.05: design effect   1.45, n_eff = 689,655
+  Monte Carlo check, 100 clusters of 200, ICC 0.05: design effect 10.93 (formula 10.95)
+
+==============================================================================
+3. Drift and volatility: frequency versus horizon
+==============================================================================
+mu = 0.06, sigma = 0.2 per year; 20,000 draws per cell; SDs in percentage points
+ horizon   sampling        obs | SD(mu_hat)  sig/sqrt(T) | SD(sig_hat)  sig/sqrt(2n)
+     5 y     annual          5 |      8.886        8.944 |       6.128         6.325
+     5 y  quarterly         20 |      8.907        8.944 |       3.160         3.162
+     5 y    monthly         60 |      8.949        8.944 |       1.834         1.826
+     5 y     weekly        260 |      8.917        8.944 |       0.872         0.877
+     5 y      daily      1,260 |      8.937        8.944 |       0.394         0.398
+     5 y   5-minute     98,280 |      8.971        8.944 |       0.045         0.045
+    20 y     annual         20 |      4.486        4.472 |       3.149         3.162
+    20 y  quarterly         80 |      4.484        4.472 |       1.569         1.581
+    20 y    monthly        240 |      4.404        4.472 |       0.910         0.913
+    20 y     weekly      1,040 |      4.503        4.472 |       0.439         0.439
+    20 y      daily      5,040 |      4.448        4.472 |       0.199         0.199
+    20 y   5-minute    393,120 |      4.461        4.472 |       0.023         0.023
+    80 y     annual         80 |      2.228        2.236 |       1.582         1.581
+    80 y  quarterly        320 |      2.244        2.236 |       0.791         0.791
+    80 y    monthly        960 |      2.234        2.236 |       0.454         0.456
+    80 y     weekly      4,160 |      2.227        2.236 |       0.219         0.219
+    80 y      daily     20,160 |      2.245        2.236 |       0.100         0.100
+    80 y   5-minute  1,572,480 |      2.246        2.236 |       0.011         0.011
+
+Direct path simulation: 300 paths of 20 years at five-minute resolution, each aggregated to every coarser grid
+  largest difference between drift estimates from different grids of the same path: 6.9e-17
+  SD of the drift estimate across paths: 4.660pp (formula 4.472)
+      annual: SD(sig_hat) = 2.929pp (formula 3.162)
+   quarterly: SD(sig_hat) = 1.533pp (formula 1.581)
+     monthly: SD(sig_hat) = 0.962pp (formula 0.913)
+      weekly: SD(sig_hat) = 0.439pp (formula 0.439)
+       daily: SD(sig_hat) = 0.190pp (formula 0.199)
+    5-minute: SD(sig_hat) = 0.022pp (formula 0.023)
+Years of data for a 95% interval on mu to exclude zero: (1.96 sigma / mu)^2 = 42.7
+t-statistic for mu after 20 years at any sampling frequency: mu / (sigma/sqrt(20)) = 1.34
+
+==============================================================================
+4. Overlapping windows
+==============================================================================
+100 years of i.i.d. annual returns, mu = 0.06, sigma = 0.2; true P(losing decade) = 0.1714
+  overlapping windows: 91; SD of estimate 0.1007; binomial SD if they were independent 0.0395
+  non-overlapping decades: 10; SD of estimate 0.1190; binomial SD 0.1192
+  effective number of independent decades in the overlapping estimate: 14.0
+  coverage of a naive 95% interval that treats the 91 windows as independent: 53.0%
+
+==============================================================================
+5. Screening candidates against a short record
+==============================================================================
+phi = 0.00: 1,000,000 candidate series unrelated to the target by construction, 128 weeks
+  Bartlett effective n for a correlation n(1-phi^2)/(1+phi^2) = 128.0
+  effective n from the simulated correlations, 1/Var(r) = 127.0
+  largest |r| = 0.424; 99.9th percentile |r| = 0.287; candidates with |r| > 0.7: 0
+phi = 0.95: 1,000,000 candidate series unrelated to the target by construction, 128 weeks
+  Bartlett effective n for a correlation n(1-phi^2)/(1+phi^2) = 6.6
+  effective n from the simulated correlations, 1/Var(r) = 9.6
+  largest |r| = 0.861; 99.9th percentile |r| = 0.751; candidates with |r| > 0.7: 5,267
+
+Ginsberg et al. (2009) input for comparison: 128 weekly points in each of 9 regions = 1,152 data points, screened against 50 million queries
