@@ -10,7 +10,6 @@ is a descriptive association; a shift is not attributed to any cause.
 
 from __future__ import annotations
 
-import csv
 import json
 import os
 from collections.abc import Mapping, Sequence
@@ -39,6 +38,7 @@ from eu_okun.bayes_fit import PROTOCOL_SETTINGS, SamplerSettings, fit_specificat
 from eu_okun.bayes_model import AMENDMENT_4, SPECS, ModelSpec, design_for, likelihood_mask
 from eu_okun.bayes_report import PROBABILITY, LoadedFit, credible_interval, load_fit, sign_class
 from eu_okun.review import read_flags
+from eu_okun.stability import classical_weaker
 
 COMPARED: tuple[str, ...] = ("pandemic_excluded", *AMENDMENT_4)
 SHIFT_SPECS: tuple[str, ...] = ("regime_shift", "regime_shift_final_gdp", "regime_shift_dynamic")
@@ -194,26 +194,6 @@ def drift_summary(fit: LoadedFit, quarters: Sequence[str]) -> Drift:
     path = tuple((q, float(a), float(b), float(c))
                  for q, a, b, c in zip(quarters, low, mid, high, strict=True))
     return Drift(Summary3.of(fit.draws["tau_kappa"]), contrasts, path)
-
-
-def classical_weaker(review_dir: Path) -> dict[str, bool]:
-    """The classical review's weaker-after-2021 rule, recomputed from its tables.
-
-    A country is in the set when every leave-one-out post-2021 sum lies above the upper
-    bound of its 2009-2019 95% interval (K = 1, without participation).
-    """
-    upper: dict[str, float] = {}
-    with (review_dir / "grid.csv").open(encoding="utf-8") as stream:
-        for row in csv.DictReader(stream):
-            if (row["sample"], row["gdp_lags"], row["participation"]) == ("pre_2020", "1",
-                                                                          "False"):
-                upper[row["geo"]] = float(row["ci_high"])
-    out: dict[str, bool] = {}
-    with (review_dir / "stability_review.csv").open(encoding="utf-8") as stream:
-        for row in csv.DictReader(stream):
-            if row["participation"] == "False":
-                out[row["geo"]] = float(row["post_loo_min"]) > upper[row["geo"]]
-    return out
 
 
 # ----------------------------------------------------------------------------------
