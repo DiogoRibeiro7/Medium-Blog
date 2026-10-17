@@ -44,12 +44,18 @@ jobs:
         run: >-
           poetry run eu-okun bayes-fit --data-dir snapshots/eurostat-2026-10-15
           --output-dir results/bayes --specs "$SPECS" --retry-warmup 3000
+      # Needs the primary fit: skipped when a subset without `primary` is fitted.
       - name: Report from the posterior draws
+        if: >-
+          ${{ (github.event.inputs.specs || 'all') == 'all'
+          || contains(format(',{0},', github.event.inputs.specs), ',primary,') }}
         working-directory: eu-okun-law
         run: >-
           poetry run eu-okun bayes-report --fits-dir results/bayes
           --output-dir results/bayes-report --data-dir snapshots/eurostat-2026-10-15
+      # Its report (the next step) runs only for the full set.
       - name: Posterior recovery on synthetic data (amendment 1)
+        if: ${{ (github.event.inputs.specs || 'all') == 'all' }}
         working-directory: eu-okun-law
         run: >-
           poetry run eu-okun bayes-recovery --data-dir snapshots/eurostat-2026-10-15
@@ -75,6 +81,23 @@ jobs:
         run: >-
           poetry run eu-okun bayes-dynamics --fits-dir results/bayes
           --data-dir snapshots/eurostat-2026-10-15 --output-dir results/bayes-dynamics
+      - name: Recovery of a known post-2021 shift (amendment 4)
+        if: >-
+          ${{ (github.event.inputs.specs || 'all') == 'all'
+          || contains(github.event.inputs.specs, 'drifting_association') }}
+        working-directory: eu-okun-law
+        run: >-
+          poetry run eu-okun bayes-regime-recovery --data-dir snapshots/eurostat-2026-10-15
+          --output-dir results/bayes-regime-recovery
+      - name: Regime-specific and time-varying coefficients (amendment 4)
+        if: >-
+          ${{ (github.event.inputs.specs || 'all') == 'all'
+          || contains(github.event.inputs.specs, 'drifting_association') }}
+        working-directory: eu-okun-law
+        run: >-
+          poetry run eu-okun bayes-regimes --fits-dir results/bayes
+          --data-dir snapshots/eurostat-2026-10-15 --output-dir results/bayes-regimes
+          --recovery-dir results/bayes-regime-recovery
       - name: Archive posterior draws, NetCDF artifacts, diagnostics and reports
         if: always()
         uses: actions/upload-artifact@v4
@@ -88,6 +111,8 @@ jobs:
             eu-okun-law/results/bayes-checks/
             eu-okun-law/results/bayes-robustness/
             eu-okun-law/results/bayes-dynamics/
+            eu-okun-law/results/bayes-regime-recovery/
+            eu-okun-law/results/bayes-regimes/
           retention-days: 30
           if-no-files-found: error
       # The report tables alone (small), for comparing runs without the posterior draws.
@@ -101,5 +126,7 @@ jobs:
             eu-okun-law/results/bayes-checks/
             eu-okun-law/results/bayes-robustness/
             eu-okun-law/results/bayes-dynamics/
+            eu-okun-law/results/bayes-regime-recovery/
+            eu-okun-law/results/bayes-regimes/
           retention-days: 30
           if-no-files-found: warn

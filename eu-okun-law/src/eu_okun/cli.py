@@ -128,6 +128,24 @@ def main(argv: Sequence[str] | None = None) -> int:
     bayes_dynamics.add_argument("--no-figures", action="store_true")
     bayes_dynamics.add_argument("--replication-dir", type=Path, default=None,
                                 help="Results (dynamics.json) of an independent run")
+    regime_recovery = commands.add_parser(
+        "bayes-regime-recovery", help="Amendment 4: recovery of a known post-2021 shift on "
+        "synthetic data (expensive; 'bayes' extra)")
+    regime_recovery.add_argument("--data-dir", type=Path, default=Path("data"))
+    regime_recovery.add_argument("--output-dir", type=Path,
+                                 default=Path("results/bayes-regime-recovery"))
+    bayes_regimes = commands.add_parser(
+        "bayes-regimes", help="Amendment 4: regime-specific and time-varying coefficients")
+    bayes_regimes.add_argument("--fits-dir", type=Path, default=Path("results/bayes"))
+    bayes_regimes.add_argument("--data-dir", type=Path, default=Path("data"))
+    bayes_regimes.add_argument("--output-dir", type=Path, default=Path("results/bayes-regimes"))
+    bayes_regimes.add_argument("--report", type=Path, default=None)
+    bayes_regimes.add_argument("--review-dir", type=Path, default=Path("docs/review"),
+                               help="Classical review tables (grid.csv, stability_review.csv)")
+    bayes_regimes.add_argument("--recovery-dir", type=Path, default=None)
+    bayes_regimes.add_argument("--no-figures", action="store_true")
+    bayes_regimes.add_argument("--replication-dir", type=Path, default=None,
+                               help="Results (regimes.json) of an independent run")
     predictive_fit = commands.add_parser(
         "predictive-fit", help="Expanding-window refits of the Bayesian models for the "
         "predictive comparison (expensive; needs the 'bayes' extra)")
@@ -296,8 +314,7 @@ def main(argv: Sequence[str] | None = None) -> int:
     if args.command == "bayes-export":
         from eu_okun.baseline import _read_panel
         from eu_okun.bayes_artifacts import export_fit
-        from eu_okun.bayes_data import build_bayes_data
-        from eu_okun.bayes_model import SPECS
+        from eu_okun.bayes_model import SPECS, design_for
         from eu_okun.review import read_flags
 
         names = ([n for n in SPECS if (args.fits_dir / n / "draws.npz").exists()]
@@ -308,7 +325,7 @@ def main(argv: Sequence[str] | None = None) -> int:
             panel, flags = _read_panel(csv_path), read_flags(csv_path)
             for name in names:
                 spec = SPECS[name]
-                data = build_bayes_data(panel, flags, spec.windows, spec.lags)
+                data = design_for(spec, panel, flags)
                 print(f"{name}: {export_fit(args.fits_dir / name, spec, data)}")
         except (EurostatDataError, ValueError, OSError, KeyError) as exc:
             parser.exit(2, f"Bayesian export failed: {exc}\n")
@@ -365,6 +382,31 @@ def main(argv: Sequence[str] | None = None) -> int:
             parser.exit(2, f"Dynamics report failed: {exc}" + chr(10))
         print(f"Dynamics report written to {args.report or args.output_dir}: "
               f"{len(dynamics.comparisons)} LOO comparisons")
+        return 0
+    if args.command == "bayes-regime-recovery":
+        from eu_okun.bayes_regimes import run_regime_recovery
+
+        try:
+            recovered = run_regime_recovery(args.data_dir, args.output_dir)
+        except (EurostatDataError, FileNotFoundError, ValueError, OSError) as exc:
+            parser.exit(2, f"Regime recovery failed: {exc}" + chr(10))
+        print(f"regime_shift recovery: {recovered.delta_inside_90}/{recovered.delta_total} "
+              f"shifts inside 90%, known average shift "
+              f"{'detected' if recovered.detected else 'not detected'}, "
+              f"{'accepted' if recovered.accepted else 'NOT accepted'}")
+        return 0
+    if args.command == "bayes-regimes":
+        from eu_okun.bayes_regimes import write_regimes_report
+
+        try:
+            regimes = write_regimes_report(
+                args.fits_dir, args.data_dir, args.output_dir, args.review_dir, args.report,
+                args.recovery_dir, figures=not args.no_figures,
+                replication_dir=args.replication_dir)
+        except (EurostatDataError, FileNotFoundError, ValueError, OSError, KeyError) as exc:
+            parser.exit(2, f"Regimes report failed: {exc}" + chr(10))
+        print(f"Regimes report written to {args.report or args.output_dir}: "
+              f"{len(regimes.comparisons)} LOO comparisons")
         return 0
     if args.command == "forecast-bayes-fit":
         from eu_okun.bayes_fit import SamplerSettings

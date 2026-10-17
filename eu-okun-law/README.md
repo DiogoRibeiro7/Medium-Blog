@@ -108,8 +108,8 @@ and time-ordered holdouts (done, and independently reviewed), then hierarchical
 partial-pooling Bayesian models with posterior rank uncertainty and shared shocks
 (first stage done; see below), and a pre-registered predictive comparison of the two
 (done; see below). The misfits found by the posterior predictive checks are addressed
-by a registered amendment (done; see below); time-varying coefficients come next. Only then
-attempt defensible structural identification
+by a registered amendment, and regime-specific and time-varying coefficients by another
+(both done; see below). Only then attempt defensible structural identification
 (distinguishing, for example, demand from productivity shocks). Investigate the
 Netherlands and Luxembourg without assuming any institutional explanation in advance.
 
@@ -324,6 +324,61 @@ In brief:
   `docs/bayes-dynamics/replication-linux/`.
 - The new fits are reported alongside the pre-registered results and do not replace
   the primary specification.
+
+### Regime-specific and time-varying coefficients
+
+Amendment 4 of the protocol (section 12), registered before any of its fits, asks whether
+the association differs between 2009-2019 and 2022-2026. It fits five specifications on
+the pandemic-excluded windows:
+
+- `regime_shift`: post-2021 shifts of each country's GDP coefficient sum, partially
+  pooled, with intercept and error-scale shifts;
+- the same with terms that use provisional GDP masked (`regime_shift_final_gdp`), and
+  with the amendment 3 dynamics (`regime_shift_dynamic`, against
+  `pandemic_excluded_dynamic`);
+- `drifting_association`: a common random walk in the coefficient sum.
+
+Results: [docs/BAYES_REGIMES.md](docs/BAYES_REGIMES.md).
+
+```bash
+poetry run eu-okun bayes-fit --data-dir snapshots/eurostat-2026-10-15 --output-dir results/bayes \
+  --specs regime_shift,regime_shift_final_gdp,pandemic_excluded_dynamic,regime_shift_dynamic,drifting_association \
+  --retry-warmup 3000
+poetry run eu-okun bayes-regime-recovery --data-dir snapshots/eurostat-2026-10-15 \
+  --output-dir results/bayes-regime-recovery
+poetry run eu-okun bayes-regimes --fits-dir results/bayes --data-dir snapshots/eurostat-2026-10-15 \
+  --output-dir docs/bayes-regimes --report docs/BAYES_REGIMES.md --recovery-dir results/bayes-regime-recovery
+```
+
+In brief:
+
+- **No credible shift.** The average shift of the sum after 2021 is +0.028 (90%
+  interval -0.007 to +0.072, P(> 0) = 0.90): no credible change. An average weakening
+  larger than about 0.07 pp per pp is outside the interval. The recovery check detected
+  a known shift of +0.15 on its synthetic data set.
+- **Countries.** No evaluable country shows a credible shift. The shifts are pooled
+  strongly (`tau_delta` about 0.03). After 2021 the sum is still credibly negative in 17
+  of the 25 evaluable countries. Spain and France have no post-2021 terms (definition
+  change) and are not evaluable.
+- **Classical comparison.** This disagrees with the classical review's
+  weaker-after-2021 set of 13 countries. The designs differ in lag order, sample start,
+  pooling, the common factor and intercept shifts; which difference drives the
+  disagreement is not tested.
+- **Sensitivities.** With the amendment 3 dynamics no verdict changes. The
+  provisional-GDP sensitivity failed the convergence criteria after the retry (R-hat
+  1.012 for Spain's AR(1) coefficient), so it cannot be judged.
+- **Drift.**
+  - By PSIS-LOO the common random walk is better supported than a fixed coefficient in
+    both runs (+14.2, SE 6.0 here; +13.6 on Linux).
+  - Against the regime shift it is better supported here (+4.3, SE 1.8) but not on
+    Linux (+3.5, SE 1.8), so that verdict is not stable.
+  - Its period contrasts are not credible: 2014-2019 against 2009-2013 is +0.021
+    (P = 0.92), and 2022-2026 against 2014-2019 is +0.004.
+- **Regime shift.** By PSIS-LOO the regime shift is not distinguishable from one
+  coefficient (+9.9, SE 5.8).
+- **Replication.** An independent Linux run reproduces every other verdict, the shift
+  medians within 0.003 and the recovery. `regime_shift_final_gdp` failed acceptance there
+  too. The tables are in `docs/bayes-regimes/replication-linux/`.
 
 ## Predictive comparison
 

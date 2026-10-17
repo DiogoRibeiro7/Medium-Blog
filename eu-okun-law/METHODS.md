@@ -199,7 +199,37 @@ It is implemented in `bayes_model.py` (specifications), `bayes_fit.py` (checks) 
   - The claims use `theta_LR` for Luxembourg and Spain in the ARDL fits.
   - The prior predictive check of amendment 1 is applied to the new priors.
 
-Still to do in this stage: time-varying coefficients.
+### Amendment 4: regime-specific and time-varying coefficients (implemented)
+
+Registered in [BAYES_PROTOCOL.md](BAYES_PROTOCOL.md), section 12, before any of its fits.
+It is implemented in `bayes_model.py` and `bayes_data.py` (specifications, masks) and
+`bayes_regimes.py` (recovery and report), with results in
+[docs/BAYES_REGIMES.md](docs/BAYES_REGIMES.md).
+
+- **Data.** The windows of `pandemic_excluded` (2009-Q2 to 2019-Q4, 2022-Q3 to
+  2026-Q2), K = 2. `post[t] = 1` from 2022-Q3.
+- **Regime shift.**
+  - `theta_post[i] = theta[i] + delta[i]`, with `delta` partially pooled on the scales
+    of `theta`.
+  - Pooled intercept shifts and a common log-scale shift, after 2021.
+- **Drift.**
+  - `theta[i,t] = theta[i] + kappa[t]`, where `kappa` is a random walk over calendar
+    quarters, with variance proportional to the gap between sample quarters, centred
+    over the sample.
+  - It comes with the same intercept and scale shifts.
+- **Sensitivities.**
+  - Terms whose GDP inputs carry the provisional flag `p` are masked.
+  - The amendment 3 dynamics (ARDL and AR(1) factor) are used, with and without the
+    shift.
+- **Decision rules.**
+  - A country is evaluable with at least 12 post-2021 terms.
+  - Shift verdicts use P(delta > 0) >= 0.95 or <= 0.05; the same rule applies to
+    `mu_delta` and to the drift contrasts.
+  - The classical weaker-after-2021 set is recomputed from the review's tables.
+  - PSIS-LOO uses the cells common to each pair.
+  - Recovery: a known +0.15 average shift on synthetic data.
+
+All Stage 2 items of the roadmap are now implemented.
 
 ## Stage 3 — Identification before causal language
 

@@ -29,7 +29,13 @@ from eu_okun.bayes_checks import (
     prior_predictive_check,
 )
 from eu_okun.bayes_data import build_bayes_data
-from eu_okun.bayes_model import AMENDMENT_3, SPECS
+from eu_okun.bayes_model import (
+    AMENDMENT_1,
+    AMENDMENT_2,
+    AMENDMENT_3,
+    PREREGISTERED,
+    SPECS,
+)
 from eu_okun.bayes_report import (
     PROBABILITY,
     Claim,
@@ -44,6 +50,7 @@ from eu_okun.bayes_report import (
 from eu_okun.review import read_flags
 
 COMPARED: tuple[str, ...] = ("primary", *AMENDMENT_3)
+CONTEXT_SPECS: tuple[str, ...] = (*PREREGISTERED, *AMENDMENT_1, *AMENDMENT_2, *AMENDMENT_3)
 # Section 11.4, in the registered order: (A, B) means "A against B".
 COMPARISONS: tuple[tuple[str, str], ...] = (
     ("dynamic_factor", "primary"),
@@ -313,8 +320,11 @@ def build_dynamics(fits_dir: Path, data_dir: Path,
     if missing:
         raise FileNotFoundError(f"No fit for {', '.join(missing)} in {fits_dir}.")
     fits = {name: load_fit(fits_dir / name) for name in COMPARED}
+    # Context: the specifications registered up to this amendment, so that later
+    # amendments' fits in the same directory do not change this report.
     context = {name: persistence(json.loads((fits_dir / name / "fit.json").read_text(
-        encoding="utf-8")), name) for name in SPECS if (fits_dir / name / "fit.json").exists()}
+        encoding="utf-8")), name) for name in CONTEXT_SPECS
+        if (fits_dir / name / "fit.json").exists()}
     csv_path = data_dir / "processed" / "eu27_quarterly.csv"
     primary = SPECS["primary"]
     data = build_bayes_data(_read_panel(csv_path), read_flags(csv_path), primary.windows,
@@ -512,7 +522,9 @@ def render(review: DynamicsReview, assets: str, command: str) -> str:
         unstable = unstable_verdicts(review)
         lines.append(f"- Replication ({review.replication.label}): "
                      + ("every verdict is the same." if not unstable else
-                        f"{len(unstable)} verdicts differ and are not treated as established: "
+                        (f"{len(unstable)} verdicts differ and are" if len(unstable) > 1
+                         else "1 verdict differs and is")
+                        + " not treated as established: "
                         + "; ".join(unstable) + ". Every other verdict is the same."))
     primary_negative = review.negative_set("primary")
     for name in new:

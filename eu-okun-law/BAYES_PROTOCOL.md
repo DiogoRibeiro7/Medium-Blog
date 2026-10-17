@@ -418,6 +418,142 @@ beyond the common factor.
   is described as such. It does not retroactively replace the primary specification of
   sections 3-7.
 
+## 12. Amendment 4: regime-specific and time-varying coefficients
+
+Registered on 2026-10-16, before any fit of the specifications below. Sections 1-11 are
+unchanged, and the earlier judgements keep using their own specification sets.
+
+### 12.1 The question
+
+The classical review (docs/CLASSICAL_RESULTS_REVIEW.md, section 5) found a weaker
+association after 2021 in 13 countries. It could not report the size or sign of any
+post-2021 coefficient, for five reasons:
+
+- the window is short;
+- GDP varied less;
+- many post-2021 sums change sign when one quarter is dropped;
+- Spain and France changed their unemployment definition;
+- post-2021 GDP is partly provisional.
+
+`pandemic_excluded` (section 5) imposes one coefficient on both periods. This amendment
+asks four things:
+
+- whether the association differs between 2009-2019 and 2022-2026;
+- by how much;
+- in which countries;
+- whether the change looks abrupt or gradual.
+
+Partial pooling is the reason to ask it in this model: each country's shift borrows
+strength from the others.
+
+### 12.2 Data
+
+- **Windows and masks.** The windows of `pandemic_excluded`: 2009-Q2 to 2019-Q4 (43
+  quarters) and 2022-Q3 to 2026-Q2 (16 quarters), with K = 2 and the masks of
+  section 2.
+- **Regime indicator.** `post[t] = 1` from 2022-Q3, `0` before.
+- **Spain and France.** Every post-2021 term is masked (definition flag). Their shifts
+  are therefore informed only through pooling.
+
+### 12.3 New specifications
+
+| Name | Change |
+| --- | --- |
+| `regime_shift` | `pandemic_excluded` plus, after 2021: a country shift in the GDP coefficient sum, `theta_post[i] = theta[i] + delta[i]`; a country shift in the intercept; and a common shift of the log error scale. |
+| `regime_shift_final_gdp` | `regime_shift` with every term masked whose GDP inputs (quarters t, t-1, t-2) carry the provisional flag `p`, together with the AR(1) term that follows it (section 2). |
+| `pandemic_excluded_dynamic` | `pandemic_excluded` with the dynamics of `ardl_dynamic_factor` (section 11). |
+| `regime_shift_dynamic` | `regime_shift` with the dynamics of `ardl_dynamic_factor`. |
+| `drifting_association` | `pandemic_excluded` plus the intercept and scale shifts of `regime_shift`, and a common random walk in the GDP coefficient sum: `theta[i,t] = theta[i] + kappa[t]`. |
+
+**Priors.**
+
+- **Coefficient shift.** `delta[i] = mu_delta + tau_delta * raw[i]`, with
+  `mu_delta ~ N(0, 0.5)` and `tau_delta ~ HalfNormal(0.25)`. These are the scales of
+  `mu_theta` and `tau_theta`, so the prior favours no particular shift size.
+- **Intercept shift.** Partially pooled with the scales of `alpha`:
+  `mu ~ N(0, 0.25)`, `tau ~ HalfNormal(0.25)`.
+- **Scale shift.** A common shift of `log sigma`, distributed `N(0, 0.5)`, after 2021.
+- **Random walk.**
+  - `kappa_raw` is zero at the first sample quarter.
+  - Its increments are `N(0, tau_kappa^2 * gap)`, where `gap` is the number of calendar
+    quarters between consecutive sample quarters: 1 inside a segment, 11 from 2019-Q4
+    to 2022-Q3.
+  - `kappa = kappa_raw - mean(kappa_raw)` over the sample quarters, so `theta[i]` is the
+    time average.
+  - `tau_kappa ~ HalfNormal(0.05)`.
+- **ARDL specifications.** The shift applies to the short-run sum. The long-run shift is
+  `delta / (1 - psi)`, which has the same sign.
+
+All other priors, the sampler, the acceptance criteria and the single retry follow
+sections 4, 6 and 11.
+
+### 12.4 Estimands
+
+- **Regime specifications.**
+  - `delta[i]`: the change of the GDP coefficient sum after 2021.
+  - `theta_post[i] = theta[i] + delta[i]`: the post-2021 sum.
+  - `mu_delta`: the average shift.
+- **Random walk.**
+  - `D1`: the mean of `kappa` over 2014-Q1 to 2019-Q4, minus its mean over 2009-Q2 to
+    2013-Q4.
+  - `D2`: the mean of `kappa` over 2022-Q3 to 2026-Q2, minus its mean over 2014-Q1 to
+    2019-Q4.
+
+### 12.5 Decision rules
+
+- **Evaluable countries.** A country is evaluable in a specification when that
+  specification's likelihood holds at least 12 post-2021 terms for it. The shifts of the
+  other countries (Spain and France in every specification) are pooled values,
+  reported as "not evaluable".
+- **Country shift.** For an evaluable country:
+  - "rises" when `P(delta[i] > 0) >= 0.95`;
+  - "falls" when `P(delta[i] > 0) <= 0.05`;
+  - "no credible change" otherwise.
+  - For a country whose pre-2020 sum `theta[i]` is credibly negative, "rises" means a
+    weaker association.
+- **Average shift.** The same rule applied to `mu_delta`.
+- **Post-2021 association.** The sign class of `theta_post[i]` (section 7) for
+  evaluable countries.
+- **Classical comparison.** Agreement, country by country, with the review's
+  weaker-after-2021 set. The report recomputes that set from the committed
+  docs/review/stability_review.csv and docs/review/grid.csv. The comparison is
+  descriptive.
+- **Measurement.** Each verdict of `regime_shift` is compared with
+  `regime_shift_final_gdp` (the average shift, and each country evaluable in both). A
+  verdict that changes "depends on provisional GDP".
+- **Dynamics.** The same comparison with `regime_shift_dynamic`. A verdict that changes
+  "depends on the dynamics".
+- **Drift.**
+  - `D1` and `D2` are judged by the same 0.95 rule; the 90% interval of `tau_kappa` is
+    reported.
+  - The random walk cannot place a change inside the unobserved 2020-2022 gap.
+- **PSIS-LOO.** Each comparison uses the cells common to the two fits and the 2 SE rule
+  of section 9.2:
+  1. `regime_shift` against `pandemic_excluded`;
+  2. `drifting_association` against `pandemic_excluded`;
+  3. `drifting_association` against `regime_shift`;
+  4. `regime_shift_dynamic` against `pandemic_excluded_dynamic`.
+
+  `regime_shift_final_gdp` is scored on fewer cells and is not compared.
+- **Recovery.**
+  - One data set is simulated from `regime_shift` on the real design: the
+    pandemic-excluded windows, the real masks and seed 20261021.
+  - Generating values: `mu_theta = -0.30`, `tau_theta = 0.15` and `nu = 8`, as in
+    section 9.4; `mu_delta = +0.15` and `tau_delta = 0.10`; intercept shifts
+    `N(0, 0.05)` and no scale shift; other parameters as in section 9.4.
+  - Reported: the 90% coverage of `delta[i]` for the evaluable countries, against the
+    binomial range, and whether the average-shift rule detects the known shift. One
+    data set is a check, not a power analysis.
+- **Prior predictive check.** That of section 9.3, for the new specifications.
+- **Replication.** An independent Linux run. A verdict that differs between the runs is
+  reported with both values and is not treated as established.
+- **Status.** The new specifications are reported alongside the earlier results. Every
+  coefficient is a descriptive association. A shift could reflect any of these, and this
+  amendment cannot separate them (docs/IDENTIFICATION_RESULTS.md):
+  - measurement (definitions, provisional data);
+  - a different mix of shocks (the energy shock, inflation);
+  - a changed labour-market response.
+
 ## Change log
 
 - Before any estimate was inspected: added the decision thresholds of section 7.
@@ -477,3 +613,24 @@ beyond the common factor.
     - "Netherlands delayed" in `dynamic_factor` (0.948 locally);
     - PSIS-LOO `ardl_dynamic_factor` against `ardl` (+11.8 with SE 5.7, and +10.7 with
       SE 5.8).
+- Amendment 4, after its fits.
+  - **Local run.**
+    - `regime_shift`, `pandemic_excluded_dynamic` and `regime_shift_dynamic` met every
+      criterion at the first attempt.
+    - `drifting_association` passed after the single retry.
+    - `regime_shift_final_gdp` failed after the retry (R-hat 1.012 for `phi[9]`,
+      Spain's AR(1) coefficient). It is reported as failed, and the provisional-GDP
+      sensitivity cannot be judged.
+    - The amendment 3 report now restricts its context rows to the specifications
+      registered up to amendment 3, so that later fits in the same directory do not
+      change it.
+  - **Replication on Linux** (Bayesian workflow run 38983863147):
+    - the same acceptance for all six fits, including the failure of
+      `regime_shift_final_gdp`;
+    - shift medians within 0.003, and the same average, country and drift verdicts;
+    - the same recovery.
+    - One verdict sits on its threshold and differs: PSIS-LOO `drifting_association`
+      against `regime_shift` (+4.3 with SE 1.8 locally, +3.5 with SE 1.8 on Linux). It
+      is not treated as established.
+  - **Earlier dispatch.** Run 38983097415 stopped at the general report step, which
+    needs a `primary` fit; its results are not used.

@@ -20,8 +20,15 @@ import numpy as np
 
 from eu_okun.audit import audit_snapshot
 from eu_okun.baseline import _read_panel, fit_hac_covariance
-from eu_okun.bayes_data import BayesData, ar1_path, ardl_path, build_bayes_data
-from eu_okun.bayes_model import SPECS, ModelSpec, likelihood_mask, model_inputs, okun_model
+from eu_okun.bayes_data import BayesData, ar1_path, ardl_path, regime_terms
+from eu_okun.bayes_model import (
+    SPECS,
+    ModelSpec,
+    design_for,
+    likelihood_mask,
+    model_inputs,
+    okun_model,
+)
 from eu_okun.comparison import cumulative_gdp
 from eu_okun.contract import EurostatDataError
 from eu_okun.review import read_flags
@@ -31,7 +38,9 @@ ESS_MIN = 400.0
 BFMI_MIN = 0.3
 SAVED = ("theta", "beta0", "b", "alpha", "phi", "sigma", "lam", "nu", "gamma", "mu_theta",
          "tau_theta", "mu_b", "tau_b", "f", "quarter_effect", "tau_quarter", "psi", "mu_psi",
-         "tau_psi", "rho_f")
+         "tau_psi", "rho_f", "delta", "mu_delta", "tau_delta", "theta_post", "alpha_shift",
+         "mu_alpha_shift", "tau_alpha_shift", "log_sigma_shift", "kappa", "tau_kappa")
+REGIME_KEYS = ("theta", "alpha", "sigma", "delta", "kappa", "alpha_shift", "log_sigma_shift")
 
 
 @dataclass(frozen=True)
@@ -186,9 +195,15 @@ def _draws(samples: Mapping[str, np.ndarray], name: str) -> np.ndarray | None:
     return None if values is None else values.reshape(-1, *values.shape[2:])
 
 
+def _regime_draw(data: BayesData, s: Mapping[str, np.ndarray], d: int,
+                 ) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
+    """theta, alpha and sigma of draw ``d`` by country and quarter (amendment 4)."""
+    return regime_terms(data, {k: s[k][d] for k in REGIME_KEYS if k in s})
+
+
 def _mean_without_factor(data: BayesData, s: Mapping[str, np.ndarray], d: int) -> np.ndarray:
-    mean = (s["alpha"][d][:, None] + s["theta"][d][:, None] * data.g
-            + np.einsum("ntk,nk->nt", data.z, s["b"][d]))
+    theta, alpha, _ = _regime_draw(data, s, d)
+    mean = alpha + theta * data.g + np.einsum("ntk,nk->nt", data.z, s["b"][d])
     if "gamma" in s:
         mean = mean + s["gamma"][d][:, None] * data.dp
     return np.asarray(mean, dtype=float)
@@ -260,7 +275,7 @@ def predictive_checks(fit: FitResult, max_draws: int = 400, seed: int = 7) -> Pr
             mean_obs = mean_obs + flat["quarter_effect"][d][None, :]
         if spec.lagged_outcome:
             mean_obs = mean_obs + flat["psi"][d][:, None] * y_lag
-        sigma = flat["sigma"][d][:, None]
+        sigma = _regime_draw(data, flat, d)[2]
         nu = float(flat["nu"][d]) if "nu" in flat else None
         resid = data.y - mean_obs
         phi_vector = np.asarray(flat["phi"][d], dtype=float) if spec.ar1 else np.zeros(n)
@@ -409,7 +424,7 @@ def run_specifications(
     results = []
     for name in names:
         spec = SPECS[name]
-        data = build_bayes_data(panel, flags, spec.windows, spec.lags)
+        data = design_for(spec, panel, flags)
         fit = fit_specification(data, spec, settings)
         save_fit(fit, predictive_checks(fit), output_dir / name, snapshot)
         if not fit.diagnostics.accepted and retry_warmup is not None:

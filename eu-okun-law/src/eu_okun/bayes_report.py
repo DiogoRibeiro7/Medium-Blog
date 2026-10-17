@@ -346,7 +346,7 @@ def build_review(fits_dir: Path, data_dir: Path | None = None,
                          pairwise_probability(theta))
     if data_dir is not None:
         from eu_okun.baseline import _read_panel
-        from eu_okun.bayes_data import build_bayes_data
+        from eu_okun.bayes_model import design_for
         from eu_okun.review import read_flags
 
         csv_path = data_dir / "processed" / "eu27_quarterly.csv"
@@ -354,7 +354,7 @@ def build_review(fits_dir: Path, data_dir: Path | None = None,
         for name, fit in fits.items():
             spec = SPECS[name]
             if spec.common_factor and "f" in fit.draws:
-                data = build_bayes_data(panel, flags, spec.windows, spec.lags)
+                data = design_for(spec, panel, flags)
                 if list(data.quarters) != fit.summary["quarters"]:
                     raise ValueError(f"Snapshot does not match the quarters of fit {name}.")
                 review.factor[name] = factor_checks(
