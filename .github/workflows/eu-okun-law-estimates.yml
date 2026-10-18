@@ -101,6 +101,17 @@ jobs:
       - name: Committed shift-share tables reproduce on Linux
         working-directory: eu-okun-law
         run: poetry run pytest tests/test_shift_share.py -q
+      - name: Country-heterogeneity case study on the frozen snapshots (HETEROGENEITY_PROTOCOL.md)
+        working-directory: eu-okun-law
+        run: >-
+          poetry run eu-okun heterogeneity
+          --data-dir snapshots/eurostat-2026-10-15
+          --snapshot snapshots/heterogeneity-2026-10-18
+          --output-dir results/heterogeneity
+          --report results/heterogeneity/HETEROGENEITY_CASE_STUDY.md
+      - name: Committed case-study tables reproduce on Linux
+        working-directory: eu-okun-law
+        run: poetry run pytest tests/test_heterogeneity.py -q
       - name: Archive source data and regression output
         uses: actions/upload-artifact@v4
         with:

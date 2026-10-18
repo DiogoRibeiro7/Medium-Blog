@@ -48,7 +48,9 @@ Open items raised by the review:
       the conditional predictive comparison (panel Diebold-Mariano on cross-country mean
       differentials); the t-1 forecasts of `eu-okun forecast` still use approximate
       country-level ratios.
-- [ ] Hours- or employment-based measures, including cross-border workers for Luxembourg.
+- [x] Hours- or employment-based measures, including cross-border workers for Luxembourg
+      ([docs/HETEROGENEITY_CASE_STUDY.md](docs/HETEROGENEITY_CASE_STUDY.md)). In Luxembourg, domestic employment (including commuters) and resident
+      employment are equally flat; output per hour absorbs the GDP fluctuations.
 - [ ] Compare results across Eurostat vintages.
 
 ## Phase 2 — Hierarchical Bayes
@@ -112,7 +114,11 @@ Pre-registered in [BAYES_PROTOCOL.md](BAYES_PROTOCOL.md); results in
       demand and technology Okun-ratio sets are unbounded, and labour supply and demand
       differ only at impact, by assumption.
 - [ ] Regime sensitivity, structural breaks and mechanisms.
-- [ ] Detailed alternative hypotheses for NL and LU.
+- [x] Detailed alternative hypotheses for NL and LU, and PT against ES. These were
+      pre-registered in [HETEROGENEITY_PROTOCOL.md](HETEROGENEITY_PROTOCOL.md), with
+      results in [docs/HETEROGENEITY_CASE_STUDY.md](docs/HETEROGENEITY_CASE_STUDY.md). One of 14 predictions is supported: the Netherlands absorbs more
+      through output per hour than Spain. The Luxembourg measurement mismatch is not
+      supported.
 
 ## Phase 4 — Medium article
 

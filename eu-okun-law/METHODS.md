@@ -322,6 +322,16 @@ normalization, counterfactual and uncertainty.
   non-residents while resident unemployment uses another denominator.
 - For the Netherlands, examine contract composition, hours and participation
   before attributing a delayed response to temporary contracts.
+- *Done for Portugal, Spain, the Netherlands and Luxembourg.* See
+  [HETEROGENEITY_PROTOCOL.md](HETEROGENEITY_PROTOCOL.md) and
+  [docs/HETEROGENEITY_CASE_STUDY.md](docs/HETEROGENEITY_CASE_STUDY.md).
+  - It decomposes output fluctuations exactly into output per hour, hours per worker and
+    domestic employment.
+  - It compares domestic and resident employment, and temporary and permanent employees.
+  - Predictions are pre-registered and Holm-adjusted, with a synchronised block
+    bootstrap.
+  - Results are labelled as correlation, mechanism-consistent pattern or (never)
+    identified causal effect.
 - Publish null, unstable and non-identifiable outcomes as findings.
 
 Descriptive utility requires data checks and robust estimates;

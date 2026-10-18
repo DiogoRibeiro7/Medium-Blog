@@ -636,3 +636,47 @@ brief:
   -0.22.
 - **Conclusion.** Restrictions the data cannot reject leave the productivity and
   labour-supply questions unanswered. Every Okun coefficient remains descriptive.
+
+## Country heterogeneity: Portugal, Spain, the Netherlands and Luxembourg
+
+[HETEROGENEITY_PROTOCOL.md](HETEROGENEITY_PROTOCOL.md) was committed and pushed before any
+computation. It states hypotheses whose predictions can fail, and evaluates each of them
+by the same rule in every country. It does not retrofit explanations to unusual
+coefficients.
+
+**Data.** Official series only, frozen in `snapshots/heterogeneity-2026-10-18/`:
+- Eurostat national-accounts employment, domestic and resident, and hours;
+- LFS temporary and permanent employees;
+- temporary and part-time shares;
+- OECD employment-protection indices.
+
+```bash
+poetry run eu-okun fetch-heterogeneity --output-dir snapshots/heterogeneity-2026-10-18   # needs internet
+poetry run eu-okun heterogeneity --data-dir snapshots/eurostat-2026-10-15   --snapshot snapshots/heterogeneity-2026-10-18 --output-dir docs/heterogeneity   --report docs/HETEROGENEITY_CASE_STUDY.md                                     # about 30 seconds
+```
+
+Results are in [docs/HETEROGENEITY_CASE_STUDY.md](docs/HETEROGENEITY_CASE_STUDY.md). In
+brief, with associations only and 2020-2021 excluded:
+
+- **Luxembourg.** The measurement-mismatch hypothesis is not supported. Domestic
+  employment, which includes cross-border commuters, is as flat as resident employment
+  (elasticities +0.03 and +0.02). Output per hour absorbs Luxembourg's GDP fluctuations
+  (elasticity +1.06).
+- **The Netherlands.** One prediction is supported: it absorbs more of output
+  fluctuations through output per hour than Spain does (+0.52 against −0.21). The
+  delayed unemployment response is not distinguishable from Spain's except before 2020,
+  and timing says nothing about temporary contracts.
+- **Spain and Portugal.**
+  - Spain's employment moves more than one for one with output, and its productivity is
+    countercyclical.
+  - Portugal's hours respond as much as Spain's (+1.27 against +1.21), so the
+    Spain-Portugal unemployment difference disappears in hours. Portugal publishes no
+    seasonally adjusted employment in persons, so its hours-per-worker margin cannot be
+    measured.
+- **Temporary jobs.** The temporary-employment buffer is not determined in any country
+  (Spain only before 2020).
+- **Institutions, as correlation.** Stricter employment protection goes with a stronger
+  unemployment response, the opposite of the registered prediction. This is a
+  correlation over 20 countries, and only in some variants.
+- **No identified causal effect.** The report lists the hypotheses that cannot be tested
+  reliably.
