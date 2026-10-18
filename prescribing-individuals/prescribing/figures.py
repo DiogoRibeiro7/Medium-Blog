@@ -214,6 +214,26 @@ def fig_n_of_1(t: pd.DataFrame):
     _save(fig, "fig7_drug_holiday.png", "calculation; benefit in units of week-to-week noise")
 
 
+def fig_absolute(ar: pd.DataFrame):
+    fig, ax = plt.subplots(figsize=(7.2, 4.4))
+    xs = np.arange(len(ar))
+    cols = [("extra_2", "+2 mmHg"), ("extra_5", "+5 mmHg"), ("extra_10", "+10 mmHg")]
+    w = 0.26
+    for i, (c, lab) in enumerate(cols):
+        vals = 1000 * ar[c]
+        ax.bar(xs + (i - 1) * (w + 0.02), vals, width=w, color=SERIES[i], label=lab)
+        for x0, v in zip(xs + (i - 1) * (w + 0.02), vals):
+            ax.text(x0, v + 0.3, f"{v:.1f}", ha="center", va="bottom", fontsize=8, color=INK2)
+    _style(ax)
+    ax.set_xticks(xs, [f"{b}\n(baseline {100 * r:.0f}%)" for b, r in zip(ar["band"], ar["baseline_risk"])])
+    ax.set_ylabel("extra cardiovascular events per 1,000 over 10 years")
+    ax.set_xlabel("age (average 10-year risk without the drug)")
+    _legend(ax, title="sustained rise in systolic pressure", title_fontsize=8.5, loc="upper left")
+    ax.set_title("The same rise in pressure costs more at older ages", loc="left", fontsize=11.5, pad=12)
+    fig.subplots_adjust(left=0.1, right=0.97, top=0.88, bottom=0.2)
+    _save(fig, "fig8_absolute_risk.png", "NHANES 2017–2023, Pooled Cohort Equations, adults 40–79 without CVD")
+
+
 def draw(out: dict) -> None:
     FIGURES.mkdir(parents=True, exist_ok=True)
     if (DATA / "nhanes_adults.csv.gz").exists():
@@ -221,8 +241,10 @@ def draw(out: dict) -> None:
         fig_sbp_by_age(df)
         fig_crossing(out["crossing"], out["crossing_params"])
         fig_readings(out["replicates"])
+        if len(out.get("absolute_risk", [])):
+            fig_absolute(out["absolute_risk"])
     if "vr_table" in out and len(out["vr_table"]):
-        pop = "adult" if (out["vr_table"]["population"] == "adult").sum() >= 6 else "all"
+        pop = "all"
         fig_forest(out["vr_table"][out["vr_table"]["population"] == pop],
                    out["vr_summary"][out["vr_summary"]["population"] == pop])
     if "faers_rors" in out:

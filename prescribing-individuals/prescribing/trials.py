@@ -79,8 +79,13 @@ def _age_years(s: str | None) -> float | None:
     return v if unit == "year" else v / {"month": 12, "week": 52.18, "day": 365.25}[unit]
 
 
+NOT_STIMULANT_DRUG = re.compile(r"mdma|methylenedioxy|midomafetamine", re.I)
+
+
 def _is_drug(text: str, extra: tuple[str, ...] = ()) -> bool:
     t = str(text).lower()
+    if NOT_STIMULANT_DRUG.search(t):
+        return False
     return any(d in t for d in DRUG_TERMS) or any(e and e in t for e in extra) or bool(DRUG_ABBREV.search(t))
 
 

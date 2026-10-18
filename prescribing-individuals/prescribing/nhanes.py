@@ -38,15 +38,20 @@ class Cycle:
 
 CYCLES = [
     Cycle("G", "2011-2012", 2011, 2.0, "auscultatory", "WTMEC2YR",
-          dict(demo="DEMO_G", bp="BPX_G", bpq="BPQ_G", mcq="MCQ_G", bmx="BMX_G", rx="RXQ_RX_G")),
+          dict(demo="DEMO_G", bp="BPX_G", bpq="BPQ_G", mcq="MCQ_G", bmx="BMX_G", rx="RXQ_RX_G",
+               tc="TCHOL_G", hdl="HDL_G", smq="SMQ_G", diq="DIQ_G", ghb="GHB_G")),
     Cycle("H", "2013-2014", 2013, 2.0, "auscultatory", "WTMEC2YR",
-          dict(demo="DEMO_H", bp="BPX_H", bpq="BPQ_H", mcq="MCQ_H", bmx="BMX_H", rx="RXQ_RX_H")),
+          dict(demo="DEMO_H", bp="BPX_H", bpq="BPQ_H", mcq="MCQ_H", bmx="BMX_H", rx="RXQ_RX_H",
+               tc="TCHOL_H", hdl="HDL_H", smq="SMQ_H", diq="DIQ_H", ghb="GHB_H")),
     Cycle("I", "2015-2016", 2015, 2.0, "auscultatory", "WTMEC2YR",
-          dict(demo="DEMO_I", bp="BPX_I", bpq="BPQ_I", mcq="MCQ_I", bmx="BMX_I", rx="RXQ_RX_I")),
+          dict(demo="DEMO_I", bp="BPX_I", bpq="BPQ_I", mcq="MCQ_I", bmx="BMX_I", rx="RXQ_RX_I",
+               tc="TCHOL_I", hdl="HDL_I", smq="SMQ_I", diq="DIQ_I", ghb="GHB_I")),
     Cycle("P", "2017-2020", 2017, 3.2, "oscillometric", "WTMECPRP",
-          dict(demo="P_DEMO", bp="P_BPXO", bpq="P_BPQ", mcq="P_MCQ", bmx="P_BMX", rx="P_RXQ_RX")),
+          dict(demo="P_DEMO", bp="P_BPXO", bpq="P_BPQ", mcq="P_MCQ", bmx="P_BMX", rx="P_RXQ_RX",
+               tc="P_TCHOL", hdl="P_HDL", smq="P_SMQ", diq="P_DIQ", ghb="P_GHB")),
     Cycle("L", "2021-2023", 2021, 2.0, "oscillometric", "WTMEC2YR",
-          dict(demo="DEMO_L", bp="BPXO_L", bpq="BPQ_L", mcq="MCQ_L", bmx="BMX_L", rx="RXQ_RX_L")),
+          dict(demo="DEMO_L", bp="BPXO_L", bpq="BPQ_L", mcq="MCQ_L", bmx="BMX_L", rx="RXQ_RX_L",
+               tc="TCHOL_L", hdl="HDL_L", smq="SMQ_L", diq="DIQ_L", ghb="GHB_L")),
 ]
 
 STIMULANT_TERMS = ["METHYLPHENIDATE", "DEXMETHYLPHENIDATE", "AMPHETAMINE", "DEXTROAMPHETAMINE",
@@ -100,6 +105,7 @@ def build_cycle(cycle: Cycle) -> pd.DataFrame | None:
         "sex": demo["RIAGENDR"].map({1: "male", 2: "female"}),
         "examined": demo.get("RIDSTATR", pd.Series(2, index=demo.index)) == 2,
         "pregnant": _first(demo, ["RIDEXPRG"]) == 1,
+        "black": _first(demo, ["RIDRETH3", "RIDRETH1"]) == 4,
         "w_cycle": demo[cycle.weight],
         "stratum": cycle.code + "-" + demo["SDMVSTRA"].astype(int).astype(str),
         "psu": demo["SDMVPSU"].astype(int),
@@ -133,6 +139,20 @@ def build_cycle(cycle: Cycle) -> pd.DataFrame | None:
     bmx = _fetch(cycle, cycle.files["bmx"])
     if bmx is not None and "BMXBMI" in bmx.columns:
         out = out.join(bmx.set_index("SEQN")[["BMXBMI"]].rename(columns={"BMXBMI": "bmi"}), on="seqn")
+
+    # risk-equation inputs: total and HDL cholesterol, current smoking, diabetes
+    for role, var, name in (("tc", "LBXTC", "tc"), ("hdl", "LBDHDD", "hdl"), ("ghb", "LBXGH", "hba1c")):
+        f = _fetch(cycle, cycle.files[role])
+        if f is not None and var in f.columns:
+            out = out.join(f.set_index("SEQN")[[var]].rename(columns={var: name}), on="seqn")
+    smq = _fetch(cycle, cycle.files["smq"])
+    if smq is not None:
+        q = smq.set_index("SEQN")
+        out = out.join(pd.DataFrame({"smoker": (_first(q, ["SMQ020"]) == 1) & _first(q, ["SMQ040"]).isin([1, 2])}),
+                       on="seqn")
+    diq = _fetch(cycle, cycle.files["diq"])
+    if diq is not None:
+        out = out.join(pd.DataFrame({"told_diabetes": _first(diq.set_index("SEQN"), ["DIQ010"]) == 1}), on="seqn")
 
     rx = _fetch(cycle, cycle.files["rx"])
     if rx is not None and "RXDDRUG" in rx.columns:

@@ -42,13 +42,14 @@ def compute() -> dict:
         mu, tau, source = FALLBACK_MU, FALLBACK_TAU, "fallback (no trial estimate)"
         vs = out.get("vr_summary")
         if vs is not None and len(vs):
-            for pop, label in (("adult", "pooled adult trials"), ("all", "pooled trials, all ages")):
+            for pop, label in (("all", "pooled trials, all ages"), ("adult", "pooled adult trials")):
                 r = vs[(vs["kind"] == "sbp") & (vs["population"] == pop)]
                 if len(r) and r.iloc[0]["k"] >= 3:
                     mu, tau, source = float(r.iloc[0]["md"]), float(r.iloc[0]["tau_response"]), label
                     break
         out["crossing_params"] = {"mu": mu, "tau": tau, "source": source}
         out["crossing"] = analyse.nhanes_crossing(df, mu, tau)
+        out["absolute_risk"] = analyse.nhanes_absolute_risk(df, mu, tau)
         out["replicates"] = analyse.nhanes_replicates(df)
         out["stim_by_band"], out["stim_by_cycle"] = analyse.nhanes_stimulants(df)
     if (DATA / "faers_counts.csv.gz").exists():
@@ -91,6 +92,9 @@ def write(out: dict) -> str:
             p(f"\n  stimulant response model: mean {cp['mu']:.2f} mmHg, between-person SD {cp['tau']:.2f} mmHg "
               f"({cp['source']})")
             p(out["crossing"].to_string(index=False))
+            p("\n  extra 10-year cardiovascular risk (Pooled Cohort Equations) from a sustained systolic rise,"
+              " adults 40-79 without cardiovascular history")
+            p(out["absolute_risk"].to_string(index=False) if len(out["absolute_risk"]) else "  not available")
             p("\n  within-visit SD of replicate systolic readings and readings needed (each period) for 80% power")
             p(out["replicates"].to_string(index=False))
             p("\n  prescription stimulant use, all cycles with drug data, survey-weighted")

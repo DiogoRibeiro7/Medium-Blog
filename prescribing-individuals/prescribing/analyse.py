@@ -10,6 +10,7 @@ import pandas as pd
 from scipy import stats as sps
 
 from . import stats
+from .cvrisk import pce_risk
 
 AGE_BANDS = [("18-39", 18, 39), ("40-59", 40, 59), ("60-69", 60, 69), ("70-79", 70, 79), ("80+", 80, 200)]
 OLDER = ("60-69", "70-79", "80+")
@@ -91,6 +92,62 @@ def nhanes_crossing(df: pd.DataFrame, mu: float, tau: float, shifts=(2.0, 5.0, 1
         p_avg = np.where(normal, (d["sbp"] >= 130 - mu).astype(float), 0.0)
         rec["average_only"] = _est(d.assign(x=p_avg), "x", "w_osc", band).est
         rec["share_rise_10_or_more"] = float(sps.norm.sf(10, loc=mu, scale=max(tau, 1e-9)))
+        rows.append(rec)
+    return pd.DataFrame(rows)
+
+
+RISK_BANDS = [("40-49", 40, 49), ("50-59", 50, 59), ("60-69", 60, 69), ("70-79", 70, 79)]
+
+
+def nhanes_absolute_risk(df: pd.DataFrame, mu: float, tau: float, shifts=(2.0, 5.0, 10.0)) -> pd.DataFrame:
+    """Extra 10-year cardiovascular risk from a sustained rise in systolic pressure, by age.
+
+    Adults 40 to 79 in the oscillometric cycles without cardiovascular history,
+    with complete risk-equation inputs. Each person's 10-year risk is computed by
+    the Pooled Cohort Equations at their measured systolic pressure and again at
+    systolic + shift, keeping treatment status fixed. The heterogeneous scenario
+    averages the risk over individual responses ~ N(mu, tau^2) with 20-point
+    Gauss-Hermite quadrature. Results are survey-weighted means per age band,
+    reported as extra events per 1,000 people over 10 years.
+    """
+    d = nhanes_frame(df)
+    need = ["tc", "hdl", "sbp", "smoker", "age"]
+    if not all(c in d.columns for c in need):
+        return pd.DataFrame()
+    d["diabetes"] = d.get("told_diabetes", pd.Series(False, index=d.index)).fillna(False).astype(bool) | \
+        (d.get("hba1c", pd.Series(np.nan, index=d.index)) >= 6.5)
+    ok = ((d["w_osc"] > 0) & d["age"].between(40, 79) & ~d["cvd"] &
+          ~d["pregnant"].fillna(False).astype(bool) & d[["tc", "hdl", "sbp"]].notna().all(axis=1) &
+          d["smoker"].notna())
+    x = d[ok].copy()
+    female = (x["sex"] == "female").to_numpy()
+    black = x["black"].fillna(False).astype(bool).to_numpy()
+
+    def risk(sbp):
+        return pce_risk(x["age"], female, black, x["tc"], x["hdl"], sbp, x["bp_med"],
+                        x["smoker"].astype(float), x["diabetes"].astype(float))
+
+    r0 = risk(x["sbp"].to_numpy())
+    x["r0"] = r0
+    for sh in shifts:
+        x[f"d{sh:g}"] = risk(x["sbp"].to_numpy() + sh) - r0
+    nodes, weights = np.polynomial.hermite_e.hermegauss(20)
+    weights = weights / weights.sum()
+    hetero = np.zeros(len(x))
+    for z, w in zip(nodes, weights):
+        hetero += w * (risk(x["sbp"].to_numpy() + mu + max(tau, 0.0) * z) - r0)
+    x["dhet"] = hetero
+    x["rr10"] = (r0 + x["d10"]) / r0
+    rows = []
+    for name, lo, hi in RISK_BANDS:
+        dom = x["age"].between(lo, hi)
+        rec = {"band": name, "n": int(dom.sum())}
+        for col, lab in [("r0", "baseline_risk"), ("dhet", "extra_hetero")] + \
+                        [(f"d{sh:g}", f"extra_{sh:g}") for sh in shifts]:
+            e = stats.survey_mean(x[col], x["w_osc"], x["stratum"], x["psu"], dom)
+            rec[lab] = e.est
+            rec[lab + "_se"] = e.se
+        rec["rr_per_10"] = float(np.average(x.loc[dom, "rr10"], weights=x.loc[dom, "w_osc"]))
         rows.append(rec)
     return pd.DataFrame(rows)
 
@@ -191,10 +248,20 @@ def trial_inventory(t: dict) -> dict:
     ages = t["ages"]
     ages = ages[ages["nct"].isin(s["nct"])]
     cat = ages["category"].fillna("").astype(str)
-    old = cat.str.contains(r"(?:>=|≥|>)\s*65|65\s*(?:years)?\s*(?:and|or)\s*(?:over|older|above)", case=False, regex=True)
-    with_cat = ages.loc[old & ages["param"].fillna("").str.upper().eq("COUNT_OF_PARTICIPANTS")]
+    is65 = cat.str.contains(r"(?:>=|≥|>)\s*65|65\s*(?:years)?\s*(?:and|or)\s*(?:over|older|above)", case=False, regex=True)
+    with_cat = ages.loc[is65 & ages["param"].fillna("").str.upper().eq("COUNT_OF_PARTICIPANTS")]
     out["trials_reporting_65_category"] = int(with_cat["nct"].nunique())
     out["participants_65_plus"] = float(with_cat.groupby("nct")["value"].sum().sum())
+    catrows = ages[ages["nct"].isin(with_cat["nct"]) & ages["param"].fillna("").str.upper().eq("COUNT_OF_PARTICIPANTS") &
+                   ages["measure"].str.contains("categorical", case=False, na=False)]
+    out["participants_in_those_trials"] = float(catrows["value"].sum())
+    adhd_ids = set(s.loc[s["adhd"], "nct"])
+    out["adhd_trials_reporting_65_category"] = int(with_cat.loc[with_cat["nct"].isin(adhd_ids), "nct"].nunique())
+    out["adhd_participants_65_plus"] = float(with_cat.loc[with_cat["nct"].isin(adhd_ids), "value"].sum())
+    out["adhd_participants_in_those_trials"] = float(catrows.loc[catrows["nct"].isin(adhd_ids), "value"].sum())
+    out["adhd_max_age_above_65"] = int((s.loc[s["adhd"], "max_age"] > 65).sum())
+    out["adhd_max_age_missing"] = int(s.loc[s["adhd"], "max_age"].isna().sum())
+    out["older_trials_enrolled"] = float(old["enrollment"].fillna(0).sum())
     mage = mean_baseline_age(ages)
     out["trials_with_mean_age"] = int(len(mage))
     out["mean_age_median"] = float(mage.median()) if len(mage) else float("nan")
@@ -270,6 +337,20 @@ def variance_ratio_table(t: dict, population: str = "adult") -> pd.DataFrame:
     return pd.DataFrame(rows)
 
 
+def _noise_shares(c: pd.DataFrame) -> dict:
+    """From change-score trials only: the share expected to show a rise of 10 or more on each arm."""
+    if c.empty:
+        return {"k_for_shares": 0}
+    mp = float(np.average(c["mean_placebo"], weights=c["n_placebo"]))
+    sp = float(np.sqrt(np.average(c["sd_placebo"] ** 2, weights=c["n_placebo"])))
+    ma = float(np.average(c["mean_active"], weights=c["n_active"]))
+    sa = float(np.sqrt(np.average(c["sd_active"] ** 2, weights=c["n_active"])))
+    return {"k_for_shares": int(len(c)), "mean_change_placebo": mp, "sd_change_placebo": sp,
+            "mean_change_active": ma, "sd_change_active": sa,
+            "share_rise10_placebo": float(sps.norm.sf(10, mp, sp)),
+            "share_rise10_active": float(sps.norm.sf(10, ma, sa))}
+
+
 def variance_ratio_summary(vr: pd.DataFrame) -> pd.DataFrame:
     rows = []
     for kind in ("sbp", "dbp", "hr"):
@@ -293,7 +374,8 @@ def variance_ratio_summary(vr: pd.DataFrame) -> pd.DataFrame:
                      "sd_placebo_pooled": sd_c, "tau_response": float(tau),
                      "tau_lo": float(sd_c * np.sqrt(max(lo ** 2 - 1, 0.0))),
                      "tau_hi": float(sd_c * np.sqrt(max(hi ** 2 - 1, 0.0))),
-                     "share_trials_vr_above_1": float((g["ln_vr"] > 0).mean())})
+                     "share_trials_vr_above_1": float((g["ln_vr"] > 0).mean()),
+                     **_noise_shares(g[g["measure"] == "change"])})
     return pd.DataFrame(rows)
 
 
