@@ -73,6 +73,16 @@ jobs:
           for entry in manifest["files"]:
               print(entry["key"], entry["bytes"], "bytes", entry["sha256"])
           PY
+      - name: Fetch and audit the quarterly GDP deflator
+        working-directory: eu-okun-law
+        run: |
+          poetry run eu-okun fetch-deflator --output-dir data/deflator
+          poetry run python - <<'PY'
+          from pathlib import Path
+          from eu_okun.sign_restrictions import audit_deflator
+          manifest = audit_deflator(Path("data/deflator"))
+          print(manifest["period"], "updated", manifest["updated"], manifest["raw_sha256"])
+          PY
       - name: Keep public source snapshot and audit
         if: success()
         uses: actions/upload-artifact@v4
