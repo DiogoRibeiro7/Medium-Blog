@@ -21,9 +21,9 @@ def simulate(rng:np.random.Generator,scenario:str)->tuple[float,float,float,floa
         target_x=rng.uniform(.5,2.5,N_TARGET)
     a=rng.binomial(1,.5,N_TRIAL)
     if scenario=="omitted_effect_modifier":
-        # Source U ~ N(0,1), target U ~ N(1,1). Target U is NOT observed by analyst.
+        # Source U ~ N(0,1); target U ~ N(1,1) by design, unobserved in the target.
+        # The target E[1 + U] = 2 is an analytical truth, not estimated from U samples.
         u=rng.normal(0,1,N_TRIAL)
-        target_u_mean=1.0  # Target-population E[U]; absent from the analyst's data
         y=.5*x+a*(1+u)+rng.normal(size=N_TRIAL)
     else:
         y=.5*x+a*(1+x)+rng.normal(size=N_TRIAL)
