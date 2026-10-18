@@ -1,0 +1,19 @@
+variant,indicator,label,predicted,n,rho,p_value,holm,verdict
+Bayesian,temp_share,"Temporary share, 2009-2019 (%)",-1,27,-0.12942612942612944,0.5176,1.0,not determined
+Bayesian,pt_share,"Part-time share, 2009-2019 (%)",1,27,0.16788766788766787,0.4103,1.0,not determined
+Bayesian,epl_r,"EPL regular contracts, 2008 (0-6)",1,20,-0.30977443609022554,0.188,0.94,not determined
+Bayesian,epl_t,"EPL temporary contracts, 2008 (0-6)",1,20,-0.5404595089739682,0.0159,0.09540000000000001,not determined
+Bayesian,beta_hpw,Hours-per-worker elasticity,1,20,-0.16541353383458643,0.493,1.0,not determined
+Bayesian,commuting,"Domestic / resident employment, 2009-2019",1,20,0.11428571428571428,0.6284,1.0,not determined
+classical,temp_share,"Temporary share, 2009-2019 (%)",-1,27,-0.3315018315018315,0.0904,0.3905,not determined
+classical,pt_share,"Part-time share, 2009-2019 (%)",1,27,0.23382173382173382,0.2443,0.7329,not determined
+classical,epl_r,"EPL regular contracts, 2008 (0-6)",1,20,-0.5954887218045113,0.0059,0.0354,contradicted
+classical,epl_t,"EPL temporary contracts, 2008 (0-6)",1,20,-0.39819370507970636,0.0781,0.3905,not determined
+classical,beta_hpw,Hours-per-worker elasticity,1,20,-0.10375939849624059,0.6624,1.0,not determined
+classical,commuting,"Domestic / resident employment, 2009-2019",1,20,0.12932330827067667,0.5882,1.0,not determined
+"Bayesian, without LU and IE",temp_share,"Temporary share, 2009-2019 (%)",-1,25,-0.06846153846153846,0.7346,1.0,not determined
+"Bayesian, without LU and IE",pt_share,"Part-time share, 2009-2019 (%)",1,25,0.06846153846153846,0.7462,1.0,not determined
+"Bayesian, without LU and IE",epl_r,"EPL regular contracts, 2008 (0-6)",1,18,-0.12899896800825592,0.6132,1.0,not determined
+"Bayesian, without LU and IE",epl_t,"EPL temporary contracts, 2008 (0-6)",1,18,-0.6718354327694688,0.0033,0.019799999999999998,contradicted
+"Bayesian, without LU and IE",beta_hpw,Hours-per-worker elasticity,1,18,-0.10216718266253869,0.6904,1.0,not determined
+"Bayesian, without LU and IE",commuting,"Domestic / resident employment, 2009-2019",1,18,0.05056759545923632,0.8384,1.0,not determined

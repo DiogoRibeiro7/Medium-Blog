@@ -1,0 +1,71 @@
+setting,key,hypothesis,text,statistic,estimate,low,high,sd,p_value,holm,verdict,note
+primary,P1.1,H1,"LU: domestic minus resident employment elasticity > 0 (equivalently, the commuting margin responds to GDP; P1.2 is the same test)",beta_e_dom_pe(LU) - beta_e_res(LU),0.006588488843808693,-0.04918430477290058,0.052561084472847686,0.026049866262881867,0.801,1.0,not determined,
+primary,P1.3,H1,LU's domestic-resident gap exceeds the median gap of the other countries,gap(LU) - median gap(others),0.004716749913233842,-0.06037796773699145,0.04670967709534168,0.027606446471776222,0.993,1.0,not determined,
+primary,P2.1a,H2,NL hours-per-worker elasticity > ES,beta_hpw(NL) - beta_hpw(ES),-0.07651239398308833,-0.5974859511948428,0.22532650549875272,0.21465565451627172,0.56,1.0,not determined,
+primary,P2.1b,H2,NL hours-per-worker elasticity > PT,beta_hpw(NL) - beta_hpw(PT),nan,nan,nan,nan,nan,nan,not determined,data not available
+primary,P2.2,H2,NL output-per-hour elasticity > ES,beta_prod(NL) - beta_prod(ES),0.7265093685859352,0.31022717863120325,1.2312017296563673,0.2387011997228481,0.002,0.022,supported,
+primary,P2.3a,H2,NL participation elasticity > ES,beta_dp(NL) - beta_dp(ES),-0.008851917507179369,-0.15014074800755156,0.14652434102452325,0.07328582867736962,0.836,1.0,not determined,
+primary,P2.3b,H2,NL participation elasticity > PT,beta_dp(NL) - beta_dp(PT),-0.2208361489516501,-0.3922809089675488,-0.06340669069022216,0.08450307399683583,0.01,0.1,not determined,
+primary,P3.1a,H3,NL lagged share of the unemployment response > ES,share(NL) - share(ES),0.46031670072591724,-0.12517217787337728,1.0365422455138165,0.9555260510306186,0.125,1.0,not determined,
+primary,P3.1b,H3,NL lagged share of the unemployment response > PT,share(NL) - share(PT),nan,nan,nan,nan,nan,nan,not determined,not determinable: the K = 4 sum of PT is not distinguishable from zero
+primary,P4.1 ES,H4,ES temporary employment more GDP-elastic than permanent,beta_temp(ES) - beta_perm(ES),0.7214796414535449,-1.2780800000507953,2.078050785089981,0.865002097021539,0.387,1.0,not determined,
+primary,P4.1 PT,H4,PT temporary employment more GDP-elastic than permanent,beta_temp(PT) - beta_perm(PT),0.10046501263104846,-1.5073880625166198,1.1602627016781752,0.6867135438939733,0.853,1.0,not determined,
+primary,P4.1 NL,H4,NL temporary employment more GDP-elastic than permanent,beta_temp(NL) - beta_perm(NL),-0.4621304050744279,-2.0734795419803422,1.0581299186783668,0.7997176594052715,0.464,1.0,not determined,
+primary,P5.1,H5,ES domestic-employment elasticity > PT,beta_e_dom(ES) - beta_e_dom(PT),nan,nan,nan,nan,nan,nan,not determined,data not available
+primary,P5.2,H5,PT output-per-hour elasticity > ES,beta_prod(PT) - beta_prod(ES),-0.06103286368310973,-0.5092678154887393,0.28147901504930745,0.20492271209013277,0.73,1.0,not determined,
+lags_1,P1.1,H1,"LU: domestic minus resident employment elasticity > 0 (equivalently, the commuting margin responds to GDP; P1.2 is the same test)",beta_e_dom_pe(LU) - beta_e_res(LU),-0.014318202850649886,-0.0577584465110581,0.023081853128580368,0.020737835160565096,0.457,1.0,not determined,
+lags_1,P1.3,H1,LU's domestic-resident gap exceeds the median gap of the other countries,gap(LU) - median gap(others),-0.018325450434529822,-0.06778902395427897,0.01891309322320264,0.022185539464233472,0.346,1.0,not determined,
+lags_1,P2.1a,H2,NL hours-per-worker elasticity > ES,beta_hpw(NL) - beta_hpw(ES),-0.08073911954142896,-0.5492954132085278,0.1570603057435052,0.18232924782384433,0.517,1.0,not determined,
+lags_1,P2.1b,H2,NL hours-per-worker elasticity > PT,beta_hpw(NL) - beta_hpw(PT),nan,nan,nan,nan,nan,nan,not determined,data not available
+lags_1,P2.2,H2,NL output-per-hour elasticity > ES,beta_prod(NL) - beta_prod(ES),0.7112475133018122,0.33095123478864,1.2475247724651553,0.24014187558217975,0.002,0.022,supported,
+lags_1,P2.3a,H2,NL participation elasticity > ES,beta_dp(NL) - beta_dp(ES),0.05413459802536137,-0.1396125052355977,0.2300876269711824,0.0952077249324024,0.635,1.0,not determined,
+lags_1,P2.3b,H2,NL participation elasticity > PT,beta_dp(NL) - beta_dp(PT),-0.11572145598740773,-0.33769888279575305,0.08987479708319876,0.11101796761668675,0.262,1.0,not determined,
+lags_1,P3.1a,H3,NL lagged share of the unemployment response > ES,share(NL) - share(ES),0.46031670072591724,-0.12517217787337728,1.0365422455138165,0.9555260510306186,0.125,1.0,not determined,
+lags_1,P3.1b,H3,NL lagged share of the unemployment response > PT,share(NL) - share(PT),nan,nan,nan,nan,nan,nan,not determined,not determinable: the K = 4 sum of PT is not distinguishable from zero
+lags_1,P4.1 ES,H4,ES temporary employment more GDP-elastic than permanent,beta_temp(ES) - beta_perm(ES),0.7214796414535449,-1.2780800000507953,2.078050785089981,0.865002097021539,0.387,1.0,not determined,
+lags_1,P4.1 PT,H4,PT temporary employment more GDP-elastic than permanent,beta_temp(PT) - beta_perm(PT),0.10046501263104846,-1.5073880625166198,1.1602627016781752,0.6867135438939733,0.853,1.0,not determined,
+lags_1,P4.1 NL,H4,NL temporary employment more GDP-elastic than permanent,beta_temp(NL) - beta_perm(NL),-0.4621304050744279,-2.0734795419803422,1.0581299186783668,0.7997176594052715,0.464,1.0,not determined,
+lags_1,P5.1,H5,ES domestic-employment elasticity > PT,beta_e_dom(ES) - beta_e_dom(PT),nan,nan,nan,nan,nan,nan,not determined,data not available
+lags_1,P5.2,H5,PT output-per-hour elasticity > ES,beta_prod(PT) - beta_prod(ES),0.02207487048846768,-0.3587107919392974,0.4540836046236814,0.1984923241206084,0.783,1.0,not determined,
+lags_4,P1.1,H1,"LU: domestic minus resident employment elasticity > 0 (equivalently, the commuting margin responds to GDP; P1.2 is the same test)",beta_e_dom_pe(LU) - beta_e_res(LU),0.08302429505722386,-0.005665629332059293,0.15617451318574582,0.041674329259483466,0.062,0.62,not determined,
+lags_4,P1.3,H1,LU's domestic-resident gap exceeds the median gap of the other countries,gap(LU) - median gap(others),0.07723348939756997,-0.01893708592592993,0.1550231527482443,0.04587927325101568,0.13,1.0,not determined,
+lags_4,P2.1a,H2,NL hours-per-worker elasticity > ES,beta_hpw(NL) - beta_hpw(ES),-0.16971783019434544,-0.6854927772558053,0.2085399249714199,0.23253767047845833,0.382,1.0,not determined,
+lags_4,P2.1b,H2,NL hours-per-worker elasticity > PT,beta_hpw(NL) - beta_hpw(PT),nan,nan,nan,nan,nan,nan,not determined,data not available
+lags_4,P2.2,H2,NL output-per-hour elasticity > ES,beta_prod(NL) - beta_prod(ES),0.6202070126185348,0.10666955820313326,1.2809657281330091,0.29865496490671767,0.023,0.253,not determined,
+lags_4,P2.3a,H2,NL participation elasticity > ES,beta_dp(NL) - beta_dp(ES),0.05488672592238829,-0.10031794651509705,0.19305405440069556,0.07450697165479987,0.555,1.0,not determined,
+lags_4,P2.3b,H2,NL participation elasticity > PT,beta_dp(NL) - beta_dp(PT),-0.1316656570906194,-0.3206964323481318,0.024107209855524083,0.09058014865042446,0.088,0.7919999999999999,not determined,
+lags_4,P3.1a,H3,NL lagged share of the unemployment response > ES,share(NL) - share(ES),0.46031670072591724,-0.12517217787337728,1.0365422455138165,0.9555260510306186,0.125,1.0,not determined,
+lags_4,P3.1b,H3,NL lagged share of the unemployment response > PT,share(NL) - share(PT),nan,nan,nan,nan,nan,nan,not determined,not determinable: the K = 4 sum of PT is not distinguishable from zero
+lags_4,P4.1 ES,H4,ES temporary employment more GDP-elastic than permanent,beta_temp(ES) - beta_perm(ES),0.7214796414535449,-1.2780800000507953,2.078050785089981,0.865002097021539,0.387,1.0,not determined,
+lags_4,P4.1 PT,H4,PT temporary employment more GDP-elastic than permanent,beta_temp(PT) - beta_perm(PT),0.10046501263104846,-1.5073880625166198,1.1602627016781752,0.6867135438939733,0.853,1.0,not determined,
+lags_4,P4.1 NL,H4,NL temporary employment more GDP-elastic than permanent,beta_temp(NL) - beta_perm(NL),-0.4621304050744279,-2.0734795419803422,1.0581299186783668,0.7997176594052715,0.464,1.0,not determined,
+lags_4,P5.1,H5,ES domestic-employment elasticity > PT,beta_e_dom(ES) - beta_e_dom(PT),nan,nan,nan,nan,nan,nan,not determined,data not available
+lags_4,P5.2,H5,PT output-per-hour elasticity > ES,beta_prod(PT) - beta_prod(ES),0.062032912221929415,-0.4393268371454008,0.36488585161824416,0.2002730733963,0.738,1.0,not determined,
+pre_2020,P1.1,H1,"LU: domestic minus resident employment elasticity > 0 (equivalently, the commuting margin responds to GDP; P1.2 is the same test)",beta_e_dom_pe(LU) - beta_e_res(LU),-0.0005102760110798354,-0.08561820088313786,0.0665101243239996,0.037624036147804026,0.979,1.0,not determined,
+pre_2020,P1.3,H1,LU's domestic-resident gap exceeds the median gap of the other countries,gap(LU) - median gap(others),-0.0005102760110798354,-0.09583715782828979,0.05777734192438079,0.03897925464252617,0.84,1.0,not determined,
+pre_2020,P2.1a,H2,NL hours-per-worker elasticity > ES,beta_hpw(NL) - beta_hpw(ES),-0.19746908988539366,-1.1828677047637113,0.20986130977364945,0.3522535895686385,0.32,1.0,not determined,
+pre_2020,P2.1b,H2,NL hours-per-worker elasticity > PT,beta_hpw(NL) - beta_hpw(PT),nan,nan,nan,nan,nan,nan,not determined,data not available
+pre_2020,P2.2,H2,NL output-per-hour elasticity > ES,beta_prod(NL) - beta_prod(ES),0.6718878590631482,0.24805271135503842,1.6016588304984027,0.3563636275153673,0.002,0.024,supported,
+pre_2020,P2.3a,H2,NL participation elasticity > ES,beta_dp(NL) - beta_dp(ES),0.04459553265875539,-0.17188943609103305,0.28527983074921004,0.11001023978751001,0.74,1.0,not determined,
+pre_2020,P2.3b,H2,NL participation elasticity > PT,beta_dp(NL) - beta_dp(PT),-0.1484353001167041,-0.3698164925097657,0.05057418423990427,0.10360290153850366,0.118,1.0,not determined,
+pre_2020,P3.1a,H3,NL lagged share of the unemployment response > ES,share(NL) - share(ES),0.621176683243289,0.2189722783175852,1.0843522459122863,0.23027579692171915,0.004,0.04,supported,
+pre_2020,P3.1b,H3,NL lagged share of the unemployment response > PT,share(NL) - share(PT),-0.026194107848449555,-0.6178012256938952,0.5265068677820727,1.3021575301760284,0.898,1.0,not determined,
+pre_2020,P4.1 ES,H4,ES temporary employment more GDP-elastic than permanent,beta_temp(ES) - beta_perm(ES),1.9748029734618804,1.0241032987079235,2.6194487042526533,0.40820464583894106,0.003,0.033,supported,
+pre_2020,P4.1 PT,H4,PT temporary employment more GDP-elastic than permanent,beta_temp(PT) - beta_perm(PT),0.27879616063050006,-1.6543584497794146,1.1362318672732576,0.7094837888245713,0.727,1.0,not determined,
+pre_2020,P4.1 NL,H4,NL temporary employment more GDP-elastic than permanent,beta_temp(NL) - beta_perm(NL),-0.8165120785314403,-2.8041257582065886,0.8069825078417245,1.0053059471633545,0.218,1.0,not determined,
+pre_2020,P5.1,H5,ES domestic-employment elasticity > PT,beta_e_dom(ES) - beta_e_dom(PT),nan,nan,nan,nan,nan,nan,not determined,data not available
+pre_2020,P5.2,H5,PT output-per-hour elasticity > ES,beta_prod(PT) - beta_prod(ES),0.051850485331671164,-0.32576141396124697,0.5172325338499187,0.22162821426295465,0.602,1.0,not determined,
+block_8,P1.1,H1,"LU: domestic minus resident employment elasticity > 0 (equivalently, the commuting margin responds to GDP; P1.2 is the same test)",beta_e_dom_pe(LU) - beta_e_res(LU),0.006588488843808693,-0.038608531083651934,0.042638822804592184,0.02055711481109836,0.824,1.0,not determined,
+block_8,P1.3,H1,LU's domestic-resident gap exceeds the median gap of the other countries,gap(LU) - median gap(others),0.004716749913233842,-0.04994551325537002,0.038304832541749746,0.021691512480031473,0.935,1.0,not determined,
+block_8,P2.1a,H2,NL hours-per-worker elasticity > ES,beta_hpw(NL) - beta_hpw(ES),-0.07651239398308833,-0.6339805551250254,0.16379233912550595,0.21469808388475686,0.451,1.0,not determined,
+block_8,P2.1b,H2,NL hours-per-worker elasticity > PT,beta_hpw(NL) - beta_hpw(PT),nan,nan,nan,nan,nan,nan,not determined,data not available
+block_8,P2.2,H2,NL output-per-hour elasticity > ES,beta_prod(NL) - beta_prod(ES),0.7265093685859352,0.35511396707090176,1.184940255369526,0.21537402975001874,0.002,0.022,supported,
+block_8,P2.3a,H2,NL participation elasticity > ES,beta_dp(NL) - beta_dp(ES),-0.008851917507179369,-0.13387933865978247,0.21536819691997905,0.08338865126707017,0.843,1.0,not determined,
+block_8,P2.3b,H2,NL participation elasticity > PT,beta_dp(NL) - beta_dp(PT),-0.2208361489516501,-0.4272503266075514,-0.040700991528154054,0.09347525336796705,0.024,0.24,not determined,
+block_8,P3.1a,H3,NL lagged share of the unemployment response > ES,share(NL) - share(ES),0.46031670072591724,-0.1804467062668969,1.0274742780969082,0.5091462833655253,0.16,1.0,not determined,
+block_8,P3.1b,H3,NL lagged share of the unemployment response > PT,share(NL) - share(PT),nan,nan,nan,nan,nan,nan,not determined,not determinable: the K = 4 sum of PT is not distinguishable from zero
+block_8,P4.1 ES,H4,ES temporary employment more GDP-elastic than permanent,beta_temp(ES) - beta_perm(ES),0.7214796414535449,-1.4256178530921264,2.906871194787496,1.1010662441788663,0.416,1.0,not determined,
+block_8,P4.1 PT,H4,PT temporary employment more GDP-elastic than permanent,beta_temp(PT) - beta_perm(PT),0.10046501263104846,-1.4051241481053558,1.1025038589968137,0.6940821244711219,0.798,1.0,not determined,
+block_8,P4.1 NL,H4,NL temporary employment more GDP-elastic than permanent,beta_temp(NL) - beta_perm(NL),-0.4621304050744279,-2.23237890158076,1.3217617564596145,0.8961819933901973,0.496,1.0,not determined,
+block_8,P5.1,H5,ES domestic-employment elasticity > PT,beta_e_dom(ES) - beta_e_dom(PT),nan,nan,nan,nan,nan,nan,not determined,data not available
+block_8,P5.2,H5,PT output-per-hour elasticity > ES,beta_prod(PT) - beta_prod(ES),-0.06103286368310973,-0.704005047538218,0.31206897063004624,0.2504570330068079,0.676,1.0,not determined,

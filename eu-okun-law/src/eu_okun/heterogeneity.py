@@ -597,7 +597,8 @@ def crisis(data: Mapping[str, CountryData], quarters: Sequence[str],
         for m in CRISIS_MEASURES:
             values = cd.measures[m][idx]
             have = [quarters[i] for i, v in zip(idx, values, strict=True) if math.isfinite(v)]
-            row[m] = float(np.nansum(values))
+            # An unpublished series is missing, not a zero change.
+            row[m] = float(np.nansum(values)) if have else math.nan
             row[f"{m}_from"] = have[0] if have else ""
         out.append(row)
     return out

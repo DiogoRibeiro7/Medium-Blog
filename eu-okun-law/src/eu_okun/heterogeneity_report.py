@@ -295,9 +295,15 @@ def render(cs: CaseStudy, assets: str, command: str) -> str:
     lines += [f"Crisis window {CRISIS[0]} to {CRISIS[1]} (cumulative changes, descriptive): GDP "
               "and the national-accounts margins from the start of the window; unemployment and "
               "participation from the first quarter their series exist.", ""]
-    rows = [[c["geo"], f"{c['g']:+.1f}", f"{c['prod']:+.1f}", f"{c['hpw']:+.1f}",
-             f"{c['e_dom']:+.1f}", f"{c['du']:+.1f} (from {c['du_from']})",
-             f"{c['dp']:+.1f} (from {c['dp_from']})"] for c in cs.crisis]
+    def cum(c: Mapping[str, Any], m: str) -> str:
+        if not math.isfinite(c[m]):
+            return "n/a (not published)"
+        start = c.get(f"{m}_from", "")
+        late = f" (from {start})" if start and start > CRISIS[0] else ""
+        return f"{c[m]:+.1f}{late}"
+
+    rows = [[c["geo"], f"{c['g']:+.1f}", *(cum(c, m) for m in ("prod", "hpw", "e_dom", "du",
+                                                               "dp"))] for c in cs.crisis]
     lines += _table(["Country", "GDP (%)", "Output per hour (%)", "Hours per worker (%)",
                      "Domestic employment (%)", "Unemployment rate (pp)",
                      "Participation rate (pp)"], rows)
@@ -494,8 +500,12 @@ def write_figures(cs: CaseStudy, directory: Path, source: str) -> None:
     items = (("g", "GDP"), ("prod", "Output per hour"), ("hpw", "Hours per worker"),
              ("e_dom", "Domestic employment"))
     for k, (row, shade) in enumerate(zip(cs.crisis, (BLUE, ORANGE), strict=False)):
-        a1.bar(np.arange(len(items)) + (k - 0.5) * 0.35, [row[m] for m, _ in items],
+        xs = np.arange(len(items)) + (k - 0.5) * 0.35
+        a1.bar(xs, [row[m] if math.isfinite(row[m]) else 0.0 for m, _ in items],
                width=0.33, color=shade, label=row["geo"])
+        for x, (m, _) in zip(xs, items, strict=True):
+            if not math.isfinite(row[m]):
+                a1.text(x, 0, "n/a", ha="center", va="bottom", fontsize=7.5, color=MUTED)
         a2.bar(np.arange(2) + (k - 0.5) * 0.35, [row["du"], row["dp"]], width=0.33, color=shade)
     a1.set_xticks(range(len(items)))
     a1.set_xticklabels([label for _, label in items], fontsize=8.5)

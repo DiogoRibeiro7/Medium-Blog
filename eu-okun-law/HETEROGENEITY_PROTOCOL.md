@@ -281,3 +281,15 @@ magnitudes.
     2026-10-15 update, the same day as the frozen GDP series but a later release. Any
     revisions between them are not reconciled.
   - *Snapshot.* `snapshots/heterogeneity-2026-10-18`, audited.
+- **After the first computation: a coverage correction and a presentation fix.** No
+  hypothesis, prediction, rule or source was changed.
+  - *Coverage.* Section 2 claimed that domestic employment in persons
+    (`namq_10_a10_e`) covers 26 countries. The pre-protocol check had looked only at which
+    countries the dataset lists, not at their values. Eurostat in fact publishes no
+    seasonally adjusted employment in persons for BE, CZ, EL, FR, MT, PL or PT in either
+    dataset; only their hours are published.
+    - Portugal's hours per worker and domestic employment are therefore unavailable, so
+      P2.1b and P5.1 are reported as "not determined: data not available".
+    - No other source was substituted after the fact.
+  - *Crisis table.* A margin whose series is not published was first shown as a zero
+    change, because the sum ignored the missing values. It is now shown as not published.

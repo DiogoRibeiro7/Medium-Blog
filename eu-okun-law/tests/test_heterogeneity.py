@@ -90,6 +90,19 @@ def test_margin_identity_commuting_definition_and_break_flags() -> None:
     assert math.isfinite(cd.yy["temp"][i + 5]) and math.isnan(cd.yy["temp"][3])
 
 
+def test_crisis_reports_unpublished_series_as_missing_not_zero() -> None:
+    from eu_okun.heterogeneity import crisis
+
+    quarters, base, extra = synthetic(5)
+    for q in quarters:
+        extra[("PT", q)]["emp_a10"] = None
+    data = {g: build_country(g, quarters, base, extra) for g in ("ES", "PT")}
+    rows = {r["geo"]: r for r in crisis(data, quarters)}
+    assert math.isnan(rows["PT"]["e_dom"]) and math.isnan(rows["PT"]["hpw"])
+    assert math.isfinite(rows["PT"]["prod"]) and math.isfinite(rows["ES"]["e_dom"])
+    assert rows["ES"]["du_from"] == "2009-Q2"
+
+
 def test_block_counts_and_weighted_ols_match_an_explicit_resample() -> None:
     counts = block_counts(30, 4, 50, np.random.default_rng(1))
     assert counts.shape == (50, 30) and np.all(counts.sum(axis=1) == 30)
