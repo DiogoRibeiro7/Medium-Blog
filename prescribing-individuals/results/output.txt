@@ -1,0 +1,19 @@
+== 1. same average, different people
+mixture: 0.803 x N(-0.71, 5.0) + 0.197 x N(13.0, 5.0); mean 2.00
+share rising >= 10 mmHg: mixture 0.156 (target 0.156), homogeneous N(2.0, 3.0) 0.0038
+mixture: share rising >= 20 mmHg 0.016; share whose pressure falls 0.447
+
+== 2. the same relative effect on different baselines
+odds ratio per year 1.04; over 5 years of use: 1.217
+illustrative baseline risk 2%: risk with medication 2.42%; absolute increase 0.42% (one extra case per 237 people)
+illustrative baseline risk 20%: risk with medication 23.32%; absolute increase 3.32% (one extra case per 30 people)
+UK 1995 pill scare (Gigerenzer et al.): 1 in 7,000 vs 2 in 7,000 = relative +100%, absolute +1 in 7,000
+
+== 3. the drug holiday as an experiment
+benefit d=0.3: probability the comparison points the wrong way -> k=1: 38.2%, k=2: 33.6%, k=3: 30.2%, k=4: 27.4%, k=6: 23.1%, k=8: 19.8%, k=10: 17.1%
+benefit d=0.5: probability the comparison points the wrong way -> k=1: 30.9%, k=2: 24.0%, k=3: 19.3%, k=4: 15.9%, k=6: 11.0%, k=8: 7.9%, k=10: 5.7%
+benefit d=1.0: probability the comparison points the wrong way -> k=1: 15.9%, k=2: 7.9%, k=3: 4.2%, k=4: 2.3%, k=6: 0.7%, k=8: 0.2%, k=10: 0.1%
+benefit d=0.5: power of a one-sided paired t-test at 5% -> k=3: 15.1%, k=4: 19.6%, k=6: 28.0%, k=8: 35.7%, k=10: 42.7%
+benefit d=1.0: power of a one-sided paired t-test at 5% -> k=3: 32.2%, k=4: 46.1%, k=6: 67.7%, k=8: 81.5%, k=10: 89.8%
+benefit d=0.5: pairs needed for at most 5% chance of pointing the wrong way: 11
+benefit d=1.0: pairs needed for at most 5% chance of pointing the wrong way: 3
