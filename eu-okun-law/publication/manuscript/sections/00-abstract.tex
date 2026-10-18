@@ -1,0 +1,35 @@
+\begin{abstract}
+\noindent
+We re-examine the relation between quarterly real GDP growth and changes in the
+unemployment rate in the \val{n_countries} member states of the European Union from 2009
+to 2026, using official Eurostat data frozen with cryptographic hashes and analyses
+registered before estimation.
+
+\textbf{Association.} With 2020--2021 excluded, the two-lag Okun coefficient sum is
+negative, with a 95\% interval below zero, in \val{cl_n_neg_excluded} of
+\val{n_countries} countries. Including the pandemic quarters pulls most sums towards zero.
+A hierarchical Bayesian model with Student-$t$ errors, residual autocorrelation and a
+common European factor gives an unweighted cross-country mean of \val{by_mu} (90\%
+interval \val{by_mu_ci}), with a between-country standard deviation of \val{by_tau}.
+Country ranks remain highly uncertain.
+
+\textbf{Prediction.} Hierarchical pooling does not improve one-quarter-ahead forecasts
+beyond sampling variation, and neither do lagged GDP growth or the common factor: none of
+the pre-registered forecast comparisons is decided at the 5\% familywise level.
+
+\textbf{Causation.} External instruments for monetary-policy and oil-supply shocks are weak
+for real activity, with first-stage $|t|$ at most \val{id_max_t} quarterly and
+\val{mo_max_t} monthly. A foreign-demand shift-share instrument is infeasible (expected
+first-stage $t$ of \val{ss_P1_t}). Sign restrictions that the data admit leave the
+shock-conditional Okun ratios unbounded.
+
+\textbf{Countries.} We compare the results with three earlier claims: a large association
+for Spain, a delayed one for the Netherlands and a weak one for Luxembourg. The Spanish claim
+is supported in every accepted specification. The Dutch and Luxembourg claims are not
+resolved by their registered rules. In Luxembourg, the data give no sign that the
+cross-border measurement mismatch explains the weak association: domestic and resident
+employment barely move with GDP, and output per hour absorbs the fluctuations.
+
+Every Okun coefficient in this study is a descriptive association; none is an identified
+causal effect.
+\end{abstract}

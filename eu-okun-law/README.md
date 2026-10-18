@@ -1,11 +1,9 @@
 # Okun's law revisited: an EU-27 empirical study
 
-> Status: research in progress. Live Eurostat acquisition, data audits and the classical
-> (OLS/HAC) descriptive analyses run in CI, and their results have been independently
-> verified and stress-tested in [docs/CLASSICAL_RESULTS_REVIEW.md](docs/CLASSICAL_RESULTS_REVIEW.md).
-> Pre-registered hierarchical Bayesian estimates ([docs/HIERARCHICAL_BAYES.md](docs/HIERARCHICAL_BAYES.md))
-> and a pre-registered predictive comparison ([docs/PREDICTIVE_COMPARISON.md](docs/PREDICTIVE_COMPARISON.md))
-> are available. There are no country rankings and no causal effects.
+> Status: analysis complete; the article awaits the author's review. The manuscript
+> (LaTeX), its Medium version, the manifests and the audit are in
+> [publication/](publication/README.md). Every number in the article is read by code from
+> the committed results. There are no country rankings and no causal effects.
 
 ## Research question
 
@@ -632,8 +630,8 @@ brief:
 - **The uniform-rotation posterior** that sign-restriction studies usually report looks
   sharp: demand -0.43, technology -0.55. That sharpness comes from the prior over
   rotations, not from the data.
-- **Recursive orderings (not causal)** move the "GDP shock" Okun ratio between -0.13 and
-  -0.22.
+- **Recursive orderings (not causal)** move the "GDP shock" Okun ratio between -0.135 and
+  -0.202 at 4 quarters and between -0.149 and -0.216 at 8 quarters.
 - **Conclusion.** Restrictions the data cannot reject leave the productivity and
   labour-supply questions unanswered. Every Okun coefficient remains descriptive.
 
@@ -645,6 +643,7 @@ by the same rule in every country. It does not retrofit explanations to unusual
 coefficients.
 
 **Data.** Official series only, frozen in `snapshots/heterogeneity-2026-10-18/`:
+
 - Eurostat national-accounts employment, domestic and resident, and hours;
 - LFS temporary and permanent employees;
 - temporary and part-time shares;
@@ -680,3 +679,32 @@ brief, with associations only and 2020-2021 excluded:
   correlation over 20 countries, and only in some variants.
 - **No identified causal effect.** The report lists the hypotheses that cannot be tested
   reliably.
+
+## Publication: manuscript, Medium article and reproduction
+
+[publication/](publication/README.md) holds the final outputs:
+
+- the LaTeX manuscript ([publication/manuscript/](publication/manuscript/));
+- the Medium article generated from the same values ([publication/medium/article.md](publication/medium/article.md));
+- the data, experiment, environment and value manifests ([publication/manifest/](publication/manifest/));
+- the audit of every prior output ([publication/AUDIT.md](publication/AUDIT.md)).
+
+Every number in the text is read by code from the committed result tables, and the build
+fails on an undefined value. Reproduction steps, one command per line, are in
+[publication/README.md](publication/README.md). In short:
+
+```bash
+poetry run eu-okun publication --check
+poetry run eu-okun publication --build
+```
+
+Then, from `publication/manuscript/`:
+
+```bash
+latexmk -pdf main.tex
+```
+
+The `publication` job of the
+[EU Okun empirical estimates](../.github/workflows/eu-okun-law-estimates.yml) workflow
+checks the generated files and compiles the PDF. It uploads the PDF as an artifact.
+Nothing is published automatically.

@@ -1,0 +1,26 @@
+{
+ "python": ">=3.12,<3.15",
+ "poetry": "2.5.1 (CI)",
+ "poetry_lock_sha256": "4417bcf47e79d3f9d5284b16433a1b06e62667ecc206f735d5f6e5bed0624943",
+ "pyproject_sha256": "76499333f2cd229a6aea452228a683b0b41ad0169507db63b580c359df73cbb3",
+ "packages": {
+  "arviz": "1.3.0",
+  "h5netcdf": "1.8.1",
+  "jax": "0.11.2",
+  "jaxlib": "0.11.2",
+  "matplotlib": "3.11.2",
+  "numpy": "2.5.4",
+  "numpyro": "0.22.0",
+  "openpyxl": "3.1.5",
+  "scipy": "1.18.1"
+ },
+ "seeds": [
+  20261015,
+  20261016,
+  20261017,
+  20261018,
+  20261019,
+  20261020
+ ],
+ "note": "Committed outputs were produced on Windows 11 and replicated on Ubuntu (GitHub Actions); posterior medians agree within the tolerances stated in each report."
+}

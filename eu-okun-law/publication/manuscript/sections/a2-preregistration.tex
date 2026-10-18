@@ -1,0 +1,35 @@
+\section{Pre-registration record}\label{app:prereg}
+
+\paragraph{Rule.} Each analysis was registered before it was run. Before any estimate, its
+protocol was committed and pushed. The protocol fixes:
+\begin{itemize}
+  \item the data and sample;
+  \item the estimator and its settings;
+  \item the decision rules and multiple-comparison families;
+  \item the sensitivity analyses;
+  \item for the case study, the hypotheses that cannot be tested reliably.
+\end{itemize}
+Table~\ref{tab:prereg} lists the commit that first added each protocol. In every case the
+commit precedes, in the repository history, the commit that first added the results.
+
+\paragraph{Changes after registration.} A change made after registration is recorded in
+the protocol's change log, with its timing relative to the results and its reason. Three
+kinds of change occurred:
+\begin{itemize}
+  \item \emph{clarifications made before any estimate}: for example, the Bayesian claim
+    rules when a specification has no population mean, and the treatment of an indicator
+    without variation;
+  \item \emph{corrections after the first computation that change no rule}: for example,
+    the coverage of employment in persons;
+  \item \emph{amendments}: registered extensions with their own decision rules, written
+    before their fits. Examples are the dynamic and regime Bayesian models and the monthly
+    identification.
+\end{itemize}
+Analyses added after results were seen, such as the checks of the common factor, are
+labelled as exploratory in the protocol and in the report.
+
+\paragraph{The classical plan.} \texttt{METHODS.md} is the research plan of the classical
+stage. It was committed with the data pipeline before any estimate and revised in later
+commits without a separate change log; the repository history records each revision.
+
+\input{generated/tab_prereg.tex}

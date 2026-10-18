@@ -1,0 +1,60 @@
+\section{Classical estimates}\label{sec:classical}
+
+\subsection{Method}
+
+For each country, equation~\eqref{eq:okun} is estimated by ordinary least squares. Lag
+orders are $K\in\{0,1,2,4\}$, with and without the change in the participation rate as a
+control. The headline specification is $K=2$ without participation.
+
+\paragraph{Inference.} Standard errors use the Newey--West covariance with a Bartlett
+kernel and four lags in calendar quarters \citep{newey1987hac}. The variance of
+$\hat\theta_i$ uses the full covariance matrix of the lag coefficients.
+
+\paragraph{Samples.} The full period, 2009--2026; the same period without any observation
+whose window touches 2020--2021; 2009--2019; 2022 onwards; and a flag-screened sample.
+
+\paragraph{Review.} A separate review recomputed every published quantity by an
+independent numerical route and re-estimated 24 core specifications per country. It
+classified each country as robustly negative, negative with specification-dependent
+significance, or sign-unstable.
+
+\subsection{Results}
+
+\paragraph{The association.} With 2020--2021 excluded, the two-lag sum is negative with a
+95\% interval below zero in \val{cl_n_neg_excluded} of \val{n_countries} countries
+(table~\ref{tab:countries}). In \val{cl_n_robust} countries every core specification agrees
+in sign and excludes zero. These are associations conditional on contemporaneous and
+lagged GDP growth. Contemporaneous growth is not exogenous, and the participation control
+can absorb part of the association, a ``bad control'' in the sense of a variable that is
+itself an outcome.
+
+\paragraph{The pandemic.} Including 2020--2021 moves the sum towards zero in
+\val{cl_n_attenuated} countries (figure~\ref{fig:pandemic}). In \val{cl_n_full_outside}
+countries the full-sample estimate lies outside the 95\% interval of the estimate without
+the pandemic. The pandemic quarters combine the largest output movements of the sample
+with job-retention schemes that kept unemployment from following output. The full-sample
+coefficient therefore describes those quarters, not the 2009--2019 relationship.
+
+\paragraph{Post-2021 stability.} The original classical analysis tested whether the sum
+changed after 2021 with interacted HAC regressions and Holm's step-down adjustment
+\citep{holm1979}; \val{ss_published_holm} changes were significant. With only about
+seventeen post-2021 quarters, however, the asymptotic normal reference is unreliable. A
+pre-registered study replaced it with null-imposed sieve and moving-block bootstraps of the
+same statistic \citep{kunsch1989bootstrap}:
+\begin{itemize}
+  \item \val{ss_survivors} of the \val{ss_published_holm} published changes survive;
+  \item a size study under each test's fitted null shows why: the nominal 5\% normal test
+    rejects \val{ss_size_normal} of the time, whereas the bootstrap test rejects
+    \val{ss_size_bootstrap}.
+\end{itemize}
+A weaker association after 2021 is therefore a descriptive pattern, not a tested result.
+The Bayesian regime models (section~\ref{sec:bayes}) agree.
+
+\input{generated/tab_countries.tex}
+
+\begin{figure}[t]\centering
+\includegraphics[width=0.62\textwidth]{fig2_pandemic.pdf}
+\caption{Classical two-lag sums ($K=2$): full sample (vertical) against the sample without
+2020--2021 (horizontal). For negative sums, a point above the diagonal is closer to zero
+when the pandemic quarters are included. Focus countries in orange.}\label{fig:pandemic}
+\end{figure}

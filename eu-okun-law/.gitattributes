@@ -8,3 +8,10 @@ snapshots/** !filter !diff !merge -text
 docs/**/*.csv !filter !diff !merge text eol=lf
 docs/**/*.json text eol=lf
 docs/*.md text eol=lf
+
+# Publication sources and generated files: LF exactly as written, so the manifests and
+# the --check comparison are identical on every platform.
+publication/**/*.tex text eol=lf
+publication/**/*.bib text eol=lf
+publication/**/*.json text eol=lf
+publication/**/*.md text eol=lf

@@ -122,10 +122,24 @@ Pre-registered in [BAYES_PROTOCOL.md](BAYES_PROTOCOL.md); results in
 
 ## Phase 4 — Medium article
 
-- [ ] Freeze data, environment and all model settings.
-- [ ] Generate every chart and table directly from scripts.
-- [ ] Report support, contradiction and uncertainty impartially.
-- [ ] Write and review the mathematical article before publication.
+- [x] Freeze data, environment and all model settings. The manifests in
+      [publication/manifest/](publication/manifest/) list every snapshot file, every
+      analysis (protocol, commands, seeds, replication, output hashes), the locked
+      environment and every quoted value with its source.
+- [x] Generate every chart and table directly from scripts (`eu-okun publication`). The
+      two hand-written tables (data sources and the comparison with the earlier claims)
+      take every number from the same generated values.
+- [x] Audit all prior outputs: snapshot re-derivation, consistency between reports, and
+      the numbers quoted in this roadmap, the README and the identification study
+      ([publication/AUDIT.md](publication/AUDIT.md)). The audit corrected two quoted
+      ranges.
+- [x] Report support, contradiction and uncertainty impartially, keeping association,
+      prediction and causation apart.
+- [x] Write the mathematical article in LaTeX
+      ([publication/manuscript/](publication/manuscript/)) and the Medium version generated
+      from the same values ([publication/medium/article.md](publication/medium/article.md)).
+      The bibliography is verified against doi.org.
+- [ ] Author review and publication. Nothing is published automatically.
 
 Green offline CI is not evidence of a successful live data download.
 No pre-selected country results, artificial observations or causal

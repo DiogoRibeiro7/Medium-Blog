@@ -1,0 +1,1358 @@
+{
+ "by_ES": {
+  "tex": "$-0.51$",
+  "md": "−0.51",
+  "raw": -0.5117305466204046,
+  "source": "docs/bayes/country_estimates.csv"
+ },
+ "by_ES_ci": {
+  "tex": "$[-0.67, -0.30]$",
+  "md": "[−0.67, −0.30]",
+  "raw": "[-0.6700834675231561, -0.29994330009493125]",
+  "source": "docs/bayes/country_estimates.csv"
+ },
+ "by_ES_lagshare": {
+  "tex": "$0.22$",
+  "md": "0.22",
+  "raw": 0.21628108517933325,
+  "source": "docs/bayes/country_estimates.csv"
+ },
+ "by_ES_ols": {
+  "tex": "$-0.93$",
+  "md": "−0.93",
+  "raw": -0.9344280906601714,
+  "source": "docs/bayes/country_estimates.csv"
+ },
+ "by_LU": {
+  "tex": "$-0.11$",
+  "md": "−0.11",
+  "raw": -0.11335154973642089,
+  "source": "docs/bayes/country_estimates.csv"
+ },
+ "by_LU_ci": {
+  "tex": "$[-0.23, +0.01]$",
+  "md": "[−0.23, +0.01]",
+  "raw": "[-0.23379314827650638, 0.013070110925856498]",
+  "source": "docs/bayes/country_estimates.csv"
+ },
+ "by_LU_lagshare": {
+  "tex": "$0.57$",
+  "md": "0.57",
+  "raw": 0.5685629922391717,
+  "source": "docs/bayes/country_estimates.csv"
+ },
+ "by_LU_ols": {
+  "tex": "$+0.14$",
+  "md": "+0.14",
+  "raw": 0.13714719417839288,
+  "source": "docs/bayes/country_estimates.csv"
+ },
+ "by_NL": {
+  "tex": "$-0.13$",
+  "md": "−0.13",
+  "raw": -0.13314678676328318,
+  "source": "docs/bayes/country_estimates.csv"
+ },
+ "by_NL_ci": {
+  "tex": "$[-0.23, -0.04]$",
+  "md": "[−0.23, −0.04]",
+  "raw": "[-0.22786518267132314, -0.04230404475618894]",
+  "source": "docs/bayes/country_estimates.csv"
+ },
+ "by_NL_lagshare": {
+  "tex": "$0.94$",
+  "md": "0.94",
+  "raw": 0.9441873794537066,
+  "source": "docs/bayes/country_estimates.csv"
+ },
+ "by_NL_ols": {
+  "tex": "$-0.35$",
+  "md": "−0.35",
+  "raw": -0.3484477197072554,
+  "source": "docs/bayes/country_estimates.csv"
+ },
+ "by_PT": {
+  "tex": "$-0.25$",
+  "md": "−0.25",
+  "raw": -0.25126512086957375,
+  "source": "docs/bayes/country_estimates.csv"
+ },
+ "by_PT_ci": {
+  "tex": "$[-0.39, -0.12]$",
+  "md": "[−0.39, −0.12]",
+  "raw": "[-0.38779337917396894, -0.11595996209719892]",
+  "source": "docs/bayes/country_estimates.csv"
+ },
+ "by_PT_lagshare": {
+  "tex": "$0.58$",
+  "md": "0.58",
+  "raw": 0.5802511977126623,
+  "source": "docs/bayes/country_estimates.csv"
+ },
+ "by_PT_ols": {
+  "tex": "$-0.59$",
+  "md": "−0.59",
+  "raw": -0.5858394969513475,
+  "source": "docs/bayes/country_estimates.csv"
+ },
+ "by_cov90": {
+  "tex": "$94$\\%",
+  "md": "94%",
+  "raw": 0.9368327402135231,
+  "source": "docs/bayes/diagnostics.json"
+ },
+ "by_lag1_obs": {
+  "tex": "$0.27$",
+  "md": "0.27",
+  "raw": 0.26919010452151454,
+  "source": "docs/bayes/diagnostics.json"
+ },
+ "by_lag1_rep": {
+  "tex": "$0.06$",
+  "md": "0.06",
+  "raw": 0.055388783025274654,
+  "source": "docs/bayes/diagnostics.json"
+ },
+ "by_mu": {
+  "tex": "$-0.198$",
+  "md": "−0.198",
+  "raw": -0.198,
+  "source": "docs/HIERARCHICAL_BAYES.md (generated from saved posterior draws)"
+ },
+ "by_mu_ci": {
+  "tex": "$[-0.254, -0.145]$",
+  "md": "[−0.254, −0.145]",
+  "raw": "[-0.254, -0.145]",
+  "source": "docs/HIERARCHICAL_BAYES.md (generated from saved posterior draws)"
+ },
+ "by_n_accepted": {
+  "tex": "8",
+  "md": "8",
+  "raw": 8,
+  "source": "docs/bayes/diagnostics.json"
+ },
+ "by_n_neg_all": {
+  "tex": "22",
+  "md": "22",
+  "raw": 22,
+  "source": "docs/bayes/country_estimates.csv"
+ },
+ "by_n_neg_primary": {
+  "tex": "24",
+  "md": "24",
+  "raw": 24,
+  "source": "docs/bayes/country_estimates.csv"
+ },
+ "by_n_smaller": {
+  "tex": "25",
+  "md": "25",
+  "raw": 25,
+  "source": "docs/bayes/country_estimates.csv"
+ },
+ "by_n_specs": {
+  "tex": "9",
+  "md": "9",
+  "raw": 9,
+  "source": "docs/bayes/diagnostics.json"
+ },
+ "by_pairs_primary": {
+  "tex": "99",
+  "md": "99",
+  "raw": 99,
+  "source": "docs/bayes-robustness/pairwise_probabilities.csv"
+ },
+ "by_pairs_surviving": {
+  "tex": "59",
+  "md": "59",
+  "raw": 59,
+  "source": "docs/bayes-robustness/surviving_pairs.csv"
+ },
+ "by_pairs_total": {
+  "tex": "351",
+  "md": "351",
+  "raw": 351,
+  "source": "EU-27"
+ },
+ "by_rank_width": {
+  "tex": "15",
+  "md": "15",
+  "raw": 15,
+  "source": "docs/bayes/country_estimates.csv"
+ },
+ "by_tau": {
+  "tex": "$0.126$",
+  "md": "0.126",
+  "raw": 0.126,
+  "source": "docs/HIERARCHICAL_BAYES.md (generated from saved posterior draws)"
+ },
+ "by_tau_ci": {
+  "tex": "$[0.081, 0.175]$",
+  "md": "[0.081, 0.175]",
+  "raw": "[0.081, 0.175]",
+  "source": "docs/HIERARCHICAL_BAYES.md (generated from saved posterior draws)"
+ },
+ "cl_ES_excl": {
+  "tex": "$-0.79$",
+  "md": "−0.79",
+  "raw": -0.7944275190245991,
+  "source": "docs/review/grid.csv"
+ },
+ "cl_ES_excl_ci": {
+  "tex": "$[-0.99, -0.60]$",
+  "md": "[−0.99, −0.60]",
+  "raw": "[-0.993747113164243, -0.5951079248849551]",
+  "source": "docs/review/grid.csv"
+ },
+ "cl_ES_full": {
+  "tex": "$-0.27$",
+  "md": "−0.27",
+  "raw": -0.27459523272987946,
+  "source": "docs/review/grid.csv"
+ },
+ "cl_ES_full_ci": {
+  "tex": "$[-0.39, -0.16]$",
+  "md": "[−0.39, −0.16]",
+  "raw": "[-0.39331206144308095, -0.155878404016678]",
+  "source": "docs/review/grid.csv"
+ },
+ "cl_ES_pre": {
+  "tex": "$-0.93$",
+  "md": "−0.93",
+  "raw": -0.9344280906601713,
+  "source": "docs/review/grid.csv"
+ },
+ "cl_ES_pre_ci": {
+  "tex": "$[-1.09, -0.78]$",
+  "md": "[−1.09, −0.78]",
+  "raw": "[-1.089908331412648, -0.7789478499076945]",
+  "source": "docs/review/grid.csv"
+ },
+ "cl_ES_verdict": {
+  "tex": "robust negative",
+  "md": "robust negative",
+  "raw": "robust negative",
+  "source": "docs/review/robustness.csv"
+ },
+ "cl_LU_excl": {
+  "tex": "$+0.17$",
+  "md": "+0.17",
+  "raw": 0.16720931990185264,
+  "source": "docs/review/grid.csv"
+ },
+ "cl_LU_excl_ci": {
+  "tex": "$[-0.06, +0.40]$",
+  "md": "[−0.06, +0.40]",
+  "raw": "[-0.06258204372218415, 0.39700068352588946]",
+  "source": "docs/review/grid.csv"
+ },
+ "cl_LU_full": {
+  "tex": "$-0.05$",
+  "md": "−0.05",
+  "raw": -0.05287175319284098,
+  "source": "docs/review/grid.csv"
+ },
+ "cl_LU_full_ci": {
+  "tex": "$[-0.28, +0.18]$",
+  "md": "[−0.28, +0.18]",
+  "raw": "[-0.28118583616823306, 0.17544232978255112]",
+  "source": "docs/review/grid.csv"
+ },
+ "cl_LU_pre": {
+  "tex": "$+0.15$",
+  "md": "+0.15",
+  "raw": 0.1544312028866912,
+  "source": "docs/review/grid.csv"
+ },
+ "cl_LU_pre_ci": {
+  "tex": "$[-0.12, +0.43]$",
+  "md": "[−0.12, +0.43]",
+  "raw": "[-0.12029257052967463, 0.42915497630305705]",
+  "source": "docs/review/grid.csv"
+ },
+ "cl_LU_verdict": {
+  "tex": "sign-unstable",
+  "md": "sign-unstable",
+  "raw": "sign-unstable",
+  "source": "docs/review/robustness.csv"
+ },
+ "cl_NL_excl": {
+  "tex": "$-0.28$",
+  "md": "−0.28",
+  "raw": -0.27926900508972585,
+  "source": "docs/review/grid.csv"
+ },
+ "cl_NL_excl_ci": {
+  "tex": "$[-0.43, -0.13]$",
+  "md": "[−0.43, −0.13]",
+  "raw": "[-0.42847456845605153, -0.13006344172340017]",
+  "source": "docs/review/grid.csv"
+ },
+ "cl_NL_full": {
+  "tex": "$-0.21$",
+  "md": "−0.21",
+  "raw": -0.20581362764974542,
+  "source": "docs/review/grid.csv"
+ },
+ "cl_NL_full_ci": {
+  "tex": "$[-0.26, -0.16]$",
+  "md": "[−0.26, −0.16]",
+  "raw": "[-0.25579125737100455, -0.15583599792848626]",
+  "source": "docs/review/grid.csv"
+ },
+ "cl_NL_pre": {
+  "tex": "$-0.35$",
+  "md": "−0.35",
+  "raw": -0.3484477197072552,
+  "source": "docs/review/grid.csv"
+ },
+ "cl_NL_pre_ci": {
+  "tex": "$[-0.52, -0.18]$",
+  "md": "[−0.52, −0.18]",
+  "raw": "[-0.5163508828405978, -0.18054455657391255]",
+  "source": "docs/review/grid.csv"
+ },
+ "cl_NL_verdict": {
+  "tex": "robust negative",
+  "md": "robust negative",
+  "raw": "robust negative",
+  "source": "docs/review/robustness.csv"
+ },
+ "cl_PT_excl": {
+  "tex": "$-0.49$",
+  "md": "−0.49",
+  "raw": -0.49479111708833434,
+  "source": "docs/review/grid.csv"
+ },
+ "cl_PT_excl_ci": {
+  "tex": "$[-0.68, -0.31]$",
+  "md": "[−0.68, −0.31]",
+  "raw": "[-0.6757966910492672, -0.31378554312740153]",
+  "source": "docs/review/grid.csv"
+ },
+ "cl_PT_full": {
+  "tex": "$-0.13$",
+  "md": "−0.13",
+  "raw": -0.1303579911409155,
+  "source": "docs/review/grid.csv"
+ },
+ "cl_PT_full_ci": {
+  "tex": "$[-0.28, +0.02]$",
+  "md": "[−0.28, +0.02]",
+  "raw": "[-0.2780018169186828, 0.017285834636851793]",
+  "source": "docs/review/grid.csv"
+ },
+ "cl_PT_pre": {
+  "tex": "$-0.59$",
+  "md": "−0.59",
+  "raw": -0.5858394969513474,
+  "source": "docs/review/grid.csv"
+ },
+ "cl_PT_pre_ci": {
+  "tex": "$[-0.75, -0.42]$",
+  "md": "[−0.75, −0.42]",
+  "raw": "[-0.7544360249965382, -0.41724296890615664]",
+  "source": "docs/review/grid.csv"
+ },
+ "cl_PT_verdict": {
+  "tex": "negative; significance specification-dependent",
+  "md": "negative; significance specification-dependent",
+  "raw": "negative; significance specification-dependent",
+  "source": "docs/review/robustness.csv"
+ },
+ "cl_n_attenuated": {
+  "tex": "20",
+  "md": "20",
+  "raw": 20,
+  "source": "docs/review/grid.csv"
+ },
+ "cl_n_full_outside": {
+  "tex": "10",
+  "md": "10",
+  "raw": 10,
+  "source": "docs/review/robustness.csv"
+ },
+ "cl_n_neg_excluded": {
+  "tex": "22",
+  "md": "22",
+  "raw": 22,
+  "source": "docs/review/robustness.csv"
+ },
+ "cl_n_robust": {
+  "tex": "17",
+  "md": "17",
+  "raw": 17,
+  "source": "docs/review/robustness.csv"
+ },
+ "cl_pandemic_share_median": {
+  "tex": "$78$\\%",
+  "md": "78%",
+  "raw": 0.7798298129896563,
+  "source": "docs/review/robustness.csv"
+ },
+ "claim_es_holds": {
+  "tex": "8",
+  "md": "8",
+  "raw": 8,
+  "source": "docs/bayes/claims.csv"
+ },
+ "claim_es_p": {
+  "tex": "$0.996$",
+  "md": "0.996",
+  "raw": 0.99625,
+  "source": "docs/bayes/claims.csv"
+ },
+ "claim_es_verdict": {
+  "tex": "supported",
+  "md": "supported",
+  "raw": "supported",
+  "source": "docs/bayes/claims.csv"
+ },
+ "claim_lu_holds": {
+  "tex": "0",
+  "md": "0",
+  "raw": 0,
+  "source": "docs/bayes/claims.csv"
+ },
+ "claim_lu_p": {
+  "tex": "$0.870$",
+  "md": "0.870",
+  "raw": 0.86975,
+  "source": "docs/bayes/claims.csv"
+ },
+ "claim_lu_verdict": {
+  "tex": "not resolved",
+  "md": "not resolved",
+  "raw": "not resolved",
+  "source": "docs/bayes/claims.csv"
+ },
+ "claim_nl_holds": {
+  "tex": "6",
+  "md": "6",
+  "raw": 6,
+  "source": "docs/bayes/claims.csv"
+ },
+ "claim_nl_p": {
+  "tex": "$0.966$",
+  "md": "0.966",
+  "raw": 0.9655,
+  "source": "docs/bayes/claims.csv"
+ },
+ "claim_nl_verdict": {
+  "tex": "not resolved",
+  "md": "not resolved",
+  "raw": "not resolved",
+  "source": "docs/bayes/claims.csv"
+ },
+ "cs_ES_e_dom": {
+  "tex": "$+1.11$",
+  "md": "+1.11",
+  "raw": 1.107070665571641,
+  "source": "docs/heterogeneity/elasticities.csv"
+ },
+ "cs_ES_e_dom_ci": {
+  "tex": "$[+0.78, +1.28]$",
+  "md": "[+0.78, +1.28]",
+  "raw": "[0.7788737333173339, 1.2760956541177573]",
+  "source": "docs/heterogeneity/elasticities.csv"
+ },
+ "cs_ES_h": {
+  "tex": "$+1.21$",
+  "md": "+1.21",
+  "raw": 1.2104532908369605,
+  "source": "docs/heterogeneity/elasticities.csv"
+ },
+ "cs_ES_h_ci": {
+  "tex": "$[+0.97, +1.39]$",
+  "md": "[+0.97, +1.39]",
+  "raw": "[0.9658338799210013, 1.389550334160883]",
+  "source": "docs/heterogeneity/elasticities.csv"
+ },
+ "cs_ES_prod": {
+  "tex": "$-0.21$",
+  "md": "−0.21",
+  "raw": -0.21045329083695985,
+  "source": "docs/heterogeneity/elasticities.csv"
+ },
+ "cs_ES_prod_ci": {
+  "tex": "$[-0.39, +0.03]$",
+  "md": "[−0.39, +0.03]",
+  "raw": "[-0.3895503341608823, 0.03416612007899769]",
+  "source": "docs/heterogeneity/elasticities.csv"
+ },
+ "cs_LU_e_dom_pe": {
+  "tex": "$+0.03$",
+  "md": "+0.03",
+  "raw": 0.03138956218587757,
+  "source": "docs/heterogeneity/elasticities.csv"
+ },
+ "cs_LU_e_dom_pe_ci": {
+  "tex": "$[-0.07, +0.13]$",
+  "md": "[−0.07, +0.13]",
+  "raw": "[-0.06695010623212229, 0.12742714034414915]",
+  "source": "docs/heterogeneity/elasticities.csv"
+ },
+ "cs_LU_e_res": {
+  "tex": "$+0.02$",
+  "md": "+0.02",
+  "raw": 0.02480107334206888,
+  "source": "docs/heterogeneity/elasticities.csv"
+ },
+ "cs_LU_e_res_ci": {
+  "tex": "$[-0.05, +0.10]$",
+  "md": "[−0.05, +0.10]",
+  "raw": "[-0.049624104585926906, 0.10492043933989388]",
+  "source": "docs/heterogeneity/elasticities.csv"
+ },
+ "cs_LU_prod": {
+  "tex": "$+1.06$",
+  "md": "+1.06",
+  "raw": 1.0599529368333973,
+  "source": "docs/heterogeneity/elasticities.csv"
+ },
+ "cs_LU_prod_ci": {
+  "tex": "$[+0.80, +1.32]$",
+  "md": "[+0.80, +1.32]",
+  "raw": "[0.8034490402544061, 1.3162389997254802]",
+  "source": "docs/heterogeneity/elasticities.csv"
+ },
+ "cs_NL_e_dom": {
+  "tex": "$+0.46$",
+  "md": "+0.46",
+  "raw": 0.45707369096879225,
+  "source": "docs/heterogeneity/elasticities.csv"
+ },
+ "cs_NL_e_dom_ci": {
+  "tex": "$[+0.16, +0.75]$",
+  "md": "[+0.16, +0.75]",
+  "raw": "[0.15665419148416143, 0.7539340048697278]",
+  "source": "docs/heterogeneity/elasticities.csv"
+ },
+ "cs_NL_prod": {
+  "tex": "$+0.52$",
+  "md": "+0.52",
+  "raw": 0.5160560777489753,
+  "source": "docs/heterogeneity/elasticities.csv"
+ },
+ "cs_NL_prod_ci": {
+  "tex": "$[+0.09, +1.05]$",
+  "md": "[+0.09, +1.05]",
+  "raw": "[0.09081258045179626, 1.0492482950731932]",
+  "source": "docs/heterogeneity/elasticities.csv"
+ },
+ "cs_PT_dp": {
+  "tex": "$+0.18$",
+  "md": "+0.18",
+  "raw": 0.18413987031373716,
+  "source": "docs/heterogeneity/elasticities.csv"
+ },
+ "cs_PT_dp_ci": {
+  "tex": "$[+0.09, +0.31]$",
+  "md": "[+0.09, +0.31]",
+  "raw": "[0.09330321501599721, 0.3076553153850646]",
+  "source": "docs/heterogeneity/elasticities.csv"
+ },
+ "cs_PT_h": {
+  "tex": "$+1.27$",
+  "md": "+1.27",
+  "raw": 1.2714861545200682,
+  "source": "docs/heterogeneity/elasticities.csv"
+ },
+ "cs_PT_h_ci": {
+  "tex": "$[+0.93, +1.65]$",
+  "md": "[+0.93, +1.65]",
+  "raw": "[0.9296671695685703, 1.6507558318953157]",
+  "source": "docs/heterogeneity/elasticities.csv"
+ },
+ "cs_contradicted": {
+  "tex": "0",
+  "md": "0",
+  "raw": 0,
+  "source": "docs/heterogeneity/predictions.csv"
+ },
+ "cs_eplr_cl_holm": {
+  "tex": "$0.035$",
+  "md": "0.035",
+  "raw": 0.0354,
+  "source": "docs/heterogeneity/correlations.csv"
+ },
+ "cs_eplr_cl_n": {
+  "tex": "20",
+  "md": "20",
+  "raw": "20",
+  "source": "docs/heterogeneity/correlations.csv"
+ },
+ "cs_eplr_cl_rho": {
+  "tex": "$-0.60$",
+  "md": "−0.60",
+  "raw": -0.5954887218045113,
+  "source": "docs/heterogeneity/correlations.csv"
+ },
+ "cs_eplt_by_holm": {
+  "tex": "$0.095$",
+  "md": "0.095",
+  "raw": 0.09540000000000001,
+  "source": "docs/heterogeneity/correlations.csv"
+ },
+ "cs_eplt_by_n": {
+  "tex": "20",
+  "md": "20",
+  "raw": "20",
+  "source": "docs/heterogeneity/correlations.csv"
+ },
+ "cs_eplt_by_rho": {
+  "tex": "$-0.54$",
+  "md": "−0.54",
+  "raw": -0.5404595089739682,
+  "source": "docs/heterogeneity/correlations.csv"
+ },
+ "cs_eplt_noluie_holm": {
+  "tex": "$0.020$",
+  "md": "0.020",
+  "raw": 0.019799999999999998,
+  "source": "docs/heterogeneity/correlations.csv"
+ },
+ "cs_eplt_noluie_n": {
+  "tex": "18",
+  "md": "18",
+  "raw": "18",
+  "source": "docs/heterogeneity/correlations.csv"
+ },
+ "cs_eplt_noluie_rho": {
+  "tex": "$-0.67$",
+  "md": "−0.67",
+  "raw": -0.6718354327694688,
+  "source": "docs/heterogeneity/correlations.csv"
+ },
+ "cs_p11": {
+  "tex": "$+0.01$",
+  "md": "+0.01",
+  "raw": 0.006588488843808693,
+  "source": "docs/heterogeneity/predictions.csv"
+ },
+ "cs_p11_ci": {
+  "tex": "$[-0.05, +0.05]$",
+  "md": "[−0.05, +0.05]",
+  "raw": "[-0.04918430477290058, 0.052561084472847686]",
+  "source": "docs/heterogeneity/predictions.csv"
+ },
+ "cs_p11_holm": {
+  "tex": "$1.000$",
+  "md": "1.000",
+  "raw": 1.0,
+  "source": "docs/heterogeneity/predictions.csv"
+ },
+ "cs_p11_verdict": {
+  "tex": "not determined",
+  "md": "not determined",
+  "raw": "not determined",
+  "source": "docs/heterogeneity/predictions.csv"
+ },
+ "cs_p13": {
+  "tex": "$+0.00$",
+  "md": "+0.00",
+  "raw": 0.004716749913233842,
+  "source": "docs/heterogeneity/predictions.csv"
+ },
+ "cs_p13_ci": {
+  "tex": "$[-0.06, +0.05]$",
+  "md": "[−0.06, +0.05]",
+  "raw": "[-0.06037796773699145, 0.04670967709534168]",
+  "source": "docs/heterogeneity/predictions.csv"
+ },
+ "cs_p13_holm": {
+  "tex": "$1.000$",
+  "md": "1.000",
+  "raw": 1.0,
+  "source": "docs/heterogeneity/predictions.csv"
+ },
+ "cs_p13_verdict": {
+  "tex": "not determined",
+  "md": "not determined",
+  "raw": "not determined",
+  "source": "docs/heterogeneity/predictions.csv"
+ },
+ "cs_p21a": {
+  "tex": "$-0.08$",
+  "md": "−0.08",
+  "raw": -0.07651239398308833,
+  "source": "docs/heterogeneity/predictions.csv"
+ },
+ "cs_p21a_ci": {
+  "tex": "$[-0.60, +0.23]$",
+  "md": "[−0.60, +0.23]",
+  "raw": "[-0.5974859511948428, 0.22532650549875272]",
+  "source": "docs/heterogeneity/predictions.csv"
+ },
+ "cs_p21a_holm": {
+  "tex": "$1.000$",
+  "md": "1.000",
+  "raw": 1.0,
+  "source": "docs/heterogeneity/predictions.csv"
+ },
+ "cs_p21a_verdict": {
+  "tex": "not determined",
+  "md": "not determined",
+  "raw": "not determined",
+  "source": "docs/heterogeneity/predictions.csv"
+ },
+ "cs_p22": {
+  "tex": "$+0.73$",
+  "md": "+0.73",
+  "raw": 0.7265093685859352,
+  "source": "docs/heterogeneity/predictions.csv"
+ },
+ "cs_p22_ci": {
+  "tex": "$[+0.31, +1.23]$",
+  "md": "[+0.31, +1.23]",
+  "raw": "[0.31022717863120325, 1.2312017296563673]",
+  "source": "docs/heterogeneity/predictions.csv"
+ },
+ "cs_p22_holm": {
+  "tex": "$0.022$",
+  "md": "0.022",
+  "raw": 0.022,
+  "source": "docs/heterogeneity/predictions.csv"
+ },
+ "cs_p22_settings": {
+  "tex": "lags-1, pre-2020, block-8",
+  "md": "lags-1, pre-2020, block-8",
+  "raw": "lags-1, pre-2020, block-8",
+  "source": "docs/heterogeneity/predictions.csv"
+ },
+ "cs_p22_verdict": {
+  "tex": "supported",
+  "md": "supported",
+  "raw": "supported",
+  "source": "docs/heterogeneity/predictions.csv"
+ },
+ "cs_p23b": {
+  "tex": "$-0.22$",
+  "md": "−0.22",
+  "raw": -0.2208361489516501,
+  "source": "docs/heterogeneity/predictions.csv"
+ },
+ "cs_p23b_ci": {
+  "tex": "$[-0.39, -0.06]$",
+  "md": "[−0.39, −0.06]",
+  "raw": "[-0.3922809089675488, -0.06340669069022216]",
+  "source": "docs/heterogeneity/predictions.csv"
+ },
+ "cs_p23b_holm": {
+  "tex": "$0.100$",
+  "md": "0.100",
+  "raw": 0.1,
+  "source": "docs/heterogeneity/predictions.csv"
+ },
+ "cs_p23b_verdict": {
+  "tex": "not determined",
+  "md": "not determined",
+  "raw": "not determined",
+  "source": "docs/heterogeneity/predictions.csv"
+ },
+ "cs_p31a": {
+  "tex": "$+0.46$",
+  "md": "+0.46",
+  "raw": 0.46031670072591724,
+  "source": "docs/heterogeneity/predictions.csv"
+ },
+ "cs_p31a_ci": {
+  "tex": "$[-0.13, +1.04]$",
+  "md": "[−0.13, +1.04]",
+  "raw": "[-0.12517217787337728, 1.0365422455138165]",
+  "source": "docs/heterogeneity/predictions.csv"
+ },
+ "cs_p31a_holm": {
+  "tex": "$1.000$",
+  "md": "1.000",
+  "raw": 1.0,
+  "source": "docs/heterogeneity/predictions.csv"
+ },
+ "cs_p31a_settings": {
+  "tex": "pre-2020",
+  "md": "pre-2020",
+  "raw": "pre-2020",
+  "source": "docs/heterogeneity/predictions.csv"
+ },
+ "cs_p31a_verdict": {
+  "tex": "not determined",
+  "md": "not determined",
+  "raw": "not determined",
+  "source": "docs/heterogeneity/predictions.csv"
+ },
+ "cs_p41es": {
+  "tex": "$+0.72$",
+  "md": "+0.72",
+  "raw": 0.7214796414535449,
+  "source": "docs/heterogeneity/predictions.csv"
+ },
+ "cs_p41es_ci": {
+  "tex": "$[-1.28, +2.08]$",
+  "md": "[−1.28, +2.08]",
+  "raw": "[-1.2780800000507953, 2.078050785089981]",
+  "source": "docs/heterogeneity/predictions.csv"
+ },
+ "cs_p41es_holm": {
+  "tex": "$1.000$",
+  "md": "1.000",
+  "raw": 1.0,
+  "source": "docs/heterogeneity/predictions.csv"
+ },
+ "cs_p41es_settings": {
+  "tex": "pre-2020",
+  "md": "pre-2020",
+  "raw": "pre-2020",
+  "source": "docs/heterogeneity/predictions.csv"
+ },
+ "cs_p41es_verdict": {
+  "tex": "not determined",
+  "md": "not determined",
+  "raw": "not determined",
+  "source": "docs/heterogeneity/predictions.csv"
+ },
+ "cs_p52": {
+  "tex": "$-0.06$",
+  "md": "−0.06",
+  "raw": -0.06103286368310973,
+  "source": "docs/heterogeneity/predictions.csv"
+ },
+ "cs_p52_ci": {
+  "tex": "$[-0.51, +0.28]$",
+  "md": "[−0.51, +0.28]",
+  "raw": "[-0.5092678154887393, 0.28147901504930745]",
+  "source": "docs/heterogeneity/predictions.csv"
+ },
+ "cs_p52_holm": {
+  "tex": "$1.000$",
+  "md": "1.000",
+  "raw": 1.0,
+  "source": "docs/heterogeneity/predictions.csv"
+ },
+ "cs_p52_verdict": {
+  "tex": "not determined",
+  "md": "not determined",
+  "raw": "not determined",
+  "source": "docs/heterogeneity/predictions.csv"
+ },
+ "cs_pair_ES_LU_h": {
+  "tex": "remains",
+  "md": "remains",
+  "raw": "remains",
+  "source": "docs/heterogeneity/pairs.csv"
+ },
+ "cs_pair_ES_NL_h": {
+  "tex": "remains",
+  "md": "remains",
+  "raw": "remains",
+  "source": "docs/heterogeneity/pairs.csv"
+ },
+ "cs_pair_ES_PT_h": {
+  "tex": "disappears",
+  "md": "disappears",
+  "raw": "disappears",
+  "source": "docs/heterogeneity/pairs.csv"
+ },
+ "cs_pair_NL_LU_h": {
+  "tex": "disappears",
+  "md": "disappears",
+  "raw": "disappears",
+  "source": "docs/heterogeneity/pairs.csv"
+ },
+ "cs_pairs_disappear": {
+  "tex": "2",
+  "md": "2",
+  "raw": 2,
+  "source": "docs/heterogeneity/pairs.csv"
+ },
+ "cs_pairs_remain": {
+  "tex": "8",
+  "md": "8",
+  "raw": 8,
+  "source": "docs/heterogeneity/pairs.csv"
+ },
+ "cs_pairs_reverse": {
+  "tex": "0",
+  "md": "0",
+  "raw": 0,
+  "source": "docs/heterogeneity/pairs.csv"
+ },
+ "cs_supported": {
+  "tex": "1",
+  "md": "1",
+  "raw": 1,
+  "source": "docs/heterogeneity/predictions.csv"
+ },
+ "cs_total": {
+  "tex": "14",
+  "md": "14",
+  "raw": 14,
+  "source": "docs/heterogeneity/predictions.csv"
+ },
+ "dyn_factor_corr": {
+  "tex": "$-0.65$",
+  "md": "−0.65",
+  "raw": -0.654398740551923,
+  "source": "docs/bayes-dynamics/dynamics.json"
+ },
+ "dyn_p": {
+  "tex": "$0.102$",
+  "md": "0.102",
+  "raw": 0.1025,
+  "source": "docs/bayes-dynamics/dynamics.json"
+ },
+ "fc_ar1": {
+  "tex": "$-1.4$\\%",
+  "md": "−1.4%",
+  "raw": -0.013968758849550511,
+  "source": "docs/forecast-comparison/comparisons.csv"
+ },
+ "fc_ar1_ci": {
+  "tex": "$[-3.1, +0.5]$",
+  "md": "[−3.1, +0.5]",
+  "raw": "[-3.122786522277188, 0.5281217590017873]",
+  "source": "docs/forecast-comparison/comparisons.csv"
+ },
+ "fc_ar1_holm": {
+  "tex": "$0.276$",
+  "md": "0.276",
+  "raw": 0.276,
+  "source": "docs/forecast-comparison/comparisons.csv"
+ },
+ "fc_decided": {
+  "tex": "0",
+  "md": "0",
+  "raw": 0,
+  "source": "docs/forecast-comparison/comparisons.csv"
+ },
+ "fc_factor": {
+  "tex": "$-5.5$\\%",
+  "md": "−5.5%",
+  "raw": -0.05514697509905564,
+  "source": "docs/forecast-comparison/comparisons.csv"
+ },
+ "fc_factor_ci": {
+  "tex": "$[-9.2, -1.9]$",
+  "md": "[−9.2, −1.9]",
+  "raw": "[-9.158071847855108, -1.8961143860443563]",
+  "source": "docs/forecast-comparison/comparisons.csv"
+ },
+ "fc_factor_holm": {
+  "tex": "$0.230$",
+  "md": "0.230",
+  "raw": 0.22999999999999998,
+  "source": "docs/forecast-comparison/comparisons.csv"
+ },
+ "fc_gdp": {
+  "tex": "$-15.3$\\%",
+  "md": "−15.3%",
+  "raw": -0.15277790962628812,
+  "source": "docs/forecast-comparison/comparisons.csv"
+ },
+ "fc_gdp_ci": {
+  "tex": "$[-25.6, -2.9]$",
+  "md": "[−25.6, −2.9]",
+  "raw": "[-25.595227999138526, -2.8635660736830437]",
+  "source": "docs/forecast-comparison/comparisons.csv"
+ },
+ "fc_gdp_holm": {
+  "tex": "$0.276$",
+  "md": "0.276",
+  "raw": 0.276,
+  "source": "docs/forecast-comparison/comparisons.csv"
+ },
+ "fc_total": {
+  "tex": "5",
+  "md": "5",
+  "raw": 5,
+  "source": "docs/forecast-comparison/comparisons.csv"
+ },
+ "fc_zero": {
+  "tex": "$+4.0$\\%",
+  "md": "+4.0%",
+  "raw": 0.040148218100344524,
+  "source": "docs/forecast-comparison/comparisons.csv"
+ },
+ "fc_zero_ci": {
+  "tex": "$[-6.8, +14.7]$",
+  "md": "[−6.8, +14.7]",
+  "raw": "[-6.773108802613715, 14.654937628301766]",
+  "source": "docs/forecast-comparison/comparisons.csv"
+ },
+ "fc_zero_holm": {
+  "tex": "$1.000$",
+  "md": "1.000",
+  "raw": 1.0,
+  "source": "docs/forecast-comparison/comparisons.csv"
+ },
+ "fcx_ar1": {
+  "tex": "$-2.9$\\%",
+  "md": "−2.9%",
+  "raw": -0.029070451932102004,
+  "source": "docs/forecast-comparison/comparisons.csv"
+ },
+ "fcx_decided": {
+  "tex": "4",
+  "md": "4",
+  "raw": 4,
+  "source": "docs/forecast-comparison/comparisons.csv"
+ },
+ "fcx_factor": {
+  "tex": "$-2.5$\\%",
+  "md": "−2.5%",
+  "raw": -0.024815496174773632,
+  "source": "docs/forecast-comparison/comparisons.csv"
+ },
+ "fcx_gdp": {
+  "tex": "$-3.1$\\%",
+  "md": "−3.1%",
+  "raw": -0.031055024381801632,
+  "source": "docs/forecast-comparison/comparisons.csv"
+ },
+ "fcx_lags": {
+  "tex": "$-2.6$\\%",
+  "md": "−2.6%",
+  "raw": -0.026303192914683193,
+  "source": "docs/forecast-comparison/comparisons.csv"
+ },
+ "fcx_zero": {
+  "tex": "$-3.5$\\%",
+  "md": "−3.5%",
+  "raw": -0.034581112564039174,
+  "source": "docs/forecast-comparison/comparisons.csv"
+ },
+ "hash_deflator": {
+  "tex": "\\texttt{30900e56883b8a6e}",
+  "md": "`30900e56883b8a6e`",
+  "raw": "30900e56883b8a6e59518534db92a108ad185374ba7f8db08a2f4c1c068869c8",
+  "source": "snapshots/eurostat-deflator-2026-10-18/manifest.json"
+ },
+ "hash_heterogeneity": {
+  "tex": "\\texttt{4a6a6d1c82af1e3c}",
+  "md": "`4a6a6d1c82af1e3c`",
+  "raw": "4a6a6d1c82af1e3cd3c2740246f8ff23198c9fd898bb859f15bc16c129e07a4e",
+  "source": "snapshots/heterogeneity-2026-10-18/manifest.json"
+ },
+ "hash_monthly": {
+  "tex": "\\texttt{ec2e65b6cbe8831f}",
+  "md": "`ec2e65b6cbe8831f`",
+  "raw": "ec2e65b6cbe8831fb99fe791702d37913c142c6e6e2cea0704faab8cc70f2e5c",
+  "source": "snapshots/eurostat-monthly-2026-10-18/snapshot_manifest.json"
+ },
+ "hash_quarterly": {
+  "tex": "\\texttt{8a8c8a107d584ba9}",
+  "md": "`8a8c8a107d584ba9`",
+  "raw": "8a8c8a107d584ba91b61584fd29397e68ff83d82982371a35db253c0803a0464",
+  "source": "snapshots/eurostat-2026-10-15/snapshot_manifest.json"
+ },
+ "hash_shiftshare": {
+  "tex": "\\texttt{c5c914bb910b1e29}",
+  "md": "`c5c914bb910b1e29`",
+  "raw": "c5c914bb910b1e29c5e6d8e5239310d4957dd9e9e0e9b665856cad75ec18d3de",
+  "source": "snapshots/shift-share-2026-10-18/manifest.json"
+ },
+ "hash_shocks": {
+  "tex": "\\texttt{8361c685c67770e2}",
+  "md": "`8361c685c67770e2`",
+  "raw": "8361c685c67770e25d31f9291ee3780caec20af0a18d9064ee908a59bbc7a9c9",
+  "source": "snapshots/external-shocks-2026-10-16/manifest.json"
+ },
+ "id_max_t": {
+  "tex": "$1.27$",
+  "md": "1.27",
+  "raw": 1.2712661903539397,
+  "source": "docs/identification/okun_sets.csv"
+ },
+ "id_pred_mp": {
+  "tex": "$0.580$",
+  "md": "0.580",
+  "raw": 0.580300073032469,
+  "source": "docs/identification/predictability.csv"
+ },
+ "id_pred_oil": {
+  "tex": "$0.006$",
+  "md": "0.006",
+  "raw": 0.006055813586924157,
+  "source": "docs/identification/predictability.csv"
+ },
+ "id_sets": {
+  "tex": "4",
+  "md": "4",
+  "raw": 4,
+  "source": "docs/identification/okun_sets.csv"
+ },
+ "id_unbounded": {
+  "tex": "4",
+  "md": "4",
+  "raw": 4,
+  "source": "docs/identification/okun_sets.csv"
+ },
+ "mo_max_t": {
+  "tex": "$1.21$",
+  "md": "1.21",
+  "raw": 1.2141149473517834,
+  "source": "docs/monthly-identification/ratio_sets.csv"
+ },
+ "mo_pred_oil": {
+  "tex": "$0.567$",
+  "md": "0.567",
+  "raw": 0.5665488057962971,
+  "source": "docs/monthly-identification/predictability.csv"
+ },
+ "mo_unbounded": {
+  "tex": "4",
+  "md": "4",
+  "raw": 4,
+  "source": "docs/monthly-identification/ratio_sets.csv"
+ },
+ "n_countries": {
+  "tex": "27",
+  "md": "27",
+  "raw": 27,
+  "source": "snapshot manifest"
+ },
+ "pair_ES_LU": {
+  "tex": "survives",
+  "md": "survives",
+  "raw": "survives",
+  "source": "docs/bayes-robustness/focus_pairs.csv"
+ },
+ "pair_ES_NL": {
+  "tex": "survives",
+  "md": "survives",
+  "raw": "survives",
+  "source": "docs/bayes-robustness/focus_pairs.csv"
+ },
+ "pair_ES_PT": {
+  "tex": "does not survive",
+  "md": "does not survive",
+  "raw": "does not survive",
+  "source": "docs/bayes-robustness/focus_pairs.csv"
+ },
+ "pair_LU_NL": {
+  "tex": "does not survive",
+  "md": "does not survive",
+  "raw": "does not survive",
+  "source": "docs/bayes-robustness/focus_pairs.csv"
+ },
+ "pair_LU_PT": {
+  "tex": "not supported by either",
+  "md": "not supported by either",
+  "raw": "not supported by either",
+  "source": "docs/bayes-robustness/focus_pairs.csv"
+ },
+ "pair_NL_PT": {
+  "tex": "not supported by either",
+  "md": "not supported by either",
+  "raw": "not supported by either",
+  "source": "docs/bayes-robustness/focus_pairs.csv"
+ },
+ "pc_decided": {
+  "tex": "1",
+  "md": "1",
+  "raw": 1,
+  "source": "docs/predictive/comparisons.csv"
+ },
+ "pc_e1_zero": {
+  "tex": "$-13.5$\\%",
+  "md": "−13.5%",
+  "raw": -0.13497992840344764,
+  "source": "docs/predictive/comparisons.csv"
+ },
+ "pc_e1_zero_holm": {
+  "tex": "$0.018$",
+  "md": "0.018",
+  "raw": 0.017624778198514452,
+  "source": "docs/predictive/comparisons.csv"
+ },
+ "pc_e2_ols": {
+  "tex": "$-6.7$\\%",
+  "md": "−6.7%",
+  "raw": -0.06747144212593914,
+  "source": "docs/predictive/comparisons.csv"
+ },
+ "pc_e2_ols_holm": {
+  "tex": "$0.061$",
+  "md": "0.061",
+  "raw": 0.06142943332587995,
+  "source": "docs/predictive/comparisons.csv"
+ },
+ "pc_e2_zero": {
+  "tex": "$-0.3$\\%",
+  "md": "−0.3%",
+  "raw": -0.002720439781119577,
+  "source": "docs/predictive/comparisons.csv"
+ },
+ "pc_e2_zero_holm": {
+  "tex": "$1.000$",
+  "md": "1.000",
+  "raw": 1.0,
+  "source": "docs/predictive/comparisons.csv"
+ },
+ "pc_total": {
+  "tex": "10",
+  "md": "10",
+  "raw": 10,
+  "source": "docs/predictive/comparisons.csv"
+ },
+ "reg_delta": {
+  "tex": "$+0.028$",
+  "md": "+0.028",
+  "raw": 0.027794986670451587,
+  "source": "docs/bayes-regimes/regimes.json"
+ },
+ "reg_delta_ci": {
+  "tex": "$[-0.007, +0.072]$",
+  "md": "[−0.007, +0.072]",
+  "raw": "[-0.007053075712755649, 0.07160135896179182]",
+  "source": "docs/bayes-regimes/regimes.json"
+ },
+ "snapshot_date": {
+  "tex": "2026-10-15",
+  "md": "2026-10-15",
+  "raw": "2026-10-15",
+  "source": "snapshots/eurostat-2026-10-15"
+ },
+ "sr_dem_bounded": {
+  "tex": "unbounded",
+  "md": "unbounded",
+  "raw": "unbounded",
+  "source": "docs/sign-restrictions/summaries.csv"
+ },
+ "sr_dem_fevd_hi": {
+  "tex": "$96$\\%",
+  "md": "96%",
+  "raw": 0.9628041948368592,
+  "source": "docs/sign-restrictions/summaries.csv"
+ },
+ "sr_dem_fevd_lo": {
+  "tex": "$0$\\%",
+  "md": "0%",
+  "raw": 9.224429093235051e-05,
+  "source": "docs/sign-restrictions/summaries.csv"
+ },
+ "sr_dem_uniform": {
+  "tex": "$-0.43$",
+  "md": "−0.43",
+  "raw": -0.4265000914478083,
+  "source": "docs/sign-restrictions/summaries.csv"
+ },
+ "sr_ls_fevd_hi": {
+  "tex": "$96$\\%",
+  "md": "96%",
+  "raw": 0.9612259978887763,
+  "source": "docs/sign-restrictions/summaries.csv"
+ },
+ "sr_ls_fevd_lo": {
+  "tex": "$0$\\%",
+  "md": "0%",
+  "raw": 0.00014145577797940374,
+  "source": "docs/sign-restrictions/summaries.csv"
+ },
+ "sr_nonempty": {
+  "tex": "$100$\\%",
+  "md": "100%",
+  "raw": 1.0,
+  "source": "docs/sign-restrictions/specifications.csv"
+ },
+ "sr_nonempty_h01": {
+  "tex": "$1.0$\\%",
+  "md": "1.0%",
+  "raw": 0.01,
+  "source": "docs/sign-restrictions/specifications.csv"
+ },
+ "sr_order_max_h4": {
+  "tex": "$-0.202$",
+  "md": "−0.202",
+  "raw": -0.20181957778437465,
+  "source": "docs/sign-restrictions/orderings.csv"
+ },
+ "sr_order_max_h8": {
+  "tex": "$-0.216$",
+  "md": "−0.216",
+  "raw": -0.21630650847885607,
+  "source": "docs/sign-restrictions/orderings.csv"
+ },
+ "sr_order_min_h4": {
+  "tex": "$-0.135$",
+  "md": "−0.135",
+  "raw": -0.1353650292919423,
+  "source": "docs/sign-restrictions/orderings.csv"
+ },
+ "sr_order_min_h8": {
+  "tex": "$-0.149$",
+  "md": "−0.149",
+  "raw": -0.1490843872442051,
+  "source": "docs/sign-restrictions/orderings.csv"
+ },
+ "sr_tech_bounded": {
+  "tex": "unbounded",
+  "md": "unbounded",
+  "raw": "unbounded",
+  "source": "docs/sign-restrictions/summaries.csv"
+ },
+ "sr_tech_fevd_hi": {
+  "tex": "$97$\\%",
+  "md": "97%",
+  "raw": 0.9664380218632059,
+  "source": "docs/sign-restrictions/summaries.csv"
+ },
+ "sr_tech_fevd_lo": {
+  "tex": "$0$\\%",
+  "md": "0%",
+  "raw": 7.508670325858793e-05,
+  "source": "docs/sign-restrictions/summaries.csv"
+ },
+ "sr_tech_uniform": {
+  "tex": "$-0.55$",
+  "md": "−0.55",
+  "raw": -0.545857938143939,
+  "source": "docs/sign-restrictions/summaries.csv"
+ },
+ "ss_P1_t": {
+  "tex": "$0.19$",
+  "md": "0.19",
+  "raw": 0.19185106129897836,
+  "source": "docs/shift-share/feasibility.csv"
+ },
+ "ss_P2_t": {
+  "tex": "$0.31$",
+  "md": "0.31",
+  "raw": 0.3134456657413963,
+  "source": "docs/shift-share/feasibility.csv"
+ },
+ "ss_P3_t": {
+  "tex": "$0.66$",
+  "md": "0.66",
+  "raw": 0.6588190800931019,
+  "source": "docs/shift-share/feasibility.csv"
+ },
+ "ss_decision": {
+  "tex": "no go",
+  "md": "no go",
+  "raw": "no go",
+  "source": "docs/shift-share/feasibility.csv"
+ },
+ "ss_published_holm": {
+  "tex": "14",
+  "md": "14",
+  "raw": 14,
+  "source": "docs/small-sample/summary.json"
+ },
+ "ss_size_bootstrap": {
+  "tex": "$4.8$\\%",
+  "md": "4.8%",
+  "raw": 0.04842592592592592,
+  "source": "docs/small-sample/summary.json"
+ },
+ "ss_size_normal": {
+  "tex": "$22.8$\\%",
+  "md": "22.8%",
+  "raw": 0.22842592592592592,
+  "source": "docs/small-sample/summary.json"
+ },
+ "ss_survivors": {
+  "tex": "0",
+  "md": "0",
+  "raw": 0,
+  "source": "docs/small-sample/summary.json"
+ }
+}

@@ -1,0 +1,75 @@
+\section{Data and measurement}\label{sec:data}
+
+\subsection{Sources}
+
+All series are official, harmonised and quarterly unless stated otherwise. The core panel
+covers the present-day \val{n_countries} member states, from 2008-Q1 (for lags and
+differences) to 2026-Q2. It was downloaded from the Eurostat Statistics API on
+\val{snapshot_date} and frozen; its manifest has SHA-256 \val{hash_quarterly}\dots.
+Table~\ref{tab:data} lists the series; Eurostat datasets are cited by their codes.
+
+\begin{table}[htbp]\centering\small
+\caption{Data. SA: seasonally adjusted; SCA: seasonally and calendar adjusted; NSA: not
+adjusted. All snapshots are frozen with SHA-256 hashes (Appendix~\ref{app:repro}).}
+\label{tab:data}
+\footnotesize
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}Xl
+  >{\raggedright\arraybackslash}Xl}\toprule
+Quantity (unit) & Dataset & Filters & Use \\ \midrule
+Real GDP growth (\% q/q) & \citetalias{eurostat_namq_10_gdp} & B1GQ, CLV\_PCH\_PRE, SCA & all \\
+Unemployment rate (\% of labour force) & \citetalias{eurostat_une_rt_q} & Y15-74, T, SA & all \\
+Participation rate (\% of population) & \citetalias{eurostat_lfsi_emp_q} & ACT, Y15-74, SA & all \\
+GDP deflator (\% q/q) & \citetalias{eurostat_namq_10_gdp} & PD\_PCH\_PRE\_NAC, SCA & SVAR \\
+Unemployment, monthly (\%) & \citetalias{eurostat_une_rt_m} & TOTAL, SA & monthly LP \\
+Industrial production (index) & \citetalias{eurostat_sts_inpr_m} & B-D, SCA, 2021=100 & monthly LP \\
+Employment, domestic and resident (persons) & \citetalias{eurostat_namq_10_pe} & EMP\_DC, EMP\_NC, SCA
+  & cases \\
+Hours worked & \citetalias{eurostat_namq_10_a10_e} & TOTAL, THS\_HW, SCA & cases \\
+Temporary employees (persons) & \citetalias{eurostat_lfsq_etgaed} & Y15-74, NSA & cases \\
+All employees (persons) & \citetalias{eurostat_lfsq_eegaed} & Y15-74, NSA & cases \\
+Temporary and part-time shares (\%) & \citetalias{eurostat_lfsq_etpga}, \citetalias{eurostat_lfsq_eppga} & Y15-74,
+  NSA & cases \\
+ECB policy surprises (pp) & \citet{jarocinski2020information} & MP\_median (OIS) & LP-IV \\
+Oil supply news (\%) & \citet{kanzig2021oil} & surprise series & LP-IV \\
+Value added in final demand (USD) & \citet{oecd2025tiva} & FDVA & shift-share \\
+Employment protection (index 0--6) & \citet{oecd2020epl} & EPL\_R, EPL\_T, version 3, 2008 & cases \\
+\bottomrule\end{tabularx}
+\end{table}
+
+\subsection{Measurement issues}
+
+\paragraph{Domestic and resident concepts.} GDP measures production by resident
+producer units, including work by cross-border commuters. Unemployment and participation
+describe residents. The two diverge most in Luxembourg, where commuters fill a large share
+of domestic jobs; section~\ref{sec:cases} tests whether this explains Luxembourg's weak
+association.
+
+\paragraph{Survey changes.} The EU Labour Force Survey changed its legal framework in 2021.
+Eurostat back-casts the headline series from 2009, but:
+\begin{itemize}
+  \item Spain and France are flagged ``definition differs'' from 2021-Q1, because they still
+    test workers on temporary lay-off under the earlier rule;
+  \item the Netherlands phased the new survey in during 2021 without a flag;
+  \item detailed survey series carry breaks, for example at 2014-Q1 and 2021-Q1.
+\end{itemize}
+Eurostat's quality flags are stored with every observation. The Bayesian models mask
+likelihood terms that rely on a flagged value. The classical review uses a
+flag-screened sample as a sensitivity analysis.
+
+\paragraph{Monthly unemployment.} Eurostat's monthly unemployment rate is a direct
+monthly survey estimate in only eight countries. Elsewhere it is a trend, a three-month
+moving average, or quarterly survey results interpolated with registered unemployment.
+Each of these puts later months into a month's value. Section~\ref{sec:identification}
+therefore restricts the monthly analysis to the eight direct-estimate countries.
+
+\paragraph{The pandemic.} The eight quarters of 2020--2021 contain the largest movements
+of GDP in the sample. Across countries, they supply a median
+\val{cl_pandemic_share_median} of the variation in current-quarter GDP growth in the full
+sample. Large output movements were also met by job-retention schemes that kept workers
+employed. Any estimate that includes 2020--2021 mainly describes the pandemic, so we
+report samples with and without it and make the choice explicit in each protocol.
+
+\paragraph{Revisions and timing.} Every series is a revised vintage. Eurostat's vintage
+datasets cover GDP only for the EU and euro-area aggregates, and monthly unemployment only
+from 2021, so the forecasts in section~\ref{sec:prediction} are retrospective
+(pseudo-out-of-sample), not real-time.
