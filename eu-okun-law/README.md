@@ -561,3 +561,40 @@ the run takes about 20 seconds. In brief:
   monetary policy from 2001) contain zero.
 - **The quarterly conclusion stands.** The bottleneck is weak instruments for real
   activity, not the frequency of the data.
+
+### Country-specific GDP shocks: is a foreign-demand instrument feasible?
+
+[SHIFT_SHARE_PROTOCOL.md](SHIFT_SHARE_PROTOCOL.md) was committed and pushed before any
+computation. It asks two questions before any IV estimate is run:
+
+- which trading partners make a shift-share foreign-demand instrument's exclusion
+  restriction defensible;
+- whether the resulting instrument can be strong enough.
+
+**The instrument.** It combines each country's value added absorbed in partner p's final
+demand (OECD TiVA 2025, 2005-2007) with partner p's quarterly GDP growth (OECD quarterly
+national accounts).
+
+```bash
+poetry run eu-okun fetch-shift-share --output-dir snapshots/shift-share-2026-10-18   # needs internet
+poetry run eu-okun shift-share --data-dir snapshots/shift-share-2026-10-18 \
+  --eurostat-dir snapshots/eurostat-2026-10-15 --output-dir docs/shift-share \
+  --report docs/SHIFT_SHARE_FEASIBILITY.md
+```
+
+Results are in [docs/SHIFT_SHARE_FEASIBILITY.md](docs/SHIFT_SHARE_FEASIBILITY.md); the run
+takes about 5 seconds. In brief:
+
+- **No go.** For distant, non-European demand (the only defensible set), the expected
+  first-stage t is 0.19 against the registered threshold of 3.16. Even the most
+  favourable calibration gives 0.77.
+- **Why.**
+  - Every country's distant exposure is dominated by the United States.
+  - After quarter effects, which absorb the common EU cycle, the instrument varies by
+    0.006 pp, against residual GDP-growth noise of 1.18 pp.
+  - Ireland supplies 45% of the remaining variation.
+- **Other partner sets.** Near extra-EU partners (P2: t = 0.31) and intra-EU partners
+  (P3: t = 0.66) barely raise relevance, and they make the exclusion restriction
+  indefensible.
+- **Consequence.** No IV is estimated, and country-specific GDP shocks remain
+  unidentified.

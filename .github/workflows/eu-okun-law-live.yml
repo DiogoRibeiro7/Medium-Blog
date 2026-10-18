@@ -60,6 +60,19 @@ jobs:
               print(name, entry["dataset"], "updated", entry["updated"],
                     "missing", entry["missing_cells"], "flags", entry["flags"])
           PY
+      - name: Fetch the OECD shift-share inputs (TiVA, quarterly national accounts)
+        working-directory: eu-okun-law
+        run: poetry run eu-okun fetch-shift-share --output-dir data/shift-share
+      - name: Audit the OECD snapshot
+        working-directory: eu-okun-law
+        run: |
+          poetry run python - <<'PY'
+          from pathlib import Path
+          from eu_okun.shift_share import audit_shift_share
+          manifest = audit_shift_share(Path("data/shift-share"))
+          for entry in manifest["files"]:
+              print(entry["key"], entry["bytes"], "bytes", entry["sha256"])
+          PY
       - name: Keep public source snapshot and audit
         if: success()
         uses: actions/upload-artifact@v4

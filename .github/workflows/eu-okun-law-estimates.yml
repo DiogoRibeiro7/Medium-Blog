@@ -90,6 +90,17 @@ jobs:
       - name: Committed monthly identification tables reproduce on Linux
         working-directory: eu-okun-law
         run: poetry run pytest tests/test_monthly_identification.py -q
+      - name: Shift-share feasibility on the frozen snapshots (SHIFT_SHARE_PROTOCOL.md)
+        working-directory: eu-okun-law
+        run: >-
+          poetry run eu-okun shift-share
+          --data-dir snapshots/shift-share-2026-10-18
+          --eurostat-dir snapshots/eurostat-2026-10-15
+          --output-dir results/shift-share
+          --report results/shift-share/SHIFT_SHARE_FEASIBILITY.md
+      - name: Committed shift-share tables reproduce on Linux
+        working-directory: eu-okun-law
+        run: poetry run pytest tests/test_shift_share.py -q
       - name: Archive source data and regression output
         uses: actions/upload-artifact@v4
         with:

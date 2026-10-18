@@ -13,7 +13,7 @@ generated in [IDENTIFICATION_RESULTS.md](IDENTIFICATION_RESULTS.md).
 | --- | --- |
 | Do demand-driven and productivity-driven changes in GDP have different employment effects? | **Only half answerable.** A common euro-area *demand* shock (ECB policy surprises) and a common *oil supply* shock (OPEC announcement surprises) are identified. No credible quarterly instrument exists for *productivity* shocks in EU countries. |
 | Can labour-supply shocks be distinguished from aggregate-demand shocks? | **No, with public data.** There is no defensible instrument for labour-supply shocks. Sign restrictions would give prior-dominated identified sets. |
-| Under which assumptions are country-specific GDP shocks identifiable? | **With an instrument that moves one country's GDP and affects its unemployment only through GDP. None exists for the EU-27.** Only the heterogeneous responses of countries to common, externally identified shocks are estimable. |
+| Under which assumptions are country-specific GDP shocks identifiable? | **With an instrument that moves one country's GDP and affects its unemployment only through GDP. None exists for the EU-27.** The most defensible public candidate, distant foreign demand (shift-share), was checked under a pre-registered feasibility rule. Its expected first-stage t is 0.19 against the threshold of 3.16, so it was not estimated ([SHIFT_SHARE_FEASIBILITY.md](SHIFT_SHARE_FEASIBILITY.md)). Only the heterogeneous responses of countries to common, externally identified shocks are estimable. |
 | Do the data justify causal claims? | **Not about the GDP-unemployment relationship.** Identification of the two common shocks is defensible, but on 2009-2025 quarterly data the shock-conditional Okun coefficients are not determined (unbounded Anderson-Rubin sets), and the primary oil series fails its predictability test (section 7.1). A pre-registered monthly amendment with industrial production and monthly unemployment does not change this: its first stages are no stronger, and every primary ratio set is unbounded (section 7.2). Every Okun coefficient estimated in this study remains a reduced-form association. |
 
 ## 1. The identification problem
@@ -202,7 +202,7 @@ leads and lags identifies that shock's effects (Stock and Watson 2018).
 | Fiscal shocks (narrative) | Action-based consolidation datasets (e.g. Devries et al. 2011) are annual, cover a subset of EU countries and end in the early 2010s. | Narrative exogeneity. | **Not usable** for 2009-2026 at quarterly frequency for the EU-27. |
 | Productivity shocks | Utilisation-adjusted quarterly TFP exists for the United States (Fernald 2014). For EU countries, growth-accounting data (EU KLEMS) are annual and not adjusted for utilisation. | Exogeneity of measured technology. | **No credible quarterly instrument.** Productivity-driven GDP changes are not identifiable. |
 | Labour-supply shocks | Migration episodes (2015-16 asylum inflows, 2022 displacement from Ukraine) are dated. | Destination choices and timing respond to labour demand, which violates exclusion. No harmonised quarterly series of exogenous inflows exists. | **Not identifiable** with defensible assumptions. |
-| Country-specific GDP shocks | They would need an instrument per country, e.g. foreign demand weighted by export shares (shift-share). | Shares and foreign shocks exogenous. Foreign demand affects unemployment only through domestic GDP; violated by sectoral composition and import competition. | **Not identifiable** for the EU-27 with the available information. A shift-share design is listed under further work. |
+| Country-specific GDP shocks | They would need an instrument per country, e.g. foreign demand weighted by export shares (shift-share). | Shares and foreign shocks exogenous. Foreign demand affects unemployment only through domestic GDP; violated by sectoral composition and import competition. | **Not identifiable** for the EU-27 with the available information. A shift-share design on distant, non-European demand (OECD TiVA value-added shares) was checked under [SHIFT_SHARE_PROTOCOL.md](../SHIFT_SHARE_PROTOCOL.md). After country and quarter effects it is far too weak (expected first-stage t 0.19), and near or intra-EU partners add little relevance while making exclusion indefensible. |
 
 ### 4.5 Local projections: an estimator, not an identification strategy
 
@@ -380,9 +380,13 @@ higher-frequency outcomes alone.
   credible technology-news instruments.
 - **Labour supply.** Quasi-experimental variation, such as policy-driven changes in
   migration or pension rules with documented timing unrelated to labour demand.
-- **Country-specific GDP.** A defended shift-share foreign-demand instrument (trade
-  weights from Comext, partner GDP), with tests of exclusion through sectoral
-  composition.
+- **Country-specific GDP.** The shift-share foreign-demand instrument is examined in
+  [SHIFT_SHARE_FEASIBILITY.md](SHIFT_SHARE_FEASIBILITY.md) and is infeasible. Three
+  things would be needed instead:
+  - a shifter that differs across EU countries far more than distant demand does, net of
+    the common EU cycle;
+  - country-specific policy shocks, e.g. narrative fiscal shocks;
+  - regional data within countries, where many more units share an exposure design.
 - **Fiscal policy.** Updated quarterly narrative fiscal shocks for EU countries after 2014.
 - **Hours and productivity data.** Integration of national-accounts hours and employment,
   to decompose shock responses into the productivity, hours and labour-force margins of

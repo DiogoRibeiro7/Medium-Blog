@@ -273,6 +273,19 @@ moving-average and interpolated unemployment series are excluded a priori, and a
 pre-shock placebo tests the assumption. It is no more informative than the quarterly
 study.
 
+**Shift-share feasibility.** [SHIFT_SHARE_PROTOCOL.md](SHIFT_SHARE_PROTOCOL.md) and
+[docs/SHIFT_SHARE_FEASIBILITY.md](docs/SHIFT_SHARE_FEASIBILITY.md) cover a foreign-demand
+instrument for country-specific GDP shocks:
+
+- **Instrument.** `Z[i,t] = sum_p e[i,p] g[p,t]`, with OECD TiVA value-added shares
+  (2005-2007) and partner GDP growth.
+- **Partner sets.** Each is judged for exclusion. Distant demand is defensible; near
+  extra-EU and intra-EU partners are not.
+- **Before any IV estimate.** The pre-registered rule compares the benchmark expected
+  first-stage t, after country and quarter effects and lags, with 3.16. No outcome
+  enters this computation.
+- **Result.** Distant demand gives an expected t of 0.19, so no IV is estimated.
+
 
 With reduced-form covariance `Sigma = B B'`, `B Q` has the same
 covariance for any orthogonal `Q`. A multivariate dynamic model
