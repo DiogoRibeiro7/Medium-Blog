@@ -208,4 +208,21 @@ sign-restriction studies report.
 
 ## Change log
 
-None yet.
+- **During implementation, before any estimate on real data: clarifications.**
+  - *Inverse-Wishart.* The degrees of freedom are n - k - N, with scale S, so the
+    posterior mean of Sigma is S / (n - k - N - 5).
+  - *Uniform-prior contrast.* It takes, in each draw, the first admissible rotation in
+    sampling order (with its first valid assignment). Haar sampling makes this a draw
+    from the uniform distribution over admissible rotations.
+  - *Ratio bounds.* A draw's ratio set is bounded only if the cumulative GDP response at
+    h has the same strict sign for every admissible rotation.
+  - *Robust region.* It uses order statistics (the "lower" 5th percentile of the lower
+    bounds and the "higher" 95th percentile of the upper bounds), never interpolation.
+    Infinite bounds therefore propagate, and the region can only be wider.
+  - *Convergence check.* It reports the relative increase in set width when the rotations
+    are doubled, for the finite, non-ratio targets of the first 100 draws.
+  - *Deflator vintage.* The deflator snapshot comes from Eurostat's 2026-10-16 update of
+    `namq_10_gdp`, one day later than the frozen GDP growth (2026-10-15). Revisions
+    between the two are not reconciled.
+  - *CI.* The full reproduction (7 specifications × 1000 draws × 20,000 rotations) runs in
+    a dedicated job of the estimates workflow, not in the ordinary offline test suite.

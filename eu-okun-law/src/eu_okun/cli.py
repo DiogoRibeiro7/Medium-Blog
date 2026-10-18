@@ -256,6 +256,18 @@ def main(argv: Sequence[str] | None = None) -> int:
     shift_share_cmd.add_argument("--output-dir", type=Path, default=Path("results/shift-share"))
     shift_share_cmd.add_argument("--report", type=Path, default=None)
     shift_share_cmd.add_argument("--no-figures", action="store_true")
+    fetch_deflator_cmd = commands.add_parser(
+        "fetch-deflator", help="Download the quarterly GDP deflator growth into a snapshot")
+    fetch_deflator_cmd.add_argument("--output-dir", type=Path,
+                                    default=Path("snapshots/eurostat-deflator"))
+    sign = commands.add_parser(
+        "sign-restrictions", help="Sign-restricted SVAR with robust Bayesian identified sets")
+    sign.add_argument("--data-dir", type=Path, default=Path("snapshots/eurostat-2026-10-15"))
+    sign.add_argument("--deflator-dir", type=Path,
+                      default=Path("snapshots/eurostat-deflator-2026-10-18"))
+    sign.add_argument("--output-dir", type=Path, default=Path("results/sign-restrictions"))
+    sign.add_argument("--report", type=Path, default=None)
+    sign.add_argument("--no-figures", action="store_true")
     args = parser.parse_args(argv)
     if args.command == "fetch":
         try:
@@ -561,6 +573,30 @@ def main(argv: Sequence[str] | None = None) -> int:
         central = ss_review.results["P1"].central
         print(f"Shift-share feasibility written to {args.report or args.output_dir}; "
               f"P1 expected first-stage t {central.expected_t:.2f}: {ss_review.decision}")
+        return 0
+    if args.command == "fetch-deflator":
+        from eu_okun.sign_restrictions import fetch_deflator
+
+        try:
+            deflator_manifest = fetch_deflator(args.output_dir)
+        except (EurostatDataError, ValueError, RuntimeError, OSError) as exc:
+            parser.exit(2, f"Deflator download failed: {exc}" + chr(10))
+        print(f"Saved the GDP deflator ({deflator_manifest['period']['start']} to "
+              f"{deflator_manifest['period']['end']}) to {args.output_dir}")
+        return 0
+    if args.command == "sign-restrictions":
+        from eu_okun.sign_restrictions_report import q1_verdict
+        from eu_okun.sign_restrictions_report import write_report as write_sign
+
+        try:
+            sign_review = write_sign(args.data_dir, args.deflator_dir, args.output_dir,
+                                     args.report, figures=not args.no_figures)
+        except (EurostatDataError, FileNotFoundError, ValueError, OSError, KeyError) as exc:
+            parser.exit(2, f"Sign-restriction study failed: {exc}" + chr(10))
+        primary = sign_review.results["primary"]
+        print(f"Sign-restriction results written to {args.report or args.output_dir}; "
+              f"non-empty {100 * primary.nonempty_share:.1f}%; h = 8: "
+              f"{q1_verdict(primary, 8)}")
         return 0
     if args.command == "predictive-fit":
         from eu_okun.bayes_fit import SamplerSettings
