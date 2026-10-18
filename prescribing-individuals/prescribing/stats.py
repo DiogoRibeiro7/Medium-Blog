@@ -64,7 +64,7 @@ def weighted_quantile(x, w, q):
     w = np.asarray(w, dtype=float)
     ok = np.isfinite(x) & np.isfinite(w) & (w > 0)
     x, w = x[ok], w[ok]
-    order = np.argsort(x)
+    order = np.argsort(x, kind="stable")  # stable: tie order (and so the result) must not depend on the CPU
     x, w = x[order], w[order]
     cw = np.cumsum(w) - 0.5 * w
     cw /= w.sum()

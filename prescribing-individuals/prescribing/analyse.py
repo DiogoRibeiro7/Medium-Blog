@@ -406,7 +406,7 @@ def variance_ratio_table(t: dict, population: str = "adult") -> pd.DataFrame:
             if pla.empty or act.empty:
                 continue
             key = (measure == "change", ci, ki)
-            cand = (key, title, measure, pla.iloc[0], act.sort_values("n").iloc[-1])
+            cand = (key, title, measure, pla.iloc[0], act.sort_values("n", kind="stable").iloc[-1])
             if best is None or key > best[0]:
                 best = cand
         if best is None:
