@@ -127,6 +127,21 @@ def to_quarterly(monthly: Monthly) -> dict[str, float]:
     return {q: float(sum(v)) for q, v in sorted(quarters.items()) if len(v) == 3}
 
 
+def to_monthly(monthly: Monthly) -> dict[str, float]:
+    """The native monthly series keyed YYYY-MM (no aggregation)."""
+    if any(not 1 <= month <= 12 for _, month in monthly):
+        raise ValueError("Invalid month in a monthly shock series.")
+    return {f"{year:04d}-{month:02d}": value for (year, month), value in sorted(monthly.items())}
+
+
+def monthly_series(directory: Path) -> dict[str, dict[str, float]]:
+    """Every shock series at its native monthly frequency, from the raw snapshot files."""
+    raw = directory / "raw"
+    monthly = {**read_monetary(raw / SOURCES["monetary"].file),
+               **read_oil(raw / SOURCES["oil"].file)}
+    return {name: to_monthly(values) for name, values in monthly.items()}
+
+
 def quarterly_series(directory: Path) -> dict[str, dict[str, float]]:
     """Every quarterly shock series derived from the raw files of a snapshot."""
     raw = directory / "raw"

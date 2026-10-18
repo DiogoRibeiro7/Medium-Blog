@@ -224,6 +224,26 @@ def main(argv: Sequence[str] | None = None) -> int:
                                 default=Path("results/identification"))
     identification.add_argument("--report", type=Path, default=None)
     identification.add_argument("--no-figures", action="store_true")
+    fetch_monthly = commands.add_parser(
+        "fetch-monthly", help="Download monthly unemployment and production into a snapshot")
+    fetch_monthly.add_argument("--start-month", default="2000-01")
+    fetch_monthly.add_argument("--end-month", default=None,
+                               help="Default: the last month with both series for the EU-27")
+    fetch_monthly.add_argument("--output-dir", type=Path,
+                               default=Path("snapshots/eurostat-monthly"))
+    monthly = commands.add_parser(
+        "monthly-identification",
+        help="Monthly local projections on externally identified shocks")
+    monthly.add_argument("--data-dir", type=Path,
+                         default=Path("snapshots/eurostat-monthly-2026-10-18"))
+    monthly.add_argument("--shocks-dir", type=Path,
+                         default=Path("snapshots/external-shocks-2026-10-16"))
+    monthly.add_argument("--quarterly-dir", type=Path, default=None,
+                         help="Committed quarterly identification tables, for the comparison")
+    monthly.add_argument("--output-dir", type=Path,
+                         default=Path("results/monthly-identification"))
+    monthly.add_argument("--report", type=Path, default=None)
+    monthly.add_argument("--no-figures", action="store_true")
     args = parser.parse_args(argv)
     if args.command == "fetch":
         try:
@@ -482,6 +502,32 @@ def main(argv: Sequence[str] | None = None) -> int:
                        if o.informative]
         print(f"Identification results written to {args.report or args.output_dir}; "
               f"{len(informative)} informative shock-conditional Okun sets")
+        return 0
+    if args.command == "fetch-monthly":
+        from eu_okun.monthly_data import save_monthly_snapshot
+
+        try:
+            monthly_manifest = save_monthly_snapshot(args.output_dir, args.start_month,
+                                                     args.end_month)
+        except (EurostatDataError, ValueError, RuntimeError, OSError) as exc:
+            parser.exit(2, f"Monthly Eurostat acquisition failed: {exc}" + chr(10))
+        period = monthly_manifest["period"]
+        print(f"Saved {monthly_manifest['country_month_rows']} country-month rows "
+              f"({period['start']} to {period['end']}) to {args.output_dir}")
+        return 0
+    if args.command == "monthly-identification":
+        from eu_okun.monthly_report import write_report as write_monthly
+
+        try:
+            monthly_review = write_monthly(args.data_dir, args.shocks_dir, args.output_dir,
+                                           args.report, quarterly_dir=args.quarterly_dir,
+                                           figures=not args.no_figures)
+        except (EurostatDataError, FileNotFoundError, ValueError, OSError, KeyError) as exc:
+            parser.exit(2, f"Monthly identification failed: {exc}" + chr(10))
+        bounded = [o for res in monthly_review.primary.values() for o in res.ratios
+                   if o.informative]
+        print(f"Monthly identification results written to {args.report or args.output_dir}; "
+              f"{len(bounded)} informative ratio sets")
         return 0
     if args.command == "predictive-fit":
         from eu_okun.bayes_fit import SamplerSettings

@@ -264,6 +264,15 @@ evaluated and rejected; productivity, labour-supply and country-specific GDP sho
 not identifiable with public data. The estimates are not informative about Okun
 coefficients, so no causal claim is made.
 
+**Monthly amendment.** [MONTHLY_IDENTIFICATION_PROTOCOL.md](MONTHLY_IDENTIFICATION_PROTOCOL.md)
+and [docs/MONTHLY_IDENTIFICATION_RESULTS.md](docs/MONTHLY_IDENTIFICATION_RESULTS.md) apply
+the same estimators at monthly frequency, with monthly unemployment and industrial
+production. The ratio `kappa_IP` (unemployment per 1% of industrial production) is not the
+GDP-based Okun coefficient. The amendment adds an outcome-timing assumption (A7): trend,
+moving-average and interpolated unemployment series are excluded a priori, and a
+pre-shock placebo tests the assumption. It is no more informative than the quarterly
+study.
+
 
 With reduced-form covariance `Sigma = B B'`, `B Q` has the same
 covariance for any orthogonal `Q`. A multivariate dynamic model

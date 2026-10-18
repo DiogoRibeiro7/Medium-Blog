@@ -14,7 +14,7 @@ generated in [IDENTIFICATION_RESULTS.md](IDENTIFICATION_RESULTS.md).
 | Do demand-driven and productivity-driven changes in GDP have different employment effects? | **Only half answerable.** A common euro-area *demand* shock (ECB policy surprises) and a common *oil supply* shock (OPEC announcement surprises) are identified. No credible quarterly instrument exists for *productivity* shocks in EU countries. |
 | Can labour-supply shocks be distinguished from aggregate-demand shocks? | **No, with public data.** There is no defensible instrument for labour-supply shocks. Sign restrictions would give prior-dominated identified sets. |
 | Under which assumptions are country-specific GDP shocks identifiable? | **With an instrument that moves one country's GDP and affects its unemployment only through GDP. None exists for the EU-27.** Only the heterogeneous responses of countries to common, externally identified shocks are estimable. |
-| Do the data justify causal claims? | **Not about the GDP-unemployment relationship.** Identification of the two common shocks is defensible, but on 2009-2025 quarterly data the shock-conditional Okun coefficients are not determined (unbounded Anderson-Rubin sets), and the primary oil series fails its predictability test (section 7.1). Every Okun coefficient estimated in this study remains a reduced-form association. |
+| Do the data justify causal claims? | **Not about the GDP-unemployment relationship.** Identification of the two common shocks is defensible, but on 2009-2025 quarterly data the shock-conditional Okun coefficients are not determined (unbounded Anderson-Rubin sets), and the primary oil series fails its predictability test (section 7.1). A pre-registered monthly amendment with industrial production and monthly unemployment does not change this: its first stages are no stronger, and every primary ratio set is unbounded (section 7.2). Every Okun coefficient estimated in this study remains a reduced-form association. |
 
 ## 1. The identification problem
 
@@ -237,7 +237,8 @@ estimated by LP-IV, with the shock as instrument for GDP.
 | Relevance for GDP at the quarterly horizon | **Yes** | First-stage t-statistic of the GDP response |
 | Lead-lag exogeneity with respect to other shocks | No (only partly via predictability) | — |
 | Linearity, homogeneity of responses | Partly | Country-by-country responses (descriptive) |
-| Monthly-to-quarterly aggregation | No (choice) | — |
+| Monthly-to-quarterly aggregation | No (choice) | — (not needed in the monthly amendment) |
+| Outcome timing of monthly series (A7, monthly amendment) | **Yes (partly)** | Pre-shock placebo; trend, moving-average and interpolated unemployment series excluded a priori from Eurostat's metadata |
 | Two-shock world, long-run neutrality (Blanchard-Quah) | No | Not used |
 | Rotation prior (sign restrictions) | No | Not used |
 
@@ -247,6 +248,7 @@ estimated by LP-IV, with the shock as instrument for GDP.
 | --- | --- | --- | --- |
 | GDP, unemployment, participation | Eurostat `namq_10_gdp`, `une_rt_q`, `lfsi_emp_q` (frozen snapshot 2026-10-15) | 2009-Q2 to 2026-Q2 | Labour-force series start in 2009 (2021 survey change back-cast); flags as documented in the classical review |
 | Hours worked, employment (national accounts) | Eurostat `namq_10_a10_e`, `namq_10_pe` | Available, quarterly | Not used in estimation here. Needed to decompose Okun's law along section 3. |
+| Monthly unemployment, industrial production | Eurostat `une_rt_m`, `sts_inpr_m` (frozen snapshot 2026-10-18) | 2000-01 to 2026-08 | Used in the monthly amendment. Monthly unemployment is a direct survey estimate in only 8 countries; elsewhere it is a trend, a moving average or interpolated |
 | Short-term interest rates | Eurostat `ei_mfir_m` | Available, monthly | Not needed: shocks are normalised on their own scale |
 | ECB monetary policy shocks | Jarociński and Karadi (2020), updated | 1999M01-2025M10 | CC BY 4.0; frozen with SHA-256 |
 | Oil supply news | Känzig (2021), updated | 1975M01-2025M12 | CC BY 4.0; frozen with SHA-256 |
@@ -298,14 +300,74 @@ Every number below comes from the generated results report and its tables in
     protocol excluded 2020-2021 because the identified surprises coincide with the
     pandemic collapse.
 
-### 7.2 Final decision
+### 7.2 Monthly outcomes (pre-registered amendment, snapshot 2026-10-18)
+
+Section 8 named monthly outcomes as the next step: the shocks keep their native
+frequency, the time dimension triples, and no aggregation assumption is needed. The
+amendment was registered in
+[MONTHLY_IDENTIFICATION_PROTOCOL.md](../MONTHLY_IDENTIFICATION_PROTOCOL.md) before any
+estimate. Its results are generated in
+[MONTHLY_IDENTIFICATION_RESULTS.md](MONTHLY_IDENTIFICATION_RESULTS.md).
+
+**Design.**
+
+- **Outcomes.** Monthly unemployment and industrial production (NACE B-D). No monthly GDP
+  exists for the EU-27, so the ratio estimated is `kappa_IP`, pp of unemployment per 1%
+  of industrial production. It is **not** the GDP-based Okun coefficient.
+- **New assumption A7 (outcome timing).** A month's published value must not contain
+  later months.
+  - Eurostat's metadata show that it fails by construction for 15 countries: trends (DE,
+    NL), centred moving averages (EE, PT), interpolation between quarterly survey results
+    (nine countries) and benchmarking to annual averages (HR, LU).
+  - It is uncertain for four more: DK is ambiguous, and IE, MT and SI have no stated
+    method.
+  - The primary sample therefore keeps the eight countries with direct monthly survey
+    estimates: AT, CZ, EL, FI, HU, IT, RO and SE.
+  - For monetary policy, only four of these are euro-area members.
+
+**Outcome.** Every number comes from the generated report.
+
+- **Relevance did not improve.**
+  - The largest primary first-stage |t| is 1.21 with monthly industrial production,
+    against 1.27 with quarterly GDP.
+  - All four primary `kappa_IP` sets are unbounded, so demand and supply cannot be
+    compared under the protocol's rule.
+- **Responses.**
+  - Industrial production falls after a monetary tightening, but its band excludes zero
+    at month 3 only.
+  - After negative oil supply news, the primary oil series gives industrial production
+    *rising* (bands exclude zero at months 13, 15, 16 and 18), which is against theory, as with
+    quarterly GDP.
+  - Unemployment is not distinguishable from zero at any horizon for either shock.
+  - In total, 1 and 4 of 50 bands exclude zero, at or below the roughly 5 expected by
+    chance.
+- **Assumptions that could be tested survive.**
+  - Neither shock is predictable from lagged monthly EU data. Notably, the oil surprise is
+    not predictable at its native frequency (p = 0.567), whereas its quarterly sum was
+    (p = 0.006).
+  - None of the eight placebo tests rejects, even in the sample that includes the smoothed
+    and interpolated series. The placebo has limited power.
+- **Robustness.**
+  - Two variants give bounded sets. The VAR-based oil news shock at 24 months gives
+    [-0.718, +0.161], and the long sample (origins from 2001) for monetary policy at
+    12 months gives [-2.656, +0.126].
+  - Both contain zero and both rest on weak first stages (|t| of 1.86 and 1.67).
+
+**Conclusion of the amendment.** The quarterly study failed to bound the ratio because
+the instruments are weak for real activity, not because of the frequency of the data.
+With monthly outcomes the shocks are still weak instruments for industrial production in
+2009-2025. Answering the question needs stronger or longer instrument variation, not
+higher-frequency outcomes alone.
+
+### 7.3 Final decision
 
 - **Identification.** Causal identification of *country-specific* GDP shocks, of
   *productivity* shocks and of *labour-supply* shocks is **not available** with public
   data for the EU-27.
 - **Common shocks.** For two common shocks, identification is defensible in principle.
   With 2009-2025 quarterly data, however, it **does not deliver informative
-  shock-conditional Okun coefficients**.
+  shock-conditional Okun coefficients**. Monthly outcomes do not deliver informative
+  ratios either (section 7.2).
 - **No causal claims.** The data therefore do not justify a causal claim about how
   unemployment responds to GDP, for any type of shock.
 - **Status of earlier results.** The Okun coefficients of this study stay descriptive,
@@ -327,9 +389,15 @@ Every number below comes from the generated results report and its tables in
   section 3.
 - **Longer, break-free samples.** These would improve power: the labour-force series
   start in 2009, and 2020-2021 must be excluded or modelled.
-- **Monthly outcomes.** Eurostat publishes monthly unemployment (`une_rt_m`) and
-  industrial production. With monthly outcomes the shocks keep their native frequency,
-  which would raise the first-stage strength. This needs a new, registered protocol.
+- **Monthly outcomes.** These are done (section 7.2) and do not raise the first-stage
+  strength. Two further monthly steps remain:
+  - Monthly unemployment that satisfies A7 in more countries, such as national monthly
+    survey microdata or registered unemployment as a separate outcome. This would need a
+    defended link to the survey concept.
+  - An identified mapping from industrial production to GDP.
+- **Stronger or longer instrument variation.** The long-sample monetary variant (from
+  2001) is the only primary-shock variant with a bounded ratio. A study frame that
+  starts before 2009 needs break-corrected labour-market series for those years.
 
 ## References
 

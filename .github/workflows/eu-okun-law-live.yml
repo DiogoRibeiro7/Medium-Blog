@@ -45,6 +45,21 @@ jobs:
                     "usable Okun pairs:", row["basic_okun_pairs"],
                     "with participation:", row["with_participation_pairs"])
           PY
+      - name: Fetch actual monthly Eurostat responses (unemployment, industrial production)
+        working-directory: eu-okun-law
+        run: poetry run eu-okun fetch-monthly --start-month 2000-01 --output-dir data/monthly
+      - name: Audit the monthly snapshot and show its coverage
+        working-directory: eu-okun-law
+        run: |
+          poetry run python - <<'PY'
+          from pathlib import Path
+          from eu_okun.monthly_data import audit_monthly_snapshot
+          manifest = audit_monthly_snapshot(Path("data/monthly"))
+          print("period:", manifest["period"])
+          for name, entry in manifest["series"].items():
+              print(name, entry["dataset"], "updated", entry["updated"],
+                    "missing", entry["missing_cells"], "flags", entry["flags"])
+          PY
       - name: Keep public source snapshot and audit
         if: success()
         uses: actions/upload-artifact@v4

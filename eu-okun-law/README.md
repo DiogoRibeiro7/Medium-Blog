@@ -520,3 +520,44 @@ Results: [docs/IDENTIFICATION_RESULTS.md](docs/IDENTIFICATION_RESULTS.md). In br
   series is predictable from lagged EU data and is labelled "identification doubtful".
 - **Conclusion: the data do not justify a causal reading of the GDP-unemployment
   relationship. Every Okun coefficient of this study remains a descriptive association.**
+
+### Monthly outcomes for the identified shocks (amendment)
+
+[MONTHLY_IDENTIFICATION_PROTOCOL.md](MONTHLY_IDENTIFICATION_PROTOCOL.md) was committed and
+pushed before any estimate. It asks whether the two shocks, kept at their native monthly
+frequency, become informative with monthly unemployment and industrial production
+(NACE B-D) as outcomes.
+
+- **Sample.** Eurostat's metadata show that monthly unemployment is a trend, a moving
+  average or interpolated between quarterly survey results in most countries. Those
+  series put later months into a month's value. The primary sample therefore keeps the
+  eight countries with direct monthly survey estimates, and the other groups are a
+  sensitivity check.
+- **Ratio.** It is `kappa_IP`, pp of unemployment per 1% of industrial production. It is
+  not the GDP-based Okun coefficient.
+
+```bash
+poetry run eu-okun fetch-monthly --start-month 2000-01 \
+  --output-dir snapshots/eurostat-monthly-2026-10-18      # already frozen; needs internet
+poetry run eu-okun monthly-identification --data-dir snapshots/eurostat-monthly-2026-10-18 \
+  --shocks-dir snapshots/external-shocks-2026-10-16 --quarterly-dir docs/identification \
+  --output-dir docs/monthly-identification --report docs/MONTHLY_IDENTIFICATION_RESULTS.md
+```
+
+Results are in [docs/MONTHLY_IDENTIFICATION_RESULTS.md](docs/MONTHLY_IDENTIFICATION_RESULTS.md);
+the run takes about 20 seconds. In brief:
+
+- **Relevance does not improve.** The largest first-stage |t| is 1.21 with monthly
+  industrial production, against 1.27 with quarterly GDP. All four primary ratio sets are
+  unbounded.
+- **Responses.** Unemployment is not distinguishable from zero at any horizon. The
+  primary oil series gives industrial production *rising* after negative supply news,
+  which is against theory, as with quarterly GDP.
+- **Testable assumptions survive.**
+  - Neither shock is predictable from lagged monthly EU data. The oil surprise was
+    predictable only after summing to quarters.
+  - No placebo test rejects.
+- **Robustness.** The only bounded sets (the VAR-based oil news shock at 24 months, and
+  monetary policy from 2001) contain zero.
+- **The quarterly conclusion stands.** The bottleneck is weak instruments for real
+  activity, not the frequency of the data.
