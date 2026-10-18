@@ -1,0 +1,50 @@
+name: Reproduce prescribing-individuals
+
+on:
+  pull_request:
+    paths:
+      - 'prescribing-individuals/**'
+      - '.github/workflows/prescribing-individuals.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'prescribing-individuals/**'
+      - '.github/workflows/prescribing-individuals.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: prescribing-individuals
+    env:
+      MPLBACKEND: Agg
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: prescribing-individuals/requirements.txt
+
+      - name: Install pinned dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Rerun the calculations
+        run: python prescribing_individuals.py > results/output.txt
+
+      - name: Check the numbers match the committed run
+        run: git diff --exit-code -- results/output.txt
+
+      - name: Check both figures were drawn
+        run: |
+          for f in fig1_same_average fig2_drug_holiday; do
+            test -s "figures/$f.png"
+          done
