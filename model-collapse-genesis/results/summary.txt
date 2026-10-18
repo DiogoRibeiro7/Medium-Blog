@@ -8,6 +8,20 @@ Swedish    tokens  40768 words  35440 types  3518 hapax  1624 (46.2% of types) n
 all tokens 243,546  vocabulary incl. punctuation 23,111
 train tokens N=217,746 docs=1088  types0=[2428, 6003, 3304, 3405, 3358, 3266] sum=21,764
 test tokens 25,800; contexts 21,767; median context count 1; share seen once 51.3%; <=2 67.1%; bigram types 98,148; bigram tokens that are singletons 32.8%
+held-out blocks 129 of 1220 (10.6%)
+word tokens in the first model N_w=184,923; word types with no successor 72
+after '.' in English   : 1,315 words, most common 'and' 1,039 (79.0%)
+after '.' in Finnish   : 1,937 words, most common 'kun' 111 (5.7%)
+after '.' in French    : 1,716 words, most common 'et' 175 (10.2%)
+after '.' in German    : 1,625 words, most common 'und' 527 (32.4%)
+after '.' in Portuguese: 1,497 words, most common 'e' 864 (57.7%)
+after '.' in Swedish   : 1,650 words, most common 'och' 597 (36.2%)
+one-round formula on training counts, English   : 81.5% of 2428 types
+one-round formula on training counts, Finnish   : 75.3% of 6003 types
+one-round formula on training counts, French    : 79.1% of 3304 types
+one-round formula on training counts, German    : 79.5% of 3405 types
+one-round formula on training counts, Portuguese: 79.1% of 3358 types
+one-round formula on training counts, Swedish   : 79.7% of 3266 types
 
 == replace, temperature 1
 t= 1 types 17,064 [16,956, 17,164]  retained 78.4%
@@ -31,8 +45,8 @@ t=50 types 2,940 [2,882, 2,997]  retained 13.5%
   missing_mass         t0 0.0650  t1 0.0827  t10 0.1613  t50 0.2907  ratio50 4.4695
   xent_bits            t0 8.3816  t1 8.7854  t10 10.1461  t50 11.7965  ratio50 1.4074
   hapax_bigram_share   t0 0.3278  t1 0.1418  t10 0.0120  t50 0.0009  ratio50 0.0026
-  Wright-Fisher prediction for Gini-Simpson at t=50: 0.99779
-  max |language share change| t0->t50 (mean over seeds): 0.013
+  Gini-Simpson t0 0.99801 t50 0.99774; Wright-Fisher prediction with word tokens N_w: 0.99774 ((1-1/N_w)^50 = 0.99973)
+  max |language share change| t0->t50: seed means 0.013; single seeds max 0.050, median 0.028
   cond GS t=1: predicted (1-1/n_v)^t 0.7935  simulated 0.7947
   cond GS t=2: predicted (1-1/n_v)^t 0.7715  simulated 0.7750
   cond GS t=5: predicted (1-1/n_v)^t 0.7255  simulated 0.7350
@@ -58,6 +72,19 @@ accumulate_tau08   EN t0 23.7% t5 41.1% t10 50.1% t20 60.1% t50 72.3% [68.8, 74.
 anchor10_tau08     EN t0 23.6% t5 69.7% t10 95.4% t20 95.0% t50 94.9% [92.3, 96.3] | FI t0 10.2% t50 0.8% | types t10 5,757 t20 6,197 t50 6,255 | GS t50 0.798 | missing t50 19.2% | first gen EN>90%: [10, 8, 9, 8, 8, 8, 7, 8, 8, 9]
 accumulate_topp95  EN t0 18.7% t5 19.0% t10 19.2% t20 19.3% t50 19.4% [18.8, 20.1] | FI t0 13.7% t50 11.4% | types t10 21,764 t20 21,764 t50 21,764 | GS t50 0.998 | missing t50 6.5% | first gen EN>90%: [None, None, None, None, None, None, None, None, None, None]
 anchor10_topp95    EN t0 18.6% t5 20.0% t10 20.6% t20 20.5% t50 22.4% [21.0, 25.2] | FI t0 13.9% t50 11.2% | types t10 7,816 t20 7,116 t50 6,658 | GS t50 0.996 | missing t50 17.9% | first gen EN>90%: [None, None, None, None, None, None, None, None, None, None]
+
+== temperature 0.8, replace: when each language disappears (first generation with zero share)
+  seed 0: Finnish 10, Swedish 11, French 12, German 12, Portuguese 16, English None
+  seed 1: Finnish 10, German 10, Swedish 11, French 12, Portuguese 16, English None
+  seed 2: German 10, Finnish 12, Swedish 12, French 13, Portuguese 14, English None
+  seed 3: Finnish 10, Swedish 10, German 11, French 12, Portuguese 15, English None
+  seed 4: German 11, Finnish 12, French 13, Swedish 13, Portuguese 16, English None
+  seed 5: Finnish 11, German 11, French 12, Swedish 12, Portuguese 15, English None
+  seed 6: Finnish 10, German 10, French 12, Swedish 12, Portuguese 15, English None
+  seed 7: Finnish 9, German 10, Swedish 11, French 12, Portuguese 15, English None
+  seed 8: Finnish 10, German 10, Swedish 11, French 13, Portuguese 15, English None
+  seed 9: Finnish 10, German 10, Swedish 10, French 13, Portuguese 15, English None
+  English share exactly 100% from generation: seed mean 16, per seed [16, 16, 14, 15, 16, 15, 15, 15, 15, 15]
 
 == closed forms vs Monte Carlo
 replace N=1000 t=10: MC 0.9897 (se 0.0003)  formula 0.9900

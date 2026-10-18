@@ -60,6 +60,28 @@ def main(data_dir: Path, results: Path):
       f"share seen once {np.mean(n == 1):.1%}; <=2 {np.mean(n <= 2):.1%}; bigram types {len(st.real.codes):,}; "
       f"bigram tokens that are singletons {st.real.n[st.real.n == 1].sum() / st.real.n.sum():.1%}")
 
+    n_blocks = len(st.train) + len(st.test)
+    p(f"held-out blocks {len(st.test)} of {n_blocks} ({len(st.test) / n_blocks:.1%})")
+    col_n0 = np.bincount(st.real.cols, weights=st.real.n, minlength=st.V)
+    N_words = col_n0[st.is_word].sum()
+    dead = np.flatnonzero((col_n0 > 0) & st.is_word & (row_n == 0))
+    p(f"word tokens in the first model N_w={N_words:,.0f}; word types with no successor {len(dead)}")
+    # openings after a full stop, whole text of each translation
+    dot = c.vocab.index("pun|.")
+    for code in c.langs:
+        s_ = c.streams[code]
+        nxt = s_[1:][s_[:-1] == dot]
+        u, n_ = np.unique(nxt, return_counts=True)
+        k = np.argmax(n_)
+        p(f"after '.' in {C.LANG_NAMES[code]:10s}: {len(nxt):,} words, most common "
+          f"'{c.vocab[u[k]].split('|')[1]}' {n_[k]:,} ({n_[k] / len(nxt):.1%})")
+    # one-round survival formula on each language's training counts
+    for li, code in enumerate(c.langs):
+        cnt = col_n0[(c.lang_of == li) & (col_n0 > 0)]
+        NL = cnt.sum()
+        kept = np.sum(1 - (1 - cnt / NL) ** NL) / len(cnt)
+        p(f"one-round formula on training counts, {C.LANG_NAMES[code]:10s}: {kept:.1%} of {len(cnt)} types")
+
     p("\n== replace, temperature 1")
     ty = arr(res, "replace", "types")
     for t in (1, 2, 5, 10, 20, 30, 50):
@@ -75,10 +97,13 @@ def main(data_dir: Path, results: Path):
         p(f"  {key:20s} t0 {a[:, 0].mean():.4f}  t1 {a[:, 1].mean():.4f}  t10 {a[:, 10].mean():.4f}  "
           f"t50 {a[:, 50].mean():.4f}  ratio50 {a[:, 50].mean() / a[:, 0].mean():.4f}")
     gs0 = arr(res, "replace", "gini_simpson")[:, 0].mean()
-    p(f"  Wright-Fisher prediction for Gini-Simpson at t=50: {gs0 * (1 - 1 / meta['N']) ** 50:.5f}")
+    gsr = arr(res, "replace", "gini_simpson")
+    p(f"  Gini-Simpson t0 {gsr[:, 0].mean():.5f} t50 {gsr[:, 50].mean():.5f}; Wright-Fisher prediction "
+      f"with word tokens N_w: {gs0 * (1 - 1 / N_words) ** 50:.5f} ((1-1/N_w)^50 = {(1 - 1 / N_words) ** 50:.5f})")
     sh = np.stack([arr(res, "replace", "lang_share_output", li) for li in range(len(langs))])
-    p(f"  max |language share change| t0->t50 (mean over seeds): "
-      f"{np.max(np.abs(sh[:, :, 50].mean(1) - sh[:, :, 0].mean(1))):.3f}")
+    per_seed = np.abs(sh[:, :, 50] - sh[:, :, 0]).max(axis=0)
+    p(f"  max |language share change| t0->t50: seed means {np.max(np.abs(sh[:, :, 50].mean(1) - sh[:, :, 0].mean(1))):.3f}; "
+      f"single seeds max {per_seed.max():.3f}, median {np.median(per_seed):.3f}")
     # per-context prediction, conditional Gini-Simpson
     pr = st.real.n / row_n[st.real.rows]
     gs_row = 1 - np.bincount(st.real.rows, weights=pr ** 2, minlength=st.V)
@@ -120,6 +145,18 @@ def main(data_dir: Path, results: Path):
           f"t20 {e[:, 20].mean():.1%} t50 {fmt(e, 50, pct=True)} | FI t0 {f[:, 0].mean():.1%} t50 {f[:, 50].mean():.1%} "
           f"| types t10 {ty[:, 10].mean():,.0f} t20 {ty[:, 20].mean():,.0f} t50 {ty[:, 50].mean():,.0f} "
           f"| GS t50 {gs[:, 50].mean():.3f} | missing t50 {mm[:, 50].mean():.1%} | first gen EN>90%: {first90}")
+
+    p("\n== temperature 0.8, replace: when each language disappears (first generation with zero share)")
+    for seed in range(meta["seeds"]):
+        order = []
+        for li, code in enumerate(langs):
+            a = arr(res, "replace_tau08", "lang_share_output", li)[seed]
+            z = np.flatnonzero(a == 0)
+            order.append((int(z[0]) if len(z) else None, C.LANG_NAMES[code]))
+        p(f"  seed {seed}: " + ", ".join(f"{n} {g}" for g, n in sorted(order, key=lambda x: (x[0] is None, x[0]))))
+    e = arr(res, "replace_tau08", "lang_share_output", en)
+    p(f"  English share exactly 100% from generation: seed mean {int(np.argmax(e.mean(0) == 1.0))}, "
+      f"per seed {[int(np.argmax(r == 1.0)) for r in e]}")
 
     if th is None:
         return
