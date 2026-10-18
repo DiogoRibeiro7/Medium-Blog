@@ -34,7 +34,7 @@ python -m prescribing analyse      # from the committed extracts in data/
 python -m prescribing fetch        # download everything again (needs internet access)
 ```
 
-The download step runs on GitHub Actions (`.github/workflows/prescribing-individuals-run.yml`): a manual run fetches the data, recomputes the results and opens a pull request. `.github/workflows/prescribing-individuals.yml` reruns the tests and the analysis on every change and checks that `results/summary.txt` matches the committed run.
+The download step runs on GitHub Actions (`.github/workflows/prescribing-individuals-run.yml`): a manual run fetches the data, recomputes the results and opens a pull request. `.github/workflows/prescribing-individuals.yml` reruns the tests and the analysis on every change and checks that `results/summary.txt` matches the committed run. Sorting is stable throughout, so weighted quantiles and arm choices do not depend on the machine's CPU.
 
 ## Outputs
 
