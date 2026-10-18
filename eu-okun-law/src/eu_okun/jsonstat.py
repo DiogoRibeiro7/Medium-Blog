@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import math
+import re
 from collections.abc import Mapping, Sequence
 from typing import Any
 
@@ -33,11 +34,13 @@ def _cell(source: object, index: int) -> object:
 
 def decode_series(
     payload: Mapping[str, Any], spec: SeriesSpec, countries: Sequence[str] = EU27,
+    periods: re.Pattern[str] = QUARTER_RE,
 ) -> dict[tuple[str, str], Observation]:
-    """Decode requested country/quarter cells, retaining quality flags and gaps.
+    """Decode requested country/period cells, retaining quality flags and gaps.
 
     All dimensions other than country/time must match exactly the requested
-    singleton filters: accidentally mixing units or adjustments is an error.
+    singleton filters: accidentally mixing units or adjustments is an error. Every
+    time period must match ``periods`` (quarters by default).
     """
     ids, sizes = payload.get("id"), payload.get("size")
     dims, values = payload.get("dimension"), payload.get("value")
@@ -68,8 +71,8 @@ def decode_series(
     absent = sorted(set(countries) - set(positions["geo"]))
     if absent:
         raise EurostatDataError(f"Countries not in {spec.dataset}: {', '.join(absent)}.")
-    if not all(QUARTER_RE.fullmatch(q) for q in positions["time"]):
-        raise EurostatDataError(f"Non-quarterly observation in {spec.dataset}.")
+    if not all(periods.fullmatch(q) for q in positions["time"]):
+        raise EurostatDataError(f"Unexpected time period format in {spec.dataset}.")
     statuses = payload.get("status", {})
     if not isinstance(statuses, (dict, list)):
         raise EurostatDataError(f"Invalid status mapping in {spec.dataset}.")

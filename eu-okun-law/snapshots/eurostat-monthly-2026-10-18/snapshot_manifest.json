@@ -1,0 +1,120 @@
+{
+  "countries": [
+    "AT",
+    "BE",
+    "BG",
+    "CY",
+    "CZ",
+    "DE",
+    "DK",
+    "EE",
+    "EL",
+    "ES",
+    "FI",
+    "FR",
+    "HR",
+    "HU",
+    "IE",
+    "IT",
+    "LT",
+    "LU",
+    "LV",
+    "MT",
+    "NL",
+    "PL",
+    "PT",
+    "RO",
+    "SE",
+    "SI",
+    "SK"
+  ],
+  "country_month_rows": 8640,
+  "downloaded_at_utc": "2026-10-18T09:31:41.713397+00:00",
+  "note": "Observations can be revised; flagged and missing values are not imputed. The end month is the last one with both series for all 27 countries.",
+  "period": {
+    "end": "2026-08",
+    "start": "2000-01"
+  },
+  "processed_csv_sha256": "7884d2f2a7a89df2cbefa159d074e8b91729b64e277d517b068291e09e462dbd",
+  "protocol": "MONTHLY_IDENTIFICATION_PROTOCOL.md",
+  "series": {
+    "ip": {
+      "dataset": "sts_inpr_m",
+      "filters": {
+        "freq": "M",
+        "indic_bt": "PRD",
+        "nace_r2": "B-D",
+        "s_adj": "SCA",
+        "unit": "I21"
+      },
+      "flags": {
+        "p": 725
+      },
+      "missing_cells": 0,
+      "sha256": "4be88b1a6316a909f61dc439965a0c53b10ee85a236724711b2a5aaf5d28f814",
+      "updated": "2026-10-15T11:00:00+0200",
+      "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/sts_inpr_m?lang=EN&freq=M&indic_bt=PRD&nace_r2=B-D&s_adj=SCA&unit=I21&sinceTimePeriod=2000-01"
+    },
+    "unemployment": {
+      "dataset": "une_rt_m",
+      "filters": {
+        "age": "TOTAL",
+        "freq": "M",
+        "s_adj": "SA",
+        "sex": "T",
+        "unit": "PC_ACT"
+      },
+      "flags": {
+        "b": 20,
+        "d": 14
+      },
+      "missing_cells": 1,
+      "sha256": "127942bd921a8d1365a31f7872592f7a52f09eb0ed5a479047cefd18f382054f",
+      "updated": "2026-10-16T23:00:00+0200",
+      "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/une_rt_m?lang=EN&freq=M&s_adj=SA&age=TOTAL&sex=T&unit=PC_ACT&sinceTimePeriod=2000-01"
+    }
+  },
+  "source": "Eurostat Statistics API (JSON-stat 2.0)",
+  "unemployment_method": {
+    "countries": {
+      "AT": "D",
+      "BE": "I",
+      "BG": "I",
+      "CY": "I",
+      "CZ": "D",
+      "DE": "T",
+      "DK": "A",
+      "EE": "M",
+      "EL": "D",
+      "ES": "I",
+      "FI": "D",
+      "FR": "I",
+      "HR": "B",
+      "HU": "D",
+      "IE": "U",
+      "IT": "D",
+      "LT": "I",
+      "LU": "B",
+      "LV": "I",
+      "MT": "U",
+      "NL": "T",
+      "PL": "I",
+      "PT": "M",
+      "RO": "D",
+      "SE": "D",
+      "SI": "U",
+      "SK": "I"
+    },
+    "groups": {
+      "A": "listed as direct, but the last of three months is nowcast (ambiguous)",
+      "B": "benchmarking to moving annual averages of survey results",
+      "D": "monthly Labour Force Survey estimates, seasonally adjusted",
+      "I": "quarterly survey results interpolated with registered unemployment",
+      "M": "three-month moving average published under the middle month",
+      "T": "trend published instead of seasonally adjusted data",
+      "U": "method not stated"
+    },
+    "read": "2026-10-18",
+    "source": "https://ec.europa.eu/eurostat/cache/metadata/en/une_rt_m_esms.htm"
+  }
+}

@@ -245,4 +245,13 @@ x[i,t+h] - x[i,t-1] = a_i^h + b^h s[t]
 
 ## Change log
 
-None yet.
+- **During implementation, before any estimate on real data: clarifications.** None of
+  these changes a registered choice; they fill in details the text above left open.
+  - *Placebo window.* The placebo's controls reach back to t-13, so its pandemic rule
+    uses the window [t-13, t].
+  - *Autocorrelation.* The lag-1 autocorrelation in the predictability table is that of
+    the shock over every month from 2009-01. It is descriptive.
+  - *Country LPs.* Every country's LP uses the primary controls, including the `du` lags.
+    The country table labels each country with its group.
+  - *Snapshot.* The snapshot was downloaded on 2026-10-18 and ends in 2026-08. Its audit
+    passes. Its one missing cell is Estonia's unemployment rate in 2000-01.
