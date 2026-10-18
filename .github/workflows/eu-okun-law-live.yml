@@ -83,6 +83,17 @@ jobs:
           manifest = audit_deflator(Path("data/deflator"))
           print(manifest["period"], "updated", manifest["updated"], manifest["raw_sha256"])
           PY
+      - name: Fetch and audit the case-study series (Eurostat employment, hours, LFS; OECD EPL)
+        working-directory: eu-okun-law
+        run: |
+          poetry run eu-okun fetch-heterogeneity --output-dir data/heterogeneity
+          poetry run python - <<'PY'
+          from pathlib import Path
+          from eu_okun.heterogeneity_data import audit_heterogeneity
+          manifest = audit_heterogeneity(Path("data/heterogeneity"))
+          for entry in manifest["files"]:
+              print(entry["key"], entry["dataset"], entry["updated"], entry["sha256"])
+          PY
       - name: Keep public source snapshot and audit
         if: success()
         uses: actions/upload-artifact@v4

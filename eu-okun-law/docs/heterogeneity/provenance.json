@@ -1,0 +1,60 @@
+{
+ "eurostat_manifest_sha256": "8a8c8a107d584ba91b61584fd29397e68ff83d82982371a35db253c0803a0464",
+ "heterogeneity_files": {
+  "emp_dc": {
+   "dataset": "namq_10_pe",
+   "sha256": "d6993e097eef0f58452bf2e155ed2bfa2e5ee8f396fd4bfefb8551783fae995d",
+   "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/namq_10_pe?lang=EN&freq=Q&unit=THS_PER&s_adj=SCA&na_item=EMP_DC&sinceTimePeriod=2008-Q1&untilTimePeriod=2026-Q2",
+   "updated": "2026-10-15T23:00:00+0200"
+  },
+  "emp_nc": {
+   "dataset": "namq_10_pe",
+   "sha256": "bdca6bde172c0ea0203fbaf0021740bf9430098b952f70af2c400d45497d3559",
+   "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/namq_10_pe?lang=EN&freq=Q&unit=THS_PER&s_adj=SCA&na_item=EMP_NC&sinceTimePeriod=2008-Q1&untilTimePeriod=2026-Q2",
+   "updated": "2026-10-15T23:00:00+0200"
+  },
+  "emp_a10": {
+   "dataset": "namq_10_a10_e",
+   "sha256": "1ed7d8b0951c264a38d557510ac968399a36d491ca7a137ddd5bc6f8527c6d51",
+   "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/namq_10_a10_e?lang=EN&freq=Q&unit=THS_PER&s_adj=SCA&na_item=EMP_DC&nace_r2=TOTAL&sinceTimePeriod=2008-Q1&untilTimePeriod=2026-Q2",
+   "updated": "2026-10-15T23:00:00+0200"
+  },
+  "hours": {
+   "dataset": "namq_10_a10_e",
+   "sha256": "90bb5445ef5cc073580af515266e3c87ef2b1de0a205e158eced5ead717247e5",
+   "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/namq_10_a10_e?lang=EN&freq=Q&unit=THS_HW&s_adj=SCA&na_item=EMP_DC&nace_r2=TOTAL&sinceTimePeriod=2008-Q1&untilTimePeriod=2026-Q2",
+   "updated": "2026-10-15T23:00:00+0200"
+  },
+  "temp": {
+   "dataset": "lfsq_etgaed",
+   "sha256": "00aaac4a9c65bda200ee41ac8eb556807dd81ff4420936992937ef59b06c04f0",
+   "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/lfsq_etgaed?lang=EN&freq=Q&unit=THS_PER&sex=T&age=Y15-74&isced11=TOTAL&sinceTimePeriod=2008-Q1&untilTimePeriod=2026-Q2",
+   "updated": "2026-09-11T11:00:00+0200"
+  },
+  "employees": {
+   "dataset": "lfsq_eegaed",
+   "sha256": "9365f735e9184326da7b4f2b08a02b6b2b8972ae71aaf1d4cdc760920c800aa8",
+   "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/lfsq_eegaed?lang=EN&freq=Q&unit=THS_PER&sex=T&age=Y15-74&isced11=TOTAL&sinceTimePeriod=2008-Q1&untilTimePeriod=2026-Q2",
+   "updated": "2026-09-11T11:00:00+0200"
+  },
+  "temp_share": {
+   "dataset": "lfsq_etpga",
+   "sha256": "2bb574419cfe76ffc4a7a35241a5f7f237cc45444d53e016a4189e9fdfd04a34",
+   "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/lfsq_etpga?lang=EN&freq=Q&unit=PC&sex=T&age=Y15-74&sinceTimePeriod=2008-Q1&untilTimePeriod=2026-Q2",
+   "updated": "2026-09-11T11:00:00+0200"
+  },
+  "pt_share": {
+   "dataset": "lfsq_eppga",
+   "sha256": "c6caec140cc4ded7e06e962ee538356f72be9c39fa339112c3d2f57e03963e10",
+   "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/lfsq_eppga?lang=EN&freq=Q&unit=PC&sex=T&age=Y15-74&sinceTimePeriod=2008-Q1&untilTimePeriod=2026-Q2",
+   "updated": "2026-09-11T11:00:00+0200"
+  },
+  "epl": {
+   "dataset": "OECD DSD_EPL@DF_EPL",
+   "sha256": "129776828637db5b2e21e3eb1be48b32de9791f9599245dd2d6c2b81bbd73103",
+   "url": "https://sdmx.oecd.org/public/rest/data/OECD.ELS.JAI,DSD_EPL@DF_EPL,1.0/all?startPeriod=2008&endPeriod=2008&dimensionAtObservation=AllDimensions",
+   "updated": ""
+  }
+ },
+ "downloaded_at_utc": "2026-10-18T12:48:38.077196+00:00"
+}
