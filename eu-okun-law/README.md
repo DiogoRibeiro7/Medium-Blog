@@ -598,3 +598,41 @@ takes about 5 seconds. In brief:
   indefensible.
 - **Consequence.** No IV is estimated, and country-specific GDP shocks remain
   unidentified.
+
+### Structural VAR restrictions: demand, technology and labour supply
+
+[SIGN_RESTRICTIONS_PROTOCOL.md](SIGN_RESTRICTIONS_PROTOCOL.md) was committed and pushed
+before any estimate. It sets up three things:
+
+- **Model.** A pooled panel VAR(2) in GDP growth, deflator inflation and the changes in
+  unemployment and participation, with country fixed effects.
+- **Shocks.** Demand, technology and labour-supply shocks, set-identified by impact sign
+  restrictions.
+- **Inference.** Robust Bayesian (Giacomini and Kitagawa 2021): for every posterior draw,
+  the whole identified set over admissible rotations, with no prior over rotations.
+
+The recursive orderings are reported only as an orthogonalised, non-causal measure of
+sensitivity to ordering.
+
+```bash
+poetry run eu-okun fetch-deflator --output-dir snapshots/eurostat-deflator-2026-10-18   # needs internet
+poetry run eu-okun sign-restrictions --data-dir snapshots/eurostat-2026-10-15   --deflator-dir snapshots/eurostat-deflator-2026-10-18 --output-dir docs/sign-restrictions   --report docs/SIGN_RESTRICTIONS_RESULTS.md                                    # about 12 minutes
+```
+
+Results are in [docs/SIGN_RESTRICTIONS_RESULTS.md](docs/SIGN_RESTRICTIONS_RESULTS.md). In
+brief:
+
+- **Plausibility.** Every posterior draw admits the impact restrictions. Imposing them
+  also at h = 1 leaves 1% of draws, so the data contradict that variant.
+- **Demand against technology.** Both Okun-ratio sets are unbounded at 4 and 8 quarters,
+  so the two cannot be distinguished, in every variant.
+- **Labour supply against demand.** They differ at impact only by assumption. At 8
+  quarters both unemployment responses include zero, and each shock's share of
+  unemployment's forecast-error variance spans 0-96%.
+- **The uniform-rotation posterior** that sign-restriction studies usually report looks
+  sharp: demand -0.43, technology -0.55. That sharpness comes from the prior over
+  rotations, not from the data.
+- **Recursive orderings (not causal)** move the "GDP shock" Okun ratio between -0.13 and
+  -0.22.
+- **Conclusion.** Restrictions the data cannot reject leave the productivity and
+  labour-supply questions unanswered. Every Okun coefficient remains descriptive.

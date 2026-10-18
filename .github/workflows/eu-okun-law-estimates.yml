@@ -110,3 +110,25 @@ jobs:
             eu-okun-law/results/
           retention-days: 30
           if-no-files-found: error
+  sign-restrictions:
+    # SIGN_RESTRICTIONS_PROTOCOL.md: 7 specifications x 1000 draws x 20,000 rotations, too
+    # slow for the ordinary offline suite; regenerated here and compared with the tables.
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install Poetry
+        run: pipx install poetry==2.5.1
+      - name: Install locked study environment (project-local .venv)
+        working-directory: eu-okun-law
+        run: |
+          poetry check --lock
+          poetry install --no-interaction --extras dev
+      - name: Committed sign-restriction tables reproduce on Linux
+        working-directory: eu-okun-law
+        env:
+          EU_OKUN_REPRODUCE_SVAR: "1"
+        run: poetry run pytest tests/test_sign_restrictions.py -q

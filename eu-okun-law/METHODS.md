@@ -286,6 +286,19 @@ instrument for country-specific GDP shocks:
   enters this computation.
 - **Result.** Distant demand gives an expected t of 0.19, so no IV is estimated.
 
+**Sign restrictions.** [SIGN_RESTRICTIONS_PROTOCOL.md](SIGN_RESTRICTIONS_PROTOCOL.md) and
+[docs/SIGN_RESTRICTIONS_RESULTS.md](docs/SIGN_RESTRICTIONS_RESULTS.md):
+
+- **Model.** A pooled panel VAR with impact sign restrictions for demand, technology and
+  labour-supply shocks.
+- **Inference.** Robust Bayesian inference over the identified sets (Giacomini and
+  Kitagawa 2021), so no prior over rotations is used.
+- **Testable part.** Only the restrictions' joint compatibility with the reduced form,
+  measured by the posterior probability of a non-empty set.
+- **Contrasts.** The uniform-rotation posterior is reported only as a labelled contrast,
+  and the recursive orderings only as orthogonalised, non-causal responses.
+- **Result.** The identified sets are too wide to separate the shocks' Okun ratios.
+
 
 With reduced-form covariance `Sigma = B B'`, `B Q` has the same
 covariance for any orthogonal `Q`. A multivariate dynamic model

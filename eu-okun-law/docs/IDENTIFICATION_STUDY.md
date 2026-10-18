@@ -11,8 +11,8 @@ generated in [IDENTIFICATION_RESULTS.md](IDENTIFICATION_RESULTS.md).
 
 | Question | Decision |
 | --- | --- |
-| Do demand-driven and productivity-driven changes in GDP have different employment effects? | **Only half answerable.** A common euro-area *demand* shock (ECB policy surprises) and a common *oil supply* shock (OPEC announcement surprises) are identified. No credible quarterly instrument exists for *productivity* shocks in EU countries. |
-| Can labour-supply shocks be distinguished from aggregate-demand shocks? | **No, with public data.** There is no defensible instrument for labour-supply shocks. Sign restrictions would give prior-dominated identified sets. |
+| Do demand-driven and productivity-driven changes in GDP have different employment effects? | **Only half answerable.** A common euro-area *demand* shock (ECB policy surprises) and a common *oil supply* shock (OPEC announcement surprises) are identified. No credible quarterly instrument exists for *productivity* shocks in EU countries. A sign-restricted SVAR that defines a technology shock by assumption was estimated with robust Bayesian inference ([SIGN_RESTRICTIONS_RESULTS.md](SIGN_RESTRICTIONS_RESULTS.md)). Demand- and technology-driven Okun ratios are **not distinguishable**: both identified sets are unbounded at 4 and 8 quarters. |
+| Can labour-supply shocks be distinguished from aggregate-demand shocks? | **No, with public data.** There is no defensible instrument for labour-supply shocks. Under sign restrictions the two shocks differ at impact only because that is assumed. By 8 quarters both unemployment responses include zero, and each shock's share of unemployment variance spans 0-96% ([SIGN_RESTRICTIONS_RESULTS.md](SIGN_RESTRICTIONS_RESULTS.md)). |
 | Under which assumptions are country-specific GDP shocks identifiable? | **With an instrument that moves one country's GDP and affects its unemployment only through GDP. None exists for the EU-27.** The most defensible public candidate, distant foreign demand (shift-share), was checked under a pre-registered feasibility rule. Its expected first-stage t is 0.19 against the threshold of 3.16, so it was not estimated ([SHIFT_SHARE_FEASIBILITY.md](SHIFT_SHARE_FEASIBILITY.md)). Only the heterogeneous responses of countries to common, externally identified shocks are estimable. |
 | Do the data justify causal claims? | **Not about the GDP-unemployment relationship.** Identification of the two common shocks is defensible, but on 2009-2025 quarterly data the shock-conditional Okun coefficients are not determined (unbounded Anderson-Rubin sets), and the primary oil series fails its predictability test (section 7.1). A pre-registered monthly amendment with industrial production and monthly unemployment does not change this: its first stages are no stronger, and every primary ratio set is unbounded (section 7.2). Every Okun coefficient estimated in this study remains a reduced-form association. |
 
@@ -142,7 +142,10 @@ flowchart LR
 It assumes a lower-triangular `B`: a variable ordered first does not respond within the
 quarter to shocks ordered later. GDP and unemployment both respond within the quarter to
 every shock in the graph, so any ordering is arbitrary. Results change with the ordering,
-and no ordering identifies an economic shock. **Not implemented.**
+and no ordering identifies an economic shock. **Not used for identification.** The 24
+orderings are reported in the sign-restriction amendment only as an orthogonalised,
+non-causal measure of how much an arbitrary choice matters. They move the "GDP shock"
+Okun ratio from -0.22 to -0.15 at 8 quarters.
 
 ### 4.2 Long-run restrictions (Blanchard and Quah 1989): rejected
 
@@ -187,8 +190,11 @@ participation).
 - *Debatable signs.* Demand shocks can raise participation, and productivity shocks can
   raise prices with nominal rigidities.
 
-None of these assumptions is testable. **Not implemented.** A Baumeister-Hamilton
-analysis with explicit, defended priors is listed under further work.
+None of these assumptions is testable. **Estimated later, under a pre-registered
+amendment** ([SIGN_RESTRICTIONS_PROTOCOL.md](../SIGN_RESTRICTIONS_PROTOCOL.md)). It uses
+robust Bayesian inference (Giacomini and Kitagawa 2021): the full identified set, with no
+prior over rotations. This removes the prior-dominance problem but not the other two;
+see section 7.3 and [SIGN_RESTRICTIONS_RESULTS.md](SIGN_RESTRICTIONS_RESULTS.md).
 
 ### 4.4 External instruments (proxy-SVAR, local projections)
 
@@ -240,7 +246,8 @@ estimated by LP-IV, with the shock as instrument for GDP.
 | Monthly-to-quarterly aggregation | No (choice) | — (not needed in the monthly amendment) |
 | Outcome timing of monthly series (A7, monthly amendment) | **Yes (partly)** | Pre-shock placebo; trend, moving-average and interpolated unemployment series excluded a priori from Eurostat's metadata |
 | Two-shock world, long-run neutrality (Blanchard-Quah) | No | Not used |
-| Rotation prior (sign restrictions) | No | Not used |
+| Rotation prior (sign restrictions) | No | Avoided: robust Bayes reports the identified set over all rotations |
+| Sign restrictions S1-S3 jointly | **Yes (only jointly)** | Posterior probability that the identified set is non-empty: 100% on impact; 1% when also imposed at h = 1 |
 
 ## 6. Data available for each element
 
@@ -359,7 +366,47 @@ With monthly outcomes the shocks are still weak instruments for industrial produ
 2009-2025. Answering the question needs stronger or longer instrument variation, not
 higher-frequency outcomes alone.
 
-### 7.3 Final decision
+### 7.3 Sign restrictions (pre-registered amendment)
+
+[SIGN_RESTRICTIONS_PROTOCOL.md](../SIGN_RESTRICTIONS_PROTOCOL.md) was registered before
+any estimate. Results are in [SIGN_RESTRICTIONS_RESULTS.md](SIGN_RESTRICTIONS_RESULTS.md).
+
+**Design.**
+
+- **Model.** A pooled panel VAR(2) in GDP growth, deflator inflation and the changes in
+  unemployment and participation, with country fixed effects, for 27 countries.
+- **Shocks.** Demand (g+, pi+, du−), technology (g+, pi−, du−) and labour supply (pi−,
+  du+, dp+) are set-identified by impact sign restrictions.
+- **Inference.** 1000 posterior draws × 20,000 Haar rotations. The summaries are robust
+  Bayes: the set of posterior means and a robust 90% region.
+
+**Outcome.**
+
+- **Plausibility.** The impact restrictions are compatible with every posterior draw.
+  Imposing them also at h = 1 leaves only 1% of draws admissible, so the data contradict
+  that variant.
+- **Demand against technology.** Both Okun-ratio sets are unbounded at 4 and 8 quarters:
+  the admissible cumulative GDP response can be arbitrarily close to zero. The two are
+  **not distinguishable**, in every robustness variant whose restrictions the data admit.
+- **Labour supply against demand.**
+  - The unemployment responses differ in sign at impact by assumption.
+  - At 8 quarters, both robust regions include zero: labour supply [-0.24, +0.79] pp,
+    demand [-0.80, +0.07] pp.
+  - Each shock's share of unemployment's forecast-error variance spans 0-96%.
+- **Prior dominance made visible.** The usual uniform-rotation posterior gives sharp
+  Okun ratios: demand -0.43 [-1.16, -0.16], technology -0.55 [-1.45, -0.17]. The
+  identified sets show that this sharpness comes from the prior over rotations, not from
+  the data.
+- **Ordering.** The 24 recursive orderings put the orthogonalised "GDP shock" Okun ratio
+  between -0.13 and -0.22, depending only on whether g is ordered before du. None is
+  causal.
+
+**Conclusion of the amendment.** Structural VAR restrictions that the data cannot reject
+leave the questions about productivity and labour supply unanswered. The restrictions
+that would narrow the sets are untestable, and the one stronger variant (signs at h = 1)
+is contradicted by the data.
+
+### 7.4 Final decision
 
 - **Identification.** Causal identification of *country-specific* GDP shocks, of
   *productivity* shocks and of *labour-supply* shocks is **not available** with public
@@ -368,6 +415,9 @@ higher-frequency outcomes alone.
   With 2009-2025 quarterly data, however, it **does not deliver informative
   shock-conditional Okun coefficients**. Monthly outcomes do not deliver informative
   ratios either (section 7.2).
+- **Structural VAR restrictions.** Sign restrictions that the data admit identify only
+  sets. These sets do not separate demand- from technology-driven Okun ratios, or
+  labour-supply from demand shocks beyond impact (section 7.3).
 - **No causal claims.** The data therefore do not justify a causal claim about how
   unemployment responds to GDP, for any type of shock.
 - **Status of earlier results.** The Okun coefficients of this study stay descriptive,
@@ -380,6 +430,9 @@ higher-frequency outcomes alone.
   credible technology-news instruments.
 - **Labour supply.** Quasi-experimental variation, such as policy-driven changes in
   migration or pension rules with documented timing unrelated to labour demand.
+- **Narrower identified sets.** Restrictions on wages, hours or labour productivity, which
+  need harmonised quarterly series. Alternatively, elasticity bounds defended from
+  microeconomic evidence (Baumeister-Hamilton priors), stated as such.
 - **Country-specific GDP.** The shift-share foreign-demand instrument is examined in
   [SHIFT_SHARE_FEASIBILITY.md](SHIFT_SHARE_FEASIBILITY.md) and is infeasible. Three
   things would be needed instead:

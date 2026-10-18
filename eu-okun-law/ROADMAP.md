@@ -105,6 +105,12 @@ Pre-registered in [BAYES_PROTOCOL.md](BAYES_PROTOCOL.md); results in
       [docs/SHIFT_SHARE_FEASIBILITY.md](docs/SHIFT_SHARE_FEASIBILITY.md)). Only distant,
       non-European demand is defensible. After country and quarter effects its expected
       first-stage t is 0.19 against 3.16: no go, so no IV is estimated.
+- [x] Structural VAR sign restrictions for demand, technology and labour-supply shocks,
+      with robust Bayesian identified sets and the recursive orderings as a non-causal
+      sensitivity measure ([SIGN_RESTRICTIONS_PROTOCOL.md](SIGN_RESTRICTIONS_PROTOCOL.md);
+      [docs/SIGN_RESTRICTIONS_RESULTS.md](docs/SIGN_RESTRICTIONS_RESULTS.md)). The
+      demand and technology Okun-ratio sets are unbounded, and labour supply and demand
+      differ only at impact, by assumption.
 - [ ] Regime sensitivity, structural breaks and mechanisms.
 - [ ] Detailed alternative hypotheses for NL and LU.
 
