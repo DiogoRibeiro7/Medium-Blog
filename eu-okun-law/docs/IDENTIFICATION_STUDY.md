@@ -398,8 +398,8 @@ any estimate. Results are in [SIGN_RESTRICTIONS_RESULTS.md](SIGN_RESTRICTIONS_RE
   identified sets show that this sharpness comes from the prior over rotations, not from
   the data.
 - **Ordering.** The 24 recursive orderings put the orthogonalised "GDP shock" Okun ratio
-  between -0.13 and -0.22, depending only on whether g is ordered before du. None is
-  causal.
+  between -0.135 and -0.202 at 4 quarters and between -0.149 and -0.216 at 8 quarters. The
+  spread depends mainly on whether g is ordered before du. None is causal.
 
 **Conclusion of the amendment.** Structural VAR restrictions that the data cannot reject
 leave the questions about productivity and labour supply unanswered. The restrictions
