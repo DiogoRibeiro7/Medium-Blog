@@ -137,6 +137,14 @@ def q2_text(res: SpecResults) -> str:
     return f"the distinction does not persist at h = 8 ({' and '.join(lost)} region includes zero)"
 
 
+def conditional(res: SpecResults, text: str) -> str:
+    """Protocol, section 6: verdicts of a specification the data mostly contradict."""
+    if res.nonempty_share >= 0.5:
+        return text
+    return (f"{text} (conditional on the {100 * res.nonempty_share:.1f}% of draws that admit "
+            "the restrictions)")
+
+
 def plausibility(res: SpecResults) -> str:
     share = res.nonempty_share
     return (f"{100 * share:.1f}% of draws admit the restrictions"
@@ -212,10 +220,13 @@ def render(review: SignReview, assets: str, command: str) -> str:
               "Share of posterior draws for which at least one rotation satisfies every "
               "restriction (the posterior probability that the identified set is non-empty), "
               "and the mean number of admissible rotations per draw.", ""]
-    lines += _table(["Specification", "Non-empty", "Admissible per draw", "Draws discarded"],
+    lines += _table(["Specification", "Non-empty", "Admissible per draw", "Draws discarded",
+                     "Reading"],
                     [[r.spec.label, f"{100 * r.nonempty_share:.1f}%",
-                      f"{r.mean_admissible:.0f}", str(r.discarded)]
-                     for r in review.results.values()])
+                      f"{r.mean_admissible:.0f}", str(r.discarded),
+                      "compatible with the reduced form" if r.nonempty_share >= 0.5 else
+                      "contradicted by the data for most reduced forms"]
+                     for r in review.results.values()], "lrrrl")
 
     # 3. Demand vs technology
     lines += ["## 3. Demand against technology", "",
@@ -266,8 +277,9 @@ def render(review: SignReview, assets: str, command: str) -> str:
     for r in review.results.values():
         rows.append([r.spec.label, f"{100 * r.nonempty_share:.1f}%",
                      region(r.summary("demand:okun:8")), region(r.summary("technology:okun:8")),
-                     q1_verdict(r, 8), region(r.summary("labour_supply:unemployment:8")),
-                     region(r.summary("demand:unemployment:8")), q2_text(r)])
+                     conditional(r, q1_verdict(r, 8)),
+                     region(r.summary("labour_supply:unemployment:8")),
+                     region(r.summary("demand:unemployment:8")), conditional(r, q2_text(r))])
     lines += _table(["Specification", "Non-empty", "Demand Okun h=8", "Technology Okun h=8",
                      "Question 1 (h = 8)", "Labour supply du h=8", "Demand du h=8",
                      "Question 2"], rows, "lrrrlrrl")

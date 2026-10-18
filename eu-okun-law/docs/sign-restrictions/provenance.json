@@ -1,0 +1,14 @@
+{
+ "eurostat_manifest_sha256": "8a8c8a107d584ba91b61584fd29397e68ff83d82982371a35db253c0803a0464",
+ "deflator": {
+  "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/namq_10_gdp?lang=EN&freq=Q&unit=PD_PCH_PRE_NAC&s_adj=SCA&na_item=B1GQ&sinceTimePeriod=2008-Q1&untilTimePeriod=2026-Q2",
+  "updated": "2026-10-16T23:00:00+0200",
+  "raw_sha256": "8a3ab55cad92a85037333c0928e9e31e76de06be66875fff751ee0a929524e2a",
+  "processed_sha256": "153d4dda988cbe1d64d42fbff26ec1b317aa4dbc03e146026a6f1389d7992db4",
+  "downloaded_at_utc": "2026-10-18T11:13:42.980823+00:00"
+ },
+ "convergence": {
+  "median_width_increase": 0.001426163546774717,
+  "max_width_increase": 0.05676150962115134
+ }
+}
