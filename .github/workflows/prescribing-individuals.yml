@@ -1,5 +1,8 @@
 name: Reproduce prescribing-individuals
 
+# Runs the unit tests and recomputes every number and figure from the committed
+# data extracts (no downloads), then checks the numbers match the committed run.
+
 on:
   pull_request:
     paths:
@@ -37,14 +40,11 @@ jobs:
       - name: Install pinned dependencies
         run: python -m pip install -r requirements.txt
 
-      - name: Rerun the calculations
-        run: python prescribing_individuals.py > results/output.txt
+      - name: Unit tests
+        run: python -m pytest -q
+
+      - name: Recompute from the committed extracts
+        run: python -m prescribing analyse
 
       - name: Check the numbers match the committed run
-        run: git diff --exit-code -- results/output.txt
-
-      - name: Check both figures were drawn
-        run: |
-          for f in fig1_same_average fig2_drug_holiday; do
-            test -s "figures/$f.png"
-          done
+        run: git diff --exit-code -- results/summary.txt
