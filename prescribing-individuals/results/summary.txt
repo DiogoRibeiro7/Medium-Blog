@@ -1,31 +1,38 @@
 == ClinicalTrials.gov: adult stimulant trials for ADHD with posted results
-  stimulant_trials_with_results: 276
+  stimulant_trials_with_results: 256
   of_which_adhd: 145
-  older_trials: 9
-  older_trials_list: NCT00252174 (Anxiety Disorder Cancer; min age 18.0, mean age 66.0); NCT01825577 (Dementia Accidental Falls Apathy; min age 65.0, mean age nan); NCT03811847 (Alzheimer Dementia; min age 55.0, mean age 63.57); NCT00526630 (Parkinson's Disease Gait Impairment; min age 35.0, mean age 67.6); NCT01117181 (Apathy Alzheimer's Disease; min age 18.0, mean age 76.0); NCT04885257 (PTSD Stroke; min age 40.0, mean age 63.65); NCT00495820 (Alzheimer's Disease Apathy Dementia; min age 55.0, mean age 76.6); NCT00129467 (Depression Palliative Care Cancer Mental Disorder; min age 18.0, mean age 64.0); NCT00602290 (Depression; min age 60.0, mean age 69.7)
-  adult_trials: 172
+  older_trials: 8
+  older_trials_list: NCT01825577 (Dementia Accidental Falls Apathy; min age 65.0, mean age nan); NCT03811847 (Alzheimer Dementia; min age 55.0, mean age 63.57); NCT00526630 (Parkinson's Disease Gait Impairment; min age 35.0, mean age 67.6); NCT01117181 (Apathy Alzheimer's Disease; min age 18.0, mean age 76.0); NCT04885257 (PTSD Stroke; min age 40.0, mean age 63.65); NCT00495820 (Alzheimer's Disease Apathy Dementia; min age 55.0, mean age 76.6); NCT00129467 (Depression Palliative Care Cancer Mental Disorder; min age 18.0, mean age 64.0); NCT00602290 (Depression; min age 60.0, mean age 69.7)
+  adult_trials: 152
   adult_adhd_trials: 48
-  enrolled: 17686.0
-  max_age_missing: 34
-  max_age_below_65: 100
+  enrolled: 17093.0
+  max_age_missing: 16
+  max_age_below_65: 99
   max_age_65_exactly: 28
-  max_age_above_65: 10
+  max_age_above_65: 9
   min_age_55_plus: 4
-  randomised_parallel: 82
-  trials_reporting_65_category: 75
-  participants_65_plus: 260.0
-  trials_with_mean_age: 139
-  mean_age_median: 39.0
+  randomised_parallel: 69
+  trials_reporting_65_category: 72
+  participants_65_plus: 257.0
+  participants_in_those_trials: 3831.0
+  adhd_trials_reporting_65_category: 24
+  adhd_participants_65_plus: 3.0
+  adhd_participants_in_those_trials: 2079.0
+  adhd_max_age_above_65: 0
+  adhd_max_age_missing: 0
+  older_trials_enrolled: 416.0
+  trials_with_mean_age: 120
+  mean_age_median: 38.0
   mean_age_max: 76.6
 
 == Variance ratios, active versus placebo (change from baseline)
-kind  k  k_change  n_active  n_placebo     vr  vr_lo  vr_hi   vr_p  vr_i2  vr_tau2     md  md_lo  md_hi  md_i2  sd_placebo_pooled  tau_response  tau_lo  tau_hi  share_trials_vr_above_1 population
- sbp  8         5       659        377  1.004 0.9165    1.1 0.9303      0        0  1.983 0.7291  3.237      0              10.01        0.9052       0   4.587                     0.75        all
- dbp  8         5       657        377  1.036 0.9451  1.135 0.4538      0        0 0.8504 -1.039   2.74 0.6177              7.944         2.136       0   4.257                      0.5        all
-  hr  8         5       663        377 0.9694 0.8252  1.139  0.705 0.5864  0.02696  3.704  1.126  6.282 0.6728              10.66             0       0   5.808                      0.5        all
- sbp  5         2       149        123   1.04 0.8732  1.239 0.6581      0        0  1.224  -1.14  3.588      0              10.18         2.919       0   7.452                      0.8      adult
- dbp  5         2       149        123  1.072 0.8998  1.277 0.4369      0        0 -1.139 -2.937 0.6599      0              7.311         2.822       0   5.807                      0.4      adult
-  hr  5         2       153        123 0.8353 0.6677  1.045 0.1153 0.2668  0.01754  0.958   -2.2  4.116 0.3473              10.52             0       0   3.191                      0.4      adult
+kind  k  k_change  n_active  n_placebo     vr  vr_lo  vr_hi   vr_p  vr_i2  vr_tau2     md  md_lo  md_hi  md_i2  sd_placebo_pooled  tau_response  tau_lo  tau_hi  share_trials_vr_above_1  k_for_shares  mean_change_placebo  sd_change_placebo  mean_change_active  sd_change_active  share_rise10_placebo  share_rise10_active population
+ sbp  8         5       659        377  1.004 0.9165    1.1 0.9303      0        0  1.983 0.7291  3.237      0              10.01        0.9052       0   4.587                     0.75             5              -0.6201              9.787                1.54             9.645                0.1389               0.1902        all
+ dbp  8         5       657        377  1.036 0.9451  1.135 0.4538      0        0 0.8504 -1.039   2.74 0.6177              7.944         2.136       0   4.257                      0.5             5             -0.08726              7.933                2.26             8.231                0.1018               0.1735        all
+  hr  8         5       663        377 0.9694 0.8252  1.139  0.705 0.5864  0.02696  3.704  1.126  6.282 0.6728              10.66             0       0   5.808                      0.5             5               0.2952              10.57               6.184             11.28                0.1792               0.3676        all
+ sbp  5         2       149        123   1.04 0.8732  1.239 0.6581      0        0  1.224  -1.14  3.588      0              10.18         2.919       0   7.452                      0.8             2              -0.1404              9.301               1.403             8.743                0.1378               0.1627      adult
+ dbp  5         2       149        123  1.072 0.8998  1.277 0.4369      0        0 -1.139 -2.937 0.6599      0              7.311         2.822       0   5.807                      0.4             2               0.1119              6.802              0.4775             6.907               0.07302              0.08399      adult
+  hr  5         2       153        123 0.8353 0.6677  1.045 0.1153 0.2668  0.01754  0.958   -2.2  4.116 0.3473              10.52             0       0   3.191                      0.4             2              -0.7064              9.984               2.044             8.946                0.1418               0.1869      adult
 
   per trial:
 population         nct kind  n_active  n_placebo  mean_active  mean_placebo  sd_active  sd_placebo     ln_vr
@@ -71,11 +78,11 @@ population         nct kind  n_active  n_placebo  mean_active  mean_placebo  sd_
 
 == Adverse events, active versus placebo (randomised parallel adult trials)
          event  k    rr  rr_lo  rr_hi     i2  risk_active  risk_placebo  n_active  n_placebo
-       anxiety 34 1.283  1.085  1.518      0       0.1017       0.07986      3391       1941
-      appetite 38  3.14  2.514  3.921 0.1627       0.1499       0.04251      4515       2752
-blood_pressure 10 2.273  1.079  4.789      0      0.02636      0.006179      2276        971
-    heart_rate 21 2.315  1.268  4.228 0.4588      0.06429       0.01749      3033       1658
-      insomnia 46 1.653  1.392  1.962 0.1864       0.1312       0.08022      4611       2867
+       anxiety 27  1.52  1.236  1.869      0      0.08912       0.06115      3198       1799
+      appetite 34 3.111  2.427  3.987 0.2268       0.1454       0.04075      4347       2626
+blood_pressure  9 2.034 0.9404    4.4      0      0.02466      0.006472      2230        927
+    heart_rate 18 2.693  1.379  5.261 0.4635      0.06371       0.01357      2904       1547
+      insomnia 40 1.815  1.514  2.176 0.1139       0.1224       0.06816      4428       2729
 
 == Adverse events, active versus placebo (randomised parallel trials of older people)
    event  k     rr   rr_lo  rr_hi  i2  risk_active  risk_placebo  n_active  n_placebo
@@ -88,17 +95,24 @@ insomnia  2 0.4311 0.06653  2.793   0        0.025         0.075        40      
  band    n  sbp_mean  sbp_mean_se  sbp_p10  sbp_p50  sbp_p90    htn  htn_se  htn140  htn140_se      cvd   cvd_se
 18-39 4320     113.6       0.3068       99    112.7      129 0.2341 0.01065 0.08418   0.006603 0.008931 0.001808
 40-59 4215     122.2       0.3223    104.3    120.3    142.7 0.5245 0.01213  0.3383     0.0141  0.06877 0.005664
-60-69 2973     127.6       0.6107    107.5    125.3    150.7 0.6864 0.01351  0.5689    0.01592   0.1578  0.01064
+60-69 2973     127.6       0.6107    107.5    125.2    150.7 0.6864 0.01351  0.5689    0.01592   0.1578  0.01064
 70-79 1743     131.4       0.4633    108.7    129.7      156  0.777 0.01233    0.68    0.01159   0.2608  0.01435
-  80+  781     137.8       0.8642    111.3    137.3    166.7 0.7926 0.01633  0.7195    0.01528   0.3392  0.02138
+  80+  781     137.8       0.8642    111.3    137.3    166.8 0.7926 0.01633  0.7195    0.01528   0.3392  0.02138
 
-  stimulant response model: mean 1.22 mmHg, between-person SD 2.92 mmHg (pooled adult trials)
- band  n_band  share_not_htn  uniform_2  uniform_2_se  uniform_5  uniform_5_se  uniform_10  uniform_10_se  hetero  hetero_se  hetero_140  hetero_140_se  share_below_140_untreated  average_only  share_rise_10_or_more
-18-39    4320         0.7659   0.009491      0.001807    0.03836       0.00485      0.1096       0.008308 0.01118   0.001108    0.004674      0.0009671                     0.9158      0.003268               0.001324
-40-59    4215         0.4755     0.0125      0.002641    0.04131      0.005616      0.1097        0.00843 0.01381   0.002173    0.009067       0.001223                     0.6617      0.007733               0.001324
-60-69    2973         0.3136    0.01876      0.003979    0.04801      0.006731      0.1099        0.01035 0.01665   0.002312     0.01047       0.001278                     0.4311       0.00937               0.001324
-70-79    1743          0.223    0.01688      0.003382    0.03604      0.004805     0.08943       0.008602 0.01433   0.001906      0.0102       0.001627                       0.32       0.01053               0.001324
-  80+     781         0.2074    0.01283      0.004615    0.04144       0.00915     0.09679        0.01321 0.01421   0.002937     0.01239       0.002643                     0.2805      0.007067               0.001324
+  stimulant response model: mean 1.98 mmHg, between-person SD 0.91 mmHg (pooled trials, all ages)
+ band  n_band  share_not_htn  uniform_2  uniform_2_se  uniform_5  uniform_5_se  uniform_10  uniform_10_se   hetero  hetero_se  hetero_140  hetero_140_se  share_below_140_untreated  average_only  share_rise_10_or_more
+18-39    4320         0.7659   0.009491      0.001807    0.03836       0.00485      0.1096       0.008308 0.008757   0.001362     0.00374       0.001528                     0.9158      0.007311              4.135e-19
+40-59    4215         0.4755     0.0125      0.002641    0.04131      0.005616      0.1097        0.00843  0.01302    0.00278    0.008992       0.001803                     0.6617       0.01051              4.135e-19
+60-69    2973         0.3136    0.01876      0.003979    0.04801      0.006731      0.1099        0.01035  0.01646   0.003036      0.0101        0.00174                     0.4311       0.01467              4.135e-19
+70-79    1743          0.223    0.01688      0.003382    0.03604      0.004805     0.08943       0.008602  0.01585   0.002839    0.009499       0.002107                       0.32       0.01517              4.135e-19
+  80+     781         0.2074    0.01283      0.004615    0.04144       0.00915     0.09679        0.01321  0.01423   0.003999     0.01174       0.003823                     0.2805       0.01283              4.135e-19
+
+  extra 10-year cardiovascular risk (Pooled Cohort Equations) from a sustained systolic rise, adults 40-79 without cardiovascular history
+ band    n  baseline_risk  baseline_risk_se  extra_hetero  extra_hetero_se   extra_2  extra_2_se  extra_5  extra_5_se  extra_10  extra_10_se  rr_per_10
+40-49 1786        0.02383          0.000734     0.0007316        2.262e-05 0.0007365   2.278e-05 0.001865   5.765e-05  0.003808     0.000118      1.179
+50-59 1850         0.0577           0.00141      0.001649        3.874e-05   0.00166   3.906e-05 0.004193   9.831e-05  0.008518    0.0001991      1.161
+60-69 2290         0.1149          0.002008      0.003024        4.151e-05  0.003047   4.184e-05  0.00767   0.0001046   0.01551    0.0002087      1.148
+70-79 1198          0.251          0.005392      0.005775        8.945e-05  0.005822   9.026e-05  0.01459   0.0002245   0.02929    0.0004403      1.127
 
   within-visit SD of replicate systolic readings and readings needed (each period) for 80% power
  band  within_sd    n  readings_for_10  readings_for_5
