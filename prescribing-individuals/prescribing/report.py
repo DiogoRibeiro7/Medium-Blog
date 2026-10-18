@@ -54,7 +54,7 @@ def compute() -> dict:
         x = analyse.risk_frame(df, mu, tau)
         if len(x):
             out["risk_spread"] = analyse.nhanes_risk_spread(x)
-            out["age_rule"] = analyse.age_rule(x)
+            out["age_rule"] = analyse.age_rule(x, df)
         out["replicates"] = analyse.nhanes_replicates(df)
         out["stim_by_band"], out["stim_by_cycle"] = analyse.nhanes_stimulants(df)
     if (DATA / "faers_counts.csv.gz").exists():
@@ -104,7 +104,7 @@ def write(out: dict) -> str:
             if "risk_spread" in out:
                 p("\n  spread of 10-year risk (risk_*) and of the extra risk from +5 mmHg (extra5_*) inside each age band")
                 p(out["risk_spread"].to_string(index=False))
-                p("\n  an age cutoff as a classifier of high 10-year risk (20% or more), adults 40-79 without CVD")
+                p("\n  an age cutoff as a classifier of high 10-year risk (20% or more), adults 40-79")
                 p(out["age_rule"].to_string(index=False))
             p("\n  within-visit SD of replicate systolic readings and readings needed (each period) for 80% power")
             p(out["replicates"].to_string(index=False))

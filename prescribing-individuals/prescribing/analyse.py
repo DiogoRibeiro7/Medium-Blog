@@ -177,7 +177,7 @@ def nhanes_absolute_risk(df: pd.DataFrame, mu: float, tau: float, shifts=(2.0, 5
     return pd.DataFrame(rows)
 
 
-RISK_CUTS = (0.075, 0.20)   # guideline categories: below 7.5%, 7.5-20%, 20% or more
+RISK_CUTS = (0.075, 0.20)   # 2019 ACC/AHA primary-prevention categories: below 7.5%, 7.5-20%, 20% or more
 
 
 def nhanes_risk_spread(x: pd.DataFrame) -> pd.DataFrame:
@@ -205,25 +205,38 @@ def nhanes_risk_spread(x: pd.DataFrame) -> pd.DataFrame:
     return pd.DataFrame(rows)
 
 
-def age_rule(x: pd.DataFrame, cutoffs=(65, 70), high=RISK_CUTS[1]) -> pd.DataFrame:
-    """An age cutoff judged as a classifier of high 10-year cardiovascular risk.
-
-    Among adults 40-79 without cardiovascular history: of the people the rule would
-    exclude (age >= cutoff), the share who are not at high risk; of the people at high
-    risk, the share the rule would let through (age < cutoff). Survey-weighted.
-    """
-    hi_risk = (x["r0"] >= high).astype(float)
+def _rule_errors(y: pd.DataFrame, cutoffs) -> list[dict]:
     rows = []
     for c in cutoffs:
-        older = x["age"] >= c
-        excl = stats.survey_mean(1 - hi_risk, x["w_osc"], x["stratum"], x["psu"], older)
-        miss = stats.survey_mean((~older).astype(float), x["w_osc"], x["stratum"], x["psu"], hi_risk.astype(bool))
-        rows.append({"cutoff": c, "high_risk_threshold": high,
+        older = y["age"] >= c
+        excl = stats.survey_mean(1 - y["high"], y["w_osc"], y["stratum"], y["psu"], older)
+        miss = stats.survey_mean((~older).astype(float), y["w_osc"], y["stratum"], y["psu"], y["high"].astype(bool))
+        rows.append({"cutoff": c,
                      "excluded_not_high_risk": excl.est, "excluded_not_high_risk_se": excl.se,
                      "n_excluded": excl.n,
                      "high_risk_below_cutoff": miss.est, "high_risk_below_cutoff_se": miss.se,
                      "n_high_risk": miss.n})
-    return pd.DataFrame(rows)
+    return rows
+
+
+def age_rule(x: pd.DataFrame, df: pd.DataFrame | None = None, cutoffs=(65, 70), high=RISK_CUTS[1]) -> pd.DataFrame:
+    """An age cutoff judged as a classifier of high 10-year cardiovascular risk.
+
+    Main population: adults 40-79 without cardiovascular history (the rows of x).
+    Of the people the rule would exclude (age >= cutoff), the share who are not at
+    high risk; of the people at high risk, the share the rule would let through
+    (age < cutoff). Survey-weighted. If df is given, a second version adds the
+    adults 40-79 with cardiovascular history and counts all of them as high risk.
+    """
+    y = x[["age", "w_osc", "stratum", "psu"]].assign(high=(x["r0"] >= high).astype(float))
+    rows = [dict(r, population="no cardiovascular history") for r in _rule_errors(y, cutoffs)]
+    if df is not None:
+        d = nhanes_frame(df)
+        c = d[(d["w_osc"] > 0) & d["age"].between(40, 79) & ~d["pregnant"].fillna(False).astype(bool) & d["cvd"]]
+        y2 = pd.concat([y, c[["age", "w_osc", "stratum", "psu"]].assign(high=1.0)], ignore_index=True)
+        rows += [dict(r, population="with cardiovascular history counted as high risk")
+                 for r in _rule_errors(y2, cutoffs)]
+    return pd.DataFrame(rows).assign(high_risk_threshold=high)
 
 
 def nhanes_replicates(df: pd.DataFrame) -> pd.DataFrame:

@@ -7,8 +7,11 @@ adults are used for people of other races and ethnicities.
 
 The implementation reproduces the guideline's worked example (age 55, total
 cholesterol 213 mg/dL, HDL 50 mg/dL, untreated systolic 120 mmHg, non-smoker,
-no diabetes): 2.1% for white women, 3.0% for African American women, 5.4% for
-white men and 6.1% for African American men (see tests/test_cvrisk.py).
+no diabetes) to within 0.1 percentage point: the guideline prints 2.1% for white
+women, 3.0% for African American women, 5.3% for white men and 6.1% for African
+American men; this code gives 5.38% for white men because the guideline rounds
+the intermediate sum (60.69 against 60.6995) before exponentiating (see
+tests/test_cvrisk.py).
 """
 
 from __future__ import annotations

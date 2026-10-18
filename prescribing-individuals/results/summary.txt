@@ -121,10 +121,12 @@ insomnia  2 0.4311 0.06653  2.793   0        0.025         0.075        40      
 60-69 2290    0.0369   0.05879   0.09604    0.1474    0.2123    0.003094    0.004681     0.00704    0.009602     0.01303           0.3527             0.01523           0.5227             0.01812         0.1245          0.009393
 70-79 1198      0.12    0.1611    0.2202    0.3202    0.4272    0.008755      0.0111     0.01406     0.01772     0.02143          0.01188            0.003599           0.4095             0.02072         0.5786           0.02119
 
-  an age cutoff as a classifier of high 10-year risk (20% or more), adults 40-79 without CVD
- cutoff  high_risk_threshold  excluded_not_high_risk  excluded_not_high_risk_se  n_excluded  high_risk_below_cutoff  high_risk_below_cutoff_se  n_high_risk
-     65                  0.2                  0.5994                    0.01675        2172                  0.1525                    0.01436         1149
-     70                  0.2                  0.4214                    0.02119        1198                  0.3313                    0.02329         1149
+  an age cutoff as a classifier of high 10-year risk (20% or more), adults 40-79
+ cutoff  excluded_not_high_risk  excluded_not_high_risk_se  n_excluded  high_risk_below_cutoff  high_risk_below_cutoff_se  n_high_risk                                       population  high_risk_threshold
+     65                  0.5994                    0.01675        2172                  0.1525                    0.01436         1149                        no cardiovascular history                  0.2
+     70                  0.4214                    0.02119        1198                  0.3313                    0.02329         1149                        no cardiovascular history                  0.2
+     65                  0.4506                    0.01479        2945                  0.3383                    0.01504         2523 with cardiovascular history counted as high risk                  0.2
+     70                  0.3013                    0.01634        1681                  0.5167                    0.01484         2523 with cardiovascular history counted as high risk                  0.2
 
   within-visit SD of replicate systolic readings and readings needed (each period) for 80% power
  band  within_sd    n  readings_for_10  readings_for_5

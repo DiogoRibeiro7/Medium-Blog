@@ -84,8 +84,8 @@ def fig_crossing(cross: pd.DataFrame, params: dict):
     fig, ax = plt.subplots(figsize=(7.2, 4.4))
     xs = np.arange(len(cross))
     w = 0.36
-    bars = [("hetero", "hetero_se", "crosses 130/80 (not hypertensive before)", SERIES[0]),
-            ("hetero_140", "hetero_140_se", "crosses 140/90 (below it and untreated before)", SERIES[1])]
+    bars = [("hetero", "hetero_se", "systolic reaches 130 (below 130/80 and untreated before)", SERIES[0]),
+            ("hetero_140", "hetero_140_se", "systolic reaches 140 (below 140/90 and untreated before)", SERIES[1])]
     top = max((cross[c] + 1.96 * cross[se]).max() for c, se, _, _ in bars)
     for j, (c, se, lab, col) in enumerate(bars):
         off = (j - 0.5) * (w + 0.02)
@@ -102,7 +102,7 @@ def fig_crossing(cross: pd.DataFrame, params: dict):
     ax.set_xlabel("age, and share of the age group below 130/80 and untreated")
     ax.set_ylabel("share of the whole age group")
     _legend(ax, loc="upper left")
-    ax.set_title(f"Share of each age group moved across a threshold by a {params['mu']:.1f} mmHg average rise",
+    ax.set_title(f"Who a {params['mu']:.1f} mmHg average rise pushes over a systolic threshold",
                  loc="left", fontsize=11, pad=12)
     fig.subplots_adjust(left=0.1, right=0.97, top=0.88, bottom=0.24)
     _save(fig, "fig2_threshold_crossing.png",

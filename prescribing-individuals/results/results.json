@@ -2554,23 +2554,47 @@
  "age_rule": [
   {
    "cutoff": 65,
-   "high_risk_threshold": 0.2,
    "excluded_not_high_risk": 0.5993692314649657,
    "excluded_not_high_risk_se": 0.016751488894230483,
    "n_excluded": 2172,
    "high_risk_below_cutoff": 0.15253912803360176,
    "high_risk_below_cutoff_se": 0.014362191956717145,
-   "n_high_risk": 1149
+   "n_high_risk": 1149,
+   "population": "no cardiovascular history",
+   "high_risk_threshold": 0.2
   },
   {
    "cutoff": 70,
-   "high_risk_threshold": 0.2,
    "excluded_not_high_risk": 0.4213755479121114,
    "excluded_not_high_risk_se": 0.02118857536524045,
    "n_excluded": 1198,
    "high_risk_below_cutoff": 0.3312692861125213,
    "high_risk_below_cutoff_se": 0.02328588813585731,
-   "n_high_risk": 1149
+   "n_high_risk": 1149,
+   "population": "no cardiovascular history",
+   "high_risk_threshold": 0.2
+  },
+  {
+   "cutoff": 65,
+   "excluded_not_high_risk": 0.45056890136196315,
+   "excluded_not_high_risk_se": 0.014788849611729089,
+   "n_excluded": 2945,
+   "high_risk_below_cutoff": 0.33826052655790545,
+   "high_risk_below_cutoff_se": 0.01504385903906346,
+   "n_high_risk": 2523,
+   "population": "with cardiovascular history counted as high risk",
+   "high_risk_threshold": 0.2
+  },
+  {
+   "cutoff": 70,
+   "excluded_not_high_risk": 0.3013203180773461,
+   "excluded_not_high_risk_se": 0.01634039845527845,
+   "n_excluded": 1681,
+   "high_risk_below_cutoff": 0.5166755877570254,
+   "high_risk_below_cutoff_se": 0.014836752749031117,
+   "n_high_risk": 2523,
+   "population": "with cardiovascular history counted as high risk",
+   "high_risk_threshold": 0.2
   }
  ],
  "replicates": [
