@@ -266,4 +266,18 @@ magnitudes.
 
 ## Change log
 
-None yet.
+- **During implementation, before any computation on real data: clarifications.**
+  - *P1.2 is P1.1.* The commuting margin is defined as `e_dom_pe − e_res`, so its
+    elasticity equals `β_e_dom_pe − β_e_res`. P1.2 is the same test as P1.1: it is
+    evaluated once, under P1.1, and counted once in the Holm family, which therefore has
+    14 predictions.
+  - *Crisis companion.* The LFS series of most countries start in 2009, so the
+    unemployment and participation columns of the crisis table begin at the first quarter
+    with data, which is reported. GDP and the national-accounts margins cover the whole
+    window from 2008-Q2 to 2013-Q1.
+  - *H6.* An indicator without variation, or one with fewer than four countries, gets p = 1
+    and "not determined" instead of a correlation.
+  - *Vintages.* The national-accounts employment and hours series come from Eurostat's
+    2026-10-15 update, the same day as the frozen GDP series but a later release. Any
+    revisions between them are not reconciled.
+  - *Snapshot.* `snapshots/heterogeneity-2026-10-18`, audited.

@@ -268,6 +268,19 @@ def main(argv: Sequence[str] | None = None) -> int:
     sign.add_argument("--output-dir", type=Path, default=Path("results/sign-restrictions"))
     sign.add_argument("--report", type=Path, default=None)
     sign.add_argument("--no-figures", action="store_true")
+    fetch_het = commands.add_parser(
+        "fetch-heterogeneity", help="Download the case-study series into a snapshot")
+    fetch_het.add_argument("--output-dir", type=Path, default=Path("snapshots/heterogeneity"))
+    het = commands.add_parser(
+        "heterogeneity", help="Case study of Portugal, Spain, the Netherlands and Luxembourg")
+    het.add_argument("--data-dir", type=Path, default=Path("snapshots/eurostat-2026-10-15"))
+    het.add_argument("--snapshot", type=Path,
+                     default=Path("snapshots/heterogeneity-2026-10-18"))
+    het.add_argument("--review-dir", type=Path, default=Path("docs/review"))
+    het.add_argument("--robustness-dir", type=Path, default=Path("docs/bayes-robustness"))
+    het.add_argument("--output-dir", type=Path, default=Path("results/heterogeneity"))
+    het.add_argument("--report", type=Path, default=None)
+    het.add_argument("--no-figures", action="store_true")
     args = parser.parse_args(argv)
     if args.command == "fetch":
         try:
@@ -597,6 +610,30 @@ def main(argv: Sequence[str] | None = None) -> int:
         print(f"Sign-restriction results written to {args.report or args.output_dir}; "
               f"non-empty {100 * primary.nonempty_share:.1f}%; h = 8: "
               f"{q1_verdict(primary, 8)}")
+        return 0
+    if args.command == "fetch-heterogeneity":
+        from eu_okun.heterogeneity_data import fetch_heterogeneity
+
+        try:
+            het_manifest = fetch_heterogeneity(args.output_dir)
+        except (EurostatDataError, ValueError, RuntimeError, OSError) as exc:
+            parser.exit(2, f"Case-study download failed: {exc}" + chr(10))
+        print(f"Saved {len(het_manifest['files'])} responses to {args.output_dir}")
+        return 0
+    if args.command == "heterogeneity":
+        from eu_okun.heterogeneity_report import write_report as write_case_study
+
+        try:
+            case = write_case_study(args.data_dir, args.snapshot, args.review_dir,
+                                    args.robustness_dir, args.output_dir, args.report,
+                                    figures=not args.no_figures)
+        except (EurostatDataError, FileNotFoundError, ValueError, OSError, KeyError) as exc:
+            parser.exit(2, f"Case study failed: {exc}" + chr(10))
+        verdicts = [e.verdict for e in case.evaluations]
+        print(f"Case study written to {args.report or args.output_dir}; "
+              f"{verdicts.count('supported')} supported, "
+              f"{verdicts.count('contradicted')} contradicted, "
+              f"{verdicts.count('not determined')} not determined")
         return 0
     if args.command == "predictive-fit":
         from eu_okun.bayes_fit import SamplerSettings
