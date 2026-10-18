@@ -24,9 +24,16 @@ API = "https://clinicaltrials.gov/api/v2/studies"
 DRUG_TERMS = ["methylphenidate", "dexmethylphenidate", "amphetamine", "dextroamphetamine",
               "lisdexamfetamine", "serdexmethylphenidate", "adderall", "vyvanse", "concerta",
               "ritalin", "focalin", "mydayis", "dexedrine", "jornay", "azstarys", "quillichew",
-              "aptensio", "adzenys", "evekeo", "dyanavel", "mixed amphetamine salts", "mas xr"]
-QUERY_INTR = " OR ".join(f'"{t}"' if " " in t else t for t in DRUG_TERMS[:6] + ["mixed amphetamine salts"])
-QUERY_COND = "ADHD OR attention deficit hyperactivity disorder OR attention deficit disorder"
+              "aptensio", "adzenys", "evekeo", "dyanavel", "mixed amphetamine salts", "mas xr",
+              "spd489", "nrp104", "spd465", "sli381", "oros-mph", "oros mph", "d-mph", "d-amp",
+              "methylin", "metadate", "daytrana"]
+# stimulant arm abbreviations that only count as whole words (MPH, MTS, LDX, MAS)
+DRUG_ABBREV = re.compile(r"\b(mph|mts|ldx|mas)\b", re.I)
+NONSTIMULANT = re.compile(r"atomoxetine|guanfacine|clonidine|bupropion|viloxazine|modafinil|armodafinil|"
+                          r"dasotraline|centanafadine|mazindol|solriamfetol|pitolisant|donepezil|memantine", re.I)
+QUERY_INTR = ("methylphenidate OR dexmethylphenidate OR amphetamine OR dextroamphetamine OR lisdexamfetamine "
+              "OR serdexmethylphenidate OR \"mixed amphetamine salts\" OR Vyvanse OR Adderall OR Concerta "
+              "OR Ritalin OR Focalin OR Mydayis OR SPD489 OR NRP104 OR SPD465 OR SLI381")
 
 VITAL = re.compile(r"blood pressure|systolic|diastolic|heart rate|pulse|\bSBP\b|\bDBP\b|\bHR\b", re.I)
 AE_GROUPS = {
@@ -41,10 +48,10 @@ AE_GROUPS = {
 
 def fetch() -> list[dict]:
     """Download every matching study with results; cache the raw pages."""
-    dest = RAW / "trials" / "studies.json.gz"
+    dest = RAW / "trials" / "studies_all_conditions.json.gz"
     if dest.exists():
         return json.loads(gzip.decompress(dest.read_bytes()))
-    params = {"query.cond": QUERY_COND, "query.intr": QUERY_INTR, "aggFilters": "results:with",
+    params = {"query.intr": QUERY_INTR, "aggFilters": "results:with",
               "pageSize": 100, "format": "json", "countTotal": "true"}
     studies, token = [], None
     while True:
@@ -72,22 +79,30 @@ def _age_years(s: str | None) -> float | None:
     return v if unit == "year" else v / {"month": 12, "week": 52.18, "day": 365.25}[unit]
 
 
-def _is_drug(text: str) -> bool:
-    t = text.lower()
-    return any(d in t for d in DRUG_TERMS)
+def _is_drug(text: str, extra: tuple[str, ...] = ()) -> bool:
+    t = str(text).lower()
+    return any(d in t for d in DRUG_TERMS) or any(e and e in t for e in extra) or bool(DRUG_ABBREV.search(t))
 
 
-def _role(title: str, description: str) -> str:
-    t = f"{title} {description}".lower()
-    has_placebo = "placebo" in t
-    has_drug = _is_drug(t)
-    if has_placebo and not has_drug:
-        return "placebo"
-    if has_drug and not has_placebo:
-        return "active"
-    if has_placebo and has_drug:
-        # e.g. "Placebo" arm described as "matching placebo for methylphenidate"
-        return "placebo" if title.lower().strip().startswith("placebo") else "mixed"
+def _role(title: str, description: str, extra: tuple[str, ...] = ()) -> str:
+    """Placebo, active (stimulant) or other, decided on the arm title first.
+
+    The description is used only when the title says neither, because
+    descriptions of active arms often mention the matching placebo and
+    descriptions of placebo arms often name the drug they imitate.
+    """
+    for text in (title, description):
+        t = str(text or "").lower()
+        if NONSTIMULANT.search(t) and not _is_drug(t, extra):
+            return "other"
+        has_placebo = "placebo" in t
+        has_drug = _is_drug(t, extra)
+        if has_drug and not has_placebo:
+            return "active"
+        if has_placebo and not has_drug:
+            return "placebo"
+        if has_placebo and has_drug:
+            return "placebo" if t.strip().startswith("placebo") else "mixed"
     return "other"
 
 
@@ -111,6 +126,11 @@ def extract(studies: list[dict]) -> dict[str, pd.DataFrame]:
         interventions = ps.get("armsInterventionsModule", {}).get("interventions", [])
         intr_text = " ".join(i.get("name", "") + " " + " ".join(i.get("otherNames", []) or [])
                              for i in interventions)
+        # names this study uses for its stimulant arms (codes, brands), for arm classification
+        extra = tuple(sorted({n.lower() for i in interventions
+                              if _is_drug(i.get("name", "") + " " + " ".join(i.get("otherNames", []) or []))
+                              for n in [i.get("name", "")] + list(i.get("otherNames", []) or [])
+                              if n and len(n) >= 4 and "placebo" not in n.lower()}))
         srows.append({
             "nct": nct,
             "title": ps.get("identificationModule", {}).get("briefTitle"),
@@ -142,6 +162,7 @@ def extract(studies: list[dict]) -> dict[str, pd.DataFrame]:
                         if total_id and m.get("groupId") != total_id:
                             continue
                         arows.append({"nct": nct, "measure": title, "param": meas.get("paramType"),
+                                      "unit": meas.get("unitOfMeasure"),
                                       "category": ctitle, "value": _num(m.get("value")),
                                       "spread": _num(m.get("spread")), "group": m.get("groupId"),
                                       "has_total": total_id is not None})
@@ -172,7 +193,7 @@ def extract(studies: list[dict]) -> dict[str, pd.DataFrame]:
                             "class": cls.get("title"), "class_index": ci,
                             "category": cat.get("title"), "category_index": ki,
                             "group": gid, "group_title": gt, "group_description": gd,
-                            "role": _role(gt, gd), "n": denoms.get(gid),
+                            "role": _role(gt, gd, extra), "n": denoms.get(gid),
                             "value": _num(m.get("value")), "spread": _num(m.get("spread")),
                             "lower": _num(m.get("lowerLimit")), "upper": _num(m.get("upperLimit")),
                         })
@@ -190,7 +211,7 @@ def extract(studies: list[dict]) -> dict[str, pd.DataFrame]:
                     gid = s.get("groupId")
                     gt, gd = egroups.get(gid, ("", ""))
                     erows.append({"nct": nct, "kind": kind, "term": term, "group_key": hit[0],
-                                  "group": gid, "group_title": gt, "role": _role(gt, gd),
+                                  "group": gid, "group_title": gt, "role": _role(gt, gd, extra),
                                   "affected": _num(s.get("numAffected")), "at_risk": _num(s.get("numAtRisk"))})
     return {
         "studies": pd.DataFrame(srows),

@@ -141,15 +141,46 @@ KIND = {
 }
 
 
-def adult_trials(studies: pd.DataFrame) -> pd.DataFrame:
+def stimulant_trials(studies: pd.DataFrame) -> pd.DataFrame:
     s = studies.copy()
-    adhd = s["conditions"].fillna("").str.contains(r"ADHD|attention", case=False)
-    return s[adhd & s["stimulant_intervention"].astype(bool) & (s["min_age"] >= 17.5)]
+    s = s[s["stimulant_intervention"].astype(bool)]
+    s["adhd"] = s["conditions"].fillna("").str.contains(r"ADHD|attention", case=False)
+    return s
+
+
+def adult_trials(studies: pd.DataFrame) -> pd.DataFrame:
+    s = stimulant_trials(studies)
+    return s[s["min_age"] >= 17.5]
+
+
+def mean_baseline_age(ages: pd.DataFrame) -> pd.Series:
+    """Mean age in years from the 'Age, Continuous' baseline measure (months converted)."""
+    cont = ages[ages["measure"].str.contains("continuous", case=False, na=False) &
+                ages["param"].fillna("").str.upper().eq("MEAN")].copy()
+    unit = cont["unit"].fillna("years").astype(str).str.lower() if "unit" in cont.columns else "years"
+    cont["years"] = np.where(pd.Series(unit, index=cont.index).str.contains("month"), cont["value"] / 12, cont["value"])
+    return cont.groupby("nct")["years"].first()
+
+
+def older_trials(t: dict) -> pd.DataFrame:
+    """Trials of older people: minimum age 50 or more, or a mean baseline age of 60 or more."""
+    s = stimulant_trials(t["studies"])
+    mage = mean_baseline_age(t["ages"])
+    s = s.assign(mean_age=s["nct"].map(mage))
+    return s[(s["min_age"] >= 50) | (s["mean_age"] >= 60)]
 
 
 def trial_inventory(t: dict) -> dict:
+    allst = stimulant_trials(t["studies"])
+    old = older_trials(t)
     s = adult_trials(t["studies"])
-    out = {"adult_trials": len(s),
+    out = {"stimulant_trials_with_results": len(allst),
+           "of_which_adhd": int(allst["adhd"].sum()),
+           "older_trials": len(old),
+           "older_trials_list": "; ".join(f"{r.nct} ({str(r.conditions)[:60]}; min age {r.min_age}, mean age {r.mean_age})"
+                                          for r in old.itertuples()),
+           "adult_trials": len(s),
+           "adult_adhd_trials": int(s["adhd"].sum()),
            "enrolled": float(s["enrollment"].fillna(0).sum()),
            "max_age_missing": int(s["max_age"].isna().sum()),
            "max_age_below_65": int((s["max_age"] < 65).sum()),
@@ -164,11 +195,10 @@ def trial_inventory(t: dict) -> dict:
     with_cat = ages.loc[old & ages["param"].fillna("").str.upper().eq("COUNT_OF_PARTICIPANTS")]
     out["trials_reporting_65_category"] = int(with_cat["nct"].nunique())
     out["participants_65_plus"] = float(with_cat.groupby("nct")["value"].sum().sum())
-    cont = ages[ages["measure"].str.contains("continuous", case=False, na=False) &
-                ages["param"].fillna("").str.upper().eq("MEAN")]
-    out["trials_with_mean_age"] = int(cont["nct"].nunique())
-    out["mean_age_median"] = float(cont.groupby("nct")["value"].first().median()) if len(cont) else float("nan")
-    out["mean_age_max"] = float(cont.groupby("nct")["value"].first().max()) if len(cont) else float("nan")
+    mage = mean_baseline_age(ages)
+    out["trials_with_mean_age"] = int(len(mage))
+    out["mean_age_median"] = float(mage.median()) if len(mage) else float("nan")
+    out["mean_age_max"] = float(mage.max()) if len(mage) else float("nan")
     return out
 
 
@@ -180,7 +210,11 @@ def _outcome_kind(row) -> str | None:
     return None
 
 
-def variance_ratio_table(t: dict) -> pd.DataFrame:
+def _norm(x: pd.Series) -> pd.Series:
+    return x.fillna("").astype(str).str.upper().str.replace(" ", "_")
+
+
+def variance_ratio_table(t: dict, population: str = "adult") -> pd.DataFrame:
     """One active-versus-placebo comparison per trial and vital sign.
 
     Requirements: randomised parallel adult trial; arithmetic mean change from
@@ -189,33 +223,44 @@ def variance_ratio_table(t: dict) -> pd.DataFrame:
     time points are posted, the last one is used; when several active arms are
     posted, the largest is used.
     """
-    s = adult_trials(t["studies"])
+    if population == "adult":
+        s = adult_trials(t["studies"])
+    elif population == "older":
+        s = older_trials(t)
+    else:
+        s = stimulant_trials(t["studies"])
     s = s[(s["allocation"] == "RANDOMIZED") & (s["model"] == "PARALLEL")]
     o = t["outcomes"]
     o = o[o["nct"].isin(s["nct"])].copy()
-    o = o[o["param"].fillna("").str.upper().eq("MEAN")]
-    o = o[o["dispersion"].fillna("").str.upper().isin(["STANDARD_DEVIATION", "STANDARD_ERROR"])]
+    o["dispersion"] = _norm(o["dispersion"])
+    o = o[_norm(o["param"]).eq("MEAN")]
+    o = o[o["dispersion"].isin(["STANDARD_DEVIATION", "STANDARD_ERROR"])]
     text = (o["title"].fillna("") + " " + o["description"].fillna("")).str.lower()
-    o = o[text.str.contains("change")]
+    o = o[~o["title"].fillna("").str.contains(r"exertion|exercise|peak|maximum|orthostatic|standing", case=False)]
+    o["measure"] = np.where(text.loc[o.index].str.contains("change"), "change", "final")
+    unit = o["unit"].fillna("").str.lower()
+    o = o[unit.str.contains("mm|hg|beat|bpm|min") | unit.eq("")]
     o["kind"] = o.apply(_outcome_kind, axis=1)
     o = o[o["kind"].notna() & o["n"].ge(5) & o["value"].notna() & o["spread"].gt(0)]
-    o["sd"] = np.where(o["dispersion"].str.upper() == "STANDARD_ERROR", o["spread"] * np.sqrt(o["n"]), o["spread"])
+    o["sd"] = np.where(o["dispersion"] == "STANDARD_ERROR", o["spread"] * np.sqrt(o["n"]), o["spread"])
     rows = []
     for (nct, kind), g in o.groupby(["nct", "kind"]):
         best = None
-        for (title, ci, ki), gg in g.groupby(["title", "class_index", "category_index"]):
+        for (title, measure, ci, ki), gg in g.groupby(["title", "measure", "class_index", "category_index"]):
             pla = gg[gg["role"] == "placebo"]
             act = gg[gg["role"] == "active"]
             if pla.empty or act.empty:
                 continue
-            cand = (ci, ki, title, pla.iloc[0], act.sort_values("n").iloc[-1])
-            if best is None or (ci, ki) > (best[0], best[1]):
+            key = (measure == "change", ci, ki)
+            cand = (key, title, measure, pla.iloc[0], act.sort_values("n").iloc[-1])
+            if best is None or key > best[0]:
                 best = cand
         if best is None:
             continue
-        _, _, title, p, a = best
+        _, title, measure, p, a = best
         y, v = stats.ln_vr(a["sd"], a["n"], p["sd"], p["n"])
-        rows.append({"nct": nct, "kind": kind, "outcome": title, "unit": a["unit"],
+        rows.append({"nct": nct, "population": population, "kind": kind, "measure": measure,
+                     "outcome": title, "unit": a["unit"],
                      "active_arm": a["group_title"], "n_active": a["n"], "n_placebo": p["n"],
                      "mean_active": a["value"], "mean_placebo": p["value"],
                      "sd_active": a["sd"], "sd_placebo": p["sd"],
@@ -235,9 +280,12 @@ def variance_ratio_summary(vr: pd.DataFrame) -> pd.DataFrame:
         m = stats.dersimonian_laird(g["md"], g["md_var"])
         sd_c = float(np.sqrt(np.average(g["sd_placebo"] ** 2, weights=g["n_placebo"])))
         ratio = float(np.exp(p.est))
+        # between-person SD of the response: Var(active) - Var(placebo) = tau^2 when the response is
+        # independent of the baseline; this holds for change scores and for final values alike
         tau = sd_c * np.sqrt(max(ratio ** 2 - 1, 0.0))
         lo, hi = np.exp(p.ci[0]), np.exp(p.ci[1])
-        rows.append({"kind": kind, "k": p.k, "n_active": float(g["n_active"].sum()),
+        rows.append({"kind": kind, "k": p.k, "k_change": int((g["measure"] == "change").sum()),
+                     "n_active": float(g["n_active"].sum()),
                      "n_placebo": float(g["n_placebo"].sum()),
                      "vr": ratio, "vr_lo": float(lo), "vr_hi": float(hi), "vr_p": p.p,
                      "vr_i2": p.i2, "vr_tau2": p.tau2,
@@ -249,8 +297,8 @@ def variance_ratio_summary(vr: pd.DataFrame) -> pd.DataFrame:
     return pd.DataFrame(rows)
 
 
-def adverse_summary(t: dict) -> tuple[pd.DataFrame, pd.DataFrame]:
-    s = adult_trials(t["studies"])
+def adverse_summary(t: dict, population: str = "adult") -> tuple[pd.DataFrame, pd.DataFrame]:
+    s = adult_trials(t["studies"]) if population == "adult" else older_trials(t)
     s = s[(s["allocation"] == "RANDOMIZED") & (s["model"] == "PARALLEL")]
     e = t["adverse"]
     e = e[e["nct"].isin(s["nct"]) & e["role"].isin(["active", "placebo"])]

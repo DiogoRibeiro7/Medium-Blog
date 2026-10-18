@@ -24,10 +24,16 @@ def compute() -> dict:
     if (DATA / "trials_studies.csv.gz").exists():
         t = trials.load()
         out["trial_inventory"] = analyse.trial_inventory(t)
-        vr = analyse.variance_ratio_table(t)
-        out["vr_table"] = vr
-        out["vr_summary"] = analyse.variance_ratio_summary(vr) if len(vr) else pd.DataFrame()
-        out["ae_summary"], out["ae_table"] = analyse.adverse_summary(t)
+        tables = [analyse.variance_ratio_table(t, pop) for pop in ("all", "adult", "older")]
+        out["vr_table"] = pd.concat([x for x in tables if len(x)], ignore_index=True) if any(len(x) for x in tables) \
+            else pd.DataFrame()
+        sums = []
+        for pop, x in zip(("all", "adult", "older"), tables):
+            if len(x):
+                sums.append(analyse.variance_ratio_summary(x).assign(population=pop))
+        out["vr_summary"] = pd.concat(sums, ignore_index=True) if sums else pd.DataFrame()
+        out["ae_summary"], out["ae_table"] = analyse.adverse_summary(t, "adult")
+        out["ae_summary_older"], _ = analyse.adverse_summary(t, "older")
     if (DATA / "nhanes_adults.csv.gz").exists():
         df = nhanes.load()
         out["nhanes_n"] = int(len(df))
@@ -35,9 +41,12 @@ def compute() -> dict:
         out["baselines"] = analyse.nhanes_baselines(df)
         mu, tau, source = FALLBACK_MU, FALLBACK_TAU, "fallback (no trial estimate)"
         vs = out.get("vr_summary")
-        if vs is not None and len(vs) and (vs["kind"] == "sbp").any():
-            r = vs[vs["kind"] == "sbp"].iloc[0]
-            mu, tau, source = float(r["md"]), float(r["tau_response"]), "pooled adult trials"
+        if vs is not None and len(vs):
+            for pop, label in (("adult", "pooled adult trials"), ("all", "pooled trials, all ages")):
+                r = vs[(vs["kind"] == "sbp") & (vs["population"] == pop)]
+                if len(r) and r.iloc[0]["k"] >= 3:
+                    mu, tau, source = float(r.iloc[0]["md"]), float(r.iloc[0]["tau_response"]), label
+                    break
         out["crossing_params"] = {"mu": mu, "tau": tau, "source": source}
         out["crossing"] = analyse.nhanes_crossing(df, mu, tau)
         out["replicates"] = analyse.nhanes_replicates(df)
@@ -68,10 +77,12 @@ def write(out: dict) -> str:
             p(out["vr_summary"].to_string(index=False) if len(out["vr_summary"]) else "  none")
             p("\n  per trial:")
             if len(out["vr_table"]):
-                p(out["vr_table"][["nct", "kind", "n_active", "n_placebo", "mean_active", "mean_placebo",
-                                   "sd_active", "sd_placebo", "ln_vr"]].to_string(index=False))
+                p(out["vr_table"][["population", "nct", "kind", "n_active", "n_placebo", "mean_active",
+                                   "mean_placebo", "sd_active", "sd_placebo", "ln_vr"]].to_string(index=False))
             p("\n== Adverse events, active versus placebo (randomised parallel adult trials)")
             p(out["ae_summary"].to_string(index=False) if len(out["ae_summary"]) else "  none")
+            p("\n== Adverse events, active versus placebo (randomised parallel trials of older people)")
+            p(out["ae_summary_older"].to_string(index=False) if len(out["ae_summary_older"]) else "  none")
         if "baselines" in out:
             p(f"\n== NHANES: {out['nhanes_n']:,} examined adults, cycles {', '.join(out['nhanes_cycles'])}")
             p("  blood pressure and cardiovascular baselines, oscillometric cycles (2017-2023), survey-weighted")

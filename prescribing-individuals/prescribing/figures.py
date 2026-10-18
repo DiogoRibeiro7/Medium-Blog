@@ -222,7 +222,9 @@ def draw(out: dict) -> None:
         fig_crossing(out["crossing"], out["crossing_params"])
         fig_readings(out["replicates"])
     if "vr_table" in out and len(out["vr_table"]):
-        fig_forest(out["vr_table"], out["vr_summary"])
+        pop = "adult" if (out["vr_table"]["population"] == "adult").sum() >= 6 else "all"
+        fig_forest(out["vr_table"][out["vr_table"]["population"] == pop],
+                   out["vr_summary"][out["vr_summary"]["population"] == pop])
     if "faers_rors" in out:
         fig_faers(out["faers_rors"])
     if "medicare" in out:

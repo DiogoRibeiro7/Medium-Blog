@@ -23,7 +23,9 @@ def _study(nct, sd_active, sd_placebo, n=60, max_age="65 Years"):
             "baselineCharacteristicsModule": {
                 "groups": [{"id": "BG000", "title": "Drug"}, {"id": "BG001", "title": "Placebo"},
                            {"id": "BG002", "title": "Total"}],
-                "measures": [{"title": "Age, Categorical", "paramType": "COUNT_OF_PARTICIPANTS",
+                "measures": [{"title": "Age, Continuous", "paramType": "MEAN", "unitOfMeasure": "years",
+                              "classes": [{"categories": [{"measurements": [{"groupId": "BG002", "value": "35"}]}]}]},
+                             {"title": "Age, Categorical", "paramType": "COUNT_OF_PARTICIPANTS",
                               "classes": [{"categories": [
                                   {"title": "Between 18 and 65 years",
                                    "measurements": [{"groupId": "BG002", "value": str(2 * n - 1)}]},
