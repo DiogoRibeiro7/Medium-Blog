@@ -21,7 +21,9 @@ def simulate(rng:np.random.Generator,scenario:str)->tuple[float,float,float,floa
         target_x=rng.uniform(.5,2.5,N_TARGET)
     a=rng.binomial(1,.5,N_TRIAL)
     if scenario=="omitted_effect_modifier":
+        # Unobserved effect modifier differs between source and target populations.
         u=rng.normal(0,1,N_TRIAL)
+        target_u=rng.normal(1,1,N_TARGET)
         y=.5*x+a*(1+u)+rng.normal(size=N_TRIAL)
     else:
         y=.5*x+a*(1+x)+rng.normal(size=N_TRIAL)
