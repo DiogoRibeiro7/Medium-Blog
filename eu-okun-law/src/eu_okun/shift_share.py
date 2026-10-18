@@ -31,7 +31,6 @@ from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 
 import numpy as np
-from scipy import stats
 
 from eu_okun.contract import EU27, EurostatDataError, quarter_sequence
 
@@ -58,7 +57,7 @@ SHIFT_START = "2010-Q1"
 LAGS = 4
 PANDEMIC = ("2020-Q1", "2021-Q4")
 WEAK_T = 3.16
-AR_CRITICAL = float(stats.norm.ppf(0.95))     # 90% Anderson-Rubin (Fieller) set
+AR_CRITICAL = 1.6448536269514722            # standard normal 95% quantile: 90% AR set
 BETAS = (0.5, 1.0, 2.0)
 
 TIVA = "https://sdmx.oecd.org/sti-public/rest/data/OECD.STI.PIE"
@@ -384,9 +383,13 @@ class Feasibility:
         return self.quarters * (WEAK_T / self.central.expected_t) ** 2
 
 
+def _normal_cdf(x: float) -> float:
+    return 0.5 * (1.0 + math.erf(x / math.sqrt(2.0)))
+
+
 def p_bounded(t: float, critical: float = AR_CRITICAL) -> float:
     """P(|t + N(0,1)| > critical): the Fieller set is bounded iff |first-stage t| > c."""
-    return float(stats.norm.sf(critical - t) + stats.norm.cdf(-critical - t))
+    return (1.0 - _normal_cdf(critical - t)) + _normal_cdf(-critical - t)
 
 
 def feasibility(panel: Panel, sigma_hat: float, set_key: str,
