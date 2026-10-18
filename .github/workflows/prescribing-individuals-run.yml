@@ -1,0 +1,139 @@
+name: Prescribing individuals data run
+
+# Downloads NHANES, ClinicalTrials.gov results, openFDA adverse-event counts and
+# Medicare Part D national claims, writes the tidy extracts to data/, runs every
+# analysis and draws the figures. Manual runs open a pull request with the
+# results; pushes to the development branch commit the results back to it.
+
+on:
+  workflow_dispatch:
+    inputs:
+      refresh_raw:
+        description: "Ignore cached downloads and fetch everything again"
+        type: boolean
+        default: true
+  push:
+    branches:
+      - feature/prescribing-individuals-data
+    paths:
+      - 'prescribing-individuals/prescribing/**'
+      - 'prescribing-individuals/requirements.txt'
+      - '.github/workflows/prescribing-individuals-run.yml'
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: prescribing-individuals-run
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    defaults:
+      run:
+        working-directory: prescribing-individuals
+    env:
+      MPLBACKEND: Agg
+      OPENFDA_API_KEY: ${{ secrets.OPENFDA_API_KEY }}
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: prescribing-individuals/requirements.txt
+
+      - name: Install pinned dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Restore cached downloads
+        if: ${{ github.event_name == 'push' || !inputs.refresh_raw }}
+        uses: actions/cache/restore@v4
+        with:
+          path: prescribing-individuals/data/raw
+          key: prescribing-raw-${{ github.run_id }}
+          restore-keys: prescribing-raw-
+
+      - name: Unit tests
+        run: python -m pytest -q
+
+      - name: Fetch NHANES
+        continue-on-error: true
+        run: python -m prescribing fetch nhanes
+
+      - name: Fetch ClinicalTrials.gov results
+        continue-on-error: true
+        run: python -m prescribing fetch trials
+
+      - name: Fetch openFDA adverse-event counts
+        continue-on-error: true
+        run: python -m prescribing fetch faers
+
+      - name: Fetch Medicare Part D national claims
+        continue-on-error: true
+        run: python -m prescribing fetch medicare
+
+      - name: Analyse and draw
+        run: python -m prescribing analyse
+
+      - name: Save downloads to the cache
+        if: ${{ always() }}
+        uses: actions/cache/save@v4
+        with:
+          path: prescribing-individuals/data/raw
+          key: prescribing-raw-${{ github.run_id }}
+
+      - name: Keep the raw downloads as an artifact
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: prescribing-raw-${{ github.run_id }}
+          path: prescribing-individuals/data/raw/
+          retention-days: 30
+          if-no-files-found: ignore
+
+      - name: Commit the results to the development branch
+        if: ${{ github.event_name == 'push' }}
+        working-directory: .
+        run: |
+          paths="prescribing-individuals/data prescribing-individuals/results prescribing-individuals/figures"
+          if [ -z "$(git status --porcelain --untracked-files=all -- $paths)" ]; then
+            echo "No changes to commit."
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add $paths
+          git commit -m "Prescribing individuals: data and results (run ${{ github.run_id }})"
+          git pull --rebase origin "${{ github.ref_name }}"
+          git push origin HEAD:"${{ github.ref_name }}"
+
+      - name: Open or update the results pull request
+        if: ${{ github.event_name == 'workflow_dispatch' }}
+        working-directory: .
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          paths="prescribing-individuals/data prescribing-individuals/results prescribing-individuals/figures"
+          if [ -z "$(git status --porcelain --untracked-files=all -- $paths)" ]; then
+            echo "No changes to commit."
+            exit 0
+          fi
+          branch='automation/prescribing-individuals-run'
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git checkout -B "$branch"
+          git add $paths
+          git commit -m "Prescribing individuals: data and results (run ${{ github.run_id }})"
+          git push --force origin HEAD:"$branch"
+          if ! gh pr view "$branch" >/dev/null 2>&1; then
+            gh pr create --base "${{ github.ref_name }}" --head "$branch" \
+              --title "Prescribing individuals: data refresh (run ${{ github.run_id }})" \
+              --body "Data, results and figures from workflow run ${{ github.run_id }}."
+          fi

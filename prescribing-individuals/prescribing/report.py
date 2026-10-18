@@ -1,0 +1,106 @@
+"""Run every analysis on the committed extracts and write the numbers the article quotes."""
+
+from __future__ import annotations
+
+import io
+import json
+from contextlib import redirect_stdout
+
+import numpy as np
+import pandas as pd
+
+from . import analyse, faers, medicare, nhanes, trials
+from .paths import DATA, RESULTS, ensure
+
+FALLBACK_MU, FALLBACK_TAU = 2.0, 0.0
+
+
+def _pct(x, d=1):
+    return "n/a" if x is None or not np.isfinite(x) else f"{100 * x:.{d}f}%"
+
+
+def compute() -> dict:
+    out: dict = {}
+    if (DATA / "trials_studies.csv.gz").exists():
+        t = trials.load()
+        out["trial_inventory"] = analyse.trial_inventory(t)
+        vr = analyse.variance_ratio_table(t)
+        out["vr_table"] = vr
+        out["vr_summary"] = analyse.variance_ratio_summary(vr) if len(vr) else pd.DataFrame()
+        out["ae_summary"], out["ae_table"] = analyse.adverse_summary(t)
+    if (DATA / "nhanes_adults.csv.gz").exists():
+        df = nhanes.load()
+        out["nhanes_n"] = int(len(df))
+        out["nhanes_cycles"] = sorted(df["cycle"].unique().tolist())
+        out["baselines"] = analyse.nhanes_baselines(df)
+        mu, tau, source = FALLBACK_MU, FALLBACK_TAU, "fallback (no trial estimate)"
+        vs = out.get("vr_summary")
+        if vs is not None and len(vs) and (vs["kind"] == "sbp").any():
+            r = vs[vs["kind"] == "sbp"].iloc[0]
+            mu, tau, source = float(r["md"]), float(r["tau_response"]), "pooled adult trials"
+        out["crossing_params"] = {"mu": mu, "tau": tau, "source": source}
+        out["crossing"] = analyse.nhanes_crossing(df, mu, tau)
+        out["replicates"] = analyse.nhanes_replicates(df)
+        out["stim_by_band"], out["stim_by_cycle"] = analyse.nhanes_stimulants(df)
+    if (DATA / "faers_counts.csv.gz").exists():
+        counts, meta = faers.load()
+        out["faers_meta"] = meta
+        out["faers_rors"] = analyse.faers_rors(counts)
+        out["faers_contrast"] = analyse.faers_age_contrast(out["faers_rors"])
+    if (DATA / "medicare_national.csv.gz").exists():
+        out["medicare"] = analyse.medicare_trend(medicare.load())
+    out["n_of_1"] = analyse.n_of_1_table()
+    return out
+
+
+def write(out: dict) -> str:
+    ensure()
+    buf = io.StringIO()
+    with redirect_stdout(buf):
+        p = print
+        pd.set_option("display.width", 200, "display.max_columns", 40, "display.max_rows", 200,
+                      "display.float_format", lambda v: f"{v:.4g}")
+        if "trial_inventory" in out:
+            p("== ClinicalTrials.gov: adult stimulant trials for ADHD with posted results")
+            for k, v in out["trial_inventory"].items():
+                p(f"  {k}: {v}")
+            p("\n== Variance ratios, active versus placebo (change from baseline)")
+            p(out["vr_summary"].to_string(index=False) if len(out["vr_summary"]) else "  none")
+            p("\n  per trial:")
+            if len(out["vr_table"]):
+                p(out["vr_table"][["nct", "kind", "n_active", "n_placebo", "mean_active", "mean_placebo",
+                                   "sd_active", "sd_placebo", "ln_vr"]].to_string(index=False))
+            p("\n== Adverse events, active versus placebo (randomised parallel adult trials)")
+            p(out["ae_summary"].to_string(index=False) if len(out["ae_summary"]) else "  none")
+        if "baselines" in out:
+            p(f"\n== NHANES: {out['nhanes_n']:,} examined adults, cycles {', '.join(out['nhanes_cycles'])}")
+            p("  blood pressure and cardiovascular baselines, oscillometric cycles (2017-2023), survey-weighted")
+            p(out["baselines"].to_string(index=False))
+            cp = out["crossing_params"]
+            p(f"\n  stimulant response model: mean {cp['mu']:.2f} mmHg, between-person SD {cp['tau']:.2f} mmHg "
+              f"({cp['source']})")
+            p(out["crossing"].to_string(index=False))
+            p("\n  within-visit SD of replicate systolic readings and readings needed (each period) for 80% power")
+            p(out["replicates"].to_string(index=False))
+            p("\n  prescription stimulant use, all cycles with drug data, survey-weighted")
+            p(out["stim_by_band"].to_string(index=False))
+            p(out["stim_by_cycle"].to_string(index=False))
+        if "faers_rors" in out:
+            p(f"\n== FAERS via openFDA (database last updated {out['faers_meta'].get('last_updated')}, "
+              f"{out['faers_meta'].get('total_reports'):,} reports)")
+            cols = ["age_band", "drug_group", "event_group", "n_band", "n_drug", "n_event", "n_both",
+                    "share_of_drug_reports", "ror", "ror_lo", "ror_hi"]
+            p(out["faers_rors"][cols].to_string(index=False))
+            p("\n  ratio of ROR (older band / 18-44)")
+            p(out["faers_contrast"].to_string(index=False) if len(out["faers_contrast"]) else "  none")
+        if "medicare" in out:
+            p("\n== Medicare Part D, national claims")
+            p(out["medicare"].to_string(index=False))
+        p("\n== Chance an on/off comparison points the wrong way (k pairs, benefit d in noise units)")
+        t = out["n_of_1"].pivot(index="k", columns="d", values="p_wrong")
+        p(t.to_string())
+    text = buf.getvalue()
+    (RESULTS / "summary.txt").write_text(text)
+    serial = {k: (v.to_dict(orient="records") if isinstance(v, pd.DataFrame) else v) for k, v in out.items()}
+    (RESULTS / "results.json").write_text(json.dumps(serial, indent=1, default=float))
+    return text
