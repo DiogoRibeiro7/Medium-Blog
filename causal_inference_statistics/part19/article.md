@@ -98,7 +98,7 @@ One should also distinguish estimating the conditional treatment effect from pre
 
 ## The second simulation: an unmeasured effect modifier
 
-The second simulation deliberately makes the relevant effect modifier unavailable to the analyst. Let U be an independent standard normal variable in the trial, and let its distribution in the target have mean one. The treatment effect is
+The second simulation deliberately makes the relevant effect modifier unavailable to the analyst. Let U be an independent standard normal variable in the trial, and stipulate a target population where U follows a normal distribution with mean one and variance one. This target distribution is part of the known simulation design, not a quantity estimated from the recorded target sample: the code generates only the observed target characteristic X. As a result, the true target effect of two is defined analytically, not verified from generated target U observations. The treatment effect is
 
 \[
 Y(1)-Y(0)=1+U.
