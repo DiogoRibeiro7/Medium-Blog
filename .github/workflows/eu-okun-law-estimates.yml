@@ -143,3 +143,52 @@ jobs:
         env:
           EU_OKUN_REPRODUCE_SVAR: "1"
         run: poetry run pytest tests/test_sign_restrictions.py -q
+  publication:
+    # publication/README.md: audit every output, check that the generated values, tables,
+    # manifests and Medium article match the committed results, and build the manuscript.
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install Poetry
+        run: pipx install poetry==2.5.1
+      - name: Install locked study environment (project-local .venv)
+        working-directory: eu-okun-law
+        run: |
+          poetry check --lock
+          poetry install --no-interaction --extras dev
+      - name: Install LaTeX
+        run: >-
+          sudo apt-get update &&
+          sudo apt-get install -y --no-install-recommends latexmk lmodern
+          texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended
+      - name: Audit and generated files are current
+        working-directory: eu-okun-law
+        run: poetry run eu-okun publication --check
+      - name: Publication tests
+        working-directory: eu-okun-law
+        run: poetry run pytest tests/test_publication.py -q
+      - name: Figures regenerate from the committed results
+        working-directory: eu-okun-law
+        run: poetry run eu-okun publication --build
+      - name: Compile the manuscript
+        working-directory: eu-okun-law/publication/manuscript
+        run: latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex
+      - name: No undefined references or citations
+        working-directory: eu-okun-law/publication/manuscript
+        run: |
+          if grep -E "(Citation|Reference) .* undefined|There were undefined" main.log; then
+            exit 1
+          fi
+      - name: Archive the manuscript
+        uses: actions/upload-artifact@v4
+        with:
+          name: eu-okun-manuscript
+          path: |
+            eu-okun-law/publication/manuscript/main.pdf
+            eu-okun-law/publication/medium/
+          retention-days: 30
+          if-no-files-found: error
