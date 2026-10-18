@@ -57,7 +57,8 @@ def nhanes_baselines(df: pd.DataFrame) -> pd.DataFrame:
     return pd.DataFrame(rows)
 
 
-def nhanes_crossing(df: pd.DataFrame, mu: float, tau: float, shifts=(2.0, 5.0, 10.0)) -> pd.DataFrame:
+def nhanes_crossing(df: pd.DataFrame, mu: float, tau: float, shifts=(2.0, 5.0, 10.0),
+                    tau_hi: float | None = None) -> pd.DataFrame:
     """Share of each age band moved across 130 mmHg systolic by a stimulant response.
 
     Population: oscillometric cycles, not pregnant, not already hypertensive
@@ -89,6 +90,12 @@ def nhanes_crossing(df: pd.DataFrame, mu: float, tau: float, shifts=(2.0, 5.0, 1
         rec["hetero_140"] = e140.est
         rec["hetero_140_se"] = e140.se
         rec["share_below_140_untreated"] = _est(d.assign(x=below140.astype(float)), "x", "w_osc", band).est
+        if tau_hi is not None:
+            # sensitivity: the upper 95% limit of the between-person SD from the trials
+            ph = np.where(normal, sps.norm.sf(130 - d["sbp"], loc=mu, scale=max(tau_hi, 1e-9)), 0.0)
+            eh = _est(d.assign(x=ph), "x", "w_osc", band)
+            rec["hetero_tau_hi"] = eh.est
+            rec["hetero_tau_hi_se"] = eh.se
         p_avg = np.where(normal, (d["sbp"] >= 130 - mu).astype(float), 0.0)
         rec["average_only"] = _est(d.assign(x=p_avg), "x", "w_osc", band).est
         rec["share_rise_10_or_more"] = float(sps.norm.sf(10, loc=mu, scale=max(tau, 1e-9)))
@@ -99,17 +106,16 @@ def nhanes_crossing(df: pd.DataFrame, mu: float, tau: float, shifts=(2.0, 5.0, 1
 RISK_BANDS = [("40-49", 40, 49), ("50-59", 50, 59), ("60-69", 60, 69), ("70-79", 70, 79)]
 
 
-def nhanes_absolute_risk(df: pd.DataFrame, mu: float, tau: float, shifts=(2.0, 5.0, 10.0)) -> pd.DataFrame:
-    """Extra 10-year cardiovascular risk from a sustained rise in systolic pressure, by age.
+# Relative risk of major cardiovascular events per 10 mmHg of systolic pressure implied by
+# randomised trials of blood-pressure lowering (Ettehad et al., Lancet 2016: RR 0.80 per
+# 10 mmHg reduction), used as a sensitivity check on the Pooled Cohort Equations.
+TRIAL_RR_PER_10 = 1 / 0.80
 
-    Adults 40 to 79 in the oscillometric cycles without cardiovascular history,
-    with complete risk-equation inputs. Each person's 10-year risk is computed by
-    the Pooled Cohort Equations at their measured systolic pressure and again at
-    systolic + shift, keeping treatment status fixed. The heterogeneous scenario
-    averages the risk over individual responses ~ N(mu, tau^2) with 20-point
-    Gauss-Hermite quadrature. Results are survey-weighted means per age band,
-    reported as extra events per 1,000 people over 10 years.
-    """
+
+def risk_frame(df: pd.DataFrame, mu: float, tau: float, shifts=(2.0, 5.0, 10.0)) -> pd.DataFrame:
+    """One row per adult 40-79 without cardiovascular history, with their 10-year risk
+    (r0) and the extra risk from each sustained systolic shift (d2, d5, d10) and from a
+    heterogeneous response N(mu, tau^2) (dhet). Empty if the risk inputs are missing."""
     d = nhanes_frame(df)
     need = ["tc", "hdl", "sbp", "smoker", "age"]
     if not all(c in d.columns for c in need):
@@ -138,17 +144,85 @@ def nhanes_absolute_risk(df: pd.DataFrame, mu: float, tau: float, shifts=(2.0, 5
         hetero += w * (risk(x["sbp"].to_numpy() + mu + max(tau, 0.0) * z) - r0)
     x["dhet"] = hetero
     x["rr10"] = (r0 + x["d10"]) / r0
+    x["d2_trial_rr"] = r0 * (TRIAL_RR_PER_10 ** 0.2 - 1)
+    return x
+
+
+def nhanes_absolute_risk(df: pd.DataFrame, mu: float, tau: float, shifts=(2.0, 5.0, 10.0)) -> pd.DataFrame:
+    """Extra 10-year cardiovascular risk from a sustained rise in systolic pressure, by age.
+
+    Adults 40 to 79 in the oscillometric cycles without cardiovascular history,
+    with complete risk-equation inputs. Each person's 10-year risk is computed by
+    the Pooled Cohort Equations at their measured systolic pressure and again at
+    systolic + shift, keeping treatment status fixed. The heterogeneous scenario
+    averages the risk over individual responses ~ N(mu, tau^2) with 20-point
+    Gauss-Hermite quadrature. Results are survey-weighted means per age band,
+    reported as extra events per 1,000 people over 10 years. extra_2_trial_rr applies
+    the trial-based relative risk per 10 mmHg to each person's baseline risk instead.
+    """
+    x = risk_frame(df, mu, tau, shifts)
+    if x.empty:
+        return pd.DataFrame()
     rows = []
     for name, lo, hi in RISK_BANDS:
         dom = x["age"].between(lo, hi)
         rec = {"band": name, "n": int(dom.sum())}
         for col, lab in [("r0", "baseline_risk"), ("dhet", "extra_hetero")] + \
-                        [(f"d{sh:g}", f"extra_{sh:g}") for sh in shifts]:
+                        [(f"d{sh:g}", f"extra_{sh:g}") for sh in shifts] + [("d2_trial_rr", "extra_2_trial_rr")]:
             e = stats.survey_mean(x[col], x["w_osc"], x["stratum"], x["psu"], dom)
             rec[lab] = e.est
             rec[lab + "_se"] = e.se
         rec["rr_per_10"] = float(np.average(x.loc[dom, "rr10"], weights=x.loc[dom, "w_osc"]))
         rows.append(rec)
+    return pd.DataFrame(rows)
+
+
+RISK_CUTS = (0.075, 0.20)   # guideline categories: below 7.5%, 7.5-20%, 20% or more
+
+
+def nhanes_risk_spread(x: pd.DataFrame) -> pd.DataFrame:
+    """How much 10-year risk, and the extra risk of a +5 mmHg rise, vary inside each age band.
+
+    Survey-weighted 10th, 25th, 50th, 75th and 90th percentiles, and the share of each
+    band in the guideline risk categories.
+    """
+    rows = []
+    q = [0.1, 0.25, 0.5, 0.75, 0.9]
+    for name, lo, hi in RISK_BANDS:
+        dom = x["age"].between(lo, hi).to_numpy()
+        g = x[dom]
+        rec = {"band": name, "n": int(dom.sum())}
+        for col, lab in (("r0", "risk"), ("d5", "extra5")):
+            for qq, v in zip(q, stats.weighted_quantile(g[col], g["w_osc"], q)):
+                rec[f"{lab}_p{int(qq * 100)}"] = float(v)
+        for lab, ind in (("share_below_7_5", x["r0"] < RISK_CUTS[0]),
+                         ("share_7_5_to_20", (x["r0"] >= RISK_CUTS[0]) & (x["r0"] < RISK_CUTS[1])),
+                         ("share_20_plus", x["r0"] >= RISK_CUTS[1])):
+            e = stats.survey_mean(ind.astype(float), x["w_osc"], x["stratum"], x["psu"], dom)
+            rec[lab] = e.est
+            rec[lab + "_se"] = e.se
+        rows.append(rec)
+    return pd.DataFrame(rows)
+
+
+def age_rule(x: pd.DataFrame, cutoffs=(65, 70), high=RISK_CUTS[1]) -> pd.DataFrame:
+    """An age cutoff judged as a classifier of high 10-year cardiovascular risk.
+
+    Among adults 40-79 without cardiovascular history: of the people the rule would
+    exclude (age >= cutoff), the share who are not at high risk; of the people at high
+    risk, the share the rule would let through (age < cutoff). Survey-weighted.
+    """
+    hi_risk = (x["r0"] >= high).astype(float)
+    rows = []
+    for c in cutoffs:
+        older = x["age"] >= c
+        excl = stats.survey_mean(1 - hi_risk, x["w_osc"], x["stratum"], x["psu"], older)
+        miss = stats.survey_mean((~older).astype(float), x["w_osc"], x["stratum"], x["psu"], hi_risk.astype(bool))
+        rows.append({"cutoff": c, "high_risk_threshold": high,
+                     "excluded_not_high_risk": excl.est, "excluded_not_high_risk_se": excl.se,
+                     "n_excluded": excl.n,
+                     "high_risk_below_cutoff": miss.est, "high_risk_below_cutoff_se": miss.se,
+                     "n_high_risk": miss.n})
     return pd.DataFrame(rows)
 
 
@@ -326,7 +400,9 @@ def variance_ratio_table(t: dict, population: str = "adult") -> pd.DataFrame:
             continue
         _, title, measure, p, a = best
         y, v = stats.ln_vr(a["sd"], a["n"], p["sd"], p["n"])
+        info = s.loc[s["nct"] == nct].iloc[0]
         rows.append({"nct": nct, "population": population, "kind": kind, "measure": measure,
+                     "conditions": info["conditions"], "min_age": info["min_age"], "max_age": info["max_age"],
                      "outcome": title, "unit": a["unit"],
                      "active_arm": a["group_title"], "n_active": a["n"], "n_placebo": p["n"],
                      "mean_active": a["value"], "mean_placebo": p["value"],
@@ -375,6 +451,10 @@ def variance_ratio_summary(vr: pd.DataFrame) -> pd.DataFrame:
                      "tau_lo": float(sd_c * np.sqrt(max(lo ** 2 - 1, 0.0))),
                      "tau_hi": float(sd_c * np.sqrt(max(hi ** 2 - 1, 0.0))),
                      "share_trials_vr_above_1": float((g["ln_vr"] > 0).mean()),
+                     # share whose true drug effect is a rise of 10 or more, if responses ~ N(md, tau^2)
+                     "true_rise10": float(sps.norm.sf(10, m.est, max(tau, 1e-9))),
+                     "true_rise10_tau_hi": float(sps.norm.sf(10, m.est,
+                                                             max(sd_c * np.sqrt(max(hi ** 2 - 1, 0.0)), 1e-9))),
                      **_noise_shares(g[g["measure"] == "change"])})
     return pd.DataFrame(rows)
 

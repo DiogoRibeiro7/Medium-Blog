@@ -39,17 +39,22 @@ def compute() -> dict:
         out["nhanes_n"] = int(len(df))
         out["nhanes_cycles"] = sorted(df["cycle"].unique().tolist())
         out["baselines"] = analyse.nhanes_baselines(df)
-        mu, tau, source = FALLBACK_MU, FALLBACK_TAU, "fallback (no trial estimate)"
+        mu, tau, tau_hi, source = FALLBACK_MU, FALLBACK_TAU, None, "fallback (no trial estimate)"
         vs = out.get("vr_summary")
         if vs is not None and len(vs):
             for pop, label in (("all", "pooled trials, all ages"), ("adult", "pooled adult trials")):
                 r = vs[(vs["kind"] == "sbp") & (vs["population"] == pop)]
                 if len(r) and r.iloc[0]["k"] >= 3:
                     mu, tau, source = float(r.iloc[0]["md"]), float(r.iloc[0]["tau_response"]), label
+                    tau_hi = float(r.iloc[0]["tau_hi"])
                     break
-        out["crossing_params"] = {"mu": mu, "tau": tau, "source": source}
-        out["crossing"] = analyse.nhanes_crossing(df, mu, tau)
+        out["crossing_params"] = {"mu": mu, "tau": tau, "tau_hi": tau_hi, "source": source}
+        out["crossing"] = analyse.nhanes_crossing(df, mu, tau, tau_hi=tau_hi)
         out["absolute_risk"] = analyse.nhanes_absolute_risk(df, mu, tau)
+        x = analyse.risk_frame(df, mu, tau)
+        if len(x):
+            out["risk_spread"] = analyse.nhanes_risk_spread(x)
+            out["age_rule"] = analyse.age_rule(x)
         out["replicates"] = analyse.nhanes_replicates(df)
         out["stim_by_band"], out["stim_by_cycle"] = analyse.nhanes_stimulants(df)
     if (DATA / "faers_counts.csv.gz").exists():
@@ -71,7 +76,7 @@ def write(out: dict) -> str:
         pd.set_option("display.width", 200, "display.max_columns", 40, "display.max_rows", 200,
                       "display.float_format", lambda v: f"{v:.4g}")
         if "trial_inventory" in out:
-            p("== ClinicalTrials.gov: adult stimulant trials for ADHD with posted results")
+            p("== ClinicalTrials.gov: stimulant trials with posted results, all indications")
             for k, v in out["trial_inventory"].items():
                 p(f"  {k}: {v}")
             p("\n== Variance ratios, active versus placebo (change from baseline)")
@@ -89,12 +94,18 @@ def write(out: dict) -> str:
             p("  blood pressure and cardiovascular baselines, oscillometric cycles (2017-2023), survey-weighted")
             p(out["baselines"].to_string(index=False))
             cp = out["crossing_params"]
-            p(f"\n  stimulant response model: mean {cp['mu']:.2f} mmHg, between-person SD {cp['tau']:.2f} mmHg "
+            hi = f", upper 95% limit {cp['tau_hi']:.2f}" if cp.get("tau_hi") is not None else ""
+            p(f"\n  stimulant response model: mean {cp['mu']:.2f} mmHg, between-person SD {cp['tau']:.2f} mmHg{hi} "
               f"({cp['source']})")
             p(out["crossing"].to_string(index=False))
             p("\n  extra 10-year cardiovascular risk (Pooled Cohort Equations) from a sustained systolic rise,"
               " adults 40-79 without cardiovascular history")
             p(out["absolute_risk"].to_string(index=False) if len(out["absolute_risk"]) else "  not available")
+            if "risk_spread" in out:
+                p("\n  spread of 10-year risk (risk_*) and of the extra risk from +5 mmHg (extra5_*) inside each age band")
+                p(out["risk_spread"].to_string(index=False))
+                p("\n  an age cutoff as a classifier of high 10-year risk (20% or more), adults 40-79 without CVD")
+                p(out["age_rule"].to_string(index=False))
             p("\n  within-visit SD of replicate systolic readings and readings needed (each period) for 80% power")
             p(out["replicates"].to_string(index=False))
             p("\n  prescription stimulant use, all cycles with drug data, survey-weighted")

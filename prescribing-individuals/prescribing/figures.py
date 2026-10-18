@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import re
+
 import matplotlib
 
 matplotlib.use("Agg")
@@ -60,7 +62,7 @@ def fig_sbp_by_age(df: pd.DataFrame):
     for i, (name, _, _) in enumerate(analyse.AGE_BANDS):
         g = d[base & (d["band"] == name)]
         w = g["w_osc"].to_numpy() / g["w_osc"].sum()
-        bw = 4.0
+        bw = 5.0
         dens = (w[None, :] * np.exp(-0.5 * ((x[:, None] - g["sbp"].to_numpy()[None, :]) / bw) ** 2)).sum(1)
         dens /= bw * np.sqrt(2 * np.pi)
         ax.plot(x, dens, color=SERIES[i], lw=2, label=f"{name}")
@@ -82,22 +84,42 @@ def fig_crossing(cross: pd.DataFrame, params: dict):
     fig, ax = plt.subplots(figsize=(7.2, 4.4))
     xs = np.arange(len(cross))
     w = 0.36
-    ax.bar(xs - w / 2 - 0.01, cross["average_only"], width=w, color=SERIES[0],
-           label=f"everyone responds by the average ({params['mu']:+.1f} mmHg)")
-    ax.bar(xs + w / 2 + 0.01, cross["hetero"], width=w, color=SERIES[1],
-           label=f"responses vary between people (SD {params['tau']:.1f} mmHg)")
-    for i, r in cross.iterrows():
-        for off, v in ((-w / 2 - 0.01, r["average_only"]), (w / 2 + 0.01, r["hetero"])):
-            ax.text(i + off, v + 0.002, f"{100 * v:.1f}%", ha="center", va="bottom", fontsize=8, color=INK2)
+    bars = [("hetero", "hetero_se", "crosses 130/80 (not hypertensive before)", SERIES[0]),
+            ("hetero_140", "hetero_140_se", "crosses 140/90 (below it and untreated before)", SERIES[1])]
+    top = max((cross[c] + 1.96 * cross[se]).max() for c, se, _, _ in bars)
+    for j, (c, se, lab, col) in enumerate(bars):
+        off = (j - 0.5) * (w + 0.02)
+        ax.bar(xs + off, cross[c], width=w, color=col, label=lab)
+        ax.errorbar(xs + off, cross[c], yerr=1.96 * cross[se], fmt="none", ecolor=INK2, lw=0.8)
+        for x0, v, e in zip(xs + off, cross[c], cross[se]):
+            ax.text(x0, v + 1.96 * e + top * 0.015, f"{100 * v:.1f}%", ha="center", va="bottom",
+                    fontsize=8, color=INK2)
     _style(ax)
-    ax.set_xticks(xs, cross["band"])
-    ax.yaxis.set_major_formatter(matplotlib.ticker.PercentFormatter(1.0, decimals=0))
-    ax.set_xlabel("age")
-    ax.set_ylabel("share of the age group moved to 130 mmHg or above")
+    ax.set_xticks(xs, [f"{b}\n{100 * r:.0f}% below\n130/80" for b, r in zip(cross["band"], cross["share_not_htn"])],
+                  fontsize=8.5)
+    ax.set_ylim(0, top * 1.3)
+    ax.yaxis.set_major_formatter(matplotlib.ticker.PercentFormatter(1.0, decimals=1))
+    ax.set_xlabel("age, and share of the age group below 130/80 and untreated")
+    ax.set_ylabel("share of the whole age group")
     _legend(ax, loc="upper left")
-    ax.set_title("Who a stimulant would push into the hypertensive range", loc="left", fontsize=11.5, pad=12)
-    fig.subplots_adjust(left=0.1, right=0.97, top=0.88, bottom=0.17)
-    _save(fig, "fig2_threshold_crossing.png", "NHANES 2017–2023 baselines; response from pooled trials")
+    ax.set_title(f"Share of each age group moved across a threshold by a {params['mu']:.1f} mmHg average rise",
+                 loc="left", fontsize=11, pad=12)
+    fig.subplots_adjust(left=0.1, right=0.97, top=0.88, bottom=0.24)
+    _save(fig, "fig2_threshold_crossing.png",
+          f"NHANES 2017–2023; response N({params['mu']:.1f}, {params['tau']:.1f}²) mmHg from pooled trials; 95% CI")
+
+
+def _trial_label(r) -> str:
+    c = str(r["conditions"])
+    for pat, short in (("attention|adhd", "ADHD"), ("depress", "depression"), ("schizo", "schizophrenia"),
+                       ("cocaine", "cocaine dependence"), ("sclerosis", "multiple sclerosis"),
+                       ("anxiety", "anxiety"), ("dementia|alzheimer", "dementia"), ("parkinson", "Parkinson's")):
+        if re.search(pat, c, flags=re.I):
+            c = short
+            break
+    lo = "" if pd.isna(r["min_age"]) else f"{r['min_age']:.0f}"
+    hi = "" if pd.isna(r["max_age"]) else f"{r['max_age']:.0f}"
+    return f"{c}, ages {lo}–{hi}\n{r['nct']}"
 
 
 def fig_forest(vr: pd.DataFrame, summary: pd.DataFrame):
@@ -105,7 +127,7 @@ def fig_forest(vr: pd.DataFrame, summary: pd.DataFrame):
     if not kinds:
         return
     labels = {"sbp": "systolic blood pressure", "hr": "heart rate"}
-    fig, axes = plt.subplots(1, len(kinds), figsize=(7.2, 0.28 * max((vr["kind"] == k).sum() for k in kinds) + 2.2),
+    fig, axes = plt.subplots(1, len(kinds), figsize=(7.2, 0.36 * max((vr["kind"] == k).sum() for k in kinds) + 2.2),
                              sharey=False)
     axes = np.atleast_1d(axes)
     for ax, k in zip(axes, kinds):
@@ -122,15 +144,17 @@ def fig_forest(vr: pd.DataFrame, summary: pd.DataFrame):
         ax.set_xscale("log")
         _plain_log(ax.xaxis)
         ax.xaxis.set_major_locator(matplotlib.ticker.LogLocator(base=10, subs=(0.5, 0.7, 1.0, 1.4, 2.0)))
-        ax.set_yticks(list(y) + [-1.5], list(g["nct"]) + ["pooled"], fontsize=7)
+        ticks = [_trial_label(r) for _, r in g.iterrows()] if "conditions" in g.columns else list(g["nct"])
+        ax.set_yticks(list(y) + [-1.5], ticks + ["pooled"], fontsize=6.5)
         ax.set_ylim(-2.5, len(g) - 0.3)
         ax.set_xlabel("SD on drug / SD on placebo")
         ax.set_title(labels[k], loc="left", fontsize=10)
         _style(ax, grid="x")
     fig.suptitle("Is the response to stimulants more variable than the response to placebo?",
                  x=0.01, ha="left", fontsize=11.5, color=INK)
-    fig.subplots_adjust(left=0.16, right=0.98, top=0.86, bottom=0.12, wspace=0.55)
-    _save(fig, "fig3_variance_ratios.png", "ClinicalTrials.gov posted results, randomised adult trials")
+    fig.subplots_adjust(left=0.23, right=0.98, top=0.87, bottom=0.12, wspace=0.95)
+    _save(fig, "fig3_variance_ratios.png",
+          "ClinicalTrials.gov posted results; randomised placebo-controlled trials, all ages and indications")
 
 
 def fig_faers(rors: pd.DataFrame):
@@ -211,7 +235,7 @@ def fig_n_of_1(t: pd.DataFrame):
     _legend(ax, loc="upper right")
     ax.set_title("A single drug holiday is a noisy experiment", loc="left", fontsize=11.5, pad=12)
     fig.subplots_adjust(left=0.1, right=0.97, top=0.88, bottom=0.17)
-    _save(fig, "fig7_drug_holiday.png", "calculation; benefit in units of week-to-week noise")
+    _save(fig, "fig7_drug_holiday.png", "calculation; benefit in units of the SD of one on-minus-off difference")
 
 
 def fig_absolute(ar: pd.DataFrame):
@@ -234,6 +258,33 @@ def fig_absolute(ar: pd.DataFrame):
     _save(fig, "fig8_absolute_risk.png", "NHANES 2017–2023, Pooled Cohort Equations, adults 40–79 without CVD")
 
 
+def fig_risk_spread(rs: pd.DataFrame):
+    fig, ax = plt.subplots(figsize=(7.2, 4.0))
+    ys = np.arange(len(rs))[::-1]
+    for y, (_, r) in zip(ys, rs.iterrows()):
+        ax.plot([r["risk_p10"], r["risk_p90"]], [y, y], color=SERIES[0], lw=1.5, solid_capstyle="butt")
+        ax.plot([r["risk_p25"], r["risk_p75"]], [y, y], color=SERIES[0], lw=7, solid_capstyle="butt")
+        ax.plot([r["risk_p50"]], [y], "o", color=SURFACE, mec=INK, ms=6)
+    for thr in (0.075, 0.20):
+        ax.axvline(thr, color=MUTED, lw=1, ls=(0, (4, 3)))
+        ax.text(thr * 1.04, len(rs) - 0.45, f"{100 * thr:g}%", fontsize=8.5, color=INK2)
+    ax.set_xscale("log")
+    ax.set_xlim(0.002, 1.0)
+    ax.xaxis.set_major_locator(matplotlib.ticker.FixedLocator([0.0025, 0.005, 0.01, 0.025, 0.05, 0.1, 0.25, 0.5, 1]))
+    ax.xaxis.set_major_formatter(matplotlib.ticker.FuncFormatter(lambda v, _: f"{100 * v:g}%"))
+    ax.xaxis.set_minor_formatter(matplotlib.ticker.NullFormatter())
+    def _share(v):
+        return f"{100 * v:.0f}%" if v >= 0.01 else f"{100 * v:.1f}%"
+    ax.set_yticks(ys, [f"{b}\n{_share(v)} at 20%+" for b, v in zip(rs["band"], rs["share_20_plus"])], fontsize=8.5)
+    ax.set_ylim(-0.7, len(rs) - 0.2)
+    _style(ax, grid="x")
+    ax.set_xlabel("10-year risk of a first heart attack or stroke (Pooled Cohort Equations)")
+    ax.set_title("Cardiovascular risk overlaps across age groups", loc="left", fontsize=11.5, pad=12)
+    fig.subplots_adjust(left=0.14, right=0.97, top=0.86, bottom=0.2)
+    _save(fig, "fig9_risk_spread.png",
+          "NHANES 2017–2023, adults 40–79 without CVD; thin line 10th–90th percentile, thick 25th–75th, dot median")
+
+
 def draw(out: dict) -> None:
     FIGURES.mkdir(parents=True, exist_ok=True)
     if (DATA / "nhanes_adults.csv.gz").exists():
@@ -243,6 +294,8 @@ def draw(out: dict) -> None:
         fig_readings(out["replicates"])
         if len(out.get("absolute_risk", [])):
             fig_absolute(out["absolute_risk"])
+        if "risk_spread" in out:
+            fig_risk_spread(out["risk_spread"])
     if "vr_table" in out and len(out["vr_table"]):
         pop = "all"
         fig_forest(out["vr_table"][out["vr_table"]["population"] == pop],
