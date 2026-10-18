@@ -1,21 +1,23 @@
 # Prescribing for a patient, not an age group
 
-Companion code and data for the Medium article on age rules for ADHD medication in older adults. It asks what public data say about the three statistical arguments against prescribing by age: that an age cutoff is a proxy for measurable risks, that average drug effects hide individual responses, and that relative risks mean little without the patient's own baseline.
+Companion code and data for the Medium article on age rules for ADHD medication in older adults ([`article.md`](article.md)). It asks what public data say about the three statistical arguments against prescribing by age: that an age cutoff is a proxy for measurable risks, that average drug effects hide individual responses, and that relative risks mean little without the patient's own baseline.
 
 ## Sources
 
 | Source | What is used | Module |
 | --- | --- | --- |
 | NHANES 2011–2023 (CDC) | Blood pressure, treatment and cardiovascular history by age (oscillometric cycles 2017–2023), replicate readings, prescription stimulant use (all cycles) | `prescribing/nhanes.py` |
-| ClinicalTrials.gov (API v2) | Adult stimulant trials with posted results: age eligibility, participants aged 65+, blood-pressure and heart-rate outcomes by arm, adverse events by arm | `prescribing/trials.py` |
+| ClinicalTrials.gov (API v2) | Amphetamine and methylphenidate trials with posted results, all indications and ages: age eligibility, participants aged 65+, blood-pressure and heart-rate outcomes by arm, adverse events by arm | `prescribing/trials.py` |
 | FDA Adverse Event Reporting System (openFDA) | Report counts by age band for methylphenidate-class and amphetamine-class drugs and seven event groups | `prescribing/faers.py` |
 | Medicare Part D Prescribers by Geography and Drug (CMS) | National claims and beneficiaries aged 65+, 2013 onwards | `prescribing/medicare.py` |
 
 ## Analyses
 
 - **Baselines by age.** Survey-weighted systolic pressure, hypertension (130/80 or treatment) and cardiovascular history, with Taylor-linearised standard errors.
-- **Who a stimulant would push over the line.** For adults not yet hypertensive, the share of each age group moved to 130 mmHg or above, under a uniform response and under a normal distribution of individual responses whose mean and between-person SD come from the trials.
-- **Variance ratios.** For each randomised parallel adult trial posting mean change from baseline with an SD, the log ratio of the SD on drug to the SD on placebo (Nakagawa et al., 2015), pooled by random effects. A ratio above 1 is evidence that people respond differently; the between-person SD of the response is SD_placebo × sqrt(VR² − 1).
+- **Who a stimulant would push over the line.** For adults not yet hypertensive, the share of each age group moved to 130/80 or 140/90 or above, under a uniform response and under a normal distribution of individual responses whose mean and between-person SD come from the trials (with the upper 95% limit of the SD as a sensitivity check).
+- **Absolute cardiovascular risk.** For adults 40–79 without cardiovascular disease, 10-year risk from the Pooled Cohort Equations (Goff et al., 2014) at the measured systolic pressure and after a sustained rise of 2, 5 or 10 mmHg; a cross-check applies the trial-based relative risk per 10 mmHg (Ettehad et al., 2016) to each person's baseline.
+- **Age as a proxy.** The spread of 10-year risk inside each age band, and an age cutoff (65 or 70) judged as a classifier of high risk (20% or more): the share of people it excludes who are not at high risk, and the share of high-risk people it lets through.
+- **Variance ratios.** For each randomised parallel placebo-controlled trial posting arithmetic means with an SD or SE (change from baseline preferred, final values otherwise), in all trials and in adult-only trials, the log ratio of the SD on drug to the SD on placebo (Nakagawa et al., 2015), pooled by random effects. A ratio above 1 is evidence that people respond differently; the between-person SD of the response is SD_placebo × sqrt(VR² − 1). From the change-score trials, the expected share with a rise of 10 mmHg or more on each arm under a normal approximation.
 - **Adverse events in trials.** Pooled risk ratios against placebo for insomnia, blood pressure, heart rate, appetite and anxiety terms.
 - **Adverse-event reports by age.** Reporting odds ratios against all other drugs in the same age band, and the ratio of the ROR in older bands to the ROR at 18–44.
 - **Medicare.** Claims for beneficiaries aged 65+ by drug class and year.
