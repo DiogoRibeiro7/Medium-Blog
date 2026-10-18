@@ -1,0 +1,21 @@
+{
+ "oecd_files": {
+  "tiva_fdva.csv": {
+   "sha256": "ceab424fa3906f29b872356a59fc3439252bf0ea2774d7f209a12db410e78ca3",
+   "url": "https://sdmx.oecd.org/sti-public/rest/data/OECD.STI.PIE,DSD_TIVA_FDVA@DF_FDVA,1.1/FDVA.AUT+BEL+BGR+CYP+CZE+DEU+DNK+EST+GRC+ESP+FIN+FRA+HRV+HUN+IRL+ITA+LTU+LUX+LVA+MLT+NLD+POL+PRT+ROU+SWE+SVN+SVK._T.USA+CAN+MEX+BRA+ARG+CHN+JPN+KOR+IND+IDN+AUS+ZAF+GBR+CHE+NOR+TUR+AUT+BEL+BGR+CYP+CZE+DEU+DNK+EST+GRC+ESP+FIN+FRA+HRV+HUN+IRL+ITA+LTU+LUX+LVA+MLT+NLD+POL+PRT+ROU+SWE+SVN+SVK+W._T.USD.A?startPeriod=2005&endPeriod=2007&dimensionAtObservation=AllDimensions",
+   "licence": "CC BY 4.0 (OECD terms and conditions)"
+  },
+  "tiva_mainlv.csv": {
+   "sha256": "a63e98bd5678444e01f67649761e4b33869246081e7518742385a2d7e56e6517",
+   "url": "https://sdmx.oecd.org/sti-public/rest/data/OECD.STI.PIE,DSD_TIVA_MAINLV@DF_MAINLV,1.1/VALU+EXGR.AUT+BEL+BGR+CYP+CZE+DEU+DNK+EST+GRC+ESP+FIN+FRA+HRV+HUN+IRL+ITA+LTU+LUX+LVA+MLT+NLD+POL+PRT+ROU+SWE+SVN+SVK._T+BTE.W.USD.A?startPeriod=2005&endPeriod=2007&dimensionAtObservation=AllDimensions",
+   "licence": "CC BY 4.0 (OECD terms and conditions)"
+  },
+  "oecd_qna.csv": {
+   "sha256": "afa0e96feddc692b27b6e90b5fedd7cbc83424a0643030ebcd85e9d8d9c0f4a1",
+   "url": "https://sdmx.oecd.org/public/rest/data/OECD.SDD.NAD,DSD_NAMAIN1@DF_QNA,1.1/Q.Y.USA+CAN+MEX+BRA+ARG+CHN+JPN+KOR+IND+IDN+AUS+ZAF+GBR+CHE+NOR+TUR.S1..B1GQ._Z._Z._Z.PC.L.G1.T0102?startPeriod=2010-Q1&dimensionAtObservation=AllDimensions",
+   "licence": "CC BY 4.0 (OECD terms and conditions)"
+  }
+ },
+ "oecd_downloaded_at_utc": "2026-10-18T10:10:19.593407+00:00",
+ "eurostat_manifest_sha256": "8a8c8a107d584ba91b61584fd29397e68ff83d82982371a35db253c0803a0464"
+}

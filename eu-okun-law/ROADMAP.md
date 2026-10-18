@@ -100,7 +100,11 @@ Pre-registered in [BAYES_PROTOCOL.md](BAYES_PROTOCOL.md); results in
       [docs/MONTHLY_IDENTIFICATION_RESULTS.md](docs/MONTHLY_IDENTIFICATION_RESULTS.md)).
       Direct monthly survey estimates exist for only 8 countries. The first stages are no
       stronger than the quarterly ones, and every primary ratio set is unbounded.
-- [ ] A defended shift-share foreign-demand instrument for country-specific GDP shocks.
+- [x] A shift-share foreign-demand instrument for country-specific GDP shocks, under a
+      pre-registered feasibility rule ([SHIFT_SHARE_PROTOCOL.md](SHIFT_SHARE_PROTOCOL.md);
+      [docs/SHIFT_SHARE_FEASIBILITY.md](docs/SHIFT_SHARE_FEASIBILITY.md)). Only distant,
+      non-European demand is defensible. After country and quarter effects its expected
+      first-stage t is 0.19 against 3.16: no go, so no IV is estimated.
 - [ ] Regime sensitivity, structural breaks and mechanisms.
 - [ ] Detailed alternative hypotheses for NL and LU.
 

@@ -244,6 +244,18 @@ def main(argv: Sequence[str] | None = None) -> int:
                          default=Path("results/monthly-identification"))
     monthly.add_argument("--report", type=Path, default=None)
     monthly.add_argument("--no-figures", action="store_true")
+    fetch_ss = commands.add_parser(
+        "fetch-shift-share", help="Download TiVA exposure and OECD partner GDP into a snapshot")
+    fetch_ss.add_argument("--output-dir", type=Path, default=Path("snapshots/shift-share"))
+    shift_share_cmd = commands.add_parser(
+        "shift-share", help="Feasibility of a foreign-demand shift-share instrument")
+    shift_share_cmd.add_argument("--data-dir", type=Path,
+                                 default=Path("snapshots/shift-share-2026-10-18"))
+    shift_share_cmd.add_argument("--eurostat-dir", type=Path,
+                                 default=Path("snapshots/eurostat-2026-10-15"))
+    shift_share_cmd.add_argument("--output-dir", type=Path, default=Path("results/shift-share"))
+    shift_share_cmd.add_argument("--report", type=Path, default=None)
+    shift_share_cmd.add_argument("--no-figures", action="store_true")
     args = parser.parse_args(argv)
     if args.command == "fetch":
         try:
@@ -528,6 +540,27 @@ def main(argv: Sequence[str] | None = None) -> int:
                    if o.informative]
         print(f"Monthly identification results written to {args.report or args.output_dir}; "
               f"{len(bounded)} informative ratio sets")
+        return 0
+    if args.command == "fetch-shift-share":
+        from eu_okun.shift_share import fetch_shift_share
+
+        try:
+            ss_manifest = fetch_shift_share(args.output_dir)
+        except (EurostatDataError, ValueError, RuntimeError, OSError, KeyError) as exc:
+            parser.exit(2, f"Shift-share download failed: {exc}" + chr(10))
+        print(f"Saved {len(ss_manifest['files'])} OECD responses to {args.output_dir}")
+        return 0
+    if args.command == "shift-share":
+        from eu_okun.shift_share_report import write_report as write_shift_share
+
+        try:
+            ss_review = write_shift_share(args.data_dir, args.eurostat_dir, args.output_dir,
+                                          args.report, figures=not args.no_figures)
+        except (EurostatDataError, FileNotFoundError, ValueError, OSError, KeyError) as exc:
+            parser.exit(2, f"Shift-share feasibility failed: {exc}" + chr(10))
+        central = ss_review.results["P1"].central
+        print(f"Shift-share feasibility written to {args.report or args.output_dir}; "
+              f"P1 expected first-stage t {central.expected_t:.2f}: {ss_review.decision}")
         return 0
     if args.command == "predictive-fit":
         from eu_okun.bayes_fit import SamplerSettings
