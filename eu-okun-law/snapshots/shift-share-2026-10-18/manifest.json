@@ -1,0 +1,43 @@
+{
+ "description": "Inputs of SHIFT_SHARE_PROTOCOL.md (no outcome data)",
+ "downloaded_at_utc": "2026-10-18T10:10:19.593407+00:00",
+ "files": [
+  {
+   "key": "tiva_fdva",
+   "file": "tiva_fdva.csv",
+   "url": "https://sdmx.oecd.org/sti-public/rest/data/OECD.STI.PIE,DSD_TIVA_FDVA@DF_FDVA,1.1/FDVA.AUT+BEL+BGR+CYP+CZE+DEU+DNK+EST+GRC+ESP+FIN+FRA+HRV+HUN+IRL+ITA+LTU+LUX+LVA+MLT+NLD+POL+PRT+ROU+SWE+SVN+SVK._T.USA+CAN+MEX+BRA+ARG+CHN+JPN+KOR+IND+IDN+AUS+ZAF+GBR+CHE+NOR+TUR+AUT+BEL+BGR+CYP+CZE+DEU+DNK+EST+GRC+ESP+FIN+FRA+HRV+HUN+IRL+ITA+LTU+LUX+LVA+MLT+NLD+POL+PRT+ROU+SWE+SVN+SVK+W._T.USD.A?startPeriod=2005&endPeriod=2007&dimensionAtObservation=AllDimensions",
+   "citation": "OECD (2025), Trade in Value Added (TiVA) 2025 edition: Origin of value added in final demand.",
+   "licence": "CC BY 4.0 (OECD terms and conditions)",
+   "sha256": "ceab424fa3906f29b872356a59fc3439252bf0ea2774d7f209a12db410e78ca3",
+   "bytes": 288881
+  },
+  {
+   "key": "tiva_mainlv",
+   "file": "tiva_mainlv.csv",
+   "url": "https://sdmx.oecd.org/sti-public/rest/data/OECD.STI.PIE,DSD_TIVA_MAINLV@DF_MAINLV,1.1/VALU+EXGR.AUT+BEL+BGR+CYP+CZE+DEU+DNK+EST+GRC+ESP+FIN+FRA+HRV+HUN+IRL+ITA+LTU+LUX+LVA+MLT+NLD+POL+PRT+ROU+SWE+SVN+SVK._T+BTE.W.USD.A?startPeriod=2005&endPeriod=2007&dimensionAtObservation=AllDimensions",
+   "citation": "OECD (2025), Trade in Value Added (TiVA) 2025 edition: Principal indicators, levels.",
+   "licence": "CC BY 4.0 (OECD terms and conditions)",
+   "sha256": "a63e98bd5678444e01f67649761e4b33869246081e7518742385a2d7e56e6517",
+   "bytes": 26868
+  },
+  {
+   "key": "oecd_qna",
+   "file": "oecd_qna.csv",
+   "url": "https://sdmx.oecd.org/public/rest/data/OECD.SDD.NAD,DSD_NAMAIN1@DF_QNA,1.1/Q.Y.USA+CAN+MEX+BRA+ARG+CHN+JPN+KOR+IND+IDN+AUS+ZAF+GBR+CHE+NOR+TUR.S1..B1GQ._Z._Z._Z.PC.L.G1.T0102?startPeriod=2010-Q1&dimensionAtObservation=AllDimensions",
+   "citation": "OECD (2026), Quarterly National Accounts: GDP, volume, growth on the previous quarter, seasonally adjusted.",
+   "licence": "CC BY 4.0 (OECD terms and conditions)",
+   "sha256": "afa0e96feddc692b27b6e90b5fedd7cbc83424a0643030ebcd85e9d8d9c0f4a1",
+   "bytes": 118431
+  }
+ ],
+ "processed": {
+  "exposure.csv": "33a7a0cd7932402fb0342b2ae621073efed61b5b0dc50fd6b6bf971bc63dccb5",
+  "balance.csv": "c27750a243160d0ce0bcf5b38f3819a6e338e96128576dd85e8c0b961700875a",
+  "shifts.csv": "e21263e99da3c02d5854be0fe4ae3dcaf6a0c09e1307b6f7450e0a6f9ae8c677"
+ },
+ "share_years": [
+  "2005",
+  "2006",
+  "2007"
+ ]
+}

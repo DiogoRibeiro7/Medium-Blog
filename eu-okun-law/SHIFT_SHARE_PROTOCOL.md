@@ -161,4 +161,13 @@ throughout the study.
 
 ## Change log
 
-None yet.
+- **During implementation, before any instrument value or power number: clarifications.**
+  - *Exposure.* `e[i,p]` is the mean of the three annual ratios `FDVA(i,p) / FDVA(i,W)`.
+    The world total `W` equals TiVA's total value added of i.
+  - *Shifts.* The intra-EU set P3 takes its shifts from the GDP growth of the frozen
+    Eurostat snapshot (`namq_10_gdp`, `CLV_PCH_PRE`, `SCA`), the same concept as the OECD
+    shifts.
+  - *`sigma_u`.* It is computed with a degrees-of-freedom correction: country effects,
+    quarter effects and 12 lag controls.
+  - *Snapshot.* `snapshots/shift-share-2026-10-18` was downloaded on 2026-10-18, and its
+    audit passes.
