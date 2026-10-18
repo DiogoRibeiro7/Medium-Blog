@@ -78,6 +78,18 @@ jobs:
           if forecast["forecast_count"] < 27 * 6 * 12:
               raise SystemExit("Insufficient held-out forecast origins")
           PY
+      - name: Monthly identification on the frozen snapshots (MONTHLY_IDENTIFICATION_PROTOCOL.md)
+        working-directory: eu-okun-law
+        run: >-
+          poetry run eu-okun monthly-identification
+          --data-dir snapshots/eurostat-monthly-2026-10-18
+          --shocks-dir snapshots/external-shocks-2026-10-16
+          --quarterly-dir docs/identification
+          --output-dir results/monthly-identification
+          --report results/monthly-identification/MONTHLY_IDENTIFICATION_RESULTS.md
+      - name: Committed monthly identification tables reproduce on Linux
+        working-directory: eu-okun-law
+        run: poetry run pytest tests/test_monthly_identification.py -q
       - name: Archive source data and regression output
         uses: actions/upload-artifact@v4
         with:

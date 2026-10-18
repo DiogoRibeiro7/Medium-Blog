@@ -95,9 +95,12 @@ Pre-registered in [BAYES_PROTOCOL.md](BAYES_PROTOCOL.md); results in
       identified common shocks (ECB monetary policy, OPEC oil supply news); the
       shock-conditional Okun coefficients are uninformative
       ([docs/IDENTIFICATION_RESULTS.md](docs/IDENTIFICATION_RESULTS.md)).
-- [ ] Monthly outcomes (unemployment, industrial production) for more power, under a new
-      registered protocol; a defended shift-share foreign-demand instrument for
-      country-specific GDP shocks.
+- [x] Monthly outcomes (unemployment, industrial production) for more power, under a new
+      registered protocol ([MONTHLY_IDENTIFICATION_PROTOCOL.md](MONTHLY_IDENTIFICATION_PROTOCOL.md);
+      [docs/MONTHLY_IDENTIFICATION_RESULTS.md](docs/MONTHLY_IDENTIFICATION_RESULTS.md)).
+      Direct monthly survey estimates exist for only 8 countries. The first stages are no
+      stronger than the quarterly ones, and every primary ratio set is unbounded.
+- [ ] A defended shift-share foreign-demand instrument for country-specific GDP shocks.
 - [ ] Regime sensitivity, structural breaks and mechanisms.
 - [ ] Detailed alternative hypotheses for NL and LU.
 
