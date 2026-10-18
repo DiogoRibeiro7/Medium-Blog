@@ -266,3 +266,18 @@ Rosenbaum, P. R. and Rubin, D. B. (1983). The Central Role of the Propensity Sco
 Van der Laan, M. J. and Rose, S. (2011). *Targeted Learning: Causal Inference for Observational and Experimental Data*. Springer. https://doi.org/10.1007/978-1-4419-9782-1
 
 Wager, S. and Athey, S. (2018). Estimation and Inference of Heterogeneous Treatment Effects using Random Forests. *Journal of the American Statistical Association*, 113(523), 1228–1242. https://doi.org/10.1080/01621459.2017.1319839
+
+## Audit addendum: independent nuisance-basis validation (October 2026)
+
+The original machine-learning comparison above uses 20 Monte Carlo replicates per design and is retained as the historical benchmark. An additional experiment, `validate_nuisance_basis.py`, uses 1,000 independent datasets per design at n=800. It compares three-fold cross-fitted linear residualization, cross-fitted regression with the correct nonlinear feature basis, and an oracle using the known conditional means. The new experiment does **not** rerun gradient boosting, so it must not be presented as stronger Monte Carlo evidence for boosting's relative performance.
+
+| Design | Nuisance specification | Mean effect | RMSE |
+| --- | --- | ---: | ---: |
+| Linear | Linear basis | 1.0017 | 0.0349 |
+| Linear | Correct expanded basis | 1.0018 | 0.0349 |
+| Linear | Oracle conditional means | 1.0017 | 0.0346 |
+| Nonlinear | Linear basis | 1.9509 | 0.9521 |
+| Nonlinear | Correct expanded basis | 1.0001 | 0.0369 |
+| Nonlinear | Oracle conditional means | 1.0001 | 0.0359 |
+
+The true effect is 1 throughout. The new results establish that the partialling-out score can recover the effect with appropriately represented nuisance functions in this nonlinear data-generating model; the large error in the original boosted DML result reflects this particular learner and tuning, not an impossibility of nonlinear DML. The correct expanded basis and oracle are deliberately privileged with knowledge of the generating mechanism. Comparisons of boosting configurations, interval coverage, and data-driven nuisance selection still require separate validation.
