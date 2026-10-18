@@ -1,0 +1,39 @@
+{
+ "eurostat_monthly_manifest_sha256": "ec2e65b6cbe8831fb99fe791702d37913c142c6e6e2cea0704faab8cc70f2e5c",
+ "eurostat_monthly_processed_sha256": "7884d2f2a7a89df2cbefa159d074e8b91729b64e277d517b068291e09e462dbd",
+ "eurostat_monthly_raw": {
+  "ip": {
+   "dataset": "sts_inpr_m",
+   "sha256": "4be88b1a6316a909f61dc439965a0c53b10ee85a236724711b2a5aaf5d28f814",
+   "updated": "2026-10-15T11:00:00+0200",
+   "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/sts_inpr_m?lang=EN&freq=M&indic_bt=PRD&nace_r2=B-D&s_adj=SCA&unit=I21&sinceTimePeriod=2000-01"
+  },
+  "unemployment": {
+   "dataset": "une_rt_m",
+   "sha256": "127942bd921a8d1365a31f7872592f7a52f09eb0ed5a479047cefd18f382054f",
+   "updated": "2026-10-16T23:00:00+0200",
+   "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/une_rt_m?lang=EN&freq=M&s_adj=SA&age=TOTAL&sex=T&unit=PC_ACT&sinceTimePeriod=2000-01"
+  }
+ },
+ "unemployment_method": {
+  "source": "https://ec.europa.eu/eurostat/cache/metadata/en/une_rt_m_esms.htm",
+  "read": "2026-10-18"
+ },
+ "shock_files": {
+  "shocks_ecb_mpd_me_m.csv": {
+   "sha256": "89c5b2ec39509057b3c71f44218424fc8d15d4041b16f31c96613f8fe0965534",
+   "commit": "f7ffc821b0ade71dd38539e4044e25368dfb4dc1",
+   "licence": "CC BY 4.0"
+  },
+  "oilSupplyNewsShocks_2025M12.xlsx": {
+   "sha256": "8aa80042f84071ea310b3c2f604b177aed57ee7575e6a18aed5b8ad52ec353de",
+   "commit": "3496b6e848ba760d4be25289fc68c1e989998790",
+   "licence": "CC BY 4.0"
+  }
+ },
+ "quarterly_okun_sets_sha256": "28580d820e8d6dd4fff927c51aa0d01e04c5c8400307cecc6d17b82581a8f8bc",
+ "sample_months": [
+  "2000-01",
+  "2026-08"
+ ]
+}

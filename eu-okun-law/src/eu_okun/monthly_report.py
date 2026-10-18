@@ -110,6 +110,9 @@ def _quarterly_rows(directory: Path | None) -> dict[str, dict[str, str]]:
         for row in csv.DictReader(stream):
             if row["variant"] in SHOCKS and row["outcome"] in ("gdp", "unemployment"):
                 out[f"{row['variant']}:{row['outcome']}:{row['h']}"] = row
+    with (directory / "predictability.csv").open(encoding="utf-8") as stream:
+        for row in csv.DictReader(stream):
+            out[f"{row['shock']}:predictability"] = row
     return out
 
 
@@ -435,10 +438,12 @@ def render(review: MonthlyReview, assets: str, command: str) -> str:
                      "Unemployment h=12 [90%]", "Unemployment h=24 [90%]",
                      "Ratio h=12 AR set (first-stage t)", "Ratio h=24 AR set (first-stage t)"],
                     rows, "llrrrrll")
-    bounded = [name for name, res in review.robustness.items()
-               if any(o.informative for o in res.ratios)]
-    lines += [("Variants with a bounded ratio set at h = 12 or 24: " + ", ".join(bounded) + "."
-               if bounded else "No robustness variant gives a bounded ratio set."), ""]
+    bounded = [(name, o) for name, res in review.robustness.items() for o in res.ratios
+               if o.informative]
+    lines += [("Bounded ratio sets among the variants: " + "; ".join(
+        f"{name} at h = {o.h}, {o.text()} ({'contains' if o.lower <= 0 <= o.upper else 'excludes'}"
+        " zero)" for name, o in bounded) + "." if bounded
+        else "No robustness variant gives a bounded ratio set."), ""]
 
     # 6. Countries
     lines += ["## 6. Countries (descriptive)", "",
@@ -476,6 +481,14 @@ def render(review: MonthlyReview, assets: str, command: str) -> str:
         lines.append("- No primary ratio set is bounded: with monthly outcomes too, the data do "
                      "not determine how much unemployment moves per unit of industrial "
                      "production moved by either shock.")
+    monthly_t = max(abs(o.first_stage_t) for res in review.primary.values() for o in res.ratios)
+    quarterly_t = [abs(float(row["first_stage_t"])) for name, row in review.quarterly.items()
+                   if ":okun:" in name]
+    lines.append(f"- Relevance: the largest primary first-stage |t| is {monthly_t:.2f} with "
+                 "monthly industrial production"
+                 + (f", against {max(quarterly_t):.2f} with quarterly GDP" if quarterly_t else "")
+                 + f"; the weak-instrument threshold is {WEAK_T}. Keeping the shocks at their "
+                 "native frequency does not make them strong instruments for these outcomes.")
     lines += [
         "- Responses are causal only under A1-A5 and A7, and only where bands exclude zero; "
         "labels above record where a diagnostic counts against an assumption.",
@@ -552,6 +565,15 @@ def _quarterly_section(review: MonthlyReview) -> list[str]:
     lines += _table(["Shock", "Horizon (quarters / months)",
                      "Unemployment, quarterly [90%]", "Unemployment, monthly [90%]",
                      "First-stage t (GDP / IP)", "AR set (Okun GDP / kappa_IP)"], rows, "llrrrl")
+    statements = []
+    for key in review.primary:
+        quarterly = review.quarterly.get(f"{key}:predictability")
+        if quarterly:
+            statements.append(f"{key} p = {_p(review.predictability[key].p_value)} monthly "
+                              f"against {_p(float(quarterly['p_value']))} for the quarterly sum")
+    if statements:
+        lines += ["Predictability (A3) at native frequency and after summing to quarters: "
+                  + "; ".join(statements) + ".", ""]
     return lines
 
 
