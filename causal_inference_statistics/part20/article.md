@@ -333,3 +333,11 @@ Rosenbaum, P. R. and Rubin, D. B. (1983). The Central Role of the Propensity Sco
 Wager, S. and Athey, S. (2018). Estimation and Inference of Heterogeneous Treatment Effects Using Random Forests. *Journal of the American Statistical Association*, 113(523), 1228–1242. https://doi.org/10.1080/01621459.2017.1319839
 
 Zhao, Y., Zeng, D., Rush, A. J. and Kosorok, M. R. (2012). Estimating Individualized Treatment Rules Using Outcome Weighted Learning. *Journal of the American Statistical Association*, 107(499), 1106–1118. https://doi.org/10.1080/01621459.2012.695674
+
+## Scientific audit note: stress-testing the allocation rule
+
+The original experiment deliberately uses a monotonic linear treatment benefit and randomized training assignments. That structure lets a correctly signed linear effect model rank individuals exactly as an oracle, even when its predicted benefit levels differ. The near-zero policy regret therefore establishes behaviour for this favourable design, not general optimality of estimated benefit targeting.
+
+A separate reproducibility script, `validate_policy.py`, extends the experiment to a nonlinear treatment benefit, `0.5 + 1.5 X - 0.8(X² - 1)`, comparing linear and quadratic CATE rankings with risk targeting, random assignment and the oracle under a 20% capacity constraint. It includes an otherwise similar target-population shift and a smaller, noisier randomized training sample. The polynomial baseline-outcome features are held fixed while the treatment-effect specification varies, so the comparison isolates effect-model misspecification.
+
+The stress-test has been committed as a planned validation, but its numerical results have **not yet been reproduced in the execution environment** and are deliberately not reported here. Do not interpret the existing near-oracle outcome as evidence about these harder regimes until `validation_results.csv` has been generated, checked, and incorporated. No original findings or tables have been replaced.
