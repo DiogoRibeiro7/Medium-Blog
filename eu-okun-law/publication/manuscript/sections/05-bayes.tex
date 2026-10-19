@@ -103,6 +103,10 @@ not.
     \val{by_lag1_p}), so the primary model understates persistence;
   \item central 90\% one-step predictive intervals cover \val{by_cov90} of observations.
 \end{itemize}
+The persistence is not concentrated in the countries whose monthly rates are smoothed,
+and their quarterly rates do not inherit that smoothing (section~\ref{sec:discussion}).
+Without those six countries, the observed mean autocorrelation rises from
+\val{sm_misfit_all} to \val{sm_misfit_without}.
 
 \paragraph{Amendments.} A registered amendment added an AR(1) common factor and lagged
 unemployment changes. Their combination removes the persistence misfit (posterior

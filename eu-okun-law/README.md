@@ -745,6 +745,30 @@ explanations fail for Luxembourg:
 Not tested: Ireland's modified domestic demand (Irish CSO), annual accounts, error shared
 by output and hours, sectoral composition beyond finance.
 
+## Does the quarterly unemployment rate inherit monthly smoothing?
+
+[SMOOTHING_PROTOCOL.md](SMOOTHING_PROTOCOL.md) was committed and pushed before any
+comparison. In several countries the monthly rate is a trend (DE, NL), a centred moving
+average (EE, PT) or benchmarked to moving annual averages (HR, LU). If the quarterly rate
+were their average, that smoothing could produce the Bayesian persistence misfit and the
+Dutch delayed response. No new data are needed.
+
+```bash
+poetry run eu-okun smoothing --data-dir snapshots/eurostat-2026-10-15 --monthly-dir snapshots/eurostat-monthly-2026-10-18 --review-dir docs/review --bayes-dir docs/bayes --output-dir docs/smoothing --report docs/SMOOTHING.md
+```
+
+Results are in [docs/SMOOTHING.md](docs/SMOOTHING.md):
+
+- **No inheritance.** None of the six smoothed countries' quarterly rates is the average
+  of its monthly rate (correlation of changes: NL 0.91, DE 0.80, HR 0.60, LU 0.13).
+- **Persistence (not determined).** Smoothed countries are, if anything, less persistent
+  (+0.15 against +0.26 for direct estimates). Without them the misfit statistic rises from
+  +0.27 to +0.30.
+- **Timing (not determined).** Lag shares are about equal (+0.65 against +0.62).
+- **Luxembourg (descriptive, not registered).** Its quarterly unemployment changes are
+  strongly negatively autocorrelated (-0.51), the signature of survey sampling noise,
+  which widens the intervals of its Okun sum but does not bias it towards zero.
+
 ## Publication: manuscript, Medium article and reproduction
 
 [publication/](publication/README.md) holds the final outputs:

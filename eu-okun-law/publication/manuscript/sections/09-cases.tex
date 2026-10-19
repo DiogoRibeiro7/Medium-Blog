@@ -182,6 +182,16 @@ everyone else's, however, so the full signature is not established there either.
 Ireland's modified domestic demand, published by its statistical office rather than
 Eurostat, and sectoral composition beyond finance were not tested.
 
+\paragraph{The unemployment side.} Luxembourg's quarterly unemployment rate is not the
+average of its monthly rate, which is benchmarked to moving annual averages: the
+correlation of their quarterly changes is only \val{sm_lu_corr}. So the quarterly rate
+does not inherit that smoothing. Its quarterly changes are instead strongly negatively
+autocorrelated (\val{sm_lu_auto}), the signature of transitory noise in the quarterly
+level, such as survey sampling error in a small country. This was observed after the
+registered smoothing check, not tested. Noise in the unemployment rate widens the
+intervals of the Okun sum and helps explain its sign instability. It does not bias the
+sum towards zero, so it does not explain why labour input barely moves.
+
 \subsection{Do the differences remain under other measures?}
 
 \paragraph{Test.} If a difference between two countries reflects how much of their
