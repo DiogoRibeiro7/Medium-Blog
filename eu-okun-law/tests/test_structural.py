@@ -221,6 +221,14 @@ def test_membership_pandemic_rule_and_lagged_controls() -> None:
     assert du_l1 == pytest.approx(arrays.u[i, t - 1] - arrays.u[i, t - 2])
     assert design.x[0, 0] == pytest.approx(shock[arrays.quarters[t]])
     assert design.y["gdp"][0] == pytest.approx(arrays.g[i, t: t + 3].sum())
+    # Post-hoc margin: the window also covers t-5, the level behind the lag-4 change.
+    wide = lp_design(arrays, shock, 2, SHOCKS["MP"], Settings(pandemic_margin=1))
+    kept = set(zip(design.country.tolist(), design.time.tolist(), strict=True))
+    kept_wide = set(zip(wide.country.tolist(), wide.time.tolist(), strict=True))
+    dropped = kept - kept_wide
+    assert kept_wide < kept and dropped
+    for _, t in dropped:
+        assert arrays.quarters[t - 5] == "2021-Q4"
 
 
 def test_predictability_and_country_responses() -> None:

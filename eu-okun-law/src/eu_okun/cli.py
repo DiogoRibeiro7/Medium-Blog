@@ -281,6 +281,19 @@ def main(argv: Sequence[str] | None = None) -> int:
     het.add_argument("--output-dir", type=Path, default=Path("results/heterogeneity"))
     het.add_argument("--report", type=Path, default=None)
     het.add_argument("--no-figures", action="store_true")
+    window = commands.add_parser(
+        "window-sensitivity", help="Post-hoc: identification results with the pandemic "
+                                   "window widened by one period (not pre-registered)")
+    window.add_argument("--data-dir", type=Path, default=Path("snapshots/eurostat-2026-10-15"))
+    window.add_argument("--shocks-dir", type=Path,
+                        default=Path("snapshots/external-shocks-2026-10-16"))
+    window.add_argument("--monthly-dir", type=Path,
+                        default=Path("snapshots/eurostat-monthly-2026-10-18"))
+    window.add_argument("--deflator-dir", type=Path,
+                        default=Path("snapshots/eurostat-deflator-2026-10-18"))
+    window.add_argument("--svar-dir", type=Path, default=Path("docs/sign-restrictions"))
+    window.add_argument("--output-dir", type=Path, default=Path("results/window-sensitivity"))
+    window.add_argument("--report", type=Path, default=None)
     pub = commands.add_parser(
         "publication", help="Audit the outputs and build the manuscript's values, tables, "
                             "figures, the Medium article and the manifests")
@@ -682,6 +695,17 @@ def main(argv: Sequence[str] | None = None) -> int:
         decided = [t for t in comparison.family if t.verdict != "not distinguishable"]
         print(f"Predictive report written to {args.report or args.output_dir}; "
               f"{len(decided)} of {len(comparison.family)} pre-registered comparisons decided")
+        return 0
+    if args.command == "window-sensitivity":
+        from eu_okun.window_sensitivity import run as run_window_sensitivity
+
+        try:
+            rows = run_window_sensitivity(args.data_dir, args.shocks_dir, args.monthly_dir,
+                                          args.deflator_dir, args.svar_dir, args.output_dir,
+                                          args.report)
+        except (EurostatDataError, FileNotFoundError, ValueError, OSError, KeyError) as exc:
+            parser.exit(2, f"Window sensitivity failed: {exc}" + chr(10))
+        print(f"{len(rows)} rows written to {args.output_dir / 'window_sensitivity.csv'}")
         return 0
     if args.command == "publication":
         from eu_okun import publication

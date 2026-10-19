@@ -255,3 +255,9 @@ x[i,t+h] - x[i,t-1] = a_i^h + b^h s[t]
     The country table labels each country with its group.
   - *Snapshot.* The snapshot was downloaded on 2026-10-18 and ends in 2026-08. Its audit
     passes. Its one missing cell is Estonia's unemployment rate in 2000-01.
+- **After the results, 2026-10-19: a post-hoc check, not registered.** An external review
+  noted that the change at the longest lag is measured from the level one period before
+  the start of the pandemic window, so that level can fall in 2021 while the observation
+  is kept. The registered rule is unchanged and its results remain primary. A labelled
+  sensitivity widens the window by one period (`eu-okun window-sensitivity`, results in
+  [docs/WINDOW_SENSITIVITY.md](docs/WINDOW_SENSITIVITY.md)). No conclusion changes.
