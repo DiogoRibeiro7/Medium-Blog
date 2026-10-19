@@ -1835,6 +1835,96 @@
   "raw": 0.031,
   "source": "docs/BAYES_REGIMES.md"
  },
+ "sm_lu_auto": {
+  "tex": "$-0.51$",
+  "md": "−0.51",
+  "raw": -0.506193188302099,
+  "source": "docs/smoothing/summary.json"
+ },
+ "sm_lu_corr": {
+  "tex": "$0.13$",
+  "md": "0.13",
+  "raw": 0.12854550899809708,
+  "source": "docs/smoothing/summary.json"
+ },
+ "sm_misfit_all": {
+  "tex": "$+0.27$",
+  "md": "+0.27",
+  "raw": 0.26919010452151454,
+  "source": "docs/smoothing/summary.json"
+ },
+ "sm_misfit_direct": {
+  "tex": "$+0.26$",
+  "md": "+0.26",
+  "raw": 0.26395299013370177,
+  "source": "docs/smoothing/summary.json"
+ },
+ "sm_misfit_smoothed": {
+  "tex": "$+0.15$",
+  "md": "+0.15",
+  "raw": 0.14878864425417507,
+  "source": "docs/smoothing/summary.json"
+ },
+ "sm_misfit_without": {
+  "tex": "$+0.30$",
+  "md": "+0.30",
+  "raw": 0.30359052174075435,
+  "source": "docs/smoothing/summary.json"
+ },
+ "sm_n_average": {
+  "tex": "10",
+  "md": "10",
+  "raw": 10,
+  "source": "docs/smoothing/summary.json"
+ },
+ "sm_nl_corr": {
+  "tex": "$0.91$",
+  "md": "0.91",
+  "raw": 0.9138261577245481,
+  "source": "docs/smoothing/inheritance.csv"
+ },
+ "sm_p1_direct": {
+  "tex": "$+0.26$",
+  "md": "+0.26",
+  "raw": 0.26395299013370177,
+  "source": "docs/smoothing/tests.csv"
+ },
+ "sm_p1_smoothed": {
+  "tex": "$+0.15$",
+  "md": "+0.15",
+  "raw": 0.14878864425417507,
+  "source": "docs/smoothing/tests.csv"
+ },
+ "sm_p1_verdict": {
+  "tex": "not determined",
+  "md": "not determined",
+  "raw": "not determined",
+  "source": "docs/smoothing/summary.json"
+ },
+ "sm_p2_direct": {
+  "tex": "$+0.62$",
+  "md": "+0.62",
+  "raw": 0.6206892834706796,
+  "source": "docs/smoothing/tests.csv"
+ },
+ "sm_p2_smoothed": {
+  "tex": "$+0.65$",
+  "md": "+0.65",
+  "raw": 0.6508650688719998,
+  "source": "docs/smoothing/tests.csv"
+ },
+ "sm_p2_verdict": {
+  "tex": "not determined",
+  "md": "not determined",
+  "raw": "not determined",
+  "source": "docs/smoothing/summary.json"
+ },
+ "sm_smoothed_average": {
+  "tex": "0",
+  "md": "0",
+  "raw": 0,
+  "source": "docs/smoothing/summary.json"
+ },
  "snapshot_date": {
   "tex": "2026-10-15",
   "md": "2026-10-15",

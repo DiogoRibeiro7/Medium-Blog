@@ -95,11 +95,17 @@ registered checks:
   \item The Labour Force Survey's 2021 redesign introduces flagged and unflagged
     discontinuities. The Bayesian models mask the flagged observations, but the Dutch
     phase-in is not flagged.
-  \item Monthly unemployment is a direct estimate in only \val{mo_n_direct} countries. The
-    monthly protocol classifies the German and Dutch series as trends and the Estonian and
-    Portuguese ones as three-month moving averages. If the quarterly series inherit such
-    smoothing, it could produce both the persistence misfit and the Dutch ``delayed''
-    response. We have not checked this against the quarterly survey microdata.
+  \item Monthly unemployment is a direct estimate in only \val{mo_n_direct} countries;
+    elsewhere it is a trend, a moving average or benchmarked to annual averages. A
+    registered check (\texttt{SMOOTHING\_PROTOCOL.md}) finds that the quarterly rate does
+    not inherit this smoothing. None of the six countries with smoothed monthly series has
+    a quarterly rate that matches the average of its monthly rate; the Netherlands comes
+    closest, with a correlation of quarterly changes of \val{sm_nl_corr}. The persistence
+    misfit is not concentrated in them either: their mean lag-1 autocorrelation is
+    \val{sm_p1_smoothed}, against \val{sm_p1_direct} in direct-estimate countries
+    (\val{sm_p1_verdict}). Nor is the Dutch delayed response explained by the trend method
+    (timing test \val{sm_p2_verdict}). Smoothing therefore remains a documented caveat
+    without evidence that it drives these results.
   \item Hours per worker and employment in persons are unavailable for seven countries,
     including Portugal.
   \item The measurement-noise test detects only noise that averages out over a year, and

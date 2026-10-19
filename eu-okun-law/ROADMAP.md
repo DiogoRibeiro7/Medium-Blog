@@ -182,8 +182,12 @@ Open:
       finance changes nothing. Ireland shows negatively autocorrelated quarterly growth.
 - [ ] Ireland's modified domestic demand (Irish CSO) and annual national accounts, not yet
       used.
-- [ ] Check whether `une_rt_q` inherits the trend or moving-average smoothing of the
-      German, Dutch, Estonian and Portuguese monthly series.
+- [x] Checked whether `une_rt_q` inherits monthly smoothing, registered in
+      [SMOOTHING_PROTOCOL.md](SMOOTHING_PROTOCOL.md); results in
+      [docs/SMOOTHING.md](docs/SMOOTHING.md). None of the six countries with smoothed
+      monthly series has a quarterly rate that is the average of its monthly rate; the
+      persistence misfit and the Dutch delay are not concentrated in them. Luxembourg's
+      quarterly changes are strongly negatively autocorrelated (survey noise).
 - [ ] Gap-form Okun's law against Ball, Leigh and Loungani (2017); asymmetry; hours-based
       Okun's law for every country; a common-correlated-effects mean-group panel; a
       labour-force-weighted EU aggregate.

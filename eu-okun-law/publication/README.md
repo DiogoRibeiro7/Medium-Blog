@@ -111,6 +111,12 @@ Small-sample inference for the post-2021 tests:
 poetry run eu-okun small-sample --data-dir snapshots/eurostat-2026-10-15 --output-dir docs/small-sample --report docs/SMALL_SAMPLE_INFERENCE.md --review-dir docs/review
 ```
 
+Monthly smoothing in the quarterly unemployment rate:
+
+```bash
+poetry run eu-okun smoothing --data-dir snapshots/eurostat-2026-10-15 --monthly-dir snapshots/eurostat-monthly-2026-10-18 --review-dir docs/review --bayes-dir docs/bayes --output-dir docs/smoothing --report docs/SMOOTHING.md
+```
+
 Measurement noise or finance, for Luxembourg:
 
 ```bash

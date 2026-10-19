@@ -542,6 +542,30 @@ def collect_values(root: Path) -> dict[str, Value]:
         add(text(f"cs_{key}_n", r["n"], "docs/heterogeneity/correlations.csv"))
     add(text("cs_n_corr", len(cor), "docs/heterogeneity/correlations.csv"))
 
+    # Monthly smoothing in the quarterly rate (SMOOTHING_PROTOCOL.md) ----------------
+    sm = json.loads((docs / "smoothing" / "summary.json").read_text(encoding="utf-8"))
+    src = "docs/smoothing/summary.json"
+    add(text("sm_n_average", len(sm["average_of_monthly"]), src))
+    add(text("sm_smoothed_average", sum(g in ("DE", "NL", "EE", "PT", "HR", "LU")
+                                        for g in sm["average_of_monthly"]), src))
+    add(num("sm_misfit_all", sm["misfit"]["observed_all"], 2, src, True))
+    add(num("sm_misfit_without", sm["misfit"]["observed_without_smoothed"], 2, src, True))
+    add(num("sm_misfit_smoothed", sm["misfit"]["observed_smoothed"], 2, src, True))
+    add(num("sm_misfit_direct", sm["misfit"]["observed_direct"], 2, src, True))
+    add(text("sm_p1_verdict", sm["verdicts"]["P1"], src))
+    add(text("sm_p2_verdict", sm["verdicts"]["P2"], src))
+    add(num("sm_lu_auto", sm["luxembourg"]["autocorrelation"], 2, src, True))
+    add(num("sm_lu_corr", sm["luxembourg"]["change_corr"], 2, src))
+    inh = {r["geo"]: r for r in _csv(docs / "smoothing" / "inheritance.csv")}
+    add(num("sm_nl_corr", float(inh["NL"]["change_corr"]), 2, "docs/smoothing/inheritance.csv"))
+    tests = {r["key"]: r for r in _csv(docs / "smoothing" / "tests.csv")
+             if r["setting"] == "primary"}
+    for key in ("P1", "P2"):
+        add(num(f"sm_{key.lower()}_smoothed", float(tests[key]["mean_smoothed"]), 2,
+                "docs/smoothing/tests.csv", True))
+        add(num(f"sm_{key.lower()}_direct", float(tests[key]["mean_comparison"]), 2,
+                "docs/smoothing/tests.csv", True))
+
     # Measurement noise or finance (GDP_MEASUREMENT_PROTOCOL.md) ---------------------
     src = "docs/gdp-measurement/predictions.csv"
     gm = [r for r in _csv(docs / "gdp-measurement" / "predictions.csv")

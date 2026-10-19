@@ -96,6 +96,8 @@ The second explanation is the financial sector, which is 28% of Luxembourg's val
 
 So three explanations, commuters, noise and finance, fail their tests, and Luxembourg's weak link remains unexplained. The one supported prediction was about Ireland, whose quarterly growth shows the negative autocorrelation that noise would leave (−0.31). Ireland's statistical office publishes an alternative to GDP because multinational accounting distorts it; that measure was not tested here.
 
+What about the unemployment side? Luxembourg's monthly unemployment rate is benchmarked to moving annual averages, which would smooth any quarterly series built from it. A further registered check found that the quarterly rate is not built that way: its changes correlate only 0.13 with the averaged monthly ones. Instead, Luxembourg's quarterly unemployment changes swing back and forth (an autocorrelation of −0.51), the mark of sampling noise in a small country's survey. That noise widens the uncertainty around Luxembourg's Okun sum, which helps explain why its sign is unstable, but it cannot explain why employment and hours barely move. The same check found that smoothed monthly series elsewhere do not drive the study's other results either.
+
 **Institutions.** The employment-protection explanation predicted that stricter rules would weaken the unemployment response. Across countries, 2 of 18 registered correlations point the other way at the registered level (−0.60 and −0.67), and the rest are not determined. These correlations sit outside the 14 predictions, use at most twenty countries and indicators from a single year, and say nothing about what employment protection does.
 
 ## The earlier claims, judged
