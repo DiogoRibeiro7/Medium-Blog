@@ -155,7 +155,8 @@ def collect_values(root: Path) -> dict[str, Value]:
                       ("eurostat-monthly-2026-10-18/snapshot_manifest.json", "hash_monthly"),
                       ("shift-share-2026-10-18/manifest.json", "hash_shiftshare"),
                       ("eurostat-deflator-2026-10-18/manifest.json", "hash_deflator"),
-                      ("heterogeneity-2026-10-18/manifest.json", "hash_heterogeneity")):
+                      ("heterogeneity-2026-10-18/manifest.json", "hash_heterogeneity"),
+                      ("gdp-measurement-2026-10-19/manifest.json", "hash_gdpm")):
         digest = hashlib.sha256((root / "snapshots" / name).read_bytes()).hexdigest()
         add(Value(key, digest, f"\\texttt{{{digest[:16]}}}", f"`{digest[:16]}`",
                   f"snapshots/{name}"))
@@ -540,6 +541,35 @@ def collect_values(root: Path) -> dict[str, Value]:
         add(num(f"cs_{key}_holm", float(r["holm"]), 3, "docs/heterogeneity/correlations.csv"))
         add(text(f"cs_{key}_n", r["n"], "docs/heterogeneity/correlations.csv"))
     add(text("cs_n_corr", len(cor), "docs/heterogeneity/correlations.csv"))
+
+    # Measurement noise or finance (GDP_MEASUREMENT_PROTOCOL.md) ---------------------
+    src = "docs/gdp-measurement/predictions.csv"
+    gm = [r for r in _csv(docs / "gdp-measurement" / "predictions.csv")
+          if r["setting"] == "primary"]
+    add(text("gm_total", len(gm), src))
+    add(text("gm_supported", sum(r["verdict"] == "supported" for r in gm), src))
+    add(text("gm_contradicted", sum(r["verdict"] == "contradicted" for r in gm), src))
+    for pkey, key in (("P1.1 LU", "p11_lu"), ("P1.2 LU", "p12_lu"), ("P1.1 IE", "p11_ie"),
+                      ("P1.2 IE", "p12_ie"), ("P2.1 LU", "p21_lu"), ("P2.2 LU", "p22_lu")):
+        r = _one(gm, key=pkey)
+        add(num(f"gm_{key}_focus", float(r["focus_value"]), 2, src, True))
+        add(num(f"gm_{key}_median", float(r["group_median"]), 2, src, True))
+        add(num(f"gm_{key}", float(r["estimate"]), 2, src, True))
+        add(interval(f"gm_{key}_ci", float(r["low"]), float(r["high"]), 2, src))
+        holm_p = float(r["holm"])
+        add(text(f"gm_{key}_holm", "below 0.001", src) if holm_p < 0.001
+            else num(f"gm_{key}_holm", holm_p, 3, src))
+        add(text(f"gm_{key}_verdict", r["verdict"], src))
+    st = {r["geo"]: r for r in _csv(docs / "gdp-measurement" / "statistics.csv")}
+    src = "docs/gdp-measurement/statistics.csv"
+    for stat in ("c_q", "c_y", "prod", "prod_n"):
+        add(num(f"gm_lu_{stat}", float(st["LU"][stat]), 2, src, True))
+    de = {r["geo"]: r for r in _csv(docs / "gdp-measurement" / "descriptive.csv")}
+    src = "docs/gdp-measurement/descriptive.csv"
+    add(pct("gm_lu_fin_va", float(de["LU"]["finance_share_va"]), 0, src))
+    add(pct("gm_lu_fin_hours", float(de["LU"]["finance_share_hours"]), 0, src))
+    others = sorted(float(r["finance_share_va"]) for g, r in de.items() if g != "LU")
+    add(pct("gm_fin_va_next", others[-1], 0, src))
     add(text("cs_n_corr_contra", sum(r["verdict"] == "contradicted" for r in cor),
              "docs/heterogeneity/correlations.csv"))
 
@@ -578,6 +608,7 @@ class Check:
 def _snapshot_checks(root: Path) -> list[Check]:
     from eu_okun.audit import audit_snapshot
     from eu_okun.external_shocks import audit_shock_snapshot
+    from eu_okun.gdp_measurement_data import audit_gdp_measurement
     from eu_okun.heterogeneity_data import audit_heterogeneity
     from eu_okun.monthly_data import audit_monthly_snapshot
     from eu_okun.shift_share import audit_shift_share
@@ -592,6 +623,8 @@ def _snapshot_checks(root: Path) -> list[Check]:
         ("OECD shift-share 2026-10-18", audit_shift_share, snap / "shift-share-2026-10-18"),
         ("Eurostat deflator 2026-10-18", audit_deflator, snap / "eurostat-deflator-2026-10-18"),
         ("Case-study inputs 2026-10-18", audit_heterogeneity, snap / "heterogeneity-2026-10-18"),
+        ("Value added and hours by industry 2026-10-19", audit_gdp_measurement,
+         snap / "gdp-measurement-2026-10-19"),
     ]
     out = []
     for name, fn, path in audits:

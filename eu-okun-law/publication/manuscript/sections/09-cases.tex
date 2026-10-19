@@ -146,20 +146,41 @@ both measures barely move with GDP:
 Instead, measured output per hour moves almost one for one with measured GDP
 (\val{cs_LU_prod} \val{cs_LU_prod_ci}).
 
-\paragraph{A rival explanation: measurement error in GDP.} This pattern is not a finding
-about how Luxembourg's economy adjusts. Output per hour is computed as the residual
-$g-h$, where $h$ is the growth of hours. If quarterly GDP growth is measured with noise
-unrelated to labour input, regressing $g-h$ on measured $g$ pushes the
-output-per-hour elasticity towards one, and it pushes the labour-input and Okun
-elasticities towards zero. That is exactly Luxembourg's pattern: an output-per-hour
-elasticity near one, labour-input elasticities near zero and a sign-unstable Okun sum.
-Ireland, where the statistical office publishes modified domestic demand because
-multinational activity distorts GDP, and Malta also have among the weakest associations
-(table~\ref{tab:countries}). Rejecting the commuter explanation
-does not establish any other. The rival explanation was not tested. Gross value added
-excluding finance, annual national accounts, or modified domestic demand for Ireland would
-test it. Sectoral composition was listed in advance as a hypothesis that could not be
-tested reliably.
+\paragraph{Two rival explanations, tested.} Output per hour is computed as the residual
+$g-h$, where $h$ is the growth of hours. A weak link between output and labour input can
+therefore come from the data as well as from the economy. A further registered study
+(\texttt{GDP\_MEASUREMENT\_PROTOCOL.md}) tested two explanations with value added and
+hours by industry \citepalias{eurostat_namq_10_a10}. Each test compares Luxembourg with
+the median of the countries outside Luxembourg, Ireland and Malta.
+\begin{itemize}
+  \item \emph{Transitory noise in quarterly output.} If quarterly growth carried noise
+    unrelated to labour input, measured growth would be negatively autocorrelated, and the
+    correlation of hours with output would rise more than elsewhere once both are measured
+    year on year, because aggregation averages the noise out. Luxembourg's growth
+    autocorrelation is lower than the comparison group's (\val{gm_p11_lu_focus} against
+    \val{gm_p11_lu_median}; Holm $p=$ \val{gm_p11_lu_holm}, \val{gm_p11_lu_verdict}). But
+    its hours-output correlation does not rise at all: it is \val{gm_lu_c_q} quarter on
+    quarter and \val{gm_lu_c_y} year on year, while it rises by a median
+    \val{gm_p12_lu_median} elsewhere. That points away from noise, although it is not
+    decided after adjustment (difference \val{gm_p12_lu} \val{gm_p12_lu_ci}, Holm
+    $p=$ \val{gm_p12_lu_holm}).
+  \item \emph{The financial sector.} Finance is \val{gm_lu_fin_va} of Luxembourg's value
+    added and \val{gm_lu_fin_hours} of its hours; the next highest share of value added is
+    about \val{gm_fin_va_next}. Yet removing finance from both output and hours barely
+    changes the link. The hours elasticity changes by \val{gm_p21_lu_focus} and the Okun
+    sum by \val{gm_p22_lu_focus} (verdicts: \val{gm_p21_lu_verdict} and
+    \val{gm_p22_lu_verdict}).
+    The output-per-hour elasticity is \val{gm_lu_prod} for all industries and
+    \val{gm_lu_prod_n} outside finance.
+\end{itemize}
+By the interpretation rules fixed in that protocol, both explanations fail their tests,
+and Luxembourg's weak output-labour link remains unexplained. Of
+\val{gm_total} predictions, \val{gm_supported} is supported: Ireland's quarterly growth
+is negatively autocorrelated (\val{gm_p11_ie_focus} against \val{gm_p11_ie_median}),
+the signature of noise in its quarterly output. Its year-on-year correlation rises like
+everyone else's, however, so the full signature is not established there either.
+Ireland's modified domestic demand, published by its statistical office rather than
+Eurostat, and sectoral composition beyond finance were not tested.
 
 \subsection{Do the differences remain under other measures?}
 
@@ -243,8 +264,9 @@ Luxembourg: weak association
   & Qualified \\
 \addlinespace
 Explanation: the commuter mismatch
-  & Domestic-minus-resident gap \val{cs_p11} \val{cs_p11_ci}. Output per hour moves with
-    measured GDP (\val{cs_LU_prod}), which GDP measurement error would also produce.
+  & Domestic-minus-resident gap \val{cs_p11} \val{cs_p11_ci}. The two rival explanations
+    tested afterwards, transitory noise in quarterly output and the financial sector, fail
+    their tests too.
   & Not supported \\
 \addlinespace
 Explanation: employment protection weakens the response
