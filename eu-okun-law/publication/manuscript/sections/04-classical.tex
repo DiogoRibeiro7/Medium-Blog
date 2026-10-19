@@ -8,11 +8,11 @@ control. The headline specification is $K=2$ without participation.
 
 \paragraph{Inference.} Standard errors use the Newey--West covariance with a Bartlett
 kernel and four lags in calendar quarters \citep{newey1987hac}. The variance of
-$\hat\theta_i$ uses the full covariance matrix of the lag coefficients. Intervals use
-normal critical values. With about \val{cl_n_quarters} quarters per country this is an
-approximation: section~\ref{sec:smallsample} shows that the same reference over-rejects in
-a shorter sample, and neither a bootstrap nor fixed-$b$ critical values were applied to the
-headline sums.
+$\hat\theta_i$ uses the full covariance matrix of the lag coefficients. The published
+intervals use normal critical values, an approximation with \val{cl_n_quarters} quarters
+per country. A registered study (below) replaces that reference with null-imposed sieve and
+moving-block bootstraps of the same HAC-studentised statistic, which follow its
+small-sample behaviour, including the fixed-$b$ effect of the bandwidth.
 
 \paragraph{Samples.} The full period, 2009--2026; the same period without any observation
 whose window touches 2020--2021; 2009--2019; 2022 onwards; and a flag-screened sample. The
@@ -32,13 +32,33 @@ quantity. The robustness verdicts include them.
 
 \subsection{Results}
 
-\paragraph{The association.} With 2020--2021 excluded, the two-lag sum is negative with a
-95\% interval below zero in \val{cl_n_neg_excluded} of \val{n_countries} countries
-(table~\ref{tab:countries}). Each country is tested separately; with a Holm adjustment
-over the \val{n_countries} tests, \val{cl_n_neg_holm} remain. In \val{cl_n_robust}
-countries every core specification agrees in sign and excludes zero. These are
-associations conditional on contemporaneous and lagged GDP growth, and contemporaneous
-growth is not exogenous.
+\paragraph{The association.} With 2020--2021 excluded, the two-lag sum is negative in
+\val{hi_point_negative} of \val{n_countries} countries. With normal critical values, its
+95\% interval lies below zero in \val{cl_n_neg_excluded} (table~\ref{tab:countries}), and
+in \val{cl_n_neg_holm} after a Holm adjustment over the \val{n_countries} countries. In
+\val{cl_n_robust} countries every core specification agrees in sign and excludes zero.
+These are associations conditional on contemporaneous and lagged GDP growth, and
+contemporaneous growth is not exogenous.
+
+\paragraph{Small-sample inference.} The registered study reaches a more cautious
+conclusion:
+\begin{itemize}
+  \item the normal reference over-rejects: under each country's fitted null it rejects
+    \val{hi_size_normal} of the time at a nominal 5\%, and too often in
+    \val{hi_over_rejecting} of \val{n_countries} countries, while the sieve bootstrap
+    rejects \val{hi_size_boot};
+  \item under both bootstraps, \val{hi_negative} sums are negative at the 5\% level;
+    \val{hi_lost} no longer are;
+  \item after a Holm adjustment over the countries, \val{hi_negative_holm} remains under
+    both schemes, against \val{cl_n_neg_holm} with the normal reference.
+\end{itemize}
+The registered null-imposed bootstrap understates the evidence when a sum is large. A
+diagnostic added after the run shows why: imposing $\theta_i=0$ moves the omitted,
+persistent GDP effect into the residuals and raises their first-order autocorrelation
+(median increase \val{hi_rho_gap} before 2020). The bootstrap-t intervals, which use the
+unrestricted residuals, lie below zero in \val{hi_boot_below} countries. Taken together,
+the sign of the association is widespread across countries, but few individual country
+sums are established once the number of countries tested is taken into account.
 
 \paragraph{The pandemic.} Including 2020--2021 moves the sum towards zero in
 \val{cl_n_attenuated} countries (figure~\ref{fig:pandemic}). In \val{cl_n_full_outside}

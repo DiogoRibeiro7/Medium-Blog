@@ -688,6 +688,31 @@ brief, with associations only and 2020-2021 excluded:
 - **No identified causal effect.** The report lists the hypotheses that cannot be tested
   reliably.
 
+## Small-sample inference for the classical headline sums
+
+[HEADLINE_INFERENCE_PROTOCOL.md](HEADLINE_INFERENCE_PROTOCOL.md) was committed and pushed
+before any bootstrap or simulation. It keeps the published headline statistic (two-lag
+sum, pandemic-excluded common sample, calendar-aware Newey-West t) and replaces only its
+normal reference with null-imposed sieve and moving-block bootstraps (B = 9999), adds
+bootstrap-t intervals, and runs a size study.
+
+```bash
+poetry run eu-okun headline-inference --data-dir snapshots/eurostat-2026-10-15 --grid docs/review/grid.csv --output-dir docs/headline-inference --report docs/HEADLINE_INFERENCE.md
+```
+
+Results are in [docs/HEADLINE_INFERENCE.md](docs/HEADLINE_INFERENCE.md). In brief:
+
+- **The normal reference over-rejects.** Under each country's fitted null it rejects
+  22.0% of the time at a nominal 5% (23 of 27 countries above the binomial range); the
+  sieve bootstrap rejects 5.1%.
+- **Unadjusted.** 20 of 27 sums are negative under both bootstraps (normal: 22; LV and
+  RO no longer, LV is scheme-dependent).
+- **After Holm over the 27 countries.** 1 sum survives under both bootstraps (normal: 21).
+- **Caveat (diagnostic added after the run).** Imposing the null raises the residual
+  persistence when a sum is large (median AR(1) +0.17 before 2020), so the registered
+  p-values understate the evidence for large sums. The bootstrap-t intervals, from the
+  unrestricted residuals, lie below zero in 19 countries.
+
 ## Publication: manuscript, Medium article and reproduction
 
 [publication/](publication/README.md) holds the final outputs:

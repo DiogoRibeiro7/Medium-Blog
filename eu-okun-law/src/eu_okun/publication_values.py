@@ -210,6 +210,19 @@ def collect_values(root: Path) -> dict[str, Value]:
             "docs/small-sample/summary.json"))
     add(pct("ss_size_bootstrap", small["size_pooled"]["bootstrap"], 1,
             "docs/small-sample/summary.json"))
+    hi = json.loads((docs / "headline-inference" / "summary.json").read_text(encoding="utf-8"))
+    src = "docs/headline-inference/summary.json"
+    add(text("hi_negative", hi["bootstrap_negative"], src))
+    add(text("hi_negative_holm", hi["bootstrap_negative_holm"], src))
+    add(text("hi_lost", _names(hi["lost"]), src))
+    add(text("hi_point_negative", hi["point_negative"], src))
+    add(text("hi_boot_below", hi["boot_intervals_below_zero"], src))
+    add(pct("hi_size_normal", hi["size_pooled"]["normal"], 1, src))
+    add(pct("hi_size_boot", hi["size_pooled"]["bootstrap"], 1, src))
+    add(text("hi_over_rejecting", hi["normal_over_rejecting"], src))
+    add(num("hi_rho_gap", hi["rho_gap_pre_median"], 2, src, True))
+    for bw in ("2", "8"):
+        add(text(f"hi_bw{bw}_holm", hi["bandwidth_negative"][bw]["holm"], src))
 
     # Hierarchical Bayes --------------------------------------------------------------
     report = docs / "HIERARCHICAL_BAYES.md"

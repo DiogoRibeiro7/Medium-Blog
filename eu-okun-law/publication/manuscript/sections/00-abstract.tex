@@ -6,9 +6,12 @@ to 2026. The data are official Eurostat series frozen with cryptographic hashes.
 stage of the analysis was registered before its own estimation, sequentially, on the same
 data.
 
-\textbf{Association.} With 2020--2021 excluded, the two-lag Okun coefficient sum has a
-95\% interval below zero in \val{cl_n_neg_excluded} of \val{n_countries} countries
-(\val{cl_n_neg_holm} after a Holm adjustment across countries). Including the pandemic
+\textbf{Association.} With 2020--2021 excluded, the two-lag Okun coefficient sum is
+negative in \val{hi_point_negative} of \val{n_countries} countries. Under small-sample
+bootstraps that hold their size, it is significantly negative in \val{hi_negative}, but
+only \val{hi_negative_holm} survives a Holm adjustment across countries; normal critical
+values, which over-reject here, give \val{cl_n_neg_excluded} and \val{cl_n_neg_holm}. The
+sign is widespread; few individual country sums are established. Including the pandemic
 quarters pulls most sums towards zero. A hierarchical Bayesian model with Student-$t$
 errors, residual autocorrelation and a common European factor estimates the association
 beyond the common European cycle. Across accepted specifications, the unweighted mean of

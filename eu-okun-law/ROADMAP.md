@@ -168,7 +168,13 @@ Open:
 - [ ] Cite the motivating analysis, or state precisely where and when it appeared
       (needs the author).
 - [ ] Archive the protocols with an external timestamp (for example, a DOI deposit).
-- [ ] Bootstrap or fixed-b inference for the classical headline sums.
+- [x] Small-sample inference for the classical headline sums, registered in
+      [HEADLINE_INFERENCE_PROTOCOL.md](HEADLINE_INFERENCE_PROTOCOL.md); results in
+      [docs/HEADLINE_INFERENCE.md](docs/HEADLINE_INFERENCE.md). The normal reference
+      over-rejects (22.0% at a nominal 5%); under null-imposed sieve and block bootstraps
+      20 of 27 sums are negative, but only 1 survives a Holm adjustment over the countries,
+      against 21 with normal critical values. The registered bootstrap is conservative for
+      large sums (post-hoc diagnostic).
 - [ ] Test GDP measurement error for Luxembourg (and Ireland, Malta): value added
       excluding finance, annual accounts, modified domestic demand.
 - [ ] Check whether `une_rt_q` inherits the trend or moving-average smoothing of the

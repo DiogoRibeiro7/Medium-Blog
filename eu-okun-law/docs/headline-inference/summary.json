@@ -1,0 +1,59 @@
+{
+ "countries": 27,
+ "quarters": 57,
+ "sample": [
+  "2009-Q2",
+  "2026-Q2"
+ ],
+ "normal_negative": 22,
+ "normal_negative_holm": 21,
+ "bootstrap_negative": 20,
+ "bootstrap_negative_holm": 1,
+ "scheme_dependent": [
+  "LV"
+ ],
+ "sieve_negative": 20,
+ "block_negative": 21,
+ "lost": [
+  "LV",
+  "RO"
+ ],
+ "bandwidth_negative": {
+  "2": {
+   "unadjusted": 20,
+   "holm": 6
+  },
+  "8": {
+   "unadjusted": 19,
+   "holm": 3
+  }
+ },
+ "boot_intervals_below_zero": 19,
+ "size_pooled": {
+  "normal": 0.21962962962962962,
+  "bootstrap": 0.051111111111111114
+ },
+ "size_range_pooled": [
+  0.04425925925925926,
+  0.05592592592592593
+ ],
+ "size_range_country": [
+  0.02,
+  0.08
+ ],
+ "normal_over_rejecting": 23,
+ "rho_gap_pre_median": 0.17,
+ "point_negative": 25,
+ "check_largest_gap": 1.7486012637846216e-15,
+ "settings": {
+  "bandwidth": 4,
+  "B": 9999,
+  "B_size": 199,
+  "R_size": 200,
+  "seeds": [
+   20261022,
+   20261023,
+   20261024
+  ]
+ }
+}

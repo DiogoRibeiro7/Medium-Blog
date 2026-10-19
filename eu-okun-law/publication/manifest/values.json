@@ -1301,6 +1301,72 @@
   "raw": "8361c685c67770e25d31f9291ee3780caec20af0a18d9064ee908a59bbc7a9c9",
   "source": "snapshots/external-shocks-2026-10-16/manifest.json"
  },
+ "hi_boot_below": {
+  "tex": "19",
+  "md": "19",
+  "raw": 19,
+  "source": "docs/headline-inference/summary.json"
+ },
+ "hi_bw2_holm": {
+  "tex": "6",
+  "md": "6",
+  "raw": 6,
+  "source": "docs/headline-inference/summary.json"
+ },
+ "hi_bw8_holm": {
+  "tex": "3",
+  "md": "3",
+  "raw": 3,
+  "source": "docs/headline-inference/summary.json"
+ },
+ "hi_lost": {
+  "tex": "LV and RO",
+  "md": "LV and RO",
+  "raw": "LV and RO",
+  "source": "docs/headline-inference/summary.json"
+ },
+ "hi_negative": {
+  "tex": "20",
+  "md": "20",
+  "raw": 20,
+  "source": "docs/headline-inference/summary.json"
+ },
+ "hi_negative_holm": {
+  "tex": "1",
+  "md": "1",
+  "raw": 1,
+  "source": "docs/headline-inference/summary.json"
+ },
+ "hi_over_rejecting": {
+  "tex": "23",
+  "md": "23",
+  "raw": 23,
+  "source": "docs/headline-inference/summary.json"
+ },
+ "hi_point_negative": {
+  "tex": "25",
+  "md": "25",
+  "raw": 25,
+  "source": "docs/headline-inference/summary.json"
+ },
+ "hi_rho_gap": {
+  "tex": "$+0.17$",
+  "md": "+0.17",
+  "raw": 0.17,
+  "source": "docs/headline-inference/summary.json"
+ },
+ "hi_size_boot": {
+  "tex": "$5.1$\\%",
+  "md": "5.1%",
+  "raw": 0.051111111111111114,
+  "source": "docs/headline-inference/summary.json"
+ },
+ "hi_size_normal": {
+  "tex": "$22.0$\\%",
+  "md": "22.0%",
+  "raw": 0.21962962962962962,
+  "source": "docs/headline-inference/summary.json"
+ },
  "id_max_t": {
   "tex": "$1.27$",
   "md": "1.27",

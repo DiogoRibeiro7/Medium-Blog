@@ -111,6 +111,12 @@ Small-sample inference for the post-2021 tests:
 poetry run eu-okun small-sample --data-dir snapshots/eurostat-2026-10-15 --output-dir docs/small-sample --report docs/SMALL_SAMPLE_INFERENCE.md --review-dir docs/review
 ```
 
+Small-sample inference for the classical headline sums:
+
+```bash
+poetry run eu-okun headline-inference --data-dir snapshots/eurostat-2026-10-15 --grid docs/review/grid.csv --output-dir docs/headline-inference --report docs/HEADLINE_INFERENCE.md
+```
+
 Hierarchical Bayesian estimates, checks, robustness, dynamics and regimes (the two
 `bayes-fit` commands are expensive):
 

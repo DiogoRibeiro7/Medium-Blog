@@ -3,8 +3,10 @@
 \subsection{Association, prediction and causation}
 
 \paragraph{Association.} The three questions of the introduction have different answers.
-The association is established: outside 2020--2021, faster GDP growth goes with a falling
-unemployment rate in nearly every member state. Its size is not a single number:
+The sign of the association is widespread: outside 2020--2021, faster GDP growth goes with
+a falling unemployment rate in nearly every member state. Country by country, the evidence
+is weaker than normal critical values suggest, and few individual sums survive an
+adjustment for testing every country. Its size is not a single number:
 \begin{itemize}
   \item it depends on whether the pandemic quarters are included;
   \item it depends on the error model, on whether a common European factor is removed,
@@ -38,9 +40,9 @@ period with a particular mix of shocks.
 \paragraph{Positive.} Results that the registered tests decide and that hold across the
 registered checks:
 \begin{itemize}
-  \item a negative association in \val{cl_n_neg_excluded} of \val{n_countries} countries
-    without 2020--2021 (\val{cl_n_neg_holm} after a Holm adjustment), robust to the core
-    specifications in \val{cl_n_robust};
+  \item a negative association without 2020--2021, significant at the 5\% level in
+    \val{hi_negative} of \val{n_countries} countries under small-sample bootstraps, and
+    robust to the core specifications in \val{cl_n_robust};
   \item Spain's large association, relative to the European mean;
   \item the Spain--Luxembourg and Spain--Netherlands differences, which survive every
     accepted fit and remain when labour input is measured by employment or hours;
@@ -53,6 +55,9 @@ registered checks:
   \item no decided forecast gain over all target quarters;
   \item none of the \val{ss_published_holm} post-2021 changes from our first classical
     pass survives small-sample inference;
+  \item only \val{hi_negative_holm} country sum is negative under both bootstraps after a
+    Holm adjustment over the \val{n_countries} countries, against \val{cl_n_neg_holm} with
+    normal critical values;
   \item no informative causal coefficient from external instruments, shift-share or sign
     restrictions;
   \item no sign that Luxembourg's commuters absorb its output fluctuations;
@@ -102,9 +107,10 @@ registered checks:
 
 \paragraph{Methods.}
 \begin{itemize}
-  \item The classical intervals use Newey--West standard errors with normal critical
-    values on about \val{cl_n_quarters} quarters per country. Neither a bootstrap nor
-    fixed-$b$ critical values were applied to the headline sums.
+  \item The published classical intervals use normal critical values, which over-reject
+    with \val{cl_n_quarters} quarters per country. The registered null-imposed bootstrap
+    that replaces them holds its size but understates the evidence when a sum is large,
+    so the per-country counts lie between the two.
   \item The pandemic-excluded headline was chosen after the full-sample estimates had
     been seen.
   \item The participation control is a mediator and is mechanically linked to the
