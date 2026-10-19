@@ -1,0 +1,41 @@
+\section{Uncertainty and country heterogeneity}\label{sec:heterogeneity}
+
+\paragraph{Ranks are not established.} Because estimates are uncertain and correlated
+through common shocks, rankings of point estimates are not informative. The posterior
+distribution of each country's rank is wide: in the primary fit, the median width of the
+90\% rank interval is \val{by_rank_width} of \val{n_countries} places. No country's position
+in an ordering of Okun coefficients is established, and none is reported.
+
+\paragraph{Pairwise differences.} A difference between two countries is credible if
+$P(\theta_i<\theta_j)\ge 0.95$ or $\le 0.05$.
+\begin{itemize}
+  \item In the primary fit, \val{by_pairs_primary} of \val{by_pairs_total} pairs differ
+    credibly.
+  \item Only \val{by_pairs_surviving} pairs are credible in every accepted specification of
+    the registered sensitivity set.
+  \item Much of the apparent heterogeneity therefore depends on modelling choices.
+\end{itemize}
+
+\paragraph{The focus pairs.} Each pair gets one of three verdicts:
+\emph{survives} (credible in the same direction in every accepted fit), \emph{does not
+survive} (apparent in the classical comparison but not credible in every fit), or
+\emph{not supported by either} (neither the classical comparison nor the posterior
+supports it).
+\begin{itemize}
+  \item Spain--Luxembourg: \val{pair_ES_LU}.
+  \item Spain--Netherlands: \val{pair_ES_NL}.
+  \item Spain--Portugal: \val{pair_ES_PT}.
+  \item Luxembourg--Netherlands: \val{pair_LU_NL}.
+  \item Luxembourg--Portugal: \val{pair_LU_PT}.
+  \item Netherlands--Portugal: \val{pair_NL_PT}.
+\end{itemize}
+
+\paragraph{Two sources of heterogeneity.} Equation~\eqref{eq:weighted} gives two reasons why
+countries can differ:
+\begin{itemize}
+  \item labour markets may respond differently to the same shock;
+  \item countries may face different mixes of shocks.
+\end{itemize}
+The estimates in this section cannot separate the two. Section~\ref{sec:cases} asks a
+narrower question that the data can address: through which margins of the accounting
+identity~\eqref{eq:identity} output fluctuations are absorbed in four countries.

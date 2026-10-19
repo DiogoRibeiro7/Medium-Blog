@@ -1,0 +1,222 @@
+{
+ "description": "Frozen inputs of every analysis (SHA-256 of the raw bytes of each file, as in the snapshots' own manifests)",
+ "snapshots": {
+  "eurostat-2026-10-15": [
+   {
+    "path": "snapshots/eurostat-2026-10-15/README.md",
+    "sha256": "05caad61185c2db495f515e776033256e9842ea44ec76eb8c78bc5bbe304e7e8",
+    "bytes": 1756
+   },
+   {
+    "path": "snapshots/eurostat-2026-10-15/processed/eu27_quarterly.csv",
+    "sha256": "250a7dd94d3678ca9ee4f29567e771fb53aeadf89e1f2fd0155d2f31d6e0ec0d",
+    "bytes": 56563
+   },
+   {
+    "path": "snapshots/eurostat-2026-10-15/raw/lfsi_emp_q.json",
+    "sha256": "b6dccbcd94215b3473bdd66c39c726b5495d14114f2a621282e83b6a7abb9c8f",
+    "bytes": 37791
+   },
+   {
+    "path": "snapshots/eurostat-2026-10-15/raw/namq_10_gdp.json",
+    "sha256": "1558316778ce81b89c9d6d030c42c4a328c6d3383435cc824cea6297be397f8f",
+    "bytes": 42642
+   },
+   {
+    "path": "snapshots/eurostat-2026-10-15/raw/une_rt_q.json",
+    "sha256": "78bde702827a54c6c2760e8d3dae8ce8b3db9995084cf5a39610f7da19bd18c5",
+    "bytes": 35852
+   },
+   {
+    "path": "snapshots/eurostat-2026-10-15/snapshot_manifest.json",
+    "sha256": "8a8c8a107d584ba91b61584fd29397e68ff83d82982371a35db253c0803a0464",
+    "bytes": 2066
+   }
+  ],
+  "eurostat-deflator-2026-10-18": [
+   {
+    "path": "snapshots/eurostat-deflator-2026-10-18/README.md",
+    "sha256": "621aaff36be212cfac7ae9a4b2c642ae7404fc198dae73d67b13e9ac6d12f438",
+    "bytes": 1492
+   },
+   {
+    "path": "snapshots/eurostat-deflator-2026-10-18/manifest.json",
+    "sha256": "30900e56883b8a6e59518534db92a108ad185374ba7f8db08a2f4c1c068869c8",
+    "bytes": 727
+   },
+   {
+    "path": "snapshots/eurostat-deflator-2026-10-18/processed/eu27_deflator.csv",
+    "sha256": "153d4dda988cbe1d64d42fbff26ec1b317aa4dbc03e146026a6f1389d7992db4",
+    "bytes": 32520
+   },
+   {
+    "path": "snapshots/eurostat-deflator-2026-10-18/raw/namq_10_gdp_deflator.json",
+    "sha256": "8a3ab55cad92a85037333c0928e9e31e76de06be66875fff751ee0a929524e2a",
+    "bytes": 42492
+   }
+  ],
+  "eurostat-monthly-2026-10-18": [
+   {
+    "path": "snapshots/eurostat-monthly-2026-10-18/README.md",
+    "sha256": "0342e8a219b528e2ad6bc0e8098b6c40e7f62598d0148d638ba51384d16e1c59",
+    "bytes": 1987
+   },
+   {
+    "path": "snapshots/eurostat-monthly-2026-10-18/processed/eu27_monthly.csv",
+    "sha256": "7884d2f2a7a89df2cbefa159d074e8b91729b64e277d517b068291e09e462dbd",
+    "bytes": 195855
+   },
+   {
+    "path": "snapshots/eurostat-monthly-2026-10-18/raw/sts_inpr_m.json",
+    "sha256": "4be88b1a6316a909f61dc439965a0c53b10ee85a236724711b2a5aaf5d28f814",
+    "bytes": 175392
+   },
+   {
+    "path": "snapshots/eurostat-monthly-2026-10-18/raw/une_rt_m.json",
+    "sha256": "127942bd921a8d1365a31f7872592f7a52f09eb0ed5a479047cefd18f382054f",
+    "bytes": 146033
+   },
+   {
+    "path": "snapshots/eurostat-monthly-2026-10-18/snapshot_manifest.json",
+    "sha256": "ec2e65b6cbe8831fb99fe791702d37913c142c6e6e2cea0704faab8cc70f2e5c",
+    "bytes": 3102
+   }
+  ],
+  "external-shocks-2026-10-16": [
+   {
+    "path": "snapshots/external-shocks-2026-10-16/README.md",
+    "sha256": "55c169c81b60373dd0ba90104120a8e00d79b89833bf5fd2ffb7ec86600d2913",
+    "bytes": 2134
+   },
+   {
+    "path": "snapshots/external-shocks-2026-10-16/manifest.json",
+    "sha256": "8361c685c67770e25d31f9291ee3780caec20af0a18d9064ee908a59bbc7a9c9",
+    "bytes": 1924
+   },
+   {
+    "path": "snapshots/external-shocks-2026-10-16/quarterly_shocks.csv",
+    "sha256": "a68ad133d19cef0d94c69202005f412bab4ebb26c811e033c3262902287888a6",
+    "bytes": 16065
+   },
+   {
+    "path": "snapshots/external-shocks-2026-10-16/raw/oilSupplyNewsShocks_2025M12.xlsx",
+    "sha256": "8aa80042f84071ea310b3c2f604b177aed57ee7575e6a18aed5b8ad52ec353de",
+    "bytes": 110802
+   },
+   {
+    "path": "snapshots/external-shocks-2026-10-16/raw/shocks_ecb_mpd_me_m.csv",
+    "sha256": "89c5b2ec39509057b3c71f44218424fc8d15d4041b16f31c96613f8fe0965534",
+    "bytes": 21768
+   }
+  ],
+  "heterogeneity-2026-10-18": [
+   {
+    "path": "snapshots/heterogeneity-2026-10-18/README.md",
+    "sha256": "a932b6c3f169393c02d6aa9fee0e5f31bf90d4c0418d6a456438aff5bf19b984",
+    "bytes": 2311
+   },
+   {
+    "path": "snapshots/heterogeneity-2026-10-18/manifest.json",
+    "sha256": "4a6a6d1c82af1e3cd3c2740246f8ff23198c9fd898bb859f15bc16c129e07a4e",
+    "bytes": 6037
+   },
+   {
+    "path": "snapshots/heterogeneity-2026-10-18/processed/epl.csv",
+    "sha256": "f7e7144ce8a02652b0caa1254106535d14efc4d9311b1f1af47e912e182a50e4",
+    "bytes": 443
+   },
+   {
+    "path": "snapshots/heterogeneity-2026-10-18/processed/quarterly.csv",
+    "sha256": "021cde873a087d4a56c958bf9471f5c31af57375ba5e359ed218250aa3d246f2",
+    "bytes": 137109
+   },
+   {
+    "path": "snapshots/heterogeneity-2026-10-18/raw/emp_a10.json",
+    "sha256": "1ed7d8b0951c264a38d557510ac968399a36d491ca7a137ddd5bc6f8527c6d51",
+    "bytes": 43485
+   },
+   {
+    "path": "snapshots/heterogeneity-2026-10-18/raw/emp_dc.json",
+    "sha256": "d6993e097eef0f58452bf2e155ed2bfa2e5ee8f396fd4bfefb8551783fae995d",
+    "bytes": 43239
+   },
+   {
+    "path": "snapshots/heterogeneity-2026-10-18/raw/emp_nc.json",
+    "sha256": "bdca6bde172c0ea0203fbaf0021740bf9430098b952f70af2c400d45497d3559",
+    "bytes": 37294
+   },
+   {
+    "path": "snapshots/heterogeneity-2026-10-18/raw/employees.json",
+    "sha256": "9365f735e9184326da7b4f2b08a02b6b2b8972ae71aaf1d4cdc760920c800aa8",
+    "bytes": 45055
+   },
+   {
+    "path": "snapshots/heterogeneity-2026-10-18/raw/hours.json",
+    "sha256": "90bb5445ef5cc073580af515266e3c87ef2b1de0a205e158eced5ead717247e5",
+    "bytes": 49989
+   },
+   {
+    "path": "snapshots/heterogeneity-2026-10-18/raw/oecd_epl.csv",
+    "sha256": "129776828637db5b2e21e3eb1be48b32de9791f9599245dd2d6c2b81bbd73103",
+    "bytes": 27462
+   },
+   {
+    "path": "snapshots/heterogeneity-2026-10-18/raw/pt_share.json",
+    "sha256": "c6caec140cc4ded7e06e962ee538356f72be9c39fa339112c3d2f57e03963e10",
+    "bytes": 37958
+   },
+   {
+    "path": "snapshots/heterogeneity-2026-10-18/raw/temp.json",
+    "sha256": "00aaac4a9c65bda200ee41ac8eb556807dd81ff4420936992937ef59b06c04f0",
+    "bytes": 41915
+   },
+   {
+    "path": "snapshots/heterogeneity-2026-10-18/raw/temp_share.json",
+    "sha256": "2bb574419cfe76ffc4a7a35241a5f7f237cc45444d53e016a4189e9fdfd04a34",
+    "bytes": 37916
+   }
+  ],
+  "shift-share-2026-10-18": [
+   {
+    "path": "snapshots/shift-share-2026-10-18/README.md",
+    "sha256": "2053cdbb3cd8a0ac9a422a8dbc07bf0318bbe3550927264c607c4d542d37adad",
+    "bytes": 1959
+   },
+   {
+    "path": "snapshots/shift-share-2026-10-18/manifest.json",
+    "sha256": "c5c914bb910b1e29c5e6d8e5239310d4957dd9e9e0e9b665856cad75ec18d3de",
+    "bytes": 2468
+   },
+   {
+    "path": "snapshots/shift-share-2026-10-18/processed/balance.csv",
+    "sha256": "c27750a243160d0ce0bcf5b38f3819a6e338e96128576dd85e8c0b961700875a",
+    "bytes": 1168
+   },
+   {
+    "path": "snapshots/shift-share-2026-10-18/processed/exposure.csv",
+    "sha256": "33a7a0cd7932402fb0342b2ae621073efed61b5b0dc50fd6b6bf971bc63dccb5",
+    "bytes": 107689
+   },
+   {
+    "path": "snapshots/shift-share-2026-10-18/processed/shifts.csv",
+    "sha256": "e21263e99da3c02d5854be0fe4ae3dcaf6a0c09e1307b6f7450e0a6f9ae8c677",
+    "bytes": 24573
+   },
+   {
+    "path": "snapshots/shift-share-2026-10-18/raw/oecd_qna.csv",
+    "sha256": "afa0e96feddc692b27b6e90b5fedd7cbc83424a0643030ebcd85e9d8d9c0f4a1",
+    "bytes": 118431
+   },
+   {
+    "path": "snapshots/shift-share-2026-10-18/raw/tiva_fdva.csv",
+    "sha256": "ceab424fa3906f29b872356a59fc3439252bf0ea2774d7f209a12db410e78ca3",
+    "bytes": 288881
+   },
+   {
+    "path": "snapshots/shift-share-2026-10-18/raw/tiva_mainlv.csv",
+    "sha256": "a63e98bd5678444e01f67649761e4b33869246081e7518742385a2d7e56e6517",
+    "bytes": 26868
+   }
+  ]
+ }
+}

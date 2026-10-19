@@ -1,0 +1,110 @@
+\section{Discussion}\label{sec:discussion}
+
+\subsection{Association, prediction and causation}
+
+\paragraph{Association.} The three questions of the introduction have different answers.
+The association is established: outside 2020--2021, faster GDP growth goes with a falling
+unemployment rate in nearly every member state. Its size is not a single number:
+\begin{itemize}
+  \item it depends on whether the pandemic quarters are included;
+  \item it depends on whether the error model absorbs residual persistence and a common
+    European factor;
+  \item the hierarchical sum is smaller than the classical one in \val{by_n_smaller} of
+    \val{n_countries} countries, partly because the two estimate different quantities.
+\end{itemize}
+
+\paragraph{Prediction.} The association predicts little that the recent path of
+unemployment does not already contain. The one decided comparison involves the quarter's
+own GDP growth, which a forecaster would not know.
+
+\paragraph{Causation.} No strategy available with public data identifies a causal Okun
+coefficient for any shock. The coefficients reported here should be read as conditional
+associations: summaries of how unemployment and output moved together in a period with a
+particular mix of shocks.
+
+\subsection{Positive, negative and unstable results}
+
+\paragraph{Positive.} Results that the registered tests decide:
+\begin{itemize}
+  \item a negative association in \val{cl_n_neg_excluded} of \val{n_countries} countries
+    without 2020--2021, robust to the core specifications in \val{cl_n_robust};
+  \item \val{by_n_neg_all} sums credibly negative in every accepted Bayesian fit;
+  \item Spain's large association, relative to the European mean;
+  \item the Spain--Luxembourg and Spain--Netherlands differences, which survive every
+    accepted fit and remain when labour input is measured by employment or hours;
+  \item a more GDP-elastic output per hour in the Netherlands than in Spain, supported in
+    the primary design and in the \val{cs_p22_settings} sensitivity settings;
+  \item the conditional predictive gain over zero change before the pandemic
+    (\val{pc_e1_zero}).
+\end{itemize}
+
+\paragraph{Negative.} Results where the registered test found nothing:
+\begin{itemize}
+  \item no decided gain from hierarchical pooling, GDP lags or the common factor in
+    one-quarter-ahead forecasts;
+  \item none of the \val{ss_published_holm} published post-2021 changes survives
+    small-sample inference;
+  \item no informative causal coefficient from external instruments, shift-share or sign
+    restrictions;
+  \item no sign that Luxembourg's commuters absorb its output fluctuations;
+  \item \val{cs_supported} of \val{cs_total} case-study predictions supported.
+\end{itemize}
+
+\paragraph{Unstable.} Results that depend on choices or runs:
+\begin{itemize}
+  \item the magnitude of the association, through the pandemic quarters and the error
+    model;
+  \item \val{by_pairs_primary} credible country differences in the primary fit against
+    \val{by_pairs_surviving} in every accepted fit;
+  \item the Dutch delayed response, which holds in \val{claim_nl_holds} of
+    \val{by_n_accepted} accepted fits;
+  \item Portugal's significance across samples;
+  \item two case-study predictions supported only before 2020;
+  \item the employment-protection correlations, each decided in one of three variants;
+  \item the acceptance of two Bayesian sensitivity fits, which differed between the
+    Windows run and its Linux replication. The claim verdicts were identical under both
+    acceptance sets, and the report states the robustness judgements under each.
+\end{itemize}
+
+\subsection{Limitations}
+
+\paragraph{Data.}
+\begin{itemize}
+  \item All data are revised vintages, so the forecasts are retrospective.
+  \item The Labour Force Survey's 2021 redesign introduces flagged and unflagged
+    discontinuities. The Bayesian models mask the flagged observations, but the Dutch
+    phase-in is not flagged.
+  \item Monthly unemployment is a direct estimate in only eight countries.
+  \item Hours per worker and employment in persons are unavailable for seven countries,
+    including Portugal.
+\end{itemize}
+
+\paragraph{Models.}
+\begin{itemize}
+  \item The primary Bayesian model understates the persistence of unemployment changes.
+    The registered amendment that removes this misfit has a common factor correlated with
+    average GDP growth (\val{dyn_factor_corr}), so its country sums measure the association
+    beyond part of the common GDP cycle.
+  \item The post-2021 sample has about seventeen quarters. It is too short to test a
+    change in the association with useful power.
+  \item Country-level correlations with institutions use at most twenty countries and a
+    single year of indicators.
+\end{itemize}
+
+\subsection{Open questions}
+
+The study leaves these questions unresolved:
+\begin{enumerate}
+  \item Do countries differ because their labour markets respond differently to the same
+    shock, or because they face different mixes of shocks?
+    Equation~\eqref{eq:weighted} shows that both produce different Okun coefficients;
+    separating them requires shock-specific identification.
+  \item What is the effect on unemployment of a productivity or labour-supply shock in an
+    EU country? This needs utilisation-adjusted productivity and quasi-experimental
+    variation in labour supply.
+  \item Why does output per hour absorb almost all output fluctuations in Luxembourg?
+  \item Do temporary contracts carry Spain's employment adjustment? The direction is
+    consistent with that view, but the registered test is not decided.
+  \item Did the association weaken after 2021? This can only be answered with a longer
+    sample.
+\end{enumerate}

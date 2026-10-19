@@ -1,0 +1,66 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage[section]{placeins}
+\usepackage{graphicx}
+\usepackage[margin=2.4cm]{geometry}
+\usepackage[round,authoryear]{natbib}
+\usepackage{caption}
+\usepackage{xcolor}
+\usepackage[hidelinks]{hyperref}
+
+\graphicspath{{figures/}}
+\input{generated/values.tex}
+
+\setlength{\emergencystretch}{3em}
+
+% Eurostat datasets are cited by their codes.
+\defcitealias{eurostat_namq_10_gdp}{\texttt{namq\_10\_gdp}}
+\defcitealias{eurostat_une_rt_q}{\texttt{une\_rt\_q}}
+\defcitealias{eurostat_lfsi_emp_q}{\texttt{lfsi\_emp\_q}}
+\defcitealias{eurostat_une_rt_m}{\texttt{une\_rt\_m}}
+\defcitealias{eurostat_sts_inpr_m}{\texttt{sts\_inpr\_m}}
+\defcitealias{eurostat_namq_10_pe}{\texttt{namq\_10\_pe}}
+\defcitealias{eurostat_namq_10_a10_e}{\texttt{namq\_10\_a10\_e}}
+\defcitealias{eurostat_lfsq_etgaed}{\texttt{lfsq\_etgaed}}
+\defcitealias{eurostat_lfsq_eegaed}{\texttt{lfsq\_eegaed}}
+\defcitealias{eurostat_lfsq_etpga}{\texttt{lfsq\_etpga}}
+\defcitealias{eurostat_lfsq_eppga}{\texttt{lfsq\_eppga}}
+
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\eu}{EU-27}
+
+\title{Okun's Law in the European Union, 2009--2026:\\
+  Association, Prediction and the Limits of Causal Identification}
+\author{Diogo Ribeiro}
+\date{October 2026}
+
+\begin{document}
+\maketitle
+
+\input{sections/00-abstract}
+\input{sections/01-introduction}
+\input{sections/02-background}
+\input{sections/03-data}
+\input{sections/04-classical}
+\input{sections/05-bayes}
+\input{sections/06-heterogeneity}
+\input{sections/07-prediction}
+\input{sections/08-identification}
+\input{sections/09-cases}
+\input{sections/10-discussion}
+\input{sections/11-conclusions}
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\appendix
+\input{sections/a1-reproducibility}
+\input{sections/a2-preregistration}
+
+\end{document}

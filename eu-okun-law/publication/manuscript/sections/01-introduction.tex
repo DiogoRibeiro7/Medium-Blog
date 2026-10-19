@@ -1,0 +1,70 @@
+\section{Introduction}\label{sec:intro}
+
+Okun's law is the empirical regularity that unemployment falls when output grows faster
+than its trend and rises when it grows more slowly \citep{okun1962}. It is among the most
+cited relations in macroeconomics and one of the least settled: its coefficient varies
+across countries and periods, and its meaning depends on what moves output in the first
+place \citep{ball2017okun}.
+
+\paragraph{Motivation.} This study was prompted by a reported hierarchical Bayesian analysis
+of the \eu\ for 2009--2026. That analysis described Spain as having a large association
+between GDP growth and unemployment, the Netherlands as having a delayed response, and
+Luxembourg as having a weak one, and it suggested institutional and measurement
+explanations. We do not have that analysis's code, data vintage or numerical estimates. We
+therefore treat its statements as hypotheses, recorded before any of our own estimates in
+the pre-registered protocol of the Bayesian stage (Appendix~\ref{app:prereg}), and
+examine them independently.
+
+\paragraph{Three questions.} We keep three questions apart throughout.
+\begin{enumerate}
+  \item \emph{Association.} How large is the conditional association between GDP growth
+    and the change in the unemployment rate in each country, and how much do countries
+    differ once estimation uncertainty and common European shocks are accounted for?
+  \item \emph{Prediction.} Does that association, or the hierarchical pooling of
+    countries, improve forecasts of unemployment relative to simple benchmarks?
+  \item \emph{Causation.} Can any part of the association be given a structural
+    interpretation: the effect on unemployment of an identified shock that moves output?
+\end{enumerate}
+A large and stable association need not predict well; a useful predictor need not be
+causal; and a causal effect of one kind of shock need not equal the reduced-form Okun
+coefficient, which averages over all shocks of a period (section~\ref{sec:background}).
+
+\paragraph{Approach.} Every analysis was written down before it was run. Each
+protocol is committed and pushed before estimation, and each protocol's change log records
+any later clarification with its reason. The data are frozen Eurostat and OECD snapshots
+whose raw responses are hashed and re-derived by an audit. Every number in this article is
+read by code from the committed result tables (Appendix~\ref{app:repro}). The work
+proceeded in stages:
+\begin{itemize}
+  \item classical regressions and an independent review of them;
+  \item a hierarchical Bayesian model with its checks and amendments;
+  \item two predictive comparisons;
+  \item an identification study with four strategies;
+  \item a case study of Portugal, Spain, the Netherlands and Luxembourg.
+\end{itemize}
+
+\paragraph{Findings in brief.}
+\begin{itemize}
+  \item The negative association is well established outside 2020--2021: in
+    \val{cl_n_neg_excluded} of \val{n_countries} countries the two-lag sum has a 95\%
+    interval below zero.
+  \item Its magnitude depends on the sample and the error model, and country rankings are
+    not established.
+  \item In one-quarter-ahead forecasts, neither the association nor hierarchical pooling
+    gives gains that the registered tests distinguish from sampling variation.
+  \item No defensible identification strategy delivers an informative causal Okun
+    coefficient with the available public data.
+  \item Of the three earlier claims, Spain's is supported, while the Dutch and Luxembourg
+    claims are qualified. The measurement explanation proposed for Luxembourg is not
+    supported.
+\end{itemize}
+
+\paragraph{Outline.} Section~\ref{sec:background} sets out Okun's law and the accounting
+identity behind it. Section~\ref{sec:data} describes the data and their measurement
+issues. Sections~\ref{sec:classical} and~\ref{sec:bayes} present the classical and
+Bayesian methods and estimates. Section~\ref{sec:heterogeneity} turns to uncertainty and
+heterogeneity, section~\ref{sec:prediction} to prediction and
+section~\ref{sec:identification} to identification. Section~\ref{sec:cases} contains the
+country case studies and the comparison with the earlier claims, followed by the
+discussion and conclusions. The appendices document reproduction and the pre-registration
+record.

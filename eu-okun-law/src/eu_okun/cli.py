@@ -281,6 +281,18 @@ def main(argv: Sequence[str] | None = None) -> int:
     het.add_argument("--output-dir", type=Path, default=Path("results/heterogeneity"))
     het.add_argument("--report", type=Path, default=None)
     het.add_argument("--no-figures", action="store_true")
+    pub = commands.add_parser(
+        "publication", help="Audit the outputs and build the manuscript's values, tables, "
+                            "figures, the Medium article and the manifests")
+    pub_mode = pub.add_mutually_exclusive_group()
+    pub_mode.add_argument("--build", action="store_true",
+                          help="Write every generated file (the default)")
+    pub_mode.add_argument("--check", action="store_true",
+                          help="Fail if a committed generated file differs from the code's output")
+    pub_mode.add_argument("--verify-bibliography", action="store_true",
+                          help="Resolve every DOI and URL of references.bib (needs internet)")
+    pub.add_argument("--root", type=Path, default=Path("."))
+    pub.add_argument("--no-figures", action="store_true")
     args = parser.parse_args(argv)
     if args.command == "fetch":
         try:
@@ -671,6 +683,37 @@ def main(argv: Sequence[str] | None = None) -> int:
         print(f"Predictive report written to {args.report or args.output_dir}; "
               f"{len(decided)} of {len(comparison.family)} pre-registered comparisons decided")
         return 0
+    if args.command == "publication":
+        from eu_okun import publication
+        from eu_okun.publication_values import audit as audit_outputs
+
+        root = args.root
+        try:
+            if args.verify_bibliography:
+                bib = publication.verify_bibliography(
+                    root / "publication" / "manuscript" / "references.bib")
+                target = root / "publication" / "manifest" / "bibliography.json"
+                target.write_text(publication.dump_json(bib), encoding="utf-8", newline="\n")
+                problems = publication.bibliography_problems(bib)
+                print(f"{len(bib)} references checked; {len(problems)} problems")
+                for problem in problems:
+                    print(f"  {problem}")
+                return 1 if problems else 0
+            audit_failed = [c for c in audit_outputs(root) if not c.passed]
+            if args.check:
+                stale = publication.check(root)
+                for rel in stale:
+                    print(f"out of date: {rel}")
+            else:
+                stale = []
+                outputs = publication.build(root, figures_too=not args.no_figures)
+                print(f"Wrote {len(outputs)} generated files under {root / 'publication'}")
+        except (FileNotFoundError, ValueError, KeyError, OSError) as exc:
+            parser.exit(2, f"Publication build failed: {exc}\n")
+        for failure in audit_failed:
+            print(f"audit FAIL: {failure.name}: {failure.detail}")
+        print(f"Audit: {len(audit_failed)} failed checks; {len(stale)} stale files")
+        return 1 if audit_failed or stale else 0
     return 1
 
 

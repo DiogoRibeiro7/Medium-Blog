@@ -10,3 +10,12 @@
 __pycache__/
 *.pyc
 /data/coverage_audit.json
+# LaTeX build artefacts (CI uploads the PDF as an artifact)
+/publication/manuscript/main.pdf
+/publication/manuscript/*.aux
+/publication/manuscript/*.bbl
+/publication/manuscript/*.blg
+/publication/manuscript/*.fdb_latexmk
+/publication/manuscript/*.fls
+/publication/manuscript/*.log
+/publication/manuscript/*.out

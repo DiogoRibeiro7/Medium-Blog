@@ -1,0 +1,66 @@
+\section{Background}\label{sec:background}
+
+\subsection{Two forms of Okun's law}
+
+\citet{okun1962} related the unemployment rate to the gap between actual and potential
+output. The \emph{difference} form used here avoids estimating potential output. For
+country $i$ and quarter $t$, let $u_{it}$ be the unemployment rate (\% of the labour force),
+$\Delta u_{it}=u_{it}-u_{i,t-1}$ its change in percentage points (pp), and $g_{it}$ the
+quarter-on-quarter growth of real GDP (\%). Then
+\begin{equation}\label{eq:okun}
+  \Delta u_{it} = \alpha_i + \sum_{k=0}^{K}\beta_{ik}\, g_{i,t-k} + \varepsilon_{it},
+  \qquad \theta_i \equiv \sum_{k=0}^{K}\beta_{ik}.
+\end{equation}
+The coefficient sum $\theta_i$ is the cumulative change in unemployment, in pp, associated
+with a sustained one-point rise in quarterly growth. $-\alpha_i/\theta_i$ is the growth rate
+consistent with stable unemployment. Lagged growth allows the labour market to respond with
+a delay. Estimated coefficients are negative in advanced economies, but their size
+differs widely from country to country \citep{ball2017okun}.
+
+\subsection{An accounting identity}
+
+Output $Y$ is the product of output per hour, hours per worker and employment. Employment
+$E$ is the labour force $L$ times one minus the unemployment rate. In log changes (lower
+case) and with the rate approximation,
+\begin{equation}\label{eq:identity}
+  g \;\approx\; \underbrace{\Delta\ln(Y/H)}_{\text{productivity}}
+  + \underbrace{\Delta\ln(H/E)}_{\text{hours per worker}}
+  + \underbrace{\Delta\ln E}_{\text{employment}},
+  \qquad
+  \Delta u \;\approx\; -(\Delta\ln E - \Delta\ln L).
+\end{equation}
+An Okun coefficient of $-1$ would require productivity, hours per worker and the labour
+force not to move with output. Observed coefficients are much smaller in magnitude because
+output fluctuations are absorbed through other margins:
+\begin{itemize}
+  \item productivity (labour hoarding);
+  \item hours per worker (short-time work);
+  \item participation, through discouraged or added workers.
+\end{itemize}
+Institutions shape these margins. Strict dismissal rules combined with flexible temporary
+contracts can make employment more volatile \citep{bentolila2012twotier}. Unemployment
+inflows and outflows differ widely across countries \citep{blanchard2001portugal}, and
+hours per worker vary along the cycle \citep{ohanian2012hours}. The identity also shows
+that measurement matters: GDP is a domestic concept (production on the territory), whereas
+unemployment and participation describe residents.
+
+\subsection{What a reduced-form coefficient measures}\label{sec:weighted}
+
+Let the reduced-form innovations of $(g,\Delta u)$ be driven by mutually uncorrelated
+structural shocks $\varepsilon_k$ (demand, productivity, labour supply, energy, \dots):
+\[
+  g=\sum_k a_k\varepsilon_k, \qquad \Delta u=\sum_k b_k\varepsilon_k .
+\]
+Then the regression coefficient of $\Delta u$ on $g$ is
+\begin{equation}\label{eq:weighted}
+  \beta_{\mathrm{Okun}}=\frac{\operatorname{Cov}(\Delta u,g)}{\operatorname{Var}(g)}
+  =\sum_k w_k\,\kappa_k,\qquad
+  \kappa_k=\frac{b_k}{a_k},\quad w_k=\frac{a_k^2}{\sum_j a_j^2}.
+\end{equation}
+The coefficient is a weighted average of shock-conditional Okun coefficients
+$\kappa_k$. The weights are each shock's share of output variance, and the same algebra holds
+horizon by horizon for cumulative responses. Differences between countries or periods can
+therefore reflect different labour-market responses ($\kappa_k$) or different shock
+mixes ($w_k$). The data cannot separate the two without identifying the shocks, which is
+the subject of section~\ref{sec:identification}. Until then, every coefficient is a
+\emph{descriptive association}.
