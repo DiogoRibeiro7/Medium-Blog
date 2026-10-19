@@ -102,7 +102,7 @@ is recorded in each report.
 Classical estimates and their review:
 
 ```bash
-poetry run eu-okun review --data-dir snapshots/eurostat-2026-10-15 --output-dir docs/review --report docs/CLASSICAL_RESULTS_REVIEW.md
+poetry run eu-okun review --data-dir snapshots/eurostat-2026-10-15 --output-dir docs/review --report docs/CLASSICAL_RESULTS_REVIEW.md --published-dir snapshots/ci-results-38754743850 --provenance "CI artifact eu-okun-empirical-baselines, workflow run 38754743850 (commit e73ee68)"
 ```
 
 Small-sample inference for the post-2021 tests:
@@ -164,6 +164,15 @@ Case study of Portugal, Spain, the Netherlands and Luxembourg:
 
 ```bash
 poetry run eu-okun heterogeneity --data-dir snapshots/eurostat-2026-10-15 --snapshot snapshots/heterogeneity-2026-10-18 --output-dir docs/heterogeneity --report docs/HETEROGENEITY_CASE_STUDY.md
+```
+
+Post-hoc check, not registered (added after an external review on 2026-10-19): the
+identification results with the pandemic window widened by one period. The registered
+results remain primary; see
+[docs/WINDOW_SENSITIVITY.md](../docs/WINDOW_SENSITIVITY.md).
+
+```bash
+poetry run eu-okun window-sensitivity --output-dir docs/window-sensitivity --report docs/WINDOW_SENSITIVITY.md
 ```
 
 After any of these, rebuild the publication with `poetry run eu-okun publication --build`.

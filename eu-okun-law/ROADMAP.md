@@ -141,6 +141,43 @@ Pre-registered in [BAYES_PROTOCOL.md](BAYES_PROTOCOL.md); results in
       The bibliography is verified against doi.org.
 - [ ] Author review and publication. Nothing is published automatically.
 
+### External review, 2026-10-19
+
+Done:
+
+- [x] Report the credibly-negative count as 22 or 15 depending on the unpooled fit at the
+      R-hat threshold, and correct the explanation (OLS excludes zero for five of the
+      seven countries in between).
+- [x] Quote the range of the average sum across accepted fits and the dynamic model's
+      value; state the estimand (beyond the common European cycle) in the abstract.
+- [x] Correct the forecasting conclusions: small decided gains without the pandemic
+      targets; the one conditional gain is fragile; nothing beats a no-change forecast.
+- [x] Remove internal contradictions in the article; rewrite the Medium version in prose;
+      plain meaning of the magnitude.
+- [x] Reframe pre-registration as sequential, stage by stage, on the same data; reframe
+      identification as uninformative designs; add GDP measurement error as an untested
+      rival explanation for Luxembourg; add the Holm count and the classical-inference
+      caveats.
+- [x] Post-hoc pandemic-window sensitivity ([docs/WINDOW_SENSITIVITY.md](docs/WINDOW_SENSITIVITY.md)).
+- [x] Rename the SVAR variance share (it is of the unemployment change).
+- [x] Guard hand-typed integers and percentages in the article; freeze the CI outputs that
+      the classical review compares against; check in CI that the review reproduces.
+
+Open:
+
+- [ ] Cite the motivating analysis, or state precisely where and when it appeared
+      (needs the author).
+- [ ] Archive the protocols with an external timestamp (for example, a DOI deposit).
+- [ ] Bootstrap or fixed-b inference for the classical headline sums.
+- [ ] Test GDP measurement error for Luxembourg (and Ireland, Malta): value added
+      excluding finance, annual accounts, modified domestic demand.
+- [ ] Check whether `une_rt_q` inherits the trend or moving-average smoothing of the
+      German, Dutch, Estonian and Portuguese monthly series.
+- [ ] Gap-form Okun's law against Ball, Leigh and Loungani (2017); asymmetry; hours-based
+      Okun's law for every country; a common-correlated-effects mean-group panel; a
+      labour-force-weighted EU aggregate.
+- [ ] Keep the participation control out of the core robustness grid (a new review).
+
 Green offline CI is not evidence of a successful live data download.
 No pre-selected country results, artificial observations or causal
 claims without identification.

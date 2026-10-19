@@ -1,7 +1,8 @@
 \section{Pre-registration record}\label{app:prereg}
 
-\paragraph{Rule.} Each analysis was registered before it was run. Before any estimate, its
-protocol was committed and pushed. The protocol fixes:
+\paragraph{What was registered, and when.} Each stage was registered before its own
+estimation, sequentially, on the same data. Before any estimate of a stage, its protocol
+was committed and pushed. The protocol fixes:
 \begin{itemize}
   \item the data and sample;
   \item the estimator and its settings;
@@ -10,7 +11,24 @@ protocol was committed and pushed. The protocol fixes:
   \item for the case study, the hypotheses that cannot be tested reliably.
 \end{itemize}
 Table~\ref{tab:prereg} lists the commit that first added each protocol. In every case the
-commit precedes, in the repository history, the commit that first added the results.
+commit precedes, in the repository history, the commit that first added that stage's
+results.
+
+\paragraph{What this does not mean.} The protocols were all written within five days in
+October 2026, on the same frozen data, and each later stage was designed knowing the
+results of the earlier ones:
+\begin{itemize}
+  \item the Bayesian protocol was written after the classical results;
+  \item the small-sample protocol was written after the \val{ss_published_holm} rejections
+    of the first classical pass were known, to test whether they survive;
+  \item the case-study hypotheses were written after the country estimates were known,
+    under a rule that each must make predictions that can fail and be evaluated by the same
+    rule in the comparison countries.
+\end{itemize}
+Registration therefore protects each stage's decision rules against the results of that
+stage, not against the results of earlier stages. The timestamps are Git commits in a
+public repository, which their authors can in principle rewrite. An external, immutable
+archive of the protocols, such as a deposit with a DOI, would strengthen the record.
 
 \paragraph{Changes after registration.} A change made after registration is recorded in
 the protocol's change log, with its timing relative to the results and its reason. Three
@@ -25,8 +43,9 @@ kinds of change occurred:
     before their fits. Examples are the dynamic and regime Bayesian models and the monthly
     identification.
 \end{itemize}
-Analyses added after results were seen, such as the checks of the common factor, are
-labelled as exploratory in the protocol and in the report.
+Analyses added after results were seen are labelled as exploratory in the protocol and in
+the report. Examples are the checks of the common factor, and the widened pandemic window
+of section~\ref{sec:identification}, added after an external review.
 
 \paragraph{The classical plan.} \texttt{METHODS.md} is the research plan of the classical
 stage. It was committed with the data pipeline before any estimate and revised in later

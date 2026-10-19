@@ -1,6 +1,48 @@
 {
  "description": "Frozen inputs of every analysis (SHA-256 of the raw bytes of each file, as in the snapshots' own manifests)",
  "snapshots": {
+  "ci-results-38754743850": [
+   {
+    "path": "snapshots/ci-results-38754743850/README.md",
+    "sha256": "3aab5b9a5cf514db4efeb0209fdae9250e53d23747517fb30ed0f53fa836cbcf",
+    "bytes": 1723
+   },
+   {
+    "path": "snapshots/ci-results-38754743850/comparison/comparison.json",
+    "sha256": "927d477c60a49df248174acbef6b8c2641003fe52fe216f0c7ca4818236da731",
+    "bytes": 101118
+   },
+   {
+    "path": "snapshots/ci-results-38754743850/forecast/scores.json",
+    "sha256": "43663feb55d614f51f1a795598fe67831745004eebd483bca39fb912abc01025",
+    "bytes": 46199
+   },
+   {
+    "path": "snapshots/ci-results-38754743850/inference/country_pairs.json",
+    "sha256": "90dea6190cbb5f75a763e168aeda567787526a28fd39a6b87dbfed75f74b76d3",
+    "bytes": 8005
+   },
+   {
+    "path": "snapshots/ci-results-38754743850/inference/stability.json",
+    "sha256": "8278fa4d4b0ee170148a727352910d50cfe0f71a6e0981f98f36c217c2b6c6c1",
+    "bytes": 30938
+   },
+   {
+    "path": "snapshots/ci-results-38754743850/manifest.json",
+    "sha256": "09c096089472768262e1f8dcb5b8cccbc7cfd270d7aadbac34540e52c4f9906b",
+    "bytes": 1479
+   },
+   {
+    "path": "snapshots/ci-results-38754743850/ols_hac.json",
+    "sha256": "84d94cc59ae412f3181ab16f4c08f916aff92c3cd593b4088860d236e6432ce2",
+    "bytes": 142347
+   },
+   {
+    "path": "snapshots/ci-results-38754743850/regimes/regimes.json",
+    "sha256": "b74d88d1f810f84670bc6c34604679f3271c0860e52db026b52deb74da98190b",
+    "bytes": 240675
+   }
+  ],
   "eurostat-2026-10-15": [
    {
     "path": "snapshots/eurostat-2026-10-15/README.md",

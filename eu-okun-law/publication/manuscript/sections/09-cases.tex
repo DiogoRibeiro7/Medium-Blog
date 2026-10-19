@@ -9,8 +9,8 @@ evidence are kept apart:
 \begin{itemize}
   \item \emph{correlation}: cross-country associations with institutions;
   \item \emph{pattern consistent with a mechanism}: where output fluctuations are absorbed;
-  \item \emph{identified causal effect}: none, because section~\ref{sec:identification}
-    found no defensible identification strategy.
+  \item \emph{identified causal effect}: none, because the designs of
+    section~\ref{sec:identification} are uninformative.
 \end{itemize}
 
 \paragraph{Margins.} Each margin's response is the two-lag sum of its elasticity to GDP
@@ -30,14 +30,19 @@ had assumed wider coverage; its change log records the correction.
 
 \paragraph{Overall result.} \val{cs_supported} of \val{cs_total} pre-registered predictions
 is supported and \val{cs_contradicted} are contradicted; the rest are not determined
-(table~\ref{tab:casestudy}).
+(table~\ref{tab:casestudy}). The cross-country correlations with institutions are a
+separate, registered set of \val{cs_n_corr} correlations (subsection~\ref{sec:institutions}),
+outside these \val{cs_total} predictions.
 
 \subsection{Spain}
 
 \paragraph{Association.} Spain's association is large and robust:
 \begin{itemize}
-  \item classical two-lag sum \val{cl_ES_excl} \val{cl_ES_excl_ci} without 2020--2021;
-  \item posterior median \val{by_ES} \val{by_ES_ci};
+  \item classical two-lag sum \val{cl_ES_excl} \val{cl_ES_excl_ci} for 2009--2026 without
+    2020--2021;
+  \item on the same 2009--2019 quarters, OLS gives \val{by_ES_ols} and the hierarchical
+    model \val{by_ES} \val{by_ES_ci}; the gap is partly pooling and partly the common
+    factor, which the hierarchical sum excludes;
   \item probability \val{claim_es_p} that its sum lies below the European mean, with the
     rule satisfied in \val{claim_es_holds} of \val{by_n_accepted} accepted fits.
 \end{itemize}
@@ -120,6 +125,13 @@ in the \val{cs_p31a_settings} setting).
     probability at least $0.95$ and its 90\% interval to include zero. That probability is
     \val{claim_lu_p} in the primary fit, and the rule holds in \val{claim_lu_holds} of
     \val{by_n_accepted} accepted fits.
+  \item \emph{The dynamic amendment.} In the two ARDL fits, which model the persistence
+    the primary model misses, the rule \val{dyn_lu_ardl} on the long-run sum
+    (probabilities \val{dyn_lu_ardl_p} and \val{dyn_lu_adf_p}). It holds because of
+    Luxembourg's negative lagged-change coefficient, which shrinks its long-run multiplier;
+    on the short-run sum the probability is \val{dyn_lu_adf_short_p}. These fits were
+    registered as an amendment and are not part of the claim judgement, which keeps the
+    original nine specifications.
 \end{itemize}
 
 \paragraph{Measurement.} GDP counts production by everyone working in Luxembourg, while
@@ -131,10 +143,23 @@ both measures barely move with GDP:
   \item domestic employment: \val{cs_LU_e_dom_pe} \val{cs_LU_e_dom_pe_ci};
   \item resident employment: \val{cs_LU_e_res} \val{cs_LU_e_res_ci}.
 \end{itemize}
-Instead, output per hour absorbs output fluctuations almost one for one (\val{cs_LU_prod}
-\val{cs_LU_prod_ci}). The data do not say why output and labour input are so loosely
-linked in Luxembourg; sectoral composition, which might explain it, was listed in advance
-as a hypothesis that could not be tested reliably.
+Instead, measured output per hour moves almost one for one with measured GDP
+(\val{cs_LU_prod} \val{cs_LU_prod_ci}).
+
+\paragraph{A rival explanation: measurement error in GDP.} This pattern is not a finding
+about how Luxembourg's economy adjusts. Output per hour is computed as the residual
+$g-h$, where $h$ is the growth of hours. If quarterly GDP growth is measured with noise
+unrelated to labour input, regressing $g-h$ on measured $g$ pushes the
+output-per-hour elasticity towards one, and it pushes the labour-input and Okun
+elasticities towards zero. That is exactly Luxembourg's pattern: an output-per-hour
+elasticity near one, labour-input elasticities near zero and a sign-unstable Okun sum.
+Ireland, where the statistical office publishes modified domestic demand because
+multinational activity distorts GDP, and Malta also have among the weakest associations
+(table~\ref{tab:countries}). Rejecting the commuter explanation
+does not establish any other. The rival explanation was not tested. Gross value added
+excluding finance, annual national accounts, or modified domestic demand for Ireland would
+test it. Sectoral composition was listed in advance as a hypothesis that could not be
+tested reliably.
 
 \subsection{Do the differences remain under other measures?}
 
@@ -157,11 +182,12 @@ exist. Of these pair-and-measure comparisons:
   \item Netherlands--Luxembourg: \val{cs_pair_NL_LU_h}.
 \end{itemize}
 
-\subsection{Institutions}
+\subsection{Institutions}\label{sec:institutions}
 
 The protocol predicted that stricter employment protection would weaken the unemployment
 response. Spearman correlations across countries were computed with permutation $p$-values,
-Holm-adjusted over six indicators. In two variants they point the other way:
+Holm-adjusted over six indicators in each of three variants. Of the \val{cs_n_corr}
+correlations, \val{cs_n_corr_contra} point the other way at the registered level:
 \begin{itemize}
   \item regular-contract protection against the classical sum: $\rho=$
     \val{cs_eplr_cl_rho} over \val{cs_eplr_cl_n} countries (Holm $p=$
@@ -177,8 +203,9 @@ employment protection does.
 
 \subsection{Comparison with the earlier claims}
 
-Table~\ref{tab:claims} sets the claims that prompted the study against the evidence. No
-claim about Portugal was documented, so none is assessed. Several explanations could not be
+Table~\ref{tab:claims} sets the earlier analysis's three descriptive claims, and the two
+explanations we tested of the kind it suggested, against the evidence. No claim about Portugal was documented, so none
+is assessed. Several explanations could not be
 tested reliably, and the protocol said so before any result:
 \begin{itemize}
   \item the 2012 labour-market reforms in Spain and Portugal, which coincide with the
@@ -211,17 +238,19 @@ Netherlands: delayed response
 \addlinespace
 Luxembourg: weak association
   & Classical sum \val{cl_LU_verdict}; Bayesian rule holds in \val{claim_lu_holds} of
-    \val{by_n_accepted} fits.
+    \val{by_n_accepted} registered fits, but \val{dyn_lu_adf} on the long-run sum in both
+    ARDL amendment fits.
   & Qualified \\
 \addlinespace
-Luxembourg: commuter mismatch explains it
-  & Domestic-minus-resident gap \val{cs_p11} \val{cs_p11_ci}; output per hour absorbs
-    (\val{cs_LU_prod}).
+Explanation: the commuter mismatch
+  & Domestic-minus-resident gap \val{cs_p11} \val{cs_p11_ci}. Output per hour moves with
+    measured GDP (\val{cs_LU_prod}), which GDP measurement error would also produce.
   & Not supported \\
 \addlinespace
-Employment protection weakens the response
-  & Correlations of the opposite sign (\val{cs_eplr_cl_rho}, \val{cs_eplt_noluie_rho}) in
-    two of the registered variants.
+Explanation: employment protection weakens the response
+  & \val{cs_n_corr_contra} of \val{cs_n_corr} registered correlations have the opposite
+    sign at the registered level (\val{cs_eplr_cl_rho}, \val{cs_eplt_noluie_rho}); the
+    rest are not determined.
   & Contradicted (correlation only) \\
 \bottomrule
 \end{tabular}
@@ -235,5 +264,10 @@ Employment protection weakens the response
 employment and the unemployment rate (two-lag sums, 2020--2021 excluded, 95\%
 block-bootstrap intervals). Eurostat publishes no seasonally adjusted quarterly employment
 in persons for Portugal, so its hours per worker and domestic employment are not
-available.}\label{fig:margins}
+available. Portugal's unemployment elasticity, \val{cs_PT_du} \val{cs_PT_du_ci}, has a
+bootstrap interval that crosses zero, while the HAC interval of table~\ref{tab:countries}
+(\val{cl_PT_excl} \val{cl_PT_excl_ci}) does not. The point estimates agree; the
+percentile interval of the block bootstrap is wide and asymmetric, which suggests a few
+influential quarters, whereas the HAC interval relies on normal critical
+values.}\label{fig:margins}
 \end{figure}

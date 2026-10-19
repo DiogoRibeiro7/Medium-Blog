@@ -60,6 +60,14 @@ responses is estimated by LP-IV. Its Anderson--Rubin set
 The set is bounded exactly when the first-stage $|t|$ exceeds the critical value $c$, so an
 unbounded set means the data do not determine the ratio.
 
+\paragraph{Timing.} The shocks are monthly and are summed within each quarter, so a shock
+late in a quarter has little time to act before the quarter ends. Even so, a 10 basis
+point monetary tightening comes with an unemployment rate \val{id_mp_u0} percentage points
+higher in the same quarter (90\% interval \val{id_mp_u0_ci}). A response that fast is
+implausible for a policy shock. It points to timing within the quarter, to aggregation, or
+to news about the economy contained in the policy surprise, and it is a further reason to
+read these local projections cautiously.
+
 \paragraph{Quarterly results.}
 \begin{itemize}
   \item The first stages are weak: $|t|$ is at most \val{id_max_t}, against the
@@ -74,7 +82,7 @@ unbounded set means the data do not determine the ratio.
 \paragraph{Monthly results.} A registered amendment kept the shocks at their native monthly
 frequency, with monthly unemployment and industrial production as outcomes. The ratio is
 then per unit of industrial production, not GDP. The primary sample was restricted to the
-eight countries whose monthly unemployment is a direct survey estimate. That restriction
+\val{mo_n_direct} countries whose monthly unemployment is a direct survey estimate. That restriction
 defines a new assumption, that a month's value contains no later months, which a pre-shock
 placebo tests.
 \begin{itemize}
@@ -130,19 +138,25 @@ of the reduced form, summarised by the robust Bayesian approach of
   \item \emph{Plausibility.} Every posterior draw admits the impact restrictions
     (\val{sr_nonempty}). Imposed also one quarter later, they are admissible in only
     \val{sr_nonempty_h01} of draws, so the data contradict that variant.
-  \item \emph{Demand against technology.} Both sets for the Okun ratio are
-    \val{sr_dem_bounded}: the admissible cumulative GDP response can come arbitrarily close
-    to zero. Demand- and technology-driven ratios cannot be distinguished.
+  \item \emph{Demand against technology.} The demand and technology sets for the Okun
+    ratio are \val{sr_sets}. Demand- and technology-driven ratios cannot be distinguished.
+  \item \emph{Why the ratios are unbounded.} This outcome is close to guaranteed by the
+    design. The signs restrict impact responses only, and the ratio divides by the
+    cumulative GDP response, whose admissible set includes zero (at eight quarters, for
+    demand, \val{sr_dem_gdp8_ci}). The result shows that these restrictions are
+    uninformative about the ratio; it is not evidence about the ratio's size. Bounds on
+    elasticities or narrative sign restrictions would be the next step.
   \item \emph{Labour supply against demand.} They differ at impact only because the
     signs impose it. By eight quarters both robust regions for the unemployment response
-    include zero. The robust region for each shock's share of unemployment's
-    forecast-error variance runs from \val{sr_dem_fevd_lo} to \val{sr_dem_fevd_hi} for
-    demand and from \val{sr_ls_fevd_lo} to \val{sr_ls_fevd_hi} for labour supply.
+    include zero. The robust region for each shock's share of the forecast-error variance
+    of the quarterly change in unemployment (the VAR variable, not the level) runs from
+    \val{sr_dem_fevd_lo} to \val{sr_dem_fevd_hi} for demand and from \val{sr_ls_fevd_lo}
+    to \val{sr_ls_fevd_hi} for labour supply.
   \item \emph{The uniform prior.} It gives sharp-looking ratios (demand \val{sr_dem_uniform},
     technology \val{sr_tech_uniform}), but the sharpness comes from the prior, not from the
     data (figure~\ref{fig:sign}).
-  \item \emph{Recursive orderings.} Reported only as a measure of sensitivity, the 24
-    orderings move the orthogonalised ``GDP shock'' ratio between \val{sr_order_min_h4}
+  \item \emph{Recursive orderings.} Reported only as a measure of sensitivity, the
+    \val{sr_n_orderings} orderings move the orthogonalised ``GDP shock'' ratio between \val{sr_order_min_h4}
     and \val{sr_order_max_h4} at four quarters, depending on whether GDP is ordered before
     unemployment. None of them is causal.
 \end{itemize}
@@ -166,9 +180,31 @@ of the reduced form, summarised by the robust Bayesian approach of
   \item linearity and homogeneity of responses.
 \end{itemize}
 
-\paragraph{Conclusion.} With the public data available for the \eu, none of the strategies
-yields an informative causal Okun coefficient, so every coefficient in this study remains a
-reduced-form association. More informative answers would need:
+\subsection{A post-hoc check of the pandemic window}
+
+The registered rules drop an observation if any period of its variables lies in
+2020--2021. The quarterly window starts at $t-4$, the monthly window at $t-12$ and the VAR
+window at $t-2$. The change at the longest lag, however, is measured from the level one
+period earlier, which can fall in 2021 while the observation is kept. After an external
+review we widened every window by one period. This check was not registered, and the
+registered results remain primary:
+\begin{itemize}
+  \item quarterly: the largest first-stage $|t|$ is \val{ws_q0_max_t} with the registered
+    window and \val{ws_q1_max_t} with the widened one, and \val{ws_q1_unbounded} sets
+    remain unbounded;
+  \item monthly: \val{ws_m0_max_t} and \val{ws_m1_max_t}, with \val{ws_m1_unbounded} sets
+    unbounded;
+  \item sign restrictions: every draw remains admissible (\val{ws_sr_nonempty}), and the
+    demand and technology Okun-ratio regions are \val{ws_sr_regions}.
+\end{itemize}
+No conclusion changes.
+
+\subsection{What the identification study shows}
+
+With the public data available for the \eu, the instruments and restrictions we could
+defend are uninformative about a causal Okun coefficient. That is a statement about these
+designs, not about the size of any causal effect. Every coefficient in this study
+therefore remains a reduced-form association. More informative answers would need:
 \begin{itemize}
   \item utilisation-adjusted quarterly productivity series;
   \item quasi-experimental variation in labour supply;

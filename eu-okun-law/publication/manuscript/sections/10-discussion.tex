@@ -7,63 +7,78 @@ The association is established: outside 2020--2021, faster GDP growth goes with 
 unemployment rate in nearly every member state. Its size is not a single number:
 \begin{itemize}
   \item it depends on whether the pandemic quarters are included;
-  \item it depends on whether the error model absorbs residual persistence and a common
-    European factor;
-  \item the hierarchical sum is smaller than the classical one in \val{by_n_smaller} of
-    \val{n_countries} countries, partly because the two estimate different quantities.
+  \item it depends on the error model, on whether a common European factor is removed,
+    and on how persistence is modelled: the mean country sum runs from \val{by_mu_lo} to
+    \val{by_mu_hi} across accepted specifications, and is \val{dyn_mu} in the model that
+    passes the persistence check;
+  \item the hierarchical sum is smaller than OLS on the same quarters in
+    \val{by_n_smaller} of \val{n_countries} countries, partly because the two estimate
+    different quantities.
 \end{itemize}
 
-\paragraph{Prediction.} The association predicts little that the recent path of
-unemployment does not already contain. The one decided comparison involves the quarter's
-own GDP growth, which a forecaster would not know.
+\paragraph{What the size means.} A mean sum of \val{by_mu} means that one extra percentage
+point of real GDP growth in a single quarter, which leaves output one per cent higher, goes
+with an unemployment rate about \val{by_mu_abs} percentage points lower by the end of the
+second following quarter, beyond the common European cycle. In the same first-difference
+form, \citet{okun1962} estimated about $-0.3$ for the United States; on the same quarters,
+OLS gives \val{by_ES_ols} for Spain.
 
-\paragraph{Causation.} No strategy available with public data identifies a causal Okun
-coefficient for any shock. The coefficients reported here should be read as conditional
-associations: summaries of how unemployment and output moved together in a period with a
-particular mix of shocks.
+\paragraph{Prediction.} Over all target quarters, no registered forecast comparison is
+decided. Outside the pandemic, pooling, GDP lags and the common factor improve forecasts
+by a few per cent. Nothing reliably beats the forecast that the unemployment rate will not
+change.
+
+\paragraph{Causation.} The instruments and restrictions available with public data are
+uninformative about a causal Okun coefficient. The coefficients reported here are
+conditional associations: summaries of how unemployment and output moved together in a
+period with a particular mix of shocks.
 
 \subsection{Positive, negative and unstable results}
 
-\paragraph{Positive.} Results that the registered tests decide:
+\paragraph{Positive.} Results that the registered tests decide and that hold across the
+registered checks:
 \begin{itemize}
   \item a negative association in \val{cl_n_neg_excluded} of \val{n_countries} countries
-    without 2020--2021, robust to the core specifications in \val{cl_n_robust};
-  \item \val{by_n_neg_all} sums credibly negative in every accepted Bayesian fit;
+    without 2020--2021 (\val{cl_n_neg_holm} after a Holm adjustment), robust to the core
+    specifications in \val{cl_n_robust};
   \item Spain's large association, relative to the European mean;
   \item the Spain--Luxembourg and Spain--Netherlands differences, which survive every
     accepted fit and remain when labour input is measured by employment or hours;
   \item a more GDP-elastic output per hour in the Netherlands than in Spain, supported in
-    the primary design and in the \val{cs_p22_settings} sensitivity settings;
-  \item the conditional predictive gain over zero change before the pandemic
-    (\val{pc_e1_zero}).
+    the primary design and in the \val{cs_p22_settings} sensitivity settings.
 \end{itemize}
 
 \paragraph{Negative.} Results where the registered test found nothing:
 \begin{itemize}
-  \item no decided gain from hierarchical pooling, GDP lags or the common factor in
-    one-quarter-ahead forecasts;
-  \item none of the \val{ss_published_holm} published post-2021 changes survives
-    small-sample inference;
+  \item no decided forecast gain over all target quarters;
+  \item none of the \val{ss_published_holm} post-2021 changes from our first classical
+    pass survives small-sample inference;
   \item no informative causal coefficient from external instruments, shift-share or sign
     restrictions;
   \item no sign that Luxembourg's commuters absorb its output fluctuations;
   \item \val{cs_supported} of \val{cs_total} case-study predictions supported.
 \end{itemize}
 
-\paragraph{Unstable.} Results that depend on choices or runs:
+\paragraph{Unstable.} Results that depend on choices, samples or runs:
 \begin{itemize}
-  \item the magnitude of the association, through the pandemic quarters and the error
-    model;
+  \item the magnitude of the association, through the pandemic quarters, the error model
+    and the treatment of persistence;
+  \item the number of countries credibly negative in every accepted fit,
+    \val{by_n_neg_all} or \val{by_n_neg_unpooled}, depending on one fit at the
+    convergence threshold;
   \item \val{by_pairs_primary} credible country differences in the primary fit against
     \val{by_pairs_surviving} in every accepted fit;
+  \item the forecast gains of pooling, GDP lags and the factor, decided only without the
+    pandemic targets;
+  \item the conditional gain over zero change before the pandemic (\val{pc_e1_zero}),
+    which is no longer decided without the quarters with a failed refit;
   \item the Dutch delayed response, which holds in \val{claim_nl_holds} of
-    \val{by_n_accepted} accepted fits;
+    \val{by_n_accepted} accepted fits, and Luxembourg's weak association, which holds on
+    the long-run sum of the ARDL fits but in no registered fit;
   \item Portugal's significance across samples;
   \item two case-study predictions supported only before 2020;
-  \item the employment-protection correlations, each decided in one of three variants;
-  \item the acceptance of two Bayesian sensitivity fits, which differed between the
-    Windows run and its Linux replication. The claim verdicts were identical under both
-    acceptance sets, and the report states the robustness judgements under each.
+  \item the employment-protection correlations, decided in \val{cs_n_corr_contra} of
+    \val{cs_n_corr}.
 \end{itemize}
 
 \subsection{Limitations}
@@ -74,21 +89,44 @@ particular mix of shocks.
   \item The Labour Force Survey's 2021 redesign introduces flagged and unflagged
     discontinuities. The Bayesian models mask the flagged observations, but the Dutch
     phase-in is not flagged.
-  \item Monthly unemployment is a direct estimate in only eight countries.
+  \item Monthly unemployment is a direct estimate in only \val{mo_n_direct} countries. The
+    monthly protocol classifies the German and Dutch series as trends and the Estonian and
+    Portuguese ones as three-month moving averages. If the quarterly series inherit such
+    smoothing, it could produce both the persistence misfit and the Dutch ``delayed''
+    response. We have not checked this against the quarterly survey microdata.
   \item Hours per worker and employment in persons are unavailable for seven countries,
     including Portugal.
+  \item Quarterly GDP measurement error is an untested rival explanation for weak
+    associations, in Luxembourg and possibly in Ireland and Malta (section~\ref{sec:cases}).
 \end{itemize}
 
-\paragraph{Models.}
+\paragraph{Methods.}
 \begin{itemize}
+  \item The classical intervals use Newey--West standard errors with normal critical
+    values on about \val{cl_n_quarters} quarters per country. Neither a bootstrap nor
+    fixed-$b$ critical values were applied to the headline sums.
+  \item The pandemic-excluded headline was chosen after the full-sample estimates had
+    been seen.
+  \item The participation control is a mediator and is mechanically linked to the
+    outcome, yet half of the core robustness specifications include it.
   \item The primary Bayesian model understates the persistence of unemployment changes.
-    The registered amendment that removes this misfit has a common factor correlated with
-    average GDP growth (\val{dyn_factor_corr}), so its country sums measure the association
-    beyond part of the common GDP cycle.
-  \item The post-2021 sample has about seventeen quarters. It is too short to test a
-    change in the association with useful power.
+    The amendment that removes this misfit has a common factor correlated with average
+    GDP growth (\val{dyn_factor_corr}), so its country sums measure the association beyond
+    part of the common GDP cycle.
+  \item The post-2021 sample has about seventeen quarters, too short to test a change in
+    the association with useful power.
   \item Country-level correlations with institutions use at most twenty countries and a
     single year of indicators.
+\end{itemize}
+
+\paragraph{Standard analyses not done.} Several analyses a reader might expect are not in
+this study:
+\begin{itemize}
+  \item the gap form of Okun's law, compared directly with \citet{ball2017okun};
+  \item asymmetry between expansions and contractions;
+  \item an hours-based Okun's law for every country, not just the four case studies;
+  \item a common-correlated-effects mean-group panel;
+  \item a labour-force-weighted EU aggregate.
 \end{itemize}
 
 \subsection{Open questions}
@@ -102,7 +140,8 @@ The study leaves these questions unresolved:
   \item What is the effect on unemployment of a productivity or labour-supply shock in an
     EU country? This needs utilisation-adjusted productivity and quasi-experimental
     variation in labour supply.
-  \item Why does output per hour absorb almost all output fluctuations in Luxembourg?
+  \item Is Luxembourg's weak association a feature of its economy or of its quarterly GDP
+    measurement?
   \item Do temporary contracts carry Spain's employment adjustment? The direction is
     consistent with that view, but the registered test is not decided.
   \item Did the association weaken after 2021? This can only be answered with a longer

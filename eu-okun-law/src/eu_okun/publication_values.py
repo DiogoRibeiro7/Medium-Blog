@@ -101,6 +101,13 @@ def _report_number(path: Path, pattern: str) -> list[float]:
     return [float(g.replace(MINUS, "-")) for g in match.groups()]
 
 
+def _names(items: Sequence[str]) -> str:
+    items = list(items)
+    if not items:
+        return "none"
+    return items[0] if len(items) == 1 else ", ".join(items[:-1]) + " and " + items[-1]
+
+
 def accepted_specs(docs: Path) -> list[str]:
     diagnostics = json.loads((docs / "bayes" / "diagnostics.json").read_text(encoding="utf-8"))
     return [spec for spec, d in diagnostics.items() if d["accepted"]]
@@ -178,6 +185,23 @@ def collect_values(root: Path) -> dict[str, Value]:
                          "docs/review/grid.csv"))
         add(text(f"cl_{geo}_verdict", VERDICTS.get(_one(rob, geo=geo)["verdict"],
                                                    _one(rob, geo=geo)["verdict"]), src))
+    add(text("cl_n_core", _one(rob, geo="AT")["core_estimates"], src))
+    # Holm over the 27 two-sided normal tests of the headline sums (not a registered rule;
+    # it shows how much the 22 depends on testing each country separately).
+    from statistics import NormalDist
+
+    head = [_one(grid, sample="pandemic_excluded", geo=g, gdp_lags="2", participation="False")
+            for g in EU27]
+    pvals = sorted(2 * (1 - NormalDist().cdf(abs(float(r["gdp_sum"]) / float(r["se"]))))
+                   for r in head)
+    holm = 0
+    for i, p in enumerate(pvals):
+        if p > 0.05 / (len(pvals) - i):
+            break
+        holm += 1
+    add(text("cl_n_neg_holm", holm, "docs/review/grid.csv"))
+    add(text("cl_n_quarters", _one(grid, sample="pandemic_excluded", geo="AT", gdp_lags="2",
+                                   participation="False")["n"], "docs/review/grid.csv"))
 
     small = json.loads((docs / "small-sample" / "summary.json").read_text(encoding="utf-8"))
     add(text("ss_published_holm", small["published_holm"]["4"], "docs/small-sample/summary.json"))
@@ -195,6 +219,7 @@ def collect_values(root: Path) -> dict[str, Value]:
                                  r"\[\+?(-?[\d.]+), \+?(-?[\d.]+)\]")
     src = "docs/HIERARCHICAL_BAYES.md (generated from saved posterior draws)"
     add(num("by_mu", mu[0], 3, src, True))
+    add(num("by_mu_abs", abs(mu[0]), 2, src))
     add(interval("by_mu_ci", mu[1], mu[2], 3, src))
     add(num("by_tau", tau[0], 3, src))
     add(interval("by_tau_ci", tau[1], tau[2], 3, src, signed=False))
@@ -267,6 +292,62 @@ def collect_values(root: Path) -> dict[str, Value]:
     md = reg["specifications"]["regime_shift"]["mu_delta"]
     add(num("reg_delta", md["median"], 3, "docs/bayes-regimes/regimes.json", True))
     add(interval("reg_delta_ci", md["low"], md["high"], 3, "docs/bayes-regimes/regimes.json"))
+    tau_delta = _report_number(docs / "BAYES_REGIMES.md",
+                               r"\| `regime_shift` \|[^|]+\|[^|]+\|[^|]+\| \+?([\d.]+) \[")
+    add(num("reg_tau", tau_delta[0], 2, "docs/BAYES_REGIMES.md"))
+
+    # Which conclusions depend on the model and on acceptance ----------------------------
+    add(num("by_lag1_p", check["p_value"]["lag1_autocorrelation"], 3,
+            "docs/bayes/diagnostics.json"))
+    mu_range = _report_number(report, r"across accepted fits the median of mu_theta ranges "
+                                      r"from (-?\d+\.\d+) to (-?\d+\.\d+)")
+    add(num("by_mu_lo", mu_range[0], 2, src, True))
+    add(num("by_mu_hi", mu_range[1], 2, src, True))
+    factor = _report_number(report, r"correlated with average GDP growth \(median (-?[\d.]+)\)")
+    add(num("by_factor_corr", factor[0], 2, src, True))
+    dyn_report = docs / "BAYES_DYNAMICS.md"
+    adf = _report_number(dyn_report, r"`ardl_dynamic_factor` (-?[\d.]+) \[(-?[\d.]+), "
+                                     r"(-?[\d.]+)\]")
+    add(num("dyn_mu", adf[0], 2, "docs/BAYES_DYNAMICS.md", True))
+    add(interval("dyn_mu_ci", adf[1], adf[2], 2, "docs/BAYES_DYNAMICS.md"))
+    add(text("dyn_n_neg", len(dyn["specifications"]["ardl_dynamic_factor"]["credibly_negative"]),
+             "docs/bayes-dynamics/dynamics.json"))
+    for spec, key in (("ardl", "ardl"), ("ardl_dynamic_factor", "adf")):
+        lu = _report_number(dyn_report, rf"\| Luxembourg weak \| `{spec}` \| ([\d.]+) \|")
+        add(num(f"dyn_lu_{key}_p", lu[0], 3, "docs/BAYES_DYNAMICS.md"))
+        add(text(f"dyn_lu_{key}", dyn["specifications"][spec]["claims"]["Luxembourg weak"],
+                 "docs/bayes-dynamics/dynamics.json"))
+    short = _report_number(dyn_report, r"in `ardl_dynamic_factor` the short-run `theta_LU` "
+                                       r"gives ([\d.]+)")
+    add(num("dyn_lu_adf_short_p", short[0], 2, "docs/BAYES_DYNAMICS.md"))
+    unpooled = diagnostics["no_pooling"]
+    add(num("by_unpooled_rhat", unpooled["max_rhat"], 4, "docs/bayes/diagnostics.json"))
+    from eu_okun.review_report import COUNTRY_NAMES
+
+    index = re.search(r"\[(\d+)\]", unpooled["max_rhat_parameter"])
+    if index is None:
+        raise ValueError("Unexpected parameter name in docs/bayes/diagnostics.json")
+    add(text("by_unpooled_country", COUNTRY_NAMES[EU27[int(index.group(1))]],
+             "docs/bayes/diagnostics.json"))
+    with_unpooled = [g for g in robust
+                     if _one(est, spec="no_pooling", geo=g)["sign"] == "negative"]
+    add(text("by_n_neg_unpooled", len(with_unpooled), "docs/bayes/country_estimates.csv"))
+    rep_dir = docs / "bayes" / "replication-linux"
+    rep_diag = json.loads((rep_dir / "diagnostics.json").read_text(encoding="utf-8"))
+    rep_est = _csv(rep_dir / "country_estimates.csv")
+    rep_robust = [g for g in EU27 if all(_one(rep_est, spec=s, geo=g)["sign"] == "negative"
+                                         for s, d in rep_diag.items() if d["accepted"])]
+    add(text("by_n_neg_linux", len(rep_robust),
+             "docs/bayes/replication-linux/country_estimates.csv"))
+    differ = [g for g in robust if g not in with_unpooled]
+    add(text("by_unpooled_differ", _names(differ), "docs/bayes/country_estimates.csv"))
+    add(text("by_unpooled_n_differ", len(differ), "docs/bayes/country_estimates.csv"))
+    p_unpooled = [float(_one(est, spec="no_pooling", geo=g)["p_negative"]) for g in differ]
+    add(num("by_unpooled_p_lo", min(p_unpooled), 2, "docs/bayes/country_estimates.csv"))
+    add(num("by_unpooled_p_hi", max(p_unpooled), 2, "docs/bayes/country_estimates.csv"))
+    ols_clear = [g for g in differ if float(_one(est, spec="primary", geo=g)["classical_high"]) < 0]
+    add(text("by_unpooled_ols", _names(ols_clear), "docs/bayes/country_estimates.csv"))
+    add(text("by_unpooled_ols_n", len(ols_clear), "docs/bayes/country_estimates.csv"))
 
     # Prediction ------------------------------------------------------------------------
     pc = _csv(docs / "predictive" / "comparisons.csv")
@@ -307,6 +388,25 @@ def collect_values(root: Path) -> dict[str, Value]:
         r = _one(fx, model_a=a, model_b=b)
         add(pct(f"fcx_{key}", float(r["ratio"]) - 1, 1,
                 "docs/forecast-comparison/comparisons.csv", True))
+        add(num(f"fcx_{key}_holm", float(r["p_holm"]), 3,
+                "docs/forecast-comparison/comparisons.csv"))
+    gains = sorted(float(r["ratio"]) - 1 for r in fx if r["verdict"] != "not distinguishable")
+    add(pct("fcx_gain_lo", -gains[-1], 1, "docs/forecast-comparison/comparisons.csv"))
+    add(pct("fcx_gain_hi", -gains[0], 1, "docs/forecast-comparison/comparisons.csv"))
+    add(num("fcx_holm_max", max(float(r["p_holm"]) for r in fx
+                                if r["verdict"] != "not distinguishable"), 3,
+            "docs/forecast-comparison/comparisons.csv"))
+    add(text("fc_origins", ffam[0]["quarters"], "docs/forecast-comparison/comparisons.csv"))
+    add(text("fcx_origins", fx[0]["quarters"], "docs/forecast-comparison/comparisons.csv"))
+    add(text("pc_quarters", fam[0]["quarters"], "docs/predictive/comparisons.csv"))
+    ar1 = _one(fc, kind="descriptive", model_a="unemployment_ar1", model_b="zero_change",
+               loss="crps", targets="all")
+    add(pct("fc_ar1_vs_zero", float(ar1["ratio"]) - 1, 1,
+            "docs/forecast-comparison/comparisons.csv", True))
+    nofail = _one(pc, kind="sensitivity", evaluation="E1", model_a="bayes_primary",
+                  model_b="zero_change")
+    add(num("pc_e1_zero_holm_nofail", float(nofail["p_holm"]), 3,
+            "docs/predictive/comparisons.csv"))
 
     # Identification --------------------------------------------------------------------
     ok = _csv(docs / "identification" / "okun_sets.csv")
@@ -330,6 +430,15 @@ def collect_values(root: Path) -> dict[str, Value]:
     mp = _csv(docs / "monthly-identification" / "predictability.csv")
     add(num("mo_pred_oil", float(_one(mp, shock="OIL")["p_value"]), 3,
             "docs/monthly-identification/predictability.csv"))
+    from eu_okun.monthly_data import UNEMPLOYMENT_METHOD
+
+    add(text("mo_n_direct", sum(m == "D" for m in UNEMPLOYMENT_METHOD.values()),
+             "eu_okun.monthly_data.UNEMPLOYMENT_METHOD (MONTHLY_IDENTIFICATION_PROTOCOL.md)"))
+    resp = _csv(docs / "identification" / "responses.csv")
+    u0 = _one(resp, variant="MP", outcome="unemployment", h="0")
+    add(num("id_mp_u0", float(u0["estimate"]), 2, "docs/identification/responses.csv", True))
+    add(interval("id_mp_u0_ci", float(u0["low90"]), float(u0["high90"]), 2,
+                 "docs/identification/responses.csv"))
     fe = _csv(docs / "shift-share" / "feasibility.csv")
     for s in ("P1", "P2", "P3"):
         add(num(f"ss_{s}_t", float(_one(fe, set=s)["expected_t"]), 2,
@@ -355,7 +464,15 @@ def collect_values(root: Path) -> dict[str, Value]:
                 "docs/sign-restrictions/summaries.csv"))
         add(pct(f"sr_{key}_fevd_lo", float(fev["region_lower"]), 0,
                 "docs/sign-restrictions/summaries.csv"))
+    gdp8 = _one(sm, spec="primary", target="demand:gdp:8")
+    add(interval("sr_dem_gdp8_ci", float(gdp8["region_lower"]), float(gdp8["region_upper"]), 2,
+                 "docs/sign-restrictions/summaries.csv"))
+    both = {out[f"sr_{k}_bounded"].raw for k in ("dem", "tech")}
+    add(text("sr_sets", f"both {both.pop()}" if len(both) == 1 else
+             f"{out['sr_dem_bounded'].raw} for demand and {out['sr_tech_bounded'].raw} for "
+             "technology", "docs/sign-restrictions/summaries.csv"))
     orders = _csv(docs / "sign-restrictions" / "orderings.csv")
+    add(text("sr_n_orderings", len(orders), "docs/sign-restrictions/orderings.csv"))
     for h in (4, 8):
         vals = [float(r[f"okun_h{h}"]) for r in orders]
         add(num(f"sr_order_min_h{h}", max(vals), 3, "docs/sign-restrictions/orderings.csv", True))
@@ -395,7 +512,7 @@ def collect_values(root: Path) -> dict[str, Value]:
     el = _csv(docs / "heterogeneity" / "elasticities.csv")
     for geo, measure in (("LU", "prod"), ("LU", "e_dom_pe"), ("LU", "e_res"), ("NL", "prod"),
                          ("ES", "prod"), ("ES", "e_dom"), ("ES", "h"), ("PT", "h"),
-                         ("PT", "dp"), ("NL", "e_dom")):
+                         ("PT", "dp"), ("NL", "e_dom"), ("PT", "du")):
         r = _one(el, geo=geo, measure=measure)
         add(num(f"cs_{geo}_{measure}", float(r["elasticity"]), 2,
                 "docs/heterogeneity/elasticities.csv", True))
@@ -409,6 +526,26 @@ def collect_values(root: Path) -> dict[str, Value]:
         add(num(f"cs_{key}_rho", float(r["rho"]), 2, "docs/heterogeneity/correlations.csv", True))
         add(num(f"cs_{key}_holm", float(r["holm"]), 3, "docs/heterogeneity/correlations.csv"))
         add(text(f"cs_{key}_n", r["n"], "docs/heterogeneity/correlations.csv"))
+    add(text("cs_n_corr", len(cor), "docs/heterogeneity/correlations.csv"))
+    add(text("cs_n_corr_contra", sum(r["verdict"] == "contradicted" for r in cor),
+             "docs/heterogeneity/correlations.csv"))
+
+    # Post-hoc pandemic-window sensitivity (not registered) ------------------------------
+    ws = _csv(docs / "window-sensitivity" / "window_sensitivity.csv")
+    src = "docs/window-sensitivity/window_sensitivity.csv"
+    for design, key in (("quarterly LP", "q"), ("monthly LP", "m")):
+        for margin in ("0", "1"):
+            mine = [r for r in ws if r["design"] == design and r["margin"] == margin]
+            add(num(f"ws_{key}{margin}_max_t",
+                    max(abs(float(r["value"])) for r in mine
+                        if r["statistic"] == "first_stage_t"), 2, src))
+            add(text(f"ws_{key}{margin}_unbounded",
+                     sum(r["value"] != "bounded" for r in mine if r["statistic"] == "set"), src))
+    svar = [r for r in ws if r["design"] == "sign-restricted SVAR" and r["margin"] == "1"]
+    add(pct("ws_sr_nonempty", float(next(r["value"] for r in svar
+                                         if r["statistic"] == "nonempty_share")), 0, src))
+    regions = {r["value"] for r in svar if r["statistic"] == "robust_region"}
+    add(text("ws_sr_regions", f"all {regions.pop()}" if len(regions) == 1 else "mixed", src))
     return out
 
 
@@ -450,7 +587,29 @@ def _snapshot_checks(root: Path) -> list[Check]:
             out.append(Check("snapshot", name, True, "hashes match; processed files re-derive"))
         except Exception as exc:  # noqa: BLE001 - every failure is reported as a failed check
             out.append(Check("snapshot", name, False, f"{type(exc).__name__}: {exc}"))
+    archived = snap / "ci-results-38754743850"
+    try:
+        audit_archived_outputs(archived)
+        out.append(Check("snapshot", "Archived CI outputs, run 38754743850", True,
+                         "hashes match"))
+    except Exception as exc:  # noqa: BLE001 - every failure is reported as a failed check
+        out.append(Check("snapshot", "Archived CI outputs, run 38754743850", False,
+                         f"{type(exc).__name__}: {exc}"))
     return out
+
+
+def audit_archived_outputs(directory: Path) -> None:
+    """Every file of a frozen output snapshot matches its manifest, and nothing is extra."""
+    manifest = json.loads((directory / "manifest.json").read_text(encoding="utf-8"))
+    listed = {f["file"]: f for f in manifest["files"]}
+    present = {p.relative_to(directory).as_posix() for p in directory.rglob("*.json")
+               if p.name != "manifest.json"}
+    if present != set(listed):
+        raise ValueError(f"files differ from the manifest: {sorted(present ^ set(listed))}")
+    for name, f in listed.items():
+        data = (directory / name).read_bytes()
+        if hashlib.sha256(data).hexdigest() != f["sha256"] or len(data) != f["bytes"]:
+            raise ValueError(f"{name} does not match its recorded hash")
 
 
 def _gap_detail(gap: float, tolerance: float) -> str:
@@ -498,6 +657,10 @@ def _consistency_checks(root: Path) -> list[Check]:
     out.append(Check("consistency", "Countries credibly negative in every accepted fit = report",
                      quoted_neg is not None and int(quoted_neg.group(1)) == values[
                          "by_n_neg_all"].raw, f"recomputed {values['by_n_neg_all'].raw}"))
+    for design, registered in (("q", "id_max_t"), ("m", "mo_max_t")):
+        gap = abs(float(values[f"ws_{design}0_max_t"].raw) - float(values[registered].raw))
+        out.append(Check("consistency", f"Window sensitivity at margin 0 = registered "
+                         f"{registered}", gap < 1e-4, _gap_detail(gap, 1e-4)))
     fc = (docs / "FORECAST_COMPARISON.md").read_text(encoding="utf-8")
     out.append(Check("consistency", "Forecast comparisons decided = report",
                      f"{values['fc_decided'].raw} of {values['fc_total'].raw} pre-registered "
@@ -534,7 +697,8 @@ def narrative_quotes(values: Mapping[str, Value]) -> list[tuple[str, str]]:
         ("ROADMAP.md", f"None of the {v['ss_published_holm']} published Holm-significant changes"),
         ("README.md", f"rejects {v['ss_size_normal']} of the time at a nominal 5%"),
         ("docs/IDENTIFICATION_STUDY.md",
-         f"variance spans {v['sr_dem_fevd_lo'].rstrip('%')}-{v['sr_dem_fevd_hi']}"),
+         f"the unemployment change spans {v['sr_dem_fevd_lo'].rstrip('%')}-"
+         f"{v['sr_dem_fevd_hi']}"),
     ]
 
 
