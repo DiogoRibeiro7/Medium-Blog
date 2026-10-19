@@ -115,3 +115,12 @@ and seed `[20261023, index]`. The interval is
   stays below about three minutes; otherwise the test regenerates the main tables only.
 
 ## Change log
+
+- **After the registered run: a diagnostic, not registered.** The null-imposed bootstrap
+  p-values were much larger than the normal ones even for very large t (Spain: t = -7.8,
+  sieve p = 0.009). The cause is a property of the registered design: imposing
+  `theta = 0` moves the omitted GDP effect into the restricted residuals, whose AR(1)
+  therefore exceeds that of the unrestricted residuals (median gap +0.17 before 2020).
+  The report adds the unrestricted AR(1) of every country and explains why the
+  registered p-values understate the evidence for large sums. The registered analysis,
+  its decision rules and its results are unchanged.

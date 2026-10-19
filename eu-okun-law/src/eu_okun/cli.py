@@ -281,6 +281,17 @@ def main(argv: Sequence[str] | None = None) -> int:
     het.add_argument("--output-dir", type=Path, default=Path("results/heterogeneity"))
     het.add_argument("--report", type=Path, default=None)
     het.add_argument("--no-figures", action="store_true")
+    headline = commands.add_parser(
+        "headline-inference", help="Small-sample inference for the classical headline sums "
+                                   "(HEADLINE_INFERENCE_PROTOCOL.md)")
+    headline.add_argument("--data-dir", type=Path,
+                          default=Path("snapshots/eurostat-2026-10-15"))
+    headline.add_argument("--grid", type=Path, default=Path("docs/review/grid.csv"))
+    headline.add_argument("--output-dir", type=Path,
+                          default=Path("results/headline-inference"))
+    headline.add_argument("--report", type=Path, default=None)
+    headline.add_argument("--no-size", action="store_true",
+                          help="Skip the size study (for a quick check)")
     window = commands.add_parser(
         "window-sensitivity", help="Post-hoc: identification results with the pandemic "
                                    "window widened by one period (not pre-registered)")
@@ -695,6 +706,19 @@ def main(argv: Sequence[str] | None = None) -> int:
         decided = [t for t in comparison.family if t.verdict != "not distinguishable"]
         print(f"Predictive report written to {args.report or args.output_dir}; "
               f"{len(decided)} of {len(comparison.family)} pre-registered comparisons decided")
+        return 0
+    if args.command == "headline-inference":
+        from eu_okun.headline_inference import write_report as write_headline
+
+        try:
+            hr = write_headline(args.data_dir, args.grid, args.output_dir, args.report,
+                                size=not args.no_size)
+        except (EurostatDataError, FileNotFoundError, ValueError, OSError, KeyError) as exc:
+            parser.exit(2, f"Headline inference failed: {exc}" + chr(10))
+        hs = hr.summary()
+        print(f"Negative under both bootstraps: {hs['bootstrap_negative']} of "
+              f"{hs['countries']} (normal reference: {hs['normal_negative']}); after Holm "
+              f"{hs['bootstrap_negative_holm']} (normal: {hs['normal_negative_holm']})")
         return 0
     if args.command == "window-sensitivity":
         from eu_okun.window_sensitivity import run as run_window_sensitivity
