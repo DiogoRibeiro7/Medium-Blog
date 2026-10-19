@@ -10,6 +10,8 @@ on:
     paths:
       - "eu-okun-law/**"
       - ".github/workflows/eu-okun-law-ci.yml"
+permissions:
+  contents: read
 
 jobs:
   validate:
