@@ -378,3 +378,17 @@ Robins, J. M., Hernán, M. A. and Brumback, B. (2000). Marginal Structural Model
 Robins, J. M., Rotnitzky, A. and Zhao, L. P. (1994). Estimation of Regression Coefficients When Some Regressors Are Not Always Observed. *Journal of the American Statistical Association*, 89(427), 846–866. https://doi.org/10.1080/01621459.1994.10476818
 
 VanderWeele, T. J. (2015). *Explanation in Causal Inference: Methods for Mediation and Interaction*. Oxford University Press.
+
+## Scientific audit addendum: an explicit saturated marginal structural model
+
+The original sequential-IPW contrast can be expressed as a saturated marginal structural model for the four possible treatment histories. Consider
+
+\[
+E[Y^{a_0,a_1}]=\beta_0+\beta_1 a_0+\beta_2 a_1+\beta_3 a_0a_1.
+\]
+
+The causal contrast between sustained treatment and sustained non-treatment is \(\beta_1+\beta_2+\beta_3\). Fitting this model by weighted least squares with inverse *joint* treatment-history probabilities assigns a fitted mean to each of the four observed histories. In particular, the fitted values for histories (1,1) and (0,0) are precisely the corresponding weighted group means. Their difference is therefore **algebraically equivalent** to the normalized regime-IPW difference already reported in this article. It is not a new statistically independent estimator.
+
+I tested that equivalence with the original data-generating process, random seed, 160 Monte Carlo repetitions and 2,200 individuals per replicate. Mean estimates were 3.3539826283 for both approaches, with RMSE 0.2038519483 against the true effect 3.36. The maximum absolute discrepancy between the two estimates over all replications was approximately \(4.0\times10^{-15}\), attributable to floating-point arithmetic.
+
+The additional files `validate_explicit_msm.py` and `msm_validation_results.csv` reproduce and check this comparison. This validation clarifies the model implied by the original analysis but does **not** demonstrate superior accuracy or independent confirmation of the assumptions. Because the MSM is saturated for a two-decision binary treatment history, the method is equivalent to estimating all four weighted history-specific means. A parsimonious MSM, a more complex dynamic treatment regime, and robust inference for its fitted parameters would require further study.
