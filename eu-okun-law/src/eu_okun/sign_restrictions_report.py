@@ -184,7 +184,8 @@ def render(review: SignReview, assets: str, command: str) -> str:
                        for k in SHOCKS)
     lines += [
         f"- **Labour supply against demand.** Imposed on impact; {q2_text(p)}. Share of "
-        f"unemployment's forecast-error variance at h = {FEVD_HORIZON} (robust region): "
+        f"the forecast-error variance of the unemployment change at h = {FEVD_HORIZON} (robust "
+        "region): "
         f"{shares}.",
     ]
     finite = [r for r in review.orderings if all(math.isfinite(r[f"okun_h{h}"])
@@ -266,7 +267,8 @@ def render(review: SignReview, assets: str, command: str) -> str:
     rows = [[SHOCK_LABELS[k], means(p.summary(f"{k}:fevd_du:8"), 2),
              region(p.summary(f"{k}:fevd_du:8"), 2), single(p.summary(f"{k}:fevd_du:8"), 2)]
             for k in SHOCKS]
-    lines += [f"Share of unemployment's forecast-error variance at h = {FEVD_HORIZON}:", ""]
+    lines += ["Share of the forecast-error variance of the unemployment change (the VAR "
+              f"variable, not the level) at h = {FEVD_HORIZON}:", ""]
     lines += _table(["Shock", "Set of posterior means", "Robust 90% region",
                      "Uniform prior: median [90%]"], rows, "lrrr")
     lines += [f"Verdict: {q2_text(p)}.", ""]

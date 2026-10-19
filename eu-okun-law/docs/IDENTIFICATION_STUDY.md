@@ -12,7 +12,7 @@ generated in [IDENTIFICATION_RESULTS.md](IDENTIFICATION_RESULTS.md).
 | Question | Decision |
 | --- | --- |
 | Do demand-driven and productivity-driven changes in GDP have different employment effects? | **Only half answerable.** A common euro-area *demand* shock (ECB policy surprises) and a common *oil supply* shock (OPEC announcement surprises) are identified. No credible quarterly instrument exists for *productivity* shocks in EU countries. A sign-restricted SVAR that defines a technology shock by assumption was estimated with robust Bayesian inference ([SIGN_RESTRICTIONS_RESULTS.md](SIGN_RESTRICTIONS_RESULTS.md)). Demand- and technology-driven Okun ratios are **not distinguishable**: both identified sets are unbounded at 4 and 8 quarters. |
-| Can labour-supply shocks be distinguished from aggregate-demand shocks? | **No, with public data.** There is no defensible instrument for labour-supply shocks. Under sign restrictions the two shocks differ at impact only because that is assumed. By 8 quarters both unemployment responses include zero, and each shock's share of unemployment variance spans 0-96% ([SIGN_RESTRICTIONS_RESULTS.md](SIGN_RESTRICTIONS_RESULTS.md)). |
+| Can labour-supply shocks be distinguished from aggregate-demand shocks? | **No, with public data.** There is no defensible instrument for labour-supply shocks. Under sign restrictions the two shocks differ at impact only because that is assumed. By 8 quarters both unemployment responses include zero, and each shock's share of the variance of the unemployment change spans 0-96% ([SIGN_RESTRICTIONS_RESULTS.md](SIGN_RESTRICTIONS_RESULTS.md)). |
 | Under which assumptions are country-specific GDP shocks identifiable? | **With an instrument that moves one country's GDP and affects its unemployment only through GDP. None exists for the EU-27.** The most defensible public candidate, distant foreign demand (shift-share), was checked under a pre-registered feasibility rule. Its expected first-stage t is 0.19 against the threshold of 3.16, so it was not estimated ([SHIFT_SHARE_FEASIBILITY.md](SHIFT_SHARE_FEASIBILITY.md)). Only the heterogeneous responses of countries to common, externally identified shocks are estimable. |
 | Do the data justify causal claims? | **Not about the GDP-unemployment relationship.** Identification of the two common shocks is defensible, but on 2009-2025 quarterly data the shock-conditional Okun coefficients are not determined (unbounded Anderson-Rubin sets), and the primary oil series fails its predictability test (section 7.1). A pre-registered monthly amendment with industrial production and monthly unemployment does not change this: its first stages are no stronger, and every primary ratio set is unbounded (section 7.2). Every Okun coefficient estimated in this study remains a reduced-form association. |
 
@@ -392,7 +392,8 @@ any estimate. Results are in [SIGN_RESTRICTIONS_RESULTS.md](SIGN_RESTRICTIONS_RE
   - The unemployment responses differ in sign at impact by assumption.
   - At 8 quarters, both robust regions include zero: labour supply [-0.24, +0.79] pp,
     demand [-0.80, +0.07] pp.
-  - Each shock's share of unemployment's forecast-error variance spans 0-96%.
+  - Each shock's share of the forecast-error variance of the unemployment change
+    spans 0-96%.
 - **Prior dominance made visible.** The usual uniform-rotation posterior gives sharp
   Okun ratios: demand -0.43 [-1.16, -0.16], technology -0.55 [-1.45, -0.17]. The
   identified sets show that this sharpness comes from the prior over rotations, not from
