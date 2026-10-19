@@ -78,6 +78,7 @@ class Settings:
     first_origin: str = FIRST_ORIGIN
     sample: str = "primary"      # "primary": group D countries; "all": every member
     du_controls: bool = True     # False: lags of the shock and of dip only
+    pandemic_margin: int = 0     # months added before t-12 in the pandemic window
 
 
 PRIMARY = Settings()
@@ -176,7 +177,7 @@ def lp_design(arrays: MonthlyArrays, shock: Mapping[str, float], h: int, spec: S
     pandemic = np.asarray([PANDEMIC[0] <= m <= PANDEMIC[1] for m in arrays.months])
     cum = np.concatenate([[0], np.cumsum(pandemic)])
     end = ts + (0 if placebo else h) + 1
-    touches = (cum[end] - cum[ts - pre]) > 0
+    touches = (cum[end] - cum[np.maximum(ts - pre - settings.pandemic_margin, 0)]) > 0
     base = (months[ts] >= settings.first_origin) & np.all(np.isfinite(shocks), axis=1)
     if settings.exclude_pandemic:
         base &= ~touches

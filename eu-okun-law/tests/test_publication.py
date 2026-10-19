@@ -31,22 +31,55 @@ MANUSCRIPT = PUB / "manuscript"
 SECTIONS = sorted((MANUSCRIPT / "sections").glob("*.tex"))
 TEMPLATE = PUB / "medium" / "article.template.md"
 
-# Constants fixed by the protocols (thresholds, prior scales), not results.
-PROTOCOL_CONSTANTS = {"0.05", "0.1", "0.2", "0.25", "0.3", "0.5", "0.95", "1.01", "3.16"}
-NUMBER = re.compile(r"(?<![\w.])[0-9]+\.[0-9]+|(?<![\w.])[0-9]+(?=%)")
+# Numbers fixed by design (protocol thresholds, prior scales, horizons, lags, sampler
+# settings, interval levels) or quoted from the literature. Anything else in the
+# hand-written text must come from the values registry.
+DESIGN_CONSTANTS = {
+    "0.05", "0.1", "0.2", "0.25", "0.3", "0.5", "0.95", "1.01", "3.16",   # rules, priors
+    "0", "1", "2", "4", "8", "12", "24",                                   # lags, horizons
+    "5", "90", "95",                                                       # levels (%)
+    "400", "1000", "3000",                                                 # sampler
+    "10",                                                                  # 10 bp, F = 10
+    "-0.3",                                                                # Okun (1962)
+}
+NUMBER = re.compile(r"(?<![\w.\-])-?\d+(?:\.\d+)?")
+# Counts written as words, checked against the values they describe.
+WORD_CLAIMS = [
+    ("the only decided comparison", "pc_decided", 1),
+    ("none of the registered", "fc_decided", 0),
+    ("no registered forecast comparison is decided", "fc_decided", 0),
+    ("the single decided gain", "pc_decided", 1),
+]
+
+
+def _strip(text: str, tex: bool) -> str:
+    """Text without comments, maths, macros' arguments, values, years and links."""
+    if tex:
+        text = re.sub(r"(?<!\\)%.*", "", text)
+        text = re.sub(r"\\verb\|[^|]*\|", " ", text)
+        text = re.sub(r"\\begin\{(verbatim|equation|align)\}.*?\\end\{\1\}", " ", text,
+                      flags=re.S)
+        text = re.sub(r"\\\[.*?\\\]", " ", text, flags=re.S)
+        text = re.sub(r"\\val\{[^}]*\}", " ", text)
+        text = re.sub(r"[0-9.]+\\textwidth", " ", text)
+        text = re.sub(r"\\(label|ref|eqref|cite[pt]?|citetalias|input|includegraphics|"
+                      r"addlinespace|setlength)(\[[^]]*\])?\{[^}]*\}", " ", text)
+        text = text.replace("\\%", "%")
+    text = re.sub(r"\$[^$]*\$", " ", text)
+    text = PLACEHOLDER.sub(" ", text)
+    text = re.sub(r"\]\([^)]*\)", "]", text)
+    text = re.sub(r"\b(?:19|20)\d\d(?:-Q\d|-\d\d)?\b", " ", text)
+    text = re.sub(r"\bEU-27\b|\b\w+-\d+\b", " ", text)
+    # Names and labels that contain numbers: list numbering, headings, an index base,
+    # a version and an operating system.
+    text = re.sub(r"(?m)^\s*#*\s*\d+\.\s", " ", text)
+    text = re.sub(r"=\d+|\bversion \d+|\bWindows \d+", " ", text)
+    return text
 
 
 @pytest.fixture(scope="module")
 def values() -> dict[str, Value]:
     return collect_values(ROOT)
-
-
-def _tex_body(path: Path) -> str:
-    """Section text without comments, figure widths or label/ref arguments."""
-    body = re.sub(r"(?<!\\)%.*", "", path.read_text(encoding="utf-8"))
-    body = re.sub(r"[0-9.]+\\textwidth", "", body)
-    return re.sub(r"\\(label|ref|eqref|cite[pt]?|citetalias|input|includegraphics)"
-                  r"(\[[^]]*\])?\{[^}]*\}", "", body)
 
 
 def test_every_val_in_the_manuscript_is_defined(values: dict[str, Value]) -> None:
@@ -66,12 +99,23 @@ def test_every_placeholder_in_the_medium_template_is_defined(values: dict[str, V
 
 @pytest.mark.parametrize("path", [*SECTIONS, TEMPLATE], ids=lambda p: p.name)
 def test_no_result_is_typed_by_hand(path: Path) -> None:
-    body = _tex_body(path) if path.suffix == ".tex" else path.read_text(encoding="utf-8")
-    body = PLACEHOLDER.sub("", body)
+    body = _strip(path.read_text(encoding="utf-8"), path.suffix == ".tex")
     found = {m.group(0) for m in NUMBER.finditer(body)}
-    # Percentages in the Markdown are interval levels (90%, 95%) and the 5% test level.
-    allowed = PROTOCOL_CONSTANTS | {"5", "90", "95"}
-    assert sorted(found - allowed) == [], "use \\val{} or {{}} for results"
+    assert sorted(found - DESIGN_CONSTANTS) == [], "use \\val{} or {{}} for results"
+
+
+def test_counts_written_as_words_match_the_values(values: dict[str, Value]) -> None:
+    text = " ".join(re.sub(r"\s+", " ", p.read_text(encoding="utf-8"))
+                    for p in [*SECTIONS, TEMPLATE])
+    for phrase, key, expected in WORD_CLAIMS:
+        if phrase in text:
+            assert values[key].raw == expected, (phrase, key)
+
+
+def test_strip_keeps_numbers_in_prose() -> None:
+    assert NUMBER.findall(_strip("in 22 of 27 countries, $t-4$, 2016--2019", True)) == [
+        "22", "27"]
+    assert NUMBER.findall(_strip("gains of 3.1\\% in EU-27 (\\val{x})", True)) == ["3.1"]
 
 
 def test_values_are_read_from_the_committed_results(values: dict[str, Value]) -> None:

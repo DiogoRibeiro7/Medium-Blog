@@ -145,3 +145,9 @@ x[i,t+h] - x[i,t-1] = a_i^h + b^h s[t] + sum_{l=1..4} ( c_l^h s[t-l] + d_l^h du[
   - Under the null the shock is independent of the lagged regressors, so its variance
     cannot depend on them and the classical F-test is valid. It is used; a unit test
     checks its size by simulation.
+- **After the results, 2026-10-19: a post-hoc check, not registered.** An external review
+  noted that the change at the longest lag is measured from the level one period before
+  the start of the pandemic window, so that level can fall in 2021 while the observation
+  is kept. The registered rule is unchanged and its results remain primary. A labelled
+  sensitivity widens the window by one period (`eu-okun window-sensitivity`, results in
+  [docs/WINDOW_SENSITIVITY.md](docs/WINDOW_SENSITIVITY.md)). No conclusion changes.

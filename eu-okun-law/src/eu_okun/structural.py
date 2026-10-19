@@ -80,6 +80,9 @@ class Settings:
     lags: int = LAGS
     exclude_pandemic: bool = True
     driscoll_kraay: bool = False
+    # Quarters added before t-4 in the pandemic window. The protocol's window (0) covers
+    # the quarters of every variable; 1 also covers the level behind the lag-4 change.
+    pandemic_margin: int = 0
 
 
 PRIMARY = Settings()
@@ -160,7 +163,8 @@ def lp_design(arrays: PanelArrays, shock: Mapping[str, float], h: int, spec: Sho
             quarter = q[t]
             if spec.euro_area_only and not in_euro_area(geo, quarter):
                 continue
-            if settings.exclude_pandemic and touches_pandemic(q[max(0, t - 4): t + h + 1]):
+            start = max(0, t - 4 - settings.pandemic_margin)
+            if settings.exclude_pandemic and touches_pandemic(q[start: t + h + 1]):
                 continue
             shocks = [shock[q[t - lag]] for lag in range(lags + 1) if q[t - lag] in shock]
             if len(shocks) != lags + 1:

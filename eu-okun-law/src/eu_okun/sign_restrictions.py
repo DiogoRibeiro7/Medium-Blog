@@ -66,6 +66,7 @@ class Spec:
     lags: int = 2
     exclude: tuple[str, ...] = ()
     exclude_pandemic: bool = True
+    pandemic_margin: int = 0     # quarters added before t-lags in the pandemic window
 
 
 PRIMARY = Spec("primary", "Primary")
@@ -192,7 +193,7 @@ def var_rows(data: VarData, spec: Spec) -> tuple[np.ndarray, np.ndarray, np.ndar
         if geo in spec.exclude:
             continue
         for t in range(spec.lags, len(data.quarters)):
-            window = data.quarters[t - spec.lags: t + 1]
+            window = data.quarters[max(0, t - spec.lags - spec.pandemic_margin): t + 1]
             if spec.exclude_pandemic and any(PANDEMIC[0] <= q <= PANDEMIC[1] for q in window):
                 continue
             block = data.x[i, t - spec.lags: t + 1]

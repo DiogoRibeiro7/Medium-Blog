@@ -9,11 +9,15 @@ place \citep{ball2017okun}.
 \paragraph{Motivation.} This study was prompted by a reported hierarchical Bayesian analysis
 of the \eu\ for 2009--2026. That analysis described Spain as having a large association
 between GDP growth and unemployment, the Netherlands as having a delayed response, and
-Luxembourg as having a weak one, and it suggested institutional and measurement
-explanations. We do not have that analysis's code, data vintage or numerical estimates. We
-therefore treat its statements as hypotheses, recorded before any of our own estimates in
-the pre-registered protocol of the Bayesian stage (Appendix~\ref{app:prereg}), and
-examine them independently.
+Luxembourg as having a weak one, and it suggested measurement and institutional
+explanations. We test two explanations of that kind: a mismatch between production by
+cross-border commuters and resident unemployment in Luxembourg, and employment
+protection. We do not have that analysis's code, data vintage or numerical
+estimates. We therefore treat its statements as hypotheses and examine them
+independently. The three descriptive claims were written into the protocol of the
+Bayesian stage before its estimates, and the two explanations into the protocol of the
+case study (Appendix~\ref{app:prereg}). Portugal, about which no claim was made, is
+included as a comparison for Spain.
 
 \paragraph{Three questions.} We keep three questions apart throughout.
 \begin{enumerate}
@@ -29,9 +33,10 @@ A large and stable association need not predict well; a useful predictor need no
 causal; and a causal effect of one kind of shock need not equal the reduced-form Okun
 coefficient, which averages over all shocks of a period (section~\ref{sec:background}).
 
-\paragraph{Approach.} Every analysis was written down before it was run. Each
-protocol is committed and pushed before estimation, and each protocol's change log records
-any later clarification with its reason. The data are frozen Eurostat and OECD snapshots
+\paragraph{Approach.} Each stage was registered before its own estimation, sequentially,
+on the same data: its protocol was committed and pushed before it was run, and its change
+log records any later clarification with its reason. Later stages were designed knowing
+the results of earlier ones (Appendix~\ref{app:prereg}). The data are frozen Eurostat and OECD snapshots
 whose raw responses are hashed and re-derived by an audit. Every number in this article is
 read by code from the committed result tables (Appendix~\ref{app:repro}). The work
 proceeded in stages:
@@ -48,15 +53,16 @@ proceeded in stages:
   \item The negative association is well established outside 2020--2021: in
     \val{cl_n_neg_excluded} of \val{n_countries} countries the two-lag sum has a 95\%
     interval below zero.
-  \item Its magnitude depends on the sample and the error model, and country rankings are
-    not established.
-  \item In one-quarter-ahead forecasts, neither the association nor hierarchical pooling
-    gives gains that the registered tests distinguish from sampling variation.
-  \item No defensible identification strategy delivers an informative causal Okun
-    coefficient with the available public data.
+  \item Its magnitude depends on the sample, the error model and the treatment of
+    persistence, and country rankings are not established.
+  \item Over all target quarters, no registered forecast comparison is decided. Without
+    the pandemic targets, pooling, GDP lags and the common factor give small gains, but
+    nothing reliably beats a forecast of no change.
+  \item With the available public data, the instruments and restrictions we could defend
+    are uninformative about a causal Okun coefficient.
   \item Of the three earlier claims, Spain's is supported, while the Dutch and Luxembourg
-    claims are qualified. The measurement explanation proposed for Luxembourg is not
-    supported.
+    claims are qualified. The commuter explanation for Luxembourg is not supported, and
+    the employment-protection explanation is contradicted as a correlation.
 \end{itemize}
 
 \paragraph{Outline.} Section~\ref{sec:background} sets out Okun's law and the accounting

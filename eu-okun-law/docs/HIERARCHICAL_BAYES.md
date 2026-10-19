@@ -224,7 +224,7 @@ Replication of the Bayesian fits on Linux: the same snapshot, lock file, seed an
 | `lags_4` | accepted | accepted | 0.004 |
 | `pandemic_excluded` | accepted | accepted | 0.003 |
 
-An independent run on a second platform (section 9) reproduces posterior medians within 0.004 where both runs accept a fit. Acceptance differs for `strong_pooling` and `no_pooling`, which sit at the R-hat threshold. Countries credibly negative in every accepted fit: 22 here, 15 under that run's acceptance set; the difference is BE, DE, HU, IE, NL, PL and RO. Claim verdicts are identical. Countries whose credible negativity depends on including the unpooled fit are credibly negative only when estimates borrow strength across countries; their sign is supported by partial pooling, not by their own data alone.
+An independent run on a second platform (section 9) reproduces posterior medians within 0.004 where both runs accept a fit. Acceptance differs for `strong_pooling` and `no_pooling`, which sit at the R-hat threshold. Countries credibly negative in every accepted fit: 22 here, 15 under that run's acceptance set; the difference is BE, DE, HU, IE, NL, PL and RO. Claim verdicts are identical. The robust count therefore depends on whether the unpooled fit is accepted. That fit keeps the error model and the common factor; under it, BE, DE, HU, IE, NL, PL and RO are not credibly negative. This does not mean that their own data show no association: OLS on the same quarters excludes zero (95% HAC) for HU, IE, NL, PL and RO.
 
 ## 10. Limitations
 

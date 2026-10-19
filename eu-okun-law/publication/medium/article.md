@@ -1,156 +1,115 @@
-# Okun's Law in the European Union: What the Data Can and Cannot Say
+# Okun's Law Across the EU, 2009–2026
 
-*Association, prediction and the limits of causal identification in 27 countries, 2009–2026*
+*How closely unemployment follows growth in 27 countries, what that predicts, and what it cannot tell us about cause*
 
-Okun's law says that unemployment falls when output grows faster than usual and rises when it grows more slowly. It is one of the most quoted relations in macroeconomics. Its size, though, varies across countries and periods, and what it means depends on what moves output in the first place.
+When an economy grows faster than usual, unemployment tends to fall, and when growth stalls, unemployment rises. Arthur Okun put a number on this in 1962. In the form I use here, which relates the quarterly change in the unemployment rate to quarterly GDP growth, his estimate for the United States was about −0.3. The relation has carried his name ever since, and it is quoted as if it were a constant of nature. It is not. Its size varies from country to country and from decade to decade, and what it means depends on what moved output in the first place.
 
-This article summarises a reproducible study of the relation in the 27 member states of the European Union. The full manuscript, with the mathematics, the bibliography and every table, is in the project repository. Every number below is read by code from the same committed result tables as the manuscript.
+This piece reports what a reproducible study of the 27 member states of the European Union found about that relation between 2009 and 2026. The full manuscript, with the mathematics, every table and the bibliography, is in the project repository. Every number below is read by code from the same result tables as the manuscript, so the two cannot drift apart.
 
-## Why another look
+## Where this started
 
-The study began with a reported hierarchical Bayesian analysis that made three claims:
+The study began with an earlier hierarchical Bayesian analysis of the same countries and period. It described Spain as having a large association between growth and unemployment, the Netherlands as having a delayed response and Luxembourg as having a weak one, and it suggested measurement and institutional explanations. I never had that analysis's code, data vintage or estimates, so I treated its statements as hypotheses to examine rather than results to reproduce. I also tested two explanations of the kind it suggested: that cross-border commuters distort Luxembourg's numbers, and that employment protection weakens the response. Portugal was added as a comparison for Spain, two economies hit by the same crises with different labour markets. No claim about Portugal was ever made.
 
-- Spain has a large association between GDP growth and unemployment.
-- The Netherlands has a delayed response.
-- Luxembourg has a weak one.
+Three questions are easy to blur and are kept apart throughout. How strongly do growth and unemployment move together? Does that help anyone forecast unemployment? And is any of it the causal effect of something that moves output? A strong association need not forecast well, a useful forecast need not be causal, and an Okun coefficient averages over every kind of shock that hit the economy in the period, so it need not equal the effect of any one of them.
 
-We do not have that analysis's code, data or estimates. So we treated the three claims as hypotheses, wrote down how each would be judged, and only then estimated anything.
+The data are official Eurostat and OECD series, downloaded in October 2026 and frozen, with every raw file hashed so that anyone can check they have the same inputs. Each stage of the analysis had a written protocol, committed to the repository before that stage was run. That protects each stage's decision rules against its own results. It does not protect them against what earlier stages had already shown, because the stages were designed one after another on the same data, and I say so wherever it matters.
 
-## Three questions, kept apart
+## The association holds, outside the pandemic
 
-1. **Association.** How strongly do GDP growth and the change in the unemployment rate move together in each country?
-2. **Prediction.** Does that association help forecast unemployment?
-3. **Causation.** Is any part of it the effect of an identified shock that moves output?
+The headline measure adds up the coefficients on current growth and two lags. It is the total change in the unemployment rate, in percentage points, that goes with one extra percentage point of quarterly GDP growth.
 
-These can have different answers. A strong association need not forecast well. A useful predictor need not be causal. And an Okun coefficient averages over every kind of shock that hit the economy in the period, so it need not equal the effect of any one of them.
+Leave out 2020 and 2021 and the sum has a 95% interval below zero in 22 of 27 countries. Testing the countries one at a time flatters that count a little: with a Holm adjustment across them, 21 remain. In 17 countries every one of the 24 core specifications agrees in sign and excludes zero.
 
-## How the study was run
-
-- **Frozen data.** Official Eurostat and OECD data were downloaded in October 2026 and frozen. Every raw response is hashed with SHA-256, and an audit re-derives each panel from the raw files.
-- **Registered before estimation.** Each analysis has a protocol that was committed and pushed before any estimate. Later clarifications are recorded in a change log with their reasons.
-- **Replicated.** The Bayesian and predictive analyses were run on Windows and replicated on Linux by GitHub Actions.
-
-## 1. The association is real outside the pandemic
-
-The headline measure is the sum of the coefficients on current GDP growth and two lags, in percentage points of unemployment per percent of GDP growth.
-
-- **Without 2020–2021**, the sum is negative with a 95% interval below zero in 22 of 27 countries. In 17 countries every core specification agrees.
-- **With the pandemic quarters**, the sum moves towards zero in 20 countries. Those eight quarters supply a median 78% of the variation in GDP growth, while job-retention schemes kept unemployment from following output. A full-sample coefficient mostly describes the pandemic.
+The pandemic changes the picture. Including those eight quarters moves the sum towards zero in 20 countries. They hold a median 78% of all the variation in GDP growth in the sample, and job-retention schemes kept people employed while output collapsed and rebounded. A coefficient estimated over the whole period mostly describes the pandemic. Leaving it out of the headline was my choice, made after seeing the full-sample estimates, although the plan had listed that comparison from the start.
 
 ![Classical sums with and without 2020–2021](figures/fig2_pandemic.png)
 
-*Classical two-lag sums: full sample against the sample without 2020–2021. For negative sums, points above the diagonal are closer to zero with the pandemic included.*
+*Classical two-lag sums: full sample against the sample without 2020–2021. For negative sums, a point above the diagonal is closer to zero once the pandemic is included.*
 
-**A hierarchical Bayesian model** lets countries borrow strength from one another. It also models what the classical regressions leave in the residuals: heavy tails, persistence and a common European factor.
+## How large is it?
 
-- The average country sum is −0.198 (90% interval [−0.254, −0.145]).
-- The between-country standard deviation is 0.126.
-- 22 countries are credibly negative in every accepted specification.
+A hierarchical Bayesian model lets countries borrow strength from one another. It also models what the simple regressions leave behind: heavy-tailed shocks, persistence in unemployment and a common European factor that moves every country at once. Removing that factor changes the question. The model measures the association with each country's own growth beyond the common European cycle, and the factor itself tracks average GDP growth closely (a correlation of −0.60).
 
-The Bayesian sums are smaller in magnitude than OLS on the same quarters in 25 of 27 countries. Part of that is pooling. Part is that the model's sum excludes the common European cycle, so the two estimate different things.
+In the main specification, the average country sum is −0.198. In plain terms, one extra percentage point of growth in a single quarter, which leaves output about one per cent higher, goes with an unemployment rate about 0.20 points lower by the end of the second following quarter. That is smaller than Okun's original figure, partly because the common European cycle has been taken out.
 
-![Country sums, classical and Bayesian](figures/fig1_countries.png)
+That number should not be read as the answer. The main model fails one of its own checks: it understates how persistent changes in unemployment are. Across the accepted specifications the average runs from −0.30 to −0.18, and the amended model that does reproduce the persistence, and fits better, gives −0.17 for the long-run sum. The honest summary is a range, from −0.17 to −0.30.
 
-*Orange: OLS without 2020–2021 with 95% intervals. Blue: hierarchical posterior medians, 2009–2019, with 90% intervals. Alphabetical; no ranking implied.*
+![Country sums, classical and Bayesian, on the same quarters](figures/fig1_countries.png)
 
-**Did the relation weaken after 2021?** An earlier analysis reported 14 significant post-2021 changes. With about seventeen quarters, the usual normal test is unreliable: in a size study it rejected a true null 22.8% of the time at a nominal 5%. A bootstrap test held its size (4.8%), and under it 0 of the changes survive.
+*Two-lag sums for 2009–2019 on the same quarters, both with 90% intervals. Orange: ordinary least squares. Blue: the hierarchical model, which excludes the common European factor, so the two are not expected to coincide. Alphabetical; no ranking implied.*
 
-## 2. Rankings are not established
+Counting countries is just as fragile. 22 countries are credibly negative in every accepted specification. That count depends on whether one unpooled fit is accepted, and it narrowly missed the convergence threshold (1.0106 against 1.01) on Slovakia's persistence coefficient. A replication run on another platform accepted it, and with it the count falls to 15. The 7 countries in between are not short of evidence. Plain regressions on the same quarters exclude zero for HU, IE, NL, PL and RO. They fall short only in the model without pooling.
 
-Estimates are uncertain and correlated through common shocks, so a league table of point estimates is misleading.
+Ranking countries is not possible either. The median 90% interval for a country's rank spans 15 of 27 places. Of 351 country pairs, 99 differ credibly in the main model, but only 59 do so in every accepted specification.
 
-- The median 90% interval for a country's rank spans 15 of 27 places.
-- 99 of 351 country pairs differ credibly in the primary model, but only 59 in every accepted specification.
+## A small gain in forecasting, hidden by the pandemic
 
-## 3. The association barely helps forecasting
+Two comparisons, both registered in advance, asked whether any of this helps predict unemployment. They scored whole predictive distributions and refitted every model at every forecast origin, using only data from before each target quarter, though in today's revised vintages rather than the data forecasters actually had.
 
-Two registered comparisons asked whether the association, or Bayesian pooling, improves predictions of the unemployment change. Both scored full predictive distributions with the continuous ranked probability score and refitted every model at every origin. Each difference below is the mean score of the first model relative to the second; a negative value favours the first.
+Over all 34 target quarters of the genuine one-quarter-ahead forecasts, none of the registered comparisons is decided, and the pandemic targets dominate the loss differences. Leave them out, as a descriptive analysis named in the protocol did, and a pattern appears. Pooling countries, adding lagged GDP growth and adding the common factor each improve forecasts by 2.5% to 3.1%, and 4 of the five comparisons are decided. The fifth also favours the richer model (−3.5%) but is not decided.
 
-**Given the quarter's own GDP growth**, 1 of 10 comparisons is decided. Before the pandemic, the hierarchical model against a zero-change benchmark: −13.5%, the one decided comparison. After 2022, no model that uses the quarter's GDP clearly beats zero change (−0.3%).
-
-**In real one-quarter-ahead forecasts**, 0 of 5 comparisons are decided.
-
-- The hierarchical model with GDP lags scores −15.3% against its classical counterpart. Most of that gap comes from two pandemic quarters, and the registered test does not decide it.
-- Against simple persistence the difference is +4.0%.
-- Without the pandemic targets, the hierarchical and richer models win 4 of five comparisons, by small margins (−3.1%, −2.9%, −2.6% and −2.5%). Persistence is still not beaten (−3.5%, not decided).
+What nothing reliably beats is the simplest forecast of all: that the unemployment rate next quarter will be what it is now. The classical model that extrapolates recent changes does worse than that benchmark (+4.4% over all targets). Even when this quarter's GDP growth is known, the single decided gain over "no change" (−13.5% before the pandemic) loses its significance once quarters with a failed model refit are dropped.
 
 ![Predictive comparisons](figures/fig3_prediction.png)
 
-*Mean score of model A relative to model B; negative means A is better. Left: conditional on the quarter's GDP growth. Right: one-quarter-ahead forecasts.*
+*Mean score of model A relative to model B; negative means A is better. Left: given the quarter's GDP growth. Right: one-quarter-ahead forecasts with bootstrap intervals.*
 
-The association is real, but it carries little information that the recent path of unemployment does not already contain.
+## No causal reading with public data
 
-## 4. No defensible causal coefficient
+A causal Okun coefficient has to refer to a specific shock: how much a given kind of disturbance moves unemployment relative to how much it moves output. A demand shock, a productivity shock and a migration-driven rise in labour supply can all raise output while moving unemployment in different directions.
 
-A causal Okun coefficient must refer to a specific shock: the ratio of that shock's effect on unemployment to its effect on output. Reduced-form innovations are not shocks, and ordering variables in a VAR does not make them so. Four strategies were assessed.
+I tried the defensible routes. The first was two shock series identified elsewhere from market reactions to announcements: ECB monetary policy surprises and OPEC oil supply news. For European real activity both are weak. The largest first-stage t-statistic is 1.27 with quarterly GDP and 1.21 with monthly industrial production, far below the conventional threshold of 3.16, and every confidence set for the Okun ratio that remains valid under weak instruments is unbounded. There is a warning sign too: a 10 basis point tightening coincides with unemployment +0.12 points higher within the same quarter, which is implausibly fast and suggests timing or aggregation problems.
 
-**External instruments.** Two shock series identified from high-frequency market data were used as instruments: ECB monetary policy surprises and OPEC oil supply news.
+The second route was a shift-share of foreign demand. It would have identified each country's own GDP shocks, but a feasibility rule set in advance stopped it, with an expected first-stage t-statistic of 0.19. The third was sign restrictions on demand, technology and labour-supply shocks. The usual practice of drawing rotations uniformly gives sharp-looking ratios, −0.43 for demand and −0.55 for technology. The identified sets, which do not depend on that arbitrary prior, are both unbounded.
 
-- Both are weak for EU real activity: the largest first-stage t-statistic is 1.27 with quarterly GDP and 1.21 with monthly industrial production, against a conventional threshold of 3.16.
-- All weak-instrument-robust confidence sets for the Okun ratio are unbounded.
-- Aggregated to quarters, the oil series is predictable from lagged EU data (p = 0.006), which undermines its exogeneity at that frequency.
+That last result says less than it seems. Restrictions that apply only on impact, to a ratio whose denominator can be close to zero, will produce unbounded sets almost by construction. The right conclusion is that these instruments and restrictions are uninformative, not that the causal effect is small or large. Every coefficient in this study is a description of how two series moved together.
 
-**Foreign demand.** A shift-share of partner-country growth, weighted by how much of each country's value added foreign demand absorbs, is the best public candidate for a country-specific GDP shock. Its expected first-stage t-statistic is 0.19. A registered feasibility rule stopped the design before estimation.
-
-**Sign restrictions.** A panel VAR identifies demand, technology and labour-supply shocks by the signs of their impact effects.
-
-- The usual uniform prior over rotations gives sharp-looking ratios: −0.43 for demand and −0.55 for technology.
-- The identified sets do not depend on that prior. For demand the set is unbounded, and for technology it is unbounded. The sharpness came from the prior, not the data.
-- Labour-supply and demand shocks differ at impact only because the signs impose it.
-
-![Instrument strength and sign-restricted responses](figures/fig4_identification.png)
+![Instrument strength](figures/fig4_identification.png)
 
 *First-stage strength of every instrument; the dashed line is the conventional threshold.*
 
 ![Sign-restricted unemployment responses](figures/fig5_sign_restrictions.png)
 
-*Wide bars: identified sets (robust 90% regions). Thin lines and dots: the uniform-prior posterior.*
+*Wide bars: identified sets. Thin lines and dots: the usual uniform-prior posterior.*
 
-Every coefficient in this study is therefore a descriptive association.
+## Four countries
 
-## 5. Portugal, Spain, the Netherlands and Luxembourg
-
-The case study asked where output fluctuations are absorbed. GDP growth splits exactly into growth in output per hour, hours per worker and employment, so each country's adjustment can be traced through these margins. Every hypothesis and prediction was registered first, and the same rule was applied to the comparison countries. 1 of 14 predictions is supported and 0 are contradicted; the rest are not determined.
+The case study asked where output fluctuations go. GDP growth splits exactly into growth in output per hour, hours per worker and employment, so each country's adjustment can be traced through those margins. Every prediction was written down first and checked by the same rule in the comparison countries. Of 14 predictions, 1 is supported, 0 are contradicted and the rest are not determined.
 
 ![Margins of adjustment](figures/fig6_margins.png)
 
 *Elasticities to GDP growth, 2020–2021 excluded, with 95% bootstrap intervals. Eurostat publishes no quarterly employment in persons for Portugal.*
 
-**Spain.** Spain's association is large: −0.79 classically and −0.51 in the Bayesian model, below the European mean with probability 0.996, in 8 of 8 accepted fits. Spain absorbs output fluctuations through employment (elasticity +1.11), not productivity (−0.21). Whether temporary contracts carry that adjustment is not decided by the registered test.
+**Spain** is the clearest case. On the same 2009–2019 quarters, a plain regression gives −0.93 and the hierarchical model −0.51; the gap comes from pooling and from removing the common cycle. Spain sits below the European average with probability 0.996, in 8 of 8 accepted specifications. Its output fluctuations are absorbed through employment, with an elasticity of +1.11, while output per hour barely responds (−0.21, an interval that includes zero). Spain's two-tier labour market, with its many temporary contracts, is the obvious suspect, but the registered test of that mechanism is not decided.
 
-**Portugal.** Portugal's association is negative, but its significance depends on the specification (−0.13 on the full sample, −0.49 without 2020–2021). Total hours respond to GDP about as strongly as in Spain (+1.27 against +1.21). Descriptively, and not as a registered prediction, Portugal's participation rises with GDP (+0.18), which offsets part of the fall in unemployment.
+**Portugal** has a negative association whose significance depends on the sample: −0.13 over the whole period and −0.49 without the pandemic. Total hours respond to growth about as strongly as in Spain (+1.27 against +1.21), so the Spain–Portugal difference disappears when labour input is measured in hours. One thing I did not predict in advance: participation rises with growth in Portugal (+0.18), which offsets part of the fall in unemployment.
 
-**The Netherlands.** The lagged share of the Dutch response is 0.94. The registered rule for a "delayed" response holds in the primary fit but only in 6 of 8 accepted fits. The one supported prediction of the case study is Dutch: output per hour is more responsive to GDP than in Spain, by +0.73 ([+0.31, +1.23]). That pattern fits labour hoarding, although hoarding cannot be separated from unmeasured effort.
+**The Netherlands** has a large lagged share in its response (0.94 in the main model), and the registered rule for a "delayed" response holds there, but only in 6 of 8 accepted specifications. The one supported prediction of the whole case study is Dutch: output per hour responds more to growth than in Spain, by +0.73. That fits labour hoarding, though hoarding cannot be told apart from unmeasured effort.
 
-**Luxembourg.** The classical sum is sign-unstable (−0.05 full sample, +0.17 without the pandemic). The registered Bayesian rule for a weak association holds in 0 of 8 accepted fits. The proposed explanation was a measurement mismatch: GDP counts cross-border commuters, unemployment counts only residents. If commuters absorbed the fluctuations, domestic employment would move more than resident employment. It does not:
+**Luxembourg** has a weak and sign-unstable association in the plain regressions (−0.05 over the whole period, +0.17 without the pandemic). The registered Bayesian rule for "weak" holds in 0 of the registered fits, although it does hold for the long-run sum in the amended models that capture persistence. The commuter story predicts that employment counted where people work would move more than employment counted where they live. It does not: the gap is +0.01, and both barely move with growth. Instead, measured output per hour moves almost one for one with measured GDP (+1.06).
 
-- the gap is +0.01 ([−0.05, +0.05]);
-- domestic employment (+0.03) and resident employment (+0.02) barely move with GDP;
-- output per hour absorbs the fluctuations almost one for one (+1.06).
+It is tempting to read that as a fact about how Luxembourg's economy adjusts. I would not. Output per hour is computed as GDP growth minus hours growth. If quarterly GDP is measured with noise, that noise pushes the output-per-hour elasticity towards one and the labour-input and Okun elasticities towards zero. That is exactly Luxembourg's pattern. Ireland, whose statistical office publishes an alternative to GDP because multinational accounting distorts it, and Malta also have some of the weakest associations. Measurement error is a rival explanation this study did not test.
 
-**Institutions.** The protocol predicted that stricter employment protection would weaken the unemployment response. In two of the registered variants the cross-country correlation has the opposite sign (−0.60 and −0.67). With at most twenty countries and one year of indicators, this says nothing about what employment protection does.
+**Institutions.** The employment-protection explanation predicted that stricter rules would weaken the unemployment response. Across countries, 2 of 18 registered correlations point the other way at the registered level (−0.60 and −0.67), and the rest are not determined. These correlations sit outside the 14 predictions, use at most twenty countries and indicators from a single year, and say nothing about what employment protection does.
 
 ## The earlier claims, judged
 
-- **Spain: large association.** Supported, in every accepted specification.
-- **The Netherlands: delayed response.** Qualified. It holds in the primary model but not in every accepted specification.
-- **Luxembourg: weak association.** Qualified. It is weak and sign-unstable classically, but the registered Bayesian rule is met in none of the accepted fits.
-- **Luxembourg: commuters explain it.** Not supported. Output per hour, not commuting, absorbs Luxembourg's output fluctuations.
-- **Stricter employment protection weakens the response.** Contradicted as a correlation, in two of the registered variants.
-
-No claim about Portugal was documented, so none is judged.
+- **Spain has a large association:** supported, in every accepted specification.
+- **The Netherlands responds with a delay:** qualified. It holds in the main model but not in every accepted specification.
+- **Luxembourg's association is weak:** qualified. It is weak in the plain regressions and on the long-run sum of the amended models, but not under the registered Bayesian rule.
+- **Commuters explain Luxembourg:** not supported. Measurement error in GDP remains an untested alternative.
+- **Employment protection weakens the response:** contradicted, as a cross-country correlation only.
 
 ## What remains open
 
-- Do countries differ because their labour markets respond differently to the same shock, or because they face different shocks? Separating the two needs shock-specific identification.
-- What does a productivity or labour-supply shock do to unemployment in an EU country? That needs utilisation-adjusted productivity data and quasi-experimental variation in labour supply.
-- Why does output per hour absorb almost all of Luxembourg's output fluctuations?
-- Did the relation weaken after 2021? Only a longer sample can tell.
+The biggest open question is why countries differ. They may differ because their labour markets respond differently to the same shock, or because they face different mixes of shocks, and only shock-specific identification can separate the two. Answering the causal question for productivity or labour-supply shocks would need data the public statistics do not provide: productivity adjusted for capacity utilisation, and natural experiments in labour supply. Luxembourg needs a test with value added excluding finance, or with annual accounts. And whether the relation weakened after 2021 needs more quarters. The first classical pass reported 14 significant post-2021 changes, but a size study showed that its test rejected a true null 22.8% of the time; with a bootstrap that held its size, 0 survive.
+
+There are also standard analyses this study does not include. It has no gap-form Okun's law to set against the international literature, no test of asymmetry between booms and busts, no hours-based Okun's law for every country and no labour-force-weighted EU aggregate. Those would be the next things to add.
 
 ## The takeaway
 
-An Okun coefficient estimated from aggregate data summarises how output and unemployment moved together over a particular period. In the EU from 2009 to 2026 that summary is robustly negative outside the pandemic, differs credibly between some countries, adds little to forecasts, and cannot be given a causal reading with the public data available.
+An Okun coefficient estimated from aggregate data summarises how output and unemployment moved together over a particular period. In the EU from 2009 to 2026 that summary is clearly negative outside the pandemic. Once the common cycle is removed, the average lies between −0.17 and −0.30, depending on the model, and some countries differ enough to matter. It adds a few per cent to forecasts in normal times, and none of the designs available with public data can give it a causal reading.
 
 ## Reproduce it
 
-Everything is in the repository [DiogoRibeiro7/Medium-Blog](https://github.com/DiogoRibeiro7/Medium-Blog/tree/main/eu-okun-law), directory `eu-okun-law`: frozen data with hashes, protocols, code, result tables, the LaTeX manuscript and this article's source. The file `publication/README.md` lists the reproduction steps. The quarterly data snapshot's manifest hash begins `8a8c8a107d584ba9`.
+Everything is in the repository [DiogoRibeiro7/Medium-Blog](https://github.com/DiogoRibeiro7/Medium-Blog/tree/main/eu-okun-law), directory `eu-okun-law`: the frozen data with hashes, the protocols, the code, the result tables, the LaTeX manuscript and this article's source. The file `publication/README.md` lists the reproduction steps. The quarterly data snapshot's manifest hash begins `8a8c8a107d584ba9`.

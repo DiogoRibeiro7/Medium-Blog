@@ -101,10 +101,22 @@
   "raw": 0.9368327402135231,
   "source": "docs/bayes/diagnostics.json"
  },
+ "by_factor_corr": {
+  "tex": "$-0.60$",
+  "md": "−0.60",
+  "raw": -0.6,
+  "source": "docs/HIERARCHICAL_BAYES.md (generated from saved posterior draws)"
+ },
  "by_lag1_obs": {
   "tex": "$0.27$",
   "md": "0.27",
   "raw": 0.26919010452151454,
+  "source": "docs/bayes/diagnostics.json"
+ },
+ "by_lag1_p": {
+  "tex": "$0.000$",
+  "md": "0.000",
+  "raw": 0.0,
   "source": "docs/bayes/diagnostics.json"
  },
  "by_lag1_rep": {
@@ -119,10 +131,28 @@
   "raw": -0.198,
   "source": "docs/HIERARCHICAL_BAYES.md (generated from saved posterior draws)"
  },
+ "by_mu_abs": {
+  "tex": "$0.20$",
+  "md": "0.20",
+  "raw": 0.198,
+  "source": "docs/HIERARCHICAL_BAYES.md (generated from saved posterior draws)"
+ },
  "by_mu_ci": {
   "tex": "$[-0.254, -0.145]$",
   "md": "[−0.254, −0.145]",
   "raw": "[-0.254, -0.145]",
+  "source": "docs/HIERARCHICAL_BAYES.md (generated from saved posterior draws)"
+ },
+ "by_mu_hi": {
+  "tex": "$-0.18$",
+  "md": "−0.18",
+  "raw": -0.181,
+  "source": "docs/HIERARCHICAL_BAYES.md (generated from saved posterior draws)"
+ },
+ "by_mu_lo": {
+  "tex": "$-0.30$",
+  "md": "−0.30",
+  "raw": -0.3,
   "source": "docs/HIERARCHICAL_BAYES.md (generated from saved posterior draws)"
  },
  "by_n_accepted": {
@@ -137,10 +167,22 @@
   "raw": 22,
   "source": "docs/bayes/country_estimates.csv"
  },
+ "by_n_neg_linux": {
+  "tex": "15",
+  "md": "15",
+  "raw": 15,
+  "source": "docs/bayes/replication-linux/country_estimates.csv"
+ },
  "by_n_neg_primary": {
   "tex": "24",
   "md": "24",
   "raw": 24,
+  "source": "docs/bayes/country_estimates.csv"
+ },
+ "by_n_neg_unpooled": {
+  "tex": "15",
+  "md": "15",
+  "raw": 15,
   "source": "docs/bayes/country_estimates.csv"
  },
  "by_n_smaller": {
@@ -190,6 +232,54 @@
   "md": "[0.081, 0.175]",
   "raw": "[0.081, 0.175]",
   "source": "docs/HIERARCHICAL_BAYES.md (generated from saved posterior draws)"
+ },
+ "by_unpooled_country": {
+  "tex": "Slovakia",
+  "md": "Slovakia",
+  "raw": "Slovakia",
+  "source": "docs/bayes/diagnostics.json"
+ },
+ "by_unpooled_differ": {
+  "tex": "BE, DE, HU, IE, NL, PL and RO",
+  "md": "BE, DE, HU, IE, NL, PL and RO",
+  "raw": "BE, DE, HU, IE, NL, PL and RO",
+  "source": "docs/bayes/country_estimates.csv"
+ },
+ "by_unpooled_n_differ": {
+  "tex": "7",
+  "md": "7",
+  "raw": 7,
+  "source": "docs/bayes/country_estimates.csv"
+ },
+ "by_unpooled_ols": {
+  "tex": "HU, IE, NL, PL and RO",
+  "md": "HU, IE, NL, PL and RO",
+  "raw": "HU, IE, NL, PL and RO",
+  "source": "docs/bayes/country_estimates.csv"
+ },
+ "by_unpooled_ols_n": {
+  "tex": "5",
+  "md": "5",
+  "raw": 5,
+  "source": "docs/bayes/country_estimates.csv"
+ },
+ "by_unpooled_p_hi": {
+  "tex": "$0.94$",
+  "md": "0.94",
+  "raw": 0.93875,
+  "source": "docs/bayes/country_estimates.csv"
+ },
+ "by_unpooled_p_lo": {
+  "tex": "$0.73$",
+  "md": "0.73",
+  "raw": 0.73175,
+  "source": "docs/bayes/country_estimates.csv"
+ },
+ "by_unpooled_rhat": {
+  "tex": "$1.0106$",
+  "md": "1.0106",
+  "raw": 1.0106417360883948,
+  "source": "docs/bayes/diagnostics.json"
  },
  "cl_ES_excl": {
   "tex": "$-0.79$",
@@ -365,6 +455,12 @@
   "raw": 20,
   "source": "docs/review/grid.csv"
  },
+ "cl_n_core": {
+  "tex": "24",
+  "md": "24",
+  "raw": "24",
+  "source": "docs/review/robustness.csv"
+ },
  "cl_n_full_outside": {
   "tex": "10",
   "md": "10",
@@ -376,6 +472,18 @@
   "md": "22",
   "raw": 22,
   "source": "docs/review/robustness.csv"
+ },
+ "cl_n_neg_holm": {
+  "tex": "21",
+  "md": "21",
+  "raw": 21,
+  "source": "docs/review/grid.csv"
+ },
+ "cl_n_quarters": {
+  "tex": "57",
+  "md": "57",
+  "raw": "57",
+  "source": "docs/review/grid.csv"
  },
  "cl_n_robust": {
   "tex": "17",
@@ -551,6 +659,18 @@
   "raw": "[0.09330321501599721, 0.3076553153850646]",
   "source": "docs/heterogeneity/elasticities.csv"
  },
+ "cs_PT_du": {
+  "tex": "$-0.48$",
+  "md": "−0.48",
+  "raw": -0.4809200145536402,
+  "source": "docs/heterogeneity/elasticities.csv"
+ },
+ "cs_PT_du_ci": {
+  "tex": "$[-0.64, +0.17]$",
+  "md": "[−0.64, +0.17]",
+  "raw": "[-0.6421963777709633, 0.16670308664745884]",
+  "source": "docs/heterogeneity/elasticities.csv"
+ },
  "cs_PT_h": {
   "tex": "$+1.27$",
   "md": "+1.27",
@@ -621,6 +741,18 @@
   "tex": "$-0.67$",
   "md": "−0.67",
   "raw": -0.6718354327694688,
+  "source": "docs/heterogeneity/correlations.csv"
+ },
+ "cs_n_corr": {
+  "tex": "18",
+  "md": "18",
+  "raw": 18,
+  "source": "docs/heterogeneity/correlations.csv"
+ },
+ "cs_n_corr_contra": {
+  "tex": "2",
+  "md": "2",
+  "raw": 2,
   "source": "docs/heterogeneity/correlations.csv"
  },
  "cs_p11": {
@@ -893,6 +1025,54 @@
   "raw": -0.654398740551923,
   "source": "docs/bayes-dynamics/dynamics.json"
  },
+ "dyn_lu_adf": {
+  "tex": "holds",
+  "md": "holds",
+  "raw": "holds",
+  "source": "docs/bayes-dynamics/dynamics.json"
+ },
+ "dyn_lu_adf_p": {
+  "tex": "$0.981$",
+  "md": "0.981",
+  "raw": 0.981,
+  "source": "docs/BAYES_DYNAMICS.md"
+ },
+ "dyn_lu_adf_short_p": {
+  "tex": "$0.81$",
+  "md": "0.81",
+  "raw": 0.813,
+  "source": "docs/BAYES_DYNAMICS.md"
+ },
+ "dyn_lu_ardl": {
+  "tex": "holds",
+  "md": "holds",
+  "raw": "holds",
+  "source": "docs/bayes-dynamics/dynamics.json"
+ },
+ "dyn_lu_ardl_p": {
+  "tex": "$0.995$",
+  "md": "0.995",
+  "raw": 0.995,
+  "source": "docs/BAYES_DYNAMICS.md"
+ },
+ "dyn_mu": {
+  "tex": "$-0.17$",
+  "md": "−0.17",
+  "raw": -0.168,
+  "source": "docs/BAYES_DYNAMICS.md"
+ },
+ "dyn_mu_ci": {
+  "tex": "$[-0.21, -0.13]$",
+  "md": "[−0.21, −0.13]",
+  "raw": "[-0.207, -0.132]",
+  "source": "docs/BAYES_DYNAMICS.md"
+ },
+ "dyn_n_neg": {
+  "tex": "25",
+  "md": "25",
+  "raw": 25,
+  "source": "docs/bayes-dynamics/dynamics.json"
+ },
  "dyn_p": {
   "tex": "$0.102$",
   "md": "0.102",
@@ -915,6 +1095,12 @@
   "tex": "$0.276$",
   "md": "0.276",
   "raw": 0.276,
+  "source": "docs/forecast-comparison/comparisons.csv"
+ },
+ "fc_ar1_vs_zero": {
+  "tex": "$+4.4$\\%",
+  "md": "+4.4%",
+  "raw": 0.04413182818669159,
   "source": "docs/forecast-comparison/comparisons.csv"
  },
  "fc_decided": {
@@ -959,6 +1145,12 @@
   "raw": 0.276,
   "source": "docs/forecast-comparison/comparisons.csv"
  },
+ "fc_origins": {
+  "tex": "34",
+  "md": "34",
+  "raw": "34",
+  "source": "docs/forecast-comparison/comparisons.csv"
+ },
  "fc_total": {
   "tex": "5",
   "md": "5",
@@ -989,6 +1181,12 @@
   "raw": -0.029070451932102004,
   "source": "docs/forecast-comparison/comparisons.csv"
  },
+ "fcx_ar1_holm": {
+  "tex": "$0.005$",
+  "md": "0.005",
+  "raw": 0.005,
+  "source": "docs/forecast-comparison/comparisons.csv"
+ },
  "fcx_decided": {
   "tex": "4",
   "md": "4",
@@ -1001,10 +1199,40 @@
   "raw": -0.024815496174773632,
   "source": "docs/forecast-comparison/comparisons.csv"
  },
+ "fcx_factor_holm": {
+  "tex": "$0.005$",
+  "md": "0.005",
+  "raw": 0.005,
+  "source": "docs/forecast-comparison/comparisons.csv"
+ },
+ "fcx_gain_hi": {
+  "tex": "$3.1$\\%",
+  "md": "3.1%",
+  "raw": 0.031055024381801632,
+  "source": "docs/forecast-comparison/comparisons.csv"
+ },
+ "fcx_gain_lo": {
+  "tex": "$2.5$\\%",
+  "md": "2.5%",
+  "raw": 0.024815496174773632,
+  "source": "docs/forecast-comparison/comparisons.csv"
+ },
  "fcx_gdp": {
   "tex": "$-3.1$\\%",
   "md": "−3.1%",
   "raw": -0.031055024381801632,
+  "source": "docs/forecast-comparison/comparisons.csv"
+ },
+ "fcx_gdp_holm": {
+  "tex": "$0.005$",
+  "md": "0.005",
+  "raw": 0.005,
+  "source": "docs/forecast-comparison/comparisons.csv"
+ },
+ "fcx_holm_max": {
+  "tex": "$0.005$",
+  "md": "0.005",
+  "raw": 0.005,
   "source": "docs/forecast-comparison/comparisons.csv"
  },
  "fcx_lags": {
@@ -1013,10 +1241,28 @@
   "raw": -0.026303192914683193,
   "source": "docs/forecast-comparison/comparisons.csv"
  },
+ "fcx_lags_holm": {
+  "tex": "$0.005$",
+  "md": "0.005",
+  "raw": 0.005,
+  "source": "docs/forecast-comparison/comparisons.csv"
+ },
+ "fcx_origins": {
+  "tex": "24",
+  "md": "24",
+  "raw": "24",
+  "source": "docs/forecast-comparison/comparisons.csv"
+ },
  "fcx_zero": {
   "tex": "$-3.5$\\%",
   "md": "−3.5%",
   "raw": -0.034581112564039174,
+  "source": "docs/forecast-comparison/comparisons.csv"
+ },
+ "fcx_zero_holm": {
+  "tex": "$0.241$",
+  "md": "0.241",
+  "raw": 0.241,
   "source": "docs/forecast-comparison/comparisons.csv"
  },
  "hash_deflator": {
@@ -1061,6 +1307,18 @@
   "raw": 1.2712661903539397,
   "source": "docs/identification/okun_sets.csv"
  },
+ "id_mp_u0": {
+  "tex": "$+0.12$",
+  "md": "+0.12",
+  "raw": 0.11692482482622171,
+  "source": "docs/identification/responses.csv"
+ },
+ "id_mp_u0_ci": {
+  "tex": "$[+0.03, +0.20]$",
+  "md": "[+0.03, +0.20]",
+  "raw": "[0.029305508896198693, 0.20454414075624472]",
+  "source": "docs/identification/responses.csv"
+ },
  "id_pred_mp": {
   "tex": "$0.580$",
   "md": "0.580",
@@ -1090,6 +1348,12 @@
   "md": "1.21",
   "raw": 1.2141149473517834,
   "source": "docs/monthly-identification/ratio_sets.csv"
+ },
+ "mo_n_direct": {
+  "tex": "8",
+  "md": "8",
+  "raw": 8,
+  "source": "eu_okun.monthly_data.UNEMPLOYMENT_METHOD (MONTHLY_IDENTIFICATION_PROTOCOL.md)"
  },
  "mo_pred_oil": {
   "tex": "$0.567$",
@@ -1163,6 +1427,12 @@
   "raw": 0.017624778198514452,
   "source": "docs/predictive/comparisons.csv"
  },
+ "pc_e1_zero_holm_nofail": {
+  "tex": "$0.092$",
+  "md": "0.092",
+  "raw": 0.09229165039416207,
+  "source": "docs/predictive/comparisons.csv"
+ },
  "pc_e2_ols": {
   "tex": "$-6.7$\\%",
   "md": "−6.7%",
@@ -1187,6 +1457,12 @@
   "raw": 1.0,
   "source": "docs/predictive/comparisons.csv"
  },
+ "pc_quarters": {
+  "tex": "16",
+  "md": "16",
+  "raw": "16",
+  "source": "docs/predictive/comparisons.csv"
+ },
  "pc_total": {
   "tex": "10",
   "md": "10",
@@ -1204,6 +1480,12 @@
   "md": "[−0.007, +0.072]",
   "raw": "[-0.007053075712755649, 0.07160135896179182]",
   "source": "docs/bayes-regimes/regimes.json"
+ },
+ "reg_tau": {
+  "tex": "$0.03$",
+  "md": "0.03",
+  "raw": 0.031,
+  "source": "docs/BAYES_REGIMES.md"
  },
  "snapshot_date": {
   "tex": "2026-10-15",
@@ -1229,6 +1511,12 @@
   "raw": 9.224429093235051e-05,
   "source": "docs/sign-restrictions/summaries.csv"
  },
+ "sr_dem_gdp8_ci": {
+  "tex": "$[-0.06, +1.54]$",
+  "md": "[−0.06, +1.54]",
+  "raw": "[-0.05660603142153835, 1.5356164671696697]",
+  "source": "docs/sign-restrictions/summaries.csv"
+ },
  "sr_dem_uniform": {
   "tex": "$-0.43$",
   "md": "−0.43",
@@ -1246,6 +1534,12 @@
   "md": "0%",
   "raw": 0.00014145577797940374,
   "source": "docs/sign-restrictions/summaries.csv"
+ },
+ "sr_n_orderings": {
+  "tex": "24",
+  "md": "24",
+  "raw": 24,
+  "source": "docs/sign-restrictions/orderings.csv"
  },
  "sr_nonempty": {
   "tex": "$100$\\%",
@@ -1282,6 +1576,12 @@
   "md": "−0.149",
   "raw": -0.1490843872442051,
   "source": "docs/sign-restrictions/orderings.csv"
+ },
+ "sr_sets": {
+  "tex": "both unbounded",
+  "md": "both unbounded",
+  "raw": "both unbounded",
+  "source": "docs/sign-restrictions/summaries.csv"
  },
  "sr_tech_bounded": {
   "tex": "unbounded",
@@ -1354,5 +1654,65 @@
   "md": "0",
   "raw": 0,
   "source": "docs/small-sample/summary.json"
+ },
+ "ws_m0_max_t": {
+  "tex": "$1.21$",
+  "md": "1.21",
+  "raw": 1.21411,
+  "source": "docs/window-sensitivity/window_sensitivity.csv"
+ },
+ "ws_m0_unbounded": {
+  "tex": "4",
+  "md": "4",
+  "raw": 4,
+  "source": "docs/window-sensitivity/window_sensitivity.csv"
+ },
+ "ws_m1_max_t": {
+  "tex": "$1.18$",
+  "md": "1.18",
+  "raw": 1.18358,
+  "source": "docs/window-sensitivity/window_sensitivity.csv"
+ },
+ "ws_m1_unbounded": {
+  "tex": "4",
+  "md": "4",
+  "raw": 4,
+  "source": "docs/window-sensitivity/window_sensitivity.csv"
+ },
+ "ws_q0_max_t": {
+  "tex": "$1.27$",
+  "md": "1.27",
+  "raw": 1.27127,
+  "source": "docs/window-sensitivity/window_sensitivity.csv"
+ },
+ "ws_q0_unbounded": {
+  "tex": "4",
+  "md": "4",
+  "raw": 4,
+  "source": "docs/window-sensitivity/window_sensitivity.csv"
+ },
+ "ws_q1_max_t": {
+  "tex": "$1.27$",
+  "md": "1.27",
+  "raw": 1.26664,
+  "source": "docs/window-sensitivity/window_sensitivity.csv"
+ },
+ "ws_q1_unbounded": {
+  "tex": "4",
+  "md": "4",
+  "raw": 4,
+  "source": "docs/window-sensitivity/window_sensitivity.csv"
+ },
+ "ws_sr_nonempty": {
+  "tex": "$100$\\%",
+  "md": "100%",
+  "raw": 1.0,
+  "source": "docs/window-sensitivity/window_sensitivity.csv"
+ },
+ "ws_sr_regions": {
+  "tex": "all unbounded",
+  "md": "all unbounded",
+  "raw": "all unbounded",
+  "source": "docs/window-sensitivity/window_sensitivity.csv"
  }
 }

@@ -1,0 +1,49 @@
+design,margin,target,statistic,value,n
+quarterly LP,0,MP h=4,first_stage_t,-0.63601,832
+quarterly LP,0,MP h=4,set,all,832
+quarterly LP,0,MP h=8,first_stage_t,0.0199103,676
+quarterly LP,0,MP h=8,set,two rays,676
+quarterly LP,0,OIL h=4,first_stage_t,1.27127,1223
+quarterly LP,0,OIL h=4,set,all,1223
+quarterly LP,0,OIL h=8,first_stage_t,0.700717,1007
+quarterly LP,0,OIL h=8,set,all,1007
+quarterly LP,1,MP h=4,first_stage_t,-0.512171,812
+quarterly LP,1,MP h=4,set,all,812
+quarterly LP,1,MP h=8,first_stage_t,0.201786,656
+quarterly LP,1,MP h=8,set,two rays,656
+quarterly LP,1,OIL h=4,first_stage_t,1.26664,1196
+quarterly LP,1,OIL h=4,set,all,1196
+quarterly LP,1,OIL h=8,first_stage_t,0.707697,980
+quarterly LP,1,OIL h=8,set,all,980
+monthly LP,0,MP h=12,first_stage_t,-0.224527,608
+monthly LP,0,MP h=12,set,all,608
+monthly LP,0,MP h=24,first_stage_t,0.344522,512
+monthly LP,0,MP h=24,set,all,512
+monthly LP,0,OIL h=12,first_stage_t,1.21411,1216
+monthly LP,0,OIL h=12,set,all,1216
+monthly LP,0,OIL h=24,first_stage_t,0.749623,1024
+monthly LP,0,OIL h=24,set,all,1024
+monthly LP,1,MP h=12,first_stage_t,-0.170962,604
+monthly LP,1,MP h=12,set,all,604
+monthly LP,1,MP h=24,first_stage_t,0.346254,508
+monthly LP,1,MP h=24,set,all,508
+monthly LP,1,OIL h=12,first_stage_t,1.18358,1208
+monthly LP,1,OIL h=12,set,all,1208
+monthly LP,1,OIL h=24,first_stage_t,0.721873,1016
+monthly LP,1,OIL h=24,set,all,1016
+sign-restricted SVAR,0,all draws,nonempty_share,1,1547
+sign-restricted SVAR,0,demand Okun ratio h=4,robust_region,unbounded,1547
+sign-restricted SVAR,0,demand Okun ratio h=8,robust_region,unbounded,1547
+sign-restricted SVAR,0,technology Okun ratio h=4,robust_region,unbounded,1547
+sign-restricted SVAR,0,technology Okun ratio h=8,robust_region,unbounded,1547
+sign-restricted SVAR,0,demand variance share of du,robust_region_upper,0.962804,1547
+sign-restricted SVAR,0,technology variance share of du,robust_region_upper,0.966438,1547
+sign-restricted SVAR,0,labour_supply variance share of du,robust_region_upper,0.961226,1547
+sign-restricted SVAR,1,all draws,nonempty_share,1,1520
+sign-restricted SVAR,1,demand Okun ratio h=4,robust_region,unbounded,1520
+sign-restricted SVAR,1,demand Okun ratio h=8,robust_region,unbounded,1520
+sign-restricted SVAR,1,technology Okun ratio h=4,robust_region,unbounded,1520
+sign-restricted SVAR,1,technology Okun ratio h=8,robust_region,unbounded,1520
+sign-restricted SVAR,1,demand variance share of du,robust_region_upper,0.963116,1520
+sign-restricted SVAR,1,technology variance share of du,robust_region_upper,0.966193,1520
+sign-restricted SVAR,1,labour_supply variance share of du,robust_region_upper,0.961294,1520

@@ -435,6 +435,7 @@ def render(review: BayesReview, assets: str, command: str) -> str:
         "unemployment changes."
     )
     replication_text = ""
+    dependence_text = ""
     if review.replication is not None:
         rep_run = review.replication
         both = [n for n in review.fits if review.fits[n].accepted and rep_run.accepted.get(n)]
@@ -459,6 +460,18 @@ def render(review: BayesReview, assets: str, command: str) -> str:
             f"{len(here_robust)} here, {len(rep_robust)} under that run's acceptance set; the "
             f"difference is {_names(sorted(set(here_robust) ^ set(rep_robust)))}. Claim "
             f"verdicts {'are identical' if same_verdicts else 'differ'}."
+        )
+        differ = sorted(set(here_robust) ^ set(rep_robust))
+        ols_clear = [g for g in differ
+                     if by_name["primary"][g].classical_high < 0
+                     or by_name["primary"][g].classical_low > 0]
+        dependence_text = (
+            f" The robust count therefore depends on whether the unpooled fit is accepted. "
+            f"That fit keeps the error model and the common factor; under it, "
+            f"{_names(differ)} are not credibly negative. This does not mean that their own "
+            f"data show no association: OLS on the same quarters excludes zero (95% HAC) for "
+            f"{_names(ols_clear) if ols_clear else 'none of them'}."
+            if differ else ""
         )
     if "primary" in review.factor:
         fc = review.factor["primary"]
@@ -697,12 +710,7 @@ def render(review: BayesReview, assets: str, command: str) -> str:
                              "accepted" if there_ok else "failed", gap_text])
         lines += _table(["Specification", "This run", "Replication", "Max abs. difference of "
                          "country medians"], rep_rows, "lllr")
-        lines += [
-            replication_text + " Countries whose credible negativity depends on including "
-            "the unpooled fit are credibly negative only when estimates borrow strength across "
-            "countries; their sign is supported by partial pooling, not by their own data "
-            "alone.", "",
-        ]
+        lines += [replication_text + dependence_text, ""]
 
     # 10-11. Limitations and reproduction
     lines += [

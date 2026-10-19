@@ -8,7 +8,8 @@ before the target.
 
 \paragraph{Conditional prediction.} The first design predicts $\Delta u_{i,t}$ given all
 data up to $t-1$ \emph{and} the GDP growth of quarter $t$, the setting the Okun equations
-describe. There are two evaluation sets, each of sixteen target quarters: 2016--2019 (E1)
+describe. There are two evaluation sets, each of \val{pc_quarters} target quarters:
+2016--2019 (E1)
 and 2022-Q3 to 2026-Q2 (E2). Five models are compared:
 \begin{itemize}
   \item the hierarchical Bayesian model;
@@ -19,7 +20,8 @@ and 2022-Q3 to 2026-Q2 (E2). Five models are compared:
 \end{itemize}
 
 \paragraph{One-quarter-ahead forecasts.} The second design issues the forecast for quarter
-$t$ at the end of $t-1$ and uses nothing dated $t$. There are 34 origins, with targets from
+$t$ at the end of $t-1$ and uses nothing dated $t$. There are \val{fc_origins} origins,
+with targets from
 2018-Q1 to 2026-Q2. It compares:
 \begin{itemize}
   \item six classical models: persistence (a forecast of zero change), the historical mean, AR(1) of the change, two
@@ -56,7 +58,9 @@ value favours the first.
 \val{pc_total} (table~\ref{tab:predictive}, figure~\ref{fig:prediction}).
 \begin{itemize}
   \item Before the pandemic, the hierarchical model against zero change: \val{pc_e1_zero}
-    (Holm $p=$ \val{pc_e1_zero_holm}), the one decided comparison. The hierarchical model is
+    (Holm $p=$ \val{pc_e1_zero_holm}), the only decided comparison. It is fragile: in the
+    registered sensitivity analysis without the target quarters in which a Bayesian refit
+    failed, the Holm $p$ becomes \val{pc_e1_zero_holm_nofail}. The hierarchical model is
     practically equal to the classical regressions.
   \item After 2022, the hierarchical model against the OLS distributed lag:
     \val{pc_e2_ols} (Holm $p=$ \val{pc_e2_ols_holm}). No model that uses the quarter's GDP
@@ -72,26 +76,37 @@ value favours the first.
     2020-Q3 and 2020-Q4, where the classical GDP-lag regressions forecast badly; with so
     skewed a bootstrap distribution, the null-centred Holm-adjusted test does not decide it
     ($p=$ \val{fc_gdp_holm}).
-  \item Against persistence the difference is \val{fc_zero}.
+  \item The hierarchical AR(1) with GDP lags against persistence: \val{fc_zero}.
   \item The hierarchical AR(1) against the classical AR(1): \val{fc_ar1}.
   \item Adding the common factor: \val{fc_factor}.
 \end{itemize}
-In the pre-registered descriptive analysis without the 2020-Q1 to 2022-Q2 targets,
-\val{fcx_decided} of the five comparisons favour the hierarchical or richer model:
+The protocol names one descriptive analysis in advance: the same comparisons without the
+2020-Q1 to 2022-Q2 targets (\val{fcx_origins} target quarters). There, \val{fcx_decided}
+of the five comparisons are decided in favour of the hierarchical or richer model
+(Holm $p\le$ \val{fcx_holm_max}):
 \begin{itemize}
   \item hierarchical AR(1) with GDP lags against the classical: \val{fcx_gdp};
   \item hierarchical AR(1) against the classical: \val{fcx_ar1};
   \item GDP lags within the hierarchical model: \val{fcx_lags};
   \item the common factor: \val{fcx_factor}.
 \end{itemize}
-Persistence is not beaten even there (\val{fcx_zero}, not decided).
+The fifth comparison, the hierarchical model with GDP lags against persistence, also
+favours the model on its point estimate (\val{fcx_zero}) but is not decided (Holm $p=$
+\val{fcx_zero_holm}).
 
-\paragraph{Reading the results.} The association between GDP growth and unemployment is
-real but carries little predictive information beyond what the recent path of unemployment
-already contains. Partial pooling helps a little outside the pandemic and not at all in a
-way the registered tests can distinguish from sampling variation. ``Not distinguishable''
-never means ``equally accurate'': with sixteen or thirty-four target quarters, power is
-limited.
+\paragraph{Reading the results.}
+\begin{itemize}
+  \item Over all target quarters the registered tests decide nothing; the pandemic
+    targets dominate the loss differences.
+  \item Outside the pandemic, partial pooling, lagged GDP growth and the common factor
+    each improve the forecasts by a few per cent (\val{fcx_gain_lo} to
+    \val{fcx_gain_hi}).
+  \item No model reliably beats persistence, the forecast that the unemployment rate will
+    not change. Persistence uses nothing but the last observed rate, and the classical
+    AR(1) of the change does worse than it over all targets (\val{fc_ar1_vs_zero}).
+  \item ``Not distinguishable'' never means ``equally accurate'': with
+    \val{pc_quarters} or \val{fc_origins} target quarters, power is limited.
+\end{itemize}
 
 \input{generated/tab_predictive.tex}
 

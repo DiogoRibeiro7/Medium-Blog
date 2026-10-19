@@ -8,25 +8,37 @@ control. The headline specification is $K=2$ without participation.
 
 \paragraph{Inference.} Standard errors use the Newey--West covariance with a Bartlett
 kernel and four lags in calendar quarters \citep{newey1987hac}. The variance of
-$\hat\theta_i$ uses the full covariance matrix of the lag coefficients.
+$\hat\theta_i$ uses the full covariance matrix of the lag coefficients. Intervals use
+normal critical values. With about \val{cl_n_quarters} quarters per country this is an
+approximation: section~\ref{sec:smallsample} shows that the same reference over-rejects in
+a shorter sample, and neither a bootstrap nor fixed-$b$ critical values were applied to the
+headline sums.
 
 \paragraph{Samples.} The full period, 2009--2026; the same period without any observation
-whose window touches 2020--2021; 2009--2019; 2022 onwards; and a flag-screened sample.
+whose window touches 2020--2021; 2009--2019; 2022 onwards; and a flag-screened sample. The
+research plan listed a pandemic-excluded comparison before any estimate. Making it the
+headline sample was decided after the full-sample estimates had been seen.
 
 \paragraph{Review.} A separate review recomputed every published quantity by an
-independent numerical route and re-estimated 24 core specifications per country. It
-classified each country as robustly negative, negative with specification-dependent
-significance, or sign-unstable.
+independent numerical route and re-estimated \val{cl_n_core} core specifications per
+country. It classified each country as robustly negative, negative with
+specification-dependent significance, or sign-unstable.
+
+\paragraph{The participation control.} Half of the core specifications control for the
+change in participation. That variable is itself a response to output, and it is
+mechanically linked to the outcome, because the labour force is the denominator of the
+unemployment rate. Those specifications therefore estimate a different, partly mediated
+quantity. The robustness verdicts include them.
 
 \subsection{Results}
 
 \paragraph{The association.} With 2020--2021 excluded, the two-lag sum is negative with a
 95\% interval below zero in \val{cl_n_neg_excluded} of \val{n_countries} countries
-(table~\ref{tab:countries}). In \val{cl_n_robust} countries every core specification agrees
-in sign and excludes zero. These are associations conditional on contemporaneous and
-lagged GDP growth. Contemporaneous growth is not exogenous, and the participation control
-can absorb part of the association, a ``bad control'' in the sense of a variable that is
-itself an outcome.
+(table~\ref{tab:countries}). Each country is tested separately; with a Holm adjustment
+over the \val{n_countries} tests, \val{cl_n_neg_holm} remain. In \val{cl_n_robust}
+countries every core specification agrees in sign and excludes zero. These are
+associations conditional on contemporaneous and lagged GDP growth, and contemporaneous
+growth is not exogenous.
 
 \paragraph{The pandemic.} Including 2020--2021 moves the sum towards zero in
 \val{cl_n_attenuated} countries (figure~\ref{fig:pandemic}). In \val{cl_n_full_outside}
@@ -35,20 +47,22 @@ the pandemic. The pandemic quarters combine the largest output movements of the 
 with job-retention schemes that kept unemployment from following output. The full-sample
 coefficient therefore describes those quarters, not the 2009--2019 relationship.
 
-\paragraph{Post-2021 stability.} The original classical analysis tested whether the sum
-changed after 2021 with interacted HAC regressions and Holm's step-down adjustment
-\citep{holm1979}; \val{ss_published_holm} changes were significant. With only about
-seventeen post-2021 quarters, however, the asymptotic normal reference is unreliable. A
-pre-registered study replaced it with null-imposed sieve and moving-block bootstraps of the
-same statistic \citep{kunsch1989bootstrap}:
+\paragraph{Post-2021 stability.}\label{sec:smallsample} Our first classical pass tested
+whether the sum changed after 2021, with interacted HAC regressions and Holm's step-down
+adjustment \citep{holm1979}: \val{ss_published_holm} changes were significant. With only
+about seventeen post-2021 quarters, however, the asymptotic normal reference is
+unreliable. A study registered after those rejections were known replaced it with
+null-imposed sieve and moving-block bootstraps of the same statistic
+\citep{kunsch1989bootstrap}:
 \begin{itemize}
-  \item \val{ss_survivors} of the \val{ss_published_holm} published changes survive;
+  \item \val{ss_survivors} of the \val{ss_published_holm} changes survive;
   \item a size study under each test's fitted null shows why: the nominal 5\% normal test
     rejects \val{ss_size_normal} of the time, whereas the bootstrap test rejects
     \val{ss_size_bootstrap}.
 \end{itemize}
 A weaker association after 2021 is therefore a descriptive pattern, not a tested result.
-The Bayesian regime models (section~\ref{sec:bayes}) agree.
+The Bayesian regime models (section~\ref{sec:bayes}) find no credible shift either, but
+they pool the country shifts strongly, so they have little power to detect one.
 
 \input{generated/tab_countries.tex}
 

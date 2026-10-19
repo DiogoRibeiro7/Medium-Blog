@@ -63,15 +63,30 @@ four lags, and a sample without 2020--2021. Of these, \val{by_n_accepted} of
 
 \subsection{Results}
 
-\paragraph{Average and spread.} The mean country sum is $\mu_\theta=$ \val{by_mu} (90\%
-credible interval \val{by_mu_ci}). The between-country standard deviation is
-$\tau_\theta=$ \val{by_tau} (\val{by_tau_ci}).
+\paragraph{Average and spread.} In the primary fit the mean country sum is
+$\mu_\theta=$ \val{by_mu} (90\% credible interval \val{by_mu_ci}), and the
+between-country standard deviation is $\tau_\theta=$ \val{by_tau} (\val{by_tau_ci}).
+The primary model fails one predictive check (below), so this is one point in a range
+rather than the answer: across accepted specifications the posterior median of
+$\mu_\theta$ runs from \val{by_mu_lo} (Gaussian i.i.d.\ errors) to \val{by_mu_hi}. The
+amended model that passes the persistence check and is preferred by PSIS-LOO gives
+\val{dyn_mu} \val{dyn_mu_ci} for the mean long-run sum. In every factor specification the
+estimand is the association beyond the common European cycle: the fitted factor
+correlates \val{by_factor_corr} with mean GDP growth.
 
 \paragraph{Country signs.}
 \begin{itemize}
   \item \val{by_n_neg_primary} of \val{n_countries} country sums are credibly negative,
-    meaning $P(\theta_i<0)\ge 0.95$, in the primary fit;
-  \item \val{by_n_neg_all} are credibly negative in every accepted specification.
+    meaning $P(\theta_i<0)\ge 0.95$, in the primary fit.
+  \item \val{by_n_neg_all} are credibly negative in every accepted specification. This
+    count depends on one fit. The unpooled specification narrowly missed the
+    $\widehat R$ threshold (\val{by_unpooled_rhat}, on \val{by_unpooled_country}'s AR(1)
+    coefficient), and the Linux replication accepted it. With it, the count is
+    \val{by_n_neg_unpooled}.
+  \item The \val{by_unpooled_n_differ} countries in between (\val{by_unpooled_differ})
+    reach $P(\theta_i<0)$ of only \val{by_unpooled_p_lo} to \val{by_unpooled_p_hi} in the
+    unpooled fit. This is not evidence that their own data show no association: OLS on
+    the same quarters excludes zero for \val{by_unpooled_ols}.
 \end{itemize}
 
 \paragraph{Magnitudes.} The Bayesian sums are smaller in magnitude than OLS on the same
@@ -84,8 +99,8 @@ not.
 \paragraph{Checks.} The posterior predictive checks find one systematic misfit:
 \begin{itemize}
   \item the lag-1 autocorrelation of unemployment changes is \val{by_lag1_obs} in the data
-    but \val{by_lag1_rep} on average in replicated data, so the primary model understates
-    persistence;
+    but \val{by_lag1_rep} on average in replicated data (posterior predictive $p=$
+    \val{by_lag1_p}), so the primary model understates persistence;
   \item central 90\% one-step predictive intervals cover \val{by_cov90} of observations.
 \end{itemize}
 
@@ -94,12 +109,15 @@ unemployment changes. Their combination removes the persistence misfit (posterio
 predictive $p=$ \val{dyn_p}) and is preferred by PSIS-LOO. Its factor remains correlated
 with average GDP growth (\val{dyn_factor_corr}). A second amendment allowed the coefficient
 sums to shift after 2021: the average shift is \val{reg_delta} (\val{reg_delta_ci}), with no
-credible change in any evaluable country.
+credible change in any evaluable country. The country shifts are pooled strongly
+($\tau_\delta\approx$ \val{reg_tau}), so this mostly reflects low power to detect
+country-specific shifts.
 
 \begin{figure}[t]\centering
 \includegraphics[width=0.78\textwidth]{fig1_countries.pdf}
-\caption{Two-lag sums by country. Orange: OLS without 2020--2021 with 95\% HAC intervals.
-Blue: hierarchical Bayesian posterior median, 2009--2019, with 90\% credible intervals.
+\caption{Two-lag sums by country on the same quarters (2009--2019, with the terms that rely
+on a flagged value masked), both with 90\% intervals. Orange: OLS with Newey--West
+standard errors. Blue: hierarchical Bayesian posterior median and credible interval.
 Alphabetical order; focus countries marked. The Bayesian estimand excludes the common
 European factor, so the two are not expected to coincide.}\label{fig:countries}
 \end{figure}

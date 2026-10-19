@@ -45,8 +45,11 @@ EXPERIMENTS: tuple[dict[str, Any], ...] = (
      "registered": "00f0ada 2026-10-14", "report": "docs/CLASSICAL_RESULTS_REVIEW.md",
      "outputs": ["docs/review"], "seeds": [20261015],
      "commands": ["eu-okun review --data-dir snapshots/eurostat-2026-10-15 --output-dir "
-                  "docs/review --report docs/CLASSICAL_RESULTS_REVIEW.md"],
-     "replication": "17 independent checks; archived CI outputs of run 38754743850 reproduced"},
+                  "docs/review --report docs/CLASSICAL_RESULTS_REVIEW.md --published-dir "
+                  "snapshots/ci-results-38754743850 --provenance \"CI artifact "
+                  "eu-okun-empirical-baselines, workflow run 38754743850 (commit e73ee68)\""],
+     "replication": "17 independent checks; outputs of CI run 38754743850, frozen in "
+                    "snapshots/ci-results-38754743850, reproduced"},
     {"key": "small_sample", "title": "Small-sample inference for the post-2021 tests",
      "protocol": "SMALL_SAMPLE_PROTOCOL.md",
      "registered": "6c8c998 2026-10-17", "report": "docs/SMALL_SAMPLE_INFERENCE.md",
@@ -528,18 +531,20 @@ def figures(root: Path, out: Path, medium: Path) -> list[str]:
         made.append(name)
         return [out / f"{name}.pdf", medium / f"{name}.png"]
 
-    # 1. Country estimates: classical without 2020-2021 and Bayesian primary.
+    # 1. Country estimates on the same quarters (2009-2019, flag-masked rows): OLS and the
+    #    Bayesian primary model, both with 90% intervals.
     grid = _csv(docs / "review" / "grid.csv")
     est = {r["geo"]: r for r in _csv(docs / "bayes" / "country_estimates.csv")
            if r["spec"] == "primary"}
+    z90 = 1.6448536269514722 / 1.959963984540054   # 95% HAC half-width -> 90%
     fig, ax = plt.subplots(figsize=(7.2, 8.0))
     ys = np.arange(len(EU27))[::-1]
     for y, geo in zip(ys, EU27, strict=True):
-        c = next(r for r in grid if r["sample"] == "pandemic_excluded" and r["geo"] == geo
-                 and r["gdp_lags"] == "2" and r["participation"] == "False")
         b = est[geo]
-        ax.plot([float(c["ci_low"]), float(c["ci_high"])], [y + 0.18] * 2, color=ORANGE, lw=1.6)
-        ax.plot([float(c["gdp_sum"])], [y + 0.18], "o", ms=4.5, color=ORANGE, mec=SURFACE)
+        ols = float(b["classical_theta"])
+        half = (float(b["classical_high"]) - float(b["classical_low"])) / 2 * z90
+        ax.plot([ols - half, ols + half], [y + 0.18] * 2, color=ORANGE, lw=1.6)
+        ax.plot([ols], [y + 0.18], "o", ms=4.5, color=ORANGE, mec=SURFACE)
         ax.plot([float(b["theta_low"]), float(b["theta_high"])], [y - 0.18] * 2, color=BLUE,
                 lw=1.6)
         ax.plot([float(b["theta_median"])], [y - 0.18], "o", ms=4.5, color=BLUE, mec=SURFACE)
@@ -547,11 +552,12 @@ def figures(root: Path, out: Path, medium: Path) -> list[str]:
     ax.set_yticks(ys)
     ax.set_yticklabels([f"{g} *" if g in FOCUS else g for g in EU27], fontsize=8)
     ax.grid(axis="y", visible=False)
-    ax.plot([], [], "o-", color=ORANGE, label="OLS without 2020-2021, 95% HAC")
-    ax.plot([], [], "o-", color=BLUE, label="Hierarchical Bayes 2009-2019, 90% CrI")
+    ax.plot([], [], "o-", color=ORANGE, label="OLS, same quarters, 90% HAC")
+    ax.plot([], [], "o-", color=BLUE, label="Hierarchical Bayes (beyond the common "
+                                            "factor), 90% CrI")
     ax.legend(loc="lower left", fontsize=7.5)
     ax.set_xlabel("Two-lag sum: pp of unemployment-rate change per pp of GDP growth")
-    ax.set_title("Okun coefficient sums by country (alphabetical; * focus countries)",
+    ax.set_title("Okun coefficient sums, 2009-2019, same quarters (alphabetical; * focus)",
                  fontsize=9.5)
     _save(plt, fig, paths("fig1_countries"))
 

@@ -1,0 +1,4865 @@
+{
+  "description": "Descriptive OLS with Bartlett HAC uncertainty; not causal",
+  "models": [
+    {
+      "geo": "AT",
+      "lags": 0,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.04828961478870497,
+        "gdp_lag_0": -0.12185108427873344
+      },
+      "hac_se": {
+        "intercept": 0.03071008329896591,
+        "gdp_lag_0": 0.017580282080298208
+      },
+      "r_squared": 0.4309306244240322,
+      "condition_number": 2.3510739638039286
+    },
+    {
+      "geo": "AT",
+      "lags": 0,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.04306760793188995,
+        "gdp_lag_0": -0.17310401634963168,
+        "participation_change": 0.4446611532883738
+      },
+      "hac_se": {
+        "intercept": 0.029549272282974423,
+        "gdp_lag_0": 0.023130123302099154,
+        "participation_change": 0.17410862413043218
+      },
+      "r_squared": 0.478272994882713,
+      "condition_number": 11.284927745401875
+    },
+    {
+      "geo": "AT",
+      "lags": 1,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.0772405708114868,
+        "gdp_lag_0": -0.14789979796125316,
+        "gdp_lag_1": -0.06965843446745236
+      },
+      "hac_se": {
+        "intercept": 0.026098331062535365,
+        "gdp_lag_0": 0.008326666043245626,
+        "gdp_lag_1": 0.009639449984466789
+      },
+      "r_squared": 0.5527671761121165,
+      "condition_number": 2.800375403775923
+    },
+    {
+      "geo": "AT",
+      "lags": 1,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.07106150074882796,
+        "gdp_lag_0": -0.185249498398532,
+        "gdp_lag_1": -0.06442689313519129,
+        "participation_change": 0.34101200373457397
+      },
+      "hac_se": {
+        "intercept": 0.025427796048960567,
+        "gdp_lag_0": 0.020575749805328742,
+        "gdp_lag_1": 0.01138279056055452,
+        "participation_change": 0.18312142432286382
+      },
+      "r_squared": 0.5799239229444593,
+      "condition_number": 13.213525544530006
+    },
+    {
+      "geo": "AT",
+      "lags": 2,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.08092878864200748,
+        "gdp_lag_0": -0.14943686275355875,
+        "gdp_lag_1": -0.07323939149858678,
+        "gdp_lag_2": -0.008334390731681235
+      },
+      "hac_se": {
+        "intercept": 0.025745817973744405,
+        "gdp_lag_0": 0.007940627742347555,
+        "gdp_lag_1": 0.010106458562094396,
+        "gdp_lag_2": 0.011974293946980928
+      },
+      "r_squared": 0.5545158819611782,
+      "condition_number": 3.040291469080999
+    },
+    {
+      "geo": "AT",
+      "lags": 2,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.07858655389028733,
+        "gdp_lag_0": -0.19515149297494314,
+        "gdp_lag_1": -0.07186322401451696,
+        "gdp_lag_2": -0.019370890016590498,
+        "participation_change": 0.39880218115807314
+      },
+      "hac_se": {
+        "intercept": 0.025421475758805073,
+        "gdp_lag_0": 0.020287759215118103,
+        "gdp_lag_1": 0.01088519393209053,
+        "gdp_lag_2": 0.011100186412576492,
+        "participation_change": 0.17563890503318705
+      },
+      "r_squared": 0.5885904500153868,
+      "condition_number": 14.488093056399105
+    },
+    {
+      "geo": "AT",
+      "lags": 4,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.09753316651010599,
+        "gdp_lag_0": -0.14066765386610208,
+        "gdp_lag_1": -0.07121431478185256,
+        "gdp_lag_2": -0.02241368040301164,
+        "gdp_lag_3": -0.04221020805237301,
+        "gdp_lag_4": -0.025993704519886324
+      },
+      "hac_se": {
+        "intercept": 0.027516201456461213,
+        "gdp_lag_0": 0.005595523690445175,
+        "gdp_lag_1": 0.009017637772700217,
+        "gdp_lag_2": 0.008485589045953673,
+        "gdp_lag_3": 0.010254018451583205,
+        "gdp_lag_4": 0.017043475522662044
+      },
+      "r_squared": 0.5968124575942707,
+      "condition_number": 3.1440470963670175
+    },
+    {
+      "geo": "AT",
+      "lags": 4,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.09207470198202763,
+        "gdp_lag_0": -0.18394154558218676,
+        "gdp_lag_1": -0.06734329670078547,
+        "gdp_lag_2": -0.027927026329827832,
+        "gdp_lag_3": -0.030853365192147916,
+        "gdp_lag_4": -0.031244577837601935,
+        "participation_change": 0.3705871103948299
+      },
+      "hac_se": {
+        "intercept": 0.028344939166760022,
+        "gdp_lag_0": 0.027483496122220834,
+        "gdp_lag_1": 0.011319729242063037,
+        "gdp_lag_2": 0.0087044044968948,
+        "gdp_lag_3": 0.013952842769854536,
+        "gdp_lag_4": 0.018990798254004616,
+        "participation_change": 0.2216467962137682
+      },
+      "r_squared": 0.6210058646427598,
+      "condition_number": 16.14919513523526
+    },
+    {
+      "geo": "BE",
+      "lags": 0,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": -0.04442373853211007,
+        "gdp_lag_0": 0.04703486835373967
+      },
+      "hac_se": {
+        "intercept": 0.04407554655869199,
+        "gdp_lag_0": 0.019652589000892062
+      },
+      "r_squared": 0.05543677837654737,
+      "condition_number": 2.0862407184237823
+    },
+    {
+      "geo": "BE",
+      "lags": 0,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": -0.04420362283901697,
+        "gdp_lag_0": 0.04913857008644504,
+        "participation_change": -0.025634842654713642
+      },
+      "hac_se": {
+        "intercept": 0.04410296559030802,
+        "gdp_lag_0": 0.023022529588364052,
+        "participation_change": 0.11579318608199005
+      },
+      "r_squared": 0.05632654170674645,
+      "condition_number": 4.441644770644476
+    },
+    {
+      "geo": "BE",
+      "lags": 1,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": -0.006615952203076071,
+        "gdp_lag_0": 0.020699344491318675,
+        "gdp_lag_1": -0.07337110674919782
+      },
+      "hac_se": {
+        "intercept": 0.03916275601610718,
+        "gdp_lag_0": 0.008541937605613253,
+        "gdp_lag_1": 0.010347687700837917
+      },
+      "r_squared": 0.17383152317155293,
+      "condition_number": 2.510178819405553
+    },
+    {
+      "geo": "BE",
+      "lags": 1,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": -0.006485511944680492,
+        "gdp_lag_0": 0.022413320093561458,
+        "gdp_lag_1": -0.07328266097848148,
+        "participation_change": -0.020498952496848865
+      },
+      "hac_se": {
+        "intercept": 0.03929801338115716,
+        "gdp_lag_0": 0.0138719530586086,
+        "gdp_lag_1": 0.010310161888561528,
+        "participation_change": 0.11533152066318901
+      },
+      "r_squared": 0.17440030430869147,
+      "condition_number": 5.048875915266965
+    },
+    {
+      "geo": "BE",
+      "lags": 2,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": -0.016041417508727944,
+        "gdp_lag_0": 0.023803832630466825,
+        "gdp_lag_1": -0.06655269403880344,
+        "gdp_lag_2": 0.016606361104156604
+      },
+      "hac_se": {
+        "intercept": 0.04250552863809524,
+        "gdp_lag_0": 0.011590520503002712,
+        "gdp_lag_1": 0.016237414878107686,
+        "gdp_lag_2": 0.017090580905781933
+      },
+      "r_squared": 0.17991917838447136,
+      "condition_number": 2.805775014388825
+    },
+    {
+      "geo": "BE",
+      "lags": 2,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": -0.016175673789727684,
+        "gdp_lag_0": 0.026090123450752047,
+        "gdp_lag_1": -0.06622228876603956,
+        "gdp_lag_2": 0.017136177611310664,
+        "participation_change": -0.026159187199782507
+      },
+      "hac_se": {
+        "intercept": 0.042848114490269845,
+        "gdp_lag_0": 0.01708270693136964,
+        "gdp_lag_1": 0.016577948002967833,
+        "gdp_lag_2": 0.01745122821141219,
+        "participation_change": 0.11727092829133386
+      },
+      "r_squared": 0.18083923632089394,
+      "condition_number": 5.303896525373587
+    },
+    {
+      "geo": "BE",
+      "lags": 4,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.02798971434434514,
+        "gdp_lag_0": 0.016685749231071342,
+        "gdp_lag_1": -0.08184910981995223,
+        "gdp_lag_2": -0.012908833238547407,
+        "gdp_lag_3": -0.07303304741396237,
+        "gdp_lag_4": -0.0037194111389105655
+      },
+      "hac_se": {
+        "intercept": 0.03936792801104977,
+        "gdp_lag_0": 0.008753179882741439,
+        "gdp_lag_1": 0.010897107650327902,
+        "gdp_lag_2": 0.011183163245643417,
+        "gdp_lag_3": 0.010126232153928676,
+        "gdp_lag_4": 0.010173939050945852
+      },
+      "r_squared": 0.2942702259803164,
+      "condition_number": 3.222130277562415
+    },
+    {
+      "geo": "BE",
+      "lags": 4,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.028867625641220113,
+        "gdp_lag_0": 0.014091886990648714,
+        "gdp_lag_1": -0.08246988454506803,
+        "gdp_lag_2": -0.013989772860934115,
+        "gdp_lag_3": -0.07429955893422928,
+        "gdp_lag_4": -0.0036950510645873897,
+        "participation_change": 0.028260464791628054
+      },
+      "hac_se": {
+        "intercept": 0.03975227310656979,
+        "gdp_lag_0": 0.012284137566366577,
+        "gdp_lag_1": 0.010555841716469578,
+        "gdp_lag_2": 0.011005474267064365,
+        "gdp_lag_3": 0.011264028473715538,
+        "gdp_lag_4": 0.009795354949158844,
+        "participation_change": 0.10290621040335377
+      },
+      "r_squared": 0.2953077566895034,
+      "condition_number": 5.572345126787647
+    },
+    {
+      "geo": "BG",
+      "lags": 0,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.027812389700148564,
+        "gdp_lag_0": -0.1363860228028269
+      },
+      "hac_se": {
+        "intercept": 0.08021233710321257,
+        "gdp_lag_0": 0.036004092844284026
+      },
+      "r_squared": 0.1213950552773313,
+      "condition_number": 1.7238681661684405
+    },
+    {
+      "geo": "BG",
+      "lags": 0,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.021452871298290186,
+        "gdp_lag_0": -0.1384512878103161,
+        "participation_change": 0.14036543378928715
+      },
+      "hac_se": {
+        "intercept": 0.08276298595205846,
+        "gdp_lag_0": 0.03369800080724129,
+        "participation_change": 0.14051575555457133
+      },
+      "r_squared": 0.13631064548824123,
+      "condition_number": 3.4700303376096264
+    },
+    {
+      "geo": "BG",
+      "lags": 1,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.09654819333236249,
+        "gdp_lag_0": -0.15138907566415233,
+        "gdp_lag_1": -0.12228386438326688
+      },
+      "hac_se": {
+        "intercept": 0.07910295955675968,
+        "gdp_lag_0": 0.03646958762507702,
+        "gdp_lag_1": 0.047449393453800615
+      },
+      "r_squared": 0.23896938082879715,
+      "condition_number": 2.0175248907649195
+    },
+    {
+      "geo": "BG",
+      "lags": 1,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.09099998922054403,
+        "gdp_lag_0": -0.15435549187350014,
+        "gdp_lag_1": -0.1260993927682151,
+        "participation_change": 0.1697957516130481
+      },
+      "hac_se": {
+        "intercept": 0.08067567027806091,
+        "gdp_lag_0": 0.03461738688875266,
+        "gdp_lag_1": 0.047151816816693885,
+        "participation_change": 0.11770679921056788
+      },
+      "r_squared": 0.26068089223320623,
+      "condition_number": 3.744041320171572
+    },
+    {
+      "geo": "BG",
+      "lags": 2,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.125173081438705,
+        "gdp_lag_0": -0.13387143256800807,
+        "gdp_lag_1": -0.12790721342808048,
+        "gdp_lag_2": -0.07299146427702966
+      },
+      "hac_se": {
+        "intercept": 0.08562784260588935,
+        "gdp_lag_0": 0.04280568427918699,
+        "gdp_lag_1": 0.047776063902930155,
+        "gdp_lag_2": 0.040867382731257854
+      },
+      "r_squared": 0.2789570926723246,
+      "condition_number": 2.27848858436899
+    },
+    {
+      "geo": "BG",
+      "lags": 2,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.11905603897367768,
+        "gdp_lag_0": -0.13721153403350755,
+        "gdp_lag_1": -0.13131854174480695,
+        "gdp_lag_2": -0.07069752553981146,
+        "participation_change": 0.15967295153840805
+      },
+      "hac_se": {
+        "intercept": 0.08843506039658394,
+        "gdp_lag_0": 0.0419652723265901,
+        "gdp_lag_1": 0.0477118878845054,
+        "gdp_lag_2": 0.044867077071592765,
+        "participation_change": 0.11569721576845655
+      },
+      "r_squared": 0.29811750427209627,
+      "condition_number": 4.1435858623369715
+    },
+    {
+      "geo": "BG",
+      "lags": 4,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.17089170717992344,
+        "gdp_lag_0": -0.13786498176879444,
+        "gdp_lag_1": -0.12290755646707395,
+        "gdp_lag_2": -0.06345886094820116,
+        "gdp_lag_3": -0.035799343872430923,
+        "gdp_lag_4": -0.06532246472809533
+      },
+      "hac_se": {
+        "intercept": 0.10489304191483695,
+        "gdp_lag_0": 0.04083581934400814,
+        "gdp_lag_1": 0.04307940860607664,
+        "gdp_lag_2": 0.04164234328930872,
+        "gdp_lag_3": 0.01889249565226004,
+        "gdp_lag_4": 0.0606870294524912
+      },
+      "r_squared": 0.31881942736087,
+      "condition_number": 2.7053754825557137
+    },
+    {
+      "geo": "BG",
+      "lags": 4,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.16680778473671815,
+        "gdp_lag_0": -0.14086321258267337,
+        "gdp_lag_1": -0.12496416009787058,
+        "gdp_lag_2": -0.06235619756057027,
+        "gdp_lag_3": -0.04444196338785331,
+        "gdp_lag_4": -0.06251357098781851,
+        "participation_change": 0.17013111511012535
+      },
+      "hac_se": {
+        "intercept": 0.10556169437133944,
+        "gdp_lag_0": 0.038589082915907416,
+        "gdp_lag_1": 0.04371616600661147,
+        "gdp_lag_2": 0.04727224389571674,
+        "gdp_lag_3": 0.0218232645292916,
+        "gdp_lag_4": 0.05356545460616774,
+        "participation_change": 0.11577271839146294
+      },
+      "r_squared": 0.33991051096142877,
+      "condition_number": 4.647073195948014
+    },
+    {
+      "geo": "CY",
+      "lags": 0,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.04758598429815303,
+        "gdp_lag_0": -0.08282825388585315
+      },
+      "hac_se": {
+        "intercept": 0.1280785836425391,
+        "gdp_lag_0": 0.06924521111379928
+      },
+      "r_squared": 0.07399157388156197,
+      "condition_number": 2.5109420008948447
+    },
+    {
+      "geo": "CY",
+      "lags": 0,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.02970393643375491,
+        "gdp_lag_0": -0.10837311297684606,
+        "participation_change": 0.4794659338133648
+      },
+      "hac_se": {
+        "intercept": 0.1267103092090292,
+        "gdp_lag_0": 0.06769061340051594,
+        "participation_change": 0.1260170023345236
+      },
+      "r_squared": 0.19258622260175162,
+      "condition_number": 4.868902218118941
+    },
+    {
+      "geo": "CY",
+      "lags": 1,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.12760783994151745,
+        "gdp_lag_0": -0.07215350095412319,
+        "gdp_lag_1": -0.12922592647278713
+      },
+      "hac_se": {
+        "intercept": 0.11162177826785039,
+        "gdp_lag_0": 0.043282730587314654,
+        "gdp_lag_1": 0.04070559013038865
+      },
+      "r_squared": 0.2558685625062004,
+      "condition_number": 2.8227478830928754
+    },
+    {
+      "geo": "CY",
+      "lags": 1,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.10469304470543354,
+        "gdp_lag_0": -0.09455079300457661,
+        "gdp_lag_1": -0.11633682404701205,
+        "participation_change": 0.4004033415097621
+      },
+      "hac_se": {
+        "intercept": 0.11357445486346619,
+        "gdp_lag_0": 0.0461013815394558,
+        "gdp_lag_1": 0.0392236900533249,
+        "participation_change": 0.12088490785538249
+      },
+      "r_squared": 0.3367667215637016,
+      "condition_number": 5.337532926529937
+    },
+    {
+      "geo": "CY",
+      "lags": 2,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.17439328676482008,
+        "gdp_lag_0": -0.06961081885371552,
+        "gdp_lag_1": -0.1223327524531514,
+        "gdp_lag_2": -0.08009042706921422
+      },
+      "hac_se": {
+        "intercept": 0.10161498634639055,
+        "gdp_lag_0": 0.03241502950425167,
+        "gdp_lag_1": 0.030047075133701855,
+        "gdp_lag_2": 0.024095166151730966
+      },
+      "r_squared": 0.3258055493305224,
+      "condition_number": 3.080796710595163
+    },
+    {
+      "geo": "CY",
+      "lags": 2,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.15272029838877937,
+        "gdp_lag_0": -0.09279091376124815,
+        "gdp_lag_1": -0.10860683502220062,
+        "gdp_lag_2": -0.08379313415902422,
+        "participation_change": 0.41649926856575753
+      },
+      "hac_se": {
+        "intercept": 0.10323078639778331,
+        "gdp_lag_0": 0.03547170363099588,
+        "gdp_lag_1": 0.027591632848952784,
+        "gdp_lag_2": 0.0272910625253319,
+        "participation_change": 0.12442993060457375
+      },
+      "r_squared": 0.41318905383280935,
+      "condition_number": 5.657227787735366
+    },
+    {
+      "geo": "CY",
+      "lags": 4,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.2084508073567728,
+        "gdp_lag_0": -0.060252997469359484,
+        "gdp_lag_1": -0.11982324865694516,
+        "gdp_lag_2": -0.07612256114007555,
+        "gdp_lag_3": -0.03274383200541208,
+        "gdp_lag_4": -0.03701640557890989
+      },
+      "hac_se": {
+        "intercept": 0.10601198032723545,
+        "gdp_lag_0": 0.02867638322846452,
+        "gdp_lag_1": 0.025821655094445808,
+        "gdp_lag_2": 0.018011485877474625,
+        "gdp_lag_3": 0.021685272882128407,
+        "gdp_lag_4": 0.03481513111546323
+      },
+      "r_squared": 0.35381480182382896,
+      "condition_number": 3.5666890661037827
+    },
+    {
+      "geo": "CY",
+      "lags": 4,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.1976206707394402,
+        "gdp_lag_0": -0.08760944827428636,
+        "gdp_lag_1": -0.10230878357559642,
+        "gdp_lag_2": -0.07790966621423386,
+        "gdp_lag_3": -0.06617835348107552,
+        "gdp_lag_4": -0.032108801643329174,
+        "participation_change": 0.5066227583085384
+      },
+      "hac_se": {
+        "intercept": 0.10733244174819564,
+        "gdp_lag_0": 0.0270889940598644,
+        "gdp_lag_1": 0.023146221215843657,
+        "gdp_lag_2": 0.01785761587416026,
+        "gdp_lag_3": 0.0249009338929578,
+        "gdp_lag_4": 0.027883976936076214,
+        "participation_change": 0.10455916801599975
+      },
+      "r_squared": 0.47097038667015845,
+      "condition_number": 6.649956778789229
+    },
+    {
+      "geo": "CZ",
+      "lags": 0,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": -0.02178643073014761,
+        "gdp_lag_0": -0.0343804476369848
+      },
+      "hac_se": {
+        "intercept": 0.04271333869237667,
+        "gdp_lag_0": 0.023701789899750744
+      },
+      "r_squared": 0.04123867446236962,
+      "condition_number": 1.7660614637392646
+    },
+    {
+      "geo": "CZ",
+      "lags": 0,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": -0.01987611597613557,
+        "gdp_lag_0": -0.03389289766031,
+        "participation_change": -0.023768477787541528
+      },
+      "hac_se": {
+        "intercept": 0.04425206465327958,
+        "gdp_lag_0": 0.024653620893186134,
+        "participation_change": 0.10603058011200395
+      },
+      "r_squared": 0.04163816753900651,
+      "condition_number": 7.534699069237358
+    },
+    {
+      "geo": "CZ",
+      "lags": 1,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.008998962979046654,
+        "gdp_lag_0": -0.038581661802934784,
+        "gdp_lag_1": -0.0703241496127422
+      },
+      "hac_se": {
+        "intercept": 0.04044835974491871,
+        "gdp_lag_0": 0.0159794383890897,
+        "gdp_lag_1": 0.03466832317003354
+      },
+      "r_squared": 0.22770221876193675,
+      "condition_number": 1.9176233980775013
+    },
+    {
+      "geo": "CZ",
+      "lags": 1,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.00639560089196342,
+        "gdp_lag_0": -0.03934117643956409,
+        "gdp_lag_1": -0.07087869048258436,
+        "participation_change": 0.035411936698992987
+      },
+      "hac_se": {
+        "intercept": 0.04050169055126938,
+        "gdp_lag_0": 0.015905125481364964,
+        "gdp_lag_1": 0.034886421115999315,
+        "participation_change": 0.08292408866001469
+      },
+      "r_squared": 0.2285773838176144,
+      "condition_number": 7.870809694547951
+    },
+    {
+      "geo": "CZ",
+      "lags": 2,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.04103188957161093,
+        "gdp_lag_0": -0.048590818739950296,
+        "gdp_lag_1": -0.07140671714829294,
+        "gdp_lag_2": -0.07073548164791064
+      },
+      "hac_se": {
+        "intercept": 0.03834311677243003,
+        "gdp_lag_0": 0.014162059091454673,
+        "gdp_lag_1": 0.021646032573700704,
+        "gdp_lag_2": 0.024005547538159457
+      },
+      "r_squared": 0.41895041818798906,
+      "condition_number": 2.051664764429796
+    },
+    {
+      "geo": "CZ",
+      "lags": 2,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.0393260082396279,
+        "gdp_lag_0": -0.04906812928931545,
+        "gdp_lag_1": -0.07176176554997295,
+        "gdp_lag_2": -0.07066103620128227,
+        "participation_change": 0.02274547950851478
+      },
+      "hac_se": {
+        "intercept": 0.03881045782486434,
+        "gdp_lag_0": 0.01371440677248237,
+        "gdp_lag_1": 0.02153207048362462,
+        "gdp_lag_2": 0.023969674723851236,
+        "participation_change": 0.08503766275233934
+      },
+      "r_squared": 0.41931126753779624,
+      "condition_number": 8.054298314165758
+    },
+    {
+      "geo": "CZ",
+      "lags": 4,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.07115381272342002,
+        "gdp_lag_0": -0.04560950169518736,
+        "gdp_lag_1": -0.07430763865411559,
+        "gdp_lag_2": -0.0743800055394868,
+        "gdp_lag_3": -0.046386536270347584,
+        "gdp_lag_4": -0.03138420594107793
+      },
+      "hac_se": {
+        "intercept": 0.0338187089530918,
+        "gdp_lag_0": 0.010358303434700282,
+        "gdp_lag_1": 0.017172972578415775,
+        "gdp_lag_2": 0.014141993582640625,
+        "gdp_lag_3": 0.008722308586060054,
+        "gdp_lag_4": 0.007572110542588999
+      },
+      "r_squared": 0.5392397234637173,
+      "condition_number": 2.2916125900638606
+    },
+    {
+      "geo": "CZ",
+      "lags": 4,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.06538685071892521,
+        "gdp_lag_0": -0.04774725676560607,
+        "gdp_lag_1": -0.07555972419450352,
+        "gdp_lag_2": -0.07449225221793751,
+        "gdp_lag_3": -0.04662510490469916,
+        "gdp_lag_4": -0.034762299872781,
+        "participation_change": 0.09630827291083403
+      },
+      "hac_se": {
+        "intercept": 0.03319753639683861,
+        "gdp_lag_0": 0.009983270386697368,
+        "gdp_lag_1": 0.01678725829692094,
+        "gdp_lag_2": 0.013970504516316009,
+        "gdp_lag_3": 0.00886082182847746,
+        "gdp_lag_4": 0.008458191603542298,
+        "participation_change": 0.0807215128780545
+      },
+      "r_squared": 0.5452728791199821,
+      "condition_number": 8.864053630253869
+    },
+    {
+      "geo": "DE",
+      "lags": 0,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": -0.04084232554994946,
+        "gdp_lag_0": -0.020162323726087387
+      },
+      "hac_se": {
+        "intercept": 0.024633049460243032,
+        "gdp_lag_0": 0.01683087475755678
+      },
+      "r_squared": 0.03838924399428101,
+      "condition_number": 1.7474928536231653
+    },
+    {
+      "geo": "DE",
+      "lags": 0,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": -0.026704165711362225,
+        "gdp_lag_0": -0.0152361498659748,
+        "participation_change": -0.1792243580523293
+      },
+      "hac_se": {
+        "intercept": 0.0224549757971778,
+        "gdp_lag_0": 0.015337398123241803,
+        "participation_change": 0.06693785736808312
+      },
+      "r_squared": 0.1224938289003944,
+      "condition_number": 6.238218818166448
+    },
+    {
+      "geo": "DE",
+      "lags": 1,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": -0.02195293500275728,
+        "gdp_lag_0": -0.03403679995550909,
+        "gdp_lag_1": -0.05141629449063915
+      },
+      "hac_se": {
+        "intercept": 0.018092982691705856,
+        "gdp_lag_0": 0.012360449860629773,
+        "gdp_lag_1": 0.011114261412030478
+      },
+      "r_squared": 0.3038520602030599,
+      "condition_number": 2.0397147361222085
+    },
+    {
+      "geo": "DE",
+      "lags": 1,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": -0.012415298919042686,
+        "gdp_lag_0": -0.02944433102651683,
+        "gdp_lag_1": -0.048226019629464635,
+        "participation_change": -0.13576280197629886
+      },
+      "hac_se": {
+        "intercept": 0.01730439078622328,
+        "gdp_lag_0": 0.011561411867271186,
+        "gdp_lag_1": 0.010497892263066516,
+        "participation_change": 0.05714796881834965
+      },
+      "r_squared": 0.3510900284942662,
+      "condition_number": 7.068120487107922
+    },
+    {
+      "geo": "DE",
+      "lags": 2,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": -0.018891122369119936,
+        "gdp_lag_0": -0.0353472251344121,
+        "gdp_lag_1": -0.05337115337835101,
+        "gdp_lag_2": -0.008411710409849468
+      },
+      "hac_se": {
+        "intercept": 0.017672132644282496,
+        "gdp_lag_0": 0.011977577138090788,
+        "gdp_lag_1": 0.010566250842769105,
+        "gdp_lag_2": 0.009496016244211425
+      },
+      "r_squared": 0.3111136834146202,
+      "condition_number": 2.1721854866270487
+    },
+    {
+      "geo": "DE",
+      "lags": 2,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": -0.010637217185977295,
+        "gdp_lag_0": -0.03050207779746861,
+        "gdp_lag_1": -0.04967871192337812,
+        "gdp_lag_2": -0.005781289318324533,
+        "participation_change": -0.13111848869585288
+      },
+      "hac_se": {
+        "intercept": 0.016896448027014004,
+        "gdp_lag_0": 0.011518639233123367,
+        "gdp_lag_1": 0.010587887080166883,
+        "gdp_lag_2": 0.009676066695747823,
+        "participation_change": 0.05622206837364074
+      },
+      "r_squared": 0.35446490881055437,
+      "condition_number": 7.3153042050710635
+    },
+    {
+      "geo": "DE",
+      "lags": 4,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": -0.007016491683478108,
+        "gdp_lag_0": -0.03461645471378943,
+        "gdp_lag_1": -0.05493120970818032,
+        "gdp_lag_2": -0.014984948330356629,
+        "gdp_lag_3": -0.029762315241771094,
+        "gdp_lag_4": -0.013508564187536792
+      },
+      "hac_se": {
+        "intercept": 0.02171445511710588,
+        "gdp_lag_0": 0.00987560476292693,
+        "gdp_lag_1": 0.007477224734292851,
+        "gdp_lag_2": 0.006428247151525161,
+        "gdp_lag_3": 0.015258571689611007,
+        "gdp_lag_4": 0.007500003907370021
+      },
+      "r_squared": 0.4068929654009581,
+      "condition_number": 2.3588276090075646
+    },
+    {
+      "geo": "DE",
+      "lags": 4,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": -0.0006722943247765425,
+        "gdp_lag_0": -0.03053905431398834,
+        "gdp_lag_1": -0.05167454596009588,
+        "gdp_lag_2": -0.012342727620997165,
+        "gdp_lag_3": -0.02793038181655971,
+        "gdp_lag_4": -0.01280946177024452,
+        "participation_change": -0.11186743014511485
+      },
+      "hac_se": {
+        "intercept": 0.019795023106341278,
+        "gdp_lag_0": 0.009364590577822197,
+        "gdp_lag_1": 0.007692575949984035,
+        "gdp_lag_2": 0.0056978261917999,
+        "gdp_lag_3": 0.013848644016325063,
+        "gdp_lag_4": 0.006828938847528232,
+        "participation_change": 0.05350368185243189
+      },
+      "r_squared": 0.4380982045509726,
+      "condition_number": 7.70931905042512
+    },
+    {
+      "geo": "DK",
+      "lags": 0,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.0255539309414014,
+        "gdp_lag_0": -0.0075638285907096816
+      },
+      "hac_se": {
+        "intercept": 0.04880274871875325,
+        "gdp_lag_0": 0.027990032908624812
+      },
+      "r_squared": 0.0010511632913725588,
+      "condition_number": 1.8193311807979995
+    },
+    {
+      "geo": "DK",
+      "lags": 0,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.026269584947021755,
+        "gdp_lag_0": -0.02702663823321038,
+        "participation_change": 0.1652435918871633
+      },
+      "hac_se": {
+        "intercept": 0.050529669335095666,
+        "gdp_lag_0": 0.023380923171477216,
+        "participation_change": 0.12017704783982863
+      },
+      "r_squared": 0.0347682329378719,
+      "condition_number": 4.211264319200193
+    },
+    {
+      "geo": "DK",
+      "lags": 1,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.08090926610061784,
+        "gdp_lag_0": -0.03297305596465985,
+        "gdp_lag_1": -0.09201495339725622
+      },
+      "hac_se": {
+        "intercept": 0.05083745248973457,
+        "gdp_lag_0": 0.027541933586993552,
+        "gdp_lag_1": 0.030246603194921874
+      },
+      "r_squared": 0.1502323523833906,
+      "condition_number": 2.126757927339913
+    },
+    {
+      "geo": "DK",
+      "lags": 1,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.08069467528714844,
+        "gdp_lag_0": -0.05058268365313204,
+        "gdp_lag_1": -0.09055731210172938,
+        "participation_change": 0.15292711904234713
+      },
+      "hac_se": {
+        "intercept": 0.05334312907880313,
+        "gdp_lag_0": 0.024226262232333987,
+        "gdp_lag_1": 0.031271209214159046,
+        "participation_change": 0.11921897591913555
+      },
+      "r_squared": 0.17907307995432198,
+      "condition_number": 4.440714473962169
+    },
+    {
+      "geo": "DK",
+      "lags": 2,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.10480378173758731,
+        "gdp_lag_0": -0.03503631822298875,
+        "gdp_lag_1": -0.10286374511261581,
+        "gdp_lag_2": -0.04349270659509103
+      },
+      "hac_se": {
+        "intercept": 0.048798605591065976,
+        "gdp_lag_0": 0.026109580013274288,
+        "gdp_lag_1": 0.027493929107408,
+        "gdp_lag_2": 0.025907638123910687
+      },
+      "r_squared": 0.18491136500793404,
+      "condition_number": 2.380599565890544
+    },
+    {
+      "geo": "DK",
+      "lags": 2,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.10409010012515889,
+        "gdp_lag_0": -0.05215323889222603,
+        "gdp_lag_1": -0.10121419492206155,
+        "gdp_lag_2": -0.04257430112198553,
+        "participation_change": 0.14902666962617206
+      },
+      "hac_se": {
+        "intercept": 0.050367380009984364,
+        "gdp_lag_0": 0.021737166366594226,
+        "gdp_lag_1": 0.02801037582809014,
+        "gdp_lag_2": 0.028837084688469027,
+        "participation_change": 0.11244073022300728
+      },
+      "r_squared": 0.21228420888713428,
+      "condition_number": 4.664193911752068
+    },
+    {
+      "geo": "DK",
+      "lags": 4,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.1294251047681551,
+        "gdp_lag_0": -0.02700152484726865,
+        "gdp_lag_1": -0.10040782469993485,
+        "gdp_lag_2": -0.05523375114678044,
+        "gdp_lag_3": -0.056283031661876086,
+        "gdp_lag_4": -0.00783448477361374
+      },
+      "hac_se": {
+        "intercept": 0.0446932546080595,
+        "gdp_lag_0": 0.02195511646176448,
+        "gdp_lag_1": 0.028104737424348717,
+        "gdp_lag_2": 0.021785909424216682,
+        "gdp_lag_3": 0.023151471814276802,
+        "gdp_lag_4": 0.02698808571687769
+      },
+      "r_squared": 0.24028588921863203,
+      "condition_number": 2.5563383009327145
+    },
+    {
+      "geo": "DK",
+      "lags": 4,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.1363809300857175,
+        "gdp_lag_0": -0.05045665384628579,
+        "gdp_lag_1": -0.09667299136171786,
+        "gdp_lag_2": -0.05664680048228912,
+        "gdp_lag_3": -0.07110036739147067,
+        "gdp_lag_4": -0.014721468745628444,
+        "participation_change": 0.2176146146594884
+      },
+      "hac_se": {
+        "intercept": 0.04415000185869456,
+        "gdp_lag_0": 0.020510205979095027,
+        "gdp_lag_1": 0.027686599923763978,
+        "gdp_lag_2": 0.02385119016804775,
+        "gdp_lag_3": 0.025885382754446164,
+        "gdp_lag_4": 0.029099395534787426,
+        "participation_change": 0.08629239971483164
+      },
+      "r_squared": 0.29454067456986655,
+      "condition_number": 4.999343388074776
+    },
+    {
+      "geo": "EE",
+      "lags": 0,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.1042913258717176,
+        "gdp_lag_0": -0.291460396039604
+      },
+      "hac_se": {
+        "intercept": 0.11555376401132343,
+        "gdp_lag_0": 0.07417277041531695
+      },
+      "r_squared": 0.16874722954226817,
+      "condition_number": 1.7948350451625426
+    },
+    {
+      "geo": "EE",
+      "lags": 0,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.07945535293652163,
+        "gdp_lag_0": -0.29722982563051287,
+        "participation_change": 0.32321113825551295
+      },
+      "hac_se": {
+        "intercept": 0.11819611250550646,
+        "gdp_lag_0": 0.07844795950874475,
+        "participation_change": 0.1306275854539527
+      },
+      "r_squared": 0.2205672417669905,
+      "condition_number": 2.2644928903861983
+    },
+    {
+      "geo": "EE",
+      "lags": 1,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.17969892573946797,
+        "gdp_lag_0": -0.22708335293133197,
+        "gdp_lag_1": -0.21326703802232613
+      },
+      "hac_se": {
+        "intercept": 0.10113131133659095,
+        "gdp_lag_0": 0.04233730571105411,
+        "gdp_lag_1": 0.053901307757559476
+      },
+      "r_squared": 0.25720841335322786,
+      "condition_number": 2.1546524120765875
+    },
+    {
+      "geo": "EE",
+      "lags": 1,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.15507718300302373,
+        "gdp_lag_0": -0.23250064160423936,
+        "gdp_lag_1": -0.2146431999014369,
+        "participation_change": 0.32675554932485495
+      },
+      "hac_se": {
+        "intercept": 0.10423703102101736,
+        "gdp_lag_0": 0.05195341353171768,
+        "gdp_lag_1": 0.053851184097709275,
+        "participation_change": 0.12111448755545293
+      },
+      "r_squared": 0.3101675154419161,
+      "condition_number": 2.665840472840479
+    },
+    {
+      "geo": "EE",
+      "lags": 2,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.16692677261172437,
+        "gdp_lag_0": -0.1808479524373672,
+        "gdp_lag_1": -0.1595429012571107,
+        "gdp_lag_2": -0.12323344825753256
+      },
+      "hac_se": {
+        "intercept": 0.08289913449988173,
+        "gdp_lag_0": 0.04975693081433263,
+        "gdp_lag_1": 0.05032291494084215,
+        "gdp_lag_2": 0.04305376956928183
+      },
+      "r_squared": 0.3088156941322644,
+      "condition_number": 2.8146535354078486
+    },
+    {
+      "geo": "EE",
+      "lags": 2,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.14477178782252378,
+        "gdp_lag_0": -0.18901743357400896,
+        "gdp_lag_1": -0.16443839185954082,
+        "gdp_lag_2": -0.11495449779864575,
+        "participation_change": 0.30540631283557335
+      },
+      "hac_se": {
+        "intercept": 0.08924898444409228,
+        "gdp_lag_0": 0.06133945076396197,
+        "gdp_lag_1": 0.04886205370970973,
+        "gdp_lag_2": 0.041003551029503996,
+        "participation_change": 0.1299614401378509
+      },
+      "r_squared": 0.3548475754057364,
+      "condition_number": 3.4508815547398246
+    },
+    {
+      "geo": "EE",
+      "lags": 4,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.18424251746171874,
+        "gdp_lag_0": -0.19302899317736333,
+        "gdp_lag_1": -0.12621099263709987,
+        "gdp_lag_2": -0.10281436944698572,
+        "gdp_lag_3": -0.06577203046622322,
+        "gdp_lag_4": -0.037316412996754436
+      },
+      "hac_se": {
+        "intercept": 0.08225197827811793,
+        "gdp_lag_0": 0.04587459132970613,
+        "gdp_lag_1": 0.05449562500495101,
+        "gdp_lag_2": 0.037795303161242924,
+        "gdp_lag_3": 0.04392058781650914,
+        "gdp_lag_4": 0.03632505252687424
+      },
+      "r_squared": 0.33420395176012674,
+      "condition_number": 3.40948167891303
+    },
+    {
+      "geo": "EE",
+      "lags": 4,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.17049404626643336,
+        "gdp_lag_0": -0.21787787583794158,
+        "gdp_lag_1": -0.12289026786073282,
+        "gdp_lag_2": -0.08401474223121361,
+        "gdp_lag_3": -0.06955684319471467,
+        "gdp_lag_4": -0.0689982638841209,
+        "participation_change": 0.36717883622432135
+      },
+      "hac_se": {
+        "intercept": 0.09175464629874043,
+        "gdp_lag_0": 0.053385832078770755,
+        "gdp_lag_1": 0.052353811133436595,
+        "gdp_lag_2": 0.03866805008436259,
+        "gdp_lag_3": 0.031060937934387037,
+        "gdp_lag_4": 0.040322588381091394,
+        "participation_change": 0.10760067745595256
+      },
+      "r_squared": 0.3968052457325303,
+      "condition_number": 4.173883280927049
+    },
+    {
+      "geo": "EL",
+      "lags": 0,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": -0.03463406747870242,
+        "gdp_lag_0": -0.2694492637339772
+      },
+      "hac_se": {
+        "intercept": 0.11956879810527646,
+        "gdp_lag_0": 0.05262126220282342
+      },
+      "r_squared": 0.5192285292942901,
+      "condition_number": 2.3728347639148897
+    },
+    {
+      "geo": "EL",
+      "lags": 0,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": -0.04045102200559236,
+        "gdp_lag_0": -0.29642957974699435,
+        "participation_change": 0.11532666565648128
+      },
+      "hac_se": {
+        "intercept": 0.11330537359926984,
+        "gdp_lag_0": 0.07739919500547006,
+        "participation_change": 0.18723500257939618
+      },
+      "r_squared": 0.5269090631120228,
+      "condition_number": 3.738063227509272
+    },
+    {
+      "geo": "EL",
+      "lags": 1,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": -0.04331651087562063,
+        "gdp_lag_0": -0.26643817193312946,
+        "gdp_lag_1": -0.0550762532153891
+      },
+      "hac_se": {
+        "intercept": 0.10527618169019398,
+        "gdp_lag_0": 0.043992984779443176,
+        "gdp_lag_1": 0.06479550121828222
+      },
+      "r_squared": 0.5421791929376971,
+      "condition_number": 2.4930552841066693
+    },
+    {
+      "geo": "EL",
+      "lags": 1,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": -0.0439557148656157,
+        "gdp_lag_0": -0.2717788340379185,
+        "gdp_lag_1": -0.05205294640775666,
+        "participation_change": 0.022122002446141868
+      },
+      "hac_se": {
+        "intercept": 0.10537495166180542,
+        "gdp_lag_0": 0.06283507554442846,
+        "gdp_lag_1": 0.059844562631740573,
+        "participation_change": 0.17568440015280853
+      },
+      "r_squared": 0.5423926423981948,
+      "condition_number": 4.419959617732896
+    },
+    {
+      "geo": "EL",
+      "lags": 2,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": -0.05917786765057208,
+        "gdp_lag_0": -0.24963661125061876,
+        "gdp_lag_1": -0.05000494602785986,
+        "gdp_lag_2": -0.10333565834700773
+      },
+      "hac_se": {
+        "intercept": 0.08921564102532359,
+        "gdp_lag_0": 0.029451141205729968,
+        "gdp_lag_1": 0.05435270828061782,
+        "gdp_lag_2": 0.03385783299468984
+      },
+      "r_squared": 0.6209473737292446,
+      "condition_number": 2.662324437539287
+    },
+    {
+      "geo": "EL",
+      "lags": 2,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": -0.0610937459541824,
+        "gdp_lag_0": -0.2638195638600874,
+        "gdp_lag_1": -0.04179791049845312,
+        "gdp_lag_2": -0.10459827128137998,
+        "participation_change": 0.05959874475080884
+      },
+      "hac_se": {
+        "intercept": 0.08809077045103818,
+        "gdp_lag_0": 0.04496136871951359,
+        "gdp_lag_1": 0.05427948872311276,
+        "gdp_lag_2": 0.03483043228274865,
+        "participation_change": 0.15386511993935614
+      },
+      "r_squared": 0.6224848602878138,
+      "condition_number": 4.751745298391828
+    },
+    {
+      "geo": "EL",
+      "lags": 4,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": -0.08170533614763043,
+        "gdp_lag_0": -0.24307591106691204,
+        "gdp_lag_1": -0.03297263925453304,
+        "gdp_lag_2": -0.09185176050288012,
+        "gdp_lag_3": -0.08793101885871937,
+        "gdp_lag_4": -0.05575548361989435
+      },
+      "hac_se": {
+        "intercept": 0.08049903660331509,
+        "gdp_lag_0": 0.024908367130395806,
+        "gdp_lag_1": 0.03867392899551434,
+        "gdp_lag_2": 0.020546656545391503,
+        "gdp_lag_3": 0.01990666010112941,
+        "gdp_lag_4": 0.028820447939321658
+      },
+      "r_squared": 0.7031736189436808,
+      "condition_number": 2.8860275429391162
+    },
+    {
+      "geo": "EL",
+      "lags": 4,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": -0.08734582861429672,
+        "gdp_lag_0": -0.28001592522182317,
+        "gdp_lag_1": -0.009857768018424251,
+        "gdp_lag_2": -0.09593155735958867,
+        "gdp_lag_3": -0.10102863171822574,
+        "gdp_lag_4": -0.04741195860085872,
+        "participation_change": 0.15830089320703578
+      },
+      "hac_se": {
+        "intercept": 0.07580243370812542,
+        "gdp_lag_0": 0.04021522312731688,
+        "gdp_lag_1": 0.050773047719478694,
+        "gdp_lag_2": 0.018988494210370178,
+        "gdp_lag_3": 0.020436071186655563,
+        "gdp_lag_4": 0.03227009131593446,
+        "participation_change": 0.1418898412958788
+      },
+      "r_squared": 0.7123033947668509,
+      "condition_number": 5.590601327313219
+    },
+    {
+      "geo": "ES",
+      "lags": 0,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": -0.0762186253401072,
+        "gdp_lag_0": -0.04828462457325302
+      },
+      "hac_se": {
+        "intercept": 0.11294383791340869,
+        "gdp_lag_0": 0.031486603770273035
+      },
+      "r_squared": 0.06789409719794726,
+      "condition_number": 3.070665505932517
+    },
+    {
+      "geo": "ES",
+      "lags": 0,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": -0.04471455733354509,
+        "gdp_lag_0": -0.13084909034814604,
+        "participation_change": 0.5187392203804705
+      },
+      "hac_se": {
+        "intercept": 0.1048132081456049,
+        "gdp_lag_0": 0.08934018454128,
+        "participation_change": 0.42827565706707743
+      },
+      "r_squared": 0.11843386131540701,
+      "condition_number": 12.897066625522823
+    },
+    {
+      "geo": "ES",
+      "lags": 1,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": -0.036421150131278945,
+        "gdp_lag_0": -0.07163114000268785,
+        "gdp_lag_1": -0.09623409609294514
+      },
+      "hac_se": {
+        "intercept": 0.09786700523731305,
+        "gdp_lag_0": 0.023841031756111315,
+        "gdp_lag_1": 0.028511301661395524
+      },
+      "r_squared": 0.3256457226409749,
+      "condition_number": 3.4431980146704078
+    },
+    {
+      "geo": "ES",
+      "lags": 1,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.026246243966269938,
+        "gdp_lag_0": -0.2192433051558865,
+        "gdp_lag_1": -0.11599586035293812,
+        "participation_change": 0.8973020529582596
+      },
+      "hac_se": {
+        "intercept": 0.08269483852118241,
+        "gdp_lag_0": 0.0555639443661961,
+        "gdp_lag_1": 0.022716691471937035,
+        "participation_change": 0.2832844539625156
+      },
+      "r_squared": 0.4659976795065446,
+      "condition_number": 14.76187760815609
+    },
+    {
+      "geo": "ES",
+      "lags": 2,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": -0.003713331337914813,
+        "gdp_lag_0": -0.0836741433079184,
+        "gdp_lag_1": -0.11629125331316376,
+        "gdp_lag_2": -0.07462983610879728
+      },
+      "hac_se": {
+        "intercept": 0.08982281875457669,
+        "gdp_lag_0": 0.021385867286031514,
+        "gdp_lag_1": 0.023165570128772024,
+        "gdp_lag_2": 0.019734428475995505
+      },
+      "r_squared": 0.4784243116270741,
+      "condition_number": 3.5652837155806187
+    },
+    {
+      "geo": "ES",
+      "lags": 2,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.0344099057415287,
+        "gdp_lag_0": -0.1888233402619239,
+        "gdp_lag_1": -0.12601226338129132,
+        "gdp_lag_2": -0.0570051452707526,
+        "participation_change": 0.656467580892239
+      },
+      "hac_se": {
+        "intercept": 0.08199080270742277,
+        "gdp_lag_0": 0.05794163270744978,
+        "gdp_lag_1": 0.021553473728954282,
+        "gdp_lag_2": 0.01764832805145781,
+        "participation_change": 0.28631236356761186
+      },
+      "r_squared": 0.5450256078995565,
+      "condition_number": 15.94033845414913
+    },
+    {
+      "geo": "ES",
+      "lags": 4,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.0259412130398674,
+        "gdp_lag_0": -0.08374528429763799,
+        "gdp_lag_1": -0.12187639680199656,
+        "gdp_lag_2": -0.08951078059776056,
+        "gdp_lag_3": -0.0422106306350264,
+        "gdp_lag_4": -0.043561045505889504
+      },
+      "hac_se": {
+        "intercept": 0.08619996725719893,
+        "gdp_lag_0": 0.017648330940122553,
+        "gdp_lag_1": 0.019926413687209002,
+        "gdp_lag_2": 0.017164850390077722,
+        "gdp_lag_3": 0.014408986805922057,
+        "gdp_lag_4": 0.012656696019672843
+      },
+      "r_squared": 0.5565140460808929,
+      "condition_number": 3.6839451024237038
+    },
+    {
+      "geo": "ES",
+      "lags": 4,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.06500582905705903,
+        "gdp_lag_0": -0.19023293660401203,
+        "gdp_lag_1": -0.1325948804685175,
+        "gdp_lag_2": -0.07253060710466054,
+        "gdp_lag_3": -0.04694432754237769,
+        "gdp_lag_4": -0.03838785136362085,
+        "participation_change": 0.6633957278536071
+      },
+      "hac_se": {
+        "intercept": 0.07636934902921018,
+        "gdp_lag_0": 0.05499367103612138,
+        "gdp_lag_1": 0.01891620581586828,
+        "gdp_lag_2": 0.013281903665860519,
+        "gdp_lag_3": 0.013280592623663701,
+        "gdp_lag_4": 0.009278679624763551,
+        "participation_change": 0.2779696236904275
+      },
+      "r_squared": 0.6227679404640918,
+      "condition_number": 16.35080141969066
+    },
+    {
+      "geo": "FI",
+      "lags": 0,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.06434690861915361,
+        "gdp_lag_0": -0.0780778558028493
+      },
+      "hac_se": {
+        "intercept": 0.05563109047174537,
+        "gdp_lag_0": 0.025938565410614955
+      },
+      "r_squared": 0.06677048082476778,
+      "condition_number": 1.338452482867326
+    },
+    {
+      "geo": "FI",
+      "lags": 0,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.06440627406362778,
+        "gdp_lag_0": -0.1075263967759556,
+        "participation_change": 0.1468456836340119
+      },
+      "hac_se": {
+        "intercept": 0.057452167499864544,
+        "gdp_lag_0": 0.028773863200942162,
+        "participation_change": 0.10810723862438328
+      },
+      "r_squared": 0.0821164666376879,
+      "condition_number": 4.226914641148993
+    },
+    {
+      "geo": "FI",
+      "lags": 1,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.08360909329859675,
+        "gdp_lag_0": -0.10176198738079908,
+        "gdp_lag_1": -0.12446866099284905
+      },
+      "hac_se": {
+        "intercept": 0.048152068770194435,
+        "gdp_lag_0": 0.017874558263893132,
+        "gdp_lag_1": 0.023931298494744638
+      },
+      "r_squared": 0.2981546139993796,
+      "condition_number": 1.597122133324325
+    },
+    {
+      "geo": "FI",
+      "lags": 1,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.08334493702798877,
+        "gdp_lag_0": -0.12001511655920406,
+        "gdp_lag_1": -0.12251912736696118,
+        "participation_change": 0.09286936311453341
+      },
+      "hac_se": {
+        "intercept": 0.04940620653149377,
+        "gdp_lag_0": 0.025003730096501753,
+        "gdp_lag_1": 0.025054850890852833,
+        "participation_change": 0.0842841348684613
+      },
+      "r_squared": 0.3042357150742544,
+      "condition_number": 4.910401756379655
+    },
+    {
+      "geo": "FI",
+      "lags": 2,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.08807568852277303,
+        "gdp_lag_0": -0.10544475061787244,
+        "gdp_lag_1": -0.12670404025508195,
+        "gdp_lag_2": -0.04735344620705129
+      },
+      "hac_se": {
+        "intercept": 0.04524721851744218,
+        "gdp_lag_0": 0.018019033542957745,
+        "gdp_lag_1": 0.017183517639291546,
+        "gdp_lag_2": 0.015392234947031779
+      },
+      "r_squared": 0.3334588635897332,
+      "condition_number": 1.6124157700855588
+    },
+    {
+      "geo": "FI",
+      "lags": 2,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.08813347056559659,
+        "gdp_lag_0": -0.13198690269517863,
+        "gdp_lag_1": -0.12412619542375707,
+        "gdp_lag_2": -0.051983044768336165,
+        "participation_change": 0.13321085448717407
+      },
+      "hac_se": {
+        "intercept": 0.04653255120175748,
+        "gdp_lag_0": 0.0327589605981491,
+        "gdp_lag_1": 0.01748264058517272,
+        "gdp_lag_2": 0.014882674345927042,
+        "participation_change": 0.09520633862698573
+      },
+      "r_squared": 0.34563311834796984,
+      "condition_number": 5.003410876368392
+    },
+    {
+      "geo": "FI",
+      "lags": 4,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.09135321541891668,
+        "gdp_lag_0": -0.10352837487125392,
+        "gdp_lag_1": -0.11902079387680892,
+        "gdp_lag_2": -0.049945634143400475,
+        "gdp_lag_3": -0.02455834776164858,
+        "gdp_lag_4": -0.04427542546562817
+      },
+      "hac_se": {
+        "intercept": 0.042290097100667626,
+        "gdp_lag_0": 0.018457069630602986,
+        "gdp_lag_1": 0.01928487613663136,
+        "gdp_lag_2": 0.016920333395806075,
+        "gdp_lag_3": 0.015053491061118803,
+        "gdp_lag_4": 0.024266754996117166
+      },
+      "r_squared": 0.3717299520214936,
+      "condition_number": 1.7959647083603825
+    },
+    {
+      "geo": "FI",
+      "lags": 4,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.09152356761385468,
+        "gdp_lag_0": -0.13278942798937582,
+        "gdp_lag_1": -0.11583546053700877,
+        "gdp_lag_2": -0.05509789243511817,
+        "gdp_lag_3": -0.02450975259828974,
+        "gdp_lag_4": -0.046155439459467165,
+        "participation_change": 0.14604281835253025
+      },
+      "hac_se": {
+        "intercept": 0.043128324849154624,
+        "gdp_lag_0": 0.030618917707406726,
+        "gdp_lag_1": 0.019706793111623478,
+        "gdp_lag_2": 0.016397247862484268,
+        "gdp_lag_3": 0.014118928968615245,
+        "gdp_lag_4": 0.022149239953889406,
+        "participation_change": 0.09401266356142138
+      },
+      "r_squared": 0.3863088829262824,
+      "condition_number": 5.570075623867486
+    },
+    {
+      "geo": "FR",
+      "lags": 0,
+      "participation": false,
+      "n": 70,
+      "start": "2009-Q1",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": -0.015405294042139006,
+        "gdp_lag_0": 0.07852589964924035
+      },
+      "hac_se": {
+        "intercept": 0.03986733873626573,
+        "gdp_lag_0": 0.013729356250718684
+      },
+      "r_squared": 0.3658655484407133,
+      "condition_number": 2.5011780243015407
+    },
+    {
+      "geo": "FR",
+      "lags": 0,
+      "participation": true,
+      "n": 70,
+      "start": "2009-Q1",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": -0.011889578482067847,
+        "gdp_lag_0": 0.03784292500486061,
+        "participation_change": 0.33625158891003176
+      },
+      "hac_se": {
+        "intercept": 0.03841039605633005,
+        "gdp_lag_0": 0.03051395581820013,
+        "participation_change": 0.17407263546549423
+      },
+      "r_squared": 0.4133563623872094,
+      "condition_number": 12.157627235527602
+    },
+    {
+      "geo": "FR",
+      "lags": 1,
+      "participation": false,
+      "n": 70,
+      "start": "2009-Q1",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.004946376080665396,
+        "gdp_lag_0": 0.0629528364450583,
+        "gdp_lag_1": -0.0591275711804388
+      },
+      "hac_se": {
+        "intercept": 0.03642230787998618,
+        "gdp_lag_0": 0.012814232619141254,
+        "gdp_lag_1": 0.012591491478300004
+      },
+      "r_squared": 0.5600882847689914,
+      "condition_number": 2.8296442114978886
+    },
+    {
+      "geo": "FR",
+      "lags": 1,
+      "participation": true,
+      "n": 70,
+      "start": "2009-Q1",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.009715019189041201,
+        "gdp_lag_0": 0.016011086991810294,
+        "gdp_lag_1": -0.061342801658655036,
+        "participation_change": 0.3831591055379082
+      },
+      "hac_se": {
+        "intercept": 0.03391249782561419,
+        "gdp_lag_0": 0.024143893034952915,
+        "gdp_lag_1": 0.011203780836961542,
+        "participation_change": 0.13355942069927856
+      },
+      "r_squared": 0.621480734028697,
+      "condition_number": 13.552621165896623
+    },
+    {
+      "geo": "FR",
+      "lags": 2,
+      "participation": false,
+      "n": 70,
+      "start": "2009-Q1",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.010862040172830859,
+        "gdp_lag_0": 0.05976911604324685,
+        "gdp_lag_1": -0.0636372301994943,
+        "gdp_lag_2": -0.014112878554091959
+      },
+      "hac_se": {
+        "intercept": 0.03833020947804275,
+        "gdp_lag_0": 0.014995989658811599,
+        "gdp_lag_1": 0.015314872565343519,
+        "gdp_lag_2": 0.0104458116352359
+      },
+      "r_squared": 0.5706068648807037,
+      "condition_number": 2.9464653298482224
+    },
+    {
+      "geo": "FR",
+      "lags": 2,
+      "participation": true,
+      "n": 70,
+      "start": "2009-Q1",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.016705598238255674,
+        "gdp_lag_0": 0.01090543884877254,
+        "gdp_lag_1": -0.06662890524732804,
+        "gdp_lag_2": -0.016332868853464654,
+        "participation_change": 0.39475891503335653
+      },
+      "hac_se": {
+        "intercept": 0.03547427124587551,
+        "gdp_lag_0": 0.0254846963736939,
+        "gdp_lag_1": 0.013228339479970852,
+        "gdp_lag_2": 0.009612661882707442,
+        "participation_change": 0.13302090827038893
+      },
+      "r_squared": 0.6355125156454542,
+      "condition_number": 13.800220083559728
+    },
+    {
+      "geo": "FR",
+      "lags": 4,
+      "participation": false,
+      "n": 70,
+      "start": "2009-Q1",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.025385334954218693,
+        "gdp_lag_0": 0.05730324527163162,
+        "gdp_lag_1": -0.07028152372155018,
+        "gdp_lag_2": -0.024284230492008348,
+        "gdp_lag_3": -0.025326558592752763,
+        "gdp_lag_4": -0.011134747826839578
+      },
+      "hac_se": {
+        "intercept": 0.04193082012512104,
+        "gdp_lag_0": 0.015313248457256314,
+        "gdp_lag_1": 0.017576859622701294,
+        "gdp_lag_2": 0.01387543221727042,
+        "gdp_lag_3": 0.010021363433516894,
+        "gdp_lag_4": 0.004428115491337389
+      },
+      "r_squared": 0.601492788330383,
+      "condition_number": 3.142519739895688
+    },
+    {
+      "geo": "FR",
+      "lags": 4,
+      "participation": true,
+      "n": 70,
+      "start": "2009-Q1",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.03448079617042193,
+        "gdp_lag_0": 0.0032970748582956313,
+        "gdp_lag_1": -0.07479697327957723,
+        "gdp_lag_2": -0.028605623307696365,
+        "gdp_lag_3": -0.030046596186668766,
+        "gdp_lag_4": -0.01316109124595762,
+        "participation_change": 0.43258734849407654
+      },
+      "hac_se": {
+        "intercept": 0.03851804156576356,
+        "gdp_lag_0": 0.026042443149207735,
+        "gdp_lag_1": 0.0152797155122245,
+        "gdp_lag_2": 0.012859030038247624,
+        "gdp_lag_3": 0.009973097110784266,
+        "gdp_lag_4": 0.00495019556734378,
+        "participation_change": 0.1344320535849647
+      },
+      "r_squared": 0.6783645584292772,
+      "condition_number": 14.067858260941692
+    },
+    {
+      "geo": "HR",
+      "lags": 0,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": -0.04167941176256487,
+        "gdp_lag_0": -0.023412516715426816
+      },
+      "hac_se": {
+        "intercept": 0.11656338827782645,
+        "gdp_lag_0": 0.03211472270932853
+      },
+      "r_squared": 0.005760178303167551,
+      "condition_number": 2.53189394563636
+    },
+    {
+      "geo": "HR",
+      "lags": 0,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": -0.08025071204830124,
+        "gdp_lag_0": -0.03316916772487554,
+        "participation_change": 0.9105617682571299
+      },
+      "hac_se": {
+        "intercept": 0.1250257485723358,
+        "gdp_lag_0": 0.0292828950047531,
+        "participation_change": 0.12612875101649515
+      },
+      "r_squared": 0.2772313784850762,
+      "condition_number": 5.823476035673267
+    },
+    {
+      "geo": "HR",
+      "lags": 1,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": -0.02103992508689164,
+        "gdp_lag_0": -0.01867442977101565,
+        "gdp_lag_1": -0.05267898149220949
+      },
+      "hac_se": {
+        "intercept": 0.11236156876641082,
+        "gdp_lag_0": 0.0322247582668455,
+        "gdp_lag_1": 0.020732005999303773
+      },
+      "r_squared": 0.03657114030017061,
+      "condition_number": 2.7549486845573976
+    },
+    {
+      "geo": "HR",
+      "lags": 1,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": -0.05676471225633289,
+        "gdp_lag_0": -0.02779922358536961,
+        "gdp_lag_1": -0.062301608254908075,
+        "participation_change": 0.9323655712697567
+      },
+      "hac_se": {
+        "intercept": 0.11947533900116747,
+        "gdp_lag_0": 0.02782623765990545,
+        "gdp_lag_1": 0.021826061098041777,
+        "participation_change": 0.12281506566551018
+      },
+      "r_squared": 0.32017093449025413,
+      "condition_number": 6.2643006516862645
+    },
+    {
+      "geo": "HR",
+      "lags": 2,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.015785397825445347,
+        "gdp_lag_0": -0.03197321086508136,
+        "gdp_lag_1": -0.04179716856022034,
+        "gdp_lag_2": -0.08515818925483021
+      },
+      "hac_se": {
+        "intercept": 0.10011061610824604,
+        "gdp_lag_0": 0.025264866512481374,
+        "gdp_lag_1": 0.02552742877109419,
+        "gdp_lag_2": 0.02413313737858972
+      },
+      "r_squared": 0.11596017848738494,
+      "condition_number": 2.863440591973652
+    },
+    {
+      "geo": "HR",
+      "lags": 2,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": -0.02369665070639438,
+        "gdp_lag_0": -0.03899681538884375,
+        "gdp_lag_1": -0.052561620683723304,
+        "gdp_lag_2": -0.07367783089482617,
+        "participation_change": 0.9008583564578889
+      },
+      "hac_se": {
+        "intercept": 0.11241913426306262,
+        "gdp_lag_0": 0.025122668259718164,
+        "gdp_lag_1": 0.021223711999864427,
+        "gdp_lag_2": 0.02136523488653278,
+        "participation_change": 0.11800572715300335
+      },
+      "r_squared": 0.3792737434945592,
+      "condition_number": 6.4206867069515186
+    },
+    {
+      "geo": "HR",
+      "lags": 4,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.06719922549086645,
+        "gdp_lag_0": -0.03572854390901561,
+        "gdp_lag_1": -0.05645413379902505,
+        "gdp_lag_2": -0.07717229443597363,
+        "gdp_lag_3": -0.0881264848294496,
+        "gdp_lag_4": -0.03679258819584032
+      },
+      "hac_se": {
+        "intercept": 0.08813145874804204,
+        "gdp_lag_0": 0.01702723457557993,
+        "gdp_lag_1": 0.02158683449222659,
+        "gdp_lag_2": 0.025413070306362317,
+        "gdp_lag_3": 0.018578758478767932,
+        "gdp_lag_4": 0.020898815178619624
+      },
+      "r_squared": 0.22609187892826732,
+      "condition_number": 3.028710711337325
+    },
+    {
+      "geo": "HR",
+      "lags": 4,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.02095657634655137,
+        "gdp_lag_0": -0.04290528139118489,
+        "gdp_lag_1": -0.06417825181643205,
+        "gdp_lag_2": -0.06639412656280075,
+        "gdp_lag_3": -0.07887396057182688,
+        "gdp_lag_4": -0.02426591942074831,
+        "participation_change": 0.8530729208469093
+      },
+      "hac_se": {
+        "intercept": 0.1041646750668174,
+        "gdp_lag_0": 0.02005284218337779,
+        "gdp_lag_1": 0.016892230138189145,
+        "gdp_lag_2": 0.019982690134058154,
+        "gdp_lag_3": 0.012524015715948262,
+        "gdp_lag_4": 0.018007107971572373,
+        "participation_change": 0.11713658882476398
+      },
+      "r_squared": 0.45918261142977845,
+      "condition_number": 6.677483808997053
+    },
+    {
+      "geo": "HU",
+      "lags": 0,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": -0.029836069838485496,
+        "gdp_lag_0": -0.058975092724042916
+      },
+      "hac_se": {
+        "intercept": 0.0538844162466938,
+        "gdp_lag_0": 0.01107455900250569
+      },
+      "r_squared": 0.1573578116367761,
+      "condition_number": 2.544165398822884
+    },
+    {
+      "geo": "HU",
+      "lags": 0,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.043838889835959134,
+        "gdp_lag_0": -0.052934269707059126,
+        "participation_change": -0.4327961700252796
+      },
+      "hac_se": {
+        "intercept": 0.0389139673818176,
+        "gdp_lag_0": 0.010938779247084257,
+        "participation_change": 0.18260406395078999
+      },
+      "r_squared": 0.23692576865867288,
+      "condition_number": 10.84552421900896
+    },
+    {
+      "geo": "HU",
+      "lags": 1,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": -0.004571833084969557,
+        "gdp_lag_0": -0.07057379909845361,
+        "gdp_lag_1": -0.03675540667416892
+      },
+      "hac_se": {
+        "intercept": 0.05019389243632939,
+        "gdp_lag_0": 0.009286778458489488,
+        "gdp_lag_1": 0.012101185344087662
+      },
+      "r_squared": 0.21591446082147359,
+      "condition_number": 3.001559230578105
+    },
+    {
+      "geo": "HU",
+      "lags": 1,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.07323197182920015,
+        "gdp_lag_0": -0.06489847789180725,
+        "gdp_lag_1": -0.038648371341660444,
+        "participation_change": -0.4494071808200094
+      },
+      "hac_se": {
+        "intercept": 0.03803332901791424,
+        "gdp_lag_0": 0.00846070146756614,
+        "gdp_lag_1": 0.01002052291003038,
+        "participation_change": 0.1792934161238815
+      },
+      "r_squared": 0.3015520550171945,
+      "condition_number": 12.17408714150952
+    },
+    {
+      "geo": "HU",
+      "lags": 2,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.006806850699598585,
+        "gdp_lag_0": -0.07183518043974198,
+        "gdp_lag_1": -0.04174813525883073,
+        "gdp_lag_2": -0.018267300139457803
+      },
+      "hac_se": {
+        "intercept": 0.050106655428886815,
+        "gdp_lag_0": 0.00853113277798785,
+        "gdp_lag_1": 0.014027615801207838,
+        "gdp_lag_2": 0.021584165781275397
+      },
+      "r_squared": 0.23140660936641833,
+      "condition_number": 3.261210067087139
+    },
+    {
+      "geo": "HU",
+      "lags": 2,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.07997756741515895,
+        "gdp_lag_0": -0.06607582488874177,
+        "gdp_lag_1": -0.042576828037915244,
+        "gdp_lag_2": -0.01458141111434458,
+        "participation_change": -0.4359074214495363
+      },
+      "hac_se": {
+        "intercept": 0.03805246436144656,
+        "gdp_lag_0": 0.008424411179500687,
+        "gdp_lag_1": 0.01277164018571077,
+        "gdp_lag_2": 0.021048222753299265,
+        "participation_change": 0.17783294602187663
+      },
+      "r_squared": 0.31134580049558824,
+      "condition_number": 12.808585878056682
+    },
+    {
+      "geo": "HU",
+      "lags": 4,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.03682940930518672,
+        "gdp_lag_0": -0.07123141978232034,
+        "gdp_lag_1": -0.04282933365965936,
+        "gdp_lag_2": -0.02844849303535825,
+        "gdp_lag_3": -0.04333522893022586,
+        "gdp_lag_4": -0.014358732963793992
+      },
+      "hac_se": {
+        "intercept": 0.04570366040164147,
+        "gdp_lag_0": 0.006513797496446581,
+        "gdp_lag_1": 0.009414795600353737,
+        "gdp_lag_2": 0.014702445067460332,
+        "gdp_lag_3": 0.011722128358213933,
+        "gdp_lag_4": 0.00930272274603059
+      },
+      "r_squared": 0.315467296324507,
+      "condition_number": 3.516765676406382
+    },
+    {
+      "geo": "HU",
+      "lags": 4,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.09523239982444075,
+        "gdp_lag_0": -0.06644645429787771,
+        "gdp_lag_1": -0.04318973926363668,
+        "gdp_lag_2": -0.023293373797569628,
+        "gdp_lag_3": -0.03531103784549383,
+        "gdp_lag_4": -0.017060985112121427,
+        "participation_change": -0.367937852522923
+      },
+      "hac_se": {
+        "intercept": 0.03239285224388669,
+        "gdp_lag_0": 0.006896623400014632,
+        "gdp_lag_1": 0.00910553106231393,
+        "gdp_lag_2": 0.015075016957630872,
+        "gdp_lag_3": 0.012390934218891828,
+        "gdp_lag_4": 0.00931537600214727,
+        "participation_change": 0.18619355664329357
+      },
+      "r_squared": 0.36854266764065857,
+      "condition_number": 13.64189016573759
+    },
+    {
+      "geo": "IE",
+      "lags": 0,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": -0.09937561508960993,
+        "gdp_lag_0": 0.006421480363471034
+      },
+      "hac_se": {
+        "intercept": 0.08722010842030666,
+        "gdp_lag_0": 0.015531410702395904
+      },
+      "r_squared": 0.003953034242577758,
+      "condition_number": 5.258585825301747
+    },
+    {
+      "geo": "IE",
+      "lags": 0,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": -0.10015619681205928,
+        "gdp_lag_0": 0.008019011475940238,
+        "participation_change": -0.03423977936143608
+      },
+      "hac_se": {
+        "intercept": 0.08536912486479242,
+        "gdp_lag_0": 0.015146173969954135,
+        "participation_change": 0.05598719087058777
+      },
+      "r_squared": 0.008939699017624037,
+      "condition_number": 5.278715464894633
+    },
+    {
+      "geo": "IE",
+      "lags": 1,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": -0.04075632110377489,
+        "gdp_lag_0": -0.0030066610915066255,
+        "gdp_lag_1": -0.03308520315981103
+      },
+      "hac_se": {
+        "intercept": 0.08726223242100334,
+        "gdp_lag_0": 0.012151771771778215,
+        "gdp_lag_1": 0.008744298832172337
+      },
+      "r_squared": 0.09524328966880502,
+      "condition_number": 6.0492750670582796
+    },
+    {
+      "geo": "IE",
+      "lags": 1,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": -0.04200444643703661,
+        "gdp_lag_0": -0.0019069087053020493,
+        "gdp_lag_1": -0.03264982515181004,
+        "participation_change": -0.020911785518299118
+      },
+      "hac_se": {
+        "intercept": 0.08626306156038054,
+        "gdp_lag_0": 0.011036222198484115,
+        "gdp_lag_1": 0.009004312781247598,
+        "participation_change": 0.0504805450367065
+      },
+      "r_squared": 0.09708755635173005,
+      "condition_number": 6.0957429078351115
+    },
+    {
+      "geo": "IE",
+      "lags": 2,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": -0.005919011899655499,
+        "gdp_lag_0": -0.0016682501864123422,
+        "gdp_lag_1": -0.037969034818850826,
+        "gdp_lag_2": -0.02163909795870084
+      },
+      "hac_se": {
+        "intercept": 0.08881680660036234,
+        "gdp_lag_0": 0.012936391472387414,
+        "gdp_lag_1": 0.010476291550030268,
+        "gdp_lag_2": 0.011870853827425741
+      },
+      "r_squared": 0.13382204046759927,
+      "condition_number": 6.772013274989172
+    },
+    {
+      "geo": "IE",
+      "lags": 2,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": -0.0071515034675372,
+        "gdp_lag_0": -0.000529710451958135,
+        "gdp_lag_1": -0.03752718428145304,
+        "gdp_lag_2": -0.02167460380741372,
+        "participation_change": -0.02160756808332871
+      },
+      "hac_se": {
+        "intercept": 0.08770092779742365,
+        "gdp_lag_0": 0.01219955633381132,
+        "gdp_lag_1": 0.010543985483095231,
+        "gdp_lag_2": 0.01176853631175779,
+        "participation_change": 0.04824221530422739
+      },
+      "r_squared": 0.13579097084612524,
+      "condition_number": 6.804183184219328
+    },
+    {
+      "geo": "IE",
+      "lags": 4,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.031972824192397706,
+        "gdp_lag_0": 0.000944103308226943,
+        "gdp_lag_1": -0.03765082731061616,
+        "gdp_lag_2": -0.01956021679418354,
+        "gdp_lag_3": -0.00784185188623653,
+        "gdp_lag_4": -0.02471142017448504
+      },
+      "hac_se": {
+        "intercept": 0.10354384633787765,
+        "gdp_lag_0": 0.013109558151224191,
+        "gdp_lag_1": 0.009591930661111886,
+        "gdp_lag_2": 0.01143594582946941,
+        "gdp_lag_3": 0.010261141820115121,
+        "gdp_lag_4": 0.01316928394853897
+      },
+      "r_squared": 0.1828436160394965,
+      "condition_number": 7.984015787393343
+    },
+    {
+      "geo": "IE",
+      "lags": 4,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.029365315303050026,
+        "gdp_lag_0": 0.0022901813727659835,
+        "gdp_lag_1": -0.03722774981485466,
+        "gdp_lag_2": -0.019364137091302,
+        "gdp_lag_3": -0.007007621675282969,
+        "gdp_lag_4": -0.024915844694939057,
+        "participation_change": -0.02462672547542349
+      },
+      "hac_se": {
+        "intercept": 0.10250244939632212,
+        "gdp_lag_0": 0.012588536502598585,
+        "gdp_lag_1": 0.009665251634277911,
+        "gdp_lag_2": 0.011184962673387516,
+        "gdp_lag_3": 0.010117099915266065,
+        "gdp_lag_4": 0.013188801913892087,
+        "participation_change": 0.04844940823139303
+      },
+      "r_squared": 0.18533593695878425,
+      "condition_number": 8.060343799080062
+    },
+    {
+      "geo": "IT",
+      "lags": 0,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": -0.04495184105514721,
+        "gdp_lag_0": 0.1195281367765043
+      },
+      "hac_se": {
+        "intercept": 0.07756782621264467,
+        "gdp_lag_0": 0.030633336583920378
+      },
+      "r_squared": 0.268469187446582,
+      "condition_number": 2.48688743677468
+    },
+    {
+      "geo": "IT",
+      "lags": 0,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": -0.058937855352651836,
+        "gdp_lag_0": 0.00034714163871583817,
+        "participation_change": 0.6100143622319494
+      },
+      "hac_se": {
+        "intercept": 0.06911963661960338,
+        "gdp_lag_0": 0.06851760337724692,
+        "participation_change": 0.24410871058239741
+      },
+      "r_squared": 0.38709369012134465,
+      "condition_number": 8.0082650815152
+    },
+    {
+      "geo": "IT",
+      "lags": 1,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": -0.02346312770484175,
+        "gdp_lag_0": 0.09901064859323659,
+        "gdp_lag_1": -0.11183211847363789
+      },
+      "hac_se": {
+        "intercept": 0.0637885697983809,
+        "gdp_lag_0": 0.02211276804789212,
+        "gdp_lag_1": 0.019887241957058047
+      },
+      "r_squared": 0.49927567633013425,
+      "condition_number": 2.715412913020135
+    },
+    {
+      "geo": "IT",
+      "lags": 1,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": -0.037254870332405765,
+        "gdp_lag_0": -0.012505837148338096,
+        "gdp_lag_1": -0.10853203726427212,
+        "participation_change": 0.5738833983757108
+      },
+      "hac_se": {
+        "intercept": 0.054743849149902914,
+        "gdp_lag_0": 0.05635294624738282,
+        "gdp_lag_1": 0.017574638216607083,
+        "participation_change": 0.227868535709116
+      },
+      "r_squared": 0.604063161170697,
+      "condition_number": 8.638311853116864
+    },
+    {
+      "geo": "IT",
+      "lags": 2,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": -0.019842515625852014,
+        "gdp_lag_0": 0.09656805799120956,
+        "gdp_lag_1": -0.11579923363342164,
+        "gdp_lag_2": -0.021249594592373824
+      },
+      "hac_se": {
+        "intercept": 0.06273904923492724,
+        "gdp_lag_0": 0.022053807488004777,
+        "gdp_lag_1": 0.0202369604150212,
+        "gdp_lag_2": 0.018512628500728864
+      },
+      "r_squared": 0.5076682458826082,
+      "condition_number": 2.7648899958398787
+    },
+    {
+      "geo": "IT",
+      "lags": 2,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": -0.034351010887051156,
+        "gdp_lag_0": -0.012587143374202341,
+        "gdp_lag_1": -0.11153023489602067,
+        "gdp_lag_2": -0.015784928751834737,
+        "participation_change": 0.5649643869197398
+      },
+      "hac_se": {
+        "intercept": 0.05303412532491748,
+        "gdp_lag_0": 0.05591780427199691,
+        "gdp_lag_1": 0.01684613412797172,
+        "gdp_lag_2": 0.02168469145147704,
+        "participation_change": 0.22693185297528362
+      },
+      "r_squared": 0.6086688949311672,
+      "condition_number": 8.742944272154482
+    },
+    {
+      "geo": "IT",
+      "lags": 4,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": -0.011296613334054174,
+        "gdp_lag_0": 0.09782807029680612,
+        "gdp_lag_1": -0.11961235418201326,
+        "gdp_lag_2": -0.03182405494420493,
+        "gdp_lag_3": -0.05535326303243243,
+        "gdp_lag_4": -0.023471370341824904
+      },
+      "hac_se": {
+        "intercept": 0.0588801224991375,
+        "gdp_lag_0": 0.01720988428796939,
+        "gdp_lag_1": 0.014813130656884273,
+        "gdp_lag_2": 0.011342637633216862,
+        "gdp_lag_3": 0.008402415545057617,
+        "gdp_lag_4": 0.005821247614327001
+      },
+      "r_squared": 0.568170060144718,
+      "condition_number": 2.861320420700342
+    },
+    {
+      "geo": "IT",
+      "lags": 4,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": -0.026653088177131207,
+        "gdp_lag_0": -0.05723498305703286,
+        "gdp_lag_1": -0.11590307217135225,
+        "gdp_lag_2": -0.03064996030695666,
+        "gdp_lag_3": -0.0900334634408956,
+        "gdp_lag_4": -0.038233134061311,
+        "participation_change": 0.8066534494525192
+      },
+      "hac_se": {
+        "intercept": 0.03900594614308608,
+        "gdp_lag_0": 0.02999863569061138,
+        "gdp_lag_1": 0.006896752536421373,
+        "gdp_lag_2": 0.006404255474633114,
+        "gdp_lag_3": 0.009213168207476611,
+        "gdp_lag_4": 0.007525577400881816,
+        "participation_change": 0.13219600739447962
+      },
+      "r_squared": 0.750300466563136,
+      "condition_number": 9.61406760047312
+    },
+    {
+      "geo": "LT",
+      "lags": 0,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.05565658905749246,
+        "gdp_lag_0": -0.16649567275074048
+      },
+      "hac_se": {
+        "intercept": 0.14111193778807724,
+        "gdp_lag_0": 0.09919107947927022
+      },
+      "r_squared": 0.08196210832645179,
+      "condition_number": 2.1198290594851485
+    },
+    {
+      "geo": "LT",
+      "lags": 0,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.06993230143099821,
+        "gdp_lag_0": -0.16353087611836545,
+        "participation_change": -0.13254346239397186
+      },
+      "hac_se": {
+        "intercept": 0.1412041301959325,
+        "gdp_lag_0": 0.09985691527283366,
+        "participation_change": 0.1284646932367231
+      },
+      "r_squared": 0.09211388444197299,
+      "condition_number": 3.002169140047276
+    },
+    {
+      "geo": "LT",
+      "lags": 1,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.1498993064227903,
+        "gdp_lag_0": -0.15940450859305513,
+        "gdp_lag_1": -0.16132748845668937
+      },
+      "hac_se": {
+        "intercept": 0.10048021181669291,
+        "gdp_lag_0": 0.055219409970721584,
+        "gdp_lag_1": 0.03202028792198787
+      },
+      "r_squared": 0.28641433095271507,
+      "condition_number": 2.9169666368262797
+    },
+    {
+      "geo": "LT",
+      "lags": 1,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.16048738650165453,
+        "gdp_lag_0": -0.15710390074046987,
+        "gdp_lag_1": -0.1600134368656347,
+        "participation_change": -0.10543257457245599
+      },
+      "hac_se": {
+        "intercept": 0.09939481947061352,
+        "gdp_lag_0": 0.055784841884641265,
+        "gdp_lag_1": 0.029932902271381276,
+        "participation_change": 0.15155206798194465
+      },
+      "r_squared": 0.2928243154376927,
+      "condition_number": 4.038941822387187
+    },
+    {
+      "geo": "LT",
+      "lags": 2,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.1720122378131188,
+        "gdp_lag_0": -0.1493708363921587,
+        "gdp_lag_1": -0.15658061685297037,
+        "gdp_lag_2": -0.05497290871681034
+      },
+      "hac_se": {
+        "intercept": 0.09276281253232867,
+        "gdp_lag_0": 0.053954682943126366,
+        "gdp_lag_1": 0.03343888226476289,
+        "gdp_lag_2": 0.03440994122270897
+      },
+      "r_squared": 0.30985622124488443,
+      "condition_number": 3.2173691636856465
+    },
+    {
+      "geo": "LT",
+      "lags": 2,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.1875361743410838,
+        "gdp_lag_0": -0.1455293281351567,
+        "gdp_lag_1": -0.15447460094074106,
+        "gdp_lag_2": -0.05989756756363973,
+        "participation_change": -0.13485653791350857
+      },
+      "hac_se": {
+        "intercept": 0.08728542652022707,
+        "gdp_lag_0": 0.054304068717929636,
+        "gdp_lag_1": 0.0305790025859626,
+        "gdp_lag_2": 0.03702926518036951,
+        "participation_change": 0.12994579781367704
+      },
+      "r_squared": 0.320155098211405,
+      "condition_number": 4.480643886940972
+    },
+    {
+      "geo": "LT",
+      "lags": 4,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.21849871033485663,
+        "gdp_lag_0": -0.13592411119484193,
+        "gdp_lag_1": -0.139344860877968,
+        "gdp_lag_2": -0.03755675234578579,
+        "gdp_lag_3": -0.045631897053128194,
+        "gdp_lag_4": -0.09507065281789173
+      },
+      "hac_se": {
+        "intercept": 0.07374392741541216,
+        "gdp_lag_0": 0.04651453789196596,
+        "gdp_lag_1": 0.03254478638629523,
+        "gdp_lag_2": 0.04459975040128316,
+        "gdp_lag_3": 0.03958282764890744,
+        "gdp_lag_4": 0.023067728054604934
+      },
+      "r_squared": 0.3997279429414974,
+      "condition_number": 3.7564921266600675
+    },
+    {
+      "geo": "LT",
+      "lags": 4,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.22880681030904573,
+        "gdp_lag_0": -0.1356128510890453,
+        "gdp_lag_1": -0.13894500524644224,
+        "gdp_lag_2": -0.041589377618342464,
+        "gdp_lag_3": -0.03724960910191686,
+        "gdp_lag_4": -0.09608214606680301,
+        "participation_change": -0.09917337185724794
+      },
+      "hac_se": {
+        "intercept": 0.07053793380353922,
+        "gdp_lag_0": 0.046439300143315154,
+        "gdp_lag_1": 0.02998555432607424,
+        "gdp_lag_2": 0.04615750443012758,
+        "gdp_lag_3": 0.03850953590154906,
+        "gdp_lag_4": 0.024149369841109786,
+        "participation_change": 0.12619197351214134
+      },
+      "r_squared": 0.4047744549738648,
+      "condition_number": 5.452328652683991
+    },
+    {
+      "geo": "LU",
+      "lags": 0,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.01939018799318492,
+        "gdp_lag_0": -0.0036295518823620536
+      },
+      "hac_se": {
+        "intercept": 0.0610647529001829,
+        "gdp_lag_0": 0.04635618651628546
+      },
+      "r_squared": 6.405582500412788e-05,
+      "condition_number": 2.0226695607733105
+    },
+    {
+      "geo": "LU",
+      "lags": 0,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.016179224551818937,
+        "gdp_lag_0": -0.011152484779116728,
+        "participation_change": 0.08600473347981864
+      },
+      "hac_se": {
+        "intercept": 0.06189232112625506,
+        "gdp_lag_0": 0.04778384187020211,
+        "participation_change": 0.08646123083685511
+      },
+      "r_squared": 0.011108511456165093,
+      "condition_number": 2.0380629013793023
+    },
+    {
+      "geo": "LU",
+      "lags": 1,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.07385048967281063,
+        "gdp_lag_0": -0.029526075250340324,
+        "gdp_lag_1": -0.07662135159975143
+      },
+      "hac_se": {
+        "intercept": 0.05662990950934175,
+        "gdp_lag_0": 0.029942523464547045,
+        "gdp_lag_1": 0.06134447833798405
+      },
+      "r_squared": 0.026438386037334838,
+      "condition_number": 2.4620308581560364
+    },
+    {
+      "geo": "LU",
+      "lags": 1,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.07054927255296482,
+        "gdp_lag_0": -0.036964276727210324,
+        "gdp_lag_1": -0.07647349824995234,
+        "participation_change": 0.0856073468013046
+      },
+      "hac_se": {
+        "intercept": 0.05560618657627391,
+        "gdp_lag_0": 0.03293817987307701,
+        "gdp_lag_1": 0.06056942358613086,
+        "participation_change": 0.08703121573599595
+      },
+      "r_squared": 0.03738091697285362,
+      "condition_number": 2.468698627187485
+    },
+    {
+      "geo": "LU",
+      "lags": 2,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.04777409088020784,
+        "gdp_lag_0": -0.02366366535964204,
+        "gdp_lag_1": -0.06506967950144062,
+        "gdp_lag_2": 0.03586159166824168
+      },
+      "hac_se": {
+        "intercept": 0.07201661483064843,
+        "gdp_lag_0": 0.03268647166919451,
+        "gdp_lag_1": 0.06529735346241064,
+        "gdp_lag_2": 0.061959475202184686
+      },
+      "r_squared": 0.03278656693286652,
+      "condition_number": 2.7732827668557216
+    },
+    {
+      "geo": "LU",
+      "lags": 2,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.03544587661511766,
+        "gdp_lag_0": -0.030739993096646472,
+        "gdp_lag_1": -0.061190896406199756,
+        "gdp_lag_2": 0.04735051098277317,
+        "participation_change": 0.10305816887971304
+      },
+      "hac_se": {
+        "intercept": 0.07104267132990774,
+        "gdp_lag_0": 0.034577744926398875,
+        "gdp_lag_1": 0.0632201252990591,
+        "gdp_lag_2": 0.06099926533149102,
+        "participation_change": 0.09022340886285778
+      },
+      "r_squared": 0.04799345899219398,
+      "condition_number": 2.8113182427435865
+    },
+    {
+      "geo": "LU",
+      "lags": 4,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.05905128243278687,
+        "gdp_lag_0": -0.02560057444573899,
+        "gdp_lag_1": -0.06744746862460832,
+        "gdp_lag_2": 0.03160159686226959,
+        "gdp_lag_3": -0.015211818573747609,
+        "gdp_lag_4": -0.00011223754908846342
+      },
+      "hac_se": {
+        "intercept": 0.07430792931196813,
+        "gdp_lag_0": 0.036487280522597774,
+        "gdp_lag_1": 0.065230643574536,
+        "gdp_lag_2": 0.059737262002880584,
+        "gdp_lag_3": 0.04689047363227431,
+        "gdp_lag_4": 0.04769844335462258
+      },
+      "r_squared": 0.0339425159500637,
+      "condition_number": 3.2877800966322748
+    },
+    {
+      "geo": "LU",
+      "lags": 4,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.05039640856997132,
+        "gdp_lag_0": -0.033524380132636235,
+        "gdp_lag_1": -0.06428617891498849,
+        "gdp_lag_2": 0.04168215137948985,
+        "gdp_lag_3": -0.023442362101712768,
+        "gdp_lag_4": 0.0022562214610001644,
+        "participation_change": 0.1100319151241517
+      },
+      "hac_se": {
+        "intercept": 0.07607888729602039,
+        "gdp_lag_0": 0.038413757376739736,
+        "gdp_lag_1": 0.06369253098216619,
+        "gdp_lag_2": 0.06065798168034984,
+        "gdp_lag_3": 0.04504088021103325,
+        "gdp_lag_4": 0.04910453104838453,
+        "participation_change": 0.09214685964140573
+      },
+      "r_squared": 0.05085397662084867,
+      "condition_number": 3.313921463307068
+    },
+    {
+      "geo": "LV",
+      "lags": 0,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": -0.057686046061794054,
+        "gdp_lag_0": -0.11711174047041825
+      },
+      "hac_se": {
+        "intercept": 0.1162153361334916,
+        "gdp_lag_0": 0.07288850856780905
+      },
+      "r_squared": 0.13116285659343752,
+      "condition_number": 2.379171638947404
+    },
+    {
+      "geo": "LV",
+      "lags": 0,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": -0.05728181227265008,
+        "gdp_lag_0": -0.12299924745609514,
+        "participation_change": 0.07201153626541613
+      },
+      "hac_se": {
+        "intercept": 0.11786338007531312,
+        "gdp_lag_0": 0.06633658074697006,
+        "participation_change": 0.23085758876423476
+      },
+      "r_squared": 0.13477814616396866,
+      "condition_number": 3.8079976871212216
+    },
+    {
+      "geo": "LV",
+      "lags": 1,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": -0.013030371582401723,
+        "gdp_lag_0": -0.12382392355502124,
+        "gdp_lag_1": -0.12544546926120267
+      },
+      "hac_se": {
+        "intercept": 0.09655517789642852,
+        "gdp_lag_0": 0.0427373000670589,
+        "gdp_lag_1": 0.04818880500989432
+      },
+      "r_squared": 0.2946044416886435,
+      "condition_number": 2.4987884725266345
+    },
+    {
+      "geo": "LV",
+      "lags": 1,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": -0.006176159803748426,
+        "gdp_lag_0": -0.14278564535046395,
+        "gdp_lag_1": -0.1412055035673708,
+        "participation_change": 0.22161122637078878
+      },
+      "hac_se": {
+        "intercept": 0.09890337188527178,
+        "gdp_lag_0": 0.04520421824516293,
+        "gdp_lag_1": 0.05448526413343995,
+        "participation_change": 0.16212156399842573
+      },
+      "r_squared": 0.32626386390782736,
+      "condition_number": 4.112515382170721
+    },
+    {
+      "geo": "LV",
+      "lags": 2,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.005614021407031362,
+        "gdp_lag_0": -0.10838019932627516,
+        "gdp_lag_1": -0.12497117414429626,
+        "gdp_lag_2": -0.0901200335793402
+      },
+      "hac_se": {
+        "intercept": 0.08303846835646826,
+        "gdp_lag_0": 0.03253217929714037,
+        "gdp_lag_1": 0.029980470858631928,
+        "gdp_lag_2": 0.03267203907095151
+      },
+      "r_squared": 0.37909118786195095,
+      "condition_number": 2.6921512781268464
+    },
+    {
+      "geo": "LV",
+      "lags": 2,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.012758138371388571,
+        "gdp_lag_0": -0.1276145559065119,
+        "gdp_lag_1": -0.14105544702803782,
+        "gdp_lag_2": -0.09083183835479446,
+        "participation_change": 0.22622321528610476
+      },
+      "hac_se": {
+        "intercept": 0.08455430381119623,
+        "gdp_lag_0": 0.03173255028614192,
+        "gdp_lag_1": 0.03505902590679735,
+        "gdp_lag_2": 0.0364598701327472,
+        "participation_change": 0.1703074872558036
+      },
+      "r_squared": 0.41207679047469437,
+      "condition_number": 4.416622499046978
+    },
+    {
+      "geo": "LV",
+      "lags": 4,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.006310943097568088,
+        "gdp_lag_0": -0.10468566612292853,
+        "gdp_lag_1": -0.12069792415992926,
+        "gdp_lag_2": -0.08941891898653014,
+        "gdp_lag_3": -0.015819210086583227,
+        "gdp_lag_4": -0.0033237722217588353
+      },
+      "hac_se": {
+        "intercept": 0.0827805499927498,
+        "gdp_lag_0": 0.03478413242985316,
+        "gdp_lag_1": 0.031186632628750897,
+        "gdp_lag_2": 0.030145148089712737,
+        "gdp_lag_3": 0.02011541948306997,
+        "gdp_lag_4": 0.03424381852834337
+      },
+      "r_squared": 0.38175424811255376,
+      "condition_number": 3.157964117669531
+    },
+    {
+      "geo": "LV",
+      "lags": 4,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.014872479363175468,
+        "gdp_lag_0": -0.12202208348537325,
+        "gdp_lag_1": -0.13407020639129505,
+        "gdp_lag_2": -0.08862897047909911,
+        "gdp_lag_3": -0.03116206530170201,
+        "gdp_lag_4": -0.011306693448658265,
+        "participation_change": 0.2601654933465281
+      },
+      "hac_se": {
+        "intercept": 0.0850839934335782,
+        "gdp_lag_0": 0.035907088904919726,
+        "gdp_lag_1": 0.036544219466868484,
+        "gdp_lag_2": 0.031279511045833465,
+        "gdp_lag_3": 0.026349300775929452,
+        "gdp_lag_4": 0.041497979969314064,
+        "participation_change": 0.16200386243910914
+      },
+      "r_squared": 0.42240196170227196,
+      "condition_number": 5.36830723726365
+    },
+    {
+      "geo": "MT",
+      "lags": 0,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.015448561562260637,
+        "gdp_lag_0": -0.04459602398157289
+      },
+      "hac_se": {
+        "intercept": 0.034905424662283344,
+        "gdp_lag_0": 0.015403603464527361
+      },
+      "r_squared": 0.10063498229841761,
+      "condition_number": 3.341583590032452
+    },
+    {
+      "geo": "MT",
+      "lags": 0,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.02467806830334367,
+        "gdp_lag_0": -0.04425295589917805,
+        "participation_change": -0.03162369483024451
+      },
+      "hac_se": {
+        "intercept": 0.041618470974725555,
+        "gdp_lag_0": 0.015252762213094623,
+        "participation_change": 0.0913553045134221
+      },
+      "r_squared": 0.10215892626020662,
+      "condition_number": 7.220156509330923
+    },
+    {
+      "geo": "MT",
+      "lags": 1,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.07445975501300305,
+        "gdp_lag_0": -0.046701376057886684,
+        "gdp_lag_1": -0.04156621913795805
+      },
+      "hac_se": {
+        "intercept": 0.04555630929403998,
+        "gdp_lag_0": 0.01546915091950013,
+        "gdp_lag_1": 0.0141271932019459
+      },
+      "r_squared": 0.19388415994617003,
+      "condition_number": 4.167609490653873
+    },
+    {
+      "geo": "MT",
+      "lags": 1,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.0831309072422951,
+        "gdp_lag_0": -0.04637540435511637,
+        "gdp_lag_1": -0.04153084838177837,
+        "participation_change": -0.029882623294673852
+      },
+      "hac_se": {
+        "intercept": 0.04944052206836308,
+        "gdp_lag_0": 0.015261153005130241,
+        "gdp_lag_1": 0.014318498465042354,
+        "participation_change": 0.09232810956710917
+      },
+      "r_squared": 0.1952448514274826,
+      "condition_number": 8.05120967369886
+    },
+    {
+      "geo": "MT",
+      "lags": 2,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.07912585872433782,
+        "gdp_lag_0": -0.04682436314004695,
+        "gdp_lag_1": -0.04170287232085754,
+        "gdp_lag_2": -0.0031855517119932244
+      },
+      "hac_se": {
+        "intercept": 0.0510180501025185,
+        "gdp_lag_0": 0.01560722954103874,
+        "gdp_lag_1": 0.014327579707200904,
+        "gdp_lag_2": 0.01092941695775119
+      },
+      "r_squared": 0.19443091885635433,
+      "condition_number": 4.992502801894026
+    },
+    {
+      "geo": "MT",
+      "lags": 2,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.08524098559735069,
+        "gdp_lag_0": -0.04648801374902157,
+        "gdp_lag_1": -0.04162238045172835,
+        "gdp_lag_2": -0.0020489793362643356,
+        "participation_change": -0.02681133519357497
+      },
+      "hac_se": {
+        "intercept": 0.05139222361827457,
+        "gdp_lag_0": 0.015445580375947824,
+        "gdp_lag_1": 0.01455504499877359,
+        "gdp_lag_2": 0.012019704189655853,
+        "participation_change": 0.09911173567544693
+      },
+      "r_squared": 0.19545668264406446,
+      "condition_number": 8.89837850377853
+    },
+    {
+      "geo": "MT",
+      "lags": 4,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.04828323540544064,
+        "gdp_lag_0": -0.0444824852186369,
+        "gdp_lag_1": -0.040991697604583974,
+        "gdp_lag_2": -0.0023695960781360105,
+        "gdp_lag_3": 0.017099727253380614,
+        "gdp_lag_4": 0.002041216280704189
+      },
+      "hac_se": {
+        "intercept": 0.05108189883694504,
+        "gdp_lag_0": 0.014478228016296167,
+        "gdp_lag_1": 0.013788554112841977,
+        "gdp_lag_2": 0.01004264357588922,
+        "gdp_lag_3": 0.014121306276205907,
+        "gdp_lag_4": 0.008312771233357991
+      },
+      "r_squared": 0.21002464481108474,
+      "condition_number": 6.800199113121746
+    },
+    {
+      "geo": "MT",
+      "lags": 4,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.054336310784477454,
+        "gdp_lag_0": -0.04401989083627118,
+        "gdp_lag_1": -0.040856785598686565,
+        "gdp_lag_2": -0.0010612575624363324,
+        "gdp_lag_3": 0.01724211419896047,
+        "gdp_lag_4": 0.0024240936209865716,
+        "participation_change": -0.03044232671286747
+      },
+      "hac_se": {
+        "intercept": 0.049807963367423325,
+        "gdp_lag_0": 0.014183552062246632,
+        "gdp_lag_1": 0.014065337999472747,
+        "gdp_lag_2": 0.011431407162024896,
+        "gdp_lag_3": 0.0142876749926266,
+        "gdp_lag_4": 0.008256741060953109,
+        "participation_change": 0.1039169074437601
+      },
+      "r_squared": 0.21133864117523038,
+      "condition_number": 9.93329532999879
+    },
+    {
+      "geo": "NL",
+      "lags": 0,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.005975860016291739,
+        "gdp_lag_0": -0.056854674478350804
+      },
+      "hac_se": {
+        "intercept": 0.04241530815402241,
+        "gdp_lag_0": 0.022925195722905464
+      },
+      "r_squared": 0.12958438444767362,
+      "condition_number": 1.6386221205633367
+    },
+    {
+      "geo": "NL",
+      "lags": 0,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.006150548941184958,
+        "gdp_lag_0": -0.05564192893199755,
+        "participation_change": -0.014770855783542305
+      },
+      "hac_se": {
+        "intercept": 0.04288117043258724,
+        "gdp_lag_0": 0.024056571619933423,
+        "participation_change": 0.1561754253471682
+      },
+      "r_squared": 0.1297091603520879,
+      "condition_number": 8.916844473078825
+    },
+    {
+      "geo": "NL",
+      "lags": 1,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.03923940338194739,
+        "gdp_lag_0": -0.0700810297741161,
+        "gdp_lag_1": -0.08199845744147186
+      },
+      "hac_se": {
+        "intercept": 0.03654100497895821,
+        "gdp_lag_0": 0.010587796636908883,
+        "gdp_lag_1": 0.012206334070865342
+      },
+      "r_squared": 0.4049434755438458,
+      "condition_number": 1.787006706374063
+    },
+    {
+      "geo": "NL",
+      "lags": 1,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.03922709840306645,
+        "gdp_lag_0": -0.0701757136708295,
+        "gdp_lag_1": -0.08200156702444689,
+        "participation_change": 0.001147110770622177
+      },
+      "hac_se": {
+        "intercept": 0.03695553957511567,
+        "gdp_lag_0": 0.015552301091793397,
+        "gdp_lag_1": 0.012182304814608415,
+        "participation_change": 0.12196481970557133
+      },
+      "r_squared": 0.40494422768877847,
+      "condition_number": 9.16810550081202
+    },
+    {
+      "geo": "NL",
+      "lags": 2,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.056728904109419005,
+        "gdp_lag_0": -0.07005593217916938,
+        "gdp_lag_1": -0.08814998470725867,
+        "gdp_lag_2": -0.047607710763317365
+      },
+      "hac_se": {
+        "intercept": 0.034319247656025884,
+        "gdp_lag_0": 0.008163981381041123,
+        "gdp_lag_1": 0.011097141281387857,
+        "gdp_lag_2": 0.010395870171252162
+      },
+      "r_squared": 0.4997968446036358,
+      "condition_number": 1.9263449004319664
+    },
+    {
+      "geo": "NL",
+      "lags": 2,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.056663609638202043,
+        "gdp_lag_0": -0.07058579487768085,
+        "gdp_lag_1": -0.08816864086936402,
+        "gdp_lag_2": -0.047617418671421406,
+        "participation_change": 0.0064194345623318745
+      },
+      "hac_se": {
+        "intercept": 0.034559822811298616,
+        "gdp_lag_0": 0.013713868715863841,
+        "gdp_lag_1": 0.011075079308010043,
+        "gdp_lag_2": 0.010393691929901796,
+        "participation_change": 0.10379983582322845
+      },
+      "r_squared": 0.49982039572799697,
+      "condition_number": 9.53328112092778
+    },
+    {
+      "geo": "NL",
+      "lags": 4,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.06772703610946956,
+        "gdp_lag_0": -0.06767245969240075,
+        "gdp_lag_1": -0.08567726861114282,
+        "gdp_lag_2": -0.05008811029340108,
+        "gdp_lag_3": -0.02589181506513203,
+        "gdp_lag_4": -0.012683392179635385
+      },
+      "hac_se": {
+        "intercept": 0.03402803731827039,
+        "gdp_lag_0": 0.00720403065878693,
+        "gdp_lag_1": 0.01218196323791114,
+        "gdp_lag_2": 0.010337310569310086,
+        "gdp_lag_3": 0.014044278711514684,
+        "gdp_lag_4": 0.013781609411344478
+      },
+      "r_squared": 0.5311341890456968,
+      "condition_number": 2.0622261257237726
+    },
+    {
+      "geo": "NL",
+      "lags": 4,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.07111111980132886,
+        "gdp_lag_0": -0.0827618518183726,
+        "gdp_lag_1": -0.08465481754847302,
+        "gdp_lag_2": -0.05077586772239016,
+        "gdp_lag_3": -0.03367356888291246,
+        "gdp_lag_4": -0.02326486143148683,
+        "participation_change": 0.18353860383842352
+      },
+      "hac_se": {
+        "intercept": 0.034320242370242206,
+        "gdp_lag_0": 0.01432536019074907,
+        "gdp_lag_1": 0.012478162723163547,
+        "gdp_lag_2": 0.010345902669206382,
+        "gdp_lag_3": 0.01661025087053582,
+        "gdp_lag_4": 0.016200681029927153,
+        "participation_change": 0.12716629845865052
+      },
+      "r_squared": 0.543991558224725,
+      "condition_number": 12.080089086657763
+    },
+    {
+      "geo": "PL",
+      "lags": 0,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": -0.035887947449056955,
+        "gdp_lag_0": -0.03762659265676934
+      },
+      "hac_se": {
+        "intercept": 0.05808843309070718,
+        "gdp_lag_0": 0.02351887858881767
+      },
+      "r_squared": 0.03394253063909247,
+      "condition_number": 2.238216834470406
+    },
+    {
+      "geo": "PL",
+      "lags": 0,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": -0.04578428714132198,
+        "gdp_lag_0": -0.05611145512288014,
+        "participation_change": 0.22191285131417912
+      },
+      "hac_se": {
+        "intercept": 0.0559592222461795,
+        "gdp_lag_0": 0.019258136907017706,
+        "participation_change": 0.13774177747429356
+      },
+      "r_squared": 0.06783564415468724,
+      "condition_number": 7.033376106018832
+    },
+    {
+      "geo": "PL",
+      "lags": 1,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.012687433402996563,
+        "gdp_lag_0": -0.051042258471070655,
+        "gdp_lag_1": -0.043150681773465274
+      },
+      "hac_se": {
+        "intercept": 0.05166677359466698,
+        "gdp_lag_0": 0.019601510617122942,
+        "gdp_lag_1": 0.012649533519661494
+      },
+      "r_squared": 0.07429244961978954,
+      "condition_number": 2.8352395708891573
+    },
+    {
+      "geo": "PL",
+      "lags": 1,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.0012463377123679332,
+        "gdp_lag_0": -0.0680274331344327,
+        "gdp_lag_1": -0.041333845681055144,
+        "participation_change": 0.210690130622269
+      },
+      "hac_se": {
+        "intercept": 0.049044876709684014,
+        "gdp_lag_0": 0.018586946789594175,
+        "gdp_lag_1": 0.012125592956647514,
+        "participation_change": 0.13306353059006637
+      },
+      "r_squared": 0.10477258711762205,
+      "condition_number": 7.209823117320333
+    },
+    {
+      "geo": "PL",
+      "lags": 2,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.0066681921429774865,
+        "gdp_lag_0": -0.051621439402761496,
+        "gdp_lag_1": -0.041476444649148285,
+        "gdp_lag_2": 0.005946943608357382
+      },
+      "hac_se": {
+        "intercept": 0.053224443821561246,
+        "gdp_lag_0": 0.019472721798302516,
+        "gdp_lag_1": 0.013316205550422767,
+        "gdp_lag_2": 0.016551985333303185
+      },
+      "r_squared": 0.07505281215462767,
+      "condition_number": 3.6025244234882767
+    },
+    {
+      "geo": "PL",
+      "lags": 2,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": -0.0022223211496211247,
+        "gdp_lag_0": -0.0682645986014673,
+        "gdp_lag_1": -0.04036074313214511,
+        "gdp_lag_2": 0.003495735555022169,
+        "participation_change": 0.20940889752699646
+      },
+      "hac_se": {
+        "intercept": 0.051355001992001104,
+        "gdp_lag_0": 0.018368692083883496,
+        "gdp_lag_1": 0.013115686060512683,
+        "gdp_lag_2": 0.013151620393057522,
+        "participation_change": 0.1297859028034472
+      },
+      "r_squared": 0.10503419029033756,
+      "condition_number": 8.236087914121537
+    },
+    {
+      "geo": "PL",
+      "lags": 4,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.07597156184003273,
+        "gdp_lag_0": -0.05148876785841357,
+        "gdp_lag_1": -0.03522655741411322,
+        "gdp_lag_2": -0.001968855358410189,
+        "gdp_lag_3": -0.050470550874803934,
+        "gdp_lag_4": -0.030923320342261685
+      },
+      "hac_se": {
+        "intercept": 0.06121065834413139,
+        "gdp_lag_0": 0.017802333147434197,
+        "gdp_lag_1": 0.01576141840126435,
+        "gdp_lag_2": 0.011325536532376007,
+        "gdp_lag_3": 0.01840655163745372,
+        "gdp_lag_4": 0.011482648245789673
+      },
+      "r_squared": 0.13344556492357695,
+      "condition_number": 4.609344396699778
+    },
+    {
+      "geo": "PL",
+      "lags": 4,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.06066830480849178,
+        "gdp_lag_0": -0.06103197994819193,
+        "gdp_lag_1": -0.03550949765023915,
+        "gdp_lag_2": -0.002204224814169171,
+        "gdp_lag_3": -0.0430300085746805,
+        "gdp_lag_4": -0.026365837868478306,
+        "participation_change": 0.11982738021297083
+      },
+      "hac_se": {
+        "intercept": 0.059543003633490674,
+        "gdp_lag_0": 0.017580916904347457,
+        "gdp_lag_1": 0.015317668826665033,
+        "gdp_lag_2": 0.011355566641933624,
+        "gdp_lag_3": 0.01639286167636557,
+        "gdp_lag_4": 0.011024648680047607,
+        "participation_change": 0.09266548437330493
+      },
+      "r_squared": 0.14199351851006914,
+      "condition_number": 9.939414016198342
+    },
+    {
+      "geo": "PT",
+      "lags": 0,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": -0.09334850774189038,
+        "gdp_lag_0": 0.06486351913796189
+      },
+      "hac_se": {
+        "intercept": 0.10770582824446825,
+        "gdp_lag_0": 0.032389070672252857
+      },
+      "r_squared": 0.10093350254417255,
+      "condition_number": 2.807092908598546
+    },
+    {
+      "geo": "PT",
+      "lags": 0,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": -0.08922394691218526,
+        "gdp_lag_0": 0.09979888920014207,
+        "participation_change": -0.20499290523207267
+      },
+      "hac_se": {
+        "intercept": 0.10746447355120366,
+        "gdp_lag_0": 0.07045009596696448,
+        "participation_change": 0.25071520306319456
+      },
+      "r_squared": 0.10983993900761091,
+      "condition_number": 11.065672363590146
+    },
+    {
+      "geo": "PT",
+      "lags": 1,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": -0.047830354102621896,
+        "gdp_lag_0": 0.037939679245415664,
+        "gdp_lag_1": -0.11230956401041584
+      },
+      "hac_se": {
+        "intercept": 0.09586877772272244,
+        "gdp_lag_0": 0.025981806556071085,
+        "gdp_lag_1": 0.023441112281822024
+      },
+      "r_squared": 0.39064265386857744,
+      "condition_number": 3.145891734894273
+    },
+    {
+      "geo": "PT",
+      "lags": 1,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": -0.04872101329765314,
+        "gdp_lag_0": 0.023262288224905007,
+        "gdp_lag_1": -0.11425191127811665,
+        "participation_change": 0.08339138288398715
+      },
+      "hac_se": {
+        "intercept": 0.09492995071955249,
+        "gdp_lag_0": 0.04185652866292951,
+        "gdp_lag_1": 0.023331631753093097,
+        "participation_change": 0.19513101782185197
+      },
+      "r_squared": 0.3920299032830431,
+      "condition_number": 12.515257471389031
+    },
+    {
+      "geo": "PT",
+      "lags": 2,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": -0.030319372572468944,
+        "gdp_lag_0": 0.028385930487799613,
+        "gdp_lag_1": -0.12276924318022814,
+        "gdp_lag_2": -0.035974678448486834
+      },
+      "hac_se": {
+        "intercept": 0.09659220296389712,
+        "gdp_lag_0": 0.02980212367033516,
+        "gdp_lag_1": 0.02598788034479694,
+        "gdp_lag_2": 0.023588840649548
+      },
+      "r_squared": 0.41858244532672373,
+      "condition_number": 3.2351948498824283
+    },
+    {
+      "geo": "PT",
+      "lags": 2,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": -0.030909083364039188,
+        "gdp_lag_0": 0.003813824075533245,
+        "gdp_lag_1": -0.1264791836594818,
+        "gdp_lag_2": -0.03776714262473255,
+        "participation_change": 0.1369048331504182
+      },
+      "hac_se": {
+        "intercept": 0.09530616392491735,
+        "gdp_lag_0": 0.04548723203795726,
+        "gdp_lag_1": 0.025927427284284526,
+        "gdp_lag_2": 0.024117705294685272,
+        "participation_change": 0.19863083415652769
+      },
+      "r_squared": 0.42225203281529855,
+      "condition_number": 12.673637307292509
+    },
+    {
+      "geo": "PT",
+      "lags": 4,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": -0.013503567340357495,
+        "gdp_lag_0": 0.033762610376977,
+        "gdp_lag_1": -0.12665782558062064,
+        "gdp_lag_2": -0.04688988589493729,
+        "gdp_lag_3": -0.035043045028522714,
+        "gdp_lag_4": -0.016715422904222982
+      },
+      "hac_se": {
+        "intercept": 0.09670234648169124,
+        "gdp_lag_0": 0.023655419370495503,
+        "gdp_lag_1": 0.024264861981414747,
+        "gdp_lag_2": 0.02463312289464044,
+        "gdp_lag_3": 0.01847180848671972,
+        "gdp_lag_4": 0.017624277625642518
+      },
+      "r_squared": 0.44466656959877726,
+      "condition_number": 3.718625454918702
+    },
+    {
+      "geo": "PT",
+      "lags": 4,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": -0.015022611121284493,
+        "gdp_lag_0": 0.00485154234731211,
+        "gdp_lag_1": -0.13264122288849742,
+        "gdp_lag_2": -0.0485614381479019,
+        "gdp_lag_3": -0.036504564453570934,
+        "gdp_lag_4": -0.01074909788995242,
+        "participation_change": 0.16142813348177487
+      },
+      "hac_se": {
+        "intercept": 0.09506579036616394,
+        "gdp_lag_0": 0.04597535241462466,
+        "gdp_lag_1": 0.02566397698537461,
+        "gdp_lag_2": 0.025174536597664447,
+        "gdp_lag_3": 0.019125916428596887,
+        "gdp_lag_4": 0.017603812831631,
+        "participation_change": 0.22085950693744344
+      },
+      "r_squared": 0.4488261672320042,
+      "condition_number": 15.833122033754924
+    },
+    {
+      "geo": "RO",
+      "lags": 0,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.02228895108533169,
+        "gdp_lag_0": -0.06873162047257658
+      },
+      "hac_se": {
+        "intercept": 0.041205593024666504,
+        "gdp_lag_0": 0.026987814687610218
+      },
+      "r_squared": 0.2777472120318517,
+      "condition_number": 2.4553430163002683
+    },
+    {
+      "geo": "RO",
+      "lags": 0,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.03629748930305565,
+        "gdp_lag_0": -0.07119656812920148,
+        "participation_change": -0.11911645147224054
+      },
+      "hac_se": {
+        "intercept": 0.04376191465560042,
+        "gdp_lag_0": 0.02431223476837892,
+        "participation_change": 0.07850067098906889
+      },
+      "r_squared": 0.32777444500956865,
+      "condition_number": 4.329476246351423
+    },
+    {
+      "geo": "RO",
+      "lags": 1,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.03384678086058844,
+        "gdp_lag_0": -0.0703379179547473,
+        "gdp_lag_1": -0.021057736399445214
+      },
+      "hac_se": {
+        "intercept": 0.0402114466523786,
+        "gdp_lag_0": 0.026304798353423513,
+        "gdp_lag_1": 0.010621643877944668
+      },
+      "r_squared": 0.3116544742214462,
+      "condition_number": 2.801553178840494
+    },
+    {
+      "geo": "RO",
+      "lags": 1,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.04619663362900512,
+        "gdp_lag_0": -0.07254512155754414,
+        "gdp_lag_1": -0.01937680981249179,
+        "participation_change": -0.11285741792040739
+      },
+      "hac_se": {
+        "intercept": 0.04224123201280707,
+        "gdp_lag_0": 0.023715639514596876,
+        "gdp_lag_1": 0.01002657455786288,
+        "participation_change": 0.07473107335909421
+      },
+      "r_squared": 0.3563463656305287,
+      "condition_number": 4.828995677682355
+    },
+    {
+      "geo": "RO",
+      "lags": 2,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.04139873979177396,
+        "gdp_lag_0": -0.07268685853414242,
+        "gdp_lag_1": -0.021783613590941418,
+        "gdp_lag_2": -0.011270667515397442
+      },
+      "hac_se": {
+        "intercept": 0.041635679453678597,
+        "gdp_lag_0": 0.02726794108735923,
+        "gdp_lag_1": 0.010312732766030995,
+        "gdp_lag_2": 0.011155344536188425
+      },
+      "r_squared": 0.32105579261325445,
+      "condition_number": 2.962273173619354
+    },
+    {
+      "geo": "RO",
+      "lags": 2,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.051861676308748245,
+        "gdp_lag_0": -0.07436283563539044,
+        "gdp_lag_1": -0.02001903654511725,
+        "gdp_lag_2": -0.009082577048784103,
+        "participation_change": -0.10901220668265844
+      },
+      "hac_se": {
+        "intercept": 0.04333715456819018,
+        "gdp_lag_0": 0.02473485428417293,
+        "gdp_lag_1": 0.009774660531188032,
+        "gdp_lag_2": 0.010770845082564373,
+        "participation_change": 0.07611178326481148
+      },
+      "r_squared": 0.3623997937961754,
+      "condition_number": 4.932536378918323
+    },
+    {
+      "geo": "RO",
+      "lags": 4,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.06689021447791653,
+        "gdp_lag_0": -0.07821794963304712,
+        "gdp_lag_1": -0.028333518961249787,
+        "gdp_lag_2": -0.014242478817517144,
+        "gdp_lag_3": -0.030203188408936654,
+        "gdp_lag_4": -0.00030683095375525263
+      },
+      "hac_se": {
+        "intercept": 0.03964240495740411,
+        "gdp_lag_0": 0.027199220162522072,
+        "gdp_lag_1": 0.009322950775413888,
+        "gdp_lag_2": 0.010955749360446881,
+        "gdp_lag_3": 0.006167229638860188,
+        "gdp_lag_4": 0.009773809616074585
+      },
+      "r_squared": 0.3858326378641159,
+      "condition_number": 3.6566486100317417
+    },
+    {
+      "geo": "RO",
+      "lags": 4,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.08137512096783771,
+        "gdp_lag_0": -0.07900624711305403,
+        "gdp_lag_1": -0.027751364146799042,
+        "gdp_lag_2": -0.013754196111052504,
+        "gdp_lag_3": -0.026684619573673542,
+        "gdp_lag_4": -0.009472037893595976,
+        "participation_change": -0.10347575993900215
+      },
+      "hac_se": {
+        "intercept": 0.04295714580865418,
+        "gdp_lag_0": 0.025082770910274138,
+        "gdp_lag_1": 0.008730601364790877,
+        "gdp_lag_2": 0.01043642008778367,
+        "gdp_lag_3": 0.006108737730218685,
+        "gdp_lag_4": 0.013302905317868744,
+        "participation_change": 0.07661135248211418
+      },
+      "r_squared": 0.4156736508351888,
+      "condition_number": 6.171091347242396
+    },
+    {
+      "geo": "SE",
+      "lags": 0,
+      "participation": false,
+      "n": 70,
+      "start": "2009-Q1",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.059955205325419925,
+        "gdp_lag_0": -0.06867806225728923
+      },
+      "hac_se": {
+        "intercept": 0.053505599863261984,
+        "gdp_lag_0": 0.026448839873337057
+      },
+      "r_squared": 0.10275284185276934,
+      "condition_number": 1.8631485199383209
+    },
+    {
+      "geo": "SE",
+      "lags": 0,
+      "participation": true,
+      "n": 70,
+      "start": "2009-Q1",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.054680286872147904,
+        "gdp_lag_0": -0.07472575822439514,
+        "participation_change": 0.12089768353771582
+      },
+      "hac_se": {
+        "intercept": 0.05791731994702101,
+        "gdp_lag_0": 0.026928183733350958,
+        "participation_change": 0.13903230564365268
+      },
+      "r_squared": 0.11161263962263857,
+      "condition_number": 6.421103212906579
+    },
+    {
+      "geo": "SE",
+      "lags": 1,
+      "participation": false,
+      "n": 70,
+      "start": "2009-Q1",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.12229022701779695,
+        "gdp_lag_0": -0.10072454745766174,
+        "gdp_lag_1": -0.11000098932113203
+      },
+      "hac_se": {
+        "intercept": 0.04760862558807215,
+        "gdp_lag_0": 0.017113049732509513,
+        "gdp_lag_1": 0.018250620759248576
+      },
+      "r_squared": 0.3676509308298995,
+      "condition_number": 2.1915600818651106
+    },
+    {
+      "geo": "SE",
+      "lags": 1,
+      "participation": true,
+      "n": 70,
+      "start": "2009-Q1",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.11704223376026598,
+        "gdp_lag_0": -0.10671254241651824,
+        "gdp_lag_1": -0.10997035115435758,
+        "participation_change": 0.11988265128571071
+      },
+      "hac_se": {
+        "intercept": 0.05243466073855516,
+        "gdp_lag_0": 0.01967196711208706,
+        "gdp_lag_1": 0.01747409920218995,
+        "participation_change": 0.12826938576014832
+      },
+      "r_squared": 0.3763625624673992,
+      "condition_number": 6.958621984310862
+    },
+    {
+      "geo": "SE",
+      "lags": 2,
+      "participation": false,
+      "n": 70,
+      "start": "2009-Q1",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.1286645133107576,
+        "gdp_lag_0": -0.10084683239159684,
+        "gdp_lag_1": -0.11294989080758935,
+        "gdp_lag_2": -0.012410479107077516
+      },
+      "hac_se": {
+        "intercept": 0.050868208757907894,
+        "gdp_lag_0": 0.017785360219808994,
+        "gdp_lag_1": 0.020405306221134616,
+        "gdp_lag_2": 0.027670161445565052
+      },
+      "r_squared": 0.3711363720262313,
+      "condition_number": 2.4426300773436593
+    },
+    {
+      "geo": "SE",
+      "lags": 2,
+      "participation": true,
+      "n": 70,
+      "start": "2009-Q1",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.12304181886536347,
+        "gdp_lag_0": -0.10663111144156945,
+        "gdp_lag_1": -0.11266853045505386,
+        "gdp_lag_2": -0.011351150572421791,
+        "participation_change": 0.11601312990222634
+      },
+      "hac_se": {
+        "intercept": 0.056116561539635616,
+        "gdp_lag_0": 0.020209326015338324,
+        "gdp_lag_1": 0.0202857261566843,
+        "gdp_lag_2": 0.02938966097098751,
+        "participation_change": 0.1304967122152534
+      },
+      "r_squared": 0.37926930446597884,
+      "condition_number": 7.394535493855399
+    },
+    {
+      "geo": "SE",
+      "lags": 4,
+      "participation": false,
+      "n": 70,
+      "start": "2009-Q1",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.18899652302499745,
+        "gdp_lag_0": -0.10645974390681615,
+        "gdp_lag_1": -0.11323485574877845,
+        "gdp_lag_2": -0.027152299073055778,
+        "gdp_lag_3": -0.08444478662610296,
+        "gdp_lag_4": -0.05138615469307785
+      },
+      "hac_se": {
+        "intercept": 0.03597851397555806,
+        "gdp_lag_0": 0.014574762152456778,
+        "gdp_lag_1": 0.02209894961632156,
+        "gdp_lag_2": 0.011319203041607799,
+        "gdp_lag_3": 0.01168938139723966,
+        "gdp_lag_4": 0.01839430379788784
+      },
+      "r_squared": 0.5539294898709688,
+      "condition_number": 2.7331935704016286
+    },
+    {
+      "geo": "SE",
+      "lags": 4,
+      "participation": true,
+      "n": 70,
+      "start": "2009-Q1",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.1821950835511418,
+        "gdp_lag_0": -0.11805643624753016,
+        "gdp_lag_1": -0.11262586562285995,
+        "gdp_lag_2": -0.026693952764934598,
+        "gdp_lag_3": -0.09215360790356333,
+        "gdp_lag_4": -0.05254885324330364,
+        "participation_change": 0.22648256826947102
+      },
+      "hac_se": {
+        "intercept": 0.039385146478325604,
+        "gdp_lag_0": 0.01843281718078974,
+        "gdp_lag_1": 0.019707306914336045,
+        "gdp_lag_2": 0.012938548366107515,
+        "gdp_lag_3": 0.011755674832555078,
+        "gdp_lag_4": 0.015444434245256133,
+        "participation_change": 0.09235811006269586
+      },
+      "r_squared": 0.5836279946362588,
+      "condition_number": 7.880236093741988
+    },
+    {
+      "geo": "SI",
+      "lags": 0,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.013603506505524969,
+        "gdp_lag_0": -0.0576453355493591
+      },
+      "hac_se": {
+        "intercept": 0.05439887376992208,
+        "gdp_lag_0": 0.01531253543801964
+      },
+      "r_squared": 0.06815192486067878,
+      "condition_number": 2.291616343009857
+    },
+    {
+      "geo": "SI",
+      "lags": 0,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.014668932135459493,
+        "gdp_lag_0": -0.05482039701713927,
+        "participation_change": -0.07429982833784976
+      },
+      "hac_se": {
+        "intercept": 0.05357144839003381,
+        "gdp_lag_0": 0.01569090667403851,
+        "participation_change": 0.09409773255345687
+      },
+      "r_squared": 0.07934986467416338,
+      "condition_number": 3.3120076513852097
+    },
+    {
+      "geo": "SI",
+      "lags": 1,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.06076291718756058,
+        "gdp_lag_0": -0.08375849033144864,
+        "gdp_lag_1": -0.0759203087921906
+      },
+      "hac_se": {
+        "intercept": 0.04492268655333257,
+        "gdp_lag_0": 0.012290221149067271,
+        "gdp_lag_1": 0.027341418750893267
+      },
+      "r_squared": 0.18351845991468008,
+      "condition_number": 2.7499894455620657
+    },
+    {
+      "geo": "SI",
+      "lags": 1,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.06044493844898587,
+        "gdp_lag_0": -0.0832294706915491,
+        "gdp_lag_1": -0.07523113086905649,
+        "participation_change": -0.007679312985396684
+      },
+      "hac_se": {
+        "intercept": 0.04495155888675693,
+        "gdp_lag_0": 0.014476605903292758,
+        "gdp_lag_1": 0.029866091274009014,
+        "participation_change": 0.07587160752519437
+      },
+      "r_squared": 0.18362857423324797,
+      "condition_number": 3.953327836216135
+    },
+    {
+      "geo": "SI",
+      "lags": 2,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.06817110836299739,
+        "gdp_lag_0": -0.08054942138488067,
+        "gdp_lag_1": -0.07991452336081187,
+        "gdp_lag_2": -0.019844194183163816
+      },
+      "hac_se": {
+        "intercept": 0.04214811825214178,
+        "gdp_lag_0": 0.010958110010504226,
+        "gdp_lag_1": 0.025158681818970317,
+        "gdp_lag_2": 0.01776464431533211
+      },
+      "r_squared": 0.19199640259343453,
+      "condition_number": 3.0484158062714113
+    },
+    {
+      "geo": "SI",
+      "lags": 2,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.06792803732306109,
+        "gdp_lag_0": -0.077945844644699,
+        "gdp_lag_1": -0.07768004816406142,
+        "gdp_lag_2": -0.022653570830612788,
+        "participation_change": -0.031198966203284755
+      },
+      "hac_se": {
+        "intercept": 0.04207605900487602,
+        "gdp_lag_0": 0.013598388264248177,
+        "gdp_lag_1": 0.027263720216500704,
+        "gdp_lag_2": 0.016406579448233535,
+        "participation_change": 0.08211169332334824
+      },
+      "r_squared": 0.19364400411282012,
+      "condition_number": 4.549576687688272
+    },
+    {
+      "geo": "SI",
+      "lags": 4,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.09203121654027098,
+        "gdp_lag_0": -0.07753173905436696,
+        "gdp_lag_1": -0.06980048730187105,
+        "gdp_lag_2": -0.027579024711021995,
+        "gdp_lag_3": -0.05662252339005869,
+        "gdp_lag_4": -0.018763764874638652
+      },
+      "hac_se": {
+        "intercept": 0.03463359845583324,
+        "gdp_lag_0": 0.010545852954705528,
+        "gdp_lag_1": 0.01803642169097896,
+        "gdp_lag_2": 0.008898348843930527,
+        "gdp_lag_3": 0.01173025453580338,
+        "gdp_lag_4": 0.015137908022105767
+      },
+      "r_squared": 0.25946778499555023,
+      "condition_number": 3.3716334096934113
+    },
+    {
+      "geo": "SI",
+      "lags": 4,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.0929044025891229,
+        "gdp_lag_0": -0.0792812283240839,
+        "gdp_lag_1": -0.07109118591238435,
+        "gdp_lag_2": -0.025798992996201215,
+        "gdp_lag_3": -0.05822481934561373,
+        "gdp_lag_4": -0.019387986790312388,
+        "participation_change": 0.021995751780437032
+      },
+      "hac_se": {
+        "intercept": 0.03494915456816419,
+        "gdp_lag_0": 0.012267800494166944,
+        "gdp_lag_1": 0.01857124466246045,
+        "gdp_lag_2": 0.010943329156322804,
+        "gdp_lag_3": 0.013371925049313574,
+        "gdp_lag_4": 0.015888873977701994,
+        "participation_change": 0.07077177185349039
+      },
+      "r_squared": 0.2602315851107547,
+      "condition_number": 5.124298851467668
+    },
+    {
+      "geo": "SK",
+      "lags": 0,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": -0.07643673678580987,
+        "gdp_lag_0": 0.01344578075458727
+      },
+      "hac_se": {
+        "intercept": 0.07227137902844337,
+        "gdp_lag_0": 0.037464453872967055
+      },
+      "r_squared": 0.003418813259620568,
+      "condition_number": 1.9676187254237467
+    },
+    {
+      "geo": "SK",
+      "lags": 0,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": -0.07440567254951086,
+        "gdp_lag_0": 0.017301941528512152,
+        "participation_change": -0.1385461351596472
+      },
+      "hac_se": {
+        "intercept": 0.07106899978131014,
+        "gdp_lag_0": 0.03614956044185171,
+        "participation_change": 0.12275159739552009
+      },
+      "r_squared": 0.010731735764441752,
+      "condition_number": 7.761226765329384
+    },
+    {
+      "geo": "SK",
+      "lags": 1,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": -0.043161722607173825,
+        "gdp_lag_0": -0.0003311755498409056,
+        "gdp_lag_1": -0.0520640226867928
+      },
+      "hac_se": {
+        "intercept": 0.06558551080366365,
+        "gdp_lag_0": 0.03636054938538526,
+        "gdp_lag_1": 0.02663532051793756
+      },
+      "r_squared": 0.08061244254812727,
+      "condition_number": 2.47768243217561
+    },
+    {
+      "geo": "SK",
+      "lags": 1,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": -0.04296044181055879,
+        "gdp_lag_0": 0.0019187540112536895,
+        "gdp_lag_1": -0.050800334247711,
+        "participation_change": -0.06882243092138923
+      },
+      "hac_se": {
+        "intercept": 0.06473977827005387,
+        "gdp_lag_0": 0.0349317707338664,
+        "gdp_lag_1": 0.027178174832608426,
+        "participation_change": 0.13479290250468665
+      },
+      "r_squared": 0.08237148805393346,
+      "condition_number": 9.349079341383066
+    },
+    {
+      "geo": "SK",
+      "lags": 2,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": -0.0015066098221371957,
+        "gdp_lag_0": -0.011633781905862872,
+        "gdp_lag_1": -0.06520665636394067,
+        "gdp_lag_2": -0.05800305047795677
+      },
+      "hac_se": {
+        "intercept": 0.06383244842254411,
+        "gdp_lag_0": 0.035213481136686854,
+        "gdp_lag_1": 0.026012175636150534,
+        "gdp_lag_2": 0.028163118273607176
+      },
+      "r_squared": 0.17495173385581608,
+      "condition_number": 2.774947369407514
+    },
+    {
+      "geo": "SK",
+      "lags": 2,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.004085892917919077,
+        "gdp_lag_0": -0.005741373410104107,
+        "gdp_lag_1": -0.06270378520271572,
+        "gdp_lag_2": -0.0648892061390919,
+        "participation_change": -0.2212866566248182
+      },
+      "hac_se": {
+        "intercept": 0.06042851063733992,
+        "gdp_lag_0": 0.03427280370332915,
+        "gdp_lag_1": 0.024033989844221584,
+        "gdp_lag_2": 0.02378394300638355,
+        "participation_change": 0.16170639683940777
+      },
+      "r_squared": 0.19180765645599673,
+      "condition_number": 10.220294373189306
+    },
+    {
+      "geo": "SK",
+      "lags": 4,
+      "participation": false,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.13576140623789518,
+        "gdp_lag_0": -0.0349435475881437,
+        "gdp_lag_1": -0.09118869571618372,
+        "gdp_lag_2": -0.09329521993916659,
+        "gdp_lag_3": -0.09487105665051734,
+        "gdp_lag_4": -0.08664604212251359
+      },
+      "hac_se": {
+        "intercept": 0.07119142233219002,
+        "gdp_lag_0": 0.017865172426940693,
+        "gdp_lag_1": 0.023117059145616223,
+        "gdp_lag_2": 0.024344839270206142,
+        "gdp_lag_3": 0.022408893099923707,
+        "gdp_lag_4": 0.027319258213332316
+      },
+      "r_squared": 0.5294472164505091,
+      "condition_number": 3.23092276692254
+    },
+    {
+      "geo": "SK",
+      "lags": 4,
+      "participation": true,
+      "n": 69,
+      "start": "2009-Q2",
+      "end": "2026-Q2",
+      "coefficients": {
+        "intercept": 0.14273441809672113,
+        "gdp_lag_0": -0.04363089836982147,
+        "gdp_lag_1": -0.09698354072222119,
+        "gdp_lag_2": -0.08938666208914027,
+        "gdp_lag_3": -0.10989653868746672,
+        "gdp_lag_4": -0.08878003573812404,
+        "participation_change": 0.25012543776336466
+      },
+      "hac_se": {
+        "intercept": 0.06969411219772287,
+        "gdp_lag_0": 0.019192813149362498,
+        "gdp_lag_1": 0.025216537442367706,
+        "gdp_lag_2": 0.02444578876154611,
+        "gdp_lag_3": 0.01867818925506056,
+        "gdp_lag_4": 0.025159122475423835,
+        "participation_change": 0.1184388290410747
+      },
+      "r_squared": 0.5450090470732063,
+      "condition_number": 12.181539574858874
+    }
+  ]
+}

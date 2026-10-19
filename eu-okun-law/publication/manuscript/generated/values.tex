@@ -18,13 +18,20 @@
 \expandafter\def\csname okun@by_PT_lagshare\endcsname{$0.58$}
 \expandafter\def\csname okun@by_PT_ols\endcsname{$-0.59$}
 \expandafter\def\csname okun@by_cov90\endcsname{$94$\%}
+\expandafter\def\csname okun@by_factor_corr\endcsname{$-0.60$}
 \expandafter\def\csname okun@by_lag1_obs\endcsname{$0.27$}
+\expandafter\def\csname okun@by_lag1_p\endcsname{$0.000$}
 \expandafter\def\csname okun@by_lag1_rep\endcsname{$0.06$}
 \expandafter\def\csname okun@by_mu\endcsname{$-0.198$}
+\expandafter\def\csname okun@by_mu_abs\endcsname{$0.20$}
 \expandafter\def\csname okun@by_mu_ci\endcsname{$[-0.254, -0.145]$}
+\expandafter\def\csname okun@by_mu_hi\endcsname{$-0.18$}
+\expandafter\def\csname okun@by_mu_lo\endcsname{$-0.30$}
 \expandafter\def\csname okun@by_n_accepted\endcsname{8}
 \expandafter\def\csname okun@by_n_neg_all\endcsname{22}
+\expandafter\def\csname okun@by_n_neg_linux\endcsname{15}
 \expandafter\def\csname okun@by_n_neg_primary\endcsname{24}
+\expandafter\def\csname okun@by_n_neg_unpooled\endcsname{15}
 \expandafter\def\csname okun@by_n_smaller\endcsname{25}
 \expandafter\def\csname okun@by_n_specs\endcsname{9}
 \expandafter\def\csname okun@by_pairs_primary\endcsname{99}
@@ -33,6 +40,14 @@
 \expandafter\def\csname okun@by_rank_width\endcsname{15}
 \expandafter\def\csname okun@by_tau\endcsname{$0.126$}
 \expandafter\def\csname okun@by_tau_ci\endcsname{$[0.081, 0.175]$}
+\expandafter\def\csname okun@by_unpooled_country\endcsname{Slovakia}
+\expandafter\def\csname okun@by_unpooled_differ\endcsname{BE, DE, HU, IE, NL, PL and RO}
+\expandafter\def\csname okun@by_unpooled_n_differ\endcsname{7}
+\expandafter\def\csname okun@by_unpooled_ols\endcsname{HU, IE, NL, PL and RO}
+\expandafter\def\csname okun@by_unpooled_ols_n\endcsname{5}
+\expandafter\def\csname okun@by_unpooled_p_hi\endcsname{$0.94$}
+\expandafter\def\csname okun@by_unpooled_p_lo\endcsname{$0.73$}
+\expandafter\def\csname okun@by_unpooled_rhat\endcsname{$1.0106$}
 \expandafter\def\csname okun@cl_ES_excl\endcsname{$-0.79$}
 \expandafter\def\csname okun@cl_ES_excl_ci\endcsname{$[-0.99, -0.60]$}
 \expandafter\def\csname okun@cl_ES_full\endcsname{$-0.27$}
@@ -62,8 +77,11 @@
 \expandafter\def\csname okun@cl_PT_pre_ci\endcsname{$[-0.75, -0.42]$}
 \expandafter\def\csname okun@cl_PT_verdict\endcsname{negative; significance specification-dependent}
 \expandafter\def\csname okun@cl_n_attenuated\endcsname{20}
+\expandafter\def\csname okun@cl_n_core\endcsname{24}
 \expandafter\def\csname okun@cl_n_full_outside\endcsname{10}
 \expandafter\def\csname okun@cl_n_neg_excluded\endcsname{22}
+\expandafter\def\csname okun@cl_n_neg_holm\endcsname{21}
+\expandafter\def\csname okun@cl_n_quarters\endcsname{57}
 \expandafter\def\csname okun@cl_n_robust\endcsname{17}
 \expandafter\def\csname okun@cl_pandemic_share_median\endcsname{$78$\%}
 \expandafter\def\csname okun@claim_es_holds\endcsname{8}
@@ -93,6 +111,8 @@
 \expandafter\def\csname okun@cs_NL_prod_ci\endcsname{$[+0.09, +1.05]$}
 \expandafter\def\csname okun@cs_PT_dp\endcsname{$+0.18$}
 \expandafter\def\csname okun@cs_PT_dp_ci\endcsname{$[+0.09, +0.31]$}
+\expandafter\def\csname okun@cs_PT_du\endcsname{$-0.48$}
+\expandafter\def\csname okun@cs_PT_du_ci\endcsname{$[-0.64, +0.17]$}
 \expandafter\def\csname okun@cs_PT_h\endcsname{$+1.27$}
 \expandafter\def\csname okun@cs_PT_h_ci\endcsname{$[+0.93, +1.65]$}
 \expandafter\def\csname okun@cs_contradicted\endcsname{0}
@@ -105,6 +125,8 @@
 \expandafter\def\csname okun@cs_eplt_noluie_holm\endcsname{$0.020$}
 \expandafter\def\csname okun@cs_eplt_noluie_n\endcsname{18}
 \expandafter\def\csname okun@cs_eplt_noluie_rho\endcsname{$-0.67$}
+\expandafter\def\csname okun@cs_n_corr\endcsname{18}
+\expandafter\def\csname okun@cs_n_corr_contra\endcsname{2}
 \expandafter\def\csname okun@cs_p11\endcsname{$+0.01$}
 \expandafter\def\csname okun@cs_p11_ci\endcsname{$[-0.05, +0.05]$}
 \expandafter\def\csname okun@cs_p11_holm\endcsname{$1.000$}
@@ -150,10 +172,19 @@
 \expandafter\def\csname okun@cs_supported\endcsname{1}
 \expandafter\def\csname okun@cs_total\endcsname{14}
 \expandafter\def\csname okun@dyn_factor_corr\endcsname{$-0.65$}
+\expandafter\def\csname okun@dyn_lu_adf\endcsname{holds}
+\expandafter\def\csname okun@dyn_lu_adf_p\endcsname{$0.981$}
+\expandafter\def\csname okun@dyn_lu_adf_short_p\endcsname{$0.81$}
+\expandafter\def\csname okun@dyn_lu_ardl\endcsname{holds}
+\expandafter\def\csname okun@dyn_lu_ardl_p\endcsname{$0.995$}
+\expandafter\def\csname okun@dyn_mu\endcsname{$-0.17$}
+\expandafter\def\csname okun@dyn_mu_ci\endcsname{$[-0.21, -0.13]$}
+\expandafter\def\csname okun@dyn_n_neg\endcsname{25}
 \expandafter\def\csname okun@dyn_p\endcsname{$0.102$}
 \expandafter\def\csname okun@fc_ar1\endcsname{$-1.4$\%}
 \expandafter\def\csname okun@fc_ar1_ci\endcsname{$[-3.1, +0.5]$}
 \expandafter\def\csname okun@fc_ar1_holm\endcsname{$0.276$}
+\expandafter\def\csname okun@fc_ar1_vs_zero\endcsname{$+4.4$\%}
 \expandafter\def\csname okun@fc_decided\endcsname{0}
 \expandafter\def\csname okun@fc_factor\endcsname{$-5.5$\%}
 \expandafter\def\csname okun@fc_factor_ci\endcsname{$[-9.2, -1.9]$}
@@ -161,16 +192,26 @@
 \expandafter\def\csname okun@fc_gdp\endcsname{$-15.3$\%}
 \expandafter\def\csname okun@fc_gdp_ci\endcsname{$[-25.6, -2.9]$}
 \expandafter\def\csname okun@fc_gdp_holm\endcsname{$0.276$}
+\expandafter\def\csname okun@fc_origins\endcsname{34}
 \expandafter\def\csname okun@fc_total\endcsname{5}
 \expandafter\def\csname okun@fc_zero\endcsname{$+4.0$\%}
 \expandafter\def\csname okun@fc_zero_ci\endcsname{$[-6.8, +14.7]$}
 \expandafter\def\csname okun@fc_zero_holm\endcsname{$1.000$}
 \expandafter\def\csname okun@fcx_ar1\endcsname{$-2.9$\%}
+\expandafter\def\csname okun@fcx_ar1_holm\endcsname{$0.005$}
 \expandafter\def\csname okun@fcx_decided\endcsname{4}
 \expandafter\def\csname okun@fcx_factor\endcsname{$-2.5$\%}
+\expandafter\def\csname okun@fcx_factor_holm\endcsname{$0.005$}
+\expandafter\def\csname okun@fcx_gain_hi\endcsname{$3.1$\%}
+\expandafter\def\csname okun@fcx_gain_lo\endcsname{$2.5$\%}
 \expandafter\def\csname okun@fcx_gdp\endcsname{$-3.1$\%}
+\expandafter\def\csname okun@fcx_gdp_holm\endcsname{$0.005$}
+\expandafter\def\csname okun@fcx_holm_max\endcsname{$0.005$}
 \expandafter\def\csname okun@fcx_lags\endcsname{$-2.6$\%}
+\expandafter\def\csname okun@fcx_lags_holm\endcsname{$0.005$}
+\expandafter\def\csname okun@fcx_origins\endcsname{24}
 \expandafter\def\csname okun@fcx_zero\endcsname{$-3.5$\%}
+\expandafter\def\csname okun@fcx_zero_holm\endcsname{$0.241$}
 \expandafter\def\csname okun@hash_deflator\endcsname{\texttt{30900e56883b8a6e}}
 \expandafter\def\csname okun@hash_heterogeneity\endcsname{\texttt{4a6a6d1c82af1e3c}}
 \expandafter\def\csname okun@hash_monthly\endcsname{\texttt{ec2e65b6cbe8831f}}
@@ -178,11 +219,14 @@
 \expandafter\def\csname okun@hash_shiftshare\endcsname{\texttt{c5c914bb910b1e29}}
 \expandafter\def\csname okun@hash_shocks\endcsname{\texttt{8361c685c67770e2}}
 \expandafter\def\csname okun@id_max_t\endcsname{$1.27$}
+\expandafter\def\csname okun@id_mp_u0\endcsname{$+0.12$}
+\expandafter\def\csname okun@id_mp_u0_ci\endcsname{$[+0.03, +0.20]$}
 \expandafter\def\csname okun@id_pred_mp\endcsname{$0.580$}
 \expandafter\def\csname okun@id_pred_oil\endcsname{$0.006$}
 \expandafter\def\csname okun@id_sets\endcsname{4}
 \expandafter\def\csname okun@id_unbounded\endcsname{4}
 \expandafter\def\csname okun@mo_max_t\endcsname{$1.21$}
+\expandafter\def\csname okun@mo_n_direct\endcsname{8}
 \expandafter\def\csname okun@mo_pred_oil\endcsname{$0.567$}
 \expandafter\def\csname okun@mo_unbounded\endcsname{4}
 \expandafter\def\csname okun@n_countries\endcsname{27}
@@ -195,26 +239,32 @@
 \expandafter\def\csname okun@pc_decided\endcsname{1}
 \expandafter\def\csname okun@pc_e1_zero\endcsname{$-13.5$\%}
 \expandafter\def\csname okun@pc_e1_zero_holm\endcsname{$0.018$}
+\expandafter\def\csname okun@pc_e1_zero_holm_nofail\endcsname{$0.092$}
 \expandafter\def\csname okun@pc_e2_ols\endcsname{$-6.7$\%}
 \expandafter\def\csname okun@pc_e2_ols_holm\endcsname{$0.061$}
 \expandafter\def\csname okun@pc_e2_zero\endcsname{$-0.3$\%}
 \expandafter\def\csname okun@pc_e2_zero_holm\endcsname{$1.000$}
+\expandafter\def\csname okun@pc_quarters\endcsname{16}
 \expandafter\def\csname okun@pc_total\endcsname{10}
 \expandafter\def\csname okun@reg_delta\endcsname{$+0.028$}
 \expandafter\def\csname okun@reg_delta_ci\endcsname{$[-0.007, +0.072]$}
+\expandafter\def\csname okun@reg_tau\endcsname{$0.03$}
 \expandafter\def\csname okun@snapshot_date\endcsname{2026-10-15}
 \expandafter\def\csname okun@sr_dem_bounded\endcsname{unbounded}
 \expandafter\def\csname okun@sr_dem_fevd_hi\endcsname{$96$\%}
 \expandafter\def\csname okun@sr_dem_fevd_lo\endcsname{$0$\%}
+\expandafter\def\csname okun@sr_dem_gdp8_ci\endcsname{$[-0.06, +1.54]$}
 \expandafter\def\csname okun@sr_dem_uniform\endcsname{$-0.43$}
 \expandafter\def\csname okun@sr_ls_fevd_hi\endcsname{$96$\%}
 \expandafter\def\csname okun@sr_ls_fevd_lo\endcsname{$0$\%}
+\expandafter\def\csname okun@sr_n_orderings\endcsname{24}
 \expandafter\def\csname okun@sr_nonempty\endcsname{$100$\%}
 \expandafter\def\csname okun@sr_nonempty_h01\endcsname{$1.0$\%}
 \expandafter\def\csname okun@sr_order_max_h4\endcsname{$-0.202$}
 \expandafter\def\csname okun@sr_order_max_h8\endcsname{$-0.216$}
 \expandafter\def\csname okun@sr_order_min_h4\endcsname{$-0.135$}
 \expandafter\def\csname okun@sr_order_min_h8\endcsname{$-0.149$}
+\expandafter\def\csname okun@sr_sets\endcsname{both unbounded}
 \expandafter\def\csname okun@sr_tech_bounded\endcsname{unbounded}
 \expandafter\def\csname okun@sr_tech_fevd_hi\endcsname{$97$\%}
 \expandafter\def\csname okun@sr_tech_fevd_lo\endcsname{$0$\%}
@@ -227,4 +277,14 @@
 \expandafter\def\csname okun@ss_size_bootstrap\endcsname{$4.8$\%}
 \expandafter\def\csname okun@ss_size_normal\endcsname{$22.8$\%}
 \expandafter\def\csname okun@ss_survivors\endcsname{0}
+\expandafter\def\csname okun@ws_m0_max_t\endcsname{$1.21$}
+\expandafter\def\csname okun@ws_m0_unbounded\endcsname{4}
+\expandafter\def\csname okun@ws_m1_max_t\endcsname{$1.18$}
+\expandafter\def\csname okun@ws_m1_unbounded\endcsname{4}
+\expandafter\def\csname okun@ws_q0_max_t\endcsname{$1.27$}
+\expandafter\def\csname okun@ws_q0_unbounded\endcsname{4}
+\expandafter\def\csname okun@ws_q1_max_t\endcsname{$1.27$}
+\expandafter\def\csname okun@ws_q1_unbounded\endcsname{4}
+\expandafter\def\csname okun@ws_sr_nonempty\endcsname{$100$\%}
+\expandafter\def\csname okun@ws_sr_regions\endcsname{all unbounded}
 \makeatother

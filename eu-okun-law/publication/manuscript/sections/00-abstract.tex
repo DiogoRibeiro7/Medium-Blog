@@ -2,33 +2,45 @@
 \noindent
 We re-examine the relation between quarterly real GDP growth and changes in the
 unemployment rate in the \val{n_countries} member states of the European Union from 2009
-to 2026, using official Eurostat data frozen with cryptographic hashes and analyses
-registered before estimation.
+to 2026. The data are official Eurostat series frozen with cryptographic hashes. Each
+stage of the analysis was registered before its own estimation, sequentially, on the same
+data.
 
-\textbf{Association.} With 2020--2021 excluded, the two-lag Okun coefficient sum is
-negative, with a 95\% interval below zero, in \val{cl_n_neg_excluded} of
-\val{n_countries} countries. Including the pandemic quarters pulls most sums towards zero.
-A hierarchical Bayesian model with Student-$t$ errors, residual autocorrelation and a
-common European factor gives an unweighted cross-country mean of \val{by_mu} (90\%
-interval \val{by_mu_ci}), with a between-country standard deviation of \val{by_tau}.
-Country ranks remain highly uncertain.
+\textbf{Association.} With 2020--2021 excluded, the two-lag Okun coefficient sum has a
+95\% interval below zero in \val{cl_n_neg_excluded} of \val{n_countries} countries
+(\val{cl_n_neg_holm} after a Holm adjustment across countries). Including the pandemic
+quarters pulls most sums towards zero. A hierarchical Bayesian model with Student-$t$
+errors, residual autocorrelation and a common European factor estimates the association
+beyond the common European cycle. Across accepted specifications, the unweighted mean of
+the country sums lies between \val{by_mu_lo} and \val{by_mu_hi}. The primary model
+gives \val{by_mu} \val{by_mu_ci}, but it understates the persistence of unemployment
+changes. The amended model that passes that check gives \val{dyn_mu} \val{dyn_mu_ci} for
+the long-run sum. Whether \val{by_n_neg_all} or \val{by_n_neg_unpooled} countries are
+credibly negative in every accepted fit depends on one fit at the convergence threshold.
+Country ranks are not established.
 
-\textbf{Prediction.} Hierarchical pooling does not improve one-quarter-ahead forecasts
-beyond sampling variation, and neither do lagged GDP growth or the common factor: none of
-the pre-registered forecast comparisons is decided at the 5\% familywise level.
+\textbf{Prediction.} Over all \val{fc_origins} target quarters, none of the registered
+one-quarter-ahead forecast comparisons is decided; the pandemic targets dominate the
+loss differences. Without the pandemic targets, a registered descriptive analysis finds
+gains of \val{fcx_gain_lo} to \val{fcx_gain_hi} from partial pooling, lagged GDP growth
+and the common factor. Even there, no model reliably beats a forecast that the
+unemployment rate will not change.
 
 \textbf{Causation.} External instruments for monetary-policy and oil-supply shocks are weak
-for real activity, with first-stage $|t|$ at most \val{id_max_t} quarterly and
+for real activity: first-stage $|t|$ is at most \val{id_max_t} quarterly and
 \val{mo_max_t} monthly. A foreign-demand shift-share instrument is infeasible (expected
-first-stage $t$ of \val{ss_P1_t}). Sign restrictions that the data admit leave the
-shock-conditional Okun ratios unbounded.
+first-stage $t$ of \val{ss_P1_t}). The sign restrictions that the data admit leave the
+shock-conditional Okun ratios unbounded. These instruments and restrictions are
+uninformative; they are not evidence about the size of any causal effect.
 
-\textbf{Countries.} We compare the results with three earlier claims: a large association
-for Spain, a delayed one for the Netherlands and a weak one for Luxembourg. The Spanish claim
-is supported in every accepted specification. The Dutch and Luxembourg claims are not
-resolved by their registered rules. In Luxembourg, the data give no sign that the
-cross-border measurement mismatch explains the weak association: domestic and resident
-employment barely move with GDP, and output per hour absorbs the fluctuations.
+\textbf{Countries.} The study was prompted by an earlier analysis that described a large
+association for Spain, a delayed one for the Netherlands and a weak one for Luxembourg,
+and suggested measurement and institutional explanations. We test two of that kind: a
+commuter mismatch in Luxembourg and employment protection. The Spanish
+claim is supported in every accepted specification. The Dutch and Luxembourg claims are
+qualified. The data give no sign that cross-border commuters absorb Luxembourg's output
+fluctuations. There, output per hour moves almost one for one with measured GDP, which
+GDP measurement error would also produce.
 
 Every Okun coefficient in this study is a descriptive association; none is an identified
 causal effect.

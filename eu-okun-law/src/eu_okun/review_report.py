@@ -771,16 +771,24 @@ def _conclusions(f: Facts) -> list[str]:
     return lines
 
 
-def _reproduction(report: Path, output_dir: Path, data_dir: Path) -> list[str]:
+def _reproduction(report: Path, output_dir: Path, data_dir: Path,
+                  published_dir: Path | None = None, provenance: str = "") -> list[str]:
+    command = (f"eu-okun review --data-dir {data_dir.as_posix()} "
+               f"--output-dir {output_dir.as_posix()} --report {report.as_posix()}")
+    if published_dir is not None:
+        command += f" --published-dir {published_dir.as_posix()}"
+        if provenance and provenance != published_dir.as_posix():
+            command += f' --provenance "{provenance}"'
+    archived = ("The archived CI outputs compared in section 3 are frozen with the snapshot "
+                "named by `--published-dir`; without it, the report omits that comparison. "
+                if published_dir is not None else
+                "Add `--published-dir <results>` to also compare archived CI outputs "
+                "(section 3). ")
     return [
         "## 12. Reproduction", "",
         "From `eu-okun-law/`, with the `report` extra installed:", "",
-        "```bash",
-        f"eu-okun review --data-dir {data_dir.as_posix()} "
-        f"--output-dir {output_dir.as_posix()} --report {report.as_posix()}",
-        "```", "",
-        "Add `--published-dir <results>` to also compare archived CI outputs (section 3). "
-        "Machine-readable tables (`grid.csv`, `robustness.csv`, `verification.csv`, "
+        "```bash", command, "```", "",
+        archived + "Machine-readable tables (`grid.csv`, `robustness.csv`, `verification.csv`, "
         "`stability_review.csv`, `pairs_review.csv`, `forecast_review.csv`, "
         "`quality_flags.csv`, `review.json`) sit next to the figures. The bootstrap uses "
         "the published seed, so a rerun on the same snapshot reproduces every number.", "",
@@ -788,7 +796,8 @@ def _reproduction(report: Path, output_dir: Path, data_dir: Path) -> list[str]:
 
 
 def render_report(review: ReviewResult, assets: str, report: Path, output_dir: Path,
-                  data_dir: Path, provenance: str) -> str:
+                  data_dir: Path, provenance: str,
+                  published_dir: Path | None = None) -> str:
     """Assemble the Markdown report from the review results."""
     f = Facts(review)
     lines = [
@@ -801,7 +810,7 @@ def render_report(review: ReviewResult, assets: str, report: Path, output_dir: P
     for section in (
         _summary(f), _provenance(f, provenance), _sources(f), _verification(f),
         _sensitivity(f), _stability(f), _pairs(f), _forecasts(f), _focus(f),
-        _conclusions(f), _reproduction(report, output_dir, data_dir),
+        _conclusions(f), _reproduction(report, output_dir, data_dir, published_dir, provenance),
     ):
         lines += section
     return "\n".join(lines).replace("{assets}", assets).rstrip() + "\n"
@@ -900,7 +909,7 @@ def write_review(
         provenance = published_dir.as_posix()
     report.parent.mkdir(parents=True, exist_ok=True)
     report.write_text(
-        render_report(review, assets, report, output_dir, data_dir, provenance),
+        render_report(review, assets, report, output_dir, data_dir, provenance, published_dir),
         encoding="utf-8", newline="\n",
     )
     return review
