@@ -191,7 +191,11 @@ Open:
 - [ ] Gap-form Okun's law against Ball, Leigh and Loungani (2017); asymmetry; hours-based
       Okun's law for every country; a common-correlated-effects mean-group panel; a
       labour-force-weighted EU aggregate.
-- [ ] Keep the participation control out of the core robustness grid (a new review).
+- [x] Kept the participation control out of the core robustness grid, registered in
+      [CORE_GRID_PROTOCOL.md](CORE_GRID_PROTOCOL.md); results in
+      [docs/CORE_GRID.md](docs/CORE_GRID.md). The published verdicts are reproduced; on
+      the 12 participation-free estimates 18 countries are robustly negative (17
+      published), and only Romania changes. The manuscript and article use these verdicts.
 
 Green offline CI is not evidence of a successful live data download.
 No pre-selected country results, artificial observations or causal

@@ -42,7 +42,8 @@ registered checks:
 \begin{itemize}
   \item a negative association without 2020--2021, significant at the 5\% level in
     \val{hi_negative} of \val{n_countries} countries under small-sample bootstraps, and
-    robust to the core specifications in \val{cl_n_robust};
+    robust to the participation-free core specifications in \val{cl_n_robust}
+    (with normal intervals);
   \item Spain's large association, relative to the European mean;
   \item the Spain--Luxembourg and Spain--Netherlands differences, which survive every
     accepted fit and remain when labour input is measured by employment or hours;
@@ -121,8 +122,9 @@ registered checks:
     so the per-country counts lie between the two.
   \item The pandemic-excluded headline was chosen after the full-sample estimates had
     been seen.
-  \item The participation control is a mediator and is mechanically linked to the
-    outcome, yet half of the core robustness specifications include it.
+  \item The participation-free robustness verdicts were registered after the published
+    verdicts, which also counted specifications with the participation control, had been
+    seen. The two differ only for \val{cl_changed}.
   \item The primary Bayesian model understates the persistence of unemployment changes.
     The amendment that removes this misfit has a common factor correlated with average
     GDP growth (\val{dyn_factor_corr}), so its country sums measure the association beyond

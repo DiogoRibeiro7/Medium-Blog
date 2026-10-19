@@ -20,15 +20,17 @@ research plan listed a pandemic-excluded comparison before any estimate. Making 
 headline sample was decided after the full-sample estimates had been seen.
 
 \paragraph{Review.} A separate review recomputed every published quantity by an
-independent numerical route and re-estimated \val{cl_n_core} core specifications per
-country. It classified each country as robustly negative, negative with
-specification-dependent significance, or sign-unstable.
+independent numerical route and re-estimated \val{cl_n_core_published} core
+specifications per country. It classified each country as robustly negative, negative
+with specification-dependent significance, or sign-unstable.
 
-\paragraph{The participation control.} Half of the core specifications control for the
+\paragraph{The participation control.} Half of those core specifications control for the
 change in participation. That variable is itself a response to output, and it is
 mechanically linked to the outcome, because the labour force is the denominator of the
 unemployment rate. Those specifications therefore estimate a different, partly mediated
-quantity. The robustness verdicts include them.
+quantity. A registered re-classification (\texttt{CORE\_GRID\_PROTOCOL.md}) applies the
+same rule to the \val{cl_n_core} specifications without the control. Its verdicts are the
+ones used here; only \val{cl_changed} changes.
 
 \subsection{Results}
 
@@ -36,7 +38,9 @@ quantity. The robustness verdicts include them.
 \val{hi_point_negative} of \val{n_countries} countries. With normal critical values, its
 95\% interval lies below zero in \val{cl_n_neg_excluded} (table~\ref{tab:countries}), and
 in \val{cl_n_neg_holm} after a Holm adjustment over the \val{n_countries} countries. In
-\val{cl_n_robust} countries every core specification agrees in sign and excludes zero.
+\val{cl_n_robust} countries every core specification without the participation control
+agrees in sign and excludes zero (\val{cl_n_robust_published} with the control included),
+again with normal intervals.
 These are associations conditional on contemporaneous and lagged GDP growth, and
 contemporaneous growth is not exogenous.
 

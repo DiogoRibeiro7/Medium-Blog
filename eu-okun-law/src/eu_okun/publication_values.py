@@ -165,7 +165,17 @@ def collect_values(root: Path) -> dict[str, Value]:
     src = "docs/review/robustness.csv"
     rob = _csv(docs / "review" / "robustness.csv")
     add(text("cl_n_neg_excluded", sum(float(r["headline_excluded_high"]) < 0 for r in rob), src))
-    add(text("cl_n_robust", sum(r["verdict"] == "robust_negative" for r in rob), src))
+    # Robustness verdicts: the participation-free core grid is primary (CORE_GRID_PROTOCOL.md);
+    # the review's published 24-estimate verdicts are kept for comparison.
+    cg = {r["geo"]: r for r in _csv(docs / "core-grid" / "verdicts.csv")}
+    cg_src = "docs/core-grid/verdicts.csv"
+    add(text("cl_n_robust", sum(r["verdict"] == "robust_negative" for r in cg.values()),
+             cg_src))
+    add(text("cl_n_robust_published", sum(r["verdict"] == "robust_negative" for r in rob), src))
+    from eu_okun.review_report import COUNTRY_NAMES
+
+    add(text("cl_changed", _names([COUNTRY_NAMES[g] for g, r in cg.items()
+                                   if r["changed"] == "True"]), cg_src))
     shares = sorted(float(r["pandemic_leverage_share"]) for r in rob)
     add(pct("cl_pandemic_share_median", shares[len(shares) // 2], 0, src))
     add(text("cl_n_full_outside", sum(r["full_outside_excluded_ci"] == "True" for r in rob), src))
@@ -184,9 +194,10 @@ def collect_values(root: Path) -> dict[str, Value]:
             add(num(f"cl_{geo}_{tag}", float(r["gdp_sum"]), 2, "docs/review/grid.csv", True))
             add(interval(f"cl_{geo}_{tag}_ci", float(r["ci_low"]), float(r["ci_high"]), 2,
                          "docs/review/grid.csv"))
-        add(text(f"cl_{geo}_verdict", VERDICTS.get(_one(rob, geo=geo)["verdict"],
-                                                   _one(rob, geo=geo)["verdict"]), src))
-    add(text("cl_n_core", _one(rob, geo="AT")["core_estimates"], src))
+        add(text(f"cl_{geo}_verdict", VERDICTS.get(cg[geo]["verdict"], cg[geo]["verdict"]),
+                 cg_src))
+    add(text("cl_n_core", cg["AT"]["estimates"], cg_src))
+    add(text("cl_n_core_published", _one(rob, geo="AT")["core_estimates"], src))
     # Holm over the 27 two-sided normal tests of the headline sums (not a registered rule;
     # it shows how much the 22 depends on testing each country separately).
     from statistics import NormalDist

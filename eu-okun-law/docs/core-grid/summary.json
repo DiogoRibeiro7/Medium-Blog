@@ -1,0 +1,14 @@
+{
+ "robust_published": 17,
+ "robust": 18,
+ "precision_dependent": 6,
+ "sign_unstable": 3,
+ "robust_without_pandemic_published": 21,
+ "robust_without_pandemic": 22,
+ "changed": {
+  "RO": [
+   "negative_precision_dependent",
+   "robust_negative"
+  ]
+ }
+}
