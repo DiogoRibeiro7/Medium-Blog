@@ -281,6 +281,16 @@ def main(argv: Sequence[str] | None = None) -> int:
     het.add_argument("--output-dir", type=Path, default=Path("results/heterogeneity"))
     het.add_argument("--report", type=Path, default=None)
     het.add_argument("--no-figures", action="store_true")
+    smooth = commands.add_parser(
+        "smoothing", help="Does the quarterly unemployment rate inherit monthly smoothing? "
+                          "(SMOOTHING_PROTOCOL.md)")
+    smooth.add_argument("--data-dir", type=Path, default=Path("snapshots/eurostat-2026-10-15"))
+    smooth.add_argument("--monthly-dir", type=Path,
+                        default=Path("snapshots/eurostat-monthly-2026-10-18"))
+    smooth.add_argument("--review-dir", type=Path, default=Path("docs/review"))
+    smooth.add_argument("--bayes-dir", type=Path, default=Path("docs/bayes"))
+    smooth.add_argument("--output-dir", type=Path, default=Path("results/smoothing"))
+    smooth.add_argument("--report", type=Path, default=None)
     fetch_gm = commands.add_parser(
         "fetch-gdp-measurement", help="Download value added and hours by industry into a "
                                       "snapshot (GDP_MEASUREMENT_PROTOCOL.md)")
@@ -718,6 +728,18 @@ def main(argv: Sequence[str] | None = None) -> int:
         decided = [t for t in comparison.family if t.verdict != "not distinguishable"]
         print(f"Predictive report written to {args.report or args.output_dir}; "
               f"{len(decided)} of {len(comparison.family)} pre-registered comparisons decided")
+        return 0
+    if args.command == "smoothing":
+        from eu_okun.smoothing import write_report as write_smoothing
+
+        try:
+            sm_study = write_smoothing(args.data_dir, args.monthly_dir, args.review_dir,
+                                       args.bayes_dir, args.output_dir, args.report)
+        except (EurostatDataError, FileNotFoundError, ValueError, OSError, KeyError) as exc:
+            parser.exit(2, f"Smoothing study failed: {exc}" + chr(10))
+        print("; ".join(f"{t.key} {t.verdict}" for t in sm_study.primary) + "; averages of "
+              f"monthly: {sum(i.average_of_monthly for i in sm_study.inheritance)} of "
+              f"{len(sm_study.inheritance)}")
         return 0
     if args.command == "fetch-gdp-measurement":
         from eu_okun.gdp_measurement_data import fetch_gdp_measurement

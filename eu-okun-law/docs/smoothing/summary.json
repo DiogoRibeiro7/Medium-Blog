@@ -1,0 +1,34 @@
+{
+ "misfit": {
+  "observed_all": 0.26919010452151454,
+  "observed_without_smoothed": 0.30359052174075435,
+  "observed_direct": 0.26395299013370177,
+  "observed_smoothed": 0.14878864425417507,
+  "replicated_primary": 0.055388783025274654
+ },
+ "luxembourg": {
+  "autocorrelation": -0.506193188302099,
+  "change_corr": 0.12854550899809708,
+  "mean_abs_diff": 0.37142857142857144,
+  "sum_k2": 0.16720931990185264,
+  "sum_k4": 0.1364711870285953,
+  "sum_k4_low": -0.1500547878765322,
+  "sum_k4_high": 0.4229971619337228
+ },
+ "verdicts": {
+  "P1": "not determined",
+  "P2": "not determined"
+ },
+ "average_of_monthly": [
+  "AT",
+  "BG",
+  "CZ",
+  "ES",
+  "FR",
+  "IE",
+  "PL",
+  "SE",
+  "SI",
+  "SK"
+ ]
+}
