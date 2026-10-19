@@ -3,6 +3,11 @@
  "snapshots": {
   "eurostat-2026-10-15": [
    {
+    "path": "snapshots/eurostat-2026-10-15/README.md",
+    "sha256": "05caad61185c2db495f515e776033256e9842ea44ec76eb8c78bc5bbe304e7e8",
+    "bytes": 1756
+   },
+   {
     "path": "snapshots/eurostat-2026-10-15/processed/eu27_quarterly.csv",
     "sha256": "250a7dd94d3678ca9ee4f29567e771fb53aeadf89e1f2fd0155d2f31d6e0ec0d",
     "bytes": 56563
@@ -23,17 +28,17 @@
     "bytes": 35852
    },
    {
-    "path": "snapshots/eurostat-2026-10-15/README.md",
-    "sha256": "05caad61185c2db495f515e776033256e9842ea44ec76eb8c78bc5bbe304e7e8",
-    "bytes": 1756
-   },
-   {
     "path": "snapshots/eurostat-2026-10-15/snapshot_manifest.json",
     "sha256": "8a8c8a107d584ba91b61584fd29397e68ff83d82982371a35db253c0803a0464",
     "bytes": 2066
    }
   ],
   "eurostat-deflator-2026-10-18": [
+   {
+    "path": "snapshots/eurostat-deflator-2026-10-18/README.md",
+    "sha256": "621aaff36be212cfac7ae9a4b2c642ae7404fc198dae73d67b13e9ac6d12f438",
+    "bytes": 1492
+   },
    {
     "path": "snapshots/eurostat-deflator-2026-10-18/manifest.json",
     "sha256": "30900e56883b8a6e59518534db92a108ad185374ba7f8db08a2f4c1c068869c8",
@@ -48,14 +53,14 @@
     "path": "snapshots/eurostat-deflator-2026-10-18/raw/namq_10_gdp_deflator.json",
     "sha256": "8a3ab55cad92a85037333c0928e9e31e76de06be66875fff751ee0a929524e2a",
     "bytes": 42492
-   },
-   {
-    "path": "snapshots/eurostat-deflator-2026-10-18/README.md",
-    "sha256": "621aaff36be212cfac7ae9a4b2c642ae7404fc198dae73d67b13e9ac6d12f438",
-    "bytes": 1492
    }
   ],
   "eurostat-monthly-2026-10-18": [
+   {
+    "path": "snapshots/eurostat-monthly-2026-10-18/README.md",
+    "sha256": "0342e8a219b528e2ad6bc0e8098b6c40e7f62598d0148d638ba51384d16e1c59",
+    "bytes": 1987
+   },
    {
     "path": "snapshots/eurostat-monthly-2026-10-18/processed/eu27_monthly.csv",
     "sha256": "7884d2f2a7a89df2cbefa159d074e8b91729b64e277d517b068291e09e462dbd",
@@ -72,17 +77,17 @@
     "bytes": 146033
    },
    {
-    "path": "snapshots/eurostat-monthly-2026-10-18/README.md",
-    "sha256": "0342e8a219b528e2ad6bc0e8098b6c40e7f62598d0148d638ba51384d16e1c59",
-    "bytes": 1987
-   },
-   {
     "path": "snapshots/eurostat-monthly-2026-10-18/snapshot_manifest.json",
     "sha256": "ec2e65b6cbe8831fb99fe791702d37913c142c6e6e2cea0704faab8cc70f2e5c",
     "bytes": 3102
    }
   ],
   "external-shocks-2026-10-16": [
+   {
+    "path": "snapshots/external-shocks-2026-10-16/README.md",
+    "sha256": "55c169c81b60373dd0ba90104120a8e00d79b89833bf5fd2ffb7ec86600d2913",
+    "bytes": 2134
+   },
    {
     "path": "snapshots/external-shocks-2026-10-16/manifest.json",
     "sha256": "8361c685c67770e25d31f9291ee3780caec20af0a18d9064ee908a59bbc7a9c9",
@@ -102,14 +107,14 @@
     "path": "snapshots/external-shocks-2026-10-16/raw/shocks_ecb_mpd_me_m.csv",
     "sha256": "89c5b2ec39509057b3c71f44218424fc8d15d4041b16f31c96613f8fe0965534",
     "bytes": 21768
-   },
-   {
-    "path": "snapshots/external-shocks-2026-10-16/README.md",
-    "sha256": "55c169c81b60373dd0ba90104120a8e00d79b89833bf5fd2ffb7ec86600d2913",
-    "bytes": 2134
    }
   ],
   "heterogeneity-2026-10-18": [
+   {
+    "path": "snapshots/heterogeneity-2026-10-18/README.md",
+    "sha256": "a932b6c3f169393c02d6aa9fee0e5f31bf90d4c0418d6a456438aff5bf19b984",
+    "bytes": 2311
+   },
    {
     "path": "snapshots/heterogeneity-2026-10-18/manifest.json",
     "sha256": "4a6a6d1c82af1e3cd3c2740246f8ff23198c9fd898bb859f15bc16c129e07a4e",
@@ -169,14 +174,14 @@
     "path": "snapshots/heterogeneity-2026-10-18/raw/temp_share.json",
     "sha256": "2bb574419cfe76ffc4a7a35241a5f7f237cc45444d53e016a4189e9fdfd04a34",
     "bytes": 37916
-   },
-   {
-    "path": "snapshots/heterogeneity-2026-10-18/README.md",
-    "sha256": "a932b6c3f169393c02d6aa9fee0e5f31bf90d4c0418d6a456438aff5bf19b984",
-    "bytes": 2311
    }
   ],
   "shift-share-2026-10-18": [
+   {
+    "path": "snapshots/shift-share-2026-10-18/README.md",
+    "sha256": "2053cdbb3cd8a0ac9a422a8dbc07bf0318bbe3550927264c607c4d542d37adad",
+    "bytes": 1959
+   },
    {
     "path": "snapshots/shift-share-2026-10-18/manifest.json",
     "sha256": "c5c914bb910b1e29c5e6d8e5239310d4957dd9e9e0e9b665856cad75ec18d3de",
@@ -211,11 +216,6 @@
     "path": "snapshots/shift-share-2026-10-18/raw/tiva_mainlv.csv",
     "sha256": "a63e98bd5678444e01f67649761e4b33869246081e7518742385a2d7e56e6517",
     "bytes": 26868
-   },
-   {
-    "path": "snapshots/shift-share-2026-10-18/README.md",
-    "sha256": "2053cdbb3cd8a0ac9a422a8dbc07bf0318bbe3550927264c607c4d542d37adad",
-    "bytes": 1959
    }
   ]
  }

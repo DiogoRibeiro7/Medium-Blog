@@ -453,6 +453,13 @@ def _snapshot_checks(root: Path) -> list[Check]:
     return out
 
 
+def _gap_detail(gap: float, tolerance: float) -> str:
+    """The exact gap only on failure: rounding noise differs between platforms."""
+    if gap < tolerance:
+        return f"largest difference below {tolerance:.0e}"
+    return f"largest difference {gap:.1e}"
+
+
 def _consistency_checks(root: Path) -> list[Check]:
     docs = root / "docs"
     out = []
@@ -461,7 +468,7 @@ def _consistency_checks(root: Path) -> list[Check]:
     gaps = [abs(float(_one(est, spec="primary", geo=g)["theta_median"])
                 - float(_one(summ, spec="primary", geo=g)["median"])) for g in EU27]
     out.append(Check("consistency", "Bayesian primary medians: report table = robustness table",
-                     max(gaps) < 1e-12, f"largest difference {max(gaps):.1e}"))
+                     max(gaps) < 1e-12, _gap_detail(max(gaps), 1e-12)))
     # The Bayesian report's OLS column uses the likelihood's rows: 2009-2019 with the terms
     # that rely on a flagged Eurostat value masked. Rebuild those rows and re-fit.
     from eu_okun.baseline import _read_panel
@@ -475,7 +482,7 @@ def _consistency_checks(root: Path) -> list[Check]:
             for g in EU27]
     out.append(Check("consistency", "OLS column of the Bayesian report = OLS re-fitted on the "
                      "same (flag-masked, 2009-2019) rows", max(gaps) < 1e-9,
-                     f"largest difference {max(gaps):.1e}"))
+                     _gap_detail(max(gaps), 1e-9)))
     verdicts = claim_verdicts(docs)
     report = (docs / "HIERARCHICAL_BAYES.md").read_text(encoding="utf-8")
     quoted = re.search(r"Luxembourg weak: \*\*(.+?)\*\*; Netherlands delayed: \*\*(.+?)\*\*; "

@@ -160,30 +160,38 @@ EXPERIMENTS: tuple[dict[str, Any], ...] = (
 TEXT_SUFFIXES = {".md", ".csv", ".json", ".tex", ".toml", ".lock", ".py", ".txt", ".bib"}
 
 
-def _sha256(path: Path) -> str:
-    """SHA-256 of the file; text outside ``snapshots/`` is hashed with LF line endings.
+def _content(path: Path) -> bytes:
+    """The bytes that are hashed: text outside ``snapshots/`` with LF line endings.
 
     Snapshots are stored byte for byte (no line-ending conversion), so their raw bytes are
-    hashed, as in their own manifests. Other text files may be checked out with CRLF on
+    used, as in their own manifests. Other text files may be checked out with CRLF on
     Windows; normalising makes the manifests identical on every platform.
     """
     data = path.read_bytes()
     if "snapshots" not in path.parts and path.suffix in TEXT_SUFFIXES:
         data = data.replace(b"\r\n", b"\n")
-    return hashlib.sha256(data).hexdigest()
+    return data
+
+
+def _sha256(path: Path) -> str:
+    return hashlib.sha256(_content(path)).hexdigest()
 
 
 def _files(directory: Path, root: Path) -> list[dict[str, Any]]:
+    # Sorted by POSIX path: Windows paths compare case-insensitively, Linux paths do not.
     out = []
-    for path in sorted(p for p in directory.rglob("*") if p.is_file()):
-        out.append({"path": path.relative_to(root).as_posix(), "sha256": _sha256(path),
-                    "bytes": path.stat().st_size})
+    for path in sorted((p for p in directory.rglob("*") if p.is_file()),
+                       key=lambda p: p.relative_to(root).as_posix()):
+        data = _content(path)
+        out.append({"path": path.relative_to(root).as_posix(),
+                    "sha256": hashlib.sha256(data).hexdigest(), "bytes": len(data)})
     return out
 
 
 def data_manifest(root: Path) -> dict[str, Any]:
     """Every frozen snapshot, file by file."""
-    snaps = sorted(p for p in (root / "snapshots").iterdir() if p.is_dir())
+    snaps = sorted((p for p in (root / "snapshots").iterdir() if p.is_dir()),
+                   key=lambda p: p.name)
     return {"description": "Frozen inputs of every analysis (SHA-256 of the raw bytes of each "
                            "file, as in the snapshots' own manifests)",
             "snapshots": {p.name: _files(p, root) for p in snaps}}

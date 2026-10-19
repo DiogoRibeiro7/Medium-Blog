@@ -160,6 +160,11 @@
      "bytes": 5260
     },
     {
+     "path": "docs/bayes/replication-linux/README.md",
+     "sha256": "8e1245087d5a6ae0f1ba6b5d5e5ffa09312c1427201d9ae6c3bc6cb6f81b5aff",
+     "bytes": 569
+    },
+    {
      "path": "docs/bayes/replication-linux/claims.csv",
      "sha256": "3de526613d5f92422a550cb536e6fdb823a8aea72265701dde3b045fac118ed3",
      "bytes": 2770
@@ -175,14 +180,14 @@
      "bytes": 8688
     },
     {
-     "path": "docs/bayes/replication-linux/README.md",
-     "sha256": "8e1245087d5a6ae0f1ba6b5d5e5ffa09312c1427201d9ae6c3bc6cb6f81b5aff",
-     "bytes": 578
-    },
-    {
      "path": "docs/bayes-checks/model_checks.json",
      "sha256": "70ed256e730ab11e47289965ed28bff5cb217c45ff746537186a0916029e8f1e",
      "bytes": 22899
+    },
+    {
+     "path": "docs/bayes-checks/replication-linux/README.md",
+     "sha256": "d83b5c6a51b76da421c730fd364d75989fcc1af2a7a876b036258537d57a0038",
+     "bytes": 437
     },
     {
      "path": "docs/bayes-checks/replication-linux/fits/gaussian_iid/fit.json",
@@ -250,11 +255,6 @@
      "bytes": 22908
     },
     {
-     "path": "docs/bayes-checks/replication-linux/README.md",
-     "sha256": "d83b5c6a51b76da421c730fd364d75989fcc1af2a7a876b036258537d57a0038",
-     "bytes": 444
-    },
-    {
      "path": "docs/bayes-robustness/country_summaries.csv",
      "sha256": "3e61e8d2280a02e8cb127d8d47b98d1de9adda5a2122695cc64933ad6945ad43",
      "bytes": 64078
@@ -280,6 +280,11 @@
      "bytes": 1290
     },
     {
+     "path": "docs/bayes-robustness/replication-linux/README.md",
+     "sha256": "f298d19b69c7edd3c1ab1225e7cc100d0ee3729293f5b07daf1727cad0eaac85",
+     "bytes": 346
+    },
+    {
      "path": "docs/bayes-robustness/replication-linux/country_summaries.csv",
      "sha256": "8dc82a8c348a839ecf2acd0510cfc26a1f07c3f3a0b6a2751f696d9d32eb2d83",
      "bytes": 64165
@@ -300,11 +305,6 @@
      "bytes": 1271
     },
     {
-     "path": "docs/bayes-robustness/replication-linux/README.md",
-     "sha256": "f298d19b69c7edd3c1ab1225e7cc100d0ee3729293f5b07daf1727cad0eaac85",
-     "bytes": 352
-    },
-    {
      "path": "docs/bayes-robustness/replication-linux/surviving_pairs.csv",
      "sha256": "4b3c394474698034433ee4d7625b3bb1c4a648cb0772f522eb1359cb93414ba0",
      "bytes": 929
@@ -318,6 +318,11 @@
      "path": "docs/bayes-dynamics/dynamics.json",
      "sha256": "87c3a99495b610233a5983278bd139b23670970cd033a26acf8e48472c1af957",
      "bytes": 8351
+    },
+    {
+     "path": "docs/bayes-dynamics/replication-linux/README.md",
+     "sha256": "ef990b7d715178b9baf56002e54e3fe7565c4f3a31170b966ed199830ab2ffb3",
+     "bytes": 812
     },
     {
      "path": "docs/bayes-dynamics/replication-linux/dynamics.json",
@@ -350,14 +355,14 @@
      "bytes": 7606
     },
     {
-     "path": "docs/bayes-dynamics/replication-linux/README.md",
-     "sha256": "ef990b7d715178b9baf56002e54e3fe7565c4f3a31170b966ed199830ab2ffb3",
-     "bytes": 826
-    },
-    {
      "path": "docs/bayes-regimes/regimes.json",
      "sha256": "97e384502a753f9c8b9e305670377def5ebac518679cefc65394f819ef1ea34b",
      "bytes": 15425
+    },
+    {
+     "path": "docs/bayes-regimes/replication-linux/README.md",
+     "sha256": "1846219cab2e806270decbffd35d5b052b2ecf9cdb6636083f3337e93643c680",
+     "bytes": 1141
     },
     {
      "path": "docs/bayes-regimes/replication-linux/first-attempt/drifting_association/fit.json",
@@ -398,11 +403,6 @@
      "path": "docs/bayes-regimes/replication-linux/fits/regime_shift_final_gdp/fit.json",
      "sha256": "34ce35342be0dea5c521e51c9e5ee04b1b76f5c84b2ac01b49f66d75d96d90ce",
      "bytes": 9828
-    },
-    {
-     "path": "docs/bayes-regimes/replication-linux/README.md",
-     "sha256": "1846219cab2e806270decbffd35d5b052b2ecf9cdb6636083f3337e93643c680",
-     "bytes": 1161
     },
     {
      "path": "docs/bayes-regimes/replication-linux/recovery.json",
@@ -454,6 +454,11 @@
      "bytes": 103628
     },
     {
+     "path": "docs/predictive/replication-linux/README.md",
+     "sha256": "55592783e4ed24f11f9760f398fa16e3904e3e3a7a69242935087d2628121200",
+     "bytes": 411
+    },
+    {
      "path": "docs/predictive/replication-linux/comparisons.csv",
      "sha256": "9fee0573f9e817ad796f5e394f57092a03b482eed3b4bf1e9cd1c4b0a83a7445",
      "bytes": 15794
@@ -467,11 +472,6 @@
      "path": "docs/predictive/replication-linux/quarterly_differentials.csv",
      "sha256": "5d2b44a1ef23830b664a7daf60fb9a62d73bc33f9cfc2a9269adddb8a3e6d26c",
      "bytes": 2043
-    },
-    {
-     "path": "docs/predictive/replication-linux/README.md",
-     "sha256": "55592783e4ed24f11f9760f398fa16e3904e3e3a7a69242935087d2628121200",
-     "bytes": 417
     },
     {
      "path": "docs/predictive/replication-linux/refits.json",
@@ -519,6 +519,11 @@
      "bytes": 126085
     },
     {
+     "path": "docs/forecast-comparison/replication-linux/README.md",
+     "sha256": "ab393f5aa031ac1789580593f7e26c76638c48f5049cc9b2c8eddb61a5c4a1c5",
+     "bytes": 482
+    },
+    {
      "path": "docs/forecast-comparison/replication-linux/comparisons.csv",
      "sha256": "6d570bf59c31693b9502838e6eaa7724a7d54db16f8fd0d2f409a52822e9f47f",
      "bytes": 16768
@@ -532,11 +537,6 @@
      "path": "docs/forecast-comparison/replication-linux/forecasts.csv",
      "sha256": "82fd835057bbbe995e6a63536b54b34ea1402db819573b0e1d34e82cacfd5244",
      "bytes": 1856020
-    },
-    {
-     "path": "docs/forecast-comparison/replication-linux/README.md",
-     "sha256": "ab393f5aa031ac1789580593f7e26c76638c48f5049cc9b2c8eddb61a5c4a1c5",
-     "bytes": 489
     },
     {
      "path": "docs/forecast-comparison/replication-linux/refits.json",
