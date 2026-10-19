@@ -443,7 +443,7 @@ Descriptive detail only. Differences between these countries are associations un
 From `eu-okun-law/`, with the `report` extra installed:
 
 ```bash
-eu-okun review --data-dir snapshots/eurostat-2026-10-15 --output-dir docs/review --report docs/CLASSICAL_RESULTS_REVIEW.md
+eu-okun review --data-dir snapshots/eurostat-2026-10-15 --output-dir docs/review --report docs/CLASSICAL_RESULTS_REVIEW.md --published-dir snapshots/ci-results-38754743850 --provenance "CI artifact eu-okun-empirical-baselines, workflow run 38754743850 (commit e73ee68)"
 ```
 
-Add `--published-dir <results>` to also compare archived CI outputs (section 3). Machine-readable tables (`grid.csv`, `robustness.csv`, `verification.csv`, `stability_review.csv`, `pairs_review.csv`, `forecast_review.csv`, `quality_flags.csv`, `review.json`) sit next to the figures. The bootstrap uses the published seed, so a rerun on the same snapshot reproduces every number.
+The archived CI outputs compared in section 3 are frozen with the snapshot named by `--published-dir`; without it, the report omits that comparison. Machine-readable tables (`grid.csv`, `robustness.csv`, `verification.csv`, `stability_review.csv`, `pairs_review.csv`, `forecast_review.csv`, `quality_flags.csv`, `review.json`) sit next to the figures. The bootstrap uses the published seed, so a rerun on the same snapshot reproduces every number.

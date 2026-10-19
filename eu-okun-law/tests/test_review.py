@@ -336,3 +336,29 @@ def test_baseline_hac_uses_calendar_lags_across_gaps(tmp_path: Path) -> None:
     _, rows, _, _ = fit_hac_covariance(x, y, 4)
     assert fit.hac_se["gdp_lag_0"] == pytest.approx(math.sqrt(calendar[1, 1]), rel=1e-12)
     assert not math.isclose(math.sqrt(rows[1, 1]), fit.hac_se["gdp_lag_0"], rel_tol=1e-9)
+
+
+def test_committed_review_reproduces_from_the_frozen_snapshot(tmp_path: Path) -> None:
+    """docs/review regenerates from the frozen snapshot and the frozen CI outputs."""
+    root = Path(__file__).resolve().parents[1]
+    committed = root / "docs" / "review"
+    archived = root / "snapshots" / "ci-results-38754743850"
+    result = write_review(root / "snapshots" / "eurostat-2026-10-15", tmp_path,
+                          tmp_path / REPORT_NAME, archived, figures=False)
+    assert all(check.passed for check in result.checks)
+    for path in sorted(committed.glob("*.csv")):
+        with path.open(encoding="utf-8") as a, (tmp_path / path.name).open(
+                encoding="utf-8") as b:
+            old, new = list(csv.DictReader(a)), list(csv.DictReader(b))
+        assert len(old) == len(new), path.name
+        for x, y in zip(old, new, strict=True):
+            for key, value in x.items():
+                try:
+                    va, vb = float(value), float(y[key])
+                except ValueError:
+                    assert value == y[key], (path.name, key)
+                    continue
+                if math.isnan(va):
+                    assert math.isnan(vb), (path.name, key)
+                else:
+                    assert va == pytest.approx(vb, rel=1e-7, abs=1e-10), (path.name, key)
