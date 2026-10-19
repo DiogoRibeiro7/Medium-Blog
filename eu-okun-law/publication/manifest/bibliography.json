@@ -105,6 +105,13 @@
   "checked": "dataset code",
   "title_matches": true
  },
+ "eurostat_namq_10_a10": {
+  "doi": "10.2908/namq_10_a10",
+  "resolved": true,
+  "registered_title": "Bruttowertschöpfung und Einkommen wichtigsten Wirtschaftsbereichen (NACE Rev. 2) - vierteljährliche Daten",
+  "checked": "dataset code",
+  "title_matches": true
+ },
  "eurostat_namq_10_a10_e": {
   "doi": "10.2908/namq_10_a10_e",
   "resolved": true,
@@ -266,7 +273,7 @@
   "isbn": null,
   "note": "OECD Data Explorer dataflow DSD\\_EPL@DF\\_EPL; version 3 indices for regular and temporary contracts, 2008; snapshot of 2026-10-18",
   "http_status": 200,
-  "content_type": "application/vnd.sdmx.structure+xml; version=2.1; charset=utf-8"
+  "content_type": "application/vnd.sdmx.structure+xml; charset=utf-8; version=2.1"
  },
  "oecd2025tiva": {
   "doi": null,

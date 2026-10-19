@@ -1265,11 +1265,293 @@
   "raw": 0.241,
   "source": "docs/forecast-comparison/comparisons.csv"
  },
+ "gm_contradicted": {
+  "tex": "0",
+  "md": "0",
+  "raw": 0,
+  "source": "docs/gdp-measurement/predictions.csv"
+ },
+ "gm_fin_va_next": {
+  "tex": "$10$\\%",
+  "md": "10%",
+  "raw": 0.10278061910653702,
+  "source": "docs/gdp-measurement/descriptive.csv"
+ },
+ "gm_lu_c_q": {
+  "tex": "$+0.18$",
+  "md": "+0.18",
+  "raw": 0.17836308435805512,
+  "source": "docs/gdp-measurement/statistics.csv"
+ },
+ "gm_lu_c_y": {
+  "tex": "$+0.12$",
+  "md": "+0.12",
+  "raw": 0.11813644842211256,
+  "source": "docs/gdp-measurement/statistics.csv"
+ },
+ "gm_lu_fin_hours": {
+  "tex": "$11$\\%",
+  "md": "11%",
+  "raw": 0.1095874608800102,
+  "source": "docs/gdp-measurement/descriptive.csv"
+ },
+ "gm_lu_fin_va": {
+  "tex": "$28$\\%",
+  "md": "28%",
+  "raw": 0.27845121126938954,
+  "source": "docs/gdp-measurement/descriptive.csv"
+ },
+ "gm_lu_prod": {
+  "tex": "$+1.00$",
+  "md": "+1.00",
+  "raw": 0.9979964162618374,
+  "source": "docs/gdp-measurement/statistics.csv"
+ },
+ "gm_lu_prod_n": {
+  "tex": "$+0.95$",
+  "md": "+0.95",
+  "raw": 0.9472333891311383,
+  "source": "docs/gdp-measurement/statistics.csv"
+ },
+ "gm_p11_ie": {
+  "tex": "$-0.51$",
+  "md": "−0.51",
+  "raw": -0.5061063988406973,
+  "source": "docs/gdp-measurement/predictions.csv"
+ },
+ "gm_p11_ie_ci": {
+  "tex": "$[-0.71, -0.24]$",
+  "md": "[−0.71, −0.24]",
+  "raw": "[-0.7080741651970381, -0.24290982707464986]",
+  "source": "docs/gdp-measurement/predictions.csv"
+ },
+ "gm_p11_ie_focus": {
+  "tex": "$-0.31$",
+  "md": "−0.31",
+  "raw": -0.31195875228934605,
+  "source": "docs/gdp-measurement/predictions.csv"
+ },
+ "gm_p11_ie_holm": {
+  "tex": "below 0.001",
+  "md": "below 0.001",
+  "raw": "below 0.001",
+  "source": "docs/gdp-measurement/predictions.csv"
+ },
+ "gm_p11_ie_median": {
+  "tex": "$+0.19$",
+  "md": "+0.19",
+  "raw": 0.1941476465513512,
+  "source": "docs/gdp-measurement/predictions.csv"
+ },
+ "gm_p11_ie_verdict": {
+  "tex": "supported",
+  "md": "supported",
+  "raw": "supported",
+  "source": "docs/gdp-measurement/predictions.csv"
+ },
+ "gm_p11_lu": {
+  "tex": "$-0.36$",
+  "md": "−0.36",
+  "raw": -0.35945377532594625,
+  "source": "docs/gdp-measurement/predictions.csv"
+ },
+ "gm_p11_lu_ci": {
+  "tex": "$[-0.61, -0.02]$",
+  "md": "[−0.61, −0.02]",
+  "raw": "[-0.6091244544728391, -0.017626819390823868]",
+  "source": "docs/gdp-measurement/predictions.csv"
+ },
+ "gm_p11_lu_focus": {
+  "tex": "$-0.17$",
+  "md": "−0.17",
+  "raw": -0.16530612877459508,
+  "source": "docs/gdp-measurement/predictions.csv"
+ },
+ "gm_p11_lu_holm": {
+  "tex": "$0.240$",
+  "md": "0.240",
+  "raw": 0.24012006003001501,
+  "source": "docs/gdp-measurement/predictions.csv"
+ },
+ "gm_p11_lu_median": {
+  "tex": "$+0.19$",
+  "md": "+0.19",
+  "raw": 0.1941476465513512,
+  "source": "docs/gdp-measurement/predictions.csv"
+ },
+ "gm_p11_lu_verdict": {
+  "tex": "not determined",
+  "md": "not determined",
+  "raw": "not determined",
+  "source": "docs/gdp-measurement/predictions.csv"
+ },
+ "gm_p12_ie": {
+  "tex": "$+0.05$",
+  "md": "+0.05",
+  "raw": 0.04948250527095993,
+  "source": "docs/gdp-measurement/predictions.csv"
+ },
+ "gm_p12_ie_ci": {
+  "tex": "$[-0.23, +0.40]$",
+  "md": "[−0.23, +0.40]",
+  "raw": "[-0.22890422433921526, 0.39590005365311526]",
+  "source": "docs/gdp-measurement/predictions.csv"
+ },
+ "gm_p12_ie_focus": {
+  "tex": "$+0.41$",
+  "md": "+0.41",
+  "raw": 0.41094502695993157,
+  "source": "docs/gdp-measurement/predictions.csv"
+ },
+ "gm_p12_ie_holm": {
+  "tex": "$1.000$",
+  "md": "1.000",
+  "raw": 1.0,
+  "source": "docs/gdp-measurement/predictions.csv"
+ },
+ "gm_p12_ie_median": {
+  "tex": "$+0.36$",
+  "md": "+0.36",
+  "raw": 0.36146252168897164,
+  "source": "docs/gdp-measurement/predictions.csv"
+ },
+ "gm_p12_ie_verdict": {
+  "tex": "not determined",
+  "md": "not determined",
+  "raw": "not determined",
+  "source": "docs/gdp-measurement/predictions.csv"
+ },
+ "gm_p12_lu": {
+  "tex": "$-0.42$",
+  "md": "−0.42",
+  "raw": -0.4216891576249142,
+  "source": "docs/gdp-measurement/predictions.csv"
+ },
+ "gm_p12_lu_ci": {
+  "tex": "$[-0.67, -0.09]$",
+  "md": "[−0.67, −0.09]",
+  "raw": "[-0.6681899858216893, -0.09220965326653553]",
+  "source": "docs/gdp-measurement/predictions.csv"
+ },
+ "gm_p12_lu_focus": {
+  "tex": "$-0.06$",
+  "md": "−0.06",
+  "raw": -0.06022663593594256,
+  "source": "docs/gdp-measurement/predictions.csv"
+ },
+ "gm_p12_lu_holm": {
+  "tex": "$0.105$",
+  "md": "0.105",
+  "raw": 0.10505252626313157,
+  "source": "docs/gdp-measurement/predictions.csv"
+ },
+ "gm_p12_lu_median": {
+  "tex": "$+0.36$",
+  "md": "+0.36",
+  "raw": 0.36146252168897164,
+  "source": "docs/gdp-measurement/predictions.csv"
+ },
+ "gm_p12_lu_verdict": {
+  "tex": "not determined",
+  "md": "not determined",
+  "raw": "not determined",
+  "source": "docs/gdp-measurement/predictions.csv"
+ },
+ "gm_p21_lu": {
+  "tex": "$+0.05$",
+  "md": "+0.05",
+  "raw": 0.04659660447868645,
+  "source": "docs/gdp-measurement/predictions.csv"
+ },
+ "gm_p21_lu_ci": {
+  "tex": "$[-0.09, +0.20]$",
+  "md": "[−0.09, +0.20]",
+  "raw": "[-0.08654586076311058, 0.20129314309658602]",
+  "source": "docs/gdp-measurement/predictions.csv"
+ },
+ "gm_p21_lu_focus": {
+  "tex": "$+0.05$",
+  "md": "+0.05",
+  "raw": 0.0507630271307004,
+  "source": "docs/gdp-measurement/predictions.csv"
+ },
+ "gm_p21_lu_holm": {
+  "tex": "$1.000$",
+  "md": "1.000",
+  "raw": 1.0,
+  "source": "docs/gdp-measurement/predictions.csv"
+ },
+ "gm_p21_lu_median": {
+  "tex": "$+0.00$",
+  "md": "+0.00",
+  "raw": 0.004166422652013946,
+  "source": "docs/gdp-measurement/predictions.csv"
+ },
+ "gm_p21_lu_verdict": {
+  "tex": "not determined",
+  "md": "not determined",
+  "raw": "not determined",
+  "source": "docs/gdp-measurement/predictions.csv"
+ },
+ "gm_p22_lu": {
+  "tex": "$-0.06$",
+  "md": "−0.06",
+  "raw": -0.057360376222868825,
+  "source": "docs/gdp-measurement/predictions.csv"
+ },
+ "gm_p22_lu_ci": {
+  "tex": "$[-0.21, +0.10]$",
+  "md": "[−0.21, +0.10]",
+  "raw": "[-0.20637753047888538, 0.09642745005232177]",
+  "source": "docs/gdp-measurement/predictions.csv"
+ },
+ "gm_p22_lu_focus": {
+  "tex": "$-0.05$",
+  "md": "−0.05",
+  "raw": -0.04994370049077376,
+  "source": "docs/gdp-measurement/predictions.csv"
+ },
+ "gm_p22_lu_holm": {
+  "tex": "$1.000$",
+  "md": "1.000",
+  "raw": 1.0,
+  "source": "docs/gdp-measurement/predictions.csv"
+ },
+ "gm_p22_lu_median": {
+  "tex": "$+0.01$",
+  "md": "+0.01",
+  "raw": 0.007416675732095063,
+  "source": "docs/gdp-measurement/predictions.csv"
+ },
+ "gm_p22_lu_verdict": {
+  "tex": "not determined",
+  "md": "not determined",
+  "raw": "not determined",
+  "source": "docs/gdp-measurement/predictions.csv"
+ },
+ "gm_supported": {
+  "tex": "1",
+  "md": "1",
+  "raw": 1,
+  "source": "docs/gdp-measurement/predictions.csv"
+ },
+ "gm_total": {
+  "tex": "8",
+  "md": "8",
+  "raw": 8,
+  "source": "docs/gdp-measurement/predictions.csv"
+ },
  "hash_deflator": {
   "tex": "\\texttt{30900e56883b8a6e}",
   "md": "`30900e56883b8a6e`",
   "raw": "30900e56883b8a6e59518534db92a108ad185374ba7f8db08a2f4c1c068869c8",
   "source": "snapshots/eurostat-deflator-2026-10-18/manifest.json"
+ },
+ "hash_gdpm": {
+  "tex": "\\texttt{7cc75f218c9e190d}",
+  "md": "`7cc75f218c9e190d`",
+  "raw": "7cc75f218c9e190d5a2846b1bb637510066cd784323db60a4c466f21ae025de7",
+  "source": "snapshots/gdp-measurement-2026-10-19/manifest.json"
  },
  "hash_heterogeneity": {
   "tex": "\\texttt{4a6a6d1c82af1e3c}",

@@ -175,8 +175,13 @@ Open:
       20 of 27 sums are negative, but only 1 survives a Holm adjustment over the countries,
       against 21 with normal critical values. The registered bootstrap is conservative for
       large sums (post-hoc diagnostic).
-- [ ] Test GDP measurement error for Luxembourg (and Ireland, Malta): value added
-      excluding finance, annual accounts, modified domestic demand.
+- [x] Test measurement noise and the financial sector for Luxembourg (and Ireland, Malta),
+      registered in [GDP_MEASUREMENT_PROTOCOL.md](GDP_MEASUREMENT_PROTOCOL.md); results in
+      [docs/GDP_MEASUREMENT.md](docs/GDP_MEASUREMENT.md). Both explanations fail for
+      Luxembourg: its hours-output correlation does not rise year on year, and removing
+      finance changes nothing. Ireland shows negatively autocorrelated quarterly growth.
+- [ ] Ireland's modified domestic demand (Irish CSO) and annual national accounts, not yet
+      used.
 - [ ] Check whether `une_rt_q` inherits the trend or moving-average smoothing of the
       German, Dutch, Estonian and Portuguese monthly series.
 - [ ] Gap-form Okun's law against Ball, Leigh and Loungani (2017); asymmetry; hours-based

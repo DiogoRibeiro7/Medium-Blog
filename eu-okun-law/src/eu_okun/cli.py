@@ -281,6 +281,18 @@ def main(argv: Sequence[str] | None = None) -> int:
     het.add_argument("--output-dir", type=Path, default=Path("results/heterogeneity"))
     het.add_argument("--report", type=Path, default=None)
     het.add_argument("--no-figures", action="store_true")
+    fetch_gm = commands.add_parser(
+        "fetch-gdp-measurement", help="Download value added and hours by industry into a "
+                                      "snapshot (GDP_MEASUREMENT_PROTOCOL.md)")
+    fetch_gm.add_argument("--output-dir", type=Path,
+                          default=Path("snapshots/gdp-measurement"))
+    gm = commands.add_parser(
+        "gdp-measurement", help="Measurement noise or finance? (GDP_MEASUREMENT_PROTOCOL.md)")
+    gm.add_argument("--data-dir", type=Path, default=Path("snapshots/eurostat-2026-10-15"))
+    gm.add_argument("--snapshot", type=Path,
+                    default=Path("snapshots/gdp-measurement-2026-10-19"))
+    gm.add_argument("--output-dir", type=Path, default=Path("results/gdp-measurement"))
+    gm.add_argument("--report", type=Path, default=None)
     headline = commands.add_parser(
         "headline-inference", help="Small-sample inference for the classical headline sums "
                                    "(HEADLINE_INFERENCE_PROTOCOL.md)")
@@ -706,6 +718,28 @@ def main(argv: Sequence[str] | None = None) -> int:
         decided = [t for t in comparison.family if t.verdict != "not distinguishable"]
         print(f"Predictive report written to {args.report or args.output_dir}; "
               f"{len(decided)} of {len(comparison.family)} pre-registered comparisons decided")
+        return 0
+    if args.command == "fetch-gdp-measurement":
+        from eu_okun.gdp_measurement_data import fetch_gdp_measurement
+
+        try:
+            gm_manifest = fetch_gdp_measurement(args.output_dir)
+        except (EurostatDataError, ValueError, RuntimeError, OSError) as exc:
+            parser.exit(2, f"Download failed: {exc}" + chr(10))
+        print(f"Saved {len(gm_manifest['files'])} responses to {args.output_dir}")
+        return 0
+    if args.command == "gdp-measurement":
+        from eu_okun.gdp_measurement import write_report as write_gdp_measurement
+
+        try:
+            gm_study = write_gdp_measurement(args.snapshot, args.data_dir, args.output_dir,
+                                             args.report)
+        except (EurostatDataError, FileNotFoundError, ValueError, OSError, KeyError) as exc:
+            parser.exit(2, f"GDP measurement study failed: {exc}" + chr(10))
+        verdicts = [r.verdict for r in gm_study.primary]
+        print(f"{verdicts.count('supported')} supported, "
+              f"{verdicts.count('contradicted')} contradicted, "
+              f"{verdicts.count('not determined')} not determined")
         return 0
     if args.command == "headline-inference":
         from eu_okun.headline_inference import write_report as write_headline

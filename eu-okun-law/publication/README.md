@@ -111,6 +111,12 @@ Small-sample inference for the post-2021 tests:
 poetry run eu-okun small-sample --data-dir snapshots/eurostat-2026-10-15 --output-dir docs/small-sample --report docs/SMALL_SAMPLE_INFERENCE.md --review-dir docs/review
 ```
 
+Measurement noise or finance, for Luxembourg:
+
+```bash
+poetry run eu-okun gdp-measurement --data-dir snapshots/eurostat-2026-10-15 --snapshot snapshots/gdp-measurement-2026-10-19 --output-dir docs/gdp-measurement --report docs/GDP_MEASUREMENT.md
+```
+
 Small-sample inference for the classical headline sums:
 
 ```bash

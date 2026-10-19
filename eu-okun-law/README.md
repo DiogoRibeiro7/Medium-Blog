@@ -713,6 +713,38 @@ Results are in [docs/HEADLINE_INFERENCE.md](docs/HEADLINE_INFERENCE.md). In brie
   p-values understate the evidence for large sums. The bootstrap-t intervals, from the
   unrestricted residuals, lie below zero in 19 countries.
 
+## Measurement noise or finance? Luxembourg's weak output-labour link
+
+[GDP_MEASUREMENT_PROTOCOL.md](GDP_MEASUREMENT_PROTOCOL.md) was committed and pushed before
+any of its data were frozen or any estimate was computed. It tests two rival explanations
+of Luxembourg's pattern (output per hour moving one for one with output, labour input
+barely moving): transitory noise in quarterly output, and the financial sector. Ireland
+and Malta are secondary focus countries. Data: value added and hours by industry, total
+and finance, frozen in `snapshots/gdp-measurement-2026-10-19/`.
+
+```bash
+poetry run eu-okun fetch-gdp-measurement --output-dir snapshots/gdp-measurement-2026-10-19   # needs internet
+poetry run eu-okun gdp-measurement --data-dir snapshots/eurostat-2026-10-15 --snapshot snapshots/gdp-measurement-2026-10-19 --output-dir docs/gdp-measurement --report docs/GDP_MEASUREMENT.md
+```
+
+Results are in [docs/GDP_MEASUREMENT.md](docs/GDP_MEASUREMENT.md). One of eight
+predictions is supported; under the interpretation rules fixed in advance, both
+explanations fail for Luxembourg:
+
+- **Noise.** Luxembourg's quarterly growth is less autocorrelated than the comparison
+  group's (-0.17 against +0.19; not decided after Holm). But its hours-output correlation
+  does not rise at the year-on-year horizon (+0.18 quarter on quarter, +0.12 year on
+  year), whereas elsewhere it rises by a median 0.36. That points away from transitory
+  noise.
+- **Finance.** Finance is 28% of Luxembourg's value added and 11% of its hours, yet
+  removing it from output and hours barely changes the link (output per hour +1.00 in
+  total, +0.95 outside finance).
+- **Ireland.** Its quarterly growth is negatively autocorrelated (the one supported
+  prediction), but its year-on-year correlation rises like everyone else's.
+
+Not tested: Ireland's modified domestic demand (Irish CSO), annual accounts, error shared
+by output and hours, sectoral composition beyond finance.
+
 ## Publication: manuscript, Medium article and reproduction
 
 [publication/](publication/README.md) holds the final outputs:

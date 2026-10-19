@@ -151,6 +151,53 @@
     "bytes": 21768
    }
   ],
+  "gdp-measurement-2026-10-19": [
+   {
+    "path": "snapshots/gdp-measurement-2026-10-19/README.md",
+    "sha256": "853ee4916bf0b96e39669296607c5993086f9b94432941e651360c90b12d459a",
+    "bytes": 1526
+   },
+   {
+    "path": "snapshots/gdp-measurement-2026-10-19/manifest.json",
+    "sha256": "7cc75f218c9e190d5a2846b1bb637510066cd784323db60a4c466f21ae025de7",
+    "bytes": 4353
+   },
+   {
+    "path": "snapshots/gdp-measurement-2026-10-19/processed/quarterly.csv",
+    "sha256": "cf6c2761bab017014bbb4b018248e04194350218b5909890a5d9da6535e48ebb",
+    "bytes": 128431
+   },
+   {
+    "path": "snapshots/gdp-measurement-2026-10-19/raw/hours.json",
+    "sha256": "90bb5445ef5cc073580af515266e3c87ef2b1de0a205e158eced5ead717247e5",
+    "bytes": 49989
+   },
+   {
+    "path": "snapshots/gdp-measurement-2026-10-19/raw/hours_k.json",
+    "sha256": "63ff5bc3de1aa9cc4c3920b8013ced4768a0d83e83a6df3a89e9b5b07814971c",
+    "bytes": 45548
+   },
+   {
+    "path": "snapshots/gdp-measurement-2026-10-19/raw/va_clv.json",
+    "sha256": "3f2a1699218e0d6f9114e12dac13a22b123f131f8fff9ce3056541d13990cd7c",
+    "bytes": 53462
+   },
+   {
+    "path": "snapshots/gdp-measurement-2026-10-19/raw/va_clv_k.json",
+    "sha256": "ee89e2ec7b388c777bb499fdd170f9bc8b192802ce12ab8f22ed37f08978553f",
+    "bytes": 49724
+   },
+   {
+    "path": "snapshots/gdp-measurement-2026-10-19/raw/va_cp.json",
+    "sha256": "5e1029be4196359f7c81ebb8d29d7477424915c54fa68488d23fdf547a02517c",
+    "bytes": 54211
+   },
+   {
+    "path": "snapshots/gdp-measurement-2026-10-19/raw/va_cp_k.json",
+    "sha256": "e7e2e435b713201df9433080686897053fd58b14b33ed82068d28312e43fed15",
+    "bytes": 50480
+   }
+  ],
   "heterogeneity-2026-10-18": [
    {
     "path": "snapshots/heterogeneity-2026-10-18/README.md",
