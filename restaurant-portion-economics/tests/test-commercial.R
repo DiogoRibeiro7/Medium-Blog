@@ -33,3 +33,30 @@ bad <- x
 names(bad)[1] <- "unknown"
 expect_error(normalise_commercial(bad))
 message("Commercial source tests passed.")
+
+# Missing labels are retained for provenance but excluded from ratios.
+incomplete <- x
+incomplete[["City / kitchen"]][1] <- NA_character_
+incomplete[["Timestamp"]][2] <- ""
+cleaned <- normalise_commercial(incomplete)
+stopifnot(is.na(cleaned$kitchen_id[1]),
+          is.na(cleaned$timestamp_source[2]))
+limited <- audit_commercial(cleaned)
+stopifnot(limited$missing_kitchen_labels == 1L,
+          limited$missing_timestamps == 1L,
+          limited$denominators$records_eligible_for_ratio[
+            limited$denominators$denominator_field ==
+              "portions, Whole day"] == 0L)
+
+# An independent semantically valid CSV with non-UTF-8 text must be
+# decoded without dropping accented kitchen names or source rows.
+source("R/empirical_audit.R")
+latin <- x
+latin[["City / kitchen"]][1] <- "Caf\u00e9"
+input_file <- tempfile(fileext = ".csv")
+write.csv(latin, input_file, row.names = FALSE, na = "", fileEncoding = "latin1")
+decoded <- inspect_urbanwaste_csv(input_file)
+stopifnot(nrow(decoded$data) == 3L, ncol(decoded$data) == 13L,
+          decoded$data[["City / kitchen"]][1] == "Caf\u00e9")
+unlink(input_file)
+message("Commercial source encoding and incomplete-row tests passed.")
