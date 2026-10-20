@@ -137,7 +137,7 @@ def run(data: Mapping[str, CountryData], quarters: Sequence[str],
     rng = np.random.default_rng(seed)
     counts = (stratified_counts(pandemic, settings.block, replicates, rng) if stratified
               else block_counts(len(pandemic), settings.block, replicates, rng))
-    share = float(np.mean(counts[:, pandemic].sum(axis=1) == 0))
+    none = counts[:, pandemic].sum(axis=1) == 0
     estimates = {}
     for geo, cd in data.items():
         for measure in MEASURES:
@@ -146,7 +146,14 @@ def run(data: Mapping[str, CountryData], quarters: Sequence[str],
                 est = estimate(rows, counts, first_index)
                 if est is not None:
                     estimates[(geo, measure, sample)] = est
-    return Run(settings, estimates, "stratified" if stratified else "registered", share)
+            full, excl = (estimates.get((geo, measure, s)) for s in ("full", "excluded"))
+            if full is not None and excl is not None:
+                # Without a pandemic row the two regressions use the same rows and weights;
+                # make them equal exactly, not up to rounding (change log).
+                full.draws[none] = excl.draws[none]
+                full.coef_draws[none] = excl.coef_draws[none]
+    return Run(settings, estimates, "stratified" if stratified else "registered",
+               float(np.mean(none)))
 
 
 def check_reproduction(r: Run, elasticities_csv: Path) -> int:

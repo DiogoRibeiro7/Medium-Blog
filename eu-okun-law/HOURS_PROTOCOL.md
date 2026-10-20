@@ -232,3 +232,19 @@ margin identity.
   - *Use.* The amended verdicts are reported next to the registered ones, labelled as
     amended after the registered result was seen. They do not replace the registered
     verdicts in section 8.
+- **2026-10-20, after the first computation: an implementation correction.** No rule
+  changed.
+  - *The problem.* In a resample without a pandemic row, the full and excluded estimates
+    are equal in exact arithmetic. The implementation computed them in separate matrix
+    products of different length. In 2 or 3 of the 66 such resamples per test, it
+    returned differences of about 1e-16 instead of zero.
+  - *Why it matters.* The sign of that rounding differs between Windows and Linux. CI on
+    Linux gave a registered p-value of P1 of 0.076, against 0.075 on Windows.
+  - *The correction.* In those resamples the full-sample draws are now set to the
+    excluded-sample draws, as exact arithmetic requires.
+  - *Effect on the registered p-values.*
+    - Primary: P1 goes from 0.075 to 0.076 and P2b from 0.681 to 0.682. P2a is
+      unchanged.
+    - Sensitivity settings: some registered p-values move by at most 0.004.
+    - No verdict changes. The amendment, whose resamples always contain the pandemic
+      rows, is not affected.

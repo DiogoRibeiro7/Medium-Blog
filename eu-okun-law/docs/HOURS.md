@@ -10,7 +10,7 @@ Hours: 26 countries (BE missing). Persons and hours per worker: 20 countries. Ho
 
 | Test | Prediction | Countries | Estimate | Registered: [95%], Holm p, verdict | Amended, stratified: [95%], Holm p, verdict |
 | --- | --- | ---: | ---: | --- | --- |
-| P1 | Hours keep more of their association than unemployment: R_h - R_du | 26 | +1.04 | [+0.00, +2.21], 0.300, not determined | [+0.23, +2.08], 0.004, supported |
+| P1 | Hours keep more of their association than unemployment: R_h - R_du | 26 | +1.04 | [+0.00, +2.21], 0.304, not determined | [+0.23, +2.08], 0.004, supported |
 | P2a | Hours per worker respond more with the pandemic: change in mean beta_hpw | 20 | +0.34 | [+0.00, +0.53], 0.333, not determined | [+0.05, +0.50], 0.024, supported |
 | P2b | Persons respond less with the pandemic: change in mean beta_e_dom | 20 | -0.04 | [-0.16, +0.10], 0.741, not determined | [-0.16, +0.10], 0.741, not determined |
 | P3 | Unemployment is attenuated more where hours per worker take up more: Spearman of the two changes | 20 | +0.21 | 0.741, not determined | 0.741, not determined |
@@ -32,17 +32,17 @@ Hours: 26 countries (BE missing). Persons and hours per worker: 20 countries. Ho
 | lags_1 | P2b | 20 | -0.02 | 0.859, not determined | 0.857, not determined |
 | lags_1 | P3 | 20 | +0.27 | 0.498, not determined | 0.487, not determined |
 | lags_4 | P1 | 26 | +0.83 | 0.220, not determined | 0.040, supported |
-| lags_4 | P2a | 20 | +0.33 | 0.348, not determined | 0.090, not determined |
+| lags_4 | P2a | 20 | +0.33 | 0.351, not determined | 0.090, not determined |
 | lags_4 | P2b | 20 | +0.01 | 0.855, not determined | 0.787, not determined |
 | lags_4 | P3 | 20 | +0.28 | 0.436, not determined | 0.436, not determined |
-| block_8 | P1 | 26 | +1.04 | 0.728, not determined | 0.009, supported |
-| block_8 | P2a | 20 | +0.34 | 0.728, not determined | 0.004, supported |
+| block_8 | P1 | 26 | +1.04 | 0.732, not determined | 0.009, supported |
+| block_8 | P2a | 20 | +0.34 | 0.732, not determined | 0.004, supported |
 | block_8 | P2b | 20 | -0.04 | 0.741, not determined | 0.741, not determined |
 | block_8 | P3 | 20 | +0.21 | 0.741, not determined | 0.741, not determined |
-| without_IE_LU | P1 | 24 | +0.96 | 0.292, not determined | 0.008, supported |
-| without_IE_LU | P2a | 18 | +0.32 | 0.292, not determined | 0.048, supported |
-| without_IE_LU | P2b | 18 | -0.05 | 0.602, not determined | 0.554, not determined |
-| without_IE_LU | P3 | 18 | +0.42 | 0.292, not determined | 0.161, not determined |
+| without_IE_LU | P1 | 24 | +0.96 | 0.296, not determined | 0.008, supported |
+| without_IE_LU | P2a | 18 | +0.32 | 0.296, not determined | 0.048, supported |
+| without_IE_LU | P2b | 18 | -0.05 | 0.603, not determined | 0.554, not determined |
+| without_IE_LU | P3 | 18 | +0.42 | 0.296, not determined | 0.161, not determined |
 
 ## Every country (descriptive)
 

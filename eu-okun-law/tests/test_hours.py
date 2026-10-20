@@ -11,13 +11,15 @@ from pathlib import Path
 import numpy as np
 import pytest
 
-from eu_okun.heterogeneity import FIRST, Estimate, quarters_for
+from eu_okun.heterogeneity import FIRST, CountryData, Estimate, block_counts, quarters_for
 from eu_okun.hours import (
+    MEASURES,
     Run,
     Settings,
     check_reproduction,
     pandemic_rows,
     render,
+    run,
     stratified_counts,
     write_report,
 )
@@ -88,6 +90,24 @@ def test_registered_p_values_respect_the_floor() -> None:
     for r in _rows("tests.csv"):
         if r["bootstrap"] == "registered" and r["key"] != "P3":
             assert float(r["p_value"]) >= floor - 1e-12, r["key"]
+
+
+def test_differences_are_exactly_zero_without_a_pandemic_row() -> None:
+    """In a resample without a pandemic row the full and excluded regressions use the same
+    rows and weights, so their draws must be equal exactly, on every platform."""
+    quarters = quarters_for()
+    rng = np.random.default_rng(0)
+    g = rng.normal(0.5, 1.0, len(quarters))
+    y = 0.4 * g + rng.normal(0.0, 0.3, len(quarters))
+    data = {"AT": CountryData(g, {m: y for m in MEASURES}, {}, {})}
+    r = run(data, quarters, Settings(), replicates=400, seed=3)
+    mask = pandemic_rows(quarters, 2)
+    counts = block_counts(len(mask), 4, 400, np.random.default_rng(3))
+    none = counts[:, mask].sum(axis=1) == 0
+    assert none.any() and r.no_pandemic_share == pytest.approx(none.mean())
+    full, excl = r.estimates[("AT", "h", "full")], r.estimates[("AT", "h", "excluded")]
+    assert np.array_equal(full.draws[none], excl.draws[none])
+    assert not np.array_equal(full.draws[~none], excl.draws[~none])
 
 
 def test_verdicts_quoted_in_the_text() -> None:
