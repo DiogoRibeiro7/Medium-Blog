@@ -157,3 +157,44 @@ are for verification, not statistical interpretation.
 The second notebook is tracked in the same path-scoped GitHub Actions workflow.
 Future work includes MNAR sensitivity, explicit missingness models, nested
 selection, nonlinear effects and uncertainty in intervention costs.
+
+## Cost uncertainty and model-selection stability
+
+[model-selection-and-costs.ipynb](model-selection-and-costs.ipynb) extends the
+first two notebooks to distinguish the *information used to fit a model*
+from the *decision objective used to select it*. It compares:
+
+- Selection using a single validation split versus repeated overlapping
+  holdout splits (three by default).
+- Lowest observed validation RMSE versus maximum observed validation net
+  utility at a nominal cost and averaged across an equally weighted cost grid.
+- Clean training data versus MAR predictors plus contaminated training labels.
+- Low-variance versus high-variance response signals.
+
+All transformations and hyperparameter tuning happen within each internal
+training split. After selection, the winning candidate is refitted on the full
+training data, and independent test observations are used to evaluate both
+RMSE and economic regret. The synthetic full-information conditional mean
+never enters selection.
+
+Costs are assumed uncertain at model-selection time but *known when the
+intervention decision is made*. The action threshold therefore changes with
+the realised cost. A commitment required before the cost is known would need
+a different decision rule. This is not a causal treatment-effect estimate.
+
+Use the existing project requirements. To execute a small smoke test:
+
+    SELECTION_REPEATS=1 SELECTION_SPLITS=2 SELECTION_SIZES=80 \
+      SELECTION_SMOKE=1 jupyter nbconvert --execute --to notebook \
+      --output model-selection-and-costs.executed.ipynb \
+      model-selection-and-costs.ipynb
+
+The notebook defaults to six independent simulation replicates, three
+overlapping validation splits and 500 independent test observations per
+scenario. Six independent replicates are exploratory; increase this
+substantially before drawing conclusions from bootstrap uncertainty.
+The independent Monte Carlo replicate—not the repeated validation split,
+test observation or cost value—is the appropriate resampling unit.
+
+Code and tests are in [cost_selection.py](cost_selection.py) and
+[tests/test_cost_selection.py](tests/test_cost_selection.py).
