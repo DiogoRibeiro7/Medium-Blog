@@ -40,6 +40,7 @@ Rscript -e 'install.packages("jsonlite")'          # once, Zenodo metadata
 Rscript scripts/download-data.R                   # public source files
 Rscript -e 'install.packages("readxl")'           # once, for Excel input
 Rscript scripts/run-analysis.R                    # observed-data audits + model
+Rscript scripts/analyse-finland.R                 # Finnish descriptive analysis
 ```
 
 The fetcher uses `jsonlite` and checks the publisher-listed MD5 for each file, does not
@@ -91,6 +92,9 @@ fixed costs cancel from the comparison.
 - `outputs/threshold.csv`: demand-change break-even point.
 - `outputs/urbanwaste_schema.csv`: columns, types, missing values from a
   *real* hotel/restaurant waste-tracking dataset.
+- `outputs/finland_daily.csv`, `finland_period.csv`, `finland_menu_matched.csv`,
+  and `finland_mass_diagnostics.csv`: source-specific Finnish descriptive
+  analysis (requires original workbook and validated source field names).
 - `outputs/finland_schema.csv`: institutional-food-service field audit
   when Excel data and `readxl` are available. Numeric interpretation follows
   only after column units and semantics have been independently reviewed.
@@ -114,7 +118,8 @@ silently merged with hotel/restaurant observations.
   non-commercial/share-alike: it is a research reference, not silently
   repurposed as a commercial data asset.
 
-See [DATA_SOURCES.md](DATA_SOURCES.md), [METHODS.md](METHODS.md) and
+See [DATA_SOURCES.md](DATA_SOURCES.md), [docs/FINLAND_PROTOCOL.md](docs/FINLAND_PROTOCOL.md),
+[METHODS.md](METHODS.md) and
 [ROADMAP.md](ROADMAP.md).
 
 Status: initial reproducible research scaffold; descriptive findings
