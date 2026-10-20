@@ -121,3 +121,39 @@ and intervention costs are uncertain.
   the Elastic Net. *Journal of the Royal Statistical Society B*, 67(2), 301–320.
 - Efron, B., & Tibshirani, R. J. (1993). *An Introduction to the Bootstrap*.
   Chapman & Hall.
+
+## Robustness notebook: imperfect observational data
+
+[robustness-review.ipynb](robustness-review.ipynb) extends the initial
+comparison with paired stress tests under missing predictors, training-response
+contamination and different training sample sizes. The independent test set
+remains untouched except for missing *observed* predictors when appropriate.
+
+- MCAR: independent 20% masking in 15 predictors; one anchor remains observed.
+- MAR: missingness depends on the always-observed third predictor.
+- Outliers: 10% of training outcomes receive a symmetric +/-12-unit gross error.
+- Combined MAR and training-label contamination.
+- OLS, ridge, elastic net, Huber, PCR and PLS each perform fold-local median
+  imputation with missingness indicators and standardisation.
+- Validation-based choice by observed RMSE versus observed net payoff.
+- Paired replicate differences from clean-data regret, with bootstrap intervals
+  over independent simulation replicates (not test-set rows).
+
+The synthetic conditional mean, retained to score decisions, is available only
+to the test evaluator. Missing-data regret is measured relative to a
+full-information oracle; it includes the irreducible loss of unobserved
+predictors. Validation outcome contamination can distort both selection rules.
+These comparisons do not identify causal policy effects.
+
+Run with the existing requirements:
+
+    STRESS_REPEATS=1 STRESS_SIZES=80 jupyter nbconvert --execute \
+        --to notebook --output robustness-review.executed.ipynb robustness-review.ipynb
+
+For the full experiment, use the notebook defaults (6 replicates and sample
+sizes 80, 180, 360) or configure STRESS_REPEATS/STRESS_SIZES. The smoke values
+are for verification, not statistical interpretation.
+
+The second notebook is tracked in the same path-scoped GitHub Actions workflow.
+Future work includes MNAR sensitivity, explicit missingness models, nested
+selection, nonlinear effects and uncertainty in intervention costs.

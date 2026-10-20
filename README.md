@@ -53,6 +53,16 @@ Chronos-2, TimesFM 2.5 and TiRex against seasonal naive and ETS baselines on hou
 
 ## Research studies in development
 
+
+### Statistical evidence and decision value
+
+[statistical-evidence-and-decisions/](statistical-evidence-and-decisions/) —
+a reproducible notebook study comparing PCA, coefficient inference,
+regularisation, supervised components and decision utility. A follow-up
+robustness notebook uses paired simulations of missing data, contaminated
+training outcomes and sample-size sensitivity to test which conclusions survive.
+
+
 ### Classifier drift in Hansard
 
 [`hansard-classifier-drift/`](hansard-classifier-drift/) — validates a dictionary classifier of the Chair's disciplinary interventions in the House of Commons, 1979–2021, era by era against a blind hand-labelled sample, and splits the change in its counts into a change in behaviour and a change in the instrument's precision and recall. Stage 1 (corpus, tags, naive rates, sample) runs on GitHub Actions; the corrected estimates wait for the hand labels.

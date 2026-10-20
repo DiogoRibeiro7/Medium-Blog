@@ -40,3 +40,14 @@ jobs:
           --ExecutePreprocessor.timeout=300
           --output evidence-review.executed.ipynb
           evidence-review.ipynb
+
+      - name: Execute missingness and robustness notebook
+        working-directory: statistical-evidence-and-decisions
+        env:
+          STRESS_REPEATS: "1"
+          STRESS_SIZES: "80"
+        run: >-
+          jupyter nbconvert --to notebook --execute
+          --ExecutePreprocessor.timeout=300
+          --output robustness-review.executed.ipynb
+          robustness-review.ipynb
