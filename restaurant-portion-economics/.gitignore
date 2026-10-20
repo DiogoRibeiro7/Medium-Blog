@@ -1,0 +1,8 @@
+# External datasets are downloaded on demand. Do not redistribute.
+data/raw/
+# Local empirical and scenario outputs.
+outputs/
+# R project-local session state.
+.Rhistory
+.RData
+.Rproj.user/
