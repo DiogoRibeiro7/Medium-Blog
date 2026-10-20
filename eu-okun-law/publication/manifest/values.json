@@ -1667,6 +1667,312 @@
   "raw": 0.21962962962962962,
   "source": "docs/headline-inference/summary.json"
  },
+ "hr_above_excl": {
+  "tex": "10",
+  "md": "10",
+  "raw": 10,
+  "source": "docs/hours/summary.json"
+ },
+ "hr_above_full": {
+  "tex": "15",
+  "md": "15",
+  "raw": 15,
+  "source": "docs/hours/summary.json"
+ },
+ "hr_d_e_dom": {
+  "tex": "$-0.04$",
+  "md": "−0.04",
+  "raw": -0.0356048359164684,
+  "source": "docs/hours/summary.json"
+ },
+ "hr_d_hpw": {
+  "tex": "$+0.34$",
+  "md": "+0.34",
+  "raw": 0.33778867333544815,
+  "source": "docs/hours/summary.json"
+ },
+ "hr_d_prod": {
+  "tex": "$-0.30$",
+  "md": "−0.30",
+  "raw": -0.3021838374189797,
+  "source": "docs/hours/summary.json"
+ },
+ "hr_mean_du_excl": {
+  "tex": "$-0.29$",
+  "md": "−0.29",
+  "raw": -0.28516004417887514,
+  "source": "docs/hours/summary.json"
+ },
+ "hr_mean_du_full": {
+  "tex": "$-0.19$",
+  "md": "−0.19",
+  "raw": -0.1904784271146191,
+  "source": "docs/hours/summary.json"
+ },
+ "hr_mean_h_excl": {
+  "tex": "$+0.43$",
+  "md": "+0.43",
+  "raw": 0.43188104494777924,
+  "source": "docs/hours/summary.json"
+ },
+ "hr_mean_h_full": {
+  "tex": "$+0.74$",
+  "md": "+0.74",
+  "raw": 0.7355267747023893,
+  "source": "docs/hours/summary.json"
+ },
+ "hr_n_hours": {
+  "tex": "26",
+  "md": "26",
+  "raw": 26,
+  "source": "docs/hours/summary.json"
+ },
+ "hr_n_persons": {
+  "tex": "20",
+  "md": "20",
+  "raw": 20,
+  "source": "docs/hours/summary.json"
+ },
+ "hr_n_settings": {
+  "tex": "4",
+  "md": "4",
+  "raw": 4,
+  "source": "docs/hours/sensitivity.csv"
+ },
+ "hr_no_pandemic": {
+  "tex": "$3.3$\\%",
+  "md": "3.3%",
+  "raw": 0.03301650825412707,
+  "source": "docs/hours/summary.json"
+ },
+ "hr_p1": {
+  "tex": "$+1.04$",
+  "md": "+1.04",
+  "raw": 1.0351069783684608,
+  "source": "docs/hours/tests.csv"
+ },
+ "hr_p1_amended_ci": {
+  "tex": "$[+0.23, +2.08]$",
+  "md": "[+0.23, +2.08]",
+  "raw": "[0.22692788426278637, 2.0798553091133027]",
+  "source": "docs/hours/tests.csv"
+ },
+ "hr_p1_amended_holm": {
+  "tex": "$0.004$",
+  "md": "0.004",
+  "raw": 0.004,
+  "source": "docs/hours/tests.csv"
+ },
+ "hr_p1_amended_verdict": {
+  "tex": "supported",
+  "md": "supported",
+  "raw": "supported",
+  "source": "docs/hours/tests.csv"
+ },
+ "hr_p1_ci": {
+  "tex": "$[+0.00, +2.21]$",
+  "md": "[+0.00, +2.21]",
+  "raw": "[0.0, 2.214684309919635]",
+  "source": "docs/hours/tests.csv"
+ },
+ "hr_p1_holm": {
+  "tex": "$0.300$",
+  "md": "0.300",
+  "raw": 0.3,
+  "source": "docs/hours/tests.csv"
+ },
+ "hr_p1_sens_supported": {
+  "tex": "4",
+  "md": "4",
+  "raw": 4,
+  "source": "docs/hours/sensitivity.csv"
+ },
+ "hr_p1_verdict": {
+  "tex": "not determined",
+  "md": "not determined",
+  "raw": "not determined",
+  "source": "docs/hours/tests.csv"
+ },
+ "hr_p2a": {
+  "tex": "$+0.34$",
+  "md": "+0.34",
+  "raw": 0.33778867333544815,
+  "source": "docs/hours/tests.csv"
+ },
+ "hr_p2a_amended_ci": {
+  "tex": "$[+0.05, +0.50]$",
+  "md": "[+0.05, +0.50]",
+  "raw": "[0.0474562876734342, 0.5040988788194524]",
+  "source": "docs/hours/tests.csv"
+ },
+ "hr_p2a_amended_holm": {
+  "tex": "$0.024$",
+  "md": "0.024",
+  "raw": 0.024,
+  "source": "docs/hours/tests.csv"
+ },
+ "hr_p2a_amended_verdict": {
+  "tex": "supported",
+  "md": "supported",
+  "raw": "supported",
+  "source": "docs/hours/tests.csv"
+ },
+ "hr_p2a_ci": {
+  "tex": "$[+0.00, +0.53]$",
+  "md": "[+0.00, +0.53]",
+  "raw": "[0.0, 0.5297295413359605]",
+  "source": "docs/hours/tests.csv"
+ },
+ "hr_p2a_holm": {
+  "tex": "$0.333$",
+  "md": "0.333",
+  "raw": 0.333,
+  "source": "docs/hours/tests.csv"
+ },
+ "hr_p2a_sens_supported": {
+  "tex": "3",
+  "md": "3",
+  "raw": 3,
+  "source": "docs/hours/sensitivity.csv"
+ },
+ "hr_p2a_verdict": {
+  "tex": "not determined",
+  "md": "not determined",
+  "raw": "not determined",
+  "source": "docs/hours/tests.csv"
+ },
+ "hr_p2b": {
+  "tex": "$-0.04$",
+  "md": "−0.04",
+  "raw": -0.0356048359164684,
+  "source": "docs/hours/tests.csv"
+ },
+ "hr_p2b_amended_ci": {
+  "tex": "$[-0.16, +0.10]$",
+  "md": "[−0.16, +0.10]",
+  "raw": "[-0.16382055853733427, 0.10051680749544728]",
+  "source": "docs/hours/tests.csv"
+ },
+ "hr_p2b_amended_holm": {
+  "tex": "$0.741$",
+  "md": "0.741",
+  "raw": 0.7412,
+  "source": "docs/hours/tests.csv"
+ },
+ "hr_p2b_amended_verdict": {
+  "tex": "not determined",
+  "md": "not determined",
+  "raw": "not determined",
+  "source": "docs/hours/tests.csv"
+ },
+ "hr_p2b_ci": {
+  "tex": "$[-0.16, +0.10]$",
+  "md": "[−0.16, +0.10]",
+  "raw": "[-0.15652261878573095, 0.10277058348301493]",
+  "source": "docs/hours/tests.csv"
+ },
+ "hr_p2b_holm": {
+  "tex": "$0.741$",
+  "md": "0.741",
+  "raw": 0.7412,
+  "source": "docs/hours/tests.csv"
+ },
+ "hr_p2b_verdict": {
+  "tex": "not determined",
+  "md": "not determined",
+  "raw": "not determined",
+  "source": "docs/hours/tests.csv"
+ },
+ "hr_p3": {
+  "tex": "$+0.21$",
+  "md": "+0.21",
+  "raw": 0.21052631578947367,
+  "source": "docs/hours/tests.csv"
+ },
+ "hr_p3_amended_ci": {
+  "tex": "$[+nan, +nan]$",
+  "md": "[+nan, +nan]",
+  "raw": "[nan, nan]",
+  "source": "docs/hours/tests.csv"
+ },
+ "hr_p3_amended_holm": {
+  "tex": "$0.741$",
+  "md": "0.741",
+  "raw": 0.7412,
+  "source": "docs/hours/tests.csv"
+ },
+ "hr_p3_amended_verdict": {
+  "tex": "not determined",
+  "md": "not determined",
+  "raw": "not determined",
+  "source": "docs/hours/tests.csv"
+ },
+ "hr_p3_ci": {
+  "tex": "$[+nan, +nan]$",
+  "md": "[+nan, +nan]",
+  "raw": "[nan, nan]",
+  "source": "docs/hours/tests.csv"
+ },
+ "hr_p3_holm": {
+  "tex": "$0.741$",
+  "md": "0.741",
+  "raw": 0.7412,
+  "source": "docs/hours/tests.csv"
+ },
+ "hr_p3_verdict": {
+  "tex": "not determined",
+  "md": "not determined",
+  "raw": "not determined",
+  "source": "docs/hours/tests.csv"
+ },
+ "hr_p_floor": {
+  "tex": "$0.067$",
+  "md": "0.067",
+  "raw": 0.067,
+  "source": "docs/hours/summary.json"
+ },
+ "hr_rank_corr": {
+  "tex": "$+0.55$",
+  "md": "+0.55",
+  "raw": 0.5548717948717948,
+  "source": "docs/hours/summary.json"
+ },
+ "hr_ret_du": {
+  "tex": "$0.67$",
+  "md": "0.67",
+  "raw": 0.667970253908138,
+  "source": "docs/hours/summary.json"
+ },
+ "hr_ret_du_ci": {
+  "tex": "$[0.56, 1.00]$",
+  "md": "[0.56, 1.00]",
+  "raw": "[0.5601608266471361, 1.0]",
+  "source": "docs/hours/summary.json"
+ },
+ "hr_ret_h": {
+  "tex": "$1.70$",
+  "md": "1.70",
+  "raw": 1.7030772322765988,
+  "source": "docs/hours/summary.json"
+ },
+ "hr_ret_h_ci": {
+  "tex": "$[0.91, 2.99]$",
+  "md": "[0.91, 2.99]",
+  "raw": "[0.9068202402604718, 2.9941090907794434]",
+  "source": "docs/hours/summary.json"
+ },
+ "hr_towards_du": {
+  "tex": "17",
+  "md": "17",
+  "raw": 17,
+  "source": "docs/hours/summary.json"
+ },
+ "hr_towards_h": {
+  "tex": "6",
+  "md": "6",
+  "raw": 6,
+  "source": "docs/hours/summary.json"
+ },
  "id_max_t": {
   "tex": "$1.27$",
   "md": "1.27",

@@ -288,6 +288,16 @@ def main(argv: Sequence[str] | None = None) -> int:
     cgrid.add_argument("--robustness", type=Path, default=Path("docs/review/robustness.csv"))
     cgrid.add_argument("--output-dir", type=Path, default=Path("results/core-grid"))
     cgrid.add_argument("--report", type=Path, default=None)
+    hrs = commands.add_parser(
+        "hours", help="Okun's law in hours, for every country, with and without the pandemic "
+                      "(HOURS_PROTOCOL.md)")
+    hrs.add_argument("--data-dir", type=Path, default=Path("snapshots/eurostat-2026-10-15"))
+    hrs.add_argument("--snapshot", type=Path,
+                     default=Path("snapshots/heterogeneity-2026-10-18"))
+    hrs.add_argument("--case-study", type=Path,
+                     default=Path("docs/heterogeneity/elasticities.csv"))
+    hrs.add_argument("--output-dir", type=Path, default=Path("results/hours"))
+    hrs.add_argument("--report", type=Path, default=None)
     smooth = commands.add_parser(
         "smoothing", help="Does the quarterly unemployment rate inherit monthly smoothing? "
                           "(SMOOTHING_PROTOCOL.md)")
@@ -747,6 +757,17 @@ def main(argv: Sequence[str] | None = None) -> int:
         cs = core_summary(cg_rows)
         print(f"Robust negative without participation: {cs['robust']} "
               f"(published: {cs['robust_published']})")
+        return 0
+    if args.command == "hours":
+        from eu_okun.hours import write_report as write_hours
+
+        try:
+            hours_study = write_hours(args.data_dir, args.snapshot, args.case_study,
+                                      args.output_dir, args.report)
+        except (FileNotFoundError, ValueError, OSError, KeyError) as exc:
+            parser.exit(2, f"Hours study failed: {exc}" + chr(10))
+        for t in hours_study.tests:
+            print(f"{t.key}: {t.estimate:+.3f} (Holm p {t.holm:.3f}) {t.verdict}")
         return 0
     if args.command == "smoothing":
         from eu_okun.smoothing import write_report as write_smoothing

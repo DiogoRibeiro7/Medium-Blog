@@ -1,0 +1,273 @@
+{
+ "reproduced": 119,
+ "seed": 20261026,
+ "replicates": 1999,
+ "permutations": 9999,
+ "countries_hours": [
+  "AT",
+  "BG",
+  "CY",
+  "CZ",
+  "DE",
+  "DK",
+  "EE",
+  "EL",
+  "ES",
+  "FI",
+  "FR",
+  "HR",
+  "HU",
+  "IE",
+  "IT",
+  "LT",
+  "LU",
+  "LV",
+  "MT",
+  "NL",
+  "PL",
+  "PT",
+  "RO",
+  "SE",
+  "SI",
+  "SK"
+ ],
+ "countries_persons": [
+  "AT",
+  "BG",
+  "CY",
+  "DE",
+  "DK",
+  "EE",
+  "ES",
+  "FI",
+  "HR",
+  "HU",
+  "IE",
+  "IT",
+  "LT",
+  "LU",
+  "LV",
+  "NL",
+  "RO",
+  "SE",
+  "SI",
+  "SK"
+ ],
+ "hours_above_zero": {
+  "excluded": [
+   "CY",
+   "DE",
+   "DK",
+   "EL",
+   "ES",
+   "FR",
+   "HU",
+   "IT",
+   "PT",
+   "SI"
+  ],
+  "full": [
+   "AT",
+   "BG",
+   "CY",
+   "CZ",
+   "DE",
+   "DK",
+   "EL",
+   "ES",
+   "FI",
+   "FR",
+   "HU",
+   "IT",
+   "NL",
+   "PT",
+   "SI"
+  ]
+ },
+ "towards_zero": {
+  "h": [
+   "ES",
+   "HR",
+   "LV",
+   "NL",
+   "PL",
+   "PT"
+  ],
+  "du": [
+   "BG",
+   "CY",
+   "CZ",
+   "DE",
+   "EL",
+   "ES",
+   "FR",
+   "HR",
+   "HU",
+   "IE",
+   "IT",
+   "LT",
+   "LU",
+   "NL",
+   "PL",
+   "PT",
+   "SI"
+  ]
+ },
+ "rank_correlation_excluded": 0.5548717948717948,
+ "focus_rank": {
+  "excluded": {
+   "ES": 2,
+   "PT": 1,
+   "NL": 9,
+   "LU": 26
+  },
+  "full": {
+   "ES": 4,
+   "PT": 3,
+   "NL": 21,
+   "LU": 10
+  }
+ },
+ "mean_hours": {
+  "excluded": 0.43188104494777924,
+  "full": 0.7355267747023893
+ },
+ "mean_du": {
+  "excluded": -0.28516004417887514,
+  "full": -0.1904784271146191
+ },
+ "retention": {
+  "h": {
+   "point": 1.7030772322765988,
+   "interval": [
+    0.9068202402604718,
+    2.9941090907794434
+   ]
+  },
+  "du": {
+   "point": 0.667970253908138,
+   "interval": [
+    0.5601608266471361,
+    1.0
+   ]
+  }
+ },
+ "margin_change": {
+  "prod": {
+   "point": -0.3021838374189797,
+   "interval": [
+    -0.5845886498858544,
+    0.05605314684659637
+   ]
+  },
+  "hpw": {
+   "point": 0.33778867333544815,
+   "interval": [
+    0.0,
+    0.5297295413359605
+   ]
+  },
+  "e_dom": {
+   "point": -0.0356048359164684,
+   "interval": [
+    -0.15652261878573095,
+    0.10277058348301493
+   ]
+  }
+ },
+ "margin_mean": {
+  "prod": {
+   "excluded": 0.5756990364726304,
+   "full": 0.27351519905365074
+  },
+  "hpw": {
+   "excluded": 0.022536856220481214,
+   "full": 0.3603255295559294
+  },
+  "e_dom": {
+   "excluded": 0.4017641073068883,
+   "full": 0.36615927139041987
+  }
+ },
+ "verdicts": {
+  "P1": "not determined",
+  "P2a": "not determined",
+  "P2b": "not determined",
+  "P3": "not determined"
+ },
+ "verdicts_amended": {
+  "P1": "supported",
+  "P2a": "supported",
+  "P2b": "not determined",
+  "P3": "not determined"
+ },
+ "amended": {
+  "retention": {
+   "h": {
+    "point": 1.7030772322765988,
+    "interval": [
+     0.9361663779591635,
+     2.9121090319771668
+    ]
+   },
+   "du": {
+    "point": 0.667970253908138,
+    "interval": [
+     0.5626361286775963,
+     0.9270210094098681
+    ]
+   }
+  },
+  "margin_change": {
+   "prod": {
+    "point": -0.3021838374189797,
+    "interval": [
+     -0.5717098906991024,
+     0.05821970602729721
+    ]
+   },
+   "hpw": {
+    "point": 0.33778867333544815,
+    "interval": [
+     0.0474562876734342,
+     0.5040988788194524
+    ]
+   },
+   "e_dom": {
+    "point": -0.0356048359164684,
+    "interval": [
+     -0.16382055853733427,
+     0.10051680749544728
+    ]
+   }
+  }
+ },
+ "p_floor": {
+  "lags_1": {
+   "no_pandemic_share": 0.0400200100050025,
+   "p_floor": 0.081
+  },
+  "lags_4": {
+   "no_pandemic_share": 0.01950975487743872,
+   "p_floor": 0.04
+  },
+  "block_8": {
+   "no_pandemic_share": 0.0785392696348174,
+   "p_floor": 0.158
+  },
+  "without_IE_LU": {
+   "no_pandemic_share": 0.03301650825412707,
+   "p_floor": 0.067
+  },
+  "primary": {
+   "no_pandemic_share": 0.03301650825412707,
+   "p_floor": 0.067
+  }
+ },
+ "provenance": {
+  "eurostat_manifest_sha256": "8a8c8a107d584ba91b61584fd29397e68ff83d82982371a35db253c0803a0464",
+  "heterogeneity_manifest": "2026-10-18T12:48:38.077196+00:00",
+  "hours_sha256": "90bb5445ef5cc073580af515266e3c87ef2b1de0a205e158eced5ead717247e5",
+  "persons_sha256": "1ed7d8b0951c264a38d557510ac968399a36d491ca7a137ddd5bc6f8527c6d51"
+ }
+}

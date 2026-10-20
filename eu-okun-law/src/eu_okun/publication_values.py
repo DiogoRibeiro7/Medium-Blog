@@ -608,6 +608,46 @@ def collect_values(root: Path) -> dict[str, Value]:
     add(text("cs_n_corr_contra", sum(r["verdict"] == "contradicted" for r in cor),
              "docs/heterogeneity/correlations.csv"))
 
+    # Okun's law in hours, with and without the pandemic (HOURS_PROTOCOL.md) ------------
+    hr = json.loads((docs / "hours" / "summary.json").read_text(encoding="utf-8"))
+    src = "docs/hours/summary.json"
+    add(text("hr_n_hours", len(hr["countries_hours"]), src))
+    add(text("hr_n_persons", len(hr["countries_persons"]), src))
+    add(text("hr_above_excl", len(hr["hours_above_zero"]["excluded"]), src))
+    add(text("hr_above_full", len(hr["hours_above_zero"]["full"]), src))
+    add(text("hr_towards_h", len(hr["towards_zero"]["h"]), src))
+    add(text("hr_towards_du", len(hr["towards_zero"]["du"]), src))
+    add(num("hr_rank_corr", hr["rank_correlation_excluded"], 2, src, True))
+    for m in ("h", "du"):
+        ret = hr["retention"][m]
+        add(num(f"hr_ret_{m}", ret["point"], 2, src))
+        low, high = ret["interval"]
+        add(interval(f"hr_ret_{m}_ci", low, high, 2, src, signed=False))
+    for sample, key in (("excluded", "excl"), ("full", "full")):
+        add(num(f"hr_mean_h_{key}", hr["mean_hours"][sample], 2, src, True))
+        add(num(f"hr_mean_du_{key}", hr["mean_du"][sample], 2, src, True))
+    for m in ("prod", "hpw", "e_dom"):
+        add(num(f"hr_d_{m}", hr["margin_change"][m]["point"], 2, src, True))
+    add(pct("hr_no_pandemic", hr["p_floor"]["primary"]["no_pandemic_share"], 1, src))
+    add(num("hr_p_floor", hr["p_floor"]["primary"]["p_floor"], 3, src))
+    src = "docs/hours/tests.csv"
+    for r in _csv(docs / "hours" / "tests.csv"):
+        key = f"hr_{r['key'].lower()}" + ("" if r["bootstrap"] == "registered" else "_amended")
+        holm_p = float(r["holm"])
+        if r["bootstrap"] == "registered":
+            add(num(key, float(r["estimate"]), 2, src, True))
+        if r["low"]:
+            add(interval(f"{key}_ci", float(r["low"]), float(r["high"]), 2, src))
+        add(text(f"{key}_holm", "below 0.001", src) if holm_p < 0.001
+            else num(f"{key}_holm", holm_p, 3, src))
+        add(text(f"{key}_verdict", r["verdict"], src))
+    sens = [r for r in _csv(docs / "hours" / "sensitivity.csv") if r["bootstrap"] == "stratified"]
+    src = "docs/hours/sensitivity.csv"
+    add(text("hr_n_settings", len({r["setting"] for r in sens}), src))
+    for test in ("P1", "P2a"):
+        add(text(f"hr_{test.lower()}_sens_supported",
+                 sum(r["key"] == test and r["verdict"] == "supported" for r in sens), src))
+
     # Post-hoc pandemic-window sensitivity (not registered) ------------------------------
     ws = _csv(docs / "window-sensitivity" / "window_sensitivity.csv")
     src = "docs/window-sensitivity/window_sensitivity.csv"

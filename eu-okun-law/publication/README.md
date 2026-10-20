@@ -123,6 +123,12 @@ Monthly smoothing in the quarterly unemployment rate:
 poetry run eu-okun smoothing --data-dir snapshots/eurostat-2026-10-15 --monthly-dir snapshots/eurostat-monthly-2026-10-18 --review-dir docs/review --bayes-dir docs/bayes --output-dir docs/smoothing --report docs/SMOOTHING.md
 ```
 
+Okun's law in hours, for every country, with and without the pandemic:
+
+```bash
+poetry run eu-okun hours --data-dir snapshots/eurostat-2026-10-15 --snapshot snapshots/heterogeneity-2026-10-18 --case-study docs/heterogeneity/elasticities.csv --output-dir docs/hours --report docs/HOURS.md
+```
+
 Measurement noise or finance, for Luxembourg:
 
 ```bash
