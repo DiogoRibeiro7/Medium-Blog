@@ -63,11 +63,10 @@ normalise_commercial <- function(x) {
   validate_commercial_schema(x)
   kitchen <- trimws(as.character(x[["City / kitchen"]]))
   stamp <- trimws(as.character(x[["Timestamp"]]))
-  if (anyNA(kitchen) || any(kitchen == "") ||
-      anyNA(stamp) || any(stamp == "")) {
-    stop("Kitchen identifiers and timestamp labels must be present.",
-         call. = FALSE)
-  }
+  # Keep incomplete source rows in the audit without assigning them to a
+  # fabricated kitchen or date. Downstream coverage excludes missing labels.
+  kitchen[is.na(kitchen) | kitchen == ""] <- NA_character_
+  stamp[is.na(stamp) | stamp == ""] <- NA_character_
   denominator_names <- grep("^(ordered )?portions, ", names(x), value = TRUE)
   counts <- lapply(denominator_names, function(name) {
     v <- parse_commercial_number(x[[name]], name)
@@ -105,7 +104,8 @@ audit_commercial <- function(x) {
   # across the whole-day and meal-specific denominators.
   ratios <- do.call(rbind, lapply(names(portions), function(name) {
     p <- portions[[name]]
-    valid <- measured & is.finite(p) & p > 0
+    valid <- measured & is.finite(p) & p > 0 & !is.na(x$kitchen_id) &
+      !is.na(x$timestamp_source)
     data.frame(
       denominator_field = name,
       records_with_denominator = sum(is.finite(p)),
@@ -115,7 +115,9 @@ audit_commercial <- function(x) {
       stringsAsFactors = FALSE
     )
   }))
-  coverage <- do.call(rbind, lapply(split(seq_len(nrow(x)), x$kitchen_id),
+  coverage <- do.call(rbind, lapply(split(
+    which(!is.na(x$kitchen_id)), x$kitchen_id[
+      !is.na(x$kitchen_id)]),
                                     function(rows) {
     w <- x$waste_weight_source_unit[rows]
     data.frame(
@@ -143,6 +145,8 @@ audit_commercial <- function(x) {
     fields = field_audit,
     kitchens = coverage,
     denominators = ratios,
+    missing_kitchen_labels = sum(is.na(x$kitchen_id)),
+    missing_timestamps = sum(is.na(x$timestamp_source)),
     raw_weight_unit_confirmed = FALSE
   )
 }
