@@ -82,7 +82,22 @@ def test_calibration_experiment_smoke_shapes() -> None:
         stresses=("clean",), seed=5,
     )
     assert len(intervals) == 3 * 2 * 2
-    assert len(decisions) == 3 * 10
+    # 3 fitted models, 4 costs, and 5 rules at each cost:
+    # one point-threshold rule plus conservative/review for each interval method.
+    assert len(decisions) == 3 * 4 * (1 + 2 * 2)
+    assert set(decisions["rule"]) == {
+        "Point threshold",
+        "Conservative",
+        "Ideal review",
+    }
+    assert set(decisions["method"]) == {
+        "Point estimate",
+        "Gaussian plug-in",
+        "Split conformal",
+    }
+    assert not decisions.duplicated(
+        ["model", "method", "rule", "cost"]
+    ).any()
     assert intervals["coverage"].between(0, 1).all()
     assert set(intervals["distribution"]) == {"IID", "Noise inflation"}
     assert np.isfinite(decisions["regret"]).all()
