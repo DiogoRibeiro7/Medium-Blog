@@ -36,12 +36,13 @@ Finland Excel dataset).
 cd restaurant-portion-economics
 Rscript tests/test-economics.R
 Rscript scripts/run-analysis.R                    # offline: economic model only
+Rscript -e 'install.packages("jsonlite")'          # once, Zenodo metadata
 Rscript scripts/download-data.R                   # public source files
 Rscript -e 'install.packages("readxl")'           # once, for Excel input
 Rscript scripts/run-analysis.R                    # observed-data audits + model
 ```
 
-The fetcher checks the publisher-listed MD5 for each file, does not
+The fetcher uses `jsonlite` and checks the publisher-listed MD5 for each file, does not
 commit upstream data, and fails loudly on a changed file or unsuccessful
 download. Files stay under `data/raw/` (ignored by Git). The analysis
 writes derived tables to `outputs/` (also ignored by Git). This is a
@@ -90,11 +91,9 @@ fixed costs cancel from the comparison.
 - `outputs/threshold.csv`: demand-change break-even point.
 - `outputs/urbanwaste_schema.csv`: columns, types, missing values from a
   *real* hotel/restaurant waste-tracking dataset.
-- `outputs/urbanwaste_numeric_audit.csv`: unlabelled candidate numeric
-  variables for review; **not** interpreted as kilograms or euros.
-- `outputs/finland_daily.csv`, `outputs/finland_summary.csv`: comparable
-  institutional-food-service daily waste descriptors when the relevant
-  spreadsheet columns can be validated.
+- `outputs/finland_schema.csv`: institutional-food-service field audit
+  when Excel data and `readxl` are available. Numeric interpretation follows
+  only after column units and semantics have been independently reviewed.
 
 The first run can be made entirely offline; the measured-data outputs
 require downloading the original sources. The institutional dataset is not
