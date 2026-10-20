@@ -92,4 +92,14 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()
+    # The experiment already prints a single valid comma-separated table.
+    import io
+    from contextlib import redirect_stdout
+    from pathlib import Path
+
+    buffer = io.StringIO()
+    with redirect_stdout(buffer):
+        main()
+    output = buffer.getvalue()
+    Path(__file__).with_name("results.csv").write_text(output, encoding="utf-8")
+    print(output, end="")
