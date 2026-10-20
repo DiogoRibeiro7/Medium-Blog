@@ -64,3 +64,16 @@ jobs:
           --ExecutePreprocessor.timeout=300
           --output model-selection-and-costs.executed.ipynb
           model-selection-and-costs.ipynb
+
+      - name: Execute uncertainty and decisions notebook
+        working-directory: statistical-evidence-and-decisions
+        env:
+          UNCERTAINTY_BOOTSTRAPS: "6"
+          UNCERTAINTY_N_TRAIN: "80"
+          UNCERTAINTY_N_TEST: "40"
+        run: >-
+          jupyter nbconvert --to notebook --execute
+          --ExecutePreprocessor.timeout=300
+          --output uncertainty-and-decisions.executed.ipynb
+          uncertainty-and-decisions.ipynb
+

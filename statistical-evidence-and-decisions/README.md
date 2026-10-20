@@ -198,3 +198,46 @@ test observation or cost value—is the appropriate resampling unit.
 
 Code and tests are in [cost_selection.py](cost_selection.py) and
 [tests/test_cost_selection.py](tests/test_cost_selection.py).
+
+## Quantifying uncertainty at decision time
+
+[uncertainty-and-decisions.ipynb](uncertainty-and-decisions.ipynb) examines
+uncertainty about *coefficients*, *predictions*, *model choice* and *actions*.
+The analysis is in [uncertainty_analysis.py](uncertainty_analysis.py), with
+invariant tests in [tests/test_uncertainty_analysis.py](tests/test_uncertainty_analysis.py).
+
+- Bootstrap resamples are fitted in-bag, and candidates are compared on
+  strictly out-of-bag observations. Duplicated in-bag records therefore cannot
+  also serve as validation outcomes.
+- Algorithms use pre-specified hyperparameters, not CV on duplicate-resampled
+  datasets. Candidate pipelines keep all transformations within each fit.
+- Four uncertainty policies are studied: fixed OLS, fixed ridge, OOB selection
+  by MSE and OOB selection by observed cost-grid economic utility.
+- The law of total variance partitions bootstrap predictive variability
+  *descriptively* into within-selected-algorithm and between-algorithm-label
+  terms. Neither term is a causal effect of model switching.
+- Analytic versus bootstrap coefficient intervals are shown only for an
+  *unselected*, complete-data OLS model.
+- Conditional-mean uncertainty and observation noise are evaluated separately
+  using independent synthetic test outcomes. The observation-noise parameter
+  is given by the simulation and never estimated from test observations.
+- Mean, majority-vote and lower-quantile intervention rules are compared using
+  economic regret, overall action frequency and unprofitable actions.
+
+These are frequentist resampling diagnostics, not posterior probabilities or
+guarantees of nominal interval coverage. The known full-information conditional
+mean is used only for final evaluation. The MAR scenario is compared against
+the unattainable full-information oracle and is therefore not directly a pure
+model-quality measure.
+
+For a short reproducibility smoke execution:
+
+    UNCERTAINTY_BOOTSTRAPS=6 UNCERTAINTY_N_TRAIN=80 \
+      UNCERTAINTY_N_TEST=40 jupyter nbconvert --execute --to notebook \
+      --output uncertainty-and-decisions.executed.ipynb \
+      uncertainty-and-decisions.ipynb
+
+The full notebook defaults to 60 bootstrap replicates and 300 test observations.
+These are illustrations: for reliable coverage or selection-frequency claims,
+repeat the entire experiment with many independent generated datasets.
+
