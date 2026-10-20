@@ -51,3 +51,16 @@ jobs:
           --ExecutePreprocessor.timeout=300
           --output robustness-review.executed.ipynb
           robustness-review.ipynb
+
+      - name: Execute decision-cost selection notebook
+        working-directory: statistical-evidence-and-decisions
+        env:
+          SELECTION_REPEATS: "1"
+          SELECTION_SPLITS: "2"
+          SELECTION_SIZES: "80"
+          SELECTION_SMOKE: "1"
+        run: >-
+          jupyter nbconvert --to notebook --execute
+          --ExecutePreprocessor.timeout=300
+          --output model-selection-and-costs.executed.ipynb
+          model-selection-and-costs.ipynb
