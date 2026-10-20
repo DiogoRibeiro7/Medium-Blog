@@ -19,7 +19,9 @@ jobs:
         working-directory: restaurant-portion-economics
         run: |
           Rscript scripts/download-data.R
+          Rscript scripts/validate-sources.R
           Rscript scripts/analyse-finland.R
+          test -s outputs/zenodo_source_manifest.csv
           test -s outputs/finland_daily.csv
           test -s outputs/finland_period.csv
           test -s outputs/finland_menu_matched.csv
@@ -30,5 +32,6 @@ jobs:
           name: restaurant-waste-source-audit
           path: |
             restaurant-portion-economics/outputs/finland_*.csv
+            restaurant-portion-economics/outputs/zenodo_source_manifest.csv
           if-no-files-found: warn
           retention-days: 30
