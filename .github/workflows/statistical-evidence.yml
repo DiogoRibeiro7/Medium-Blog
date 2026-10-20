@@ -77,3 +77,17 @@ jobs:
           --output uncertainty-and-decisions.executed.ipynb
           uncertainty-and-decisions.ipynb
 
+      - name: Execute calibration and decisions notebook
+        working-directory: statistical-evidence-and-decisions
+        env:
+          CALIBRATION_SMOKE: "1"
+          CALIBRATION_REPEATS: "1"
+          CALIBRATION_N_FIT: "80"
+          CALIBRATION_N_CAL: "30"
+          CALIBRATION_N_TEST: "40"
+        run: >-
+          jupyter nbconvert --to notebook --execute
+          --ExecutePreprocessor.timeout=300
+          --output calibration-and-decisions.executed.ipynb
+          calibration-and-decisions.ipynb
+

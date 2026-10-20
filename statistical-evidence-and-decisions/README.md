@@ -241,3 +241,39 @@ The full notebook defaults to 60 bootstrap replicates and 300 test observations.
 These are illustrations: for reliable coverage or selection-frequency claims,
 repeat the entire experiment with many independent generated datasets.
 
+## Calibration and independent coverage testing
+
+[calibration-and-decisions.ipynb](calibration-and-decisions.ipynb) examines
+empirical nominal coverage across independently regenerated simulation datasets.
+
+- A held-out training/selection partition, independent calibration partition
+  and independent external test set are used throughout.
+- Gaussian training-residual plug-in intervals are contrasted with
+  finite-sample-corrected split-conformal prediction intervals.
+- The split-conformal guarantee concerns **marginal coverage of observed Y
+  under exchangeability**, not individual conditional coverage, the regression
+  mean, treatment effects or profits.
+- Experiments vary calibration size, nominal miscoverage, signal mechanism,
+  MAR predictor missingness and intentional test-noise inflation.
+- Marginal and observed-anchor subgroup coverage are reported separately.
+- Economic policies compare point-threshold action, conservative interval
+  screening, and **oracle-assisted** review with explicit review costs.
+  The final policy is an optimistic benchmark, not a practical reviewer.
+- Coverage uncertainty resamples independent generated datasets, not test
+  rows that share a fitted model or calibration interval.
+
+The code and tests are in [calibration_analysis.py](calibration_analysis.py)
+and [tests/test_calibration_analysis.py](tests/test_calibration_analysis.py).
+
+Smoke run:
+
+    CALIBRATION_SMOKE=1 CALIBRATION_REPEATS=1 CALIBRATION_N_FIT=80 \
+      CALIBRATION_N_CAL=30 CALIBRATION_N_TEST=40 \
+      jupyter nbconvert --execute --to notebook \
+      --output calibration-and-decisions.executed.ipynb \
+      calibration-and-decisions.ipynb
+
+The full notebook defaults to 12 independent replicates and requires a
+larger number of independent experiments before reliable coverage conclusions
+can be made. It must not be confused with a causal policy evaluation.
+
