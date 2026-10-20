@@ -200,3 +200,35 @@ A test regenerates them, and checks the reproduction of the case-study estimates
 margin identity.
 
 ## Change log
+
+- **2026-10-20, after the first computation: a flaw in the registered tests, and an
+  amendment registered before it was computed.**
+  - *Registered result.* All four tests are not determined. The point estimates of P1 and
+    P2a have the predicted sign; P2b is close to zero.
+  - *The flaw.* A resample that contains no pandemic row gives identical full and
+    excluded estimates, so the differences of P1, P2a and P2b are exactly zero. With
+    block length 4, 3.3% of the 1999 resamples contain none (7.9% with block 8). The
+    two-sided p-value of section 3 counts them, so it cannot fall below 0.067 (0.157 with
+    block 8). P1, P2a and P2b could not have been supported at any effect size. P3 is a
+    permutation test and is not affected.
+  - *What stands.* The registered verdicts stay the primary result, and section 8 applies
+    to them. In section 8, "say that the data do not show that pattern" is read as "say
+    that the registered test does not establish it", because saying the data show no such
+    pattern would misreport point estimates that have the predicted sign.
+  - *Amendment (secondary, labelled as after the registered result).* The same four
+    statistics, Holm family and verdict rule, with a **stratified** synchronised circular
+    block bootstrap, so that every resample holds the observed number of pandemic rows:
+    - the strata are the rows whose window [t−K, t] touches 2020-Q1..2021-Q4 (10 rows
+      for K = 2) and all other rows from 2009-Q3 to 2026-Q2;
+    - each stratum is resampled separately, in time order, with the same block length.
+      The non-pandemic stratum treats 2019-Q4 and the first quarter after the pandemic
+      window as adjacent;
+    - one generator with seed 20261026 draws the non-pandemic stratum, then the pandemic
+      stratum;
+    - P3 is unchanged;
+    - the same sensitivity settings apply;
+    - with only ten pandemic rows, resampling within that stratum is coarse, and the
+      intervals are approximate.
+  - *Use.* The amended verdicts are reported next to the registered ones, labelled as
+    amended after the registered result was seen. They do not replace the registered
+    verdicts in section 8.
