@@ -111,6 +111,12 @@ Small-sample inference for the post-2021 tests:
 poetry run eu-okun small-sample --data-dir snapshots/eurostat-2026-10-15 --output-dir docs/small-sample --report docs/SMALL_SAMPLE_INFERENCE.md --review-dir docs/review
 ```
 
+The core robustness grid without the participation control:
+
+```bash
+poetry run eu-okun core-grid --grid docs/review/grid.csv --robustness docs/review/robustness.csv --output-dir docs/core-grid --report docs/CORE_GRID.md
+```
+
 Monthly smoothing in the quarterly unemployment rate:
 
 ```bash

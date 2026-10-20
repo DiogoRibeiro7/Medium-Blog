@@ -769,6 +769,28 @@ Results are in [docs/SMOOTHING.md](docs/SMOOTHING.md):
   strongly negatively autocorrelated (-0.51), the signature of survey sampling noise,
   which widens the intervals of its Okun sum but does not bias it towards zero.
 
+## The core robustness grid without the participation control
+
+Half of the review's 24 core specifications per country control for the change in
+participation, which responds to output and shares its denominator with the unemployment
+rate. [CORE_GRID_PROTOCOL.md](CORE_GRID_PROTOCOL.md) was committed and pushed before the
+re-classification: the same verdict rule on the 12 estimates without the control, after
+reproducing the published verdicts. No estimate is recomputed.
+
+```bash
+poetry run eu-okun core-grid --grid docs/review/grid.csv --robustness docs/review/robustness.csv --output-dir docs/core-grid --report docs/CORE_GRID.md
+```
+
+Results are in [docs/CORE_GRID.md](docs/CORE_GRID.md):
+
+- **Robust negative:** 18 countries, against 17 published; 22 without the full sample,
+  against 21.
+- **Changed:** Romania only, from specification-dependent to robust negative. The focus
+  countries keep their verdicts (Spain and the Netherlands robust, Portugal
+  specification-dependent, Luxembourg sign-unstable).
+- The manuscript and the Medium article now use these verdicts and quote the published
+  count alongside.
+
 ## Publication: manuscript, Medium article and reproduction
 
 [publication/](publication/README.md) holds the final outputs:

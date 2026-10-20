@@ -321,7 +321,7 @@
   "tex": "robust negative",
   "md": "robust negative",
   "raw": "robust negative",
-  "source": "docs/review/robustness.csv"
+  "source": "docs/core-grid/verdicts.csv"
  },
  "cl_LU_excl": {
   "tex": "$+0.17$",
@@ -363,7 +363,7 @@
   "tex": "sign-unstable",
   "md": "sign-unstable",
   "raw": "sign-unstable",
-  "source": "docs/review/robustness.csv"
+  "source": "docs/core-grid/verdicts.csv"
  },
  "cl_NL_excl": {
   "tex": "$-0.28$",
@@ -405,7 +405,7 @@
   "tex": "robust negative",
   "md": "robust negative",
   "raw": "robust negative",
-  "source": "docs/review/robustness.csv"
+  "source": "docs/core-grid/verdicts.csv"
  },
  "cl_PT_excl": {
   "tex": "$-0.49$",
@@ -447,7 +447,13 @@
   "tex": "negative; significance specification-dependent",
   "md": "negative; significance specification-dependent",
   "raw": "negative; significance specification-dependent",
-  "source": "docs/review/robustness.csv"
+  "source": "docs/core-grid/verdicts.csv"
+ },
+ "cl_changed": {
+  "tex": "Romania",
+  "md": "Romania",
+  "raw": "Romania",
+  "source": "docs/core-grid/verdicts.csv"
  },
  "cl_n_attenuated": {
   "tex": "20",
@@ -456,6 +462,12 @@
   "source": "docs/review/grid.csv"
  },
  "cl_n_core": {
+  "tex": "12",
+  "md": "12",
+  "raw": "12",
+  "source": "docs/core-grid/verdicts.csv"
+ },
+ "cl_n_core_published": {
   "tex": "24",
   "md": "24",
   "raw": "24",
@@ -486,6 +498,12 @@
   "source": "docs/review/grid.csv"
  },
  "cl_n_robust": {
+  "tex": "18",
+  "md": "18",
+  "raw": 18,
+  "source": "docs/core-grid/verdicts.csv"
+ },
+ "cl_n_robust_published": {
   "tex": "17",
   "md": "17",
   "raw": 17,

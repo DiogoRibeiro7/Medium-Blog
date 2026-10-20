@@ -281,6 +281,13 @@ def main(argv: Sequence[str] | None = None) -> int:
     het.add_argument("--output-dir", type=Path, default=Path("results/heterogeneity"))
     het.add_argument("--report", type=Path, default=None)
     het.add_argument("--no-figures", action="store_true")
+    cgrid = commands.add_parser(
+        "core-grid", help="The core robustness grid without the participation control "
+                          "(CORE_GRID_PROTOCOL.md)")
+    cgrid.add_argument("--grid", type=Path, default=Path("docs/review/grid.csv"))
+    cgrid.add_argument("--robustness", type=Path, default=Path("docs/review/robustness.csv"))
+    cgrid.add_argument("--output-dir", type=Path, default=Path("results/core-grid"))
+    cgrid.add_argument("--report", type=Path, default=None)
     smooth = commands.add_parser(
         "smoothing", help="Does the quarterly unemployment rate inherit monthly smoothing? "
                           "(SMOOTHING_PROTOCOL.md)")
@@ -728,6 +735,18 @@ def main(argv: Sequence[str] | None = None) -> int:
         decided = [t for t in comparison.family if t.verdict != "not distinguishable"]
         print(f"Predictive report written to {args.report or args.output_dir}; "
               f"{len(decided)} of {len(comparison.family)} pre-registered comparisons decided")
+        return 0
+    if args.command == "core-grid":
+        from eu_okun.core_grid import summary as core_summary
+        from eu_okun.core_grid import write_report as write_core_grid
+
+        try:
+            cg_rows = write_core_grid(args.grid, args.robustness, args.output_dir, args.report)
+        except (FileNotFoundError, ValueError, OSError, KeyError) as exc:
+            parser.exit(2, f"Core-grid re-classification failed: {exc}" + chr(10))
+        cs = core_summary(cg_rows)
+        print(f"Robust negative without participation: {cs['robust']} "
+              f"(published: {cs['robust_published']})")
         return 0
     if args.command == "smoothing":
         from eu_okun.smoothing import write_report as write_smoothing

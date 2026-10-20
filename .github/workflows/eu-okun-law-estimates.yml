@@ -161,10 +161,14 @@ jobs:
           poetry check --lock
           poetry install --no-interaction --extras dev
       - name: Install LaTeX
-        run: >-
-          sudo apt-get update &&
-          sudo apt-get install -y --no-install-recommends latexmk lmodern
-          texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended
+        # Only Ubuntu's own archive is needed; dropping the runner's Microsoft source keeps
+        # an outage there (403, "no longer signed") from failing apt-get update.
+        run: |
+          { grep -rl packages.microsoft.com /etc/apt/sources.list.d || true; } |
+            xargs -r sudo rm -f
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends latexmk lmodern \
+            texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended
       - name: Audit and generated files are current
         working-directory: eu-okun-law
         run: poetry run eu-okun publication --check
