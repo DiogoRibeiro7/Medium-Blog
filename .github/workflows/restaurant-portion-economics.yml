@@ -18,6 +18,7 @@ jobs:
         run: |
           Rscript tests/test-economics.R
           Rscript tests/test-finland.R
+          Rscript tests/test-empirical-audit.R
           Rscript scripts/run-analysis.R
       - name: Verify generated scenario files
         working-directory: restaurant-portion-economics
