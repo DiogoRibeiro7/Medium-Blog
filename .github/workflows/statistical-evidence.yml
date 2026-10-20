@@ -1,0 +1,42 @@
+name: Statistical evidence notebook
+
+on:
+  pull_request:
+    paths:
+      - "statistical-evidence-and-decisions/**"
+      - ".github/workflows/statistical-evidence.yml"
+  push:
+    branches: [main]
+    paths:
+      - "statistical-evidence-and-decisions/**"
+      - ".github/workflows/statistical-evidence.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  notebook-smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: statistical-evidence-and-decisions/requirements.txt
+      - name: Install project dependencies
+        working-directory: statistical-evidence-and-decisions
+        run: python -m pip install -r requirements.txt
+      - name: Test scientific invariants
+        working-directory: statistical-evidence-and-decisions
+        run: python -m pytest -q tests
+      - name: Execute notebook with reduced Monte Carlo repetitions
+        working-directory: statistical-evidence-and-decisions
+        env:
+          EVIDENCE_REPEATS: "1"
+          EVIDENCE_BOOTSTRAPS: "20"
+        run: >-
+          jupyter nbconvert --to notebook --execute
+          --ExecutePreprocessor.timeout=300
+          --output evidence-review.executed.ipynb
+          evidence-review.ipynb
