@@ -791,6 +791,39 @@ Results are in [docs/CORE_GRID.md](docs/CORE_GRID.md):
 - The manuscript and the Medium article now use these verdicts and quote the published
   count alongside.
 
+## Okun's law in hours, with and without the pandemic
+
+[HOURS_PROTOCOL.md](HOURS_PROTOCOL.md) was committed and pushed before any full-sample
+elasticity was computed. It extends the case study's estimator to every country with hours
+data. It also tests the job-retention explanation of the pandemic attenuation: hours should
+keep following output in 2020-2021 while unemployment does not, and the adjustment should
+move to hours per worker. The pandemic-excluded hours elasticities were already in the
+case study and had been seen, so they are reported as descriptive. No new data are needed.
+
+```bash
+poetry run eu-okun hours --data-dir snapshots/eurostat-2026-10-15 --snapshot snapshots/heterogeneity-2026-10-18 --case-study docs/heterogeneity/elasticities.csv --output-dir docs/hours --report docs/HOURS.md
+```
+
+Results are in [docs/HOURS.md](docs/HOURS.md):
+
+- **Point estimates.**
+  - With the pandemic, the mean hours elasticity rises from +0.43 to +0.74 (retention
+    ratio 1.70). The mean unemployment elasticity shrinks from -0.29 to -0.19 (0.67).
+  - Hours per worker take up more of the adjustment (+0.34), output per hour less (-0.30).
+    Persons respond as usual (-0.04).
+- **Registered tests: all not determined.** The registered tests of P1, P2a and P2b could
+  not have been decided. 3.3% of the resamples contain no pandemic quarter, and in those
+  the differences are exactly zero, so the p-value cannot fall below 0.067.
+- **Amendment (registered after that result, before it was computed).** The amendment holds
+  the number of pandemic quarters fixed in every resample.
+  - It supports P1 (Holm p 0.004) and P2a (0.024).
+  - P2b (fewer persons adjusting) and P3 (the cross-country correlation) are not
+    determined.
+  - P1 holds in all four sensitivity settings, and P2a in three.
+- **Descriptive.** Hours intervals lie above zero in 10 of 26 countries without the
+  pandemic and in 15 with it. The rank correlation between the unemployment and hours
+  responses is +0.55.
+
 ## Publication: manuscript, Medium article and reproduction
 
 [publication/](publication/README.md) holds the final outputs:

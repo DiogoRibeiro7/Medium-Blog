@@ -20,11 +20,19 @@ The headline measure adds up the coefficients on current growth and two lags. It
 
 Leave out 2020 and 2021 and the sum is negative in 25 of 27 countries. How many of those are statistically clear depends on how carefully you ask. The textbook interval, with normal critical values, lies below zero in 22. But each country has only 57 quarters, and with so few the textbook test is too eager: in simulations from each country's own fitted data, it rejects a true zero 22.0% of the time instead of 5%. Bootstraps built to hold their size find 20 significantly negative sums. If you also allow for having tested 27 countries at once, only 1 survives, against 21 with the textbook test. That last number understates the evidence, because the registered bootstrap is conservative when a sum is large. The fair summary is that the negative sign is widespread, while few individual countries' sums are nailed down on their own. With textbook intervals again, in 18 countries every one of the 12 core specifications without the participation control agrees in sign and excludes zero. (Participation is itself a response to output, so controlling for it measures something else. Counting those specifications too, the figure I first published was 17.)
 
-The pandemic changes the picture. Including those eight quarters moves the sum towards zero in 20 countries. They hold a median 78% of all the variation in GDP growth in the sample, and job-retention schemes kept people employed while output collapsed and rebounded. A coefficient estimated over the whole period mostly describes the pandemic. Leaving it out of the headline was my choice, made after seeing the full-sample estimates, although the plan had listed that comparison from the start.
+The pandemic changes the picture. Including those eight quarters moves the sum towards zero in 20 countries. They hold a median 78% of all the variation in GDP growth in the sample, so a coefficient estimated over the whole period mostly describes the pandemic. Leaving it out of the headline was my choice, made after seeing the full-sample estimates, although the plan had listed that comparison from the start.
 
 ![Classical sums with and without 2020–2021](figures/fig2_pandemic.png)
 
 *Classical two-lag sums: full sample against the sample without 2020–2021. For negative sums, a point above the diagonal is closer to zero once the pandemic is included.*
+
+The usual explanation is job retention: schemes like Germany's Kurzarbeit kept people on the payroll while their hours fell. If that is right, hours worked should have kept following output in 2020 and 2021 while unemployment did not. I registered a test of this and ran it on the 26 countries that publish hours. The estimates point that way. With the pandemic included, the average hours elasticity rises from +0.43 to +0.74, while the unemployment one shrinks from −0.29 to −0.19. Hours per worker took up more of the adjustment (+0.34). Output per hour took up less (−0.30), and the number of workers responded about as it normally does (−0.04).
+
+Even so, the test I registered came back undecided, and it could not have come back any other way. In about 3.3% of the bootstrap resamples no pandemic quarter is drawn at all, and those make the difference exactly zero. That puts a floor of 0.067 under the p-value, above the 5% threshold. I only noticed after seeing the result. I then registered a corrected test that keeps the pandemic quarters in every resample, before running it. It supports the hours pattern (Holm p 0.004) and the shift to hours per worker (0.024). Because it was written after the first result, it counts as secondary evidence. Paid sick leave and closures with continued pay would leave the same trace, and the 2021 survey redesign falls in the same window.
+
+![Hours and unemployment, with and without 2020–2021](figures/fig7_hours.png)
+
+*Two-lag elasticities to GDP growth of hours worked (left) and of minus the unemployment rate (right), without 2020–2021 (blue) and on the full sample (orange). Belgium publishes no hours.*
 
 ## How large is it?
 
@@ -112,7 +120,7 @@ What about the unemployment side? Luxembourg's monthly unemployment rate is benc
 
 The biggest open question is why countries differ. They may differ because their labour markets respond differently to the same shock, or because they face different mixes of shocks, and only shock-specific identification can separate the two. Answering the causal question for productivity or labour-supply shocks would need data the public statistics do not provide: productivity adjusted for capacity utilisation, and natural experiments in labour supply. Luxembourg's weak link is still a puzzle after three explanations have failed. And whether the relation weakened after 2021 needs more quarters. The first classical pass reported 14 significant post-2021 changes, but a size study showed that its test rejected a true null 22.8% of the time; with a bootstrap that held its size, 0 survive.
 
-There are also standard analyses this study does not include. It has no gap-form Okun's law to set against the international literature, no test of asymmetry between booms and busts, no hours-based Okun's law for every country and no labour-force-weighted EU aggregate. Those would be the next things to add.
+There are also standard analyses this study does not include. It has no gap-form Okun's law to set against the international literature, no test of asymmetry between booms and busts and no labour-force-weighted EU aggregate. Those would be the next things to add.
 
 ## The takeaway
 

@@ -188,9 +188,14 @@ Open:
       monthly series has a quarterly rate that is the average of its monthly rate; the
       persistence misfit and the Dutch delay are not concentrated in them. Luxembourg's
       quarterly changes are strongly negatively autocorrelated (survey noise).
-- [ ] Gap-form Okun's law against Ball, Leigh and Loungani (2017); asymmetry; hours-based
-      Okun's law for every country; a common-correlated-effects mean-group panel; a
-      labour-force-weighted EU aggregate.
+- [x] Hours-based Okun's law for every country with hours data (26), with and without the
+      pandemic, registered in [HOURS_PROTOCOL.md](HOURS_PROTOCOL.md); results in
+      [docs/HOURS.md](docs/HOURS.md). The registered tests of the job-retention pattern
+      are not determined, and could not have been, because of a p-value floor of 0.067.
+      An amendment registered after that result supports the pattern for hours and hours
+      per worker, but not for persons.
+- [ ] Gap-form Okun's law against Ball, Leigh and Loungani (2017); asymmetry; a
+      common-correlated-effects mean-group panel; a labour-force-weighted EU aggregate.
 - [x] Kept the participation control out of the core robustness grid, registered in
       [CORE_GRID_PROTOCOL.md](CORE_GRID_PROTOCOL.md); results in
       [docs/CORE_GRID.md](docs/CORE_GRID.md). The published verdicts are reproduced; on

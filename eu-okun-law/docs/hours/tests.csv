@@ -1,0 +1,9 @@
+setting,bootstrap,key,text,predicted,countries,estimate,low,high,p_value,holm,verdict
+primary,registered,P1,Hours keep more of their association than unemployment: R_h - R_du,1,26,1.0351069783684608,0.0,2.214684309919635,0.076,0.304,not determined
+primary,registered,P2a,Hours per worker respond more with the pandemic: change in mean beta_hpw,1,20,0.33778867333544815,0.0,0.5297295413359605,0.111,0.333,not determined
+primary,registered,P2b,Persons respond less with the pandemic: change in mean beta_e_dom,-1,20,-0.0356048359164684,-0.15652261878573095,0.10277058348301493,0.682,0.7412,not determined
+primary,registered,P3,Unemployment is attenuated more where hours per worker take up more: Spearman of the two changes,1,20,0.21052631578947367,nan,nan,0.3706,0.7412,not determined
+primary,stratified,P1,Hours keep more of their association than unemployment: R_h - R_du,1,26,1.0351069783684608,0.22692788426278637,2.0798553091133027,0.001,0.004,supported
+primary,stratified,P2a,Hours per worker respond more with the pandemic: change in mean beta_hpw,1,20,0.33778867333544815,0.0474562876734342,0.5040988788194524,0.008,0.024,supported
+primary,stratified,P2b,Persons respond less with the pandemic: change in mean beta_e_dom,-1,20,-0.0356048359164684,-0.16382055853733427,0.10051680749544728,0.653,0.7412,not determined
+primary,stratified,P3,Unemployment is attenuated more where hours per worker take up more: Spearman of the two changes,1,20,0.21052631578947367,nan,nan,0.3706,0.7412,not determined

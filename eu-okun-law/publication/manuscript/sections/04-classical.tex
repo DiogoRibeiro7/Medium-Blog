@@ -67,9 +67,36 @@ sums are established once the number of countries tested is taken into account.
 \paragraph{The pandemic.} Including 2020--2021 moves the sum towards zero in
 \val{cl_n_attenuated} countries (figure~\ref{fig:pandemic}). In \val{cl_n_full_outside}
 countries the full-sample estimate lies outside the 95\% interval of the estimate without
-the pandemic. The pandemic quarters combine the largest output movements of the sample
-with job-retention schemes that kept unemployment from following output. The full-sample
-coefficient therefore describes those quarters, not the 2009--2019 relationship.
+the pandemic. The pandemic quarters hold the largest output movements of the sample, so
+the full-sample coefficient describes those quarters, not the 2009--2019 relationship.
+Job-retention schemes are the usual explanation for why unemployment did not follow
+output. The registered test below does not establish it.
+
+\paragraph{Hours.} A registered study (\texttt{HOURS\_PROTOCOL.md}) estimated Okun's law in
+hours worked for the \val{hr_n_hours} countries with hours data, with the case study's
+estimator (section~\ref{sec:cases}), with and without the pandemic
+(figure~\ref{fig:hours}). If job retention explains the attenuation, hours should keep
+following output in 2020--2021 while unemployment does not, and the adjustment should move
+to hours per worker. The point estimates have that pattern, with one exception:
+\begin{itemize}
+  \item including the pandemic raises the mean hours elasticity from \val{hr_mean_h_excl}
+    to \val{hr_mean_h_full}, a ratio of \val{hr_ret_h}. The mean unemployment elasticity
+    moves from \val{hr_mean_du_excl} to \val{hr_mean_du_full}, a ratio of \val{hr_ret_du};
+  \item in the \val{hr_n_persons} countries with employment in persons, hours per worker
+    take up more of the adjustment (\val{hr_d_hpw}). This comes at the expense of output
+    per hour (\val{hr_d_prod}), not of the number of workers (\val{hr_d_e_dom}), which the
+    explanation predicted would respond less;
+  \item across countries, unemployment is attenuated more where hours per worker rise
+    more, but only weakly (Spearman \val{hr_p3}).
+\end{itemize}
+None of the four registered tests is decided. For the first three, a flaw in the
+registered design made this unavoidable. A bootstrap resample without a pandemic quarter
+(\val{hr_no_pandemic} of them) gives a difference of exactly zero, so the $p$-value could
+not fall below \val{hr_p_floor}. An amendment registered after that result holds the
+number of pandemic quarters fixed in every resample. Under it, the first two patterns are
+supported (Holm $p$ \val{hr_p1_amended_holm} and \val{hr_p2a_amended_holm}), and the
+change in the number of workers is not decided. Job retention would produce this pattern,
+but so would paid absence, and the 2021 survey redesign falls in the same window.
 
 \paragraph{Post-2021 stability.}\label{sec:smallsample} Our first classical pass tested
 whether the sum changed after 2021, with interacted HAC regressions and Holm's step-down
@@ -95,4 +122,12 @@ they pool the country shifts strongly, so they have little power to detect one.
 \caption{Classical two-lag sums ($K=2$): full sample (vertical) against the sample without
 2020--2021 (horizontal). For negative sums, a point above the diagonal is closer to zero
 when the pandemic quarters are included. Focus countries in orange.}\label{fig:pandemic}
+\end{figure}
+
+\begin{figure}[t]\centering
+\includegraphics[width=0.9\textwidth]{fig7_hours.pdf}
+\caption{Okun's law in hours worked (left) and in the unemployment rate (right): two-lag
+elasticities to GDP growth without 2020--2021 (blue) and on the full sample (orange), with
+95\% synchronised block-bootstrap intervals. Belgium publishes no hours. Descriptive; the
+pandemic-excluded hours elasticities are the case study's.}\label{fig:hours}
 \end{figure}
