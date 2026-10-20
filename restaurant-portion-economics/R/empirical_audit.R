@@ -152,49 +152,83 @@ finland_quality_sensitivity <- function(x, discrepancies) {
           "difference_g_diner", "percent_difference")]
 }
 
-#' Inspect a commercial food-waste CSV without presuming its meaning or units.
+#' Inspect a publisher-provided commercial waste CSV without guessing units.
 #'
-#' @param path Existing, publisher-verified CSV filename.
-#' @return List containing a parsed data.frame and field-quality audit.
-#' @details Try explicit CSV delimiters, rejecting ambiguous structures.
-#'   Does not treat any numerical column as kg or EUR without a codebook.
+#' @param path Publisher-verified original CSV file.
+#' @return List containing source data, field audit, delimiter and encoding.
+#' @details The verified URBAN-WASTE file uses a comma delimiter. Its textual
+#'   content may not be UTF-8. Detect full-file UTF-8 validity, otherwise decode
+#'   through Windows-1252, with Latin-1 as a lossless last-resort encoding.
+#'   Reject parse warnings and malformed table structure instead of returning
+#'   truncated or partly decoded data. Never infer waste-weight units.
 inspect_urbanwaste_csv <- function(path) {
   if (!is.character(path) || length(path) != 1L ||
       is.na(path) || !file.exists(path)) {
     stop("Provide a downloaded URBAN-WASTE CSV path.", call. = FALSE)
   }
-  separators <- c(",", ";", "\t")
-  candidates <- lapply(separators, function(sep) {
-    tryCatch(
-      utils::read.table(
-        path, header = TRUE, sep = sep, quote = "\"",
-        check.names = FALSE, stringsAsFactors = FALSE,
-        fileEncoding = "UTF-8-BOM", blank.lines.skip = TRUE,
-        comment.char = "", fill = FALSE
-      ),
-      error = function(e) NULL
-    )
-  })
-  ncols <- vapply(candidates, function(x) {
-    if (is.data.frame(x) && nrow(x) > 0L) ncol(x) else 0L
-  }, integer(1))
-  if (max(ncols) <= 1L || sum(ncols == max(ncols)) != 1L) {
-    stop("Could not resolve a unique tabular CSV structure.", call. = FALSE)
+  bytes_count <- file.info(path)$size
+  if (is.na(bytes_count) || bytes_count <= 0 ||
+      bytes_count > .Machine$integer.max) {
+    stop("CSV file size is invalid or too large to inspect.", call. = FALSE)
   }
-  data <- candidates[[which.max(ncols)]]
-  if (anyNA(names(data)) || anyDuplicated(names(data))) {
-    stop("Missing or duplicated source field labels.", call. = FALSE)
-  }
-  schema <- data.frame(
-    column = names(data),
-    r_type = vapply(data, function(v) paste(class(v), collapse = "/"),
-                    character(1)),
-    rows = rep(nrow(data), ncol(data)),
-    missing = vapply(data, function(v) sum(is.na(v)), integer(1)),
-    distinct_nonmissing = vapply(
-      data, function(v) length(unique(v[!is.na(v)])), integer(1)
-    ),
-    stringsAsFactors = FALSE
+  connection <- file(path, open = "rb")
+  raw_data <- tryCatch(
+    readBin(connection, what = "raw", n = as.integer(bytes_count)),
+    finally = close(connection)
   )
-  list(data = data, schema = schema, separator = separators[[which.max(ncols)]])
+  # Detect byte validity without discarding accents or converting them to
+  # question marks. A truncated input would fail the UTF-8 validity test.
+  utf8_valid <- !is.na(iconv(
+    rawToChar(raw_data), from = "UTF-8", to = "UTF-8", sub = NA_character_
+  ))
+  encodings <- if (utf8_valid) {
+    "UTF-8-BOM"
+  } else {
+    c("CP1252", "latin1")
+  }
+
+  errors <- character()
+  for (encoding in encodings) {
+    parsed <- tryCatch(
+      withCallingHandlers(
+        utils::read.table(
+          path, header = TRUE, sep = ",", quote = "\"",
+          check.names = FALSE, stringsAsFactors = FALSE,
+          fileEncoding = encoding, colClasses = "character",
+          comment.char = "", fill = FALSE, blank.lines.skip = TRUE,
+          na.strings = c("", "NA")
+        ),
+        warning = function(w) stop(conditionMessage(w), call. = FALSE)
+      ),
+      error = function(e) {
+        errors <<- c(errors, paste(encoding, conditionMessage(e)))
+        NULL
+      }
+    )
+    if (is.null(parsed)) next
+    names(parsed) <- sub("^\ufeff", "", names(parsed))
+    if (nrow(parsed) < 1L || ncol(parsed) != 13L ||
+        anyNA(names(parsed)) || anyDuplicated(names(parsed))) {
+      errors <- c(errors, paste(encoding, "unexpected CSV shape or columns"))
+      next
+    }
+    schema <- data.frame(
+      column = names(parsed),
+      r_type = vapply(
+        parsed, function(v) paste(class(v), collapse = "/"), character(1)
+      ),
+      rows = rep(nrow(parsed), ncol(parsed)),
+      missing = vapply(parsed, function(v) sum(is.na(v)), integer(1)),
+      distinct_nonmissing = vapply(
+        parsed, function(v) length(unique(v[!is.na(v)])), integer(1)
+      ),
+      stringsAsFactors = FALSE
+    )
+    return(list(
+      data = parsed, schema = schema,
+      separator = ",", encoding = encoding
+    ))
+  }
+  stop("Cannot decode original commercial CSV without warnings: ",
+       paste(errors, collapse = " | "), call. = FALSE)
 }
