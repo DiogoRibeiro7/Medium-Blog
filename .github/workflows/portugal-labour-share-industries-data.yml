@@ -1,0 +1,60 @@
+name: Refresh portugal-labour-share-industries data
+
+on:
+  push:
+    branches:
+      - portugal-labour-share-industries
+    paths:
+      - 'portugal-labour-share-industries/fetch.py'
+      - '.github/workflows/portugal-labour-share-industries-data.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: portugal-labour-share-industries
+    steps:
+      - name: Check out the branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: portugal-labour-share-industries/requirements.txt
+
+      - name: Install pinned dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Download the Eurostat industry accounts
+        id: fetch
+        continue-on-error: true
+        run: python fetch.py --out data
+
+      - name: Commit the snapshot and its log if they changed
+        if: always()
+        run: |
+          git config user.name "Diogo Ribeiro"
+          git config user.email "diogo_dj@hotmail.com"
+          git add data
+          if git diff --cached --quiet; then
+            echo "Snapshot unchanged."
+          else
+            git commit -m "Refresh Eurostat industry snapshot ($(date -u +%Y-%m-%d))"
+            git push
+          fi
+
+      - name: Fail if any request failed
+        if: steps.fetch.outcome == 'failure'
+        run: |
+          cat data/fetch_log.txt
+          exit 1

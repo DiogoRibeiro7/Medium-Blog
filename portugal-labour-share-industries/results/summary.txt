@@ -1,0 +1,144 @@
+Portugal's labour share by industry
+Sample 1995-2024, annual, current prices, factor-cost value added. Seed 20261021.
+
+0. Data checks
+--------------
+PT: A64 sum vs total max gap B1G 0.001%, D1 0.007%; 61 industries after merges; non-positive value added cells 0
+ES: A64 sum vs total max gap B1G 0.000%, D1 0.000%; 61 industries after merges; non-positive value added cells 0
+IT: A64 sum vs total max gap B1G 0.000%, D1 0.000%; 61 industries after merges; non-positive value added cells 0
+EL: A64 sum vs total max gap B1G 0.000%, D1 0.001%; 61 industries after merges; non-positive value added cells 0
+PT compensation share of factor-cost value added: 52.77% (1995) -> 54.78% (2024)
+merged: C19_C20, H51_H52; dropped: U
+PT max |industry-built share - national accounts share|: 0.004 pp
+non-positive factor-cost value added before merging: PT C19 2020, PT H51 2020, ES C19 2020, ES H51 2020, IT C19 2014, IT C19 2020
+
+1. Self-employment by A10 branch, Portugal (thousand persons; pay per employee, thousand euro)
+----------------------------------------------------------------------------------------------
+1995: self-employed total 937; A 548 (pay 6.6); G-I 123 (pay 11.2); F 74 (pay 7.9); B-E 65 (pay 9.6); M_N 59 (pay 12.3)
+      economy-wide pay per employee 11.9; agriculture share of self-employed 58.5%
+2024: self-employed total 811; A 177 (pay 18.5); M_N 174 (pay 31.3); G-I 169 (pay 29.5); R-U 95 (pay 21.4); F 58 (pay 26.4)
+      economy-wide pay per employee 31.1; agriculture share of self-employed 21.8%
+
+2. Self-employed labour income imputed economy-wide or by industry (factor cost)
+--------------------------------------------------------------------------------
+PT: raw 52.8->54.8 (+2.01); economy_per_person 66.5->64.7 (-1.80); a10_per_person 62.4->63.5 (+1.06); a64_per_person 61.6->62.8 (+1.15); a10_per_hour 62.7->62.4 (-0.35)
+    PT implied labour fraction of mixed income, economy_per_person: 0.80 (1995) -> 0.84 (2024), range 0.73-0.86
+    PT implied labour fraction of mixed income, a10_per_person: 0.56 (1995) -> 0.73 (2024), range 0.46-0.73
+    PT implied labour fraction of mixed income, a64_per_person: 0.51 (1995) -> 0.68 (2024), range 0.41-0.68
+    PT a64 per person without the cap: 61.8->63.1 (+1.21)
+    PT cap binds in 75 of 1830 industry-years, 11 industries; agriculture (A01) years: 23
+    PT of those, compensation alone exceeds value added in 32; by industry: A01 23, M72 9, R93 8, S94 8, C30 7, N79 7, J58 5, N80-N82 5, C29 1, H53 1, M69_M70 1
+    PT A64 hours published for 21 of 63 industries in 1995; complete from 2010
+ES: raw 52.0->52.8 (+0.87); economy_per_person 65.0->61.7 (-3.37); a10_per_person 62.2->60.8 (-1.41); a64_per_person 61.4->60.8 (-0.53); a10_per_hour 63.6->62.8 (-0.86)
+IT: raw 42.5->44.8 (+2.24); economy_per_person 59.6->58.0 (-1.59); a10_per_person 58.1->56.8 (-1.21); a64_per_person 57.4->57.3 (-0.08); a10_per_hour 60.9->58.8 (-2.08)
+EL: raw 32.2->41.8 (+9.58); economy_per_person 54.4->56.9 (+2.51); a10_per_person 46.0->53.7 (+7.72); a64_per_person 44.5->52.9 (+8.47); a10_per_hour 48.4->55.5 (+7.18)
+
+3. Within and between, Portugal (pp; endpoint midpoint decomposition, and chained year by year)
+-----------------------------------------------------------------------------------------------
+1995->2024:
+  economy raw      a10  total +2.01 = within +2.15 + between -0.14  (within 107%; chained within +2.32, between -0.30)
+  economy raw      a21  total +2.01 = within +2.22 + between -0.21  (within 110%; chained within +2.44, between -0.43)
+  economy raw      a64  total +2.01 = within +0.92 + between +1.09  (within 46%; chained within +1.28, between +0.73)
+  economy adjusted a10  total +1.15 = within +2.21 + between -1.07  (within 193%; chained within +2.82, between -1.67)
+  economy adjusted a21  total +1.15 = within +2.08 + between -0.93  (within 181%; chained within +2.82, between -1.67)
+  economy adjusted a64  total +1.15 = within +0.72 + between +0.42  (within 63%; chained within +1.65, between -0.51)
+  market  raw      a10  total +5.60 = within +3.98 + between +1.62  (within 71%; chained within +4.55, between +1.06)
+  market  raw      a21  total +5.60 = within +3.94 + between +1.66  (within 70%; chained within +4.46, between +1.14)
+  market  raw      a64  total +5.60 = within +2.11 + between +3.49  (within 38%; chained within +2.80, between +2.80)
+  market  adjusted a10  total +3.90 = within +3.23 + between +0.67  (within 83%; chained within +4.35, between -0.44)
+  market  adjusted a21  total +3.90 = within +3.14 + between +0.77  (within 80%; chained within +4.32, between -0.42)
+  market  adjusted a64  total +3.90 = within +1.23 + between +2.67  (within 32%; chained within +2.65, between +1.25)
+2010->2013:
+  economy raw      a10  total -2.52 = within -1.20 + between -1.31  (within 48%; chained within -1.22, between -1.30)
+  economy raw      a21  total -2.52 = within -1.07 + between -1.45  (within 42%; chained within -1.08, between -1.43)
+  economy raw      a64  total -2.52 = within -1.05 + between -1.47  (within 42%; chained within -1.05, between -1.47)
+  economy adjusted a10  total -2.21 = within -0.90 + between -1.31  (within 41%; chained within -0.91, between -1.30)
+  economy adjusted a21  total -2.21 = within -0.77 + between -1.44  (within 35%; chained within -0.78, between -1.43)
+  economy adjusted a64  total -2.21 = within -0.71 + between -1.50  (within 32%; chained within -0.71, between -1.50)
+  market  raw      a10  total -1.56 = within -1.25 + between -0.31  (within 80%; chained within -1.24, between -0.32)
+  market  raw      a21  total -1.56 = within -1.10 + between -0.46  (within 71%; chained within -1.10, between -0.46)
+  market  raw      a64  total -1.56 = within -1.07 + between -0.49  (within 69%; chained within -1.04, between -0.52)
+  market  adjusted a10  total -0.96 = within -0.75 + between -0.21  (within 78%; chained within -0.74, between -0.22)
+  market  adjusted a21  total -0.96 = within -0.59 + between -0.37  (within 61%; chained within -0.58, between -0.37)
+  market  adjusted a64  total -0.96 = within -0.51 + between -0.45  (within 53%; chained within -0.48, between -0.47)
+2016->2024:
+  economy raw      a10  total +4.36 = within +3.48 + between +0.88  (within 80%; chained within +3.61, between +0.75)
+  economy raw      a21  total +4.36 = within +3.20 + between +1.16  (within 73%; chained within +3.37, between +0.99)
+  economy raw      a64  total +4.36 = within +2.55 + between +1.81  (within 58%; chained within +2.82, between +1.54)
+  economy adjusted a10  total +5.84 = within +4.57 + between +1.28  (within 78%; chained within +4.71, between +1.14)
+  economy adjusted a21  total +5.84 = within +4.21 + between +1.63  (within 72%; chained within +4.42, between +1.43)
+  economy adjusted a64  total +5.84 = within +3.40 + between +2.45  (within 58%; chained within +3.73, between +2.12)
+  market  raw      a10  total +4.79 = within +4.29 + between +0.50  (within 90%; chained within +4.52, between +0.27)
+  market  raw      a21  total +4.79 = within +3.79 + between +1.00  (within 79%; chained within +4.06, between +0.72)
+  market  raw      a64  total +4.79 = within +2.83 + between +1.95  (within 59%; chained within +3.25, between +1.54)
+  market  adjusted a10  total +6.09 = within +5.25 + between +0.84  (within 86%; chained within +5.50, between +0.58)
+  market  adjusted a21  total +6.09 = within +4.73 + between +1.35  (within 78%; chained within +5.07, between +1.02)
+  market  adjusted a64  total +6.09 = within +3.56 + between +2.53  (within 58%; chained within +4.08, between +2.01)
+
+4. Contributions to 2016->2024, Portugal, compensation share, whole economy
+---------------------------------------------------------------------------
+  K finance and insurance            weight  4.74-> 6.43  share  48.0-> 30.2  within -0.99  between -0.23  total -1.22
+  O public administration            weight  7.36-> 6.46  share  75.2-> 73.4  within -0.13  between -0.20  total -0.32
+  T households as employers          weight  0.68-> 0.58  share 100.0->100.0  within +0.00  between -0.05  total -0.05
+  R arts and recreation              weight  0.85-> 1.22  share  68.8-> 60.6  within -0.09  between +0.04  total -0.04
+  S other services                   weight  1.45-> 1.28  share  49.6-> 46.2  within -0.05  between +0.01  total -0.04
+  P education                        weight  6.09-> 5.27  share  81.1-> 84.9  within +0.22  between -0.25  total -0.03
+  B mining                           weight  0.33-> 0.30  share  40.8-> 46.3  within +0.02  between +0.00  total +0.02
+  A agriculture, forestry, fishing   weight  2.85-> 2.83  share  24.1-> 26.7  within +0.07  between +0.01  total +0.08
+  E water and waste                  weight  1.04-> 0.91  share  45.0-> 55.5  within +0.10  between +0.00  total +0.11
+  I accommodation and food           weight  5.38-> 6.26  share  48.8-> 51.7  within +0.17  between -0.02  total +0.15
+  N administrative and support       weight  3.65-> 4.53  share  65.4-> 66.3  within +0.04  between +0.12  total +0.15
+  H transport and storage            weight  4.73-> 4.99  share  55.2-> 58.5  within +0.16  between +0.01  total +0.17
+  M professional and technical       weight  3.74-> 5.24  share  65.6-> 65.9  within +0.01  between +0.20  total +0.21
+  F construction                     weight  4.01-> 5.11  share  64.1-> 67.6  within +0.16  between +0.15  total +0.31
+  Q health and social work           weight  6.41-> 6.96  share  76.0-> 79.1  within +0.21  between +0.14  total +0.34
+  C manufacturing                    weight 13.99->13.07  share  53.1-> 57.5  within +0.59  between -0.02  total +0.57
+  D electricity and gas              weight  2.75-> 1.61  share   9.6-> 16.5  within +0.15  between +0.45  total +0.60
+  J information and communication    weight  3.45-> 4.97  share  50.4-> 63.9  within +0.57  between +0.07  total +0.64
+  L real estate                      weight 12.01->10.32  share   2.8->  5.5  within +0.30  between +0.82  total +1.12
+  G wholesale and retail trade       weight 14.50->11.70  share  49.0-> 61.9  within +1.69  between -0.08  total +1.61
+  largest A64 within contributions: G46 +0.95 (share 38.1->52.9); G47 +0.51 (share 59.3->68.9); L +0.30 (share 2.8->5.5); C13-C15 +0.22 (share 58.7->69.2); P +0.22 (share 81.1->84.9)
+  most negative A64 within contributions: K64 -0.91 (share 48.9->27.5); O -0.13 (share 75.2->73.4); K65 -0.12 (share 41.4->27.6)
+  largest A64 between contributions: L +0.82 (weight 12.01->10.32); D +0.45 (weight 2.75->1.61); J62_J63 +0.44 (weight 1.36->3.20); G46 +0.16 (weight 7.52->5.26)
+  most negative A64 between contributions: P -0.25 (weight 6.09->5.27); O -0.20 (weight 7.36->6.46); K64 -0.19 (weight 3.57->4.92)
+  market economy, largest A64 between contributions: D +0.71 (weight 4.07->2.28, share 9.6->16.5); J62_J63 +0.60 (weight 2.01->4.55, share 74.1->78.5); G46 +0.27 (weight 11.15->7.47, share 38.1->52.9); M69_M70 +0.18 (weight 2.97->3.86, share 74.1->72.3)
+  market economy, most negative A64 between contributions: K64 -0.25 (weight 5.29->6.99, share 48.9->27.5); C13-C15 -0.15 (weight 3.78->2.45, share 58.7->69.2); G47 -0.13 (weight 8.34->7.20, share 59.3->68.9)
+
+5. Within-industry change against initial pay, A64, 2016->2024
+--------------------------------------------------------------
+    PT low    pay third (13 industries, pay 2016 9.8-16.1k): within contribution +1.04 pp; pay per employee growth (employee-weighted) 69%; value-added-weighted share change +6.0 pp
+    PT middle pay third (23 industries, pay 2016 16.2-23.5k): within contribution +0.65 pp; pay per employee growth (employee-weighted) 54%; value-added-weighted share change +2.6 pp
+    PT high   pay third (25 industries, pay 2016 23.7-49.9k): within contribution +0.86 pp; pay per employee growth (employee-weighted) 37%; value-added-weighted share change +2.1 pp
+    PT economy: pay per employee 51%, value added per person employed 39% (nominal, 2016->2024)
+PT: weighted rank correlation of 2016 pay per employee with share change -0.33 (permutation p 0.1163, 61 industries)
+ES: weighted rank correlation of 2016 pay per employee with share change -0.10 (permutation p 0.6397, 61 industries)
+IT: weighted rank correlation of 2016 pay per employee with share change -0.27 (permutation p 0.1120, 61 industries)
+EL: weighted rank correlation of 2016 pay per employee with share change -0.17 (permutation p 0.3108, 61 industries)
+
+6. Contributions to 2010->2013, Portugal, compensation share, whole economy, A21
+--------------------------------------------------------------------------------
+  G wholesale and retail trade       weight 13.14->14.73  share  54.7-> 46.4  within -1.15  between -0.03
+  L real estate                      weight 10.13->11.86  share   3.2->  2.4  within -0.09  between -0.86
+  F construction                     weight  5.80-> 4.47  share  67.4-> 62.3  within -0.26  between -0.17
+  O public administration            weight  8.41-> 8.07  share  79.1-> 76.8  within -0.19  between -0.09
+  P education                        weight  7.31-> 6.68  share  82.0-> 81.0  within -0.07  between -0.19
+  I accommodation and food           weight  4.80-> 4.94  share  52.2-> 47.8  within -0.21  between -0.00
+  O+P+Q: within -0.25, between -0.27, total -0.52 of -2.52
+  F construction: within -0.26, between -0.17, total -0.43
+
+7. Peers, compensation share, whole economy (pp)
+------------------------------------------------
+1995->2024: PT a10 +2.01 (within +2.15, between -0.14); PT a64 +2.01 (within +0.92, between +1.09); ES a10 +0.87 (within +2.94, between -2.06); ES a64 +0.87 (within +2.36, between -1.48); IT a10 +2.24 (within +3.75, between -1.51); IT a64 +2.24 (within +3.32, between -1.08); EL a10 +9.58 (within +8.25, between +1.32); EL a64 +9.58 (within +8.32, between +1.26)
+2010->2013: PT a10 -2.52 (within -1.20, between -1.31); PT a64 -2.52 (within -1.05, between -1.47); ES a10 -2.85 (within -2.15, between -0.70); ES a64 -2.85 (within -1.98, between -0.88); IT a10 -0.17 (within -0.10, between -0.06); IT a64 -0.17 (within -0.01, between -0.15); EL a10 -0.87 (within -0.01, between -0.87); EL a64 -0.87 (within +0.81, between -1.68)
+2016->2024: PT a10 +4.36 (within +3.48, between +0.88); PT a64 +4.36 (within +2.55, between +1.81); ES a10 +2.44 (within +2.58, between -0.15); ES a64 +2.44 (within +2.18, between +0.25); IT a10 +0.13 (within +0.18, between -0.04); IT a64 +0.13 (within +0.09, between +0.05); EL a10 -1.08 (within -1.43, between +0.35); EL a64 -1.08 (within -0.92, between -0.16)
+
+8. Selected Portuguese industries (million euro; thousand employees; pay per employee, thousand euro)
+-----------------------------------------------------------------------------------------------------
+G46: 2016: value added 12126, compensation 4617, employees 195, share 38.1%, pay 23.7 | 2022: value added 12534, compensation 6062, employees 186, share 48.4%, pay 32.7 | 2023: value added 12876, compensation 6604, employees 184, share 51.3%, pay 35.9 | 2024: value added 13322, compensation 7052, employees 185, share 52.9%, pay 38.1
+    G46 share range 2016-2024: 38.1-52.9%
+G47: 2016: value added 9068, compensation 5377, employees 373, share 59.3%, pay 14.4 | 2022: value added 10759, compensation 7262, employees 358, share 67.5%, pay 20.3 | 2023: value added 11839, compensation 8190, employees 364, share 69.2%, pay 22.5 | 2024: value added 12856, compensation 8853, employees 361, share 68.9%, pay 24.5
+    G47 share range 2016-2024: 59.3-69.2%
+K64: 2016: value added 5757, compensation 2814, employees 56, share 48.9%, pay 49.9 | 2022: value added 7684, compensation 2946, employees 52, share 38.3%, pay 57.0 | 2023: value added 12570, compensation 3197, employees 52, share 25.4%, pay 61.0 | 2024: value added 12467, compensation 3425, employees 53, share 27.5%, pay 64.5
+    K64 share range 2016-2024: 25.4-49.7%
+J62_J63: 2016: value added 2187, compensation 1622, employees 49, share 74.1%, pay 33.4 | 2022: value added 6048, compensation 4799, employees 97, share 79.3%, pay 49.3 | 2023: value added 6963, compensation 5721, employees 104, share 82.2%, pay 55.0 | 2024: value added 8118, compensation 6375, employees 106, share 78.5%, pay 60.3
+    J62_J63 share range 2016-2024: 74.1-82.2%
