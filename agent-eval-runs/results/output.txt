@@ -1,0 +1,157 @@
+
+== 1. The data ==
+6428 runs, 1442 task-model cells over 16 model-domain cells and 20 paired comparisons
+tau2-bench runs: 4448, released at a recorded cost of $875 (agent plus simulated user)
+tau-bench  airline  claude-3.5-sonnet  tasks  50  runs/task 8  pass rate 0.460  always pass 0.16  always fail 0.20  mixed 0.64
+tau-bench  airline  gpt-4o             tasks  50  runs/task 4  pass rate 0.420  always pass 0.20  always fail 0.28  mixed 0.52
+tau-bench  retail   claude-3.5-sonnet  tasks 115  runs/task 8  pass rate 0.692  always pass 0.36  always fail 0.06  mixed 0.58
+tau-bench  retail   gpt-4o             tasks 115  runs/task 4  pass rate 0.604  always pass 0.38  always fail 0.19  mixed 0.43
+tau2-bench airline  claude-3.7-sonnet  tasks  50  runs/task 4  pass rate 0.500  always pass 0.36  always fail 0.32  mixed 0.32  $0.361/run
+tau2-bench airline  gpt-4.1            tasks  50  runs/task 4  pass rate 0.560  always pass 0.40  always fail 0.22  mixed 0.38  $0.066/run
+tau2-bench airline  gpt-4.1-mini       tasks  50  runs/task 4  pass rate 0.505  always pass 0.26  always fail 0.32  mixed 0.42  $0.028/run
+tau2-bench airline  o4-mini            tasks  50  runs/task 4  pass rate 0.590  always pass 0.38  always fail 0.24  mixed 0.38  $0.062/run
+tau2-bench retail   claude-3.7-sonnet  tasks 114  runs/task 4  pass rate 0.787  always pass 0.60  always fail 0.07  mixed 0.33  $0.349/run
+tau2-bench retail   gpt-4.1            tasks 114  runs/task 4  pass rate 0.741  always pass 0.53  always fail 0.10  mixed 0.38  $0.071/run
+tau2-bench retail   gpt-4.1-mini       tasks 114  runs/task 4  pass rate 0.660  always pass 0.39  always fail 0.15  mixed 0.46  $0.030/run
+tau2-bench retail   o4-mini            tasks 114  runs/task 4  pass rate 0.715  always pass 0.46  always fail 0.09  mixed 0.46  $0.072/run
+tau2-bench telecom  claude-3.7-sonnet  tasks 114  runs/task 4  pass rate 0.493  always pass 0.25  always fail 0.30  mixed 0.45  $0.678/run
+tau2-bench telecom  gpt-4.1            tasks 114  runs/task 4  pass rate 0.342  always pass 0.19  always fail 0.50  mixed 0.31  $0.196/run
+tau2-bench telecom  gpt-4.1-mini       tasks 114  runs/task 4  pass rate 0.439  always pass 0.18  always fail 0.32  mixed 0.51  $0.131/run
+tau2-bench telecom  o4-mini            tasks 114  runs/task 4  pass rate 0.421  always pass 0.26  always fail 0.40  mixed 0.33  $0.165/run
+check against the tau-bench README leaderboard (pass^1..pass^4, four decimals):
+  airline  claude-3.5-sonnet  0.4600  0.3257  0.2625  0.2243
+  airline  gpt-4o             0.4200  0.2733  0.2200  0.2000
+  retail   claude-3.5-sonnet  0.6924  0.5761  0.5089  0.4622
+  retail   gpt-4o             0.6043  0.4913  0.4304  0.3826
+
+== 2. Where the run-to-run noise sits ==
+tau-bench  airline  claude-3.5-sonnet  within-task var 0.134  between-task var 0.117  share from the task 0.47
+tau-bench  airline  gpt-4o             within-task var 0.147  between-task var 0.100  share from the task 0.40
+tau-bench  retail   claude-3.5-sonnet  within-task var 0.116  between-task var 0.098  share from the task 0.46
+tau-bench  retail   gpt-4o             within-task var 0.113  between-task var 0.127  share from the task 0.53
+tau2-bench airline  claude-3.7-sonnet  within-task var 0.090  between-task var 0.164  share from the task 0.65
+tau2-bench airline  gpt-4.1            within-task var 0.103  between-task var 0.147  share from the task 0.59
+tau2-bench airline  gpt-4.1-mini       within-task var 0.112  between-task var 0.142  share from the task 0.56
+tau2-bench airline  o4-mini            within-task var 0.107  between-task var 0.139  share from the task 0.56
+tau2-bench retail   claude-3.7-sonnet  within-task var 0.094  between-task var 0.074  share from the task 0.44
+tau2-bench retail   gpt-4.1            within-task var 0.099  between-task var 0.093  share from the task 0.48
+tau2-bench retail   gpt-4.1-mini       within-task var 0.131  between-task var 0.095  share from the task 0.42
+tau2-bench retail   o4-mini            within-task var 0.121  between-task var 0.083  share from the task 0.41
+tau2-bench telecom  claude-3.7-sonnet  within-task var 0.119  between-task var 0.132  share from the task 0.53
+tau2-bench telecom  gpt-4.1            within-task var 0.083  between-task var 0.143  share from the task 0.63
+tau2-bench telecom  gpt-4.1-mini       within-task var 0.140  between-task var 0.107  share from the task 0.43
+tau2-bench telecom  o4-mini            within-task var 0.092  between-task var 0.153  share from the task 0.62
+share of one run's variance that belongs to the task: 0.40 to 0.65, median 0.51
+passes out of 4, share of task-model cells (tau2-bench, 1,112 cells):
+  0/4  observed 0.246   if every run were an independent coin flip at the model's rate 0.059
+  1/4  observed 0.116   if every run were an independent coin flip at the model's rate 0.196
+  2/4  observed 0.111   if every run were an independent coin flip at the model's rate 0.306
+  3/4  observed 0.172   if every run were an independent coin flip at the model's rate 0.293
+  4/4  observed 0.355   if every run were an independent coin flip at the model's rate 0.147
+all or nothing (0/4 or 4/4): observed 0.60, independent-runs model 0.21
+
+== 3. Two questions, three standard errors ==
+tau-bench  airline    Sonnet 3.5 - GPT-4o       diff +0.040  SE these tasks 0.033 (z +1.2)  SE binomial 0.043 (z +0.9)  SE tasks like these 0.048 (z +0.8)  sd of per-task difference 0.25
+tau-bench  retail     Sonnet 3.5 - GPT-4o       diff +0.088  SE these tasks 0.019 (z +4.6)  SE binomial 0.027 (z +3.2)  SE tasks like these 0.032 (z +2.8)  sd of per-task difference 0.27
+tau2-bench airline    Sonnet 3.7 - GPT-4.1      diff -0.060  SE these tasks 0.031 (z -1.9)  SE binomial 0.050 (z -1.2)  SE tasks like these 0.057 (z -1.0)  sd of per-task difference 0.34
+tau2-bench airline    Sonnet 3.7 - GPT-4.1-mini diff -0.005  SE these tasks 0.032 (z -0.2)  SE binomial 0.050 (z -0.1)  SE tasks like these 0.058 (z -0.1)  sd of per-task difference 0.34
+tau2-bench airline    Sonnet 3.7 - o4-mini      diff -0.090  SE these tasks 0.031 (z -2.9)  SE binomial 0.050 (z -1.8)  SE tasks like these 0.062 (z -1.4)  sd of per-task difference 0.38
+tau2-bench airline       GPT-4.1 - GPT-4.1-mini diff +0.055  SE these tasks 0.033 (z +1.7)  SE binomial 0.050 (z +1.1)  SE tasks like these 0.056 (z +1.0)  sd of per-task difference 0.32
+tau2-bench airline       GPT-4.1 - o4-mini      diff -0.030  SE these tasks 0.032 (z -0.9)  SE binomial 0.049 (z -0.6)  SE tasks like these 0.052 (z -0.6)  sd of per-task difference 0.29
+tau2-bench airline  GPT-4.1-mini - o4-mini      diff -0.085  SE these tasks 0.033 (z -2.6)  SE binomial 0.050 (z -1.7)  SE tasks like these 0.058 (z -1.5)  sd of per-task difference 0.34
+tau2-bench retail     Sonnet 3.7 - GPT-4.1      diff +0.046  SE these tasks 0.021 (z +2.2)  SE binomial 0.028 (z +1.6)  SE tasks like these 0.033 (z +1.4)  sd of per-task difference 0.27
+tau2-bench retail     Sonnet 3.7 - GPT-4.1-mini diff +0.127  SE these tasks 0.022 (z +5.7)  SE binomial 0.029 (z +4.3)  SE tasks like these 0.033 (z +3.8)  sd of per-task difference 0.27
+tau2-bench retail     Sonnet 3.7 - o4-mini      diff +0.072  SE these tasks 0.022 (z +3.3)  SE binomial 0.029 (z +2.5)  SE tasks like these 0.035 (z +2.1)  sd of per-task difference 0.29
+tau2-bench retail        GPT-4.1 - GPT-4.1-mini diff +0.081  SE these tasks 0.022 (z +3.6)  SE binomial 0.030 (z +2.7)  SE tasks like these 0.026 (z +3.1)  sd of per-task difference 0.14
+tau2-bench retail        GPT-4.1 - o4-mini      diff +0.026  SE these tasks 0.022 (z +1.2)  SE binomial 0.029 (z +0.9)  SE tasks like these 0.037 (z +0.7)  sd of per-task difference 0.31
+tau2-bench retail   GPT-4.1-mini - o4-mini      diff -0.055  SE these tasks 0.024 (z -2.3)  SE binomial 0.031 (z -1.8)  SE tasks like these 0.034 (z -1.6)  sd of per-task difference 0.26
+tau2-bench telecom    Sonnet 3.7 - GPT-4.1      diff +0.151  SE these tasks 0.021 (z +7.2)  SE binomial 0.032 (z +4.7)  SE tasks like these 0.033 (z +4.6)  sd of per-task difference 0.27
+tau2-bench telecom    Sonnet 3.7 - GPT-4.1-mini diff +0.055  SE these tasks 0.024 (z +2.3)  SE binomial 0.033 (z +1.7)  SE tasks like these 0.027 (z +2.0)  sd of per-task difference 0.14
+tau2-bench telecom    Sonnet 3.7 - o4-mini      diff +0.072  SE these tasks 0.022 (z +3.4)  SE binomial 0.033 (z +2.2)  SE tasks like these 0.028 (z +2.6)  sd of per-task difference 0.19
+tau2-bench telecom       GPT-4.1 - GPT-4.1-mini diff -0.096  SE these tasks 0.022 (z -4.4)  SE binomial 0.032 (z -3.0)  SE tasks like these 0.030 (z -3.2)  sd of per-task difference 0.22
+tau2-bench telecom       GPT-4.1 - o4-mini      diff -0.079  SE these tasks 0.020 (z -4.0)  SE binomial 0.032 (z -2.5)  SE tasks like these 0.034 (z -2.3)  sd of per-task difference 0.29
+tau2-bench telecom  GPT-4.1-mini - o4-mini      diff +0.018  SE these tasks 0.023 (z +0.8)  SE binomial 0.033 (z +0.5)  SE tasks like these 0.028 (z +0.6)  sd of per-task difference 0.17
+verdict changes with the question: tau2-bench airline Sonnet 3.7 - o4-mini (z -2.9 versus -1.4)
+verdict changes with the question: tau2-bench airline GPT-4.1-mini - o4-mini (z -2.6 versus -1.5)
+verdict changes with the question: tau2-bench retail Sonnet 3.7 - GPT-4.1 (z +2.2 versus +1.4)
+verdict changes with the question: tau2-bench retail GPT-4.1-mini - o4-mini (z -2.3 versus -1.6)
+comparisons with |z| > 1.96, of 20: these tasks 13, binomial 8, tasks like these 9
+binomial SE lies strictly between the two task-level SEs in 15 of 20 comparisons
+ratio of the two task-level SEs (tasks like these / these tasks): 1.14 to 1.98, median 1.59
+sd of the true per-task difference: 0.14 to 0.38
+tasks where the first model does better / worse (averaged over its runs), median over comparisons: 0.32 / 0.27
+
+== 4. Checks on the assumptions ==
+tau-bench  airline  claude-3.5-sonnet  whole-run pass rates 0.500 0.400 0.440 0.480 0.460 0.460 0.420 0.520  spread observed / predicted 0.60
+tau-bench  airline  gpt-4o             whole-run pass rates 0.420 0.440 0.400 0.420  spread observed / predicted 0.09
+tau-bench  retail   claude-3.5-sonnet  whole-run pass rates 0.730 0.704 0.704 0.687 0.704 0.609 0.748 0.652  spread observed / predicted 1.92
+tau-bench  retail   gpt-4o             whole-run pass rates 0.617 0.617 0.600 0.583  spread observed / predicted 0.28
+tau2-bench airline  claude-3.7-sonnet  whole-run pass rates 0.540 0.500 0.500 0.460  spread observed / predicted 0.59
+tau2-bench airline  gpt-4.1            whole-run pass rates 0.580 0.540 0.600 0.520  spread observed / predicted 0.65
+tau2-bench airline  gpt-4.1-mini       whole-run pass rates 0.500 0.520 0.500 0.500  spread observed / predicted 0.04
+tau2-bench airline  o4-mini            whole-run pass rates 0.560 0.620 0.660 0.520  spread observed / predicted 1.81
+tau2-bench retail   claude-3.7-sonnet  whole-run pass rates 0.798 0.781 0.781 0.789  spread observed / predicted 0.09
+tau2-bench retail   gpt-4.1            whole-run pass rates 0.737 0.711 0.754 0.763  spread observed / predicted 0.62
+tau2-bench retail   gpt-4.1-mini       whole-run pass rates 0.684 0.675 0.605 0.675  spread observed / predicted 1.18
+tau2-bench retail   o4-mini            whole-run pass rates 0.693 0.728 0.737 0.702  spread observed / predicted 0.41
+tau2-bench telecom  claude-3.7-sonnet  whole-run pass rates 0.439 0.526 0.509 0.500  spread observed / predicted 1.39
+tau2-bench telecom  gpt-4.1            whole-run pass rates 0.368 0.325 0.351 0.325  spread observed / predicted 0.63
+tau2-bench telecom  gpt-4.1-mini       whole-run pass rates 0.430 0.421 0.474 0.430  spread observed / predicted 0.46
+tau2-bench telecom  o4-mini            whole-run pass rates 0.430 0.430 0.412 0.412  spread observed / predicted 0.13
+pooled over the 16 cells: chi-square 42.7 on 56 df, observed / predicted 0.76, two-sided p 0.19
+simulator fitted on runs 1-2, predicting runs 3-4 (share of task-model cells):
+  both fail   predicted 0.320  observed 0.316
+  one passes  predicted 0.224  observed 0.232
+  both pass   predicted 0.457  observed 0.452
+
+== 5. Three runs and a bootstrap ==
+a percentile bootstrap over three runs: the 2.5% point is the smallest run, because all three resamples
+  equal the smallest with chance 1/27 = 0.037 > 0.025, so the 95% interval is the range of the three runs,
+  which holds a symmetric quantity's centre with chance 1 - 2(1/2)^3 = 0.75
+  the honest t multiplier with three runs is 4.30, not 1.96
+simulation: 18 tau2 comparisons x 300 replicates, three runs per task per model
+one model's mean, percentile bootstrap over its three runs: coverage 0.743
+  Bootstrap over whole runs              covers these-tasks difference 0.811   tasks-like-these difference 0.595   median width 0.080
+  t-interval over whole runs             covers these-tasks difference 0.963   tasks-like-these difference 0.867   median width 0.166
+  Binomial, runs independent             covers these-tasks difference 0.994   tasks-like-these difference 0.909   median width 0.147
+  Task-level, these tasks                covers these-tasks difference 0.948   tasks-like-these difference 0.760   median width 0.104
+  Task-level paired, tasks like these    covers these-tasks difference 0.998   tasks-like-these difference 0.950   median width 0.169
+  with  5 runs per task: bootstrap over whole runs covers the these-tasks difference 0.890 (one model's mean 0.842); task-level these-tasks interval 0.960
+  with 10 runs per task: bootstrap over whole runs covers the these-tasks difference 0.925 (one model's mean 0.897); task-level these-tasks interval 0.950
+  with 20 runs per task: bootstrap over whole runs covers the these-tasks difference 0.942 (one model's mean 0.939); task-level these-tasks interval 0.958
+
+== 6. How many runs, and how many dollars ==
+minimum detectable difference at 80% power, two-sided 5%: MDD = 2.80 x SE, with
+  SE(these tasks) = sqrt(W / (n r))   and   SE(tasks like these) = sqrt(sigma_Delta^2 / n + W / (n r))
+airline  n =  50 tasks  median W 0.206  median sigma_Delta 0.340  MDD at 4 runs: these tasks 0.090, tasks like these 0.162; floor with unlimited runs 0.135
+   detect 0.02 on these tasks:   80.8 runs per task per model, $364 to $1,727 for one comparison  |  on tasks like these at 4 runs: 3,283 tasks; reachable with these 50 tasks and unlimited runs: False
+   detect 0.05 on these tasks:   12.9 runs per task per model, $58 to $276 for one comparison  |  on tasks like these at 4 runs: 525 tasks; reachable with these 50 tasks and unlimited runs: False
+   detect 0.10 on these tasks:    3.2 runs per task per model, $15 to $69 for one comparison  |  on tasks like these at 4 runs: 131 tasks; reachable with these 50 tasks and unlimited runs: False
+     Sonnet 3.7 - GPT-4.1      observed |diff| 0.060: runs per task to resolve it on these tasks 8.4; resolvable for tasks like these with unlimited runs: False
+     Sonnet 3.7 - GPT-4.1-mini observed |diff| 0.005: runs per task to resolve it on these tasks 1,266.3; resolvable for tasks like these with unlimited runs: False
+     Sonnet 3.7 - o4-mini      observed |diff| 0.090: runs per task to resolve it on these tasks 3.8; resolvable for tasks like these with unlimited runs: False
+        GPT-4.1 - GPT-4.1-mini observed |diff| 0.055: runs per task to resolve it on these tasks 11.2; resolvable for tasks like these with unlimited runs: False
+        GPT-4.1 - o4-mini      observed |diff| 0.030: runs per task to resolve it on these tasks 36.6; resolvable for tasks like these with unlimited runs: False
+   GPT-4.1-mini - o4-mini      observed |diff| 0.085: runs per task to resolve it on these tasks 4.7; resolvable for tasks like these with unlimited runs: False
+retail   n = 114 tasks  median W 0.223  median sigma_Delta 0.269  MDD at 4 runs: these tasks 0.062, tasks like these 0.094; floor with unlimited runs 0.071
+   detect 0.02 on these tasks:   38.4 runs per task per model, $443 to $1,838 for one comparison  |  on tasks like these at 4 runs: 2,517 tasks; reachable with these 114 tasks and unlimited runs: False
+   detect 0.05 on these tasks:    6.1 runs per task per model, $71 to $294 for one comparison  |  on tasks like these at 4 runs: 403 tasks; reachable with these 114 tasks and unlimited runs: False
+   detect 0.10 on these tasks:    1.5 runs per task per model, $18 to $74 for one comparison  |  on tasks like these at 4 runs: 101 tasks; reachable with these 114 tasks and unlimited runs: True
+     Sonnet 3.7 - GPT-4.1      observed |diff| 0.046: runs per task to resolve it on these tasks 6.3; resolvable for tasks like these with unlimited runs: False
+     Sonnet 3.7 - GPT-4.1-mini observed |diff| 0.127: runs per task to resolve it on these tasks 1.0; resolvable for tasks like these with unlimited runs: True
+     Sonnet 3.7 - o4-mini      observed |diff| 0.072: runs per task to resolve it on these tasks 2.8; resolvable for tasks like these with unlimited runs: False
+        GPT-4.1 - GPT-4.1-mini observed |diff| 0.081: runs per task to resolve it on these tasks 2.4; resolvable for tasks like these with unlimited runs: True
+        GPT-4.1 - o4-mini      observed |diff| 0.026: runs per task to resolve it on these tasks 21.9; resolvable for tasks like these with unlimited runs: False
+   GPT-4.1-mini - o4-mini      observed |diff| 0.055: runs per task to resolve it on these tasks 5.8; resolvable for tasks like these with unlimited runs: False
+telecom  n = 114 tasks  median W 0.217  median sigma_Delta 0.206  MDD at 4 runs: these tasks 0.061, tasks like these 0.082; floor with unlimited runs 0.054
+   detect 0.02 on these tasks:   37.4 runs per task per model, $1,263 to $3,733 for one comparison  |  on tasks like these at 4 runs: 1,902 tasks; reachable with these 114 tasks and unlimited runs: False
+   detect 0.05 on these tasks:    6.0 runs per task per model, $202 to $597 for one comparison  |  on tasks like these at 4 runs: 304 tasks; reachable with these 114 tasks and unlimited runs: False
+   detect 0.10 on these tasks:    1.5 runs per task per model, $51 to $149 for one comparison  |  on tasks like these at 4 runs: 76 tasks; reachable with these 114 tasks and unlimited runs: True
+     Sonnet 3.7 - GPT-4.1      observed |diff| 0.151: runs per task to resolve it on these tasks 0.6; resolvable for tasks like these with unlimited runs: True
+     Sonnet 3.7 - GPT-4.1-mini observed |diff| 0.055: runs per task to resolve it on these tasks 5.9; resolvable for tasks like these with unlimited runs: True
+     Sonnet 3.7 - o4-mini      observed |diff| 0.072: runs per task to resolve it on these tasks 2.8; resolvable for tasks like these with unlimited runs: True
+        GPT-4.1 - GPT-4.1-mini observed |diff| 0.096: runs per task to resolve it on these tasks 1.7; resolvable for tasks like these with unlimited runs: True
+        GPT-4.1 - o4-mini      observed |diff| 0.079: runs per task to resolve it on these tasks 1.9; resolvable for tasks like these with unlimited runs: True
+   GPT-4.1-mini - o4-mini      observed |diff| 0.018: runs per task to resolve it on these tasks 52.0; resolvable for tasks like these with unlimited runs: False
+
+figures written: fig1_pass_counts.png, fig2_two_questions.png, fig3_coverage.png, fig4_runs_needed.png

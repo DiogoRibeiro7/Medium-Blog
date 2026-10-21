@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite it as below."
+title: "How many runs does an agent comparison need? Variance components from released tau-bench runs"
+authors:
+  - family-names: Ribeiro
+    given-names: Diogo
+    email: dfr@esmad.ipp.pt
+    orcid: "https://orcid.org/0009-0001-2022-7072"
+version: 0.1.0
+date-released: 2026-10-21
+license: Apache-2.0
+repository-code: "https://github.com/DiogoRibeiro7/Medium-Blog/tree/main/agent-eval-runs"
+references:
+  - type: software
+    title: "tau-bench"
+    authors:
+      - name: "Sierra Research"
+    repository-code: "https://github.com/sierra-research/tau-bench"
+    license: MIT
+  - type: software
+    title: "tau2-bench"
+    authors:
+      - name: "Sierra Research"
+    repository-code: "https://github.com/sierra-research/tau2-bench"
+    license: MIT
