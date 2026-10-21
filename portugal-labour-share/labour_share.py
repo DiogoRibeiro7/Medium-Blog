@@ -367,22 +367,28 @@ def fixed_break(y: np.ndarray, years: np.ndarray, year: int) -> tuple[float, flo
 # ---------------------------------------------------------------------------
 
 
-def government_shift_share(pt: pd.DataFrame, c: Components, start: int, end: int) -> dict[str, float]:
+def government_shift_share(
+    pt: pd.DataFrame, c: Components, start: int, end: int, numerator: str = "raw"
+) -> dict[str, float]:
     """Split the change in the factor-cost labour share between two years.
 
     With w the government's share of factor income, g the government labour
     share and p the labour share of the rest of the economy, LS = w g + (1-w) p
     and, with bars for two-year averages,
     dLS = w_bar dg + (1 - w_bar) dp + dw (g_bar - p_bar), exactly.
+    The self-employed labour income of ``numerator`` belongs to the rest of
+    the economy, since general government has no self-employed.
     """
     idx = {int(y): i for i, y in enumerate(pt["year"])}
     i, j = idx[start], idx[end]
+    extra = c.self_employed_labour[numerator]
+    total = (c.compensation + extra) / c.factor_cost
     w = c.government_factor_income / c.factor_cost
     g = c.government_compensation / c.government_factor_income
-    p = (c.compensation - c.government_compensation) / (c.factor_cost - c.government_factor_income)
+    p = (c.compensation - c.government_compensation + extra) / (c.factor_cost - c.government_factor_income)
     w_bar, g_bar, p_bar = (w[i] + w[j]) / 2, (g[i] + g[j]) / 2, (p[i] + p[j]) / 2
     parts = {
-        "total": 100 * (c.compensation[j] / c.factor_cost[j] - c.compensation[i] / c.factor_cost[i]),
+        "total": 100 * (total[j] - total[i]),
         "within_government": 100 * w_bar * (g[j] - g[i]),
         "within_rest": 100 * (1 - w_bar) * (p[j] - p[i]),
         "between": 100 * (w[j] - w[i]) * (g_bar - p_bar),
@@ -531,6 +537,17 @@ def main() -> None:
             f"rest {parts['rest_labour_share_start']:.1f} -> {parts['rest_labour_share_end']:.1f}; "
             f"government weight {parts['government_weight_start']:.1f} -> {parts['government_weight_end']:.1f}"
         )
+    for a, b in ((2010, 2012), (2010, 2013)):
+        shares = []
+        for num in NUMERATORS:
+            parts = government_shift_share(pt, c, a, b, num)
+            shares.append(100 * (parts["within_government"] + parts["between"]) / parts["total"])
+        rep.add(
+            f"{a}->{b}, government contribution across the six numerators at factor cost: "
+            f"{min(shares):.0f}% to {max(shares):.0f}% (compensation only {shares[0]:.0f}%)"
+        )
+    g_low = int(g.to_numpy().argmin())
+    rep.add(f"government labour share lowest in {years[g_low]} ({g.iloc[g_low]:.1f}%)")
     d_gov = pt["D1PAY"].iloc[idx[2012]] - pt["D1PAY"].iloc[idx[2010]]
     d_all = pt["D1"].iloc[idx[2012]] - pt["D1"].iloc[idx[2010]]
     d_emp = 100 * (pt["SAL_DC_THS_PER"].iloc[idx[2012]] / pt["SAL_DC_THS_PER"].iloc[idx[2010]] - 1)
@@ -570,6 +587,8 @@ def main() -> None:
     selection = pd.DataFrame(selection_rows)
     selection.to_csv(RESULTS / "break_selection.csv", index=False)
     rep.add(f"distinct years selected across the {len(selection)} cases: {sorted(selection['break_year'].unique().tolist())}")
+    scan = break_designs(years, "level")
+    rep.add(f"candidate years on the full sample: {len(scan.candidates)} ({years[scan.candidates[0]]}-{years[scan.candidates[-1]]})")
 
     rep.add()
     rep.add(f"Full sample {FIRST_YEAR}-{LAST_YEAR}, with bootstrap:")

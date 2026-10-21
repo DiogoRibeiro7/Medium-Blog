@@ -61,6 +61,9 @@ labour share outside government (raw): 46.5% -> 50.3%
     government labour share 80.8 -> 78.3; rest 46.8 -> 45.6; government weight 18.0 -> 17.0
 2010->2013: factor-cost share -2.52 pp = within government -0.44 + within rest -1.72 + smaller government -0.36; government contribution 32%
     government labour share 82.4 -> 80.0; rest 46.9 -> 44.8; government weight 18.8 -> 17.7
+2010->2012, government contribution across the six numerators at factor cost: 39% to 56% (compensation only 56%)
+2010->2013, government contribution across the six numerators at factor cost: 19% to 32% (compensation only 32%)
+government labour share lowest in 2012 (78.3%)
 2010->2012: compensation -9465 MEUR, of which government -4922 MEUR (52%); employees -6.7%
 2010->2012 change at market prices -2.43 pp, at factor cost -2.43 pp
 net taxes on production and imports, % of GDP: 2010 11.61, 2011 12.10, 2012 12.17, 2013 12.14
@@ -80,6 +83,7 @@ Selected year by specification and sample end (no bootstrap):
   end 2024, level      : raw/market_prices=2020  raw/factor_cost=2020  raw/ex_government=2020  employment/market_prices=2020  employment/ex_government=2020
   end 2024, level_slope: raw/market_prices=2012  raw/factor_cost=2012  raw/ex_government=2013  employment/market_prices=2014  employment/ex_government=2014
 distinct years selected across the 45 cases: [2002, 2007, 2011, 2012, 2013, 2014, 2015, 2020]
+candidate years on the full sample: 23 (1999-2021)
 
 Full sample 1995-2024, with bootstrap:
   raw/market_prices        level        year 2020  shift +3.57  naive p 2.3e-08  supF 41.3  boot p 0.030 (rho 0.66) / 0.114 (rho 0.83)  5% crit 36.7 / 51.1
