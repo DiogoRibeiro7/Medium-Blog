@@ -50,9 +50,9 @@ Smoothed group: DE, NL (trend), EE, PT (centred moving average), HR, LU (moving 
 
 ## Interpretation (rules fixed in the protocol)
 
-- **Inheritance (Q1):** none of the six smoothed countries' quarterly rates is classed as the average of its monthly rate, so the quarterly results do not inherit their monthly smoothing by construction.
+- **Inheritance (Q1):** none of the six smoothed countries' quarterly rates is classed as the average of its monthly rate. The rule also rejects 5 of the 8 direct-estimate countries (EL, FI, HU, IT, RO), so it does not separate smoothed from direct series and cannot show by itself that the quarterly rate does not inherit monthly smoothing. Eurostat's metadata for `une_rt_m` (section 18.5) is the better evidence: it benchmarks the monthly series to the quarterly survey figures, not the reverse. (Added after an external review; the rule is the registered one.)
 - **Persistence (P1):** not determined. The smoothing remains a documented caveat for the persistence misfit.
-- **Timing (P2):** not determined; the Dutch quarterly rate is not classed as the average of its monthly rate. No evidence that smoothing drives the Dutch delayed response.
+- **Timing (P2):** not determined; the Dutch quarterly rate is not classed as the average of its monthly rate. No evidence that smoothing drives the Dutch delayed response, though 6 smoothed countries against 8 direct ones give little power to find any.
 - **Status:** statements about the data, not about labour markets.
 
 ## Countries

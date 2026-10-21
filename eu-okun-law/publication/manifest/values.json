@@ -251,6 +251,12 @@
   "raw": 7,
   "source": "docs/bayes/country_estimates.csv"
  },
+ "by_unpooled_not_ols": {
+  "tex": "Belgium and Germany",
+  "md": "Belgium and Germany",
+  "raw": "Belgium and Germany",
+  "source": "docs/bayes/country_estimates.csv"
+ },
  "by_unpooled_ols": {
   "tex": "HU, IE, NL, PL and RO",
   "md": "HU, IE, NL, PL and RO",
@@ -707,6 +713,30 @@
   "raw": 0,
   "source": "docs/heterogeneity/predictions.csv"
  },
+ "cs_epl_max_n": {
+  "tex": "20",
+  "md": "20",
+  "raw": 20,
+  "source": "docs/heterogeneity/correlations.csv"
+ },
+ "cs_eplr_by_holm": {
+  "tex": "$0.940$",
+  "md": "0.940",
+  "raw": 0.94,
+  "source": "docs/heterogeneity/correlations.csv"
+ },
+ "cs_eplr_by_n": {
+  "tex": "20",
+  "md": "20",
+  "raw": "20",
+  "source": "docs/heterogeneity/correlations.csv"
+ },
+ "cs_eplr_by_rho": {
+  "tex": "$-0.31$",
+  "md": "−0.31",
+  "raw": -0.30977443609022554,
+  "source": "docs/heterogeneity/correlations.csv"
+ },
  "cs_eplr_cl_holm": {
   "tex": "$0.035$",
   "md": "0.035",
@@ -771,6 +801,54 @@
   "tex": "2",
   "md": "2",
   "raw": 2,
+  "source": "docs/heterogeneity/correlations.csv"
+ },
+ "cs_n_epl": {
+  "tex": "6",
+  "md": "6",
+  "raw": 6,
+  "source": "docs/heterogeneity/correlations.csv"
+ },
+ "cs_n_epl_decided": {
+  "tex": "2",
+  "md": "2",
+  "raw": 2,
+  "source": "docs/heterogeneity/correlations.csv"
+ },
+ "cs_n_epl_decided_primary": {
+  "tex": "0",
+  "md": "0",
+  "raw": 0,
+  "source": "docs/heterogeneity/correlations.csv"
+ },
+ "cs_n_epl_negative": {
+  "tex": "6",
+  "md": "6",
+  "raw": 6,
+  "source": "docs/heterogeneity/correlations.csv"
+ },
+ "cs_n_indicators": {
+  "tex": "6",
+  "md": "6",
+  "raw": 6,
+  "source": "docs/heterogeneity/correlations.csv"
+ },
+ "cs_n_pre2020_only": {
+  "tex": "2",
+  "md": "2",
+  "raw": 2,
+  "source": "docs/heterogeneity/predictions.csv"
+ },
+ "cs_n_pt_unavailable": {
+  "tex": "2",
+  "md": "2",
+  "raw": 2,
+  "source": "docs/heterogeneity/predictions.csv"
+ },
+ "cs_n_variants": {
+  "tex": "3",
+  "md": "3",
+  "raw": 3,
   "source": "docs/heterogeneity/correlations.csv"
  },
  "cs_p11": {
@@ -1271,6 +1349,12 @@
   "raw": "24",
   "source": "docs/forecast-comparison/comparisons.csv"
  },
+ "fcx_total": {
+  "tex": "5",
+  "md": "5",
+  "raw": 5,
+  "source": "docs/forecast-comparison/comparisons.csv"
+ },
  "fcx_zero": {
   "tex": "$-3.5$\\%",
   "md": "−3.5%",
@@ -1547,6 +1631,30 @@
   "raw": "not determined",
   "source": "docs/gdp-measurement/predictions.csv"
  },
+ "gm_rho_below_ie": {
+  "tex": "Sweden",
+  "md": "Sweden",
+  "raw": "Sweden",
+  "source": "docs/gdp-measurement/statistics.csv"
+ },
+ "gm_rho_dk": {
+  "tex": "$-0.22$",
+  "md": "−0.22",
+  "raw": -0.22055976201667826,
+  "source": "docs/gdp-measurement/statistics.csv"
+ },
+ "gm_rho_ee": {
+  "tex": "$-0.25$",
+  "md": "−0.25",
+  "raw": -0.25452391109746186,
+  "source": "docs/gdp-measurement/statistics.csv"
+ },
+ "gm_rho_se": {
+  "tex": "$-0.35$",
+  "md": "−0.35",
+  "raw": -0.34647937923754074,
+  "source": "docs/gdp-measurement/statistics.csv"
+ },
  "gm_supported": {
   "tex": "1",
   "md": "1",
@@ -1725,6 +1833,12 @@
   "tex": "26",
   "md": "26",
   "raw": 26,
+  "source": "docs/hours/summary.json"
+ },
+ "hr_n_no_persons": {
+  "tex": "7",
+  "md": "7",
+  "raw": 7,
   "source": "docs/hours/summary.json"
  },
  "hr_n_persons": {
@@ -2045,6 +2159,126 @@
   "raw": 27,
   "source": "snapshot manifest"
  },
+ "nr_bh_reg": {
+  "tex": "19",
+  "md": "19",
+  "raw": 19,
+  "source": "docs/null-residuals/summary.json"
+ },
+ "nr_bh_unres": {
+  "tex": "19",
+  "md": "19",
+  "raw": 19,
+  "source": "docs/null-residuals/summary.json"
+ },
+ "nr_by_reg": {
+  "tex": "1",
+  "md": "1",
+  "raw": 1,
+  "source": "docs/null-residuals/summary.json"
+ },
+ "nr_by_unres": {
+  "tex": "7",
+  "md": "7",
+  "raw": 7,
+  "source": "docs/null-residuals/summary.json"
+ },
+ "nr_holm_block_reg": {
+  "tex": "4",
+  "md": "4",
+  "raw": 4,
+  "source": "docs/null-residuals/summary.json"
+ },
+ "nr_holm_reg": {
+  "tex": "1",
+  "md": "1",
+  "raw": 1,
+  "source": "docs/null-residuals/summary.json"
+ },
+ "nr_holm_sieve_reg": {
+  "tex": "4",
+  "md": "4",
+  "raw": 4,
+  "source": "docs/null-residuals/summary.json"
+ },
+ "nr_holm_unres": {
+  "tex": "7",
+  "md": "7",
+  "raw": 7,
+  "source": "docs/null-residuals/summary.json"
+ },
+ "nr_size_boot_reg_unres": {
+  "tex": "$5.1$\\%",
+  "md": "5.1%",
+  "raw": 0.05092592592592594,
+  "source": "docs/null-residuals/summary.json"
+ },
+ "nr_size_boot_unres": {
+  "tex": "$8.0$\\%",
+  "md": "8.0%",
+  "raw": 0.08037037037037038,
+  "source": "docs/null-residuals/summary.json"
+ },
+ "nr_size_normal_unres": {
+  "tex": "$16.6$\\%",
+  "md": "16.6%",
+  "raw": 0.16555555555555554,
+  "source": "docs/null-residuals/summary.json"
+ },
+ "nr_ss_bh_reg": {
+  "tex": "0",
+  "md": "0",
+  "raw": 0,
+  "source": "docs/null-residuals/summary.json"
+ },
+ "nr_ss_bh_unres": {
+  "tex": "9",
+  "md": "9",
+  "raw": 9,
+  "source": "docs/null-residuals/summary.json"
+ },
+ "nr_ss_by_reg": {
+  "tex": "0",
+  "md": "0",
+  "raw": 0,
+  "source": "docs/null-residuals/summary.json"
+ },
+ "nr_ss_by_unres": {
+  "tex": "0",
+  "md": "0",
+  "raw": 0,
+  "source": "docs/null-residuals/summary.json"
+ },
+ "nr_ss_holm_reg": {
+  "tex": "0",
+  "md": "0",
+  "raw": 0,
+  "source": "docs/null-residuals/summary.json"
+ },
+ "nr_ss_holm_unres": {
+  "tex": "0",
+  "md": "0",
+  "raw": 0,
+  "source": "docs/null-residuals/summary.json"
+ },
+ "nr_ss_size_boot_reg_unres": {
+  "tex": "$4.7$\\%",
+  "md": "4.7%",
+  "raw": 0.04666666666666666,
+  "source": "docs/null-residuals/summary.json"
+ },
+ "nr_ss_size_boot_unres": {
+  "tex": "$8.6$\\%",
+  "md": "8.6%",
+  "raw": 0.08564814814814817,
+  "source": "docs/null-residuals/summary.json"
+ },
+ "nr_ss_size_normal_unres": {
+  "tex": "$18.1$\\%",
+  "md": "18.1%",
+  "raw": 0.18074074074074073,
+  "source": "docs/null-residuals/summary.json"
+ },
  "pair_ES_LU": {
   "tex": "survives",
   "md": "survives",
@@ -2159,6 +2393,18 @@
   "raw": 0.031,
   "source": "docs/BAYES_REGIMES.md"
  },
+ "sm_direct_not_average": {
+  "tex": "5",
+  "md": "5",
+  "raw": 5,
+  "source": "docs/smoothing/inheritance.csv"
+ },
+ "sm_direct_tie": {
+  "tex": "Hungary and Romania",
+  "md": "Hungary and Romania",
+  "raw": "Hungary and Romania",
+  "source": "docs/smoothing/inheritance.csv"
+ },
  "sm_lu_auto": {
   "tex": "$-0.51$",
   "md": "−0.51",
@@ -2200,6 +2446,12 @@
   "md": "10",
   "raw": 10,
   "source": "docs/smoothing/summary.json"
+ },
+ "sm_n_smoothed": {
+  "tex": "6",
+  "md": "6",
+  "raw": 6,
+  "source": "eu_okun.smoothing.SMOOTHED"
  },
  "sm_nl_corr": {
   "tex": "$0.91$",

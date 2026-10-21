@@ -297,13 +297,22 @@ def interpretation(study: Study) -> list[str]:
     by = {t.key: t.verdict for t in study.primary}
     nl = next(i for i in study.inheritance if i.geo == "NL")
     inherited = [i.geo for i in study.inheritance if i.geo in SMOOTHED and i.average_of_monthly]
+    direct_rejected = [i.geo for i in study.inheritance
+                       if i.geo in DIRECT and not i.average_of_monthly]
     lines = ["- **Inheritance (Q1):** "
              + (f"{', '.join(inherited)} of the smoothed countries "
                 f"{'is' if len(inherited) == 1 else 'are'} classed as the average of the "
                 "monthly rate." if inherited else
                 "none of the six smoothed countries' quarterly rates is classed as the "
-                "average of its monthly rate, so the quarterly results do not inherit their "
-                "monthly smoothing by construction.")]
+                "average of its monthly rate.")
+             + (f" The rule also rejects {len(direct_rejected)} of the {len(DIRECT)} "
+                f"direct-estimate countries ({', '.join(direct_rejected)}), so it does not "
+                "separate smoothed from direct series and cannot show by itself that the "
+                "quarterly rate does not inherit monthly smoothing. Eurostat's metadata for "
+                "`une_rt_m` (section 18.5) is the better evidence: it benchmarks the monthly "
+                "series to the quarterly survey figures, not the reverse. (Added after an "
+                "external review; the rule is the registered one.)"
+                if direct_rejected else "")]
     lines.append("- **Persistence (P1):** " + (
         "supported. The persistence misfit is at least partly a product of how smoothed "
         "countries produce their series, not only of labour-market dynamics."
@@ -318,7 +327,9 @@ def interpretation(study: Study) -> list[str]:
                      + ("" if nl.average_of_monthly else
                         "; the Dutch quarterly rate is not classed as the average of its "
                         "monthly rate")
-                     + ". No evidence that smoothing drives the Dutch delayed response.")
+                     + ". No evidence that smoothing drives the Dutch delayed response, "
+                     f"though {len(SMOOTHED)} smoothed countries against {len(DIRECT)} "
+                     "direct ones give little power to find any.")
     lines.append("- **Status:** statements about the data, not about labour markets.")
     return lines
 

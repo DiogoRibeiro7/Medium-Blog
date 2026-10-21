@@ -8,7 +8,7 @@ control. The headline specification is $K=2$ without participation.
 
 \paragraph{Inference.} Standard errors use the Newey--West covariance with a Bartlett
 kernel and four lags in calendar quarters \citep{newey1987hac}. The variance of
-$\hat\theta_i$ uses the full covariance matrix of the lag coefficients. The published
+$\hat\theta_i$ uses the full covariance matrix of the lag coefficients. The classical
 intervals use normal critical values, an approximation with \val{cl_n_quarters} quarters
 per country. A registered study (below) replaces that reference with null-imposed sieve and
 moving-block bootstraps of the same HAC-studentised statistic, which follow its
@@ -19,7 +19,7 @@ whose window touches 2020--2021; 2009--2019; 2022 onwards; and a flag-screened s
 research plan listed a pandemic-excluded comparison before any estimate. Making it the
 headline sample was decided after the full-sample estimates had been seen.
 
-\paragraph{Review.} A separate review recomputed every published quantity by an
+\paragraph{Review.} A separate review recomputed every quantity of the first pass by an
 independent numerical route and re-estimated \val{cl_n_core_published} core
 specifications per country. It classified each country as robustly negative, negative
 with specification-dependent significance, or sign-unstable.
@@ -59,10 +59,41 @@ conclusion:
 The registered null-imposed bootstrap understates the evidence when a sum is large. A
 diagnostic added after the run shows why: imposing $\theta_i=0$ moves the omitted,
 persistent GDP effect into the residuals and raises their first-order autocorrelation
-(median increase \val{hi_rho_gap} before 2020). The bootstrap-t intervals, which use the
-unrestricted residuals, lie below zero in \val{hi_boot_below} countries. Taken together,
-the sign of the association is widespread across countries, but few individual country
-sums are established once the number of countries tested is taken into account.
+(median increase \val{hi_rho_gap} before 2020). The size study draws its null from the
+same residuals, so its rejection rates describe that more persistent null. The
+bootstrap-t intervals, which use the unrestricted residuals, lie below zero in
+\val{hi_boot_below} countries.
+
+\paragraph{Two post-hoc checks.} An external review prompted two checks after the
+registered run (\texttt{docs/NULL\_RESIDUALS.md}). Neither is registered.
+\begin{itemize}
+  \item \emph{Errors from the unrestricted residuals.} The null is still imposed on the
+    mean, but the error process is taken from the unrestricted residuals.
+    \begin{itemize}
+      \item On this less persistent null, the normal reference rejects
+        \val{nr_size_normal_unres} of the time instead of \val{hi_size_normal}, still too
+        often.
+      \item The registered bootstrap holds its size there too
+        (\val{nr_size_boot_reg_unres}).
+      \item A bootstrap that draws its errors from the unrestricted residuals finds
+        \val{nr_holm_unres} sums after Holm. It over-rejects
+        (\val{nr_size_boot_unres}), however, so it does not replace the registered count.
+    \end{itemize}
+  \item \emph{The error rate controlled.} Requiring both schemes is restrictive: with
+    either scheme alone, Holm leaves \val{nr_holm_sieve_reg}. Holm also controls the
+    chance of any false rejection, whereas ``how many countries'' is a question about the
+    false discovery rate.
+    \begin{itemize}
+      \item Benjamini--Hochberg on the registered $p$-values leaves \val{nr_bh_reg} sums
+        under both schemes. Its guarantee assumes independent, or positively dependent
+        one-sided, tests.
+      \item The Benjamini--Yekutieli adjustment, valid under any dependence, leaves
+        \val{nr_by_reg}.
+    \end{itemize}
+\end{itemize}
+Taken together, the sign of the association is widespread across countries. How many
+individual country sums are established depends on the error rate controlled and on the
+dependence assumed: from \val{hi_negative_holm} to \val{nr_bh_reg}.
 
 \paragraph{The pandemic.} Including 2020--2021 moves the sum towards zero in
 \val{cl_n_attenuated} countries (figure~\ref{fig:pandemic}). In \val{cl_n_full_outside}
@@ -110,6 +141,18 @@ null-imposed sieve and moving-block bootstraps of the same statistic
   \item a size study under each test's fitted null shows why: the nominal 5\% normal test
     rejects \val{ss_size_normal} of the time, whereas the bootstrap test rejects
     \val{ss_size_bootstrap}.
+\end{itemize}
+The size study and the bootstraps of this test use the same restricted residuals as the
+headline study. With the error process taken from the unrestricted residuals (post hoc,
+\texttt{docs/NULL\_RESIDUALS.md}):
+\begin{itemize}
+  \item the normal reference rejects \val{nr_ss_size_normal_unres} instead of
+    \val{ss_size_normal}, still far too often;
+  \item no change survives Holm under either error process
+    (\val{nr_ss_holm_unres} with unrestricted errors);
+  \item Benjamini--Hochberg finds \val{nr_ss_bh_reg} with the registered $p$-values, and
+    \val{nr_ss_bh_unres} with the unrestricted variant, which over-rejects
+    (\val{nr_ss_size_boot_unres}).
 \end{itemize}
 A weaker association after 2021 is therefore a descriptive pattern, not a tested result.
 The Bayesian regime models (section~\ref{sec:bayes}) find no credible shift either, but

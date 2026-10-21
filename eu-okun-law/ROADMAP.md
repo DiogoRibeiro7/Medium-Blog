@@ -177,17 +177,22 @@ Open:
       large sums (post-hoc diagnostic).
 - [x] Test measurement noise and the financial sector for Luxembourg (and Ireland, Malta),
       registered in [GDP_MEASUREMENT_PROTOCOL.md](GDP_MEASUREMENT_PROTOCOL.md); results in
-      [docs/GDP_MEASUREMENT.md](docs/GDP_MEASUREMENT.md). Both explanations fail for
-      Luxembourg: its hours-output correlation does not rise year on year, and removing
-      finance changes nothing. Ireland shows negatively autocorrelated quarterly growth.
+      [docs/GDP_MEASUREMENT.md](docs/GDP_MEASUREMENT.md). Neither explanation is
+      supported for Luxembourg. Removing finance changes nothing. Noise is not established:
+      one fingerprint points towards it before adjustment, and the other points away.
+      Ireland shows negatively autocorrelated quarterly growth, but so do comparison
+      countries (Sweden lower).
 - [ ] Ireland's modified domestic demand (Irish CSO) and annual national accounts, not yet
       used.
 - [x] Checked whether `une_rt_q` inherits monthly smoothing, registered in
       [SMOOTHING_PROTOCOL.md](SMOOTHING_PROTOCOL.md); results in
-      [docs/SMOOTHING.md](docs/SMOOTHING.md). None of the six countries with smoothed
-      monthly series has a quarterly rate that is the average of its monthly rate; the
-      persistence misfit and the Dutch delay are not concentrated in them. Luxembourg's
-      quarterly changes are strongly negatively autocorrelated (survey noise).
+      [docs/SMOOTHING.md](docs/SMOOTHING.md). The inheritance rule does not discriminate:
+      it also rejects 5 of the 8 direct-estimate countries. Eurostat's `une_rt_m` metadata,
+      which benchmarks the monthly series to the quarterly survey, is the better evidence.
+      There is no evidence that the persistence misfit or the Dutch delay comes from
+      smoothing, but with 6 countries against 8 the tests have little power. Luxembourg's
+      quarterly changes are strongly negatively autocorrelated (survey noise), which makes
+      its long-run "weak" result an artefact.
 - [x] Hours-based Okun's law for every country with hours data (26), with and without the
       pandemic, registered in [HOURS_PROTOCOL.md](HOURS_PROTOCOL.md); results in
       [docs/HOURS.md](docs/HOURS.md). The registered tests of the job-retention pattern
@@ -201,6 +206,37 @@ Open:
       [docs/CORE_GRID.md](docs/CORE_GRID.md). The published verdicts are reproduced; on
       the 12 participation-free estimates 18 countries are robustly negative (17
       published), and only Romania changes. The manuscript and article use these verdicts.
+- [x] External review of 2026-10-20, text and one post-hoc computation:
+  - [x] Null-imposed bootstraps with errors from the unrestricted residuals, and
+        false-discovery-rate counts ([docs/NULL_RESIDUALS.md](docs/NULL_RESIDUALS.md),
+        not registered).
+    - The normal reference's size falls from 22.0% to 16.6%, and the registered
+      bootstrap still holds its size.
+    - The unrestricted variant over-rejects (8.0%).
+    - The country count runs from 1 (Holm, or Benjamini-Yekutieli) to 19
+      (Benjamini-Hochberg).
+    - The post-2021 result is unchanged.
+  - [x] Luxembourg's long-run "weak" result labelled an artefact of survey noise.
+  - [x] Smoothing: Eurostat metadata cited, and "no evidence that" replaces "do not drive".
+  - [x] Employment protection: 6 correlations, not 18. None is decided in the primary
+        variant.
+  - [x] Ireland's noise prediction is not distinctive. Noise is "not established" rather
+        than "fails".
+  - [x] The reading of the coefficient sum in the background section.
+  - [x] Smaller wording points:
+    - the revision history is dropped from the article;
+    - Belgium and Germany are excluded from "not short of evidence";
+    - long-run and two-lag sums are kept apart;
+    - Okun's GNP;
+    - the association paragraph is split.
+  - [x] Hand-typed counts replaced by values.
+- [ ] Remaining code items from that review:
+  - guard the window-sensitivity outputs with a regeneration test and a registry entry;
+  - Linux rebuilds flag `values.json` and `experiments.json` as stale because of
+    last-digit floats;
+  - the row-offset Newey-West in `structural.py` (not quoted);
+  - the shift-share origin window;
+  - actions pinned to SHAs.
 
 Green offline CI is not evidence of a successful live data download.
 No pre-selected country results, artificial observations or causal

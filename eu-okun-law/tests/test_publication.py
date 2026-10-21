@@ -49,6 +49,12 @@ WORD_CLAIMS = [
     ("none of the registered", "fc_decided", 0),
     ("no registered forecast comparison is decided", "fc_decided", 0),
     ("the single decided gain", "pc_decided", 1),
+    ("In the primary variant neither is decided", "cs_n_epl_decided_primary", 0),
+    ("None is decided in the primary variant", "cs_n_epl_decided_primary", 0),
+    ("are decided, both in the other variants", "cs_n_epl_decided", 2),
+    ("only two non-primary variants are decided", "cs_n_epl_decided", 2),
+    ("In the main version neither is decided", "cs_n_epl_decided_primary", 0),
+    ("none is decided in the main version", "cs_n_epl_decided_primary", 0),
 ]
 
 

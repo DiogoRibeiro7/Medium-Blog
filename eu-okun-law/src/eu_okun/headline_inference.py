@@ -351,9 +351,13 @@ def render(review: HeadlineReview, command: str) -> str:
         f"a median {s['rho_gap_pre_median']:+.2f} (Greece: "
         + next(f"{r.rho.split(' / ')[0]} against {r.rho_unrestricted.split(' / ')[0]}"
                for r in review.tests if r.geo == "EL")
-        + "). The size study simulates under a true null and is unaffected, but the "
-        "registered p-values understate the evidence for large sums. The bootstrap-t "
-        "intervals, which use the unrestricted residuals, do not have this problem.",
+        + "). The registered p-values therefore understate the evidence for large sums. The "
+        "size study draws its null from the same restricted residuals, so its rejection "
+        "rates are those of that more persistent null; the over-rejection of the normal "
+        "reference is smaller on a less persistent one. A post-hoc repeat with errors from "
+        "the unrestricted residuals is in [NULL_RESIDUALS.md](NULL_RESIDUALS.md). The "
+        "bootstrap-t intervals, which use the unrestricted residuals, do not have this "
+        "problem.",
     ]
     if review.size:
         lines += ["", "## Size study", "",

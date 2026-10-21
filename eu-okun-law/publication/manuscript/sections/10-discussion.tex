@@ -11,7 +11,8 @@ adjustment for testing every country. Its size is not a single number:
   \item it depends on whether the pandemic quarters are included;
   \item it depends on the error model, on whether a common European factor is removed,
     and on how persistence is modelled: the mean country sum runs from \val{by_mu_lo} to
-    \val{by_mu_hi} across accepted specifications, and is \val{dyn_mu} in the model that
+    \val{by_mu_hi} across accepted specifications, and the mean long-run sum, a different
+    quantity, is \val{dyn_mu} in the model that
     passes the persistence check;
   \item the hierarchical sum is smaller than OLS on the same quarters in
     \val{by_n_smaller} of \val{n_countries} countries, partly because the two estimate
@@ -22,7 +23,8 @@ adjustment for testing every country. Its size is not a single number:
 point of real GDP growth in a single quarter, which leaves output one per cent higher, goes
 with an unemployment rate about \val{by_mu_abs} percentage points lower by the end of the
 second following quarter, beyond the common European cycle. In the same first-difference
-form, \citet{okun1962} estimated about $-0.3$ for the United States; on the same quarters,
+form, with real GNP rather than GDP, \citet{okun1962} estimated about $-0.3$ for the
+United States; on the same quarters,
 OLS gives \val{by_ES_ols} for Spain.
 
 \paragraph{Prediction.} Over all target quarters, no registered forecast comparison is
@@ -56,13 +58,11 @@ registered checks:
   \item no decided forecast gain over all target quarters;
   \item none of the \val{ss_published_holm} post-2021 changes from our first classical
     pass survives small-sample inference;
-  \item only \val{hi_negative_holm} country sum is negative under both bootstraps after a
-    Holm adjustment over the \val{n_countries} countries, against \val{cl_n_neg_holm} with
-    normal critical values;
   \item no informative causal coefficient from external instruments, shift-share or sign
     restrictions;
-  \item no sign that Luxembourg's commuters, transitory noise in its quarterly output or
-    its financial sector account for its weak output-labour link;
+  \item no support for Luxembourg's commuters or its financial sector as explanations of
+    its weak output-labour link, and transitory noise in its quarterly output not
+    established;
   \item \val{cs_supported} of \val{cs_total} case-study predictions supported.
 \end{itemize}
 
@@ -70,6 +70,10 @@ registered checks:
 \begin{itemize}
   \item the magnitude of the association, through the pandemic quarters, the error model
     and the treatment of persistence;
+  \item how many individual country sums are established: \val{hi_negative_holm} under the
+    registered Holm adjustment (against \val{cl_n_neg_holm} with normal critical values),
+    \val{nr_bh_reg} controlling the false discovery rate instead (post hoc, assuming
+    positive dependence);
   \item the number of countries credibly negative in every accepted fit,
     \val{by_n_neg_all} or \val{by_n_neg_unpooled}, depending on one fit at the
     convergence threshold;
@@ -80,15 +84,17 @@ registered checks:
   \item the conditional gain over zero change before the pandemic (\val{pc_e1_zero}),
     which is no longer decided without the quarters with a failed refit;
   \item the Dutch delayed response, which holds in \val{claim_nl_holds} of
-    \val{by_n_accepted} accepted fits, and Luxembourg's weak association, which holds on
-    the long-run sum of the ARDL fits but in no registered fit;
+    \val{by_n_accepted} accepted fits, and Luxembourg's weak association, which holds in
+    the plain regressions but in no registered Bayesian fit. On the long-run sum of the
+    ARDL fits it holds only through an artefact of survey noise;
   \item whether hours kept following output in 2020--2021 while unemployment did not, with
     hours per worker taking up the adjustment: the point estimates show it, the registered
     test could not decide it, and an amendment registered after that result supports it;
   \item Portugal's significance across samples;
-  \item two case-study predictions supported only before 2020;
-  \item the employment-protection correlations, decided in \val{cs_n_corr_contra} of
-    \val{cs_n_corr}.
+  \item \val{cs_n_pre2020_only} case-study predictions supported only before 2020;
+  \item the employment-protection correlations: all \val{cs_n_epl_negative} have the sign
+    opposite to the prediction, but \val{cs_n_epl_decided} are decided, both in the other
+    variants, and none in the primary one.
 \end{itemize}
 
 \subsection{Limitations}
@@ -100,18 +106,26 @@ registered checks:
     discontinuities. The Bayesian models mask the flagged observations, but the Dutch
     phase-in is not flagged.
   \item Monthly unemployment is a direct estimate in only \val{mo_n_direct} countries;
-    elsewhere it is a trend, a moving average or benchmarked to annual averages. A
-    registered check (\texttt{SMOOTHING\_PROTOCOL.md}) finds that the quarterly rate does
-    not inherit this smoothing. None of the six countries with smoothed monthly series has
-    a quarterly rate that matches the average of its monthly rate; the Netherlands comes
-    closest, with a correlation of quarterly changes of \val{sm_nl_corr}. The persistence
-    misfit is not concentrated in them either: their mean lag-1 autocorrelation is
-    \val{sm_p1_smoothed}, against \val{sm_p1_direct} in direct-estimate countries
-    (\val{sm_p1_verdict}). Nor is the Dutch delayed response explained by the trend method
-    (timing test \val{sm_p2_verdict}). Smoothing therefore remains a documented caveat
-    without evidence that it drives these results.
-  \item Hours per worker and employment in persons are unavailable for seven countries,
-    including Portugal.
+    elsewhere it is a trend, a moving average or benchmarked to annual averages. Eurostat
+    benchmarks the monthly series to the quarterly survey figures, not the reverse
+    \citep{eurostat_une_rt_m_esms}, so the quarterly rate used here does not inherit that
+    smoothing. A registered check (\texttt{SMOOTHING\_PROTOCOL.md}) could not show this
+    directly. Its rule for a quarterly rate that is the average of the monthly rate also
+    rejects \val{sm_direct_not_average} of the \val{mo_n_direct} direct-estimate
+    countries, and the Netherlands' correlation of quarterly changes, \val{sm_nl_corr},
+    ties \val{sm_direct_tie}'s. Its tests compare \val{sm_n_smoothed} smoothed countries
+    with \val{mo_n_direct} direct ones:
+    \begin{itemize}
+      \item the persistence misfit is not concentrated in the smoothed countries: their
+        mean lag-1 autocorrelation is \val{sm_p1_smoothed}, against \val{sm_p1_direct}
+        (\val{sm_p1_verdict});
+      \item the Dutch delayed response is not explained by the trend method (timing test
+        \val{sm_p2_verdict}).
+    \end{itemize}
+    With so few countries, this is no evidence that smoothing drives these results, not
+    evidence that it does not.
+  \item Hours per worker and employment in persons are unavailable for
+    \val{hr_n_no_persons} countries, including Portugal.
   \item The measurement-noise test detects only noise that averages out over a year, and
     it cannot detect error shared by output and hours, for example hours estimated from
     output (section~\ref{sec:cases}).
@@ -119,26 +133,31 @@ registered checks:
 
 \paragraph{Methods.}
 \begin{itemize}
-  \item The published classical intervals use normal critical values, which over-reject
+  \item The classical intervals use normal critical values, which over-reject
     with \val{cl_n_quarters} quarters per country. The registered null-imposed bootstrap
-    that replaces them holds its size but understates the evidence when a sum is large,
-    so the per-country counts lie between the two.
+    that replaces them holds its size, but it understates the evidence when a sum is
+    large. Its size study draws the null from the same restricted residuals, which
+    exaggerates the over-rejection of the normal reference (\val{hi_size_normal} against
+    \val{nr_size_normal_unres} on a less persistent null).
+  \item The registered multiplicity adjustment, Holm, controls the chance of any false
+    rejection. The false-discovery-rate counts were added after the run, and their
+    guarantee needs a dependence assumption these two-sided tests do not strictly meet.
   \item The pandemic-excluded headline was chosen after the full-sample estimates had
     been seen.
   \item The registered test of the hours study could not reach the 5\% level, because
     some bootstrap resamples contain no pandemic quarter. The corrected test was registered
     after that result was known.
-  \item The participation-free robustness verdicts were registered after the published
-    verdicts, which also counted specifications with the participation control, had been
-    seen. The two differ only for \val{cl_changed}.
+  \item The participation-free robustness verdicts were registered after the original
+    review's verdicts, which also counted specifications with the participation control,
+    had been seen. The two differ only for \val{cl_changed}.
   \item The primary Bayesian model understates the persistence of unemployment changes.
     The amendment that removes this misfit has a common factor correlated with average
     GDP growth (\val{dyn_factor_corr}), so its country sums measure the association beyond
     part of the common GDP cycle.
   \item The post-2021 sample has about seventeen quarters, too short to test a change in
     the association with useful power.
-  \item Country-level correlations with institutions use at most twenty countries and a
-    single year of indicators.
+  \item The employment-protection correlations use at most \val{cs_epl_max_n} countries
+    and a single year of indicators.
 \end{itemize}
 
 \paragraph{Standard analyses not done.} Several analyses a reader might expect are not in
