@@ -811,6 +811,32 @@ Results are in [docs/SMOOTHING.md](docs/SMOOTHING.md):
     shrinks the long-run sum. Luxembourg's "weak" result on the long-run sum is therefore
     an artefact.
 
+## A common-correlated-effects mean-group panel
+
+[CCE_PROTOCOL.md](CCE_PROTOCOL.md) was committed and pushed before any CCE estimate was
+computed. It applies Pesaran's (2006) CCE mean-group estimator to the headline sample.
+Each country's two-lag regression is augmented with the cross-country averages of GDP
+growth (lags 0-2) and of the unemployment change. P1 tests the CCE mean sum with the
+mean-group t statistic. P2 tests its difference from the plain mean group with a
+synchronised block bootstrap. Holm is applied over the two.
+
+```bash
+poetry run eu-okun cce --data-dir snapshots/eurostat-2026-10-15 --case-study docs/heterogeneity/elasticities.csv --bayes docs/bayes/country_estimates.csv --output-dir docs/cce --report docs/CCE.md
+```
+
+Results are in [docs/CCE.md](docs/CCE.md):
+
+- **P1, supported.** The CCE mean sum is -0.17 [-0.22, -0.08]: the association survives
+  removing common shocks.
+- **P2, supported.** It is less negative than the plain mean group (-0.29) by +0.11
+  [+0.06, +0.17], which is close to the Bayesian factor model.
+- **Sensitivity.** Both hold in all six settings: lags 1 and 4, leave-one-out averages,
+  block 8, without IE and LU, and before 2020.
+- **Countries.**
+  - CCE intervals exclude zero in 8 countries, against 19 with OLS.
+  - Spain stays at -0.51, while the Netherlands moves from -0.28 to +0.07.
+  - The rank correlation with the Bayesian medians is +0.74.
+
 ## Asymmetry between expansions and contractions
 
 [ASYMMETRY_PROTOCOL.md](ASYMMETRY_PROTOCOL.md) was committed and pushed before any

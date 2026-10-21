@@ -206,8 +206,13 @@ Open:
       [docs/ASYMMETRY.md](docs/ASYMMETRY.md). Every point estimate has unemployment
       responding more strongly to contractions (pooled -0.10 [-0.19, +0.03]), but neither
       registered test, nor any sensitivity setting, decides it.
+- [x] A common-correlated-effects mean-group panel (Pesaran 2006), registered in
+      [CCE_PROTOCOL.md](CCE_PROTOCOL.md); results in [docs/CCE.md](docs/CCE.md).
+      Beyond the common European cycle the mean sum is -0.17 [-0.22, -0.08], against
+      -0.29 for the plain mean group. Both registered tests are supported in every
+      sensitivity setting, and the result is close to the Bayesian factor model.
 - [ ] Gap-form Okun's law against Ball, Leigh and Loungani (2017); a
-      common-correlated-effects mean-group panel; a labour-force-weighted EU aggregate.
+      labour-force-weighted EU aggregate.
 - [x] Kept the participation control out of the core robustness grid, registered in
       [CORE_GRID_PROTOCOL.md](CORE_GRID_PROTOCOL.md); results in
       [docs/CORE_GRID.md](docs/CORE_GRID.md). The published verdicts are reproduced; on

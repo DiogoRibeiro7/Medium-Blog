@@ -151,6 +151,27 @@ not establish it. Contractions in this sample are concentrated in 2009--2013 and
 countries hit by the euro-area crisis, so even a decided difference could reflect
 different shocks rather than a different labour-market response.
 
+\paragraph{Common shocks.} The classical sums contain the common European cycle. A
+registered study (\texttt{CCE\_PROTOCOL.md}) removes it in the standard classical way,
+with the common-correlated-effects mean-group estimator of \citet{pesaran2006cce}. Each
+country's regression is augmented with the cross-country averages of GDP growth, with the
+same lags, and of the unemployment change.
+\begin{itemize}
+  \item The mean sum is \val{cce_mean} \val{cce_mean_ci} (Holm $p$ \val{cce_mean_holm},
+    \val{cce_mean_verdict}): the association survives removing common shocks.
+  \item It is less negative than the plain mean group, \val{cce_mg_ols}, by \val{cce_diff}
+    \val{cce_diff_ci} (\val{cce_diff_verdict}). That brings it close to the mean of the
+    Bayesian factor model (section~\ref{sec:bayes}).
+  \item Both results hold in every one of the \val{cce_n_settings} sensitivity settings.
+  \item Country by country, the CCE sums are closer to zero than OLS in \val{cce_n_closer}
+    countries, and their intervals exclude zero in \val{cce_n_below} (OLS:
+    \val{cce_n_below_ols}). Spain stays clearly negative (\val{cce_ES}), while the
+    Netherlands moves from \val{cce_NL_ols} to \val{cce_NL}. The ranks agree with the
+    Bayesian medians (Spearman \val{cce_rho_bayes}).
+\end{itemize}
+Like the Bayesian sum, a CCE sum measures the association beyond the common cycle. It is a
+different estimand from the plain sum, and neither is causal.
+
 \paragraph{Post-2021 stability.}\label{sec:smallsample} Our first classical pass tested
 whether the sum changed after 2021, with interacted HAC regressions and Holm's step-down
 adjustment \citep{holm1979}: \val{ss_published_holm} changes were significant. With only

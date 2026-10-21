@@ -661,6 +661,37 @@ def collect_values(root: Path) -> dict[str, Value]:
     for scheme in ("sieve", "block"):
         add(text(f"nr_holm_{scheme}_reg", nr["headline"]["registered"][f"holm_{scheme}"], src))
 
+    # Common-correlated-effects mean-group panel (CCE_PROTOCOL.md) ----------------------
+    src = "docs/cce/tests.csv"
+    for r in _csv(docs / "cce" / "tests.csv"):
+        key = {"P1": "cce_mean", "P2": "cce_diff"}[r["key"]]
+        add(num(key, float(r["estimate"]), 2, src, True))
+        add(interval(f"{key}_ci", float(r["low"]), float(r["high"]), 2, src))
+        holm_p = float(r["holm"])
+        add(text(f"{key}_holm", "below 0.001", src) if holm_p < 0.001
+            else num(f"{key}_holm", holm_p, 3, src))
+        add(text(f"{key}_verdict", r["verdict"], src))
+    csum = json.loads((docs / "cce" / "summary.json").read_text(encoding="utf-8"))
+    src = "docs/cce/summary.json"
+    add(num("cce_mg_ols", csum["mean_ols"], 2, src, True))
+    add(pct("cce_share", 1 - csum["mean_cce"] / csum["mean_ols"], 0, src))
+    add(text("cce_n_below", len(csum["cce_below_zero"]), src))
+    add(text("cce_n_below_ols", len(csum["ols_below_zero"]), src))
+    add(text("cce_n_closer", len(csum["closer_to_zero"]), src))
+    add(num("cce_rho_bayes", csum["spearman_bayes"], 2, src, True))
+    add(num("cce_full", csum["full_sample"]["mean_cce"], 2, src, True))
+    add(num("cce_full_ols", csum["full_sample"]["mean_ols"], 2, src, True))
+    cce_rows = {r["geo"]: r for r in _csv(docs / "cce" / "countries.csv")}
+    for geo in ("ES", "NL"):
+        add(num(f"cce_{geo}", float(cce_rows[geo]["cce"]), 2, "docs/cce/countries.csv", True))
+        add(num(f"cce_{geo}_ols", float(cce_rows[geo]["ols"]), 2, "docs/cce/countries.csv",
+                True))
+    sens = _csv(docs / "cce" / "sensitivity.csv")
+    add(text("cce_n_settings", len({r["setting"] for r in sens}), "docs/cce/sensitivity.csv"))
+    add(text("cce_sens_supported", sum(r["verdict"] == "supported" for r in sens),
+             "docs/cce/sensitivity.csv"))
+    add(text("cce_sens_tests", len(sens), "docs/cce/sensitivity.csv"))
+
     # Asymmetry between expansions and contractions (ASYMMETRY_PROTOCOL.md) -------------
     src = "docs/asymmetry/tests.csv"
     for r in _csv(docs / "asymmetry" / "tests.csv"):

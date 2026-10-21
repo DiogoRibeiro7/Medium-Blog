@@ -50,6 +50,8 @@ In the main specification, the average country sum is −0.198. In plain terms, 
 
 That number should not be read as the answer. The main model fails one of its own checks: it understates how persistent changes in unemployment are. Across the accepted specifications the average two-lag sum runs from −0.30 to −0.18. The amended model that does reproduce the persistence, and fits better, gives −0.17 for the long-run sum, which is a different quantity: it adds up the response over all future quarters, not just the next two. The honest summary is a range of two-lag sums, with the long-run figure beside it rather than inside it.
 
+A standard classical check points the same way. Pesaran's common-correlated-effects estimator also strips out shocks shared across countries, by adding cross-country averages to each country's regression. Averaged over countries, it gives −0.17 [−0.22, −0.08], against −0.29 without that adjustment. So about 40% of the plain association moves with the common European cycle, and what remains sits close to the hierarchical model's figure.
+
 ![Country sums, classical and Bayesian, on the same quarters](figures/fig1_countries.png)
 
 *Two-lag sums for 2009–2019 on the same quarters, both with 90% intervals. Orange: ordinary least squares. Blue: the hierarchical model, which excludes the common European factor, so the two are not expected to coincide. Alphabetical; no ranking implied.*
