@@ -277,3 +277,28 @@ The full notebook defaults to 12 independent replicates and requires a
 larger number of independent experiments before reliable coverage conclusions
 can be made. It must not be confused with a causal policy evaluation.
 
+## Temporal drift and prequential calibration
+
+[temporal-drift-and-decisions.ipynb](temporal-drift-and-decisions.ipynb)
+investigates independent chronological deployment streams under stable,
+covariate-shift, noise-inflation, and concept-shift regimes. It compares
+frozen/static conformal intervals against rolling residual recalibration,
+with and without periodic model refitting. Every prediction, interval and
+action is recorded *before* its observed outcome is revealed.
+
+Source: [temporal_drift.py](temporal_drift.py). Regression tests:
+[tests/test_temporal_drift.py](tests/test_temporal_drift.py).
+The project-scoped CI workflow executes a small notebook smoke run.
+
+This is not a formal time-series conformal guarantee. Only the initial
+calibration under exchangeability has standard marginal coverage theory.
+The rolling methods are heuristics, and the changed regimes intentionally
+violate that assumption. Bootstrap coverage summaries sample independent
+generated streams, never individual deployment time steps. The economic
+oracle is available only to the evaluator; decisions are not causal claims.
+
+Smoke reproduction:
+
+    DRIFT_SMOKE=1 DRIFT_REPEATS=1 jupyter nbconvert --execute --to notebook \
+      --output temporal-drift-and-decisions.executed.ipynb \
+      temporal-drift-and-decisions.ipynb

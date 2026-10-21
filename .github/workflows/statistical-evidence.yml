@@ -91,3 +91,13 @@ jobs:
           --output calibration-and-decisions.executed.ipynb
           calibration-and-decisions.ipynb
 
+      - name: Execute temporal drift notebook
+        working-directory: statistical-evidence-and-decisions
+        env:
+          DRIFT_SMOKE: "1"
+          DRIFT_REPEATS: "1"
+        run: >-
+          jupyter nbconvert --to notebook --execute
+          --ExecutePreprocessor.timeout=300
+          --output temporal-drift-and-decisions.executed.ipynb
+          temporal-drift-and-decisions.ipynb
