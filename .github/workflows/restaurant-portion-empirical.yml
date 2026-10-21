@@ -36,5 +36,6 @@ jobs:
           path: |
             restaurant-portion-economics/outputs/finland_*.csv
             restaurant-portion-economics/outputs/zenodo_source_manifest.csv
+            restaurant-portion-economics/outputs/commercial_*.csv
           if-no-files-found: warn
           retention-days: 30
