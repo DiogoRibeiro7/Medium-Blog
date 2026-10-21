@@ -22,6 +22,9 @@ jobs:
           Rscript scripts/validate-sources.R
           Rscript scripts/analyse-finland.R
           Rscript scripts/audit-empirical-results.R
+          Rscript scripts/audit-urbanwaste.R
+          test -s outputs/urbanwaste/totals.csv
+          test -s outputs/urbanwaste/portion_coverage.csv
           test -s outputs/zenodo_source_manifest.csv
           test -s outputs/finland_daily.csv
           test -s outputs/finland_period.csv
@@ -34,5 +37,6 @@ jobs:
           path: |
             restaurant-portion-economics/outputs/finland_*.csv
             restaurant-portion-economics/outputs/zenodo_source_manifest.csv
+            restaurant-portion-economics/outputs/urbanwaste/*.csv
           if-no-files-found: warn
           retention-days: 30
