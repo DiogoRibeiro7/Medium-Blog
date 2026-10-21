@@ -9,7 +9,8 @@
 - [ ] Analyze waste by source type, establishment and food category where valid.
 - [ ] Add uncertainty ranges using external waste estimates.
 - [ ] Reconcile USDA nutritional data with ingredient composition.
-- [ ] Evaluate partial identification of financial upside under unknown demand.
+- [x] Implement conditional sharp profitability bounds and a demand-loss sensitivity frontier in R.
+- [ ] Calibrate financially relevant uncertainty intervals from independent public cost and demand evidence; keep assumed intervals distinct from data.
 - [ ] Write long-form Medium article in mathematical/economic style with citations.
 - [x] Add an R-specific project-scoped CI workflow running offline regression tests.
 - [ ] Validate empirical Excel ingestion in a network-enabled environment before publishing observed results.
