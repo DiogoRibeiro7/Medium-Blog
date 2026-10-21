@@ -97,4 +97,36 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()
+    # Preserve the original grouped console report and also archive a tidy CSV.
+    import csv
+    import io
+    from contextlib import redirect_stdout
+    from pathlib import Path
+
+    buffer = io.StringIO()
+    with redirect_stdout(buffer):
+        main()
+    original = buffer.getvalue()
+    rows: list[dict[str, str | int | float | bool]] = []
+    scenario: bool | None = None
+    for raw in original.splitlines():
+        if raw.startswith("hidden_confounding="):
+            scenario = raw.split(",")[0].split("=")[1] == "True"
+        elif raw and raw != "metric,mean,sd":
+            if scenario is None:
+                raise ValueError("Result metric found before scenario header")
+            name, mean, sd = raw.split(",")
+            rows.append({
+                "hidden_confounding": scenario,
+                "n": N,
+                "replications": REPETITIONS,
+                "metric": name,
+                "mean": float(mean),
+                "sd": float(sd),
+            })
+    destination = Path(__file__).with_name("results.csv")
+    with destination.open("w", newline="", encoding="utf-8") as handle:
+        writer = csv.DictWriter(handle, fieldnames=list(rows[0]))
+        writer.writeheader()
+        writer.writerows(rows)
+    print(original, end="")
