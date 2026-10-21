@@ -11,6 +11,7 @@
 - [ ] Reconcile USDA nutritional data with ingredient composition.
 - [x] Implement conditional sharp profitability bounds and a demand-loss sensitivity frontier in R.
 - [x] Register independent US food-cost respondent medians and evaluate cross-market proxy scenarios in R, without presenting them as Portuguese restaurant calibration.
+- [x] Implement explicit menu design counterfactuals for unchanged prices, discounts and optional free refills; retention remains hypothetical.
 - [ ] Find genuinely transferable ingredient-level and same-price demand-response estimates to defend uncertainty bounds.
 - [ ] Write long-form Medium article in mathematical/economic style with citations.
 - [x] Add an R-specific project-scoped CI workflow running offline regression tests.
