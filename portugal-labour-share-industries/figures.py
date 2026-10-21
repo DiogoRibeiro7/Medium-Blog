@@ -101,10 +101,11 @@ def fig2_granularity() -> None:
     grid = pd.read_csv(RESULTS / "shift_share_grid.csv")
     grid = grid[(grid["start"] == 2016) & (grid["end"] == 2024) & (grid["numerator"] == "raw")]
     fig, axes = plt.subplots(1, 2, figsize=(10, 4.2), sharey=True)
-    titles = {"economy": "Whole economy", "market": "Market economy, excluding housing"}
-    labels = {"a10": "10 branches", "a21": "21 sections", "a64": "61 industries"}
+    titles = {"economy": "Whole economy", "market": "Without real estate and public services"}
+    nouns = {"a10": "branches", "a21": "sections", "a64": "industries"}
     for ax, scope in zip(axes, ("economy", "market")):
-        sub = grid[grid["scope"] == scope].set_index("level").loc[list(labels)]
+        sub = grid[grid["scope"] == scope].set_index("level").loc[list(nouns)]
+        labels = {k: f"{int(sub.loc[k, 'groups'])} {nouns[k]}" for k in nouns}
         x = np.arange(len(sub))
         ax.bar(x, sub["within"], color=BLUE, width=0.55, edgecolor=SURFACE, linewidth=2)
         ax.bar(x, sub["between"], bottom=sub["within"], color=ORANGE, width=0.55, edgecolor=SURFACE, linewidth=2)
@@ -139,7 +140,8 @@ def fig3_sections() -> None:
     ax.axvline(0, color=AXIS, linewidth=1)
     ax.tick_params(axis="y", length=0)
     ax.set_xlabel("Contribution to the change in the labour share 2016 to 2024, pp")
-    handles = [Patch(color=BLUE, label="Within the section"), Patch(color=ORANGE, label="Change in the section's weight"),
+    handles = [Patch(color=BLUE, label="Within the section"),
+               Patch(color=ORANGE, label="Change in weight, relative to the average share"),
                plt.Line2D([], [], color=INK, marker="o", linestyle="", markersize=5, label="Total")]
     ax.legend(handles=handles, loc="lower right", fontsize=8.5)
     fig.tight_layout()

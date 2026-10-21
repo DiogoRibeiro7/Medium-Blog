@@ -232,7 +232,12 @@ def shift_share(frame: pd.DataFrame, start: int, end: int) -> pd.DataFrame:
     """Exact midpoint decomposition of the change in the aggregate share.
 
     With weights w = Y_i / sum Y and shares s = L_i / Y_i,
-    d(sum w s) = sum w_bar ds (within) + sum dw s_bar (between).
+    d(sum w s) = sum w_bar ds (within) + sum dw (s_bar - S_bar) (between),
+    where S_bar is the two-year average of the aggregate share. Because the
+    weight changes sum to zero, subtracting S_bar leaves the total between
+    term unchanged; it makes each group's between term mean something on its
+    own: a group that gains weight raises the aggregate share only if its
+    labour share is above the aggregate.
 
     Returns
     -------
@@ -244,10 +249,11 @@ def shift_share(frame: pd.DataFrame, start: int, end: int) -> pd.DataFrame:
     b = frame[frame["year"] == end].set_index("g")
     w0, w1 = a["Y"] / a["Y"].sum(), b["Y"] / b["Y"].sum()
     s0, s1 = a["L"] / a["Y"], b["L"] / b["Y"]
+    agg = (a["L"].sum() / a["Y"].sum() + b["L"].sum() / b["Y"].sum()) / 2
     out = pd.DataFrame({
         "w_start": 100 * w0, "w_end": 100 * w1, "s_start": 100 * s0, "s_end": 100 * s1,
         "within": 100 * (w0 + w1) / 2 * (s1 - s0),
-        "between": 100 * (w1 - w0) * (s0 + s1) / 2,
+        "between": 100 * (w1 - w0) * ((s0 + s1) / 2 - agg),
     })
     total = 100 * (b["L"].sum() / b["Y"].sum() - a["L"].sum() / a["Y"].sum())
     if abs(out["within"].sum() + out["between"].sum() - total) > 1e-9:
@@ -414,6 +420,14 @@ def main() -> None:
             rep.add(f"    PT a64 per person without the cap: {uncapped.loc[FIRST_YEAR]:.1f}->{uncapped.loc[LAST_YEAR]:.1f} ({uncapped.loc[LAST_YEAR] - uncapped.loc[FIRST_YEAR]:+.2f})")
             binding = cap_binding(panel)
             rep.add(f"    PT cap binds in {len(binding)} of {len(panel)} industry-years, {binding['code'].nunique()} industries; agriculture (A01) years: {int((binding['code'] == 'A01').sum())}")
+            merged = binding.merge(panel, on=["code", "year"])
+            rep.add(f"    PT of those, compensation alone exceeds value added in {int((merged['D1'] > merged['Y']).sum())}; by industry: "
+                    + ", ".join(f"{c} {n}" for c, n in binding['code'].value_counts().items()))
+            hours = read_long("nama_10_a64_e")
+            hours = hours[(hours["geo"] == "PT") & (hours["unit"] == "THS_HW") & hours["nace_r2"].isin(A64) & (hours["nace_r2"] != "U")]
+            covered = hours.groupby("year")["value"].apply(lambda v: int(v.notna().sum() // 2))
+            complete = covered[covered == covered.max()].index.min()
+            rep.add(f"    PT A64 hours published for {covered.loc[FIRST_YEAR]} of {covered.max()} industries in {FIRST_YEAR}; complete from {complete}")
     pd.DataFrame(imputation_rows).to_csv(RESULTS / "imputation_levels.csv", index=False, float_format="%.4f")
 
     # 3. Shift-share grid -------------------------------------------------------
@@ -465,6 +479,14 @@ def main() -> None:
         f"{g} {r['between']:+.2f} (weight {r.w_start:.2f}->{r.w_end:.2f})" for g, r in ind.sort_values("between", ascending=False).head(4).iterrows()))
     rep.add("  most negative A64 between contributions: " + "; ".join(
         f"{g} {r['between']:+.2f} (weight {r.w_start:.2f}->{r.w_end:.2f})" for g, r in ind.sort_values("between").head(3).iterrows()))
+
+    mkt = shift_share(grouped(pt, "raw", "a64", "market"), 2016, 2024)
+    rep.add("  market economy, largest A64 between contributions: " + "; ".join(
+        f"{g} {r['between']:+.2f} (weight {r.w_start:.2f}->{r.w_end:.2f}, share {r.s_start:.1f}->{r.s_end:.1f})"
+        for g, r in mkt.sort_values("between", ascending=False).head(4).iterrows()))
+    rep.add("  market economy, most negative A64 between contributions: " + "; ".join(
+        f"{g} {r['between']:+.2f} (weight {r.w_start:.2f}->{r.w_end:.2f}, share {r.s_start:.1f}->{r.s_end:.1f})"
+        for g, r in mkt.sort_values("between").head(3).iterrows()))
 
     # 5. Pay level and the within change --------------------------------------
     rep.section("5. Within-industry change against initial pay, A64, 2016->2024")

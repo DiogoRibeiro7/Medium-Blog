@@ -27,6 +27,8 @@ PT: raw 52.8->54.8 (+2.01); economy_per_person 66.5->64.7 (-1.80); a10_per_perso
     PT implied labour fraction of mixed income, a64_per_person: 0.51 (1995) -> 0.68 (2024), range 0.41-0.68
     PT a64 per person without the cap: 61.8->63.1 (+1.21)
     PT cap binds in 75 of 1830 industry-years, 11 industries; agriculture (A01) years: 23
+    PT of those, compensation alone exceeds value added in 32; by industry: A01 23, M72 9, R93 8, S94 8, C30 7, N79 7, J58 5, N80-N82 5, C29 1, H53 1, M69_M70 1
+    PT A64 hours published for 21 of 63 industries in 1995; complete from 2010
 ES: raw 52.0->52.8 (+0.87); economy_per_person 65.0->61.7 (-3.37); a10_per_person 62.2->60.8 (-1.41); a64_per_person 61.4->60.8 (-0.53); a10_per_hour 63.6->62.8 (-0.86)
 IT: raw 42.5->44.8 (+2.24); economy_per_person 59.6->58.0 (-1.59); a10_per_person 58.1->56.8 (-1.21); a64_per_person 57.4->57.3 (-0.08); a10_per_hour 60.9->58.8 (-2.08)
 EL: raw 32.2->41.8 (+9.58); economy_per_person 54.4->56.9 (+2.51); a10_per_person 46.0->53.7 (+7.72); a64_per_person 44.5->52.9 (+8.47); a10_per_hour 48.4->55.5 (+7.18)
@@ -75,30 +77,32 @@ EL: raw 32.2->41.8 (+9.58); economy_per_person 54.4->56.9 (+2.51); a10_per_perso
 
 4. Contributions to 2016->2024, Portugal, compensation share, whole economy
 ---------------------------------------------------------------------------
-  O public administration            weight  7.36-> 6.46  share  75.2-> 73.4  within -0.13  between -0.67  total -0.80
-  P education                        weight  6.09-> 5.27  share  81.1-> 84.9  within +0.22  between -0.68  total -0.47
-  K finance and insurance            weight  4.74-> 6.43  share  48.0-> 30.2  within -0.99  between +0.66  total -0.34
-  S other services                   weight  1.45-> 1.28  share  49.6-> 46.2  within -0.05  between -0.08  total -0.13
-  T households as employers          weight  0.68-> 0.58  share 100.0->100.0  within +0.00  between -0.10  total -0.10
-  D electricity and gas              weight  2.75-> 1.61  share   9.6-> 16.5  within +0.15  between -0.15  total +0.00
-  B mining                           weight  0.33-> 0.30  share  40.8-> 46.3  within +0.02  between -0.01  total +0.01
-  E water and waste                  weight  1.04-> 0.91  share  45.0-> 55.5  within +0.10  between -0.07  total +0.04
-  A agriculture, forestry, fishing   weight  2.85-> 2.83  share  24.1-> 26.7  within +0.07  between -0.01  total +0.07
-  C manufacturing                    weight 13.99->13.07  share  53.1-> 57.5  within +0.59  between -0.51  total +0.08
-  G wholesale and retail trade       weight 14.50->11.70  share  49.0-> 61.9  within +1.69  between -1.56  total +0.13
-  R arts and recreation              weight  0.85-> 1.22  share  68.8-> 60.6  within -0.09  between +0.24  total +0.15
-  L real estate                      weight 12.01->10.32  share   2.8->  5.5  within +0.30  between -0.07  total +0.23
-  H transport and storage            weight  4.73-> 4.99  share  55.2-> 58.5  within +0.16  between +0.15  total +0.31
-  N administrative and support       weight  3.65-> 4.53  share  65.4-> 66.3  within +0.04  between +0.58  total +0.61
-  I accommodation and food           weight  5.38-> 6.26  share  48.8-> 51.7  within +0.17  between +0.44  total +0.61
-  Q health and social work           weight  6.41-> 6.96  share  76.0-> 79.1  within +0.21  between +0.43  total +0.63
-  F construction                     weight  4.01-> 5.11  share  64.1-> 67.6  within +0.16  between +0.73  total +0.89
-  M professional and technical       weight  3.74-> 5.24  share  65.6-> 65.9  within +0.01  between +0.99  total +1.00
-  J information and communication    weight  3.45-> 4.97  share  50.4-> 63.9  within +0.57  between +0.87  total +1.43
+  K finance and insurance            weight  4.74-> 6.43  share  48.0-> 30.2  within -0.99  between -0.23  total -1.22
+  O public administration            weight  7.36-> 6.46  share  75.2-> 73.4  within -0.13  between -0.20  total -0.32
+  T households as employers          weight  0.68-> 0.58  share 100.0->100.0  within +0.00  between -0.05  total -0.05
+  R arts and recreation              weight  0.85-> 1.22  share  68.8-> 60.6  within -0.09  between +0.04  total -0.04
+  S other services                   weight  1.45-> 1.28  share  49.6-> 46.2  within -0.05  between +0.01  total -0.04
+  P education                        weight  6.09-> 5.27  share  81.1-> 84.9  within +0.22  between -0.25  total -0.03
+  B mining                           weight  0.33-> 0.30  share  40.8-> 46.3  within +0.02  between +0.00  total +0.02
+  A agriculture, forestry, fishing   weight  2.85-> 2.83  share  24.1-> 26.7  within +0.07  between +0.01  total +0.08
+  E water and waste                  weight  1.04-> 0.91  share  45.0-> 55.5  within +0.10  between +0.00  total +0.11
+  I accommodation and food           weight  5.38-> 6.26  share  48.8-> 51.7  within +0.17  between -0.02  total +0.15
+  N administrative and support       weight  3.65-> 4.53  share  65.4-> 66.3  within +0.04  between +0.12  total +0.15
+  H transport and storage            weight  4.73-> 4.99  share  55.2-> 58.5  within +0.16  between +0.01  total +0.17
+  M professional and technical       weight  3.74-> 5.24  share  65.6-> 65.9  within +0.01  between +0.20  total +0.21
+  F construction                     weight  4.01-> 5.11  share  64.1-> 67.6  within +0.16  between +0.15  total +0.31
+  Q health and social work           weight  6.41-> 6.96  share  76.0-> 79.1  within +0.21  between +0.14  total +0.34
+  C manufacturing                    weight 13.99->13.07  share  53.1-> 57.5  within +0.59  between -0.02  total +0.57
+  D electricity and gas              weight  2.75-> 1.61  share   9.6-> 16.5  within +0.15  between +0.45  total +0.60
+  J information and communication    weight  3.45-> 4.97  share  50.4-> 63.9  within +0.57  between +0.07  total +0.64
+  L real estate                      weight 12.01->10.32  share   2.8->  5.5  within +0.30  between +0.82  total +1.12
+  G wholesale and retail trade       weight 14.50->11.70  share  49.0-> 61.9  within +1.69  between -0.08  total +1.61
   largest A64 within contributions: G46 +0.95 (share 38.1->52.9); G47 +0.51 (share 59.3->68.9); L +0.30 (share 2.8->5.5); C13-C15 +0.22 (share 58.7->69.2); P +0.22 (share 81.1->84.9)
   most negative A64 within contributions: K64 -0.91 (share 48.9->27.5); O -0.13 (share 75.2->73.4); K65 -0.12 (share 41.4->27.6)
-  largest A64 between contributions: J62_J63 +1.41 (weight 1.36->3.20); F +0.73 (weight 4.01->5.11); M69_M70 +0.53 (weight 2.00->2.72); K64 +0.52 (weight 3.57->4.92)
-  most negative A64 between contributions: G46 -1.03 (weight 7.52->5.26); P -0.68 (weight 6.09->5.27); O -0.67 (weight 7.36->6.46)
+  largest A64 between contributions: L +0.82 (weight 12.01->10.32); D +0.45 (weight 2.75->1.61); J62_J63 +0.44 (weight 1.36->3.20); G46 +0.16 (weight 7.52->5.26)
+  most negative A64 between contributions: P -0.25 (weight 6.09->5.27); O -0.20 (weight 7.36->6.46); K64 -0.19 (weight 3.57->4.92)
+  market economy, largest A64 between contributions: D +0.71 (weight 4.07->2.28, share 9.6->16.5); J62_J63 +0.60 (weight 2.01->4.55, share 74.1->78.5); G46 +0.27 (weight 11.15->7.47, share 38.1->52.9); M69_M70 +0.18 (weight 2.97->3.86, share 74.1->72.3)
+  market economy, most negative A64 between contributions: K64 -0.25 (weight 5.29->6.99, share 48.9->27.5); C13-C15 -0.15 (weight 3.78->2.45, share 58.7->69.2); G47 -0.13 (weight 8.34->7.20, share 59.3->68.9)
 
 5. Within-industry change against initial pay, A64, 2016->2024
 --------------------------------------------------------------
@@ -113,14 +117,14 @@ EL: weighted rank correlation of 2016 pay per employee with share change -0.17 (
 
 6. Contributions to 2010->2013, Portugal, compensation share, whole economy, A21
 --------------------------------------------------------------------------------
-  F construction                     weight  5.80-> 4.47  share  67.4-> 62.3  within -0.26  between -0.86
-  P education                        weight  7.31-> 6.68  share  82.0-> 81.0  within -0.07  between -0.52
-  O public administration            weight  8.41-> 8.07  share  79.1-> 76.8  within -0.19  between -0.26
-  G wholesale and retail trade       weight 13.14->14.73  share  54.7-> 46.4  within -1.15  between +0.81
-  I accommodation and food           weight  4.80-> 4.94  share  52.2-> 47.8  within -0.21  between +0.07
-  H transport and storage            weight  4.64-> 4.74  share  57.1-> 54.0  within -0.14  between +0.05
-  O+P+Q: within -0.25, between -0.78, total -1.03 of -2.52
-  F construction: within -0.26, between -0.86, total -1.12
+  G wholesale and retail trade       weight 13.14->14.73  share  54.7-> 46.4  within -1.15  between -0.03
+  L real estate                      weight 10.13->11.86  share   3.2->  2.4  within -0.09  between -0.86
+  F construction                     weight  5.80-> 4.47  share  67.4-> 62.3  within -0.26  between -0.17
+  O public administration            weight  8.41-> 8.07  share  79.1-> 76.8  within -0.19  between -0.09
+  P education                        weight  7.31-> 6.68  share  82.0-> 81.0  within -0.07  between -0.19
+  I accommodation and food           weight  4.80-> 4.94  share  52.2-> 47.8  within -0.21  between -0.00
+  O+P+Q: within -0.25, between -0.27, total -0.52 of -2.52
+  F construction: within -0.26, between -0.17, total -0.43
 
 7. Peers, compensation share, whole economy (pp)
 ------------------------------------------------
