@@ -152,49 +152,93 @@ finland_quality_sensitivity <- function(x, discrepancies) {
           "difference_g_diner", "percent_difference")]
 }
 
-#' Inspect a commercial food-waste CSV without presuming its meaning or units.
+#' Inspect publisher-provided commercial waste CSV without guessing units.
 #'
-#' @param path Existing, publisher-verified CSV filename.
-#' @return List containing a parsed data.frame and field-quality audit.
-#' @details Try explicit CSV delimiters, rejecting ambiguous structures.
-#'   Does not treat any numerical column as kg or EUR without a codebook.
+#' @param path Publisher-verified original CSV file.
+#' @return List with data.frame, field audit, delimiter, and encoding.
+#' @details The upstream file may use a European semicolon delimiter and
+#'   non-UTF-8 text encoding. Scan only explicit delimiter/encoding combinations;
+#'   reject warnings, malformed rows, or incorrect source field names. Do not
+#'   infer weight units from this structural parse.
 inspect_urbanwaste_csv <- function(path) {
   if (!is.character(path) || length(path) != 1L ||
       is.na(path) || !file.exists(path)) {
     stop("Provide a downloaded URBAN-WASTE CSV path.", call. = FALSE)
   }
-  separators <- c(",", ";", "\t")
-  candidates <- lapply(separators, function(sep) {
-    tryCatch(
-      utils::read.table(
-        path, header = TRUE, sep = sep, quote = "\"",
-        check.names = FALSE, stringsAsFactors = FALSE,
-        fileEncoding = "UTF-8-BOM", blank.lines.skip = TRUE,
-        comment.char = "", fill = FALSE
-      ),
-      error = function(e) NULL
-    )
-  })
-  ncols <- vapply(candidates, function(x) {
-    if (is.data.frame(x) && nrow(x) > 0L) ncol(x) else 0L
-  }, integer(1))
-  if (max(ncols) <= 1L || sum(ncols == max(ncols)) != 1L) {
-    stop("Could not resolve a unique tabular CSV structure.", call. = FALSE)
-  }
-  data <- candidates[[which.max(ncols)]]
-  if (anyNA(names(data)) || anyDuplicated(names(data))) {
-    stop("Missing or duplicated source field labels.", call. = FALSE)
-  }
-  schema <- data.frame(
-    column = names(data),
-    r_type = vapply(data, function(v) paste(class(v), collapse = "/"),
-                    character(1)),
-    rows = rep(nrow(data), ncol(data)),
-    missing = vapply(data, function(v) sum(is.na(v)), integer(1)),
-    distinct_nonmissing = vapply(
-      data, function(v) length(unique(v[!is.na(v)])), integer(1)
-    ),
-    stringsAsFactors = FALSE
+
+  # These labels are observed in the source's previous schema audit.
+  expected_fields <- c(
+    "City / kitchen", "Timestamp", "Waste weight sum",
+    "portions, Whole day", "ordered portions, Whole day",
+    "portions, Midday", "ordered portions, Midday",
+    "portions, Breakfast", "ordered portions, Breakfast",
+    "portions, Lunch", "ordered portions, Lunch",
+    "portions, Brunch", "ordered portions, Brunch"
   )
-  list(data = data, schema = schema, separator = separators[[which.max(ncols)]])
+  separators <- c(";", ",", "\t")
+  encodings <- c("UTF-8-BOM", "CP1252", "latin1")
+  errors <- character()
+
+  for (sep in separators) {
+    for (encoding in encodings) {
+      # The source has commas *inside its field names*; treating a semicolon
+      # source as comma-separated can create a plausible but false schema.
+      parsed <- tryCatch(
+        withCallingHandlers(
+          utils::read.table(
+            path, header = TRUE, sep = sep, quote = "\"",
+            check.names = FALSE, stringsAsFactors = FALSE,
+            fileEncoding = encoding, colClasses = "character",
+            comment.char = "", fill = FALSE, blank.lines.skip = TRUE,
+            na.strings = c("", "NA")
+          ),
+          warning = function(w) stop(conditionMessage(w), call. = FALSE)
+        ),
+        error = function(e) {
+          errors <<- c(errors, paste0(
+            "separator=", encodeString(sep, quote = '"'),
+            " encoding=", encoding, ": ", conditionMessage(e)
+          ))
+          NULL
+        }
+      )
+      if (is.null(parsed)) next
+
+      # A candidate must contain all thirteen *exact* upstream labels. This
+      # prevents accidentally selecting a wrongly decoded or split header.
+      names(parsed) <- sub("^\ufeff", "", names(parsed))
+      valid <- nrow(parsed) > 0L &&
+        ncol(parsed) == length(expected_fields) &&
+        identical(names(parsed), expected_fields) &&
+        !anyDuplicated(names(parsed))
+      if (!valid) {
+        errors <- c(errors, paste0(
+          "separator=", encodeString(sep, quote = '"'),
+          " encoding=", encoding, ": unexpected field names or dimensions"
+        ))
+        next
+      }
+
+      schema <- data.frame(
+        column = names(parsed),
+        r_type = vapply(
+          parsed, function(v) paste(class(v), collapse = "/"), character(1)
+        ),
+        rows = rep(nrow(parsed), ncol(parsed)),
+        missing = vapply(parsed, function(v) sum(is.na(v)), integer(1)),
+        distinct_nonmissing = vapply(
+          parsed, function(v) length(unique(v[!is.na(v)])), integer(1)
+        ),
+        stringsAsFactors = FALSE
+      )
+      return(list(
+        data = parsed, schema = schema, separator = sep, encoding = encoding
+      ))
+    }
+  }
+  stop(
+    "Commercial source could not be decoded with the expected schema. ",
+    "Review its encoding, separator and first source lines. Attempts: ",
+    paste(errors, collapse = " | "), call. = FALSE
+  )
 }
