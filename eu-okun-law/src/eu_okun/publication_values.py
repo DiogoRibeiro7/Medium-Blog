@@ -156,7 +156,8 @@ def collect_values(root: Path) -> dict[str, Value]:
                       ("shift-share-2026-10-18/manifest.json", "hash_shiftshare"),
                       ("eurostat-deflator-2026-10-18/manifest.json", "hash_deflator"),
                       ("heterogeneity-2026-10-18/manifest.json", "hash_heterogeneity"),
-                      ("gdp-measurement-2026-10-19/manifest.json", "hash_gdpm")):
+                      ("gdp-measurement-2026-10-19/manifest.json", "hash_gdpm"),
+                      ("eu-aggregate-2026-10-21/manifest.json", "hash_aggregate")):
         digest = hashlib.sha256((root / "snapshots" / name).read_bytes()).hexdigest()
         add(Value(key, digest, f"\\texttt{{{digest[:16]}}}", f"`{digest[:16]}`",
                   f"snapshots/{name}"))
@@ -661,6 +662,29 @@ def collect_values(root: Path) -> dict[str, Value]:
     for scheme in ("sieve", "block"):
         add(text(f"nr_holm_{scheme}_reg", nr["headline"]["registered"][f"holm_{scheme}"], src))
 
+    # The EU as a whole: a labour-force-weighted aggregate (AGGREGATE_PROTOCOL.md) -------
+    agg = json.loads((docs / "aggregate" / "summary.json").read_text(encoding="utf-8"))
+    src = "docs/aggregate/summary.json"
+    for name, key in (("theta_mg", "ag_mg"), ("theta_lf", "ag_lf"), ("theta_eu", "ag_eu")):
+        add(num(key, agg[name]["point"], 2, src, True))
+        low, high = agg[name]["interval"]
+        add(interval(f"{key}_ci", low, high, 2, src))
+    add(pct("ag_top_share", agg["top_share"], 0, src))
+    add(num("ag_check", agg["data_check"]["max_abs_difference"], 2, src))
+    add(num("ag_cce_u", agg["cce_unweighted"], 2, src, True))
+    add(num("ag_cce_w", agg["cce_weighted"], 2, src, True))
+    src = "docs/aggregate/tests.csv"
+    for r in _csv(docs / "aggregate" / "tests.csv"):
+        key = f"ag_{r['key'].lower()}"
+        add(num(key, float(r["estimate"]), 2, src, True))
+        add(interval(f"{key}_ci", float(r["low"]), float(r["high"]), 2, src))
+        add(num(f"{key}_holm", float(r["holm"]), 3, src))
+        add(text(f"{key}_verdict", r["verdict"], src))
+    sens = _csv(docs / "aggregate" / "sensitivity.csv")
+    src = "docs/aggregate/sensitivity.csv"
+    add(text("ag_n_sens", len(sens), src))
+    add(text("ag_n_sens_differ", sum(r["verdict"] == "differs" for r in sens), src))
+
     # Common-correlated-effects mean-group panel (CCE_PROTOCOL.md) ----------------------
     src = "docs/cce/tests.csv"
     for r in _csv(docs / "cce" / "tests.csv"):
@@ -792,6 +816,7 @@ class Check:
 
 
 def _snapshot_checks(root: Path) -> list[Check]:
+    from eu_okun.aggregate_data import audit_eu_aggregate
     from eu_okun.audit import audit_snapshot
     from eu_okun.external_shocks import audit_shock_snapshot
     from eu_okun.gdp_measurement_data import audit_gdp_measurement
@@ -811,6 +836,7 @@ def _snapshot_checks(root: Path) -> list[Check]:
         ("Case-study inputs 2026-10-18", audit_heterogeneity, snap / "heterogeneity-2026-10-18"),
         ("Value added and hours by industry 2026-10-19", audit_gdp_measurement,
          snap / "gdp-measurement-2026-10-19"),
+        ("EU aggregate inputs 2026-10-21", audit_eu_aggregate, snap / "eu-aggregate-2026-10-21"),
     ]
     out = []
     for name, fn, path in audits:

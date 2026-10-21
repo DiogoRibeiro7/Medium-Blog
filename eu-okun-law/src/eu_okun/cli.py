@@ -333,6 +333,20 @@ def main(argv: Sequence[str] | None = None) -> int:
     smooth.add_argument("--bayes-dir", type=Path, default=Path("docs/bayes"))
     smooth.add_argument("--output-dir", type=Path, default=Path("results/smoothing"))
     smooth.add_argument("--report", type=Path, default=None)
+    fetch_agg = commands.add_parser(
+        "fetch-eu-aggregate", help="Download unemployed persons, rates and GDP growth for the "
+                                   "countries and EU27_2020 (AGGREGATE_PROTOCOL.md)")
+    fetch_agg.add_argument("--output-dir", type=Path, default=Path("snapshots/eu-aggregate"))
+    agg = commands.add_parser(
+        "aggregate", help="The EU as a whole: a labour-force-weighted aggregate "
+                          "(AGGREGATE_PROTOCOL.md)")
+    agg.add_argument("--data-dir", type=Path, default=Path("snapshots/eurostat-2026-10-15"))
+    agg.add_argument("--snapshot", type=Path, default=Path("snapshots/eu-aggregate-2026-10-21"))
+    agg.add_argument("--case-study", type=Path,
+                     default=Path("docs/heterogeneity/elasticities.csv"))
+    agg.add_argument("--cce", type=Path, default=Path("docs/cce/countries.csv"))
+    agg.add_argument("--output-dir", type=Path, default=Path("results/aggregate"))
+    agg.add_argument("--report", type=Path, default=None)
     fetch_gm = commands.add_parser(
         "fetch-gdp-measurement", help="Download value added and hours by industry into a "
                                       "snapshot (GDP_MEASUREMENT_PROTOCOL.md)")
@@ -844,6 +858,27 @@ def main(argv: Sequence[str] | None = None) -> int:
         print("; ".join(f"{t.key} {t.verdict}" for t in sm_study.primary) + "; averages of "
               f"monthly: {sum(i.average_of_monthly for i in sm_study.inheritance)} of "
               f"{len(sm_study.inheritance)}")
+        return 0
+    if args.command == "fetch-eu-aggregate":
+        from eu_okun.aggregate_data import fetch_eu_aggregate
+
+        try:
+            agg_manifest = fetch_eu_aggregate(args.output_dir)
+        except (EurostatDataError, ValueError, RuntimeError, OSError) as exc:
+            parser.exit(2, f"Download failed: {exc}" + chr(10))
+        print(f"Saved {len(agg_manifest['files'])} responses to {args.output_dir}")
+        return 0
+    if args.command == "aggregate":
+        from eu_okun.aggregate import write_report as write_aggregate
+
+        try:
+            agg_study = write_aggregate(args.data_dir, args.snapshot, args.case_study, args.cce,
+                                        args.output_dir, args.report)
+        except (EurostatDataError, FileNotFoundError, ValueError, OSError, KeyError) as exc:
+            parser.exit(2, f"Aggregate study failed: {exc}" + chr(10))
+        for agg_test in agg_study.tests:
+            print(f"{agg_test.key}: {agg_test.estimate:+.3f} [{agg_test.low:+.3f}, "
+                  f"{agg_test.high:+.3f}] (Holm p {agg_test.holm:.3f}) {agg_test.verdict}")
         return 0
     if args.command == "fetch-gdp-measurement":
         from eu_okun.gdp_measurement_data import fetch_gdp_measurement

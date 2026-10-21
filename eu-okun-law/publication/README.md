@@ -136,6 +136,14 @@ Okun's law in hours, for every country, with and without the pandemic:
 poetry run eu-okun hours --data-dir snapshots/eurostat-2026-10-15 --snapshot snapshots/heterogeneity-2026-10-18 --case-study docs/heterogeneity/elasticities.csv --output-dir docs/hours --report docs/HOURS.md
 ```
 
+The EU as a whole: a labour-force-weighted aggregate (the first command needs internet;
+the snapshot is already frozen):
+
+```bash
+poetry run eu-okun fetch-eu-aggregate --output-dir snapshots/eu-aggregate-2026-10-21
+poetry run eu-okun aggregate --data-dir snapshots/eurostat-2026-10-15 --snapshot snapshots/eu-aggregate-2026-10-21 --case-study docs/heterogeneity/elasticities.csv --cce docs/cce/countries.csv --output-dir docs/aggregate --report docs/AGGREGATE.md
+```
+
 A common-correlated-effects mean-group panel:
 
 ```bash

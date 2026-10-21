@@ -1,0 +1,66 @@
+{
+ "reproduced": 27,
+ "seed": 20261029,
+ "replicates": 1999,
+ "theta_mg": {
+  "point": -0.2861311134559847,
+  "interval": [
+   -0.33424606876542207,
+   -0.19233091757458942
+  ],
+  "dropped": 0.0
+ },
+ "theta_lf": {
+  "point": -0.3345316239123854,
+  "interval": [
+   -0.3953499962104479,
+   -0.2062405915592911
+  ],
+  "dropped": 0.0
+ },
+ "theta_eu": {
+  "point": -0.4508579768788492,
+  "interval": [
+   -0.5708961780625498,
+   -0.24751040678088834
+  ],
+  "dropped": 0.0
+ },
+ "top_weights": {
+  "DE": 0.19869507320481042,
+  "FR": 0.14255525127892807,
+  "IT": 0.11873546255411954,
+  "ES": 0.11065746346389634,
+  "PL": 0.0812302893359928
+ },
+ "top_share": 0.6518735398377472,
+ "cce_unweighted": -0.17256924451999472,
+ "cce_weighted": -0.20736214164904399,
+ "data_check": {
+  "quarters": 70,
+  "max_abs_difference": 0.07395523141057225,
+  "change_correlation": 0.978723656017269
+ },
+ "verdicts": {
+  "T1": "not determined",
+  "T2": "not determined"
+ },
+ "provenance": {
+  "eurostat_manifest_sha256": "8a8c8a107d584ba91b61584fd29397e68ff83d82982371a35db253c0803a0464",
+  "aggregate_downloaded_at_utc": "2026-10-21T15:38:06.302092+00:00",
+  "aggregate_files": {
+   "unemployed_ths": {
+    "updated": "2026-09-10T23:00:00+0200",
+    "sha256": "646e5870aa5b671e155a699317fe1112ccb1b8006aa243f42f0cdf8f7de3f6a5"
+   },
+   "rate": {
+    "updated": "2026-09-10T23:00:00+0200",
+    "sha256": "78bde702827a54c6c2760e8d3dae8ce8b3db9995084cf5a39610f7da19bd18c5"
+   },
+   "gdp": {
+    "updated": "2026-10-20T23:00:00+0200",
+    "sha256": "f5a386554ce80c00b92a6c60cd5c20d46fe1d2065022d076b17c93dc962a5615"
+   }
+  }
+ }
+}

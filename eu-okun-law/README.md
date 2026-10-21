@@ -811,6 +811,37 @@ Results are in [docs/SMOOTHING.md](docs/SMOOTHING.md):
     shrinks the long-run sum. Luxembourg's "weak" result on the long-run sum is therefore
     an artefact.
 
+## The EU as a whole: a labour-force-weighted aggregate
+
+[AGGREGATE_PROTOCOL.md](AGGREGATE_PROTOCOL.md) was committed and pushed before its data
+were frozen or any estimate was computed.
+
+- **Data.** A new snapshot, `snapshots/eu-aggregate-2026-10-21`, adds unemployed persons
+  and rates (for labour-force weights) and the official `EU27_2020` series.
+- **Estimates.**
+  - The labour-force-weighted mean of the country sums, against the unweighted mean.
+  - The Okun sum of the EU aggregate itself.
+- **Tests.** Both differences are tested two-sided, with Holm.
+
+```bash
+poetry run eu-okun fetch-eu-aggregate --output-dir snapshots/eu-aggregate-2026-10-21   # needs internet
+poetry run eu-okun aggregate --data-dir snapshots/eurostat-2026-10-15 --snapshot snapshots/eu-aggregate-2026-10-21 --case-study docs/heterogeneity/elasticities.csv --cce docs/cce/countries.csv --output-dir docs/aggregate --report docs/AGGREGATE.md
+```
+
+Results are in [docs/AGGREGATE.md](docs/AGGREGATE.md):
+
+- **Estimates.**
+  - Unweighted mean -0.29 [-0.33, -0.19].
+  - Labour-force-weighted mean -0.33 [-0.40, -0.21]. DE, FR, IT, ES and PL hold 65% of
+    the weight.
+  - The EU aggregate -0.45 [-0.57, -0.25].
+- **Tests.**
+  - Weighting changes the mean by -0.05 [-0.09, +0.00].
+  - The aggregate differs from the weighted mean by -0.12 [-0.22, -0.00].
+  - Both have Holm p 0.10, so neither is decided. 3 of 8 sensitivity tests are decided.
+- **Data check.** The labour-force-weighted country rate matches the official EU rate
+  within 0.07 pp.
+
 ## A common-correlated-effects mean-group panel
 
 [CCE_PROTOCOL.md](CCE_PROTOCOL.md) was committed and pushed before any CCE estimate was

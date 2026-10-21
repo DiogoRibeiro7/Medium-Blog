@@ -52,6 +52,8 @@ That number should not be read as the answer. The main model fails one of its ow
 
 A standard classical check points the same way. Pesaran's common-correlated-effects estimator also strips out shocks shared across countries, by adding cross-country averages to each country's regression. Averaged over countries, it gives {{cce_mean}} {{cce_mean_ci}}, against {{cce_mg_ols}} without that adjustment. So about {{cce_share}} of the plain association moves with the common European cycle, and what remains sits close to the hierarchical model's figure.
 
+All of these averages count Malta as much as Germany. Weighting countries by the size of their labour force moves the average from {{ag_mg}} to {{ag_lf}}. Running the same regression on Eurostat's own series for the EU as a whole gives {{ag_eu}} {{ag_eu_ci}}, larger again. That fits the finding above that unemployment tracks Europe-wide shocks more closely than country-specific ones, and averaging also removes noise that pulls single-country estimates towards zero. Neither difference is decided by the tests I registered, though some of the variants I fixed in advance do decide it.
+
 ![Country sums, classical and Bayesian, on the same quarters](figures/fig1_countries.png)
 
 *Two-lag sums for 2009–2019 on the same quarters, both with 90% intervals. Orange: ordinary least squares. Blue: the hierarchical model, which excludes the common European factor, so the two are not expected to coincide. Alphabetical; no ranking implied.*
@@ -134,7 +136,7 @@ A registered check of smoothed monthly series elsewhere found no evidence that t
 
 The biggest open question is why countries differ. They may differ because their labour markets respond differently to the same shock, or because they face different mixes of shocks, and only shock-specific identification can separate the two. Answering the causal question for productivity or labour-supply shocks would need data the public statistics do not provide: productivity adjusted for capacity utilisation, and natural experiments in labour supply. Luxembourg's weak link is still a puzzle: two explanations have failed, and a third is not established. And whether the relation weakened after 2021 needs more quarters. The first classical pass reported {{ss_published_holm}} significant post-2021 changes, but a size study showed that its test rejected a true null {{ss_size_normal}} of the time; with a bootstrap that held its size, {{ss_survivors}} survive, and that does not change when the bootstrap is made less conservative.
 
-There are also standard analyses this study does not include. It has no gap-form Okun's law to set against the international literature and no labour-force-weighted EU aggregate. Those would be the next things to add.
+One standard analysis is still missing: the gap form of Okun's law, which relates unemployment to how far output sits from its potential, and which would set these numbers against the international literature. It needs a measure of potential output, and choosing one is a modelling decision of its own. That would be the next thing to add.
 
 ## The takeaway
 

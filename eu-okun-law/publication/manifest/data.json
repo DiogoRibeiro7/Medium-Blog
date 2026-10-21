@@ -43,6 +43,38 @@
     "bytes": 240675
    }
   ],
+  "eu-aggregate-2026-10-21": [
+   {
+    "path": "snapshots/eu-aggregate-2026-10-21/README.md",
+    "sha256": "aac15549bcde00bd0b0f256ea9f31b090eaea5ec0541b734d646e712f73de993",
+    "bytes": 1549
+   },
+   {
+    "path": "snapshots/eu-aggregate-2026-10-21/manifest.json",
+    "sha256": "a5ccb971a68a20e3512a83b7f620be5f65fd467b09dd8adabfdf942b9dfaa1db",
+    "bytes": 1652
+   },
+   {
+    "path": "snapshots/eu-aggregate-2026-10-21/processed/quarterly.csv",
+    "sha256": "061607607e699ee146c93a43337d2ea1b3aba2a46df9304680f5949673418141",
+    "bytes": 59056
+   },
+   {
+    "path": "snapshots/eu-aggregate-2026-10-21/raw/gdp.json",
+    "sha256": "f5a386554ce80c00b92a6c60cd5c20d46fe1d2065022d076b17c93dc962a5615",
+    "bytes": 41957
+   },
+   {
+    "path": "snapshots/eu-aggregate-2026-10-21/raw/rate.json",
+    "sha256": "78bde702827a54c6c2760e8d3dae8ce8b3db9995084cf5a39610f7da19bd18c5",
+    "bytes": 35852
+   },
+   {
+    "path": "snapshots/eu-aggregate-2026-10-21/raw/unemployed_ths.json",
+    "sha256": "646e5870aa5b671e155a699317fe1112ccb1b8006aa243f42f0cdf8f7de3f6a5",
+    "bytes": 35315
+   }
+  ],
   "eurostat-2026-10-15": [
    {
     "path": "snapshots/eurostat-2026-10-15/README.md",

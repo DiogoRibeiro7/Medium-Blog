@@ -1,0 +1,9 @@
+setting,key,statistic,estimate,low,high,dropped,p_value,holm,verdict
+lags_1,T1,labour-force-weighted minus unweighted mean,-0.05117128028763357,-0.08373281170118681,-0.00800657965054265,0.0,0.029,0.029,differs
+lags_1,T2,EU aggregate minus labour-force-weighted mean,-0.13601069849930264,-0.23740941765967347,-0.037622651090378476,0.0,0.013,0.026,differs
+lags_4,T1,labour-force-weighted minus unweighted mean,-0.04554030709986284,-0.1076871695566164,0.014485919407291097,0.0,0.11,0.11,not determined
+lags_4,T2,EU aggregate minus labour-force-weighted mean,-0.15266634317595412,-0.28939272993638215,-0.00885435883120598,0.0,0.036,0.072,not determined
+block_8,T1,labour-force-weighted minus unweighted mean,-0.0484005104564007,-0.09554513611235774,0.028526029112705555,0.0,0.129,0.129,not determined
+block_8,T2,EU aggregate minus labour-force-weighted mean,-0.11632635296646382,-0.21780316099877547,-0.00035303570312121243,0.0,0.051,0.102,not determined
+pre_2020,T1,labour-force-weighted minus unweighted mean,-0.050311128343033584,-0.0961012233065915,-0.014414143410654138,0.0,0.015,0.03,differs
+pre_2020,T2,EU aggregate minus labour-force-weighted mean,-0.12357454945049401,-0.23588383203793034,0.01750180204595237,0.0,0.063,0.063,not determined

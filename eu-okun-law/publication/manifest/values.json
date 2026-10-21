@@ -1,4 +1,124 @@
 {
+ "ag_cce_u": {
+  "tex": "$-0.17$",
+  "md": "−0.17",
+  "raw": -0.17256924,
+  "source": "docs/aggregate/summary.json"
+ },
+ "ag_cce_w": {
+  "tex": "$-0.21$",
+  "md": "−0.21",
+  "raw": -0.20736214,
+  "source": "docs/aggregate/summary.json"
+ },
+ "ag_check": {
+  "tex": "$0.07$",
+  "md": "0.07",
+  "raw": 0.07395523,
+  "source": "docs/aggregate/summary.json"
+ },
+ "ag_eu": {
+  "tex": "$-0.45$",
+  "md": "−0.45",
+  "raw": -0.45085798,
+  "source": "docs/aggregate/summary.json"
+ },
+ "ag_eu_ci": {
+  "tex": "$[-0.57, -0.25]$",
+  "md": "[−0.57, −0.25]",
+  "raw": "[-0.57089618, -0.24751041]",
+  "source": "docs/aggregate/summary.json"
+ },
+ "ag_lf": {
+  "tex": "$-0.33$",
+  "md": "−0.33",
+  "raw": -0.33453162,
+  "source": "docs/aggregate/summary.json"
+ },
+ "ag_lf_ci": {
+  "tex": "$[-0.40, -0.21]$",
+  "md": "[−0.40, −0.21]",
+  "raw": "[-0.39535000, -0.20624059]",
+  "source": "docs/aggregate/summary.json"
+ },
+ "ag_mg": {
+  "tex": "$-0.29$",
+  "md": "−0.29",
+  "raw": -0.28613111,
+  "source": "docs/aggregate/summary.json"
+ },
+ "ag_mg_ci": {
+  "tex": "$[-0.33, -0.19]$",
+  "md": "[−0.33, −0.19]",
+  "raw": "[-0.33424607, -0.19233092]",
+  "source": "docs/aggregate/summary.json"
+ },
+ "ag_n_sens": {
+  "tex": "8",
+  "md": "8",
+  "raw": 8,
+  "source": "docs/aggregate/sensitivity.csv"
+ },
+ "ag_n_sens_differ": {
+  "tex": "3",
+  "md": "3",
+  "raw": 3,
+  "source": "docs/aggregate/sensitivity.csv"
+ },
+ "ag_t1": {
+  "tex": "$-0.05$",
+  "md": "−0.05",
+  "raw": -0.04840051,
+  "source": "docs/aggregate/tests.csv"
+ },
+ "ag_t1_ci": {
+  "tex": "$[-0.09, +0.00]$",
+  "md": "[−0.09, +0.00]",
+  "raw": "[-0.09209948, 0.00228098]",
+  "source": "docs/aggregate/tests.csv"
+ },
+ "ag_t1_holm": {
+  "tex": "$0.100$",
+  "md": "0.100",
+  "raw": 0.1,
+  "source": "docs/aggregate/tests.csv"
+ },
+ "ag_t1_verdict": {
+  "tex": "not determined",
+  "md": "not determined",
+  "raw": "not determined",
+  "source": "docs/aggregate/tests.csv"
+ },
+ "ag_t2": {
+  "tex": "$-0.12$",
+  "md": "−0.12",
+  "raw": -0.11632635,
+  "source": "docs/aggregate/tests.csv"
+ },
+ "ag_t2_ci": {
+  "tex": "$[-0.22, +0.00]$",
+  "md": "[−0.22, +0.00]",
+  "raw": "[-0.21896453, -0.00050733]",
+  "source": "docs/aggregate/tests.csv"
+ },
+ "ag_t2_holm": {
+  "tex": "$0.100$",
+  "md": "0.100",
+  "raw": 0.1,
+  "source": "docs/aggregate/tests.csv"
+ },
+ "ag_t2_verdict": {
+  "tex": "not determined",
+  "md": "not determined",
+  "raw": "not determined",
+  "source": "docs/aggregate/tests.csv"
+ },
+ "ag_top_share": {
+  "tex": "$65$\\%",
+  "md": "65%",
+  "raw": 0.65187354,
+  "source": "docs/aggregate/summary.json"
+ },
  "as_c": {
   "tex": "$-0.10$",
   "md": "−0.10",
@@ -1900,6 +2020,12 @@
   "md": "8",
   "raw": 8,
   "source": "docs/gdp-measurement/predictions.csv"
+ },
+ "hash_aggregate": {
+  "tex": "\\texttt{a5ccb971a68a20e3}",
+  "md": "`a5ccb971a68a20e3`",
+  "raw": "a5ccb971a68a20e3512a83b7f620be5f65fd467b09dd8adabfdf942b9dfaa1db",
+  "source": "snapshots/eu-aggregate-2026-10-21/manifest.json"
  },
  "hash_deflator": {
   "tex": "\\texttt{30900e56883b8a6e}",
