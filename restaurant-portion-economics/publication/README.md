@@ -7,8 +7,12 @@ commercial-data-audit, and restaurant-contribution-margin research.
 
 - \`sections/*.md\`: maintained narrative source sections.
 - \`medium/article.md\`: assembled, copy-ready Medium article (not published).
+- \`medium/figures/*.png\`: the ten article figures, drawn in base R by
+  \`R/figures.R\` through \`scripts/make-figures.R\`. Upload them to Medium
+  in the order they appear in \`medium/article.md\`.
 - \`tests/test-article.R\`: verifies the assembled text, minimum 5,000-word
-  length, and the most important hypothetical financial calculations.
+  length, the most important hypothetical financial calculations, and that
+  every figure the article references exists.
 
 ## Run
 
@@ -26,6 +30,21 @@ To reassemble locally if a section is edited, use
 and regenerated \`medium/article.md\` in the same PR. CI will reject drift.
 
 Publication is manual. No workflow posts text to Medium.
+
+## Figures
+
+Six figures (waste stages, contribution, tornado, feasibility map,
+break-even elasticity, menu designs) need no external data. The four
+empirical figures (URBAN-WASTE selection and ratio fragility, Finnish daily
+series and sensitivity) need the Zenodo files, so the
+\`restaurant-portion-empirical.yml\` workflow downloads and checksum-verifies
+the sources, runs the analyses, redraws all ten figures and commits any
+changed PNG back to the pull-request branch. Locally, after
+\`scripts/download-data.R\` and the analysis scripts:
+
+\`\`\`sh
+Rscript scripts/make-figures.R
+\`\`\`
 
 ## Evidence labels
 

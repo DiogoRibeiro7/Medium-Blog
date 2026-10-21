@@ -25,11 +25,13 @@ jobs:
           Rscript tests/test-profit-bounds.R
           Rscript tests/test-public-cost-anchors.R
           Rscript tests/test-menu-designs.R
+          Rscript tests/test-figures.R
           Rscript publication/tests/test-article.R
           Rscript scripts/analyse-menu-designs.R
           Rscript scripts/analyse-public-cost-anchors.R
           Rscript scripts/analyse-profit-frontier.R
           Rscript scripts/run-analysis.R
+          Rscript scripts/make-figures.R outputs "$RUNNER_TEMP/model-figures"
       - name: Verify generated scenario files
         working-directory: restaurant-portion-economics
         run: |

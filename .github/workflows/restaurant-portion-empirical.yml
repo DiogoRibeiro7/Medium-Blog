@@ -5,11 +5,20 @@ on:
       - "restaurant-portion-economics/**"
       - ".github/workflows/restaurant-portion-empirical.yml"
   workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: restaurant-portion-empirical-${{ github.head_ref || github.ref_name }}
+  cancel-in-progress: true
 jobs:
   validate-source:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          # Check out the branch itself (not the PR merge commit) so the
+          # regenerated figures can be committed back to it.
+          ref: ${{ github.head_ref || github.ref }}
       - uses: r-lib/actions/setup-r@v2
         with:
           r-version: "release"
@@ -30,6 +39,26 @@ jobs:
           test -s outputs/finland_period.csv
           test -s outputs/finland_menu_matched.csv
           test -s outputs/finland_mass_diagnostics.csv
+      - name: Draw article figures from the verified sources
+        working-directory: restaurant-portion-economics
+        run: |
+          Rscript scripts/make-figures.R
+          for f in fig02_commercial_selection fig03_commercial_ratio_fragility \
+                   fig04_finland_daily fig05_finland_sensitivity; do
+            test -s "publication/medium/figures/$f.png"
+          done
+      - name: Commit regenerated figures to the branch
+        if: github.event_name == 'workflow_dispatch' || github.event.pull_request.head.repo.full_name == github.repository
+        run: |
+          git config user.name "Diogo Ribeiro"
+          git config user.email "diogo_dj@hotmail.com"
+          git add restaurant-portion-economics/publication/medium/figures
+          if git diff --cached --quiet; then
+            echo "Article figures unchanged."
+            exit 0
+          fi
+          git commit -m "Regenerate restaurant article figures from the Zenodo sources"
+          git push origin "HEAD:${{ github.head_ref || github.ref_name }}"
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -38,5 +67,6 @@ jobs:
             restaurant-portion-economics/outputs/finland_*.csv
             restaurant-portion-economics/outputs/zenodo_source_manifest.csv
             restaurant-portion-economics/outputs/commercial_*.csv
+            restaurant-portion-economics/publication/medium/figures/*.png
           if-no-files-found: warn
           retention-days: 30
