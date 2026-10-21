@@ -288,6 +288,14 @@ def main(argv: Sequence[str] | None = None) -> int:
     cgrid.add_argument("--robustness", type=Path, default=Path("docs/review/robustness.csv"))
     cgrid.add_argument("--output-dir", type=Path, default=Path("results/core-grid"))
     cgrid.add_argument("--report", type=Path, default=None)
+    nres = commands.add_parser(
+        "null-residuals", help="Null-imposed bootstraps with errors from the unrestricted "
+                               "residuals (post hoc, not registered)")
+    nres.add_argument("--data-dir", type=Path, default=Path("snapshots/eurostat-2026-10-15"))
+    nres.add_argument("--headline-dir", type=Path, default=Path("docs/headline-inference"))
+    nres.add_argument("--small-sample-dir", type=Path, default=Path("docs/small-sample"))
+    nres.add_argument("--output-dir", type=Path, default=Path("results/null-residuals"))
+    nres.add_argument("--report", type=Path, default=None)
     hrs = commands.add_parser(
         "hours", help="Okun's law in hours, for every country, with and without the pandemic "
                       "(HOURS_PROTOCOL.md)")
@@ -757,6 +765,19 @@ def main(argv: Sequence[str] | None = None) -> int:
         cs = core_summary(cg_rows)
         print(f"Robust negative without participation: {cs['robust']} "
               f"(published: {cs['robust_published']})")
+        return 0
+    if args.command == "null-residuals":
+        from eu_okun.null_residuals import write_report as write_null_residuals
+
+        try:
+            nr = write_null_residuals(args.data_dir, args.headline_dir, args.small_sample_dir,
+                                      args.output_dir, args.report)
+        except (FileNotFoundError, ValueError, OSError, KeyError) as exc:
+            parser.exit(2, f"Null-residuals run failed: {exc}" + chr(10))
+        head = nr["headline"]
+        print(f"Headline, Holm both schemes: {head['registered']['holm_both']} registered, "
+              f"{head['unrestricted']['holm_both']} with unrestricted errors; normal size "
+              f"{head['size']['normal_registered']:.3f} -> {head['size']['normal']:.3f}")
         return 0
     if args.command == "hours":
         from eu_okun.hours import write_report as write_hours
