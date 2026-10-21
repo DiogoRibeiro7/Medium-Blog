@@ -1,0 +1,12 @@
+source("R/economics.R")
+source("R/menu_designs.R")
+dir.create("outputs",showWarnings=FALSE,recursive=TRUE)
+baseline<-example_assumptions()
+options<-example_menu_options()
+results<-do.call(rbind,lapply(options,function(x) evaluate_menu_design(baseline,x)))
+grid<-menu_design_sensitivity(baseline,options)
+write.csv(results,"outputs/menu_design_comparison.csv",row.names=FALSE)
+write.csv(grid,"outputs/menu_design_sensitivity.csv",row.names=FALSE)
+print(results[,c("option_id","monthly_contribution_change_eur",
+ "maximum_customer_loss_for_break_even")])
+message("All results are hypothetical; retention and refill uptake are NOT observed.")
