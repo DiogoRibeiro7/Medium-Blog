@@ -521,6 +521,17 @@ def main() -> None:
         rep.add(f"{start}->{end}: " + "; ".join(
             f"{r.geo} {r.level} {r.total:+.2f} (within {r.within:+.2f}, between {r.between:+.2f})" for r in sub.itertuples()))
 
+    # 8. Selected industries -----------------------------------------------------
+    rep.section("8. Selected Portuguese industries (million euro; thousand employees; pay per employee, thousand euro)")
+    for code in ("G46", "G47", "K64", "J62_J63"):
+        sub = pt[pt["code"] == code].set_index("year")
+        parts = []
+        for year in (2016, 2022, 2023, 2024):
+            r = sub.loc[year]
+            parts.append(f"{year}: value added {r.Y:.0f}, compensation {r.D1:.0f}, employees {r.SAL:.0f}, "
+                         f"share {100 * r.D1 / r.Y:.1f}%, pay {r.D1 / r.SAL:.1f}")
+        rep.add(f"{code}: " + " | ".join(parts))
+
     rep.write(RESULTS / "summary.txt")
     print("\n".join(rep.lines))
 
