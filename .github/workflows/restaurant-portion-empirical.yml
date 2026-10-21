@@ -24,6 +24,7 @@ jobs:
           Rscript scripts/audit-empirical-results.R
           Rscript scripts/analyse-commercial.R
           Rscript scripts/analyse-commercial-selection.R
+          Rscript scripts/analyse-commercial-heterogeneity.R
           test -s outputs/zenodo_source_manifest.csv
           test -s outputs/finland_daily.csv
           test -s outputs/finland_period.csv
