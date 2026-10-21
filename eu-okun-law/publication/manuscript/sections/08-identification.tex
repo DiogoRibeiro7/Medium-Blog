@@ -195,7 +195,11 @@ registered results remain primary:
   \item monthly: \val{ws_m0_max_t} and \val{ws_m1_max_t}, with \val{ws_m1_unbounded} sets
     unbounded;
   \item sign restrictions: every draw remains admissible (\val{ws_sr_nonempty}), and the
-    demand and technology Okun-ratio regions are \val{ws_sr_regions}.
+    demand and technology Okun-ratio regions are \val{ws_sr_regions};
+  \item shift-share feasibility, whose origins keep $t-4$ to $t$ clear but whose lag-4
+    controls use the level at $t-5$ (added after a second review): the expected
+    first-stage $t$ of the primary partner set is \val{ws_ss1_t} with the widened window,
+    and the decision is still \val{ws_ss1_decision}.
 \end{itemize}
 No conclusion changes.
 

@@ -47,3 +47,13 @@ sign-restricted SVAR,1,technology Okun ratio h=8,robust_region,unbounded,1520
 sign-restricted SVAR,1,demand variance share of du,robust_region_upper,0.963116,1520
 sign-restricted SVAR,1,technology variance share of du,robust_region_upper,0.966193,1520
 sign-restricted SVAR,1,labour_supply variance share of du,robust_region_upper,0.961294,1520
+shift-share feasibility,0,GDP residual,sigma_u,1.17856,1242
+shift-share feasibility,0,P1,expected_t,0.191851,1242
+shift-share feasibility,0,P2,expected_t,0.313446,1242
+shift-share feasibility,0,P3,expected_t,0.658819,1242
+shift-share feasibility,0,P1 rule,decision,no go,1242
+shift-share feasibility,1,GDP residual,sigma_u,1.16888,1215
+shift-share feasibility,1,P1,expected_t,0.192806,1215
+shift-share feasibility,1,P2,expected_t,0.314431,1215
+shift-share feasibility,1,P3,expected_t,0.648239,1215
+shift-share feasibility,1,P1 rule,decision,no go,1215

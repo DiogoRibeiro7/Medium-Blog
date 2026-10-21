@@ -371,14 +371,31 @@ class Predictability:
     autocorrelation: float
 
 
-def newey_west(x: np.ndarray, e: np.ndarray, lags: int) -> np.ndarray:
-    """HAC covariance of OLS coefficients (Bartlett kernel)."""
+def newey_west(x: np.ndarray, e: np.ndarray, lags: int,
+               time: np.ndarray | None = None) -> np.ndarray:
+    """HAC covariance of OLS coefficients (Bartlett kernel).
+
+    With ``time`` (one integer period index per row), lags are counted in calendar periods:
+    rows ``lag`` periods apart are paired, so a gap in the rows is not treated as adjacent.
+    Without it, lags are counted in rows.
+    """
     bread = np.linalg.inv(x.T @ x)
     scores = x * e[:, None]
     meat = scores.T @ scores
-    for lag in range(1, lags + 1):
+    if time is None:
+        pairs = [(lag, np.arange(lag, len(e)), np.arange(len(e) - lag))
+                 for lag in range(1, lags + 1)]
+    else:
+        index = {int(t): i for i, t in enumerate(time)}
+        pairs = []
+        for lag in range(1, lags + 1):
+            matched = [(i, index[int(t) - lag]) for i, t in enumerate(time)
+                       if int(t) - lag in index]
+            pairs.append((lag, np.asarray([a for a, _ in matched], dtype=int),
+                          np.asarray([b for _, b in matched], dtype=int)))
+    for lag, current, previous in pairs:
         w = 1.0 - lag / (lags + 1.0)
-        gamma = scores[lag:].T @ scores[:-lag]
+        gamma = scores[current].T @ scores[previous]
         meat += w * (gamma + gamma.T)
     return np.asarray(bread @ meat @ bread)
 
@@ -437,7 +454,8 @@ class CountryResponse:
 def country_responses(arrays: PanelArrays, shock: Mapping[str, float], spec: ShockSpec,
                       scale: float, settings: Settings,
                       h: int = COUNTRY_HORIZON) -> list[CountryResponse]:
-    """Per-country time-series LPs with Newey-West standard errors (h + 1 lags)."""
+    """Per-country time-series LPs with Newey-West standard errors (h + 1 lags, counted in
+    calendar quarters)."""
     out = []
     for i, geo in enumerate(arrays.countries):
         design = lp_design(arrays, shock, h, spec, settings, countries=[i])
@@ -448,7 +466,7 @@ def country_responses(arrays: PanelArrays, shock: Mapping[str, float], spec: Sho
         for outcome in ("gdp", "unemployment"):
             y = design.y[outcome]
             beta = np.linalg.lstsq(x, y, rcond=None)[0]
-            cov = newey_west(x, y - x @ beta, h + 1)
+            cov = newey_west(x, y - x @ beta, h + 1, design.time)
             se = math.sqrt(float(cov[1, 1])) * abs(scale)
             crit = float(stats.t.ppf(0.95, n - x.shape[1]))
             est = float(beta[1]) * scale

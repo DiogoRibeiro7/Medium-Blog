@@ -350,6 +350,8 @@ def main(argv: Sequence[str] | None = None) -> int:
     window.add_argument("--deflator-dir", type=Path,
                         default=Path("snapshots/eurostat-deflator-2026-10-18"))
     window.add_argument("--svar-dir", type=Path, default=Path("docs/sign-restrictions"))
+    window.add_argument("--shift-share-dir", type=Path,
+                        default=Path("snapshots/shift-share-2026-10-18"))
     window.add_argument("--output-dir", type=Path, default=Path("results/window-sensitivity"))
     window.add_argument("--report", type=Path, default=None)
     pub = commands.add_parser(
@@ -843,7 +845,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         try:
             rows = run_window_sensitivity(args.data_dir, args.shocks_dir, args.monthly_dir,
                                           args.deflator_dir, args.svar_dir, args.output_dir,
-                                          args.report)
+                                          args.report, shift_share_dir=args.shift_share_dir)
         except (EurostatDataError, FileNotFoundError, ValueError, OSError, KeyError) as exc:
             parser.exit(2, f"Window sensitivity failed: {exc}" + chr(10))
         print(f"{len(rows)} rows written to {args.output_dir / 'window_sensitivity.csv'}")

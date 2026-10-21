@@ -151,3 +151,12 @@ x[i,t+h] - x[i,t-1] = a_i^h + b^h s[t] + sum_{l=1..4} ( c_l^h s[t-l] + d_l^h du[
   is kept. The registered rule is unchanged and its results remain primary. A labelled
   sensitivity widens the window by one period (`eu-okun window-sensitivity`, results in
   [docs/WINDOW_SENSITIVITY.md](docs/WINDOW_SENSITIVITY.md)). No conclusion changes.
+- **2026-10-21: an implementation correction to the descriptive country responses.** A
+  second external review noted that the Newey-West covariance of the country-by-country
+  LPs counted its h + 1 lags in rows, not in calendar quarters. The rows skip the pandemic
+  windows and missing quarters, so two rows across such a gap were treated as adjacent.
+  - Every other HAC covariance in the study counts lags in calendar time, as the README
+    states. The country responses now do too (`structural.newey_west` with the rows'
+    quarter index).
+  - Only the intervals of the descriptive country table and figure change. The point
+    estimates, the panel results and every registered test are unaffected.

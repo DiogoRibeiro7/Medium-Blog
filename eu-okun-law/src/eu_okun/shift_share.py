@@ -320,13 +320,18 @@ def instrument(inputs: Inputs, set_key: str, first: str = SHIFT_START,
 
 
 def origins(quarters: Sequence[str], first: str = FIRST_ORIGIN,
-            last: str = LAST_ORIGIN) -> list[int]:
-    """Origin indices: in [first, last], with [t-4, t] clear of 2020-Q1..2021-Q4."""
+            last: str = LAST_ORIGIN, margin: int = 0) -> list[int]:
+    """Origin indices: in [first, last], with [t-4-margin, t] clear of 2020-Q1..2021-Q4.
+
+    The registered rule is margin 0. The lag-4 changes of the controls use the level at
+    t-5, so margin 1 also keeps that level clear (post hoc, ``window_sensitivity``).
+    """
     out = []
     for t, q in enumerate(quarters):
-        if q < first or q > last or t < LAGS:
+        if q < first or q > last or t < LAGS + margin:
             continue
-        if any(PANDEMIC[0] <= w <= PANDEMIC[1] for w in quarters[t - LAGS: t + 1]):
+        if any(PANDEMIC[0] <= w <= PANDEMIC[1]
+               for w in quarters[t - LAGS - margin: t + 1]):
             continue
         out.append(t)
     return out
@@ -393,11 +398,11 @@ def p_bounded(t: float, critical: float = AR_CRITICAL) -> float:
 
 
 def feasibility(panel: Panel, sigma_hat: float, set_key: str,
-                first: str = FIRST_ORIGIN) -> Feasibility:
+                first: str = FIRST_ORIGIN, margin: int = 0) -> Feasibility:
     """S = sum of Z~^2 after country and quarter effects and four lags of Z."""
     z = panel.z
     rows, country, time = [], [], []
-    for t in origins(panel.quarters, first):
+    for t in origins(panel.quarters, first, margin=margin):
         for i in range(len(panel.countries)):
             window = z[i, t - LAGS: t + 1]
             if np.all(np.isfinite(window)) and np.all(np.isfinite(panel.components[i, t])):
@@ -440,7 +445,7 @@ def decision(results: Mapping[str, Feasibility]) -> str:
 
 def sigma_u(panel: Mapping[tuple[str, str], Mapping[str, float | None]],
             quarters: Sequence[str], first: str = FIRST_ORIGIN,
-            countries: Sequence[str] = EU27) -> tuple[float, int]:
+            countries: Sequence[str] = EU27, margin: int = 0) -> tuple[float, int]:
     """Residual sd of GDP growth after country and quarter effects and four lags each of
     GDP growth, the unemployment change and the participation change (protocol, 5)."""
     def get(geo: str, q: str, name: str) -> float:
@@ -448,7 +453,7 @@ def sigma_u(panel: Mapping[tuple[str, str], Mapping[str, float | None]],
         return math.nan if value is None else float(value)
 
     rows, country, time, ys = [], [], [], []
-    for t in origins(quarters, first):
+    for t in origins(quarters, first, margin=margin):
         for i, geo in enumerate(countries):
             if t < LAGS + 1:
                 continue

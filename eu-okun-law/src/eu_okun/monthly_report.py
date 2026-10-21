@@ -20,6 +20,7 @@ from typing import Any
 import numpy as np
 
 from eu_okun.external_shocks import audit_shock_snapshot, monthly_series
+from eu_okun.fingerprint import fingerprint
 from eu_okun.monthly_data import (
     GROUPS,
     MANIFEST_FILE,
@@ -188,7 +189,10 @@ def review_from_arrays(arrays: MonthlyArrays, shocks: Mapping[str, Mapping[str, 
                                                  "licence": f["licence"]}
                                      for f in shock_manifest["files"]}
     if quarterly_dir is not None and (quarterly_dir / "okun_sets.csv").exists():
-        provenance["quarterly_okun_sets_sha256"] = _sha256(quarterly_dir / "okun_sets.csv")
+        # A platform-independent fingerprint: the quarterly table differs in its last
+        # digits between platforms, and its line endings between checkouts.
+        provenance["quarterly_okun_sets_fingerprint"] = fingerprint(
+            quarterly_dir / "okun_sets.csv")
     provenance["sample_months"] = [arrays.months[0], arrays.months[-1]]
     return MonthlyReview(primary, robustness, ip_all, tests, placebos, countries,
                          _quarterly_rows(quarterly_dir), data, provenance)
@@ -447,7 +451,8 @@ def render(review: MonthlyReview, assets: str, command: str) -> str:
 
     # 6. Countries
     lines += ["## 6. Countries (descriptive)", "",
-              "Country-by-country local projections at h = 12 (Newey-West, 13 lags), "
+              "Country-by-country local projections at h = 12 (Newey-West, 13 lags in "
+              "calendar months), "
               "alphabetical. Unemployment estimates outside group D rest on smoothed or "
               "interpolated series (A7 doubtful by construction). Individual country series are "
               "short; no ranking and no per-country significance claims.", ""]

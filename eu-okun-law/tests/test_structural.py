@@ -33,6 +33,7 @@ from eu_okun.structural import (
     in_euro_area,
     long_run_meat,
     lp_design,
+    newey_west,
     panel_arrays,
     predictability,
     touches_pandemic,
@@ -229,6 +230,28 @@ def test_membership_pandemic_rule_and_lagged_controls() -> None:
     assert kept_wide < kept and dropped
     for _, t in dropped:
         assert arrays.quarters[t - 5] == "2021-Q4"
+
+
+def test_newey_west_counts_lags_in_calendar_periods() -> None:
+    rng = np.random.default_rng(11)
+    x = np.column_stack([np.ones(30), rng.normal(size=30)])
+    e = rng.normal(size=30)
+    contiguous = np.arange(30)
+    assert np.allclose(newey_west(x, e, 3, contiguous), newey_west(x, e, 3))
+    # A gap of five periods after row 14: rows 14 and 15 are six periods apart, so no lag
+    # up to 3 pairs them, whereas counting rows would.
+    gapped = np.concatenate([np.arange(15), np.arange(20, 35)])
+    bread = np.linalg.inv(x.T @ x)
+    s = x * e[:, None]
+    meat = s.T @ s
+    for lag in range(1, 4):
+        w = 1.0 - lag / 4.0
+        for segment in (slice(0, 15), slice(15, 30)):
+            block = s[segment]
+            gamma = block[lag:].T @ block[:-lag]
+            meat += w * (gamma + gamma.T)
+    assert np.allclose(newey_west(x, e, 3, gapped), bread @ meat @ bread)
+    assert not np.allclose(newey_west(x, e, 3, gapped), newey_west(x, e, 3))
 
 
 def test_predictability_and_country_responses() -> None:

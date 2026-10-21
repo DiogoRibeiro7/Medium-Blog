@@ -382,7 +382,8 @@ def member_countries(arrays: MonthlyArrays, spec: ShockSpec) -> list[int]:
 def country_responses(arrays: MonthlyArrays, shock: Mapping[str, float], spec: ShockSpec,
                       scale: float, settings: Settings,
                       h: int = COUNTRY_HORIZON) -> list[CountryResponse]:
-    """Per-country time-series LPs with Newey-West standard errors (h + 1 lags)."""
+    """Per-country time-series LPs with Newey-West standard errors (h + 1 lags, counted in
+    calendar months)."""
     out = []
     for i in member_countries(arrays, spec):
         design = lp_design(arrays, shock, h, spec, settings, countries=[i])
@@ -393,7 +394,7 @@ def country_responses(arrays: MonthlyArrays, shock: Mapping[str, float], spec: S
         for outcome in OUTCOMES:
             y = design.y[outcome]
             beta = np.linalg.lstsq(x, y, rcond=None)[0]
-            cov = newey_west(x, y - x @ beta, h + 1)
+            cov = newey_west(x, y - x @ beta, h + 1, design.time)
             se = math.sqrt(float(cov[1, 1])) * abs(scale)
             crit = float(stats.t.ppf(0.95, n - x.shape[1]))
             est = float(beta[1]) * scale

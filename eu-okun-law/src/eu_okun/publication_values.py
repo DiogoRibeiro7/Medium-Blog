@@ -718,6 +718,10 @@ def collect_values(root: Path) -> dict[str, Value]:
                                          if r["statistic"] == "nonempty_share")), 0, src))
     regions = {r["value"] for r in svar if r["statistic"] == "robust_region"}
     add(text("ws_sr_regions", f"all {regions.pop()}" if len(regions) == 1 else "mixed", src))
+    shift = {(r["margin"], r["target"], r["statistic"]): r["value"] for r in ws
+             if r["design"] == "shift-share feasibility"}
+    add(num("ws_ss1_t", float(shift[("1", "P1", "expected_t")]), 2, src))
+    add(text("ws_ss1_decision", shift[("1", "P1 rule", "decision")], src))
     return out
 
 
@@ -836,6 +840,14 @@ def _consistency_checks(root: Path) -> list[Check]:
         gap = abs(float(values[f"ws_{design}0_max_t"].raw) - float(values[registered].raw))
         out.append(Check("consistency", f"Window sensitivity at margin 0 = registered "
                          f"{registered}", gap < 1e-4, _gap_detail(gap, 1e-4)))
+    window = _csv(docs / "window-sensitivity" / "window_sensitivity.csv")
+    feasible = {r["set"]: r for r in _csv(docs / "shift-share" / "feasibility.csv")}
+    ss_rows = [r for r in window if r["design"] == "shift-share feasibility"
+               and r["margin"] == "0" and r["statistic"] == "expected_t"]
+    ss_gap = max((abs(float(r["value"]) - float(feasible[r["target"]]["expected_t"]))
+                  for r in ss_rows), default=math.inf)
+    out.append(Check("consistency", "Window sensitivity at margin 0 = registered shift-share "
+                     "expected t", ss_gap < 1e-4, _gap_detail(ss_gap, 1e-4)))
     fc = (docs / "FORECAST_COMPARISON.md").read_text(encoding="utf-8")
     out.append(Check("consistency", "Forecast comparisons decided = report",
                      f"{values['fc_decided'].raw} of {values['fc_total'].raw} pre-registered "

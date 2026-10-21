@@ -230,13 +230,18 @@ Open:
     - Okun's GNP;
     - the association paragraph is split.
   - [x] Hand-typed counts replaced by values.
-- [ ] Remaining code items from that review:
-  - guard the window-sensitivity outputs with a regeneration test and a registry entry;
-  - Linux rebuilds flag `values.json` and `experiments.json` as stale because of
-    last-digit floats;
-  - the row-offset Newey-West in `structural.py` (not quoted);
-  - the shift-share origin window;
-  - actions pinned to SHAs.
+- [x] Remaining code items from that review:
+  - [x] The window-sensitivity and null-residuals outputs are guarded by regeneration
+        tests and listed in a post-hoc registry (`POST_HOC`, fingerprinted in
+        `experiments.json`).
+  - [x] Linux rebuilds no longer look stale. Manifests record numeric fingerprints, and
+        raw values are rounded to 10 significant digits (magnitudes below 1e-9 set to
+        zero). This was checked by regenerating on Linux (WSL).
+  - [x] The country-level Newey-West in the quarterly and monthly identification
+        studies counts lags in calendar periods. It is recorded in both change logs.
+  - [x] The shift-share origin window is added to the window sensitivity: P1's expected
+        t is 0.19 either way, and the decision is unchanged.
+  - [x] Actions are pinned to commit SHAs, at the versions they already used.
 
 Green offline CI is not evidence of a successful live data download.
 No pre-selected country results, artificial observations or causal

@@ -78,6 +78,48 @@ def local_projections(eurostat_dir: Path, shocks_dir: Path, monthly_dir: Path,
     return rows
 
 
+def shift_share(eurostat_dir: Path, snapshot: Path,
+                margins: tuple[int, ...] = (0, 1)) -> list[dict[str, Any]]:
+    """The feasibility statistics of every partner set, by window margin. The origins keep
+    [t-4, t] clear of 2020-2021, but the lag-4 controls of the GDP residual scale use the
+    level at t-5."""
+    from eu_okun.contract import quarter_sequence
+    from eu_okun.shift_share import (
+        LAST_ORIGIN,
+        PARTNER_SETS,
+        SHIFT_START,
+        audit_shift_share,
+        decision,
+        feasibility,
+        instrument,
+        load_inputs,
+        sigma_u,
+    )
+
+    audit_shift_share(snapshot)
+    audit_snapshot(eurostat_dir)
+    panel = _read_panel(eurostat_dir / "processed" / "eu27_quarterly.csv")
+    growth: dict[str, dict[str, float]] = {}
+    for (geo, quarter), row in panel.items():
+        if row.get("gdp") is not None:
+            growth.setdefault(geo, {})[quarter] = float(row["gdp"])  # type: ignore[arg-type]
+    inputs = load_inputs(snapshot, growth)
+    quarters = quarter_sequence(SHIFT_START, LAST_ORIGIN)
+    rows = []
+    for margin in margins:
+        sigma, n_sigma = sigma_u(panel, quarters, margin=margin)
+        rows.append(_row("shift-share feasibility", margin, "GDP residual", "sigma_u", sigma,
+                         n_sigma))
+        results = {key: feasibility(instrument(inputs, key), sigma, key, margin=margin)
+                   for key in PARTNER_SETS}
+        for key, result in results.items():
+            rows.append(_row("shift-share feasibility", margin, key, "expected_t",
+                             result.central.expected_t, result.n))
+        rows.append(_row("shift-share feasibility", margin, "P1 rule", "decision",
+                         decision(results), results["P1"].n))
+    return rows
+
+
 def sign_restrictions(eurostat_dir: Path, deflator_dir: Path, margin: int = 1,
                       draws: int = 1000, rotations: int = 20000) -> list[dict[str, Any]]:
     """The primary sign-restricted SVAR with a widened window."""
@@ -158,7 +200,10 @@ def render(rows: list[dict[str, Any]], command: str) -> str:
         "2020-2021: quarterly local projections from t-4, monthly from t-12, the structural "
         "VAR from t-2. The change at the longest lag is measured from the level one period "
         "earlier, so that level can fall in 2021 while the observation is kept. The widened "
-        "window (margin 1) also excludes those observations.", "",
+        "window (margin 1) also excludes those observations. The shift-share feasibility "
+        "study has the same gap: its origins keep t-4 to t clear, but the lag-4 controls of "
+        "the GDP residual scale use the level at t-5 (added after a second review on "
+        "2026-10-20).", "",
         "| Design | Target | Statistic | Registered window | Widened by one period |",
         "| --- | --- | --- | ---: | ---: |",
     ]
@@ -168,17 +213,22 @@ def render(rows: list[dict[str, Any]], command: str) -> str:
                      f"{cell(design, target, statistic, 1)} |")
     lines += ["", "Rows: country-period observations used. Sets: `all` and `two rays` are "
               "unbounded Anderson-Rubin sets. Variance shares are of the change in "
-              "unemployment at h = 8 (upper bound of the robust region).", "",
+              "unemployment at h = 8 (upper bound of the robust region). Shift-share: the "
+              "expected first-stage t of the central calibration for each partner set, and "
+              "the registered go/no-go rule (go only if P1 reaches 3.16).", "",
               "Reproduce:", "", "```bash", command, "```", ""]
     return "\n".join(lines)
 
 
 def run(eurostat_dir: Path, shocks_dir: Path, monthly_dir: Path, deflator_dir: Path,
         svar_dir: Path, output_dir: Path, report: Path | None = None, draws: int = 1000,
-        rotations: int = 20000) -> list[dict[str, Any]]:
+        rotations: int = 20000,
+        shift_share_dir: Path | None = None) -> list[dict[str, Any]]:
     rows = local_projections(eurostat_dir, shocks_dir, monthly_dir)
     rows += committed_svar(svar_dir)
     rows += sign_restrictions(eurostat_dir, deflator_dir, 1, draws, rotations)
+    if shift_share_dir is not None:
+        rows += shift_share(eurostat_dir, shift_share_dir)
     write(output_dir, rows)
     if report is not None:
         command = (f"eu-okun window-sensitivity --output-dir {output_dir.as_posix()} "
