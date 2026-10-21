@@ -130,3 +130,29 @@ quantity_response_benchmarks <- function() {
     stringsAsFactors = FALSE
   )
 }
+
+#' Weeks of sales per arm needed to detect a given proportional loss.
+#'
+#' @param customer_loss Proportional drop in weekly meals to detect, (0, 1).
+#' @param weekly_cv Week-to-week coefficient of variation of meals sold that
+#'   the comparison cannot explain (an assumption, not an estimate).
+#' @param alpha Two-sided test size.
+#' @param power Probability of detecting the loss if it is real.
+#' @return Weeks per arm under a two-sample normal approximation on log
+#'   weekly meals with independent weeks. Serial correlation, seasonality
+#'   and a single treated restaurant all make the real requirement larger;
+#'   matched control restaurants can make it smaller.
+pilot_weeks_needed <- function(customer_loss, weekly_cv, alpha = 0.05,
+                               power = 0.80) {
+  values <- c(customer_loss, weekly_cv, alpha, power)
+  if (!is.numeric(values) || anyNA(values) || any(!is.finite(values)) ||
+      any(customer_loss <= 0 | customer_loss >= 1) || any(weekly_cv <= 0) ||
+      length(alpha) != 1L || length(power) != 1L ||
+      alpha <= 0 || alpha >= 1 || power <= 0 || power >= 1) {
+    stop("Use a loss in (0, 1), a positive CV and alpha, power in (0, 1).",
+         call. = FALSE)
+  }
+  z <- stats::qnorm(1 - alpha / 2) + stats::qnorm(power)
+  effect <- -log(1 - customer_loss)
+  2 * z^2 * log1p(weekly_cv^2) / effect^2
+}

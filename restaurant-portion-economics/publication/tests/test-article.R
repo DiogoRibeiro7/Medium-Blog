@@ -5,6 +5,7 @@
 source("R/economics.R")
 source("R/profit_bounds.R")
 source("R/menu_designs.R")
+source("R/quantity_response.R")
 
 root <- "publication"
 sections <- c(
@@ -54,9 +55,45 @@ stopifnot(abs(refill$monthly_contribution_change_eur - 153.125) < 1e-8)
 discount <- evaluate_menu_design(a, options$smaller_discount)
 stopifnot(discount$monthly_contribution_change_eur < 0)
 
+# Break-even elasticity, external calibration and pilot length.
+eps <- quantity_elasticity_threshold(a, 0.15)$break_even_quantity_elasticity
+stopifnot(sprintf("%.3f", eps) == "0.147")
+stopifnot(abs(quantity_elasticity_limit(a) - 0.2125) < 1e-12)
+grid <- quantity_elasticity_threshold(a, seq(0.10, 0.30, by = 0.001))
+stopifnot(sprintf("%.3f", max(grid$break_even_quantity_elasticity)) == "0.154")
+calibrate <- function(elasticity) {
+  x <- a
+  x$demand_change <- -implied_customer_loss(0.15, elasticity)
+  c(loss = implied_customer_loss(0.15, elasticity),
+    delta = evaluate_scenario(x)$incremental_contribution_eur)
+}
+stopifnot(sprintf("%.2f", calibrate(0.12)[["delta"]]) == "88.92",
+          sprintf("%.2f", 100 * calibrate(0.12)[["loss"]]) == "1.93",
+          sprintf("%.2f", 100 * calibrate(0.5)[["loss"]]) == "7.80",
+          round(calibrate(0.5)[["delta"]]) == -1123)
+weeks <- pilot_weeks_needed(-break_even_demand_change(a), c(0.05, 0.10))
+stopifnot(identical(round(weeks), c(69, 273)))
+stopifnot(abs(discount$monthly_contribution_change_eur + 1387.5) < 1e-8)
+refill_half <- options$smaller_free_refill
+refill_half$refill_uptake <- 0.5
+stopifnot(round(evaluate_menu_design(a, refill_half)$
+                  monthly_contribution_change_eur) == -131)
+
+# Every figure the article references must exist next to it.
+figures <- regmatches(actual, gregexpr("\\(figures/[^)]+\\.png\\)", actual))[[1L]]
+figures <- gsub("^\\(|\\)$", "", figures)
+if (length(figures) != 10L || anyDuplicated(figures)) {
+  stop("The article should reference ten distinct figures.")
+}
+missing <- figures[!file.exists(file.path(root, "medium", figures))]
+if (length(missing) > 0L) {
+  stop("Article references missing figures: ", paste(missing, collapse = ", "))
+}
+
 for (required in c(
-  "3,321", "380", "21.73%", "16.34%", "2.36%",
-  "€487.50", "€0.255", "€153.13"
+  "3,321", "380", "21.73%", "16.34%", "16.39%", "2.36%",
+  "€487.50", "€0.255", "€153.13", "0.147", "€88.92", "€1,387.50",
+  "about 69 weeks", "about 273 weeks"
 )) {
   if (!grepl(required, actual, fixed = TRUE)) {
     stop("Article omitted a required audited or illustrative value: ",
@@ -64,4 +101,5 @@ for (required in c(
   }
 }
 message("Article matches its sections, ", word_count,
-        " words; economic figures pass base-R regression checks.")
+        " words; economic figures and ", length(figures),
+        " referenced figures pass base-R regression checks.")

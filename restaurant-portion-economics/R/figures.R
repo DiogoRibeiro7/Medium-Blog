@@ -55,7 +55,7 @@ fmt_num <- function(x, digits = 3) {
 
 #' Attribution line in the bottom outer margin.
 fig_footer <- function(source) {
-  graphics::mtext(paste0(fig_author, " · ", source), side = 1,
+  graphics::mtext(paste0(fig_author, " \u00b7 ", source), side = 1,
                   line = 0.4, outer = TRUE, adj = 0.01, cex = 0.62,
                   col = fig_colours()$muted)
 }
@@ -77,7 +77,7 @@ fig_axis <- function(side, at, labels = at, ...) {
 fmt_eur <- function(x, digits = 0) {
   rounded <- floor(abs(x) * 10^digits + 0.5 + 1e-9) / 10^digits
   s <- formatC(rounded, format = "f", digits = digits, big.mark = ",")
-  paste0(ifelse(x < 0, "−€", "€"), s)
+  paste0(ifelse(x < 0, "\u2212\u20ac", "\u20ac"), s)
 }
 
 fmt_pct <- function(x, digits = 0) {
@@ -300,15 +300,16 @@ plot_commercial_ratio_fragility <- function(overview, loo, sensitivity, path) {
   graphics::segments(pooled, seq_len(n), ratio, seq_len(n), col = k$axis,
                      lwd = 1.2)
   far <- abs(ratio - pooled) > 0.1 * pooled
+  nudge <- diff(xlim) * 0.012
+  for (i in which(far)) {
+    right <- ratio[i] > pooled
+    fig_label(ratio[i] + if (right) nudge else -nudge, i,
+              paste0("without a kitchen holding ", removed[i], " rows"),
+              adj = c(if (right) 0 else 1, 0.5), cex = 0.68)
+  }
   graphics::points(ratio, seq_len(n), pch = 21, cex = 1.2,
                    bg = ifelse(far, k$blue, k$blue_light),
                    col = k$surface, lwd = 1.2)
-  big <- which(far)
-  for (i in big) {
-    fig_label(ratio[i], i,
-              paste0(" without a kitchen holding ", removed[i], " rows "),
-              adj = c(if (ratio[i] > pooled) 0 else 1, 0.5), cex = 0.68)
-  }
   step <- if (length(xat) > 1L) diff(xat)[1] else 0.01
   fig_axis(1, at = xat, labels = formatC(xat, format = "f",
                                          digits = max(2, -floor(log10(step)))))
@@ -329,7 +330,7 @@ plot_commercial_ratio_fragility <- function(overview, loo, sensitivity, path) {
                  adj = c(1, 0.5), cex = 0.72, col = k$ink)
   fig_title("The summary number depends on which kitchens are in the file",
             "Pooled waste per whole-day portion, recomputed with each eligible kitchen left out in turn (one row each)")
-  fig_footer("data: Eriksson & Lindgren (2019), URBAN-WASTE dataset, Zenodo 3355300 · weight unit not confirmed by the publisher")
+  fig_footer("data: Eriksson & Lindgren (2019), URBAN-WASTE dataset, Zenodo 3355300 \u00b7 weight unit not confirmed by the publisher")
   invisible(path)
 }
 
@@ -403,11 +404,9 @@ plot_finland_daily <- function(daily, path) {
       graphics::segments(d, hi, d - 6, ly, col = k$secondary, lwd = 0.8)
       fig_label(d - 6.5, ly,
                 paste0("day ", d, ": published ",
-                       formatC(f$published_g_diner[i], format = "f",
-                               digits = 1),
-                       " g per diner; recorded kg ÷ diners gives ",
-                       formatC(f$mass_derived_g_diner[i], format = "f",
-                               digits = 1), " g"),
+                       fmt_num(f$published_g_diner[i], 2),
+                       " g per diner; recorded kg \u00f7 diners gives ",
+                       fmt_num(f$mass_derived_g_diner[i], 2), " g"),
                 adj = c(1, 0.5), cex = 0.68)
     }
   }
@@ -421,7 +420,7 @@ plot_finland_daily <- function(daily, path) {
   graphics::mtext("Published daily waste per diner; on flagged days, filled red = published rate, hollow = rate implied by recorded kg and diners",
                   side = 3, line = 1.15, outer = TRUE, adj = 0.02,
                   cex = 0.78, col = k$secondary)
-  graphics::mtext(paste0(fig_author, " · data: Kuusisto, Latva & Wilén (2026), Food waste dataset: secondary school in Finland 2024–2025, Zenodo 20825233"),
+  graphics::mtext(paste0(fig_author, " \u00b7 data: Kuusisto, Latva & Wil\u00e9n (2026), Food waste dataset: secondary school in Finland 2024\u20132025, Zenodo 20825233"),
                   side = 1, line = 3.4, outer = TRUE, adj = 0.01,
                   cex = 0.62, col = k$muted)
   invisible(path)
@@ -488,7 +487,7 @@ plot_finland_sensitivity <- function(sensitivity, path) {
                  xpd = NA, cex = 0.85, col = k$ink, font = 2)
   fig_title("Three readings of one workbook",
             "Menu-matched change in waste per diner during the 20 intervention days")
-  fig_footer("data: Kuusisto, Latva & Wilén (2026), Zenodo 20825233 · descriptive comparison, not a causal effect")
+  fig_footer("data: Kuusisto, Latva & Wil\u00e9n (2026), Zenodo 20825233 \u00b7 descriptive comparison, not a causal effect")
   invisible(path)
 }
 
@@ -544,8 +543,8 @@ plot_contribution_vs_loss <- function(assumptions, path) {
   graphics::text(0.059, -950, "loss", adj = c(1, 0), cex = 0.75,
                  col = k$muted)
   fig_title("A 15% smaller plate pays for itself only if almost nobody leaves",
-            "Illustrative restaurant: 2,500 meals a month at €15, €0.255 saved per retained meal, €150 a month to implement")
-  fig_footer("hypothetical parameters, not observed restaurant accounts · R/economics.R")
+            "Illustrative restaurant: 2,500 meals a month at \u20ac15, \u20ac0.255 saved per retained meal, \u20ac150 a month to implement")
+  fig_footer("hypothetical parameters, not observed restaurant accounts \u00b7 R/economics.R")
   invisible(path)
 }
 
@@ -649,7 +648,7 @@ plot_profit_tornado <- function(assumptions, bounds, path) {
   fig_title("Customer loss moves the result more than any cost input",
             "One input varied across its assumed range, the others held at the baseline with no customers lost",
             line = 2.4, outer = TRUE)
-  fig_footer("assumed ranges, not confidence intervals · R/profit_bounds.R")
+  fig_footer("assumed ranges, not confidence intervals \u00b7 R/profit_bounds.R")
   invisible(path)
 }
 
@@ -707,8 +706,8 @@ plot_feasibility_map <- function(assumptions, bounds, path) {
   graphics::mtext("share of meals lost", side = 2, line = 3.3, las = 0,
                   cex = 0.8, col = k$secondary)
   fig_title("Most of the plausible region has no settled answer",
-            "Cost share 25–55%, purchasing pass-through 50–95%, implementation €75–250 a month, varied jointly")
-  fig_footer("assumed ranges, not estimates · R/profit_bounds.R, R/quantity_response.R")
+            "Cost share 25\u201355%, purchasing pass-through 50\u201395%, implementation \u20ac75\u2013250 a month, varied jointly")
+  fig_footer("assumed ranges, not estimates \u00b7 R/profit_bounds.R, R/quantity_response.R")
   invisible(path)
 }
 
@@ -745,7 +744,7 @@ plot_elasticity_threshold <- function(assumptions, path) {
     graphics::text(0.025, band$elasticity_high[i] - 0.012,
                    paste0("Food away from home, price elasticity, systematic review: ",
                           formatC(band$elasticity_low[i], format = "f",
-                                  digits = 1), "–",
+                                  digits = 1), "\u2013",
                           formatC(band$elasticity_high[i], format = "f",
                                   digits = 1)),
                    adj = c(0, 1), cex = 0.72, col = k$secondary)
@@ -787,7 +786,7 @@ plot_elasticity_threshold <- function(assumptions, path) {
   graphics::segments(lx, ly[2], lx + 0.015, ly[2], col = k$blue, lwd = 1.8,
                      lty = 2)
   graphics::text(lx + 0.018, ly[1],
-                 "break-even, with €150 a month to implement",
+                 "break-even, with \u20ac150 a month to implement",
                  adj = c(0, 0.5), cex = 0.72, col = k$secondary)
   graphics::text(lx + 0.018, ly[2],
                  paste0("break-even, no implementation cost (small-cut limit ",
@@ -802,7 +801,7 @@ plot_elasticity_threshold <- function(assumptions, path) {
                   line = 3.2, las = 0, cex = 0.8, col = k$secondary)
   fig_title("How insensitive to portion size customers would need to be",
             "Largest elasticity at which the illustrative restaurant breaks even, against published estimates from other markets")
-  fig_footer("benchmarks: Çakır & Balagtas (2014); Andreyeva, Long & Brownell (2010) · none of them measures restaurant diners")
+  fig_footer("benchmarks: \u00c7ak\u0131r & Balagtas (2014); Andreyeva, Long & Brownell (2010) \u00b7 none of them measures restaurant diners")
   invisible(path)
 }
 
@@ -878,8 +877,8 @@ plot_menu_designs <- function(assumptions, options, path) {
   graphics::mtext("change in monthly contribution", side = 2, line = 4.1,
                   las = 0, cex = 0.8, col = k$secondary)
   fig_title("A discount gives away more than the smaller plate saves",
-            "Same 15% portion cut under three menu designs; refills restore the full saving and cost €0.20 each to serve")
-  fig_footer("hypothetical parameters · R/menu_designs.R")
+            "Same 15% portion cut under three menu designs; refills restore the full saving and cost \u20ac0.20 each to serve")
+  fig_footer("hypothetical parameters \u00b7 R/menu_designs.R")
   invisible(path)
 }
 

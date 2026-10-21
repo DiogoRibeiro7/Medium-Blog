@@ -39,6 +39,13 @@ error_expected(implied_customer_loss(1, 0.5))
 error_expected(implied_customer_loss(0.1, -0.5))
 error_expected(quantity_elasticity_threshold(a, 0))
 error_expected(quantity_elasticity_threshold(a, 0.1, NA))
+weeks <- pilot_weeks_needed(-break_even_demand_change(a), c(0.05, 0.10))
+z <- qnorm(0.975) + qnorm(0.80)
+stopifnot(abs(weeks[1] - 2 * z^2 * log1p(0.05^2) /
+                log(1 - 0.0236220472440945)^2) < 1e-6)
+stopifnot(weeks[2] > 3.9 * weeks[1], weeks[2] < 4.1 * weeks[1])
+error_expected(pilot_weeks_needed(0, 0.1))
+error_expected(pilot_weeks_needed(0.02, -0.1))
 b <- quantity_response_benchmarks()
 stopifnot(nrow(b) == 3L, all(b$elasticity_low <= b$elasticity_high),
           all(grepl("^https://doi.org/", b$source_url)))
