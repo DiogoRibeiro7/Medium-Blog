@@ -25,7 +25,8 @@ cross-country temporary and part-time shares from
 \citetalias{eurostat_lfsq_etpga} and \citetalias{eurostat_lfsq_eppga}, and employment protection indicators from
 the OECD \citep{oecd2020epl}. Eurostat publishes hours worked for Portugal but no
 seasonally adjusted quarterly employment in persons, so its hours per worker and domestic
-employment cannot be computed and two of its predictions cannot be evaluated. The protocol
+employment cannot be computed and \val{cs_n_pt_unavailable} of its predictions cannot be
+evaluated. The protocol
 had assumed wider coverage; its change log records the correction.
 
 \paragraph{Overall result.} \val{cs_supported} of \val{cs_total} pre-registered predictions
@@ -129,9 +130,11 @@ in the \val{cs_p31a_settings} setting).
     the primary model misses, the rule \val{dyn_lu_ardl} on the long-run sum
     (probabilities \val{dyn_lu_ardl_p} and \val{dyn_lu_adf_p}). It holds because of
     Luxembourg's negative lagged-change coefficient, which shrinks its long-run multiplier;
-    on the short-run sum the probability is \val{dyn_lu_adf_short_p}. These fits were
-    registered as an amendment and are not part of the claim judgement, which keeps the
-    original nine specifications.
+    on the short-run sum the probability is \val{dyn_lu_adf_short_p}. That coefficient is
+    what transitory noise in the unemployment rate produces (see \emph{The unemployment
+    side} below), so the long-run result is an artefact of the noise, not evidence of a
+    weak association. These fits were registered as an amendment and are not part of the
+    claim judgement, which keeps the original \val{by_n_specs} specifications.
 \end{itemize}
 
 \paragraph{Measurement.} GDP counts production by everyone working in Luxembourg, while
@@ -173,24 +176,41 @@ the median of the countries outside Luxembourg, Ireland and Malta.
     The output-per-hour elasticity is \val{gm_lu_prod} for all industries and
     \val{gm_lu_prod_n} outside finance.
 \end{itemize}
-By the interpretation rules fixed in that protocol, both explanations fail their tests,
-and Luxembourg's weak output-labour link remains unexplained. Of
-\val{gm_total} predictions, \val{gm_supported} is supported: Ireland's quarterly growth
-is negatively autocorrelated (\val{gm_p11_ie_focus} against \val{gm_p11_ie_median}),
-the signature of noise in its quarterly output. Its year-on-year correlation rises like
-everyone else's, however, so the full signature is not established there either.
+By the interpretation rule fixed in that protocol, neither explanation is supported, so
+both ``fail their tests'', and Luxembourg's weak output-labour link remains unexplained.
+For finance this is a clear negative: removing it changes almost nothing. For noise it
+means not established rather than ruled out. Before adjustment, the first fingerprint
+points towards noise, \val{gm_p11_lu} \val{gm_p11_lu_ci}, and the second points away from
+it, \val{gm_p12_lu} \val{gm_p12_lu_ci}. Neither is decided after Holm.
+
+Of \val{gm_total} predictions, \val{gm_supported} is supported: Ireland's quarterly growth
+is negatively autocorrelated (\val{gm_p11_ie_focus} against a comparison median of
+\val{gm_p11_ie_median}), the signature of noise in its quarterly output. The test does not
+single Ireland out, however. In the comparison group, \val{gm_rho_below_ie}'s
+autocorrelation is lower (\val{gm_rho_se}), and Estonia's and Denmark's are close
+(\val{gm_rho_ee}, \val{gm_rho_dk}). Ireland's year-on-year correlation also rises like
+everyone else's, so the full signature is not established there either.
 Ireland's modified domestic demand, published by its statistical office rather than
 Eurostat, and sectoral composition beyond finance were not tested.
 
-\paragraph{The unemployment side.} Luxembourg's quarterly unemployment rate is not the
-average of its monthly rate, which is benchmarked to moving annual averages: the
-correlation of their quarterly changes is only \val{sm_lu_corr}. So the quarterly rate
-does not inherit that smoothing. Its quarterly changes are instead strongly negatively
-autocorrelated (\val{sm_lu_auto}), the signature of transitory noise in the quarterly
-level, such as survey sampling error in a small country. This was observed after the
-registered smoothing check, not tested. Noise in the unemployment rate widens the
-intervals of the Okun sum and helps explain its sign instability. It does not bias the
-sum towards zero, so it does not explain why labour input barely moves.
+\paragraph{The unemployment side.} Luxembourg's monthly unemployment rate is benchmarked
+to moving annual averages of the survey. Eurostat benchmarks the monthly series to the
+quarterly survey figures, not the reverse \citep{eurostat_une_rt_m_esms}, so the quarterly
+rate does not inherit that smoothing; the correlation of their quarterly changes is only
+\val{sm_lu_corr}. Luxembourg's quarterly changes are instead strongly negatively
+autocorrelated (\val{sm_lu_auto}). That is the signature of transitory noise in the
+quarterly level, such as survey sampling error in a small country. It was observed after
+the registered smoothing check, not tested.
+
+What the noise does depends on the sum:
+\begin{itemize}
+  \item it widens the intervals of the two-lag sum, which helps explain its sign
+    instability, but does not bias that sum towards zero, so it does not explain why
+    labour input barely moves;
+  \item in the ARDL models it produces the negative lagged-change coefficient, which
+    shrinks the long-run sum towards zero. The long-run weakness above is therefore an
+    artefact of the noise.
+\end{itemize}
 
 \subsection{Do the differences remain under other measures?}
 
@@ -217,20 +237,29 @@ exist. Of these pair-and-measure comparisons:
 
 The protocol predicted that stricter employment protection would weaken the unemployment
 response. Spearman correlations across countries were computed with permutation $p$-values,
-Holm-adjusted over six indicators in each of three variants. Of the \val{cs_n_corr}
-correlations, \val{cs_n_corr_contra} point the other way at the registered level:
+Holm-adjusted over \val{cs_n_indicators} indicators in each of \val{cs_n_variants}
+variants. The primary variant uses the Bayesian sums; the others use the classical sums,
+and the Bayesian sums without Luxembourg and Ireland. Two of the indicators measure
+employment protection, so \val{cs_n_epl} of the \val{cs_n_corr} correlations are about it.
 \begin{itemize}
-  \item regular-contract protection against the classical sum: $\rho=$
-    \val{cs_eplr_cl_rho} over \val{cs_eplr_cl_n} countries (Holm $p=$
-    \val{cs_eplr_cl_holm});
-  \item temporary-contract protection against the Bayesian sum without Luxembourg and
-    Ireland: $\rho=$ \val{cs_eplt_noluie_rho} over \val{cs_eplt_noluie_n} countries (Holm
-    $p=$ \val{cs_eplt_noluie_holm}).
+  \item All \val{cs_n_epl_negative} employment-protection correlations are negative, the
+    opposite of the prediction.
+  \item In the primary variant neither is decided: regular-contract protection has Holm
+    $p=$ \val{cs_eplr_by_holm}, and temporary-contract protection $\rho=$
+    \val{cs_eplt_by_rho} (Holm $p=$ \val{cs_eplt_by_holm}).
+  \item \val{cs_n_epl_decided} are decided, both in the other variants:
+    \begin{itemize}
+      \item regular-contract protection against the classical sum, $\rho=$
+        \val{cs_eplr_cl_rho} over \val{cs_eplr_cl_n} countries (Holm $p=$
+        \val{cs_eplr_cl_holm});
+      \item temporary-contract protection against the Bayesian sum without Luxembourg and
+        Ireland, $\rho=$ \val{cs_eplt_noluie_rho} over \val{cs_eplt_noluie_n} countries
+        (Holm $p=$ \val{cs_eplt_noluie_holm}).
+    \end{itemize}
 \end{itemize}
-With all twenty countries the second correlation is \val{cs_eplt_by_rho} (Holm $p=$
-\val{cs_eplt_by_holm}). These are correlations among at most twenty countries, measured
-once in 2008. They contradict the predicted direction, but they say nothing about what
-employment protection does.
+These are correlations among at most \val{cs_epl_max_n} countries, measured once in 2008.
+Their sign runs against the prediction throughout, but they are decided only outside the
+primary variant, and they say nothing about what employment protection does.
 
 \subsection{Comparison with the earlier claims}
 
@@ -269,21 +298,22 @@ Netherlands: delayed response
 \addlinespace
 Luxembourg: weak association
   & Classical sum \val{cl_LU_verdict}; Bayesian rule holds in \val{claim_lu_holds} of
-    \val{by_n_accepted} registered fits, but \val{dyn_lu_adf} on the long-run sum in both
-    ARDL amendment fits.
+    \val{by_n_accepted} registered fits. It holds on the long-run sum of the ARDL amendment
+    fits only through a lagged-change coefficient that survey noise produces, an artefact.
   & Qualified \\
 \addlinespace
 Explanation: the commuter mismatch
-  & Domestic-minus-resident gap \val{cs_p11} \val{cs_p11_ci}. The two rival explanations
-    tested afterwards, transitory noise in quarterly output and the financial sector, fail
-    their tests too.
+  & Domestic-minus-resident gap \val{cs_p11} \val{cs_p11_ci}. Of the two rival explanations
+    tested afterwards, the financial sector fails its test and transitory noise in
+    quarterly output is not established.
   & Not supported \\
 \addlinespace
 Explanation: employment protection weakens the response
-  & \val{cs_n_corr_contra} of \val{cs_n_corr} registered correlations have the opposite
-    sign at the registered level (\val{cs_eplr_cl_rho}, \val{cs_eplt_noluie_rho}); the
-    rest are not determined.
-  & Contradicted (correlation only) \\
+  & All \val{cs_n_epl_negative} employment-protection correlations have the opposite sign.
+    None is decided in the primary variant (Holm $p=$ \val{cs_eplr_by_holm} and
+    \val{cs_eplt_by_holm}); \val{cs_n_epl_decided} are decided in other variants
+    (\val{cs_eplr_cl_rho}, \val{cs_eplt_noluie_rho}).
+  & Not supported; opposite sign (correlation only) \\
 \bottomrule
 \end{tabular}
 \end{table}

@@ -53,7 +53,8 @@ contiguous and definition-consistent in every country.
 \end{itemize}
 A failed fit is reported and not interpreted.
 
-\paragraph{Sensitivity.} Nine specifications were fixed in advance: wide priors, strong
+\paragraph{Sensitivity.} The sensitivity analysis fixed \val{by_n_specs} specifications in
+advance: wide priors, strong
 pooling, no pooling, no common factor, Gaussian i.i.d.\ errors, the participation control,
 four lags, and a sample without 2020--2021. Of these, \val{by_n_accepted} of
 \val{by_n_specs} were accepted; the unpooled fit missed the $\widehat R$ threshold.
@@ -85,8 +86,8 @@ correlates \val{by_factor_corr} with mean GDP growth.
     \val{by_n_neg_unpooled}.
   \item The \val{by_unpooled_n_differ} countries in between (\val{by_unpooled_differ})
     reach $P(\theta_i<0)$ of only \val{by_unpooled_p_lo} to \val{by_unpooled_p_hi} in the
-    unpooled fit. This is not evidence that their own data show no association: OLS on
-    the same quarters excludes zero for \val{by_unpooled_ols}.
+    unpooled fit. OLS on the same quarters excludes zero for \val{by_unpooled_ols_n} of
+    them (\val{by_unpooled_ols}), but not for \val{by_unpooled_not_ols}.
 \end{itemize}
 
 \paragraph{Magnitudes.} The Bayesian sums are smaller in magnitude than OLS on the same

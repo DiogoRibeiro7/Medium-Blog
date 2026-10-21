@@ -345,7 +345,7 @@ def table_countries(root: Path) -> str:
              "participation control (normal intervals): robust negative (robust), negative "
              "with specification-dependent significance (spec.-dep.), or sign-unstable. "
              "Alphabetical; no ranking is implied. Descriptive associations."
-             + (" The published review, which also counted participation-controlled "
+             + (" The original review, which also counted participation-controlled "
                 "specifications, classed "
                 + "; ".join(f"{c} as {SHORT_VERDICTS[verdicts[c]['published']]}"
                             for c in changed)

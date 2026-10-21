@@ -8,10 +8,13 @@ data.
 
 \textbf{Association.} With 2020--2021 excluded, the two-lag Okun coefficient sum is
 negative in \val{hi_point_negative} of \val{n_countries} countries. Under small-sample
-bootstraps that hold their size, it is significantly negative in \val{hi_negative}, but
-only \val{hi_negative_holm} survives a Holm adjustment across countries; normal critical
-values, which over-reject here, give \val{cl_n_neg_excluded} and \val{cl_n_neg_holm}. The
-sign is widespread; few individual country sums are established. Including the pandemic
+bootstraps that hold their size, it is significantly negative in \val{hi_negative}. How
+many of these are established depends on the error rate controlled across countries:
+\val{nr_bh_reg} if it is the false discovery rate (Benjamini--Hochberg, applied after the
+registered run and assuming positive dependence), \val{hi_negative_holm} under the
+registered Holm adjustment, which controls the chance of any false rejection. Normal
+critical values, which over-reject here, give \val{cl_n_neg_excluded} unadjusted. The
+sign is widespread. Including the pandemic
 quarters pulls most sums towards zero. A hierarchical Bayesian model with Student-$t$
 errors, residual autocorrelation and a common European factor estimates the association
 beyond the common European cycle. Across accepted specifications, the unweighted mean of
@@ -41,9 +44,9 @@ association for Spain, a delayed one for the Netherlands and a weak one for Luxe
 and suggested measurement and institutional explanations. We test two of that kind: a
 commuter mismatch in Luxembourg and employment protection. The Spanish
 claim is supported in every accepted specification. The Dutch and Luxembourg claims are
-qualified. In Luxembourg, output per hour moves almost one for one with measured output,
-and three explanations fail their registered tests: cross-border commuters, transitory
-noise in quarterly output, and the large financial sector. Luxembourg's weak link remains
+qualified. In Luxembourg, output per hour moves almost one for one with measured output.
+Cross-border commuters and the large financial sector fail their registered tests, and
+transitory noise in quarterly output is not established. Luxembourg's weak link remains
 unexplained.
 
 Every Okun coefficient in this study is a descriptive association; none is an identified

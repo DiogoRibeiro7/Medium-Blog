@@ -147,6 +147,14 @@
   "checked": "dataset code",
   "title_matches": true
  },
+ "eurostat_une_rt_m_esms": {
+  "doi": null,
+  "url": "https://ec.europa.eu/eurostat/cache/metadata/en/une_rt_m_esms.htm",
+  "isbn": null,
+  "note": "Metadata last updated 2026-01-08; accessed 2026-10-20",
+  "http_status": 200,
+  "content_type": "text/html"
+ },
  "eurostat_une_rt_q": {
   "doi": "10.2908/une_rt_q",
   "resolved": true,
@@ -273,7 +281,7 @@
   "isbn": null,
   "note": "OECD Data Explorer dataflow DSD\\_EPL@DF\\_EPL; version 3 indices for regular and temporary contracts, 2008; snapshot of 2026-10-18",
   "http_status": 200,
-  "content_type": "application/vnd.sdmx.structure+xml; charset=utf-8; version=2.1"
+  "content_type": "application/vnd.sdmx.structure+xml; version=2.1; charset=utf-8"
  },
  "oecd2025tiva": {
   "doi": null,

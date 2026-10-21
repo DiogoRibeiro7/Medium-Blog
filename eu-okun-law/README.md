@@ -683,8 +683,12 @@ brief, with associations only and 2020-2021 excluded:
 - **Temporary jobs.** The temporary-employment buffer is not determined in any country
   (Spain only before 2020).
 - **Institutions, as correlation.** Stricter employment protection goes with a stronger
-  unemployment response, the opposite of the registered prediction. This is a
-  correlation over 20 countries, and only in some variants.
+  unemployment response, the opposite of the registered prediction.
+  - Six of the 18 registered correlations concern employment protection: two indicators
+    in three variants. All six are negative.
+  - None is decided in the primary (Bayesian) variant (Holm p 0.94 and 0.095).
+  - Two are decided, both in other variants. These are correlations over at most 20
+    countries.
 - **No identified causal effect.** The report lists the hypotheses that cannot be tested
   reliably.
 
@@ -713,6 +717,29 @@ Results are in [docs/HEADLINE_INFERENCE.md](docs/HEADLINE_INFERENCE.md). In brie
   p-values understate the evidence for large sums. The bootstrap-t intervals, from the
   unrestricted residuals, lie below zero in 19 countries.
 
+**Post-hoc checks (not registered).** An external review (2026-10-20) pointed out that the
+size study draws its null from the same restricted residuals. It also asked which error
+rate the country count should control. [docs/NULL_RESIDUALS.md](docs/NULL_RESIDUALS.md)
+repeats the headline and post-2021 studies with the error process taken from the
+unrestricted residuals, keeping the registered designs, draws and seeds:
+
+```bash
+poetry run eu-okun null-residuals --data-dir snapshots/eurostat-2026-10-15 --headline-dir docs/headline-inference --small-sample-dir docs/small-sample --output-dir docs/null-residuals --report docs/NULL_RESIDUALS.md
+```
+
+- **Size on the less persistent null.**
+  - The normal reference rejects 16.6% instead of 22.0%, still too often.
+  - The registered bootstrap holds its size (5.1%).
+  - A bootstrap that draws its errors from the unrestricted residuals over-rejects
+    (8.0%). Its Holm count of 7 therefore does not replace the registered 1.
+- **Error rate.**
+  - With either scheme alone, Holm keeps 4.
+  - Benjamini-Hochberg (false discovery rate) on the registered p-values keeps 19.
+  - Benjamini-Yekutieli, valid under any dependence, keeps 1.
+- **Post-2021.**
+  - No change survives Holm under either error process.
+  - The normal reference rejects 18.1% instead of 22.8%.
+
 ## Measurement noise or finance? Luxembourg's weak output-labour link
 
 [GDP_MEASUREMENT_PROTOCOL.md](GDP_MEASUREMENT_PROTOCOL.md) was committed and pushed before
@@ -731,16 +758,21 @@ Results are in [docs/GDP_MEASUREMENT.md](docs/GDP_MEASUREMENT.md). One of eight
 predictions is supported; under the interpretation rules fixed in advance, both
 explanations fail for Luxembourg:
 
-- **Noise.** Luxembourg's quarterly growth is less autocorrelated than the comparison
-  group's (-0.17 against +0.19; not decided after Holm). But its hours-output correlation
-  does not rise at the year-on-year horizon (+0.18 quarter on quarter, +0.12 year on
-  year), whereas elsewhere it rises by a median 0.36. That points away from transitory
-  noise.
+- **Noise: not established.** "Fail" is the protocol's label for "not supported", and
+  for noise it means not established rather than ruled out.
+  - Luxembourg's quarterly growth is less autocorrelated than the comparison group's
+    (-0.17 against +0.19). The difference, -0.36 [-0.61, -0.02], excludes zero before
+    adjustment but is not decided after Holm.
+  - Its hours-output correlation does not rise at the year-on-year horizon (+0.18 quarter
+    on quarter, +0.12 year on year), whereas elsewhere it rises by a median 0.36. That
+    points away from transitory noise.
 - **Finance.** Finance is 28% of Luxembourg's value added and 11% of its hours, yet
   removing it from output and hours barely changes the link (output per hour +1.00 in
   total, +0.95 outside finance).
-- **Ireland.** Its quarterly growth is negatively autocorrelated (the one supported
-  prediction), but its year-on-year correlation rises like everyone else's.
+- **Ireland.** Its quarterly growth is negatively autocorrelated (-0.31, the one
+  supported prediction), but its year-on-year correlation rises like everyone else's.
+  The test does not single Ireland out: in the comparison group Sweden is lower (-0.35),
+  and Estonia (-0.25) and Denmark (-0.22) are close.
 
 Not tested: Ireland's modified domestic demand (Irish CSO), annual accounts, error shared
 by output and hours, sectoral composition beyond finance.
@@ -759,15 +791,25 @@ poetry run eu-okun smoothing --data-dir snapshots/eurostat-2026-10-15 --monthly-
 
 Results are in [docs/SMOOTHING.md](docs/SMOOTHING.md):
 
-- **No inheritance.** None of the six smoothed countries' quarterly rates is the average
-  of its monthly rate (correlation of changes: NL 0.91, DE 0.80, HR 0.60, LU 0.13).
+- **Inheritance: the check does not discriminate.**
+  - None of the six smoothed countries' quarterly rates is classed as the average of its
+    monthly rate (correlation of changes: NL 0.91, DE 0.80, HR 0.60, LU 0.13).
+  - The same rule also rejects 5 of the 8 direct-estimate countries, and NL's 0.91 ties
+    Hungary and Romania.
+  - The better evidence is Eurostat's metadata for `une_rt_m` (section 18.5). It
+    benchmarks the monthly series to the quarterly survey figures, not the reverse.
 - **Persistence (not determined).** Smoothed countries are, if anything, less persistent
   (+0.15 against +0.26 for direct estimates). Without them the misfit statistic rises from
   +0.27 to +0.30.
 - **Timing (not determined).** Lag shares are about equal (+0.65 against +0.62).
+- **What these tests show.** They compare 6 countries with 8, so they show no evidence
+  that smoothing drives the other results, not evidence that it does not.
 - **Luxembourg (descriptive, not registered).** Its quarterly unemployment changes are
-  strongly negatively autocorrelated (-0.51), the signature of survey sampling noise,
-  which widens the intervals of its Okun sum but does not bias it towards zero.
+  strongly negatively autocorrelated (-0.51), the signature of survey sampling noise.
+  - The noise widens the intervals of its two-lag sum without biasing that sum.
+  - In the ARDL models it produces the negative lagged-change coefficient (-0.43), which
+    shrinks the long-run sum. Luxembourg's "weak" result on the long-run sum is therefore
+    an artefact.
 
 ## The core robustness grid without the participation control
 

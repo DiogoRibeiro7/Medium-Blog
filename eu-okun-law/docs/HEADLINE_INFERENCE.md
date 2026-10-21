@@ -50,7 +50,7 @@ AR(1) by segment: before 2020 / after 2021. The unrestricted column is a diagnos
 
 ## Why the null-imposed p-values are conservative for large sums (not registered)
 
-Imposing `theta = 0` moves the omitted GDP effect into the restricted residuals. GDP growth is persistent, so for a country with a large sum this raises the residual AR(1) of the null data-generating process and widens the bootstrap distribution of t. Before 2020 the restricted AR(1) exceeds the unrestricted one by a median +0.17 (Greece: +0.88 against +0.36). The size study simulates under a true null and is unaffected, but the registered p-values understate the evidence for large sums. The bootstrap-t intervals, which use the unrestricted residuals, do not have this problem.
+Imposing `theta = 0` moves the omitted GDP effect into the restricted residuals. GDP growth is persistent, so for a country with a large sum this raises the residual AR(1) of the null data-generating process and widens the bootstrap distribution of t. Before 2020 the restricted AR(1) exceeds the unrestricted one by a median +0.17 (Greece: +0.88 against +0.36). The registered p-values therefore understate the evidence for large sums. The size study draws its null from the same restricted residuals, so its rejection rates are those of that more persistent null; the over-rejection of the normal reference is smaller on a less persistent one. A post-hoc repeat with errors from the unrestricted residuals is in [NULL_RESIDUALS.md](NULL_RESIDUALS.md). The bootstrap-t intervals, which use the unrestricted residuals, do not have this problem.
 
 ## Size study
 

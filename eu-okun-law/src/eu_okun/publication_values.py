@@ -373,6 +373,9 @@ def collect_values(root: Path) -> dict[str, Value]:
     ols_clear = [g for g in differ if float(_one(est, spec="primary", geo=g)["classical_high"]) < 0]
     add(text("by_unpooled_ols", _names(ols_clear), "docs/bayes/country_estimates.csv"))
     add(text("by_unpooled_ols_n", len(ols_clear), "docs/bayes/country_estimates.csv"))
+    add(text("by_unpooled_not_ols", _names([COUNTRY_NAMES[g] for g in differ
+                                            if g not in ols_clear]),
+             "docs/bayes/country_estimates.csv"))
 
     # Prediction ------------------------------------------------------------------------
     pc = _csv(docs / "predictive" / "comparisons.csv")
@@ -405,6 +408,7 @@ def collect_values(root: Path) -> dict[str, Value]:
     fx = [r for r in fc if r["kind"] == "sensitivity: excluding pandemic"]
     add(text("fcx_decided", sum(r["verdict"] != "not distinguishable" for r in fx),
              "docs/forecast-comparison/comparisons.csv"))
+    add(text("fcx_total", len(fx), "docs/forecast-comparison/comparisons.csv"))
     for a, b, key in (("bayes_gdp_ar1", "gdp_unemployment_ar1", "gdp"),
                       ("bayes_ar1", "unemployment_ar1", "ar1"),
                       ("bayes_gdp_ar1", "zero_change", "zero"),
@@ -520,6 +524,12 @@ def collect_values(root: Path) -> dict[str, Value]:
         add(num(f"cs_{key}_holm", float(r["holm"]), 3, "docs/heterogeneity/predictions.csv"))
         add(text(f"cs_{key}_verdict", r["verdict"], "docs/heterogeneity/predictions.csv"))
     every = _csv(docs / "heterogeneity" / "predictions.csv")
+    add(text("cs_n_pt_unavailable", sum("PT" in r["text"] and r["note"] == "data not available"
+                                        for r in hp), "docs/heterogeneity/predictions.csv"))
+    add(text("cs_n_pre2020_only", sum(
+        r["verdict"] != "supported" and any(
+            x["key"] == r["key"] and x["setting"] == "pre_2020" and x["verdict"] == "supported"
+            for x in every) for r in hp), "docs/heterogeneity/predictions.csv"))
     for pkey, key in (("P2.2", "p22"), ("P3.1a", "p31a"), ("P4.1 ES", "p41es")):
         add(text(f"cs_{key}_settings", ", ".join(
             r["setting"].replace("_", "-") for r in every
@@ -546,12 +556,28 @@ def collect_values(root: Path) -> dict[str, Value]:
     cor = _csv(docs / "heterogeneity" / "correlations.csv")
     for variant, indicator, key in (("classical", "epl_r", "eplr_cl"),
                                     ("Bayesian, without LU and IE", "epl_t", "eplt_noluie"),
-                                    ("Bayesian", "epl_t", "eplt_by")):
+                                    ("Bayesian", "epl_t", "eplt_by"),
+                                    ("Bayesian", "epl_r", "eplr_by")):
         r = _one(cor, variant=variant, indicator=indicator)
         add(num(f"cs_{key}_rho", float(r["rho"]), 2, "docs/heterogeneity/correlations.csv", True))
         add(num(f"cs_{key}_holm", float(r["holm"]), 3, "docs/heterogeneity/correlations.csv"))
         add(text(f"cs_{key}_n", r["n"], "docs/heterogeneity/correlations.csv"))
     add(text("cs_n_corr", len(cor), "docs/heterogeneity/correlations.csv"))
+    add(text("cs_n_indicators", len({r["indicator"] for r in cor}),
+             "docs/heterogeneity/correlations.csv"))
+    add(text("cs_n_variants", len({r["variant"] for r in cor}),
+             "docs/heterogeneity/correlations.csv"))
+    epl = [r for r in cor if r["indicator"] in ("epl_r", "epl_t")]
+    add(text("cs_n_epl", len(epl), "docs/heterogeneity/correlations.csv"))
+    add(text("cs_n_epl_negative", sum(float(r["rho"]) < 0 for r in epl),
+             "docs/heterogeneity/correlations.csv"))
+    add(text("cs_n_epl_decided", sum(r["verdict"] != "not determined" for r in epl),
+             "docs/heterogeneity/correlations.csv"))
+    add(text("cs_n_epl_decided_primary", sum(r["verdict"] != "not determined" for r in epl
+                                             if r["variant"] == "Bayesian"),
+             "docs/heterogeneity/correlations.csv"))
+    add(text("cs_epl_max_n", max(int(r["n"]) for r in epl),
+             "docs/heterogeneity/correlations.csv"))
 
     # Monthly smoothing in the quarterly rate (SMOOTHING_PROTOCOL.md) ----------------
     sm = json.loads((docs / "smoothing" / "summary.json").read_text(encoding="utf-8"))
@@ -569,6 +595,14 @@ def collect_values(root: Path) -> dict[str, Value]:
     add(num("sm_lu_corr", sm["luxembourg"]["change_corr"], 2, src))
     inh = {r["geo"]: r for r in _csv(docs / "smoothing" / "inheritance.csv")}
     add(num("sm_nl_corr", float(inh["NL"]["change_corr"]), 2, "docs/smoothing/inheritance.csv"))
+    from eu_okun.smoothing import DIRECT, SMOOTHED
+
+    add(text("sm_n_smoothed", len(SMOOTHED), "eu_okun.smoothing.SMOOTHED"))
+    add(text("sm_direct_not_average", sum(inh[g]["average_of_monthly"] == "False"
+                                          for g in DIRECT), "docs/smoothing/inheritance.csv"))
+    add(text("sm_direct_tie", _names([COUNTRY_NAMES[g] for g in DIRECT if round(
+        float(inh[g]["change_corr"]), 2) == round(float(inh["NL"]["change_corr"]), 2)]),
+        "docs/smoothing/inheritance.csv"))
     tests = {r["key"]: r for r in _csv(docs / "smoothing" / "tests.csv")
              if r["setting"] == "primary"}
     for key in ("P1", "P2"):
@@ -599,6 +633,11 @@ def collect_values(root: Path) -> dict[str, Value]:
     src = "docs/gdp-measurement/statistics.csv"
     for stat in ("c_q", "c_y", "prod", "prod_n"):
         add(num(f"gm_lu_{stat}", float(st["LU"][stat]), 2, src, True))
+    comparison = {g: float(r["rho"]) for g, r in st.items() if g not in ("LU", "IE", "MT")}
+    add(text("gm_rho_below_ie", _names([COUNTRY_NAMES[g] for g, x in comparison.items()
+                                        if x <= float(st["IE"]["rho"])]), src))
+    for geo in ("SE", "EE", "DK"):
+        add(num(f"gm_rho_{geo.lower()}", comparison[geo], 2, src, True))
     de = {r["geo"]: r for r in _csv(docs / "gdp-measurement" / "descriptive.csv")}
     src = "docs/gdp-measurement/descriptive.csv"
     add(pct("gm_lu_fin_va", float(de["LU"]["finance_share_va"]), 0, src))
@@ -608,11 +647,26 @@ def collect_values(root: Path) -> dict[str, Value]:
     add(text("cs_n_corr_contra", sum(r["verdict"] == "contradicted" for r in cor),
              "docs/heterogeneity/correlations.csv"))
 
+    # Null-imposed bootstraps with unrestricted residuals (post hoc, not registered) -----
+    nr = json.loads((docs / "null-residuals" / "summary.json").read_text(encoding="utf-8"))
+    src = "docs/null-residuals/summary.json"
+    for study, prefix in (("headline", "nr"), ("changes", "nr_ss")):
+        block = nr[study]
+        for errors, tag in (("registered", "reg"), ("unrestricted", "unres")):
+            for rule in ("holm_both", "bh_both", "by_both"):
+                add(text(f"{prefix}_{rule.split('_')[0]}_{tag}", block[errors][rule], src))
+        add(pct(f"{prefix}_size_normal_unres", block["size"]["normal"], 1, src))
+        add(pct(f"{prefix}_size_boot_unres", block["size"]["bootstrap"], 1, src))
+        add(pct(f"{prefix}_size_boot_reg_unres", block["size"]["registered_bootstrap"], 1, src))
+    for scheme in ("sieve", "block"):
+        add(text(f"nr_holm_{scheme}_reg", nr["headline"]["registered"][f"holm_{scheme}"], src))
+
     # Okun's law in hours, with and without the pandemic (HOURS_PROTOCOL.md) ------------
     hr = json.loads((docs / "hours" / "summary.json").read_text(encoding="utf-8"))
     src = "docs/hours/summary.json"
     add(text("hr_n_hours", len(hr["countries_hours"]), src))
     add(text("hr_n_persons", len(hr["countries_persons"]), src))
+    add(text("hr_n_no_persons", len(EU27) - len(hr["countries_persons"]), src))
     add(text("hr_above_excl", len(hr["hours_above_zero"]["excluded"]), src))
     add(text("hr_above_full", len(hr["hours_above_zero"]["full"]), src))
     add(text("hr_towards_h", len(hr["towards_zero"]["h"]), src))

@@ -1,0 +1,90 @@
+{
+ "headline": {
+  "registered": {
+   "unadjusted_both": 20,
+   "holm_both": 1,
+   "holm_sieve": 4,
+   "holm_block": 4,
+   "bh_both": 19,
+   "bh_sieve": 20,
+   "bh_block": 19,
+   "by_both": 1,
+   "holm_both_countries": [
+    "EE"
+   ]
+  },
+  "unrestricted": {
+   "unadjusted_both": 19,
+   "holm_both": 7,
+   "holm_sieve": 7,
+   "holm_block": 7,
+   "bh_both": 19,
+   "bh_sieve": 19,
+   "bh_block": 19,
+   "by_both": 7,
+   "holm_both_countries": [
+    "CY",
+    "CZ",
+    "EE",
+    "EL",
+    "ES",
+    "FI",
+    "IT"
+   ]
+  },
+  "size": {
+   "normal_registered": 0.21962962962962962,
+   "normal": 0.16555555555555554,
+   "bootstrap": 0.08037037037037038,
+   "registered_bootstrap": 0.05092592592592594,
+   "over_rejecting": 23,
+   "bootstrap_range": [
+    0.04425925925925926,
+    0.05592592592592593
+   ]
+  },
+  "rho_gap_median": 0.17,
+  "countries": 27
+ },
+ "changes": {
+  "tests": 54,
+  "published_significant": 14,
+  "registered": {
+   "holm_both": 0,
+   "bh_both": 0,
+   "by_both": 0,
+   "holm_both_tests": [],
+   "bh_both_tests": []
+  },
+  "unrestricted": {
+   "holm_both": 0,
+   "bh_both": 9,
+   "by_both": 0,
+   "holm_both_tests": [],
+   "bh_both_tests": [
+    "AT (participation)",
+    "CY",
+    "CY (participation)",
+    "DK",
+    "DK (participation)",
+    "ES",
+    "ES (participation)",
+    "PL",
+    "PL (participation)"
+   ]
+  },
+  "size": {
+   "normal_registered": 0.22842592592592592,
+   "normal": 0.18074074074074073,
+   "bootstrap": 0.08564814814814817,
+   "registered_bootstrap": 0.04666666666666666,
+   "bootstrap_range": [
+    0.045925925925925926,
+    0.05416666666666667
+   ]
+  },
+  "rho_gap_median": 0.06444297320813505
+ },
+ "not_registered": true,
+ "review": "external review, 2026-10-20"
+}

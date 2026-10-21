@@ -105,6 +105,13 @@ Classical estimates and their review:
 poetry run eu-okun review --data-dir snapshots/eurostat-2026-10-15 --output-dir docs/review --report docs/CLASSICAL_RESULTS_REVIEW.md --published-dir snapshots/ci-results-38754743850 --provenance "CI artifact eu-okun-empirical-baselines, workflow run 38754743850 (commit e73ee68)"
 ```
 
+Null-imposed bootstraps with errors from the unrestricted residuals (post hoc, not
+registered):
+
+```bash
+poetry run eu-okun null-residuals --data-dir snapshots/eurostat-2026-10-15 --headline-dir docs/headline-inference --small-sample-dir docs/small-sample --output-dir docs/null-residuals --report docs/NULL_RESIDUALS.md
+```
+
 Small-sample inference for the post-2021 tests:
 
 ```bash
