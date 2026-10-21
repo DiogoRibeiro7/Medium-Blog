@@ -136,6 +136,12 @@ Okun's law in hours, for every country, with and without the pandemic:
 poetry run eu-okun hours --data-dir snapshots/eurostat-2026-10-15 --snapshot snapshots/heterogeneity-2026-10-18 --case-study docs/heterogeneity/elasticities.csv --output-dir docs/hours --report docs/HOURS.md
 ```
 
+A common-correlated-effects mean-group panel:
+
+```bash
+poetry run eu-okun cce --data-dir snapshots/eurostat-2026-10-15 --case-study docs/heterogeneity/elasticities.csv --bayes docs/bayes/country_estimates.csv --output-dir docs/cce --report docs/CCE.md
+```
+
 Asymmetry between expansions and contractions:
 
 ```bash

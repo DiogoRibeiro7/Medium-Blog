@@ -288,6 +288,15 @@ def main(argv: Sequence[str] | None = None) -> int:
     cgrid.add_argument("--robustness", type=Path, default=Path("docs/review/robustness.csv"))
     cgrid.add_argument("--output-dir", type=Path, default=Path("results/core-grid"))
     cgrid.add_argument("--report", type=Path, default=None)
+    cce_cmd = commands.add_parser(
+        "cce", help="A common-correlated-effects mean-group panel (CCE_PROTOCOL.md)")
+    cce_cmd.add_argument("--data-dir", type=Path,
+                         default=Path("snapshots/eurostat-2026-10-15"))
+    cce_cmd.add_argument("--case-study", type=Path,
+                         default=Path("docs/heterogeneity/elasticities.csv"))
+    cce_cmd.add_argument("--bayes", type=Path, default=Path("docs/bayes/country_estimates.csv"))
+    cce_cmd.add_argument("--output-dir", type=Path, default=Path("results/cce"))
+    cce_cmd.add_argument("--report", type=Path, default=None)
     asym = commands.add_parser(
         "asymmetry", help="Asymmetry between expansions and contractions "
                           "(ASYMMETRY_PROTOCOL.md)")
@@ -775,6 +784,18 @@ def main(argv: Sequence[str] | None = None) -> int:
         cs = core_summary(cg_rows)
         print(f"Robust negative without participation: {cs['robust']} "
               f"(published: {cs['robust_published']})")
+        return 0
+    if args.command == "cce":
+        from eu_okun.cce import write_report as write_cce
+
+        try:
+            cce_study = write_cce(args.data_dir, args.case_study, args.bayes, args.output_dir,
+                                  args.report)
+        except (EurostatDataError, FileNotFoundError, ValueError, OSError, KeyError) as exc:
+            parser.exit(2, f"CCE study failed: {exc}" + chr(10))
+        for cce_test in cce_study.tests:
+            print(f"{cce_test.key}: {cce_test.estimate:+.3f} [{cce_test.low:+.3f}, "
+                  f"{cce_test.high:+.3f}] (Holm p {cce_test.holm:.3f}) {cce_test.verdict}")
         return 0
     if args.command == "asymmetry":
         from eu_okun.asymmetry import write_report as write_asymmetry

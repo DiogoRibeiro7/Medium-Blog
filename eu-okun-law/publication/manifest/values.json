@@ -383,6 +383,144 @@
   "raw": 1.01064174,
   "source": "docs/bayes/diagnostics.json"
  },
+ "cce_ES": {
+  "tex": "$-0.51$",
+  "md": "−0.51",
+  "raw": -0.50850874,
+  "source": "docs/cce/countries.csv"
+ },
+ "cce_ES_ols": {
+  "tex": "$-0.74$",
+  "md": "−0.74",
+  "raw": -0.74352588,
+  "source": "docs/cce/countries.csv"
+ },
+ "cce_NL": {
+  "tex": "$+0.07$",
+  "md": "+0.07",
+  "raw": 0.06582681,
+  "source": "docs/cce/countries.csv"
+ },
+ "cce_NL_ols": {
+  "tex": "$-0.28$",
+  "md": "−0.28",
+  "raw": -0.28183162,
+  "source": "docs/cce/countries.csv"
+ },
+ "cce_diff": {
+  "tex": "$+0.11$",
+  "md": "+0.11",
+  "raw": 0.11356187,
+  "source": "docs/cce/tests.csv"
+ },
+ "cce_diff_ci": {
+  "tex": "$[+0.06, +0.17]$",
+  "md": "[+0.06, +0.17]",
+  "raw": "[0.05619757, 0.17306121]",
+  "source": "docs/cce/tests.csv"
+ },
+ "cce_diff_holm": {
+  "tex": "$0.001$",
+  "md": "0.001",
+  "raw": 0.001,
+  "source": "docs/cce/tests.csv"
+ },
+ "cce_diff_verdict": {
+  "tex": "supported",
+  "md": "supported",
+  "raw": "supported",
+  "source": "docs/cce/tests.csv"
+ },
+ "cce_full": {
+  "tex": "$-0.12$",
+  "md": "−0.12",
+  "raw": -0.12398906,
+  "source": "docs/cce/summary.json"
+ },
+ "cce_full_ols": {
+  "tex": "$-0.18$",
+  "md": "−0.18",
+  "raw": -0.18476872,
+  "source": "docs/cce/summary.json"
+ },
+ "cce_mean": {
+  "tex": "$-0.17$",
+  "md": "−0.17",
+  "raw": -0.17256924,
+  "source": "docs/cce/tests.csv"
+ },
+ "cce_mean_ci": {
+  "tex": "$[-0.22, -0.08]$",
+  "md": "[−0.22, −0.08]",
+  "raw": "[-0.21980885, -0.07632168]",
+  "source": "docs/cce/tests.csv"
+ },
+ "cce_mean_holm": {
+  "tex": "below 0.001",
+  "md": "below 0.001",
+  "raw": "below 0.00100000",
+  "source": "docs/cce/tests.csv"
+ },
+ "cce_mean_verdict": {
+  "tex": "supported",
+  "md": "supported",
+  "raw": "supported",
+  "source": "docs/cce/tests.csv"
+ },
+ "cce_mg_ols": {
+  "tex": "$-0.29$",
+  "md": "−0.29",
+  "raw": -0.28613111,
+  "source": "docs/cce/summary.json"
+ },
+ "cce_n_below": {
+  "tex": "8",
+  "md": "8",
+  "raw": 8,
+  "source": "docs/cce/summary.json"
+ },
+ "cce_n_below_ols": {
+  "tex": "19",
+  "md": "19",
+  "raw": 19,
+  "source": "docs/cce/summary.json"
+ },
+ "cce_n_closer": {
+  "tex": "22",
+  "md": "22",
+  "raw": 22,
+  "source": "docs/cce/summary.json"
+ },
+ "cce_n_settings": {
+  "tex": "6",
+  "md": "6",
+  "raw": 6,
+  "source": "docs/cce/sensitivity.csv"
+ },
+ "cce_rho_bayes": {
+  "tex": "$+0.74$",
+  "md": "+0.74",
+  "raw": 0.73992674,
+  "source": "docs/cce/summary.json"
+ },
+ "cce_sens_supported": {
+  "tex": "12",
+  "md": "12",
+  "raw": 12,
+  "source": "docs/cce/sensitivity.csv"
+ },
+ "cce_sens_tests": {
+  "tex": "12",
+  "md": "12",
+  "raw": 12,
+  "source": "docs/cce/sensitivity.csv"
+ },
+ "cce_share": {
+  "tex": "$40$\\%",
+  "md": "40%",
+  "raw": 0.39688752,
+  "source": "docs/cce/summary.json"
+ },
  "cl_ES_excl": {
   "tex": "$-0.79$",
   "md": "−0.79",
