@@ -16,12 +16,15 @@ import pytest
 from eu_okun.publication import (
     EXPERIMENTS,
     PLACEHOLDER,
+    POST_HOC,
+    _fingerprint,
     _sha256,
     bibliography_problems,
     change_log_entries,
     check,
     parse_bib,
     render_medium,
+    round_numbers,
 )
 from eu_okun.publication_values import MINUS, Value, audit, collect_values, interval, num, pct
 
@@ -216,9 +219,38 @@ def test_manifests_hash_the_files_they_list() -> None:
     assert [e["key"] for e in experiments] == [e["key"] for e in EXPERIMENTS]
     for e in experiments:
         assert _sha256(ROOT / e["protocol"]) == e["protocol_sha256"]
-        assert _sha256(ROOT / e["report"]) == e["report_sha256"]
+    post_hoc = json.loads((PUB / "manifest" / "experiments.json")
+                          .read_text(encoding="utf-8"))["post_hoc"]
+    assert [e["key"] for e in post_hoc] == [e["key"] for e in POST_HOC]
+    for e in [*experiments, *post_hoc]:
+        assert _fingerprint(ROOT / e["report"]) == e["report_fingerprint"]
+        assert e["outputs"], e["key"]
         for f in e["outputs"]:
-            assert _sha256(ROOT / f["path"]) == f["sha256"], f["path"]
+            assert _fingerprint(ROOT / f["path"]) == f["fingerprint"], f["path"]
+
+
+def test_fingerprints_ignore_platform_noise_but_not_results(tmp_path: Path) -> None:
+    """Last-digit float differences and numerical-error gaps between platforms leave the
+    fingerprint unchanged; a change in a result does not."""
+    base = "geo,theta,gap\nAT,-0.3024995616232255,6.821210263296962e-13\nNOTE: v2.5.1\n"
+    linux = "geo,theta,gap\nAT,-0.30249956162322555,2.1884716261411086e-12\nNOTE: v2.5.1\n"
+    changed = "geo,theta,gap\nAT,-0.3024996616232255,6.821210263296962e-13\nNOTE: v2.5.1\n"
+    paths = {}
+    for name, text in (("base", base), ("linux", linux), ("changed", changed)):
+        paths[name] = tmp_path / f"{name}.csv"
+        paths[name].write_text(text, encoding="utf-8")
+    assert _fingerprint(paths["base"]) == _fingerprint(paths["linux"])
+    assert _fingerprint(paths["base"]) != _fingerprint(paths["changed"])
+    assert _sha256(paths["base"]) != _sha256(paths["linux"])
+    assert round_numbers("[-0.9937471131642431, 1e-20, 2009-Q2]") == (
+        "[-0.99374711, 0.00000000, 2009-Q2]")
+    # Hashes, versions and words are left alone.
+    for text in ("sha 28580d8e10d6dd4f", "poetry 2.5.1", "lag1e5x", "id_p11_lu"):
+        assert round_numbers(text) == text
+    # A number that ends a sentence is still rounded.
+    assert round_numbers("gap 6.8e-13).") == round_numbers("gap 2.2e-12).")
+    # A small value whose absolute noise is a few 1e-12 keeps its fingerprint.
+    assert round_numbers("0.0021736834605") == round_numbers("0.0021736834614")
 
 
 def test_text_hashes_ignore_line_endings(tmp_path: Path) -> None:
@@ -242,7 +274,7 @@ def test_every_registered_command_is_documented_and_parses(
     from eu_okun.cli import main
 
     readme = (PUB / "README.md").read_text(encoding="utf-8")
-    for e in EXPERIMENTS:
+    for e in [*EXPERIMENTS, *POST_HOC]:
         for command in e["commands"]:
             assert f"poetry run {command}\n" in readme, command
             name, *args = command.split()[1:]

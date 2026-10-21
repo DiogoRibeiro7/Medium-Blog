@@ -260,7 +260,8 @@ def render(review: IdentificationReview, assets: str, command: str) -> str:
 
     # 6. Countries
     lines += ["## 6. Countries (descriptive)", "",
-              "Country-by-country local projections at h = 4 (Newey-West, h + 1 lags), "
+              "Country-by-country local projections at h = 4 (Newey-West, h + 1 lags in "
+              "calendar quarters), "
               "alphabetical. Individual country series are short; no ranking and no "
               "per-country significance claims.", ""]
     for key, rows_c in review.countries.items():

@@ -23,7 +23,7 @@ Nothing here is published automatically.
 | `medium/article.md` | The Medium article with the values filled in | `eu-okun publication` |
 | `medium/figures/*.png` | Figures for the Medium article | `eu-okun publication` |
 | `manifest/data.json` | SHA-256 of every file of every frozen snapshot | `eu-okun publication` |
-| `manifest/experiments.json` | Each analysis: protocol, report, commands, seeds, replication, output hashes | `eu-okun publication` |
+| `manifest/experiments.json` | Each analysis, registered or post hoc: protocol, report, commands, seeds, replication, output fingerprints | `eu-okun publication` |
 | `manifest/environment.json` | Python requirement, locked package versions, lock-file hash, seeds | `eu-okun publication` |
 | `manifest/values.json` | Each quoted value with its LaTeX and Markdown forms and its source file | `eu-okun publication` |
 | `manifest/bibliography.json` | The result of resolving every DOI and URL | `eu-okun publication --verify-bibliography` |
@@ -203,9 +203,9 @@ Case study of Portugal, Spain, the Netherlands and Luxembourg:
 poetry run eu-okun heterogeneity --data-dir snapshots/eurostat-2026-10-15 --snapshot snapshots/heterogeneity-2026-10-18 --output-dir docs/heterogeneity --report docs/HETEROGENEITY_CASE_STUDY.md
 ```
 
-Post-hoc check, not registered (added after an external review on 2026-10-19): the
-identification results with the pandemic window widened by one period. The registered
-results remain primary; see
+Post-hoc check, not registered (added after external reviews on 2026-10-19 and
+2026-10-20): the identification and shift-share feasibility results with the pandemic
+window widened by one period. The registered results remain primary; see
 [docs/WINDOW_SENSITIVITY.md](../docs/WINDOW_SENSITIVITY.md).
 
 ```bash
@@ -227,6 +227,15 @@ snapshot with today's data.
 
 - Text files are hashed with LF line endings, so the manifests are identical on Windows
   and Linux. Snapshot files are hashed byte for byte, as in their own manifests.
+- A rebuild on another platform changes floating-point results in their last digits
+  (about 1e-16 relative). It also changes numerical-error measurements, such as the
+  classical review's verification gaps, by more.
+  - Reports and outputs are therefore recorded by a fingerprint: the SHA-256 of the text
+    with every decimal number rounded to 10 significant digits, and those below 1e-9 in
+    magnitude set to zero.
+  - The raw values in `manifest/values.json` are rounded the same way.
+  - A rebuild on Linux of everything the offline test suite regenerates leaves both
+    manifests unchanged, while a change in any result changes the fingerprint.
 - PNG figures are excluded from the output hashes because their bytes depend on the
   platform's font rendering. PDF figures are written without a creation date.
 

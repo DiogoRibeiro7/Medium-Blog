@@ -261,3 +261,9 @@ x[i,t+h] - x[i,t-1] = a_i^h + b^h s[t]
   is kept. The registered rule is unchanged and its results remain primary. A labelled
   sensitivity widens the window by one period (`eu-okun window-sensitivity`, results in
   [docs/WINDOW_SENSITIVITY.md](docs/WINDOW_SENSITIVITY.md)). No conclusion changes.
+- **2026-10-21: an implementation correction to the descriptive country responses.** As
+  in the quarterly study, the Newey-West covariance of the country LPs counted its
+  h + 1 lags in rows, so rows across a gap in the sample were treated as adjacent.
+  - The lags are now counted in calendar months.
+  - Only the intervals of the descriptive country table and figure change. The point
+    estimates, the panel results and every registered test are unaffected.
