@@ -31,7 +31,9 @@ GEOS = ("PT", "ES", "IT", "EL")
 
 # One small request per dataset, country and item; the industry position is
 # left empty, which asks for every industry code in the dataset.
-ACCOUNT_ITEMS = ("B1G", "D1", "D11", "B2A3G", "D29X39")
+# Items each accounts dataset publishes (B.2a3g is not published by industry;
+# D.29 - D.39 only at the A64 level).
+ACCOUNT_ITEMS = {"nama_10_a10": ("B1G", "D1", "D11"), "nama_10_a64": ("B1G", "D1", "D11", "D29X39")}
 EMPLOYMENT_ITEMS = ("EMP_DC", "SAL_DC")
 EMPLOYMENT_UNITS = ("THS_PER", "THS_HW")
 
@@ -40,7 +42,7 @@ def queries() -> dict[str, list[str]]:
     """Return the SDMX keys to download, grouped by dataset."""
     out: dict[str, list[str]] = {}
     for dataset in ("nama_10_a10", "nama_10_a64"):
-        out[dataset] = [f"A.CP_MEUR..{item}.{geo}" for geo in GEOS for item in ACCOUNT_ITEMS]
+        out[dataset] = [f"A.CP_MEUR..{item}.{geo}" for geo in GEOS for item in ACCOUNT_ITEMS[dataset]]
     for dataset in ("nama_10_a10_e", "nama_10_a64_e"):
         out[dataset] = [
             f"A.{unit}..{item}.{geo}" for geo in GEOS for unit in EMPLOYMENT_UNITS for item in EMPLOYMENT_ITEMS
