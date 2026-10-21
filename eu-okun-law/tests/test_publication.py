@@ -58,6 +58,8 @@ WORD_CLAIMS = [
     ("only two non-primary variants are decided", "cs_n_epl_decided", 2),
     ("In the main version neither is decided", "cs_n_epl_decided_primary", 0),
     ("none is decided in the main version", "cs_n_epl_decided_primary", 0),
+    ("and in none is either test decided", "as_sens_decided", 0),
+    ("no setting decides it", "as_sens_decided", 0),
 ]
 
 

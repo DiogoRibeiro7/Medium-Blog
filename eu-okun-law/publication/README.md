@@ -136,6 +136,12 @@ Okun's law in hours, for every country, with and without the pandemic:
 poetry run eu-okun hours --data-dir snapshots/eurostat-2026-10-15 --snapshot snapshots/heterogeneity-2026-10-18 --case-study docs/heterogeneity/elasticities.csv --output-dir docs/hours --report docs/HOURS.md
 ```
 
+Asymmetry between expansions and contractions:
+
+```bash
+poetry run eu-okun asymmetry --data-dir snapshots/eurostat-2026-10-15 --case-study docs/heterogeneity/elasticities.csv --output-dir docs/asymmetry --report docs/ASYMMETRY.md
+```
+
 Measurement noise or finance, for Luxembourg:
 
 ```bash

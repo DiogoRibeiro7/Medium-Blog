@@ -811,6 +811,39 @@ Results are in [docs/SMOOTHING.md](docs/SMOOTHING.md):
     shrinks the long-run sum. Luxembourg's "weak" result on the long-run sum is therefore
     an artefact.
 
+## Asymmetry between expansions and contractions
+
+[ASYMMETRY_PROTOCOL.md](ASYMMETRY_PROTOCOL.md) was committed and pushed before any
+asymmetric estimate was computed. It adds the negative part of GDP growth, with lags, to
+the headline regression. Only GDP was inspected beforehand: the counts of negative-growth
+quarters, 320 in all. No new data are needed.
+
+- **Primary.** A common extra response to negative growth, pooled over the 27 countries.
+  Each country keeps its own intercept and Okun slopes.
+- **Secondary.** The mean of the country-by-country asymmetries, over the 23 countries
+  with at least 8 negative-growth quarters.
+- **Inference.** Synchronised block bootstrap over quarters, with Holm over the two
+  tests.
+
+```bash
+poetry run eu-okun asymmetry --data-dir snapshots/eurostat-2026-10-15 --case-study docs/heterogeneity/elasticities.csv --output-dir docs/asymmetry --report docs/ASYMMETRY.md
+```
+
+Results are in [docs/ASYMMETRY.md](docs/ASYMMETRY.md):
+
+- **Pooled.** Unemployment responds by -0.25 per point of positive growth and -0.35 per
+  point of negative growth. The difference is -0.10 [-0.19, +0.03] (Holm p 0.26, not
+  determined).
+- **Mean group.** -0.10 [-0.38, +0.11], not determined.
+- **Sensitivity.**
+  - The pooled difference is negative in all seven settings: lags 1 and 4, a mean-growth
+    threshold, block 8, without IE and LU, without EL, and before 2020.
+  - Neither test is decided in any setting.
+  - The mean group with block 8 is labelled unreliable, because 6.8% of its draws are
+    degenerate.
+- **Reading.** Contractions cluster in 2009-2013 and in the euro-area crisis countries,
+  so even a decided difference could reflect the shocks rather than the labour market.
+
 ## The core robustness grid without the participation control
 
 Half of the review's 24 core specifications per country control for the change in

@@ -661,6 +661,28 @@ def collect_values(root: Path) -> dict[str, Value]:
     for scheme in ("sieve", "block"):
         add(text(f"nr_holm_{scheme}_reg", nr["headline"]["registered"][f"holm_{scheme}"], src))
 
+    # Asymmetry between expansions and contractions (ASYMMETRY_PROTOCOL.md) -------------
+    src = "docs/asymmetry/tests.csv"
+    for r in _csv(docs / "asymmetry" / "tests.csv"):
+        key = {"P1": "as_c", "P2": "as_mg"}[r["key"]]
+        add(num(key, float(r["estimate"]), 2, src, True))
+        add(interval(f"{key}_ci", float(r["low"]), float(r["high"]), 2, src))
+        add(num(f"{key}_holm", float(r["holm"]), 3, src))
+        add(text(f"{key}_verdict", r["verdict"], src))
+        add(text(f"{key}_n", r["countries"], src))
+    asum = json.loads((docs / "asymmetry" / "summary.json").read_text(encoding="utf-8"))
+    src = "docs/asymmetry/summary.json"
+    add(num("as_plus", asum["pooled_theta_plus"]["point"], 2, src, True))
+    add(num("as_minus", asum["pooled_theta_minus"]["point"], 2, src, True))
+    add(text("as_n_negative_quarters", sum(asum["negative_quarters"].values()), src))
+    sens = _csv(docs / "asymmetry" / "sensitivity.csv")
+    src = "docs/asymmetry/sensitivity.csv"
+    add(text("as_n_settings", len({r["setting"] for r in sens}), src))
+    add(text("as_sens_negative", sum(r["key"] == "P1" and float(r["estimate"]) < 0
+                                     for r in sens), src))
+    add(text("as_sens_decided", sum(r["verdict"] in ("supported", "contradicted")
+                                    for r in sens), src))
+
     # Okun's law in hours, with and without the pandemic (HOURS_PROTOCOL.md) ------------
     hr = json.loads((docs / "hours" / "summary.json").read_text(encoding="utf-8"))
     src = "docs/hours/summary.json"
