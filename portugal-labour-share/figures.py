@@ -171,7 +171,7 @@ def fig3_break_scan() -> None:
     handles.insert(0, plt.Line2D([], [], color=INK, marker="o", markersize=4, label="F statistic, compensation share of GDP"))
     fig.legend(handles=handles, loc="lower center", ncol=2, bbox_to_anchor=(0.5, -0.1), fontsize=8.5)
     fig.tight_layout()
-    save(fig, "fig3_break_scan")
+    save(fig, "fig4_break_scan")
 
 
 def fig4_government() -> None:
@@ -208,7 +208,7 @@ def fig4_government() -> None:
     handles = [Patch(color=colour, label=label) for _, colour, label in keys]
     ax.legend(handles=handles, loc="lower left", bbox_to_anchor=(0.0, 1.02), ncol=3, fontsize=8.5)
     fig.tight_layout()
-    save(fig, "fig4_government_2012")
+    save(fig, "fig3_government_2012")
 
 
 def main() -> None:

@@ -626,6 +626,19 @@ def main() -> None:
             )
     pd.DataFrame(cross_rows).to_csv(RESULTS / "cross_country.csv", index=False, float_format="%.4f")
 
+    # 7. Trough and recovery --------------------------------------------------
+    rep.section("7. Trough and rise since, all eighteen shares")
+    wide = pd.DataFrame(long_rows).pivot_table(index="year", columns=["numerator", "denominator"], values="share")
+    troughs = wide.idxmin()
+    rep.add(f"trough years: {({int(k): int(v) for k, v in troughs.value_counts().items()})}")
+    rise = wide.loc[LAST_YEAR] - wide.min()
+    fall = wide.loc[2010] - wide.loc[2013]
+    rep.add(f"rise from trough to {LAST_YEAR}: {rise.min():.2f} to {rise.max():.2f} pp")
+    rep.add(f"fall 2010->2013: {fall.min():.2f} to {fall.max():.2f} pp")
+    rep.add(f"rise exceeds the 2010->2013 fall in {int((rise > fall).sum())} of {len(rise)} shares")
+    xg = wide[("raw", "factor_cost_ex_government")]
+    rep.add(f"raw share outside government: {xg.min():.1f}% ({int(xg.idxmin())}) -> {xg.loc[LAST_YEAR]:.1f}% ({LAST_YEAR})")
+
     rep.write(RESULTS / "summary.txt")
     print("\n".join(rep.lines))
 

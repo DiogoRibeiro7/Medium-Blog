@@ -50,7 +50,7 @@ jobs:
       - name: Draw the figures
         run: |
           python figures.py
-          for f in fig1_labour_share_definitions fig2_break_even_fraction fig3_break_scan fig4_government_2012; do
+          for f in fig1_labour_share_definitions fig2_break_even_fraction fig3_government_2012 fig4_break_scan; do
             test -s "figures/$f.png"
           done
 

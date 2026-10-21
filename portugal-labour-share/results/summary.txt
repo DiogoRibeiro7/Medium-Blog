@@ -104,3 +104,11 @@ IT market_prices  38.4 -> 39.3; fixed 2012 shift +0.40 (p 0.5360); chosen: level
 IT factor_cost    42.5 -> 44.8; fixed 2012 shift +0.62 (p 0.2343); chosen: level 2008 (+2.04, naive p 0.0002, boot p 0.052/0.335); level+slope 2009 (+1.79, naive p 4.4e-05, boot p 0.155/0.442)
 EL market_prices  29.1 -> 35.7; fixed 2012 shift -0.73 (p 0.1393); chosen: level 2021 (-2.79, naive p 0.0009, boot p 0.168/0.422); level+slope 2013 (-1.32, naive p 0.0136, boot p 0.024/0.204)
 EL factor_cost    32.2 -> 41.8; fixed 2012 shift +0.07 (p 0.9298); chosen: level 2021 (-3.84, naive p 3.2e-10, boot p 0.001/0.039); level+slope 2021 (-2.76, naive p 3.7e-07, boot p 0.001/0.065)
+
+7. Trough and rise since, all eighteen shares
+---------------------------------------------
+trough years: {2016: 18}
+rise from trough to 2024: 3.47 to 6.32 pp
+fall 2010->2013: 2.10 to 3.49 pp
+rise exceeds the 2010->2013 fall in 18 of 18 shares
+raw share outside government: 44.8% (2016) -> 50.3% (2024)
