@@ -24,6 +24,8 @@ jobs:
           Rscript tests/test-commercial-heterogeneity.R
           Rscript tests/test-profit-bounds.R
           Rscript tests/test-public-cost-anchors.R
+          Rscript tests/test-menu-designs.R
+          Rscript scripts/analyse-menu-designs.R
           Rscript scripts/analyse-public-cost-anchors.R
           Rscript scripts/analyse-profit-frontier.R
           Rscript scripts/run-analysis.R
