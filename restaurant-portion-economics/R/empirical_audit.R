@@ -152,83 +152,93 @@ finland_quality_sensitivity <- function(x, discrepancies) {
           "difference_g_diner", "percent_difference")]
 }
 
-#' Inspect a publisher-provided commercial waste CSV without guessing units.
+#' Inspect publisher-provided commercial waste CSV without guessing units.
 #'
 #' @param path Publisher-verified original CSV file.
-#' @return List containing source data, field audit, delimiter and encoding.
-#' @details The verified URBAN-WASTE file uses a comma delimiter. Its textual
-#'   content may not be UTF-8. Detect full-file UTF-8 validity, otherwise decode
-#'   through Windows-1252, with Latin-1 as a lossless last-resort encoding.
-#'   Reject parse warnings and malformed table structure instead of returning
-#'   truncated or partly decoded data. Never infer waste-weight units.
+#' @return List with data.frame, field audit, delimiter, and encoding.
+#' @details The upstream file may use a European semicolon delimiter and
+#'   non-UTF-8 text encoding. Scan only explicit delimiter/encoding combinations;
+#'   reject warnings, malformed rows, or incorrect source field names. Do not
+#'   infer weight units from this structural parse.
 inspect_urbanwaste_csv <- function(path) {
   if (!is.character(path) || length(path) != 1L ||
       is.na(path) || !file.exists(path)) {
     stop("Provide a downloaded URBAN-WASTE CSV path.", call. = FALSE)
   }
-  bytes_count <- file.info(path)$size
-  if (is.na(bytes_count) || bytes_count <= 0 ||
-      bytes_count > .Machine$integer.max) {
-    stop("CSV file size is invalid or too large to inspect.", call. = FALSE)
-  }
-  connection <- file(path, open = "rb")
-  raw_data <- tryCatch(
-    readBin(connection, what = "raw", n = as.integer(bytes_count)),
-    finally = close(connection)
-  )
-  # Detect byte validity without discarding accents or converting them to
-  # question marks. A truncated input would fail the UTF-8 validity test.
-  utf8_valid <- !is.na(iconv(
-    rawToChar(raw_data), from = "UTF-8", to = "UTF-8", sub = NA_character_
-  ))
-  encodings <- if (utf8_valid) {
-    "UTF-8-BOM"
-  } else {
-    c("CP1252", "latin1")
-  }
 
+  # These labels are observed in the source's previous schema audit.
+  expected_fields <- c(
+    "City / kitchen", "Timestamp", "Waste weight sum",
+    "portions, Whole day", "ordered portions, Whole day",
+    "portions, Midday", "ordered portions, Midday",
+    "portions, Breakfast", "ordered portions, Breakfast",
+    "portions, Lunch", "ordered portions, Lunch",
+    "portions, Brunch", "ordered portions, Brunch"
+  )
+  separators <- c(";", ",", "\t")
+  encodings <- c("UTF-8-BOM", "CP1252", "latin1")
   errors <- character()
-  for (encoding in encodings) {
-    parsed <- tryCatch(
-      withCallingHandlers(
-        utils::read.table(
-          path, header = TRUE, sep = ",", quote = "\"",
-          check.names = FALSE, stringsAsFactors = FALSE,
-          fileEncoding = encoding, colClasses = "character",
-          comment.char = "", fill = FALSE, blank.lines.skip = TRUE,
-          na.strings = c("", "NA")
+
+  for (sep in separators) {
+    for (encoding in encodings) {
+      # The source has commas *inside its field names*; treating a semicolon
+      # source as comma-separated can create a plausible but false schema.
+      parsed <- tryCatch(
+        withCallingHandlers(
+          utils::read.table(
+            path, header = TRUE, sep = sep, quote = "\"",
+            check.names = FALSE, stringsAsFactors = FALSE,
+            fileEncoding = encoding, colClasses = "character",
+            comment.char = "", fill = FALSE, blank.lines.skip = TRUE,
+            na.strings = c("", "NA")
+          ),
+          warning = function(w) stop(conditionMessage(w), call. = FALSE)
         ),
-        warning = function(w) stop(conditionMessage(w), call. = FALSE)
-      ),
-      error = function(e) {
-        errors <<- c(errors, paste(encoding, conditionMessage(e)))
-        NULL
+        error = function(e) {
+          errors <<- c(errors, paste0(
+            "separator=", encodeString(sep, quote = '"'),
+            " encoding=", encoding, ": ", conditionMessage(e)
+          ))
+          NULL
+        }
+      )
+      if (is.null(parsed)) next
+
+      # A candidate must contain all thirteen *exact* upstream labels. This
+      # prevents accidentally selecting a wrongly decoded or split header.
+      names(parsed) <- sub("^\ufeff", "", names(parsed))
+      valid <- nrow(parsed) > 0L &&
+        ncol(parsed) == length(expected_fields) &&
+        identical(names(parsed), expected_fields) &&
+        !anyDuplicated(names(parsed))
+      if (!valid) {
+        errors <- c(errors, paste0(
+          "separator=", encodeString(sep, quote = '"'),
+          " encoding=", encoding, ": unexpected field names or dimensions"
+        ))
+        next
       }
-    )
-    if (is.null(parsed)) next
-    names(parsed) <- sub("^\ufeff", "", names(parsed))
-    if (nrow(parsed) < 1L || ncol(parsed) != 13L ||
-        anyNA(names(parsed)) || anyDuplicated(names(parsed))) {
-      errors <- c(errors, paste(encoding, "unexpected CSV shape or columns"))
-      next
+
+      schema <- data.frame(
+        column = names(parsed),
+        r_type = vapply(
+          parsed, function(v) paste(class(v), collapse = "/"), character(1)
+        ),
+        rows = rep(nrow(parsed), ncol(parsed)),
+        missing = vapply(parsed, function(v) sum(is.na(v)), integer(1)),
+        distinct_nonmissing = vapply(
+          parsed, function(v) length(unique(v[!is.na(v)])), integer(1)
+        ),
+        stringsAsFactors = FALSE
+      )
+      return(list(
+        data = parsed, schema = schema, separator = sep, encoding = encoding
+      ))
     }
-    schema <- data.frame(
-      column = names(parsed),
-      r_type = vapply(
-        parsed, function(v) paste(class(v), collapse = "/"), character(1)
-      ),
-      rows = rep(nrow(parsed), ncol(parsed)),
-      missing = vapply(parsed, function(v) sum(is.na(v)), integer(1)),
-      distinct_nonmissing = vapply(
-        parsed, function(v) length(unique(v[!is.na(v)])), integer(1)
-      ),
-      stringsAsFactors = FALSE
-    )
-    return(list(
-      data = parsed, schema = schema,
-      separator = ",", encoding = encoding
-    ))
   }
-  stop("Cannot decode original commercial CSV without warnings: ",
-       paste(errors, collapse = " | "), call. = FALSE)
+  stop(
+    "Commercial source could not be decoded with the expected schema. ",
+    "Review its encoding, separator and first source lines. Attempts: ",
+    paste(errors, collapse = " | "), call. = FALSE
+  )
 }
