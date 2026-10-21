@@ -1,7 +1,7 @@
 """Download the Eurostat industry accounts used by ``industries.py``.
 
-Every branch of the A10 and A64 breakdowns is downloaded (the industry
-dimension is left empty in the query), for Portugal, Spain, Italy and Greece::
+Every branch of the A10 and A64 breakdowns is downloaded, for Portugal,
+Spain, Italy and Greece::
 
     python fetch.py --out data
 
@@ -25,17 +25,28 @@ import pandas as pd
 
 API = "https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data"
 START = 1995
-GEOS = "PT+ES+IT+EL"
 HERE = Path(__file__).resolve().parent
 
-# dataset -> list of (file stem, SDMX key). The nace_r2 position is empty,
-# which asks for every industry code in the dataset.
-QUERIES = {
-    "nama_10_a10": [("nama_10_a10", f"A.CP_MEUR..B1G+D1+D11+B2A3G+D29X39.{GEOS}")],
-    "nama_10_a10_e": [("nama_10_a10_e", f"A.THS_PER+THS_HW..EMP_DC+SAL_DC.{GEOS}")],
-    "nama_10_a64": [("nama_10_a64", f"A.CP_MEUR..B1G+D1+D11+B2A3G+D29X39.{GEOS}")],
-    "nama_10_a64_e": [("nama_10_a64_e", f"A.THS_PER+THS_HW..EMP_DC+SAL_DC.{GEOS}")],
-}
+GEOS = ("PT", "ES", "IT", "EL")
+
+# One small request per dataset, country and item; the industry position is
+# left empty, which asks for every industry code in the dataset.
+ACCOUNT_ITEMS = ("B1G", "D1", "D11", "B2A3G", "D29X39")
+EMPLOYMENT_ITEMS = ("EMP_DC", "SAL_DC")
+EMPLOYMENT_UNITS = ("THS_PER", "THS_HW")
+
+
+def queries() -> dict[str, list[str]]:
+    """Return the SDMX keys to download, grouped by dataset."""
+    out: dict[str, list[str]] = {}
+    for dataset in ("nama_10_a10", "nama_10_a64"):
+        out[dataset] = [f"A.CP_MEUR..{item}.{geo}" for geo in GEOS for item in ACCOUNT_ITEMS]
+    for dataset in ("nama_10_a10_e", "nama_10_a64_e"):
+        out[dataset] = [
+            f"A.{unit}..{item}.{geo}" for geo in GEOS for unit in EMPLOYMENT_UNITS for item in EMPLOYMENT_ITEMS
+        ]
+    return out
+
 
 CELL = re.compile(r"^\s*([-+]?\d+(?:\.\d+)?)?\s*([a-z]*)\s*$")
 
@@ -95,21 +106,42 @@ def download(dataset: str, key: str, attempts: int = 4) -> pd.DataFrame:
 
 
 def main(argv: list[str] | None = None) -> int:
-    """Command-line entry point."""
+    """Command-line entry point.
+
+    Failed requests are logged to ``fetch_log.txt`` in the output folder and
+    the rest of the download continues, so a partial snapshot and its log are
+    always written. The exit code is 1 if any request failed.
+    """
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("--out", type=Path, default=HERE / "data")
     args = parser.parse_args(argv)
     args.out.mkdir(parents=True, exist_ok=True)
-    for dataset, slices in QUERIES.items():
-        for stem, key in slices:
-            frame = download(dataset, key)
-            dims = [c for c in frame.columns if c not in ("year", "value", "flag", "freq")]
-            frame = frame.drop(columns="freq").sort_values(dims + ["year"]).reset_index(drop=True)
-            frame.to_csv(args.out / f"{stem}.csv", index=False)
-            items = sorted(frame["na_item"].unique())
-            print(f"{stem}: {len(frame)} rows, items {items}, "
-                  f"{frame['nace_r2'].nunique()} industry codes, geos {sorted(frame['geo'].unique())}")
-    return 0
+    log: list[str] = []
+    failures = 0
+    for dataset, keys in queries().items():
+        frames = []
+        for key in keys:
+            try:
+                frames.append(download(dataset, key))
+            except Exception as error:  # noqa: BLE001 (logged and reported)
+                failures += 1
+                detail = error.read().decode("utf-8", "replace")[:300] if isinstance(error, urllib.error.HTTPError) else ""
+                log.append(f"FAIL {dataset} {key}: {error!r} {detail}".strip())
+        if not frames:
+            log.append(f"{dataset}: no data")
+            continue
+        frame = pd.concat(frames, ignore_index=True).drop(columns="freq")
+        dims = [c for c in frame.columns if c not in ("year", "value", "flag")]
+        frame = frame.sort_values(dims + ["year"]).reset_index(drop=True)
+        frame.to_csv(args.out / f"{dataset}.csv", index=False)
+        log.append(
+            f"{dataset}: {len(frame)} rows, items {sorted(frame['na_item'].unique())}, "
+            f"units {sorted(frame['unit'].unique())}, {frame['nace_r2'].nunique()} industry codes, "
+            f"geos {sorted(frame['geo'].unique())}, years {frame['year'].min()}-{frame['year'].max()}"
+        )
+    (args.out / "fetch_log.txt").write_text("\n".join(log) + "\n", encoding="utf-8")
+    print("\n".join(log))
+    return 1 if failures else 0
 
 
 if __name__ == "__main__":

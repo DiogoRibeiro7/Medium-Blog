@@ -36,9 +36,12 @@ jobs:
         run: python -m pip install -r requirements.txt
 
       - name: Download the Eurostat industry accounts
+        id: fetch
+        continue-on-error: true
         run: python fetch.py --out data
 
-      - name: Commit the snapshot if it changed
+      - name: Commit the snapshot and its log if they changed
+        if: always()
         run: |
           git config user.name "Diogo Ribeiro"
           git config user.email "diogo_dj@hotmail.com"
@@ -49,3 +52,9 @@ jobs:
             git commit -m "Refresh Eurostat industry snapshot ($(date -u +%Y-%m-%d))"
             git push
           fi
+
+      - name: Fail if any request failed
+        if: steps.fetch.outcome == 'failure'
+        run: |
+          cat data/fetch_log.txt
+          exit 1
