@@ -31,3 +31,6 @@ jobs:
           test -s outputs/scenario.csv
           test -s outputs/sensitivity.csv
           test -s outputs/threshold.csv
+          test -s outputs/profit_bounds.csv
+          test -s outputs/profit_frontier.csv
+          test -s outputs/profit_assumptions.csv
