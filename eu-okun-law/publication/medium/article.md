@@ -40,6 +40,8 @@ Even so, the test I registered came back undecided, and it could not have come b
 
 *Two-lag elasticities to GDP growth of hours worked (left) and of minus the unemployment rate (right), without 2020–2021 (blue) and on the full sample (orange). Belgium publishes no hours.*
 
+Does unemployment rise faster when output falls than it falls when output rises? It would if firms fire more readily than they hire. I registered a test of this as well. On average, unemployment moves −0.25 points per point of positive growth and −0.35 per point of negative growth. The difference, −0.10, has the expected sign in every variant I fixed in advance, but its interval [−0.19, +0.03] includes zero and no setting decides it. Contractions here also cluster in the euro-area crisis of 2009–2013, so even a clear difference could reflect the kind of shock rather than how labour markets respond.
+
 ## How large is it?
 
 A hierarchical Bayesian model lets countries borrow strength from one another. It also models what the simple regressions leave behind: heavy-tailed shocks, persistence in unemployment and a common European factor that moves every country at once. Removing that factor changes the question. The model measures the association with each country's own growth beyond the common European cycle, and the factor itself tracks average GDP growth closely (a correlation of −0.60).
@@ -130,7 +132,7 @@ A registered check of smoothed monthly series elsewhere found no evidence that t
 
 The biggest open question is why countries differ. They may differ because their labour markets respond differently to the same shock, or because they face different mixes of shocks, and only shock-specific identification can separate the two. Answering the causal question for productivity or labour-supply shocks would need data the public statistics do not provide: productivity adjusted for capacity utilisation, and natural experiments in labour supply. Luxembourg's weak link is still a puzzle: two explanations have failed, and a third is not established. And whether the relation weakened after 2021 needs more quarters. The first classical pass reported 14 significant post-2021 changes, but a size study showed that its test rejected a true null 22.8% of the time; with a bootstrap that held its size, 0 survive, and that does not change when the bootstrap is made less conservative.
 
-There are also standard analyses this study does not include. It has no gap-form Okun's law to set against the international literature, no test of asymmetry between booms and busts and no labour-force-weighted EU aggregate. Those would be the next things to add.
+There are also standard analyses this study does not include. It has no gap-form Okun's law to set against the international literature and no labour-force-weighted EU aggregate. Those would be the next things to add.
 
 ## The takeaway
 

@@ -1,4 +1,100 @@
 {
+ "as_c": {
+  "tex": "$-0.10$",
+  "md": "−0.10",
+  "raw": -0.09720735,
+  "source": "docs/asymmetry/tests.csv"
+ },
+ "as_c_ci": {
+  "tex": "$[-0.19, +0.03]$",
+  "md": "[−0.19, +0.03]",
+  "raw": "[-0.19166865, 0.02992078]",
+  "source": "docs/asymmetry/tests.csv"
+ },
+ "as_c_holm": {
+  "tex": "$0.262$",
+  "md": "0.262",
+  "raw": 0.262,
+  "source": "docs/asymmetry/tests.csv"
+ },
+ "as_c_n": {
+  "tex": "27",
+  "md": "27",
+  "raw": "27",
+  "source": "docs/asymmetry/tests.csv"
+ },
+ "as_c_verdict": {
+  "tex": "not determined",
+  "md": "not determined",
+  "raw": "not determined",
+  "source": "docs/asymmetry/tests.csv"
+ },
+ "as_mg": {
+  "tex": "$-0.10$",
+  "md": "−0.10",
+  "raw": -0.10196975,
+  "source": "docs/asymmetry/tests.csv"
+ },
+ "as_mg_ci": {
+  "tex": "$[-0.38, +0.11]$",
+  "md": "[−0.38, +0.11]",
+  "raw": "[-0.37701625, 0.11415213]",
+  "source": "docs/asymmetry/tests.csv"
+ },
+ "as_mg_holm": {
+  "tex": "$0.262$",
+  "md": "0.262",
+  "raw": 0.262,
+  "source": "docs/asymmetry/tests.csv"
+ },
+ "as_mg_n": {
+  "tex": "23",
+  "md": "23",
+  "raw": "23",
+  "source": "docs/asymmetry/tests.csv"
+ },
+ "as_mg_verdict": {
+  "tex": "not determined",
+  "md": "not determined",
+  "raw": "not determined",
+  "source": "docs/asymmetry/tests.csv"
+ },
+ "as_minus": {
+  "tex": "$-0.35$",
+  "md": "−0.35",
+  "raw": -0.34784569,
+  "source": "docs/asymmetry/summary.json"
+ },
+ "as_n_negative_quarters": {
+  "tex": "320",
+  "md": "320",
+  "raw": 320,
+  "source": "docs/asymmetry/summary.json"
+ },
+ "as_n_settings": {
+  "tex": "7",
+  "md": "7",
+  "raw": 7,
+  "source": "docs/asymmetry/sensitivity.csv"
+ },
+ "as_plus": {
+  "tex": "$-0.25$",
+  "md": "−0.25",
+  "raw": -0.25063834,
+  "source": "docs/asymmetry/summary.json"
+ },
+ "as_sens_decided": {
+  "tex": "0",
+  "md": "0",
+  "raw": 0,
+  "source": "docs/asymmetry/sensitivity.csv"
+ },
+ "as_sens_negative": {
+  "tex": "7",
+  "md": "7",
+  "raw": 7,
+  "source": "docs/asymmetry/sensitivity.csv"
+ },
  "by_ES": {
   "tex": "$-0.51$",
   "md": "−0.51",

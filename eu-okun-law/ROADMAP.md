@@ -165,9 +165,11 @@ Done:
 
 Open:
 
-- [ ] Cite the motivating analysis, or state precisely where and when it appeared
-      (needs the author).
+- [x] Cite the motivating analysis: not cited, by the author's choice (an informal
+      social-media post). The text treats its statements as hypotheses and does not
+      depend on it.
 - [ ] Archive the protocols with an external timestamp (for example, a DOI deposit).
+      Deferred by the author's choice.
 - [x] Small-sample inference for the classical headline sums, registered in
       [HEADLINE_INFERENCE_PROTOCOL.md](HEADLINE_INFERENCE_PROTOCOL.md); results in
       [docs/HEADLINE_INFERENCE.md](docs/HEADLINE_INFERENCE.md). The normal reference
@@ -199,7 +201,12 @@ Open:
       are not determined, and could not have been, because of a p-value floor of 0.067.
       An amendment registered after that result supports the pattern for hours and hours
       per worker, but not for persons.
-- [ ] Gap-form Okun's law against Ball, Leigh and Loungani (2017); asymmetry; a
+- [x] Asymmetry between expansions and contractions, registered in
+      [ASYMMETRY_PROTOCOL.md](ASYMMETRY_PROTOCOL.md); results in
+      [docs/ASYMMETRY.md](docs/ASYMMETRY.md). Every point estimate has unemployment
+      responding more strongly to contractions (pooled -0.10 [-0.19, +0.03]), but neither
+      registered test, nor any sensitivity setting, decides it.
+- [ ] Gap-form Okun's law against Ball, Leigh and Loungani (2017); a
       common-correlated-effects mean-group panel; a labour-force-weighted EU aggregate.
 - [x] Kept the participation control out of the core robustness grid, registered in
       [CORE_GRID_PROTOCOL.md](CORE_GRID_PROTOCOL.md); results in

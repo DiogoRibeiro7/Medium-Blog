@@ -288,6 +288,14 @@ def main(argv: Sequence[str] | None = None) -> int:
     cgrid.add_argument("--robustness", type=Path, default=Path("docs/review/robustness.csv"))
     cgrid.add_argument("--output-dir", type=Path, default=Path("results/core-grid"))
     cgrid.add_argument("--report", type=Path, default=None)
+    asym = commands.add_parser(
+        "asymmetry", help="Asymmetry between expansions and contractions "
+                          "(ASYMMETRY_PROTOCOL.md)")
+    asym.add_argument("--data-dir", type=Path, default=Path("snapshots/eurostat-2026-10-15"))
+    asym.add_argument("--case-study", type=Path,
+                      default=Path("docs/heterogeneity/elasticities.csv"))
+    asym.add_argument("--output-dir", type=Path, default=Path("results/asymmetry"))
+    asym.add_argument("--report", type=Path, default=None)
     nres = commands.add_parser(
         "null-residuals", help="Null-imposed bootstraps with errors from the unrestricted "
                                "residuals (post hoc, not registered)")
@@ -767,6 +775,18 @@ def main(argv: Sequence[str] | None = None) -> int:
         cs = core_summary(cg_rows)
         print(f"Robust negative without participation: {cs['robust']} "
               f"(published: {cs['robust_published']})")
+        return 0
+    if args.command == "asymmetry":
+        from eu_okun.asymmetry import write_report as write_asymmetry
+
+        try:
+            asym_study = write_asymmetry(args.data_dir, args.case_study, args.output_dir,
+                                         args.report)
+        except (EurostatDataError, FileNotFoundError, ValueError, OSError, KeyError) as exc:
+            parser.exit(2, f"Asymmetry study failed: {exc}" + chr(10))
+        for test in asym_study.tests:
+            print(f"{test.key}: {test.estimate:+.3f} [{test.low:+.3f}, {test.high:+.3f}] "
+                  f"(Holm p {test.holm:.3f}) {test.verdict}")
         return 0
     if args.command == "null-residuals":
         from eu_okun.null_residuals import write_report as write_null_residuals

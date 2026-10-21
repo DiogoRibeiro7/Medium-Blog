@@ -129,6 +129,28 @@ supported (Holm $p$ \val{hr_p1_amended_holm} and \val{hr_p2a_amended_holm}), and
 change in the number of workers is not decided. Job retention would produce this pattern,
 but so would paid absence, and the 2021 survey redesign falls in the same window.
 
+\paragraph{Expansions and contractions.} A registered study
+(\texttt{ASYMMETRY\_PROTOCOL.md}) asked whether unemployment responds more strongly to
+falling output than to rising output, as it would if firing is quicker than hiring. It
+adds the negative part of GDP growth, with the same lags, to the headline regression. In
+the primary model the extra response to negative growth is common to all countries, and
+each country keeps its own intercept and Okun slopes. That model uses all
+\val{as_n_negative_quarters} negative-growth quarters.
+\begin{itemize}
+  \item Unemployment responds by \val{as_plus} per point of positive growth and by
+    \val{as_minus} per point of negative growth, on average. The difference is
+    \val{as_c} \val{as_c_ci} (Holm $p$ \val{as_c_holm}, \val{as_c_verdict}).
+  \item The mean of the country-by-country asymmetries, over the \val{as_mg_n} countries
+    with enough negative-growth quarters, is \val{as_mg} \val{as_mg_ci}
+    (\val{as_mg_verdict}).
+  \item In all \val{as_n_settings} sensitivity settings the pooled difference is negative,
+    and in none is either test decided.
+\end{itemize}
+The point estimates lean towards a stronger response to contractions, but the data do
+not establish it. Contractions in this sample are concentrated in 2009--2013 and in the
+countries hit by the euro-area crisis, so even a decided difference could reflect
+different shocks rather than a different labour-market response.
+
 \paragraph{Post-2021 stability.}\label{sec:smallsample} Our first classical pass tested
 whether the sum changed after 2021, with interacted HAC regressions and Holm's step-down
 adjustment \citep{holm1979}: \val{ss_published_holm} changes were significant. With only
