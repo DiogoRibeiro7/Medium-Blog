@@ -362,6 +362,18 @@ def main() -> None:
     raw_total = share(tot["D1"], tot["Y"])
     rep.add(f"PT compensation share of factor-cost value added: {raw_total.loc[FIRST_YEAR]:.2f}% ({FIRST_YEAR}) -> {raw_total.loc[LAST_YEAR]:.2f}% ({LAST_YEAR})")
     rep.add(f"merged: {', '.join(sorted(set(MERGES.values())))}; dropped: {', '.join(DROPPED)}")
+    gdp = pd.read_csv(FIRST_ARTICLE_DATA / "nama_10_gdp.csv")
+    gdp = gdp[(gdp["geo"] == "PT") & (gdp["year"] <= LAST_YEAR)].set_index("year")
+    national = 100 * gdp["D1"] / (gdp["D1"] + gdp["B2A3G"])
+    rep.add(f"PT max |industry-built share - national accounts share|: {(raw_total - national).abs().max():.3f} pp")
+    negatives = []
+    for geo in GEOS:
+        acc = read_long("nama_10_a64")
+        acc = acc[(acc["geo"] == geo) & acc["nace_r2"].isin(list(MERGES))]
+        w = acc.pivot_table(index=["nace_r2", "year"], columns="na_item", values="value")
+        neg = w[(w["B1G"] - w["D29X39"]) <= 0]
+        negatives += [f"{geo} {c} {y}" for c, y in neg.index]
+    rep.add(f"non-positive factor-cost value added before merging: {', '.join(negatives)}")
 
     # 1. Self-employment by branch -------------------------------------------
     rep.section("1. Self-employment by A10 branch, Portugal (thousand persons; pay per employee, thousand euro)")
@@ -401,7 +413,7 @@ def main() -> None:
             uncapped = share(t["D1"] + imputed_labour(panel, "a64", cap=False), t["Y"])
             rep.add(f"    PT a64 per person without the cap: {uncapped.loc[FIRST_YEAR]:.1f}->{uncapped.loc[LAST_YEAR]:.1f} ({uncapped.loc[LAST_YEAR] - uncapped.loc[FIRST_YEAR]:+.2f})")
             binding = cap_binding(panel)
-            rep.add(f"    PT cap binds in {len(binding)} industry-years, {binding['code'].nunique()} industries; agriculture (A01) years: {int((binding['code'] == 'A01').sum())}")
+            rep.add(f"    PT cap binds in {len(binding)} of {len(panel)} industry-years, {binding['code'].nunique()} industries; agriculture (A01) years: {int((binding['code'] == 'A01').sum())}")
     pd.DataFrame(imputation_rows).to_csv(RESULTS / "imputation_levels.csv", index=False, float_format="%.4f")
 
     # 3. Shift-share grid -------------------------------------------------------
@@ -502,7 +514,7 @@ def main() -> None:
     opq = sec13.loc[["O", "P", "Q"]]
     rep.add(f"  O+P+Q: within {opq['within'].sum():+.2f}, between {opq['between'].sum():+.2f}, total {opq['total'].sum():+.2f} of {sec13['total'].sum():+.2f}")
     f = sec13.loc["F"]
-    rep.add(f"  F construction: within {f['within']:+.2f}, between {f['between']:+.2f}")
+    rep.add(f"  F construction: within {f['within']:+.2f}, between {f['between']:+.2f}, total {f['total']:+.2f}")
 
     # 7. Peers --------------------------------------------------------------------
     rep.section("7. Peers, compensation share, whole economy (pp)")
@@ -531,6 +543,9 @@ def main() -> None:
             parts.append(f"{year}: value added {r.Y:.0f}, compensation {r.D1:.0f}, employees {r.SAL:.0f}, "
                          f"share {100 * r.D1 / r.Y:.1f}%, pay {r.D1 / r.SAL:.1f}")
         rep.add(f"{code}: " + " | ".join(parts))
+        window = sub.loc[2016:LAST_YEAR]
+        shares = 100 * window["D1"] / window["Y"]
+        rep.add(f"    {code} share range 2016-{LAST_YEAR}: {shares.min():.1f}-{shares.max():.1f}%")
 
     rep.write(RESULTS / "summary.txt")
     print("\n".join(rep.lines))

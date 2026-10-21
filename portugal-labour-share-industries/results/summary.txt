@@ -9,6 +9,8 @@ IT: A64 sum vs total max gap B1G 0.000%, D1 0.000%; 61 industries after merges; 
 EL: A64 sum vs total max gap B1G 0.000%, D1 0.001%; 61 industries after merges; non-positive value added cells 0
 PT compensation share of factor-cost value added: 52.77% (1995) -> 54.78% (2024)
 merged: C19_C20, H51_H52; dropped: U
+PT max |industry-built share - national accounts share|: 0.004 pp
+non-positive factor-cost value added before merging: PT C19 2020, PT H51 2020, ES C19 2020, ES H51 2020, IT C19 2014, IT C19 2020
 
 1. Self-employment by A10 branch, Portugal (thousand persons; pay per employee, thousand euro)
 ----------------------------------------------------------------------------------------------
@@ -24,7 +26,7 @@ PT: raw 52.8->54.8 (+2.01); economy_per_person 66.5->64.7 (-1.80); a10_per_perso
     PT implied labour fraction of mixed income, a10_per_person: 0.56 (1995) -> 0.73 (2024), range 0.46-0.73
     PT implied labour fraction of mixed income, a64_per_person: 0.51 (1995) -> 0.68 (2024), range 0.41-0.68
     PT a64 per person without the cap: 61.8->63.1 (+1.21)
-    PT cap binds in 75 industry-years, 11 industries; agriculture (A01) years: 23
+    PT cap binds in 75 of 1830 industry-years, 11 industries; agriculture (A01) years: 23
 ES: raw 52.0->52.8 (+0.87); economy_per_person 65.0->61.7 (-3.37); a10_per_person 62.2->60.8 (-1.41); a64_per_person 61.4->60.8 (-0.53); a10_per_hour 63.6->62.8 (-0.86)
 IT: raw 42.5->44.8 (+2.24); economy_per_person 59.6->58.0 (-1.59); a10_per_person 58.1->56.8 (-1.21); a64_per_person 57.4->57.3 (-0.08); a10_per_hour 60.9->58.8 (-2.08)
 EL: raw 32.2->41.8 (+9.58); economy_per_person 54.4->56.9 (+2.51); a10_per_person 46.0->53.7 (+7.72); a64_per_person 44.5->52.9 (+8.47); a10_per_hour 48.4->55.5 (+7.18)
@@ -118,7 +120,7 @@ EL: weighted rank correlation of 2016 pay per employee with share change -0.17 (
   I accommodation and food           weight  4.80-> 4.94  share  52.2-> 47.8  within -0.21  between +0.07
   H transport and storage            weight  4.64-> 4.74  share  57.1-> 54.0  within -0.14  between +0.05
   O+P+Q: within -0.25, between -0.78, total -1.03 of -2.52
-  F construction: within -0.26, between -0.86
+  F construction: within -0.26, between -0.86, total -1.12
 
 7. Peers, compensation share, whole economy (pp)
 ------------------------------------------------
@@ -129,6 +131,10 @@ EL: weighted rank correlation of 2016 pay per employee with share change -0.17 (
 8. Selected Portuguese industries (million euro; thousand employees; pay per employee, thousand euro)
 -----------------------------------------------------------------------------------------------------
 G46: 2016: value added 12126, compensation 4617, employees 195, share 38.1%, pay 23.7 | 2022: value added 12534, compensation 6062, employees 186, share 48.4%, pay 32.7 | 2023: value added 12876, compensation 6604, employees 184, share 51.3%, pay 35.9 | 2024: value added 13322, compensation 7052, employees 185, share 52.9%, pay 38.1
+    G46 share range 2016-2024: 38.1-52.9%
 G47: 2016: value added 9068, compensation 5377, employees 373, share 59.3%, pay 14.4 | 2022: value added 10759, compensation 7262, employees 358, share 67.5%, pay 20.3 | 2023: value added 11839, compensation 8190, employees 364, share 69.2%, pay 22.5 | 2024: value added 12856, compensation 8853, employees 361, share 68.9%, pay 24.5
+    G47 share range 2016-2024: 59.3-69.2%
 K64: 2016: value added 5757, compensation 2814, employees 56, share 48.9%, pay 49.9 | 2022: value added 7684, compensation 2946, employees 52, share 38.3%, pay 57.0 | 2023: value added 12570, compensation 3197, employees 52, share 25.4%, pay 61.0 | 2024: value added 12467, compensation 3425, employees 53, share 27.5%, pay 64.5
+    K64 share range 2016-2024: 25.4-49.7%
 J62_J63: 2016: value added 2187, compensation 1622, employees 49, share 74.1%, pay 33.4 | 2022: value added 6048, compensation 4799, employees 97, share 79.3%, pay 49.3 | 2023: value added 6963, compensation 5721, employees 104, share 82.2%, pay 55.0 | 2024: value added 8118, compensation 6375, employees 106, share 78.5%, pay 60.3
+    J62_J63 share range 2016-2024: 74.1-82.2%
