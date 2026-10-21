@@ -38,10 +38,15 @@ def test_no_current_outcome_leakage_into_current_predictions() -> None:
     first = rows.loc[rows["time"] == 0, ["policy", "prediction", "radius"]].reset_index(drop=True)
     altered = other.loc[other["time"] == 0, ["policy", "prediction", "radius"]].reset_index(drop=True)
     assert first.equals(altered)
-    # The modified outcome only affects subsequent rolling updates.
-    first_next = rows.loc[(rows["time"] == 1) & (rows["policy"] == "Frozen/rolling"), "radius"].iloc[0]
-    other_next = other.loc[(other["time"] == 1) & (other["policy"] == "Frozen/rolling"), "radius"].iloc[0]
-    assert first_next != other_next
+    # Once the altered outcome has become historical training data, a
+    # subsequent refit may change predictions; t=0 must never change.
+    first_refit = rows.loc[
+        (rows["time"] == 10) & (rows["policy"] == "Refit/rolling"), "prediction"
+    ].iloc[0]
+    altered_refit = other.loc[
+        (other["time"] == 10) & (other["policy"] == "Refit/rolling"), "prediction"
+    ].iloc[0]
+    assert first_refit != pytest.approx(altered_refit)
 
 
 def test_smoke_end_to_end_regret_and_coverage() -> None:
