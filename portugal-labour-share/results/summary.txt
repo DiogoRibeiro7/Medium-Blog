@@ -1,0 +1,118 @@
+Portuguese labour share under alternative definitions
+Sample 1995-2024, annual, current prices. Bootstrap replications: 1999, seed 20261021.
+
+0. Data checks (million euro)
+-----------------------------
+gdp_identity_max_gap: 0.1
+nama_vs_nasa_operating_surplus_max_gap: 0.5
+surplus_plus_mixed_income_max_gap: 1.0
+
+1. Self-employment and mixed income
+-----------------------------------
+self-employed share of employment: 20.7% (1995) -> 15.4% (2024)
+self-employed persons (thousands): 937 -> 811; employees: 3592 -> 4466
+mixed income, % of GDP: 15.33 -> 10.28 (change -5.06 pp)
+mixed income per self-employed / compensation per employee: 1.26 (1995), 1.19 (2024), range 1.16-1.38
+implied labour fraction of mixed income, employment: 0.80 (1995), 0.84 (2024), range 0.73-0.86
+implied labour fraction of mixed income, hours: 0.82 (1995), 0.73 (2024), range 0.70-0.91
+implied labour fraction of mixed income, mixed_rest: 0.64 (1995), 0.62 (2024), range 0.58-0.65
+
+2. Eighteen labour shares (percent; slope in pp per year)
+---------------------------------------------------------
+raw              market_prices               46.80 ->  47.68  change +0.88  peak 48.20 (2020)  slope -0.071  p_HAC 0.1081  rho 0.83  p_AR1boot 0.4530
+raw              factor_cost                 52.77 ->  54.78  change +2.01  peak 54.81 (2005)  slope -0.039  p_HAC 0.3762  rho 0.88  p_AR1boot 0.7235
+raw              factor_cost_ex_government   46.47 ->  50.29  change +3.82  peak 50.29 (2024)  slope +0.039  p_HAC 0.4418  rho 0.94  p_AR1boot 0.7950
+employment       market_prices               59.00 ->  56.33  change -2.67  peak 60.40 (2001)  slope -0.244  p_HAC 0.0002  rho 0.88  p_AR1boot 0.1315
+employment       factor_cost                 66.53 ->  64.73  change -1.80  peak 68.31 (2001)  slope -0.228  p_HAC 0.0008  rho 0.92  p_AR1boot 0.2620
+employment       factor_cost_ex_government   62.99 ->  61.98  change -1.01  peak 64.54 (2001)  slope -0.203  p_HAC 0.0089  rho 0.95  p_AR1boot 0.3925
+hours            market_prices               59.44 ->  55.22  change -4.21  peak 61.06 (2000)  slope -0.308  p_HAC 9.3e-07  rho 0.87  p_AR1boot 0.0530
+hours            factor_cost                 67.02 ->  63.45  change -3.57  peak 69.16 (2000)  slope -0.300  p_HAC 3.9e-06  rho 0.91  p_AR1boot 0.1140
+hours            factor_cost_ex_government   63.58 ->  60.48  change -3.10  peak 65.63 (2000)  slope -0.291  p_HAC 7.2e-05  rho 0.93  p_AR1boot 0.2015
+mixed_all        market_prices               62.13 ->  57.95  change -4.18  peak 63.15 (1996)  slope -0.271  p_HAC 5.2e-07  rho 0.87  p_AR1boot 0.0515
+mixed_all        factor_cost                 70.06 ->  66.59  change -3.47  peak 71.14 (1996)  slope -0.257  p_HAC 2.3e-06  rho 0.91  p_AR1boot 0.1130
+mixed_all        factor_cost_ex_government   67.23 ->  64.17  change -3.06  peak 68.48 (1996)  slope -0.242  p_HAC 8.7e-05  rho 0.93  p_AR1boot 0.2105
+mixed_two_thirds market_prices               57.02 ->  54.53  change -2.49  peak 57.91 (1996)  slope -0.205  p_HAC 5.4e-05  rho 0.86  p_AR1boot 0.0960
+mixed_two_thirds factor_cost                 64.29 ->  62.65  change -1.64  peak 65.46 (2001)  slope -0.184  p_HAC 0.0003  rho 0.91  p_AR1boot 0.2140
+mixed_two_thirds factor_cost_ex_government   60.31 ->  59.54  change -0.77  peak 61.38 (1996)  slope -0.148  p_HAC 0.0106  rho 0.94  p_AR1boot 0.3970
+mixed_rest       market_prices               56.58 ->  54.06  change -2.52  peak 57.67 (2001)  slope -0.223  p_HAC 1.0e-04  rho 0.87  p_AR1boot 0.1080
+mixed_rest       factor_cost                 63.80 ->  62.11  change -1.68  peak 65.23 (2001)  slope -0.205  p_HAC 0.0005  rho 0.90  p_AR1boot 0.2220
+mixed_rest       factor_cost_ex_government   59.71 ->  58.91  change -0.80  peak 61.01 (1996)  slope -0.173  p_HAC 0.0100  rho 0.93  p_AR1boot 0.3740
+
+raw shares: change range +0.88 to +3.82; slope range -0.071 to +0.039; HAC p range 0.1081 to 0.4418
+adjusted shares: change range -4.21 to -0.77; slope range -0.308 to -0.148
+adjusted shares: max HAC p 0.0106; AR(1)-bootstrap p range 0.0515 to 0.3970; count below 0.05: 0 of 15
+adjusted shares: peak years [1996, 2000, 2001]
+
+3. Labour fraction of mixed income at which the 1995-2024 change is zero
+------------------------------------------------------------------------
+change(alpha) = change in compensation share + alpha * change in mixed-income share
+market_prices               compensation share change +0.88, mixed-income share change -5.06 -> alpha* 0.17
+factor_cost                 compensation share change +2.01, mixed-income share change -5.48 -> alpha* 0.37
+factor_cost_ex_government   compensation share change +3.82, mixed-income share change -6.88 -> alpha* 0.56
+
+4. Government
+-------------
+government share of factor income: 16.7% (1995), peak 19.7% (2005), 14.9% (2024)
+government labour share (compensation / factor income): mean 82.1%, range 78.3-85.0
+labour share outside government (raw): 46.5% -> 50.3%
+2010->2012: factor-cost share -2.43 pp = within government -0.74 + within rest -1.08 + smaller government -0.61; government contribution 56%
+    government labour share 82.4 -> 78.3; rest 46.9 -> 45.6; government weight 18.8 -> 17.0
+2011->2012: factor-cost share -1.76 pp = within government -0.44 + within rest -0.96 + smaller government -0.36; government contribution 45%
+    government labour share 80.8 -> 78.3; rest 46.8 -> 45.6; government weight 18.0 -> 17.0
+2010->2013: factor-cost share -2.52 pp = within government -0.44 + within rest -1.72 + smaller government -0.36; government contribution 32%
+    government labour share 82.4 -> 80.0; rest 46.9 -> 44.8; government weight 18.8 -> 17.7
+2010->2012, government contribution across the six numerators at factor cost: 39% to 56% (compensation only 56%)
+2010->2013, government contribution across the six numerators at factor cost: 19% to 32% (compensation only 32%)
+government labour share lowest in 2012 (78.3%)
+2010->2012: compensation -9465 MEUR, of which government -4922 MEUR (52%); employees -6.7%
+2010->2012 change at market prices -2.43 pp, at factor cost -2.43 pp
+net taxes on production and imports, % of GDP: 2010 11.61, 2011 12.10, 2012 12.17, 2013 12.14
+
+5. Break chosen by the data (Portugal)
+--------------------------------------
+raw share at market prices: 2010 47.4, 2011 46.5, 2012 44.9, 2013 44.9, 2019 45.2, 2020 48.2, 2024 47.7
+2019->2020: compensation -0.1%, GDP -6.3%
+Selected year by specification and sample end (no bootstrap):
+  end 2019, mean       : raw/market_prices=2012  raw/factor_cost=2012  raw/ex_government=2012  employment/market_prices=2011  employment/ex_government=2007
+  end 2019, level      : raw/market_prices=2012  raw/factor_cost=2012  raw/ex_government=2012  employment/market_prices=2012  employment/ex_government=2012
+  end 2019, level_slope: raw/market_prices=2012  raw/factor_cost=2012  raw/ex_government=2013  employment/market_prices=2002  employment/ex_government=2013
+  end 2023, mean       : raw/market_prices=2012  raw/factor_cost=2011  raw/ex_government=2020  employment/market_prices=2011  employment/ex_government=2007
+  end 2023, level      : raw/market_prices=2020  raw/factor_cost=2020  raw/ex_government=2020  employment/market_prices=2020  employment/ex_government=2020
+  end 2023, level_slope: raw/market_prices=2012  raw/factor_cost=2012  raw/ex_government=2013  employment/market_prices=2020  employment/ex_government=2015
+  end 2024, mean       : raw/market_prices=2011  raw/factor_cost=2011  raw/ex_government=2020  employment/market_prices=2007  employment/ex_government=2007
+  end 2024, level      : raw/market_prices=2020  raw/factor_cost=2020  raw/ex_government=2020  employment/market_prices=2020  employment/ex_government=2020
+  end 2024, level_slope: raw/market_prices=2012  raw/factor_cost=2012  raw/ex_government=2013  employment/market_prices=2014  employment/ex_government=2014
+distinct years selected across the 45 cases: [2002, 2007, 2011, 2012, 2013, 2014, 2015, 2020]
+candidate years on the full sample: 23 (1999-2021)
+
+Full sample 1995-2024, with bootstrap:
+  raw/market_prices        level        year 2020  shift +3.57  naive p 2.3e-08  supF 41.3  boot p 0.030 (rho 0.66) / 0.114 (rho 0.83)  5% crit 36.7 / 51.1
+  raw/market_prices        level_slope  year 2012  shift -3.36  naive p 5.8e-06  supF 22.8  boot p 0.014 (rho 0.44) / 0.226 (rho 0.83)  5% crit 15.1 / 41.2
+  raw/factor_cost          level        year 2020  shift +3.43  naive p 2.0e-06  supF 31.7  boot p 0.116 (rho 0.69) / 0.284 (rho 0.88)  5% crit 41.4 / 58.0
+  raw/factor_cost          level_slope  year 2012  shift -3.65  naive p 6.1e-07  supF 35.3  boot p 0.001 (rho 0.44) / 0.126 (rho 0.88)  5% crit 14.6 / 50.8
+  raw/ex_government        level        year 2020  shift +4.12  naive p 5.2e-09  supF 73.9  boot p 0.001 (rho 0.55) / 0.018 (rho 0.94)  5% crit 29.8 / 60.6
+  raw/ex_government        level_slope  year 2013  shift -2.51  naive p 1.2e-06  supF 68.6  boot p 0.001 (rho 0.22) / 0.041 (rho 0.94)  5% crit 10.1 / 61.7
+  employment/market_prices level        year 2020  shift +5.27  naive p 3.7e-11  supF 57.3  boot p 0.002 (rho 0.59) / 0.052 (rho 0.88)  5% crit 32.2 / 57.5
+  employment/market_prices level_slope  year 2014  shift -3.33  naive p 0.0005  supF 28.1  boot p 0.002 (rho 0.38) / 0.200 (rho 0.88)  5% crit 13.6 / 48.4
+  employment/ex_government level        year 2020  shift +6.15  naive p 2.6e-09  supF 67.0  boot p 0.001 (rho 0.53) / 0.033 (rho 0.95)  5% crit 29.7 / 61.2
+  employment/ex_government level_slope  year 2014  shift -2.93  naive p 0.0012  supF 46.0  boot p 0.001 (rho 0.38) / 0.119 (rho 0.95)  5% crit 13.0 / 67.0
+F needed for 5% at a date fixed in advance (one restriction, level spec): 4.21; (two restrictions, level+slope spec): 3.37
+
+6. Fixed 2012 break (interrupted time series, HAC) and breaks chosen by the data, by country
+--------------------------------------------------------------------------------------------
+PT market_prices  46.8 -> 47.7; fixed 2012 shift -3.36 (p 5.8e-06); chosen: level 2020 (+3.57, naive p 2.3e-08, boot p 0.030/0.114); level+slope 2012 (-3.36, naive p 5.8e-06, boot p 0.014/0.226)
+PT factor_cost    52.8 -> 54.8; fixed 2012 shift -3.65 (p 6.1e-07); chosen: level 2020 (+3.43, naive p 2.0e-06, boot p 0.116/0.284); level+slope 2012 (-3.65, naive p 6.1e-07, boot p 0.001/0.126)
+ES market_prices  47.8 -> 47.7; fixed 2012 shift -2.87 (p 9.1e-05); chosen: level 2020 (+2.70, naive p 0.0002, boot p 0.394/0.454); level+slope 2020 (+3.53, naive p 8.0e-08, boot p 0.517/0.554)
+ES factor_cost    52.0 -> 52.8; fixed 2012 shift -2.58 (p 4.1e-07); chosen: level 2020 (+2.78, naive p 4.5e-06, boot p 0.123/0.234); level+slope 2020 (+3.67, naive p 2.3e-13, boot p 0.102/0.276)
+IT market_prices  38.4 -> 39.3; fixed 2012 shift +0.40 (p 0.5360); chosen: level 2008 (+1.84, naive p 6.7e-07, boot p 0.200/0.423); level+slope 2008 (+2.00, naive p 3.9e-05, boot p 0.258/0.534)
+IT factor_cost    42.5 -> 44.8; fixed 2012 shift +0.62 (p 0.2343); chosen: level 2008 (+2.04, naive p 0.0002, boot p 0.052/0.335); level+slope 2009 (+1.79, naive p 4.4e-05, boot p 0.155/0.442)
+EL market_prices  29.1 -> 35.7; fixed 2012 shift -0.73 (p 0.1393); chosen: level 2021 (-2.79, naive p 0.0009, boot p 0.168/0.422); level+slope 2013 (-1.32, naive p 0.0136, boot p 0.024/0.204)
+EL factor_cost    32.2 -> 41.8; fixed 2012 shift +0.07 (p 0.9298); chosen: level 2021 (-3.84, naive p 3.2e-10, boot p 0.001/0.039); level+slope 2021 (-2.76, naive p 3.7e-07, boot p 0.001/0.065)
+
+7. Trough and rise since, all eighteen shares
+---------------------------------------------
+trough years: {2016: 18}
+rise from trough to 2024: 3.47 to 6.32 pp
+fall 2010->2013: 2.10 to 3.49 pp
+rise exceeds the 2010->2013 fall in 18 of 18 shares
+raw share outside government: 44.8% (2016) -> 50.3% (2024)
