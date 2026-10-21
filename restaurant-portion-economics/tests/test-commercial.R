@@ -60,3 +60,16 @@ stopifnot(nrow(decoded$data) == 3L, ncol(decoded$data) == 13L,
           decoded$data[["City / kitchen"]][1] == "Caf\u00e9")
 unlink(input_file)
 message("Commercial source encoding and incomplete-row tests passed.")
+
+
+# Semicolon-separated publisher-style files keep commas inside column names.
+# The parser must select the actual delimiter, not merely the widest parse.
+semicolon_path <- tempfile(fileext = ".csv")
+utils::write.table(x, semicolon_path, sep = ";", quote = TRUE,
+                   row.names = FALSE, col.names = TRUE, na = "",
+                   fileEncoding = "CP1252")
+semicolon <- inspect_urbanwaste_csv(semicolon_path)
+stopifnot(identical(semicolon$separator, ";"),
+          identical(names(semicolon$data), columns),
+          nrow(semicolon$data) == 3L)
+unlink(semicolon_path)
