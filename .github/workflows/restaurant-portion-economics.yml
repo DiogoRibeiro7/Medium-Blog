@@ -40,3 +40,5 @@ jobs:
           test -s outputs/profit_assumptions.csv
           test -s outputs/public_cost_proxy_scenarios.csv
           test -s outputs/public_cost_source_register.csv
+          test -s outputs/menu_design_comparison.csv
+          test -s outputs/menu_design_sensitivity.csv
