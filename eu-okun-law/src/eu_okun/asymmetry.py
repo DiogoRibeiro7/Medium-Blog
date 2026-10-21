@@ -113,10 +113,16 @@ def _grams(d: Design, counts: np.ndarray, first_index: int) -> np.ndarray:
     return np.asarray(weights @ outer).reshape(-1, p, p)
 
 
+MAX_CONDITION = 1e8
+
+
 def _solve(a: np.ndarray, b: np.ndarray) -> np.ndarray:
-    """Batched solve; NaN where a matrix is singular."""
+    """Batched solve; NaN where a matrix is singular, meaning its condition number exceeds
+    MAX_CONDITION (protocol change log): beyond that, the solution is dominated by rounding
+    and differs between platforms."""
     out = np.full(b.shape, np.nan)
-    ok = np.abs(np.linalg.det(a)) > 1e-10
+    with np.errstate(divide="ignore", invalid="ignore"):
+        ok = np.linalg.cond(a) < MAX_CONDITION
     if ok.any():
         out[ok] = np.linalg.solve(a[ok], b[ok][..., None])[..., 0]
     return out

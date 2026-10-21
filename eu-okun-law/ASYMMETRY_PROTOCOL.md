@@ -149,3 +149,20 @@ A test regenerates them, and checks that the symmetric part reproduces the case 
 unemployment elasticities when `c` is fixed at zero.
 
 ## Change log
+
+- **2026-10-21, after the first computation: an implementation correction.** No rule
+  changed.
+  - *The problem.* Section 4 drops a draw in which a country's design is singular. The
+    implementation judged that by the determinant (above 1e-10). For every country but
+    one, this separates the draws cleanly:
+    - the draws it rejects have condition numbers above 1e8;
+    - the draws it keeps have condition numbers of at most 3.3e5.
+  - *The exception.* LT, with 2 negative-growth quarters, has 42 draws that pass the
+    determinant cutoff with condition numbers up to 2e20. Their solutions are dominated
+    by rounding, and CI on Linux computed a different interval for LT than Windows did.
+  - *The correction.* A design is singular when its condition number exceeds 1e8.
+  - *Effect.*
+    - For every other country this classifies the same draws, so their results are
+      unchanged.
+    - LT's descriptive interval changes. LT is outside the mean group, so no registered
+      statistic is affected.
