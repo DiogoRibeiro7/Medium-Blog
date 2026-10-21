@@ -22,6 +22,8 @@ jobs:
           Rscript tests/test-commercial.R
           Rscript tests/test-commercial-selection.R
           Rscript tests/test-commercial-heterogeneity.R
+          Rscript tests/test-profit-bounds.R
+          Rscript scripts/analyse-profit-frontier.R
           Rscript scripts/run-analysis.R
       - name: Verify generated scenario files
         working-directory: restaurant-portion-economics
