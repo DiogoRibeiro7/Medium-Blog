@@ -128,6 +128,28 @@ def main(argv: Sequence[str] | None = None) -> int:
     bayes_dynamics.add_argument("--no-figures", action="store_true")
     bayes_dynamics.add_argument("--replication-dir", type=Path, default=None,
                                 help="Results (dynamics.json) of an independent run")
+    diag_fit = commands.add_parser(
+        "bayes-diagnostics-fit", help="Refits of the Bayesian diagnostics: seeds, calibrated "
+        "prior, exact LOO, influence (BAYES_DIAGNOSTICS_PROTOCOL.md)")
+    diag_fit.add_argument("--data-dir", type=Path,
+                          default=Path("snapshots/eurostat-2026-10-15"))
+    diag_fit.add_argument("--fits-dir", type=Path, default=Path("results/bayes"))
+    diag_fit.add_argument("--output-dir", type=Path,
+                          default=Path("results/bayes-diagnostics"))
+    diag_fit.add_argument("--stages", default="seeds,calibration,exact,influence",
+                          help="Comma-separated; exact and influence need every seed fit")
+    diag_fit.add_argument("--shard", default="0/1",
+                          help="k/n: run every n-th task from the k-th (parallel processes)")
+    diag = commands.add_parser(
+        "bayes-diagnostics", help="Report of the Bayesian diagnostics "
+        "(BAYES_DIAGNOSTICS_PROTOCOL.md)")
+    diag.add_argument("--fits-dir", type=Path, default=Path("results/bayes"))
+    diag.add_argument("--refits-dir", type=Path, default=Path("results/bayes-diagnostics"))
+    diag.add_argument("--data-dir", type=Path, default=Path("snapshots/eurostat-2026-10-15"))
+    diag.add_argument("--docs-dir", type=Path, default=Path("docs"),
+                      help="Where the committed reports and Linux replications are")
+    diag.add_argument("--output-dir", type=Path, default=Path("docs/bayes-diagnostics"))
+    diag.add_argument("--report", type=Path, default=None)
     small_sample = commands.add_parser(
         "small-sample", help="Bootstrap and size study of the pre/post stability tests "
         "(SMALL_SAMPLE_PROTOCOL.md)")
@@ -571,6 +593,30 @@ def main(argv: Sequence[str] | None = None) -> int:
             parser.exit(2, f"Dynamics report failed: {exc}" + chr(10))
         print(f"Dynamics report written to {args.report or args.output_dir}: "
               f"{len(dynamics.comparisons)} LOO comparisons")
+        return 0
+    if args.command == "bayes-diagnostics-fit":
+        from eu_okun.bayes_diagnostics import run_diagnostic_fits
+
+        try:
+            shard_k, shard_n = (int(v) for v in args.shard.split("/"))
+            diag_done = run_diagnostic_fits(
+                args.data_dir, args.fits_dir, args.output_dir,
+                [s.strip() for s in args.stages.split(",") if s.strip()], (shard_k, shard_n))
+        except (EurostatDataError, FileNotFoundError, ValueError, OSError, KeyError) as exc:
+            parser.exit(2, f"Diagnostic fits failed: {exc}" + chr(10))
+        print(f"{len(diag_done)} fits run into {args.output_dir}")
+        return 0
+    if args.command == "bayes-diagnostics":
+        from eu_okun.bayes_diagnostics import write_diagnostics_report
+
+        try:
+            diag_study = write_diagnostics_report(args.fits_dir, args.refits_dir, args.data_dir,
+                                                  args.docs_dir, args.output_dir, args.report)
+        except (EurostatDataError, FileNotFoundError, ValueError, OSError, KeyError) as exc:
+            parser.exit(2, f"Diagnostics report failed: {exc}" + chr(10))
+        diag_ok = sum(c["established"] for c in diag_study["comparisons"])
+        print(f"Diagnostics written to {args.report or args.output_dir}: {diag_ok} of "
+              f"{len(diag_study['comparisons'])} LOO comparisons established")
         return 0
     if args.command == "small-sample":
         from eu_okun.small_sample import write_report as write_small_sample
