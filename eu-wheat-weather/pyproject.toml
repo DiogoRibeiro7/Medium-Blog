@@ -1,0 +1,41 @@
+[build-system]
+requires = ["poetry-core>=2.0,<3"]
+build-backend = "poetry.core.masonry.api"
+
+[project]
+name = "eu-wheat-weather"
+version = "0.1.0"
+description = "Reproducible study of heat, drought and wheat yields in EU NUTS-2 regions"
+readme = "README.md"
+requires-python = ">=3.12,<3.15"
+license = "Apache-2.0"
+keywords = ["agriculture", "wheat", "climate", "eurostat", "e-obs", "panel-data"]
+# The foundation stage uses the standard library only; the weather aggregation and the
+# estimates add their dependencies when they are written.
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=8,<10", "ruff>=0.13,<1", "mypy>=1.16,<2"]
+
+[project.scripts]
+eu-wheat = "eu_wheat_weather.cli:main"
+
+[tool.poetry]
+packages = [{ include = "eu_wheat_weather", from = "src" }]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q --strict-markers"
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "W"]
+
+[tool.mypy]
+python_version = "3.12"
+mypy_path = "src"
+files = ["src"]
+strict = true

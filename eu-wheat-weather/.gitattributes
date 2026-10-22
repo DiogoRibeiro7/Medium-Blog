@@ -1,0 +1,3 @@
+# Frozen snapshots must stay byte-identical to the SHA-256 hashes in their manifests:
+# no Git LFS (overrides the repository-wide *.csv rule) and no line-ending conversion.
+snapshots/** !filter !diff !merge -text
