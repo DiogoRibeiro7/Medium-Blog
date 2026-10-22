@@ -1,0 +1,64 @@
+{
+ "description": "Inputs of AGGREGATE_PROTOCOL.md",
+ "downloaded_at_utc": "2026-10-21T15:38:06.302092+00:00",
+ "period": {
+  "start": "2008-Q1",
+  "end": "2026-Q2"
+ },
+ "geos": [
+  "AT",
+  "BE",
+  "BG",
+  "CY",
+  "CZ",
+  "DE",
+  "DK",
+  "EE",
+  "EL",
+  "ES",
+  "FI",
+  "FR",
+  "HR",
+  "HU",
+  "IE",
+  "IT",
+  "LT",
+  "LU",
+  "LV",
+  "MT",
+  "NL",
+  "PL",
+  "PT",
+  "RO",
+  "SE",
+  "SI",
+  "SK",
+  "EU27_2020"
+ ],
+ "files": [
+  {
+   "key": "unemployed_ths",
+   "dataset": "une_rt_q",
+   "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/une_rt_q?lang=EN&freq=Q&age=Y15-74&sex=T&unit=THS_PER&s_adj=SA&sinceTimePeriod=2008-Q1&untilTimePeriod=2026-Q2",
+   "updated": "2026-09-10T23:00:00+0200",
+   "sha256": "646e5870aa5b671e155a699317fe1112ccb1b8006aa243f42f0cdf8f7de3f6a5"
+  },
+  {
+   "key": "rate",
+   "dataset": "une_rt_q",
+   "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/une_rt_q?lang=EN&freq=Q&age=Y15-74&sex=T&unit=PC_ACT&s_adj=SA&sinceTimePeriod=2008-Q1&untilTimePeriod=2026-Q2",
+   "updated": "2026-09-10T23:00:00+0200",
+   "sha256": "78bde702827a54c6c2760e8d3dae8ce8b3db9995084cf5a39610f7da19bd18c5"
+  },
+  {
+   "key": "gdp",
+   "dataset": "namq_10_gdp",
+   "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/namq_10_gdp?lang=EN&freq=Q&unit=CLV_PCH_PRE&s_adj=SCA&na_item=B1GQ&sinceTimePeriod=2008-Q1&untilTimePeriod=2026-Q2",
+   "updated": "2026-10-20T23:00:00+0200",
+   "sha256": "f5a386554ce80c00b92a6c60cd5c20d46fe1d2065022d076b17c93dc962a5615"
+  }
+ ],
+ "processed": {
+  "quarterly.csv": "061607607e699ee146c93a43337d2ea1b3aba2a46df9304680f5949673418141"
+ }
+}

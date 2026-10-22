@@ -172,6 +172,26 @@ same lags, and of the unemployment change.
 Like the Bayesian sum, a CCE sum measures the association beyond the common cycle. It is a
 different estimand from the plain sum, and neither is causal.
 
+\paragraph{The EU as a whole.} Every average so far weights countries equally, so Malta
+counts as much as Germany. A registered study (\texttt{AGGREGATE\_PROTOCOL.md}) weights them
+by their labour force. It also estimates the same regression on Eurostat's own EU
+aggregate series.
+\begin{itemize}
+  \item The unweighted mean of the country sums is \val{ag_mg} \val{ag_mg_ci}. Weighted by
+    labour force it is \val{ag_lf} \val{ag_lf_ci}; the five largest labour forces hold
+    \val{ag_top_share} of the weight.
+  \item The EU as a whole has a sum of \val{ag_eu} \val{ag_eu_ci}.
+  \item Neither registered difference is decided. Weighting changes the mean by
+    \val{ag_t1} \val{ag_t1_ci}, and the aggregate differs from the weighted mean by
+    \val{ag_t2} \val{ag_t2_ci} (Holm $p$ \val{ag_t1_holm} and \val{ag_t2_holm}). In the
+    sensitivity settings, \val{ag_n_sens_differ} of \val{ag_n_sens} tests are decided.
+\end{itemize}
+The aggregate need not equal any average of the country sums. The EU growth rate weights
+countries by GDP, and averaging across countries removes much of the noise that pulls
+country sums towards zero. A larger aggregate sum is also consistent with the CCE result
+above: the association with shocks common to all countries is stronger than with
+country-specific ones.
+
 \paragraph{Post-2021 stability.}\label{sec:smallsample} Our first classical pass tested
 whether the sum changed after 2021, with interacted HAC regressions and Holm's step-down
 adjustment \citep{holm1979}: \val{ss_published_holm} changes were significant. With only

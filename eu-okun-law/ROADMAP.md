@@ -211,8 +211,15 @@ Open:
       Beyond the common European cycle the mean sum is -0.17 [-0.22, -0.08], against
       -0.29 for the plain mean group. Both registered tests are supported in every
       sensitivity setting, and the result is close to the Bayesian factor model.
-- [ ] Gap-form Okun's law against Ball, Leigh and Loungani (2017); a
-      labour-force-weighted EU aggregate.
+- [x] A labour-force-weighted EU aggregate, registered in
+      [AGGREGATE_PROTOCOL.md](AGGREGATE_PROTOCOL.md); results in
+      [docs/AGGREGATE.md](docs/AGGREGATE.md); new snapshot
+      `snapshots/eu-aggregate-2026-10-21`.
+  - The unweighted mean is -0.29, the labour-force-weighted mean -0.33, and the EU
+    aggregate -0.45 [-0.57, -0.25].
+  - Neither registered difference is decided; 3 of 8 sensitivity tests are.
+- [ ] Gap-form Okun's law against Ball, Leigh and Loungani (2017). Needs a choice of
+      potential-output measure.
 - [x] Kept the participation control out of the core robustness grid, registered in
       [CORE_GRID_PROTOCOL.md](CORE_GRID_PROTOCOL.md); results in
       [docs/CORE_GRID.md](docs/CORE_GRID.md). The published verdicts are reproduced; on
