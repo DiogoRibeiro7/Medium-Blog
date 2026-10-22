@@ -302,3 +302,31 @@ Smoke reproduction:
     DRIFT_SMOKE=1 DRIFT_REPEATS=1 jupyter nbconvert --execute --to notebook \
       --output temporal-drift-and-decisions.executed.ipynb \
       temporal-drift-and-decisions.ipynb
+
+## Gradual drift, autocorrelation and delayed outcome feedback
+
+[gradual-drift-and-delayed-feedback.ipynb](gradual-drift-and-delayed-feedback.ipynb)
+extends the temporal notebook with gradual concept drift, stationary AR(1)
+latent factors and observation noise, and reporting delays. Each policy uses
+only labels whose release times precede the current forecast. The immediate
+and delayed cases are evaluated against identical generated streams.
+
+- Frozen/static intervals, rolling calibration and rolling-plus-refitting.
+- Explicit label availability: a label from j is usable at j + delay + 1.
+- Independent streams for Monte Carlo uncertainty; never treat adjacent
+  time steps or several cost thresholds as independent observations.
+- Paired delayed-minus-immediate expected economic regret, with positive
+  differences signifying a worse decision under delayed feedback.
+- No marginal coverage claim for rolling calibration, drift or dependent data.
+
+Implementation: [gradual_drift.py](gradual_drift.py).
+Tests: [tests/test_gradual_drift.py](tests/test_gradual_drift.py).
+
+Smoke execution:
+
+    GRADUAL_SMOKE=1 GRADUAL_REPEATS=1 jupyter nbconvert --execute \
+      --to notebook --output gradual-drift-and-delayed-feedback.executed.ipynb \
+      gradual-drift-and-delayed-feedback.ipynb
+
+The default six independent streams are exploratory. All interventions use
+synthetic conditional means only at evaluation and are not causal claims.
