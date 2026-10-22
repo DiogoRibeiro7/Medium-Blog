@@ -51,7 +51,12 @@ Open items raised by the review:
 - [x] Hours- or employment-based measures, including cross-border workers for Luxembourg
       ([docs/HETEROGENEITY_CASE_STUDY.md](docs/HETEROGENEITY_CASE_STUDY.md)). In Luxembourg, domestic employment (including commuters) and resident
       employment are equally flat; output per hour absorbs the GDP fluctuations.
-- [ ] Compare results across Eurostat vintages.
+- [x] Compare results across Eurostat vintages, as far as Eurostat allows
+      ([MEASUREMENT_PROTOCOL.md](MEASUREMENT_PROTOCOL.md), [docs/MEASUREMENT.md](docs/MEASUREMENT.md)).
+  - No historical country vintages are published, so the check uses the latest release
+    (2026-10-22).
+  - The labour-force series were unrevised. GDP was revised in 134 cells in 6 countries.
+  - No count or classification of the headline inference changes.
 
 ## Phase 2 — Hierarchical Bayes
 

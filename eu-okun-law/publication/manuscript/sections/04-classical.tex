@@ -95,6 +95,23 @@ Taken together, the sign of the association is widespread across countries. How 
 individual country sums are established depends on the error rate controlled and on the
 dependence assumed: from \val{hi_negative_holm} to \val{nr_bh_reg}.
 
+\paragraph{Definition breaks.} A registered sensitivity
+(\texttt{MEASUREMENT\_PROTOCOL.md}) repeats the headline inference under the study's
+definition-break rule (section~\ref{sec:data}). The rule drops every post-2021 change for
+Spain and France, and a few break quarters elsewhere.
+\begin{itemize}
+  \item \val{ms_rule_bootstrap} sums are negative under both bootstraps, against
+    \val{hi_negative}.
+  \item After Holm, \val{ms_rule_bootstrap_holm} are, against \val{hi_negative_holm}.
+  \item Under Benjamini--Hochberg, \val{ms_rule_bootstrap_bh} are, against
+    \val{nr_bh_reg}.
+  \item \val{ms_rule_lost} lose significance under one bootstrap scheme, and the Holm
+    count changes for \val{ms_rule_holm_changed}.
+\end{itemize}
+Spain's sum moves from \val{ms_ES_head} to \val{ms_ES_rule}, and France's from
+\val{ms_FR_head} to \val{ms_FR_rule}. Their post-2021 changes, measured under the earlier
+definition, weaken both.
+
 \paragraph{The pandemic.} Including 2020--2021 moves the sum towards zero in
 \val{cl_n_attenuated} countries (figure~\ref{fig:pandemic}). In \val{cl_n_full_outside}
 countries the full-sample estimate lies outside the 95\% interval of the estimate without

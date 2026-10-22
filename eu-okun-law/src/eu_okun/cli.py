@@ -333,6 +333,13 @@ def main(argv: Sequence[str] | None = None) -> int:
     smooth.add_argument("--bayes-dir", type=Path, default=Path("docs/bayes"))
     smooth.add_argument("--output-dir", type=Path, default=Path("results/smoothing"))
     smooth.add_argument("--report", type=Path, default=None)
+    meas = commands.add_parser(
+        "measurement", help="Definition breaks and data vintages (MEASUREMENT_PROTOCOL.md)")
+    meas.add_argument("--frozen", type=Path, default=Path("snapshots/eurostat-2026-10-15"))
+    meas.add_argument("--new", type=Path, default=Path("snapshots/eurostat-2026-10-22"))
+    meas.add_argument("--grid", type=Path, default=Path("docs/review/grid.csv"))
+    meas.add_argument("--output-dir", type=Path, default=Path("results/measurement"))
+    meas.add_argument("--report", type=Path, default=None)
     fetch_agg = commands.add_parser(
         "fetch-eu-aggregate", help="Download unemployed persons, rates and GDP growth for the "
                                    "countries and EU27_2020 (AGGREGATE_PROTOCOL.md)")
@@ -858,6 +865,21 @@ def main(argv: Sequence[str] | None = None) -> int:
         print("; ".join(f"{t.key} {t.verdict}" for t in sm_study.primary) + "; averages of "
               f"monthly: {sum(i.average_of_monthly for i in sm_study.inheritance)} of "
               f"{len(sm_study.inheritance)}")
+        return 0
+    if args.command == "measurement":
+        from eu_okun.measurement import summary as measurement_summary
+        from eu_okun.measurement import write_report as write_measurement
+
+        try:
+            meas_study = write_measurement(args.frozen, args.new, args.grid, args.output_dir,
+                                           args.report)
+        except (EurostatDataError, FileNotFoundError, ValueError, OSError, KeyError) as exc:
+            parser.exit(2, f"Measurement checks failed: {exc}" + chr(10))
+        meas_counts = measurement_summary(meas_study)["counts"]
+        for label in ("headline", "screened", "vintage"):
+            row = meas_counts[label]
+            print(f"{label}: bootstrap {row['bootstrap']}, Holm {row['bootstrap_holm']}, "
+                  f"BH {row['bootstrap_bh']}, normal {row['normal']}")
         return 0
     if args.command == "fetch-eu-aggregate":
         from eu_okun.aggregate_data import fetch_eu_aggregate

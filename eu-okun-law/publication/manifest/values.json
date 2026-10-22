@@ -2045,6 +2045,12 @@
   "raw": "4a6a6d1c82af1e3cd3c2740246f8ff23198c9fd898bb859f15bc16c129e07a4e",
   "source": "snapshots/heterogeneity-2026-10-18/manifest.json"
  },
+ "hash_latest": {
+  "tex": "\\texttt{58feb8e65a3aee37}",
+  "md": "`58feb8e65a3aee37`",
+  "raw": "58feb8e65a3aee374fee55af9c3eaa421f0e3a4781004cb0b014659b4c2f6244",
+  "source": "snapshots/eurostat-2026-10-22/snapshot_manifest.json"
+ },
  "hash_monthly": {
   "tex": "\\texttt{ec2e65b6cbe8831f}",
   "md": "`ec2e65b6cbe8831f`",
@@ -2512,6 +2518,138 @@
   "md": "4",
   "raw": 4,
   "source": "docs/monthly-identification/ratio_sets.csv"
+ },
+ "ms_ES_head": {
+  "tex": "$-0.79$",
+  "md": "−0.79",
+  "raw": -0.79442752,
+  "source": "docs/measurement/summary.json"
+ },
+ "ms_ES_rule": {
+  "tex": "$-0.93$",
+  "md": "−0.93",
+  "raw": -0.93442809,
+  "source": "docs/measurement/summary.json"
+ },
+ "ms_FR_head": {
+  "tex": "$-0.30$",
+  "md": "−0.30",
+  "raw": -0.30245723,
+  "source": "docs/measurement/summary.json"
+ },
+ "ms_FR_rule": {
+  "tex": "$-0.41$",
+  "md": "−0.41",
+  "raw": -0.40771887,
+  "source": "docs/measurement/summary.json"
+ },
+ "ms_gdp_cells": {
+  "tex": "1998",
+  "md": "1998",
+  "raw": 1998,
+  "source": "docs/measurement/summary.json"
+ },
+ "ms_gdp_countries": {
+  "tex": "6",
+  "md": "6",
+  "raw": 6,
+  "source": "docs/measurement/summary.json"
+ },
+ "ms_gdp_max": {
+  "tex": "$0.80$",
+  "md": "0.80",
+  "raw": 0.8,
+  "source": "docs/measurement/summary.json"
+ },
+ "ms_gdp_release": {
+  "tex": "2026-10-20",
+  "md": "2026-10-20",
+  "raw": "2026-10-20",
+  "source": "docs/measurement/summary.json"
+ },
+ "ms_gdp_revised": {
+  "tex": "134",
+  "md": "134",
+  "raw": 134,
+  "source": "docs/measurement/summary.json"
+ },
+ "ms_lfs_revised": {
+  "tex": "0",
+  "md": "0",
+  "raw": 0,
+  "source": "docs/measurement/summary.json"
+ },
+ "ms_rule_bootstrap": {
+  "tex": "17",
+  "md": "17",
+  "raw": 17,
+  "source": "docs/measurement/summary.json"
+ },
+ "ms_rule_bootstrap_bh": {
+  "tex": "16",
+  "md": "16",
+  "raw": 16,
+  "source": "docs/measurement/summary.json"
+ },
+ "ms_rule_bootstrap_holm": {
+  "tex": "2",
+  "md": "2",
+  "raw": 2,
+  "source": "docs/measurement/summary.json"
+ },
+ "ms_rule_holm_changed": {
+  "tex": "Spain",
+  "md": "Spain",
+  "raw": "Spain",
+  "source": "docs/measurement/summary.json"
+ },
+ "ms_rule_lost": {
+  "tex": "Bulgaria, Germany and Poland",
+  "md": "Bulgaria, Germany and Poland",
+  "raw": "Bulgaria, Germany and Poland",
+  "source": "docs/measurement/summary.json"
+ },
+ "ms_rule_normal": {
+  "tex": "23",
+  "md": "23",
+  "raw": 23,
+  "source": "docs/measurement/summary.json"
+ },
+ "ms_vint_bootstrap": {
+  "tex": "20",
+  "md": "20",
+  "raw": 20,
+  "source": "docs/measurement/summary.json"
+ },
+ "ms_vint_bootstrap_bh": {
+  "tex": "19",
+  "md": "19",
+  "raw": 19,
+  "source": "docs/measurement/summary.json"
+ },
+ "ms_vint_bootstrap_holm": {
+  "tex": "1",
+  "md": "1",
+  "raw": 1,
+  "source": "docs/measurement/summary.json"
+ },
+ "ms_vint_changed": {
+  "tex": "0",
+  "md": "0",
+  "raw": 0,
+  "source": "docs/measurement/summary.json"
+ },
+ "ms_vint_max_change": {
+  "tex": "$0.042$",
+  "md": "0.042",
+  "raw": 0.04197303,
+  "source": "docs/measurement/summary.json"
+ },
+ "ms_vint_normal": {
+  "tex": "22",
+  "md": "22",
+  "raw": 22,
+  "source": "docs/measurement/summary.json"
  },
  "n_countries": {
   "tex": "27",

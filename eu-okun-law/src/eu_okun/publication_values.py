@@ -157,7 +157,8 @@ def collect_values(root: Path) -> dict[str, Value]:
                       ("eurostat-deflator-2026-10-18/manifest.json", "hash_deflator"),
                       ("heterogeneity-2026-10-18/manifest.json", "hash_heterogeneity"),
                       ("gdp-measurement-2026-10-19/manifest.json", "hash_gdpm"),
-                      ("eu-aggregate-2026-10-21/manifest.json", "hash_aggregate")):
+                      ("eu-aggregate-2026-10-21/manifest.json", "hash_aggregate"),
+                      ("eurostat-2026-10-22/snapshot_manifest.json", "hash_latest")):
         digest = hashlib.sha256((root / "snapshots" / name).read_bytes()).hexdigest()
         add(Value(key, digest, f"\\texttt{{{digest[:16]}}}", f"`{digest[:16]}`",
                   f"snapshots/{name}"))
@@ -662,6 +663,30 @@ def collect_values(root: Path) -> dict[str, Value]:
     for scheme in ("sieve", "block"):
         add(text(f"nr_holm_{scheme}_reg", nr["headline"]["registered"][f"holm_{scheme}"], src))
 
+    # Definition breaks and data vintages (MEASUREMENT_PROTOCOL.md) ---------------------
+    ms = json.loads((docs / "measurement" / "summary.json").read_text(encoding="utf-8"))
+    src = "docs/measurement/summary.json"
+    for label, prefix in (("screened", "ms_rule"), ("vintage", "ms_vint")):
+        for key in ("bootstrap", "bootstrap_holm", "bootstrap_bh", "normal"):
+            add(text(f"{prefix}_{key}", ms["counts"][label][key], src))
+    add(text("ms_rule_lost", _names([COUNTRY_NAMES[g] for g in
+                                     ms["changes"]["screened"]["bootstrap"]]), src))
+    add(text("ms_rule_holm_changed", _names([COUNTRY_NAMES[g] for g in
+                                             ms["changes"]["screened"]["bootstrap_holm"]]),
+             src))
+    add(text("ms_vint_changed", sum(len(v) for v in ms["changes"]["vintage"].values()), src))
+    for geo in ("ES", "FR"):
+        add(num(f"ms_{geo}_rule", ms["spain_france"][geo]["screened"], 2, src, True))
+        add(num(f"ms_{geo}_head", ms["spain_france"][geo]["headline"], 2, src, True))
+    rev = ms["revisions"]
+    add(text("ms_gdp_revised", rev["gdp_cells_changed"], src))
+    add(text("ms_gdp_cells", rev["gdp_cells"], src))
+    add(text("ms_gdp_countries", len(rev["gdp_countries_revised"]), src))
+    add(num("ms_gdp_max", rev["gdp_max_abs"], 2, src))
+    add(text("ms_lfs_revised", rev["lfs_cells_changed"], src))
+    add(num("ms_vint_max_change", ms["max_sum_change"]["vintage"], 3, src))
+    add(text("ms_gdp_release", ms["releases"]["new"]["gdp"].split()[1], src))
+
     # The EU as a whole: a labour-force-weighted aggregate (AGGREGATE_PROTOCOL.md) -------
     agg = json.loads((docs / "aggregate" / "summary.json").read_text(encoding="utf-8"))
     src = "docs/aggregate/summary.json"
@@ -837,6 +862,8 @@ def _snapshot_checks(root: Path) -> list[Check]:
         ("Value added and hours by industry 2026-10-19", audit_gdp_measurement,
          snap / "gdp-measurement-2026-10-19"),
         ("EU aggregate inputs 2026-10-21", audit_eu_aggregate, snap / "eu-aggregate-2026-10-21"),
+        ("Eurostat quarterly 2026-10-22 (vintage check)", audit_snapshot,
+         snap / "eurostat-2026-10-22"),
     ]
     out = []
     for name, fn, path in audits:

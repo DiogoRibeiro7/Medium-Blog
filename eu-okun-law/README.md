@@ -811,6 +811,38 @@ Results are in [docs/SMOOTHING.md](docs/SMOOTHING.md):
     shrinks the long-run sum. Luxembourg's "weak" result on the long-run sum is therefore
     an artefact.
 
+## Definition breaks and data vintages
+
+[MEASUREMENT_PROTOCOL.md](MEASUREMENT_PROTOCOL.md) was committed and pushed before the
+new release was downloaded or any estimate was computed.
+
+- **The rule.** It documents the study's single definition-break rule
+  (`review.flagged_change`) and where each analysis applies it.
+- **Sensitivity A.** The registered headline inference is repeated, with its seeds, on
+  the rows the rule keeps.
+- **Sensitivity B.** The same inference is run on Eurostat's latest release.
+
+```bash
+poetry run eu-okun fetch --start-quarter 2008-Q1 --end-quarter 2026-Q2 --output-dir snapshots/eurostat-2026-10-22   # needs internet
+poetry run eu-okun measurement --frozen snapshots/eurostat-2026-10-15 --new snapshots/eurostat-2026-10-22 --grid docs/review/grid.csv --output-dir docs/measurement --report docs/MEASUREMENT.md
+```
+
+Results are in [docs/MEASUREMENT.md](docs/MEASUREMENT.md):
+
+- **Under the rule** (all post-2021 changes for ES and FR dropped, and a few break
+  quarters elsewhere):
+  - 17 sums are negative under both bootstraps, against 20;
+  - 2 remain after Holm, against 1;
+  - 16 remain under Benjamini-Hochberg, against 19;
+  - Bulgaria, Germany and Poland lose significance under one scheme;
+  - Spain moves from -0.79 to -0.93, and France from -0.30 to -0.41.
+- **Latest release.**
+  - The labour-force series are byte-identical (no release since 2026-09-10).
+  - GDP is revised in 134 of 1998 cells, in 6 countries, by at most 0.80 pp.
+  - No count or country classification changes, and no sum moves by more than 0.042.
+  - Eurostat publishes no historical vintages of these country series, so this bounds
+    only the revisions since the freeze.
+
 ## The EU as a whole: a labour-force-weighted aggregate
 
 [AGGREGATE_PROTOCOL.md](AGGREGATE_PROTOCOL.md) was committed and pushed before its data

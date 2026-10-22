@@ -111,8 +111,13 @@ registered checks:
 \begin{itemize}
   \item All data are revised vintages, so the forecasts are retrospective.
   \item The Labour Force Survey's 2021 redesign introduces flagged and unflagged
-    discontinuities. The Bayesian models mask the flagged observations, but the Dutch
-    phase-in is not flagged.
+    discontinuities. One rule handles the flagged ones. The Bayesian models always apply
+    it. The classical headline applies it only as a registered sensitivity, which changes
+    some counts (section~\ref{sec:classical}). The Dutch phase-in carries no flag, and it
+    affects only analyses that use 2021.
+  \item Eurostat publishes no historical vintages of the country series. The check
+    against the latest release covers only the revisions since the freeze. Those changed
+    no count.
   \item Monthly unemployment is a direct estimate in only \val{mo_n_direct} countries;
     elsewhere it is a trend, a moving average or benchmarked to annual averages. Eurostat
     benchmarks the monthly series to the quarterly survey figures, not the reverse

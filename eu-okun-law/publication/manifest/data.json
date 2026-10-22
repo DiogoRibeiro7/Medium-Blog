@@ -107,6 +107,38 @@
     "bytes": 2066
    }
   ],
+  "eurostat-2026-10-22": [
+   {
+    "path": "snapshots/eurostat-2026-10-22/README.md",
+    "sha256": "deaf0c166a77ef4aac034d2e43d4e012a1e670b1f216628ddfd27b53c132bce2",
+    "bytes": 1682
+   },
+   {
+    "path": "snapshots/eurostat-2026-10-22/processed/eu27_quarterly.csv",
+    "sha256": "d82140f3ef41c3ce366ec1a75959969b1e7a90363d5374e9b58e1882e0ca8324",
+    "bytes": 56556
+   },
+   {
+    "path": "snapshots/eurostat-2026-10-22/raw/lfsi_emp_q.json",
+    "sha256": "b6dccbcd94215b3473bdd66c39c726b5495d14114f2a621282e83b6a7abb9c8f",
+    "bytes": 37791
+   },
+   {
+    "path": "snapshots/eurostat-2026-10-22/raw/namq_10_gdp.json",
+    "sha256": "f5a386554ce80c00b92a6c60cd5c20d46fe1d2065022d076b17c93dc962a5615",
+    "bytes": 41957
+   },
+   {
+    "path": "snapshots/eurostat-2026-10-22/raw/une_rt_q.json",
+    "sha256": "78bde702827a54c6c2760e8d3dae8ce8b3db9995084cf5a39610f7da19bd18c5",
+    "bytes": 35852
+   },
+   {
+    "path": "snapshots/eurostat-2026-10-22/snapshot_manifest.json",
+    "sha256": "58feb8e65a3aee374fee55af9c3eaa421f0e3a4781004cb0b014659b4c2f6244",
+    "bytes": 2136
+   }
+  ],
   "eurostat-deflator-2026-10-18": [
    {
     "path": "snapshots/eurostat-deflator-2026-10-18/README.md",

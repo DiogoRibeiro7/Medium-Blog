@@ -1,0 +1,150 @@
+{
+ "counts": {
+  "headline": {
+   "point_negative": 25,
+   "normal": 22,
+   "normal_holm": 21,
+   "bootstrap": 20,
+   "bootstrap_holm": 1,
+   "bootstrap_bh": 19,
+   "bootstrap_countries": [
+    "AT",
+    "BG",
+    "CY",
+    "CZ",
+    "DE",
+    "EE",
+    "EL",
+    "ES",
+    "FI",
+    "FR",
+    "HR",
+    "HU",
+    "IE",
+    "IT",
+    "LT",
+    "NL",
+    "PL",
+    "PT",
+    "SE",
+    "SI"
+   ]
+  },
+  "screened": {
+   "point_negative": 25,
+   "normal": 23,
+   "normal_holm": 22,
+   "bootstrap": 17,
+   "bootstrap_holm": 2,
+   "bootstrap_bh": 16,
+   "bootstrap_countries": [
+    "AT",
+    "CY",
+    "CZ",
+    "EE",
+    "EL",
+    "ES",
+    "FI",
+    "FR",
+    "HR",
+    "HU",
+    "IE",
+    "IT",
+    "LT",
+    "NL",
+    "PT",
+    "SE",
+    "SI"
+   ]
+  },
+  "vintage": {
+   "point_negative": 25,
+   "normal": 22,
+   "normal_holm": 21,
+   "bootstrap": 20,
+   "bootstrap_holm": 1,
+   "bootstrap_bh": 19,
+   "bootstrap_countries": [
+    "AT",
+    "BG",
+    "CY",
+    "CZ",
+    "DE",
+    "EE",
+    "EL",
+    "ES",
+    "FI",
+    "FR",
+    "HR",
+    "HU",
+    "IE",
+    "IT",
+    "LT",
+    "NL",
+    "PL",
+    "PT",
+    "SE",
+    "SI"
+   ]
+  }
+ },
+ "changes": {
+  "screened": {
+   "sign": [],
+   "bootstrap": [
+    "BG",
+    "DE",
+    "PL"
+   ],
+   "bootstrap_holm": [
+    "ES"
+   ]
+  },
+  "vintage": {
+   "sign": [],
+   "bootstrap": [],
+   "bootstrap_holm": []
+  }
+ },
+ "revisions": {
+  "gdp_cells_changed": 134,
+  "gdp_cells": 1998,
+  "gdp_countries_revised": [
+   "BE",
+   "CY",
+   "HR",
+   "LV",
+   "PL",
+   "SK"
+  ],
+  "gdp_max_abs": 0.8,
+  "lfs_cells_changed": 0,
+  "flag_changes": 8
+ },
+ "max_sum_change": {
+  "screened": 0.42264848867490357,
+  "vintage": 0.0419730267729177
+ },
+ "spain_france": {
+  "ES": {
+   "headline": -0.7944275190245993,
+   "screened": -0.9344280906601697
+  },
+  "FR": {
+   "headline": -0.3024572289498391,
+   "screened": -0.40771887350923974
+  }
+ },
+ "releases": {
+  "frozen": {
+   "gdp": "namq_10_gdp 2026-10-15 1558316778ce",
+   "participation": "lfsi_emp_q 2026-09-10 b6dccbcd9421",
+   "unemployment": "une_rt_q 2026-09-10 78bde702827a"
+  },
+  "new": {
+   "gdp": "namq_10_gdp 2026-10-20 f5a386554ce8",
+   "participation": "lfsi_emp_q 2026-09-10 b6dccbcd9421",
+   "unemployment": "une_rt_q 2026-09-10 78bde702827a"
+  }
+ }
+}
