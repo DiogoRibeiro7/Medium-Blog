@@ -33,10 +33,18 @@ the frozen snapshot `snapshots/eurostat-2026-10-15` (review, section 3).
 
 Open items raised by the review:
 
-- [ ] Make the treatment of 2020-2021 an explicit, pre-registered choice for headline
-      tables (the published comparison includes it and is dominated by it).
-- [ ] Use Eurostat flags in estimation, not only in sensitivity checks (ES/FR from 2021,
-      DE 2020, series breaks).
+- [x] Make the treatment of 2020-2021 an explicit choice for headline tables. It cannot
+      be pre-registered after the fact. The headline excludes 2020-2021, a choice made
+      after the full-sample estimates had been seen, and the abstract, introduction,
+      appendix and limitations say so. Both samples are reported throughout. Later
+      protocols (hours, asymmetry, CCE, aggregate) fixed their own treatment in advance.
+- [x] Use Eurostat flags in estimation, not only in sensitivity checks. The study has
+      one definition-break rule (`review.flagged_change`,
+      [MEASUREMENT_PROTOCOL.md](MEASUREMENT_PROTOCOL.md)).
+  - The Bayesian likelihood applies the rule.
+  - The classical headline keeps its registered sample and is reported under the rule
+    as a registered sensitivity ([docs/MEASUREMENT.md](docs/MEASUREMENT.md)): 17
+    significant sums instead of 20.
 - [x] Small-sample-valid inference for the post-2021 window: null-imposed sieve and
       block bootstraps of the HAC t-statistic and a size study
       ([docs/SMALL_SAMPLE_INFERENCE.md](docs/SMALL_SAMPLE_INFERENCE.md)). None of the 14
@@ -129,7 +137,17 @@ Pre-registered in [BAYES_PROTOCOL.md](BAYES_PROTOCOL.md); results in
       [docs/SIGN_RESTRICTIONS_RESULTS.md](docs/SIGN_RESTRICTIONS_RESULTS.md)). The
       demand and technology Okun-ratio sets are unbounded, and labour supply and demand
       differ only at impact, by assumption.
-- [ ] Regime sensitivity, structural breaks and mechanisms.
+- [x] Regime sensitivity, structural breaks and mechanisms, across several studies:
+  - **Classical regime sensitivity and pre/post stability tests** (phase 1). None of the
+    post-2021 changes survives small-sample inference
+    ([docs/SMALL_SAMPLE_INFERENCE.md](docs/SMALL_SAMPLE_INFERENCE.md)).
+  - **Regime-specific and drifting Bayesian coefficients** (amendment 4): no credible
+    shift ([docs/BAYES_REGIMES.md](docs/BAYES_REGIMES.md)).
+  - **Asymmetry between expansions and contractions:** not determined
+    ([docs/ASYMMETRY.md](docs/ASYMMETRY.md)).
+  - **Mechanism: job retention in the pandemic**, through hours
+    ([docs/HOURS.md](docs/HOURS.md)).
+  - **Re-testing with more post-2021 quarters** is the open item above.
 - [x] Detailed alternative hypotheses for NL and LU, and PT against ES. These were
       pre-registered in [HETEROGENEITY_PROTOCOL.md](HETEROGENEITY_PROTOCOL.md), with
       results in [docs/HETEROGENEITY_CASE_STUDY.md](docs/HETEROGENEITY_CASE_STUDY.md). One of 14 predictions is supported: the Netherlands absorbs more
