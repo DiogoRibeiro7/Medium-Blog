@@ -112,3 +112,14 @@ jobs:
           --ExecutePreprocessor.timeout=300
           --output gradual-drift-and-delayed-feedback.executed.ipynb
           gradual-drift-and-delayed-feedback.ipynb
+
+      - name: Execute change-point detection notebook
+        working-directory: statistical-evidence-and-decisions
+        env:
+          DETECTOR_SMOKE: "1"
+          DETECTOR_REPEATS: "1"
+        run: >-
+          jupyter nbconvert --to notebook --execute
+          --ExecutePreprocessor.timeout=300
+          --output change-point-and-retraining.executed.ipynb
+          change-point-and-retraining.ipynb
