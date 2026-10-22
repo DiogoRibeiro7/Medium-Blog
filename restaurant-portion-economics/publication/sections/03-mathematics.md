@@ -1,37 +1,42 @@
 ## The contribution-margin equation
 
-Suppose a restaurant sells N meals per month at price p. Let c be its ingredient cost per meal and v the remaining variable expense attributable to serving that meal. The original contribution per meal is m = p − c − v. Fixed operating costs are relevant to the survival of the business, but when they truly remain unchanged between alternatives, they cancel from the incremental comparison. We study contribution rather than pretending to estimate net profit from unavailable accounts.
+Suppose a restaurant sells N meals a month at price p. Let c be the ingredient cost of a meal and v the other variable costs attributable to serving it. Contribution per meal is m = p − c − v. Fixed costs matter for whether the business survives, but when they are genuinely the same under both alternatives they cancel out of the comparison, so I work with contribution rather than pretending to estimate net profit from accounts I do not have.
 
-Let r be the fraction by which the default portion is reduced. Not every ingredient is affected. Some costs belong to sauces, garnishes, minimum purchasing units, fixed recipe components, packaging, and items that the restaurant should not reduce. We therefore let s represent the share of ingredient cost to which portion reduction actually applies. Even for that share, smaller preparation does not always translate into a smaller purchasing bill. Let a be the fraction of the theoretical reduction realised in actual procurement.
+Let r be the fraction by which the default portion is cut. Not every ingredient shrinks with it. Sauces, garnishes, minimum order quantities, fixed recipe components, packaging and anything the restaurant should not reduce all stay where they are, so let s be the share of ingredient cost that the cut actually touches. Even within that share, preparing less does not always mean buying less: suppliers sell in cases, waste moves between stages, and purchasing habits adjust slowly. Let a be the fraction of the theoretical reduction that shows up in the purchasing bill.
 
-The avoidable ingredient expense per retained customer in this accounting model is:
+The avoidable ingredient cost per retained customer is then
 
 S = c × s × r × a.
 
-The equation is deliberately transparent. It says neither that every restaurant can save this amount nor that observed discarded food directly supplies any of its parameters. Each factor has a physical or operational meaning that could eventually be measured in a particular restaurant.
+The equation is deliberately plain. It claims neither that every restaurant can save this amount nor that discarded-food data supply any of its parameters. Each factor has a physical or operational meaning that a particular restaurant could measure.
 
-Now suppose that the new portion reduces the number of meals purchased by a proportion l. Let I be monthly implementation expense, including, where appropriate, revised training, menu materials, changes to kitchen processes, or other incremental expenses. The original monthly contribution is N × m. Under the intervention it is N × (1 − l) × (m + S) − I. The incremental result is therefore
+Now suppose the new portion reduces the number of meals sold by a proportion l, and let I be the monthly cost of implementing the change: retraining, new menus, changes to kitchen routines. Monthly contribution before the change is N × m. After it, it is N × (1 − l) × (m + S) − I. The difference is
 
-Δ = N × [(1 − l) × (m + S) − m] − I.
+Δ = N × [(1 − l) × (m + S) − m] − I,
 
-Expanding the brackets reveals the conflict:
+which rearranges to
 
 Δ = N × [S − l × (m + S)] − I.
 
-The first term is the procurement saving that would occur if demand remained constant. The second removes the contribution that disappears when a fraction of sales is lost, including the savings no longer available on those lost transactions. The third term is implementation cost. At this level of abstraction, the model is an accounting identity conditional on the assumptions; it is not a fitted behavioural relation.
+The first term is the purchasing saving the restaurant would make if demand did not move. The second removes the contribution lost on the meals that are no longer sold, including the savings that would have been made on them. The third is the cost of making the change. At this level the model is an accounting identity conditional on its inputs, not a fitted relationship between behaviour and outcomes.
 
-A restaurant breaks even when Δ = 0. Solving for the maximum admissible proportional customer loss gives
+Setting Δ = 0 and solving for the largest loss of customers the change can absorb gives
 
 l* = (S − I/N) / (m + S),
 
-provided m + S is positive. If l* is negative, even retaining every customer would not make the change worthwhile at the assumed savings and implementation cost. If l* is positive but small, the intervention depends on customer acceptance to a degree that can outweigh the apparent food saving. An operator may find the value more useful than a claim that portions should universally be reduced by a particular percentage.
+provided m + S is positive. If l* is negative, the change fails even if every customer stays. If l* is positive but small, the business case rests on customer acceptance to a degree that can easily outweigh the food saving. For an operator, that threshold is more useful than any recommendation to cut portions by a fixed percentage.
 
-Consider an illustrative restaurant selling 2,500 meals per month at €15 each. Assume €5 in ingredients and €2 of other variable expense per meal. The contribution per meal is €8 before fixed costs. Now assume a 15% reduction in default portion size, affecting 40% of ingredient costs, with 85% procurement savings realisation and €150 monthly implementation expense.
+To make this concrete, take an illustrative restaurant that sells 2,500 meals a month at €15 each, with €5 of ingredients and €2 of other variable cost per meal, so that each meal contributes €8 before fixed costs. Cut the default portion by 15%, let the cut touch 40% of ingredient cost, let 85% of the theoretical saving reach the purchasing bill, and allow €150 a month to implement it.
 
-The projected saving per retained meal is €5 × 0.40 × 0.15 × 0.85 = €0.255. With no customer loss, the monthly increase in contribution is 2,500 × €0.255 − €150 = €487.50. With a 1% sales loss, the increase is approximately €281.13. With a 2% loss it is approximately €74.75. With a 5% loss, the change is approximately −€544.38. These are arithmetic scenarios, not observed restaurant outcomes.
+The saving per retained meal is €5 × 0.40 × 0.15 × 0.85 = €0.255. If no customer leaves, monthly contribution rises by 2,500 × €0.255 − €150 = €487.50. With 1% fewer meals the gain is about €281.13; with 2% fewer, about €74.75. With 5% fewer, the change costs about €544.38 a month. These are arithmetic scenarios, not observed outcomes.
 
-The break-even threshold in this example is about 2.36% of monthly meal transactions. This means that a relatively modest demand response could absorb all the projected savings. It does not mean that reducing portions by 15% *will* lose 2.36% of customers. Estimating that relationship requires evidence we do not possess.
+![Change in monthly contribution against the share of meals lost, with the break-even point](figures/fig06_contribution_vs_loss.png)
+*Figure 6. Change in monthly contribution for the illustrative restaurant as a function of the share of meals lost after a 15% portion cut. Hypothetical parameters.*
 
-Nor should those input assumptions be interpreted as Portuguese restaurant benchmarks. They are chosen to make the model inspectable. We later evaluate US industry cost-to-sales medians as external sensitivity anchors, but a business-level food-and-non-alcoholic-beverage ratio is not an ingredient cost for a particular €15 meal. Translating it directly into a restaurant's accounts would confound the unit of observation and the composition of cost.
+The break-even loss in this example is about 2.36% of monthly meals. A modest drop in demand is enough to absorb the entire saving. That does not mean a 15% cut will lose 2.36% of customers; estimating that relationship requires evidence I do not have, and the rest of this piece is largely about how much can be said without it.
 
-This is the point at which the business proposition becomes mathematically useful. A restaurant owner need not first accept a sweeping sustainability argument. The question can be stated in operational terms: What is the actually avoidable ingredient cost per retained meal, and how much transaction volume may be lost before the intervention stops paying? Those two variables determine much of the answer, subject to implementation costs and other changes in variable expense.
+The structure of l* also explains why the threshold is so tight. Ignore implementation cost for a moment and l* is roughly S/m, the saving per meal as a fraction of the contribution per meal. Ingredients are a minority of the price, only part of them shrinks with the portion, and the margin on each meal is several times larger than the saving. Losing one meal costs the restaurant its whole margin; keeping it gains a few cents.
+
+The inputs are not Portuguese restaurant benchmarks. I chose them to make the model easy to inspect. Later I set them against US industry ratios of food cost to sales, but a business-level ratio of food and non-alcoholic beverage spending to sales is not the ingredient cost of a particular €15 dish, and treating it as one would confuse both the unit of observation and the composition of cost.
+
+This is where the model becomes useful to someone running a restaurant. An owner does not need to accept any argument about sustainability to use it. The question reduces to two operational quantities: how much ingredient cost is actually avoidable per retained meal, and how many transactions can be lost before the change stops paying. Those two numbers, together with implementation cost, settle most of the answer.
