@@ -286,6 +286,7 @@ def review_run(tmp_path_factory: pytest.TempPathFactory) -> tuple[Path, ReviewRe
     return output, result
 
 
+@pytest.mark.integration
 def test_review_verifies_every_published_quantity(
     review_run: tuple[Path, ReviewResult],
 ) -> None:
@@ -295,6 +296,7 @@ def test_review_verifies_every_published_quantity(
     assert all(check.passed for check in checks), [c for c in checks if not c.passed]
 
 
+@pytest.mark.integration
 def test_review_detects_the_synthetic_pandemic_attenuation(
     review_run: tuple[Path, ReviewResult],
 ) -> None:
@@ -305,6 +307,7 @@ def test_review_detects_the_synthetic_pandemic_attenuation(
     assert all(x.pandemic_leverage_share > 0.5 for x in robustness)
 
 
+@pytest.mark.integration
 def test_review_writes_report_and_tables(review_run: tuple[Path, ReviewResult]) -> None:
     output, result = review_run
     report = (output / REPORT_NAME).read_text(encoding="utf-8")
@@ -338,6 +341,7 @@ def test_baseline_hac_uses_calendar_lags_across_gaps(tmp_path: Path) -> None:
     assert not math.isclose(math.sqrt(rows[1, 1]), fit.hac_se["gdp_lag_0"], rel_tol=1e-9)
 
 
+@pytest.mark.reproduction
 def test_committed_review_reproduces_from_the_frozen_snapshot(tmp_path: Path) -> None:
     """docs/review regenerates from the frozen snapshot and the frozen CI outputs."""
     root = Path(__file__).resolve().parents[1]

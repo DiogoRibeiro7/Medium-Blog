@@ -26,6 +26,7 @@ def test_shift_share_margin_keeps_the_level_at_t_minus_5_clear() -> None:
     assert widened < registered
 
 
+@pytest.mark.reproduction
 def test_committed_table_regenerates(tmp_path: Path) -> None:
     if not COMMITTED.exists():
         pytest.skip("No committed results.")

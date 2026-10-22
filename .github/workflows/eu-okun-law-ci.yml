@@ -15,6 +15,23 @@ permissions:
 
 jobs:
   validate:
+    # Three parallel jobs: lint, types and the fast unit tests (`validate`); the tests that
+    # regenerate committed results (`reproduction`); and the end-to-end model fits and
+    # report pipelines (`integration`). Markers are defined in eu-okun-law/pyproject.toml.
+    name: ${{ matrix.name }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: validate
+            marker: "not reproduction and not integration"
+            static: true
+          - name: reproduction
+            marker: reproduction
+            static: false
+          - name: integration
+            marker: integration
+            static: false
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262  # v4.4.0
@@ -29,11 +46,13 @@ jobs:
           poetry check --lock
           poetry install --no-interaction --extras dev
       - name: Lint
+        if: matrix.static
         working-directory: eu-okun-law
         run: poetry run ruff check src tests
       - name: Types
+        if: matrix.static
         working-directory: eu-okun-law
         run: poetry run mypy src
-      - name: Offline tests
+      - name: Offline tests (${{ matrix.name }})
         working-directory: eu-okun-law
-        run: poetry run pytest
+        run: poetry run pytest -m "${{ matrix.marker }}"

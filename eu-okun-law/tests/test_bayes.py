@@ -216,6 +216,7 @@ def test_diagnostics_accept_mixed_chains_and_reject_offset_chains() -> None:
     assert compute_diagnostics(good, extra, 10).divergences == 1
 
 
+@pytest.mark.integration
 def test_sampling_smoke_run() -> None:
     """A tiny run that only checks the pipeline end to end; not a convergence test."""
     spec = replace(SPECS["primary"], windows=(("2012-Q1", "2017-Q4"),))

@@ -34,6 +34,7 @@ def test_exact_permutation_test() -> None:
     assert greater == pytest.approx(1 / 6) and less == pytest.approx(1.0)
 
 
+@pytest.mark.reproduction
 def test_committed_tables_reproduce_and_match_the_bayesian_check(tmp_path: Path) -> None:
     """The run regenerates from the frozen snapshots, and its mean autocorrelation is the
     observed statistic of the Bayesian predictive check (protocol, section 4)."""

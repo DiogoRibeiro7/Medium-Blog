@@ -46,6 +46,7 @@ def test_stratified_resamples_keep_the_pandemic_rows() -> None:
     assert np.all(counts[:, ~mask].sum(axis=1) == (~mask).sum())
 
 
+@pytest.mark.reproduction
 def test_reproduction_gate(tmp_path: Path) -> None:
     run = Run(Settings(), {("AT", "h", "excluded"): Estimate(0.5, np.zeros(3), 40),
                            ("AT", "h", "full"): Estimate(0.7, np.zeros(3), 48)},
@@ -121,6 +122,7 @@ def test_verdicts_quoted_in_the_text() -> None:
         "not determined")
 
 
+@pytest.mark.reproduction
 def test_committed_outputs_regenerate(tmp_path: Path) -> None:
     if not (COMMITTED / "tests.csv").exists():
         pytest.skip("No committed results.")

@@ -172,6 +172,7 @@ def test_refit_loop_retries_once_and_resumes(tmp_path: Path,
     assert calls == [1000, 3000, 1000] and again == records
 
 
+@pytest.mark.integration
 def test_forecast_model_smoke_run(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     """A tiny real refit that only checks the pipeline end to end; not a convergence test."""
     pytest.importorskip("numpyro")
@@ -189,6 +190,7 @@ def test_forecast_model_smoke_run(tmp_path: Path, monkeypatch: pytest.MonkeyPatc
     assert len(rows) == 27 and all(np.isfinite(r.crps) and 0 <= r.pit <= 1 for r in rows)
 
 
+@pytest.mark.integration
 def test_report_renders(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     import eu_okun.audit
     import eu_okun.baseline

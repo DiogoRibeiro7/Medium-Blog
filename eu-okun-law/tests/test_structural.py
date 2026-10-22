@@ -293,6 +293,7 @@ def test_fit_rejects_too_few_rows() -> None:
     assert math.isfinite(stats.t.ppf(0.95, 10))
 
 
+@pytest.mark.integration
 def test_identification_report_renders(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     import eu_okun.structural_report as sr
     from eu_okun.contract import EU27
@@ -334,6 +335,7 @@ def test_identification_report_renders(tmp_path: Path, monkeypatch: pytest.Monke
         assert (tmp_path / "out" / name).exists()
 
 
+@pytest.mark.reproduction
 def test_committed_identification_results_reproduce(tmp_path: Path) -> None:
     """The committed tables regenerate from the frozen snapshots (validation gate)."""
     import csv as csv_module

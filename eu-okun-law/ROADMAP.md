@@ -299,6 +299,11 @@ Open:
   - **Country pairs.** The robust country differences are presented as pairwise
     statements, each at its own threshold and not a ranking: in the heterogeneity
     section, the discussion, the conclusions and the article.
+- [x] P2, the test split. Fast unit tests, reproduction checks and end-to-end
+      integration tests are separate pytest markers, and CI runs them as three parallel
+      jobs.
+- [ ] P2, the rest (optional): consolidating the CLI's command registration and the
+      report helpers the modules duplicate.
 - [ ] P1, provenance and independent review: an econometric review of the manuscript by
       a person, not another automated check.
 

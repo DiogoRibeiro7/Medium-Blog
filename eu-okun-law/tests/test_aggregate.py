@@ -70,6 +70,7 @@ def test_text_claims_match_the_committed_results() -> None:
         assert {r["verdict"] for r in csv.DictReader(stream)} == {"not determined"}
 
 
+@pytest.mark.reproduction
 def test_committed_outputs_regenerate(tmp_path: Path) -> None:
     if not (COMMITTED / "tests.csv").exists():
         pytest.skip("No committed results.")

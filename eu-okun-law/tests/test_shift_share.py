@@ -294,6 +294,7 @@ def test_report_renders(tmp_path: Path) -> None:
         assert (tmp_path / name).exists(), name
 
 
+@pytest.mark.reproduction
 def test_committed_shift_share_results_reproduce(tmp_path: Path) -> None:
     """The committed tables regenerate from the frozen snapshots (validation gate)."""
     from eu_okun.shift_share_report import write_report

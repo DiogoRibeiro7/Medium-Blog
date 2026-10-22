@@ -145,6 +145,7 @@ def test_sieve_bootstrap_test_has_roughly_nominal_size_on_null_data() -> None:
     assert rejections_normal >= rejections_boot
 
 
+@pytest.mark.reproduction
 def test_committed_small_sample_tables_reproduce(tmp_path: Path) -> None:
     """The committed tables regenerate from the frozen snapshot (validation gate)."""
     from eu_okun.small_sample import write_report

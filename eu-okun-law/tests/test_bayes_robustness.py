@@ -147,6 +147,7 @@ def _write_pairs(path: Path) -> None:
                         writer.writerow([sample, a, b, k, 40, -0.1, -0.3, 0.1, 0.02, 0.04, 0.5])
 
 
+@pytest.mark.integration
 def test_report_renders_with_a_failed_fit_and_a_replication(tmp_path: Path) -> None:
     rng = np.random.default_rng(9)
     means = np.sort(rng.normal(-0.25, 0.12, len(EU27)))

@@ -78,6 +78,7 @@ def test_non_financial_growth_and_noise_signature() -> None:
     assert rho < -0.2                                # level noise: negative autocorrelation
 
 
+@pytest.mark.reproduction
 def test_committed_tables_reproduce(tmp_path: Path) -> None:
     """The registered run regenerates from the frozen snapshots (validation gate)."""
     from eu_okun.gdp_measurement import write_report

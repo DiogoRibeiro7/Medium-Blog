@@ -299,6 +299,7 @@ def test_ardl_netcdf_log_likelihood_excludes_segment_starts(
         assert np.all(np.isfinite(tree["prior_predictive"]["y"].values))
 
 
+@pytest.mark.integration
 def test_ardl_sampling_recovers_the_lagged_change() -> None:
     data = small_data(psi=0.5, seed=11)
     fit = fit_specification(data, SPECS["ardl_dynamic_factor"],
@@ -372,6 +373,7 @@ def test_ardl_claims_use_the_long_run_multiplier_for_luxembourg_and_spain() -> N
     assert "mu_theta" in plain[0].detail and plain[0].probability < 0.95
 
 
+@pytest.mark.integration
 def test_loo_on_cells_matches_full_loo_and_restricts_to_common_cells(
         tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     import eu_okun.bayes_artifacts as artifacts
@@ -423,6 +425,7 @@ def _write_fit(directory: Path, data: BayesData, name: str, seed: int, p_lag1: f
     write_posterior_netcdf(directory / "posterior.nc", SPECS[name], data, samples)
 
 
+@pytest.mark.integration
 def test_dynamics_report_renders_and_replicates(tmp_path: Path,
                                                 monkeypatch: pytest.MonkeyPatch) -> None:
     import shutil

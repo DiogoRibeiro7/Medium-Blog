@@ -90,6 +90,7 @@ def test_leaving_out_a_cell_keeps_its_value_as_conditioning_data() -> None:
         leave_out(left, [label])
 
 
+@pytest.mark.integration
 def test_exact_value_agrees_with_psis_for_a_cell_with_low_pareto_k(
         tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     import eu_okun.bayes_artifacts as artifacts
@@ -175,6 +176,7 @@ def test_text_claims_match_the_committed_results() -> None:
     assert all(c["accepted"] for c in study["calibration"]["fits"].values())
 
 
+@pytest.mark.reproduction
 def test_report_regenerates_from_the_committed_summary() -> None:
     if not (COMMITTED / "summary.json").exists():
         pytest.skip("No committed results.")

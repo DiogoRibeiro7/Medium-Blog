@@ -234,6 +234,7 @@ def test_deflator_snapshot_is_frozen_and_audited(tmp_path: Path,
         audit_deflator(tmp_path / "d")
 
 
+@pytest.mark.integration
 def test_estimate_and_report_end_to_end(tmp_path: Path) -> None:
     from eu_okun.sign_restrictions_report import render, review_from_data, write_tables
 
@@ -254,6 +255,7 @@ def test_estimate_and_report_end_to_end(tmp_path: Path) -> None:
         assert (tmp_path / name).exists()
 
 
+@pytest.mark.reproduction
 @pytest.mark.skipif(os.environ.get("EU_OKUN_REPRODUCE_SVAR") != "1",
                     reason="Full SVAR reproduction runs in the estimates workflow")
 def test_committed_sign_restriction_results_reproduce(tmp_path: Path) -> None:
