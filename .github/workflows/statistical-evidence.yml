@@ -101,3 +101,14 @@ jobs:
           --ExecutePreprocessor.timeout=300
           --output temporal-drift-and-decisions.executed.ipynb
           temporal-drift-and-decisions.ipynb
+
+      - name: Execute gradual drift and delayed feedback notebook
+        working-directory: statistical-evidence-and-decisions
+        env:
+          GRADUAL_SMOKE: "1"
+          GRADUAL_REPEATS: "1"
+        run: >-
+          jupyter nbconvert --to notebook --execute
+          --ExecutePreprocessor.timeout=300
+          --output gradual-drift-and-delayed-feedback.executed.ipynb
+          gradual-drift-and-delayed-feedback.ipynb
