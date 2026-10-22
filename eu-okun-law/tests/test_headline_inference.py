@@ -31,6 +31,7 @@ def test_sum_contrast_picks_the_three_gdp_coefficients() -> None:
     assert sum_contrast(4).tolist() == [0.0, 1.0, 1.0, 1.0]
 
 
+@pytest.mark.reproduction
 def test_designs_reproduce_the_published_headline() -> None:
     heads, _ = headline_designs(SNAPSHOT)
     assert [h.geo for h in heads][:3] == ["AT", "BE", "BG"] and len(heads) == 27
@@ -64,6 +65,7 @@ def test_null_bootstrap_keeps_the_observed_statistic() -> None:
     assert t_star.shape == (50,) and len(sieve.period_rho) == 2
 
 
+@pytest.mark.reproduction
 def test_committed_tables_reproduce(tmp_path: Path) -> None:
     """The registered run regenerates from the frozen snapshot (validation gate)."""
     if not (COMMITTED / "tests.csv").exists():

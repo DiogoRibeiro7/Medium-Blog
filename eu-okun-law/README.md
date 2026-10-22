@@ -65,6 +65,19 @@ poetry run ruff check src tests
 poetry run mypy src
 ```
 
+`poetry run pytest` runs every test (about 12 minutes). Two markers separate the slow
+groups, and CI runs the three groups as parallel jobs:
+
+- **Fast unit tests** (under a minute):
+  `poetry run pytest -m "not reproduction and not integration"`.
+- **`reproduction`:** tests that regenerate or reproduce committed results from the
+  frozen snapshots.
+- **`integration`:** tests that fit or score models end to end, or run a whole report
+  pipeline.
+
+A test whose name says it regenerates or reproduces results must carry the
+`reproduction` marker. `tests/conftest.py` refuses to collect it otherwise.
+
 Poetry installs into whatever environment `VIRTUAL_ENV` names. If your shell sets it
 (for example to a conda base environment), unset it first (`env -u VIRTUAL_ENV poetry
 install ...`) and check `poetry env info --path`, or the packages land in that other

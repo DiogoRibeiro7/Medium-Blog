@@ -44,6 +44,7 @@ def test_bootstrap_imposes_the_null_on_the_mean() -> None:
     assert abs(float(np.median(t_star))) < 0.2       # centred on the null
 
 
+@pytest.mark.reproduction
 def test_committed_outputs_regenerate(tmp_path: Path) -> None:
     if not (COMMITTED / "summary.json").exists():
         pytest.skip("No committed results.")

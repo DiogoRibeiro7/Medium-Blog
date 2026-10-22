@@ -35,7 +35,13 @@ packages = [{ include = "eu_okun", from = "src" }]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-addopts = "-q"
+addopts = "-q --strict-markers"
+# `pytest` runs everything. `pytest -m "not reproduction and not integration"` runs the
+# fast unit tests only; CI runs the three groups as parallel jobs.
+markers = [
+    "reproduction: regenerates or reproduces committed results from the frozen snapshots",
+    "integration: fits or scores models end to end, or runs a whole report pipeline",
+]
 
 [tool.ruff]
 target-version = "py312"

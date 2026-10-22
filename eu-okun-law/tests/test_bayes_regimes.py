@@ -215,6 +215,7 @@ def test_simulated_regime_outcomes_use_the_shifted_terms() -> None:
                                + noise[:, :, j + 1])
 
 
+@pytest.mark.integration
 def test_regime_sampling_detects_a_known_shift() -> None:
     data = regime_data(shift=0.35, seed=11)
     fit = fit_specification(data, SPECS["regime_shift"],
@@ -355,6 +356,7 @@ def _write_fit(directory: Path, data: BayesData, name: str, seed: int) -> None:
     write_posterior_netcdf(directory / "posterior.nc", SPECS[name], data, samples)
 
 
+@pytest.mark.integration
 def test_regimes_report_renders_and_flags_unstable_verdicts(
         tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     import json

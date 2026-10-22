@@ -171,6 +171,7 @@ def test_prior_predictive_check_summarises_simulations() -> None:
     assert set(check.observed) == set(check.quantiles)
 
 
+@pytest.mark.integration
 def test_netcdf_artifact_round_trip_and_loo(tmp_path: Path,
                                             monkeypatch: pytest.MonkeyPatch) -> None:
     import xarray as xr
@@ -243,6 +244,7 @@ def test_assess_recovery_counts_coverage() -> None:
     assert len(result.theta) == 3 and result.theta[0][0] == -0.5
 
 
+@pytest.mark.integration
 def test_posterior_recovery_on_synthetic_data_with_known_parameters() -> None:
     """A small real fit: known country sums are recovered (gaussian_iid, 8 countries)."""
     countries = ("AT", "BE", "DE", "ES", "FR", "IT", "NL", "PT")
@@ -286,6 +288,7 @@ def _write_fake_fit(directory: Path, data: BayesData, name: str, seed: int) -> N
     artifacts.write_posterior_netcdf(directory / "posterior.nc", SPECS[name], data, samples)
 
 
+@pytest.mark.integration
 def test_checks_report_renders(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     import eu_okun.bayes_artifacts as artifacts
     import eu_okun.bayes_checks as checks

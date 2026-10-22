@@ -386,6 +386,7 @@ def test_refit_loop_retries_once_and_resumes(tmp_path: Path,
     assert calls == [1000, 3000, 1000] and again == records      # resumed, nothing refitted
 
 
+@pytest.mark.integration
 def test_refit_smoke_run(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     """A tiny real refit that only checks the pipeline end to end; not a convergence test."""
     pytest.importorskip("numpyro")
@@ -425,6 +426,7 @@ def _write_fake_refits(fits: Path, pdata: dict[str, PredictiveData], failed: str
                 (directory / "origin.json").write_text(json.dumps(record), encoding="utf-8")
 
 
+@pytest.mark.integration
 def test_report_renders_with_the_family_and_a_failed_refit(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch,
 ) -> None:

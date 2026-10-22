@@ -262,6 +262,7 @@ def test_placebo_is_quiet_on_clean_data_and_detects_centred_smoothing() -> None:
     assert leaked["unemployment"].estimate == pytest.approx(-0.25 * -0.8 / 3, abs=0.02)
 
 
+@pytest.mark.integration
 def test_predictability_keeps_its_size_with_a_zero_inflated_heavy_tailed_shock() -> None:
     months = month_sequence("2007-01", "2025-10")
     countries = primary_countries()
@@ -310,6 +311,7 @@ def _synthetic_review_inputs() -> tuple[MonthlyArrays, dict[str, dict[str, float
     return synthetic(months, combined, seed=21, impact=1.0), shocks
 
 
+@pytest.mark.integration
 def test_monthly_report_renders(tmp_path: Path) -> None:
     from eu_okun.monthly_report import render, review_from_arrays, write_figures, write_tables
 
@@ -344,6 +346,7 @@ def test_monthly_arrays_from_a_panel() -> None:
     assert arrays.dip[0, 1] == pytest.approx(100 * math.log(1.01))
 
 
+@pytest.mark.reproduction
 def test_committed_monthly_results_reproduce(tmp_path: Path) -> None:
     """The committed tables regenerate from the frozen snapshots (validation gate)."""
     from eu_okun.monthly_report import write_report

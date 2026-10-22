@@ -254,6 +254,7 @@ def test_fetch_freezes_and_the_audit_detects_tampering(tmp_path: Path,
 # ----------------------------------------------------------------------------------
 
 
+@pytest.mark.integration
 def test_case_study_renders(tmp_path: Path) -> None:
     from eu_okun.heterogeneity_report import (
         render,
@@ -286,6 +287,7 @@ def test_case_study_renders(tmp_path: Path) -> None:
     assert len(evaluate(cs.primary)) == 14
 
 
+@pytest.mark.reproduction
 def test_committed_case_study_reproduces(tmp_path: Path) -> None:
     """The committed tables regenerate from the frozen snapshots (validation gate)."""
     from eu_okun.heterogeneity_report import write_report

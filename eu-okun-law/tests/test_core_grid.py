@@ -28,6 +28,7 @@ def test_core_specifications_without_participation() -> None:
     assert len(core(lookup, "PT", (False, True))) == 24
 
 
+@pytest.mark.reproduction
 def test_published_verdicts_are_reproduced_before_reclassifying(tmp_path: Path) -> None:
     rows = reclassify(GRID, ROBUSTNESS)
     with ROBUSTNESS.open(encoding="utf-8") as stream:
@@ -59,6 +60,7 @@ def test_a_changed_verdict_follows_from_the_participation_estimates() -> None:
         assert any(r.ci_high >= 0 for r in with_control)
 
 
+@pytest.mark.reproduction
 def test_committed_outputs_regenerate(tmp_path: Path) -> None:
     if not (COMMITTED / "verdicts.csv").exists():
         pytest.skip("No committed results.")

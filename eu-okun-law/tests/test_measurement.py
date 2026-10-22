@@ -51,6 +51,7 @@ def test_text_claims_match_the_committed_results() -> None:
     assert all(not v for v in s["changes"]["vintage"].values())
 
 
+@pytest.mark.reproduction
 def test_committed_outputs_regenerate(tmp_path: Path) -> None:
     if not (COMMITTED / "summary.json").exists():
         pytest.skip("No committed results.")
