@@ -330,3 +330,28 @@ Smoke execution:
 
 The default six independent streams are exploratory. All interventions use
 synthetic conditional means only at evaluation and are not causal claims.
+ 
+## Evidence-triggered change-point detection
+
+[change-point-and-retraining.ipynb](change-point-and-retraining.ipynb)
+compares frozen OLS, scheduled retraining and a CUSUM-triggered policy on
+matched synthetic streams with gradual drift, delayed labels and AR(1)
+dependence. The detector monitors signed residual–prediction disagreement
+from a frozen reference model. Thresholds are estimated by moving-block
+bootstrap on independent historical calibration scores.
+
+- Labels enter the detector only after j + delay + 1.
+- Frozen, scheduled and detected policies see identical deployment streams.
+- Count alarms and refits separately; evaluate predictive error and economic regret.
+- No formal sequential false-alarm guarantee is claimed; block-bootstrap
+  calibration, autocorrelation and gradual drift remain research limitations.
+- Synthetic conditional means are used only by the economic evaluator,
+  without claims of causal identification.
+
+Implementation: [change_point_detection.py](change_point_detection.py).
+Tests: [tests/test_change_point_detection.py](tests/test_change_point_detection.py).
+
+Smoke:
+```bash
+DETECTOR_SMOKE=1 DETECTOR_REPEATS=1 jupyter nbconvert --to notebook --execute --output change-point-and-retraining.executed.ipynb change-point-and-retraining.ipynb
+```
