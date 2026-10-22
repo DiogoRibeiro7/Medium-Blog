@@ -1,0 +1,13 @@
+set,model_a,model_b,cells,psis_elpd_diff,psis_se_diff,psis_verdict,exact_cells,corrected_elpd_diff,corrected_se_diff,corrected_verdict,stable,established
+9.2,time_effects,no_common_factor,1124,22.17740306638006,9.331400896321226,time_effects better supported,27,22.690464623120683,9.351051601604004,time_effects better supported,True,True
+9.2,time_effects_participation,participation_no_common_factor,1124,24.945486220546723,9.52846300115911,time_effects_participation better supported,31,25.59675263870151,9.589123856113822,time_effects_participation better supported,True,True
+9.2,time_effects,primary,1124,-23.70675821298542,9.22622565342182,primary better supported,36,-23.479085983409632,9.403893188132761,primary better supported,True,True
+9.2,time_effects_participation,time_effects,1124,20.431072300995766,7.506634647883701,time_effects_participation better supported,28,20.64598115812404,7.553158810527198,time_effects_participation better supported,True,True
+11.4,dynamic_factor,primary,1098,15.467716683216562,5.820147268745897,dynamic_factor better supported,30,16.259840402710136,5.791963943347126,dynamic_factor better supported,True,True
+11.4,ardl,primary,1098,14.4344939176376,7.312563582609812,not distinguishable,37,15.210301447064957,7.4941707431876985,ardl better supported,True,False
+11.4,ardl_dynamic_factor,primary,1098,26.206991066121496,7.8509418747827935,ardl_dynamic_factor better supported,31,26.69291135261077,7.873431921838296,ardl_dynamic_factor better supported,True,True
+11.4,ardl_dynamic_factor,ardl,1098,11.772497148483897,5.663564321269142,ardl_dynamic_factor better supported,30,11.482609905545813,5.688700450782573,ardl_dynamic_factor better supported,False,False
+12.5,regime_shift,pandemic_excluded,1520,9.903453986954204,5.8020688916595,not distinguishable,24,10.49656803531783,5.8119110634867654,not distinguishable,False,False
+12.5,drifting_association,pandemic_excluded,1520,14.193874875479537,6.010306610326101,drifting_association better supported,26,14.134618546471781,6.026638249157743,drifting_association better supported,True,True
+12.5,drifting_association,regime_shift,1520,4.290420888525335,1.8334834159180813,drifting_association better supported,26,3.6380505111539505,1.8505159876786803,not distinguishable,False,False
+12.5,regime_shift_dynamic,pandemic_excluded_dynamic,1469,6.172051569944217,6.824727173613484,not distinguishable,10,6.010585744370818,6.835069332256862,not distinguishable,True,True

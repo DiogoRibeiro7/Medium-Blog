@@ -552,6 +552,14 @@ def _corrected(a: str, b: str, cell_set: Sequence[str], local: Mapping[str, Any]
     return _comparison(a, b, values[a][0], values[b][0], values[a][1], values[b][1]), replaced
 
 
+def _rho(fit: LoadedFit) -> list[float] | None:
+    """Median and 90% interval of the factor's AR(1) coefficient, if it has one."""
+    if "rho_f" not in fit.draws:
+        return None
+    low, high = credible_interval(fit.draws["rho_f"])
+    return [float(np.median(fit.draws["rho_f"])), low, high]
+
+
 def build_study(fits_dir: Path, refits_dir: Path, data_dir: Path, docs_dir: Path,
                 ) -> dict[str, Any]:
     """Every result of sections 3-6, as one JSON-serialisable document."""
@@ -653,7 +661,7 @@ def build_study(fits_dir: Path, refits_dir: Path, data_dir: Path, docs_dir: Path
                  "median": je["median"], "low": je["low"], "high": je["high"],
                  "lag1_p": joint_fit["predictive_check"]["p_value"]["lag1_autocorrelation"],
                  **_set_change(registered["credibly_negative"], je["credibly_negative"])}
-        rows = [*single, joint]
+        rows = [r for r in [*single, joint] if r["accepted"]]
         outside = [r for r in rows if not registered["low"] <= r["median"] <= registered["high"]]
         changed = [r for r in rows if r["added"] or r["dropped"]]
         influence[name] = {
@@ -665,6 +673,10 @@ def build_study(fits_dir: Path, refits_dir: Path, data_dir: Path, docs_dir: Path
 
     # Section 6: prior calibration.
     calibration_doc = json.loads((refits_dir / "calibration.json").read_text(encoding="utf-8"))
+    primary_data = design_for(SPECS["primary"], panel, flags)
+    observed = {"share_above_5pp": float(np.mean(np.abs(primary_data.y[primary_data.mask])
+                                                 > LARGE_CHANGE)),
+                "largest_change": float(np.max(np.abs(primary_data.y[primary_data.mask])))}
     calibrated: dict[str, Any] = {}
     points: dict[str, Pointwise] = {}
     for name in ESTIMAND_SPECS:
@@ -684,6 +696,7 @@ def build_study(fits_dir: Path, refits_dir: Path, data_dir: Path, docs_dir: Path
             "negative": len(e["credibly_negative"]),
             "negative_registered": len(registered["credibly_negative"]), **change,
             "lag1_p": p.p_value, "lag1_p_registered": local["persistence"][name]["p"],
+            "rho_f": _rho(fit), "rho_f_registered": _rho(_load(fits_dir / name)),
             "prior_sensitive": bool(out_of_interval or change["added"] or change["dropped"])}
         if fit.accepted:
             points[name] = psis_pointwise(directory / "posterior.nc", name)
@@ -697,7 +710,8 @@ def build_study(fits_dir: Path, refits_dir: Path, data_dir: Path, docs_dir: Path
     return {"runs": labels, "comparisons": comparisons, "persistence": persistence,
             "estimands": estimands, "pareto": pareto, "exact": exact_rows,
             "influence": influence, "inventory": inventory,
-            "calibration": {**calibration_doc, "fits": calibrated, "loo": loo}}
+            "calibration": {**calibration_doc, "fits": calibrated, "loo": loo,
+                            "observed": observed}}
 
 
 # ----------------------------------------------------------------------------------
@@ -809,7 +823,9 @@ def summary_lines(study: Mapping[str, Any]) -> list[str]:
         lines.append(f"- **Calibrated prior, {_code(name)}.** Scale {fit['scale']:g} ({met} the "
                      f"criterion); estimand {_interval(fit)} against "
                      f"{_interval(fit['registered'])}; credibly negative set change: "
-                     f"{_change(fit)}. By the registered rule the result is {verdict}.")
+                     f"{_change(fit)}; persistence p {fit['lag1_p']:.3f} against "
+                     f"{fit['lag1_p_registered']:.3f}. By the registered rule the result is "
+                     f"{verdict}.")
     return lines
 
 
@@ -906,10 +922,13 @@ def render(study: Mapping[str, Any], command: str) -> str:
     for name, inf in study["influence"].items():
         reg = inf["registered"]
         lines += [f"**{_code(name)}**, registered {_interval(reg)}:", ""]
-        rows = [[s["cell"], f"{s['median']:+.3f}", f"{s['shift']:+.3f}", _change(s)]
+        rows = [[s["cell"] + ("" if s["accepted"] else " (refit not accepted)"),
+                 f"{s['median']:+.3f}", f"{s['shift']:+.3f}", _change(s)]
                 for s in inf["single"]]
         joint = inf["joint"]
-        rows.append([f"all {joint['cells']} at once", _interval(joint),
+        rows.append([f"all {joint['cells']} at once"
+                     + ("" if joint["accepted"] else " (refit not accepted)"),
+                     _interval(joint),
                      f"{joint['median'] - reg['median']:+.3f}", _change(joint)])
         lines += _table(["Left out", "Median", "Shift", "Credibly negative set"], rows, "lrrl")
         lines += [f"Persistence p-value of the joint fit: {joint['lag1_p']:.3f}. By the "
@@ -923,8 +942,10 @@ def render(study: Mapping[str, Any], command: str) -> str:
               "`primary` (1000 draws, seed 20261018) with one component neutralised at a time; "
               "every variant uses the same prior draws and innovations.", ""]
     lines += _table(["Variant", "Changes beyond 5 pp", "Median largest change (pp)"],
-                    [[k, f"{v['share_above_5pp']:.1%}", f"{v['median_largest_change']:.1f}"]
-                     for k, v in cal["decomposition"].items()])
+                    [*[[k, f"{v['share_above_5pp']:.1%}", f"{v['median_largest_change']:.1f}"]
+                       for k, v in cal["decomposition"].items()],
+                     ["**observed**", f"{cal['observed']['share_above_5pp']:.1%}",
+                      f"{cal['observed']['largest_change']:.1f} (largest)"]])
     lines += ["**(b) The ladder.** A step passes when at most 1% of simulated changes exceed "
               "5 pp; the calibrated scale is the widest step that passes.", ""]
     rows = []
@@ -946,6 +967,14 @@ def render(study: Mapping[str, Any], command: str) -> str:
     lines += _table(["Specification", "Scale", "Accepted", "Registered", "Calibrated",
                      "Credibly negative", "Set change", "Persistence p", "Prior-sensitive"],
                     rows, "lrlrrrlrl")
+    for name, f in cal["fits"].items():
+        if f["rho_f"] is not None:
+            lines += [f"The scale also narrows the prior of the factor's AR(1) coefficient: in "
+                      f"{_code(name)}, rho_f is {f['rho_f_registered'][0]:+.2f} "
+                      f"[{f['rho_f_registered'][1]:+.2f}, {f['rho_f_registered'][2]:+.2f}] "
+                      f"under the registered priors and {f['rho_f'][0]:+.2f} "
+                      f"[{f['rho_f'][1]:+.2f}, {f['rho_f'][2]:+.2f}] under the calibrated "
+                      f"scale.", ""]
     if cal["loo"] is not None:
         loo = cal["loo"]
         lines += [f"PSIS-LOO `ardl_dynamic_factor` against `primary` with both calibrated: "

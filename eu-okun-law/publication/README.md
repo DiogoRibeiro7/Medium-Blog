@@ -192,6 +192,14 @@ poetry run eu-okun bayes-regime-recovery --data-dir snapshots/eurostat-2026-10-1
 poetry run eu-okun bayes-regimes --fits-dir results/bayes --data-dir snapshots/eurostat-2026-10-15 --output-dir docs/bayes-regimes --report docs/BAYES_REGIMES.md --recovery-dir results/bayes-regime-recovery
 ```
 
+Diagnostics of the reported Bayesian results (the first command runs 227 fits; it
+resumes, and `--shard k/n` splits each stage across processes):
+
+```bash
+poetry run eu-okun bayes-diagnostics-fit --data-dir snapshots/eurostat-2026-10-15 --fits-dir results/bayes --output-dir results/bayes-diagnostics
+poetry run eu-okun bayes-diagnostics --fits-dir results/bayes --refits-dir results/bayes-diagnostics --data-dir snapshots/eurostat-2026-10-15 --docs-dir docs --output-dir docs/bayes-diagnostics --report docs/BAYES_DIAGNOSTICS.md
+```
+
 Conditional predictive comparison (the fit is expensive):
 
 ```bash

@@ -147,6 +147,34 @@ def test_decomposition_neutralises_one_component_at_a_time() -> None:
         "median_largest_change"]
 
 
+def test_text_claims_match_the_committed_results() -> None:
+    """What section 5 of the manuscript and the article say about the diagnostics."""
+    if not (COMMITTED / "summary.json").exists():
+        pytest.skip("No committed results.")
+    study = json.loads((COMMITTED / "summary.json").read_text(encoding="utf-8"))
+    by_pair = {(c["a"], c["b"]): c for c in study["comparisons"]}
+    # Both factor models beat the primary model in every run and under exact LOO.
+    for a in ("dynamic_factor", "ardl_dynamic_factor"):
+        c = by_pair[(a, "primary")]
+        assert c["established"] and c["runs"]["local"]["verdict"] == f"{a} better supported"
+    # The amended model against the lagged changes alone is not established.
+    assert not by_pair[("ardl_dynamic_factor", "ardl")]["established"]
+    # The amended model passes the persistence check in every run, not when calibrated.
+    adf = next(p for p in study["persistence"] if p["spec"] == "ardl_dynamic_factor")
+    assert all(v["fixed"] for v in adf["runs"].values() if v is not None)
+    calibrated = study["calibration"]["fits"]["ardl_dynamic_factor"]
+    assert not 0.05 <= calibrated["lag1_p"] <= 0.95
+    # The credibly negative counts do not change between runs.
+    for e in study["estimands"]:
+        assert len(set(e["negative_counts"].values())) == 1
+    # Influential cells and the calibrated prior add countries and remove none.
+    for inf in study["influence"].values():
+        assert not any(r["dropped"] for r in [*inf["single"], inf["joint"]])
+    assert not any(f["dropped"] for f in study["calibration"]["fits"].values())
+    assert all(len(f["added"]) == 1 for f in study["calibration"]["fits"].values())
+    assert all(c["accepted"] for c in study["calibration"]["fits"].values())
+
+
 def test_report_regenerates_from_the_committed_summary() -> None:
     if not (COMMITTED / "summary.json").exists():
         pytest.skip("No committed results.")

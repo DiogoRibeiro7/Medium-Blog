@@ -91,6 +91,17 @@ Pre-registered in [BAYES_PROTOCOL.md](BAYES_PROTOCOL.md); results in
       average or country shift. The drift is better supported than a fixed coefficient by
       PSIS-LOO, but its period contrasts are not credible
       ([docs/BAYES_REGIMES.md](docs/BAYES_REGIMES.md)).
+- [x] Diagnostics of the reported results, after an external assessment
+      ([BAYES_DIAGNOSTICS_PROTOCOL.md](BAYES_DIAGNOSTICS_PROTOCOL.md),
+      [docs/BAYES_DIAGNOSTICS.md](docs/BAYES_DIAGNOSTICS.md)).
+  - Four further seeds and exact leave-one-out for the 171 cells with high Pareto k:
+    8 of the 12 registered PSIS-LOO comparisons are established.
+  - Both factor models beat `primary` in every run. The amended model against `ardl`
+    alone is not established.
+  - Influential cells and a calibrated (halved) prior scale move the mean sums by less
+    than 0.01. They add a few borderline countries to the credibly negative set.
+  - The persistence fix of `ardl_dynamic_factor` is lost under the halved scale, which
+    also narrows the prior of the factor's persistence.
 
 ## Phase 3 — Structural tests
 

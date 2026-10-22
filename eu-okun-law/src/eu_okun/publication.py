@@ -174,6 +174,18 @@ EXPERIMENTS: tuple[dict[str, Any], ...] = (
                   "snapshots/eurostat-2026-10-15 --output-dir docs/bayes-regimes --report "
                   "docs/BAYES_REGIMES.md --recovery-dir results/bayes-regime-recovery"],
      "replication": "Linux replications committed under each docs/bayes*/replication-linux"},
+    {"key": "bayes_diagnostics", "title": "Diagnostics of the reported Bayesian results",
+     "protocol": "BAYES_DIAGNOSTICS_PROTOCOL.md", "registered": "8265ab5 2026-10-22",
+     "report": "docs/BAYES_DIAGNOSTICS.md", "outputs": ["docs/bayes-diagnostics"],
+     "seeds": [20261016, 20261018, 20261030, 20261031, 20261032, 20261033],
+     "commands": ["eu-okun bayes-diagnostics-fit --data-dir snapshots/eurostat-2026-10-15 "
+                  "--fits-dir results/bayes --output-dir results/bayes-diagnostics",
+                  "eu-okun bayes-diagnostics --fits-dir results/bayes --refits-dir "
+                  "results/bayes-diagnostics --data-dir snapshots/eurostat-2026-10-15 "
+                  "--docs-dir docs --output-dir docs/bayes-diagnostics --report "
+                  "docs/BAYES_DIAGNOSTICS.md"],
+     "replication": "four further seeds; the report regenerates from its committed summary "
+                    "in the offline test suite"},
     {"key": "predictive", "title": "Conditional predictive comparison",
      "protocol": "PREDICTIVE_PROTOCOL.md",
      "registered": "109eee5 2026-10-16", "report": "docs/PREDICTIVE_COMPARISON.md",

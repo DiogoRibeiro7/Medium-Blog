@@ -215,6 +215,156 @@
   "raw": 7,
   "source": "docs/asymmetry/sensitivity.csv"
  },
+ "bd_adf_ardl_hi": {
+  "tex": "$2.11$",
+  "md": "2.11",
+  "raw": 2.11429647,
+  "source": "docs/bayes-diagnostics/summary.json"
+ },
+ "bd_adf_ardl_lo": {
+  "tex": "$1.86$",
+  "md": "1.86",
+  "raw": 1.86010536,
+  "source": "docs/bayes-diagnostics/summary.json"
+ },
+ "bd_cal_added": {
+  "tex": "Malta and Slovakia",
+  "md": "Malta and Slovakia",
+  "raw": "Malta and Slovakia",
+  "source": "docs/bayes-diagnostics/summary.json"
+ },
+ "bd_cal_dyn": {
+  "tex": "$-0.175$",
+  "md": "−0.175",
+  "raw": -0.17522245,
+  "source": "docs/bayes-diagnostics/summary.json"
+ },
+ "bd_cal_dyn_p": {
+  "tex": "$0.030$",
+  "md": "0.030",
+  "raw": 0.03,
+  "source": "docs/bayes-diagnostics/summary.json"
+ },
+ "bd_cal_mu": {
+  "tex": "$-0.206$",
+  "md": "−0.206",
+  "raw": -0.20635064,
+  "source": "docs/bayes-diagnostics/summary.json"
+ },
+ "bd_cal_mu_ci": {
+  "tex": "$[-0.264, -0.154]$",
+  "md": "[−0.264, −0.154]",
+  "raw": "[-0.26413439, -0.15408252]",
+  "source": "docs/bayes-diagnostics/summary.json"
+ },
+ "bd_cal_rho": {
+  "tex": "$0.77$",
+  "md": "0.77",
+  "raw": 0.76872049,
+  "source": "docs/bayes-diagnostics/summary.json"
+ },
+ "bd_cal_scale": {
+  "tex": "$0.5$",
+  "md": "0.5",
+  "raw": 0.5,
+  "source": "docs/bayes-diagnostics/summary.json"
+ },
+ "bd_dyn_p_hi": {
+  "tex": "$0.130$",
+  "md": "0.130",
+  "raw": 0.13,
+  "source": "docs/bayes-diagnostics/summary.json"
+ },
+ "bd_dyn_p_lo": {
+  "tex": "$0.080$",
+  "md": "0.080",
+  "raw": 0.08,
+  "source": "docs/bayes-diagnostics/summary.json"
+ },
+ "bd_dyn_reg": {
+  "tex": "$-0.168$",
+  "md": "−0.168",
+  "raw": -0.16844404,
+  "source": "docs/bayes-diagnostics/summary.json"
+ },
+ "bd_exact_cells": {
+  "tex": "171",
+  "md": "171",
+  "raw": 171,
+  "source": "docs/bayes-diagnostics/summary.json"
+ },
+ "bd_inf_added": {
+  "tex": "Luxembourg, Malta and Slovakia",
+  "md": "Luxembourg, Malta and Slovakia",
+  "raw": "Luxembourg, Malta and Slovakia",
+  "source": "docs/bayes-diagnostics/summary.json"
+ },
+ "bd_inf_shift": {
+  "tex": "$0.009$",
+  "md": "0.009",
+  "raw": 0.00916016,
+  "source": "docs/bayes-diagnostics/summary.json"
+ },
+ "bd_loo_est": {
+  "tex": "8",
+  "md": "8",
+  "raw": 8,
+  "source": "docs/bayes-diagnostics/summary.json"
+ },
+ "bd_loo_total": {
+  "tex": "12",
+  "md": "12",
+  "raw": 12,
+  "source": "docs/bayes-diagnostics/summary.json"
+ },
+ "bd_loo_unest": {
+  "tex": "4",
+  "md": "4",
+  "raw": 4,
+  "source": "docs/bayes-diagnostics/summary.json"
+ },
+ "bd_obs_largest": {
+  "tex": "$3.0$",
+  "md": "3.0",
+  "raw": 3.0,
+  "source": "docs/bayes-diagnostics/summary.json"
+ },
+ "bd_prior_largest": {
+  "tex": "$21.7$",
+  "md": "21.7",
+  "raw": 21.70214261,
+  "source": "docs/bayes-diagnostics/summary.json"
+ },
+ "bd_prior_largest_nogdp": {
+  "tex": "$3.2$",
+  "md": "3.2",
+  "raw": 3.23642443,
+  "source": "docs/bayes-diagnostics/summary.json"
+ },
+ "bd_prior_share": {
+  "tex": "$3.9$\\%",
+  "md": "3.9%",
+  "raw": 0.03878559,
+  "source": "docs/bayes-diagnostics/summary.json"
+ },
+ "bd_rho": {
+  "tex": "$0.91$",
+  "md": "0.91",
+  "raw": 0.91050263,
+  "source": "docs/bayes-diagnostics/summary.json"
+ },
+ "bd_run_shift": {
+  "tex": "$0.003$",
+  "md": "0.003",
+  "raw": 0.00256457,
+  "source": "docs/bayes-diagnostics/summary.json"
+ },
+ "bd_runs": {
+  "tex": "6",
+  "md": "6",
+  "raw": 6,
+  "source": "docs/bayes-diagnostics/summary.json"
+ },
  "by_ES": {
   "tex": "$-0.51$",
   "md": "−0.51",

@@ -412,7 +412,7 @@
     "eu-okun bayes-regimes --fits-dir results/bayes --data-dir snapshots/eurostat-2026-10-15 --output-dir docs/bayes-regimes --report docs/BAYES_REGIMES.md --recovery-dir results/bayes-regime-recovery"
    ],
    "replication": "Linux replications committed under each docs/bayes*/replication-linux",
-   "protocol_sha256": "0279e14cb0f423579513ed31203a6d520222292d3e403a85550ae710fe1c2133",
+   "protocol_sha256": "3c544ea2552e561c4789a994d2956012d1b51e394df08ffeca0d97a5b166a36c",
    "report_fingerprint": "9107e8ece4372483baaa1c47e8ec08ca810a068e9cd7b2b4c907218e095d7a22",
    "outputs": [
     {
@@ -638,6 +638,54 @@
     {
      "path": "docs/bayes-regimes/replication-linux/regimes.json",
      "fingerprint": "bf1636281f4bec24e037f693ed600e59f77eb535d8f1a89851c1b22b0681f0ad"
+    }
+   ]
+  },
+  {
+   "key": "bayes_diagnostics",
+   "title": "Diagnostics of the reported Bayesian results",
+   "protocol": "BAYES_DIAGNOSTICS_PROTOCOL.md",
+   "registered": "8265ab5 2026-10-22",
+   "report": "docs/BAYES_DIAGNOSTICS.md",
+   "seeds": [
+    20261016,
+    20261018,
+    20261030,
+    20261031,
+    20261032,
+    20261033
+   ],
+   "commands": [
+    "eu-okun bayes-diagnostics-fit --data-dir snapshots/eurostat-2026-10-15 --fits-dir results/bayes --output-dir results/bayes-diagnostics",
+    "eu-okun bayes-diagnostics --fits-dir results/bayes --refits-dir results/bayes-diagnostics --data-dir snapshots/eurostat-2026-10-15 --docs-dir docs --output-dir docs/bayes-diagnostics --report docs/BAYES_DIAGNOSTICS.md"
+   ],
+   "replication": "four further seeds; the report regenerates from its committed summary in the offline test suite",
+   "protocol_sha256": "3540b1cc7b6512ab575aa73db3090c56fe517da76b6e64ae99320371c5f6b52d",
+   "report_fingerprint": "119b866daadb57ed0101b2402d29040fb38c6cfa5453f629991ed79253cd9544",
+   "outputs": [
+    {
+     "path": "docs/bayes-diagnostics/comparisons.csv",
+     "fingerprint": "3e988647260f6d4c12c90fd3e0b6b10e78695b2ca3a2c56c55a1d1c070b9ae80"
+    },
+    {
+     "path": "docs/bayes-diagnostics/exact_loo.csv",
+     "fingerprint": "6d9bab88a358d1836e68700c93c610889b194aa687264e519fbf5e0d682f5638"
+    },
+    {
+     "path": "docs/bayes-diagnostics/influence.csv",
+     "fingerprint": "03519e963854fd184d98da6de87704e51c1354f42db9f2b42550ccb28a01c809"
+    },
+    {
+     "path": "docs/bayes-diagnostics/prior_calibration.csv",
+     "fingerprint": "1109aa4d19eeb1949976586224e1be9c38fb97875683dd64f8befb7a123c2307"
+    },
+    {
+     "path": "docs/bayes-diagnostics/stability.csv",
+     "fingerprint": "8781295bfb72873054609235c5ac3475028a82bd689eacf4cd22eb43ac7cfb8d"
+    },
+    {
+     "path": "docs/bayes-diagnostics/summary.json",
+     "fingerprint": "426350175d2b0cdf82748fd28a5b037d6ad3429ee260304fb789bb3bd5785771"
     }
    ]
   },

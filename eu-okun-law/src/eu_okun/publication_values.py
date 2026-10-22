@@ -687,6 +687,54 @@ def collect_values(root: Path) -> dict[str, Value]:
     add(num("ms_vint_max_change", ms["max_sum_change"]["vintage"], 3, src))
     add(text("ms_gdp_release", ms["releases"]["new"]["gdp"].split()[1], src))
 
+    # Diagnostics of the reported Bayesian results (BAYES_DIAGNOSTICS_PROTOCOL.md) --------
+    bd = json.loads((docs / "bayes-diagnostics" / "summary.json").read_text(encoding="utf-8"))
+    src = "docs/bayes-diagnostics/summary.json"
+    bd_comparisons = bd["comparisons"]
+    add(text("bd_runs", len(bd["runs"]), src))
+    add(text("bd_loo_total", len(bd_comparisons), src))
+    add(text("bd_loo_est", sum(c["established"] for c in bd_comparisons), src))
+    add(text("bd_loo_unest", sum(not c["established"] for c in bd_comparisons), src))
+    add(text("bd_exact_cells", len(bd["exact"]), src))
+    bd_adf_ardl = next(c for c in bd_comparisons
+                       if (c["a"], c["b"]) == ("ardl_dynamic_factor", "ardl"))
+    add(num("bd_adf_ardl_lo", bd_adf_ardl["ratio_min"], 2, src))
+    add(num("bd_adf_ardl_hi", bd_adf_ardl["ratio_max"], 2, src))
+    bd_adf_p = [v["p"] for p in bd["persistence"] if p["spec"] == "ardl_dynamic_factor"
+                for v in p["runs"].values() if v is not None]
+    add(num("bd_dyn_p_lo", min(bd_adf_p), 3, src))
+    add(num("bd_dyn_p_hi", max(bd_adf_p), 3, src))
+    add(num("bd_run_shift", max(max(e["medians"].values()) - min(e["medians"].values())
+                                for e in bd["estimands"]), 3, src))
+    bd_influence = bd["influence"].values()
+    add(num("bd_inf_shift", max(max(i["max_shift"], abs(i["joint"]["median"]
+                                                         - i["registered"]["median"]))
+                                for i in bd_influence), 3, src))
+    bd_added = sorted({g for i in bd_influence for r in [*i["single"], i["joint"]]
+                       for g in r["added"]})
+    add(text("bd_inf_added", _names([COUNTRY_NAMES[g] for g in bd_added]), src))
+    bd_cal = bd["calibration"]
+    bd_decomposition = bd_cal["decomposition"]
+    add(pct("bd_prior_share", bd_decomposition["registered prior"]["share_above_5pp"], 1, src))
+    add(num("bd_prior_largest", bd_decomposition["registered prior"][
+        "median_largest_change"], 1, src))
+    add(num("bd_prior_largest_nogdp", bd_decomposition["GDP terms set to zero"][
+        "median_largest_change"], 1, src))
+    add(num("bd_obs_largest", bd_cal["observed"]["largest_change"], 1, src))
+    bd_fits = bd_cal["fits"]
+    add(num("bd_cal_scale", bd_fits["primary"]["scale"], 1, src))
+    add(num("bd_cal_mu", bd_fits["primary"]["median"], 3, src, True))
+    add(interval("bd_cal_mu_ci", bd_fits["primary"]["low"], bd_fits["primary"]["high"], 3,
+                 src))
+    add(num("bd_cal_dyn", bd_fits["ardl_dynamic_factor"]["median"], 3, src, True))
+    add(num("bd_dyn_reg", bd_fits["ardl_dynamic_factor"]["registered"]["median"], 3, src,
+            True))
+    bd_cal_added_set = sorted({g for f in bd_fits.values() for g in f["added"]})
+    add(text("bd_cal_added", _names([COUNTRY_NAMES[g] for g in bd_cal_added_set]), src))
+    add(num("bd_rho", bd_fits["ardl_dynamic_factor"]["rho_f_registered"][0], 2, src))
+    add(num("bd_cal_rho", bd_fits["ardl_dynamic_factor"]["rho_f"][0], 2, src))
+    add(num("bd_cal_dyn_p", bd_fits["ardl_dynamic_factor"]["lag1_p"], 3, src))
+
     # The EU as a whole: a labour-force-weighted aggregate (AGGREGATE_PROTOCOL.md) -------
     agg = json.loads((docs / "aggregate" / "summary.json").read_text(encoding="utf-8"))
     src = "docs/aggregate/summary.json"
