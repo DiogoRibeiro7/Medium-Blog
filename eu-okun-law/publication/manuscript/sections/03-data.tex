@@ -55,9 +55,19 @@ Eurostat back-casts the headline series from 2009, but:
   \item the Netherlands phased the new survey in during 2021 without a flag;
   \item detailed survey series carry breaks, for example at 2014-Q1 and 2021-Q1.
 \end{itemize}
-Eurostat's quality flags are stored with every observation. The Bayesian models mask
-likelihood terms that rely on a flagged value. The classical review uses a
-flag-screened sample as a sensitivity analysis.
+Eurostat's quality flags are stored with every observation, and the study uses one rule
+for them (\texttt{MEASUREMENT\_PROTOCOL.md}):
+\begin{itemize}
+  \item a labour-force break flag invalidates the change into the break quarter;
+  \item a low-reliability or definition-differs flag invalidates every change that touches
+    the flagged quarter, which removes every post-2021 change for Spain and France;
+  \item a GDP break flag on any regressor invalidates the row.
+\end{itemize}
+The Bayesian models always apply the rule. The registered classical headline does not,
+because its sample was fixed before the rule was written. It is reported under the rule as
+a registered sensitivity (section~\ref{sec:classical}). The Dutch phase-in carries no
+flag, but every headline row whose window touches 2020--2021 is excluded, so it enters
+none of them.
 
 \paragraph{Monthly unemployment.} Eurostat's monthly unemployment rate is a direct
 monthly survey estimate in only \val{mo_n_direct} countries. Elsewhere it is a trend, a three-month
@@ -75,4 +85,10 @@ report samples with and without it and make the choice explicit in each protocol
 \paragraph{Revisions and timing.} Every series is a revised vintage. Eurostat's vintage
 datasets cover GDP only for the EU and euro-area aggregates, and monthly unemployment only
 from 2021, so the forecasts in section~\ref{sec:prediction} are retrospective
-(pseudo-out-of-sample), not real-time.
+(pseudo-out-of-sample), not real-time. No historical vintage of the country series is
+published, so the only release to compare with is the latest. A registered check
+downloaded it after the freeze. The labour-force series had not been revised. GDP had
+been revised in \val{ms_gdp_revised} of \val{ms_gdp_cells} cells, in
+\val{ms_gdp_countries} countries, by at most \val{ms_gdp_max} pp. On that release no
+country sum moves by more than \val{ms_vint_max_change}, and no count or country
+classification of the headline inference changes.

@@ -60,6 +60,8 @@ WORD_CLAIMS = [
     ("none is decided in the main version", "cs_n_epl_decided_primary", 0),
     ("and in none is either test decided", "as_sens_decided", 0),
     ("no setting decides it", "as_sens_decided", 0),
+    ("Halving every prior scale", "bd_cal_scale", 0.5),
+    ("with every prior scale halved", "bd_cal_scale", 0.5),
 ]
 
 

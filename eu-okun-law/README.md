@@ -422,6 +422,61 @@ In brief:
   medians within 0.003 and the recovery. `regime_shift_final_gdp` failed acceptance there
   too. The tables are in `docs/bayes-regimes/replication-linux/`.
 
+### Diagnostics of the reported results
+
+[BAYES_DIAGNOSTICS_PROTOCOL.md](BAYES_DIAGNOSTICS_PROTOCOL.md) was committed and pushed
+before any of its fits, after an external assessment. It checks the reported Bayesian
+results in four ways, alongside them:
+
+- **Run-to-run stability.** The 13 fits in the 12 registered PSIS-LOO comparisons are
+  repeated with four further seeds.
+- **Reliability of PSIS-LOO.** Each cell with Pareto k > 0.7 in any run is scored by an
+  exact leave-one-out refit.
+- **Influential observations.** The same cells are left out one at a time and all at
+  once.
+- **Prior calibration.** A fixed ladder of prior scales is checked against the prior
+  predictive.
+
+```bash
+poetry run eu-okun bayes-diagnostics-fit --data-dir snapshots/eurostat-2026-10-15 --fits-dir results/bayes --output-dir results/bayes-diagnostics
+poetry run eu-okun bayes-diagnostics --fits-dir results/bayes --refits-dir results/bayes-diagnostics --data-dir snapshots/eurostat-2026-10-15 --docs-dir docs --output-dir docs/bayes-diagnostics --report docs/BAYES_DIAGNOSTICS.md
+```
+
+Results are in [docs/BAYES_DIAGNOSTICS.md](docs/BAYES_DIAGNOSTICS.md):
+
+- **Model comparisons.** 8 of the 12 keep their verdict in all six runs and under exact
+  leave-one-out (171 cells refitted). Both factor models beat `primary` in every run.
+  Four are not established:
+  - `ardl_dynamic_factor` against `ardl`: run-dependent, 1.86 to 2.11 SE;
+  - `ardl` against `primary`: exact leave-one-out moves it over the threshold;
+  - `regime_shift` against `pandemic_excluded`: run-dependent;
+  - `drifting_association` against `regime_shift`: run-dependent, and not distinguishable
+    under exact leave-one-out.
+- **Reliability label.** The registered label (more than 1% of cells with k > 0.7)
+  marks the four comparisons with `primary` unreliable in the Linux run, and one of them
+  also in one seed run. The earlier reports did not compare this label between runs.
+- **Estimands.** `mu_theta` in `primary` and the mean long-run sum in
+  `ardl_dynamic_factor` move by at most 0.003 between runs. The credibly negative counts
+  (24 and 25) do not change.
+- **Persistence.**
+  - `ardl_dynamic_factor` passes the check in every run (p from 0.080 to 0.130).
+  - `dynamic_factor` passes it only on Linux.
+- **Influence.**
+  - No left-out cell, or set of cells, moves either mean sum by more than 0.009.
+  - Leaving cells out adds Luxembourg, Malta or Slovakia to the credibly negative set in
+    some refits, and removes no country. These classifications sit at the 0.95
+    threshold.
+- **Priors.**
+  - The implausible prior mass comes mostly from the GDP coefficients acting on large
+    GDP swings. With those terms at zero, the median largest simulated change falls from
+    21.7 pp to 3.2 pp (3.0 observed).
+  - The ladder picks half the registered scales. `mu_theta` moves to -0.206, the mean
+    long-run sum to -0.175, and Malta (`primary`) and Slovakia (`ardl_dynamic_factor`)
+    become credibly negative.
+  - The half scale also narrows the prior of the factor's AR(1) coefficient (median
+    0.91 to 0.77). `ardl_dynamic_factor` then no longer passes the persistence check
+    (p = 0.030).
+
 ## Predictive comparison
 
 Pre-registered in [PREDICTIVE_PROTOCOL.md](PREDICTIVE_PROTOCOL.md) before any held-out
@@ -810,6 +865,38 @@ Results are in [docs/SMOOTHING.md](docs/SMOOTHING.md):
   - In the ARDL models it produces the negative lagged-change coefficient (-0.43), which
     shrinks the long-run sum. Luxembourg's "weak" result on the long-run sum is therefore
     an artefact.
+
+## Definition breaks and data vintages
+
+[MEASUREMENT_PROTOCOL.md](MEASUREMENT_PROTOCOL.md) was committed and pushed before the
+new release was downloaded or any estimate was computed.
+
+- **The rule.** It documents the study's single definition-break rule
+  (`review.flagged_change`) and where each analysis applies it.
+- **Sensitivity A.** The registered headline inference is repeated, with its seeds, on
+  the rows the rule keeps.
+- **Sensitivity B.** The same inference is run on Eurostat's latest release.
+
+```bash
+poetry run eu-okun fetch --start-quarter 2008-Q1 --end-quarter 2026-Q2 --output-dir snapshots/eurostat-2026-10-22   # needs internet
+poetry run eu-okun measurement --frozen snapshots/eurostat-2026-10-15 --new snapshots/eurostat-2026-10-22 --grid docs/review/grid.csv --output-dir docs/measurement --report docs/MEASUREMENT.md
+```
+
+Results are in [docs/MEASUREMENT.md](docs/MEASUREMENT.md):
+
+- **Under the rule** (all post-2021 changes for ES and FR dropped, and a few break
+  quarters elsewhere):
+  - 17 sums are negative under both bootstraps, against 20;
+  - 2 remain after Holm, against 1;
+  - 16 remain under Benjamini-Hochberg, against 19;
+  - Bulgaria, Germany and Poland lose significance under one scheme;
+  - Spain moves from -0.79 to -0.93, and France from -0.30 to -0.41.
+- **Latest release.**
+  - The labour-force series are byte-identical (no release since 2026-09-10).
+  - GDP is revised in 134 of 1998 cells, in 6 countries, by at most 0.80 pp.
+  - No count or country classification changes, and no sum moves by more than 0.042.
+  - Eurostat publishes no historical vintages of these country series, so this bounds
+    only the revisions since the freeze.
 
 ## The EU as a whole: a labour-force-weighted aggregate
 

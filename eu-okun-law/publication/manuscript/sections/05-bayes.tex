@@ -27,8 +27,12 @@ to $\alpha_i$, $b_{ik}$, $\phi_i$ (on the $\tanh$ scale) and $\log\sigma_i$.
 zero, so the prior does not assume Okun's law. The other priors are
 $\tau_\theta\sim N^+(0,0.25^2)$, $\lambda_i\sim N^+(0,0.2^2)$ and
 $\nu\sim\mathrm{Gamma}(2,0.1)$. Prior predictive checks show that these weakly informative
-priors put visible mass on implausibly large quarterly changes. This is reported rather
-than tuned.
+priors put visible mass on implausibly large quarterly changes: \val{bd_prior_share} of
+simulated changes exceed 5 pp, and the median largest simulated change is
+\val{bd_prior_largest} pp, against \val{bd_obs_largest} pp in the data. Most of that mass
+comes from the GDP coefficients acting on large GDP swings: with those terms set to zero,
+the median largest change is \val{bd_prior_largest_nogdp} pp. The priors are reported
+rather than tuned; a calibrated alternative is a diagnostic below.
 
 \paragraph{Estimands.} $\mu_\theta$ is the mean of the population distribution of country
 sums: an unweighted cross-country average. It is not an EU aggregate and not a pooled
@@ -70,7 +74,8 @@ between-country standard deviation is $\tau_\theta=$ \val{by_tau} (\val{by_tau_c
 The primary model fails one predictive check (below), so this is one point in a range
 rather than the answer: across accepted specifications the posterior median of
 $\mu_\theta$ runs from \val{by_mu_lo} (Gaussian i.i.d.\ errors) to \val{by_mu_hi}. The
-amended model that passes the persistence check and is preferred by PSIS-LOO gives
+amended model that passes the persistence check and is preferred to the primary model by
+PSIS-LOO gives
 \val{dyn_mu} \val{dyn_mu_ci} for the mean long-run sum. In every factor specification the
 estimand is the association beyond the common European cycle: the fitted factor
 correlates \val{by_factor_corr} with mean GDP growth.
@@ -113,12 +118,42 @@ Without those six countries, the observed mean autocorrelation rises from
 
 \paragraph{Amendments.} A registered amendment added an AR(1) common factor and lagged
 unemployment changes. Their combination removes the persistence misfit (posterior
-predictive $p=$ \val{dyn_p}) and is preferred by PSIS-LOO. Its factor remains correlated
-with average GDP growth (\val{dyn_factor_corr}). A second amendment allowed the coefficient
-sums to shift after 2021: the average shift is \val{reg_delta} (\val{reg_delta_ci}), with no
-credible change in any evaluable country. The country shifts are pooled strongly
-($\tau_\delta\approx$ \val{reg_tau}), so this mostly reflects low power to detect
-country-specific shifts.
+predictive $p=$ \val{dyn_p}) and is preferred to the primary model by PSIS-LOO. That it
+also improves on the lagged changes alone is not established (below). Its factor remains
+correlated with average GDP growth (\val{dyn_factor_corr}). A second amendment allowed the
+coefficient sums to shift after 2021: the average shift is \val{reg_delta}
+(\val{reg_delta_ci}), with no credible change in any evaluable country. The country shifts
+are pooled strongly ($\tau_\delta\approx$ \val{reg_tau}), so this mostly reflects low power
+to detect country-specific shifts.
+
+\paragraph{Diagnostics.} A further protocol, registered after these results, checked them
+in four ways. Its results sit alongside the registered ones and replace none of them.
+\begin{itemize}
+  \item \emph{Repeated runs.} Every fit in a registered model comparison was repeated with
+    four further seeds, giving \val{bd_runs} runs with the local and Linux ones. The
+    medians of the two mean sums above move by at most \val{bd_run_shift} between runs,
+    and the credibly negative counts do not change. The amended model passes the
+    persistence check in every run ($p$ from \val{bd_dyn_p_lo} to \val{bd_dyn_p_hi}).
+  \item \emph{PSIS-LOO reliability.} The \val{bd_exact_cells} cells with Pareto
+    $\hat k>0.7$ in any run were scored by exact leave-one-out refits.
+    \val{bd_loo_est} of the \val{bd_loo_total} registered comparisons keep their verdict
+    in every run and under exact leave-one-out, including the advantage of both factor
+    models over the primary model. Whether the amended model improves on the lagged
+    changes alone is not established: the elpd difference is \val{bd_adf_ardl_lo} to
+    \val{bd_adf_ardl_hi} standard errors across runs, against a threshold of two.
+  \item \emph{Influential cells.} Leaving out those cells, one at a time or all at once,
+    moves neither mean sum by more than \val{bd_inf_shift}. It does make
+    \val{bd_inf_added} credibly negative in some refits, and removes no country. These
+    classifications sit at the 0.95 threshold.
+  \item \emph{Prior calibration.} Halving every prior scale is the widest step of a fixed
+    ladder at which at most 1\% of simulated changes exceed 5 pp. It gives
+    $\mu_\theta=$ \val{bd_cal_mu} \val{bd_cal_mu_ci}, against \val{by_mu}, and a mean
+    long-run sum of \val{bd_cal_dyn}, against \val{bd_dyn_reg}. It adds one country to
+    each model's credibly negative set (\val{bd_cal_added}) and removes none. It also
+    narrows the prior of the factor's AR(1) coefficient, whose median falls from
+    \val{bd_rho} to \val{bd_cal_rho}; the amended model then no longer passes the
+    persistence check ($p=$ \val{bd_cal_dyn_p}).
+\end{itemize}
 
 \begin{figure}[t]\centering
 \includegraphics[width=0.78\textwidth]{fig1_countries.pdf}

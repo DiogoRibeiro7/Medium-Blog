@@ -111,8 +111,13 @@ registered checks:
 \begin{itemize}
   \item All data are revised vintages, so the forecasts are retrospective.
   \item The Labour Force Survey's 2021 redesign introduces flagged and unflagged
-    discontinuities. The Bayesian models mask the flagged observations, but the Dutch
-    phase-in is not flagged.
+    discontinuities. One rule handles the flagged ones. The Bayesian models always apply
+    it. The classical headline applies it only as a registered sensitivity, which changes
+    some counts (section~\ref{sec:classical}). The Dutch phase-in carries no flag, and it
+    affects only analyses that use 2021.
+  \item Eurostat publishes no historical vintages of the country series. The check
+    against the latest release covers only the revisions since the freeze. Those changed
+    no count.
   \item Monthly unemployment is a direct estimate in only \val{mo_n_direct} countries;
     elsewhere it is a trend, a moving average or benchmarked to annual averages. Eurostat
     benchmarks the monthly series to the quarterly survey figures, not the reverse
@@ -161,7 +166,12 @@ registered checks:
   \item The primary Bayesian model understates the persistence of unemployment changes.
     The amendment that removes this misfit has a common factor correlated with average
     GDP growth (\val{dyn_factor_corr}), so its country sums measure the association beyond
-    part of the common GDP cycle.
+    part of the common GDP cycle. Its fix holds in every run but not under a narrower
+    prior on the factor's persistence.
+  \item \val{bd_loo_unest} of the \val{bd_loo_total} registered Bayesian model comparisons
+    are not established: their verdict differs between runs or under exact
+    leave-one-out. The credibly negative status of a few countries near the 0.95
+    threshold depends on influential cells and on the prior scale.
   \item The post-2021 sample has about seventeen quarters, too short to test a change in
     the association with useful power.
   \item The employment-protection correlations use at most \val{cs_epl_max_n} countries

@@ -1,0 +1,71 @@
+{
+  "countries": [
+    "AT",
+    "BE",
+    "BG",
+    "CY",
+    "CZ",
+    "DE",
+    "DK",
+    "EE",
+    "EL",
+    "ES",
+    "FI",
+    "FR",
+    "HR",
+    "HU",
+    "IE",
+    "IT",
+    "LT",
+    "LU",
+    "LV",
+    "MT",
+    "NL",
+    "PL",
+    "PT",
+    "RO",
+    "SE",
+    "SI",
+    "SK"
+  ],
+  "country_quarter_rows": 1998,
+  "downloaded_at_utc": "2026-10-22T08:39:42.490043+00:00",
+  "missing_cells": {
+    "gdp": 0,
+    "participation": 100,
+    "unemployment": 100
+  },
+  "note": "Observations can be revised; flagged and missing values are not imputed.",
+  "period": {
+    "analysis_start": "2009-Q1",
+    "end": "2026-Q2",
+    "start": "2008-Q1"
+  },
+  "series": {
+    "gdp": {
+      "dataset": "namq_10_gdp",
+      "flagged_cells": 96,
+      "nonmissing_cells": 1998,
+      "sha256": "f5a386554ce80c00b92a6c60cd5c20d46fe1d2065022d076b17c93dc962a5615",
+      "updated": "2026-10-20T23:00:00+0200",
+      "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/namq_10_gdp?lang=EN&freq=Q&unit=CLV_PCH_PRE&s_adj=SCA&na_item=B1GQ&sinceTimePeriod=2008-Q1&untilTimePeriod=2026-Q2"
+    },
+    "participation": {
+      "dataset": "lfsi_emp_q",
+      "flagged_cells": 66,
+      "nonmissing_cells": 1898,
+      "sha256": "b6dccbcd94215b3473bdd66c39c726b5495d14114f2a621282e83b6a7abb9c8f",
+      "updated": "2026-09-10T23:00:00+0200",
+      "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/lfsi_emp_q?lang=EN&freq=Q&indic_em=ACT&age=Y15-74&sex=T&unit=PC_POP&s_adj=SA&sinceTimePeriod=2008-Q1&untilTimePeriod=2026-Q2"
+    },
+    "unemployment": {
+      "dataset": "une_rt_q",
+      "flagged_cells": 66,
+      "nonmissing_cells": 1898,
+      "sha256": "78bde702827a54c6c2760e8d3dae8ce8b3db9995084cf5a39610f7da19bd18c5",
+      "updated": "2026-09-10T23:00:00+0200",
+      "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/une_rt_q?lang=EN&freq=Q&age=Y15-74&sex=T&unit=PC_ACT&s_adj=SA&sinceTimePeriod=2008-Q1&untilTimePeriod=2026-Q2"
+    }
+  },
+  "source": "Eurostat Statistics API (JSON-stat 2.0)"
+}

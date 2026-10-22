@@ -215,6 +215,156 @@
   "raw": 7,
   "source": "docs/asymmetry/sensitivity.csv"
  },
+ "bd_adf_ardl_hi": {
+  "tex": "$2.11$",
+  "md": "2.11",
+  "raw": 2.11429647,
+  "source": "docs/bayes-diagnostics/summary.json"
+ },
+ "bd_adf_ardl_lo": {
+  "tex": "$1.86$",
+  "md": "1.86",
+  "raw": 1.86010536,
+  "source": "docs/bayes-diagnostics/summary.json"
+ },
+ "bd_cal_added": {
+  "tex": "Malta and Slovakia",
+  "md": "Malta and Slovakia",
+  "raw": "Malta and Slovakia",
+  "source": "docs/bayes-diagnostics/summary.json"
+ },
+ "bd_cal_dyn": {
+  "tex": "$-0.175$",
+  "md": "−0.175",
+  "raw": -0.17522245,
+  "source": "docs/bayes-diagnostics/summary.json"
+ },
+ "bd_cal_dyn_p": {
+  "tex": "$0.030$",
+  "md": "0.030",
+  "raw": 0.03,
+  "source": "docs/bayes-diagnostics/summary.json"
+ },
+ "bd_cal_mu": {
+  "tex": "$-0.206$",
+  "md": "−0.206",
+  "raw": -0.20635064,
+  "source": "docs/bayes-diagnostics/summary.json"
+ },
+ "bd_cal_mu_ci": {
+  "tex": "$[-0.264, -0.154]$",
+  "md": "[−0.264, −0.154]",
+  "raw": "[-0.26413439, -0.15408252]",
+  "source": "docs/bayes-diagnostics/summary.json"
+ },
+ "bd_cal_rho": {
+  "tex": "$0.77$",
+  "md": "0.77",
+  "raw": 0.76872049,
+  "source": "docs/bayes-diagnostics/summary.json"
+ },
+ "bd_cal_scale": {
+  "tex": "$0.5$",
+  "md": "0.5",
+  "raw": 0.5,
+  "source": "docs/bayes-diagnostics/summary.json"
+ },
+ "bd_dyn_p_hi": {
+  "tex": "$0.130$",
+  "md": "0.130",
+  "raw": 0.13,
+  "source": "docs/bayes-diagnostics/summary.json"
+ },
+ "bd_dyn_p_lo": {
+  "tex": "$0.080$",
+  "md": "0.080",
+  "raw": 0.08,
+  "source": "docs/bayes-diagnostics/summary.json"
+ },
+ "bd_dyn_reg": {
+  "tex": "$-0.168$",
+  "md": "−0.168",
+  "raw": -0.16844404,
+  "source": "docs/bayes-diagnostics/summary.json"
+ },
+ "bd_exact_cells": {
+  "tex": "171",
+  "md": "171",
+  "raw": 171,
+  "source": "docs/bayes-diagnostics/summary.json"
+ },
+ "bd_inf_added": {
+  "tex": "Luxembourg, Malta and Slovakia",
+  "md": "Luxembourg, Malta and Slovakia",
+  "raw": "Luxembourg, Malta and Slovakia",
+  "source": "docs/bayes-diagnostics/summary.json"
+ },
+ "bd_inf_shift": {
+  "tex": "$0.009$",
+  "md": "0.009",
+  "raw": 0.00916016,
+  "source": "docs/bayes-diagnostics/summary.json"
+ },
+ "bd_loo_est": {
+  "tex": "8",
+  "md": "8",
+  "raw": 8,
+  "source": "docs/bayes-diagnostics/summary.json"
+ },
+ "bd_loo_total": {
+  "tex": "12",
+  "md": "12",
+  "raw": 12,
+  "source": "docs/bayes-diagnostics/summary.json"
+ },
+ "bd_loo_unest": {
+  "tex": "4",
+  "md": "4",
+  "raw": 4,
+  "source": "docs/bayes-diagnostics/summary.json"
+ },
+ "bd_obs_largest": {
+  "tex": "$3.0$",
+  "md": "3.0",
+  "raw": 3.0,
+  "source": "docs/bayes-diagnostics/summary.json"
+ },
+ "bd_prior_largest": {
+  "tex": "$21.7$",
+  "md": "21.7",
+  "raw": 21.70214261,
+  "source": "docs/bayes-diagnostics/summary.json"
+ },
+ "bd_prior_largest_nogdp": {
+  "tex": "$3.2$",
+  "md": "3.2",
+  "raw": 3.23642443,
+  "source": "docs/bayes-diagnostics/summary.json"
+ },
+ "bd_prior_share": {
+  "tex": "$3.9$\\%",
+  "md": "3.9%",
+  "raw": 0.03878559,
+  "source": "docs/bayes-diagnostics/summary.json"
+ },
+ "bd_rho": {
+  "tex": "$0.91$",
+  "md": "0.91",
+  "raw": 0.91050263,
+  "source": "docs/bayes-diagnostics/summary.json"
+ },
+ "bd_run_shift": {
+  "tex": "$0.003$",
+  "md": "0.003",
+  "raw": 0.00256457,
+  "source": "docs/bayes-diagnostics/summary.json"
+ },
+ "bd_runs": {
+  "tex": "6",
+  "md": "6",
+  "raw": 6,
+  "source": "docs/bayes-diagnostics/summary.json"
+ },
  "by_ES": {
   "tex": "$-0.51$",
   "md": "−0.51",
@@ -2045,6 +2195,12 @@
   "raw": "4a6a6d1c82af1e3cd3c2740246f8ff23198c9fd898bb859f15bc16c129e07a4e",
   "source": "snapshots/heterogeneity-2026-10-18/manifest.json"
  },
+ "hash_latest": {
+  "tex": "\\texttt{58feb8e65a3aee37}",
+  "md": "`58feb8e65a3aee37`",
+  "raw": "58feb8e65a3aee374fee55af9c3eaa421f0e3a4781004cb0b014659b4c2f6244",
+  "source": "snapshots/eurostat-2026-10-22/snapshot_manifest.json"
+ },
  "hash_monthly": {
   "tex": "\\texttt{ec2e65b6cbe8831f}",
   "md": "`ec2e65b6cbe8831f`",
@@ -2512,6 +2668,138 @@
   "md": "4",
   "raw": 4,
   "source": "docs/monthly-identification/ratio_sets.csv"
+ },
+ "ms_ES_head": {
+  "tex": "$-0.79$",
+  "md": "−0.79",
+  "raw": -0.79442752,
+  "source": "docs/measurement/summary.json"
+ },
+ "ms_ES_rule": {
+  "tex": "$-0.93$",
+  "md": "−0.93",
+  "raw": -0.93442809,
+  "source": "docs/measurement/summary.json"
+ },
+ "ms_FR_head": {
+  "tex": "$-0.30$",
+  "md": "−0.30",
+  "raw": -0.30245723,
+  "source": "docs/measurement/summary.json"
+ },
+ "ms_FR_rule": {
+  "tex": "$-0.41$",
+  "md": "−0.41",
+  "raw": -0.40771887,
+  "source": "docs/measurement/summary.json"
+ },
+ "ms_gdp_cells": {
+  "tex": "1998",
+  "md": "1998",
+  "raw": 1998,
+  "source": "docs/measurement/summary.json"
+ },
+ "ms_gdp_countries": {
+  "tex": "6",
+  "md": "6",
+  "raw": 6,
+  "source": "docs/measurement/summary.json"
+ },
+ "ms_gdp_max": {
+  "tex": "$0.80$",
+  "md": "0.80",
+  "raw": 0.8,
+  "source": "docs/measurement/summary.json"
+ },
+ "ms_gdp_release": {
+  "tex": "2026-10-20",
+  "md": "2026-10-20",
+  "raw": "2026-10-20",
+  "source": "docs/measurement/summary.json"
+ },
+ "ms_gdp_revised": {
+  "tex": "134",
+  "md": "134",
+  "raw": 134,
+  "source": "docs/measurement/summary.json"
+ },
+ "ms_lfs_revised": {
+  "tex": "0",
+  "md": "0",
+  "raw": 0,
+  "source": "docs/measurement/summary.json"
+ },
+ "ms_rule_bootstrap": {
+  "tex": "17",
+  "md": "17",
+  "raw": 17,
+  "source": "docs/measurement/summary.json"
+ },
+ "ms_rule_bootstrap_bh": {
+  "tex": "16",
+  "md": "16",
+  "raw": 16,
+  "source": "docs/measurement/summary.json"
+ },
+ "ms_rule_bootstrap_holm": {
+  "tex": "2",
+  "md": "2",
+  "raw": 2,
+  "source": "docs/measurement/summary.json"
+ },
+ "ms_rule_holm_changed": {
+  "tex": "Spain",
+  "md": "Spain",
+  "raw": "Spain",
+  "source": "docs/measurement/summary.json"
+ },
+ "ms_rule_lost": {
+  "tex": "Bulgaria, Germany and Poland",
+  "md": "Bulgaria, Germany and Poland",
+  "raw": "Bulgaria, Germany and Poland",
+  "source": "docs/measurement/summary.json"
+ },
+ "ms_rule_normal": {
+  "tex": "23",
+  "md": "23",
+  "raw": 23,
+  "source": "docs/measurement/summary.json"
+ },
+ "ms_vint_bootstrap": {
+  "tex": "20",
+  "md": "20",
+  "raw": 20,
+  "source": "docs/measurement/summary.json"
+ },
+ "ms_vint_bootstrap_bh": {
+  "tex": "19",
+  "md": "19",
+  "raw": 19,
+  "source": "docs/measurement/summary.json"
+ },
+ "ms_vint_bootstrap_holm": {
+  "tex": "1",
+  "md": "1",
+  "raw": 1,
+  "source": "docs/measurement/summary.json"
+ },
+ "ms_vint_changed": {
+  "tex": "0",
+  "md": "0",
+  "raw": 0,
+  "source": "docs/measurement/summary.json"
+ },
+ "ms_vint_max_change": {
+  "tex": "$0.042$",
+  "md": "0.042",
+  "raw": 0.04197303,
+  "source": "docs/measurement/summary.json"
+ },
+ "ms_vint_normal": {
+  "tex": "22",
+  "md": "22",
+  "raw": 22,
+  "source": "docs/measurement/summary.json"
  },
  "n_countries": {
   "tex": "27",

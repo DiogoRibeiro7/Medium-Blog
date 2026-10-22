@@ -136,6 +136,14 @@ Okun's law in hours, for every country, with and without the pandemic:
 poetry run eu-okun hours --data-dir snapshots/eurostat-2026-10-15 --snapshot snapshots/heterogeneity-2026-10-18 --case-study docs/heterogeneity/elasticities.csv --output-dir docs/hours --report docs/HOURS.md
 ```
 
+Definition breaks and data vintages (the first command needs internet; the release is
+already frozen):
+
+```bash
+poetry run eu-okun fetch --start-quarter 2008-Q1 --end-quarter 2026-Q2 --output-dir snapshots/eurostat-2026-10-22
+poetry run eu-okun measurement --frozen snapshots/eurostat-2026-10-15 --new snapshots/eurostat-2026-10-22 --grid docs/review/grid.csv --output-dir docs/measurement --report docs/MEASUREMENT.md
+```
+
 The EU as a whole: a labour-force-weighted aggregate (the first command needs internet;
 the snapshot is already frozen):
 
@@ -182,6 +190,14 @@ poetry run eu-okun bayes-robustness --fits-dir results/bayes --output-dir docs/b
 poetry run eu-okun bayes-dynamics --fits-dir results/bayes --data-dir snapshots/eurostat-2026-10-15 --output-dir docs/bayes-dynamics --report docs/BAYES_DYNAMICS.md
 poetry run eu-okun bayes-regime-recovery --data-dir snapshots/eurostat-2026-10-15 --output-dir results/bayes-regime-recovery
 poetry run eu-okun bayes-regimes --fits-dir results/bayes --data-dir snapshots/eurostat-2026-10-15 --output-dir docs/bayes-regimes --report docs/BAYES_REGIMES.md --recovery-dir results/bayes-regime-recovery
+```
+
+Diagnostics of the reported Bayesian results (the first command runs 227 fits; it
+resumes, and `--shard k/n` splits each stage across processes):
+
+```bash
+poetry run eu-okun bayes-diagnostics-fit --data-dir snapshots/eurostat-2026-10-15 --fits-dir results/bayes --output-dir results/bayes-diagnostics
+poetry run eu-okun bayes-diagnostics --fits-dir results/bayes --refits-dir results/bayes-diagnostics --data-dir snapshots/eurostat-2026-10-15 --docs-dir docs --output-dir docs/bayes-diagnostics --report docs/BAYES_DIAGNOSTICS.md
 ```
 
 Conditional predictive comparison (the fit is expensive):

@@ -634,3 +634,8 @@ sections 4, 6 and 11.
       is not treated as established.
   - **Earlier dispatch.** Run 38983097415 stopped at the general report step, which
     needs a `primary` fit; its results are not used.
+- 2026-10-22, after amendment 4: diagnostics of the reported results are registered
+  separately in BAYES_DIAGNOSTICS_PROTOCOL.md. They cover exact leave-one-out for cells
+  with high Pareto k, influential cells, a calibrated prior scale and run-to-run
+  stability over further seeds. Nothing in this protocol changes; those results are
+  reported alongside.

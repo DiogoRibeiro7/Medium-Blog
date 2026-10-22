@@ -68,8 +68,13 @@ def sum_contrast(width: int) -> np.ndarray:
     return c
 
 
-def headline_designs(data_dir: Path) -> tuple[list[Headline], str]:
-    """The published headline designs, in alphabetical EU-27 order, and the last quarter."""
+def headline_designs(data_dir: Path,
+                     sample: str = "pandemic_excluded") -> tuple[list[Headline], str]:
+    """The published headline designs, in alphabetical EU-27 order, and the last quarter.
+
+    ``sample`` is a classical review sample; the registered headline is pandemic_excluded
+    (MEASUREMENT_PROTOCOL.md repeats it on quality_screened).
+    """
     from eu_okun.audit import audit_snapshot
     from eu_okun.review import SAMPLES, read_flags, sample_designs
 
@@ -77,16 +82,17 @@ def headline_designs(data_dir: Path) -> tuple[list[Headline], str]:
     if not isinstance(end, str):
         raise EurostatDataError("Invalid final quarter in audit.")
     path = data_dir / "processed" / "eu27_quarterly.csv"
-    spec = next(s for s in SAMPLES if s.name == "pandemic_excluded")
+    spec = next(s for s in SAMPLES if s.name == sample)
     designs = sample_designs(_read_panel(path), read_flags(path), spec, end)
     return [Headline(i, geo, *designs[(geo, LAGS, False)]) for i, geo in enumerate(EU27)], end
 
 
-def check_published(heads: Sequence[Headline], grid_csv: Path) -> float:
+def check_published(heads: Sequence[Headline], grid_csv: Path,
+                    sample: str = "pandemic_excluded") -> float:
     """Largest gap to the committed sums and standard errors; raises above the tolerance."""
     with grid_csv.open(encoding="utf-8") as stream:
         grid = {r["geo"]: r for r in csv.DictReader(stream)
-                if r["sample"] == "pandemic_excluded" and r["gdp_lags"] == str(LAGS)
+                if r["sample"] == sample and r["gdp_lags"] == str(LAGS)
                 and r["participation"] == "False"}
     gap = 0.0
     for head in heads:

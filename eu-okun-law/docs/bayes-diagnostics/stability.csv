@@ -1,0 +1,73 @@
+set,model_a,model_b,run,elpd_diff,se_diff,verdict,reliable
+9.2,time_effects,no_common_factor,local,22.17740306638006,9.331400896321226,time_effects better supported,True
+9.2,time_effects,no_common_factor,Linux,20.91714721909161,9.33101972353147,time_effects better supported,True
+9.2,time_effects,no_common_factor,seed 20261030,23.198281064920188,9.383136142553488,time_effects better supported,True
+9.2,time_effects,no_common_factor,seed 20261031,22.741186683730216,9.333480995097036,time_effects better supported,True
+9.2,time_effects,no_common_factor,seed 20261032,21.403242244033244,9.330709215030991,time_effects better supported,True
+9.2,time_effects,no_common_factor,seed 20261033,23.80892515998984,9.297419689089814,time_effects better supported,True
+9.2,time_effects_participation,participation_no_common_factor,local,24.945486220546723,9.52846300115911,time_effects_participation better supported,True
+9.2,time_effects_participation,participation_no_common_factor,Linux,24.48846608048392,9.56195303125357,time_effects_participation better supported,True
+9.2,time_effects_participation,participation_no_common_factor,seed 20261030,24.97178012784591,9.589520454260532,time_effects_participation better supported,True
+9.2,time_effects_participation,participation_no_common_factor,seed 20261031,24.831786990662696,9.654209434074854,time_effects_participation better supported,True
+9.2,time_effects_participation,participation_no_common_factor,seed 20261032,24.94411832304265,9.496277234875597,time_effects_participation better supported,True
+9.2,time_effects_participation,participation_no_common_factor,seed 20261033,24.080091527736954,9.69026213255123,time_effects_participation better supported,True
+9.2,time_effects,primary,local,-23.70675821298542,9.22622565342182,primary better supported,True
+9.2,time_effects,primary,Linux,-24.926664973425478,9.589534104668296,primary better supported,False
+9.2,time_effects,primary,seed 20261030,-24.66010858199101,9.466274330506112,primary better supported,True
+9.2,time_effects,primary,seed 20261031,-23.581946989484592,9.432353241226329,primary better supported,False
+9.2,time_effects,primary,seed 20261032,-25.06750661333663,9.624400410679597,primary better supported,True
+9.2,time_effects,primary,seed 20261033,-23.072543753105805,9.368538029550564,primary better supported,True
+9.2,time_effects_participation,time_effects,local,20.431072300995766,7.506634647883701,time_effects_participation better supported,True
+9.2,time_effects_participation,time_effects,Linux,20.629355169977863,7.538760044776958,time_effects_participation better supported,True
+9.2,time_effects_participation,time_effects,seed 20261030,20.593667746011068,7.475950288293655,time_effects_participation better supported,True
+9.2,time_effects_participation,time_effects,seed 20261031,20.109172063694704,7.573413379861458,time_effects_participation better supported,True
+9.2,time_effects_participation,time_effects,seed 20261032,22.438354354659076,7.694461518664773,time_effects_participation better supported,True
+9.2,time_effects_participation,time_effects,seed 20261033,19.04438690042967,7.537206002640633,time_effects_participation better supported,True
+11.4,dynamic_factor,primary,local,15.467716683216562,5.820147268745897,dynamic_factor better supported,True
+11.4,dynamic_factor,primary,Linux,15.705369709770723,5.622690722345191,dynamic_factor better supported,False
+11.4,dynamic_factor,primary,seed 20261030,15.409688901293434,5.583737969521357,dynamic_factor better supported,True
+11.4,dynamic_factor,primary,seed 20261031,15.190311487549348,5.8045254511294,dynamic_factor better supported,True
+11.4,dynamic_factor,primary,seed 20261032,15.780240440812069,5.8439523908670585,dynamic_factor better supported,True
+11.4,dynamic_factor,primary,seed 20261033,16.137320346737358,5.5788982199751596,dynamic_factor better supported,True
+11.4,ardl,primary,local,14.4344939176376,7.312563582609812,not distinguishable,True
+11.4,ardl,primary,Linux,15.028610925107603,7.611488981354871,not distinguishable,False
+11.4,ardl,primary,seed 20261030,12.952683838830126,7.437864365692122,not distinguishable,True
+11.4,ardl,primary,seed 20261031,14.121621137414278,7.585324588919982,not distinguishable,True
+11.4,ardl,primary,seed 20261032,14.553838038410536,7.415634273361877,not distinguishable,True
+11.4,ardl,primary,seed 20261033,14.625702517490645,7.433417273520236,not distinguishable,True
+11.4,ardl_dynamic_factor,primary,local,26.206991066121496,7.8509418747827935,ardl_dynamic_factor better supported,True
+11.4,ardl_dynamic_factor,primary,Linux,25.747965139136504,7.825513438082651,ardl_dynamic_factor better supported,False
+11.4,ardl_dynamic_factor,primary,seed 20261030,25.08593203011131,7.733735710123382,ardl_dynamic_factor better supported,True
+11.4,ardl_dynamic_factor,primary,seed 20261031,25.74335963605715,7.991735901985021,ardl_dynamic_factor better supported,True
+11.4,ardl_dynamic_factor,primary,seed 20261032,25.727147202776976,7.881277126640514,ardl_dynamic_factor better supported,True
+11.4,ardl_dynamic_factor,primary,seed 20261033,26.387848022808427,7.8380976050969124,ardl_dynamic_factor better supported,True
+11.4,ardl_dynamic_factor,ardl,local,11.772497148483897,5.663564321269142,ardl_dynamic_factor better supported,True
+11.4,ardl_dynamic_factor,ardl,Linux,10.719354214028899,5.762767241560172,not distinguishable,True
+11.4,ardl_dynamic_factor,ardl,seed 20261030,12.13324819128118,5.738669262635318,ardl_dynamic_factor better supported,True
+11.4,ardl_dynamic_factor,ardl,seed 20261031,11.621738498642873,5.761943959891686,ardl_dynamic_factor better supported,True
+11.4,ardl_dynamic_factor,ardl,seed 20261032,11.173309164366444,5.766824521057403,not distinguishable,True
+11.4,ardl_dynamic_factor,ardl,seed 20261033,11.762145505317783,5.7375774407545705,ardl_dynamic_factor better supported,True
+12.5,regime_shift,pandemic_excluded,local,9.903453986954204,5.8020688916595,not distinguishable,True
+12.5,regime_shift,pandemic_excluded,Linux,10.139131548317678,5.835909700442665,not distinguishable,True
+12.5,regime_shift,pandemic_excluded,seed 20261030,12.012368660794598,5.8143591441545155,regime_shift better supported,True
+12.5,regime_shift,pandemic_excluded,seed 20261031,11.816012080493122,5.807595532462455,regime_shift better supported,True
+12.5,regime_shift,pandemic_excluded,seed 20261032,11.585561053753288,5.853515057954174,not distinguishable,True
+12.5,regime_shift,pandemic_excluded,seed 20261033,,,,
+12.5,drifting_association,pandemic_excluded,local,14.193874875479537,6.010306610326101,drifting_association better supported,True
+12.5,drifting_association,pandemic_excluded,Linux,13.605106692665437,5.985687062157847,drifting_association better supported,True
+12.5,drifting_association,pandemic_excluded,seed 20261030,13.9231586641762,6.090584972594521,drifting_association better supported,True
+12.5,drifting_association,pandemic_excluded,seed 20261031,15.25040870997583,6.02100911519114,drifting_association better supported,True
+12.5,drifting_association,pandemic_excluded,seed 20261032,13.315971320383813,5.999978166444955,drifting_association better supported,True
+12.5,drifting_association,pandemic_excluded,seed 20261033,,,,
+12.5,drifting_association,regime_shift,local,4.290420888525335,1.8334834159180813,drifting_association better supported,True
+12.5,drifting_association,regime_shift,Linux,3.4659751443477598,1.8299212774492588,not distinguishable,True
+12.5,drifting_association,regime_shift,seed 20261030,1.910790003381602,1.8564878839261214,not distinguishable,True
+12.5,drifting_association,regime_shift,seed 20261031,3.4343966294827064,1.835879748060335,not distinguishable,True
+12.5,drifting_association,regime_shift,seed 20261032,1.7304102666305274,1.7685246925074436,not distinguishable,True
+12.5,drifting_association,regime_shift,seed 20261033,,,,
+12.5,regime_shift_dynamic,pandemic_excluded_dynamic,local,6.172051569944217,6.824727173613484,not distinguishable,True
+12.5,regime_shift_dynamic,pandemic_excluded_dynamic,Linux,7.0073188719879305,6.855991442542773,not distinguishable,True
+12.5,regime_shift_dynamic,pandemic_excluded_dynamic,seed 20261030,,,,
+12.5,regime_shift_dynamic,pandemic_excluded_dynamic,seed 20261031,,,,
+12.5,regime_shift_dynamic,pandemic_excluded_dynamic,seed 20261032,6.880873273122768,6.888646576290408,not distinguishable,True
+12.5,regime_shift_dynamic,pandemic_excluded_dynamic,seed 20261033,,,,
