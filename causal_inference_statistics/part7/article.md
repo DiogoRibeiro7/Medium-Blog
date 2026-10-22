@@ -120,9 +120,9 @@ The Monte Carlo summaries show a sharp contrast among the designs.
 | Design | Mean OLS | Mean IV | Median IV | Mean first-stage F |
 | --- | ---: | ---: | ---: | ---: |
 | Valid, strong | 1.3323 | 0.9984 | 0.9985 | 502.8 |
-| Valid, moderate | 1.4782 | 0.9863 | 1.0094 | 45.7 |
-| Valid, weak | 1.4971 | 0.4766 | 1.0004 | 6.5 |
-| Invalid, strong | 1.4326 | 1.2999 | 1.3018 | 499.9 |
+| Valid, moderate | 1.4782 | 0.9910 | 0.9991 | 47.7 |
+| Valid, weak | 1.4971 | 1.1290 | 1.0346 | 5.7 |
+| Invalid, strong | 1.4326 | 1.2993 | 1.3018 | 499.9 |
 
 The true treatment effect is one. Strong valid IV recovers that effect closely. Ordinary regression remains biased because U confounds treatment and outcome. With moderate relevance, IV remains centred reasonably close to the target but shows more sampling variability.
 
@@ -140,7 +140,7 @@ Dividing by a value near zero can produce an arbitrarily large positive or negat
 
 The mean of a ratio estimator can be exceptionally unstable. In the classical just-identified normal model, the finite-sample distribution can have sufficiently heavy tails that ordinary moments do not exist in the usual sense. A finite simulation always produces a numerical sample mean, but that does not automatically make the mean a stable measure of the estimator's expected performance.
 
-The weak valid design illustrates this problem unusually clearly. The median is close to one, yet the Monte Carlo mean is 0.4766 and the RMSE is 8.7482. A handful of extreme estimates contributes disproportionately to squared error and can pull the mean far from the central mass.
+The weak valid design illustrates this problem unusually clearly. The median is close to one, yet the Monte Carlo mean is 1.1290 and the RMSE is 3.2620. A handful of extreme estimates contributes disproportionately to squared error and can pull the mean far from the central mass.
 
 This is why a claim such as 'IV is almost unbiased on average in our simulations' needs caution when identification is weak. Mean and variance summaries may be dominated by tail realizations, and small changes in the number of replications or seed can alter them dramatically. The median and quantiles are informative supplements, not replacements for a proper weak-identification analysis.
 
@@ -151,13 +151,13 @@ The fifth and ninety-fifth percentiles of the IV estimates provide more informat
 | Design | IV 5th percentile | IV 95th percentile | IV RMSE |
 | --- | ---: | ---: | ---: |
 | Valid, strong | 0.9243 | 1.0657 | 0.0434 |
-| Valid, moderate | 0.6909 | 1.2227 | 0.1628 |
-| Valid, weak | −0.3769 | 1.6230 | 8.7482 |
+| Valid, moderate | 0.7137 | 1.2227 | 0.1525 |
+| Valid, weak | −0.1855 | 1.6510 | 3.2620 |
 | Invalid, strong | 1.2387 | 1.3537 | 0.3023 |
 
 Strong valid IV has a relatively concentrated distribution around one. The moderate instrument has a noticeably wider interval of empirical estimates while remaining informative in this setting.
 
-The weak design's fifth-to-ninety-fifth percentile range already includes negative values, despite a true positive effect. It does not convey the full tail severity: the RMSE of 8.7482 reflects realizations far outside this central ninety-percent range. The contrast between quantiles and RMSE is an important diagnostic of heavy-tailed behaviour.
+The weak design's fifth-to-ninety-fifth percentile range already includes negative values, despite a true positive effect. It does not convey the full tail severity: the RMSE of 3.2620 reflects realizations far outside this central ninety-percent range. The contrast between quantiles and RMSE is an important diagnostic of heavy-tailed behaviour.
 
 For the invalid strong instrument, estimates are tightly concentrated around approximately 1.3. Its RMSE relative to the causal effect is about 0.3023, mainly reflecting the exclusion-induced discrepancy rather than sampling noise. This design can produce precisely estimated answers that are systematically wrong for the intervention question.
 
@@ -165,7 +165,7 @@ An analyst reporting the invalid instrument's tight interval without discussing 
 
 ## What the first-stage F-statistic tells us
 
-The first-stage F-statistic describes how strongly the instrument predicts treatment in the specified regression. For the strong valid and strong invalid instruments it averages about 500. The moderate valid instrument averages about 45.7. The weak valid instrument averages about 6.5, with a median around 5.4.
+The first-stage F-statistic describes how strongly the instrument predicts treatment in the specified regression. For the strong valid and strong invalid instruments it averages about 500. The moderate valid instrument averages about 47.7. The weak valid instrument averages about 5.7, with a median around 5.4.
 
 A first-stage F near 500 makes the estimated denominator of the IV ratio relatively stable in these samples. It does not distinguish the strong valid and strong invalid scenarios, because the treatment equation is equally relevant in both. The difference lies in the outcome equation, where the invalid design contains the direct effect δZ.
 
@@ -173,7 +173,7 @@ The familiar rule of thumb that an F-statistic above 10 indicates a sufficiently
 
 Stock and Yogo (2005), Staiger and Stock (1997), and subsequent weak-identification literature provide more systematic ways to understand the relationship between first-stage evidence and the performance of conventional instrumental-variable inference. The relevant criterion depends on what failure one is trying to guard against.
 
-The simulation deliberately uses a single instrument and endogenous treatment, avoiding many-instrument complications. Even there, the contrast between F≈6.5 and F≈500 demonstrates the value of inspecting relevance while also proving that relevance cannot establish exclusion.
+The simulation deliberately uses a single instrument and endogenous treatment, avoiding many-instrument complications. Even there, the contrast between F≈5.7 and F≈500 demonstrates the value of inspecting relevance while also proving that relevance cannot establish exclusion.
 
 ## What exclusion means in a real design
 
@@ -249,7 +249,7 @@ The existence of more candidate variables should not be confused with more indep
 
 ## Why the median and RMSE disagree
 
-In the weak valid design, the Monte Carlo median estimate of about 1.0004 is almost exactly the structural effect. Yet its mean is 0.4766 and its RMSE is nearly 8.75. This combination would look contradictory if one assumed that an estimator with a good typical value must have low average squared error.
+In the weak valid design, the Monte Carlo median estimate of about 1.0346 is almost exactly the structural effect. Yet its mean is 1.1290 and its RMSE is nearly 8.75. This combination would look contradictory if one assumed that an estimator with a good typical value must have low average squared error.
 
 The discrepancy is mathematical. RMSE squares the error before averaging. A small number of enormous estimates can dominate this calculation. The sample mean can also be pulled strongly by a few tail observations. The median is resistant to their magnitude and therefore describes the centre of the realized distribution more faithfully here.
 
@@ -348,3 +348,7 @@ Stock, J. H., Wright, J. H. and Yogo, M. (2002). A Survey of Weak Instruments an
 Wooldridge, J. M. (2010). *Econometric Analysis of Cross Section and Panel Data*, 2nd edition. MIT Press.
 
 Young, A. (2022). Consistency without Inference: Instrumental Variables in Practical Application. *European Economic Review*, 147, 104112. https://doi.org/10.1016/j.euroecorev.2022.104112
+
+## Reproducibility correction (October 2026)
+
+The archived Monte Carlo table for the moderate, weak and invalid instrument scenarios did not match the exact committed simulation under seed 20261016. The experiment was independently rerun and `results.csv` replaced with the actual output. In particular, the weak-IV Monte Carlo mean is 1.1290, median 1.0346, and RMSE 3.2620 rather than the previously reported 0.4766, 1.0004 and 8.7482. The qualitative lesson remains: weak-IV sample ratios can be highly unstable, so the Monte Carlo mean and RMSE can be dominated by tail observations. The previous output must not be cited as reproduced evidence.
