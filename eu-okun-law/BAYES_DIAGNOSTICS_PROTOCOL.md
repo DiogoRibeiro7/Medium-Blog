@@ -61,10 +61,10 @@ their Linux replications:
 | Section 12.5 | `drifting_association` / `regime_shift` | as above |
 | Section 12.5 | `regime_shift_dynamic` / `pandemic_excluded_dynamic` | as above |
 
-These involve 14 fits: `primary`, `no_common_factor`, `participation`, `time_effects`,
+These involve 13 fits: `primary`, `no_common_factor`, `time_effects`,
 `time_effects_participation`, `participation_no_common_factor`, `dynamic_factor`, `ardl`,
 `ardl_dynamic_factor`, `pandemic_excluded`, `regime_shift`, `drifting_association`,
-`pandemic_excluded_dynamic` and `regime_shift_dynamic`.
+`pandemic_excluded_dynamic` and `regime_shift_dynamic` (corrected; see the change log).
 
 **The persistence verdicts of section 11.4:** `primary`, `dynamic_factor`, `ardl` and
 `ardl_dynamic_factor`.
@@ -88,7 +88,7 @@ as well.
 
 ## 3. Run-to-run stability
 
-**Runs.** Each of the 14 fits is refitted with four further seeds: 20261030, 20261031,
+**Runs.** Each of the 13 fits is refitted with four further seeds: 20261030, 20261031,
 20261032 and 20261033. Together with the local and Linux runs, that gives six runs.
 
 **Computed in each run, by the registered procedures:**
@@ -114,7 +114,7 @@ that run.
 
 ## 4. Reliability of PSIS-LOO: exact leave-one-out
 
-**Cells.** For each of the 14 fits, every cell in one of its comparison sets that has
+**Cells.** For each of the 13 fits, every cell in one of its comparison sets that has
 Pareto k > 0.7 in the local run or in any of the four seed runs.
 
 **Refit.** For each such cell, the fit is refitted with that cell's likelihood term
@@ -147,7 +147,7 @@ The refitted cells of section 4 are the observations that PSIS identifies as
 influential. For `primary` and `ardl_dynamic_factor`:
 
 **Inventory.** Each refitted cell's country, quarter, observed change and Pareto k, and
-the number of the 14 fits in which it exceeds 0.7.
+the number of the 13 fits in which it exceeds 0.7.
 
 **One cell at a time.** From the refits of section 4:
 
@@ -255,3 +255,10 @@ them, and this study does not change them.
   - The report regenerates from the committed summary.
 
 ## Change log
+
+- **After the seed fits started, before any result was read: 13 fits, not 14.**
+  Section 2 listed `participation` among the fits that the registered comparisons
+  involve. It enters none of them: section 9.2 computes its PSIS-LOO but compares it
+  with no other fit. The comparisons therefore involve 13 fits, and the seed, exact and
+  influence stages use those 13. `participation` is not refitted. Section 2 now reads 13,
+  and the paragraph that listed the fits is corrected.
