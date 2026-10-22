@@ -1,0 +1,11 @@
+hidden_confounding,n,replications,metric,mean,sd
+False,1500,300,naive,2.1504,0.1176
+False,1500,300,matched,1.0128,0.1437
+False,1500,300,fraction,0.9898,0.0079
+False,1500,300,x_difference,0.0007,0.0007
+False,1500,300,u_difference,0.0035,0.0795
+True,1500,300,naive,3.2178,0.0997
+True,1500,300,matched,2.4294,0.1239
+True,1500,300,fraction,0.9928,0.0058
+True,1500,300,x_difference,0.0006,0.0006
+True,1500,300,u_difference,0.9514,0.0659
