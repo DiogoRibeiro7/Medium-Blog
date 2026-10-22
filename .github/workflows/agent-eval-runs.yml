@@ -1,0 +1,50 @@
+name: Reproduce agent-eval-runs
+
+on:
+  pull_request:
+    paths:
+      - 'agent-eval-runs/**'
+      - '.github/workflows/agent-eval-runs.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'agent-eval-runs/**'
+      - '.github/workflows/agent-eval-runs.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: agent-eval-runs
+    env:
+      MPLBACKEND: Agg
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: agent-eval-runs/requirements.txt
+
+      - name: Install pinned dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Rerun the analysis
+        run: python agent_eval_runs.py > results/output.txt
+
+      - name: Check the numbers match the committed run
+        run: git diff --exit-code -- results/output.txt
+
+      - name: Check every figure was drawn
+        run: |
+          for f in fig1_pass_counts fig2_two_questions fig3_coverage fig4_runs_needed; do
+            test -s "figures/$f.png"
+          done
