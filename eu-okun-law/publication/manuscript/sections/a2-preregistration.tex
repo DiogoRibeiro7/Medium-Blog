@@ -18,6 +18,9 @@ results.
 October 2026, on the same frozen data, and each later stage was designed knowing the
 results of the earlier ones:
 \begin{itemize}
+  \item the classical headline sample, without 2020--2021, was chosen after the
+    full-sample estimates had been seen. \texttt{METHODS.md} listed the comparison, not
+    which sample would lead, and that choice cannot be registered retrospectively;
   \item the Bayesian protocol was written after the classical results;
   \item the small-sample protocol was written after the \val{ss_published_holm} rejections
     of the first classical pass were known, to test whether they survive;
@@ -26,7 +29,11 @@ results of the earlier ones:
     rule in the comparison countries.
 \end{itemize}
 Registration therefore protects each stage's decision rules against the results of that
-stage, not against the results of earlier stages. The timestamps are Git commits in a
+stage, not against the results of earlier stages. Table~\ref{tab:prereg} records the
+origin of each protocol. Six are items of the first research roadmap, committed before
+any estimate. The others are follow-ups: prompted by the results of an earlier stage or
+by an external review, as each protocol states in its first section. A follow-up is
+confirmatory for its own decision rules, but exploratory in the choice of its question. The timestamps are Git commits in a
 public repository, which their authors can in principle rewrite. An external, immutable
 archive of the protocols, such as a deposit with a DOI, would strengthen the record.
 

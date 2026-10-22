@@ -83,7 +83,8 @@ registered checks:
     \val{by_n_neg_all} or \val{by_n_neg_unpooled}, depending on one fit at the
     convergence threshold;
   \item \val{by_pairs_primary} credible country differences in the primary fit against
-    \val{by_pairs_surviving} in every accepted fit;
+    \val{by_pairs_surviving} in every accepted fit, each judged pair by pair and not as a
+    ranking;
   \item the forecast gains of pooling, GDP lags and the factor, decided only without the
     pandemic targets;
   \item the conditional gain over zero change before the pandemic (\val{pc_e1_zero}),
@@ -122,7 +123,7 @@ registered checks:
     elsewhere it is a trend, a moving average or benchmarked to annual averages. Eurostat
     benchmarks the monthly series to the quarterly survey figures, not the reverse
     \citep{eurostat_une_rt_m_esms}, so the quarterly rate used here does not inherit that
-    smoothing. A registered check (\texttt{SMOOTHING\_PROTOCOL.md}) could not show this
+    smoothing. A registered follow-up check (\texttt{SMOOTHING\_PROTOCOL.md}) could not show this
     directly. Its rule for a quarterly rate that is the average of the monthly rate also
     rejects \val{sm_direct_not_average} of the \val{mo_n_direct} direct-estimate
     countries, and the Netherlands' correlation of quarterly changes, \val{sm_nl_corr},
@@ -156,7 +157,9 @@ registered checks:
     rejection. The false-discovery-rate counts were added after the run, and their
     guarantee needs a dependence assumption these two-sided tests do not strictly meet.
   \item The pandemic-excluded headline was chosen after the full-sample estimates had
-    been seen.
+    been seen. The research plan listed the comparison, not which sample would lead, and
+    the choice cannot be registered after the fact. The full-sample estimates are
+    therefore reported next to it.
   \item The registered test of the hours study could not reach the 5\% level, because
     some bootstrap resamples contain no pandemic quarter. The corrected test was registered
     after that result was known.

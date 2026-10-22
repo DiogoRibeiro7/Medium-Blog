@@ -4,9 +4,11 @@ We re-examine the relation between quarterly real GDP growth and changes in the
 unemployment rate in the \val{n_countries} member states of the European Union from 2009
 to 2026. The data are official Eurostat series frozen with cryptographic hashes. Each
 stage of the analysis was registered before its own estimation, sequentially, on the same
-data.
+data. Many stages are follow-ups, designed after earlier results or external reviews had
+been seen, and we mark them as such.
 
-\textbf{Association.} With 2020--2021 excluded, the two-lag Okun coefficient sum is
+\textbf{Association.} With 2020--2021 excluded, a headline choice made after the
+full-sample estimates had been seen, the two-lag Okun coefficient sum is
 negative in \val{hi_point_negative} of \val{n_countries} countries. Under small-sample
 bootstraps that hold their size, it is significantly negative in \val{hi_negative}. How
 many of these are established depends on the error rate controlled across countries:
@@ -15,7 +17,9 @@ registered run and assuming positive dependence), \val{hi_negative_holm} under t
 registered Holm adjustment, which controls the chance of any false rejection. Normal
 critical values, which over-reject here, give \val{cl_n_neg_excluded} unadjusted. The
 sign is widespread. Including the pandemic
-quarters pulls most sums towards zero. A hierarchical Bayesian model with Student-$t$
+quarters pulls most sums towards zero. Our first pass, with normal critical values and
+Holm's adjustment, found \val{ss_published_holm} significant changes in the association
+after 2021; under small-sample bootstraps, none of them survives. A hierarchical Bayesian model with Student-$t$
 errors, residual autocorrelation and a common European factor estimates the association
 beyond the common European cycle. Across accepted specifications, the unweighted mean of
 the country sums lies between \val{by_mu_lo} and \val{by_mu_hi}. The primary model

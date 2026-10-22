@@ -10,7 +10,7 @@ control. The headline specification is $K=2$ without participation.
 kernel and four lags in calendar quarters \citep{newey1987hac}. The variance of
 $\hat\theta_i$ uses the full covariance matrix of the lag coefficients. The classical
 intervals use normal critical values, an approximation with \val{cl_n_quarters} quarters
-per country. A registered study (below) replaces that reference with null-imposed sieve and
+per country. A registered follow-up, prompted by an external review (below), replaces that reference with null-imposed sieve and
 moving-block bootstraps of the same HAC-studentised statistic, which follow its
 small-sample behaviour, including the fixed-$b$ effect of the bandwidth.
 
@@ -28,7 +28,7 @@ with specification-dependent significance, or sign-unstable.
 change in participation. That variable is itself a response to output, and it is
 mechanically linked to the outcome, because the labour force is the denominator of the
 unemployment rate. Those specifications therefore estimate a different, partly mediated
-quantity. A registered re-classification (\texttt{CORE\_GRID\_PROTOCOL.md}) applies the
+quantity. A registered follow-up re-classification (\texttt{CORE\_GRID\_PROTOCOL.md}) applies the
 same rule to the \val{cl_n_core} specifications without the control. Its verdicts are the
 ones used here; only \val{cl_changed} changes.
 
@@ -44,7 +44,7 @@ again with normal intervals.
 These are associations conditional on contemporaneous and lagged GDP growth, and
 contemporaneous growth is not exogenous.
 
-\paragraph{Small-sample inference.} The registered study reaches a more cautious
+\paragraph{Small-sample inference.} The follow-up study reaches a more cautious
 conclusion:
 \begin{itemize}
   \item the normal reference over-rejects: under each country's fitted null it rejects
@@ -95,7 +95,7 @@ Taken together, the sign of the association is widespread across countries. How 
 individual country sums are established depends on the error rate controlled and on the
 dependence assumed: from \val{hi_negative_holm} to \val{nr_bh_reg}.
 
-\paragraph{Definition breaks.} A registered sensitivity
+\paragraph{Definition breaks.} A registered follow-up
 (\texttt{MEASUREMENT\_PROTOCOL.md}) repeats the headline inference under the study's
 definition-break rule (section~\ref{sec:data}). The rule drops every post-2021 change for
 Spain and France, and a few break quarters elsewhere.
@@ -120,7 +120,7 @@ the full-sample coefficient describes those quarters, not the 2009--2019 relatio
 Job-retention schemes are the usual explanation for why unemployment did not follow
 output. The registered test below does not establish it.
 
-\paragraph{Hours.} A registered study (\texttt{HOURS\_PROTOCOL.md}) estimated Okun's law in
+\paragraph{Hours.} A registered follow-up (\texttt{HOURS\_PROTOCOL.md}) estimated Okun's law in
 hours worked for the \val{hr_n_hours} countries with hours data, with the case study's
 estimator (section~\ref{sec:cases}), with and without the pandemic
 (figure~\ref{fig:hours}). If job retention explains the attenuation, hours should keep
@@ -146,7 +146,7 @@ supported (Holm $p$ \val{hr_p1_amended_holm} and \val{hr_p2a_amended_holm}), and
 change in the number of workers is not decided. Job retention would produce this pattern,
 but so would paid absence, and the 2021 survey redesign falls in the same window.
 
-\paragraph{Expansions and contractions.} A registered study
+\paragraph{Expansions and contractions.} A registered follow-up
 (\texttt{ASYMMETRY\_PROTOCOL.md}) asked whether unemployment responds more strongly to
 falling output than to rising output, as it would if firing is quicker than hiring. It
 adds the negative part of GDP growth, with the same lags, to the headline regression. In
@@ -169,7 +169,7 @@ countries hit by the euro-area crisis, so even a decided difference could reflec
 different shocks rather than a different labour-market response.
 
 \paragraph{Common shocks.} The classical sums contain the common European cycle. A
-registered study (\texttt{CCE\_PROTOCOL.md}) removes it in the standard classical way,
+registered follow-up (\texttt{CCE\_PROTOCOL.md}) removes it in the standard classical way,
 with the common-correlated-effects mean-group estimator of \citet{pesaran2006cce}. Each
 country's regression is augmented with the cross-country averages of GDP growth, with the
 same lags, and of the unemployment change.
@@ -190,7 +190,7 @@ Like the Bayesian sum, a CCE sum measures the association beyond the common cycl
 different estimand from the plain sum, and neither is causal.
 
 \paragraph{The EU as a whole.} Every average so far weights countries equally, so Malta
-counts as much as Germany. A registered study (\texttt{AGGREGATE\_PROTOCOL.md}) weights them
+counts as much as Germany. A registered follow-up (\texttt{AGGREGATE\_PROTOCOL.md}) weights them
 by their labour force. It also estimates the same regression on Eurostat's own EU
 aggregate series.
 \begin{itemize}

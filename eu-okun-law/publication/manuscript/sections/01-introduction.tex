@@ -36,7 +36,21 @@ coefficient, which averages over all shocks of a period (section~\ref{sec:backgr
 \paragraph{Approach.} Each stage was registered before its own estimation, sequentially,
 on the same data: its protocol was committed and pushed before it was run, and its change
 log records any later clarification with its reason. Later stages were designed knowing
-the results of earlier ones (Appendix~\ref{app:prereg}). The data are frozen Eurostat and OECD snapshots
+the results of earlier ones (Appendix~\ref{app:prereg}). Results therefore come in three
+kinds, and we say which wherever they appear:
+\begin{itemize}
+  \item \emph{initial plan}: analyses listed in the first research roadmap, committed
+    before any estimate (the classical regressions, the hierarchical model, the two
+    predictive comparisons, the identification study and the case study);
+  \item \emph{registered follow-ups}: analyses designed after earlier results or an
+    external review had been seen, with rules fixed before their own estimates. Table~\ref{tab:prereg}
+    gives the origin of each; they are confirmatory for their own rules, but the choice of
+    question was not blind;
+  \item \emph{post hoc}: analyses without a protocol, labelled as such.
+\end{itemize}
+The choice of the pandemic-excluded sample as the classical headline was made after the
+full-sample estimates had been seen, and no later registration can change that; both
+samples are reported throughout. The data are frozen Eurostat and OECD snapshots
 whose raw responses are hashed and re-derived by an audit. Every number in this article is
 read by code from the committed result tables (Appendix~\ref{app:repro}). The work
 proceeded in stages:
@@ -54,6 +68,10 @@ proceeded in stages:
     \val{n_countries} countries and significantly so in \val{hi_negative} under
     small-sample bootstraps. How many individual sums survive an adjustment for testing
     \val{n_countries} countries depends on the error rate controlled.
+  \item Normal critical values over-reject with this few quarters. The
+    \val{ss_published_holm} post-2021 changes in the association that our first pass found
+    with them, even after Holm's adjustment, are an example: none of them survives
+    small-sample bootstraps.
   \item Its magnitude depends on the sample, the error model and the treatment of
     persistence, and country rankings are not established.
   \item Over all target quarters, no registered forecast comparison is decided. Without
