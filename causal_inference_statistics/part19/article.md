@@ -12,7 +12,7 @@ Transportability concerns whether and how information from one population can id
 
 The experiment in this article separates three problems that are often conflated. In the first, the effect modifier is observed and the outcome model is correctly specified. Standardizing conditional effects from the randomized trial to the target population recovers the target average. In the second, the decisive effect modifier differs across populations but is missing from the analysis. Standardization on a different observed variable fails despite impeccable randomization inside the trial. In the third, the target population includes values of the effect modifier absent from the trial. A correctly specified linear model extrapolates successfully in this controlled simulation, but the evidence for the unsupported region rests on its structural functional-form assumption rather than local trial comparisons.
 
-Across 400 simulated datasets in each scenario, the true intervention effects are known. The transported estimate averages 2.0041 for a target effect of 2 when the modifier is observed. It averages only 1.0015 when the relevant modifier is omitted, again for a target effect of 2. In the limited-overlap scenario the full target effect is 2.5; the model-based extrapolation averages 2.4927. Restricting that last target to the region represented in the trial estimates a different effect, 1.75, and recovers approximately 1.7473. These comparisons are numerical illustrations of identification and estimand choice, not empirical estimates of any particular programme.
+Across 400 simulated datasets in each scenario, the true intervention effects are known. The transported estimate averages 2.0041 for a target effect of 2 when the modifier is observed. It averages only 0.9923 when the relevant modifier is omitted, again for a target effect of 2. In the limited-overlap scenario the full target effect is 2.5; the model-based extrapolation averages 2.5024. Restricting that last target to the region represented in the trial estimates a different effect, 1.75, and recovers approximately 1.7499. These comparisons are numerical illustrations of identification and estimand choice, not empirical estimates of any particular programme.
 
 ## The experimental and target questions
 
@@ -120,7 +120,7 @@ Because the true effect depends on U rather than X, the regression has no system
 
 ## The failure hidden behind trial validity
 
-Across 400 datasets in the omitted-modifier scenario, the trial effect estimate averages 0.9980, close to its true value of one. The transported estimate averages 1.0015, with RMSE approximately 1.0035 relative to the true target effect of two.
+Across 400 datasets in the omitted-modifier scenario, the trial effect estimate averages 0.9958, close to its true value of one. The transported estimate averages 0.9923, with RMSE approximately 1.0125 relative to the true target effect of two.
 
 This is a striking failure because it does not arise from an unstable experimental contrast, inadequate treatment randomization or a poorly estimated target X distribution. The trial sample is large enough for the randomized average to be estimated precisely. The target sample is large enough to characterize the observed population shift. The necessary information is not available because the different distribution of U across populations was not measured.
 
@@ -156,11 +156,11 @@ Were the effect function to bend sharply beyond X=1, the trial could fit perfect
 
 ## What the overlap results show
 
-In 400 simulations, the unweighted trial effect averages 1.0020, close to its trial target of one. The full-target extrapolated estimate averages 2.4927, close to the true full-target effect of 2.5, with RMSE approximately 0.1590. The supported-subpopulation estimate averages 1.7473, close to its different truth of 1.75, with RMSE approximately 0.0933.
+In 400 simulations, the unweighted trial effect averages 1.0020, close to its trial target of one. The full-target extrapolated estimate averages 2.5024, close to the true full-target effect of 2.5, with RMSE approximately 0.1590. The supported-subpopulation estimate averages 1.7499, close to its different truth of 1.75, with RMSE approximately 0.0933.
 
 The apparent success of the full-target prediction is conditional on the correctly specified linear interaction. The experiment does not contain evidence about whether linearity would continue outside the trial in another system. The extra uncertainty due to plausible model departures is not represented by the reported Monte Carlo RMSE, because every simulated dataset follows the same linear relationship.
 
-The retained target fraction averages about 0.2495 in this scenario. Only roughly one quarter of the target population lies within the empirical support of trial X. Restricting the estimand to that group changes the scientific question and produces a lower average effect of 1.75. This is not a failed transport estimate of 2.5; it is an estimate of a deliberately narrower population effect.
+The retained target fraction averages about 0.2494 in this scenario. Only roughly one quarter of the target population lies within the empirical support of trial X. Restricting the estimand to that group changes the scientific question and produces a lower average effect of 1.75. This is not a failed transport estimate of 2.5; it is an estimate of a deliberately narrower population effect.
 
 The restriction may be scientifically preferable when the full-population extrapolation is not credible. If policy must cover the entire target, however, the restricted effect alone is not enough to forecast the policy's average consequence. An analyst must then explicitly state what assumptions or outside evidence are needed to speak about the unsupported portion.
 
@@ -258,9 +258,9 @@ None of the simulations establishes which covariates are the correct effect modi
 
 A randomized trial correctly estimated a source-population average treatment effect near one in all three scenarios. In the measured-modifier scenario, the target effect was two and standardization recovered it with mean estimate 2.0041 and RMSE 0.0816.
 
-When the relevant effect modifier differed across populations but was omitted from the analyst's model, standardization instead produced a mean target estimate of 1.0015 for a true target effect of two. Randomization remained valid within the source. The failure was external: the observed covariates were insufficient to relate the source conditional effects to the target population.
+When the relevant effect modifier differed across populations but was omitted from the analyst's model, standardization instead produced a mean target estimate of 0.9923 for a true target effect of two. Randomization remained valid within the source. The failure was external: the observed covariates were insufficient to relate the source conditional effects to the target population.
 
-In the limited-overlap scenario, the trial effect was one, the full target effect was 2.5 and the effect in the supported target region was 1.75. A correctly specified linear interaction model extrapolated to a mean full-target estimate of 2.4927, while restricting to observed support produced 1.7473. The result illustrates both the possibility of correct extrapolation and the assumptions needed to justify it.
+In the limited-overlap scenario, the trial effect was one, the full target effect was 2.5 and the effect in the supported target region was 1.75. A correctly specified linear interaction model extrapolated to a mean full-target estimate of 2.5024, while restricting to observed support produced 1.7499. The result illustrates both the possibility of correct extrapolation and the assumptions needed to justify it.
 
 The central lesson is that internal validity and external validity address different questions. Randomization can identify what happened causally among those studied. Transportability asks whether the effect remains the same, or can be reconstructed, in a different population. The answer depends on effect modification, selection, support and the stability of the intervention mechanism.
 
@@ -320,3 +320,7 @@ Tipton, E. (2014). How Generalizable Is Your Experiment? An Index for Comparing 
 Westreich, D., Edwards, J. K., Lesko, C. R., Stuart, E. A. and Cole, S. R. (2017). Transportability of Trial Results Using Inverse Odds of Sampling Weights. *American Journal of Epidemiology*, 186(8), 1010–1014. https://doi.org/10.1093/aje/kwx164
 
 Zivich, P. N., Cole, S. R. and Westreich, D. (2022). Transportability and Generalizability of Causal Effects: A Practical Guide. *American Journal of Epidemiology*, 191(4), 722–728.
+
+## Reproducibility correction (October 2026)
+
+The current experiment was rerun using seed 20261018 and 400 replications per scenario. Its archived CSV had become inconsistent with the script. The previous full-target row in the nonoverlap scenario also incorrectly labelled the target effect as 2 rather than the analytically defined 2.5. The CSV and numerical statements above have now been synchronized with the current script: the full-target estimate is 2.5024 for truth 2.5, the support-restricted estimate is 1.7499 for truth 1.75, and the omitted-modifier transported estimate is 0.9923 for stipulated target truth 2. This correction does not constitute empirical verification of the target distribution of the unobserved modifier; that distribution remains a simulation assumption.
