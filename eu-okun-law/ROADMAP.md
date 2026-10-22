@@ -278,6 +278,30 @@ Open:
         t is 0.19 either way, and the decision is unchanged.
   - [x] Actions are pinned to commit SHAs, at the versions they already used.
 
+### External assessment, 2026-10-22
+
+- [x] P0, measurement: one definition-break rule, and the headline under it and on the
+      latest release ([docs/MEASUREMENT.md](docs/MEASUREMENT.md)).
+- [x] P0, Bayesian diagnostics: seeds, exact leave-one-out, influence and prior
+      calibration ([docs/BAYES_DIAGNOSTICS.md](docs/BAYES_DIAGNOSTICS.md)).
+- [x] P1, inferential claims:
+  - **Origins.** Each analysis is marked as an item of the initial plan or a follow-up
+    (prompted by earlier results or a review), in the pre-registration table, the
+    introduction, the text where it appears and the article.
+  - **Pandemic headline.** The pandemic-excluded headline is stated as a choice made
+    after the full-sample estimates, which cannot be registered retrospectively. This is
+    in the abstract, the introduction, the appendix and the limitations.
+  - **Small-sample results.** They lead:
+    - the country table shows bootstrap-t intervals and the registered small-sample
+      verdicts;
+    - the abstract, the introduction and the article state that none of the 14
+      post-2021 changes survives.
+  - **Country pairs.** The robust country differences are presented as pairwise
+    statements, each at its own threshold and not a ranking: in the heterogeneity
+    section, the discussion, the conclusions and the article.
+- [ ] P1, provenance and independent review: an econometric review of the manuscript by
+      a person, not another automated check.
+
 Green offline CI is not evidence of a successful live data download.
 No pre-selected country results, artificial observations or causal
 claims without identification.

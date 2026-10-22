@@ -15,6 +15,8 @@ import pytest
 
 from eu_okun.publication import (
     EXPERIMENTS,
+    INITIAL,
+    ORIGIN,
     PLACEHOLDER,
     POST_HOC,
     _fingerprint,
@@ -60,6 +62,9 @@ WORD_CLAIMS = [
     ("none is decided in the main version", "cs_n_epl_decided_primary", 0),
     ("and in none is either test decided", "as_sens_decided", 0),
     ("no setting decides it", "as_sens_decided", 0),
+    ("under small-sample bootstraps, none of them survives", "ss_survivors", 0),
+    ("none of them survives small-sample bootstraps", "ss_survivors", 0),
+    ("and under it none of those changes survives", "ss_survivors", 0),
     ("Halving every prior scale", "bd_cal_scale", 0.5),
     ("with every prior scale halved", "bd_cal_scale", 0.5),
 ]
@@ -287,6 +292,17 @@ def test_every_registered_command_is_documented_and_parses(
             usage = capsys.readouterr().out
             for option in (a for a in args if a.startswith("--")):
                 assert option in usage, f"{name} {option}"
+
+
+def test_every_registered_analysis_has_an_origin() -> None:
+    """The origin column of the pre-registration table, and the count in the appendix."""
+    assert set(ORIGIN) == {e["key"] for e in EXPERIMENTS}
+    initial = [k for k, v in ORIGIN.items() if v.startswith(INITIAL)]
+    assert sorted(initial) == ["bayes", "classical", "forecast", "heterogeneity",
+                               "identification", "predictive"]
+    appendix = (PUB / "manuscript" / "sections" / "a2-preregistration.tex").read_text(
+        encoding="utf-8")
+    assert "Six are items of the first research roadmap" in re.sub(r"\s+", " ", appendix)
 
 
 def test_every_protocol_is_registered() -> None:
