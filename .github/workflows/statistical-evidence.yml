@@ -156,3 +156,14 @@ jobs:
           --ExecutePreprocessor.timeout=300
           --output detector-monte-carlo-validation.executed.ipynb
           detector-monte-carlo-validation.ipynb
+
+      - name: Smoke-test evidence synthesis notebook
+        working-directory: statistical-evidence-and-decisions
+        env:
+          SYNTHESIS_SMOKE: "1"
+          SYNTHESIS_REPEATS: "1"
+        run: >-
+          jupyter nbconvert --to notebook --execute
+          --ExecutePreprocessor.timeout=300
+          --output evidence-synthesis.executed.ipynb
+          evidence-synthesis.ipynb
