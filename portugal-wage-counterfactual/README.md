@@ -11,6 +11,8 @@ The only wage series that reaches back to 1975 is national-accounts compensation
 
 Two asymmetric scenarios are added: no nominal fall (a year in which inflation plus productivity growth is negative leaves the counterfactual flat, as Portuguese law does not allow pay cuts) and no deflation or productivity fall passed on (inflation and productivity growth each floored at zero); the two agree to within 0.05% for every base year. In Portugal the floor binds in 2009, 2014 and 2020, and 2020, when output per person employed fell 6.35% while output per hour was flat, accounts for most of its effect.
 
+It also applies the rule to the national minimum wage (annual average of the daily rate, built from DGERT's dates of change; from 1975, against €820 in 2024), pairs compensation per employee hour with productivity per hour for 1995–2024, and reports two summaries that do not hinge on one base year: the distribution of the counterfactual across base years, and the wage that would bring the adjusted wage share back to its average over a reference period.
+
 The script also runs every base year from 1975 to 2023, splits the multiplicative gap into a consumer-price/GDP-deflator wedge and the change in the adjusted wage share, and repeats the exercise on the Quadros de Pessoal mean alone from 1985 and the median alone from 2021.
 
 ## Run
@@ -30,6 +32,8 @@ It writes:
 - `results/base_year_sensitivity.csv`: counterfactual/actual for each base year, three variants
 - `results/path_from_1975.csv`: actual and counterfactual monthly compensation, and the adjusted wage share
 - `results/decomposition_by_base_year.csv`: the multiplicative gap split into the CPI/GDP-deflator wedge and the change in the adjusted wage share, in log points
+- `results/minimum_wage_by_base_year.csv`: the rule applied to the national minimum wage from every base year (as stated, no-cut floor, per hour)
+- `results/per_hour_by_base_year.csv`: compensation per employee hour against productivity per hour, base years 1995–2023
 - `results/inputs_linked.csv`: the linked annual inputs
 - `figures/fig1_path_from_1975.png`, `figures/fig2_base_year_curve.png`, `figures/fig3_decomposition.png`
 

@@ -46,7 +46,7 @@ def load_eurostat() -> pd.DataFrame:
     gdp = gdp[gdp["geo"] == "PT"].set_index("year")[["B1GQ", "D1"]]
     emp = pd.read_csv(SNAPSHOT / "nama_10_a10_e_PT.csv").set_index("year")
     extra = pd.read_csv(DATA / "eurostat_productivity_d11.csv", index_col="year")
-    e = gdp.join(emp[["EMP_DC_THS_PER", "SAL_DC_THS_PER"]]).join(extra)
+    e = gdp.join(emp[["EMP_DC_THS_PER", "SAL_DC_THS_PER", "EMP_DC_THS_HW", "SAL_DC_THS_HW"]]).join(extra)
     e["comp_per_emp"] = e["D1"] / e["SAL_DC_THS_PER"]            # thousand EUR
     e["wages_per_emp"] = e["d11_meur"] / e["SAL_DC_THS_PER"]     # thousand EUR
     e["gdp_per_worker"] = e["B1GQ"] / e["EMP_DC_THS_PER"]        # thousand EUR
@@ -143,6 +143,115 @@ def decomposition(t: pd.DataFrame, base: int) -> dict[str, float]:
         "cpi_over_deflator": cpi / dfl,
         "wage_share_ratio": t.loc[base, "adj_wage_share"] / t.loc[END, "adj_wage_share"],
     }
+
+
+PTE_PER_EUR = 200.482
+
+
+def load_minimum_wage() -> pd.Series:
+    """National minimum wage, annual average of the daily rate in force, EUR per month.
+
+    Built from DGERT's dates of change (``data/minimum_wage_changes.csv``) so that it
+    matches annual-average consumer prices. PORDATA's one-value-per-year series
+    (``data/minimum_wage.csv``) uses the rate at the end of the year for some years
+    and at the start for others, and is kept only for comparison.
+    """
+    c = pd.read_csv(DATA / "minimum_wage_changes.csv", parse_dates=["effective"])
+    c["eur"] = np.where(c["currency"] == "PTE", c["value"] / PTE_PER_EUR, c["value"])
+    days = pd.date_range(c["effective"].min(), f"{c['effective'].dt.year.max()}-12-31", freq="D")
+    rate = c.set_index("effective")["eur"].reindex(days).ffill()
+    annual = rate.groupby(rate.index.year).mean()
+    return annual.loc[annual.index > c["effective"].min().year]   # first year is partial
+
+
+def comp_per_employee_hour() -> pd.Series:
+    """Compensation per hour worked by employees, EUR, Eurostat (from LINK)."""
+    e = load_eurostat().loc[LINK:END]
+    return 1000 * e["D1"] / e["SAL_DC_THS_HW"]
+
+
+def extensions(t: pd.DataFrame, euro: pd.DataFrame, qp: pd.DataFrame,
+               sens: pd.DataFrame, w) -> None:
+    """Minimum wage, per-hour pay and a summary that does not hinge on one base year."""
+    qp_mean, qp_median = qp.loc[END, "qp_mean_eur"], qp.loc[END, "qp_median_eur"]
+
+    # 1. National minimum wage, same rule from every base year.
+    smn = load_minimum_wage()
+    rows = []
+    for b in range(START, END):
+        rows.append({
+            "base": b, "smn_base": smn[b],
+            "cf": counterfactual(t, b, start_level=smn[b]).loc[END],
+            "cf_no_cut": counterfactual(t, b, start_level=smn[b], floor="nominal").loc[END],
+            "cf_hour": counterfactual(t, b, start_level=smn[b], productivity="hour").loc[END],
+        })
+    m = pd.DataFrame(rows).set_index("base")
+    m.round(2).to_csv(RESULTS / "minimum_wage_by_base_year.csv")
+    pordata = pd.read_csv(DATA / "minimum_wage.csv", index_col="year")["smn_eur_month"]
+    w(f"National minimum wage (annual average of the daily rate): actual {END} {smn[END]:,.0f}, 2026 {smn[2026]:,.0f}")
+    diff = (100 * (smn.loc[START:END] / pordata.loc[START:END] - 1)).round(1)
+    w("  vs PORDATA year values, years differing by more than 0.1%: " + ", ".join(
+        f"{y} {smn[y]:.2f} vs {pordata[y]:.1f} ({d:+.1f}%)" for y, d in diff.items() if abs(d) > 0.1))
+    w(f"  base {START} ({smn[START]:.1f}): CF {m.loc[START, 'cf']:,.0f}  ratio {m.loc[START, 'cf'] / smn[END]:.3f}; "
+      f"no cut {m.loc[START, 'cf_no_cut']:,.0f}; per hour {m.loc[START, 'cf_hour']:,.0f}")
+    for col, label in (("cf", "rule"), ("cf_no_cut", "no cut"), ("cf_hour", "per hour")):
+        up = m.index[m[col] > smn[END]]
+        w(f"  {label}: base years above actual: {', '.join(str(b) for b in up)}")
+    late = m.loc[m.index >= 1984, "cf"]
+    w(f"  rule, base years 1984-{END - 1}: CF {late.min():,.0f} (base {late.idxmin()}) to "
+      f"{late.max():,.0f} (base {late.idxmax()})")
+    real = smn.loc[START:END] / t["cpi_index"]
+    real = 100 * real / real.loc[START]
+    w("  real minimum wage, " + str(START) + " = 100: " + ", ".join(
+        f"{y} {real.loc[y]:.1f}" for y in (1977, 1980, 1985, 1990, 2000, 2010, 2014, 2016, 2019, 2020, END)))
+    back = real.loc[START + 1:]
+    w(f"  first year back at or above the {START} real level: {back[back >= 100].index.min()}; "
+      f"low point {back.min():.1f} in {back.idxmin()}; first year at or above 90: {back[back >= 90].index.min()}")
+    w(f"  minimum wage / QP mean: " + ", ".join(
+        f"{y} {smn[y] / qp.loc[y, 'qp_mean_eur']:.3f}" for y in (1985, 1995, 2005, 2014, 2019, END)))
+    w(f"  minimum wage {2016}-{END}: +{100 * (smn[END] / smn[2016] - 1):.1f}%")
+    w("")
+
+    # 2. Pay per hour against productivity per hour, Eurostat only.
+    ch = comp_per_employee_hour()
+    rows = []
+    for b in range(LINK, END):
+        rows.append({
+            "base": b,
+            "per_hour": counterfactual(t, b, productivity="hour", start_level=ch[b]).loc[END] / ch[END],
+            "per_hour_no_cut": counterfactual(t, b, productivity="hour", start_level=ch[b],
+                                              floor="nominal").loc[END] / ch[END],
+        })
+    h = pd.DataFrame(rows).set_index("base")
+    h["per_person"] = sens.set_index("base")["cf_over_actual"].loc[LINK:END - 1]
+    h["per_person_no_cut"] = sens.set_index("base")["cf_over_actual_no_cut"].loc[LINK:END - 1]
+    h.round(4).to_csv(RESULTS / "per_hour_by_base_year.csv")
+    w(f"Compensation per employee hour vs productivity per hour, base years {LINK}-{END - 1}")
+    w(f"  compensation per employee hour: {LINK} {ch[LINK]:.2f}, {END} {ch[END]:.2f} EUR")
+    for col in ("per_hour", "per_hour_no_cut", "per_person", "per_person_no_cut"):
+        up = h.index[h[col] > 1]
+        w(f"  {col:17s} median {h[col].median():.3f}, min {h[col].min():.3f}, max {h[col].max():.3f}; "
+          f"above actual: {', '.join(str(b) for b in up) or 'none'}")
+    hours = euro["SAL_DC_THS_HW"] / euro["SAL_DC_THS_PER"]
+    w("  hours per employee: " + ", ".join(f"{y} {hours[y]:,.0f}" for y in (1995, 2010, 2019, 2020, 2021, END)))
+    hstep = (1 + t["infl"] + t["g_hour"]).loc[LINK + 1:END]
+    w("  per-hour years with inflation + productivity < 0: " + ", ".join(
+        f"{y} ({100 * (v - 1):+.2f}%)" for y, v in hstep[hstep < 1].items()))
+    w("")
+
+    # 3. Summaries that do not hinge on one base year.
+    w("Across base years and against a reference-period wage share")
+    for col, label in (("cf_over_actual", "rule"), ("cf_over_actual_no_cut", "no cut")):
+        qs = sens[col].quantile([0.25, 0.5, 0.75])
+        w(f"  {label}: median over all {len(sens)} base years {qs[0.5]:.3f} (QP mean {qp_mean * qs[0.5]:,.0f}), "
+          f"interquartile range {qs[0.25]:.3f}-{qs[0.75]:.3f} ({qp_mean * qs[0.25]:,.0f}-{qp_mean * qs[0.75]:,.0f})")
+    aws = t["adj_wage_share"]
+    for lo in (START, 1985, LINK):
+        ref = aws.loc[lo:END].mean()
+        r = ref / aws[END]
+        w(f"  adjusted wage share {lo}-{END} average {ref:.2f}% vs {END} {aws[END]:.2f}%: ratio {r:.3f}; "
+          f"QP mean {qp_mean * r:,.0f}, median {qp_median * r:,.0f}")
+    w("")
 
 
 def main() -> None:
@@ -313,6 +422,9 @@ def main() -> None:
         r = dec.loc[dec["base"] == b].iloc[0]
         w(f"  {b}: {r['log_points_total']:+6.1f} = {r['log_points_price_wedge']:+6.1f} "
           f"{r['log_points_wage_share']:+6.1f}")
+    w("")
+
+    extensions(t, euro, qp, sens, w)
 
     path = pd.DataFrame({
         "actual_eur_month": t["actual"] / 14,

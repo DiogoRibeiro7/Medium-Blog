@@ -95,3 +95,22 @@ def test_floor_changes_nothing_without_a_falling_year(inputs: pd.DataFrame) -> N
 def test_unknown_floor_is_rejected(inputs: pd.DataFrame) -> None:
     with pytest.raises(ValueError):
         wc.counterfactual(inputs, 2000, floor="real")
+
+
+def test_minimum_wage_is_the_day_weighted_annual_average() -> None:
+    smn = wc.load_minimum_wage()
+    # 3,300 escudos until 15 June 1975, 4,000 from 16 June (166 and 199 days).
+    expected_1975 = (166 * 3300 + 199 * 4000) / 365 / wc.PTE_PER_EUR
+    assert smn[1975] == pytest.approx(expected_1975)
+    assert smn[1976] == pytest.approx(4000 / wc.PTE_PER_EUR)
+    # 505 euros from 1 October 2014.
+    assert smn[2014] == pytest.approx((273 * 485 + 92 * 505) / 365)
+    assert smn[2024] == pytest.approx(820.0)
+    assert 1974 not in smn.index
+
+
+def test_comp_per_employee_hour_is_consistent_with_per_employee() -> None:
+    euro = wc.load_eurostat()
+    hours_per_employee = euro.loc[wc.END, "SAL_DC_THS_HW"] / euro.loc[wc.END, "SAL_DC_THS_PER"]
+    per_hour = wc.comp_per_employee_hour()[wc.END]
+    assert per_hour * hours_per_employee == pytest.approx(1000 * euro.loc[wc.END, "comp_per_emp"])
