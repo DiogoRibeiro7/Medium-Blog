@@ -1,0 +1,26 @@
+{
+ "description": "E-OBS v33.0e, ensemble mean, 0.25 degree regular grid",
+ "retrieved_utc": "2026-10-22T16:33:17Z",
+ "files": {
+  "tx_ens_mean_0.25deg_reg_v33.0e.nc": {
+   "url": "https://knmi-ecad-assets-prd.s3.amazonaws.com/ensembles/data/Grid_0.25deg_reg_ensemble/tx_ens_mean_0.25deg_reg_v33.0e.nc",
+   "bytes": 898580164,
+   "sha256": "617175993b43d345b743992143979111bd40c0f63f3d980befaef8903cfed460"
+  },
+  "tn_ens_mean_0.25deg_reg_v33.0e.nc": {
+   "url": "https://knmi-ecad-assets-prd.s3.amazonaws.com/ensembles/data/Grid_0.25deg_reg_ensemble/tn_ens_mean_0.25deg_reg_v33.0e.nc",
+   "bytes": 894624992,
+   "sha256": "b8ebb235fffb77c6f09cb156db8732a2d3a239b61499113619156e0ccb0f508f"
+  },
+  "rr_ens_mean_0.25deg_reg_v33.0e.nc": {
+   "url": "https://knmi-ecad-assets-prd.s3.amazonaws.com/ensembles/data/Grid_0.25deg_reg_ensemble/rr_ens_mean_0.25deg_reg_v33.0e.nc",
+   "bytes": 737939676,
+   "sha256": "2e201b26b6ccebe53e01eff6b749345bb20aeb4d70bfdd2ebd4ed0bd9d8c3bbf"
+  },
+  "elev_ens_0.25deg_reg_v33.0e.nc": {
+   "url": "https://knmi-ecad-assets-prd.s3.amazonaws.com/ensembles/data/Grid_0.25deg_reg_ensemble/elev_ens_0.25deg_reg_v33.0e.nc",
+   "bytes": 117768,
+   "sha256": "276993915153a5d536f9040ba55576db0284b24fb9e0fb40562b80ad468bb030"
+  }
+ }
+}

@@ -1,0 +1,39 @@
+name: EU wheat weather CI
+
+on:
+  pull_request:
+    paths:
+      - "eu-wheat-weather/**"
+      - ".github/workflows/eu-wheat-weather-ci.yml"
+  push:
+    branches: [main]
+    paths:
+      - "eu-wheat-weather/**"
+      - ".github/workflows/eu-wheat-weather-ci.yml"
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262  # v4.4.0
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065  # v5.6.0
+        with:
+          python-version: "3.12"
+      - name: Install Poetry
+        run: pipx install poetry==2.5.1
+      - name: Install locked environment (project-local .venv)
+        working-directory: eu-wheat-weather
+        run: |
+          poetry check --lock
+          poetry install --no-interaction --extras dev
+      - name: Lint
+        working-directory: eu-wheat-weather
+        run: poetry run ruff check src tests
+      - name: Types
+        working-directory: eu-wheat-weather
+        run: poetry run mypy src
+      - name: Offline tests (including the audit of the committed crop snapshot)
+        working-directory: eu-wheat-weather
+        run: poetry run pytest

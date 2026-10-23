@@ -1,0 +1,36 @@
+{
+ "description": "GISCO NUTS-2 boundaries, 1:3 million, EPSG:4326",
+ "retrieved_utc": "2026-10-22T16:23:32Z",
+ "files": {
+  "NUTS_RG_03M_2006_4326_LEVL_2.geojson": {
+   "url": "https://gisco-services.ec.europa.eu/distribution/v2/nuts/geojson/NUTS_RG_03M_2006_4326_LEVL_2.geojson",
+   "bytes": 10719951,
+   "sha256": "1b682bd9768aaf8fafe1d9cb385c828ef1ca4d86af1be7c1d6465fff63fe4a37"
+  },
+  "NUTS_RG_03M_2010_4326_LEVL_2.geojson": {
+   "url": "https://gisco-services.ec.europa.eu/distribution/v2/nuts/geojson/NUTS_RG_03M_2010_4326_LEVL_2.geojson",
+   "bytes": 8348555,
+   "sha256": "e81364db2349379857f67dda2eb1a696220f1367d4b9fff8dae629a6d3254798"
+  },
+  "NUTS_RG_03M_2013_4326_LEVL_2.geojson": {
+   "url": "https://gisco-services.ec.europa.eu/distribution/v2/nuts/geojson/NUTS_RG_03M_2013_4326_LEVL_2.geojson",
+   "bytes": 5909750,
+   "sha256": "77fa4c28b970a0e5afeba9a44ee23cc872627441e039668cf498a4412c87444f"
+  },
+  "NUTS_RG_03M_2016_4326_LEVL_2.geojson": {
+   "url": "https://gisco-services.ec.europa.eu/distribution/v2/nuts/geojson/NUTS_RG_03M_2016_4326_LEVL_2.geojson",
+   "bytes": 4078919,
+   "sha256": "c50cbf84128aa6493500f53a891a5b2653654192d6df87f719e6ac045b3b0c70"
+  },
+  "NUTS_RG_03M_2021_4326_LEVL_2.geojson": {
+   "url": "https://gisco-services.ec.europa.eu/distribution/v2/nuts/geojson/NUTS_RG_03M_2021_4326_LEVL_2.geojson",
+   "bytes": 4160790,
+   "sha256": "690c055cdaf583c5c2326dc8c36f2db9f60c42a256a498f8391d2d83fa89b5fb"
+  },
+  "NUTS_RG_03M_2024_4326_LEVL_2.geojson": {
+   "url": "https://gisco-services.ec.europa.eu/distribution/v2/nuts/geojson/NUTS_RG_03M_2024_4326_LEVL_2.geojson",
+   "bytes": 3904132,
+   "sha256": "e6e552a0cf6a966cde2241485e26c5f8641ce15c98169d10ca5a4a761468e3b9"
+  }
+ }
+}
