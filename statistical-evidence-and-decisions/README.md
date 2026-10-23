@@ -438,3 +438,34 @@ Smoke:
 ```bash
 MC_VALIDATION_SMOKE=1 MC_VALIDATION_REPEATS=1 jupyter nbconvert --execute --to notebook --output detector-monte-carlo-validation.executed.ipynb detector-monte-carlo-validation.ipynb
 ```
+
+## Predeclared evidence synthesis
+
+[evidence-synthesis.ipynb](evidence-synthesis.ipynb) consolidates the GLR and
+BOCPD versus CUSUM results without introducing a new detector. The primary
+question is economic net regret on paired low-variance-signal, gradual-drift
+streams. The main case fixes zero label delay, action cost 0.6 and retraining
+cost 0.05. An absolute gain of 0.01 per deployment observation is the
+minimum considered economically meaningful.
+
+[evidence_synthesis.py](evidence_synthesis.py) enforces:
+- at least 100 independently generated primary drift and null streams;
+- bootstrap uncertainty for the stream-paired economic differences;
+- independent null-stream alarm constraints;
+- a split 5% familywise error budget with a correction for two candidates;
+- explicit "insufficient", "unsupported", "unverified", "inconclusive" or
+  "supported in simulation" outcomes, instead of picking a winner by rank.
+
+The selected thresholds are calibrated on disjoint null streams in the
+upstream detector comparison. Monte Carlo intervals condition on those
+realised thresholds and do not confer causal identification.
+
+To perform a quick software smoke test:
+
+```bash
+SYNTHESIS_SMOKE=1 SYNTHESIS_REPEATS=1 jupyter nbconvert --to notebook --execute --output evidence-synthesis.executed.ipynb evidence-synthesis.ipynb
+```
+
+The full experiment defaults to 100 independent evaluation streams and 199
+independent calibration streams. It is intentionally manual and must not
+be mistaken for an automatically executed research conclusion.
