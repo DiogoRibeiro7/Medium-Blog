@@ -50,6 +50,4 @@ jobs:
       - name: Draw the figures
         run: |
           python figures.py
-          for f in fig1_core_share_by_quintile fig2_poorest_composition fig3_basic_needs_prices; do
-            test -s "figures/$f.png"
-          done
+          test "$(ls figures/fig*.png | wc -l)" -eq 12

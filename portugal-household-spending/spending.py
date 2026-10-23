@@ -247,6 +247,38 @@ def main() -> None:
         f"{c} +{100 * (p.loc[2025, c] / p.loc[2015, c] - 1):.1f}%" for c in CORE + ["CP00"]))
     w("  components 2020-2025: " + ", ".join(
         f"{c} +{100 * (p.loc[2025, c] / p.loc[2020, c] - 1):.1f}%" for c in CORE + ["CP00"]))
+    comp = p[CORE + ["CP00", "CP06", "CP07"]].loc[1996:HICP_END]
+    (100 * comp / comp.loc[2015]).round(3).to_csv(RESULTS / "component_prices_2015_100.csv")
+    w("  components 1996-2025: " + ", ".join(
+        f"{c} +{100 * (p.loc[2025, c] / p.loc[1996, c] - 1):.1f}%" for c in CORE + ["CP00"]))
+    w("")
+
+    # Consumption per adult equivalent and what is left after basic needs.
+    e = pd.read_csv(DATA / "hbs_exp_t133.csv")
+    ae = e[e["unit"] == "PPS_AE"].pivot_table(index="quant_inc", columns="year", values="value")
+    q = budget_survey_quintiles() / 1000
+    rows = []
+    for quint in QUINTILES:
+        for year in ae.columns:
+            r = q.loc[(quint, year)]
+            total = ae.loc[quint, year]
+            rec = {"quintile": quint, "year": year, "consumption_pps_ae": total}
+            if pd.notna(r.get("CP042")):
+                cash = total * (1 - r["CP042"])
+                rec["cash_consumption_pps_ae"] = cash
+                rec["basic_pps_ae"] = total * r[CORE].sum()
+                rec["after_basic_pps_ae"] = cash - rec["basic_pps_ae"]
+            rows.append(rec)
+    resid = pd.DataFrame(rows).set_index(["quintile", "year"]).sort_index()
+    resid.round(1).to_csv(RESULTS / "consumption_after_basic_needs.csv")
+    w("Consumption per adult equivalent by quintile (PPS, current) and what is left after core basic needs")
+    for year in ae.columns:
+        c1, c5 = ae.loc["QU1", year], ae.loc["QU5", year]
+        line = f"  {year}: QU1 {c1:,.0f}, QU5 {c5:,.0f}, QU5/QU1 {c5 / c1:.2f}"
+        if pd.notna(resid.loc[("QU1", year)].get("after_basic_pps_ae", np.nan)):
+            a1, a5 = resid.loc[("QU1", year), "after_basic_pps_ae"], resid.loc[("QU5", year), "after_basic_pps_ae"]
+            line += f"; after basic needs QU1 {a1:,.0f}, QU5 {a5:,.0f}, QU5/QU1 {a5 / a1:.2f}"
+        w(line)
     w("")
 
     (RESULTS / "summary.txt").write_text("\n".join(lines) + "\n")
