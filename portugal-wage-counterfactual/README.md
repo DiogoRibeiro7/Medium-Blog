@@ -27,8 +27,9 @@ It writes:
 - `results/summary.txt`: every number
 - `results/base_year_sensitivity.csv`: counterfactual/actual for each base year, three variants
 - `results/path_from_1975.csv`: actual and counterfactual monthly compensation, and the adjusted wage share
+- `results/decomposition_by_base_year.csv`: the multiplicative gap split into the CPI/GDP-deflator wedge and the change in the adjusted wage share, in log points
 - `results/inputs_linked.csv`: the linked annual inputs
-- `figures/fig1_counterfactual_wages.png`
+- `figures/fig1_base_year_curve.png`, `figures/fig2_decomposition.png`, `figures/fig3_path_from_1975.png`
 
 The workflow in `.github/workflows/portugal-wage-counterfactual.yml` reruns the analysis on every change and checks that `summary.txt` is unchanged.
 

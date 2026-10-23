@@ -219,8 +219,26 @@ def main() -> None:
     w("Every base year (productivity per person, additive): CF/actual, QP mean and median in " + str(END))
     for r in rows:
         w(f"  {r['base']}  {r['cf_over_actual']:.3f}  {r['qp_mean_cf']:>6,.0f}  {r['qp_median_cf']:>6,.0f}")
-    first = sens.loc[sens["cf_over_actual"] < 1, "base"].min()
-    w(f"  first base year with counterfactual below actual: {first}")
+    above = sens.loc[sens["cf_over_actual"] > 1, "base"]
+    w(f"  base years with counterfactual above actual: {', '.join(str(b) for b in above)}")
+    w(f"  from {above.max() + 1} on: CF/actual between {sens.loc[sens['base'] > above.max(), 'cf_over_actual'].min():.3f} "
+      f"and {sens.loc[sens['base'] > above.max(), 'cf_over_actual'].max():.3f}, median "
+      f"{sens.loc[sens['base'] > above.max(), 'cf_over_actual'].median():.3f}")
+    for col, label in (("cf_over_actual_mult", "multiplicative"), ("cf_over_actual_hour", "per hour")):
+        w(f"  {label}: base years above actual: "
+          f"{', '.join(str(b) for b in sens.loc[sens[col] > 1, 'base'])}")
+    w("")
+
+    dec = pd.DataFrame([{"base": b, **decomposition(t, b)} for b in range(START, END)])
+    dec["log_points_total"] = 100 * np.log(dec["cf_over_actual"])
+    dec["log_points_price_wedge"] = 100 * np.log(dec["cpi_over_deflator"])
+    dec["log_points_wage_share"] = 100 * np.log(dec["wage_share_ratio"])
+    dec.round(4).to_csv(RESULTS / "decomposition_by_base_year.csv", index=False)
+    w("Decomposition by base year, log points (multiplicative rule): total = price wedge + wage share")
+    for b in (1975, 1977, 1980, 1985, 1990, 1995, 2000, 2005, 2010, 2015, 2020):
+        r = dec.loc[dec["base"] == b].iloc[0]
+        w(f"  {b}: {r['log_points_total']:+6.1f} = {r['log_points_price_wedge']:+6.1f} "
+          f"{r['log_points_wage_share']:+6.1f}")
 
     path = pd.DataFrame({
         "actual_eur_month": t["actual"] / 14,

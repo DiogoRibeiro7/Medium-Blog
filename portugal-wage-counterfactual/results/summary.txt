@@ -91,4 +91,20 @@ Every base year (productivity per person, additive): CF/actual, QP mean and medi
   2021  0.976   1,545   1,158
   2022  0.928   1,469   1,102
   2023  0.963   1,524   1,143
-  first base year with counterfactual below actual: 1979
+  base years with counterfactual above actual: 1975, 1976, 1977, 1978, 1980, 1981, 1982
+  from 1983 on: CF/actual between 0.835 and 0.976, median 0.928
+  multiplicative: base years above actual: 1975, 1976, 1977, 1978, 1979, 1980, 1981, 1982
+  per hour: base years above actual: 1975, 1976, 1977
+
+Decomposition by base year, log points (multiplicative rule): total = price wedge + wage share
+  1975:  +45.5 =   +0.4  +45.1
+  1977:  +25.4 =  -10.9  +36.3
+  1980:   +7.3 =  -10.5  +17.8
+  1985:  -11.3 =  -14.8   +3.5
+  1990:  -12.1 =  -10.7   -1.4
+  1995:   -6.1 =  -10.7   +4.6
+  2000:   -2.6 =   -9.3   +6.7
+  2005:   -3.9 =   -8.1   +4.1
+  2010:   -6.3 =   -7.0   +0.7
+  2015:  -17.5 =   -9.6   -8.0
+  2020:   -2.6 =   -3.8   +1.2
