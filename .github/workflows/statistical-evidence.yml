@@ -134,3 +134,15 @@ jobs:
           --ExecutePreprocessor.timeout=300
           --output horizon-detector-economics.executed.ipynb
           horizon-detector-economics.ipynb
+
+      - name: Execute comparative change-detection notebook
+        working-directory: statistical-evidence-and-decisions
+        env:
+          COMPARATIVE_SMOKE: "1"
+          COMPARATIVE_REPEATS: "1"
+        run: >-
+          jupyter nbconvert --to notebook --execute
+          --ExecutePreprocessor.timeout=300
+          --output comparative-change-detection.executed.ipynb
+          comparative-change-detection.ipynb
+

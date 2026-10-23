@@ -376,3 +376,41 @@ Smoke:
 ```bash
 MAINTENANCE_SMOKE=1 MAINTENANCE_REPEATS=1 jupyter nbconvert --execute --to notebook --output horizon-detector-economics.executed.ipynb horizon-detector-economics.ipynb
 ```
+
+## Comparing CUSUM, GLR and Bayesian online change detection
+
+[comparative-change-detection.ipynb](comparative-change-detection.ipynb)
+compares CUSUM with a one-sided Gaussian GLR scan and a conjugate-normal
+Bayesian Online Change Point Detection (BOCPD) model.
+
+All three detectors observe identical delayed residual-disagreement scores
+from a frozen regression reference, not the raw multivariate data. The GLR
+tests a positive mean shift of unknown magnitude, while BOCPD tracks a
+run-length distribution under a constant hazard and normal-mean likelihood.
+
+Independent stable/IID or stable/AR(1) *whole simulation streams* calibrate
+each detector's fixed-horizon alarm threshold using a corrected quantile of
+its maximum score. The guarantee is marginal for exchangeable entire null
+streams in that declared horizon, never an anytime-valid sequential bound.
+No evaluation stream is used for calibration or hyperparameter selection.
+
+The experiment compares frozen, scheduled, CUSUM-triggered, GLR-triggered and
+BOCPD-triggered retraining, charging specified costs when refits actually
+occur. It reports false alarms on null streams, descriptive latency from
+the beginning of gradual drift, model prediction RMSE, refit count and net
+economic regret. Only labels matured at j + delay + 1 are available.
+
+Implementation: [comparative_change_detection.py](comparative_change_detection.py).
+Tests: [tests/test_comparative_change_detection.py](tests/test_comparative_change_detection.py).
+
+Smoke run:
+
+\`\`\`bash
+COMPARATIVE_SMOKE=1 COMPARATIVE_REPEATS=1 jupyter nbconvert --execute \\
+  --to notebook --output comparative-change-detection.executed.ipynb \\
+  comparative-change-detection.ipynb
+\`\`\`
+
+This is a methodological simulation, not evidence that one detector is
+universally preferable or that a synthetic benefit is a causal effect.
+
