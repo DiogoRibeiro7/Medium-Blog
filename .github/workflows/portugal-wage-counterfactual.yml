@@ -52,6 +52,6 @@ jobs:
       - name: Draw the figure
         run: |
           python figures.py
-          for f in fig1_base_year_curve fig2_decomposition fig3_path_from_1975; do
+          for f in fig1_path_from_1975 fig2_base_year_curve fig3_decomposition; do
             test -s "figures/$f.png"
           done

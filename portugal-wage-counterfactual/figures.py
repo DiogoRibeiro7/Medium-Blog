@@ -76,7 +76,7 @@ def base_year_curve(sens: pd.DataFrame, actual: float) -> None:
     ax.set_xlabel("Base year")
     ax.set_xlim(1975, 2023)
     ax.legend(loc="upper right", fontsize=8.5)
-    finish(fig, "fig1_base_year_curve.png")
+    finish(fig, "fig2_base_year_curve.png")
 
 
 def decomposition(dec: pd.DataFrame) -> None:
@@ -92,7 +92,7 @@ def decomposition(dec: pd.DataFrame) -> None:
     ax.set_xlabel("Base year")
     ax.set_xlim(1975, 2023)
     ax.legend(loc="upper right", fontsize=8.5)
-    finish(fig, "fig2_decomposition.png")
+    finish(fig, "fig3_decomposition.png")
 
 
 def path_from_1975(path: pd.DataFrame) -> None:
@@ -108,7 +108,7 @@ def path_from_1975(path: pd.DataFrame) -> None:
     ax.set_title("Compensation per employee, € per month (annual ÷ 14), log scale")
     ax.set_xlim(1975, 2024)
     ax.legend(loc="lower right", fontsize=8.5)
-    finish(fig, "fig3_path_from_1975.png")
+    finish(fig, "fig1_path_from_1975.png")
 
 
 def main() -> None:
