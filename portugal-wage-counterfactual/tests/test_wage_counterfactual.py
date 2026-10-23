@@ -70,7 +70,7 @@ def test_unknown_rule_is_rejected(inputs: pd.DataFrame) -> None:
         wc.counterfactual(inputs, 2000, rule="geometric")
 
 
-@pytest.mark.parametrize("floor", ["nominal", "productivity"])
+@pytest.mark.parametrize("floor", ["nominal", "components"])
 def test_floor_never_lowers_the_counterfactual(inputs: pd.DataFrame, floor: str) -> None:
     for base in range(wc.START, wc.END):
         assert wc.ratio(inputs, base, floor=floor) >= wc.ratio(inputs, base) - 1e-12
