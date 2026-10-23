@@ -15,8 +15,8 @@ def build_parser() -> argparse.ArgumentParser:
         prog="eu-wheat", description="Heat, drought and wheat yields in EU regions.")
     commands = parser.add_subparsers(dest="command", required=True)
     crops = commands.add_parser(
-        "fetch-crops", help="Download Eurostat wheat area and production by NUTS-2 region "
-        "and freeze them as a snapshot")
+        "fetch-crops", help="Download Eurostat wheat area and production by NUTS-2 and "
+        "NUTS-1 region and freeze them as a snapshot")
     crops.add_argument("--output-dir", type=Path, required=True)
     bounds = commands.add_parser(
         "fetch-boundaries", help="Download the GISCO NUTS-2 boundaries, 2006-2024 "
@@ -45,8 +45,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         if args.command == "fetch-crops":
             from eu_wheat_weather.crops import fetch_crops, save_snapshot
 
-            raw, url = fetch_crops()
-            manifest = save_snapshot(args.output_dir, raw, url)
+            manifest = save_snapshot(args.output_dir, fetch_crops())
             print(json.dumps(manifest["summary"]))
         elif args.command == "fetch-boundaries":
             from eu_wheat_weather.downloads import fetch_boundaries

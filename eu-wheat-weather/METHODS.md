@@ -183,3 +183,13 @@ sign.
   fields of a region.
 
 ## Change log
+
+- **2026-10-23, phase 1, before any estimate: NUTS-1 regions.**
+  - Eurostat publishes some regions' wheat only at NUTS-1. Among them are Brandenburg
+    (`DE4`) and Sachsen-Anhalt (`DEE`), two large wheat regions.
+  - A NUTS-1 region that contains a single NUTS-2 region in NUTS 2021 is that region's
+    territory. Its series therefore joins the region, by the rule of section 3.1.
+  - Where both levels have a value for a year, the NUTS-2 value is used and differences
+    above 1% are reported.
+  - The crop snapshot of 2026-10-23 adds the NUTS-1 response. The snapshot of
+    2026-10-22 is kept unchanged.

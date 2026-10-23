@@ -1,0 +1,29 @@
+{
+ "dataset": "apro_cpshr",
+ "crop": "C1110",
+ "measures": [
+  "AR_THS_HA",
+  "HPRD_HUMD_EU_THS_T"
+ ],
+ "urls": {
+  "nuts2": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/apro_cpshr?format=JSON&lang=EN&crops=C1110&strucpro=AR_THS_HA&strucpro=HPRD_HUMD_EU_THS_T&geoLevel=nuts2",
+  "nuts1": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/apro_cpshr?format=JSON&lang=EN&crops=C1110&strucpro=AR_THS_HA&strucpro=HPRD_HUMD_EU_THS_T&geoLevel=nuts1"
+ },
+ "retrieved_utc": "2026-10-23T08:08:05Z",
+ "eurostat_updated": {
+  "nuts2": "2026-09-08T23:00:00+0200",
+  "nuts1": "2026-09-08T23:00:00+0200"
+ },
+ "files": {
+  "raw/apro_cpshr_C1110_nuts2.json": "691bb8894cef606f3163883c083f7809be60f6874b2bab9d5ec60ecd01e7a157",
+  "raw/apro_cpshr_C1110_nuts1.json": "007f0088a4fef83332890daf31fd73f659a7436c3374f262a981b927a61b5c72",
+  "processed/wheat_nuts2.csv": "ad2d02f63d72f3a1ec86da1db62ae5d63e10baefe07eefe8885fe2b626c1e49e"
+ },
+ "summary": {
+  "rows": 7411,
+  "rows_with_yield": 6795,
+  "regions_with_yield": 365,
+  "first_year": 2000,
+  "last_year": 2024
+ }
+}
