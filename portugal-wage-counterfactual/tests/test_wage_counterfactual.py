@@ -97,11 +97,16 @@ def test_unknown_floor_is_rejected(inputs: pd.DataFrame) -> None:
         wc.counterfactual(inputs, 2000, floor="real")
 
 
-def test_minimum_wage_series_matches_the_1974_and_2024_legal_values() -> None:
+def test_minimum_wage_is_the_day_weighted_annual_average() -> None:
     smn = wc.load_minimum_wage()
-    assert smn[1974] == pytest.approx(3300 / 200.482, abs=0.05)
-    assert smn[1975] == pytest.approx(4000 / 200.482, abs=0.05)
-    assert smn[2024] == 820.0
+    # 3,300 escudos until 15 June 1975, 4,000 from 16 June (166 and 199 days).
+    expected_1975 = (166 * 3300 + 199 * 4000) / 365 / wc.PTE_PER_EUR
+    assert smn[1975] == pytest.approx(expected_1975)
+    assert smn[1976] == pytest.approx(4000 / wc.PTE_PER_EUR)
+    # 505 euros from 1 October 2014.
+    assert smn[2014] == pytest.approx((273 * 485 + 92 * 505) / 365)
+    assert smn[2024] == pytest.approx(820.0)
+    assert 1974 not in smn.index
 
 
 def test_comp_per_employee_hour_is_consistent_with_per_employee() -> None:

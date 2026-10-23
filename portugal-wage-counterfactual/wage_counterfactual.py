@@ -145,8 +145,23 @@ def decomposition(t: pd.DataFrame, base: int) -> dict[str, float]:
     }
 
 
+PTE_PER_EUR = 200.482
+
+
 def load_minimum_wage() -> pd.Series:
-    return pd.read_csv(DATA / "minimum_wage.csv", index_col="year")["smn_eur_month"]
+    """National minimum wage, annual average of the daily rate in force, EUR per month.
+
+    Built from DGERT's dates of change (``data/minimum_wage_changes.csv``) so that it
+    matches annual-average consumer prices. PORDATA's one-value-per-year series
+    (``data/minimum_wage.csv``) uses the rate at the end of the year for some years
+    and at the start for others, and is kept only for comparison.
+    """
+    c = pd.read_csv(DATA / "minimum_wage_changes.csv", parse_dates=["effective"])
+    c["eur"] = np.where(c["currency"] == "PTE", c["value"] / PTE_PER_EUR, c["value"])
+    days = pd.date_range(c["effective"].min(), f"{c['effective'].dt.year.max()}-12-31", freq="D")
+    rate = c.set_index("effective")["eur"].reindex(days).ffill()
+    annual = rate.groupby(rate.index.year).mean()
+    return annual.loc[annual.index > c["effective"].min().year]   # first year is partial
 
 
 def comp_per_employee_hour() -> pd.Series:
@@ -172,7 +187,11 @@ def extensions(t: pd.DataFrame, euro: pd.DataFrame, qp: pd.DataFrame,
         })
     m = pd.DataFrame(rows).set_index("base")
     m.round(2).to_csv(RESULTS / "minimum_wage_by_base_year.csv")
-    w(f"National minimum wage: actual {END} {smn[END]:,.0f}, 2026 {smn[2026]:,.0f}")
+    pordata = pd.read_csv(DATA / "minimum_wage.csv", index_col="year")["smn_eur_month"]
+    w(f"National minimum wage (annual average of the daily rate): actual {END} {smn[END]:,.0f}, 2026 {smn[2026]:,.0f}")
+    diff = (100 * (smn.loc[START:END] / pordata.loc[START:END] - 1)).round(1)
+    w("  vs PORDATA year values, years differing by more than 0.1%: " + ", ".join(
+        f"{y} {smn[y]:.2f} vs {pordata[y]:.1f} ({d:+.1f}%)" for y, d in diff.items() if abs(d) > 0.1))
     w(f"  base {START} ({smn[START]:.1f}): CF {m.loc[START, 'cf']:,.0f}  ratio {m.loc[START, 'cf'] / smn[END]:.3f}; "
       f"no cut {m.loc[START, 'cf_no_cut']:,.0f}; per hour {m.loc[START, 'cf_hour']:,.0f}")
     for col, label in (("cf", "rule"), ("cf_no_cut", "no cut"), ("cf_hour", "per hour")):
