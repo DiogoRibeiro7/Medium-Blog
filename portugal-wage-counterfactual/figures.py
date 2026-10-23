@@ -24,8 +24,9 @@ MUTED = "#898781"
 GRID = "#e1e0d9"
 AXIS = "#c3c2b7"
 BLUE, ORANGE, AQUA = "#2a78d6", "#eb6834", "#1baf7a"
-SOURCE = ("Sources: AMECO (2018 vintage) to 1995, Eurostat 1995–2024, World Bank CPI, "
-          "GEP/MTSSS Quadros de Pessoal; author's calculations.")
+SOURCE = "Sources: AMECO (2018 vintage) to 1995, Eurostat 1995–2024, World Bank CPI; author's calculations."
+SOURCE_QP = ("Sources: AMECO (2018 vintage) to 1995, Eurostat 1995–2024, World Bank CPI, "
+             "GEP/MTSSS Quadros de Pessoal; author's calculations.")
 
 plt.rcParams.update({
     "figure.facecolor": SURFACE,
@@ -56,8 +57,8 @@ plt.rcParams.update({
 })
 
 
-def finish(fig: plt.Figure, name: str) -> None:
-    fig.text(0.01, 0.01, SOURCE, fontsize=7.5, color=MUTED)
+def finish(fig: plt.Figure, name: str, source: str = SOURCE) -> None:
+    fig.text(0.01, 0.01, source, fontsize=7.5, color=MUTED)
     fig.tight_layout(rect=(0, 0.04, 1, 1))
     fig.savefig(FIGURES / name, dpi=200)
     plt.close(fig)
@@ -76,7 +77,7 @@ def base_year_curve(sens: pd.DataFrame, actual: float) -> None:
     ax.set_xlabel("Base year")
     ax.set_xlim(1975, 2023)
     ax.legend(loc="upper right", fontsize=8.5)
-    finish(fig, "fig2_base_year_curve.png")
+    finish(fig, "fig2_base_year_curve.png", SOURCE_QP)
 
 
 def decomposition(dec: pd.DataFrame) -> None:
