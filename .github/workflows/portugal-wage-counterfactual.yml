@@ -1,0 +1,55 @@
+name: Reproduce portugal-wage-counterfactual
+
+on:
+  pull_request:
+    paths:
+      - 'portugal-wage-counterfactual/**'
+      - 'portugal-labour-share/data/**'
+      - '.github/workflows/portugal-wage-counterfactual.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'portugal-wage-counterfactual/**'
+      - 'portugal-labour-share/data/**'
+      - '.github/workflows/portugal-wage-counterfactual.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: portugal-wage-counterfactual
+    env:
+      MPLBACKEND: Agg
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: portugal-wage-counterfactual/requirements.txt
+
+      - name: Install pinned dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Run the tests
+        run: python -m pytest -q tests
+
+      - name: Rerun the analysis
+        run: python wage_counterfactual.py > /dev/null
+
+      - name: Check the numbers match the committed run
+        run: git diff --exit-code -- results/summary.txt
+
+      - name: Draw the figure
+        run: |
+          python figures.py
+          test -s figures/fig1_counterfactual_wages.png
