@@ -1,0 +1,135 @@
+Working-Leser Engel slopes across income fifths within each wave (cash shares, log cash consumption per adult equivalent)
+  item: slope b (percentage points of budget share per unit of log consumption) / budget elasticity at mean share / R2
+  food: 1988 b -19.1 e 0.47 R2 1.00; 1994 b -15.9 e 0.43 R2 1.00; 1999 b -13.2 e 0.44 R2 1.00; 2005 b -11.5 e 0.46 R2 0.99; 2010 b -8.0 e 0.55 R2 0.98; 2015 b -8.6 e 0.55 R2 0.98
+  housing_cash: 1988 b -2.3 e 0.68 R2 0.91; 1994 b -1.6 e 0.83 R2 0.69; 1999 b -3.9 e 0.61 R2 0.89; 2005 b -9.4 e 0.19 R2 0.90; 2010 b -12.9 e 0.20 R2 0.90; 2015 b -16.4 e 0.04 R2 0.83
+  rent_actual: 1988 b -0.3 e 0.79 R2 0.67; 1994 b -0.8 e 0.57 R2 0.84; 1999 b -1.5 e 0.42 R2 0.82; 2005 b -5.1 e -0.52 R2 0.88; 2010 b -6.9 e -0.74 R2 0.79; 2015 b -10.2 e -1.24 R2 0.77
+  energy: 1988 b -2.3 e 0.47 R2 0.94; 1994 b -2.3 e 0.52 R2 0.97; 1999 b -2.4 e 0.48 R2 0.94; 2005 b -3.7 e 0.38 R2 0.93; 2010 b -5.4 e 0.33 R2 0.96; 2015 b -5.7 e 0.34 R2 0.93
+  water_repairs: 1988 b +0.3 e 1.19 R2 0.33; 1994 b +1.5 e 1.51 R2 0.85; 1999 b -0.1 e 0.96 R2 0.01; 2005 b -0.6 e 0.73 R2 0.73; 2010 b -0.6 e 0.85 R2 0.44; 2015 b -0.5 e 0.88 R2 0.47
+  health: 1988 b -1.8 e 0.49 R2 0.73; 1994 b -2.4 e 0.59 R2 0.95; 1999 b -2.2 e 0.65 R2 0.95; 2005 b -5.0 e 0.40 R2 0.78; 2010 b -5.1 e 0.36 R2 0.93; 2015 b -3.6 e 0.52 R2 0.90
+  transport_running: 1988 b +4.0 e 1.48 R2 0.91; 1994 b +3.3 e 1.38 R2 0.77; 1999 b +1.7 e 1.22 R2 0.61; 2005 b +3.1 e 1.33 R2 0.42; 2010 b +4.7 e 1.39 R2 0.65; 2015 b +4.9 e 1.40 R2 0.54
+  vehicles: 1988 b +6.8 e 2.44 R2 0.95; 1994 b +6.4 e 1.96 R2 0.98; 1999 b +5.9 e 1.75 R2 0.84; 2005 b +5.4 e 2.12 R2 0.79; 2010 b +5.1 e 2.32 R2 0.90; 2015 b +5.0 e 2.26 R2 0.97
+  restaurants_hotels: 1988 b +5.8 e 1.64 R2 0.97; 1994 b +4.3 e 1.46 R2 0.99; 1999 b +1.1 e 1.11 R2 0.37; 2005 b +3.8 e 1.31 R2 0.97; 2010 b +5.9 e 1.51 R2 0.96; 2015 b +5.9 e 1.58 R2 0.98
+  recreation: 1988 b +2.1 e 1.57 R2 0.99; 1994 b +1.9 e 1.52 R2 0.91; 1999 b +3.5 e 1.75 R2 0.94; 2005 b +5.6 e 1.95 R2 1.00; 2010 b +3.6 e 1.63 R2 0.99; 2015 b +3.9 e 1.84 R2 0.98
+  education: 1988 b +0.7 e 2.46 R2 0.85; 1994 b +1.4 e 2.27 R2 0.89; 1999 b +1.5 e 2.34 R2 0.94; 2005 b +2.9 e 2.88 R2 0.96; 2010 b +3.0 e 2.49 R2 0.98; 2015 b +3.9 e 2.75 R2 1.00
+  clothing: 1988 b +1.6 e 1.16 R2 0.54; 1994 b +0.6 e 1.09 R2 0.89; 1999 b +0.8 e 1.11 R2 0.85; 2005 b +2.1 e 1.44 R2 0.95; 2010 b +2.4 e 1.59 R2 0.98; 2015 b +3.2 e 1.81 R2 0.96
+  communications: 1988 b +0.3 e 1.27 R2 0.90; 1994 b -0.3 e 0.87 R2 0.91; 1999 b +0.1 e 1.02 R2 0.05; 2005 b -0.6 e 0.84 R2 0.82; 2010 b -0.8 e 0.81 R2 0.69; 2015 b -1.4 e 0.68 R2 0.73
+
+Discretionary items, cash share by fifth (QU1 / QU5)
+  alcohol_tobacco: 1988 5.3/2.9; 1994 4.8/2.2; 1999 3.6/2.3; 2005 3.4/1.9; 2010 2.4/1.8; 2015 2.4/1.5
+  clothing: 1988 7.5/10.0; 1994 6.6/7.4; 1999 6.7/7.7; 2005 3.5/5.8; 2010 3.0/5.4; 2015 2.4/5.3
+  furnishings: 1988 6.1/8.1; 1994 6.2/8.7; 1999 5.7/10.1; 2005 4.8/7.3; 2010 4.5/6.1; 2015 4.0/6.2
+  vehicles: 1988 0.9/10.5; 1994 2.3/12.0; 1999 3.0/10.7; 2005 1.1/7.1; 2010 1.7/6.5; 2015 1.6/6.3
+  communications: 1988 0.8/1.2; 1994 2.5/2.1; 1999 3.7/3.7; 2005 4.1/3.4; 2010 4.5/3.6; 2015 4.5/3.4
+  recreation: 1988 2.1/5.2; 1994 2.7/5.4; 1999 3.1/7.5; 2005 3.0/9.4; 2010 4.0/7.8; 2015 3.1/6.6
+  education: 1988 0.2/1.2; 1994 0.3/2.2; 1999 0.4/2.3; 2005 0.4/3.5; 2010 0.7/3.8; 2015 0.7/4.2
+  restaurants_hotels: 1988 4.8/13.3; 1994 6.1/12.5; 1999 10.6/11.6; 2005 10.9/15.0; 2010 8.5/14.5; 2015 7.5/13.0
+  miscellaneous: 1988 3.0/6.5; 1994 5.1/8.6; 1999 4.9/8.0; 2005 6.0/9.1; 2010 7.2/8.3; 2015 7.6/8.8
+  transport_running: 1988 4.9/11.0; 1994 5.4/10.1; 1999 6.1/8.1; 2005 6.0/10.0; 2010 8.4/13.5; 2015 8.5/13.4
+  health: 1988 5.6/2.7; 1994 7.7/4.2; 1999 7.7/5.1; 2005 12.3/6.2; 2010 10.8/5.6; 2015 9.3/5.8
+  all discretionary items listed: 1988 30.7/59.0; 1994 36.7/61.0; 1999 41.7/63.9; 2005 37.1/62.6; 2010 36.7/57.8; 2015 33.7/55.4
+
+Chained price index by fifth, 1996 = 100 (weights 1999 wave to 2005, 2005 to 2010, 2010 to 2015, 2015 after)
+  2000: QU1 109.4, QU2 109.7, QU3 109.8, QU4 109.8, QU5 109.7, TOTAL 109.7, HICP 109.4
+  2005: QU1 126.2, QU2 127.3, QU3 128.0, QU4 128.2, QU5 128.6, TOTAL 128.0, HICP 128.0
+  2010: QU1 138.4, QU2 139.2, QU3 139.6, QU4 139.6, QU5 139.6, TOTAL 139.4, HICP 139.3
+  2015: QU1 152.0, QU2 152.1, QU3 151.7, QU4 151.0, QU5 149.6, TOTAL 150.6, HICP 149.5
+  2020: QU1 158.1, QU2 158.2, QU3 157.5, QU4 156.7, QU5 154.9, TOTAL 156.3, HICP 154.8
+  2021: QU1 160.1, QU2 160.2, QU3 159.6, QU4 158.7, QU5 156.8, TOTAL 158.3, HICP 156.3
+  2022: QU1 174.5, QU2 174.3, QU3 173.3, QU4 172.0, QU5 169.7, TOTAL 171.7, HICP 169.0
+  2023: QU1 181.5, QU2 181.8, QU3 180.8, QU4 179.6, QU5 177.2, TOTAL 179.1, HICP 177.8
+  2024: QU1 187.8, QU2 187.6, QU3 186.2, QU4 184.7, QU5 181.9, TOTAL 184.3, HICP 182.6
+  2025: QU1 192.4, QU2 192.0, QU3 190.4, QU4 188.9, QU5 186.0, TOTAL 188.6, HICP 186.6
+  QU1 minus QU5, index points: 2000 -0.3, 2005 -2.3, 2010 -1.2, 2015 +2.4, 2020 +3.1, 2025 +6.3
+  cumulative 1996-2025: QU1 +92.4%, QU5 +86.0%, HICP +86.6%
+  sensitivity to the weights (QU1 minus QU5 in 2025, cumulative from 1996, percentage points):
+    chained +6.3, fixed 1999 +5.7, fixed 2005 +7.7, fixed 2010 +4.7, fixed 2015 +7.7
+
+Core basic-needs share of cash consumption (national accounts): change split into relative price and relative volume
+  (Tornqvist chained volumes from CLV20 components; log points; total = price + volume)
+  1995-2008: share 26.2% -> 24.7%, total -6.0 = price -23.3 + volume +17.3
+  2008-2013: share 24.7% -> 29.0%, total +16.2 = price +6.1 + volume +10.1
+  2013-2019: share 29.0% -> 25.6%, total -12.3 = price -0.9 + volume -11.4
+  2019-2020: share 25.6% -> 30.4%, total +17.1 = price +2.4 + volume +14.7
+  2020-2022: share 30.4% -> 27.3%, total -10.8 = price +2.4 + volume -13.3
+  1995-2022: share 26.2% -> 27.3%, total +4.2 = price -13.1 + volume +17.4
+  identity check (std of price x volume / share): 1.57e-16
+  volume growth 2008-2013: core -0.4%, all cash consumption -9.9%; 2019-2020: core +0.2%, all -13.5%
+  implicit national-accounts deflator vs HICP, 1996 relative to 2020:
+    CP01: national accounts 0.927, HICP 0.701; national-accounts volume 1996-2020 +95.3%
+    CP041: national accounts 0.524, HICP 0.572; national-accounts volume 1996-2020 +45.3%
+    CP045: national accounts 0.465, HICP 0.533; national-accounts volume 1996-2020 +17.4%
+    total: national accounts 0.627, HICP 0.646
+  with HICP prices (Tornqvist over components, current-price weights) and volume as the residual:
+    1996-2008: share 25.9% -> 24.7%, total -5.0 = price -2.1 + volume -3.0
+    2008-2013: share 24.7% -> 29.0%, total +16.2 = price +2.4 + volume +13.8
+    2013-2019: share 29.0% -> 25.6%, total -12.3 = price -0.2 + volume -12.2
+    2019-2020: share 25.6% -> 30.4%, total +17.1 = price +1.5 + volume +15.6
+    2020-2022: share 30.4% -> 27.3%, total -10.8 = price +4.4 + volume -15.3
+    1996-2022: share 25.9% -> 27.3%, total +5.1 = price +6.2 + volume -1.0
+
+Budget survey by hhcomp: core basic needs, cash share (1988 / 1999 / 2015), and 2015 rent, energy, food, health
+  single adult: core 35.7 / 34.1 / 36.0; 2015 rent 5.7, energy 8.9, food 16.4, health 8.8, imputed rent 24.9 of total; housing incl. imputed 2020 (2022/23) 47.4
+  single adult with children: core 37.7 / 28.4 / 34.0; 2015 rent 6.7, energy 7.9, food 15.7, health 4.9, imputed rent 19.1 of total; housing incl. imputed 2020 (2022/23) 39.1
+  two adults: core 39.1 / 36.3 / 35.5; 2015 rent 3.6, energy 8.5, food 19.2, health 8.5, imputed rent 21.2 of total; housing incl. imputed 2020 (2022/23) 43.1
+  two adults with children: core 37.8 / 27.2 / 29.2; 2015 rent 2.3, energy 6.8, food 16.9, health 5.3, imputed rent 18.7 of total; housing incl. imputed 2020 (2022/23) 34.2
+  three or more adults: core 38.9 / 29.1 / 34.6; 2015 rent 2.0, energy 8.6, food 20.3, health 7.5, imputed rent 18.9 of total; housing incl. imputed 2020 (2022/23) 35.8
+  three or more adults with children: core 38.3 / 30.0 / 30.6; 2015 rent 1.8, energy 7.6, food 17.9, health 6.4, imputed rent 16.6 of total; housing incl. imputed 2020 (2022/23) 32.6
+
+Budget survey by age: core basic needs, cash share (1988 / 1999 / 2015), and 2015 rent, energy, food, health
+  under 30: core 33.1 / 28.9 / 30.9; 2015 rent 8.5, energy 5.8, food 13.8, health 4.0, imputed rent 11.9 of total; housing incl. imputed 2020 (2022/23) 34.9
+  30 to 44: core 33.4 / 27.4 / 29.4; 2015 rent 3.6, energy 6.8, food 16.0, health 5.2, imputed rent 18.8 of total; housing incl. imputed 2020 (2022/23) 35.0
+  45 to 59: core 38.1 / 29.0 / 30.7; 2015 rent 2.6, energy 7.2, food 17.4, health 5.8, imputed rent 19.6 of total; housing incl. imputed 2020 (2022/23) 37.0
+  60 and over: core 46.3 / 37.6 / 37.9; 2015 rent 2.7, energy 9.8, food 20.6, health 10.1, imputed rent 22.5 of total; housing incl. imputed 2020 (2022/23) 44.4
+
+Budget survey by deg_urb: core basic needs, cash share (1988 / 1999 / 2015), and 2015 rent, energy, food, health
+  cities: core 35.9 / 28.4 / 31.5; 2015 rent 4.0, energy 6.6, food 16.9, health 6.6, imputed rent 20.1 of total; housing incl. imputed 2020 (2022/23) 41.7
+  towns and suburbs: core 40.4 / 32.1 / 32.5; 2015 rent 3.0, energy 8.1, food 18.1, health 6.6, imputed rent 19.8 of total; housing incl. imputed 2020 (2022/23) 37.8
+  rural areas: core 42.5 / 36.7 / 35.8; 2015 rent 1.6, energy 10.3, food 20.1, health 7.8, imputed rent 20.3 of total; housing incl. imputed 2020 (2022/23) 34.8
+
+Core basic needs, cash share, poorest and richest fifth, by country, every wave with components
+  PT: 1988 58.8/27.2 (ratio 2.16); 1994 50.3/24.6 (ratio 2.04); 1999 44.4/22.9 (ratio 1.94); 2005 44.5/21.1 (ratio 2.11); 2010 44.6/23.1 (ratio 1.93); 2015 48.6/25.3 (ratio 1.92)
+  ES: 1988 46.1/29.9 (ratio 1.54); 1994 45.8/28.0 (ratio 1.64); 1999 40.9/27.1 (ratio 1.51); 2005 42.5/26.7 (ratio 1.59); 2010 45.4/23.9 (ratio 1.90); 2015 47.7/26.6 (ratio 1.79); 2020 52.6/31.9 (ratio 1.65)
+  IT: 1988 55.9/27.9 (ratio 2.00); 1994 53.4/27.9 (ratio 1.91); 1999 41.7/26.8 (ratio 1.56); 2005 55.1/24.2 (ratio 2.28)
+  EL: 1988 46.2/28.0 (ratio 1.65); 1994 45.0/24.8 (ratio 1.81); 1999 41.8/22.1 (ratio 1.89); 2005 40.7/20.9 (ratio 1.95); 2010 48.1/21.0 (ratio 2.29); 2015 49.0/28.2 (ratio 1.74); 2020 52.1/33.0 (ratio 1.58)
+Actual rent, energy and food, cash share, poorest / richest fifth, 2015
+  PT: rent 11.1 / 1.0; energy 11.4 / 6.2; food 22.0 / 14.4
+  ES: rent 12.3 / 1.6; energy 6.6 / 4.4; food 24.2 / 16.0
+  IT: n/a
+  EL: rent 10.5 / 1.7; energy 8.8 / 5.4; food 26.3 / 18.4
+Actual rent, energy and food, cash share, poorest / richest fifth, 2020
+  PT: n/a
+  ES: rent 16.2 / 2.4; energy 6.8 / 4.8; food 24.8 / 19.6
+  IT: n/a
+  EL: rent 10.6 / 1.6; energy 10.5 / 6.0; food 27.1 / 22.0
+
+HICP division weights against budget-survey cash shares (2015 wave)
+  CP01: HICP weight 2015 20.8%, 2022 21.7%, 2023 20.6%; survey cash share all households 17.9%, QU1 22.0%, QU5 14.4%
+  CP04: HICP weight 2015 9.2%, 2022 9.4%, 2023 9.4%; survey cash share all households 14.9%, QU1 26.7%, QU5 10.8%
+  CP07: HICP weight 2015 13.3%, 2022 15.2%, 2023 14.3%; survey cash share all households 17.6%, QU1 10.1%, QU5 19.8%
+  CP11: HICP weight 2015 11.9%, 2022 10.2%, 2023 14.2%; survey cash share all households 11.0%, QU1 7.4%, QU5 13.1%
+  CP06: HICP weight 2015 5.9%, 2022 6.8%, 2023 6.2%; survey cash share all households 6.9%, QU1 9.2%, QU5 5.8%
+  CP09: HICP weight 2015 6.5%, 2022 4.9%, 2023 4.7%; survey cash share all households 5.2%, QU1 3.1%, QU5 6.6%
+  2021-2023 basket with HICP 2023 weights: 13.9%; same with restaurants and hotels at the survey cash share: 13.5%; survey cash weights: 13.0%; published HICP: 13.8%
+  HICP 2023 weights minus survey cash weights, contribution to the 2021-2023 difference (points): CP11 +0.43 (weight 14.2 vs 11.0, price +26.6%), CP01 +0.32 (weight 20.6 vs 17.9, price +24.3%), CP10 +0.10 (weight 1.7 vs 2.9, price +4.7%), CP07 +0.09 (weight 14.3 vs 17.6, price +10.3%), CP08 +0.09 (weight 2.8 vs 4.0, price +5.7%), CP06 +0.08 (weight 6.2 vs 6.9, price +1.0%), CP04 +0.07 (weight 9.4 vs 14.9, price +11.7%), CP02 -0.09 (weight 3.4 vs 2.0, price +6.7%), CP12 -0.12 (weight 9.7 vs 8.4, price +4.3%), CP03 -0.17 (weight 5.8 vs 4.4, price +1.5%)
+  total +0.87
+
+Euro amounts per month (INE mean expenditure per household / Eurostat PPS mean, applied to each fifth)
+  2010 wave (fieldwork 2010/2011): factor 0.873 EUR per PPS; minimum wage averaged over the fieldwork years 480.0 a month, 560 spread over twelve months
+  2015 wave (fieldwork 2015/2016): factor 0.842 EUR per PPS; minimum wage averaged over the fieldwork years 517.5 a month, 604 spread over twelve months
+  2020 wave (fieldwork 2022/2023): factor 0.987 EUR per PPS; minimum wage averaged over the fieldwork years 732.5 a month, 855 spread over twelve months
+    2010 QU1: consumption 734 per household, 582 per adult eq.; food 126; cash 602, core 268, left after core 334 per household (213 and 265 per adult eq.)
+    2010 QU3: consumption 1500 per household, 907 per adult eq.; food 226; cash 1209, core 412, left after core 796 per household (250 and 482 per adult eq.)
+    2010 QU5: consumption 3188 per household, 1627 per adult eq.; food 341; cash 2659, core 615, left after core 2044 per household (314 and 1043 per adult eq.)
+    2015 QU1: consumption 799 per household, 638 per adult eq.; food 146; cash 664, core 323, left after core 341 per household (258 and 272 per adult eq.)
+    2015 QU3: consumption 1565 per household, 947 per adult eq.; food 244; cash 1235, core 432, left after core 803 per household (261 and 486 per adult eq.)
+    2015 QU5: consumption 3116 per household, 1647 per adult eq.; food 361; cash 2508, core 636, left after core 1873 per household (336 and 990 per adult eq.)
+    2020 QU1: consumption 1038 per household, 816 per adult eq.; food 177
+    2020 QU3: consumption 1807 per household, 1104 per adult eq.; food 262
+    2020 QU5: consumption 3493 per household, 1893 per adult eq.; food 349
+  per adult equivalent, 2015/16, food / cash housing (rent, energy, water, repairs) a month: QU1 117 / 141, QU2 141 / 129, QU3 148 / 114, QU4 164 / 117, QU5 191 / 145
+  check: Eurostat PPP for actual individual consumption, EUR per PPS (EU27_2020): 2010 0.867, 2011 0.869, 2015 0.837, 2016 0.851, 2020 0.881, 2022 0.852, 2023 0.846
+  poorest fifth's 2015 core basket at 2025 prices (fixed quantities): 323 -> 431 a month per household (+33.5%); minimum wage 505 -> 870 (+72.3%); core basket as % of the minimum wage spread over twelve months: 53.5% (2015/16) -> 42.5%
+  2010 QU1 core per household as % of the minimum wage over twelve months: 47.9%; all consumption per household: 131.0%
+  2015 QU1 core per household as % of the minimum wage over twelve months: 53.5%; all consumption per household: 132.4%
+  2020 (2022/23) QU1 consumption per household as % of the minimum wage over twelve months: 121.4%; food 177 a month
+
