@@ -34,6 +34,8 @@ QUERIES: dict[str, tuple[str, dict[str, str | list[str]]]] = {
     # Same, chain-linked volumes (two reference years tried; whichever exists is used).
     "nama_10_co3_p3_clv20": ("nama_10_co3_p3", {"geo": "PT", "unit": "CLV20_MEUR"}),
     "nama_10_co3_p3_clv15": ("nama_10_co3_p3", {"geo": "PT", "unit": "CLV15_MEUR"}),
+    # Household final consumption, national concept (resident households), to compare with the COICOP total.
+    "nama_10_gdp_p31": ("nama_10_gdp", {"geo": "PT", "unit": "CP_MEUR", "na_item": ["P31_S14", "P31_S14_S15"]}),
     # Household key indicators: saving rate, investment rate, ...
     "nasa_10_ki": ("nasa_10_ki", {"geo": "PT"}),
     # Household budget survey: structure of consumption by COICOP (per mille).
