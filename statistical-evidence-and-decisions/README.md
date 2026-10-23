@@ -355,3 +355,24 @@ Smoke:
 ```bash
 DETECTOR_SMOKE=1 DETECTOR_REPEATS=1 jupyter nbconvert --to notebook --execute --output change-point-and-retraining.executed.ipynb change-point-and-retraining.ipynb
 ```
+
+## Fixed-horizon false alarms and maintenance economics
+
+[horizon-detector-economics.ipynb](horizon-detector-economics.ipynb)
+calibrates CUSUM maxima on independent stable or AR(1) null streams and
+evaluates four maintenance policies: frozen, scheduled, CUSUM with IID
+calibration, and CUSUM calibrated to the corresponding null regime.
+
+The order-statistic threshold targets the probability of one or more
+alerts in a fixed monitoring horizon, marginally over exchangeable null
+streams. This is not an anytime-valid guarantee. No evaluation stream is
+used to calibrate the threshold. A detected refit incurs a specified
+cost at the event time, with comparisons reported as net economic regret.
+
+Implementation: [horizon_detector_economics.py](horizon_detector_economics.py).
+Tests: [tests/test_horizon_detector_economics.py](tests/test_horizon_detector_economics.py).
+
+Smoke:
+```bash
+MAINTENANCE_SMOKE=1 MAINTENANCE_REPEATS=1 jupyter nbconvert --execute --to notebook --output horizon-detector-economics.executed.ipynb horizon-detector-economics.ipynb
+```

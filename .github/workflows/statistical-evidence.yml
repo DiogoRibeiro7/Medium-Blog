@@ -123,3 +123,14 @@ jobs:
           --ExecutePreprocessor.timeout=300
           --output change-point-and-retraining.executed.ipynb
           change-point-and-retraining.ipynb
+
+      - name: Execute detector economics notebook
+        working-directory: statistical-evidence-and-decisions
+        env:
+          MAINTENANCE_SMOKE: "1"
+          MAINTENANCE_REPEATS: "1"
+        run: >-
+          jupyter nbconvert --to notebook --execute
+          --ExecutePreprocessor.timeout=300
+          --output horizon-detector-economics.executed.ipynb
+          horizon-detector-economics.ipynb
