@@ -65,13 +65,15 @@ def finish(fig: plt.Figure, name: str, source: str = SOURCE) -> None:
 
 
 def base_year_curve(sens: pd.DataFrame, actual: float) -> None:
-    fig, ax = plt.subplots(figsize=(8, 4.4))
+    fig, ax = plt.subplots(figsize=(8, 4.8))
     ax.plot(sens["base"], actual * sens["cf_over_actual"], color=ORANGE,
             label="Counterfactual: base-year wage + CPI inflation + productivity per person")
     ax.plot(sens["base"], actual * sens["cf_over_actual_mult"], color=ORANGE, lw=1.0,
             ls="--", label="Same, multiplicative rule")
     ax.plot(sens["base"], actual * sens["cf_over_actual_hour"], color=ORANGE, lw=1.0,
             ls=":", label="Same, productivity per hour")
+    ax.plot(sens["base"], actual * sens["cf_over_actual_no_cut"], color=AQUA,
+            label="Same, but the wage never falls from one year to the next")
     ax.axhline(actual, color=BLUE, label=f"Actual (€{actual:,.0f})")
     ax.set_title("Mean monthly earnings in 2024 implied by each base year, €")
     ax.set_xlabel("Base year")

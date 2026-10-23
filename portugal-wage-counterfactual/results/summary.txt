@@ -96,6 +96,33 @@ Every base year (productivity per person, additive): CF/actual, QP mean and medi
   multiplicative: base years above actual: 1975, 1976, 1977, 1978, 1979, 1980, 1981, 1982
   per hour: base years above actual: 1975, 1976, 1977
 
+Scenario: no year-on-year fall (additive rule, productivity per person)
+  years where inflation + productivity growth < 0: 2009 (-1.24%), 2014 (-1.07%), 2020 (-6.36%)
+  years where productivity growth < 0: 2008 (-0.05%), 2009 (-0.41%), 2014 (-0.79%), 2020 (-6.35%)
+  ratchet from no nominal cut, base 1975: 8.9 log points; 2009 1.25, 2014 1.08, 2020 6.57
+  2020 productivity growth: per person -6.35%, per hour -0.00%; 2021: per person +4.10%, per hour +1.02%
+  no nominal cut                 base 1975: CF/actual 1.553  compensation   48,253  QP mean  2,457  QP median  1,842
+  no nominal cut                 base 1975, multiplicative: CF/actual 1.723  QP mean  2,726
+  no productivity fall passed on base 1975: CF/actual 1.536  compensation   47,733  QP mean  2,431  QP median  1,822
+  no productivity fall passed on base 1975, multiplicative: CF/actual 1.704  QP mean  2,697
+  no nominal cut: base years above actual (27 of 49): 1975, 1976, 1977, 1978, 1979, 1980, 1981, 1982, 1983, 1992, 1993, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010
+    base years 1983-2023: CF/actual 0.893 to 1.059, median 0.988; QP mean 1,413 to 1,675
+  no productivity fall passed on: base years above actual (25 of 49): 1975, 1976, 1977, 1978, 1979, 1980, 1981, 1982, 1983, 1992, 1993, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2009, 2010
+    base years 1983-2023: CF/actual 0.893 to 1.047, median 0.978; QP mean 1,413 to 1,657
+  no nominal cut, per hour: base years above actual (4 of 49): 1975, 1976, 1977, 1978
+    base years 1983-2023: CF/actual 0.815 to 0.996, median 0.905; QP mean 1,289 to 1,576
+  base 1985: rule 0.856 (1,355), no cut 0.936 (1,481), no productivity fall 0.926 (1,465)
+  base 1995: rule 0.933 (1,477), no cut 1.020 (1,614), no productivity fall 1.009 (1,597)
+  base 2000: rule 0.968 (1,533), no cut 1.059 (1,675), no productivity fall 1.047 (1,657)
+  base 2008: rule 0.921 (1,457), no cut 1.006 (1,593), no productivity fall 0.995 (1,575)
+  base 2010: rule 0.935 (1,480), no cut 1.010 (1,598), no productivity fall 1.007 (1,593)
+  base 2013: rule 0.846 (1,338), no cut 0.913 (1,445), no productivity fall 0.910 (1,440)
+  base 2015: rule 0.836 (1,323), no cut 0.893 (1,413), no productivity fall 0.893 (1,413)
+  base 2019: rule 0.893 (1,413), no cut 0.954 (1,509), no productivity fall 0.954 (1,509)
+  base 2021: rule 0.976 (1,545), no cut 0.976 (1,545), no productivity fall 0.976 (1,545)
+  Quadros de Pessoal mean only, base 1985, no cut: CF 1,589  CF/actual 1.004
+  no cut except in 2020: base years above actual: 1975, 1976, 1977, 1978, 1979, 1980, 1981, 1982
+
 Decomposition by base year, log points (multiplicative rule): total = price wedge + wage share
   1975:  +45.5 =   +0.4  +45.1
   1977:  +25.4 =  -10.9  +36.3

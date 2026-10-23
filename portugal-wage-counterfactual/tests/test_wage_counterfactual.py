@@ -68,3 +68,30 @@ def test_decomposition_identity(inputs: pd.DataFrame, base: int) -> None:
 def test_unknown_rule_is_rejected(inputs: pd.DataFrame) -> None:
     with pytest.raises(ValueError):
         wc.counterfactual(inputs, 2000, rule="geometric")
+
+
+@pytest.mark.parametrize("floor", ["nominal", "productivity"])
+def test_floor_never_lowers_the_counterfactual(inputs: pd.DataFrame, floor: str) -> None:
+    for base in range(wc.START, wc.END):
+        assert wc.ratio(inputs, base, floor=floor) >= wc.ratio(inputs, base) - 1e-12
+
+
+def test_nominal_floor_path_never_falls(inputs: pd.DataFrame) -> None:
+    path = wc.counterfactual(inputs, wc.START, floor="nominal")
+    assert (path.diff().dropna() >= 0).all()
+
+
+def test_nominal_floor_is_the_rule_times_the_ratchet(inputs: pd.DataFrame) -> None:
+    step = (1 + inputs["infl"] + inputs["g_person"]).loc[1990 + 1:wc.END]
+    ratchet = (1 / step[step < 1]).prod()
+    assert wc.ratio(inputs, 1990, floor="nominal") == pytest.approx(
+        wc.ratio(inputs, 1990) * ratchet, rel=1e-12)
+
+
+def test_floor_changes_nothing_without_a_falling_year(inputs: pd.DataFrame) -> None:
+    assert wc.ratio(inputs, 2021, floor="nominal") == pytest.approx(wc.ratio(inputs, 2021))
+
+
+def test_unknown_floor_is_rejected(inputs: pd.DataFrame) -> None:
+    with pytest.raises(ValueError):
+        wc.counterfactual(inputs, 2000, floor="real")
