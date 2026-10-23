@@ -414,3 +414,27 @@ COMPARATIVE_SMOKE=1 COMPARATIVE_REPEATS=1 jupyter nbconvert --execute \\
 This is a methodological simulation, not evidence that one detector is
 universally preferable or that a synthetic benefit is a causal effect.
 
+## Independent detector validation and familywise alarms
+
+[detector-monte-carlo-validation.ipynb](detector-monte-carlo-validation.ipynb)
+extends the CUSUM/GLR/BOCPD comparison with stream-level Monte Carlo
+uncertainty, Wilson intervals for empirical false alarms, paired bootstrap
+economic-regret differences, and a prespecified sensitivity analysis.
+
+The module [detector_evidence_audit.py](detector_evidence_audit.py) calibrates
+null fixed-horizon thresholds independently for each detector and, separately,
+by a Bonferroni-adjusted target over the three-detector family. It does not
+claim anytime-valid control or correct across *post-hoc selection of parameter
+profiles*. Reported coverage intervals condition on the realised calibration
+thresholds; changing the calibration seed can change the threshold.
+
+Economic comparisons are paired on identical streams, with explicit costs.
+Drift detection and first-alarm delay are descriptive, and no synthetic
+conditional benefit is interpreted causally.
+
+Tests: [tests/test_detector_evidence_audit.py](tests/test_detector_evidence_audit.py).
+
+Smoke:
+```bash
+MC_VALIDATION_SMOKE=1 MC_VALIDATION_REPEATS=1 jupyter nbconvert --execute --to notebook --output detector-monte-carlo-validation.executed.ipynb detector-monte-carlo-validation.ipynb
+```
