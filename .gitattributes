@@ -8,3 +8,4 @@ portugal-labour-share/**/*.csv -filter -diff -merge text
 portugal-labour-share-industries/**/*.csv -filter -diff -merge text
 agent-eval-runs/**/*.csv -filter -diff -merge text
 portugal-wage-counterfactual/**/*.csv -filter -diff -merge text
+portugal-household-spending/**/*.csv -filter -diff -merge text
