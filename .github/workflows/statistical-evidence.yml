@@ -146,3 +146,13 @@ jobs:
           --output comparative-change-detection.executed.ipynb
           comparative-change-detection.ipynb
 
+      - name: Execute detector Monte Carlo validation notebook
+        working-directory: statistical-evidence-and-decisions
+        env:
+          MC_VALIDATION_SMOKE: "1"
+          MC_VALIDATION_REPEATS: "1"
+        run: >-
+          jupyter nbconvert --to notebook --execute
+          --ExecutePreprocessor.timeout=300
+          --output detector-monte-carlo-validation.executed.ipynb
+          detector-monte-carlo-validation.ipynb
