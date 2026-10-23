@@ -35,7 +35,7 @@ It writes `results/summary.txt` (every number), the CSVs behind it, and twelve f
 
 ## Data
 
-`fetch.py` downloads the Eurostat datasets in `data/` from the statistics API (JSON-stat); `.github/workflows/portugal-household-spending-data.yml` runs it and commits the snapshot, and `data/fetch_log.txt` records what each request returned. Datasets: `nama_10_co3_p3`, `nasa_10_ki`, `hbs_str_t211`, `hbs_str_t223`, `hbs_exp_t133`, `icw_sr_03`, `prc_hicp_aind`. 2021 and 2022 are provisional in `nama_10_co3_p3` for Portugal.
+`fetch.py` downloads the Eurostat datasets in `data/` from the statistics API (JSON-stat); `.github/workflows/portugal-household-spending-data.yml` runs it and commits the snapshot, and `data/fetch_log.txt` records what each request returned. Datasets: `nama_10_co3_p3`, `nasa_10_ki`, `hbs_str_t211`, `hbs_str_t223`, `hbs_exp_t133`, `icw_sr_03`, `prc_hicp_aind`. 2022 is provisional in `nama_10_co3_p3` for Portugal. In Portugal the budget-survey wave Eurostat labels 2020 was collected in 2022/23 (IDEF 2022/2023).
 
 The workflow in `.github/workflows/portugal-household-spending.yml` reruns the analysis on every change and checks that `results/summary.txt` is unchanged.
 

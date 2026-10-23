@@ -28,33 +28,33 @@ Unless stated otherwise, every share below is defined this way. Shares that incl
 
 The sources are Eurostat tables, downloaded by a script and committed as a snapshot in the [companion folder of the Medium-Blog repository](https://github.com/DiogoRibeiro7/Medium-Blog/tree/main/portugal-household-spending), together with the code that produces every number and figure:
 
-- household final consumption by COICOP purpose (`nama_10_co3_p3`), annual, 1995–2022, with 2021 and 2022 provisional for Portugal;
-- the household budget survey structure by income quintile (`hbs_str_t223`) and mean consumption per adult equivalent by quintile (`hbs_exp_t133`), seven waves from 1988 to 2020;
+- household final consumption by COICOP purpose (`nama_10_co3_p3`), annual, 1995–2022, with 2022 provisional for Portugal;
+- the household budget survey structure by income quintile (`hbs_str_t223`) and mean consumption per adult equivalent by quintile (`hbs_exp_t133`), seven waves from 1988 to 2020. In Portugal the wave Eurostat labels 2020 was collected in 2022/23 (INE's IDEF 2022/2023); we write it as 2020 (2022/23);
 - the gross household saving rate (`nasa_10_ki`), 1995–2025;
-- an experimental median saving rate by income quintile (`icw_sr_03`), 2010, 2015 and 2020;
+- an experimental median saving rate by income quintile (`icw_sr_03`), for three waves labelled around 2010, 2015 and 2020; for Portugal the third uses the 2022 budget survey;
 - harmonised consumer price indices by COICOP (`prc_hicp_aind`), 1996–2025.
 
 The national accounts give an annual series for all households together. The budget survey gives the distribution, but only every five or six years, and the published tables carry no standard errors, so differences of a point or two between fifths within a single wave should not be read as precise.
 
 ## All households, 1995–2022
 
-For all households, `s_C` ranged from 23.7% (2000) to 30.4% (2020). It drifted down in the late 1990s, stayed between 24% and 25% through most of the 2000s, and rose to 28.1% by 2015. The 2020 maximum reflects the denominator as much as the numerator: between 2019 and 2020 spending on restaurants and hotels fell from €20.5 billion to €12.4 billion, on transport from €19.9 billion to €14.7 billion and on clothing from €8.5 billion to €7.3 billion, while food spending rose, so the essentials became a larger share of a smaller total. In 2022 the share was 27.3%.
+For all households, `s_C` ranged from 23.7% (2000) to 30.4% (2020). It drifted down from 26.2% in 1995 to 23.7% in 2000, stayed between 24% and 26% until 2010, rose to 29.0% in 2013 and fell back to 25.6% by 2019, close to its 2010 level. The 2020 maximum reflects the denominator as much as the numerator: between 2019 and 2020 spending on restaurants and hotels fell from €20.5 billion to €12.4 billion, on transport from €19.9 billion to €14.7 billion and on clothing from €8.5 billion to €7.3 billion, while food spending rose, so the essentials became a larger share of a smaller total. In 2022 the share was 27.3%.
 
 ![Figure 1](https://raw.githubusercontent.com/DiogoRibeiro7/Medium-Blog/main/portugal-household-spending/figures/fig01_basic_needs_national_accounts.png)
 
-*Figure 1. Core basic needs as a share of household consumption, imputed rent excluded, 1995–2022, with the wider set as a dashed line. Source: Eurostat nama_10_co3_p3; 2021–2022 provisional.*
+*Figure 1. Core basic needs as a share of household consumption, imputed rent excluded, 1995–2022, with the wider set (adding health, the running costs of transport and transport services) as a dashed line. Source: Eurostat nama_10_co3_p3; 2022 provisional.*
 
 Food accounts for most of the core share, between 17.1% and 21.3% of consumption. Actual rent never exceeds 4% in the aggregate and household energy stays between 2.7% and 4.2%. The wider set `s_W` moves between 38.5% and 44.8%. At this level of aggregation the share of consumption absorbed by basic needs changed by a few points over twenty-eight years.
 
-Imputed rent moved more. It rose from 6.9% of total consumption in 1995 to 10.9% in 2015 and 12.3% in 2020, which is the main reason housing appears to grow in importance whenever it is measured with imputed rent included.
+Imputed rent moved more. It rose from 6.9% of total consumption in 1995 to 10.9% in 2015 and 12.3% in 2020. Part of the movement is the denominator: between 2019 and 2020 the share went from 10.5% to 12.3% while imputed rent itself rose 3.7% and total consumption fell 11.5%.
 
 ## The saving rate
 
-The gross household saving rate fell from 14.3% of disposable income in 1995 to 10.0% in 2005 and reached its minimum, 6.5%, in 2017. Its mean was 12.0% over 1995–2007 and 8.1% over 2008–2019. The three largest annual increases came in 2020 (to 12.1%), 2009 (to 11.5%) and 2024 (to 12.9%, provisional); 2022 was 7.3% and the provisional figure for 2025 is 12.3%.
+The gross household saving rate fell from 14.3% of disposable income in 1995 to 10.0% in 2005 and reached its minimum, 6.5%, in 2017. Its mean was 12.0% over 1995–2007 and 8.1% over 2008–2019. The three largest annual increases came in 2020 (to 12.1%), 2009 (to 11.5%) and 2024 (to 12.9%); 2022 was 7.3%, 2023 8.9%, and the provisional figure for 2025 is 12.3%.
 
 ![Figure 2](https://raw.githubusercontent.com/DiogoRibeiro7/Medium-Blog/main/portugal-household-spending/figures/fig02_saving_rate.png)
 
-*Figure 2. Gross household saving rate, households and non-profit institutions serving households, % of disposable income, 1995–2025. Source: Eurostat nasa_10_ki; 2024–2025 provisional.*
+*Figure 2. Gross household saving rate, households and non-profit institutions serving households, % of disposable income, 1995–2025. Source: Eurostat nasa_10_ki; 2025 provisional.*
 
 This is a ratio of sector totals. It does not say which households saved, and a falling aggregate rate is consistent with many different distributions of saving across households.
 
@@ -64,21 +64,21 @@ In every wave the food share falls with income, as Engel's law predicts. In 1988
 
 ![Figure 3](https://raw.githubusercontent.com/DiogoRibeiro7/Medium-Blog/main/portugal-household-spending/figures/fig03_food_engel_curves.png)
 
-*Figure 3. Food and non-alcoholic beverages as a share of consumption, by income fifth, in each survey wave from 1988 to 2020 (imputed rent included in the total). Source: Eurostat hbs_str_t223.*
+*Figure 3. Food and non-alcoholic beverages as a share of consumption, by income fifth, in each survey wave from 1988 to 2020 (2022/23), imputed rent included in the total. Source: Eurostat hbs_str_t223.*
 
-The curve shifted down and flattened between waves. The poorest fifth's food share fell to 29.0% by 1999, 22.2% by 2005 and about 17% from 2010. The distance between the poorest and richest fifth went from 27.5 points in 1988 to 7.1 points in 2020. Food alone would suggest that the gap in the burden of essentials between rich and poor households has almost closed.
+The curve shifted down and flattened between waves. The poorest fifth's food share fell to 29.0% by 1999 and 22.2% by 2005, and was between 17.1% and 18.3% in the three later waves. The distance between the poorest and richest fifth went from 27.5 points in 1988 to 7.1 points in 2020 (2022/23). Food alone would suggest that the gap in the burden of essentials between rich and poor households has almost closed.
 
 ## Core basic needs by income fifth
 
-With rent, energy, water and repairs added and imputed rent removed, the poorest fifth's `s_C` was 58.8% in 1988 and 50.3% in 1994. It fell to 44.4% by 1999 and then stopped falling: 44.5% in 2005, 44.6% in 2010 and 48.6% in 2015.
+With rent, energy, water and repairs added and imputed rent removed, the poorest fifth's `s_C` was 58.8% in 1988 and 50.3% in 1994. It fell to 44.4% by 1999, was flat at 44.5% in 2005 and 44.6% in 2010, and was higher, 48.6%, in 2015. The rise after 2010 rests on a single wave.
 
 ![Figure 4](https://raw.githubusercontent.com/DiogoRibeiro7/Medium-Blog/main/portugal-household-spending/figures/fig04_core_share_by_quintile.png)
 
 *Figure 4. Core basic needs (food, actual rent, household energy, water and dwelling repairs) as a share of consumption, imputed rent excluded, by income fifth, 1988–2015. Source: Eurostat hbs_str_t223.*
 
-The other fifths follow the same profile at lower levels. The richest fifth went from 27.2% in 1988 to a minimum of 21.1% in 2005 and back to 25.3% in 2015. The ratio of the poorest fifth's share to the richest fifth's was 2.2 in 1988 and 1.9 in 2015. With the wider set the poorest fifth's share was 69.3% in 1988 and 66.4% in 2015, about two thirds of its cash consumption in both years.
+The other fifths follow a similar profile at lower levels, with their minimum in 2005 rather than 1999. The richest fifth went from 27.2% in 1988 to a minimum of 21.1% in 2005 and back to 25.3% in 2015. The ratio of the poorest fifth's share to the richest fifth's was 2.2 in 1988 and 1.9 in 2015. With the wider set the poorest fifth's share was 69.3% in 1988 and 66.4% in 2015, about two thirds of its cash consumption in both years.
 
-Figures 3 and 4 diverge after 1999 because food is no longer the dominant basic need at the bottom of the distribution.
+Figures 3 and 4 diverge after 1999 because, at the bottom of the distribution, the other core needs grew as food fell.
 
 ## Rent and energy
 
@@ -104,13 +104,13 @@ Figure 7 decomposes `s_C` for each fifth. For the poorest fifth, food was 49.4% 
 
 ## Imputed rent and the 2020 wave
 
-With imputed rent kept in the total, the housing division (rent actual and imputed, water, energy, repairs) rose from about 12% of every fifth's consumption in 1988 to between 28% and 39% in 2015, highest for the poorest fifth. Most of that increase is imputed rent, which went from 3.9% to 16.9% of the poorest fifth's consumption and from 6.8% to 19.5% of the richest fifth's. A measure of housing burden that includes imputed rent will rise with property valuations whether or not any household pays more.
+With imputed rent kept in the total, the housing division (rent actual and imputed, water, energy, repairs) rose from about 12% of every fifth's consumption in 1988 to between 28% and 39% in 2015, highest for the poorest fifth. Imputed rent accounts for half of the poorest fifth's increase (13.0 of 26.2 points) and for two thirds to four fifths of the other fifths' increases. It went from 3.9% to 16.9% of the poorest fifth's consumption and from 6.8% to 19.5% of the richest fifth's. A housing-burden measure that includes imputed rent can therefore rise without any household paying more.
 
 ![Figure 8](https://raw.githubusercontent.com/DiogoRibeiro7/Medium-Blog/main/portugal-household-spending/figures/fig08_housing_incl_imputed_rent.png)
 
-*Figure 8. Housing, water, electricity, gas and other fuels, imputed rent included, as a share of consumption, by income fifth, in all seven survey waves. The 2020 wave does not separate imputed rent. Source: Eurostat hbs_str_t223.*
+*Figure 8. Housing, water, electricity, gas and other fuels, imputed rent included, as a share of consumption, by income fifth, in all seven survey waves. The 2020 wave, collected in 2022/23, does not separate imputed rent. Source: Eurostat hbs_str_t223.*
 
-The measures that exclude imputed rent stop in 2015 because Eurostat's 2020 tables for Portugal report the housing division without its components. The 2020 housing share also rises for every fifth, by 10 points for the richest (28.2% to 38.2%), where actual rent is about 1% of consumption. Two explanations are consistent with that pattern: a change in how imputed rent was estimated, or the compression of other spending during the pandemic. The published tables do not discriminate between them, so we treat the 2020 housing figures as unresolved.
+The measures that exclude imputed rent stop in 2015 because Eurostat's tables for the 2020 (2022/23) wave report the housing division without its components. In that wave the housing share rises for every fifth, by 10 points for the richest (28.2% to 38.2%), where actual rent is about 1% of consumption. The comparison spans seven years, the 2022 rise in energy prices visible in Figure 11 and whatever happened to the property valuations that feed imputed rent; a change in how imputed rent was estimated is another possibility. The published tables do not discriminate between these, so we treat the 2020 (2022/23) housing figures as unresolved.
 
 ## Consumption per adult equivalent
 
@@ -126,19 +126,19 @@ the cash consumption left after core basic needs. Figure 9 plots `c(5,t)/c(1,t)`
 
 *Figure 9. Consumption per adult equivalent of the richest fifth divided by that of the poorest fifth, for all consumption and for cash consumption left after core basic needs. Source: Eurostat hbs_exp_t133 and hbs_str_t223.*
 
-The ratio of total consumption was 4.6 in 1988, 4.9 in 1994, 2.8 in 2010 and 2.3 in 2020: by this measure, the gap between the top and bottom fifth roughly halved. The ratio for consumption left after core needs is larger and fell from 7.8 in 1988 to 5.0 in 1999 and 3.6 in 2015. In 2015, `a` was 42.7% of total consumption for the poorest fifth and 60.1% for the richest.
+The ratio of total consumption was 4.6 in 1988, 4.9 in 1994, 2.8 in 2010 and 2.3 in 2020 (2022/23): by this measure, the gap between the top and bottom fifth roughly halved. The ratio for consumption left after core needs is larger and fell from 7.8 in 1988 to 5.0 in 1999 and 3.6 in 2015. In 2015, `a` was 51.4% of cash consumption for the poorest fifth and 74.7% for the richest.
 
-The two results coexist. Consumption became much less unequal between the top and bottom fifths, and over the same period the share of the bottom fifth's budget taken by core needs stopped falling and then rose.
+The two results coexist. Consumption became much less unequal between the top and bottom fifths, and over the same period the share of the bottom fifth's budget taken by core needs stopped falling after 1999 and was higher in 2015.
 
 ## Saving by income fifth
 
-Eurostat's experimental statistics on the joint distribution of income, consumption and wealth provide a median saving rate by income fifth, built by statistically matching survey sources. They exist for 2010, 2015 and 2020.
+Eurostat's experimental statistics on the joint distribution of income, consumption and wealth provide a median saving rate by income fifth. They are built by statistical matching of the budget survey (consumption), EU-SILC (income) and the Household Finance and Consumption Survey (wealth), which produces a synthetic dataset rather than linked records. They exist for three waves, labelled around 2010, 2015 and 2020; for Portugal the third uses the 2022 budget survey.
 
 ![Figure 10](https://raw.githubusercontent.com/DiogoRibeiro7/Medium-Blog/main/portugal-household-spending/figures/fig10_saving_by_quintile.png)
 
-*Figure 10. Median saving rate by income fifth, % of disposable income, 2010, 2015 and 2020. Experimental statistics. Source: Eurostat icw_sr_03.*
+*Figure 10. Median saving rate by income fifth, % of disposable income, waves around 2010, 2015 and 2020 (the last based on the 2022 budget survey for Portugal). Experimental statistics. Source: Eurostat icw_sr_03.*
 
-The median household in the poorest fifth had a saving rate of −12.2% in 2010 and −9.3% in 2015, meaning its estimated consumption exceeded its estimated income. The tables do not say how the difference was financed; drawing down savings, borrowing and transfers not recorded as income are all possible. The second fifth saved 6.5% and 8.1% in those years, the middle fifth 13.3% and 19.2%, and the richest fifth 27.3% and 37.2%. In 2020 every fifth's median rose, and the poorest fifth's became positive at 8.1%, in line with the aggregate increase in Figure 2. These medians are not comparable in level with the national-accounts saving rate, which is a ratio of totals with different definitions of income and consumption.
+The median household in the poorest fifth had a saving rate of −12.2% in 2010 and −9.3% in 2015, meaning its estimated consumption exceeded its estimated income. The tables do not say how such a gap would be financed; drawing down savings, borrowing and transfers not recorded as income are all possible. A negative median can also be produced by the matching itself, because income and consumption come from different surveys with different reference periods. The 2010 wave counts non-monetary consumption and the later waves do not, so 2010 is not strictly comparable with 2015. The second fifth saved 6.5% and 8.1% in those waves, the middle fifth 13.3% and 19.2%, and the richest fifth 27.3% and 37.2%. In the third wave every fifth's median is higher and the poorest fifth's is positive at 8.1%. We do not compare these medians with Figure 2: they are medians within fifths from matched survey data, while the national-accounts rate is a ratio of sector totals with different definitions of income and consumption.
 
 ## Prices of the basic-needs basket
 
@@ -148,7 +148,7 @@ Figure 11 shows the HICP for each core item against all items, with 1996 = 100.
 
 *Figure 11. Harmonised consumer price indices for each core basic need and for all items, 1996 = 100. Source: Eurostat prc_hicp_aind.*
 
-From 1996 to 2025, all items rose 86.6% and food 88.0%, with half of food's increase occurring after 2021. The housing-related items rose faster: actual rent 115.4%, electricity, gas and fuels 136.4%, dwelling repairs 153.7%, and water and other dwelling services 179.8%. Weighting the core items by their 2015 budget-survey shares gives a core basic-needs index that rose 33.6% between 2015 and 2025, against 24.8% for all items, and 28.7% against 20.5% between 2020 and 2025.
+From 1996 to 2025, all items rose 86.6% and food 88.0%, with half of food's increase occurring after 2021. The housing-related items rose faster: actual rent 115.4%, electricity, gas and fuels 136.4%, dwelling repairs 153.7%, and water and other dwelling services 179.8%. The relative movement depends on the period. Weighting the core items by budget-survey shares, the core basic-needs index rose less than all items from 1996 to 2005 (24.4% against 28.0%, 1999 weights) and more afterwards: 23.4% against 16.8% over 2005–2015 and 33.6% against 24.8% over 2015–2025. Within the last decade food rose most (38.8%), followed by actual rent (36.4%), with electricity, gas and fuels at 20.7%.
 
 Because the fifths have different budget shares, they face different inflation rates. For fifth `q` we compute a fixed-weight (Laspeyres) index over the twelve COICOP divisions,
 
@@ -162,21 +162,23 @@ with weights `w(q,d)` taken from one survey wave, imputed rent removed from the 
 
 *Figure 12. Cumulative inflation of each income fifth's basket, HICP divisions weighted by budget-survey shares (2005 wave for 2005–2015, 2015 wave afterwards), imputed rent removed. Source: Eurostat prc_hicp_aind and hbs_str_t223.*
 
-Over 2005–2015 the poorest fifth's basket rose 20.2% and the richest fifth's 15.8%, a difference of 4.4 points. Over 2015–2025 the figures are 26.6% and 24.4%, a difference of 2.2 points. In 2021–2023 the five baskets rose between 12.8% and 13.4%: when nearly all divisions rise together, the weights matter little. The differences between fifths accumulate in the years when the essentials rise slightly faster than the rest.
+Over 2005–2015 the poorest fifth's basket rose 20.2% and the richest fifth's 15.8%, a difference of 4.4 points. Most of it opened in 2011–2014: the gap was 1.0 point in 2010 and 4.0 in 2014, a period in which electricity, gas and fuel prices rose 28.9% (2010 to 2013). Over 2015–2025 the baskets rose 26.6% and 24.4%, a difference of 2.2 points, which was slightly negative until 2019 and opened almost entirely from 2022.
+
+The 2021–2023 result needs a separate reading. The five baskets rose between 12.8% and 13.4%, all less than the headline HICP (13.8%), but prices did not move together: food rose 24.3%, restaurants and hotels 26.6%, electricity, gas and fuels 16.9%, transport 10.3%, clothing 1.5% and health 1.0%. The baskets ended close because their weights offset each other. Food is 22.0% of the poorest fifth's cash budget and 14.4% of the richest fifth's, while restaurants and hotels are 7.5% and 13.0%, and transport 10.1% and 19.8%. Why the headline index rose more than every resident fifth's basket we do not establish here; one candidate is that the HICP also covers spending by non-residents in Portugal.
 
 ## Consequences for measurement and policy design
 
-The quintile inflation rates bear directly on indexation. Pensions, social benefits and the minimum wage are usually discussed against headline inflation, and the all-items HICP rose 16.8% over 2005–2015 and 24.8% over 2015–2025, close to the survey-weighted average of 17.3% and 25.2%. An adjustment that tracks headline inflation therefore leaves the poorest fifth's basket rising faster than the adjustment: by our estimates, by 3.4 points over 2005–2015 (20.2% against 16.8%) and 1.8 points over 2015–2025 (26.6% against 24.8%). The difference is small in any single year. Over two decades it is not, and a basket-specific index can be built from the same public tables used here.
+The quintile inflation rates bear on indexation. The all-items HICP rose 16.8% over 2005–2015 and 24.8% over 2015–2025, close to the survey-weighted averages of 17.3% and 25.2%. Chaining the two decades, the poorest fifth's basket rose 52.2% over 2005–2025, the richest fifth's 44.1% and the headline index 45.8%. Any adjustment that tracks headline inflation would, on these estimates, have fallen 6.4 points behind the poorest fifth's basket over twenty years. Whether particular benefits or wages were in fact indexed this way is outside what this analysis examines; the point is that a basket-specific index can be built from the same public tables used here.
 
-Imputed rent needs to be declared in any affordability measure. Figures 4 and 8 describe the same households and give different pictures of housing, and the difference grew as imputed rent went from 6.9% to more than 10% of aggregate consumption.
+Imputed rent needs to be declared in any affordability measure. In 2015 the poorest fifth's housing costs excluding imputed rent (actual rent, energy, water and repairs) were 26.6% of its cash consumption, while the housing division including imputed rent was 39.1% of its total consumption. A housing-cost ratio that does not say which of the two it uses is ambiguous by more than ten points.
 
-The distributional results rest on six survey waves for the shares and three years of experimental statistics for saving. The direction of the main findings is clear in that evidence: the end of the decline in the poorest fifth's basic-needs share after 1999, the rise of rent and energy at the bottom, and negative median saving in the poorest fifth in 2010 and 2015. Point estimates for individual waves are less secure, and the 2020 wave cannot yet be integrated with the earlier ones.
+The distributional results rest on six survey waves for the shares and three years of experimental statistics for saving. The direction of some findings is clear in that evidence: the halt in the decline of the poorest fifth's basic-needs share after 1999, the rise of rent and energy at the bottom, and negative median saving in the poorest fifth in the 2010 and 2015 waves. Others are thinner: the rise of the poorest fifth's share after 2010 rests on one wave, point estimates for individual waves are less secure, and the 2020 (2022/23) wave cannot be integrated with the earlier ones at the level of detail used here.
 
-For low-income households, the composition of basic needs has changed. Food is a much smaller share of their consumption than in 1988, and rent and energy have taken most of that space, while the prices of the housing-related items rose faster than food over most of the period. A measure aimed at the essentials of low-income households is now largely a measure about rent and energy.
+For low-income households, the composition of basic needs has changed. Food is a much smaller share of their consumption than in 1988, and rent and energy have taken most of that space. Since 1996 the prices of the housing-related items rose more than food, although over the last decade food rose most. Our reading, which is an interpretation rather than a result of this analysis, is that measures aimed at the essentials of low-income households now concern rent and energy as much as food.
 
 ## Limitations
 
-The core and wider sets are definitions; other choices would move the levels, though they are unlikely to reverse the ordering of the fifths. Budget-survey shares are means within each fifth and mix tenants and owners, so the rent results cannot be decomposed into tenure and price effects. The 2020 wave lacks the housing components and its housing jump is unexplained. The national-accounts detail by purpose for Portugal ends in 2022, with 2021–2022 provisional. The saving rates by fifth are experimental and available for three years. The inflation rates by fifth hold weights fixed for ten years, ignore substitution between items, and rely on an index that excludes owner-occupied housing. None of the published tables used here report sampling errors.
+The core and wider sets are definitions, and we tested only one alternative. Under the wider set the ordering of the fifths holds, but the ratio between the poorest and richest fifth's shares falls from 1.69 in 1988 to 1.49 in 2015, and the richest fifth's share ends above its 1988 level (44.6% against 40.9%). Budget-survey shares are means within each fifth and mix tenants and owners, so the rent results cannot be decomposed into tenure and price effects. The wave labelled 2020 was collected in 2022/23, lacks the housing components, and its housing jump is unexplained. The national-accounts detail by purpose for Portugal ends in 2022, which is provisional. The saving rates by fifth are experimental, available for three waves, and the 2010 wave defines consumption differently from the other two. The inflation rates by fifth hold weights fixed for ten years, ignore substitution between items, and rely on an index that excludes owner-occupied housing. None of the published tables used here report sampling errors.
 
 ---
 
