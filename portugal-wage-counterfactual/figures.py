@@ -1,4 +1,4 @@
-"""Draw the figure from the outputs of ``wage_counterfactual.py``.
+"""Draw the figures from the outputs of ``wage_counterfactual.py``.
 
 Run after ``wage_counterfactual.py``::
 
@@ -23,7 +23,10 @@ INK_2 = "#52514e"
 MUTED = "#898781"
 GRID = "#e1e0d9"
 AXIS = "#c3c2b7"
-BLUE, ORANGE = "#2a78d6", "#eb6834"
+BLUE, ORANGE, AQUA = "#2a78d6", "#eb6834", "#1baf7a"
+SOURCE = "Sources: AMECO (2018 vintage) to 1995, Eurostat 1995–2024, World Bank CPI; author's calculations."
+SOURCE_QP = ("Sources: AMECO (2018 vintage) to 1995, Eurostat 1995–2024, World Bank CPI, "
+             "GEP/MTSSS Quadros de Pessoal; author's calculations.")
 
 plt.rcParams.update({
     "figure.facecolor": SURFACE,
@@ -54,40 +57,72 @@ plt.rcParams.update({
 })
 
 
+def finish(fig: plt.Figure, name: str, source: str = SOURCE) -> None:
+    fig.text(0.01, 0.01, source, fontsize=7.5, color=MUTED)
+    fig.tight_layout(rect=(0, 0.04, 1, 1))
+    fig.savefig(FIGURES / name, dpi=200)
+    plt.close(fig)
+
+
+def base_year_curve(sens: pd.DataFrame, actual: float) -> None:
+    fig, ax = plt.subplots(figsize=(8, 4.8))
+    ax.plot(sens["base"], actual * sens["cf_over_actual"], color=ORANGE,
+            label="Counterfactual: base-year wage + CPI inflation + productivity per person")
+    ax.plot(sens["base"], actual * sens["cf_over_actual_mult"], color=ORANGE, lw=1.0,
+            ls="--", label="Same, multiplicative rule")
+    ax.plot(sens["base"], actual * sens["cf_over_actual_hour"], color=ORANGE, lw=1.0,
+            ls=":", label="Same, productivity per hour")
+    ax.plot(sens["base"], actual * sens["cf_over_actual_no_cut"], color=AQUA,
+            label="Same, but the wage never falls from one year to the next")
+    ax.axhline(actual, color=BLUE, label=f"Actual (€{actual:,.0f})")
+    ax.set_title("Mean monthly earnings in 2024 implied by each base year, €")
+    ax.set_xlabel("Base year")
+    ax.set_xlim(1975, 2023)
+    ax.legend(loc="upper right", fontsize=8.5)
+    finish(fig, "fig2_base_year_curve.png", SOURCE_QP)
+
+
+def decomposition(dec: pd.DataFrame) -> None:
+    fig, ax = plt.subplots(figsize=(8, 4.4))
+    ax.axhline(0, color=AXIS, lw=1.0)
+    ax.plot(dec["base"], dec["log_points_wage_share"], color=AQUA,
+            label="Fall in the adjusted wage share since the base year")
+    ax.plot(dec["base"], dec["log_points_price_wedge"], color=BLUE,
+            label="CPI inflation minus GDP-deflator inflation")
+    ax.plot(dec["base"], dec["log_points_total"], color=INK, lw=1.4, ls="--",
+            label="Total: counterfactual over actual")
+    ax.set_title("Where the gap comes from, by base year (log points, multiplicative rule)")
+    ax.set_xlabel("Base year")
+    ax.set_xlim(1975, 2023)
+    ax.legend(loc="upper right", fontsize=8.5)
+    finish(fig, "fig3_decomposition.png")
+
+
+def path_from_1975(path: pd.DataFrame) -> None:
+    fig, ax = plt.subplots(figsize=(8, 4.4))
+    ax.plot(path.index, path["actual_eur_month"], color=BLUE, label="Actual")
+    ax.plot(path.index, path["counterfactual_eur_month"], color=ORANGE,
+            label="1975 level + CPI inflation + productivity per person")
+    ax.set_yscale("log")
+    ticks = [50, 100, 200, 500, 1000, 2000, 3000]
+    ax.yaxis.set_major_locator(FixedLocator(ticks))
+    ax.yaxis.set_major_formatter(FixedFormatter([f"{v:,}" for v in ticks]))
+    ax.yaxis.set_minor_locator(NullLocator())
+    ax.set_title("Compensation per employee, € per month (annual ÷ 14), log scale")
+    ax.set_xlim(1975, 2024)
+    ax.legend(loc="lower right", fontsize=8.5)
+    finish(fig, "fig1_path_from_1975.png")
+
+
 def main() -> None:
     FIGURES.mkdir(exist_ok=True)
-    path = pd.read_csv(RESULTS / "path_from_1975.csv", index_col="year")
     sens = pd.read_csv(RESULTS / "base_year_sensitivity.csv")
+    dec = pd.read_csv(RESULTS / "decomposition_by_base_year.csv")
+    path = pd.read_csv(RESULTS / "path_from_1975.csv", index_col="year")
     qp = pd.read_csv(HERE / "data" / "qp_earnings.csv", index_col="year")
-    actual_2024 = qp.loc[2024, "qp_mean_eur"]
-
-    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(11, 4.2))
-
-    ax1.plot(path.index, path["actual_eur_month"], color=BLUE, label="Actual")
-    ax1.plot(path.index, path["counterfactual_eur_month"], color=ORANGE,
-             label="1975 level + CPI inflation + productivity")
-    ax1.set_yscale("log")
-    ticks = [50, 100, 200, 500, 1000, 2000, 3000]
-    ax1.yaxis.set_major_locator(FixedLocator(ticks))
-    ax1.yaxis.set_major_formatter(FixedFormatter([f"{v:,}" for v in ticks]))
-    ax1.yaxis.set_minor_locator(NullLocator())
-    ax1.set_title("Compensation per employee, € per month (×14)")
-    ax1.legend(loc="lower right")
-    ax1.set_xlim(1975, 2024)
-
-    ax2.plot(sens["base"], sens["qp_mean_cf"], color=ORANGE, label="Counterfactual 2024 mean")
-    ax2.axhline(actual_2024, color=BLUE, label=f"Actual 2024 mean (€{actual_2024:,.0f})")
-    ax2.set_title("2024 mean monthly earnings by base year, €")
-    ax2.set_xlabel("Base year")
-    ax2.legend(loc="upper right")
-    ax2.set_xlim(1975, 2023)
-
-    fig.text(0.01, 0.01,
-             "Sources: AMECO (2018 vintage) to 1995, Eurostat 1995–2024, World Bank CPI, "
-             "GEP/MTSSS Quadros de Pessoal; author's calculations.",
-             fontsize=8, color=MUTED)
-    fig.tight_layout(rect=(0, 0.04, 1, 1))
-    fig.savefig(FIGURES / "fig1_counterfactual_wages.png", dpi=200)
+    base_year_curve(sens, qp.loc[2024, "qp_mean_eur"])
+    decomposition(dec)
+    path_from_1975(path)
 
 
 if __name__ == "__main__":

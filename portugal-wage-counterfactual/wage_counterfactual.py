@@ -96,17 +96,34 @@ def build_inputs() -> pd.DataFrame:
     return t
 
 
+FLOORS = (None, "nominal", "components")
+
+
 def counterfactual(t: pd.DataFrame, base: int, productivity: str = "person",
-                   rule: str = "additive", start_level: float | None = None) -> pd.Series:
-    """Wage path from ``base`` to END, indexed to inflation plus productivity growth."""
+                   rule: str = "additive", start_level: float | None = None,
+                   floor: str | None = None) -> pd.Series:
+    """Wage path from ``base`` to END, indexed to inflation plus productivity growth.
+
+    ``floor="nominal"``: the wage never falls below the previous year's (no nominal
+    cuts; a year with inflation plus productivity growth below zero leaves it flat).
+    ``floor="components"``: neither deflation nor a fall in productivity is passed
+    on (inflation and productivity growth each floored at zero).
+    """
+    if floor not in FLOORS:
+        raise ValueError(floor)
     g = t.loc[base + 1:END, PRODUCTIVITY[productivity]]
     pi = t.loc[base + 1:END, "infl"]
+    if floor == "components":
+        g = g.clip(lower=0)
+        pi = pi.clip(lower=0)
     if rule == "additive":
         step = 1 + pi + g
     elif rule == "multiplicative":
         step = (1 + pi) * (1 + g)
     else:
         raise ValueError(rule)
+    if floor == "nominal":
+        step = step.clip(lower=1)
     level = t.loc[base, "actual"] if start_level is None else start_level
     path = pd.concat([pd.Series([1.0], index=[base]), step.cumprod()])
     return level * path
@@ -213,18 +230,94 @@ def main() -> None:
         rows.append({"base": base, "cf_over_actual": r, "qp_mean_cf": qp_mean * r,
                      "qp_median_cf": qp_median * r,
                      "cf_over_actual_mult": ratio(t, base, rule="multiplicative"),
-                     "cf_over_actual_hour": ratio(t, base, productivity="hour")})
+                     "cf_over_actual_hour": ratio(t, base, productivity="hour"),
+                     "cf_over_actual_no_cut": ratio(t, base, floor="nominal"),
+                     "cf_over_actual_no_fall_components": ratio(t, base, floor="components"),
+                     "cf_over_actual_no_cut_hour": ratio(t, base, productivity="hour",
+                                                         floor="nominal")})
     sens = pd.DataFrame(rows)
     sens.round(4).to_csv(RESULTS / "base_year_sensitivity.csv", index=False)
     w("Every base year (productivity per person, additive): CF/actual, QP mean and median in " + str(END))
     for r in rows:
         w(f"  {r['base']}  {r['cf_over_actual']:.3f}  {r['qp_mean_cf']:>6,.0f}  {r['qp_median_cf']:>6,.0f}")
-    first = sens.loc[sens["cf_over_actual"] < 1, "base"].min()
-    w(f"  first base year with counterfactual below actual: {first}")
+    above = sens.loc[sens["cf_over_actual"] > 1, "base"]
+    w(f"  base years with counterfactual above actual: {', '.join(str(b) for b in above)}")
+    w(f"  from {above.max() + 1} on: CF/actual between {sens.loc[sens['base'] > above.max(), 'cf_over_actual'].min():.3f} "
+      f"and {sens.loc[sens['base'] > above.max(), 'cf_over_actual'].max():.3f}, median "
+      f"{sens.loc[sens['base'] > above.max(), 'cf_over_actual'].median():.3f}")
+    for col, label in (("cf_over_actual_mult", "multiplicative"), ("cf_over_actual_hour", "per hour")):
+        w(f"  {label}: base years above actual: "
+          f"{', '.join(str(b) for b in sens.loc[sens[col] > 1, 'base'])}")
+    w("")
+
+    # Scenario: wages cannot fall from one year to the next.
+    step = 1 + t["infl"] + t["g_person"]
+    falls = step.loc[START + 1:END][step.loc[START + 1:END] < 1]
+    w("Scenario: no year-on-year fall (additive rule, productivity per person)")
+    w("  years where inflation + productivity growth < 0: " + ", ".join(
+        f"{y} ({100 * (v - 1):+.2f}%)" for y, v in falls.items()))
+    gfall = t["g_person"].loc[START + 1:END][t["g_person"].loc[START + 1:END] < 0]
+    w("  years where productivity growth < 0: " + ", ".join(
+        f"{y} ({100 * v:+.2f}%)" for y, v in gfall.items()))
+    w(f"  ratchet from no nominal cut, base {START}: {100 * np.log(1 / falls).sum():.1f} log points; "
+      + ", ".join(f"{y} {100 * np.log(1 / v):.2f}" for y, v in falls.items()))
+    w(f"  2020 productivity growth: per person {100 * t.loc[2020, 'g_person']:+.2f}%, "
+      f"per hour {100 * t.loc[2020, 'g_hour']:+.2f}%; 2021: per person "
+      f"{100 * t.loc[2021, 'g_person']:+.2f}%, per hour {100 * t.loc[2021, 'g_hour']:+.2f}%")
+    for floor, label in (("nominal", "no nominal cut"), ("components", "no deflation or productivity fall")):
+        r = ratio(t, START, floor=floor)
+        w(f"  {label:30s} base {START}: CF/actual {r:.3f}  compensation {a_end * r:>8,.0f}  "
+          f"QP mean {qp_mean * r:>6,.0f}  QP median {qp_median * r:>6,.0f}")
+        rm = ratio(t, START, floor=floor, rule="multiplicative")
+        w(f"  {label:30s} base {START}, multiplicative: CF/actual {rm:.3f}  QP mean {qp_mean * rm:>6,.0f}")
+    for col, label in (("cf_over_actual_no_cut", "no nominal cut"),
+                       ("cf_over_actual_no_fall_components", "no deflation or productivity fall"),
+                       ("cf_over_actual_no_cut_hour", "no nominal cut, per hour")):
+        up = sens.loc[sens[col] > 1, "base"]
+        w(f"  {label}: base years above actual ({len(up)} of {len(sens)}): "
+          f"{', '.join(str(b) for b in up)}")
+        late = sens.loc[sens["base"] >= 1983, col]
+        w(f"    base years 1983-{END - 1}: CF/actual {late.min():.3f} to {late.max():.3f}, median {late.median():.3f}; "
+          f"QP mean {qp_mean * late.min():,.0f} to {qp_mean * late.max():,.0f}")
+    for b in (1985, 1995, 2000, 2008, 2010, 2013, 2015, 2019, 2021):
+        r0 = sens.loc[sens["base"] == b].iloc[0]
+        w(f"  base {b}: rule {r0['cf_over_actual']:.3f} ({qp_mean * r0['cf_over_actual']:,.0f}), "
+          f"no cut {r0['cf_over_actual_no_cut']:.3f} ({qp_mean * r0['cf_over_actual_no_cut']:,.0f}), "
+          f"components floored {r0['cf_over_actual_no_fall_components']:.3f} "
+          f"({qp_mean * r0['cf_over_actual_no_fall_components']:,.0f})")
+    gap = (sens["cf_over_actual_no_fall_components"] / sens["cf_over_actual_no_cut"] - 1).abs().max()
+    w(f"  largest difference between the two floors over all base years: {100 * gap:.3f}%")
+    w("  years with deflation: " + ", ".join(
+        f"{y} ({100 * v:+.2f}%)" for y, v in t["infl"].loc[START + 1:END].items() if v < 0))
+    cf = counterfactual(t, 1985, start_level=qp.loc[1985, "qp_mean_eur"], floor="nominal")
+    w(f"  Quadros de Pessoal mean only, base 1985, no cut: CF {cf.loc[END]:,.0f}  "
+      f"CF/actual {cf.loc[END] / qp_mean:.3f}")
+    # Floor every year except 2020: how much of the scenario is that one year?
+    no_2020 = []
+    for b in range(START, END):
+        st = (1 + t["infl"] + t["g_person"]).loc[b + 1:END]
+        st = st.where((st >= 1) | (st.index == 2020), 1.0)
+        no_2020.append(t.loc[b, "actual"] * st.prod() / a_end)
+    no_2020 = pd.Series(no_2020, index=range(START, END))
+    w(f"  no cut except in 2020: base years above actual: "
+      f"{', '.join(str(b) for b in no_2020[no_2020 > 1].index)}")
+    w("")
+
+    dec = pd.DataFrame([{"base": b, **decomposition(t, b)} for b in range(START, END)])
+    dec["log_points_total"] = 100 * np.log(dec["cf_over_actual"])
+    dec["log_points_price_wedge"] = 100 * np.log(dec["cpi_over_deflator"])
+    dec["log_points_wage_share"] = 100 * np.log(dec["wage_share_ratio"])
+    dec.round(4).to_csv(RESULTS / "decomposition_by_base_year.csv", index=False)
+    w("Decomposition by base year, log points (multiplicative rule): total = price wedge + wage share")
+    for b in (1975, 1977, 1980, 1985, 1990, 1995, 2000, 2005, 2010, 2015, 2020):
+        r = dec.loc[dec["base"] == b].iloc[0]
+        w(f"  {b}: {r['log_points_total']:+6.1f} = {r['log_points_price_wedge']:+6.1f} "
+          f"{r['log_points_wage_share']:+6.1f}")
 
     path = pd.DataFrame({
         "actual_eur_month": t["actual"] / 14,
         "counterfactual_eur_month": counterfactual(t, START) / 14,
+        "counterfactual_no_cut_eur_month": counterfactual(t, START, floor="nominal") / 14,
         "adj_wage_share": t["adj_wage_share"],
     })
     path.index.name = "year"

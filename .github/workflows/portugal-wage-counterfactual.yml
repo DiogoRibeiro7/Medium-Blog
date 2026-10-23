@@ -52,4 +52,6 @@ jobs:
       - name: Draw the figure
         run: |
           python figures.py
-          test -s figures/fig1_counterfactual_wages.png
+          for f in fig1_path_from_1975 fig2_base_year_curve fig3_decomposition; do
+            test -s "figures/$f.png"
+          done
