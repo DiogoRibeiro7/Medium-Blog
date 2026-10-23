@@ -43,7 +43,8 @@ CORE = ["CP01", "CP041", "CP043", "CP044", "CP045"]
 WIDER_EXTRA = ["CP06", "CP072", "CP073"]
 DIVISIONS = [f"CP{i:02d}" for i in range(1, 13)]
 QUINTILES = ["QU1", "QU2", "QU3", "QU4", "QU5"]
-NA_END = 2022          # last year of COICOP detail for Portugal (2021-22 provisional)
+NA_END = 2022          # last year of COICOP detail for Portugal (2022 provisional)
+HBS_2020_FIELDWORK = "2022/23"   # Portugal's 'around 2020' budget-survey wave (IDEF 2022/23)
 HICP_END = 2025
 
 
@@ -223,8 +224,10 @@ def main() -> None:
 
     w("Inflation by quintile: HICP divisions weighted by each quintile's budget shares (imputed rent removed)")
     rows = []
+    inf_tables = {}
     for start, end, wave in ((2005, 2015, 2005), (2015, 2025, 2015), (2020, 2025, 2015), (2021, 2023, 2015)):
         qi = quintile_inflation(start, end, wave)
+        inf_tables[(start, end)] = qi
         for quint, r in qi.iterrows():
             rows.append({"start": start, "end": end, "wave": wave, "quintile": quint, **r.to_dict()})
         w(f"  {start}-{end} (weights {wave}): " + ", ".join(
@@ -279,6 +282,50 @@ def main() -> None:
             a1, a5 = resid.loc[("QU1", year), "after_basic_pps_ae"], resid.loc[("QU5", year), "after_basic_pps_ae"]
             line += f"; after basic needs QU1 {a1:,.0f}, QU5 {a5:,.0f}, QU5/QU1 {a5 / a1:.2f}"
         w(line)
+    w("")
+
+    # Shares of cash consumption left after core needs, and timing of the quintile inflation gap.
+    w("Cash consumption left after core basic needs, % of cash consumption (imputed rent excluded)")
+    for quint in QUINTILES:
+        r = resid.loc[(quint, 2015)]
+        w(f"  {quint} 2015: {100 * r['after_basic_pps_ae'] / r['cash_consumption_pps_ae']:.1f}%")
+    w("")
+    w("Housing division including imputed rent, rise 1988-2015 and the part due to imputed rent (points)")
+    for quint in QUINTILES:
+        a, b = hb.loc[(quint, 1988)], hb.loc[(quint, 2015)]
+        rise = 100 * (b["housing_incl_imputed"] - a["housing_incl_imputed"])
+        imp = 100 * (b["imputed_rent"] - a["imputed_rent"])
+        w(f"  {quint}: rise {rise:.1f}, imputed rent {imp:.1f} ({100 * imp / rise:.0f}%); "
+          f"housing excl. imputed rent 2015 (core minus food) {100 * (b['core_ex_imputed'] - b['food_ex_imputed']):.1f}% "
+          f"of cash consumption")
+    w("")
+    w("QU1 minus QU5 cumulative inflation gap by year (fixed weights of the window's wave), points")
+    qs = budget_survey_quintiles() / 1000
+    for start, end, wave in ((2005, 2015, 2005), (2015, 2025, 2015)):
+        def weights(quint):
+            r = qs.loc[(quint, wave)]
+            ww = r[DIVISIONS].copy()
+            ww["CP04"] = ww["CP04"] - r["CP042"]
+            return ww / ww.sum()
+        gaps = []
+        for y in range(start, end + 1):
+            rel = p[DIVISIONS].loc[y] / p[DIVISIONS].loc[start]
+            gaps.append(f"{y} {100 * ((weights('QU1') * rel).sum() - (weights('QU5') * rel).sum()):+.2f}")
+        w(f"  {start}-{end}: " + ", ".join(gaps))
+    w("  HICP 2021-2023 by division: " + ", ".join(
+        f"{c} {100 * (p.loc[2023, c] / p.loc[2021, c] - 1):+.1f}%" for c in ["CP01", "CP11", "CP045", "CP04", "CP07", "CP03", "CP06", "CP00"]))
+    w(f"  energy (CP045) 2010-2013: {100 * (p.loc[2013, 'CP045'] / p.loc[2010, 'CP045'] - 1):+.1f}%")
+    r1, r5 = qs.loc[("QU1", 2015)], qs.loc[("QU5", 2015)]
+    w("  2015 cash-budget weights QU1 vs QU5: " + ", ".join(
+        f"{c} {100 * r1[c] / (1 - r1['CP042']):.1f}% vs {100 * r5[c] / (1 - r5['CP042']):.1f}%" for c in ["CP01", "CP11", "CP07"]))
+    chained = {}
+    for quint in ["QU1", "QU5", "HICP all items"]:
+        a = inf_tables[(2005, 2015)].loc[quint, "inflation"]
+        b = inf_tables[(2015, 2025)].loc[quint, "inflation"]
+        chained[quint] = (1 + a) * (1 + b) - 1
+    w("  chained 2005-2025: " + ", ".join(f"{k} {100 * v:.1f}%" for k, v in chained.items()))
+    w(f"Note: the budget-survey wave labelled 2020 was collected in {HBS_2020_FIELDWORK} in Portugal; "
+      "the experimental saving rates for 'around 2020' use HBS 2022 for Portugal.")
     w("")
 
     (RESULTS / "summary.txt").write_text("\n".join(lines) + "\n")

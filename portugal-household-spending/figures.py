@@ -74,7 +74,7 @@ def na_components(na: pd.DataFrame) -> None:
     ax.stackplot(na.index, *[100 * p[1] for p in parts], colors=[p[2] for p in parts],
                  labels=[p[0] for p in parts], alpha=0.95)
     ax.plot(na.index, 100 * na["wider_ex_imputed"], color=INK, lw=1.4, ls="--",
-            label="Adding health and running costs of transport")
+            label="Adding health and transport (running costs and services)")
     ax.set_title("Basic needs, % of household consumption (imputed rent excluded), 1995–2022")
     ax.set_xlim(na.index.min(), na.index.max())
     ax.set_ylim(0, 52)
@@ -94,7 +94,7 @@ def saving_rate(s: pd.Series) -> None:
     ax.set_title("Gross household saving rate, % of disposable income")
     ax.set_xlim(1995, s.index.max())
     ax.set_ylim(0, 16)
-    finish(fig, "fig02_saving_rate.png", "Eurostat nasa_10_ki (households and NPISH); 2024-25 provisional")
+    finish(fig, "fig02_saving_rate.png", "Eurostat nasa_10_ki (households and NPISH); 2025 provisional")
 
 
 # 3. Engel curves: food share across the income distribution, one line per survey.
@@ -103,11 +103,11 @@ def engel(hb: pd.DataFrame) -> None:
     x = np.arange(1, 6)
     for y in WAVES:
         vals = [100 * hb.loc[(q, y), "food"] for q in QUINTILES]
-        ax.plot(x, vals, color=WAVE_COLOURS[y], marker="o", ms=4, label=str(y))
+        ax.plot(x, vals, color=WAVE_COLOURS[y], marker="o", ms=4, label="2020 (2022/23)" if y == 2020 else str(y))
     ax.set_xticks(x, [Q_LABELS[q] for q in QUINTILES])
     ax.set_title("Food, % of consumption, by income fifth and survey year")
     ax.legend(loc="upper right", fontsize=8.5, ncol=4)
-    finish(fig, "fig03_food_engel_curves.png", f"{HBS}, imputed rent included")
+    finish(fig, "fig03_food_engel_curves.png", f"{HBS}, imputed rent included; the 2020 wave was collected in 2022/23")
 
 
 # 7. Composition of basic needs for each income fifth.
@@ -145,11 +145,11 @@ def housing_incl_imputed(hb: pd.DataFrame) -> None:
         s = hb.loc[q, "housing_incl_imputed"]
         ax.plot(s.index, 100 * s.values, color=Q_COLOURS[q], marker="o", ms=4, label=Q_LABELS[q])
     ax.axvspan(2015.5, 2020.5, color=GRID, alpha=0.6, lw=0)
-    ax.text(2018, 13, "2020 wave:\nno split of\nimputed rent", ha="center", fontsize=8, color=INK_2)
+    ax.text(2018, 13, "2020 wave,\nfieldwork\n2022/23:\nno split of\nimputed rent", ha="center", fontsize=8, color=INK_2)
     ax.set_title("Housing, water and energy including imputed rent, % of consumption")
     ax.set_xticks(WAVES)
     ax.legend(loc="upper left", fontsize=8.5, ncol=2)
-    finish(fig, "fig08_housing_incl_imputed_rent.png", HBS)
+    finish(fig, "fig08_housing_incl_imputed_rent.png", f"{HBS}; the 2020 wave was collected in 2022/23")
 
 
 # 9. Inequality of consumption, total and after basic needs.
@@ -164,7 +164,7 @@ def consumption_ratio(resid: pd.DataFrame) -> None:
     ax.set_xticks(WAVES)
     ax.set_ylim(0, 8.5)
     ax.legend(loc="upper right", fontsize=8.5)
-    finish(fig, "fig09_consumption_ratio.png", "Eurostat hbs_exp_t133 and hbs_str_t223 (PPS per adult equivalent)")
+    finish(fig, "fig09_consumption_ratio.png", "Eurostat hbs_exp_t133 and hbs_str_t223 (PPS per adult equivalent); the 2020 wave was collected in 2022/23")
 
 
 # 10. Median saving rate by income fifth.
@@ -175,7 +175,8 @@ def saving_by_quintile(sq: pd.DataFrame) -> None:
     width = 0.26
     colours = [MUTED, BLUE, GOLD]
     for i, y in enumerate(years):
-        ax.bar(x + (i - 1) * width, sq.loc[QUINTILES, y].values, width=width, color=colours[i], label=str(y))
+        ax.bar(x + (i - 1) * width, sq.loc[QUINTILES, y].values, width=width, color=colours[i],
+               label="around 2020 (HBS 2022)" if y == 2020 else str(y))
     ax.axhline(0, color=INK_2, lw=0.8)
     ax.set_xticks(x, [Q_LABELS[q] for q in QUINTILES])
     ax.set_title("Median saving rate by income fifth, % of disposable income")
@@ -234,7 +235,7 @@ def main() -> None:
     saving_rate(s)
     engel(hb)
     by_quintile_over_waves(hb, "core_ex_imputed",
-                           "Food, rent and household energy, % of consumption, by income fifth",
+                           "Food, rent, energy, water and repairs, % of consumption, by income fifth",
                            "fig04_core_share_by_quintile.png")
     by_quintile_over_waves(hb, "rent_actual_ex_imputed", "Actual rent, % of consumption, by income fifth",
                            "fig05_rent_share_by_quintile.png")
