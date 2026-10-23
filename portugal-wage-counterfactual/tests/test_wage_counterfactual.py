@@ -95,3 +95,17 @@ def test_floor_changes_nothing_without_a_falling_year(inputs: pd.DataFrame) -> N
 def test_unknown_floor_is_rejected(inputs: pd.DataFrame) -> None:
     with pytest.raises(ValueError):
         wc.counterfactual(inputs, 2000, floor="real")
+
+
+def test_minimum_wage_series_matches_the_1974_and_2024_legal_values() -> None:
+    smn = wc.load_minimum_wage()
+    assert smn[1974] == pytest.approx(3300 / 200.482, abs=0.05)
+    assert smn[1975] == pytest.approx(4000 / 200.482, abs=0.05)
+    assert smn[2024] == 820.0
+
+
+def test_comp_per_employee_hour_is_consistent_with_per_employee() -> None:
+    euro = wc.load_eurostat()
+    hours_per_employee = euro.loc[wc.END, "SAL_DC_THS_HW"] / euro.loc[wc.END, "SAL_DC_THS_PER"]
+    per_hour = wc.comp_per_employee_hour()[wc.END]
+    assert per_hour * hours_per_employee == pytest.approx(1000 * euro.loc[wc.END, "comp_per_emp"])

@@ -137,3 +137,31 @@ Decomposition by base year, log points (multiplicative rule): total = price wedg
   2010:   -6.3 =   -7.0   +0.7
   2015:  -17.5 =   -9.6   -8.0
   2020:   -2.6 =   -3.8   +1.2
+
+National minimum wage: actual 2024 820, 2026 920
+  base 1975 (20.0): CF 1,699  ratio 2.072; no cut 1,857; per hour 1,518
+  rule: base years above actual: 1975, 1976, 1977, 1978, 1979, 1980, 1981, 1982, 1983
+  no cut: base years above actual: 1975, 1976, 1977, 1978, 1979, 1980, 1981, 1982, 1983, 1984, 1985, 1986, 1987, 1988
+  per hour: base years above actual: 1975, 1976, 1977, 1978, 1979, 1980, 1981
+  rule, base years 1984-2023: CF 592 (base 2007) to 817 (base 1985)
+  real minimum wage, 1975 = 100: 1977 70.6, 1980 82.7, 1985 64.1, 1990 67.3, 2000 74.9, 2010 87.8, 2014 84.1, 2016 90.9, 2019 100.2, 2020 106.1, 2024 117.4
+  first year back at or above the 1975 real level: 2019; low point 62.2 in 1984; first year at or above 90: 2016
+  minimum wage / QP mean: 1985 0.562, 1995 0.444, 2005 0.413, 2014 0.444, 2019 0.496, 2024 0.518
+  minimum wage 2016-2024: +54.7%
+
+Compensation per employee hour vs productivity per hour, base years 1995-2023
+  compensation per employee hour: 1995 6.29, 2024 15.83 EUR
+  per_hour          median 0.961, min 0.849, max 1.003; above actual: 2000
+  per_hour_no_cut   median 0.978, min 0.851, max 1.032; above actual: 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005
+  per_person        median 0.935, min 0.835, max 0.976; above actual: none
+  per_person_no_cut median 1.006, min 0.893, max 1.059; above actual: 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010
+  hours per employee: 1995 1,884, 2010 1,890, 2019 1,892, 2020 1,786, 2021 1,854, 2024 1,963
+  per-hour years with inflation + productivity < 0: 2009 (-1.27%), 2014 (-1.51%), 2020 (-0.02%)
+
+Across base years and against a reference-period wage share
+  rule: median over all 49 base years 0.935 (QP mean 1,480), interquartile range 0.882-0.963 (1,396-1,524)
+  no cut: median over all 49 base years 1.010 (QP mean 1,598), interquartile range 0.955-1.045 (1,512-1,654)
+  adjusted wage share 1975-2024 average 60.07% vs 2024 56.33%: ratio 1.066; QP mean 1,688, median 1,265
+  adjusted wage share 1985-2024 average 56.88% vs 2024 56.33%: ratio 1.010; QP mean 1,598, median 1,198
+  adjusted wage share 1995-2024 average 56.68% vs 2024 56.33%: ratio 1.006; QP mean 1,592, median 1,194
+
