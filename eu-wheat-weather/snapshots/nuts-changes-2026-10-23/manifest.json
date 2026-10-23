@@ -1,0 +1,19 @@
+{
+ "source": "https://ec.europa.eu/eurostat/documents/345175/629341/",
+ "tables": {
+  "2006-2010": "2006-2010.xls",
+  "2010-2013": "NUTS+2010+-+NUTS+2013.xls",
+  "2013-2016": "NUTS2013-NUTS2016.xlsx",
+  "2016-2021": "NUTS2021.xlsx"
+ },
+ "retrieved_utc": "2026-10-23T08:18:26Z",
+ "files": {
+  "raw/2006-2010.xls": "1154c6224f30ff6d3db9aa8fa94b8fffa01a7a7ec5846542042a50b7290ed5d0",
+  "raw/NUTS+2010+-+NUTS+2013.xls": "dd72ca303a21a4830041aa16cf427d57796543c91282a616680588ad20cb7e45",
+  "raw/NUTS2013-NUTS2016.xlsx": "1f1d7044cbbb41de54ad50414a60971e8c241a4239a5bc10e29eb7ea8a15f639",
+  "raw/NUTS2021.xlsx": "b17dcc379bb3586550ec3b16f3f474dd2a8a55b4cfdcdc1e1575097f1c2d4761",
+  "processed/changes_nuts2.csv": "00b13d3b30279768165e0504b9f3e41b3bc83aa96392bd7f9c7ddfeaca9d774f"
+ },
+ "nuts2_rows": 133,
+ "pure_recodes": 63
+}
