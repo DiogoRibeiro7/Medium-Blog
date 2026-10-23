@@ -163,7 +163,7 @@ def main() -> None:
         a, b = fixed_index("QU1", wave), fixed_index("QU5", wave)
         sens[f"fixed {wave}"] = a[2025] - b[2025]
     w("    " + ", ".join(f"{k} {v:+.1f}" for k, v in sens.items()))
-    pd.Series(sens).round(3).to_csv(RESULTS / "quintile_inflation_weight_sensitivity.csv", header=["qu1_minus_qu5_2025"])
+    pd.Series(sens).round(6).to_csv(RESULTS / "quintile_inflation_weight_sensitivity.csv", header=["qu1_minus_qu5_2025"])
     w("")
 
     price_volume(w)
