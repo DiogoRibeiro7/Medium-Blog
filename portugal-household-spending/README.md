@@ -18,7 +18,20 @@ python figures.py
 python -m pytest -q tests
 ```
 
-It writes `results/summary.txt` (every number), the CSVs behind it, and `figures/fig1_core_share_by_quintile.png`, `figures/fig2_poorest_composition.png`, `figures/fig3_basic_needs_prices.png`.
+It writes `results/summary.txt` (every number), the CSVs behind it, and twelve figures in `figures/`:
+
+- `fig01` basic needs as a share of consumption, national accounts, 1995–2022
+- `fig02` household saving rate, 1995–2025
+- `fig03` food share by income fifth in each survey year (Engel curves)
+- `fig04` food, rent and household energy by income fifth, 1988–2015
+- `fig05` actual rent by income fifth
+- `fig06` electricity, gas and fuels by income fifth
+- `fig07` composition of basic needs for each income fifth
+- `fig08` housing including imputed rent, all seven survey waves (the 2020 break)
+- `fig09` richest over poorest fifth, consumption per adult equivalent, total and after basic needs
+- `fig10` median saving rate by income fifth (experimental)
+- `fig11` prices of each basic need against all items since 1996
+- `fig12` cumulative inflation of each income fifth's basket
 
 ## Data
 
