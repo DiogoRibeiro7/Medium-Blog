@@ -24,6 +24,9 @@ YIELD_MIN, YIELD_MAX = 0.5, 15.0
 MIN_YEARS = 10
 PRIMARY = ("mar_jul", "all")
 WEATHER_TERMS = ("gdd_0_30", "edd_30", "prec")
+# The exclusion reasons, in the order the rules apply.
+REASONS = ("no_area_or_production", "area_below_1kha", "implausible_yield", "weather_missing",
+           "region_below_10_years")
 
 
 def read_wheat(snapshot: Path) -> list[WheatRow]:
@@ -143,7 +146,8 @@ def summary_document(snapshot: Path, matches: Sequence[CodeMatch],
         "harmonised_region_years": len(harmonised),
         "harmonised_with_yield": sum(h.yield_t_ha is not None for h in harmonised),
         "conflicts": len(conflicts),
-        "excluded_by_reason": dict(sorted(Counter(e.reason for e in excluded).items())),
+        "excluded_by_reason": {reason: n for reason in REASONS
+                               if (n := sum(e.reason == reason for e in excluded))},
         "panel_region_years": len(panel), "panel_regions": len({r.geo for r in panel}),
         "panel_countries": len(by_country),
         "years": [min((r.year for r in panel), default=0), max((r.year for r in panel),

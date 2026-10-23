@@ -1,3 +1,9 @@
 # Frozen snapshots must stay byte-identical to the SHA-256 hashes in their manifests:
 # no Git LFS (overrides the repository-wide *.csv rule) and no line-ending conversion.
 snapshots/** !filter !diff !merge -text
+
+# Derived tables and reports: plain Git (not LFS), LF exactly as written, so the
+# regeneration tests compare bytes on every platform.
+docs/**/*.csv !filter !diff !merge text eol=lf
+docs/**/*.json text eol=lf
+docs/*.md text eol=lf

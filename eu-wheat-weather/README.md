@@ -3,9 +3,14 @@
 A reproducible study of how common-wheat yields in the NUTS-2 regions of the European
 Union respond to extreme heat and drought during the growing season, 2000-2024.
 
-**Status: foundation.** This stage has the data pipeline and the research plan
-([METHODS.md](METHODS.md)), committed before any yield was related to any weather
-variable. No estimate exists yet. [ROADMAP.md](ROADMAP.md) lists the stages.
+**Status: data (phase 1).**
+
+- The research plan ([METHODS.md](METHODS.md)) was committed before any yield was related
+  to any weather variable. Its change log records two decisions taken during phase 1,
+  before any estimate.
+- The region-year panel and its coverage report ([docs/DATA.md](docs/DATA.md)) are
+  built: 3,771 region-years in 167 regions of 25 countries, 2000-2024.
+- No estimate exists yet. [ROADMAP.md](ROADMAP.md) lists the stages.
 
 ## Question and estimands
 
@@ -48,8 +53,11 @@ not commercial. Any publication must carry:
 
 **What is committed.**
 
-- The Eurostat snapshot (`snapshots/eurostat-crops-<date>/`) is committed
-  byte-identical, with SHA-256 hashes in its manifest.
+- The Eurostat crop snapshots (`snapshots/eurostat-crops-<date>/`) and Eurostat's
+  official NUTS change tables (`snapshots/nuts-changes-2026-10-23/`) are committed
+  byte-identical, with SHA-256 hashes in their manifests.
+- The derived tables are committed in `docs/panel/`: the region map, the regional
+  weather and the panel. The panel regenerates in the offline tests.
 - The E-OBS files (about 2.5 GB) and the boundary files (about 37 MB) are not committed.
   Their URLs and SHA-256 hashes are, and `eu-wheat audit` checks local copies against
   them.
@@ -61,10 +69,14 @@ project-local (`.venv`) and `poetry.lock` pins every dependency.
 
 ```bash
 poetry install --extras dev
-poetry run eu-wheat fetch-crops --output-dir snapshots/eurostat-crops-2026-10-22
+poetry run eu-wheat fetch-crops --output-dir snapshots/eurostat-crops-2026-10-23
 poetry run eu-wheat fetch-boundaries --output-dir data/boundaries --manifest snapshots/gisco-nuts-2026-10-22.json
 poetry run eu-wheat fetch-weather --output-dir data/eobs --manifest snapshots/eobs-v33.0e.json   # about 2.5 GB
-poetry run eu-wheat audit --crops snapshots/eurostat-crops-2026-10-22 --weather-manifest snapshots/eobs-v33.0e.json --boundaries-manifest snapshots/gisco-nuts-2026-10-22.json
+poetry run eu-wheat fetch-nuts-changes --output-dir snapshots/nuts-changes-2026-10-23
+poetry run eu-wheat audit --crops snapshots/eurostat-crops-2026-10-23 --weather-manifest snapshots/eobs-v33.0e.json --boundaries-manifest snapshots/gisco-nuts-2026-10-22.json
+poetry run eu-wheat regions --crops snapshots/eurostat-crops-2026-10-23 --nuts-changes snapshots/nuts-changes-2026-10-23 --boundaries-dir data/boundaries --output docs/panel/region_map.csv
+poetry run eu-wheat weather --eobs-dir data/eobs --boundaries-dir data/boundaries --output docs/panel/weather.csv   # about 2.5 minutes
+poetry run eu-wheat panel --crops snapshots/eurostat-crops-2026-10-23 --region-map docs/panel/region_map.csv --weather docs/panel/weather.csv --output-dir docs/panel --report docs/DATA.md
 poetry run pytest
 poetry run ruff check src tests
 poetry run mypy src
