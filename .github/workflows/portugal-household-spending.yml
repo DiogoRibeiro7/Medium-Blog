@@ -1,0 +1,55 @@
+name: Reproduce portugal-household-spending
+
+on:
+  pull_request:
+    paths:
+      - 'portugal-household-spending/**'
+      - '.github/workflows/portugal-household-spending.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'portugal-household-spending/**'
+      - '.github/workflows/portugal-household-spending.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: portugal-household-spending
+    env:
+      MPLBACKEND: Agg
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: portugal-household-spending/requirements.txt
+
+      - name: Install pinned dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Run the tests
+        run: python -m pytest -q tests
+
+      - name: Rerun the analysis
+        run: python spending.py > /dev/null
+
+      - name: Check the numbers match the committed run
+        run: git diff --exit-code -- results/summary.txt
+
+      - name: Draw the figures
+        run: |
+          python figures.py
+          for f in fig1_core_share_by_quintile fig2_poorest_composition fig3_basic_needs_prices; do
+            test -s "figures/$f.png"
+          done
