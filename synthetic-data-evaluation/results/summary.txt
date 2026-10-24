@@ -1,0 +1,394 @@
+== Part 1: one synthetic copy of the Adult training third ==
+train rows 16281, holdout rows 16281
+TRTR (real train -> real holdout): AUC 0.923, Brier 0.0903
+real train rules: education mismatch 0.0000, female husbands 0.0000, male wives 0.0037, out of range 0.0000
+real train point masses: capital-gain == 0 0.9168, capital-loss == 0 0.9525, hours-per-week == 40 0.4624
+real-train coefficients: intercept -9.2498 (se 0.1783), age 0.0282 (se 0.0019), education-num 0.3752 (se 0.0102), hours-per-week 0.0355 (se 0.0020), male 0.0594 (se 0.0619), married 2.3236 (se 0.0593)
+
+-- reference (real)
+   fidelity: mean marginal distance 0.0085, max 0.0179 (education), mean pairwise TVD 0.0206
+   discriminator AUC 0.498 (pair-aware folds 0.519), pMSE 0.0064 (pair-aware 0.0062)
+   rules: education mismatch 0.0000, female husbands 0.0002, male wives 0.0000, out of range 0.0001
+   point masses: capital-gain == 0 0.9176, capital-loss == 0 0.9533, capital-gain < 0 0.0000, capital-loss < 0 0.0000, hours-per-week == 40 0.4688
+   utility: TSTR AUC 0.924, Brier 0.0890
+   coefficients (difference in real-data SEs): age +0.9, education-num +0.6, hours-per-week -2.0, male -0.2, married +1.4
+   coefficients (synthetic estimate): age 0.0299, education-num 0.3809, hours-per-week 0.0315, male 0.0490, married 2.4055
+   CI overlap with real: age 0.77, education-num 0.86, hours-per-week 0.48, male 0.96, married 0.65 (mean 0.74)
+   privacy: exact copies 0.0006, median DCR 0.339, DCR share 0.501, MIA AUC 0.498, MIA TPR at 1% FPR 0.009
+-- training copy
+   fidelity: mean marginal distance 0.0000, max 0.0000 (age), mean pairwise TVD 0.0000
+   discriminator AUC 0.107 (pair-aware folds 0.500), pMSE 0.0051 (pair-aware 0.0000)
+   rules: education mismatch 0.0000, female husbands 0.0000, male wives 0.0037, out of range 0.0000
+   point masses: capital-gain == 0 0.9168, capital-loss == 0 0.9525, capital-gain < 0 0.0000, capital-loss < 0 0.0000, hours-per-week == 40 0.4624
+   utility: TSTR AUC 0.923, Brier 0.0903
+   coefficients (difference in real-data SEs): age +0.0, education-num +0.0, hours-per-week +0.0, male +0.0, married +0.0
+   coefficients (synthetic estimate): age 0.0282, education-num 0.3752, hours-per-week 0.0355, male 0.0594, married 2.3236
+   CI overlap with real: age 1.00, education-num 1.00, hours-per-week 1.00, male 1.00, married 1.00 (mean 1.00)
+   privacy: exact copies 1.0000, median DCR 0.000, DCR share 1.000, MIA AUC 1.000, MIA TPR at 1% FPR 1.000
+-- independent
+   fidelity: mean marginal distance 0.0050, max 0.0152 (occupation), mean pairwise TVD 0.0769
+   discriminator AUC 0.993 (pair-aware folds 0.993), pMSE 0.2083 (pair-aware 0.2066)
+   rules: education mismatch 0.8158, female husbands 0.3359, male wives 0.6760, out of range 0.0000
+   point masses: capital-gain == 0 0.9203, capital-loss == 0 0.9530, capital-gain < 0 0.0000, capital-loss < 0 0.0000, hours-per-week == 40 0.4530
+   utility: TSTR AUC 0.418, Brier 0.1830
+   coefficients (difference in real-data SEs): age -14.3, education-num -36.7, hours-per-week -17.2, male -2.0, married -40.1
+   coefficients (synthetic estimate): age 0.0012, education-num 0.0013, hours-per-week 0.0019, male -0.0651, married -0.0566
+   CI overlap with real: age 0.00, education-num 0.00, hours-per-week 0.00, male 0.39, married 0.00 (mean 0.08)
+   privacy: exact copies 0.0000, median DCR 1.160, DCR share 0.500, MIA AUC 0.497, MIA TPR at 1% FPR 0.010
+-- copula
+   fidelity: mean marginal distance 0.0059, max 0.0111 (education), mean pairwise TVD 0.0669
+   discriminator AUC 0.987 (pair-aware folds 0.987), pMSE 0.1908 (pair-aware 0.1910)
+   rules: education mismatch 0.8017, female husbands 0.1861, male wives 0.3950, out of range 0.0000
+   point masses: capital-gain == 0 0.9194, capital-loss == 0 0.9485, capital-gain < 0 0.0000, capital-loss < 0 0.0000, hours-per-week == 40 0.4643
+   utility: TSTR AUC 0.855, Brier 0.1354
+   coefficients (difference in real-data SEs): age -4.9, education-num -21.2, hours-per-week -10.8, male +2.0, married -30.5
+   coefficients (synthetic estimate): age 0.0189, education-num 0.1593, hours-per-week 0.0144, male 0.1808, married 0.5175
+   CI overlap with real: age 0.00, education-num 0.00, hours-per-week 0.00, male 0.42, married 0.00 (mean 0.08)
+   privacy: exact copies 0.0000, median DCR 1.103, DCR share 0.500, MIA AUC 0.492, MIA TPR at 1% FPR 0.008
+-- cart
+   fidelity: mean marginal distance 0.0051, max 0.0155 (occupation), mean pairwise TVD 0.0154
+   discriminator AUC 0.446 (pair-aware folds 0.483), pMSE 0.0056 (pair-aware 0.0055)
+   rules: education mismatch 0.0000, female husbands 0.0000, male wives 0.0000, out of range 0.0000
+   point masses: capital-gain == 0 0.9196, capital-loss == 0 0.9523, capital-gain < 0 0.0000, capital-loss < 0 0.0000, hours-per-week == 40 0.4640
+   utility: TSTR AUC 0.911, Brier 0.0964
+   coefficients (difference in real-data SEs): age +1.6, education-num -2.1, hours-per-week -0.8, male -1.1, married -2.5
+   coefficients (synthetic estimate): age 0.0311, education-num 0.3541, hours-per-week 0.0338, male -0.0094, married 2.1734
+   CI overlap with real: age 0.60, education-num 0.46, hours-per-week 0.78, male 0.71, married 0.35 (mean 0.58)
+   privacy: exact copies 0.0580, median DCR 0.262, DCR share 0.656, MIA AUC 0.558, MIA TPR at 1% FPR 0.070
+-- smote
+   fidelity: mean marginal distance 0.0203, max 0.0478 (hours-per-week), mean pairwise TVD 0.0385
+   discriminator AUC 0.750 (pair-aware folds 0.772), pMSE 0.0514 (pair-aware 0.0548)
+   rules: education mismatch 0.0469, female husbands 0.0000, male wives 0.0028, out of range 0.0000
+   point masses: capital-gain == 0 0.8999, capital-loss == 0 0.9449, capital-gain < 0 0.0000, capital-loss < 0 0.0000, hours-per-week == 40 0.3680
+   utility: TSTR AUC 0.900, Brier 0.1069
+   coefficients (difference in real-data SEs): age +4.8, education-num +2.6, hours-per-week +7.9, male -2.6, married +1.1
+   coefficients (synthetic estimate): age 0.0373, education-num 0.4012, hours-per-week 0.0510, male -0.1014, married 2.3864
+   CI overlap with real: age 0.00, education-num 0.37, hours-per-week 0.00, male 0.35, married 0.74 (mean 0.29)
+   privacy: exact copies 0.0009, median DCR 0.063, DCR share 0.903, MIA AUC 0.714, MIA TPR at 1% FPR 0.158
+-- ctgan
+   fidelity: mean marginal distance 0.1674, max 0.8334 (capital-gain), mean pairwise TVD 0.2107
+   discriminator AUC 0.999 (pair-aware folds 0.999), pMSE 0.2480 (pair-aware 0.2480)
+   rules: education mismatch 0.2432, female husbands 0.1195, male wives 0.1588, out of range 0.5795
+   point masses: capital-gain == 0 0.0068, capital-loss == 0 0.3197, capital-gain < 0 0.0767, capital-loss < 0 0.5455, hours-per-week == 40 0.4298
+   utility: TSTR AUC 0.874, Brier 0.1169
+   coefficients (difference in real-data SEs): age -5.0, education-num -3.8, hours-per-week -2.8, male +2.4, married -5.7
+   coefficients (synthetic estimate): age 0.0188, education-num 0.3363, hours-per-week 0.0300, male 0.2065, married 1.9846
+   CI overlap with real: age 0.00, education-num 0.00, hours-per-week 0.30, male 0.34, married 0.00 (mean 0.13)
+   privacy: exact copies 0.0000, median DCR 1.121, DCR share 0.514, MIA AUC 0.496, MIA TPR at 1% FPR 0.008
+-- tvae
+   fidelity: mean marginal distance 0.1155, max 0.4631 (capital-gain), mean pairwise TVD 0.1998
+   discriminator AUC 0.991 (pair-aware folds 0.991), pMSE 0.2134 (pair-aware 0.2141)
+   rules: education mismatch 0.1539, female husbands 0.0184, male wives 0.2564, out of range 0.3246
+   point masses: capital-gain == 0 0.1372, capital-loss == 0 0.9410, capital-gain < 0 0.3166, capital-loss < 0 0.0087, hours-per-week == 40 0.6433
+   utility: TSTR AUC 0.882, Brier 0.1180
+   coefficients (difference in real-data SEs): age -7.1, education-num -7.7, hours-per-week +7.0, male -1.4, married +13.9
+   coefficients (synthetic estimate): age 0.0148, education-num 0.2968, hours-per-week 0.0491, male -0.0261, married 3.1487
+   CI overlap with real: age 0.00, education-num 0.00, hours-per-week 0.00, male 0.64, married 0.00 (mean 0.13)
+   privacy: exact copies 0.0000, median DCR 0.514, DCR share 0.522, MIA AUC 0.497, MIA TPR at 1% FPR 0.011
+
+== Part 2a: known mechanism, n = 1000, 2000 replications ==
+coverage per term: x1, x2, x3, x1:x3  [Monte Carlo SE about 0.005 near 0.95]
+real data: 0.950 0.944 0.958 0.945   mean 0.949
+
+-- size study: one synthetic data set of k*n rows analysed as real
+parametric  simple k= 1: 0.835 0.830 0.830 0.837   mean 0.833   theory 0.834
+parametric  simple k= 2: 0.736 0.724 0.749 0.745   mean 0.738   theory 0.742
+parametric  simple k= 5: 0.580 0.581 0.585 0.602   mean 0.587   theory 0.576
+parametric  simple k=10: 0.430 0.458 0.456 0.456   mean 0.450   theory 0.445
+parametric  simple k=20: 0.323 0.339 0.344 0.343   mean 0.337   theory 0.331
+parametric  proper k= 1: 0.736 0.741 0.750 0.732   mean 0.740   theory 0.742
+parametric  proper k= 2: 0.611 0.626 0.626 0.612   mean 0.619   theory 0.619
+parametric  proper k= 5: 0.432 0.455 0.460 0.442   mean 0.447   theory 0.445
+parametric  proper k=10: 0.320 0.341 0.336 0.338   mean 0.333   theory 0.331
+parametric  proper k=20: 0.232 0.247 0.256 0.251   mean 0.247   theory 0.240
+cart        simple k= 1: 0.826 0.823 0.842 0.849   mean 0.835
+cart        simple k= 2: 0.734 0.728 0.752 0.730   mean 0.736
+cart        simple k= 5: 0.549 0.560 0.577 0.583   mean 0.567
+cart        simple k=10: 0.414 0.423 0.452 0.455   mean 0.436
+cart        simple k=20: 0.311 0.304 0.334 0.326   mean 0.319
+cart        proper k= 1: 0.748 0.732 0.742 0.740   mean 0.740
+cart        proper k= 2: 0.625 0.599 0.600 0.622   mean 0.611
+cart        proper k= 5: 0.458 0.427 0.446 0.447   mean 0.444
+cart        proper k=10: 0.339 0.317 0.327 0.333   mean 0.329
+cart        proper k=20: 0.256 0.243 0.249 0.249   mean 0.249
+copula      simple k= 1: 0.017 0.748 0.087 0.001   mean 0.213
+copula      simple k= 2: 0.001 0.617 0.010 0.000   mean 0.157
+copula      simple k= 5: 0.000 0.407 0.001 0.000   mean 0.102
+copula      simple k=10: 0.000 0.291 0.000 0.000   mean 0.073
+copula      simple k=20: 0.000 0.205 0.000 0.000   mean 0.051
+copula      proper k= 1: 0.033 0.675 0.111 0.001   mean 0.205
+copula      proper k= 2: 0.004 0.555 0.027 0.000   mean 0.147
+copula      proper k= 5: 0.000 0.382 0.004 0.000   mean 0.096
+copula      proper k=10: 0.000 0.268 0.002 0.000   mean 0.068
+copula      proper k=20: 0.000 0.188 0.001 0.000   mean 0.047
+smote       simple k= 1: 0.731 0.725 0.817 0.812   mean 0.771
+smote       simple k= 2: 0.597 0.585 0.708 0.720   mean 0.652
+smote       simple k= 5: 0.416 0.406 0.545 0.541   mean 0.477
+smote       simple k=10: 0.302 0.291 0.410 0.417   mean 0.355
+smote       simple k=20: 0.219 0.205 0.310 0.303   mean 0.259
+smote       proper k= 1: 0.676 0.674 0.722 0.722   mean 0.699
+smote       proper k= 2: 0.555 0.550 0.591 0.606   mean 0.576
+smote       proper k= 5: 0.393 0.378 0.435 0.419   mean 0.406
+smote       proper k=10: 0.293 0.283 0.317 0.312   mean 0.301
+smote       proper k=20: 0.205 0.198 0.228 0.228   mean 0.215
+independent simple k= 1: 0.000 0.000 0.000 0.003   mean 0.001
+independent simple k= 2: 0.000 0.000 0.000 0.000   mean 0.000
+independent simple k= 5: 0.000 0.000 0.000 0.000   mean 0.000
+independent simple k=10: 0.000 0.000 0.000 0.000   mean 0.000
+independent simple k=20: 0.000 0.000 0.000 0.000   mean 0.000
+independent proper k= 1: 0.000 0.000 0.000 0.003   mean 0.001
+independent proper k= 2: 0.000 0.000 0.000 0.000   mean 0.000
+independent proper k= 5: 0.000 0.000 0.000 0.000   mean 0.000
+independent proper k=10: 0.000 0.000 0.000 0.000   mean 0.000
+independent proper k=20: 0.000 0.000 0.000 0.000   mean 0.000
+
+-- rules: m synthetic data sets of n rows
+parametric  simple naive       m= 1: 0.818 0.834 0.841 0.817   mean 0.827   theory 0.834
+parametric  simple naive       m= 2: 0.728 0.743 0.749 0.741   mean 0.740   theory 0.742
+parametric  simple naive       m= 5: 0.556 0.581 0.600 0.582   mean 0.580   theory 0.576
+parametric  simple naive       m=10: 0.435 0.451 0.457 0.448   mean 0.448   theory 0.445
+parametric  simple naive       m=20: 0.322 0.329 0.331 0.341   mean 0.331   theory 0.331
+parametric  simple simple      m= 1: 0.950 0.943 0.952 0.952   mean 0.949   theory 0.950
+parametric  simple simple      m= 2: 0.949 0.944 0.948 0.945   mean 0.946   theory 0.950
+parametric  simple simple      m= 5: 0.953 0.940 0.947 0.948   mean 0.947   theory 0.950
+parametric  simple simple      m=10: 0.950 0.945 0.956 0.949   mean 0.950   theory 0.950
+parametric  simple simple      m=20: 0.948 0.945 0.958 0.950   mean 0.950   theory 0.950
+parametric  simple proper      m= 1: 0.986 0.982 0.984 0.986   mean 0.984   theory 0.984
+parametric  simple proper      m= 2: 0.972 0.973 0.976 0.973   mean 0.973   theory 0.976
+parametric  simple proper      m= 5: 0.965 0.959 0.965 0.961   mean 0.962   theory 0.966
+parametric  simple proper      m=10: 0.957 0.953 0.964 0.952   mean 0.956   theory 0.959
+parametric  simple proper      m=20: 0.953 0.950 0.964 0.954   mean 0.955   theory 0.955
+parametric  simple raghunathan m= 2: 0.934 0.940 0.934 0.921   mean 0.932   fallback 0.590, mean length / real [3.96, 4.17, 3.9, 3.86]
+parametric  simple raghunathan m= 5: 0.964 0.957 0.958 0.959   mean 0.959   fallback 0.497, mean length / real [2.56, 2.57, 2.53, 2.45]
+parametric  simple raghunathan m=10: 0.963 0.959 0.974 0.967   mean 0.965   fallback 0.478, mean length / real [1.87, 1.9, 1.9, 1.93]
+parametric  simple raghunathan m=20: 0.963 0.961 0.972 0.964   mean 0.965   fallback 0.481, mean length / real [1.51, 1.53, 1.55, 1.56]
+parametric  proper naive       m= 1: 0.732 0.746 0.749 0.739   mean 0.741   theory 0.742
+parametric  proper naive       m= 2: 0.662 0.663 0.672 0.678   mean 0.669   theory 0.673
+parametric  proper naive       m= 5: 0.533 0.538 0.543 0.556   mean 0.543   theory 0.541
+parametric  proper naive       m=10: 0.412 0.429 0.441 0.437   mean 0.430   theory 0.428
+parametric  proper naive       m=20: 0.312 0.326 0.335 0.330   mean 0.326   theory 0.324
+parametric  proper simple      m= 1: 0.884 0.892 0.901 0.889   mean 0.892   theory 0.890
+parametric  proper simple      m= 2: 0.907 0.902 0.916 0.922   mean 0.912   theory 0.910
+parametric  proper simple      m= 5: 0.925 0.929 0.941 0.936   mean 0.933   theory 0.930
+parametric  proper simple      m=10: 0.942 0.937 0.947 0.934   mean 0.940   theory 0.939
+parametric  proper simple      m=20: 0.947 0.943 0.955 0.944   mean 0.947   theory 0.944
+parametric  proper proper      m= 1: 0.941 0.950 0.951 0.946   mean 0.947   theory 0.950
+parametric  proper proper      m= 2: 0.952 0.945 0.963 0.954   mean 0.953   theory 0.950
+parametric  proper proper      m= 5: 0.947 0.952 0.958 0.955   mean 0.953   theory 0.950
+parametric  proper proper      m=10: 0.954 0.949 0.958 0.947   mean 0.952   theory 0.950
+parametric  proper proper      m=20: 0.950 0.948 0.958 0.952   mean 0.952   theory 0.950
+parametric  proper raghunathan m= 2: 0.935 0.913 0.915 0.943   mean 0.926   fallback 0.432, mean length / real [7.07, 6.73, 6.71, 6.98]
+parametric  proper raghunathan m= 5: 0.976 0.973 0.981 0.980   mean 0.977   fallback 0.206, mean length / real [3.47, 3.37, 3.36, 3.4]
+parametric  proper raghunathan m=10: 0.991 0.992 0.993 0.992   mean 0.992   fallback 0.099, mean length / real [2.28, 2.27, 2.26, 2.28]
+parametric  proper raghunathan m=20: 0.990 0.990 0.992 0.992   mean 0.991   fallback 0.027, mean length / real [1.58, 1.58, 1.58, 1.57]
+parametric  bias of the m=20 average (simple): -0.001 +0.001 +0.001 +0.001   in real-data SDs: -0.02 +0.02 +0.01 +0.01
+cart        simple naive       m= 1: 0.818 0.824 0.832 0.832   mean 0.826
+cart        simple naive       m= 2: 0.706 0.711 0.739 0.728   mean 0.721
+cart        simple naive       m= 5: 0.550 0.559 0.566 0.567   mean 0.561
+cart        simple naive       m=10: 0.413 0.422 0.440 0.430   mean 0.426
+cart        simple naive       m=20: 0.305 0.313 0.338 0.323   mean 0.320
+cart        simple simple      m= 1: 0.941 0.942 0.950 0.956   mean 0.947
+cart        simple simple      m= 2: 0.944 0.932 0.943 0.947   mean 0.941
+cart        simple simple      m= 5: 0.939 0.934 0.951 0.948   mean 0.943
+cart        simple simple      m=10: 0.942 0.936 0.951 0.937   mean 0.942
+cart        simple simple      m=20: 0.938 0.933 0.950 0.945   mean 0.941
+cart        simple proper      m= 1: 0.983 0.980 0.987 0.981   mean 0.983
+cart        simple proper      m= 2: 0.978 0.961 0.975 0.976   mean 0.972
+cart        simple proper      m= 5: 0.956 0.954 0.968 0.961   mean 0.960
+cart        simple proper      m=10: 0.951 0.943 0.960 0.953   mean 0.951
+cart        simple proper      m=20: 0.946 0.940 0.959 0.950   mean 0.948
+cart        simple raghunathan m= 2: 0.926 0.917 0.931 0.926   mean 0.925   fallback 0.593, mean length / real [4.12, 3.87, 3.97, 4.06]
+cart        simple raghunathan m= 5: 0.958 0.952 0.964 0.960   mean 0.958   fallback 0.494, mean length / real [2.53, 2.51, 2.51, 2.5]
+cart        simple raghunathan m=10: 0.957 0.961 0.962 0.964   mean 0.961   fallback 0.483, mean length / real [1.91, 1.93, 1.89, 1.86]
+cart        simple raghunathan m=20: 0.956 0.960 0.969 0.961   mean 0.961   fallback 0.477, mean length / real [1.56, 1.54, 1.55, 1.55]
+cart        proper naive       m= 1: 0.721 0.719 0.741 0.739   mean 0.730
+cart        proper naive       m= 2: 0.653 0.651 0.673 0.675   mean 0.663
+cart        proper naive       m= 5: 0.527 0.525 0.554 0.530   mean 0.534
+cart        proper naive       m=10: 0.421 0.404 0.426 0.434   mean 0.421
+cart        proper naive       m=20: 0.312 0.312 0.326 0.337   mean 0.322
+cart        proper simple      m= 1: 0.873 0.875 0.880 0.891   mean 0.880
+cart        proper simple      m= 2: 0.903 0.898 0.900 0.909   mean 0.903
+cart        proper simple      m= 5: 0.916 0.927 0.929 0.926   mean 0.925
+cart        proper simple      m=10: 0.932 0.927 0.944 0.939   mean 0.935
+cart        proper simple      m=20: 0.944 0.936 0.948 0.941   mean 0.942
+cart        proper proper      m= 1: 0.935 0.939 0.943 0.945   mean 0.941
+cart        proper proper      m= 2: 0.945 0.943 0.945 0.946   mean 0.944
+cart        proper proper      m= 5: 0.939 0.945 0.951 0.944   mean 0.944
+cart        proper proper      m=10: 0.947 0.941 0.950 0.949   mean 0.947
+cart        proper proper      m=20: 0.950 0.942 0.952 0.947   mean 0.947
+cart        proper raghunathan m= 2: 0.920 0.924 0.924 0.923   mean 0.923   fallback 0.427, mean length / real [6.99, 7.32, 7.24, 6.94]
+cart        proper raghunathan m= 5: 0.975 0.978 0.978 0.976   mean 0.977   fallback 0.188, mean length / real [3.49, 3.51, 3.43, 3.45]
+cart        proper raghunathan m=10: 0.993 0.994 0.987 0.992   mean 0.991   fallback 0.084, mean length / real [2.28, 2.27, 2.24, 2.25]
+cart        proper raghunathan m=20: 0.993 0.987 0.995 0.989   mean 0.991   fallback 0.020, mean length / real [1.59, 1.57, 1.59, 1.6]
+cart        bias of the m=20 average (simple): -0.007 +0.008 +0.005 -0.000   in real-data SDs: -0.15 +0.21 +0.08 -0.00
+copula      simple naive       m= 1: 0.011 0.743 0.086 0.000   mean 0.210
+copula      simple naive       m= 2: 0.001 0.603 0.009 0.000   mean 0.153
+copula      simple naive       m= 5: 0.000 0.414 0.000 0.000   mean 0.104
+copula      simple naive       m=10: 0.000 0.289 0.000 0.000   mean 0.072
+copula      simple naive       m=20: 0.000 0.201 0.000 0.000   mean 0.050
+copula      simple simple      m= 1: 0.049 0.890 0.241 0.003   mean 0.296
+copula      simple simple      m= 2: 0.010 0.875 0.115 0.000   mean 0.250
+copula      simple simple      m= 5: 0.002 0.857 0.047 0.000   mean 0.226
+copula      simple simple      m=10: 0.000 0.849 0.025 0.000   mean 0.218
+copula      simple simple      m=20: 0.000 0.848 0.018 0.000   mean 0.217
+copula      simple proper      m= 1: 0.137 0.957 0.446 0.017   mean 0.389
+copula      simple proper      m= 2: 0.028 0.934 0.213 0.000   mean 0.294
+copula      simple proper      m= 5: 0.004 0.891 0.071 0.000   mean 0.242
+copula      simple proper      m=10: 0.001 0.867 0.033 0.000   mean 0.225
+copula      simple proper      m=20: 0.001 0.866 0.021 0.000   mean 0.222
+copula      simple raghunathan m= 2: 0.373 0.874 0.402 0.378   mean 0.507   fallback 0.591, mean length / real [4.28, 4.29, 4.08, 4.22]
+copula      simple raghunathan m= 5: 0.423 0.906 0.472 0.407   mean 0.552   fallback 0.502, mean length / real [2.63, 2.7, 2.62, 2.66]
+copula      simple raghunathan m=10: 0.291 0.905 0.410 0.215   mean 0.456   fallback 0.490, mean length / real [2.0, 2.01, 1.95, 2.0]
+copula      simple raghunathan m=20: 0.161 0.895 0.294 0.106   mean 0.364   fallback 0.485, mean length / real [1.6, 1.65, 1.63, 1.65]
+copula      proper naive       m= 1: 0.032 0.682 0.109 0.001   mean 0.206
+copula      proper naive       m= 2: 0.003 0.578 0.015 0.000   mean 0.149
+copula      proper naive       m= 5: 0.000 0.401 0.000 0.000   mean 0.100
+copula      proper naive       m=10: 0.000 0.308 0.000 0.000   mean 0.077
+copula      proper naive       m=20: 0.000 0.214 0.000 0.000   mean 0.053
+copula      proper simple      m= 1: 0.103 0.847 0.260 0.006   mean 0.304
+copula      proper simple      m= 2: 0.025 0.854 0.108 0.000   mean 0.247
+copula      proper simple      m= 5: 0.004 0.849 0.027 0.000   mean 0.220
+copula      proper simple      m=10: 0.001 0.846 0.009 0.000   mean 0.214
+copula      proper simple      m=20: 0.001 0.854 0.004 0.000   mean 0.215
+copula      proper proper      m= 1: 0.185 0.923 0.424 0.024   mean 0.389
+copula      proper proper      m= 2: 0.048 0.907 0.200 0.000   mean 0.289
+copula      proper proper      m= 5: 0.006 0.885 0.050 0.000   mean 0.235
+copula      proper proper      m=10: 0.002 0.871 0.013 0.000   mean 0.221
+copula      proper proper      m=20: 0.002 0.865 0.005 0.000   mean 0.218
+copula      proper raghunathan m= 2: 0.526 0.892 0.513 0.394   mean 0.581   fallback 0.488, mean length / real [6.5, 7.34, 5.71, 4.63]
+copula      proper raghunathan m= 5: 0.677 0.957 0.652 0.440   mean 0.681   fallback 0.316, mean length / real [3.45, 3.62, 3.23, 2.77]
+copula      proper raghunathan m=10: 0.379 0.975 0.609 0.234   mean 0.549   fallback 0.234, mean length / real [2.41, 2.43, 2.32, 2.09]
+copula      proper raghunathan m=20: 0.146 0.968 0.278 0.111   mean 0.376   fallback 0.175, mean length / real [1.76, 1.71, 1.73, 1.66]
+copula      bias of the m=20 average (simple): +0.228 -0.039 -0.263 -0.382   in real-data SDs: +5.07 -1.07 -3.90 -5.91
+smote       simple naive       m= 1: 0.720 0.724 0.826 0.821   mean 0.772
+smote       simple naive       m= 2: 0.592 0.597 0.710 0.722   mean 0.655
+smote       simple naive       m= 5: 0.431 0.407 0.538 0.545   mean 0.481
+smote       simple naive       m=10: 0.308 0.285 0.415 0.415   mean 0.356
+smote       simple naive       m=20: 0.216 0.208 0.296 0.301   mean 0.256
+smote       simple simple      m= 1: 0.883 0.888 0.945 0.941   mean 0.914
+smote       simple simple      m= 2: 0.870 0.867 0.940 0.931   mean 0.902
+smote       simple simple      m= 5: 0.841 0.838 0.928 0.926   mean 0.883
+smote       simple simple      m=10: 0.834 0.824 0.928 0.922   mean 0.877
+smote       simple simple      m=20: 0.837 0.819 0.923 0.919   mean 0.875
+smote       simple proper      m= 1: 0.940 0.953 0.983 0.983   mean 0.964
+smote       simple proper      m= 2: 0.917 0.919 0.972 0.969   mean 0.944
+smote       simple proper      m= 5: 0.872 0.869 0.950 0.950   mean 0.910
+smote       simple proper      m=10: 0.851 0.845 0.942 0.936   mean 0.893
+smote       simple proper      m=20: 0.846 0.832 0.929 0.928   mean 0.884
+smote       simple raghunathan m= 2: 0.871 0.855 0.921 0.927   mean 0.893   fallback 0.596, mean length / real [3.94, 3.75, 3.6, 3.71]
+smote       simple raghunathan m= 5: 0.891 0.886 0.946 0.939   mean 0.915   fallback 0.520, mean length / real [2.41, 2.39, 2.39, 2.36]
+smote       simple raghunathan m=10: 0.888 0.888 0.947 0.939   mean 0.915   fallback 0.513, mean length / real [1.81, 1.83, 1.78, 1.74]
+smote       simple raghunathan m=20: 0.874 0.867 0.946 0.941   mean 0.907   fallback 0.531, mean length / real [1.45, 1.46, 1.45, 1.43]
+smote       proper naive       m= 1: 0.682 0.675 0.737 0.719   mean 0.703
+smote       proper naive       m= 2: 0.587 0.589 0.648 0.643   mean 0.617
+smote       proper naive       m= 5: 0.450 0.450 0.522 0.538   mean 0.490
+smote       proper naive       m=10: 0.325 0.336 0.410 0.411   mean 0.371
+smote       proper naive       m=20: 0.247 0.246 0.304 0.301   mean 0.275
+smote       proper simple      m= 1: 0.845 0.843 0.890 0.877   mean 0.864
+smote       proper simple      m= 2: 0.846 0.856 0.891 0.887   mean 0.870
+smote       proper simple      m= 5: 0.864 0.858 0.916 0.905   mean 0.886
+smote       proper simple      m=10: 0.866 0.857 0.921 0.915   mean 0.890
+smote       proper simple      m=20: 0.873 0.862 0.929 0.918   mean 0.895
+smote       proper proper      m= 1: 0.924 0.914 0.946 0.942   mean 0.931
+smote       proper proper      m= 2: 0.903 0.909 0.935 0.935   mean 0.920
+smote       proper proper      m= 5: 0.892 0.888 0.936 0.927   mean 0.911
+smote       proper proper      m=10: 0.880 0.874 0.933 0.929   mean 0.904
+smote       proper proper      m=20: 0.881 0.872 0.938 0.923   mean 0.903
+smote       proper raghunathan m= 2: 0.893 0.894 0.918 0.914   mean 0.905   fallback 0.427, mean length / real [6.91, 7.11, 6.67, 6.93]
+smote       proper raghunathan m= 5: 0.961 0.966 0.973 0.972   mean 0.968   fallback 0.182, mean length / real [3.43, 3.48, 3.32, 3.42]
+smote       proper raghunathan m=10: 0.986 0.984 0.986 0.986   mean 0.985   fallback 0.076, mean length / real [2.24, 2.23, 2.21, 2.22]
+smote       proper raghunathan m=20: 0.973 0.965 0.989 0.983   mean 0.977   fallback 0.019, mean length / real [1.56, 1.56, 1.51, 1.56]
+smote       bias of the m=20 average (simple): +0.040 -0.035 -0.024 +0.018   in real-data SDs: +0.88 -0.95 -0.36 +0.28
+independent simple naive       m= 1: 0.000 0.000 0.000 0.003   mean 0.001
+independent simple naive       m= 2: 0.000 0.000 0.000 0.000   mean 0.000
+independent simple naive       m= 5: 0.000 0.000 0.000 0.000   mean 0.000
+independent simple naive       m=10: 0.000 0.000 0.000 0.000   mean 0.000
+independent simple naive       m=20: 0.000 0.000 0.000 0.000   mean 0.000
+independent simple simple      m= 1: 0.000 0.000 0.000 0.025   mean 0.006
+independent simple simple      m= 2: 0.000 0.000 0.000 0.001   mean 0.000
+independent simple simple      m= 5: 0.000 0.000 0.000 0.000   mean 0.000
+independent simple simple      m=10: 0.000 0.000 0.000 0.000   mean 0.000
+independent simple simple      m=20: 0.000 0.000 0.000 0.000   mean 0.000
+independent simple proper      m= 1: 0.000 0.000 0.000 0.083   mean 0.021
+independent simple proper      m= 2: 0.000 0.000 0.000 0.001   mean 0.000
+independent simple proper      m= 5: 0.000 0.000 0.000 0.000   mean 0.000
+independent simple proper      m=10: 0.000 0.000 0.000 0.000   mean 0.000
+independent simple proper      m=20: 0.000 0.000 0.000 0.000   mean 0.000
+independent simple raghunathan m= 2: 0.319 0.358 0.301 0.382   mean 0.340   fallback 0.580, mean length / real [4.8, 4.84, 4.97, 5.2]
+independent simple raghunathan m= 5: 0.149 0.310 0.174 0.434   mean 0.267   fallback 0.484, mean length / real [3.02, 2.93, 3.15, 3.2]
+independent simple raghunathan m=10: 0.003 0.119 0.005 0.303   mean 0.107   fallback 0.472, mean length / real [2.26, 2.2, 2.39, 2.49]
+independent simple raghunathan m=20: 0.000 0.004 0.000 0.184   mean 0.047   fallback 0.472, mean length / real [1.84, 1.77, 1.91, 2.01]
+independent proper naive       m= 1: 0.000 0.000 0.000 0.001   mean 0.000
+independent proper naive       m= 2: 0.000 0.000 0.000 0.000   mean 0.000
+independent proper naive       m= 5: 0.000 0.000 0.000 0.000   mean 0.000
+independent proper naive       m=10: 0.000 0.000 0.000 0.000   mean 0.000
+independent proper naive       m=20: 0.000 0.000 0.000 0.000   mean 0.000
+independent proper simple      m= 1: 0.000 0.000 0.000 0.021   mean 0.005
+independent proper simple      m= 2: 0.000 0.000 0.000 0.001   mean 0.000
+independent proper simple      m= 5: 0.000 0.000 0.000 0.000   mean 0.000
+independent proper simple      m=10: 0.000 0.000 0.000 0.000   mean 0.000
+independent proper simple      m=20: 0.000 0.000 0.000 0.000   mean 0.000
+independent proper proper      m= 1: 0.000 0.000 0.000 0.069   mean 0.017
+independent proper proper      m= 2: 0.000 0.000 0.000 0.002   mean 0.001
+independent proper proper      m= 5: 0.000 0.000 0.000 0.000   mean 0.000
+independent proper proper      m=10: 0.000 0.000 0.000 0.000   mean 0.000
+independent proper proper      m=20: 0.000 0.000 0.000 0.000   mean 0.000
+independent proper raghunathan m= 2: 0.304 0.341 0.315 0.367   mean 0.332   fallback 0.592, mean length / real [4.63, 4.58, 4.9, 5.04]
+independent proper raghunathan m= 5: 0.151 0.318 0.153 0.429   mean 0.263   fallback 0.495, mean length / real [2.96, 2.94, 3.04, 3.23]
+independent proper raghunathan m=10: 0.001 0.123 0.006 0.269   mean 0.100   fallback 0.485, mean length / real [2.26, 2.21, 2.34, 2.39]
+independent proper raghunathan m=20: 0.000 0.005 0.000 0.170   mean 0.044   fallback 0.481, mean length / real [1.82, 1.77, 1.93, 1.99]
+independent bias of the m=20 average (simple): -0.500 +0.300 -0.800 -0.399   in real-data SDs: -11.11 +8.18 -11.86 -6.17
+
+== Part 2b: Adult as population (48842 rows), n = 2000, m = 5, 1000 replications ==
+population coefficients: intercept -9.3559, age 0.0304, education-num 0.3826, hours-per-week 0.0327, male 0.1011, married 2.3135
+coverage per term: age, education-num, hours-per-week, male, married  [Monte Carlo SE about 0.007 near 0.95]
+real data: 0.953 0.939 0.946 0.948 0.943
+independent simple naive       m=1: 0.000 0.000 0.000 0.856 0.000   mean 0.171   length/real [0.71, 0.69, 0.75, 0.62, 0.62]
+independent simple naive       m=5: 0.000 0.000 0.000 0.484 0.000   mean 0.097   length/real [0.32, 0.31, 0.33, 0.28, 0.28]
+independent simple simple      m=5: 0.000 0.000 0.000 0.996 0.000   mean 0.199   length/real [0.78, 0.76, 0.82, 0.68, 0.67]
+independent simple proper      m=5: 0.000 0.000 0.000 0.999 0.000   mean 0.200   length/real [0.84, 0.82, 0.89, 0.73, 0.73]
+independent simple raghunathan m=5: 0.267 0.000 0.247 0.995 0.000   mean 0.302   length/real [1.85, 1.73, 1.84, 1.59, 1.54]   fallback 0.494
+independent simple bias of the average, in real-data SDs: -5.87 -12.83 -5.62 -0.55 -12.83
+independent proper naive       m=1: 0.000 0.000 0.000 0.857 0.000   mean 0.171   length/real [0.71, 0.7, 0.75, 0.62, 0.62]
+independent proper naive       m=5: 0.000 0.000 0.000 0.490 0.000   mean 0.098   length/real [0.32, 0.31, 0.34, 0.28, 0.28]
+independent proper simple      m=5: 0.000 0.000 0.000 0.996 0.000   mean 0.199   length/real [0.78, 0.76, 0.82, 0.68, 0.67]
+independent proper proper      m=5: 0.000 0.000 0.000 0.999 0.000   mean 0.200   length/real [0.84, 0.82, 0.89, 0.73, 0.73]
+independent proper raghunathan m=5: 0.252 0.000 0.247 0.991 0.000   mean 0.298   length/real [1.81, 1.8, 1.87, 1.61, 1.56]   fallback 0.481
+independent proper bias of the average, in real-data SDs: -5.85 -12.82 -5.62 -0.55 -12.85
+copula      simple naive       m=1: 0.132 0.000 0.057 0.908 0.000   mean 0.219   length/real [0.73, 0.77, 0.8, 0.68, 0.65]
+copula      simple naive       m=5: 0.001 0.000 0.000 0.715 0.000   mean 0.143   length/real [0.32, 0.34, 0.36, 0.3, 0.29]
+copula      simple simple      m=5: 0.095 0.000 0.014 0.993 0.000   mean 0.220   length/real [0.8, 0.84, 0.88, 0.74, 0.71]
+copula      simple proper      m=5: 0.123 0.000 0.024 0.999 0.000   mean 0.229   length/real [0.86, 0.91, 0.95, 0.8, 0.77]
+copula      simple raghunathan m=5: 0.476 0.084 0.508 0.989 0.000   mean 0.411   length/real [1.79, 1.89, 2.16, 1.73, 1.62]   fallback 0.487
+copula      simple bias of the average, in real-data SDs: -2.44 -8.00 -3.08 +0.31 -9.71
+copula      proper naive       m=1: 0.165 0.000 0.074 0.897 0.000   mean 0.227   length/real [0.73, 0.77, 0.81, 0.68, 0.65]
+copula      proper naive       m=5: 0.000 0.000 0.000 0.754 0.000   mean 0.151   length/real [0.33, 0.34, 0.36, 0.3, 0.29]
+copula      proper simple      m=5: 0.059 0.000 0.008 1.000 0.000   mean 0.213   length/real [0.8, 0.84, 0.88, 0.74, 0.71]
+copula      proper proper      m=5: 0.091 0.000 0.017 1.000 0.000   mean 0.222   length/real [0.86, 0.91, 0.95, 0.8, 0.77]
+copula      proper raghunathan m=5: 0.644 0.129 0.666 0.996 0.000   mean 0.487   length/real [2.21, 2.38, 2.58, 2.02, 1.87]   fallback 0.337
+copula      proper bias of the average, in real-data SDs: -2.44 -8.00 -3.07 +0.33 -9.69
+cart        simple naive       m=1: 0.846 0.631 0.781 0.784 0.754   mean 0.759   length/real [0.98, 0.96, 0.99, 0.97, 0.98]
+cart        simple naive       m=5: 0.565 0.363 0.519 0.488 0.483   mean 0.484   length/real [0.44, 0.43, 0.44, 0.44, 0.44]
+cart        simple simple      m=5: 0.945 0.777 0.916 0.901 0.890   mean 0.886   length/real [1.07, 1.05, 1.08, 1.07, 1.07]
+cart        simple proper      m=5: 0.962 0.822 0.941 0.929 0.916   mean 0.914   length/real [1.15, 1.14, 1.16, 1.15, 1.15]
+cart        simple raghunathan m=5: 0.959 0.874 0.960 0.929 0.929   mean 0.930   length/real [2.49, 2.73, 2.79, 2.47, 2.57]   fallback 0.451
+cart        simple bias of the average, in real-data SDs: +0.08 -1.10 -0.41 -0.60 -0.38
+cart        proper naive       m=1: 0.742 0.577 0.695 0.751 0.709   mean 0.695   length/real [0.97, 0.96, 0.98, 0.98, 0.98]
+cart        proper naive       m=5: 0.567 0.288 0.512 0.530 0.480   mean 0.475   length/real [0.44, 0.43, 0.44, 0.44, 0.44]
+cart        proper simple      m=5: 0.951 0.736 0.928 0.932 0.893   mean 0.888   length/real [1.07, 1.05, 1.08, 1.07, 1.07]
+cart        proper proper      m=5: 0.966 0.785 0.952 0.958 0.915   mean 0.915   length/real [1.15, 1.14, 1.16, 1.15, 1.15]
+cart        proper raghunathan m=5: 0.986 0.940 0.980 0.986 0.981   mean 0.975   length/real [3.4, 3.45, 3.49, 3.36, 3.52]   fallback 0.158
+cart        proper bias of the average, in real-data SDs: +0.04 -1.26 -0.47 -0.52 -0.43
+smote       simple naive       m=1: 0.648 0.532 0.564 0.768 0.759   mean 0.654   length/real [1.19, 1.11, 1.24, 1.06, 1.08]
+smote       simple naive       m=5: 0.299 0.159 0.253 0.496 0.436   mean 0.329   length/real [0.53, 0.5, 0.56, 0.47, 0.49]
+smote       simple simple      m=5: 0.718 0.596 0.642 0.889 0.860   mean 0.741   length/real [1.3, 1.22, 1.36, 1.16, 1.19]
+smote       simple proper      m=5: 0.761 0.651 0.692 0.914 0.888   mean 0.781   length/real [1.41, 1.32, 1.47, 1.25, 1.28]
+smote       simple raghunathan m=5: 0.807 0.753 0.835 0.918 0.916   mean 0.846   length/real [2.77, 2.83, 3.53, 2.7, 2.95]   fallback 0.472
+smote       simple bias of the average, in real-data SDs: +1.79 +2.10 +2.04 -0.62 +0.89
+smote       proper naive       m=1: 0.636 0.542 0.555 0.704 0.666   mean 0.621   length/real [1.15, 1.1, 1.2, 1.06, 1.08]
+smote       proper naive       m=5: 0.352 0.245 0.320 0.484 0.420   mean 0.364   length/real [0.52, 0.49, 0.54, 0.47, 0.48]
+smote       proper simple      m=5: 0.787 0.675 0.697 0.884 0.854   mean 0.779   length/real [1.27, 1.2, 1.31, 1.16, 1.18]
+smote       proper proper      m=5: 0.825 0.733 0.742 0.911 0.886   mean 0.819   length/real [1.37, 1.3, 1.42, 1.25, 1.28]
+smote       proper raghunathan m=5: 0.944 0.921 0.955 0.979 0.958   mean 0.951   length/real [3.93, 3.8, 4.41, 3.77, 3.85]   fallback 0.162
+smote       proper bias of the average, in real-data SDs: +1.39 +1.75 +1.62 -0.44 +0.83
+
