@@ -1,21 +1,29 @@
-# Jupyter notebook checkpoints
-.ipynb_checkpoints/
-
-# JupyterLab notebook temporary files
-.jupyter/
-
-# Jupyter notebook configuration files
-.jupyter/
-
-# Pytest cache
+# Python bytecode and development caches
 __pycache__/
-
-# virtual environment
-venv/
 *.pyc
+*.pyo
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
 
-# Mac OS metadata
+# Jupyter notebook checkpoints and local settings
+.ipynb_checkpoints/
+.jupyter/
+
+# Virtual environments
+.venv/
+venv/
+
+# R session state (research .RData files remain eligible for tracking)
+.Rhistory
+.Rproj.user/
+
+# Operating-system metadata
 .DS_Store
+Thumbs.db
 
 # Private personal-health source data
 blood_pressure_tracker*.xlsx
