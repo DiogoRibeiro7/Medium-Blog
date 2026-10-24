@@ -103,8 +103,16 @@ def main(argv: list[str] | None = None) -> int:
     log, failures = [], 0
     for name, (dataset, filters, since) in QUERIES.items():
         frames = []
+        # A small request for one country and one period lists the codes; only the food codes are then requested.
+        try:
+            probe = download(dataset, {**filters, "geo": "PT", "time": "2023-01" if "-" in since else "2023"})
+            codes = sorted(c for c in probe["coicop"].unique() if keep(c))
+        except Exception as error:  # noqa: BLE001 (logged and reported)
+            failures += 1
+            log.append(f"FAIL {name} code list: {error!r}")
+            continue
         for geo in GEOS:
-            query = {**filters, "geo": geo, "sinceTimePeriod": since}
+            query = {**filters, "geo": geo, "coicop": codes, "sinceTimePeriod": since}
             try:
                 frame = download(dataset, query)
             except Exception as error:  # noqa: BLE001 (logged and reported)
