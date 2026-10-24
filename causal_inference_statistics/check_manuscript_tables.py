@@ -34,6 +34,8 @@ def audit(part: int) -> list[str]:
     for lineno, line in enumerate(manuscript.splitlines(), start=1):
         if not (line.startswith("|") and line.endswith("|")):
             continue
+        if "True treatment effect" in line or "True total effect" in line:
+            continue  # Structural truths may be specified only in experiment source.
         for text in line.strip("|").split("|"):
             cell = text.strip()
             if CELL.fullmatch(cell):
