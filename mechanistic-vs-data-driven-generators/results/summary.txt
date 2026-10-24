@@ -1,0 +1,267 @@
+E1  Fidelity in the observed regime
+    6 replicate histories; holdout and synthetic samples of 960 rows (40 days)
+    discriminator ROC AUC (0.5 = indistinguishable), mean and sd:
+                    mean                                std                            
+n_days               0      30     90     270    810    0      30     90     270    810
+generator                                                                              
+CART                 NaN  0.736  0.627  0.554  0.548    NaN  0.024  0.032  0.032  0.027
+Erlang A             NaN  0.594  0.614  0.583  0.595    NaN  0.016  0.068  0.034  0.047
+Erlang C             NaN  0.975  0.974  0.975  0.976    NaN  0.003  0.003  0.004  0.002
+Gaussian copula      NaN  0.788  0.767  0.770  0.758    NaN  0.017  0.019  0.016  0.017
+Gaussian mixture     NaN  0.770  0.763  0.723  0.709    NaN  0.022  0.023  0.029  0.036
+Real (independent)  0.54    NaN    NaN    NaN    NaN  0.035    NaN    NaN    NaN    NaN
+SMOTE                NaN  0.790  0.699  0.617  0.582    NaN  0.028  0.034  0.043  0.023
+
+    pooled service level and abandonment of the samples, 90 days of training (holdout = real):
+                        sl  abandon
+generator                          
+CART                0.7985   0.0524
+Erlang A            0.8382   0.0403
+Erlang C            0.6233   0.0000
+Gaussian copula     0.8019   0.0523
+Gaussian mixture    0.8042   0.0511
+Real (holdout)      0.8057   0.0503
+Real (independent)  0.7851   0.0557
+SMOTE               0.8097   0.0496
+
+    mixture components chosen by BIC (candidates 4, 8, 12, 16, 24), by training days, one value per replicate:
+        30 days: 8, 8, 12, 8, 8, 8
+        90 days: 16, 8, 8, 12, 12, 16
+       270 days: 24, 24, 16, 24, 24, 24
+       810 days: 24, 24, 24, 24, 24, 24
+
+E2  Fresh demand scaled by m (unannounced)
+    5 replicates, 60 evaluation days per m
+    day-level offered / expected in training: min 0.743, p5 0.830, p95 1.169, max 1.307
+    offered calls per day: reality (fresh demand plus redials) and the m x training mean handed to the synthesizers:
+generator  Offered given to synthesizers  Reality
+m                                                
+0.9                               3288.0   3220.0
+1.0                               3659.0   3587.0
+1.1                               3969.0   4018.0
+1.2                               4308.0   4494.0
+1.3                               4708.0   5000.0
+1.4                               5051.0   5721.0
+1.5                               5448.0   6472.0
+
+    pooled service level:
+generator   CART  Erlang A  Erlang C  Gaussian copula  Gaussian mixture  Reality
+m                                                                               
+0.9        0.890     0.873     0.734            0.831             0.853    0.863
+1.0        0.829     0.832     0.616            0.807             0.817    0.806
+1.1        0.750     0.781     0.450            0.780             0.786    0.719
+1.2        0.666     0.710     0.212            0.761             0.739    0.595
+1.3        0.594     0.604     0.047            0.732             0.695    0.470
+1.4        0.538     0.485     0.014            0.705             0.656    0.303
+1.5        0.486     0.370     0.010            0.683             0.613    0.186
+
+    pooled abandonment:
+generator   CART  Erlang A  Erlang C  Gaussian copula  Gaussian mixture  Reality
+m                                                                               
+0.9        0.028     0.032       0.0            0.044             0.037    0.035
+1.0        0.043     0.042       0.0            0.050             0.047    0.050
+1.1        0.065     0.055       0.0            0.058             0.055    0.075
+1.2        0.087     0.074       0.0            0.063             0.067    0.115
+1.3        0.109     0.103       0.0            0.072             0.078    0.160
+1.4        0.125     0.140       0.0            0.079             0.088    0.240
+1.5        0.143     0.180       0.0            0.087             0.100    0.308
+
+    Erlang A with redials (probability p), in-sample and under m:
+              sl                      abandon                         auc                     
+p            0.0    0.3    0.6    0.9     0.0    0.3    0.6    0.9    0.0    0.3    0.6    0.9
+m                                                                                             
+0.9        0.874  0.871  0.863  0.859   0.031  0.033  0.036  0.036    NaN    NaN    NaN    NaN
+1.0        0.833  0.826  0.816  0.796   0.042  0.044  0.047  0.054    NaN    NaN    NaN    NaN
+1.1        0.782  0.774  0.763  0.739   0.054  0.057  0.061  0.071    NaN    NaN    NaN    NaN
+1.2        0.716  0.697  0.674  0.596   0.072  0.078  0.087  0.116    NaN    NaN    NaN    NaN
+1.3        0.603  0.568  0.504  0.331   0.103  0.116  0.140  0.241    NaN    NaN    NaN    NaN
+1.4        0.488  0.426  0.328  0.122   0.139  0.163  0.212  0.405    NaN    NaN    NaN    NaN
+1.5        0.367  0.299  0.186  0.052   0.181  0.214  0.290  0.533    NaN    NaN    NaN    NaN
+in-sample  0.828  0.826  0.816  0.801   0.043  0.044  0.047  0.053  0.586  0.576  0.575  0.578
+
+    ablation: error of the analyst's generator (estimate - reality) with true components switched in
+                                              sl_error  abandon_error
+m   arrivals      service   patience redials                         
+1.0 overdispersed exp       exp      0           0.009         -0.004
+                                     1          -0.012          0.004
+                            true     0           0.000         -0.001
+                                     1          -0.010          0.004
+                  lognormal exp      0           0.005         -0.004
+                                     1          -0.017          0.003
+                            true     0           0.017         -0.005
+                                     1          -0.010          0.003
+    poisson       exp       exp      0           0.024         -0.008
+                                     1           0.011         -0.004
+                            true     0           0.023         -0.007
+                                     1           0.009         -0.002
+                  lognormal exp      0           0.026         -0.009
+                                     1           0.007         -0.004
+                            true     0           0.026         -0.008
+                                     1           0.010         -0.003
+1.3 overdispersed exp       exp      0           0.101         -0.043
+                                     1          -0.005          0.010
+                            true     0           0.100         -0.043
+                                     1          -0.014          0.010
+                  lognormal exp      0           0.099         -0.046
+                                     1          -0.013          0.012
+                            true     0           0.112         -0.049
+                                     1          -0.006          0.003
+    poisson       exp       exp      0           0.131         -0.057
+                                     1           0.036         -0.021
+                            true     0           0.134         -0.057
+                                     1           0.026         -0.018
+                  lognormal exp      0           0.135         -0.060
+                                     1           0.029         -0.022
+                            true     0           0.133         -0.059
+                                     1           0.028         -0.022
+
+E3  Adding k agents to every interval
+    5 replicates, 40 evaluation days
+    effect on pooled service level (vs k = 0, same method):
+k                               -6     -4     -2    0      2      4      6
+method                                                                    
+CART (adjusted)             -0.261 -0.173 -0.079  0.0  0.065  0.108  0.137
+CART (naive)                -0.241 -0.164 -0.079  0.0  0.071  0.117  0.147
+Erlang A                    -0.318 -0.197 -0.089  0.0  0.067  0.112  0.142
+Erlang C                    -0.512 -0.420 -0.231  0.0  0.156  0.266  0.336
+Gaussian copula (adjusted)  -0.308 -0.195 -0.086  0.0  0.063  0.106  0.137
+Gaussian copula (naive)     -0.012 -0.008 -0.004  0.0  0.008  0.008  0.014
+Gaussian mixture (adjusted) -0.264 -0.164 -0.075  0.0  0.059  0.104  0.135
+Gaussian mixture (naive)    -0.023 -0.015 -0.006  0.0  0.006  0.015  0.020
+Reality                     -0.399 -0.254 -0.113  0.0  0.079  0.129  0.158
+
+    effect on pooled abandonment:
+k                               -6     -4     -2    0      2      4      6
+method                                                                    
+CART (adjusted)              0.079  0.050  0.022  0.0 -0.018 -0.029 -0.036
+CART (naive)                 0.074  0.048  0.023  0.0 -0.020 -0.032 -0.040
+Erlang A                     0.112  0.064  0.027  0.0 -0.018 -0.030 -0.038
+Erlang C                     0.000  0.000  0.000  0.0  0.000  0.000  0.000
+Gaussian copula (adjusted)   0.098  0.059  0.025  0.0 -0.017 -0.028 -0.036
+Gaussian copula (naive)      0.003  0.002  0.001  0.0 -0.002 -0.002 -0.004
+Gaussian mixture (adjusted)  0.080  0.048  0.021  0.0 -0.016 -0.027 -0.035
+Gaussian mixture (naive)     0.008  0.005  0.002  0.0 -0.002 -0.004 -0.005
+Reality                      0.143  0.081  0.033  0.0 -0.021 -0.034 -0.041
+
+    level of pooled service level:
+k                               -6     -4     -2      0      2      4      6
+method                                                                      
+CART (adjusted)              0.548  0.637  0.731  0.809  0.875  0.917  0.946
+CART (naive)                 0.541  0.619  0.703  0.783  0.853  0.900  0.930
+Erlang A                     0.491  0.612  0.720  0.809  0.877  0.921  0.951
+Erlang C                     0.056  0.148  0.337  0.568  0.724  0.834  0.903
+Gaussian copula (adjusted)   0.501  0.614  0.723  0.809  0.872  0.916  0.946
+Gaussian copula (naive)      0.792  0.796  0.800  0.804  0.812  0.812  0.818
+Gaussian mixture (adjusted)  0.548  0.647  0.736  0.811  0.871  0.916  0.947
+Gaussian mixture (naive)     0.787  0.795  0.804  0.810  0.816  0.825  0.831
+Reality                      0.409  0.555  0.695  0.809  0.888  0.937  0.967
+
+    training agents range (mean over replicates): 11.0 to 64.0
+
+E4  Error budget for the long-run service level
+    truth 0.8015 (from 4000 days), 16 replicates
+    a) 90 real days, growing synthetic sample: bias | RMSE
+                  mean                                                      rmse                                                  
+generator         CART Erlang A Gaussian copula Gaussian mixture   SMOTE    CART Erlang A Gaussian copula Gaussian mixture   SMOTE
+synthetic_days                                                                                                                    
+1              -0.0102   0.0229          0.0008          -0.0157 -0.0172  0.0374   0.0501          0.0554           0.0755  0.0749
+2              -0.0014   0.0289         -0.0016          -0.0153 -0.0217  0.0373   0.0448          0.0287           0.0452  0.0490
+5              -0.0075   0.0252          0.0052          -0.0116 -0.0046  0.0248   0.0334          0.0209           0.0298  0.0291
+10             -0.0100   0.0242         -0.0003          -0.0096 -0.0071  0.0185   0.0282          0.0178           0.0196  0.0208
+25             -0.0066   0.0255         -0.0004          -0.0087  0.0015  0.0129   0.0276          0.0183           0.0157  0.0164
+50             -0.0035   0.0255         -0.0012          -0.0078  0.0005  0.0092   0.0273          0.0135           0.0141  0.0123
+100            -0.0015   0.0257         -0.0006          -0.0073 -0.0011  0.0074   0.0270          0.0115           0.0120  0.0112
+250            -0.0032   0.0266         -0.0012          -0.0077 -0.0008  0.0101   0.0274          0.0100           0.0119  0.0101
+500            -0.0042   0.0262         -0.0017          -0.0081 -0.0004  0.0103   0.0271          0.0089           0.0121  0.0102
+
+    b) growing real data, large synthetic sample: bias | RMSE
+             mean                                                                        rmse                                                                    
+generator    CART Empirical average Erlang A Gaussian copula Gaussian mixture   SMOTE    CART Empirical average Erlang A Gaussian copula Gaussian mixture   SMOTE
+real_days                                                                                                                                                        
+10         0.0055            0.0015   0.0089          0.0008          -0.0029  0.0109  0.0288            0.0266   0.0388          0.0264           0.0272  0.0277
+30        -0.0067           -0.0077   0.0178         -0.0039          -0.0113 -0.0017  0.0173            0.0165   0.0230          0.0143           0.0187  0.0137
+90        -0.0041           -0.0051   0.0254         -0.0020          -0.0075 -0.0004  0.0102            0.0109   0.0264          0.0092           0.0121  0.0090
+270       -0.0032           -0.0038   0.0280         -0.0009          -0.0065 -0.0001  0.0058            0.0060   0.0283          0.0040           0.0082  0.0050
+810       -0.0012           -0.0017   0.0301          0.0017          -0.0033  0.0002  0.0035            0.0029   0.0302          0.0036           0.0046  0.0022
+
+E5  Calibrating Erlang A's patience rate theta
+    12 replicates per sample size
+                              mean       std  implied_mean_patience_s
+estimator         n_days                                             
+SMM (abandonment) 10      0.005293  0.001089               188.932506
+                  30      0.005383  0.000717               185.779136
+                  90      0.005340  0.000273               187.280349
+                  270     0.005492  0.000145               182.067919
+SMM (waiting)     10      0.005372  0.000378               186.167183
+                  30      0.005179  0.000268               193.074768
+                  90      0.005260  0.000136               190.099499
+                  270     0.005226  0.000059               191.350561
+ratio             10      0.005299  0.000157               188.729300
+                  30      0.005288  0.000105               189.102005
+                  90      0.005308  0.000067               188.392293
+                  270     0.005286  0.000035               189.184965
+
+    long-run limits (1000 days):
+      ratio                    theta 0.005290  (1/theta = 189.0 s)
+      SMM (abandonment)        theta 0.005627  (1/theta = 177.7 s)
+      SMM (waiting)            theta 0.005173  (1/theta = 193.3 s)
+    references:
+      one over mean patience   theta 0.004458  (1/theta = 224.3 s)
+      SMM (abandonment) at m=1.3 theta 0.006399  (1/theta = 156.3 s)
+    joint forecast at m = 1.3 with each theta:
+      Reality                                  SL 0.422  abandon 0.178
+      ratio (long-run limit)                   SL 0.601  abandon 0.103
+      SMM (abandonment) (long-run limit)       SL 0.615  abandon 0.104
+      SMM (waiting) (long-run limit)           SL 0.602  abandon 0.102
+      one over mean patience                   SL 0.585  abandon 0.097
+      SMM (abandonment) at m=1.3               SL 0.629  abandon 0.107
+
+E6  Distance to closest record, and cost
+    5 replicates, 1,000 synthetic rows each; reference = held-out real rows
+                  median_dcr_ratio  share_closer_than_p5  share_exact_copies
+generator                                                                   
+CART                         0.923                 0.117               0.003
+Erlang A                     0.992                 0.049               0.000
+Erlang C                     2.121                 0.034               0.000
+Gaussian copula              1.319                 0.020               0.000
+Gaussian mixture             1.178                 0.024               0.000
+SMOTE                        0.296                 0.738               0.000
+
+    timing on the machine that made this file (seconds):
+                  fit_seconds  seconds_per_1000_rows
+generator                                           
+Erlang C                0.016                  0.182
+Erlang A                0.008                  0.190
+Gaussian copula         0.006                  0.010
+CART                    0.053                  0.026
+SMOTE                   0.027                  0.006
+Gaussian mixture        2.486                  0.010
+
+E7  Staffing for an uncertain surge
+    target: day service level >= 0.7 on at least 80% of days; surge uniform on 1.1-1.3; 300 launch days
+    share of days meeting the target, by extra agents k:
+    Reality  Erlang A (point)  Erlang A (randomised)  Erlang A (robust)  Gaussian copula
+0     0.413             0.653                  0.475              0.255            0.803
+1     0.553             0.817                  0.623              0.426            0.960
+2     0.647             0.910                  0.715              0.577            0.993
+3     0.763             0.960                  0.802              0.650            0.997
+4     0.837             0.997                  0.855              0.699            1.000
+5     0.873             0.997                  0.865              0.780            1.000
+6     0.900             1.000                  0.928              0.837            1.000
+7     0.917             1.000                  0.945              0.874            1.000
+8     0.943             1.000                  0.953              0.849            1.000
+9     0.963             1.000                  0.957              0.908            1.000
+10    0.973             1.000                  0.973              0.920            1.000
+11    0.980             1.000                  0.967              0.938            1.000
+12    0.990             1.000                  0.988              0.949            1.000
+
+    chosen k and how it does in reality:
+                         k  coverage_in_reality  extra_agent_hours_per_day
+Reality                4.0             0.836667                       48.0
+Erlang A (point)       1.0             0.553333                       12.0
+Erlang A (randomised)  3.0             0.763333                       36.0
+Erlang A (robust)      6.0             0.900000                       72.0
+Gaussian copula        0.0             0.413333                        0.0
+
+    robust variant: 20 scenarios; share of scenarios meeting the requirement at each k:
+      k=0: 0.00, k=1: 0.00, k=2: 0.10, k=3: 0.40, k=4: 0.70, k=5: 0.85, k=6: 0.95, k=7: 1.00, k=8: 1.00, k=9: 1.00, k=10: 1.00, k=11: 1.00, k=12: 1.00
