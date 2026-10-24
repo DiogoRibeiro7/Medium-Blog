@@ -1,278 +1,4328 @@
 {
   "truth": {
-    "sl": 0.7943176022074078,
-    "abandon": 0.052984111228276155
+    "sl": 0.8014519802344245,
+    "abandon": 0.05137782062248182
   },
   "panel_a": [
     {
       "rep": 0,
       "generator": "Erlang A",
       "synthetic_days": 1,
-      "estimate": 0.7868046571798188
+      "estimate": 0.7832167832167832
+    },
+    {
+      "rep": 0,
+      "generator": "Erlang A",
+      "synthetic_days": 2,
+      "estimate": 0.7989566613162119
     },
     {
       "rep": 0,
       "generator": "Erlang A",
       "synthetic_days": 5,
-      "estimate": 0.8240837696335078
+      "estimate": 0.7871064467766117
+    },
+    {
+      "rep": 0,
+      "generator": "Erlang A",
+      "synthetic_days": 10,
+      "estimate": 0.803439280200181
     },
     {
       "rep": 0,
       "generator": "Erlang A",
       "synthetic_days": 25,
-      "estimate": 0.8337300200890907
+      "estimate": 0.8175031749801241
+    },
+    {
+      "rep": 0,
+      "generator": "Erlang A",
+      "synthetic_days": 50,
+      "estimate": 0.8241539167444584
+    },
+    {
+      "rep": 0,
+      "generator": "Erlang A",
+      "synthetic_days": 100,
+      "estimate": 0.8256782314330668
+    },
+    {
+      "rep": 0,
+      "generator": "Erlang A",
+      "synthetic_days": 250,
+      "estimate": 0.8265646950286205
+    },
+    {
+      "rep": 0,
+      "generator": "Erlang A",
+      "synthetic_days": 500,
+      "estimate": 0.8263320025098234
     },
     {
       "rep": 0,
       "generator": "Gaussian copula",
       "synthetic_days": 1,
-      "estimate": 0.804888782678558
+      "estimate": 0.8266667018228535
+    },
+    {
+      "rep": 0,
+      "generator": "Gaussian copula",
+      "synthetic_days": 2,
+      "estimate": 0.7761553687536573
     },
     {
       "rep": 0,
       "generator": "Gaussian copula",
       "synthetic_days": 5,
-      "estimate": 0.8031838214172963
+      "estimate": 0.8152007036486886
+    },
+    {
+      "rep": 0,
+      "generator": "Gaussian copula",
+      "synthetic_days": 10,
+      "estimate": 0.822268379259059
     },
     {
       "rep": 0,
       "generator": "Gaussian copula",
       "synthetic_days": 25,
-      "estimate": 0.8046167629609507
+      "estimate": 0.8188666742640804
+    },
+    {
+      "rep": 0,
+      "generator": "Gaussian copula",
+      "synthetic_days": 50,
+      "estimate": 0.8164347835612153
+    },
+    {
+      "rep": 0,
+      "generator": "Gaussian copula",
+      "synthetic_days": 100,
+      "estimate": 0.8150421216601434
+    },
+    {
+      "rep": 0,
+      "generator": "Gaussian copula",
+      "synthetic_days": 250,
+      "estimate": 0.8096286633470439
+    },
+    {
+      "rep": 0,
+      "generator": "Gaussian copula",
+      "synthetic_days": 500,
+      "estimate": 0.8077073053323549
     },
     {
       "rep": 0,
       "generator": "CART",
       "synthetic_days": 1,
-      "estimate": 0.795933215811573
+      "estimate": 0.7924690243740116
+    },
+    {
+      "rep": 0,
+      "generator": "CART",
+      "synthetic_days": 2,
+      "estimate": 0.7940270299591452
     },
     {
       "rep": 0,
       "generator": "CART",
       "synthetic_days": 5,
-      "estimate": 0.7940313464937486
+      "estimate": 0.8003502941443726
+    },
+    {
+      "rep": 0,
+      "generator": "CART",
+      "synthetic_days": 10,
+      "estimate": 0.7920970968208969
     },
     {
       "rep": 0,
       "generator": "CART",
       "synthetic_days": 25,
-      "estimate": 0.7697131725487725
+      "estimate": 0.7879921374661253
+    },
+    {
+      "rep": 0,
+      "generator": "CART",
+      "synthetic_days": 50,
+      "estimate": 0.7950765969644144
+    },
+    {
+      "rep": 0,
+      "generator": "CART",
+      "synthetic_days": 100,
+      "estimate": 0.8003567885400922
+    },
+    {
+      "rep": 0,
+      "generator": "CART",
+      "synthetic_days": 250,
+      "estimate": 0.8025008399037435
+    },
+    {
+      "rep": 0,
+      "generator": "CART",
+      "synthetic_days": 500,
+      "estimate": 0.8017655757011102
     },
     {
       "rep": 0,
       "generator": "SMOTE",
       "synthetic_days": 1,
-      "estimate": 0.8284033146429253
+      "estimate": 0.7609430898407052
+    },
+    {
+      "rep": 0,
+      "generator": "SMOTE",
+      "synthetic_days": 2,
+      "estimate": 0.7766906732353515
     },
     {
       "rep": 0,
       "generator": "SMOTE",
       "synthetic_days": 5,
-      "estimate": 0.8253938885252984
+      "estimate": 0.7883930192514486
+    },
+    {
+      "rep": 0,
+      "generator": "SMOTE",
+      "synthetic_days": 10,
+      "estimate": 0.8031285191473598
     },
     {
       "rep": 0,
       "generator": "SMOTE",
       "synthetic_days": 25,
-      "estimate": 0.8070852860667022
+      "estimate": 0.8059545091925487
+    },
+    {
+      "rep": 0,
+      "generator": "SMOTE",
+      "synthetic_days": 50,
+      "estimate": 0.8071959679725378
+    },
+    {
+      "rep": 0,
+      "generator": "SMOTE",
+      "synthetic_days": 100,
+      "estimate": 0.8126465642248872
+    },
+    {
+      "rep": 0,
+      "generator": "SMOTE",
+      "synthetic_days": 250,
+      "estimate": 0.8118834914750258
+    },
+    {
+      "rep": 0,
+      "generator": "SMOTE",
+      "synthetic_days": 500,
+      "estimate": 0.806426589372999
     },
     {
       "rep": 0,
       "generator": "Gaussian mixture",
       "synthetic_days": 1,
-      "estimate": 0.7502955829961965
+      "estimate": 0.8164620032836295
+    },
+    {
+      "rep": 0,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 2,
+      "estimate": 0.7733004485126861
     },
     {
       "rep": 0,
       "generator": "Gaussian mixture",
       "synthetic_days": 5,
-      "estimate": 0.8097179955699987
+      "estimate": 0.7971472088375798
+    },
+    {
+      "rep": 0,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 10,
+      "estimate": 0.7950491600548242
     },
     {
       "rep": 0,
       "generator": "Gaussian mixture",
       "synthetic_days": 25,
-      "estimate": 0.7991383152690095
+      "estimate": 0.7888489587487951
+    },
+    {
+      "rep": 0,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 50,
+      "estimate": 0.7948780373111327
+    },
+    {
+      "rep": 0,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 100,
+      "estimate": 0.7995167368035138
+    },
+    {
+      "rep": 0,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 250,
+      "estimate": 0.7989459767211501
+    },
+    {
+      "rep": 0,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 500,
+      "estimate": 0.7996174773335079
     },
     {
       "rep": 1,
       "generator": "Erlang A",
       "synthetic_days": 1,
-      "estimate": 0.8117913832199547
+      "estimate": 0.8222112780103423
+    },
+    {
+      "rep": 1,
+      "generator": "Erlang A",
+      "synthetic_days": 2,
+      "estimate": 0.8401851347672202
     },
     {
       "rep": 1,
       "generator": "Erlang A",
       "synthetic_days": 5,
-      "estimate": 0.8098956880682769
+      "estimate": 0.8292668552569543
+    },
+    {
+      "rep": 1,
+      "generator": "Erlang A",
+      "synthetic_days": 10,
+      "estimate": 0.8295389869095048
     },
     {
       "rep": 1,
       "generator": "Erlang A",
       "synthetic_days": 25,
-      "estimate": 0.8187927017322693
+      "estimate": 0.8275372828451619
+    },
+    {
+      "rep": 1,
+      "generator": "Erlang A",
+      "synthetic_days": 50,
+      "estimate": 0.8279418512493222
+    },
+    {
+      "rep": 1,
+      "generator": "Erlang A",
+      "synthetic_days": 100,
+      "estimate": 0.8241040642245244
+    },
+    {
+      "rep": 1,
+      "generator": "Erlang A",
+      "synthetic_days": 250,
+      "estimate": 0.8270898503959795
+    },
+    {
+      "rep": 1,
+      "generator": "Erlang A",
+      "synthetic_days": 500,
+      "estimate": 0.8283303257603551
     },
     {
       "rep": 1,
       "generator": "Gaussian copula",
       "synthetic_days": 1,
-      "estimate": 0.840690912402907
+      "estimate": 0.8525907844248615
+    },
+    {
+      "rep": 1,
+      "generator": "Gaussian copula",
+      "synthetic_days": 2,
+      "estimate": 0.7977145779348949
     },
     {
       "rep": 1,
       "generator": "Gaussian copula",
       "synthetic_days": 5,
-      "estimate": 0.7797539102160741
+      "estimate": 0.7833900558062481
+    },
+    {
+      "rep": 1,
+      "generator": "Gaussian copula",
+      "synthetic_days": 10,
+      "estimate": 0.7966556326506885
     },
     {
       "rep": 1,
       "generator": "Gaussian copula",
       "synthetic_days": 25,
-      "estimate": 0.7845490997447659
+      "estimate": 0.7854399104656138
+    },
+    {
+      "rep": 1,
+      "generator": "Gaussian copula",
+      "synthetic_days": 50,
+      "estimate": 0.7956757988435713
+    },
+    {
+      "rep": 1,
+      "generator": "Gaussian copula",
+      "synthetic_days": 100,
+      "estimate": 0.8018778336594568
+    },
+    {
+      "rep": 1,
+      "generator": "Gaussian copula",
+      "synthetic_days": 250,
+      "estimate": 0.8032177075703536
+    },
+    {
+      "rep": 1,
+      "generator": "Gaussian copula",
+      "synthetic_days": 500,
+      "estimate": 0.802412130609514
     },
     {
       "rep": 1,
       "generator": "CART",
       "synthetic_days": 1,
-      "estimate": 0.8278775820173114
+      "estimate": 0.7480992192133575
+    },
+    {
+      "rep": 1,
+      "generator": "CART",
+      "synthetic_days": 2,
+      "estimate": 0.7462868276447702
     },
     {
       "rep": 1,
       "generator": "CART",
       "synthetic_days": 5,
-      "estimate": 0.8320732135796052
+      "estimate": 0.765001504907672
+    },
+    {
+      "rep": 1,
+      "generator": "CART",
+      "synthetic_days": 10,
+      "estimate": 0.7656894927199778
     },
     {
       "rep": 1,
       "generator": "CART",
       "synthetic_days": 25,
-      "estimate": 0.806307118307365
+      "estimate": 0.7891270932736317
+    },
+    {
+      "rep": 1,
+      "generator": "CART",
+      "synthetic_days": 50,
+      "estimate": 0.8007644245431391
+    },
+    {
+      "rep": 1,
+      "generator": "CART",
+      "synthetic_days": 100,
+      "estimate": 0.7995222756019993
+    },
+    {
+      "rep": 1,
+      "generator": "CART",
+      "synthetic_days": 250,
+      "estimate": 0.7952417605614231
+    },
+    {
+      "rep": 1,
+      "generator": "CART",
+      "synthetic_days": 500,
+      "estimate": 0.7970888079608791
     },
     {
       "rep": 1,
       "generator": "SMOTE",
       "synthetic_days": 1,
-      "estimate": 0.786879114801474
+      "estimate": 0.6814496108696222
+    },
+    {
+      "rep": 1,
+      "generator": "SMOTE",
+      "synthetic_days": 2,
+      "estimate": 0.7233967928980726
     },
     {
       "rep": 1,
       "generator": "SMOTE",
       "synthetic_days": 5,
-      "estimate": 0.7805304682587214
+      "estimate": 0.7789430815814634
+    },
+    {
+      "rep": 1,
+      "generator": "SMOTE",
+      "synthetic_days": 10,
+      "estimate": 0.799171493736352
     },
     {
       "rep": 1,
       "generator": "SMOTE",
       "synthetic_days": 25,
-      "estimate": 0.8064314848984749
+      "estimate": 0.8091801580412022
+    },
+    {
+      "rep": 1,
+      "generator": "SMOTE",
+      "synthetic_days": 50,
+      "estimate": 0.8095828537867948
+    },
+    {
+      "rep": 1,
+      "generator": "SMOTE",
+      "synthetic_days": 100,
+      "estimate": 0.8094170811182415
+    },
+    {
+      "rep": 1,
+      "generator": "SMOTE",
+      "synthetic_days": 250,
+      "estimate": 0.8046847753061165
+    },
+    {
+      "rep": 1,
+      "generator": "SMOTE",
+      "synthetic_days": 500,
+      "estimate": 0.8067672622968226
     },
     {
       "rep": 1,
       "generator": "Gaussian mixture",
       "synthetic_days": 1,
-      "estimate": 0.8207528327026329
+      "estimate": 0.8081384094285154
+    },
+    {
+      "rep": 1,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 2,
+      "estimate": 0.7697156618474045
     },
     {
       "rep": 1,
       "generator": "Gaussian mixture",
       "synthetic_days": 5,
-      "estimate": 0.7656581462763612
+      "estimate": 0.7794269155954059
+    },
+    {
+      "rep": 1,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 10,
+      "estimate": 0.8071185912975802
     },
     {
       "rep": 1,
       "generator": "Gaussian mixture",
       "synthetic_days": 25,
-      "estimate": 0.7849268265431976
+      "estimate": 0.8060641357243384
+    },
+    {
+      "rep": 1,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 50,
+      "estimate": 0.7943281372308827
+    },
+    {
+      "rep": 1,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 100,
+      "estimate": 0.805310472739616
+    },
+    {
+      "rep": 1,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 250,
+      "estimate": 0.7994760265275391
+    },
+    {
+      "rep": 1,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 500,
+      "estimate": 0.7957479885070669
     },
     {
       "rep": 2,
       "generator": "Erlang A",
       "synthetic_days": 1,
-      "estimate": 0.8032991752061984
+      "estimate": 0.8049868766404199
+    },
+    {
+      "rep": 2,
+      "generator": "Erlang A",
+      "synthetic_days": 2,
+      "estimate": 0.8055705786911844
     },
     {
       "rep": 2,
       "generator": "Erlang A",
       "synthetic_days": 5,
-      "estimate": 0.8040876550631182
+      "estimate": 0.8113596233078282
+    },
+    {
+      "rep": 2,
+      "generator": "Erlang A",
+      "synthetic_days": 10,
+      "estimate": 0.8177404139614893
     },
     {
       "rep": 2,
       "generator": "Erlang A",
       "synthetic_days": 25,
-      "estimate": 0.8172862633635865
+      "estimate": 0.8220981296952674
+    },
+    {
+      "rep": 2,
+      "generator": "Erlang A",
+      "synthetic_days": 50,
+      "estimate": 0.8208043423023068
+    },
+    {
+      "rep": 2,
+      "generator": "Erlang A",
+      "synthetic_days": 100,
+      "estimate": 0.8232550628563295
+    },
+    {
+      "rep": 2,
+      "generator": "Erlang A",
+      "synthetic_days": 250,
+      "estimate": 0.8278374526063506
+    },
+    {
+      "rep": 2,
+      "generator": "Erlang A",
+      "synthetic_days": 500,
+      "estimate": 0.8280139502944798
     },
     {
       "rep": 2,
       "generator": "Gaussian copula",
       "synthetic_days": 1,
-      "estimate": 0.8793279296324478
+      "estimate": 0.8770053353093806
+    },
+    {
+      "rep": 2,
+      "generator": "Gaussian copula",
+      "synthetic_days": 2,
+      "estimate": 0.8364597108344489
     },
     {
       "rep": 2,
       "generator": "Gaussian copula",
       "synthetic_days": 5,
-      "estimate": 0.8206340051109278
+      "estimate": 0.8327626308537261
+    },
+    {
+      "rep": 2,
+      "generator": "Gaussian copula",
+      "synthetic_days": 10,
+      "estimate": 0.8154132812342819
     },
     {
       "rep": 2,
       "generator": "Gaussian copula",
       "synthetic_days": 25,
-      "estimate": 0.8001602886603825
+      "estimate": 0.8114545284932762
+    },
+    {
+      "rep": 2,
+      "generator": "Gaussian copula",
+      "synthetic_days": 50,
+      "estimate": 0.8046249973348935
+    },
+    {
+      "rep": 2,
+      "generator": "Gaussian copula",
+      "synthetic_days": 100,
+      "estimate": 0.804824680434316
+    },
+    {
+      "rep": 2,
+      "generator": "Gaussian copula",
+      "synthetic_days": 250,
+      "estimate": 0.8031984867368973
+    },
+    {
+      "rep": 2,
+      "generator": "Gaussian copula",
+      "synthetic_days": 500,
+      "estimate": 0.8006889958529666
     },
     {
       "rep": 2,
       "generator": "CART",
       "synthetic_days": 1,
-      "estimate": 0.7892081239170065
+      "estimate": 0.7470861800741976
+    },
+    {
+      "rep": 2,
+      "generator": "CART",
+      "synthetic_days": 2,
+      "estimate": 0.7815340234313516
     },
     {
       "rep": 2,
       "generator": "CART",
       "synthetic_days": 5,
-      "estimate": 0.8116385971512092
+      "estimate": 0.7688512176046721
+    },
+    {
+      "rep": 2,
+      "generator": "CART",
+      "synthetic_days": 10,
+      "estimate": 0.7719022124994758
     },
     {
       "rep": 2,
       "generator": "CART",
       "synthetic_days": 25,
-      "estimate": 0.785117543094072
+      "estimate": 0.7789406503538545
+    },
+    {
+      "rep": 2,
+      "generator": "CART",
+      "synthetic_days": 50,
+      "estimate": 0.7934972659307503
+    },
+    {
+      "rep": 2,
+      "generator": "CART",
+      "synthetic_days": 100,
+      "estimate": 0.7967292656149202
+    },
+    {
+      "rep": 2,
+      "generator": "CART",
+      "synthetic_days": 250,
+      "estimate": 0.7955247198109943
+    },
+    {
+      "rep": 2,
+      "generator": "CART",
+      "synthetic_days": 500,
+      "estimate": 0.7980008071904058
     },
     {
       "rep": 2,
       "generator": "SMOTE",
       "synthetic_days": 1,
-      "estimate": 0.8937888205508133
+      "estimate": 0.7476548047649328
+    },
+    {
+      "rep": 2,
+      "generator": "SMOTE",
+      "synthetic_days": 2,
+      "estimate": 0.7408345288229593
     },
     {
       "rep": 2,
       "generator": "SMOTE",
       "synthetic_days": 5,
-      "estimate": 0.8156463609953569
+      "estimate": 0.7309856867405925
+    },
+    {
+      "rep": 2,
+      "generator": "SMOTE",
+      "synthetic_days": 10,
+      "estimate": 0.7437668393347633
     },
     {
       "rep": 2,
       "generator": "SMOTE",
       "synthetic_days": 25,
-      "estimate": 0.7945222534958419
+      "estimate": 0.7825071766311624
+    },
+    {
+      "rep": 2,
+      "generator": "SMOTE",
+      "synthetic_days": 50,
+      "estimate": 0.7957878341717568
+    },
+    {
+      "rep": 2,
+      "generator": "SMOTE",
+      "synthetic_days": 100,
+      "estimate": 0.7999728225722725
+    },
+    {
+      "rep": 2,
+      "generator": "SMOTE",
+      "synthetic_days": 250,
+      "estimate": 0.7996356969221559
+    },
+    {
+      "rep": 2,
+      "generator": "SMOTE",
+      "synthetic_days": 500,
+      "estimate": 0.7998575434677255
     },
     {
       "rep": 2,
       "generator": "Gaussian mixture",
       "synthetic_days": 1,
-      "estimate": 0.753750400224233
+      "estimate": 0.8417602123320512
+    },
+    {
+      "rep": 2,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 2,
+      "estimate": 0.8373201804925332
     },
     {
       "rep": 2,
       "generator": "Gaussian mixture",
       "synthetic_days": 5,
-      "estimate": 0.7730480165342878
+      "estimate": 0.7874239844294745
+    },
+    {
+      "rep": 2,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 10,
+      "estimate": 0.7883241019042688
     },
     {
       "rep": 2,
       "generator": "Gaussian mixture",
       "synthetic_days": 25,
-      "estimate": 0.7699439934152212
+      "estimate": 0.7994483961999349
+    },
+    {
+      "rep": 2,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 50,
+      "estimate": 0.7974275906335713
+    },
+    {
+      "rep": 2,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 100,
+      "estimate": 0.7936993500201802
+    },
+    {
+      "rep": 2,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 250,
+      "estimate": 0.7929130236988216
+    },
+    {
+      "rep": 2,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 500,
+      "estimate": 0.7933986756805541
+    },
+    {
+      "rep": 3,
+      "generator": "Erlang A",
+      "synthetic_days": 1,
+      "estimate": 0.8079665601180231
+    },
+    {
+      "rep": 3,
+      "generator": "Erlang A",
+      "synthetic_days": 2,
+      "estimate": 0.8375353916677902
+    },
+    {
+      "rep": 3,
+      "generator": "Erlang A",
+      "synthetic_days": 5,
+      "estimate": 0.8303239368296232
+    },
+    {
+      "rep": 3,
+      "generator": "Erlang A",
+      "synthetic_days": 10,
+      "estimate": 0.8300508000325989
+    },
+    {
+      "rep": 3,
+      "generator": "Erlang A",
+      "synthetic_days": 25,
+      "estimate": 0.818615855378806
+    },
+    {
+      "rep": 3,
+      "generator": "Erlang A",
+      "synthetic_days": 50,
+      "estimate": 0.8178093165751897
+    },
+    {
+      "rep": 3,
+      "generator": "Erlang A",
+      "synthetic_days": 100,
+      "estimate": 0.8243343392443937
+    },
+    {
+      "rep": 3,
+      "generator": "Erlang A",
+      "synthetic_days": 250,
+      "estimate": 0.8229690117252931
+    },
+    {
+      "rep": 3,
+      "generator": "Erlang A",
+      "synthetic_days": 500,
+      "estimate": 0.8190098252874028
+    },
+    {
+      "rep": 3,
+      "generator": "Gaussian copula",
+      "synthetic_days": 1,
+      "estimate": 0.8785841865773965
+    },
+    {
+      "rep": 3,
+      "generator": "Gaussian copula",
+      "synthetic_days": 2,
+      "estimate": 0.8450134109558647
+    },
+    {
+      "rep": 3,
+      "generator": "Gaussian copula",
+      "synthetic_days": 5,
+      "estimate": 0.8217071608424831
+    },
+    {
+      "rep": 3,
+      "generator": "Gaussian copula",
+      "synthetic_days": 10,
+      "estimate": 0.8094161078975647
+    },
+    {
+      "rep": 3,
+      "generator": "Gaussian copula",
+      "synthetic_days": 25,
+      "estimate": 0.8160023851771919
+    },
+    {
+      "rep": 3,
+      "generator": "Gaussian copula",
+      "synthetic_days": 50,
+      "estimate": 0.8049432206019678
+    },
+    {
+      "rep": 3,
+      "generator": "Gaussian copula",
+      "synthetic_days": 100,
+      "estimate": 0.8034180175823903
+    },
+    {
+      "rep": 3,
+      "generator": "Gaussian copula",
+      "synthetic_days": 250,
+      "estimate": 0.7972916681093534
+    },
+    {
+      "rep": 3,
+      "generator": "Gaussian copula",
+      "synthetic_days": 500,
+      "estimate": 0.7928557401711137
+    },
+    {
+      "rep": 3,
+      "generator": "CART",
+      "synthetic_days": 1,
+      "estimate": 0.8076131492221821
+    },
+    {
+      "rep": 3,
+      "generator": "CART",
+      "synthetic_days": 2,
+      "estimate": 0.8041867050571043
+    },
+    {
+      "rep": 3,
+      "generator": "CART",
+      "synthetic_days": 5,
+      "estimate": 0.804860143360365
+    },
+    {
+      "rep": 3,
+      "generator": "CART",
+      "synthetic_days": 10,
+      "estimate": 0.790804236435766
+    },
+    {
+      "rep": 3,
+      "generator": "CART",
+      "synthetic_days": 25,
+      "estimate": 0.7930836018692682
+    },
+    {
+      "rep": 3,
+      "generator": "CART",
+      "synthetic_days": 50,
+      "estimate": 0.792937259910868
+    },
+    {
+      "rep": 3,
+      "generator": "CART",
+      "synthetic_days": 100,
+      "estimate": 0.7952054988776677
+    },
+    {
+      "rep": 3,
+      "generator": "CART",
+      "synthetic_days": 250,
+      "estimate": 0.7952531612593114
+    },
+    {
+      "rep": 3,
+      "generator": "CART",
+      "synthetic_days": 500,
+      "estimate": 0.7954524684347941
+    },
+    {
+      "rep": 3,
+      "generator": "SMOTE",
+      "synthetic_days": 1,
+      "estimate": 0.7851528623262726
+    },
+    {
+      "rep": 3,
+      "generator": "SMOTE",
+      "synthetic_days": 2,
+      "estimate": 0.7491441442553383
+    },
+    {
+      "rep": 3,
+      "generator": "SMOTE",
+      "synthetic_days": 5,
+      "estimate": 0.7893677239351993
+    },
+    {
+      "rep": 3,
+      "generator": "SMOTE",
+      "synthetic_days": 10,
+      "estimate": 0.7984136901817379
+    },
+    {
+      "rep": 3,
+      "generator": "SMOTE",
+      "synthetic_days": 25,
+      "estimate": 0.810589012145375
+    },
+    {
+      "rep": 3,
+      "generator": "SMOTE",
+      "synthetic_days": 50,
+      "estimate": 0.8024125041088235
+    },
+    {
+      "rep": 3,
+      "generator": "SMOTE",
+      "synthetic_days": 100,
+      "estimate": 0.7990452944945182
+    },
+    {
+      "rep": 3,
+      "generator": "SMOTE",
+      "synthetic_days": 250,
+      "estimate": 0.797099247953205
+    },
+    {
+      "rep": 3,
+      "generator": "SMOTE",
+      "synthetic_days": 500,
+      "estimate": 0.7971674693495562
+    },
+    {
+      "rep": 3,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 1,
+      "estimate": 0.8309737597066421
+    },
+    {
+      "rep": 3,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 2,
+      "estimate": 0.8131102323692059
+    },
+    {
+      "rep": 3,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 5,
+      "estimate": 0.782006097874577
+    },
+    {
+      "rep": 3,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 10,
+      "estimate": 0.7863250571839236
+    },
+    {
+      "rep": 3,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 25,
+      "estimate": 0.7905300227975731
+    },
+    {
+      "rep": 3,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 50,
+      "estimate": 0.7920653795904596
+    },
+    {
+      "rep": 3,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 100,
+      "estimate": 0.7940627859222998
+    },
+    {
+      "rep": 3,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 250,
+      "estimate": 0.7905812645608506
+    },
+    {
+      "rep": 3,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 500,
+      "estimate": 0.7882615733621146
+    },
+    {
+      "rep": 4,
+      "generator": "Erlang A",
+      "synthetic_days": 1,
+      "estimate": 0.8466318667660949
+    },
+    {
+      "rep": 4,
+      "generator": "Erlang A",
+      "synthetic_days": 2,
+      "estimate": 0.8649487317862925
+    },
+    {
+      "rep": 4,
+      "generator": "Erlang A",
+      "synthetic_days": 5,
+      "estimate": 0.8499536557439616
+    },
+    {
+      "rep": 4,
+      "generator": "Erlang A",
+      "synthetic_days": 10,
+      "estimate": 0.8405422498418896
+    },
+    {
+      "rep": 4,
+      "generator": "Erlang A",
+      "synthetic_days": 25,
+      "estimate": 0.8381056033031887
+    },
+    {
+      "rep": 4,
+      "generator": "Erlang A",
+      "synthetic_days": 50,
+      "estimate": 0.8346760461156241
+    },
+    {
+      "rep": 4,
+      "generator": "Erlang A",
+      "synthetic_days": 100,
+      "estimate": 0.8357640949966437
+    },
+    {
+      "rep": 4,
+      "generator": "Erlang A",
+      "synthetic_days": 250,
+      "estimate": 0.8346332185878816
+    },
+    {
+      "rep": 4,
+      "generator": "Erlang A",
+      "synthetic_days": 500,
+      "estimate": 0.8357910833527052
+    },
+    {
+      "rep": 4,
+      "generator": "Gaussian copula",
+      "synthetic_days": 1,
+      "estimate": 0.7922520990363409
+    },
+    {
+      "rep": 4,
+      "generator": "Gaussian copula",
+      "synthetic_days": 2,
+      "estimate": 0.8257276885064778
+    },
+    {
+      "rep": 4,
+      "generator": "Gaussian copula",
+      "synthetic_days": 5,
+      "estimate": 0.8273129270212608
+    },
+    {
+      "rep": 4,
+      "generator": "Gaussian copula",
+      "synthetic_days": 10,
+      "estimate": 0.8134731515924427
+    },
+    {
+      "rep": 4,
+      "generator": "Gaussian copula",
+      "synthetic_days": 25,
+      "estimate": 0.8169842962417341
+    },
+    {
+      "rep": 4,
+      "generator": "Gaussian copula",
+      "synthetic_days": 50,
+      "estimate": 0.8122309091855497
+    },
+    {
+      "rep": 4,
+      "generator": "Gaussian copula",
+      "synthetic_days": 100,
+      "estimate": 0.8068019964296032
+    },
+    {
+      "rep": 4,
+      "generator": "Gaussian copula",
+      "synthetic_days": 250,
+      "estimate": 0.8011345130921823
+    },
+    {
+      "rep": 4,
+      "generator": "Gaussian copula",
+      "synthetic_days": 500,
+      "estimate": 0.8044417298917059
+    },
+    {
+      "rep": 4,
+      "generator": "CART",
+      "synthetic_days": 1,
+      "estimate": 0.7861305715968815
+    },
+    {
+      "rep": 4,
+      "generator": "CART",
+      "synthetic_days": 2,
+      "estimate": 0.8284698399837281
+    },
+    {
+      "rep": 4,
+      "generator": "CART",
+      "synthetic_days": 5,
+      "estimate": 0.8144857493809347
+    },
+    {
+      "rep": 4,
+      "generator": "CART",
+      "synthetic_days": 10,
+      "estimate": 0.8055484879477598
+    },
+    {
+      "rep": 4,
+      "generator": "CART",
+      "synthetic_days": 25,
+      "estimate": 0.7994850960656434
+    },
+    {
+      "rep": 4,
+      "generator": "CART",
+      "synthetic_days": 50,
+      "estimate": 0.8028614645305859
+    },
+    {
+      "rep": 4,
+      "generator": "CART",
+      "synthetic_days": 100,
+      "estimate": 0.8031884148674665
+    },
+    {
+      "rep": 4,
+      "generator": "CART",
+      "synthetic_days": 250,
+      "estimate": 0.8064766009255099
+    },
+    {
+      "rep": 4,
+      "generator": "CART",
+      "synthetic_days": 500,
+      "estimate": 0.8060722853074929
+    },
+    {
+      "rep": 4,
+      "generator": "SMOTE",
+      "synthetic_days": 1,
+      "estimate": 0.7774618675769023
+    },
+    {
+      "rep": 4,
+      "generator": "SMOTE",
+      "synthetic_days": 2,
+      "estimate": 0.7809562257387886
+    },
+    {
+      "rep": 4,
+      "generator": "SMOTE",
+      "synthetic_days": 5,
+      "estimate": 0.8016655374431151
+    },
+    {
+      "rep": 4,
+      "generator": "SMOTE",
+      "synthetic_days": 10,
+      "estimate": 0.8015375940003739
+    },
+    {
+      "rep": 4,
+      "generator": "SMOTE",
+      "synthetic_days": 25,
+      "estimate": 0.8194559234454891
+    },
+    {
+      "rep": 4,
+      "generator": "SMOTE",
+      "synthetic_days": 50,
+      "estimate": 0.8157115665683957
+    },
+    {
+      "rep": 4,
+      "generator": "SMOTE",
+      "synthetic_days": 100,
+      "estimate": 0.8095211791364043
+    },
+    {
+      "rep": 4,
+      "generator": "SMOTE",
+      "synthetic_days": 250,
+      "estimate": 0.8144414959642607
+    },
+    {
+      "rep": 4,
+      "generator": "SMOTE",
+      "synthetic_days": 500,
+      "estimate": 0.8139338718592813
+    },
+    {
+      "rep": 4,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 1,
+      "estimate": 0.8220036392633558
+    },
+    {
+      "rep": 4,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 2,
+      "estimate": 0.8060263441115797
+    },
+    {
+      "rep": 4,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 5,
+      "estimate": 0.8061220208295546
+    },
+    {
+      "rep": 4,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 10,
+      "estimate": 0.8153004798505097
+    },
+    {
+      "rep": 4,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 25,
+      "estimate": 0.8181428268982818
+    },
+    {
+      "rep": 4,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 50,
+      "estimate": 0.8200682226623746
+    },
+    {
+      "rep": 4,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 100,
+      "estimate": 0.8092869866156539
+    },
+    {
+      "rep": 4,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 250,
+      "estimate": 0.805783067328276
+    },
+    {
+      "rep": 4,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 500,
+      "estimate": 0.80227529344422
+    },
+    {
+      "rep": 5,
+      "generator": "Erlang A",
+      "synthetic_days": 1,
+      "estimate": 0.9072757111597374
+    },
+    {
+      "rep": 5,
+      "generator": "Erlang A",
+      "synthetic_days": 2,
+      "estimate": 0.8860212053571429
+    },
+    {
+      "rep": 5,
+      "generator": "Erlang A",
+      "synthetic_days": 5,
+      "estimate": 0.867430441898527
+    },
+    {
+      "rep": 5,
+      "generator": "Erlang A",
+      "synthetic_days": 10,
+      "estimate": 0.856913551937629
+    },
+    {
+      "rep": 5,
+      "generator": "Erlang A",
+      "synthetic_days": 25,
+      "estimate": 0.8482867498276744
+    },
+    {
+      "rep": 5,
+      "generator": "Erlang A",
+      "synthetic_days": 50,
+      "estimate": 0.8527986623747398
+    },
+    {
+      "rep": 5,
+      "generator": "Erlang A",
+      "synthetic_days": 100,
+      "estimate": 0.8459387343055425
+    },
+    {
+      "rep": 5,
+      "generator": "Erlang A",
+      "synthetic_days": 250,
+      "estimate": 0.8447911107182882
+    },
+    {
+      "rep": 5,
+      "generator": "Erlang A",
+      "synthetic_days": 500,
+      "estimate": 0.8461841746510678
+    },
+    {
+      "rep": 5,
+      "generator": "Gaussian copula",
+      "synthetic_days": 1,
+      "estimate": 0.8395953610027459
+    },
+    {
+      "rep": 5,
+      "generator": "Gaussian copula",
+      "synthetic_days": 2,
+      "estimate": 0.83702746290505
+    },
+    {
+      "rep": 5,
+      "generator": "Gaussian copula",
+      "synthetic_days": 5,
+      "estimate": 0.8560400087301463
+    },
+    {
+      "rep": 5,
+      "generator": "Gaussian copula",
+      "synthetic_days": 10,
+      "estimate": 0.851191886413507
+    },
+    {
+      "rep": 5,
+      "generator": "Gaussian copula",
+      "synthetic_days": 25,
+      "estimate": 0.8475991959635153
+    },
+    {
+      "rep": 5,
+      "generator": "Gaussian copula",
+      "synthetic_days": 50,
+      "estimate": 0.828670451192264
+    },
+    {
+      "rep": 5,
+      "generator": "Gaussian copula",
+      "synthetic_days": 100,
+      "estimate": 0.8242549436563462
+    },
+    {
+      "rep": 5,
+      "generator": "Gaussian copula",
+      "synthetic_days": 250,
+      "estimate": 0.8219132305503947
+    },
+    {
+      "rep": 5,
+      "generator": "Gaussian copula",
+      "synthetic_days": 500,
+      "estimate": 0.8188857990527045
+    },
+    {
+      "rep": 5,
+      "generator": "CART",
+      "synthetic_days": 1,
+      "estimate": 0.7614489084830899
+    },
+    {
+      "rep": 5,
+      "generator": "CART",
+      "synthetic_days": 2,
+      "estimate": 0.7988057909665023
+    },
+    {
+      "rep": 5,
+      "generator": "CART",
+      "synthetic_days": 5,
+      "estimate": 0.7917590043766535
+    },
+    {
+      "rep": 5,
+      "generator": "CART",
+      "synthetic_days": 10,
+      "estimate": 0.806338402396362
+    },
+    {
+      "rep": 5,
+      "generator": "CART",
+      "synthetic_days": 25,
+      "estimate": 0.8151574616277586
+    },
+    {
+      "rep": 5,
+      "generator": "CART",
+      "synthetic_days": 50,
+      "estimate": 0.8089821739792037
+    },
+    {
+      "rep": 5,
+      "generator": "CART",
+      "synthetic_days": 100,
+      "estimate": 0.8189526674778834
+    },
+    {
+      "rep": 5,
+      "generator": "CART",
+      "synthetic_days": 250,
+      "estimate": 0.8228210721702669
+    },
+    {
+      "rep": 5,
+      "generator": "CART",
+      "synthetic_days": 500,
+      "estimate": 0.8199248769589009
+    },
+    {
+      "rep": 5,
+      "generator": "SMOTE",
+      "synthetic_days": 1,
+      "estimate": 0.8723817999523085
+    },
+    {
+      "rep": 5,
+      "generator": "SMOTE",
+      "synthetic_days": 2,
+      "estimate": 0.8140758036769001
+    },
+    {
+      "rep": 5,
+      "generator": "SMOTE",
+      "synthetic_days": 5,
+      "estimate": 0.7794369778012139
+    },
+    {
+      "rep": 5,
+      "generator": "SMOTE",
+      "synthetic_days": 10,
+      "estimate": 0.7973213882039328
+    },
+    {
+      "rep": 5,
+      "generator": "SMOTE",
+      "synthetic_days": 25,
+      "estimate": 0.8235268240750669
+    },
+    {
+      "rep": 5,
+      "generator": "SMOTE",
+      "synthetic_days": 50,
+      "estimate": 0.8254056775625125
+    },
+    {
+      "rep": 5,
+      "generator": "SMOTE",
+      "synthetic_days": 100,
+      "estimate": 0.8231821407990226
+    },
+    {
+      "rep": 5,
+      "generator": "SMOTE",
+      "synthetic_days": 250,
+      "estimate": 0.8221114301587015
+    },
+    {
+      "rep": 5,
+      "generator": "SMOTE",
+      "synthetic_days": 500,
+      "estimate": 0.8256525760558806
+    },
+    {
+      "rep": 5,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 1,
+      "estimate": 0.8250635934718146
+    },
+    {
+      "rep": 5,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 2,
+      "estimate": 0.8380683831417722
+    },
+    {
+      "rep": 5,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 5,
+      "estimate": 0.8206836073162743
+    },
+    {
+      "rep": 5,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 10,
+      "estimate": 0.8217607198921661
+    },
+    {
+      "rep": 5,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 25,
+      "estimate": 0.80986223730547
+    },
+    {
+      "rep": 5,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 50,
+      "estimate": 0.8144852906317194
+    },
+    {
+      "rep": 5,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 100,
+      "estimate": 0.8153038839889667
+    },
+    {
+      "rep": 5,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 250,
+      "estimate": 0.8174860725857223
+    },
+    {
+      "rep": 5,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 500,
+      "estimate": 0.8164674897350074
+    },
+    {
+      "rep": 6,
+      "generator": "Erlang A",
+      "synthetic_days": 1,
+      "estimate": 0.8165114523030456
+    },
+    {
+      "rep": 6,
+      "generator": "Erlang A",
+      "synthetic_days": 2,
+      "estimate": 0.8176977113075006
+    },
+    {
+      "rep": 6,
+      "generator": "Erlang A",
+      "synthetic_days": 5,
+      "estimate": 0.8336988704901853
+    },
+    {
+      "rep": 6,
+      "generator": "Erlang A",
+      "synthetic_days": 10,
+      "estimate": 0.8451691805951895
+    },
+    {
+      "rep": 6,
+      "generator": "Erlang A",
+      "synthetic_days": 25,
+      "estimate": 0.8434995874727337
+    },
+    {
+      "rep": 6,
+      "generator": "Erlang A",
+      "synthetic_days": 50,
+      "estimate": 0.8372206270045169
+    },
+    {
+      "rep": 6,
+      "generator": "Erlang A",
+      "synthetic_days": 100,
+      "estimate": 0.8412054028826053
+    },
+    {
+      "rep": 6,
+      "generator": "Erlang A",
+      "synthetic_days": 250,
+      "estimate": 0.835352620365579
+    },
+    {
+      "rep": 6,
+      "generator": "Erlang A",
+      "synthetic_days": 500,
+      "estimate": 0.8324029699665928
+    },
+    {
+      "rep": 6,
+      "generator": "Gaussian copula",
+      "synthetic_days": 1,
+      "estimate": 0.6802556970082396
+    },
+    {
+      "rep": 6,
+      "generator": "Gaussian copula",
+      "synthetic_days": 2,
+      "estimate": 0.7412181442176072
+    },
+    {
+      "rep": 6,
+      "generator": "Gaussian copula",
+      "synthetic_days": 5,
+      "estimate": 0.7893295099656255
+    },
+    {
+      "rep": 6,
+      "generator": "Gaussian copula",
+      "synthetic_days": 10,
+      "estimate": 0.7930122404294899
+    },
+    {
+      "rep": 6,
+      "generator": "Gaussian copula",
+      "synthetic_days": 25,
+      "estimate": 0.8067609611906106
+    },
+    {
+      "rep": 6,
+      "generator": "Gaussian copula",
+      "synthetic_days": 50,
+      "estimate": 0.8059989607390621
+    },
+    {
+      "rep": 6,
+      "generator": "Gaussian copula",
+      "synthetic_days": 100,
+      "estimate": 0.8081201176486256
+    },
+    {
+      "rep": 6,
+      "generator": "Gaussian copula",
+      "synthetic_days": 250,
+      "estimate": 0.7984986222264511
+    },
+    {
+      "rep": 6,
+      "generator": "Gaussian copula",
+      "synthetic_days": 500,
+      "estimate": 0.7990929926631147
+    },
+    {
+      "rep": 6,
+      "generator": "CART",
+      "synthetic_days": 1,
+      "estimate": 0.8291652983400258
+    },
+    {
+      "rep": 6,
+      "generator": "CART",
+      "synthetic_days": 2,
+      "estimate": 0.8394684605590027
+    },
+    {
+      "rep": 6,
+      "generator": "CART",
+      "synthetic_days": 5,
+      "estimate": 0.8057257840234332
+    },
+    {
+      "rep": 6,
+      "generator": "CART",
+      "synthetic_days": 10,
+      "estimate": 0.7830093752428973
+    },
+    {
+      "rep": 6,
+      "generator": "CART",
+      "synthetic_days": 25,
+      "estimate": 0.7865603439801503
+    },
+    {
+      "rep": 6,
+      "generator": "CART",
+      "synthetic_days": 50,
+      "estimate": 0.787826236156084
+    },
+    {
+      "rep": 6,
+      "generator": "CART",
+      "synthetic_days": 100,
+      "estimate": 0.7970867579955069
+    },
+    {
+      "rep": 6,
+      "generator": "CART",
+      "synthetic_days": 250,
+      "estimate": 0.7975183321832309
+    },
+    {
+      "rep": 6,
+      "generator": "CART",
+      "synthetic_days": 500,
+      "estimate": 0.7960006403467049
+    },
+    {
+      "rep": 6,
+      "generator": "SMOTE",
+      "synthetic_days": 1,
+      "estimate": 0.8465605992136374
+    },
+    {
+      "rep": 6,
+      "generator": "SMOTE",
+      "synthetic_days": 2,
+      "estimate": 0.8378271957447563
+    },
+    {
+      "rep": 6,
+      "generator": "SMOTE",
+      "synthetic_days": 5,
+      "estimate": 0.815472688822379
+    },
+    {
+      "rep": 6,
+      "generator": "SMOTE",
+      "synthetic_days": 10,
+      "estimate": 0.7868087143233791
+    },
+    {
+      "rep": 6,
+      "generator": "SMOTE",
+      "synthetic_days": 25,
+      "estimate": 0.7951336423058872
+    },
+    {
+      "rep": 6,
+      "generator": "SMOTE",
+      "synthetic_days": 50,
+      "estimate": 0.7905633460643247
+    },
+    {
+      "rep": 6,
+      "generator": "SMOTE",
+      "synthetic_days": 100,
+      "estimate": 0.7885592054154555
+    },
+    {
+      "rep": 6,
+      "generator": "SMOTE",
+      "synthetic_days": 250,
+      "estimate": 0.7929974041509731
+    },
+    {
+      "rep": 6,
+      "generator": "SMOTE",
+      "synthetic_days": 500,
+      "estimate": 0.7959254958076233
+    },
+    {
+      "rep": 6,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 1,
+      "estimate": 0.7135224425559891
+    },
+    {
+      "rep": 6,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 2,
+      "estimate": 0.8065194657131878
+    },
+    {
+      "rep": 6,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 5,
+      "estimate": 0.8255082772158366
+    },
+    {
+      "rep": 6,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 10,
+      "estimate": 0.7922384634860565
+    },
+    {
+      "rep": 6,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 25,
+      "estimate": 0.7873873913851284
+    },
+    {
+      "rep": 6,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 50,
+      "estimate": 0.7985196004759482
+    },
+    {
+      "rep": 6,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 100,
+      "estimate": 0.7916298995066513
+    },
+    {
+      "rep": 6,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 250,
+      "estimate": 0.7926093209970206
+    },
+    {
+      "rep": 6,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 500,
+      "estimate": 0.7939567759665331
+    },
+    {
+      "rep": 7,
+      "generator": "Erlang A",
+      "synthetic_days": 1,
+      "estimate": 0.8919528703935824
+    },
+    {
+      "rep": 7,
+      "generator": "Erlang A",
+      "synthetic_days": 2,
+      "estimate": 0.8690061612643986
+    },
+    {
+      "rep": 7,
+      "generator": "Erlang A",
+      "synthetic_days": 5,
+      "estimate": 0.8520894643908181
+    },
+    {
+      "rep": 7,
+      "generator": "Erlang A",
+      "synthetic_days": 10,
+      "estimate": 0.836680014132611
+    },
+    {
+      "rep": 7,
+      "generator": "Erlang A",
+      "synthetic_days": 25,
+      "estimate": 0.8383179328019562
+    },
+    {
+      "rep": 7,
+      "generator": "Erlang A",
+      "synthetic_days": 50,
+      "estimate": 0.8344969643172132
+    },
+    {
+      "rep": 7,
+      "generator": "Erlang A",
+      "synthetic_days": 100,
+      "estimate": 0.8361292278838892
+    },
+    {
+      "rep": 7,
+      "generator": "Erlang A",
+      "synthetic_days": 250,
+      "estimate": 0.8330889197065265
+    },
+    {
+      "rep": 7,
+      "generator": "Erlang A",
+      "synthetic_days": 500,
+      "estimate": 0.8300130430040754
+    },
+    {
+      "rep": 7,
+      "generator": "Gaussian copula",
+      "synthetic_days": 1,
+      "estimate": 0.8008295426747241
+    },
+    {
+      "rep": 7,
+      "generator": "Gaussian copula",
+      "synthetic_days": 2,
+      "estimate": 0.7981140013738348
+    },
+    {
+      "rep": 7,
+      "generator": "Gaussian copula",
+      "synthetic_days": 5,
+      "estimate": 0.7900264989605902
+    },
+    {
+      "rep": 7,
+      "generator": "Gaussian copula",
+      "synthetic_days": 10,
+      "estimate": 0.8019896629916701
+    },
+    {
+      "rep": 7,
+      "generator": "Gaussian copula",
+      "synthetic_days": 25,
+      "estimate": 0.791017255266118
+    },
+    {
+      "rep": 7,
+      "generator": "Gaussian copula",
+      "synthetic_days": 50,
+      "estimate": 0.7972988674717347
+    },
+    {
+      "rep": 7,
+      "generator": "Gaussian copula",
+      "synthetic_days": 100,
+      "estimate": 0.8031852532597076
+    },
+    {
+      "rep": 7,
+      "generator": "Gaussian copula",
+      "synthetic_days": 250,
+      "estimate": 0.804791287663435
+    },
+    {
+      "rep": 7,
+      "generator": "Gaussian copula",
+      "synthetic_days": 500,
+      "estimate": 0.8056890391599087
+    },
+    {
+      "rep": 7,
+      "generator": "CART",
+      "synthetic_days": 1,
+      "estimate": 0.7800704235938746
+    },
+    {
+      "rep": 7,
+      "generator": "CART",
+      "synthetic_days": 2,
+      "estimate": 0.7952120280664557
+    },
+    {
+      "rep": 7,
+      "generator": "CART",
+      "synthetic_days": 5,
+      "estimate": 0.8162923925800318
+    },
+    {
+      "rep": 7,
+      "generator": "CART",
+      "synthetic_days": 10,
+      "estimate": 0.8079700273019531
+    },
+    {
+      "rep": 7,
+      "generator": "CART",
+      "synthetic_days": 25,
+      "estimate": 0.8031786322684301
+    },
+    {
+      "rep": 7,
+      "generator": "CART",
+      "synthetic_days": 50,
+      "estimate": 0.8136768931307784
+    },
+    {
+      "rep": 7,
+      "generator": "CART",
+      "synthetic_days": 100,
+      "estimate": 0.8070560557804437
+    },
+    {
+      "rep": 7,
+      "generator": "CART",
+      "synthetic_days": 250,
+      "estimate": 0.8025467963881824
+    },
+    {
+      "rep": 7,
+      "generator": "CART",
+      "synthetic_days": 500,
+      "estimate": 0.799225658597331
+    },
+    {
+      "rep": 7,
+      "generator": "SMOTE",
+      "synthetic_days": 1,
+      "estimate": 0.7989382956986515
+    },
+    {
+      "rep": 7,
+      "generator": "SMOTE",
+      "synthetic_days": 2,
+      "estimate": 0.7739530914631274
+    },
+    {
+      "rep": 7,
+      "generator": "SMOTE",
+      "synthetic_days": 5,
+      "estimate": 0.8117398869552024
+    },
+    {
+      "rep": 7,
+      "generator": "SMOTE",
+      "synthetic_days": 10,
+      "estimate": 0.7983287828445823
+    },
+    {
+      "rep": 7,
+      "generator": "SMOTE",
+      "synthetic_days": 25,
+      "estimate": 0.8111809345249398
+    },
+    {
+      "rep": 7,
+      "generator": "SMOTE",
+      "synthetic_days": 50,
+      "estimate": 0.8139930701240164
+    },
+    {
+      "rep": 7,
+      "generator": "SMOTE",
+      "synthetic_days": 100,
+      "estimate": 0.8050574115034604
+    },
+    {
+      "rep": 7,
+      "generator": "SMOTE",
+      "synthetic_days": 250,
+      "estimate": 0.8033295319676209
+    },
+    {
+      "rep": 7,
+      "generator": "SMOTE",
+      "synthetic_days": 500,
+      "estimate": 0.8014077602486577
+    },
+    {
+      "rep": 7,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 1,
+      "estimate": 0.829453899219235
+    },
+    {
+      "rep": 7,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 2,
+      "estimate": 0.8062518185689168
+    },
+    {
+      "rep": 7,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 5,
+      "estimate": 0.7876593505059687
+    },
+    {
+      "rep": 7,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 10,
+      "estimate": 0.7699239285195896
+    },
+    {
+      "rep": 7,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 25,
+      "estimate": 0.7848634425134855
+    },
+    {
+      "rep": 7,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 50,
+      "estimate": 0.7930552366064859
+    },
+    {
+      "rep": 7,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 100,
+      "estimate": 0.7949460635973674
+    },
+    {
+      "rep": 7,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 250,
+      "estimate": 0.8007127460405705
+    },
+    {
+      "rep": 7,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 500,
+      "estimate": 0.79969144155859
+    },
+    {
+      "rep": 8,
+      "generator": "Erlang A",
+      "synthetic_days": 1,
+      "estimate": 0.7944416624937406
+    },
+    {
+      "rep": 8,
+      "generator": "Erlang A",
+      "synthetic_days": 2,
+      "estimate": 0.7642105263157895
+    },
+    {
+      "rep": 8,
+      "generator": "Erlang A",
+      "synthetic_days": 5,
+      "estimate": 0.803875388074082
+    },
+    {
+      "rep": 8,
+      "generator": "Erlang A",
+      "synthetic_days": 10,
+      "estimate": 0.8138314536340853
+    },
+    {
+      "rep": 8,
+      "generator": "Erlang A",
+      "synthetic_days": 25,
+      "estimate": 0.819181301273578
+    },
+    {
+      "rep": 8,
+      "generator": "Erlang A",
+      "synthetic_days": 50,
+      "estimate": 0.8203688853247795
+    },
+    {
+      "rep": 8,
+      "generator": "Erlang A",
+      "synthetic_days": 100,
+      "estimate": 0.8200551184415366
+    },
+    {
+      "rep": 8,
+      "generator": "Erlang A",
+      "synthetic_days": 250,
+      "estimate": 0.8249108210789226
+    },
+    {
+      "rep": 8,
+      "generator": "Erlang A",
+      "synthetic_days": 500,
+      "estimate": 0.8273483918708687
+    },
+    {
+      "rep": 8,
+      "generator": "Gaussian copula",
+      "synthetic_days": 1,
+      "estimate": 0.7269092121570927
+    },
+    {
+      "rep": 8,
+      "generator": "Gaussian copula",
+      "synthetic_days": 2,
+      "estimate": 0.7612875578126459
+    },
+    {
+      "rep": 8,
+      "generator": "Gaussian copula",
+      "synthetic_days": 5,
+      "estimate": 0.8022199253966963
+    },
+    {
+      "rep": 8,
+      "generator": "Gaussian copula",
+      "synthetic_days": 10,
+      "estimate": 0.7926452778370806
+    },
+    {
+      "rep": 8,
+      "generator": "Gaussian copula",
+      "synthetic_days": 25,
+      "estimate": 0.7923640184942068
+    },
+    {
+      "rep": 8,
+      "generator": "Gaussian copula",
+      "synthetic_days": 50,
+      "estimate": 0.7877324278729488
+    },
+    {
+      "rep": 8,
+      "generator": "Gaussian copula",
+      "synthetic_days": 100,
+      "estimate": 0.7851189182954514
+    },
+    {
+      "rep": 8,
+      "generator": "Gaussian copula",
+      "synthetic_days": 250,
+      "estimate": 0.7885204118618332
+    },
+    {
+      "rep": 8,
+      "generator": "Gaussian copula",
+      "synthetic_days": 500,
+      "estimate": 0.7876213657852987
+    },
+    {
+      "rep": 8,
+      "generator": "CART",
+      "synthetic_days": 1,
+      "estimate": 0.7409535339441267
+    },
+    {
+      "rep": 8,
+      "generator": "CART",
+      "synthetic_days": 2,
+      "estimate": 0.7569711963766119
+    },
+    {
+      "rep": 8,
+      "generator": "CART",
+      "synthetic_days": 5,
+      "estimate": 0.7526295625403236
+    },
+    {
+      "rep": 8,
+      "generator": "CART",
+      "synthetic_days": 10,
+      "estimate": 0.7816201979619568
+    },
+    {
+      "rep": 8,
+      "generator": "CART",
+      "synthetic_days": 25,
+      "estimate": 0.7932948227416098
+    },
+    {
+      "rep": 8,
+      "generator": "CART",
+      "synthetic_days": 50,
+      "estimate": 0.783746358242655
+    },
+    {
+      "rep": 8,
+      "generator": "CART",
+      "synthetic_days": 100,
+      "estimate": 0.7915577302627596
+    },
+    {
+      "rep": 8,
+      "generator": "CART",
+      "synthetic_days": 250,
+      "estimate": 0.7917319436177194
+    },
+    {
+      "rep": 8,
+      "generator": "CART",
+      "synthetic_days": 500,
+      "estimate": 0.7882668387571341
+    },
+    {
+      "rep": 8,
+      "generator": "SMOTE",
+      "synthetic_days": 1,
+      "estimate": 0.7672067177199843
+    },
+    {
+      "rep": 8,
+      "generator": "SMOTE",
+      "synthetic_days": 2,
+      "estimate": 0.791559459261329
+    },
+    {
+      "rep": 8,
+      "generator": "SMOTE",
+      "synthetic_days": 5,
+      "estimate": 0.8112995721285574
+    },
+    {
+      "rep": 8,
+      "generator": "SMOTE",
+      "synthetic_days": 10,
+      "estimate": 0.7990981747027912
+    },
+    {
+      "rep": 8,
+      "generator": "SMOTE",
+      "synthetic_days": 25,
+      "estimate": 0.7796249834976124
+    },
+    {
+      "rep": 8,
+      "generator": "SMOTE",
+      "synthetic_days": 50,
+      "estimate": 0.7846547097187545
+    },
+    {
+      "rep": 8,
+      "generator": "SMOTE",
+      "synthetic_days": 100,
+      "estimate": 0.7858779810742844
+    },
+    {
+      "rep": 8,
+      "generator": "SMOTE",
+      "synthetic_days": 250,
+      "estimate": 0.7886134582443608
+    },
+    {
+      "rep": 8,
+      "generator": "SMOTE",
+      "synthetic_days": 500,
+      "estimate": 0.7902516418733294
+    },
+    {
+      "rep": 8,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 1,
+      "estimate": 0.6240893745670313
+    },
+    {
+      "rep": 8,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 2,
+      "estimate": 0.698734830322115
+    },
+    {
+      "rep": 8,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 5,
+      "estimate": 0.7499728315131998
+    },
+    {
+      "rep": 8,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 10,
+      "estimate": 0.7591796993175626
+    },
+    {
+      "rep": 8,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 25,
+      "estimate": 0.7631019458059711
+    },
+    {
+      "rep": 8,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 50,
+      "estimate": 0.7693250542162847
+    },
+    {
+      "rep": 8,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 100,
+      "estimate": 0.779853836343039
+    },
+    {
+      "rep": 8,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 250,
+      "estimate": 0.783957104845514
+    },
+    {
+      "rep": 8,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 500,
+      "estimate": 0.7858470686554935
+    },
+    {
+      "rep": 9,
+      "generator": "Erlang A",
+      "synthetic_days": 1,
+      "estimate": 0.8679969301611665
+    },
+    {
+      "rep": 9,
+      "generator": "Erlang A",
+      "synthetic_days": 2,
+      "estimate": 0.8688034768436779
+    },
+    {
+      "rep": 9,
+      "generator": "Erlang A",
+      "synthetic_days": 5,
+      "estimate": 0.8308819508994477
+    },
+    {
+      "rep": 9,
+      "generator": "Erlang A",
+      "synthetic_days": 10,
+      "estimate": 0.8092454112848403
+    },
+    {
+      "rep": 9,
+      "generator": "Erlang A",
+      "synthetic_days": 25,
+      "estimate": 0.8197264682220434
+    },
+    {
+      "rep": 9,
+      "generator": "Erlang A",
+      "synthetic_days": 50,
+      "estimate": 0.8193049828449117
+    },
+    {
+      "rep": 9,
+      "generator": "Erlang A",
+      "synthetic_days": 100,
+      "estimate": 0.8202553587282797
+    },
+    {
+      "rep": 9,
+      "generator": "Erlang A",
+      "synthetic_days": 250,
+      "estimate": 0.8214288373399081
+    },
+    {
+      "rep": 9,
+      "generator": "Erlang A",
+      "synthetic_days": 500,
+      "estimate": 0.8206150571165913
+    },
+    {
+      "rep": 9,
+      "generator": "Gaussian copula",
+      "synthetic_days": 1,
+      "estimate": 0.8597885663721873
+    },
+    {
+      "rep": 9,
+      "generator": "Gaussian copula",
+      "synthetic_days": 2,
+      "estimate": 0.8037439456996857
+    },
+    {
+      "rep": 9,
+      "generator": "Gaussian copula",
+      "synthetic_days": 5,
+      "estimate": 0.8040757439898744
+    },
+    {
+      "rep": 9,
+      "generator": "Gaussian copula",
+      "synthetic_days": 10,
+      "estimate": 0.802953435345252
+    },
+    {
+      "rep": 9,
+      "generator": "Gaussian copula",
+      "synthetic_days": 25,
+      "estimate": 0.810624235602941
+    },
+    {
+      "rep": 9,
+      "generator": "Gaussian copula",
+      "synthetic_days": 50,
+      "estimate": 0.7974077126703616
+    },
+    {
+      "rep": 9,
+      "generator": "Gaussian copula",
+      "synthetic_days": 100,
+      "estimate": 0.7939707785422081
+    },
+    {
+      "rep": 9,
+      "generator": "Gaussian copula",
+      "synthetic_days": 250,
+      "estimate": 0.8004554886901248
+    },
+    {
+      "rep": 9,
+      "generator": "Gaussian copula",
+      "synthetic_days": 500,
+      "estimate": 0.7971155176094434
+    },
+    {
+      "rep": 9,
+      "generator": "CART",
+      "synthetic_days": 1,
+      "estimate": 0.8799957210870311
+    },
+    {
+      "rep": 9,
+      "generator": "CART",
+      "synthetic_days": 2,
+      "estimate": 0.8436150363105835
+    },
+    {
+      "rep": 9,
+      "generator": "CART",
+      "synthetic_days": 5,
+      "estimate": 0.8072104653777121
+    },
+    {
+      "rep": 9,
+      "generator": "CART",
+      "synthetic_days": 10,
+      "estimate": 0.8021204532911634
+    },
+    {
+      "rep": 9,
+      "generator": "CART",
+      "synthetic_days": 25,
+      "estimate": 0.8028393810202409
+    },
+    {
+      "rep": 9,
+      "generator": "CART",
+      "synthetic_days": 50,
+      "estimate": 0.8023080845988211
+    },
+    {
+      "rep": 9,
+      "generator": "CART",
+      "synthetic_days": 100,
+      "estimate": 0.8008589636099439
+    },
+    {
+      "rep": 9,
+      "generator": "CART",
+      "synthetic_days": 250,
+      "estimate": 0.7949754808588314
+    },
+    {
+      "rep": 9,
+      "generator": "CART",
+      "synthetic_days": 500,
+      "estimate": 0.7924993380134897
+    },
+    {
+      "rep": 9,
+      "generator": "SMOTE",
+      "synthetic_days": 1,
+      "estimate": 0.781950696908256
+    },
+    {
+      "rep": 9,
+      "generator": "SMOTE",
+      "synthetic_days": 2,
+      "estimate": 0.7411446236598789
+    },
+    {
+      "rep": 9,
+      "generator": "SMOTE",
+      "synthetic_days": 5,
+      "estimate": 0.7654409937029986
+    },
+    {
+      "rep": 9,
+      "generator": "SMOTE",
+      "synthetic_days": 10,
+      "estimate": 0.8026868353341932
+    },
+    {
+      "rep": 9,
+      "generator": "SMOTE",
+      "synthetic_days": 25,
+      "estimate": 0.813090616687673
+    },
+    {
+      "rep": 9,
+      "generator": "SMOTE",
+      "synthetic_days": 50,
+      "estimate": 0.7973378013314524
+    },
+    {
+      "rep": 9,
+      "generator": "SMOTE",
+      "synthetic_days": 100,
+      "estimate": 0.7911658240995172
+    },
+    {
+      "rep": 9,
+      "generator": "SMOTE",
+      "synthetic_days": 250,
+      "estimate": 0.7941255915789156
+    },
+    {
+      "rep": 9,
+      "generator": "SMOTE",
+      "synthetic_days": 500,
+      "estimate": 0.7937071942155625
+    },
+    {
+      "rep": 9,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 1,
+      "estimate": 0.8352550597796815
+    },
+    {
+      "rep": 9,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 2,
+      "estimate": 0.796027326022732
+    },
+    {
+      "rep": 9,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 5,
+      "estimate": 0.8093688187751781
+    },
+    {
+      "rep": 9,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 10,
+      "estimate": 0.7995419951116187
+    },
+    {
+      "rep": 9,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 25,
+      "estimate": 0.7811996910617001
+    },
+    {
+      "rep": 9,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 50,
+      "estimate": 0.7840007802648996
+    },
+    {
+      "rep": 9,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 100,
+      "estimate": 0.786883088976737
+    },
+    {
+      "rep": 9,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 250,
+      "estimate": 0.7853668948228458
+    },
+    {
+      "rep": 9,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 500,
+      "estimate": 0.7857943707621872
+    },
+    {
+      "rep": 10,
+      "generator": "Erlang A",
+      "synthetic_days": 1,
+      "estimate": 0.8115060804490177
+    },
+    {
+      "rep": 10,
+      "generator": "Erlang A",
+      "synthetic_days": 2,
+      "estimate": 0.8083175803402647
+    },
+    {
+      "rep": 10,
+      "generator": "Erlang A",
+      "synthetic_days": 5,
+      "estimate": 0.8152588555858311
+    },
+    {
+      "rep": 10,
+      "generator": "Erlang A",
+      "synthetic_days": 10,
+      "estimate": 0.8152529704373824
+    },
+    {
+      "rep": 10,
+      "generator": "Erlang A",
+      "synthetic_days": 25,
+      "estimate": 0.8206878149406295
+    },
+    {
+      "rep": 10,
+      "generator": "Erlang A",
+      "synthetic_days": 50,
+      "estimate": 0.8220042788451355
+    },
+    {
+      "rep": 10,
+      "generator": "Erlang A",
+      "synthetic_days": 100,
+      "estimate": 0.822363086704147
+    },
+    {
+      "rep": 10,
+      "generator": "Erlang A",
+      "synthetic_days": 250,
+      "estimate": 0.8261729846001726
+    },
+    {
+      "rep": 10,
+      "generator": "Erlang A",
+      "synthetic_days": 500,
+      "estimate": 0.8242400143645815
+    },
+    {
+      "rep": 10,
+      "generator": "Gaussian copula",
+      "synthetic_days": 1,
+      "estimate": 0.8060481248519222
+    },
+    {
+      "rep": 10,
+      "generator": "Gaussian copula",
+      "synthetic_days": 2,
+      "estimate": 0.8313010592882767
+    },
+    {
+      "rep": 10,
+      "generator": "Gaussian copula",
+      "synthetic_days": 5,
+      "estimate": 0.8075542125976499
+    },
+    {
+      "rep": 10,
+      "generator": "Gaussian copula",
+      "synthetic_days": 10,
+      "estimate": 0.794632455170683
+    },
+    {
+      "rep": 10,
+      "generator": "Gaussian copula",
+      "synthetic_days": 25,
+      "estimate": 0.784059380588232
+    },
+    {
+      "rep": 10,
+      "generator": "Gaussian copula",
+      "synthetic_days": 50,
+      "estimate": 0.7891310612588659
+    },
+    {
+      "rep": 10,
+      "generator": "Gaussian copula",
+      "synthetic_days": 100,
+      "estimate": 0.787582628897333
+    },
+    {
+      "rep": 10,
+      "generator": "Gaussian copula",
+      "synthetic_days": 250,
+      "estimate": 0.7910427098758998
+    },
+    {
+      "rep": 10,
+      "generator": "Gaussian copula",
+      "synthetic_days": 500,
+      "estimate": 0.7949070988887046
+    },
+    {
+      "rep": 10,
+      "generator": "CART",
+      "synthetic_days": 1,
+      "estimate": 0.7696917244395945
+    },
+    {
+      "rep": 10,
+      "generator": "CART",
+      "synthetic_days": 2,
+      "estimate": 0.7770571322741452
+    },
+    {
+      "rep": 10,
+      "generator": "CART",
+      "synthetic_days": 5,
+      "estimate": 0.7524788783511321
+    },
+    {
+      "rep": 10,
+      "generator": "CART",
+      "synthetic_days": 10,
+      "estimate": 0.769787012931066
+    },
+    {
+      "rep": 10,
+      "generator": "CART",
+      "synthetic_days": 25,
+      "estimate": 0.7884650658697392
+    },
+    {
+      "rep": 10,
+      "generator": "CART",
+      "synthetic_days": 50,
+      "estimate": 0.7933300879273403
+    },
+    {
+      "rep": 10,
+      "generator": "CART",
+      "synthetic_days": 100,
+      "estimate": 0.7961489427985405
+    },
+    {
+      "rep": 10,
+      "generator": "CART",
+      "synthetic_days": 250,
+      "estimate": 0.7945040014781648
+    },
+    {
+      "rep": 10,
+      "generator": "CART",
+      "synthetic_days": 500,
+      "estimate": 0.792771079739856
+    },
+    {
+      "rep": 10,
+      "generator": "SMOTE",
+      "synthetic_days": 1,
+      "estimate": 0.7829918036410479
+    },
+    {
+      "rep": 10,
+      "generator": "SMOTE",
+      "synthetic_days": 2,
+      "estimate": 0.7653588544109021
+    },
+    {
+      "rep": 10,
+      "generator": "SMOTE",
+      "synthetic_days": 5,
+      "estimate": 0.8068499088150808
+    },
+    {
+      "rep": 10,
+      "generator": "SMOTE",
+      "synthetic_days": 10,
+      "estimate": 0.8015626527581211
+    },
+    {
+      "rep": 10,
+      "generator": "SMOTE",
+      "synthetic_days": 25,
+      "estimate": 0.8029835077941145
+    },
+    {
+      "rep": 10,
+      "generator": "SMOTE",
+      "synthetic_days": 50,
+      "estimate": 0.7974499880210763
+    },
+    {
+      "rep": 10,
+      "generator": "SMOTE",
+      "synthetic_days": 100,
+      "estimate": 0.7997871656096777
+    },
+    {
+      "rep": 10,
+      "generator": "SMOTE",
+      "synthetic_days": 250,
+      "estimate": 0.8027000957464523
+    },
+    {
+      "rep": 10,
+      "generator": "SMOTE",
+      "synthetic_days": 500,
+      "estimate": 0.7992165852657604
+    },
+    {
+      "rep": 10,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 1,
+      "estimate": 0.666228695901575
+    },
+    {
+      "rep": 10,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 2,
+      "estimate": 0.7246799739942793
+    },
+    {
+      "rep": 10,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 5,
+      "estimate": 0.7549904524639164
+    },
+    {
+      "rep": 10,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 10,
+      "estimate": 0.7652628195527622
+    },
+    {
+      "rep": 10,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 25,
+      "estimate": 0.7898781577703288
+    },
+    {
+      "rep": 10,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 50,
+      "estimate": 0.7970551809818707
+    },
+    {
+      "rep": 10,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 100,
+      "estimate": 0.793008380835242
+    },
+    {
+      "rep": 10,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 250,
+      "estimate": 0.7917210288264059
+    },
+    {
+      "rep": 10,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 500,
+      "estimate": 0.7924051276047486
+    },
+    {
+      "rep": 11,
+      "generator": "Erlang A",
+      "synthetic_days": 1,
+      "estimate": 0.780893536121673
+    },
+    {
+      "rep": 11,
+      "generator": "Erlang A",
+      "synthetic_days": 2,
+      "estimate": 0.8132583982628688
+    },
+    {
+      "rep": 11,
+      "generator": "Erlang A",
+      "synthetic_days": 5,
+      "estimate": 0.8442169795829
+    },
+    {
+      "rep": 11,
+      "generator": "Erlang A",
+      "synthetic_days": 10,
+      "estimate": 0.8186141486874983
+    },
+    {
+      "rep": 11,
+      "generator": "Erlang A",
+      "synthetic_days": 25,
+      "estimate": 0.8226870270897751
+    },
+    {
+      "rep": 11,
+      "generator": "Erlang A",
+      "synthetic_days": 50,
+      "estimate": 0.8222549927910839
+    },
+    {
+      "rep": 11,
+      "generator": "Erlang A",
+      "synthetic_days": 100,
+      "estimate": 0.8156859837312638
+    },
+    {
+      "rep": 11,
+      "generator": "Erlang A",
+      "synthetic_days": 250,
+      "estimate": 0.8186128972152396
+    },
+    {
+      "rep": 11,
+      "generator": "Erlang A",
+      "synthetic_days": 500,
+      "estimate": 0.8175829205061305
+    },
+    {
+      "rep": 11,
+      "generator": "Gaussian copula",
+      "synthetic_days": 1,
+      "estimate": 0.7853959266237339
+    },
+    {
+      "rep": 11,
+      "generator": "Gaussian copula",
+      "synthetic_days": 2,
+      "estimate": 0.8034993495993168
+    },
+    {
+      "rep": 11,
+      "generator": "Gaussian copula",
+      "synthetic_days": 5,
+      "estimate": 0.7900111272875603
+    },
+    {
+      "rep": 11,
+      "generator": "Gaussian copula",
+      "synthetic_days": 10,
+      "estimate": 0.7823323722438225
+    },
+    {
+      "rep": 11,
+      "generator": "Gaussian copula",
+      "synthetic_days": 25,
+      "estimate": 0.7746500040989873
+    },
+    {
+      "rep": 11,
+      "generator": "Gaussian copula",
+      "synthetic_days": 50,
+      "estimate": 0.7681588852832144
+    },
+    {
+      "rep": 11,
+      "generator": "Gaussian copula",
+      "synthetic_days": 100,
+      "estimate": 0.7774099341403782
+    },
+    {
+      "rep": 11,
+      "generator": "Gaussian copula",
+      "synthetic_days": 250,
+      "estimate": 0.7788436332361471
+    },
+    {
+      "rep": 11,
+      "generator": "Gaussian copula",
+      "synthetic_days": 500,
+      "estimate": 0.7804241672941582
+    },
+    {
+      "rep": 11,
+      "generator": "CART",
+      "synthetic_days": 1,
+      "estimate": 0.7937963809430029
+    },
+    {
+      "rep": 11,
+      "generator": "CART",
+      "synthetic_days": 2,
+      "estimate": 0.7811195459784539
+    },
+    {
+      "rep": 11,
+      "generator": "CART",
+      "synthetic_days": 5,
+      "estimate": 0.7855578350585593
+    },
+    {
+      "rep": 11,
+      "generator": "CART",
+      "synthetic_days": 10,
+      "estimate": 0.780801621942236
+    },
+    {
+      "rep": 11,
+      "generator": "CART",
+      "synthetic_days": 25,
+      "estimate": 0.7883277910206783
+    },
+    {
+      "rep": 11,
+      "generator": "CART",
+      "synthetic_days": 50,
+      "estimate": 0.7833917944822
+    },
+    {
+      "rep": 11,
+      "generator": "CART",
+      "synthetic_days": 100,
+      "estimate": 0.7845652660402502
+    },
+    {
+      "rep": 11,
+      "generator": "CART",
+      "synthetic_days": 250,
+      "estimate": 0.7745871712933805
+    },
+    {
+      "rep": 11,
+      "generator": "CART",
+      "synthetic_days": 500,
+      "estimate": 0.7739089120130993
+    },
+    {
+      "rep": 11,
+      "generator": "SMOTE",
+      "synthetic_days": 1,
+      "estimate": 0.8667309167090724
+    },
+    {
+      "rep": 11,
+      "generator": "SMOTE",
+      "synthetic_days": 2,
+      "estimate": 0.8034693382838679
+    },
+    {
+      "rep": 11,
+      "generator": "SMOTE",
+      "synthetic_days": 5,
+      "estimate": 0.812619267122396
+    },
+    {
+      "rep": 11,
+      "generator": "SMOTE",
+      "synthetic_days": 10,
+      "estimate": 0.7914789318503557
+    },
+    {
+      "rep": 11,
+      "generator": "SMOTE",
+      "synthetic_days": 25,
+      "estimate": 0.7812738884261146
+    },
+    {
+      "rep": 11,
+      "generator": "SMOTE",
+      "synthetic_days": 50,
+      "estimate": 0.7853215813468571
+    },
+    {
+      "rep": 11,
+      "generator": "SMOTE",
+      "synthetic_days": 100,
+      "estimate": 0.7798830351116971
+    },
+    {
+      "rep": 11,
+      "generator": "SMOTE",
+      "synthetic_days": 250,
+      "estimate": 0.7793435744283345
+    },
+    {
+      "rep": 11,
+      "generator": "SMOTE",
+      "synthetic_days": 500,
+      "estimate": 0.7785204693789454
+    },
+    {
+      "rep": 11,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 1,
+      "estimate": 0.6959229440052298
+    },
+    {
+      "rep": 11,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 2,
+      "estimate": 0.7202975339315105
+    },
+    {
+      "rep": 11,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 5,
+      "estimate": 0.7406153817634169
+    },
+    {
+      "rep": 11,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 10,
+      "estimate": 0.778038368958498
+    },
+    {
+      "rep": 11,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 25,
+      "estimate": 0.7866032334986224
+    },
+    {
+      "rep": 11,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 50,
+      "estimate": 0.7767373145501674
+    },
+    {
+      "rep": 11,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 100,
+      "estimate": 0.7790263654322318
+    },
+    {
+      "rep": 11,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 250,
+      "estimate": 0.7776882312884448
+    },
+    {
+      "rep": 11,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 500,
+      "estimate": 0.7733535786479651
+    },
+    {
+      "rep": 12,
+      "generator": "Erlang A",
+      "synthetic_days": 1,
+      "estimate": 0.7925688976377953
+    },
+    {
+      "rep": 12,
+      "generator": "Erlang A",
+      "synthetic_days": 2,
+      "estimate": 0.8158844765342961
+    },
+    {
+      "rep": 12,
+      "generator": "Erlang A",
+      "synthetic_days": 5,
+      "estimate": 0.8146274933227254
+    },
+    {
+      "rep": 12,
+      "generator": "Erlang A",
+      "synthetic_days": 10,
+      "estimate": 0.8250880563560679
+    },
+    {
+      "rep": 12,
+      "generator": "Erlang A",
+      "synthetic_days": 25,
+      "estimate": 0.8363144558604985
+    },
+    {
+      "rep": 12,
+      "generator": "Erlang A",
+      "synthetic_days": 50,
+      "estimate": 0.8348909151875047
+    },
+    {
+      "rep": 12,
+      "generator": "Erlang A",
+      "synthetic_days": 100,
+      "estimate": 0.8310509528445489
+    },
+    {
+      "rep": 12,
+      "generator": "Erlang A",
+      "synthetic_days": 250,
+      "estimate": 0.8301300624557337
+    },
+    {
+      "rep": 12,
+      "generator": "Erlang A",
+      "synthetic_days": 500,
+      "estimate": 0.8308153117944541
+    },
+    {
+      "rep": 12,
+      "generator": "Gaussian copula",
+      "synthetic_days": 1,
+      "estimate": 0.7832648613589768
+    },
+    {
+      "rep": 12,
+      "generator": "Gaussian copula",
+      "synthetic_days": 2,
+      "estimate": 0.7735495533151693
+    },
+    {
+      "rep": 12,
+      "generator": "Gaussian copula",
+      "synthetic_days": 5,
+      "estimate": 0.8041941820896914
+    },
+    {
+      "rep": 12,
+      "generator": "Gaussian copula",
+      "synthetic_days": 10,
+      "estimate": 0.7770463881537365
+    },
+    {
+      "rep": 12,
+      "generator": "Gaussian copula",
+      "synthetic_days": 25,
+      "estimate": 0.7820319560705961
+    },
+    {
+      "rep": 12,
+      "generator": "Gaussian copula",
+      "synthetic_days": 50,
+      "estimate": 0.7930413078795241
+    },
+    {
+      "rep": 12,
+      "generator": "Gaussian copula",
+      "synthetic_days": 100,
+      "estimate": 0.7958431729797598
+    },
+    {
+      "rep": 12,
+      "generator": "Gaussian copula",
+      "synthetic_days": 250,
+      "estimate": 0.7987528178084617
+    },
+    {
+      "rep": 12,
+      "generator": "Gaussian copula",
+      "synthetic_days": 500,
+      "estimate": 0.7977884513541156
+    },
+    {
+      "rep": 12,
+      "generator": "CART",
+      "synthetic_days": 1,
+      "estimate": 0.7705397235113268
+    },
+    {
+      "rep": 12,
+      "generator": "CART",
+      "synthetic_days": 2,
+      "estimate": 0.7231234633093028
+    },
+    {
+      "rep": 12,
+      "generator": "CART",
+      "synthetic_days": 5,
+      "estimate": 0.7787020313608303
+    },
+    {
+      "rep": 12,
+      "generator": "CART",
+      "synthetic_days": 10,
+      "estimate": 0.8045777117116586
+    },
+    {
+      "rep": 12,
+      "generator": "CART",
+      "synthetic_days": 25,
+      "estimate": 0.8043077432113316
+    },
+    {
+      "rep": 12,
+      "generator": "CART",
+      "synthetic_days": 50,
+      "estimate": 0.8025846012269476
+    },
+    {
+      "rep": 12,
+      "generator": "CART",
+      "synthetic_days": 100,
+      "estimate": 0.801546896051795
+    },
+    {
+      "rep": 12,
+      "generator": "CART",
+      "synthetic_days": 250,
+      "estimate": 0.7995425229405076
+    },
+    {
+      "rep": 12,
+      "generator": "CART",
+      "synthetic_days": 500,
+      "estimate": 0.8011401268623934
+    },
+    {
+      "rep": 12,
+      "generator": "SMOTE",
+      "synthetic_days": 1,
+      "estimate": 0.8601080942725238
+    },
+    {
+      "rep": 12,
+      "generator": "SMOTE",
+      "synthetic_days": 2,
+      "estimate": 0.8670692784231638
+    },
+    {
+      "rep": 12,
+      "generator": "SMOTE",
+      "synthetic_days": 5,
+      "estimate": 0.8600488644399944
+    },
+    {
+      "rep": 12,
+      "generator": "SMOTE",
+      "synthetic_days": 10,
+      "estimate": 0.8312217129071493
+    },
+    {
+      "rep": 12,
+      "generator": "SMOTE",
+      "synthetic_days": 25,
+      "estimate": 0.8308132944002832
+    },
+    {
+      "rep": 12,
+      "generator": "SMOTE",
+      "synthetic_days": 50,
+      "estimate": 0.821903108518881
+    },
+    {
+      "rep": 12,
+      "generator": "SMOTE",
+      "synthetic_days": 100,
+      "estimate": 0.8132679299554182
+    },
+    {
+      "rep": 12,
+      "generator": "SMOTE",
+      "synthetic_days": 250,
+      "estimate": 0.806975704431134
+    },
+    {
+      "rep": 12,
+      "generator": "SMOTE",
+      "synthetic_days": 500,
+      "estimate": 0.8082547585732481
+    },
+    {
+      "rep": 12,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 1,
+      "estimate": 0.8742782423320472
+    },
+    {
+      "rep": 12,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 2,
+      "estimate": 0.8389872276974958
+    },
+    {
+      "rep": 12,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 5,
+      "estimate": 0.832771341022321
+    },
+    {
+      "rep": 12,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 10,
+      "estimate": 0.8016942867674081
+    },
+    {
+      "rep": 12,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 25,
+      "estimate": 0.8005443029331897
+    },
+    {
+      "rep": 12,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 50,
+      "estimate": 0.7915217203795861
+    },
+    {
+      "rep": 12,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 100,
+      "estimate": 0.7964248635397052
+    },
+    {
+      "rep": 12,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 250,
+      "estimate": 0.7906872258434214
+    },
+    {
+      "rep": 12,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 500,
+      "estimate": 0.7944185288423458
+    },
+    {
+      "rep": 13,
+      "generator": "Erlang A",
+      "synthetic_days": 1,
+      "estimate": 0.7337506018295619
+    },
+    {
+      "rep": 13,
+      "generator": "Erlang A",
+      "synthetic_days": 2,
+      "estimate": 0.7815368476265407
+    },
+    {
+      "rep": 13,
+      "generator": "Erlang A",
+      "synthetic_days": 5,
+      "estimate": 0.787296812633771
+    },
+    {
+      "rep": 13,
+      "generator": "Erlang A",
+      "synthetic_days": 10,
+      "estimate": 0.8094874174354495
+    },
+    {
+      "rep": 13,
+      "generator": "Erlang A",
+      "synthetic_days": 25,
+      "estimate": 0.8143744726547518
+    },
+    {
+      "rep": 13,
+      "generator": "Erlang A",
+      "synthetic_days": 50,
+      "estimate": 0.8153837670930746
+    },
+    {
+      "rep": 13,
+      "generator": "Erlang A",
+      "synthetic_days": 100,
+      "estimate": 0.8185708485586682
+    },
+    {
+      "rep": 13,
+      "generator": "Erlang A",
+      "synthetic_days": 250,
+      "estimate": 0.8211625703956059
+    },
+    {
+      "rep": 13,
+      "generator": "Erlang A",
+      "synthetic_days": 500,
+      "estimate": 0.8197558764703042
+    },
+    {
+      "rep": 13,
+      "generator": "Gaussian copula",
+      "synthetic_days": 1,
+      "estimate": 0.7111864932939431
+    },
+    {
+      "rep": 13,
+      "generator": "Gaussian copula",
+      "synthetic_days": 2,
+      "estimate": 0.7812478890861217
+    },
+    {
+      "rep": 13,
+      "generator": "Gaussian copula",
+      "synthetic_days": 5,
+      "estimate": 0.8141543016361712
+    },
+    {
+      "rep": 13,
+      "generator": "Gaussian copula",
+      "synthetic_days": 10,
+      "estimate": 0.7850006382545265
+    },
+    {
+      "rep": 13,
+      "generator": "Gaussian copula",
+      "synthetic_days": 25,
+      "estimate": 0.7829250928670596
+    },
+    {
+      "rep": 13,
+      "generator": "Gaussian copula",
+      "synthetic_days": 50,
+      "estimate": 0.7933275268805916
+    },
+    {
+      "rep": 13,
+      "generator": "Gaussian copula",
+      "synthetic_days": 100,
+      "estimate": 0.7913044566129787
+    },
+    {
+      "rep": 13,
+      "generator": "Gaussian copula",
+      "synthetic_days": 250,
+      "estimate": 0.7908774342051658
+    },
+    {
+      "rep": 13,
+      "generator": "Gaussian copula",
+      "synthetic_days": 500,
+      "estimate": 0.7961515297332096
+    },
+    {
+      "rep": 13,
+      "generator": "CART",
+      "synthetic_days": 1,
+      "estimate": 0.8110657119376703
+    },
+    {
+      "rep": 13,
+      "generator": "CART",
+      "synthetic_days": 2,
+      "estimate": 0.8480577970511234
+    },
+    {
+      "rep": 13,
+      "generator": "CART",
+      "synthetic_days": 5,
+      "estimate": 0.8285099673257486
+    },
+    {
+      "rep": 13,
+      "generator": "CART",
+      "synthetic_days": 10,
+      "estimate": 0.7812597219551816
+    },
+    {
+      "rep": 13,
+      "generator": "CART",
+      "synthetic_days": 25,
+      "estimate": 0.7726912497783861
+    },
+    {
+      "rep": 13,
+      "generator": "CART",
+      "synthetic_days": 50,
+      "estimate": 0.7956073279162118
+    },
+    {
+      "rep": 13,
+      "generator": "CART",
+      "synthetic_days": 100,
+      "estimate": 0.7978249066289165
+    },
+    {
+      "rep": 13,
+      "generator": "CART",
+      "synthetic_days": 250,
+      "estimate": 0.7916897545992599
+    },
+    {
+      "rep": 13,
+      "generator": "CART",
+      "synthetic_days": 500,
+      "estimate": 0.7903363096115446
+    },
+    {
+      "rep": 13,
+      "generator": "SMOTE",
+      "synthetic_days": 1,
+      "estimate": 0.8587588526643248
+    },
+    {
+      "rep": 13,
+      "generator": "SMOTE",
+      "synthetic_days": 2,
+      "estimate": 0.8153203681091797
+    },
+    {
+      "rep": 13,
+      "generator": "SMOTE",
+      "synthetic_days": 5,
+      "estimate": 0.81905843255218
+    },
+    {
+      "rep": 13,
+      "generator": "SMOTE",
+      "synthetic_days": 10,
+      "estimate": 0.7899597463346905
+    },
+    {
+      "rep": 13,
+      "generator": "SMOTE",
+      "synthetic_days": 25,
+      "estimate": 0.7920849030697765
+    },
+    {
+      "rep": 13,
+      "generator": "SMOTE",
+      "synthetic_days": 50,
+      "estimate": 0.7973013629329675
+    },
+    {
+      "rep": 13,
+      "generator": "SMOTE",
+      "synthetic_days": 100,
+      "estimate": 0.7907882870014267
+    },
+    {
+      "rep": 13,
+      "generator": "SMOTE",
+      "synthetic_days": 250,
+      "estimate": 0.792926023228156
+    },
+    {
+      "rep": 13,
+      "generator": "SMOTE",
+      "synthetic_days": 500,
+      "estimate": 0.7946405188621863
+    },
+    {
+      "rep": 13,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 1,
+      "estimate": 0.7516330929812056
+    },
+    {
+      "rep": 13,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 2,
+      "estimate": 0.7501371183097637
+    },
+    {
+      "rep": 13,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 5,
+      "estimate": 0.7620732716170527
+    },
+    {
+      "rep": 13,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 10,
+      "estimate": 0.7891798837077894
+    },
+    {
+      "rep": 13,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 25,
+      "estimate": 0.7777335494560642
+    },
+    {
+      "rep": 13,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 50,
+      "estimate": 0.7875704135088201
+    },
+    {
+      "rep": 13,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 100,
+      "estimate": 0.7888157308471903
+    },
+    {
+      "rep": 13,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 250,
+      "estimate": 0.7877829781532973
+    },
+    {
+      "rep": 13,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 500,
+      "estimate": 0.7900318833356179
+    },
+    {
+      "rep": 14,
+      "generator": "Erlang A",
+      "synthetic_days": 1,
+      "estimate": 0.8729454735194365
+    },
+    {
+      "rep": 14,
+      "generator": "Erlang A",
+      "synthetic_days": 2,
+      "estimate": 0.8715000676315433
+    },
+    {
+      "rep": 14,
+      "generator": "Erlang A",
+      "synthetic_days": 5,
+      "estimate": 0.843321822435112
+    },
+    {
+      "rep": 14,
+      "generator": "Erlang A",
+      "synthetic_days": 10,
+      "estimate": 0.8403566500371511
+    },
+    {
+      "rep": 14,
+      "generator": "Erlang A",
+      "synthetic_days": 25,
+      "estimate": 0.8301724700406707
+    },
+    {
+      "rep": 14,
+      "generator": "Erlang A",
+      "synthetic_days": 50,
+      "estimate": 0.8314744317549366
+    },
+    {
+      "rep": 14,
+      "generator": "Erlang A",
+      "synthetic_days": 100,
+      "estimate": 0.8280562662716582
+    },
+    {
+      "rep": 14,
+      "generator": "Erlang A",
+      "synthetic_days": 250,
+      "estimate": 0.8276031586797109
+    },
+    {
+      "rep": 14,
+      "generator": "Erlang A",
+      "synthetic_days": 500,
+      "estimate": 0.8282595834684375
+    },
+    {
+      "rep": 14,
+      "generator": "Gaussian copula",
+      "synthetic_days": 1,
+      "estimate": 0.7972335732090786
+    },
+    {
+      "rep": 14,
+      "generator": "Gaussian copula",
+      "synthetic_days": 2,
+      "estimate": 0.7969839206892497
+    },
+    {
+      "rep": 14,
+      "generator": "Gaussian copula",
+      "synthetic_days": 5,
+      "estimate": 0.7744645709755545
+    },
+    {
+      "rep": 14,
+      "generator": "Gaussian copula",
+      "synthetic_days": 10,
+      "estimate": 0.784277807821202
+    },
+    {
+      "rep": 14,
+      "generator": "Gaussian copula",
+      "synthetic_days": 25,
+      "estimate": 0.8015878419586007
+    },
+    {
+      "rep": 14,
+      "generator": "Gaussian copula",
+      "synthetic_days": 50,
+      "estimate": 0.8120991639619226
+    },
+    {
+      "rep": 14,
+      "generator": "Gaussian copula",
+      "synthetic_days": 100,
+      "estimate": 0.8113396288378931
+    },
+    {
+      "rep": 14,
+      "generator": "Gaussian copula",
+      "synthetic_days": 250,
+      "estimate": 0.8136585297523127
+    },
+    {
+      "rep": 14,
+      "generator": "Gaussian copula",
+      "synthetic_days": 500,
+      "estimate": 0.8105203330690615
+    },
+    {
+      "rep": 14,
+      "generator": "CART",
+      "synthetic_days": 1,
+      "estimate": 0.8024644453129631
+    },
+    {
+      "rep": 14,
+      "generator": "CART",
+      "synthetic_days": 2,
+      "estimate": 0.8317088353102149
+    },
+    {
+      "rep": 14,
+      "generator": "CART",
+      "synthetic_days": 5,
+      "estimate": 0.8064742758222573
+    },
+    {
+      "rep": 14,
+      "generator": "CART",
+      "synthetic_days": 10,
+      "estimate": 0.8220278742470724
+    },
+    {
+      "rep": 14,
+      "generator": "CART",
+      "synthetic_days": 25,
+      "estimate": 0.8119297132556949
+    },
+    {
+      "rep": 14,
+      "generator": "CART",
+      "synthetic_days": 50,
+      "estimate": 0.8085202316771046
+    },
+    {
+      "rep": 14,
+      "generator": "CART",
+      "synthetic_days": 100,
+      "estimate": 0.8063662109517933
+    },
+    {
+      "rep": 14,
+      "generator": "CART",
+      "synthetic_days": 250,
+      "estimate": 0.8064942229040184
+    },
+    {
+      "rep": 14,
+      "generator": "CART",
+      "synthetic_days": 500,
+      "estimate": 0.8043847896757425
+    },
+    {
+      "rep": 14,
+      "generator": "SMOTE",
+      "synthetic_days": 1,
+      "estimate": 0.7821321326635429
+    },
+    {
+      "rep": 14,
+      "generator": "SMOTE",
+      "synthetic_days": 2,
+      "estimate": 0.8074166059181004
+    },
+    {
+      "rep": 14,
+      "generator": "SMOTE",
+      "synthetic_days": 5,
+      "estimate": 0.8152567219223347
+    },
+    {
+      "rep": 14,
+      "generator": "SMOTE",
+      "synthetic_days": 10,
+      "estimate": 0.8102169685096872
+    },
+    {
+      "rep": 14,
+      "generator": "SMOTE",
+      "synthetic_days": 25,
+      "estimate": 0.8146740941388336
+    },
+    {
+      "rep": 14,
+      "generator": "SMOTE",
+      "synthetic_days": 50,
+      "estimate": 0.8005206500081629
+    },
+    {
+      "rep": 14,
+      "generator": "SMOTE",
+      "synthetic_days": 100,
+      "estimate": 0.8004173612972543
+    },
+    {
+      "rep": 14,
+      "generator": "SMOTE",
+      "synthetic_days": 250,
+      "estimate": 0.801988163412005
+    },
+    {
+      "rep": 14,
+      "generator": "SMOTE",
+      "synthetic_days": 500,
+      "estimate": 0.8031500524233955
+    },
+    {
+      "rep": 14,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 1,
+      "estimate": 0.7529732459100709
+    },
+    {
+      "rep": 14,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 2,
+      "estimate": 0.7768740298407991
+    },
+    {
+      "rep": 14,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 5,
+      "estimate": 0.7801475163893425
+    },
+    {
+      "rep": 14,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 10,
+      "estimate": 0.7902324767339646
+    },
+    {
+      "rep": 14,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 25,
+      "estimate": 0.8004929330394613
+    },
+    {
+      "rep": 14,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 50,
+      "estimate": 0.7946255425805973
+    },
+    {
+      "rep": 14,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 100,
+      "estimate": 0.7924901082387638
+    },
+    {
+      "rep": 14,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 250,
+      "estimate": 0.7956591658683719
+    },
+    {
+      "rep": 14,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 500,
+      "estimate": 0.7948972715460176
+    },
+    {
+      "rep": 15,
+      "generator": "Erlang A",
+      "synthetic_days": 1,
+      "estimate": 0.8554737109474219
+    },
+    {
+      "rep": 15,
+      "generator": "Erlang A",
+      "synthetic_days": 2,
+      "estimate": 0.8424639230358097
+    },
+    {
+      "rep": 15,
+      "generator": "Erlang A",
+      "synthetic_days": 5,
+      "estimate": 0.8263172263172264
+    },
+    {
+      "rep": 15,
+      "generator": "Erlang A",
+      "synthetic_days": 10,
+      "estimate": 0.8177291914709384
+    },
+    {
+      "rep": 15,
+      "generator": "Erlang A",
+      "synthetic_days": 25,
+      "estimate": 0.8140345640052453
+    },
+    {
+      "rep": 15,
+      "generator": "Erlang A",
+      "synthetic_days": 50,
+      "estimate": 0.8162553404842039
+    },
+    {
+      "rep": 15,
+      "generator": "Erlang A",
+      "synthetic_days": 100,
+      "estimate": 0.8215422436038324
+    },
+    {
+      "rep": 15,
+      "generator": "Erlang A",
+      "synthetic_days": 250,
+      "estimate": 0.8269796672669398
+    },
+    {
+      "rep": 15,
+      "generator": "Erlang A",
+      "synthetic_days": 500,
+      "estimate": 0.8282412303669863
+    },
+    {
+      "rep": 15,
+      "generator": "Gaussian copula",
+      "synthetic_days": 1,
+      "estimate": 0.8178544481324497
+    },
+    {
+      "rep": 15,
+      "generator": "Gaussian copula",
+      "synthetic_days": 2,
+      "estimate": 0.7893708657241544
+    },
+    {
+      "rep": 15,
+      "generator": "Gaussian copula",
+      "synthetic_days": 5,
+      "estimate": 0.7942203298523383
+    },
+    {
+      "rep": 15,
+      "generator": "Gaussian copula",
+      "synthetic_days": 10,
+      "estimate": 0.796915598016205
+    },
+    {
+      "rep": 15,
+      "generator": "Gaussian copula",
+      "synthetic_days": 25,
+      "estimate": 0.7943060420744594
+    },
+    {
+      "rep": 15,
+      "generator": "Gaussian copula",
+      "synthetic_days": 50,
+      "estimate": 0.7969406094448278
+    },
+    {
+      "rep": 15,
+      "generator": "Gaussian copula",
+      "synthetic_days": 100,
+      "estimate": 0.8032938472392039
+    },
+    {
+      "rep": 15,
+      "generator": "Gaussian copula",
+      "synthetic_days": 250,
+      "estimate": 0.8025162589365693
+    },
+    {
+      "rep": 15,
+      "generator": "Gaussian copula",
+      "synthetic_days": 500,
+      "estimate": 0.8001634518161652
+    },
+    {
+      "rep": 15,
+      "generator": "CART",
+      "synthetic_days": 1,
+      "estimate": 0.8391238181978437
+    },
+    {
+      "rep": 15,
+      "generator": "CART",
+      "synthetic_days": 2,
+      "estimate": 0.8514120968212323
+    },
+    {
+      "rep": 15,
+      "generator": "CART",
+      "synthetic_days": 5,
+      "estimate": 0.8250489234783266
+    },
+    {
+      "rep": 15,
+      "generator": "CART",
+      "synthetic_days": 10,
+      "estimate": 0.7970695561484694
+    },
+    {
+      "rep": 15,
+      "generator": "CART",
+      "synthetic_days": 25,
+      "estimate": 0.8014563519849245
+    },
+    {
+      "rep": 15,
+      "generator": "CART",
+      "synthetic_days": 50,
+      "estimate": 0.8028603946563109
+    },
+    {
+      "rep": 15,
+      "generator": "CART",
+      "synthetic_days": 100,
+      "estimate": 0.8024440168595943
+    },
+    {
+      "rep": 15,
+      "generator": "CART",
+      "synthetic_days": 250,
+      "estimate": 0.8002142067670124
+    },
+    {
+      "rep": 15,
+      "generator": "CART",
+      "synthetic_days": 500,
+      "estimate": 0.7989247016079094
+    },
+    {
+      "rep": 15,
+      "generator": "SMOTE",
+      "synthetic_days": 1,
+      "estimate": 0.578387255377552
+    },
+    {
+      "rep": 15,
+      "generator": "SMOTE",
+      "synthetic_days": 2,
+      "estimate": 0.687188016792739
+    },
+    {
+      "rep": 15,
+      "generator": "SMOTE",
+      "synthetic_days": 5,
+      "estimate": 0.7625416544985233
+    },
+    {
+      "rep": 15,
+      "generator": "SMOTE",
+      "synthetic_days": 10,
+      "estimate": 0.7549761738171794
+    },
+    {
+      "rep": 15,
+      "generator": "SMOTE",
+      "synthetic_days": 25,
+      "estimate": 0.7749504690566891
+    },
+    {
+      "rep": 15,
+      "generator": "SMOTE",
+      "synthetic_days": 50,
+      "estimate": 0.7860025213183028
+    },
+    {
+      "rep": 15,
+      "generator": "SMOTE",
+      "synthetic_days": 100,
+      "estimate": 0.7968328259104394
+    },
+    {
+      "rep": 15,
+      "generator": "SMOTE",
+      "synthetic_days": 250,
+      "estimate": 0.7973674261025503
+    },
+    {
+      "rep": 15,
+      "generator": "SMOTE",
+      "synthetic_days": 500,
+      "estimate": 0.8016675394814543
+    },
+    {
+      "rep": 15,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 1,
+      "estimate": 0.8842961866367987
+    },
+    {
+      "rep": 15,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 2,
+      "estimate": 0.8219320974121456
+    },
+    {
+      "rep": 15,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 5,
+      "estimate": 0.8223035955602677
+    },
+    {
+      "rep": 15,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 10,
+      "estimate": 0.8099523442409962
+    },
+    {
+      "rep": 15,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 25,
+      "estimate": 0.799702834393032
+    },
+    {
+      "rep": 15,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 50,
+      "estimate": 0.7933833646736341
+    },
+    {
+      "rep": 15,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 100,
+      "estimate": 0.7858753863470429
+    },
+    {
+      "rep": 15,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 250,
+      "estimate": 0.7892421199044755
+    },
+    {
+      "rep": 15,
+      "generator": "Gaussian mixture",
+      "synthetic_days": 500,
+      "estimate": 0.7874097394456671
     }
   ],
   "panel_b": [
@@ -280,219 +4330,2883 @@
       "rep": 0,
       "generator": "Empirical average",
       "real_days": 10,
-      "estimate": 0.7960930582016261
+      "estimate": 0.7904046767121907
     },
     {
       "rep": 0,
       "generator": "Erlang A",
       "real_days": 10,
-      "estimate": 0.8397213665489595
+      "estimate": 0.812889940864327
     },
     {
       "rep": 0,
       "generator": "Gaussian copula",
       "real_days": 10,
-      "estimate": 0.8187532532881943
+      "estimate": 0.7935687845387683
     },
     {
       "rep": 0,
       "generator": "CART",
       "real_days": 10,
-      "estimate": 0.7999340385810438
+      "estimate": 0.8027728590617121
     },
     {
       "rep": 0,
       "generator": "SMOTE",
       "real_days": 10,
-      "estimate": 0.7991250611223792
+      "estimate": 0.8017705988052076
     },
     {
       "rep": 0,
       "generator": "Gaussian mixture",
       "real_days": 10,
-      "estimate": 0.7723113285084875
+      "estimate": 0.7797480984793854
     },
     {
       "rep": 0,
       "generator": "Empirical average",
       "real_days": 30,
-      "estimate": 0.7912779044854517
+      "estimate": 0.8040267089756752
     },
     {
       "rep": 0,
       "generator": "Erlang A",
       "real_days": 30,
-      "estimate": 0.8330558206591264
+      "estimate": 0.8357654099157638
     },
     {
       "rep": 0,
       "generator": "Gaussian copula",
       "real_days": 30,
-      "estimate": 0.7985312909914017
+      "estimate": 0.8040362112950814
     },
     {
       "rep": 0,
       "generator": "CART",
       "real_days": 30,
-      "estimate": 0.7885116687878737
+      "estimate": 0.810414474859203
     },
     {
       "rep": 0,
       "generator": "SMOTE",
       "real_days": 30,
-      "estimate": 0.8036621711140345
+      "estimate": 0.8114981317846314
     },
     {
       "rep": 0,
       "generator": "Gaussian mixture",
       "real_days": 30,
-      "estimate": 0.7849047893039557
+      "estimate": 0.7987735649270938
+    },
+    {
+      "rep": 0,
+      "generator": "Empirical average",
+      "real_days": 90,
+      "estimate": 0.8015640704625205
+    },
+    {
+      "rep": 0,
+      "generator": "Erlang A",
+      "real_days": 90,
+      "estimate": 0.8343894531553608
+    },
+    {
+      "rep": 0,
+      "generator": "Gaussian copula",
+      "real_days": 90,
+      "estimate": 0.8076810385658278
+    },
+    {
+      "rep": 0,
+      "generator": "CART",
+      "real_days": 90,
+      "estimate": 0.8064178739315644
+    },
+    {
+      "rep": 0,
+      "generator": "SMOTE",
+      "real_days": 90,
+      "estimate": 0.8091218512535289
+    },
+    {
+      "rep": 0,
+      "generator": "Gaussian mixture",
+      "real_days": 90,
+      "estimate": 0.7964389637158809
+    },
+    {
+      "rep": 0,
+      "generator": "Empirical average",
+      "real_days": 270,
+      "estimate": 0.8022654728126042
+    },
+    {
+      "rep": 0,
+      "generator": "Erlang A",
+      "real_days": 270,
+      "estimate": 0.8310474379245806
+    },
+    {
+      "rep": 0,
+      "generator": "Gaussian copula",
+      "real_days": 270,
+      "estimate": 0.8064408852393917
+    },
+    {
+      "rep": 0,
+      "generator": "CART",
+      "real_days": 270,
+      "estimate": 0.8000303095499092
+    },
+    {
+      "rep": 0,
+      "generator": "SMOTE",
+      "real_days": 270,
+      "estimate": 0.8089006935028331
+    },
+    {
+      "rep": 0,
+      "generator": "Gaussian mixture",
+      "real_days": 270,
+      "estimate": 0.8024067887368145
+    },
+    {
+      "rep": 0,
+      "generator": "Empirical average",
+      "real_days": 810,
+      "estimate": 0.7978074907404179
+    },
+    {
+      "rep": 0,
+      "generator": "Erlang A",
+      "real_days": 810,
+      "estimate": 0.8313723079858653
+    },
+    {
+      "rep": 0,
+      "generator": "Gaussian copula",
+      "real_days": 810,
+      "estimate": 0.8036389887261091
+    },
+    {
+      "rep": 0,
+      "generator": "CART",
+      "real_days": 810,
+      "estimate": 0.7991859138526654
+    },
+    {
+      "rep": 0,
+      "generator": "SMOTE",
+      "real_days": 810,
+      "estimate": 0.8046686846248088
+    },
+    {
+      "rep": 0,
+      "generator": "Gaussian mixture",
+      "real_days": 810,
+      "estimate": 0.7972160749866248
     },
     {
       "rep": 1,
       "generator": "Empirical average",
       "real_days": 10,
-      "estimate": 0.7385496183206107
+      "estimate": 0.8106871572279086
     },
     {
       "rep": 1,
       "generator": "Erlang A",
       "real_days": 10,
-      "estimate": 0.7900347494675485
+      "estimate": 0.8268989823331631
     },
     {
       "rep": 1,
       "generator": "Gaussian copula",
       "real_days": 10,
-      "estimate": 0.7480756232289708
+      "estimate": 0.8094066527077157
     },
     {
       "rep": 1,
       "generator": "CART",
       "real_days": 10,
-      "estimate": 0.7333590735111571
+      "estimate": 0.8232307710722969
     },
     {
       "rep": 1,
       "generator": "SMOTE",
       "real_days": 10,
-      "estimate": 0.7482799747800677
+      "estimate": 0.8213620688639008
     },
     {
       "rep": 1,
       "generator": "Gaussian mixture",
       "real_days": 10,
-      "estimate": 0.743637937301498
+      "estimate": 0.8075584739803313
     },
     {
       "rep": 1,
       "generator": "Empirical average",
       "real_days": 30,
-      "estimate": 0.7842613652059411
+      "estimate": 0.7955387952733564
     },
     {
       "rep": 1,
       "generator": "Erlang A",
       "real_days": 30,
-      "estimate": 0.8306574165840767
+      "estimate": 0.8286588297149706
     },
     {
       "rep": 1,
       "generator": "Gaussian copula",
       "real_days": 30,
-      "estimate": 0.7899557142095793
+      "estimate": 0.7975031950977817
     },
     {
       "rep": 1,
       "generator": "CART",
       "real_days": 30,
-      "estimate": 0.7845759048735607
+      "estimate": 0.7971095749633467
     },
     {
       "rep": 1,
       "generator": "SMOTE",
       "real_days": 30,
-      "estimate": 0.7966914018956925
+      "estimate": 0.803452185097008
     },
     {
       "rep": 1,
       "generator": "Gaussian mixture",
       "real_days": 30,
-      "estimate": 0.7874960249874741
+      "estimate": 0.7915117846066948
+    },
+    {
+      "rep": 1,
+      "generator": "Empirical average",
+      "real_days": 90,
+      "estimate": 0.7993132392216711
+    },
+    {
+      "rep": 1,
+      "generator": "Erlang A",
+      "real_days": 90,
+      "estimate": 0.8283927116919134
+    },
+    {
+      "rep": 1,
+      "generator": "Gaussian copula",
+      "real_days": 90,
+      "estimate": 0.8024175319947969
+    },
+    {
+      "rep": 1,
+      "generator": "CART",
+      "real_days": 90,
+      "estimate": 0.798301076034224
+    },
+    {
+      "rep": 1,
+      "generator": "SMOTE",
+      "real_days": 90,
+      "estimate": 0.8058756970253749
+    },
+    {
+      "rep": 1,
+      "generator": "Gaussian mixture",
+      "real_days": 90,
+      "estimate": 0.795813468219476
+    },
+    {
+      "rep": 1,
+      "generator": "Empirical average",
+      "real_days": 270,
+      "estimate": 0.8012598869368657
+    },
+    {
+      "rep": 1,
+      "generator": "Erlang A",
+      "real_days": 270,
+      "estimate": 0.8300025975091254
+    },
+    {
+      "rep": 1,
+      "generator": "Gaussian copula",
+      "real_days": 270,
+      "estimate": 0.8038312310006875
+    },
+    {
+      "rep": 1,
+      "generator": "CART",
+      "real_days": 270,
+      "estimate": 0.8021707096402861
+    },
+    {
+      "rep": 1,
+      "generator": "SMOTE",
+      "real_days": 270,
+      "estimate": 0.8037556246488221
+    },
+    {
+      "rep": 1,
+      "generator": "Gaussian mixture",
+      "real_days": 270,
+      "estimate": 0.7978722294947136
+    },
+    {
+      "rep": 1,
+      "generator": "Empirical average",
+      "real_days": 810,
+      "estimate": 0.7995636460027221
+    },
+    {
+      "rep": 1,
+      "generator": "Erlang A",
+      "real_days": 810,
+      "estimate": 0.8308011156771976
+    },
+    {
+      "rep": 1,
+      "generator": "Gaussian copula",
+      "real_days": 810,
+      "estimate": 0.8004048021780361
+    },
+    {
+      "rep": 1,
+      "generator": "CART",
+      "real_days": 810,
+      "estimate": 0.8019683191214595
+    },
+    {
+      "rep": 1,
+      "generator": "SMOTE",
+      "real_days": 810,
+      "estimate": 0.8032978342223944
+    },
+    {
+      "rep": 1,
+      "generator": "Gaussian mixture",
+      "real_days": 810,
+      "estimate": 0.7962985174816866
     },
     {
       "rep": 2,
       "generator": "Empirical average",
       "real_days": 10,
-      "estimate": 0.8224642887937229
+      "estimate": 0.7481248240022528
     },
     {
       "rep": 2,
       "generator": "Erlang A",
       "real_days": 10,
-      "estimate": 0.8456863274237643
+      "estimate": 0.6881562881562882
     },
     {
       "rep": 2,
       "generator": "Gaussian copula",
       "real_days": 10,
-      "estimate": 0.828939437539951
+      "estimate": 0.7509475106252431
     },
     {
       "rep": 2,
       "generator": "CART",
       "real_days": 10,
-      "estimate": 0.8175913139874474
+      "estimate": 0.7460585969042202
     },
     {
       "rep": 2,
       "generator": "SMOTE",
       "real_days": 10,
-      "estimate": 0.8255579448838845
+      "estimate": 0.7619830084825033
     },
     {
       "rep": 2,
       "generator": "Gaussian mixture",
       "real_days": 10,
-      "estimate": 0.8126928347447788
+      "estimate": 0.7449082436266903
     },
     {
       "rep": 2,
       "generator": "Empirical average",
       "real_days": 30,
-      "estimate": 0.7893907660371063
+      "estimate": 0.7900436840189298
     },
     {
       "rep": 2,
       "generator": "Erlang A",
       "real_days": 30,
-      "estimate": 0.8327382792100523
+      "estimate": 0.8282666835038853
     },
     {
       "rep": 2,
       "generator": "Gaussian copula",
       "real_days": 30,
-      "estimate": 0.7902097221627825
+      "estimate": 0.7948847566496853
     },
     {
       "rep": 2,
       "generator": "CART",
       "real_days": 30,
-      "estimate": 0.7889474199977876
+      "estimate": 0.7871497370000221
     },
     {
       "rep": 2,
       "generator": "SMOTE",
       "real_days": 30,
-      "estimate": 0.7971435866528668
+      "estimate": 0.7968880898256385
     },
     {
       "rep": 2,
       "generator": "Gaussian mixture",
       "real_days": 30,
-      "estimate": 0.7799267205312099
+      "estimate": 0.7831673486157742
+    },
+    {
+      "rep": 2,
+      "generator": "Empirical average",
+      "real_days": 90,
+      "estimate": 0.7982130453223834
+    },
+    {
+      "rep": 2,
+      "generator": "Erlang A",
+      "real_days": 90,
+      "estimate": 0.8284076318130991
+    },
+    {
+      "rep": 2,
+      "generator": "Gaussian copula",
+      "real_days": 90,
+      "estimate": 0.7977345994692665
+    },
+    {
+      "rep": 2,
+      "generator": "CART",
+      "real_days": 90,
+      "estimate": 0.7934439619459438
+    },
+    {
+      "rep": 2,
+      "generator": "SMOTE",
+      "real_days": 90,
+      "estimate": 0.8057563704849008
+    },
+    {
+      "rep": 2,
+      "generator": "Gaussian mixture",
+      "real_days": 90,
+      "estimate": 0.7955190904058296
+    },
+    {
+      "rep": 2,
+      "generator": "Empirical average",
+      "real_days": 270,
+      "estimate": 0.7994698149762468
+    },
+    {
+      "rep": 2,
+      "generator": "Erlang A",
+      "real_days": 270,
+      "estimate": 0.8340247780976756
+    },
+    {
+      "rep": 2,
+      "generator": "Gaussian copula",
+      "real_days": 270,
+      "estimate": 0.7989597922742843
+    },
+    {
+      "rep": 2,
+      "generator": "CART",
+      "real_days": 270,
+      "estimate": 0.7997991441016495
+    },
+    {
+      "rep": 2,
+      "generator": "SMOTE",
+      "real_days": 270,
+      "estimate": 0.8028766909612453
+    },
+    {
+      "rep": 2,
+      "generator": "Gaussian mixture",
+      "real_days": 270,
+      "estimate": 0.7974501077264972
+    },
+    {
+      "rep": 2,
+      "generator": "Empirical average",
+      "real_days": 810,
+      "estimate": 0.8008632289548431
+    },
+    {
+      "rep": 2,
+      "generator": "Erlang A",
+      "real_days": 810,
+      "estimate": 0.8309066213234922
+    },
+    {
+      "rep": 2,
+      "generator": "Gaussian copula",
+      "real_days": 810,
+      "estimate": 0.8033011422207812
+    },
+    {
+      "rep": 2,
+      "generator": "CART",
+      "real_days": 810,
+      "estimate": 0.8011185364079977
+    },
+    {
+      "rep": 2,
+      "generator": "SMOTE",
+      "real_days": 810,
+      "estimate": 0.8001598488559706
+    },
+    {
+      "rep": 2,
+      "generator": "Gaussian mixture",
+      "real_days": 810,
+      "estimate": 0.8025203102984045
+    },
+    {
+      "rep": 3,
+      "generator": "Empirical average",
+      "real_days": 10,
+      "estimate": 0.7920121848028431
+    },
+    {
+      "rep": 3,
+      "generator": "Erlang A",
+      "real_days": 10,
+      "estimate": 0.7923292114639315
+    },
+    {
+      "rep": 3,
+      "generator": "Gaussian copula",
+      "real_days": 10,
+      "estimate": 0.7925332569864733
+    },
+    {
+      "rep": 3,
+      "generator": "CART",
+      "real_days": 10,
+      "estimate": 0.792970682155148
+    },
+    {
+      "rep": 3,
+      "generator": "SMOTE",
+      "real_days": 10,
+      "estimate": 0.802100789646335
+    },
+    {
+      "rep": 3,
+      "generator": "Gaussian mixture",
+      "real_days": 10,
+      "estimate": 0.7861606438082548
+    },
+    {
+      "rep": 3,
+      "generator": "Empirical average",
+      "real_days": 30,
+      "estimate": 0.775055620762749
+    },
+    {
+      "rep": 3,
+      "generator": "Erlang A",
+      "real_days": 30,
+      "estimate": 0.7798791348933446
+    },
+    {
+      "rep": 3,
+      "generator": "Gaussian copula",
+      "real_days": 30,
+      "estimate": 0.7771693245875909
+    },
+    {
+      "rep": 3,
+      "generator": "CART",
+      "real_days": 30,
+      "estimate": 0.7764098362875476
+    },
+    {
+      "rep": 3,
+      "generator": "SMOTE",
+      "real_days": 30,
+      "estimate": 0.7852636022943034
+    },
+    {
+      "rep": 3,
+      "generator": "Gaussian mixture",
+      "real_days": 30,
+      "estimate": 0.7723318238576312
+    },
+    {
+      "rep": 3,
+      "generator": "Empirical average",
+      "real_days": 90,
+      "estimate": 0.7936223744871382
+    },
+    {
+      "rep": 3,
+      "generator": "Erlang A",
+      "real_days": 90,
+      "estimate": 0.8201587895400316
+    },
+    {
+      "rep": 3,
+      "generator": "Gaussian copula",
+      "real_days": 90,
+      "estimate": 0.7916125137760708
+    },
+    {
+      "rep": 3,
+      "generator": "CART",
+      "real_days": 90,
+      "estimate": 0.7982079690616235
+    },
+    {
+      "rep": 3,
+      "generator": "SMOTE",
+      "real_days": 90,
+      "estimate": 0.7990728390691363
+    },
+    {
+      "rep": 3,
+      "generator": "Gaussian mixture",
+      "real_days": 90,
+      "estimate": 0.7933916498748337
+    },
+    {
+      "rep": 3,
+      "generator": "Empirical average",
+      "real_days": 270,
+      "estimate": 0.792883312073877
+    },
+    {
+      "rep": 3,
+      "generator": "Erlang A",
+      "real_days": 270,
+      "estimate": 0.8263582378301506
+    },
+    {
+      "rep": 3,
+      "generator": "Gaussian copula",
+      "real_days": 270,
+      "estimate": 0.7986197219390397
+    },
+    {
+      "rep": 3,
+      "generator": "CART",
+      "real_days": 270,
+      "estimate": 0.7906222577061323
+    },
+    {
+      "rep": 3,
+      "generator": "SMOTE",
+      "real_days": 270,
+      "estimate": 0.7929303471420736
+    },
+    {
+      "rep": 3,
+      "generator": "Gaussian mixture",
+      "real_days": 270,
+      "estimate": 0.7873521421989772
+    },
+    {
+      "rep": 3,
+      "generator": "Empirical average",
+      "real_days": 810,
+      "estimate": 0.8006138371215652
+    },
+    {
+      "rep": 3,
+      "generator": "Erlang A",
+      "real_days": 810,
+      "estimate": 0.8331163978750289
+    },
+    {
+      "rep": 3,
+      "generator": "Gaussian copula",
+      "real_days": 810,
+      "estimate": 0.8028404987121496
+    },
+    {
+      "rep": 3,
+      "generator": "CART",
+      "real_days": 810,
+      "estimate": 0.801455911486464
+    },
+    {
+      "rep": 3,
+      "generator": "SMOTE",
+      "real_days": 810,
+      "estimate": 0.8015634375412185
+    },
+    {
+      "rep": 3,
+      "generator": "Gaussian mixture",
+      "real_days": 810,
+      "estimate": 0.8014293477025737
+    },
+    {
+      "rep": 4,
+      "generator": "Empirical average",
+      "real_days": 10,
+      "estimate": 0.8029339992054935
+    },
+    {
+      "rep": 4,
+      "generator": "Erlang A",
+      "real_days": 10,
+      "estimate": 0.8160889880014359
+    },
+    {
+      "rep": 4,
+      "generator": "Gaussian copula",
+      "real_days": 10,
+      "estimate": 0.7995720729812429
+    },
+    {
+      "rep": 4,
+      "generator": "CART",
+      "real_days": 10,
+      "estimate": 0.8068518267199819
+    },
+    {
+      "rep": 4,
+      "generator": "SMOTE",
+      "real_days": 10,
+      "estimate": 0.8138278879458188
+    },
+    {
+      "rep": 4,
+      "generator": "Gaussian mixture",
+      "real_days": 10,
+      "estimate": 0.8022880391297612
+    },
+    {
+      "rep": 4,
+      "generator": "Empirical average",
+      "real_days": 30,
+      "estimate": 0.8113514177461568
+    },
+    {
+      "rep": 4,
+      "generator": "Erlang A",
+      "real_days": 30,
+      "estimate": 0.8328142841820206
+    },
+    {
+      "rep": 4,
+      "generator": "Gaussian copula",
+      "real_days": 30,
+      "estimate": 0.8129554185681098
+    },
+    {
+      "rep": 4,
+      "generator": "CART",
+      "real_days": 30,
+      "estimate": 0.811800555962764
+    },
+    {
+      "rep": 4,
+      "generator": "SMOTE",
+      "real_days": 30,
+      "estimate": 0.8150709702589004
+    },
+    {
+      "rep": 4,
+      "generator": "Gaussian mixture",
+      "real_days": 30,
+      "estimate": 0.8096660482032814
+    },
+    {
+      "rep": 4,
+      "generator": "Empirical average",
+      "real_days": 90,
+      "estimate": 0.8054048592911901
+    },
+    {
+      "rep": 4,
+      "generator": "Erlang A",
+      "real_days": 90,
+      "estimate": 0.8310624713670619
+    },
+    {
+      "rep": 4,
+      "generator": "Gaussian copula",
+      "real_days": 90,
+      "estimate": 0.8066072820034929
+    },
+    {
+      "rep": 4,
+      "generator": "CART",
+      "real_days": 90,
+      "estimate": 0.806195684132263
+    },
+    {
+      "rep": 4,
+      "generator": "SMOTE",
+      "real_days": 90,
+      "estimate": 0.8086617174233469
+    },
+    {
+      "rep": 4,
+      "generator": "Gaussian mixture",
+      "real_days": 90,
+      "estimate": 0.8042911265405757
+    },
+    {
+      "rep": 4,
+      "generator": "Empirical average",
+      "real_days": 270,
+      "estimate": 0.8057129965004554
+    },
+    {
+      "rep": 4,
+      "generator": "Erlang A",
+      "real_days": 270,
+      "estimate": 0.8337744963137845
+    },
+    {
+      "rep": 4,
+      "generator": "Gaussian copula",
+      "real_days": 270,
+      "estimate": 0.8038062189242486
+    },
+    {
+      "rep": 4,
+      "generator": "CART",
+      "real_days": 270,
+      "estimate": 0.8077895327093767
+    },
+    {
+      "rep": 4,
+      "generator": "SMOTE",
+      "real_days": 270,
+      "estimate": 0.8079570456958897
+    },
+    {
+      "rep": 4,
+      "generator": "Gaussian mixture",
+      "real_days": 270,
+      "estimate": 0.8035411154028218
+    },
+    {
+      "rep": 4,
+      "generator": "Empirical average",
+      "real_days": 810,
+      "estimate": 0.804660971255347
+    },
+    {
+      "rep": 4,
+      "generator": "Erlang A",
+      "real_days": 810,
+      "estimate": 0.832340514474254
+    },
+    {
+      "rep": 4,
+      "generator": "Gaussian copula",
+      "real_days": 810,
+      "estimate": 0.8099646498315664
+    },
+    {
+      "rep": 4,
+      "generator": "CART",
+      "real_days": 810,
+      "estimate": 0.8065846510796568
+    },
+    {
+      "rep": 4,
+      "generator": "SMOTE",
+      "real_days": 810,
+      "estimate": 0.800672469934796
+    },
+    {
+      "rep": 4,
+      "generator": "Gaussian mixture",
+      "real_days": 810,
+      "estimate": 0.7999931828721513
+    },
+    {
+      "rep": 5,
+      "generator": "Empirical average",
+      "real_days": 10,
+      "estimate": 0.8119264790983494
+    },
+    {
+      "rep": 5,
+      "generator": "Erlang A",
+      "real_days": 10,
+      "estimate": 0.7962869182967465
+    },
+    {
+      "rep": 5,
+      "generator": "Gaussian copula",
+      "real_days": 10,
+      "estimate": 0.8102177988313695
+    },
+    {
+      "rep": 5,
+      "generator": "CART",
+      "real_days": 10,
+      "estimate": 0.8173463911197864
+    },
+    {
+      "rep": 5,
+      "generator": "SMOTE",
+      "real_days": 10,
+      "estimate": 0.8180511615888559
+    },
+    {
+      "rep": 5,
+      "generator": "Gaussian mixture",
+      "real_days": 10,
+      "estimate": 0.8098183765311777
+    },
+    {
+      "rep": 5,
+      "generator": "Empirical average",
+      "real_days": 30,
+      "estimate": 0.822093143280753
+    },
+    {
+      "rep": 5,
+      "generator": "Erlang A",
+      "real_days": 30,
+      "estimate": 0.8426054331617032
+    },
+    {
+      "rep": 5,
+      "generator": "Gaussian copula",
+      "real_days": 30,
+      "estimate": 0.8257247859507397
+    },
+    {
+      "rep": 5,
+      "generator": "CART",
+      "real_days": 30,
+      "estimate": 0.8222852567997605
+    },
+    {
+      "rep": 5,
+      "generator": "SMOTE",
+      "real_days": 30,
+      "estimate": 0.8284108826766624
+    },
+    {
+      "rep": 5,
+      "generator": "Gaussian mixture",
+      "real_days": 30,
+      "estimate": 0.8182505978854996
+    },
+    {
+      "rep": 5,
+      "generator": "Empirical average",
+      "real_days": 90,
+      "estimate": 0.8201715655355115
+    },
+    {
+      "rep": 5,
+      "generator": "Erlang A",
+      "real_days": 90,
+      "estimate": 0.8472042603897827
+    },
+    {
+      "rep": 5,
+      "generator": "Gaussian copula",
+      "real_days": 90,
+      "estimate": 0.818529273891098
+    },
+    {
+      "rep": 5,
+      "generator": "CART",
+      "real_days": 90,
+      "estimate": 0.8189498074935964
+    },
+    {
+      "rep": 5,
+      "generator": "SMOTE",
+      "real_days": 90,
+      "estimate": 0.8211084662783377
+    },
+    {
+      "rep": 5,
+      "generator": "Gaussian mixture",
+      "real_days": 90,
+      "estimate": 0.816064726987828
+    },
+    {
+      "rep": 5,
+      "generator": "Empirical average",
+      "real_days": 270,
+      "estimate": 0.8020938534710212
+    },
+    {
+      "rep": 5,
+      "generator": "Erlang A",
+      "real_days": 270,
+      "estimate": 0.8388322985472595
+    },
+    {
+      "rep": 5,
+      "generator": "Gaussian copula",
+      "real_days": 270,
+      "estimate": 0.8067418653493436
+    },
+    {
+      "rep": 5,
+      "generator": "CART",
+      "real_days": 270,
+      "estimate": 0.8023268464352116
+    },
+    {
+      "rep": 5,
+      "generator": "SMOTE",
+      "real_days": 270,
+      "estimate": 0.7995808963984047
+    },
+    {
+      "rep": 5,
+      "generator": "Gaussian mixture",
+      "real_days": 270,
+      "estimate": 0.7947360877689914
+    },
+    {
+      "rep": 5,
+      "generator": "Empirical average",
+      "real_days": 810,
+      "estimate": 0.7960714673889195
+    },
+    {
+      "rep": 5,
+      "generator": "Erlang A",
+      "real_days": 810,
+      "estimate": 0.8295351576043024
+    },
+    {
+      "rep": 5,
+      "generator": "Gaussian copula",
+      "real_days": 810,
+      "estimate": 0.798249695210679
+    },
+    {
+      "rep": 5,
+      "generator": "CART",
+      "real_days": 810,
+      "estimate": 0.792417311354613
+    },
+    {
+      "rep": 5,
+      "generator": "SMOTE",
+      "real_days": 810,
+      "estimate": 0.7978581443796484
+    },
+    {
+      "rep": 5,
+      "generator": "Gaussian mixture",
+      "real_days": 810,
+      "estimate": 0.790080208631488
+    },
+    {
+      "rep": 6,
+      "generator": "Empirical average",
+      "real_days": 10,
+      "estimate": 0.8239632942269718
+    },
+    {
+      "rep": 6,
+      "generator": "Erlang A",
+      "real_days": 10,
+      "estimate": 0.8369815149546563
+    },
+    {
+      "rep": 6,
+      "generator": "Gaussian copula",
+      "real_days": 10,
+      "estimate": 0.8228871491265217
+    },
+    {
+      "rep": 6,
+      "generator": "CART",
+      "real_days": 10,
+      "estimate": 0.8248838413592472
+    },
+    {
+      "rep": 6,
+      "generator": "SMOTE",
+      "real_days": 10,
+      "estimate": 0.8326155686076692
+    },
+    {
+      "rep": 6,
+      "generator": "Gaussian mixture",
+      "real_days": 10,
+      "estimate": 0.8174008886262848
+    },
+    {
+      "rep": 6,
+      "generator": "Empirical average",
+      "real_days": 30,
+      "estimate": 0.768559774082209
+    },
+    {
+      "rep": 6,
+      "generator": "Erlang A",
+      "real_days": 30,
+      "estimate": 0.8161811037879336
+    },
+    {
+      "rep": 6,
+      "generator": "Gaussian copula",
+      "real_days": 30,
+      "estimate": 0.7805354167988334
+    },
+    {
+      "rep": 6,
+      "generator": "CART",
+      "real_days": 30,
+      "estimate": 0.7644041433655417
+    },
+    {
+      "rep": 6,
+      "generator": "SMOTE",
+      "real_days": 30,
+      "estimate": 0.7745352505332099
+    },
+    {
+      "rep": 6,
+      "generator": "Gaussian mixture",
+      "real_days": 30,
+      "estimate": 0.7632066199523839
+    },
+    {
+      "rep": 6,
+      "generator": "Empirical average",
+      "real_days": 90,
+      "estimate": 0.7952953994564552
+    },
+    {
+      "rep": 6,
+      "generator": "Erlang A",
+      "real_days": 90,
+      "estimate": 0.830535392293112
+    },
+    {
+      "rep": 6,
+      "generator": "Gaussian copula",
+      "real_days": 90,
+      "estimate": 0.8038821227651811
+    },
+    {
+      "rep": 6,
+      "generator": "CART",
+      "real_days": 90,
+      "estimate": 0.7922882579335563
+    },
+    {
+      "rep": 6,
+      "generator": "SMOTE",
+      "real_days": 90,
+      "estimate": 0.8031319223359662
+    },
+    {
+      "rep": 6,
+      "generator": "Gaussian mixture",
+      "real_days": 90,
+      "estimate": 0.7960299092437538
+    },
+    {
+      "rep": 6,
+      "generator": "Empirical average",
+      "real_days": 270,
+      "estimate": 0.796055014338407
+    },
+    {
+      "rep": 6,
+      "generator": "Erlang A",
+      "real_days": 270,
+      "estimate": 0.8327254176293406
+    },
+    {
+      "rep": 6,
+      "generator": "Gaussian copula",
+      "real_days": 270,
+      "estimate": 0.8005666056524063
+    },
+    {
+      "rep": 6,
+      "generator": "CART",
+      "real_days": 270,
+      "estimate": 0.798211994955786
+    },
+    {
+      "rep": 6,
+      "generator": "SMOTE",
+      "real_days": 270,
+      "estimate": 0.8008001440085497
+    },
+    {
+      "rep": 6,
+      "generator": "Gaussian mixture",
+      "real_days": 270,
+      "estimate": 0.7977837139280667
+    },
+    {
+      "rep": 6,
+      "generator": "Empirical average",
+      "real_days": 810,
+      "estimate": 0.8016691874431114
+    },
+    {
+      "rep": 6,
+      "generator": "Erlang A",
+      "real_days": 810,
+      "estimate": 0.8319690054662116
+    },
+    {
+      "rep": 6,
+      "generator": "Gaussian copula",
+      "real_days": 810,
+      "estimate": 0.8043736511325466
+    },
+    {
+      "rep": 6,
+      "generator": "CART",
+      "real_days": 810,
+      "estimate": 0.7994789854818337
+    },
+    {
+      "rep": 6,
+      "generator": "SMOTE",
+      "real_days": 810,
+      "estimate": 0.8038770384540826
+    },
+    {
+      "rep": 6,
+      "generator": "Gaussian mixture",
+      "real_days": 810,
+      "estimate": 0.7983906450267337
+    },
+    {
+      "rep": 7,
+      "generator": "Empirical average",
+      "real_days": 10,
+      "estimate": 0.8204455346701275
+    },
+    {
+      "rep": 7,
+      "generator": "Erlang A",
+      "real_days": 10,
+      "estimate": 0.8262175753863945
+    },
+    {
+      "rep": 7,
+      "generator": "Gaussian copula",
+      "real_days": 10,
+      "estimate": 0.8208104518704437
+    },
+    {
+      "rep": 7,
+      "generator": "CART",
+      "real_days": 10,
+      "estimate": 0.8215051712943001
+    },
+    {
+      "rep": 7,
+      "generator": "SMOTE",
+      "real_days": 10,
+      "estimate": 0.8268400999672892
+    },
+    {
+      "rep": 7,
+      "generator": "Gaussian mixture",
+      "real_days": 10,
+      "estimate": 0.8178663562785256
+    },
+    {
+      "rep": 7,
+      "generator": "Empirical average",
+      "real_days": 30,
+      "estimate": 0.8014349078777769
+    },
+    {
+      "rep": 7,
+      "generator": "Erlang A",
+      "real_days": 30,
+      "estimate": 0.8188261745280809
+    },
+    {
+      "rep": 7,
+      "generator": "Gaussian copula",
+      "real_days": 30,
+      "estimate": 0.8054650205319974
+    },
+    {
+      "rep": 7,
+      "generator": "CART",
+      "real_days": 30,
+      "estimate": 0.8005192343538511
+    },
+    {
+      "rep": 7,
+      "generator": "SMOTE",
+      "real_days": 30,
+      "estimate": 0.8062774905976958
+    },
+    {
+      "rep": 7,
+      "generator": "Gaussian mixture",
+      "real_days": 30,
+      "estimate": 0.8000330413602609
+    },
+    {
+      "rep": 7,
+      "generator": "Empirical average",
+      "real_days": 90,
+      "estimate": 0.7987458436406931
+    },
+    {
+      "rep": 7,
+      "generator": "Erlang A",
+      "real_days": 90,
+      "estimate": 0.8249130105520096
+    },
+    {
+      "rep": 7,
+      "generator": "Gaussian copula",
+      "real_days": 90,
+      "estimate": 0.8016979680980716
+    },
+    {
+      "rep": 7,
+      "generator": "CART",
+      "real_days": 90,
+      "estimate": 0.7975154545610733
+    },
+    {
+      "rep": 7,
+      "generator": "SMOTE",
+      "real_days": 90,
+      "estimate": 0.8008244914308521
+    },
+    {
+      "rep": 7,
+      "generator": "Gaussian mixture",
+      "real_days": 90,
+      "estimate": 0.797038981251327
+    },
+    {
+      "rep": 7,
+      "generator": "Empirical average",
+      "real_days": 270,
+      "estimate": 0.7945155326674674
+    },
+    {
+      "rep": 7,
+      "generator": "Erlang A",
+      "real_days": 270,
+      "estimate": 0.8264165712380593
+    },
+    {
+      "rep": 7,
+      "generator": "Gaussian copula",
+      "real_days": 270,
+      "estimate": 0.7998473997077621
+    },
+    {
+      "rep": 7,
+      "generator": "CART",
+      "real_days": 270,
+      "estimate": 0.7945671567772471
+    },
+    {
+      "rep": 7,
+      "generator": "SMOTE",
+      "real_days": 270,
+      "estimate": 0.7988159310147323
+    },
+    {
+      "rep": 7,
+      "generator": "Gaussian mixture",
+      "real_days": 270,
+      "estimate": 0.7925308518014785
+    },
+    {
+      "rep": 7,
+      "generator": "Empirical average",
+      "real_days": 810,
+      "estimate": 0.8008095340762129
+    },
+    {
+      "rep": 7,
+      "generator": "Erlang A",
+      "real_days": 810,
+      "estimate": 0.8287260543841446
+    },
+    {
+      "rep": 7,
+      "generator": "Gaussian copula",
+      "real_days": 810,
+      "estimate": 0.8059866750096376
+    },
+    {
+      "rep": 7,
+      "generator": "CART",
+      "real_days": 810,
+      "estimate": 0.7999427431652378
+    },
+    {
+      "rep": 7,
+      "generator": "SMOTE",
+      "real_days": 810,
+      "estimate": 0.8020294679380765
+    },
+    {
+      "rep": 7,
+      "generator": "Gaussian mixture",
+      "real_days": 810,
+      "estimate": 0.8016232384878045
+    },
+    {
+      "rep": 8,
+      "generator": "Empirical average",
+      "real_days": 10,
+      "estimate": 0.8699915754001685
+    },
+    {
+      "rep": 8,
+      "generator": "Erlang A",
+      "real_days": 10,
+      "estimate": 0.8770782308994607
+    },
+    {
+      "rep": 8,
+      "generator": "Gaussian copula",
+      "real_days": 10,
+      "estimate": 0.8711545150863037
+    },
+    {
+      "rep": 8,
+      "generator": "CART",
+      "real_days": 10,
+      "estimate": 0.8785748333594986
+    },
+    {
+      "rep": 8,
+      "generator": "SMOTE",
+      "real_days": 10,
+      "estimate": 0.8781601642107689
+    },
+    {
+      "rep": 8,
+      "generator": "Gaussian mixture",
+      "real_days": 10,
+      "estimate": 0.8658412362061616
+    },
+    {
+      "rep": 8,
+      "generator": "Empirical average",
+      "real_days": 30,
+      "estimate": 0.8043197493885851
+    },
+    {
+      "rep": 8,
+      "generator": "Erlang A",
+      "real_days": 30,
+      "estimate": 0.8177077797551402
+    },
+    {
+      "rep": 8,
+      "generator": "Gaussian copula",
+      "real_days": 30,
+      "estimate": 0.8050567742758413
+    },
+    {
+      "rep": 8,
+      "generator": "CART",
+      "real_days": 30,
+      "estimate": 0.8125541919670604
+    },
+    {
+      "rep": 8,
+      "generator": "SMOTE",
+      "real_days": 30,
+      "estimate": 0.8094840046527475
+    },
+    {
+      "rep": 8,
+      "generator": "Gaussian mixture",
+      "real_days": 30,
+      "estimate": 0.7948191173105272
+    },
+    {
+      "rep": 8,
+      "generator": "Empirical average",
+      "real_days": 90,
+      "estimate": 0.7843860408526171
+    },
+    {
+      "rep": 8,
+      "generator": "Erlang A",
+      "real_days": 90,
+      "estimate": 0.8225857895361148
+    },
+    {
+      "rep": 8,
+      "generator": "Gaussian copula",
+      "real_days": 90,
+      "estimate": 0.7850343440016555
+    },
+    {
+      "rep": 8,
+      "generator": "CART",
+      "real_days": 90,
+      "estimate": 0.7928826313887382
+    },
+    {
+      "rep": 8,
+      "generator": "SMOTE",
+      "real_days": 90,
+      "estimate": 0.7868535469409303
+    },
+    {
+      "rep": 8,
+      "generator": "Gaussian mixture",
+      "real_days": 90,
+      "estimate": 0.7823744122682188
+    },
+    {
+      "rep": 8,
+      "generator": "Empirical average",
+      "real_days": 270,
+      "estimate": 0.7945341376544327
+    },
+    {
+      "rep": 8,
+      "generator": "Erlang A",
+      "real_days": 270,
+      "estimate": 0.8275681758659803
+    },
+    {
+      "rep": 8,
+      "generator": "Gaussian copula",
+      "real_days": 270,
+      "estimate": 0.7974713523374848
+    },
+    {
+      "rep": 8,
+      "generator": "CART",
+      "real_days": 270,
+      "estimate": 0.7937907864706494
+    },
+    {
+      "rep": 8,
+      "generator": "SMOTE",
+      "real_days": 270,
+      "estimate": 0.7997872465763252
+    },
+    {
+      "rep": 8,
+      "generator": "Gaussian mixture",
+      "real_days": 270,
+      "estimate": 0.7905717724933978
+    },
+    {
+      "rep": 8,
+      "generator": "Empirical average",
+      "real_days": 810,
+      "estimate": 0.8010529178319045
+    },
+    {
+      "rep": 8,
+      "generator": "Erlang A",
+      "real_days": 810,
+      "estimate": 0.8324949569746956
+    },
+    {
+      "rep": 8,
+      "generator": "Gaussian copula",
+      "real_days": 810,
+      "estimate": 0.8035719886986619
+    },
+    {
+      "rep": 8,
+      "generator": "CART",
+      "real_days": 810,
+      "estimate": 0.8021751780332365
+    },
+    {
+      "rep": 8,
+      "generator": "SMOTE",
+      "real_days": 810,
+      "estimate": 0.8010435084196477
+    },
+    {
+      "rep": 8,
+      "generator": "Gaussian mixture",
+      "real_days": 810,
+      "estimate": 0.797762410616247
+    },
+    {
+      "rep": 9,
+      "generator": "Empirical average",
+      "real_days": 10,
+      "estimate": 0.7745183778516279
+    },
+    {
+      "rep": 9,
+      "generator": "Erlang A",
+      "real_days": 10,
+      "estimate": 0.7934178391281715
+    },
+    {
+      "rep": 9,
+      "generator": "Gaussian copula",
+      "real_days": 10,
+      "estimate": 0.77433778669278
+    },
+    {
+      "rep": 9,
+      "generator": "CART",
+      "real_days": 10,
+      "estimate": 0.7814857825284799
+    },
+    {
+      "rep": 9,
+      "generator": "SMOTE",
+      "real_days": 10,
+      "estimate": 0.7820378166837004
+    },
+    {
+      "rep": 9,
+      "generator": "Gaussian mixture",
+      "real_days": 10,
+      "estimate": 0.7649150989758245
+    },
+    {
+      "rep": 9,
+      "generator": "Empirical average",
+      "real_days": 30,
+      "estimate": 0.7954010485395342
+    },
+    {
+      "rep": 9,
+      "generator": "Erlang A",
+      "real_days": 30,
+      "estimate": 0.8182066122677422
+    },
+    {
+      "rep": 9,
+      "generator": "Gaussian copula",
+      "real_days": 30,
+      "estimate": 0.8036460588880928
+    },
+    {
+      "rep": 9,
+      "generator": "CART",
+      "real_days": 30,
+      "estimate": 0.7999059026926224
+    },
+    {
+      "rep": 9,
+      "generator": "SMOTE",
+      "real_days": 30,
+      "estimate": 0.7998697791232346
+    },
+    {
+      "rep": 9,
+      "generator": "Gaussian mixture",
+      "real_days": 30,
+      "estimate": 0.7959416467439565
+    },
+    {
+      "rep": 9,
+      "generator": "Empirical average",
+      "real_days": 90,
+      "estimate": 0.788554129084253
+    },
+    {
+      "rep": 9,
+      "generator": "Erlang A",
+      "real_days": 90,
+      "estimate": 0.8200187528470473
+    },
+    {
+      "rep": 9,
+      "generator": "Gaussian copula",
+      "real_days": 90,
+      "estimate": 0.7943306313864741
+    },
+    {
+      "rep": 9,
+      "generator": "CART",
+      "real_days": 90,
+      "estimate": 0.7883591732971854
+    },
+    {
+      "rep": 9,
+      "generator": "SMOTE",
+      "real_days": 90,
+      "estimate": 0.7890620223538929
+    },
+    {
+      "rep": 9,
+      "generator": "Gaussian mixture",
+      "real_days": 90,
+      "estimate": 0.7854687741148835
+    },
+    {
+      "rep": 9,
+      "generator": "Empirical average",
+      "real_days": 270,
+      "estimate": 0.7927300630932758
+    },
+    {
+      "rep": 9,
+      "generator": "Erlang A",
+      "real_days": 270,
+      "estimate": 0.8211950854603981
+    },
+    {
+      "rep": 9,
+      "generator": "Gaussian copula",
+      "real_days": 270,
+      "estimate": 0.7962257583767768
+    },
+    {
+      "rep": 9,
+      "generator": "CART",
+      "real_days": 270,
+      "estimate": 0.795224816709112
+    },
+    {
+      "rep": 9,
+      "generator": "SMOTE",
+      "real_days": 270,
+      "estimate": 0.7996913343989099
+    },
+    {
+      "rep": 9,
+      "generator": "Gaussian mixture",
+      "real_days": 270,
+      "estimate": 0.7904007586658883
+    },
+    {
+      "rep": 9,
+      "generator": "Empirical average",
+      "real_days": 810,
+      "estimate": 0.7971035559430311
+    },
+    {
+      "rep": 9,
+      "generator": "Erlang A",
+      "real_days": 810,
+      "estimate": 0.8303115270235384
+    },
+    {
+      "rep": 9,
+      "generator": "Gaussian copula",
+      "real_days": 810,
+      "estimate": 0.8006445600474571
+    },
+    {
+      "rep": 9,
+      "generator": "CART",
+      "real_days": 810,
+      "estimate": 0.8002085953603552
+    },
+    {
+      "rep": 9,
+      "generator": "SMOTE",
+      "real_days": 810,
+      "estimate": 0.7962189901750973
+    },
+    {
+      "rep": 9,
+      "generator": "Gaussian mixture",
+      "real_days": 810,
+      "estimate": 0.7927159684404707
+    },
+    {
+      "rep": 10,
+      "generator": "Empirical average",
+      "real_days": 10,
+      "estimate": 0.7987223075235798
+    },
+    {
+      "rep": 10,
+      "generator": "Erlang A",
+      "real_days": 10,
+      "estimate": 0.8247828271294816
+    },
+    {
+      "rep": 10,
+      "generator": "Gaussian copula",
+      "real_days": 10,
+      "estimate": 0.7951966309757076
+    },
+    {
+      "rep": 10,
+      "generator": "CART",
+      "real_days": 10,
+      "estimate": 0.7971431186097497
+    },
+    {
+      "rep": 10,
+      "generator": "SMOTE",
+      "real_days": 10,
+      "estimate": 0.8060968647417128
+    },
+    {
+      "rep": 10,
+      "generator": "Gaussian mixture",
+      "real_days": 10,
+      "estimate": 0.7943739460838829
+    },
+    {
+      "rep": 10,
+      "generator": "Empirical average",
+      "real_days": 30,
+      "estimate": 0.7992262736161141
+    },
+    {
+      "rep": 10,
+      "generator": "Erlang A",
+      "real_days": 30,
+      "estimate": 0.8211908431704288
+    },
+    {
+      "rep": 10,
+      "generator": "Gaussian copula",
+      "real_days": 30,
+      "estimate": 0.8038045681857664
+    },
+    {
+      "rep": 10,
+      "generator": "CART",
+      "real_days": 30,
+      "estimate": 0.7991568218937912
+    },
+    {
+      "rep": 10,
+      "generator": "SMOTE",
+      "real_days": 30,
+      "estimate": 0.8020611884740207
+    },
+    {
+      "rep": 10,
+      "generator": "Gaussian mixture",
+      "real_days": 30,
+      "estimate": 0.7970007018333455
+    },
+    {
+      "rep": 10,
+      "generator": "Empirical average",
+      "real_days": 90,
+      "estimate": 0.7941949481142181
+    },
+    {
+      "rep": 10,
+      "generator": "Erlang A",
+      "real_days": 90,
+      "estimate": 0.8224022900521331
+    },
+    {
+      "rep": 10,
+      "generator": "Gaussian copula",
+      "real_days": 90,
+      "estimate": 0.7994961298661699
+    },
+    {
+      "rep": 10,
+      "generator": "CART",
+      "real_days": 90,
+      "estimate": 0.796100299841515
+    },
+    {
+      "rep": 10,
+      "generator": "SMOTE",
+      "real_days": 90,
+      "estimate": 0.7953091798044862
+    },
+    {
+      "rep": 10,
+      "generator": "Gaussian mixture",
+      "real_days": 90,
+      "estimate": 0.7921695565788137
+    },
+    {
+      "rep": 10,
+      "generator": "Empirical average",
+      "real_days": 270,
+      "estimate": 0.7989332395760191
+    },
+    {
+      "rep": 10,
+      "generator": "Erlang A",
+      "real_days": 270,
+      "estimate": 0.8312062231984578
+    },
+    {
+      "rep": 10,
+      "generator": "Gaussian copula",
+      "real_days": 270,
+      "estimate": 0.8005555041556682
+    },
+    {
+      "rep": 10,
+      "generator": "CART",
+      "real_days": 270,
+      "estimate": 0.7985123578664688
+    },
+    {
+      "rep": 10,
+      "generator": "SMOTE",
+      "real_days": 270,
+      "estimate": 0.8053920439469155
+    },
+    {
+      "rep": 10,
+      "generator": "Gaussian mixture",
+      "real_days": 270,
+      "estimate": 0.7965245709487951
+    },
+    {
+      "rep": 10,
+      "generator": "Empirical average",
+      "real_days": 810,
+      "estimate": 0.7993676972484898
+    },
+    {
+      "rep": 10,
+      "generator": "Erlang A",
+      "real_days": 810,
+      "estimate": 0.8334426469110541
+    },
+    {
+      "rep": 10,
+      "generator": "Gaussian copula",
+      "real_days": 810,
+      "estimate": 0.8007051364208053
+    },
+    {
+      "rep": 10,
+      "generator": "CART",
+      "real_days": 810,
+      "estimate": 0.8041185110555096
+    },
+    {
+      "rep": 10,
+      "generator": "SMOTE",
+      "real_days": 810,
+      "estimate": 0.801348756992087
+    },
+    {
+      "rep": 10,
+      "generator": "Gaussian mixture",
+      "real_days": 810,
+      "estimate": 0.7995285366126379
+    },
+    {
+      "rep": 11,
+      "generator": "Empirical average",
+      "real_days": 10,
+      "estimate": 0.8032800839883097
+    },
+    {
+      "rep": 11,
+      "generator": "Erlang A",
+      "real_days": 10,
+      "estimate": 0.835835414477228
+    },
+    {
+      "rep": 11,
+      "generator": "Gaussian copula",
+      "real_days": 10,
+      "estimate": 0.8027610957478284
+    },
+    {
+      "rep": 11,
+      "generator": "CART",
+      "real_days": 10,
+      "estimate": 0.8042535956620496
+    },
+    {
+      "rep": 11,
+      "generator": "SMOTE",
+      "real_days": 10,
+      "estimate": 0.8120520415702206
+    },
+    {
+      "rep": 11,
+      "generator": "Gaussian mixture",
+      "real_days": 10,
+      "estimate": 0.7991819216898172
+    },
+    {
+      "rep": 11,
+      "generator": "Empirical average",
+      "real_days": 30,
+      "estimate": 0.7844065686339241
+    },
+    {
+      "rep": 11,
+      "generator": "Erlang A",
+      "real_days": 30,
+      "estimate": 0.8146309989631189
+    },
+    {
+      "rep": 11,
+      "generator": "Gaussian copula",
+      "real_days": 30,
+      "estimate": 0.7872094666927835
+    },
+    {
+      "rep": 11,
+      "generator": "CART",
+      "real_days": 30,
+      "estimate": 0.7771707089163247
+    },
+    {
+      "rep": 11,
+      "generator": "SMOTE",
+      "real_days": 30,
+      "estimate": 0.7917749123991706
+    },
+    {
+      "rep": 11,
+      "generator": "Gaussian mixture",
+      "real_days": 30,
+      "estimate": 0.7798072925936258
+    },
+    {
+      "rep": 11,
+      "generator": "Empirical average",
+      "real_days": 90,
+      "estimate": 0.7741519297753323
+    },
+    {
+      "rep": 11,
+      "generator": "Erlang A",
+      "real_days": 90,
+      "estimate": 0.8187746272399007
+    },
+    {
+      "rep": 11,
+      "generator": "Gaussian copula",
+      "real_days": 90,
+      "estimate": 0.7809141134801765
+    },
+    {
+      "rep": 11,
+      "generator": "CART",
+      "real_days": 90,
+      "estimate": 0.7729096256394368
+    },
+    {
+      "rep": 11,
+      "generator": "SMOTE",
+      "real_days": 90,
+      "estimate": 0.783706046151053
+    },
+    {
+      "rep": 11,
+      "generator": "Gaussian mixture",
+      "real_days": 90,
+      "estimate": 0.770995352904685
+    },
+    {
+      "rep": 11,
+      "generator": "Empirical average",
+      "real_days": 270,
+      "estimate": 0.7948262895438333
+    },
+    {
+      "rep": 11,
+      "generator": "Erlang A",
+      "real_days": 270,
+      "estimate": 0.8294410814859444
+    },
+    {
+      "rep": 11,
+      "generator": "Gaussian copula",
+      "real_days": 270,
+      "estimate": 0.8032252032364313
+    },
+    {
+      "rep": 11,
+      "generator": "CART",
+      "real_days": 270,
+      "estimate": 0.7958727092342796
+    },
+    {
+      "rep": 11,
+      "generator": "SMOTE",
+      "real_days": 270,
+      "estimate": 0.7958620034227494
+    },
+    {
+      "rep": 11,
+      "generator": "Gaussian mixture",
+      "real_days": 270,
+      "estimate": 0.7945128035097685
+    },
+    {
+      "rep": 11,
+      "generator": "Empirical average",
+      "real_days": 810,
+      "estimate": 0.8012074759686634
+    },
+    {
+      "rep": 11,
+      "generator": "Erlang A",
+      "real_days": 810,
+      "estimate": 0.8311323706255693
+    },
+    {
+      "rep": 11,
+      "generator": "Gaussian copula",
+      "real_days": 810,
+      "estimate": 0.8089238064685912
+    },
+    {
+      "rep": 11,
+      "generator": "CART",
+      "real_days": 810,
+      "estimate": 0.8009364431062325
+    },
+    {
+      "rep": 11,
+      "generator": "SMOTE",
+      "real_days": 810,
+      "estimate": 0.8019594922419326
+    },
+    {
+      "rep": 11,
+      "generator": "Gaussian mixture",
+      "real_days": 810,
+      "estimate": 0.7982610521692791
+    },
+    {
+      "rep": 12,
+      "generator": "Empirical average",
+      "real_days": 10,
+      "estimate": 0.8210307011198241
+    },
+    {
+      "rep": 12,
+      "generator": "Erlang A",
+      "real_days": 10,
+      "estimate": 0.823966686068904
+    },
+    {
+      "rep": 12,
+      "generator": "Gaussian copula",
+      "real_days": 10,
+      "estimate": 0.821451766659115
+    },
+    {
+      "rep": 12,
+      "generator": "CART",
+      "real_days": 10,
+      "estimate": 0.8285996533153029
+    },
+    {
+      "rep": 12,
+      "generator": "SMOTE",
+      "real_days": 10,
+      "estimate": 0.8266912610132762
+    },
+    {
+      "rep": 12,
+      "generator": "Gaussian mixture",
+      "real_days": 10,
+      "estimate": 0.8179529712791254
+    },
+    {
+      "rep": 12,
+      "generator": "Empirical average",
+      "real_days": 30,
+      "estimate": 0.7921680040611668
+    },
+    {
+      "rep": 12,
+      "generator": "Erlang A",
+      "real_days": 30,
+      "estimate": 0.8153594513152884
+    },
+    {
+      "rep": 12,
+      "generator": "Gaussian copula",
+      "real_days": 30,
+      "estimate": 0.7986714167144707
+    },
+    {
+      "rep": 12,
+      "generator": "CART",
+      "real_days": 30,
+      "estimate": 0.7952393155856216
+    },
+    {
+      "rep": 12,
+      "generator": "SMOTE",
+      "real_days": 30,
+      "estimate": 0.7942736644827678
+    },
+    {
+      "rep": 12,
+      "generator": "Gaussian mixture",
+      "real_days": 30,
+      "estimate": 0.7928221618429186
+    },
+    {
+      "rep": 12,
+      "generator": "Empirical average",
+      "real_days": 90,
+      "estimate": 0.7992697107416887
+    },
+    {
+      "rep": 12,
+      "generator": "Erlang A",
+      "real_days": 90,
+      "estimate": 0.82788315554048
+    },
+    {
+      "rep": 12,
+      "generator": "Gaussian copula",
+      "real_days": 90,
+      "estimate": 0.8017108566498766
+    },
+    {
+      "rep": 12,
+      "generator": "CART",
+      "real_days": 90,
+      "estimate": 0.7978886330916464
+    },
+    {
+      "rep": 12,
+      "generator": "SMOTE",
+      "real_days": 90,
+      "estimate": 0.8061535305930513
+    },
+    {
+      "rep": 12,
+      "generator": "Gaussian mixture",
+      "real_days": 90,
+      "estimate": 0.7969442206108148
+    },
+    {
+      "rep": 12,
+      "generator": "Empirical average",
+      "real_days": 270,
+      "estimate": 0.7960313955698972
+    },
+    {
+      "rep": 12,
+      "generator": "Erlang A",
+      "real_days": 270,
+      "estimate": 0.829497703909097
+    },
+    {
+      "rep": 12,
+      "generator": "Gaussian copula",
+      "real_days": 270,
+      "estimate": 0.7999936333163433
+    },
+    {
+      "rep": 12,
+      "generator": "CART",
+      "real_days": 270,
+      "estimate": 0.7996813536492562
+    },
+    {
+      "rep": 12,
+      "generator": "SMOTE",
+      "real_days": 270,
+      "estimate": 0.8009612327064921
+    },
+    {
+      "rep": 12,
+      "generator": "Gaussian mixture",
+      "real_days": 270,
+      "estimate": 0.7891120302084423
+    },
+    {
+      "rep": 12,
+      "generator": "Empirical average",
+      "real_days": 810,
+      "estimate": 0.7968377002233765
+    },
+    {
+      "rep": 12,
+      "generator": "Erlang A",
+      "real_days": 810,
+      "estimate": 0.8335189020169994
+    },
+    {
+      "rep": 12,
+      "generator": "Gaussian copula",
+      "real_days": 810,
+      "estimate": 0.8010963577621093
+    },
+    {
+      "rep": 12,
+      "generator": "CART",
+      "real_days": 810,
+      "estimate": 0.7946248288788613
+    },
+    {
+      "rep": 12,
+      "generator": "SMOTE",
+      "real_days": 810,
+      "estimate": 0.8014540098079362
+    },
+    {
+      "rep": 12,
+      "generator": "Gaussian mixture",
+      "real_days": 810,
+      "estimate": 0.7965055962073943
+    },
+    {
+      "rep": 13,
+      "generator": "Empirical average",
+      "real_days": 10,
+      "estimate": 0.7652976388427004
+    },
+    {
+      "rep": 13,
+      "generator": "Erlang A",
+      "real_days": 10,
+      "estimate": 0.7961302911012216
+    },
+    {
+      "rep": 13,
+      "generator": "Gaussian copula",
+      "real_days": 10,
+      "estimate": 0.7639160999705328
+    },
+    {
+      "rep": 13,
+      "generator": "CART",
+      "real_days": 10,
+      "estimate": 0.7667567893609496
+    },
+    {
+      "rep": 13,
+      "generator": "SMOTE",
+      "real_days": 10,
+      "estimate": 0.7767620186460863
+    },
+    {
+      "rep": 13,
+      "generator": "Gaussian mixture",
+      "real_days": 10,
+      "estimate": 0.7633751348895993
+    },
+    {
+      "rep": 13,
+      "generator": "Empirical average",
+      "real_days": 30,
+      "estimate": 0.7762715844230909
+    },
+    {
+      "rep": 13,
+      "generator": "Erlang A",
+      "real_days": 30,
+      "estimate": 0.8034422474894632
+    },
+    {
+      "rep": 13,
+      "generator": "Gaussian copula",
+      "real_days": 30,
+      "estimate": 0.7791788052867901
+    },
+    {
+      "rep": 13,
+      "generator": "CART",
+      "real_days": 30,
+      "estimate": 0.7797833291300202
+    },
+    {
+      "rep": 13,
+      "generator": "SMOTE",
+      "real_days": 30,
+      "estimate": 0.7833955041816844
+    },
+    {
+      "rep": 13,
+      "generator": "Gaussian mixture",
+      "real_days": 30,
+      "estimate": 0.7740527632701629
+    },
+    {
+      "rep": 13,
+      "generator": "Empirical average",
+      "real_days": 90,
+      "estimate": 0.7893994102425227
+    },
+    {
+      "rep": 13,
+      "generator": "Erlang A",
+      "real_days": 90,
+      "estimate": 0.8177858390673465
+    },
+    {
+      "rep": 13,
+      "generator": "Gaussian copula",
+      "real_days": 90,
+      "estimate": 0.7930297898390504
+    },
+    {
+      "rep": 13,
+      "generator": "CART",
+      "real_days": 90,
+      "estimate": 0.7952442758315118
+    },
+    {
+      "rep": 13,
+      "generator": "SMOTE",
+      "real_days": 90,
+      "estimate": 0.7995318444916258
+    },
+    {
+      "rep": 13,
+      "generator": "Gaussian mixture",
+      "real_days": 90,
+      "estimate": 0.7869061127676471
+    },
+    {
+      "rep": 13,
+      "generator": "Empirical average",
+      "real_days": 270,
+      "estimate": 0.7897068103733235
+    },
+    {
+      "rep": 13,
+      "generator": "Erlang A",
+      "real_days": 270,
+      "estimate": 0.8221032815391587
+    },
+    {
+      "rep": 13,
+      "generator": "Gaussian copula",
+      "real_days": 270,
+      "estimate": 0.7924609296069836
+    },
+    {
+      "rep": 13,
+      "generator": "CART",
+      "real_days": 270,
+      "estimate": 0.7897371659227632
+    },
+    {
+      "rep": 13,
+      "generator": "SMOTE",
+      "real_days": 270,
+      "estimate": 0.7938147611804072
+    },
+    {
+      "rep": 13,
+      "generator": "Gaussian mixture",
+      "real_days": 270,
+      "estimate": 0.7893659806541403
+    },
+    {
+      "rep": 13,
+      "generator": "Empirical average",
+      "real_days": 810,
+      "estimate": 0.7966024736535585
+    },
+    {
+      "rep": 13,
+      "generator": "Erlang A",
+      "real_days": 810,
+      "estimate": 0.8314337012294596
+    },
+    {
+      "rep": 13,
+      "generator": "Gaussian copula",
+      "real_days": 810,
+      "estimate": 0.8004373498199352
+    },
+    {
+      "rep": 13,
+      "generator": "CART",
+      "real_days": 810,
+      "estimate": 0.7974112421893712
+    },
+    {
+      "rep": 13,
+      "generator": "SMOTE",
+      "real_days": 810,
+      "estimate": 0.8025245349701862
+    },
+    {
+      "rep": 13,
+      "generator": "Gaussian mixture",
+      "real_days": 810,
+      "estimate": 0.7965492565271458
+    },
+    {
+      "rep": 14,
+      "generator": "Empirical average",
+      "real_days": 10,
+      "estimate": 0.8097860622749418
+    },
+    {
+      "rep": 14,
+      "generator": "Erlang A",
+      "real_days": 10,
+      "estimate": 0.815380898951966
+    },
+    {
+      "rep": 14,
+      "generator": "Gaussian copula",
+      "real_days": 10,
+      "estimate": 0.8089021135116888
+    },
+    {
+      "rep": 14,
+      "generator": "CART",
+      "real_days": 10,
+      "estimate": 0.811376713480105
+    },
+    {
+      "rep": 14,
+      "generator": "SMOTE",
+      "real_days": 10,
+      "estimate": 0.8235565960513022
+    },
+    {
+      "rep": 14,
+      "generator": "Gaussian mixture",
+      "real_days": 10,
+      "estimate": 0.8062142880459443
+    },
+    {
+      "rep": 14,
+      "generator": "Empirical average",
+      "real_days": 30,
+      "estimate": 0.8065811037251183
+    },
+    {
+      "rep": 14,
+      "generator": "Erlang A",
+      "real_days": 30,
+      "estimate": 0.8307638205480625
+    },
+    {
+      "rep": 14,
+      "generator": "Gaussian copula",
+      "real_days": 30,
+      "estimate": 0.808858634566025
+    },
+    {
+      "rep": 14,
+      "generator": "CART",
+      "real_days": 30,
+      "estimate": 0.8074145216010434
+    },
+    {
+      "rep": 14,
+      "generator": "SMOTE",
+      "real_days": 30,
+      "estimate": 0.8107277601437715
+    },
+    {
+      "rep": 14,
+      "generator": "Gaussian mixture",
+      "real_days": 30,
+      "estimate": 0.8031312881977313
+    },
+    {
+      "rep": 14,
+      "generator": "Empirical average",
+      "real_days": 90,
+      "estimate": 0.8024868262919479
+    },
+    {
+      "rep": 14,
+      "generator": "Erlang A",
+      "real_days": 90,
+      "estimate": 0.8278000467016714
+    },
+    {
+      "rep": 14,
+      "generator": "Gaussian copula",
+      "real_days": 90,
+      "estimate": 0.8082319613250487
+    },
+    {
+      "rep": 14,
+      "generator": "CART",
+      "real_days": 90,
+      "estimate": 0.8020320970720535
+    },
+    {
+      "rep": 14,
+      "generator": "SMOTE",
+      "real_days": 90,
+      "estimate": 0.8045164354596273
+    },
+    {
+      "rep": 14,
+      "generator": "Gaussian mixture",
+      "real_days": 90,
+      "estimate": 0.7999230692734679
+    },
+    {
+      "rep": 14,
+      "generator": "Empirical average",
+      "real_days": 270,
+      "estimate": 0.8056117062631454
+    },
+    {
+      "rep": 14,
+      "generator": "Erlang A",
+      "real_days": 270,
+      "estimate": 0.8304641140561645
+    },
+    {
+      "rep": 14,
+      "generator": "Gaussian copula",
+      "real_days": 270,
+      "estimate": 0.8041799798867147
+    },
+    {
+      "rep": 14,
+      "generator": "CART",
+      "real_days": 270,
+      "estimate": 0.806299457057872
+    },
+    {
+      "rep": 14,
+      "generator": "SMOTE",
+      "real_days": 270,
+      "estimate": 0.8109726418772623
+    },
+    {
+      "rep": 14,
+      "generator": "Gaussian mixture",
+      "real_days": 270,
+      "estimate": 0.8036135651740932
+    },
+    {
+      "rep": 14,
+      "generator": "Empirical average",
+      "real_days": 810,
+      "estimate": 0.8026216400887931
+    },
+    {
+      "rep": 14,
+      "generator": "Erlang A",
+      "real_days": 810,
+      "estimate": 0.8338595214266218
+    },
+    {
+      "rep": 14,
+      "generator": "Gaussian copula",
+      "real_days": 810,
+      "estimate": 0.8058062249415189
+    },
+    {
+      "rep": 14,
+      "generator": "CART",
+      "real_days": 810,
+      "estimate": 0.8035896111034055
+    },
+    {
+      "rep": 14,
+      "generator": "SMOTE",
+      "real_days": 810,
+      "estimate": 0.8044564253583752
+    },
+    {
+      "rep": 14,
+      "generator": "Gaussian mixture",
+      "real_days": 810,
+      "estimate": 0.8000523273621978
+    },
+    {
+      "rep": 15,
+      "generator": "Empirical average",
+      "real_days": 10,
+      "estimate": 0.8040481545177933
+    },
+    {
+      "rep": 15,
+      "generator": "Erlang A",
+      "real_days": 10,
+      "estimate": 0.8025718384815262
+    },
+    {
+      "rep": 15,
+      "generator": "Gaussian copula",
+      "real_days": 10,
+      "estimate": 0.79894719784522
+    },
+    {
+      "rep": 15,
+      "generator": "CART",
+      "real_days": 10,
+      "estimate": 0.8071561394813314
+    },
+    {
+      "rep": 15,
+      "generator": "SMOTE",
+      "real_days": 10,
+      "estimate": 0.8142248996907445
+    },
+    {
+      "rep": 15,
+      "generator": "Gaussian mixture",
+      "real_days": 10,
+      "estimate": 0.7996330621599811
+    },
+    {
+      "rep": 15,
+      "generator": "Empirical average",
+      "real_days": 30,
+      "estimate": 0.773055305273094
+    },
+    {
+      "rep": 15,
+      "generator": "Erlang A",
+      "real_days": 30,
+      "estimate": 0.8043790173235567
+    },
+    {
+      "rep": 15,
+      "generator": "Gaussian copula",
+      "real_days": 30,
+      "estimate": 0.7753986222669602
+    },
+    {
+      "rep": 15,
+      "generator": "CART",
+      "real_days": 30,
+      "estimate": 0.7749943375173486
+    },
+    {
+      "rep": 15,
+      "generator": "SMOTE",
+      "real_days": 30,
+      "estimate": 0.7834740288851731
+    },
+    {
+      "rep": 15,
+      "generator": "Gaussian mixture",
+      "real_days": 30,
+      "estimate": 0.7686928620341459
+    },
+    {
+      "rep": 15,
+      "generator": "Empirical average",
+      "real_days": 90,
+      "estimate": 0.796883493386483
+    },
+    {
+      "rep": 15,
+      "generator": "Erlang A",
+      "real_days": 90,
+      "estimate": 0.827882318930819
+    },
+    {
+      "rep": 15,
+      "generator": "Gaussian copula",
+      "real_days": 90,
+      "estimate": 0.7988156243677259
+    },
+    {
+      "rep": 15,
+      "generator": "CART",
+      "real_days": 90,
+      "estimate": 0.800355349937018
+    },
+    {
+      "rep": 15,
+      "generator": "SMOTE",
+      "real_days": 90,
+      "estimate": 0.7983552657202829
+    },
+    {
+      "rep": 15,
+      "generator": "Gaussian mixture",
+      "real_days": 90,
+      "estimate": 0.7935143943898021
+    },
+    {
+      "rep": 15,
+      "generator": "Empirical average",
+      "real_days": 270,
+      "estimate": 0.7955167351171665
+    },
+    {
+      "rep": 15,
+      "generator": "Erlang A",
+      "real_days": 270,
+      "estimate": 0.8259422872486956
+    },
+    {
+      "rep": 15,
+      "generator": "Gaussian copula",
+      "real_days": 270,
+      "estimate": 0.7951920730735226
+    },
+    {
+      "rep": 15,
+      "generator": "CART",
+      "real_days": 270,
+      "estimate": 0.7975176817390307
+    },
+    {
+      "rep": 15,
+      "generator": "SMOTE",
+      "real_days": 270,
+      "estimate": 0.8000924357247615
+    },
+    {
+      "rep": 15,
+      "generator": "Gaussian mixture",
+      "real_days": 270,
+      "estimate": 0.7914389068200206
+    },
+    {
+      "rep": 15,
+      "generator": "Empirical average",
+      "real_days": 810,
+      "estimate": 0.7986858636621545
+    },
+    {
+      "rep": 15,
+      "generator": "Erlang A",
+      "real_days": 810,
+      "estimate": 0.8302842029912078
+    },
+    {
+      "rep": 15,
+      "generator": "Gaussian copula",
+      "real_days": 810,
+      "estimate": 0.8010196733439251
+    },
+    {
+      "rep": 15,
+      "generator": "CART",
+      "real_days": 810,
+      "estimate": 0.799597729417536
+    },
+    {
+      "rep": 15,
+      "generator": "SMOTE",
+      "real_days": 810,
+      "estimate": 0.8036702898082979
+    },
+    {
+      "rep": 15,
+      "generator": "Gaussian mixture",
+      "real_days": 810,
+      "estimate": 0.801852569744084
     }
   ],
-  "reps": 3,
-  "truth_days": 200
+  "reps": 16,
+  "truth_days": 4000
 }
