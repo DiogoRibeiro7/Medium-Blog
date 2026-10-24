@@ -88,9 +88,13 @@ def label_ends(ax, items, gap: float = 0.045, log: bool = False) -> None:
                 moved = True
         if not moved:
             break
-    shifted = offset_copy(ax.transData, fig=ax.figure, x=7, y=0,
+    key = offset_copy(ax.transData, fig=ax.figure, x=11, y=0,
+                      units="points")
+    shifted = offset_copy(ax.transData, fig=ax.figure, x=18, y=0,
                           units="points")
     for (x, y, text, color), yy in zip(order, pos):
+        ax.plot([x], [inv(yy)], marker="s", ms=6, color=color, mec=color,
+                transform=key, clip_on=False, ls="none")
         ax.text(x, inv(yy), text, transform=shifted, va="center",
                 fontsize=9, color=INK if color == INK else INK_2)
 
@@ -136,7 +140,7 @@ def fig1_fidelity() -> None:
         ax.errorbar(g.index, g["mean"], yerr=g["std"], capsize=0,
                     elinewidth=1, **st)
         items.append((g.index[-1], g["mean"].iloc[-1], name, st["color"]))
-    label_ends(ax, items, gap=0.06)
+    label_ends(ax, items, gap=0.075)
     ax.axhline(floor, color=INK, lw=1.2)
     ax.text(28, floor - 0.012, "real vs real", va="top", fontsize=9,
             color=INK)
@@ -245,16 +249,20 @@ def fig4_error_budget() -> None:
           for n in ["Empirical average"] + order}
     vals = np.concatenate([s.values for s in list(sa.values())
                            + list(sb.values())])
+    ticks = [0.002, 0.005, 0.01, 0.02, 0.05]
     for a_ in (ax, bx):
         a_.set_yscale("log")
         a_.set_xscale("log")
         a_.set_ylim(vals.min() / 1.5, vals.max() * 1.5)
+        a_.set_yticks(ticks, [f"{t:g}" for t in ticks])
+        a_.minorticks_off()
     items = []
     for name in order:
         s, st = sa[name], style(name)
         ax.plot(s.index, s.values, **st)
         items.append((s.index[-1], s.values[-1], name, st["color"]))
     label_ends(ax, items, log=True)
+    ax.set_xticks([1, 10, 100, 500], ["1", "10", "100", "500"])
     ax.set_xlabel("synthetic days generated (real data fixed at 90 days)")
     ax.set_ylabel("RMSE of the long-run service level")
     ax.set_title("More simulation")
@@ -270,6 +278,7 @@ def fig4_error_budget() -> None:
                       "average of the real days" if name ==
                       "Empirical average" else name, st["color"]))
     label_ends(bx, items, log=True)
+    bx.set_xticks([10, 30, 90, 270, 810], ["10", "30", "90", "270", "810"])
     bx.set_xlabel("real days available (synthetic sample large)")
     bx.set_title("More data")
     bx.set_xlim(7, 6000)
@@ -294,20 +303,24 @@ def fig5_calibration() -> None:
                     marker=markers[name], ms=6, mec=SURFACE, lw=2,
                     elinewidth=1.2, capsize=0, label=name)
     items = []
+    n_lim = e5["limit_days"]
     for name, theta in e5["limits"].items():
         lim = 1 / theta
-        ax.plot([600, 2200], [lim, lim], color=colors[name], lw=2)
-        items.append((2200, lim, f"{name}, {e5['limit_days']} days: "
-                      f"{lim:.0f} s", colors[name]))
+        ax.plot([n_lim], [lim], marker=markers[name], ms=9, mfc=SURFACE,
+                mec=colors[name], mew=2, ls="none")
+        items.append((n_lim, lim, f"{name}: {lim:.0f} s", colors[name]))
     ref = 1 / e5["references"]["one over mean patience"]
     ax.axhline(ref, color=INK, lw=1.4)
-    items.append((2200, ref, f"true mean patience: {ref:.0f} s", INK))
+    ax.text(8, ref + 1.2, f"reality's mean patience: {ref:.0f} s",
+            va="bottom", fontsize=9, color=INK)
     ax.set_xscale("log")
-    ax.set_xticks([10, 30, 90, 270, 1000], ["10", "30", "90", "270",
-                                             "1,000"])
+    ax.set_xticks([10, 30, 90, 270, n_lim],
+                  ["10", "30", "90", "270", f"{n_lim:,}"])
     ax.minorticks_off()
     ax.set_xlim(7, 12000)
     label_ends(ax, items, gap=0.05)
+    ax.text(n_lim, ax.get_ylim()[0] + 4, "long-run\nlimits", ha="center",
+            fontsize=8.5, color=INK_2)
     ax.legend(loc="upper left")
     ax.set_xlabel("days of data used for calibration")
     ax.set_ylabel("calibrated mean patience 1/θ (seconds)")
@@ -339,7 +352,7 @@ def fig6_decision() -> None:
                 label=show[name])
     ax.axhline(e7["coverage"], color=MUTED, lw=1)
     ax.legend(loc="lower right")
-    ax.set_ylim(0.3, 1.02)
+    ax.set_ylim(0.2, 1.02)
     ax.set_xlabel("agents added to every half hour on launch days (k)")
     ax.set_ylabel(f"share of days with service level ≥ {e7['target']:.0%}")
     ax.set_title("What each method expects, and what happens")
@@ -361,9 +374,10 @@ def fig6_decision() -> None:
             mec=SURFACE, ls="none")
     items.append((k_star, real[k_star], f"smallest k that works: {k_star}",
                   INK))
-    bx.set_ylim(0.3, 1.02)
+    bx.set_ylim(0.2, 1.02)
     label_ends(bx, items, gap=0.07)
     bx.set_xlim(-0.5, max(real.index) + 6)
+    bx.set_xticks(range(0, max(real.index) + 1, 2))
     bx.set_xlabel("k chosen")
     bx.set_title("Each choice scored in reality")
     fig.tight_layout()

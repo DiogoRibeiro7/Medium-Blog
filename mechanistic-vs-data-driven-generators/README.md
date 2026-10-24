@@ -35,7 +35,7 @@ From this folder:
 python -m pip install -r requirements.txt
 python -m pytest -q tests
 cd experiments
-python run_all.py          # about an hour on two cores
+python run_all.py          # about forty minutes on two cores
 python make_figures.py
 ```
 
