@@ -45,8 +45,12 @@ def main() -> None:
         "of training (holdout = real):")
     p = f[(f.n_days == 90) | f.n_days.isna()]
     table(p.groupby("generator")[["sl", "abandon"]].mean().round(4))
-    out(f"    mixture components chosen by BIC (replicate 0, 90 days): "
-        f"{e1['gmm_components_rep0_n90']}")
+    g = f[f.generator == "Gaussian mixture"]
+    out("    mixture components chosen by BIC (candidates 4, 8, 12, 16, 24),"
+        " by training days, one value per replicate:")
+    for n, comps in g.groupby("n_days")["n_components"]:
+        out(f"      {int(n):4d} days: "
+            + ", ".join(str(int(c)) for c in comps))
     out()
 
     e2 = load("e2_surge")

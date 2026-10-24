@@ -46,7 +46,9 @@ def main() -> None:
                 synth = gen.sample(rng(seq, 2, i, j), len(holdout))
                 auc = discriminator_auc(holdout, synth, seed=r)
                 rows.append({"rep": r, "n_days": n, "generator": name,
-                             "auc": auc, **pooled(synth)})
+                             "auc": auc, **pooled(synth),
+                             "n_components": getattr(gen, "n_components",
+                                                     None)})
                 if r == 0 and n == 90:
                     scatter[name] = {"load": load_per_agent(synth),
                                      "sl": synth["sl"].to_numpy()}
