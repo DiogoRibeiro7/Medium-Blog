@@ -696,7 +696,7 @@ def main() -> None:
       f"({100 * gap[post].mean() / taxm:.0f}%); January-June 2024 {fmt(gap['2024-01':'2024-06'].mean())}; "
       f"2025 {fmt(gap['2025-01':'2025-12'].mean())}")
     v2, gap2 = synthetic_control(rel.drop(index="EL"), "PT", pre_months)
-    w(f"  without Greece: weights " + ", ".join(f"{g} {x:.2f}" for g, x in v2.sort_values(ascending=False).items() if x >= 0.005)
+    w("  without Greece: weights " + ", ".join(f"{g} {x:.2f}" for g, x in v2.sort_values(ascending=False).items() if x >= 0.005)
       + f"; pre-period RMSPE {100 * float(np.sqrt((gap2[pre_months] ** 2).mean())):.2f}; mean gap May-December 2023 "
       f"{fmt(gap2[post].mean())} ({100 * gap2[post].mean() / taxm:.0f}%)")
     ratios = {}
