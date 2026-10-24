@@ -158,6 +158,7 @@ def fig1_fidelity() -> None:
 def fig2_surge() -> None:
     e2 = load("e2_surge")
     f = pd.DataFrame(e2["rows"])
+    f = f[f.generator != "Offered given to synthesizers"]
     q = e2["training_day_ratio_quantiles"]
     fig, (ax, bx) = plt.subplots(1, 2, figsize=(13, 5.0), sharey=True)
     mean = f.groupby(["generator", "m"])["sl"].mean()

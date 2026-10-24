@@ -4,6 +4,7 @@
       "rep": 0,
       "m": 0.9,
       "generator": "Reality",
+      "offered_per_day": 3259.516666666667,
       "sl": 0.861600134989339,
       "abandon": 0.03518926630226363
     },
@@ -20,6 +21,12 @@
       "generator": "Erlang A",
       "sl": 0.878078078078078,
       "abandon": 0.031069725187372246
+    },
+    {
+      "rep": 0,
+      "m": 0.9,
+      "generator": "Offered given to synthesizers",
+      "offered_per_day": 3314.15
     },
     {
       "rep": 0,
@@ -46,6 +53,7 @@
       "rep": 0,
       "m": 1.0,
       "generator": "Reality",
+      "offered_per_day": 3630.2166666666667,
       "sl": 0.8101903926762866,
       "abandon": 0.04950117761566114
     },
@@ -62,6 +70,12 @@
       "generator": "Erlang A",
       "sl": 0.8437063032928468,
       "abandon": 0.03900602272000293
+    },
+    {
+      "rep": 0,
+      "m": 1.0,
+      "generator": "Offered given to synthesizers",
+      "offered_per_day": 3628.9333333333334
     },
     {
       "rep": 0,
@@ -88,6 +102,7 @@
       "rep": 0,
       "m": 1.1,
       "generator": "Reality",
+      "offered_per_day": 4060.4333333333334,
       "sl": 0.7173043927987982,
       "abandon": 0.07552970536806417
     },
@@ -104,6 +119,12 @@
       "generator": "Erlang A",
       "sl": 0.7920256707280983,
       "abandon": 0.05233074314897647
+    },
+    {
+      "rep": 0,
+      "m": 1.1,
+      "generator": "Offered given to synthesizers",
+      "offered_per_day": 3905.233333333333
     },
     {
       "rep": 0,
@@ -130,6 +151,7 @@
       "rep": 0,
       "m": 1.2,
       "generator": "Reality",
+      "offered_per_day": 4472.816666666667,
       "sl": 0.5992868028721648,
       "abandon": 0.11167832350234193
     },
@@ -146,6 +168,12 @@
       "generator": "Erlang A",
       "sl": 0.7322606787768575,
       "abandon": 0.06832440552667471
+    },
+    {
+      "rep": 0,
+      "m": 1.2,
+      "generator": "Offered given to synthesizers",
+      "offered_per_day": 4211.783333333334
     },
     {
       "rep": 0,
@@ -172,6 +200,7 @@
       "rep": 0,
       "m": 1.3,
       "generator": "Reality",
+      "offered_per_day": 5138.7,
       "sl": 0.4500489747731268,
       "abandon": 0.16946244510609038
     },
@@ -188,6 +217,12 @@
       "generator": "Erlang A",
       "sl": 0.6284812950098783,
       "abandon": 0.09558203924401107
+    },
+    {
+      "rep": 0,
+      "m": 1.3,
+      "generator": "Offered given to synthesizers",
+      "offered_per_day": 4701.216666666666
     },
     {
       "rep": 0,
@@ -214,6 +249,7 @@
       "rep": 0,
       "m": 1.4,
       "generator": "Reality",
+      "offered_per_day": 5689.3,
       "sl": 0.30852653226231697,
       "abandon": 0.2415352796770546
     },
@@ -230,6 +266,12 @@
       "generator": "Erlang A",
       "sl": 0.5175060260542209,
       "abandon": 0.1296312596484576
+    },
+    {
+      "rep": 0,
+      "m": 1.4,
+      "generator": "Offered given to synthesizers",
+      "offered_per_day": 4900.866666666667
     },
     {
       "rep": 0,
@@ -256,6 +298,7 @@
       "rep": 0,
       "m": 1.5,
       "generator": "Reality",
+      "offered_per_day": 6423.116666666667,
       "sl": 0.21508509627984337,
       "abandon": 0.29494248638381676
     },
@@ -272,6 +315,12 @@
       "generator": "Erlang A",
       "sl": 0.40356441072979027,
       "abandon": 0.16625386525308838
+    },
+    {
+      "rep": 0,
+      "m": 1.5,
+      "generator": "Offered given to synthesizers",
+      "offered_per_day": 5488.966666666666
     },
     {
       "rep": 0,
@@ -298,6 +347,7 @@
       "rep": 1,
       "m": 0.9,
       "generator": "Reality",
+      "offered_per_day": 3267.383333333333,
       "sl": 0.8583984125931556,
       "abandon": 0.036859260468366635
     },
@@ -314,6 +364,12 @@
       "generator": "Erlang A",
       "sl": 0.8655331607926214,
       "abandon": 0.03278606617169466
+    },
+    {
+      "rep": 1,
+      "m": 0.9,
+      "generator": "Offered given to synthesizers",
+      "offered_per_day": 3323.2
     },
     {
       "rep": 1,
@@ -340,6 +396,7 @@
       "rep": 1,
       "m": 1.0,
       "generator": "Reality",
+      "offered_per_day": 3650.9666666666667,
       "sl": 0.7907540468734308,
       "abandon": 0.05357028732116608
     },
@@ -356,6 +413,12 @@
       "generator": "Erlang A",
       "sl": 0.8241194149286848,
       "abandon": 0.043393850112985875
+    },
+    {
+      "rep": 1,
+      "m": 1.0,
+      "generator": "Offered given to synthesizers",
+      "offered_per_day": 3699.9333333333334
     },
     {
       "rep": 1,
@@ -382,6 +445,7 @@
       "rep": 1,
       "m": 1.1,
       "generator": "Reality",
+      "offered_per_day": 3968.4166666666665,
       "sl": 0.7441674891329455,
       "abandon": 0.0667016652317255
     },
@@ -398,6 +462,12 @@
       "generator": "Erlang A",
       "sl": 0.7734256414053534,
       "abandon": 0.05494880686469299
+    },
+    {
+      "rep": 1,
+      "m": 1.1,
+      "generator": "Offered given to synthesizers",
+      "offered_per_day": 4060.9
     },
     {
       "rep": 1,
@@ -424,6 +494,7 @@
       "rep": 1,
       "m": 1.2,
       "generator": "Reality",
+      "offered_per_day": 4477.133333333333,
       "sl": 0.5896258022246378,
       "abandon": 0.11731837336390845
     },
@@ -440,6 +511,12 @@
       "generator": "Erlang A",
       "sl": 0.6984101214152355,
       "abandon": 0.07618119899960958
+    },
+    {
+      "rep": 1,
+      "m": 1.2,
+      "generator": "Offered given to synthesizers",
+      "offered_per_day": 4325.233333333334
     },
     {
       "rep": 1,
@@ -466,6 +543,7 @@
       "rep": 1,
       "m": 1.3,
       "generator": "Reality",
+      "offered_per_day": 4974.9,
       "sl": 0.46296072952890177,
       "abandon": 0.16385588990063452
     },
@@ -482,6 +560,12 @@
       "generator": "Erlang A",
       "sl": 0.5879797145217812,
       "abandon": 0.10650588335850024
+    },
+    {
+      "rep": 1,
+      "m": 1.3,
+      "generator": "Offered given to synthesizers",
+      "offered_per_day": 4695.9
     },
     {
       "rep": 1,
@@ -508,6 +592,7 @@
       "rep": 1,
       "m": 1.4,
       "generator": "Reality",
+      "offered_per_day": 5643.2,
       "sl": 0.3238853841791891,
       "abandon": 0.2327816368963236
     },
@@ -524,6 +609,12 @@
       "generator": "Erlang A",
       "sl": 0.45606197839166723,
       "abandon": 0.14812382739212007
+    },
+    {
+      "rep": 1,
+      "m": 1.4,
+      "generator": "Offered given to synthesizers",
+      "offered_per_day": 5179.566666666667
     },
     {
       "rep": 1,
@@ -550,6 +641,7 @@
       "rep": 1,
       "m": 1.5,
       "generator": "Reality",
+      "offered_per_day": 6700.4,
       "sl": 0.14324766680596182,
       "abandon": 0.3412383340298092
     },
@@ -566,6 +658,12 @@
       "generator": "Erlang A",
       "sl": 0.3480138595182461,
       "abandon": 0.1868044809154187
+    },
+    {
+      "rep": 1,
+      "m": 1.5,
+      "generator": "Offered given to synthesizers",
+      "offered_per_day": 5393.6
     },
     {
       "rep": 1,
@@ -592,6 +690,7 @@
       "rep": 2,
       "m": 0.9,
       "generator": "Reality",
+      "offered_per_day": 3153.95,
       "sl": 0.8581778404857401,
       "abandon": 0.03612401380279755
     },
@@ -608,6 +707,12 @@
       "generator": "Erlang A",
       "sl": 0.8807399267014056,
       "abandon": 0.03029219532971222
+    },
+    {
+      "rep": 2,
+      "m": 0.9,
+      "generator": "Offered given to synthesizers",
+      "offered_per_day": 3172.983333333333
     },
     {
       "rep": 2,
@@ -634,6 +739,7 @@
       "rep": 2,
       "m": 1.0,
       "generator": "Reality",
+      "offered_per_day": 3501.55,
       "sl": 0.8087132841170339,
       "abandon": 0.04896879001204229
     },
@@ -650,6 +756,12 @@
       "generator": "Erlang A",
       "sl": 0.8326452373930994,
       "abandon": 0.042546208654788295
+    },
+    {
+      "rep": 2,
+      "m": 1.0,
+      "generator": "Offered given to synthesizers",
+      "offered_per_day": 3517.0666666666666
     },
     {
       "rep": 2,
@@ -676,6 +788,7 @@
       "rep": 2,
       "m": 1.1,
       "generator": "Reality",
+      "offered_per_day": 3953.5666666666666,
       "sl": 0.7388138979992749,
       "abandon": 0.0695195055941049
     },
@@ -692,6 +805,12 @@
       "generator": "Erlang A",
       "sl": 0.779649048176114,
       "abandon": 0.0556503243645645
+    },
+    {
+      "rep": 2,
+      "m": 1.1,
+      "generator": "Offered given to synthesizers",
+      "offered_per_day": 3925.9
     },
     {
       "rep": 2,
@@ -718,6 +837,7 @@
       "rep": 2,
       "m": 1.2,
       "generator": "Reality",
+      "offered_per_day": 4452.866666666667,
       "sl": 0.6201360921054602,
       "abandon": 0.1057783001212702
     },
@@ -734,6 +854,12 @@
       "generator": "Erlang A",
       "sl": 0.7250982834455646,
       "abandon": 0.06993499669144837
+    },
+    {
+      "rep": 2,
+      "m": 1.2,
+      "generator": "Offered given to synthesizers",
+      "offered_per_day": 4271.316666666667
     },
     {
       "rep": 2,
@@ -760,6 +886,7 @@
       "rep": 2,
       "m": 1.3,
       "generator": "Reality",
+      "offered_per_day": 5023.833333333333,
       "sl": 0.4593238894602395,
       "abandon": 0.1604385761204923
     },
@@ -776,6 +903,12 @@
       "generator": "Erlang A",
       "sl": 0.6233166089778454,
       "abandon": 0.09898465273250516
+    },
+    {
+      "rep": 2,
+      "m": 1.3,
+      "generator": "Offered given to synthesizers",
+      "offered_per_day": 4639.9
     },
     {
       "rep": 2,
@@ -802,6 +935,7 @@
       "rep": 2,
       "m": 1.4,
       "generator": "Reality",
+      "offered_per_day": 5701.366666666667,
       "sl": 0.3040820621956139,
       "abandon": 0.23378020474623043
     },
@@ -818,6 +952,12 @@
       "generator": "Erlang A",
       "sl": 0.5009648603544399,
       "abandon": 0.1352175701572204
+    },
+    {
+      "rep": 2,
+      "m": 1.4,
+      "generator": "Offered given to synthesizers",
+      "offered_per_day": 4976.966666666666
     },
     {
       "rep": 2,
@@ -844,6 +984,7 @@
       "rep": 2,
       "m": 1.5,
       "generator": "Reality",
+      "offered_per_day": 6739.9,
       "sl": 0.1596734867480724,
       "abandon": 0.3213005138552995
     },
@@ -860,6 +1001,12 @@
       "generator": "Erlang A",
       "sl": 0.39319098450634027,
       "abandon": 0.1713842776199635
+    },
+    {
+      "rep": 2,
+      "m": 1.5,
+      "generator": "Offered given to synthesizers",
+      "offered_per_day": 5463.15
     },
     {
       "rep": 2,
@@ -886,6 +1033,7 @@
       "rep": 3,
       "m": 0.9,
       "generator": "Reality",
+      "offered_per_day": 3248.75,
       "sl": 0.8581762216237014,
       "abandon": 0.036106194690265485
     },
@@ -902,6 +1050,12 @@
       "generator": "Erlang A",
       "sl": 0.8702805602139329,
       "abandon": 0.03235180065166921
+    },
+    {
+      "rep": 3,
+      "m": 0.9,
+      "generator": "Offered given to synthesizers",
+      "offered_per_day": 3301.55
     },
     {
       "rep": 3,
@@ -928,6 +1082,7 @@
       "rep": 3,
       "m": 1.0,
       "generator": "Reality",
+      "offered_per_day": 3549.05,
       "sl": 0.8245399003489197,
       "abandon": 0.045636625763702025
     },
@@ -944,6 +1099,12 @@
       "generator": "Erlang A",
       "sl": 0.8258784651442631,
       "abandon": 0.043472013936906764
+    },
+    {
+      "rep": 3,
+      "m": 1.0,
+      "generator": "Offered given to synthesizers",
+      "offered_per_day": 3738.0
     },
     {
       "rep": 3,
@@ -970,6 +1131,7 @@
       "rep": 3,
       "m": 1.1,
       "generator": "Reality",
+      "offered_per_day": 4037.2166666666667,
       "sl": 0.703413655447441,
       "abandon": 0.08004276873918913
     },
@@ -986,6 +1148,12 @@
       "generator": "Erlang A",
       "sl": 0.7828522206815413,
       "abandon": 0.05427959157947813
+    },
+    {
+      "rep": 3,
+      "m": 1.1,
+      "generator": "Offered given to synthesizers",
+      "offered_per_day": 3974.7166666666667
     },
     {
       "rep": 3,
@@ -1012,6 +1180,7 @@
       "rep": 3,
       "m": 1.2,
       "generator": "Reality",
+      "offered_per_day": 4620.266666666666,
       "sl": 0.5536873773519566,
       "abandon": 0.13254646196467737
     },
@@ -1028,6 +1197,12 @@
       "generator": "Erlang A",
       "sl": 0.6981327601018564,
       "abandon": 0.0765271726359017
+    },
+    {
+      "rep": 3,
+      "m": 1.2,
+      "generator": "Offered given to synthesizers",
+      "offered_per_day": 4321.133333333333
     },
     {
       "rep": 3,
@@ -1054,6 +1229,7 @@
       "rep": 3,
       "m": 1.3,
       "generator": "Reality",
+      "offered_per_day": 4840.45,
       "sl": 0.5041921033512724,
       "abandon": 0.14786159689009631
     },
@@ -1070,6 +1246,12 @@
       "generator": "Erlang A",
       "sl": 0.5907904157064445,
       "abandon": 0.10670665465127462
+    },
+    {
+      "rep": 3,
+      "m": 1.3,
+      "generator": "Offered given to synthesizers",
+      "offered_per_day": 4688.583333333333
     },
     {
       "rep": 3,
@@ -1096,6 +1278,7 @@
       "rep": 3,
       "m": 1.4,
       "generator": "Reality",
+      "offered_per_day": 5703.316666666667,
       "sl": 0.29510314173916347,
       "abandon": 0.24328826209310955
     },
@@ -1112,6 +1295,12 @@
       "generator": "Erlang A",
       "sl": 0.4777830596655245,
       "abandon": 0.14217521342127676
+    },
+    {
+      "rep": 3,
+      "m": 1.4,
+      "generator": "Offered given to synthesizers",
+      "offered_per_day": 5032.55
     },
     {
       "rep": 3,
@@ -1138,6 +1327,7 @@
       "rep": 3,
       "m": 1.5,
       "generator": "Reality",
+      "offered_per_day": 6407.5,
       "sl": 0.18982702562101703,
       "abandon": 0.30095981271946937
     },
@@ -1154,6 +1344,12 @@
       "generator": "Erlang A",
       "sl": 0.3484370328538684,
       "abandon": 0.19004750357107264
+    },
+    {
+      "rep": 3,
+      "m": 1.5,
+      "generator": "Offered given to synthesizers",
+      "offered_per_day": 5524.55
     },
     {
       "rep": 3,
@@ -1180,6 +1376,7 @@
       "rep": 4,
       "m": 0.9,
       "generator": "Reality",
+      "offered_per_day": 3171.483333333333,
       "sl": 0.8778647215551083,
       "abandon": 0.031730683329041616
     },
@@ -1196,6 +1393,12 @@
       "generator": "Erlang A",
       "sl": 0.869668850345541,
       "abandon": 0.03246535845813283
+    },
+    {
+      "rep": 4,
+      "m": 0.9,
+      "generator": "Offered given to synthesizers",
+      "offered_per_day": 3329.0666666666666
     },
     {
       "rep": 4,
@@ -1222,6 +1425,7 @@
       "rep": 4,
       "m": 1.0,
       "generator": "Reality",
+      "offered_per_day": 3604.766666666667,
       "sl": 0.7939996116253479,
       "abandon": 0.05388235946848155
     },
@@ -1238,6 +1442,12 @@
       "generator": "Erlang A",
       "sl": 0.833992308698024,
       "abandon": 0.040940629099811096
+    },
+    {
+      "rep": 4,
+      "m": 1.0,
+      "generator": "Offered given to synthesizers",
+      "offered_per_day": 3712.8
     },
     {
       "rep": 4,
@@ -1264,6 +1474,7 @@
       "rep": 4,
       "m": 1.1,
       "generator": "Reality",
+      "offered_per_day": 4069.8166666666666,
       "sl": 0.6918452510145829,
       "abandon": 0.0829152828341981
     },
@@ -1280,6 +1491,12 @@
       "generator": "Erlang A",
       "sl": 0.7783477480349308,
       "abandon": 0.0553490986267585
+    },
+    {
+      "rep": 4,
+      "m": 1.1,
+      "generator": "Offered given to synthesizers",
+      "offered_per_day": 3976.3166666666666
     },
     {
       "rep": 4,
@@ -1306,6 +1523,7 @@
       "rep": 4,
       "m": 1.2,
       "generator": "Reality",
+      "offered_per_day": 4446.983333333334,
       "sl": 0.6147050997117897,
       "abandon": 0.10918262942294214
     },
@@ -1322,6 +1540,12 @@
       "generator": "Erlang A",
       "sl": 0.6966705497726504,
       "abandon": 0.07685543572206982
+    },
+    {
+      "rep": 4,
+      "m": 1.2,
+      "generator": "Offered given to synthesizers",
+      "offered_per_day": 4412.883333333333
     },
     {
       "rep": 4,
@@ -1348,6 +1572,7 @@
       "rep": 4,
       "m": 1.3,
       "generator": "Reality",
+      "offered_per_day": 5022.283333333334,
       "sl": 0.4723980128560383,
       "abandon": 0.15989407208540604
     },
@@ -1364,6 +1589,12 @@
       "generator": "Erlang A",
       "sl": 0.5870635236332821,
       "abandon": 0.10864218882412964
+    },
+    {
+      "rep": 4,
+      "m": 1.3,
+      "generator": "Offered given to synthesizers",
+      "offered_per_day": 4813.133333333333
     },
     {
       "rep": 4,
@@ -1390,6 +1621,7 @@
       "rep": 4,
       "m": 1.4,
       "generator": "Reality",
+      "offered_per_day": 5866.983333333334,
       "sl": 0.2846550896400478,
       "abandon": 0.24677077089588914
     },
@@ -1406,6 +1638,12 @@
       "generator": "Erlang A",
       "sl": 0.4717656510161904,
       "abandon": 0.14418759839586398
+    },
+    {
+      "rep": 4,
+      "m": 1.4,
+      "generator": "Offered given to synthesizers",
+      "offered_per_day": 5164.633333333333
     },
     {
       "rep": 4,
@@ -1432,6 +1670,7 @@
       "rep": 4,
       "m": 1.5,
       "generator": "Reality",
+      "offered_per_day": 6089.916666666667,
       "sl": 0.2221842116066175,
       "abandon": 0.2801078285143475
     },
@@ -1448,6 +1687,12 @@
       "generator": "Erlang A",
       "sl": 0.3569843346083032,
       "abandon": 0.18541203017773122
+    },
+    {
+      "rep": 4,
+      "m": 1.5,
+      "generator": "Offered given to synthesizers",
+      "offered_per_day": 5372.083333333333
     },
     {
       "rep": 4,

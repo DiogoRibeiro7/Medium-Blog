@@ -56,6 +56,12 @@ def main() -> None:
     out(f"    {e2['reps']} replicates, 60 evaluation days per m")
     out("    day-level offered / expected in training: min {:.3f}, "
         "p5 {:.3f}, p95 {:.3f}, max {:.3f}".format(*q))
+    out("    offered calls per day: reality (fresh demand plus redials) "
+        "and the m x training mean handed to the synthesizers:")
+    table(f.dropna(subset=["offered_per_day"])
+          .groupby(["m", "generator"])["offered_per_day"].mean().unstack()
+          .round(0))
+    f = f[f.generator != "Offered given to synthesizers"]
     out("    pooled service level:")
     table(f.groupby(["m", "generator"])["sl"].mean().unstack().round(3))
     out("    pooled abandonment:")

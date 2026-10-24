@@ -100,7 +100,8 @@ def main() -> None:
             cal = calendar_of(real)
             truth = pooled(real)
             out_rows.append({"rep": r, "m": m, "generator": "Reality",
-                             **truth})
+                             "offered_per_day": real["offered"].sum()
+                             / n_eval, **truth})
             for j, name in enumerate(("Erlang C", "Erlang A")):
                 synth = gens[name].sample_days(rng(seq, 2, i, j), n_eval,
                                                multiplier=m, calendar=cal)
@@ -108,6 +109,10 @@ def main() -> None:
                                  **pooled(synth)})
             given = real[["dow", "interval", "campaign"]].copy()
             given["offered"] = np.round(m * expected_offered(train, given))
+            out_rows.append({"rep": r, "m": m,
+                             "generator": "Offered given to synthesizers",
+                             "offered_per_day": given["offered"].sum()
+                             / n_eval})
             for j, name in enumerate(CONDITIONAL):
                 draws = [pooled(gens[name].sample_given(rng(seq, 3, i, j, k),
                                                         given))
