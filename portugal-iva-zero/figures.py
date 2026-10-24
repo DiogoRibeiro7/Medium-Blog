@@ -273,6 +273,42 @@ def incidence(inc: pd.DataFrame) -> None:
            top=0.95)
 
 
+# 11. Vegetable oils: 23% to zero, back at 13%.
+def oils(o: pd.DataFrame) -> None:
+    x = to_dates(o.index)
+    fig, ax = plt.subplots(figsize=(8.5, 4.4))
+    ax.plot(x, 100 * o["price_relative"], color=PURPLE, marker="o", ms=3, label="Price relative to comparison countries")
+    ax.step(x, 100 * o["tax_wedge"], where="mid", color=INK, lw=1.2, ls="--", label="Tax wedge (full pass-through)")
+    ax.axhline(0, color=INK_2, lw=0.8)
+    mark_events(ax)
+    ax.set_ylabel("log points relative to February 2023")
+    ax.set_title("Other edible oils: VAT from 23% to zero, then back at 13%")
+    ax.legend(loc="lower left", fontsize=8.5)
+    finish(fig, "fig11_vegetable_oils.png", "Eurostat prc_hicp_midx and prc_hicp_cind")
+
+
+# 12. The same money, distributed three ways.
+def transfers(tr: pd.DataFrame) -> None:
+    fig, ax = plt.subplots(figsize=(8.5, 4.4))
+    x = np.arange(len(tr))
+    width = 0.27
+    series = [("iva_zero", "IVA Zero (estimated saving)", ORANGE),
+              ("same_total_equal_per_household", "Same total, equal per household", MUTED),
+              ("same_total_poorest_fifth_only", "Same total, poorest fifth only", BLUE)]
+    for i, (col, label, colour) in enumerate(series):
+        ax.bar(x + (i - 1) * width, tr[col], width=width, color=colour, label=label)
+    for xi, v in zip(x, tr["iva_zero"]):
+        ax.text(xi - width, v + 0.4, f"€{v:.2f}", ha="center", fontsize=7.5, color=INK_2)
+    ax.text(x[0] + width, tr["same_total_poorest_fifth_only"].iloc[0] + 0.4,
+            f"€{tr['same_total_poorest_fifth_only'].iloc[0]:.2f}", ha="center", fontsize=7.5, color=INK_2)
+    ax.set_xticks(x, [Q_LABELS[q] for q in tr.index])
+    ax.set_ylabel("euros per household and month")
+    ax.set_title("The households' saving from IVA Zero, and the same total paid two other ways")
+    ax.legend(loc="upper right", fontsize=8.5)
+    finish(fig, "fig12_same_money_three_ways.png",
+           "estimated saving by fifth (fig10), budget survey basis; same total redistributed")
+
+
 def main() -> None:
     FIGURES.mkdir(exist_ok=True)
     for old in FIGURES.glob("fig*.png"):
@@ -301,6 +337,8 @@ def main() -> None:
     reversal(ex)
     headline(hc)
     incidence(inc)
+    oils(pd.read_csv(RESULTS / "oils_series.csv", index_col=0))
+    transfers(pd.read_csv(RESULTS / "transfer_comparison.csv", index_col="quintile"))
 
 
 if __name__ == "__main__":

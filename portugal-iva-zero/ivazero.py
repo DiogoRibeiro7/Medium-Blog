@@ -457,6 +457,9 @@ def extensions(w, lp: pd.DataFrame, wedge: pd.DataFrame, t: pd.DataFrame, comp: 
 
     # Vegetable oils: 23% to 0%, and back at the 13% intermediate rate.
     for c in groups.get("oils_23", []):
+        series = pd.DataFrame({"price_relative": across_diff(lp, "PT", comp, BASE, drop).loc[c],
+                               "tax_wedge": rebased(wpt, BASE).loc[c]}).loc["2022-01":"2024-12"]
+        series.round(6).to_csv(RESULTS / "oils_series.csv")
         r_in = subclass_effects(lp[[ANNOUNCED, FIRST_FULL, "2023-06"]], comp, [c], ANNOUNCED, drop)
         r_out = subclass_effects(lp[["2023-12", REVERSED, "2024-03"]], comp, [c], "2023-12", drop)
         tin = wpt.loc[c, FIRST_FULL] - wpt.loc[c, ANNOUNCED]
@@ -554,6 +557,12 @@ def incidence(w, t: pd.DataFrame, w23: pd.Series, wedge: pd.DataFrame, theta: fl
       f"({total * scale * share_full / share_food:.0f} at full pass-through)")
     w(f"  government ex-ante estimate of forgone VAT: {GOVERNMENT_COST_MEUR} million (it does not depend on pass-through "
       "and includes purchases by non-residents)")
+    mean_m = float(inc["saving_month"].mean())
+    tr = pd.DataFrame({"iva_zero": inc["saving_month"], "same_total_equal_per_household": mean_m,
+                       "same_total_poorest_fifth_only": [5 * mean_m] + [0.0] * 4}, index=inc.index)
+    tr.round(4).to_csv(RESULTS / "transfer_comparison.csv")
+    w(f"  same total as an equal amount per household: {mean_m:.2f} euros a month each; paid only to the poorest "
+      f"fifth: {5 * mean_m:.2f} euros a month per household of that fifth (survey basis)")
     w(f"  the households' total saving, if paid only to the poorest fifth: {1 / inc.loc['QU1', 'share_of_total']:.1f} "
       f"times what that fifth saved ({total * 1e6 / (HOUSEHOLDS / 5) / months:.2f} euros a month per household on the "
       f"survey basis, {total * scale * 1e6 / (HOUSEHOLDS / 5) / months:.2f} scaled to the national accounts)")
@@ -634,6 +643,16 @@ def main() -> None:
         g, se = window_gap(diff, treated, control, POLICY, ww)
         w(f"    {name}: {fmt(g)}; {pass_through(g, se, taxm)}")
     w(f"  tax wedge May-December 2023: {fmt(taxm)}")
+    # Precision: minimum detectable effect (5% two-sided test, 80% power) and power against full pass-through.
+    from scipy.stats import norm
+    z = norm.ppf(0.975) + norm.ppf(0.80)
+    for name, (g, se) in (("May-December 2023, across", window_gap(d_across, treated, control, POLICY)),
+                          ("March to May 2023, across", window_gap(across_diff(lp_w[[ANNOUNCED, FIRST_FULL]], "PT", comp,
+                                                                                ANNOUNCED), treated, control, [FIRST_FULL]))):
+        diff_80 = 0.2 * abs(taxm)
+        power = norm.cdf(diff_80 / se - norm.ppf(0.975))
+        w(f"  precision, {name}: se {100 * se:.2f} log points; minimum detectable effect {100 * z * se:.2f} "
+          f"({100 * z * se / abs(taxm):.0f}% of the wedge); power to tell 80% from full pass-through {100 * power:.0f}%")
     w(f"  announcement month (March 2023): within {fmt(es.loc[ANNOUNCED, 'within'])}, across {fmt(es.loc[ANNOUNCED, 'across'])}; "
       f"April 2023: within {fmt(es.loc[STARTED, 'within'])}, across {fmt(es.loc[STARTED, 'across'])}")
     w(f"  comparison countries' own treated-minus-untreated change, May-December 2023 mean: "

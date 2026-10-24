@@ -52,4 +52,4 @@ jobs:
       - name: Draw the figures
         run: |
           python figures.py
-          test "$(ls figures/fig*.png | wc -l)" -eq 10
+          test "$(ls figures/fig*.png | wc -l)" -eq 12
