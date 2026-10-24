@@ -4,111 +4,904 @@
       "rep": 0,
       "n_days": 10,
       "estimator": "ratio",
-      "theta": 0.00553896376243362
+      "theta": 0.005098371773582918
     },
     {
       "rep": 0,
       "n_days": 10,
       "estimator": "SMM (abandonment)",
-      "theta": 0.005574124094743554
+      "theta": 0.007091202381469123
     },
     {
       "rep": 0,
       "n_days": 10,
       "estimator": "SMM (waiting)",
-      "theta": 0.005352825588307184
+      "theta": 0.0047984453216751545
     },
     {
       "rep": 0,
       "n_days": 30,
       "estimator": "ratio",
-      "theta": 0.005352620343492547
+      "theta": 0.00512515006369011
     },
     {
       "rep": 0,
       "n_days": 30,
       "estimator": "SMM (abandonment)",
-      "theta": 0.005163753129296239
+      "theta": 0.00674955060725306
     },
     {
       "rep": 0,
       "n_days": 30,
       "estimator": "SMM (waiting)",
-      "theta": 0.005432848062779925
+      "theta": 0.004808549357777727
+    },
+    {
+      "rep": 0,
+      "n_days": 90,
+      "estimator": "ratio",
+      "theta": 0.005263628130993526
+    },
+    {
+      "rep": 0,
+      "n_days": 90,
+      "estimator": "SMM (abandonment)",
+      "theta": 0.005583176130879378
+    },
+    {
+      "rep": 0,
+      "n_days": 90,
+      "estimator": "SMM (waiting)",
+      "theta": 0.005243984450587385
+    },
+    {
+      "rep": 0,
+      "n_days": 270,
+      "estimator": "ratio",
+      "theta": 0.005289229610029013
+    },
+    {
+      "rep": 0,
+      "n_days": 270,
+      "estimator": "SMM (abandonment)",
+      "theta": 0.005496649150242267
+    },
+    {
+      "rep": 0,
+      "n_days": 270,
+      "estimator": "SMM (waiting)",
+      "theta": 0.00524910256500076
     },
     {
       "rep": 1,
       "n_days": 10,
       "estimator": "ratio",
-      "theta": 0.005229296443130427
+      "theta": 0.005168131108238233
     },
     {
       "rep": 1,
       "n_days": 10,
       "estimator": "SMM (abandonment)",
-      "theta": 0.006922544356766387
+      "theta": 0.005335336287179883
     },
     {
       "rep": 1,
       "n_days": 10,
       "estimator": "SMM (waiting)",
-      "theta": 0.005361595383378498
+      "theta": 0.005047346206076271
     },
     {
       "rep": 1,
       "n_days": 30,
       "estimator": "ratio",
-      "theta": 0.005407085252862661
+      "theta": 0.0053232714433836025
     },
     {
       "rep": 1,
       "n_days": 30,
       "estimator": "SMM (abandonment)",
-      "theta": 0.0059635644868008845
+      "theta": 0.005422029639068501
     },
     {
       "rep": 1,
       "n_days": 30,
       "estimator": "SMM (waiting)",
-      "theta": 0.0053691162675805005
+      "theta": 0.005303886553161657
+    },
+    {
+      "rep": 1,
+      "n_days": 90,
+      "estimator": "ratio",
+      "theta": 0.005329703324049557
+    },
+    {
+      "rep": 1,
+      "n_days": 90,
+      "estimator": "SMM (abandonment)",
+      "theta": 0.005469061913714312
+    },
+    {
+      "rep": 1,
+      "n_days": 90,
+      "estimator": "SMM (waiting)",
+      "theta": 0.005075211199876972
+    },
+    {
+      "rep": 1,
+      "n_days": 270,
+      "estimator": "ratio",
+      "theta": 0.005292394790292631
+    },
+    {
+      "rep": 1,
+      "n_days": 270,
+      "estimator": "SMM (abandonment)",
+      "theta": 0.005672931414449142
+    },
+    {
+      "rep": 1,
+      "n_days": 270,
+      "estimator": "SMM (waiting)",
+      "theta": 0.005222008426013382
+    },
+    {
+      "rep": 2,
+      "n_days": 10,
+      "estimator": "ratio",
+      "theta": 0.00547206612497254
+    },
+    {
+      "rep": 2,
+      "n_days": 10,
+      "estimator": "SMM (abandonment)",
+      "theta": 0.003539008543443124
+    },
+    {
+      "rep": 2,
+      "n_days": 10,
+      "estimator": "SMM (waiting)",
+      "theta": 0.006055456611453518
+    },
+    {
+      "rep": 2,
+      "n_days": 30,
+      "estimator": "ratio",
+      "theta": 0.0053614916163405085
+    },
+    {
+      "rep": 2,
+      "n_days": 30,
+      "estimator": "SMM (abandonment)",
+      "theta": 0.004807523368489094
+    },
+    {
+      "rep": 2,
+      "n_days": 30,
+      "estimator": "SMM (waiting)",
+      "theta": 0.005624745070558415
+    },
+    {
+      "rep": 2,
+      "n_days": 90,
+      "estimator": "ratio",
+      "theta": 0.005328261740505633
+    },
+    {
+      "rep": 2,
+      "n_days": 90,
+      "estimator": "SMM (abandonment)",
+      "theta": 0.0047875098508408185
+    },
+    {
+      "rep": 2,
+      "n_days": 90,
+      "estimator": "SMM (waiting)",
+      "theta": 0.005397910308607827
+    },
+    {
+      "rep": 2,
+      "n_days": 270,
+      "estimator": "ratio",
+      "theta": 0.005210707490821169
+    },
+    {
+      "rep": 2,
+      "n_days": 270,
+      "estimator": "SMM (abandonment)",
+      "theta": 0.0055719562826657635
+    },
+    {
+      "rep": 2,
+      "n_days": 270,
+      "estimator": "SMM (waiting)",
+      "theta": 0.005084371482933248
+    },
+    {
+      "rep": 3,
+      "n_days": 10,
+      "estimator": "ratio",
+      "theta": 0.005103177174502412
+    },
+    {
+      "rep": 3,
+      "n_days": 10,
+      "estimator": "SMM (abandonment)",
+      "theta": 0.004357254384452648
+    },
+    {
+      "rep": 3,
+      "n_days": 10,
+      "estimator": "SMM (waiting)",
+      "theta": 0.005326022224570137
+    },
+    {
+      "rep": 3,
+      "n_days": 30,
+      "estimator": "ratio",
+      "theta": 0.0051268614013539
+    },
+    {
+      "rep": 3,
+      "n_days": 30,
+      "estimator": "SMM (abandonment)",
+      "theta": 0.004951710067429235
+    },
+    {
+      "rep": 3,
+      "n_days": 30,
+      "estimator": "SMM (waiting)",
+      "theta": 0.00493500169129613
+    },
+    {
+      "rep": 3,
+      "n_days": 90,
+      "estimator": "ratio",
+      "theta": 0.005194912767970365
+    },
+    {
+      "rep": 3,
+      "n_days": 90,
+      "estimator": "SMM (abandonment)",
+      "theta": 0.005176458987941333
+    },
+    {
+      "rep": 3,
+      "n_days": 90,
+      "estimator": "SMM (waiting)",
+      "theta": 0.0052519916529519374
+    },
+    {
+      "rep": 3,
+      "n_days": 270,
+      "estimator": "ratio",
+      "theta": 0.005242270346382031
+    },
+    {
+      "rep": 3,
+      "n_days": 270,
+      "estimator": "SMM (abandonment)",
+      "theta": 0.005263545232680801
+    },
+    {
+      "rep": 3,
+      "n_days": 270,
+      "estimator": "SMM (waiting)",
+      "theta": 0.00525490984949936
+    },
+    {
+      "rep": 4,
+      "n_days": 10,
+      "estimator": "ratio",
+      "theta": 0.005363924328661261
+    },
+    {
+      "rep": 4,
+      "n_days": 10,
+      "estimator": "SMM (abandonment)",
+      "theta": 0.005433480811803986
+    },
+    {
+      "rep": 4,
+      "n_days": 10,
+      "estimator": "SMM (waiting)",
+      "theta": 0.005670060298859775
+    },
+    {
+      "rep": 4,
+      "n_days": 30,
+      "estimator": "ratio",
+      "theta": 0.005369580234893675
+    },
+    {
+      "rep": 4,
+      "n_days": 30,
+      "estimator": "SMM (abandonment)",
+      "theta": 0.004837344131145648
+    },
+    {
+      "rep": 4,
+      "n_days": 30,
+      "estimator": "SMM (waiting)",
+      "theta": 0.0056054537955412655
+    },
+    {
+      "rep": 4,
+      "n_days": 90,
+      "estimator": "ratio",
+      "theta": 0.005405013482062883
+    },
+    {
+      "rep": 4,
+      "n_days": 90,
+      "estimator": "SMM (abandonment)",
+      "theta": 0.005081106791297019
+    },
+    {
+      "rep": 4,
+      "n_days": 90,
+      "estimator": "SMM (waiting)",
+      "theta": 0.005501128578369986
+    },
+    {
+      "rep": 4,
+      "n_days": 270,
+      "estimator": "ratio",
+      "theta": 0.005308966531335546
+    },
+    {
+      "rep": 4,
+      "n_days": 270,
+      "estimator": "SMM (abandonment)",
+      "theta": 0.005354600611472504
+    },
+    {
+      "rep": 4,
+      "n_days": 270,
+      "estimator": "SMM (waiting)",
+      "theta": 0.00527990439022555
+    },
+    {
+      "rep": 5,
+      "n_days": 10,
+      "estimator": "ratio",
+      "theta": 0.005549999768917666
+    },
+    {
+      "rep": 5,
+      "n_days": 10,
+      "estimator": "SMM (abandonment)",
+      "theta": 0.0054771520204042546
+    },
+    {
+      "rep": 5,
+      "n_days": 10,
+      "estimator": "SMM (waiting)",
+      "theta": 0.005731581563355576
+    },
+    {
+      "rep": 5,
+      "n_days": 30,
+      "estimator": "ratio",
+      "theta": 0.005329572236321548
+    },
+    {
+      "rep": 5,
+      "n_days": 30,
+      "estimator": "SMM (abandonment)",
+      "theta": 0.006323205172368267
+    },
+    {
+      "rep": 5,
+      "n_days": 30,
+      "estimator": "SMM (waiting)",
+      "theta": 0.004951025763761512
+    },
+    {
+      "rep": 5,
+      "n_days": 90,
+      "estimator": "ratio",
+      "theta": 0.0052936532343954845
+    },
+    {
+      "rep": 5,
+      "n_days": 90,
+      "estimator": "SMM (abandonment)",
+      "theta": 0.005705340849270921
+    },
+    {
+      "rep": 5,
+      "n_days": 90,
+      "estimator": "SMM (waiting)",
+      "theta": 0.005155259019025985
+    },
+    {
+      "rep": 5,
+      "n_days": 270,
+      "estimator": "ratio",
+      "theta": 0.005279580316292845
+    },
+    {
+      "rep": 5,
+      "n_days": 270,
+      "estimator": "SMM (abandonment)",
+      "theta": 0.005487855565246137
+    },
+    {
+      "rep": 5,
+      "n_days": 270,
+      "estimator": "SMM (waiting)",
+      "theta": 0.00519622153764673
+    },
+    {
+      "rep": 6,
+      "n_days": 10,
+      "estimator": "ratio",
+      "theta": 0.005540060766058677
+    },
+    {
+      "rep": 6,
+      "n_days": 10,
+      "estimator": "SMM (abandonment)",
+      "theta": 0.005788591281600488
+    },
+    {
+      "rep": 6,
+      "n_days": 10,
+      "estimator": "SMM (waiting)",
+      "theta": 0.005680188733220497
+    },
+    {
+      "rep": 6,
+      "n_days": 30,
+      "estimator": "ratio",
+      "theta": 0.005380141381751842
+    },
+    {
+      "rep": 6,
+      "n_days": 30,
+      "estimator": "SMM (abandonment)",
+      "theta": 0.005196163744784801
+    },
+    {
+      "rep": 6,
+      "n_days": 30,
+      "estimator": "SMM (waiting)",
+      "theta": 0.005298815195514824
+    },
+    {
+      "rep": 6,
+      "n_days": 90,
+      "estimator": "ratio",
+      "theta": 0.005383616050790791
+    },
+    {
+      "rep": 6,
+      "n_days": 90,
+      "estimator": "SMM (abandonment)",
+      "theta": 0.005535832651168934
+    },
+    {
+      "rep": 6,
+      "n_days": 90,
+      "estimator": "SMM (waiting)",
+      "theta": 0.005398611951664807
+    },
+    {
+      "rep": 6,
+      "n_days": 270,
+      "estimator": "ratio",
+      "theta": 0.005328958920523937
+    },
+    {
+      "rep": 6,
+      "n_days": 270,
+      "estimator": "SMM (abandonment)",
+      "theta": 0.005464086279248887
+    },
+    {
+      "rep": 6,
+      "n_days": 270,
+      "estimator": "SMM (waiting)",
+      "theta": 0.005309560520929989
+    },
+    {
+      "rep": 7,
+      "n_days": 10,
+      "estimator": "ratio",
+      "theta": 0.005238186132404062
+    },
+    {
+      "rep": 7,
+      "n_days": 10,
+      "estimator": "SMM (abandonment)",
+      "theta": 0.006354780854636443
+    },
+    {
+      "rep": 7,
+      "n_days": 10,
+      "estimator": "SMM (waiting)",
+      "theta": 0.0048647976418177575
+    },
+    {
+      "rep": 7,
+      "n_days": 30,
+      "estimator": "ratio",
+      "theta": 0.005236911283609236
+    },
+    {
+      "rep": 7,
+      "n_days": 30,
+      "estimator": "SMM (abandonment)",
+      "theta": 0.006422509560644976
+    },
+    {
+      "rep": 7,
+      "n_days": 30,
+      "estimator": "SMM (waiting)",
+      "theta": 0.004967101859635568
+    },
+    {
+      "rep": 7,
+      "n_days": 90,
+      "estimator": "ratio",
+      "theta": 0.005313401652131421
+    },
+    {
+      "rep": 7,
+      "n_days": 90,
+      "estimator": "SMM (abandonment)",
+      "theta": 0.005097737324824432
+    },
+    {
+      "rep": 7,
+      "n_days": 90,
+      "estimator": "SMM (waiting)",
+      "theta": 0.005282467965072137
+    },
+    {
+      "rep": 7,
+      "n_days": 270,
+      "estimator": "ratio",
+      "theta": 0.005256176564582466
+    },
+    {
+      "rep": 7,
+      "n_days": 270,
+      "estimator": "SMM (abandonment)",
+      "theta": 0.005370067843080746
+    },
+    {
+      "rep": 7,
+      "n_days": 270,
+      "estimator": "SMM (waiting)",
+      "theta": 0.005204729867674708
+    },
+    {
+      "rep": 8,
+      "n_days": 10,
+      "estimator": "ratio",
+      "theta": 0.0052488176800096695
+    },
+    {
+      "rep": 8,
+      "n_days": 10,
+      "estimator": "SMM (abandonment)",
+      "theta": 0.004550281624986813
+    },
+    {
+      "rep": 8,
+      "n_days": 10,
+      "estimator": "SMM (waiting)",
+      "theta": 0.005498567250615572
+    },
+    {
+      "rep": 8,
+      "n_days": 30,
+      "estimator": "ratio",
+      "theta": 0.005471628451807968
+    },
+    {
+      "rep": 8,
+      "n_days": 30,
+      "estimator": "SMM (abandonment)",
+      "theta": 0.005285755841279102
+    },
+    {
+      "rep": 8,
+      "n_days": 30,
+      "estimator": "SMM (waiting)",
+      "theta": 0.005378062876311253
+    },
+    {
+      "rep": 8,
+      "n_days": 90,
+      "estimator": "ratio",
+      "theta": 0.005357589131557078
+    },
+    {
+      "rep": 8,
+      "n_days": 90,
+      "estimator": "SMM (abandonment)",
+      "theta": 0.005323661078816235
+    },
+    {
+      "rep": 8,
+      "n_days": 90,
+      "estimator": "SMM (waiting)",
+      "theta": 0.005313324964881991
+    },
+    {
+      "rep": 8,
+      "n_days": 270,
+      "estimator": "ratio",
+      "theta": 0.005312559453366143
+    },
+    {
+      "rep": 8,
+      "n_days": 270,
+      "estimator": "SMM (abandonment)",
+      "theta": 0.005348117387307894
+    },
+    {
+      "rep": 8,
+      "n_days": 270,
+      "estimator": "SMM (waiting)",
+      "theta": 0.005195808579999567
+    },
+    {
+      "rep": 9,
+      "n_days": 10,
+      "estimator": "ratio",
+      "theta": 0.005320354023970217
+    },
+    {
+      "rep": 9,
+      "n_days": 10,
+      "estimator": "SMM (abandonment)",
+      "theta": 0.006707017885552365
+    },
+    {
+      "rep": 9,
+      "n_days": 10,
+      "estimator": "SMM (waiting)",
+      "theta": 0.0050958642087111875
+    },
+    {
+      "rep": 9,
+      "n_days": 30,
+      "estimator": "ratio",
+      "theta": 0.005204779827461697
+    },
+    {
+      "rep": 9,
+      "n_days": 30,
+      "estimator": "SMM (abandonment)",
+      "theta": 0.005160742799136429
+    },
+    {
+      "rep": 9,
+      "n_days": 30,
+      "estimator": "SMM (waiting)",
+      "theta": 0.0050049602752118725
+    },
+    {
+      "rep": 9,
+      "n_days": 90,
+      "estimator": "ratio",
+      "theta": 0.005365375162849935
+    },
+    {
+      "rep": 9,
+      "n_days": 90,
+      "estimator": "SMM (abandonment)",
+      "theta": 0.005208674630612
+    },
+    {
+      "rep": 9,
+      "n_days": 90,
+      "estimator": "SMM (waiting)",
+      "theta": 0.0052919321926242074
+    },
+    {
+      "rep": 9,
+      "n_days": 270,
+      "estimator": "ratio",
+      "theta": 0.00531399389891096
+    },
+    {
+      "rep": 9,
+      "n_days": 270,
+      "estimator": "SMM (abandonment)",
+      "theta": 0.005515444838873741
+    },
+    {
+      "rep": 9,
+      "n_days": 270,
+      "estimator": "SMM (waiting)",
+      "theta": 0.005290038595769847
+    },
+    {
+      "rep": 10,
+      "n_days": 10,
+      "estimator": "ratio",
+      "theta": 0.005301106078362845
+    },
+    {
+      "rep": 10,
+      "n_days": 10,
+      "estimator": "SMM (abandonment)",
+      "theta": 0.0039813226503644834
+    },
+    {
+      "rep": 10,
+      "n_days": 10,
+      "estimator": "SMM (waiting)",
+      "theta": 0.005285778944867777
+    },
+    {
+      "rep": 10,
+      "n_days": 30,
+      "estimator": "ratio",
+      "theta": 0.005281271635780027
+    },
+    {
+      "rep": 10,
+      "n_days": 30,
+      "estimator": "SMM (abandonment)",
+      "theta": 0.004598901263792995
+    },
+    {
+      "rep": 10,
+      "n_days": 30,
+      "estimator": "SMM (waiting)",
+      "theta": 0.005219050673962511
+    },
+    {
+      "rep": 10,
+      "n_days": 90,
+      "estimator": "ratio",
+      "theta": 0.005234463640731268
+    },
+    {
+      "rep": 10,
+      "n_days": 90,
+      "estimator": "SMM (abandonment)",
+      "theta": 0.005596843909017466
+    },
+    {
+      "rep": 10,
+      "n_days": 90,
+      "estimator": "SMM (waiting)",
+      "theta": 0.005180714651825919
+    },
+    {
+      "rep": 10,
+      "n_days": 270,
+      "estimator": "ratio",
+      "theta": 0.0052806203566369905
+    },
+    {
+      "rep": 10,
+      "n_days": 270,
+      "estimator": "SMM (abandonment)",
+      "theta": 0.005602780424823074
+    },
+    {
+      "rep": 10,
+      "n_days": 270,
+      "estimator": "SMM (waiting)",
+      "theta": 0.00521342430160522
+    },
+    {
+      "rep": 11,
+      "n_days": 10,
+      "estimator": "ratio",
+      "theta": 0.005178937014458517
+    },
+    {
+      "rep": 11,
+      "n_days": 10,
+      "estimator": "SMM (abandonment)",
+      "theta": 0.004899316538341092
+    },
+    {
+      "rep": 11,
+      "n_days": 10,
+      "estimator": "SMM (waiting)",
+      "theta": 0.005404082942431071
+    },
+    {
+      "rep": 11,
+      "n_days": 30,
+      "estimator": "ratio",
+      "theta": 0.005247155180673965
+    },
+    {
+      "rep": 11,
+      "n_days": 30,
+      "estimator": "SMM (abandonment)",
+      "theta": 0.004837392950704737
+    },
+    {
+      "rep": 11,
+      "n_days": 30,
+      "estimator": "SMM (waiting)",
+      "theta": 0.005055435177883994
+    },
+    {
+      "rep": 11,
+      "n_days": 90,
+      "estimator": "ratio",
+      "theta": 0.005227254804517323
+    },
+    {
+      "rep": 11,
+      "n_days": 90,
+      "estimator": "SMM (abandonment)",
+      "theta": 0.005509657912882876
+    },
+    {
+      "rep": 11,
+      "n_days": 90,
+      "estimator": "SMM (waiting)",
+      "theta": 0.005032300690904815
+    },
+    {
+      "rep": 11,
+      "n_days": 270,
+      "estimator": "ratio",
+      "theta": 0.005314529378769406
+    },
+    {
+      "rep": 11,
+      "n_days": 270,
+      "estimator": "SMM (abandonment)",
+      "theta": 0.005761434797172246
+    },
+    {
+      "rep": 11,
+      "n_days": 270,
+      "estimator": "SMM (waiting)",
+      "theta": 0.005212043281015455
     }
   ],
   "limits": {
-    "ratio": 0.00527535889603425,
-    "SMM (abandonment)": 0.005744771579850825,
-    "SMM (waiting)": 0.005018092236379741
+    "ratio": 0.005290123813277389,
+    "SMM (abandonment)": 0.005626904163013179,
+    "SMM (waiting)": 0.005172534474293705
   },
-  "limit_days": 60,
+  "limit_days": 1000,
   "references": {
     "one over mean patience": 0.004457511047832348,
-    "SMM (abandonment) at m=1.3": 0.0044063354767249815
+    "SMM (abandonment) at m=1.3": 0.0063993818836582
   },
   "surge": 1.3,
+  "sims": 3,
   "surge_forecasts": {
     "Reality": {
-      "sl": 0.5274083515289545,
-      "abandon": 0.1375380018596099
+      "sl": 0.4216022880627156,
+      "abandon": 0.17756964194266317
     },
     "ratio (long-run limit)": {
-      "sl": 0.6238829016530412,
-      "abandon": 0.09866424121921039
+      "sl": 0.6005882619438433,
+      "abandon": 0.10335532345694501
     },
     "SMM (abandonment) (long-run limit)": {
-      "sl": 0.6256070129706321,
-      "abandon": 0.10316592738968657
+      "sl": 0.6154924319920174,
+      "abandon": 0.10391160308247818
     },
     "SMM (waiting) (long-run limit)": {
-      "sl": 0.5827604161132304,
-      "abandon": 0.10752425379081704
+      "sl": 0.6023159935013279,
+      "abandon": 0.10189343807747027
     },
     "one over mean patience": {
-      "sl": 0.5994603617885752,
-      "abandon": 0.09509811126626001
+      "sl": 0.5851284253134248,
+      "abandon": 0.0973848162922079
     },
     "SMM (abandonment) at m=1.3": {
-      "sl": 0.5850458793183644,
-      "abandon": 0.09769969131887184
+      "sl": 0.6291563664831735,
+      "abandon": 0.10687623205475877
     }
   },
-  "reps": 2
+  "reps": 12
 }
