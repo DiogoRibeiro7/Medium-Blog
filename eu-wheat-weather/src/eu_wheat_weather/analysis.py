@@ -282,15 +282,22 @@ def decide(m1: Fit, e1: Mapping[str, float], e2: Mapping[str, Any], m1_e3: Fit,
     return out
 
 
-def second_route(obs: Sequence[Obs], m1: Fit) -> dict[str, float]:
-    """M1 by explicit dummy variables: the weather coefficients must agree to 1e-8."""
+SECOND_ROUTE_TOLERANCE = 1e-8
+
+
+def second_route(obs: Sequence[Obs], m1: Fit) -> dict[str, Any]:
+    """M1 by explicit dummy variables: the weather coefficients must agree to 1e-8.
+
+    Only the tolerance and the outcome are recorded: the size of the floating-point
+    disagreement itself differs between platforms.
+    """
     x = np.array([[o.x[n] for n in BASE] for o in obs])
     design = np.column_stack([x, controls(obs, PRIMARY.effects)])
     coef, *_ = np.linalg.lstsq(design, np.array([o.log_yield for o in obs]), rcond=None)
     diff = float(np.max(np.abs(coef[:len(BASE)] - m1.beta)))
-    if diff > 1e-8:
+    if diff > SECOND_ROUTE_TOLERANCE:
         raise ValueError(f"The two routes to M1 differ by {diff:.2e}.")
-    return {"max_abs_difference": diff}
+    return {"tolerance": SECOND_ROUTE_TOLERANCE, "within_tolerance": True}
 
 
 # ----------------------------------------------------------------------------------
@@ -526,8 +533,8 @@ def render(r: Mapping[str, Any], command: str) -> str:
         f"{post['high']:+.4f}]: two-way p = {_p(e3['p_twoway'])}, wild bootstrap "
         f"p = {_p(e3['p_bootstrap'])}. The smallest change this design detects with 80% "
         f"power is {e3['minimum_detectable']:.4f} log points per 10 degree days.",
-        f"- **Second route.** M1 by explicit dummy variables agrees to "
-        f"{r['second_route']['max_abs_difference']:.1e}.", "",
+        f"- **Second route.** M1 by explicit dummy variables agrees within the registered "
+        f"tolerance of {r['second_route']['tolerance']:.0e}.", "",
         "## M3, the shape of the temperature response (descriptive)", "",
         "Change in log yield for one more day in each 3 °C bin, instead of 15-18 °C.", "",
         "| Bin | Estimate | 95% interval |", "| --- | ---: | ---: |",

@@ -249,7 +249,8 @@
   }
  },
  "second_route": {
-  "max_abs_difference": 2.14352841e-13
+  "tolerance": 1e-08,
+  "within_tolerance": true
  },
  "M3": [
   {

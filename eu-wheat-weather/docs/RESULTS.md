@@ -48,7 +48,7 @@ Two-way clustered (country and year) 95% intervals, with 21 degrees of freedom. 
 - **E1.** Two-way t = -1.58 (p = 0.130); with country-clustered errors t = -1.71, wild bootstrap p = 0.260.
 - **E2.** Joint test of the precipitation terms: two-way p = 0.002, wild bootstrap p = <0.001. A dry season is on average 75 mm below the region's median; it changes log yield by -0.0231 [-0.0536, +0.0074]. Yield peaks at 347 mm over March to July.
 - **E3.** The interaction is +0.0119 [-0.0309, +0.0548]: two-way p = 0.569, wild bootstrap p = 0.610. The smallest change this design detects with 80% power is 0.0606 log points per 10 degree days.
-- **Second route.** M1 by explicit dummy variables agrees to 2.1e-13.
+- **Second route.** M1 by explicit dummy variables agrees within the registered tolerance of 1e-08.
 
 ## M3, the shape of the temperature response (descriptive)
 

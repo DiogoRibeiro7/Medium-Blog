@@ -51,7 +51,8 @@ Results are in [docs/RESULTS.md](docs/RESULTS.md). Every rule was fixed before a
   - 2003 is under-predicted: -11.9% against -4.5%.
   - 2022 is over-predicted: -3.0% against -6.3%.
 - [x] The nine sensitivity analyses. None reverses a sign.
-- [x] An independent recomputation of M1 by explicit dummy variables; it agrees to 2e-13.
+- [x] An independent recomputation of M1 by explicit dummy variables, which agrees within the
+      registered 1e-8.
 - [x] Reproducibility: the whole estimation, bootstraps included, regenerates the
       committed results exactly in the tests.
 
