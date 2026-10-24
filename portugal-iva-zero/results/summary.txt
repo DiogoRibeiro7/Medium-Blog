@@ -1,123 +1,141 @@
 Treatment from the tax wedge (log HICP - log HICP at constant taxes), Portuguese food subclasses
   full 6% cut: log(1.06) = 5.83 log points; 23% cut: log(1.23) = 20.70
-  treated (13): CP01111 -5.79/+5.78, CP01113 -5.77/+5.76, CP01121 -5.79/+5.78, CP01122 -5.79/+5.79, CP01124 -5.57/+5.56, CP01135 -5.80/+5.79, CP01141 -5.76/+5.76, CP01142 -5.77/+5.76, CP01144 -5.77/+5.78, CP01145 -5.77/+5.77, CP01147 -5.75/+5.75, CP01151 -5.73/+5.73, CP01153 -5.78/+5.77
-  partial (12): CP01114 -0.44/+0.43, CP01116 -4.43/+4.35, CP01128 -4.01/+4.04, CP01131 -2.23/+2.31, CP01132 -4.43/+4.40, CP01136 -3.50/+3.55, CP01146 -1.42/+1.40, CP01161 -3.37/+3.40, CP01171 -4.03/+3.84, CP01172 -4.76/+4.69, CP01174 -4.69/+4.61, CP01176 -3.28/+3.21
-  oils_23 (1): CP01154 -20.60/+12.15
-  control (28): CP01112 +0.00/-0.00, CP01115 -0.00/+0.00, CP01117 +0.01/+0.01, CP01123 +0.00/+0.00, CP01125 +0.01/-0.00, CP01127 -0.01/-0.21, CP01133 +0.00/+0.00, CP01134 +0.01/-0.00, CP01143 +0.00/-0.00, CP01163 -0.00/-0.01, CP01164 -0.00/-0.01, CP01173 +0.00/+0.00, CP01175 -0.01/-0.00, CP01181 -0.01/+0.00, CP01182 -0.00/+0.00, CP01183 +0.01/-0.00, CP01184 +0.00/-0.00, CP01185 -0.00/+0.00, CP01191 +0.00/-0.01, CP01192 -0.01/+0.01, CP01193 +0.00/-0.00, CP01194 -0.00/+0.00, CP01199 -0.01/-0.00, CP01211 +0.00/+0.00, CP01212 -0.00/+0.00, CP01213 +0.01/+0.00, CP01221 +0.00/+0.00, CP01223 +0.00/-0.01
-  control_other_tax (2): CP01152 -0.05/+0.03, CP01222 +0.01/+1.46
+  treated (13): CP01111 -5.79/+5.78, CP01113 -5.77/+5.77, CP01121 -5.79/+5.78, CP01122 -5.79/+5.79, CP01124 -5.57/+5.56, CP01135 -5.80/+5.80, CP01141 -5.76/+5.76, CP01142 -5.77/+5.76, CP01144 -5.77/+5.77, CP01145 -5.77/+5.78, CP01147 -5.75/+5.75, CP01151 -5.73/+5.73, CP01153 -5.78/+5.78
+  partial (12): CP01114 -0.44/+0.43, CP01116 -4.43/+4.36, CP01128 -4.01/+4.01, CP01131 -2.23/+2.35, CP01132 -4.43/+4.40, CP01136 -3.50/+3.61, CP01146 -1.42/+1.37, CP01161 -3.37/+3.40, CP01171 -4.03/+3.81, CP01172 -4.76/+4.69, CP01174 -4.69/+4.60, CP01176 -3.28/+3.29
+  oils_23 (1): CP01154 -20.60/+12.14
+  control (27): CP01112 +0.00/-0.00, CP01115 -0.00/+0.00, CP01117 +0.01/+0.01, CP01123 +0.00/+0.00, CP01125 +0.01/-0.01, CP01133 +0.00/+0.00, CP01134 +0.01/-0.00, CP01143 +0.00/-0.00, CP01163 -0.00/+0.00, CP01164 -0.00/-0.00, CP01173 +0.00/+0.00, CP01175 -0.01/-0.00, CP01181 -0.01/+0.00, CP01182 -0.00/-0.00, CP01183 +0.01/-0.00, CP01184 +0.00/-0.00, CP01185 -0.00/+0.00, CP01191 +0.00/-0.00, CP01192 -0.01/+0.01, CP01193 +0.00/-0.00, CP01194 -0.00/+0.00, CP01199 -0.01/+0.00, CP01211 +0.00/-0.00, CP01212 -0.00/-0.00, CP01213 +0.01/+0.01, CP01221 +0.00/-0.01, CP01223 +0.00/+0.00
+  control_other_tax (3): CP01127 -0.01/-0.21, CP01152 -0.05/-0.02, CP01222 +0.01/+1.46
   unclear (0): 
-  (entry: wedge change March to May 2023; exit: October 2023 to January 2024; log points)
+  (entry: wedge change March to May 2023; exit: September 2023 to January 2024; log points)
   weight in the 2023 HICP, treated: 7.67%
   weight in the 2023 HICP, partial: 7.13%
   weight in the 2023 HICP, oils_23: 0.50%
-  weight in the 2023 HICP, control: 4.86%
-  comparison countries, no tax change in the treated or control subclasses since 2022-01 (11): AT, BE, DE, DK, EL, FI, IT, LT, LU, LV, SE
-  excluded: BG (2 of 35 subclasses moved, largest 18.2); CY (13 of 40 subclasses moved, largest 4.9); CZ (38 of 38 subclasses moved, largest 5.1); EE (37 of 37 subclasses moved, largest 1.7); ES (10 of 41 subclasses moved, largest 5.3); FR (1 of 41 subclasses moved, largest 1.3); HR (11 of 39 subclasses moved, largest 17.4); HU (administrative price caps on basic foods until 1 August 2023); IE (1 of 38 subclasses moved, largest 1.1); NL (2 of 40 subclasses moved, largest 17.2); PL (32 of 41 subclasses moved, largest 5.0); RO (39 of 39 subclasses moved, largest 8.8); SI (2 of 40 subclasses moved, largest 6.0); SK (39 of 39 subclasses moved, largest 44.2)
+  weight in the 2023 HICP, control: 4.04%
+  comparison countries, no tax change in the treated or untreated subclasses since 2022-01 (11): AT, BE, DE, DK, EL, FI, IT, LT, LU, LV, SE
+  excluded: BG (2 of 34 subclasses moved, largest 18.2); CY (13 of 39 subclasses moved, largest 4.9); CZ (37 of 37 subclasses moved, largest 5.1); EE (36 of 36 subclasses moved, largest 1.7); ES (10 of 40 subclasses moved, largest 5.3); FR (1 of 40 subclasses moved, largest 1.3); HR (11 of 38 subclasses moved, largest 17.4); HU (administrative price caps on basic foods until 1 August 2023); IE (1 of 37 subclasses moved, largest 1.1); MT (no food subclasses at constant taxes); NL (2 of 39 subclasses moved, largest 17.2); PL (31 of 40 subclasses moved, largest 5.0); RO (38 of 38 subclasses moved, largest 8.8); SI (2 of 39 subclasses moved, largest 6.0); SK (38 of 38 subclasses moved, largest 44.2)
 
 Event study, treated minus untreated food subclasses, log change since February 2023 (x100)
   month: within Portugal (se) | across countries (se) | HICP-weighted within / across | tax wedge
-  2022-09: -4.36 (3.19) | -5.78 (2.56) | -2.16 / -2.86 | +0.00
-  2022-10: -2.85 (2.51) | -4.17 (2.10) | -1.00 / -1.77 | +0.00
-  2022-11: -1.16 (2.34) | -2.45 (2.09) | +0.20 / -0.64 | +0.00
-  2022-12: +0.58 (1.93) | -0.33 (1.76) | +1.47 / +0.72 | +0.00
-  2023-01: -0.36 (1.83) | -0.72 (1.79) | +0.30 / +0.30 | +0.00
+  2022-09: -4.12 (3.21) | -5.63 (2.57) | -1.21 / -2.19 | +0.00
+  2022-10: -2.70 (2.52) | -4.08 (2.11) | -0.36 / -1.38 | +0.00
+  2022-11: -1.06 (2.34) | -2.42 (2.10) | +0.65 / -0.49 | +0.00
+  2022-12: +0.68 (1.93) | -0.29 (1.77) | +1.97 / +0.91 | +0.00
+  2023-01: -0.32 (1.85) | -0.72 (1.81) | +0.47 / +0.33 | +0.00
   2023-02: +0.00 (0.00) | +0.00 (0.00) | +0.00 / +0.00 | +0.00
-  2023-03: -0.47 (0.73) | +0.28 (0.86) | +0.16 / +0.85 | +0.00
-  2023-04: -1.12 (0.82) | +0.12 (1.01) | -0.76 / +0.12 | +0.00
-  2023-05: -5.81 (0.91) | -4.47 (1.19) | -5.66 / -4.54 | -5.76
-  2023-06: -7.17 (1.02) | -5.60 (1.25) | -7.00 / -5.48 | -5.75
-  2023-07: -8.01 (1.12) | -6.24 (1.47) | -7.93 / -6.20 | -5.76
-  2023-08: -6.91 (1.41) | -5.06 (1.37) | -7.11 / -5.26 | -5.75
-  2023-09: -7.08 (1.64) | -5.38 (1.27) | -7.32 / -5.49 | -5.76
-  2023-10: -6.61 (2.29) | -4.88 (1.26) | -7.27 / -5.23 | -5.75
-  2023-11: -5.33 (2.84) | -3.73 (1.37) | -6.29 / -4.30 | -5.75
-  2023-12: -5.68 (2.84) | -3.91 (1.28) | -6.59 / -5.09 | -5.76
-  2024-01: -2.23 (2.87) | -0.54 (1.20) | -3.30 / -1.14 | +0.01
-  2024-02: -1.71 (3.08) | -0.62 (1.34) | -2.61 / -0.89 | +0.00
-  2024-03: -0.88 (3.22) | +0.14 (1.40) | -1.71 / +0.01 | +0.01
-  2024-04: -2.07 (3.22) | -0.97 (1.39) | -2.77 / -0.75 | +0.01
-  2024-05: -1.35 (2.93) | -0.80 (1.52) | -2.01 / -0.33 | +0.01
-  2024-06: -1.57 (2.85) | -0.87 (1.67) | -2.13 / -0.12 | +0.01
-  2024-12: +0.06 (2.80) | -0.23 (2.04) | -0.44 / +1.06 | +0.01
-  2025-06: -0.27 (3.04) | +0.35 (2.95) | -1.02 / +1.24 | +0.01
-  2025-12: +1.52 (4.02) | +2.33 (3.48) | +1.16 / +2.45 | +0.01
-  pre-period check, mean gap March 2022 - February 2023: within -3.56, across -3.67; largest absolute: within 8.92, across 6.36
-  May-December 2023 mean, within: -6.57 log points; tax wedge -5.76; pass-through 114%
-  May-December 2023 mean, across: -4.91 log points; tax wedge -5.76; pass-through 85%
-  May-December 2023 mean, within_weighted: -6.90 log points; tax wedge -5.76; pass-through 120%
-  May-December 2023 mean, across_weighted: -5.20 log points; tax wedge -5.76; pass-through 90%
-  announcement month (March 2023): within -0.47, across +0.28; April 2023: within -1.12, across +0.12
+  2023-03: -0.47 (0.74) | +0.30 (0.86) | +0.22 / +0.99 | +0.00
+  2023-04: -1.03 (0.82) | +0.25 (1.01) | -0.26 / +0.73 | +0.00
+  2023-05: -5.69 (0.91) | -4.33 (1.19) | -5.10 / -3.89 | -5.76
+  2023-06: -6.99 (1.02) | -5.41 (1.25) | -6.12 / -4.53 | -5.75
+  2023-07: -7.81 (1.12) | -6.02 (1.47) | -7.00 / -5.16 | -5.76
+  2023-08: -6.66 (1.40) | -4.81 (1.36) | -5.96 / -4.08 | -5.75
+  2023-09: -6.86 (1.64) | -5.17 (1.27) | -6.26 / -4.49 | -5.76
+  2023-10: -6.39 (2.28) | -4.66 (1.26) | -6.30 / -4.22 | -5.75
+  2023-11: -5.10 (2.84) | -3.50 (1.36) | -5.20 / -3.22 | -5.75
+  2023-12: -5.44 (2.84) | -3.67 (1.27) | -5.40 / -3.93 | -5.76
+  2024-01: -2.03 (2.87) | -0.35 (1.21) | -2.43 / -0.28 | +0.00
+  2024-02: -1.49 (3.08) | -0.41 (1.34) | -1.54 / +0.12 | +0.00
+  2024-03: -0.63 (3.22) | +0.40 (1.39) | -0.49 / +1.23 | +0.00
+  2024-04: -1.87 (3.22) | -0.76 (1.39) | -1.84 / +0.22 | +0.00
+  2024-05: -1.13 (2.93) | -0.56 (1.52) | -0.98 / +0.75 | +0.00
+  2024-06: -1.36 (2.86) | -0.63 (1.67) | -1.13 / +1.01 | +0.00
+  2024-12: +0.26 (2.82) | -0.01 (2.04) | +0.44 / +2.11 | +0.00
+  2025-06: -0.09 (3.09) | +0.66 (2.94) | -0.38 / +2.65 | +0.00
+  2025-12: +1.73 (4.06) | +2.65 (3.49) | +1.93 / +3.89 | +0.00
+  pre-period, March 2022 - February 2023: mean gap within -3.39, across -3.56; December 2022 - April 2023 plateau: within -0.23, across -0.09
+  May-December 2023 mean (pass-through, 95% CI clustered by subclass):
+    within Portugal (includes Europe-wide relative price changes): -6.37; 111% (95% CI 62 to 159)
+    across countries: -4.70; 82% (95% CI 46 to 117)
+    across countries, HICP-weighted: -4.19; 73% (95% CI 36 to 110)
+  tax wedge May-December 2023: -5.76
+  announcement month (March 2023): within -0.47, across +0.30; April 2023: within -1.03, across +0.25
+  comparison countries' own treated-minus-untreated change, May-December 2023 mean: -1.67 (the difference between the two estimators)
 
-Placebo dates: within-Portugal estimator on fake events, January 2019 - June 2022, mean gap over the 8 months after
-  42 placebo dates; mean +1.13, sd 2.38, min -2.02, max +7.00; actual -6.57; placebo dates with an effect at least as negative: 0
-Placebo jumps: changes in the treated-minus-untreated gap over two months and one month, March 2019 - December 2022
-  within: two-month changes sd 1.25, most negative -1.50 (2020-05); March-May 2023 -5.33, 0 of 46 as negative. One-month changes sd 0.79, largest +2.35 (2022-04); December 2023 - January 2024 +3.46, 0 of 47 as large
-  across: two-month changes sd 1.16, most negative -2.11 (2022-07); March-May 2023 -4.75, 0 of 46 as negative. One-month changes sd 0.82, largest +2.12 (2022-12); December 2023 - January 2024 +3.37, 0 of 47 as large
+Placebo jumps: changes in the treated-minus-untreated gap, March 2019 - December 2022
+  within: two-month changes sd 1.25, range -1.47 (2020-08) to +4.18 (2022-05); March-May 2023 -5.22; as large in absolute value: 0 of 46
+  within: one-month changes sd 0.80, range -1.77 to +2.34 (2022-04); December 2023 - January 2024 +3.41; as large in absolute value: 0 of 47
+  across: two-month changes sd 1.16, range -2.15 (2022-07) to +3.79 (2022-12); March-May 2023 -4.63; as large in absolute value: 0 of 46
+  across: one-month changes sd 0.83, range -1.75 to +2.13 (2022-12); December 2023 - January 2024 +3.32; as large in absolute value: 0 of 47
+Placebo dates: the estimator on fake events, January 2019 - June 2022, mean gap over the 8 months after
+  within: 42 dates, sd 2.34, range -2.03 to +7.03; actual -6.37; as large in absolute value: 1
+  across: 42 dates, sd 0.98, range -1.55 to +2.14; actual -4.70; as large in absolute value: 0
 Placebo countries: each comparison country treated as if it were Portugal (Portugal's treated set), May-December 2023
-  LV -1.96, DE -1.63, FI -1.26, SE -1.23, AT -0.64, DK -0.22, EL -0.17, LT +1.15, IT +1.49, BE +1.93, LU +2.15
-  actual Portugal -4.91; placebo countries with an effect at least as negative: 0 of 11
+  LV -1.84, DE -1.63, FI -1.48, SE -1.26, AT -0.67, EL -0.28, DK -0.27, LT +1.37, IT +1.51, BE +1.99, LU +2.14
+  sd 1.52; actual Portugal -4.70; as large in absolute value: 0 of 11
 
 Synthetic control: relative price of the treated basket (treated minus untreated, 2023 Portuguese weights)
-  weights: EL 0.53, DE 0.34, FI 0.12, SE 0.01
-  pre-period RMSPE 1.07 log points; mean gap May-December 2023 -4.39; January-June 2024 -0.01; latest (2025-12) +2.86
-  post/pre RMSPE ratio: Portugal 4.1, rank 1 of 12
+  weights: EL 0.46, DE 0.29, FI 0.12, LT 0.08, AT 0.05
+  pre-period RMSPE 0.74 log points; mean gap May-December 2023 -3.29 (57%); January-June 2024 +1.01; 2025 +4.00
+  without Greece: weights DE 0.83, FI 0.17; pre-period RMSPE 1.22; mean gap May-December 2023 -2.84 (49%)
+  post/pre RMSPE ratio: Portugal 4.5, rank 1 of 12 (permutation p-value 0.083, the smallest attainable with 12 units)
 
-Reversal: treated minus untreated, log change since October 2023 (x100)
-  2023-09: within -0.48, across -0.50, tax wedge +0.00
-  2023-10: within +0.00, across +0.00, tax wedge +0.00
-  2023-11: within +1.28, across +1.15, tax wedge +0.00
-  2023-12: within +0.92, across +0.97, tax wedge +0.00
-  2024-01: within +4.38, across +4.34, tax wedge +5.76
-  2024-02: within +4.90, across +4.26, tax wedge +5.76
-  2024-03: within +5.73, across +5.02, tax wedge +5.76
-  2024-04: within +4.54, across +3.91, tax wedge +5.76
-  2024-05: within +5.25, across +4.08, tax wedge +5.76
-  2024-06: within +5.03, across +4.01, tax wedge +5.76
-  January-March 2024 mean, within: +5.00; pass-through of the reversal 87%
-  January-March 2024 mean, across: +4.54; pass-through of the reversal 79%
+Reversal: treated minus untreated, log change since September 2023 (x100)
+  2023-08: within +0.20, across +0.36, tax wedge +0.00
+  2023-09: within +0.00, across +0.00, tax wedge +0.00
+  2023-10: within +0.47, across +0.51, tax wedge +0.00
+  2023-11: within +1.76, across +1.67, tax wedge +0.00
+  2023-12: within +1.41, across +1.50, tax wedge +0.00
+  2024-01: within +4.82, across +4.82, tax wedge +5.75
+  2024-02: within +5.37, across +4.76, tax wedge +5.75
+  2024-03: within +6.23, across +5.56, tax wedge +5.75
+  2024-04: within +4.98, across +4.41, tax wedge +5.76
+  2024-05: within +5.73, across +4.60, tax wedge +5.76
+  2024-06: within +5.50, across +4.53, tax wedge +5.75
+  January-March 2024 mean, within: +5.47; 95% (95% CI 27 to 163)
+  January-March 2024 mean, across: +5.04; 88% (95% CI 53 to 123)
+  October-December 2023, after the end was announced and before VAT returned: across +1.22
 Persistence: gap relative to February 2023 after the reversal (0 = back on the comparison path)
-  2024 (2024-01 to 2024-12): within -1.45, across -0.88
-  2025 (2025-01 to 2025-12): within +0.36, across +0.69
+  2024 (2024-01 to 2024-12): within -1.25, across -0.66
+  2025 (2025-01 to 2025-12): within +0.57, across +0.99
 
-Short windows (treated minus untreated, log points x100; pass-through = change / tax-wedge change)
-  entry 2023-03 to 2023-05: within -5.33 (93%), across -4.75 (82%), tax wedge -5.76
-  entry 2023-03 to 2023-06: within -6.70 (116%), across -5.89 (102%), tax wedge -5.76
-  exit 2023-12 to 2024-01: within +3.46 (60%), across +3.37 (58%), tax wedge +5.76
-  exit 2023-12 to 2024-02: within +3.98 (69%), across +3.29 (57%), tax wedge +5.76
-  exit 2023-12 to 2024-03: within +4.81 (83%), across +4.06 (70%), tax wedge +5.76
-  exit 2023-10 to 2024-01: within +4.38 (76%), across +4.34 (75%), tax wedge +5.76
-  exit 2023-10 to 2024-03: within +5.73 (99%), across +5.02 (87%), tax wedge +5.76
-Dose-response across Portuguese subclasses (treated, partial and control), effect vs tax-wedge change at entry
-  effect_march_to_may: slope (pass-through) 89% (se 11), intercept -0.43; n = 53
-  effect_may_dec_2023: slope (pass-through) 88% (se 17), intercept -0.96; n = 53
-  effect_2024 (after the reversal): slope 17% (se 21), intercept -1.54
-  partial subclasses only, March to May: slope 130% (se 29); n = 12
-  treated subclasses, May-December 2023 effect / March-May jump: Rice -11.20 / -6.42; Dried, smoked or salted fish -11.17 / -5.57; Olive oil -9.14 / -7.83; Eggs -8.05 / -7.00; Bread -7.31 / -7.10; Yoghurt -6.50 / -5.48; Butter -5.13 / -3.21; Low-fat milk -4.07 / -5.67; Poultry -3.77 / -2.02; Whole milk -3.76 / -3.67; Pork -3.04 / -4.09; Cheese and curd -2.70 / -5.14; Beef and veal -2.68 / -3.43
-Robustness, across countries, May-December 2023 mean (pass-through against -5.76)
-  baseline: -4.91 (85%)
-  food-only controls (no beverages): -4.85 (84%)
-  controls without preserved milk and dried vegetables: -4.61 (80%)
-  treated without olive oil: -4.65 (81%)
-  comparison adds HU, FR, IE, NL, SI: -4.43 (77%)
-  leave one treated subclass out: from -5.19 (without Beef and veal) to -4.48 (without Rice)
-  leave one comparison country out: from -5.07 (without LV) to -4.71 (without LU)
-Other edible oils (CP01154): tax wedge -20.60 at entry, +12.14 at exit (exp: 12.9% VAT on the January 2024 price); price relative to comparison countries March to May -24.84, March to June -35.69; December to January +12.42, December to March +11.90
+Short windows (treated minus untreated, log points x100; pass-through with 95% CI clustered by subclass)
+  entry 2023-03 to 2023-05: within -5.22, 91% (95% CI 70 to 111); across -4.63, 80% (95% CI 58 to 103); across HICP-weighted -4.88, 85% (95% CI 56 to 114); tax wedge -5.76
+  entry 2023-03 to 2023-06: within -6.52, 113% (95% CI 87 to 139); across -5.72, 99% (95% CI 74 to 125); across HICP-weighted -5.52, 96% (95% CI 67 to 125); tax wedge -5.76
+  exit 2023-12 to 2024-01: within +3.41, 59% (95% CI 35 to 83); across +3.32, 58% (95% CI 29 to 86); across HICP-weighted +3.65, 63% (95% CI 40 to 87); tax wedge +5.75
+  exit 2023-12 to 2024-03: within +4.82, 84% (95% CI 58 to 110); across +4.06, 71% (95% CI 44 to 98); across HICP-weighted +5.16, 90% (95% CI 58 to 122); tax wedge +5.75
+  exit 2023-09 to 2024-01: within +4.82, 84% (95% CI 22 to 146); across +4.82, 84% (95% CI 48 to 120); across HICP-weighted +4.20, 73% (95% CI 36 to 110); tax wedge +5.75
+  exit 2023-09 to 2024-03: within +6.23, 108% (95% CI 34 to 182); across +5.56, 97% (95% CI 62 to 132); across HICP-weighted +5.71, 99% (95% CI 57 to 142); tax wedge +5.75
+  exit 2023-10 to 2024-01: within +4.36, 76% (95% CI 41 to 111); across +4.31, 75% (95% CI 49 to 100); across HICP-weighted +3.93, 68% (95% CI 42 to 95); tax wedge +5.75
+  exit 2023-10 to 2024-03: within +5.76, 100% (95% CI 52 to 148); across +5.05, 88% (95% CI 56 to 120); across HICP-weighted +5.45, 95% (95% CI 55 to 134); tax wedge +5.75
+Dose-response across 52 Portuguese subclasses (treated, partial, control), effect vs tax-wedge change at entry; comparison means leave out country-subclass pairs with their own tax changes
+  effect_march_to_may: slope (pass-through) 87% (95% CI 65 to 109), intercept -0.54
+  effect_may_dec_2023: slope (pass-through) 84% (95% CI 52 to 117), intercept -1.16
+  effect_2024 (after the reversal): slope 12% (95% CI -28 to 53)
+  partial subclasses only, March to May: slope 129% (se 29); n = 12
+  treated subclasses, May-December 2023 / March-May / 2024 mean: Rice -11.20 / -6.42 / -10.65; Dried, smoked or salted fish -11.17 / -5.57 / -4.41; Olive oil -9.14 / -7.83 / -8.78; Eggs -8.05 / -7.00 / -6.29; Bread -7.31 / -7.10 / -0.16; Yoghurt -6.50 / -5.48 / -0.73; Butter -5.13 / -3.21 / -4.65; Low-fat milk -4.07 / -5.67 / +0.63; Poultry -3.77 / -2.02 / -0.61; Whole milk -3.76 / -3.67 / +0.48; Pork -3.04 / -4.09 / -2.92; Cheese and curd -2.70 / -5.14 / +2.13; Beef and veal -2.68 / -3.43 / +1.75
+Robustness, across countries, May-December 2023 mean, pass-through (95% CI)
+  baseline: -4.70, 82% (95% CI 46 to 117)
+  HICP-weighted: -4.19, 73% (95% CI 36 to 110)
+  base December 2022: -4.40, 77% (95% CI 20 to 133)
+  base January 2023: -3.98, 69% (95% CI 7 to 132)
+  base March 2023: -5.00, 87% (95% CI 59 to 115)
+  base: mean of December 2022 - February 2023: -4.36, 76% (95% CI 33 to 118)
+  food-only controls (no beverages): -4.58, 80% (95% CI 42 to 117)
+  controls without preserved milk and dried vegetables: -4.36, 76% (95% CI 40 to 111)
+  treated without olive oil: -4.44, 77% (95% CI 40 to 114)
+  comparison without EL and IT (voluntary price-restraint schemes): -4.57, 79% (95% CI 42 to 117)
+  comparison screened only December 2022 - March 2024 (17 countries): -4.51, 78% (95% CI 45 to 112)
+  (screened only December 2022 - March 2024: AT, BE, BG, DE, DK, EL, FI, FR, HR, IT, LT, LU, LV, PL, SE, SI, SK)
+  bracketing (counterfactual = mean of December 2022 - April 2023 and February - June 2024): -4.45, 77%; before -0.09, after -0.39
+  leave one treated subclass out: from -4.98 (without Beef and veal) to -4.27 (without Rice)
+  leave one comparison country out: from -4.85 (without DE) to -4.49 (without LU)
+  treated subclasses alone, Portugal minus comparison countries (no subtraction of untreated): equal weights -6.04 (105%), HICP weights -5.54 (96%)
+  untreated subclasses, Portugal minus comparison countries: March to May -0.49, May-December mean since February -1.34 (no sign of higher margins on untreated food)
+Other edible oils (CP01154): tax wedge -20.60 at entry (log 1.23), +12.14 at exit (log 1.13, the intermediate rate); price relative to comparison countries March to May -24.84, March to June -35.69; December to January +12.42, December to March +11.90
 
 Headline HICP
-  all-items tax wedge, March to May 2023: -0.65 log points; October 2023 to January 2024: +0.80 (January 2024 also has other tax changes)
-  estimated effect on the all-items index: -0.55 log points (85% of the wedge)
-  check, weighted sum of food subclass wedge changes with 2023 weights: 0.75 points at full pass-through, 0.62 at the estimated pass-through
-  annual average HICP inflation, actual / without the measure: 2023 5.26 / 5.59, 2024 2.67 / 2.35
-  year-on-year inflation, actual / without the measure: 2023-05 5.4 / 6.0, 2023-12 1.9 / 2.4, 2024-01 2.5 / 2.5, 2024-05 3.8 / 3.3, 2024-12 3.1 / 2.6
-  food and non-alcoholic beverages: weight 20.6% of the HICP; share of food spending saved at the estimated pass-through 3.00%
-Saving by income fifth, per household, budget survey 2020 wave (fieldwork 2022/23) in euros via INE's mean
-  QU1: food 17.1% of consumption, 177 a month; saving 5.32 a month, 46 over the 262 days, 0.51% of consumption, 13.6% of the total
-  QU2: food 14.6% of consumption, 209 a month; saving 6.27 a month, 54 over the 262 days, 0.44% of consumption, 16.1% of the total
-  QU3: food 14.5% of consumption, 262 a month; saving 7.86 a month, 68 over the 262 days, 0.43% of consumption, 20.2% of the total
-  QU4: food 13.1% of consumption, 303 a month; saving 9.08 a month, 78 over the 262 days, 0.39% of consumption, 23.3% of the total
-  QU5: food 10.0% of consumption, 349 a month; saving 10.48 a month, 90 over the 262 days, 0.30% of consumption, 26.9% of the total
-  resident households in total, survey basis: about 279 million euros over the period (4,149,096 households); government cost estimate 550 million
-  survey coverage: mean expenditure x households = 100,367 million euros a year, against resident household consumption in the 2022 national accounts of 151,318 million (66%); scaled to the national accounts the saving would be about 420 million
-  the same money paid only to the poorest fifth: 7.3 times what that fifth saved (39.01 euros a month per household on the survey basis)
-  the government cost estimate paid only to the poorest fifth: 77.00 euros a month per household
+  food (CP01) tax wedge, March to May 2023: -3.50 log points; weight of CP01 in 2023: 20.6%
+  effect on the all-items index: -0.72 at full pass-through, -0.53 at 73% (HICP-weighted across-country estimate)
+  annual average HICP inflation, actual / without the measure: 2023 5.26 / 5.63, 2024 2.67 / 2.31
+  year-on-year inflation, actual / without the measure: 2023-05 5.4 / 5.9, 2023-12 1.9 / 2.4, 2024-01 2.5 / 2.5, 2024-05 3.8 / 3.3, 2024-12 3.1 / 2.6
+  (the 2024 difference is a base effect: prices in 2024 are compared with 2023 prices lowered by the measure)
+  share of food and beverage spending saved: 3.50% at full pass-through, 2.57% at 73%
+Saving by income fifth, budget survey 2020 wave (fieldwork 2022/23) in euros via INE's mean; same within-food mix for every fifth (the national HICP weights)
+  QU1: food 17.1% of consumption, 177 a month per household; saving 4.56 a month per household (3.59 per adult equivalent), 39 over the 262 days, 0.44% of consumption, 13.6% of the total
+  QU2: food 14.6% of consumption, 209 a month per household; saving 5.38 a month per household (3.72 per adult equivalent), 46 over the 262 days, 0.38% of consumption, 16.1% of the total
+  QU3: food 14.5% of consumption, 262 a month per household; saving 6.74 a month per household (4.11 per adult equivalent), 58 over the 262 days, 0.37% of consumption, 20.2% of the total
+  QU4: food 13.1% of consumption, 303 a month per household; saving 7.78 a month per household (4.51 per adult equivalent), 67 over the 262 days, 0.34% of consumption, 23.3% of the total
+  QU5: food 10.0% of consumption, 349 a month per household; saving 8.98 a month per household (4.87 per adult equivalent), 77 over the 262 days, 0.26% of consumption, 26.9% of the total
+  resident households in total over the 262 days: about 239 million euros on the survey basis (325 at full pass-through); survey spending is 62% of resident household consumption in the 2023 national accounts, and scaled to them the saving is about 386 million (525 at full pass-through)
+  government ex-ante estimate of forgone VAT: 550 million (it does not depend on pass-through and includes purchases by non-residents)
+  the households' total saving, if paid only to the poorest fifth: 7.3 times what that fifth saved (33.43 euros a month per household on the survey basis, 54.06 scaled to the national accounts)
 

@@ -27,7 +27,7 @@ AXIS = "#c3c2b7"
 BLUE, ORANGE, AQUA, PURPLE, GOLD, RED = "#2a78d6", "#eb6834", "#1baf7a", "#8a5cd1", "#d9a21b", "#c8384b"
 Q_LABELS = {"QU1": "Poorest fifth", "QU2": "Second", "QU3": "Middle", "QU4": "Fourth", "QU5": "Richest fifth"}
 
-EVENTS = [("2023-03", "announced"), ("2023-05", "first full month"), ("2023-10", "end announced"), ("2024-01", "VAT back")]
+EVENTS = [("2023-03-24", "announced"), ("2023-04-18", "in force"), ("2023-10-10", "end announced"), ("2024-01-05", "VAT back")]
 
 plt.rcParams.update({
     "figure.facecolor": SURFACE, "axes.facecolor": SURFACE, "savefig.facecolor": SURFACE,
@@ -60,7 +60,7 @@ def mark_events(ax, labels: bool = True, which=None) -> None:
     for m, label in EVENTS:
         if which and m not in which:
             continue
-        x = pd.Timestamp(f"{m}-01")
+        x = pd.Timestamp(m)
         ax.axvline(x, color=AXIS, lw=0.9, ls=":")
         if labels:
             ax.text(x, 1.0, f" {label}", transform=ax.get_xaxis_transform(), fontsize=7.5, color=MUTED,
@@ -145,7 +145,7 @@ def dose_response(d: pd.DataFrame) -> None:
     ax.grid(axis="x", color=GRID)
     ax.set_xlabel("change in the tax wedge, March to May 2023, log points")
     ax.set_ylabel("price change relative to comparison countries")
-    ax.set_title("Price change against the tax cut, every Portuguese food subclass")
+    ax.set_title(f"Price change against the tax cut, {len(d)} Portuguese food subclasses")
     ax.legend(loc="upper left", fontsize=8.5)
     finish(fig, "fig04_dose_response.png", "Eurostat prc_hicp_midx and prc_hicp_cind")
 
@@ -179,8 +179,8 @@ def placebos(jumps: pd.DataFrame, es: pd.DataFrame, pcountries: pd.Series, actua
         v = 100 * jumps[col].dropna()
         ax.hist(v, bins=np.arange(-6, 6.5, 0.5), color=MUTED, alpha=0.85)
         ax.axvline(100 * actual, color=ORANGE, lw=2)
-        ax.text(100 * actual + (0.15 if actual < 0 else -0.15), ax.get_ylim()[1] * 1.02, label, color=ORANGE,
-                fontsize=8, va="bottom", ha="left" if actual < 0 else "right")
+        ax.text(100 * actual + (0.15 if actual < 0 else -0.15), ax.get_ylim()[1] * 0.97, label, color=ORANGE,
+                fontsize=8, va="top", ha="left" if actual < 0 else "right")
         ax.set_title(title, fontsize=10)
         ax.set_xlabel("change in the gap, log points")
     ax = axes[2]
@@ -208,7 +208,7 @@ def synthetic(sg: pd.DataFrame, weights: pd.Series) -> None:
     mark_events(ax)
     ax.set_ylabel("log points")
     ax.set_title("Relative price of the covered basket (covered minus untreated food)")
-    ax.legend(loc="center left", fontsize=8.5)
+    ax.legend(loc="lower right", fontsize=8.5)
     ax = axes[1]
     ax.bar(x, 100 * s["gap"], width=20, color=[ORANGE if "2023-05" <= p <= "2023-12" else MUTED for p in s.index])
     ax.axhline(0, color=INK_2, lw=0.8)
@@ -226,8 +226,8 @@ def reversal(ex: pd.DataFrame) -> None:
     ax.plot(x, 100 * e["across"], color=ORANGE, marker="o", ms=3.5, label="Across countries")
     ax.step(x, 100 * e["tax_wedge"], where="mid", color=INK, lw=1.2, ls="--", label="Tax wedge (full pass-through)")
     ax.axhline(0, color=INK_2, lw=0.8)
-    mark_events(ax, which=["2023-10", "2024-01"])
-    ax.set_ylabel("log points relative to October 2023")
+    mark_events(ax, which=["2023-10-10", "2024-01-05"])
+    ax.set_ylabel("log points relative to September 2023")
     ax.set_title("Covered minus untreated food subclasses around the reversal")
     ax.legend(loc="lower right", fontsize=8.5)
     finish(fig, "fig08_reversal.png", "Eurostat prc_hicp_midx and prc_hicp_cind")
@@ -241,7 +241,10 @@ def headline(hc: pd.DataFrame) -> None:
     ax.plot(x, h["actual"], color=INK, label="Published HICP")
     ax.plot(x, h["without_measure"], color=ORANGE, ls="--", label="Without the measure (estimated)")
     ax.fill_between(x, h["actual"], h["without_measure"], color=ORANGE, alpha=0.15, lw=0)
-    mark_events(ax, which=["2023-05", "2024-01"])
+    mark_events(ax, which=["2023-04-18", "2024-01-05"])
+    ax.annotate("2024: base effect of the\nlower 2023 prices", (pd.Timestamp("2024-10-15"), 2.6), xytext=(0, 45),
+                textcoords="offset points", ha="center", fontsize=8, color=INK_2,
+                arrowprops={"arrowstyle": "-", "color": MUTED, "lw": 0.8})
     ax.set_ylabel("% change on a year earlier")
     ax.set_title("Portuguese HICP inflation, all items")
     ax.legend(loc="upper right", fontsize=8.5)

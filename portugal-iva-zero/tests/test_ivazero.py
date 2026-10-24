@@ -20,7 +20,9 @@ def test_fully_covered_subclasses_have_the_six_percent_wedge() -> None:
     assert len(tr) >= 10
     assert np.allclose(tr["entry"], -iz.VAT_6, atol=0.003)
     assert np.allclose(tr["exit"], iz.VAT_6, atol=0.003)
-    assert (t.loc[t["group"] == "control", "entry"].abs() < 1e-3).all()
+    controls = t[t["group"] == "control"]
+    assert (controls["entry"].abs() < 1e-3).all()
+    assert (controls["exit"].abs() < 1e-3).all()
 
 
 def test_group_gap_equals_two_way_fixed_effects() -> None:
