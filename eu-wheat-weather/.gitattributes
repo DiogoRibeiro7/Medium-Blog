@@ -7,3 +7,9 @@ snapshots/** !filter !diff !merge -text
 docs/**/*.csv !filter !diff !merge text eol=lf
 docs/**/*.json text eol=lf
 docs/*.md text eol=lf
+
+# The article and its values: LF exactly as written, so the --check comparison holds on
+# every platform. Figures are binary.
+publication/**/*.md text eol=lf
+publication/**/*.json text eol=lf
+publication/figures/*.png binary

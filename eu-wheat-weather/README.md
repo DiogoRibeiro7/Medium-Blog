@@ -3,7 +3,7 @@
 A reproducible study of how common-wheat yields in the NUTS-2 regions of the European
 Union respond to extreme heat and drought during the growing season, 2000-2024.
 
-**Status: estimates (phase 2).**
+**Status: article drafted (phase 3).**
 
 - **Plan.** [METHODS.md](METHODS.md) was committed before any yield was related to any
   weather variable. Its change log records three decisions made before any estimate.
@@ -17,6 +17,10 @@ Union respond to extreme heat and drought during the growing season, 2000-2024.
     July. The loss in a typical dry season (-2.3%) has an interval that includes zero.
   - **Change since 2012 (E3):** not determined. The design can only detect changes of
     6% or more per 10 degree days.
+- **Article.** The Medium article ([publication/article.md](publication/article.md))
+  and its four figures are generated from the committed results. It carries the E-OBS
+  acknowledgement and citation. It is not published: the author reviews and publishes
+  it.
 - [ROADMAP.md](ROADMAP.md) lists the stages.
 
 ## Question and estimands
@@ -85,6 +89,7 @@ poetry run eu-wheat regions --crops snapshots/eurostat-crops-2026-10-23 --nuts-c
 poetry run eu-wheat weather --eobs-dir data/eobs --boundaries-dir data/boundaries --output docs/panel/weather.csv   # about 2.5 minutes
 poetry run eu-wheat panel --crops snapshots/eurostat-crops-2026-10-23 --region-map docs/panel/region_map.csv --weather docs/panel/weather.csv --output-dir docs/panel --report docs/DATA.md
 poetry run eu-wheat estimate --panel docs/panel/panel.csv --weather docs/panel/weather.csv --output-dir docs/results --report docs/RESULTS.md   # about 1.5 minutes
+poetry run eu-wheat publication            # values, article and figures; --check compares
 poetry run pytest
 poetry run ruff check src tests
 poetry run mypy src

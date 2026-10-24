@@ -206,6 +206,30 @@ def dry_season_effect(f: Fit, obs: Sequence[Obs], drought_key: str = "p",
             "mean_p10_minus_p50": float(np.mean(d1)) * 100}
 
 
+def precipitation_curve(f: Fit, obs: Sequence[Obs], step_mm: int = 10) -> dict[str, Any]:
+    """M1's precipitation terms as a curve, relative to the pooled median (for a figure).
+
+    A presentation of E2's coefficients, not a new estimate: the change in log yield at
+    each precipitation total against the median, with a delta-method two-way 95% band,
+    over the observed 1st to 99th percentiles only.
+    """
+    p = np.array([o.x["p"] for o in obs])
+    low_mm, high_mm = (float(np.percentile(p, q)) * 100 for q in (1, 99))
+    median = float(np.median(p))
+    v, df = twoway_vcov(f)
+    i1, i2 = f.index(["p"])[0], f.index(["p2"])[0]
+    crit = _tcrit(df)
+    points = []
+    for mm in range(int(math.ceil(low_mm / step_mm)) * step_mm, int(high_mm) + 1, step_mm):
+        x = mm / 100
+        grad = np.zeros(f.k)
+        grad[i1], grad[i2] = x - median, x * x - median * median
+        effect = float(grad @ f.beta)
+        half = crit * float(np.sqrt(grad @ v @ grad))
+        points.append({"mm": mm, "effect": effect, "low": effect - half, "high": effect + half})
+    return {"median_mm": median * 100, "range_mm": [low_mm, high_mm], "points": points}
+
+
 def tests_for(f: Fit, terms: Sequence[str], bootstrap: bool = True) -> dict[str, float]:
     """Two-way and wild-bootstrap tests that ``terms`` are zero."""
     v, df = twoway_vcov(f)
@@ -253,6 +277,7 @@ def primary_results(panel: Sequence[Mapping[str, str]],
         + coefficient_rows(m1_e5, "M1 with E5"),
         "E1": e1, "E2": e2, "E3": e3, "E5": e5, "decisions": decisions,
         "second_route": second_route(obs, m1),
+        "precipitation_curve": precipitation_curve(m1, obs),
         "_fits": {"m1": m1, "obs": obs},
     }
 
@@ -314,9 +339,14 @@ def shape(obs: Sequence[Obs]) -> list[dict[str, Any]]:
     return [r for r in coefficient_rows(f, "M3") if r["term"].startswith("t_")]
 
 
-def out_of_sample(obs_all: Sequence[Obs]) -> list[dict[str, Any]]:
-    """E4: M2 without the year, used to predict it (change log, 2026-10-24)."""
-    out = []
+def out_of_sample(obs_all: Sequence[Obs],
+                  ) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
+    """E4: M2 without the year, used to predict it (change log, 2026-10-24).
+
+    Returns the summaries by year and, for the figure, each region's anomalies.
+    """
+    out: list[dict[str, Any]] = []
+    by_region: list[dict[str, Any]] = []
     for year in E4_YEARS:
         train = [o for o in obs_all if o.year != year]
         test = [o for o in obs_all if o.year == year]
@@ -347,6 +377,8 @@ def out_of_sample(obs_all: Sequence[Obs]) -> list[dict[str, Any]]:
             observed.append(o.log_yield - norm)
             normal.append(norm)
             area.append(o.area)
+            by_region.append({"year": year, "geo": o.geo, "predicted": predicted[-1],
+                              "observed": observed[-1]})
         pr, ob, nm, ar = (np.array(v) for v in (predicted, observed, normal, area))
         base = float(np.sum(ar * np.exp(nm)))
         out.append({
@@ -357,7 +389,7 @@ def out_of_sample(obs_all: Sequence[Obs]) -> list[dict[str, Any]]:
             "eu_yield_observed_pct": 100 * (float(np.sum(ar * np.exp(nm + ob))) / base - 1),
             "eu_yield_predicted_pct": 100 * (float(np.sum(ar * np.exp(nm + pr))) / base - 1),
         })
-    return out
+    return out, by_region
 
 
 def sensitivity(panel: Sequence[Mapping[str, str]],
@@ -404,7 +436,8 @@ def run(panel_path: Path, weather_path: Path) -> dict[str, Any]:
     primary = primary_results(panel, weather)
     obs = primary.pop("_fits")["obs"]
     all_obs = observations(PRIMARY, panel, weather)
-    return {**primary, "M3": shape(obs), "E4": out_of_sample(all_obs),
+    e4, e4_regions = out_of_sample(all_obs)
+    return {**primary, "M3": shape(obs), "E4": e4, "E4_regions": e4_regions,
             "sensitivity": sensitivity(panel, weather, primary)}
 
 
@@ -426,6 +459,8 @@ def write_results(results: Mapping[str, Any], output_dir: Path, report: Path,
                                              encoding="utf-8", newline="\n")
     for name, rows in (("coefficients.csv", document["coefficients"]),
                        ("bins.csv", document["M3"]), ("out_of_sample.csv", document["E4"]),
+                       ("out_of_sample_regions.csv", document["E4_regions"]),
+                       ("precipitation_curve.csv", document["precipitation_curve"]["points"]),
                        ("sensitivity.csv", document["sensitivity"])):
         with (output_dir / name).open("w", encoding="utf-8", newline="") as stream:
             writer = csv.DictWriter(stream, fieldnames=list(rows[0]), lineterminator="\n")

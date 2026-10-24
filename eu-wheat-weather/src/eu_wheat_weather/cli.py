@@ -68,6 +68,12 @@ def build_parser() -> argparse.ArgumentParser:
     est.add_argument("--weather", type=Path, default=Path("docs/panel/weather.csv"))
     est.add_argument("--output-dir", type=Path, default=Path("docs/results"))
     est.add_argument("--report", type=Path, default=Path("docs/RESULTS.md"))
+    pub = commands.add_parser(
+        "publication", help="Write the article's values, text and figures from the "
+        "committed results; --check compares instead")
+    pub.add_argument("--root", type=Path, default=Path("."))
+    pub.add_argument("--check", action="store_true")
+    pub.add_argument("--no-figures", action="store_true")
     return parser
 
 
@@ -149,6 +155,17 @@ def main(argv: Sequence[str] | None = None) -> int:
             print(json.dumps({k: v["verdict"] for k, v in results["decisions"].items()}))
             print(f"placebo significant under both methods: "
                   f"{results['E5']['significant_both']}")
+        elif args.command == "publication":
+            from eu_wheat_weather.publication import check, write_publication
+
+            if args.check:
+                stale = check(args.root)
+                if stale:
+                    parser.exit(1, "Out of date: " + ", ".join(stale) + "\n")
+                print("The article and its values are current.")
+            else:
+                written = write_publication(args.root, figures=not args.no_figures)
+                print(f"{len(written)} files written")
     except (DataError, OSError, ValueError, KeyError) as exc:
         parser.exit(2, f"eu-wheat {args.command} failed: {exc}\n")
     return 0
