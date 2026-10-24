@@ -24,7 +24,11 @@ Real (holdout)      0.8057   0.0503
 Real (independent)  0.7851   0.0557
 SMOTE               0.8097   0.0496
 
-    mixture components chosen by BIC (replicate 0, 90 days): 16
+    mixture components chosen by BIC (candidates 4, 8, 12, 16, 24), by training days, one value per replicate:
+        30 days: 8, 8, 12, 8, 8, 8
+        90 days: 16, 8, 8, 12, 12, 16
+       270 days: 24, 24, 16, 24, 24, 24
+       810 days: 24, 24, 24, 24, 24, 24
 
 E2  Fresh demand scaled by m (unannounced)
     5 replicates, 60 evaluation days per m

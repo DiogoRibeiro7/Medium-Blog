@@ -6,7 +6,8 @@
       "generator": "Real (independent)",
       "auc": 0.549560546875,
       "sl": 0.7914176928617981,
-      "abandon": 0.05489658011182383
+      "abandon": 0.05489658011182383,
+      "n_components": NaN
     },
     {
       "rep": 0,
@@ -14,7 +15,8 @@
       "generator": "Real (holdout)",
       "auc": NaN,
       "sl": 0.8091504454436284,
-      "abandon": 0.04894992599212444
+      "abandon": 0.04894992599212444,
+      "n_components": NaN
     },
     {
       "rep": 0,
@@ -22,7 +24,8 @@
       "generator": "Erlang C",
       "auc": 0.9761979166666666,
       "sl": 0.5341770656233794,
-      "abandon": 0.0
+      "abandon": 0.0,
+      "n_components": NaN
     },
     {
       "rep": 0,
@@ -30,7 +33,8 @@
       "generator": "Erlang A",
       "auc": 0.582919921875,
       "sl": 0.8210577535438536,
-      "abandon": 0.045202470142899055
+      "abandon": 0.045202470142899055,
+      "n_components": NaN
     },
     {
       "rep": 0,
@@ -38,7 +42,8 @@
       "generator": "Gaussian copula",
       "auc": 0.7639908854166666,
       "sl": 0.7759167891742398,
-      "abandon": 0.0590789884302622
+      "abandon": 0.0590789884302622,
+      "n_components": NaN
     },
     {
       "rep": 0,
@@ -46,7 +51,8 @@
       "generator": "CART",
       "auc": 0.7165060763888889,
       "sl": 0.7766419785021745,
-      "abandon": 0.05791682679444093
+      "abandon": 0.05791682679444093,
+      "n_components": NaN
     },
     {
       "rep": 0,
@@ -54,7 +60,8 @@
       "generator": "SMOTE",
       "auc": 0.7710036892361111,
       "sl": 0.7694075086829157,
-      "abandon": 0.058708026288954454
+      "abandon": 0.058708026288954454,
+      "n_components": NaN
     },
     {
       "rep": 0,
@@ -62,7 +69,8 @@
       "generator": "Gaussian mixture",
       "auc": 0.7611100260416667,
       "sl": 0.7682704789046525,
-      "abandon": 0.06028996179135721
+      "abandon": 0.06028996179135721,
+      "n_components": 8.0
     },
     {
       "rep": 0,
@@ -70,7 +78,8 @@
       "generator": "Erlang C",
       "auc": 0.9748209635416668,
       "sl": 0.6034376502617518,
-      "abandon": 0.0
+      "abandon": 0.0,
+      "n_components": NaN
     },
     {
       "rep": 0,
@@ -78,7 +87,8 @@
       "generator": "Erlang A",
       "auc": 0.5200271267361111,
       "sl": 0.834576532437863,
-      "abandon": 0.04068839283256723
+      "abandon": 0.04068839283256723,
+      "n_components": NaN
     },
     {
       "rep": 0,
@@ -86,7 +96,8 @@
       "generator": "Gaussian copula",
       "auc": 0.7504405381944445,
       "sl": 0.7880746033899799,
-      "abandon": 0.0549016494793997
+      "abandon": 0.0549016494793997,
+      "n_components": NaN
     },
     {
       "rep": 0,
@@ -94,7 +105,8 @@
       "generator": "CART",
       "auc": 0.6229177517361111,
       "sl": 0.7633865754837278,
-      "abandon": 0.06106551221906906
+      "abandon": 0.06106551221906906,
+      "n_components": NaN
     },
     {
       "rep": 0,
@@ -102,7 +114,8 @@
       "generator": "SMOTE",
       "auc": 0.7204014756944445,
       "sl": 0.7990617876552701,
-      "abandon": 0.05193202290840412
+      "abandon": 0.05193202290840412,
+      "n_components": NaN
     },
     {
       "rep": 0,
@@ -110,7 +123,8 @@
       "generator": "Gaussian mixture",
       "auc": 0.7399967447916667,
       "sl": 0.7876599338290183,
-      "abandon": 0.05502546813104987
+      "abandon": 0.05502546813104987,
+      "n_components": 16.0
     },
     {
       "rep": 0,
@@ -118,7 +132,8 @@
       "generator": "Erlang C",
       "auc": 0.967939453125,
       "sl": 0.6434597815573394,
-      "abandon": 0.0
+      "abandon": 0.0,
+      "n_components": NaN
     },
     {
       "rep": 0,
@@ -126,7 +141,8 @@
       "generator": "Erlang A",
       "auc": 0.5684950086805556,
       "sl": 0.8323722854766448,
-      "abandon": 0.04060165090548182
+      "abandon": 0.04060165090548182,
+      "n_components": NaN
     },
     {
       "rep": 0,
@@ -134,7 +150,8 @@
       "generator": "Gaussian copula",
       "auc": 0.7544997829861112,
       "sl": 0.8026568441596599,
-      "abandon": 0.05160623078930782
+      "abandon": 0.05160623078930782,
+      "n_components": NaN
     },
     {
       "rep": 0,
@@ -142,7 +159,8 @@
       "generator": "CART",
       "auc": 0.5292816840277778,
       "sl": 0.7846678406540022,
-      "abandon": 0.0560760306405857
+      "abandon": 0.0560760306405857,
+      "n_components": NaN
     },
     {
       "rep": 0,
@@ -150,7 +168,8 @@
       "generator": "SMOTE",
       "auc": 0.55517578125,
       "sl": 0.821747948208494,
-      "abandon": 0.04530993278240972
+      "abandon": 0.04530993278240972,
+      "n_components": NaN
     },
     {
       "rep": 0,
@@ -158,7 +177,8 @@
       "generator": "Gaussian mixture",
       "auc": 0.7158658854166666,
       "sl": 0.7967024746474811,
-      "abandon": 0.05363064037119167
+      "abandon": 0.05363064037119167,
+      "n_components": 24.0
     },
     {
       "rep": 0,
@@ -166,7 +186,8 @@
       "generator": "Erlang C",
       "auc": 0.97302734375,
       "sl": 0.6186612152944366,
-      "abandon": 0.0
+      "abandon": 0.0,
+      "n_components": NaN
     },
     {
       "rep": 0,
@@ -174,7 +195,8 @@
       "generator": "Erlang A",
       "auc": 0.5426378038194444,
       "sl": 0.8306852735657182,
-      "abandon": 0.04286567725219329
+      "abandon": 0.04286567725219329,
+      "n_components": NaN
     },
     {
       "rep": 0,
@@ -182,7 +204,8 @@
       "generator": "Gaussian copula",
       "auc": 0.7767122395833335,
       "sl": 0.786124269407351,
-      "abandon": 0.05522931645079372
+      "abandon": 0.05522931645079372,
+      "n_components": NaN
     },
     {
       "rep": 0,
@@ -190,7 +213,8 @@
       "generator": "CART",
       "auc": 0.51146484375,
       "sl": 0.7961903078208799,
-      "abandon": 0.05246173023542057
+      "abandon": 0.05246173023542057,
+      "n_components": NaN
     },
     {
       "rep": 0,
@@ -198,7 +222,8 @@
       "generator": "SMOTE",
       "auc": 0.5435481770833333,
       "sl": 0.8079115601544905,
-      "abandon": 0.04878258510782566
+      "abandon": 0.04878258510782566,
+      "n_components": NaN
     },
     {
       "rep": 0,
@@ -206,7 +231,8 @@
       "generator": "Gaussian mixture",
       "auc": 0.6691460503472222,
       "sl": 0.7992157335251295,
-      "abandon": 0.05351689685522568
+      "abandon": 0.05351689685522568,
+      "n_components": 24.0
     },
     {
       "rep": 1,
@@ -214,7 +240,8 @@
       "generator": "Real (independent)",
       "auc": 0.6030740017361111,
       "sl": 0.7672871552932352,
-      "abandon": 0.06116715029247847
+      "abandon": 0.06116715029247847,
+      "n_components": NaN
     },
     {
       "rep": 1,
@@ -222,7 +249,8 @@
       "generator": "Real (holdout)",
       "auc": NaN,
       "sl": 0.79703859819776,
-      "abandon": 0.053675407665599376
+      "abandon": 0.053675407665599376,
+      "n_components": NaN
     },
     {
       "rep": 1,
@@ -230,7 +258,8 @@
       "generator": "Erlang C",
       "auc": 0.9737814670138889,
       "sl": 0.6718373990584636,
-      "abandon": 0.0
+      "abandon": 0.0,
+      "n_components": NaN
     },
     {
       "rep": 1,
@@ -238,7 +267,8 @@
       "generator": "Erlang A",
       "auc": 0.6038856336805556,
       "sl": 0.8544410138579738,
-      "abandon": 0.037043153586558485
+      "abandon": 0.037043153586558485,
+      "n_components": NaN
     },
     {
       "rep": 1,
@@ -246,7 +276,8 @@
       "generator": "Gaussian copula",
       "auc": 0.7920366753472221,
       "sl": 0.8247543294582279,
-      "abandon": 0.04551342490219178
+      "abandon": 0.04551342490219178,
+      "n_components": NaN
     },
     {
       "rep": 1,
@@ -254,7 +285,8 @@
       "generator": "CART",
       "auc": 0.7442133246527778,
       "sl": 0.8202619487330888,
-      "abandon": 0.046810269066956046
+      "abandon": 0.046810269066956046,
+      "n_components": NaN
     },
     {
       "rep": 1,
@@ -262,7 +294,8 @@
       "generator": "SMOTE",
       "auc": 0.7879307725694443,
       "sl": 0.8288582683371086,
-      "abandon": 0.04370292295119191
+      "abandon": 0.04370292295119191,
+      "n_components": NaN
     },
     {
       "rep": 1,
@@ -270,7 +303,8 @@
       "generator": "Gaussian mixture",
       "auc": 0.7909548611111111,
       "sl": 0.8313874128863957,
-      "abandon": 0.0431081183017625
+      "abandon": 0.0431081183017625,
+      "n_components": 8.0
     },
     {
       "rep": 1,
@@ -278,7 +312,8 @@
       "generator": "Erlang C",
       "auc": 0.9778559027777778,
       "sl": 0.6073458587668701,
-      "abandon": 0.0
+      "abandon": 0.0,
+      "n_components": NaN
     },
     {
       "rep": 1,
@@ -286,7 +321,8 @@
       "generator": "Erlang A",
       "auc": 0.6547992621527778,
       "sl": 0.8352484918126974,
-      "abandon": 0.0414966963516231
+      "abandon": 0.0414966963516231,
+      "n_components": NaN
     },
     {
       "rep": 1,
@@ -294,7 +330,8 @@
       "generator": "Gaussian copula",
       "auc": 0.7469618055555556,
       "sl": 0.7996540261642641,
-      "abandon": 0.05308580067779942
+      "abandon": 0.05308580067779942,
+      "n_components": NaN
     },
     {
       "rep": 1,
@@ -302,7 +339,8 @@
       "generator": "CART",
       "auc": 0.5990006510416667,
       "sl": 0.804534181864965,
-      "abandon": 0.05169463206927787
+      "abandon": 0.05169463206927787,
+      "n_components": NaN
     },
     {
       "rep": 1,
@@ -310,7 +348,8 @@
       "generator": "SMOTE",
       "auc": 0.6676920572916667,
       "sl": 0.8180222293648389,
-      "abandon": 0.04776211530296954
+      "abandon": 0.04776211530296954,
+      "n_components": NaN
     },
     {
       "rep": 1,
@@ -318,7 +357,8 @@
       "generator": "Gaussian mixture",
       "auc": 0.7634212239583333,
       "sl": 0.795167174402376,
-      "abandon": 0.054884332726823866
+      "abandon": 0.054884332726823866,
+      "n_components": 8.0
     },
     {
       "rep": 1,
@@ -326,7 +366,8 @@
       "generator": "Erlang C",
       "auc": 0.9783344184027778,
       "sl": 0.6206400247135475,
-      "abandon": 0.0
+      "abandon": 0.0,
+      "n_components": NaN
     },
     {
       "rep": 1,
@@ -334,7 +375,8 @@
       "generator": "Erlang A",
       "auc": 0.5523285590277778,
       "sl": 0.8332048935555342,
-      "abandon": 0.04196540382842281
+      "abandon": 0.04196540382842281,
+      "n_components": NaN
     },
     {
       "rep": 1,
@@ -342,7 +384,8 @@
       "generator": "Gaussian copula",
       "auc": 0.7798285590277777,
       "sl": 0.8076213190078815,
-      "abandon": 0.04962408317098569
+      "abandon": 0.04962408317098569,
+      "n_components": NaN
     },
     {
       "rep": 1,
@@ -350,7 +393,8 @@
       "generator": "CART",
       "auc": 0.5510123697916667,
       "sl": 0.8117082937784413,
-      "abandon": 0.04801165898798329
+      "abandon": 0.04801165898798329,
+      "n_components": NaN
     },
     {
       "rep": 1,
@@ -358,7 +402,8 @@
       "generator": "SMOTE",
       "auc": 0.6369173177083334,
       "sl": 0.7942224361311735,
-      "abandon": 0.05271847907763752
+      "abandon": 0.05271847907763752,
+      "n_components": NaN
     },
     {
       "rep": 1,
@@ -366,7 +411,8 @@
       "generator": "Gaussian mixture",
       "auc": 0.7394292534722222,
       "sl": 0.8108487493648326,
-      "abandon": 0.04860477822686615
+      "abandon": 0.04860477822686615,
+      "n_components": 24.0
     },
     {
       "rep": 1,
@@ -374,7 +420,8 @@
       "generator": "Erlang C",
       "auc": 0.9772905815972223,
       "sl": 0.6425504493810412,
-      "abandon": 0.0
+      "abandon": 0.0,
+      "n_components": NaN
     },
     {
       "rep": 1,
@@ -382,7 +429,8 @@
       "generator": "Erlang A",
       "auc": 0.6471180555555556,
       "sl": 0.834059479607094,
-      "abandon": 0.04138676052912097
+      "abandon": 0.04138676052912097,
+      "n_components": NaN
     },
     {
       "rep": 1,
@@ -390,7 +438,8 @@
       "generator": "Gaussian copula",
       "auc": 0.756808810763889,
       "sl": 0.7971691998606005,
-      "abandon": 0.052958690552866984
+      "abandon": 0.052958690552866984,
+      "n_components": NaN
     },
     {
       "rep": 1,
@@ -398,7 +447,8 @@
       "generator": "CART",
       "auc": 0.5813357204861112,
       "sl": 0.7994787104744447,
-      "abandon": 0.05070926437165862
+      "abandon": 0.05070926437165862,
+      "n_components": NaN
     },
     {
       "rep": 1,
@@ -406,7 +456,8 @@
       "generator": "SMOTE",
       "auc": 0.6021777343749999,
       "sl": 0.8064996826588743,
-      "abandon": 0.050438705459716314
+      "abandon": 0.050438705459716314,
+      "n_components": NaN
     },
     {
       "rep": 1,
@@ -414,7 +465,8 @@
       "generator": "Gaussian mixture",
       "auc": 0.7261393229166666,
       "sl": 0.8160616007804626,
-      "abandon": 0.04695017603191131
+      "abandon": 0.04695017603191131,
+      "n_components": 24.0
     },
     {
       "rep": 2,
@@ -422,7 +474,8 @@
       "generator": "Real (independent)",
       "auc": 0.5382389322916666,
       "sl": 0.8165349257701819,
-      "abandon": 0.047059557045771014
+      "abandon": 0.047059557045771014,
+      "n_components": NaN
     },
     {
       "rep": 2,
@@ -430,7 +483,8 @@
       "generator": "Real (holdout)",
       "auc": NaN,
       "sl": 0.8128748921824898,
-      "abandon": 0.047887435227190425
+      "abandon": 0.047887435227190425,
+      "n_components": NaN
     },
     {
       "rep": 2,
@@ -438,7 +492,8 @@
       "generator": "Erlang C",
       "auc": 0.9753298611111112,
       "sl": 0.5954234819628053,
-      "abandon": 0.0
+      "abandon": 0.0,
+      "n_components": NaN
     },
     {
       "rep": 2,
@@ -446,7 +501,8 @@
       "generator": "Erlang A",
       "auc": 0.5697157118055556,
       "sl": 0.8259556522922051,
-      "abandon": 0.04421167188137668
+      "abandon": 0.04421167188137668,
+      "n_components": NaN
     },
     {
       "rep": 2,
@@ -454,7 +510,8 @@
       "generator": "Gaussian copula",
       "auc": 0.7816406250000001,
       "sl": 0.8156153146832603,
-      "abandon": 0.048174940013786915
+      "abandon": 0.048174940013786915,
+      "n_components": NaN
     },
     {
       "rep": 2,
@@ -462,7 +519,8 @@
       "generator": "CART",
       "auc": 0.7369683159722222,
       "sl": 0.7920714283597202,
-      "abandon": 0.053904181055933156
+      "abandon": 0.053904181055933156,
+      "n_components": NaN
     },
     {
       "rep": 2,
@@ -470,7 +528,8 @@
       "generator": "SMOTE",
       "auc": 0.7932172309027778,
       "sl": 0.8085301015078945,
-      "abandon": 0.04983659815613405
+      "abandon": 0.04983659815613405,
+      "n_components": NaN
     },
     {
       "rep": 2,
@@ -478,7 +537,8 @@
       "generator": "Gaussian mixture",
       "auc": 0.7506380208333334,
       "sl": 0.8099569099446371,
-      "abandon": 0.04897312188725014
+      "abandon": 0.04897312188725014,
+      "n_components": 12.0
     },
     {
       "rep": 2,
@@ -486,7 +546,8 @@
       "generator": "Erlang C",
       "auc": 0.9703971354166667,
       "sl": 0.6176347905649968,
-      "abandon": 0.0
+      "abandon": 0.0,
+      "n_components": NaN
     },
     {
       "rep": 2,
@@ -494,7 +555,8 @@
       "generator": "Erlang A",
       "auc": 0.6642784288194445,
       "sl": 0.8240993526597242,
-      "abandon": 0.044518716577540106
+      "abandon": 0.044518716577540106,
+      "n_components": NaN
     },
     {
       "rep": 2,
@@ -502,7 +564,8 @@
       "generator": "Gaussian copula",
       "auc": 0.7628938802083333,
       "sl": 0.7899226453559623,
-      "abandon": 0.05578858359626748
+      "abandon": 0.05578858359626748,
+      "n_components": NaN
     },
     {
       "rep": 2,
@@ -510,7 +573,8 @@
       "generator": "CART",
       "auc": 0.6783604600694444,
       "sl": 0.8039730713791303,
-      "abandon": 0.051235551556434375
+      "abandon": 0.051235551556434375,
+      "n_components": NaN
     },
     {
       "rep": 2,
@@ -518,7 +582,8 @@
       "generator": "SMOTE",
       "auc": 0.7449522569444444,
       "sl": 0.7984455135713153,
-      "abandon": 0.05257545560960195
+      "abandon": 0.05257545560960195,
+      "n_components": NaN
     },
     {
       "rep": 2,
@@ -526,7 +591,8 @@
       "generator": "Gaussian mixture",
       "auc": 0.7902408854166667,
       "sl": 0.7910469348159809,
-      "abandon": 0.055061009162104886
+      "abandon": 0.055061009162104886,
+      "n_components": 8.0
     },
     {
       "rep": 2,
@@ -534,7 +600,8 @@
       "generator": "Erlang C",
       "auc": 0.9773415798611111,
       "sl": 0.6215311633439136,
-      "abandon": 0.0
+      "abandon": 0.0,
+      "n_components": NaN
     },
     {
       "rep": 2,
@@ -542,7 +609,8 @@
       "generator": "Erlang A",
       "auc": 0.6407649739583333,
       "sl": 0.825245844457264,
-      "abandon": 0.04345376245992031
+      "abandon": 0.04345376245992031,
+      "n_components": NaN
     },
     {
       "rep": 2,
@@ -550,7 +618,8 @@
       "generator": "Gaussian copula",
       "auc": 0.7685525173611111,
       "sl": 0.8064734187678269,
-      "abandon": 0.05028342305068581
+      "abandon": 0.05028342305068581,
+      "n_components": NaN
     },
     {
       "rep": 2,
@@ -558,7 +627,8 @@
       "generator": "CART",
       "auc": 0.5960807291666667,
       "sl": 0.8010594568894347,
-      "abandon": 0.051896050964515494
+      "abandon": 0.051896050964515494,
+      "n_components": NaN
     },
     {
       "rep": 2,
@@ -566,7 +636,8 @@
       "generator": "SMOTE",
       "auc": 0.6729589843749999,
       "sl": 0.7978790644648956,
-      "abandon": 0.051120025428131786
+      "abandon": 0.051120025428131786,
+      "n_components": NaN
     },
     {
       "rep": 2,
@@ -574,7 +645,8 @@
       "generator": "Gaussian mixture",
       "auc": 0.7572786458333333,
       "sl": 0.816349306385417,
-      "abandon": 0.046505894157368624
+      "abandon": 0.046505894157368624,
+      "n_components": 16.0
     },
     {
       "rep": 2,
@@ -582,7 +654,8 @@
       "generator": "Erlang C",
       "auc": 0.9765581597222223,
       "sl": 0.6113757574462934,
-      "abandon": 0.0
+      "abandon": 0.0,
+      "n_components": NaN
     },
     {
       "rep": 2,
@@ -590,7 +663,8 @@
       "generator": "Erlang A",
       "auc": 0.6378374565972222,
       "sl": 0.8303380184002774,
-      "abandon": 0.0428183839578956
+      "abandon": 0.0428183839578956,
+      "n_components": NaN
     },
     {
       "rep": 2,
@@ -598,7 +672,8 @@
       "generator": "Gaussian copula",
       "auc": 0.7589800347222222,
       "sl": 0.8108803088256055,
-      "abandon": 0.05007029440004984
+      "abandon": 0.05007029440004984,
+      "n_components": NaN
     },
     {
       "rep": 2,
@@ -606,7 +681,8 @@
       "generator": "CART",
       "auc": 0.5751323784722222,
       "sl": 0.8082675664711089,
-      "abandon": 0.04957659464465836
+      "abandon": 0.04957659464465836,
+      "n_components": NaN
     },
     {
       "rep": 2,
@@ -614,7 +690,8 @@
       "generator": "SMOTE",
       "auc": 0.5954481336805555,
       "sl": 0.8121806503486436,
-      "abandon": 0.04842495762260797
+      "abandon": 0.04842495762260797,
+      "n_components": NaN
     },
     {
       "rep": 2,
@@ -622,7 +699,8 @@
       "generator": "Gaussian mixture",
       "auc": 0.7676812065972223,
       "sl": 0.8015257173227914,
-      "abandon": 0.05107396637759309
+      "abandon": 0.05107396637759309,
+      "n_components": 24.0
     },
     {
       "rep": 3,
@@ -630,7 +708,8 @@
       "generator": "Real (independent)",
       "auc": 0.5032486979166666,
       "sl": 0.7657991308872925,
-      "abandon": 0.06006744747139565
+      "abandon": 0.06006744747139565,
+      "n_components": NaN
     },
     {
       "rep": 3,
@@ -638,7 +717,8 @@
       "generator": "Real (holdout)",
       "auc": NaN,
       "sl": 0.8216723668597753,
-      "abandon": 0.045229287359530954
+      "abandon": 0.045229287359530954,
+      "n_components": NaN
     },
     {
       "rep": 3,
@@ -646,7 +726,8 @@
       "generator": "Erlang C",
       "auc": 0.9788454861111111,
       "sl": 0.639324712108225,
-      "abandon": 0.0
+      "abandon": 0.0,
+      "n_components": NaN
     },
     {
       "rep": 3,
@@ -654,7 +735,8 @@
       "generator": "Erlang A",
       "auc": 0.5948285590277778,
       "sl": 0.8433080916731205,
-      "abandon": 0.03846484811978315
+      "abandon": 0.03846484811978315,
+      "n_components": NaN
     },
     {
       "rep": 3,
@@ -662,7 +744,8 @@
       "generator": "Gaussian copula",
       "auc": 0.80603515625,
       "sl": 0.8199445977659474,
-      "abandon": 0.046208057407319536
+      "abandon": 0.046208057407319536,
+      "n_components": NaN
     },
     {
       "rep": 3,
@@ -670,7 +753,8 @@
       "generator": "CART",
       "auc": 0.7277213541666667,
       "sl": 0.8236345597131494,
-      "abandon": 0.04455418664588373
+      "abandon": 0.04455418664588373,
+      "n_components": NaN
     },
     {
       "rep": 3,
@@ -678,7 +762,8 @@
       "generator": "SMOTE",
       "auc": 0.771279296875,
       "sl": 0.8247222740549216,
-      "abandon": 0.043689604893395094
+      "abandon": 0.043689604893395094,
+      "n_components": NaN
     },
     {
       "rep": 3,
@@ -686,7 +771,8 @@
       "generator": "Gaussian mixture",
       "auc": 0.8009364149305556,
       "sl": 0.8198868793540884,
-      "abandon": 0.045378669518524095
+      "abandon": 0.045378669518524095,
+      "n_components": 8.0
     },
     {
       "rep": 3,
@@ -694,7 +780,8 @@
       "generator": "Erlang C",
       "auc": 0.9712955729166667,
       "sl": 0.6481030571684252,
-      "abandon": 0.0
+      "abandon": 0.0,
+      "n_components": NaN
     },
     {
       "rep": 3,
@@ -702,7 +789,8 @@
       "generator": "Erlang A",
       "auc": 0.5694661458333334,
       "sl": 0.8531333705165017,
-      "abandon": 0.036432619278784245
+      "abandon": 0.036432619278784245,
+      "n_components": NaN
     },
     {
       "rep": 3,
@@ -710,7 +798,8 @@
       "generator": "Gaussian copula",
       "auc": 0.7880642361111112,
       "sl": 0.8176106724823933,
-      "abandon": 0.049367123146342
+      "abandon": 0.049367123146342,
+      "n_components": NaN
     },
     {
       "rep": 3,
@@ -718,7 +807,8 @@
       "generator": "CART",
       "auc": 0.6061903211805555,
       "sl": 0.8035373334702859,
-      "abandon": 0.049996321324548815
+      "abandon": 0.049996321324548815,
+      "n_components": NaN
     },
     {
       "rep": 3,
@@ -726,7 +816,8 @@
       "generator": "SMOTE",
       "auc": 0.6534016927083334,
       "sl": 0.806041029327917,
-      "abandon": 0.05123977760578633
+      "abandon": 0.05123977760578633,
+      "n_components": NaN
     },
     {
       "rep": 3,
@@ -734,7 +825,8 @@
       "generator": "Gaussian mixture",
       "auc": 0.7575802951388889,
       "sl": 0.8237267764862376,
-      "abandon": 0.045813927052005154
+      "abandon": 0.045813927052005154,
+      "n_components": 12.0
     },
     {
       "rep": 3,
@@ -742,7 +834,8 @@
       "generator": "Erlang C",
       "auc": 0.9733528645833335,
       "sl": 0.6534246763221417,
-      "abandon": 0.0
+      "abandon": 0.0,
+      "n_components": NaN
     },
     {
       "rep": 3,
@@ -750,7 +843,8 @@
       "generator": "Erlang A",
       "auc": 0.5815418836805556,
       "sl": 0.8394642011678679,
-      "abandon": 0.03963254247987795
+      "abandon": 0.03963254247987795,
+      "n_components": NaN
     },
     {
       "rep": 3,
@@ -758,7 +852,8 @@
       "generator": "Gaussian copula",
       "auc": 0.778025173611111,
       "sl": 0.8243766351230074,
-      "abandon": 0.045807257265713844
+      "abandon": 0.045807257265713844,
+      "n_components": NaN
     },
     {
       "rep": 3,
@@ -766,7 +861,8 @@
       "generator": "CART",
       "auc": 0.5517545572916667,
       "sl": 0.7881764868813503,
-      "abandon": 0.05550846651301161
+      "abandon": 0.05550846651301161,
+      "n_components": NaN
     },
     {
       "rep": 3,
@@ -774,7 +870,8 @@
       "generator": "SMOTE",
       "auc": 0.6106944444444444,
       "sl": 0.816504968673451,
-      "abandon": 0.04754497743234636
+      "abandon": 0.04754497743234636,
+      "n_components": NaN
     },
     {
       "rep": 3,
@@ -782,7 +879,8 @@
       "generator": "Gaussian mixture",
       "auc": 0.7150889756944445,
       "sl": 0.8097371897749959,
-      "abandon": 0.050924173003607284
+      "abandon": 0.050924173003607284,
+      "n_components": 24.0
     },
     {
       "rep": 3,
@@ -790,7 +888,8 @@
       "generator": "Erlang C",
       "auc": 0.9749533420138888,
       "sl": 0.6322096820084816,
-      "abandon": 0.0
+      "abandon": 0.0,
+      "n_components": NaN
     },
     {
       "rep": 3,
@@ -798,7 +897,8 @@
       "generator": "Erlang A",
       "auc": 0.5386577690972222,
       "sl": 0.8251023998680485,
-      "abandon": 0.04339280314484427
+      "abandon": 0.04339280314484427,
+      "n_components": NaN
     },
     {
       "rep": 3,
@@ -806,7 +906,8 @@
       "generator": "Gaussian copula",
       "auc": 0.7389887152777777,
       "sl": 0.8126470566609121,
-      "abandon": 0.048416216272287156
+      "abandon": 0.048416216272287156,
+      "n_components": NaN
     },
     {
       "rep": 3,
@@ -814,7 +915,8 @@
       "generator": "CART",
       "auc": 0.5486859809027778,
       "sl": 0.7889934377106642,
-      "abandon": 0.0558830784394888
+      "abandon": 0.0558830784394888,
+      "n_components": NaN
     },
     {
       "rep": 3,
@@ -822,7 +924,8 @@
       "generator": "SMOTE",
       "auc": 0.5648220486111111,
       "sl": 0.817510148084855,
-      "abandon": 0.04706531885045199
+      "abandon": 0.04706531885045199,
+      "n_components": NaN
     },
     {
       "rep": 3,
@@ -830,7 +933,8 @@
       "generator": "Gaussian mixture",
       "auc": 0.676687282986111,
       "sl": 0.7885784367844985,
-      "abandon": 0.0556486456276765
+      "abandon": 0.0556486456276765,
+      "n_components": 24.0
     },
     {
       "rep": 4,
@@ -838,7 +942,8 @@
       "generator": "Real (independent)",
       "auc": 0.5124186197916667,
       "sl": 0.7873259024015609,
-      "abandon": 0.055911880496225724
+      "abandon": 0.055911880496225724,
+      "n_components": NaN
     },
     {
       "rep": 4,
@@ -846,7 +951,8 @@
       "generator": "Real (holdout)",
       "auc": NaN,
       "sl": 0.7926306950883061,
-      "abandon": 0.05396442355863198
+      "abandon": 0.05396442355863198,
+      "n_components": NaN
     },
     {
       "rep": 4,
@@ -854,7 +960,8 @@
       "generator": "Erlang C",
       "auc": 0.9706792534722223,
       "sl": 0.6601036414959204,
-      "abandon": 0.0
+      "abandon": 0.0,
+      "n_components": NaN
     },
     {
       "rep": 4,
@@ -862,7 +969,8 @@
       "generator": "Erlang A",
       "auc": 0.6171723090277778,
       "sl": 0.8390637443301825,
-      "abandon": 0.03949309234444791
+      "abandon": 0.03949309234444791,
+      "n_components": NaN
     },
     {
       "rep": 4,
@@ -870,7 +978,8 @@
       "generator": "Gaussian copula",
       "auc": 0.7778624131944445,
       "sl": 0.8164334591951345,
-      "abandon": 0.046021875465690386
+      "abandon": 0.046021875465690386,
+      "n_components": NaN
     },
     {
       "rep": 4,
@@ -878,7 +987,8 @@
       "generator": "CART",
       "auc": 0.711357421875,
       "sl": 0.8132969836416696,
-      "abandon": 0.04788252026003376
+      "abandon": 0.04788252026003376,
+      "n_components": NaN
     },
     {
       "rep": 4,
@@ -886,7 +996,8 @@
       "generator": "SMOTE",
       "auc": 0.7743131510416666,
       "sl": 0.8045397928766238,
-      "abandon": 0.050253877506808826
+      "abandon": 0.050253877506808826,
+      "n_components": NaN
     },
     {
       "rep": 4,
@@ -894,7 +1005,8 @@
       "generator": "Gaussian mixture",
       "auc": 0.7650944010416667,
       "sl": 0.7965620917928794,
-      "abandon": 0.052272552725658145
+      "abandon": 0.052272552725658145,
+      "n_components": 8.0
     },
     {
       "rep": 4,
@@ -902,7 +1014,8 @@
       "generator": "Erlang C",
       "auc": 0.9758148871527779,
       "sl": 0.6243092449522387,
-      "abandon": 0.0
+      "abandon": 0.0,
+      "n_components": NaN
     },
     {
       "rep": 4,
@@ -910,7 +1023,8 @@
       "generator": "Erlang A",
       "auc": 0.6967838541666668,
       "sl": 0.844963138629685,
-      "abandon": 0.037795793163891325
+      "abandon": 0.037795793163891325,
+      "n_components": NaN
     },
     {
       "rep": 4,
@@ -918,7 +1032,8 @@
       "generator": "Gaussian copula",
       "auc": 0.7914442274305555,
       "sl": 0.8036166469482117,
-      "abandon": 0.05134302160013231
+      "abandon": 0.05134302160013231,
+      "n_components": NaN
     },
     {
       "rep": 4,
@@ -926,7 +1041,8 @@
       "generator": "CART",
       "auc": 0.6529578993055556,
       "sl": 0.8026334304369861,
-      "abandon": 0.05127855909600782
+      "abandon": 0.05127855909600782,
+      "n_components": NaN
     },
     {
       "rep": 4,
@@ -934,7 +1050,8 @@
       "generator": "SMOTE",
       "auc": 0.7119411892361112,
       "sl": 0.8090165262113128,
-      "abandon": 0.04992113111017993
+      "abandon": 0.04992113111017993,
+      "n_components": NaN
     },
     {
       "rep": 4,
@@ -942,7 +1059,8 @@
       "generator": "Gaussian mixture",
       "auc": 0.790700954861111,
       "sl": 0.8069538377232314,
-      "abandon": 0.05027418883251991
+      "abandon": 0.05027418883251991,
+      "n_components": 12.0
     },
     {
       "rep": 4,
@@ -950,7 +1068,8 @@
       "generator": "Erlang C",
       "auc": 0.9724251302083334,
       "sl": 0.6311792166763043,
-      "abandon": 0.0
+      "abandon": 0.0,
+      "n_components": NaN
     },
     {
       "rep": 4,
@@ -958,7 +1077,8 @@
       "generator": "Erlang A",
       "auc": 0.6000575086805555,
       "sl": 0.8351611901535682,
-      "abandon": 0.04168078139114725
+      "abandon": 0.04168078139114725,
+      "n_components": NaN
     },
     {
       "rep": 4,
@@ -966,7 +1086,8 @@
       "generator": "Gaussian copula",
       "auc": 0.7898122829861111,
       "sl": 0.8204120156118098,
-      "abandon": 0.04692326463572801
+      "abandon": 0.04692326463572801,
+      "n_components": NaN
     },
     {
       "rep": 4,
@@ -974,7 +1095,8 @@
       "generator": "CART",
       "auc": 0.5854611545138889,
       "sl": 0.807659047176767,
-      "abandon": 0.04935944064261157
+      "abandon": 0.04935944064261157,
+      "n_components": NaN
     },
     {
       "rep": 4,
@@ -982,7 +1104,8 @@
       "generator": "SMOTE",
       "auc": 0.6433344184027778,
       "sl": 0.8173855842300219,
-      "abandon": 0.04693560043648578
+      "abandon": 0.04693560043648578,
+      "n_components": NaN
     },
     {
       "rep": 4,
@@ -990,7 +1113,8 @@
       "generator": "Gaussian mixture",
       "auc": 0.7382541232638888,
       "sl": 0.8004385297885515,
-      "abandon": 0.05265569255472198
+      "abandon": 0.05265569255472198,
+      "n_components": 24.0
     },
     {
       "rep": 4,
@@ -998,7 +1122,8 @@
       "generator": "Erlang C",
       "auc": 0.9759830729166666,
       "sl": 0.6375863938203008,
-      "abandon": 0.0
+      "abandon": 0.0,
+      "n_components": NaN
     },
     {
       "rep": 4,
@@ -1006,7 +1131,8 @@
       "generator": "Erlang A",
       "auc": 0.6165559895833335,
       "sl": 0.8350115606145595,
-      "abandon": 0.04112568919048336
+      "abandon": 0.04112568919048336,
+      "n_components": NaN
     },
     {
       "rep": 4,
@@ -1014,7 +1140,8 @@
       "generator": "Gaussian copula",
       "auc": 0.7772233072916667,
       "sl": 0.8023299807924154,
-      "abandon": 0.05119739135537077
+      "abandon": 0.05119739135537077,
+      "n_components": NaN
     },
     {
       "rep": 4,
@@ -1022,7 +1149,8 @@
       "generator": "CART",
       "auc": 0.5429535590277779,
       "sl": 0.7901993724493784,
-      "abandon": 0.0549726084871242
+      "abandon": 0.0549726084871242,
+      "n_components": NaN
     },
     {
       "rep": 4,
@@ -1030,7 +1158,8 @@
       "generator": "SMOTE",
       "auc": 0.6000835503472222,
       "sl": 0.8041640815183366,
-      "abandon": 0.05045357723842666
+      "abandon": 0.05045357723842666,
+      "n_components": NaN
     },
     {
       "rep": 4,
@@ -1038,7 +1167,8 @@
       "generator": "Gaussian mixture",
       "auc": 0.7053114149305555,
       "sl": 0.7999900954579773,
-      "abandon": 0.05032240291213568
+      "abandon": 0.05032240291213568,
+      "n_components": 24.0
     },
     {
       "rep": 5,
@@ -1046,7 +1176,8 @@
       "generator": "Real (independent)",
       "auc": 0.5344650607638889,
       "sl": 0.782452648688095,
-      "abandon": 0.05524927853517763
+      "abandon": 0.05524927853517763,
+      "n_components": NaN
     },
     {
       "rep": 5,
@@ -1054,7 +1185,8 @@
       "generator": "Real (holdout)",
       "auc": NaN,
       "sl": 0.8007497357146831,
-      "abandon": 0.052335447615868246
+      "abandon": 0.052335447615868246,
+      "n_components": NaN
     },
     {
       "rep": 5,
@@ -1062,7 +1194,8 @@
       "generator": "Erlang C",
       "auc": 0.9759027777777778,
       "sl": 0.6117846009657505,
-      "abandon": 0.0
+      "abandon": 0.0,
+      "n_components": NaN
     },
     {
       "rep": 5,
@@ -1070,7 +1203,8 @@
       "generator": "Erlang A",
       "auc": 0.5954112413194446,
       "sl": 0.8218228325255789,
-      "abandon": 0.04460823909531503
+      "abandon": 0.04460823909531503,
+      "n_components": NaN
     },
     {
       "rep": 5,
@@ -1078,7 +1212,8 @@
       "generator": "Gaussian copula",
       "auc": 0.8057931857638889,
       "sl": 0.7965933872584899,
-      "abandon": 0.0542067561121645
+      "abandon": 0.0542067561121645,
+      "n_components": NaN
     },
     {
       "rep": 5,
@@ -1086,7 +1221,8 @@
       "generator": "CART",
       "auc": 0.7782671440972222,
       "sl": 0.7953077564696271,
-      "abandon": 0.05396788726480371
+      "abandon": 0.05396788726480371,
+      "n_components": NaN
     },
     {
       "rep": 5,
@@ -1094,7 +1230,8 @@
       "generator": "SMOTE",
       "auc": 0.8445703124999999,
       "sl": 0.8134787286362711,
-      "abandon": 0.04807329554883215
+      "abandon": 0.04807329554883215,
+      "n_components": NaN
     },
     {
       "rep": 5,
@@ -1102,7 +1239,8 @@
       "generator": "Gaussian mixture",
       "auc": 0.7487608506944444,
       "sl": 0.8036542049636581,
-      "abandon": 0.05027615190642849
+      "abandon": 0.05027615190642849,
+      "n_components": 8.0
     },
     {
       "rep": 5,
@@ -1110,7 +1248,8 @@
       "generator": "Erlang C",
       "auc": 0.9756499565972222,
       "sl": 0.6390756511778475,
-      "abandon": 0.0
+      "abandon": 0.0,
+      "n_components": NaN
     },
     {
       "rep": 5,
@@ -1118,7 +1257,8 @@
       "generator": "Erlang A",
       "auc": 0.5794303385416666,
       "sl": 0.8369762278218004,
-      "abandon": 0.04113449172624989
+      "abandon": 0.04113449172624989,
+      "n_components": NaN
     },
     {
       "rep": 5,
@@ -1126,7 +1266,8 @@
       "generator": "Gaussian copula",
       "auc": 0.7645203993055556,
       "sl": 0.8127501888549653,
-      "abandon": 0.04902047772616015
+      "abandon": 0.04902047772616015,
+      "n_components": NaN
     },
     {
       "rep": 5,
@@ -1134,7 +1275,8 @@
       "generator": "CART",
       "auc": 0.6011480034722222,
       "sl": 0.8129905318370712,
-      "abandon": 0.04884180792662583
+      "abandon": 0.04884180792662583,
+      "n_components": NaN
     },
     {
       "rep": 5,
@@ -1142,7 +1284,8 @@
       "generator": "SMOTE",
       "auc": 0.6974435763888889,
       "sl": 0.8277440235926766,
-      "abandon": 0.04408394545311336
+      "abandon": 0.04408394545311336,
+      "n_components": NaN
     },
     {
       "rep": 5,
@@ -1150,7 +1293,8 @@
       "generator": "Gaussian mixture",
       "auc": 0.737490234375,
       "sl": 0.8206210657691686,
-      "abandon": 0.04545456697177148
+      "abandon": 0.04545456697177148,
+      "n_components": 16.0
     },
     {
       "rep": 5,
@@ -1158,7 +1302,8 @@
       "generator": "Erlang C",
       "auc": 0.9784255642361113,
       "sl": 0.614274171097214,
-      "abandon": 0.0
+      "abandon": 0.0,
+      "n_components": NaN
     },
     {
       "rep": 5,
@@ -1166,7 +1311,8 @@
       "generator": "Erlang A",
       "auc": 0.5534125434027778,
       "sl": 0.8401079274984447,
-      "abandon": 0.038976925604121374
+      "abandon": 0.038976925604121374,
+      "n_components": NaN
     },
     {
       "rep": 5,
@@ -1174,7 +1320,8 @@
       "generator": "Gaussian copula",
       "auc": 0.7498372395833334,
       "sl": 0.8100672782733258,
-      "abandon": 0.05065161712346001
+      "abandon": 0.05065161712346001,
+      "n_components": NaN
     },
     {
       "rep": 5,
@@ -1182,7 +1329,8 @@
       "generator": "CART",
       "auc": 0.5116927083333334,
       "sl": 0.8027640121304891,
-      "abandon": 0.05066091357338764
+      "abandon": 0.05066091357338764,
+      "n_components": NaN
     },
     {
       "rep": 5,
@@ -1190,7 +1338,8 @@
       "generator": "SMOTE",
       "auc": 0.5844737413194444,
       "sl": 0.8063510140914846,
-      "abandon": 0.05103608968297315
+      "abandon": 0.05103608968297315,
+      "n_components": NaN
     },
     {
       "rep": 5,
@@ -1198,7 +1347,8 @@
       "generator": "Gaussian mixture",
       "auc": 0.6725824652777778,
       "sl": 0.8070437400300546,
-      "abandon": 0.05034994222326116
+      "abandon": 0.05034994222326116,
+      "n_components": 24.0
     },
     {
       "rep": 5,
@@ -1206,7 +1356,8 @@
       "generator": "Erlang C",
       "auc": 0.9770431857638888,
       "sl": 0.6047501555193647,
-      "abandon": 0.0
+      "abandon": 0.0,
+      "n_components": NaN
     },
     {
       "rep": 5,
@@ -1214,7 +1365,8 @@
       "generator": "Erlang A",
       "auc": 0.5852387152777778,
       "sl": 0.8313943582299099,
-      "abandon": 0.04194183756227552
+      "abandon": 0.04194183756227552,
+      "n_components": NaN
     },
     {
       "rep": 5,
@@ -1222,7 +1374,8 @@
       "generator": "Gaussian copula",
       "auc": 0.7396365017361111,
       "sl": 0.8074449188489207,
-      "abandon": 0.049353438400685505
+      "abandon": 0.049353438400685505,
+      "n_components": NaN
     },
     {
       "rep": 5,
@@ -1230,7 +1383,8 @@
       "generator": "CART",
       "auc": 0.5287196180555556,
       "sl": 0.813387575597739,
-      "abandon": 0.04889739133876298
+      "abandon": 0.04889739133876298,
+      "n_components": NaN
     },
     {
       "rep": 5,
@@ -1238,7 +1392,8 @@
       "generator": "SMOTE",
       "auc": 0.5882703993055556,
       "sl": 0.8069933899456211,
-      "abandon": 0.04864098693898176
+      "abandon": 0.04864098693898176,
+      "n_components": NaN
     },
     {
       "rep": 5,
@@ -1246,7 +1401,8 @@
       "generator": "Gaussian mixture",
       "auc": 0.7106467013888889,
       "sl": 0.8046336656883726,
-      "abandon": 0.050567656174116286
+      "abandon": 0.050567656174116286,
+      "n_components": 24.0
     }
   ],
   "scatter": {
