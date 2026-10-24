@@ -88,12 +88,10 @@ def execute(output_dir: Path, streams: int = 100, null_streams: int = 199) -> No
         f"Independent evaluation streams per regime: {streams}.",
         f"Independent null-calibration streams: {null_streams}.", "",
         "Conclusions apply only to the prespecified synthetic setting.", "",
-        verdict.to_markdown(index=False), "",
+        "```csv", verdict.to_csv(index=False).rstrip(), "```", "",
         "Verdicts are conditional on the calibrated thresholds and simulation design.",
         "See manifest.json and complete CSV outputs for reproducibility.", "",
     ]
-    # Do not require tabulate as an additional runtime dependency.
-    lines[7] = verdict.to_csv(index=False)
     (output_dir / "REPORT.md").write_text("\n".join(lines), encoding="utf-8")
 
 
