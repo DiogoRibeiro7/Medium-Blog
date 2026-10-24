@@ -25,6 +25,10 @@ venv/
 .DS_Store
 Thumbs.db
 
+# Historical high-resolution exports (rendered plots remain in just_fun/Untitled.ipynb)
+AlcoholCPI.tiff
+DisposableIncomes.tiff
+
 # Private personal-health source data
 blood_pressure_tracker*.xlsx
 Blood_Pressure_Missingness/data/private/
