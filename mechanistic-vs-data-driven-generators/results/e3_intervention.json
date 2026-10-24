@@ -1,0 +1,314 @@
+{
+  "rows": [
+    {
+      "rep": 0,
+      "k": -4,
+      "method": "Reality",
+      "sl": 0.5076537361571315,
+      "abandon": 0.14583044612147708,
+      "sl_base": 0.7703722434421538,
+      "abandon_base": 0.05929011565232436,
+      "sl_effect": -0.26271850728502233,
+      "abandon_effect": 0.08654033046915272
+    },
+    {
+      "rep": 0,
+      "k": -4,
+      "method": "Erlang C",
+      "sl": 0.1260064680126166,
+      "abandon": 0.0,
+      "sl_base": 0.4703017075020961,
+      "abandon_base": 0.0,
+      "sl_effect": -0.3442952394894795,
+      "abandon_effect": 0.0
+    },
+    {
+      "rep": 0,
+      "k": -4,
+      "method": "Erlang A",
+      "sl": 0.5748013681310638,
+      "abandon": 0.12239316466814837,
+      "sl_base": 0.7574628355447903,
+      "abandon_base": 0.062078281584796176,
+      "sl_effect": -0.18266146741372657,
+      "abandon_effect": 0.06031488308335219
+    },
+    {
+      "rep": 0,
+      "k": -4,
+      "method": "Gaussian copula (adjusted)",
+      "sl": 0.5791913843098674,
+      "abandon": 0.11944024140065816,
+      "sl_base": 0.7671215349852682,
+      "abandon_base": 0.060472048759828416,
+      "sl_effect": -0.18793015067540086,
+      "abandon_effect": 0.058968192640829746
+    },
+    {
+      "rep": 0,
+      "k": -4,
+      "method": "Gaussian copula (naive)",
+      "sl": 0.8022425650798852,
+      "abandon": 0.05089448568376638,
+      "sl_base": 0.817690289488086,
+      "abandon_base": 0.04657120539172632,
+      "sl_effect": -0.015447724408200747,
+      "abandon_effect": 0.004323280292040058
+    },
+    {
+      "rep": 0,
+      "k": -4,
+      "method": "CART (adjusted)",
+      "sl": 0.6283245573053746,
+      "abandon": 0.09922072372659005,
+      "sl_base": 0.7937769098712963,
+      "abandon_base": 0.05211917971716554,
+      "sl_effect": -0.16545235256592172,
+      "abandon_effect": 0.04710154400942451
+    },
+    {
+      "rep": 0,
+      "k": -4,
+      "method": "CART (naive)",
+      "sl": 0.6472011495254475,
+      "abandon": 0.09668181150907362,
+      "sl_base": 0.798892194853057,
+      "abandon_base": 0.051143546690915566,
+      "sl_effect": -0.15169104532760946,
+      "abandon_effect": 0.04553826481815806
+    },
+    {
+      "rep": 0,
+      "k": -4,
+      "method": "Gaussian mixture (adjusted)",
+      "sl": 0.6210281698377302,
+      "abandon": 0.09730498162583252,
+      "sl_base": 0.7695575974720219,
+      "abandon_base": 0.05640593579219558,
+      "sl_effect": -0.14852942763429167,
+      "abandon_effect": 0.040899045833636946
+    },
+    {
+      "rep": 0,
+      "k": -4,
+      "method": "Gaussian mixture (naive)",
+      "sl": 0.7988962115006009,
+      "abandon": 0.05073544643816584,
+      "sl_base": 0.8209872957950834,
+      "abandon_base": 0.04485408697691287,
+      "sl_effect": -0.022091084294482588,
+      "abandon_effect": 0.005881359461252969
+    },
+    {
+      "rep": 0,
+      "k": 0,
+      "method": "Reality",
+      "sl": 0.7703722434421538,
+      "abandon": 0.05929011565232436,
+      "sl_base": 0.7703722434421538,
+      "abandon_base": 0.05929011565232436,
+      "sl_effect": 0.0,
+      "abandon_effect": 0.0
+    },
+    {
+      "rep": 0,
+      "k": 0,
+      "method": "Erlang C",
+      "sl": 0.4703017075020961,
+      "abandon": 0.0,
+      "sl_base": 0.4703017075020961,
+      "abandon_base": 0.0,
+      "sl_effect": 0.0,
+      "abandon_effect": 0.0
+    },
+    {
+      "rep": 0,
+      "k": 0,
+      "method": "Erlang A",
+      "sl": 0.7574628355447903,
+      "abandon": 0.062078281584796176,
+      "sl_base": 0.7574628355447903,
+      "abandon_base": 0.062078281584796176,
+      "sl_effect": 0.0,
+      "abandon_effect": 0.0
+    },
+    {
+      "rep": 0,
+      "k": 0,
+      "method": "Gaussian copula (adjusted)",
+      "sl": 0.7671215349852682,
+      "abandon": 0.060472048759828416,
+      "sl_base": 0.7671215349852682,
+      "abandon_base": 0.060472048759828416,
+      "sl_effect": 0.0,
+      "abandon_effect": 0.0
+    },
+    {
+      "rep": 0,
+      "k": 0,
+      "method": "Gaussian copula (naive)",
+      "sl": 0.817690289488086,
+      "abandon": 0.04657120539172632,
+      "sl_base": 0.817690289488086,
+      "abandon_base": 0.04657120539172632,
+      "sl_effect": 0.0,
+      "abandon_effect": 0.0
+    },
+    {
+      "rep": 0,
+      "k": 0,
+      "method": "CART (adjusted)",
+      "sl": 0.7937769098712963,
+      "abandon": 0.05211917971716554,
+      "sl_base": 0.7937769098712963,
+      "abandon_base": 0.05211917971716554,
+      "sl_effect": 0.0,
+      "abandon_effect": 0.0
+    },
+    {
+      "rep": 0,
+      "k": 0,
+      "method": "CART (naive)",
+      "sl": 0.798892194853057,
+      "abandon": 0.051143546690915566,
+      "sl_base": 0.798892194853057,
+      "abandon_base": 0.051143546690915566,
+      "sl_effect": 0.0,
+      "abandon_effect": 0.0
+    },
+    {
+      "rep": 0,
+      "k": 0,
+      "method": "Gaussian mixture (adjusted)",
+      "sl": 0.7695575974720219,
+      "abandon": 0.05640593579219558,
+      "sl_base": 0.7695575974720219,
+      "abandon_base": 0.05640593579219558,
+      "sl_effect": 0.0,
+      "abandon_effect": 0.0
+    },
+    {
+      "rep": 0,
+      "k": 0,
+      "method": "Gaussian mixture (naive)",
+      "sl": 0.8209872957950834,
+      "abandon": 0.04485408697691287,
+      "sl_base": 0.8209872957950834,
+      "abandon_base": 0.04485408697691287,
+      "sl_effect": 0.0,
+      "abandon_effect": 0.0
+    },
+    {
+      "rep": 0,
+      "k": 4,
+      "method": "Reality",
+      "sl": 0.9241978135819634,
+      "abandon": 0.02024208718410076,
+      "sl_base": 0.7703722434421538,
+      "abandon_base": 0.05929011565232436,
+      "sl_effect": 0.15382557013980958,
+      "abandon_effect": -0.0390480284682236
+    },
+    {
+      "rep": 0,
+      "k": 4,
+      "method": "Erlang C",
+      "sl": 0.7332676772381852,
+      "abandon": 0.0,
+      "sl_base": 0.4703017075020961,
+      "abandon_base": 0.0,
+      "sl_effect": 0.2629659697360891,
+      "abandon_effect": 0.0
+    },
+    {
+      "rep": 0,
+      "k": 4,
+      "method": "Erlang A",
+      "sl": 0.8926988647706251,
+      "abandon": 0.02585208746456567,
+      "sl_base": 0.7574628355447903,
+      "abandon_base": 0.062078281584796176,
+      "sl_effect": 0.13523602922583478,
+      "abandon_effect": -0.03622619412023051
+    },
+    {
+      "rep": 0,
+      "k": 4,
+      "method": "Gaussian copula (adjusted)",
+      "sl": 0.8924955423349615,
+      "abandon": 0.028599694121734357,
+      "sl_base": 0.7671215349852682,
+      "abandon_base": 0.060472048759828416,
+      "sl_effect": 0.12537400734969328,
+      "abandon_effect": -0.031872354638094055
+    },
+    {
+      "rep": 0,
+      "k": 4,
+      "method": "Gaussian copula (naive)",
+      "sl": 0.8248741170986987,
+      "abandon": 0.04561763625179867,
+      "sl_base": 0.817690289488086,
+      "abandon_base": 0.04657120539172632,
+      "sl_effect": 0.0071838276106127585,
+      "abandon_effect": -0.0009535691399276541
+    },
+    {
+      "rep": 0,
+      "k": 4,
+      "method": "CART (adjusted)",
+      "sl": 0.896982856374043,
+      "abandon": 0.023850162388014975,
+      "sl_base": 0.7937769098712963,
+      "abandon_base": 0.05211917971716554,
+      "sl_effect": 0.10320594650274661,
+      "abandon_effect": -0.02826901732915056
+    },
+    {
+      "rep": 0,
+      "k": 4,
+      "method": "CART (naive)",
+      "sl": 0.8957070724579852,
+      "abandon": 0.025333353973706927,
+      "sl_base": 0.798892194853057,
+      "abandon_base": 0.051143546690915566,
+      "sl_effect": 0.09681487760492824,
+      "abandon_effect": -0.02581019271720864
+    },
+    {
+      "rep": 0,
+      "k": 4,
+      "method": "Gaussian mixture (adjusted)",
+      "sl": 0.8802675124163357,
+      "abandon": 0.02811414050959448,
+      "sl_base": 0.7695575974720219,
+      "abandon_base": 0.05640593579219558,
+      "sl_effect": 0.11070991494431381,
+      "abandon_effect": -0.028291795282601097
+    },
+    {
+      "rep": 0,
+      "k": 4,
+      "method": "Gaussian mixture (naive)",
+      "sl": 0.8413872126566091,
+      "abandon": 0.038654640968324154,
+      "sl_base": 0.8209872957950834,
+      "abandon_base": 0.04485408697691287,
+      "sl_effect": 0.020399916861525647,
+      "abandon_effect": -0.006199446008588717
+    }
+  ],
+  "ks": [
+    -4,
+    0,
+    4
+  ],
+  "support": [
+    {
+      "rep": 0,
+      "train_agents_min": 11.0,
+      "train_agents_max": 65.0
+    }
+  ],
+  "reps": 1
+}

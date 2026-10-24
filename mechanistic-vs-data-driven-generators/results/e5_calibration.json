@@ -1,0 +1,114 @@
+{
+  "rows": [
+    {
+      "rep": 0,
+      "n_days": 10,
+      "estimator": "ratio",
+      "theta": 0.00553896376243362
+    },
+    {
+      "rep": 0,
+      "n_days": 10,
+      "estimator": "SMM (abandonment)",
+      "theta": 0.005574124094743554
+    },
+    {
+      "rep": 0,
+      "n_days": 10,
+      "estimator": "SMM (waiting)",
+      "theta": 0.005352825588307184
+    },
+    {
+      "rep": 0,
+      "n_days": 30,
+      "estimator": "ratio",
+      "theta": 0.005352620343492547
+    },
+    {
+      "rep": 0,
+      "n_days": 30,
+      "estimator": "SMM (abandonment)",
+      "theta": 0.005163753129296239
+    },
+    {
+      "rep": 0,
+      "n_days": 30,
+      "estimator": "SMM (waiting)",
+      "theta": 0.005432848062779925
+    },
+    {
+      "rep": 1,
+      "n_days": 10,
+      "estimator": "ratio",
+      "theta": 0.005229296443130427
+    },
+    {
+      "rep": 1,
+      "n_days": 10,
+      "estimator": "SMM (abandonment)",
+      "theta": 0.006922544356766387
+    },
+    {
+      "rep": 1,
+      "n_days": 10,
+      "estimator": "SMM (waiting)",
+      "theta": 0.005361595383378498
+    },
+    {
+      "rep": 1,
+      "n_days": 30,
+      "estimator": "ratio",
+      "theta": 0.005407085252862661
+    },
+    {
+      "rep": 1,
+      "n_days": 30,
+      "estimator": "SMM (abandonment)",
+      "theta": 0.0059635644868008845
+    },
+    {
+      "rep": 1,
+      "n_days": 30,
+      "estimator": "SMM (waiting)",
+      "theta": 0.0053691162675805005
+    }
+  ],
+  "limits": {
+    "ratio": 0.00527535889603425,
+    "SMM (abandonment)": 0.005744771579850825,
+    "SMM (waiting)": 0.005018092236379741
+  },
+  "limit_days": 60,
+  "references": {
+    "one over mean patience": 0.004457511047832348,
+    "SMM (abandonment) at m=1.3": 0.0044063354767249815
+  },
+  "surge": 1.3,
+  "surge_forecasts": {
+    "Reality": {
+      "sl": 0.5274083515289545,
+      "abandon": 0.1375380018596099
+    },
+    "ratio (long-run limit)": {
+      "sl": 0.6238829016530412,
+      "abandon": 0.09866424121921039
+    },
+    "SMM (abandonment) (long-run limit)": {
+      "sl": 0.6256070129706321,
+      "abandon": 0.10316592738968657
+    },
+    "SMM (waiting) (long-run limit)": {
+      "sl": 0.5827604161132304,
+      "abandon": 0.10752425379081704
+    },
+    "one over mean patience": {
+      "sl": 0.5994603617885752,
+      "abandon": 0.09509811126626001
+    },
+    "SMM (abandonment) at m=1.3": {
+      "sl": 0.5850458793183644,
+      "abandon": 0.09769969131887184
+    }
+  },
+  "reps": 2
+}

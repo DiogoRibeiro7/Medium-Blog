@@ -1,0 +1,583 @@
+{
+  "rows": [
+    {
+      "rep": 0,
+      "m": 1.0,
+      "generator": "Reality",
+      "sl": 0.8182902911689274,
+      "abandon": 0.047056080534335444
+    },
+    {
+      "rep": 0,
+      "m": 1.0,
+      "generator": "Erlang C",
+      "sl": 0.650374242279115,
+      "abandon": 0.0
+    },
+    {
+      "rep": 0,
+      "m": 1.0,
+      "generator": "Erlang A",
+      "sl": 0.8325021800741225,
+      "abandon": 0.04188467407891868
+    },
+    {
+      "rep": 0,
+      "m": 1.0,
+      "generator": "Gaussian copula",
+      "sl": 0.8126480150091521,
+      "abandon": 0.04838504039975765
+    },
+    {
+      "rep": 0,
+      "m": 1.0,
+      "generator": "CART",
+      "sl": 0.84869879324883,
+      "abandon": 0.03796917362447046
+    },
+    {
+      "rep": 0,
+      "m": 1.0,
+      "generator": "Gaussian mixture",
+      "sl": 0.8259232600464557,
+      "abandon": 0.044108143602449405
+    },
+    {
+      "rep": 0,
+      "m": 1.3,
+      "generator": "Reality",
+      "sl": 0.4103671706263499,
+      "abandon": 0.18476763238251284
+    },
+    {
+      "rep": 0,
+      "m": 1.3,
+      "generator": "Erlang C",
+      "sl": 0.05057507155867812,
+      "abandon": 0.0
+    },
+    {
+      "rep": 0,
+      "m": 1.3,
+      "generator": "Erlang A",
+      "sl": 0.6131492082062424,
+      "abandon": 0.09897421969665315
+    },
+    {
+      "rep": 0,
+      "m": 1.3,
+      "generator": "Gaussian copula",
+      "sl": 0.7370636951142678,
+      "abandon": 0.06908758417150991
+    },
+    {
+      "rep": 0,
+      "m": 1.3,
+      "generator": "CART",
+      "sl": 0.6352170417667344,
+      "abandon": 0.09422138483799009
+    },
+    {
+      "rep": 0,
+      "m": 1.3,
+      "generator": "Gaussian mixture",
+      "sl": 0.6839832768757117,
+      "abandon": 0.07805121209569024
+    }
+  ],
+  "redials": [
+    {
+      "rep": 0,
+      "p": 0.0,
+      "m": "in-sample",
+      "auc": 0.554482421875,
+      "sl": 0.8328510649996907,
+      "abandon": 0.04218759665413456
+    },
+    {
+      "rep": 0,
+      "p": 0.3,
+      "m": "in-sample",
+      "auc": 0.5385427517361111,
+      "sl": 0.8351994714711408,
+      "abandon": 0.04192445065343509
+    },
+    {
+      "rep": 0,
+      "p": 0.6,
+      "m": "in-sample",
+      "auc": 0.5401421440972223,
+      "sl": 0.8295363790186125,
+      "abandon": 0.04296446700507614
+    },
+    {
+      "rep": 0,
+      "p": 0.9,
+      "m": "in-sample",
+      "auc": 0.5768576388888889,
+      "sl": 0.8043982698549567,
+      "abandon": 0.052254866909223464
+    },
+    {
+      "rep": 0,
+      "p": 0.0,
+      "m": 1.0,
+      "auc": NaN,
+      "sl": 0.8327925824362299,
+      "abandon": 0.04264013140925566
+    },
+    {
+      "rep": 0,
+      "p": 0.3,
+      "m": 1.0,
+      "auc": NaN,
+      "sl": 0.8422944970495403,
+      "abandon": 0.040016467682173734
+    },
+    {
+      "rep": 0,
+      "p": 0.6,
+      "m": 1.0,
+      "auc": NaN,
+      "sl": 0.8179330524661672,
+      "abandon": 0.04603150950297349
+    },
+    {
+      "rep": 0,
+      "p": 0.9,
+      "m": 1.0,
+      "auc": NaN,
+      "sl": 0.818999170282512,
+      "abandon": 0.04874930290129082
+    },
+    {
+      "rep": 0,
+      "p": 0.0,
+      "m": 1.3,
+      "auc": NaN,
+      "sl": 0.6181135529230674,
+      "abandon": 0.09884658186772613
+    },
+    {
+      "rep": 0,
+      "p": 0.3,
+      "m": 1.3,
+      "auc": NaN,
+      "sl": 0.5873639103602403,
+      "abandon": 0.10817460480183708
+    },
+    {
+      "rep": 0,
+      "p": 0.6,
+      "m": 1.3,
+      "auc": NaN,
+      "sl": 0.5463724533487344,
+      "abandon": 0.12630195367733454
+    },
+    {
+      "rep": 0,
+      "p": 0.9,
+      "m": 1.3,
+      "auc": NaN,
+      "sl": 0.39009287925696595,
+      "abandon": 0.20205922502475887
+    }
+  ],
+  "ablation": [
+    {
+      "rep": 0,
+      "m": 1.0,
+      "arrivals": "poisson",
+      "service": "exp",
+      "patience": "exp",
+      "redials": 0,
+      "sl": 0.8474848765600305,
+      "abandon": 0.0388849528584664,
+      "sl_error": 0.02919458539110309,
+      "abandon_error": -0.008171127675869042
+    },
+    {
+      "rep": 0,
+      "m": 1.0,
+      "arrivals": "poisson",
+      "service": "exp",
+      "patience": "exp",
+      "redials": 1,
+      "sl": 0.8288934841665653,
+      "abandon": 0.0446958331643893,
+      "sl_error": 0.0106031929976379,
+      "abandon_error": -0.002360247369946146
+    },
+    {
+      "rep": 0,
+      "m": 1.0,
+      "arrivals": "poisson",
+      "service": "exp",
+      "patience": "true",
+      "redials": 0,
+      "sl": 0.8381835537978999,
+      "abandon": 0.041333696986226645,
+      "sl_error": 0.019893262628972508,
+      "abandon_error": -0.005722383548108799
+    },
+    {
+      "rep": 0,
+      "m": 1.0,
+      "arrivals": "poisson",
+      "service": "exp",
+      "patience": "true",
+      "redials": 1,
+      "sl": 0.8198224082967341,
+      "abandon": 0.04580716660509789,
+      "sl_error": 0.0015321171278067647,
+      "abandon_error": -0.0012489139292375523
+    },
+    {
+      "rep": 0,
+      "m": 1.0,
+      "arrivals": "poisson",
+      "service": "lognormal",
+      "patience": "exp",
+      "redials": 0,
+      "sl": 0.8386775732788003,
+      "abandon": 0.03911383776414451,
+      "sl_error": 0.02038728210987295,
+      "abandon_error": -0.007942242770190934
+    },
+    {
+      "rep": 0,
+      "m": 1.0,
+      "arrivals": "poisson",
+      "service": "lognormal",
+      "patience": "exp",
+      "redials": 1,
+      "sl": 0.8103735687153281,
+      "abandon": 0.04772770748503812,
+      "sl_error": -0.007916722453599312,
+      "abandon_error": 0.0006716269507026779
+    },
+    {
+      "rep": 0,
+      "m": 1.0,
+      "arrivals": "poisson",
+      "service": "lognormal",
+      "patience": "true",
+      "redials": 0,
+      "sl": 0.8487772258311043,
+      "abandon": 0.037706752551995196,
+      "sl_error": 0.03048693466217689,
+      "abandon_error": -0.009349327982340248
+    },
+    {
+      "rep": 0,
+      "m": 1.0,
+      "arrivals": "poisson",
+      "service": "lognormal",
+      "patience": "true",
+      "redials": 1,
+      "sl": 0.8256079703302268,
+      "abandon": 0.044792051566284845,
+      "sl_error": 0.00731767916129944,
+      "abandon_error": -0.0022640289680505993
+    },
+    {
+      "rep": 0,
+      "m": 1.0,
+      "arrivals": "overdispersed",
+      "service": "exp",
+      "patience": "exp",
+      "redials": 0,
+      "sl": 0.8318851057322008,
+      "abandon": 0.043099253409707064,
+      "sl_error": 0.013594814563273383,
+      "abandon_error": -0.00395682712462838
+    },
+    {
+      "rep": 0,
+      "m": 1.0,
+      "arrivals": "overdispersed",
+      "service": "exp",
+      "patience": "exp",
+      "redials": 1,
+      "sl": 0.8012284017278618,
+      "abandon": 0.05251079913606911,
+      "sl_error": -0.01706188944106557,
+      "abandon_error": 0.005454718601733667
+    },
+    {
+      "rep": 0,
+      "m": 1.0,
+      "arrivals": "overdispersed",
+      "service": "exp",
+      "patience": "true",
+      "redials": 0,
+      "sl": 0.815611089312533,
+      "abandon": 0.04739612225845296,
+      "sl_error": -0.0026792018563943643,
+      "abandon_error": 0.0003400417241175152
+    },
+    {
+      "rep": 0,
+      "m": 1.0,
+      "arrivals": "overdispersed",
+      "service": "exp",
+      "patience": "true",
+      "redials": 1,
+      "sl": 0.8013480722566729,
+      "abandon": 0.05291183607441359,
+      "sl_error": -0.016942218912254448,
+      "abandon_error": 0.005855755540078146
+    },
+    {
+      "rep": 0,
+      "m": 1.0,
+      "arrivals": "overdispersed",
+      "service": "lognormal",
+      "patience": "exp",
+      "redials": 0,
+      "sl": 0.8256116249794757,
+      "abandon": 0.04277269990695638,
+      "sl_error": 0.007321333810548336,
+      "abandon_error": -0.004283380627379062
+    },
+    {
+      "rep": 0,
+      "m": 1.0,
+      "arrivals": "overdispersed",
+      "service": "lognormal",
+      "patience": "exp",
+      "redials": 1,
+      "sl": 0.8002637589732434,
+      "abandon": 0.051528170546008265,
+      "sl_error": -0.018026532195683953,
+      "abandon_error": 0.0044720900116728204
+    },
+    {
+      "rep": 0,
+      "m": 1.0,
+      "arrivals": "overdispersed",
+      "service": "lognormal",
+      "patience": "true",
+      "redials": 0,
+      "sl": 0.8234694288282728,
+      "abandon": 0.044303712549140624,
+      "sl_error": 0.005179137659345412,
+      "abandon_error": -0.00275236798519482
+    },
+    {
+      "rep": 0,
+      "m": 1.0,
+      "arrivals": "overdispersed",
+      "service": "lognormal",
+      "patience": "true",
+      "redials": 1,
+      "sl": 0.8121454427575774,
+      "abandon": 0.04839537522286455,
+      "sl_error": -0.00614484841134999,
+      "abandon_error": 0.0013392946885291065
+    },
+    {
+      "rep": 0,
+      "m": 1.3,
+      "arrivals": "poisson",
+      "service": "exp",
+      "patience": "exp",
+      "redials": 0,
+      "sl": 0.6349265971765737,
+      "abandon": 0.09506369925188593,
+      "sl_error": 0.22455942655022382,
+      "abandon_error": -0.08970393313062691
+    },
+    {
+      "rep": 0,
+      "m": 1.3,
+      "arrivals": "poisson",
+      "service": "exp",
+      "patience": "exp",
+      "redials": 1,
+      "sl": 0.5217237168629614,
+      "abandon": 0.13560089809745146,
+      "sl_error": 0.11135654623661145,
+      "abandon_error": -0.04916673428506138
+    },
+    {
+      "rep": 0,
+      "m": 1.3,
+      "arrivals": "poisson",
+      "service": "exp",
+      "patience": "true",
+      "redials": 0,
+      "sl": 0.6197181639208372,
+      "abandon": 0.09744067972230856,
+      "sl_error": 0.2093509932944873,
+      "abandon_error": -0.08732695266020428
+    },
+    {
+      "rep": 0,
+      "m": 1.3,
+      "arrivals": "poisson",
+      "service": "exp",
+      "patience": "true",
+      "redials": 1,
+      "sl": 0.5136312992378305,
+      "abandon": 0.1337297009495075,
+      "sl_error": 0.10326412861148054,
+      "abandon_error": -0.051037931433005335
+    },
+    {
+      "rep": 0,
+      "m": 1.3,
+      "arrivals": "poisson",
+      "service": "lognormal",
+      "patience": "exp",
+      "redials": 0,
+      "sl": 0.6293987888373255,
+      "abandon": 0.09264770149626454,
+      "sl_error": 0.21903161821097555,
+      "abandon_error": -0.0921199308862483
+    },
+    {
+      "rep": 0,
+      "m": 1.3,
+      "arrivals": "poisson",
+      "service": "lognormal",
+      "patience": "exp",
+      "redials": 1,
+      "sl": 0.521529258469557,
+      "abandon": 0.1304785595830372,
+      "sl_error": 0.11116208784320708,
+      "abandon_error": -0.054289072799475646
+    },
+    {
+      "rep": 0,
+      "m": 1.3,
+      "arrivals": "poisson",
+      "service": "lognormal",
+      "patience": "true",
+      "redials": 0,
+      "sl": 0.6272160946646771,
+      "abandon": 0.094184675424958,
+      "sl_error": 0.21684892403832717,
+      "abandon_error": -0.09058295695755485
+    },
+    {
+      "rep": 0,
+      "m": 1.3,
+      "arrivals": "poisson",
+      "service": "lognormal",
+      "patience": "true",
+      "redials": 1,
+      "sl": 0.5388332175811092,
+      "abandon": 0.12444686972913979,
+      "sl_error": 0.12846604695475933,
+      "abandon_error": -0.06032076265337305
+    },
+    {
+      "rep": 0,
+      "m": 1.3,
+      "arrivals": "overdispersed",
+      "service": "exp",
+      "patience": "exp",
+      "redials": 0,
+      "sl": 0.5720210968303548,
+      "abandon": 0.11615546110911977,
+      "sl_error": 0.16165392620400493,
+      "abandon_error": -0.06861217127339307
+    },
+    {
+      "rep": 0,
+      "m": 1.3,
+      "arrivals": "overdispersed",
+      "service": "exp",
+      "patience": "exp",
+      "redials": 1,
+      "sl": 0.5022289287334556,
+      "abandon": 0.14962423812059886,
+      "sl_error": 0.09186175810710567,
+      "abandon_error": -0.035143394261913985
+    },
+    {
+      "rep": 0,
+      "m": 1.3,
+      "arrivals": "overdispersed",
+      "service": "exp",
+      "patience": "true",
+      "redials": 0,
+      "sl": 0.6234618014014698,
+      "abandon": 0.10048495983592548,
+      "sl_error": 0.21309463077511986,
+      "abandon_error": -0.08428267254658736
+    },
+    {
+      "rep": 0,
+      "m": 1.3,
+      "arrivals": "overdispersed",
+      "service": "exp",
+      "patience": "true",
+      "redials": 1,
+      "sl": 0.4488326115609113,
+      "abandon": 0.16767087177556017,
+      "sl_error": 0.03846544093456139,
+      "abandon_error": -0.01709676060695267
+    },
+    {
+      "rep": 0,
+      "m": 1.3,
+      "arrivals": "overdispersed",
+      "service": "lognormal",
+      "patience": "exp",
+      "redials": 0,
+      "sl": 0.5853424142397526,
+      "abandon": 0.10879329795679606,
+      "sl_error": 0.17497524361340272,
+      "abandon_error": -0.07597433442571679
+    },
+    {
+      "rep": 0,
+      "m": 1.3,
+      "arrivals": "overdispersed",
+      "service": "lognormal",
+      "patience": "exp",
+      "redials": 1,
+      "sl": 0.5340690493064696,
+      "abandon": 0.13374506429077654,
+      "sl_error": 0.12370187868011967,
+      "abandon_error": -0.0510225680917363
+    },
+    {
+      "rep": 0,
+      "m": 1.3,
+      "arrivals": "overdispersed",
+      "service": "lognormal",
+      "patience": "true",
+      "redials": 0,
+      "sl": 0.5422268045364911,
+      "abandon": 0.12228105824766519,
+      "sl_error": 0.13185963391014116,
+      "abandon_error": -0.06248657413484765
+    },
+    {
+      "rep": 0,
+      "m": 1.3,
+      "arrivals": "overdispersed",
+      "service": "lognormal",
+      "patience": "true",
+      "redials": 1,
+      "sl": 0.5844903771648762,
+      "abandon": 0.11173587987686122,
+      "sl_error": 0.17412320653852625,
+      "abandon_error": -0.07303175250565162
+    }
+  ],
+  "training_day_ratio_quantiles": [
+    0.7730374075891656,
+    0.8679672461271751,
+    1.1312011709284067,
+    1.2275705425002184
+  ],
+  "mults": [
+    1.0,
+    1.3
+  ],
+  "reps": 1
+}

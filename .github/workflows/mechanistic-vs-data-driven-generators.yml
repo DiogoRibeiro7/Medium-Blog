@@ -1,0 +1,51 @@
+name: Test mechanistic-vs-data-driven-generators
+
+on:
+  pull_request:
+    paths:
+      - 'mechanistic-vs-data-driven-generators/**'
+      - '.github/workflows/mechanistic-vs-data-driven-generators.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'mechanistic-vs-data-driven-generators/**'
+      - '.github/workflows/mechanistic-vs-data-driven-generators.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: mechanistic-vs-data-driven-generators
+    env:
+      MPLBACKEND: Agg
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: mechanistic-vs-data-driven-generators/requirements.txt
+
+      - name: Install pinned dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Run the tests
+        run: python -m pytest -q tests
+
+      - name: Smoke-run every experiment (quick mode)
+        working-directory: mechanistic-vs-data-driven-generators/experiments
+        run: |
+          python run_all.py --quick
+          python make_figures.py
+          for f in fig1_fidelity fig2_surge fig3_intervention fig4_error_budget fig5_calibration fig6_decision; do
+            test -s "../figures/$f.png"
+          done

@@ -1,0 +1,79 @@
+{
+  "rows": [
+    {
+      "rep": 0,
+      "generator": "Erlang C",
+      "median_dcr_ratio": 1.9512477146615488,
+      "share_closer_than_p5": 0.038,
+      "share_exact_copies": 0.0
+    },
+    {
+      "rep": 0,
+      "generator": "Erlang A",
+      "median_dcr_ratio": 0.9086986334399243,
+      "share_closer_than_p5": 0.06,
+      "share_exact_copies": 0.0
+    },
+    {
+      "rep": 0,
+      "generator": "Gaussian copula",
+      "median_dcr_ratio": 1.317119432971944,
+      "share_closer_than_p5": 0.027,
+      "share_exact_copies": 0.0
+    },
+    {
+      "rep": 0,
+      "generator": "CART",
+      "median_dcr_ratio": 0.893062147710461,
+      "share_closer_than_p5": 0.134,
+      "share_exact_copies": 0.005
+    },
+    {
+      "rep": 0,
+      "generator": "SMOTE",
+      "median_dcr_ratio": 0.27635247818329994,
+      "share_closer_than_p5": 0.787,
+      "share_exact_copies": 0.0
+    },
+    {
+      "rep": 0,
+      "generator": "Gaussian mixture",
+      "median_dcr_ratio": 1.102655540207339,
+      "share_closer_than_p5": 0.033,
+      "share_exact_copies": 0.0
+    }
+  ],
+  "timing": [
+    {
+      "generator": "Erlang C",
+      "fit_seconds": 0.014267524999922898,
+      "seconds_per_1000_rows": 0.1894330360000822
+    },
+    {
+      "generator": "Erlang A",
+      "fit_seconds": 0.008249179000131335,
+      "seconds_per_1000_rows": 0.17900574000009328
+    },
+    {
+      "generator": "Gaussian copula",
+      "fit_seconds": 0.004800336000016614,
+      "seconds_per_1000_rows": 0.008002029999943261
+    },
+    {
+      "generator": "CART",
+      "fit_seconds": 0.050968455999964135,
+      "seconds_per_1000_rows": 0.02380080399984763
+    },
+    {
+      "generator": "SMOTE",
+      "fit_seconds": 0.025527574000079767,
+      "seconds_per_1000_rows": 0.005971149999822956
+    },
+    {
+      "generator": "Gaussian mixture",
+      "fit_seconds": 2.2686942120001277,
+      "seconds_per_1000_rows": 0.008435353000095347
+    }
+  ],
+  "reps": 1
+}
