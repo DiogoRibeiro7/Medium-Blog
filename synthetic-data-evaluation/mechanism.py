@@ -27,7 +27,9 @@ COV = np.array([[1.0, 0.5], [0.5, 1.0]])
 
 def draw(n: int, rng: np.random.Generator) -> pd.DataFrame:
     x3 = (rng.random(n) < 0.4).astype(float)
-    z = rng.multivariate_normal([0.0, 0.0], COV, size=n)
+    # Cholesky rather than rng.multivariate_normal, whose SVD can differ in sign
+    # between LAPACK builds and would then give different draws on another machine
+    z = rng.standard_normal((n, 2)) @ np.linalg.cholesky(COV).T
     x1 = z[:, 0] + 0.5 * x3
     x2 = z[:, 1]
     y = TRUE_BETA @ np.vstack([np.ones(n), x1, x2, x3, x1 * x3]) + rng.standard_normal(n)
@@ -73,7 +75,7 @@ class Parametric:
 
     def sample(self, n: int, rng: np.random.Generator) -> np.ndarray:
         x3 = (rng.random(n) < self.p).astype(float)
-        Z = rng.multivariate_normal([0.0, 0.0], self.cov, size=n)
+        Z = rng.standard_normal((n, 2)) @ np.linalg.cholesky(self.cov).T
         Z = Z + np.where(x3[:, None] == 1, self.mu[1], self.mu[0])
         M = np.column_stack([x3, Z, np.zeros(n)])
         X, _ = design(M)

@@ -11,6 +11,7 @@ Usage: python check_reproduction.py committed_summary.txt results/summary.txt
 
 from __future__ import annotations
 
+import os
 import re
 import sys
 from pathlib import Path
@@ -26,16 +27,23 @@ def main(old_path: str, new_path: str) -> int:
         print(f"line count differs: {len(old)} vs {len(new)}")
         return 1
     worst, failures = 0.0, 0
+    in_actions = os.environ.get("GITHUB_ACTIONS") == "true"
+
+    def report(message: str) -> None:
+        print(message)
+        if in_actions and failures < 10:  # also as annotations, readable through the API
+            print("::error title=summary mismatch::" + message.replace("\n", " | "))
+
     for i, (a, b) in enumerate(zip(old, new), start=1):
         if NUMBER.sub("#", a) != NUMBER.sub("#", b):
-            print(f"line {i}: text differs\n  {a}\n  {b}")
+            report(f"line {i}: text differs\n  {a}\n  {b}")
             failures += 1
             continue
         for x, y in zip(NUMBER.findall(a), NUMBER.findall(b)):
             diff = abs(float(x) - float(y))
             worst = max(worst, diff)
             if diff > TOLERANCE:
-                print(f"line {i}: {x} vs {y}\n  {a}\n  {b}")
+                report(f"line {i}: {x} vs {y}\n  {a}\n  {b}")
                 failures += 1
     print(f"largest absolute difference: {worst:.4f}")
     return 1 if failures else 0
