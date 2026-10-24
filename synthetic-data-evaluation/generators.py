@@ -237,6 +237,65 @@ def distance_features(M: np.ndarray, enc: Encoder, ref: np.ndarray) -> np.ndarra
     return np.hstack(blocks)
 
 
+def rank_codes(M: np.ndarray, enc: Encoder, ref: np.ndarray) -> tuple[np.ndarray, np.ndarray, int]:
+    """Integer form of `distance_features`.
+
+    Numeric columns become 2N times their mid-rank in `ref` (an integer) and
+    categorical columns keep their codes, so that (2N)^2 times the squared
+    embedding distance is an exact integer:
+    sum of squared numeric differences + (2N)^2 x number of categorical mismatches.
+    """
+    num, cat = [], []
+    for j, c in enumerate(enc.columns):
+        if enc.categorical[c]:
+            cat.append(M[:, j].astype(np.int64))
+        else:
+            xs = np.sort(ref[:, j])
+            lo = np.searchsorted(xs, M[:, j], side="left")
+            hi = np.searchsorted(xs, M[:, j], side="right")
+            num.append((lo + hi).astype(np.int64))
+    n = len(M)
+    num_arr = np.column_stack(num) if num else np.zeros((n, 0), dtype=np.int64)
+    cat_arr = np.column_stack(cat) if cat else np.zeros((n, 0), dtype=np.int64)
+    return num_arr, cat_arr, (2 * len(ref)) ** 2
+
+
+def nearest_neighbours(
+    query: np.ndarray, reference: np.ndarray, enc: Encoder, rank_ref: np.ndarray, k: int,
+    exclude_self: bool = False, margin: int = 30,
+) -> tuple[np.ndarray, np.ndarray]:
+    """The k nearest reference rows of each query row, exact and machine-independent.
+
+    scikit-learn's brute-force search ranks distances through the expansion
+    |a|^2 + |b|^2 - 2ab, whose rounding depends on the BLAS build; on tabular
+    data, where exact ties are common, that makes the choice among tied
+    neighbours differ between machines. Here the search only proposes
+    k + margin candidates, their distances are recomputed exactly in integer
+    arithmetic, and ties are broken by row index. With `exclude_self`, query
+    row i is never matched to reference row i (query and reference are the
+    same table). Returns the embedding distances and the indices.
+    """
+    kc = min(k + margin + int(exclude_self), len(reference))
+    FQ = distance_features(query, enc, rank_ref)
+    FR = distance_features(reference, enc, rank_ref)
+    cand = NearestNeighbors(n_neighbors=kc).fit(FR).kneighbors(FQ, return_distance=False)
+    nq, cq, scale = rank_codes(query, enc, rank_ref)
+    nr, cr, _ = rank_codes(reference, enc, rank_ref)
+    d = np.empty(cand.shape, dtype=np.int64)
+    step = 2048
+    for s in range(0, len(cand), step):
+        c = cand[s : s + step]
+        d[s : s + step] = ((nq[s : s + step, None, :] - nr[c]) ** 2).sum(-1) + scale * (
+            cq[s : s + step, None, :] != cr[c]
+        ).sum(-1)
+    if exclude_self:
+        d = np.where(cand == np.arange(len(cand))[:, None], np.iinfo(np.int64).max, d)
+    order = np.lexsort((cand, d), axis=-1)
+    idx = np.take_along_axis(cand, order, axis=-1)[:, :k]
+    dist = np.sqrt(np.take_along_axis(d, order, axis=-1)[:, :k] / scale)
+    return dist, idx
+
+
 class SMOTEGenerator:
     """SMOTE used as a whole-table generator, as in the TabDDPM benchmarks.
 
@@ -255,7 +314,6 @@ class SMOTEGenerator:
         self.k = k
 
     def fit(self, M: np.ndarray, rng: np.random.Generator) -> "SMOTEGenerator":
-        F = distance_features(M, self.enc, M)
         if self.class_col is None:
             groups = [np.arange(len(M))]
         else:
@@ -264,9 +322,8 @@ class SMOTEGenerator:
         self.groups = []
         for g in groups:
             k = min(self.k, len(g) - 1)
-            nn = NearestNeighbors(n_neighbors=k + 1).fit(F[g])
-            _, nbr = nn.kneighbors(F[g])
-            self.groups.append((M[g], nbr[:, 1:]))
+            _, nbr = nearest_neighbours(M[g], M[g], self.enc, M, k, exclude_self=True)
+            self.groups.append((M[g], nbr))
         sizes = np.array([len(g) for g in groups], dtype=float)
         self.share = sizes / sizes.sum()
         return self

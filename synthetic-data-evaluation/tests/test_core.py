@@ -110,6 +110,21 @@ class Generators(unittest.TestCase):
         self.assertGreaterEqual(S["age"].min(), self.df["age"].min())
         self.assertLessEqual(S["age"].max(), self.df["age"].max())
 
+    def test_nearest_neighbours_are_exact(self):
+        from generators import distance_features, nearest_neighbours
+
+        rng = np.random.default_rng(3)
+        Q = self.M[rng.choice(len(self.M), 50, replace=False)]
+        d, idx = nearest_neighbours(Q, self.M, self.enc, self.M, k=3)
+        FQ = distance_features(Q, self.enc, self.M)
+        FR = distance_features(self.M, self.enc, self.M)
+        full = np.sqrt(((FQ[:, None, :] - FR[None, :, :]) ** 2).sum(-1))
+        for i in range(len(Q)):
+            # same distances as brute force, ties broken by the smallest index
+            order = np.lexsort((np.arange(len(FR)), np.round(full[i], 12)))[:3]
+            self.assertTrue(np.allclose(d[i], full[i, order]))
+            self.assertTrue(np.array_equal(idx[i], order))
+
     def test_proper_synthesis_refits(self):
         rng = np.random.default_rng(0)
         sets = synthesize(lambda: GaussianCopula(self.enc), self.M, 300, 3, rng, proper=True)

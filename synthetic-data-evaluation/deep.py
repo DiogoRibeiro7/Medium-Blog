@@ -33,6 +33,7 @@ def main() -> None:
 
     train, _, _ = three_way_split(load_adult(), SPLIT_SEED)
     OUT.mkdir(parents=True, exist_ok=True)
+    log = []
     for name, cls, seed in (("ctgan", CTGAN, 21), ("tvae", TVAE, 22)):
         torch.manual_seed(seed)
         np.random.seed(seed)
@@ -46,7 +47,10 @@ def main() -> None:
             syn[col] = np.round(syn[col].astype(float)).astype(np.int64)
         syn = syn[train.columns]
         syn.to_csv(OUT / f"{name}.csv.gz", index=False)
-        print(f"{name}: {args.epochs} epochs, fitted in {fitted / 60:.1f} min")
+        line = f"{name}: {args.epochs} epochs, fitted in {fitted / 60:.1f} min"
+        print(line)
+        log.append(line)
+    (HERE / "results" / "deep_training.txt").write_text("\n".join(log) + "\n")
 
 
 if __name__ == "__main__":

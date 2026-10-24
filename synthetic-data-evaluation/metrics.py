@@ -14,9 +14,8 @@ from scipy import stats
 from sklearn.ensemble import HistGradientBoostingClassifier
 from sklearn.metrics import brier_score_loss, roc_auc_score, roc_curve
 from sklearn.model_selection import StratifiedGroupKFold, StratifiedKFold
-from sklearn.neighbors import NearestNeighbors
 
-from generators import Encoder, distance_features
+from generators import Encoder, nearest_neighbours
 from inference import logit
 
 # ---------------------------------------------------------------- fidelity
@@ -210,24 +209,17 @@ def privacy(
       AUC of that score and the true-positive rate at a 1% false-positive rate
       (Carlini et al. 2022).
     """
-    FT = distance_features(T, enc, T)
-    FH = distance_features(H, enc, T)
-    FS = distance_features(S, enc, T)
-
     def nearest(ref: np.ndarray, query: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
-        # The search uses the fast |a|^2 + |b|^2 - 2ab expansion, which leaves
-        # rounding error of order 1e-4 on tiny distances; the distance to the
-        # neighbour found is therefore recomputed exactly.
-        idx = NearestNeighbors(n_neighbors=1).fit(ref).kneighbors(query, return_distance=False)[:, 0]
-        return np.sqrt(((query - ref[idx]) ** 2).sum(axis=1)), idx
+        d, i = nearest_neighbours(query, ref, enc, T, k=1)
+        return d[:, 0], i[:, 0]
 
-    d_train, i_train = nearest(FT, FS)
-    d_hold, _ = nearest(FH, FS)
+    d_train, i_train = nearest(T, S)
+    d_hold, _ = nearest(H, S)
     share = np.mean(np.where(d_train == d_hold, 0.5, d_train < d_hold))
 
-    mem = FT[rng.choice(len(FT), size=n_attack, replace=False)]
-    non = FH[rng.choice(len(FH), size=n_attack, replace=False)]
-    score = -np.r_[nearest(FS, mem)[0], nearest(FS, non)[0]]
+    mem = T[rng.choice(len(T), size=n_attack, replace=False)]
+    non = H[rng.choice(len(H), size=n_attack, replace=False)]
+    score = -np.r_[nearest(S, mem)[0], nearest(S, non)[0]]
     label = np.r_[np.ones(n_attack), np.zeros(n_attack)]
     fpr, tpr, _ = roc_curve(label, score)
     # exact copies by value (adding 0.0 turns any -0.0 into 0.0 before hashing)
