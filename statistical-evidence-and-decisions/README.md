@@ -488,6 +488,9 @@ Alternatively, from this folder:
 python run_full_evidence.py --streams 100 --null-streams 199 --output results/full-evidence
 ```
 
-The workflow uploads result files as a GitHub Actions artifact, not as
-version-controlled generated data. Results are not yet available merely
-because this workflow exists. Its full execution is intentionally manual.
+The workflow uploads complete simulation outputs as GitHub Actions artifacts.
+The primary preregistered experiment was successfully run on 24 October 2026.
+Its independently verified, compact results are archived at
+[results/2026-10-24-detector-evidence/](results/2026-10-24-detector-evidence/).
+See the [completed run](https://github.com/DiogoRibeiro7/Medium-Blog/actions/runs/40089779139)
+for the complete output files.
