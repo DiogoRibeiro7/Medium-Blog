@@ -10,8 +10,9 @@ readme = "README.md"
 requires-python = ">=3.12,<3.15"
 license = "Apache-2.0"
 keywords = ["agriculture", "wheat", "climate", "eurostat", "e-obs", "panel-data"]
-# numpy for the arrays, shapely for the cell-region intersections, netCDF4 to read E-OBS.
-dependencies = ["numpy>=2.0,<3", "shapely>=2.0,<3", "netCDF4>=1.7,<2"]
+# numpy for the arrays, shapely for the cell-region intersections, netCDF4 to read E-OBS,
+# scipy for the t and F distributions.
+dependencies = ["numpy>=2.0,<3", "shapely>=2.0,<3", "netCDF4>=1.7,<2", "scipy>=1.14,<2"]
 
 [project.optional-dependencies]
 # Reading Eurostat's official NUTS change tables (.xls and .xlsx).
@@ -44,5 +45,5 @@ strict = true
 
 [[tool.mypy.overrides]]
 # xlrd ships no type information.
-module = ["xlrd"]
+module = ["xlrd", "scipy", "scipy.*"]
 ignore_missing_imports = true

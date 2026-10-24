@@ -35,11 +35,26 @@
 
 ## Phase 2: estimates
 
-- [ ] M1 with both inference methods: E1, E2 and E3 with Holm, and the E5 placebo.
-- [ ] M3, the shape of the temperature response.
-- [ ] M2 and the out-of-sample check of 2003, 2018 and 2022 (E4).
-- [ ] The sensitivity analyses of METHODS.md, section 6.
-- [ ] An independent recomputation of the main estimates by a second route.
+Results are in [docs/RESULTS.md](docs/RESULTS.md). Every rule was fixed before any estimate
+(change log, 2026-10-24).
+
+- [x] M1 with both inference methods.
+  - **E5 placebo:** passes.
+  - **E1, heat:** -2.6% per 10 degree days above 30 °C; not determined.
+  - **E2, drought:** established negative by the rule. The dry-season effect's own
+    interval includes zero.
+  - **E3, change since 2012:** not determined; the minimum detectable change is 0.061.
+- [x] M3, the shape of the temperature response. Only days at 36 °C and above have an
+      interval that excludes zero.
+- [x] M2 and the out-of-sample check (E4).
+  - 2018 is predicted well: -5.2% observed and predicted.
+  - 2003 is under-predicted: -11.9% against -4.5%.
+  - 2022 is over-predicted: -3.0% against -6.3%.
+- [x] The nine sensitivity analyses. None reverses a sign.
+- [x] An independent recomputation of M1 by explicit dummy variables, which agrees within the
+      registered 1e-8.
+- [x] Reproducibility: the whole estimation, bootstraps included, regenerates the
+      committed results exactly in the tests.
 
 ## Phase 3: publication
 

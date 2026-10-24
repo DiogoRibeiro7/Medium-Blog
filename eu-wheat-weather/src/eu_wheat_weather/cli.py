@@ -61,6 +61,13 @@ def build_parser() -> argparse.ArgumentParser:
     panel.add_argument("--weather", type=Path, default=Path("docs/panel/weather.csv"))
     panel.add_argument("--output-dir", type=Path, default=Path("docs/panel"))
     panel.add_argument("--report", type=Path, default=Path("docs/DATA.md"))
+    est = commands.add_parser(
+        "estimate", help="Fit the registered models and write the results "
+        "(METHODS.md, sections 4-6)")
+    est.add_argument("--panel", type=Path, default=Path("docs/panel/panel.csv"))
+    est.add_argument("--weather", type=Path, default=Path("docs/panel/weather.csv"))
+    est.add_argument("--output-dir", type=Path, default=Path("docs/results"))
+    est.add_argument("--report", type=Path, default=Path("docs/RESULTS.md"))
     return parser
 
 
@@ -131,6 +138,17 @@ def main(argv: Sequence[str] | None = None) -> int:
                                   args.report, command)
             print(f"{summary['panel_region_years']} region-years in "
                   f"{summary['panel_regions']} regions; excluded {summary['excluded_by_reason']}")
+        elif args.command == "estimate":
+            from eu_wheat_weather.analysis import run, write_results
+
+            command = (f"poetry run eu-wheat estimate --panel {args.panel.as_posix()} "
+                       f"--weather {args.weather.as_posix()} --output-dir "
+                       f"{args.output_dir.as_posix()} --report {args.report.as_posix()}")
+            results = run(args.panel, args.weather)
+            write_results(results, args.output_dir, args.report, command)
+            print(json.dumps({k: v["verdict"] for k, v in results["decisions"].items()}))
+            print(f"placebo significant under both methods: "
+                  f"{results['E5']['significant_both']}")
     except (DataError, OSError, ValueError, KeyError) as exc:
         parser.exit(2, f"eu-wheat {args.command} failed: {exc}\n")
     return 0
