@@ -233,7 +233,7 @@ def reversal(ex: pd.DataFrame) -> None:
     finish(fig, "fig08_reversal.png", "Eurostat prc_hicp_midx and prc_hicp_cind")
 
 
-# 9. Headline inflation with and without the measure.
+# 10. Headline inflation with and without the measure.
 def headline(hc: pd.DataFrame) -> None:
     h = hc.loc["2022-06":"2025-06"]
     x = to_dates(h.index)
@@ -248,10 +248,10 @@ def headline(hc: pd.DataFrame) -> None:
     ax.set_ylabel("% change on a year earlier")
     ax.set_title("Portuguese HICP inflation, all items")
     ax.legend(loc="upper right", fontsize=8.5)
-    finish(fig, "fig09_headline_inflation.png", "Eurostat prc_hicp_midx and prc_hicp_cind")
+    finish(fig, "fig10_headline_inflation.png", "Eurostat prc_hicp_midx and prc_hicp_cind")
 
 
-# 10. Incidence by income fifth.
+# 11. Incidence by income fifth.
 def incidence(inc: pd.DataFrame) -> None:
     fig, axes = plt.subplots(1, 2, figsize=(11, 4.4))
     x = np.arange(len(inc))
@@ -268,12 +268,12 @@ def incidence(inc: pd.DataFrame) -> None:
     ax.set_xticks(x, [Q_LABELS[q] for q in inc.index], fontsize=8.5)
     ax.set_title("Saving as % of household consumption", fontsize=10)
     suptitle(fig, "Estimated saving from IVA Zero by income fifth, April 2023 – January 2024")
-    finish(fig, "fig10_incidence.png",
+    finish(fig, "fig11_incidence.png",
            "Eurostat hbs_str_t223 and hbs_exp_t133 (2020 wave, fieldwork 2022/23), INE mean expenditure, HICP weights",
            top=0.95)
 
 
-# 11. Vegetable oils: 23% to zero, back at 13%.
+# 9. Vegetable oils: 23% to zero, back at 13%.
 def oils(o: pd.DataFrame) -> None:
     x = to_dates(o.index)
     fig, ax = plt.subplots(figsize=(8.5, 4.4))
@@ -284,7 +284,7 @@ def oils(o: pd.DataFrame) -> None:
     ax.set_ylabel("log points relative to February 2023")
     ax.set_title("Other edible oils: VAT from 23% to zero, then back at 13%")
     ax.legend(loc="lower left", fontsize=8.5)
-    finish(fig, "fig11_vegetable_oils.png", "Eurostat prc_hicp_midx and prc_hicp_cind")
+    finish(fig, "fig09_vegetable_oils.png", "Eurostat prc_hicp_midx and prc_hicp_cind")
 
 
 # 12. The same money, distributed three ways.
@@ -306,7 +306,7 @@ def transfers(tr: pd.DataFrame) -> None:
     ax.set_title("The households' saving from IVA Zero, and the same total paid two other ways")
     ax.legend(loc="upper right", fontsize=8.5)
     finish(fig, "fig12_same_money_three_ways.png",
-           "estimated saving by fifth (fig10), budget survey basis; same total redistributed")
+           "estimated saving by fifth (fig11), budget survey basis; same total redistributed")
 
 
 def main() -> None:

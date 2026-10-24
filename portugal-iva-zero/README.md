@@ -16,18 +16,20 @@ python figures.py
 python -m pytest -q tests
 ```
 
-`results/summary.txt` has every number; the CSVs behind it are in `results/`. Ten figures in `figures/`:
+`results/summary.txt` has every number; the CSVs behind it are in `results/`. Twelve figures in `figures/`, numbered as in the article (`article.md`):
 
 - `fig01` tax wedge of each Portuguese food subclass (the treatment)
 - `fig02` covered and untreated food baskets, Portugal and comparison countries
 - `fig03` event study, within Portugal and across countries, with 95% intervals
-- `fig04` dose-response: price change against the tax-wedge change, every subclass
+- `fig04` dose-response: price change against the tax-wedge change, 52 subclasses
 - `fig05` effect by subclass
 - `fig06` placebo jumps and placebo countries
 - `fig07` synthetic control
-- `fig08` the reversal in January 2024
-- `fig09` headline HICP inflation with and without the measure
-- `fig10` saving by income fifth
+- `fig08` the reversal, measured from September 2023
+- `fig09` vegetable oils: 23% to zero, back at 13%
+- `fig10` headline HICP inflation with and without the measure
+- `fig11` saving by income fifth
+- `fig12` the households' saving and the same total paid two other ways
 
 ## Data
 
