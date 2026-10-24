@@ -56,6 +56,16 @@ def national_accounts() -> pd.DataFrame:
     return n.pivot_table(index="year", columns="coicop", values="value").loc[:NA_END]
 
 
+def resident_consumption() -> pd.Series:
+    """Household final consumption of resident households (national concept), million euro.
+
+    The COICOP breakdown in ``nama_10_co3_p3`` is on the domestic concept: it includes what
+    non-residents spend in Portugal and leaves out what residents spend abroad.
+    """
+    g = pd.read_csv(DATA / "nama_10_gdp_p31.csv")
+    return g[g["na_item"] == "P31_S14"].set_index("year")["value"].loc[:NA_END]
+
+
 def budget_survey_quintiles() -> pd.DataFrame:
     """Budget-survey structure by quintile, per mille, index (quintile, year)."""
     h = pd.read_csv(DATA / "hbs_str_t223.csv")
@@ -110,7 +120,15 @@ def na_shares() -> pd.DataFrame:
         "food_plus_housing_incl_imputed": (w["CP01"] + w["CP04"]) / w["TOTAL"],
         "imputed_rent": w["CP042"] / w["TOTAL"],
     })
-    return ex.join(inc)
+    # Resident-basis bound: the same numerators over resident households' consumption, which
+    # assumes all spending on core needs is by residents.
+    res = resident_consumption().reindex(w.index)
+    bound = pd.DataFrame({
+        "domestic_over_national": w["TOTAL"] / res,
+        "core_ex_imputed_resident": w[CORE].sum(axis=1) / (res - w["CP042"]),
+        "wider_ex_imputed_resident": (w[CORE].sum(axis=1) + w[WIDER_EXTRA].sum(axis=1)) / (res - w["CP042"]),
+    })
+    return ex.join(inc).join(bound)
 
 
 def hbs_shares() -> pd.DataFrame:
@@ -188,6 +206,18 @@ def main() -> None:
           f"saving rate {s.get(y, np.nan):.1f}%")
     w(f"  core share: min {100 * na['core_ex_imputed'].min():.1f}% ({na['core_ex_imputed'].idxmin()}), "
       f"max {100 * na['core_ex_imputed'].max():.1f}% ({na['core_ex_imputed'].idxmax()})")
+    w("  COICOP detail is on the domestic concept; total over resident households' consumption: " + ", ".join(
+        f"{y} {na.loc[y, 'domestic_over_national']:.3f}" for y in (1995, 2000, 2005, 2010, 2015, 2019, 2020, 2021, NA_END)))
+    w("  core share with resident consumption as denominator (all core spending assumed resident): " + ", ".join(
+        f"{y} {100 * na.loc[y, 'core_ex_imputed_resident']:.1f}%" for y in (1995, 2000, 2005, 2008, 2010, 2013, 2015,
+                                                                         2019, 2020, 2021, NA_END)))
+    r = na["core_ex_imputed_resident"]
+    w(f"  resident-basis core share: min {100 * r.min():.1f}% ({r.idxmin()}), max {100 * r.max():.1f}% ({r.idxmax()})")
+    nat = national_accounts()
+    res = resident_consumption()
+    w(f"  2019-2020: domestic total {100 * (nat.loc[2020, 'TOTAL'] / nat.loc[2019, 'TOTAL'] - 1):+.1f}%, resident "
+      f"total {100 * (res[2020] / res[2019] - 1):+.1f}%, restaurants and hotels "
+      f"{100 * (nat.loc[2020, 'CP11'] / nat.loc[2019, 'CP11'] - 1):+.1f}%")
     flags = pd.read_csv(DATA / "nama_10_co3_p3.csv").query("flag == 'p'")["year"].unique()
     w(f"  provisional years: {', '.join(str(int(y)) for y in sorted(flags))}")
     w("")
@@ -310,7 +340,8 @@ def main() -> None:
         gaps = []
         for y in range(start, end + 1):
             rel = p[DIVISIONS].loc[y] / p[DIVISIONS].loc[start]
-            gaps.append(f"{y} {100 * ((weights('QU1') * rel).sum() - (weights('QU5') * rel).sum()):+.2f}")
+            g = 100 * ((weights('QU1') * rel).sum() - (weights('QU5') * rel).sum())
+            gaps.append(f"{y} {0.0 if abs(g) < 1e-9 else g:+.2f}")   # no signed zero from rounding noise
         w(f"  {start}-{end}: " + ", ".join(gaps))
     w("  HICP 2021-2023 by division: " + ", ".join(
         f"{c} {100 * (p.loc[2023, c] / p.loc[2021, c] - 1):+.1f}%" for c in ["CP01", "CP11", "CP045", "CP04", "CP07", "CP03", "CP06", "CP00"]))

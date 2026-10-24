@@ -42,12 +42,14 @@ jobs:
         run: python -m pytest -q tests
 
       - name: Rerun the analysis
-        run: python spending.py > /dev/null
+        run: |
+          python spending.py > /dev/null
+          python deeper.py > /dev/null
 
       - name: Check the numbers match the committed run
-        run: git diff --exit-code -- results/summary.txt
+        run: git diff --exit-code -- results/summary.txt results/deeper_summary.txt
 
       - name: Draw the figures
         run: |
           python figures.py
-          test "$(ls figures/fig*.png | wc -l)" -eq 12
+          test "$(ls figures/fig*.png | wc -l)" -eq 20

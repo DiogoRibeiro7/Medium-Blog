@@ -27,22 +27,38 @@ import pandas as pd
 API = "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data"
 HERE = Path(__file__).resolve().parent
 
-# dataset -> filters (lists are sent as repeated parameters)
-QUERIES: dict[str, dict[str, str | list[str]]] = {
+# output file -> (dataset, filters); lists are sent as repeated parameters.
+QUERIES: dict[str, tuple[str, dict[str, str | list[str]]]] = {
     # Household final consumption by COICOP purpose, current prices, annual.
-    "nama_10_co3_p3": {"geo": "PT", "unit": "CP_MEUR"},
+    "nama_10_co3_p3": ("nama_10_co3_p3", {"geo": "PT", "unit": "CP_MEUR"}),
+    # Same, chain-linked volumes (two reference years tried; whichever exists is used).
+    "nama_10_co3_p3_clv20": ("nama_10_co3_p3", {"geo": "PT", "unit": "CLV20_MEUR"}),
+    "nama_10_co3_p3_clv15": ("nama_10_co3_p3", {"geo": "PT", "unit": "CLV15_MEUR"}),
+    # Household final consumption, national concept (resident households), to compare with the COICOP total.
+    "nama_10_gdp_p31": ("nama_10_gdp", {"geo": "PT", "unit": "CP_MEUR", "na_item": ["P31_S14", "P31_S14_S15"]}),
+    # Purchasing power parities, to turn the budget survey's PPS amounts into approximate euros.
+    "prc_ppp_ind_a0101": ("prc_ppp_ind", {"geo": "PT", "ppp_cat": "A0101"}),
+    "prc_ppp_ind_a01": ("prc_ppp_ind", {"geo": "PT", "ppp_cat": "A01"}),
     # Household key indicators: saving rate, investment rate, ...
-    "nasa_10_ki": {"geo": "PT"},
+    "nasa_10_ki": ("nasa_10_ki", {"geo": "PT"}),
     # Household budget survey: structure of consumption by COICOP (per mille).
-    "hbs_str_t211": {"geo": "PT"},
+    "hbs_str_t211": ("hbs_str_t211", {"geo": "PT"}),
     # Household budget survey: structure by income quintile.
-    "hbs_str_t223": {"geo": "PT"},
+    "hbs_str_t223": ("hbs_str_t223", {"geo": "PT"}),
+    # Same, for comparison countries and the EU.
+    "hbs_str_t223_peers": ("hbs_str_t223", {"geo": ["ES", "IT", "EL", "EU27_2020", "EU28"]}),
+    # Household budget survey: structure by type of household, degree of urbanisation, age of reference person.
+    "hbs_str_t224": ("hbs_str_t224", {"geo": "PT"}),
+    "hbs_str_t225": ("hbs_str_t225", {"geo": "PT"}),
+    "hbs_str_t226": ("hbs_str_t226", {"geo": "PT"}),
     # Household budget survey: mean consumption expenditure by income quintile.
-    "hbs_exp_t133": {"geo": "PT"},
+    "hbs_exp_t133": ("hbs_exp_t133", {"geo": "PT"}),
     # Experimental: median saving rate by income quintile.
-    "icw_sr_03": {"geo": "PT"},
+    "icw_sr_03": ("icw_sr_03", {"geo": "PT"}),
     # HICP annual average indices by COICOP.
-    "prc_hicp_aind": {"geo": "PT", "unit": "INX_A_AVG"},
+    "prc_hicp_aind": ("prc_hicp_aind", {"geo": "PT", "unit": "INX_A_AVG"}),
+    # HICP item weights (per mille).
+    "prc_hicp_inw": ("prc_hicp_inw", {"geo": "PT"}),
 }
 
 
@@ -101,15 +117,16 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
     args.out.mkdir(parents=True, exist_ok=True)
     log, failures = [], 0
-    for dataset, filters in QUERIES.items():
+    for name, (dataset, filters) in QUERIES.items():
         try:
             frame = download(dataset, filters)
         except Exception as error:  # noqa: BLE001 (logged and reported)
             failures += 1
             detail = error.read().decode("utf-8", "replace")[:300] if isinstance(error, urllib.error.HTTPError) else ""
-            log.append(f"FAIL {dataset} {filters}: {error!r} {detail}".strip())
+            log.append(f"FAIL {name} {dataset} {filters}: {error!r} {detail}".strip())
             continue
-        frame.to_csv(args.out / f"{dataset}.csv", index=False)
+        frame.to_csv(args.out / f"{name}.csv", index=False)
+        dataset = name
         dims = [c for c in frame.columns if c not in ("year", "value", "flag")]
         summary = ", ".join(f"{d} {frame[d].nunique()}" for d in dims)
         log.append(f"{dataset}: {len(frame)} rows; {summary}; years {frame['year'].min()}-{frame['year'].max()}")
