@@ -215,3 +215,60 @@ sign.
   - **Sources.** The four tables are frozen in `snapshots/nuts-changes-2026-10-23/`.
   - **Reporting.** The geometric shares are still reported for every joined and dropped
     code, as a cross-check.
+- **2026-10-24, phase 2, before any estimate: details the plan left open.** They are
+  fixed here before any model was fitted to the panel.
+  - **Units.** As section 3.2: `GDD` in hundreds of degree days, `EDD` in tens,
+    precipitation in hundreds of mm. Log yield is the natural log of t/ha.
+  - **Fixed effects.** They are partialled out exactly, by projection on their dummies.
+    Observations alone in their region or their country-year carry no information under
+    M1, so they are dropped before estimation and counted in the report.
+  - **Two-way clustering (Cameron, Gelbach and Miller 2011).**
+    - `V = V_country + V_year - V_country-year`.
+    - Each term is a sandwich with the factor `G/(G-1) * (N-1)/(N-K)`, where G is that
+      term's number of clusters and K counts the weather regressors only. The fixed
+      effects are nested within the country clusters.
+    - Negative eigenvalues of `V` are set to zero.
+    - A single coefficient uses a t test with `min(G_country, G_year) - 1` degrees of
+      freedom. A joint test of q coefficients uses `W/q` against `F(q, min(G) - 1)`.
+  - **Wild cluster bootstrap.**
+    - Clusters are countries, with Rademacher weights, 9999 draws and seed 20261101 for
+      every test.
+    - The null is imposed: the restricted model's residuals are resampled.
+    - The bootstrapped statistic is the t statistic, or for joint tests the Wald
+      statistic, with one-way country-clustered errors (CR1).
+    - The p-value is the share of draws at least as extreme as the original statistic.
+  - **Holm.** The E1-E3 family is adjusted separately under each method. A result is
+    established only if it is rejected after Holm under both methods and has the sign
+    the rule requires.
+  - **E2.** The effect in region `i` is `g1 (P10_i - P50_i) + g2 (P10_i^2 - P50_i^2)`.
+    `P10_i` and `P50_i` are the 10th percentile and the median of the region's
+    precipitation over its panel years, with linear interpolation. E2's effect is the
+    mean over regions, with a delta-method two-way interval. The test is the joint test
+    of `g1` and `g2`.
+  - **E3.**
+    - The interaction is `EDD x 1[year >= 2012]`, alongside `EDD`.
+    - The smallest detectable change is `(t_0.975 + t_0.80) x SE`, using the two-way SE
+      and the same degrees of freedom.
+  - **E4.** M2 is fitted without the year. For each region in the sample that year, the
+    "normal" log yield is the region's fitted trend plus the weather effect at its mean
+    weather over the fitted years.
+    - Predicted anomaly: the weather effect at that year's weather minus the effect at
+      the mean weather.
+    - Observed anomaly: the log yield minus the normal.
+    - Area-weighted EU yields: computed from these, with that year's wheat areas, as a
+      percentage of the area-weighted normal.
+  - **E5.** The joint test of the two post-harvest terms: `EDD` above 30 °C in tens and
+    precipitation in hundreds of mm, from 1 August to 30 September. It is tested at 5%
+    under both methods and is not part of the Holm family.
+  - **M3.** Coefficients are per day in a bin, relative to `15-18` °C, with two-way 95%
+    intervals.
+  - **Sensitivity analyses.** They report E1-E3 as estimates with two-way 95% intervals.
+    - Region trends with year effects: region effects, region linear trends and year
+      effects.
+    - Area weights: weighted least squares with weights equal to the wheat area.
+    - The water-balance variant: replaces `P` by the water balance in hundreds of mm, in
+      the same quadratic form and in E2.
+    - Variants that drop observations (cells below 800 m, at least 20 years, NUTS-2021
+      codes only) re-apply the singleton rule.
+  - **Second route.** M1's coefficients are recomputed with explicit dummy variables and
+    must agree with the projection route to 1e-8.
