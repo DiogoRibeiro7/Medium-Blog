@@ -29,6 +29,9 @@ Thumbs.db
 AlcoholCPI.tiff
 DisposableIncomes.tiff
 
+# Historical notebook's temporary ONS download
+/just_fun/temp.csv
+
 # Private personal-health source data
 blood_pressure_tracker*.xlsx
 Blood_Pressure_Missingness/data/private/
