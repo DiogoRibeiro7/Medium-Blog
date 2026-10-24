@@ -340,7 +340,8 @@ def main() -> None:
         gaps = []
         for y in range(start, end + 1):
             rel = p[DIVISIONS].loc[y] / p[DIVISIONS].loc[start]
-            gaps.append(f"{y} {100 * ((weights('QU1') * rel).sum() - (weights('QU5') * rel).sum()):+.2f}")
+            g = 100 * ((weights('QU1') * rel).sum() - (weights('QU5') * rel).sum())
+            gaps.append(f"{y} {0.0 if abs(g) < 1e-9 else g:+.2f}")   # no signed zero from rounding noise
         w(f"  {start}-{end}: " + ", ".join(gaps))
     w("  HICP 2021-2023 by division: " + ", ".join(
         f"{c} {100 * (p.loc[2023, c] / p.loc[2021, c] - 1):+.1f}%" for c in ["CP01", "CP11", "CP045", "CP04", "CP07", "CP03", "CP06", "CP00"]))

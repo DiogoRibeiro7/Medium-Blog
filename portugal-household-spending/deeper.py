@@ -212,7 +212,8 @@ def price_volume(w) -> None:
         vo = 100 * np.log(out.loc[b, "rel_volume"] / out.loc[a, "rel_volume"])
         w(f"  {a}-{b}: share {100 * out.loc[a, 'share']:.1f}% -> {100 * out.loc[b, 'share']:.1f}%, "
           f"total {tot:+.1f} = price {pr:+.1f} + volume {vo:+.1f}")
-    w(f"  identity check (std of price x volume / share): {check:.2e}")
+    # The residual is at machine precision and its exact value depends on the CPU, so only its size is reported.
+    w(f"  identity check (std of price x volume / share): {'below 1e-12' if check < 1e-12 else f'{check:.2e}'}")
     w("  volume growth 2008-2013: core " + f"{100 * (v_core[2013] / v_core[2008] - 1):+.1f}%, "
       f"all cash consumption {100 * (v_all[2013] / v_all[2008] - 1):+.1f}%; 2019-2020: core "
       f"{100 * (v_core[2020] / v_core[2019] - 1):+.1f}%, all {100 * (v_all[2020] / v_all[2019] - 1):+.1f}%")
