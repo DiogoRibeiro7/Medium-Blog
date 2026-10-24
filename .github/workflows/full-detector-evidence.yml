@@ -1,0 +1,53 @@
+name: Full detector evidence study
+
+on:
+  workflow_dispatch:
+    inputs:
+      streams:
+        description: "Independent evaluation streams per regime (100 for primary conclusion)"
+        required: true
+        default: "100"
+        type: choice
+        options: ["1", "10", "100", "300"]
+      null_streams:
+        description: "Independent null-calibration streams per null family"
+        required: true
+        default: "199"
+        type: choice
+        options: ["19", "99", "199", "399"]
+
+permissions:
+  contents: read
+
+jobs:
+  full-evidence:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: statistical-evidence-and-decisions/requirements.txt
+      - name: Install project dependencies
+        working-directory: statistical-evidence-and-decisions
+        run: python -m pip install -r requirements.txt
+      - name: Run simulation and write results
+        working-directory: statistical-evidence-and-decisions
+        env:
+          STREAMS: ${{ inputs.streams }}
+          NULL_STREAMS: ${{ inputs.null_streams }}
+        run: >-
+          python run_full_evidence.py
+          --streams "$STREAMS"
+          --null-streams "$NULL_STREAMS"
+          --output results/full-evidence
+      - name: Upload complete reproducible results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: detector-evidence-results-${{ github.run_id }}
+          path: statistical-evidence-and-decisions/results/full-evidence/
+          if-no-files-found: warn
+          retention-days: 90

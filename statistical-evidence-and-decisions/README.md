@@ -469,3 +469,25 @@ SYNTHESIS_SMOKE=1 SYNTHESIS_REPEATS=1 jupyter nbconvert --to notebook --execute 
 The full experiment defaults to 100 independent evaluation streams and 199
 independent calibration streams. It is intentionally manual and must not
 be mistaken for an automatically executed research conclusion.
+
+## Full preregistered study execution
+
+Use the manual GitHub Actions workflow **Full detector evidence study**
+(`.github/workflows/full-detector-evidence.yml`). It runs the unchanged
+preregistered synthetic experiment and saves the complete calibration,
+model, economics, verdict and context CSV tables, together with a
+SHA-256 manifest, environment versions and a short report.
+
+For the preregistered primary conclusion, choose **100 evaluation streams**
+and **199 null-calibration streams**. A run with fewer than 100 evaluation
+streams is exploratory by definition and cannot support superiority claims.
+
+Alternatively, from this folder:
+
+```bash
+python run_full_evidence.py --streams 100 --null-streams 199 --output results/full-evidence
+```
+
+The workflow uploads result files as a GitHub Actions artifact, not as
+version-controlled generated data. Results are not yet available merely
+because this workflow exists. Its full execution is intentionally manual.
