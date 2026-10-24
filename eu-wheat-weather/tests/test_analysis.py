@@ -40,7 +40,8 @@ def synthetic_obs(noise: float = 0.0, seed: int = 0) -> list[Obs]:
 
 
 def test_out_of_sample_is_exact_without_noise() -> None:
-    rows = out_of_sample(synthetic_obs())
+    rows, regions = out_of_sample(synthetic_obs())
+    assert all(r["predicted"] == pytest.approx(r["observed"]) for r in regions)
     assert [r["year"] for r in rows] == [2003, 2018, 2022]
     for r in rows:
         assert r["correlation"] == pytest.approx(1.0)

@@ -58,8 +58,21 @@ Results are in [docs/RESULTS.md](docs/RESULTS.md). Every rule was fixed before a
 
 ## Phase 3: publication
 
-- [ ] A report with every number generated from the results, and a Medium article
-      carrying the E-OBS acknowledgement.
+- [x] **Report.** [docs/RESULTS.md](docs/RESULTS.md) generates every number from the
+      results; E2's caveat is stated beside its verdict.
+- [x] **Article.** The Medium article is
+      [publication/article.md](publication/article.md), generated from
+      `publication/article.template.md` with every number filled in from the results, and
+      it has four figures.
+  - **Tests:**
+    - the template contains no hand-typed result;
+    - every qualitative claim in it is true of the results;
+    - the E-OBS acknowledgement, the citation and the Eurostat and GISCO attributions are
+      present verbatim.
+  - **Check.** `eu-wheat publication --check` compares the committed article and values
+    with the code's output.
+- [ ] **Author review and publication.** Nothing is published automatically. Under the
+      E-OBS terms, the article must stay non-commercial.
 
 No artificial observations, no estimate before the plan, and no causal claim about
 climate change from short-run weather responses.
