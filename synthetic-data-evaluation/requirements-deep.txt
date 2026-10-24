@@ -1,0 +1,3 @@
+-r requirements.txt
+torch==2.14.1
+ctgan==0.12.1
