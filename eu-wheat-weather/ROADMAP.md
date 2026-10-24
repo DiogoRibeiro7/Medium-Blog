@@ -1,6 +1,6 @@
 # Roadmap
 
-## Phase 0: foundation (this stage)
+## Phase 0: foundation
 
 - [x] Question, estimands and data sources, with their licences ([README.md](README.md)).
 - [x] Research plan committed before any estimate ([METHODS.md](METHODS.md)), with a
@@ -14,11 +14,24 @@
 
 ## Phase 1: data
 
-- [ ] Harmonise region codes to NUTS 2021 by boundary geometry (METHODS.md, section
-      3.1).
-- [ ] Aggregate E-OBS to NUTS-2 regions: cell weights, single-sine degree days, bin
-      exposure, precipitation, and the water balance for the sensitivity analysis.
-- [ ] Build the region-year panel and a coverage report. Still no estimate.
+- [x] Harmonise region codes to NUTS 2021.
+  - **Rules.** A code joins a region if it is the region's own code, a NUTS-1 region
+    with a single NUTS-2 region, or a chain of pure recodes in Eurostat's official
+    change tables.
+  - **Codes.** 238 are NUTS-2021 codes, 27 are NUTS-1 and 23 are recodes; 102 are
+    dropped with their reason.
+  - **Change log.** It records the NUTS-1 rule and the replacement of the geometric
+    test by official recodes. Both were decided before any estimate.
+- [x] Aggregate E-OBS to the 242 EU-27 NUTS-2021 regions, for 2000-2024 and 3 windows,
+      with all cells and with cells below 800 m.
+  - **Methods.** Degree days and temperature bins use single-sine interpolation per
+    cell; potential evapotranspiration is Hargreaves.
+  - **Checks.** The formulas are tested against numerical integration and FAO-56.
+- [x] Build the region-year panel and a coverage report ([docs/DATA.md](docs/DATA.md)).
+      Still no estimate.
+  - 3,771 region-years in 167 regions of 25 countries.
+  - Estonia, Latvia and Luxembourg have a single region each, so they contribute nothing
+    to M1.
 
 ## Phase 2: estimates
 

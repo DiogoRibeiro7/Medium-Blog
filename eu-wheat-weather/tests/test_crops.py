@@ -10,11 +10,11 @@ import pytest
 
 from eu_wheat_weather.contract import AREA, CROP, PRODUCTION, DataError
 from eu_wheat_weather.crops import (
-    RAW_NAME,
     TABLE_NAME,
     audit_snapshot,
     crops_url,
-    is_eu_nuts2,
+    is_eu_region,
+    raw_name,
     save_snapshot,
     wheat_table,
 )
@@ -69,35 +69,38 @@ def test_decode_rejects_unrequested_codes_and_dimensions() -> None:
         decode(p, {"freq": "A", "crops": CROP, "strucpro": (AREA, PRODUCTION)})
 
 
-def test_wheat_table_computes_yield_and_keeps_only_eu_nuts2_in_the_period() -> None:
+def test_wheat_table_computes_yield_and_keeps_only_eu_regions_in_the_period() -> None:
     p = payload({
         flat(0, 0, 1): 200.0, flat(1, 0, 1): 1500.0,      # FRB0 2000: 7.5 t/ha
         flat(0, 1, 2): 0.0, flat(1, 1, 2): 3.0,           # PT18 2001: zero area
         flat(0, 0, 0): 190.0, flat(1, 0, 0): 1400.0,      # FRB0 1999: outside the period
         flat(0, 2, 1): 5.0, flat(0, 3, 1): 5.0, flat(0, 4, 1): 5.0,  # NUTS-1, Turkey, extra-regio
     }, {flat(1, 0, 1): "p"})
-    rows = {(r.geo, r.year): r for r in wheat_table(p)}
-    assert set(rows) == {("FRB0", 2000), ("PT18", 2001)}
+    rows = {(r.geo, r.year): r for r in wheat_table([p])}
+    assert set(rows) == {("FRB0", 2000), ("PT18", 2001), ("DE4", 2000)}
+    assert rows[("DE4", 2000)].yield_t_ha is None          # area without production
     fr = rows[("FRB0", 2000)]
     assert fr.yield_t_ha == pytest.approx(7.5) and fr.production_flag == "p"
     assert rows[("PT18", 2001)].yield_t_ha is None
 
 
-def test_eu_nuts2_codes() -> None:
-    assert is_eu_nuts2("FRB0") and is_eu_nuts2("EL52")
-    assert not is_eu_nuts2("FR") and not is_eu_nuts2("DE4") and not is_eu_nuts2("TRC1")
-    assert not is_eu_nuts2("ESZZ") and not is_eu_nuts2("UKC1")
+def test_eu_region_codes() -> None:
+    assert is_eu_region("FRB0") and is_eu_region("EL52") and is_eu_region("DE4")
+    assert not is_eu_region("FR") and not is_eu_region("TRC1") and not is_eu_region("UKC1")
+    assert not is_eu_region("ESZZ") and not is_eu_region("ESZ")
 
 
 def test_request_asks_for_the_registered_cells() -> None:
     url = crops_url()
     assert f"crops={CROP}" in url and "geoLevel=nuts2" in url
+    assert "geoLevel=nuts1" in crops_url("nuts1")
     assert f"strucpro={AREA}" in url and f"strucpro={PRODUCTION}" in url
 
 
 def test_snapshot_round_trip_and_tampering(tmp_path: Path) -> None:
     raw = json.dumps(payload({flat(0, 0, 1): 200.0, flat(1, 0, 1): 1500.0})).encode()
-    manifest = save_snapshot(tmp_path, raw, "https://example.invalid")
+    responses = {"nuts2": (raw, "https://example.invalid")}
+    manifest = save_snapshot(tmp_path, responses)
     assert manifest["summary"]["regions_with_yield"] == 1
     assert audit_snapshot(tmp_path) == manifest["summary"]
     table = tmp_path / TABLE_NAME
@@ -105,10 +108,16 @@ def test_snapshot_round_trip_and_tampering(tmp_path: Path) -> None:
                      encoding="utf-8", newline="\n")
     with pytest.raises(DataError, match="SHA-256"):
         audit_snapshot(tmp_path)
-    save_snapshot(tmp_path, raw, "https://example.invalid")
-    (tmp_path / RAW_NAME).write_bytes(raw + b" ")
+    save_snapshot(tmp_path, responses)
+    (tmp_path / raw_name("nuts2")).write_bytes(raw + b" ")
     with pytest.raises(DataError, match="SHA-256"):
         audit_snapshot(tmp_path)
+
+
+def test_a_region_in_two_responses_is_rejected() -> None:
+    p = payload({flat(0, 0, 1): 200.0})
+    with pytest.raises(DataError, match="more than one response"):
+        wheat_table([p, p])
 
 
 def test_committed_snapshots_audit() -> None:

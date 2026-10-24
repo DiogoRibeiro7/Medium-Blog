@@ -1,9 +1,10 @@
-"""Eurostat crop statistics for common wheat by NUTS-2 region (METHODS.md, section 3.1).
+"""Eurostat crop statistics for common wheat by region (METHODS.md, section 3.1).
 
-``fetch_crops`` downloads the raw JSON-stat response; ``wheat_table`` turns it into one
-row per region and year, with area, production, the yield computed from them and the
-Eurostat flags. ``save_snapshot`` freezes the raw bytes and the table with SHA-256
-hashes; ``audit_snapshot`` re-derives the table from the raw bytes and checks both.
+``fetch_crops`` downloads the raw JSON-stat responses (NUTS-2 and NUTS-1);
+``wheat_table`` turns them into one row per region and year, with area, production, the
+yield computed from them and the Eurostat flags. ``save_snapshot`` freezes the raw bytes
+and the table with SHA-256 hashes; ``audit_snapshot`` re-derives the table from the raw
+bytes and checks both.
 """
 
 from __future__ import annotations
@@ -14,6 +15,7 @@ import io
 import json
 import urllib.parse
 import urllib.request
+from collections.abc import Mapping, Sequence
 from dataclasses import dataclass
 from datetime import UTC, datetime
 from pathlib import Path
@@ -33,29 +35,40 @@ from eu_wheat_weather.contract import (
 )
 from eu_wheat_weather.jsonstat import decode
 
-RAW_NAME = f"raw/{CROPS_DATASET}_{CROP}_nuts2.json"
+# NUTS-1 is fetched because some regions are published only there (Brandenburg,
+# Sachsen-Anhalt); a NUTS-1 region with a single NUTS-2 region is that region
+# (METHODS.md, change log).
+LEVELS: tuple[str, ...] = ("nuts2", "nuts1")
 TABLE_NAME = "processed/wheat_nuts2.csv"
 COLUMNS = ("geo", "year", "area_kha", "production_kt", "yield_t_ha", "area_flag",
            "production_flag")
 
 
-def crops_url() -> str:
+def raw_name(level: str) -> str:
+    return f"raw/{CROPS_DATASET}_{CROP}_{level}.json"
+
+
+def crops_url(level: str = "nuts2") -> str:
     query = [("format", "JSON"), ("lang", "EN"), ("crops", CROP),
-             *(("strucpro", m) for m in MEASURES), ("geoLevel", "nuts2")]
+             *(("strucpro", m) for m in MEASURES), ("geoLevel", level)]
     return f"{EUROSTAT_API}{CROPS_DATASET}?{urllib.parse.urlencode(query)}"
 
 
-def fetch_crops(timeout: float = 300.0) -> tuple[bytes, str]:
-    """The raw response and the URL it came from."""
-    url = crops_url()
-    request = urllib.request.Request(url, headers={"Accept": "application/json"})
-    with urllib.request.urlopen(request, timeout=timeout) as response:  # noqa: S310
-        return response.read(), url
+def fetch_crops(levels: tuple[str, ...] = LEVELS, timeout: float = 300.0,
+                ) -> dict[str, tuple[bytes, str]]:
+    """For each NUTS level, the raw response and the URL it came from."""
+    out = {}
+    for level in levels:
+        url = crops_url(level)
+        request = urllib.request.Request(url, headers={"Accept": "application/json"})
+        with urllib.request.urlopen(request, timeout=timeout) as response:  # noqa: S310
+            out[level] = (response.read(), url)
+    return out
 
 
 @dataclass(frozen=True)
 class WheatRow:
-    """One EU-27 NUTS-2 region and harvest year."""
+    """One EU-27 region (NUTS-2, or NUTS-1 where published there) and harvest year."""
 
     geo: str
     year: int
@@ -72,23 +85,34 @@ class WheatRow:
         return self.production_kt / self.area_kha
 
 
-def is_eu_nuts2(code: str) -> bool:
-    """A NUTS-2 code of an EU-27 country (extra-regio codes ``..ZZ`` excluded)."""
-    return len(code) == 4 and code[:2] in EU27 and not code.endswith("ZZ")
+def is_eu_region(code: str) -> bool:
+    """A NUTS-2 or NUTS-1 code of an EU-27 country, extra-regio codes excluded."""
+    if code[:2] not in EU27:
+        return False
+    if len(code) == 4:
+        return not code.endswith("ZZ")
+    return len(code) == 3 and not code.endswith("Z")
 
 
-def wheat_table(payload: dict[str, Any]) -> list[WheatRow]:
-    """One row per EU-27 NUTS-2 region and year in the study period with any cell."""
-    cells = decode(payload, {"freq": "A", "crops": CROP, "strucpro": MEASURES})
+def wheat_table(payloads: Sequence[Mapping[str, Any]]) -> list[WheatRow]:
+    """One row per EU-27 region (NUTS-2 or NUTS-1) and year in the study period."""
     by_key: dict[tuple[str, int], dict[str, tuple[float | None, str]]] = {}
-    for cell in cells:
-        geo, period = cell.codes["geo"], cell.codes["time"]
-        if not period.isdigit():
-            raise DataError(f"Unexpected period {period}.")
-        year = int(period)
-        if not is_eu_nuts2(geo) or not FIRST_YEAR <= year <= LAST_YEAR:
-            continue
-        by_key.setdefault((geo, year), {})[cell.codes["strucpro"]] = (cell.value, cell.flag)
+    seen: set[str] = set()
+    for payload in payloads:
+        cells = decode(payload, {"freq": "A", "crops": CROP, "strucpro": MEASURES})
+        codes = {c.codes["geo"] for c in cells}
+        if codes & seen:
+            raise DataError(f"Regions in more than one response: {sorted(codes & seen)}.")
+        seen |= codes
+        for cell in cells:
+            geo, period = cell.codes["geo"], cell.codes["time"]
+            if not period.isdigit():
+                raise DataError(f"Unexpected period {period}.")
+            year = int(period)
+            if not is_eu_region(geo) or not FIRST_YEAR <= year <= LAST_YEAR:
+                continue
+            by_key.setdefault((geo, year), {})[cell.codes["strucpro"]] = (cell.value,
+                                                                           cell.flag)
     rows = []
     for (geo, year), measures in sorted(by_key.items()):
         area, area_flag = measures.get(AREA, (None, ""))
@@ -116,21 +140,23 @@ def sha256(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()
 
 
-def save_snapshot(directory: Path, raw: bytes, url: str,
+def save_snapshot(directory: Path, responses: Mapping[str, tuple[bytes, str]],
                   retrieved: datetime | None = None) -> dict[str, Any]:
-    """Write the raw response, the processed table and a manifest with their hashes."""
-    payload = json.loads(raw.decode("utf-8"))
-    rows = wheat_table(payload)
+    """Write the raw responses (by NUTS level), the table and a manifest with hashes."""
+    payloads = {level: json.loads(raw.decode("utf-8")) for level, (raw, _) in responses.items()}
+    rows = wheat_table(list(payloads.values()))
     table = table_text(rows).encode("utf-8")
-    files = {RAW_NAME: raw, TABLE_NAME: table}
+    files = {raw_name(level): raw for level, (raw, _) in responses.items()}
+    files[TABLE_NAME] = table
     for name, data in files.items():
         path = directory / name
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_bytes(data)
     manifest = {
-        "dataset": CROPS_DATASET, "crop": CROP, "measures": list(MEASURES), "url": url,
+        "dataset": CROPS_DATASET, "crop": CROP, "measures": list(MEASURES),
+        "urls": {level: url for level, (_, url) in responses.items()},
         "retrieved_utc": (retrieved or datetime.now(UTC)).strftime("%Y-%m-%dT%H:%M:%SZ"),
-        "eurostat_updated": payload.get("updated"),
+        "eurostat_updated": {level: p.get("updated") for level, p in payloads.items()},
         "files": {name: sha256(data) for name, data in files.items()},
         "summary": summary(rows),
     }
@@ -157,8 +183,9 @@ def audit_snapshot(directory: Path) -> dict[str, Any]:
             raise DataError(f"Missing snapshot file {name}.")
         if sha256(path.read_bytes()) != expected:
             raise DataError(f"{name} does not match its recorded SHA-256.")
-    raw = (directory / RAW_NAME).read_bytes()
-    rows = wheat_table(json.loads(raw.decode("utf-8")))
+    raws = [name for name in manifest["files"] if name.startswith("raw/")]
+    rows = wheat_table([json.loads((directory / name).read_bytes().decode("utf-8"))
+                        for name in raws])
     if table_text(rows).encode("utf-8") != (directory / TABLE_NAME).read_bytes():
         raise DataError("The processed table does not re-derive from the raw response.")
     counts = summary(rows)

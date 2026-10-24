@@ -1,0 +1,171 @@
+{
+ "snapshot": "eurostat-crops-2026-10-23",
+ "snapshot_audit": {
+  "rows": 7411,
+  "rows_with_yield": 6795,
+  "regions_with_yield": 365,
+  "first_year": 2000,
+  "last_year": 2024
+ },
+ "codes_by_rule": {
+  "no_match": 102,
+  "nuts1_single": 27,
+  "nuts2021": 238,
+  "recode": 23
+ },
+ "harmonised_region_years": 4864,
+ "harmonised_with_yield": 4463,
+ "conflicts": 22,
+ "excluded_by_reason": {
+  "no_area_or_production": 108,
+  "area_below_1kha": 849,
+  "implausible_yield": 8,
+  "weather_missing": 49,
+  "region_below_10_years": 79
+ },
+ "panel_region_years": 3771,
+ "panel_regions": 167,
+ "panel_countries": 25,
+ "years": [
+  2000,
+  2024
+ ],
+ "single_region_countries": [
+  "EE",
+  "LU",
+  "LV"
+ ],
+ "by_country": {
+  "AT": {
+   "regions": 6,
+   "region_years": 145
+  },
+  "BE": {
+   "regions": 10,
+   "region_years": 239
+  },
+  "BG": {
+   "regions": 6,
+   "region_years": 85
+  },
+  "CZ": {
+   "regions": 8,
+   "region_years": 200
+  },
+  "DE": {
+   "regions": 6,
+   "region_years": 146
+  },
+  "DK": {
+   "regions": 5,
+   "region_years": 95
+  },
+  "EE": {
+   "regions": 1,
+   "region_years": 20
+  },
+  "EL": {
+   "regions": 6,
+   "region_years": 148
+  },
+  "ES": {
+   "regions": 13,
+   "region_years": 286
+  },
+  "FI": {
+   "regions": 4,
+   "region_years": 69
+  },
+  "FR": {
+   "regions": 21,
+   "region_years": 525
+  },
+  "HR": {
+   "regions": 2,
+   "region_years": 29
+  },
+  "HU": {
+   "regions": 7,
+   "region_years": 162
+  },
+  "IE": {
+   "regions": 2,
+   "region_years": 24
+  },
+  "IT": {
+   "regions": 15,
+   "region_years": 316
+  },
+  "LT": {
+   "regions": 2,
+   "region_years": 24
+  },
+  "LU": {
+   "regions": 1,
+   "region_years": 25
+  },
+  "LV": {
+   "regions": 1,
+   "region_years": 20
+  },
+  "NL": {
+   "regions": 11,
+   "region_years": 273
+  },
+  "PL": {
+   "regions": 17,
+   "region_years": 397
+  },
+  "PT": {
+   "regions": 3,
+   "region_years": 71
+  },
+  "RO": {
+   "regions": 8,
+   "region_years": 199
+  },
+  "SE": {
+   "regions": 6,
+   "region_years": 144
+  },
+  "SI": {
+   "regions": 2,
+   "region_years": 30
+  },
+  "SK": {
+   "regions": 4,
+   "region_years": 99
+  }
+ },
+ "flags": {
+  "b": 1,
+  "d": 28,
+  "e": 108
+ },
+ "weather_missing": {
+  "mar_jul/all": {
+   "region_seasons": 6050,
+   "missing": 400
+  },
+  "apr_jul/all": {
+   "region_seasons": 6050,
+   "missing": 400
+  },
+  "aug_sep/all": {
+   "region_seasons": 6050,
+   "missing": 400
+  },
+  "mar_jul/below_800m": {
+   "region_seasons": 6050,
+   "missing": 325
+  },
+  "apr_jul/below_800m": {
+   "region_seasons": 6050,
+   "missing": 325
+  },
+  "aug_sep/below_800m": {
+   "region_seasons": 6050,
+   "missing": 325
+  }
+ }
+}

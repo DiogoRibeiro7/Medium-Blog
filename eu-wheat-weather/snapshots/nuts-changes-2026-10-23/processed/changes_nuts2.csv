@@ -1,0 +1,134 @@
+version_from,version_to,code_from,code_to,change,pure_recode
+2006,2010,DE41,,Merged,False
+2006,2010,DE42,,Merged,False
+2006,2010,,DE40,New region,False
+2006,2010,DED1,,Boundary shift,False
+2006,2010,,DED4,New region,False
+2006,2010,DED3,,Boundary shift,False
+2006,2010,,DED5,New region,False
+2006,2010,GR11,EL11,Code change,True
+2006,2010,GR12,EL12,Code change,True
+2006,2010,GR13,EL13,Code change,True
+2006,2010,GR14,EL14,Code change,True
+2006,2010,GR21,EL21,Code change,True
+2006,2010,GR22,EL22,Code change,True
+2006,2010,GR23,EL23,Code change,True
+2006,2010,GR24,EL24,Code change,True
+2006,2010,GR25,EL25,Code change,True
+2006,2010,GR30,EL30,Code change,True
+2006,2010,GR41,EL41,Code change,True
+2006,2010,GR42,EL42,Code change,True
+2006,2010,GR43,EL43,Code change,True
+2006,2010,GRZZ,ELZZ,"Code change, label change",True
+2006,2010,ITD1,ITH1,"Code change, label change",True
+2006,2010,ITD2,ITH2,"Code change, label change",True
+2006,2010,ITD3,ITH3,Code change,True
+2006,2010,ITD4,ITH4,Code change,True
+2006,2010,ITE4,ITI4,Code change,True
+2006,2010,ITE1,ITI1,Code change,True
+2006,2010,ITE2,ITI2,Code change,True
+2006,2010,ITD5,,Boundary shift,False
+2006,2010,,ITH5,New region,False
+2006,2010,ITE3,,Boundary shift,False
+2006,2010,,ITI3,New region,False
+2006,2010,FI13,,Merged,False
+2006,2010,FI1A,,Merged,False
+2006,2010,,FI1D,New region,False
+2006,2010,FI18,,Split,False
+2006,2010,,FI1B,New region,False
+2006,2010,,FI1C,New region,False
+2006,2010,UKD2,,Boundary shift,False
+2006,2010,UKD5,,Boundary shift,False
+2006,2010,,UKD6,New region,False
+2006,2010,,UKD7,New region,False
+2010,2013,EL11,EL51,Code change,True
+2010,2013,EL12,EL52,Code change,True
+2010,2013,EL13,EL53,Code change,True
+2010,2013,EL21,EL54,Code change,True
+2010,2013,EL14,EL61,Code change,True
+2010,2013,EL22,EL62,Code change,True
+2010,2013,EL23,EL63,Code change,True
+2010,2013,EL24,EL64,Code change,True
+2010,2013,EL25,EL65,Code change,True
+2010,2013,FR91,,Boundary shift,False
+2010,2013,,FRA1,New region,False
+2010,2013,FR92,FRA2,Code change,True
+2010,2013,FR93,FRA3,Code change,True
+2010,2013,FR94,FRA4,Name change,False
+2010,2013,,FRA5,New region,False
+2010,2013,PT17,PT17,Name change,False
+2010,2013,SI01,,Boundary shift,False
+2010,2013,,SI03,New region,False
+2010,2013,SI02,,Boundary shift,False
+2010,2013,,SI04,New region,False
+2010,2013,UKI1,,Split,False
+2010,2013,,UKI3,New region,False
+2010,2013,,UKI4,New region,False
+2010,2013,UKI2,,Split,False
+2010,2013,,UKI5,New region,False
+2010,2013,,UKI6,New region,False
+2010,2013,,UKI7,New region,False
+2013,2016,IE01,,discontinued,False
+2013,2016,,IE04,new region,False
+2013,2016,IE02,,discontinued,False
+2013,2016,,IE05,"new region, made from ex-IE023, IE024 and IE025",False
+2013,2016,,IE06,new region,False
+2013,2016,FR24,FRB0,recoded and relabelled,True
+2013,2016,FR26,FRC1,recoded,True
+2013,2016,FR43,FRC2,recoded,True
+2013,2016,FR25,FRD1,recoded,True
+2013,2016,FR23,FRD2,recoded,True
+2013,2016,FR30,FRE1,recoded,True
+2013,2016,FR22,FRE2,recoded,True
+2013,2016,FR42,FRF1,recoded,True
+2013,2016,FR21,FRF2,recoded,True
+2013,2016,FR41,FRF3,recoded,True
+2013,2016,FR51,FRG0,recoded,True
+2013,2016,FR52,FRH0,recoded,True
+2013,2016,FR61,FRI1,recoded,True
+2013,2016,FR63,FRI2,recoded,True
+2013,2016,FR53,FRI3,recoded,True
+2013,2016,FR81,FRJ1,recoded,True
+2013,2016,FR62,FRJ2,recoded,True
+2013,2016,FR72,FRK1,recoded,True
+2013,2016,FR71,FRK2,recoded,True
+2013,2016,FR82,FRL0,recoded,True
+2013,2016,FR83,FRM0,recoded,True
+2013,2016,FRA1,FRY1,recoded,True
+2013,2016,FRA2,FRY2,recoded,True
+2013,2016,FRA3,FRY3,recoded,True
+2013,2016,FRA4,FRY4,recoded,True
+2013,2016,FRA5,FRY5,recoded,True
+2013,2016,LT00,,split into new LT01 and LT02,False
+2013,2016,,LT01,"new region, equals ex-NUTS 3 region LT00A",False
+2013,2016,,LT02,"new region, ex-LT00 minus ex-LT00A",False
+2013,2016,HU10,,discontinued; split into new HU11 and HU12,False
+2013,2016,,HU11,"new region, equals ex-NUTS 3 region HU101",False
+2013,2016,,HU12,"new region, equals ex-NUTS 3 region HU102",False
+2013,2016,PL11,PL71,recoded,True
+2013,2016,PL33,PL72,recoded,True
+2013,2016,PL31,PL81,recoded,True
+2013,2016,PL32,PL82,recoded,True
+2013,2016,PL34,PL84,recoded,True
+2013,2016,PL12,,discontinued; split into new PL91 and PL92,False
+2013,2016,,PL91,"new region, equals ex-PL127, PL129 and PL12A minus new PL926",False
+2013,2016,,PL92,"new region, made from ex-PL128, PL12B, PL12C, PL12D, PL12E plus new PL926",False
+2013,2016,UKM2,UKM7,boundary shift; lost ex-UKM24,False
+2013,2016,UKM3,,discontinued; split into new UKM8 and UKM9,False
+2013,2016,,UKM8,"new region, made from ex-UKM31, UKM34, UKM35 and UKM36",False
+2013,2016,,UKM9,"new region, made from ex-UKM24, UKM32, UKM33, UKM37 and UKM38",False
+2016,2021,ES52,ES52,name change,False
+2016,2021,ES63,ES63,name change,False
+2016,2021,ES64,ES64,name change,False
+2016,2021,HR04,,"discontinued; split into new HR02, HR05 and HR06",False
+2016,2021,,HR05,new,False
+2016,2021,,HR06,new,False
+2016,2021,,HR02,new,False
+2016,2021,NO01,,discontinued,False
+2016,2021,,NO08,new,False
+2016,2021,NO02,NO02,renamed,False
+2016,2021,,NO09,new,False
+2016,2021,NO05,NO0A,recoded (boundary change),False
+2016,2021,NO03,,discontinued,False
+2016,2021,NO04,,discontinued,False
+2016,2021,,NO0B,new,False

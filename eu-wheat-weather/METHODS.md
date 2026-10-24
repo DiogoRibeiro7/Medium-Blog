@@ -183,3 +183,35 @@ sign.
   fields of a region.
 
 ## Change log
+
+- **2026-10-23, phase 1, before any estimate: NUTS-1 regions.**
+  - Eurostat publishes some regions' wheat only at NUTS-1. Among them are Brandenburg
+    (`DE4`) and Sachsen-Anhalt (`DEE`), two large wheat regions.
+  - A NUTS-1 region that contains a single NUTS-2 region in NUTS 2021 is that region's
+    territory. Its series therefore joins the region, by the rule of section 3.1.
+  - Where both levels have a value for a year, the NUTS-2 value is used and differences
+    above 1% are reported.
+  - The crop snapshot of 2026-10-23 adds the NUTS-1 response. The snapshot of
+    2026-10-22 is kept unchanged.
+- **2026-10-23, phase 1, before any estimate: official recodes replace the geometric
+  test.**
+  - **The problem.** The 1% geometric test of section 3.1 cannot separate the same
+    territory from a changed one. GISCO generalises each NUTS version separately at
+    1:3 million, so the boundaries of an unchanged region differ between versions.
+    - Pure recodes differ by 1.0-4.6% (Italy's 2010 recodes, such as `ITD3` to `ITH3`)
+      and 2.0-3.7% (Greece's 2013 recodes, such as `EL11` to `EL51`). The Ionian Islands
+      (`EL22` to `EL62`) differ by 11.6%.
+    - Real boundary shifts differ by similar amounts: 3.8-4.7% for Slovenia (`SI01`,
+      `SI02`), and 2.3% and 4.6% for Emilia-Romagna and Marche.
+  - **The new rule.** It applies the rule's intent, the same territory under another
+    code. A NUTS-2 code joins a NUTS-2021 region when Eurostat's official NUTS change
+    tables record a chain of pure recodes from it to that region, at every step between
+    its version and NUTS 2021.
+    - The steps are 2006-2010, 2010-2013, 2013-2016 and 2016-2021.
+    - A pure recode is "code change", "code change, label change", "recoded" or
+      "recoded and relabelled".
+    - Any other change on the way stops the chain. Examples are a boundary shift, a
+      split, a merge, or "recoded (boundary change)".
+  - **Sources.** The four tables are frozen in `snapshots/nuts-changes-2026-10-23/`.
+  - **Reporting.** The geometric shares are still reported for every joined and dropped
+    code, as a cross-check.
