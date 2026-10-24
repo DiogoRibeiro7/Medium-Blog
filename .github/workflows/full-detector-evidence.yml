@@ -1,6 +1,10 @@
 name: Full detector evidence study
 
 on:
+  # One-time evaluation branch: a code push launches the full, unchanged protocol.
+  push:
+    branches: ["research/execute-full-evidence-20261024"]
+    paths: [".github/workflows/full-detector-evidence.yml"]
   workflow_dispatch:
     inputs:
       streams:
@@ -36,8 +40,8 @@ jobs:
       - name: Run simulation and write results
         working-directory: statistical-evidence-and-decisions
         env:
-          STREAMS: ${{ inputs.streams }}
-          NULL_STREAMS: ${{ inputs.null_streams }}
+          STREAMS: ${{ inputs.streams || '100' }}
+          NULL_STREAMS: ${{ inputs.null_streams || '199' }}
         run: >-
           python run_full_evidence.py
           --streams "$STREAMS"
