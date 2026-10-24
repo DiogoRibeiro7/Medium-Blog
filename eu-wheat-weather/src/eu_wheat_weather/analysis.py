@@ -436,6 +436,29 @@ def _p(p: float) -> str:
     return "<0.001" if p < 0.001 else f"{p:.3f}"
 
 
+def _bin(term: str) -> str:
+    """t_lt00 -> below 0 °C, t_ge36 -> 36 °C and above, t_03_06 -> 3-6 °C."""
+    body = term.removeprefix("t_")
+    if body.startswith("lt"):
+        return f"below {int(body[2:])} °C"
+    if body.startswith("ge"):
+        return f"{int(body[2:])} °C and above"
+    low, high = body.split("_")
+    return f"{int(low)}-{int(high)} °C"
+
+
+def _e2_caveat(dry: Mapping[str, float], verdict: str) -> list[str]:
+    """When the rule establishes E2 but the dry-season effect's own interval includes 0."""
+    if not verdict.startswith("established") or dry["high"] < 0:
+        return []
+    return [f"**E2, read with care.** The registered rule takes significance from the joint "
+            f"test of the precipitation terms and the sign from the dry-season effect. The "
+            f"joint test rejects under both methods, but the dry-season effect's own two-way "
+            f"interval, [{dry['low']:+.4f}, {dry['high']:+.4f}], includes zero. Precipitation "
+            f"clearly matters, while the size of the loss in a typical dry season is not "
+            f"pinned down.", ""]
+
+
 def render(r: Mapping[str, Any], command: str) -> str:
     s, e1, e2, e3, e5, d = r["sample"], r["E1"], r["E2"], r["E3"], r["E5"], r["decisions"]
     coef = {(c["model"], c["term"]): c for c in r["coefficients"]}
@@ -471,6 +494,7 @@ def render(r: Mapping[str, Any], command: str) -> str:
         f"| E3, change in E1 after 2011 | {post['estimate']:+.4f} log points | "
         f"{_p(d['E3']['p_twoway_holm'])} | {_p(d['E3']['p_bootstrap_holm'])} | "
         f"{d['E3']['verdict']} |", "",
+        *_e2_caveat(dry, d["E2"]["verdict"]),
         "## Sample", "",
         f"- {s['n']} region-years in {s['regions']} regions of {s['countries']} countries "
         f"({s['country_years']} country-years), harvest years {s['years'][0]} to "
@@ -508,11 +532,13 @@ def render(r: Mapping[str, Any], command: str) -> str:
         "Change in log yield for one more day in each 3 °C bin, instead of 15-18 °C.", "",
         "| Bin | Estimate | 95% interval |", "| --- | ---: | ---: |",
     ]
-    lines += [f"| {b['term'].removeprefix('t_').replace('_', '-')} °C | {b['estimate']:+.4f} | "
+    lines += [f"| {_bin(b['term'])} | {b['estimate']:+.4f} | "
               f"[{b['low']:+.4f}, {b['high']:+.4f}] |" for b in r["M3"]]
     lines += ["", "## E4, out of sample (descriptive)", "",
               "M2 (region effects and trends) fitted without the year, then used to predict "
-              "it.", "",
+              "it. A negative share of variance explained means the prediction does worse "
+              "than the mean anomaly. EU yields are area-weighted, relative to the normal.",
+              "",
               "| Year | Regions | Correlation | Variance explained | EU yield, observed | "
               "EU yield, predicted |", "| ---: | ---: | ---: | ---: | ---: | ---: |"]
     lines += [f"| {x['year']} | {x['regions']} | {x['correlation']:+.2f} | "

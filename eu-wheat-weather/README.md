@@ -3,14 +3,21 @@
 A reproducible study of how common-wheat yields in the NUTS-2 regions of the European
 Union respond to extreme heat and drought during the growing season, 2000-2024.
 
-**Status: data (phase 1).**
+**Status: estimates (phase 2).**
 
-- The research plan ([METHODS.md](METHODS.md)) was committed before any yield was related
-  to any weather variable. Its change log records two decisions taken during phase 1,
-  before any estimate.
-- The region-year panel and its coverage report ([docs/DATA.md](docs/DATA.md)) are
-  built: 3,771 region-years in 167 regions of 25 countries, 2000-2024.
-- No estimate exists yet. [ROADMAP.md](ROADMAP.md) lists the stages.
+- **Plan.** [METHODS.md](METHODS.md) was committed before any yield was related to any
+  weather variable. Its change log records three decisions made before any estimate.
+- **Panel.** [docs/DATA.md](docs/DATA.md) describes it.
+- **Results.** They are in [docs/RESULTS.md](docs/RESULTS.md):
+  - **Placebo (E5):** passes. Post-harvest weather is unrelated to yields.
+  - **Heat (E1):** 10 more degree days above 30 °C go with 2.6% lower yields. This is
+    not determined after Holm: two-way p = 0.26, wild bootstrap p = 0.52.
+  - **Drought (E2):** established negative by the registered rule. Precipitation
+    matters jointly under both methods, and yields peak at about 350 mm over March to
+    July. The loss in a typical dry season (-2.3%) has an interval that includes zero.
+  - **Change since 2012 (E3):** not determined. The design can only detect changes of
+    6% or more per 10 degree days.
+- [ROADMAP.md](ROADMAP.md) lists the stages.
 
 ## Question and estimands
 
@@ -77,6 +84,7 @@ poetry run eu-wheat audit --crops snapshots/eurostat-crops-2026-10-23 --weather-
 poetry run eu-wheat regions --crops snapshots/eurostat-crops-2026-10-23 --nuts-changes snapshots/nuts-changes-2026-10-23 --boundaries-dir data/boundaries --output docs/panel/region_map.csv
 poetry run eu-wheat weather --eobs-dir data/eobs --boundaries-dir data/boundaries --output docs/panel/weather.csv   # about 2.5 minutes
 poetry run eu-wheat panel --crops snapshots/eurostat-crops-2026-10-23 --region-map docs/panel/region_map.csv --weather docs/panel/weather.csv --output-dir docs/panel --report docs/DATA.md
+poetry run eu-wheat estimate --panel docs/panel/panel.csv --weather docs/panel/weather.csv --output-dir docs/results --report docs/RESULTS.md   # about 1.5 minutes
 poetry run pytest
 poetry run ruff check src tests
 poetry run mypy src

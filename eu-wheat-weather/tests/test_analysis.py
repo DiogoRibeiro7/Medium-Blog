@@ -90,6 +90,18 @@ def test_decisions_need_both_methods_and_the_sign(p_t: float, p_b: float, edd: f
     assert out["E2"]["verdict"] == "not determined"
 
 
+def test_committed_results_regenerate() -> None:
+    """The whole estimation, bootstraps included, reproduces results.json exactly."""
+    results = ROOT / "docs" / "results" / "results.json"
+    if not results.exists():
+        pytest.skip("No committed results.")
+    from eu_wheat_weather.analysis import _round, run
+
+    panel = ROOT / "docs" / "panel"
+    regenerated = _round(run(panel / "panel.csv", panel / "weather.csv"))
+    assert json.dumps(regenerated, indent=1) + "\n" == results.read_text(encoding="utf-8")
+
+
 def test_report_regenerates_from_the_committed_results() -> None:
     results = ROOT / "docs" / "results" / "results.json"
     if not results.exists():

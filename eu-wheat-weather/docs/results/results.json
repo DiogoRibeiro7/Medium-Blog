@@ -1,0 +1,737 @@
+{
+ "sample": {
+  "region_years": 3771,
+  "singletons_dropped": 78,
+  "n": 3693,
+  "regions": 164,
+  "countries": 22,
+  "country_years": 468,
+  "years": [
+   2000,
+   2024
+  ]
+ },
+ "coefficients": [
+  {
+   "model": "M1",
+   "term": "gdd",
+   "estimate": -0.03615943214,
+   "se": 0.01643176239,
+   "low": -0.07033115269,
+   "high": -0.001987711585,
+   "t": -2.200581489,
+   "p": 0.03909328009,
+   "df": 21,
+   "n": 3693
+  },
+  {
+   "model": "M1",
+   "term": "edd",
+   "estimate": -0.02676916126,
+   "se": 0.01697130895,
+   "low": -0.06206293032,
+   "high": 0.00852460779,
+   "t": -1.5773186,
+   "p": 0.129668091,
+   "df": 21,
+   "n": 3693
+  },
+  {
+   "model": "M1",
+   "term": "p",
+   "estimate": 0.1192745288,
+   "se": 0.0458979799,
+   "low": 0.02382445431,
+   "high": 0.2147246032,
+   "t": 2.598687982,
+   "p": 0.01676411105,
+   "df": 21,
+   "n": 3693
+  },
+  {
+   "model": "M1",
+   "term": "p2",
+   "estimate": -0.01720313293,
+   "se": 0.005379185785,
+   "low": -0.02838976217,
+   "high": -0.006016503703,
+   "t": -3.198092355,
+   "p": 0.004322606396,
+   "df": 21,
+   "n": 3693
+  },
+  {
+   "model": "M1 with E3",
+   "term": "gdd",
+   "estimate": -0.03569142114,
+   "se": 0.01674208759,
+   "low": -0.07050849829,
+   "high": -0.0008743440028,
+   "t": -2.131838157,
+   "p": 0.04499255748,
+   "df": 21,
+   "n": 3693
+  },
+  {
+   "model": "M1 with E3",
+   "term": "edd",
+   "estimate": -0.03720810399,
+   "se": 0.02081614704,
+   "low": -0.08049765157,
+   "high": 0.006081443583,
+   "t": -1.787463546,
+   "p": 0.08830515459,
+   "df": 21,
+   "n": 3693
+  },
+  {
+   "model": "M1 with E3",
+   "term": "p",
+   "estimate": 0.1184023748,
+   "se": 0.04654238004,
+   "low": 0.02161219686,
+   "high": 0.2151925526,
+   "t": 2.543969059,
+   "p": 0.01888978495,
+   "df": 21,
+   "n": 3693
+  },
+  {
+   "model": "M1 with E3",
+   "term": "p2",
+   "estimate": -0.01706858403,
+   "se": 0.005417590516,
+   "low": -0.02833508027,
+   "high": -0.00580208779,
+   "t": -3.150585852,
+   "p": 0.004825401501,
+   "df": 21,
+   "n": 3693
+  },
+  {
+   "model": "M1 with E3",
+   "term": "edd_post",
+   "estimate": 0.01193139258,
+   "se": 0.02061964631,
+   "low": -0.03094950935,
+   "high": 0.05481229451,
+   "t": 0.5786419616,
+   "p": 0.568985532,
+   "df": 21,
+   "n": 3693
+  },
+  {
+   "model": "M1 with E5",
+   "term": "gdd",
+   "estimate": -0.03625900215,
+   "se": 0.01606339677,
+   "low": -0.06966466446,
+   "high": -0.002853339839,
+   "t": -2.257243762,
+   "p": 0.03476991598,
+   "df": 21,
+   "n": 3693
+  },
+  {
+   "model": "M1 with E5",
+   "term": "edd",
+   "estimate": -0.03015957721,
+   "se": 0.01698120561,
+   "low": -0.0654739275,
+   "high": 0.005154773075,
+   "t": -1.7760563,
+   "p": 0.09021678391,
+   "df": 21,
+   "n": 3693
+  },
+  {
+   "model": "M1 with E5",
+   "term": "p",
+   "estimate": 0.11881519,
+   "se": 0.04512452131,
+   "low": 0.02497361077,
+   "high": 0.2126567693,
+   "t": 2.633051533,
+   "p": 0.01554644781,
+   "df": 21,
+   "n": 3693
+  },
+  {
+   "model": "M1 with E5",
+   "term": "p2",
+   "estimate": -0.0171122108,
+   "se": 0.005274094473,
+   "low": -0.02808029068,
+   "high": -0.006144130912,
+   "t": -3.244577981,
+   "p": 0.003880051341,
+   "df": 21,
+   "n": 3693
+  },
+  {
+   "model": "M1 with E5",
+   "term": "edd_aug_sep",
+   "estimate": 0.0107434059,
+   "se": 0.01710067574,
+   "low": -0.02481939612,
+   "high": 0.04630620792,
+   "t": 0.6282445247,
+   "p": 0.5366171716,
+   "df": 21,
+   "n": 3693
+  },
+  {
+   "model": "M1 with E5",
+   "term": "p_aug_sep",
+   "estimate": -0.01280973314,
+   "se": 0.01217991633,
+   "low": -0.03813925575,
+   "high": 0.01251978948,
+   "t": -1.051709453,
+   "p": 0.3048851248,
+   "df": 21,
+   "n": 3693
+  }
+ ],
+ "E1": {
+  "statistic": -1.5773186,
+  "p_twoway": 0.129668091,
+  "df": 21,
+  "statistic_country_cr1": -1.705652277,
+  "p_bootstrap": 0.2597259726
+ },
+ "E2": {
+  "statistic": 17.17515259,
+  "p_twoway": 0.001881933994,
+  "df": 21,
+  "statistic_country_cr1": 67.58839425,
+  "p_bootstrap": 0.000500050005,
+  "dry_season": {
+   "effect": -0.02310740958,
+   "se": 0.01466491147,
+   "low": -0.05360476251,
+   "high": 0.007389943338,
+   "mean_p10_minus_p50": -74.52785927
+  },
+  "optimum_mm": 346.6651372
+ },
+ "E3": {
+  "statistic": 0.5786419616,
+  "p_twoway": 0.568985532,
+  "df": 21,
+  "statistic_country_cr1": 0.570918542,
+  "p_bootstrap": 0.6098609861,
+  "minimum_detectable": 0.06059470469
+ },
+ "E5": {
+  "statistic": 1.562748581,
+  "p_twoway": 0.4706375258,
+  "df": 21,
+  "statistic_country_cr1": 1.324631204,
+  "p_bootstrap": 0.7088708871,
+  "significant_both": false
+ },
+ "decisions": {
+  "E1": {
+   "p_twoway_holm": 0.2593361821,
+   "p_bootstrap_holm": 0.5194519452,
+   "verdict": "not determined"
+  },
+  "E2": {
+   "p_twoway_holm": 0.005645801983,
+   "p_bootstrap_holm": 0.001500150015,
+   "verdict": "established negative"
+  },
+  "E3": {
+   "p_twoway_holm": 0.568985532,
+   "p_bootstrap_holm": 0.6098609861,
+   "verdict": "not determined"
+  }
+ },
+ "second_route": {
+  "max_abs_difference": 2.14352841e-13
+ },
+ "M3": [
+  {
+   "model": "M3",
+   "term": "t_lt00",
+   "estimate": 0.002169857091,
+   "se": 0.004415427124,
+   "low": -0.007012526287,
+   "high": 0.01135224047,
+   "t": 0.4914263174,
+   "p": 0.6282219516,
+   "df": 21,
+   "n": 3693
+  },
+  {
+   "model": "M3",
+   "term": "t_00_03",
+   "estimate": 0.001961453379,
+   "se": 0.004678133012,
+   "low": -0.0077672568,
+   "high": 0.01169016356,
+   "t": 0.4192812333,
+   "p": 0.6792684867,
+   "df": 21,
+   "n": 3693
+  },
+  {
+   "model": "M3",
+   "term": "t_03_06",
+   "estimate": 0.008953875792,
+   "se": 0.00540324741,
+   "low": -0.002282792328,
+   "high": 0.02019054391,
+   "t": 1.657128596,
+   "p": 0.11235923,
+   "df": 21,
+   "n": 3693
+  },
+  {
+   "model": "M3",
+   "term": "t_06_09",
+   "estimate": 0.001437918613,
+   "se": 0.00322201886,
+   "low": -0.005262636417,
+   "high": 0.008138473642,
+   "t": 0.4462787697,
+   "p": 0.6599636567,
+   "df": 21,
+   "n": 3693
+  },
+  {
+   "model": "M3",
+   "term": "t_09_12",
+   "estimate": 0.005032108726,
+   "se": 0.002909331635,
+   "low": -0.00101817762,
+   "high": 0.01108239507,
+   "t": 1.729644248,
+   "p": 0.0983667979,
+   "df": 21,
+   "n": 3693
+  },
+  {
+   "model": "M3",
+   "term": "t_12_15",
+   "estimate": -2.301927037e-05,
+   "se": 0.005554098489,
+   "low": -0.01157339938,
+   "high": 0.01152736084,
+   "t": -0.004144555667,
+   "p": 0.9967322523,
+   "df": 21,
+   "n": 3693
+  },
+  {
+   "model": "M3",
+   "term": "t_18_21",
+   "estimate": 0.001208456023,
+   "se": 0.004335227283,
+   "low": -0.007807142654,
+   "high": 0.0102240547,
+   "t": 0.2787526338,
+   "p": 0.7831612074,
+   "df": 21,
+   "n": 3693
+  },
+  {
+   "model": "M3",
+   "term": "t_21_24",
+   "estimate": 0.001027071281,
+   "se": 0.004856591128,
+   "low": -0.009072762866,
+   "high": 0.01112690543,
+   "t": 0.2114798743,
+   "p": 0.8345517267,
+   "df": 21,
+   "n": 3693
+  },
+  {
+   "model": "M3",
+   "term": "t_24_27",
+   "estimate": -0.002161339901,
+   "se": 0.004912030341,
+   "low": -0.0123764662,
+   "high": 0.008053786402,
+   "t": -0.4400094769,
+   "p": 0.6644256009,
+   "df": 21,
+   "n": 3693
+  },
+  {
+   "model": "M3",
+   "term": "t_27_30",
+   "estimate": -0.01502808114,
+   "se": 0.007730158507,
+   "low": -0.0311038258,
+   "high": 0.00104766351,
+   "t": -1.944084475,
+   "p": 0.06540428217,
+   "df": 21,
+   "n": 3693
+  },
+  {
+   "model": "M3",
+   "term": "t_30_33",
+   "estimate": -0.01479751752,
+   "se": 0.0172073401,
+   "low": -0.05058214022,
+   "high": 0.02098710518,
+   "t": -0.8599538009,
+   "p": 0.3995257932,
+   "df": 21,
+   "n": 3693
+  },
+  {
+   "model": "M3",
+   "term": "t_33_36",
+   "estimate": -0.00488653334,
+   "se": 0.03018348099,
+   "low": -0.06765651828,
+   "high": 0.0578834516,
+   "t": -0.1618942939,
+   "p": 0.8729366535,
+   "df": 21,
+   "n": 3693
+  },
+  {
+   "model": "M3",
+   "term": "t_ge36",
+   "estimate": -0.03606164457,
+   "se": 0.009037682737,
+   "low": -0.05485653471,
+   "high": -0.01726675442,
+   "t": -3.990142785,
+   "p": 0.0006651969184,
+   "df": 21,
+   "n": 3693
+  }
+ ],
+ "E4": [
+  {
+   "year": 2003,
+   "regions": 140,
+   "correlation": 0.1159433712,
+   "variance_explained": -0.1289361906,
+   "eu_yield_observed_pct": -11.89634388,
+   "eu_yield_predicted_pct": -4.497253098
+  },
+  {
+   "year": 2018,
+   "regions": 165,
+   "correlation": 0.6288413176,
+   "variance_explained": 0.3284413738,
+   "eu_yield_observed_pct": -5.239285517,
+   "eu_yield_predicted_pct": -5.232287608
+  },
+  {
+   "year": 2022,
+   "regions": 163,
+   "correlation": 0.3346090922,
+   "variance_explained": 0.04754600536,
+   "eu_yield_observed_pct": -3.024348407,
+   "eu_yield_predicted_pct": -6.336678641
+  }
+ ],
+ "sensitivity": [
+  {
+   "variant": "edd27",
+   "label": "EDD and GDD at 27 \u00b0C",
+   "estimand": "E1",
+   "n": 3693,
+   "estimate": -0.02018296656,
+   "low": -0.0431149283,
+   "high": 0.002748995189,
+   "p_twoway": 0.08143341232,
+   "sign_reversed": false
+  },
+  {
+   "variant": "edd27",
+   "label": "EDD and GDD at 27 \u00b0C",
+   "estimand": "E2",
+   "n": 3693,
+   "estimate": -0.02228207276,
+   "low": -0.05327829958,
+   "high": 0.008714154051,
+   "p_twoway": 0.002185509881,
+   "sign_reversed": false
+  },
+  {
+   "variant": "edd27",
+   "label": "EDD and GDD at 27 \u00b0C",
+   "estimand": "E3",
+   "n": 3693,
+   "estimate": 0.005334522596,
+   "low": -0.015295745,
+   "high": 0.02596479019,
+   "p_twoway": 0.5964090013,
+   "sign_reversed": false
+  },
+  {
+   "variant": "edd33",
+   "label": "EDD and GDD at 33 \u00b0C",
+   "estimand": "E1",
+   "n": 3693,
+   "estimate": -0.04521822416,
+   "low": -0.09559849746,
+   "high": 0.005162049145,
+   "p_twoway": 0.07599371811,
+   "sign_reversed": false
+  },
+  {
+   "variant": "edd33",
+   "label": "EDD and GDD at 33 \u00b0C",
+   "estimand": "E2",
+   "n": 3693,
+   "estimate": -0.02365624922,
+   "low": -0.05383647958,
+   "high": 0.006523981141,
+   "p_twoway": 0.001702696669,
+   "sign_reversed": false
+  },
+  {
+   "variant": "edd33",
+   "label": "EDD and GDD at 33 \u00b0C",
+   "estimand": "E3",
+   "n": 3693,
+   "estimate": 0.03802971042,
+   "low": -0.07340323028,
+   "high": 0.1494626511,
+   "p_twoway": 0.485679305,
+   "sign_reversed": false
+  },
+  {
+   "variant": "apr_jul",
+   "label": "Season 1 April to 31 July",
+   "estimand": "E1",
+   "n": 3693,
+   "estimate": -0.02928637722,
+   "low": -0.06562366005,
+   "high": 0.007050905615,
+   "p_twoway": 0.1085477366,
+   "sign_reversed": false
+  },
+  {
+   "variant": "apr_jul",
+   "label": "Season 1 April to 31 July",
+   "estimand": "E2",
+   "n": 3693,
+   "estimate": -0.006635037121,
+   "low": -0.02697140458,
+   "high": 0.01370133033,
+   "p_twoway": 0.001342008313,
+   "sign_reversed": false
+  },
+  {
+   "variant": "apr_jul",
+   "label": "Season 1 April to 31 July",
+   "estimand": "E3",
+   "n": 3693,
+   "estimate": 0.0129791981,
+   "low": -0.03077343077,
+   "high": 0.05673182698,
+   "p_twoway": 0.5439210183,
+   "sign_reversed": false
+  },
+  {
+   "variant": "trend_year",
+   "label": "Region trends and year effects",
+   "estimand": "E1",
+   "n": 3771,
+   "estimate": -0.03036091948,
+   "low": -0.06062738555,
+   "high": -9.445341207e-05,
+   "p_twoway": 0.04934406725,
+   "sign_reversed": false
+  },
+  {
+   "variant": "trend_year",
+   "label": "Region trends and year effects",
+   "estimand": "E2",
+   "n": 3771,
+   "estimate": -0.03014815875,
+   "low": -0.06818854335,
+   "high": 0.007892225847,
+   "p_twoway": 2.587269057e-05,
+   "sign_reversed": false
+  },
+  {
+   "variant": "trend_year",
+   "label": "Region trends and year effects",
+   "estimand": "E3",
+   "n": 3771,
+   "estimate": 0.02193730934,
+   "low": -0.02993496864,
+   "high": 0.07380958732,
+   "p_twoway": 0.3913978086,
+   "sign_reversed": false
+  },
+  {
+   "variant": "below_800m",
+   "label": "Weather over cells below 800 m",
+   "estimand": "E1",
+   "n": 3693,
+   "estimate": -0.02890729216,
+   "low": -0.05956728962,
+   "high": 0.0017527053,
+   "p_twoway": 0.06330892504,
+   "sign_reversed": false
+  },
+  {
+   "variant": "below_800m",
+   "label": "Weather over cells below 800 m",
+   "estimand": "E2",
+   "n": 3693,
+   "estimate": -0.02317099178,
+   "low": -0.05316291799,
+   "high": 0.006820934438,
+   "p_twoway": 0.000561427035,
+   "sign_reversed": false
+  },
+  {
+   "variant": "below_800m",
+   "label": "Weather over cells below 800 m",
+   "estimand": "E3",
+   "n": 3693,
+   "estimate": 0.01120480973,
+   "low": -0.02241594378,
+   "high": 0.04482556323,
+   "p_twoway": 0.4958573778,
+   "sign_reversed": false
+  },
+  {
+   "variant": "area_weighted",
+   "label": "Weighted by wheat area",
+   "estimand": "E1",
+   "n": 3693,
+   "estimate": -0.03686150846,
+   "low": -0.06272317861,
+   "high": -0.01099983831,
+   "p_twoway": 0.00740343508,
+   "sign_reversed": false
+  },
+  {
+   "variant": "area_weighted",
+   "label": "Weighted by wheat area",
+   "estimand": "E2",
+   "n": 3693,
+   "estimate": -0.009544492342,
+   "low": -0.05087523073,
+   "high": 0.03178624604,
+   "p_twoway": 0.003306653055,
+   "sign_reversed": false
+  },
+  {
+   "variant": "area_weighted",
+   "label": "Weighted by wheat area",
+   "estimand": "E3",
+   "n": 3693,
+   "estimate": 0.003462115633,
+   "low": -0.05702708551,
+   "high": 0.06395131678,
+   "p_twoway": 0.9063850461,
+   "sign_reversed": false
+  },
+  {
+   "variant": "min_20_years",
+   "label": "Regions with at least 20 years",
+   "estimand": "E1",
+   "n": 3294,
+   "estimate": -0.02775199149,
+   "low": -0.06484138934,
+   "high": 0.009337406367,
+   "p_twoway": 0.1308455565,
+   "sign_reversed": false
+  },
+  {
+   "variant": "min_20_years",
+   "label": "Regions with at least 20 years",
+   "estimand": "E2",
+   "n": 3294,
+   "estimate": -0.0255341806,
+   "low": -0.06009817957,
+   "high": 0.009029818368,
+   "p_twoway": 0.004005672882,
+   "sign_reversed": false
+  },
+  {
+   "variant": "min_20_years",
+   "label": "Regions with at least 20 years",
+   "estimand": "E3",
+   "n": 3294,
+   "estimate": 0.01121305039,
+   "low": -0.03288224108,
+   "high": 0.05530834186,
+   "p_twoway": 0.5940615575,
+   "sign_reversed": false
+  },
+  {
+   "variant": "nuts2021_only",
+   "label": "NUTS-2021 codes only",
+   "estimand": "E1",
+   "n": 3501,
+   "estimate": -0.02846290436,
+   "low": -0.06215138694,
+   "high": 0.005225578225,
+   "p_twoway": 0.09348376289,
+   "sign_reversed": false
+  },
+  {
+   "variant": "nuts2021_only",
+   "label": "NUTS-2021 codes only",
+   "estimand": "E2",
+   "n": 3501,
+   "estimate": -0.02286468926,
+   "low": -0.05489175173,
+   "high": 0.009162373214,
+   "p_twoway": 0.002545507854,
+   "sign_reversed": false
+  },
+  {
+   "variant": "nuts2021_only",
+   "label": "NUTS-2021 codes only",
+   "estimand": "E3",
+   "n": 3501,
+   "estimate": 0.01227335623,
+   "low": -0.03232398577,
+   "high": 0.05687069824,
+   "p_twoway": 0.5731835151,
+   "sign_reversed": false
+  },
+  {
+   "variant": "water_balance",
+   "label": "Water balance in place of precipitation",
+   "estimand": "E1",
+   "n": 3693,
+   "estimate": -0.007809922672,
+   "low": -0.04600279552,
+   "high": 0.03038295018,
+   "p_twoway": 0.674978437,
+   "sign_reversed": false
+  },
+  {
+   "variant": "water_balance",
+   "label": "Water balance in place of precipitation",
+   "estimand": "E2",
+   "n": 3693,
+   "estimate": -0.03154165808,
+   "low": -0.05687509656,
+   "high": -0.0062082196,
+   "p_twoway": 9.024441142e-05,
+   "sign_reversed": false
+  },
+  {
+   "variant": "water_balance",
+   "label": "Water balance in place of precipitation",
+   "estimand": "E3",
+   "n": 3693,
+   "estimate": 0.009543654803,
+   "low": -0.03053195029,
+   "high": 0.0496192599,
+   "p_twoway": 0.6255717485,
+   "sign_reversed": false
+  }
+ ]
+}
