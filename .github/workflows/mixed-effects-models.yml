@@ -1,0 +1,63 @@
+name: Reproduce mixed-effects-models
+
+on:
+  pull_request:
+    paths:
+      - 'mixed-effects-models/**'
+      - '.github/workflows/mixed-effects-models.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'mixed-effects-models/**'
+      - '.github/workflows/mixed-effects-models.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    defaults:
+      run:
+        working-directory: mixed-effects-models
+    env:
+      MPLBACKEND: Agg
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: mixed-effects-models/requirements.txt
+
+      - name: Install pinned dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Cross-check the mixed-model implementation against statsmodels
+        run: python check_lmm.py
+
+      - name: Keep the committed results
+        run: mkdir -p "$RUNNER_TEMP/committed" && cp results/*.txt "$RUNNER_TEMP/committed/"
+
+      - name: Rerun the four experiments
+        run: |
+          python 01_radon_pooling.py
+          python 02_hsb_within_between.py
+          python 03_coverage_simulation.py
+          python 04_contraception_glmm.py
+
+      - name: Check the numbers match the committed run
+        run: python check_reproduction.py "$RUNNER_TEMP/committed"
+
+      - name: Check every figure was drawn
+        run: |
+          for f in fig1_radon_shrinkage fig2_radon_holdout fig3_targetencoder_lambda \
+                   fig4_hsb_within_between fig5_coverage fig6_conditional_vs_marginal; do
+            test -s "figures/$f.png"
+          done

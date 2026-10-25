@@ -1,0 +1,32 @@
+Calibration from HSB (RI + random cses slope, catholic + cses): intercept SD 2.62, slope SD 0.83, corr 0.58, sigma 6.06, beta 2.21; SD of cses 0.66; 2000 reps per J
+Monte Carlo SE of a 95% coverage estimate ~ 0.005
+
+School-level effect (gamma): coverage of nominal 95% intervals
+  OLS cluster-robust   J=10: 0.924  J=20: 0.943  J=40: 0.946  J=80: 0.953  J=160: 0.945
+  OLS iid              J=10: 0.498  J=20: 0.501  J=40: 0.504  J=80: 0.503  J=160: 0.511
+  RI + slope, t        J=10: 0.934  J=20: 0.944  J=40: 0.951  J=80: 0.954  J=160: 0.947
+  RI + slope, z        J=10: 0.895  J=20: 0.929  J=40: 0.942  J=80: 0.950  J=160: 0.945
+  RI, t                J=10: 0.947  J=20: 0.952  J=40: 0.948  J=80: 0.957  J=160: 0.951
+  RI, z                J=10: 0.911  J=20: 0.937  J=40: 0.942  J=80: 0.953  J=160: 0.948
+School-level effect (gamma): mean SE / empirical SD of the estimate
+  OLS cluster-robust   J=10: 0.89  J=20: 0.95  J=40: 0.99  J=80: 1.00  J=160: 1.01
+  OLS iid              J=10: 0.34  J=20: 0.35  J=40: 0.35  J=80: 0.35  J=160: 0.35
+  RI + slope, t        J=10: 0.90  J=20: 0.94  J=40: 0.99  J=80: 1.00  J=160: 1.00
+  RI + slope, z        J=10: 0.90  J=20: 0.94  J=40: 0.99  J=80: 1.00  J=160: 1.00
+  RI, t                J=10: 0.96  J=20: 0.99  J=40: 1.00  J=80: 1.01  J=160: 1.00
+  RI, z                J=10: 0.96  J=20: 0.99  J=40: 1.00  J=80: 1.01  J=160: 1.00
+
+Student-level slope (beta): coverage of nominal 95% intervals
+  OLS cluster-robust   J=10: 0.941  J=20: 0.953  J=40: 0.947  J=80: 0.950  J=160: 0.960
+  OLS iid              J=10: 0.922  J=20: 0.932  J=40: 0.921  J=80: 0.923  J=160: 0.944
+  RI + slope, t        J=10: 0.972  J=20: 0.966  J=40: 0.951  J=80: 0.950  J=160: 0.960
+  RI + slope, z        J=10: 0.943  J=20: 0.953  J=40: 0.942  J=80: 0.947  J=160: 0.959
+  RI, t                J=10: 0.950  J=20: 0.933  J=40: 0.909  J=80: 0.903  J=160: 0.921
+  RI, z                J=10: 0.900  J=20: 0.912  J=40: 0.899  J=80: 0.899  J=160: 0.918
+Student-level slope (beta): mean SE / empirical SD of the estimate
+  OLS cluster-robust   J=10: 0.95  J=20: 1.03  J=40: 0.97  J=80: 0.99  J=160: 1.04
+  OLS iid              J=10: 0.91  J=20: 0.95  J=40: 0.90  J=80: 0.91  J=160: 0.95
+  RI + slope, t        J=10: 1.04  J=20: 1.06  J=40: 0.98  J=80: 0.99  J=160: 1.04
+  RI + slope, z        J=10: 1.04  J=20: 1.06  J=40: 0.98  J=80: 0.99  J=160: 1.04
+  RI, t                J=10: 0.85  J=20: 0.88  J=40: 0.83  J=80: 0.84  J=160: 0.88
+  RI, z                J=10: 0.85  J=20: 0.88  J=40: 0.83  J=80: 0.84  J=160: 0.88
