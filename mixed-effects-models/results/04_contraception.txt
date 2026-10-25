@@ -20,3 +20,5 @@ Rural woman, 3+ children, mean age: P(use) in a typical district 0.415; averaged
 Districts with <= 10 women: 4; their raw use rates span 0.00-1.00; conditional modes span -0.40 to 0.21 on the logit scale
 
 Mundlak GLMM (urban + district share urban): within-district urban 0.649 (SE 0.126); contextual effect of district share urban (between minus within) 0.722 (SE 0.366, z = 1.97); between-district effect 1.371; 42 of 60 districts contain both urban and rural women
+Figure 6: district SD 0.46 -> log-odds slope of the population-averaged curve at its centre = 0.95 x the conditional slope
+Figure 6: district SD 2.00 -> log-odds slope of the population-averaged curve at its centre = 0.61 x the conditional slope

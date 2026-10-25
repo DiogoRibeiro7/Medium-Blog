@@ -103,6 +103,7 @@ write("04_contraception.txt", "\n".join(out))
 fig, axes = plt.subplots(1, 2, figsize=(10.4, 4.3), sharey=True)
 eta = np.linspace(-4.5, 4.5, 300)
 rng = np.random.default_rng(7)
+slope_ratios = []
 for ax, s, title in ((axes[0], g.sigma, f"District SD as estimated ({g.sigma:.2f})"),
                      (axes[1], 2.0, "District SD = 2.0 (strong clustering)")):
     for bj in rng.normal(0, s, 25):
@@ -113,6 +114,7 @@ for ax, s, title in ((axes[0], g.sigma, f"District SD as estimated ({g.sigma:.2f
     ax.plot(eta, pa, color=ORANGE, lw=2.2, label="Average over districts", zorder=3)
     i0 = np.argmin(abs(eta))
     slope_m = (logit(pa[i0 + 1]) - logit(pa[i0 - 1])) / (eta[i0 + 1] - eta[i0 - 1])
+    slope_ratios.append((s, slope_m))
     ax.text(-4.3, 0.92, f"log-odds slope of the average:\n{slope_m:.2f} x the conditional slope",
             color=INK2, fontsize=9, va="top")
     ax.set_title(title)
@@ -120,3 +122,8 @@ for ax, s, title in ((axes[0], g.sigma, f"District SD as estimated ({g.sigma:.2f
 axes[0].set_ylabel("P(use)")
 axes[0].legend(loc="lower right", fontsize=9)
 fig.savefig(FIG / "fig6_conditional_vs_marginal.png"); plt.close(fig)
+with open("results/04_contraception.txt", "a") as fh:
+    for s_, r_ in slope_ratios:
+        fh.write(f"\nFigure 6: district SD {s_:.2f} -> log-odds slope of the population-averaged "
+                 f"curve at its centre = {r_:.2f} x the conditional slope")
+    fh.write("\n")
