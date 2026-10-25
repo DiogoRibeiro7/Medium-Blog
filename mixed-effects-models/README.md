@@ -11,7 +11,7 @@ Reproduction code for the Medium article on mixed-effects (multilevel) models: p
 - `03_coverage_simulation.py` — 2,000 simulated data sets per number of schools (10 to 160), calibrated on High School and Beyond: coverage of nominal 95% intervals for a school-level effect and a student-level slope. `--figure-only` redraws the figure from `results/coverage_sim.csv.gz` after a full run.
 - `04_contraception_glmm.py` — 1988 Bangladesh Fertility Survey: GLMM, GEE and plain logistic regression; conditional versus population-averaged effects.
 
-Each script writes its numbers to `results/` and its figure to `figures/`.
+Each script writes its numbers to `results/` and its figure to `figures/`. The article text is in `article.md`.
 
 ## Run
 
