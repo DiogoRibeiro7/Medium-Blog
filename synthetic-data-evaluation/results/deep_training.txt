@@ -1,0 +1,5 @@
+ctgan: 300 epochs, fitted in 64.6 min
+tvae: 300 epochs, fitted in 2.8 min
+
+Wall-clock times of the committed run (deep.py), on a two-core cloud machine
+with torch 2.14.1 on CPU; the CTGAN fit shared the cores with other jobs.
