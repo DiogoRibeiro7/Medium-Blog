@@ -17,8 +17,10 @@ dependencies = ["numpy>=2.0,<3", "shapely>=2.0,<3", "netCDF4>=1.7,<2", "scipy>=1
 [project.optional-dependencies]
 # Reading Eurostat's official NUTS change tables (.xls and .xlsx).
 nuts = ["openpyxl>=3.1,<4", "xlrd>=2.0,<3"]
+# The article's figures.
+report = ["matplotlib>=3.9,<4"]
 dev = ["pytest>=8,<10", "ruff>=0.13,<1", "mypy>=1.16,<2", "types-shapely>=2.0,<3",
-       "types-openpyxl>=3.1,<4", "openpyxl>=3.1,<4", "xlrd>=2.0,<3"]
+       "types-openpyxl>=3.1,<4", "openpyxl>=3.1,<4", "xlrd>=2.0,<3", "matplotlib>=3.9,<4"]
 
 [project.scripts]
 eu-wheat = "eu_wheat_weather.cli:main"
