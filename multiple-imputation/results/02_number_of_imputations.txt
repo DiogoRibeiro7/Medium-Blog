@@ -1,0 +1,13 @@
+One sample, n = 1000, 39.7% of educ missing (MAR-Y); 200 independent MI runs per m (PMM); FMI for educ at m = 100: 0.646 (range over runs 0.526-0.711)
+Complete-data estimate on this sample: 0.0700
+  m =   2: pooled estimate mean 0.0761, SD across runs 0.00634 (0.50 SE); SE mean 0.01265, CV of SE 0.440 (formula FMI/sqrt(2(m-1)) with FMI 0.646: 0.457); mean FMI estimate 0.588, SD of FMI estimate 0.331; df median 3; upper CI limit range 0.0774-0.4929
+  m =   3: pooled estimate mean 0.0755, SD across runs 0.00569 (0.43 SE); SE mean 0.01319, CV of SE 0.333 (formula FMI/sqrt(2(m-1)) with FMI 0.646: 0.323); mean FMI estimate 0.665, SD of FMI estimate 0.241; df median 5; upper CI limit range 0.0846-0.1807
+  m =   5: pooled estimate mean 0.0767, SD across runs 0.00446 (0.35 SE); SE mean 0.01280, CV of SE 0.226 (formula FMI/sqrt(2(m-1)) with FMI 0.646: 0.228); mean FMI estimate 0.677, SD of FMI estimate 0.174; df median 9; upper CI limit range 0.0864-0.1329
+  m =  10: pooled estimate mean 0.0760, SD across runs 0.00313 (0.26 SE); SE mean 0.01224, CV of SE 0.145 (formula FMI/sqrt(2(m-1)) with FMI 0.646: 0.152); mean FMI estimate 0.656, SD of FMI estimate 0.110; df median 20; upper CI limit range 0.0870-0.1136
+  m =  20: pooled estimate mean 0.0760, SD across runs 0.00197 (0.16 SE); SE mean 0.01227, CV of SE 0.102 (formula FMI/sqrt(2(m-1)) with FMI 0.646: 0.105); mean FMI estimate 0.657, SD of FMI estimate 0.073; df median 40; upper CI limit range 0.0926-0.1088
+  m =  50: pooled estimate mean 0.0760, SD across runs 0.00135 (0.11 SE); SE mean 0.01207, CV of SE 0.065 (formula FMI/sqrt(2(m-1)) with FMI 0.646: 0.065); mean FMI estimate 0.643, SD of FMI estimate 0.048; df median 90; upper CI limit range 0.0937-0.1049
+  m = 100: pooled estimate mean 0.0760, SD across runs 0.00101 (0.08 SE); SE mean 0.01213, CV of SE 0.045 (formula FMI/sqrt(2(m-1)) with FMI 0.646: 0.046); mean FMI estimate 0.646, SD of FMI estimate 0.033; df median 143; upper CI limit range 0.0953-0.1043
+von Hippel's rule with FMI 0.646, target CV(SE) 0.1: m = 21.9
+von Hippel's rule with FMI 0.646, target CV(SE) 0.05: m = 84.5
+von Hippel's rule with FMI 0.646, target CV(SE) 0.02: m = 522.6
+Rule of thumb m >= 100 x FMI: m = 65; m >= % incomplete cases: m = 40

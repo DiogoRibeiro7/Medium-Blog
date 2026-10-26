@@ -1,0 +1,66 @@
+name: Reproduce multiple-imputation
+
+on:
+  pull_request:
+    paths:
+      - 'multiple-imputation/**'
+      - '.github/workflows/multiple-imputation.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'multiple-imputation/**'
+      - '.github/workflows/multiple-imputation.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    defaults:
+      run:
+        working-directory: multiple-imputation
+    env:
+      MPLBACKEND: Agg
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: multiple-imputation/requirements.txt
+
+      - name: Install pinned dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Check the imputation code
+        run: python check_mi.py
+
+      - name: Keep the committed results
+        run: mkdir -p "$RUNNER_TEMP/committed" && cp results/*.txt "$RUNNER_TEMP/committed/"
+
+      - name: Rerun the experiments
+        run: |
+          python 00_population.py
+          python 01_cps_mechanisms.py --population model
+          python 01_cps_mechanisms.py --population real
+          python figures_01.py
+          python 02_number_of_imputations.py
+          python 03_prediction_shift.py
+          python 04_nhanes_real.py
+
+      - name: Check the numbers match the committed run
+        run: python check_reproduction.py "$RUNNER_TEMP/committed"
+
+      - name: Check every figure was drawn
+        run: |
+          for f in fig1_coverage_grid fig2_accuracy_vs_validity fig3_number_of_imputations \
+                   fig4_prediction_shift fig5_nhanes_delta; do
+            test -s "figures/$f.png"
+          done
