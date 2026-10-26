@@ -1,0 +1,176 @@
+HOTEL CANCELLATION REPLAY - every number in the article
+========================================================================
+
+Data contract
+  cancellations dated before booking: 0
+  cancellations dated after arrival: 0
+  no-shows with status date before arrival: 1
+  rows with negative ADR: 1
+  rows with ADR above 1000: 1
+  rows with zero guests: 180
+  city hotel soft-opening rows dropped: 3878
+  rows_read: 119390
+  rows_kept: 115512
+
+Cancellation timing
+  bookings kept: 115512, released (cancelled or no-show): 42053 (0.364), of which no-shows: 1171
+  cancellations: median 58 days before arrival, quartiles 19 and 129
+  h=  1: visible 0.577 of bookings, 43.7 per hotel-night; late-release rate 0.028; share of all releases still ahead 0.045
+  h=  7: visible 0.523 of bookings, 39.7 per hotel-night; late-release rate 0.069; share of all releases still ahead 0.099
+  h= 14: visible 0.492 of bookings, 37.3 per hotel-night; late-release rate 0.104; share of all releases still ahead 0.141
+  h= 30: visible 0.439 of bookings, 33.4 per hotel-night; late-release rate 0.155; share of all releases still ahead 0.187
+  h= 60: visible 0.361 of bookings, 28.1 per hotel-night; late-release rate 0.224; share of all releases still ahead 0.222
+  h= 90: visible 0.295 of bookings, 23.9 per hotel-night; late-release rate 0.273; share of all releases still ahead 0.221
+
+Leak smoke test (column values with >= 500 rows and a 0% or 100% cancel rate)
+  required_car_parking_spaces: {'1': {'rows': 7333, 'cancel_rate': 0.0}}
+  country_PRT_cancel_rate: {'City Hotel | PRT=False': 0.27163075623151667, 'City Hotel | PRT=True': 0.6428571428571429, 'Resort Hotel | PRT=False': 0.1642443156486848, 'Resort Hotel | PRT=True': 0.4218944980147476}
+  deposit_type: {'No Deposit': {'rows': 101548, 'cancel_rate': 0.27876472210186315}, 'Non Refund': {'rows': 13802, 'cancel_rate': 0.9932618461092595}, 'Refundable': {'rows': 162, 'cancel_rate': 0.2222222222222222}}
+  non-refund bookings: 13802, in blocks of 2+: 0.988, of 10+: 0.961, segments: Groups 0.613, Offline TA/TO 0.358, Corporate 0.024, Online TA 0.004, Direct 0.001
+
+Late-release rate among bookings visible 30 days out, by arrival quarter
+  Resort Hotel: 2015Q3 0.100, 2015Q4 0.195, 2016Q1 0.232, 2016Q2 0.093, 2016Q3 0.109, 2016Q4 0.122, 2017Q1 0.140, 2017Q2 0.102, 2017Q3 0.117
+  City Hotel: 2015Q3 0.235, 2015Q4 0.235, 2016Q1 0.190, 2016Q2 0.163, 2016Q3 0.135, 2016Q4 0.228, 2017Q1 0.180, 2017Q2 0.152, 2017Q3 0.118
+
+AUC of boosting by question (random 5-fold CV unless stated)
+  ever_cancel_all_columns: Resort Hotel 0.957, City Hotel 0.945
+  ever_cancel_booking_columns: Resort Hotel 0.863, City Hotel 0.883
+  after_30_day_batch_booking_columns: Resort Hotel 0.819, City Hotel 0.833
+  after_30_day_batch_grouped_by_block: Resort Hotel 0.753, City Hotel 0.739
+  reference_out_of_time: Resort Hotel 0.690, City Hotel 0.652
+
+Blocks (same hotel, arrival, booking date, agent, company, segment)
+  bookings_in_blocks_of_two_or_more: 0.586
+  blocks_of_two_or_more: 16176
+  largest_block: 180
+  blocks_all_same_outcome: 0.794
+  blocks_with_two_plus_cancellations: 4316
+  of_which_all_on_one_date: 0.727
+  late_releases_from_blocks_2plus: 0.592
+  late_releases_from_blocks_10plus: 0.310
+  variance_ratio_observed_to_independent: 7.663
+  sd_ratio_model_vs_constant_rate: 0.947
+
+Replay: live arrivals 2016-07-01 to 2017-08-31, walk cost = 3 x nightly rate, 2000 weekly-block bootstrap draws
+  key | share of oracle | diff vs reference [95% CI] | resold/night | walked/night | nights with walks | profit/night EUR | AUC | log loss | predicted/realised
+  reference         0.345  +0.000 [+0.000, +0.000]   3.11   0.47  0.174     199.2  0.668  0.4075  0.854   (Reference system)
+  base_rate         0.324  -0.021 [-0.083, +0.054]   3.91   0.74  0.306     187.1  0.517  0.4169  1.143   (No model: historical rate for every booking)
+  logistic          0.307  -0.038 [-0.083, +0.001]   3.68   0.73  0.233     177.2  0.675  0.4074  1.007   (Logistic regression)
+  boosting_tuned    0.352  +0.007 [-0.006, +0.020]   3.28   0.52  0.205     203.5  0.670  0.4048  0.894   (Boosting, tuned on a time-ordered split)
+  plus_deposit      0.389  +0.044 [+0.008, +0.103]   3.11   0.37  0.179     224.6  0.686  0.3930  0.838   (Boosting, adding the deposit column)
+  all_bookings     -0.703  -1.047 [-1.280, -0.819]   8.45   3.96  0.678    -406.2  0.657  0.4810  1.941   (Trained on all bookings, label 'ever cancelled')
+  known_status     -4.307  -4.652 [-5.355, -3.981]  18.85  13.65  0.934   -2489.4  0.619  1.2190  3.848   (Trained on 'everything with a known status')
+  leak_recorded     0.386  +0.041 [-0.008, +0.108]   2.79   0.25  0.110     223.0  0.822  0.3552  0.731   (Late columns, served as recorded (impossible))
+  leak_defaults    -0.243  -0.588 [-0.723, -0.455]   7.60   3.25  0.706    -140.7  0.632  0.4845  1.812   (Late columns, served as an unarrived booking shows them)
+  cadence_once      0.305  -0.040 [-0.065, -0.012]   2.78   0.42  0.149     176.0  0.668  0.4249  0.795   (Fitted once, never refit)
+  cadence_weekly    0.341  -0.004 [-0.025, +0.015]   3.14   0.48  0.180     197.0  0.678  0.4052  0.861   (Refit weekly)
+  independent       0.362  +0.017 [-0.010, +0.045]   3.81   0.66  0.244     209.0  0.668  0.4075  0.854   (Decision treats bookings as independent)
+  mean_only         0.318  -0.026 [-0.069, +0.014]   4.65   1.03  0.383     183.9  0.668  0.4075  0.854   (Decision receives only the expected count)
+  labels            0.072  -0.273 [-0.318, -0.229]   0.70   0.11  0.019      41.4  0.668  0.4075  0.854   (Decision receives yes/no labels)
+  balanced         -0.773  -1.117 [-1.385, -0.864]   8.96   4.36  0.724    -446.7  0.659  0.4923  2.050   (Model swapped for a class-weighted one)
+  horizon_7         0.185  -0.159 [-0.244, -0.073]   1.42   0.33  0.190      48.0  0.645  0.2215  1.066   (Batch runs 7 days before arrival)
+  horizon_14        0.323  -0.022 [-0.079, +0.050]   2.35   0.38  0.197     136.8  0.660  0.3146  0.951   (Batch runs 14 days before arrival)
+  horizon_60        0.381  +0.036 [-0.001, +0.074]   3.68   0.50  0.184     249.7  0.689  0.4890  0.844   (Batch runs 60 days before arrival)
+  reference: oracle per night EUR 578.0, released per night 5.42, nights 854, rows 31642
+  horizon_7: oracle per night EUR 259.0, released per night 2.47, profit per night EUR 48.0
+  horizon_14: oracle per night EUR 423.6, released per night 3.97, profit per night EUR 136.8
+  horizon_60: oracle per night EUR 656.1, released per night 6.21, profit per night EUR 249.7
+
+Reference system's worst night
+  hotel: City Hotel
+  arrival: 2016-11-21
+  visible: 111
+  released: 7
+  resold_blocks: 85
+  walked_blocks: 78
+  resold_independent: 59
+  walked_independent: 52
+  total_walks_reference: 400
+  largest_block_size: 85
+  largest_block_mean_p: 0.678
+  largest_block_released: 3
+  largest_block_lead_time: 215
+  largest_block_segment: Groups
+
+By hotel: share of oracle | resold/night | walked/night | profit/night
+  reference       Resort Hotel    0.290  1.15  0.17     83.5
+  reference       City Hotel      0.363  5.08  0.77    314.8
+  base_rate       Resort Hotel    0.305  1.60  0.31     87.9
+  base_rate       City Hotel      0.330  6.21  1.17    286.2
+  logistic        Resort Hotel    0.290  1.22  0.18     83.5
+  logistic        City Hotel      0.312  6.14  1.29    270.9
+  boosting_tuned  Resort Hotel    0.326  1.45  0.25     93.9
+  boosting_tuned  City Hotel      0.360  5.12  0.78    313.0
+  plus_deposit    Resort Hotel    0.281  1.17  0.18     80.8
+  plus_deposit    City Hotel      0.424  5.05  0.56    368.3
+  all_bookings    Resort Hotel   -0.580  3.96  1.79   -167.0
+  all_bookings    City Hotel     -0.743 12.95  6.13   -645.3
+  known_status    Resort Hotel   -3.946  8.82  6.24  -1135.4
+  known_status    City Hotel     -4.427 28.88 21.06  -3843.5
+  leak_recorded   Resort Hotel    0.294  0.89  0.03     84.5
+  leak_recorded   City Hotel      0.416  4.70  0.47    361.5
+  leak_defaults   Resort Hotel   -1.609  6.79  4.29   -463.0
+  leak_defaults   City Hotel      0.209  8.41  2.20    181.7
+  cadence_once    Resort Hotel    0.212  0.96  0.16     60.9
+  cadence_once    City Hotel      0.335  4.60  0.68    291.2
+  cadence_weekly  Resort Hotel    0.299  1.16  0.16     85.9
+  cadence_weekly  City Hotel      0.355  5.12  0.80    308.2
+  independent     Resort Hotel    0.322  1.53  0.28     92.6
+  independent     City Hotel      0.375  6.08  1.04    325.5
+  mean_only       Resort Hotel    0.297  2.17  0.54     85.3
+  mean_only       City Hotel      0.325  7.13  1.51    282.5
+  labels          Resort Hotel    0.025  0.21  0.03      7.3
+  labels          City Hotel      0.087  1.18  0.19     75.4
+  balanced        Resort Hotel   -0.961  4.89  2.61   -276.5
+  balanced        City Hotel     -0.710 13.04  6.11   -616.9
+  horizon_7       Resort Hotel    0.039  0.18  0.05      4.2
+  horizon_7       City Hotel      0.224  2.66  0.61     91.7
+  horizon_14      Resort Hotel    0.212  0.72  0.12     46.5
+  horizon_14      City Hotel      0.362  3.97  0.63    227.1
+  horizon_60      Resort Hotel    0.274  1.54  0.27     95.5
+  horizon_60      City Hotel      0.419  5.80  0.72    402.6
+
+Walk-cost sensitivity: share of oracle, difference from the reference [95% CI], walked/night
+  x2 reference         0.476  +0.000 [+0.000, +0.000]  0.80
+  x2 base_rate         0.466  -0.010 [-0.049, +0.034]  1.31
+  x2 logistic          0.466  -0.010 [-0.037, +0.017]  1.19
+  x2 boosting_tuned    0.482  +0.006 [-0.007, +0.019]  0.88
+  x2 plus_deposit      0.502  +0.026 [+0.002, +0.058]  0.68
+  x2 all_bookings     -0.102  -0.578 [-0.725, -0.434]  5.16
+  x2 leak_defaults     0.128  -0.348 [-0.439, -0.263]  4.45
+  x2 cadence_once      0.441  -0.034 [-0.059, -0.008]  0.73
+  x2 independent       0.494  +0.018 [+0.002, +0.035]  0.99
+  x2 mean_only         0.497  +0.022 [+0.005, +0.039]  1.03
+  x2 labels            0.086  -0.390 [-0.433, -0.349]  0.11
+  x2 balanced         -0.140  -0.616 [-0.766, -0.470]  5.67
+  x2 horizon_7         0.298  -0.178 [-0.242, -0.118]  0.67
+  x3 reference         0.345  +0.000 [+0.000, +0.000]  0.47
+  x3 base_rate         0.324  -0.021 [-0.083, +0.054]  0.74
+  x3 logistic          0.307  -0.038 [-0.083, +0.001]  0.73
+  x3 boosting_tuned    0.352  +0.007 [-0.006, +0.020]  0.52
+  x3 plus_deposit      0.389  +0.044 [+0.008, +0.103]  0.37
+  x3 all_bookings     -0.703  -1.047 [-1.280, -0.819]  3.96
+  x3 leak_defaults    -0.243  -0.588 [-0.723, -0.455]  3.25
+  x3 cadence_once      0.305  -0.040 [-0.065, -0.012]  0.42
+  x3 independent       0.362  +0.017 [-0.010, +0.045]  0.66
+  x3 mean_only         0.318  -0.026 [-0.069, +0.014]  1.03
+  x3 labels            0.072  -0.273 [-0.318, -0.229]  0.11
+  x3 balanced         -0.773  -1.117 [-1.385, -0.864]  4.36
+  x3 horizon_7         0.185  -0.159 [-0.244, -0.073]  0.33
+  x5 reference         0.259  +0.000 [+0.000, +0.000]  0.20
+  x5 base_rate         0.198  -0.061 [-0.124, -0.004]  0.40
+  x5 logistic          0.230  -0.029 [-0.064, +0.006]  0.30
+  x5 boosting_tuned    0.249  -0.010 [-0.029, +0.009]  0.23
+  x5 plus_deposit      0.278  +0.019 [+0.000, +0.039]  0.19
+  x5 all_bookings     -1.606  -1.865 [-2.257, -1.486]  3.04
+  x5 leak_defaults    -0.733  -0.993 [-1.200, -0.806]  2.31
+  x5 cadence_once      0.173  -0.087 [-0.210, -0.018]  0.26
+  x5 independent       0.199  -0.060 [-0.145, -0.003]  0.45
+  x5 mean_only        -0.040  -0.300 [-0.435, -0.191]  1.03
+  x5 labels            0.043  -0.216 [-0.339, -0.132]  0.11
+  x5 balanced         -1.724  -1.983 [-2.449, -1.548]  3.35
+  x5 horizon_7         0.086  -0.173 [-0.257, -0.102]  0.16
+
+Tuned boosting parameters
+  Resort Hotel | point_in_time | h=30: {'learning_rate': 0.03, 'max_leaf_nodes': 15, 'min_samples_leaf': 200, 'l2_regularization': 0.0, 'max_iter': 600, 'early_stopping': True, 'validation_fraction': 0.15, 'n_iter_no_change': 30}
+  City Hotel | point_in_time | h=30: {'learning_rate': 0.03, 'max_leaf_nodes': 15, 'min_samples_leaf': 20, 'l2_regularization': 1.0, 'max_iter': 600, 'early_stopping': True, 'validation_fraction': 0.15, 'n_iter_no_change': 30}
