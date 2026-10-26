@@ -484,7 +484,7 @@ Li, F., Morgan, K. L. and Zaslavsky, A. M. (2018). Balancing Covariates via Prop
 
 Lunceford, J. K. and Davidian, M. (2004). Stratification and Weighting via the Propensity Score in Estimation of Causal Treatment Effects: A Comparative Study. *Statistics in Medicine*, 23(19), 2937–2960. https://doi.org/10.1002/sim.1903
 
-Matsouaka, R. A. and Zhou, Y. (2024). Causal Inference in the Absence of Positivity: The Role of Overlap Weights. *Biostatistics*, 25(1), 1–18. 
+Matsouaka, R. A. and Zhou, Y. (2024). Causal Inference in the Absence of Positivity: The Role of Overlap Weights. *Biometrical Journal*, 66(4), e2300156. https://doi.org/10.1002/bimj.202300156
 
 Robins, J. M., Hernán, M. A. and Brumback, B. (2000). Marginal Structural Models and Causal Inference in Epidemiology. *Epidemiology*, 11(5), 550–560. https://doi.org/10.1097/00001648-200009000-00011
 
