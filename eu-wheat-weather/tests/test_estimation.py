@@ -151,6 +151,17 @@ def test_twoway_bootstrap_rejects_a_real_effect_and_holds_its_size_under_the_nul
         assert 0.0 <= float(np.mean(rejections)) <= 0.12, by
 
 
+def test_a_draw_that_reproduces_the_statistic_is_a_tie_and_counts() -> None:
+    from eu_wheat_weather.estimation import _at_least_as_extreme
+
+    original = 2.0
+    noisy = original * (1 - 4e-16)        # the identity draw, off by rounding
+    draws = np.array([noisy, -noisy, 1.9, -2.5])
+    assert _at_least_as_extreme(draws, original, two_sided=True) == 3
+    assert _at_least_as_extreme(np.array([noisy, 1.0, 3.0]), original, two_sided=False) == 2
+    assert _at_least_as_extreme(np.array([original * (1 - 1e-6)]), original, True) == 0
+
+
 def test_holm_and_minimum_detectable() -> None:
     assert holm([0.01, 0.04, 0.03]) == pytest.approx([0.03, 0.06, 0.06])
     assert holm([0.5, 0.001]) == pytest.approx([0.5, 0.002])
