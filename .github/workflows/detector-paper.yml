@@ -1,0 +1,22 @@
+name: Detector paper LaTeX
+
+on:
+  pull_request:
+    paths:
+      - "statistical-evidence-and-decisions/paper/**"
+      - ".github/workflows/detector-paper.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compile article
+        uses: xu-cheng/latex-action@v4
+        with:
+          root_file: main.tex
+          working_directory: statistical-evidence-and-decisions/paper
+          args: -pdf -interaction=nonstopmode -halt-on-error -file-line-error
