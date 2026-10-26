@@ -44,10 +44,10 @@ MIRROR = "https://raw.githubusercontent.com/DongHande/AutoDebias/39101ad5a67194e
 FILES = {
     "train.ascii": "a87bd9e7eaf3b89f976df3f25d4aa5d5d871be8a00b58947df9e6e015559bd37",
     "test.ascii": "de6714ab105a5e0be8166be7fd313901b29f9a09c3bea307901457d1d71847e6",
-    "user_item_features/item_features.ascii": None,
-    "user_item_features/item_features_map.txt": None,
-    "user_item_features/user_features.ascii": None,
-    "user_item_features/user_features_map.txt": None,
+    "user_item_features/item_features.ascii": "edea8217ec5606779b4d3bf819f7591dc63bcd5194d619e8048c2322d07630b1",
+    "user_item_features/item_features_map.txt": "2675dfaa38b89a9cbb1997f0cfcd46ed7e0e366dc515d12d95508d1f356e5d25",
+    "user_item_features/user_features.ascii": "d8f9531b601c54a7272602f8b21fa6cb4652cbf122e35d8615ea9645ebbf1b1f",
+    "user_item_features/user_features_map.txt": "3b8c825ad4445d4a46a400629c5fb43c805ff5a7982b2e436b69e7262c8a013a",
 }
 
 
@@ -104,10 +104,9 @@ def fetch_coat() -> None:
             path.parent.mkdir(parents=True, exist_ok=True)
             with urllib.request.urlopen(MIRROR + name, timeout=120) as r:
                 path.write_bytes(r.read())
-        if digest is not None:
-            got = hashlib.sha256(path.read_bytes()).hexdigest()
-            if got != digest:
-                raise RuntimeError(f"{name}: SHA-256 {got} does not match the pinned digest {digest}")
+        got = hashlib.sha256(path.read_bytes()).hexdigest()
+        if got != digest:
+            raise RuntimeError(f"{name}: SHA-256 {got} does not match the pinned digest {digest}")
 
 
 def load_coat():
@@ -293,23 +292,30 @@ def evaluate_models(train: np.ndarray, test: np.ndarray, seed: int = SEED + 10, 
         rows.append((name, err_h.mean(), np.sum(err_h * w_hold) / np.sum(w_hold),
                      np.mean((P[mask_b] - test[mask_b]) ** 2), P[mask_b].mean()))
     ess = np.sum(w_hold) ** 2 / np.sum(w_hold ** 2)
+    # Robustness check: the same truth without the random pairs that also appear among the
+    # self-selected ratings (the same response counted in both files).
+    mask_b_new = mask_b & ~obs
+    true_excl = [np.mean((P[mask_b_new] - test[mask_b_new]) ** 2) for P in preds.values()]
     return {"tr_mask": tr_mask, "hold": hold, "mask_b": mask_b, "half_a": half_a, "half_b": half_b,
             "mar_a": mar_a, "pr_tr": pr_tr, "preds": preds, "rows": rows, "ess": ess,
-            "truth_mean": test[mask_b].mean()}
+            "truth_mean": test[mask_b].mean(), "true_excl": true_excl,
+            "n_overlap": int((mask_b & obs).sum())}
 
 
 def repeated_evaluation(train: np.ndarray, test: np.ndarray, n_splits: int = 100):
     """Repeat evaluate_models over independent splits. Returns model names and an array of shape
     (n_splits, n_models, 3) holding naive, SNIPS and true MSE."""
     names = None
-    out, extra = [], []
+    out, extra, excl = [], [], []
     for s in range(n_splits):
         ev = evaluate_models(train, test, seed=SEED + 100 + s)
         if names is None:
             names = [r[0] for r in ev["rows"]]
         out.append([[r[1], r[2], r[3]] for r in ev["rows"]])
         extra.append([ev["ess"], ev["truth_mean"]] + [r[4] for r in ev["rows"]])
+        excl.append([ev["n_overlap"]] + ev["true_excl"])
     repeated_evaluation.extra = np.array(extra)
+    repeated_evaluation.excl = np.array(excl)
     return names, np.array(out)
 
 
@@ -493,6 +499,8 @@ def main() -> None:
     ig = item_x[:, :2].argmax(axis=1)  # coat gender: 0 men's, 1 women's
     match = ug[:, None] == ig[None, :]
     print("  An observable part of the selection: coats of the user's own gender")
+    print(f"    coats: {np.sum(ig == 0)} men's, {np.sum(ig == 1)} women's;"
+          f" users: {np.sum(ug == 0)} men, {np.sum(ug == 1)} women")
     for label, M in (("self-selected", train), ("random", test)):
         o = M > 0
         print(f"    {label:<13}: share own-gender {match[o].mean():.3f}; mean rating own-gender"
@@ -596,6 +604,13 @@ def main() -> None:
         snips_better = np.mean(res[:, b, 1] < res[:, a, 1])
         print(f"  {label}: IPS-weighted beats unweighted in truth in {true_better:.2f} of splits;"
               f" naive evaluation says so in {naive_better:.2f}; SNIPS in {snips_better:.2f}")
+    xc = repeated_evaluation.excl
+    print(f"  truth without the random pairs also in the self-selected file (mean {xc[:, 0].mean():.0f}"
+          f" of {mask_b.sum()} per split), true MSE: " + "; ".join(
+              f"{names[j]} {xc[:, 1 + j].mean():.3f}" for j in range(len(names))))
+    for a, b, label in ((i_b, i_bw, "biases"), (i_m, i_mw, "factorisation")):
+        print(f"    {label}: IPS-weighted beats unweighted on that truth in"
+              f" {np.mean(xc[:, 1 + b] < xc[:, 1 + a]):.2f} of splits")
     print()
     print("=" * 76)
     print("5. A HOST WHO RECORDS HIS RULE: OPEN BANDIT DATASET SAMPLE (Saito et al. 2021)")
