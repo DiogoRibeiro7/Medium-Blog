@@ -342,6 +342,14 @@ def main() -> None:
     print(f"  P(switch - stay >= {d_obs}) under vos Savant's model:  {p_alt:.4f}")
     g, t, l = outcome_probabilities(n_each)
     print(f"  under vos Savant's model, 10 + 10 games give switch ahead {g:.4f}, tie {t:.4f}, stay ahead {l:.4f}")
+    med = int(stats.binom.median(n_each, 2 / 3))
+    bf_med = math.exp(binom_loglik(med, n_each, 2 / 3) - binom_loglik(med, n_each, 1 / 2))
+    print(f"  ten switching games under the 2/3 model: median {med} wins, Bayes factor {bf_med:.2f};"
+          f" P(at least {switch_w} wins) = {stats.binom.sf(switch_w - 1, n_each, 2 / 3):.4f}")
+    print(f"  expected log10 Bayes factor after ten switching games: "
+          f"{n_each * kl_bernoulli(2 / 3, 1 / 2) / math.log(10):.3f}"
+          f" (factor {10 ** (n_each * kl_bernoulli(2 / 3, 1 / 2) / math.log(10)):.2f})")
+    print(f"  stay rate at which ten stays favour neither model: ln(4/3)/ln(2) = {math.log(4 / 3) / math.log(2):.4f}")
     print()
 
     print("=" * 72)
@@ -357,10 +365,15 @@ def main() -> None:
         pf = power_fisher(n)
         pb = power_binomial(n)
         print(f"  {n:>9} | {g:>12.4f} | {t:.4f} | {l:>10.2e} | {pf:>12.4f} | {pb:>14.4f} | {n * kl_pair / math.log(10):>10.2f}")
+    pf_all = {n: power_fisher(n) for n in range(1, 401)}
+    pb_all = {n: power_binomial(n) for n in range(1, 401)}
     for target in (0.8, 0.95, 0.99):
-        nf = next(n for n in range(1, 400) if power_fisher(n) >= target)
-        nb = next(n for n in range(1, 400) if power_binomial(n) >= target)
-        print(f"  smallest n per arm with power >= {target}: Fisher {nf}, binomial on the switch arm {nb}")
+        nf = min(n for n, v in pf_all.items() if v >= target)
+        nb = min(n for n, v in pb_all.items() if v >= target)
+        nf_stay = 1 + max(n for n, v in pf_all.items() if v < target)
+        nb_stay = 1 + max(n for n, v in pb_all.items() if v < target)
+        print(f"  power >= {target}: Fisher first at n = {nf}, from n = {nf_stay} on;"
+              f"  binomial on the switch arm first at n = {nb}, from n = {nb_stay} on")
     g200, t200, l200 = outcome_probabilities(200)
     print(f"  200 + 200: probability the class does not see switching ahead = {t200 + l200:.2e}")
     g20, t20, l20 = outcome_probabilities(20)
