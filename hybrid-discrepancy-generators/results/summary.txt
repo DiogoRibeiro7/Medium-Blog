@@ -1,0 +1,235 @@
+H1  Fit in the observed regime
+    6 replicate histories, 40 held-out days
+    prediction given each half hour's inputs: day-level RMSE of the service level (mean over replicates)
+n_days                               10      30      90      270     810
+model                                                                   
+Boosting on the data              0.0365  0.0320  0.0286  0.0271  0.0268
+Erlang A                          0.0289  0.0285  0.0286  0.0279  0.0280
+Erlang A + Gaussian process       0.0266  0.0279  0.0281  0.0289  0.0306
+Erlang A + boosting               0.0294  0.0307  0.0284  0.0271  0.0268
+Erlang A + boosting (link scale)  0.0338  0.0379  0.0361  0.0360  0.0370
+Erlang A + linear                 0.0286  0.0287  0.0280  0.0285  0.0281
+True queue given the inputs       0.0296  0.0296  0.0296  0.0296  0.0296
+
+    same, abandonment share:
+n_days                               10      30      90      270     810
+model                                                                   
+Boosting on the data              0.0106  0.0092  0.0080  0.0072  0.0070
+Erlang A                          0.0080  0.0075  0.0074  0.0072  0.0074
+Erlang A + Gaussian process       0.0078  0.0078  0.0076  0.0072  0.0074
+Erlang A + boosting               0.0083  0.0084  0.0076  0.0071  0.0070
+Erlang A + boosting (link scale)  0.0091  0.0092  0.0090  0.0088  0.0090
+Erlang A + linear                 0.0079  0.0078  0.0074  0.0075  0.0073
+True queue given the inputs       0.0076  0.0076  0.0076  0.0076  0.0076
+
+    same, interval-level RMSE of the service level:
+n_days                               10      30      90      270     810
+model                                                                   
+Boosting on the data              0.1388  0.1276  0.1198  0.1151  0.1128
+Erlang A                          0.1223  0.1207  0.1206  0.1215  0.1218
+Erlang A + Gaussian process       0.1219  0.1190  0.1174  0.1188  0.1180
+Erlang A + boosting               0.1253  0.1250  0.1203  0.1149  0.1134
+Erlang A + boosting (link scale)  0.1289  0.1284  0.1233  0.1183  0.1182
+Erlang A + linear                 0.1187  0.1179  0.1175  0.1163  0.1172
+True queue given the inputs       0.1198  0.1198  0.1198  0.1198  0.1198
+
+    share of predicted rows that were impossible before clipping:
+n_days                                           10     30     90     270    810
+model                                                                           
+Erlang A + Gaussian process (impossible)       0.043  0.029  0.040  0.053  0.064
+Erlang A + boosting (impossible)               0.105  0.073  0.022  0.012  0.006
+Erlang A + boosting (link scale) (impossible)  0.057  0.042  0.025  0.012  0.003
+Erlang A + linear (impossible)                 0.153  0.156  0.153  0.159  0.168
+
+    generation: discriminator AUC against held-out days (real vs real is about 0.54 at this sample size), mean and sd:
+                                   mean           std       
+n_days                              90     810    90     810
+model                                                       
+CART                              0.619  0.540  0.022  0.032
+Erlang A                          0.593  0.589  0.018  0.009
+Erlang A + Gaussian process       0.644  0.678  0.029  0.019
+Erlang A + boosting               0.657  0.652  0.042  0.042
+Erlang A + boosting (link scale)  0.665  0.644  0.029  0.024
+Erlang A + both                   0.579  0.555  0.027  0.024
+Erlang A + estimated redials      0.576  0.555  0.016  0.027
+Erlang A + linear                 0.660  0.658  0.022  0.041
+Erlang A + resampled day levels   0.604  0.600  0.027  0.038
+
+    generation: share of generated rows that needed clipping:
+n_days                                           90     810
+model                                                      
+Erlang A + Gaussian process (impossible)       0.095  0.093
+Erlang A + boosting (impossible)               0.143  0.118
+Erlang A + boosting (link scale) (impossible)  0.107  0.098
+Erlang A + linear (impossible)                 0.104  0.113
+
+    redial probability estimated inside H1 (mean, sd): 90 days 0.581 (0.070), 810 days 0.624 (0.039)
+    load per agent in the 90 training days of replicate 0: p1 0.605, p99 1.289, max 1.608
+    mean residual (reality minus Erlang A, service level) by load bin, replicate 0, 90 days:
+      mean_residual  rows
+load                     
+0.45         0.0000     1
+0.55         0.0037    18
+0.65         0.0004   128
+0.75         0.0032   414
+0.85         0.0132   683
+0.95         0.0050   471
+1.05        -0.0065   257
+1.15        -0.0379   114
+1.25        -0.0362    52
+1.35        -0.0807    13
+1.45        -0.0123     7
+1.65        -0.0564     1
+
+    learned correction to the service level along load per agent (mid-morning, 30 agents):
+          eta_sl  boosting  Gaussian process  linear
+load                                                
+0.500044  1.0000   -0.0016           -0.0342  0.1479
+0.650057  0.9989   -0.0016           -0.0173  0.0669
+0.800070  0.9727    0.0052           -0.0116 -0.0044
+0.950084  0.8696   -0.0282           -0.0566 -0.0462
+1.100097  0.6907   -0.1159           -0.1585 -0.0588
+1.250110  0.4889   -0.1111           -0.1876 -0.0625
+1.400123  0.3199   -0.0581           -0.1110 -0.0788
+1.550136  0.2395   -0.0701           -0.0482 -0.1293
+1.700150  0.1890   -0.0735           -0.0037 -0.1913
+1.850163  0.1597   -0.0735            0.0134 -0.2615
+2.000176  0.1381   -0.0735            0.0132 -0.3346
+
+H2  Fresh demand scaled by m (unannounced)
+    5 replicates, 60 days per m
+    pooled service level:
+m                                  0.9    1.0    1.1    1.2    1.3    1.4    1.5
+model                                                                           
+Erlang A                         0.873  0.830  0.780  0.707  0.604  0.476  0.364
+Erlang A + Gaussian process      0.870  0.832  0.774  0.707  0.600  0.472  0.358
+Erlang A + boosting              0.877  0.830  0.778  0.703  0.594  0.463  0.335
+Erlang A + both                  0.853  0.808  0.700  0.578  0.440  0.287  0.185
+Erlang A + estimated redials     0.867  0.811  0.753  0.656  0.487  0.303  0.170
+Erlang A + linear                0.868  0.824  0.775  0.700  0.595  0.480  0.370
+Erlang A + resampled day levels  0.866  0.823  0.754  0.658  0.582  0.442  0.381
+Erlang A given reality's inputs  0.856  0.802  0.713  0.606  0.457  0.329  0.208
+Reality                          0.853  0.797  0.707  0.597  0.448  0.317  0.195
+
+    pooled abandonment:
+m                                  0.9    1.0    1.1    1.2    1.3    1.4    1.5
+model                                                                           
+Erlang A                         0.032  0.042  0.055  0.074  0.103  0.142  0.182
+Erlang A + Gaussian process      0.032  0.042  0.056  0.074  0.103  0.141  0.180
+Erlang A + boosting              0.031  0.042  0.055  0.075  0.105  0.144  0.188
+Erlang A + both                  0.038  0.050  0.086  0.128  0.181  0.262  0.332
+Erlang A + estimated redials     0.034  0.048  0.064  0.092  0.148  0.226  0.309
+Erlang A + linear                0.033  0.044  0.056  0.077  0.106  0.139  0.175
+Erlang A + resampled day levels  0.034  0.045  0.062  0.090  0.113  0.162  0.185
+Erlang A given reality's inputs  0.037  0.051  0.077  0.111  0.170  0.228  0.302
+Reality                          0.038  0.052  0.078  0.112  0.170  0.227  0.303
+
+    redial probability estimated per replicate: 0.635, 0.528, 0.645, 0.607, 0.725
+
+H3  Sizing the redial slot by indirect inference
+    truth: p = 0.6, mean delay 600 s; 8 replicates
+    estimated p (mean, sd) by days of data, assumed delay 600 s:
+         mean    std    min    max
+n_days                            
+30      0.558  0.149  0.275  0.747
+90      0.577  0.077  0.442  0.691
+270     0.598  0.041  0.546  0.662
+810     0.610  0.020  0.573  0.634
+
+    placebo world with no redials:
+         mean    std  min    max
+n_days                          
+90      0.018  0.052  0.0  0.147
+810     0.001  0.002  0.0  0.006
+
+    estimated p by assumed delay:
+         mean                         std                     
+n_days    30     90     270    810    30     90     270    810
+delay                                                         
+300.0     NaN  0.697    NaN  0.716    NaN  0.068    NaN  0.025
+600.0   0.558  0.577  0.598  0.610  0.149  0.077  0.041  0.020
+1200.0    NaN  0.522    NaN  0.565    NaN  0.084    NaN  0.024
+
+    30% surge forecast (resampled day levels + redials) by assumed delay, and reality:
+           sl        sl_reality       
+n_days    90     810        90     810
+delay                                 
+300.0   0.418  0.402      0.451  0.451
+600.0   0.463  0.480      0.451  0.451
+1200.0  0.477  0.459      0.451  0.451
+
+    auxiliary coefficient (mean, sd):
+             mean                    std            
+world  no redials redials 0.6 no redials redials 0.6
+n_days                                              
+30            NaN       0.228        NaN       0.093
+90         -0.039       0.236      0.033       0.053
+270           NaN       0.246        NaN       0.029
+810        -0.039       0.259      0.015       0.017
+
+    binding function, replicate 0: p=0.0: -0.017, p=0.2: 0.046, p=0.4: 0.142, p=0.6: 0.231, p=0.8: 0.385, p=1.0: 0.586; observed 0.148
+
+H4  Patience rate and discrepancy
+    reality's mean patience 224 s; 3 replicates; ratio estimate of 1/theta: 185 s, 186 s, 188 s
+    held-out day-level RMSE of the service level:
+patience             100.0   140.0   190.0   250.0   330.0   450.0
+model                                                             
++ Gaussian process  0.0281  0.0278  0.0271  0.0289  0.0269  0.0309
++ boosting          0.0282  0.0271  0.0266  0.0277  0.0273  0.0281
+Erlang A alone      0.0585  0.0376  0.0288  0.0322  0.0506  0.0725
+
+    service level forecast for a 130% surge (reality: 0.449):
+patience            100.0  140.0  190.0  250.0  330.0  450.0
+model                                                       
++ Gaussian process  0.604  0.600  0.591  0.598  0.581  0.592
++ boosting          0.586  0.588  0.582  0.581  0.578  0.581
+Erlang A alone      0.705  0.648  0.597  0.553  0.505  0.458
+
+H5  Adding k agents to every half hour
+    5 replicates, 40 days; effect on pooled service level:
+k                                   -6     -4     -2    0      2      4      6
+model                                                                         
+Erlang A                        -0.335 -0.209 -0.093  0.0  0.069  0.114  0.141
+Erlang A + Gaussian process     -0.355 -0.218 -0.095  0.0  0.069  0.114  0.142
+Erlang A + boosting             -0.349 -0.215 -0.096  0.0  0.070  0.116  0.143
+Erlang A + both                 -0.392 -0.250 -0.113  0.0  0.080  0.132  0.162
+Erlang A + estimated redials    -0.381 -0.245 -0.111  0.0  0.079  0.129  0.157
+Erlang A + resampled day levels -0.335 -0.210 -0.096  0.0  0.071  0.118  0.148
+Reality                         -0.400 -0.253 -0.114  0.0  0.081  0.131  0.161
+
+    effect on pooled abandonment:
+k                                   -6     -4     -2    0      2      4      6
+model                                                                         
+Erlang A                         0.113  0.065  0.027  0.0 -0.018 -0.029 -0.036
+Erlang A + Gaussian process      0.106  0.061  0.026  0.0 -0.018 -0.029 -0.036
+Erlang A + boosting              0.112  0.062  0.026  0.0 -0.018 -0.030 -0.037
+Erlang A + both                  0.151  0.086  0.035  0.0 -0.023 -0.036 -0.044
+Erlang A + estimated redials     0.141  0.082  0.034  0.0 -0.022 -0.034 -0.041
+Erlang A + resampled day levels  0.114  0.065  0.028  0.0 -0.019 -0.031 -0.038
+Reality                          0.143  0.081  0.034  0.0 -0.022 -0.035 -0.042
+
+H6  Staffing for a surge uniform on 1.1-1.3
+    target: day service level >= 0.7 on at least 80% of 300 launch days; estimated redial probability 0.683
+    Reality  Erlang A  Erlang A + boosting  Erlang A + resampled day levels  Erlang A + estimated redials  Erlang A + both
+0     0.453     0.590                0.580                            0.593                         0.407            0.507
+1     0.603     0.850                0.773                            0.703                         0.713            0.600
+2     0.697     0.927                0.933                            0.780                         0.823            0.707
+3     0.747     0.970                0.980                            0.857                         0.927            0.783
+4     0.827     1.000                0.993                            0.880                         0.960            0.787
+5     0.887     1.000                1.000                            0.910                         0.987            0.883
+6     0.923     1.000                1.000                            0.947                         1.000            0.937
+7     0.947     1.000                1.000                            0.953                         0.997            0.910
+8     0.967     1.000                1.000                            0.953                         1.000            0.937
+9     0.970     1.000                1.000                            0.990                         1.000            0.970
+10    0.983     1.000                1.000                            0.993                         1.000            0.970
+11    0.987     1.000                1.000                            0.990                         1.000            0.993
+12    0.987     1.000                1.000                            0.990                         1.000            0.993
+
+                                   k  coverage_in_reality
+Reality                          4.0             0.826667
+Erlang A                         1.0             0.603333
+Erlang A + boosting              2.0             0.696667
+Erlang A + resampled day levels  3.0             0.746667
+Erlang A + estimated redials     2.0             0.696667
+Erlang A + both                  5.0             0.886667
+

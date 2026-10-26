@@ -1,0 +1,2255 @@
+{
+  "rows": [
+    {
+      "rep": 0,
+      "m": 0.9,
+      "model": "Reality",
+      "sl": 0.8559815729130085,
+      "abandon": 0.03736546367260933,
+      "p_hat": 0.634527104346248
+    },
+    {
+      "rep": 0,
+      "m": 0.9,
+      "model": "Erlang A",
+      "sl": 0.873622340289007,
+      "abandon": 0.03219629886296553
+    },
+    {
+      "rep": 0,
+      "m": 0.9,
+      "model": "Erlang A + boosting",
+      "sl": 0.8787238476124627,
+      "abandon": 0.0304101601470574
+    },
+    {
+      "rep": 0,
+      "m": 0.9,
+      "model": "Erlang A + Gaussian process",
+      "sl": 0.8707422131516568,
+      "abandon": 0.03254778639305407
+    },
+    {
+      "rep": 0,
+      "m": 0.9,
+      "model": "Erlang A + linear",
+      "sl": 0.8736463546257123,
+      "abandon": 0.031738024031598706
+    },
+    {
+      "rep": 0,
+      "m": 0.9,
+      "model": "Erlang A + resampled day levels",
+      "sl": 0.8640577633819193,
+      "abandon": 0.035017233503592045
+    },
+    {
+      "rep": 0,
+      "m": 0.9,
+      "model": "Erlang A + estimated redials",
+      "sl": 0.8662832606452215,
+      "abandon": 0.03467248863005813
+    },
+    {
+      "rep": 0,
+      "m": 0.9,
+      "model": "Erlang A + both",
+      "sl": 0.8632626139912718,
+      "abandon": 0.03544483317778206
+    },
+    {
+      "rep": 0,
+      "m": 0.9,
+      "model": "Erlang A given reality's inputs",
+      "sl": 0.8520539384799719,
+      "abandon": 0.038759890098539466
+    },
+    {
+      "rep": 0,
+      "m": 1.0,
+      "model": "Reality",
+      "sl": 0.7856343385444156,
+      "abandon": 0.05529419258558247,
+      "p_hat": 0.634527104346248
+    },
+    {
+      "rep": 0,
+      "m": 1.0,
+      "model": "Erlang A",
+      "sl": 0.8317823347483603,
+      "abandon": 0.04207285314601511
+    },
+    {
+      "rep": 0,
+      "m": 1.0,
+      "model": "Erlang A + boosting",
+      "sl": 0.826311399758987,
+      "abandon": 0.04413954837490474
+    },
+    {
+      "rep": 0,
+      "m": 1.0,
+      "model": "Erlang A + Gaussian process",
+      "sl": 0.8339032457235871,
+      "abandon": 0.04115140534773175
+    },
+    {
+      "rep": 0,
+      "m": 1.0,
+      "model": "Erlang A + linear",
+      "sl": 0.8264766027165192,
+      "abandon": 0.04374448567706305
+    },
+    {
+      "rep": 0,
+      "m": 1.0,
+      "model": "Erlang A + resampled day levels",
+      "sl": 0.8312683564345305,
+      "abandon": 0.042266056464041295
+    },
+    {
+      "rep": 0,
+      "m": 1.0,
+      "model": "Erlang A + estimated redials",
+      "sl": 0.8134876054366643,
+      "abandon": 0.04768131422888504
+    },
+    {
+      "rep": 0,
+      "m": 1.0,
+      "model": "Erlang A + both",
+      "sl": 0.8251261881040857,
+      "abandon": 0.04558353440012843
+    },
+    {
+      "rep": 0,
+      "m": 1.0,
+      "model": "Erlang A given reality's inputs",
+      "sl": 0.7902819990172348,
+      "abandon": 0.0547095382823448
+    },
+    {
+      "rep": 0,
+      "m": 1.1,
+      "model": "Reality",
+      "sl": 0.7154868141982472,
+      "abandon": 0.0747568930329345,
+      "p_hat": 0.634527104346248
+    },
+    {
+      "rep": 0,
+      "m": 1.1,
+      "model": "Erlang A",
+      "sl": 0.7759016386687928,
+      "abandon": 0.05585153504163628
+    },
+    {
+      "rep": 0,
+      "m": 1.1,
+      "model": "Erlang A + boosting",
+      "sl": 0.7773977399988987,
+      "abandon": 0.055494114417968164
+    },
+    {
+      "rep": 0,
+      "m": 1.1,
+      "model": "Erlang A + Gaussian process",
+      "sl": 0.7696297464241518,
+      "abandon": 0.05695977023440061
+    },
+    {
+      "rep": 0,
+      "m": 1.1,
+      "model": "Erlang A + linear",
+      "sl": 0.7738191641066987,
+      "abandon": 0.058001052591801466
+    },
+    {
+      "rep": 0,
+      "m": 1.1,
+      "model": "Erlang A + resampled day levels",
+      "sl": 0.7711363060815271,
+      "abandon": 0.05745255877481038
+    },
+    {
+      "rep": 0,
+      "m": 1.1,
+      "model": "Erlang A + estimated redials",
+      "sl": 0.7603491916328565,
+      "abandon": 0.06264691524144353
+    },
+    {
+      "rep": 0,
+      "m": 1.1,
+      "model": "Erlang A + both",
+      "sl": 0.7001934776104518,
+      "abandon": 0.08651840031913832
+    },
+    {
+      "rep": 0,
+      "m": 1.1,
+      "model": "Erlang A given reality's inputs",
+      "sl": 0.7213353875705311,
+      "abandon": 0.0733962943695226
+    },
+    {
+      "rep": 0,
+      "m": 1.2,
+      "model": "Reality",
+      "sl": 0.5697731208098389,
+      "abandon": 0.12306309106246947,
+      "p_hat": 0.634527104346248
+    },
+    {
+      "rep": 0,
+      "m": 1.2,
+      "model": "Erlang A",
+      "sl": 0.7320532551018772,
+      "abandon": 0.06812388784687154
+    },
+    {
+      "rep": 0,
+      "m": 1.2,
+      "model": "Erlang A + boosting",
+      "sl": 0.704381298943837,
+      "abandon": 0.07481543735680618
+    },
+    {
+      "rep": 0,
+      "m": 1.2,
+      "model": "Erlang A + Gaussian process",
+      "sl": 0.7220352628863722,
+      "abandon": 0.07109802867114627
+    },
+    {
+      "rep": 0,
+      "m": 1.2,
+      "model": "Erlang A + linear",
+      "sl": 0.710431083909442,
+      "abandon": 0.07531315260104733
+    },
+    {
+      "rep": 0,
+      "m": 1.2,
+      "model": "Erlang A + resampled day levels",
+      "sl": 0.6591667973036526,
+      "abandon": 0.08995532215080734
+    },
+    {
+      "rep": 0,
+      "m": 1.2,
+      "model": "Erlang A + estimated redials",
+      "sl": 0.6711644957491615,
+      "abandon": 0.08833554324935652
+    },
+    {
+      "rep": 0,
+      "m": 1.2,
+      "model": "Erlang A + both",
+      "sl": 0.6147157469167115,
+      "abandon": 0.1153403541712408
+    },
+    {
+      "rep": 0,
+      "m": 1.2,
+      "model": "Erlang A given reality's inputs",
+      "sl": 0.5804788438485105,
+      "abandon": 0.12170706981012003
+    },
+    {
+      "rep": 0,
+      "m": 1.3,
+      "model": "Reality",
+      "sl": 0.5049902112454308,
+      "abandon": 0.1477896581465712,
+      "p_hat": 0.634527104346248
+    },
+    {
+      "rep": 0,
+      "m": 1.3,
+      "model": "Erlang A",
+      "sl": 0.6199110318365058,
+      "abandon": 0.09955875530878137
+    },
+    {
+      "rep": 0,
+      "m": 1.3,
+      "model": "Erlang A + boosting",
+      "sl": 0.6014899921240743,
+      "abandon": 0.10456041671427374
+    },
+    {
+      "rep": 0,
+      "m": 1.3,
+      "model": "Erlang A + Gaussian process",
+      "sl": 0.6123876741386954,
+      "abandon": 0.10294746906350863
+    },
+    {
+      "rep": 0,
+      "m": 1.3,
+      "model": "Erlang A + linear",
+      "sl": 0.6107932432977854,
+      "abandon": 0.10230045106688872
+    },
+    {
+      "rep": 0,
+      "m": 1.3,
+      "model": "Erlang A + resampled day levels",
+      "sl": 0.5743948232124174,
+      "abandon": 0.11537772490791567
+    },
+    {
+      "rep": 0,
+      "m": 1.3,
+      "model": "Erlang A + estimated redials",
+      "sl": 0.5012430700956234,
+      "abandon": 0.1428871021752881
+    },
+    {
+      "rep": 0,
+      "m": 1.3,
+      "model": "Erlang A + both",
+      "sl": 0.5430108845300945,
+      "abandon": 0.13542779671467256
+    },
+    {
+      "rep": 0,
+      "m": 1.3,
+      "model": "Erlang A given reality's inputs",
+      "sl": 0.507921703654012,
+      "abandon": 0.1492887751050751
+    },
+    {
+      "rep": 0,
+      "m": 1.4,
+      "model": "Reality",
+      "sl": 0.3164990401714737,
+      "abandon": 0.22904570668111315,
+      "p_hat": 0.634527104346248
+    },
+    {
+      "rep": 0,
+      "m": 1.4,
+      "model": "Erlang A",
+      "sl": 0.48993553869819134,
+      "abandon": 0.13843863330182185
+    },
+    {
+      "rep": 0,
+      "m": 1.4,
+      "model": "Erlang A + boosting",
+      "sl": 0.464534077913155,
+      "abandon": 0.1471406476127019
+    },
+    {
+      "rep": 0,
+      "m": 1.4,
+      "model": "Erlang A + Gaussian process",
+      "sl": 0.4715277319170162,
+      "abandon": 0.14777651152326562
+    },
+    {
+      "rep": 0,
+      "m": 1.4,
+      "model": "Erlang A + linear",
+      "sl": 0.4824521900849076,
+      "abandon": 0.14144728460349498
+    },
+    {
+      "rep": 0,
+      "m": 1.4,
+      "model": "Erlang A + resampled day levels",
+      "sl": 0.46235227618023855,
+      "abandon": 0.1522997049607758
+    },
+    {
+      "rep": 0,
+      "m": 1.4,
+      "model": "Erlang A + estimated redials",
+      "sl": 0.2991151114655729,
+      "abandon": 0.2260453457901333
+    },
+    {
+      "rep": 0,
+      "m": 1.4,
+      "model": "Erlang A + both",
+      "sl": 0.30223781382143805,
+      "abandon": 0.2521321702534016
+    },
+    {
+      "rep": 0,
+      "m": 1.4,
+      "model": "Erlang A given reality's inputs",
+      "sl": 0.33519655874974974,
+      "abandon": 0.2277340391704255
+    },
+    {
+      "rep": 0,
+      "m": 1.5,
+      "model": "Reality",
+      "sl": 0.20364619035064593,
+      "abandon": 0.30146322172422885,
+      "p_hat": 0.634527104346248
+    },
+    {
+      "rep": 0,
+      "m": 1.5,
+      "model": "Erlang A",
+      "sl": 0.37467839499635563,
+      "abandon": 0.17961289036462064
+    },
+    {
+      "rep": 0,
+      "m": 1.5,
+      "model": "Erlang A + boosting",
+      "sl": 0.33646642828495704,
+      "abandon": 0.19275982556762838
+    },
+    {
+      "rep": 0,
+      "m": 1.5,
+      "model": "Erlang A + Gaussian process",
+      "sl": 0.36821268268533847,
+      "abandon": 0.18740726511807643
+    },
+    {
+      "rep": 0,
+      "m": 1.5,
+      "model": "Erlang A + linear",
+      "sl": 0.38118541114484716,
+      "abandon": 0.17446228764610647
+    },
+    {
+      "rep": 0,
+      "m": 1.5,
+      "model": "Erlang A + resampled day levels",
+      "sl": 0.3843380951047994,
+      "abandon": 0.18501239429085062
+    },
+    {
+      "rep": 0,
+      "m": 1.5,
+      "model": "Erlang A + estimated redials",
+      "sl": 0.1819053700108156,
+      "abandon": 0.3013877848868271
+    },
+    {
+      "rep": 0,
+      "m": 1.5,
+      "model": "Erlang A + both",
+      "sl": 0.19804629487376454,
+      "abandon": 0.3193347672453526
+    },
+    {
+      "rep": 0,
+      "m": 1.5,
+      "model": "Erlang A given reality's inputs",
+      "sl": 0.2123490640653836,
+      "abandon": 0.3016424993408911
+    },
+    {
+      "rep": 1,
+      "m": 0.9,
+      "model": "Reality",
+      "sl": 0.8570132050642102,
+      "abandon": 0.03673619619528772,
+      "p_hat": 0.528275282092717
+    },
+    {
+      "rep": 1,
+      "m": 0.9,
+      "model": "Erlang A",
+      "sl": 0.8782933833919108,
+      "abandon": 0.031279809423731236
+    },
+    {
+      "rep": 1,
+      "m": 0.9,
+      "model": "Erlang A + boosting",
+      "sl": 0.8845141156524833,
+      "abandon": 0.028586857507561358
+    },
+    {
+      "rep": 1,
+      "m": 0.9,
+      "model": "Erlang A + Gaussian process",
+      "sl": 0.8804164817098651,
+      "abandon": 0.03346813606958778
+    },
+    {
+      "rep": 1,
+      "m": 0.9,
+      "model": "Erlang A + linear",
+      "sl": 0.8752003359853768,
+      "abandon": 0.031072438200355747
+    },
+    {
+      "rep": 1,
+      "m": 0.9,
+      "model": "Erlang A + resampled day levels",
+      "sl": 0.8826252835636214,
+      "abandon": 0.029227675809445245
+    },
+    {
+      "rep": 1,
+      "m": 0.9,
+      "model": "Erlang A + estimated redials",
+      "sl": 0.877916426631553,
+      "abandon": 0.03101596576413464
+    },
+    {
+      "rep": 1,
+      "m": 0.9,
+      "model": "Erlang A + both",
+      "sl": 0.8613258684310982,
+      "abandon": 0.03550069983458455
+    },
+    {
+      "rep": 1,
+      "m": 0.9,
+      "model": "Erlang A given reality's inputs",
+      "sl": 0.8566879944336041,
+      "abandon": 0.036446279741646624
+    },
+    {
+      "rep": 1,
+      "m": 1.0,
+      "model": "Reality",
+      "sl": 0.7991123336756715,
+      "abandon": 0.05059517076944654,
+      "p_hat": 0.528275282092717
+    },
+    {
+      "rep": 1,
+      "m": 1.0,
+      "model": "Erlang A",
+      "sl": 0.8363957402196105,
+      "abandon": 0.040671154518199706
+    },
+    {
+      "rep": 1,
+      "m": 1.0,
+      "model": "Erlang A + boosting",
+      "sl": 0.8352189169305486,
+      "abandon": 0.04097165922601986
+    },
+    {
+      "rep": 1,
+      "m": 1.0,
+      "model": "Erlang A + Gaussian process",
+      "sl": 0.8342274221106969,
+      "abandon": 0.04465323992718921
+    },
+    {
+      "rep": 1,
+      "m": 1.0,
+      "model": "Erlang A + linear",
+      "sl": 0.8305894742636769,
+      "abandon": 0.0426447639811635
+    },
+    {
+      "rep": 1,
+      "m": 1.0,
+      "model": "Erlang A + resampled day levels",
+      "sl": 0.8251558574485903,
+      "abandon": 0.04404484972550479
+    },
+    {
+      "rep": 1,
+      "m": 1.0,
+      "model": "Erlang A + estimated redials",
+      "sl": 0.8188650016828108,
+      "abandon": 0.04533446442814398
+    },
+    {
+      "rep": 1,
+      "m": 1.0,
+      "model": "Erlang A + both",
+      "sl": 0.8032170452099278,
+      "abandon": 0.05121898716204766
+    },
+    {
+      "rep": 1,
+      "m": 1.0,
+      "model": "Erlang A given reality's inputs",
+      "sl": 0.8009763424708974,
+      "abandon": 0.051151658832098955
+    },
+    {
+      "rep": 1,
+      "m": 1.1,
+      "model": "Reality",
+      "sl": 0.7157642990457876,
+      "abandon": 0.074535215364354,
+      "p_hat": 0.528275282092717
+    },
+    {
+      "rep": 1,
+      "m": 1.1,
+      "model": "Erlang A",
+      "sl": 0.7902108058760063,
+      "abandon": 0.05149389990870612
+    },
+    {
+      "rep": 1,
+      "m": 1.1,
+      "model": "Erlang A + boosting",
+      "sl": 0.7916583494888442,
+      "abandon": 0.05201580455349892
+    },
+    {
+      "rep": 1,
+      "m": 1.1,
+      "model": "Erlang A + Gaussian process",
+      "sl": 0.7968537229987098,
+      "abandon": 0.05278743515183189
+    },
+    {
+      "rep": 1,
+      "m": 1.1,
+      "model": "Erlang A + linear",
+      "sl": 0.7869726085587209,
+      "abandon": 0.05198372714666643
+    },
+    {
+      "rep": 1,
+      "m": 1.1,
+      "model": "Erlang A + resampled day levels",
+      "sl": 0.7645721406583975,
+      "abandon": 0.059448061861965946
+    },
+    {
+      "rep": 1,
+      "m": 1.1,
+      "model": "Erlang A + estimated redials",
+      "sl": 0.7644614403022795,
+      "abandon": 0.05943670608122105
+    },
+    {
+      "rep": 1,
+      "m": 1.1,
+      "model": "Erlang A + both",
+      "sl": 0.7149789817084057,
+      "abandon": 0.07715904111145375
+    },
+    {
+      "rep": 1,
+      "m": 1.1,
+      "model": "Erlang A given reality's inputs",
+      "sl": 0.7188204448681798,
+      "abandon": 0.07477760630862831
+    },
+    {
+      "rep": 1,
+      "m": 1.2,
+      "model": "Reality",
+      "sl": 0.6114840903205954,
+      "abandon": 0.10938819317529355,
+      "p_hat": 0.528275282092717
+    },
+    {
+      "rep": 1,
+      "m": 1.2,
+      "model": "Erlang A",
+      "sl": 0.7185185469596501,
+      "abandon": 0.07016014774599055
+    },
+    {
+      "rep": 1,
+      "m": 1.2,
+      "model": "Erlang A + boosting",
+      "sl": 0.713492318187292,
+      "abandon": 0.07230122594657848
+    },
+    {
+      "rep": 1,
+      "m": 1.2,
+      "model": "Erlang A + Gaussian process",
+      "sl": 0.7336718881723966,
+      "abandon": 0.06948902612067406
+    },
+    {
+      "rep": 1,
+      "m": 1.2,
+      "model": "Erlang A + linear",
+      "sl": 0.7118406731204223,
+      "abandon": 0.07237162373717171
+    },
+    {
+      "rep": 1,
+      "m": 1.2,
+      "model": "Erlang A + resampled day levels",
+      "sl": 0.6796522423956978,
+      "abandon": 0.08247661476811656
+    },
+    {
+      "rep": 1,
+      "m": 1.2,
+      "model": "Erlang A + estimated redials",
+      "sl": 0.6843955610057975,
+      "abandon": 0.0809398883037894
+    },
+    {
+      "rep": 1,
+      "m": 1.2,
+      "model": "Erlang A + both",
+      "sl": 0.617246024931158,
+      "abandon": 0.10878512421164836
+    },
+    {
+      "rep": 1,
+      "m": 1.2,
+      "model": "Erlang A given reality's inputs",
+      "sl": 0.6115891666322667,
+      "abandon": 0.11052902170201108
+    },
+    {
+      "rep": 1,
+      "m": 1.3,
+      "model": "Reality",
+      "sl": 0.4422253145400213,
+      "abandon": 0.1703165279398751,
+      "p_hat": 0.528275282092717
+    },
+    {
+      "rep": 1,
+      "m": 1.3,
+      "model": "Erlang A",
+      "sl": 0.6229260192234622,
+      "abandon": 0.09693705230864492
+    },
+    {
+      "rep": 1,
+      "m": 1.3,
+      "model": "Erlang A + boosting",
+      "sl": 0.6060984980434773,
+      "abandon": 0.10024926264043485
+    },
+    {
+      "rep": 1,
+      "m": 1.3,
+      "model": "Erlang A + Gaussian process",
+      "sl": 0.6346821738070905,
+      "abandon": 0.09575828011617672
+    },
+    {
+      "rep": 1,
+      "m": 1.3,
+      "model": "Erlang A + linear",
+      "sl": 0.6176840169551927,
+      "abandon": 0.09785903011191431
+    },
+    {
+      "rep": 1,
+      "m": 1.3,
+      "model": "Erlang A + resampled day levels",
+      "sl": 0.5912221519432146,
+      "abandon": 0.10900274088129876
+    },
+    {
+      "rep": 1,
+      "m": 1.3,
+      "model": "Erlang A + estimated redials",
+      "sl": 0.565016544342924,
+      "abandon": 0.11604869347349502
+    },
+    {
+      "rep": 1,
+      "m": 1.3,
+      "model": "Erlang A + both",
+      "sl": 0.4517127580649288,
+      "abandon": 0.1637641024329095
+    },
+    {
+      "rep": 1,
+      "m": 1.3,
+      "model": "Erlang A given reality's inputs",
+      "sl": 0.4468985263751908,
+      "abandon": 0.1715637865360198
+    },
+    {
+      "rep": 1,
+      "m": 1.4,
+      "model": "Reality",
+      "sl": 0.3616032653259556,
+      "abandon": 0.2037791774731382,
+      "p_hat": 0.528275282092717
+    },
+    {
+      "rep": 1,
+      "m": 1.4,
+      "model": "Erlang A",
+      "sl": 0.4968342966156055,
+      "abandon": 0.13645594105310738
+    },
+    {
+      "rep": 1,
+      "m": 1.4,
+      "model": "Erlang A + boosting",
+      "sl": 0.48598068265710104,
+      "abandon": 0.13505362202978186
+    },
+    {
+      "rep": 1,
+      "m": 1.4,
+      "model": "Erlang A + Gaussian process",
+      "sl": 0.5178764562907433,
+      "abandon": 0.13320397462128547
+    },
+    {
+      "rep": 1,
+      "m": 1.4,
+      "model": "Erlang A + linear",
+      "sl": 0.5083332176049791,
+      "abandon": 0.12722194274624785
+    },
+    {
+      "rep": 1,
+      "m": 1.4,
+      "model": "Erlang A + resampled day levels",
+      "sl": 0.4186050225320895,
+      "abandon": 0.17063386871664502
+    },
+    {
+      "rep": 1,
+      "m": 1.4,
+      "model": "Erlang A + estimated redials",
+      "sl": 0.382944244380976,
+      "abandon": 0.1821277784676518
+    },
+    {
+      "rep": 1,
+      "m": 1.4,
+      "model": "Erlang A + both",
+      "sl": 0.3425318910854159,
+      "abandon": 0.22234986945169713
+    },
+    {
+      "rep": 1,
+      "m": 1.4,
+      "model": "Erlang A given reality's inputs",
+      "sl": 0.36602809783830076,
+      "abandon": 0.20792461081517744
+    },
+    {
+      "rep": 1,
+      "m": 1.5,
+      "model": "Reality",
+      "sl": 0.17857438872772483,
+      "abandon": 0.30304082055532533,
+      "p_hat": 0.528275282092717
+    },
+    {
+      "rep": 1,
+      "m": 1.5,
+      "model": "Erlang A",
+      "sl": 0.38343521926267854,
+      "abandon": 0.17355748237789284
+    },
+    {
+      "rep": 1,
+      "m": 1.5,
+      "model": "Erlang A + boosting",
+      "sl": 0.36774595012754857,
+      "abandon": 0.17155000560770792
+    },
+    {
+      "rep": 1,
+      "m": 1.5,
+      "model": "Erlang A + Gaussian process",
+      "sl": 0.4020715843236898,
+      "abandon": 0.1762841195608851
+    },
+    {
+      "rep": 1,
+      "m": 1.5,
+      "model": "Erlang A + linear",
+      "sl": 0.3875666236654461,
+      "abandon": 0.16544760728444385
+    },
+    {
+      "rep": 1,
+      "m": 1.5,
+      "model": "Erlang A + resampled day levels",
+      "sl": 0.4103044897726083,
+      "abandon": 0.16997426891678802
+    },
+    {
+      "rep": 1,
+      "m": 1.5,
+      "model": "Erlang A + estimated redials",
+      "sl": 0.23171265029560903,
+      "abandon": 0.2542099377781714
+    },
+    {
+      "rep": 1,
+      "m": 1.5,
+      "model": "Erlang A + both",
+      "sl": 0.18799841182927685,
+      "abandon": 0.30366758444942116
+    },
+    {
+      "rep": 1,
+      "m": 1.5,
+      "model": "Erlang A given reality's inputs",
+      "sl": 0.18991400745959386,
+      "abandon": 0.3050261603812681
+    },
+    {
+      "rep": 2,
+      "m": 0.9,
+      "model": "Reality",
+      "sl": 0.8512126865671642,
+      "abandon": 0.037843676355066774,
+      "p_hat": 0.645016946849684
+    },
+    {
+      "rep": 2,
+      "m": 0.9,
+      "model": "Erlang A",
+      "sl": 0.8721921987253336,
+      "abandon": 0.032128712626514844
+    },
+    {
+      "rep": 2,
+      "m": 0.9,
+      "model": "Erlang A + boosting",
+      "sl": 0.8813562412215222,
+      "abandon": 0.030684786738110797
+    },
+    {
+      "rep": 2,
+      "m": 0.9,
+      "model": "Erlang A + Gaussian process",
+      "sl": 0.8668355868082378,
+      "abandon": 0.031709619578690965
+    },
+    {
+      "rep": 2,
+      "m": 0.9,
+      "model": "Erlang A + linear",
+      "sl": 0.8642795283529787,
+      "abandon": 0.03542463779397993
+    },
+    {
+      "rep": 2,
+      "m": 0.9,
+      "model": "Erlang A + resampled day levels",
+      "sl": 0.8563729216615013,
+      "abandon": 0.03618696762372571
+    },
+    {
+      "rep": 2,
+      "m": 0.9,
+      "model": "Erlang A + estimated redials",
+      "sl": 0.8627240538832663,
+      "abandon": 0.03489573407424496
+    },
+    {
+      "rep": 2,
+      "m": 0.9,
+      "model": "Erlang A + both",
+      "sl": 0.8350991961274143,
+      "abandon": 0.042137698416555694
+    },
+    {
+      "rep": 2,
+      "m": 0.9,
+      "model": "Erlang A given reality's inputs",
+      "sl": 0.8565912215239592,
+      "abandon": 0.037308523173605654
+    },
+    {
+      "rep": 2,
+      "m": 1.0,
+      "model": "Reality",
+      "sl": 0.7929334354039078,
+      "abandon": 0.05429790026246719,
+      "p_hat": 0.645016946849684
+    },
+    {
+      "rep": 2,
+      "m": 1.0,
+      "model": "Erlang A",
+      "sl": 0.8283118632806733,
+      "abandon": 0.04367986859589547
+    },
+    {
+      "rep": 2,
+      "m": 1.0,
+      "model": "Erlang A + boosting",
+      "sl": 0.8337536055220981,
+      "abandon": 0.04185766851243072
+    },
+    {
+      "rep": 2,
+      "m": 1.0,
+      "model": "Erlang A + Gaussian process",
+      "sl": 0.8306699473561427,
+      "abandon": 0.04127887219992971
+    },
+    {
+      "rep": 2,
+      "m": 1.0,
+      "model": "Erlang A + linear",
+      "sl": 0.8228622623361006,
+      "abandon": 0.04490157595419065
+    },
+    {
+      "rep": 2,
+      "m": 1.0,
+      "model": "Erlang A + resampled day levels",
+      "sl": 0.8132335446701642,
+      "abandon": 0.04660045488315702
+    },
+    {
+      "rep": 2,
+      "m": 1.0,
+      "model": "Erlang A + estimated redials",
+      "sl": 0.8060951957748369,
+      "abandon": 0.048926351260652014
+    },
+    {
+      "rep": 2,
+      "m": 1.0,
+      "model": "Erlang A + both",
+      "sl": 0.8086207292695816,
+      "abandon": 0.04873744916480941
+    },
+    {
+      "rep": 2,
+      "m": 1.0,
+      "model": "Erlang A given reality's inputs",
+      "sl": 0.801037565616798,
+      "abandon": 0.05137704141149023
+    },
+    {
+      "rep": 2,
+      "m": 1.1,
+      "model": "Reality",
+      "sl": 0.6937200248711887,
+      "abandon": 0.08295412691434885,
+      "p_hat": 0.645016946849684
+    },
+    {
+      "rep": 2,
+      "m": 1.1,
+      "model": "Erlang A",
+      "sl": 0.7833486394135702,
+      "abandon": 0.05453515020642524
+    },
+    {
+      "rep": 2,
+      "m": 1.1,
+      "model": "Erlang A + boosting",
+      "sl": 0.7792591072674289,
+      "abandon": 0.05577041344922822
+    },
+    {
+      "rep": 2,
+      "m": 1.1,
+      "model": "Erlang A + Gaussian process",
+      "sl": 0.7668690199123105,
+      "abandon": 0.05685219033847235
+    },
+    {
+      "rep": 2,
+      "m": 1.1,
+      "model": "Erlang A + linear",
+      "sl": 0.7798867498787935,
+      "abandon": 0.05602764213887916
+    },
+    {
+      "rep": 2,
+      "m": 1.1,
+      "model": "Erlang A + resampled day levels",
+      "sl": 0.7462512798493907,
+      "abandon": 0.06417412557386795
+    },
+    {
+      "rep": 2,
+      "m": 1.1,
+      "model": "Erlang A + estimated redials",
+      "sl": 0.7488488033694758,
+      "abandon": 0.0644792907400813
+    },
+    {
+      "rep": 2,
+      "m": 1.1,
+      "model": "Erlang A + both",
+      "sl": 0.7014574210835893,
+      "abandon": 0.08116708058296844
+    },
+    {
+      "rep": 2,
+      "m": 1.1,
+      "model": "Erlang A given reality's inputs",
+      "sl": 0.6986368370818333,
+      "abandon": 0.08152640979639685
+    },
+    {
+      "rep": 2,
+      "m": 1.2,
+      "model": "Reality",
+      "sl": 0.5868689340780164,
+      "abandon": 0.1135690359909849,
+      "p_hat": 0.645016946849684
+    },
+    {
+      "rep": 2,
+      "m": 1.2,
+      "model": "Erlang A",
+      "sl": 0.6937125782735792,
+      "abandon": 0.07804299854029065
+    },
+    {
+      "rep": 2,
+      "m": 1.2,
+      "model": "Erlang A + boosting",
+      "sl": 0.7091573840365294,
+      "abandon": 0.0750571110090565
+    },
+    {
+      "rep": 2,
+      "m": 1.2,
+      "model": "Erlang A + Gaussian process",
+      "sl": 0.704952919542647,
+      "abandon": 0.07262303238816817
+    },
+    {
+      "rep": 2,
+      "m": 1.2,
+      "model": "Erlang A + linear",
+      "sl": 0.70594235388866,
+      "abandon": 0.07599512341973927
+    },
+    {
+      "rep": 2,
+      "m": 1.2,
+      "model": "Erlang A + resampled day levels",
+      "sl": 0.6943907156673114,
+      "abandon": 0.07926112185686654
+    },
+    {
+      "rep": 2,
+      "m": 1.2,
+      "model": "Erlang A + estimated redials",
+      "sl": 0.6387441894783443,
+      "abandon": 0.09825868811333284
+    },
+    {
+      "rep": 2,
+      "m": 1.2,
+      "model": "Erlang A + both",
+      "sl": 0.5333505349587692,
+      "abandon": 0.14611956072232687
+    },
+    {
+      "rep": 2,
+      "m": 1.2,
+      "model": "Erlang A given reality's inputs",
+      "sl": 0.6048626001322311,
+      "abandon": 0.11035275037167185
+    },
+    {
+      "rep": 2,
+      "m": 1.3,
+      "model": "Reality",
+      "sl": 0.43270469944239576,
+      "abandon": 0.17868535555243648,
+      "p_hat": 0.645016946849684
+    },
+    {
+      "rep": 2,
+      "m": 1.3,
+      "model": "Erlang A",
+      "sl": 0.5960185338180216,
+      "abandon": 0.106015229125358
+    },
+    {
+      "rep": 2,
+      "m": 1.3,
+      "model": "Erlang A + boosting",
+      "sl": 0.600313442429874,
+      "abandon": 0.1027802491068261
+    },
+    {
+      "rep": 2,
+      "m": 1.3,
+      "model": "Erlang A + Gaussian process",
+      "sl": 0.5986050729175539,
+      "abandon": 0.10286987318959885
+    },
+    {
+      "rep": 2,
+      "m": 1.3,
+      "model": "Erlang A + linear",
+      "sl": 0.6014427681346173,
+      "abandon": 0.10401068974110651
+    },
+    {
+      "rep": 2,
+      "m": 1.3,
+      "model": "Erlang A + resampled day levels",
+      "sl": 0.5728127355001372,
+      "abandon": 0.11527308465676452
+    },
+    {
+      "rep": 2,
+      "m": 1.3,
+      "model": "Erlang A + estimated redials",
+      "sl": 0.4702409851614874,
+      "abandon": 0.1541887047248525
+    },
+    {
+      "rep": 2,
+      "m": 1.3,
+      "model": "Erlang A + both",
+      "sl": 0.38972888506429154,
+      "abandon": 0.20462389676072484
+    },
+    {
+      "rep": 2,
+      "m": 1.3,
+      "model": "Erlang A given reality's inputs",
+      "sl": 0.447171147490781,
+      "abandon": 0.1761557208661367
+    },
+    {
+      "rep": 2,
+      "m": 1.4,
+      "model": "Reality",
+      "sl": 0.2928676371629806,
+      "abandon": 0.23925014579875287,
+      "p_hat": 0.645016946849684
+    },
+    {
+      "rep": 2,
+      "m": 1.4,
+      "model": "Erlang A",
+      "sl": 0.47208362730922676,
+      "abandon": 0.14317443343067496
+    },
+    {
+      "rep": 2,
+      "m": 1.4,
+      "model": "Erlang A + boosting",
+      "sl": 0.46929067516672907,
+      "abandon": 0.14181904436534995
+    },
+    {
+      "rep": 2,
+      "m": 1.4,
+      "model": "Erlang A + Gaussian process",
+      "sl": 0.46407998732443373,
+      "abandon": 0.14490004603493856
+    },
+    {
+      "rep": 2,
+      "m": 1.4,
+      "model": "Erlang A + linear",
+      "sl": 0.4820020365382485,
+      "abandon": 0.13705369746575566
+    },
+    {
+      "rep": 2,
+      "m": 1.4,
+      "model": "Erlang A + resampled day levels",
+      "sl": 0.44702826827143877,
+      "abandon": 0.15953757225433526
+    },
+    {
+      "rep": 2,
+      "m": 1.4,
+      "model": "Erlang A + estimated redials",
+      "sl": 0.29845477945183657,
+      "abandon": 0.22699007582172812
+    },
+    {
+      "rep": 2,
+      "m": 1.4,
+      "model": "Erlang A + both",
+      "sl": 0.2880837474165604,
+      "abandon": 0.26057286399014995
+    },
+    {
+      "rep": 2,
+      "m": 1.4,
+      "model": "Erlang A given reality's inputs",
+      "sl": 0.3085998833609977,
+      "abandon": 0.23922070566596385
+    },
+    {
+      "rep": 2,
+      "m": 1.5,
+      "model": "Reality",
+      "sl": 0.20659345194187528,
+      "abandon": 0.3021861249671153,
+      "p_hat": 0.645016946849684
+    },
+    {
+      "rep": 2,
+      "m": 1.5,
+      "model": "Erlang A",
+      "sl": 0.36681229313276414,
+      "abandon": 0.1812081349122308
+    },
+    {
+      "rep": 2,
+      "m": 1.5,
+      "model": "Erlang A + boosting",
+      "sl": 0.34391059390789647,
+      "abandon": 0.18245351667728804
+    },
+    {
+      "rep": 2,
+      "m": 1.5,
+      "model": "Erlang A + Gaussian process",
+      "sl": 0.36280003393365534,
+      "abandon": 0.18077328244568436
+    },
+    {
+      "rep": 2,
+      "m": 1.5,
+      "model": "Erlang A + linear",
+      "sl": 0.3809120839048939,
+      "abandon": 0.17170969045520884
+    },
+    {
+      "rep": 2,
+      "m": 1.5,
+      "model": "Erlang A + resampled day levels",
+      "sl": 0.3837540074530206,
+      "abandon": 0.18486185578374606
+    },
+    {
+      "rep": 2,
+      "m": 1.5,
+      "model": "Erlang A + estimated redials",
+      "sl": 0.16283192469507246,
+      "abandon": 0.3136814771351169
+    },
+    {
+      "rep": 2,
+      "m": 1.5,
+      "model": "Erlang A + both",
+      "sl": 0.1855754443030449,
+      "abandon": 0.3380609372005837
+    },
+    {
+      "rep": 2,
+      "m": 1.5,
+      "model": "Erlang A given reality's inputs",
+      "sl": 0.2201587236083958,
+      "abandon": 0.3005277031244358
+    },
+    {
+      "rep": 3,
+      "m": 0.9,
+      "model": "Reality",
+      "sl": 0.8383267127850885,
+      "abandon": 0.042172808832295586,
+      "p_hat": 0.6069843921536756
+    },
+    {
+      "rep": 3,
+      "m": 0.9,
+      "model": "Erlang A",
+      "sl": 0.8687991641772878,
+      "abandon": 0.03350898458698287
+    },
+    {
+      "rep": 3,
+      "m": 0.9,
+      "model": "Erlang A + boosting",
+      "sl": 0.8607466085189694,
+      "abandon": 0.03489325851704791
+    },
+    {
+      "rep": 3,
+      "m": 0.9,
+      "model": "Erlang A + Gaussian process",
+      "sl": 0.8552036862279697,
+      "abandon": 0.03651282617285744
+    },
+    {
+      "rep": 3,
+      "m": 0.9,
+      "model": "Erlang A + linear",
+      "sl": 0.8582604825670328,
+      "abandon": 0.03592363505057996
+    },
+    {
+      "rep": 3,
+      "m": 0.9,
+      "model": "Erlang A + resampled day levels",
+      "sl": 0.8660731409421716,
+      "abandon": 0.03422362192007591
+    },
+    {
+      "rep": 3,
+      "m": 0.9,
+      "model": "Erlang A + estimated redials",
+      "sl": 0.8559331934757983,
+      "abandon": 0.037405964432840444
+    },
+    {
+      "rep": 3,
+      "m": 0.9,
+      "model": "Erlang A + both",
+      "sl": 0.8562172137624454,
+      "abandon": 0.036644116702437335
+    },
+    {
+      "rep": 3,
+      "m": 0.9,
+      "model": "Erlang A given reality's inputs",
+      "sl": 0.8463039307522379,
+      "abandon": 0.03971076636394147
+    },
+    {
+      "rep": 3,
+      "m": 1.0,
+      "model": "Reality",
+      "sl": 0.8027413339741486,
+      "abandon": 0.050787694497460616,
+      "p_hat": 0.6069843921536756
+    },
+    {
+      "rep": 3,
+      "m": 1.0,
+      "model": "Erlang A",
+      "sl": 0.823632538569425,
+      "abandon": 0.043972740676807995
+    },
+    {
+      "rep": 3,
+      "m": 1.0,
+      "model": "Erlang A + boosting",
+      "sl": 0.8227718118036228,
+      "abandon": 0.04485415835067469
+    },
+    {
+      "rep": 3,
+      "m": 1.0,
+      "model": "Erlang A + Gaussian process",
+      "sl": 0.8240030354833274,
+      "abandon": 0.04368854367413682
+    },
+    {
+      "rep": 3,
+      "m": 1.0,
+      "model": "Erlang A + linear",
+      "sl": 0.811990689950502,
+      "abandon": 0.04851543260621895
+    },
+    {
+      "rep": 3,
+      "m": 1.0,
+      "model": "Erlang A + resampled day levels",
+      "sl": 0.8089376298810312,
+      "abandon": 0.04888064103378495
+    },
+    {
+      "rep": 3,
+      "m": 1.0,
+      "model": "Erlang A + estimated redials",
+      "sl": 0.8132193357448207,
+      "abandon": 0.04754654426040461
+    },
+    {
+      "rep": 3,
+      "m": 1.0,
+      "model": "Erlang A + both",
+      "sl": 0.8004015186692525,
+      "abandon": 0.052365864539801334
+    },
+    {
+      "rep": 3,
+      "m": 1.0,
+      "model": "Erlang A given reality's inputs",
+      "sl": 0.8052529911133087,
+      "abandon": 0.0499928370403575
+    },
+    {
+      "rep": 3,
+      "m": 1.1,
+      "model": "Reality",
+      "sl": 0.7109691282625303,
+      "abandon": 0.07752862692871762,
+      "p_hat": 0.6069843921536756
+    },
+    {
+      "rep": 3,
+      "m": 1.1,
+      "model": "Erlang A",
+      "sl": 0.7729163619818327,
+      "abandon": 0.057236061684460264
+    },
+    {
+      "rep": 3,
+      "m": 1.1,
+      "model": "Erlang A + boosting",
+      "sl": 0.7647342330118131,
+      "abandon": 0.059464788175194794
+    },
+    {
+      "rep": 3,
+      "m": 1.1,
+      "model": "Erlang A + Gaussian process",
+      "sl": 0.7599451016263167,
+      "abandon": 0.0606778865371104
+    },
+    {
+      "rep": 3,
+      "m": 1.1,
+      "model": "Erlang A + linear",
+      "sl": 0.767878888788122,
+      "abandon": 0.05823669389535294
+    },
+    {
+      "rep": 3,
+      "m": 1.1,
+      "model": "Erlang A + resampled day levels",
+      "sl": 0.7492530969400475,
+      "abandon": 0.06342647653845682
+    },
+    {
+      "rep": 3,
+      "m": 1.1,
+      "model": "Erlang A + estimated redials",
+      "sl": 0.749967639634975,
+      "abandon": 0.06455892822471038
+    },
+    {
+      "rep": 3,
+      "m": 1.1,
+      "model": "Erlang A + both",
+      "sl": 0.7313419899125813,
+      "abandon": 0.07199874526378353
+    },
+    {
+      "rep": 3,
+      "m": 1.1,
+      "model": "Erlang A given reality's inputs",
+      "sl": 0.7138022035483911,
+      "abandon": 0.07678308080085952
+    },
+    {
+      "rep": 3,
+      "m": 1.2,
+      "model": "Reality",
+      "sl": 0.6355085603038574,
+      "abandon": 0.10215868532055809,
+      "p_hat": 0.6069843921536756
+    },
+    {
+      "rep": 3,
+      "m": 1.2,
+      "model": "Erlang A",
+      "sl": 0.6891553958195403,
+      "abandon": 0.07889151612598128
+    },
+    {
+      "rep": 3,
+      "m": 1.2,
+      "model": "Erlang A + boosting",
+      "sl": 0.6852013224305799,
+      "abandon": 0.0804898656508053
+    },
+    {
+      "rep": 3,
+      "m": 1.2,
+      "model": "Erlang A + Gaussian process",
+      "sl": 0.6777039744541552,
+      "abandon": 0.0821354623213368
+    },
+    {
+      "rep": 3,
+      "m": 1.2,
+      "model": "Erlang A + linear",
+      "sl": 0.6817734854591858,
+      "abandon": 0.08179233238132377
+    },
+    {
+      "rep": 3,
+      "m": 1.2,
+      "model": "Erlang A + resampled day levels",
+      "sl": 0.6361452345157668,
+      "abandon": 0.0965444690240727
+    },
+    {
+      "rep": 3,
+      "m": 1.2,
+      "model": "Erlang A + estimated redials",
+      "sl": 0.6482666017426204,
+      "abandon": 0.0944829316157972
+    },
+    {
+      "rep": 3,
+      "m": 1.2,
+      "model": "Erlang A + both",
+      "sl": 0.593880235273254,
+      "abandon": 0.11732258445896018
+    },
+    {
+      "rep": 3,
+      "m": 1.2,
+      "model": "Erlang A given reality's inputs",
+      "sl": 0.6360277136258661,
+      "abandon": 0.10238963220277518
+    },
+    {
+      "rep": 3,
+      "m": 1.3,
+      "model": "Reality",
+      "sl": 0.45432833483418816,
+      "abandon": 0.17244495778030094,
+      "p_hat": 0.6069843921536756
+    },
+    {
+      "rep": 3,
+      "m": 1.3,
+      "model": "Erlang A",
+      "sl": 0.5850338247085244,
+      "abandon": 0.10885690187189997
+    },
+    {
+      "rep": 3,
+      "m": 1.3,
+      "model": "Erlang A + boosting",
+      "sl": 0.5776719871849223,
+      "abandon": 0.10955449171167869
+    },
+    {
+      "rep": 3,
+      "m": 1.3,
+      "model": "Erlang A + Gaussian process",
+      "sl": 0.5627810210100733,
+      "abandon": 0.11097090499757085
+    },
+    {
+      "rep": 3,
+      "m": 1.3,
+      "model": "Erlang A + linear",
+      "sl": 0.5634820619298126,
+      "abandon": 0.11470005417321348
+    },
+    {
+      "rep": 3,
+      "m": 1.3,
+      "model": "Erlang A + resampled day levels",
+      "sl": 0.5843344953648378,
+      "abandon": 0.11196868879004943
+    },
+    {
+      "rep": 3,
+      "m": 1.3,
+      "model": "Erlang A + estimated redials",
+      "sl": 0.4615030192119873,
+      "abandon": 0.15329679778580305
+    },
+    {
+      "rep": 3,
+      "m": 1.3,
+      "model": "Erlang A + both",
+      "sl": 0.37900933080624,
+      "abandon": 0.2071852067842737
+    },
+    {
+      "rep": 3,
+      "m": 1.3,
+      "model": "Erlang A given reality's inputs",
+      "sl": 0.46384734348694256,
+      "abandon": 0.1707711783668089
+    },
+    {
+      "rep": 3,
+      "m": 1.4,
+      "model": "Reality",
+      "sl": 0.2980420407319817,
+      "abandon": 0.2339792896011756,
+      "p_hat": 0.6069843921536756
+    },
+    {
+      "rep": 3,
+      "m": 1.4,
+      "model": "Erlang A",
+      "sl": 0.4464175339009776,
+      "abandon": 0.15165562913907285
+    },
+    {
+      "rep": 3,
+      "m": 1.4,
+      "model": "Erlang A + boosting",
+      "sl": 0.422526977380413,
+      "abandon": 0.15756163538136242
+    },
+    {
+      "rep": 3,
+      "m": 1.4,
+      "model": "Erlang A + Gaussian process",
+      "sl": 0.4267527449088786,
+      "abandon": 0.14881826100660067
+    },
+    {
+      "rep": 3,
+      "m": 1.4,
+      "model": "Erlang A + linear",
+      "sl": 0.453478146752508,
+      "abandon": 0.14738804609785092
+    },
+    {
+      "rep": 3,
+      "m": 1.4,
+      "model": "Erlang A + resampled day levels",
+      "sl": 0.42488679803762275,
+      "abandon": 0.16328477772109806
+    },
+    {
+      "rep": 3,
+      "m": 1.4,
+      "model": "Erlang A + estimated redials",
+      "sl": 0.2710253825202052,
+      "abandon": 0.24003665064361426
+    },
+    {
+      "rep": 3,
+      "m": 1.4,
+      "model": "Erlang A + both",
+      "sl": 0.2598607326998437,
+      "abandon": 0.27334905850678987
+    },
+    {
+      "rep": 3,
+      "m": 1.4,
+      "model": "Erlang A given reality's inputs",
+      "sl": 0.31033166486809177,
+      "abandon": 0.23502686382109153
+    },
+    {
+      "rep": 3,
+      "m": 1.5,
+      "model": "Reality",
+      "sl": 0.1822626806678374,
+      "abandon": 0.3154461721201943,
+      "p_hat": 0.6069843921536756
+    },
+    {
+      "rep": 3,
+      "m": 1.5,
+      "model": "Erlang A",
+      "sl": 0.33035533974144504,
+      "abandon": 0.1940428071508016
+    },
+    {
+      "rep": 3,
+      "m": 1.5,
+      "model": "Erlang A + boosting",
+      "sl": 0.2933548106997025,
+      "abandon": 0.20393049664390234
+    },
+    {
+      "rep": 3,
+      "m": 1.5,
+      "model": "Erlang A + Gaussian process",
+      "sl": 0.3147006873780305,
+      "abandon": 0.1839462523699178
+    },
+    {
+      "rep": 3,
+      "m": 1.5,
+      "model": "Erlang A + linear",
+      "sl": 0.3384231437904961,
+      "abandon": 0.18712908577084666
+    },
+    {
+      "rep": 3,
+      "m": 1.5,
+      "model": "Erlang A + resampled day levels",
+      "sl": 0.34903313542737735,
+      "abandon": 0.19919551078130135
+    },
+    {
+      "rep": 3,
+      "m": 1.5,
+      "model": "Erlang A + estimated redials",
+      "sl": 0.15348452795280665,
+      "abandon": 0.3161590197371913
+    },
+    {
+      "rep": 3,
+      "m": 1.5,
+      "model": "Erlang A + both",
+      "sl": 0.19175677111530504,
+      "abandon": 0.3227366791303424
+    },
+    {
+      "rep": 3,
+      "m": 1.5,
+      "model": "Erlang A given reality's inputs",
+      "sl": 0.19663162960725386,
+      "abandon": 0.31514025916842875
+    },
+    {
+      "rep": 4,
+      "m": 0.9,
+      "model": "Reality",
+      "sl": 0.8639118058820187,
+      "abandon": 0.03541816265698212,
+      "p_hat": 0.7253492515001464
+    },
+    {
+      "rep": 4,
+      "m": 0.9,
+      "model": "Erlang A",
+      "sl": 0.8738717149932104,
+      "abandon": 0.03083812604840642
+    },
+    {
+      "rep": 4,
+      "m": 0.9,
+      "model": "Erlang A + boosting",
+      "sl": 0.8819122854336854,
+      "abandon": 0.02823538140991647
+    },
+    {
+      "rep": 4,
+      "m": 0.9,
+      "model": "Erlang A + Gaussian process",
+      "sl": 0.8750884757702682,
+      "abandon": 0.027868084605134753
+    },
+    {
+      "rep": 4,
+      "m": 0.9,
+      "model": "Erlang A + linear",
+      "sl": 0.867531954489704,
+      "abandon": 0.03289859755331768
+    },
+    {
+      "rep": 4,
+      "m": 0.9,
+      "model": "Erlang A + resampled day levels",
+      "sl": 0.8632537085783168,
+      "abandon": 0.03385077123668479
+    },
+    {
+      "rep": 4,
+      "m": 0.9,
+      "model": "Erlang A + estimated redials",
+      "sl": 0.8738145926069286,
+      "abandon": 0.03109816344616137
+    },
+    {
+      "rep": 4,
+      "m": 0.9,
+      "model": "Erlang A + both",
+      "sl": 0.8477574805879444,
+      "abandon": 0.03958376881936974
+    },
+    {
+      "rep": 4,
+      "m": 0.9,
+      "model": "Erlang A given reality's inputs",
+      "sl": 0.8688530941815232,
+      "abandon": 0.033294932661063266
+    },
+    {
+      "rep": 4,
+      "m": 1.0,
+      "model": "Reality",
+      "sl": 0.8057912389187585,
+      "abandon": 0.050318462473384146,
+      "p_hat": 0.7253492515001464
+    },
+    {
+      "rep": 4,
+      "m": 1.0,
+      "model": "Erlang A",
+      "sl": 0.8321730302041408,
+      "abandon": 0.041517096341419195
+    },
+    {
+      "rep": 4,
+      "m": 1.0,
+      "model": "Erlang A + boosting",
+      "sl": 0.834151072273847,
+      "abandon": 0.04044744471680467
+    },
+    {
+      "rep": 4,
+      "m": 1.0,
+      "model": "Erlang A + Gaussian process",
+      "sl": 0.8354469229772483,
+      "abandon": 0.03852789850033908
+    },
+    {
+      "rep": 4,
+      "m": 1.0,
+      "model": "Erlang A + linear",
+      "sl": 0.8274341451601667,
+      "abandon": 0.04257498027283253
+    },
+    {
+      "rep": 4,
+      "m": 1.0,
+      "model": "Erlang A + resampled day levels",
+      "sl": 0.8344732605641011,
+      "abandon": 0.04120487981910053
+    },
+    {
+      "rep": 4,
+      "m": 1.0,
+      "model": "Erlang A + estimated redials",
+      "sl": 0.8046759018916728,
+      "abandon": 0.05084838383562392
+    },
+    {
+      "rep": 4,
+      "m": 1.0,
+      "model": "Erlang A + both",
+      "sl": 0.8032746205204558,
+      "abandon": 0.05427891863546554
+    },
+    {
+      "rep": 4,
+      "m": 1.0,
+      "model": "Erlang A given reality's inputs",
+      "sl": 0.8131230661464881,
+      "abandon": 0.04794101137929275
+    },
+    {
+      "rep": 4,
+      "m": 1.1,
+      "model": "Reality",
+      "sl": 0.7013323948733897,
+      "abandon": 0.08015648273943005,
+      "p_hat": 0.7253492515001464
+    },
+    {
+      "rep": 4,
+      "m": 1.1,
+      "model": "Erlang A",
+      "sl": 0.776200297973531,
+      "abandon": 0.055369956133980186
+    },
+    {
+      "rep": 4,
+      "m": 1.1,
+      "model": "Erlang A + boosting",
+      "sl": 0.7784749556441104,
+      "abandon": 0.05440457622544323
+    },
+    {
+      "rep": 4,
+      "m": 1.1,
+      "model": "Erlang A + Gaussian process",
+      "sl": 0.7746390989857436,
+      "abandon": 0.05429324329181812
+    },
+    {
+      "rep": 4,
+      "m": 1.1,
+      "model": "Erlang A + linear",
+      "sl": 0.7650772100943039,
+      "abandon": 0.05816465099636164
+    },
+    {
+      "rep": 4,
+      "m": 1.1,
+      "model": "Erlang A + resampled day levels",
+      "sl": 0.7402685535762316,
+      "abandon": 0.06620735315415968
+    },
+    {
+      "rep": 4,
+      "m": 1.1,
+      "model": "Erlang A + estimated redials",
+      "sl": 0.7389537689810365,
+      "abandon": 0.06856892988412337
+    },
+    {
+      "rep": 4,
+      "m": 1.1,
+      "model": "Erlang A + both",
+      "sl": 0.6504296875,
+      "abandon": 0.11096484375
+    },
+    {
+      "rep": 4,
+      "m": 1.1,
+      "model": "Erlang A given reality's inputs",
+      "sl": 0.7134593979670338,
+      "abandon": 0.07663521189006924
+    },
+    {
+      "rep": 4,
+      "m": 1.2,
+      "model": "Reality",
+      "sl": 0.5835968966111199,
+      "abandon": 0.11390331411734093,
+      "p_hat": 0.7253492515001464
+    },
+    {
+      "rep": 4,
+      "m": 1.2,
+      "model": "Erlang A",
+      "sl": 0.7020738993112371,
+      "abandon": 0.07448533049202785
+    },
+    {
+      "rep": 4,
+      "m": 1.2,
+      "model": "Erlang A + boosting",
+      "sl": 0.7016970271714543,
+      "abandon": 0.07416196012046275
+    },
+    {
+      "rep": 4,
+      "m": 1.2,
+      "model": "Erlang A + Gaussian process",
+      "sl": 0.6971936762839649,
+      "abandon": 0.07511287408948929
+    },
+    {
+      "rep": 4,
+      "m": 1.2,
+      "model": "Erlang A + linear",
+      "sl": 0.6906134736687645,
+      "abandon": 0.07781113032895196
+    },
+    {
+      "rep": 4,
+      "m": 1.2,
+      "model": "Erlang A + resampled day levels",
+      "sl": 0.620496545880884,
+      "abandon": 0.10192902983660289
+    },
+    {
+      "rep": 4,
+      "m": 1.2,
+      "model": "Erlang A + estimated redials",
+      "sl": 0.6362807623466283,
+      "abandon": 0.09901760601220673
+    },
+    {
+      "rep": 4,
+      "m": 1.2,
+      "model": "Erlang A + both",
+      "sl": 0.5309970505593465,
+      "abandon": 0.15289621110316062
+    },
+    {
+      "rep": 4,
+      "m": 1.2,
+      "model": "Erlang A given reality's inputs",
+      "sl": 0.5958374715516578,
+      "abandon": 0.11169891117520514
+    },
+    {
+      "rep": 4,
+      "m": 1.3,
+      "model": "Reality",
+      "sl": 0.40640628834991377,
+      "abandon": 0.1812395010885399,
+      "p_hat": 0.7253492515001464
+    },
+    {
+      "rep": 4,
+      "m": 1.3,
+      "model": "Erlang A",
+      "sl": 0.5966305791898692,
+      "abandon": 0.10349944879441444
+    },
+    {
+      "rep": 4,
+      "m": 1.3,
+      "model": "Erlang A + boosting",
+      "sl": 0.5850790318420716,
+      "abandon": 0.10545854965826229
+    },
+    {
+      "rep": 4,
+      "m": 1.3,
+      "model": "Erlang A + Gaussian process",
+      "sl": 0.5911535610154176,
+      "abandon": 0.1020332220760502
+    },
+    {
+      "rep": 4,
+      "m": 1.3,
+      "model": "Erlang A + linear",
+      "sl": 0.5814847951761022,
+      "abandon": 0.10915578068134307
+    },
+    {
+      "rep": 4,
+      "m": 1.3,
+      "model": "Erlang A + resampled day levels",
+      "sl": 0.5849825147751051,
+      "abandon": 0.11363055214414595
+    },
+    {
+      "rep": 4,
+      "m": 1.3,
+      "model": "Erlang A + estimated redials",
+      "sl": 0.43542727896614053,
+      "abandon": 0.1747424856059361
+    },
+    {
+      "rep": 4,
+      "m": 1.3,
+      "model": "Erlang A + both",
+      "sl": 0.4381274109679667,
+      "abandon": 0.1936093169230376
+    },
+    {
+      "rep": 4,
+      "m": 1.3,
+      "model": "Erlang A given reality's inputs",
+      "sl": 0.41677690191665895,
+      "abandon": 0.1814658153849096
+    },
+    {
+      "rep": 4,
+      "m": 1.4,
+      "model": "Reality",
+      "sl": 0.31511114673030627,
+      "abandon": 0.2301890488784406,
+      "p_hat": 0.7253492515001464
+    },
+    {
+      "rep": 4,
+      "m": 1.4,
+      "model": "Erlang A",
+      "sl": 0.47685145242535454,
+      "abandon": 0.1408623630366541
+    },
+    {
+      "rep": 4,
+      "m": 1.4,
+      "model": "Erlang A + boosting",
+      "sl": 0.47455949460150854,
+      "abandon": 0.13909807361938592
+    },
+    {
+      "rep": 4,
+      "m": 1.4,
+      "model": "Erlang A + Gaussian process",
+      "sl": 0.48163196487497095,
+      "abandon": 0.13224693018752107
+    },
+    {
+      "rep": 4,
+      "m": 1.4,
+      "model": "Erlang A + linear",
+      "sl": 0.4731724422406524,
+      "abandon": 0.14100976923189795
+    },
+    {
+      "rep": 4,
+      "m": 1.4,
+      "model": "Erlang A + resampled day levels",
+      "sl": 0.4556251392036894,
+      "abandon": 0.16179071626030106
+    },
+    {
+      "rep": 4,
+      "m": 1.4,
+      "model": "Erlang A + estimated redials",
+      "sl": 0.2624217072172348,
+      "abandon": 0.25725732741943624
+    },
+    {
+      "rep": 4,
+      "m": 1.4,
+      "model": "Erlang A + both",
+      "sl": 0.2419113549030536,
+      "abandon": 0.3018631950314799
+    },
+    {
+      "rep": 4,
+      "m": 1.4,
+      "model": "Erlang A given reality's inputs",
+      "sl": 0.3248470600806775,
+      "abandon": 0.22987441265431274
+    },
+    {
+      "rep": 4,
+      "m": 1.5,
+      "model": "Reality",
+      "sl": 0.20254725489113432,
+      "abandon": 0.2908282522329234,
+      "p_hat": 0.7253492515001464
+    },
+    {
+      "rep": 4,
+      "m": 1.5,
+      "model": "Erlang A",
+      "sl": 0.3627742074407912,
+      "abandon": 0.18161001810610725
+    },
+    {
+      "rep": 4,
+      "m": 1.5,
+      "model": "Erlang A + boosting",
+      "sl": 0.3327887770148175,
+      "abandon": 0.19024522142848627
+    },
+    {
+      "rep": 4,
+      "m": 1.5,
+      "model": "Erlang A + Gaussian process",
+      "sl": 0.3445684385243369,
+      "abandon": 0.17015357698180067
+    },
+    {
+      "rep": 4,
+      "m": 1.5,
+      "model": "Erlang A + linear",
+      "sl": 0.36134636390586716,
+      "abandon": 0.17834407216846587
+    },
+    {
+      "rep": 4,
+      "m": 1.5,
+      "model": "Erlang A + resampled day levels",
+      "sl": 0.37886841357219053,
+      "abandon": 0.18720294404420956
+    },
+    {
+      "rep": 4,
+      "m": 1.5,
+      "model": "Erlang A + estimated redials",
+      "sl": 0.1196988397350499,
+      "abandon": 0.3611030099694593
+    },
+    {
+      "rep": 4,
+      "m": 1.5,
+      "model": "Erlang A + both",
+      "sl": 0.16338379889809695,
+      "abandon": 0.3785814148140654
+    },
+    {
+      "rep": 4,
+      "m": 1.5,
+      "model": "Erlang A given reality's inputs",
+      "sl": 0.2187568197175618,
+      "abandon": 0.2898554154144679
+    }
+  ],
+  "mults": [
+    0.9,
+    1.0,
+    1.1,
+    1.2,
+    1.3,
+    1.4,
+    1.5
+  ],
+  "reps": 5,
+  "eval_days": 60
+}

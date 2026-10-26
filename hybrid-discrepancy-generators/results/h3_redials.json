@@ -1,0 +1,1309 @@
+{
+  "estimates": [
+    {
+      "rep": 0,
+      "n_days": 30,
+      "world": "redials 0.6",
+      "delay": 600.0,
+      "p_hat": 0.44384711167228136
+    },
+    {
+      "rep": 0,
+      "n_days": 90,
+      "world": "redials 0.6",
+      "delay": 600.0,
+      "p_hat": 0.4416268025120659
+    },
+    {
+      "rep": 0,
+      "n_days": 90,
+      "world": "no redials",
+      "delay": 600.0,
+      "p_hat": 0.0
+    },
+    {
+      "rep": 0,
+      "n_days": 90,
+      "world": "redials 0.6",
+      "delay": 300.0,
+      "p_hat": 0.5890901744145373
+    },
+    {
+      "rep": 0,
+      "n_days": 90,
+      "world": "surge forecast",
+      "delay": 300.0,
+      "p_hat": 0.5890901744145373,
+      "sl": 0.5045200347486155,
+      "sl_reality": 0.431002116737764
+    },
+    {
+      "rep": 0,
+      "n_days": 90,
+      "world": "surge forecast",
+      "delay": 600.0,
+      "p_hat": 0.4416268025120659,
+      "sl": 0.5127434071341135,
+      "sl_reality": 0.431002116737764
+    },
+    {
+      "rep": 0,
+      "n_days": 90,
+      "world": "redials 0.6",
+      "delay": 1200.0,
+      "p_hat": 0.3735894107716664
+    },
+    {
+      "rep": 0,
+      "n_days": 90,
+      "world": "surge forecast",
+      "delay": 1200.0,
+      "p_hat": 0.3735894107716664,
+      "sl": 0.5458061135371179,
+      "sl_reality": 0.431002116737764
+    },
+    {
+      "rep": 0,
+      "n_days": 270,
+      "world": "redials 0.6",
+      "delay": 600.0,
+      "p_hat": 0.5917837079935138
+    },
+    {
+      "rep": 0,
+      "n_days": 810,
+      "world": "redials 0.6",
+      "delay": 600.0,
+      "p_hat": 0.5944242856611189
+    },
+    {
+      "rep": 0,
+      "n_days": 810,
+      "world": "no redials",
+      "delay": 600.0,
+      "p_hat": 0.0
+    },
+    {
+      "rep": 0,
+      "n_days": 810,
+      "world": "redials 0.6",
+      "delay": 300.0,
+      "p_hat": 0.6803548476116326
+    },
+    {
+      "rep": 0,
+      "n_days": 810,
+      "world": "surge forecast",
+      "delay": 300.0,
+      "p_hat": 0.6803548476116326,
+      "sl": 0.38479720947665597,
+      "sl_reality": 0.431002116737764
+    },
+    {
+      "rep": 0,
+      "n_days": 810,
+      "world": "surge forecast",
+      "delay": 600.0,
+      "p_hat": 0.5944242856611189,
+      "sl": 0.48261400542179994,
+      "sl_reality": 0.431002116737764
+    },
+    {
+      "rep": 0,
+      "n_days": 810,
+      "world": "redials 0.6",
+      "delay": 1200.0,
+      "p_hat": 0.543776246211742
+    },
+    {
+      "rep": 0,
+      "n_days": 810,
+      "world": "surge forecast",
+      "delay": 1200.0,
+      "p_hat": 0.543776246211742,
+      "sl": 0.4965806955842126,
+      "sl_reality": 0.431002116737764
+    },
+    {
+      "rep": 1,
+      "n_days": 30,
+      "world": "redials 0.6",
+      "delay": 600.0,
+      "p_hat": 0.2749689342690293
+    },
+    {
+      "rep": 1,
+      "n_days": 90,
+      "world": "redials 0.6",
+      "delay": 600.0,
+      "p_hat": 0.5131026286888761
+    },
+    {
+      "rep": 1,
+      "n_days": 90,
+      "world": "no redials",
+      "delay": 600.0,
+      "p_hat": 0.0
+    },
+    {
+      "rep": 1,
+      "n_days": 90,
+      "world": "redials 0.6",
+      "delay": 300.0,
+      "p_hat": 0.6547947401878851
+    },
+    {
+      "rep": 1,
+      "n_days": 90,
+      "world": "surge forecast",
+      "delay": 300.0,
+      "p_hat": 0.6547947401878851,
+      "sl": 0.43930586506092645,
+      "sl_reality": 0.438183208915483
+    },
+    {
+      "rep": 1,
+      "n_days": 90,
+      "world": "surge forecast",
+      "delay": 600.0,
+      "p_hat": 0.5131026286888761,
+      "sl": 0.4428329444852824,
+      "sl_reality": 0.438183208915483
+    },
+    {
+      "rep": 1,
+      "n_days": 90,
+      "world": "redials 0.6",
+      "delay": 1200.0,
+      "p_hat": 0.48827799115772863
+    },
+    {
+      "rep": 1,
+      "n_days": 90,
+      "world": "surge forecast",
+      "delay": 1200.0,
+      "p_hat": 0.48827799115772863,
+      "sl": 0.48596647048680586,
+      "sl_reality": 0.438183208915483
+    },
+    {
+      "rep": 1,
+      "n_days": 270,
+      "world": "redials 0.6",
+      "delay": 600.0,
+      "p_hat": 0.5557495706366914
+    },
+    {
+      "rep": 1,
+      "n_days": 810,
+      "world": "redials 0.6",
+      "delay": 600.0,
+      "p_hat": 0.6128702061379914
+    },
+    {
+      "rep": 1,
+      "n_days": 810,
+      "world": "no redials",
+      "delay": 600.0,
+      "p_hat": 0.0
+    },
+    {
+      "rep": 1,
+      "n_days": 810,
+      "world": "redials 0.6",
+      "delay": 300.0,
+      "p_hat": 0.7097808205564519
+    },
+    {
+      "rep": 1,
+      "n_days": 810,
+      "world": "surge forecast",
+      "delay": 300.0,
+      "p_hat": 0.7097808205564519,
+      "sl": 0.42053937446227035,
+      "sl_reality": 0.438183208915483
+    },
+    {
+      "rep": 1,
+      "n_days": 810,
+      "world": "surge forecast",
+      "delay": 600.0,
+      "p_hat": 0.6128702061379914,
+      "sl": 0.4245768740226816,
+      "sl_reality": 0.438183208915483
+    },
+    {
+      "rep": 1,
+      "n_days": 810,
+      "world": "redials 0.6",
+      "delay": 1200.0,
+      "p_hat": 0.5528548739181927
+    },
+    {
+      "rep": 1,
+      "n_days": 810,
+      "world": "surge forecast",
+      "delay": 1200.0,
+      "p_hat": 0.5528548739181927,
+      "sl": 0.47018934419197084,
+      "sl_reality": 0.438183208915483
+    },
+    {
+      "rep": 2,
+      "n_days": 30,
+      "world": "redials 0.6",
+      "delay": 600.0,
+      "p_hat": 0.490636578964987
+    },
+    {
+      "rep": 2,
+      "n_days": 90,
+      "world": "redials 0.6",
+      "delay": 600.0,
+      "p_hat": 0.5448198747575576
+    },
+    {
+      "rep": 2,
+      "n_days": 90,
+      "world": "no redials",
+      "delay": 600.0,
+      "p_hat": 0.0
+    },
+    {
+      "rep": 2,
+      "n_days": 90,
+      "world": "redials 0.6",
+      "delay": 300.0,
+      "p_hat": 0.6708237505174983
+    },
+    {
+      "rep": 2,
+      "n_days": 90,
+      "world": "surge forecast",
+      "delay": 300.0,
+      "p_hat": 0.6708237505174983,
+      "sl": 0.416657988330004,
+      "sl_reality": 0.4044129671795001
+    },
+    {
+      "rep": 2,
+      "n_days": 90,
+      "world": "surge forecast",
+      "delay": 600.0,
+      "p_hat": 0.5448198747575576,
+      "sl": 0.5104182718398467,
+      "sl_reality": 0.4044129671795001
+    },
+    {
+      "rep": 2,
+      "n_days": 90,
+      "world": "redials 0.6",
+      "delay": 1200.0,
+      "p_hat": 0.4715859018476216
+    },
+    {
+      "rep": 2,
+      "n_days": 90,
+      "world": "surge forecast",
+      "delay": 1200.0,
+      "p_hat": 0.4715859018476216,
+      "sl": 0.49122900170574846,
+      "sl_reality": 0.4044129671795001
+    },
+    {
+      "rep": 2,
+      "n_days": 270,
+      "world": "redials 0.6",
+      "delay": 600.0,
+      "p_hat": 0.580213047680255
+    },
+    {
+      "rep": 2,
+      "n_days": 810,
+      "world": "redials 0.6",
+      "delay": 600.0,
+      "p_hat": 0.6257555529796742
+    },
+    {
+      "rep": 2,
+      "n_days": 810,
+      "world": "no redials",
+      "delay": 600.0,
+      "p_hat": 0.0
+    },
+    {
+      "rep": 2,
+      "n_days": 810,
+      "world": "redials 0.6",
+      "delay": 300.0,
+      "p_hat": 0.7441093628733308
+    },
+    {
+      "rep": 2,
+      "n_days": 810,
+      "world": "surge forecast",
+      "delay": 300.0,
+      "p_hat": 0.7441093628733308,
+      "sl": 0.3592886247628014,
+      "sl_reality": 0.4044129671795001
+    },
+    {
+      "rep": 2,
+      "n_days": 810,
+      "world": "surge forecast",
+      "delay": 600.0,
+      "p_hat": 0.6257555529796742,
+      "sl": 0.5043994298096333,
+      "sl_reality": 0.4044129671795001
+    },
+    {
+      "rep": 2,
+      "n_days": 810,
+      "world": "redials 0.6",
+      "delay": 1200.0,
+      "p_hat": 0.5941899694366611
+    },
+    {
+      "rep": 2,
+      "n_days": 810,
+      "world": "surge forecast",
+      "delay": 1200.0,
+      "p_hat": 0.5941899694366611,
+      "sl": 0.3887571333283925,
+      "sl_reality": 0.4044129671795001
+    },
+    {
+      "rep": 3,
+      "n_days": 30,
+      "world": "redials 0.6",
+      "delay": 600.0,
+      "p_hat": 0.5804014435023455
+    },
+    {
+      "rep": 3,
+      "n_days": 90,
+      "world": "redials 0.6",
+      "delay": 600.0,
+      "p_hat": 0.6173340230912073
+    },
+    {
+      "rep": 3,
+      "n_days": 90,
+      "world": "no redials",
+      "delay": 600.0,
+      "p_hat": 0.14745330749059757
+    },
+    {
+      "rep": 3,
+      "n_days": 90,
+      "world": "redials 0.6",
+      "delay": 300.0,
+      "p_hat": 0.7485495020043156
+    },
+    {
+      "rep": 3,
+      "n_days": 90,
+      "world": "surge forecast",
+      "delay": 300.0,
+      "p_hat": 0.7485495020043156,
+      "sl": 0.4212220566318927,
+      "sl_reality": 0.4510690411462643
+    },
+    {
+      "rep": 3,
+      "n_days": 90,
+      "world": "surge forecast",
+      "delay": 600.0,
+      "p_hat": 0.6173340230912073,
+      "sl": 0.5057086058912813,
+      "sl_reality": 0.4510690411462643
+    },
+    {
+      "rep": 3,
+      "n_days": 90,
+      "world": "redials 0.6",
+      "delay": 1200.0,
+      "p_hat": 0.5687185804708892
+    },
+    {
+      "rep": 3,
+      "n_days": 90,
+      "world": "surge forecast",
+      "delay": 1200.0,
+      "p_hat": 0.5687185804708892,
+      "sl": 0.505916623643929,
+      "sl_reality": 0.4510690411462643
+    },
+    {
+      "rep": 3,
+      "n_days": 270,
+      "world": "redials 0.6",
+      "delay": 600.0,
+      "p_hat": 0.5805037338895134
+    },
+    {
+      "rep": 3,
+      "n_days": 810,
+      "world": "redials 0.6",
+      "delay": 600.0,
+      "p_hat": 0.6014689107231092
+    },
+    {
+      "rep": 3,
+      "n_days": 810,
+      "world": "no redials",
+      "delay": 600.0,
+      "p_hat": 0.0027258531596356353
+    },
+    {
+      "rep": 3,
+      "n_days": 810,
+      "world": "redials 0.6",
+      "delay": 300.0,
+      "p_hat": 0.710813163615367
+    },
+    {
+      "rep": 3,
+      "n_days": 810,
+      "world": "surge forecast",
+      "delay": 300.0,
+      "p_hat": 0.710813163615367,
+      "sl": 0.38999458101384304,
+      "sl_reality": 0.4510690411462643
+    },
+    {
+      "rep": 3,
+      "n_days": 810,
+      "world": "surge forecast",
+      "delay": 600.0,
+      "p_hat": 0.6014689107231092,
+      "sl": 0.45945874882501037,
+      "sl_reality": 0.4510690411462643
+    },
+    {
+      "rep": 3,
+      "n_days": 810,
+      "world": "redials 0.6",
+      "delay": 1200.0,
+      "p_hat": 0.5588917002771865
+    },
+    {
+      "rep": 3,
+      "n_days": 810,
+      "world": "surge forecast",
+      "delay": 1200.0,
+      "p_hat": 0.5588917002771865,
+      "sl": 0.4407221652046501,
+      "sl_reality": 0.4510690411462643
+    },
+    {
+      "rep": 4,
+      "n_days": 30,
+      "world": "redials 0.6",
+      "delay": 600.0,
+      "p_hat": 0.6432793896819027
+    },
+    {
+      "rep": 4,
+      "n_days": 90,
+      "world": "redials 0.6",
+      "delay": 600.0,
+      "p_hat": 0.6187800919516744
+    },
+    {
+      "rep": 4,
+      "n_days": 90,
+      "world": "no redials",
+      "delay": 600.0,
+      "p_hat": 0.0
+    },
+    {
+      "rep": 4,
+      "n_days": 90,
+      "world": "redials 0.6",
+      "delay": 300.0,
+      "p_hat": 0.6975085954025787
+    },
+    {
+      "rep": 4,
+      "n_days": 90,
+      "world": "surge forecast",
+      "delay": 300.0,
+      "p_hat": 0.6975085954025787,
+      "sl": 0.3825449487940642,
+      "sl_reality": 0.47375408394278967
+    },
+    {
+      "rep": 4,
+      "n_days": 90,
+      "world": "surge forecast",
+      "delay": 600.0,
+      "p_hat": 0.6187800919516744,
+      "sl": 0.4275830628513457,
+      "sl_reality": 0.47375408394278967
+    },
+    {
+      "rep": 4,
+      "n_days": 90,
+      "world": "redials 0.6",
+      "delay": 1200.0,
+      "p_hat": 0.5420983045644712
+    },
+    {
+      "rep": 4,
+      "n_days": 90,
+      "world": "surge forecast",
+      "delay": 1200.0,
+      "p_hat": 0.5420983045644712,
+      "sl": 0.46827602636385296,
+      "sl_reality": 0.47375408394278967
+    },
+    {
+      "rep": 4,
+      "n_days": 270,
+      "world": "redials 0.6",
+      "delay": 600.0,
+      "p_hat": 0.6376691330562818
+    },
+    {
+      "rep": 4,
+      "n_days": 810,
+      "world": "redials 0.6",
+      "delay": 600.0,
+      "p_hat": 0.6336334927204572
+    },
+    {
+      "rep": 4,
+      "n_days": 810,
+      "world": "no redials",
+      "delay": 600.0,
+      "p_hat": 0.0
+    },
+    {
+      "rep": 4,
+      "n_days": 810,
+      "world": "redials 0.6",
+      "delay": 300.0,
+      "p_hat": 0.745596595923395
+    },
+    {
+      "rep": 4,
+      "n_days": 810,
+      "world": "surge forecast",
+      "delay": 300.0,
+      "p_hat": 0.745596595923395,
+      "sl": 0.3825745525935486,
+      "sl_reality": 0.47375408394278967
+    },
+    {
+      "rep": 4,
+      "n_days": 810,
+      "world": "surge forecast",
+      "delay": 600.0,
+      "p_hat": 0.6336334927204572,
+      "sl": 0.5145302223188564,
+      "sl_reality": 0.47375408394278967
+    },
+    {
+      "rep": 4,
+      "n_days": 810,
+      "world": "redials 0.6",
+      "delay": 1200.0,
+      "p_hat": 0.5647412251498173
+    },
+    {
+      "rep": 4,
+      "n_days": 810,
+      "world": "surge forecast",
+      "delay": 1200.0,
+      "p_hat": 0.5647412251498173,
+      "sl": 0.46788300105801855,
+      "sl_reality": 0.47375408394278967
+    },
+    {
+      "rep": 5,
+      "n_days": 30,
+      "world": "redials 0.6",
+      "delay": 600.0,
+      "p_hat": 0.7467206553115555
+    },
+    {
+      "rep": 5,
+      "n_days": 90,
+      "world": "redials 0.6",
+      "delay": 600.0,
+      "p_hat": 0.6912622107778761
+    },
+    {
+      "rep": 5,
+      "n_days": 90,
+      "world": "no redials",
+      "delay": 600.0,
+      "p_hat": 0.0
+    },
+    {
+      "rep": 5,
+      "n_days": 90,
+      "world": "redials 0.6",
+      "delay": 300.0,
+      "p_hat": 0.8193237844878264
+    },
+    {
+      "rep": 5,
+      "n_days": 90,
+      "world": "surge forecast",
+      "delay": 300.0,
+      "p_hat": 0.8193237844878264,
+      "sl": 0.38975520861998325,
+      "sl_reality": 0.45766838770241725
+    },
+    {
+      "rep": 5,
+      "n_days": 90,
+      "world": "surge forecast",
+      "delay": 600.0,
+      "p_hat": 0.6912622107778761,
+      "sl": 0.39941343541615215,
+      "sl_reality": 0.45766838770241725
+    },
+    {
+      "rep": 5,
+      "n_days": 90,
+      "world": "redials 0.6",
+      "delay": 1200.0,
+      "p_hat": 0.6662909750932016
+    },
+    {
+      "rep": 5,
+      "n_days": 90,
+      "world": "surge forecast",
+      "delay": 1200.0,
+      "p_hat": 0.6662909750932016,
+      "sl": 0.3926308821163864,
+      "sl_reality": 0.45766838770241725
+    },
+    {
+      "rep": 5,
+      "n_days": 270,
+      "world": "redials 0.6",
+      "delay": 600.0,
+      "p_hat": 0.6615174199867891
+    },
+    {
+      "rep": 5,
+      "n_days": 810,
+      "world": "redials 0.6",
+      "delay": 600.0,
+      "p_hat": 0.613647739669639
+    },
+    {
+      "rep": 5,
+      "n_days": 810,
+      "world": "no redials",
+      "delay": 600.0,
+      "p_hat": 0.0
+    },
+    {
+      "rep": 5,
+      "n_days": 810,
+      "world": "redials 0.6",
+      "delay": 300.0,
+      "p_hat": 0.738682960025778
+    },
+    {
+      "rep": 5,
+      "n_days": 810,
+      "world": "surge forecast",
+      "delay": 300.0,
+      "p_hat": 0.738682960025778,
+      "sl": 0.3858694990194765,
+      "sl_reality": 0.45766838770241725
+    },
+    {
+      "rep": 5,
+      "n_days": 810,
+      "world": "surge forecast",
+      "delay": 600.0,
+      "p_hat": 0.613647739669639,
+      "sl": 0.5222891174952222,
+      "sl_reality": 0.45766838770241725
+    },
+    {
+      "rep": 5,
+      "n_days": 810,
+      "world": "redials 0.6",
+      "delay": 1200.0,
+      "p_hat": 0.5963821472462919
+    },
+    {
+      "rep": 5,
+      "n_days": 810,
+      "world": "surge forecast",
+      "delay": 1200.0,
+      "p_hat": 0.5963821472462919,
+      "sl": 0.45487418236293076,
+      "sl_reality": 0.45766838770241725
+    },
+    {
+      "rep": 6,
+      "n_days": 30,
+      "world": "redials 0.6",
+      "delay": 600.0,
+      "p_hat": 0.6495919658796695
+    },
+    {
+      "rep": 6,
+      "n_days": 90,
+      "world": "redials 0.6",
+      "delay": 600.0,
+      "p_hat": 0.5819847498653472
+    },
+    {
+      "rep": 6,
+      "n_days": 90,
+      "world": "no redials",
+      "delay": 600.0,
+      "p_hat": 0.0
+    },
+    {
+      "rep": 6,
+      "n_days": 90,
+      "world": "redials 0.6",
+      "delay": 300.0,
+      "p_hat": 0.6811005260123947
+    },
+    {
+      "rep": 6,
+      "n_days": 90,
+      "world": "surge forecast",
+      "delay": 300.0,
+      "p_hat": 0.6811005260123947,
+      "sl": 0.4221932987091569,
+      "sl_reality": 0.4959312533765532
+    },
+    {
+      "rep": 6,
+      "n_days": 90,
+      "world": "surge forecast",
+      "delay": 600.0,
+      "p_hat": 0.5819847498653472,
+      "sl": 0.45202606039515913,
+      "sl_reality": 0.4959312533765532
+    },
+    {
+      "rep": 6,
+      "n_days": 90,
+      "world": "redials 0.6",
+      "delay": 1200.0,
+      "p_hat": 0.5241149078004909
+    },
+    {
+      "rep": 6,
+      "n_days": 90,
+      "world": "surge forecast",
+      "delay": 1200.0,
+      "p_hat": 0.5241149078004909,
+      "sl": 0.4697295212912466,
+      "sl_reality": 0.4959312533765532
+    },
+    {
+      "rep": 6,
+      "n_days": 270,
+      "world": "redials 0.6",
+      "delay": 600.0,
+      "p_hat": 0.5457245396537876
+    },
+    {
+      "rep": 6,
+      "n_days": 810,
+      "world": "redials 0.6",
+      "delay": 600.0,
+      "p_hat": 0.5729165651315972
+    },
+    {
+      "rep": 6,
+      "n_days": 810,
+      "world": "no redials",
+      "delay": 600.0,
+      "p_hat": 0.0
+    },
+    {
+      "rep": 6,
+      "n_days": 810,
+      "world": "redials 0.6",
+      "delay": 300.0,
+      "p_hat": 0.6862068292453729
+    },
+    {
+      "rep": 6,
+      "n_days": 810,
+      "world": "surge forecast",
+      "delay": 300.0,
+      "p_hat": 0.6862068292453729,
+      "sl": 0.4159307693036805,
+      "sl_reality": 0.4959312533765532
+    },
+    {
+      "rep": 6,
+      "n_days": 810,
+      "world": "surge forecast",
+      "delay": 600.0,
+      "p_hat": 0.5729165651315972,
+      "sl": 0.421816762486123,
+      "sl_reality": 0.4959312533765532
+    },
+    {
+      "rep": 6,
+      "n_days": 810,
+      "world": "redials 0.6",
+      "delay": 1200.0,
+      "p_hat": 0.5305729033942255
+    },
+    {
+      "rep": 6,
+      "n_days": 810,
+      "world": "surge forecast",
+      "delay": 1200.0,
+      "p_hat": 0.5305729033942255,
+      "sl": 0.4812216756659347,
+      "sl_reality": 0.4959312533765532
+    },
+    {
+      "rep": 7,
+      "n_days": 30,
+      "world": "redials 0.6",
+      "delay": 600.0,
+      "p_hat": 0.6367632512369404
+    },
+    {
+      "rep": 7,
+      "n_days": 90,
+      "world": "redials 0.6",
+      "delay": 600.0,
+      "p_hat": 0.6101194425299166
+    },
+    {
+      "rep": 7,
+      "n_days": 90,
+      "world": "no redials",
+      "delay": 600.0,
+      "p_hat": 0.0
+    },
+    {
+      "rep": 7,
+      "n_days": 90,
+      "world": "redials 0.6",
+      "delay": 300.0,
+      "p_hat": 0.716025148903166
+    },
+    {
+      "rep": 7,
+      "n_days": 90,
+      "world": "surge forecast",
+      "delay": 300.0,
+      "p_hat": 0.716025148903166,
+      "sl": 0.3638207970790454,
+      "sl_reality": 0.4561775603345358
+    },
+    {
+      "rep": 7,
+      "n_days": 90,
+      "world": "surge forecast",
+      "delay": 600.0,
+      "p_hat": 0.6101194425299166,
+      "sl": 0.44972739012678853,
+      "sl_reality": 0.4561775603345358
+    },
+    {
+      "rep": 7,
+      "n_days": 90,
+      "world": "redials 0.6",
+      "delay": 1200.0,
+      "p_hat": 0.5405182443746118
+    },
+    {
+      "rep": 7,
+      "n_days": 90,
+      "world": "surge forecast",
+      "delay": 1200.0,
+      "p_hat": 0.5405182443746118,
+      "sl": 0.460005091403584,
+      "sl_reality": 0.4561775603345358
+    },
+    {
+      "rep": 7,
+      "n_days": 270,
+      "world": "redials 0.6",
+      "delay": 600.0,
+      "p_hat": 0.6332020069271156
+    },
+    {
+      "rep": 7,
+      "n_days": 810,
+      "world": "redials 0.6",
+      "delay": 600.0,
+      "p_hat": 0.6260341262498621
+    },
+    {
+      "rep": 7,
+      "n_days": 810,
+      "world": "no redials",
+      "delay": 600.0,
+      "p_hat": 0.005822449031842566
+    },
+    {
+      "rep": 7,
+      "n_days": 810,
+      "world": "redials 0.6",
+      "delay": 300.0,
+      "p_hat": 0.7108311965987756
+    },
+    {
+      "rep": 7,
+      "n_days": 810,
+      "world": "surge forecast",
+      "delay": 300.0,
+      "p_hat": 0.7108311965987756,
+      "sl": 0.4740546626546482,
+      "sl_reality": 0.4561775603345358
+    },
+    {
+      "rep": 7,
+      "n_days": 810,
+      "world": "surge forecast",
+      "delay": 600.0,
+      "p_hat": 0.6260341262498621,
+      "sl": 0.5127659932943575,
+      "sl_reality": 0.4561775603345358
+    },
+    {
+      "rep": 7,
+      "n_days": 810,
+      "world": "redials 0.6",
+      "delay": 1200.0,
+      "p_hat": 0.5808167618542187
+    },
+    {
+      "rep": 7,
+      "n_days": 810,
+      "world": "surge forecast",
+      "delay": 1200.0,
+      "p_hat": 0.5808167618542187,
+      "sl": 0.47151749597455134,
+      "sl_reality": 0.4561775603345358
+    }
+  ],
+  "auxiliary": [
+    {
+      "rep": 0,
+      "n_days": 30,
+      "world": "redials 0.6",
+      "beta": 0.1413750004395995
+    },
+    {
+      "rep": 0,
+      "n_days": 90,
+      "world": "redials 0.6",
+      "beta": 0.1478576739195572
+    },
+    {
+      "rep": 0,
+      "n_days": 90,
+      "world": "no redials",
+      "beta": -0.04920669300985227
+    },
+    {
+      "rep": 0,
+      "n_days": 270,
+      "world": "redials 0.6",
+      "beta": 0.22011665319388826
+    },
+    {
+      "rep": 0,
+      "n_days": 810,
+      "world": "redials 0.6",
+      "beta": 0.23617709418713737
+    },
+    {
+      "rep": 0,
+      "n_days": 810,
+      "world": "no redials",
+      "beta": -0.03824834580298519
+    },
+    {
+      "rep": 1,
+      "n_days": 30,
+      "world": "redials 0.6",
+      "beta": 0.07098912179681621
+    },
+    {
+      "rep": 1,
+      "n_days": 90,
+      "world": "redials 0.6",
+      "beta": 0.202938591724995
+    },
+    {
+      "rep": 1,
+      "n_days": 90,
+      "world": "no redials",
+      "beta": -0.03118313906461561
+    },
+    {
+      "rep": 1,
+      "n_days": 270,
+      "world": "redials 0.6",
+      "beta": 0.21769161428350695
+    },
+    {
+      "rep": 1,
+      "n_days": 810,
+      "world": "redials 0.6",
+      "beta": 0.24856144265627617
+    },
+    {
+      "rep": 1,
+      "n_days": 810,
+      "world": "no redials",
+      "beta": -0.04080748114351105
+    },
+    {
+      "rep": 2,
+      "n_days": 30,
+      "world": "redials 0.6",
+      "beta": 0.1742342714816418
+    },
+    {
+      "rep": 2,
+      "n_days": 90,
+      "world": "redials 0.6",
+      "beta": 0.21310642683530223
+    },
+    {
+      "rep": 2,
+      "n_days": 90,
+      "world": "no redials",
+      "beta": -0.044936976440485686
+    },
+    {
+      "rep": 2,
+      "n_days": 270,
+      "world": "redials 0.6",
+      "beta": 0.23008150125954369
+    },
+    {
+      "rep": 2,
+      "n_days": 810,
+      "world": "redials 0.6",
+      "beta": 0.2743887596957731
+    },
+    {
+      "rep": 2,
+      "n_days": 810,
+      "world": "no redials",
+      "beta": -0.026122807745025164
+    },
+    {
+      "rep": 3,
+      "n_days": 30,
+      "world": "redials 0.6",
+      "beta": 0.24137049044567432
+    },
+    {
+      "rep": 3,
+      "n_days": 90,
+      "world": "redials 0.6",
+      "beta": 0.2675944800615119
+    },
+    {
+      "rep": 3,
+      "n_days": 90,
+      "world": "no redials",
+      "beta": 0.02168265707674504
+    },
+    {
+      "rep": 3,
+      "n_days": 270,
+      "world": "redials 0.6",
+      "beta": 0.2406868336262517
+    },
+    {
+      "rep": 3,
+      "n_days": 810,
+      "world": "redials 0.6",
+      "beta": 0.25561779777131394
+    },
+    {
+      "rep": 3,
+      "n_days": 810,
+      "world": "no redials",
+      "beta": -0.008777094661353306
+    },
+    {
+      "rep": 4,
+      "n_days": 30,
+      "world": "redials 0.6",
+      "beta": 0.26301975762182933
+    },
+    {
+      "rep": 4,
+      "n_days": 90,
+      "world": "redials 0.6",
+      "beta": 0.24342315007892304
+    },
+    {
+      "rep": 4,
+      "n_days": 90,
+      "world": "no redials",
+      "beta": -0.09464844214116903
+    },
+    {
+      "rep": 4,
+      "n_days": 270,
+      "world": "redials 0.6",
+      "beta": 0.2732511053887276
+    },
+    {
+      "rep": 4,
+      "n_days": 810,
+      "world": "redials 0.6",
+      "beta": 0.269932307651302
+    },
+    {
+      "rep": 4,
+      "n_days": 810,
+      "world": "no redials",
+      "beta": -0.05116988093041977
+    },
+    {
+      "rep": 5,
+      "n_days": 30,
+      "world": "redials 0.6",
+      "beta": 0.35674988862843693
+    },
+    {
+      "rep": 5,
+      "n_days": 90,
+      "world": "redials 0.6",
+      "beta": 0.32915436118960556
+    },
+    {
+      "rep": 5,
+      "n_days": 90,
+      "world": "no redials",
+      "beta": -0.030576411231503127
+    },
+    {
+      "rep": 5,
+      "n_days": 270,
+      "world": "redials 0.6",
+      "beta": 0.286690468237516
+    },
+    {
+      "rep": 5,
+      "n_days": 810,
+      "world": "redials 0.6",
+      "beta": 0.2824322844794471
+    },
+    {
+      "rep": 5,
+      "n_days": 810,
+      "world": "no redials",
+      "beta": -0.053674946787710814
+    },
+    {
+      "rep": 6,
+      "n_days": 30,
+      "world": "redials 0.6",
+      "beta": 0.3006706410964753
+    },
+    {
+      "rep": 6,
+      "n_days": 90,
+      "world": "redials 0.6",
+      "beta": 0.2298155265707275
+    },
+    {
+      "rep": 6,
+      "n_days": 90,
+      "world": "no redials",
+      "beta": -0.058970786925395154
+    },
+    {
+      "rep": 6,
+      "n_days": 270,
+      "world": "redials 0.6",
+      "beta": 0.21709018108883746
+    },
+    {
+      "rep": 6,
+      "n_days": 810,
+      "world": "redials 0.6",
+      "beta": 0.23631741702231038
+    },
+    {
+      "rep": 6,
+      "n_days": 810,
+      "world": "no redials",
+      "beta": -0.051871836164043644
+    },
+    {
+      "rep": 7,
+      "n_days": 30,
+      "world": "redials 0.6",
+      "beta": 0.2784335859186255
+    },
+    {
+      "rep": 7,
+      "n_days": 90,
+      "world": "redials 0.6",
+      "beta": 0.2558903409946211
+    },
+    {
+      "rep": 7,
+      "n_days": 90,
+      "world": "no redials",
+      "beta": -0.024619502353448078
+    },
+    {
+      "rep": 7,
+      "n_days": 270,
+      "world": "redials 0.6",
+      "beta": 0.27907263135274246
+    },
+    {
+      "rep": 7,
+      "n_days": 810,
+      "world": "redials 0.6",
+      "beta": 0.2664119663307066
+    },
+    {
+      "rep": 7,
+      "n_days": 810,
+      "world": "no redials",
+      "beta": -0.040765806151947435
+    }
+  ],
+  "binding": {
+    "grid": [
+      0.0,
+      0.2,
+      0.4,
+      0.6,
+      0.8,
+      1.0
+    ],
+    "beta_simulated": [
+      -0.017017372409453897,
+      0.045870994212407604,
+      0.14168038352495183,
+      0.23149894485070535,
+      0.38462821601648567,
+      0.585607737832189
+    ],
+    "beta_observed": 0.1478576739195572
+  },
+  "reps": 8,
+  "surge": 1.3,
+  "true_p": 0.6,
+  "true_delay": 600.0
+}
