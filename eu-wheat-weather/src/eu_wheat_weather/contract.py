@@ -11,6 +11,8 @@ EU27: tuple[str, ...] = (
 EUROSTAT_API = "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/"
 CROPS_DATASET = "apro_cpshr"
 CROP = "C1110"                      # common wheat and spelt
+MAIZE = "C1500"                     # grain maize and corn-cob-mix (METHODS.md, section 9)
+CROP_NAMES: dict[str, str] = {CROP: "wheat", MAIZE: "maize"}
 AREA = "AR_THS_HA"                  # area, thousand hectares
 PRODUCTION = "HPRD_HUMD_EU_THS_T"   # harvested production, EU standard humidity, thousand t
 MEASURES: tuple[str, ...] = (AREA, PRODUCTION)
@@ -37,6 +39,7 @@ GISCO_BASE = "https://gisco-services.ec.europa.eu/distribution/v2/nuts/geojson/"
 # winter wheat. CC BY 4.0; Jägermeyr et al. (2021), doi:10.5281/zenodo.5062513.
 CALENDAR_VERSION = "v1.01"
 CALENDAR_FILE = f"wwh_rf_ggcmi_crop_calendar_phase3_{CALENDAR_VERSION}.nc4"
+MAIZE_CALENDAR_FILE = f"mai_rf_ggcmi_crop_calendar_phase3_{CALENDAR_VERSION}.nc4"   # section 9
 CALENDAR_BASE = "https://zenodo.org/records/5062513/files/"
 CALENDAR_SNAPSHOT = f"snapshots/ggcmi-crop-calendar-{CALENDAR_VERSION}"
 

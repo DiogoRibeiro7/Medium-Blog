@@ -120,8 +120,14 @@ Results are in [docs/RESULTS.md](docs/RESULTS.md). Every rule was fixed before a
   - **Placebo:** the 61 days after maturity.
   - **Descriptive:** M3 and E4 (2012, 2015, 2022).
   - **Sensitivity analyses:** five, fixed in advance.
-- [ ] Data: the maize snapshot, the calendar, the season weather and the panel
-      (`docs/MAIZE_DATA.md`), with no estimate.
+- [x] Data, with no estimate ([docs/MAIZE_DATA.md](docs/MAIZE_DATA.md)).
+  - **Sources:** the Eurostat snapshot (`snapshots/eurostat-maize-2026-10-26/`) and the
+    maize calendar, frozen beside the wheat one.
+  - **Seasons:** each region's season, planted 29 March to 12 May and mature 31 August
+    to 7 October across the panel's regions.
+  - **Panel:** 1,898 region-years in 132 regions of 19 countries, 2010-2024. The data
+    rule flags 39 region-years: Danish, Austrian and Czech pro-rating, Italian values
+    carried forward, and Dutch and Swedish sums.
 - [ ] Estimates and report (`docs/MAIZE.md`), beside wheat.
 
 No artificial observations, no estimate before the plan, and no causal claim about

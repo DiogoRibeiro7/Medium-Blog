@@ -6,7 +6,8 @@ Union respond to extreme heat and drought during the growing season, 2000-2024.
 **Status: article drafted and corrected after a critical review (phase 3). Amendment A1
 ([METHODS.md](METHODS.md), section 8) is registered and computed
 ([docs/AMENDMENT.md](docs/AMENDMENT.md)). A second crop, grain maize, is registered
-([METHODS.md](METHODS.md), section 9) and not yet computed.**
+([METHODS.md](METHODS.md), section 9); its panel is built
+([docs/MAIZE_DATA.md](docs/MAIZE_DATA.md)) and not yet estimated.**
 
 - **Plan.** [METHODS.md](METHODS.md) was committed before any yield was related to any
   weather variable. Its change log records the decisions made before any estimate, and
@@ -71,7 +72,7 @@ are not effects of a permanent change in climate, to which farmers adapt.
 
 | Source | What | Licence and attribution |
 | --- | --- | --- |
-| Eurostat `apro_cpshr` | Common wheat (`C1110`): area and harvested production at EU standard humidity, NUTS-2, annual | Free reuse with attribution: © European Union, Eurostat |
+| Eurostat `apro_cpshr` | Common wheat (`C1110`) and, for section 9, grain maize (`C1500`): area and harvested production at EU standard humidity, NUTS-2, annual | Free reuse with attribution: © European Union, Eurostat |
 | E-OBS v33.0e (ECA&D, Copernicus) | Daily maximum and minimum temperature, precipitation and elevation, 0.25° grid, 1950-2025 | Non-commercial research and education only (below) |
 | GISCO NUTS boundaries | NUTS-2 polygons of the 2006, 2010, 2013, 2016, 2021 and 2024 versions, 1:3 million | Non-commercial use only, with the notice © EuroGeographics for the administrative boundaries (below) |
 | GGCMI Phase 3 crop calendar v1.01 (Amendment A1 only) | Rainfed winter wheat maturity day, 0.5° grid (Jägermeyr et al. 2021, Nature Food 2, 873-885; doi:10.5281/zenodo.5062513) | CC BY 4.0, with attribution |
@@ -124,6 +125,11 @@ poetry run eu-wheat weather --eobs-dir data/eobs --boundaries-dir data/boundarie
 poetry run eu-wheat panel --crops snapshots/eurostat-crops-2026-10-23 --region-map docs/panel/region_map.csv --weather docs/panel/weather.csv --output-dir docs/panel --report docs/DATA.md
 poetry run eu-wheat estimate --panel docs/panel/panel.csv --weather docs/panel/weather.csv --latitudes docs/panel/region_latitude.csv --output-dir docs/results --report docs/RESULTS.md
 poetry run eu-wheat amend --crops snapshots/eurostat-crops-2026-10-23   # Amendment A1, beside the registered results
+# Grain maize (METHODS.md, section 9)
+poetry run eu-wheat fetch-crops --crop maize --output-dir snapshots/eurostat-maize-2026-10-26
+poetry run eu-wheat regions --crops snapshots/eurostat-maize-2026-10-26 --nuts-changes snapshots/nuts-changes-2026-10-23 --boundaries-dir data/boundaries --output docs/maize/region_map.csv
+poetry run eu-wheat maize-weather --eobs-dir data/eobs --boundaries-dir data/boundaries --output docs/maize/weather.csv --seasons docs/maize/season.csv   # about an hour
+poetry run eu-wheat maize-panel --crops snapshots/eurostat-maize-2026-10-26
 poetry run eu-wheat publication            # values, article and figures; --check compares
 poetry run pytest
 poetry run ruff check src tests

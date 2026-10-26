@@ -56,11 +56,13 @@ def test_every_command_parses() -> None:
 
 
 def test_committed_crop_calendar_matches_its_manifest() -> None:
-    """Amendment A1's calendar is committed byte-identical to the downloaded file."""
-    from eu_wheat_weather.contract import CALENDAR_FILE, CALENDAR_SNAPSHOT
+    """The calendars of Amendment A1 (wheat) and section 9 (maize) are committed
+    byte-identical to the downloaded files."""
+    from eu_wheat_weather.contract import CALENDAR_FILE, CALENDAR_SNAPSHOT, MAIZE_CALENDAR_FILE
 
     directory = ROOT / CALENDAR_SNAPSHOT
-    assert verify(directory, directory / "manifest.json") == [CALENDAR_FILE]
+    assert verify(directory, directory / "manifest.json") == [CALENDAR_FILE,
+                                                               MAIZE_CALENDAR_FILE]
 
 
 def test_audit_command_on_the_committed_snapshot(capsys: pytest.CaptureFixture[str]) -> None:
