@@ -78,6 +78,10 @@ def main() -> None:
         out("    queue share a callback 20 minutes later would meet: after "
             f"abandonment {d['queue_share_20min_after_abandoned']:.3f}, "
             f"after service {d['queue_share_20min_after_served']:.3f}")
+        out("    queue share at the visible callbacks within an hour "
+            "(IDs with at most 50 calls): after abandonment "
+            f"{d['queue_share_at_visible_callbacks_abandoned']:.3f}, after "
+            f"service {d['queue_share_at_visible_callbacks_served']:.3f}")
         out("    (weighted columns: each visible callback weighted by one "
             "over its half hour's queue share; meant for windows up to an "
             "hour)")
@@ -121,6 +125,15 @@ def main() -> None:
         mean=("p_hat", "mean"), sd=("p_hat", "std"),
         rmse=("err", lambda e: float(np.sqrt(np.mean(e ** 2)))))
     table(s.round(3).unstack("p_true"))
+    st = pd.DataFrame(r4["statistics"])
+    out("    mean statistics on the simulated histories (sd in brackets "
+        "is across histories):")
+    names = ["lag", "lead", "lag_minus_lead", "controlled", "acf1",
+             "dispersion"]
+    m = st.groupby(["world", "p_true"])[names].mean().round(4)
+    sd = st.groupby(["world", "p_true"])[names].std().round(4)
+    table(m)
+    table(sd.add_suffix(" sd"))
     out("    binding functions without clustering (statistic at each p):")
     b = pd.DataFrame({n: v["values"] for n, v in r4["bindings"].items()},
                      index=r4["bindings"]["lag"]["grid"])

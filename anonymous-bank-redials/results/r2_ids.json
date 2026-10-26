@@ -726,6 +726,8 @@
   },
   "detection": {
     "queued_share_of_offered": 0.6261879670093087,
+    "queue_share_at_visible_callbacks_abandoned": 0.7808528898233442,
+    "queue_share_at_visible_callbacks_served": 0.749577292127329,
     "id_share_queued": 0.7753176939880331,
     "id_share_not_queued": 0.03588611139395174,
     "queue_share_quartiles": [

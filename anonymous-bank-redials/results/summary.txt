@@ -135,6 +135,7 @@ over 200             0.185            0.535           0.813              0.464  
 
     visibility: share of offered calls that queued 0.626; ID recorded for 0.775 of queued and 0.036 of not-queued offered calls; queue share by half hour, quartiles 0.276, 0.548, 0.806
     queue share a callback 20 minutes later would meet: after abandonment 0.806, after service 0.686
+    queue share at the visible callbacks within an hour (IDs with at most 50 calls): after abandonment 0.781, after service 0.750
     (weighted columns: each visible callback weighted by one over its half hour's queue share; meant for windows up to an hour)
 
     delay from hanging up to the next call, IDs with at most 50 calls, next call within 3 hours: n 18657, median 19.1 min, mean 34.5 min, within 10 min 0.351, within 30 min 0.620, within 60 min 0.801
@@ -169,6 +170,25 @@ independent demand controlled      0.014  0.128  0.276  0.012  0.029  0.017  0.0
                    joint           0.037  0.153  0.291  0.017  0.028  0.015  0.041  0.027  0.017
                    lag             0.004  0.147  0.298  0.008  0.031  0.016  0.009  0.031  0.016
                    lag_minus_lead  0.038  0.117  0.261  0.026  0.057  0.042  0.046  0.064  0.056
+
+    mean statistics on the simulated histories (sd in brackets is across histories):
+                              lag    lead  lag_minus_lead  controlled    acf1  dispersion
+world              p_true                                                                
+clustered demand   0.00    0.3074  0.3816         -0.0742      0.0290  0.4285      2.7613
+                   0.15    0.3434  0.3983         -0.0549      0.0560  0.4586      3.0436
+                   0.30    0.3937  0.4315         -0.0378      0.0760  0.5003      3.4728
+independent demand 0.00   -0.0129  0.0329         -0.0458     -0.0035 -0.0322      0.9444
+                   0.15    0.0422  0.0719         -0.0297      0.0484  0.0083      1.0390
+                   0.30    0.1132  0.1158         -0.0027      0.1110  0.0764      1.1731
+
+                           lag sd  lead sd  lag_minus_lead sd  controlled sd  acf1 sd  dispersion sd
+world              p_true                                                                           
+clustered demand   0.00    0.0175   0.0229             0.0134         0.0133   0.0162         0.0689
+                   0.15    0.0162   0.0172             0.0068         0.0111   0.0131         0.0698
+                   0.30    0.0169   0.0165             0.0094         0.0131   0.0162         0.1252
+independent demand 0.00    0.0062   0.0054             0.0061         0.0073   0.0151         0.0150
+                   0.15    0.0129   0.0128             0.0113         0.0127   0.0131         0.0243
+                   0.30    0.0086   0.0088             0.0074         0.0071   0.0142         0.0256
 
     binding functions without clustering (statistic at each p):
          lag  lag_minus_lead  controlled

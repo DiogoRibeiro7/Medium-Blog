@@ -27,6 +27,8 @@ from anonbank.stats import Statistics
 
 SINGLE = ("lag", "lag_minus_lead", "controlled")
 P_TRUE = (0.0, 0.15, 0.3)
+ALL_STATS = ("lag", "lead", "lag_minus_lead", "controlled", "acf1",
+             "dispersion")
 
 
 def main() -> None:
@@ -48,7 +50,7 @@ def main() -> None:
     rho, sigma = joint.point(real, weights)[1:]
     worlds = {"independent demand": Clustering(),
               "clustered demand": Clustering(float(rho), float(sigma))}
-    rows = []
+    rows, stats = [], []
     for w_i, (wname, cl) in enumerate(worlds.items()):
         for p_i, p in enumerate(P_TRUE):
             truth = Simulator(centre, p=p, delay=Delay(600.0), clustering=cl)
@@ -56,6 +58,8 @@ def main() -> None:
                 off, ab, dow = truth.days(rng("r4-world", w_i, p_i, h),
                                           n_days)
                 st = Statistics(off, ab, dow)
+                stats.append({"world": wname, "p_true": p, "history": h,
+                              **{n: st.get(n) for n in ALL_STATS}})
                 for name in SINGLE:
                     rows.append({"world": wname, "p_true": p, "history": h,
                                  "estimator": name,
@@ -70,7 +74,8 @@ def main() -> None:
     summary = frame.groupby(["world", "p_true", "estimator"])["p_hat"] \
         .agg(["mean", "std"]).round(3)
     print(summary.to_string())
-    save("r4_simcheck", {"rows": rows, "service_multiplier": k,
+    save("r4_simcheck", {"rows": rows, "statistics": stats,
+                         "service_multiplier": k,
                          "clustering_rho": rho, "clustering_sigma": sigma,
                          "bindings": {n: {"grid": b.grid, "values": b.values}
                                       for n, b in bindings.items()},

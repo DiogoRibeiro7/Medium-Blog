@@ -21,8 +21,9 @@ import pandas as pd
 
 from common import parse, raw_source, save
 from anonbank.data import load_calls
-from anonbank.ids import (callback_curves, excess_by_volume, queue_share,
-                          redial_delays, with_neighbours)
+from anonbank.ids import (callback_curves, detection_weights,
+                          excess_by_volume, queue_share, redial_delays,
+                          with_neighbours)
 
 WINDOWS = np.array([1, 2, 5, 10, 15, 20, 30, 45, 60, 90, 120, 180, 240])
 
@@ -36,7 +37,17 @@ def visibility(calls, ids, share) -> dict:
     later = ((base["t_end"] + 1200.0 - midnight) // 1800).astype(int)
     q20 = share.reindex(pd.MultiIndex.from_arrays(
         [base["date"], later])).to_numpy()
+    # the queue share at the visible callbacks within an hour
+    wt = pd.Series(detection_weights(ids, share), index=ids.index)
+    w_next = wt.groupby(ids["customer_id"]).shift(-1).reindex(base.index)
+    seen = ((base["after"] >= 0) & (base["after"] <= 3600)).to_numpy()
+    q_seen = 1.0 / w_next.to_numpy()
+    ab = base["abandoned"].to_numpy()
     return {"queued_share_of_offered": float(off["queued"].mean()),
+            "queue_share_at_visible_callbacks_abandoned":
+                float(np.mean(q_seen[seen & ab])),
+            "queue_share_at_visible_callbacks_served":
+                float(np.mean(q_seen[seen & ~ab])),
             "id_share_queued": float(off.loc[off["queued"], "has_id"]
                                      .mean()),
             "id_share_not_queued": float(off.loc[~off["queued"], "has_id"]
