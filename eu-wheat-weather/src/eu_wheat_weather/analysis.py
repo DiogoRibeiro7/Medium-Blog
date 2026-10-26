@@ -60,6 +60,7 @@ class Variant:
     weighted: bool = False
     min_years: int = 0
     nuts2021_only: bool = False
+    placebo: str = "aug_sep"                 # Amendment A1: "post_harvest" (section 8.1)
 
 
 PRIMARY = Variant("primary", "M1 as registered")
@@ -106,7 +107,7 @@ def observations(variant: Variant, panel: Sequence[Mapping[str, str]],
             continue
         geo, year = r["geo"], int(r["year"])
         w = weather.get((geo, year, variant.window, variant.weighting))
-        placebo = weather.get((geo, year, "aug_sep", variant.weighting))
+        placebo = weather.get((geo, year, variant.placebo, variant.weighting))
         if w is None or placebo is None:
             continue
         needed = (f"gdd_0_{variant.threshold}", f"edd_{variant.threshold}", variant.drought)
@@ -116,8 +117,8 @@ def observations(variant: Variant, panel: Sequence[Mapping[str, str]],
         x = {"gdd": float(w[f"gdd_0_{variant.threshold}"]) / 100,
              "edd": float(w[f"edd_{variant.threshold}"]) / 10, "p": p, "p2": p * p}
         if placebo["edd_30"] != "" and placebo["prec"] != "":
-            x["edd_aug_sep"] = float(placebo["edd_30"]) / 10
-            x["p_aug_sep"] = float(placebo["prec"]) / 100
+            x[f"edd_{variant.placebo}"] = float(placebo["edd_30"]) / 10
+            x[f"p_{variant.placebo}"] = float(placebo["prec"]) / 100
         if all(w[b] != "" for b in bin_names()):
             x.update({b: float(w[b]) for b in bin_names()})
         out.append(Obs(geo, r["country"], year, float(r["log_yield"]), float(r["area_kha"]), x))

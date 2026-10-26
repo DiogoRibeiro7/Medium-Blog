@@ -192,6 +192,68 @@ def wild_bootstrap(f: Fit, test: Sequence[int], draws: int = BOOTSTRAP_DRAWS,
     return original, extreme / draws
 
 
+def twoway_wild_bootstrap(f: Fit, test: Sequence[int], by: str,
+                          draws: int = BOOTSTRAP_DRAWS, seed: int = BOOTSTRAP_SEED,
+                          ) -> tuple[float, float]:
+    """Amendment A1 (METHODS.md, section 8.3): the wild bootstrap of the two-way statistic.
+
+    The statistic is the two-way t (one coefficient) or Wald statistic (several), with the
+    variance of ``twoway_vcov`` recomputed in every draw, eigenvalue rule included. The
+    null is imposed and the Rademacher weights are drawn by country or by year (``by``).
+    Returns the original statistic and the share of draws at least as extreme.
+    """
+    x, y = f.x, f.y
+    test = list(test)
+    keep = [j for j in range(f.k) if j not in set(test)]
+    xr = x[:, keep]
+    br, *_ = np.linalg.lstsq(xr, y, rcond=None)
+    fitted_r, resid_r = xr @ br, y - xr @ br
+    n, k = f.n, f.k
+    bread = np.linalg.inv(x.T @ x)
+    cell = np.char.add(np.char.add(f.country, "|"), f.year)
+    terms = []
+    for sign, codes in ((1.0, f.country), (1.0, f.year), (-1.0, cell)):
+        groups = _groups(codes)
+        g = len(groups)
+        terms.append((sign * g / (g - 1) * (n - 1) / (n - k), groups))
+    weight_groups = _groups({"country": f.country, "year": f.year}[by])
+    cluster_of = np.empty(n, dtype=np.int64)
+    for c, idx in enumerate(weight_groups):
+        cluster_of[idx] = c
+    projector = x @ bread                          # n x k
+
+    def statistics(yy: Array) -> Array:
+        """The two-way statistic for each row of ``yy`` (draws x n)."""
+        beta = yy @ projector                      # draws x k
+        resid = yy - beta @ x.T
+        v = np.zeros((yy.shape[0], k, k))
+        for factor, groups in terms:
+            scores = np.stack([resid[:, idx] @ x[idx] for idx in groups], axis=1)
+            v += factor * (bread @ np.einsum("dgk,dgl->dkl", scores, scores) @ bread)
+        values, vectors = np.linalg.eigh((v + v.transpose(0, 2, 1)) / 2)
+        v = vectors @ (np.maximum(values, 0.0)[:, :, None] * vectors.transpose(0, 2, 1))
+        b = beta[:, test]
+        if len(test) == 1:
+            # A draw whose clipped variance is zero has an infinite t, as in t_test.
+            with np.errstate(divide="ignore"):
+                return np.asarray(b[:, 0] / np.sqrt(v[:, test[0], test[0]]))
+        sub = v[:, test, :][:, :, test]
+        return np.asarray(np.einsum("dq,dqr,dr->d", b, np.linalg.pinv(sub), b))
+
+    original = float(statistics(y[None, :])[0])
+    rng = np.random.default_rng(seed)
+    extreme = 0
+    done = 0
+    while done < draws:
+        m = min(BATCH, draws - done)
+        w = rng.choice(np.array([-1.0, 1.0]), size=(m, len(weight_groups)))
+        s = statistics(fitted_r[None, :] + w[:, cluster_of] * resid_r[None, :])
+        extreme += int(np.sum(np.abs(s) >= abs(original)) if len(test) == 1
+                       else np.sum(s >= original))
+        done += m
+    return original, extreme / draws
+
+
 def holm(pvalues: Sequence[float]) -> list[float]:
     """Holm step-down adjusted p-values."""
     m = len(pvalues)

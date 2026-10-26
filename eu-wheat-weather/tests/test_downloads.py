@@ -49,8 +49,18 @@ def test_every_command_parses() -> None:
     for argv in (["fetch-crops", "--output-dir", "x"],
                  ["fetch-boundaries", "--manifest", "m.json"],
                  ["fetch-weather", "--manifest", "m.json"],
+                 ["fetch-calendar"],
+                 ["amend", "--crops", "x"],
                  ["audit", "--crops", "x"]):
         assert parser.parse_args(argv).command == argv[0]
+
+
+def test_committed_crop_calendar_matches_its_manifest() -> None:
+    """Amendment A1's calendar is committed byte-identical to the downloaded file."""
+    from eu_wheat_weather.contract import CALENDAR_FILE, CALENDAR_SNAPSHOT
+
+    directory = ROOT / CALENDAR_SNAPSHOT
+    assert verify(directory, directory / "manifest.json") == [CALENDAR_FILE]
 
 
 def test_audit_command_on_the_committed_snapshot(capsys: pytest.CaptureFixture[str]) -> None:

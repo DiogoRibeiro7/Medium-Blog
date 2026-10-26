@@ -8,7 +8,7 @@ from collections import Counter
 from collections.abc import Sequence
 from pathlib import Path
 
-from eu_wheat_weather.contract import DataError
+from eu_wheat_weather.contract import CALENDAR_FILE, CALENDAR_SNAPSHOT, DataError
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -56,6 +56,14 @@ def build_parser() -> argparse.ArgumentParser:
     weather_agg.add_argument("--output", type=Path, default=Path("docs/panel/weather.csv"))
     weather_agg.add_argument("--latitudes", type=Path,
                              default=Path("docs/panel/region_latitude.csv"))
+    weather_agg.add_argument("--calendar", type=Path,
+                             default=Path(CALENDAR_SNAPSHOT) / CALENDAR_FILE,
+                             help="Crop calendar for the windows of Amendment A1")
+    weather_agg.add_argument("--maturity", type=Path, default=Path("docs/panel/maturity.csv"))
+    calendar = commands.add_parser(
+        "fetch-calendar", help="Download the GGCMI crop calendar (rainfed winter wheat) and "
+        "freeze it as a snapshot (Amendment A1)")
+    calendar.add_argument("--output-dir", type=Path, default=Path(CALENDAR_SNAPSHOT))
     panel = commands.add_parser(
         "panel", help="Build the region-year panel and its coverage report (no estimate)")
     panel.add_argument("--crops", type=Path, required=True)
@@ -72,6 +80,17 @@ def build_parser() -> argparse.ArgumentParser:
                      help="Region centroids, for the post-hoc July check only")
     est.add_argument("--output-dir", type=Path, default=Path("docs/results"))
     est.add_argument("--report", type=Path, default=Path("docs/RESULTS.md"))
+    amend = commands.add_parser(
+        "amend", help="Compute Amendment A1 (METHODS.md, section 8) and write its report, "
+        "beside the registered results")
+    amend.add_argument("--panel", type=Path, default=Path("docs/panel/panel.csv"))
+    amend.add_argument("--weather", type=Path, default=Path("docs/panel/weather.csv"))
+    amend.add_argument("--maturity", type=Path, default=Path("docs/panel/maturity.csv"))
+    amend.add_argument("--crops", type=Path, required=True)
+    amend.add_argument("--region-map", type=Path, default=Path("docs/panel/region_map.csv"))
+    amend.add_argument("--registered", type=Path, default=Path("docs/results/results.json"))
+    amend.add_argument("--output-dir", type=Path, default=Path("docs/amendment"))
+    amend.add_argument("--report", type=Path, default=Path("docs/AMENDMENT.md"))
     pub = commands.add_parser(
         "publication", help="Write the article's values, text and figures from the "
         "committed results; --check compares instead")
@@ -135,14 +154,22 @@ def main(argv: Sequence[str] | None = None) -> int:
                 build_weather,
                 region_latitudes,
                 write_latitudes,
+                write_maturity,
                 write_weather,
             )
 
             regions = target_regions(load_all(args.boundaries_dir))
             write_latitudes(region_latitudes(regions), args.latitudes)
-            rows = build_weather(args.eobs_dir, regions, range(FIRST_YEAR, LAST_YEAR + 1))
+            rows, maturity = build_weather(args.eobs_dir, regions,
+                                           range(FIRST_YEAR, LAST_YEAR + 1), args.calendar)
             write_weather(rows, args.output)
+            write_maturity(maturity, args.maturity)
             print(f"{len(rows)} region-season rows written to {args.output}")
+        elif args.command == "fetch-calendar":
+            from eu_wheat_weather.downloads import fetch_calendar
+
+            document = fetch_calendar(args.output_dir)
+            print(f"{len(document['files'])} calendar file; manifest in {args.output_dir}")
         elif args.command == "panel":
             from eu_wheat_weather.panel import write_panel
 
@@ -165,6 +192,22 @@ def main(argv: Sequence[str] | None = None) -> int:
             write_results(results, args.output_dir, args.report, command)
             print(json.dumps({k: v["verdict"] for k, v in results["decisions"].items()}))
             print(f"placebo significant under both methods: "
+                  f"{results['E5']['significant_both']}")
+        elif args.command == "amend":
+            from eu_wheat_weather import amendment
+
+            command = (f"poetry run eu-wheat amend --panel {args.panel.as_posix()} --weather "
+                       f"{args.weather.as_posix()} --maturity {args.maturity.as_posix()} "
+                       f"--crops {args.crops.as_posix()} --region-map "
+                       f"{args.region_map.as_posix()} --registered "
+                       f"{args.registered.as_posix()} --output-dir "
+                       f"{args.output_dir.as_posix()} --report {args.report.as_posix()}")
+            results = amendment.run(args.panel, args.weather, args.maturity, args.crops,
+                                    args.region_map)
+            registered = json.loads(args.registered.read_text(encoding="utf-8"))
+            amendment.write_results(results, registered, args.output_dir, args.report, command)
+            print(json.dumps({k: v["verdict"] for k, v in results["decisions"].items()}))
+            print(f"amended placebo significant under both methods: "
                   f"{results['E5']['significant_both']}")
         elif args.command == "publication":
             from eu_wheat_weather.publication import check, write_publication
