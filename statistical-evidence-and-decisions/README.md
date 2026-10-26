@@ -494,3 +494,13 @@ Its independently verified, compact results are archived at
 [results/2026-10-24-detector-evidence/](results/2026-10-24-detector-evidence/).
 See the [completed run](https://github.com/DiogoRibeiro7/Medium-Blog/actions/runs/40089779139)
 for the complete output files.
+
+## Research manuscript: detector complexity and decision value
+
+The LaTeX manuscript [paper/main.tex](paper/main.tex) interprets the completed
+preregistered experiment in a mathematical and decision-theoretic framework.
+It is a four-section-plus-results research draft rather than a peer-reviewed
+publication. Compile locally with `pdflatex -interaction=nonstopmode main.tex`
+from the `paper/` directory. Results come directly from the archived report
+and GitHub Actions run #40089779139; the source deliberately claims no
+universal algorithm ranking or causal policy evaluation.

@@ -1,0 +1,101 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,booktabs,geometry,hyperref,microtype}
+\geometry{margin=27mm}
+\title{When Does a More Complex Change-Point Detector Justify Its Cost?\\A Preregistered Monte Carlo Comparison of CUSUM, GLR, and BOCPD}
+\author{Diogo Ribeiro}
+\date{26 October 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+Change-point detection is commonly evaluated through alarms or detection delay, yet an alarm is useful only insofar as its associated model-maintenance decision improves an outcome. We examine classical CUSUM, a Gaussian generalised likelihood-ratio (GLR) detector and Bayesian online change-point detection (BOCPD). A preregistered synthetic experiment uses 199 independent null-calibration streams and 100 evaluation streams per regime, each with 120 deployment observations. Mean economic regret under gradual concept drift was 0.217649 for CUSUM, 0.217060 for GLR and 0.226625 for BOCPD. The adjusted paired interval for GLR minus CUSUM was $[-0.004824,0.003344]$, which does not support the preregistered meaningful gain of 0.01 regret units. BOCPD showed higher regret, with difference 0.008977 and interval $[0.003687,0.013818]$. Neither candidate verified the stipulated 10\% false-alarm ceiling. These results are specific to the simulated setting and do not establish universal superiority of CUSUM.
+\end{abstract}
+\section{Introduction}
+Statistical detection and economically justified intervention are different problems. A detector can have excellent alarm sensitivity while causing excessive and unproductive retraining; a simpler detector may remain competitive if fewer alarms still produce good decisions. We compare three sequential procedures using the same scalar monitoring signal: classical cumulative sum (CUSUM) \cite{page1954}, Gaussian generalised likelihood ratios \cite{basseville1993}, and Bayesian online change-point detection (BOCPD) \cite{adams2007}. Our contribution is an explicit decision-level comparison with predefined economic and statistical constraints, rather than a claim to a novel detection algorithm.
+\section{Predictive and economic model}
+For $X_t\in\mathbb R^{16}$ let $m_t(x)=\mathbb E[Y_t\mid X_t=x]$ denote the synthetic conditional mean and $\widehat m_t$ the deployed regression estimate. An action costs $c$ and occurs when $\widehat m_t(X_t)>c$. A refit at $t$ costs $q$. Relative to an ideal oracle observing the complete conditional mean, the one-step regret is
+\begin{equation}
+R_t=(m_t(X_t)-c)_+-(m_t(X_t)-c)\mathbf1\{\widehat m_t(X_t)>c\}+q\mathbf1\{\text{refit at }t\}.
+\end{equation}
+This construction penalises mistaken actions and maintenance events. The oracle conditional mean is used for final synthetic evaluation only. It is not supplied to estimation or detection, and it is not a causally identified treatment effect.
+
+The simulation contains eight latent variables, each measured by a correlated pair. In the primary low-variance-signal setting, baseline benefit is proportional to the contrast $X_{t1}-X_{t2}$. During deployment its coefficient gradually changes sign. This permits controlled comparisons but is not a quantitative model of any particular agricultural, financial or healthcare system.
+\section{Sequential detectors}
+All methods receive the same standardised scalar disagreement score $Z_t$ between newly revealed outcomes and a frozen reference predictor. None sees the original multivariate data in its entirety.
+\subsection{CUSUM}
+We use the one-sided recursion
+\begin{equation}
+G_t=\max\{0,G_{t-1}+Z_t-\kappa\}.
+\end{equation}
+Its classical optimality properties require an appropriate statistical model; simply applying the recursion to residuals does not automatically inherit those properties \cite{page1954,lorden1971}.
+\subsection{Generalised likelihood ratio}
+The one-sided Gaussian GLR statistic scans recent suffixes with candidate lengths $m\in[m_{\min},m_{\max}]$:
+\begin{equation}
+\mathrm{GLR}_t=\max_m\frac{\left(\max\{0,\sum_{j=t-m+1}^t Z_j\}\right)^2}{2m}.
+\end{equation}
+It maximises the Gaussian log likelihood ratio over an unknown positive shift, assuming known unit variance. Autocorrelation or scale misspecification can affect performance.
+\subsection{Bayesian online change-point detection}
+BOCPD recursively maintains a posterior distribution for run length $r_t$ under a constant change hazard, conjugate Gaussian mean prior and known observation variance \cite{adams2007}. Posterior mass at short run lengths defines its alarm score. This is a model-conditional probability, not an unqualified probability that a real-world process changed.
+\section{Preregistered comparison}
+A fixed-horizon maximum detection score was computed on 199 independent no-change calibration streams. A corrected order-statistic threshold was obtained for each detector. Such calibration addresses the probability of at least one alarm over a fixed horizon under exchangeability of complete null-stream maxima. It is not an anytime-valid guarantee.
+
+The experiment fixed the low-variance response signal, gradual-drift evaluation regime, immediate feedback, action cost $c=0.6$, refit cost $q=0.05$, and 120 deployment steps. There were 100 independent evaluation streams per regime. GLR and BOCPD were each compared with CUSUM. The minimum economically meaningful improvement was 0.01 regret units per deployment observation, with a false-alarm ceiling of 10\%. A nominal 5\% family error budget was divided between paired economic comparisons and false-alarm bounds, accounting for the two candidates.
+
+For candidate $A$, define the stream-paired effect
+\[
+\Delta_r(A)=\overline R_r(A)-\overline R_r(\mathrm{CUSUM}).
+\]
+Negative values favour the candidate. Bootstrap limits resample entire independent streams rather than adjacent time points. They are approximate Monte Carlo limits conditional on the realised calibration thresholds and do not capture variability from new calibration datasets.
+\section{Results}
+\begin{table}[ht]
+\centering
+\caption{Mean net economic regret per observation under gradual drift.}
+\begin{tabular}{lrr}
+\toprule
+Maintenance policy & Mean regret & Difference vs CUSUM\\
+\midrule
+Frozen & 0.249472 & +0.031824\\
+Scheduled & 0.218668 & +0.001019\\
+CUSUM & 0.217649 & 0\\
+GLR & 0.217060 & $-0.000589$\\
+BOCPD & 0.226625 & +0.008977\\
+\bottomrule
+\end{tabular}
+\end{table}
+GLR minus CUSUM mean regret was $-0.000589$, with adjusted bootstrap limits $[-0.004824,0.003344]$. The interval includes zero; moreover, it fails to establish the prespecified 0.01 gain. BOCPD minus CUSUM was $+0.008977$ with adjusted limits $[0.003687,0.013818]$, supporting worse economic performance in this one environment.
+
+\begin{table}[ht]
+\centering
+\caption{Probability of at least one alarm on 100 stable no-change streams.}
+\begin{tabular}{lrr}
+\toprule
+Detector & Empirical alarm rate & Simultaneous upper bound\\
+\midrule
+CUSUM & 11\% & Not part of candidate eligibility\\
+GLR & 6\% & 13.71\%\\
+BOCPD & 10\% & 18.75\%\\
+\bottomrule
+\end{tabular}
+\end{table}
+Both candidates' simultaneous upper bounds exceeded the required 10\% ceiling. This does not prove their underlying alarm rates exceed 10\%; it means compliance was not verified. The preregistered verdict was \texttt{material\_gain\_not\_supported} for both alternatives.
+\section{Discussion and limitations}
+CUSUM was not demonstrably superior to every other policy in every metric. GLR had a small numerical advantage, and scheduled retraining was close to CUSUM. The evidence instead shows that more elaborate detection did not produce a supported or economically meaningful improvement over the benchmark.
+
+The comparison is limited to a single residual-derived monitoring score, one primary response mechanism and a fixed intervention cost, refit cost and deployment horizon. A gradual coefficient reversal has no unique instantaneous change time. Detector parameters were not optimised for every conceivable shift; choosing and retuning them after examining the evaluation streams would make an independent confirmatory test necessary. Neither approximate bootstrap limits nor stable-stream alarm bounds generalise automatically to unknown dependence structures. Finally, the utility is a defined synthetic payoff, not an identified causal benefit in an observational setting.
+
+These restrictions matter: a detector using joint changes in the full conditional distribution, another monitoring score, or a different model for the run-length likelihood could yield a different result. The substantive methodological lesson is to distinguish mathematical sophistication, change detection and improved downstream decisions.
+\section{Conclusion}
+Under this preregistered synthetic gradual-drift scenario, the extra complexity of GLR or BOCPD did not justify replacing CUSUM. GLR's small observed improvement failed the predefined economic-gain and evidence criteria, and BOCPD increased regret. The finding is conditional on the experimental design and does not establish general optimality of the classical baseline.
+\section*{Reproducibility and availability}
+The experiment, simulator, preregistered protocol, checked results and numerical summary are available at
+\href{https://github.com/DiogoRibeiro7/Medium-Blog/tree/main/statistical-evidence-and-decisions}{Medium-Blog/statistical-evidence-and-decisions}.
+The complete evaluation was
+\href{https://github.com/DiogoRibeiro7/Medium-Blog/actions/runs/40089779139}{GitHub Actions run 40089779139}.
+The compact archived report is in \texttt{results/2026-10-24-detector-evidence/}. The original larger data tables are stored as a time-limited workflow artifact; their SHA-256 checksums are recorded.
+\begin{thebibliography}{9}
+\bibitem{page1954} Page, E. S. (1954). Continuous Inspection Schemes. \emph{Biometrika}, 41(1/2), 100--115.
+\bibitem{basseville1993} Basseville, M., and Nikiforov, I. V. (1993). \emph{Detection of Abrupt Changes: Theory and Application}. Prentice Hall.
+\bibitem{adams2007} Adams, R. P., and MacKay, D. J. C. (2007). Bayesian Online Changepoint Detection. arXiv:0710.3742.
+\bibitem{lorden1971} Lorden, G. (1971). Procedures for Reacting to a Change in Distribution. \emph{The Annals of Mathematical Statistics}, 42(6), 1897--1908.
+\end{thebibliography}
+\end{document}
