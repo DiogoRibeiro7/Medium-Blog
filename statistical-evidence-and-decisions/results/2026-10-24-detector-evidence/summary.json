@@ -1,0 +1,89 @@
+{
+  "run": {
+    "workflow_run_id": 40089779139,
+    "workflow_url": "https://github.com/DiogoRibeiro7/Medium-Blog/actions/runs/40089779139",
+    "commit": "8107000be634ba6a02f6e2dbd219e9a932082638",
+    "branch": "research/execute-full-evidence-20261024",
+    "artifact_id": 12558587152,
+    "artifact_name": "detector-evidence-results-40089779139",
+    "artifact_expires_at": "2027-01-22T11:24:29Z",
+    "completed": true,
+    "successful": true
+  },
+  "design": {
+    "n_fit": 160,
+    "n_cal": 80,
+    "n_live": 120,
+    "calibration_streams_per_null": 199,
+    "evaluation_streams_per_regime": 100,
+    "response_scenario": "low_variance_signal",
+    "drift_regime": "gradual_drift",
+    "null_regime": "stable",
+    "delay": 0,
+    "action_cost": 0.6,
+    "refit_cost": 0.05,
+    "meaningful_gain": 0.01,
+    "false_alarm_ceiling": 0.1,
+    "family_error": 0.05
+  },
+  "drift_mean_regret": {
+    "CUSUM": 0.21764886205708944,
+    "GLR": 0.21706001361122587,
+    "BOCPD": 0.22662542050192835,
+    "Scheduled": 0.21866753165472289,
+    "Frozen": 0.24947246596671072
+  },
+  "stable_empirical_any_alarm": {
+    "CUSUM": 0.11,
+    "GLR": 0.06,
+    "BOCPD": 0.1
+  },
+  "candidates": {
+    "GLR": {
+      "reference": "CUSUM",
+      "mean_delta_regret": -0.0005888484458635438,
+      "mc_standard_error": 0.0016305756765878313,
+      "adjusted_lower": -0.004824451124163594,
+      "adjusted_upper": 0.0033437376196923064,
+      "independent_primary_streams": 100,
+      "independent_null_streams": 100,
+      "null_alarms": 6,
+      "empirical_false_alarm": 0.06,
+      "simultaneous_upper_false_alarm": 0.13709174127463944,
+      "status": "material_gain_not_supported"
+    },
+    "BOCPD": {
+      "reference": "CUSUM",
+      "mean_delta_regret": 0.008976558444838955,
+      "mc_standard_error": 0.002024014408492639,
+      "adjusted_lower": 0.0036870844427113734,
+      "adjusted_upper": 0.013818312605984599,
+      "independent_primary_streams": 100,
+      "independent_null_streams": 100,
+      "null_alarms": 10,
+      "empirical_false_alarm": 0.1,
+      "simultaneous_upper_false_alarm": 0.18748138065902062,
+      "status": "material_gain_not_supported"
+    }
+  },
+  "hashes_sha256": {
+    "calibration.csv": "a9adb986da04096e31c25aeac26afc745a9b3e6cbe16a1a7512deb38722e58d7",
+    "context.csv": "fb9fb45a6a6fe79bbef559368ff3920488339e95abaac5e17dd9257bf0a45722",
+    "economics.csv": "f3ed0429f5b17adfeab57772a06336d756872d3052c8d21e6ea7f1fed1ebbe93",
+    "models.csv": "b3b1e3232df53fc0271aa4c11f362bcb0cf04c40f0d2cc5f9f92118bdddf9b46",
+    "verdict.csv": "9cc0089cb55076b10e313dab0255a728a3090b8da7610739e66cf1813c876a5d"
+  },
+  "verified": {
+    "checksums_matched": true,
+    "independent_recomputed_primary_differences": true,
+    "software_result_status": "material_gain_not_supported for both candidates"
+  },
+  "versions": {
+    "python": "3.12.15",
+    "numpy": "2.5.4",
+    "pandas": "3.1.0",
+    "scipy": "1.18.1",
+    "scikit_learn": "1.9.1",
+    "statsmodels": "0.15.0"
+  }
+}
