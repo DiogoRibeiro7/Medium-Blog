@@ -1,0 +1,319 @@
+R1  The data
+    rows_read: 444448
+    malformed_rows: 12
+    calls: 444436
+    days: 363
+    working_dates_with_calls: 258
+    working_days_kept: 247
+    offered_total: 384155
+    abandoned_total: 60045
+    distinct_ids: 12903
+    ids_over_200_calls: 146
+    calls by weekday: Monday 79493, Tuesday 81189, Wednesday 77836, Thursday 79725, Friday 28548, Saturday 10734, Sunday 86911
+    outcomes: AGENT 353143, HANG 87694, PHANTOM 3599
+    share_with_id: 0.4723
+    share_with_id_queued: 0.7753
+    share_with_id_abandoned: 0.5824
+    share_of_id_calls_from_ids_over_200: 0.3389
+    offered_per_day: 1555.2834
+    abandon_share: 0.1563
+    service_level_20s: 0.4436
+    mean_agents: 7.8679
+    mean_offered_per_interval: 45.7436
+    recorded_handle_time: 191.6207
+    mean_patience_exponential_mle: 412.9809
+    mean_wait_per_offered: 64.5506
+    identified_redial_share_of_offered: 0.0602
+    calls per ID, quantiles: 0.5 5, 0.9 28, 0.99 229
+    mean per half hour across kept days:
+       offered  abandoned  agents  answered_20s
+07:00    16.93       1.05    3.81         12.26
+07:30    23.27       2.06    5.07         14.61
+08:00    36.65       2.84    7.46         24.97
+08:30    51.20       6.84    8.43         28.10
+09:00    55.86       7.17    9.10         27.38
+09:30    66.89      14.03    9.29         20.69
+10:00    71.92      15.18    9.50         19.93
+10:30    68.40      13.44    9.62         21.21
+11:00    62.50      11.12    9.70         21.46
+11:30    59.66       9.88    9.72         23.80
+12:00    56.32       8.41    9.76         25.44
+12:30    53.83       7.30    9.99         26.31
+13:00    55.57       8.44    9.91         24.43
+13:30    58.56       8.24   10.37         26.74
+14:00    61.40      10.19   10.04         24.64
+14:30    60.87       9.44   10.12         26.38
+15:00    59.67      14.80    9.27         13.58
+15:30    61.22      12.86    9.89         17.70
+16:00    59.76      11.77    9.84         22.03
+16:30    57.96      11.26    8.12         23.28
+17:00    47.51       8.96    7.70         19.23
+17:30    46.53       7.58    7.25         20.23
+18:00    42.15       6.38    7.43         19.93
+18:30    37.90       4.66    7.33         20.27
+19:00    34.36       3.42    7.21         20.53
+19:30    31.47       2.78    6.98         19.90
+20:00    27.31       1.78    6.80         18.95
+20:30    31.43       2.80    6.81         19.75
+21:00    29.21       2.84    6.22         17.50
+21:30    31.19       3.27    6.24         18.06
+22:00    28.86       4.14    5.29         14.27
+22:30    27.16       3.71    4.82         13.68
+23:00    24.30       2.76    4.48         12.04
+23:30    17.47       1.68    3.95         10.59
+
+R2  Calling again, from customer IDs
+    IDs with at most 10 calls (queued calls: 7271 abandoned, 22709 served):
+            again_abandoned  again_served  prior_abandoned  prior_served  again_weighted_abandoned  again_weighted_served  prior_weighted_abandoned  prior_weighted_served  excess  excess_weighted
+window_min                                                                                                                                                                                         
+1                     0.023         0.009            0.006         0.007                     0.034                  0.014                     0.008                  0.011   0.013            0.019
+2                     0.053         0.027            0.018         0.016                     0.077                  0.040                     0.026                  0.027   0.026            0.037
+5                     0.116         0.053            0.054         0.055                     0.162                  0.079                     0.073                  0.084   0.063            0.083
+10                    0.176         0.083            0.100         0.094                     0.244                  0.127                     0.136                  0.141   0.093            0.116
+15                    0.222         0.108            0.132         0.125                     0.307                  0.165                     0.179                  0.188   0.114            0.142
+20                    0.258         0.131            0.159         0.152                     0.358                  0.200                     0.219                  0.229   0.126            0.157
+30                    0.317         0.174            0.201         0.197                     0.440                  0.266                     0.278                  0.300   0.144            0.174
+45                    0.387         0.227            0.252         0.257                     0.543                  0.351                     0.349                  0.395   0.161            0.192
+60                    0.443         0.272            0.298         0.306                     0.625                  0.425                     0.424                  0.471   0.171            0.200
+90                    0.525         0.347            0.376         0.386                     0.750                  0.544                     0.542                  0.596   0.178            0.205
+120                   0.580         0.408            0.433         0.447                     0.837                  0.643                     0.631                  0.693   0.172            0.194
+180                   0.653         0.495            0.510         0.538                     0.953                  0.784                     0.755                  0.841   0.158            0.169
+240                   0.705         0.553            0.565         0.597                     1.033                  0.877                     0.839                  0.936   0.152            0.156
+
+    IDs with at most 50 calls (queued calls: 22458 abandoned, 71708 served):
+            again_abandoned  again_served  prior_abandoned  prior_served  again_weighted_abandoned  again_weighted_served  prior_weighted_abandoned  prior_weighted_served  excess  excess_weighted
+window_min                                                                                                                                                                                         
+1                     0.041         0.024            0.023         0.022                     0.060                  0.036                     0.033                  0.033   0.018            0.024
+2                     0.088         0.053            0.050         0.048                     0.127                  0.080                     0.072                  0.074   0.035            0.047
+5                     0.188         0.107            0.128         0.126                     0.266                  0.161                     0.183                  0.190   0.081            0.105
+10                    0.292         0.177            0.224         0.216                     0.411                  0.269                     0.317                  0.324   0.115            0.142
+15                    0.366         0.232            0.291         0.285                     0.515                  0.354                     0.413                  0.430   0.133            0.161
+20                    0.425         0.279            0.345         0.341                     0.601                  0.425                     0.491                  0.514   0.147            0.176
+30                    0.515         0.356            0.431         0.429                     0.739                  0.547                     0.618                  0.652   0.159            0.192
+45                    0.605         0.439            0.520         0.523                     0.874                  0.678                     0.754                  0.798   0.167            0.196
+60                    0.665         0.500            0.586         0.590                     0.965                  0.775                     0.859                  0.903   0.166            0.190
+90                    0.742         0.582            0.671         0.677                     1.085                  0.907                     0.994                  1.040   0.159            0.178
+120                   0.784         0.635            0.724         0.731                     1.153                  0.992                     1.075                  1.128   0.149            0.161
+180                   0.831         0.695            0.781         0.793                     1.227                  1.090                     1.167                  1.229   0.136            0.138
+240                   0.858         0.727            0.814         0.826                     1.272                  1.143                     1.218                  1.282   0.131            0.128
+
+    all IDs (queued calls: 37053 abandoned, 164140 served):
+            again_abandoned  again_served  prior_abandoned  prior_served  again_weighted_abandoned  again_weighted_served  prior_weighted_abandoned  prior_weighted_served  excess  excess_weighted
+window_min                                                                                                                                                                                         
+1                     0.106         0.047            0.146         0.222                     0.150                  0.070                     0.213                  0.321   0.059            0.080
+2                     0.177         0.083            0.226         0.331                     0.251                  0.125                     0.326                  0.480   0.094            0.126
+5                     0.296         0.145            0.355         0.482                     0.420                  0.218                     0.511                  0.703   0.151            0.202
+10                    0.397         0.205            0.461         0.581                     0.563                  0.312                     0.664                  0.853   0.192            0.251
+15                    0.459         0.245            0.525         0.637                     0.652                  0.374                     0.757                  0.940   0.215            0.278
+20                    0.505         0.274            0.570         0.675                     0.720                  0.420                     0.821                  0.999   0.231            0.300
+30                    0.570         0.318            0.635         0.728                     0.819                  0.490                     0.919                  1.082   0.252            0.330
+45                    0.630         0.362            0.697         0.778                     0.911                  0.559                     1.014                  1.162   0.269            0.351
+60                    0.670         0.392            0.741         0.812                     0.971                  0.608                     1.085                  1.215   0.278            0.363
+90                    0.719         0.431            0.796         0.853                     1.048                  0.671                     1.172                  1.281   0.288            0.377
+120                   0.745         0.455            0.829         0.878                     1.090                  0.710                     1.223                  1.322   0.290            0.380
+180                   0.774         0.482            0.865         0.906                     1.136                  0.755                     1.280                  1.368   0.291            0.382
+240                   0.790         0.497            0.885         0.921                     1.164                  0.779                     1.312                  1.392   0.294            0.385
+
+    by annual calls of the ID, window 10 min:
+              again_served  again_abandoned  overlap_served  overlap_abandoned  n_served  n_abandoned  excess
+volume_class                                                                                                 
+1-10                 0.083            0.176           0.027              0.006     22709         7271   0.093
+11-50                0.221            0.347           0.120              0.028     48999        15187   0.127
+51-200               0.359            0.614           0.395              0.125     30208         6600   0.255
+over 200             0.162            0.511           0.813              0.464     62224         7995   0.349
+
+    by annual calls of the ID, window 60 min:
+              again_served  again_abandoned  overlap_served  overlap_abandoned  n_served  n_abandoned  excess
+volume_class                                                                                                 
+1-10                 0.272            0.443           0.027              0.006     22709         7271   0.171
+11-50                0.605            0.772           0.120              0.028     48999        15187   0.167
+51-200               0.566            0.850           0.395              0.125     30208         6600   0.284
+over 200             0.183            0.534           0.813              0.464     62224         7995   0.351
+
+    by annual calls of the ID, window 180 min:
+              again_served  again_abandoned  overlap_served  overlap_abandoned  n_served  n_abandoned  excess
+volume_class                                                                                                 
+1-10                 0.495            0.653           0.027              0.006     22709         7271   0.158
+11-50                0.787            0.916           0.120              0.028     48999        15187   0.128
+51-200               0.590            0.867           0.395              0.125     30208         6600   0.277
+over 200             0.185            0.535           0.813              0.464     62224         7995   0.351
+
+    visibility: share of offered calls that queued 0.626; ID recorded for 0.775 of queued and 0.036 of not-queued offered calls; queue share by half hour, quartiles 0.276, 0.548, 0.806
+    queue share a callback 20 minutes later would meet: after abandonment 0.806, after service 0.686
+    queue share at the visible callbacks within an hour (IDs with at most 50 calls): after abandonment 0.781, after service 0.750
+    (weighted columns: each visible callback weighted by one over its half hour's queue share; meant for windows up to an hour)
+
+    delay from hanging up to the next call, IDs with at most 50 calls, next call within 3 hours: n 18657, median 19.1 min, mean 34.5 min, within 10 min 0.351, within 30 min 0.620, within 60 min 0.801
+    deciles (min): 0.0, 1.9, 4.2, 7.7, 12.6, 19.1, 27.8, 40.3, 59.8, 93.5, 179.5
+
+R3  Slopes of the surplus on abandonments, real table
+    day-cluster bootstrap with 1000 replicates; value and sd
+                    value                             sd                    
+series         id_redials non_redials offered id_redials non_redials offered
+statistic                                                                   
+acf1               0.2109      0.4213  0.4304     0.0200      0.0649  0.0629
+controlled         0.0351      0.0438  0.0594     0.0050      0.0303  0.0308
+dispersion         1.6713      2.9412  3.1788     0.0467      0.4944  0.5263
+lag_-1             0.0327      0.3130  0.3543     0.0062      0.1041  0.1087
+lag_-2             0.0147      0.1859  0.2079     0.0056      0.0715  0.0764
+lag_-3             0.0110      0.0840  0.1010     0.0063      0.0731  0.0782
+lag_1              0.0497      0.3083  0.3674     0.0051      0.0863  0.0875
+lag_2              0.0323      0.1907  0.2307     0.0040      0.0390  0.0381
+lag_3              0.0262      0.1318  0.1633     0.0039      0.0366  0.0376
+lag_minus_lead     0.0170     -0.0047  0.0132     0.0048      0.0237  0.0269
+
+R4  Simulation check with a known redial probability
+    effective handle time in the simulator: 294.45 s
+    16 histories of 247 days per world; handle-time multiplier 1.537; clustering in the clustered world rho 0.752, sigma 0.213
+                                    mean                   sd                 rmse              
+p_true                              0.00   0.15   0.30   0.00   0.15   0.30   0.00   0.15   0.30
+world              estimator                                                                    
+clustered demand   controlled      0.084  0.146  0.193  0.030  0.026  0.031  0.089  0.025  0.111
+                   joint           0.065  0.186  0.275  0.056  0.047  0.050  0.084  0.058  0.055
+                   lag             0.598  0.644  0.706  0.023  0.020  0.020  0.599  0.495  0.406
+                   lag_minus_lead  0.002  0.009  0.076  0.007  0.016  0.046  0.007  0.142  0.228
+independent demand controlled      0.014  0.128  0.276  0.012  0.029  0.017  0.018  0.035  0.029
+                   joint           0.037  0.153  0.291  0.017  0.028  0.015  0.041  0.027  0.017
+                   lag             0.004  0.147  0.298  0.008  0.031  0.016  0.009  0.031  0.016
+                   lag_minus_lead  0.038  0.117  0.261  0.026  0.057  0.042  0.046  0.064  0.056
+
+    mean statistics on the simulated histories (sd in brackets is across histories):
+                              lag    lead  lag_minus_lead  controlled    acf1  dispersion
+world              p_true                                                                
+clustered demand   0.00    0.3074  0.3816         -0.0742      0.0290  0.4285      2.7613
+                   0.15    0.3434  0.3983         -0.0549      0.0560  0.4586      3.0436
+                   0.30    0.3937  0.4315         -0.0378      0.0760  0.5003      3.4728
+independent demand 0.00   -0.0129  0.0329         -0.0458     -0.0035 -0.0322      0.9444
+                   0.15    0.0422  0.0719         -0.0297      0.0484  0.0083      1.0390
+                   0.30    0.1132  0.1158         -0.0027      0.1110  0.0764      1.1731
+
+                           lag sd  lead sd  lag_minus_lead sd  controlled sd  acf1 sd  dispersion sd
+world              p_true                                                                           
+clustered demand   0.00    0.0175   0.0229             0.0134         0.0133   0.0162         0.0689
+                   0.15    0.0162   0.0172             0.0068         0.0111   0.0131         0.0698
+                   0.30    0.0169   0.0165             0.0094         0.0131   0.0162         0.1252
+independent demand 0.00    0.0062   0.0054             0.0061         0.0073   0.0151         0.0150
+                   0.15    0.0129   0.0128             0.0113         0.0127   0.0131         0.0243
+                   0.30    0.0086   0.0088             0.0074         0.0071   0.0142         0.0256
+
+    binding functions without clustering (statistic at each p):
+         lag  lag_minus_lead  controlled
+0.00 -0.0104         -0.0443      0.0023
+0.10  0.0217         -0.0391      0.0305
+0.20  0.0644         -0.0235      0.0641
+0.30  0.1197          0.0038      0.1199
+0.45  0.2032          0.0339      0.1876
+0.60  0.3022          0.0574      0.2446
+0.80  0.4797          0.0692      0.2972
+
+    joint response surfaces, R^2: lag 0.991, lead 0.986, controlled 0.976, acf1 0.990, dispersion 0.988
+    joint estimate of rho in each world (mean, sd): clustered demand p=0.0: 0.799 (0.023), clustered demand p=0.15: 0.815 (0.024), clustered demand p=0.3: 0.829 (0.019), independent demand p=0.0: 0.046 (0.042), independent demand p=0.15: 0.078 (0.044), independent demand p=0.3: 0.074 (0.063)
+
+R5  Redial probability estimated from the real table
+    handle-time multiplier 1.537; 90% day-cluster bootstrap intervals
+                                           statistic  statistic_sd  p_hat   p_lo   p_hi  rho_hat  rho_lo  rho_hi  sigma_hat
+delay                      estimator                                                                                       
+exponential, mean 5 min    lag                 0.367         0.086  0.702  0.522  0.800      NaN     NaN     NaN        NaN
+                           lag_minus_lead      0.013         0.027  0.522  0.219  0.800      NaN     NaN     NaN        NaN
+                           controlled          0.059         0.029  0.177  0.039  0.280      NaN     NaN     NaN        NaN
+                           joint                 NaN           NaN  0.282  0.000  0.433    0.781   0.576   0.850      0.200
+exponential, mean 10 min   lag                 0.367         0.086  0.674  0.496  0.800      NaN     NaN     NaN        NaN
+                           lag_minus_lead      0.013         0.026  0.382  0.142  0.661      NaN     NaN     NaN        NaN
+                           controlled          0.059         0.030  0.160  0.029  0.259      NaN     NaN     NaN        NaN
+                           joint                 NaN           NaN  0.223  0.000  0.366    0.745   0.584   0.850      0.210
+exponential, mean 20 min   lag                 0.367         0.086  0.661  0.474  0.800      NaN     NaN     NaN        NaN
+                           lag_minus_lead      0.013         0.027  0.279  0.120  0.503      NaN     NaN     NaN        NaN
+                           controlled          0.059         0.032  0.153  0.026  0.249      NaN     NaN     NaN        NaN
+                           joint                 NaN           NaN  0.170  0.000  0.309    0.730   0.559   0.828      0.218
+empirical, from caller IDs lag                 0.367         0.088  0.742  0.538  0.800      NaN     NaN     NaN        NaN
+                           lag_minus_lead      0.013         0.027  0.326  0.131  0.571      NaN     NaN     NaN        NaN
+                           controlled          0.059         0.031  0.178  0.015  0.299      NaN     NaN     NaN        NaN
+                           joint                 NaN           NaN  0.193  0.000  0.371    0.725   0.580   0.813      0.220
+
+    joint, exponential, mean 5 min: observed vs fitted statistics
+            observed  fitted      r2
+lag           0.3674  0.3378  0.9895
+lead          0.3543  0.3831  0.9861
+controlled    0.0594  0.0609  0.9608
+acf1          0.4304  0.4357  0.9877
+dispersion    3.1788  3.1775  0.9842
+
+    joint, exponential, mean 10 min: observed vs fitted statistics
+            observed  fitted      r2
+lag           0.3674  0.3393  0.9878
+lead          0.3543  0.3875  0.9843
+controlled    0.0594  0.0612  0.9718
+acf1          0.4304  0.4345  0.9903
+dispersion    3.1788  3.1738  0.9903
+
+    joint, exponential, mean 20 min: observed vs fitted statistics
+            observed  fitted      r2
+lag           0.3674  0.3385  0.9910
+lead          0.3543  0.3871  0.9864
+controlled    0.0594  0.0615  0.9765
+acf1          0.4304  0.4347  0.9902
+dispersion    3.1788  3.1735  0.9910
+
+    joint, empirical, from caller IDs: observed vs fitted statistics
+            observed  fitted      r2
+lag           0.3674  0.3370  0.9886
+lead          0.3543  0.3885  0.9835
+controlled    0.0594  0.0616  0.9725
+acf1          0.4304  0.4344  0.9895
+dispersion    3.1788  3.1760  0.9885
+
+    excess calling again after abandonment from IDs (abandoned minus served), by window in minutes, raw and weighted for visibility; columns are the ID volume cap:
+    raw
+        10     50   None
+10   0.093  0.115  0.192
+30   0.144  0.159  0.252
+60   0.171  0.166  0.278
+180  0.158  0.136  0.291
+
+    weighted
+       10     50   None
+10  0.116  0.142  0.251
+30  0.174  0.192  0.330
+60  0.200  0.190  0.363
+
+    binding functions without clustering, by delay:
+    exponential, mean 5 min
+         lag  lag_minus_lead  controlled
+0.00 -0.0137         -0.0524     -0.0047
+0.10  0.0215         -0.0382      0.0321
+0.20  0.0474         -0.0348      0.0525
+0.30  0.1014         -0.0154      0.1006
+0.45  0.1728          0.0027      0.1633
+0.60  0.2823          0.0295      0.2351
+0.80  0.4586          0.0471      0.2731
+
+    exponential, mean 10 min
+         lag  lag_minus_lead  controlled
+0.00 -0.0117         -0.0527     -0.0028
+0.10  0.0274         -0.0348      0.0355
+0.20  0.0656         -0.0245      0.0682
+0.30  0.1026         -0.0026      0.1048
+0.45  0.1938          0.0228      0.1805
+0.60  0.3087          0.0582      0.2494
+0.80  0.4827          0.0754      0.2987
+
+    exponential, mean 20 min
+         lag  lag_minus_lead  controlled
+0.00 -0.0173         -0.0533     -0.0076
+0.10  0.0241         -0.0362      0.0314
+0.20  0.0721         -0.0134      0.0796
+0.30  0.1215          0.0191      0.1236
+0.45  0.2134          0.0526      0.1945
+0.60  0.3034          0.0832      0.2545
+0.80  0.4964          0.1037      0.3354
+
+    empirical, from caller IDs
+         lag  lag_minus_lead  controlled
+0.00 -0.0093         -0.0513      0.0007
+0.10  0.0160         -0.0407      0.0237
+0.20  0.0630         -0.0064      0.0740
+0.30  0.0924          0.0010      0.0989
+0.45  0.1644          0.0387      0.1519
+0.60  0.2622          0.0734      0.2261
+0.80  0.4161          0.1038      0.2869
+
