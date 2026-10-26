@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite it as below. If you use the data, acknowledge the Technion SEE Center (Ilan Guedj and Avi Mandelbaum) as its documentation asks."
+title: "Redials in a real call centre: an interval-level estimator tested against caller IDs (Anonymous Bank, 1999)"
+authors:
+  - family-names: Ribeiro
+    given-names: Diogo
+    email: dfr@esmad.ipp.pt
+    orcid: "https://orcid.org/0009-0001-2022-7072"
+version: 0.1.0
+date-released: 2026-10-26
+license: Apache-2.0
+repository-code: "https://github.com/DiogoRibeiro7/Medium-Blog/tree/main/anonymous-bank-redials"
+references:
+  - type: dataset
+    title: "\"Anonymous Bank\" Call-Center Data"
+    authors:
+      - family-names: Guedj
+        given-names: Ilan
+      - family-names: Mandelbaum
+        given-names: Avi
+    institution:
+      name: "Technion SEE Center"
+    year: 2000
+    url: "https://see-center.iem.technion.ac.il/databases/AnonymousBank/Data/AnonymousBank.pdf"

@@ -1,0 +1,2862 @@
+{
+  "rows": [
+    {
+      "world": "independent demand",
+      "p_true": 0.0,
+      "history": 0,
+      "estimator": "lag",
+      "p_hat": 0.0
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.0,
+      "history": 0,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.0
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.0,
+      "history": 0,
+      "estimator": "controlled",
+      "p_hat": 0.00527696541080051
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.0,
+      "history": 0,
+      "estimator": "joint",
+      "p_hat": 0.03105374212929188,
+      "rho_hat": 0.09385215694901762
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.0,
+      "history": 1,
+      "estimator": "lag",
+      "p_hat": 0.011049096791670335
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.0,
+      "history": 1,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.0777938291942851
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.0,
+      "history": 1,
+      "estimator": "controlled",
+      "p_hat": 0.025358940895326674
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.0,
+      "history": 1,
+      "estimator": "joint",
+      "p_hat": 0.05198841242899986,
+      "rho_hat": 0.02989096634172018
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.0,
+      "history": 2,
+      "estimator": "lag",
+      "p_hat": 0.0
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.0,
+      "history": 2,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.02788162445279341
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.0,
+      "history": 2,
+      "estimator": "controlled",
+      "p_hat": 0.013344157869519237
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.0,
+      "history": 2,
+      "estimator": "joint",
+      "p_hat": 0.03989097036393071,
+      "rho_hat": 0.0
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.0,
+      "history": 3,
+      "estimator": "lag",
+      "p_hat": 0.0
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.0,
+      "history": 3,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.0024463044261492633
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.0,
+      "history": 3,
+      "estimator": "controlled",
+      "p_hat": 0.013544111579018366
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.0,
+      "history": 3,
+      "estimator": "joint",
+      "p_hat": 0.03868682948002412,
+      "rho_hat": 0.0
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.0,
+      "history": 4,
+      "estimator": "lag",
+      "p_hat": 0.004604371796055545
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.0,
+      "history": 4,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.06201327547903117
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.0,
+      "history": 4,
+      "estimator": "controlled",
+      "p_hat": 0.014853189867027059
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.0,
+      "history": 4,
+      "estimator": "joint",
+      "p_hat": 0.04178821362026017,
+      "rho_hat": 0.05611004896739815
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.0,
+      "history": 5,
+      "estimator": "lag",
+      "p_hat": 0.0
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.0,
+      "history": 5,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.03708459514334141
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.0,
+      "history": 5,
+      "estimator": "controlled",
+      "p_hat": 0.0
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.0,
+      "history": 5,
+      "estimator": "joint",
+      "p_hat": 0.015651586679924372,
+      "rho_hat": 0.0918272791702428
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.0,
+      "history": 6,
+      "estimator": "lag",
+      "p_hat": 0.0
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.0,
+      "history": 6,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.06775810045127796
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.0,
+      "history": 6,
+      "estimator": "controlled",
+      "p_hat": 0.02820330928890109
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.0,
+      "history": 6,
+      "estimator": "joint",
+      "p_hat": 0.051586365077871725,
+      "rho_hat": 0.0
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.0,
+      "history": 7,
+      "estimator": "lag",
+      "p_hat": 0.0
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.0,
+      "history": 7,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.0222801538893551
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.0,
+      "history": 7,
+      "estimator": "controlled",
+      "p_hat": 0.003580775410273462
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.0,
+      "history": 7,
+      "estimator": "joint",
+      "p_hat": 0.030173811827590935,
+      "rho_hat": 0.02996899970973094
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.0,
+      "history": 8,
+      "estimator": "lag",
+      "p_hat": 0.01569277329351731
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.0,
+      "history": 8,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.06375397171496057
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.0,
+      "history": 8,
+      "estimator": "controlled",
+      "p_hat": 0.011045107590225952
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.0,
+      "history": 8,
+      "estimator": "joint",
+      "p_hat": 0.03526995697369019,
+      "rho_hat": 0.12384535839691495
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.0,
+      "history": 9,
+      "estimator": "lag",
+      "p_hat": 0.0
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.0,
+      "history": 9,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.04927332441913961
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.0,
+      "history": 9,
+      "estimator": "controlled",
+      "p_hat": 0.0
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.0,
+      "history": 9,
+      "estimator": "joint",
+      "p_hat": 0.021117324722995275,
+      "rho_hat": 0.05336878903814656
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.0,
+      "history": 10,
+      "estimator": "lag",
+      "p_hat": 0.0
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.0,
+      "history": 10,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.0
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.0,
+      "history": 10,
+      "estimator": "controlled",
+      "p_hat": 0.0
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.0,
+      "history": 10,
+      "estimator": "joint",
+      "p_hat": 0.0045355423200155705,
+      "rho_hat": 0.1226745029236513
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.0,
+      "history": 11,
+      "estimator": "lag",
+      "p_hat": 0.0
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.0,
+      "history": 11,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.026315120741264093
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.0,
+      "history": 11,
+      "estimator": "controlled",
+      "p_hat": 0.0
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.0,
+      "history": 11,
+      "estimator": "joint",
+      "p_hat": 0.011396217902394356,
+      "rho_hat": 0.05176667199913408
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.0,
+      "history": 12,
+      "estimator": "lag",
+      "p_hat": 0.004992466601420191
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.0,
+      "history": 12,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.049224091665523946
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.0,
+      "history": 12,
+      "estimator": "controlled",
+      "p_hat": 0.02316597880243816
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.0,
+      "history": 12,
+      "estimator": "joint",
+      "p_hat": 0.050431171605627316,
+      "rho_hat": 0.02660398751564117
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.0,
+      "history": 13,
+      "estimator": "lag",
+      "p_hat": 0.030207608578998603
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.0,
+      "history": 13,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.07158672482585764
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.0,
+      "history": 13,
+      "estimator": "controlled",
+      "p_hat": 0.03509045002972934
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.0,
+      "history": 13,
+      "estimator": "joint",
+      "p_hat": 0.0642722712048424,
+      "rho_hat": 0.03674251684229225
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.0,
+      "history": 14,
+      "estimator": "lag",
+      "p_hat": 0.001868656769204753
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.0,
+      "history": 14,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.02139452690472877
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.0,
+      "history": 14,
+      "estimator": "controlled",
+      "p_hat": 0.030548662277035944
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.0,
+      "history": 14,
+      "estimator": "joint",
+      "p_hat": 0.05706204528619825,
+      "rho_hat": 0.0
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.0,
+      "history": 15,
+      "estimator": "lag",
+      "p_hat": 0.0019310831529690399
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.0,
+      "history": 15,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.03476763850079475
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.0,
+      "history": 15,
+      "estimator": "controlled",
+      "p_hat": 0.02251813488094949
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.0,
+      "history": 15,
+      "estimator": "joint",
+      "p_hat": 0.04907774797563244,
+      "rho_hat": 0.020638315120896124
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.15,
+      "history": 0,
+      "estimator": "lag",
+      "p_hat": 0.1319945512609707
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.15,
+      "history": 0,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.06849956067739232
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.15,
+      "history": 0,
+      "estimator": "controlled",
+      "p_hat": 0.09307544453682817
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.15,
+      "history": 0,
+      "estimator": "joint",
+      "p_hat": 0.12042455732502202,
+      "rho_hat": 0.19794832166044796
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.15,
+      "history": 1,
+      "estimator": "lag",
+      "p_hat": 0.1901824288709371
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.15,
+      "history": 1,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.1241588819028923
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.15,
+      "history": 1,
+      "estimator": "controlled",
+      "p_hat": 0.17040757175383878
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.15,
+      "history": 1,
+      "estimator": "joint",
+      "p_hat": 0.1934429696093883,
+      "rho_hat": 0.06832764062116083
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.15,
+      "history": 2,
+      "estimator": "lag",
+      "p_hat": 0.1506039882819017
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.15,
+      "history": 2,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.14924514481921833
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.15,
+      "history": 2,
+      "estimator": "controlled",
+      "p_hat": 0.13509031092833915
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.15,
+      "history": 2,
+      "estimator": "joint",
+      "p_hat": 0.1587667079198517,
+      "rho_hat": 0.05547124643145743
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.15,
+      "history": 3,
+      "estimator": "lag",
+      "p_hat": 0.10640509917803527
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.15,
+      "history": 3,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.003315570603557724
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.15,
+      "history": 3,
+      "estimator": "controlled",
+      "p_hat": 0.08915694704461892
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.15,
+      "history": 3,
+      "estimator": "joint",
+      "p_hat": 0.11488258060882596,
+      "rho_hat": 0.1135298760166246
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.15,
+      "history": 4,
+      "estimator": "lag",
+      "p_hat": 0.12719228060895224
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.15,
+      "history": 4,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.1875951489240028
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.15,
+      "history": 4,
+      "estimator": "controlled",
+      "p_hat": 0.10186431419256242
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.15,
+      "history": 4,
+      "estimator": "joint",
+      "p_hat": 0.1279429583698268,
+      "rho_hat": 0.0982167674259334
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.15,
+      "history": 5,
+      "estimator": "lag",
+      "p_hat": 0.1637517216201245
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.15,
+      "history": 5,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.1848527606167824
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.15,
+      "history": 5,
+      "estimator": "controlled",
+      "p_hat": 0.15450475119671025
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.15,
+      "history": 5,
+      "estimator": "joint",
+      "p_hat": 0.17500116829606902,
+      "rho_hat": 0.027930314528006876
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.15,
+      "history": 6,
+      "estimator": "lag",
+      "p_hat": 0.1368544212755435
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.15,
+      "history": 6,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.08462106918504796
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.15,
+      "history": 6,
+      "estimator": "controlled",
+      "p_hat": 0.12031315391269345
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.15,
+      "history": 6,
+      "estimator": "joint",
+      "p_hat": 0.1447485982805177,
+      "rho_hat": 0.07977034739899047
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.15,
+      "history": 7,
+      "estimator": "lag",
+      "p_hat": 0.08218246060728876
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.15,
+      "history": 7,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.061343539726252214
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.15,
+      "history": 7,
+      "estimator": "controlled",
+      "p_hat": 0.07561977177918983
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.15,
+      "history": 7,
+      "estimator": "joint",
+      "p_hat": 0.10142646985942975,
+      "rho_hat": 0.06351706727733852
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.15,
+      "history": 8,
+      "estimator": "lag",
+      "p_hat": 0.1570156102862465
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.15,
+      "history": 8,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.07728902794435476
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.15,
+      "history": 8,
+      "estimator": "controlled",
+      "p_hat": 0.13042730787711238
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.15,
+      "history": 8,
+      "estimator": "joint",
+      "p_hat": 0.15668844598072773,
+      "rho_hat": 0.11285861997513466
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.15,
+      "history": 9,
+      "estimator": "lag",
+      "p_hat": 0.11498248415265507
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.15,
+      "history": 9,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.041751047781086806
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.15,
+      "history": 9,
+      "estimator": "controlled",
+      "p_hat": 0.10514739627958809
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.15,
+      "history": 9,
+      "estimator": "joint",
+      "p_hat": 0.13211925029057392,
+      "rho_hat": 0.05410508636115991
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.15,
+      "history": 10,
+      "estimator": "lag",
+      "p_hat": 0.2077763548522906
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.15,
+      "history": 10,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.11267127569571866
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.15,
+      "history": 10,
+      "estimator": "controlled",
+      "p_hat": 0.17776614380070935
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.15,
+      "history": 10,
+      "estimator": "joint",
+      "p_hat": 0.20328445803728695,
+      "rho_hat": 0.11156133074727831
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.15,
+      "history": 11,
+      "estimator": "lag",
+      "p_hat": 0.17802107805397427
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.15,
+      "history": 11,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.13203782566786607
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.15,
+      "history": 11,
+      "estimator": "controlled",
+      "p_hat": 0.15189403894266754
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.15,
+      "history": 11,
+      "estimator": "joint",
+      "p_hat": 0.17815318262536933,
+      "rho_hat": 0.08597608580040553
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.15,
+      "history": 12,
+      "estimator": "lag",
+      "p_hat": 0.14884988245510034
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.15,
+      "history": 12,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.209596604164185
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.15,
+      "history": 12,
+      "estimator": "controlled",
+      "p_hat": 0.13663573095036463
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.15,
+      "history": 12,
+      "estimator": "joint",
+      "p_hat": 0.15870422834520528,
+      "rho_hat": 0.0315709534809014
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.15,
+      "history": 13,
+      "estimator": "lag",
+      "p_hat": 0.1507623600793261
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.15,
+      "history": 13,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.13729570692851273
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.15,
+      "history": 13,
+      "estimator": "controlled",
+      "p_hat": 0.1415065773997672
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.15,
+      "history": 13,
+      "estimator": "joint",
+      "p_hat": 0.16392359834768871,
+      "rho_hat": 0.03371715254915946
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.15,
+      "history": 14,
+      "estimator": "lag",
+      "p_hat": 0.1407541924324163
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.15,
+      "history": 14,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.15518210245554417
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.15,
+      "history": 14,
+      "estimator": "controlled",
+      "p_hat": 0.13400102026393557
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.15,
+      "history": 14,
+      "estimator": "joint",
+      "p_hat": 0.15566351546557605,
+      "rho_hat": 0.02737043795703915
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.15,
+      "history": 15,
+      "estimator": "lag",
+      "p_hat": 0.16094961909755323
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.15,
+      "history": 15,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.14304162756960467
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.15,
+      "history": 15,
+      "estimator": "controlled",
+      "p_hat": 0.13767797060327536
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.15,
+      "history": 15,
+      "estimator": "joint",
+      "p_hat": 0.16343079839466562,
+      "rho_hat": 0.08121689234187184
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.3,
+      "history": 0,
+      "estimator": "lag",
+      "p_hat": 0.3113683402391792
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.3,
+      "history": 0,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.3127390421999474
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.3,
+      "history": 0,
+      "estimator": "controlled",
+      "p_hat": 0.29634450123268574
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.3,
+      "history": 0,
+      "estimator": "joint",
+      "p_hat": 0.3067274703689528,
+      "rho_hat": 0.019804783387503817
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.3,
+      "history": 1,
+      "estimator": "lag",
+      "p_hat": 0.3293840140470326
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.3,
+      "history": 1,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.2652667976071129
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.3,
+      "history": 1,
+      "estimator": "controlled",
+      "p_hat": 0.290552753593049
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.3,
+      "history": 1,
+      "estimator": "joint",
+      "p_hat": 0.31122047837721145,
+      "rho_hat": 0.17006055972599413
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.3,
+      "history": 2,
+      "estimator": "lag",
+      "p_hat": 0.28580123862634865
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.3,
+      "history": 2,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.2536699514585634
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.3,
+      "history": 2,
+      "estimator": "controlled",
+      "p_hat": 0.26476003879171056
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.3,
+      "history": 2,
+      "estimator": "joint",
+      "p_hat": 0.2795088808776522,
+      "rho_hat": 0.04483566060161717
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.3,
+      "history": 3,
+      "estimator": "lag",
+      "p_hat": 0.30550449029289795
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.3,
+      "history": 3,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.23678398412772453
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.3,
+      "history": 3,
+      "estimator": "controlled",
+      "p_hat": 0.2858622739221116
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.3,
+      "history": 3,
+      "estimator": "joint",
+      "p_hat": 0.29956036015122295,
+      "rho_hat": 0.04851107746275654
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.3,
+      "history": 4,
+      "estimator": "lag",
+      "p_hat": 0.28271429975231144
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.3,
+      "history": 4,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.27312702920516074
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.3,
+      "history": 4,
+      "estimator": "controlled",
+      "p_hat": 0.27329557093550694
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.3,
+      "history": 4,
+      "estimator": "joint",
+      "p_hat": 0.28294451727053654,
+      "rho_hat": 0.0
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.3,
+      "history": 5,
+      "estimator": "lag",
+      "p_hat": 0.30000630277614987
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.3,
+      "history": 5,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.34517168765741485
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.3,
+      "history": 5,
+      "estimator": "controlled",
+      "p_hat": 0.2786232068582769
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.3,
+      "history": 5,
+      "estimator": "joint",
+      "p_hat": 0.29241498070201594,
+      "rho_hat": 0.04650960868534786
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.3,
+      "history": 6,
+      "estimator": "lag",
+      "p_hat": 0.2943238427359605
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.3,
+      "history": 6,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.26811772901969627
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.3,
+      "history": 6,
+      "estimator": "controlled",
+      "p_hat": 0.25663773583976424
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.3,
+      "history": 6,
+      "estimator": "joint",
+      "p_hat": 0.2794518838246964,
+      "rho_hat": 0.1510495764862785
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.3,
+      "history": 7,
+      "estimator": "lag",
+      "p_hat": 0.3000070360237484
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.3,
+      "history": 7,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.21563010397031182
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.3,
+      "history": 7,
+      "estimator": "controlled",
+      "p_hat": 0.2592908368839166
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.3,
+      "history": 7,
+      "estimator": "joint",
+      "p_hat": 0.2832653286138107,
+      "rho_hat": 0.17822847684565374
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.3,
+      "history": 8,
+      "estimator": "lag",
+      "p_hat": 0.3081999632309678
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.3,
+      "history": 8,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.2333442197894263
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.3,
+      "history": 8,
+      "estimator": "controlled",
+      "p_hat": 0.2749858197394016
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.3,
+      "history": 8,
+      "estimator": "joint",
+      "p_hat": 0.2946652693141229,
+      "rho_hat": 0.13032440791779648
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.3,
+      "history": 9,
+      "estimator": "lag",
+      "p_hat": 0.27301588209545324
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.3,
+      "history": 9,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.17825286998220588
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.3,
+      "history": 9,
+      "estimator": "controlled",
+      "p_hat": 0.2568929536583998
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.3,
+      "history": 9,
+      "estimator": "joint",
+      "p_hat": 0.2717987746350907,
+      "rho_hat": 0.12636592369485108
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.3,
+      "history": 10,
+      "estimator": "lag",
+      "p_hat": 0.27687593887822176
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.3,
+      "history": 10,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.22197212659817153
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.3,
+      "history": 10,
+      "estimator": "controlled",
+      "p_hat": 0.26014416279733343
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.3,
+      "history": 10,
+      "estimator": "joint",
+      "p_hat": 0.27432451166617805,
+      "rho_hat": 0.02091436496902795
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.3,
+      "history": 11,
+      "estimator": "lag",
+      "p_hat": 0.30717675236066205
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.3,
+      "history": 11,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.29587115123008767
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.3,
+      "history": 11,
+      "estimator": "controlled",
+      "p_hat": 0.29467018725527394
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.3,
+      "history": 11,
+      "estimator": "joint",
+      "p_hat": 0.30333235983416135,
+      "rho_hat": 0.00035622518441845663
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.3,
+      "history": 12,
+      "estimator": "lag",
+      "p_hat": 0.28297863218762476
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.3,
+      "history": 12,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.2759065782649391
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.3,
+      "history": 12,
+      "estimator": "controlled",
+      "p_hat": 0.2523593876970196
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.3,
+      "history": 12,
+      "estimator": "joint",
+      "p_hat": 0.27154903429639504,
+      "rho_hat": 0.08730573597609538
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.3,
+      "history": 13,
+      "estimator": "lag",
+      "p_hat": 0.3085424149564984
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.3,
+      "history": 13,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.2333545779283556
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.3,
+      "history": 13,
+      "estimator": "controlled",
+      "p_hat": 0.3029737995869117
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.3,
+      "history": 13,
+      "estimator": "joint",
+      "p_hat": 0.30750144454903333,
+      "rho_hat": 0.0
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.3,
+      "history": 14,
+      "estimator": "lag",
+      "p_hat": 0.2824171018312527
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.3,
+      "history": 14,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.2574300206112051
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.3,
+      "history": 14,
+      "estimator": "controlled",
+      "p_hat": 0.271288857302781
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.3,
+      "history": 14,
+      "estimator": "joint",
+      "p_hat": 0.2822988133190066,
+      "rho_hat": 0.11689489108679012
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.3,
+      "history": 15,
+      "estimator": "lag",
+      "p_hat": 0.32083749595482014
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.3,
+      "history": 15,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.3053973924229207
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.3,
+      "history": 15,
+      "estimator": "controlled",
+      "p_hat": 0.3033976459198217
+    },
+    {
+      "world": "independent demand",
+      "p_true": 0.3,
+      "history": 15,
+      "estimator": "joint",
+      "p_hat": 0.31389135172921034,
+      "rho_hat": 0.03950597093166111
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.0,
+      "history": 0,
+      "estimator": "lag",
+      "p_hat": 0.5989196643607161
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.0,
+      "history": 0,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.0
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.0,
+      "history": 0,
+      "estimator": "controlled",
+      "p_hat": 0.052007630562330466
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.0,
+      "history": 0,
+      "estimator": "joint",
+      "p_hat": 0.0,
+      "rho_hat": 0.7957532023460818
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.0,
+      "history": 1,
+      "estimator": "lag",
+      "p_hat": 0.6083798819193081
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.0,
+      "history": 1,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.0
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.0,
+      "history": 1,
+      "estimator": "controlled",
+      "p_hat": 0.09805958574448874
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.0,
+      "history": 1,
+      "estimator": "joint",
+      "p_hat": 0.09396751264222224,
+      "rho_hat": 0.7968739566951138
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.0,
+      "history": 2,
+      "estimator": "lag",
+      "p_hat": 0.5944741464091492
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.0,
+      "history": 2,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.0
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.0,
+      "history": 2,
+      "estimator": "controlled",
+      "p_hat": 0.07673748675511788
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.0,
+      "history": 2,
+      "estimator": "joint",
+      "p_hat": 0.04598221834249656,
+      "rho_hat": 0.7944580269305892
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.0,
+      "history": 3,
+      "estimator": "lag",
+      "p_hat": 0.6344121159390612
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.0,
+      "history": 3,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.0
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.0,
+      "history": 3,
+      "estimator": "controlled",
+      "p_hat": 0.11330134929850474
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.0,
+      "history": 3,
+      "estimator": "joint",
+      "p_hat": 0.1191707956151197,
+      "rho_hat": 0.8403087469372019
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.0,
+      "history": 4,
+      "estimator": "lag",
+      "p_hat": 0.5757006148618574
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.0,
+      "history": 4,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.0
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.0,
+      "history": 4,
+      "estimator": "controlled",
+      "p_hat": 0.029564704841199514
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.0,
+      "history": 4,
+      "estimator": "joint",
+      "p_hat": 0.0,
+      "rho_hat": 0.7674362127505812
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.0,
+      "history": 5,
+      "estimator": "lag",
+      "p_hat": 0.5680896409209512
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.0,
+      "history": 5,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.0
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.0,
+      "history": 5,
+      "estimator": "controlled",
+      "p_hat": 0.0858444216921137
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.0,
+      "history": 5,
+      "estimator": "joint",
+      "p_hat": 0.06863419814841269,
+      "rho_hat": 0.7691817832294929
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.0,
+      "history": 6,
+      "estimator": "lag",
+      "p_hat": 0.6117777000076422
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.0,
+      "history": 6,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.0
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.0,
+      "history": 6,
+      "estimator": "controlled",
+      "p_hat": 0.07808092995658145
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.0,
+      "history": 6,
+      "estimator": "joint",
+      "p_hat": 0.04479075614850743,
+      "rho_hat": 0.8175502495559569
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.0,
+      "history": 7,
+      "estimator": "lag",
+      "p_hat": 0.5851276678901507
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.0,
+      "history": 7,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.02688568327525925
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.0,
+      "history": 7,
+      "estimator": "controlled",
+      "p_hat": 0.13041428448876433
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.0,
+      "history": 7,
+      "estimator": "joint",
+      "p_hat": 0.15317897188212184,
+      "rho_hat": 0.7957259759464593
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.0,
+      "history": 8,
+      "estimator": "lag",
+      "p_hat": 0.6083402247394258
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.0,
+      "history": 8,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.0
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.0,
+      "history": 8,
+      "estimator": "controlled",
+      "p_hat": 0.13050449405295889
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.0,
+      "history": 8,
+      "estimator": "joint",
+      "p_hat": 0.1560717938714493,
+      "rho_hat": 0.8007009020295053
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.0,
+      "history": 9,
+      "estimator": "lag",
+      "p_hat": 0.5904376739428041
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.0,
+      "history": 9,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.0
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.0,
+      "history": 9,
+      "estimator": "controlled",
+      "p_hat": 0.051630504978989834
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.0,
+      "history": 9,
+      "estimator": "joint",
+      "p_hat": 0.0,
+      "rho_hat": 0.7972314534126236
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.0,
+      "history": 10,
+      "estimator": "lag",
+      "p_hat": 0.6106814831163189
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.0,
+      "history": 10,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.0
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.0,
+      "history": 10,
+      "estimator": "controlled",
+      "p_hat": 0.05989911858000869
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.0,
+      "history": 10,
+      "estimator": "joint",
+      "p_hat": 0.006083193537039857,
+      "rho_hat": 0.806917817560693
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.0,
+      "history": 11,
+      "estimator": "lag",
+      "p_hat": 0.6043110938157622
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.0,
+      "history": 11,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.0
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.0,
+      "history": 11,
+      "estimator": "controlled",
+      "p_hat": 0.06641206351790394
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.0,
+      "history": 11,
+      "estimator": "joint",
+      "p_hat": 0.028145675959747412,
+      "rho_hat": 0.7915729329287365
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.0,
+      "history": 12,
+      "estimator": "lag",
+      "p_hat": 0.5994212708047302
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.0,
+      "history": 12,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.0
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.0,
+      "history": 12,
+      "estimator": "controlled",
+      "p_hat": 0.10463092766438607
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.0,
+      "history": 12,
+      "estimator": "joint",
+      "p_hat": 0.10209014712149182,
+      "rho_hat": 0.8151638006292149
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.0,
+      "history": 13,
+      "estimator": "lag",
+      "p_hat": 0.5508645662233057
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.0,
+      "history": 13,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.0
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.0,
+      "history": 13,
+      "estimator": "controlled",
+      "p_hat": 0.056721941763063145
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.0,
+      "history": 13,
+      "estimator": "joint",
+      "p_hat": 0.004650243132505078,
+      "rho_hat": 0.7613500793297117
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.0,
+      "history": 14,
+      "estimator": "lag",
+      "p_hat": 0.6429661956924151
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.0,
+      "history": 14,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.0
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.0,
+      "history": 14,
+      "estimator": "controlled",
+      "p_hat": 0.10295561315003852
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.0,
+      "history": 14,
+      "estimator": "joint",
+      "p_hat": 0.0976256082344319,
+      "rho_hat": 0.8449896124627938
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.0,
+      "history": 15,
+      "estimator": "lag",
+      "p_hat": 0.5883194965918362
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.0,
+      "history": 15,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.0
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.0,
+      "history": 15,
+      "estimator": "controlled",
+      "p_hat": 0.10875634334572007
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.0,
+      "history": 15,
+      "estimator": "joint",
+      "p_hat": 0.1136557199174033,
+      "rho_hat": 0.7908924254672342
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.15,
+      "history": 0,
+      "estimator": "lag",
+      "p_hat": 0.6567284617777576
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.15,
+      "history": 0,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.0
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.15,
+      "history": 0,
+      "estimator": "controlled",
+      "p_hat": 0.174681997388738
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.15,
+      "history": 0,
+      "estimator": "joint",
+      "p_hat": 0.23567036361277233,
+      "rho_hat": 0.8254661773683082
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.15,
+      "history": 1,
+      "estimator": "lag",
+      "p_hat": 0.6390894834192536
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.15,
+      "history": 1,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.0
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.15,
+      "history": 1,
+      "estimator": "controlled",
+      "p_hat": 0.12376306036632838
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.15,
+      "history": 1,
+      "estimator": "joint",
+      "p_hat": 0.14995511828126862,
+      "rho_hat": 0.7928075497948207
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.15,
+      "history": 2,
+      "estimator": "lag",
+      "p_hat": 0.6372180634719489
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.15,
+      "history": 2,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.0021189319382026893
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.15,
+      "history": 2,
+      "estimator": "controlled",
+      "p_hat": 0.14346981347181173
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.15,
+      "history": 2,
+      "estimator": "joint",
+      "p_hat": 0.1852019227857658,
+      "rho_hat": 0.7946016686512207
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.15,
+      "history": 3,
+      "estimator": "lag",
+      "p_hat": 0.5989940106246351
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.15,
+      "history": 3,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.0
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.15,
+      "history": 3,
+      "estimator": "controlled",
+      "p_hat": 0.11676440480784323
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.15,
+      "history": 3,
+      "estimator": "joint",
+      "p_hat": 0.13648064225573886,
+      "rho_hat": 0.7565697236510857
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.15,
+      "history": 4,
+      "estimator": "lag",
+      "p_hat": 0.6539782744999025
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.15,
+      "history": 4,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.0
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.15,
+      "history": 4,
+      "estimator": "controlled",
+      "p_hat": 0.13672167436272523
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.15,
+      "history": 4,
+      "estimator": "joint",
+      "p_hat": 0.17182023238456823,
+      "rho_hat": 0.8214815064039619
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.15,
+      "history": 5,
+      "estimator": "lag",
+      "p_hat": 0.6282948680259716
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.15,
+      "history": 5,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.0
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.15,
+      "history": 5,
+      "estimator": "controlled",
+      "p_hat": 0.1367410607855417
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.15,
+      "history": 5,
+      "estimator": "joint",
+      "p_hat": 0.16999537731817638,
+      "rho_hat": 0.8122845368331599
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.15,
+      "history": 6,
+      "estimator": "lag",
+      "p_hat": 0.6345373951296855
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.15,
+      "history": 6,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.0
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.15,
+      "history": 6,
+      "estimator": "controlled",
+      "p_hat": 0.13418261224993402
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.15,
+      "history": 6,
+      "estimator": "joint",
+      "p_hat": 0.16809443905635707,
+      "rho_hat": 0.794394141712819
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.15,
+      "history": 7,
+      "estimator": "lag",
+      "p_hat": 0.6796179485635779
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.15,
+      "history": 7,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.014283930438440874
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.15,
+      "history": 7,
+      "estimator": "controlled",
+      "p_hat": 0.16791594440682706
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.15,
+      "history": 7,
+      "estimator": "joint",
+      "p_hat": 0.22711776072805206,
+      "rho_hat": 0.85
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.15,
+      "history": 8,
+      "estimator": "lag",
+      "p_hat": 0.6395783241971469
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.15,
+      "history": 8,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.004435380358252768
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.15,
+      "history": 8,
+      "estimator": "controlled",
+      "p_hat": 0.1636762472150262
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.15,
+      "history": 8,
+      "estimator": "joint",
+      "p_hat": 0.21570817377146115,
+      "rho_hat": 0.8232245918255394
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.15,
+      "history": 9,
+      "estimator": "lag",
+      "p_hat": 0.6628538436717603
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.15,
+      "history": 9,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.0
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.15,
+      "history": 9,
+      "estimator": "controlled",
+      "p_hat": 0.19574633973870306
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.15,
+      "history": 9,
+      "estimator": "joint",
+      "p_hat": 0.26988918035673276,
+      "rho_hat": 0.8173709949977854
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.15,
+      "history": 10,
+      "estimator": "lag",
+      "p_hat": 0.6493114884763654
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.15,
+      "history": 10,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.005150449884547345
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.15,
+      "history": 10,
+      "estimator": "controlled",
+      "p_hat": 0.15991204114855428
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.15,
+      "history": 10,
+      "estimator": "joint",
+      "p_hat": 0.2148536302045474,
+      "rho_hat": 0.8009506633331706
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.15,
+      "history": 11,
+      "estimator": "lag",
+      "p_hat": 0.643671136527278
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.15,
+      "history": 11,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.033219836001849454
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.15,
+      "history": 11,
+      "estimator": "controlled",
+      "p_hat": 0.1636780628116992
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.15,
+      "history": 11,
+      "estimator": "joint",
+      "p_hat": 0.21405757996587307,
+      "rho_hat": 0.8458673304624841
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.15,
+      "history": 12,
+      "estimator": "lag",
+      "p_hat": 0.6276310852376115
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.15,
+      "history": 12,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.05849843250915728
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.15,
+      "history": 12,
+      "estimator": "controlled",
+      "p_hat": 0.12354829597804105
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.15,
+      "history": 12,
+      "estimator": "joint",
+      "p_hat": 0.1445854467986014,
+      "rho_hat": 0.8156386348922351
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.15,
+      "history": 13,
+      "estimator": "lag",
+      "p_hat": 0.6242654220101685
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.15,
+      "history": 13,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.0
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.15,
+      "history": 13,
+      "estimator": "controlled",
+      "p_hat": 0.09311861767734726
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.15,
+      "history": 13,
+      "estimator": "joint",
+      "p_hat": 0.07889972811549247,
+      "rho_hat": 0.815509980576701
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.15,
+      "history": 14,
+      "estimator": "lag",
+      "p_hat": 0.6722940720618409
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.15,
+      "history": 14,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.01944258178713485
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.15,
+      "history": 14,
+      "estimator": "controlled",
+      "p_hat": 0.16432868260492364
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.15,
+      "history": 14,
+      "estimator": "joint",
+      "p_hat": 0.2216144715626819,
+      "rho_hat": 0.8385323827467124
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.15,
+      "history": 15,
+      "estimator": "lag",
+      "p_hat": 0.6635698853826795
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.15,
+      "history": 15,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.0
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.15,
+      "history": 15,
+      "estimator": "controlled",
+      "p_hat": 0.13723399898083966
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.15,
+      "history": 15,
+      "estimator": "joint",
+      "p_hat": 0.17147133406823722,
+      "rho_hat": 0.8380548403222616
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.3,
+      "history": 0,
+      "estimator": "lag",
+      "p_hat": 0.6994418245831245
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.3,
+      "history": 0,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.119365179429957
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.3,
+      "history": 0,
+      "estimator": "controlled",
+      "p_hat": 0.22036796560476565
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.3,
+      "history": 0,
+      "estimator": "joint",
+      "p_hat": 0.3165574977037167,
+      "rho_hat": 0.8133731314708721
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.3,
+      "history": 1,
+      "estimator": "lag",
+      "p_hat": 0.704548980378365
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.3,
+      "history": 1,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.09972759165960776
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.3,
+      "history": 1,
+      "estimator": "controlled",
+      "p_hat": 0.17912989659320408
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.3,
+      "history": 1,
+      "estimator": "joint",
+      "p_hat": 0.2560664660560798,
+      "rho_hat": 0.8406387711251697
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.3,
+      "history": 2,
+      "estimator": "lag",
+      "p_hat": 0.7036187322931035
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.3,
+      "history": 2,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.013616834863662877
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.3,
+      "history": 2,
+      "estimator": "controlled",
+      "p_hat": 0.16878389191721682
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.3,
+      "history": 2,
+      "estimator": "joint",
+      "p_hat": 0.23410129825478024,
+      "rho_hat": 0.8472943354469926
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.3,
+      "history": 3,
+      "estimator": "lag",
+      "p_hat": 0.7116936842968734
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.3,
+      "history": 3,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.13367943535520665
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.3,
+      "history": 3,
+      "estimator": "controlled",
+      "p_hat": 0.2346203555694935
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.3,
+      "history": 3,
+      "estimator": "joint",
+      "p_hat": 0.34204800226853405,
+      "rho_hat": 0.818232131962523
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.3,
+      "history": 4,
+      "estimator": "lag",
+      "p_hat": 0.6890181994608978
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.3,
+      "history": 4,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.032037827971714415
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.3,
+      "history": 4,
+      "estimator": "controlled",
+      "p_hat": 0.16524904259122758
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.3,
+      "history": 4,
+      "estimator": "joint",
+      "p_hat": 0.22851720534602288,
+      "rho_hat": 0.85
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.3,
+      "history": 5,
+      "estimator": "lag",
+      "p_hat": 0.6950887057056636
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.3,
+      "history": 5,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.03538762648668551
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.3,
+      "history": 5,
+      "estimator": "controlled",
+      "p_hat": 0.17053436229686472
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.3,
+      "history": 5,
+      "estimator": "joint",
+      "p_hat": 0.24105473788889695,
+      "rho_hat": 0.817110037989401
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.3,
+      "history": 6,
+      "estimator": "lag",
+      "p_hat": 0.7134206219020378
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.3,
+      "history": 6,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.05492626136891
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.3,
+      "history": 6,
+      "estimator": "controlled",
+      "p_hat": 0.2277839138437641
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.3,
+      "history": 6,
+      "estimator": "joint",
+      "p_hat": 0.32722726149573794,
+      "rho_hat": 0.8309986427281834
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.3,
+      "history": 7,
+      "estimator": "lag",
+      "p_hat": 0.6914227167026403
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.3,
+      "history": 7,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.05877460755920648
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.3,
+      "history": 7,
+      "estimator": "controlled",
+      "p_hat": 0.16345111779664326
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.3,
+      "history": 7,
+      "estimator": "joint",
+      "p_hat": 0.22651249459823886,
+      "rho_hat": 0.8352861099797907
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.3,
+      "history": 8,
+      "estimator": "lag",
+      "p_hat": 0.7330335199711512
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.3,
+      "history": 8,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.10685654590428526
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.3,
+      "history": 8,
+      "estimator": "controlled",
+      "p_hat": 0.2127054056570832
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.3,
+      "history": 8,
+      "estimator": "joint",
+      "p_hat": 0.3108982534747584,
+      "rho_hat": 0.85
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.3,
+      "history": 9,
+      "estimator": "lag",
+      "p_hat": 0.7068408153110378
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.3,
+      "history": 9,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.008347167651363
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.3,
+      "history": 9,
+      "estimator": "controlled",
+      "p_hat": 0.16036302873331232
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.3,
+      "history": 9,
+      "estimator": "joint",
+      "p_hat": 0.22533562391828096,
+      "rho_hat": 0.8170463889910091
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.3,
+      "history": 10,
+      "estimator": "lag",
+      "p_hat": 0.7248520773142221
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.3,
+      "history": 10,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.07018053275138446
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.3,
+      "history": 10,
+      "estimator": "controlled",
+      "p_hat": 0.22932660187884063
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.3,
+      "history": 10,
+      "estimator": "joint",
+      "p_hat": 0.3317967786129617,
+      "rho_hat": 0.8455293012951786
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.3,
+      "history": 11,
+      "estimator": "lag",
+      "p_hat": 0.7301627021863303
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.3,
+      "history": 11,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.13672666785154824
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.3,
+      "history": 11,
+      "estimator": "controlled",
+      "p_hat": 0.23130746273664474
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.3,
+      "history": 11,
+      "estimator": "joint",
+      "p_hat": 0.3412267572659576,
+      "rho_hat": 0.8167887704064573
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.3,
+      "history": 12,
+      "estimator": "lag",
+      "p_hat": 0.7285280361988039
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.3,
+      "history": 12,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.10420018487310626
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.3,
+      "history": 12,
+      "estimator": "controlled",
+      "p_hat": 0.19335574733340036
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.3,
+      "history": 12,
+      "estimator": "joint",
+      "p_hat": 0.28382360928923656,
+      "rho_hat": 0.8491531916692047
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.3,
+      "history": 13,
+      "estimator": "lag",
+      "p_hat": 0.6690707604513648
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.3,
+      "history": 13,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.012787167923183447
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.3,
+      "history": 13,
+      "estimator": "controlled",
+      "p_hat": 0.135373302909713
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.3,
+      "history": 13,
+      "estimator": "joint",
+      "p_hat": 0.17481385391201468,
+      "rho_hat": 0.8198837773126236
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.3,
+      "history": 14,
+      "estimator": "lag",
+      "p_hat": 0.6673006772307186
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.3,
+      "history": 14,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.1385397974463557
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.3,
+      "history": 14,
+      "estimator": "controlled",
+      "p_hat": 0.20190259001888594
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.3,
+      "history": 14,
+      "estimator": "joint",
+      "p_hat": 0.2858158394471854,
+      "rho_hat": 0.7786080192006006
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.3,
+      "history": 15,
+      "estimator": "lag",
+      "p_hat": 0.72045980591694
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.3,
+      "history": 15,
+      "estimator": "lag_minus_lead",
+      "p_hat": 0.09384880816179993
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.3,
+      "history": 15,
+      "estimator": "controlled",
+      "p_hat": 0.18859126618500666
+    },
+    {
+      "world": "clustered demand",
+      "p_true": 0.3,
+      "history": 15,
+      "estimator": "joint",
+      "p_hat": 0.2722869736139999,
+      "rho_hat": 0.8314139752134287
+    }
+  ],
+  "service_multiplier": 1.5366363525390625,
+  "clustering_rho": 0.752424727846542,
+  "clustering_sigma": 0.21251721063535187,
+  "bindings": {
+    "lag": {
+      "grid": [
+        0.0,
+        0.1,
+        0.2,
+        0.3,
+        0.45,
+        0.6,
+        0.8
+      ],
+      "values": [
+        -0.010354676311956235,
+        0.021668937916010364,
+        0.06438678027026482,
+        0.11966712459316001,
+        0.20318944813883422,
+        0.3021512206864567,
+        0.4797271020809667
+      ]
+    },
+    "lag_minus_lead": {
+      "grid": [
+        0.0,
+        0.1,
+        0.2,
+        0.3,
+        0.45,
+        0.6,
+        0.8
+      ],
+      "values": [
+        -0.044302423918089834,
+        -0.03914938420259382,
+        -0.023473874315505544,
+        0.0038062288411777473,
+        0.03391646781210572,
+        0.057432349343520206,
+        0.06922813399531746
+      ]
+    },
+    "controlled": {
+      "grid": [
+        0.0,
+        0.1,
+        0.2,
+        0.3,
+        0.45,
+        0.6,
+        0.8
+      ],
+      "values": [
+        0.0022648338997388984,
+        0.030495237081053173,
+        0.0640785016652533,
+        0.11992608141133265,
+        0.18761284268570533,
+        0.24457355215560242,
+        0.297247879463632
+      ]
+    }
+  },
+  "joint_r2": {
+    "lag": 0.990812418958313,
+    "lead": 0.9859123828593281,
+    "controlled": 0.9755311148515583,
+    "acf1": 0.9895395757712913,
+    "dispersion": 0.9883996146984317
+  },
+  "histories": 16,
+  "days": 247
+}
