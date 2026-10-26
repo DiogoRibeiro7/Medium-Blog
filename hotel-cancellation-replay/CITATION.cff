@@ -1,0 +1,28 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite it as below."
+title: "Hotel cancellation replay: what a cancellation model is worth inside the system around it"
+authors:
+  - family-names: Ribeiro
+    given-names: Diogo
+    email: dfr@esmad.ipp.pt
+    orcid: "https://orcid.org/0009-0001-2022-7072"
+version: 0.1.0
+date-released: 2026-10-26
+license: Apache-2.0
+repository-code: "https://github.com/DiogoRibeiro7/Medium-Blog/tree/main/hotel-cancellation-replay"
+references:
+  - type: article
+    title: "Hotel booking demand datasets"
+    authors:
+      - family-names: Antonio
+        given-names: Nuno
+      - family-names: de Almeida
+        given-names: Ana
+      - family-names: Nunes
+        given-names: Luis
+    journal: "Data in Brief"
+    volume: 22
+    start: 41
+    end: 49
+    year: 2019
+    doi: "10.1016/j.dib.2018.11.126"
