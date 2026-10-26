@@ -1,0 +1,130 @@
+============================================================================
+1. MONTY HALL AS MISSING DATA (contestant holds door 1, door 3 opened, goat)
+============================================================================
+  ignorable analysis (mechanism dropped):       P(switch wins) = 1/2 = 0.5000
+  full likelihood, knowing host, fair tie-break: P(switch wins) = 2/3 = 0.6667
+  full likelihood, ignorant host:                P(switch wins) = 1/2 = 0.5000
+  CAR check P(open 3 | car 1) / P(open 3 | car 2): knowing host 1/2, ignorant host 1 (CAR holds iff the ratio is 1)
+  unknown mechanism: ratio lam in [0, 1] gives P(switch wins) = 1/(1 + lam) in [1/2, 1]
+    lam =    0: 1 = 1.0000
+    lam =  1/4: 4/5 = 0.8000
+    lam =  1/2: 2/3 = 0.6667
+    lam =  3/4: 4/7 = 0.5714
+    lam =    1: 1/2 = 0.5000
+  uniform prior on the tie-break q (= lam for the knowing host):
+    averaging the conditional answer 1/(1+q) over q: ln 2 = 0.6931  (not the predictive)
+    predictive: P(car 2, open 3) = 1/3, P(car 1, open 3) = E[q]/3 = 1/6, so P(switch wins | open 3) = 2/3
+
+============================================================================
+2. CLIPS SELECTED ON THE OUTCOME (true switching win rate 2/3)
+============================================================================
+  every game shown (MCAR)                        estimated win rate 2/3 = 0.6667
+  one game in ten shown at random (MCAR)         estimated win rate 2/3 = 0.6667
+  wins shown always, losses one time in five     estimated win rate 10/11 = 0.9091
+  losses shown always, wins one time in five     estimated win rate 2/7 = 0.2857
+  only wins shown                                estimated win rate 1 = 1.0000
+  the estimate is p s_w / (p s_w + (1 - p) s_l): the selection ratio s_w / s_l plays the role of the host's likelihood ratio
+
+============================================================================
+3. COAT: SELF-SELECTED AND RANDOMLY ASSIGNED RATINGS (Schnabel et al. 2016)
+============================================================================
+  290 users, 300 items; self-selected ratings 6960 (24 per user), random ratings 4640 (16 per user)
+  user-item pairs rated in both samples: 366
+    on those pairs: same rating 1.000, mean |difference| 0.000
+  rating shares 1..5, self-selected: 0.273 0.206 0.247 0.183 0.091
+  rating shares 1..5, random:        0.405 0.194 0.216 0.138 0.047
+  mean rating: self-selected 2.611, random 2.229, difference 0.383
+    95% user-bootstrap interval for the difference: [0.333, 0.435]
+  share of ratings 4 or 5: self-selected 0.274, random 0.185
+
+  P(rated) overall = 0.0800
+  naive-Bayes selection probability P(rated | rating = k), k = 1..5: 0.0540 0.0853 0.0914 0.1061 0.1534
+  ratio P(rated | 5) / P(rated | 1) = 2.84; P(rated | 4) / P(rated | 1) = 1.97
+    95% user-bootstrap intervals: 1: [0.0511, 0.0571]; 2: [0.0793, 0.0919]; 3: [0.0854, 0.0981]; 4: [0.0974, 0.1160]; 5: [0.1307, 0.1826]
+  log-linear fit of log P(rated | r) on r: slope 0.231 per rating point
+
+  Identification without and with the random sample:
+    no assumption (Manski bounds on the mean over all user-item pairs): [1.129, 4.809]
+    ignorable (selection unrelated to the rating): 2.611
+    exponential tilting P(rated | r) ~ exp(gamma r): gamma = 0.239 reproduces the random-sample mean 2.229
+      gamma = 0.0: implied mean rating 2.611
+      gamma = 0.1: implied mean rating 2.445
+      gamma = 0.2: implied mean rating 2.288
+      gamma = 0.3: implied mean rating 2.140
+      gamma = 0.4: implied mean rating 2.005
+      gamma = 0.5: implied mean rating 1.882
+    pattern-mixture alternative: unrated pairs would have to average 0.416 points below the rated ones (mean 2.196) to reproduce the random-sample mean
+    SNIPS mean with the naive-Bayes propensities (depend only on the rating): 2.229 = the random-sample mean by construction
+
+  Which coats get rated, and who rates them:
+    self-selected ratings per coat: min 5, median 20, max 88; coats never self-selected: 0
+    random ratings per coat: min 5, median 15, max 29
+    mean over coats of the random-rating mean (all coats): 2.228
+    mean over coats of the random-rating mean, coats ever self-selected (300): 2.228
+    post-stratified by coat (each self-selected coat weighted equally): 2.541
+    decomposition of the gap 2.611 - 2.229 = 0.383:
+      which coats get rated (naive minus post-stratified): 0.070
+      who rates each coat (post-stratified minus the random mean over the same coats): 0.313
+      remainder (random mean over those coats minus the random mean over all ratings): -0.001
+    coats with at least 5 ratings of each kind: 300; self-selected mean exceeds random mean for 0.730 of them; mean within-coat difference 0.313
+
+  An observable part of the selection: coats of the user's own gender
+    self-selected: share own-gender 0.874; mean rating own-gender 2.679, other-gender 2.145
+    random       : share own-gender 0.506; mean rating own-gender 2.474, other-gender 1.978
+  excluding the 366 pairs present in both files: self-selected 2.614, random 2.199, difference 0.414
+
+  Propensities from observed covariates only (logistic regressions on all 87,000 pairs;
+  missing-at-random models of increasing richness):
+    one effect per coat                        SNIPS mean 2.555; share of the gap removed 0.149
+    user and coat features, main effects       SNIPS mean 2.546; share of the gap removed 0.171
+    + user gender x coat gender                SNIPS mean 2.336; share of the gap removed 0.720
+    + every user x coat feature interaction    SNIPS mean 2.333; share of the gap removed 0.727; propensity range 0.0013 to 0.7259
+
+============================================================================
+4. COAT: OFFLINE EVALUATION OF RATING MODELS UNDER SELECTION
+============================================================================
+  training: 5800 self-selected ratings; held out: 1160 self-selected; truth: 2320 random ratings from 145 users; propensities from 2320 random ratings of the other 145 users
+  P(rated | r) from the training half: 0.0453 0.0766 0.0771 0.0799 0.1114
+  model                                   | naive MSE on held-out | SNIPS MSE on held-out | true MSE on random | mean prediction on random pairs
+  global mean                              |                 1.729 |                 1.785 |              1.653 | 2.617
+  coat mean (shrunk)                       |                 1.504 |                 1.545 |              1.557 | 2.572
+  user + coat biases                       |                 1.191 |                 1.199 |              1.275 | 2.560
+  matrix factorisation (k = 4)             |                 1.233 |                 1.252 |              1.289 | 2.560
+  user + coat biases, IPS-weighted         |                 1.220 |                 1.109 |              1.124 | 2.341
+  matrix factorisation, IPS-weighted       |                 1.238 |                 1.155 |              1.170 | 2.383
+  mean of the true ratings on those random pairs: 2.171
+  ranking by naive MSE: user + coat biases < user + coat biases, IPS-weighted < matrix factorisation (k = 4) < matrix factorisation, IPS-weighted < coat mean (shrunk) < global mean
+  ranking by SNIPS MSE: user + coat biases, IPS-weighted < matrix factorisation, IPS-weighted < user + coat biases < matrix factorisation (k = 4) < coat mean (shrunk) < global mean
+  ranking by true MSE:  user + coat biases, IPS-weighted < matrix factorisation, IPS-weighted < user + coat biases < matrix factorisation (k = 4) < coat mean (shrunk) < global mean
+
+  Over 100 independent splits (hold-out draw and halves of the random sample):
+  model                                   | naive MSE     | SNIPS MSE     | true MSE
+  global mean                              | 1.695 (0.042) | 1.695 (0.063) | 1.690 (0.040)
+  coat mean (shrunk)                       | 1.514 (0.042) | 1.508 (0.060) | 1.603 (0.041)
+  user + coat biases                       | 1.220 (0.040) | 1.172 (0.046) | 1.262 (0.038)
+  matrix factorisation (k = 4)             | 1.256 (0.043) | 1.218 (0.048) | 1.271 (0.038)
+  user + coat biases, IPS-weighted         | 1.291 (0.050) | 1.078 (0.051) | 1.139 (0.032)
+  matrix factorisation, IPS-weighted       | 1.283 (0.050) | 1.112 (0.050) | 1.144 (0.034)
+  effective sample size of the 1,160 reweighted held-out ratings: mean 1050 (range 997 to 1111)
+  mean true rating on the random pairs of the truth half: 2.234
+  mean prediction on those pairs: global mean 2.611; coat mean (shrunk) 2.574; user + coat biases 2.567; matrix factorisation (k = 4) 2.562; user + coat biases, IPS-weighted 2.309; matrix factorisation, IPS-weighted 2.344
+  Kendall tau with the true ranking, mean over splits: naive 0.408, SNIPS 0.895
+  share of splits in which the model chosen is the truly best one: naive 0.01, SNIPS 0.58
+  truly best model, share of splits: user + coat biases, IPS-weighted 0.61; matrix factorisation, IPS-weighted 0.39
+  model chosen by naive evaluation, share of splits: user + coat biases 0.91; matrix factorisation (k = 4) 0.08; matrix factorisation, IPS-weighted 0.01
+
+  How large a randomised sample is needed? Propensities from a share of the 145 users of half A:
+      5% of half A (112 random ratings, add-one smoothing): weighted model better in truth 0.92; SNIPS agrees on weighted vs unweighted 0.92; mean Kendall tau 0.861  (25 splits, two model pairs)
+     10% of half A (224 random ratings, add-one smoothing): weighted model better in truth 1.00; SNIPS agrees on weighted vs unweighted 0.98; mean Kendall tau 0.877  (25 splits, two model pairs)
+     25% of half A (576 random ratings, add-one smoothing): weighted model better in truth 1.00; SNIPS agrees on weighted vs unweighted 1.00; mean Kendall tau 0.904  (25 splits, two model pairs)
+     50% of half A (1152 random ratings, add-one smoothing): weighted model better in truth 1.00; SNIPS agrees on weighted vs unweighted 1.00; mean Kendall tau 0.909  (25 splits, two model pairs)
+  biases: IPS-weighted beats unweighted in truth in 1.00 of splits; naive evaluation says so in 0.00; SNIPS in 1.00
+  factorisation: IPS-weighted beats unweighted in truth in 1.00 of splits; naive evaluation says so in 0.15; SNIPS in 1.00
+
+============================================================================
+5. A HOST WHO RECORDS HIS RULE: OPEN BANDIT DATASET SAMPLE (Saito et al. 2021)
+============================================================================
+  Bernoulli Thompson sampling : 10000 impressions, 42 clicks (CTR 0.0042); logged propensity min 0.000045, median 0.0645, max 0.9542; five most-shown items take 0.396 of impressions
+  uniform random              : 10000 impressions, 38 clicks (CTR 0.0038); logged propensity min 0.012500, median 0.0125, max 0.0125; five most-shown items take 0.077 of impressions
+  evaluating the uniform policy from the Thompson-sampling log: weights (1/80) / p, max 278; effective sample size 340 of 10000 (0.034)
+  CTR of the uniform policy: SNIPS from the Thompson log 0.0023 [0.0010, 0.0043] (IPS 0.0024); on-policy from its own log 0.0038 [0.0027, 0.0051]; naive mean of the Thompson log 0.0042
