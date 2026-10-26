@@ -3,9 +3,13 @@ R1  The data
     malformed_rows: 12
     calls: 444436
     days: 363
+    working_dates_with_calls: 258
     working_days_kept: 247
+    offered_total: 384155
+    abandoned_total: 60045
     distinct_ids: 12903
     ids_over_200_calls: 146
+    calls by weekday: Monday 79493, Tuesday 81189, Wednesday 77836, Thursday 79725, Friday 28548, Saturday 10734, Sunday 86911
     outcomes: AGENT 353143, HANG 87694, PHANTOM 3599
     share_with_id: 0.4723
     share_with_id_queued: 0.7753
@@ -17,6 +21,7 @@ R1  The data
     mean_agents: 7.8679
     mean_offered_per_interval: 45.7436
     recorded_handle_time: 191.6207
+    mean_patience_exponential_mle: 412.9809
     mean_wait_per_offered: 64.5506
     identified_redial_share_of_offered: 0.0602
     calls per ID, quantiles: 0.5 5, 0.9 28, 0.99 229
@@ -158,6 +163,7 @@ lag_3              0.0262      0.1318  0.1633     0.0039      0.0366  0.0376
 lag_minus_lead     0.0170     -0.0047  0.0132     0.0048      0.0237  0.0269
 
 R4  Simulation check with a known redial probability
+    effective handle time in the simulator: 294.45 s
     16 histories of 247 days per world; handle-time multiplier 1.537; clustering in the clustered world rho 0.752, sigma 0.213
                                     mean                   sd                 rmse              
 p_true                              0.00   0.15   0.30   0.00   0.15   0.30   0.00   0.15   0.30

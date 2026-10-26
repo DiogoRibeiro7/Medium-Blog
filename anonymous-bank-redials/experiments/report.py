@@ -26,8 +26,12 @@ def main() -> None:
         r1 = load("r1_data")
         out("R1  The data")
         for k in ("rows_read", "malformed_rows", "calls", "days",
-                  "working_days_kept", "distinct_ids", "ids_over_200_calls"):
+                  "working_dates_with_calls", "working_days_kept",
+                  "offered_total", "abandoned_total", "distinct_ids",
+                  "ids_over_200_calls"):
             out(f"    {k}: {r1[k]}")
+        out("    calls by weekday: " + ", ".join(
+            f"{k} {v}" for k, v in r1["calls_by_weekday"].items()))
         out("    outcomes: " + ", ".join(f"{k} {v}" for k, v in
                                         r1["outcomes"].items()))
         for k in ("share_with_id", "share_with_id_queued",
@@ -35,6 +39,7 @@ def main() -> None:
                   "share_of_id_calls_from_ids_over_200", "offered_per_day",
                   "abandon_share", "service_level_20s", "mean_agents",
                   "mean_offered_per_interval", "recorded_handle_time",
+                  "mean_patience_exponential_mle",
                   "mean_wait_per_offered",
                   "identified_redial_share_of_offered"):
             out(f"    {k}: {r1[k]:.4f}")
@@ -115,6 +120,10 @@ def main() -> None:
     # ------------------------------------------------------------------ R4
     r4 = load("r4_simcheck")
     out("R4  Simulation check with a known redial probability")
+    if (RESULTS / "r1_data.json").exists():
+        eff = (load("r1_data")["recorded_handle_time"]
+               * r4["service_multiplier"])
+        out(f"    effective handle time in the simulator: {eff:.2f} s")
     out(f"    {r4['histories']} histories of {r4['days']} days per world; "
         f"handle-time multiplier {r4['service_multiplier']:.3f}; "
         f"clustering in the clustered world rho {r4['clustering_rho']:.3f}, "

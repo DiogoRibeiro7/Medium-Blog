@@ -3,6 +3,19 @@
   "malformed_rows": 12,
   "calls": 444436,
   "days": 363,
+  "calls_by_weekday": {
+    "Monday": 79493,
+    "Tuesday": 81189,
+    "Wednesday": 77836,
+    "Thursday": 79725,
+    "Friday": 28548,
+    "Saturday": 10734,
+    "Sunday": 86911
+  },
+  "working_dates_with_calls": 258,
+  "offered_total": 384155,
+  "abandoned_total": 60045,
+  "mean_patience_exponential_mle": 412.9808643517362,
   "outcomes": {
     "AGENT": 353143,
     "HANG": 87694,

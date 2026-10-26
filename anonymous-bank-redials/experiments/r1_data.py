@@ -12,7 +12,10 @@ import numpy as np
 from common import DATA, TABLE, parse, raw_source, save
 from anonbank.data import load_calls
 from anonbank.ids import flag_identified_redials, with_neighbours
-from anonbank.table import halfhour_table
+from anonbank.table import WORKING_DOWS, halfhour_table
+
+DOW_NAMES = ("Monday", "Tuesday", "Wednesday", "Thursday", "Friday",
+             "Saturday", "Sunday")
 
 
 def main() -> None:
@@ -24,15 +27,25 @@ def main() -> None:
     flag = flag_identified_redials(calls, 60.0)
     tab = halfhour_table(calls, flag)
     DATA.mkdir(exist_ok=True)
-    tab.to_csv(TABLE, index=False, float_format="%.6g")
+    tab.to_csv(TABLE, index=False, float_format="%.6g",
+               compression={"method": "gzip", "mtime": 0})
     ids = with_neighbours(calls)
     vol = ids.groupby("customer_id").size()
     queued = calls[calls["queued"]]
     offered = tab["offered"].sum()
     by_interval = tab.groupby("interval")[["offered", "abandoned", "agents",
                                            "answered_20s"]].mean()
+    working = calls[calls["dow"].isin(WORKING_DOWS)]
     payload = {
         **info,
+        "calls_by_weekday": {DOW_NAMES[d]: int(n) for d, n in
+                             calls["dow"].value_counts().sort_index()
+                             .items()},
+        "working_dates_with_calls": int(working["date"].nunique()),
+        "offered_total": int(offered),
+        "abandoned_total": int(tab["abandoned"].sum()),
+        "mean_patience_exponential_mle": float(tab["wait_total"].sum()
+                                               / tab["abandoned"].sum()),
         "outcomes": calls["outcome"].value_counts().to_dict(),
         "share_with_id": float(calls["has_id"].mean()),
         "share_with_id_queued": float(queued["has_id"].mean()),
