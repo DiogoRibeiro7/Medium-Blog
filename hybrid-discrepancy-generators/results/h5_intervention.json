@@ -1,0 +1,241 @@
+{
+  "rows": [
+    {
+      "rep": 0,
+      "k": -4,
+      "model": "Reality",
+      "sl": 0.5145324383251214,
+      "abandon": 0.15071503373448472,
+      "sl_base": 0.7661958021642821,
+      "abandon_base": 0.06117001960926719,
+      "sl_effect": -0.25166336383916066,
+      "abandon_effect": 0.08954501412521754
+    },
+    {
+      "rep": 0,
+      "k": -4,
+      "model": "Erlang A",
+      "sl": 0.6477935691195318,
+      "abandon": 0.09923678723770539,
+      "sl_base": 0.850169284033742,
+      "abandon_base": 0.03793110044186002,
+      "sl_effect": -0.20237571491421025,
+      "abandon_effect": 0.06130568679584537
+    },
+    {
+      "rep": 0,
+      "k": -4,
+      "model": "Erlang A + boosting",
+      "sl": 0.6314232027880077,
+      "abandon": 0.10011754070252467,
+      "sl_base": 0.8523515936287798,
+      "abandon_base": 0.03892539281837079,
+      "sl_effect": -0.2209283908407721,
+      "abandon_effect": 0.06119214788415388
+    },
+    {
+      "rep": 0,
+      "k": -4,
+      "model": "Erlang A + Gaussian process",
+      "sl": 0.6146964698137213,
+      "abandon": 0.09741205900387248,
+      "sl_base": 0.8394445362240202,
+      "abandon_base": 0.0381293853105636,
+      "sl_effect": -0.22474806641029887,
+      "abandon_effect": 0.059282673693308884
+    },
+    {
+      "rep": 0,
+      "k": -4,
+      "model": "Erlang A + resampled day levels",
+      "sl": 0.6224984486503258,
+      "abandon": 0.10735339745578654,
+      "sl_base": 0.8305926155755508,
+      "abandon_base": 0.042487589202606264,
+      "sl_effect": -0.20809416692522498,
+      "abandon_effect": 0.06486580825318028
+    },
+    {
+      "rep": 0,
+      "k": -4,
+      "model": "Erlang A + estimated redials",
+      "sl": 0.5656093732890463,
+      "abandon": 0.12784246450341277,
+      "sl_base": 0.8171804905984538,
+      "abandon_base": 0.04602462536985778,
+      "sl_effect": -0.2515711173094075,
+      "abandon_effect": 0.08181783913355499
+    },
+    {
+      "rep": 0,
+      "k": -4,
+      "model": "Erlang A + both",
+      "sl": 0.5432011696912359,
+      "abandon": 0.13733551216994927,
+      "sl_base": 0.8010967997979579,
+      "abandon_base": 0.05117797741458311,
+      "sl_effect": -0.257895630106722,
+      "abandon_effect": 0.08615753475536617
+    },
+    {
+      "rep": 0,
+      "k": 0,
+      "model": "Reality",
+      "sl": 0.7661958021642821,
+      "abandon": 0.06117001960926719,
+      "sl_base": 0.7661958021642821,
+      "abandon_base": 0.06117001960926719,
+      "sl_effect": 0.0,
+      "abandon_effect": 0.0
+    },
+    {
+      "rep": 0,
+      "k": 0,
+      "model": "Erlang A",
+      "sl": 0.850169284033742,
+      "abandon": 0.03793110044186002,
+      "sl_base": 0.850169284033742,
+      "abandon_base": 0.03793110044186002,
+      "sl_effect": 0.0,
+      "abandon_effect": 0.0
+    },
+    {
+      "rep": 0,
+      "k": 0,
+      "model": "Erlang A + boosting",
+      "sl": 0.8523515936287798,
+      "abandon": 0.03892539281837079,
+      "sl_base": 0.8523515936287798,
+      "abandon_base": 0.03892539281837079,
+      "sl_effect": 0.0,
+      "abandon_effect": 0.0
+    },
+    {
+      "rep": 0,
+      "k": 0,
+      "model": "Erlang A + Gaussian process",
+      "sl": 0.8394445362240202,
+      "abandon": 0.0381293853105636,
+      "sl_base": 0.8394445362240202,
+      "abandon_base": 0.0381293853105636,
+      "sl_effect": 0.0,
+      "abandon_effect": 0.0
+    },
+    {
+      "rep": 0,
+      "k": 0,
+      "model": "Erlang A + resampled day levels",
+      "sl": 0.8305926155755508,
+      "abandon": 0.042487589202606264,
+      "sl_base": 0.8305926155755508,
+      "abandon_base": 0.042487589202606264,
+      "sl_effect": 0.0,
+      "abandon_effect": 0.0
+    },
+    {
+      "rep": 0,
+      "k": 0,
+      "model": "Erlang A + estimated redials",
+      "sl": 0.8171804905984538,
+      "abandon": 0.04602462536985778,
+      "sl_base": 0.8171804905984538,
+      "abandon_base": 0.04602462536985778,
+      "sl_effect": 0.0,
+      "abandon_effect": 0.0
+    },
+    {
+      "rep": 0,
+      "k": 0,
+      "model": "Erlang A + both",
+      "sl": 0.8010967997979579,
+      "abandon": 0.05117797741458311,
+      "sl_base": 0.8010967997979579,
+      "abandon_base": 0.05117797741458311,
+      "sl_effect": 0.0,
+      "abandon_effect": 0.0
+    },
+    {
+      "rep": 0,
+      "k": 4,
+      "model": "Reality",
+      "sl": 0.91346618581998,
+      "abandon": 0.021582332602148938,
+      "sl_base": 0.7661958021642821,
+      "abandon_base": 0.06117001960926719,
+      "sl_effect": 0.1472703836556979,
+      "abandon_effect": -0.039587687007118254
+    },
+    {
+      "rep": 0,
+      "k": 4,
+      "model": "Erlang A",
+      "sl": 0.9505155033569884,
+      "abandon": 0.011553396201151514,
+      "sl_base": 0.850169284033742,
+      "abandon_base": 0.03793110044186002,
+      "sl_effect": 0.10034621932324639,
+      "abandon_effect": -0.02637770424070851
+    },
+    {
+      "rep": 0,
+      "k": 4,
+      "model": "Erlang A + boosting",
+      "sl": 0.9498104297794274,
+      "abandon": 0.012433052989517452,
+      "sl_base": 0.8523515936287798,
+      "abandon_base": 0.03892539281837079,
+      "sl_effect": 0.09745883615064765,
+      "abandon_effect": -0.026492339828853337
+    },
+    {
+      "rep": 0,
+      "k": 4,
+      "model": "Erlang A + Gaussian process",
+      "sl": 0.9539021957975965,
+      "abandon": 0.010332082470583504,
+      "sl_base": 0.8394445362240202,
+      "abandon_base": 0.0381293853105636,
+      "sl_effect": 0.11445765957357634,
+      "abandon_effect": -0.027797302839980095
+    },
+    {
+      "rep": 0,
+      "k": 4,
+      "model": "Erlang A + resampled day levels",
+      "sl": 0.9432012100527459,
+      "abandon": 0.01339978281104561,
+      "sl_base": 0.8305926155755508,
+      "abandon_base": 0.042487589202606264,
+      "sl_effect": 0.11260859447719518,
+      "abandon_effect": -0.029087806391560653
+    },
+    {
+      "rep": 0,
+      "k": 4,
+      "model": "Erlang A + estimated redials",
+      "sl": 0.9421754167800102,
+      "abandon": 0.013057163952900944,
+      "sl_base": 0.8171804905984538,
+      "abandon_base": 0.04602462536985778,
+      "sl_effect": 0.12499492618155639,
+      "abandon_effect": -0.03296746141695684
+    },
+    {
+      "rep": 0,
+      "k": 4,
+      "model": "Erlang A + both",
+      "sl": 0.9339475184347474,
+      "abandon": 0.01524429488240378,
+      "sl_base": 0.8010967997979579,
+      "abandon_base": 0.05117797741458311,
+      "sl_effect": 0.13285071863678954,
+      "abandon_effect": -0.03593368253217933
+    }
+  ],
+  "ks": [
+    -4,
+    0,
+    4
+  ],
+  "reps": 1
+}

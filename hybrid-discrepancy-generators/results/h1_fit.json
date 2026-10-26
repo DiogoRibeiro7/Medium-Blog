@@ -1,0 +1,502 @@
+{
+  "prediction": [
+    {
+      "rep": 0,
+      "n_days": 10,
+      "model": "Erlang A + boosting (impossible)",
+      "share_impossible": 0.103125
+    },
+    {
+      "rep": 0,
+      "n_days": 10,
+      "model": "Erlang A + Gaussian process (impossible)",
+      "share_impossible": 0.027083333333333334
+    },
+    {
+      "rep": 0,
+      "n_days": 10,
+      "model": "Erlang A + linear (impossible)",
+      "share_impossible": 0.19479166666666667
+    },
+    {
+      "rep": 0,
+      "n_days": 10,
+      "model": "Erlang A + boosting (link scale) (impossible)",
+      "share_impossible": 0.065625
+    },
+    {
+      "rep": 0,
+      "n_days": 10,
+      "model": "Erlang A",
+      "day_rmse_sl": 0.026329813752896957,
+      "day_rmse_ab": 0.007836789107470921,
+      "interval_rmse_sl": 0.12087421070763066
+    },
+    {
+      "rep": 0,
+      "n_days": 10,
+      "model": "True queue given the inputs",
+      "day_rmse_sl": 0.023385452358269505,
+      "day_rmse_ab": 0.006611027256472954,
+      "interval_rmse_sl": 0.11959407217777476
+    },
+    {
+      "rep": 0,
+      "n_days": 10,
+      "model": "Boosting on the data",
+      "day_rmse_sl": 0.03137341675734732,
+      "day_rmse_ab": 0.009729713095964808,
+      "interval_rmse_sl": 0.13044570231909083
+    },
+    {
+      "rep": 0,
+      "n_days": 10,
+      "model": "Erlang A + boosting",
+      "day_rmse_sl": 0.02606969355585025,
+      "day_rmse_ab": 0.00832724005926758,
+      "interval_rmse_sl": 0.11920862902265607
+    },
+    {
+      "rep": 0,
+      "n_days": 10,
+      "model": "Erlang A + Gaussian process",
+      "day_rmse_sl": 0.022961884882181937,
+      "day_rmse_ab": 0.00712685828367762,
+      "interval_rmse_sl": 0.11580061631374607
+    },
+    {
+      "rep": 0,
+      "n_days": 10,
+      "model": "Erlang A + linear",
+      "day_rmse_sl": 0.02407163026241153,
+      "day_rmse_ab": 0.007527982365863395,
+      "interval_rmse_sl": 0.11472297613732278
+    },
+    {
+      "rep": 0,
+      "n_days": 10,
+      "model": "Erlang A + boosting (link scale)",
+      "day_rmse_sl": 0.027081351649039156,
+      "day_rmse_ab": 0.00853935983636037,
+      "interval_rmse_sl": 0.1227984698518898
+    },
+    {
+      "rep": 0,
+      "n_days": 30,
+      "model": "Erlang A + boosting (impossible)",
+      "share_impossible": 0.09375
+    },
+    {
+      "rep": 0,
+      "n_days": 30,
+      "model": "Erlang A + Gaussian process (impossible)",
+      "share_impossible": 0.042708333333333334
+    },
+    {
+      "rep": 0,
+      "n_days": 30,
+      "model": "Erlang A + linear (impossible)",
+      "share_impossible": 0.16979166666666667
+    },
+    {
+      "rep": 0,
+      "n_days": 30,
+      "model": "Erlang A + boosting (link scale) (impossible)",
+      "share_impossible": 0.041666666666666664
+    },
+    {
+      "rep": 0,
+      "n_days": 30,
+      "model": "Erlang A",
+      "day_rmse_sl": 0.023587924447701317,
+      "day_rmse_ab": 0.007159020542426597,
+      "interval_rmse_sl": 0.11934163120820315
+    },
+    {
+      "rep": 0,
+      "n_days": 30,
+      "model": "True queue given the inputs",
+      "day_rmse_sl": 0.023385452358269505,
+      "day_rmse_ab": 0.006611027256472954,
+      "interval_rmse_sl": 0.11959407217777476
+    },
+    {
+      "rep": 0,
+      "n_days": 30,
+      "model": "Boosting on the data",
+      "day_rmse_sl": 0.0255317340145052,
+      "day_rmse_ab": 0.00849545810367696,
+      "interval_rmse_sl": 0.12162234701288258
+    },
+    {
+      "rep": 0,
+      "n_days": 30,
+      "model": "Erlang A + boosting",
+      "day_rmse_sl": 0.024953075724605044,
+      "day_rmse_ab": 0.007429660323393048,
+      "interval_rmse_sl": 0.1191285132248768
+    },
+    {
+      "rep": 0,
+      "n_days": 30,
+      "model": "Erlang A + Gaussian process",
+      "day_rmse_sl": 0.021853973400924466,
+      "day_rmse_ab": 0.006861818175465701,
+      "interval_rmse_sl": 0.11410436808429675
+    },
+    {
+      "rep": 0,
+      "n_days": 30,
+      "model": "Erlang A + linear",
+      "day_rmse_sl": 0.023383454974920843,
+      "day_rmse_ab": 0.0072332054149457144,
+      "interval_rmse_sl": 0.11714585522505351
+    },
+    {
+      "rep": 0,
+      "n_days": 30,
+      "model": "Erlang A + boosting (link scale)",
+      "day_rmse_sl": 0.02742513809372114,
+      "day_rmse_ab": 0.008033546682076769,
+      "interval_rmse_sl": 0.12437845721150093
+    },
+    {
+      "rep": 1,
+      "n_days": 10,
+      "model": "Erlang A + boosting (impossible)",
+      "share_impossible": 0.10104166666666667
+    },
+    {
+      "rep": 1,
+      "n_days": 10,
+      "model": "Erlang A + Gaussian process (impossible)",
+      "share_impossible": 0.059375
+    },
+    {
+      "rep": 1,
+      "n_days": 10,
+      "model": "Erlang A + linear (impossible)",
+      "share_impossible": 0.21979166666666666
+    },
+    {
+      "rep": 1,
+      "n_days": 10,
+      "model": "Erlang A + boosting (link scale) (impossible)",
+      "share_impossible": 0.06666666666666667
+    },
+    {
+      "rep": 1,
+      "n_days": 10,
+      "model": "Erlang A",
+      "day_rmse_sl": 0.03474478538620313,
+      "day_rmse_ab": 0.009658224091240395,
+      "interval_rmse_sl": 0.12322027312755847
+    },
+    {
+      "rep": 1,
+      "n_days": 10,
+      "model": "True queue given the inputs",
+      "day_rmse_sl": 0.033853412404548366,
+      "day_rmse_ab": 0.009065952328655267,
+      "interval_rmse_sl": 0.11731501973881446
+    },
+    {
+      "rep": 1,
+      "n_days": 10,
+      "model": "Boosting on the data",
+      "day_rmse_sl": 0.03637361651761643,
+      "day_rmse_ab": 0.010221576988066548,
+      "interval_rmse_sl": 0.13689829869438988
+    },
+    {
+      "rep": 1,
+      "n_days": 10,
+      "model": "Erlang A + boosting",
+      "day_rmse_sl": 0.031158337501750757,
+      "day_rmse_ab": 0.008795995918167768,
+      "interval_rmse_sl": 0.12835415746278112
+    },
+    {
+      "rep": 1,
+      "n_days": 10,
+      "model": "Erlang A + Gaussian process",
+      "day_rmse_sl": 0.03237880605916554,
+      "day_rmse_ab": 0.008936471613027146,
+      "interval_rmse_sl": 0.11673454502091293
+    },
+    {
+      "rep": 1,
+      "n_days": 10,
+      "model": "Erlang A + linear",
+      "day_rmse_sl": 0.0336855532903529,
+      "day_rmse_ab": 0.008908974674975157,
+      "interval_rmse_sl": 0.12013296127707691
+    },
+    {
+      "rep": 1,
+      "n_days": 10,
+      "model": "Erlang A + boosting (link scale)",
+      "day_rmse_sl": 0.03988192413826342,
+      "day_rmse_ab": 0.01121492888740724,
+      "interval_rmse_sl": 0.13258575026677666
+    },
+    {
+      "rep": 1,
+      "n_days": 30,
+      "model": "Erlang A + boosting (impossible)",
+      "share_impossible": 0.07604166666666666
+    },
+    {
+      "rep": 1,
+      "n_days": 30,
+      "model": "Erlang A + Gaussian process (impossible)",
+      "share_impossible": 0.06041666666666667
+    },
+    {
+      "rep": 1,
+      "n_days": 30,
+      "model": "Erlang A + linear (impossible)",
+      "share_impossible": 0.18125
+    },
+    {
+      "rep": 1,
+      "n_days": 30,
+      "model": "Erlang A + boosting (link scale) (impossible)",
+      "share_impossible": 0.04791666666666667
+    },
+    {
+      "rep": 1,
+      "n_days": 30,
+      "model": "Erlang A",
+      "day_rmse_sl": 0.03507302286933659,
+      "day_rmse_ab": 0.009325351164758237,
+      "interval_rmse_sl": 0.12399143844452967
+    },
+    {
+      "rep": 1,
+      "n_days": 30,
+      "model": "True queue given the inputs",
+      "day_rmse_sl": 0.033853412404548366,
+      "day_rmse_ab": 0.009065952328655267,
+      "interval_rmse_sl": 0.11731501973881446
+    },
+    {
+      "rep": 1,
+      "n_days": 30,
+      "model": "Boosting on the data",
+      "day_rmse_sl": 0.02899556641180139,
+      "day_rmse_ab": 0.008665498737043214,
+      "interval_rmse_sl": 0.1241624553930355
+    },
+    {
+      "rep": 1,
+      "n_days": 30,
+      "model": "Erlang A + boosting",
+      "day_rmse_sl": 0.029545485460350168,
+      "day_rmse_ab": 0.008711791971399221,
+      "interval_rmse_sl": 0.12125353603883256
+    },
+    {
+      "rep": 1,
+      "n_days": 30,
+      "model": "Erlang A + Gaussian process",
+      "day_rmse_sl": 0.03212945296613711,
+      "day_rmse_ab": 0.00893435617736061,
+      "interval_rmse_sl": 0.11645847851976297
+    },
+    {
+      "rep": 1,
+      "n_days": 30,
+      "model": "Erlang A + linear",
+      "day_rmse_sl": 0.0327921101035332,
+      "day_rmse_ab": 0.008843423880082048,
+      "interval_rmse_sl": 0.11805270445723712
+    },
+    {
+      "rep": 1,
+      "n_days": 30,
+      "model": "Erlang A + boosting (link scale)",
+      "day_rmse_sl": 0.03509294959995042,
+      "day_rmse_ab": 0.009772751454613841,
+      "interval_rmse_sl": 0.12435596544259779
+    }
+  ],
+  "generation": [
+    {
+      "rep": 0,
+      "n_days": 30,
+      "model": "Erlang A + boosting (impossible)",
+      "share_impossible": 0.17291666666666666
+    },
+    {
+      "rep": 0,
+      "n_days": 30,
+      "model": "Erlang A + Gaussian process (impossible)",
+      "share_impossible": 0.08958333333333332
+    },
+    {
+      "rep": 0,
+      "n_days": 30,
+      "model": "Erlang A + linear (impossible)",
+      "share_impossible": 0.10208333333333333
+    },
+    {
+      "rep": 0,
+      "n_days": 30,
+      "model": "Erlang A + boosting (link scale) (impossible)",
+      "share_impossible": 0.1125
+    },
+    {
+      "rep": 0,
+      "n_days": 30,
+      "model": "CART",
+      "auc": 0.7255598958333334
+    },
+    {
+      "rep": 0,
+      "n_days": 30,
+      "model": "Erlang A",
+      "auc": 0.5924435763888889
+    },
+    {
+      "rep": 0,
+      "n_days": 30,
+      "model": "Erlang A + boosting",
+      "auc": 0.664592013888889
+    },
+    {
+      "rep": 0,
+      "n_days": 30,
+      "model": "Erlang A + Gaussian process",
+      "auc": 0.6348936631944444
+    },
+    {
+      "rep": 0,
+      "n_days": 30,
+      "model": "Erlang A + linear",
+      "auc": 0.6530653211805556
+    },
+    {
+      "rep": 0,
+      "n_days": 30,
+      "model": "Erlang A + boosting (link scale)",
+      "auc": 0.6749837239583332
+    },
+    {
+      "rep": 0,
+      "n_days": 30,
+      "model": "Erlang A + resampled day levels",
+      "auc": 0.5974240451388889
+    },
+    {
+      "rep": 0,
+      "n_days": 30,
+      "model": "Erlang A + estimated redials",
+      "auc": 0.5538368055555556
+    },
+    {
+      "rep": 0,
+      "n_days": 30,
+      "model": "Erlang A + both",
+      "auc": 0.5490418836805555
+    },
+    {
+      "rep": 0,
+      "n_days": 30,
+      "model": "estimated redial probability",
+      "p_hat": 0.5218108489423491
+    },
+    {
+      "rep": 1,
+      "n_days": 30,
+      "model": "Erlang A + boosting (impossible)",
+      "share_impossible": 0.2020833333333333
+    },
+    {
+      "rep": 1,
+      "n_days": 30,
+      "model": "Erlang A + Gaussian process (impossible)",
+      "share_impossible": 0.12291666666666665
+    },
+    {
+      "rep": 1,
+      "n_days": 30,
+      "model": "Erlang A + linear (impossible)",
+      "share_impossible": 0.11145833333333335
+    },
+    {
+      "rep": 1,
+      "n_days": 30,
+      "model": "Erlang A + boosting (link scale) (impossible)",
+      "share_impossible": 0.12916666666666665
+    },
+    {
+      "rep": 1,
+      "n_days": 30,
+      "model": "CART",
+      "auc": 0.7605642361111111
+    },
+    {
+      "rep": 1,
+      "n_days": 30,
+      "model": "Erlang A",
+      "auc": 0.5722981770833333
+    },
+    {
+      "rep": 1,
+      "n_days": 30,
+      "model": "Erlang A + boosting",
+      "auc": 0.7041221788194444
+    },
+    {
+      "rep": 1,
+      "n_days": 30,
+      "model": "Erlang A + Gaussian process",
+      "auc": 0.7694997829861111
+    },
+    {
+      "rep": 1,
+      "n_days": 30,
+      "model": "Erlang A + linear",
+      "auc": 0.6847352430555556
+    },
+    {
+      "rep": 1,
+      "n_days": 30,
+      "model": "Erlang A + boosting (link scale)",
+      "auc": 0.6590646701388889
+    },
+    {
+      "rep": 1,
+      "n_days": 30,
+      "model": "Erlang A + resampled day levels",
+      "auc": 0.6225618489583333
+    },
+    {
+      "rep": 1,
+      "n_days": 30,
+      "model": "Erlang A + estimated redials",
+      "auc": 0.6918500434027778
+    },
+    {
+      "rep": 1,
+      "n_days": 30,
+      "model": "Erlang A + both",
+      "auc": 0.6186653645833333
+    },
+    {
+      "rep": 1,
+      "n_days": 30,
+      "model": "estimated redial probability",
+      "p_hat": 0.6605372067769908
+    }
+  ],
+  "curve": {},
+  "train_load_range": {},
+  "residual_bins": [],
+  "reps": 2,
+  "lengths": [
+    10,
+    30
+  ]
+}

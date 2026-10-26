@@ -1,0 +1,107 @@
+{
+  "rows": [
+    {
+      "rep": 0,
+      "patience": 184.7852629060238,
+      "model": "ratio estimate"
+    },
+    {
+      "rep": 0,
+      "patience": 100.0,
+      "model": "Erlang A alone",
+      "day_rmse_sl": 0.06650112630475927,
+      "day_rmse_ab": 0.009848136248029679,
+      "interval_rmse_sl": 0.1445345287762204,
+      "surge_sl": 0.700188303359441,
+      "surge_sl_reality": 0.4147294076542008
+    },
+    {
+      "rep": 0,
+      "patience": 100.0,
+      "model": "+ boosting",
+      "day_rmse_sl": 0.02845442742281342,
+      "day_rmse_ab": 0.006975285279834491,
+      "interval_rmse_sl": 0.11857613834644067,
+      "surge_sl": 0.581069009484897,
+      "surge_sl_reality": 0.4147294076542008
+    },
+    {
+      "rep": 0,
+      "patience": 100.0,
+      "model": "+ Gaussian process",
+      "day_rmse_sl": 0.02972243432398756,
+      "day_rmse_ab": 0.007364406042011393,
+      "interval_rmse_sl": 0.11509166547030707,
+      "surge_sl": 0.5829905897409929,
+      "surge_sl_reality": 0.4147294076542008
+    },
+    {
+      "rep": 0,
+      "patience": 190.0,
+      "model": "Erlang A alone",
+      "day_rmse_sl": 0.02740763171472686,
+      "day_rmse_ab": 0.007233391614907046,
+      "interval_rmse_sl": 0.123701495073103,
+      "surge_sl": 0.5628204256476508,
+      "surge_sl_reality": 0.4147294076542008
+    },
+    {
+      "rep": 0,
+      "patience": 190.0,
+      "model": "+ boosting",
+      "day_rmse_sl": 0.027378191248126217,
+      "day_rmse_ab": 0.007858827944152722,
+      "interval_rmse_sl": 0.11895880386327207,
+      "surge_sl": 0.5573816068646409,
+      "surge_sl_reality": 0.4147294076542008
+    },
+    {
+      "rep": 0,
+      "patience": 190.0,
+      "model": "+ Gaussian process",
+      "day_rmse_sl": 0.028743517258859836,
+      "day_rmse_ab": 0.006985986631503518,
+      "interval_rmse_sl": 0.11947175308221146,
+      "surge_sl": 0.5899872711613298,
+      "surge_sl_reality": 0.4147294076542008
+    },
+    {
+      "rep": 0,
+      "patience": 330.0,
+      "model": "Erlang A alone",
+      "day_rmse_sl": 0.04719069069480295,
+      "day_rmse_ab": 0.01115014851569342,
+      "interval_rmse_sl": 0.1311520288763349,
+      "surge_sl": 0.48156960854963493,
+      "surge_sl_reality": 0.4147294076542008
+    },
+    {
+      "rep": 0,
+      "patience": 330.0,
+      "model": "+ boosting",
+      "day_rmse_sl": 0.026713892561521853,
+      "day_rmse_ab": 0.006651733332580644,
+      "interval_rmse_sl": 0.11810098518195478,
+      "surge_sl": 0.5545057397885987,
+      "surge_sl_reality": 0.4147294076542008
+    },
+    {
+      "rep": 0,
+      "patience": 330.0,
+      "model": "+ Gaussian process",
+      "day_rmse_sl": 0.024472394909918906,
+      "day_rmse_ab": 0.007260517560601034,
+      "interval_rmse_sl": 0.11540419223216825,
+      "surge_sl": 0.5577703296439906,
+      "surge_sl_reality": 0.4147294076542008
+    }
+  ],
+  "grid": [
+    100.0,
+    190.0,
+    330.0
+  ],
+  "reps": 1,
+  "surge": 1.3,
+  "true_mean_patience": 224.34044229375314
+}

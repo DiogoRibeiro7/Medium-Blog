@@ -1,0 +1,74 @@
+{
+  "curves": {
+    "Reality": {
+      "0": 0.4,
+      "4": 0.8,
+      "8": 0.9333333333333333,
+      "12": 1.0
+    },
+    "Erlang A": {
+      "0": 0.6,
+      "4": 1.0,
+      "8": 1.0,
+      "12": 1.0
+    },
+    "Erlang A + boosting": {
+      "0": 0.7333333333333333,
+      "4": 1.0,
+      "8": 1.0,
+      "12": 1.0
+    },
+    "Erlang A + resampled day levels": {
+      "0": 0.6666666666666666,
+      "4": 0.9,
+      "8": 0.9333333333333333,
+      "12": 1.0
+    },
+    "Erlang A + estimated redials": {
+      "0": 0.36666666666666664,
+      "4": 0.9333333333333333,
+      "8": 1.0,
+      "12": 1.0
+    },
+    "Erlang A + both": {
+      "0": 0.36666666666666664,
+      "4": 0.8333333333333334,
+      "8": 0.9666666666666667,
+      "12": 1.0
+    }
+  },
+  "chosen": {
+    "Reality": {
+      "k": 4,
+      "coverage_in_reality": 0.8
+    },
+    "Erlang A": {
+      "k": 4,
+      "coverage_in_reality": 0.8
+    },
+    "Erlang A + boosting": {
+      "k": 4,
+      "coverage_in_reality": 0.8
+    },
+    "Erlang A + resampled day levels": {
+      "k": 4,
+      "coverage_in_reality": 0.8
+    },
+    "Erlang A + estimated redials": {
+      "k": 4,
+      "coverage_in_reality": 0.8
+    },
+    "Erlang A + both": {
+      "k": 4,
+      "coverage_in_reality": 0.8
+    }
+  },
+  "target": 0.7,
+  "coverage": 0.8,
+  "surge": [
+    1.1,
+    1.3
+  ],
+  "days": 30,
+  "p_hat": 0.6502473795864054
+}
