@@ -437,7 +437,7 @@ The complete simulation is implemented in \`causal_inference_statistics/part5/ex
 
 ## References
 
-Cinelli, C., Forney, A. and Pearl, J. (2022). A Crash Course in Good and Bad Controls. *Sociological Methods & Research*, 53(3), 1071–1104. https://doi.org/10.1177/00491241221099552
+Cinelli, C., Forney, A. and Pearl, J. (2024). A Crash Course in Good and Bad Controls. *Sociological Methods & Research*, 53(3), 1071–1104. https://doi.org/10.1177/00491241221099552
 
 Elwert, F. and Winship, C. (2014). Endogenous Selection Bias: The Problem of Conditioning on a Collider Variable. *Annual Review of Sociology*, 40, 31–53. https://doi.org/10.1146/annurev-soc-071913-043455
 
