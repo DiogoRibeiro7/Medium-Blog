@@ -452,3 +452,14 @@ areas, productions and yields only, never weather.
     estimate of the amendment. It flags 249 region-years, against the review's 86,
     because Q2 also flags Czechia in nine pairs of years: the change in log yield there
     differs across 8 regions by an SD of 0.009-0.019. The thresholds were not changed.
+- **2026-10-26, after the results: ties in the bootstrap p-value (implementation).**
+  - **The problem.** The draw with every weight +1 reproduces the data. Its statistic
+    therefore equals the original one in exact arithmetic. Whether it counted as "at
+    least as extreme" depended on the last bits of the arithmetic, which differ between
+    processors. This made a synthetic size test fail on one CI machine and pass on
+    others.
+  - **The fix.** A draw within a relative 1e-9 of the original statistic is a tie, and
+    ties count as at least as extreme, the convention the plan's wording already implies.
+    This applies to both bootstraps.
+  - **No result changes.** Every registered and amended p-value regenerates unchanged
+    under the fix.

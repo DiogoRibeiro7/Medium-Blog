@@ -19,6 +19,18 @@ Array = NDArray[np.float64]
 BOOTSTRAP_DRAWS = 9999
 BOOTSTRAP_SEED = 20261101
 BATCH = 500
+TIE = 1e-9      # relative: a draw this close to the original statistic is a tie
+
+
+def _at_least_as_extreme(s: Array, original: float, two_sided: bool) -> int:
+    """Draws at least as extreme as the original statistic.
+
+    A draw that reproduces the original up to rounding, such as the one with every weight
+    +1, is a tie and counts. Without the tolerance, whether it counts would depend on the
+    last bits of the arithmetic, which differ between processors.
+    """
+    threshold = abs(original) * (1 - TIE)
+    return int(np.sum(np.abs(s) >= threshold) if two_sided else np.sum(s >= threshold))
 
 
 def dummies(codes: Sequence[str]) -> Array:
@@ -185,9 +197,7 @@ def wild_bootstrap(f: Fit, test: Sequence[int], draws: int = BOOTSTRAP_DRAWS,
         m = min(BATCH, draws - done)
         w = rng.choice(np.array([-1.0, 1.0]), size=(m, g))
         ystar = fitted_r[None, :] + w[:, cluster_of] * resid_r[None, :]
-        s = statistics(ystar)
-        extreme += int(np.sum(np.abs(s) >= abs(original)) if len(test) == 1
-                       else np.sum(s >= original))
+        extreme += _at_least_as_extreme(statistics(ystar), original, len(test) == 1)
         done += m
     return original, extreme / draws
 
@@ -248,8 +258,7 @@ def twoway_wild_bootstrap(f: Fit, test: Sequence[int], by: str,
         m = min(BATCH, draws - done)
         w = rng.choice(np.array([-1.0, 1.0]), size=(m, len(weight_groups)))
         s = statistics(fitted_r[None, :] + w[:, cluster_of] * resid_r[None, :])
-        extreme += int(np.sum(np.abs(s) >= abs(original)) if len(test) == 1
-                       else np.sum(s >= original))
+        extreme += _at_least_as_extreme(s, original, len(test) == 1)
         done += m
     return original, extreme / draws
 
