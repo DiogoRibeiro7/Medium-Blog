@@ -103,7 +103,7 @@ def figure_identification(train, test) -> None:
              color=INK2, va="top")
     ax2.set_xlim(0, 0.6)
     ax2.set_ylim(1.0, 5.0)
-    ax2.set_xlabel("γ: log of the ratio of rating probabilities per rating point")
+    ax2.set_xlabel("γ = log [ P(rated | rating r + 1) / P(rated | rating r) ]")
     ax2.set_ylabel("implied mean rating of all coats")
     ax2.set_title("Coat: the answer is the selection slope")
     fig.tight_layout()
