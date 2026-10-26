@@ -1,0 +1,56 @@
+name: Reproduce Monty Hall series
+
+on:
+  pull_request:
+    paths:
+      - 'monty-hall/**'
+      - '.github/workflows/monty-hall.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'monty-hall/**'
+      - '.github/workflows/monty-hall.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: monty-hall
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: monty-hall/requirements.txt
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Rerun each part and compare with the committed output
+        run: |
+          status=0
+          for part in part*/; do
+            main=$(ls "$part"*.py | grep -v figures.py)
+            echo "== $main"
+            (cd "$part" && python "$(basename "$main")" > "$RUNNER_TEMP/output.txt")
+            if ! diff -u "$part/output.txt" "$RUNNER_TEMP/output.txt"; then
+              echo "::error file=${part}output.txt::output of $main differs from the committed output.txt"
+              status=1
+            fi
+          done
+          exit $status
+
+      - name: Check that the figures script runs
+        run: |
+          for part in part*/; do
+            (cd "$part" && python figures.py)
+          done

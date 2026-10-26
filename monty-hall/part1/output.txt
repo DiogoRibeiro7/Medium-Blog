@@ -1,0 +1,95 @@
+========================================================================
+1. EXACT ENUMERATION (player holds door 1)
+========================================================================
+  car behind 1, host opens 2: probability 1/6
+  car behind 1, host opens 3: probability 1/6
+  car behind 2, host opens 3: probability 1/3
+  car behind 3, host opens 2: probability 1/3
+  P(stay wins)                       1/3 = 0.333333
+  P(always switch wins)              2/3 = 0.666667
+  P(car behind 2 | host opened 3)    2/3 = 0.666667
+  likelihood ratio P(open 3|car 2)/P(open 3|car 1) = 2
+  posterior odds door 2 : door 1 = 1 x 2 = 2:1
+
+  Host with a preference (Morgan et al. 1991): opens door 3 w.p. q when free to choose
+    q =    0:  P(win switch | opened 3) =    1   | opened 2) =  1/2   unconditional = 2/3
+    q =  1/4:  P(win switch | opened 3) =  4/5   | opened 2) =  4/7   unconditional = 2/3
+    q =  1/2:  P(win switch | opened 3) =  2/3   | opened 2) =  2/3   unconditional = 2/3
+    q =  3/4:  P(win switch | opened 3) =  4/7   | opened 2) =  4/5   unconditional = 2/3
+    q =    1:  P(win switch | opened 3) =  1/2   | opened 2) =    1   unconditional = 2/3
+  closed forms: 1/(1+q) after door 3, 1/(2-q) after door 2; never below 1/2
+
+  Ignorant host (opens 2 or 3 at random, a goat happens to appear): 1/2 = 0.500000
+  Bertrand's boxes, P(gold-gold | gold seen):                       2/3 = 0.666667
+  Three prisoners, P(A pardoned | warden names B) = 1/3,  P(C pardoned | B named) = 2/3
+
+  Literal simulation, 1,000,000 games: stay 0.3327, switch 0.6673
+
+========================================================================
+2. n DOORS, HOST OPENS k GOAT DOORS, PLAYER SWITCHES AT RANDOM
+========================================================================
+  formula: P(switch wins) = (n-1) / (n (n-k-1));  P(stay wins) = 1/n
+  brute-force check against the formula:
+    15 (n, k) pairs with 3 <= n <= 7, 1 <= k <= n-2: all equal
+    n =   3, k =  1: switch 0.6667  stay 0.3333  ratio 2.0000
+    n =   4, k =  1: switch 0.3750  stay 0.2500  ratio 1.5000
+    n =   4, k =  2: switch 0.7500  stay 0.2500  ratio 3.0000
+    n =  10, k =  1: switch 0.1125  stay 0.1000  ratio 1.1250
+    n =  10, k =  8: switch 0.9000  stay 0.1000  ratio 9.0000
+    n = 100, k =  1: switch 0.0101  stay 0.0100  ratio 1.0102
+    n = 100, k = 98: switch 0.9900  stay 0.0100  ratio 99.0000
+    vos Savant's million doors (k = n-2): switch 0.999999
+    one opened door out of a million:     switch/stay ratio 1.00000100
+  literal simulation, 100,000 games each:
+    n =   3, k =  1: simulated 0.6675   exact 0.6667
+    n = 100, k =  1: simulated 0.0105   exact 0.0101
+    n = 100, k = 98: simulated 0.9902   exact 0.9900
+
+========================================================================
+3a. MONTY HALL'S DINING-ROOM EXPERIMENT (NYT, 21 July 1991)
+========================================================================
+  stay: 4/10 cars    switch: 8/10 cars
+  Bayes factor, (1/3, 2/3) against (1/2, 1/2): 4.927  (exactly 2^34/3^20 = 4.927)
+    from the switch arm alone: 4.439;  from the stay arm alone: 1.110
+    posterior P(vos Savant's model) from 50:50 prior odds: 0.831
+  Fisher exact test, one-sided (switch better): p = 0.0849
+  Binomial test of 8/10 against 1/2, one-sided: p = 0.0547  (exactly 56/1024)
+  95% Clopper-Pearson interval,   stay: [0.122, 0.738]
+  95% Clopper-Pearson interval, switch: [0.444, 0.975]
+  P(switch - stay >= 4) if both win half the time: 0.0577
+  P(switch - stay >= 4) under vos Savant's model:  0.4793
+  under vos Savant's model, 10 + 10 games give switch ahead 0.9081, tie 0.0543, stay ahead 0.0376
+  ten switching games under the 2/3 model: median 7 wins, Bayes factor 2.22; P(at least 8 wins) = 0.2991
+  expected log10 Bayes factor after ten switching games: 0.246 (factor 1.76)
+  stay rate at which ten stays favour neither model: ln(4/3)/ln(2) = 0.4150
+
+========================================================================
+3b. THE CLASSROOM PROTOCOL: n GAMES STAYING, n GAMES SWITCHING
+========================================================================
+  KL(Bern(2/3) || Bern(1/2)) = 0.05663 nats per switching game
+  KL per stay-plus-switch pair = 0.11327 nats = 0.04919 decimal digits
+  n per arm | switch ahead | tie   | stay ahead | power Fisher | power binomial | E[log10 BF]
+          5 |       0.7869 | 0.1366 |   7.66e-02 |       0.1040 |         0.1317 |       0.25
+         10 |       0.9081 | 0.0543 |   3.76e-02 |       0.2992 |         0.1040 |       0.49
+         20 |       0.9786 | 0.0119 |   9.55e-03 |       0.5420 |         0.2972 |       0.98
+         30 |       0.9944 | 0.0030 |   2.56e-03 |       0.7562 |         0.5848 |       1.48
+         50 |       0.9996 | 0.0002 |   1.99e-04 |       0.9344 |         0.7126 |       2.46
+        100 |       1.0000 | 0.0000 |   4.09e-07 |       0.9989 |         0.9566 |       4.92
+        200 |       1.0000 | 0.0000 |   2.28e-12 |       1.0000 |         0.9989 |       9.84
+  power >= 0.8: Fisher first at n = 32, from n = 32 on;  binomial on the switch arm first at n = 58, from n = 60 on
+  power >= 0.95: Fisher first at n = 53, from n = 53 on;  binomial on the switch arm first at n = 98, from n = 102 on
+  power >= 0.99: Fisher first at n = 72, from n = 76 on;  binomial on the switch arm first at n = 139, from n = 143 on
+  200 + 200: probability the class does not see switching ahead = 4.62e-12
+  1,000 classes of 200 + 200: expected number not seeing switching ahead = 4.62e-09
+  1,000 classes of 20 + 20:   expected number not seeing switching ahead = 21.4
+
+========================================================================
+4. SEQUENTIAL EVIDENCE: SWITCHING GAMES UNTIL BF = 100 EITHER WAY
+========================================================================
+  each win multiplies the Bayes factor by 4/3, each loss by 2/3
+  ln(100) / KL = 81.3 games (drift approximation)
+  20,000 simulated sceptics, true switch rate 2/3:
+    median games 70, mean 82.6, 90th percentile 149, 99th percentile 257
+    share stopping at the wrong boundary (BF = 1/100): 0.0077
+  same test when switching truly wins half the time:
+    median games 67, share wrongly reaching BF = 100: 0.0101
