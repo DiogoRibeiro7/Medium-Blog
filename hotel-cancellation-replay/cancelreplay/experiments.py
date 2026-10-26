@@ -14,7 +14,7 @@ from dataclasses import dataclass
 import numpy as np
 import pandas as pd
 from sklearn.metrics import log_loss, roc_auc_score
-from sklearn.model_selection import StratifiedKFold
+from sklearn.model_selection import StratifiedGroupKFold, StratifiedKFold
 
 from . import features as F
 from . import models as M
@@ -156,15 +156,20 @@ def by_hotel(logs: dict) -> pd.DataFrame:
 
 
 def walk_cost_sensitivity(rp: Replayer, keys=("reference", "base_rate", "logistic", "boosting_tuned",
-                                              "all_bookings", "leak_defaults", "independent",
-                                              "mean_only", "labels", "balanced")) -> pd.DataFrame:
+                                              "plus_deposit", "all_bookings", "leak_defaults",
+                                              "cadence_once", "independent", "mean_only", "labels",
+                                              "balanced", "horizon_7")) -> pd.DataFrame:
+    """Share of oracle at walk costs of 2, 3 and 5 nights, with the paired difference from the reference."""
     rows = []
     for multiple in (2.0, 3.0, 5.0):
+        ref_log = nightly_log(rp.predict(REFERENCE), multiple, interfaces=(REFERENCE_INTERFACE,))
         for v in VARIANTS:
             if v.key not in keys:
                 continue
             log = nightly_log(rp.predict(v.spec), multiple, interfaces=(v.interface,))
-            rows.append(dict(walk_multiple=multiple, key=v.key, **summarise_log(log, v.interface)))
+            diff, lo, hi = bootstrap_difference(ref_log, REFERENCE_INTERFACE, log, v.interface)
+            rows.append(dict(walk_multiple=multiple, key=v.key, diff_vs_reference=diff,
+                             diff_lo=lo, diff_hi=hi, **summarise_log(log, v.interface)))
     return pd.DataFrame(rows)
 
 
@@ -222,19 +227,26 @@ def random_split_auc(df: pd.DataFrame, rp: Replayer) -> dict:
     """
     out = {}
     cases = {
-        "ever_cancel_all_columns": (F.AS_RECORDED, None),
-        "ever_cancel_booking_columns": (F.POINT_IN_TIME, None),
-        "after_30_day_batch_booking_columns": (F.POINT_IN_TIME, 30),
+        "ever_cancel_all_columns": (F.AS_RECORDED, None, False),
+        "ever_cancel_booking_columns": (F.POINT_IN_TIME, None, False),
+        "after_30_day_batch_booking_columns": (F.POINT_IN_TIME, 30, False),
+        "after_30_day_batch_grouped_by_block": (F.POINT_IN_TIME, 30, True),
     }
-    for name, (feats, horizon) in cases.items():
+    for name, (feats, horizon, grouped) in cases.items():
         per_hotel = {}
         for hotel in HOTELS:
-            dh = df.loc[df["hotel"] == hotel]
+            dh = rp.df.loc[rp.df["hotel"] == hotel]
             rows = S.snapshot_rows(dh, horizon) if horizon else dh.assign(label=dh["is_canceled"])
             y = rows["label"].to_numpy()
             pred = np.zeros(len(rows))
-            folds = StratifiedKFold(5, shuffle=True, random_state=0)
-            for tr, te in folds.split(rows, y):
+            if grouped:
+                # Bookings of one block never sit on both sides of a split.
+                folds = StratifiedGroupKFold(5, shuffle=True, random_state=0)
+                splits = folds.split(rows, y, groups=rows["block"].to_numpy())
+            else:
+                folds = StratifiedKFold(5, shuffle=True, random_state=0)
+                splits = folds.split(rows, y)
+            for tr, te in splits:
                 m = M.Boosting(feats).fit(rows.iloc[tr], y[tr])
                 pred[te] = m.predict_proba(rows.iloc[te])
             per_hotel[hotel] = float(roc_auc_score(y, pred))
@@ -252,14 +264,18 @@ def block_structure(rp: Replayer, horizon: int = 30) -> dict:
     sizes = df.groupby("block")["is_canceled"].transform("size")
     multi = df.loc[sizes >= 2]
     stats = multi.groupby("block")["is_canceled"].agg(["mean", "size"])
-    cancelled_blocks = df.loc[(sizes >= 2) & (df["reservation_status"] == "Canceled")]
-    one_date = cancelled_blocks.groupby("block")["release_date"].nunique().eq(1).mean()
+    cancelled = df.loc[(sizes >= 2) & (df["reservation_status"] == "Canceled")]
+    per_block = cancelled.groupby("block")["release_date"].agg(["size", "nunique"])
+    # Blocks with at least two cancellations: did they all happen on one date?
+    several = per_block.loc[per_block["size"] >= 2]
+    one_date = several["nunique"].eq(1).mean()
     out = dict(
         bookings_in_blocks_of_two_or_more=float((sizes >= 2).mean()),
         blocks_of_two_or_more=int(len(stats)),
         largest_block=int(stats["size"].max()),
         blocks_all_same_outcome=float(((stats["mean"] == 0) | (stats["mean"] == 1)).mean()),
-        cancelled_blocks_on_one_date=float(one_date),
+        blocks_with_two_plus_cancellations=int(len(several)),
+        of_which_all_on_one_date=float(one_date),
     )
     rows = pd.concat([rp.snapshots(h, horizon) for h in HOTELS])
     rows = rows.assign(bsize=rows.groupby("block")["label"].transform("size"))
@@ -281,3 +297,26 @@ def block_structure(rp: Replayer, horizon: int = 30) -> dict:
         np.mean(np.sqrt(nightly["v"]) / np.sqrt(n * pbar * (1 - pbar)))
     )
     return out
+
+
+def drift_by_quarter(rp: Replayer, horizon: int = 30) -> dict:
+    """Late-release rate among visible bookings, by arrival quarter and hotel."""
+    out = {}
+    for hotel in HOTELS:
+        rows = rp.snapshots(hotel, horizon)
+        q = rows.groupby(rows["arrival"].dt.to_period("Q"))["label"].agg(["mean", "size"])
+        out[hotel] = {str(k): dict(rate=float(r["mean"]), rows=int(r["size"])) for k, r in q.iterrows()}
+    return out
+
+
+def non_refund_composition(rp: Replayer) -> dict:
+    """Where the 'Non Refund' bookings sit: segment and block size."""
+    df = rp.df
+    sizes = df.groupby("block")["is_canceled"].transform("size")
+    nr = df["deposit_type"] == "Non Refund"
+    return dict(
+        rows=int(nr.sum()),
+        in_blocks_of_two_or_more=float((sizes[nr] >= 2).mean()),
+        in_blocks_of_ten_or_more=float((sizes[nr] >= 10).mean()),
+        segment_shares={k: float(v) for k, v in df.loc[nr, "market_segment"].value_counts(normalize=True).items()},
+    )

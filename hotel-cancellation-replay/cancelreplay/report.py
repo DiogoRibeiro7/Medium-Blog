@@ -37,6 +37,8 @@ def run(make_figures: bool = True) -> dict:
     leaks = E.leak_smoke_test(df)
     aucs = E.random_split_auc(df, rp)
     blocks = E.block_structure(rp)
+    drift = E.drift_by_quarter(rp)
+    non_refund = E.non_refund_composition(rp)
     tuned = {f"{k[0]} | {k[1]} | h={k[3]}": v for k, v in rp._tuned.items()}
 
     results = dict(
@@ -48,6 +50,8 @@ def run(make_figures: bool = True) -> dict:
         leak_smoke_test=leaks,
         auc_by_question=aucs,
         blocks=blocks,
+        drift_by_quarter=drift,
+        non_refund=non_refund,
         tuned_parameters=tuned,
         settings=dict(walk_multiple=E.WALK_MULTIPLE, bootstrap_draws=E.BOOTSTRAP_DRAWS,
                       live_start=str(E.LIVE_START.date()), live_end=str(E.LIVE_END.date())),
@@ -87,6 +91,15 @@ def summary_text(r: dict) -> str:
     for k, v in r["leak_smoke_test"].items():
         L.append(f"  {k}: {v}")
 
+    nr = r["non_refund"]
+    L.append(f"  non-refund bookings: {nr['rows']}, in blocks of 2+: {nr['in_blocks_of_two_or_more']:.3f}, "
+             f"of 10+: {nr['in_blocks_of_ten_or_more']:.3f}, segments: "
+             + ", ".join(f"{k} {v:.3f}" for k, v in nr["segment_shares"].items()))
+
+    L.append("\nLate-release rate among bookings visible 30 days out, by arrival quarter")
+    for hotel, quarters in r["drift_by_quarter"].items():
+        L.append(f"  {hotel}: " + ", ".join(f"{q} {v['rate']:.3f}" for q, v in quarters.items()))
+
     L.append("\nAUC of boosting by question (random 5-fold CV unless stated)")
     for k, v in r["auc_by_question"].items():
         L.append(f"  {k}: " + ", ".join(f"{h} {x:.3f}" for h, x in v.items()))
@@ -121,10 +134,11 @@ def summary_text(r: dict) -> str:
         L.append(f"  {row['key']:<15} {row['hotel']:<13} {row['share_of_oracle']:7.3f} "
                  f"{row['resold_per_night']:5.2f} {row['walked_per_night']:5.2f} {row['profit_per_night']:8.1f}")
 
-    L.append("\nWalk-cost sensitivity: share of oracle")
-    w = pd.DataFrame(r["walk_cost_sensitivity"]).pivot(index="key", columns="walk_multiple", values="share_of_oracle")
-    for key, row in w.iterrows():
-        L.append(f"  {key:<15} " + "  ".join(f"x{m:.0f}: {v:6.3f}" for m, v in row.items()))
+    L.append("\nWalk-cost sensitivity: share of oracle, difference from the reference [95% CI], walked/night")
+    for row in r["walk_cost_sensitivity"]:
+        L.append(f"  x{row['walk_multiple']:.0f} {row['key']:<15} {row['share_of_oracle']:7.3f}  "
+                 f"{row['diff_vs_reference']:+.3f} [{row['diff_lo']:+.3f}, {row['diff_hi']:+.3f}]  "
+                 f"{row['walked_per_night']:.2f}")
 
     L.append("\nTuned boosting parameters")
     for k, v in r["tuned_parameters"].items():

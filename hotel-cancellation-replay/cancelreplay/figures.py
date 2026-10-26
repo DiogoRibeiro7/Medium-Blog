@@ -51,10 +51,11 @@ def auc_by_question(results: dict, path):
         ("ever_cancel_all_columns", "Will it ever cancel?\nall columns, random split"),
         ("ever_cancel_booking_columns", "Will it ever cancel?\nbooking-time columns, random split"),
         ("after_30_day_batch_booking_columns", "Will it cancel after the 30-day batch?\nbooking-time columns, random split"),
+        ("after_30_day_batch_grouped_by_block", "Will it cancel after the 30-day batch?\nsplit keeping each block together"),
         ("reference_out_of_time", "Will it cancel after the 30-day batch?\nlive replay, refit monthly"),
     ]
-    fig = _figure(8.2, 4.6)
-    ax = fig.add_axes([0.40, 0.14, 0.56, 0.62])
+    fig = _figure(8.4, 5.2)
+    ax = fig.add_axes([0.41, 0.13, 0.55, 0.66])
     _style(ax)
     y = np.arange(len(rows))[::-1]
     for (key, _), yy in zip(rows, y):
@@ -165,5 +166,5 @@ def nights_window(logs: dict, path, hotel="City Hotel", start="2016-10-01", end=
 def draw_all(results: dict, logs: dict, rp) -> None:
     FIGURES.mkdir(exist_ok=True)
     auc_by_question(results, FIGURES / "fig1_auc_by_question.png")
-    value_by_variant(results, FIGURES / "fig2_value_by_variant.png")
-    nights_window(logs, FIGURES / "fig3_nights_city_hotel.png")
+    nights_window(logs, FIGURES / "fig2_nights_city_hotel.png")
+    value_by_variant(results, FIGURES / "fig3_value_by_variant.png")
