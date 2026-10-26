@@ -121,7 +121,48 @@ def collect_values(root: Path) -> dict[str, str]:
     v["ge36_hours"] = f"{24 * _ge36_days(root):.1f}"
     if e1["p_twoway"] is None or e3["p_twoway"] is None:
         raise ValueError("Missing tests in the results.")
+    amended = _amendment(root)
+    if amended is not None:
+        v.update(amendment_values(amended))
     return v
+
+
+def _amendment(root: Path) -> dict[str, Any] | None:
+    path = root / "docs" / "amendment" / "results.json"
+    return json.loads(path.read_text(encoding="utf-8")) if path.exists() else None
+
+
+def _date(month_day: str) -> str:
+    months = ("January", "February", "March", "April", "May", "June", "July", "August",
+              "September", "October", "November", "December")
+    return f"{int(month_day[3:])} {months[int(month_day[:2]) - 1]}"
+
+
+def amendment_values(a: Mapping[str, Any]) -> dict[str, str]:
+    """The values of Amendment A1 (METHODS.md, section 8) that the article quotes."""
+    d, s = a["decisions"], a["sample"]
+    ge36 = next(b for b in a["M3"] if b["term"] == "t_ge36")
+    data_e1 = next(x for x in a["decomposition"] if x["combination"] == "data")["E1"]
+    out = {"a1_excluded": str(s["excluded_region_years"]),
+           "a1_data_e1_low": pct(data_e1["low"]), "a1_data_e1_high": pct(data_e1["high"]),
+           "a1_data_e1_boot": p_value(data_e1["p_bootstrap"]),
+           "maturity_first": _date(s["maturity"]["first"]),
+           "maturity_last": _date(s["maturity"]["last"]),
+           "a1_e1_no_spain_pct": pct(a["leave_one_out"]["summary"]["E1"]["without_it"]),
+           "a1_e5_p_twoway": p_value(a["E5"]["p_twoway"]),
+           "a1_e5_p_boot": p_value(a["E5"]["p_bootstrap"]),
+           "a1_ge36_hour_pct": pct(ge36["estimate"] / 24, 2),
+           "a1_ge36_hour_low": pct(ge36["low"] / 24, 2),
+           "a1_ge36_hour_high": pct(ge36["high"] / 24, 2)}
+    for key in ("E1", "E2"):
+        k = key.lower()
+        out |= {f"a1_{k}_pct": pct(a[key]["estimate"]), f"a1_{k}_low": pct(a[key]["low"]),
+                f"a1_{k}_high": pct(a[key]["high"])}
+    for key in ("E1", "E2", "E3"):
+        k = key.lower()
+        out |= {f"a1_{k}_holm_twoway": p_value(d[key]["p_twoway_holm"]),
+                f"a1_{k}_holm_boot": p_value(d[key]["p_bootstrap_holm"])}
+    return out
 
 
 def _share(x: float) -> str:
@@ -192,7 +233,8 @@ def write_publication(root: Path, figures: bool = True) -> list[str]:
         results: dict[str, Any] = json.loads(
             (root / "docs" / "results" / "results.json").read_text(encoding="utf-8"))
         written += [str(p.relative_to(root).as_posix())
-                    for p in draw_all(results, root / "publication" / "figures")]
+                    for p in draw_all(results, root / "publication" / "figures",
+                                      _amendment(root))]
     return written
 
 

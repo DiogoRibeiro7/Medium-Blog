@@ -7,7 +7,7 @@
 
 Wheat is the most widely grown crop in the European Union, and its harvest depends on a few months of weather. In 2003, 2018 and 2022, heat and drought hit much of the continent in spring and summer, and each time the question came back: how much does a bad season cost, and are farms getting better at riding it out?
 
-This piece reports what a reproducible study of the EU's regions found, and where it falls short. The full analysis, with every table, test and line of code, is in the [project repository](https://github.com/DiogoRibeiro7/Medium-Blog/tree/main/eu-wheat-weather), along with a critical review written before publication. Every number below is read by code from the same result files, so the article and the analysis cannot drift apart.
+This piece reports what a reproducible study of the EU's regions found, where it falls short, and what a second, registered analysis found when it fixed the main problems. The full analysis, with every table, test and line of code, is in the [project repository](https://github.com/DiogoRibeiro7/Medium-Blog/tree/main/eu-wheat-weather), along with a critical review written before publication. Every number below is read by code from the same result files, so the article and the analysis cannot drift apart.
 
 ## The data
 
@@ -23,7 +23,7 @@ This is one of the rare economic questions where the answer can be read as a cau
 
 Heat is measured in degree days above 30 °C between 1 March and 31 July: every hour above 30 °C counts, weighted by how far above 30 °C it is. A typical region has 2.5 such degree days in a season, and half of all seasons have between 0.5 and 7.4, so the "ten more degree days" used below is a large step. Rainfall is the total over the same months.
 
-Everything, from the measures and models to the tests and what would count as a result, was written down and published before I fitted any model. Two rules for matching old region codes to today's regions were revised after that, still before any estimate, and the plan's change log records both. A result counts only if it survives a correction for asking three questions at once, and holds under two different ways of measuring the uncertainty.
+Everything, from the measures and models to the tests and what would count as a result, was written down and published before I fitted any model. Two rules for matching old region codes to today's regions were revised after that, still before any estimate, and the plan's change log records both. A result counts only if it survives a correction for asking three questions at once, and holds under two different ways of measuring the uncertainty. After a critical review of the results, I registered a second analysis in the same way, before computing any of it; its results stand beside the first ones, not in their place.
 
 ## A check first: weather after the harvest
 
@@ -49,7 +49,7 @@ Splitting temperature into three-degree bands gives a sharper picture, which doe
 
 - **One country.** Spain supplies 65% of the variation in that band.
 - **One way of measuring uncertainty.** Its interval is narrow only under the two-way clustering the study uses; clustering by country, by year or by country and year alone gives a larger error every time.
-- **The timing.** 71% of the degree days above 30 °C and 79% of the time at 36 °C and above fall in July, and 34% of all the time that hot is July time in the regions south of 40°N, where much of the wheat is harvested in June. Heat after the harvest cannot lower that harvest, so the band may stand in for a hot, dry season rather than measure heat damage.
+- **The timing.** 71% of the degree days above 30 °C and 79% of the time at 36 °C and above fall in July, and 34% of all the time that hot is July time in the regions south of 40°N, where much of the wheat is harvested in June. Heat after the harvest cannot lower that harvest, so the band may stand in for a hot, dry season rather than measure heat damage. In the second analysis below, where each region's season ends at its harvest, the band no longer differs from zero.
 - **The second method.** Under the wild bootstrap, time at 36 °C and above also differs from zero (p = 0.003), but so does time at 9–12 °C and 27–30 °C: with many bands and no correction, it is not alone.
 
 ![Yield change for one more hour in each temperature range](figures/fig1_temperature.png)
@@ -82,6 +82,29 @@ I fixed 9 variations in advance. They include other heat thresholds, a season st
 
 ![Heat and drought effects under each variation](figures/fig4_sensitivity.png)
 
+## A second analysis that fixes the main problems
+
+The critical review found three problems that none of those variations addressed: the season counted heat after the harvest, some regional yields are not measurements at all, and the second way of measuring uncertainty ignored countries that move together within a year. Before computing anything, I registered a second analysis that fixes all three, and tests the dry-season effect directly.
+
+- **The season ends at harvest.** Each region's season now runs from 1 March to its usual wheat maturity date, taken from a global crop calendar: 12 May in the earliest region, 22 August in the latest.
+- **Suspect yields are dropped.** A rule fixed in advance removes series that are not regional measurements: 249 regional harvests, among them Greece's pro-rated early years and what look like pro-rated series in Czechia.
+- **Countries can move together.** The second way of measuring uncertainty now allows for dependence across countries within a year.
+
+The estimates change little, and none is established:
+
+- **Heat:** −2.7% per ten degree days (interval −8.5% to +3.5%); corrected p = 0.62 and 1.00.
+- **Drought:** −3.2% in a dry season (interval −6.9% to +0.7%); corrected p = 0.31 and 0.50.
+- **Change since 2012:** no detectable change (corrected p = 0.62 and 1.00).
+- **The placebo,** now the two months after each region's maturity date, still finds no detectable link (p = 0.25 and 0.43).
+
+Two details shift. Time at 36 °C and above no longer differs from zero once the season ends at harvest: −0.23% per hour (interval −0.64% to +0.19%). And Spain now pulls the heat estimate the other way: without it, the estimate is −5.0%, larger rather than smaller.
+
+One combination comes close. Dropping the suspect yields on its own gives heat an interval that only just excludes zero (−6.1% to −0.1%). But the second way of measuring uncertainty does not confirm it (p = 0.22), and the interval widens again once the season also ends at harvest.
+
+![Heat and drought in the registered analysis and the second one](figures/fig5_amendment.png)
+
+*Each change on its own, and both together. Lines are 95% intervals (two-way clustered).*
+
 ## What this does not say
 
 - **Not climate change.** These are effects of one season's weather on that season's harvest. Farmers adapt to a changing climate in ways they cannot adapt to a single bad year.
@@ -90,11 +113,12 @@ I fixed 9 variations in advance. They include other heat thresholds, a season st
 - **Probably too small.** Once the comparison removes what the regions of a country share, little variation in weather is left, and errors in the weather data are a larger part of what remains. That pulls the estimates toward zero.
 - **Not every country equally.** Spain, Italy and Romania supply most of the variation in heat, so the estimates say most about them.
 - **Not the fields themselves.** The weather is averaged over whole regions, including forests and mountains, and E-OBS is interpolated from stations, which are sparse in places and smooth out the hottest days: 36 °C on the grid is not 36 °C in a field.
-- **Not perfect yields.** The review found a few regional yield series that look pro-rated from national figures or carried forward from one year to the next, and no rule in the plan removes them.
+- **Not perfect yields.** The first analysis keeps regional yield series that look pro-rated from national figures or carried forward from one year to the next. The second analysis removes them by a rule, but it misses at least one case the review found: two Dutch regions whose production figures look swapped in one year.
+- **One crop calendar.** The second analysis ends every region's season at the maturity date of winter wheat, though in Finland and Sweden much of the wheat is sown in spring.
 
 ## Data, code and acknowledgements
 
-The data, the code, the research plan with every change made to it, the full results and the critical review are in the [project repository](https://github.com/DiogoRibeiro7/Medium-Blog/tree/main/eu-wheat-weather). Wheat statistics: © European Union, Eurostat. Regional boundaries: © EuroGeographics for the administrative boundaries, from GISCO, for non-commercial use. Weather: E-OBS v33.0e, for non-commercial research and education.
+The data, the code, the research plan with every change made to it, the full results and the critical review are in the [project repository](https://github.com/DiogoRibeiro7/Medium-Blog/tree/main/eu-wheat-weather). Wheat statistics: © European Union, Eurostat. Regional boundaries: © EuroGeographics for the administrative boundaries, from GISCO, for non-commercial use. Weather: E-OBS v33.0e, for non-commercial research and education. Crop calendar (second analysis): GGCMI Phase 3 crop calendar v1.01, CC BY 4.0, from Jägermeyr, J., C. Müller, A. C. Ruane, et al. 2021: Climate impacts on global agriculture emerge earlier in new generation of climate and crop models, Nature Food, 2, 873-885. doi:10.1038/s43016-021-00400-y; data doi:10.5281/zenodo.5062513.
 
 We acknowledge the E-OBS dataset from the EU-FP6 project UERRA (https://www.uerra.eu) and the Copernicus Climate Change Service, and the data providers in the ECA&D project (https://www.ecad.eu).
 

@@ -165,8 +165,39 @@ def sensitivity(rows: Sequence[Mapping[str, Any]], primary: Mapping[str, Mapping
     _save(plt, fig, path, SOURCE + " Lines: 95% intervals (two-way clustered).")
 
 
-def draw_all(results: Mapping[str, Any], directory: Path) -> list[Path]:
-    """Every figure of the article, from ``results.json``."""
+AMENDMENT_ROWS = (("inference", "Registered analysis"),
+                  ("window", "Season ends at harvest"),
+                  ("data", "Without suspect yield series"),
+                  ("all", "Both: the second analysis"))
+
+
+def amendment(decomposition: Sequence[Mapping[str, Any]], path: Path) -> None:
+    """Heat and drought under the registered analysis and Amendment A1's changes."""
+    plt = _pyplot()
+    rows = {d["combination"]: d for d in decomposition}
+    fig, axes = plt.subplots(1, 2, figsize=(9.5, 3.4), sharey=True)
+    ys = list(range(len(AMENDMENT_ROWS)))[::-1]
+    for ax, key, title in zip(axes, ("E1", "E2"),
+                              ("Heat: 10 more degree days\nabove 30 °C",
+                               "Drought: a dry season\n(10th percentile against the median)"),
+                              strict=True):
+        for y, (name, _) in zip(ys, AMENDMENT_ROWS, strict=True):
+            r = rows[name][key]
+            colour = INK if name == "inference" else ORANGE if name == "all" else BLUE
+            ax.plot([_pct(r["low"]), _pct(r["high"])], [y, y], color=colour, lw=1.6)
+            ax.plot(_pct(r["estimate"]), y, "o", color=colour, ms=5)
+        ax.axvline(0, color=MUTED, lw=0.8)
+        ax.set_yticks(ys, [label for _, label in AMENDMENT_ROWS], fontsize=8)
+        ax.set_title(title, fontsize=9.5, loc="left", color=INK)
+        ax.set_xlabel("Yield change (%)")
+        ax.grid(axis="x", color=GRID, lw=0.6)
+    _save(plt, fig, path, SOURCE + " Crop calendar: GGCMI Phase 3. "
+          "Lines: 95% intervals (two-way clustered).")
+
+
+def draw_all(results: Mapping[str, Any], directory: Path,
+             amended: Mapping[str, Any] | None = None) -> list[Path]:
+    """Every figure of the article, from ``results.json`` (and the amendment's)."""
     coef = {(c["model"], c["term"]): c for c in results["coefficients"]}
     dry = results["E2"]["dry_season"]
     primary = {"E1": coef[("M1", "edd")],
@@ -180,4 +211,7 @@ def draw_all(results: Mapping[str, Any], directory: Path) -> list[Path]:
     precipitation_response(results["precipitation_curve"], optimum, paths[1])
     out_of_sample(results["E4_regions"], results["E4"], paths[2])
     sensitivity(results["sensitivity"], primary, paths[3])
+    if amended is not None:
+        paths.append(directory / "fig5_amendment.png")
+        amendment(amended["decomposition"], paths[4])
     return paths
