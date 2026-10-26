@@ -12,8 +12,8 @@
       "day_rmse_sl": 0.06650112630475927,
       "day_rmse_ab": 0.009848136248029679,
       "interval_rmse_sl": 0.1445345287762204,
-      "surge_sl": 0.700188303359441,
-      "surge_sl_reality": 0.4147294076542008
+      "surge_sl": 0.6978142934393916,
+      "surge_sl_reality": 0.445218201725801
     },
     {
       "rep": 0,
@@ -22,8 +22,8 @@
       "day_rmse_sl": 0.02845442742281342,
       "day_rmse_ab": 0.006975285279834491,
       "interval_rmse_sl": 0.11857613834644067,
-      "surge_sl": 0.581069009484897,
-      "surge_sl_reality": 0.4147294076542008
+      "surge_sl": 0.5794337123787924,
+      "surge_sl_reality": 0.445218201725801
     },
     {
       "rep": 0,
@@ -32,76 +32,539 @@
       "day_rmse_sl": 0.02972243432398756,
       "day_rmse_ab": 0.007364406042011393,
       "interval_rmse_sl": 0.11509166547030707,
-      "surge_sl": 0.5829905897409929,
-      "surge_sl_reality": 0.4147294076542008
+      "surge_sl": 0.6027736931092348,
+      "surge_sl_reality": 0.445218201725801
+    },
+    {
+      "rep": 0,
+      "patience": 140.0,
+      "model": "Erlang A alone",
+      "day_rmse_sl": 0.039655760061669404,
+      "day_rmse_ab": 0.008149182828156482,
+      "interval_rmse_sl": 0.13019098225498515,
+      "surge_sl": 0.631790178152592,
+      "surge_sl_reality": 0.445218201725801
+    },
+    {
+      "rep": 0,
+      "patience": 140.0,
+      "model": "+ boosting",
+      "day_rmse_sl": 0.026757848517023692,
+      "day_rmse_ab": 0.007235323013161425,
+      "interval_rmse_sl": 0.11748054284014772,
+      "surge_sl": 0.5770223553077257,
+      "surge_sl_reality": 0.445218201725801
+    },
+    {
+      "rep": 0,
+      "patience": 140.0,
+      "model": "+ Gaussian process",
+      "day_rmse_sl": 0.028754022704846373,
+      "day_rmse_ab": 0.006417587651266998,
+      "interval_rmse_sl": 0.11993538642088317,
+      "surge_sl": 0.5924787031649392,
+      "surge_sl_reality": 0.445218201725801
     },
     {
       "rep": 0,
       "patience": 190.0,
       "model": "Erlang A alone",
-      "day_rmse_sl": 0.02740763171472686,
-      "day_rmse_ab": 0.007233391614907046,
-      "interval_rmse_sl": 0.123701495073103,
-      "surge_sl": 0.5628204256476508,
-      "surge_sl_reality": 0.4147294076542008
+      "day_rmse_sl": 0.02823032684408255,
+      "day_rmse_ab": 0.007241993260462271,
+      "interval_rmse_sl": 0.12309287663786417,
+      "surge_sl": 0.5857848437707103,
+      "surge_sl_reality": 0.445218201725801
     },
     {
       "rep": 0,
       "patience": 190.0,
       "model": "+ boosting",
-      "day_rmse_sl": 0.027378191248126217,
-      "day_rmse_ab": 0.007858827944152722,
-      "interval_rmse_sl": 0.11895880386327207,
-      "surge_sl": 0.5573816068646409,
-      "surge_sl_reality": 0.4147294076542008
+      "day_rmse_sl": 0.02655100288197085,
+      "day_rmse_ab": 0.006465299844461327,
+      "interval_rmse_sl": 0.11832738095767187,
+      "surge_sl": 0.5681220137475811,
+      "surge_sl_reality": 0.445218201725801
     },
     {
       "rep": 0,
       "patience": 190.0,
       "model": "+ Gaussian process",
-      "day_rmse_sl": 0.028743517258859836,
-      "day_rmse_ab": 0.006985986631503518,
-      "interval_rmse_sl": 0.11947175308221146,
-      "surge_sl": 0.5899872711613298,
-      "surge_sl_reality": 0.4147294076542008
+      "day_rmse_sl": 0.02485670306186005,
+      "day_rmse_ab": 0.006278753128943527,
+      "interval_rmse_sl": 0.1146926942489195,
+      "surge_sl": 0.5724773790958029,
+      "surge_sl_reality": 0.445218201725801
+    },
+    {
+      "rep": 0,
+      "patience": 250.0,
+      "model": "Erlang A alone",
+      "day_rmse_sl": 0.029172388572301658,
+      "day_rmse_ab": 0.008919281238502622,
+      "interval_rmse_sl": 0.1195836747723308,
+      "surge_sl": 0.5411974268786117,
+      "surge_sl_reality": 0.445218201725801
+    },
+    {
+      "rep": 0,
+      "patience": 250.0,
+      "model": "+ boosting",
+      "day_rmse_sl": 0.026263087081019106,
+      "day_rmse_ab": 0.0070012361495452435,
+      "interval_rmse_sl": 0.11808822213064517,
+      "surge_sl": 0.572754577546157,
+      "surge_sl_reality": 0.445218201725801
+    },
+    {
+      "rep": 0,
+      "patience": 250.0,
+      "model": "+ Gaussian process",
+      "day_rmse_sl": 0.030499481224401916,
+      "day_rmse_ab": 0.007566163681750615,
+      "interval_rmse_sl": 0.1196631638216608,
+      "surge_sl": 0.5984150105060021,
+      "surge_sl_reality": 0.445218201725801
     },
     {
       "rep": 0,
       "patience": 330.0,
       "model": "Erlang A alone",
-      "day_rmse_sl": 0.04719069069480295,
-      "day_rmse_ab": 0.01115014851569342,
-      "interval_rmse_sl": 0.1311520288763349,
-      "surge_sl": 0.48156960854963493,
-      "surge_sl_reality": 0.4147294076542008
+      "day_rmse_sl": 0.052506612481757906,
+      "day_rmse_ab": 0.01017096568783337,
+      "interval_rmse_sl": 0.13752023996645565,
+      "surge_sl": 0.49728014821625083,
+      "surge_sl_reality": 0.445218201725801
     },
     {
       "rep": 0,
       "patience": 330.0,
       "model": "+ boosting",
-      "day_rmse_sl": 0.026713892561521853,
-      "day_rmse_ab": 0.006651733332580644,
-      "interval_rmse_sl": 0.11810098518195478,
-      "surge_sl": 0.5545057397885987,
-      "surge_sl_reality": 0.4147294076542008
+      "day_rmse_sl": 0.026261871710732916,
+      "day_rmse_ab": 0.007287602938318092,
+      "interval_rmse_sl": 0.11876017789335201,
+      "surge_sl": 0.5688696828322237,
+      "surge_sl_reality": 0.445218201725801
     },
     {
       "rep": 0,
       "patience": 330.0,
       "model": "+ Gaussian process",
-      "day_rmse_sl": 0.024472394909918906,
-      "day_rmse_ab": 0.007260517560601034,
-      "interval_rmse_sl": 0.11540419223216825,
-      "surge_sl": 0.5577703296439906,
-      "surge_sl_reality": 0.4147294076542008
+      "day_rmse_sl": 0.026468774333073236,
+      "day_rmse_ab": 0.0067145036951205776,
+      "interval_rmse_sl": 0.11564447750484211,
+      "surge_sl": 0.5826334366372382,
+      "surge_sl_reality": 0.445218201725801
+    },
+    {
+      "rep": 0,
+      "patience": 450.0,
+      "model": "Erlang A alone",
+      "day_rmse_sl": 0.07355381848349209,
+      "day_rmse_ab": 0.01293914578114809,
+      "interval_rmse_sl": 0.15301913054310065,
+      "surge_sl": 0.445523803535687,
+      "surge_sl_reality": 0.445218201725801
+    },
+    {
+      "rep": 0,
+      "patience": 450.0,
+      "model": "+ boosting",
+      "day_rmse_sl": 0.028122521798242282,
+      "day_rmse_ab": 0.007394483713301943,
+      "interval_rmse_sl": 0.11949060927355003,
+      "surge_sl": 0.5552922880943224,
+      "surge_sl_reality": 0.445218201725801
+    },
+    {
+      "rep": 0,
+      "patience": 450.0,
+      "model": "+ Gaussian process",
+      "day_rmse_sl": 0.030568752595430508,
+      "day_rmse_ab": 0.0065736213413403475,
+      "interval_rmse_sl": 0.12198776792603382,
+      "surge_sl": 0.5789178920407306,
+      "surge_sl_reality": 0.445218201725801
+    },
+    {
+      "rep": 1,
+      "patience": 186.00696148922097,
+      "model": "ratio estimate"
+    },
+    {
+      "rep": 1,
+      "patience": 100.0,
+      "model": "Erlang A alone",
+      "day_rmse_sl": 0.05079781320576199,
+      "day_rmse_ab": 0.012111201968184273,
+      "interval_rmse_sl": 0.13306275482824786,
+      "surge_sl": 0.7079395751643206,
+      "surge_sl_reality": 0.46856503751212464
+    },
+    {
+      "rep": 1,
+      "patience": 100.0,
+      "model": "+ boosting",
+      "day_rmse_sl": 0.030851165105364012,
+      "day_rmse_ab": 0.008359137164375701,
+      "interval_rmse_sl": 0.11956077291655008,
+      "surge_sl": 0.5888981609023283,
+      "surge_sl_reality": 0.46856503751212464
+    },
+    {
+      "rep": 1,
+      "patience": 100.0,
+      "model": "+ Gaussian process",
+      "day_rmse_sl": 0.029603397906070465,
+      "day_rmse_ab": 0.008595082534861659,
+      "interval_rmse_sl": 0.11825762340583945,
+      "surge_sl": 0.6060604318186146,
+      "surge_sl_reality": 0.46856503751212464
+    },
+    {
+      "rep": 1,
+      "patience": 140.0,
+      "model": "Erlang A alone",
+      "day_rmse_sl": 0.03491839128232123,
+      "day_rmse_ab": 0.009595303771460673,
+      "interval_rmse_sl": 0.12384436172428799,
+      "surge_sl": 0.6594314881633372,
+      "surge_sl_reality": 0.46856503751212464
+    },
+    {
+      "rep": 1,
+      "patience": 140.0,
+      "model": "+ boosting",
+      "day_rmse_sl": 0.029501032995510015,
+      "day_rmse_ab": 0.008174526218944258,
+      "interval_rmse_sl": 0.11810083714727045,
+      "surge_sl": 0.5992841434502685,
+      "surge_sl_reality": 0.46856503751212464
+    },
+    {
+      "rep": 1,
+      "patience": 140.0,
+      "model": "+ Gaussian process",
+      "day_rmse_sl": 0.029131668894174418,
+      "day_rmse_ab": 0.007992754902775538,
+      "interval_rmse_sl": 0.1162153379706753,
+      "surge_sl": 0.6075880690313269,
+      "surge_sl_reality": 0.46856503751212464
+    },
+    {
+      "rep": 1,
+      "patience": 190.0,
+      "model": "Erlang A alone",
+      "day_rmse_sl": 0.031195354485881385,
+      "day_rmse_ab": 0.007839064860201866,
+      "interval_rmse_sl": 0.12367921647290948,
+      "surge_sl": 0.608643038081865,
+      "surge_sl_reality": 0.46856503751212464
+    },
+    {
+      "rep": 1,
+      "patience": 190.0,
+      "model": "+ boosting",
+      "day_rmse_sl": 0.028749048860479975,
+      "day_rmse_ab": 0.008237548817486104,
+      "interval_rmse_sl": 0.11945460757522634,
+      "surge_sl": 0.5947612066448249,
+      "surge_sl_reality": 0.46856503751212464
+    },
+    {
+      "rep": 1,
+      "patience": 190.0,
+      "model": "+ Gaussian process",
+      "day_rmse_sl": 0.029021035697180658,
+      "day_rmse_ab": 0.007710438680948868,
+      "interval_rmse_sl": 0.1233908072354791,
+      "surge_sl": 0.6068715427676027,
+      "surge_sl_reality": 0.46856503751212464
+    },
+    {
+      "rep": 1,
+      "patience": 250.0,
+      "model": "Erlang A alone",
+      "day_rmse_sl": 0.03864576306284581,
+      "day_rmse_ab": 0.008618403670255384,
+      "interval_rmse_sl": 0.12418289866858606,
+      "surge_sl": 0.5703226577269884,
+      "surge_sl_reality": 0.46856503751212464
+    },
+    {
+      "rep": 1,
+      "patience": 250.0,
+      "model": "+ boosting",
+      "day_rmse_sl": 0.031017042688321072,
+      "day_rmse_ab": 0.007948752790885463,
+      "interval_rmse_sl": 0.12060863420600174,
+      "surge_sl": 0.5831560060464093,
+      "surge_sl_reality": 0.46856503751212464
+    },
+    {
+      "rep": 1,
+      "patience": 250.0,
+      "model": "+ Gaussian process",
+      "day_rmse_sl": 0.03116775287969706,
+      "day_rmse_ab": 0.0074760873301824545,
+      "interval_rmse_sl": 0.1176521684036268,
+      "surge_sl": 0.6075115102740971,
+      "surge_sl_reality": 0.46856503751212464
+    },
+    {
+      "rep": 1,
+      "patience": 330.0,
+      "model": "Erlang A alone",
+      "day_rmse_sl": 0.05593030759557861,
+      "day_rmse_ab": 0.01037587915854903,
+      "interval_rmse_sl": 0.13346486306167954,
+      "surge_sl": 0.5063131937624091,
+      "surge_sl_reality": 0.46856503751212464
+    },
+    {
+      "rep": 1,
+      "patience": 330.0,
+      "model": "+ boosting",
+      "day_rmse_sl": 0.030051371091752044,
+      "day_rmse_ab": 0.008237872465020052,
+      "interval_rmse_sl": 0.11827724465295317,
+      "surge_sl": 0.5817395653498213,
+      "surge_sl_reality": 0.46856503751212464
+    },
+    {
+      "rep": 1,
+      "patience": 330.0,
+      "model": "+ Gaussian process",
+      "day_rmse_sl": 0.029212467765941837,
+      "day_rmse_ab": 0.008534839894528691,
+      "interval_rmse_sl": 0.11603515610133956,
+      "surge_sl": 0.5886105735011801,
+      "surge_sl_reality": 0.46856503751212464
+    },
+    {
+      "rep": 1,
+      "patience": 450.0,
+      "model": "Erlang A alone",
+      "day_rmse_sl": 0.07498469910616597,
+      "day_rmse_ab": 0.013463657910251442,
+      "interval_rmse_sl": 0.15052218442041362,
+      "surge_sl": 0.4644036296822972,
+      "surge_sl_reality": 0.46856503751212464
+    },
+    {
+      "rep": 1,
+      "patience": 450.0,
+      "model": "+ boosting",
+      "day_rmse_sl": 0.03002705662932905,
+      "day_rmse_ab": 0.008380450128505267,
+      "interval_rmse_sl": 0.11796747051008319,
+      "surge_sl": 0.5966120313228359,
+      "surge_sl_reality": 0.46856503751212464
+    },
+    {
+      "rep": 1,
+      "patience": 450.0,
+      "model": "+ Gaussian process",
+      "day_rmse_sl": 0.030862825974914503,
+      "day_rmse_ab": 0.008957267595862099,
+      "interval_rmse_sl": 0.11613633910368426,
+      "surge_sl": 0.5922660892905142,
+      "surge_sl_reality": 0.46856503751212464
+    },
+    {
+      "rep": 2,
+      "patience": 187.8333956247184,
+      "model": "ratio estimate"
+    },
+    {
+      "rep": 2,
+      "patience": 100.0,
+      "model": "Erlang A alone",
+      "day_rmse_sl": 0.058156117678109756,
+      "day_rmse_ab": 0.008756910932941687,
+      "interval_rmse_sl": 0.13800400534851878,
+      "surge_sl": 0.7097449805469571,
+      "surge_sl_reality": 0.43457380213359764
+    },
+    {
+      "rep": 2,
+      "patience": 100.0,
+      "model": "+ boosting",
+      "day_rmse_sl": 0.02539200464607052,
+      "day_rmse_ab": 0.005671666451714059,
+      "interval_rmse_sl": 0.11781934777255876,
+      "surge_sl": 0.5900531148462922,
+      "surge_sl_reality": 0.43457380213359764
+    },
+    {
+      "rep": 2,
+      "patience": 100.0,
+      "model": "+ Gaussian process",
+      "day_rmse_sl": 0.02486225841990593,
+      "day_rmse_ab": 0.005039251175541246,
+      "interval_rmse_sl": 0.11505427394879832,
+      "surge_sl": 0.6023534413496242,
+      "surge_sl_reality": 0.43457380213359764
+    },
+    {
+      "rep": 2,
+      "patience": 140.0,
+      "model": "Erlang A alone",
+      "day_rmse_sl": 0.03807620961327559,
+      "day_rmse_ab": 0.006808087889526728,
+      "interval_rmse_sl": 0.12237892506872082,
+      "surge_sl": 0.6516927474906863,
+      "surge_sl_reality": 0.43457380213359764
+    },
+    {
+      "rep": 2,
+      "patience": 140.0,
+      "model": "+ boosting",
+      "day_rmse_sl": 0.025111032915726555,
+      "day_rmse_ab": 0.00630859591369793,
+      "interval_rmse_sl": 0.11508894209361917,
+      "surge_sl": 0.5870485541022298,
+      "surge_sl_reality": 0.43457380213359764
+    },
+    {
+      "rep": 2,
+      "patience": 140.0,
+      "model": "+ Gaussian process",
+      "day_rmse_sl": 0.025646716440341544,
+      "day_rmse_ab": 0.006882063558967497,
+      "interval_rmse_sl": 0.1167230257075167,
+      "surge_sl": 0.6007849484947826,
+      "surge_sl_reality": 0.43457380213359764
+    },
+    {
+      "rep": 2,
+      "patience": 190.0,
+      "model": "Erlang A alone",
+      "day_rmse_sl": 0.027052588048598936,
+      "day_rmse_ab": 0.006408650584835617,
+      "interval_rmse_sl": 0.11848332885379163,
+      "surge_sl": 0.5979804131230659,
+      "surge_sl_reality": 0.43457380213359764
+    },
+    {
+      "rep": 2,
+      "patience": 190.0,
+      "model": "+ boosting",
+      "day_rmse_sl": 0.024548792131441424,
+      "day_rmse_ab": 0.00573190601118022,
+      "interval_rmse_sl": 0.11630521389812849,
+      "surge_sl": 0.5817768399162123,
+      "surge_sl_reality": 0.43457380213359764
+    },
+    {
+      "rep": 2,
+      "patience": 190.0,
+      "model": "+ Gaussian process",
+      "day_rmse_sl": 0.02751882770264025,
+      "day_rmse_ab": 0.006144721990426558,
+      "interval_rmse_sl": 0.12081565121764046,
+      "surge_sl": 0.5941497728319227,
+      "surge_sl_reality": 0.43457380213359764
+    },
+    {
+      "rep": 2,
+      "patience": 250.0,
+      "model": "Erlang A alone",
+      "day_rmse_sl": 0.02871629749209453,
+      "day_rmse_ab": 0.007816850753974794,
+      "interval_rmse_sl": 0.11937197452685616,
+      "surge_sl": 0.5472692819360098,
+      "surge_sl_reality": 0.43457380213359764
+    },
+    {
+      "rep": 2,
+      "patience": 250.0,
+      "model": "+ boosting",
+      "day_rmse_sl": 0.025749384343813457,
+      "day_rmse_ab": 0.005782977091893171,
+      "interval_rmse_sl": 0.11900787363087813,
+      "surge_sl": 0.5861130861889203,
+      "surge_sl_reality": 0.43457380213359764
+    },
+    {
+      "rep": 2,
+      "patience": 250.0,
+      "model": "+ Gaussian process",
+      "day_rmse_sl": 0.02510481559348047,
+      "day_rmse_ab": 0.0057942520811021725,
+      "interval_rmse_sl": 0.12046643760798974,
+      "surge_sl": 0.5885215438106036,
+      "surge_sl_reality": 0.43457380213359764
+    },
+    {
+      "rep": 2,
+      "patience": 330.0,
+      "model": "Erlang A alone",
+      "day_rmse_sl": 0.043319095480905984,
+      "day_rmse_ab": 0.010717792650741072,
+      "interval_rmse_sl": 0.12799190381228823,
+      "surge_sl": 0.5127427313336684,
+      "surge_sl_reality": 0.43457380213359764
+    },
+    {
+      "rep": 2,
+      "patience": 330.0,
+      "model": "+ boosting",
+      "day_rmse_sl": 0.02563102396041908,
+      "day_rmse_ab": 0.00580023748119466,
+      "interval_rmse_sl": 0.11593456347885854,
+      "surge_sl": 0.5826399483756315,
+      "surge_sl_reality": 0.43457380213359764
+    },
+    {
+      "rep": 2,
+      "patience": 330.0,
+      "model": "+ Gaussian process",
+      "day_rmse_sl": 0.025079171913687134,
+      "day_rmse_ab": 0.005902632677873534,
+      "interval_rmse_sl": 0.11319842842794771,
+      "surge_sl": 0.5721319693916619,
+      "surge_sl_reality": 0.43457380213359764
+    },
+    {
+      "rep": 2,
+      "patience": 450.0,
+      "model": "Erlang A alone",
+      "day_rmse_sl": 0.06905937255225625,
+      "day_rmse_ab": 0.012855094804496366,
+      "interval_rmse_sl": 0.1478444555366719,
+      "surge_sl": 0.46263705429605506,
+      "surge_sl_reality": 0.43457380213359764
+    },
+    {
+      "rep": 2,
+      "patience": 450.0,
+      "model": "+ boosting",
+      "day_rmse_sl": 0.0261638104111524,
+      "day_rmse_ab": 0.006136143276319325,
+      "interval_rmse_sl": 0.11776297335458599,
+      "surge_sl": 0.5922748061714708,
+      "surge_sl_reality": 0.43457380213359764
+    },
+    {
+      "rep": 2,
+      "patience": 450.0,
+      "model": "+ Gaussian process",
+      "day_rmse_sl": 0.03133438181858415,
+      "day_rmse_ab": 0.005277865271433645,
+      "interval_rmse_sl": 0.11987522228411215,
+      "surge_sl": 0.6043395070552113,
+      "surge_sl_reality": 0.43457380213359764
     }
   ],
   "grid": [
     100.0,
+    140.0,
     190.0,
-    330.0
+    250.0,
+    330.0,
+    450.0
   ],
-  "reps": 1,
+  "reps": 3,
   "surge": 1.3,
   "true_mean_patience": 224.34044229375314
 }
