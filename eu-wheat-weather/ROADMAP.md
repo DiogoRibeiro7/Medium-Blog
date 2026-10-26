@@ -69,10 +69,11 @@ Results are in [docs/RESULTS.md](docs/RESULTS.md). Every rule was fixed before a
 - [x] **Article.** The Medium article is
       [publication/article.md](publication/article.md), generated from
       `publication/article.template.md` with every number filled in from the results, and
-      it has four figures.
+      it has five figures.
   - **Tests:**
     - the template contains no hand-typed result;
-    - 28 claims in words are checked against the results;
+    - 28 claims in words are checked against the registered results, and 10 against the
+      amendment's;
     - the E-OBS acknowledgement, the citation, the dataset version, the repository link
       and the Eurostat and GISCO notices are present, the GISCO notice before the first
       section.
@@ -102,7 +103,10 @@ Results are in [docs/RESULTS.md](docs/RESULTS.md). Every rule was fixed before a
   - **Which change does what:** heat stays near -2.7% under every combination of the
     changes, and the harvest window widens its interval.
   - **The 36 °C band:** over the harvest window, it no longer differs from zero.
-- [ ] **Article:** report Amendment A1 beside the registered results.
+- [x] **Article:** reports Amendment A1 beside the registered results.
+  - A new section gives its results, and Figure 5 shows each change and both together.
+  - Its words are checked against the amendment's results by 10 tests.
+  - It credits the crop calendar under CC BY 4.0.
 - [ ] **Author review and publication.** Nothing is published automatically. Under the
       E-OBS and GISCO terms, the article must stay non-commercial.
 

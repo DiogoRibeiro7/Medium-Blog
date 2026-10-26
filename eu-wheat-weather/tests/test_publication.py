@@ -17,6 +17,7 @@ ROOT = Path(__file__).resolve().parents[1]
 PUB = ROOT / "publication"
 TEMPLATE = PUB / "article.template.md"
 RESULTS = ROOT / "docs" / "results" / "results.json"
+AMENDED = ROOT / "docs" / "amendment" / "results.json"
 ACKNOWLEDGEMENT = (
     "We acknowledge the E-OBS dataset from the EU-FP6 project UERRA (https://www.uerra.eu) "
     "and the Copernicus Climate Change Service, and the data providers in the ECA&D project "
@@ -65,6 +66,9 @@ def test_article_carries_the_required_acknowledgement_and_citation() -> None:
     assert article.index("© EuroGeographics") < article.index("## The data")
     assert "for non-commercial use" in article[:article.index("## The data")]
     assert "E-OBS v33.0e" in article and REPOSITORY in article
+    # the crop calendar of the second analysis: CC BY 4.0 asks for attribution
+    assert ("GGCMI Phase 3 crop calendar v1.01, CC BY 4.0" in article
+            and "doi:10.5281/zenodo.5062513" in article)
 
 
 def _pct(log_points: float) -> float:
@@ -167,11 +171,52 @@ def test_words_in_the_article_match_the_results() -> None:
         assert holds, phrase
 
 
+def test_words_about_the_second_analysis_match_its_results() -> None:
+    """Amendment A1 (METHODS.md, section 8), as the article reports it."""
+    r = json.loads(RESULTS.read_text(encoding="utf-8"))
+    a = json.loads(AMENDED.read_text(encoding="utf-8"))
+    text = re.sub(r"\s+", " ", TEMPLATE.read_text(encoding="utf-8"))
+    dry = r["E2"]["dry_season"]["effect"]
+    edd = next(c["estimate"] for c in r["coefficients"]
+               if c["model"] == "M1" and c["term"] == "edd")
+    ge36 = next(b for b in a["M3"] if b["term"] == "t_ge36")
+    loo = a["leave_one_out"]["summary"]["E1"]
+    flags = {(f["geo"][:2], f["rule"]) for f in a["quality_flags"]}
+    swapped = next(c for c in a["review_cases"] if c["case"].startswith("NL22"))
+    data = next(x for x in a["decomposition"] if x["combination"] == "data")["E1"]
+    claims = {
+        "The estimates change little, and none is established":
+            all(x["verdict"] == "not determined" for x in a["decisions"].values())
+            and abs(a["E1"]["estimate"] - edd) < 0.01 and abs(a["E2"]["estimate"] - dry) < 0.01,
+        "still finds no detectable link": min(a["E5"]["p_twoway"], a["E5"]["p_bootstrap"])
+        >= 0.05,
+        "no longer differs from zero once the season ends at harvest":
+            ge36["low"] < 0 < ge36["high"] and ge36["p_bootstrap"] >= 0.05,
+        "the band no longer differs from zero": ge36["low"] < 0 < ge36["high"],
+        "Spain now pulls the heat estimate the other way": loo["most_influential"] == "ES"
+        and loo["without_it"] < a["E1"]["estimate"]
+        and r["post_hoc"]["E1_without_spain"]["estimate"] > edd,
+        "among them Greece's pro-rated early years and what look like pro-rated series in "
+        "Czechia": {("EL", "Q2"), ("CZ", "Q2")} <= flags,
+        "but it misses at least one case the review found": swapped["in_panel"] > 0
+        and swapped["excluded"] == 0,
+        "Dropping the suspect yields on its own gives heat an interval that only just "
+        "excludes zero": data["high"] < 0 < data["high"] + 0.005,
+        "But the second way of measuring uncertainty does not confirm it":
+            data["p_bootstrap"] >= 0.05,
+        "the interval widens again once the season also ends at harvest":
+            a["E1"]["high"] - a["E1"]["low"] > data["high"] - data["low"] and a["E1"]["high"] > 0,
+    }
+    for phrase, holds in claims.items():
+        assert phrase in text, phrase
+        assert holds, phrase
+
+
 def test_figures_render(tmp_path: Path) -> None:
     import shutil
 
-    for part in ("docs/results", "docs/panel", "publication"):
+    for part in ("docs/results", "docs/panel", "docs/amendment", "publication"):
         shutil.copytree(ROOT / part, tmp_path / part)
     written = write_publication(tmp_path)
     figures = [tmp_path / w for w in written if w.endswith(".png")]
-    assert len(figures) == 4 and all(f.stat().st_size > 10_000 for f in figures)
+    assert len(figures) == 5 and all(f.stat().st_size > 10_000 for f in figures)
