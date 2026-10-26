@@ -35,7 +35,7 @@ from fractions import Fraction as F
 from pathlib import Path
 
 import numpy as np
-from scipy import optimize
+from scipy import linalg, optimize
 
 SEED = 1976
 HERE = Path(__file__).parent
@@ -159,7 +159,21 @@ def fit_logistic(X: np.ndarray, y: np.ndarray, l2: float) -> np.ndarray:
 
     res = optimize.minimize(loss, np.zeros(Xb.shape[1]), jac=True, method="L-BFGS-B",
                             options={"maxiter": 5000, "gtol": 1e-8})
-    return res.x
+    # The loss is strictly convex, so a few Newton steps from the L-BFGS point reach the optimum to
+    # near machine precision; without them the stopping point (and the last printed digit) depends
+    # on the BLAS kernel of the machine.
+    beta = res.x
+    ridge = np.full(Xb.shape[1], l2)
+    ridge[0] = 0.0
+    for _ in range(10):
+        p = 1 / (1 + np.exp(-(Xb @ beta)))
+        grad = Xb.T @ (p - y) + ridge * beta
+        hess = (Xb * (p * (1 - p))[:, None]).T @ Xb + np.diag(ridge)
+        step = linalg.solve(hess, grad, assume_a="pos")
+        beta = beta - step
+        if np.max(np.abs(step)) < 1e-11:
+            break
+    return beta
 
 
 def covariate_propensities(obs: np.ndarray, item_x: np.ndarray, user_x: np.ndarray,

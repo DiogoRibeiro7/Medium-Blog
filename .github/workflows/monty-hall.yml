@@ -18,6 +18,9 @@ permissions:
 jobs:
   reproduce:
     runs-on: ubuntu-latest
+    env:
+      # One BLAS thread, so floating-point reductions run in a fixed order.
+      OPENBLAS_NUM_THREADS: '1'
     defaults:
       run:
         working-directory: monty-hall
@@ -42,8 +45,11 @@ jobs:
             main=$(ls "$part"*.py | grep -v figures.py)
             echo "== $main"
             (cd "$part" && python "$(basename "$main")" > "$RUNNER_TEMP/output.txt")
-            if ! diff -u "$part/output.txt" "$RUNNER_TEMP/output.txt"; then
-              echo "::error file=${part}output.txt::output of $main differs from the committed output.txt"
+            if ! diff -u "$part/output.txt" "$RUNNER_TEMP/output.txt" > "$RUNNER_TEMP/diff.txt"; then
+              cat "$RUNNER_TEMP/diff.txt"
+              # Put the diff in the annotation too, so it can be read without the raw log.
+              detail=$(head -c 30000 "$RUNNER_TEMP/diff.txt" | sed 's/%/%25/g; s/\r/%0D/g' | awk '{printf "%s%%0A", $0}')
+              echo "::error file=${part}output.txt::output of $main differs from the committed output.txt%0A$detail"
               status=1
             fi
           done
