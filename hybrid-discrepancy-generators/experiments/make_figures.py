@@ -377,16 +377,13 @@ def fig5_intervention() -> None:
     names = [n for n in names if n in eff.index.get_level_values(0)]
     vals = eff.loc[names].to_numpy()
     ax.set_ylim(vals.min() - 0.03, vals.max() + 0.03)
-    items = []
     for n in names:
         s = eff.loc[n]
-        st = style(n)
-        ax.plot(s.index, s.values, **st)
-        items.append((s.index[-1], s.values[-1], label(n), st["color"]))
-    label_ends(ax, items, gap=0.05)
+        ax.plot(s.index, s.values, **style(n), label=label(n))
+    ax.legend(loc="lower right", fontsize=8.5)
     ax.axhline(0, color=MUTED, lw=1)
     ax.axvline(0, color=MUTED, lw=1)
-    ax.set_xlim(min(h5["ks"]) - 0.5, max(h5["ks"]) + 5.5)
+    ax.set_xlim(min(h5["ks"]) - 0.5, max(h5["ks"]) + 0.5)
     ax.set_xlabel("agents added to every half hour (k)")
     ax.set_ylabel("change in service level vs current staffing")
     ax.set_title("Effect of staffing, as a generator")
