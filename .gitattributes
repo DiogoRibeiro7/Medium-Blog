@@ -13,3 +13,4 @@ portugal-wage-counterfactual/**/*.csv -filter -diff -merge text
 portugal-household-spending/**/*.csv -filter -diff -merge text
 portugal-iva-zero/**/*.csv -filter -diff -merge text
 multiple-imputation/**/*.csv -filter -diff -merge text
+statistical-evidence-and-decisions/**/*.csv -filter -diff -merge text
