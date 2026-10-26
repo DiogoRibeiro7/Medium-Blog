@@ -1,0 +1,12 @@
+== stars: n = 47; robustbase lmrob: coef -4.9694, 2.2532; SE 3.4100, 0.7690; scale 0.4715
+  rob.py MM                        coef -4.9694, 2.2532; SE 3.3517, 0.7558; scale 0.4715
+  statsmodels RLMDetSMM            coef -5.0517, 2.2717; SE (H1) 0.9640, 0.2232; sandwich SE at its fit 3.4244, 0.7721; scale 0.4583
+  statsmodels RLM from rob.py S    coef -4.9694, 2.2532; SE (H1) 0.9626, 0.2228; max |coef - rob.py MM| 7.1e-15
+  S starts: statsmodels DetS coef -10.0423, 3.3954; rob.py FAST-S coef -9.5712, 3.2904
+  M-scale of the S residuals, (n - p) convention: DetS 0.4716, rob.py 0.4715; n convention: DetS 0.4484, rob.py 0.4486
+== stackloss: n = 21; robustbase lmrob: coef -41.5246, 0.9388, 0.5796, -0.1129; scale 1.91
+  rob.py MM                        coef -41.5246, 0.9388, 0.5796, -0.1129; SE 4.9557, 0.1330, 0.2161, 0.0775; scale 1.9124
+  statsmodels RLMDetSMM            coef -37.2463, 0.8136, 0.5326, -0.0713; SE (H1) 5.3744, 0.0609, 0.1663, 0.0706; sandwich SE at its fit 3.3589, 0.0671, 0.1508, 0.0541; scale 1.2089
+  statsmodels RLM from rob.py S    coef -41.5246, 0.9388, 0.5796, -0.1129; SE (H1) 9.2731, 0.1051, 0.2869, 0.1218; max |coef - rob.py MM| 1.4e-08
+  S starts: statsmodels DetS coef -36.4182, 0.7386, 0.3654, 0.0079; rob.py FAST-S coef -36.9254, 0.8496, 0.4305, -0.0735
+  M-scale of the S residuals, (n - p) convention: DetS 2.0267, rob.py 1.9124; n convention: DetS 1.0877, rob.py 1.3764

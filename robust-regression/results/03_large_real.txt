@@ -1,0 +1,17 @@
+Diamonds: 53940 rows, 20 with a zero dimension (dropped), 53920 used; 8 with implied density outside 0.003-0.012 carat/mm^3
+  Impossible rows (carat, x, y, z, price): 1.07, 6.62, 6.67, 1.07, 5909; 1.53, 7.43, 7.5, 1.53, 8971; 1.41, 7.31, 7.22, 1.41, 9752; 2.0, 8.09, 58.9, 8.06, 12210; 0.25, 5.33, 5.28, 3.12, 1186; 0.25, 5.33, 5.28, 3.12, 1186; 0.51, 5.12, 5.15, 31.8, 1970; 0.51, 5.15, 31.8, 5.12, 2075
+  OLS, all rows                  const -1.9920, log volume 1.8875, cut 0.0201, colour 0.0770, clarity 0.1206; SE log volume 0.0020; scale 0.1537
+  OLS, impossible rows removed   const -2.0078, log volume 1.8903, cut 0.0201, colour 0.0774, clarity 0.1210; SE log volume 0.0014; scale 0.1491
+  MM, all rows                   const -2.0498, log volume 1.9042, cut 0.0183, colour 0.0768, clarity 0.1184; SE log volume 0.0014; scale 0.1358
+  MM, impossible rows removed    const -2.0498, log volume 1.9042, cut 0.0183, colour 0.0768, clarity 0.1184; SE log volume 0.0014; scale 0.1358
+  OLS log-volume coefficient moves by -0.0028 (-2.0 SE) when the 8 impossible rows are removed; MM by -0.0000
+  MM vs OLS (all rows), log volume: +0.0166 (+8.2 OLS SE)
+  Rows with |MM residual / scale| > 3: 520 (0.96%); of the impossible rows, 6 of 8 are among them; median |u| of impossible rows 17.2
+  Rows with |OLS standardised residual| > 3: 295; of the impossible rows 6
+  MCD robust distance > 3.34: 947 rows (1.76%); bad leverage (distance and |u| > 3): 117; impossible rows with large distance: 3
+  Ten largest |MM residual / scale|: u -35.3 (carat 2.0, price 12210, cut Premium, clarity SI2, dims 8.09x58.9x8.06); u -31.6 (carat 0.51, price 1970, cut Very Good, clarity VS1, dims 5.12x5.15x31.8); u -31.5 (carat 0.51, price 2075, cut Ideal, clarity VS1, dims 5.15x31.8x5.12); u +18.9 (carat 1.07, price 5909, cut Ideal, clarity SI1, dims 6.62x6.67x1.07); u +15.6 (carat 1.41, price 9752, cut Ideal, clarity VS1, dims 7.31x7.22x1.41); u +15.4 (carat 1.53, price 8971, cut Ideal, clarity SI1, dims 7.43x7.5x1.53); u +11.2 (carat 0.34, price 2160, cut Fair, clarity I1, dims 4.72x4.6x2.6); u -10.8 (carat 0.39, price 468, cut Premium, clarity SI2, dims 4.51x6.02x4.44); u +10.0 (carat 0.29, price 1776, cut Fair, clarity SI1, dims 4.48x4.41x2.48); u -9.9 (carat 3.0, price 6512, cut Very Good, clarity I1, dims 9.23x9.1x5.77)
+
+NOx: n = 8088
+  OLS: const 1.0619 (SE 0.0498), log emission 0.6414 (SE 0.0068), sqrt wind -1.0182 (SE 0.0127); scale 0.5443
+  MM: const 1.0616 (SE 0.0543), log emission 0.6362 (SE 0.0075), sqrt wind -0.9853 (SE 0.0130); scale 0.5118
+  differences MM - OLS in OLS SE: -0.0, -0.8, +2.6; |MM residual / scale| > 3: 46 rows (0.57%)
