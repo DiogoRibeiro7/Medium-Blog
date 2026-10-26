@@ -110,5 +110,19 @@ Results are in [docs/RESULTS.md](docs/RESULTS.md). Every rule was fixed before a
 - [ ] **Author review and publication.** Nothing is published automatically. Under the
       E-OBS and GISCO terms, the article must stay non-commercial.
 
+## Phase 4: a second crop, grain maize
+
+- [x] **Plan registered** ([METHODS.md](METHODS.md), section 9), before any maize
+      yield was looked at.
+  - **Data:** Eurostat `C1500`, 2010-2024, and the GGCMI maize calendar, so each
+    region's season runs from planting to maturity.
+  - **Estimands:** E1 (heat) and E2 (drought, tested directly), with Holm over the two.
+  - **Placebo:** the 61 days after maturity.
+  - **Descriptive:** M3 and E4 (2012, 2015, 2022).
+  - **Sensitivity analyses:** five, fixed in advance.
+- [ ] Data: the maize snapshot, the calendar, the season weather and the panel
+      (`docs/MAIZE_DATA.md`), with no estimate.
+- [ ] Estimates and report (`docs/MAIZE.md`), beside wheat.
+
 No artificial observations, no estimate before the plan, and no causal claim about
 climate change from short-run weather responses.

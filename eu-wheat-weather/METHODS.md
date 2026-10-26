@@ -310,6 +310,106 @@ areas, productions and yields only, never weather.
 - **Report.** `docs/AMENDMENT.md`, generated like `docs/RESULTS.md`. Any change to this
   section after a result is computed goes in the change log.
 
+## 9. A second crop: grain maize (registered 2026-10-26)
+
+Registered before any maize yield was related to any weather variable, and before any
+maize yield was looked at. Maize grows through the July and August heat, which wheat
+mostly avoids. It is known to be sensitive to heat, so it should give the design far more
+heat to work with than wheat. The wheat results, registered and amended, stand as they
+are; maize is reported separately.
+
+**What was seen before it was written.**
+
+- **The wheat study:** every wheat result, the review and Amendment A1. Maize uses A1's
+  data rule and inference because they fix problems found in wheat, not because of any
+  maize result.
+- **Eurostat's grain maize, coverage only (`apro_cpshr`, `C1500`).**
+  - Which NUTS-2 and NUTS-1 regions and years have both area and harvested production.
+    About 51 NUTS-2 regions a year have both in 2000-2006, 88 in 2007-2009, and 199-223
+    from 2010.
+  - Before 2010 there is no Spain, Italy, Hungary, Poland or Austria, and before 2007 no
+    France. Germany is published at NUTS-1 only.
+  - No area, production or yield value was looked at.
+- **The GGCMI maize calendar (rainfed), distribution only.** Over Europe, planting falls
+  mostly between days 91 and 131 (1 April to 11 May). Maturity falls mostly between days
+  233 and 283 (21 August to 10 October), and no cell matures after day 290 (17 October).
+
+### 9.1 Data
+
+- **Yields.** Eurostat `apro_cpshr`, grain maize and corn-cob-mix (`C1500`).
+  - The same two measures as wheat: area (`AR_THS_HA`) and harvested production at EU
+    standard humidity (`HPRD_HUMD_EU_THS_T`).
+  - Frozen in a snapshot of its own, with its SHA-256 hash.
+- **Harvest years: 2010-2024.** Coverage before 2010 misses most of the EU's maize, as
+  above.
+- **Regions.** The EU-27 at NUTS 2021, joined by the rules of section 3.1 and its change
+  log: the region's own code, a NUTS-1 region with a single NUTS-2 region, and official
+  pure recodes.
+- **Sample rules, in order.**
+  1. Area of at least 1 thousand hectares, and production present.
+  2. A yield between 1 and 20 t/ha. The bounds are set from agronomy, not from the
+     data: EU grain maize rarely yields below 2 or above 15 t/ha.
+  3. The data rule of section 8.2 (Q1-Q5), with the same thresholds.
+  4. Complete season weather.
+  5. At least 10 years per region.
+  6. Singletons dropped, as in M1.
+- **The season.** From each region's planting date to its maturity date.
+  - Both dates come from the GGCMI Phase 3 crop calendar v1.01, rainfed maize
+    (`mai_rf_ggcmi_crop_calendar_phase3_v1.01.nc4`). They are computed for each region
+    as in section 8.1: the weighted mean of the calendar cells, rounded half up, read
+    in a non-leap year.
+  - A season that would start before 1 March starts on 1 March.
+  - The calendar is frozen beside the wheat calendar.
+- **Variables over the season,** from E-OBS as in section 3.2.
+  - `GDD`: degree days between 10 °C and 30 °C, the usual base for maize, in hundreds.
+  - `EDD`: degree days above 30 °C, in tens. The threshold is the same as for wheat.
+  - `P`: precipitation in hundreds of mm, and its square.
+  - The 3 °C time bins of M3.
+  - The weather is read up to 31 December, so that the placebo window fits. No existing
+    window changes.
+
+### 9.2 Models, estimands and decisions
+
+- **M1-maize.** M1 of section 4: region effects and country-by-year effects, with the
+  variables of 9.1.
+- **Inference.** As in section 8.3: two-way clustering, and the wild bootstrap of the
+  two-way statistic, run with weights by country (seed 20261101) and by year (seed
+  20261102), the larger p-value counting. Both use 9999 draws.
+- **Decisions.** **E1-maize** and **E2-maize** form one family, adjusted with Holm at 5%
+  under each method. A result is established only if it is rejected under both methods
+  and is negative.
+  - **E1-maize, heat:** the change in log yield for 10 more degree days above 30 °C.
+  - **E2-maize, drought:** the dry-season contrast of the change log of 2026-10-24
+    (P10 against the median, by region), tested directly as in section 8.3.
+- **No E3.** Fifteen harvest years leave too little to compare two periods, so a change
+  in sensitivity is not tested.
+- **E4-maize, out of sample (descriptive).** As in section 5 and the change log of
+  2026-10-24, for 2012, 2015 and 2022, three years of widespread heat or drought in
+  maize.
+- **E5-maize, placebo.** `EDD` above 30 °C and precipitation over the 61 days after
+  each region's maturity date. Their joint test at 5% under both methods is stated
+  before any other result.
+- **M3-maize (descriptive).** The temperature bins over the season, relative to
+  15-18 °C, per 24 hours, with two-way intervals and the bootstrap of 8.3.
+- **Sensitivity (fixed now).** Each is reported for E1 and E2. A variant changes a
+  decision only if it reverses the sign.
+  - `EDD` and `GDD` at 27 °C and 33 °C.
+  - A fixed season, 1 May to 30 September.
+  - Without Spain, Portugal, Italy and Greece, where much grain maize is irrigated.
+  - Regressions weighted by maize area.
+- **Beside wheat (descriptive).** E1 and E2 for maize are shown beside wheat's under
+  Amendment A1.
+- **Reports.** `docs/MAIZE_DATA.md` describes the maize panel before any estimate.
+  `docs/MAIZE.md` gives the results, generated like `docs/RESULTS.md`.
+
+### 9.3 Limits fixed in advance
+
+- **Irrigation.** Much of southern Europe's maize is irrigated, which blunts drought and
+  some heat. The pooled effect averages over irrigated and rainfed maize, and the
+  rainfed calendar is used everywhere.
+- **Grain maize only.** Silage maize is not included.
+- **Period.** The period is short, which limits E4 and rules out E3.
+
 ## Change log
 
 - **2026-10-23, phase 1, before any estimate: NUTS-1 regions.**
@@ -463,3 +563,6 @@ areas, productions and yields only, never weather.
     This applies to both bootstraps.
   - **No result changes.** Every registered and amended p-value regenerates unchanged
     under the fix.
+- **2026-10-26, before any maize data beyond coverage: a second crop, grain maize
+  (section 9).** It is registered before any maize yield was looked at. Section 9 says
+  what was seen first: maize coverage counts and the calendar's distribution.
