@@ -14,6 +14,9 @@ from pathlib import Path
 from typing import Any
 
 from eu_wheat_weather.contract import (
+    CALENDAR_BASE,
+    CALENDAR_FILE,
+    CALENDAR_VERSION,
     EOBS_BASE,
     EOBS_FILES,
     EOBS_VERSION,
@@ -81,6 +84,17 @@ def fetch_weather(directory: Path, manifest: Path) -> dict[str, Any]:
 def fetch_boundaries(directory: Path, manifest: Path) -> dict[str, Any]:
     return fetch_all(boundary_sources(), directory, manifest,
                      "GISCO NUTS-2 boundaries, 1:3 million, EPSG:4326")
+
+
+def fetch_calendar(directory: Path) -> dict[str, Any]:
+    """The crop calendar of Amendment A1, small enough to commit: the file and its
+    manifest both go in ``directory``."""
+    return fetch_all({CALENDAR_FILE: CALENDAR_BASE + CALENDAR_FILE + "?download=1"},
+                     directory, directory / "manifest.json",
+                     f"GGCMI Phase 3 crop calendar {CALENDAR_VERSION}, rainfed winter wheat, "
+                     "0.5 degree grid. CC BY 4.0. Jägermeyr, J., et al. (2021), Climate impacts "
+                     "on global agriculture emerge earlier in new generation of climate and "
+                     "crop models, Nature Food 2, 873-885; data doi:10.5281/zenodo.5062513")
 
 
 def verify(directory: Path, manifest: Path) -> list[str]:

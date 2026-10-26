@@ -1,0 +1,2538 @@
+{
+ "sample": {
+  "n": 3436,
+  "regions": 163,
+  "countries": 22,
+  "years": [
+   2000,
+   2024
+  ],
+  "panel_region_years": 3771,
+  "after_rule": 3514,
+  "excluded_by_rule": {
+   "Q1": 11,
+   "Q2": 258,
+   "Q3": 12,
+   "Q4": 24,
+   "Q5": 4
+  },
+  "excluded_region_years": 249,
+  "excluded_by_country": {
+   "AT": 1,
+   "BG": 4,
+   "CZ": 120,
+   "DK": 30,
+   "EL": 52,
+   "FI": 8,
+   "IT": 15,
+   "NL": 11,
+   "SK": 8
+  },
+  "regions_below_10_years": [
+   "ITI3"
+  ],
+  "maturity": {
+   "regions": 163,
+   "first": "05-12",
+   "median_day": 191,
+   "last": "08-22",
+   "before_july": 63,
+   "after_july": 10
+  }
+ },
+ "quality_flags": [
+  {
+   "geo": "NL11",
+   "year": 2005,
+   "rule": "Q1",
+   "detail": "11 regions of NL within 0.15%"
+  },
+  {
+   "geo": "NL12",
+   "year": 2005,
+   "rule": "Q1",
+   "detail": "11 regions of NL within 0.15%"
+  },
+  {
+   "geo": "NL13",
+   "year": 2005,
+   "rule": "Q1",
+   "detail": "11 regions of NL within 0.15%"
+  },
+  {
+   "geo": "NL21",
+   "year": 2005,
+   "rule": "Q1",
+   "detail": "11 regions of NL within 0.15%"
+  },
+  {
+   "geo": "NL22",
+   "year": 2005,
+   "rule": "Q1",
+   "detail": "11 regions of NL within 0.15%"
+  },
+  {
+   "geo": "NL23",
+   "year": 2005,
+   "rule": "Q1",
+   "detail": "11 regions of NL within 0.15%"
+  },
+  {
+   "geo": "NL32",
+   "year": 2005,
+   "rule": "Q1",
+   "detail": "11 regions of NL within 0.15%"
+  },
+  {
+   "geo": "NL33",
+   "year": 2005,
+   "rule": "Q1",
+   "detail": "11 regions of NL within 0.15%"
+  },
+  {
+   "geo": "NL34",
+   "year": 2005,
+   "rule": "Q1",
+   "detail": "11 regions of NL within 0.15%"
+  },
+  {
+   "geo": "NL41",
+   "year": 2005,
+   "rule": "Q1",
+   "detail": "11 regions of NL within 0.15%"
+  },
+  {
+   "geo": "NL42",
+   "year": 2005,
+   "rule": "Q1",
+   "detail": "11 regions of NL within 0.15%"
+  },
+  {
+   "geo": "CZ01",
+   "year": 2004,
+   "rule": "Q2",
+   "detail": "CZ 2004-2005: SD of the change in log yield across 8 regions 0.0116"
+  },
+  {
+   "geo": "CZ01",
+   "year": 2005,
+   "rule": "Q2",
+   "detail": "CZ 2004-2005: SD of the change in log yield across 8 regions 0.0116"
+  },
+  {
+   "geo": "CZ02",
+   "year": 2004,
+   "rule": "Q2",
+   "detail": "CZ 2004-2005: SD of the change in log yield across 8 regions 0.0116"
+  },
+  {
+   "geo": "CZ02",
+   "year": 2005,
+   "rule": "Q2",
+   "detail": "CZ 2004-2005: SD of the change in log yield across 8 regions 0.0116"
+  },
+  {
+   "geo": "CZ03",
+   "year": 2004,
+   "rule": "Q2",
+   "detail": "CZ 2004-2005: SD of the change in log yield across 8 regions 0.0116"
+  },
+  {
+   "geo": "CZ03",
+   "year": 2005,
+   "rule": "Q2",
+   "detail": "CZ 2004-2005: SD of the change in log yield across 8 regions 0.0116"
+  },
+  {
+   "geo": "CZ04",
+   "year": 2004,
+   "rule": "Q2",
+   "detail": "CZ 2004-2005: SD of the change in log yield across 8 regions 0.0116"
+  },
+  {
+   "geo": "CZ04",
+   "year": 2005,
+   "rule": "Q2",
+   "detail": "CZ 2004-2005: SD of the change in log yield across 8 regions 0.0116"
+  },
+  {
+   "geo": "CZ05",
+   "year": 2004,
+   "rule": "Q2",
+   "detail": "CZ 2004-2005: SD of the change in log yield across 8 regions 0.0116"
+  },
+  {
+   "geo": "CZ05",
+   "year": 2005,
+   "rule": "Q2",
+   "detail": "CZ 2004-2005: SD of the change in log yield across 8 regions 0.0116"
+  },
+  {
+   "geo": "CZ06",
+   "year": 2004,
+   "rule": "Q2",
+   "detail": "CZ 2004-2005: SD of the change in log yield across 8 regions 0.0116"
+  },
+  {
+   "geo": "CZ06",
+   "year": 2005,
+   "rule": "Q2",
+   "detail": "CZ 2004-2005: SD of the change in log yield across 8 regions 0.0116"
+  },
+  {
+   "geo": "CZ07",
+   "year": 2004,
+   "rule": "Q2",
+   "detail": "CZ 2004-2005: SD of the change in log yield across 8 regions 0.0116"
+  },
+  {
+   "geo": "CZ07",
+   "year": 2005,
+   "rule": "Q2",
+   "detail": "CZ 2004-2005: SD of the change in log yield across 8 regions 0.0116"
+  },
+  {
+   "geo": "CZ08",
+   "year": 2004,
+   "rule": "Q2",
+   "detail": "CZ 2004-2005: SD of the change in log yield across 8 regions 0.0116"
+  },
+  {
+   "geo": "CZ08",
+   "year": 2005,
+   "rule": "Q2",
+   "detail": "CZ 2004-2005: SD of the change in log yield across 8 regions 0.0116"
+  },
+  {
+   "geo": "CZ01",
+   "year": 2005,
+   "rule": "Q2",
+   "detail": "CZ 2005-2006: SD of the change in log yield across 8 regions 0.0134"
+  },
+  {
+   "geo": "CZ01",
+   "year": 2006,
+   "rule": "Q2",
+   "detail": "CZ 2005-2006: SD of the change in log yield across 8 regions 0.0134"
+  },
+  {
+   "geo": "CZ02",
+   "year": 2005,
+   "rule": "Q2",
+   "detail": "CZ 2005-2006: SD of the change in log yield across 8 regions 0.0134"
+  },
+  {
+   "geo": "CZ02",
+   "year": 2006,
+   "rule": "Q2",
+   "detail": "CZ 2005-2006: SD of the change in log yield across 8 regions 0.0134"
+  },
+  {
+   "geo": "CZ03",
+   "year": 2005,
+   "rule": "Q2",
+   "detail": "CZ 2005-2006: SD of the change in log yield across 8 regions 0.0134"
+  },
+  {
+   "geo": "CZ03",
+   "year": 2006,
+   "rule": "Q2",
+   "detail": "CZ 2005-2006: SD of the change in log yield across 8 regions 0.0134"
+  },
+  {
+   "geo": "CZ04",
+   "year": 2005,
+   "rule": "Q2",
+   "detail": "CZ 2005-2006: SD of the change in log yield across 8 regions 0.0134"
+  },
+  {
+   "geo": "CZ04",
+   "year": 2006,
+   "rule": "Q2",
+   "detail": "CZ 2005-2006: SD of the change in log yield across 8 regions 0.0134"
+  },
+  {
+   "geo": "CZ05",
+   "year": 2005,
+   "rule": "Q2",
+   "detail": "CZ 2005-2006: SD of the change in log yield across 8 regions 0.0134"
+  },
+  {
+   "geo": "CZ05",
+   "year": 2006,
+   "rule": "Q2",
+   "detail": "CZ 2005-2006: SD of the change in log yield across 8 regions 0.0134"
+  },
+  {
+   "geo": "CZ06",
+   "year": 2005,
+   "rule": "Q2",
+   "detail": "CZ 2005-2006: SD of the change in log yield across 8 regions 0.0134"
+  },
+  {
+   "geo": "CZ06",
+   "year": 2006,
+   "rule": "Q2",
+   "detail": "CZ 2005-2006: SD of the change in log yield across 8 regions 0.0134"
+  },
+  {
+   "geo": "CZ07",
+   "year": 2005,
+   "rule": "Q2",
+   "detail": "CZ 2005-2006: SD of the change in log yield across 8 regions 0.0134"
+  },
+  {
+   "geo": "CZ07",
+   "year": 2006,
+   "rule": "Q2",
+   "detail": "CZ 2005-2006: SD of the change in log yield across 8 regions 0.0134"
+  },
+  {
+   "geo": "CZ08",
+   "year": 2005,
+   "rule": "Q2",
+   "detail": "CZ 2005-2006: SD of the change in log yield across 8 regions 0.0134"
+  },
+  {
+   "geo": "CZ08",
+   "year": 2006,
+   "rule": "Q2",
+   "detail": "CZ 2005-2006: SD of the change in log yield across 8 regions 0.0134"
+  },
+  {
+   "geo": "CZ01",
+   "year": 2008,
+   "rule": "Q2",
+   "detail": "CZ 2008-2009: SD of the change in log yield across 8 regions 0.0098"
+  },
+  {
+   "geo": "CZ01",
+   "year": 2009,
+   "rule": "Q2",
+   "detail": "CZ 2008-2009: SD of the change in log yield across 8 regions 0.0098"
+  },
+  {
+   "geo": "CZ02",
+   "year": 2008,
+   "rule": "Q2",
+   "detail": "CZ 2008-2009: SD of the change in log yield across 8 regions 0.0098"
+  },
+  {
+   "geo": "CZ02",
+   "year": 2009,
+   "rule": "Q2",
+   "detail": "CZ 2008-2009: SD of the change in log yield across 8 regions 0.0098"
+  },
+  {
+   "geo": "CZ03",
+   "year": 2008,
+   "rule": "Q2",
+   "detail": "CZ 2008-2009: SD of the change in log yield across 8 regions 0.0098"
+  },
+  {
+   "geo": "CZ03",
+   "year": 2009,
+   "rule": "Q2",
+   "detail": "CZ 2008-2009: SD of the change in log yield across 8 regions 0.0098"
+  },
+  {
+   "geo": "CZ04",
+   "year": 2008,
+   "rule": "Q2",
+   "detail": "CZ 2008-2009: SD of the change in log yield across 8 regions 0.0098"
+  },
+  {
+   "geo": "CZ04",
+   "year": 2009,
+   "rule": "Q2",
+   "detail": "CZ 2008-2009: SD of the change in log yield across 8 regions 0.0098"
+  },
+  {
+   "geo": "CZ05",
+   "year": 2008,
+   "rule": "Q2",
+   "detail": "CZ 2008-2009: SD of the change in log yield across 8 regions 0.0098"
+  },
+  {
+   "geo": "CZ05",
+   "year": 2009,
+   "rule": "Q2",
+   "detail": "CZ 2008-2009: SD of the change in log yield across 8 regions 0.0098"
+  },
+  {
+   "geo": "CZ06",
+   "year": 2008,
+   "rule": "Q2",
+   "detail": "CZ 2008-2009: SD of the change in log yield across 8 regions 0.0098"
+  },
+  {
+   "geo": "CZ06",
+   "year": 2009,
+   "rule": "Q2",
+   "detail": "CZ 2008-2009: SD of the change in log yield across 8 regions 0.0098"
+  },
+  {
+   "geo": "CZ07",
+   "year": 2008,
+   "rule": "Q2",
+   "detail": "CZ 2008-2009: SD of the change in log yield across 8 regions 0.0098"
+  },
+  {
+   "geo": "CZ07",
+   "year": 2009,
+   "rule": "Q2",
+   "detail": "CZ 2008-2009: SD of the change in log yield across 8 regions 0.0098"
+  },
+  {
+   "geo": "CZ08",
+   "year": 2008,
+   "rule": "Q2",
+   "detail": "CZ 2008-2009: SD of the change in log yield across 8 regions 0.0098"
+  },
+  {
+   "geo": "CZ08",
+   "year": 2009,
+   "rule": "Q2",
+   "detail": "CZ 2008-2009: SD of the change in log yield across 8 regions 0.0098"
+  },
+  {
+   "geo": "CZ01",
+   "year": 2009,
+   "rule": "Q2",
+   "detail": "CZ 2009-2010: SD of the change in log yield across 8 regions 0.0193"
+  },
+  {
+   "geo": "CZ01",
+   "year": 2010,
+   "rule": "Q2",
+   "detail": "CZ 2009-2010: SD of the change in log yield across 8 regions 0.0193"
+  },
+  {
+   "geo": "CZ02",
+   "year": 2009,
+   "rule": "Q2",
+   "detail": "CZ 2009-2010: SD of the change in log yield across 8 regions 0.0193"
+  },
+  {
+   "geo": "CZ02",
+   "year": 2010,
+   "rule": "Q2",
+   "detail": "CZ 2009-2010: SD of the change in log yield across 8 regions 0.0193"
+  },
+  {
+   "geo": "CZ03",
+   "year": 2009,
+   "rule": "Q2",
+   "detail": "CZ 2009-2010: SD of the change in log yield across 8 regions 0.0193"
+  },
+  {
+   "geo": "CZ03",
+   "year": 2010,
+   "rule": "Q2",
+   "detail": "CZ 2009-2010: SD of the change in log yield across 8 regions 0.0193"
+  },
+  {
+   "geo": "CZ04",
+   "year": 2009,
+   "rule": "Q2",
+   "detail": "CZ 2009-2010: SD of the change in log yield across 8 regions 0.0193"
+  },
+  {
+   "geo": "CZ04",
+   "year": 2010,
+   "rule": "Q2",
+   "detail": "CZ 2009-2010: SD of the change in log yield across 8 regions 0.0193"
+  },
+  {
+   "geo": "CZ05",
+   "year": 2009,
+   "rule": "Q2",
+   "detail": "CZ 2009-2010: SD of the change in log yield across 8 regions 0.0193"
+  },
+  {
+   "geo": "CZ05",
+   "year": 2010,
+   "rule": "Q2",
+   "detail": "CZ 2009-2010: SD of the change in log yield across 8 regions 0.0193"
+  },
+  {
+   "geo": "CZ06",
+   "year": 2009,
+   "rule": "Q2",
+   "detail": "CZ 2009-2010: SD of the change in log yield across 8 regions 0.0193"
+  },
+  {
+   "geo": "CZ06",
+   "year": 2010,
+   "rule": "Q2",
+   "detail": "CZ 2009-2010: SD of the change in log yield across 8 regions 0.0193"
+  },
+  {
+   "geo": "CZ07",
+   "year": 2009,
+   "rule": "Q2",
+   "detail": "CZ 2009-2010: SD of the change in log yield across 8 regions 0.0193"
+  },
+  {
+   "geo": "CZ07",
+   "year": 2010,
+   "rule": "Q2",
+   "detail": "CZ 2009-2010: SD of the change in log yield across 8 regions 0.0193"
+  },
+  {
+   "geo": "CZ08",
+   "year": 2009,
+   "rule": "Q2",
+   "detail": "CZ 2009-2010: SD of the change in log yield across 8 regions 0.0193"
+  },
+  {
+   "geo": "CZ08",
+   "year": 2010,
+   "rule": "Q2",
+   "detail": "CZ 2009-2010: SD of the change in log yield across 8 regions 0.0193"
+  },
+  {
+   "geo": "CZ01",
+   "year": 2010,
+   "rule": "Q2",
+   "detail": "CZ 2010-2011: SD of the change in log yield across 8 regions 0.0091"
+  },
+  {
+   "geo": "CZ01",
+   "year": 2011,
+   "rule": "Q2",
+   "detail": "CZ 2010-2011: SD of the change in log yield across 8 regions 0.0091"
+  },
+  {
+   "geo": "CZ02",
+   "year": 2010,
+   "rule": "Q2",
+   "detail": "CZ 2010-2011: SD of the change in log yield across 8 regions 0.0091"
+  },
+  {
+   "geo": "CZ02",
+   "year": 2011,
+   "rule": "Q2",
+   "detail": "CZ 2010-2011: SD of the change in log yield across 8 regions 0.0091"
+  },
+  {
+   "geo": "CZ03",
+   "year": 2010,
+   "rule": "Q2",
+   "detail": "CZ 2010-2011: SD of the change in log yield across 8 regions 0.0091"
+  },
+  {
+   "geo": "CZ03",
+   "year": 2011,
+   "rule": "Q2",
+   "detail": "CZ 2010-2011: SD of the change in log yield across 8 regions 0.0091"
+  },
+  {
+   "geo": "CZ04",
+   "year": 2010,
+   "rule": "Q2",
+   "detail": "CZ 2010-2011: SD of the change in log yield across 8 regions 0.0091"
+  },
+  {
+   "geo": "CZ04",
+   "year": 2011,
+   "rule": "Q2",
+   "detail": "CZ 2010-2011: SD of the change in log yield across 8 regions 0.0091"
+  },
+  {
+   "geo": "CZ05",
+   "year": 2010,
+   "rule": "Q2",
+   "detail": "CZ 2010-2011: SD of the change in log yield across 8 regions 0.0091"
+  },
+  {
+   "geo": "CZ05",
+   "year": 2011,
+   "rule": "Q2",
+   "detail": "CZ 2010-2011: SD of the change in log yield across 8 regions 0.0091"
+  },
+  {
+   "geo": "CZ06",
+   "year": 2010,
+   "rule": "Q2",
+   "detail": "CZ 2010-2011: SD of the change in log yield across 8 regions 0.0091"
+  },
+  {
+   "geo": "CZ06",
+   "year": 2011,
+   "rule": "Q2",
+   "detail": "CZ 2010-2011: SD of the change in log yield across 8 regions 0.0091"
+  },
+  {
+   "geo": "CZ07",
+   "year": 2010,
+   "rule": "Q2",
+   "detail": "CZ 2010-2011: SD of the change in log yield across 8 regions 0.0091"
+  },
+  {
+   "geo": "CZ07",
+   "year": 2011,
+   "rule": "Q2",
+   "detail": "CZ 2010-2011: SD of the change in log yield across 8 regions 0.0091"
+  },
+  {
+   "geo": "CZ08",
+   "year": 2010,
+   "rule": "Q2",
+   "detail": "CZ 2010-2011: SD of the change in log yield across 8 regions 0.0091"
+  },
+  {
+   "geo": "CZ08",
+   "year": 2011,
+   "rule": "Q2",
+   "detail": "CZ 2010-2011: SD of the change in log yield across 8 regions 0.0091"
+  },
+  {
+   "geo": "CZ01",
+   "year": 2015,
+   "rule": "Q2",
+   "detail": "CZ 2015-2016: SD of the change in log yield across 8 regions 0.0157"
+  },
+  {
+   "geo": "CZ01",
+   "year": 2016,
+   "rule": "Q2",
+   "detail": "CZ 2015-2016: SD of the change in log yield across 8 regions 0.0157"
+  },
+  {
+   "geo": "CZ02",
+   "year": 2015,
+   "rule": "Q2",
+   "detail": "CZ 2015-2016: SD of the change in log yield across 8 regions 0.0157"
+  },
+  {
+   "geo": "CZ02",
+   "year": 2016,
+   "rule": "Q2",
+   "detail": "CZ 2015-2016: SD of the change in log yield across 8 regions 0.0157"
+  },
+  {
+   "geo": "CZ03",
+   "year": 2015,
+   "rule": "Q2",
+   "detail": "CZ 2015-2016: SD of the change in log yield across 8 regions 0.0157"
+  },
+  {
+   "geo": "CZ03",
+   "year": 2016,
+   "rule": "Q2",
+   "detail": "CZ 2015-2016: SD of the change in log yield across 8 regions 0.0157"
+  },
+  {
+   "geo": "CZ04",
+   "year": 2015,
+   "rule": "Q2",
+   "detail": "CZ 2015-2016: SD of the change in log yield across 8 regions 0.0157"
+  },
+  {
+   "geo": "CZ04",
+   "year": 2016,
+   "rule": "Q2",
+   "detail": "CZ 2015-2016: SD of the change in log yield across 8 regions 0.0157"
+  },
+  {
+   "geo": "CZ05",
+   "year": 2015,
+   "rule": "Q2",
+   "detail": "CZ 2015-2016: SD of the change in log yield across 8 regions 0.0157"
+  },
+  {
+   "geo": "CZ05",
+   "year": 2016,
+   "rule": "Q2",
+   "detail": "CZ 2015-2016: SD of the change in log yield across 8 regions 0.0157"
+  },
+  {
+   "geo": "CZ06",
+   "year": 2015,
+   "rule": "Q2",
+   "detail": "CZ 2015-2016: SD of the change in log yield across 8 regions 0.0157"
+  },
+  {
+   "geo": "CZ06",
+   "year": 2016,
+   "rule": "Q2",
+   "detail": "CZ 2015-2016: SD of the change in log yield across 8 regions 0.0157"
+  },
+  {
+   "geo": "CZ07",
+   "year": 2015,
+   "rule": "Q2",
+   "detail": "CZ 2015-2016: SD of the change in log yield across 8 regions 0.0157"
+  },
+  {
+   "geo": "CZ07",
+   "year": 2016,
+   "rule": "Q2",
+   "detail": "CZ 2015-2016: SD of the change in log yield across 8 regions 0.0157"
+  },
+  {
+   "geo": "CZ08",
+   "year": 2015,
+   "rule": "Q2",
+   "detail": "CZ 2015-2016: SD of the change in log yield across 8 regions 0.0157"
+  },
+  {
+   "geo": "CZ08",
+   "year": 2016,
+   "rule": "Q2",
+   "detail": "CZ 2015-2016: SD of the change in log yield across 8 regions 0.0157"
+  },
+  {
+   "geo": "CZ01",
+   "year": 2018,
+   "rule": "Q2",
+   "detail": "CZ 2018-2019: SD of the change in log yield across 8 regions 0.0096"
+  },
+  {
+   "geo": "CZ01",
+   "year": 2019,
+   "rule": "Q2",
+   "detail": "CZ 2018-2019: SD of the change in log yield across 8 regions 0.0096"
+  },
+  {
+   "geo": "CZ02",
+   "year": 2018,
+   "rule": "Q2",
+   "detail": "CZ 2018-2019: SD of the change in log yield across 8 regions 0.0096"
+  },
+  {
+   "geo": "CZ02",
+   "year": 2019,
+   "rule": "Q2",
+   "detail": "CZ 2018-2019: SD of the change in log yield across 8 regions 0.0096"
+  },
+  {
+   "geo": "CZ03",
+   "year": 2018,
+   "rule": "Q2",
+   "detail": "CZ 2018-2019: SD of the change in log yield across 8 regions 0.0096"
+  },
+  {
+   "geo": "CZ03",
+   "year": 2019,
+   "rule": "Q2",
+   "detail": "CZ 2018-2019: SD of the change in log yield across 8 regions 0.0096"
+  },
+  {
+   "geo": "CZ04",
+   "year": 2018,
+   "rule": "Q2",
+   "detail": "CZ 2018-2019: SD of the change in log yield across 8 regions 0.0096"
+  },
+  {
+   "geo": "CZ04",
+   "year": 2019,
+   "rule": "Q2",
+   "detail": "CZ 2018-2019: SD of the change in log yield across 8 regions 0.0096"
+  },
+  {
+   "geo": "CZ05",
+   "year": 2018,
+   "rule": "Q2",
+   "detail": "CZ 2018-2019: SD of the change in log yield across 8 regions 0.0096"
+  },
+  {
+   "geo": "CZ05",
+   "year": 2019,
+   "rule": "Q2",
+   "detail": "CZ 2018-2019: SD of the change in log yield across 8 regions 0.0096"
+  },
+  {
+   "geo": "CZ06",
+   "year": 2018,
+   "rule": "Q2",
+   "detail": "CZ 2018-2019: SD of the change in log yield across 8 regions 0.0096"
+  },
+  {
+   "geo": "CZ06",
+   "year": 2019,
+   "rule": "Q2",
+   "detail": "CZ 2018-2019: SD of the change in log yield across 8 regions 0.0096"
+  },
+  {
+   "geo": "CZ07",
+   "year": 2018,
+   "rule": "Q2",
+   "detail": "CZ 2018-2019: SD of the change in log yield across 8 regions 0.0096"
+  },
+  {
+   "geo": "CZ07",
+   "year": 2019,
+   "rule": "Q2",
+   "detail": "CZ 2018-2019: SD of the change in log yield across 8 regions 0.0096"
+  },
+  {
+   "geo": "CZ08",
+   "year": 2018,
+   "rule": "Q2",
+   "detail": "CZ 2018-2019: SD of the change in log yield across 8 regions 0.0096"
+  },
+  {
+   "geo": "CZ08",
+   "year": 2019,
+   "rule": "Q2",
+   "detail": "CZ 2018-2019: SD of the change in log yield across 8 regions 0.0096"
+  },
+  {
+   "geo": "CZ01",
+   "year": 2021,
+   "rule": "Q2",
+   "detail": "CZ 2021-2022: SD of the change in log yield across 8 regions 0.0123"
+  },
+  {
+   "geo": "CZ01",
+   "year": 2022,
+   "rule": "Q2",
+   "detail": "CZ 2021-2022: SD of the change in log yield across 8 regions 0.0123"
+  },
+  {
+   "geo": "CZ02",
+   "year": 2021,
+   "rule": "Q2",
+   "detail": "CZ 2021-2022: SD of the change in log yield across 8 regions 0.0123"
+  },
+  {
+   "geo": "CZ02",
+   "year": 2022,
+   "rule": "Q2",
+   "detail": "CZ 2021-2022: SD of the change in log yield across 8 regions 0.0123"
+  },
+  {
+   "geo": "CZ03",
+   "year": 2021,
+   "rule": "Q2",
+   "detail": "CZ 2021-2022: SD of the change in log yield across 8 regions 0.0123"
+  },
+  {
+   "geo": "CZ03",
+   "year": 2022,
+   "rule": "Q2",
+   "detail": "CZ 2021-2022: SD of the change in log yield across 8 regions 0.0123"
+  },
+  {
+   "geo": "CZ04",
+   "year": 2021,
+   "rule": "Q2",
+   "detail": "CZ 2021-2022: SD of the change in log yield across 8 regions 0.0123"
+  },
+  {
+   "geo": "CZ04",
+   "year": 2022,
+   "rule": "Q2",
+   "detail": "CZ 2021-2022: SD of the change in log yield across 8 regions 0.0123"
+  },
+  {
+   "geo": "CZ05",
+   "year": 2021,
+   "rule": "Q2",
+   "detail": "CZ 2021-2022: SD of the change in log yield across 8 regions 0.0123"
+  },
+  {
+   "geo": "CZ05",
+   "year": 2022,
+   "rule": "Q2",
+   "detail": "CZ 2021-2022: SD of the change in log yield across 8 regions 0.0123"
+  },
+  {
+   "geo": "CZ06",
+   "year": 2021,
+   "rule": "Q2",
+   "detail": "CZ 2021-2022: SD of the change in log yield across 8 regions 0.0123"
+  },
+  {
+   "geo": "CZ06",
+   "year": 2022,
+   "rule": "Q2",
+   "detail": "CZ 2021-2022: SD of the change in log yield across 8 regions 0.0123"
+  },
+  {
+   "geo": "CZ07",
+   "year": 2021,
+   "rule": "Q2",
+   "detail": "CZ 2021-2022: SD of the change in log yield across 8 regions 0.0123"
+  },
+  {
+   "geo": "CZ07",
+   "year": 2022,
+   "rule": "Q2",
+   "detail": "CZ 2021-2022: SD of the change in log yield across 8 regions 0.0123"
+  },
+  {
+   "geo": "CZ08",
+   "year": 2021,
+   "rule": "Q2",
+   "detail": "CZ 2021-2022: SD of the change in log yield across 8 regions 0.0123"
+  },
+  {
+   "geo": "CZ08",
+   "year": 2022,
+   "rule": "Q2",
+   "detail": "CZ 2021-2022: SD of the change in log yield across 8 regions 0.0123"
+  },
+  {
+   "geo": "CZ01",
+   "year": 2023,
+   "rule": "Q2",
+   "detail": "CZ 2023-2024: SD of the change in log yield across 8 regions 0.0093"
+  },
+  {
+   "geo": "CZ01",
+   "year": 2024,
+   "rule": "Q2",
+   "detail": "CZ 2023-2024: SD of the change in log yield across 8 regions 0.0093"
+  },
+  {
+   "geo": "CZ02",
+   "year": 2023,
+   "rule": "Q2",
+   "detail": "CZ 2023-2024: SD of the change in log yield across 8 regions 0.0093"
+  },
+  {
+   "geo": "CZ02",
+   "year": 2024,
+   "rule": "Q2",
+   "detail": "CZ 2023-2024: SD of the change in log yield across 8 regions 0.0093"
+  },
+  {
+   "geo": "CZ03",
+   "year": 2023,
+   "rule": "Q2",
+   "detail": "CZ 2023-2024: SD of the change in log yield across 8 regions 0.0093"
+  },
+  {
+   "geo": "CZ03",
+   "year": 2024,
+   "rule": "Q2",
+   "detail": "CZ 2023-2024: SD of the change in log yield across 8 regions 0.0093"
+  },
+  {
+   "geo": "CZ04",
+   "year": 2023,
+   "rule": "Q2",
+   "detail": "CZ 2023-2024: SD of the change in log yield across 8 regions 0.0093"
+  },
+  {
+   "geo": "CZ04",
+   "year": 2024,
+   "rule": "Q2",
+   "detail": "CZ 2023-2024: SD of the change in log yield across 8 regions 0.0093"
+  },
+  {
+   "geo": "CZ05",
+   "year": 2023,
+   "rule": "Q2",
+   "detail": "CZ 2023-2024: SD of the change in log yield across 8 regions 0.0093"
+  },
+  {
+   "geo": "CZ05",
+   "year": 2024,
+   "rule": "Q2",
+   "detail": "CZ 2023-2024: SD of the change in log yield across 8 regions 0.0093"
+  },
+  {
+   "geo": "CZ06",
+   "year": 2023,
+   "rule": "Q2",
+   "detail": "CZ 2023-2024: SD of the change in log yield across 8 regions 0.0093"
+  },
+  {
+   "geo": "CZ06",
+   "year": 2024,
+   "rule": "Q2",
+   "detail": "CZ 2023-2024: SD of the change in log yield across 8 regions 0.0093"
+  },
+  {
+   "geo": "CZ07",
+   "year": 2023,
+   "rule": "Q2",
+   "detail": "CZ 2023-2024: SD of the change in log yield across 8 regions 0.0093"
+  },
+  {
+   "geo": "CZ07",
+   "year": 2024,
+   "rule": "Q2",
+   "detail": "CZ 2023-2024: SD of the change in log yield across 8 regions 0.0093"
+  },
+  {
+   "geo": "CZ08",
+   "year": 2023,
+   "rule": "Q2",
+   "detail": "CZ 2023-2024: SD of the change in log yield across 8 regions 0.0093"
+  },
+  {
+   "geo": "CZ08",
+   "year": 2024,
+   "rule": "Q2",
+   "detail": "CZ 2023-2024: SD of the change in log yield across 8 regions 0.0093"
+  },
+  {
+   "geo": "DK01",
+   "year": 2014,
+   "rule": "Q2",
+   "detail": "DK 2014-2015: SD of the change in log yield across 5 regions 0.0088"
+  },
+  {
+   "geo": "DK01",
+   "year": 2015,
+   "rule": "Q2",
+   "detail": "DK 2014-2015: SD of the change in log yield across 5 regions 0.0088"
+  },
+  {
+   "geo": "DK02",
+   "year": 2014,
+   "rule": "Q2",
+   "detail": "DK 2014-2015: SD of the change in log yield across 5 regions 0.0088"
+  },
+  {
+   "geo": "DK02",
+   "year": 2015,
+   "rule": "Q2",
+   "detail": "DK 2014-2015: SD of the change in log yield across 5 regions 0.0088"
+  },
+  {
+   "geo": "DK03",
+   "year": 2014,
+   "rule": "Q2",
+   "detail": "DK 2014-2015: SD of the change in log yield across 5 regions 0.0088"
+  },
+  {
+   "geo": "DK03",
+   "year": 2015,
+   "rule": "Q2",
+   "detail": "DK 2014-2015: SD of the change in log yield across 5 regions 0.0088"
+  },
+  {
+   "geo": "DK04",
+   "year": 2014,
+   "rule": "Q2",
+   "detail": "DK 2014-2015: SD of the change in log yield across 5 regions 0.0088"
+  },
+  {
+   "geo": "DK04",
+   "year": 2015,
+   "rule": "Q2",
+   "detail": "DK 2014-2015: SD of the change in log yield across 5 regions 0.0088"
+  },
+  {
+   "geo": "DK05",
+   "year": 2014,
+   "rule": "Q2",
+   "detail": "DK 2014-2015: SD of the change in log yield across 5 regions 0.0088"
+  },
+  {
+   "geo": "DK05",
+   "year": 2015,
+   "rule": "Q2",
+   "detail": "DK 2014-2015: SD of the change in log yield across 5 regions 0.0088"
+  },
+  {
+   "geo": "EL51",
+   "year": 2000,
+   "rule": "Q2",
+   "detail": "EL 2000-2001: SD of the change in log yield across 6 regions 0.0067"
+  },
+  {
+   "geo": "EL51",
+   "year": 2001,
+   "rule": "Q2",
+   "detail": "EL 2000-2001: SD of the change in log yield across 6 regions 0.0067"
+  },
+  {
+   "geo": "EL52",
+   "year": 2000,
+   "rule": "Q2",
+   "detail": "EL 2000-2001: SD of the change in log yield across 6 regions 0.0067"
+  },
+  {
+   "geo": "EL52",
+   "year": 2001,
+   "rule": "Q2",
+   "detail": "EL 2000-2001: SD of the change in log yield across 6 regions 0.0067"
+  },
+  {
+   "geo": "EL53",
+   "year": 2000,
+   "rule": "Q2",
+   "detail": "EL 2000-2001: SD of the change in log yield across 6 regions 0.0067"
+  },
+  {
+   "geo": "EL53",
+   "year": 2001,
+   "rule": "Q2",
+   "detail": "EL 2000-2001: SD of the change in log yield across 6 regions 0.0067"
+  },
+  {
+   "geo": "EL61",
+   "year": 2000,
+   "rule": "Q2",
+   "detail": "EL 2000-2001: SD of the change in log yield across 6 regions 0.0067"
+  },
+  {
+   "geo": "EL61",
+   "year": 2001,
+   "rule": "Q2",
+   "detail": "EL 2000-2001: SD of the change in log yield across 6 regions 0.0067"
+  },
+  {
+   "geo": "EL64",
+   "year": 2000,
+   "rule": "Q2",
+   "detail": "EL 2000-2001: SD of the change in log yield across 6 regions 0.0067"
+  },
+  {
+   "geo": "EL64",
+   "year": 2001,
+   "rule": "Q2",
+   "detail": "EL 2000-2001: SD of the change in log yield across 6 regions 0.0067"
+  },
+  {
+   "geo": "EL65",
+   "year": 2000,
+   "rule": "Q2",
+   "detail": "EL 2000-2001: SD of the change in log yield across 6 regions 0.0067"
+  },
+  {
+   "geo": "EL65",
+   "year": 2001,
+   "rule": "Q2",
+   "detail": "EL 2000-2001: SD of the change in log yield across 6 regions 0.0067"
+  },
+  {
+   "geo": "EL51",
+   "year": 2001,
+   "rule": "Q2",
+   "detail": "EL 2001-2002: SD of the change in log yield across 6 regions 0.0071"
+  },
+  {
+   "geo": "EL51",
+   "year": 2002,
+   "rule": "Q2",
+   "detail": "EL 2001-2002: SD of the change in log yield across 6 regions 0.0071"
+  },
+  {
+   "geo": "EL52",
+   "year": 2001,
+   "rule": "Q2",
+   "detail": "EL 2001-2002: SD of the change in log yield across 6 regions 0.0071"
+  },
+  {
+   "geo": "EL52",
+   "year": 2002,
+   "rule": "Q2",
+   "detail": "EL 2001-2002: SD of the change in log yield across 6 regions 0.0071"
+  },
+  {
+   "geo": "EL53",
+   "year": 2001,
+   "rule": "Q2",
+   "detail": "EL 2001-2002: SD of the change in log yield across 6 regions 0.0071"
+  },
+  {
+   "geo": "EL53",
+   "year": 2002,
+   "rule": "Q2",
+   "detail": "EL 2001-2002: SD of the change in log yield across 6 regions 0.0071"
+  },
+  {
+   "geo": "EL61",
+   "year": 2001,
+   "rule": "Q2",
+   "detail": "EL 2001-2002: SD of the change in log yield across 6 regions 0.0071"
+  },
+  {
+   "geo": "EL61",
+   "year": 2002,
+   "rule": "Q2",
+   "detail": "EL 2001-2002: SD of the change in log yield across 6 regions 0.0071"
+  },
+  {
+   "geo": "EL64",
+   "year": 2001,
+   "rule": "Q2",
+   "detail": "EL 2001-2002: SD of the change in log yield across 6 regions 0.0071"
+  },
+  {
+   "geo": "EL64",
+   "year": 2002,
+   "rule": "Q2",
+   "detail": "EL 2001-2002: SD of the change in log yield across 6 regions 0.0071"
+  },
+  {
+   "geo": "EL65",
+   "year": 2001,
+   "rule": "Q2",
+   "detail": "EL 2001-2002: SD of the change in log yield across 6 regions 0.0071"
+  },
+  {
+   "geo": "EL65",
+   "year": 2002,
+   "rule": "Q2",
+   "detail": "EL 2001-2002: SD of the change in log yield across 6 regions 0.0071"
+  },
+  {
+   "geo": "EL51",
+   "year": 2002,
+   "rule": "Q2",
+   "detail": "EL 2002-2003: SD of the change in log yield across 6 regions 0.0054"
+  },
+  {
+   "geo": "EL51",
+   "year": 2003,
+   "rule": "Q2",
+   "detail": "EL 2002-2003: SD of the change in log yield across 6 regions 0.0054"
+  },
+  {
+   "geo": "EL52",
+   "year": 2002,
+   "rule": "Q2",
+   "detail": "EL 2002-2003: SD of the change in log yield across 6 regions 0.0054"
+  },
+  {
+   "geo": "EL52",
+   "year": 2003,
+   "rule": "Q2",
+   "detail": "EL 2002-2003: SD of the change in log yield across 6 regions 0.0054"
+  },
+  {
+   "geo": "EL53",
+   "year": 2002,
+   "rule": "Q2",
+   "detail": "EL 2002-2003: SD of the change in log yield across 6 regions 0.0054"
+  },
+  {
+   "geo": "EL53",
+   "year": 2003,
+   "rule": "Q2",
+   "detail": "EL 2002-2003: SD of the change in log yield across 6 regions 0.0054"
+  },
+  {
+   "geo": "EL61",
+   "year": 2002,
+   "rule": "Q2",
+   "detail": "EL 2002-2003: SD of the change in log yield across 6 regions 0.0054"
+  },
+  {
+   "geo": "EL61",
+   "year": 2003,
+   "rule": "Q2",
+   "detail": "EL 2002-2003: SD of the change in log yield across 6 regions 0.0054"
+  },
+  {
+   "geo": "EL64",
+   "year": 2002,
+   "rule": "Q2",
+   "detail": "EL 2002-2003: SD of the change in log yield across 6 regions 0.0054"
+  },
+  {
+   "geo": "EL64",
+   "year": 2003,
+   "rule": "Q2",
+   "detail": "EL 2002-2003: SD of the change in log yield across 6 regions 0.0054"
+  },
+  {
+   "geo": "EL65",
+   "year": 2002,
+   "rule": "Q2",
+   "detail": "EL 2002-2003: SD of the change in log yield across 6 regions 0.0054"
+  },
+  {
+   "geo": "EL65",
+   "year": 2003,
+   "rule": "Q2",
+   "detail": "EL 2002-2003: SD of the change in log yield across 6 regions 0.0054"
+  },
+  {
+   "geo": "EL51",
+   "year": 2003,
+   "rule": "Q2",
+   "detail": "EL 2003-2004: SD of the change in log yield across 4 regions 0.0037"
+  },
+  {
+   "geo": "EL51",
+   "year": 2004,
+   "rule": "Q2",
+   "detail": "EL 2003-2004: SD of the change in log yield across 4 regions 0.0037"
+  },
+  {
+   "geo": "EL52",
+   "year": 2003,
+   "rule": "Q2",
+   "detail": "EL 2003-2004: SD of the change in log yield across 4 regions 0.0037"
+  },
+  {
+   "geo": "EL52",
+   "year": 2004,
+   "rule": "Q2",
+   "detail": "EL 2003-2004: SD of the change in log yield across 4 regions 0.0037"
+  },
+  {
+   "geo": "EL53",
+   "year": 2003,
+   "rule": "Q2",
+   "detail": "EL 2003-2004: SD of the change in log yield across 4 regions 0.0037"
+  },
+  {
+   "geo": "EL53",
+   "year": 2004,
+   "rule": "Q2",
+   "detail": "EL 2003-2004: SD of the change in log yield across 4 regions 0.0037"
+  },
+  {
+   "geo": "EL61",
+   "year": 2003,
+   "rule": "Q2",
+   "detail": "EL 2003-2004: SD of the change in log yield across 4 regions 0.0037"
+  },
+  {
+   "geo": "EL61",
+   "year": 2004,
+   "rule": "Q2",
+   "detail": "EL 2003-2004: SD of the change in log yield across 4 regions 0.0037"
+  },
+  {
+   "geo": "EL51",
+   "year": 2004,
+   "rule": "Q2",
+   "detail": "EL 2004-2005: SD of the change in log yield across 4 regions 0.0036"
+  },
+  {
+   "geo": "EL51",
+   "year": 2005,
+   "rule": "Q2",
+   "detail": "EL 2004-2005: SD of the change in log yield across 4 regions 0.0036"
+  },
+  {
+   "geo": "EL52",
+   "year": 2004,
+   "rule": "Q2",
+   "detail": "EL 2004-2005: SD of the change in log yield across 4 regions 0.0036"
+  },
+  {
+   "geo": "EL52",
+   "year": 2005,
+   "rule": "Q2",
+   "detail": "EL 2004-2005: SD of the change in log yield across 4 regions 0.0036"
+  },
+  {
+   "geo": "EL53",
+   "year": 2004,
+   "rule": "Q2",
+   "detail": "EL 2004-2005: SD of the change in log yield across 4 regions 0.0036"
+  },
+  {
+   "geo": "EL53",
+   "year": 2005,
+   "rule": "Q2",
+   "detail": "EL 2004-2005: SD of the change in log yield across 4 regions 0.0036"
+  },
+  {
+   "geo": "EL61",
+   "year": 2004,
+   "rule": "Q2",
+   "detail": "EL 2004-2005: SD of the change in log yield across 4 regions 0.0036"
+  },
+  {
+   "geo": "EL61",
+   "year": 2005,
+   "rule": "Q2",
+   "detail": "EL 2004-2005: SD of the change in log yield across 4 regions 0.0036"
+  },
+  {
+   "geo": "EL51",
+   "year": 2005,
+   "rule": "Q2",
+   "detail": "EL 2005-2006: SD of the change in log yield across 6 regions 0.0073"
+  },
+  {
+   "geo": "EL51",
+   "year": 2006,
+   "rule": "Q2",
+   "detail": "EL 2005-2006: SD of the change in log yield across 6 regions 0.0073"
+  },
+  {
+   "geo": "EL52",
+   "year": 2005,
+   "rule": "Q2",
+   "detail": "EL 2005-2006: SD of the change in log yield across 6 regions 0.0073"
+  },
+  {
+   "geo": "EL52",
+   "year": 2006,
+   "rule": "Q2",
+   "detail": "EL 2005-2006: SD of the change in log yield across 6 regions 0.0073"
+  },
+  {
+   "geo": "EL53",
+   "year": 2005,
+   "rule": "Q2",
+   "detail": "EL 2005-2006: SD of the change in log yield across 6 regions 0.0073"
+  },
+  {
+   "geo": "EL53",
+   "year": 2006,
+   "rule": "Q2",
+   "detail": "EL 2005-2006: SD of the change in log yield across 6 regions 0.0073"
+  },
+  {
+   "geo": "EL61",
+   "year": 2005,
+   "rule": "Q2",
+   "detail": "EL 2005-2006: SD of the change in log yield across 6 regions 0.0073"
+  },
+  {
+   "geo": "EL61",
+   "year": 2006,
+   "rule": "Q2",
+   "detail": "EL 2005-2006: SD of the change in log yield across 6 regions 0.0073"
+  },
+  {
+   "geo": "EL64",
+   "year": 2005,
+   "rule": "Q2",
+   "detail": "EL 2005-2006: SD of the change in log yield across 6 regions 0.0073"
+  },
+  {
+   "geo": "EL64",
+   "year": 2006,
+   "rule": "Q2",
+   "detail": "EL 2005-2006: SD of the change in log yield across 6 regions 0.0073"
+  },
+  {
+   "geo": "EL65",
+   "year": 2005,
+   "rule": "Q2",
+   "detail": "EL 2005-2006: SD of the change in log yield across 6 regions 0.0073"
+  },
+  {
+   "geo": "EL65",
+   "year": 2006,
+   "rule": "Q2",
+   "detail": "EL 2005-2006: SD of the change in log yield across 6 regions 0.0073"
+  },
+  {
+   "geo": "EL51",
+   "year": 2006,
+   "rule": "Q2",
+   "detail": "EL 2006-2007: SD of the change in log yield across 6 regions 0.0073"
+  },
+  {
+   "geo": "EL51",
+   "year": 2007,
+   "rule": "Q2",
+   "detail": "EL 2006-2007: SD of the change in log yield across 6 regions 0.0073"
+  },
+  {
+   "geo": "EL52",
+   "year": 2006,
+   "rule": "Q2",
+   "detail": "EL 2006-2007: SD of the change in log yield across 6 regions 0.0073"
+  },
+  {
+   "geo": "EL52",
+   "year": 2007,
+   "rule": "Q2",
+   "detail": "EL 2006-2007: SD of the change in log yield across 6 regions 0.0073"
+  },
+  {
+   "geo": "EL53",
+   "year": 2006,
+   "rule": "Q2",
+   "detail": "EL 2006-2007: SD of the change in log yield across 6 regions 0.0073"
+  },
+  {
+   "geo": "EL53",
+   "year": 2007,
+   "rule": "Q2",
+   "detail": "EL 2006-2007: SD of the change in log yield across 6 regions 0.0073"
+  },
+  {
+   "geo": "EL61",
+   "year": 2006,
+   "rule": "Q2",
+   "detail": "EL 2006-2007: SD of the change in log yield across 6 regions 0.0073"
+  },
+  {
+   "geo": "EL61",
+   "year": 2007,
+   "rule": "Q2",
+   "detail": "EL 2006-2007: SD of the change in log yield across 6 regions 0.0073"
+  },
+  {
+   "geo": "EL64",
+   "year": 2006,
+   "rule": "Q2",
+   "detail": "EL 2006-2007: SD of the change in log yield across 6 regions 0.0073"
+  },
+  {
+   "geo": "EL64",
+   "year": 2007,
+   "rule": "Q2",
+   "detail": "EL 2006-2007: SD of the change in log yield across 6 regions 0.0073"
+  },
+  {
+   "geo": "EL65",
+   "year": 2006,
+   "rule": "Q2",
+   "detail": "EL 2006-2007: SD of the change in log yield across 6 regions 0.0073"
+  },
+  {
+   "geo": "EL65",
+   "year": 2007,
+   "rule": "Q2",
+   "detail": "EL 2006-2007: SD of the change in log yield across 6 regions 0.0073"
+  },
+  {
+   "geo": "EL51",
+   "year": 2007,
+   "rule": "Q2",
+   "detail": "EL 2007-2008: SD of the change in log yield across 6 regions 0.0144"
+  },
+  {
+   "geo": "EL51",
+   "year": 2008,
+   "rule": "Q2",
+   "detail": "EL 2007-2008: SD of the change in log yield across 6 regions 0.0144"
+  },
+  {
+   "geo": "EL52",
+   "year": 2007,
+   "rule": "Q2",
+   "detail": "EL 2007-2008: SD of the change in log yield across 6 regions 0.0144"
+  },
+  {
+   "geo": "EL52",
+   "year": 2008,
+   "rule": "Q2",
+   "detail": "EL 2007-2008: SD of the change in log yield across 6 regions 0.0144"
+  },
+  {
+   "geo": "EL53",
+   "year": 2007,
+   "rule": "Q2",
+   "detail": "EL 2007-2008: SD of the change in log yield across 6 regions 0.0144"
+  },
+  {
+   "geo": "EL53",
+   "year": 2008,
+   "rule": "Q2",
+   "detail": "EL 2007-2008: SD of the change in log yield across 6 regions 0.0144"
+  },
+  {
+   "geo": "EL61",
+   "year": 2007,
+   "rule": "Q2",
+   "detail": "EL 2007-2008: SD of the change in log yield across 6 regions 0.0144"
+  },
+  {
+   "geo": "EL61",
+   "year": 2008,
+   "rule": "Q2",
+   "detail": "EL 2007-2008: SD of the change in log yield across 6 regions 0.0144"
+  },
+  {
+   "geo": "EL64",
+   "year": 2007,
+   "rule": "Q2",
+   "detail": "EL 2007-2008: SD of the change in log yield across 6 regions 0.0144"
+  },
+  {
+   "geo": "EL64",
+   "year": 2008,
+   "rule": "Q2",
+   "detail": "EL 2007-2008: SD of the change in log yield across 6 regions 0.0144"
+  },
+  {
+   "geo": "EL65",
+   "year": 2007,
+   "rule": "Q2",
+   "detail": "EL 2007-2008: SD of the change in log yield across 6 regions 0.0144"
+  },
+  {
+   "geo": "EL65",
+   "year": 2008,
+   "rule": "Q2",
+   "detail": "EL 2007-2008: SD of the change in log yield across 6 regions 0.0144"
+  },
+  {
+   "geo": "FI19",
+   "year": 2022,
+   "rule": "Q2",
+   "detail": "FI 2022-2023: SD of the change in log yield across 4 regions 0.0152"
+  },
+  {
+   "geo": "FI19",
+   "year": 2023,
+   "rule": "Q2",
+   "detail": "FI 2022-2023: SD of the change in log yield across 4 regions 0.0152"
+  },
+  {
+   "geo": "FI1B",
+   "year": 2022,
+   "rule": "Q2",
+   "detail": "FI 2022-2023: SD of the change in log yield across 4 regions 0.0152"
+  },
+  {
+   "geo": "FI1B",
+   "year": 2023,
+   "rule": "Q2",
+   "detail": "FI 2022-2023: SD of the change in log yield across 4 regions 0.0152"
+  },
+  {
+   "geo": "FI1C",
+   "year": 2022,
+   "rule": "Q2",
+   "detail": "FI 2022-2023: SD of the change in log yield across 4 regions 0.0152"
+  },
+  {
+   "geo": "FI1C",
+   "year": 2023,
+   "rule": "Q2",
+   "detail": "FI 2022-2023: SD of the change in log yield across 4 regions 0.0152"
+  },
+  {
+   "geo": "FI1D",
+   "year": 2022,
+   "rule": "Q2",
+   "detail": "FI 2022-2023: SD of the change in log yield across 4 regions 0.0152"
+  },
+  {
+   "geo": "FI1D",
+   "year": 2023,
+   "rule": "Q2",
+   "detail": "FI 2022-2023: SD of the change in log yield across 4 regions 0.0152"
+  },
+  {
+   "geo": "SK01",
+   "year": 2010,
+   "rule": "Q2",
+   "detail": "SK 2010-2011: SD of the change in log yield across 4 regions 0.0127"
+  },
+  {
+   "geo": "SK01",
+   "year": 2011,
+   "rule": "Q2",
+   "detail": "SK 2010-2011: SD of the change in log yield across 4 regions 0.0127"
+  },
+  {
+   "geo": "SK02",
+   "year": 2010,
+   "rule": "Q2",
+   "detail": "SK 2010-2011: SD of the change in log yield across 4 regions 0.0127"
+  },
+  {
+   "geo": "SK02",
+   "year": 2011,
+   "rule": "Q2",
+   "detail": "SK 2010-2011: SD of the change in log yield across 4 regions 0.0127"
+  },
+  {
+   "geo": "SK03",
+   "year": 2010,
+   "rule": "Q2",
+   "detail": "SK 2010-2011: SD of the change in log yield across 4 regions 0.0127"
+  },
+  {
+   "geo": "SK03",
+   "year": 2011,
+   "rule": "Q2",
+   "detail": "SK 2010-2011: SD of the change in log yield across 4 regions 0.0127"
+  },
+  {
+   "geo": "SK04",
+   "year": 2010,
+   "rule": "Q2",
+   "detail": "SK 2010-2011: SD of the change in log yield across 4 regions 0.0127"
+  },
+  {
+   "geo": "SK04",
+   "year": 2011,
+   "rule": "Q2",
+   "detail": "SK 2010-2011: SD of the change in log yield across 4 regions 0.0127"
+  },
+  {
+   "geo": "AT21",
+   "year": 2008,
+   "rule": "Q3",
+   "detail": "area 2.9 and production 12.83 as in 2007"
+  },
+  {
+   "geo": "ITF1",
+   "year": 2021,
+   "rule": "Q3",
+   "detail": "area 22.66 and production 93.46 as in 2020"
+  },
+  {
+   "geo": "ITF1",
+   "year": 2023,
+   "rule": "Q3",
+   "detail": "area 22.65 and production 75.17 as in 2022"
+  },
+  {
+   "geo": "ITF2",
+   "year": 2019,
+   "rule": "Q3",
+   "detail": "area 3.6 and production 13.75 as in 2018"
+  },
+  {
+   "geo": "ITF5",
+   "year": 2020,
+   "rule": "Q3",
+   "detail": "area 6.95 and production 19.07 as in 2019"
+  },
+  {
+   "geo": "ITF5",
+   "year": 2021,
+   "rule": "Q3",
+   "detail": "area 6.95 and production 19.07 as in 2020"
+  },
+  {
+   "geo": "ITF5",
+   "year": 2023,
+   "rule": "Q3",
+   "detail": "area 6.95 and production 21.3 as in 2022"
+  },
+  {
+   "geo": "ITF6",
+   "year": 2022,
+   "rule": "Q3",
+   "detail": "area 9.23 and production 28.04 as in 2021"
+  },
+  {
+   "geo": "ITF6",
+   "year": 2023,
+   "rule": "Q3",
+   "detail": "area 9.23 and production 28.04 as in 2022"
+  },
+  {
+   "geo": "ITF6",
+   "year": 2024,
+   "rule": "Q3",
+   "detail": "area 9.23 and production 28.04 as in 2023"
+  },
+  {
+   "geo": "ITI3",
+   "year": 2020,
+   "rule": "Q3",
+   "detail": "area 13.84 and production 67.33 as in 2019"
+  },
+  {
+   "geo": "ITI3",
+   "year": 2021,
+   "rule": "Q3",
+   "detail": "area 13.84 and production 67.33 as in 2020"
+  },
+  {
+   "geo": "BG31",
+   "year": 2011,
+   "rule": "Q4",
+   "detail": "BG3 2011: NUTS-2 production +0.00% of NUTS-1, area +24.71%"
+  },
+  {
+   "geo": "BG32",
+   "year": 2011,
+   "rule": "Q4",
+   "detail": "BG3 2011: NUTS-2 production +0.00% of NUTS-1, area +24.71%"
+  },
+  {
+   "geo": "BG33",
+   "year": 2011,
+   "rule": "Q4",
+   "detail": "BG3 2011: NUTS-2 production +0.00% of NUTS-1, area +24.71%"
+  },
+  {
+   "geo": "BG34",
+   "year": 2011,
+   "rule": "Q4",
+   "detail": "BG3 2011: NUTS-2 production +0.00% of NUTS-1, area +24.71%"
+  },
+  {
+   "geo": "DK01",
+   "year": 2006,
+   "rule": "Q4",
+   "detail": "DK0 2006: NUTS-2 production -0.00% of NUTS-1, area -10.13%"
+  },
+  {
+   "geo": "DK02",
+   "year": 2006,
+   "rule": "Q4",
+   "detail": "DK0 2006: NUTS-2 production -0.00% of NUTS-1, area -10.13%"
+  },
+  {
+   "geo": "DK03",
+   "year": 2006,
+   "rule": "Q4",
+   "detail": "DK0 2006: NUTS-2 production -0.00% of NUTS-1, area -10.13%"
+  },
+  {
+   "geo": "DK04",
+   "year": 2006,
+   "rule": "Q4",
+   "detail": "DK0 2006: NUTS-2 production -0.00% of NUTS-1, area -10.13%"
+  },
+  {
+   "geo": "DK05",
+   "year": 2006,
+   "rule": "Q4",
+   "detail": "DK0 2006: NUTS-2 production -0.00% of NUTS-1, area -10.13%"
+  },
+  {
+   "geo": "DK01",
+   "year": 2007,
+   "rule": "Q4",
+   "detail": "DK0 2007: NUTS-2 production +0.00% of NUTS-1, area -10.64%"
+  },
+  {
+   "geo": "DK02",
+   "year": 2007,
+   "rule": "Q4",
+   "detail": "DK0 2007: NUTS-2 production +0.00% of NUTS-1, area -10.64%"
+  },
+  {
+   "geo": "DK03",
+   "year": 2007,
+   "rule": "Q4",
+   "detail": "DK0 2007: NUTS-2 production +0.00% of NUTS-1, area -10.64%"
+  },
+  {
+   "geo": "DK04",
+   "year": 2007,
+   "rule": "Q4",
+   "detail": "DK0 2007: NUTS-2 production +0.00% of NUTS-1, area -10.64%"
+  },
+  {
+   "geo": "DK05",
+   "year": 2007,
+   "rule": "Q4",
+   "detail": "DK0 2007: NUTS-2 production +0.00% of NUTS-1, area -10.64%"
+  },
+  {
+   "geo": "DK01",
+   "year": 2008,
+   "rule": "Q4",
+   "detail": "DK0 2008: NUTS-2 production +0.00% of NUTS-1, area -10.28%"
+  },
+  {
+   "geo": "DK02",
+   "year": 2008,
+   "rule": "Q4",
+   "detail": "DK0 2008: NUTS-2 production +0.00% of NUTS-1, area -10.28%"
+  },
+  {
+   "geo": "DK03",
+   "year": 2008,
+   "rule": "Q4",
+   "detail": "DK0 2008: NUTS-2 production +0.00% of NUTS-1, area -10.28%"
+  },
+  {
+   "geo": "DK04",
+   "year": 2008,
+   "rule": "Q4",
+   "detail": "DK0 2008: NUTS-2 production +0.00% of NUTS-1, area -10.28%"
+  },
+  {
+   "geo": "DK05",
+   "year": 2008,
+   "rule": "Q4",
+   "detail": "DK0 2008: NUTS-2 production +0.00% of NUTS-1, area -10.28%"
+  },
+  {
+   "geo": "DK01",
+   "year": 2009,
+   "rule": "Q4",
+   "detail": "DK0 2009: NUTS-2 production -0.00% of NUTS-1, area -10.11%"
+  },
+  {
+   "geo": "DK02",
+   "year": 2009,
+   "rule": "Q4",
+   "detail": "DK0 2009: NUTS-2 production -0.00% of NUTS-1, area -10.11%"
+  },
+  {
+   "geo": "DK03",
+   "year": 2009,
+   "rule": "Q4",
+   "detail": "DK0 2009: NUTS-2 production -0.00% of NUTS-1, area -10.11%"
+  },
+  {
+   "geo": "DK04",
+   "year": 2009,
+   "rule": "Q4",
+   "detail": "DK0 2009: NUTS-2 production -0.00% of NUTS-1, area -10.11%"
+  },
+  {
+   "geo": "DK05",
+   "year": 2009,
+   "rule": "Q4",
+   "detail": "DK0 2009: NUTS-2 production -0.00% of NUTS-1, area -10.11%"
+  },
+  {
+   "geo": "ITF2",
+   "year": 2012,
+   "rule": "Q5",
+   "detail": "4 years from 2012 below half or above twice the median of the other years"
+  },
+  {
+   "geo": "ITF2",
+   "year": 2013,
+   "rule": "Q5",
+   "detail": "4 years from 2012 below half or above twice the median of the other years"
+  },
+  {
+   "geo": "ITF2",
+   "year": 2014,
+   "rule": "Q5",
+   "detail": "4 years from 2012 below half or above twice the median of the other years"
+  },
+  {
+   "geo": "ITF2",
+   "year": 2015,
+   "rule": "Q5",
+   "detail": "4 years from 2012 below half or above twice the median of the other years"
+  }
+ ],
+ "review_cases": [
+  {
+   "case": "Greece, pro-rated, 2000-2008",
+   "in_panel": 52,
+   "excluded": 52,
+   "rules": "Q2"
+  },
+  {
+   "case": "Netherlands, one figure, 2005",
+   "in_panel": 11,
+   "excluded": 11,
+   "rules": "Q1"
+  },
+  {
+   "case": "DK04, area understated, 2006-2009",
+   "in_panel": 4,
+   "excluded": 4,
+   "rules": "Q4"
+  },
+  {
+   "case": "NL22 and NL23, production swapped, 2004",
+   "in_panel": 2,
+   "excluded": 0,
+   "rules": ""
+  },
+  {
+   "case": "ITF2, about 1 t/ha, 2012-2015",
+   "in_panel": 4,
+   "excluded": 4,
+   "rules": "Q5"
+  }
+ ],
+ "E1": {
+  "estimate": -0.02728852334,
+  "se": 0.02979044053,
+  "low": -0.08924113591,
+  "high": 0.03466408923,
+  "t": -0.9160161064,
+  "p_twoway": 0.370058311,
+  "df": 21,
+  "n": 3436,
+  "p_bootstrap_country": 0.4541454145,
+  "p_bootstrap_year": 0.5578557856,
+  "p_bootstrap": 0.5578557856
+ },
+ "E2": {
+  "estimate": -0.03220704144,
+  "se": 0.01890080468,
+  "low": -0.07151341653,
+  "high": 0.007099333645,
+  "t": -1.704003718,
+  "p_twoway": 0.1031341091,
+  "df": 21,
+  "n": 3436,
+  "p_bootstrap_country": 0.1667166717,
+  "p_bootstrap_year": 0.1078107811,
+  "p_bootstrap": 0.1667166717,
+  "mean_p10_minus_p50_mm": -67.81292576
+ },
+ "E3": {
+  "estimate": 0.0585208169,
+  "se": 0.05603090377,
+  "low": -0.05800182631,
+  "high": 0.1750434601,
+  "t": 1.044438211,
+  "p_twoway": 0.3081571076,
+  "df": 21,
+  "n": 3436,
+  "p_bootstrap_country": 0.6934693469,
+  "p_bootstrap_year": 0.6236623662,
+  "p_bootstrap": 0.6934693469,
+  "minimum_detectable": 0.1646573378,
+  "minimum_detectable_holm": 0.1938906835
+ },
+ "E5": {
+  "statistic": 2.999514705,
+  "p_twoway": 0.2461369222,
+  "df": 21,
+  "p_bootstrap_country": 0.4283428343,
+  "p_bootstrap_year": 0.401140114,
+  "p_bootstrap": 0.4283428343,
+  "significant_both": false
+ },
+ "decisions": {
+  "E1": {
+   "p_twoway_holm": 0.6163142152,
+   "p_bootstrap_holm": 1.0,
+   "verdict": "not determined"
+  },
+  "E2": {
+   "p_twoway_holm": 0.3094023274,
+   "p_bootstrap_holm": 0.500150015,
+   "verdict": "not determined"
+  },
+  "E3": {
+   "p_twoway_holm": 0.6163142152,
+   "p_bootstrap_holm": 1.0,
+   "verdict": "not determined"
+  }
+ },
+ "decomposition": [
+  {
+   "combination": "inference",
+   "label": "Registered window and sample (only the inference changes)",
+   "n": 3693,
+   "E1": {
+    "estimate": -0.02676916126,
+    "se": 0.01697130895,
+    "low": -0.06206293032,
+    "high": 0.00852460779,
+    "t": -1.5773186,
+    "p_twoway": 0.129668091,
+    "df": 21,
+    "n": 3693,
+    "p_bootstrap_country": 0.2645264526,
+    "p_bootstrap_year": 0.2108210821,
+    "p_bootstrap": 0.2645264526
+   },
+   "E2": {
+    "estimate": -0.02310740958,
+    "se": 0.01466491147,
+    "low": -0.05360476251,
+    "high": 0.007389943338,
+    "t": -1.575693766,
+    "p_twoway": 0.1300423922,
+    "df": 21,
+    "n": 3693,
+    "p_bootstrap_country": 0.1791179118,
+    "p_bootstrap_year": 0.1554155416,
+    "p_bootstrap": 0.1791179118
+   }
+  },
+  {
+   "combination": "window",
+   "label": "Harvest window alone",
+   "n": 3693,
+   "E1": {
+    "estimate": -0.02758986354,
+    "se": 0.02924692808,
+    "low": -0.08841218008,
+    "high": 0.033232453,
+    "t": -0.9433422705,
+    "p_twoway": 0.3562331576,
+    "df": 21,
+    "n": 3693,
+    "p_bootstrap_country": 0.4511451145,
+    "p_bootstrap_year": 0.5469546955,
+    "p_bootstrap": 0.5469546955
+   },
+   "E2": {
+    "estimate": -0.02883530446,
+    "se": 0.01800905895,
+    "low": -0.06628719278,
+    "high": 0.008616583861,
+    "t": -1.601155537,
+    "p_twoway": 0.1242793565,
+    "df": 21,
+    "n": 3693,
+    "p_bootstrap_country": 0.1363136314,
+    "p_bootstrap_year": 0.1278127813,
+    "p_bootstrap": 0.1363136314
+   }
+  },
+  {
+   "combination": "data",
+   "label": "Data rule alone",
+   "n": 3436,
+   "E1": {
+    "estimate": -0.03165827887,
+    "se": 0.01483471476,
+    "low": -0.06250875705,
+    "high": -0.0008078006793,
+    "t": -2.134067246,
+    "p_twoway": 0.04478927132,
+    "df": 21,
+    "n": 3436,
+    "p_bootstrap_country": 0.2234223422,
+    "p_bootstrap_year": 0.1146114611,
+    "p_bootstrap": 0.2234223422
+   },
+   "E2": {
+    "estimate": -0.02534430319,
+    "se": 0.0158955576,
+    "low": -0.05840092486,
+    "high": 0.007712318473,
+    "t": -1.594426809,
+    "p_twoway": 0.1257811928,
+    "df": 21,
+    "n": 3436,
+    "p_bootstrap_country": 0.2248224822,
+    "p_bootstrap_year": 0.1568156816,
+    "p_bootstrap": 0.2248224822
+   }
+  },
+  {
+   "combination": "all",
+   "label": "Both: M1-A",
+   "n": 3436,
+   "E1": {
+    "estimate": -0.02728852334,
+    "se": 0.02979044053,
+    "low": -0.08924113591,
+    "high": 0.03466408923,
+    "t": -0.9160161064,
+    "p_twoway": 0.370058311,
+    "df": 21,
+    "n": 3436,
+    "p_bootstrap_country": 0.4541454145,
+    "p_bootstrap_year": 0.5578557856,
+    "p_bootstrap": 0.5578557856
+   },
+   "E2": {
+    "estimate": -0.03220704144,
+    "se": 0.01890080468,
+    "low": -0.07151341653,
+    "high": 0.007099333645,
+    "t": -1.704003718,
+    "p_twoway": 0.1031341091,
+    "df": 21,
+    "n": 3436,
+    "p_bootstrap_country": 0.1667166717,
+    "p_bootstrap_year": 0.1078107811,
+    "p_bootstrap": 0.1667166717
+   }
+  }
+ ],
+ "M3": [
+  {
+   "model": "M3-A",
+   "term": "t_lt00",
+   "estimate": 0.001355016962,
+   "se": 0.005019905649,
+   "low": -0.009084448325,
+   "high": 0.01179448225,
+   "t": 0.2699287709,
+   "p": 0.7898498577,
+   "df": 21,
+   "n": 3436,
+   "p_bootstrap_country": 0.8409840984,
+   "p_bootstrap_year": 0.7664766477,
+   "p_bootstrap": 0.8409840984
+  },
+  {
+   "model": "M3-A",
+   "term": "t_00_03",
+   "estimate": -0.0002083754609,
+   "se": 0.005337806398,
+   "low": -0.01130895155,
+   "high": 0.01089220063,
+   "t": -0.03903765806,
+   "p": 0.9692291106,
+   "df": 21,
+   "n": 3436,
+   "p_bootstrap_country": 0.9693969397,
+   "p_bootstrap_year": 0.9654965497,
+   "p_bootstrap": 0.9693969397
+  },
+  {
+   "model": "M3-A",
+   "term": "t_03_06",
+   "estimate": 0.006045714706,
+   "se": 0.005645147676,
+   "low": -0.005694012558,
+   "high": 0.01778544197,
+   "t": 1.070957759,
+   "p": 0.296343245,
+   "df": 21,
+   "n": 3436,
+   "p_bootstrap_country": 0.3127312731,
+   "p_bootstrap_year": 0.2922292229,
+   "p_bootstrap": 0.3127312731
+  },
+  {
+   "model": "M3-A",
+   "term": "t_06_09",
+   "estimate": 7.092032809e-05,
+   "se": 0.003992371805,
+   "low": -0.008231671351,
+   "high": 0.008373512007,
+   "t": 0.01776395876,
+   "p": 0.9859948532,
+   "df": 21,
+   "n": 3436,
+   "p_bootstrap_country": 0.9853985399,
+   "p_bootstrap_year": 0.9866986699,
+   "p_bootstrap": 0.9866986699
+  },
+  {
+   "model": "M3-A",
+   "term": "t_09_12",
+   "estimate": 0.005495933378,
+   "se": 0.003627562524,
+   "low": -0.002047995869,
+   "high": 0.01303986262,
+   "t": 1.51504856,
+   "p": 0.1446679443,
+   "df": 21,
+   "n": 3436,
+   "p_bootstrap_country": 0.1095109511,
+   "p_bootstrap_year": 0.1398139814,
+   "p_bootstrap": 0.1398139814
+  },
+  {
+   "model": "M3-A",
+   "term": "t_12_15",
+   "estimate": -0.004514293282,
+   "se": 0.006413350206,
+   "low": -0.01785158516,
+   "high": 0.008822998597,
+   "t": -0.703890032,
+   "p": 0.4892334796,
+   "df": 21,
+   "n": 3436,
+   "p_bootstrap_country": 0.5896589659,
+   "p_bootstrap_year": 0.5117511751,
+   "p_bootstrap": 0.5896589659
+  },
+  {
+   "model": "M3-A",
+   "term": "t_18_21",
+   "estimate": -0.0002896617548,
+   "se": 0.004995543666,
+   "low": -0.01067846352,
+   "high": 0.01009914001,
+   "t": -0.0579840302,
+   "p": 0.9543095581,
+   "df": 21,
+   "n": 3436,
+   "p_bootstrap_country": 0.9538953895,
+   "p_bootstrap_year": 0.9530953095,
+   "p_bootstrap": 0.9538953895
+  },
+  {
+   "model": "M3-A",
+   "term": "t_21_24",
+   "estimate": 0.0003056117952,
+   "se": 0.006324964176,
+   "low": -0.01284787127,
+   "high": 0.01345909486,
+   "t": 0.04831834406,
+   "p": 0.9619191285,
+   "df": 21,
+   "n": 3436,
+   "p_bootstrap_country": 0.9580958096,
+   "p_bootstrap_year": 0.9626962696,
+   "p_bootstrap": 0.9626962696
+  },
+  {
+   "model": "M3-A",
+   "term": "t_24_27",
+   "estimate": -0.003066828913,
+   "se": 0.004301078382,
+   "low": -0.01201141106,
+   "high": 0.005877753239,
+   "t": -0.713037206,
+   "p": 0.4836716136,
+   "df": 21,
+   "n": 3436,
+   "p_bootstrap_country": 0.4056405641,
+   "p_bootstrap_year": 0.4425442544,
+   "p_bootstrap": 0.4425442544
+  },
+  {
+   "model": "M3-A",
+   "term": "t_27_30",
+   "estimate": -0.01039612967,
+   "se": 0.006646614394,
+   "low": -0.02421852099,
+   "high": 0.003426261643,
+   "t": -1.564124087,
+   "p": 0.132733687,
+   "df": 21,
+   "n": 3436,
+   "p_bootstrap_country": 0.1729172917,
+   "p_bootstrap_year": 0.1541154115,
+   "p_bootstrap": 0.1729172917
+  },
+  {
+   "model": "M3-A",
+   "term": "t_30_33",
+   "estimate": -0.0326231482,
+   "se": 0.01191287395,
+   "low": -0.05739732579,
+   "high": -0.007848970614,
+   "t": -2.738478418,
+   "p": 0.01231094336,
+   "df": 21,
+   "n": 3436,
+   "p_bootstrap_country": 0.03720372037,
+   "p_bootstrap_year": 0.04080408041,
+   "p_bootstrap": 0.04080408041
+  },
+  {
+   "model": "M3-A",
+   "term": "t_33_36",
+   "estimate": 0.02505647531,
+   "se": 0.02528322544,
+   "low": -0.02752287036,
+   "high": 0.07763582098,
+   "t": 0.9910315979,
+   "p": 0.3329525618,
+   "df": 21,
+   "n": 3436,
+   "p_bootstrap_country": 0.4312431243,
+   "p_bootstrap_year": 0.4316431643,
+   "p_bootstrap": 0.4316431643
+  },
+  {
+   "model": "M3-A",
+   "term": "t_ge36",
+   "estimate": -0.05440211775,
+   "se": 0.04771638197,
+   "low": -0.1536337663,
+   "high": 0.04482953081,
+   "t": -1.140114055,
+   "p": 0.2670758844,
+   "df": 21,
+   "n": 3436,
+   "p_bootstrap_country": 0.5916591659,
+   "p_bootstrap_year": 0.601960196,
+   "p_bootstrap": 0.601960196
+  }
+ ],
+ "sensitivity": [
+  {
+   "estimand": "E1",
+   "estimate": -0.05993966168,
+   "se": 0.04158619427,
+   "low": -0.146422887,
+   "high": 0.02654356368,
+   "t": -1.441335586,
+   "p_twoway": 0.1642364164,
+   "df": 21,
+   "n": 3436,
+   "sign_reversed": false
+  },
+  {
+   "estimand": "E2",
+   "estimate": -0.03604452332,
+   "se": 0.01959517945,
+   "low": -0.07679492979,
+   "high": 0.004705883141,
+   "t": -1.839458701,
+   "p_twoway": 0.08002933149,
+   "df": 21,
+   "n": 3436,
+   "sign_reversed": false
+  },
+  {
+   "estimand": "E3",
+   "estimate": 0.09082892718,
+   "se": 0.07637341992,
+   "low": -0.06799829425,
+   "high": 0.2496561486,
+   "t": 1.18927406,
+   "p_twoway": 0.2476056557,
+   "df": 21,
+   "n": 3436,
+   "sign_reversed": false
+  }
+ ],
+ "leave_one_out": {
+  "rows": [
+   {
+    "country": "AT",
+    "n": 3292,
+    "E1": -0.02589995575,
+    "E2": -0.03235420235,
+    "E3": 0.05844528887
+   },
+   {
+    "country": "BE",
+    "n": 3197,
+    "E1": -0.0261579976,
+    "E2": -0.031759463,
+    "E3": 0.05876595717
+   },
+   {
+    "country": "BG",
+    "n": 3356,
+    "E1": -0.02864620803,
+    "E2": -0.03234542474,
+    "E3": 0.05785745545
+   },
+   {
+    "country": "CZ",
+    "n": 3356,
+    "E1": -0.0267800173,
+    "E2": -0.03308364604,
+    "E3": 0.05856197313
+   },
+   {
+    "country": "DE",
+    "n": 3290,
+    "E1": -0.02712156267,
+    "E2": -0.03201708692,
+    "E3": 0.06136311784
+   },
+   {
+    "country": "DK",
+    "n": 3371,
+    "E1": -0.02701836126,
+    "E2": -0.03197174425,
+    "E3": 0.05845164229
+   },
+   {
+    "country": "EL",
+    "n": 3340,
+    "E1": -0.02794137175,
+    "E2": -0.03422854255,
+    "E3": 0.05419285688
+   },
+   {
+    "country": "ES",
+    "n": 3150,
+    "E1": -0.05123681511,
+    "E2": -0.01230735097,
+    "E3": 0.09850035846
+   },
+   {
+    "country": "FI",
+    "n": 3384,
+    "E1": -0.0276813941,
+    "E2": -0.03280625717,
+    "E3": 0.0586043062
+   },
+   {
+    "country": "FR",
+    "n": 2911,
+    "E1": -0.01431978966,
+    "E2": -0.04373876653,
+    "E3": 0.0648909455
+   },
+   {
+    "country": "HR",
+    "n": 3408,
+    "E1": -0.02724743787,
+    "E2": -0.0322692394,
+    "E3": 0.05824283532
+   },
+   {
+    "country": "HU",
+    "n": 3274,
+    "E1": -0.02668086876,
+    "E2": -0.03223913992,
+    "E3": 0.061249075
+   },
+   {
+    "country": "IE",
+    "n": 3412,
+    "E1": -0.02734412535,
+    "E2": -0.03245548809,
+    "E3": 0.05851854387
+   },
+   {
+    "country": "IT",
+    "n": 3143,
+    "E1": -0.03282465461,
+    "E2": -0.02959316908,
+    "E3": 0.06166297606
+   },
+   {
+    "country": "LT",
+    "n": 3412,
+    "E1": -0.02727185501,
+    "E2": -0.03221393477,
+    "E3": 0.05852286479
+   },
+   {
+    "country": "NL",
+    "n": 3174,
+    "E1": -0.0259428071,
+    "E2": -0.03529561172,
+    "E3": 0.05820820239
+   },
+   {
+    "country": "PL",
+    "n": 3039,
+    "E1": -0.0270110092,
+    "E2": -0.0343880624,
+    "E3": 0.05963778105
+   },
+   {
+    "country": "PT",
+    "n": 3367,
+    "E1": -0.0299537126,
+    "E2": -0.03188305516,
+    "E3": 0.06734261699
+   },
+   {
+    "country": "RO",
+    "n": 3237,
+    "E1": -0.004105184255,
+    "E2": -0.029588838,
+    "E3": -0.02351776927
+   },
+   {
+    "country": "SE",
+    "n": 3292,
+    "E1": -0.02748945825,
+    "E2": -0.03366391004,
+    "E3": 0.05838779663
+   },
+   {
+    "country": "SI",
+    "n": 3406,
+    "E1": -0.02756609891,
+    "E2": -0.03421810633,
+    "E3": 0.05857735177
+   },
+   {
+    "country": "SK",
+    "n": 3345,
+    "E1": -0.02779803211,
+    "E2": -0.03245121084,
+    "E3": 0.05979096849
+   }
+  ],
+  "summary": {
+   "E1": {
+    "low": -0.05123681511,
+    "high": -0.004105184255,
+    "most_influential": "ES",
+    "without_it": -0.05123681511
+   },
+   "E2": {
+    "low": -0.04373876653,
+    "high": -0.01230735097,
+    "most_influential": "ES",
+    "without_it": -0.01230735097
+   },
+   "E3": {
+    "low": -0.02351776927,
+    "high": 0.09850035846,
+    "most_influential": "RO",
+    "without_it": -0.02351776927
+   }
+  }
+ }
+}

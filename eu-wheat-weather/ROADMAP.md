@@ -94,8 +94,15 @@ Results are in [docs/RESULTS.md](docs/RESULTS.md). Every rule was fixed before a
   - A rule for yield series that are not regional measurements.
   - E2 tested directly.
   - A wild bootstrap of the two-way statistic, over countries and over years.
-- [ ] **Amendment A1 computed** and reported in `docs/AMENDMENT.md`, beside the
-      registered results.
+- [x] **Amendment A1 computed**, reported in [docs/AMENDMENT.md](docs/AMENDMENT.md),
+      beside the registered results.
+  - **Verdicts:** E1, E2 and E3 are all not determined; the amended placebo passes.
+  - **The data rule:** it flags 249 region-years. It catches four of the review's five
+    cases, and also Czechia's pro-rated years.
+  - **Which change does what:** heat stays near -2.7% under every combination of the
+    changes, and the harvest window widens its interval.
+  - **The 36 °C band:** over the harvest window, it no longer differs from zero.
+- [ ] **Article:** report Amendment A1 beside the registered results.
 - [ ] **Author review and publication.** Nothing is published automatically. Under the
       E-OBS and GISCO terms, the article must stay non-commercial.
 

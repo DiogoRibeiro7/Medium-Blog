@@ -159,6 +159,18 @@
    "region_seasons": 6050,
    "missing": 400
   },
+  "harvest/all": {
+   "region_seasons": 6050,
+   "missing": 400
+  },
+  "harvest_m14/all": {
+   "region_seasons": 6050,
+   "missing": 400
+  },
+  "post_harvest/all": {
+   "region_seasons": 6050,
+   "missing": 400
+  },
   "mar_jul/below_800m": {
    "region_seasons": 6050,
    "missing": 325
@@ -172,6 +184,18 @@
    "missing": 325
   },
   "jul/below_800m": {
+   "region_seasons": 6050,
+   "missing": 325
+  },
+  "harvest/below_800m": {
+   "region_seasons": 6050,
+   "missing": 325
+  },
+  "harvest_m14/below_800m": {
+   "region_seasons": 6050,
+   "missing": 325
+  },
+  "post_harvest/below_800m": {
    "region_seasons": 6050,
    "missing": 325
   }

@@ -33,6 +33,14 @@ TARGET_NUTS = 2021
 GISCO_BASE = "https://gisco-services.ec.europa.eu/distribution/v2/nuts/geojson/"
 
 
+# Amendment A1 (METHODS.md, section 8.1): the GGCMI Phase 3 crop calendar, rainfed
+# winter wheat. CC BY 4.0; Jägermeyr et al. (2021), doi:10.5281/zenodo.5062513.
+CALENDAR_VERSION = "v1.01"
+CALENDAR_FILE = f"wwh_rf_ggcmi_crop_calendar_phase3_{CALENDAR_VERSION}.nc4"
+CALENDAR_BASE = "https://zenodo.org/records/5062513/files/"
+CALENDAR_SNAPSHOT = f"snapshots/ggcmi-crop-calendar-{CALENDAR_VERSION}"
+
+
 def gisco_file(version: int) -> str:
     return f"NUTS_RG_03M_{version}_4326_LEVL_2.geojson"
 

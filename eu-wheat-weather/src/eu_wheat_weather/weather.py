@@ -30,14 +30,19 @@ MIN_COVERAGE = 0.5
 ELEVATION_MAX = 800.0
 THRESHOLDS: tuple[float, ...] = (27.0, 30.0, 33.0)
 BIN_EDGES: tuple[float, ...] = tuple(float(x) for x in range(0, 37, 3))   # 0, 3, ..., 36
-# Windows within the season read (1 March to 30 September of the harvest year).
+# Windows within the season read (1 March to 31 October of the harvest year).
 WINDOWS: dict[str, tuple[tuple[int, int], tuple[int, int]]] = {
     "mar_jul": ((3, 1), (7, 31)),    # primary
     "apr_jul": ((4, 1), (7, 31)),    # sensitivity
     "aug_sep": ((8, 1), (9, 30)),    # placebo (E5)
     "jul": ((7, 1), (7, 31)),        # descriptive, post hoc: when the heat falls (change log)
 }
-READ_FROM, READ_TO = (3, 1), (9, 30)
+# Amendment A1 (section 8.1): windows that end at each region's maturity date.
+REGIONAL_WINDOWS: tuple[str, ...] = ("harvest", "harvest_m14", "post_harvest")
+EARLY_END_DAYS = 14        # the sensitivity: the window ends 14 days before maturity
+PLACEBO_DAYS = 61          # E5-A: the 61 days after the maturity date
+CALENDAR_YEAR = 2001       # a non-leap year, in which the calendar's day of year is read
+READ_FROM, READ_TO = (3, 1), (10, 31)   # to 31 October, so that E5-A fits (section 8.1)
 WEIGHTINGS: tuple[str, ...] = ("all", "below_800m")
 
 
@@ -209,6 +214,96 @@ def window_sums(daily: Mapping[str, Array], days: Sequence[dt.date],
     return out
 
 
+def regional_window_sums(daily: Mapping[str, Array], days: Sequence[dt.date],
+                         ends: Sequence[tuple[int, int] | None],
+                         ) -> dict[str, dict[str, Array]]:
+    """Amendment A1 (section 8.1): per region, sums over 1 March to its maturity date,
+    over 1 March to 14 days before it, and over the 61 days after it.
+
+    ``ends`` gives each region's maturity date as (month, day), in the order of the
+    daily arrays' rows; a region without one gets missing values.
+    """
+    year = days[0].year
+    ordinal = np.array([d.toordinal() for d in days])
+    start = dt.date(year, 3, 1).toordinal()
+    masks = {name: np.zeros((len(ends), len(days)), dtype=bool) for name in REGIONAL_WINDOWS}
+    for r, end in enumerate(ends):
+        if end is None:
+            continue
+        last = dt.date(year, *end).toordinal()
+        if last + PLACEBO_DAYS > ordinal[-1]:
+            raise DataError(f"The placebo window after {end} goes past the days read.")
+        masks["harvest"][r] = (ordinal >= start) & (ordinal <= last)
+        masks["harvest_m14"][r] = (ordinal >= start) & (ordinal <= last - EARLY_END_DAYS)
+        masks["post_harvest"][r] = (ordinal > last) & (ordinal <= last + PLACEBO_DAYS)
+    out: dict[str, dict[str, Array]] = {}
+    for name, mask in masks.items():
+        absent = ~mask.any(axis=1)
+        sums = {v: np.where(mask, daily[v], 0.0).sum(axis=1) for v in VARIABLES}
+        sums["missing_temp"] = (np.isnan(daily["edd_30"]) & mask).sum(axis=1).astype(float)
+        sums["missing_prec"] = (np.isnan(daily["prec"]) & mask).sum(axis=1).astype(float)
+        for values in sums.values():
+            values[absent] = np.nan
+        out[name] = sums
+    return out
+
+
+# ----------------------------------------------------------------------------------
+# The crop calendar (Amendment A1, section 8.1)
+# ----------------------------------------------------------------------------------
+
+
+def read_calendar(path: Path) -> tuple[Array, Array, Array]:
+    """Latitudes, longitudes and maturity day of the year (NaN where missing)."""
+    import netCDF4
+
+    with netCDF4.Dataset(path) as ds:
+        lat = np.asarray(ds.variables["lat"][:], dtype=np.float64)
+        lon = np.asarray(ds.variables["lon"][:], dtype=np.float64)
+        day = np.ma.filled(ds.variables["maturity_day"][:].astype(np.float64), np.nan)
+    return lat, lon, np.asarray(day, dtype=np.float64)
+
+
+def region_maturity(weights: RegionWeights, lon: Array,
+                    calendar: tuple[Array, Array, Array]) -> list[dict[str, object]]:
+    """Each region's maturity day: every E-OBS cell takes the calendar cell containing its
+    centre, and the region's day is the weighted mean over its cells that have a value,
+    rounded to the nearest day and read as a date in a non-leap year."""
+    cal_lat, cal_lon, day = calendar
+    cell_lon = lon[weights.cells % lon.size]
+    rows = np.abs(weights.cell_lat[:, None] - cal_lat[None, :]).argmin(axis=1)
+    cols = np.abs(cell_lon[:, None] - cal_lon[None, :]).argmin(axis=1)
+    step = abs(float(cal_lat[1] - cal_lat[0]))
+    if (np.abs(cal_lat[rows] - weights.cell_lat).max() > step / 2
+            or np.abs(cal_lon[cols] - cell_lon).max() > step / 2):
+        raise DataError("An E-OBS cell lies outside the crop calendar's grid.")
+    values = day[rows, cols]
+    have = np.isfinite(values)
+    out: list[dict[str, object]] = []
+    for r, code in enumerate(weights.codes):
+        w = weights.matrix[r]
+        total, covered = float(w.sum()), float(w[have].sum())
+        if covered == 0:
+            out.append({"geo": code, "maturity_day": "", "maturity_date": "",
+                        "calendar_share": 0.0})
+            continue
+        mean = float(w[have] @ values[have]) / covered
+        doy = int(math.floor(mean + 0.5))
+        date = dt.date(CALENDAR_YEAR, 1, 1) + dt.timedelta(days=doy - 1)
+        out.append({"geo": code, "maturity_day": doy, "maturity_date": date.strftime("%m-%d"),
+                    "calendar_share": round(covered / total, 4)})
+    return out
+
+
+def write_maturity(rows: Sequence[Mapping[str, object]], path: Path) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("w", encoding="utf-8", newline="") as stream:
+        writer = csv.DictWriter(stream, fieldnames=("geo", "maturity_day", "maturity_date",
+                                                    "calendar_share"), lineterminator="\n")
+        writer.writeheader()
+        writer.writerows(rows)
+
+
 # ----------------------------------------------------------------------------------
 # E-OBS files
 # ----------------------------------------------------------------------------------
@@ -245,14 +340,21 @@ def read_grid(directory: Path) -> tuple[Array, Array, Array]:
 
 
 def build_weather(eobs_dir: Path, regions: Mapping[str, BaseGeometry],
-                  years: Sequence[int]) -> list[dict[str, object]]:
-    """One row per region, harvest year, window and weighting."""
+                  years: Sequence[int], calendar: Path | None = None,
+                  ) -> tuple[list[dict[str, object]], list[dict[str, object]]]:
+    """One row per region, harvest year, window and weighting; and, with a crop calendar,
+    each region's maturity day, which adds the windows of Amendment A1."""
     lat, lon, elevation = read_grid(eobs_dir)
     base = cell_weights(regions, lat, lon)
     elev_cells = elevation.ravel()[base.cells]
     weightings = {"all": base,
                   "below_800m": base.masked(np.isfinite(elev_cells)
                                             & (elev_cells < ELEVATION_MAX))}
+    maturity = [] if calendar is None else region_maturity(base, lon, read_calendar(calendar))
+    ends: list[tuple[int, int] | None] = [
+        None if m["maturity_date"] == "" else
+        (int(str(m["maturity_date"])[:2]), int(str(m["maturity_date"])[3:]))
+        for m in maturity]
     rows: list[dict[str, object]] = []
     for year in years:
         days = season_days(year)
@@ -265,7 +367,10 @@ def build_weather(eobs_dir: Path, regions: Mapping[str, BaseGeometry],
         rr = np.where(obs_r, rr, 0.0)
         for label, weights in weightings.items():
             daily = daily_region_variables(tn, tx, rr, obs_t, obs_r, days, weights)
-            for window, sums in window_sums(daily, days).items():
+            windows = window_sums(daily, days)
+            if ends:
+                windows.update(regional_window_sums(daily, days, ends))
+            for window, sums in windows.items():
                 for r, code in enumerate(weights.codes):
                     row: dict[str, object] = {"geo": code, "year": year, "window": window,
                                               "weighting": label}
@@ -274,7 +379,7 @@ def build_weather(eobs_dir: Path, regions: Mapping[str, BaseGeometry],
                         row[v] = "" if math.isnan(x) else (int(x) if v.startswith("missing")
                                                            else round(x, 6))
                     rows.append(row)
-    return rows
+    return rows, maturity
 
 
 def region_latitudes(regions: Mapping[str, BaseGeometry]) -> list[dict[str, object]]:

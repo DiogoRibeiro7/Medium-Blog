@@ -436,3 +436,19 @@ areas, productions and yields only, never weather.
   series that are not regional measurements, and inference that allows for dependence
   across countries within a year. It also tests E2 directly. It is registered before any
   of it is computed, and its results are reported beside the registered ones.
+- **2026-10-26, Amendment A1, before any of its estimates: details it left open.**
+  - **Q2** uses the sample standard deviation (n - 1).
+  - **Q3** compares the harmonised published values for exact equality.
+  - **Q4** takes as children the published NUTS-2 codes that begin with the NUTS-1 code.
+    They map to NUTS-2021 regions through the region map.
+  - **Rounding.** The maturity day is rounded half up.
+  - **Missing harvest-window weather.** A region-year without it leaves M1-A, as in
+    section 3.2.
+  - **E2's weights.** `d1` and `d2` are computed on the sample of each fit: M1-A, each
+    combination of 8.4, each country left out and the sensitivity.
+  - **The bootstrap.** A draw whose clipped two-way variance is zero has an infinite t
+    and counts as extreme.
+  - **What was seen.** The data rule, which uses yields only, was run before any
+    estimate of the amendment. It flags 249 region-years, against the review's 86,
+    because Q2 also flags Czechia in nine pairs of years: the change in log yield there
+    differs across 8 regions by an SD of 0.009-0.019. The thresholds were not changed.

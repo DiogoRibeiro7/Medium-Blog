@@ -249,10 +249,16 @@ Region-seasons of every EU-27 NUTS-2021 region on the E-OBS grid, and those with
 | apr_jul/below_800m | 6050 | 325 |
 | aug_sep/all | 6050 | 400 |
 | aug_sep/below_800m | 6050 | 325 |
+| harvest/all | 6050 | 400 |
+| harvest/below_800m | 6050 | 325 |
+| harvest_m14/all | 6050 | 400 |
+| harvest_m14/below_800m | 6050 | 325 |
 | jul/all | 6050 | 400 |
 | jul/below_800m | 6050 | 325 |
 | mar_jul/all | 6050 | 400 |
 | mar_jul/below_800m | 6050 | 325 |
+| post_harvest/all | 6050 | 400 |
+| post_harvest/below_800m | 6050 | 325 |
 
 ## Flags in the panel
 

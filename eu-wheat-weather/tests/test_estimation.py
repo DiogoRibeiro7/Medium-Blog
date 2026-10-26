@@ -14,6 +14,7 @@ from eu_wheat_weather.estimation import (
     singleton_mask,
     t_test,
     twoway_vcov,
+    twoway_wild_bootstrap,
     wald_test,
     wild_bootstrap,
 )
@@ -120,6 +121,34 @@ def test_bootstrap_rejects_a_real_effect_and_holds_its_size_under_the_null() -> 
         f = m1(panel(100 + seed, beta=(0.0, 0.0), countries=10, regions=3, years=10))
         rejections.append(wild_bootstrap(f, [0], draws=199, seed=seed)[1] < 0.05)
     assert 0.0 <= float(np.mean(rejections)) <= 0.11
+
+
+def test_twoway_bootstrap_statistic_is_the_two_way_t_and_wald() -> None:
+    """Amendment A1, section 8.3: the bootstrapped statistic is the registered two-way one."""
+    f = m1(panel(8, beta=(0.3, 0.1)))
+    v, df = twoway_vcov(f)
+    t_two, _, _ = t_test(f.beta, v, 0, df)
+    w_two, _ = wald_test(f.beta, v, [0, 1], df)
+    for by in ("country", "year"):
+        t_boot, p = twoway_wild_bootstrap(f, [0], by, draws=99)
+        w_boot, _ = twoway_wild_bootstrap(f, [0, 1], by, draws=99)
+        assert t_boot == pytest.approx(t_two, rel=1e-10)
+        assert w_boot == pytest.approx(w_two, rel=1e-10)
+        assert 0.0 <= p <= 1.0
+    # the same seed gives the same draws
+    assert twoway_wild_bootstrap(f, [1], "year", draws=99, seed=3) == \
+        twoway_wild_bootstrap(f, [1], "year", draws=99, seed=3)
+
+
+def test_twoway_bootstrap_rejects_a_real_effect_and_holds_its_size_under_the_null() -> None:
+    strong = m1(panel(9, beta=(0.5, 0.0)))
+    assert twoway_wild_bootstrap(strong, [0], "country", draws=499)[1] < 0.01
+    for by in ("country", "year"):
+        rejections = []
+        for seed in range(100):
+            f = m1(panel(300 + seed, beta=(0.0, 0.0), countries=10, regions=3, years=10))
+            rejections.append(twoway_wild_bootstrap(f, [0], by, draws=199, seed=seed)[1] < 0.05)
+        assert 0.0 <= float(np.mean(rejections)) <= 0.12, by
 
 
 def test_holm_and_minimum_detectable() -> None:

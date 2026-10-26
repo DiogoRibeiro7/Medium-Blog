@@ -94,11 +94,20 @@ def test_committed_latitudes_regenerate(tmp_path: Path) -> None:
 @pytest.mark.skipif(os.environ.get("EU_WHEAT_REPRODUCE_WEATHER") != "1",
                     reason="Set EU_WHEAT_REPRODUCE_WEATHER=1 with E-OBS in data/eobs (minutes).")
 def test_committed_weather_regenerates(tmp_path: Path) -> None:
-    from eu_wheat_weather.contract import FIRST_YEAR, LAST_YEAR
+    from eu_wheat_weather.contract import (
+        CALENDAR_FILE,
+        CALENDAR_SNAPSHOT,
+        FIRST_YEAR,
+        LAST_YEAR,
+    )
     from eu_wheat_weather.regions import load_all, target_regions
-    from eu_wheat_weather.weather import build_weather, write_weather
+    from eu_wheat_weather.weather import build_weather, write_maturity, write_weather
 
     regions = target_regions(load_all(ROOT / "data" / "boundaries"))
-    rows = build_weather(ROOT / "data" / "eobs", regions, range(FIRST_YEAR, LAST_YEAR + 1))
+    rows, maturity = build_weather(ROOT / "data" / "eobs", regions,
+                                   range(FIRST_YEAR, LAST_YEAR + 1),
+                                   ROOT / CALENDAR_SNAPSHOT / CALENDAR_FILE)
     write_weather(rows, tmp_path / "weather.csv")
+    write_maturity(maturity, tmp_path / "maturity.csv")
     assert (tmp_path / "weather.csv").read_bytes() == (DOCS / "weather.csv").read_bytes()
+    assert (tmp_path / "maturity.csv").read_bytes() == (DOCS / "maturity.csv").read_bytes()
