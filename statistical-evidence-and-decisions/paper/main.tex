@@ -1,103 +1,254 @@
 \documentclass[11pt,a4paper]{article}
 \usepackage[T1]{fontenc}
-\usepackage{lmodern,amsmath,amssymb,booktabs,geometry,hyperref,microtype}
-\geometry{margin=27mm}
-\title{When Does a More Complex Change-Point Detector Justify Its Cost?\\A Preregistered Monte Carlo Comparison of CUSUM, GLR, and BOCPD}
+\usepackage{lmodern,amsmath,amssymb,mathtools,booktabs,geometry,graphicx,xcolor,hyperref,microtype,siunitx,enumitem}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\geometry{margin=26mm}
+\hypersetup{colorlinks=true,linkcolor=blue!45!black,citecolor=blue!45!black,urlcolor=blue!45!black}
+\title{Sequential Detection Is Not a Decision Rule:\\An Economic Comparison of CUSUM, Generalised Likelihood Ratios and Bayesian Online Change-Point Detection}
 \author{Diogo Ribeiro}
 \date{26 October 2026}
 \begin{document}
 \maketitle
 \begin{abstract}
-An alarm does not determine whether a model should be retrained. We compare the economic consequences of retraining policies driven by classical CUSUM, a Gaussian generalised likelihood-ratio (GLR) detector, and Bayesian online change-point detection (BOCPD). In the preregistered synthetic experiment, 199 independent null-calibration streams established detector thresholds; 100 evaluation streams per regime, each with 120 deployment observations, were used to assess the policies. Under gradual concept drift, mean economic regret was 0.217649 for CUSUM, 0.217060 for GLR and 0.226625 for BOCPD. The GLR--CUSUM regret difference had an adjusted paired interval of $[-0.004824,0.003344]$, which does not establish the specified minimum improvement of 0.01 regret units. BOCPD had higher regret (difference 0.008977; adjusted interval $[0.003687,0.013818]$). Neither candidate verified the required 10\% false-alarm ceiling. The data do not justify replacing CUSUM under this monitoring score, drift mechanism and cost specification.
+A change-point alarm has no intrinsic economic value. Its usefulness depends on how the alarm changes a predictive model and, in turn, an action policy. We examine this distinction using five model-maintenance policies---a frozen predictor, scheduled refitting, and refitting triggered by CUSUM, a Gaussian generalised likelihood ratio (GLR), or Bayesian online change-point detection (BOCPD). All policies face identical simulated observations and decision costs. The confirmatory comparison comprises 199 no-change calibration streams and 100 independent evaluation streams in each of two regimes, with 120 deployment observations per stream. Under gradual coefficient reversal, mean regret per observation is 0.217649 for CUSUM, 0.217060 for GLR, and 0.226625 for BOCPD. The paired GLR--CUSUM difference is $-0.000589$, with multiplicity-adjusted bootstrap limits $[-0.004824,0.003344]$; the prescribed material improvement was 0.01. BOCPD's difference is $+0.008977$, with limits $[0.003687,0.013818]$. Independent stable-stream evaluation does not verify the prescribed 10\% false-alarm ceiling for either candidate. More elaborate detectors are therefore not justified as replacements for CUSUM in this specific experiment. This is a simulation-based statement about monitoring, refitting and action costs, not a general ranking of change-point methods.
 \end{abstract}
-\section{Introduction}
-Sequential detection is often assessed through alarm rates and detection delay. Neither quantity determines whether acting on an alarm improves an economic decision. That depends on the retraining policy, its cost and the actions taken from the resulting predictions.
+\noindent\textit{Keywords:} sequential detection; cumulative sums; generalised likelihood ratio; Bayesian change points; concept drift; economic regret; Monte Carlo inference.
 
-We compare classical cumulative sum (CUSUM) \cite{page1954}, Gaussian generalised likelihood ratios \cite{basseville1993}, and Bayesian online change-point detection (BOCPD) \cite{adams2007}. Each detector receives the same scalar monitoring signal. We evaluate their associated model-maintenance policies against prespecified economic-regret and false-alarm criteria; no new detection algorithm is proposed.
-\section{Predictive and economic model}
-Let $X_t\in\mathbb R^{16}$ and write $m_t(x)=\mathbb E[Y_t\mid X_t=x]$ for the synthetic conditional mean, with $\widehat m_t$ denoting the deployed regression estimate. The policy takes an action at cost $c$ when $\widehat m_t(X_t)>c$; refitting at time $t$ incurs cost $q$. Relative to an oracle with access to the complete conditional mean, one-step regret is
-\begin{equation}
-R_t=(m_t(X_t)-c)_+-(m_t(X_t)-c)\mathbf1\{\widehat m_t(X_t)>c\}+q\mathbf1\{\text{refit at }t\}.
+\section{The problem: detecting change versus acting on it}\label{sec:introduction}
+A change-point detector examines a sequence of observations and signals when the accumulated evidence against a reference distribution exceeds a threshold. The familiar performance criteria are the frequency of false alarms, the probability of detecting a change, and the delay before detection. These quantities describe the monitoring device. They do not quantify whether a subsequent decision is worthwhile. Retraining a model consumes resources, may increase variance when the sample window is narrow, and changes decisions even when its mean squared error improves. A false alarm can be cheap or expensive depending on the intervention policy; a delayed alarm may have little effect if actions are insensitive to the prediction near their decision threshold.
+
+We therefore treat a detector as one component of a policy, not as the object being optimised in isolation. The policy observes predictors $X_t$, makes a prediction, decides whether to act, and sometimes updates its regression model. Its realised predictive errors and maintenance events are recorded on the same data stream as those of its competitors. The synthetic environment makes the conditional mean known to the evaluator, permitting explicit regret calculations while keeping that mean unavailable to the fitted policies.
+
+Classical CUSUM accumulates one-sided evidence for a change under a reference model \cite{page1954,lorden1971}. A GLR replaces a specified post-change mean by a maximisation over unknown alternatives \cite{basseville1993}. BOCPD maintains a posterior distribution over the time since the last change \cite{adams2007}. The distinctions are statistical; none implies, without an economic model, which method should trigger a refit. Our question is accordingly restricted and testable: at fixed action cost, retraining cost and monitoring horizon, does replacing CUSUM by GLR or BOCPD improve expected regret by at least a prespecified amount while respecting a null false-alarm constraint?
+
+The contribution is an auditable negative comparison, not a new optimality theorem. A preregistered decision protocol, shared observation streams, independent null calibration and stream-level inference allow the empirical claim to be stated without selecting a winner by its point estimate. In addition to the preregistered results, we present descriptive decompositions from the stored evaluation tables. These supplementary analyses were computed after the primary experiment and are not treated as confirmatory tests.
+
+\section{Decision model and economic loss}\label{sec:econ}
+At deployment time $t$, let $X_t\in\mathbb R^{16}$ and $Y_t\in\mathbb R$ denote the observed predictor and response. We write $m_t(x)=\mathbb E[Y_t\mid X_t=x]$ for the time-dependent conditional mean. A maintained predictor $\widehat m_t^{\pi}$ depends on the refitting policy $\pi$ and the outcomes legally available before the decision at $t$. At action cost $c\geq0$, the policy selects
+\begin{equation}\label{eq:decision}
+ a_t^{\pi}=\mathbf1\{\widehat m_t^{\pi}(X_t)>c\}.
 \end{equation}
-Regret accounts for action errors relative to the oracle and for model-maintenance costs. We use the true conditional mean only to evaluate simulated decisions. Neither the regression fit nor the detector observes it; the specification does not identify a causal treatment effect.
-
-Eight independent Gaussian latent factors generate 16 predictors through correlated measurement pairs, with independent measurement-error standard deviation $0.12$. The response innovation has standard deviation $0.65$. In the primary mechanism the initial conditional mean is $10(X_{t1}-X_{t2})$. The coefficient remains fixed over the first third of deployment, then decreases linearly to its negative initial value at the final step. This controlled mechanism is not fitted to observational data.
-\section{Sequential detectors}
-A frozen reference regression $\widehat m_0$ is fitted on 160 observations. For a released label indexed by $j$, we compute $s_j=-(Y_j-\widehat m_0(X_j))\widehat m_0(X_j)/\widehat\sigma_\varepsilon$, with $\widehat\sigma_\varepsilon$ the standard deviation of reference-model fitting residuals. The detector input is $Z_j=(s_j-\bar s_{\mathrm{cal}})/\widehat\sigma_{s,\mathrm{cal}}$, where the location and scale are estimated from 80 separate predeployment calibration observations. With zero additional feedback delay, the label at $j$ becomes available before the prediction at $j+1$. Every detector receives this same scalar sequence. Consequently, the experiment does not compare general multivariate change detection.
-\subsection{CUSUM}
-For CUSUM, we use the one-sided recursion
-\begin{equation}
-G_t=\max\{0,G_{t-1}+Z_t-\kappa\}.
+The expected net return from this action, conditional on $X_t$, is $(m_t(X_t)-c)a_t^{\pi}$. For the simulation oracle, $a_t^*=\mathbf1\{m_t(X_t)>c\}$ and its return is $(m_t(X_t)-c)_+$. If a model update at $t$ costs $q$, define
+\begin{equation}\label{eq:regret}
+ R_t^{\pi}=(m_t(X_t)-c)_+-(m_t(X_t)-c)a_t^{\pi}+q u_t^{\pi},\qquad u_t^{\pi}=\mathbf1\{\text{refit at }t\}.
 \end{equation}
-The allowance is $\kappa=0.2$. Positive increments accumulate disagreement with the reference relation. Optimality results for classical CUSUM depend on the observation model and change hypothesis; they do not transfer automatically to this residual-derived score \cite{page1954,lorden1971}.
-\subsection{Generalised likelihood ratio}
-For the one-sided Gaussian GLR, we scan recent suffixes with lengths $m\in[m_{\min},m_{\max}]$:
-\begin{equation}
-\mathrm{GLR}_t=\max_m\frac{\left(\max\{0,\sum_{j=t-m+1}^t Z_j\}\right)^2}{2m}.
+The first two terms give the opportunity loss associated with a potentially wrong binary decision, while $q u_t^{\pi}$ accounts for model maintenance. This makes the decomposition exact:
+\begin{equation}\label{eq:decomposition}
+ R_t^{\pi}=R_{t,\mathrm{act}}^{\pi}+R_{t,\mathrm{maint}}^{\pi},\quad R_{t,\mathrm{act}}^{\pi}\geq0,\quad R_{t,\mathrm{maint}}^{\pi}=q u_t^{\pi}\geq0.
 \end{equation}
-The scan uses $m_{\min}=4$ and $m_{\max}=32$. This maximises the Gaussian log likelihood ratio over an unknown positive mean shift under a working unit-variance model. That variance is assumed after empirical standardisation rather than known from the generating mechanism. Dependence or scale misspecification can change the null distribution.
-\subsection{Bayesian online change-point detection}
-BOCPD updates the posterior run-length distribution $r_t$ using hazard $h=0.03$, a conjugate normal prior for the segment mean with precision $0.25$, and unit observation variance \cite{adams2007}. Following a 15-score warmup, the alarm statistic is the posterior mass on run lengths shorter than five. Its interpretation is conditional on this likelihood, hazard and prior; it is not a model-free probability of physical change.
-\section{Preregistered comparison}
-For each detector we computed the maximum statistic over the fixed monitoring horizon on 199 independent null streams. Given $n_{\mathrm{null}}$ maxima and target $\alpha$, the corrected threshold is their $k$th order statistic, $k=\lceil(n_{\mathrm{null}}+1)(1-\alpha)\rceil$. Here $n_{\mathrm{null}}=199$ and $\alpha=0.10$. The marginal false-alarm statement requires exchangeability of complete null-stream maxima over the same horizon; it does not extend to unrestricted sequential monitoring. Calibration and evaluation used disjoint simulated streams.
+The inequality for $R_{t,\mathrm{act}}^{\pi}$ follows from the oracle maximising the conditional return over the two available actions. For a length-$T$ deployment we compute $\overline R_r^{\pi}=T^{-1}\sum_{t=0}^{T-1}R_{rt}^{\pi}$ for each independent stream $r$. The oracle does not pay the policy's retraining costs; this is the explicitly stated comparator, not a claim about an operationally attainable decision-maker.
 
-The primary protocol fixed a low-variance signal, gradual drift, immediate feedback, action cost $c=0.6$, refit cost $q=0.05$ and 120 deployment steps. Scheduled retraining occurs every 15 steps. After an alarm, the detector-triggered policy refits on the latest 100 eligible labelled observations and applies a 15-step cooldown. We evaluate 100 independent streams per regime, comparing GLR and BOCPD separately with CUSUM. The minimum economically meaningful improvement was 0.01 regret units per observation; the false-alarm ceiling was 10\%. We divided the nominal 5\% family error budget between paired economic comparisons and false-alarm bounds, adjusting for the two candidates.
+Equation~\eqref{eq:regret} also exposes a distinction often obscured by predictive performance summaries. RMSE scores squared prediction errors, while action regret depends on whether a prediction falls on the wrong side of $c$, weighted by the conditional margin $|m_t(X_t)-c|$. A reduction in RMSE need not reduce regret, and one extra refit can offset a modest gain in decision quality. Because the returns here are defined by $m_t$, they are synthetic expected payoffs, not causally identified outcomes of real interventions.
 
-For candidate $A$, define the stream-paired effect
-\[
-\Delta_r(A)=\overline R_r(A)-\overline R_r(\mathrm{CUSUM}).
-\]
-A negative $\Delta_r(A)$ favours the candidate. Each $\overline R_r$ averages 120 deployment steps. The paired bootstrap resamples independent stream-level differences, not adjacent observations. Its Monte Carlo intervals condition on the realised detector thresholds and omit repeated-calibration variability.
-\section{Results}
-\begin{table}[ht]
-\centering
-\caption{Mean net economic regret per observation under gradual drift.}
-\begin{tabular}{lrr}
+\section{Synthetic experiment and information structure}\label{sec:dgp}
+\subsection{Correlated predictors and drifting regression relation}
+For $j=1,\ldots,8$, independently generate $F_{tj}\sim N(0,1)$. Set $X_{t,2j-1}=F_{tj}+\eta_{t,2j-1}$ and $X_{t,2j}=F_{tj}+\eta_{t,2j}$, where the independent measurement errors satisfy $\eta_{tk}\sim N(0,0.12^2)$. Consequently, within each pair the common factor accounts for most predictor variance, while the difference removes the factor and retains measurement noise. The initial low-variance-signal conditional mean is
+\begin{equation}\label{eq:mean}
+ m_0(X_t)=10(X_{t1}-X_{t2}),\qquad Y_t=m_t(X_t)+\varepsilon_t,\quad\varepsilon_t\sim N(0,0.65^2).
+\end{equation}
+The eight factors and the independent response and measurement errors are resampled for each independent stream. The paired construction deliberately makes the relevant contrast low variance; the regression experiment is not fitted to an external dataset.
+
+The deployed mean changes in the gradual-drift regime. For deployment indices $t=0,\ldots,T-1$ with $T=120$, let $t_0=40$ and
+\begin{equation}\label{eq:drift}
+ d_t=\begin{cases}1,&t\leq t_0,\\1-2(t-t_0)/(T-t_0-1),&t>t_0,\end{cases}\qquad m_t(X_t)=10d_t(X_{t1}-X_{t2}).
+\end{equation}
+Thus the coefficient is constant through $t_0$ and changes linearly towards $-10$ at $t=119$. There is no unique instant at which the data-generating relation ``changes'': departure begins at $t_0$ and accumulates gradually. We use $t_0$ as the defined drift onset when describing first-alarm timings; it is not an estimated abrupt change point.
+
+The stable regime retains $d_t=1$ throughout deployment. Both regimes have 160 predeployment fitting observations, 80 separate calibration observations, and the same 120-step deployment length. For a given replicate index, stable and drifting simulations share the original random seed. Evaluations of different maintenance policies within each regime observe the same stream. This makes stream-paired comparisons natural; treating the 120 successive observations as independent replications would understate Monte Carlo uncertainty.
+
+\subsection{Historical estimation, outcome releases and retraining}
+A conventional ordinary least squares model is fitted on the 160 training observations. Its frozen copy provides the baseline predictor and the fixed monitoring reference. Another 80 historical observations are used to standardise the monitoring score. The fitted reference and its score transformation are never recomputed using deployment outcomes, even when an operational predictor is retrained.
+
+At deployment step $t$ the policy may use labels from indices strictly smaller than $t$. More generally, with additional label delay $\delta$ the available count is $\max(0,t-\delta)$, but the preregistered experiment fixes $\delta=0$. For a triggered refit, the model uses the last 100 eligible observations drawn from the concatenation of the historical fitting, calibration and newly released deployment records. These windows differ from the separate 160-row frozen reference fit. The scheduled baseline refits at $t=15,30,\ldots,105$; the frozen baseline never refits. Each alarm-triggered policy ignores detector scores during a 15-step post-alarm cooldown, resets its detector, and can trigger subsequent refits.
+
+\section{Monitoring statistics}\label{sec:methods}
+\subsection{A common scalar score}
+Let $\widehat m_0$ denote the frozen OLS reference and $\widehat\sigma_\varepsilon$ the sample standard deviation of its training residuals. For a revealed label $Y_j$, define
+\begin{equation}\label{eq:score}
+ S_j=-\frac{\bigl(Y_j-\widehat m_0(X_j)\bigr)\widehat m_0(X_j)}{\widehat\sigma_\varepsilon},\qquad Z_j=\frac{S_j-\overline S_{\mathrm{cal}}}{\widehat\sigma_{S,\mathrm{cal}}}.
+\end{equation}
+The calibration mean and standard deviation of $S$ use only the 80 historical calibration records; a small positive numerical floor prevents division by zero. A sign reversal in the reference relation tends to make $S_j$ positive because the residual and reference prediction become oppositely signed. This is a deliberately directional statistic. It need not detect a variance change, an intercept shift or a more general change in the joint law of $(X,Y)$. Moreover, standardising by empirical moments does not establish Gaussian independence of $Z_j$.
+
+In the implementation $Z_j$ enters monitoring at deployment step $t=j+1$ because label $Y_j$ cannot influence its own prediction. Every detector receives the identical released score sequence. The use of a frozen reference is essential for interpretability of the comparison: if each refitted predictor generated its own monitoring score, detectors would no longer be compared on the same input.
+
+\subsection{CUSUM: accumulation under a directional alternative}
+CUSUM uses
+\begin{equation}\label{eq:cusum}
+ G_t=\max\{0,G_{t-1}+Z_t-\kappa\},\qquad G_0=0,\quad\kappa=0.2.
+\end{equation}
+An alarm occurs when $G_t$ exceeds a separately calibrated threshold. The allowance reduces the accumulation of small positive fluctuations. In a correctly specified model for a fixed shift, a CUSUM can be obtained from sequential likelihood ratios; the present residual score is not itself a log likelihood ratio. Classical optimality statements therefore do not automatically apply \cite{page1954,lorden1971,basseville1993}. The method is a transparent benchmark because its update is one-dimensional and its state is fully specified by the current cumulative sum.
+
+\subsection{Gaussian GLR: an unknown shift over a finite window}
+Let $\mathcal M_t=\{m\in\mathbb N:4\leq m\leq\min(32,t)\}$. Under the working hypothesis of unit-variance Gaussian $Z$, test zero mean against an unknown positive mean on a recent suffix. Maximising the segment Gaussian log likelihood over the nonnegative shift gives
+\begin{equation}\label{eq:glr}
+ \Lambda_t=\max_{m\in\mathcal M_t}\frac{\bigl[\max(0,\sum_{j=t-m+1}^{t}Z_j)\bigr]^2}{2m}.
+\end{equation}
+This follows from maximising $\mu\sum Z_j-m\mu^2/2$ over $\mu\geq0$. A larger window offers more evidence for sustained changes, while the finite scan constrains the memory and the class of alternatives. The unit-variance Gaussian assumption is a working detector model, not an established property of the nonlinear score in Equation~\eqref{eq:score}. We calibrate its maximum statistic empirically rather than relying on a tabulated GLR null distribution.
+
+\subsection{BOCPD: posterior inference for run length}
+BOCPD carries a distribution over the length $r_t$ of the current regime \cite{adams2007}. A hazard $h=0.03$ implies the prior transition probability of a new segment at a step is constant. We use a Gaussian segment-mean model with unit observation variance and prior $\mu\sim N(0,1/0.25)$, so that the prior mean precision equals $0.25$. On observing $Z_t$, the run-length recursion combines the predictive likelihood of continuing a segment with that of starting a new segment and normalises the resulting masses. The detector uses
+\begin{equation}\label{eq:bocpd}
+ B_t=\sum_{r=0}^{4}P(r_t=r\mid Z_{1:t}),
+\end{equation}
+after an initial warmup of 15 released scores. This is the posterior probability of a short run ---under the specified model---not a model-independent probability of an actual structural change. A hazard and likelihood poorly matched to the score can produce poor alarms even when the algorithmic recursion is correct. The reported experiment evaluates this configuration, not the best possible BOCPD model across all priors, hazards and observation families.
+
+\section{Calibration and inferential protocol}\label{sec:inference}
+\subsection{Independent fixed-horizon null calibration}
+Each detector has a different numerical alarm statistic. To compare them at a common nominal false-alarm target, we independently generate $n_0=199$ stable null streams, each with its own fitting and calibration observations and 120 deployment steps. If $M_{1},\ldots,M_{n_0}$ are the maxima of one detector's \emph{unreset} statistic over a complete null horizon, let $M_{(k)}$ denote the $k$th order statistic and take
+\begin{equation}\label{eq:order}
+ H=M_{(k)},\qquad k=\lceil(n_0+1)(1-\alpha)\rceil=180,\quad\alpha=0.10.
+\end{equation}
+For a new whole-stream maximum exchangeable with the calibration maxima, the rank construction bounds the probability of exceeding $H$ over this fixed horizon. It does not guarantee control at every future time, across arbitrarily long horizons, or under another dependence structure. As the alarm-triggered policies reset the detector and enforce cooldowns, the calibrated \emph{first-alarm} threshold does not separately control the distribution of repeated alarms. The evaluation reports repeated refits descriptively.
+
+\subsection{What was preregistered?}
+The primary protocol fixes $c=0.6$, $q=0.05$, a 0.01 minimum material improvement in regret per observation, two candidate policies (GLR and BOCPD), CUSUM as reference, and a 0.10 upper limit on the null first-alarm probability. There are 100 independent evaluation streams in each regime, and the stream is the replication unit. The protocol's 0.05 inferential error budget is split equally between the family of paired economic comparisons and that of null false-alarm bounds. Both families are adjusted for two candidates. The decision concerns \emph{both} the economic and the false-alarm requirements, not whichever metric is most favourable to a method.
+
+For independent drifting streams $r=1,\ldots,100$, define the paired difference
+\begin{equation}\label{eq:paired}
+ \Delta_r(A)=\overline R_r^{A}-\overline R_r^{\mathrm{CUSUM}},\quad \widehat\Delta_A=\frac1{100}\sum_{r=1}^{100}\Delta_r(A).
+\end{equation}
+An economically meaningful improvement requires the corresponding upper uncertainty limit to lie below $-0.01$. We use 2000 nonparametric paired bootstrap resamples of the 100 stream-level differences, with prespecified seed 42021. The percentile limits are adjusted for the two comparisons within the allocated economic error budget. These are approximate Monte Carlo intervals conditional on the calibrated thresholds and simulation design; the calibration phase is not repeated inside the bootstrap. They should not be interpreted as exact finite-sample simultaneous coverage statements.
+
+A separate one-sided Wilson upper confidence limit is calculated from the number of null evaluation streams with at least one alarm. The alarm family's adjustment accounts for both candidate detectors. A candidate is supported only if its economic upper limit falls below $-0.01$ and its simultaneous false-alarm upper limit does not exceed 0.10, subject to the minimum replication requirement. Otherwise the code produces a specified unsuccessful or inconclusive status. The labels generated by this rule are decision-protocol outputs, not universal properties of the algorithms.
+
+\section{Results}\label{sec:results}
+\subsection{Detector thresholds and absolute policy outcomes}
+Table~\ref{tab:thresholds} reports the three independently calibrated detector thresholds. Because BOCPD returns a posterior mass, its value is near one; this is not a probability threshold comparable numerically with CUSUM's cumulative score. We use the same null target, not the same raw threshold.
+\begin{table}[ht]\centering\caption{Fixed-horizon calibration from 199 stable null streams.}\label{tab:thresholds}
+\begin{tabular}{lrrr}\toprule Detector & Rank & Threshold & Mean null maximum\\\midrule
+CUSUM & 180 & 13.256531 & 7.833512\\
+GLR & 180 & 9.466303 & 5.268789\\
+BOCPD & 180 & 0.999975 & 0.820804\\\bottomrule\end{tabular}
+\end{table}
+
+The main experiment compares five policies. Table~\ref{tab:policy} reports mean per-stream RMSE, mean refit frequency and average economic regret. The frozen policy performs best on the stable null regime in economic terms: periodic retraining is not cost-free even when it provides fresh data. Under gradual drift the frozen model accumulates a larger decision error. Scheduled retraining has the smallest average RMSE under drift, but not the lowest economic regret. These are observed descriptive means, not interval-based tests of every pairwise comparison.
+\begin{table}[ht]\centering\caption{Primary evaluation: average stream-level outcomes ($100$ independent streams per regime; $T=120$).}\label{tab:policy}\small
+\begin{tabular}{lrrrr}
 \toprule
-Maintenance policy & Mean regret & Difference vs CUSUM\\
+Policy & Drift regret & Drift RMSE & Mean refits & Null regret\\
 \midrule
-Frozen & 0.249472 & +0.031824\\
-Scheduled & 0.218668 & +0.001019\\
-CUSUM & 0.217649 & 0\\
-GLR & 0.217060 & $-0.000589$\\
-BOCPD & 0.226625 & +0.008977\\
+Frozen & 0.2495 & 1.7506 & 0.0000 & 0.0056\\
+Scheduled & 0.2187 & 1.4503 & 7.0000 & 0.0114\\
+CUSUM & 0.2176 & 1.4691 & 3.1900 & 0.0059\\
+GLR & 0.2171 & 1.4662 & 3.2900 & 0.0058\\
+BOCPD & 0.2266 & 1.5252 & 1.9500 & 0.0059\\
 \bottomrule
 \end{tabular}
 \end{table}
-The mean paired regret difference for GLR relative to CUSUM was $-0.000589$; its adjusted bootstrap limits were $[-0.004824,0.003344]$. The interval includes zero and does not establish the preregistered 0.01 improvement. For BOCPD, the difference was $+0.008977$, with adjusted limits $[0.003687,0.013818]$. Both limits are positive, indicating higher economic regret under this simulation.
 
-\begin{table}[ht]
-\centering
-\caption{Probability of at least one alarm on 100 stable no-change streams.}
-\begin{tabular}{lrr}
+\subsection{Pairwise economic evidence}
+Table~\ref{tab:primary} gives the two preregistered paired differences from CUSUM and the adjusted uncertainty intervals. A negative difference favours the candidate. GLR improves mean regret by only $0.000589$ per observation; the interval includes zero and never attains the preregistered material improvement of $0.01$. BOCPD has a positive difference of $0.008977$ and an adjusted interval wholly above zero. The direction in this simulation is therefore unfavourable to BOCPD. Neither method meets the full predefined replacement rule.
+\begin{table}[ht]\centering\caption{Preregistered paired net-regret differences, candidate minus CUSUM.}\label{tab:primary}
+\begin{tabular}{lrrrr}\toprule Candidate & Mean difference & MC standard error & Adjusted lower & Adjusted upper\\\midrule
+GLR & $-0.000589$ & 0.001631 & $-0.004824$ & 0.003344\\
+BOCPD & $+0.008977$ & 0.002024 & 0.003687 & 0.013818\\\bottomrule\end{tabular}
+\end{table}
+
+The paired differences are heterogeneous. An inspection of the stored stream-level regrets gives a negative GLR--CUSUM difference in 40 of 100 streams and a negative BOCPD--CUSUM difference in 37. These fractions alone do not estimate a probability of improvement in an external population; they indicate variation across the independent simulation replicates. The median paired GLR difference is zero even though the average is negative. The experiment should not be narrated as if GLR helped every deployed model.
+
+\subsection{False alarms and first-alarm timings}
+Table~\ref{tab:null} reports complete-stream false-alarm probabilities in the stable regime. The empirical values of 6\% for GLR and 10\% for BOCPD should be distinguished from the larger simultaneous upper limits. Neither candidate establishes the required ceiling of 10\%. This statement is about uncertainty, not a demonstration that the true probability exceeds that ceiling.
+\begin{table}[ht]\centering\caption{Null-regime alarm frequencies in 100 independent evaluation streams.}\label{tab:null}
+\begin{tabular}{lrrr}\toprule Detector & Streams with alarm & Empirical probability & Simultaneous upper limit\\\midrule
+CUSUM & 11 & 0.11 & ---\\
+GLR & 6 & 0.06 & 0.1371\\
+BOCPD & 10 & 0.10 & 0.1875\\\bottomrule\end{tabular}
+\end{table}
+
+The stored alarm events permit a descriptive timing analysis. All three detectors produced at least one alarm in every gradual-drift stream, although an alarm sometimes preceded the defined onset $t_0=40$. Table~\ref{tab:alarm} reports the first-alarm times and the number of fitted updates. BOCPD tends to signal later and performs fewer refits under the parameter setting tested. The values cannot by themselves establish why its economic regret is larger: later alarms, the fitted regression window and the induced actions are coupled.
+\begin{table}[ht]\centering\caption{Descriptive first-alarm timing under gradual drift. $^*$Median $t-t_0$ among streams whose first alarm occurred at or after $t_0$; early alarms are excluded.}\label{tab:alarm}\small
+\begin{tabular}{lrrrrr}
 \toprule
-Detector & Empirical alarm rate & Simultaneous upper bound\\
+Detector & Streams alarmed & Before $t=40$ & Median first $t$ & Median delay$^*$ & Mean refits\\
 \midrule
-CUSUM & 11\% & Not part of candidate eligibility\\
-GLR & 6\% & 13.71\%\\
-BOCPD & 10\% & 18.75\%\\
+CUSUM & 100.0000 & 1.0000 & 64.0000 & 24.0000 & 3.1900\\
+GLR & 100.0000 & 1.0000 & 62.0000 & 22.0000 & 3.2900\\
+BOCPD & 100.0000 & 2.0000 & 72.0000 & 32.0000 & 1.9500\\
 \bottomrule
 \end{tabular}
 \end{table}
-The simultaneous upper false-alarm bounds for GLR and BOCPD exceeded the stipulated 10\% ceiling. The bounds do not show that their true false-alarm probabilities exceed 10\%; they leave compliance unverified. Both candidates received the preregistered verdict \texttt{material\_gain\_not\_supported}.
-\section{Discussion and limitations}
-GLR's average numerical advantage was smaller than the stipulated material-gain threshold, and its adjusted interval included zero. Scheduled retraining produced regret close to CUSUM. The aggregated results do not identify which alarm timings or refits explain those differences; attributing them to one detector mechanism would exceed the experiment.
 
-The findings depend on one monitoring score, one response mechanism, the specified costs and the deployment horizon. Their applicability to multivariate or alternative change scores is unknown. Gradual coefficient reversal has no single abrupt change time against which detection latency can be evaluated.
+\subsection{Where in deployment does regret arise?}
+Dividing the horizon into three prespecified 40-step blocks gives Table~\ref{tab:phase}. All policies incur small regret in the early stable portion; differences become large in the final 40 observations after the coefficient has changed sign substantially. Frozen-regression regret reaches 0.694533 per observation in that last block. BOCPD's late-block regret is 0.626783, compared with 0.597569 for CUSUM and 0.596048 for GLR. These block averages are descriptive diagnostics computed from the stored full run, rather than fresh independently replicated experiments.
+\begin{table}[ht]\centering\caption{Mean regret per observation by deployment phase in the gradual-drift regime.}\label{tab:phase}\small
+\begin{tabular}{lrrrrr}
+\toprule
+Period & Frozen & Scheduled & CUSUM & GLR & BOCPD\\
+\midrule
+Early & 0.0054 & 0.0099 & 0.0053 & 0.0053 & 0.0054\\
+Middle & 0.0485 & 0.0545 & 0.0500 & 0.0498 & 0.0477\\
+Late & 0.6945 & 0.5916 & 0.5976 & 0.5960 & 0.6268\\
+\bottomrule
+\end{tabular}
+\end{table}
 
-The parameter settings were fixed, not optimised across mechanisms. We cannot separate the properties of BOCPD as a family from the suitability of the specified likelihood, hazard and alarm rule. Tuning on these evaluation streams would require a fresh confirmatory sample. Uncertainty from recalibrating the thresholds is also absent from the bootstrap limits. The economic payoff is synthetic and does not identify a causal intervention benefit.
-\section{Conclusion}
-Neither GLR nor BOCPD met the declared replacement criteria in this synthetic gradual-drift experiment. A more complex detector did not establish a material net-regret advantage at the specified costs. This result does not establish general optimality of CUSUM.
-\section*{Reproducibility and availability}
-The simulation code, preregistered protocol and checked numerical summary are available at
-\href{https://github.com/DiogoRibeiro7/Medium-Blog/tree/main/statistical-evidence-and-decisions}{Medium-Blog/statistical-evidence-and-decisions}.
-The full evaluation was executed as
-\href{https://github.com/DiogoRibeiro7/Medium-Blog/actions/runs/40089779139}{GitHub Actions run 40089779139}.
-The archived report is in \texttt{results/2026-10-24-detector-evidence/}. The complete tables are available as a time-limited workflow artifact, with their SHA-256 checksums recorded for verification.
+Figure~\ref{fig:trajectories} shows how paired regret differences evolve when progressively more of the deployment horizon is included in the average. BOCPD is initially competitive; much of its eventual disadvantage appears in the final third, when the decision relation is furthest from the fitted historical model. The figure is constructed from the archived per-time-step CSV, and contains no additional Monte Carlo draws.
+\begin{figure}[ht]\centering
+\begin{tikzpicture}
+\begin{axis}[width=0.96\linewidth,height=6cm,xlabel={Deployment observations included},ylabel={Cumulative mean regret difference},legend style={at={(0.02,0.98)},anchor=north west,font=\scriptsize},grid=major,grid style={black!10},scaled y ticks=false,tick label style={font=\scriptsize}]
+\addplot+[thick,mark=*] table[x=time,y=GLR,col sep=comma]{cumulative-difference.csv};\addlegendentry{GLR minus CUSUM}
+\addplot+[thick,mark=square*] table[x=time,y=BOCPD,col sep=comma]{cumulative-difference.csv};\addlegendentry{BOCPD minus CUSUM}
+\addplot+[thick,mark=triangle*] table[x=time,y=Scheduled,col sep=comma]{cumulative-difference.csv};\addlegendentry{Scheduled minus CUSUM}
+\addplot+[thick,mark=diamond*] table[x=time,y=Frozen,col sep=comma]{cumulative-difference.csv};\addlegendentry{Frozen minus CUSUM}
+\addplot+[black,densely dashed,mark=none] coordinates {(0,0) (120,0)};
+\end{axis}\end{tikzpicture}
+\caption{Stream-averaged paired net-regret differences over cumulative deployment windows. Derived from the stored 100 gradual-drift evaluation streams; descriptive analysis only.}\label{fig:trajectories}
+\end{figure}
+
+\subsection{Separating intervention mistakes from maintenance costs}
+From Equation~\eqref{eq:decomposition}, we can subtract observed refitting charges from mean net regret to recover the decision component without approximations. Table~\ref{tab:components} performs this accounting. Under gradual drift, scheduled refitting has relatively low action regret, but seven refits per stream lead to maintenance regret 0.002917 per observation. BOCPD uses fewer refits and hence has smaller direct refit cost than CUSUM; its larger total regret comes from the action component. This is accounting, not a causal decomposition of why BOCPD's policy leads to different actions.
+\begin{table}[ht]\centering\caption{Post-hoc accounting decomposition of mean per-observation regret.}\label{tab:components}\small
+\begin{tabular}{lrrr}
+\toprule
+Regime and policy & Regret & Refit cost & Decision component\\
+\midrule
+stable: Frozen & 0.0056 & 0.0000 & 0.0056\\
+stable: Scheduled & 0.0114 & 0.0029 & 0.0085\\
+stable: CUSUM & 0.0059 & 0.0001 & 0.0058\\
+stable: GLR & 0.0058 & 0.0000 & 0.0057\\
+stable: BOCPD & 0.0059 & 0.0000 & 0.0059\\
+gradual\_drift: Frozen & 0.2495 & 0.0000 & 0.2495\\
+gradual\_drift: Scheduled & 0.2187 & 0.0029 & 0.2158\\
+gradual\_drift: CUSUM & 0.2176 & 0.0013 & 0.2163\\
+gradual\_drift: GLR & 0.2171 & 0.0014 & 0.2157\\
+gradual\_drift: BOCPD & 0.2266 & 0.0008 & 0.2258\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Interpretation and scope}\label{sec:discussion}
+\subsection{Why prediction accuracy and economic regret disagree}
+RMSE averages squared errors continuously over the response scale. The decision rule in Equation~\eqref{eq:decision} instead changes only when the prediction crosses $c$, and penalises each wrong-side prediction according to the associated conditional margin. Under gradual drift the scheduled model has mean stream RMSE 1.450336, lower than GLR's 1.466156 and CUSUM's 1.469052. Its net regret is nevertheless higher because it refits more frequently. The numerical values show the consequence of the chosen $q=0.05$ and deployment length, not a paradox in predictive evaluation. At other maintenance costs or intervention thresholds the ordering may reverse.
+
+The decomposition also clarifies why a low number of refits is not necessarily an advantage. BOCPD performs 1.95 refits on average under drift versus 3.19 for CUSUM, but its decision component is higher. That difference could reflect first-alarm delay, the evolution of fitted coefficients and threshold-crossing actions. The stored summary cannot disentangle these mechanisms without additional controlled experiments; claiming a causal explanation from the aggregation would be unwarranted.
+
+\subsection{What the detector comparison does not identify}
+Several restrictions limit the scientific reach of the result. First, all detectors receive a single scalar score designed to expose coefficient sign reversal. The Gaussian likelihood used in GLR and BOCPD is a modelling approximation for that derived score. We do not test variance-only changes, nonlinear drift, seasonal structures, unknown serial dependence or a full multivariate likelihood in the preregistered case. A different monitoring statistic could change the ordering of the methods.
+
+Second, the BOCPD choice of hazard, normal prior and posterior short-run score is one configuration. The experiment compares algorithms \emph{as implemented}, not supremal performance over all feasible calibrations of their parameters. The null thresholds were adapted to each detector by independent simulation, but the internal detector configurations were held fixed. Post-hoc optimisation on these streams would compromise the independence of a confirmatory comparison.
+
+Third, the corrected fixed-horizon threshold controls at most the first-alarm event under exchangeability of null-stream maxima. It does not supply a distribution-free sequential guarantee under arbitrary temporal dependence. The empirical null upper limits use only 100 evaluation streams, and their width is material for a 10\% ceiling. An interval not lying below the ceiling is lack of verification, not a rejected null hypothesis proving the true rate exceeds 10\%.
+
+Fourth, the bootstrap resamples evaluation streams conditional on the realised thresholds. A new calibration experiment would produce different thresholds and could change both the expected number of updates and regret. Our intervals exclude that additional uncertainty. The confidence allocation protects the declared comparison family only; it is not a licence to select an algorithm by searching unreported configurations.
+
+Finally, the oracle payoff uses a synthetic conditional mean known by construction. The exercise quantifies predictive decision regret but identifies no effect of an actual treatment or intervention. Empirical deployment would require an action-response model, costs with a defensible scale, labelled feedback assumptions and safeguards against selectively observed outcomes. None of these is learned from the present simulation.
+
+\subsection{Implications for methodological practice}
+A sequential detector should be evaluated together with the policy it triggers. In this experiment the classical CUSUM baseline remains competitive, but that is a conditional empirical fact, not a universal argument for simple detectors. A more complex algorithm may be justified by the characteristics of a different data-generating process; it must nevertheless improve the objective that matters in that application. A comparison restricted to alarms and delays cannot settle the economic question.
+
+The natural follow-up is independent replication under alternative prespecified mechanisms and explicit model-selection separation, not repeated reanalysis of the same 100 streams until a particular detector wins. Changes to the monitoring signal, feedback delay, maintenance cost, hazard or shift family should be evaluated on new confirmatory data. No such additional runs are claimed here.
+
+\section{Conclusion}\label{sec:conclusion}
+Under a preregistered synthetic gradual-drift mechanism, GLR and BOCPD did not meet the economic and statistical criteria for replacing CUSUM. GLR's small apparent gain was unresolved and below the materiality threshold. BOCPD had larger average decision regret even while triggering fewer model refits. The evidence concerns a defined score, regression update policy, payoff and monitoring horizon. It establishes the need for decision-level validation of detector complexity, not general optimality of the classical baseline.
+
+\section*{Reproducibility and data availability}
+The experiment is implemented in the repository \emph{Medium-Blog}, under its statistical evidence study, with the predeclared criteria in \texttt{evidence\_synthesis.py} and the full-study runner in \texttt{run\_full\_evidence.py}. The complete run is \href{https://github.com/DiogoRibeiro7/Medium-Blog/actions/runs/40089779139}{GitHub Actions \#40089779139}, from the fixed source commit \href{https://github.com/DiogoRibeiro7/Medium-Blog/commit/8107000be634ba6a02f6e2dbd219e9a932082638}{8107000b}; its generated CSV artifact is time limited. Checksums and the primary numerical verdicts are archived in the dated detector-evidence results directory. This manuscript's figures and secondary summaries are derived solely from that archived run. Source and protocol are available at \url{https://github.com/DiogoRibeiro7/Medium-Blog/tree/main/statistical-evidence-and-decisions}. Reproducing the study with identical package versions and seeds is preferable to relying on an unversioned future dependency environment.
+
 \begin{thebibliography}{9}
-\bibitem{page1954} Page, E. S. (1954). Continuous Inspection Schemes. \emph{Biometrika}, 41(1/2), 100--115.
-\bibitem{basseville1993} Basseville, M., and Nikiforov, I. V. (1993). \emph{Detection of Abrupt Changes: Theory and Application}. Prentice Hall.
-\bibitem{adams2007} Adams, R. P., and MacKay, D. J. C. (2007). Bayesian Online Changepoint Detection. arXiv:0710.3742.
-\bibitem{lorden1971} Lorden, G. (1971). Procedures for Reacting to a Change in Distribution. \emph{The Annals of Mathematical Statistics}, 42(6), 1897--1908.
+\bibitem{page1954} Page, E. S. (1954). Continuous Inspection Schemes. \emph{Biometrika}, 41(1--2), 100--115.
+\bibitem{lorden1971} Lorden, G. (1971). Procedures for reacting to a change in distribution. \emph{The Annals of Mathematical Statistics}, 42(6), 1897--1908.
+\bibitem{basseville1993} Basseville, M. and Nikiforov, I. V. (1993). \emph{Detection of Abrupt Changes: Theory and Application}. Prentice Hall.
+\bibitem{adams2007} Adams, R. P. and MacKay, D. J. C. (2007). Bayesian online changepoint detection. arXiv:0710.3742.
 \end{thebibliography}
 \end{document}
