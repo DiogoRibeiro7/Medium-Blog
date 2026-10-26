@@ -5,7 +5,8 @@ Union respond to extreme heat and drought during the growing season, 2000-2024.
 
 **Status: article drafted and corrected after a critical review (phase 3). Amendment A1
 ([METHODS.md](METHODS.md), section 8) is registered and computed
-([docs/AMENDMENT.md](docs/AMENDMENT.md)).**
+([docs/AMENDMENT.md](docs/AMENDMENT.md)). A second crop, grain maize, is registered
+([METHODS.md](METHODS.md), section 9) and not yet computed.**
 
 - **Plan.** [METHODS.md](METHODS.md) was committed before any yield was related to any
   weather variable. Its change log records the decisions made before any estimate, and
