@@ -88,11 +88,14 @@ Results are in [docs/RESULTS.md](docs/RESULTS.md). Every rule was fixed before a
   - **Figures.** Figure 1 is per hour, Figure 2 shows the peak's interval, Figure 3 shows
     every region, and Figure 4's heat title covers the 27 °C and 33 °C rows.
   - **Licences.** The GISCO non-commercial condition and notice, and the E-OBS version.
-- [ ] **Registered amendments (optional, the review's list B).** A window that ends at
-      harvest, a data-quality rule for series that are not regional measurements, and
-      inference for few clusters with dependence across countries. Each would need an
-      amendment before it is computed, and would be reported beside the registered
-      results.
+- [x] **Amendment A1 registered** ([METHODS.md](METHODS.md), section 8), before any of
+      it is computed: the review's list B.
+  - A window that ends at harvest, from the GGCMI crop calendar.
+  - A rule for yield series that are not regional measurements.
+  - E2 tested directly.
+  - A wild bootstrap of the two-way statistic, over countries and over years.
+- [ ] **Amendment A1 computed** and reported in `docs/AMENDMENT.md`, beside the
+      registered results.
 - [ ] **Author review and publication.** Nothing is published automatically. Under the
       E-OBS and GISCO terms, the article must stay non-commercial.
 
