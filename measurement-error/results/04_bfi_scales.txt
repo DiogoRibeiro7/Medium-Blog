@@ -1,0 +1,25 @@
+bfi: 2800 respondents; complete on the 25 items: 2436; complete on the 25 items, education, age and gender: 2236; education 1-5 (1 = high school not finished ... 5 = graduate degree), mean 3.19
+  Agreeableness      mean 4.69, SD 0.889; Cronbach's alpha 0.705, omega (one factor) 0.714
+  Conscientiousness  mean 4.31, SD 0.951; Cronbach's alpha 0.732, omega (one factor) 0.736
+  Extraversion       mean 4.15, SD 1.064; Cronbach's alpha 0.769, omega (one factor) 0.774
+  Neuroticism        mean 3.14, SD 1.196; Cronbach's alpha 0.816, omega (one factor) 0.815
+  Openness           mean 4.62, SD 0.802; Cronbach's alpha 0.612, omega (one factor) 0.622
+Education ~ five scale scores + age (per decade) + female; coefficients per scale SD:
+  Agreeableness      naive +0.0151 (95% CI -0.0351 to +0.0668); alpha-corrected +0.0424 (CI -0.0547 to +0.1406); omega-corrected +0.0406; ratio alpha-corrected / naive 2.81
+  Conscientiousness  naive -0.0173 (95% CI -0.0666 to +0.0294); alpha-corrected -0.0419 (CI -0.1203 to +0.0314); omega-corrected -0.0408; ratio alpha-corrected / naive 2.42
+  Extraversion       naive -0.0340 (95% CI -0.0875 to +0.0173); alpha-corrected -0.0840 (CI -0.1872 to +0.0097); omega-corrected -0.0813; ratio alpha-corrected / naive 2.47
+  Neuroticism        naive -0.0170 (95% CI -0.0647 to +0.0360); alpha-corrected -0.0284 (CI -0.0913 to +0.0403); omega-corrected -0.0281; ratio alpha-corrected / naive 1.67
+  Openness           naive +0.1178 (95% CI +0.0741 to +0.1643); alpha-corrected +0.2131 (CI +0.1339 to +0.2990); omega-corrected +0.2087; ratio alpha-corrected / naive 1.81
+  ranking by |standardised coefficient|: naive ['Openness', 'Extraversion', 'Conscientiousness', 'Neuroticism', 'Agreeableness']; alpha-corrected ['Openness', 'Extraversion', 'Agreeableness', 'Conscientiousness', 'Neuroticism']
+  age per decade: naive +0.2515, alpha-corrected +0.2450; female: naive +0.0172, alpha-corrected +0.0428
+Scale correlations, observed -> disattenuated with alpha (Spearman 1904):
+  Agree-Consc: +0.244 -> +0.340
+  Agree-Extra: +0.475 -> +0.645
+  Agree-Neuro: -0.175 -> -0.230
+  Agree-Openn: +0.118 -> +0.180
+  Consc-Extra: +0.272 -> +0.362
+  Consc-Neuro: -0.231 -> -0.299
+  Consc-Openn: +0.182 -> +0.271
+  Extra-Neuro: -0.224 -> -0.283
+  Extra-Openn: +0.216 -> +0.315
+  Neuro-Openn: -0.085 -> -0.120

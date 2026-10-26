@@ -1,0 +1,69 @@
+name: Reproduce measurement-error
+
+on:
+  pull_request:
+    paths:
+      - 'measurement-error/**'
+      - '.github/workflows/measurement-error.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'measurement-error/**'
+      - '.github/workflows/measurement-error.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: measurement-error-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    defaults:
+      run:
+        working-directory: measurement-error
+    env:
+      MPLBACKEND: Agg
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: measurement-error/requirements.txt
+
+      - name: Install pinned dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Check the estimators
+        run: python check_me.py
+
+      - name: Keep the committed results
+        run: mkdir -p "$RUNNER_TEMP/committed" && cp results/*.txt "$RUNNER_TEMP/committed/"
+
+      - name: Rerun the experiments
+        run: |
+          python 01_nhanes_replicates.py
+          python 02_davis_validation.py
+          python 03_wage_instruments.py
+          python 04_bfi_scales.py
+          python 05_simulation.py
+          python figures_05.py
+
+      - name: Check the numbers match the committed run
+        run: python check_reproduction.py "$RUNNER_TEMP/committed"
+
+      - name: Check every figure was drawn
+        run: |
+          for f in fig1_nhanes_readings fig2_davis_validation fig3_wage_reliability fig4_bfi_drivers \
+                   fig6_simulation_bias fig7_simex fig5_leakage fig8_prediction; do
+            test -s "figures/$f.png"
+          done

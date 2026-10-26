@@ -1,0 +1,229 @@
+Population: 10075 NHANES adults; x = BPSysAve / 10, var(x) = 3.089; n = 1000 per sample, 15% validated, 300 replications per cell
+linear truth: x 0.5, age 0.02; logistic truth: x 0.3, age 0.03, intercept -7.452; Monte Carlo SE of a 95% coverage ~ 0.013
+-- gaussian, classical, reliability 0.9
+  Naive, one reading                   mean 0.4390 bias -12.2% SD 0.0186 RMSE 0.0638 cover 0.117 meanSE 0.0198 | age coef bias +12.5%
+  Naive, mean of two                   mean 0.4682 bias -6.4% SD 0.0192 RMSE 0.0371 cover 0.633 meanSE 0.0199 | age coef bias +6.3%
+  Regression calibration, replicates   mean 0.5011 bias +0.2% SD 0.0206 RMSE 0.0206 cover 0.950 meanSE 0.0213 | age coef bias -0.7%
+  SIMEX, quadratic                     mean 0.5003 bias +0.1% SD 0.0209 RMSE 0.0209 cover 0.953 meanSE 0.0216 | age coef bias -0.5%
+  SIMEX, rational                      mean 0.5018 bias +0.4% SD 0.0210 RMSE 0.0211 cover 0.963 meanSE 0.0218 | age coef bias -1.3%
+  IV, second reading                   mean 0.5018 bias +0.4% SD 0.0222 RMSE 0.0222 cover 0.957 meanSE 0.0225 | age coef bias -0.7%
+  Regression calibration, validation   mean 0.4997 bias -0.1% SD 0.0227 RMSE 0.0227 cover 0.957 meanSE 0.0235 | age coef bias -0.2%
+  Multiple imputation, validation      mean 0.4977 bias -0.5% SD 0.0249 RMSE 0.0249 cover 0.953 meanSE 0.0257 | age coef bias +0.2%
+  Validation rows only                 mean 0.4934 bias -1.3% SD 0.0504 RMSE 0.0507 cover 0.937 meanSE 0.0519 | age coef bias +0.1%
+-- gaussian, classical, reliability 0.7
+  Naive, one reading                   mean 0.3273 bias -34.5% SD 0.0185 RMSE 0.1737 cover 0.000 meanSE 0.0187 | age coef bias +36.7%
+  Naive, mean of two                   mean 0.3959 bias -20.8% SD 0.0192 RMSE 0.1058 cover 0.000 meanSE 0.0193 | age coef bias +21.8%
+  Regression calibration, replicates   mean 0.5025 bias +0.5% SD 0.0262 RMSE 0.0263 cover 0.943 meanSE 0.0255 | age coef bias -0.9%
+  SIMEX, quadratic                     mean 0.4850 bias -3.0% SD 0.0252 RMSE 0.0293 cover 0.873 meanSE 0.0243 | age coef bias +2.8%
+  SIMEX, rational                      mean 0.5034 bias +0.7% SD 0.0293 RMSE 0.0295 cover 0.937 meanSE 0.0278 | age coef bias -1.6%
+  IV, second reading                   mean 0.5013 bias +0.3% SD 0.0296 RMSE 0.0296 cover 0.943 meanSE 0.0287 | age coef bias -0.2%
+  Regression calibration, validation   mean 0.5028 bias +0.6% SD 0.0310 RMSE 0.0311 cover 0.953 meanSE 0.0322 | age coef bias -0.5%
+  Multiple imputation, validation      mean 0.5004 bias +0.1% SD 0.0326 RMSE 0.0325 cover 0.943 meanSE 0.0332 | age coef bias +0.0%
+  Validation rows only                 mean 0.5035 bias +0.7% SD 0.0553 RMSE 0.0553 cover 0.943 meanSE 0.0522 | age coef bias -0.1%
+-- gaussian, classical, reliability 0.5
+  Naive, one reading                   mean 0.2211 bias -55.8% SD 0.0169 RMSE 0.2794 cover 0.000 meanSE 0.0168 | age coef bias +59.4%
+  Naive, mean of two                   mean 0.3063 bias -38.7% SD 0.0188 RMSE 0.1946 cover 0.000 meanSE 0.0186 | age coef bias +41.3%
+  Regression calibration, replicates   mean 0.5006 bias +0.1% SD 0.0355 RMSE 0.0354 cover 0.953 meanSE 0.0359 | age coef bias +0.3%
+  SIMEX, quadratic                     mean 0.4270 bias -14.6% SD 0.0264 RMSE 0.0776 cover 0.227 meanSE 0.0266 | age coef bias +15.7%
+  SIMEX, rational                      mean 0.5016 bias +0.3% SD 0.0425 RMSE 0.0425 cover 0.940 meanSE 0.0439 | age coef bias -2.1%
+  IV, second reading                   mean 0.5000 bias -0.0% SD 0.0422 RMSE 0.0421 cover 0.943 meanSE 0.0407 | age coef bias +0.6%
+  Regression calibration, validation   mean 0.5017 bias +0.3% SD 0.0453 RMSE 0.0453 cover 0.940 meanSE 0.0435 | age coef bias -0.4%
+  Multiple imputation, validation      mean 0.4943 bias -1.1% SD 0.0430 RMSE 0.0433 cover 0.910 meanSE 0.0375 | age coef bias +1.3%
+  Validation rows only                 mean 0.4947 bias -1.1% SD 0.0547 RMSE 0.0548 cover 0.950 meanSE 0.0525 | age coef bias +1.0%
+-- gaussian, correlated, reliability 0.9
+  Naive, one reading                   mean 0.4381 bias -12.4% SD 0.0200 RMSE 0.0650 cover 0.123 meanSE 0.0197 | age coef bias +13.8%
+  Naive, mean of two                   mean 0.4516 bias -9.7% SD 0.0201 RMSE 0.0524 cover 0.307 meanSE 0.0198 | age coef bias +10.9%
+  Regression calibration, replicates   mean 0.4662 bias -6.8% SD 0.0207 RMSE 0.0396 cover 0.617 meanSE 0.0204 | age coef bias +7.7%
+  SIMEX, quadratic                     mean 0.4660 bias -6.8% SD 0.0208 RMSE 0.0398 cover 0.623 meanSE 0.0206 | age coef bias +7.7%
+  SIMEX, rational                      mean 0.4673 bias -6.5% SD 0.0209 RMSE 0.0388 cover 0.650 meanSE 0.0206 | age coef bias +7.1%
+  IV, second reading                   mean 0.4658 bias -6.8% SD 0.0210 RMSE 0.0402 cover 0.610 meanSE 0.0208 | age coef bias +8.0%
+  Regression calibration, validation   mean 0.4970 bias -0.6% SD 0.0242 RMSE 0.0243 cover 0.963 meanSE 0.0250 | age coef bias +1.3%
+  Multiple imputation, validation      mean 0.4947 bias -1.1% SD 0.0261 RMSE 0.0266 cover 0.953 meanSE 0.0273 | age coef bias +1.8%
+  Validation rows only                 mean 0.4980 bias -0.4% SD 0.0496 RMSE 0.0495 cover 0.943 meanSE 0.0518 | age coef bias +0.6%
+-- gaussian, correlated, reliability 0.7
+  Naive, one reading                   mean 0.3254 bias -34.9% SD 0.0187 RMSE 0.1756 cover 0.000 meanSE 0.0189 | age coef bias +37.2%
+  Naive, mean of two                   mean 0.3562 bias -28.8% SD 0.0188 RMSE 0.1450 cover 0.000 meanSE 0.0192 | age coef bias +30.7%
+  Regression calibration, replicates   mean 0.3939 bias -21.2% SD 0.0206 RMSE 0.1081 cover 0.000 meanSE 0.0212 | age coef bias +22.8%
+  SIMEX, quadratic                     mean 0.3922 bias -21.6% SD 0.0206 RMSE 0.1097 cover 0.000 meanSE 0.0211 | age coef bias +23.1%
+  SIMEX, rational                      mean 0.3945 bias -21.1% SD 0.0210 RMSE 0.1075 cover 0.003 meanSE 0.0216 | age coef bias +22.2%
+  IV, second reading                   mean 0.3932 bias -21.4% SD 0.0219 RMSE 0.1090 cover 0.003 meanSE 0.0223 | age coef bias +22.8%
+  Regression calibration, validation   mean 0.5015 bias +0.3% SD 0.0355 RMSE 0.0355 cover 0.957 meanSE 0.0368 | age coef bias +0.9%
+  Multiple imputation, validation      mean 0.4973 bias -0.5% SD 0.0354 RMSE 0.0355 cover 0.940 meanSE 0.0354 | age coef bias +1.9%
+  Validation rows only                 mean 0.4968 bias -0.6% SD 0.0531 RMSE 0.0531 cover 0.930 meanSE 0.0523 | age coef bias +0.9%
+-- gaussian, correlated, reliability 0.5
+  Naive, one reading                   mean 0.2229 bias -55.4% SD 0.0166 RMSE 0.2776 cover 0.000 meanSE 0.0167 | age coef bias +57.3%
+  Naive, mean of two                   mean 0.2590 bias -48.2% SD 0.0172 RMSE 0.2416 cover 0.000 meanSE 0.0175 | age coef bias +49.7%
+  Regression calibration, replicates   mean 0.3091 bias -38.2% SD 0.0208 RMSE 0.1921 cover 0.000 meanSE 0.0208 | age coef bias +39.1%
+  SIMEX, quadratic                     mean 0.3031 bias -39.4% SD 0.0207 RMSE 0.1979 cover 0.000 meanSE 0.0208 | age coef bias +40.3%
+  SIMEX, rational                      mean 0.3089 bias -38.2% SD 0.0219 RMSE 0.1924 cover 0.000 meanSE 0.0222 | age coef bias +38.6%
+  IV, second reading                   mean 0.3093 bias -38.1% SD 0.0225 RMSE 0.1920 cover 0.000 meanSE 0.0225 | age coef bias +39.0%
+  Regression calibration, validation   mean 0.5029 bias +0.6% SD 0.0480 RMSE 0.0480 cover 0.950 meanSE 0.0496 | age coef bias -1.7%
+  Multiple imputation, validation      mean 0.4958 bias -0.8% SD 0.0395 RMSE 0.0397 cover 0.947 meanSE 0.0394 | age coef bias +0.1%
+  Validation rows only                 mean 0.5018 bias +0.4% SD 0.0484 RMSE 0.0483 cover 0.973 meanSE 0.0524 | age coef bias -1.1%
+-- gaussian, heteroscedastic, reliability 0.9
+  Naive, one reading                   mean 0.4398 bias -12.0% SD 0.0197 RMSE 0.0634 cover 0.133 meanSE 0.0199 | age coef bias +12.6%
+  Naive, mean of two                   mean 0.4681 bias -6.4% SD 0.0201 RMSE 0.0377 cover 0.650 meanSE 0.0201 | age coef bias +6.6%
+  Regression calibration, replicates   mean 0.5008 bias +0.2% SD 0.0218 RMSE 0.0218 cover 0.957 meanSE 0.0215 | age coef bias -0.3%
+  SIMEX, quadratic                     mean 0.4997 bias -0.1% SD 0.0219 RMSE 0.0218 cover 0.940 meanSE 0.0216 | age coef bias -0.1%
+  SIMEX, rational                      mean 0.5011 bias +0.2% SD 0.0220 RMSE 0.0220 cover 0.943 meanSE 0.0218 | age coef bias -0.7%
+  IV, second reading                   mean 0.5003 bias +0.1% SD 0.0229 RMSE 0.0229 cover 0.947 meanSE 0.0228 | age coef bias -0.1%
+  Regression calibration, validation   mean 0.5002 bias +0.0% SD 0.0241 RMSE 0.0240 cover 0.947 meanSE 0.0238 | age coef bias -0.4%
+  Multiple imputation, validation      mean 0.4983 bias -0.3% SD 0.0250 RMSE 0.0250 cover 0.947 meanSE 0.0260 | age coef bias +0.1%
+  Validation rows only                 mean 0.5030 bias +0.6% SD 0.0543 RMSE 0.0542 cover 0.930 meanSE 0.0528 | age coef bias -2.0%
+-- gaussian, heteroscedastic, reliability 0.7
+  Naive, one reading                   mean 0.3278 bias -34.4% SD 0.0184 RMSE 0.1732 cover 0.000 meanSE 0.0187 | age coef bias +36.7%
+  Naive, mean of two                   mean 0.3951 bias -21.0% SD 0.0185 RMSE 0.1065 cover 0.000 meanSE 0.0195 | age coef bias +22.5%
+  Regression calibration, replicates   mean 0.5013 bias +0.3% SD 0.0252 RMSE 0.0252 cover 0.953 meanSE 0.0260 | age coef bias +0.2%
+  SIMEX, quadratic                     mean 0.4838 bias -3.2% SD 0.0236 RMSE 0.0286 cover 0.910 meanSE 0.0249 | age coef bias +3.8%
+  SIMEX, rational                      mean 0.5022 bias +0.4% SD 0.0272 RMSE 0.0272 cover 0.963 meanSE 0.0288 | age coef bias -0.9%
+  IV, second reading                   mean 0.4992 bias -0.2% SD 0.0277 RMSE 0.0277 cover 0.973 meanSE 0.0296 | age coef bias +0.6%
+  Regression calibration, validation   mean 0.4997 bias -0.1% SD 0.0341 RMSE 0.0341 cover 0.940 meanSE 0.0325 | age coef bias -0.5%
+  Multiple imputation, validation      mean 0.4962 bias -0.8% SD 0.0346 RMSE 0.0348 cover 0.933 meanSE 0.0329 | age coef bias +0.6%
+  Validation rows only                 mean 0.4958 bias -0.8% SD 0.0531 RMSE 0.0531 cover 0.947 meanSE 0.0520 | age coef bias +2.7%
+-- gaussian, heteroscedastic, reliability 0.5
+  Naive, one reading                   mean 0.2229 bias -55.4% SD 0.0164 RMSE 0.2775 cover 0.000 meanSE 0.0165 | age coef bias +58.3%
+  Naive, mean of two                   mean 0.3089 bias -38.2% SD 0.0176 RMSE 0.1920 cover 0.000 meanSE 0.0183 | age coef bias +39.9%
+  Regression calibration, replicates   mean 0.5029 bias +0.6% SD 0.0368 RMSE 0.0368 cover 0.937 meanSE 0.0366 | age coef bias -1.2%
+  SIMEX, quadratic                     mean 0.4303 bias -13.9% SD 0.0259 RMSE 0.0743 cover 0.240 meanSE 0.0265 | age coef bias +14.2%
+  SIMEX, rational                      mean 0.5039 bias +0.8% SD 0.0437 RMSE 0.0438 cover 0.943 meanSE 0.0448 | age coef bias -2.9%
+  IV, second reading                   mean 0.5031 bias +0.6% SD 0.0429 RMSE 0.0429 cover 0.950 meanSE 0.0420 | age coef bias -0.8%
+  Regression calibration, validation   mean 0.5036 bias +0.7% SD 0.0417 RMSE 0.0418 cover 0.963 meanSE 0.0428 | age coef bias -0.8%
+  Multiple imputation, validation      mean 0.4974 bias -0.5% SD 0.0373 RMSE 0.0373 cover 0.947 meanSE 0.0380 | age coef bias +0.1%
+  Validation rows only                 mean 0.5023 bias +0.5% SD 0.0516 RMSE 0.0516 cover 0.927 meanSE 0.0521 | age coef bias -2.2%
+-- gaussian, berkson, reliability 0.9
+  Naive, one reading                   mean 0.5012 bias +0.2% SD 0.0227 RMSE 0.0226 cover 0.927 meanSE 0.0210 | age coef bias -1.0%
+  Naive, mean of two                   mean 0.5012 bias +0.2% SD 0.0227 RMSE 0.0226 cover 0.927 meanSE 0.0210 | age coef bias -1.0%
+  Regression calibration, replicates   mean 0.5012 bias +0.2% SD 0.0227 RMSE 0.0226 cover 0.920 meanSE 0.0209 | age coef bias -1.0%
+  SIMEX, quadratic                     mean 0.5012 bias +0.2% SD 0.0227 RMSE 0.0226 cover 0.920 meanSE 0.0209 | age coef bias -1.0%
+  SIMEX, rational                      mean 0.5012 bias +0.2% SD 0.0227 RMSE 0.0226 cover 0.920 meanSE 0.0209 | age coef bias -1.0%
+  IV, second reading                   mean 0.5012 bias +0.2% SD 0.0227 RMSE 0.0226 cover 0.927 meanSE 0.0210 | age coef bias -1.0%
+  Regression calibration, validation   mean 0.5011 bias +0.2% SD 0.0252 RMSE 0.0252 cover 0.950 meanSE 0.0248 | age coef bias -0.8%
+  Multiple imputation, validation      mean 0.4993 bias -0.1% SD 0.0270 RMSE 0.0270 cover 0.963 meanSE 0.0274 | age coef bias -0.4%
+  Validation rows only                 mean 0.5000 bias -0.0% SD 0.0503 RMSE 0.0502 cover 0.957 meanSE 0.0492 | age coef bias -0.8%
+-- gaussian, berkson, reliability 0.7
+  Naive, one reading                   mean 0.5006 bias +0.1% SD 0.0221 RMSE 0.0221 cover 0.943 meanSE 0.0230 | age coef bias -0.5%
+  Naive, mean of two                   mean 0.5006 bias +0.1% SD 0.0221 RMSE 0.0221 cover 0.943 meanSE 0.0230 | age coef bias -0.5%
+  Regression calibration, replicates   mean 0.5006 bias +0.1% SD 0.0221 RMSE 0.0221 cover 0.943 meanSE 0.0230 | age coef bias -0.5%
+  SIMEX, quadratic                     mean 0.5006 bias +0.1% SD 0.0221 RMSE 0.0221 cover 0.950 meanSE 0.0230 | age coef bias -0.5%
+  SIMEX, rational                      mean 0.5006 bias +0.1% SD 0.0221 RMSE 0.0221 cover 0.950 meanSE 0.0230 | age coef bias -0.5%
+  IV, second reading                   mean 0.5006 bias +0.1% SD 0.0221 RMSE 0.0221 cover 0.943 meanSE 0.0230 | age coef bias -0.5%
+  Regression calibration, validation   mean 0.5004 bias +0.1% SD 0.0329 RMSE 0.0328 cover 0.940 meanSE 0.0332 | age coef bias +1.1%
+  Multiple imputation, validation      mean 0.4967 bias -0.7% SD 0.0280 RMSE 0.0281 cover 0.953 meanSE 0.0295 | age coef bias +1.3%
+  Validation rows only                 mean 0.4988 bias -0.2% SD 0.0442 RMSE 0.0442 cover 0.940 meanSE 0.0419 | age coef bias -0.4%
+-- gaussian, berkson, reliability 0.5
+  Naive, one reading                   mean 0.4977 bias -0.5% SD 0.0289 RMSE 0.0289 cover 0.933 meanSE 0.0268 | age coef bias -0.2%
+  Naive, mean of two                   mean 0.4977 bias -0.5% SD 0.0289 RMSE 0.0289 cover 0.933 meanSE 0.0268 | age coef bias -0.2%
+  Regression calibration, replicates   mean 0.4977 bias -0.5% SD 0.0289 RMSE 0.0289 cover 0.923 meanSE 0.0266 | age coef bias -0.2%
+  SIMEX, quadratic                     mean 0.4977 bias -0.5% SD 0.0289 RMSE 0.0289 cover 0.923 meanSE 0.0270 | age coef bias -0.2%
+  SIMEX, rational                      mean 0.4977 bias -0.5% SD 0.0289 RMSE 0.0289 cover 0.923 meanSE 0.0270 | age coef bias -0.2%
+  IV, second reading                   mean 0.4977 bias -0.5% SD 0.0289 RMSE 0.0289 cover 0.933 meanSE 0.0268 | age coef bias -0.2%
+  Regression calibration, validation   mean 0.5015 bias +0.3% SD 0.0422 RMSE 0.0421 cover 0.960 meanSE 0.0422 | age coef bias +0.3%
+  Multiple imputation, validation      mean 0.4977 bias -0.5% SD 0.0269 RMSE 0.0270 cover 0.953 meanSE 0.0269 | age coef bias +1.4%
+  Validation rows only                 mean 0.5016 bias +0.3% SD 0.0340 RMSE 0.0340 cover 0.967 meanSE 0.0351 | age coef bias +0.9%
+-- gaussian, systematic, reliability 0.9
+  Naive, one reading                   mean 0.5124 bias +2.5% SD 0.0240 RMSE 0.0270 cover 0.923 meanSE 0.0242 | age coef bias +19.4%
+  Naive, mean of two                   mean 0.5623 bias +12.5% SD 0.0250 RMSE 0.0671 cover 0.320 meanSE 0.0245 | age coef bias +10.8%
+  Regression calibration, replicates   mean 0.6237 bias +24.7% SD 0.0276 RMSE 0.1267 cover 0.003 meanSE 0.0274 | age coef bias +0.4%
+  SIMEX, quadratic                     mean 0.6201 bias +24.0% SD 0.0272 RMSE 0.1231 cover 0.007 meanSE 0.0276 | age coef bias +1.1%
+  SIMEX, rational                      mean 0.6234 bias +24.7% SD 0.0278 RMSE 0.1264 cover 0.007 meanSE 0.0284 | age coef bias +0.2%
+  IV, second reading                   mean 0.6236 bias +24.7% SD 0.0298 RMSE 0.1271 cover 0.013 meanSE 0.0294 | age coef bias +0.6%
+  Regression calibration, validation   mean 0.4998 bias -0.0% SD 0.0239 RMSE 0.0238 cover 0.960 meanSE 0.0253 | age coef bias +0.9%
+  Multiple imputation, validation      mean 0.4996 bias -0.1% SD 0.0260 RMSE 0.0260 cover 0.960 meanSE 0.0274 | age coef bias +0.9%
+  Validation rows only                 mean 0.4944 bias -1.1% SD 0.0533 RMSE 0.0535 cover 0.933 meanSE 0.0512 | age coef bias +1.5%
+-- gaussian, systematic, reliability 0.7
+  Naive, one reading                   mean 0.3412 bias -31.8% SD 0.0233 RMSE 0.1605 cover 0.000 meanSE 0.0223 | age coef bias +47.3%
+  Naive, mean of two                   mean 0.4411 bias -11.8% SD 0.0249 RMSE 0.0640 cover 0.323 meanSE 0.0238 | age coef bias +30.3%
+  Regression calibration, replicates   mean 0.6259 bias +25.2% SD 0.0398 RMSE 0.1320 cover 0.073 meanSE 0.0368 | age coef bias -0.8%
+  SIMEX, quadratic                     mean 0.5772 bias +15.4% SD 0.0343 RMSE 0.0844 cover 0.333 meanSE 0.0318 | age coef bias +7.3%
+  SIMEX, rational                      mean 0.6264 bias +25.3% SD 0.0445 RMSE 0.1340 cover 0.150 meanSE 0.0419 | age coef bias -1.9%
+  IV, second reading                   mean 0.6245 bias +24.9% SD 0.0446 RMSE 0.1322 cover 0.150 meanSE 0.0418 | age coef bias -0.4%
+  Regression calibration, validation   mean 0.4998 bias -0.0% SD 0.0373 RMSE 0.0372 cover 0.943 meanSE 0.0374 | age coef bias +0.8%
+  Multiple imputation, validation      mean 0.4959 bias -0.8% SD 0.0355 RMSE 0.0357 cover 0.940 meanSE 0.0348 | age coef bias +1.7%
+  Validation rows only                 mean 0.4969 bias -0.6% SD 0.0513 RMSE 0.0513 cover 0.957 meanSE 0.0517 | age coef bias +1.9%
+-- gaussian, systematic, reliability 0.5
+  Naive, one reading                   mean 0.2129 bias -57.4% SD 0.0195 RMSE 0.2878 cover 0.000 meanSE 0.0187 | age coef bias +70.4%
+  Naive, mean of two                   mean 0.3181 bias -36.4% SD 0.0224 RMSE 0.1832 cover 0.000 meanSE 0.0219 | age coef bias +52.7%
+  Regression calibration, replicates   mean 0.6354 bias +27.1% SD 0.0585 RMSE 0.1475 cover 0.360 meanSE 0.0598 | age coef bias -1.2%
+  SIMEX, quadratic                     mean 0.4737 bias -5.3% SD 0.0345 RMSE 0.0433 cover 0.867 meanSE 0.0329 | age coef bias +26.1%
+  SIMEX, rational                      mean 0.6410 bias +28.2% SD 0.0802 RMSE 0.1621 cover 0.637 meanSE 0.0824 | age coef bias -7.5%
+  IV, second reading                   mean 0.6332 bias +26.6% SD 0.0661 RMSE 0.1487 cover 0.463 meanSE 0.0658 | age coef bias -1.3%
+  Regression calibration, validation   mean 0.4993 bias -0.1% SD 0.0513 RMSE 0.0512 cover 0.950 meanSE 0.0499 | age coef bias +0.3%
+  Multiple imputation, validation      mean 0.4949 bias -1.0% SD 0.0425 RMSE 0.0428 cover 0.917 meanSE 0.0385 | age coef bias +1.5%
+  Validation rows only                 mean 0.5005 bias +0.1% SD 0.0555 RMSE 0.0554 cover 0.913 meanSE 0.0514 | age coef bias +0.6%
+-- gaussian, differential, reliability 0.9
+  Naive, one reading                   mean 0.4839 bias -3.2% SD 0.0176 RMSE 0.0238 cover 0.877 meanSE 0.0184 | age coef bias +3.2%
+  Naive, mean of two                   mean 0.4994 bias -0.1% SD 0.0180 RMSE 0.0180 cover 0.943 meanSE 0.0185 | age coef bias -0.1%
+  Regression calibration, replicates   mean 0.5155 bias +3.1% SD 0.0187 RMSE 0.0242 cover 0.877 meanSE 0.0191 | age coef bias -3.6%
+  SIMEX, quadratic                     mean 0.5153 bias +3.1% SD 0.0186 RMSE 0.0240 cover 0.873 meanSE 0.0193 | age coef bias -3.4%
+  SIMEX, rational                      mean 0.5166 bias +3.3% SD 0.0188 RMSE 0.0250 cover 0.870 meanSE 0.0192 | age coef bias -4.2%
+  IV, second reading                   mean 0.5153 bias +3.1% SD 0.0191 RMSE 0.0245 cover 0.900 meanSE 0.0196 | age coef bias -3.5%
+  Regression calibration, validation   mean 0.5433 bias +8.7% SD 0.0255 RMSE 0.0502 cover 0.607 meanSE 0.0255 | age coef bias -9.4%
+  Multiple imputation, validation      mean 0.5000 bias +0.0% SD 0.0274 RMSE 0.0273 cover 0.943 meanSE 0.0278 | age coef bias -0.2%
+  Validation rows only                 mean 0.5038 bias +0.8% SD 0.0507 RMSE 0.0507 cover 0.953 meanSE 0.0520 | age coef bias +0.8%
+-- gaussian, differential, reliability 0.7
+  Naive, one reading                   mean 0.3893 bias -22.1% SD 0.0177 RMSE 0.1121 cover 0.000 meanSE 0.0171 | age coef bias +23.2%
+  Naive, mean of two                   mean 0.4267 bias -14.7% SD 0.0179 RMSE 0.0754 cover 0.027 meanSE 0.0171 | age coef bias +15.3%
+  Regression calibration, replicates   mean 0.4724 bias -5.5% SD 0.0198 RMSE 0.0340 cover 0.663 meanSE 0.0190 | age coef bias +5.7%
+  SIMEX, quadratic                     mean 0.4700 bias -6.0% SD 0.0200 RMSE 0.0361 cover 0.650 meanSE 0.0195 | age coef bias +6.3%
+  SIMEX, rational                      mean 0.4724 bias -5.5% SD 0.0204 RMSE 0.0343 cover 0.700 meanSE 0.0200 | age coef bias +5.5%
+  IV, second reading                   mean 0.4726 bias -5.5% SD 0.0212 RMSE 0.0346 cover 0.727 meanSE 0.0205 | age coef bias +5.6%
+  Regression calibration, validation   mean 0.5776 bias +15.5% SD 0.0418 RMSE 0.0881 cover 0.537 meanSE 0.0398 | age coef bias -18.5%
+  Multiple imputation, validation      mean 0.4950 bias -1.0% SD 0.0401 RMSE 0.0403 cover 0.923 meanSE 0.0362 | age coef bias -1.0%
+  Validation rows only                 mean 0.4976 bias -0.5% SD 0.0568 RMSE 0.0568 cover 0.923 meanSE 0.0524 | age coef bias -2.1%
+-- gaussian, differential, reliability 0.5
+  Naive, one reading                   mean 0.2896 bias -42.1% SD 0.0150 RMSE 0.2109 cover 0.000 meanSE 0.0152 | age coef bias +44.4%
+  Naive, mean of two                   mean 0.3365 bias -32.7% SD 0.0154 RMSE 0.1642 cover 0.000 meanSE 0.0156 | age coef bias +34.4%
+  Regression calibration, replicates   mean 0.4024 bias -19.5% SD 0.0191 RMSE 0.0995 cover 0.000 meanSE 0.0189 | age coef bias +20.5%
+  SIMEX, quadratic                     mean 0.3952 bias -21.0% SD 0.0185 RMSE 0.1065 cover 0.003 meanSE 0.0188 | age coef bias +22.0%
+  SIMEX, rational                      mean 0.4030 bias -19.4% SD 0.0201 RMSE 0.0991 cover 0.007 meanSE 0.0203 | age coef bias +19.9%
+  IV, second reading                   mean 0.4019 bias -19.6% SD 0.0202 RMSE 0.1001 cover 0.003 meanSE 0.0209 | age coef bias +20.5%
+  Regression calibration, validation   mean 0.6169 bias +23.4% SD 0.0570 RMSE 0.1300 cover 0.490 meanSE 0.0564 | age coef bias -25.1%
+  Multiple imputation, validation      mean 0.4944 bias -1.1% SD 0.0433 RMSE 0.0436 cover 0.937 meanSE 0.0407 | age coef bias +0.9%
+  Validation rows only                 mean 0.4976 bias -0.5% SD 0.0549 RMSE 0.0549 cover 0.920 meanSE 0.0517 | age coef bias -0.1%
+-- binomial, classical, reliability 0.9
+  Naive, one reading                   mean 0.2715 bias -9.5% SD 0.0503 RMSE 0.0577 cover 0.887 meanSE 0.0476 | age coef bias +5.5%
+  Naive, mean of two                   mean 0.2849 bias -5.0% SD 0.0515 RMSE 0.0535 cover 0.927 meanSE 0.0489 | age coef bias +3.5%
+  Regression calibration, replicates   mean 0.3047 bias +1.6% SD 0.0551 RMSE 0.0553 cover 0.943 meanSE 0.0531 | age coef bias +0.7%
+  SIMEX, quadratic                     mean 0.3011 bias +0.4% SD 0.0551 RMSE 0.0551 | age coef bias +1.1%
+  SIMEX, rational                      mean 0.4848 bias +61.6% SD 2.1749 RMSE 2.1791 | age coef bias -12.8%
+  Regression calibration, validation   mean 0.3037 bias +1.2% SD 0.0541 RMSE 0.0541 cover 0.943 meanSE 0.0529 | age coef bias +0.9%
+  Multiple imputation, validation      mean 0.3055 bias +1.8% SD 0.0611 RMSE 0.0612 cover 0.943 meanSE 0.0597 | age coef bias +0.9%
+  Validation rows only                 mean 0.3097 bias +3.2% SD 0.1507 RMSE 0.1507 cover 0.940 meanSE 0.1396 | age coef bias +3.9%
+-- binomial, classical, reliability 0.7
+  Naive, one reading                   mean 0.2142 bias -28.6% SD 0.0377 RMSE 0.0936 cover 0.460 meanSE 0.0414 | age coef bias +14.2%
+  Naive, mean of two                   mean 0.2534 bias -15.5% SD 0.0419 RMSE 0.0626 cover 0.807 meanSE 0.0452 | age coef bias +8.7%
+  Regression calibration, replicates   mean 0.3218 bias +7.3% SD 0.0543 RMSE 0.0585 cover 0.960 meanSE 0.0590 | age coef bias -0.9%
+  SIMEX, quadratic                     mean 0.3017 bias +0.6% SD 0.0517 RMSE 0.0517 | age coef bias +1.8%
+  SIMEX, rational                      mean 0.3149 bias +5.0% SD 0.0561 RMSE 0.0579 | age coef bias -0.6%
+  Regression calibration, validation   mean 0.3200 bias +6.7% SD 0.0555 RMSE 0.0589 cover 0.947 meanSE 0.0591 | age coef bias -0.3%
+  Multiple imputation, validation      mean 0.3295 bias +9.8% SD 0.0795 RMSE 0.0847 cover 0.947 meanSE 0.0793 | age coef bias -0.4%
+  Validation rows only                 mean 0.3307 bias +10.2% SD 0.1397 RMSE 0.1429 cover 0.977 meanSE 0.1398 | age coef bias +8.0%
+-- binomial, classical, reliability 0.5
+  Naive, one reading                   mean 0.1528 bias -49.1% SD 0.0345 RMSE 0.1511 cover 0.017 meanSE 0.0348 | age coef bias +23.0%
+  Naive, mean of two                   mean 0.2024 bias -32.5% SD 0.0394 RMSE 0.1052 cover 0.310 meanSE 0.0405 | age coef bias +16.0%
+  Regression calibration, replicates   mean 0.3315 bias +10.5% SD 0.0667 RMSE 0.0737 cover 0.960 meanSE 0.0701 | age coef bias -2.1%
+  SIMEX, quadratic                     mean 0.2749 bias -8.4% SD 0.0547 RMSE 0.0601 | age coef bias +5.9%
+  SIMEX, rational                      mean 1.4847 bias +394.9% SD 9.0604 RMSE 9.1225 | age coef bias -236.8%
+  Regression calibration, validation   mean 0.3252 bias +8.4% SD 0.0655 RMSE 0.0700 cover 0.933 meanSE 0.0687 | age coef bias -1.6%
+  Multiple imputation, validation      mean 0.3414 bias +13.8% SD 0.1098 RMSE 0.1171 cover 0.900 meanSE 0.0991 | age coef bias -1.3%
+  Validation rows only                 mean 0.3202 bias +6.7% SD 0.1462 RMSE 0.1474 cover 0.963 meanSE 0.1408 | age coef bias +9.0%
+
+Prediction on a fresh sample (linear outcome): mean calibration slope and MSE
+  classical, reliability 0.9: naive model on one reading x: slope 1.000, MSE 1.081; naive model on exact x: slope 1.052, MSE 1.013; corrected model on one reading x: slope 0.940, MSE 1.092; corrected model on exact x: slope 0.998, MSE 1.004
+  classical, reliability 0.7: naive model on one reading x: slope 0.997, MSE 1.222; naive model on exact x: slope 1.130, MSE 1.081; corrected model on one reading x: slope 0.806, MSE 1.340; corrected model on exact x: slope 0.995, MSE 1.007
+  classical, reliability 0.5: naive model on one reading x: slope 0.997, MSE 1.355; naive model on exact x: slope 1.165, MSE 1.202; corrected model on one reading x: slope 0.643, MSE 1.789; corrected model on exact x: slope 0.996, MSE 1.010
+  correlated, reliability 0.9: naive model on one reading x: slope 0.998, MSE 1.083; naive model on exact x: slope 1.051, MSE 1.017; corrected model on one reading x: slope 0.972, MSE 1.085; corrected model on exact x: slope 1.028, MSE 1.010
+  correlated, reliability 0.7: naive model on one reading x: slope 0.994, MSE 1.222; naive model on exact x: slope 1.128, MSE 1.082; corrected model on one reading x: slope 0.921, MSE 1.239; corrected model on exact x: slope 1.083, MSE 1.034
+  correlated, reliability 0.5: naive model on one reading x: slope 0.996, MSE 1.352; naive model on exact x: slope 1.170, MSE 1.197; corrected model on one reading x: slope 0.883, MSE 1.395; corrected model on exact x: slope 1.144, MSE 1.098
+  heteroscedastic, reliability 0.9: naive model on one reading x: slope 0.996, MSE 1.076; naive model on exact x: slope 1.049, MSE 1.008; corrected model on one reading x: slope 0.939, MSE 1.087; corrected model on exact x: slope 0.996, MSE 1.000
+  heteroscedastic, reliability 0.7: naive model on one reading x: slope 0.997, MSE 1.220; naive model on exact x: slope 1.132, MSE 1.079; corrected model on one reading x: slope 0.807, MSE 1.336; corrected model on exact x: slope 0.998, MSE 1.004
+  heteroscedastic, reliability 0.5: naive model on one reading x: slope 0.996, MSE 1.354; naive model on exact x: slope 1.166, MSE 1.198; corrected model on one reading x: slope 0.641, MSE 1.800; corrected model on exact x: slope 0.996, MSE 1.011
+  berkson, reliability 0.9: naive model on one reading x: slope 0.996, MSE 1.087; naive model on exact x: slope 0.996, MSE 1.001; corrected model on one reading x: slope 0.996, MSE 1.087; corrected model on exact x: slope 0.996, MSE 1.001
+  berkson, reliability 0.7: naive model on one reading x: slope 1.001, MSE 1.337; naive model on exact x: slope 1.000, MSE 1.008; corrected model on one reading x: slope 1.001, MSE 1.337; corrected model on exact x: slope 1.000, MSE 1.008
+  berkson, reliability 0.5: naive model on one reading x: slope 1.000, MSE 1.786; naive model on exact x: slope 1.003, MSE 1.012; corrected model on one reading x: slope 1.000, MSE 1.786; corrected model on exact x: slope 1.003, MSE 1.012
+  systematic, reliability 0.9: naive model on one reading x: slope 0.998, MSE 1.115; naive model on exact x: slope 0.941, MSE 1.011; corrected model on one reading x: slope 0.911, MSE 1.138; corrected model on exact x: slope 0.851, MSE 1.052
+  systematic, reliability 0.7: naive model on one reading x: slope 0.995, MSE 1.291; naive model on exact x: slope 1.071, MSE 1.074; corrected model on one reading x: slope 0.727, MSE 1.533; corrected model on exact x: slope 0.849, MSE 1.060
+  systematic, reliability 0.5: naive model on one reading x: slope 0.992, MSE 1.415; naive model on exact x: slope 1.121, MSE 1.209; corrected model on one reading x: slope 0.528, MSE 2.273; corrected model on exact x: slope 0.839, MSE 1.068
+  differential, reliability 0.9: naive model on one reading x: slope 0.999, MSE 0.965; naive model on exact x: slope 1.014, MSE 1.005; corrected model on one reading x: slope 0.969, MSE 0.968; corrected model on exact x: slope 0.986, MSE 1.005
+  differential, reliability 0.7: naive model on one reading x: slope 0.998, MSE 1.050; naive model on exact x: slope 1.088, MSE 1.039; corrected model on one reading x: slope 0.908, MSE 1.075; corrected model on exact x: slope 1.021, MSE 1.010
+  differential, reliability 0.5: naive model on one reading x: slope 0.999, MSE 1.160; naive model on exact x: slope 1.154, MSE 1.117; corrected model on one reading x: slope 0.849, MSE 1.231; corrected model on exact x: slope 1.084, MSE 1.031
