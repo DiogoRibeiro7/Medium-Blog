@@ -79,6 +79,18 @@ def test_committed_region_map_regenerates() -> None:
         (m.code, m.target, m.rule) for m in committed]
 
 
+@pytest.mark.skipif(not (ROOT / "data" / "boundaries").is_dir(),
+                    reason="No local GISCO boundaries in data/boundaries.")
+def test_committed_latitudes_regenerate(tmp_path: Path) -> None:
+    from eu_wheat_weather.regions import load_all, target_regions
+    from eu_wheat_weather.weather import region_latitudes, write_latitudes
+
+    rows = region_latitudes(target_regions(load_all(ROOT / "data" / "boundaries")))
+    write_latitudes(rows, tmp_path / "region_latitude.csv")
+    assert ((tmp_path / "region_latitude.csv").read_bytes()
+            == (DOCS / "region_latitude.csv").read_bytes())
+
+
 @pytest.mark.skipif(os.environ.get("EU_WHEAT_REPRODUCE_WEATHER") != "1",
                     reason="Set EU_WHEAT_REPRODUCE_WEATHER=1 with E-OBS in data/eobs (minutes).")
 def test_committed_weather_regenerates(tmp_path: Path) -> None:

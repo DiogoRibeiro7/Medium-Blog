@@ -290,7 +290,13 @@ sign.
     - E1 without Spain;
     - the one-way standard errors of the 36 °C bin;
     - a descriptive July window (1-31 July) in the weather table, to show when the
-      season's heat falls.
+      season's heat falls, and each region's centroid latitude
+      (`docs/panel/region_latitude.csv`) for the review's split at 40°N;
+    - the wild bootstrap p-value of every temperature bin (M3 was registered with the
+      two-way intervals only);
+    - E3's minimum detectable change at the Holm level (5% divided by 3);
+    - E4's 2003 miss by country, with each country's 2003 heat and the worst regions'
+      heat and wheat area.
   - **The sensitivity rule.** Section 6 says a variant changes a decision only if it
     reverses the sign. The report had also required the variant's interval to exclude
     zero. The report now follows section 6. No point estimate reverses its sign, so

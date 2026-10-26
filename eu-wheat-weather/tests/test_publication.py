@@ -2,10 +2,13 @@
 
 from __future__ import annotations
 
+import csv
 import json
+import math
 import re
 from pathlib import Path
 
+import numpy as np
 import pytest
 
 from eu_wheat_weather.publication import PLACEHOLDER, check, render, write_publication
@@ -22,9 +25,10 @@ CITATION = ("Cornes, R., G. van der Schrier, E.J.M. van den Besselaar, and P.D. 
             "An Ensemble Version of the E-OBS Temperature and Precipitation Datasets, "
             "J. Geophys. Res. Atmos., 123. doi:10.1029/2017JD028200")
 # Numbers that are design, not results: thresholds, the season, the test years, the period
-# split, the interval level and the elevation cut-off.
+# split, the interval level, the elevation cut-off and the latitude of the post-hoc split.
 DESIGN_CONSTANTS = {"30", "36", "15", "18", "1", "31", "2003", "2018", "2022", "2000", "2011",
-                    "2012", "2024", "95", "800"}
+                    "2012", "2024", "95", "800", "40"}
+REPOSITORY = "https://github.com/DiogoRibeiro7/Medium-Blog/tree/main/eu-wheat-weather"
 NUMBER = re.compile(r"(?<![\w.])\d+(?:[.,]\d+)?")
 
 pytestmark = pytest.mark.skipif(not RESULTS.exists(), reason="No committed results.")
@@ -57,32 +61,106 @@ def test_article_carries_the_required_acknowledgement_and_citation() -> None:
     article = re.sub(r"\s+", " ", (PUB / "article.md").read_text(encoding="utf-8"))
     assert ACKNOWLEDGEMENT in article and CITATION in article
     assert "© European Union, Eurostat" in article and "© EuroGeographics" in article
+    # GISCO: the notice on the introductory page; E-OBS: the dataset's version
+    assert article.index("© EuroGeographics") < article.index("## The data")
+    assert "for non-commercial use" in article[:article.index("## The data")]
+    assert "E-OBS v33.0e" in article and REPOSITORY in article
+
+
+def _pct(log_points: float) -> float:
+    return 100 * (math.exp(log_points) - 1)
+
+
+def _ends_only(flags: list[bool]) -> bool:
+    """True where the flagged points are a run at the start and/or a run at the end."""
+    inner = flags[next((i for i, f in enumerate(flags) if not f), len(flags)):]
+    inner = inner[:len(inner) - next((i for i, f in enumerate(inner[::-1]) if not f),
+                                     len(inner))]
+    return not any(inner)
 
 
 def test_words_in_the_article_match_the_results() -> None:
     r = json.loads(RESULTS.read_text(encoding="utf-8"))
     text = re.sub(r"\s+", " ", TEMPLATE.read_text(encoding="utf-8"))
-    d = r["decisions"]
+    d, ph, dry = r["decisions"], r["post_hoc"], r["E2"]["dry_season"]
+    edd = next(c for c in r["coefficients"] if c["model"] == "M1" and c["term"] == "edd")
+    sens = {(x["variant"], x["estimand"]): x for x in r["sensitivity"]}
+    heat_e1 = {x["variant"]: x for x in r["sensitivity"] if x["estimand"] == "E1"}
+    curve = r["precipitation_curve"]
+    excluded = [p["low"] > 0 or p["high"] < 0 for p in curve["points"]]
+    excluded_mm = [p["mm"] for p, e in zip(curve["points"], excluded, strict=True) if e]
+    median, dry_mm = curve["median_mm"], abs(dry["mean_p10_minus_p50"])
+    opt, se, boot = ph["optimum_mm"], ph["ge36_se"], ph["M3_p_bootstrap"]
+    y2003 = ph["E4_2003"]
+    gap, heat, worst = y2003["gap_by_country"], y2003["heat_by_country"], y2003["worst_regions"]
+    e4_2003 = next(x for x in r["E4"] if x["year"] == 2003)
+    ratio = {c: heat[c]["edd_30"] / heat[c]["edd_30_other_years"] for c in ("FR", "HU")}
+    areas = [w["area_kha"] for w in worst]
+    with (ROOT / "docs" / "panel" / "panel.csv").open(encoding="utf-8") as stream:
+        quartiles = np.quantile([float(x["edd_30"]) for x in csv.DictReader(stream)],
+                                [0.25, 0.75])
     claims = {
-        "And it shows no link": not r["E5"]["significant_both"],
-        "this counts as an established negative effect": d["E2"]["verdict"]
-        == "established negative",
-        "that is not established": d["E1"]["verdict"] == "not determined",
-        "there is no detectable change": d["E3"]["verdict"] == "not determined",
-        "Rainfall clearly matters": max(d["E2"]["p_twoway_holm"],
-                                        d["E2"]["p_bootstrap_holm"]) < 0.05,
-        "only days at 36 °C and above clearly lower yields":
+        # the placebo: neither method detects a link
+        "The test finds no detectable link": min(r["E5"]["p_twoway"],
+                                                 r["E5"]["p_bootstrap"]) >= 0.05,
+        # drought
+        "Rainfall as a whole matters": max(d["E2"]["p_twoway_holm"],
+                                           d["E2"]["p_bootstrap_holm"]) < 0.05,
+        "and it includes the": opt["low"] < median < opt["high"],
+        "a loss or a small gain": dry["low"] < 0 < dry["high"],
+        "The rule I fixed in advance called this an established negative effect":
+            d["E2"]["verdict"] == "established negative",
+        "the curve differs from the median only at the extremes, mostly at the wet end, not "
+        "where a typical dry season falls": _ends_only(excluded)
+        and sum(m > median for m in excluded_mm) > sum(m < median for m in excluded_mm)
+        and not any(median - dry_mm <= m <= median for m in excluded_mm),
+        "So the cost of a dry spring is not established": not (
+            ph["E2_direct"]["p_twoway_holm"] < 0.05
+            and ph["E2_direct"]["p_bootstrap_holm"] < 0.05),
+        # heat
+        "is a large step": 10 > quartiles[1] - quartiles[0],
+        "After the correction for three questions, that is not established":
+            d["E1"]["verdict"] == "not determined",
+        "of the variation in heat that it uses, Spain supplies":
+            list(ph["identifying_variation"]["edd"])[:3] == ["ES", "IT", "RO"],
+        "Time at 36 °C and above is the only band whose interval lies wholly below zero":
             [b["term"] for b in r["M3"] if b["high"] < 0] == ["t_ge36"],
-        "None reverses a sign": not any(x["sign_reversed"] for x in r["sensitivity"]),
-        "Heat stays harmful in every one": all(
-            x["estimate"] < 0 for x in r["sensitivity"] if x["estimand"] == "E1"),
-        "which is larger than the heat effect itself": r["E3"]["minimum_detectable"] > abs(
-            next(c["estimate"] for c in r["coefficients"]
-                 if c["model"] == "M1" and c["term"] == "edd")),
-        "The 2003 heatwave did far more damage than": next(
-            x for x in r["E4"] if x["year"] == 2003)["eu_yield_observed_pct"]
-        < next(x for x in r["E4"] if x["year"] == 2003)["eu_yield_predicted_pct"],
-        "so its size is not pinned down": r["E2"]["dry_season"]["high"] > 0,
+        "**One country.** Spain supplies":
+            list(ph["identifying_variation"]["t_ge36"])[0] == "ES",
+        "gives a larger error every time": se["twoway"] < min(
+            se["country"], se["year"], se["country_year"]),
+        "but so does time at": boot["t_ge36"] < 0.05
+        and any(p < 0.05 for b, p in boot.items() if b != "t_ge36"),
+        # E3
+        "there is no detectable change": d["E3"]["verdict"] == "not determined",
+        "which is larger than the average heat effect itself":
+            r["E3"]["minimum_detectable"] > abs(edd["estimate"]),
+        # E4, 2003
+        "The model missed 2003 badly": e4_2003["eu_yield_observed_pct"]
+        < e4_2003["eu_yield_predicted_pct"] - 5,
+        "France, the largest single part of the miss, was hot that year":
+            list(gap)[0] == "FR" and ratio["FR"] > 1,
+        "Romania and Hungary together account for more of the miss than France":
+            gap["RO"] + gap["HU"] < gap["FR"],
+        "Romania was cooler than usual": heat["RO"]["edd_30"] < heat["RO"]["edd_30_other_years"],
+        "Hungary only a little hotter": 1 < ratio["HU"] < ratio["FR"],
+        "In Romania's three worst-hit regions": all(w["geo"].startswith("RO") for w in worst)
+        and all(w["observed"] < 0 for w in worst),
+        "while the model predicted almost no change": all(
+            abs(_pct(w["predicted"])) < 5 for w in worst),
+        "in two of them the area harvested also fell by about a third that year and "
+        "recovered the next": sum(
+            1 for a in areas if {"2002", "2003", "2004"} <= set(a)
+            and 0.6 < a["2003"] / a["2002"] < 0.75 and a["2004"] / a["2002"] > 0.9) == 2,
+        # sensitivity
+        "None reverses the sign": not any(x["sign_reversed"] for x in r["sensitivity"]),
+        "excludes zero in only": {v for v, x in heat_e1.items() if x["high"] < 0}
+        == {"trend_year", "area_weighted"},
+        "The heat estimate is smallest with the water balance": max(
+            heat_e1.values(), key=lambda x: x["estimate"])["variant"] == "water_balance",
+        "The dry-season effect shrinks to": abs(sens[("apr_jul", "E2")]["estimate"])
+        < abs(dry["effect"]) and abs(sens[("area_weighted", "E2")]["estimate"])
+        < abs(dry["effect"]),
     }
     for phrase, holds in claims.items():
         assert phrase in text, phrase

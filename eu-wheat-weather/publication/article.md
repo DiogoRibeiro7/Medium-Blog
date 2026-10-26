@@ -3,9 +3,11 @@
 
 *What 25 harvests in 164 regions say about the cost of a hot or dry spring*
 
+*Wheat statistics © European Union, Eurostat. Weather: E-OBS v33.0e (ECA&D and the Copernicus Climate Change Service), for non-commercial research and education. Regional boundaries © EuroGeographics for the administrative boundaries, from GISCO, for non-commercial use.*
+
 Wheat is the most widely grown crop in the European Union, and its harvest depends on a few months of weather. In 2003, 2018 and 2022, heat and drought hit much of the continent in spring and summer, and each time the question came back: how much does a bad season cost, and are farms getting better at riding it out?
 
-This piece reports what a reproducible study of the EU's regions found. The full analysis, with every table, test and line of code, is in the project repository. Every number below is read by code from the same result files, so the article and the analysis cannot drift apart.
+This piece reports what a reproducible study of the EU's regions found, and where it falls short. The full analysis, with every table, test and line of code, is in the [project repository](https://github.com/DiogoRibeiro7/Medium-Blog/tree/main/eu-wheat-weather), along with a critical review written before publication. Every number below is read by code from the same result files, so the article and the analysis cannot drift apart.
 
 ## The data
 
@@ -17,49 +19,58 @@ I fixed the rules for the sample before looking at any result: enough wheat to m
 
 Yields drift upward with better varieties and farming, and they move with prices and policies that differ from country to country. To separate the weather from all of that, the model compares regions of the same country in the same year, each against its own usual yield. If one region has a dry spring and another region of the same country does not, the difference in how their harvests depart from normal is what the model attributes to the weather.
 
-This is one of the rare economic questions where the answer can be read as a cause. Once a region's normal climate is taken into account, the weather in a given spring is close to random: no farmer and no policy chooses it. So the estimates say what a hot or dry season does to that year's harvest. They do not say what climate change will do, because farmers adapt to a climate that shifts over decades in ways they cannot adapt to a single bad year.
+This is one of the rare economic questions where the answer can be read as a cause. Once a region's normal climate is taken into account, the weather in a given spring is close to random: no farmer and no policy chooses it. So the estimates say what a hot or dry season does to that year's harvest. Two cautions apply. The cause is the weather as a bundle: a hot spell comes with sun, dry air and its own timing, and the model does not separate them. And the estimates do not say what climate change will do, because farmers adapt to a climate that shifts over decades in ways they cannot adapt to a single bad year.
 
-Heat is measured in degree days above 30 °C between 1 March and 31 July: every hour above 30 °C counts, weighted by how far above 30 °C it is. Rainfall is the total over the same months.
+Heat is measured in degree days above 30 °C between 1 March and 31 July: every hour above 30 °C counts, weighted by how far above 30 °C it is. A typical region has 2.5 such degree days in a season, and half of all seasons have between 0.5 and 7.4, so the "ten more degree days" used below is a large step. Rainfall is the total over the same months.
 
-Everything, from the measures and models to the tests and what would count as a result, was written down and published before I fitted any model. A result counts only if it survives a correction for asking three questions at once, and holds under two different ways of measuring the uncertainty.
+Everything, from the measures and models to the tests and what would count as a result, was written down and published before I fitted any model. Two rules for matching old region codes to today's regions were revised after that, still before any estimate, and the plan's change log records both. A result counts only if it survives a correction for asking three questions at once, and holds under two different ways of measuring the uncertainty.
 
 ## A check first: weather after the harvest
 
-If the comparison works, the weather in August and September, after the wheat is in, should have nothing to do with that year's yield. And it shows no link: the test gives p = 0.47 and 0.71 under the two methods. Had it come out the other way, everything below would have been in doubt.
+If the comparison works, the weather in August and September, after most of the wheat is in, should have nothing to do with that year's yield. The test finds no detectable link: p = 0.47 and 0.71 under the two methods. In the north some wheat is still in the field in August, so the check is not perfectly clean, but had it failed, everything below would have been in doubt.
 
-## Drought: rain matters, but the cost of a dry spring is uncertain
+## Drought: rain matters, but the cost of a dry spring is not established
 
-Rainfall clearly matters (corrected p = 0.006 and 0.002). Yields are highest at around 350 mm between March and July, while the typical region receives about 280 mm. The estimated curve falls on both sides: much less rain lowers yields, and so does much more, though the band is wide at the dry end.
+Rainfall as a whole matters: the test of the rainfall terms is significant under both methods (corrected p = 0.006 and 0.002). Yields are highest at around 350 mm between March and July, but that peak is uncertain: its interval runs from 270 to 420 mm, and it includes the 280 mm of a typical season.
 
 ![Rainfall over the season and wheat yields](figures/fig2_precipitation.png)
 
-*Change in yield against a region receiving the median rainfall. The band is a 95% interval.*
+*Change in yield when a region's rainfall moves from the median to each total, under a fitted curve. It compares seasons within regions, not dry regions with wet ones. The band is a 95% interval; the shading marks the peak's interval.*
 
-A dry season, the driest one in ten for that region and on average 75 mm below its median, changes yield by −2.3%. By the rule I fixed in advance, this counts as an established negative effect: rainfall as a whole is clearly significant, and this effect is negative. But the interval for the dry-season loss on its own runs from −5.2% to +0.7%, so its size is not pinned down. Measuring drought by the water balance instead, rain minus what evaporation would take, the loss is −3.1% (−5.5% to −0.6%). That was one of the checks I fixed in advance, though not one that decides anything.
+A dry season, the driest one in ten for that region and on average 75 mm below its median, changes yield by −2.3%, with an interval from −5.2% to +0.7%: a loss or a small gain. The rule I fixed in advance called this an established negative effect, because it took its significance from the test of rainfall as a whole and only its sign from the dry-season estimate. That rule was flawed: the test of rainfall as a whole asks whether rain matters anywhere in its range, and the curve differs from the median only at the extremes, mostly at the wet end, not where a typical dry season falls. Tested directly, after the fact, the dry-season effect gives p = 0.13 and 0.16, or 0.39 and 0.48 after the correction for three questions. So the cost of a dry spring is not established. The registered verdict stays on record, and the plan's change log explains the flaw and records this check.
 
-## Heat: harmful only at the very top
+Measuring drought by the water balance instead, rain minus what evaporation would take, the change is −3.1% (−5.5% to −0.6%). That was one of the checks fixed in advance, though not one that decides anything, and evaporation is computed here from temperature, so this measure partly counts heat.
 
-Ten more degree days above 30 °C go with a change in yield of −2.6% (interval −6.0% to +0.9%). After the correction for three questions, that is not established (p = 0.26 and 0.52).
+## Heat: an average effect not established
 
-The shape of the response explains why. Counting the days spent in each three-degree band of temperature, only days at 36 °C and above clearly lower yields: −3.5% per day (interval −5.3% to −1.7%) compared with a day at 15–18 °C. Days that hot are rare before the end of July: the average region and season spends 0.16 days at 36 °C or above. So an average effect across all hot days dilutes the damage done at the very top.
+Ten more degree days above 30 °C go with a change in yield of −2.6% (interval −6.0% to +0.9%). After the correction for three questions, that is not established (p = 0.26 and 0.52). The comparison also leans on a few countries: of the variation in heat that it uses, Spain supplies 40%, Italy 22% and Romania 15%. Without Spain the estimate is −1.6% (interval −6.7% to +3.7%).
 
-![Yield change for one more day in each temperature range](figures/fig1_temperature.png)
+Splitting temperature into three-degree bands gives a sharper picture, which does not hold up. Time at 36 °C and above is the only band whose interval lies wholly below zero: −0.15% per hour (interval −0.23% to −0.07%) compared with an hour at 15–18 °C, while the average season has 3.8 hours that hot. But the bands were a descriptive check, with no correction for looking at many bands at once, and four things undercut the reading that only the hottest time does harm:
 
-*Each point compares one more day in that range with a day at 15–18 °C. Bars are 95% intervals; the orange one excludes zero.*
+- **One country.** Spain supplies 65% of the variation in that band.
+- **One way of measuring uncertainty.** Its interval is narrow only under the two-way clustering the study uses; clustering by country, by year or by country and year alone gives a larger error every time.
+- **The timing.** 71% of the degree days above 30 °C and 79% of the time at 36 °C and above fall in July, and 34% of all the time that hot is July time in the regions south of 40°N, where much of the wheat is harvested in June. Heat after the harvest cannot lower that harvest, so the band may stand in for a hot, dry season rather than measure heat damage.
+- **The second method.** Under the wild bootstrap, time at 36 °C and above also differs from zero (p = 0.003), but so does time at 9–12 °C and 27–30 °C: with many bands and no correction, it is not alone.
+
+![Yield change for one more hour in each temperature range](figures/fig1_temperature.png)
+
+*Each point compares one more hour in that range with an hour at 15–18 °C. Bars are 95% intervals (two-way clustered); the orange one excludes zero. The bands are descriptive, with no correction for multiple comparisons.*
 
 ## Has wheat become less sensitive to heat?
 
-Comparing 2012–2024 with 2000–2011, there is no detectable change (p = 0.57 and 0.61). That is not evidence that nothing changed. The design could only have detected a change of 6.2% or more per ten degree days, which is larger than the heat effect itself. Whether European wheat has adapted to heat is a question these data cannot answer.
+Comparing 2012–2024 with 2000–2011, there is no detectable change (p = 0.57 and 0.61). That is not evidence that nothing changed. Even before the correction for three questions, the design could reliably detect only a change of 6.2% or more per ten degree days above 30 °C, which is larger than the average heat effect itself; after the correction, 7.4%. Whether European wheat has adapted to heat is a question these data cannot answer.
 
 ## Can the weather predict a bad year?
 
-I fitted a version of the model without one year and asked it to predict that year from the weather alone.
+I fitted a version of the model without one year and asked it to predict that year from the weather alone. The numbers below are for the study's regions, weighted by their wheat area, against each region's normal yield:
 
-- **2003:** EU yield −11.9% observed, −4.5% predicted.
+- **2003:** −11.9% observed, −4.5% predicted.
 - **2018:** −5.2% observed, −5.2% predicted.
 - **2022:** −3.0% observed, −6.3% predicted.
 
-Region by region the fit is loose: the correlations between predicted and observed departures from normal are 0.12, 0.63 and 0.33 for the three years. The 2003 heatwave did far more damage than its season totals of heat and rain imply. The heat may have come at the worst moment for the grain, or done harm that season totals cannot see; these data cannot tell which.
+Region by region the fit is loose: the correlations between predicted and observed departures from normal are 0.12, 0.63 and 0.33 for the three years.
+
+The model missed 2003 badly, and not only because of the heat. France, the largest single part of the miss, was hot that year: averaged over its wheat regions, 5.2 degree days above 30 °C, against 3.5 in its other years. But Romania and Hungary together account for more of the miss than France, and Romania was cooler than usual (8.1 against 11.5) and Hungary only a little hotter (11.2 against 10.1). In Romania's three worst-hit regions, yields fell 65% to 71% below normal while the model predicted almost no change, and in two of them the area harvested also fell by about a third that year and recovered the next. That points to damage before March, such as a hard winter, which a March-to-July window cannot see; these data cannot say what it was.
 
 ![Predicted and observed yield anomalies by region](figures/fig3_out_of_sample.png)
 
@@ -67,19 +78,23 @@ Region by region the fit is loose: the correlations between predicted and observ
 
 ## How robust is this?
 
-I fixed 9 variations in advance. They include other heat thresholds, a season starting in April, weather measured only below 800 m, regions weighted by their wheat area, and the water balance in place of rainfall. None reverses a sign. Heat stays harmful in every one, and in 2 of them its interval excludes zero; weighting regions by their wheat area, for instance, gives −3.6%.
+I fixed 9 variations in advance. They include other heat thresholds, a season starting in April, weather measured only below 800 m, regions weighted by their wheat area, and the water balance in place of rainfall. None reverses the sign of a main estimate, which is the test the plan set. But the sizes move. The heat estimate's interval excludes zero in only 2 of them: region trends with year effects, and regions weighted by their wheat area (−3.6%). The heat estimate is smallest with the water balance in place of rainfall (−0.8%), which partly counts heat. The dry-season effect shrinks to −0.7% with a season starting in April and to −0.9% with area weights.
 
 ![Heat and drought effects under each variation](figures/fig4_sensitivity.png)
 
 ## What this does not say
 
 - **Not climate change.** These are effects of one season's weather on that season's harvest. Farmers adapt to a changing climate in ways they cannot adapt to a single bad year.
+- **Not the mechanism.** Heat, sun, dry air and their timing come together, and the model does not separate them.
 - **Not nationwide shocks.** By design, the main comparison ignores whatever hits a whole country at once, and a continental heatwave does exactly that. The heat and drought effects above leave out the part of such a year that every region of a country shares; only the prediction test counts it.
-- **Not the fields themselves.** The weather is averaged over whole regions, including forests and mountains, and E-OBS is interpolated from stations, which are sparse in places.
+- **Probably too small.** Once the comparison removes what the regions of a country share, little variation in weather is left, and errors in the weather data are a larger part of what remains. That pulls the estimates toward zero.
+- **Not every country equally.** Spain, Italy and Romania supply most of the variation in heat, so the estimates say most about them.
+- **Not the fields themselves.** The weather is averaged over whole regions, including forests and mountains, and E-OBS is interpolated from stations, which are sparse in places and smooth out the hottest days: 36 °C on the grid is not 36 °C in a field.
+- **Not perfect yields.** The review found a few regional yield series that look pro-rated from national figures or carried forward from one year to the next, and no rule in the plan removes them.
 
 ## Data, code and acknowledgements
 
-The data, the code, the research plan with every change made to it, and the full results are in the project repository. Wheat statistics: © European Union, Eurostat. Regional boundaries: © EuroGeographics for the administrative boundaries.
+The data, the code, the research plan with every change made to it, the full results and the critical review are in the [project repository](https://github.com/DiogoRibeiro7/Medium-Blog/tree/main/eu-wheat-weather). Wheat statistics: © European Union, Eurostat. Regional boundaries: © EuroGeographics for the administrative boundaries, from GISCO, for non-commercial use. Weather: E-OBS v33.0e, for non-commercial research and education.
 
 We acknowledge the E-OBS dataset from the EU-FP6 project UERRA (https://www.uerra.eu) and the Copernicus Climate Change Service, and the data providers in the ECA&D project (https://www.ecad.eu).
 

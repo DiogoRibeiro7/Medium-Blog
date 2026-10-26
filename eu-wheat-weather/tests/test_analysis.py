@@ -121,9 +121,29 @@ def test_committed_results_regenerate() -> None:
     from eu_wheat_weather.analysis import _round, run
 
     panel = ROOT / "docs" / "panel"
-    regenerated = _round(run(panel / "panel.csv", panel / "weather.csv"))
+    regenerated = _round(run(panel / "panel.csv", panel / "weather.csv",
+                             panel / "region_latitude.csv"))
     assert_same(json.loads(results.read_text(encoding="utf-8")),
                 json.loads(json.dumps(regenerated)))
+
+
+def test_post_hoc_checks_agree_with_the_registered_results() -> None:
+    """The reparametrised E2 contrast is the registered one, and the parts add up."""
+    results = ROOT / "docs" / "results" / "results.json"
+    if not results.exists():
+        pytest.skip("No committed results.")
+    r = json.loads(results.read_text(encoding="utf-8"))
+    ph, dry = r["post_hoc"], r["E2"]["dry_season"]
+    assert math.isclose(ph["E2_direct"]["estimate"], dry["effect"], rel_tol=1e-8)
+    assert math.isclose(ph["E2_direct"]["statistic"], dry["effect"] / dry["se"], rel_tol=1e-6)
+    assert math.isclose(ph["optimum_mm"]["estimate"], r["E2"]["optimum_mm"], rel_tol=1e-8)
+    assert ph["optimum_mm"]["low"] < ph["optimum_mm"]["estimate"] < ph["optimum_mm"]["high"]
+    for shares in ph["identifying_variation"].values():
+        assert math.isclose(sum(shares.values()), 1.0, rel_tol=1e-8)
+    e4 = next(x for x in r["E4"] if x["year"] == 2003)
+    assert math.isclose(sum(ph["E4_2003"]["gap_by_country"].values()),
+                        e4["eu_yield_observed_pct"] - e4["eu_yield_predicted_pct"],
+                        abs_tol=1e-6)
 
 
 def test_report_regenerates_from_the_committed_results() -> None:

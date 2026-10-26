@@ -18,6 +18,11 @@ def _pct(log_points: float) -> float:
     return 100 * (math.exp(log_points) - 1)
 
 
+def _per_hour(per_24_hours: float) -> float:
+    """M3's bins count time in units of 24 hours; one hour is a 24th of the coefficient."""
+    return _pct(per_24_hours / 24)
+
+
 def _pyplot() -> Any:
     import matplotlib
 
@@ -58,9 +63,9 @@ def temperature_response(bins: Sequence[Mapping[str, Any]], path: Path) -> None:
             lo, hi = (int(x) for x in body.split("_"))
             labels.append(f"{lo}-{hi}")
             mids.append((lo + hi) / 2)
-    est = [_pct(b["estimate"]) for b in bins]
-    low = [_pct(b["low"]) for b in bins]
-    high = [_pct(b["high"]) for b in bins]
+    est = [_per_hour(b["estimate"]) for b in bins]
+    low = [_per_hour(b["low"]) for b in bins]
+    high = [_per_hour(b["high"]) for b in bins]
     rows = sorted(zip(mids, labels, est, low, high, strict=True), key=lambda r: r[0])
     rows.insert(next(i for i, r in enumerate(rows) if r[0] > 16.5), (16.5, "15-18", 0.0, 0.0, 0.0))
     fig, ax = plt.subplots(figsize=(7.5, 3.8))
@@ -75,14 +80,14 @@ def temperature_response(bins: Sequence[Mapping[str, Any]], path: Path) -> None:
         ax.plot(x, e, marker="o", color=colour, ms=5)
     ax.set_xticks(list(xs), [r[1] for r in rows], rotation=0, fontsize=8)
     ax.set_xlabel("Temperature (°C), 1 March to 31 July")
-    ax.set_ylabel("Yield change per day (%)")
-    ax.set_title("One more day in each temperature range, instead of a day at 15-18 °C",
+    ax.set_ylabel("Yield change per hour (%)")
+    ax.set_title("One more hour in each temperature range, instead of an hour at 15-18 °C",
                  fontsize=10, loc="left", color=INK)
     ax.grid(axis="y", color=GRID, lw=0.6)
     _save(plt, fig, path, SOURCE + " Bars: 95% intervals (two-way clustered).")
 
 
-def precipitation_response(curve: Mapping[str, Any], optimum_mm: float | None,
+def precipitation_response(curve: Mapping[str, Any], optimum: Mapping[str, float] | None,
                            path: Path) -> None:
     plt = _pyplot()
     pts = curve["points"]
@@ -95,10 +100,11 @@ def precipitation_response(curve: Mapping[str, Any], optimum_mm: float | None,
     ax.axvline(curve["median_mm"], color=MUTED, lw=0.8, ls="--")
     ax.annotate("median", (curve["median_mm"], ax.get_ylim()[0]), xytext=(4, 4),
                 textcoords="offset points", fontsize=8, color=MUTED)
-    if optimum_mm is not None:
-        ax.axvline(optimum_mm, color=ORANGE, lw=0.8, ls=":")
-        ax.annotate("peak", (optimum_mm, ax.get_ylim()[0]), xytext=(4, 18),
-                    textcoords="offset points", fontsize=8, color=ORANGE)
+    if optimum is not None:
+        ax.axvspan(optimum["low"], optimum["high"], color=ORANGE, alpha=0.10, lw=0)
+        ax.axvline(optimum["estimate"], color=ORANGE, lw=0.8, ls=":")
+        ax.annotate("peak (shaded: 95% interval)", (optimum["estimate"], ax.get_ylim()[0]),
+                    xytext=(4, 18), textcoords="offset points", fontsize=8, color=ORANGE)
     ax.set_xlabel("Precipitation, 1 March to 31 July (mm)")
     ax.set_ylabel("Yield change vs. median (%)")
     ax.set_title("Rainfall over the season and wheat yields", fontsize=10, loc="left",
@@ -111,12 +117,14 @@ def out_of_sample(regions: Sequence[Mapping[str, Any]], years: Sequence[Mapping[
                   path: Path) -> None:
     plt = _pyplot()
     fig, axes = plt.subplots(1, len(years), figsize=(10.5, 3.9), sharex=True, sharey=True)
+    # Shared limits that hold every region, rounded out to 10 points: no dot is clipped.
+    every = [_pct(r[k]) for r in regions for k in ("predicted", "observed")]
+    low, high = 10 * math.floor(min(every) / 10), 10 * math.ceil(max(every) / 10)
     for ax, summary in zip(axes, years, strict=True):
         rows = [r for r in regions if r["year"] == summary["year"]]
         pred = [_pct(r["predicted"]) for r in rows]
         obs = [_pct(r["observed"]) for r in rows]
         ax.scatter(pred, obs, s=10, color=BLUE, alpha=0.6, lw=0)
-        low, high = -50, 30
         ax.plot([low, high], [low, high], color=MUTED, lw=0.8)
         ax.axhline(0, color=GRID, lw=0.6)
         ax.axvline(0, color=GRID, lw=0.6)
@@ -138,8 +146,10 @@ def sensitivity(rows: Sequence[Mapping[str, Any]], primary: Mapping[str, Mapping
     variants = [("Registered model", "")] + list(dict.fromkeys(
         (r["label"], r["variant"]) for r in rows))
     for ax, key, title in zip(axes, ("E1", "E2"),
-                              ("Heat: 10 more degree days above 30 °C",
-                               "Drought: a dry season (10th percentile)"), strict=True):
+                              ("Heat: 10 more degree days above the threshold\n"
+                               "(30 °C unless stated)",
+                               "Drought: a dry season\n(10th percentile against the median)"),
+                              strict=True):
         ys = list(range(len(variants)))[::-1]
         for y, (_label, name) in zip(ys, variants, strict=True):
             r = primary[key] if not name else next(
@@ -164,8 +174,10 @@ def draw_all(results: Mapping[str, Any], directory: Path) -> list[Path]:
     paths = [directory / name for name in ("fig1_temperature.png", "fig2_precipitation.png",
                                            "fig3_out_of_sample.png", "fig4_sensitivity.png")]
     temperature_response(results["M3"], paths[0])
-    precipitation_response(results["precipitation_curve"], results["E2"]["optimum_mm"],
-                           paths[1])
+    # The peak's interval is a post-hoc check (results["post_hoc"]); no peak, no interval.
+    optimum = (None if results["E2"]["optimum_mm"] is None
+               else results["post_hoc"]["optimum_mm"])
+    precipitation_response(results["precipitation_curve"], optimum, paths[1])
     out_of_sample(results["E4_regions"], results["E4"], paths[2])
     sensitivity(results["sensitivity"], primary, paths[3])
     return paths

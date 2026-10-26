@@ -54,6 +54,8 @@ def build_parser() -> argparse.ArgumentParser:
     weather_agg.add_argument("--eobs-dir", type=Path, default=Path("data/eobs"))
     weather_agg.add_argument("--boundaries-dir", type=Path, default=Path("data/boundaries"))
     weather_agg.add_argument("--output", type=Path, default=Path("docs/panel/weather.csv"))
+    weather_agg.add_argument("--latitudes", type=Path,
+                             default=Path("docs/panel/region_latitude.csv"))
     panel = commands.add_parser(
         "panel", help="Build the region-year panel and its coverage report (no estimate)")
     panel.add_argument("--crops", type=Path, required=True)
@@ -66,6 +68,8 @@ def build_parser() -> argparse.ArgumentParser:
         "(METHODS.md, sections 4-6)")
     est.add_argument("--panel", type=Path, default=Path("docs/panel/panel.csv"))
     est.add_argument("--weather", type=Path, default=Path("docs/panel/weather.csv"))
+    est.add_argument("--latitudes", type=Path, default=Path("docs/panel/region_latitude.csv"),
+                     help="Region centroids, for the post-hoc July check only")
     est.add_argument("--output-dir", type=Path, default=Path("docs/results"))
     est.add_argument("--report", type=Path, default=Path("docs/RESULTS.md"))
     pub = commands.add_parser(
@@ -127,9 +131,15 @@ def main(argv: Sequence[str] | None = None) -> int:
         elif args.command == "weather":
             from eu_wheat_weather.contract import FIRST_YEAR, LAST_YEAR
             from eu_wheat_weather.regions import load_all, target_regions
-            from eu_wheat_weather.weather import build_weather, write_weather
+            from eu_wheat_weather.weather import (
+                build_weather,
+                region_latitudes,
+                write_latitudes,
+                write_weather,
+            )
 
             regions = target_regions(load_all(args.boundaries_dir))
+            write_latitudes(region_latitudes(regions), args.latitudes)
             rows = build_weather(args.eobs_dir, regions, range(FIRST_YEAR, LAST_YEAR + 1))
             write_weather(rows, args.output)
             print(f"{len(rows)} region-season rows written to {args.output}")
@@ -148,9 +158,10 @@ def main(argv: Sequence[str] | None = None) -> int:
             from eu_wheat_weather.analysis import run, write_results
 
             command = (f"poetry run eu-wheat estimate --panel {args.panel.as_posix()} "
-                       f"--weather {args.weather.as_posix()} --output-dir "
+                       f"--weather {args.weather.as_posix()} --latitudes "
+                       f"{args.latitudes.as_posix()} --output-dir "
                        f"{args.output_dir.as_posix()} --report {args.report.as_posix()}")
-            results = run(args.panel, args.weather)
+            results = run(args.panel, args.weather, args.latitudes)
             write_results(results, args.output_dir, args.report, command)
             print(json.dumps({k: v["verdict"] for k, v in results["decisions"].items()}))
             print(f"placebo significant under both methods: "
