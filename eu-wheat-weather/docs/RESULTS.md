@@ -16,7 +16,7 @@ Holm over E1-E3, separately under each method; established only if rejected unde
 | E2, a dry season (P10 against median) | -0.0231 log points (-2.3%) | 0.006 | 0.002 | established negative |
 | E3, change in E1 after 2011 | +0.0119 log points | 0.569 | 0.610 | not determined |
 
-**E2, read with care.** The registered rule takes significance from the joint test of the precipitation terms and the sign from the dry-season effect. The joint test rejects under both methods, but the dry-season effect's own two-way interval, [-0.0536, +0.0074], includes zero. Precipitation clearly matters, while the size of the loss in a typical dry season is not pinned down.
+**E2, after review (post hoc).** The registered rule takes significance from the joint test of the precipitation terms, which asks whether precipitation matters anywhere in its range, and only the sign from the dry-season contrast. Tested directly, the contrast (-0.0231, two-way 95% interval [-0.0536, +0.0074]) gives two-way p = 0.130 and wild bootstrap p = 0.160, or 0.389 and 0.481 after Holm: not determined. The registered verdict stays on record, but this study does not establish a drought effect ([REVIEW.md](REVIEW.md); METHODS.md change log, 2026-10-26).
 
 ## Sample
 
@@ -52,7 +52,7 @@ Two-way clustered (country and year) 95% intervals, with 21 degrees of freedom. 
 
 ## M3, the shape of the temperature response (descriptive)
 
-Change in log yield for one more day in each 3 °C bin, instead of 15-18 °C.
+Change in log yield for 24 more hours in each 3 °C bin, instead of 24 hours at 15-18 °C. The bins measure time, so 24 hours in a bin is not a calendar day that reaches that temperature; divide by 24 for one hour.
 
 | Bin | Estimate | 95% interval |
 | --- | ---: | ---: |
@@ -82,7 +82,7 @@ M2 (region effects and trends) fitted without the year, then used to predict it.
 
 ## Sensitivity analyses
 
-E1 to E3 under each variant fixed in advance (two-way 95% intervals). A variant changes a decision only if it reverses the sign with an interval that excludes zero.
+E1 to E3 under each variant fixed in advance (two-way 95% intervals). A variant changes a decision only if it reverses the sign (METHODS.md, section 6).
 
 | Variant | Estimand | N | Estimate | 95% interval | Sign reversed |
 | --- | --- | ---: | ---: | ---: | --- |
@@ -114,8 +114,21 @@ E1 to E3 under each variant fixed in advance (two-way 95% intervals). A variant 
 | Water balance in place of precipitation | E2 | 3693 | -0.0315 | [-0.0569, -0.0062] | no |
 | Water balance in place of precipitation | E3 | 3693 | +0.0095 | [-0.0305, +0.0496] | no |
 
+## After review (post hoc)
+
+Checks added after the review ([REVIEW.md](REVIEW.md)); none is a registered result and none changes a registered verdict.
+
+- **Precipitation optimum:** 347 mm, delta-method 95% interval [274, 419] mm.
+- **Where the identifying variation comes from:** for `edd`, ES 40%, IT 22%, RO 15%; for time at 36 °C and above, ES 65%, RO 11%, IT 9% (each country's share of the variable's sum of squares once the fixed effects are removed).
+- **E1 without Spain:** -0.0161 [-0.0689, +0.0367] (n = 3407).
+- **The 36 °C bin's standard error:** two-way 0.0090, against one-way 0.0114 (country), 0.0173 (year) and 0.0194 (country-year).
+- **When the heat falls:** July holds 71% of the season's degree days above 30 °C and 79% of its time at 36 °C and above; 34% of all that time is July time in the 10 regions south of 40°N (by centroid), where much of the wheat is harvested in June.
+- **M3 under the wild bootstrap** (M3 was registered with the two-way intervals only, and no bin is adjusted for multiplicity): p below 0.05 for 9-12 °C (0.022), 27-30 °C (0.029), 36 °C and above (0.003).
+- **E3's detectable change at the Holm level** (5% divided by 3, 80% power): 0.0714 log points per 10 degree days, against 0.0606 at 5%.
+- **The 2003 miss.** The gap between the observed and predicted EU change, by country (points; the three largest negative parts): FR -2.0, RO -1.8, HU -1.3. Their 2003 heat, wheat-area weighted, against their other years: FR 5.2 against 3.5, RO 8.1 against 11.5, HU 11.2 against 10.1 degree days above 30 °C. The three worst regions: RO31 -70.9% observed against -1.5% predicted, 11.9 degree days above 30 °C against 15.7 in its other years, wheat area 655 → 436 → 594 thousand ha (2002, 2003, 2004); RO32 -70.3% observed against -3.0% predicted, 20.0 degree days above 30 °C against 21.8 in its other years, wheat area 29 → 26 → 26 thousand ha (2002, 2003, 2004); RO21 -65.2% observed against +1.8% predicted, 2.9 degree days above 30 °C against 5.9 in its other years, wheat area 221 → 154 → 216 thousand ha (2002, 2003, 2004).
+
 ## Reproduce
 
 ```
-poetry run eu-wheat estimate --panel docs/panel/panel.csv --weather docs/panel/weather.csv --output-dir docs/results --report docs/RESULTS.md
+poetry run eu-wheat estimate --panel docs/panel/panel.csv --weather docs/panel/weather.csv --latitudes docs/panel/region_latitude.csv --output-dir docs/results --report docs/RESULTS.md
 ```

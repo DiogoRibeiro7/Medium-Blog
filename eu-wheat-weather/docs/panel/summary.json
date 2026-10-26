@@ -155,6 +155,10 @@
    "region_seasons": 6050,
    "missing": 400
   },
+  "jul/all": {
+   "region_seasons": 6050,
+   "missing": 400
+  },
   "mar_jul/below_800m": {
    "region_seasons": 6050,
    "missing": 325
@@ -164,6 +168,10 @@
    "missing": 325
   },
   "aug_sep/below_800m": {
+   "region_seasons": 6050,
+   "missing": 325
+  },
+  "jul/below_800m": {
    "region_seasons": 6050,
    "missing": 325
   }

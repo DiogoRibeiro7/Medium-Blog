@@ -272,3 +272,34 @@ sign.
       codes only) re-apply the singleton rule.
   - **Second route.** M1's coefficients are recomputed with explicit dummy variables and
     must agree with the projection route to 1e-8.
+- **2026-10-26, after the results: the review and its post-hoc checks.** A critical
+  review ([docs/REVIEW.md](docs/REVIEW.md)) was written after the registered results
+  and before publication. Nothing in this entry changes a registered verdict; every
+  check below is labelled post hoc wherever it is reported.
+  - **The E2 rule was flawed.** It takes significance from the joint test of `g1` and
+    `g2`, which asks whether precipitation matters anywhere in its range, not whether
+    the dry-season contrast is non-zero. The registered verdict ("established
+    negative") stays on record. The report and the article add the direct test of the
+    contrast, with both inference methods and Holm, and do not claim an established
+    drought effect.
+  - **Post-hoc checks added to the outputs**, so that the article can quote them:
+    - the direct E2 test;
+    - a delta-method interval for the precipitation optimum;
+    - each country's share of the identifying variation of `EDD` and of time at 36 °C
+      and above;
+    - E1 without Spain;
+    - the one-way standard errors of the 36 °C bin;
+    - a descriptive July window (1-31 July) in the weather table, to show when the
+      season's heat falls, and each region's centroid latitude
+      (`docs/panel/region_latitude.csv`) for the review's split at 40°N;
+    - the wild bootstrap p-value of every temperature bin (M3 was registered with the
+      two-way intervals only);
+    - E3's minimum detectable change at the Holm level (5% divided by 3);
+    - E4's 2003 miss by country, with each country's 2003 heat and the worst regions'
+      heat and wheat area.
+  - **The sensitivity rule.** Section 6 says a variant changes a decision only if it
+    reverses the sign. The report had also required the variant's interval to exclude
+    zero. The report now follows section 6. No point estimate reverses its sign, so
+    nothing changes.
+  - **The temperature bins.** They measure time as fractions of 24 hours. The report and
+    the article now give M3 per 24 hours or per hour, never "per day".

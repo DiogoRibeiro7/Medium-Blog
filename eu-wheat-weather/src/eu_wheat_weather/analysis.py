@@ -21,6 +21,7 @@ import numpy as np
 from eu_wheat_weather.estimation import (
     Array,
     Fit,
+    cluster_vcov,
     dummies,
     fit,
     holm,
@@ -348,48 +349,64 @@ def out_of_sample(obs_all: Sequence[Obs],
     out: list[dict[str, Any]] = []
     by_region: list[dict[str, Any]] = []
     for year in E4_YEARS:
-        train = [o for o in obs_all if o.year != year]
-        test = [o for o in obs_all if o.year == year]
-        regions = {o.geo for o in train}
-        test = [o for o in test if o.geo in regions]
-        if not test:
-            continue
-        f = estimate(train, BASE, "region+trend")
-        beta = f.beta
-        x_train = np.array([[o.x[n] for n in BASE] for o in train])
-        y_train = np.array([o.log_yield for o in train])
-        c = controls(train, "region+trend")
-        coef, *_ = np.linalg.lstsq(c, y_train - x_train @ beta, rcond=None)
-        names = sorted(regions)
-        level = dict(zip(names, coef[:len(names)], strict=True))
-        slope = dict(zip(names, coef[len(names):], strict=True))
-        mean_weather: dict[str, Array] = {}
-        for g in names:
-            rows = np.array([[o.x[n] for n in ("gdd", "edd", "p")] for o in train if o.geo == g])
-            m = rows.mean(axis=0)
-            mean_weather[g] = np.array([m[0], m[1], m[2], m[2] ** 2])
-        predicted, observed, normal, area = [], [], [], []
-        for o in test:
-            x_now = np.array([o.x[n] for n in BASE])
-            effect_mean = float(mean_weather[o.geo] @ beta)
-            norm = level[o.geo] + slope[o.geo] * (year - 2012) + effect_mean
-            predicted.append(float(x_now @ beta) - effect_mean)
-            observed.append(o.log_yield - norm)
-            normal.append(norm)
-            area.append(o.area)
-            by_region.append({"year": year, "geo": o.geo, "predicted": predicted[-1],
-                              "observed": observed[-1]})
-        pr, ob, nm, ar = (np.array(v) for v in (predicted, observed, normal, area))
-        base = float(np.sum(ar * np.exp(nm)))
-        out.append({
-            "year": year, "regions": len(test),
-            "correlation": float(np.corrcoef(pr, ob)[0, 1]),
-            "variance_explained": float(1 - np.sum((ob - pr) ** 2)
-                                        / np.sum((ob - ob.mean()) ** 2)),
-            "eu_yield_observed_pct": 100 * (float(np.sum(ar * np.exp(nm + ob))) / base - 1),
-            "eu_yield_predicted_pct": 100 * (float(np.sum(ar * np.exp(nm + pr))) / base - 1),
-        })
+        result = _e4_year(obs_all, year)
+        if result is not None:
+            out.append(result[0])
+            by_region += result[1]
     return out, by_region
+
+
+def _e4_year(obs_all: Sequence[Obs], year: int,
+             ) -> tuple[dict[str, Any], list[dict[str, Any]], dict[str, float]] | None:
+    """E4 for one year: the summary, each region's anomalies, and each country's part of
+    the gap between the observed and predicted EU change (points, most negative first)."""
+    train = [o for o in obs_all if o.year != year]
+    test = [o for o in obs_all if o.year == year]
+    regions = {o.geo for o in train}
+    test = [o for o in test if o.geo in regions]
+    if not test:
+        return None
+    f = estimate(train, BASE, "region+trend")
+    beta = f.beta
+    x_train = np.array([[o.x[n] for n in BASE] for o in train])
+    y_train = np.array([o.log_yield for o in train])
+    c = controls(train, "region+trend")
+    coef, *_ = np.linalg.lstsq(c, y_train - x_train @ beta, rcond=None)
+    names = sorted(regions)
+    level = dict(zip(names, coef[:len(names)], strict=True))
+    slope = dict(zip(names, coef[len(names):], strict=True))
+    mean_weather: dict[str, Array] = {}
+    for g in names:
+        rows = np.array([[o.x[n] for n in ("gdd", "edd", "p")] for o in train if o.geo == g])
+        m = rows.mean(axis=0)
+        mean_weather[g] = np.array([m[0], m[1], m[2], m[2] ** 2])
+    predicted, observed, normal, area = [], [], [], []
+    by_region: list[dict[str, Any]] = []
+    for o in test:
+        x_now = np.array([o.x[n] for n in BASE])
+        effect_mean = float(mean_weather[o.geo] @ beta)
+        norm = level[o.geo] + slope[o.geo] * (year - 2012) + effect_mean
+        predicted.append(float(x_now @ beta) - effect_mean)
+        observed.append(o.log_yield - norm)
+        normal.append(norm)
+        area.append(o.area)
+        by_region.append({"year": year, "geo": o.geo, "predicted": predicted[-1],
+                          "observed": observed[-1]})
+    pr, ob, nm, ar = (np.array(v) for v in (predicted, observed, normal, area))
+    base = float(np.sum(ar * np.exp(nm)))
+    summary = {
+        "year": year, "regions": len(test),
+        "correlation": float(np.corrcoef(pr, ob)[0, 1]),
+        "variance_explained": float(1 - np.sum((ob - pr) ** 2)
+                                    / np.sum((ob - ob.mean()) ** 2)),
+        "eu_yield_observed_pct": 100 * (float(np.sum(ar * np.exp(nm + ob))) / base - 1),
+        "eu_yield_predicted_pct": 100 * (float(np.sum(ar * np.exp(nm + pr))) / base - 1),
+    }
+    gap: dict[str, float] = {}
+    parts = 100 * ar * (np.exp(nm + ob) - np.exp(nm + pr)) / base
+    for o, part in zip(test, parts, strict=True):
+        gap[o.country] = gap.get(o.country, 0.0) + float(part)
+    return summary, by_region, dict(sorted(gap.items(), key=lambda kv: kv[1]))
 
 
 def sensitivity(panel: Sequence[Mapping[str, str]],
@@ -421,9 +438,139 @@ def sensitivity(panel: Sequence[Mapping[str, str]],
                 ("E3", e3["estimate"], e3["low"], e3["high"], e3["p"])):
             rows.append({"variant": variant.name, "label": variant.label, "estimand": key,
                          "n": m.n, "estimate": est, "low": low, "high": high, "p_twoway": p,
-                         "sign_reversed": bool(np.sign(est) != np.sign(reference[key])
-                                               and (low > 0 or high < 0))})
+                         "sign_reversed": bool(np.sign(est) != np.sign(reference[key]))})
     return rows
+
+
+# ----------------------------------------------------------------------------------
+# Post-hoc checks after the review (METHODS.md change log, 2026-10-26)
+# ----------------------------------------------------------------------------------
+
+
+def _dry_deltas(obs: Sequence[Obs], key: str = "p") -> tuple[float, float]:
+    """Mean over regions of P10 - P50 and of P10^2 - P50^2 (E2's contrast weights)."""
+    by_region: dict[str, list[float]] = {}
+    for o in obs:
+        by_region.setdefault(o.geo, []).append(o.x[key])
+    d1 = [float(np.percentile(v, 10) - np.percentile(v, 50)) for v in by_region.values()]
+    d2 = [float(np.percentile(v, 10) ** 2 - np.percentile(v, 50) ** 2)
+          for v in by_region.values()]
+    return float(np.mean(d1)), float(np.mean(d2))
+
+
+def _shares(f: Fit, term: str, obs: Sequence[Obs]) -> dict[str, float]:
+    """Each country's share of a regressor's identifying variation (after the effects)."""
+    column = f.x[:, f.index([term])[0]]
+    total = float(np.sum(column ** 2))
+    out: dict[str, float] = {}
+    for o, value in zip(obs, column, strict=True):
+        out[o.country] = out.get(o.country, 0.0) + float(value ** 2) / total
+    return dict(sorted(out.items(), key=lambda kv: -kv[1]))
+
+
+SOUTH_OF = 40.0     # degrees north, the review's split: much of the wheat is harvested in June
+
+
+def load_latitudes(path: Path) -> dict[str, float]:
+    with path.open(encoding="utf-8") as stream:
+        return {r["geo"]: float(r["latitude"]) for r in csv.DictReader(stream)}
+
+
+def _year_2003(all_obs: Sequence[Obs]) -> dict[str, Any]:
+    """Where E4's 2003 miss comes from: each country's part of the gap, the worst regions'
+    heat and wheat area, and each country's heat in 2003 against its other years."""
+    year = 2003
+    result = _e4_year(all_obs, year)
+    if result is None:
+        return {}
+    _, rows, gap = result
+    by_key = {(o.geo, o.year): o for o in all_obs}
+
+    def heat(group: Sequence[Obs]) -> float:     # wheat-area-weighted degree days above 30 °C
+        return float(sum(o.area * o.x["edd"] * 10 for o in group) / sum(o.area for o in group))
+
+    worst = []
+    for r in sorted(rows, key=lambda r: r["observed"])[:3]:
+        own = [o for o in all_obs if o.geo == r["geo"] and o.year != year]
+        worst.append({"geo": r["geo"], "observed": r["observed"], "predicted": r["predicted"],
+                      "edd_30": by_key[(r["geo"], year)].x["edd"] * 10,
+                      "edd_30_other_years": float(np.mean([o.x["edd"] * 10 for o in own])),
+                      "area_kha": {str(y): by_key[(r["geo"], y)].area
+                                   for y in (year - 1, year, year + 1)
+                                   if (r["geo"], y) in by_key}})
+    countries: dict[str, dict[str, float]] = {}
+    for country in sorted({o.country for o in all_obs}):
+        now = [o for o in all_obs if o.country == country and o.year == year]
+        other = [o for o in all_obs if o.country == country and o.year != year]
+        if now and other:
+            countries[country] = {"edd_30": heat(now), "edd_30_other_years": heat(other)}
+    return {"gap_by_country": gap, "worst_regions": worst, "heat_by_country": countries}
+
+
+def post_hoc(primary: Mapping[str, Any], obs: Sequence[Obs], all_obs: Sequence[Obs],
+             weather: Mapping[tuple[str, int, str, str], Mapping[str, str]],
+             latitude: Mapping[str, float]) -> dict[str, Any]:
+    """Checks added after the review; each is reported as post hoc, never as a verdict."""
+    # The E2 contrast as one coefficient: g1 p + g2 p2 = theta (p / d1) + g2 (p2 - d2/d1 p).
+    d1, d2 = _dry_deltas(obs)
+    contrast = estimate(obs, ["gdd", "edd"], PRIMARY.effects, extra={
+        "contrast": lambda o: o.x["p"] / d1,
+        "curvature": lambda o: o.x["p2"] - (d2 / d1) * o.x["p"]})
+    direct = tests_for(contrast, ["contrast"])
+    direct["estimate"] = float(contrast.beta[contrast.index(["contrast"])[0]])
+    direct["p_twoway_holm"] = holm([primary["E1"]["p_twoway"], direct["p_twoway"],
+                                    primary["E3"]["p_twoway"]])[1]
+    direct["p_bootstrap_holm"] = holm([primary["E1"]["p_bootstrap"], direct["p_bootstrap"],
+                                       primary["E3"]["p_bootstrap"]])[1]
+    m1 = estimate(obs, BASE, PRIMARY.effects)
+    v, df = twoway_vcov(m1)
+    i1, i2 = m1.index(["p"])[0], m1.index(["p2"])[0]
+    g1, g2 = float(m1.beta[i1]), float(m1.beta[i2])
+    grad = np.zeros(m1.k)
+    grad[i1], grad[i2] = -1 / (2 * g2), g1 / (2 * g2 ** 2)
+    half = _tcrit(df) * float(np.sqrt(grad @ v @ grad))
+    optimum = -g1 / (2 * g2)
+    with_bins = [o for o in obs if OMITTED_BIN in o.x]
+    with_bins, _ = without_singletons(with_bins, PRIMARY.effects)
+    names = [b for b in bin_names() if b != OMITTED_BIN]
+    m3 = estimate(with_bins, [*names, "p", "p2"], PRIMARY.effects)
+    j = m3.index(["t_ge36"])[0]
+    v3, _ = twoway_vcov(m3)
+    one_way: dict[str, float] = {}
+    for label, codes in (("country", m3.country), ("year", m3.year),
+                         ("country_year", np.char.add(np.char.add(m3.country, "|"), m3.year))):
+        vv, _ = cluster_vcov(m3.x, m3.resid, codes, m3.k)
+        one_way[label] = float(np.sqrt(vv[j, j]))
+    bins_bootstrap = {b: tests_for(m3, [b])["p_bootstrap"] for b in names}
+    e3 = next(c for c in primary["coefficients"]
+              if c["model"] == "M1 with E3" and c["term"] == "edd_post")
+    no_spain, _ = without_singletons([o for o in obs if o.country != "ES"], PRIMARY.effects)
+    m_ns = estimate(no_spain, BASE, PRIMARY.effects)
+    e1_ns = next(r for r in coefficient_rows(m_ns, "M1 without Spain") if r["term"] == "edd")
+    keys = [(o.geo, o.year) for o in obs]
+    july = [weather[(g, y, "jul", "all")] for g, y in keys]
+    season = [weather[(g, y, "mar_jul", "all")] for g, y in keys]
+    edd_jul = sum(float(w["edd_30"]) for w in july)
+    hot_jul = [float(w["t_ge36"]) for w in july]
+    hot_season = sum(float(w["t_ge36"]) for w in season)
+    south = {g for g, _ in keys if latitude[g] < SOUTH_OF}
+    hot_south = sum(h for h, (g, _) in zip(hot_jul, keys, strict=True) if g in south)
+    return {
+        "E2_direct": direct,
+        "optimum_mm": {"estimate": 100 * optimum, "low": 100 * (optimum - half),
+                       "high": 100 * (optimum + half)},
+        "identifying_variation": {"edd": _shares(m1, "edd", obs),
+                                  "t_ge36": _shares(m3, "t_ge36", with_bins)},
+        "E1_without_spain": {k: e1_ns[k] for k in ("estimate", "se", "low", "high", "p", "n")},
+        "ge36_se": {"twoway": float(np.sqrt(v3[j, j])), **one_way},
+        "M3_p_bootstrap": bins_bootstrap,
+        "E3_minimum_detectable_holm": minimum_detectable(e3["se"], e3["df"], ALPHA / 3),
+        "E4_2003": _year_2003(all_obs),
+        "july": {"edd_30_share": edd_jul / sum(float(w["edd_30"]) for w in season),
+                 "ge36_share": sum(hot_jul) / hot_season,
+                 "south_of": SOUTH_OF, "south_regions": sorted(south),
+                 "ge36_july_south_share_of_all": hot_south / hot_season},
+    }
 
 
 # ----------------------------------------------------------------------------------
@@ -431,14 +578,16 @@ def sensitivity(panel: Sequence[Mapping[str, str]],
 # ----------------------------------------------------------------------------------
 
 
-def run(panel_path: Path, weather_path: Path) -> dict[str, Any]:
+def run(panel_path: Path, weather_path: Path, latitude_path: Path) -> dict[str, Any]:
     panel, weather = load(panel_path, weather_path)
     primary = primary_results(panel, weather)
     obs = primary.pop("_fits")["obs"]
     all_obs = observations(PRIMARY, panel, weather)
     e4, e4_regions = out_of_sample(all_obs)
     return {**primary, "M3": shape(obs), "E4": e4, "E4_regions": e4_regions,
-            "sensitivity": sensitivity(panel, weather, primary)}
+            "sensitivity": sensitivity(panel, weather, primary),
+            "post_hoc": post_hoc(primary, obs, all_obs, weather,
+                                 load_latitudes(latitude_path))}
 
 
 def _round(value: Any) -> Any:
@@ -489,16 +638,50 @@ def _bin(term: str) -> str:
     return f"{int(low)}-{int(high)} °C"
 
 
-def _e2_caveat(dry: Mapping[str, float], verdict: str) -> list[str]:
-    """When the rule establishes E2 but the dry-season effect's own interval includes 0."""
-    if not verdict.startswith("established") or dry["high"] < 0:
+def _top(shares: Mapping[str, float], n: int = 3) -> str:
+    return ", ".join(f"{c} {v:.0%}" for c, v in list(shares.items())[:n])
+
+
+def _bins_below(p_values: Mapping[str, float]) -> str:
+    clear = [f"{_bin(b)} ({_p(p)})" for b, p in p_values.items() if p < ALPHA]
+    return ", ".join(clear) if clear else "no bin"
+
+
+def _after_review_2003(e4: Mapping[str, Any]) -> list[str]:
+    if not e4:
         return []
-    return [f"**E2, read with care.** The registered rule takes significance from the joint "
-            f"test of the precipitation terms and the sign from the dry-season effect. The "
-            f"joint test rejects under both methods, but the dry-season effect's own two-way "
-            f"interval, [{dry['low']:+.4f}, {dry['high']:+.4f}], includes zero. Precipitation "
-            f"clearly matters, while the size of the loss in a typical dry season is not "
-            f"pinned down.", ""]
+    gap = list(e4["gap_by_country"].items())[:3]
+    heat = e4["heat_by_country"]
+    worst = "; ".join(
+        f"{w['geo']} {_pct(w['observed'])} observed against {_pct(w['predicted'])} predicted, "
+        f"{w['edd_30']:.1f} degree days above 30 °C against {w['edd_30_other_years']:.1f} in "
+        f"its other years, wheat area "
+        + " → ".join(f"{a:.0f}" for a in w["area_kha"].values())
+        + f" thousand ha ({', '.join(w['area_kha'])})" for w in e4["worst_regions"])
+    return [
+        "- **The 2003 miss.** The gap between the observed and predicted EU change, by "
+        "country (points; the three largest negative parts): "
+        + ", ".join(f"{c} {v:+.1f}" for c, v in gap) + ". Their 2003 heat, wheat-area "
+        "weighted, against their other years: "
+        + ", ".join(f"{c} {heat[c]['edd_30']:.1f} against {heat[c]['edd_30_other_years']:.1f}"
+                    for c, _ in gap) + " degree days above 30 °C. The three worst regions: "
+        + worst + "."]
+
+
+def _e2_after_review(r: Mapping[str, Any]) -> list[str]:
+    """The direct test of E2's contrast, added after the review (post hoc)."""
+    t = r["post_hoc"]["E2_direct"]
+    dry = r["E2"]["dry_season"]
+    return [f"**E2, after review (post hoc).** The registered rule takes significance from "
+            f"the joint test of the precipitation terms, which asks whether precipitation "
+            f"matters anywhere in its range, and only the sign from the dry-season "
+            f"contrast. Tested directly, the contrast ({dry['effect']:+.4f}, two-way 95% "
+            f"interval [{dry['low']:+.4f}, {dry['high']:+.4f}]) gives two-way "
+            f"p = {_p(t['p_twoway'])} and wild bootstrap p = {_p(t['p_bootstrap'])}, or "
+            f"{_p(t['p_twoway_holm'])} and {_p(t['p_bootstrap_holm'])} after Holm: not "
+            f"determined. The registered verdict stays on record, but this study does not "
+            f"establish a drought effect ([REVIEW.md](REVIEW.md); METHODS.md change log, "
+            f"2026-10-26).", ""]
 
 
 def render(r: Mapping[str, Any], command: str) -> str:
@@ -536,7 +719,7 @@ def render(r: Mapping[str, Any], command: str) -> str:
         f"| E3, change in E1 after 2011 | {post['estimate']:+.4f} log points | "
         f"{_p(d['E3']['p_twoway_holm'])} | {_p(d['E3']['p_bootstrap_holm'])} | "
         f"{d['E3']['verdict']} |", "",
-        *_e2_caveat(dry, d["E2"]["verdict"]),
+        *_e2_after_review(r),
         "## Sample", "",
         f"- {s['n']} region-years in {s['regions']} regions of {s['countries']} countries "
         f"({s['country_years']} country-years), harvest years {s['years'][0]} to "
@@ -571,7 +754,9 @@ def render(r: Mapping[str, Any], command: str) -> str:
         f"- **Second route.** M1 by explicit dummy variables agrees within the registered "
         f"tolerance of {r['second_route']['tolerance']:.0e}.", "",
         "## M3, the shape of the temperature response (descriptive)", "",
-        "Change in log yield for one more day in each 3 °C bin, instead of 15-18 °C.", "",
+        "Change in log yield for 24 more hours in each 3 °C bin, instead of 24 hours at "
+        "15-18 °C. The bins measure time, so 24 hours in a bin is not a calendar day that "
+        "reaches that temperature; divide by 24 for one hour.", "",
         "| Bin | Estimate | 95% interval |", "| --- | ---: | ---: |",
     ]
     lines += [f"| {_bin(b['term'])} | {b['estimate']:+.4f} | "
@@ -588,13 +773,42 @@ def render(r: Mapping[str, Any], command: str) -> str:
               f"{x['eu_yield_predicted_pct']:+.1f}% |" for x in r["E4"]]
     lines += ["", "## Sensitivity analyses", "",
               "E1 to E3 under each variant fixed in advance (two-way 95% intervals). A "
-              "variant changes a decision only if it reverses the sign with an interval "
-              "that excludes zero.", "",
+              "variant changes a decision only if it reverses the sign (METHODS.md, "
+              "section 6).", "",
               "| Variant | Estimand | N | Estimate | 95% interval | Sign reversed |",
               "| --- | --- | ---: | ---: | ---: | --- |"]
     lines += [f"| {x['label']} | {x['estimand']} | {x['n']} | {x['estimate']:+.4f} | "
               f"[{x['low']:+.4f}, {x['high']:+.4f}] | {'**yes**' if x['sign_reversed'] else 'no'} |"
               for x in r["sensitivity"]]
+    ph = r["post_hoc"]
+    ns, opt, se, jul = ph["E1_without_spain"], ph["optimum_mm"], ph["ge36_se"], ph["july"]
+    lines += ["", "## After review (post hoc)", "",
+              "Checks added after the review ([REVIEW.md](REVIEW.md)); none is a registered "
+              "result and none changes a registered verdict.", "",
+              f"- **Precipitation optimum:** {opt['estimate']:.0f} mm, delta-method 95% "
+              f"interval [{opt['low']:.0f}, {opt['high']:.0f}] mm.",
+              f"- **Where the identifying variation comes from:** for `edd`, "
+              f"{_top(ph['identifying_variation']['edd'])}; for time at 36 °C and above, "
+              f"{_top(ph['identifying_variation']['t_ge36'])} (each country's share of the "
+              f"variable's sum of squares once the fixed effects are removed).",
+              f"- **E1 without Spain:** {ns['estimate']:+.4f} [{ns['low']:+.4f}, "
+              f"{ns['high']:+.4f}] (n = {ns['n']}).",
+              f"- **The 36 °C bin's standard error:** two-way {se['twoway']:.4f}, against "
+              f"one-way {se['country']:.4f} (country), {se['year']:.4f} (year) and "
+              f"{se['country_year']:.4f} (country-year).",
+              f"- **When the heat falls:** July holds {jul['edd_30_share']:.0%} of the "
+              f"season's degree days above 30 °C and {jul['ge36_share']:.0%} of its time at "
+              f"36 °C and above; {jul['ge36_july_south_share_of_all']:.0%} of all that time "
+              f"is July time in the {len(jul['south_regions'])} regions south of "
+              f"{jul['south_of']:.0f}°N (by centroid), where much of the wheat is harvested "
+              f"in June.",
+              f"- **M3 under the wild bootstrap** (M3 was registered with the two-way "
+              f"intervals only, and no bin is adjusted for multiplicity): p below 0.05 for "
+              f"{_bins_below(ph['M3_p_bootstrap'])}.",
+              f"- **E3's detectable change at the Holm level** (5% divided by 3, 80% power): "
+              f"{ph['E3_minimum_detectable_holm']:.4f} log points per 10 degree days, "
+              f"against {r['E3']['minimum_detectable']:.4f} at 5%.",
+              *_after_review_2003(ph["E4_2003"])]
     lines += ["", "## Reproduce", "", "```", command, "```", ""]
     return "\n".join(lines)
 

@@ -35,6 +35,7 @@ WINDOWS: dict[str, tuple[tuple[int, int], tuple[int, int]]] = {
     "mar_jul": ((3, 1), (7, 31)),    # primary
     "apr_jul": ((4, 1), (7, 31)),    # sensitivity
     "aug_sep": ((8, 1), (9, 30)),    # placebo (E5)
+    "jul": ((7, 1), (7, 31)),        # descriptive, post hoc: when the heat falls (change log)
 }
 READ_FROM, READ_TO = (3, 1), (9, 30)
 WEIGHTINGS: tuple[str, ...] = ("all", "below_800m")
@@ -274,6 +275,20 @@ def build_weather(eobs_dir: Path, regions: Mapping[str, BaseGeometry],
                                                            else round(x, 6))
                     rows.append(row)
     return rows
+
+
+def region_latitudes(regions: Mapping[str, BaseGeometry]) -> list[dict[str, object]]:
+    """Latitude of each region's centroid in degrees north (for descriptive splits)."""
+    return [{"geo": code, "latitude": round(float(geometry.centroid.y), 4)}
+            for code, geometry in sorted(regions.items())]
+
+
+def write_latitudes(rows: Sequence[Mapping[str, object]], path: Path) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("w", encoding="utf-8", newline="") as stream:
+        writer = csv.DictWriter(stream, fieldnames=("geo", "latitude"), lineterminator="\n")
+        writer.writeheader()
+        writer.writerows(rows)
 
 
 COLUMNS = ("geo", "year", "window", "weighting", "missing_temp", "missing_prec", *VARIABLES)

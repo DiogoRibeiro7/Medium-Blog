@@ -3,24 +3,35 @@
 A reproducible study of how common-wheat yields in the NUTS-2 regions of the European
 Union respond to extreme heat and drought during the growing season, 2000-2024.
 
-**Status: article drafted (phase 3).**
+**Status: article drafted and corrected after a critical review (phase 3).**
 
 - **Plan.** [METHODS.md](METHODS.md) was committed before any yield was related to any
-  weather variable. Its change log records three decisions made before any estimate.
+  weather variable. Its change log records the decisions made before any estimate, and
+  the review's findings after the results.
 - **Panel.** [docs/DATA.md](docs/DATA.md) describes it.
 - **Results.** They are in [docs/RESULTS.md](docs/RESULTS.md):
-  - **Placebo (E5):** passes. Post-harvest weather is unrelated to yields.
+  - **Placebo (E5):** passes. There is no detectable link between post-harvest weather
+    and yields.
   - **Heat (E1):** 10 more degree days above 30 °C go with 2.6% lower yields. This is
-    not determined after Holm: two-way p = 0.26, wild bootstrap p = 0.52.
-  - **Drought (E2):** established negative by the registered rule. Precipitation
-    matters jointly under both methods, and yields peak at about 350 mm over March to
-    July. The loss in a typical dry season (-2.3%) has an interval that includes zero.
-  - **Change since 2012 (E3):** not determined. The design can only detect changes of
-    6% or more per 10 degree days.
+    not determined after Holm: two-way p = 0.26, wild bootstrap p = 0.52. Without Spain
+    the estimate is -1.6%.
+  - **Drought (E2):** "established negative" by the registered rule, but the rule is
+    flawed. It takes its significance from the joint test of the precipitation terms,
+    which rejects mostly through the curvature and the wet end. Tested directly (post
+    hoc), the dry-season effect (-2.3%) gives two-way p = 0.13 and wild bootstrap
+    p = 0.16, so **the drought effect is not established**. Yields peak at about
+    350 mm over March to July, with a 95% interval of 274-419 mm.
+  - **Change since 2012 (E3):** not determined. The design can only detect a change of
+    0.061 log points (about 6%) per 10 degree days above 30 °C, with 80% power at 5%,
+    or 0.071 at the Holm level.
+- **Review.** [docs/REVIEW.md](docs/REVIEW.md) is a critical review written after the
+  results and before publication. Its checks are in the "After review (post hoc)"
+  section of [docs/RESULTS.md](docs/RESULTS.md), beside the registered results and
+  never in place of them.
 - **Article.** The Medium article ([publication/article.md](publication/article.md))
   and its four figures are generated from the committed results. It carries the E-OBS
-  acknowledgement and citation. It is not published: the author reviews and publishes
-  it.
+  acknowledgement and citation, and the Eurostat and GISCO notices under its subtitle.
+  It is not published: the author reviews and publishes it.
 - [ROADMAP.md](ROADMAP.md) lists the stages.
 
 ## Question and estimands
@@ -48,7 +59,7 @@ are not effects of a permanent change in climate, to which farmers adapt.
 | --- | --- | --- |
 | Eurostat `apro_cpshr` | Common wheat (`C1110`): area and harvested production at EU standard humidity, NUTS-2, annual | Free reuse with attribution: © European Union, Eurostat |
 | E-OBS v33.0e (ECA&D, Copernicus) | Daily maximum and minimum temperature, precipitation and elevation, 0.25° grid, 1950-2025 | Non-commercial research and education only (below) |
-| GISCO NUTS boundaries | NUTS-2 polygons of the 2006, 2010, 2013, 2016, 2021 and 2024 versions, 1:3 million | © EuroGeographics for the administrative boundaries |
+| GISCO NUTS boundaries | NUTS-2 polygons of the 2006, 2010, 2013, 2016, 2021 and 2024 versions, 1:3 million | Non-commercial use only, with the notice © EuroGeographics for the administrative boundaries (below) |
 
 **E-OBS terms.** "These observational data are strictly for use in non-commercial
 research and non-commercial education projects only." This study and its articles are
@@ -62,13 +73,19 @@ not commercial. Any publication must carry:
 > Ensemble Version of the E-OBS Temperature and Precipitation Datasets, J. Geophys. Res.
 > Atmos., 123. doi:10.1029/2017JD028200
 
+**GISCO terms.** The boundaries may be used "on condition that the data will not be
+used for commercial purposes", and the copyright notice "© EuroGeographics for the
+administrative boundaries" must appear on the publication's introductory page. The
+article carries it under its subtitle.
+
 **What is committed.**
 
 - The Eurostat crop snapshots (`snapshots/eurostat-crops-<date>/`) and Eurostat's
   official NUTS change tables (`snapshots/nuts-changes-2026-10-23/`) are committed
   byte-identical, with SHA-256 hashes in their manifests.
 - The derived tables are committed in `docs/panel/`: the region map, the regional
-  weather and the panel. The panel regenerates in the offline tests.
+  weather, each region's centroid latitude and the panel. The panel regenerates in the
+  offline tests.
 - The E-OBS files (about 2.5 GB) and the boundary files (about 37 MB) are not committed.
   Their URLs and SHA-256 hashes are, and `eu-wheat audit` checks local copies against
   them.
@@ -86,9 +103,9 @@ poetry run eu-wheat fetch-weather --output-dir data/eobs --manifest snapshots/eo
 poetry run eu-wheat fetch-nuts-changes --output-dir snapshots/nuts-changes-2026-10-23
 poetry run eu-wheat audit --crops snapshots/eurostat-crops-2026-10-23 --weather-manifest snapshots/eobs-v33.0e.json --boundaries-manifest snapshots/gisco-nuts-2026-10-22.json
 poetry run eu-wheat regions --crops snapshots/eurostat-crops-2026-10-23 --nuts-changes snapshots/nuts-changes-2026-10-23 --boundaries-dir data/boundaries --output docs/panel/region_map.csv
-poetry run eu-wheat weather --eobs-dir data/eobs --boundaries-dir data/boundaries --output docs/panel/weather.csv   # about 2.5 minutes
+poetry run eu-wheat weather --eobs-dir data/eobs --boundaries-dir data/boundaries --output docs/panel/weather.csv --latitudes docs/panel/region_latitude.csv
 poetry run eu-wheat panel --crops snapshots/eurostat-crops-2026-10-23 --region-map docs/panel/region_map.csv --weather docs/panel/weather.csv --output-dir docs/panel --report docs/DATA.md
-poetry run eu-wheat estimate --panel docs/panel/panel.csv --weather docs/panel/weather.csv --output-dir docs/results --report docs/RESULTS.md   # about 1.5 minutes
+poetry run eu-wheat estimate --panel docs/panel/panel.csv --weather docs/panel/weather.csv --latitudes docs/panel/region_latitude.csv --output-dir docs/results --report docs/RESULTS.md
 poetry run eu-wheat publication            # values, article and figures; --check compares
 poetry run pytest
 poetry run ruff check src tests
