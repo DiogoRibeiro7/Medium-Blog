@@ -120,9 +120,9 @@ The Monte Carlo summaries show a sharp contrast among the designs.
 | Design | Mean OLS | Mean IV | Median IV | Mean first-stage F |
 | --- | ---: | ---: | ---: | ---: |
 | Valid, strong | 1.3323 | 0.9984 | 0.9985 | 502.8 |
-| Valid, moderate | 1.4782 | 0.9910 | 0.9991 | 47.7 |
-| Valid, weak | 1.4971 | 1.1290 | 1.0346 | 5.7 |
-| Invalid, strong | 1.4326 | 1.2993 | 1.3018 | 499.9 |
+| Valid, moderate | 1.4776 | 0.9910 | 0.9991 | 47.7 |
+| Valid, weak | 1.4962 | 1.1290 | 1.0346 | 5.7 |
+| Invalid, strong | 1.4332 | 1.2993 | 1.3027 | 498.6 |
 
 The true treatment effect is one. Strong valid IV recovers that effect closely. Ordinary regression remains biased because U confounds treatment and outcome. With moderate relevance, IV remains centred reasonably close to the target but shows more sampling variability.
 
@@ -151,9 +151,9 @@ The fifth and ninety-fifth percentiles of the IV estimates provide more informat
 | Design | IV 5th percentile | IV 95th percentile | IV RMSE |
 | --- | ---: | ---: | ---: |
 | Valid, strong | 0.9243 | 1.0657 | 0.0434 |
-| Valid, moderate | 0.7137 | 1.2227 | 0.1525 |
+| Valid, moderate | 0.7137 | 1.2030 | 0.1525 |
 | Valid, weak | −0.1855 | 1.6510 | 3.2620 |
-| Invalid, strong | 1.2387 | 1.3537 | 0.3023 |
+| Invalid, strong | 1.2299 | 1.3639 | 0.3021 |
 
 Strong valid IV has a relatively concentrated distribution around one. The moderate instrument has a noticeably wider interval of empirical estimates while remaining informative in this setting.
 
