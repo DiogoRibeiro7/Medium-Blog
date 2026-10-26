@@ -1,0 +1,8 @@
+Population: R^2 of x (BPSysAve/10) on age, female and BMI 0.197; coefficient of age in that regression 0.0424 per year
+  unconditional reliability 0.9: conditional reliability 0.878; theoretical naive bias (one reading) -12.2%; theoretical age-coefficient bias +12.9%
+  unconditional reliability 0.7: conditional reliability 0.652; theoretical naive bias (one reading) -34.8%; theoretical age-coefficient bias +36.9%
+  unconditional reliability 0.5: conditional reliability 0.445; theoretical naive bias (one reading) -55.5%; theoretical age-coefficient bias +58.7%
+SIMEX example (classical error, reliability 0.5, n = 1000, B = 200): naive slope 0.2203; quadratic extrapolation 0.3286; rational extrapolation 0.5309; truth 0.5
+Logistic, rational SIMEX, reliability 0.5: 6 of 300 estimates above 1 (truth 0.3), largest 92.53; median 0.3139 (bias +4.6%)
+Logistic, rational SIMEX, reliability 0.7: 0 of 300 estimates above 1 (truth 0.3), largest 0.48; median 0.3149 (bias +5.0%)
+Logistic, rational SIMEX, reliability 0.9: 2 of 300 estimates above 1 (truth 0.3), largest 28.06; median 0.3088 (bias +2.9%)

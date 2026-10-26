@@ -1,0 +1,14 @@
+NHANES 2009-2012 adults aged 20-79: 10990; with three systolic readings, age and BMI: 9390
+Systolic: pairwise correlations r1-r2 0.949, r1-r3 0.935, r2-r3 0.953; ICC of one reading from readings 1-3 0.943 (within-person SD 4.23 mmHg), from readings 2-3 0.952 (SD 3.84); between-person SD of the 2-3 mean 17.24
+Diastolic: 9468 with three readings; 104 people with at least one reading of 0 mmHg (164 zero readings); ICC of one reading without them 0.894 (within SD 3.82)
+All systolic readings even: True (recorded to 2 mmHg); share of readings ending in 0: 0.185 (0.200 if the last even digit were uniform)
+First reading minus mean of readings 2-3: mean +1.39 mmHg (SD 5.44); regression on age per decade +0.476 (SE 0.035), female +0.334 (SE 0.111), BMI -0.014 (SE 0.009)
+  by age band: 20-29: +0.64 (SE 0.11, n 1766); 30-39: +0.74 (SE 0.11, n 1684); 40-49: +0.78 (SE 0.12, n 1728); 50-59: +1.74 (SE 0.14, n 1592); 60-69: +2.25 (SE 0.15, n 1602); 70-79: +2.93 (SE 0.20, n 1018)
+Second minus third reading: mean +0.74; on age per decade +0.243 (SE 0.035)
+  SBP (reading 1           ) ~ age + female + BMI: age slope 0.4632 mmHg/year (SE 0.0103), R^2 0.2159
+  SBP (reading 2           ) ~ age + female + BMI: age slope 0.4277 mmHg/year (SE 0.0102), R^2 0.2002
+  SBP (reading 3           ) ~ age + female + BMI: age slope 0.4035 mmHg/year (SE 0.0100), R^2 0.1908
+  SBP (mean of 2-3 (NHANES)) ~ age + female + BMI: age slope 0.4156 mmHg/year (SE 0.0100), R^2 0.2002
+  SBP (mean of 1-3         ) ~ age + female + BMI: age slope 0.4315 mmHg/year (SE 0.0100), R^2 0.2098
+  age slope with reading 1 minus with the 2-3 mean: +0.0476 (+11.5%)
+Implied attenuation factor for SBP as an exposure (unconditional): one reading 0.952, mean of two 0.975

@@ -1,0 +1,32 @@
+Davis: 200 people; 17 without reported weight, 17 without reported height; 181 with all four values
+Row 12: measured weight 166 kg, height 57 cm; reported 56.0 kg, 163.0 cm
+-- with row 12 (n = 181)
+  F: n 99; weight error (reported - measured) mean -1.63 kg, SD 11.19, slope of reported on measured 0.262, correlation 0.5011; height error mean -1.28 cm, SD 11.07, slope 0.198, correlation 0.4154
+  M: n 82; weight error (reported - measured) mean +0.59 kg, SD 2.49, slope of reported on measured 0.990, correlation 0.9793; height error mean -1.76 cm, SD 2.15, slope 0.999, correlation 0.9515
+  log weight ~ log height + female, measured weight and height         exponent -0.495 (SE 0.434)
+  log weight ~ log height + female, reported weight and height         exponent 1.864 (SE 0.260)
+  log weight ~ log height + female, reported weight, measured height   exponent 0.361 (SE 0.301)
+  log weight ~ log height + female, measured weight, reported height   exponent 1.857 (SE 0.268)
+  BMI >= 25: measured 36, reported 41, both 32; reported BMI minus measured: mean -2.17
+-- without row 12 (n = 180)
+  F: n 98; weight error (reported - measured) mean -0.52 kg, SD 2.03, slope of reported on measured 0.938, correlation 0.9563; height error mean -2.38 cm, SD 1.99, slope 0.991, correlation 0.9400
+  M: n 82; weight error (reported - measured) mean +0.59 kg, SD 2.49, slope of reported on measured 0.990, correlation 0.9793; height error mean -1.76 cm, SD 2.15, slope 0.999, correlation 0.9515
+  log weight ~ log height + female, measured weight and height         exponent 2.087 (SE 0.253)
+  log weight ~ log height + female, reported weight and height         exponent 1.864 (SE 0.260)
+  log weight ~ log height + female, reported weight, measured height   exponent 2.144 (SE 0.239)
+  log weight ~ log height + female, measured weight, reported height   exponent 1.838 (SE 0.264)
+  BMI >= 25: measured 35, reported 41, both 32; reported BMI minus measured: mean +0.54
+
+Simulated internal validation: 2000 random subsets of 25% keep their measured values; target = measured-data exponent without row 12, 2.087
+  with row 12, row 12 not in the validation subset     Reports only (naive)                 n 1523; median 1.864 (5-95%: 1.864 to 1.864); RMSE vs target 0.223
+  with row 12, row 12 not in the validation subset     Validation rows only                 n 1523; median 2.096 (5-95%: 1.395 to 2.846); RMSE vs target 0.454
+  with row 12, row 12 not in the validation subset     Calibrated height, reported weight   n 1523; median 2.088 (5-95%: 1.871 to 2.338); RMSE vs target 0.144
+  with row 12, row 12 not in the validation subset     Multiple imputation of both          n 1523; median 2.063 (5-95%: 1.698 to 2.459); RMSE vs target 0.234
+  with row 12, row 12 in the validation subset         Reports only (naive)                 n  477; median 1.864 (5-95%: 1.864 to 1.864); RMSE vs target 0.223
+  with row 12, row 12 in the validation subset         Validation rows only                 n  477; median -0.873 (5-95%: -0.930 to -0.813); RMSE vs target 2.958
+  with row 12, row 12 in the validation subset         Calibrated height, reported weight   n  477; median -0.556 (5-95%: -0.676 to -0.435); RMSE vs target 2.643
+  with row 12, row 12 in the validation subset         Multiple imputation of both          n  477; median -0.883 (5-95%: -0.942 to -0.820); RMSE vs target 2.968
+  without row 12                                       Reports only (naive)                 n 2000; median 1.864 (5-95%: 1.864 to 1.864); RMSE vs target 0.222
+  without row 12                                       Validation rows only                 n 2000; median 2.081 (5-95%: 1.400 to 2.894); RMSE vs target 0.453
+  without row 12                                       Calibrated height, reported weight   n 2000; median 2.084 (5-95%: 1.873 to 2.357); RMSE vs target 0.149
+  without row 12                                       Multiple imputation of both          n 2000; median 2.062 (5-95%: 1.696 to 2.477); RMSE vs target 0.238

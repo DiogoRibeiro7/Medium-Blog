@@ -1,0 +1,18 @@
+wage2: n = 935; controls exper, tenure, married, south, urban, black; corr(IQ, KWW) = 0.414
+OLS, no ability measure   educ 0.0654 (SE 0.0064)
+OLS, IQ                   educ 0.0544 (SE 0.0073); IQ 0.0036 (SE 0.0010)
+OLS, KWW                  educ 0.0576 (SE 0.0073); KWW 0.0050 (SE 0.0020)
+OLS, IQ and KWW           educ 0.0498 (SE 0.0078); IQ 0.0031 (SE 0.0010); KWW 0.0038 (SE 0.0020)
+2SLS, IQ instrumented by KWW: educ 0.0250 (SE 0.0188), IQ 0.0130 (SE 0.0055); first-stage t of KWW 6.4
+2SLS, KWW instrumented by IQ: educ 0.0175 (SE 0.0161), KWW 0.0309 (SE 0.0091); first-stage t of IQ 6.8
+Bootstrap (2000): IV difference (IQ-by-KWW minus KWW-by-IQ) +0.0075, SE 0.0191; 95% percentile interval -0.0309 to +0.0434
+R^2 of IQ on schooling and the controls: 0.366; an assumed reliability at or below this makes the error variance exceed the variance of IQ the other regressors leave unexplained, and the correction is undefined
+  IQ reliability 1.0: corrected educ 0.0544, IQ 0.0036
+  IQ reliability 0.9: corrected educ 0.0523, IQ 0.0042
+  IQ reliability 0.8: corrected educ 0.0493, IQ 0.0052
+  IQ reliability 0.7: corrected educ 0.0445, IQ 0.0068
+  IQ reliability 0.6: corrected educ 0.0355, IQ 0.0097
+  IQ reliability 0.5: corrected educ 0.0129, IQ 0.0170
+Reliability of IQ at which the corrected educ coefficient equals the IV estimate 0.0250: 0.54 (IQ coefficient there 0.0130)
+Reliability at which the corrected IQ coefficient equals its IV estimate 0.0130: 0.54
+SIMEX (rational) with IQ reliability 0.9: educ 0.0528, IQ 0.0041
