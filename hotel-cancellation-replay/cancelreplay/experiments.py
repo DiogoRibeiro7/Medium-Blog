@@ -320,3 +320,25 @@ def non_refund_composition(rp: Replayer) -> dict:
         in_blocks_of_ten_or_more=float((sizes[nr] >= 10).mean()),
         segment_shares={k: float(v) for k, v in df.loc[nr, "market_segment"].value_counts(normalize=True).items()},
     )
+
+
+def worst_night(rp: Replayer) -> dict:
+    """The reference system's night with the most walked guests, and the block behind it."""
+    pred = rp.predict(REFERENCE)
+    log = nightly_log(pred, WALK_MULTIPLE)
+    night = log.loc[log["walked_distribution_blocks"].idxmax()]
+    g = pred.loc[(pred["hotel"] == night["hotel"]) & (pred["arrival"] == night["arrival"])]
+    blocks = g.groupby("block").agg(size=("p", "size"), p=("p", "mean"), released=("label", "sum"),
+                                    lead_time=("lead_time", "first"), segment=("market_segment", "first"))
+    big = blocks.sort_values("size", ascending=False).iloc[0]
+    return dict(
+        hotel=night["hotel"], arrival=str(night["arrival"].date()), visible=int(night["visible"]),
+        released=int(night["released"]), resold_blocks=int(night["q_distribution_blocks"]),
+        walked_blocks=int(night["walked_distribution_blocks"]),
+        resold_independent=int(night["q_distribution_independent"]),
+        walked_independent=int(night["walked_distribution_independent"]),
+        total_walks_reference=int(log["walked_distribution_blocks"].sum()),
+        largest_block_size=int(big["size"]), largest_block_mean_p=float(big["p"]),
+        largest_block_released=int(big["released"]), largest_block_lead_time=int(big["lead_time"]),
+        largest_block_segment=str(big["segment"]),
+    )

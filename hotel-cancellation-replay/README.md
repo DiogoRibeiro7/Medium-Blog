@@ -44,7 +44,7 @@ From this folder:
 python -m pip install -r requirements.txt
 python -m pytest -q
 python -m cancelreplay check   # data contract
-python -m cancelreplay run     # every variant, results and figures (about 15 minutes)
+python -m cancelreplay run     # every variant, results and figures (about 11 minutes on two cores)
 python -m cancelreplay fetch   # download the CSV again and verify its checksum
 ```
 

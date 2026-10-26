@@ -39,6 +39,7 @@ def run(make_figures: bool = True) -> dict:
     blocks = E.block_structure(rp)
     drift = E.drift_by_quarter(rp)
     non_refund = E.non_refund_composition(rp)
+    worst = E.worst_night(rp)
     tuned = {f"{k[0]} | {k[1]} | h={k[3]}": v for k, v in rp._tuned.items()}
 
     results = dict(
@@ -52,6 +53,7 @@ def run(make_figures: bool = True) -> dict:
         blocks=blocks,
         drift_by_quarter=drift,
         non_refund=non_refund,
+        worst_night=worst,
         tuned_parameters=tuned,
         settings=dict(walk_multiple=E.WALK_MULTIPLE, bootstrap_draws=E.BOOTSTRAP_DRAWS,
                       live_start=str(E.LIVE_START.date()), live_end=str(E.LIVE_END.date())),
@@ -128,6 +130,10 @@ def summary_text(r: dict) -> str:
         if row["key"].startswith("horizon"):
             L.append(f"  {row['key']}: oracle per night EUR {row['oracle_per_night']:.1f}, "
                      f"released per night {row['released_per_night']:.2f}, profit per night EUR {row['profit_per_night']:.1f}")
+
+    L.append("\nReference system's worst night")
+    for k, v in r["worst_night"].items():
+        L.append(f"  {k}: {_fmt(v)}")
 
     L.append("\nBy hotel: share of oracle | resold/night | walked/night | profit/night")
     for row in r["by_hotel"]:

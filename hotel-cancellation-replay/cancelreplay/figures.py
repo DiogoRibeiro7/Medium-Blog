@@ -5,6 +5,7 @@ from __future__ import annotations
 import matplotlib
 
 matplotlib.use("Agg")
+import matplotlib.dates as mdates  # noqa: E402
 import matplotlib.pyplot as plt  # noqa: E402
 import numpy as np  # noqa: E402
 import pandas as pd  # noqa: E402
@@ -72,8 +73,8 @@ def auc_by_question(results: dict, path):
     ax.scatter([], [], s=50, color=ORANGE, label="City hotel (Lisbon)")
     ax.legend(loc="lower left", bbox_to_anchor=(-0.02, 1.0), ncol=2, frameon=False, fontsize=8.5,
               labelcolor=INK_2, handletextpad=0.3)
-    _titles(fig, "The same gradient-boosting model, four questions",
-            "AUC depends far more on the question asked than on the algorithm")
+    _titles(fig, "One gradient-boosting model, five ways of asking how good it is",
+            "Algorithm and settings never change; the question, the columns and the split do")
     fig.savefig(path, facecolor=SURFACE)
     plt.close(fig)
 
@@ -85,7 +86,7 @@ GROUP_TITLES = {
 }
 
 
-def value_by_variant(results: dict, path, clip=(-0.6, 0.45)):
+def value_by_variant(results: dict, path, clip=(-0.6, 0.5)):
     table = pd.DataFrame(results["variants"]).set_index("key")
     ref_share = table.loc["reference", "share_of_oracle"]
     order = []
@@ -94,7 +95,7 @@ def value_by_variant(results: dict, path, clip=(-0.6, 0.45)):
         order += [("row", k) for k in table.index if table.loc[k, "group"] == group]
     n = len(order)
     fig = _figure(9.0, 0.36 * n + 1.6)
-    ax = fig.add_axes([0.43, 0.08, 0.54, 0.80])
+    ax = fig.add_axes([0.43, 0.095, 0.54, 0.79])
     _style(ax)
     lo, hi = clip
     ypos = np.arange(n)[::-1]
@@ -122,16 +123,16 @@ def value_by_variant(results: dict, path, clip=(-0.6, 0.45)):
         ax.scatter([share], [y], s=55, color=colour, edgecolor=SURFACE, linewidth=2, zorder=3)
     ax.axvline(ref_share, color=INK_2, linewidth=1, zorder=0)
     ax.axvline(0, color=MUTED, linewidth=1, linestyle=(0, (2, 2)), zorder=0)
-    ax.text(ref_share, n - 0.1, f"reference {ref_share:.2f}", ha="center", va="bottom", fontsize=8.2, color=INK_2)
+    ax.text(ref_share, n - 0.1, f"reference {ref_share:.3f}", ha="center", va="bottom", fontsize=8.2, color=INK_2)
     ax.text(0, n - 0.1, "resell nothing", ha="center", va="bottom", fontsize=8.2, color=MUTED)
     ax.set_yticks(ypos, labels, fontsize=8.6, color=INK)
     ax.set_xlim(lo, hi)
     ax.set_ylim(-0.7, n + 0.6)
-    ax.set_xlabel("Share of the perfect-foresight profit captured, 854 arrival nights (95% interval for the difference from the reference)",
-                  fontsize=8.2, color=INK_2)
+    ax.set_xlabel("Share of perfect-foresight profit captured over 854 arrival nights\n"
+                  "(bar: 95% interval for the difference from the reference)", fontsize=8.4, color=INK_2)
     fig.text(0.02, 0.985, "Where the value of a cancellation model is decided", fontsize=13,
              fontweight="bold", color=INK, ha="left", va="top")
-    fig.text(0.02, 0.985 - 0.045 * 8 / (0.36 * n + 1.6) * 1.6,
+    fig.text(0.02, 0.985 - 0.32 / (0.36 * n + 1.6),
              "Each line changes one decision in the reference system and replays it on the real outcomes",
              fontsize=9.5, color=INK_2, ha="left", va="top")
     fig.text(0.02, 0.008, SOURCE, fontsize=7.5, color=MUTED, ha="left", va="bottom")
@@ -149,13 +150,15 @@ def nights_window(logs: dict, path, hotel="City Hotel", start="2016-10-01", end=
     _style(ax)
     ax.grid(axis="x", visible=False)
     ax.grid(axis="y", color=GRID, linewidth=0.8)
-    ax.bar(r.index, r["released"], width=0.8, color=BAR, label="Rooms actually released after the batch")
+    ax.bar(r.index, r["released"], width=0.8, color=BAR, label="Rooms released after the batch")
     ax.step(r.index, r["q_distribution_blocks"], where="mid", color=BLUE, linewidth=2,
-            label="Resold by the reference system")
+            label="Resold: reference system")
     ax.step(b.index, b["q_distribution_blocks"], where="mid", color=ORANGE, linewidth=2,
-            label="Resold by the same model trained on all bookings")
+            label="Resold: same model trained on all bookings")
     ax.set_ylabel("Rooms per arrival night", fontsize=9, color=INK_2)
     ax.legend(loc="lower left", bbox_to_anchor=(0.0, 1.0), ncol=3, frameon=False, fontsize=8.3, labelcolor=INK_2)
+    ax.xaxis.set_major_locator(mdates.MonthLocator(bymonthday=(1, 15)))
+    ax.xaxis.set_major_formatter(mdates.DateFormatter("%-d %b"))
     ax.margins(x=0.01)
     _titles(fig, f"{hotel.replace(' Hotel', ' hotel')}, arrivals October to December 2016",
             "Same algorithm, same columns; only the rows it learned from differ", top=0.97)
