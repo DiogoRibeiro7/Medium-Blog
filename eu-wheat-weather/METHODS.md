@@ -182,6 +182,134 @@ sign.
   station density. A regional average is a coarse proxy for the weather over the wheat
   fields of a region.
 
+## 8. Amendment A1 (2026-10-26, after the results)
+
+Registered after the results and after the critical review
+([docs/REVIEW.md](docs/REVIEW.md)), and before anything below was computed. It answers
+the review's three main problems:
+
+- heat after the harvest counts as growing-season heat (finding D2);
+- some yield series are not regional measurements (D1);
+- inference with few effective clusters and dependence across countries within a year
+  (E3, E4).
+
+It also tests E2 directly (E1). Its results are reported beside the registered results
+of sections 4-6 and never replace them. Where the verdicts differ, both are reported,
+the registered one first.
+
+**What was seen before it was written.**
+
+- **Results:** every registered result, and every post-hoc check of the change log of
+  2026-10-26.
+- **The review's explorations:**
+  - dropping 86 suspect rows (two-way only), which moved E1 to -0.0304 (p = 0.067);
+  - splitting the 36 °C bin by July in the south.
+- **The crop calendar:** its distribution of maturity days over Europe. No yield was
+  looked at with it.
+
+### 8.1 A window that ends at harvest
+
+- **Source.** The GGCMI Phase 3 crop calendar, v1.01 (Jägermeyr et al. 2021, Nature
+  Food; Zenodo, doi:10.5281/zenodo.5062513; CC BY 4.0).
+  - File: `wwh_rf_ggcmi_crop_calendar_phase3_v1.01.nc4`, rainfed winter wheat.
+  - Variable: `maturity_day`, a day of the year on a 0.5° grid.
+  - Frozen with its SHA-256 hash in `snapshots/`.
+- **One calendar for every region.** EU common wheat is mostly winter-sown and rainfed,
+  and the calendar does not say where spring wheat is grown. Regions where much of the
+  wheat is spring-sown, as in Finland and Sweden, are kept, and this is reported as a
+  limitation.
+- **A region's maturity day.**
+  - Each E-OBS cell takes the value of the 0.5° calendar cell that contains its
+    centre.
+  - The region's maturity day is the mean over its cells, with the weights of section
+    3.2 (all cells), over the cells that have a value, rounded to the nearest day.
+  - The day of the year is read in a non-leap year (day 201 is 20 July), and that
+    calendar date is used in every harvest year.
+- **The harvest window.** From 1 March to the maturity date, both included.
+  - `GDD`, `EDD` (30 °C), `P` and the M3 bins are computed over it, exactly as in
+    section 3.2.
+  - The weather is read up to 31 October so that the placebo window below fits. No
+    existing window changes.
+- **The amended placebo (E5-A).** `EDD` above 30 °C and precipitation over the 61 days
+  after the maturity date (from the day after it). This replaces 1 August to
+  30 September, which is not after harvest in the north (finding C7).
+
+### 8.2 A rule for yield series that are not regional measurements
+
+It applies to the panel after the rules of section 3.1. Regions are then checked again
+against the 10-year rule, and singletons are dropped as before. The rule uses published
+areas, productions and yields only, never weather.
+
+- **Q1, one figure for every region.** In a country-year with at least 3 panel regions,
+  if all their yields lie within 0.5% of each other (largest over smallest below
+  1.005), those region-years are excluded.
+- **Q2, a pro-rated series.**
+  - The setting: a country with at least 4 regions present in both years `t-1` and `t`.
+  - The test: the standard deviation across those regions of the change in log yield
+    from `t-1` to `t`.
+  - The rule: if it is below 0.02, both years of those regions are excluded.
+- **Q3, carried forward.** If a region's published area and production both equal the
+  previous year's, the later year is excluded.
+- **Q4, sums that disagree.**
+  - The setting: a published NUTS-1 code with at least two published NUTS-2 codes
+    beneath it in a year.
+  - The test: their productions sum to within 1% of the NUTS-1 production, while their
+    areas sum to more than 5% away from the NUTS-1 area.
+  - The rule: that year's region-years of those NUTS-2 codes are excluded.
+- **Q5, level shifts.** If a region has three or more consecutive panel years in which
+  its yield is below half, or above twice, the median of its other panel years, those
+  years are excluded.
+- **How the thresholds were set.** They were set after the review described these
+  series, so they are informed by the data. They are not informed by any estimate of
+  this amendment. The report lists every excluded row by rule. It also lists which of
+  the review's cases (finding D1) the rule catches and which it misses.
+
+### 8.3 Inference and E2
+
+- **E2 is tested directly.**
+  - M1's precipitation terms are reparametrised so that the dry-season contrast of the
+    change log of 2026-10-24 is a single coefficient: `P / d1` and `P^2 - (d2 / d1) P`.
+  - `d1` and `d2` are the means over regions of `P10 - P50` and `P10^2 - P50^2`.
+  - E2 is established negative if that coefficient's test rejects and it is negative.
+- **Two-way.** As registered (change log of 2026-10-24).
+- **The wild bootstrap.** It now uses the two-way statistic.
+  - **The statistic:** the two-way t, or for E5-A the two-way Wald statistic. The
+    two-way variance, with its eigenvalue rule, is recomputed in every draw.
+  - **The draws:** the null is imposed, with Rademacher weights and 9999 draws, run twice:
+    - weights by country (seed 20261101), which keeps each country's dependence over
+      the years;
+    - weights by year (seed 20261102), which keeps the dependence across countries
+      within a year.
+  - **The p-value:** the share of draws at least as extreme, in absolute value for a t.
+    The amended bootstrap p-value is the larger of the two runs.
+  - **Reference:** MacKinnon, Nielsen and Webb (2021) on the wild bootstrap with
+    multiway clustering.
+- **Decisions.** Holm over E1-E3, separately under the two-way method and the amended
+  bootstrap. A result is established only if it is rejected under both, with the sign
+  its rule requires (section 5).
+- **Leave one country out (descriptive).** E1, E2 and E3 are re-estimated without each
+  country in turn, re-applying the singleton rule. The report gives the range and the
+  country whose removal moves each estimate most. This decides nothing.
+
+### 8.4 Specification and reporting
+
+- **M1-A.** M1 on the sample of 8.2, with the variables of the harvest window. E1 to
+  E3 and E5-A are decided from M1-A alone. E3 and its minimum detectable change are as
+  registered, and the change is also given at the Holm level (5% divided by 3).
+- **Which change does what (descriptive).** E1 and E2 are reported with two-way
+  intervals and both p-values of 8.3 under four combinations:
+  - the registered window and sample, so that only the inference changes;
+  - the harvest window alone;
+  - the data rule alone;
+  - both, which is M1-A.
+- **Sensitivity (fixed now).** A window that ends 14 days before the maturity date,
+  reported for E1-E3. As in section 6, it changes a decision only if it reverses a sign.
+- **M3-A (descriptive).** The bins over the harvest window, with two-way intervals and
+  the amended bootstrap p-values.
+- **Not recomputed.** E4, and the sensitivity analyses of section 6.
+- **Report.** `docs/AMENDMENT.md`, generated like `docs/RESULTS.md`. Any change to this
+  section after a result is computed goes in the change log.
+
 ## Change log
 
 - **2026-10-23, phase 1, before any estimate: NUTS-1 regions.**
@@ -303,3 +431,8 @@ sign.
     nothing changes.
   - **The temperature bins.** They measure time as fractions of 24 hours. The report and
     the article now give M3 per 24 hours or per hour, never "per day".
+- **2026-10-26, after the results, before any of it is computed: Amendment A1
+  (section 8).** It adds three things: a window that ends at harvest, a rule for yield
+  series that are not regional measurements, and inference that allows for dependence
+  across countries within a year. It also tests E2 directly. It is registered before any
+  of it is computed, and its results are reported beside the registered ones.
