@@ -1,0 +1,17 @@
+== phones: n = 24, known anomalies at rows [15, 16, 17, 18, 19, 20]
+  OLS                  intercept -260.0592  slope   5.0415 (SE 1.6579); |t| > 2.5: rows [20]; Cook's D > 4/n: rows [20, 23, 24]
+  LAD                  intercept  -77.3656  slope   1.5640
+  Huber M              intercept -102.5301  slope   2.0396 (SE 0.4281)
+  Bisquare M from OLS  intercept  -52.3025  slope   1.0980 (SE 0.0444)
+  LTS                  intercept  -56.5219  slope   1.1649; |robust residual / scale| > 2.5: rows [14, 15, 16, 17, 18, 19, 20, 21]
+  MM                   intercept  -52.4235  slope   1.1010 (SE 0.0451); |robust residual / scale| > 2.5: rows [15, 16, 17, 18, 19, 20, 21]
+  MM scale 2.1289; S start [-52.732, 1.1023], S scale 2.1289
+== stars: n = 47, known anomalies at rows [11, 20, 30, 34]
+  OLS                  intercept    6.7935  slope  -0.4133 (SE 0.2863); |t| > 2.5: rows []; Cook's D > 4/n: rows [14, 20, 30, 34]
+  LAD                  intercept    8.1492  slope  -0.6932
+  Huber M              intercept    6.8659  slope  -0.4285 (SE 0.2926)
+  Bisquare M from OLS  intercept    6.8235  slope  -0.4180 (SE 0.3056)
+  LTS                  intercept  -13.6240  slope   4.2192; |robust residual / scale| > 2.5: rows [7, 9, 11, 20, 30, 34]
+  MM                   intercept   -4.9694  slope   2.2532 (SE 0.7558); |robust residual / scale| > 2.5: rows [11, 20, 30, 34]
+  MM scale 0.4715; S start [-9.5712, 3.2904], S scale 0.4715
+  MCD robust distance > 2.24: rows [7, 11, 14, 20, 30, 34]; classical leverage h > 2p/n: rows [11, 20, 30, 34]

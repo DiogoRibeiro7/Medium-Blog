@@ -1,0 +1,15 @@
+dataCar: 4624 claims; mean 2014, median 762, largest 55922; top 1% of claims = 12.5% of the total; top 10% = 50.7%
+100 random 70/30 splits; predicted total / actual total on the test claims
+  Gamma GLM (log link)           ratio mean 1.010 (5-95%: 0.915-1.095); RMSE 3500; MAE 1987
+  OLS on log claim, smearing     ratio mean 1.006 (5-95%: 0.912-1.091); RMSE 3498; MAE 1980
+  OLS on log claim, exp(fit)     ratio mean 0.459 (5-95%: 0.423-0.494); RMSE 3663; MAE 1642
+  MM on log claim, exp(fit)      ratio mean 0.431 (5-95%: 0.398-0.465); RMSE 3681; MAE 1639
+  MM on log claim, smearing      ratio mean 1.007 (5-95%: 0.913-1.093); RMSE 3499; MAE 1982
+  OLS on claim                   ratio mean 1.011 (5-95%: 0.914-1.098); RMSE 3501; MAE 1990
+  Huber M on claim               ratio mean 0.613 (5-95%: 0.560-0.664); RMSE 3585; MAE 1691
+  MM on claim                    ratio mean 0.369 (5-95%: 0.339-0.400); RMSE 3728; MAE 1638
+Mean predicted vs mean observed claim by driver age band (averaged over splits):
+  Gamma GLM (log link)           age 1: 2592 vs 2605; age 2: 2175 vs 2097; age 3: 1933 vs 1912; age 4: 1937 vs 1947; age 5: 1723 vs 1719; age 6: 1849 vs 1870
+  MM on log claim, exp(fit)      age 1: 1036 vs 2605; age 2: 864 vs 2097; age 3: 849 vs 1912; age 4: 835 vs 1947; age 5: 793 vs 1719; age 6: 847 vs 1870
+  MM on log claim, smearing      age 1: 2422 vs 2605; age 2: 2019 vs 2097; age 3: 1985 vs 1912; age 4: 1951 vs 1947; age 5: 1854 vs 1719; age 6: 1981 vs 1870
+Full-data fits on log claim: OLS scale 1.183, MM scale 1.212; MM intercept - OLS intercept -0.058; share of claims with MM weight < 0.5: 1.0%; |MM residual / scale| > 3: 0.1%

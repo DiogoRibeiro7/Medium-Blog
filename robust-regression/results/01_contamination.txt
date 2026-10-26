@@ -1,0 +1,275 @@
+Population: 53837 diamonds with plausible dimensions; log price regenerated from the fitted model, sigma = 0.1457; coefficients const 7.5618, lc 1.8778, cut_n 0.0318, col_n 0.0780, cla_n 0.1231
+n = 500 per sample, 300 replications per cell; target: coefficient on log carat = 1.8778; Monte Carlo SE of a 95% coverage ~ 0.013
+-- clean data
+  OLS                            mean 1.8775 bias -0.0004 (-0.0%) median 1.8774 SD 0.0124 RMSE 0.0124 cover 0.957 meanSE 0.0126
+  OLS, drop |t| > 3              mean 1.8775 bias -0.0003 (-0.0%) median 1.8764 SD 0.0126 RMSE 0.0126 cover 0.953 meanSE 0.0125 flagged-clean 0.0029
+  OLS, drop |t| > 3 repeatedly   mean 1.8775 bias -0.0004 (-0.0%) median 1.8763 SD 0.0126 RMSE 0.0126 cover 0.960 meanSE 0.0124 flagged-clean 0.0033
+  OLS, drop Cook's D > 4/n       mean 1.8771 bias -0.0007 (-0.0%) median 1.8771 SD 0.0135 RMSE 0.0135 cover 0.907 meanSE 0.0112 flagged-clean 0.0511
+  LAD                            mean 1.8772 bias -0.0006 (-0.0%) median 1.8768 SD 0.0146 RMSE 0.0146 cover 0.967 meanSE 0.0162
+  Huber M (statsmodels)          mean 1.8773 bias -0.0006 (-0.0%) median 1.8769 SD 0.0123 RMSE 0.0123 cover 0.973 meanSE 0.0130
+  Huber (scikit-learn)           mean 1.8773 bias -0.0005 (-0.0%) median 1.8771 SD 0.0125 RMSE 0.0125
+  Bisquare M from OLS            mean 1.8773 bias -0.0005 (-0.0%) median 1.8768 SD 0.0123 RMSE 0.0123 cover 0.973 meanSE 0.0130
+  Theil-Sen                      mean 1.8783 bias +0.0004 (+0.0%) median 1.8794 SD 0.0180 RMSE 0.0180
+  RANSAC                         mean 1.8773 bias -0.0005 (-0.0%) median 1.8767 SD 0.0129 RMSE 0.0129 flagged-clean 0.0064
+  LTS                            mean 1.8780 bias +0.0002 (+0.0%) median 1.8782 SD 0.0370 RMSE 0.0370 flagged-clean 0.0077
+  S                              mean 1.8777 bias -0.0001 (-0.0%) median 1.8770 SD 0.0223 RMSE 0.0223 flagged-clean 0.0036
+  MM                             mean 1.8773 bias -0.0005 (-0.0%) median 1.8768 SD 0.0123 RMSE 0.0123 cover 0.960 meanSE 0.0130 flagged-clean 0.0031
+-- 1% prices x10
+  OLS                            mean 1.8796 bias +0.0018 (+0.1%) median 1.8802 SD 0.0227 RMSE 0.0227 cover 0.967 meanSE 0.0233
+  OLS, drop |t| > 3              mean 1.8784 bias +0.0006 (+0.0%) median 1.8787 SD 0.0135 RMSE 0.0134 cover 0.940 meanSE 0.0127 flagged-bad 1.000 flagged-clean 0.0000
+  OLS, drop |t| > 3 repeatedly   mean 1.8787 bias +0.0009 (+0.0%) median 1.8787 SD 0.0135 RMSE 0.0135 cover 0.937 meanSE 0.0125 flagged-bad 1.000 flagged-clean 0.0033
+  OLS, drop Cook's D > 4/n       mean 1.8786 bias +0.0008 (+0.0%) median 1.8787 SD 0.0136 RMSE 0.0136 cover 0.933 meanSE 0.0126 flagged-bad 1.000 flagged-clean 0.0015
+  LAD                            mean 1.8794 bias +0.0016 (+0.1%) median 1.8795 SD 0.0167 RMSE 0.0168 cover 0.950 meanSE 0.0164
+  Huber M (statsmodels)          mean 1.8787 bias +0.0009 (+0.0%) median 1.8795 SD 0.0136 RMSE 0.0136 cover 0.937 meanSE 0.0132
+  Huber (scikit-learn)           mean 1.8789 bias +0.0011 (+0.1%) median 1.8790 SD 0.0140 RMSE 0.0141
+  Bisquare M from OLS            mean 1.8786 bias +0.0008 (+0.0%) median 1.8792 SD 0.0136 RMSE 0.0136 cover 0.937 meanSE 0.0131
+  Theil-Sen                      mean 1.8804 bias +0.0026 (+0.1%) median 1.8806 SD 0.0191 RMSE 0.0192
+  RANSAC                         mean 1.8785 bias +0.0007 (+0.0%) median 1.8787 SD 0.0146 RMSE 0.0146 flagged-bad 1.000 flagged-clean 0.0065
+  LTS                            mean 1.8801 bias +0.0023 (+0.1%) median 1.8806 SD 0.0376 RMSE 0.0376 flagged-bad 1.000 flagged-clean 0.0066
+  S                              mean 1.8803 bias +0.0025 (+0.1%) median 1.8807 SD 0.0238 RMSE 0.0239 flagged-bad 1.000 flagged-clean 0.0031
+  MM                             mean 1.8786 bias +0.0008 (+0.0%) median 1.8791 SD 0.0136 RMSE 0.0136 cover 0.943 meanSE 0.0131 flagged-bad 1.000 flagged-clean 0.0026
+-- 2% prices x10
+  OLS                            mean 1.8783 bias +0.0005 (+0.0%) median 1.8756 SD 0.0329 RMSE 0.0328 cover 0.937 meanSE 0.0306
+  OLS, drop |t| > 3              mean 1.8787 bias +0.0009 (+0.0%) median 1.8787 SD 0.0128 RMSE 0.0128 cover 0.943 meanSE 0.0128 flagged-bad 1.000 flagged-clean 0.0000
+  OLS, drop |t| > 3 repeatedly   mean 1.8788 bias +0.0010 (+0.1%) median 1.8783 SD 0.0130 RMSE 0.0130 cover 0.947 meanSE 0.0126 flagged-bad 1.000 flagged-clean 0.0034
+  OLS, drop Cook's D > 4/n       mean 1.8788 bias +0.0009 (+0.0%) median 1.8784 SD 0.0129 RMSE 0.0129 cover 0.943 meanSE 0.0128 flagged-bad 1.000 flagged-clean 0.0002
+  LAD                            mean 1.8778 bias -0.0001 (-0.0%) median 1.8775 SD 0.0160 RMSE 0.0160 cover 0.960 meanSE 0.0167
+  Huber M (statsmodels)          mean 1.8786 bias +0.0008 (+0.0%) median 1.8782 SD 0.0136 RMSE 0.0136 cover 0.940 meanSE 0.0135
+  Huber (scikit-learn)           mean 1.8786 bias +0.0008 (+0.0%) median 1.8774 SD 0.0139 RMSE 0.0139
+  Bisquare M from OLS            mean 1.8786 bias +0.0008 (+0.0%) median 1.8783 SD 0.0130 RMSE 0.0130 cover 0.943 meanSE 0.0131
+  Theil-Sen                      mean 1.8794 bias +0.0016 (+0.1%) median 1.8798 SD 0.0196 RMSE 0.0196
+  RANSAC                         mean 1.8789 bias +0.0011 (+0.1%) median 1.8788 SD 0.0136 RMSE 0.0136 flagged-bad 1.000 flagged-clean 0.0056
+  LTS                            mean 1.8772 bias -0.0006 (-0.0%) median 1.8756 SD 0.0412 RMSE 0.0412 flagged-bad 1.000 flagged-clean 0.0061
+  S                              mean 1.8780 bias +0.0002 (+0.0%) median 1.8782 SD 0.0238 RMSE 0.0238 flagged-bad 1.000 flagged-clean 0.0027
+  MM                             mean 1.8786 bias +0.0008 (+0.0%) median 1.8781 SD 0.0130 RMSE 0.0130 cover 0.943 meanSE 0.0132 flagged-bad 1.000 flagged-clean 0.0024
+-- 5% prices x10
+  OLS                            mean 1.8822 bias +0.0044 (+0.2%) median 1.8831 SD 0.0445 RMSE 0.0446 cover 0.943 meanSE 0.0454
+  OLS, drop |t| > 3              mean 1.8773 bias -0.0005 (-0.0%) median 1.8768 SD 0.0126 RMSE 0.0126 cover 0.953 meanSE 0.0130 flagged-bad 1.000 flagged-clean 0.0000
+  OLS, drop |t| > 3 repeatedly   mean 1.8773 bias -0.0005 (-0.0%) median 1.8768 SD 0.0131 RMSE 0.0131 cover 0.947 meanSE 0.0128 flagged-bad 1.000 flagged-clean 0.0032
+  OLS, drop Cook's D > 4/n       mean 1.8774 bias -0.0005 (-0.0%) median 1.8768 SD 0.0127 RMSE 0.0126 cover 0.953 meanSE 0.0130 flagged-bad 0.997 flagged-clean 0.0000
+  LAD                            mean 1.8782 bias +0.0003 (+0.0%) median 1.8791 SD 0.0174 RMSE 0.0174 cover 0.950 meanSE 0.0172
+  Huber M (statsmodels)          mean 1.8781 bias +0.0003 (+0.0%) median 1.8788 SD 0.0139 RMSE 0.0139 cover 0.947 meanSE 0.0143
+  Huber (scikit-learn)           mean 1.8782 bias +0.0004 (+0.0%) median 1.8783 SD 0.0142 RMSE 0.0142
+  Bisquare M from OLS            mean 1.8775 bias -0.0003 (-0.0%) median 1.8772 SD 0.0131 RMSE 0.0131 cover 0.950 meanSE 0.0133
+  Theil-Sen                      mean 1.8803 bias +0.0024 (+0.1%) median 1.8800 SD 0.0207 RMSE 0.0208
+  RANSAC                         mean 1.8771 bias -0.0007 (-0.0%) median 1.8768 SD 0.0128 RMSE 0.0128 flagged-bad 1.000 flagged-clean 0.0049
+  LTS                            mean 1.8800 bias +0.0022 (+0.1%) median 1.8799 SD 0.0406 RMSE 0.0406 flagged-bad 1.000 flagged-clean 0.0045
+  S                              mean 1.8787 bias +0.0009 (+0.0%) median 1.8792 SD 0.0242 RMSE 0.0242 flagged-bad 1.000 flagged-clean 0.0016
+  MM                             mean 1.8775 bias -0.0003 (-0.0%) median 1.8772 SD 0.0131 RMSE 0.0131 cover 0.953 meanSE 0.0133 flagged-bad 1.000 flagged-clean 0.0014
+-- 10% prices x10
+  OLS                            mean 1.8805 bias +0.0027 (+0.1%) median 1.8785 SD 0.0602 RMSE 0.0602 cover 0.963 meanSE 0.0615
+  OLS, drop |t| > 3              mean 1.8818 bias +0.0040 (+0.2%) median 1.8803 SD 0.0755 RMSE 0.0755 cover 0.817 meanSE 0.0490 flagged-bad 0.410 flagged-clean 0.0000
+  OLS, drop |t| > 3 repeatedly   mean 1.8788 bias +0.0010 (+0.1%) median 1.8795 SD 0.0129 RMSE 0.0130 cover 0.947 meanSE 0.0131 flagged-bad 1.000 flagged-clean 0.0035
+  OLS, drop Cook's D > 4/n       mean 1.8816 bias +0.0037 (+0.2%) median 1.8813 SD 0.0163 RMSE 0.0167 cover 0.963 meanSE 0.0169 flagged-bad 0.913 flagged-clean 0.0000
+  LAD                            mean 1.8795 bias +0.0017 (+0.1%) median 1.8798 SD 0.0177 RMSE 0.0178 cover 0.953 meanSE 0.0184
+  Huber M (statsmodels)          mean 1.8792 bias +0.0014 (+0.1%) median 1.8796 SD 0.0150 RMSE 0.0151 cover 0.967 meanSE 0.0160
+  Huber (scikit-learn)           mean 1.8792 bias +0.0014 (+0.1%) median 1.8795 SD 0.0149 RMSE 0.0149
+  Bisquare M from OLS            mean 1.8789 bias +0.0011 (+0.1%) median 1.8787 SD 0.0130 RMSE 0.0131 cover 0.953 meanSE 0.0136
+  Theil-Sen                      mean 1.8808 bias +0.0030 (+0.2%) median 1.8804 SD 0.0276 RMSE 0.0277
+  RANSAC                         mean 1.8791 bias +0.0013 (+0.1%) median 1.8787 SD 0.0133 RMSE 0.0133 flagged-bad 1.000 flagged-clean 0.0034
+  LTS                            mean 1.8802 bias +0.0023 (+0.1%) median 1.8826 SD 0.0387 RMSE 0.0387 flagged-bad 1.000 flagged-clean 0.0025
+  S                              mean 1.8797 bias +0.0019 (+0.1%) median 1.8794 SD 0.0222 RMSE 0.0222 flagged-bad 1.000 flagged-clean 0.0008
+  MM                             mean 1.8789 bias +0.0011 (+0.1%) median 1.8787 SD 0.0130 RMSE 0.0130 cover 0.950 meanSE 0.0136 flagged-bad 1.000 flagged-clean 0.0007
+-- 20% prices x10
+  OLS                            mean 1.8741 bias -0.0037 (-0.2%) median 1.8725 SD 0.0796 RMSE 0.0796 cover 0.957 meanSE 0.0816
+  OLS, drop |t| > 3              mean 1.8741 bias -0.0037 (-0.2%) median 1.8725 SD 0.0796 RMSE 0.0796 cover 0.957 meanSE 0.0816 flagged-bad 0.000 flagged-clean 0.0000
+  OLS, drop |t| > 3 repeatedly   mean 1.8741 bias -0.0037 (-0.2%) median 1.8725 SD 0.0796 RMSE 0.0796 cover 0.957 meanSE 0.0816 flagged-bad 0.000 flagged-clean 0.0000
+  OLS, drop Cook's D > 4/n       mean 1.8627 bias -0.0151 (-0.8%) median 1.8636 SD 0.0870 RMSE 0.0881 cover 0.847 meanSE 0.0623 flagged-bad 0.405 flagged-clean 0.0000
+  LAD                            mean 1.8783 bias +0.0005 (+0.0%) median 1.8771 SD 0.0212 RMSE 0.0212 cover 0.940 meanSE 0.0223
+  Huber M (statsmodels)          mean 1.8767 bias -0.0011 (-0.1%) median 1.8766 SD 0.0227 RMSE 0.0227 cover 0.940 meanSE 0.0228
+  Huber (scikit-learn)           mean 1.8771 bias -0.0008 (-0.0%) median 1.8759 SD 0.0203 RMSE 0.0203
+  Bisquare M from OLS            mean 1.8773 bias -0.0005 (-0.0%) median 1.8766 SD 0.0143 RMSE 0.0143 cover 0.947 meanSE 0.0144
+  Theil-Sen                      mean 1.8759 bias -0.0019 (-0.1%) median 1.8728 SD 0.0476 RMSE 0.0476
+  RANSAC                         mean 1.8767 bias -0.0011 (-0.1%) median 1.8760 SD 0.0150 RMSE 0.0150 flagged-bad 1.000 flagged-clean 0.0022
+  LTS                            mean 1.8795 bias +0.0017 (+0.1%) median 1.8788 SD 0.0355 RMSE 0.0355 flagged-bad 1.000 flagged-clean 0.0003
+  S                              mean 1.8789 bias +0.0011 (+0.1%) median 1.8780 SD 0.0197 RMSE 0.0197 flagged-bad 1.000 flagged-clean 0.0001
+  MM                             mean 1.8773 bias -0.0006 (-0.0%) median 1.8766 SD 0.0143 RMSE 0.0143 cover 0.953 meanSE 0.0144 flagged-bad 1.000 flagged-clean 0.0001
+-- 30% prices x10
+  OLS                            mean 1.8777 bias -0.0001 (-0.0%) median 1.8862 SD 0.0982 RMSE 0.0980 cover 0.947 meanSE 0.0931
+  OLS, drop |t| > 3              mean 1.8777 bias -0.0001 (-0.0%) median 1.8862 SD 0.0982 RMSE 0.0980 cover 0.947 meanSE 0.0931 flagged-bad 0.000 flagged-clean 0.0000
+  OLS, drop |t| > 3 repeatedly   mean 1.8777 bias -0.0001 (-0.0%) median 1.8862 SD 0.0982 RMSE 0.0980 cover 0.947 meanSE 0.0931 flagged-bad 0.000 flagged-clean 0.0000
+  OLS, drop Cook's D > 4/n       mean 1.8659 bias -0.0119 (-0.6%) median 1.8692 SD 0.1275 RMSE 0.1278 cover 0.833 meanSE 0.0906 flagged-bad 0.089 flagged-clean 0.0002
+  LAD                            mean 1.8764 bias -0.0014 (-0.1%) median 1.8778 SD 0.0287 RMSE 0.0287 cover 1.000 meanSE 0.0785
+  Huber M (statsmodels)          mean 1.8782 bias +0.0004 (+0.0%) median 1.8831 SD 0.1158 RMSE 0.1156 cover 0.937 meanSE 0.1074
+  Huber (scikit-learn)           mean 1.8763 bias -0.0015 (-0.1%) median 1.8778 SD 0.0354 RMSE 0.0354
+  Bisquare M from OLS            mean 1.8776 bias -0.0002 (-0.0%) median 1.8862 SD 0.1090 RMSE 0.1088 cover 0.933 meanSE 0.1039
+  Theil-Sen                      mean 1.8820 bias +0.0042 (+0.2%) median 1.8869 SD 0.0743 RMSE 0.0743
+  RANSAC                         mean 1.8779 bias +0.0001 (+0.0%) median 1.8776 SD 0.0331 RMSE 0.0330 flagged-bad 0.999 flagged-clean 0.0030
+  LTS                            mean 1.8745 bias -0.0033 (-0.2%) median 1.8733 SD 0.0299 RMSE 0.0300 flagged-bad 1.000 flagged-clean 0.0000
+  S                              mean 1.8752 bias -0.0026 (-0.1%) median 1.8771 SD 0.0180 RMSE 0.0181 flagged-bad 1.000 flagged-clean 0.0000
+  MM                             mean 1.8763 bias -0.0015 (-0.1%) median 1.8780 SD 0.0149 RMSE 0.0149 cover 0.933 meanSE 0.0152 flagged-bad 1.000 flagged-clean 0.0000
+-- 40% prices x10
+  OLS                            mean 1.8899 bias +0.0121 (+0.6%) median 1.8847 SD 0.1069 RMSE 0.1074 cover 0.923 meanSE 0.0995
+  OLS, drop |t| > 3              mean 1.8899 bias +0.0121 (+0.6%) median 1.8847 SD 0.1069 RMSE 0.1074 cover 0.923 meanSE 0.0995 flagged-bad 0.000 flagged-clean 0.0000
+  OLS, drop |t| > 3 repeatedly   mean 1.8899 bias +0.0121 (+0.6%) median 1.8847 SD 0.1069 RMSE 0.1074 cover 0.923 meanSE 0.0995 flagged-bad 0.000 flagged-clean 0.0000
+  OLS, drop Cook's D > 4/n       mean 1.8859 bias +0.0081 (+0.4%) median 1.8831 SD 0.1236 RMSE 0.1236 cover 0.870 meanSE 0.0994 flagged-bad 0.016 flagged-clean 0.0004
+  LAD                            mean 1.8825 bias +0.0047 (+0.3%) median 1.8793 SD 0.0510 RMSE 0.0511 cover 1.000 meanSE 0.0969
+  Huber M (statsmodels)          mean 1.8899 bias +0.0121 (+0.6%) median 1.8847 SD 0.1069 RMSE 0.1074 cover 0.927 meanSE 0.0996
+  Huber (scikit-learn)           mean 1.8914 bias +0.0136 (+0.7%) median 1.8840 SD 0.1174 RMSE 0.1180
+  Bisquare M from OLS            mean 1.8913 bias +0.0135 (+0.7%) median 1.8853 SD 0.1167 RMSE 0.1172 cover 0.923 meanSE 0.1089
+  Theil-Sen                      mean 1.8926 bias +0.0148 (+0.8%) median 1.8981 SD 0.1268 RMSE 0.1274
+  RANSAC                         mean 1.8957 bias +0.0179 (+1.0%) median 1.8789 SD 0.1141 RMSE 0.1153 flagged-bad 0.986 flagged-clean 0.0088
+  LTS                            mean 1.8779 bias +0.0001 (+0.0%) median 1.8778 SD 0.0235 RMSE 0.0235 flagged-bad 1.000 flagged-clean 0.0000
+  S                              mean 1.8780 bias +0.0002 (+0.0%) median 1.8786 SD 0.0170 RMSE 0.0169 flagged-bad 1.000 flagged-clean 0.0000
+  MM                             mean 1.8779 bias +0.0001 (+0.0%) median 1.8786 SD 0.0162 RMSE 0.0162 cover 0.940 meanSE 0.0164 flagged-bad 1.000 flagged-clean 0.0000
+-- 1% carats x10
+  OLS                            mean 1.5668 bias -0.3111 (-16.6%) median 1.5667 SD 0.0296 RMSE 0.3125 cover 0.000 meanSE 0.1166
+  OLS, drop |t| > 3              mean 1.8773 bias -0.0005 (-0.0%) median 1.8771 SD 0.0133 RMSE 0.0133 cover 0.933 meanSE 0.0128 flagged-bad 1.000 flagged-clean 0.0000
+  OLS, drop |t| > 3 repeatedly   mean 1.8774 bias -0.0005 (-0.0%) median 1.8772 SD 0.0136 RMSE 0.0136 cover 0.920 meanSE 0.0126 flagged-bad 1.000 flagged-clean 0.0032
+  OLS, drop Cook's D > 4/n       mean 1.8747 bias -0.0031 (-0.2%) median 1.8748 SD 0.0134 RMSE 0.0137 cover 0.923 meanSE 0.0127 flagged-bad 1.000 flagged-clean 0.0025
+  LAD                            mean 1.8606 bias -0.0172 (-0.9%) median 1.8599 SD 0.0165 RMSE 0.0238 cover 0.787 meanSE 0.0151
+  Huber M (statsmodels)          mean 1.8558 bias -0.0220 (-1.2%) median 1.8557 SD 0.0140 RMSE 0.0261 cover 0.567 meanSE 0.0122
+  Huber (scikit-learn)           mean 1.8585 bias -0.0193 (-1.0%) median 1.8580 SD 0.0142 RMSE 0.0240
+  Bisquare M from OLS            mean 1.8772 bias -0.0006 (-0.0%) median 1.8767 SD 0.0137 RMSE 0.0137 cover 0.903 meanSE 0.0120
+  Theil-Sen                      mean 1.8629 bias -0.0149 (-0.8%) median 1.8627 SD 0.0192 RMSE 0.0243
+  RANSAC                         mean 1.8769 bias -0.0009 (-0.0%) median 1.8771 SD 0.0143 RMSE 0.0143 flagged-bad 1.000 flagged-clean 0.0080
+  LTS                            mean 1.8791 bias +0.0013 (+0.1%) median 1.8783 SD 0.0401 RMSE 0.0400 flagged-bad 1.000 flagged-clean 0.0066
+  S                              mean 1.8769 bias -0.0009 (-0.0%) median 1.8759 SD 0.0232 RMSE 0.0232 flagged-bad 1.000 flagged-clean 0.0031
+  MM                             mean 1.8772 bias -0.0006 (-0.0%) median 1.8767 SD 0.0136 RMSE 0.0136 cover 0.940 meanSE 0.0132 flagged-bad 1.000 flagged-clean 0.0026
+-- 2% carats x10
+  OLS                            mean 1.3483 bias -0.5295 (-28.2%) median 1.3474 SD 0.0270 RMSE 0.5302 cover 0.000 meanSE 0.1194
+  OLS, drop |t| > 3              mean 1.8771 bias -0.0007 (-0.0%) median 1.8778 SD 0.0134 RMSE 0.0134 cover 0.940 meanSE 0.0128 flagged-bad 1.000 flagged-clean 0.0000
+  OLS, drop |t| > 3 repeatedly   mean 1.8768 bias -0.0010 (-0.1%) median 1.8772 SD 0.0134 RMSE 0.0134 cover 0.947 meanSE 0.0127 flagged-bad 1.000 flagged-clean 0.0034
+  OLS, drop Cook's D > 4/n       mean 1.8737 bias -0.0041 (-0.2%) median 1.8740 SD 0.0138 RMSE 0.0144 cover 0.920 meanSE 0.0128 flagged-bad 1.000 flagged-clean 0.0044
+  LAD                            mean 1.8430 bias -0.0348 (-1.9%) median 1.8440 SD 0.0165 RMSE 0.0385 cover 0.377 meanSE 0.0142
+  Huber M (statsmodels)          mean 1.8333 bias -0.0445 (-2.4%) median 1.8343 SD 0.0138 RMSE 0.0466 cover 0.043 meanSE 0.0116
+  Huber (scikit-learn)           mean 1.8389 bias -0.0390 (-2.1%) median 1.8398 SD 0.0140 RMSE 0.0414
+  Bisquare M from OLS            mean 1.8767 bias -0.0011 (-0.1%) median 1.8765 SD 0.0134 RMSE 0.0134 cover 0.903 meanSE 0.0111
+  Theil-Sen                      mean 1.8497 bias -0.0281 (-1.5%) median 1.8501 SD 0.0197 RMSE 0.0343
+  RANSAC                         mean 1.8769 bias -0.0010 (-0.1%) median 1.8781 SD 0.0143 RMSE 0.0143 flagged-bad 1.000 flagged-clean 0.0068
+  LTS                            mean 1.8760 bias -0.0019 (-0.1%) median 1.8771 SD 0.0364 RMSE 0.0363 flagged-bad 1.000 flagged-clean 0.0061
+  S                              mean 1.8751 bias -0.0027 (-0.1%) median 1.8764 SD 0.0230 RMSE 0.0231 flagged-bad 1.000 flagged-clean 0.0027
+  MM                             mean 1.8767 bias -0.0011 (-0.1%) median 1.8767 SD 0.0134 RMSE 0.0134 cover 0.937 meanSE 0.0132 flagged-bad 1.000 flagged-clean 0.0024
+-- 5% carats x10
+  OLS                            mean 0.9595 bias -0.9183 (-48.9%) median 0.9619 SD 0.0268 RMSE 0.9187 cover 0.000 meanSE 0.0902
+  OLS, drop |t| > 3              mean 1.2566 bias -0.6213 (-33.1%) median 1.2561 SD 0.0726 RMSE 0.6255 cover 0.000 meanSE 0.1106 flagged-bad 0.543 flagged-clean 0.0000
+  OLS, drop |t| > 3 repeatedly   mean 1.8771 bias -0.0007 (-0.0%) median 1.8777 SD 0.0133 RMSE 0.0133 cover 0.957 meanSE 0.0129 flagged-bad 1.000 flagged-clean 0.0031
+  OLS, drop Cook's D > 4/n       mean 1.8722 bias -0.0056 (-0.3%) median 1.8740 SD 0.0135 RMSE 0.0146 cover 0.920 meanSE 0.0133 flagged-bad 1.000 flagged-clean 0.0110
+  LAD                            mean 1.7893 bias -0.0885 (-4.7%) median 1.7894 SD 0.0194 RMSE 0.0906 cover 0.000 meanSE 0.0129
+  Huber M (statsmodels)          mean 1.7529 bias -0.1249 (-6.7%) median 1.7544 SD 0.0180 RMSE 0.1262 cover 0.000 meanSE 0.0112
+  Huber (scikit-learn)           mean 1.7730 bias -0.1048 (-5.6%) median 1.7739 SD 0.0170 RMSE 0.1062
+  Bisquare M from OLS            mean 1.8772 bias -0.0006 (-0.0%) median 1.8773 SD 0.0136 RMSE 0.0136 cover 0.840 meanSE 0.0095
+  Theil-Sen                      mean 1.7984 bias -0.0794 (-4.2%) median 1.7996 SD 0.0211 RMSE 0.0822
+  RANSAC                         mean 1.8773 bias -0.0005 (-0.0%) median 1.8787 SD 0.0133 RMSE 0.0133 flagged-bad 1.000 flagged-clean 0.0063
+  LTS                            mean 1.8801 bias +0.0023 (+0.1%) median 1.8818 SD 0.0389 RMSE 0.0389 flagged-bad 1.000 flagged-clean 0.0043
+  S                              mean 1.8780 bias +0.0002 (+0.0%) median 1.8778 SD 0.0231 RMSE 0.0230 flagged-bad 1.000 flagged-clean 0.0016
+  MM                             mean 1.8772 bias -0.0006 (-0.0%) median 1.8773 SD 0.0135 RMSE 0.0135 cover 0.953 meanSE 0.0134 flagged-bad 1.000 flagged-clean 0.0013
+-- 10% carats x10
+  OLS                            mean 0.6671 bias -1.2108 (-64.5%) median 0.6700 SD 0.0253 RMSE 1.2110 cover 0.000 meanSE 0.0576
+  OLS, drop |t| > 3              mean 0.6948 bias -1.1831 (-63.0%) median 0.6981 SD 0.0294 RMSE 1.1834 cover 0.000 meanSE 0.0587 flagged-bad 0.066 flagged-clean 0.0000
+  OLS, drop |t| > 3 repeatedly   mean 0.9875 bias -0.8903 (-47.4%) median 0.7442 SD 0.4826 RMSE 1.0123 cover 0.220 meanSE 0.0496 flagged-bad 0.334 flagged-clean 0.0007
+  OLS, drop Cook's D > 4/n       mean 1.0800 bias -0.7978 (-42.5%) median 1.0750 SD 0.0735 RMSE 0.8011 cover 0.000 meanSE 0.0924 flagged-bad 0.678 flagged-clean 0.0171
+  LAD                            mean 1.6533 bias -0.2246 (-12.0%) median 1.6541 SD 0.0310 RMSE 0.2267 cover 0.000 meanSE 0.0142
+  Huber M (statsmodels)          mean 1.2577 bias -0.6201 (-33.0%) median 1.2984 SD 0.1884 RMSE 0.6480 cover 0.000 meanSE 0.0235
+  Huber (scikit-learn)           mean 1.5658 bias -0.3120 (-16.6%) median 1.5698 SD 0.0435 RMSE 0.3150
+  Bisquare M from OLS            mean 1.8761 bias -0.0017 (-0.1%) median 1.8746 SD 0.0134 RMSE 0.0135 cover 0.757 meanSE 0.0081
+  Theil-Sen                      mean 1.6817 bias -0.1961 (-10.4%) median 1.6828 SD 0.0312 RMSE 0.1986
+  RANSAC                         mean 1.8763 bias -0.0015 (-0.1%) median 1.8745 SD 0.0137 RMSE 0.0138 flagged-bad 1.000 flagged-clean 0.0055
+  LTS                            mean 1.8742 bias -0.0036 (-0.2%) median 1.8741 SD 0.0397 RMSE 0.0398 flagged-bad 1.000 flagged-clean 0.0025
+  S                              mean 1.8740 bias -0.0039 (-0.2%) median 1.8742 SD 0.0219 RMSE 0.0222 flagged-bad 1.000 flagged-clean 0.0009
+  MM                             mean 1.8761 bias -0.0017 (-0.1%) median 1.8746 SD 0.0134 RMSE 0.0135 cover 0.953 meanSE 0.0137 flagged-bad 1.000 flagged-clean 0.0008
+-- 20% carats x10
+  OLS                            mean 0.4437 bias -1.4341 (-76.4%) median 0.4435 SD 0.0251 RMSE 1.4343 cover 0.000 meanSE 0.0350
+  OLS, drop |t| > 3              mean 0.4448 bias -1.4330 (-76.3%) median 0.4445 SD 0.0252 RMSE 1.4332 cover 0.000 meanSE 0.0351 flagged-bad 0.003 flagged-clean 0.0000
+  OLS, drop |t| > 3 repeatedly   mean 0.4450 bias -1.4328 (-76.3%) median 0.4448 SD 0.0252 RMSE 1.4331 cover 0.000 meanSE 0.0351 flagged-bad 0.004 flagged-clean 0.0000
+  OLS, drop Cook's D > 4/n       mean 0.4753 bias -1.4025 (-74.7%) median 0.4762 SD 0.0311 RMSE 1.4029 cover 0.000 meanSE 0.0344 flagged-bad 0.137 flagged-clean 0.0220
+  LAD                            mean 0.4831 bias -1.3947 (-74.3%) median 0.4846 SD 0.0397 RMSE 1.3953 cover 0.000 meanSE 0.0491
+  Huber M (statsmodels)          mean 0.4639 bias -1.4139 (-75.3%) median 0.4638 SD 0.0267 RMSE 1.4141 cover 0.000 meanSE 0.0382
+  Huber (scikit-learn)           mean 0.4756 bias -1.4023 (-74.7%) median 0.4752 SD 0.0294 RMSE 1.4026
+  Bisquare M from OLS            mean 0.4618 bias -1.4161 (-75.4%) median 0.4607 SD 0.0267 RMSE 1.4163 cover 0.000 meanSE 0.0382
+  Theil-Sen                      mean 1.2460 bias -0.6319 (-33.6%) median 1.2510 SD 0.0643 RMSE 0.6351
+  RANSAC                         mean 1.8774 bias -0.0004 (-0.0%) median 1.8766 SD 0.0141 RMSE 0.0141 flagged-bad 1.000 flagged-clean 0.0049
+  LTS                            mean 1.8779 bias +0.0001 (+0.0%) median 1.8798 SD 0.0351 RMSE 0.0350 flagged-bad 1.000 flagged-clean 0.0004
+  S                              mean 1.8773 bias -0.0005 (-0.0%) median 1.8770 SD 0.0207 RMSE 0.0207 flagged-bad 1.000 flagged-clean 0.0001
+  MM                             mean 1.8775 bias -0.0003 (-0.0%) median 1.8777 SD 0.0135 RMSE 0.0134 cover 0.967 meanSE 0.0144 flagged-bad 1.000 flagged-clean 0.0000
+-- 30% carats x10
+  OLS                            mean 0.3597 bias -1.5181 (-80.8%) median 0.3597 SD 0.0261 RMSE 1.5183 cover 0.000 meanSE 0.0283
+  OLS, drop |t| > 3              mean 0.3598 bias -1.5180 (-80.8%) median 0.3600 SD 0.0261 RMSE 1.5182 cover 0.000 meanSE 0.0283 flagged-bad 0.001 flagged-clean 0.0000
+  OLS, drop |t| > 3 repeatedly   mean 0.3598 bias -1.5180 (-80.8%) median 0.3600 SD 0.0261 RMSE 1.5182 cover 0.000 meanSE 0.0283 flagged-bad 0.001 flagged-clean 0.0000
+  OLS, drop Cook's D > 4/n       mean 0.3578 bias -1.5200 (-80.9%) median 0.3587 SD 0.0307 RMSE 1.5203 cover 0.000 meanSE 0.0276 flagged-bad 0.055 flagged-clean 0.0247
+  LAD                            mean 0.3749 bias -1.5029 (-80.0%) median 0.3734 SD 0.0400 RMSE 1.5035 cover 0.000 meanSE 0.0460
+  Huber M (statsmodels)          mean 0.3676 bias -1.5102 (-80.4%) median 0.3677 SD 0.0271 RMSE 1.5104 cover 0.000 meanSE 0.0355
+  Huber (scikit-learn)           mean 0.3755 bias -1.5023 (-80.0%) median 0.3751 SD 0.0288 RMSE 1.5026
+  Bisquare M from OLS            mean 0.3673 bias -1.5105 (-80.4%) median 0.3666 SD 0.0272 RMSE 1.5108 cover 0.000 meanSE 0.0353
+  Theil-Sen                      mean 0.7058 bias -1.1720 (-62.4%) median 0.7068 SD 0.0650 RMSE 1.1738
+  RANSAC                         mean 1.8785 bias +0.0007 (+0.0%) median 1.8782 SD 0.0175 RMSE 0.0175 flagged-bad 1.000 flagged-clean 0.0050
+  LTS                            mean 1.8785 bias +0.0007 (+0.0%) median 1.8796 SD 0.0309 RMSE 0.0309 flagged-bad 1.000 flagged-clean 0.0000
+  S                              mean 1.8777 bias -0.0001 (-0.0%) median 1.8780 SD 0.0188 RMSE 0.0188 flagged-bad 1.000 flagged-clean 0.0000
+  MM                             mean 1.8787 bias +0.0009 (+0.0%) median 1.8787 SD 0.0167 RMSE 0.0167 cover 0.933 meanSE 0.0153 flagged-bad 1.000 flagged-clean 0.0000
+-- 40% carats x10
+  OLS                            mean 0.3226 bias -1.5553 (-82.8%) median 0.3242 SD 0.0257 RMSE 1.5555 cover 0.000 meanSE 0.0260
+  OLS, drop |t| > 3              mean 0.3226 bias -1.5553 (-82.8%) median 0.3242 SD 0.0257 RMSE 1.5555 cover 0.000 meanSE 0.0260 flagged-bad 0.000 flagged-clean 0.0001
+  OLS, drop |t| > 3 repeatedly   mean 0.3225 bias -1.5553 (-82.8%) median 0.3242 SD 0.0257 RMSE 1.5555 cover 0.000 meanSE 0.0260 flagged-bad 0.000 flagged-clean 0.0001
+  OLS, drop Cook's D > 4/n       mean 0.3141 bias -1.5637 (-83.3%) median 0.3151 SD 0.0300 RMSE 1.5640 cover 0.000 meanSE 0.0256 flagged-bad 0.036 flagged-clean 0.0288
+  LAD                            mean 0.3295 bias -1.5483 (-82.5%) median 0.3278 SD 0.0386 RMSE 1.5487 cover 0.000 meanSE 0.0440
+  Huber M (statsmodels)          mean 0.3281 bias -1.5497 (-82.5%) median 0.3306 SD 0.0268 RMSE 1.5499 cover 0.000 meanSE 0.0343
+  Huber (scikit-learn)           mean 0.3348 bias -1.5430 (-82.2%) median 0.3365 SD 0.0291 RMSE 1.5433
+  Bisquare M from OLS            mean 0.3280 bias -1.5498 (-82.5%) median 0.3308 SD 0.0269 RMSE 1.5500 cover 0.000 meanSE 0.0340
+  Theil-Sen                      mean 0.4339 bias -1.4439 (-76.9%) median 0.4310 SD 0.0547 RMSE 1.4449
+  RANSAC                         mean 1.6073 bias -0.2706 (-14.4%) median 1.8723 SD 0.5837 RMSE 0.6424 flagged-bad 0.897 flagged-clean 0.0693
+  LTS                            mean 1.8753 bias -0.0025 (-0.1%) median 1.8730 SD 0.0232 RMSE 0.0233 flagged-bad 1.000 flagged-clean 0.0000
+  S                              mean 1.8754 bias -0.0025 (-0.1%) median 1.8749 SD 0.0167 RMSE 0.0168 flagged-bad 1.000 flagged-clean 0.0000
+  MM                             mean 1.8751 bias -0.0027 (-0.1%) median 1.8739 SD 0.0162 RMSE 0.0164 cover 0.943 meanSE 0.0164 flagged-bad 1.000 flagged-clean 0.0000
+-- t errors, nu = 5
+  OLS                            mean 1.8768 bias -0.0011 (-0.1%) median 1.8758 SD 0.0149 RMSE 0.0149 cover 0.943 meanSE 0.0152
+  OLS, drop |t| > 3              mean 1.8771 bias -0.0007 (-0.0%) median 1.8773 SD 0.0144 RMSE 0.0144 cover 0.940 meanSE 0.0137 flagged-clean 0.0122
+  OLS, drop |t| > 3 repeatedly   mean 1.8772 bias -0.0007 (-0.0%) median 1.8782 SD 0.0142 RMSE 0.0142 cover 0.933 meanSE 0.0132 flagged-clean 0.0203
+  OLS, drop Cook's D > 4/n       mean 1.8771 bias -0.0007 (-0.0%) median 1.8767 SD 0.0142 RMSE 0.0142 cover 0.913 meanSE 0.0120 flagged-clean 0.0520
+  LAD                            mean 1.8771 bias -0.0007 (-0.0%) median 1.8772 SD 0.0156 RMSE 0.0156 cover 0.950 meanSE 0.0160
+  Huber M (statsmodels)          mean 1.8772 bias -0.0006 (-0.0%) median 1.8768 SD 0.0134 RMSE 0.0134 cover 0.957 meanSE 0.0136
+  Huber (scikit-learn)           mean 1.8774 bias -0.0004 (-0.0%) median 1.8773 SD 0.0134 RMSE 0.0134
+  Bisquare M from OLS            mean 1.8773 bias -0.0005 (-0.0%) median 1.8769 SD 0.0134 RMSE 0.0134 cover 0.957 meanSE 0.0137
+  Theil-Sen                      mean 1.8790 bias +0.0012 (+0.1%) median 1.8794 SD 0.0189 RMSE 0.0189
+  RANSAC                         mean 1.8774 bias -0.0004 (-0.0%) median 1.8766 SD 0.0172 RMSE 0.0172 flagged-clean 0.0116
+  LTS                            mean 1.8783 bias +0.0005 (+0.0%) median 1.8792 SD 0.0350 RMSE 0.0349 flagged-clean 0.0308
+  S                              mean 1.8787 bias +0.0009 (+0.0%) median 1.8781 SD 0.0198 RMSE 0.0198 flagged-clean 0.0233
+  MM                             mean 1.8773 bias -0.0005 (-0.0%) median 1.8769 SD 0.0134 RMSE 0.0134 cover 0.947 meanSE 0.0137 flagged-clean 0.0224
+-- t errors, nu = 3
+  OLS                            mean 1.8769 bias -0.0009 (-0.0%) median 1.8770 SD 0.0194 RMSE 0.0194 cover 0.947 meanSE 0.0186
+  OLS, drop |t| > 3              mean 1.8770 bias -0.0008 (-0.0%) median 1.8770 SD 0.0157 RMSE 0.0157 cover 0.950 meanSE 0.0151 flagged-clean 0.0158
+  OLS, drop |t| > 3 repeatedly   mean 1.8769 bias -0.0009 (-0.0%) median 1.8770 SD 0.0149 RMSE 0.0149 cover 0.930 meanSE 0.0137 flagged-clean 0.0358
+  OLS, drop Cook's D > 4/n       mean 1.8764 bias -0.0015 (-0.1%) median 1.8760 SD 0.0152 RMSE 0.0152 cover 0.907 meanSE 0.0131 flagged-clean 0.0463
+  LAD                            mean 1.8770 bias -0.0008 (-0.0%) median 1.8772 SD 0.0156 RMSE 0.0155 cover 0.950 meanSE 0.0160
+  Huber M (statsmodels)          mean 1.8768 bias -0.0010 (-0.1%) median 1.8770 SD 0.0141 RMSE 0.0141 cover 0.947 meanSE 0.0141
+  Huber (scikit-learn)           mean 1.8769 bias -0.0009 (-0.0%) median 1.8769 SD 0.0138 RMSE 0.0138
+  Bisquare M from OLS            mean 1.8767 bias -0.0011 (-0.1%) median 1.8765 SD 0.0139 RMSE 0.0139 cover 0.957 meanSE 0.0140
+  Theil-Sen                      mean 1.8773 bias -0.0005 (-0.0%) median 1.8779 SD 0.0196 RMSE 0.0196
+  RANSAC                         mean 1.8778 bias -0.0000 (-0.0%) median 1.8781 SD 0.0202 RMSE 0.0201 flagged-clean 0.0205
+  LTS                            mean 1.8767 bias -0.0011 (-0.1%) median 1.8779 SD 0.0307 RMSE 0.0306 flagged-clean 0.0514
+  S                              mean 1.8775 bias -0.0003 (-0.0%) median 1.8769 SD 0.0191 RMSE 0.0191 flagged-clean 0.0409
+  MM                             mean 1.8768 bias -0.0011 (-0.1%) median 1.8766 SD 0.0139 RMSE 0.0139 cover 0.953 meanSE 0.0141 flagged-clean 0.0404
+-- t errors, nu = 2
+  OLS                            mean 1.8826 bias +0.0048 (+0.3%) median 1.8800 SD 0.0338 RMSE 0.0341 cover 0.950 meanSE 0.0296
+  OLS, drop |t| > 3              mean 1.8783 bias +0.0005 (+0.0%) median 1.8802 SD 0.0198 RMSE 0.0198 cover 0.947 meanSE 0.0185 flagged-clean 0.0162
+  OLS, drop |t| > 3 repeatedly   mean 1.8778 bias +0.0000 (+0.0%) median 1.8783 SD 0.0160 RMSE 0.0159 cover 0.920 meanSE 0.0143 flagged-clean 0.0578
+  OLS, drop Cook's D > 4/n       mean 1.8787 bias +0.0009 (+0.0%) median 1.8795 SD 0.0173 RMSE 0.0173 cover 0.923 meanSE 0.0158 flagged-clean 0.0359
+  LAD                            mean 1.8786 bias +0.0008 (+0.0%) median 1.8795 SD 0.0154 RMSE 0.0154 cover 0.943 meanSE 0.0160
+  Huber M (statsmodels)          mean 1.8785 bias +0.0007 (+0.0%) median 1.8793 SD 0.0149 RMSE 0.0149 cover 0.957 meanSE 0.0148
+  Huber (scikit-learn)           mean 1.8785 bias +0.0007 (+0.0%) median 1.8792 SD 0.0144 RMSE 0.0144
+  Bisquare M from OLS            mean 1.8781 bias +0.0002 (+0.0%) median 1.8782 SD 0.0145 RMSE 0.0145 cover 0.950 meanSE 0.0144
+  Theil-Sen                      mean 1.8814 bias +0.0035 (+0.2%) median 1.8821 SD 0.0214 RMSE 0.0217
+  RANSAC                         mean 1.8786 bias +0.0007 (+0.0%) median 1.8794 SD 0.0226 RMSE 0.0226 flagged-clean 0.0333
+  LTS                            mean 1.8791 bias +0.0013 (+0.1%) median 1.8788 SD 0.0258 RMSE 0.0258 flagged-clean 0.0787
+  S                              mean 1.8785 bias +0.0007 (+0.0%) median 1.8791 SD 0.0167 RMSE 0.0167 flagged-clean 0.0647
+  MM                             mean 1.8780 bias +0.0002 (+0.0%) median 1.8790 SD 0.0146 RMSE 0.0146 cover 0.947 meanSE 0.0145 flagged-clean 0.0640
+-- t errors, nu = 1
+  OLS                            mean 3.1780 bias +1.3002 (+69.2%) median 1.8705 SD 18.8371 RMSE 18.8505 cover 0.980 meanSE 2.2338
+  OLS, drop |t| > 3              mean 1.8745 bias -0.0033 (-0.2%) median 1.8736 SD 0.1274 RMSE 0.1272 cover 0.940 meanSE 0.0781 flagged-clean 0.0091
+  OLS, drop |t| > 3 repeatedly   mean 1.8774 bias -0.0004 (-0.0%) median 1.8774 SD 0.0178 RMSE 0.0178 cover 0.903 meanSE 0.0146 flagged-clean 0.1318
+  OLS, drop Cook's D > 4/n       mean 1.8796 bias +0.0017 (+0.1%) median 1.8771 SD 0.0811 RMSE 0.0809 cover 0.947 meanSE 0.0618 flagged-clean 0.0137
+  LAD                            mean 1.8771 bias -0.0007 (-0.0%) median 1.8770 SD 0.0146 RMSE 0.0146 cover 0.963 meanSE 0.0154
+  Huber M (statsmodels)          mean 1.8778 bias +0.0000 (+0.0%) median 1.8773 SD 0.0168 RMSE 0.0167 cover 0.940 meanSE 0.0163
+  Huber (scikit-learn)           mean 1.8775 bias -0.0003 (-0.0%) median 1.8770 SD 0.0152 RMSE 0.0152
+  Bisquare M from OLS            mean 1.8774 bias -0.0005 (-0.0%) median 1.8768 SD 0.0148 RMSE 0.0148 cover 0.930 meanSE 0.0144
+  Theil-Sen                      mean 1.8805 bias +0.0027 (+0.1%) median 1.8794 SD 0.0307 RMSE 0.0308
+  RANSAC                         mean 1.8815 bias +0.0037 (+0.2%) median 1.8817 SD 0.0307 RMSE 0.0309 flagged-clean 0.0855
+  LTS                            mean 1.8765 bias -0.0014 (-0.1%) median 1.8763 SD 0.0185 RMSE 0.0185 flagged-clean 0.1554
+  S                              mean 1.8761 bias -0.0017 (-0.1%) median 1.8764 SD 0.0137 RMSE 0.0138 flagged-clean 0.1329
+  MM                             mean 1.8775 bias -0.0003 (-0.0%) median 1.8772 SD 0.0151 RMSE 0.0151 cover 0.930 meanSE 0.0148 flagged-clean 0.1323
+
+RMSE relative to OLS (clean and t errors)
+  clean 0: LAD 1.18, Huber M (statsmodels) 0.99, Huber (scikit-learn) 1.01, Bisquare M from OLS 0.99, Theil-Sen 1.45, RANSAC 1.04, LTS 2.99, S 1.80, MM 0.99
+  tails 5: LAD 1.04, Huber M (statsmodels) 0.90, Huber (scikit-learn) 0.90, Bisquare M from OLS 0.90, Theil-Sen 1.26, RANSAC 1.15, LTS 2.34, S 1.32, MM 0.90
+  tails 3: LAD 0.80, Huber M (statsmodels) 0.73, Huber (scikit-learn) 0.71, Bisquare M from OLS 0.72, Theil-Sen 1.01, RANSAC 1.04, LTS 1.58, S 0.98, MM 0.72
+  tails 2: LAD 0.45, Huber M (statsmodels) 0.44, Huber (scikit-learn) 0.42, Bisquare M from OLS 0.43, Theil-Sen 0.64, RANSAC 0.66, LTS 0.76, S 0.49, MM 0.43
+  tails 1: LAD 0.00, Huber M (statsmodels) 0.00, Huber (scikit-learn) 0.00, Bisquare M from OLS 0.00, Theil-Sen 0.00, RANSAC 0.00, LTS 0.00, S 0.00, MM 0.00

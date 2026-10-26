@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite it as below."
+title: "Robust Regression Under Data-Entry Errors: Breakdown, Efficiency and the Outliers That Are the Signal"
+authors:
+  - family-names: Ribeiro
+    given-names: Diogo
+    email: dfr@esmad.ipp.pt
+    orcid: "https://orcid.org/0009-0001-2022-7072"
+version: 0.1.0
+date-released: 2026-10-26
+license: Apache-2.0
+repository-code: "https://github.com/DiogoRibeiro7/Medium-Blog/tree/main/robust-regression"
+references:
+  - type: data
+    title: "Rdatasets: ggplot2::diamonds, MASS::phones, robustbase::starsCYG, robustbase::NOxEmissions, datasets::stackloss, insuranceData::dataCar"
+    authors:
+      - family-names: Arel-Bundock
+        given-names: Vincent
+    repository-code: "https://github.com/vincentarelbundock/Rdatasets"
+  - type: software
+    title: "robustbase: Basic Robust Statistics"
+    authors:
+      - family-names: Maechler
+        given-names: Martin
+    url: "https://CRAN.R-project.org/package=robustbase"

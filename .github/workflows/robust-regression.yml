@@ -1,0 +1,70 @@
+name: Reproduce robust-regression
+
+on:
+  pull_request:
+    paths:
+      - 'robust-regression/**'
+      - '.github/workflows/robust-regression.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'robust-regression/**'
+      - '.github/workflows/robust-regression.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: robust-regression-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    defaults:
+      run:
+        working-directory: robust-regression
+    env:
+      MPLBACKEND: Agg
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: robust-regression/requirements.txt
+
+      - name: Install pinned dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Check the estimators against robustbase and statsmodels
+        run: python check_rob.py
+
+      - name: Keep the committed results
+        run: mkdir -p "$RUNNER_TEMP/committed" && cp results/*.txt "$RUNNER_TEMP/committed/"
+
+      - name: Rerun the experiments
+        run: |
+          python 00_functions.py
+          python 01_contamination.py
+          python figures_01.py
+          python 02_classic_cases.py
+          python 03_large_real.py
+          python 04_claims.py
+          python 05_software.py
+
+      - name: Check the numbers match the committed run
+        run: python check_reproduction.py "$RUNNER_TEMP/committed"
+
+      - name: Check every figure was drawn
+        run: |
+          for f in fig1_classic_cases fig2_psi_weights fig3_bias_curves fig4_detection \
+                   fig5_efficiency fig6_diamonds_outlier_map fig7_claims; do
+            test -s "figures/$f.png"
+          done
