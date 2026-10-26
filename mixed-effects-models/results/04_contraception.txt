@@ -1,0 +1,24 @@
+Contraception: N = 1934 women, J = 60 districts (size median 26, range 2-118); overall use rate 0.392
+GLMM Laplace vs AGQ-25: urban 0.7330 vs 0.7324; district SD 0.4609 vs 0.4642; loglik -1206.81 vs -1206.67
+GEE exchangeable working correlation: 0.064
+
+Coefficients (log-odds), SE in brackets
+  const  GLMM  -1.690 (0.148) | GEE  -1.605 (0.180) | logistic  -1.568 (naive 0.126, cluster 0.176)
+  urban  GLMM   0.732 (0.119) | GEE   0.680 (0.157) | logistic   0.797 (naive 0.105, cluster 0.189)
+  age    GLMM  -0.027 (0.008) | GEE  -0.025 (0.007) | logistic  -0.024 (naive 0.008, cluster 0.007)
+  ch1    GLMM   1.109 (0.158) | GEE   1.060 (0.189) | logistic   1.059 (naive 0.152, cluster 0.184)
+  ch2    GLMM   1.377 (0.175) | GEE   1.311 (0.161) | logistic   1.288 (naive 0.167, cluster 0.169)
+  ch3p   GLMM   1.346 (0.180) | GEE   1.287 (0.195) | logistic   1.216 (naive 0.171, cluster 0.201)
+
+Zeger-Liang-Albert attenuation 1/sqrt(1 + c^2 s^2), c^2 = 0.346: 0.965; predicted marginal urban coef 0.707; GEE 0.680; ratio GEE/GLMM across slopes: urban 0.929, age 0.954, ch1 0.956, ch2 0.952, ch3p 0.956
+Urban - rural difference in use probability, averaged over the sample's women:
+  GLMM, 'typical district' (b = 0): 0.497 - 0.330 = 0.167
+  GLMM, averaged over districts:    0.497 - 0.337 = 0.160
+  GEE (marginal model):              0.495 - 0.338 = 0.156
+  observed use rate: urban 0.516, rural 0.342
+Rural woman, 3+ children, mean age: P(use) in a typical district 0.415; averaged over districts 0.419; middle 80% of districts between 0.281 and 0.562
+Districts with <= 10 women: 4; their raw use rates span 0.00-1.00; conditional modes span -0.40 to 0.21 on the logit scale
+
+Mundlak GLMM (urban + district share urban): within-district urban 0.649 (SE 0.126); contextual effect of district share urban (between minus within) 0.722 (SE 0.366, z = 1.97); between-district effect 1.371; 42 of 60 districts contain both urban and rural women
+Figure 6: district SD 0.46 -> log-odds slope of the population-averaged curve at its centre = 0.95 x the conditional slope
+Figure 6: district SD 2.00 -> log-odds slope of the population-averaged curve at its centre = 0.61 x the conditional slope

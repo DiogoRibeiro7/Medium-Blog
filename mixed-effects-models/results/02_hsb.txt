@@ -1,0 +1,33 @@
+HSB: N = 7185 students in J = 160 schools (70 Catholic); school size mean 44.9, range 14-67
+Null model: grand mean 12.64; tau00 = 8.61 (SD 2.93), sigma^2 = 39.15 (SD 6.26); ICC = 0.180; design effect 1 + (m-1)ICC = 8.9; effective N for a school-level contrast ~ 806 of 7185
+Reliability of school means lambda_j: mean 0.90, range 0.75-0.94
+SES slope - pooled OLS: 3.184; within (school FE): 2.191 (cluster SE 0.131); between (school means): 5.909 (SE 0.371); random intercept: 2.390 (SE 0.106)
+RI slope as a blend: weight on within = 0.946, on between = 0.054
+Mundlak RI (ses + meanses): ses 2.191 (SE 0.109), meanses (contextual) 3.675 (SE 0.378); between - within = 3.718; z for contextual effect = 9.7
+Random intercept tau: without meanses 2.18, with meanses 1.64
+
+Standard errors, model mAch ~ catholic + cses
+  OLS (iid)                  catholic 2.806 (SE 0.155) | cses 2.191 (SE 0.117)
+  OLS cluster-robust (CR1)   catholic 2.806 (SE 0.422) | cses 2.191 (SE 0.130)
+  Random intercept           catholic 2.805 (SE 0.439) | cses 2.191 (SE 0.109)
+  RI + random SES slope      catholic 3.461 (SE 0.424) | cses 2.215 (SE 0.128)
+  ratio of SEs for catholic, CR1 / OLS iid = 2.72; for cses, CR1 / RI-only = 1.19, RI+RS / RI-only = 1.18
+  random SES slope SD = 0.83; corr(int, slope) = 0.58
+  REML LRT for the random slope (variance + covariance): 20.1, p (0.5 chi2_1 + 0.5 chi2_2 mixture) = 2.6e-05, naive chi2_2 p = 4.4e-05
+
+Intercepts-and-slopes-as-outcomes (REML, random intercept + cses slope)
+  intercept       12.128  (SE 0.199)
+  meanses          5.333  (SE 0.369)
+  catholic         1.227  (SE 0.306)
+  cses             2.945  (SE 0.156)
+  meanses_cses     1.039  (SE 0.299)
+  catholic_cses   -1.643  (SE 0.240)
+  Tau: intercept SD 1.54, slope SD 0.32; sigma 6.06
+  SES gradient at meanses = 0: public 2.95, Catholic 1.30
+  slope variance: 0.696 without school predictors of the slope, 0.101 with them (85% explained); corr(int, slope) 0.39
+
+Catholic coefficient (no meanses) under different random-effect structures
+  raw difference in school means: 2.814
+  RI only:                          2.805 (SE 0.439)
+  RI + slope, no catholic x cses:   3.461 (SE 0.424); corr(int, slope) 0.58
+  RI + slope, with catholic x cses: 2.808 (SE 0.439); interaction -1.342 (SE 0.228); corr(int, slope) 1.00, slope SD 0.41  <- correlation on the boundary: singular fit
