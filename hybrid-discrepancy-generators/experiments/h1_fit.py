@@ -51,8 +51,8 @@ def correction_curve(gens: dict, train: pd.DataFrame,
 
     Rows of a mid-morning half hour on a Wednesday without a campaign, with
     30 agents and offered calls stepped so that the load per agent runs
-    from 0.5 to 2.0. Erlang A's expectation for each row is computed for a
-    day that is empty apart from that half hour.
+    from 0.5 to 2.0. Erlang A's expectation for each row is computed, from
+    60 replays, for a day that is empty apart from that half hour.
     """
     s = service_mean(train)
     loads = np.linspace(0.5, 2.0, 31)
@@ -66,7 +66,7 @@ def correction_curve(gens: dict, train: pd.DataFrame,
         counts = np.zeros(24, np.int64)
         counts[6] = n
         staff = np.full(24, 30, np.int64)
-        rows.append(eta_day(base.queue, g, counts, staff)[6])
+        rows.append(eta_day(base.queue, g, counts, staff, reps=60)[6])
     eta = pd.DataFrame(rows, columns=["eta_sl", "eta_abandon_rate",
                                       "eta_awt"], index=frame.index)
     out = {"load": features(frame, s)["load"].to_numpy(),

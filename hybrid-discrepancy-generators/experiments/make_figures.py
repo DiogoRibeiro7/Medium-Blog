@@ -135,7 +135,8 @@ def fig1_fit() -> None:
         s = mean.loc[m]
         st = style(m)
         if m == "True queue given the inputs":
-            ax.axhline(s.mean(), color=INK, ls=":", lw=1.6)
+            ax.plot([s.index.min(), s.index.max()], [s.mean()] * 2,
+                    color=INK, ls=":", lw=1.6)
             items.append((s.index.max(), s.mean(), "true queue given the "
                           "inputs", INK))
             continue
@@ -206,7 +207,8 @@ def fig1_fit() -> None:
                    edgecolors=[COLOR[o] for o in order], lw=1.5, zorder=3,
                    label=f"{int(n)} days")
     cx.axvline(0.54, color=INK, ls=":", lw=1.4)
-    cx.text(0.545, y[0] + 0.6, "real vs real", fontsize=8.5, color=INK)
+    cx.text(0.545, y[-1] - 0.75, "real vs real", fontsize=8.5, color=INK)
+    cx.set_ylim(y[-1] - 1.0, y[0] + 0.5)
     cx.set_yticks(y, [label(o) for o in order])
     cx.set_xlim(0.5, max(0.82, gen["auc"].max() + 0.02))
     cx.legend(loc="lower right", title="training data",
