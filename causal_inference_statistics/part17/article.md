@@ -343,7 +343,7 @@ All numerical results are reproduced by `experiment.py` in `causal_inference_sta
 
 ## References
 
-Arnold, B. F., Ercumen, A., Benjamin-Chung, J. and Colford, J. M. Jr. (2016). Brief Report: Negative Controls to Detect Selection Bias and Measurement Bias in Epidemiologic Studies. *Epidemiology*, 27(5), 637–641. https://doi.org/10.1097/EDE.0000000000000507
+Arnold, B. F., Ercumen, A., Benjamin-Chung, J. and Colford, J. M. Jr. (2016). Brief Report: Negative Controls to Detect Selection Bias and Measurement Bias in Epidemiologic Studies. *Epidemiology*, 27(5), 637–641. https://doi.org/10.1097/EDE.0000000000000504
 
 Bertrand, M., Duflo, E. and Mullainathan, S. (2004). How Much Should We Trust Differences-in-Differences Estimates? *Quarterly Journal of Economics*, 119(1), 249–275. https://doi.org/10.1162/003355304772839588
 
@@ -369,6 +369,6 @@ Roth, J. (2022). Pretest with Caution: Event-Study Estimates after Testing for P
 
 Shi, X., Miao, W. and Tchetgen Tchetgen, E. J. (2020). A Selective Review of Negative Control Methods in Epidemiology. *Current Epidemiology Reports*, 7, 190–202. https://doi.org/10.1007/s40471-020-00243-4
 
-Tchetgen Tchetgen, E. J., Ying, A., Cui, Y., Shi, X. and Miao, W. (2024). An Introduction to Proximal Causal Learning. *Statistical Science*, 39(3), 375–390.
+Tchetgen Tchetgen, E. J., Ying, A., Cui, Y., Shi, X. and Miao, W. (2024). An Introduction to Proximal Causal Inference. *Statistical Science*, 39(3), 375–390. https://doi.org/10.1214/23-STS911
 
 VanderWeele, T. J. and Ding, P. (2017). Sensitivity Analysis in Observational Research: Introducing the E-Value. *Annals of Internal Medicine*, 167(4), 268–274. https://doi.org/10.7326/M16-2607
