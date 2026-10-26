@@ -359,7 +359,7 @@ Hernán, M. A., Brumback, B. and Robins, J. M. (2000). Marginal Structural Model
 
 Hernán, M. A. and Robins, J. M. (2020). *Causal Inference: What If*. Chapman & Hall/CRC. https://miguelhernan.org/whatifbook
 
-Kreif, N., Tran, L., Grieve, R., De Stavola, B., Tasker, R. C. and Petersen, M. (2017). Estimating the Comparative Effectiveness of Multiple Treatments in the Presence of Time-Dependent Confounding. *Statistics in Medicine*, 36(29), 4781–4795. https://doi.org/10.1002/sim.7497
+Kreif, N., Tran, L., Grieve, R., De Stavola, B., Tasker, R. C. and Petersen, M. (2017). Estimating the Comparative Effectiveness of Feeding Interventions in the Pediatric Intensive Care Unit: A Demonstration of Longitudinal Targeted Maximum Likelihood Estimation. *American Journal of Epidemiology*, 186(12), 1370–1379. https://doi.org/10.1093/aje/kwx213
 
 Laan, M. J. van der and Robins, J. M. (2003). *Unified Methods for Censored Longitudinal Data and Causality*. Springer. https://doi.org/10.1007/978-0-387-21700-0
 
