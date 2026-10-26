@@ -69,6 +69,7 @@
     coats with at least 5 ratings of each kind: 300; self-selected mean exceeds random mean for 0.730 of them; mean within-coat difference 0.313
 
   An observable part of the selection: coats of the user's own gender
+    coats: 150 men's, 150 women's; users: 162 men, 128 women
     self-selected: share own-gender 0.874; mean rating own-gender 2.679, other-gender 2.145
     random       : share own-gender 0.506; mean rating own-gender 2.474, other-gender 1.978
   excluding the 366 pairs present in both files: self-selected 2.614, random 2.199, difference 0.414
@@ -78,7 +79,7 @@
     one effect per coat                        SNIPS mean 2.555; share of the gap removed 0.149
     user and coat features, main effects       SNIPS mean 2.546; share of the gap removed 0.171
     + user gender x coat gender                SNIPS mean 2.336; share of the gap removed 0.720
-    + every user x coat feature interaction    SNIPS mean 2.333; share of the gap removed 0.727; propensity range 0.0013 to 0.7259
+    + every user x coat feature interaction    SNIPS mean 2.333; share of the gap removed 0.727; propensity range 0.0013 to 0.7257
 
 ============================================================================
 4. COAT: OFFLINE EVALUATION OF RATING MODELS UNDER SELECTION
@@ -120,6 +121,9 @@
      50% of half A (1152 random ratings, add-one smoothing): weighted model better in truth 1.00; SNIPS agrees on weighted vs unweighted 1.00; mean Kendall tau 0.909  (25 splits, two model pairs)
   biases: IPS-weighted beats unweighted in truth in 1.00 of splits; naive evaluation says so in 0.00; SNIPS in 1.00
   factorisation: IPS-weighted beats unweighted in truth in 1.00 of splits; naive evaluation says so in 0.15; SNIPS in 1.00
+  truth without the random pairs also in the self-selected file (mean 182 of 2320 per split), true MSE: global mean 1.700; coat mean (shrunk) 1.625; user + coat biases 1.284; matrix factorisation (k = 4) 1.318; user + coat biases, IPS-weighted 1.145; matrix factorisation, IPS-weighted 1.174
+    biases: IPS-weighted beats unweighted on that truth in 1.00 of splits
+    factorisation: IPS-weighted beats unweighted on that truth in 1.00 of splits
 
 ============================================================================
 5. A HOST WHO RECORDS HIS RULE: OPEN BANDIT DATASET SAMPLE (Saito et al. 2021)
