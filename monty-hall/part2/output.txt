@@ -1,8 +1,8 @@
 ============================================================================
 1. CLOSED FORMS CHECKED AGAINST EXACT ENUMERATION (contestant holds door 1)
 ============================================================================
-  366 parameter settings checked; all closed forms hold exactly
-  (including the general formula with all four dials at 200 random rational settings)
+  399 parameter settings checked; all closed forms hold exactly
+  (including the general formula with all four dials at 195 random rational settings with a non-zero denominator, out of 200 drawn)
 
   Tie-break q (knowing host, always offers):
     q =    0: after door 3    1, after door 2  1/2; best win rate 2/3; I(car; door) = 0.918 bits
@@ -26,11 +26,15 @@
     p = (0.5, 0.3, 0.2), best pick and rule: 0.8000 (pick the least likely door, door 3, and always switch: 0.8000)
 
   Offer policy (knowing host, uniform placement): P(switch wins | offer) = 2b / (2b + a)
-    always offers (a=1, b=1)                       P(switch wins | offer) = 0.6667; always switch 0.6667, always stay 0.3333
-    trap: offers only to right picks (a=1, b=0)    P(switch wins | offer) = 0.0000; always switch 0.0000, always stay 0.3333
-    gift: offers only to wrong picks (a=0, b=1)    P(switch wins | offer) = 1.0000; always switch 1.0000, always stay 0.3333
-    sparing, leans right (a=0.3, b=0.1)            P(switch wins | offer) = 0.4000; always switch 0.3000, always stay 0.3333
-    sparing, leans wrong (a=0.3, b=0.2)            P(switch wins | offer) = 0.5714; always switch 0.3667, always stay 0.3333
+    always offers (a=1, b=1)                       P(switch wins | offer) = 0.6667; always switch 0.6667, always stay 0.3333; offer rate 1.0000
+    trap: offers only to right picks (a=1, b=0)    P(switch wins | offer) = 0.0000; always switch 0.0000, always stay 0.3333; offer rate 0.3333
+    gift: offers only to wrong picks (a=0, b=1)    P(switch wins | offer) = 1.0000; always switch 1.0000, always stay 0.3333; offer rate 0.6667
+    sparing, leans right (a=0.3, b=0.1)            P(switch wins | offer) = 0.4000; always switch 0.3000, always stay 0.3333; offer rate 0.1667
+    sparing, leans wrong (a=0.3, b=0.2)            P(switch wins | offer) = 0.5714; always switch 0.3667, always stay 0.3333; offer rate 0.2333
+  given the door as well as the offer: P(switch wins | door 3, offer) = b / (b + q a)
+    q = 1/2, a = 1, b = 1/4: after door 3 1/3, after door 2 1/3, offer alone 1/3
+    q = 0, a = 1, b = 1/4: after door 3 1, after door 2 1/5, offer alone 1/3
+    q = 1, a = 1, b = 1/4: after door 3 1/5, after door 2 1, offer alone 1/3
 
   Does any setting make staying strictly better than switching after the door opens?
     tie-break: lowest P(switch wins | door opened) over q = 1/2 (never below staying)
@@ -143,9 +147,9 @@
     after 1000 episodes: full learner 0.3665 (right call 0.994), offers-only learner 0.3662 (right call 0.986)
 
   Past episodes from which the full learner makes the right call at least 95% of the time
-  (on a grid of 0 to 2,000 in steps of 5, 20,000 contestants per point):
+  (every n up to 100, then steps of 5 up to 2,000; 20,000 contestants per point):
     always offers (a=1, b=1)                       from    0 on; lowest right-call rate 1.000 at 0 episodes
-    trap: offers only to right picks (a=1, b=0)    from    5 on; lowest right-call rate 0.000 at 0 episodes
+    trap: offers only to right picks (a=1, b=0)    from    3 on; lowest right-call rate 0.000 at 0 episodes
     gift: offers only to wrong picks (a=0, b=1)    from    0 on; lowest right-call rate 1.000 at 0 episodes
-    sparing, leans right (a=0.3, b=0.1)            from  340 on; lowest right-call rate 0.000 at 0 episodes
-    sparing, leans wrong (a=0.3, b=0.2)            from  405 on; lowest right-call rate 0.687 at 15 episodes
+    sparing, leans right (a=0.3, b=0.1)            from  345 on; lowest right-call rate 0.000 at 0 episodes
+    sparing, leans wrong (a=0.3, b=0.2)            from  415 on; lowest right-call rate 0.685 at 15 episodes

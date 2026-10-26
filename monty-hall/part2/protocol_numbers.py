@@ -288,6 +288,7 @@ def main() -> None:
                 assert p_switch_given_offer(law) == 2 * b / (2 * b + a)
                 checks += 1
     gen = np.random.default_rng(SEED + 11)
+    general = 0
     for _ in range(200):
         w = [F(int(x), 1) for x in gen.integers(1, 10, 3)]
         p = tuple(x / sum(w) for x in w)
@@ -299,8 +300,23 @@ def main() -> None:
             continue
         assert p_switch_given(law, 3) == num / den
         checks += 1
+        general += 1
+    for phi in [F(k, 8) for k in range(9)]:
+        law = observation_law(phi=phi, a=F(1), b=F(0), o=F(1))
+        assert p_switch_given(law, 3) == (1 - phi) / (2 - phi)
+        checks += 1
+    # cash offer made with probability c1 when the contestant's door hides the car, c0 otherwise
+    for c1 in [F(k, 4) for k in range(5)]:
+        for c0 in [F(k, 4) for k in range(5)]:
+            if c1 == 0 and c0 == 0:
+                continue
+            joint_right = F(1, 3) * c1
+            joint_wrong = F(2, 3) * c0
+            assert joint_right / (joint_right + joint_wrong) == c1 / (c1 + 2 * c0)
+            checks += 1
     print(f"  {checks} parameter settings checked; all closed forms hold exactly")
-    print("  (including the general formula with all four dials at 200 random rational settings)")
+    print(f"  (including the general formula with all four dials at {general} random rational settings"
+          f" with a non-zero denominator, out of 200 drawn)")
     print()
 
     print("  Tie-break q (knowing host, always offers):")
@@ -335,7 +351,13 @@ def main() -> None:
         pw = 2 * b / (2 * b + a)
         v_sw = (1 - a) / 3 + 2 * b / 3
         print(f"    {name:<46} P(switch wins | offer) = {pw:.4f};"
-              f" always switch {v_sw:.4f}, always stay {1 / 3:.4f}")
+              f" always switch {v_sw:.4f}, always stay {1 / 3:.4f}; offer rate {a / 3 + 2 * b / 3:.4f}")
+    print("  given the door as well as the offer: P(switch wins | door 3, offer) = b / (b + q a)")
+    for q, a, b in ((F(1, 2), F(1), F(1, 4)), (F(0), F(1), F(1, 4)), (F(1), F(1), F(1, 4))):
+        law = observation_law(q=q, a=a, b=b)
+        assert p_switch_given(law, 3) == b / (b + q * a)
+        print(f"    q = {q}, a = {a}, b = {b}: after door 3 {p_switch_given(law, 3)},"
+              f" after door 2 {p_switch_given(law, 2)}, offer alone {p_switch_given_offer(law)}")
     print()
 
     print("  Does any setting make staying strictly better than switching after the door opens?")
@@ -429,12 +451,12 @@ def main() -> None:
                   f" offers-only learner {b_:.4f} (right call {r2:.3f})")
     print()
     print("  Past episodes from which the full learner makes the right call at least 95% of the time")
-    print("  (on a grid of 0 to 2,000 in steps of 5, 20,000 contestants per point):")
-    fine = list(range(0, 2001, 5))
+    print("  (every n up to 100, then steps of 5 up to 2,000; 20,000 contestants per point):")
+    fine = list(range(0, 101)) + list(range(105, 2001, 5))
     for name, (a, b) in HOSTS.items():
         _, _, rf, _ = learning_curves(a, b, fine, 20_000, np.random.default_rng(SEED + 1))
         below = [n for n, r in zip(fine, rf) if r < 0.95]
-        start = 0 if not below else below[-1] + 5
+        start = 0 if not below else fine[fine.index(below[-1]) + 1]
         worst = min(rf)
         worst_n = fine[int(np.argmin(rf))]
         print(f"    {name:<46} from {start:>4} on; lowest right-call rate {worst:.3f} at {worst_n} episodes")
