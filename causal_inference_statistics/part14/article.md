@@ -361,4 +361,4 @@ Rubin, D. B. (1978). Bayesian Inference for Causal Effects: The Role of Randomiz
 
 Spiegelhalter, D. J., Abrams, K. R. and Myles, J. P. (2004). *Bayesian Approaches to Clinical Trials and Health-Care Evaluation*. Wiley.
 
-Zigler, C. M., Watts, K., Yeh, R. W., Wang, Y., Coull, B. A. and Dominici, F. (2013). Model Feedback in Bayesian Propensity Score Estimation. *Biometrics*, 69(1), 263–273. https://doi.org/10.1111/biom.12006
+Zigler, C. M., Watts, K., Yeh, R. W., Wang, Y., Coull, B. A. and Dominici, F. (2013). Model Feedback in Bayesian Propensity Score Estimation. *Biometrics*, 69(1), 263–273. https://doi.org/10.1111/j.1541-0420.2012.01830.x
