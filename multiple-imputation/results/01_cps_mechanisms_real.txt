@@ -1,0 +1,176 @@
+Population 'real' (N = 28155): educ 0.0832, afam -0.2606, exper 0.0780, exper2/100 -0.1327, smsa 0.1767; mean educ 13.068
+n = 1000 per sample, 40% of educ deleted, logistic slope 1.5 on the standardised driver, m = 20 imputations, 1000 replications per mechanism; Monte Carlo SE of a 95% coverage ~ 0.007
+
+=== coefficient on educ (population 0.0832) ===
+-- MCAR
+  Complete data (no deletion)      mean 0.0833  bias +0.0001 (+0.1%)  empSD 0.0075  meanSE 0.0072  SE/SD 0.96  cover 0.929  RMSE 0.0075  CIwidth 0.0282
+  Complete cases                   mean 0.0832  bias -0.0001 (-0.1%)  empSD 0.0097  meanSE 0.0093  SE/SD 0.96  cover 0.949  RMSE 0.0097  CIwidth 0.0366
+  Mean imputation                  mean 0.0790  bias -0.0042 (-5.0%)  empSD 0.0095  meanSE 0.0092  SE/SD 0.97  cover 0.924  RMSE 0.0104  CIwidth 0.0360  imputationRMSE 2.900
+  Mean + missing indicator         mean 0.0790  bias -0.0042 (-5.0%)  empSD 0.0095  meanSE 0.0092  SE/SD 0.97  cover 0.923  RMSE 0.0104  CIwidth 0.0361  imputationRMSE 2.900
+  Regression imputation            mean 0.1248  bias +0.0416 (+49.9%)  empSD 0.0128  meanSE 0.0099  SE/SD 0.77  cover 0.054  RMSE 0.0435  CIwidth 0.0388  imputationRMSE 2.516
+  Stochastic regression (single)   mean 0.0826  bias -0.0006 (-0.8%)  empSD 0.0106  meanSE 0.0071  SE/SD 0.67  cover 0.809  RMSE 0.0107  CIwidth 0.0279  imputationRMSE 3.560
+  kNN imputation (k = 5)           mean 0.1047  bias +0.0215 (+25.8%)  empSD 0.0112  meanSE 0.0087  SE/SD 0.78  cover 0.340  RMSE 0.0242  CIwidth 0.0342  imputationRMSE 2.686
+  Random forest imputation         mean 0.1124  bias +0.0291 (+35.0%)  empSD 0.0115  meanSE 0.0088  SE/SD 0.76  cover 0.162  RMSE 0.0313  CIwidth 0.0346  imputationRMSE 2.607
+  MI, Bayesian regression          mean 0.0826  bias -0.0006 (-0.7%)  empSD 0.0097  meanSE 0.0086  SE/SD 0.89  cover 0.926  RMSE 0.0097  CIwidth 0.0342  imputationRMSE 3.560
+  MI, predictive mean matching     mean 0.0833  bias +0.0000 (+0.0%)  empSD 0.0095  meanSE 0.0086  SE/SD 0.91  cover 0.926  RMSE 0.0095  CIwidth 0.0342  imputationRMSE 3.534
+  MI, PMM without the outcome      mean 0.0496  bias -0.0336 (-40.4%)  empSD 0.0067  meanSE 0.0094  SE/SD 1.39  cover 0.010  RMSE 0.0343  CIwidth 0.0370  imputationRMSE 3.854
+  MI, PMM with interactions        mean 0.0826  bias -0.0006 (-0.7%)  empSD 0.0095  meanSE 0.0087  SE/SD 0.91  cover 0.927  RMSE 0.0095  CIwidth 0.0343  imputationRMSE 3.479
+  MI, random forest                mean 0.0746  bias -0.0087 (-10.4%)  empSD 0.0082  meanSE 0.0089  SE/SD 1.08  cover 0.858  RMSE 0.0120  CIwidth 0.0350  imputationRMSE 3.582
+-- MAR-X
+  Complete data (no deletion)      mean 0.0836  bias +0.0004 (+0.5%)  empSD 0.0070  meanSE 0.0072  SE/SD 1.02  cover 0.959  RMSE 0.0070  CIwidth 0.0283
+  Complete cases                   mean 0.0986  bias +0.0154 (+18.5%)  empSD 0.0093  meanSE 0.0093  SE/SD 1.00  cover 0.608  RMSE 0.0180  CIwidth 0.0365
+  Mean imputation                  mean 0.0973  bias +0.0140 (+16.8%)  empSD 0.0092  meanSE 0.0092  SE/SD 1.00  cover 0.648  RMSE 0.0168  CIwidth 0.0363  imputationRMSE 3.362
+  Mean + missing indicator         mean 0.0977  bias +0.0144 (+17.4%)  empSD 0.0092  meanSE 0.0092  SE/SD 1.00  cover 0.636  RMSE 0.0171  CIwidth 0.0363  imputationRMSE 3.362
+  Regression imputation            mean 0.1492  bias +0.0660 (+79.3%)  empSD 0.0115  meanSE 0.0102  SE/SD 0.88  cover 0.000  RMSE 0.0670  CIwidth 0.0399  imputationRMSE 2.872
+  Stochastic regression (single)   mean 0.1005  bias +0.0173 (+20.8%)  empSD 0.0104  meanSE 0.0073  SE/SD 0.70  cover 0.388  RMSE 0.0202  CIwidth 0.0287  imputationRMSE 3.693
+  kNN imputation (k = 5)           mean 0.1189  bias +0.0356 (+42.8%)  empSD 0.0116  meanSE 0.0086  SE/SD 0.75  cover 0.073  RMSE 0.0374  CIwidth 0.0338  imputationRMSE 3.066
+  Random forest imputation         mean 0.1305  bias +0.0473 (+56.8%)  empSD 0.0121  meanSE 0.0087  SE/SD 0.72  cover 0.011  RMSE 0.0488  CIwidth 0.0341  imputationRMSE 2.971
+  MI, Bayesian regression          mean 0.1005  bias +0.0173 (+20.8%)  empSD 0.0092  meanSE 0.0089  SE/SD 0.97  cover 0.505  RMSE 0.0196  CIwidth 0.0352  imputationRMSE 3.701
+  MI, predictive mean matching     mean 0.0919  bias +0.0086 (+10.3%)  empSD 0.0106  meanSE 0.0096  SE/SD 0.91  cover 0.813  RMSE 0.0136  CIwidth 0.0383  imputationRMSE 3.836
+  MI, PMM without the outcome      mean 0.0568  bias -0.0265 (-31.8%)  empSD 0.0076  meanSE 0.0100  SE/SD 1.31  cover 0.213  RMSE 0.0275  CIwidth 0.0397  imputationRMSE 4.140
+  MI, PMM with interactions        mean 0.0885  bias +0.0053 (+6.4%)  empSD 0.0116  meanSE 0.0107  SE/SD 0.92  cover 0.870  RMSE 0.0127  CIwidth 0.0428  imputationRMSE 3.851
+  MI, random forest                mean 0.0795  bias -0.0037 (-4.5%)  empSD 0.0085  meanSE 0.0095  SE/SD 1.12  cover 0.964  RMSE 0.0093  CIwidth 0.0379  imputationRMSE 4.006
+-- MAR-Y
+  Complete data (no deletion)      mean 0.0834  bias +0.0001 (+0.1%)  empSD 0.0073  meanSE 0.0072  SE/SD 0.98  cover 0.958  RMSE 0.0073  CIwidth 0.0283
+  Complete cases                   mean 0.0761  bias -0.0071 (-8.5%)  empSD 0.0076  meanSE 0.0076  SE/SD 1.01  cover 0.856  RMSE 0.0104  CIwidth 0.0300
+  Mean imputation                  mean 0.0696  bias -0.0136 (-16.4%)  empSD 0.0079  meanSE 0.0089  SE/SD 1.12  cover 0.694  RMSE 0.0157  CIwidth 0.0348  imputationRMSE 3.073
+  Mean + missing indicator         mean 0.0703  bias -0.0130 (-15.6%)  empSD 0.0076  meanSE 0.0077  SE/SD 1.01  cover 0.624  RMSE 0.0150  CIwidth 0.0302  imputationRMSE 3.073
+  Regression imputation            mean 0.1491  bias +0.0658 (+79.1%)  empSD 0.0120  meanSE 0.0097  SE/SD 0.81  cover 0.001  RMSE 0.0669  CIwidth 0.0380  imputationRMSE 2.718
+  Stochastic regression (single)   mean 0.1025  bias +0.0193 (+23.1%)  empSD 0.0121  meanSE 0.0069  SE/SD 0.57  cover 0.297  RMSE 0.0227  CIwidth 0.0271  imputationRMSE 3.661
+  kNN imputation (k = 5)           mean 0.1017  bias +0.0184 (+22.1%)  empSD 0.0129  meanSE 0.0085  SE/SD 0.66  cover 0.430  RMSE 0.0225  CIwidth 0.0335  imputationRMSE 2.805
+  Random forest imputation         mean 0.1158  bias +0.0325 (+39.1%)  empSD 0.0137  meanSE 0.0086  SE/SD 0.63  cover 0.131  RMSE 0.0353  CIwidth 0.0338  imputationRMSE 2.716
+  MI, Bayesian regression          mean 0.1023  bias +0.0191 (+22.9%)  empSD 0.0100  meanSE 0.0095  SE/SD 0.94  cover 0.472  RMSE 0.0215  CIwidth 0.0378  imputationRMSE 3.659
+  MI, predictive mean matching     mean 0.0952  bias +0.0119 (+14.3%)  empSD 0.0096  meanSE 0.0087  SE/SD 0.92  cover 0.703  RMSE 0.0153  CIwidth 0.0347  imputationRMSE 3.804
+  MI, PMM without the outcome      mean 0.0456  bias -0.0377 (-45.3%)  empSD 0.0075  meanSE 0.0104  SE/SD 1.39  cover 0.014  RMSE 0.0384  CIwidth 0.0416  imputationRMSE 3.938
+  MI, PMM with interactions        mean 0.0866  bias +0.0034 (+4.1%)  empSD 0.0118  meanSE 0.0112  SE/SD 0.95  cover 0.909  RMSE 0.0122  CIwidth 0.0451  imputationRMSE 3.749
+  MI, random forest                mean 0.0723  bias -0.0109 (-13.1%)  empSD 0.0078  meanSE 0.0098  SE/SD 1.26  cover 0.856  RMSE 0.0134  CIwidth 0.0388  imputationRMSE 3.671
+-- MNAR-X
+  Complete data (no deletion)      mean 0.0839  bias +0.0007 (+0.8%)  empSD 0.0070  meanSE 0.0072  SE/SD 1.03  cover 0.954  RMSE 0.0070  CIwidth 0.0283
+  Complete cases                   mean 0.0887  bias +0.0055 (+6.6%)  empSD 0.0108  meanSE 0.0106  SE/SD 0.98  cover 0.902  RMSE 0.0121  CIwidth 0.0415
+  Mean imputation                  mean 0.0885  bias +0.0053 (+6.3%)  empSD 0.0105  meanSE 0.0105  SE/SD 1.00  cover 0.912  RMSE 0.0118  CIwidth 0.0412  imputationRMSE 4.011
+  Mean + missing indicator         mean 0.0900  bias +0.0067 (+8.1%)  empSD 0.0106  meanSE 0.0104  SE/SD 0.98  cover 0.890  RMSE 0.0125  CIwidth 0.0407  imputationRMSE 4.011
+  Regression imputation            mean 0.1393  bias +0.0560 (+67.3%)  empSD 0.0147  meanSE 0.0111  SE/SD 0.76  cover 0.016  RMSE 0.0579  CIwidth 0.0436  imputationRMSE 3.424
+  Stochastic regression (single)   mean 0.0906  bias +0.0073 (+8.8%)  empSD 0.0123  meanSE 0.0083  SE/SD 0.67  cover 0.727  RMSE 0.0143  CIwidth 0.0326  imputationRMSE 4.050
+  kNN imputation (k = 5)           mean 0.1105  bias +0.0273 (+32.8%)  empSD 0.0131  meanSE 0.0099  SE/SD 0.75  cover 0.271  RMSE 0.0303  CIwidth 0.0387  imputationRMSE 3.631
+  Random forest imputation         mean 0.1164  bias +0.0331 (+39.8%)  empSD 0.0139  meanSE 0.0099  SE/SD 0.71  cover 0.163  RMSE 0.0359  CIwidth 0.0389  imputationRMSE 3.525
+  MI, Bayesian regression          mean 0.0910  bias +0.0078 (+9.4%)  empSD 0.0111  meanSE 0.0103  SE/SD 0.93  cover 0.854  RMSE 0.0135  CIwidth 0.0409  imputationRMSE 4.047
+  MI, predictive mean matching     mean 0.0867  bias +0.0035 (+4.2%)  empSD 0.0111  meanSE 0.0101  SE/SD 0.91  cover 0.900  RMSE 0.0116  CIwidth 0.0400  imputationRMSE 4.095
+  MI, PMM without the outcome      mean 0.0534  bias -0.0298 (-35.8%)  empSD 0.0077  meanSE 0.0106  SE/SD 1.39  cover 0.132  RMSE 0.0308  CIwidth 0.0420  imputationRMSE 4.408
+  MI, PMM with interactions        mean 0.0854  bias +0.0021 (+2.6%)  empSD 0.0112  meanSE 0.0105  SE/SD 0.94  cover 0.922  RMSE 0.0114  CIwidth 0.0417  imputationRMSE 4.015
+  MI, random forest                mean 0.0778  bias -0.0055 (-6.6%)  empSD 0.0095  meanSE 0.0102  SE/SD 1.08  cover 0.943  RMSE 0.0109  CIwidth 0.0405  imputationRMSE 4.158
+
+=== coefficient on afam (population -0.2606) ===
+-- MCAR
+  Complete data (no deletion)      mean -0.2625  bias -0.0020 (-0.8%)  empSD 0.0714  meanSE 0.0687  SE/SD 0.96  cover 0.938  RMSE 0.0714  CIwidth 0.2698
+  Complete cases                   mean -0.2651  bias -0.0046 (-1.8%)  empSD 0.0907  meanSE 0.0886  SE/SD 0.98  cover 0.940  RMSE 0.0908  CIwidth 0.3480
+  Mean imputation                  mean -0.2911  bias -0.0306 (-11.7%)  empSD 0.0731  meanSE 0.0705  SE/SD 0.96  cover 0.920  RMSE 0.0792  CIwidth 0.2767
+  Mean + missing indicator         mean -0.2911  bias -0.0305 (-11.7%)  empSD 0.0731  meanSE 0.0706  SE/SD 0.97  cover 0.920  RMSE 0.0792  CIwidth 0.2769
+  Regression imputation            mean -0.2293  bias +0.0313 (+12.0%)  empSD 0.0781  meanSE 0.0659  SE/SD 0.84  cover 0.860  RMSE 0.0841  CIwidth 0.2585
+  Stochastic regression (single)   mean -0.2631  bias -0.0025 (-1.0%)  empSD 0.0762  meanSE 0.0684  SE/SD 0.90  cover 0.905  RMSE 0.0762  CIwidth 0.2685
+  kNN imputation (k = 5)           mean -0.2473  bias +0.0133 (+5.1%)  empSD 0.0745  meanSE 0.0694  SE/SD 0.93  cover 0.911  RMSE 0.0756  CIwidth 0.2722
+  Random forest imputation         mean -0.2418  bias +0.0187 (+7.2%)  empSD 0.0727  meanSE 0.0675  SE/SD 0.93  cover 0.902  RMSE 0.0750  CIwidth 0.2650
+  MI, Bayesian regression          mean -0.2628  bias -0.0023 (-0.9%)  empSD 0.0742  meanSE 0.0716  SE/SD 0.97  cover 0.935  RMSE 0.0742  CIwidth 0.2833
+  MI, predictive mean matching     mean -0.2626  bias -0.0020 (-0.8%)  empSD 0.0739  meanSE 0.0722  SE/SD 0.98  cover 0.938  RMSE 0.0739  CIwidth 0.2852
+  MI, PMM without the outcome      mean -0.2909  bias -0.0303 (-11.6%)  empSD 0.0731  meanSE 0.0731  SE/SD 1.00  cover 0.934  RMSE 0.0791  CIwidth 0.2891
+  MI, PMM with interactions        mean -0.2637  bias -0.0032 (-1.2%)  empSD 0.0741  meanSE 0.0724  SE/SD 0.98  cover 0.932  RMSE 0.0741  CIwidth 0.2859
+  MI, random forest                mean -0.2755  bias -0.0149 (-5.7%)  empSD 0.0711  meanSE 0.0716  SE/SD 1.01  cover 0.944  RMSE 0.0726  CIwidth 0.2830
+-- MAR-X
+  Complete data (no deletion)      mean -0.2618  bias -0.0012 (-0.5%)  empSD 0.0681  meanSE 0.0686  SE/SD 1.01  cover 0.955  RMSE 0.0681  CIwidth 0.2691
+  Complete cases                   mean -0.2642  bias -0.0037 (-1.4%)  empSD 0.0872  meanSE 0.0867  SE/SD 0.99  cover 0.946  RMSE 0.0873  CIwidth 0.3404
+  Mean imputation                  mean -0.2908  bias -0.0302 (-11.6%)  empSD 0.0686  meanSE 0.0694  SE/SD 1.01  cover 0.926  RMSE 0.0749  CIwidth 0.2724
+  Mean + missing indicator         mean -0.2907  bias -0.0302 (-11.6%)  empSD 0.0685  meanSE 0.0693  SE/SD 1.01  cover 0.927  RMSE 0.0748  CIwidth 0.2721
+  Regression imputation            mean -0.2316  bias +0.0289 (+11.1%)  empSD 0.0732  meanSE 0.0629  SE/SD 0.86  cover 0.868  RMSE 0.0786  CIwidth 0.2470
+  Stochastic regression (single)   mean -0.2634  bias -0.0029 (-1.1%)  empSD 0.0732  meanSE 0.0666  SE/SD 0.91  cover 0.925  RMSE 0.0732  CIwidth 0.2613
+  kNN imputation (k = 5)           mean -0.2581  bias +0.0024 (+0.9%)  empSD 0.0740  meanSE 0.0679  SE/SD 0.92  cover 0.930  RMSE 0.0740  CIwidth 0.2665
+  Random forest imputation         mean -0.2418  bias +0.0188 (+7.2%)  empSD 0.0696  meanSE 0.0653  SE/SD 0.94  cover 0.924  RMSE 0.0721  CIwidth 0.2563
+  MI, Bayesian regression          mean -0.2630  bias -0.0024 (-0.9%)  empSD 0.0693  meanSE 0.0706  SE/SD 1.02  cover 0.954  RMSE 0.0693  CIwidth 0.2793
+  MI, predictive mean matching     mean -0.2706  bias -0.0100 (-3.8%)  empSD 0.0692  meanSE 0.0717  SE/SD 1.04  cover 0.954  RMSE 0.0699  CIwidth 0.2851
+  MI, PMM without the outcome      mean -0.2933  bias -0.0327 (-12.6%)  empSD 0.0686  meanSE 0.0727  SE/SD 1.06  cover 0.937  RMSE 0.0760  CIwidth 0.2881
+  MI, PMM with interactions        mean -0.2713  bias -0.0108 (-4.1%)  empSD 0.0698  meanSE 0.0723  SE/SD 1.03  cover 0.953  RMSE 0.0706  CIwidth 0.2889
+  MI, random forest                mean -0.2812  bias -0.0207 (-7.9%)  empSD 0.0667  meanSE 0.0713  SE/SD 1.07  cover 0.951  RMSE 0.0698  CIwidth 0.2833
+-- MAR-Y
+  Complete data (no deletion)      mean -0.2589  bias +0.0017 (+0.6%)  empSD 0.0697  meanSE 0.0691  SE/SD 0.99  cover 0.948  RMSE 0.0696  CIwidth 0.2713
+  Complete cases                   mean -0.2117  bias +0.0488 (+18.7%)  empSD 0.0795  meanSE 0.0777  SE/SD 0.98  cover 0.891  RMSE 0.0932  CIwidth 0.3052
+  Mean imputation                  mean -0.2972  bias -0.0367 (-14.1%)  empSD 0.0740  meanSE 0.0725  SE/SD 0.98  cover 0.931  RMSE 0.0826  CIwidth 0.2847
+  Mean + missing indicator         mean -0.2182  bias +0.0423 (+16.3%)  empSD 0.0633  meanSE 0.0624  SE/SD 0.99  cover 0.880  RMSE 0.0761  CIwidth 0.2450
+  Regression imputation            mean -0.1867  bias +0.0739 (+28.4%)  empSD 0.0799  meanSE 0.0606  SE/SD 0.76  cover 0.707  RMSE 0.1088  CIwidth 0.2376
+  Stochastic regression (single)   mean -0.2307  bias +0.0298 (+11.5%)  empSD 0.0787  meanSE 0.0656  SE/SD 0.83  cover 0.865  RMSE 0.0841  CIwidth 0.2574
+  kNN imputation (k = 5)           mean -0.2628  bias -0.0022 (-0.8%)  empSD 0.0767  meanSE 0.0701  SE/SD 0.91  cover 0.921  RMSE 0.0767  CIwidth 0.2752
+  Random forest imputation         mean -0.2406  bias +0.0200 (+7.7%)  empSD 0.0733  meanSE 0.0677  SE/SD 0.92  cover 0.918  RMSE 0.0760  CIwidth 0.2659
+  MI, Bayesian regression          mean -0.2301  bias +0.0305 (+11.7%)  empSD 0.0728  meanSE 0.0729  SE/SD 1.00  cover 0.933  RMSE 0.0789  CIwidth 0.2905
+  MI, predictive mean matching     mean -0.2386  bias +0.0219 (+8.4%)  empSD 0.0723  meanSE 0.0736  SE/SD 1.02  cover 0.938  RMSE 0.0755  CIwidth 0.2922
+  MI, PMM without the outcome      mean -0.2892  bias -0.0286 (-11.0%)  empSD 0.0723  meanSE 0.0743  SE/SD 1.03  cover 0.951  RMSE 0.0777  CIwidth 0.2961
+  MI, PMM with interactions        mean -0.2573  bias +0.0033 (+1.3%)  empSD 0.0774  meanSE 0.0781  SE/SD 1.01  cover 0.953  RMSE 0.0774  CIwidth 0.3145
+  MI, random forest                mean -0.2783  bias -0.0177 (-6.8%)  empSD 0.0708  meanSE 0.0732  SE/SD 1.03  cover 0.956  RMSE 0.0729  CIwidth 0.2909
+-- MNAR-X
+  Complete data (no deletion)      mean -0.2607  bias -0.0002 (-0.1%)  empSD 0.0665  meanSE 0.0685  SE/SD 1.03  cover 0.958  RMSE 0.0665  CIwidth 0.2690
+  Complete cases                   mean -0.2691  bias -0.0086 (-3.3%)  empSD 0.0926  meanSE 0.0932  SE/SD 1.01  cover 0.952  RMSE 0.0929  CIwidth 0.3662
+  Mean imputation                  mean -0.2895  bias -0.0290 (-11.1%)  empSD 0.0699  meanSE 0.0704  SE/SD 1.01  cover 0.931  RMSE 0.0756  CIwidth 0.2762
+  Mean + missing indicator         mean -0.2723  bias -0.0117 (-4.5%)  empSD 0.0678  meanSE 0.0690  SE/SD 1.02  cover 0.948  RMSE 0.0688  CIwidth 0.2707
+  Regression imputation            mean -0.2132  bias +0.0474 (+18.2%)  empSD 0.0765  meanSE 0.0656  SE/SD 0.86  cover 0.844  RMSE 0.0899  CIwidth 0.2573
+  Stochastic regression (single)   mean -0.2535  bias +0.0070 (+2.7%)  empSD 0.0733  meanSE 0.0684  SE/SD 0.93  cover 0.934  RMSE 0.0736  CIwidth 0.2683
+  kNN imputation (k = 5)           mean -0.2485  bias +0.0121 (+4.6%)  empSD 0.0734  meanSE 0.0688  SE/SD 0.94  cover 0.934  RMSE 0.0744  CIwidth 0.2701
+  Random forest imputation         mean -0.2428  bias +0.0178 (+6.8%)  empSD 0.0717  meanSE 0.0681  SE/SD 0.95  cover 0.934  RMSE 0.0738  CIwidth 0.2672
+  MI, Bayesian regression          mean -0.2529  bias +0.0077 (+2.9%)  empSD 0.0710  meanSE 0.0721  SE/SD 1.02  cover 0.956  RMSE 0.0714  CIwidth 0.2853
+  MI, predictive mean matching     mean -0.2644  bias -0.0039 (-1.5%)  empSD 0.0704  meanSE 0.0720  SE/SD 1.02  cover 0.963  RMSE 0.0705  CIwidth 0.2846
+  MI, PMM without the outcome      mean -0.2839  bias -0.0233 (-8.9%)  empSD 0.0697  meanSE 0.0729  SE/SD 1.05  cover 0.954  RMSE 0.0734  CIwidth 0.2882
+  MI, PMM with interactions        mean -0.2628  bias -0.0022 (-0.8%)  empSD 0.0711  meanSE 0.0723  SE/SD 1.02  cover 0.960  RMSE 0.0711  CIwidth 0.2862
+  MI, random forest                mean -0.2766  bias -0.0161 (-6.2%)  empSD 0.0684  meanSE 0.0716  SE/SD 1.05  cover 0.962  RMSE 0.0703  CIwidth 0.2831
+
+=== mean educ (population 13.0679) ===
+-- MCAR
+  Complete data (no deletion)      mean 13.0656  bias -0.0023 (-0.0%)  empSD 0.0891  meanSE 0.0917  SE/SD 1.03  cover 0.957  RMSE 0.0891  CIwidth 0.3600
+  Complete cases                   mean 13.0643  bias -0.0036 (-0.0%)  empSD 0.1175  meanSE 0.1184  SE/SD 1.01  cover 0.946  RMSE 0.1175  CIwidth 0.4652
+  Mean imputation                  mean 13.0643  bias -0.0036 (-0.0%)  empSD 0.1175  meanSE 0.0710  SE/SD 0.60  cover 0.782  RMSE 0.1175  CIwidth 0.2786
+  Mean + missing indicator         mean 13.0643  bias -0.0036 (-0.0%)  empSD 0.1175  meanSE 0.0710  SE/SD 0.60  cover 0.782  RMSE 0.1175  CIwidth 0.2786
+  Regression imputation            mean 13.0665  bias -0.0014 (-0.0%)  empSD 0.1095  meanSE 0.0772  SE/SD 0.71  cover 0.829  RMSE 0.1094  CIwidth 0.3029
+  Stochastic regression (single)   mean 13.0647  bias -0.0032 (-0.0%)  empSD 0.1274  meanSE 0.0921  SE/SD 0.72  cover 0.844  RMSE 0.1273  CIwidth 0.3616
+  kNN imputation (k = 5)           mean 13.0786  bias +0.0107 (+0.1%)  empSD 0.1123  meanSE 0.0785  SE/SD 0.70  cover 0.824  RMSE 0.1128  CIwidth 0.3079
+  Random forest imputation         mean 13.0666  bias -0.0013 (-0.0%)  empSD 0.1099  meanSE 0.0794  SE/SD 0.72  cover 0.840  RMSE 0.1099  CIwidth 0.3115
+  MI, Bayesian regression          mean 13.0662  bias -0.0016 (-0.0%)  empSD 0.1100  meanSE 0.1135  SE/SD 1.03  cover 0.962  RMSE 0.1100  CIwidth 0.4492
+  MI, predictive mean matching     mean 13.0692  bias +0.0013 (+0.0%)  empSD 0.1111  meanSE 0.1133  SE/SD 1.02  cover 0.954  RMSE 0.1110  CIwidth 0.4486
+  MI, PMM without the outcome      mean 13.0637  bias -0.0042 (-0.0%)  empSD 0.1203  meanSE 0.1194  SE/SD 0.99  cover 0.948  RMSE 0.1204  CIwidth 0.4741
+  MI, PMM with interactions        mean 13.0678  bias -0.0000 (-0.0%)  empSD 0.1105  meanSE 0.1124  SE/SD 1.02  cover 0.948  RMSE 0.1105  CIwidth 0.4445
+  MI, random forest                mean 13.0678  bias -0.0001 (-0.0%)  empSD 0.1101  meanSE 0.1060  SE/SD 0.96  cover 0.937  RMSE 0.1101  CIwidth 0.4180
+-- MAR-X
+  Complete data (no deletion)      mean 13.0679  bias +0.0000 (+0.0%)  empSD 0.0900  meanSE 0.0917  SE/SD 1.02  cover 0.950  RMSE 0.0900  CIwidth 0.3598
+  Complete cases                   mean 13.4346  bias +0.3668 (+2.8%)  empSD 0.1026  meanSE 0.1056  SE/SD 1.03  cover 0.068  RMSE 0.3808  CIwidth 0.4149
+  Mean imputation                  mean 13.4346  bias +0.3668 (+2.8%)  empSD 0.1026  meanSE 0.0633  SE/SD 0.62  cover 0.008  RMSE 0.3808  CIwidth 0.2485
+  Mean + missing indicator         mean 13.4346  bias +0.3668 (+2.8%)  empSD 0.1026  meanSE 0.0633  SE/SD 0.62  cover 0.008  RMSE 0.3808  CIwidth 0.2485
+  Regression imputation            mean 13.1290  bias +0.0611 (+0.5%)  empSD 0.1568  meanSE 0.0709  SE/SD 0.45  cover 0.597  RMSE 0.1682  CIwidth 0.2784
+  Stochastic regression (single)   mean 13.1307  bias +0.0628 (+0.5%)  empSD 0.1830  meanSE 0.0848  SE/SD 0.46  cover 0.620  RMSE 0.1934  CIwidth 0.3328
+  kNN imputation (k = 5)           mean 13.2353  bias +0.1675 (+1.3%)  empSD 0.1305  meanSE 0.0718  SE/SD 0.55  cover 0.432  RMSE 0.2123  CIwidth 0.2816
+  Random forest imputation         mean 13.1239  bias +0.0560 (+0.4%)  empSD 0.1507  meanSE 0.0743  SE/SD 0.49  cover 0.641  RMSE 0.1607  CIwidth 0.2916
+  MI, Bayesian regression          mean 13.1276  bias +0.0597 (+0.5%)  empSD 0.1576  meanSE 0.1354  SE/SD 0.86  cover 0.889  RMSE 0.1685  CIwidth 0.5456
+  MI, predictive mean matching     mean 13.1502  bias +0.0824 (+0.6%)  empSD 0.1596  meanSE 0.1290  SE/SD 0.81  cover 0.841  RMSE 0.1795  CIwidth 0.5174
+  MI, PMM without the outcome      mean 13.1286  bias +0.0607 (+0.5%)  empSD 0.1710  meanSE 0.1428  SE/SD 0.84  cover 0.847  RMSE 0.1814  CIwidth 0.5767
+  MI, PMM with interactions        mean 13.1202  bias +0.0523 (+0.4%)  empSD 0.1593  meanSE 0.1336  SE/SD 0.84  cover 0.879  RMSE 0.1676  CIwidth 0.5362
+  MI, random forest                mean 13.1965  bias +0.1286 (+1.0%)  empSD 0.1360  meanSE 0.1093  SE/SD 0.80  cover 0.728  RMSE 0.1871  CIwidth 0.4328
+-- MAR-Y
+  Complete data (no deletion)      mean 13.0660  bias -0.0019 (-0.0%)  empSD 0.0903  meanSE 0.0917  SE/SD 1.02  cover 0.955  RMSE 0.0902  CIwidth 0.3598
+  Complete cases                   mean 13.4601  bias +0.3922 (+3.0%)  empSD 0.1121  meanSE 0.1152  SE/SD 1.03  cover 0.076  RMSE 0.4079  CIwidth 0.4524
+  Mean imputation                  mean 13.4601  bias +0.3922 (+3.0%)  empSD 0.1121  meanSE 0.0691  SE/SD 0.62  cover 0.014  RMSE 0.4079  CIwidth 0.2713
+  Mean + missing indicator         mean 13.4601  bias +0.3922 (+3.0%)  empSD 0.1121  meanSE 0.0691  SE/SD 0.62  cover 0.014  RMSE 0.4079  CIwidth 0.2713
+  Regression imputation            mean 12.9346  bias -0.1333 (-1.0%)  empSD 0.1299  meanSE 0.0799  SE/SD 0.61  cover 0.547  RMSE 0.1861  CIwidth 0.3135
+  Stochastic regression (single)   mean 12.9324  bias -0.1355 (-1.0%)  empSD 0.1551  meanSE 0.0937  SE/SD 0.60  cover 0.599  RMSE 0.2059  CIwidth 0.3677
+  kNN imputation (k = 5)           mean 13.1947  bias +0.1268 (+1.0%)  empSD 0.1198  meanSE 0.0762  SE/SD 0.64  cover 0.563  RMSE 0.1744  CIwidth 0.2991
+  Random forest imputation         mean 13.1106  bias +0.0427 (+0.3%)  empSD 0.1268  meanSE 0.0782  SE/SD 0.62  cover 0.750  RMSE 0.1337  CIwidth 0.3068
+  MI, Bayesian regression          mean 12.9350  bias -0.1329 (-1.0%)  empSD 0.1318  meanSE 0.1294  SE/SD 0.98  cover 0.832  RMSE 0.1871  CIwidth 0.5159
+  MI, predictive mean matching     mean 12.9472  bias -0.1207 (-0.9%)  empSD 0.1386  meanSE 0.1300  SE/SD 0.94  cover 0.858  RMSE 0.1838  CIwidth 0.5178
+  MI, PMM without the outcome      mean 13.4331  bias +0.3652 (+2.8%)  empSD 0.1241  meanSE 0.1226  SE/SD 0.99  cover 0.170  RMSE 0.3857  CIwidth 0.4885
+  MI, PMM with interactions        mean 13.0301  bias -0.0378 (-0.3%)  empSD 0.1398  meanSE 0.1379  SE/SD 0.99  cover 0.944  RMSE 0.1447  CIwidth 0.5519
+  MI, random forest                mean 13.1928  bias +0.1250 (+1.0%)  empSD 0.1170  meanSE 0.1101  SE/SD 0.94  cover 0.785  RMSE 0.1711  CIwidth 0.4355
+-- MNAR-X
+  Complete data (no deletion)      mean 13.0669  bias -0.0010 (-0.0%)  empSD 0.0907  meanSE 0.0917  SE/SD 1.01  cover 0.961  RMSE 0.0906  CIwidth 0.3600
+  Complete cases                   mean 14.2255  bias +1.1576 (+8.9%)  empSD 0.1045  meanSE 0.0960  SE/SD 0.92  cover 0.000  RMSE 1.1623  CIwidth 0.3772
+  Mean imputation                  mean 14.2255  bias +1.1576 (+8.9%)  empSD 0.1045  meanSE 0.0576  SE/SD 0.55  cover 0.000  RMSE 1.1623  CIwidth 0.2261
+  Mean + missing indicator         mean 14.2255  bias +1.1576 (+8.9%)  empSD 0.1045  meanSE 0.0576  SE/SD 0.55  cover 0.000  RMSE 1.1623  CIwidth 0.2261
+  Regression imputation            mean 14.0130  bias +0.9451 (+7.2%)  empSD 0.1055  meanSE 0.0621  SE/SD 0.59  cover 0.000  RMSE 0.9510  CIwidth 0.2437
+  Stochastic regression (single)   mean 14.0128  bias +0.9450 (+7.2%)  empSD 0.1204  meanSE 0.0757  SE/SD 0.63  cover 0.000  RMSE 0.9526  CIwidth 0.2970
+  kNN imputation (k = 5)           mean 14.0369  bias +0.9691 (+7.4%)  empSD 0.1043  meanSE 0.0632  SE/SD 0.61  cover 0.000  RMSE 0.9747  CIwidth 0.2481
+  Random forest imputation         mean 14.0070  bias +0.9391 (+7.2%)  empSD 0.1055  meanSE 0.0635  SE/SD 0.60  cover 0.000  RMSE 0.9450  CIwidth 0.2492
+  MI, Bayesian regression          mean 14.0130  bias +0.9451 (+7.2%)  empSD 0.1056  meanSE 0.0968  SE/SD 0.92  cover 0.000  RMSE 0.9510  CIwidth 0.3840
+  MI, predictive mean matching     mean 14.0269  bias +0.9590 (+7.3%)  empSD 0.1058  meanSE 0.0929  SE/SD 0.88  cover 0.000  RMSE 0.9648  CIwidth 0.3681
+  MI, PMM without the outcome      mean 14.1431  bias +1.0752 (+8.2%)  empSD 0.1141  meanSE 0.1021  SE/SD 0.89  cover 0.000  RMSE 1.0812  CIwidth 0.4066
+  MI, PMM with interactions        mean 14.0020  bias +0.9341 (+7.1%)  empSD 0.1071  meanSE 0.0948  SE/SD 0.88  cover 0.000  RMSE 0.9402  CIwidth 0.3760
+  MI, random forest                mean 14.0480  bias +0.9801 (+7.5%)  empSD 0.1042  meanSE 0.0883  SE/SD 0.85  cover 0.000  RMSE 0.9856  CIwidth 0.3484

@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite it as below."
+title: "Missing Data and Multiple Imputation: Thirteen Methods Compared on Census Wages and NHANES Blood Pressure"
+authors:
+  - family-names: Ribeiro
+    given-names: Diogo
+    email: dfr@esmad.ipp.pt
+    orcid: "https://orcid.org/0009-0001-2022-7072"
+version: 0.1.0
+date-released: 2026-10-26
+license: Apache-2.0
+repository-code: "https://github.com/DiogoRibeiro7/Medium-Blog/tree/main/multiple-imputation"
+references:
+  - type: data
+    title: "Rdatasets: AER::CPS1988"
+    authors:
+      - family-names: Arel-Bundock
+        given-names: Vincent
+    repository-code: "https://github.com/vincentarelbundock/Rdatasets"
+  - type: data
+    title: "NHANES R package (NHANESraw)"
+    authors:
+      - family-names: Pruim
+        given-names: Randall
+    repository-code: "https://github.com/ProjectMOSAIC/NHANES"

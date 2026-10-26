@@ -1,0 +1,31 @@
+Real CPS 1988; train 5000, test 5000, 30 repetitions; training educ 40% missing MNAR (low education more likely missing). RMSE of log wage.
+-- test scenario: same
+  Boosting, native NaN                   RMSE all 0.5515 | rows with educ missing 0.5707 (mean error +0.002) | educ < 12 0.6107
+  Boosting, mean imputed                 RMSE all 0.5510 | rows with educ missing 0.5695 (mean error +0.004) | educ < 12 0.6105
+  Boosting, mean + indicator             RMSE all 0.5513 | rows with educ missing 0.5702 (mean error +0.003) | educ < 12 0.6109
+  Boosting, regression imputed           RMSE all 0.5538 | rows with educ missing 0.5777 (mean error +0.007) | educ < 12 0.6186
+  Linear, mean + indicator               RMSE all 0.5401 | rows with educ missing 0.5601 (mean error +0.001) | educ < 12 0.5998
+  Linear, regression imputed             RMSE all 0.5516 | rows with educ missing 0.5768 (mean error +0.132) | educ < 12 0.6498
+  Oracle (no missing values anywhere)    RMSE all 0.5336 | rows with educ missing 0.5318 (mean error +0.001) | educ < 12 0.5578
+-- test scenario: MCAR
+  Boosting, native NaN                   RMSE all 0.5663 | rows with educ missing 0.6042 (mean error -0.140) | educ < 12 0.5876
+  Boosting, mean imputed                 RMSE all 0.5656 | rows with educ missing 0.6025 (mean error -0.138) | educ < 12 0.5883
+  Boosting, mean + indicator             RMSE all 0.5662 | rows with educ missing 0.6036 (mean error -0.139) | educ < 12 0.5889
+  Boosting, regression imputed           RMSE all 0.5679 | rows with educ missing 0.6091 (mean error -0.135) | educ < 12 0.5927
+  Linear, mean + indicator               RMSE all 0.5555 | rows with educ missing 0.5915 (mean error -0.141) | educ < 12 0.5844
+  Linear, regression imputed             RMSE all 0.5532 | rows with educ missing 0.5731 (mean error -0.003) | educ < 12 0.6184
+  Oracle (no missing values anywhere)    RMSE all 0.5336 | rows with educ missing 0.5326 (mean error -0.002) | educ < 12 0.5578
+-- test scenario: complete
+  Boosting, native NaN                   RMSE all 0.5385 | educ < 12 0.5705
+  Boosting, mean imputed                 RMSE all 0.5388 | educ < 12 0.5724
+  Boosting, mean + indicator             RMSE all 0.5389 | educ < 12 0.5733
+  Boosting, regression imputed           RMSE all 0.5377 | educ < 12 0.5716
+  Linear, mean + indicator               RMSE all 0.5292 | educ < 12 0.5709
+  Linear, regression imputed             RMSE all 0.5385 | educ < 12 0.5878
+  Oracle (no missing values anywhere)    RMSE all 0.5336 | educ < 12 0.5578
+  Boosting, native NaN                   RMSE change same -> MCAR +2.7%, same -> complete -2.4%
+  Boosting, mean imputed                 RMSE change same -> MCAR +2.7%, same -> complete -2.2%
+  Boosting, mean + indicator             RMSE change same -> MCAR +2.7%, same -> complete -2.2%
+  Boosting, regression imputed           RMSE change same -> MCAR +2.6%, same -> complete -2.9%
+  Linear, mean + indicator               RMSE change same -> MCAR +2.9%, same -> complete -2.0%
+  Linear, regression imputed             RMSE change same -> MCAR +0.3%, same -> complete -2.4%
