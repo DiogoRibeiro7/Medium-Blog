@@ -77,5 +77,15 @@ def test_null_alarm_rates_and_provenance(
             "false_alarm_ceiling"
         ]
     assert len(hashes) == 5
-    assert all(isinstance(v, str) and len(v) == 64 for v in hashes.values())
+    assert all(
+        isinstance(digest, str)
+        and len(digest) == 64
+        and all(char in "0123456789abcdef" for char in digest)
+        for digest in hashes.values()
+    )
+    # The experiment's original manifest and verdict.csv were checked by SHA-256.
+    assert hashes["verdict.csv"] == (
+        "9cc0089cb55076b10e313dab0255a728a3090b"
+        "8da7610739e66cf1813c876a5d"
+    )
     assert verification["checksums_matched"] is True
