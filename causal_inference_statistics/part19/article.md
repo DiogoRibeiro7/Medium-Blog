@@ -299,7 +299,7 @@ Bareinboim, E. and Pearl, J. (2016). Causal Inference and the Data-Fusion Proble
 
 Cole, S. R. and Stuart, E. A. (2010). Generalizing Evidence from Randomized Clinical Trials to Target Populations. *American Journal of Epidemiology*, 172(1), 107–115. https://doi.org/10.1093/aje/kwq084
 
-Dahabreh, I. J., Robertson, S. E., Steingrimsson, J. A., Stuart, E. A. and Hernán, M. A. (2020). Extending Inferences from a Randomized Trial to a New Target Population. *Statistics in Medicine*, 39(14), 1999–2014. https://doi.org/10.1002/sim.8423
+Dahabreh, I. J., Robertson, S. E., Steingrimsson, J. A., Stuart, E. A. and Hernán, M. A. (2020). Extending Inferences from a Randomized Trial to a New Target Population. *Statistics in Medicine*, 39(14), 1999–2014. https://doi.org/10.1002/sim.8426
 
 Hernán, M. A. and Robins, J. M. (2020). *Causal Inference: What If*. Chapman & Hall/CRC. https://miguelhernan.org/whatifbook
 
@@ -309,7 +309,7 @@ Lesko, C. R., Buchanan, A. L., Westreich, D., Edwards, J. K., Hudgens, M. G. and
 
 Pearl, J. and Bareinboim, E. (2014). External Validity: From Do-Calculus to Transportability Across Populations. *Statistical Science*, 29(4), 579–595. https://doi.org/10.1214/14-STS486
 
-Rudolph, K. E. and van der Laan, M. J. (2017). Robust Estimation of Encouragement Design Intervention Effects Transported Across Sites. *Journal of the Royal Statistical Society: Series B*, 79(5), 1509–1525.
+Rudolph, K. E. and van der Laan, M. J. (2017). Robust Estimation of Encouragement Design Intervention Effects Transported Across Sites. *Journal of the Royal Statistical Society: Series B*, 79(5), 1509–1525. https://doi.org/10.1111/rssb.12213
 
 Stuart, E. A., Cole, S. R., Bradshaw, C. P. and Leaf, P. J. (2011). The Use of Propensity Scores to Assess the Generalizability of Results from Randomized Trials. *Journal of the Royal Statistical Society: Series A*, 174(2), 369–386. https://doi.org/10.1111/j.1467-985X.2010.00673.x
 
