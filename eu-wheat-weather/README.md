@@ -6,8 +6,7 @@ Union respond to extreme heat and drought during the growing season, 2000-2024.
 **Status: article drafted and corrected after a critical review (phase 3). Amendment A1
 ([METHODS.md](METHODS.md), section 8) is registered and computed
 ([docs/AMENDMENT.md](docs/AMENDMENT.md)). A second crop, grain maize, is registered
-([METHODS.md](METHODS.md), section 9); its panel is built
-([docs/MAIZE_DATA.md](docs/MAIZE_DATA.md)) and not yet estimated.**
+([METHODS.md](METHODS.md), section 9) and estimated ([docs/MAIZE.md](docs/MAIZE.md)).**
 
 - **Plan.** [METHODS.md](METHODS.md) was committed before any yield was related to any
   weather variable. Its change log records the decisions made before any estimate, and
@@ -39,6 +38,14 @@ Union respond to extreme heat and drought during the growing season, 2000-2024.
   - **Placebo:** it passes.
   - **The 36 °C band:** it no longer differs from zero once heat after the harvest is
     left out.
+- **Grain maize** ([docs/MAIZE.md](docs/MAIZE.md)). It was registered before any maize
+  yield was looked at, and has the same design and inference as wheat under Amendment A1.
+  - **Heat:** 10 more degree days above 30 °C go with 4.9% lower yields. This is
+    established, but narrowly: p = 0.048 two-way and 0.036 bootstrap, after Holm.
+  - **Drought:** a dry season goes with 3.3% lower yields. This is established: p = 0.007
+    and 0.027 after Holm.
+  - **Placebo:** it passes by the registered rule, but only narrowly: the two-way test
+    rejects (p = 0.043) and the bootstrap does not.
 - **Review.** [docs/REVIEW.md](docs/REVIEW.md) is a critical review written after the
   results and before publication. Its checks are in the "After review (post hoc)"
   section of [docs/RESULTS.md](docs/RESULTS.md), beside the registered results and
@@ -130,6 +137,7 @@ poetry run eu-wheat fetch-crops --crop maize --output-dir snapshots/eurostat-mai
 poetry run eu-wheat regions --crops snapshots/eurostat-maize-2026-10-26 --nuts-changes snapshots/nuts-changes-2026-10-23 --boundaries-dir data/boundaries --output docs/maize/region_map.csv
 poetry run eu-wheat maize-weather --eobs-dir data/eobs --boundaries-dir data/boundaries --output docs/maize/weather.csv --seasons docs/maize/season.csv   # about an hour
 poetry run eu-wheat maize-panel --crops snapshots/eurostat-maize-2026-10-26
+poetry run eu-wheat maize-estimate   # beside wheat under Amendment A1
 poetry run eu-wheat publication            # values, article and figures; --check compares
 poetry run pytest
 poetry run ruff check src tests

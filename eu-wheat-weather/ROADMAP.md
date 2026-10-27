@@ -128,7 +128,16 @@ Results are in [docs/RESULTS.md](docs/RESULTS.md). Every rule was fixed before a
   - **Panel:** 1,898 region-years in 132 regions of 19 countries, 2010-2024. The data
     rule flags 39 region-years: Danish, Austrian and Czech pro-rating, Italian values
     carried forward, and Dutch and Swedish sums.
-- [ ] Estimates and report (`docs/MAIZE.md`), beside wheat.
+- [x] Estimates and report ([docs/MAIZE.md](docs/MAIZE.md)), beside wheat.
+  - **Heat (E1):** -4.9% per 10 degree days above 30 °C. Established, but narrowly: Holm
+    p = 0.048 two-way and 0.036 bootstrap.
+  - **Drought (E2):** -3.3% in a dry season. Established: Holm p = 0.007 and 0.027.
+  - **Placebo:** it passes by the registered rule, but the two-way test rejects
+    (p = 0.043).
+  - **Sensitivity analyses:** no sign reverses in any of the five.
+  - **Out of sample:** 2015 is predicted well; 2012 and 2022 are under-predicted
+    (-16.5% against -6.8%, and -21.7% against -11.8%).
+- [ ] Article: report maize beside wheat.
 
 No artificial observations, no estimate before the plan, and no causal claim about
 climate change from short-run weather responses.

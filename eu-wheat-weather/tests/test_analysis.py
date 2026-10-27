@@ -9,6 +9,7 @@ from pathlib import Path
 
 import numpy as np
 import pytest
+from tests_support import assert_same
 
 from eu_wheat_weather.analysis import (
     BASE,
@@ -90,27 +91,6 @@ def test_decisions_need_both_methods_and_the_sign(p_t: float, p_b: float, edd: f
     out = decide(m1, e1, e2, m3, e3)
     assert out["E1"]["verdict"] == expected
     assert out["E2"]["verdict"] == "not determined"
-
-
-def assert_same(committed: object, regenerated: object, path: str = "") -> None:
-    """Equal structure and non-float values; floats equal to a relative 1e-7.
-
-    The last digits of least-squares fits differ between processors and BLAS builds;
-    every number the reports show is far coarser than this tolerance.
-    """
-    if isinstance(committed, dict):
-        assert isinstance(regenerated, dict) and set(committed) == set(regenerated), path
-        for key in committed:
-            assert_same(committed[key], regenerated[key], f"{path}.{key}")
-    elif isinstance(committed, list):
-        assert isinstance(regenerated, list) and len(committed) == len(regenerated), path
-        for i, (a, b) in enumerate(zip(committed, regenerated, strict=True)):
-            assert_same(a, b, f"{path}[{i}]")
-    elif isinstance(committed, float) and isinstance(regenerated, float):
-        assert math.isclose(committed, regenerated, rel_tol=1e-7, abs_tol=1e-12), \
-            (path, committed, regenerated)
-    else:
-        assert committed == regenerated, (path, committed, regenerated)
 
 
 def test_committed_results_regenerate() -> None:

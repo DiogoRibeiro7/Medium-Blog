@@ -101,11 +101,11 @@ def both(f: Fit, terms: Sequence[str]) -> dict[str, Any]:
     return {**two_way(f, terms), **amended_bootstrap(f, terms)}
 
 
-def contrast_fit(obs: Sequence[Obs]) -> Fit:
+def contrast_fit(obs: Sequence[Obs], weighted: bool = False) -> Fit:
     """M1 with the precipitation terms reparametrised so that E2's dry-season contrast is
-    one coefficient, ``contrast`` (section 8.3)."""
+    one coefficient, ``contrast`` (section 8.3); optionally weighted by area."""
     d1, d2 = _dry_deltas(obs)
-    return estimate(obs, ["gdd", "edd"], EFFECTS, extra={
+    return estimate(obs, ["gdd", "edd"], EFFECTS, weighted, extra={
         "contrast": lambda o: o.x["p"] / d1,
         "curvature": lambda o: o.x["p2"] - (d2 / d1) * o.x["p"]})
 
