@@ -53,7 +53,9 @@ Union respond to extreme heat and drought during the growing season, 2000-2024.
 - **Article.** The Medium article ([publication/article.md](publication/article.md))
   and its five figures are generated from the committed results. It carries the E-OBS
   acknowledgement and citation, and the Eurostat and GISCO notices under its subtitle.
-  It is not published: the author reviews and publishes it.
+  It is not published: the author reviews and publishes it. A separate maize article
+  ([publication/maize/article.md](publication/maize/article.md)) is generated the same
+  way.
 - [ROADMAP.md](ROADMAP.md) lists the stages.
 
 ## Question and estimands

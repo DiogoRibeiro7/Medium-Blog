@@ -137,7 +137,13 @@ Results are in [docs/RESULTS.md](docs/RESULTS.md). Every rule was fixed before a
   - **Sensitivity analyses:** no sign reverses in any of the five.
   - **Out of sample:** 2015 is predicted well; 2012 and 2022 are under-predicted
     (-16.5% against -6.8%, and -21.7% against -11.8%).
-- [ ] Article: report maize beside wheat.
+- [x] Article: a separate maize article
+      ([publication/maize/article.md](publication/maize/article.md)), with four figures.
+  - **Tests:** every number is generated from the results, 14 claims in words are
+    checked, and the notices and citations are tested, as for wheat.
+  - **The wheat article** gets a short paragraph pointing to it.
+- [ ] **Author review and publication** of the maize article, under the same
+      non-commercial terms.
 
 No artificial observations, no estimate before the plan, and no causal claim about
 climate change from short-run weather responses.

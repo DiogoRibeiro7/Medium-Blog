@@ -116,6 +116,10 @@ One combination comes close. Dropping the suspect yields on its own gives heat a
 - **Not perfect yields.** The first analysis keeps regional yield series that look pro-rated from national figures or carried forward from one year to the next. The second analysis removes them by a rule, but it misses at least one case the review found: two Dutch regions whose production figures look swapped in one year.
 - **One crop calendar.** The second analysis ends every region's season at the maturity date of winter wheat, though in Finland and Sweden much of the wheat is sown in spring.
 
+## And maize?
+
+A companion piece applies the same design to grain maize, registered before any maize yield was looked at. Maize grows through the hottest weeks of the summer, and there the answer is clearer: heat and drought both lower yields by the study's rules, −4.9% for ten more degree days above 30 °C and −3.3% in a dry season, though the heat result passes only narrowly.
+
 ## Data, code and acknowledgements
 
 The data, the code, the research plan with every change made to it, the full results and the critical review are in the [project repository](https://github.com/DiogoRibeiro7/Medium-Blog/tree/main/eu-wheat-weather). Wheat statistics: © European Union, Eurostat. Regional boundaries: © EuroGeographics for the administrative boundaries, from GISCO, for non-commercial use. Weather: E-OBS v33.0e, for non-commercial research and education. Crop calendar (second analysis): GGCMI Phase 3 crop calendar v1.01, CC BY 4.0, from Jägermeyr, J., C. Müller, A. C. Ruane, et al. 2021: Climate impacts on global agriculture emerge earlier in new generation of climate and crop models, Nature Food, 2, 873-885. doi:10.1038/s43016-021-00400-y; data doi:10.5281/zenodo.5062513.

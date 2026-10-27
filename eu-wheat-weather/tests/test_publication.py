@@ -215,8 +215,26 @@ def test_words_about_the_second_analysis_match_its_results() -> None:
 def test_figures_render(tmp_path: Path) -> None:
     import shutil
 
-    for part in ("docs/results", "docs/panel", "docs/amendment", "publication"):
+    for part in ("docs/results", "docs/panel", "docs/amendment", "docs/maize", "publication"):
         shutil.copytree(ROOT / part, tmp_path / part)
     written = write_publication(tmp_path)
     figures = [tmp_path / w for w in written if w.endswith(".png")]
-    assert len(figures) == 5 and all(f.stat().st_size > 10_000 for f in figures)
+    # five for the wheat article, four for the maize article
+    assert len(figures) == 9 and all(f.stat().st_size > 10_000 for f in figures)
+
+
+def test_the_pointer_to_the_maize_article_matches_its_results() -> None:
+    maize = ROOT / "docs" / "maize" / "results" / "results.json"
+    if not maize.exists():
+        pytest.skip("No maize results.")
+    m = json.loads(maize.read_text(encoding="utf-8"))["decisions"]
+    text = re.sub(r"\s+", " ", TEMPLATE.read_text(encoding="utf-8"))
+    claims = {
+        "heat and drought both lower yields by the study's rules":
+            m["E1"]["verdict"] == m["E2"]["verdict"] == "established negative",
+        "though the heat result passes only narrowly":
+            max(m["E1"]["p_twoway_holm"], m["E1"]["p_bootstrap_holm"]) >= 0.04,
+    }
+    for phrase, holds in claims.items():
+        assert phrase in text, phrase
+        assert holds, phrase
