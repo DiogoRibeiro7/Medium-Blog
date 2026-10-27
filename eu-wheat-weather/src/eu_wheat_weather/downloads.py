@@ -21,6 +21,7 @@ from eu_wheat_weather.contract import (
     EOBS_FILES,
     EOBS_VERSION,
     GISCO_BASE,
+    MAIZE_CALENDAR_FILE,
     NUTS_VERSIONS,
     DataError,
     gisco_file,
@@ -87,14 +88,16 @@ def fetch_boundaries(directory: Path, manifest: Path) -> dict[str, Any]:
 
 
 def fetch_calendar(directory: Path) -> dict[str, Any]:
-    """The crop calendar of Amendment A1, small enough to commit: the file and its
-    manifest both go in ``directory``."""
-    return fetch_all({CALENDAR_FILE: CALENDAR_BASE + CALENDAR_FILE + "?download=1"},
+    """The crop calendars of Amendment A1 (wheat) and section 9 (maize), small enough to
+    commit: the files and their manifest all go in ``directory``."""
+    return fetch_all({name: CALENDAR_BASE + name + "?download=1"
+                      for name in (CALENDAR_FILE, MAIZE_CALENDAR_FILE)},
                      directory, directory / "manifest.json",
-                     f"GGCMI Phase 3 crop calendar {CALENDAR_VERSION}, rainfed winter wheat, "
-                     "0.5 degree grid. CC BY 4.0. Jägermeyr, J., et al. (2021), Climate impacts "
-                     "on global agriculture emerge earlier in new generation of climate and "
-                     "crop models, Nature Food 2, 873-885; data doi:10.5281/zenodo.5062513")
+                     f"GGCMI Phase 3 crop calendar {CALENDAR_VERSION}, rainfed winter wheat "
+                     "(Amendment A1) and rainfed maize (section 9), 0.5 degree grid. "
+                     "CC BY 4.0. Jägermeyr, J., et al. (2021), Climate impacts on global "
+                     "agriculture emerge earlier in new generation of climate and crop "
+                     "models, Nature Food 2, 873-885; data doi:10.5281/zenodo.5062513")
 
 
 def verify(directory: Path, manifest: Path) -> list[str]:

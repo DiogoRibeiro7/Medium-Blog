@@ -1,0 +1,29 @@
+{
+ "dataset": "apro_cpshr",
+ "crop": "C1500",
+ "measures": [
+  "AR_THS_HA",
+  "HPRD_HUMD_EU_THS_T"
+ ],
+ "urls": {
+  "nuts2": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/apro_cpshr?format=JSON&lang=EN&crops=C1500&strucpro=AR_THS_HA&strucpro=HPRD_HUMD_EU_THS_T&geoLevel=nuts2",
+  "nuts1": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/apro_cpshr?format=JSON&lang=EN&crops=C1500&strucpro=AR_THS_HA&strucpro=HPRD_HUMD_EU_THS_T&geoLevel=nuts1"
+ },
+ "retrieved_utc": "2026-10-26T20:55:43Z",
+ "eurostat_updated": {
+  "nuts2": "2026-09-08T23:00:00+0200",
+  "nuts1": "2026-09-08T23:00:00+0200"
+ },
+ "files": {
+  "raw/apro_cpshr_C1500_nuts2.json": "fc5242396f2a22652dff5e31461060885bbe4082319ebae7a906dadcd3d30342",
+  "raw/apro_cpshr_C1500_nuts1.json": "118f95546aef866724514d7b195c9c1ec65ea564acfbabfdaa8012b2dcf1ce39",
+  "processed/maize_nuts2.csv": "f52dca86624d0293b8f1cd33e195e34020f14a7a0d8fd8367308799d808af6aa"
+ },
+ "summary": {
+  "rows": 5469,
+  "rows_with_yield": 4585,
+  "regions_with_yield": 320,
+  "first_year": 2000,
+  "last_year": 2024
+ }
+}

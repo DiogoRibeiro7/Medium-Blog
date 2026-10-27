@@ -124,7 +124,10 @@ def q5_level_shifts(panel: Sequence[Mapping[str, str]]) -> list[Flag]:
         yields = {int(r["year"]): float(r["yield_t_ha"]) for r in rows}
         shifted = set()
         for year, y in yields.items():
-            other = statistics.median(v for t, v in yields.items() if t != year)
+            others = [v for t, v in yields.items() if t != year]
+            if not others:                    # a single year: nothing to compare with
+                continue
+            other = statistics.median(others)
             if y < other / Q5_FACTOR or y > other * Q5_FACTOR:
                 shifted.add(year)
         runs: list[list[int]] = []

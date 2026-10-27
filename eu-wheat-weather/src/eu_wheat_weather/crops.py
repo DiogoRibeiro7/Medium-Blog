@@ -1,4 +1,5 @@
-"""Eurostat crop statistics for common wheat by region (METHODS.md, section 3.1).
+"""Eurostat crop statistics by region: common wheat (METHODS.md, section 3.1) and grain
+maize (section 9). The crop is a parameter; it defaults to wheat.
 
 ``fetch_crops`` downloads the raw JSON-stat responses (NUTS-2 and NUTS-1);
 ``wheat_table`` turns them into one row per region and year, with area, production, the
@@ -24,6 +25,7 @@ from typing import Any
 from eu_wheat_weather.contract import (
     AREA,
     CROP,
+    CROP_NAMES,
     CROPS_DATASET,
     EU27,
     EUROSTAT_API,
@@ -40,26 +42,36 @@ from eu_wheat_weather.jsonstat import decode
 # (METHODS.md, change log).
 LEVELS: tuple[str, ...] = ("nuts2", "nuts1")
 TABLE_NAME = "processed/wheat_nuts2.csv"
+
+
+def table_name(crop: str = CROP) -> str:
+    """processed/wheat_nuts2.csv for wheat, processed/maize_nuts2.csv for maize."""
+    return f"processed/{CROP_NAMES[crop]}_nuts2.csv"
+
+
+def snapshot_crop(directory: Path) -> str:
+    """The crop a snapshot holds, from its manifest."""
+    return str(json.loads((directory / "manifest.json").read_text(encoding="utf-8"))["crop"])
 COLUMNS = ("geo", "year", "area_kha", "production_kt", "yield_t_ha", "area_flag",
            "production_flag")
 
 
-def raw_name(level: str) -> str:
-    return f"raw/{CROPS_DATASET}_{CROP}_{level}.json"
+def raw_name(level: str, crop: str = CROP) -> str:
+    return f"raw/{CROPS_DATASET}_{crop}_{level}.json"
 
 
-def crops_url(level: str = "nuts2") -> str:
-    query = [("format", "JSON"), ("lang", "EN"), ("crops", CROP),
+def crops_url(level: str = "nuts2", crop: str = CROP) -> str:
+    query = [("format", "JSON"), ("lang", "EN"), ("crops", crop),
              *(("strucpro", m) for m in MEASURES), ("geoLevel", level)]
     return f"{EUROSTAT_API}{CROPS_DATASET}?{urllib.parse.urlencode(query)}"
 
 
 def fetch_crops(levels: tuple[str, ...] = LEVELS, timeout: float = 300.0,
-                ) -> dict[str, tuple[bytes, str]]:
+                crop: str = CROP) -> dict[str, tuple[bytes, str]]:
     """For each NUTS level, the raw response and the URL it came from."""
     out = {}
     for level in levels:
-        url = crops_url(level)
+        url = crops_url(level, crop)
         request = urllib.request.Request(url, headers={"Accept": "application/json"})
         with urllib.request.urlopen(request, timeout=timeout) as response:  # noqa: S310
             out[level] = (response.read(), url)
@@ -94,12 +106,13 @@ def is_eu_region(code: str) -> bool:
     return len(code) == 3 and not code.endswith("Z")
 
 
-def wheat_table(payloads: Sequence[Mapping[str, Any]]) -> list[WheatRow]:
-    """One row per EU-27 region (NUTS-2 or NUTS-1) and year in the study period."""
+def wheat_table(payloads: Sequence[Mapping[str, Any]], crop: str = CROP) -> list[WheatRow]:
+    """One row per EU-27 region (NUTS-2 or NUTS-1) and year in the study period, for
+    ``crop`` (wheat unless stated)."""
     by_key: dict[tuple[str, int], dict[str, tuple[float | None, str]]] = {}
     seen: set[str] = set()
     for payload in payloads:
-        cells = decode(payload, {"freq": "A", "crops": CROP, "strucpro": MEASURES})
+        cells = decode(payload, {"freq": "A", "crops": crop, "strucpro": MEASURES})
         codes = {c.codes["geo"] for c in cells}
         if codes & seen:
             raise DataError(f"Regions in more than one response: {sorted(codes & seen)}.")
@@ -141,19 +154,19 @@ def sha256(data: bytes) -> str:
 
 
 def save_snapshot(directory: Path, responses: Mapping[str, tuple[bytes, str]],
-                  retrieved: datetime | None = None) -> dict[str, Any]:
+                  retrieved: datetime | None = None, crop: str = CROP) -> dict[str, Any]:
     """Write the raw responses (by NUTS level), the table and a manifest with hashes."""
     payloads = {level: json.loads(raw.decode("utf-8")) for level, (raw, _) in responses.items()}
-    rows = wheat_table(list(payloads.values()))
+    rows = wheat_table(list(payloads.values()), crop)
     table = table_text(rows).encode("utf-8")
-    files = {raw_name(level): raw for level, (raw, _) in responses.items()}
-    files[TABLE_NAME] = table
+    files = {raw_name(level, crop): raw for level, (raw, _) in responses.items()}
+    files[table_name(crop)] = table
     for name, data in files.items():
         path = directory / name
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_bytes(data)
     manifest = {
-        "dataset": CROPS_DATASET, "crop": CROP, "measures": list(MEASURES),
+        "dataset": CROPS_DATASET, "crop": crop, "measures": list(MEASURES),
         "urls": {level: url for level, (_, url) in responses.items()},
         "retrieved_utc": (retrieved or datetime.now(UTC)).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "eurostat_updated": {level: p.get("updated") for level, p in payloads.items()},
@@ -184,9 +197,10 @@ def audit_snapshot(directory: Path) -> dict[str, Any]:
         if sha256(path.read_bytes()) != expected:
             raise DataError(f"{name} does not match its recorded SHA-256.")
     raws = [name for name in manifest["files"] if name.startswith("raw/")]
+    crop = manifest["crop"]
     rows = wheat_table([json.loads((directory / name).read_bytes().decode("utf-8"))
-                        for name in raws])
-    if table_text(rows).encode("utf-8") != (directory / TABLE_NAME).read_bytes():
+                        for name in raws], crop)
+    if table_text(rows).encode("utf-8") != (directory / table_name(crop)).read_bytes():
         raise DataError("The processed table does not re-derive from the raw response.")
     counts = summary(rows)
     if counts != manifest["summary"]:

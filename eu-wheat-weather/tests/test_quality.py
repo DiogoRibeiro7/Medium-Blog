@@ -86,3 +86,9 @@ def test_the_ten_year_rule_is_checked_again() -> None:
     kept, flags, short = apply_rule(panel, [], [], [])
     assert short == ["AA13"] and {f.rule for f in flags} == {"Q5"}
     assert {r["geo"] for r in kept} == {"AA11", "AA12"}
+
+
+def test_q5_skips_a_region_with_a_single_year() -> None:
+    """Maize applies the rule before the 10-year rule (section 9.1), so a region can have
+    one year; with no other year there is nothing to compare."""
+    assert q5_level_shifts([row("AA11", 2015, 7.0)]) == []

@@ -566,3 +566,13 @@ are; maize is reported separately.
 - **2026-10-26, before any maize data beyond coverage: a second crop, grain maize
   (section 9).** It is registered before any maize yield was looked at. Section 9 says
   what was seen first: maize coverage counts and the calendar's distribution.
+- **2026-10-26, maize data, before any maize estimate: details section 9 left open.**
+  - **Q5 with a single year.** Maize applies the data rule before the 10-year rule
+    (9.1), so a region can have a single year. With no other year there is nothing to
+    compare, so Q5 does not flag it. In wheat the rule runs on a panel of regions with at
+    least 10 years, so nothing there changes.
+  - **Weather.** Maize uses all cells, as in the primary wheat model. A region without a
+    calendar value has no season weather and leaves the panel at rule 4.
+  - **What was seen.** The maize panel and its coverage report (`docs/MAIZE_DATA.md`):
+    counts, exclusions and the data rule's flags. No yield was related to any weather
+    variable.

@@ -1,0 +1,151 @@
+{
+ "snapshot": "eurostat-maize-2026-10-26",
+ "snapshot_audit": {
+  "rows": 5469,
+  "rows_with_yield": 4585,
+  "regions_with_yield": 320,
+  "first_year": 2000,
+  "last_year": 2024
+ },
+ "years": [
+  2010,
+  2024
+ ],
+ "codes_by_rule": {
+  "no_match": 102,
+  "nuts1_single": 27,
+  "nuts2021": 204,
+  "recode": 23
+ },
+ "harmonised_region_years": 3092,
+ "harmonised_with_yield": 2656,
+ "conflicts": 15,
+ "excluded_by_reason": {
+  "no_area_or_production": 62,
+  "area_below_1kha": 1025,
+  "data_rule": 39,
+  "region_below_10_years": 68
+ },
+ "data_rule_flags": {
+  "Q1": 3,
+  "Q2": 22,
+  "Q3": 6,
+  "Q4": 8
+ },
+ "data_rule_by_country": {
+  "AT": 10,
+  "CZ": 12,
+  "DK": 3,
+  "IT": 6,
+  "NL": 7,
+  "SE": 1
+ },
+ "panel_region_years": 1898,
+ "panel_regions": 132,
+ "panel_countries": 19,
+ "single_region_countries": [],
+ "by_country": {
+  "AT": {
+   "regions": 5,
+   "region_years": 65
+  },
+  "BE": {
+   "regions": 7,
+   "region_years": 98
+  },
+  "BG": {
+   "regions": 6,
+   "region_years": 90
+  },
+  "CZ": {
+   "regions": 7,
+   "region_years": 92
+  },
+  "DE": {
+   "regions": 4,
+   "region_years": 60
+  },
+  "DK": {
+   "regions": 3,
+   "region_years": 39
+  },
+  "EL": {
+   "regions": 8,
+   "region_years": 116
+  },
+  "ES": {
+   "regions": 9,
+   "region_years": 135
+  },
+  "FR": {
+   "regions": 21,
+   "region_years": 315
+  },
+  "HR": {
+   "regions": 2,
+   "region_years": 29
+  },
+  "HU": {
+   "regions": 7,
+   "region_years": 102
+  },
+  "IT": {
+   "regions": 13,
+   "region_years": 182
+  },
+  "LT": {
+   "regions": 2,
+   "region_years": 23
+  },
+  "NL": {
+   "regions": 3,
+   "region_years": 41
+  },
+  "PL": {
+   "regions": 17,
+   "region_years": 247
+  },
+  "PT": {
+   "regions": 4,
+   "region_years": 54
+  },
+  "RO": {
+   "regions": 8,
+   "region_years": 120
+  },
+  "SI": {
+   "regions": 2,
+   "region_years": 30
+  },
+  "SK": {
+   "regions": 4,
+   "region_years": 60
+  }
+ },
+ "season": {
+  "planting_first": "03-29",
+  "planting_last": "05-12",
+  "planting_median_day": 118.0,
+  "maturity_first": "08-31",
+  "maturity_last": "10-07",
+  "maturity_median_day": 258.0,
+  "planting_before_march": 0
+ },
+ "flags": {
+  "e": 136
+ },
+ "weather_missing": {
+  "season/all": {
+   "region_seasons": 3630,
+   "missing": 240
+  },
+  "post_maturity/all": {
+   "region_seasons": 3630,
+   "missing": 240
+  },
+  "may_sep/all": {
+   "region_seasons": 3630,
+   "missing": 240
+  }
+ }
+}

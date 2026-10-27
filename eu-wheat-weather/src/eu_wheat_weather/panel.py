@@ -16,7 +16,7 @@ from dataclasses import asdict, dataclass
 from pathlib import Path
 from typing import Any
 
-from eu_wheat_weather.crops import TABLE_NAME, WheatRow, audit_snapshot
+from eu_wheat_weather.crops import WheatRow, audit_snapshot, snapshot_crop, table_name
 from eu_wheat_weather.regions import CodeMatch, Conflict, HarmonisedRow, harmonise
 
 AREA_MIN = 1.0                 # thousand hectares
@@ -30,10 +30,11 @@ REASONS = ("no_area_or_production", "area_below_1kha", "implausible_yield", "wea
 
 
 def read_wheat(snapshot: Path) -> list[WheatRow]:
+    """The snapshot's processed table, for whichever crop its manifest names."""
     def number(x: str) -> float | None:
         return None if x == "" else float(x)
 
-    with (snapshot / TABLE_NAME).open(encoding="utf-8") as stream:
+    with (snapshot / table_name(snapshot_crop(snapshot))).open(encoding="utf-8") as stream:
         return [WheatRow(r["geo"], int(r["year"]), number(r["area_kha"]),
                          number(r["production_kt"]), r["area_flag"], r["production_flag"])
                 for r in csv.DictReader(stream)]

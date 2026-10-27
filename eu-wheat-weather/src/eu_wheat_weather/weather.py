@@ -171,21 +171,23 @@ def aggregate(weights: Array, values: Array, observed: NDArray[np.bool_]) -> Arr
 # ----------------------------------------------------------------------------------
 
 
-def season_days(year: int) -> list[dt.date]:
-    start, end = dt.date(year, *READ_FROM), dt.date(year, *READ_TO)
+def season_days(year: int, read_to: tuple[int, int] = READ_TO) -> list[dt.date]:
+    start, end = dt.date(year, *READ_FROM), dt.date(year, *read_to)
     return [start + dt.timedelta(days=i) for i in range((end - start).days + 1)]
 
 
 def daily_region_variables(tn: Array, tx: Array, rr: Array, obs_t: NDArray[np.bool_],
                            obs_r: NDArray[np.bool_], days: Sequence[dt.date],
-                           weights: RegionWeights) -> dict[str, Array]:
-    """Region-day values of every variable (regions x days)."""
+                           weights: RegionWeights, gdd_base: float = 0.0,
+                           ) -> dict[str, Array]:
+    """Region-day values of every variable (regions x days). Growing degree days count
+    from ``gdd_base``: 0 °C for wheat, 10 °C for maize (section 9.1)."""
     w = weights.matrix
     out: dict[str, Array] = {}
-    dd0 = degree_days(tn, tx, 0.0)
+    dd0 = degree_days(tn, tx, gdd_base)
     for threshold in THRESHOLDS:
         above = degree_days(tn, tx, threshold)
-        out[f"gdd_0_{int(threshold)}"] = aggregate(w, dd0 - above, obs_t)
+        out[f"gdd_{int(gdd_base)}_{int(threshold)}"] = aggregate(w, dd0 - above, obs_t)
         out[f"edd_{int(threshold)}"] = aggregate(w, above, obs_t)
     names = bin_names()
     fractions = [time_above(tn, tx, e) for e in BIN_EDGES]
@@ -202,13 +204,14 @@ def daily_region_variables(tn: Array, tx: Array, rr: Array, obs_t: NDArray[np.bo
 
 
 def window_sums(daily: Mapping[str, Array], days: Sequence[dt.date],
-                ) -> dict[str, dict[str, Array]]:
+                windows: Mapping[str, tuple[tuple[int, int], tuple[int, int]]] | None = None,
+                variables: Sequence[str] = VARIABLES) -> dict[str, dict[str, Array]]:
     """Per window, the sum over days of each variable (NaN if any day is missing)."""
     out: dict[str, dict[str, Array]] = {}
-    for name, ((m0, d0), (m1, d1)) in WINDOWS.items():
+    for name, ((m0, d0), (m1, d1)) in (WINDOWS if windows is None else windows).items():
         keep = np.array([(d.month, d.day) >= (m0, d0) and (d.month, d.day) <= (m1, d1)
                          for d in days])
-        out[name] = {v: daily[v][:, keep].sum(axis=1) for v in VARIABLES}
+        out[name] = {v: daily[v][:, keep].sum(axis=1) for v in variables}
         out[name]["missing_temp"] = np.isnan(daily["edd_30"][:, keep]).sum(axis=1)
         out[name]["missing_prec"] = np.isnan(daily["prec"][:, keep]).sum(axis=1)
     return out
@@ -253,19 +256,22 @@ def regional_window_sums(daily: Mapping[str, Array], days: Sequence[dt.date],
 # ----------------------------------------------------------------------------------
 
 
-def read_calendar(path: Path) -> tuple[Array, Array, Array]:
-    """Latitudes, longitudes and maturity day of the year (NaN where missing)."""
+def read_calendar(path: Path, variable: str = "maturity_day",
+                  ) -> tuple[Array, Array, Array]:
+    """Latitudes, longitudes and a day of the year (NaN where missing): maturity unless
+    stated, or planting for maize (section 9.1)."""
     import netCDF4
 
     with netCDF4.Dataset(path) as ds:
         lat = np.asarray(ds.variables["lat"][:], dtype=np.float64)
         lon = np.asarray(ds.variables["lon"][:], dtype=np.float64)
-        day = np.ma.filled(ds.variables["maturity_day"][:].astype(np.float64), np.nan)
+        day = np.ma.filled(ds.variables[variable][:].astype(np.float64), np.nan)
     return lat, lon, np.asarray(day, dtype=np.float64)
 
 
 def region_maturity(weights: RegionWeights, lon: Array,
-                    calendar: tuple[Array, Array, Array]) -> list[dict[str, object]]:
+                    calendar: tuple[Array, Array, Array], name: str = "maturity",
+                    ) -> list[dict[str, object]]:
     """Each region's maturity day: every E-OBS cell takes the calendar cell containing its
     centre, and the region's day is the weighted mean over its cells that have a value,
     rounded to the nearest day and read as a date in a non-leap year."""
@@ -284,13 +290,13 @@ def region_maturity(weights: RegionWeights, lon: Array,
         w = weights.matrix[r]
         total, covered = float(w.sum()), float(w[have].sum())
         if covered == 0:
-            out.append({"geo": code, "maturity_day": "", "maturity_date": "",
+            out.append({"geo": code, f"{name}_day": "", f"{name}_date": "",
                         "calendar_share": 0.0})
             continue
         mean = float(w[have] @ values[have]) / covered
         doy = int(math.floor(mean + 0.5))
         date = dt.date(CALENDAR_YEAR, 1, 1) + dt.timedelta(days=doy - 1)
-        out.append({"geo": code, "maturity_day": doy, "maturity_date": date.strftime("%m-%d"),
+        out.append({"geo": code, f"{name}_day": doy, f"{name}_date": date.strftime("%m-%d"),
                     "calendar_share": round(covered / total, 4)})
     return out
 
@@ -403,5 +409,118 @@ def write_weather(rows: Sequence[Mapping[str, object]], path: Path) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", encoding="utf-8", newline="") as stream:
         writer = csv.DictWriter(stream, fieldnames=COLUMNS, lineterminator="\n")
+        writer.writeheader()
+        writer.writerows(rows)
+
+
+# ----------------------------------------------------------------------------------
+# Grain maize (METHODS.md, section 9.1)
+# ----------------------------------------------------------------------------------
+
+MAIZE_GDD_BASE = 10.0
+MAIZE_VARIABLES: tuple[str, ...] = tuple(v.replace("gdd_0_", "gdd_10_") for v in VARIABLES)
+MAIZE_WINDOWS: dict[str, tuple[tuple[int, int], tuple[int, int]]] = {
+    "may_sep": ((5, 1), (9, 30)),        # sensitivity: a fixed season
+}
+MAIZE_READ_TO = (12, 31)                 # so that the placebo after maturity fits
+MAIZE_COLUMNS = ("geo", "year", "window", "weighting", "missing_temp", "missing_prec",
+                 *MAIZE_VARIABLES)
+SEASON_COLUMNS = ("geo", "planting_day", "planting_date", "maturity_day", "maturity_date",
+                  "calendar_share")
+
+
+def season_window_sums(daily: Mapping[str, Array], days: Sequence[dt.date],
+                       seasons: Sequence[tuple[tuple[int, int], tuple[int, int]] | None],
+                       variables: Sequence[str] = MAIZE_VARIABLES,
+                       ) -> dict[str, dict[str, Array]]:
+    """Per region, sums over its season (planting to maturity, starting no earlier than
+    1 March) and over the 61 days after maturity, the placebo of section 9.2.
+
+    ``seasons`` gives each region's (planting, maturity) dates as (month, day) pairs, in
+    the order of the daily arrays' rows; a region without them gets missing values.
+    """
+    year = days[0].year
+    ordinal = np.array([d.toordinal() for d in days])
+    earliest = dt.date(year, *READ_FROM).toordinal()
+    masks = {name: np.zeros((len(seasons), len(days)), dtype=bool)
+             for name in ("season", "post_maturity")}
+    for r, season in enumerate(seasons):
+        if season is None:
+            continue
+        first = max(dt.date(year, *season[0]).toordinal(), earliest)
+        last = dt.date(year, *season[1]).toordinal()
+        if last + PLACEBO_DAYS > ordinal[-1] or last < first:
+            raise DataError(f"The season {season} does not fit the days read.")
+        masks["season"][r] = (ordinal >= first) & (ordinal <= last)
+        masks["post_maturity"][r] = (ordinal > last) & (ordinal <= last + PLACEBO_DAYS)
+    out: dict[str, dict[str, Array]] = {}
+    for name, mask in masks.items():
+        absent = ~mask.any(axis=1)
+        sums = {v: np.where(mask, daily[v], 0.0).sum(axis=1) for v in variables}
+        sums["missing_temp"] = (np.isnan(daily["edd_30"]) & mask).sum(axis=1).astype(float)
+        sums["missing_prec"] = (np.isnan(daily["prec"]) & mask).sum(axis=1).astype(float)
+        for values in sums.values():
+            values[absent] = np.nan
+        out[name] = sums
+    return out
+
+
+def region_seasons(weights: RegionWeights, lon: Array, calendar: Path,
+                   ) -> list[dict[str, object]]:
+    """Each region's planting and maturity dates, both computed as in section 8.1."""
+    planting = region_maturity(weights, lon, read_calendar(calendar, "planting_day"),
+                               "planting")
+    maturity = region_maturity(weights, lon, read_calendar(calendar, "maturity_day"))
+    return [{**p, **m, "calendar_share": min(float(str(p["calendar_share"])),
+                                             float(str(m["calendar_share"])))}
+            for p, m in zip(planting, maturity, strict=True)]
+
+
+def _month_day(text: object) -> tuple[int, int]:
+    return int(str(text)[:2]), int(str(text)[3:])
+
+
+def build_maize_weather(eobs_dir: Path, regions: Mapping[str, BaseGeometry],
+                        years: Sequence[int], calendar: Path,
+                        ) -> tuple[list[dict[str, object]], list[dict[str, object]]]:
+    """One row per region, harvest year and window (all cells), and each region's
+    season (section 9.1)."""
+    lat, lon, _ = read_grid(eobs_dir)
+    weights = cell_weights(regions, lat, lon)
+    seasons = region_seasons(weights, lon, calendar)
+    dates: list[tuple[tuple[int, int], tuple[int, int]] | None] = [
+        None if s["maturity_date"] == "" or s["planting_date"] == "" else
+        (_month_day(s["planting_date"]), _month_day(s["maturity_date"])) for s in seasons]
+    rows: list[dict[str, object]] = []
+    for year in years:
+        days = season_days(year, MAIZE_READ_TO)
+        first, last = (days[0] - EPOCH).days, (days[-1] - EPOCH).days
+        tx, obs_x = _read(eobs_dir / EOBS_FILES["tx"], "tx", first, last, weights.cells)
+        tn, obs_n = _read(eobs_dir / EOBS_FILES["tn"], "tn", first, last, weights.cells)
+        rr, obs_r = _read(eobs_dir / EOBS_FILES["rr"], "rr", first, last, weights.cells)
+        obs_t = obs_x & obs_n
+        tn, tx = np.where(obs_t, tn, 0.0), np.where(obs_t, tx, 0.0)
+        rr = np.where(obs_r, rr, 0.0)
+        daily = daily_region_variables(tn, tx, rr, obs_t, obs_r, days, weights,
+                                       MAIZE_GDD_BASE)
+        windows = season_window_sums(daily, days, dates)
+        windows.update(window_sums(daily, days, MAIZE_WINDOWS, MAIZE_VARIABLES))
+        for window, sums in windows.items():
+            for r, code in enumerate(weights.codes):
+                row: dict[str, object] = {"geo": code, "year": year, "window": window,
+                                          "weighting": "all"}
+                for v in ("missing_temp", "missing_prec", *MAIZE_VARIABLES):
+                    x = float(sums[v][r])
+                    row[v] = "" if math.isnan(x) else (int(x) if v.startswith("missing")
+                                                       else round(x, 6))
+                rows.append(row)
+    return rows, seasons
+
+
+def write_table(rows: Sequence[Mapping[str, object]], path: Path,
+                columns: Sequence[str]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("w", encoding="utf-8", newline="") as stream:
+        writer = csv.DictWriter(stream, fieldnames=list(columns), lineterminator="\n")
         writer.writeheader()
         writer.writerows(rows)

@@ -8,7 +8,13 @@ from collections import Counter
 from collections.abc import Sequence
 from pathlib import Path
 
-from eu_wheat_weather.contract import CALENDAR_FILE, CALENDAR_SNAPSHOT, DataError
+from eu_wheat_weather.contract import (
+    CALENDAR_FILE,
+    CALENDAR_SNAPSHOT,
+    CROP_NAMES,
+    MAIZE_CALENDAR_FILE,
+    DataError,
+)
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -16,9 +22,10 @@ def build_parser() -> argparse.ArgumentParser:
         prog="eu-wheat", description="Heat, drought and wheat yields in EU regions.")
     commands = parser.add_subparsers(dest="command", required=True)
     crops = commands.add_parser(
-        "fetch-crops", help="Download Eurostat wheat area and production by NUTS-2 and "
+        "fetch-crops", help="Download Eurostat area and production of a crop by NUTS-2 and "
         "NUTS-1 region and freeze them as a snapshot")
     crops.add_argument("--output-dir", type=Path, required=True)
+    crops.add_argument("--crop", choices=sorted(CROP_NAMES.values()), default="wheat")
     bounds = commands.add_parser(
         "fetch-boundaries", help="Download the GISCO NUTS-2 boundaries, 2006-2024 "
         "(not committed; the manifest is)")
@@ -60,6 +67,25 @@ def build_parser() -> argparse.ArgumentParser:
                              default=Path(CALENDAR_SNAPSHOT) / CALENDAR_FILE,
                              help="Crop calendar for the windows of Amendment A1")
     weather_agg.add_argument("--maturity", type=Path, default=Path("docs/panel/maturity.csv"))
+    maize_weather = commands.add_parser(
+        "maize-weather", help="Aggregate E-OBS to NUTS-2021 regions over each region's maize "
+        "season, its placebo window and a fixed season (METHODS.md, section 9.1)")
+    maize_weather.add_argument("--eobs-dir", type=Path, default=Path("data/eobs"))
+    maize_weather.add_argument("--boundaries-dir", type=Path, default=Path("data/boundaries"))
+    maize_weather.add_argument("--calendar", type=Path,
+                               default=Path(CALENDAR_SNAPSHOT) / MAIZE_CALENDAR_FILE)
+    maize_weather.add_argument("--output", type=Path, default=Path("docs/maize/weather.csv"))
+    maize_weather.add_argument("--seasons", type=Path, default=Path("docs/maize/season.csv"))
+    maize_panel = commands.add_parser(
+        "maize-panel", help="Build the grain maize panel and its coverage report "
+        "(METHODS.md, section 9.1; no estimate)")
+    maize_panel.add_argument("--crops", type=Path, required=True)
+    maize_panel.add_argument("--region-map", type=Path,
+                             default=Path("docs/maize/region_map.csv"))
+    maize_panel.add_argument("--weather", type=Path, default=Path("docs/maize/weather.csv"))
+    maize_panel.add_argument("--seasons", type=Path, default=Path("docs/maize/season.csv"))
+    maize_panel.add_argument("--output-dir", type=Path, default=Path("docs/maize"))
+    maize_panel.add_argument("--report", type=Path, default=Path("docs/MAIZE_DATA.md"))
     calendar = commands.add_parser(
         "fetch-calendar", help="Download the GGCMI crop calendar (rainfed winter wheat) and "
         "freeze it as a snapshot (Amendment A1)")
@@ -107,7 +133,8 @@ def main(argv: Sequence[str] | None = None) -> int:
         if args.command == "fetch-crops":
             from eu_wheat_weather.crops import fetch_crops, save_snapshot
 
-            manifest = save_snapshot(args.output_dir, fetch_crops())
+            code = next(c for c, name in CROP_NAMES.items() if name == args.crop)
+            manifest = save_snapshot(args.output_dir, fetch_crops(crop=code), crop=code)
             print(json.dumps(manifest["summary"]))
         elif args.command == "fetch-boundaries":
             from eu_wheat_weather.downloads import fetch_boundaries
@@ -165,6 +192,37 @@ def main(argv: Sequence[str] | None = None) -> int:
             write_weather(rows, args.output)
             write_maturity(maturity, args.maturity)
             print(f"{len(rows)} region-season rows written to {args.output}")
+        elif args.command == "maize-weather":
+            from eu_wheat_weather.contract import LAST_YEAR
+            from eu_wheat_weather.maize import FIRST_YEAR as MAIZE_FIRST_YEAR
+            from eu_wheat_weather.regions import load_all, target_regions
+            from eu_wheat_weather.weather import (
+                MAIZE_COLUMNS,
+                SEASON_COLUMNS,
+                build_maize_weather,
+                write_table,
+            )
+
+            regions = target_regions(load_all(args.boundaries_dir))
+            rows, seasons = build_maize_weather(args.eobs_dir, regions,
+                                                range(MAIZE_FIRST_YEAR, LAST_YEAR + 1),
+                                                args.calendar)
+            write_table(rows, args.output, MAIZE_COLUMNS)
+            write_table(seasons, args.seasons, SEASON_COLUMNS)
+            print(f"{len(rows)} region-season rows written to {args.output}")
+        elif args.command == "maize-panel":
+            from eu_wheat_weather.maize import write_panel as write_maize_panel
+
+            command = (f"poetry run eu-wheat maize-panel --crops {args.crops.as_posix()} "
+                       f"--region-map {args.region_map.as_posix()} --weather "
+                       f"{args.weather.as_posix()} --seasons {args.seasons.as_posix()} "
+                       f"--output-dir {args.output_dir.as_posix()} --report "
+                       f"{args.report.as_posix()}")
+            summary = write_maize_panel(args.crops, args.region_map, args.weather,
+                                        args.seasons, args.output_dir, args.report, command)
+            print(f"{summary['panel_region_years']} region-years in "
+                  f"{summary['panel_regions']} regions; excluded "
+                  f"{summary['excluded_by_reason']}")
         elif args.command == "fetch-calendar":
             from eu_wheat_weather.downloads import fetch_calendar
 

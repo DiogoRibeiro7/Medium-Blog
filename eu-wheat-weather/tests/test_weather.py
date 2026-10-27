@@ -144,3 +144,17 @@ def test_region_maturity_is_the_weighted_mean_of_the_containing_calendar_cells()
     assert rows[0] == {"geo": "AA11", "maturity_day": 200, "maturity_date": "07-19",
                        "calendar_share": 0.8}
     assert rows[1]["maturity_day"] == "" and rows[1]["calendar_share"] == 0.0
+
+
+def test_maize_season_runs_from_planting_to_maturity_and_starts_no_earlier_than_march() -> None:
+    """Section 9.1: the season and the 61-day placebo after maturity, per region."""
+    from eu_wheat_weather.weather import MAIZE_READ_TO, MAIZE_VARIABLES, season_window_sums
+
+    days = season_days(2023, MAIZE_READ_TO)
+    ones = {v: np.ones((3, len(days))) for v in MAIZE_VARIABLES}
+    sums = season_window_sums(ones, days, [((4, 30), (9, 21)), ((2, 10), (8, 1)), None])
+    assert sums["season"]["prec"][0] == (dt.date(2023, 9, 21) - dt.date(2023, 4, 30)).days + 1
+    assert sums["post_maturity"]["prec"][0] == 61
+    # a planting date before 1 March starts on 1 March
+    assert sums["season"]["prec"][1] == (dt.date(2023, 8, 1) - dt.date(2023, 3, 1)).days + 1
+    assert all(math.isnan(sums[w]["prec"][2]) for w in sums)
