@@ -1,0 +1,155 @@
+============================================================================
+1. CLOSED FORMS CHECKED AGAINST EXACT ENUMERATION (contestant holds door 1)
+============================================================================
+  399 parameter settings checked; all closed forms hold exactly
+  (including the general formula with all four dials at 195 random rational settings with a non-zero denominator, out of 200 drawn)
+
+  Tie-break q (knowing host, always offers):
+    q =    0: after door 3    1, after door 2  1/2; best win rate 2/3; I(car; door) = 0.918 bits
+    q =  1/4: after door 3  4/5, after door 2  4/7; best win rate 2/3; I(car; door) = 0.709 bits
+    q =  1/2: after door 3  2/3, after door 2  2/3; best win rate 2/3; I(car; door) = 0.667 bits
+    q =  3/4: after door 3  4/7, after door 2  4/5; best win rate 2/3; I(car; door) = 0.709 bits
+    q =    1: after door 3  1/2, after door 2    1; best win rate 2/3; I(car; door) = 0.918 bits
+
+  Host knowledge phi (q = 1/2, always offers; void games excluded):
+    phi =    0: P(switch wins | goat shown) = 1/2 = 0.5000; share of games void = 1/3 = 0.3333
+    phi =  1/4: P(switch wins | goat shown) = 5/9 = 0.5556; share of games void = 1/4 = 0.2500
+    phi =  1/2: P(switch wins | goat shown) = 3/5 = 0.6000; share of games void = 1/6 = 0.1667
+    phi =  3/4: P(switch wins | goat shown) = 7/11 = 0.6364; share of games void = 1/12 = 0.0833
+    phi =    1: P(switch wins | goat shown) = 2/3 = 0.6667; share of games void = 0.0000
+    worst case over q and phi: (1+phi)/(2(1+phi q)) at q = 1 is exactly 1/2
+
+  Placement (knowing host, q = 1/2, contestant on door 1):
+    p = (1/2, 3/10, 1/5): after door 3 6/11 = 0.5455, after door 2 4/9 = 0.4444; always switch 1/2 = 0.5000; best response 11/20 = 0.5500
+    p = (3/5, 1/5, 1/5): after door 3 2/5 = 0.4000, after door 2 2/5 = 0.4000; always switch 2/5 = 0.4000; best response 3/5 = 0.6000
+    p = (1/5, 2/5, 2/5): after door 3 4/5 = 0.8000, after door 2 4/5 = 0.8000; always switch 4/5 = 0.8000; best response 4/5 = 0.8000
+    p = (0.5, 0.3, 0.2), best pick and rule: 0.8000 (pick the least likely door, door 3, and always switch: 0.8000)
+
+  Offer policy (knowing host, uniform placement): P(switch wins | offer) = 2b / (2b + a)
+    always offers (a=1, b=1)                       P(switch wins | offer) = 0.6667; always switch 0.6667, always stay 0.3333; offer rate 1.0000
+    trap: offers only to right picks (a=1, b=0)    P(switch wins | offer) = 0.0000; always switch 0.0000, always stay 0.3333; offer rate 0.3333
+    gift: offers only to wrong picks (a=0, b=1)    P(switch wins | offer) = 1.0000; always switch 1.0000, always stay 0.3333; offer rate 0.6667
+    sparing, leans right (a=0.3, b=0.1)            P(switch wins | offer) = 0.4000; always switch 0.3000, always stay 0.3333; offer rate 0.1667
+    sparing, leans wrong (a=0.3, b=0.2)            P(switch wins | offer) = 0.5714; always switch 0.3667, always stay 0.3333; offer rate 0.2333
+  given the door as well as the offer: P(switch wins | door 3, offer) = b / (b + q a)
+    q = 1/2, a = 1, b = 1/4: after door 3 1/3, after door 2 1/3, offer alone 1/3
+    q = 0, a = 1, b = 1/4: after door 3 1, after door 2 1/5, offer alone 1/3
+    q = 1, a = 1, b = 1/4: after door 3 1/5, after door 2 1, offer alone 1/3
+
+  Does any setting make staying strictly better than switching after the door opens?
+    tie-break: lowest P(switch wins | door opened) over q = 1/2 (never below staying)
+    knowledge: lowest over phi and q = 1/2 (never below staying)
+    placement, fixed pick: p = (3/5, 1/5, 1/5) gives switch 2/5 against stay 3/5; a uniformly random pick restores exactly 2/3 for every p
+    offer policy: the trap host (a=1, b=0) gives switch 0 against stay 1/3, and no rule guarantees more than 1/3 against every offer policy (section 3)
+
+  Knowledge makes the offer dangerous: trap policy (a=1, b=0) when the host knows,
+  offer always (o=1) when he does not; door 3 opened, switch offered, q = 1/2
+    phi =    0: P(switch wins | door 3, offer) = 1/2 = 0.5000  (closed form (1 - phi)/(2 - phi) = 1/2 = 0.5000)
+    phi =  1/4: P(switch wins | door 3, offer) = 3/7 = 0.4286  (closed form (1 - phi)/(2 - phi) = 3/7 = 0.4286)
+    phi =  1/2: P(switch wins | door 3, offer) = 1/3 = 0.3333  (closed form (1 - phi)/(2 - phi) = 1/3 = 0.3333)
+    phi =  3/4: P(switch wins | door 3, offer) = 1/5 = 0.2000  (closed form (1 - phi)/(2 - phi) = 1/5 = 0.2000)
+    phi =    1: P(switch wins | door 3, offer) = 0 = 0.0000  (closed form (1 - phi)/(2 - phi) = 0 = 0.0000)
+
+  Calibration without consequence: a contestant who assumes q = 1/2 when the true q differs
+  predicts 2/3 after either door; both he and a contestant who knows q always switch.
+    true q = 0.00: log loss 0.6365 assumed vs 0.4621 true; Brier 0.2222 vs 0.1667; mean |error| 0.2222; win rate 2/3 for both
+    true q = 0.25: log loss 0.6365 assumed vs 0.6069 true; Brier 0.2222 vs 0.2095; mean |error| 0.1111; win rate 2/3 for both
+    true q = 0.50: log loss 0.6365 assumed vs 0.6365 true; Brier 0.2222 vs 0.2222; mean |error| 0.0000; win rate 2/3 for both
+    true q = 1.00: log loss 0.6365 assumed vs 0.4621 true; Brier 0.2222 vs 0.1667; mean |error| 0.2222; win rate 2/3 for both
+
+============================================================================
+2. EXPECTED VALUE OF PERFECT INFORMATION, ONE COMPONENT AT A TIME
+============================================================================
+  tie-break q ~ U(0,1):        informed 0.6667, best fixed rule 0.6667, EVPI 0.0000
+  knowledge phi ~ U(0,1):      informed 0.5945, best fixed rule 0.5945, EVPI 0.0000
+  placement p ~ Dirichlet(1,1,1), 400,000 draws: informed 0.889, best fixed rule 0.667, EVPI 0.222; random pick + always switch 0.667
+    exact: informed E[1 - min p] = 8/9 = 0.8889, uninformed 2/3, EVPI 2/9 = 0.2222
+  offer policy, uniform priors a, b ~ U(0,1)              : informed 0.5278, best fixed rule 0.5000 (switch), EVPI 0.0278
+  offer policy, thrifty host a ~ Beta(3,1), b ~ Beta(1,3) : informed 0.3628, best fixed rule 0.3333 (stay), EVPI 0.0295
+  offer policy, generous host a ~ Beta(1,3), b ~ Beta(3,1): informed 0.7503, best fixed rule 0.7500 (switch), EVPI 0.0003
+
+============================================================================
+3. THE GAME WHEN THE HOST MAY DECLINE TO OFFER (contestant picks at random)
+============================================================================
+  value(m) = max(1/3, m - 1/3), m = minimum share of games with an offer
+    m = 0.000: game value 0.3333 (closed form 0.3333), maximin switching probability 0.000
+    m = 0.333: game value 0.3333 (closed form 0.3333), maximin switching probability 0.000
+    m = 0.500: game value 0.3333 (closed form 0.3333), maximin switching probability 0.000
+    m = 0.667: game value 0.3333 (closed form 0.3333), maximin switching probability 0.000
+    m = 0.750: game value 0.4167 (closed form 0.4167), maximin switching probability 1.000
+    m = 0.900: game value 0.5667 (closed form 0.5667), maximin switching probability 1.000
+    m = 1.000: game value 0.6667 (closed form 0.6667), maximin switching probability 1.000
+  forced offer (m = 1): contestant guarantees 1/3 + s/3; host holds him to 2/3 with uniform placement and a fair tie-break
+
+============================================================================
+4. LEARNING THE OFFER POLICY FROM PAST EPISODES (Beta(1,1) priors)
+============================================================================
+  40,000 simulated contestants per host and per number of past episodes
+  always offers (a=1, b=1): oracle 0.6667, always switch 0.6667, always stay 0.3333
+    after    0 episodes: full learner 0.6667 (right call 1.000), offers-only learner 0.6667 (right call 1.000)
+    after    1 episodes: full learner 0.6667 (right call 1.000), offers-only learner 0.5554 (right call 0.666)
+    after    2 episodes: full learner 0.6667 (right call 1.000), offers-only learner 0.6304 (right call 0.891)
+    after    5 episodes: full learner 0.6667 (right call 1.000), offers-only learner 0.5968 (right call 0.791)
+    after   10 episodes: full learner 0.6667 (right call 1.000), offers-only learner 0.6406 (right call 0.922)
+    after   20 episodes: full learner 0.6667 (right call 1.000), offers-only learner 0.6544 (right call 0.963)
+    after   50 episodes: full learner 0.6667 (right call 1.000), offers-only learner 0.6651 (right call 0.995)
+    after  100 episodes: full learner 0.6667 (right call 1.000), offers-only learner 0.6666 (right call 1.000)
+    after  200 episodes: full learner 0.6667 (right call 1.000), offers-only learner 0.6667 (right call 1.000)
+    after  500 episodes: full learner 0.6667 (right call 1.000), offers-only learner 0.6667 (right call 1.000)
+    after 1000 episodes: full learner 0.6667 (right call 1.000), offers-only learner 0.6667 (right call 1.000)
+  trap: offers only to right picks (a=1, b=0): oracle 0.3333, always switch 0.0000, always stay 0.3333
+    after    0 episodes: full learner 0.0000 (right call 0.000), offers-only learner 0.0000 (right call 0.000)
+    after    1 episodes: full learner 0.0000 (right call 0.000), offers-only learner 0.1110 (right call 0.333)
+    after    2 episodes: full learner 0.0000 (right call 0.000), offers-only learner 0.1842 (right call 0.553)
+    after    5 episodes: full learner 0.3319 (right call 0.996), offers-only learner 0.2892 (right call 0.868)
+    after   10 episodes: full learner 0.3333 (right call 1.000), offers-only learner 0.3277 (right call 0.983)
+    after   20 episodes: full learner 0.3333 (right call 1.000), offers-only learner 0.3332 (right call 1.000)
+    after   50 episodes: full learner 0.3333 (right call 1.000), offers-only learner 0.3333 (right call 1.000)
+    after  100 episodes: full learner 0.3333 (right call 1.000), offers-only learner 0.3333 (right call 1.000)
+    after  200 episodes: full learner 0.3333 (right call 1.000), offers-only learner 0.3333 (right call 1.000)
+    after  500 episodes: full learner 0.3333 (right call 1.000), offers-only learner 0.3333 (right call 1.000)
+    after 1000 episodes: full learner 0.3333 (right call 1.000), offers-only learner 0.3333 (right call 1.000)
+  gift: offers only to wrong picks (a=0, b=1): oracle 1.0000, always switch 1.0000, always stay 0.3333
+    after    0 episodes: full learner 1.0000 (right call 1.000), offers-only learner 1.0000 (right call 1.000)
+    after    1 episodes: full learner 1.0000 (right call 1.000), offers-only learner 1.0000 (right call 1.000)
+    after    2 episodes: full learner 1.0000 (right call 1.000), offers-only learner 1.0000 (right call 1.000)
+    after    5 episodes: full learner 1.0000 (right call 1.000), offers-only learner 1.0000 (right call 1.000)
+    after   10 episodes: full learner 1.0000 (right call 1.000), offers-only learner 1.0000 (right call 1.000)
+    after   20 episodes: full learner 1.0000 (right call 1.000), offers-only learner 1.0000 (right call 1.000)
+    after   50 episodes: full learner 1.0000 (right call 1.000), offers-only learner 1.0000 (right call 1.000)
+    after  100 episodes: full learner 1.0000 (right call 1.000), offers-only learner 1.0000 (right call 1.000)
+    after  200 episodes: full learner 1.0000 (right call 1.000), offers-only learner 1.0000 (right call 1.000)
+    after  500 episodes: full learner 1.0000 (right call 1.000), offers-only learner 1.0000 (right call 1.000)
+    after 1000 episodes: full learner 1.0000 (right call 1.000), offers-only learner 1.0000 (right call 1.000)
+  sparing, leans right (a=0.3, b=0.1): oracle 0.3333, always switch 0.3000, always stay 0.3333
+    after    0 episodes: full learner 0.3000 (right call 0.000), offers-only learner 0.3000 (right call 0.000)
+    after    1 episodes: full learner 0.3000 (right call 0.000), offers-only learner 0.3034 (right call 0.102)
+    after    2 episodes: full learner 0.3000 (right call 0.000), offers-only learner 0.3060 (right call 0.180)
+    after    5 episodes: full learner 0.3099 (right call 0.298), offers-only learner 0.3108 (right call 0.324)
+    after   10 episodes: full learner 0.3152 (right call 0.456), offers-only learner 0.3145 (right call 0.436)
+    after   20 episodes: full learner 0.3187 (right call 0.560), offers-only learner 0.3178 (right call 0.534)
+    after   50 episodes: full learner 0.3233 (right call 0.699), offers-only learner 0.3219 (right call 0.657)
+    after  100 episodes: full learner 0.3267 (right call 0.801), offers-only learner 0.3253 (right call 0.759)
+    after  200 episodes: full learner 0.3297 (right call 0.892), offers-only learner 0.3286 (right call 0.858)
+    after  500 episodes: full learner 0.3326 (right call 0.978), offers-only learner 0.3321 (right call 0.962)
+    after 1000 episodes: full learner 0.3333 (right call 0.998), offers-only learner 0.3331 (right call 0.994)
+  sparing, leans wrong (a=0.3, b=0.2): oracle 0.3667, always switch 0.3667, always stay 0.3333
+    after    0 episodes: full learner 0.3667 (right call 1.000), offers-only learner 0.3667 (right call 1.000)
+    after    1 episodes: full learner 0.3667 (right call 1.000), offers-only learner 0.3633 (right call 0.900)
+    after    2 episodes: full learner 0.3667 (right call 1.000), offers-only learner 0.3613 (right call 0.840)
+    after    5 episodes: full learner 0.3603 (right call 0.808), offers-only learner 0.3585 (right call 0.755)
+    after   10 episodes: full learner 0.3581 (right call 0.744), offers-only learner 0.3571 (right call 0.714)
+    after   20 episodes: full learner 0.3576 (right call 0.729), offers-only learner 0.3570 (right call 0.710)
+    after   50 episodes: full learner 0.3585 (right call 0.756), offers-only learner 0.3579 (right call 0.736)
+    after  100 episodes: full learner 0.3603 (right call 0.810), offers-only learner 0.3595 (right call 0.786)
+    after  200 episodes: full learner 0.3628 (right call 0.884), offers-only learner 0.3618 (right call 0.853)
+    after  500 episodes: full learner 0.3655 (right call 0.964), offers-only learner 0.3648 (right call 0.945)
+    after 1000 episodes: full learner 0.3665 (right call 0.994), offers-only learner 0.3662 (right call 0.986)
+
+  Past episodes from which the full learner makes the right call at least 95% of the time
+  (every n up to 100, then steps of 5 up to 2,000; 20,000 contestants per point):
+    always offers (a=1, b=1)                       from    0 on; lowest right-call rate 1.000 at 0 episodes
+    trap: offers only to right picks (a=1, b=0)    from    3 on; lowest right-call rate 0.000 at 0 episodes
+    gift: offers only to wrong picks (a=0, b=1)    from    0 on; lowest right-call rate 1.000 at 0 episodes
+    sparing, leans right (a=0.3, b=0.1)            from  345 on; lowest right-call rate 0.000 at 0 episodes
+    sparing, leans wrong (a=0.3, b=0.2)            from  415 on; lowest right-call rate 0.685 at 15 episodes
