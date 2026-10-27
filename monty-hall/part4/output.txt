@@ -1,0 +1,140 @@
+
+============================================================================
+1. WHAT EXPERIENCE CAN TEACH
+============================================================================
+  When the car is revealed at the end of a game, the player learns whether switching would have
+  won, whatever was chosen. Each game is a Bernoulli trial with P(switching wins) = 2/3.
+  A learner who ignores the reasoning and switches whenever switching has won more of the past
+  games than staying, and tosses a coin when they are tied (including the first game):
+    after   1 games: P(switch next game) = 0.667
+    after   2 games: P(switch next game) = 0.667
+    after   3 games: P(switch next game) = 0.741
+    after   5 games: P(switch next game) = 0.790
+    after  10 games: P(switch next game) = 0.855
+    after  20 games: P(switch next game) = 0.935
+    after  30 games: P(switch next game) = 0.969
+    after  50 games: P(switch next game) = 0.992
+    after 100 games: P(switch next game) = 1.000
+    after 200 games: P(switch next game) = 1.000
+    expected wins in 10 games: counting learner 5.8, always switch 6.7, always stay 3.3
+    expected wins in 50 games: counting learner 31.9, always switch 33.3, always stay 16.7
+    expected wins in 200 games: counting learner 131.8, always switch 133.3, always stay 66.7
+  P(switching wins at most 5 of 10 games) = 0.213; at most 10 of 20: 0.092; at most 25 of 50: 0.0108
+  expected log-likelihood ratio per game: 2/3 against 1/2 0.0566 nats; 2/3 against 1/3 0.2310 nats
+    games for an expected Bayes factor of 10 against fifty-fifty: 41; against 'staying is better': 10
+    games for an expected Bayes factor of 20 against fifty-fifty: 53; against 'staying is better': 13
+    games for an expected Bayes factor of 100 against fifty-fifty: 81; against 'staying is better': 20
+
+============================================================================
+2. BELIEF AND DECISION
+============================================================================
+  Prior: probability pi0 that the game is exactly fifty-fifty, otherwise P(switching wins) uniform.
+  Predictive P(switching wins next game) = pi * 1/2 + (1 - pi) * (k + 1)/(n + 2), which exceeds 1/2
+  exactly when k > n/2: the decision does not depend on pi0, the conviction does.
+    pi0 = 0.5 : share with P(not fifty-fifty) > 0.95 after  n=10: 0.02; n=20: 0.06; n=50: 0.26; n=100: 0.60
+    pi0 = 0.9 : share with P(not fifty-fifty) > 0.95 after  n=10: 0.00; n=20: 0.02; n=50: 0.10; n=100: 0.35
+    pi0 = 0.99: share with P(not fifty-fifty) > 0.95 after  n=10: 0.00; n=20: 0.00; n=50: 0.03; n=100: 0.15
+    pi0 = 0.5 : games until half of learners are convinced 85; until 90 per cent are 175
+    pi0 = 0.9 : games until half of learners are convinced 127; until 90 per cent are 234
+    pi0 = 0.99: games until half of learners are convinced 172; until 90 per cent are 291
+  decision 'switch iff k > n/2' identical for all pi0 checked (n = 1..59): True
+
+============================================================================
+3. MATCHING AND MAXIMISING
+============================================================================
+    switch with probability  0.0: P(win) = 0.3333
+    switch with probability  0.1: P(win) = 0.3667
+    switch with probability  1/2: P(win) = 0.5000
+    switch with probability  2/3: P(win) = 0.5556
+    switch with probability  0.9: P(win) = 0.6333
+    switch with probability  1.0: P(win) = 0.6667
+  over 200 games, matching (2/3) wins 111.1 cars on average against 133.3 for always switching and 66.7 for always staying
+  A matching learner who switches with probability (k + 1)/(n + 2), k = past switch wins:
+    mean switch probability, games 1, 10, 50, 100, 200: 0.500, 0.637, 0.660, 0.664, 0.665
+
+============================================================================
+4. REINFORCEMENT LEARNERS
+============================================================================
+  Delta-rule learners, P(switch) = expit(beta * (Q_switch - Q_stay) - bias), Q starting at 0.5.
+  A bias b gives a first-game switch rate of expit(-b): b = ln 9 gives 10 per cent.
+    beta =  3, b = ln 9: asymptotic switch rate 0.232
+    beta =  6, b = ln 9: asymptotic switch rate 0.451
+    beta = 10, b = ln 9: asymptotic switch rate 0.757
+    switch rate 2/3 at the asymptote with b = 0 requires beta = 3 ln 2 = 2.079
+    with b = ln 9, beta for an asymptote of 2/3: 8.671; of 0.9: 13.183
+
+  Learning from the outcome of the door not chosen (full) against from one's own outcome only (own):
+    alpha 0.03, beta 10.0, full: switch rate in games 1, 10, 25, 50, 100, 200 = 0.100, 0.223, 0.407, 0.580, 0.686, 0.710; first game above one half: 36
+    alpha 0.03, beta 10.0, own : switch rate in games 1, 10, 25, 50, 100, 200 = 0.100, 0.150, 0.239, 0.378, 0.569, 0.704; first game above one half: 79
+    alpha 0.1, beta 10.0, full: switch rate in games 1, 10, 25, 50, 100, 200 = 0.100, 0.486, 0.628, 0.664, 0.664, 0.664; first game above one half: 11
+    alpha 0.1, beta 10.0, own : switch rate in games 1, 10, 25, 50, 100, 200 = 0.100, 0.311, 0.517, 0.647, 0.708, 0.730; first game above one half: 23
+    alpha 0.1, beta 15.0, full: switch rate in games 1, 10, 25, 50, 100, 200 = 0.100, 0.608, 0.744, 0.777, 0.776, 0.776; first game above one half: 7
+    alpha 0.1, beta 15.0, own : switch rate in games 1, 10, 25, 50, 100, 200 = 0.100, 0.445, 0.683, 0.804, 0.858, 0.888; first game above one half: 13
+    alpha 0.3, beta 10.0, full: switch rate in games 1, 10, 25, 50, 100, 200 = 0.100, 0.609, 0.615, 0.617, 0.617, 0.615; first game above one half: 4
+    alpha 0.3, beta 10.0, own : switch rate in games 1, 10, 25, 50, 100, 200 = 0.100, 0.546, 0.606, 0.623, 0.622, 0.623; first game above one half: 8
+
+  Learners left switching rarely late in play (the hot-stove pattern of Denrell and March, 2001):
+    (alpha 0.3, beta 10.0) share who never switch in 200 games: 0.000; share still switching less than a third of the time in games 151-200: 0.172
+    same parameters, full feedback: never switch 0.000; switching less than a third of the time in games 151-200: 0.012
+
+============================================================================
+5. REGRET FOR AN ACT OF COMMISSION
+============================================================================
+  Payoff of a loss after switching = -kappa (a loss after staying = 0).
+  Expected payoff: switching 2/3 - kappa/3, staying 1/3; staying is better when kappa > 1.
+    kappa 0.0: switch +0.667, stay +0.333; asymptotic switch rate at beta 10, b = ln 9: 0.757; at beta 10, b = 0: 0.966
+    kappa 0.5: switch +0.500, stay +0.333; asymptotic switch rate at beta 10, b = ln 9: 0.370; at beta 10, b = 0: 0.841
+    kappa 1.0: switch +0.333, stay +0.333; asymptotic switch rate at beta 10, b = ln 9: 0.100; at beta 10, b = 0: 0.500
+    kappa 1.5: switch +0.167, stay +0.333; asymptotic switch rate at beta 10, b = ln 9: 0.021; at beta 10, b = 0: 0.159
+    kappa 2.0: switch +0.000, stay +0.333; asymptotic switch rate at beta 10, b = ln 9: 0.004; at beta 10, b = 0: 0.034
+
+============================================================================
+6. PUBLISHED LEARNING CURVES AND THE LEARNERS FITTED TO THEM
+============================================================================
+  The counting learner of section 1, given the same number of games as the participants:
+    games 51-60 (Petrocelli & Harris): expected switch rate 0.994
+    games 41-50 (Granberg & Brown, final block): 0.989
+    games 151-200 (Herbranson & Schroeder, final block): 1.000
+
+  A matching learner: switches with probability equal to its current estimate of P(switching wins),
+  starting from a prior with mean p0 worth m games. Fitted exactly to the first and last blocks of 10,
+  then used to predict the overall switch rate over all 60 games, which was not used in the fit.
+  Uncertainty: block means drawn from normal distributions with the reported SD / sqrt(N),
+  independently (the within-person correlation of the blocks is not reported); 20,000 draws.
+    Petrocelli & Harris Study 1 (N = 47): first block 0.210, last block 0.380
+      fitted p0 = 0.185, prior worth m = 80 games (95% interval 37 to 228; 19994 of 20000 draws solvable)
+      predicted overall switch rate 0.305 (95% interval 0.254 to 0.361); observed 0.333 (SE 0.027)
+      predicted switch rate in game 100: 0.451
+      predicted switch rate in game 200: 0.529
+      predicted switch rate in game 500: 0.600
+      predicted switch rate in game 1000: 0.631
+      games of experience before the switch rate reaches 0.5: 151; 0.6: 498
+      expected cars in 60 games at the observed overall switch rate: 26.7 (always switching 40, always staying 20)
+    Petrocelli & Harris Study 2 (N = 65): first block 0.257, last block 0.488
+      fitted p0 = 0.206, prior worth m = 34 games (95% interval 14 to 78; 19972 of 20000 draws solvable)
+      predicted overall switch rate 0.397 (95% interval 0.345 to 0.457); observed 0.418 (SE 0.026)
+      predicted switch rate in game 100: 0.548
+      predicted switch rate in game 200: 0.599
+      predicted switch rate in game 500: 0.637
+      predicted switch rate in game 1000: 0.651
+      games of experience before the switch rate reaches 0.5: 61; 0.6: 204
+      expected cars in 60 games at the observed overall switch rate: 28.4 (always switching 40, always staying 20)
+
+  Granberg & Brown (1995), approximate: 12% switch in the first game (abstract), about 50% in the final
+  block of 10 of 50 games (as reported by Petrocelli & Harris); N not available, so no interval:
+    final block 0.50: p0 = 0.120, m = 19 games; predicted switch rate in game 200: 0.618
+    final block 0.55: p0 = 0.120, m = 12 games; predicted switch rate in game 200: 0.635
+
+  Herbranson & Schroeder (2010), humans without a cover story (6 per condition, blocks of 50 games):
+    one matching learner for both conditions (least squares on the four block means): p0 = 0.144, m = 3.3 games
+    switching pays 2/3: observed first block 0.567 [0.345, 0.788], matching 0.565; observed last block 0.657 [0.450, 0.863], matching 0.657, counting learner 1.000
+    staying pays 2/3: observed first block 0.300 [0.132, 0.468], matching 0.297; observed last block 0.277 [0.111, 0.442], matching 0.330, counting learner 0.000
+    pigeons (6 birds, about 100 trials a day from day 5): day 1 0.363, day 30 0.963 [0.940, 0.987]; matching predicts 0.667
+
+  Memory that inflates losses after switching: a matching learner who remembers each such loss as w
+  losses settles at the switch rate s solving (w - 1) s^2 + 3 s - 2 = 0:
+    w = 1.0: long-run switch rate 0.667; P(win) 0.556
+    w = 1.5: long-run switch rate 0.606; P(win) 0.535
+    w = 2.0: long-run switch rate 0.562; P(win) 0.521
+    w = 3.0: long-run switch rate 0.500; P(win) 0.500
+    w = 4.0: long-run switch rate 0.457; P(win) 0.486

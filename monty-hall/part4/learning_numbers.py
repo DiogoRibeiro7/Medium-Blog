@@ -137,6 +137,80 @@ def first_trial_reaching(curve: np.ndarray, level: float) -> int | None:
     return int(idx[0]) + 1 if idx.size else None
 
 
+# ---------------------------------------------------------------------------
+# 6. Published learning curves and a matching learner fitted to them
+# ---------------------------------------------------------------------------
+
+# Block means of the switch rate from repeated-play experiments with the standard game
+# (switching wins 2/3). Numbers as printed in the sources; SDs are across participants.
+PETROCELLI_HARRIS = {
+    # Petrocelli & Harris (2011), PSPB 37(10), 1297-1311, Study 1: N = 47, 60 trials.
+    "Study 1": {"n": 47, "first": (0.21, 0.22), "last": (0.38, 0.26),
+                "overall": (19.96 / 60, 11.25 / 60)},
+    # Study 2: N = 65, 60 trials; switches in the first and last 10 trials 2.57 (1.78) and 4.88 (2.90) of 10;
+    # 34.91 (12.66) stick and 25.08 switch decisions overall (the two add up to 60, so their SDs are equal).
+    "Study 2": {"n": 65, "first": (0.257, 0.178), "last": (0.488, 0.290),
+                "overall": (25.08 / 60, 12.66 / 60)},
+}
+# Herbranson & Schroeder (2010), J. Comp. Psych. 124(1), 1-13, Experiment 3: 6 people per condition,
+# 200 trials in four blocks of 50, no cover story. Switch rates with the 95% intervals they report.
+HS_HUMANS = {
+    "switching pays 2/3": {"p_win": 2 / 3, "first": (0.5667, 0.3451, 0.7883), "last": (0.6567, 0.4504, 0.8629)},
+    "staying pays 2/3": {"p_win": 1 / 3, "first": (0.3000, 0.1321, 0.4679), "last": (0.2767, 0.1112, 0.4422)},
+}
+HS_PIGEONS = {"day 1": (0.3633, 0.2512, 0.4755), "day 30": (0.9633, 0.9397, 0.9870)}
+
+
+def matching_curve(p0: float, m: float, p_win: float, games: np.ndarray) -> np.ndarray:
+    """Expected switch probability in each game for a learner who switches with probability equal to
+    its estimate of P(switching wins): a Beta prior with mean p0 worth m games, updated by the outcome of
+    every game (the car is always revealed). Game g has g - 1 games of experience behind it."""
+    t = games - 1.0
+    return (p0 * m + p_win * t) / (m + t)
+
+
+def matching_block(p0: float, m: float, p_win: float, g0: int, g1: int) -> float:
+    return float(matching_curve(p0, m, p_win, np.arange(g0, g1 + 1)).mean())
+
+
+def fit_matching_two_blocks(b1: float, bl: float, block1: tuple, blockl: tuple, p_win: float = P_SWITCH):
+    """Solve for (p0, m) so that the matching learner reproduces two block means exactly."""
+    g1 = np.arange(block1[0], block1[1] + 1) - 1.0
+    gl = np.arange(blockl[0], blockl[1] + 1) - 1.0
+
+    def p0_of(m):
+        a1 = np.mean(m / (m + g1))
+        return (b1 - p_win * (1 - a1)) / a1
+
+    def gap(m):
+        al = np.mean(m / (m + gl))
+        return p0_of(m) * al + p_win * (1 - al) - bl
+
+    ms = np.logspace(-2, 6, 400)
+    vals = np.array([gap(m) if 0 <= p0_of(m) <= 1 else np.nan for m in ms])
+    ok = np.flatnonzero(np.isfinite(vals[:-1]) & np.isfinite(vals[1:]) & (np.sign(vals[:-1]) != np.sign(vals[1:])))
+    if ok.size == 0:
+        return None
+    i = ok[0]
+    m = optimize.brentq(gap, ms[i], ms[i + 1])
+    return p0_of(m), m
+
+
+def games_to_reach(level: float, p0: float, m: float, p_win: float = P_SWITCH) -> float:
+    """Games of experience after which the matching learner's switch probability reaches `level`."""
+    if not p0 < level < p_win:
+        return float("nan")
+    return m * (level - p0) / (p_win - level)
+
+
+def memory_distortion_rate(w: float) -> float:
+    """Long-run switch rate of a matching learner who remembers each loss after switching as w losses:
+    s solves s = (2/3) / (2/3 + (1/3) * (s * w + 1 - s)), i.e. (w - 1) s^2 + 3 s - 2 = 0."""
+    if abs(w - 1) < 1e-12:
+        return 2 / 3
+    return (-3 + math.sqrt(9 + 8 * (w - 1))) / (2 * (w - 1))
+
+
 def main() -> None:
     np.set_printoptions(linewidth=120)
 
@@ -210,7 +284,7 @@ def main() -> None:
     print(f"    with b = ln 9, beta for an asymptote of 2/3: {3 * (math.log(2) + b):.3f}; of 0.9: {3 * (math.log(9) + b):.3f}")
     print()
     print("  Learning from the outcome of the door not chosen (full) against from one's own outcome only (own):")
-    for alpha, beta in ((0.1, 10.0), (0.1, 15.0), (0.3, 10.0)):
+    for alpha, beta in ((0.03, 10.0), (0.1, 10.0), (0.1, 15.0), (0.3, 10.0)):
         for fb in ("full", "own"):
             curve, _ = simulate_learners(20_000, 200, alpha, beta, b, feedback=fb,
                                          rng=np.random.default_rng(SEED + 1))
@@ -219,7 +293,7 @@ def main() -> None:
                   f" {curve[0]:.3f}, {curve[9]:.3f}, {curve[24]:.3f}, {curve[49]:.3f}, {curve[99]:.3f},"
                   f" {curve[199]:.3f}; first game above one half: {reach}")
     print()
-    print("  The hot stove: own-outcome learners whose first switch lost, and how long they then go without switching")
+    print("  Learners left switching rarely late in play (the hot-stove pattern of Denrell and March, 2001):")
     alpha, beta = 0.3, 10.0
     _, ch = simulate_learners(20_000, 200, alpha, beta, b, feedback="own", rng=np.random.default_rng(SEED + 2))
     print(f"    (alpha {alpha}, beta {beta}) share who never switch in 200 games: {np.mean(~ch.any(axis=0)):.3f};"
@@ -236,6 +310,92 @@ def main() -> None:
         print(f"    kappa {kappa}: switch {2/3 - kappa/3:+.3f}, stay {1/3:+.3f};"
               f" asymptotic switch rate at beta 10, b = ln 9: {asymptote(10, b, kappa):.3f};"
               f" at beta 10, b = 0: {asymptote(10, 0.0, kappa):.3f}")
+
+
+    header("6. PUBLISHED LEARNING CURVES AND THE LEARNERS FITTED TO THEM")
+    print("  The counting learner of section 1, given the same number of games as the participants:")
+    print(f"    games 51-60 (Petrocelli & Harris): expected switch rate"
+          f" {np.mean([p_counts_favour_switch(n) for n in range(50, 60)]):.3f}")
+    print(f"    games 41-50 (Granberg & Brown, final block): {np.mean([p_counts_favour_switch(n) for n in range(40, 50)]):.3f}")
+    print(f"    games 151-200 (Herbranson & Schroeder, final block): "
+          f"{np.mean([p_counts_favour_switch(n) for n in range(150, 200)]):.3f}")
+    print()
+    print("  A matching learner: switches with probability equal to its current estimate of P(switching wins),")
+    print("  starting from a prior with mean p0 worth m games. Fitted exactly to the first and last blocks of 10,")
+    print("  then used to predict the overall switch rate over all 60 games, which was not used in the fit.")
+    print("  Uncertainty: block means drawn from normal distributions with the reported SD / sqrt(N),")
+    print("  independently (the within-person correlation of the blocks is not reported); 20,000 draws.")
+    rng = np.random.default_rng(SEED + 6)
+    for name, d in PETROCELLI_HARRIS.items():
+        n = d["n"]
+        p0, m = fit_matching_two_blocks(d["first"][0], d["last"][0], (1, 10), (51, 60))
+        overall = matching_block(p0, m, P_SWITCH, 1, 60)
+        draws_m, draws_p0, draws_ov = [], [], []
+        b1s = rng.normal(d["first"][0], d["first"][1] / math.sqrt(n), 20_000)
+        bls = rng.normal(d["last"][0], d["last"][1] / math.sqrt(n), 20_000)
+        for b1, bl in zip(b1s, bls):
+            fit = fit_matching_two_blocks(b1, bl, (1, 10), (51, 60))
+            if fit is None:
+                continue
+            draws_p0.append(fit[0])
+            draws_m.append(fit[1])
+            draws_ov.append(matching_block(fit[0], fit[1], P_SWITCH, 1, 60))
+        dm = np.array(draws_m)
+        lo, hi = np.percentile(dm, [2.5, 97.5])
+        ov_lo, ov_hi = np.percentile(draws_ov, [2.5, 97.5])
+        obs_ov, sd_ov = d["overall"]
+        print(f"    Petrocelli & Harris {name} (N = {n}): first block {d['first'][0]:.3f}, last block {d['last'][0]:.3f}")
+        print(f"      fitted p0 = {p0:.3f}, prior worth m = {m:.0f} games (95% interval {lo:.0f} to {hi:.0f};"
+              f" {len(dm)} of 20000 draws solvable)")
+        print(f"      predicted overall switch rate {overall:.3f} (95% interval {ov_lo:.3f} to {ov_hi:.3f});"
+              f" observed {obs_ov:.3f} (SE {sd_ov / math.sqrt(n):.3f})")
+        for g in (100, 200, 500, 1000):
+            print(f"      predicted switch rate in game {g}: {matching_curve(p0, m, P_SWITCH, np.array([g]))[0]:.3f}")
+        print(f"      games of experience before the switch rate reaches 0.5: {games_to_reach(0.5, p0, m):.0f};"
+              f" 0.6: {games_to_reach(0.6, p0, m):.0f}")
+        print(f"      expected cars in 60 games at the observed overall switch rate: {60 * (1/3 + obs_ov/3):.1f}"
+              f" (always switching {60 * P_SWITCH:.0f}, always staying {60 / 3:.0f})")
+    print()
+    print("  Granberg & Brown (1995), approximate: 12% switch in the first game (abstract), about 50% in the final")
+    print("  block of 10 of 50 games (as reported by Petrocelli & Harris); N not available, so no interval:")
+    for final in (0.50, 0.55):
+        fit = fit_matching_two_blocks(0.12, final, (1, 1), (41, 50))
+        print(f"    final block {final:.2f}: p0 = {fit[0]:.3f}, m = {fit[1]:.0f} games;"
+              f" predicted switch rate in game 200: {matching_curve(fit[0], fit[1], P_SWITCH, np.array([200]))[0]:.3f}")
+    print()
+    print("  Herbranson & Schroeder (2010), humans without a cover story (6 per condition, blocks of 50 games):")
+
+    def hs_loss(x):
+        p0, log_m = x
+        m = math.exp(log_m)
+        err = 0.0
+        for d in HS_HUMANS.values():
+            err += (matching_block(p0, m, d["p_win"], 1, 50) - d["first"][0]) ** 2
+            err += (matching_block(p0, m, d["p_win"], 151, 200) - d["last"][0]) ** 2
+        return err
+
+    best = min((optimize.minimize(hs_loss, [p0s, lm], method="Nelder-Mead",
+                                  options={"xatol": 1e-8, "fatol": 1e-12, "maxiter": 5000})
+                for p0s in (0.3, 0.5, 0.7) for lm in (0.0, 2.0, 4.0)), key=lambda r: r.fun)
+    p0_hs, m_hs = best.x[0], math.exp(best.x[1])
+    print(f"    one matching learner for both conditions (least squares on the four block means):"
+          f" p0 = {p0_hs:.3f}, m = {m_hs:.1f} games")
+    for name, d in HS_HUMANS.items():
+        f1 = matching_block(p0_hs, m_hs, d["p_win"], 1, 50)
+        f4 = matching_block(p0_hs, m_hs, d["p_win"], 151, 200)
+        mx = np.mean([p_counts_favour_switch(n, d["p_win"]) for n in range(150, 200)])
+        print(f"    {name}: observed first block {d['first'][0]:.3f} [{d['first'][1]:.3f}, {d['first'][2]:.3f}],"
+              f" matching {f1:.3f}; observed last block {d['last'][0]:.3f} [{d['last'][1]:.3f}, {d['last'][2]:.3f}],"
+              f" matching {f4:.3f}, counting learner {mx:.3f}")
+    print(f"    pigeons (6 birds, about 100 trials a day from day 5): day 1 {HS_PIGEONS['day 1'][0]:.3f},"
+          f" day 30 {HS_PIGEONS['day 30'][0]:.3f} [{HS_PIGEONS['day 30'][1]:.3f}, {HS_PIGEONS['day 30'][2]:.3f}];"
+          f" matching predicts {2/3:.3f}")
+    print()
+    print("  Memory that inflates losses after switching: a matching learner who remembers each such loss as w")
+    print("  losses settles at the switch rate s solving (w - 1) s^2 + 3 s - 2 = 0:")
+    for w in (1.0, 1.5, 2.0, 3.0, 4.0):
+        s = memory_distortion_rate(w)
+        print(f"    w = {w}: long-run switch rate {s:.3f}; P(win) {1/3 + s/3:.3f}")
 
 
 if __name__ == "__main__":
