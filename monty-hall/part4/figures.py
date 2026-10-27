@@ -172,14 +172,14 @@ def figure_matching_fits() -> None:
     for (name, d), color in zip(PETROCELLI_HARRIS.items(), (BLUE, AQUA)):
         p0, m = fit_matching_two_blocks(d["first"][0], d["last"][0], (1, 10), (51, 60))
         series.append((f"Petrocelli & Harris, {name}: prior worth {m:.0f} games", p0, m, color,
-                       [(5.5, d["first"][0]), (55.5, d["last"][0])]))
+                       [(5.5, d["first"][0]), (55.5, d["last"][0])], 60))
     p0, m = fit_matching_two_blocks(0.12, 0.50, (1, 1), (41, 50))
     series.append((f"Granberg & Brown, approximate: prior worth {m:.0f} games", p0, m, ORANGE,
-                   [(1, 0.12), (45.5, 0.50)]))
-    for label, p0, m, color, pts in series:
+                   [(1, 0.12), (45.5, 0.50)], 50))
+    for label, p0, m, color, pts, end in series:
         curve = matching_curve(p0, m, P_SWITCH, g)
-        ax.plot(g[g <= 60], curve[g <= 60], color=color, lw=2.2, label=label)
-        ax.plot(g[g >= 60], curve[g >= 60], color=color, lw=1.6, ls=(0, (3, 2)))
+        ax.plot(g[g <= end], curve[g <= end], color=color, lw=2.2, label=label)
+        ax.plot(g[g >= end], curve[g >= end], color=color, lw=1.6, ls=(0, (3, 2)))
         for x, y in pts:
             ax.plot(x, y, "o", color=color, ms=7, mec="white", mew=1.4, zorder=5)
     ax.axvspan(60, 1000, color="#f4f3f0", lw=0, zorder=0)

@@ -100,6 +100,7 @@ def simulate_learners(n_agents: int, n_trials: int, alpha: float, beta: float, b
     feedback "own": only the value of the option chosen is updated (learning from one's own outcome).
     feedback "full": both values are updated, each with the payoff it would have earned.
     Returns the expected switch probability per trial, averaged over agents, and the realised choices.
+    The final values of both options are kept in simulate_learners.last_values.
     """
     rng = rng if rng is not None else np.random.default_rng(SEED)
     q_sw = np.full(n_agents, q0)
@@ -122,6 +123,7 @@ def simulate_learners(n_agents: int, n_trials: int, alpha: float, beta: float, b
         else:
             raise ValueError(feedback)
         choices[t] = c
+    simulate_learners.last_values = (q_sw.copy(), q_st.copy())
     return probs, choices
 
 
@@ -265,12 +267,9 @@ def main() -> None:
         print(f"    switch with probability {str(s):>4}: P(win) = {1/3 + s_f/3:.4f}")
     print(f"  over 200 games, matching (2/3) wins {200 * (1/3 + 2/9):.1f} cars on average against"
           f" {200 * 2/3:.1f} for always switching and {200/3:.1f} for always staying")
-    print("  A matching learner who switches with probability (k + 1)/(n + 2), k = past switch wins:")
-    rng = np.random.default_rng(SEED)
-    w = rng.random((200, 100_000)) < P_SWITCH
-    k = np.vstack([np.zeros((1, w.shape[1])), np.cumsum(w, axis=0)[:-1]])
-    n = np.arange(200)[:, None]
-    match = ((k + 1) / (n + 2)).mean(axis=1)
+    print("  A matching learner who switches with probability (k + 1)/(n + 2), k = past switch wins")
+    print("  (expected value (1 + 2n/3)/(n + 2) after n games, exact):")
+    match = matching_curve(0.5, 2.0, P_SWITCH, np.arange(1, 201))
     print("    mean switch probability, games 1, 10, 50, 100, 200: "
           + ", ".join(f"{match[i]:.3f}" for i in (0, 9, 49, 99, 199)))
 
@@ -292,6 +291,22 @@ def main() -> None:
             print(f"    alpha {alpha}, beta {beta:>4}, {fb:<4}: switch rate in games 1, 10, 25, 50, 100, 200 ="
                   f" {curve[0]:.3f}, {curve[9]:.3f}, {curve[24]:.3f}, {curve[49]:.3f}, {curve[99]:.3f},"
                   f" {curve[199]:.3f}; first game above one half: {reach}")
+    print()
+    print("  Long run (4,000 learners, 3,000 games, alpha 0.1, beta 10, b = ln 9): mean values at the end")
+    for fb in ("full", "own"):
+        curve, _ = simulate_learners(4_000, 3_000, 0.1, 10.0, b, feedback=fb, rng=np.random.default_rng(SEED + 3))
+        q_sw, q_st = simulate_learners.last_values
+        print(f"    {fb:<4}: switch rate over games 2001-3000 {curve[2000:].mean():.3f};"
+              f" mean value of switching {q_sw.mean():.3f}, of staying {q_st.mean():.3f}")
+    print(f"    switch rate if the values sat at 2/3 and 1/3: {asymptote(10.0, b):.3f}")
+    print("  Effect of games in which switching would have lost, starting from settled values (beta 10, b = ln 9):")
+    for alpha, runs in ((0.3, 1), (0.1, 1), (0.1, 3)):
+        q_sw, q_st = 2 / 3, 1 / 3
+        for _ in range(runs):
+            q_sw += alpha * (0.0 - q_sw)
+            q_st += alpha * (1.0 - q_st)
+        print(f"    alpha {alpha}, {runs} such game(s): P(switch) from {asymptote(10.0, b):.3f} to"
+              f" {special.expit(10.0 * (q_sw - q_st) - b):.3f}")
     print()
     print("  Learners left switching rarely late in play (the hot-stove pattern of Denrell and March, 2001):")
     alpha, beta = 0.3, 10.0
@@ -361,7 +376,8 @@ def main() -> None:
     for final in (0.50, 0.55):
         fit = fit_matching_two_blocks(0.12, final, (1, 1), (41, 50))
         print(f"    final block {final:.2f}: p0 = {fit[0]:.3f}, m = {fit[1]:.0f} games;"
-              f" predicted switch rate in game 200: {matching_curve(fit[0], fit[1], P_SWITCH, np.array([200]))[0]:.3f}")
+              f" predicted switch rate in game 200: {matching_curve(fit[0], fit[1], P_SWITCH, np.array([200]))[0]:.3f};"
+              f" games of experience before the switch rate reaches 0.5: {games_to_reach(0.5, fit[0], fit[1]):.0f}")
     print()
     print("  Herbranson & Schroeder (2010), humans without a cover story (6 per condition, blocks of 50 games):")
 
@@ -387,6 +403,11 @@ def main() -> None:
         print(f"    {name}: observed first block {d['first'][0]:.3f} [{d['first'][1]:.3f}, {d['first'][2]:.3f}],"
               f" matching {f1:.3f}; observed last block {d['last'][0]:.3f} [{d['last'][1]:.3f}, {d['last'][2]:.3f}],"
               f" matching {f4:.3f}, counting learner {mx:.3f}")
+    beta_m = 3 * math.log(2)
+    print(f"    an unbiased softmax learner with settled values and beta = 3 ln 2 also gives"
+          f" {asymptote(beta_m, 0.0):.3f} and {special.expit(beta_m * (1/3 - 2/3)):.3f} in the two conditions;"
+          f" when switching wins 90 per cent of the time, matching gives 0.900 and this learner"
+          f" {special.expit(beta_m * (0.9 - 0.1)):.3f}")
     print(f"    pigeons (6 birds, about 100 trials a day from day 5): day 1 {HS_PIGEONS['day 1'][0]:.3f},"
           f" day 30 {HS_PIGEONS['day 30'][0]:.3f} [{HS_PIGEONS['day 30'][1]:.3f}, {HS_PIGEONS['day 30'][2]:.3f}];"
           f" matching predicts {2/3:.3f}")
@@ -396,6 +417,13 @@ def main() -> None:
     for w in (1.0, 1.5, 2.0, 3.0, 4.0):
         s = memory_distortion_rate(w)
         print(f"    w = {w}: long-run switch rate {s:.3f}; P(win) {1/3 + s/3:.3f}")
+    # Petrocelli & Harris (2011), Study 2: actual switch losses by condition (Table 2), 9.26 (n = 34) and
+    # 6.87 (n = 31); recalled minus actual switch losses, M = 4.28 over all 65 participants.
+    actual = (9.26 * 34 + 6.87 * 31) / 65
+    w_ph = (actual + 4.28) / actual
+    print(f"  Petrocelli & Harris Study 2: mean actual switch losses {actual:.2f}, recalled {actual + 4.28:.2f},"
+          f" ratio w = {w_ph:.2f}; matching plateau at that w {memory_distortion_rate(w_ph):.3f},"
+          f" P(win) {1/3 + memory_distortion_rate(w_ph)/3:.3f}")
 
 
 if __name__ == "__main__":

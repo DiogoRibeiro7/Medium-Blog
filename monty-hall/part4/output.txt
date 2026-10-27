@@ -49,8 +49,9 @@
     switch with probability  0.9: P(win) = 0.6333
     switch with probability  1.0: P(win) = 0.6667
   over 200 games, matching (2/3) wins 111.1 cars on average against 133.3 for always switching and 66.7 for always staying
-  A matching learner who switches with probability (k + 1)/(n + 2), k = past switch wins:
-    mean switch probability, games 1, 10, 50, 100, 200: 0.500, 0.637, 0.660, 0.664, 0.665
+  A matching learner who switches with probability (k + 1)/(n + 2), k = past switch wins
+  (expected value (1 + 2n/3)/(n + 2) after n games, exact):
+    mean switch probability, games 1, 10, 50, 100, 200: 0.500, 0.636, 0.660, 0.663, 0.665
 
 ============================================================================
 4. REINFORCEMENT LEARNERS
@@ -72,6 +73,15 @@
     alpha 0.1, beta 15.0, own : switch rate in games 1, 10, 25, 50, 100, 200 = 0.100, 0.445, 0.683, 0.804, 0.858, 0.888; first game above one half: 13
     alpha 0.3, beta 10.0, full: switch rate in games 1, 10, 25, 50, 100, 200 = 0.100, 0.609, 0.615, 0.617, 0.617, 0.615; first game above one half: 4
     alpha 0.3, beta 10.0, own : switch rate in games 1, 10, 25, 50, 100, 200 = 0.100, 0.546, 0.606, 0.623, 0.622, 0.623; first game above one half: 8
+
+  Long run (4,000 learners, 3,000 games, alpha 0.1, beta 10, b = ln 9): mean values at the end
+    full: switch rate over games 2001-3000 0.664; mean value of switching 0.666, of staying 0.334
+    own : switch rate over games 2001-3000 0.741; mean value of switching 0.636, of staying 0.259
+    switch rate if the values sat at 2/3 and 1/3: 0.757
+  Effect of games in which switching would have lost, starting from settled values (beta 10, b = ln 9):
+    alpha 0.3, 1 such game(s): P(switch) from 0.757 to 0.054
+    alpha 0.1, 1 such game(s): P(switch) from 0.757 to 0.451
+    alpha 0.1, 3 such game(s): P(switch) from 0.757 to 0.077
 
   Learners left switching rarely late in play (the hot-stove pattern of Denrell and March, 2001):
     (alpha 0.3, beta 10.0) share who never switch in 200 games: 0.000; share still switching less than a third of the time in games 151-200: 0.172
@@ -122,13 +132,14 @@
 
   Granberg & Brown (1995), approximate: 12% switch in the first game (abstract), about 50% in the final
   block of 10 of 50 games (as reported by Petrocelli & Harris); N not available, so no interval:
-    final block 0.50: p0 = 0.120, m = 19 games; predicted switch rate in game 200: 0.618
-    final block 0.55: p0 = 0.120, m = 12 games; predicted switch rate in game 200: 0.635
+    final block 0.50: p0 = 0.120, m = 19 games; predicted switch rate in game 200: 0.618; games of experience before the switch rate reaches 0.5: 44
+    final block 0.55: p0 = 0.120, m = 12 games; predicted switch rate in game 200: 0.635; games of experience before the switch rate reaches 0.5: 27
 
   Herbranson & Schroeder (2010), humans without a cover story (6 per condition, blocks of 50 games):
     one matching learner for both conditions (least squares on the four block means): p0 = 0.144, m = 3.3 games
     switching pays 2/3: observed first block 0.567 [0.345, 0.788], matching 0.565; observed last block 0.657 [0.450, 0.863], matching 0.657, counting learner 1.000
     staying pays 2/3: observed first block 0.300 [0.132, 0.468], matching 0.297; observed last block 0.277 [0.111, 0.442], matching 0.330, counting learner 0.000
+    an unbiased softmax learner with settled values and beta = 3 ln 2 also gives 0.667 and 0.333 in the two conditions; when switching wins 90 per cent of the time, matching gives 0.900 and this learner 0.841
     pigeons (6 birds, about 100 trials a day from day 5): day 1 0.363, day 30 0.963 [0.940, 0.987]; matching predicts 0.667
 
   Memory that inflates losses after switching: a matching learner who remembers each such loss as w
@@ -138,3 +149,4 @@
     w = 2.0: long-run switch rate 0.562; P(win) 0.521
     w = 3.0: long-run switch rate 0.500; P(win) 0.500
     w = 4.0: long-run switch rate 0.457; P(win) 0.486
+  Petrocelli & Harris Study 2: mean actual switch losses 8.12, recalled 12.40, ratio w = 1.53; matching plateau at that w 0.603, P(win) 0.534
