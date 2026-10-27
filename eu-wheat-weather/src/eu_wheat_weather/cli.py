@@ -86,6 +86,15 @@ def build_parser() -> argparse.ArgumentParser:
     maize_panel.add_argument("--seasons", type=Path, default=Path("docs/maize/season.csv"))
     maize_panel.add_argument("--output-dir", type=Path, default=Path("docs/maize"))
     maize_panel.add_argument("--report", type=Path, default=Path("docs/MAIZE_DATA.md"))
+    maize_est = commands.add_parser(
+        "maize-estimate", help="Fit the maize models of METHODS.md, section 9.2, and write "
+        "their report beside wheat")
+    maize_est.add_argument("--panel", type=Path, default=Path("docs/maize/panel.csv"))
+    maize_est.add_argument("--weather", type=Path, default=Path("docs/maize/weather.csv"))
+    maize_est.add_argument("--wheat", type=Path, default=Path("docs/amendment/results.json"),
+                           help="Wheat under Amendment A1, shown beside maize")
+    maize_est.add_argument("--output-dir", type=Path, default=Path("docs/maize/results"))
+    maize_est.add_argument("--report", type=Path, default=Path("docs/MAIZE.md"))
     calendar = commands.add_parser(
         "fetch-calendar", help="Download the GGCMI crop calendar (rainfed winter wheat) and "
         "freeze it as a snapshot (Amendment A1)")
@@ -223,6 +232,19 @@ def main(argv: Sequence[str] | None = None) -> int:
             print(f"{summary['panel_region_years']} region-years in "
                   f"{summary['panel_regions']} regions; excluded "
                   f"{summary['excluded_by_reason']}")
+        elif args.command == "maize-estimate":
+            from eu_wheat_weather import maize_analysis
+
+            command = (f"poetry run eu-wheat maize-estimate --panel {args.panel.as_posix()} "
+                       f"--weather {args.weather.as_posix()} --wheat {args.wheat.as_posix()} "
+                       f"--output-dir {args.output_dir.as_posix()} --report "
+                       f"{args.report.as_posix()}")
+            results = maize_analysis.run(args.panel, args.weather)
+            wheat = json.loads(args.wheat.read_text(encoding="utf-8"))
+            maize_analysis.write_results(results, wheat, args.output_dir, args.report, command)
+            print(json.dumps({k: v["verdict"] for k, v in results["decisions"].items()}))
+            print(f"placebo significant under both methods: "
+                  f"{results['E5']['significant_both']}")
         elif args.command == "fetch-calendar":
             from eu_wheat_weather.downloads import fetch_calendar
 

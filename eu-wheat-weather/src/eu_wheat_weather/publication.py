@@ -40,6 +40,11 @@ def p_value(p: float) -> str:
     return "below 0.001" if p < 0.001 else f"{p:.2f}" if p >= 0.01 else f"{p:.3f}"
 
 
+def p_value3(p: float) -> str:
+    """Three decimals: the maize article quotes p-values near 0.05, which two would blur."""
+    return "below 0.001" if p < 0.001 else f"{p:.3f}"
+
+
 def collect_values(root: Path) -> dict[str, str]:
     r = json.loads((root / "docs" / "results" / "results.json").read_text(encoding="utf-8"))
     panel = json.loads((root / "docs" / "panel" / "summary.json").read_text(encoding="utf-8"))
@@ -124,6 +129,10 @@ def collect_values(root: Path) -> dict[str, str]:
     amended = _amendment(root)
     if amended is not None:
         v.update(amendment_values(amended))
+    maize = root / "docs" / "maize" / "results" / "results.json"
+    if maize.exists():                       # the pointer to the maize article
+        m = json.loads(maize.read_text(encoding="utf-8"))
+        v["maize_e1_pct"], v["maize_e2_pct"] = pct(m["E1"]["estimate"]), pct(m["E2"]["estimate"])
     return v
 
 
@@ -175,13 +184,15 @@ def _bin_range(term: str) -> str:
     return f"{int(low)}–{int(high)} °C"
 
 
-def _panel_quantiles(root: Path, column: str, qs: tuple[float, ...]) -> list[float]:
-    """Quantiles of a panel column over every panel region-season (linear interpolation)."""
+def _panel_quantiles(root: Path, column: str, qs: tuple[float, ...],
+                     panel: str = "panel") -> list[float]:
+    """Quantiles of a panel column over every panel region-season (linear interpolation):
+    the wheat panel (docs/panel) or the maize panel (docs/maize)."""
     import csv
 
     import numpy as np
 
-    with (root / "docs" / "panel" / "panel.csv").open(encoding="utf-8") as stream:
+    with (root / "docs" / panel / "panel.csv").open(encoding="utf-8") as stream:
         values = [float(r[column]) for r in csv.DictReader(stream)]
     return [float(np.quantile(values, q)) for q in qs]
 
@@ -211,14 +222,82 @@ def render(template: str, values: Mapping[str, str]) -> str:
     return PLACEHOLDER.sub(lambda m: values[m.group(1)], template)
 
 
+MAIZE_DIR = "publication/maize"
+
+
+def _json(root: Path, *parts: str) -> Any:
+    return json.loads(root.joinpath(*parts).read_text(encoding="utf-8"))
+
+
+def maize_values(root: Path) -> dict[str, str]:
+    """The values the maize article quotes (METHODS.md, section 9)."""
+    r = _json(root, "docs", "maize", "results", "results.json")
+    summary = _json(root, "docs", "maize", "summary.json")
+    wheat = _json(root, "docs", "results", "results.json")
+    wheat_a1 = _json(root, "docs", "amendment", "results.json")
+    s, d, e1, e2, e5 = r["sample"], r["decisions"], r["E1"], r["E2"], r["E5"]
+    bins = {b["term"]: b for b in r["M3"]}
+    sens = {(x["variant"], x["estimand"]): x for x in r["sensitivity"]}
+    edd_q = _panel_quantiles(root, "edd_30", (0.25, 0.5, 0.75), "maize")
+    wheat_edd = next(c for c in wheat["coefficients"]
+                     if c["model"] == "M1" and c["term"] == "edd")
+    v = {
+        "n_obs": f"{s['n']:,}", "n_regions": str(s["regions"]),
+        "n_countries": str(s["countries"]), "year_first": str(s["years"][0]),
+        "year_last": str(s["years"][1]), "n_harvests": str(s["years"][1] - s["years"][0] + 1),
+        "planting_first": _date(summary["season"]["planting_first"]),
+        "planting_last": _date(summary["season"]["planting_last"]),
+        "maturity_first": _date(summary["season"]["maturity_first"]),
+        "maturity_last": _date(summary["season"]["maturity_last"]),
+        "n_excluded_rule": str(summary["excluded_by_reason"].get("data_rule", 0)),
+        "edd_p25": f"{edd_q[0]:.1f}", "edd_median": f"{edd_q[1]:.1f}",
+        "edd_p75": f"{edd_q[2]:.1f}",
+        "e5_p_twoway": p_value3(e5["p_twoway"]), "e5_p_boot": p_value3(e5["p_bootstrap"]),
+        "dry_mm": str(int(round(abs(e2["mean_p10_minus_p50_mm"])))),
+        "h2730_pct": pct(bins["t_27_30"]["estimate"] / 24, 2),
+        "h3336_pct": pct(bins["t_33_36"]["estimate"] / 24, 2),
+        "ge36_pct": pct(bins["t_ge36"]["estimate"] / 24, 2),
+        "ge36_low": pct(bins["t_ge36"]["low"] / 24, 2),
+        "ge36_high": pct(bins["t_ge36"]["high"] / 24, 2),
+        "ge36_boot_p": p_value3(bins["t_ge36"]["p_bootstrap"]),
+        "wheat_a1_e1_pct": pct(wheat_a1["E1"]["estimate"]),
+        "wheat_a1_e2_pct": pct(wheat_a1["E2"]["estimate"]),
+        "wheat_e1_pct": pct(wheat_edd["estimate"]),
+        "wheat_e2_pct": pct(wheat["E2"]["dry_season"]["effect"]),
+        "e1_not_irrigated": pct(sens[("not_irrigated", "E1")]["estimate"]),
+        "e1_area_weighted": pct(sens[("area_weighted", "E1")]["estimate"]),
+        "e2_area_weighted": pct(sens[("area_weighted", "E2")]["estimate"]),
+        "n_sensitivity": str(len({x["variant"] for x in r["sensitivity"]})),
+    }
+    for key, x in (("e1", e1), ("e2", e2)):
+        v |= {f"{key}_pct": pct(x["estimate"]), f"{key}_low": pct(x["low"]),
+              f"{key}_high": pct(x["high"]),
+              f"{key}_holm_twoway": p_value3(d[key.upper()]["p_twoway_holm"]),
+              f"{key}_holm_boot": p_value3(d[key.upper()]["p_bootstrap_holm"])}
+    for row in r["E4"]:
+        y = row["year"]
+        v[f"e4_{y}_obs"] = _signed(row["eu_yield_observed_pct"], 1) + "%"
+        v[f"e4_{y}_pred"] = _signed(row["eu_yield_predicted_pct"], 1) + "%"
+        v[f"e4_{y}_corr"] = f"{row['correlation']:.2f}"
+    return v
+
+
 def outputs(root: Path) -> dict[str, str]:
-    """The text files the publication step writes, by path relative to ``root``."""
+    """The text files the publication step writes, by path relative to ``root``: the wheat
+    article and, once its results exist, the maize article."""
     values = collect_values(root)
     template = (root / "publication" / "article.template.md").read_text(encoding="utf-8")
     header = ("<!-- Generated by eu-wheat publication from article.template.md and the "
               "committed results. Do not edit. -->\n")
-    return {"publication/values.json": json.dumps(values, indent=1, ensure_ascii=False) + "\n",
-            "publication/article.md": header + render(template, values)}
+    out = {"publication/values.json": json.dumps(values, indent=1, ensure_ascii=False) + "\n",
+           "publication/article.md": header + render(template, values)}
+    maize_template = root / MAIZE_DIR / "article.template.md"
+    if maize_template.exists():
+        maize = maize_values(root)
+        out[f"{MAIZE_DIR}/values.json"] = json.dumps(maize, indent=1, ensure_ascii=False) + "\n"
+        out[f"{MAIZE_DIR}/article.md"] = header + render(
+            maize_template.read_text(encoding="utf-8"), maize)
+    return out
 
 
 def write_publication(root: Path, figures: bool = True) -> list[str]:
@@ -235,6 +314,13 @@ def write_publication(root: Path, figures: bool = True) -> list[str]:
         written += [str(p.relative_to(root).as_posix())
                     for p in draw_all(results, root / "publication" / "figures",
                                       _amendment(root))]
+        if (root / MAIZE_DIR / "article.template.md").exists():
+            from eu_wheat_weather.figures import draw_maize
+
+            written += [str(p.relative_to(root).as_posix()) for p in draw_maize(
+                _json(root, "docs", "maize", "results", "results.json"),
+                _json(root, "docs", "amendment", "results.json"), results,
+                root / MAIZE_DIR / "figures")]
     return written
 
 

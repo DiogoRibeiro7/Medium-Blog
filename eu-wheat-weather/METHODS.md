@@ -576,3 +576,13 @@ are; maize is reported separately.
   - **What was seen.** The maize panel and its coverage report (`docs/MAIZE_DATA.md`):
     counts, exclusions and the data rule's flags. No yield was related to any weather
     variable.
+- **2026-10-27, maize estimates: details section 9.2 left open, fixed in the code before
+  the run and recorded here after it.**
+  - **The irrigation sensitivity** drops Spain, Portugal, Italy and Greece before the
+    singleton rule.
+  - **The area-weighted sensitivity** weights the regressions, and E2's contrast keeps
+    the unweighted means over regions of `P10 - P50` and `P10^2 - P50^2`, as in the
+    wheat variant.
+  - **E4** follows the change log of 2026-10-24 exactly, with maize area.
+  - **The placebo's report** says when one method rejects and the other does not. The
+    registered rule, which needs both methods to reject, is unchanged.

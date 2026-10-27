@@ -51,6 +51,10 @@ def test_every_command_parses() -> None:
                  ["fetch-weather", "--manifest", "m.json"],
                  ["fetch-calendar"],
                  ["amend", "--crops", "x"],
+                 ["fetch-crops", "--crop", "maize", "--output-dir", "x"],
+                 ["maize-weather"],
+                 ["maize-panel", "--crops", "x"],
+                 ["maize-estimate"],
                  ["audit", "--crops", "x"]):
         assert parser.parse_args(argv).command == argv[0]
 
