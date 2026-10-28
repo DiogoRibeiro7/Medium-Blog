@@ -461,7 +461,7 @@ Robins, J. M. (1986). A New Approach to Causal Inference in Mortality Studies wi
 
 Rubin, D. B. (1974). Estimating Causal Effects of Treatments in Randomized and Nonrandomized Studies. *Journal of Educational Psychology*, 66(5), 688–701. https://doi.org/10.1037/h0037350
 
-Shpitser, I., VanderWeele, T. and Robins, J. M. (2010). On the Validity of Covariate Adjustment for Estimating Causal Effects. In *Proceedings of the Twenty-Sixth Conference on Uncertainty in Artificial Intelligence*, 527–536.
+Shpitser, I., VanderWeele, T. and Robins, J. M. (2010). On the Validity of Covariate Adjustment for Estimating Causal Effects. In *Proceedings of the Twenty-Sixth Conference on Uncertainty in Artificial Intelligence*, 527–536. AUAI Press. https://mlanthology.org/uai/2010/shpitser2010uai-validity/
 
 Spirtes, P., Glymour, C. and Scheines, R. (2000). *Causation, Prediction, and Search*, 2nd edition. MIT Press.
 
