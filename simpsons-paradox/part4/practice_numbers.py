@@ -145,6 +145,10 @@ def load_compas() -> dict[str, np.ndarray]:
         if int(x[col["is_recid"]]) == -1 or x[col["c_charge_degree"]] == "O" or x[col["score_text"]] == "N/A":
             continue
         keep.append(x)
+    # the unfiltered two-year population, for ProPublica's published error rates
+    out_all = {"race": np.array([x[col["race"]] for x in rows]),
+               "high": np.array([int(x[col["decile_score"]]) >= 5 for x in rows]).astype(int),
+               "recid": np.array([int(x[col["two_year_recid"]]) for x in rows])}
     out = {
         "race": np.array([x[col["race"]] for x in keep]),
         "sex": np.array([x[col["sex"]] for x in keep]),
@@ -155,6 +159,7 @@ def load_compas() -> dict[str, np.ndarray]:
         "recid": np.array([int(x[col["two_year_recid"]]) for x in keep]),
     }
     out["n_all"] = n_all
+    out["unfiltered"] = out_all
     return out
 
 
@@ -195,7 +200,7 @@ def mh_difference(sa, na, sb, nb):
     pa, pb = sa / na, sb / nb
     w = na * nb / (na + nb)
     d = np.sum(w * (pa - pb)) / w.sum()
-    p_num = np.sum((nb ** 2 * sa - na ** 2 * sb + na * nb * (na - nb) / 2) / (na + nb) ** 2)
+    p_num = np.sum((na ** 2 * sb - nb ** 2 * sa + na * nb * (nb - na) / 2) / (na + nb) ** 2)
     q_num = np.sum((sa * (nb - sb) + sb * (na - sa)) / (2 * (na + nb)))
     var = (d * p_num + q_num) / w.sum() ** 2
     return d, math.sqrt(var)
@@ -444,6 +449,21 @@ def main() -> None:
         z = (d1 - d0) / math.sqrt(s0 ** 2 + s1 ** 2)
         print(f"      difference between the two subgroup effects {pts(d1 - d0)} points, z = {z:.2f}")
     print()
+    print("  Crook, Frasca, Kohavi and Longbotham (2009), Table 1: conversions / visitors; Friday 99%/1%, Saturday 50%/50%")
+    crook = {"C": ((20_000, 990_000), (5_000, 500_000)), "T": ((230, 10_000), (6_000, 500_000))}
+    for arm, days in crook.items():
+        tot = (sum(d[0] for d in days), sum(d[1] for d in days))
+        print(f"    {arm}: Friday {days[0][0]:,} / {days[0][1]:,} = {pct(days[0][0] / days[0][1])};"
+              f" Saturday {days[1][0]:,} / {days[1][1]:,} = {pct(days[1][0] / days[1][1])};"
+              f" total {tot[0]:,} / {tot[1]:,} = {pct(tot[0] / tot[1])}")
+    sa = np.array([d[0] for d in crook["T"]], float); na = np.array([d[1] for d in crook["T"]], float)
+    sb = np.array([d[0] for d in crook["C"]], float); nb = np.array([d[1] for d in crook["C"]], float)
+    mix, within = kitagawa(sa / na, na / na.sum(), sb / nb, nb / nb.sum())
+    tot_d = sa.sum() / na.sum() - sb.sum() / nb.sum()
+    mh = mh_difference(sa, na, sb, nb)
+    print(f"    treatment minus control: total {pts(tot_d)} points = mix {pts(mix)} + within {pts(within)};"
+          f" Mantel-Haenszel by day {pts(mh[0], 3)} points (SE {pts(mh[1], 3)}); multiplier at 1% {ramp_multiplier(0.01):+.3f},"
+          f" baseline change Friday to Saturday {pts((sb[0] / nb[0] + sa[0] / na[0]) / 2 - (sb[1] / nb[1] + sa[1] / na[1]) / 2)} points")
     print("  Ramp-up, two days of equal traffic, treatment share a on day 1 and 1/2 on day 2: pooling the days adds")
     print("  (baseline on day 1 - baseline on day 2) x multiplier to the treatment-control difference")
     for a1 in (0.01, 0.05, 0.10, 0.20, 0.50):
@@ -465,6 +485,11 @@ def main() -> None:
     exp_c = ((10_700 - n_t1) * rates[(1, "Womens E-Mail")][0] + 5350 * rates[(2, "Womens E-Mail")][0]) / (10_700 - n_t1 + 5350)
     print(f"    average baseline, day 1 minus day 2: {pts(base_gap)} points; multiplier at 1% {ramp_multiplier(n_t1 / 10_700):+.3f}")
     print(f"    expected pooled rates: men's {pct(exp_t)}, women's {pct(exp_c)}, difference {pts(exp_t - exp_c)} points")
+    wt1, wc1 = n_t1 / (n_t1 + 5350), (10_700 - n_t1) / (10_700 - n_t1 + 5350)
+    eff = [rates[(d, "Mens E-Mail")][0] - rates[(d, "Womens E-Mail")][0] for d in (1, 2)]
+    w1 = (wt1 + wc1) / 2
+    print(f"    of which: daily effects averaged with weights {w1:.3f} and {1 - w1:.3f} {pts(w1 * eff[0] + (1 - w1) * eff[1])}"
+          f" points; mix part {pts((wt1 - wc1) * base_gap)} points")
     sample = ramp_reenactment(h, rng)
     naive, mh, days, _ = summarise_ramp(sample)
     n_t = sum(len(sample[(d, "Mens E-Mail")]) for d in (1, 2))
@@ -577,6 +602,13 @@ def main() -> None:
         d, se = difference(ab[0], ab[1], aw[0], aw[1])
         print(f"    {k:<15} Black {pct(ab[0] / ab[1], 1)} [{pct(cib.low, 1)}, {pct(cib.high, 1)}] of {ab[1]:,};"
               f" white {pct(aw[0] / aw[1], 1)} [{pct(ciw.low, 1)}, {pct(ciw.high, 1)}] of {aw[1]:,}; difference {pts(d, 1)} points")
+    u = cp["unfiltered"]
+    print(f"  the unfiltered two-year population ({len(u['race']):,} defendants), on which ProPublica's published error rates rest:")
+    for label, race in (("Black", "African-American"), ("white", "Caucasian")):
+        m = u["race"] == race
+        mm = fairness_metrics(u["recid"][m], u["high"][m])
+        print(f"    {label} (n = {m.sum():,}): base rate {pct(mm['base rate'][0] / mm['base rate'][1])}; FPR {pct(mm['FPR'][0] / mm['FPR'][1])};"
+              f" FNR {pct(mm['FNR'][0] / mm['FNR'][1])}; PPV {pct(mm['PPV'][0] / mm['PPV'][1])}")
     print("  check of Chouldechova's identity FPR = p / (1 - p) x (1 - PPV) / PPV x (1 - FNR):")
     for label in ("Black", "white"):
         mm = mets[label]

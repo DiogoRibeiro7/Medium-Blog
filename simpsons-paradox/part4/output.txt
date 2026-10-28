@@ -39,6 +39,10 @@
     newbie = 1: +2.49 points [+1.56, +3.42], 10,686 and 10,763 customers
       difference between the two subgroup effects -1.28 points, z = -1.78
 
+  Crook, Frasca, Kohavi and Longbotham (2009), Table 1: conversions / visitors; Friday 99%/1%, Saturday 50%/50%
+    C: Friday 20,000 / 990,000 = 2.02%; Saturday 5,000 / 500,000 = 1.00%; total 25,000 / 1,490,000 = 1.68%
+    T: Friday 230 / 10,000 = 2.30%; Saturday 6,000 / 500,000 = 1.20%; total 6,230 / 510,000 = 1.22%
+    treatment minus control: total -0.46 points = mix -0.68 + within +0.23; Mantel-Haenszel by day +0.203 points (SE +0.021); multiplier at 1% -0.645, baseline change Friday to Saturday +1.06 points
   Ramp-up, two days of equal traffic, treatment share a on day 1 and 1/2 on day 2: pooling the days adds
   (baseline on day 1 - baseline on day 2) x multiplier to the treatment-control difference
     a = 0.01: multiplier -0.645
@@ -54,6 +58,7 @@
     population rate, day 2, Womens E-Mail  12.92% (from 10,763 customers)
     average baseline, day 1 minus day 2: +5.10 points; multiplier at 1% -0.645
     expected pooled rates: men's 15.53%, women's 15.89%, difference -0.36 points
+    of which: daily effects averaged with weights 0.342 and 0.658 +2.93 points; mix part -3.29 points
     one draw: 5,457 treated and 15,943 controls; sample-ratio test against 50/50: chi-square 5,138
       day 1: +7.84 points [-0.42, +16.11]
       day 2: +1.94 points [+0.63, +3.26]
@@ -132,6 +137,9 @@
     FNR             Black 28.5% [26.3%, 30.7%] of 1,661; white 49.6% [46.2%, 53.1%] of 822; difference -21.2 points
     PPV             Black 65.0% [62.7%, 67.1%] of 1,829; white 59.5% [55.7%, 63.2%] of 696; difference +5.5 points
     NPV             Black 64.9% [62.2%, 67.4%] of 1,346; white 71.0% [68.6%, 73.4%] of 1,407; difference -6.1 points
+  the unfiltered two-year population (7,214 defendants), on which ProPublica's published error rates rest:
+    Black (n = 3,696): base rate 51.43%; FPR 44.85%; FNR 27.99%; PPV 62.97%
+    white (n = 2,454): base rate 39.36%; FPR 23.45%; FNR 47.72%; PPV 59.13%
   check of Chouldechova's identity FPR = p / (1 - p) x (1 - PPV) / PPV x (1 - FNR):
     Black: FPR 0.4234; right-hand side 0.4234
     white: FPR 0.2201; right-hand side 0.2201
