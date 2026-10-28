@@ -326,7 +326,7 @@ Murphy, S. A. (2003). Optimal Dynamic Treatment Regimes. *Journal of the Royal S
 
 Nie, X. and Wager, S. (2021). Quasi-Oracle Estimation of Heterogeneous Treatment Effects. *Biometrika*, 108(2), 299–319. https://doi.org/10.1093/biomet/asaa076
 
-Robins, J. M. (2004). Optimal Structural Nested Models for Optimal Sequential Decisions. In *Proceedings of the Second Seattle Symposium in Biostatistics*, 189–326.
+Robins, J. M. (2004). Optimal Structural Nested Models for Optimal Sequential Decisions. In D. Y. Lin and P. J. Heagerty (eds.), *Proceedings of the Second Seattle Symposium in Biostatistics: Analysis of Correlated Data*, pp. 189–326. Springer. https://doi.org/10.1007/978-1-4419-9076-1_11
 
 Rosenbaum, P. R. and Rubin, D. B. (1983). The Central Role of the Propensity Score in Observational Studies for Causal Effects. *Biometrika*, 70(1), 41–55. https://doi.org/10.1093/biomet/70.1.41
 
