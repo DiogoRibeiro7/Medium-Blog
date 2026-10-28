@@ -595,3 +595,41 @@ are; maize is reported separately.
     in every run.
   - **What stands.** The tie rule is still right and still counts ties the same way on
     every processor. No registered or amended result changes.
+- **2026-10-28, after the maize results: the maize review and its post-hoc checks.** A
+  critical review ([docs/MAIZE_REVIEW.md](docs/MAIZE_REVIEW.md)) was written after the
+  maize results and before publication. Nothing in this entry changes a registered
+  verdict; every check below is labelled post hoc wherever it is reported.
+  - **Post-hoc checks added to the maize outputs** (`post_hoc` in
+    `docs/maize/results/results.json`, and the "After review (post hoc)" section of
+    `docs/MAIZE.md`), so that the article can quote them:
+    - E1's standard error under each clustering that the two-way variance combines;
+    - each country's, region's and country-year's part of E1 (Frisch-Waugh);
+    - E1 and E2 under the full registered rule with each country left out, and without
+      the country-year with the largest part of E1;
+    - E1 in the irrigated south and elsewhere, from one model with `EDD` × south, and in
+      the south alone;
+    - each country's share of the identifying variation of `EDD` (also without the south
+      and with area weights) and of time at 36 °C and above, and of the maize area;
+    - the placebo's two terms, the country whose removal weakens its joint test most,
+      and E1 with both terms in the model;
+    - how far heat moves within a region, and the share of its variance left after the
+      fixed effects;
+    - hours per season in the bins above 27 °C;
+    - each country's part of E4's misses;
+    - the region-years that carry an estimated Eurostat value;
+    - the difference between maize's and wheat's E1, with its margin if the two were
+      independent.
+  - **The report's wording.** The placebo's report no longer says that maize standing in
+    the field explains the two-way rejection. That explanation predicts a negative sign,
+    and the rejection comes from post-maturity rain with a positive one. The report also
+    says when the details of the two maize change-log entries were recorded.
+  - **A correction to the review.** Its finding C3 gives Romania 30%, France 19% and
+    Hungary 12% under area weights. Those are shares of the sample's maize area. Under
+    area weights Romania supplies 48% of the identifying variation of `EDD`, so the
+    finding stands, more strongly.
+  - **Figures.** Figure 1 of the maize article marks in orange the bins that differ from
+    zero under both methods, not under the two-way method alone. Figure 2 draws maize in
+    the colour of Figure 4's main model, and Figure 4's first row reads "Main model".
+  - **Articles.** The maize article is revised as the review recommends (its section
+    "Recommended corrections", A). The wheat article's pointer to maize is revised, and
+    both articles' crop-calendar credits link to the licence and state the changes made.

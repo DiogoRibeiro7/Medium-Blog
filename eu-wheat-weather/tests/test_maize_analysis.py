@@ -85,3 +85,21 @@ def test_the_parts_agree() -> None:
     for test in (r["E1"], r["E2"], r["E5"]):
         assert test["p_bootstrap"] == max(test["p_bootstrap_country"],
                                           test["p_bootstrap_year"])
+
+
+@pytest.mark.skipif(not RESULTS.exists(), reason="No committed maize results.")
+def test_post_hoc_checks_agree_with_the_registered_results() -> None:
+    r = json.loads(RESULTS.read_text(encoding="utf-8"))
+    ph, e1 = r["post_hoc"], r["E1"]
+    assert math.isclose(ph["E1_variance"]["twoway"]["se"], e1["se"], rel_tol=1e-9)
+    assert math.isclose(ph["E1_variance"]["twoway"]["p"], e1["p_twoway"], rel_tol=1e-9)
+    for level in ("country", "region", "country_year"):          # Frisch-Waugh parts
+        assert math.isclose(sum(ph["E1_contributions"][level].values()), e1["estimate"],
+                            rel_tol=1e-9)
+    assert [x["country"] for x in ph["leave_one_country_out"]] == sorted(
+        x["country"] for x in ph["leave_one_country_out"])
+    assert len(ph["leave_one_country_out"]) == r["sample"]["countries"]
+    assert all(x["n"] < r["sample"]["n"] for x in ph["leave_one_country_out"])
+    for shares in [*ph["identifying_variation"].values(), ph["maize_area"]]:
+        assert math.isclose(sum(shares.values()), 1.0, rel_tol=1e-9)
+    assert ph["placebo"]["E1_with_placebo_terms"]["n"] <= r["sample"]["n"]

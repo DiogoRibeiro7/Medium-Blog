@@ -50,7 +50,10 @@ MAIZE_SOURCE = ("Data: Eurostat (apro_cpshr, grain maize); E-OBS v33.0e (ECA&D, 
 
 
 def temperature_response(bins: Sequence[Mapping[str, Any]], path: Path,
-                         season: str = "1 March to 31 July", source: str = SOURCE) -> None:
+                         season: str = "1 March to 31 July", source: str = SOURCE,
+                         both_methods: bool = False) -> None:
+    """Orange marks a bin whose two-way interval lies below zero or, with
+    ``both_methods``, one that the bootstrap rejects as well (the maize article)."""
     plt = _pyplot()
     labels: list[str] = []
     mids: list[float] = []
@@ -69,13 +72,15 @@ def temperature_response(bins: Sequence[Mapping[str, Any]], path: Path,
     est = [_per_hour(b["estimate"]) for b in bins]
     low = [_per_hour(b["low"]) for b in bins]
     high = [_per_hour(b["high"]) for b in bins]
-    rows = sorted(zip(mids, labels, est, low, high, strict=True), key=lambda r: r[0])
-    rows.insert(next(i for i, r in enumerate(rows) if r[0] > 16.5), (16.5, "15-18", 0.0, 0.0, 0.0))
+    clear = [b["high"] < 0 and (not both_methods or b["p_bootstrap"] < 0.05) for b in bins]
+    rows = sorted(zip(mids, labels, est, low, high, clear, strict=True), key=lambda r: r[0])
+    rows.insert(next(i for i, r in enumerate(rows) if r[0] > 16.5),
+                (16.5, "15-18", 0.0, 0.0, 0.0, False))
     fig, ax = plt.subplots(figsize=(7.5, 3.8))
     xs = range(len(rows))
     ax.axhline(0, color=MUTED, lw=0.8)
-    for x, (_, label, e, bar_low, bar_high) in zip(xs, rows, strict=True):
-        colour = ORANGE if bar_high < 0 else BLUE
+    for x, (_, label, e, bar_low, bar_high, below) in zip(xs, rows, strict=True):
+        colour = ORANGE if below else BLUE
         if label == "15-18":
             ax.plot(x, 0, marker="o", mfc="white", mec=INK, ms=5)
             continue
@@ -87,7 +92,9 @@ def temperature_response(bins: Sequence[Mapping[str, Any]], path: Path,
     ax.set_title("One more hour in each temperature range, instead of an hour at 15-18 °C",
                  fontsize=10, loc="left", color=INK)
     ax.grid(axis="y", color=GRID, lw=0.6)
-    _save(plt, fig, path, source + " Bars: 95% intervals (two-way clustered).")
+    note = "Bars: 95% intervals (two-way clustered)."
+    _save(plt, fig, path, f"{source}\n{note} Orange: differs from zero under both methods."
+          if both_methods else f"{source} {note}")
 
 
 def precipitation_response(curve: Mapping[str, Any], optimum: Mapping[str, float] | None,
@@ -144,10 +151,10 @@ def out_of_sample(regions: Sequence[Mapping[str, Any]], years: Sequence[Mapping[
 
 
 def sensitivity(rows: Sequence[Mapping[str, Any]], primary: Mapping[str, Mapping[str, float]],
-                path: Path, source: str = SOURCE) -> None:
+                path: Path, source: str = SOURCE, main: str = "Registered model") -> None:
     plt = _pyplot()
     fig, axes = plt.subplots(1, 2, figsize=(9.5, 4.2), sharey=True)
-    variants = [("Registered model", "")] + list(dict.fromkeys(
+    variants = [(main, "")] + list(dict.fromkeys(
         (r["label"], r["variant"]) for r in rows))
     for ax, key, title in zip(axes, ("E1", "E2"),
                               ("Heat: 10 more degree days above the threshold\n"
@@ -232,7 +239,7 @@ def crops(rows: Sequence[tuple[str, Mapping[str, Mapping[str, float]]]], path: P
                               strict=True):
         for y, (label, estimates) in zip(ys, rows, strict=True):
             r = estimates[key]
-            colour = ORANGE if label.startswith("Maize") else BLUE
+            colour = INK if label.startswith("Maize") else BLUE      # as the main model, fig. 4
             ax.plot([_pct(r["low"]), _pct(r["high"])], [y, y], color=colour, lw=1.6)
             ax.plot(_pct(r["estimate"]), y, "o", color=colour, ms=5)
         ax.axvline(0, color=MUTED, lw=0.8)
@@ -249,7 +256,8 @@ def draw_maize(results: Mapping[str, Any], wheat_amended: Mapping[str, Any],
     """Every figure of the maize article, from the maize and wheat results."""
     paths = [directory / name for name in ("fig1_temperature.png", "fig2_crops.png",
                                            "fig3_out_of_sample.png", "fig4_sensitivity.png")]
-    temperature_response(results["M3"], paths[0], "planting to maturity", MAIZE_SOURCE)
+    temperature_response(results["M3"], paths[0], "planting to maturity", MAIZE_SOURCE,
+                         both_methods=True)
     edd = next(c for c in wheat["coefficients"] if c["model"] == "M1" and c["term"] == "edd")
     dry = wheat["E2"]["dry_season"]
     registered = {"E1": edd, "E2": {"estimate": dry["effect"], "low": dry["low"],
@@ -258,5 +266,5 @@ def draw_maize(results: Mapping[str, Any], wheat_amended: Mapping[str, Any],
            ("Wheat, registered analysis", registered)], paths[1])
     out_of_sample(results["E4_regions"], results["E4"], paths[2], MAIZE_SOURCE, "")
     sensitivity(results["sensitivity"], {"E1": results["E1"], "E2": results["E2"]}, paths[3],
-                MAIZE_SOURCE)
+                MAIZE_SOURCE, "Main model")
     return paths

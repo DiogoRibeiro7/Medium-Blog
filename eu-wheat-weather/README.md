@@ -41,15 +41,22 @@ Union respond to extreme heat and drought during the growing season, 2000-2024.
 - **Grain maize** ([docs/MAIZE.md](docs/MAIZE.md)). It was registered before any maize
   yield was looked at, and has the same design and inference as wheat under Amendment A1.
   - **Heat:** 10 more degree days above 30 °C go with 4.9% lower yields. This is
-    established, but narrowly: p = 0.048 two-way and 0.036 bootstrap, after Holm.
-  - **Drought:** a dry season goes with 3.3% lower yields. This is established: p = 0.007
-    and 0.027 after Holm.
-  - **Placebo:** it passes by the registered rule, but only narrowly: the two-way test
-    rejects (p = 0.043) and the bootstrap does not.
+    established by the registered rule, but at the margin (p = 0.048 two-way and 0.036
+    bootstrap, after Holm), and it is not robust. Leaving out any one of 9 of the 19
+    countries, or Romania in 2024 alone, makes it not determined, and Romania supplies
+    about half of the estimate (post hoc).
+  - **Drought:** a dry season goes with 3.3% lower yields. This is established (p = 0.007
+    and 0.027 after Holm) and far more robust: under the full rule it fails only without
+    Spain (post hoc).
+  - **Placebo:** it passes by the registered rule: the bootstrap does not reject
+    (p = 0.158). The two-way rejection (p = 0.043) comes from rain after maturity, with a
+    positive sign, mostly in France (post hoc).
 - **Review.** [docs/REVIEW.md](docs/REVIEW.md) is a critical review written after the
   results and before publication. Its checks are in the "After review (post hoc)"
   section of [docs/RESULTS.md](docs/RESULTS.md), beside the registered results and
-  never in place of them.
+  never in place of them. Maize has its own review
+  ([docs/MAIZE_REVIEW.md](docs/MAIZE_REVIEW.md)), with its checks in the same section of
+  [docs/MAIZE.md](docs/MAIZE.md).
 - **Article.** The Medium article ([publication/article.md](publication/article.md))
   and its five figures are generated from the committed results. It carries the E-OBS
   acknowledgement and citation, and the Eurostat and GISCO notices under its subtitle.
@@ -84,7 +91,7 @@ are not effects of a permanent change in climate, to which farmers adapt.
 | Eurostat `apro_cpshr` | Common wheat (`C1110`) and, for section 9, grain maize (`C1500`): area and harvested production at EU standard humidity, NUTS-2, annual | Free reuse with attribution: © European Union, Eurostat |
 | E-OBS v33.0e (ECA&D, Copernicus) | Daily maximum and minimum temperature, precipitation and elevation, 0.25° grid, 1950-2025 | Non-commercial research and education only (below) |
 | GISCO NUTS boundaries | NUTS-2 polygons of the 2006, 2010, 2013, 2016, 2021 and 2024 versions, 1:3 million | Non-commercial use only, with the notice © EuroGeographics for the administrative boundaries (below) |
-| GGCMI Phase 3 crop calendar v1.01 (Amendment A1 only) | Rainfed winter wheat maturity day, 0.5° grid (Jägermeyr et al. 2021, Nature Food 2, 873-885; doi:10.5281/zenodo.5062513) | CC BY 4.0, with attribution |
+| GGCMI Phase 3 crop calendar v1.01 (Amendment A1 and section 9) | Rainfed winter wheat maturity day, and rainfed maize planting and maturity days, 0.5° grid (Jägermeyr et al. 2021, Nature Food 2, 873-885; doi:10.5281/zenodo.5062513) | CC BY 4.0, with attribution; mapped to the E-OBS grid, averaged per region and rounded to whole days |
 
 **E-OBS terms.** "These observational data are strictly for use in non-commercial
 research and non-commercial education projects only." This study and its articles are
@@ -105,9 +112,10 @@ article carries it under its subtitle.
 
 **What is committed.**
 
-- The Eurostat crop snapshots (`snapshots/eurostat-crops-<date>/`), Eurostat's
-  official NUTS change tables (`snapshots/nuts-changes-2026-10-23/`) and the crop
-  calendar (`snapshots/ggcmi-crop-calendar-v1.01/`, 108 kB) are committed
+- The Eurostat crop snapshots (`snapshots/eurostat-crops-<date>/` for wheat,
+  `snapshots/eurostat-maize-2026-10-26/` for maize), Eurostat's official NUTS change
+  tables (`snapshots/nuts-changes-2026-10-23/`) and the crop calendar
+  (`snapshots/ggcmi-crop-calendar-v1.01/`, 240 kB, wheat and maize) are committed
   byte-identical, with SHA-256 hashes in their manifests.
 - The derived tables are committed in `docs/panel/`: the region map, the regional
   weather, each region's centroid latitude and maturity date, and the panel. The panel

@@ -129,19 +129,36 @@ Results are in [docs/RESULTS.md](docs/RESULTS.md). Every rule was fixed before a
     rule flags 39 region-years: Danish, Austrian and Czech pro-rating, Italian values
     carried forward, and Dutch and Swedish sums.
 - [x] Estimates and report ([docs/MAIZE.md](docs/MAIZE.md)), beside wheat.
-  - **Heat (E1):** -4.9% per 10 degree days above 30 °C. Established, but narrowly: Holm
-    p = 0.048 two-way and 0.036 bootstrap.
+  - **Heat (E1):** -4.9% per 10 degree days above 30 °C. Established by the registered
+    rule, at the margin: Holm p = 0.048 two-way and 0.036 bootstrap.
   - **Drought (E2):** -3.3% in a dry season. Established: Holm p = 0.007 and 0.027.
   - **Placebo:** it passes by the registered rule, but the two-way test rejects
     (p = 0.043).
   - **Sensitivity analyses:** no sign reverses in any of the five.
-  - **Out of sample:** 2015 is predicted well; 2012 and 2022 are under-predicted
-    (-16.5% against -6.8%, and -21.7% against -11.8%).
+  - **Out of sample:** the 2015 total is predicted well; 2012 and 2022 are
+    under-predicted (-16.5% against -6.8%, and -21.7% against -11.8%).
 - [x] Article: a separate maize article
       ([publication/maize/article.md](publication/maize/article.md)), with four figures.
-  - **Tests:** every number is generated from the results, 14 claims in words are
+  - **Tests:** every number is generated from the results, its claims in words are
     checked, and the notices and citations are tested, as for wheat.
   - **The wheat article** gets a short paragraph pointing to it.
+- [x] **Critical review** ([docs/MAIZE_REVIEW.md](docs/MAIZE_REVIEW.md)), before
+      publication.
+  - **Drought** holds and is robust: under the full rule it fails only without Spain.
+  - **Heat** holds by the rule, at the margin, and is not robust. It turns on the
+    variance estimator, on Romania (about half of the estimate) and on Romania 2024, and
+    it averages about zero in the irrigated south with about -11% elsewhere.
+  - **The placebo's** two-way rejection is positive rain after maturity, mostly in
+    France, unrelated to the season's weather.
+- [x] **Corrections after the review** (its section A, no new analysis).
+  - **Records:** an "After review (post hoc)" section in [docs/MAIZE.md](docs/MAIZE.md)
+    and a change-log entry in [METHODS.md](METHODS.md).
+  - **Article:** heat re-hedged, with the country deletions and Romania named. The
+    swing, robustness, placebo, comparison and prediction passages are rewritten, and a
+    "Not every country equally" bullet is added. Each new claim is tested.
+  - **Figures:** Figure 4 relabelled and captioned, and each colour has one meaning.
+- [ ] **Optional, registered first:** the review's new analyses (its section B), such as
+      weather over where maize grows and irrigated and rainfed maize apart.
 - [ ] **Author review and publication** of the maize article, under the same
       non-commercial terms.
 
