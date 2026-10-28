@@ -1,0 +1,29 @@
+UCI power plant: training rows exclude a gap and a tail in ambient temperature
+AT quantiles: 45% 18.94 C, 60% 22.79 C, 85% 27.96 C
+training rows 5697; test rows: in-distribution 1005, gap 1433, tail 1433
+PE sd in training 16.85 MW; mean PE in training 459.59, gap 449.74, tail 434.27
+
+MC dropout, 1 hidden layer  (p=0.005, tau=0.05; p=0.01, tau=0.1)
+  in  : RMSE 3.797  epistemic sd 1.135  predictive sd 4.230  90% coverage 0.931 [0.871, 0.961]  width 13.92
+  gap : RMSE 3.780  epistemic sd 0.834  predictive sd 4.133  90% coverage 0.926 [0.863, 0.959]  width 13.60
+  tail: RMSE 4.681  epistemic sd 1.665  predictive sd 4.399  90% coverage 0.884 [0.807, 0.930]  width 14.47
+  epistemic sd ratio gap/in 0.74, tail/in 1.47
+  AUROC of epistemic sd, gap vs in 0.309, tail vs in 0.814
+MC dropout, 2 hidden layers  (p=0.005, tau=0.05; p=0.005, tau=0.1)
+  in  : RMSE 3.602  epistemic sd 1.022  predictive sd 3.765  90% coverage 0.907 [0.881, 0.959]  width 12.39
+  gap : RMSE 3.777  epistemic sd 0.845  predictive sd 3.707  90% coverage 0.893 [0.855, 0.957]  width 12.20
+  tail: RMSE 4.505  epistemic sd 1.133  predictive sd 3.788  90% coverage 0.828 [0.776, 0.911]  width 12.46
+  epistemic sd ratio gap/in 0.83, tail/in 1.11
+  AUROC of epistemic sd, gap vs in 0.372, tail vs in 0.640
+Deep ensemble (5)  ()
+  in  : RMSE 3.706  epistemic sd 0.615  predictive sd 3.995  90% coverage 0.933 [0.928, 0.936]  width 13.14
+  gap : RMSE 3.678  epistemic sd 0.697  predictive sd 4.011  90% coverage 0.934 [0.932, 0.936]  width 13.20
+  tail: RMSE 4.617  epistemic sd 0.856  predictive sd 4.049  90% coverage 0.864 [0.853, 0.872]  width 13.32
+  epistemic sd ratio gap/in 1.13, tail/in 1.39
+  AUROC of epistemic sd, gap vs in 0.576, tail vs in 0.687
+Gaussian process  (noise sd 4.118)
+  in  : RMSE 3.860  epistemic sd 0.333  predictive sd 4.135  90% coverage 0.928 [0.928, 0.928]  width 13.60
+  gap : RMSE 3.739  epistemic sd 0.425  predictive sd 4.143  90% coverage 0.942 [0.942, 0.942]  width 13.63
+  tail: RMSE 4.244  epistemic sd 1.372  predictive sd 4.411  90% coverage 0.928 [0.928, 0.928]  width 14.51
+  epistemic sd ratio gap/in 1.27, tail/in 4.11
+  AUROC of epistemic sd, gap vs in 0.732, tail vs in 0.972
