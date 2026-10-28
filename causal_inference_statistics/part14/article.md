@@ -337,7 +337,7 @@ The experiment is implemented in `causal_inference_statistics/part14/experiment.
 
 Bayarri, M. J. and Berger, J. O. (2004). The Interplay of Bayesian and Frequentist Analysis. *Statistical Science*, 19(1), 58–80. https://doi.org/10.1214/088342304000000116
 
-Bernardo, J. M. and Smith, A. F. M. (1994). *Bayesian Theory*. Wiley.
+Bernardo, J. M. and Smith, A. F. M. (1994). *Bayesian Theory*. Wiley. https://doi.org/10.1002/9780470316870
 
 Dawid, A. P. (2000). Causal Inference without Counterfactuals. *Journal of the American Statistical Association*, 95(450), 407–424. https://doi.org/10.1080/01621459.2000.10474210
 
