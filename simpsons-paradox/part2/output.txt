@@ -36,6 +36,7 @@
   inverse probability weighting, sum_z P(x, z, y = 1) / P(x | z): A 0.8325, B 0.7789
   P(X = A | Z): small 0.2437, large or multiple 0.7668
   sample size multiple for 80% power to reject X _||_ Y | Z at 5%, if the observed table were the truth (noncentrality grows with n): 2.80, about 1960 patients
+  sample size multiple for 80% power to reject X _||_ Y at 5%, if the observed table were the truth (noncentrality grows with n): 3.40, about 2380 patients
   adjusted risk ratio A / B 1.0689 (95% bootstrap interval 0.9863 to 1.1631); E-value 1.340; E-value for the lower limit 1.000
 
 ==============================================================================
@@ -44,7 +45,8 @@
   P(Z = large or multiple | X): A 0.7514, B 0.2286
   total effect of A against B: -0.0457
   controlled direct effect with Z fixed: small +0.0644, large or multiple +0.0425
-  natural direct effect (Z at its distribution under B): +0.0594; natural indirect effect: -0.1051; sum -0.0457
+  natural direct effect (Z at its distribution under B): +0.0594; indirect effect with treatment held at A: -0.1051; sum -0.0457
+  natural indirect effect with treatment held at B (Pearl 2001's definition): -0.0937
 
 ==============================================================================
 4. BERKELEY AS A QUESTION ABOUT DIRECT EFFECTS
@@ -93,6 +95,7 @@
     U-paths 0.5, Z-paths 0.2: unadjusted bias +0.1400; adjusted bias -0.0784
     U-paths 0.5, Z-paths 0.3: unadjusted bias +0.2400; adjusted bias -0.0896
     U-paths 0.5, Z-paths 0.4: unadjusted bias +0.3600; adjusted bias -0.1082
+    the two absolute biases are equal at Z-paths 0.117; above that, adjusting is the smaller error
   Adjusting for a mediator: X -> M -> Y (0.5 and 0.5), X -> Y (0.30):
     total effect 0.5500; coefficient of X adjusted for M 0.3000
 

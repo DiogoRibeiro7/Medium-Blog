@@ -360,13 +360,14 @@ def main() -> None:
     print(f"  inverse probability weighting, sum_z P(x, z, y = 1) / P(x | z): A {ipw[0]:.4f}, B {ipw[1]:.4f}")
     print(f"  P(X = A | Z): small {px_z[0, 0]:.4f}, large or multiple {px_z[0, 1]:.4f}")
     # How large a study would be needed to reject "no effect given stone group" (X independent of Y | Z)?
-    g_obs, df_obs, _ = g_test(COUNTS, 0, 2, 1)
-    crit = stats.chi2.ppf(0.95, df_obs)
-    for k in np.arange(1.0, 20.01, 0.01):
-        if stats.ncx2.sf(crit, df_obs, g_obs * k) >= 0.8:
-            break
-    print(f"  sample size multiple for 80% power to reject X _||_ Y | Z at 5%, if the observed table were the truth"
-          f" (noncentrality grows with n): {k:.2f}, about {k * COUNTS.sum():.0f} patients")
+    for given, lab in ((1, "X _||_ Y | Z"), (None, "X _||_ Y")):
+        g_obs, df_obs, _ = g_test(COUNTS, 0, 2, given)
+        crit = stats.chi2.ppf(0.95, df_obs)
+        for k in np.arange(1.0, 20.01, 0.01):
+            if stats.ncx2.sf(crit, df_obs, g_obs * k) >= 0.8:
+                break
+        print(f"  sample size multiple for 80% power to reject {lab} at 5%, if the observed table were the truth"
+              f" (noncentrality grows with n): {k:.2f}, about {k * COUNTS.sum():.0f} patients")
     # E-value for the adjusted risk ratio (VanderWeele and Ding, 2017), with a parametric bootstrap interval.
     rr = adj[0] / adj[1]
     rng = np.random.default_rng(SEED + 2)
@@ -389,8 +390,10 @@ def main() -> None:
     print(f"  P(Z = large or multiple | X): A {p_z_x[0, 1]:.4f}, B {p_z_x[1, 1]:.4f}")
     print(f"  total effect of A against B: {te:+.4f}")
     print(f"  controlled direct effect with Z fixed: small {cde[0]:+.4f}, large or multiple {cde[1]:+.4f}")
-    print(f"  natural direct effect (Z at its distribution under B): {nde:+.4f}; natural indirect effect: {nie:+.4f};"
-          f" sum {nde + nie:+.4f}")
+    print(f"  natural direct effect (Z at its distribution under B): {nde:+.4f}; indirect effect with treatment held at A:"
+          f" {nie:+.4f}; sum {nde + nie:+.4f}")
+    nie_b = (p_y_xz[1] * (p_z_x[0] - p_z_x[1])).sum()
+    print(f"  natural indirect effect with treatment held at B (Pearl 2001's definition): {nie_b:+.4f}")
 
     header("4. BERKELEY AS A QUESTION ABOUT DIRECT EFFECTS")
     depts, adm, app = load_berkeley()
@@ -452,6 +455,15 @@ def main() -> None:
         b_un = ols_coef(S, 4, [3])[0]
         b_adj = ols_coef(S, 4, [3, 2])[0]
         print(f"    U-paths {a:.1f}, Z-paths {c:.1f}: unadjusted bias {b_un - beta:+.4f}; adjusted bias {b_adj - beta:+.4f}")
+
+    def gap(c):
+        B, nv = unit_variance_sem({(0, 3): a, (0, 2): a, (1, 2): a, (1, 4): a, (2, 3): c, (2, 4): c, (3, 4): beta}, 5)
+        S = sem_covariance(B, nv)
+        return abs(ols_coef(S, 4, [3])[0] - beta) - abs(ols_coef(S, 4, [3, 2])[0] - beta)
+
+    from scipy.optimize import brentq
+    c_star = brentq(gap, 0.01, 0.4)
+    print(f"    the two absolute biases are equal at Z-paths {c_star:.3f}; above that, adjusting is the smaller error")
     print("  Adjusting for a mediator: X -> M -> Y (0.5 and 0.5), X -> Y (0.30):")
     B, nv = unit_variance_sem({(0, 1): 0.5, (1, 2): 0.5, (0, 2): beta}, 3)
     S = sem_covariance(B, nv)
