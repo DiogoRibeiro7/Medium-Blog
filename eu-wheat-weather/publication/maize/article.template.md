@@ -6,7 +6,7 @@
 
 Grain maize is one of the European Union's main cereals, and unlike wheat it grows through the hottest weeks of the summer. A companion study of wheat, with a similar design, found no established effect of heat or drought on wheat yields once its flawed drought test was corrected. This piece asks the same questions of maize. The design was registered before any maize yield was looked at, and every number below is read by code from the result files in the [project repository](https://github.com/DiogoRibeiro7/Medium-Blog/tree/main/eu-wheat-weather).
 
-The short answer: a dry season lowers maize yields, and that result is sturdy. Heat probably does too, but it only just clears the bar the study set itself, and it rests heavily on one country.
+In short: by the study's rules, a dry season lowers maize yields, and that result survives leaving out any single country except Spain. Heat probably lowers them too, but it only just clears the bar the study set itself, and much of its estimate comes from one country.
 
 ## The data
 
@@ -18,7 +18,7 @@ The rules for the sample were fixed in advance: enough maize to measure, a plaus
 
 ## How the comparison works
 
-Yields drift with varieties, farming, prices and policies. To separate the weather from all of that, the model compares regions of the same country in the same year, each against its own usual yield. Once a region's normal climate is taken into account, the weather in a given summer is close to random, so the estimates say what a hot or dry season does to that year's harvest. Two cautions apply: the cause is the weather as a bundle, heat with sun, dry air and its timing; and these are effects of one season, not of a changing climate, to which farmers adapt.
+Yields drift with varieties, farming, prices and policies. To separate the weather from all of that, the model compares regions of the same country in the same year, each against its own usual yield. The estimates can be read as causal under one assumption: once a region's normal climate and what its country shares in a given year are accounted for, the weather in a given summer is as good as random. Under it, they say what a hot or dry season does to that year's harvest, with two cautions taken up at the end: the cause is the weather as a bundle, not heat or rain alone, and these are effects of a single season's weather, not of climate change.
 
 Heat is measured in degree days above 30 °C over the season: every hour above 30 °C counts, weighted by how far above it is. A typical region has {{edd_median}} such degree days in a season, and half of all regional seasons have between {{edd_p25}} and {{edd_p75}}. But most of that spread is between regions. Within a region, the typical change from one season to the next is {{swing_median}} degree days, and only {{swing_share10}} of changes reach ten. So ten more degree days make a hot season for that region.
 
@@ -30,7 +30,7 @@ A result counts as **established** only if it survives a correction for asking t
 
 If the comparison works, the weather in the two months after each region's maturity date should have nothing to do with that year's yield. By the rule fixed in advance, both methods would have to find a link for the check to fail. The second method does not (p = {{e5_p_boot}}), so the check passes.
 
-The first method does find one (p = {{e5_p_twoway}}). What it finds is rain after maturity going with higher yields, {{placebo_rain_pct}} for each 100 mm (p = {{placebo_rain_p}}), mostly in France: without France, its p rises to {{placebo_without_p}}. That rain is unrelated to the season's own rain, and adding it to the model leaves the heat estimate at {{e1_with_placebo_pct}}. A late harvest would not explain it: maize left standing through a wet autumn loses yield, which predicts the opposite sign. A maturity date set too early for late regions, or chance, fits better.
+The first method does find one (p = {{e5_p_twoway}}). What it finds is rain after maturity going with higher yields, {{placebo_rain_pct}} for each 100 mm (p = {{placebo_rain_p}}), mostly in France: without France, its p rises to {{placebo_without_p}}. That rain is unrelated to the season's own rain, and adding it to the model leaves the heat estimate at {{e1_with_placebo_pct}}. A late harvest would not explain it: maize left standing through a wet autumn loses yield, which predicts the opposite sign.<!-- TODO[CITATION]: verify or add source for yield losses of grain maize left standing through wet weather. --> Two explanations remain, and these data cannot tell them apart: a calendar maturity date that is too early for late regions, or chance.
 
 ## Heat: probably harmful, only just past the bar
 
@@ -41,7 +41,7 @@ Ten more degree days above 30 °C go with a change in yield of {{e1_pct}} (inter
 - **Romania supplies {{e1_share_ro}} of the estimate**, and one small region, Bucharest and its surroundings, {{e1_share_ro32}}.
 - **The pooled number describes neither group.** A model that lets heat differ in Spain, Portugal, Italy and Greece, where much maize is irrigated, gives {{e1_south_pct}} there and {{e1_rest_pct}} elsewhere.
 
-So heat probably lowers maize yields, but this study only just shows it.
+Heat probably lowers maize yields, but the evidence here is marginal.
 
 An average season has {{hours_2730}} hours at 27–30 °C, {{hours_3033}} at 30–33 °C, {{hours_3336}} at 33–36 °C and {{hours_ge36}} at 36 °C and above. Splitting temperature into these three-degree bands hints that the harm begins below 30 °C, though the pattern is irregular. Under both methods, only time at 27–30 °C and at 33–36 °C differs from zero: {{h2730_pct}} and {{h3336_pct}} per hour, against an hour at 15–18 °C. The band between them, 30–33 °C, does not. One cool band, 12–15 °C, differs under the first method only. Time at 36 °C and above has the largest estimate, {{ge36_pct}} per hour, but it is rare, Spain supplies {{ge36_share_es}} of its variation, its interval is wide ({{ge36_low}} to {{ge36_high}}) and the second method puts it right at the line (p = {{ge36_boot_p}}). The bands are a descriptive check, with no correction for looking at many at once.
 
@@ -81,7 +81,7 @@ A version of the model fitted without one year predicted that year from the weat
 - **2015:** {{e4_2015_obs}} observed, {{e4_2015_pred}} predicted.
 - **2022:** {{e4_2022_obs}} observed, {{e4_2022_pred}} predicted.
 
-The 2015 total is predicted well, but in 2012 and 2022 the losses were far larger than the season's weather predicts. Romania and Hungary account for {{e4_2012_top2}} of the shortfall in 2012 and {{e4_2022_top2}} in 2022: real harvest failures there, perhaps from drought that a season's total rainfall does not capture. Region by region, the correlations between predicted and observed departures from normal are {{e4_2012_corr}}, {{e4_2015_corr}} and {{e4_2022_corr}}; in 2022 the predictions explain none of the differences between regions.
+The 2015 total is predicted well, but in 2012 and 2022 the losses were far larger than the season's weather predicts. Romania and Hungary account for {{e4_2012_top2}} of the shortfall in 2012 and {{e4_2022_top2}} in 2022. The season's weather, as the model measures it, does not account for the harvest failures there. Drought concentrated in a few weeks, which a season total smooths over, is one possibility; these data do not identify the cause. Region by region, the correlations between predicted and observed departures from normal are {{e4_2012_corr}}, {{e4_2015_corr}} and {{e4_2022_corr}}; in 2022 the predictions explain none of the differences between regions.
 
 ![Predicted and observed yield anomalies by region](figures/fig3_out_of_sample.png)
 
@@ -89,8 +89,9 @@ The 2015 total is predicted well, but in 2012 and 2022 the losses were far large
 
 ## What this does not say
 
-- **Not climate change.** These are effects of one season's weather on that season's harvest.
-- **Not irrigated and rainfed maize apart.** Much of southern Europe's maize is irrigated; the estimates average over both, and one rainfed crop calendar is used everywhere.
+- **Not climate change.** These are effects of one season's weather on that season's harvest. Farmers adapt to a changing climate in ways they cannot adapt to a single bad year.
+- **Not the mechanism.** A hot spell comes with sun, dry air and its own timing, and the model does not separate them.
+- **Not irrigated and rainfed maize apart.** Much of southern Europe's maize is irrigated;<!-- TODO[CITATION]: verify or add source for the share of irrigated grain maize in Spain, Portugal, Italy and Greece. --> the estimates average over both, and one rainfed crop calendar is used everywhere.
 - **Not every country equally.** Spain supplies {{edd_share_es}} of the variation in heat that the comparison uses, Italy {{edd_share_it}} and Romania {{edd_share_ro}}. Spain, Portugal, Italy and Greece together supply {{south_var_share}} of it but grow {{south_area_share}} of the maize.
 - **Not nationwide shocks.** The comparison ignores whatever hits a whole country at once; only the prediction test counts it.
 - **Probably too small.** Only {{heat_variance_left}} of the variation in heat is left once regions of a country are compared, and errors in the weather data pull the estimates toward zero.

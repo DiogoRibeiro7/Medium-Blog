@@ -5,7 +5,7 @@
 
 *Wheat statistics © European Union, Eurostat. Weather: E-OBS v33.0e (ECA&D and the Copernicus Climate Change Service), for non-commercial research and education. Regional boundaries © EuroGeographics for the administrative boundaries, from GISCO, for non-commercial use.*
 
-Wheat is the most widely grown crop in the European Union, and its harvest depends on a few months of weather. In 2003, 2018 and 2022, heat and drought hit much of the continent in spring and summer, and each time the question came back: how much does a bad season cost, and are farms getting better at riding it out?
+Wheat is the most widely grown crop in the European Union, and its harvest depends on a few months of weather.<!-- TODO[CITATION]: verify or add source for "the most widely grown crop in the European Union" (Eurostat crop areas). --> In 2003, 2018 and 2022, heat and drought hit much of the continent in spring and summer.<!-- TODO[CITATION]: verify or add source for the heat and drought of these three years. --> Each of those years raised two questions: how much yield does a hot or dry season cost, and has that cost fallen as farms adapt?
 
 This piece reports what a reproducible study of the EU's regions found, where it falls short, and what a second, registered analysis found when it fixed the main problems. The full analysis, with every table, test and line of code, is in the [project repository](https://github.com/DiogoRibeiro7/Medium-Blog/tree/main/eu-wheat-weather), along with a critical review written before publication. Every number below is read by code from the same result files, so the article and the analysis cannot drift apart.
 
@@ -19,9 +19,9 @@ I fixed the rules for the sample before looking at any result: enough wheat to m
 
 Yields drift upward with better varieties and farming, and they move with prices and policies that differ from country to country. To separate the weather from all of that, the model compares regions of the same country in the same year, each against its own usual yield. If one region has a dry spring and another region of the same country does not, the difference in how their harvests depart from normal is what the model attributes to the weather.
 
-This is one of the rare economic questions where the answer can be read as a cause. Once a region's normal climate is taken into account, the weather in a given spring is close to random: no farmer and no policy chooses it. So the estimates say what a hot or dry season does to that year's harvest. Two cautions apply. The cause is the weather as a bundle: a hot spell comes with sun, dry air and its own timing, and the model does not separate them. And the estimates do not say what climate change will do, because farmers adapt to a climate that shifts over decades in ways they cannot adapt to a single bad year.
+The estimates can be read as causal under one assumption: once a region's normal climate and what its country shares in a given year are accounted for, the weather in a given spring is as good as random. That is plausible here, because no farmer and no policy chooses the weather. Under it, the estimates say what a hot or dry season does to that year's harvest, with two cautions taken up at the end: the cause is the weather as a bundle, not heat or rain alone, and these are effects of a single season's weather, not of climate change.
 
-Heat is measured in degree days above 30 °C between 1 March and 31 July: every hour above 30 °C counts, weighted by how far above 30 °C it is. A typical region has 2.5 such degree days in a season, and half of all seasons have between 0.5 and 7.4, so the "ten more degree days" used below is a large step. Rainfall is the total over the same months.
+Heat is measured in degree days above 30 °C between 1 March and 31 July: every hour above 30 °C counts, weighted by how far above 30 °C it is. A typical region has 2.5 such degree days in a season, and half of all seasons have between 0.5 and 7.4, so the "ten more degree days" used below is a large step, wider than that whole middle range. Rainfall is the total over the same months.
 
 Everything, from the measures and models to the tests and what would count as a result, was written down and published before I fitted any model. Two rules for matching old region codes to today's regions were revised after that, still before any estimate, and the plan's change log records both. A result counts only if it survives a correction for asking three questions at once, and holds under two different ways of measuring the uncertainty. After a critical review of the results, I registered a second analysis in the same way, before computing any of it; its results stand beside the first ones, not in their place.
 
@@ -31,7 +31,7 @@ If the comparison works, the weather in August and September, after most of the 
 
 ## Drought: rain matters, but the cost of a dry spring is not established
 
-Rainfall as a whole matters: the test of the rainfall terms is significant under both methods (corrected p = 0.006 and 0.002). Yields are highest at around 350 mm between March and July, but that peak is uncertain: its interval runs from 270 to 420 mm, and it includes the 280 mm of a typical season.
+Rainfall as a whole matters: the test of the rainfall terms is statistically significant under both methods (corrected p = 0.006 and 0.002). Yields are highest at around 350 mm between March and July, but that peak is uncertain: its interval runs from 270 to 420 mm, and it includes the 280 mm of a typical season.
 
 ![Rainfall over the season and wheat yields](figures/fig2_precipitation.png)
 
@@ -45,7 +45,7 @@ Measuring drought by the water balance instead, rain minus what evaporation woul
 
 Ten more degree days above 30 °C go with a change in yield of −2.6% (interval −6.0% to +0.9%). After the correction for three questions, that is not established (p = 0.26 and 0.52). The comparison also leans on a few countries: of the variation in heat that it uses, Spain supplies 40%, Italy 22% and Romania 15%. Without Spain the estimate is −1.6% (interval −6.7% to +3.7%).
 
-Splitting temperature into three-degree bands gives a sharper picture, which does not hold up. Time at 36 °C and above is the only band whose interval lies wholly below zero: −0.15% per hour (interval −0.23% to −0.07%) compared with an hour at 15–18 °C, while the average season has 3.8 hours that hot. But the bands were a descriptive check, with no correction for looking at many bands at once, and four things undercut the reading that only the hottest time does harm:
+Splitting temperature into three-degree bands seems to locate the damage more precisely, but the result does not hold up. Time at 36 °C and above is the only band whose interval lies wholly below zero: −0.15% per hour (interval −0.23% to −0.07%) compared with an hour at 15–18 °C, while the average season has 3.8 hours that hot. But the bands were a descriptive check, with no correction for looking at many bands at once, and four things undercut the reading that only the hottest time does harm:
 
 - **One country.** Spain supplies 65% of the variation in that band.
 - **One way of measuring uncertainty.** Its interval is narrow only under the two-way clustering the study uses; clustering by country, by year or by country and year alone gives a larger error every time.
@@ -70,7 +70,7 @@ I fitted a version of the model without one year and asked it to predict that ye
 
 Region by region the fit is loose: the correlations between predicted and observed departures from normal are 0.12, 0.63 and 0.33 for the three years.
 
-The model missed 2003 badly, and not only because of the heat. France, the largest single part of the miss, was hot that year: averaged over its wheat regions, 5.2 degree days above 30 °C, against 3.5 in its other years. But Romania and Hungary together account for more of the miss than France, and Romania was cooler than usual (8.1 against 11.5) and Hungary only a little hotter (11.2 against 10.1). In Romania's three worst-hit regions, yields fell 65% to 71% below normal while the model predicted almost no change, and in two of them the area harvested also fell by about a third that year and recovered the next. That points to damage before March, such as a hard winter, which a March-to-July window cannot see; these data cannot say what it was.
+The model missed 2003 badly, and not only because of the heat. France, the largest single part of the miss, was hot that year: averaged over its wheat regions, 5.2 degree days above 30 °C, against 3.5 in its other years. But Romania and Hungary together account for more of the miss than France, and Romania was cooler than usual (8.1 against 11.5) and Hungary only a little hotter (11.2 against 10.1). In Romania's three worst-hit regions, yields fell 65% to 71% below normal while the model predicted almost no change, and in two of them the area harvested also fell by about a third that year and recovered the next. That is consistent with damage before March, such as a hard winter, which a March-to-July window cannot see. These data cannot say what the damage was.
 
 ![Predicted and observed yield anomalies by region](figures/fig3_out_of_sample.png)
 
@@ -108,13 +108,13 @@ One combination comes close. Dropping the suspect yields on its own gives heat a
 ## What this does not say
 
 - **Not climate change.** These are effects of one season's weather on that season's harvest. Farmers adapt to a changing climate in ways they cannot adapt to a single bad year.
-- **Not the mechanism.** Heat, sun, dry air and their timing come together, and the model does not separate them.
+- **Not the mechanism.** A hot spell comes with sun, dry air and its own timing, and the model does not separate them.
 - **Not nationwide shocks.** By design, the main comparison ignores whatever hits a whole country at once, and a continental heatwave does exactly that. The heat and drought effects above leave out the part of such a year that every region of a country shares; only the prediction test counts it.
 - **Probably too small.** Once the comparison removes what the regions of a country share, little variation in weather is left, and errors in the weather data are a larger part of what remains. That pulls the estimates toward zero.
 - **Not every country equally.** Spain, Italy and Romania supply most of the variation in heat, so the estimates say most about them.
 - **Not the fields themselves.** The weather is averaged over whole regions, including forests and mountains, and E-OBS is interpolated from stations, which are sparse in places and smooth out the hottest days: 36 °C on the grid is not 36 °C in a field.
 - **Not perfect yields.** The first analysis keeps regional yield series that look pro-rated from national figures or carried forward from one year to the next. The second analysis removes them by a rule, but it misses at least one case the review found: two Dutch regions whose production figures look swapped in one year.
-- **One crop calendar.** The second analysis ends every region's season at the maturity date of winter wheat, though in Finland and Sweden much of the wheat is sown in spring.
+- **One crop calendar.** The second analysis ends every region's season at the maturity date of winter wheat, though in Finland and Sweden much of the wheat is sown in spring.<!-- TODO[CITATION]: verify or add source for the share of spring-sown wheat in Finland and Sweden. -->
 
 ## And maize?
 

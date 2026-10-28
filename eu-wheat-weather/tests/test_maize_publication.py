@@ -161,6 +161,8 @@ def test_words_in_the_article_match_the_results() -> None:
         "Under the first method it stays clear whichever single country is left out":
             all(x["E2"]["p_twoway_holm"] < 0.05 for x in loo),
         "Under the full rule it fails in one case: without Spain": lost["E2"] == ["ES"],
+        "that result survives leaving out any single country except Spain":
+            lost["E2"] == ["ES"],
         "the second method no longer confirms it once the correction for two questions is "
         "applied": without_es["p_bootstrap"] < 0.05 <= without_es["p_bootstrap_holm"],
         # beside wheat
