@@ -98,8 +98,14 @@ def build(pbf: Path, out: Path, work: Path) -> dict[str, Any]:
         members = _pharmacies_of(pair, municipalities, pharmacies)
         city = [p for name, p in members if name == pair.city]
         depot_at = (float(np.mean([p.lon for p in city])), float(np.mean([p.lat for p in city])))
+        # Section 7's depot variant, at the mean of all the pair's pharmacies: the last point.
+        variant_at = (float(np.mean([p.lon for _, p in members])),
+                      float(np.mean([p.lat for _, p in members])))
+        variant_in = next((name for name in (pair.city, pair.other)
+                           if municipalities[name].contains(Point(*variant_at))), "")
         rows = [("depot", pair.city, "", 0, *depot_at)] + [
-            ("pharmacy", name, p.osm_type, p.osm_id, p.lon, p.lat) for name, p in members]
+            ("pharmacy", name, p.osm_type, p.osm_id, p.lon, p.lat) for name, p in members] + [
+            ("depot_variant", variant_in, "", 0, *variant_at)]
         nodes = []
         for index, (role, name, osm_type, osm_id, lon, lat) in enumerate(rows):
             node, snap_m = net.snap(lon, lat)
@@ -111,14 +117,14 @@ def build(pbf: Path, out: Path, work: Path) -> dict[str, Any]:
         road, straight, pred = matrices(net, nodes)
         for name, matrix in (("road", road), ("straight", straight)):
             np.savetxt(out / f"{pair.key}_{name}.csv", matrix, fmt="%d", delimiter=",")
-        bank = [name for _, name, *_ in rows]
+        bank = [name for _, name, *_ in rows[:-1]]        # the depot variant left out
         node_bank = np.full(net.ids.size, "", dtype=object)
         for name in (pair.city, pair.other):
             node_bank[contains_xy(municipalities[name], net.lon, net.lat)] = name
         manifest["pairs"][pair.key] = {
             "city": pair.city, "other": pair.other, "order_probability": pair.order_probability,
             "drivable_ways": ways, **counts,
-            "crossings": crossings(net, pred, nodes, bank, list(node_bank))}
+            "crossings": crossings(net, pred, nodes[:-1], bank, list(node_bank))}
         sizes[pair.key] = len(members)
     with (out / "points.csv").open("w", encoding="utf-8", newline="") as stream:
         writer = csv.DictWriter(stream, fieldnames=POINT_FIELDS, lineterminator="\n")

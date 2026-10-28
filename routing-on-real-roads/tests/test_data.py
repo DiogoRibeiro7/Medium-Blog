@@ -31,7 +31,8 @@ def test_matrices_and_points_agree() -> None:
         rows = [p for p in d.points if p["pair"] == pair.key]
         assert [int(p["index"]) for p in rows] == list(range(len(rows)))
         assert rows[0]["role"] == "depot" and rows[0]["municipality"] == pair.city
-        towns = [p["municipality"] for p in rows[1:]]
+        assert rows[-1]["role"] == "depot_variant"            # section 7's depot, last
+        towns = [p["municipality"] for p in rows if p["role"] == "pharmacy"]
         assert towns == sorted(towns, key=lambda t: t != pair.city)   # city block first
         road, straight = d.road[pair.key], d.straight[pair.key]
         assert road.shape == straight.shape == (len(rows), len(rows))
@@ -42,7 +43,8 @@ def test_matrices_and_points_agree() -> None:
 
 def test_days_regenerate_from_their_seed() -> None:
     d = load(DERIVED)
-    sizes = {p.key: sum(1 for r in d.points if r["pair"] == p.key) - 1 for p in PAIRS}
+    sizes = {p.key: sum(1 for r in d.points if r["pair"] == p.key and r["role"] == "pharmacy")
+             for p in PAIRS}
     expected = [{k: str(v) for k, v in row.items()} for row in draw_days(sizes)]
     assert d.days == expected
     assert {int(r["day"]) for r in d.days} <= set(range(1, DAYS + 1))

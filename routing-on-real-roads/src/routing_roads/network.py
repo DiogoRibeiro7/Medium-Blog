@@ -99,8 +99,10 @@ def path(pred: NDArray[np.int32], source_row: int, target: int) -> list[int]:
 
 
 def _name(data: dict[str, Any]) -> str:
+    """An edge's name. Simplification merges the names of the ways it joins into a list
+    whose order follows Python's per-process string hashing, so the list is sorted."""
     value = data.get("name", data.get("ref", "(unnamed)"))
-    return " / ".join(map(str, value)) if isinstance(value, list) else str(value)
+    return " / ".join(sorted(map(str, value))) if isinstance(value, list) else str(value)
 
 
 def crossing_names(net: Network, nodes: Sequence[int], node_bank: Sequence[str]) -> list[str]:
