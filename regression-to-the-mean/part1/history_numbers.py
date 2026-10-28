@@ -11,7 +11,10 @@ digests and cached in data/:
   - HistData::PearsonLee: Pearson and Lee's (1903) frequency tables of parents' and children's heights;
   - Lahman::Teams: season records of major league teams, for a replication of Secrist's (1933) design.
 
+Galton's sweet-pea table is seven rows long and is written into the script with its source.
+
 Sections
+0. Galton's sweet peas: parent seed diameter against the mean diameter of the offspring.
 1. Galton's mid-parents and children: both regressions, the correlation, the spread of each generation.
 2. Galton's family records: fathers, mothers, sons and daughters, with standard errors that respect families.
 3. Pearson and Lee: fathers and sons, the two regressions and the two standard deviations.
@@ -112,7 +115,61 @@ def cluster_se(x, y, groups):
     return beta[1], math.sqrt(cov[1, 1])
 
 
+# Galton (1886), Appendix I, Table VI, p. 260 (the same table is Table 2 of Natural Inheritance, 1889, p. 226):
+# mean diameter of the produce, in hundredths of an inch, for parent seeds of each diameter; each row of the
+# original is scaled to 100 seeds. "Observed" and "smoothed" are Galton's two columns. Pearson (1930, Life,
+# Letters and Labours of Francis Galton, IIIA, p. 7) recomputed the observed means from Galton's full table.
+PEAS_PARENT = np.array([21, 20, 19, 18, 17, 16, 15], float)
+PEAS_OBSERVED = np.array([17.5, 17.3, 16.0, 16.3, 15.6, 16.0, 15.3])
+PEAS_SMOOTHED = np.array([17.3, 17.0, 16.6, 16.3, 16.0, 15.7, 15.4])
+PEAS_PEARSON = np.array([17.26, 17.07, 16.37, 16.40, 16.13, 16.17, 15.98])
+
+
+def ols_cluster(X, y, groups=None):
+    """Least squares with conventional standard errors and, if groups are given, cluster-robust ones."""
+    X, y = np.asarray(X, float), np.asarray(y, float)
+    beta, *_ = np.linalg.lstsq(X, y, rcond=None)
+    resid = y - X @ beta
+    n, k = X.shape
+    bread = np.linalg.inv(X.T @ X)
+    se = np.sqrt(np.diag(bread * (resid @ resid) / (n - k)))
+    if groups is None:
+        return beta, se, None, resid
+    labels = np.asarray(groups)
+    meat = np.zeros((k, k))
+    uniq = np.unique(labels)
+    for g in uniq:
+        sg = X[labels == g].T @ resid[labels == g]
+        meat += np.outer(sg, sg)
+    G = len(uniq)
+    cov = bread @ meat @ bread * G / (G - 1) * (n - 1) / (n - k)
+    return beta, se, np.sqrt(np.diag(cov)), resid
+
+
+def icc_oneway(values, groups):
+    """Intraclass correlation from a one-way analysis of variance with unequal group sizes."""
+    labels = np.asarray(groups)
+    uniq = np.unique(labels)
+    gs = [values[labels == g] for g in uniq]
+    N, G = len(values), len(gs)
+    ni = np.array([len(v) for v in gs])
+    grand = values.mean()
+    msb = sum(len(v) * (v.mean() - grand) ** 2 for v in gs) / (G - 1)
+    msw = sum(((v - v.mean()) ** 2).sum() for v in gs) / (N - G)
+    n0 = (N - (ni ** 2).sum() / N) / (G - 1)
+    return (msb - msw) / (msb + (n0 - 1) * msw), n0
+
+
 def main() -> None:
+    header("0. GALTON'S SWEET PEAS (Galton 1886, Table VI; Pearson 1930)")
+    for label, ys in (("Galton's observed means", PEAS_OBSERVED), ("Galton's smoothed means", PEAS_SMOOTHED),
+                      ("Pearson's recomputed means", PEAS_PEARSON)):
+        b, a, se = ols_slope(PEAS_PARENT, ys)
+        print(f"  {label:<27} slope on parent diameter {b:.4f} (SE {se:.4f}); intercept {a:.3f};"
+              f" fixed point (filial = parent) {a / (1 - b):.2f} hundredths of an inch")
+    print(f"  parents 21 and 15: produce {PEAS_OBSERVED[0]:.1f} and {PEAS_OBSERVED[-1]:.1f}; a 6-unit difference in"
+          f" parents becomes {PEAS_OBSERVED[0] - PEAS_OBSERVED[-1]:.1f} in the observed means ({(PEAS_OBSERVED[0] - PEAS_OBSERVED[-1]) / 6:.3f} per unit)")
+
     header("1. GALTON (1886): 928 ADULT CHILDREN AND THEIR MID-PARENTS (HistData::Galton)")
     g = read("Galton.csv")
     parent = np.array([float(r["parent"]) for r in g])
@@ -141,6 +198,10 @@ def main() -> None:
     bottom = parent <= 66.5
     print(f"  mid-parents of 70.5 in or more: {top.sum()} children, parents {parent[top].mean() - parent.mean():+.2f} in above"
           f" the mean, children {child[top].mean() - child.mean():+.2f} ({(child[top].mean() - child.mean()) / (parent[top].mean() - parent.mean()):.3f} of it)")
+    xc = parent - parent.mean()
+    beta, se, _, _ = ols_cluster(np.column_stack([np.ones(n), xc, xc ** 2]), child)
+    print(f"  quadratic term in the regression of child on mid-parent: {beta[2]:+.4f} per square inch (SE {se[2]:.4f}),"
+          f" t = {beta[2] / se[2]:.2f}, p = {2 * stats.t.sf(abs(beta[2] / se[2]), n - 3):.3f}")
     print(f"  mid-parents of 66.5 in or less: {bottom.sum()} children, parents {parent[bottom].mean() - parent.mean():+.2f} in,"
           f" children {child[bottom].mean() - child.mean():+.2f} ({(child[bottom].mean() - child.mean()) / (parent[bottom].mean() - parent.mean()):.3f} of it)")
 
@@ -166,6 +227,19 @@ def main() -> None:
             rr = np.corrcoef(x[m], ch[m])[0, 1]
             print(f"    {label:<9} on {xname:<10} slope {b:.4f} (SE {se_naive:.4f} ignoring families, {se_cl:.4f} by family);"
                   f" correlation {rr:.4f}")
+    for label, m in (("sons", sex == "male"), ("daughters", sex == "female")):
+        xc = mid[m] - mid[m].mean()
+        beta, se, se_cl, _ = ols_cluster(np.column_stack([np.ones(m.sum()), xc, xc ** 2]), ch[m], famid[m])
+        print(f"    {label:<9} quadratic term on mid-parent {beta[2]:+.4f} (SE {se[2]:.4f}, {se_cl[2]:.4f} by family);"
+              f" t = {beta[2] / se[2]:.2f} ignoring families, {beta[2] / se_cl[2]:.2f} by family")
+    X = np.column_stack([np.ones(len(ch)), father, mother, (sex == "male").astype(float)])
+    beta, se, se_cl, resid = ols_cluster(X, ch, famid)
+    icc, n0 = icc_oneway(resid, famid)
+    sizes = np.array([np.sum(famid == f) for f in np.unique(famid)])
+    print(f"  child on father, mother and sex: father {beta[1]:.4f} (SE {se_cl[1]:.4f} by family), mother {beta[2]:.4f}"
+          f" ({se_cl[2]:.4f}), son minus daughter {beta[3]:.3f} in; residual SD {resid.std(ddof=4):.3f} in")
+    print(f"  intraclass correlation of those residuals within families {icc:.4f} (one-way ANOVA, average family size"
+          f" {n0:.2f}); families with two or more children {np.sum(sizes >= 2)}")
     fu = np.unique(famid, return_index=True)[1]
     print(f"  correlation between fathers and mothers (one record per family): {np.corrcoef(father[fu], mother[fu])[0, 1]:+.4f}")
     print(f"  SD of fathers {father[fu].std(ddof=1):.3f}; of 1.08 x mothers {(1.08 * mother[fu]).std(ddof=1):.3f};"
@@ -197,6 +271,16 @@ def main() -> None:
         dev_f = np.average(x[m], weights=w[m]) - mx
         print(f"  sons of {cut:.0f} in or more ({w[m].sum():,.1f} pairs): {dev_s:+.2f} in above the sons' mean; their fathers"
               f" {dev_f:+.2f} in above the fathers' mean ({dev_f / dev_s:.3f} of it)")
+    for cf, cs in ((70.5, 71.5), (71.5, 72.5)):
+        tf, ts = x >= cf, y >= cs
+        print(f"  'tall' = fathers in the {cf:.1f} class or above ({w[tf].sum() / w.sum():.3f} of fathers), sons in the {cs:.1f}"
+              f" class or above ({w[ts].sum() / w.sum():.3f} of sons): P(tall son | tall father) {w[tf & ts].sum() / w[tf].sum():.3f};"
+              f" P(tall father | tall son) {w[tf & ts].sum() / w[ts].sum():.3f}; tall sons whose fathers were not tall"
+              f" {w[~tf & ts].sum():.2f} of {w[ts].sum():.1f} ({w[~tf & ts].sum() / w[ts].sum():.3f})")
+    for q in (0.2, 0.1, 0.05):
+        z = stats.norm.ppf(1 - q)
+        both = stats.multivariate_normal(mean=[0, 0], cov=[[1, rr], [rr, 1]]).cdf([-z, -z])
+        print(f"  bivariate normal with correlation {rr:.3f}: P(son in top {q:.0%} | father in top {q:.0%}) {both / q:.3f}")
     # an F test of equal variances, treating the weighted pairs as independent and using the correlation
     nn = w.sum()
     t = (sy ** 2 - sx ** 2) * math.sqrt(nn - 2) / math.sqrt(4 * (1 - rr ** 2) * sx ** 2 * sy ** 2)
@@ -225,6 +309,9 @@ def main() -> None:
         true_sd = [math.sqrt(max(sd_by_year[y_] ** 2 - 0.25 / np.mean(games[y_]), 0)) for y_ in years if lo <= y_ <= hi]
         print(f"    SD of winning percentage across teams, {lo}-{hi}: mean {np.mean(vals):.4f}, range {min(vals):.4f} to {max(vals):.4f};"
               f" coin-toss SD for the games played {np.mean(noise):.4f}; SD left after removing it {np.mean(true_sd):.4f}")
+    share = [1 - 0.25 / np.mean(games[y_]) / sd_by_year[y_] ** 2 for y_ in years if 1961 <= y_ <= 2025 and y_ != 2020]
+    print(f"    1961-2025 excluding 2020: share of the variance of winning percentage not explained by coin-toss luck,"
+          f" mean {np.mean(share):.3f} (range {min(share):.3f} to {max(share):.3f})")
     print(f"    2020 (a {np.mean(games[2020]):.0f}-game season): SD {sd_by_year[2020]:.4f}, coin-toss SD {math.sqrt(0.25 / np.mean(games[2020])):.4f}")
     k = 5
     bases = [y_ for y_ in range(1961, 2026 - k) if y_ - k >= 1901]
@@ -250,8 +337,34 @@ def main() -> None:
           f" after {k}; bottom quarter {bot1 / bot0:.3f} and {np.mean(groups[0][k]) / bot0:.3f}")
     print(f"    one season earlier the top quarter had {np.mean(groups[3][-1]) / top0:.3f} of its base-season deviation,"
           f" the bottom quarter {np.mean(groups[0][-1]) / bot0:.3f}")
+    stay, from_other, n_top, n_top_next = 0, 0, 0, 0
+    sd_top0, sd_top1 = [], []
+    for y0 in range(1961, 2025):
+        fr = sorted(f for (f, yy) in wp if yy == y0 and (f, y0 + 1) in wp)
+        v0 = np.array([wp[(f, y0)] for f in fr])
+        v1 = np.array([wp[(f, y0 + 1)] for f in fr])
+        top0 = v0 >= np.quantile(v0, 0.75)
+        top1 = v1 >= np.quantile(v1, 0.75)
+        stay += np.sum(top0 & top1)
+        n_top += top0.sum()
+        from_other += np.sum(~top0 & top1)
+        n_top_next += top1.sum()
+        sd_top0.append(v0[top0].std())
+        sd_top1.append(v1[top0].std())
+    print(f"  top quarter in one season (1961-2024, {n_top:,} team-seasons): still in the top quarter the next season {stay / n_top:.3f};"
+          f" of the next season's top quarter ({n_top_next:,}), from outside the top quarter {from_other / n_top_next:.3f}")
+    print(f"  spread of winning percentage within the top quarter: {np.mean(sd_top0):.4f} in the season it was formed,"
+          f" {np.mean(sd_top1):.4f} one season later (averages over base seasons)")
     pairs = [(wp[(f, y_)], wp[(f, y_ + 1)]) for (f, y_) in wp if (f, y_ + 1) in wp and y_ >= 1961]
     a = np.array(pairs)
+    rho = np.corrcoef(a[:, 0], a[:, 1])[0, 1]
+    m0 = np.array([np.mean(groups[q][0]) for q in range(4)])
+    m1 = np.array([np.mean(groups[q][1]) for q in range(4)])
+    nq = np.array([len(groups[q][0]) for q in range(4)], float)
+    v0 = np.average((m0 - np.average(m0, weights=nq)) ** 2, weights=nq)
+    v1 = np.average((m1 - np.average(m1, weights=nq)) ** 2, weights=nq)
+    print(f"  Hotelling's check: variance of the four quarter means one season later / in the base season {v1 / v0:.3f};"
+          f" square of the season-to-season correlation {rho ** 2:.3f}")
     print(f"  season-to-season correlation of a team's winning percentage, 1961 on: {np.corrcoef(a[:, 0], a[:, 1])[0, 1]:.4f}"
           f" ({len(a):,} pairs); SD in the first season {a[:, 0].std():.4f}, in the second {a[:, 1].std():.4f}")
 
