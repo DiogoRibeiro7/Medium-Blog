@@ -25,6 +25,7 @@
     males (dirty cards)    treated alive 8/13 = 0.615; untreated alive 4/7 = 0.571; cross-product ratio 1.200
     females (clean cards)  treated alive 12/27 = 0.444; untreated alive 2/5 = 0.400; cross-product ratio 1.200
     combined               treated alive 20/40 = 0.500; untreated alive 6/12 = 0.500; cross-product ratio 1.000
+    cards: dirty among red 12/26, among black 8/26; dirty among court 7/12, among plain 13/40
     if the 52 cells were counts: Fisher p for males 1.000, females 1.000
 
 ==============================================================================
@@ -63,6 +64,8 @@
       F: men 0.139, women 0.186; admitted overall 0.064
     correlation across departments between women's excess share and admission rate: -0.763
     departments where women's admission rate is higher: 4 of 6
+    department A's share of the weight: standardised difference 0.206; Mantel-Haenszel odds ratio 0.185; CMH test 0.115
+    difference in rates (men minus women) averaged with the CMH test weights: -0.0184
     without department A: Mantel-Haenszel odds ratio 1.031 [0.870, 1.222], p = 0.724; Breslow-Day p = 0.634
     logistic regression, sex only: woman coefficient -0.6104 (SE 0.0639); odds ratio men/women 1.841
     logistic regression with department effects: woman coefficient +0.0999 (SE 0.0808); odds ratio men/women 0.905 [0.772, 1.060]
@@ -81,6 +84,16 @@
     posterior P(aggregate favours PCNL) = 0.9371; P(standardised difference favours open) = 0.9378; P(every stratum favours open) = 0.7328; P(full reversal) = 0.6704
     share of patients with stones >= 2 cm or multiple: open 0.751, PCNL 0.229
     PCNL share of large or multiple stones at which the two overall rates would be equal: 0.484
+    open surgery for small stones by procedure: nephrolithotomy/pyelolithotomy 12/13, pyelolithotomy 26/31, ureterolithotomy 43/43
+  the same comparison without the 43 ureterolithotomies (ureteric stones)
+    stones < 2 cm          open 38/44 = 0.864; PCNL 234/270 = 0.867; difference -0.003; odds ratio 0.974 [0.372, 3.022]; Fisher p = 1
+    stones >= 2 cm or multiple open 192/263 = 0.730; PCNL 55/80 = 0.688; difference +0.043; odds ratio 1.228 [0.680, 2.182]; Fisher p = 0.479
+    all strata combined    open 230/307 = 0.749; PCNL 289/350 = 0.826; difference -0.077; odds ratio 0.631 [0.424, 0.936]; Fisher p = 0.021
+    Mantel-Haenszel odds ratio 1.157 [0.720, 1.859]; CMH chi-square 0.371, p = 0.543
+    Breslow-Day test of a common odds ratio: chi-square 0.179 on 1 df, p = 0.673
+    aggregate difference -0.0765 = allocation across strata -0.0982 + rates within strata +0.0217
+    difference standardised to the combined mix: +0.0208 (95% bootstrap interval -0.0589 to +0.0993)
+    posterior P(aggregate favours PCNL) = 0.9919; P(standardised difference favours open) = 0.6555; P(every stratum favours open) = 0.3228; P(full reversal) = 0.3159
     ESWL (1985): < 2 cm 200/204 = 0.980; >= 2 cm or multiple 101/124 = 0.815; overall 301/328 = 0.918
     patients per arm needed for 80% power at a two-sided 5% level, if the observed rates were true:
       < 2 cm                 0.931 vs 0.867: 343
@@ -109,6 +122,7 @@
     aggregate difference +0.0016 = allocation across strata +0.0233 + rates within strata -0.0218
     difference standardised to the combined mix: -0.0219 (95% bootstrap interval -0.0673 to +0.0235)
     posterior P(aggregate favours Jeter) = 0.5300; P(standardised difference favours Justice) = 0.8159; P(every stratum favours Justice) = 0.2534; P(full reversal) = 0.0662
+    1995-97 averages to four decimals: Jeter 0.2998, Justice 0.2983
     share of 1995-96 at-bats that came in 1995: Jeter 0.076, Justice 0.746
     games played: jeterde01 1995 15; jeterde01 1996 157; justida01 1995 120; justida01 1996 40
     Justice's share of 1995 at-bats at which the two 1995-96 averages would be equal: 0.174

@@ -346,6 +346,9 @@ def main() -> None:
     c, d = tt[1, 0], tt[1, 1] - tt[1, 0]
     print(f"    {'combined':<22} treated alive {a}/{a + b} = {a / (a + b):.3f}; untreated alive {c}/{c + d} = {c / (c + d):.3f};"
           f" cross-product ratio {(a * d) / (b * c):.3f}")
+    # cards: dirty red court, red plain, black court, black plain = 4, 8, 3, 5; clean = 2, 12, 3, 15
+    print(f"    cards: dirty among red {4 + 8}/{4 + 8 + 2 + 12}, among black {3 + 5}/{3 + 5 + 3 + 15};"
+          f" dirty among court {4 + 3}/{4 + 3 + 2 + 3}, among plain {8 + 5}/{8 + 5 + 12 + 15}")
     print(f"    if the 52 cells were counts: Fisher p for males {stats.fisher_exact(two_by_two(ts[0])).pvalue:.3f},"
           f" females {stats.fisher_exact(two_by_two(ts[1])).pvalue:.3f}")
 
@@ -386,6 +389,18 @@ def main() -> None:
     corr = np.corrcoef(w[:, 1] - w[:, 0], tb[:, :, 0].sum(axis=1) / tb[:, :, 1].sum(axis=1))[0, 1]
     print(f"    correlation across departments between women's excess share and admission rate: {corr:.3f}")
     print(f"    departments where women's admission rate is higher: {int(np.sum(r[:, 1] > r[:, 0]))} of {len(depts)}")
+    a_ = tb[:, 0, 0].astype(float)
+    b_ = (tb[:, 0, 1] - tb[:, 0, 0]).astype(float)
+    c_ = tb[:, 1, 0].astype(float)
+    d_ = (tb[:, 1, 1] - tb[:, 1, 0]).astype(float)
+    n_ = a_ + b_ + c_ + d_
+    w_std = n_ / n_.sum()
+    w_mh = (b_ * c_ / n_) / (b_ * c_ / n_).sum()
+    w_cmh = (tb[:, 0, 1] * tb[:, 1, 1] / n_) / (tb[:, 0, 1] * tb[:, 1, 1] / n_).sum()
+    print(f"    department A's share of the weight: standardised difference {w_std[0]:.3f};"
+          f" Mantel-Haenszel odds ratio {w_mh[0]:.3f}; CMH test {w_cmh[0]:.3f}")
+    print(f"    difference in rates (men minus women) averaged with the CMH test weights:"
+          f" {np.sum(w_cmh * (r[:, 0] - r[:, 1])):+.4f}")
     no_a = tb[1:]
     or_mh, ci_mh, chi2, p_mh = mantel_haenszel(no_a)
     bd, df, p_bd = breslow_day(no_a, or_mh)
@@ -416,6 +431,14 @@ def main() -> None:
     sh = tk[1, :, 1] / tk[:, :, 1].sum(axis=0)
     print(f"    share of patients with stones >= 2 cm or multiple: open {sh[0]:.3f}, PCNL {sh[1]:.3f}")
     print(f"    PCNL share of large or multiple stones at which the two overall rates would be equal: {critical_mix(tk):.3f}")
+    # Charig et al. Table I and II: open procedures for small stones were nephrolithotomy/pyelolithotomy
+    # 12/13, pyelolithotomy 26/31 and ureterolithotomy 43/43 (ureteric stones); none of the latter
+    # in the large-stone group.
+    print("    open surgery for small stones by procedure: nephrolithotomy/pyelolithotomy 12/13,"
+          " pyelolithotomy 26/31, ureterolithotomy 43/43")
+    tk_nu = np.array([[[12 + 26, 13 + 31], [234, 270]], [[192, 263], [55, 80]]])
+    report_table("the same comparison without the 43 ureterolithotomies (ureteric stones)",
+                 tk_nu, ["stones < 2 cm", "stones >= 2 cm or multiple"], ("open", "PCNL"))
     print(f"    ESWL (1985): < 2 cm 200/204 = {200 / 204:.3f}; >= 2 cm or multiple 101/124 = {101 / 124:.3f};"
           f" overall 301/328 = {301 / 328:.3f}")
     print("    patients per arm needed for 80% power at a two-sided 5% level, if the observed rates were true:")
@@ -429,6 +452,8 @@ def main() -> None:
     tj = load_batting({"jeterde01": "Jeter", "justida01": "Justice"}, years)
     report_table("hits / at-bats, Jeter against Justice, 1995 and 1996", tj[:2], ["1995", "1996"], ("Jeter", "Justice"))
     report_table("hits / at-bats, Jeter against Justice, 1995 to 1997", tj, ["1995", "1996", "1997"], ("Jeter", "Justice"))
+    tot3 = tj.sum(axis=0)
+    print(f"    1995-97 averages to four decimals: Jeter {tot3[0, 0] / tot3[0, 1]:.4f}, Justice {tot3[1, 0] / tot3[1, 1]:.4f}")
     share95 = tj[0, :, 1] / tj[:2, :, 1].sum(axis=0)
     print(f"    share of 1995-96 at-bats that came in 1995: Jeter {share95[0]:.3f}, Justice {share95[1]:.3f}")
     games = {}
