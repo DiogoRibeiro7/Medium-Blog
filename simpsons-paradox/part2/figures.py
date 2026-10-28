@@ -1,8 +1,8 @@
 """Figures for Part 2 of the Simpson's paradox series.
 
 fig1_three_structures.png  one table, three causal structures, two different answers
-fig2_berkeley_direct.png   Berkeley: direct effects by department, and what an unmeasured qualification does
-fig3_colliders.png         bias from adjusting or not adjusting in M and butterfly structures
+fig3_berkeley_direct.png   Berkeley: direct effects by department, and what an unmeasured qualification does
+fig2_colliders.png         bias from adjusting or not adjusting in M and butterfly structures
 fig4_lord.png              Lord's paradox: change scores and covariance adjustment on the same data
 
 Run:  python figures.py
@@ -151,7 +151,7 @@ def figure_berkeley() -> None:
     ax2.set_title("No direct effect, yet stratified differences of either sign")
     ax2.legend(loc="upper left", fontsize=9)
     fig.tight_layout()
-    fig.savefig(OUT / "fig2_berkeley_direct.png")
+    fig.savefig(OUT / "fig3_berkeley_direct.png")
     plt.close(fig)
 
 
@@ -186,7 +186,7 @@ def figure_colliders() -> None:
     ax2.set_title("Butterfly: both choices are biased")
     ax2.legend(loc="upper left", fontsize=9)
     fig.tight_layout()
-    fig.savefig(OUT / "fig3_colliders.png")
+    fig.savefig(OUT / "fig2_colliders.png")
     plt.close(fig)
 
 

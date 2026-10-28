@@ -35,6 +35,8 @@
   sum_z P(Y | X, z) P(z): A 0.8325, B 0.7789, difference +0.0537
   inverse probability weighting, sum_z P(x, z, y = 1) / P(x | z): A 0.8325, B 0.7789
   P(X = A | Z): small 0.2437, large or multiple 0.7668
+  sample size multiple for 80% power to reject X _||_ Y | Z at 5%, if the observed table were the truth (noncentrality grows with n): 2.80, about 1960 patients
+  adjusted risk ratio A / B 1.0689 (95% bootstrap interval 0.9863 to 1.1631); E-value 1.340; E-value for the lower limit 1.000
 
 ==============================================================================
 3. THE SAME TABLE WHEN Z IS A MEDIATOR

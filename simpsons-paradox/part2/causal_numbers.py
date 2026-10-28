@@ -359,6 +359,29 @@ def main() -> None:
     ipw = np.array([(p[x, :, 1] / px_z[x]).sum() for x in range(2)])
     print(f"  inverse probability weighting, sum_z P(x, z, y = 1) / P(x | z): A {ipw[0]:.4f}, B {ipw[1]:.4f}")
     print(f"  P(X = A | Z): small {px_z[0, 0]:.4f}, large or multiple {px_z[0, 1]:.4f}")
+    # How large a study would be needed to reject "no effect given stone group" (X independent of Y | Z)?
+    g_obs, df_obs, _ = g_test(COUNTS, 0, 2, 1)
+    crit = stats.chi2.ppf(0.95, df_obs)
+    for k in np.arange(1.0, 20.01, 0.01):
+        if stats.ncx2.sf(crit, df_obs, g_obs * k) >= 0.8:
+            break
+    print(f"  sample size multiple for 80% power to reject X _||_ Y | Z at 5%, if the observed table were the truth"
+          f" (noncentrality grows with n): {k:.2f}, about {k * COUNTS.sum():.0f} patients")
+    # E-value for the adjusted risk ratio (VanderWeele and Ding, 2017), with a parametric bootstrap interval.
+    rr = adj[0] / adj[1]
+    rng = np.random.default_rng(SEED + 2)
+    n_xz = COUNTS.sum(axis=2)
+    sims = rng.binomial(n_xz[None].astype(int), p_y_xz[None], size=(20_000, 2, 2)) / n_xz[None]
+    rr_b = (sims * pz[None, None, :]).sum(axis=2)
+    rr_b = rr_b[:, 0] / rr_b[:, 1]
+    lo, hi = np.percentile(rr_b, [2.5, 97.5])
+
+    def evalue(r):
+        r = r if r >= 1 else 1 / r
+        return r + math.sqrt(r * (r - 1))
+
+    print(f"  adjusted risk ratio A / B {rr:.4f} (95% bootstrap interval {lo:.4f} to {hi:.4f});"
+          f" E-value {evalue(rr):.3f}; E-value for the lower limit {evalue(lo) if lo > 1 else 1.0:.3f}")
 
     header("3. THE SAME TABLE WHEN Z IS A MEDIATOR")
     p_z_x = p.sum(axis=2) / p.sum(axis=(1, 2))[:, None]
