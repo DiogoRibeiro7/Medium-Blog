@@ -1,0 +1,175 @@
+# The Iberian electricity price as a linear programme: research plan
+
+Registered 2026-10-28, before any file from the study period was downloaded and before any
+programme was solved. Changes after this date go in the change log at the end, dated, with
+what had been seen when each was made.
+
+## 1. Question
+
+Every day, the Iberian day-ahead market (MIBEL, run by OMIE) sets a price for each
+15-minute period of the next day in Spain and in Portugal. Buyers and sellers submit
+stepwise bids: a quantity in MW at a price in €/MWh. If every bid were divisible and
+independent of the other periods, clearing the market would be a linear programme, and
+the price would be the dual value of its balance constraint. The real clearing is not
+that programme. It is solved jointly with the rest of Europe (EUPHEMIA), and some Iberian
+sell orders are blocks or scalable complex orders, which are indivisible or tie
+periods together. This study asks four questions of one year of OMIE's public order
+books.
+
+- **Q1, the price as a dual.** With the realised outcome of the non-convex orders and the
+  cross-border flows held fixed, is the published price an optimal dual value of the
+  remaining linear programme in each period?
+- **Q2, the cost of non-convexity.** Treating every order as divisible and every period as
+  separate (the linear relaxation), how far does the price move from the published one?
+- **Q3, the merit-order effect.** By how much does 1,000 MW more supply at 0 €/MWh lower
+  the price, holding every bid and flow fixed, and is the effect smaller around midday?
+- **Q4, the French border.** By how much would the price move if the flows with France
+  were zero, holding every bid fixed? (Descriptive only.)
+
+**A fact, not a result.** For one zone, the clearing programme of section 4 has one
+equality constraint. By complementary slackness, λ is an optimal dual value exactly when
+every sell step priced below λ is fully accepted, every sell step priced above λ is
+rejected, and the same holds in reverse for buy steps; a step priced exactly at λ may be
+partly accepted. So the optimal dual values form an interval, and "the price clears the
+bids" and "the price is an optimal dual" are the same statement. The interval has
+positive width only when no step is partly accepted.
+
+## 2. What was seen before this plan was written
+
+- **The format.** OMIE's public file specification, "Modelo de Ficheros para la
+  distribución pública de información", version 1.37: the files `marginalpdbc` (prices,
+  Portugal then Spain), `curva_pbc` (aggregate supply and demand curves, every offered and
+  matched step with its zone, side and order type) and `capacidad_inter_pbc`
+  (interconnector capacities; border 2 is Portugal, 3 France).
+- **Files outside the study period.** To read the format, three files were downloaded:
+  `curva_pbc_20250615.1` (hourly periods, before the 15-minute market), and
+  `curva_pbc_20261015.1`, `marginalpdbc_20261015.1` and `capacidad_inter_pbc_20261015.1`
+  (after the study period). In them:
+  - **Codes.** Zone codes MI (the joint Iberian curve), ES and PT; order types S (simple),
+    C01 (simple block), C02 (scalable complex order), C04 (exclusive block); and fixed
+    flows Imp/Exp FR, PT and ES.
+  - **Flows.** The flows appear among the matched steps only.
+  - **Volume.** On 15 October 2026, 527,480 steps in 96 periods.
+  - **Prices.** The prices of 15 October 2026 were printed. No curve was compared with a
+    price.
+- **Terms.** OMIE's legal notice: its public information may be used freely, keeping its
+  original content intact and citing the source.
+- **Not seen.** No file from the study period was downloaded, and no programme was solved.
+
+## 3. Data
+
+- **Period.** The first year of 15-minute periods: delivery days 1 October 2025 to
+  30 September 2026.
+- **Days.** Four days per calendar month, 48 in all, drawn without replacement within each
+  month by one generator seeded 20261028, months in calendar order. Every period of a drawn
+  day is used, including the 92 or 100 periods of the days the clocks change.
+- **Files per day.** The highest published version of `curva_pbc`, `marginalpdbc` and
+  `capacidad_inter_pbc`, downloaded from omie.es. They stay outside the repository, with
+  their names, sizes and SHA-256 hashes in a manifest. OMIE keeps six years of files, so
+  the raw data can be fetched again. The derived per-period tables are committed.
+- **Source.** Data: OMIE (OMI-Polo Español, S.A.), omie.es, cited wherever the data or
+  results appear.
+
+## 4. Zones, periods and the two programmes
+
+- **Zones.** A period whose curve rows are all MI has one zone, the joint Iberian market.
+  A period with ES and PT rows has two zones, Spain and Portugal, after the market split.
+  A period with MI rows alongside ES or PT rows is reported and left out.
+- **Steps.** In a zone-period, the offered steps (O) are the bids. The matched steps (C) of
+  types C01, C02 and C04 are the accepted quantities of the non-convex orders. The matched
+  Imp and Exp steps are the cross-border flows.
+- **The realised programme, `LP_R`.** The simple offered steps are the variables, each
+  between 0 and its quantity, and the programme maximises the buyers' bid value minus the
+  sellers' offer value. The accepted non-convex quantity and the imports are fixed supply,
+  and the exports are fixed demand. One balance constraint makes supply equal demand, and
+  its optimal dual values form the interval Λ_R.
+- **The relaxed programme, `LP_X`.** As `LP_R`, but every offered C01, C02 and C04 step is a
+  divisible variable at its offered price, instead of a fixed accepted quantity. Flows stay
+  fixed. Its dual interval is Λ_X.
+- **Solving.** HiGHS through SciPy, versions pinned. The dual interval is computed exactly
+  from the steps by the fact in section 1. In every solve, HiGHS's own dual value must lie
+  in that interval, and its objective must match the exact one; otherwise the run stops.
+
+## 5. A price from a programme
+
+The published price of a zone-period is π (the `marginalpdbc` price of that zone).
+
+- **Point rule.** When a counterfactual programme has dual interval Λ, its price is the
+  point of Λ nearest π. This rule attributes to the counterfactual only the change it
+  forces. When Λ is a single point, the rule does not matter.
+- **The Spanish price.** Q2-Q4 use the Spanish zone, or the joint zone when there is no
+  split. Portugal enters Q1 only.
+
+## 6. Estimands and decision rules
+
+All intervals are percentile bootstraps over the 48 days (9,999 resamples, seed 20261029),
+with every period of a resampled day kept together. Q2 and Q3 decide something; their
+intervals are simultaneous (Bonferroni: 97.5% each). The others are 95%.
+
+- **E1, the price as a dual (Q1).** The share of zone-periods with π in Λ_R, widened by
+  0.01 €/MWh at each end.
+  - **Decision:** the realised programme reproduces the clearing if the share is at least
+    99%.
+  - **If it is below 99%,** E2-E4 are reported as descriptive, and the report says where
+    the programme fails.
+  - **Also reported:** whether `LP_R`'s accepted volume matches the published matched
+    volume within 0.1 MW.
+- **E2, the cost of non-convexity (Q2).** For each period, δ = (the point of Λ_X nearest
+  π) − π, in €/MWh.
+  - **Reported:** the mean of δ over periods, the share with |δ| > 0.01 and the mean |δ|.
+  - **Decision:** the non-convex orders move the average price if the simultaneous
+    interval of the mean of δ excludes zero.
+  - **Expectation, stated now:** no direction; δ = 0 in most periods.
+- **E3, the merit-order effect (Q3).** For each period, m = the price of `LP_R` with one
+  more sell step of 1,000 MW at 0 €/MWh, minus π (point rule).
+  - **Reported:** the mean of m, with the mean by hour of the day.
+  - **Midday:** the periods of hours 11-17 in OMIE's numbering (10:00 to 17:00, Spanish
+    time). The comparison is G = mean |m| outside midday − mean |m| at midday.
+  - **Decision:** the effect is smaller at midday if G's simultaneous interval lies above
+    zero.
+  - **Expectation, stated now:** G > 0. At midday, solar output keeps the price low and the
+    supply curve flat.
+- **E4, the French border (Q4, descriptive).** For each period, f = the price of `LP_R`
+  with the France flows set to zero, minus π (point rule). Reported as the mean of f, over
+  periods importing from France and over periods exporting to it.
+- **Descriptive.** The share of periods in which ES and PT split; the steps per period; the
+  share of offered C01, C02 and C04 volume that was accepted; the share of periods with Λ_R
+  wider than a point, and its median width.
+
+## 7. Sensitivity analyses (fixed in advance)
+
+Each reports its estimand beside the main one and changes no decision.
+
+- **E1's tolerance:** 0.1 €/MWh instead of 0.01.
+- **E2 by order type:** relaxing the blocks (C01, C04) only, then the scalable complex
+  orders (C02) only.
+- **E3's size:** 500 MW and 2,000 MW instead of 1,000.
+- **E3's point rule:** the midpoint of the counterfactual interval instead of the point
+  nearest π.
+
+## 8. What this study does not claim
+
+- **Not a replication of EUPHEMIA.** The flows with France are taken as given, and the
+  French bids are not modelled. The non-convex orders enter only through their realised
+  outcome (`LP_R`) or as divisible bids (`LP_X`).
+- **Not behaviour.** Q3 and Q4 hold every bid fixed. Real bidders would respond, and with
+  the French flows fixed, extra Iberian supply cannot be exported, so E3 overstates the
+  effect when export capacity is free.
+- **Not welfare, and not a forecast.** Prices are the object; no welfare figure or
+  forecast is claimed.
+- **Not other years.** One year of the 15-minute market, from 48 sampled days.
+
+## 9. Reproducibility and reporting
+
+- **Versions:** pinned in `pyproject.toml`.
+- **Seeds and hashes:** every seed, and the file names and hashes, are in the manifests
+  and results.
+- **Steps, each in its own pull request:**
+  - the data step (download, parsing and descriptive checks), with no programme solved;
+  - the programmes and estimates, reported in `docs/RESULTS.md` against this plan;
+  - the article, generated from the results with no hand-typed numbers;
+  - a critical review before publication.
+
+## Change log
+
+- **2026-10-28.** Plan registered.
