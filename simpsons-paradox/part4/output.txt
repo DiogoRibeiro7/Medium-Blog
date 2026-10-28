@@ -1,0 +1,206 @@
+
+==============================================================================
+1. A/B TESTS: HILLSTROM'S E-MAIL EXPERIMENT (64,000 customers, two-week outcome window)
+==============================================================================
+  arm sizes: Mens E-Mail 21,307; Womens E-Mail 21,387; No E-Mail 21,306; sample-ratio test against equal thirds: chi-square 0.203, p = 0.904
+    Mens E-Mail    visit 18.28%, conversion 1.25%, spend $1.423 per customer
+    Womens E-Mail  visit 15.14%, conversion 0.88%, spend $1.077 per customer
+    No E-Mail      visit 10.62%, conversion 0.57%, spend $0.653 per customer
+    Mens E-Mail against no e-mail, visit: +7.66 points [+7.00, +8.32]
+    Mens E-Mail against no e-mail, conversion: +0.68 points [+0.50, +0.86]
+    Womens E-Mail against no e-mail, visit: +4.52 points [+3.89, +5.16]
+    Womens E-Mail against no e-mail, conversion: +0.31 points [+0.15, +0.47]
+  balance of pre-treatment covariates across the three arms (chi-square test of independence):
+    history_segment  7 levels: chi-square  13.15 on 12 df, p = 0.358
+    zip_code         3 levels: chi-square   2.87 on  4 df, p = 0.579
+    channel          3 levels: chi-square   3.63 on  4 df, p = 0.458
+    newbie           2 levels: chi-square   0.14 on  2 df, p = 0.934
+    mens             2 levels: chi-square   0.80 on  2 df, p = 0.672
+    womens           2 levels: chi-square   0.63 on  2 df, p = 0.729
+  men's e-mail against no e-mail, visits: aggregate difference against the stratum differences averaged
+  with weights equal to each stratum's share of the two arms combined:
+    by history_segment  stratum differences +6.15 to +9.90; weighted average +7.644; aggregate +7.659; gap +0.015
+    by zip_code         stratum differences +7.34 to +7.96; weighted average +7.633; aggregate +7.659; gap +0.026
+    by channel          stratum differences +7.56 to +8.29; weighted average +7.648; aggregate +7.659; gap +0.011
+    by newbie           stratum differences +7.53 to +7.78; weighted average +7.656; aggregate +7.659; gap +0.003
+    by mens             stratum differences +7.06 to +8.16; weighted average +7.664; aggregate +7.659; gap -0.006
+    by womens           stratum differences +6.92 to +8.26; weighted average +7.652; aggregate +7.659; gap +0.007
+    largest gap between the aggregate and a weighted average of stratum differences: +0.026 points
+
+  men's against women's e-mail (two creatives), visits:
+    aggregate +3.14 points [+2.43, +3.84]
+    mens = 0: -0.34 points [-1.40, +0.72], 9,568 and 9,647 customers
+    mens = 1: +5.98 points [+5.03, +6.93], 11,739 and 11,740 customers
+      difference between the two subgroup effects +6.32 points, z = 8.72
+    womens = 0: +5.81 points [+4.83, +6.79], 9,558 and 9,622 customers
+    womens = 1: +0.94 points [-0.06, +1.95], 11,749 and 11,765 customers
+      difference between the two subgroup effects -4.86 points, z = -6.81
+    newbie = 0: +3.77 points [+2.71, +4.83], 10,621 and 10,624 customers
+    newbie = 1: +2.49 points [+1.56, +3.42], 10,686 and 10,763 customers
+      difference between the two subgroup effects -1.28 points, z = -1.78
+
+  Ramp-up, two days of equal traffic, treatment share a on day 1 and 1/2 on day 2: pooling the days adds
+  (baseline on day 1 - baseline on day 2) x multiplier to the treatment-control difference
+    a = 0.01: multiplier -0.645
+    a = 0.05: multiplier -0.564
+    a = 0.10: multiplier -0.476
+    a = 0.20: multiplier -0.330
+    a = 0.50: multiplier +0.000
+  Re-enactment on the real outcomes: day 1 draws returning customers (newbie = 0), 1% to the men's e-mail;
+  day 2 draws new customers (newbie = 1), split evenly; 10,700 customers a day, drawn without replacement:
+    population rate, day 1, Mens E-Mail    21.16% (from 10,621 customers)
+    population rate, day 1, Womens E-Mail  17.39% (from 10,624 customers)
+    population rate, day 2, Mens E-Mail    15.41% (from 10,686 customers)
+    population rate, day 2, Womens E-Mail  12.92% (from 10,763 customers)
+    average baseline, day 1 minus day 2: +5.10 points; multiplier at 1% -0.645
+    expected pooled rates: men's 15.53%, women's 15.89%, difference -0.36 points
+    one draw: 5,457 treated and 15,943 controls; sample-ratio test against 50/50: chi-square 5,138
+      day 1: +7.84 points [-0.42, +16.11]
+      day 2: +1.94 points [+0.63, +3.26]
+      pooled: -0.69 points [-1.80, +0.42], z = -1.22
+      Mantel-Haenszel by day: +2.17 points [+0.87, +3.47], z = 3.26
+    2,000 draws: pooled difference mean -0.36 points (2.5th to 97.5th percentile -1.09 to +0.36); negative in 0.837 of draws, significantly positive (z > 1.96) in 0.000, significantly negative in 0.021
+      Mantel-Haenszel by day: mean +2.55 points (+1.61 to +3.48); significantly positive in 0.994 of draws
+    for reference, the full experiment: +3.14 points; new customers only +2.49; returning only +3.77
+
+==============================================================================
+2. METRIC DECOMPOSITION: ON-TIME ARRIVAL OF FLIGHTS FROM NEW YORK, 2013 (nycflights13)
+==============================================================================
+  336,776 scheduled departures; 327,346 with an arrival delay recorded (9,430 cancelled or diverted, left out); on time (arriving less than 15 minutes late): 75.53%
+  on-time rate by origin: EWR 73.66% of 117,127; JFK 76.30% of 109,079; LGA 76.86% of 101,140
+  on-time rate by hour_band: before 9 86.55% of 76,596; 9-12 82.04% of 51,990; 12-15 76.21% of 58,223; 15-18 68.61% of 68,794; 18 on 65.13% of 71,743
+  the nine largest carriers: flights, on-time rate, share of flights from EWR / JFK / LGA, share departing at 15:00 or later
+    UA  57,782 flights; on time 77.49%; origin shares 0.787 / 0.077 / 0.135; after 15:00 0.413
+    B6  54,049 flights; on time 73.05%; origin shares 0.120 / 0.771 / 0.109; after 15:00 0.441
+    EV  51,108 flights; on time 67.91%; origin shares 0.813 / 0.026 / 0.161; after 15:00 0.408
+    DL  47,658 flights; on time 81.04%; origin shares 0.090 / 0.431 / 0.478; after 15:00 0.462
+    AA  31,947 flights; on time 80.58%; origin shares 0.105 / 0.426 / 0.469; after 15:00 0.414
+    MQ  25,037 flights; on time 72.10%; origin shares 0.084 / 0.273 / 0.643; after 15:00 0.450
+    US  19,831 flights; on time 81.18%; origin shares 0.218 / 0.149 / 0.632; after 15:00 0.354
+    9E  17,294 flights; on time 74.43%; origin shares 0.069 / 0.795 / 0.136; after 15:00 0.565
+    WN  12,044 flights; on time 74.31%; origin shares 0.503 / 0.000 / 0.497; after 15:00 0.363
+  month: on-time rate; standardised to the year's mix of carrier x origin x departure-hour band
+    Jan: 76.51%; 76.86% (difference +0.35; cells covering 0.993 of the year's flights)
+    Feb: 76.22%; 76.56% (difference +0.34; cells covering 0.994 of the year's flights)
+    Mar: 76.40%; 76.82% (difference +0.42; cells covering 0.993 of the year's flights)
+    Apr: 71.25%; 71.49% (difference +0.24; cells covering 0.998 of the year's flights)
+    May: 77.33%; 77.51% (difference +0.18; cells covering 0.998 of the year's flights)
+    Jun: 68.48%; 68.27% (difference -0.21; cells covering 0.998 of the year's flights)
+    Jul: 67.79%; 67.68% (difference -0.11; cells covering 0.998 of the year's flights)
+    Aug: 75.40%; 75.36% (difference -0.04; cells covering 0.998 of the year's flights)
+    Sep: 86.28%; 86.22% (difference -0.06; cells covering 1.000 of the year's flights)
+    Oct: 82.44%; 82.52% (difference +0.09; cells covering 0.999 of the year's flights)
+    Nov: 81.90%; 81.96% (difference +0.06; cells covering 0.998 of the year's flights)
+    Dec: 66.45%; 66.36% (difference -0.09; cells covering 0.994 of the year's flights)
+    largest absolute adjustment +0.42 points; range of the raw monthly rate 66.45% to 86.28%
+  month-to-month changes split into mix and within (Kitagawa, cells present in both months):
+    Jan to Feb: change -0.29 points = mix +0.09 + within -0.38 (+ +0.00 from cells not in both months)
+    Feb to Mar: change +0.18 points = mix -0.08 + within +0.26 (+ -0.00 from cells not in both months)
+    Mar to Apr: change -5.15 points = mix +0.13 + within -5.32 (+ +0.04 from cells not in both months)
+    Apr to May: change +6.08 points = mix +0.10 + within +5.98 (+ +0.00 from cells not in both months)
+    May to Jun: change -8.86 points = mix +0.38 + within -9.23 (+ -0.00 from cells not in both months)
+    Jun to Jul: change -0.68 points = mix -0.14 + within -0.55 (+ +0.00 from cells not in both months)
+    Jul to Aug: change +7.61 points = mix -0.03 + within +7.66 (+ -0.02 from cells not in both months)
+    Aug to Sep: change +10.88 points = mix +0.04 + within +10.81 (+ +0.03 from cells not in both months)
+    Sep to Oct: change -3.85 points = mix -0.05 + within -3.81 (+ +0.01 from cells not in both months)
+    Oct to Nov: change -0.54 points = mix +0.03 + within -0.57 (+ +0.00 from cells not in both months)
+    Nov to Dec: change -15.44 points = mix +0.11 + within -15.58 (+ +0.02 from cells not in both months)
+    sum of absolute mix parts +1.18 points; sum of absolute within parts +60.15 points
+
+  Carrier comparisons among the nine largest carriers: difference in on-time rate, split into the mix
+  of origin airport x departure-hour band and the within-cell part; mix attributed by Shapley values:
+    36 pairs; within-cell part of the opposite sign to the total in 4: UA-9E, B6-MQ, DL-US, AA-US
+    UA and 9E by origin: EWR UA 77.4% of 45,501, 9E 83.6% of 1,193; JFK UA 77.9% of 4,478, 9E 72.9% of 13,742; LGA UA 78.0% of 7,803, 9E 78.7% of 2,359
+    UA and 9E by hour_band: before 9 UA 87.1% of 14,972, 9E 84.0% of 3,472; 9-12 UA 82.8% of 8,733, 9E 82.3% of 1,405; 12-15 UA 80.0% of 10,186, 9E 78.2% of 2,653; 15-18 UA 71.5% of 12,130, 9E 71.0% of 4,020; 18 on UA 65.4% of 11,761, 9E 67.4% of 5,744
+    UA minus B6: total +4.45; mix +1.36 (origin +0.49, hour +0.87); within +3.09; remainder from cells only one carrier flies +0.00; within with month added +2.76; cells cover 1.000 of the flights; standardised difference +3.11 (SE +0.42)
+    UA minus 9E: total +3.06; mix +3.59 (origin +2.41, hour +1.18); within -0.53; remainder from cells only one carrier flies +0.00; within with month added -2.37; cells cover 1.000 of the flights; standardised difference +0.07 (SE +1.14)
+    B6 minus 9E: total -1.38; mix +1.08 (origin -0.15, hour +1.23); within -2.47; remainder from cells only one carrier flies +0.00; within with month added -2.58; cells cover 1.000 of the flights; standardised difference -2.26 (SE +0.41)
+    EV minus DL: total -13.12; mix -4.48 (origin -4.08, hour -0.40); within -8.94; remainder from cells only one carrier flies +0.30; within with month added -8.93; cells cover 0.943 of the flights; standardised difference -9.02 (SE +0.46)
+    EV minus MQ: total -4.18; mix -4.07 (origin -4.23, hour +0.16); within -0.49; remainder from cells only one carrier flies +0.37; within with month added -0.23; cells cover 0.965 of the flights; standardised difference -0.83 (SE +0.67)
+    AA minus 9E: total +6.15; mix +2.63 (origin +1.09, hour +1.54); within +3.52; remainder from cells only one carrier flies +0.00; within with month added +2.28; cells cover 1.000 of the flights; standardised difference +3.36 (SE +0.48)
+    MQ minus 9E: total -2.33; mix +1.89 (origin +1.14, hour +0.75); within -4.22; remainder from cells only one carrier flies +0.00; within with month added -5.98; cells cover 1.000 of the flights; standardised difference -4.43 (SE +0.56)
+    US minus 9E: total +6.75; mix +4.62 (origin +1.91, hour +2.71); within +2.13; remainder from cells only one carrier flies +0.00; within with month added +0.34; cells cover 1.000 of the flights; standardised difference +2.07 (SE +0.65)
+
+==============================================================================
+3. FAIRNESS METRICS IN AGGREGATE AND WITHIN STRATA (ProPublica's COMPAS two-year file)
+==============================================================================
+  7,214 defendants in the file; 6,172 after ProPublica's filters
+  Black (ProPublica's 'African-American') 3,175; white ('Caucasian') 2,103; 'higher risk' means a decile score of 5 or more (ProPublica's medium or high)
+    base rate       Black 52.3% [50.6%, 54.1%] of 3,175; white 39.1% [37.0%, 41.2%] of 2,103; difference +13.2 points
+    selection rate  Black 57.6% [55.9%, 59.3%] of 3,175; white 33.1% [31.1%, 35.2%] of 2,103; difference +24.5 points
+    FPR             Black 42.3% [39.8%, 44.9%] of 1,514; white 22.0% [19.8%, 24.4%] of 1,281; difference +20.3 points
+    FNR             Black 28.5% [26.3%, 30.7%] of 1,661; white 49.6% [46.2%, 53.1%] of 822; difference -21.2 points
+    PPV             Black 65.0% [62.7%, 67.1%] of 1,829; white 59.5% [55.7%, 63.2%] of 696; difference +5.5 points
+    NPV             Black 64.9% [62.2%, 67.4%] of 1,346; white 71.0% [68.6%, 73.4%] of 1,407; difference -6.1 points
+  check of Chouldechova's identity FPR = p / (1 - p) x (1 - PPV) / PPV x (1 - FNR):
+    Black: FPR 0.4234; right-hand side 0.4234
+    white: FPR 0.2201; right-hand side 0.2201
+  two-year recidivism by decile score (calibration):
+    decile  1: Black 23.3% of 365; white 21.2% of 605
+    decile  2: Black 30.3% of 346; white 31.2% of 321
+    decile  3: Black 41.9% of 298; white 34.5% of 238
+    decile  4: Black 46.9% of 337; white 40.3% of 243
+    decile  5: Black 48.9% of 323; white 45.5% of 200
+    decile  6: Black 58.8% of 318; white 58.1% of 160
+    decile  7: Black 60.9% of 343; white 60.2% of 113
+    decile  8: Black 71.4% of 301; white 75.0% of 96
+    decile  9: Black 72.2% of 317; white 71.4% of 77
+    decile 10: Black 83.7% of 227; white 70.0% of 50
+    recidivism difference within deciles, standardised to the pooled decile sizes: +2.75 points [+0.04, +5.46], z = 1.99
+  Black minus white, aggregate and standardised within strata (strata with at least 10 in each group in the metric's denominator), points:
+    base rate: aggregate +13.2 [+10.5, +15.9]; prior-count band (0, 1-3, 4+) +7.8 [+5.1, +10.5] (3 strata, 1.000 of the denominator); age category +10.5 [+7.8, +13.3] (3 strata, 1.000 of the denominator); prior band x age +4.0 [+1.2, +6.7] (9 strata, 1.000 of the denominator); finer prior band x age +2.9 [+0.2, +5.6] (20 strata, 0.997 of the denominator); finer prior band x age x sex x charge degree +2.1 [-0.8, +5.0] (43 strata, 0.884 of the denominator)
+    selection rate: aggregate +24.5 [+21.9, +27.2]; prior-count band (0, 1-3, 4+) +18.3 [+15.7, +21.0] (3 strata, 1.000 of the denominator); age category +19.6 [+17.0, +22.3] (3 strata, 1.000 of the denominator); prior band x age +11.4 [+8.8, +14.0] (9 strata, 1.000 of the denominator); finer prior band x age +9.7 [+7.2, +12.3] (20 strata, 0.997 of the denominator); finer prior band x age x sex x charge degree +9.9 [+7.2, +12.6] (43 strata, 0.884 of the denominator)
+    FPR: aggregate +20.3 [+17.0, +23.7]; prior-count band (0, 1-3, 4+) +16.7 [+13.4, +20.1] (3 strata, 1.000 of the denominator); age category +16.0 [+12.6, +19.4] (3 strata, 1.000 of the denominator); prior band x age +11.1 [+7.8, +14.4] (8 strata, 0.993 of the denominator); finer prior band x age +10.3 [+7.0, +13.6] (17 strata, 0.985 of the denominator); finer prior band x age x sex x charge degree +9.9 [+6.4, +13.4] (32 strata, 0.814 of the denominator)
+    FNR: aggregate -21.2 [-25.2, -17.1]; prior-count band (0, 1-3, 4+) -16.4 [-20.4, -12.5] (3 strata, 1.000 of the denominator); age category -17.9 [-21.9, -13.9] (3 strata, 1.000 of the denominator); prior band x age -10.1 [-13.9, -6.2] (9 strata, 1.000 of the denominator); finer prior band x age -8.0 [-11.9, -4.1] (19 strata, 0.981 of the denominator); finer prior band x age x sex x charge degree -9.1 [-13.6, -4.5] (22 strata, 0.707 of the denominator)
+    PPV: aggregate +5.5 [+1.2, +9.7]; prior-count band (0, 1-3, 4+) +2.1 [-2.0, +6.3] (3 strata, 1.000 of the denominator); age category +5.3 [+1.1, +9.6] (3 strata, 1.000 of the denominator); prior band x age +1.1 [-3.1, +5.3] (9 strata, 1.000 of the denominator); finer prior band x age +0.4 [-3.8, +4.7] (17 strata, 0.975 of the denominator); finer prior band x age x sex x charge degree -1.5 [-6.4, +3.5] (22 strata, 0.710 of the denominator)
+  mean prior count within the coarse bands:
+    band 0    Black 0.00 (n = 846); white 0.00 (n = 821)
+    band 1-3  Black 1.73 (n = 1,115); white 1.71 (n = 838)
+    band 4+   Black 9.49 (n = 1,214); white 7.61 (n = 444)
+    share with 10 or more priors among those with 4 or more: Black 0.373, white 0.214
+
+==============================================================================
+4. SCANNING FOR REVERSALS
+==============================================================================
+  flights: entities carrier (16), origin (3), month (12); 964 comparisons of a pair of entity levels within a stratifier (strata shared by both, at least 30 flights each)
+    carrier     547 comparisons; aggregate and standardised differences of opposite sign 18; full reversals 1
+    origin       21 comparisons; aggregate and standardised differences of opposite sign 2; full reversals 0
+    month_name  396 comparisons; aggregate and standardised differences of opposite sign 1; full reversals 0
+    total: 21 with opposite signs (0.0218); 1 full reversals
+    with both differences beyond 1.96 standard errors: 3
+      carrier 9E minus UA by origin (3 strata, 17,294 and 57,782 flights): aggregate -3.06 (z -8.18), standardised +2.75 (z +3.85); full False; posterior P(opposite signs) 1.000
+      origin JFK minus LGA by hour_band (5 strata, 109,079 and 101,140 flights): aggregate -0.56 (z -3.02), standardised +0.76 (z +4.13); full False; posterior P(opposite signs) 0.999
+      origin JFK minus LGA by carrier (8 strata, 105,173 and 90,729 flights): aggregate -1.45 (z -7.61), standardised +0.56 (z +2.34); full False; posterior P(opposite signs) 0.992
+      carrier B6 minus WN by hour_band (5 strata, 54,049 and 12,044 flights): aggregate -1.26 (z -2.86), standardised +0.56 (z +1.24); full False; posterior P(opposite signs) 0.907
+      carrier EV minus YV by hour_band (3 strata, 27,631 and 514 flights): aggregate +1.52 (z +0.72), standardised -7.36 (z -2.60); full True; posterior P(opposite signs) 0.784
+      carrier 9E minus B6 by dest (15 strata, 6,949 and 18,518 flights): aggregate -1.24 (z -2.02), standardised +0.69 (z +0.92); full False; posterior P(opposite signs) 0.750
+      carrier AA minus US by hour_band (5 strata, 31,947 and 19,831 flights): aggregate -0.59 (z -1.67), standardised +0.28 (z +0.78); full False; posterior P(opposite signs) 0.742
+      carrier WN minus YV by hour_band (3 strata, 7,145 and 514 flights): aggregate +6.25 (z +2.90), standardised -2.58 (z -0.91); full False; posterior P(opposite signs) 0.740
+      carrier MQ minus YV by hour_band (3 strata, 14,940 and 514 flights): aggregate +5.63 (z +2.65), standardised -2.12 (z -0.78); full False; posterior P(opposite signs) 0.677
+      carrier B6 minus YV by hour_band (3 strata, 26,828 and 514 flights): aggregate +7.09 (z +3.36), standardised -1.94 (z -0.69); full False; posterior P(opposite signs) 0.669
+      carrier DL minus US by hour_band (5 strata, 47,658 and 19,831 flights): aggregate -0.14 (z -0.42), standardised +1.22 (z +3.61); full False; posterior P(opposite signs) 0.657
+      carrier DL minus VX by hour_band (5 strata, 47,658 and 5,116 flights): aggregate -0.28 (z -0.48), standardised +1.23 (z +2.05); full False; posterior P(opposite signs) 0.650
+      carrier F9 minus FL by hour_band (3 strata, 680 and 1,936 flights): aggregate -4.28 (z -1.98), standardised +0.92 (z +0.42); full False; posterior P(opposite signs) 0.616
+      carrier 9E minus WN by distance_band (4 strata, 17,294 and 12,044 flights): aggregate +0.12 (z +0.23), standardised -2.50 (z -2.58); full False; posterior P(opposite signs) 0.591
+      carrier 9E minus WN by month_name (12 strata, 17,294 and 12,044 flights): aggregate +0.12 (z +0.23), standardised -0.21 (z -0.41); full False; posterior P(opposite signs) 0.260
+      carrier DL minus US by month_name (12 strata, 47,658 and 19,831 flights): aggregate -0.14 (z -0.42), standardised +0.01 (z +0.04); full False; posterior P(opposite signs) 0.184
+      carrier US minus VX by weekday (7 strata, 19,831 and 5,116 flights): aggregate -0.14 (z -0.22), standardised +0.10 (z +0.16); full False; posterior P(opposite signs) 0.156
+      month_name Jan minus Mar by hour_band (5 strata, 26,398 and 27,902 flights): aggregate +0.11 (z +0.31), standardised -0.02 (z -0.06); full False; posterior P(opposite signs) 0.146
+      carrier AA minus WN by dest (2 strata, 1,222 and 1,741 flights): aggregate -0.01 (z -0.01), standardised +0.52 (z +0.35); full False; posterior P(opposite signs) 0.139
+      carrier 9E minus WN by weekday (7 strata, 17,294 and 12,044 flights): aggregate +0.12 (z +0.23), standardised -0.05 (z -0.09); full False; posterior P(opposite signs) 0.129
+      carrier EV minus YV by weekday (6 strata, 45,930 and 525 flights): aggregate +0.04 (z +0.02), standardised -0.08 (z -0.04); full False; posterior P(opposite signs) 0.025
+    posterior probability of opposite signs at least 0.95: 3; at least 0.99: 3
+  split-sample check: scan flights on odd-numbered days, confirm on even-numbered days
+    odd days: 931 comparisons, 17 with opposite signs; replicated on even days (same signs again): 7
+    of the 2 odd-day flips with both differences beyond 1.96 standard errors, replicated: 2
+      carrier B6 minus WN by hour_band: aggregate / standardised, odd days -1.01 / +0.61; even days -1.52 / +0.51
+      carrier DL minus VX by hour_band: aggregate / standardised, odd days -0.42 / +1.08; even days -0.13 / +1.38
+      carrier F9 minus FL by hour_band: aggregate / standardised, odd days -4.01 / +1.42; even days -4.55 / +0.36
+      carrier 9E minus UA by origin: aggregate / standardised, odd days -3.87 / +3.20; even days -2.22 / +2.30; both beyond 1.96 SE on odd days
+      month_name Jan minus May by weekday: aggregate / standardised, odd days -0.08 / +1.21; even days -1.62 / +0.16
+      origin JFK minus LGA by carrier: aggregate / standardised, odd days -1.27 / +0.92; even days -1.64 / +0.19; both beyond 1.96 SE on odd days
+      origin JFK minus LGA by hour_band: aggregate / standardised, odd days -0.35 / +0.99; even days -0.77 / +0.52
+
+  Hillstrom's experiment: arms as entities, pre-treatment covariates as stratifiers
+    visit: 18 comparisons; opposite signs 0; full reversals 0; largest |aggregate - standardised| +0.027 points
+    conversion: 18 comparisons; opposite signs 0; full reversals 0; largest |aggregate - standardised| +0.003 points
