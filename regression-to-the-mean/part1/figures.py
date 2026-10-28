@@ -105,15 +105,15 @@ def figure_pearson_lee() -> None:
     keep = [v for v in yv if w[y == v].sum() >= 10]
     ax1.plot([np.average(x[y == v], weights=w[y == v]) for v in keep], keep, "s-", color=ORANGE, ms=4.5, lw=1.6,
              label="mean height of fathers, by son's height")
-    lo, hi = 60, 76
+    lo, hi = 58, 79
     ax1.plot([lo, hi], [my + lo - mx, my + hi - mx], color=INK, lw=1.2, ls=(0, (4, 2)), label="no regression")
     ax1.set_xlim(lo, hi)
-    ax1.set_ylim(lo + 1, hi + 1)
+    ax1.set_ylim(lo, hi + 1)
     ax1.set_xlabel("father's height (inches)")
     ax1.set_ylabel("son's height (inches)")
     ax1.set_title("1,078 fathers and sons: each regresses on the other")
     ax1.legend(loc="upper left", fontsize=8.5)
-    bins = np.arange(58.5, 80.5, 1.0)
+    bins = np.arange(58.0, 81.0, 1.0)
     ax2.hist(x, bins=bins, weights=w, color=BLUE, alpha=0.55, label="fathers")
     ax2.hist(y, bins=bins, weights=w, color=ORANGE, alpha=0.55, label="sons")
     sx = np.sqrt(np.average((x - mx) ** 2, weights=w))
@@ -161,7 +161,7 @@ def figure_secrist() -> None:
     ax1.set_xlabel("seasons before (-) and after (+) the season used to form the groups")
     ax1.set_ylabel("winning percentage above league mean (x 1000)")
     ax1.set_title("Grouped in one season: converging forwards and backwards")
-    ax1.legend(loc="upper left", fontsize=8.5, ncol=2)
+    ax1.legend(loc="lower right", fontsize=8.5, ncol=1)
     sd = [np.std([v for (f, yy), v in wp.items() if yy == y_]) for y_ in years]
     ax2.plot(years, [1000 * s for s in sd], color=INK2, lw=1.4)
     ax2.set_xlabel("season")

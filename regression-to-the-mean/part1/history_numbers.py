@@ -193,7 +193,8 @@ def main() -> None:
     print("  mean mid-parent height by child height (the regression in the other direction):")
     for v in sorted(set(child)):
         m = child == v
-        print(f"    child {v:5.1f}: {m.sum():>3} children, mean mid-parent {parent[m].mean():.2f}")
+        print(f"    child {v:5.1f}: {m.sum():>3} children, mean mid-parent {parent[m].mean():.2f}; deviations from the"
+              f" overall means: children {v - child.mean():+.2f}, mid-parents {parent[m].mean() - parent.mean():+.2f}")
     top = parent >= 70.5
     bottom = parent <= 66.5
     print(f"  mid-parents of 70.5 in or more: {top.sum()} children, parents {parent[top].mean() - parent.mean():+.2f} in above"
@@ -232,6 +233,11 @@ def main() -> None:
         beta, se, se_cl, _ = ols_cluster(np.column_stack([np.ones(m.sum()), xc, xc ** 2]), ch[m], famid[m])
         print(f"    {label:<9} quadratic term on mid-parent {beta[2]:+.4f} (SE {se[2]:.4f}, {se_cl[2]:.4f} by family);"
               f" t = {beta[2] / se[2]:.2f} ignoring families, {beta[2] / se_cl[2]:.2f} by family")
+    pooled = np.where(sex == "female", 1.08 * ch, ch)
+    xc = mid - mid.mean()
+    beta, se, se_cl, _ = ols_cluster(np.column_stack([np.ones(len(ch)), xc, xc ** 2]), pooled, famid)
+    print(f"    all children, daughters x 1.08 as Galton pooled them: quadratic term {beta[2]:+.4f}; t = {beta[2] / se[2]:.2f}"
+          f" ignoring families, {beta[2] / se_cl[2]:.2f} by family")
     X = np.column_stack([np.ones(len(ch)), father, mother, (sex == "male").astype(float)])
     beta, se, se_cl, resid = ols_cluster(X, ch, famid)
     icc, n0 = icc_oneway(resid, famid)
@@ -258,19 +264,23 @@ def main() -> None:
               f" parent on child {cxy / sy ** 2:.4f}")
         if code == "fs":
             fs = (x, y, w, mx, my, sx, sy, rr)
+        if code == "md":
+            nn_ = w.sum()
+            t_md = (sy ** 2 - sx ** 2) * math.sqrt(nn_ - 2) / math.sqrt(4 * (1 - rr ** 2) * sx ** 2 * sy ** 2)
+            print(f"    Pitman-Morgan test of equal variances of mothers and daughters: t = {t_md:.3f}, p = {2 * stats.t.sf(abs(t_md), nn_ - 2):.4f}")
     x, y, w, mx, my, sx, sy, rr = fs
-    for cut in (72.0, 74.0):
-        m = x >= cut - 0.5
+    for cls in (71.5, 73.5):
+        m = x >= cls
         dev_f = np.average(x[m], weights=w[m]) - mx
         dev_s = np.average(y[m], weights=w[m]) - my
-        print(f"  fathers of {cut:.0f} in or more ({w[m].sum():,.1f} pairs): {dev_f:+.2f} in above the fathers' mean; their sons"
-              f" {dev_s:+.2f} in above the sons' mean, {dev_s / dev_f:.3f} of the fathers' deviation in standardised units"
-              f" {dev_s / sy / (dev_f / sx):.3f}")
-        m = y >= cut - 0.5
+        print(f"  fathers in the {cls} class or above ({w[m].sum():,.1f} pairs, {w[m].sum() / w.sum():.3f} of fathers):"
+              f" {dev_f:+.2f} in above the fathers' mean; their sons {dev_s:+.2f} in above the sons' mean,"
+              f" {dev_s / dev_f:.3f} of the fathers' deviation; in standardised units {dev_s / sy / (dev_f / sx):.3f}")
+        m = y >= cls
         dev_s = np.average(y[m], weights=w[m]) - my
         dev_f = np.average(x[m], weights=w[m]) - mx
-        print(f"  sons of {cut:.0f} in or more ({w[m].sum():,.1f} pairs): {dev_s:+.2f} in above the sons' mean; their fathers"
-              f" {dev_f:+.2f} in above the fathers' mean ({dev_f / dev_s:.3f} of it)")
+        print(f"  sons in the {cls} class or above ({w[m].sum():,.1f} pairs, {w[m].sum() / w.sum():.3f} of sons):"
+              f" {dev_s:+.2f} in above the sons' mean; their fathers {dev_f:+.2f} in above the fathers' mean ({dev_f / dev_s:.3f} of it)")
     for cf, cs in ((70.5, 71.5), (71.5, 72.5)):
         tf, ts = x >= cf, y >= cs
         print(f"  'tall' = fathers in the {cf:.1f} class or above ({w[tf].sum() / w.sum():.3f} of fathers), sons in the {cs:.1f}"
@@ -281,7 +291,7 @@ def main() -> None:
         z = stats.norm.ppf(1 - q)
         both = stats.multivariate_normal(mean=[0, 0], cov=[[1, rr], [rr, 1]]).cdf([-z, -z])
         print(f"  bivariate normal with correlation {rr:.3f}: P(son in top {q:.0%} | father in top {q:.0%}) {both / q:.3f}")
-    # an F test of equal variances, treating the weighted pairs as independent and using the correlation
+    # the Pitman-Morgan test of equal variances in paired data, treating the weighted pairs as independent
     nn = w.sum()
     t = (sy ** 2 - sx ** 2) * math.sqrt(nn - 2) / math.sqrt(4 * (1 - rr ** 2) * sx ** 2 * sy ** 2)
     print(f"  Pitman-Morgan test of equal variances of fathers and sons: t = {t:.3f} on {nn - 2:,.0f} df,"
