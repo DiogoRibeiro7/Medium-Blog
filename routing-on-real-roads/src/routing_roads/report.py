@@ -90,8 +90,8 @@ def render(d: Derived, command: str) -> str:
         "## Networks and points", "",
         "| Pair | Drivable ways read | Nodes clipped | Nodes kept (strongly connected) "
         "| Edges kept | Pharmacies | Snap distance, median / max (m) "
-        "| Pharmacies sharing a node | Depot snap (m) |",
-        "| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |",
+        "| Pharmacies sharing a node | Depot snap (m) | Depot variant snap (m) |",
+        "| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |",
     ]
     for pair in PAIRS:
         p = m["pairs"][pair.key]
@@ -101,10 +101,12 @@ def render(d: Derived, command: str) -> str:
         nodes = [r["node"] for r in pharm]
         shared = sum(1 for n in nodes if nodes.count(n) > 1)
         depot = next(r for r in rows if r["role"] == "depot")
+        variant = next(r for r in rows if r["role"] == "depot_variant")
         lines.append(
             f"| {pair.city} with {pair.other} | {p['drivable_ways']:,} | {p['nodes_clipped']:,} | "
             f"{p['nodes']:,} | {p['edges']:,} | {len(pharm)} | {np.median(snaps):.0f} / "
-            f"{max(snaps):.0f} | {shared} | {float(depot['snap_m']):.0f} |")
+            f"{max(snaps):.0f} | {shared} | {float(depot['snap_m']):.0f} | "
+            f"{float(variant['snap_m']):.0f} |")
     lines += ["", "## Distances by area (descriptive)", "",
               "Over ordered pairs of distinct pharmacies, the depot left out. The median ratio "
               "of road to straight-line distance is E4's circuity factor α. Pairs whose "

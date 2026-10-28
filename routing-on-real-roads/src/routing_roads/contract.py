@@ -45,3 +45,16 @@ MUNICIPALITIES = tuple(m for p in PAIRS for m in (p.city, p.other))
 
 DAYS = 40                          # section 4
 DAYS_SEED = 20261028
+
+# Section 5: the plans.
+CAPACITY = 12
+ITERATIONS = 5_000
+SEEDS = (1, 2, 3, 4)
+# Section 7: the sensitivity analyses run on the first 20 days with seeds 1 and 2.
+SENSITIVITY_DAYS = 20
+SENSITIVITY_SEEDS = (1, 2)
+# Section 6: the bootstrap.
+BOOTSTRAP_DRAWS = 9_999
+BOOTSTRAP_SEED = 20261029
+LEVEL = 0.95                       # reported intervals
+SIMULTANEOUS_LEVEL = 1 - 0.05 / 4  # deciding intervals: Bonferroni over the four areas

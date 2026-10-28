@@ -207,3 +207,36 @@ changes no decision; it is reported beside the main results.
     distance (α from 1.28 to 1.32 across the four areas) and its asymmetry. It also shows
     where the paths between the banks cross: in Lisbon only the 25 de Abril bridge, in
     Porto three bridges. No route was solved.
+- **2026-10-28, before any route: details sections 5-7 left open, fixed in the code before
+  the run.**
+  - **The depot variant's distances.** Section 7's depot was not in the data step's tables.
+    It was added as the last point of each pair before any route was solved. The earlier
+    tables are the leading block of the new ones, unchanged (checked), and the days are
+    unchanged. Porto's variant depot lies in Vila Nova de Gaia, Lisbon's in Lisboa.
+  - **A repeatable crossing report.** OSMnx merges the names of the ways an edge joins into
+    a list whose order follows Python's per-process string hashing. The names are now
+    sorted; builds under two hash seeds are byte-identical.
+  - **The model given to PyVRP.** One depot, a delivery of 1 per order, and one vehicle
+    type with as many vehicles as orders. Distances come from the planning matrix, and the
+    solver uses its default parameters. Every location gets the EPSG:3763 coordinates of
+    its snapped node: PyVRP's SWAP* operator compares routes by their clients' angles
+    around the depot, and both plans get the same coordinates.
+  - **Checks in every solve.** The plan must be feasible, and its cost on its own matrix
+    must equal the cost PyVRP reports.
+  - **The bootstrap.** One generator, seeded 20261029, draws the 40-day resamples first,
+    then the 20-day ones. Every estimand and area reuses them.
+  - **E2's placebo** averages over all 12 ordered pairs of distinct seeds.
+  - **Levels.** E1 and E4 are reported with 95% intervals; E2 and E3 decide with
+    simultaneous 98.75% intervals.
+  - **Sensitivity reporting.** Each variant is shown beside the main design restricted to
+    the same 20 days and seeds 1 and 2.
+  - **Running.** Four worker processes. The final table is sorted, so it does not depend
+    on the order in which solves finish.
+  - **What was seen.** The run times of four solves on the largest instances (4-10 s);
+    their costs were not looked at.
+- **2026-10-28, after the run: the results.** All 2,560 registered solves ran
+  (`results/solves.csv`, in 56 minutes on four processes, `results/run_log.txt`), and
+  `docs/RESULTS.md` reports section 6's estimands under its rules. No rule was changed.
+  - **The expectation for E3 did not hold.** The water does not raise the regret in either
+    pair by the registered rule. In Porto, Δ's whole interval lies below zero. The report
+    says so in one sentence; that sentence is a description, not a new decision rule.

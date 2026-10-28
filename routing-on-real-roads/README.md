@@ -5,8 +5,9 @@ planned on road distances, by more than the solver's own noise, and does water m
 worse? A reproducible study on the OpenStreetMap road networks of Lisbon and Porto.
 
 **Status: plan registered ([METHODS.md](METHODS.md)); data built
-([docs/DATA.md](docs/DATA.md)), with no route solved yet.** The estimates, the article and a
-critical review follow, each in its own pull request.
+([docs/DATA.md](docs/DATA.md)); every registered route solved and estimated
+([docs/RESULTS.md](docs/RESULTS.md)).** The article and a critical review follow, each in its
+own pull request.
 
 ## Running it
 
@@ -21,6 +22,13 @@ manifest are the record. The build checks the extract's hashes first:
 
 ```bash
 routing-roads data           # about 3 minutes; writes data/derived/ and docs/DATA.md
+```
+
+The routes and estimates run offline from the committed tables:
+
+```bash
+routing-roads route          # 2,560 solves on 4 processes, about an hour; resumes if stopped
+routing-roads estimate       # results/estimates.json and docs/RESULTS.md, in seconds
 ```
 
 - **Customers:** OpenStreetMap pharmacies in Lisboa, Almada, Porto and Vila Nova de Gaia,

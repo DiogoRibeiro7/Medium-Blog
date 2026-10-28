@@ -22,10 +22,36 @@ def main(argv: list[str] | None = None) -> None:
                                  "derived tables")
     report.add_argument("--out", type=Path, default=Path("data/derived"))
     report.add_argument("--report", type=Path, default=Path("docs/DATA.md"))
+    route = commands.add_parser("route", help="Solve every registered instance, plan and seed "
+                                "(sections 5 and 7) into results/solves.csv")
+    route.add_argument("--derived", type=Path, default=Path("data/derived"))
+    route.add_argument("--results", type=Path, default=Path("results"))
+    route.add_argument("--workers", type=int, default=4)
+    est = commands.add_parser("estimate", help="Compute section 6's estimands from "
+                              "results/solves.csv and write docs/RESULTS.md")
+    est.add_argument("--derived", type=Path, default=Path("data/derived"))
+    est.add_argument("--results", type=Path, default=Path("results"))
+    est.add_argument("--report", type=Path, default=Path("docs/RESULTS.md"))
     args = parser.parse_args(argv)
 
     from routing_roads.report import load, render
 
+    if args.command == "route":
+        from routing_roads.experiment import run
+
+        print(f"wrote {run(args.derived, args.results, args.workers)}")
+        return
+    if args.command == "estimate":
+        from routing_roads import estimates
+
+        e = estimates.estimate(estimates.load_solves(args.results / "solves.csv"),
+                               load(args.derived))
+        command = (f"routing-roads estimate --derived {args.derived.as_posix()} --results "
+                   f"{args.results.as_posix()} --report {args.report.as_posix()}")
+        args.report.parent.mkdir(parents=True, exist_ok=True)
+        estimates.write(e, args.results, args.report, command)
+        print(f"wrote {args.report}")
+        return
     if args.command == "data":
         from routing_roads.data import build
 

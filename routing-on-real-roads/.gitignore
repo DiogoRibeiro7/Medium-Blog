@@ -3,3 +3,5 @@ data/raw/
 __pycache__/
 *.egg-info/
 .pytest_cache/
+results/solves.partial.csv
+results_run.log
