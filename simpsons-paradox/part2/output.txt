@@ -1,0 +1,110 @@
+
+==============================================================================
+1. ONE TABLE, MANY CAUSAL STRUCTURES (counts of Part 1: open surgery vs PCNL by stone size)
+==============================================================================
+  X = treatment (A = open surgery, B = PCNL), Z = stone group, Y = success.
+  P(Z = large or multiple) = 0.4900; P(X = A) = 0.5000
+  Tests of the conditional independences a structure may imply (G-test):
+    X _||_ Z       G =  201.313 on 1 df, p = 1.08e-45
+    X _||_ Z | Y   G =  202.448 on 2 df, p = 1.09e-44
+    X _||_ Y       G =    2.315 on 1 df, p = 0.128
+    X _||_ Y | Z   G =    3.450 on 2 df, p = 0.178
+    Z _||_ Y       G =   29.674 on 1 df, p = 5.11e-08
+    Z _||_ Y | X   G =   30.809 on 2 df, p = 2.04e-07
+  number of DAGs on three labelled variables: 25
+  DAGs whose implied independences are all not rejected at the 5% level: 10
+    X->Z, Z->Y             implies: X_||_Y|Z     max |fitted - observed| 6.05e-03; P(Y | do(A)) = 0.7604, P(Y | do(B)) = 0.8453, effect A - B = -0.0848
+    X->Z, Y->Z             implies: X_||_Y       max |fitted - observed| 1.05e-02; no directed path from X to Y: effect 0
+    Z->X, Z->Y             implies: X_||_Y|Z     max |fitted - observed| 6.05e-03; no directed path from X to Y: effect 0
+    Z->X, Y->Z             implies: X_||_Y|Z     max |fitted - observed| 6.05e-03; no directed path from X to Y: effect 0
+    X->Z, X->Y, Z->Y       implies: none         max |fitted - observed| 0.00e+00; P(Y | do(A)) = 0.7800, P(Y | do(B)) = 0.8257, effect A - B = -0.0457
+    X->Z, X->Y, Y->Z       implies: none         max |fitted - observed| 6.94e-18; P(Y | do(A)) = 0.7800, P(Y | do(B)) = 0.8257, effect A - B = -0.0457
+    X->Z, Y->X, Y->Z       implies: none         max |fitted - observed| 6.94e-18; no directed path from X to Y: effect 0
+    X->Y, Z->X, Z->Y       implies: none         max |fitted - observed| 0.00e+00; P(Y | do(A)) = 0.8325, P(Y | do(B)) = 0.7789, effect A - B = +0.0537
+    Z->X, Z->Y, Y->X       implies: none         max |fitted - observed| 1.39e-17; no directed path from X to Y: effect 0
+    Z->X, Y->X, Y->Z       implies: none         max |fitted - observed| 5.55e-17; no directed path from X to Y: effect 0
+  the 6 complete DAGs fit the table exactly and give these answers for A - B:
+    -0.0457: 2 DAG(s): X->Z, X->Y, Z->Y | X->Z, X->Y, Y->Z
+    0 (no directed path from X to Y): 3 DAG(s): X->Z, Y->X, Y->Z | Z->X, Z->Y, Y->X | Z->X, Y->X, Y->Z
+    +0.0537: 1 DAG(s): X->Y, Z->X, Z->Y
+
+==============================================================================
+2. THE ADJUSTMENT FORMULA WHEN Z IS A CONFOUNDER
+==============================================================================
+  P(Y | X) without adjustment: A 0.7800, B 0.8257, difference -0.0457
+  sum_z P(Y | X, z) P(z): A 0.8325, B 0.7789, difference +0.0537
+  inverse probability weighting, sum_z P(x, z, y = 1) / P(x | z): A 0.8325, B 0.7789
+  P(X = A | Z): small 0.2437, large or multiple 0.7668
+  sample size multiple for 80% power to reject X _||_ Y | Z at 5%, if the observed table were the truth (noncentrality grows with n): 2.80, about 1960 patients
+  sample size multiple for 80% power to reject X _||_ Y at 5%, if the observed table were the truth (noncentrality grows with n): 3.40, about 2380 patients
+  adjusted risk ratio A / B 1.0689 (95% bootstrap interval 0.9863 to 1.1631); E-value 1.340; E-value for the lower limit 1.000
+
+==============================================================================
+3. THE SAME TABLE WHEN Z IS A MEDIATOR
+==============================================================================
+  P(Z = large or multiple | X): A 0.7514, B 0.2286
+  total effect of A against B: -0.0457
+  controlled direct effect with Z fixed: small +0.0644, large or multiple +0.0425
+  natural direct effect (Z at its distribution under B): +0.0594; indirect effect with treatment held at A: -0.1051; sum -0.0457
+  natural indirect effect with treatment held at B (Pearl 2001's definition): -0.0937
+
+==============================================================================
+4. BERKELEY AS A QUESTION ABOUT DIRECT EFFECTS
+==============================================================================
+  sex -> department -> admission, sex -> admission; effects of being a man rather than a woman:
+    total effect +0.1416
+    controlled direct effects by department: A -0.2035, B -0.0496, C +0.0286, D -0.0184, E +0.0383, F -0.0114
+    natural direct effect, departments as women chose them: -0.0011; natural indirect effect +0.1427
+    natural direct effect of being a woman, departments as men chose them: +0.0710
+
+  A stylised model with no direct effect of sex at all: two departments (hard: 25% admitted on average,
+  easy: 65%), 60% of women and 25% of men applying to the hard one, admission depending on department
+  and on an unmeasured qualification U (log-odds slope 1), and application to the hard department
+  depending on U with a slope that may differ by sex:
+    slope men +0.0, women +0.0: hard dept men 0.250 women 0.250 (men - women +0.000); easy dept men 0.650 women 0.650 (+0.000); overall men 0.550 women 0.410
+    slope men +1.0, women +0.0: hard dept men 0.360 women 0.250 (men - women +0.110); easy dept men 0.611 women 0.650 (-0.039); overall men 0.548 women 0.410
+    slope men +0.0, women +1.0: hard dept men 0.250 women 0.302 (men - women -0.052); easy dept men 0.650 women 0.553 (+0.097); overall men 0.550 women 0.402
+    slope men +1.0, women +1.0: hard dept men 0.360 women 0.302 (men - women +0.059); easy dept men 0.611 women 0.553 (+0.059); overall men 0.548 women 0.402
+    slope men +1.5, women -0.5: hard dept men 0.397 women 0.219 (men - women +0.177); easy dept men 0.600 women 0.704 (-0.104); overall men 0.549 women 0.413
+    slope men -0.5, women +1.5: hard dept men 0.195 women 0.316 (men - women -0.121); easy dept men 0.673 women 0.523 (+0.150); overall men 0.554 women 0.399
+  apparent within-department advantage of men in the hard department, (slope men) - (slope women) on a grid:
+    difference in slopes -1.50: hard -0.0662, easy +0.1267
+    difference in slopes -1.00: hard -0.0518, easy +0.0975
+    difference in slopes -0.50: hard -0.0298, easy +0.0547
+    difference in slopes +0.00: hard +0.0000, easy +0.0000
+    difference in slopes +0.50: hard +0.0599, easy -0.0221
+    difference in slopes +1.00: hard +0.1104, easy -0.0389
+    difference in slopes +1.50: hard +0.1466, easy -0.0500
+
+==============================================================================
+5. COLLIDERS
+==============================================================================
+  Berkson: two diseases, independent in the population, P(A) = 0.10, P(B) = 0.20; admitted to hospital
+  with probability 0.05 with neither, 0.40 with A only, 0.40 with B only, 0.70 with both:
+    odds ratio of A and B in the population 1.000; among the admitted 0.219
+    among the admitted, P(B | A) = 0.304, P(B | not A) = 0.667
+
+  Linear Gaussian models, all variables with unit variance; true effect of X on Y = 0.30.
+  M-structure: U1 -> X, U1 -> Z, U2 -> Z, U2 -> Y, X -> Y (U1, U2 unobserved):
+    all four U-paths 0.3: unadjusted 0.3000 (bias +0.0000); adjusted for Z 0.2918 (bias -0.0082)
+    all four U-paths 0.5: unadjusted 0.3000 (bias +0.0000); adjusted for Z 0.2333 (bias -0.0667)
+    all four U-paths 0.7: unadjusted 0.3000 (bias +0.0000); adjusted for Z -0.0160 (bias -0.3160)
+  Butterfly: as above, plus Z -> X and Z -> Y with coefficient c (Z is both confounder and collider):
+    U-paths 0.5, Z-paths 0.0: unadjusted bias +0.0000; adjusted bias -0.0667
+    U-paths 0.5, Z-paths 0.1: unadjusted bias +0.0600; adjusted bias -0.0712
+    U-paths 0.5, Z-paths 0.2: unadjusted bias +0.1400; adjusted bias -0.0784
+    U-paths 0.5, Z-paths 0.3: unadjusted bias +0.2400; adjusted bias -0.0896
+    U-paths 0.5, Z-paths 0.4: unadjusted bias +0.3600; adjusted bias -0.1082
+    the two absolute biases are equal at Z-paths 0.117; above that, adjusting is the smaller error
+  Adjusting for a mediator: X -> M -> Y (0.5 and 0.5), X -> Y (0.30):
+    total effect 0.5500; coefficient of X adjusted for M 0.3000
+
+==============================================================================
+6. LORD'S PARADOX
+==============================================================================
+  Two groups whose mean weight differs by 14 kg (boys 70, girls 56), within-group SD 8 in both
+  September and June, within-group correlation 0.7 between the two weighings, and no change in either
+  group's distribution between September and June.
+    population: mean gain 0 in both groups; covariance-adjusted group difference (1 - rho) * 14 = 4.200 kg
+    simulated, 1000 per group: difference in mean gain (boys - girls) -0.045 kg (SE 0.277); covariance-adjusted difference +4.197 kg (SE 0.332), slope on September weight 0.693
+    the same comparison for boys and girls of equal September weight (63 kg): expected June weight boys 65.10, girls 60.90
