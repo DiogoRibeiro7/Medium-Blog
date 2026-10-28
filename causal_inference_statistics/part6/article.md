@@ -300,4 +300,4 @@ Sun, L. and Abraham, S. (2021). Estimating Dynamic Treatment Effects in Event St
 
 Wing, C., Simon, K. and Bello-Gomez, R. A. (2018). Designing Difference in Difference Studies: Best Practices for Public Health Policy Research. *Annual Review of Public Health*, 39, 453–469. https://doi.org/10.1146/annurev-publhealth-040617-013507
 
-Wooldridge, J. M. (2021). Two-Way Fixed Effects, the Two-Way Mundlak Regression, and Difference-in-Differences Estimators. Working paper.
+Wooldridge, J. M. (2025). Two-Way Fixed Effects, the Two-Way Mundlak Regression, and Difference-in-Differences Estimators. *Empirical Economics*, 69, 2545–2587. https://doi.org/10.1007/s00181-025-02807-z
