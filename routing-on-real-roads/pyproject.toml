@@ -22,7 +22,8 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-dev = ["pytest>=8", "ruff>=0.6", "mypy>=1.11"]
+figures = ["matplotlib>=3.9,<4"]
+dev = ["pytest>=8", "ruff>=0.6", "mypy>=1.11", "matplotlib>=3.9,<4"]
 
 [project.scripts]
 routing-roads = "routing_roads.cli:main"

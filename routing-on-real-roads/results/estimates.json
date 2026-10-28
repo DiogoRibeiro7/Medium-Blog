@@ -426,5 +426,59 @@
     "level": 0.95
    }
   }
- ]
+ ],
+ "post_hoc": {
+  "lisbon_city": {
+   "pair_straight_m": 3960.0,
+   "straight": {
+    "circuity": 1.541788759,
+    "road_km": 100.7968125,
+    "leg_straight_m": 1040.618514
+   },
+   "road": {
+    "circuity": 1.375001124,
+    "road_km": 94.01945625,
+    "leg_straight_m": 1088.684536
+   }
+  },
+  "lisbon_both": {
+   "pair_straight_m": 4928.0,
+   "straight": {
+    "circuity": 1.632458445,
+    "road_km": 155.1771313,
+    "leg_straight_m": 1298.479809
+   },
+   "road": {
+    "circuity": 1.381684218,
+    "road_km": 143.044725,
+    "leg_straight_m": 1413.305516
+   }
+  },
+  "porto_city": {
+   "pair_straight_m": 2628.0,
+   "straight": {
+    "circuity": 1.602200578,
+    "road_km": 64.57599375,
+    "leg_straight_m": 750.1199212
+   },
+   "road": {
+    "circuity": 1.407784885,
+    "road_km": 59.2686875,
+    "leg_straight_m": 784.0068083
+   }
+  },
+  "porto_both": {
+   "pair_straight_m": 4508.0,
+   "straight": {
+    "circuity": 1.507264697,
+    "road_km": 170.7139125,
+    "leg_straight_m": 1334.342629
+   },
+   "road": {
+    "circuity": 1.355255219,
+    "road_km": 158.9087125,
+    "leg_straight_m": 1381.343607
+   }
+  }
+ }
 }

@@ -46,14 +46,22 @@ def area_indices(d: Derived, pair: Pair, with_other: bool) -> list[int]:
                   if p["role"] == "pharmacy" and p["municipality"] in keep]
 
 
+def pair_ratios(road: IntArray, straight: IntArray, idx: list[int]) -> NDArray[np.float64]:
+    """Road over straight-line distance for ordered pairs of distinct pharmacies (the
+    depot, ``idx[0]``, left out) with a positive straight-line distance."""
+    pharm = np.array(idx[1:])
+    r, s = road[np.ix_(pharm, pharm)], straight[np.ix_(pharm, pharm)]
+    positive = ~np.eye(pharm.size, dtype=bool) & (s > 0)
+    return np.asarray(r[positive] / s[positive], dtype=np.float64)
+
+
 def matrix_summary(road: IntArray, straight: IntArray, idx: list[int]) -> dict[str, Any]:
     """Over ordered pairs of distinct pharmacies (the depot left out): the ratio of road to
     straight-line distance, and the asymmetry of the road distance."""
     pharm = np.array(idx[1:])
     r, s = road[np.ix_(pharm, pharm)], straight[np.ix_(pharm, pharm)]
     off = ~np.eye(pharm.size, dtype=bool)
-    positive = off & (s > 0)
-    ratio = r[positive] / s[positive]
+    ratio = pair_ratios(road, straight, idx)
     upper = np.triu(np.ones_like(r, dtype=bool), 1)
     a, b = r[upper], r.T[upper]
     mean = (a + b) / 2
