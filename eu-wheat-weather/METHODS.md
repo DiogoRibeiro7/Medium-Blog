@@ -586,3 +586,12 @@ are; maize is reported separately.
   - **E4** follows the change log of 2026-10-24 exactly, with maize area.
   - **The placebo's report** says when one method rejects and the other does not. The
     registered rule, which needs both methods to reject, is unchanged.
+- **2026-10-28, correction to the entry on bootstrap ties (tests only).**
+  - **The main cause.** The size test kept failing on some CI runs after the tie fix,
+    because its simulated data were not fixed. The country shocks were drawn in the order
+    of a Python set of strings, which changes with each process's string hashing. So every
+    run tested different data: rejection rates of 0.058-0.125 were seen.
+  - **The fix.** The test now draws the shocks in sorted order, which gives a rate of 0.092
+    in every run.
+  - **What stands.** The tie rule is still right and still counts ties the same way on
+    every processor. No registered or amended result changes.
