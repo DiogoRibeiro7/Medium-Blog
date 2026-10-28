@@ -240,3 +240,18 @@ changes no decision; it is reported beside the main results.
   - **The expectation for E3 did not hold.** The water does not raise the regret in either
     pair by the registered rule. In Porto, Δ's whole interval lies below zero. The report
     says so in one sentence; that sentence is a description, not a new decision rule.
+- **2026-10-28, the article: descriptive figures added after the results.** The article
+  (`publication/`) is generated from the committed results, and a test checks each claim it
+  makes in words against them. To explain E4, it quotes quantities computed after every
+  registered result had been seen, from the same solves. They are in
+  `results/estimates.json` under `post_hoc` and in a labelled section of `docs/RESULTS.md`,
+  and they decide nothing.
+  - **A plan's circuity** κ(d): its road cost over its straight-line cost on day d (seed
+    means), averaged over days. E4's error on the plan's own cost is exactly α / κ(d) − 1.
+  - **Distances driven:** the road distance each plan drives a day, and the road plans'
+    mean straight-line leg against the median straight-line distance between two of the
+    area's pharmacies.
+  - **E3.** The article also quotes the asymmetry of road distances from `docs/DATA.md` as
+    one pattern that fits E3's result in both cities, and says that two cities cannot
+    test it.
+  - No registered number changed.

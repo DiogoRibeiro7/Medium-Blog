@@ -1,4 +1,5 @@
-"""Command line: ``routing-roads data`` builds the derived tables and docs/DATA.md."""
+"""Command line: ``routing-roads data`` builds the derived tables and docs/DATA.md;
+``route`` and ``estimate`` solve and report; ``publication`` writes the article."""
 
 from __future__ import annotations
 
@@ -32,7 +33,18 @@ def main(argv: list[str] | None = None) -> None:
     est.add_argument("--derived", type=Path, default=Path("data/derived"))
     est.add_argument("--results", type=Path, default=Path("results"))
     est.add_argument("--report", type=Path, default=Path("docs/RESULTS.md"))
+    pub = commands.add_parser("publication", help="Write the article, its values and its "
+                              "figures from the committed results (publication/)")
+    pub.add_argument("--root", type=Path, default=Path("."))
+    pub.add_argument("--no-figures", action="store_true")
     args = parser.parse_args(argv)
+
+    if args.command == "publication":
+        from routing_roads.publication import write_publication
+
+        for name in write_publication(args.root, figures=not args.no_figures):
+            print(f"wrote {name}")
+        return
 
     from routing_roads.report import load, render
 

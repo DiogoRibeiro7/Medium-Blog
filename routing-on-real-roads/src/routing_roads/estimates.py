@@ -21,6 +21,7 @@ from routing_roads.contract import (
     DAYS,
     LEVEL,
     PAIRS,
+    SEEDS,
     SENSITIVITY_DAYS,
     SIMULTANEOUS_LEVEL,
     Pair,
@@ -101,6 +102,33 @@ def _shares(rows: Sequence[dict[str, str]], pair: str, area: str) -> dict[str, f
     return out
 
 
+def post_hoc(rows: Sequence[dict[str, str]], d: Derived) -> dict[str, Any]:
+    """After the results, descriptive and not registered (METHODS.md, change log): per
+    area and plan, the circuity κ(d) = C̄_R(P) / C̄_S(P) of the plan's own legs (seed
+    means), averaged over days, so that E4's own-plan error is α / κ(d) − 1 day by day;
+    the road distance driven a day; and the mean straight-line leg against the median
+    straight-line distance between two of the area's pharmacies."""
+    out: dict[str, Any] = {}
+    for pair in PAIRS:
+        for area in AREAS:
+            idx = np.array(area_indices(d, pair, area == "both")[1:])
+            s = d.straight[pair.key][np.ix_(idx, idx)]
+            area_out: dict[str, Any] = {"pair_straight_m": float(
+                np.median(s[~np.eye(idx.size, dtype=bool)]))}
+            for plan in ("straight", "road"):
+                road = costs(rows, "main", pair.key, area, plan, "road", DAYS, SEEDS)
+                straight = costs(rows, "main", pair.key, area, plan, "straight", DAYS, SEEDS)
+                legs = [float(r["cost_straight"]) / (int(r["clients"]) + int(r["routes"]))
+                        for r in rows if (r["variant"], r["pair"], r["area"], r["plan"])
+                        == ("main", pair.key, area, plan)]
+                area_out[plan] = {
+                    "circuity": float(np.mean(road.mean(axis=1) / straight.mean(axis=1))),
+                    "road_km": float(road.mean() / 1000),
+                    "leg_straight_m": float(np.mean(legs))}
+            out[f"{pair.key}_{area}"] = area_out
+    return out
+
+
 def estimate(rows: Sequence[dict[str, str]], d: Derived) -> dict[str, Any]:
     rng = np.random.default_rng(BOOTSTRAP_SEED)
     idx_main, idx_sens = resamples(DAYS, rng), resamples(SENSITIVITY_DAYS, rng)
@@ -147,6 +175,7 @@ def estimate(rows: Sequence[dict[str, str]], d: Derived) -> dict[str, Any]:
                 "variant": v.key, "pair": pair.key,
                 **{f"E1_{area}": interval(regrets[area], idx_sens, LEVEL) for area in AREAS},
                 "E3": interval(regrets["both"] - regrets["city"], idx_sens, LEVEL)})
+    out["post_hoc"] = post_hoc(rows, d)
     return out
 
 
@@ -229,6 +258,25 @@ def render(e: dict[str, Any], command: str) -> str:
     lines += [f"| {VARIANT_NAMES[s['variant']]} | {pairs[s['pair']].city} | "
               f"{_ci(s['E1_city'])} | {_ci(s['E1_both'])} | {_ci(s['E3'])} |"
               for s in e["sensitivity"]]
+    lines += ["", "## After the results (descriptive, not registered)", "",
+              "Added with the article, after every registered result above had been seen; "
+              "they decide nothing. A plan's circuity κ(d) is its road cost divided by its "
+              "straight-line cost on day d (seed means), averaged over days; E4's error on the "
+              "plan's own cost is exactly α / κ(d) − 1, day by day. A plan with n orders on k "
+              "routes drives n + k legs, depot legs included; its mean leg is its "
+              "straight-line cost divided by n + k.",
+              "",
+              "| Area | α | κ, straight-line plan | κ, road plan | Road km a day, "
+              "straight-line plan | road plan | Mean leg, road plan (straight-line km) | "
+              "Median distance between two pharmacies (straight-line km) |",
+              "| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |"]
+    for a in areas:
+        p = e["post_hoc"][f"{a['pair']}_{a['area']}"]
+        lines.append(
+            f"| {AREA_NAMES[(a['pair'], a['area'])]} | {a['alpha']:.3f} | "
+            f"{p['straight']['circuity']:.3f} | {p['road']['circuity']:.3f} | "
+            f"{p['straight']['road_km']:.1f} | {p['road']['road_km']:.1f} | "
+            f"{p['road']['leg_straight_m'] / 1000:.2f} | {p['pair_straight_m'] / 1000:.2f} |")
     lines += ["", "## Reproduce", "", "```", command, "```", ""]
     return "\n".join(lines)
 

@@ -6,8 +6,9 @@ worse? A reproducible study on the OpenStreetMap road networks of Lisbon and Por
 
 **Status: plan registered ([METHODS.md](METHODS.md)); data built
 ([docs/DATA.md](docs/DATA.md)); every registered route solved and estimated
-([docs/RESULTS.md](docs/RESULTS.md)).** The article and a critical review follow, each in its
-own pull request.
+([docs/RESULTS.md](docs/RESULTS.md)); the article written from the results
+([publication/article.md](publication/article.md)).** A critical review follows in its own
+pull request.
 
 ## Running it
 
@@ -29,6 +30,13 @@ The routes and estimates run offline from the committed tables:
 ```bash
 routing-roads route          # 2,560 solves on 4 processes, about an hour; resumes if stopped
 routing-roads estimate       # results/estimates.json and docs/RESULTS.md, in seconds
+```
+
+The article is generated from the committed results; a test checks that it is current, that
+it types no result by hand and that its claims in words match the results:
+
+```bash
+routing-roads publication    # publication/article.md, values.json and figures/
 ```
 
 - **Customers:** OpenStreetMap pharmacies in Lisboa, Almada, Porto and Vila Nova de Gaia,

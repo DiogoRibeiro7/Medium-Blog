@@ -57,6 +57,17 @@ The first 20 days, seeds 1 and 2, 95% intervals. No variant changes a decision; 
 | 20,000 iterations | Lisboa | +7.3% [+6.3%, +8.5%] | +8.9% [+7.6%, +10.5%] | +1.6% [-0.2%, +3.7%] |
 | 20,000 iterations | Porto | +8.7% [+7.7%, +9.6%] | +7.4% [+6.4%, +8.6%] | -1.3% [-2.6%, +0.1%] |
 
+## After the results (descriptive, not registered)
+
+Added with the article, after every registered result above had been seen; they decide nothing. A plan's circuity κ(d) is its road cost divided by its straight-line cost on day d (seed means), averaged over days; E4's error on the plan's own cost is exactly α / κ(d) − 1, day by day. A plan with n orders on k routes drives n + k legs, depot legs included; its mean leg is its straight-line cost divided by n + k.
+
+| Area | α | κ, straight-line plan | κ, road plan | Road km a day, straight-line plan | road plan | Mean leg, road plan (straight-line km) | Median distance between two pharmacies (straight-line km) |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| Lisboa | 1.284 | 1.542 | 1.375 | 100.8 | 94.0 | 1.09 | 3.96 |
+| Lisboa with Almada | 1.317 | 1.632 | 1.382 | 155.2 | 143.0 | 1.41 | 4.93 |
+| Porto | 1.291 | 1.602 | 1.408 | 64.6 | 59.3 | 0.78 | 2.63 |
+| Porto with Vila Nova de Gaia | 1.300 | 1.507 | 1.355 | 170.7 | 158.9 | 1.38 | 4.51 |
+
 ## Reproduce
 
 ```
