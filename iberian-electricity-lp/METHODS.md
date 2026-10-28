@@ -173,3 +173,28 @@ Each reports its estimand beside the main one and changes no decision.
 ## Change log
 
 - **2026-10-28.** Plan registered.
+- **2026-10-28, the data step, before any programme: details the plan left open.**
+  - **Downloading.** Each file's versions are tried from 1 upward until OMIE answers 404.
+    Every file of the 48 days is at version 1. A dropped connection is retried after 30 s
+    and then 60 s; the first run was cut off by one and resumed. A file is written only
+    once it has been read in full.
+  - **Reading.** Quantities are read as integer tenths of a MW and prices as integer cents,
+    as the specification writes them, so that sums and comparisons are exact.
+  - **Flows by side.** A matched flow on the sell side is an import (fixed supply); on the
+    buy side it is an export (fixed demand). The labels of the flows across the
+    Spanish-Portuguese border vary between days: Exp PT and Imp ES on 17 days with a split,
+    Exp ES and Imp PT on 6, and both pairs on 2. So the side decides, not the label. The
+    check that Spain's exports equal Portugal's imports in every split period confirms the
+    reading.
+  - **Summed steps.** Offered steps of the same zone-period, side, type and price are
+    summed. Both programmes of section 4 depend on the steps only through their prices
+    and the total quantity at each price, so the sum changes neither their optimal values
+    nor their dual intervals. The summed steps are committed (`data/derived/steps/`, 13 MB),
+    so the later steps run offline.
+  - **The joint price.** In every joint period the published Portuguese and Spanish prices
+    are equal; π is the Spanish price.
+  - **What was seen.** The data report, `docs/DATA.md`. It gives the zones of every period
+    (510 of 4,608 periods split), the steps per period, the offered and accepted volume of
+    each order type, and the flows with France. It also reports three accounting checks on
+    the matched quantities, all of which pass. It shows no price levels, and no curve was
+    compared with a price. No programme was solved.
