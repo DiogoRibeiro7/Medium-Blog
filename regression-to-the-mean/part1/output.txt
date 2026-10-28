@@ -1,0 +1,84 @@
+
+==============================================================================
+1. GALTON (1886): 928 ADULT CHILDREN AND THEIR MID-PARENTS (HistData::Galton)
+==============================================================================
+  928 children; mean mid-parent 68.308 in, SD 1.787; mean child 68.088 in, SD 2.518
+  correlation 0.4588; 95% interval 0.4064 to 0.5081
+  slope of child on mid-parent 0.6463 (SE 0.0411), intercept 23.94; slope of mid-parent on child 0.3256 (SE 0.0207)
+  product of the two slopes 0.2105 = r^2 0.2105
+  mean child height by mid-parent height (Galton's grouping):
+    mid-parent  64.0:  14 children, mean 65.31, deviation from the overall mean: parents -4.31, children -2.78
+    mid-parent  64.5:  23 children, mean 65.40, deviation from the overall mean: parents -3.81, children -2.69
+    mid-parent  65.5:  66 children, mean 66.71, deviation from the overall mean: parents -2.81, children -1.38
+    mid-parent  66.5:  78 children, mean 67.06, deviation from the overall mean: parents -1.81, children -1.03
+    mid-parent  67.5: 211 children, mean 67.59, deviation from the overall mean: parents -0.81, children -0.50
+    mid-parent  68.5: 219 children, mean 68.02, deviation from the overall mean: parents +0.19, children -0.07
+    mid-parent  69.5: 183 children, mean 68.71, deviation from the overall mean: parents +1.19, children +0.62
+    mid-parent  70.5:  68 children, mean 69.60, deviation from the overall mean: parents +2.19, children +1.51
+    mid-parent  71.5:  43 children, mean 70.08, deviation from the overall mean: parents +3.19, children +2.00
+    mid-parent  72.5:  19 children, mean 71.88, deviation from the overall mean: parents +4.19, children +3.80
+    mid-parent  73.0:   4 children, mean 72.95, deviation from the overall mean: parents +4.69, children +4.86
+  mean mid-parent height by child height (the regression in the other direction):
+    child  61.7:   5 children, mean mid-parent 66.60
+    child  62.2:   7 children, mean mid-parent 66.64
+    child  63.2:  32 children, mean mid-parent 66.62
+    child  64.2:  59 children, mean mid-parent 67.53
+    child  65.2:  48 children, mean mid-parent 67.68
+    child  66.2: 117 children, mean mid-parent 67.61
+    child  67.2: 138 children, mean mid-parent 67.86
+    child  68.2: 120 children, mean mid-parent 68.30
+    child  69.2: 167 children, mean mid-parent 68.47
+    child  70.2:  99 children, mean mid-parent 68.95
+    child  71.2:  64 children, mean mid-parent 69.08
+    child  72.2:  41 children, mean mid-parent 70.24
+    child  73.2:  17 children, mean mid-parent 70.71
+    child  73.7:  14 children, mean mid-parent 70.86
+  mid-parents of 70.5 in or more: 134 children, parents +2.87 in above the mean, children +2.09 (0.728 of it)
+  mid-parents of 66.5 in or less: 181 children, parents -2.62 in, children -1.50 (0.574 of it)
+
+==============================================================================
+2. GALTON'S FAMILY RECORDS (HistData::GaltonFamilies, Hanley's transcription)
+==============================================================================
+  934 children in 205 families: 481 sons, 453 daughters
+  largest |mid-parent - (father + 1.08 x mother) / 2|: 0.0000
+  fathers mean 69.32 in, mothers mean 64.00 in (one record per family)
+  sons mean 69.23, SD 2.62; daughters mean 64.10, SD 2.36; ratio of means 1.0800
+    sons      on mid-parent slope 0.7133 (SE 0.0591 ignoring families, 0.0675 by family); correlation 0.4828
+    sons      on father     slope 0.4465 (SE 0.0478 ignoring families, 0.0555 by family); correlation 0.3924
+    sons      on mother     slope 0.3651 (SE 0.0489 ignoring families, 0.0749 by family); correlation 0.3230
+    daughters on mid-parent slope 0.6608 (SE 0.0520 ignoring families, 0.0642 by family); correlation 0.5133
+    daughters on father     slope 0.3813 (SE 0.0379 ignoring families, 0.0508 by family); correlation 0.4284
+    daughters on mother     slope 0.3182 (SE 0.0468 ignoring families, 0.0737 by family); correlation 0.3052
+  correlation between fathers and mothers (one record per family): +0.0969
+  SD of fathers 2.647; of 1.08 x mothers 2.520; of mid-parents 1.914; ratio mid-parent / father 0.723
+
+==============================================================================
+3. PEARSON AND LEE (1903): FATHERS AND SONS (HistData::PearsonLee)
+==============================================================================
+  father-son       1,078 pairs (179 cells): parents mean 67.20, SD 2.720; children mean 68.16, SD 2.747; correlation 0.5141; slope child on parent 0.5193, parent on child 0.5091
+  father-daughter  1,376 pairs (206 cells): parents mean 67.70, SD 2.779; children mean 63.85, SD 2.604; correlation 0.5108; slope child on parent 0.4787, parent on child 0.5451
+  mother-son       1,057 pairs (176 cells): parents mean 62.44, SD 2.398; children mean 68.64, SD 2.735; correlation 0.4938; slope child on parent 0.5633, parent on child 0.4329
+  mother-daughter  1,381 pairs (185 cells): parents mean 62.50, SD 2.409; children mean 63.86, SD 2.615; correlation 0.5019; slope child on parent 0.5449, parent on child 0.4623
+  fathers of 72 in or more (87.0 pairs): +4.91 in above the fathers' mean; their sons +2.66 in above the sons' mean, 0.542 of the fathers' deviation in standardised units 0.537
+  sons of 72 in or more (154.0 pairs): +4.53 in above the sons' mean; their fathers +2.18 in above the fathers' mean (0.482 of it)
+  fathers of 74 in or more (9.5 pairs): +6.88 in above the fathers' mean; their sons +2.97 in above the sons' mean, 0.432 of the fathers' deviation in standardised units 0.427
+  sons of 74 in or more (49.0 pairs): +6.22 in above the sons' mean; their fathers +2.59 in above the fathers' mean (0.417 of it)
+  Pitman-Morgan test of equal variances of fathers and sons: t = 0.380 on 1,076 df, p = 0.704
+
+==============================================================================
+4. SECRIST'S DESIGN ON MAJOR LEAGUE TEAMS (Lahman::Teams)
+==============================================================================
+  2,706 team seasons in the American and National Leagues, 1901-2025
+    SD of winning percentage across teams, 1901-1930: mean 0.0987, range 0.0727 to 0.1320; coin-toss SD for the games played 0.0409; SD left after removing it 0.0896
+    SD of winning percentage across teams, 1931-1960: mean 0.0920, range 0.0505 to 0.1164; coin-toss SD for the games played 0.0404; SD left after removing it 0.0822
+    SD of winning percentage across teams, 1961-1990: mean 0.0714, range 0.0541 to 0.0940; coin-toss SD for the games played 0.0397; SD left after removing it 0.0589
+    SD of winning percentage across teams, 1991-2025: mean 0.0725, range 0.0562 to 0.0963; coin-toss SD for the games played 0.0403; SD left after removing it 0.0598
+    2020 (a 60-game season): SD 0.0914, coin-toss SD 0.0646
+  base seasons 1961-2020; teams grouped into quarters by winning percentage in the base season; mean deviation from that season's league mean, in points of winning percentage (x 1000):
+    quarter 1 (353 team-seasons): -5: -10.2; -4: -12.5; -3: -17.5; -2: -30.6; -1: -41.1; +0: -89.0; +1: -39.7; +2: -25.0; +3: -9.6; +4: -1.4; +5: +2.5
+    quarter 2 (370 team-seasons): -5: -4.6; -4: -5.2; -3: -5.9; -2: -5.9; -1: -9.9; +0: -24.7; +1: -13.4; +2: -9.7; +3: -12.1; +4: -9.0; +5: -5.7
+    quarter 3 (374 team-seasons): -5: +2.8; -4: +4.7; -3: +8.2; -2: +8.8; -1: +13.2; +0: +25.0; +1: +15.7; +2: +9.3; +3: +11.8; +4: +4.9; +5: +7.0
+    quarter 4 (429 team-seasons): -5: +9.9; -4: +14.7; -3: +19.0; -2: +31.5; -1: +41.9; +0: +85.3; +1: +44.4; +2: +35.4; +3: +22.4; +4: +18.7; +5: +10.0
+    top quarter keeps 0.521 of its deviation one season later and 0.118 after 5; bottom quarter 0.446 and -0.029
+    one season earlier the top quarter had 0.492 of its base-season deviation, the bottom quarter 0.462
+  season-to-season correlation of a team's winning percentage, 1961 on: 0.5199 (1,716 pairs); SD in the first season 0.0728, in the second 0.0719
