@@ -35,8 +35,9 @@ def panel(seed: int, beta: tuple[float, float] = (0.0, 0.0), countries: int = 12
                              region_effect + country_shock[t]))
     country, region, year = (np.array([r[i] for r in rows]) for i in range(3))
     x = np.array([[r[3], r[4]] for r in rows])
-    # Errors correlated within country (the bootstrap's cluster dimension).
-    shock = {c: rng.normal(0, 0.5) for c in set(country.tolist())}
+    # Errors correlated within country (the bootstrap's cluster dimension). Sorted: a set's
+    # order follows Python's per-process string hashing, which made every run draw new data.
+    shock = {c: rng.normal(0, 0.5) for c in sorted(set(country.tolist()))}
     noise = np.array([shock[c] for c in country]) * x[:, 0] * 0.3 + rng.normal(0, 1, len(rows))
     y = np.array([r[5] for r in rows]) + x @ np.array(beta) + noise
     return {"country": country, "region": region, "year": year, "x": x, "y": y}
