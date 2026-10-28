@@ -341,7 +341,7 @@ Nelson, C. R. and Startz, R. (1990). The Distribution of the Instrumental Variab
 
 Staiger, D. and Stock, J. H. (1997). Instrumental Variables Regression with Weak Instruments. *Econometrica*, 65(3), 557–586. https://doi.org/10.2307/2171753
 
-Stock, J. H. and Yogo, M. (2005). Testing for Weak Instruments in Linear IV Regression. In *Identification and Inference for Econometric Models*, Cambridge University Press.
+Stock, J. H. and Yogo, M. (2005). Testing for Weak Instruments in Linear IV Regression. In D. W. K. Andrews and J. H. Stock (eds.), *Identification and Inference for Econometric Models: Essays in Honor of Thomas Rothenberg*, pp. 80–108. Cambridge University Press. https://doi.org/10.1017/CBO9780511614491.006
 
 Stock, J. H., Wright, J. H. and Yogo, M. (2002). A Survey of Weak Instruments and Weak Identification in Generalized Method of Moments. *Journal of Business & Economic Statistics*, 20(4), 518–529. https://doi.org/10.1198/073500102288618658
 
