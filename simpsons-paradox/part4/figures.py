@@ -75,6 +75,7 @@ plt.rcParams.update({
     "figure.facecolor": "white",
     "axes.facecolor": "white",
     "savefig.dpi": 170,
+    "axes.axisbelow": True,
 })
 
 
@@ -210,7 +211,8 @@ def figure_carriers(fl) -> None:
     fig, ax = plt.subplots(figsize=(9.6, 5.2))
     for i, r in enumerate(rows):
         pos, neg = 0.0, 0.0
-        for key, col in (("origin", VIOLET), ("hour_band", AQUA), ("within", BLUE)):
+        r = dict(r, remainder=r["total"] - r["mix"] - r["within"])
+        for key, col in (("origin", VIOLET), ("hour_band", AQUA), ("within", BLUE), ("remainder", MUTED)):
             v = 100 * r[key]
             if v >= 0:
                 ax.barh(i, v, left=pos, color=col, height=0.6)
@@ -220,13 +222,15 @@ def figure_carriers(fl) -> None:
                 neg += v
         ax.plot(100 * r["total"], i, "D", color=INK, ms=6)
     ax.axvline(0, color=MUTED, lw=1)
+    lo, hi = ax.get_xlim()
+    ax.set_xlim(lo - 0.3, hi + 0.6)
     ax.set_yticks(range(len(rows)), [f"{r['a']} minus {r['b']}" for r in rows])
     ax.set_xlabel("difference in on-time arrival rate (percentage points)")
     ax.set_title("Carrier gaps: how much is where and when they fly")
-    handles = [plt.Rectangle((0, 0), 1, 1, color=c) for c in (VIOLET, AQUA, BLUE)]
+    handles = [plt.Rectangle((0, 0), 1, 1, color=c) for c in (VIOLET, AQUA, BLUE, MUTED)]
     handles.append(plt.Line2D([], [], marker="D", color=INK, ls=""))
     ax.legend(handles, ["mix: origin airport", "mix: departure hour", "within airport x hour cells",
-                        "reported difference"], loc="lower right", fontsize=8.5)
+                        "cells only one carrier flies", "reported difference"], loc="lower right", fontsize=8.5)
     fig.tight_layout()
     fig.savefig(OUT / "fig4_carrier_gaps.png")
     plt.close(fig)
@@ -290,7 +294,7 @@ def figure_scanner(fl) -> None:
     flip = np.array([f["flip"] for f in found])
     ev = np.array([f["flip"] and abs(f["agg"]) > 1.96 * f["agg_se"] and abs(f["std"]) > 1.96 * f["std_se"] for f in found])
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 5.2))
-    for ax, lim in ((ax1, 26), (ax2, 4.5)):
+    for ax, lim in ((ax1, 29), (ax2, 4.5)):
         ax.axhline(0, color=MUTED, lw=1)
         ax.axvline(0, color=MUTED, lw=1)
         ax.plot([-lim, lim], [-lim, lim], color=GRID, lw=1.2, zorder=0)
@@ -302,12 +306,12 @@ def figure_scanner(fl) -> None:
         ax.set_ylim(-lim, lim)
         ax.set_xlabel("aggregate difference (points)")
         ax.set_ylabel("standardised difference (points)")
-    offsets = {"origin": (0.2, 0.3), "carrier": (-1.9, -0.55), "hour_band": (0.15, -0.5)}
+    offsets = {"origin": (0.3, 0.45), "carrier": (-2.6, -1.3), "hour_band": (0.6, -1.2)}
     for f, a_, s_, e in zip(found, agg, std, ev):
         if e:
             dx, dy = offsets[f["stratifier"]]
             ax2.annotate(f"{f['a']}-{f['b']} by {f['stratifier'].replace('_', ' ')}", (a_, s_), (a_ + dx, s_ + dy),
-                         fontsize=8, color=INK2)
+                         fontsize=8, color=INK2, arrowprops=dict(arrowstyle="-", color=INK2, lw=0.8))
     ax1.set_title(f"{len(found)} comparisons in the flight data")
     ax2.set_title("Close to zero, where reversals live")
     ax1.legend(loc="upper left", fontsize=8.5)

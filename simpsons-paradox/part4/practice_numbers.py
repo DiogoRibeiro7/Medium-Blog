@@ -342,9 +342,11 @@ def carrier_gap(fl, a: str, b: str) -> dict:
     mix, within, cover, cnt = parts(["origin", "hour_band"])
     sh = shapley_mix(lambda fs: parts([f for f in ("origin", "hour_band") if f in fs])[0])
     std, std_se = stratified_difference(*cnt)
+    _, within3, cover3, cnt3 = parts(["origin", "hour_band", "month"])
+    std3, std3_se = stratified_difference(*cnt3)
     return dict(a=a, b=b, total=y[ma].mean() - y[mb].mean(), mix=mix, within=within, cover=cover,
-                origin=sh["origin"], hour_band=sh["hour_band"], within3=parts(["origin", "hour_band", "month"])[1],
-                std=std, std_se=std_se)
+                origin=sh["origin"], hour_band=sh["hour_band"], within3=within3, cover3=cover3,
+                std=std, std_se=std_se, std3=std3, std3_se=std3_se)
 
 
 def fairness_metrics(recid, high):
@@ -463,11 +465,14 @@ def main() -> None:
     mh = mh_difference(sa, na, sb, nb)
     print(f"    treatment minus control: total {pts(tot_d)} points = mix {pts(mix)} + within {pts(within)};"
           f" Mantel-Haenszel by day {pts(mh[0], 3)} points (SE {pts(mh[1], 3)}); multiplier at 1% {ramp_multiplier(0.01):+.3f},"
-          f" baseline change Friday to Saturday {pts((sb[0] / nb[0] + sa[0] / na[0]) / 2 - (sb[1] / nb[1] + sa[1] / na[1]) / 2)} points")
+          f" fall in the average of the two arms' rates from Friday to Saturday (Friday minus Saturday)"
+          f" {pts((sb[0] / nb[0] + sa[0] / na[0]) / 2 - (sb[1] / nb[1] + sa[1] / na[1]) / 2)} points")
     print("  Ramp-up, two days of equal traffic, treatment share a on day 1 and 1/2 on day 2: pooling the days adds")
     print("  (baseline on day 1 - baseline on day 2) x multiplier to the treatment-control difference")
     for a1 in (0.01, 0.05, 0.10, 0.20, 0.50):
         print(f"    a = {a1:.2f}: multiplier {ramp_multiplier(a1):+.3f}")
+    print(f"    with the same effect on both days and a = 0.01, the pooled comparison reverses when the baseline falls by"
+          f" more than {1 / abs(ramp_multiplier(0.01)):.2f} times the effect")
     # real rates for the re-enactment
     rates = {}
     for day, nb in ((1, 0), (2, 1)):
@@ -546,7 +551,7 @@ def main() -> None:
     print(f"    largest absolute adjustment {pts(np.max(np.abs(diffs)))} points; range of the raw monthly rate"
           f" {pct(min(r for _, r, _, _, _ in monthly))} to {pct(max(r for _, r, _, _, _ in monthly))}")
     print("  month-to-month changes split into mix and within (Kitagawa, cells present in both months):")
-    mix_abs, within_abs = 0.0, 0.0
+    mix_abs, within_abs, min_ratio = 0.0, 0.0, np.inf
     for (m1, r1, _, _, c1), (m2, r2, _, _, c2) in zip(monthly[:-1], monthly[1:]):
         common = [k for k in c1 if k in c2]
         n1 = sum(c1[k][1] for k in common); n2 = sum(c2[k][1] for k in common)
@@ -554,10 +559,12 @@ def main() -> None:
         w1 = np.array([c1[k][1] / n1 for k in common]); w2 = np.array([c2[k][1] / n2 for k in common])
         mix, within = kitagawa(p2, w2, p1, w1)
         mix_abs += abs(mix); within_abs += abs(within)
+        min_ratio = min(min_ratio, abs(within) / abs(mix))
         print(f"    {datetime.date(2013, m1, 1).strftime('%b')} to {datetime.date(2013, m2, 1).strftime('%b')}:"
               f" change {pts(r2 - r1)} points = mix {pts(mix)} + within {pts(within)}"
               f" (+ {pts((r2 - r1) - mix - within)} from cells not in both months)")
-    print(f"    sum of absolute mix parts {pts(mix_abs)} points; sum of absolute within parts {pts(within_abs)} points")
+    print(f"    sum of absolute mix parts {pts(mix_abs)} points; sum of absolute within parts {pts(within_abs)} points;"
+          f" ratio {within_abs / mix_abs:.1f}; smallest monthly ratio of |within| to |mix| {min_ratio:.2f}")
     print()
     print("  Carrier comparisons among the nine largest carriers: difference in on-time rate, split into the mix")
     print("  of origin airport x departure-hour band and the within-cell part; mix attributed by Shapley values:")
@@ -579,7 +586,8 @@ def main() -> None:
                   f" (origin {pts(r['origin'])}, hour {pts(r['hour_band'])}); within {pts(r['within'])};"
                   f" remainder from cells only one carrier flies {pts(r['total'] - r['mix'] - r['within'])};"
                   f" within with month added {pts(r['within3'])}; cells cover {r['cover']:.3f} of the flights;"
-                  f" standardised difference {pts(r['std'])} (SE {pts(r['std_se'])})")
+                  f" standardised difference {pts(r['std'])} (SE {pts(r['std_se'])}); with month added, standardised"
+                  f" {pts(r['std3'])} (SE {pts(r['std3_se'])}), cells covering {r['cover3']:.3f}")
 
     header("3. FAIRNESS METRICS IN AGGREGATE AND WITHIN STRATA (ProPublica's COMPAS two-year file)")
     cp = load_compas()
@@ -666,6 +674,8 @@ def main() -> None:
         print(f"    {ent:<10} {len(fe):>4} comparisons; aggregate and standardised differences of opposite sign {sum(f['flip'] for f in fe)};"
               f" full reversals {sum(f['full'] for f in fe)}")
     print(f"    total: {len(flips)} with opposite signs ({len(flips) / len(found):.4f}); {len(full)} full reversals")
+    inside = sum(abs(f["agg"]) <= 0.045 and abs(f["std"]) <= 0.045 for f in flips)
+    print(f"    of these, with both differences within 4.5 points of zero: {inside}")
     both = [f for f in flips if abs(f["agg"]) > 1.96 * f["agg_se"] and abs(f["std"]) > 1.96 * f["std_se"]]
     print(f"    with both differences beyond 1.96 standard errors: {len(both)}")
     rng_post = np.random.default_rng(SEED + 4)
