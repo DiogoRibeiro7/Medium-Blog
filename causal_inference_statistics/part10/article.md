@@ -346,7 +346,7 @@ Kennedy, E. H. (2016). Semiparametric Theory and Empirical Processes in Causal I
 
 Lunceford, J. K. and Davidian, M. (2004). Stratification and Weighting via the Propensity Score in Estimation of Causal Treatment Effects: A Comparative Study. *Statistics in Medicine*, 23(19), 2937–2960. https://doi.org/10.1002/sim.1903
 
-Newey, W. K. and Robins, J. R. (2018). Cross-Fitting and Fast Remainder Rates for Semiparametric Estimation. arXiv:1801.09138. https://arxiv.org/abs/1801.09138
+Newey, W. K. and Robins, J. M. (2017). Cross-Fitting and Fast Remainder Rates for Semiparametric Estimation. CeMMAP Working Paper CWP41/17, Institute for Fiscal Studies. https://doi.org/10.1920/wp.cem.2017.4117 (revised preprint: https://arxiv.org/abs/1801.09138).
 
 Robins, J. M. and Rotnitzky, A. (2001). Comment on the Bickel and Kwon Article, 'Inference for Semiparametric Models: Some Questions and an Answer'. *Statistica Sinica*, 11, 920–936.
 
