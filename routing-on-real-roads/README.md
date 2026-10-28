@@ -4,9 +4,24 @@ Do delivery routes planned on straight-line distances cost more on real roads th
 planned on road distances, by more than the solver's own noise, and does water make it
 worse? A reproducible study on the OpenStreetMap road networks of Lisbon and Porto.
 
-**Status: plan registered ([METHODS.md](METHODS.md)), before any distance was computed or
-any route was solved.** The data, the estimates, the article and a critical review follow,
-each in its own pull request.
+**Status: plan registered ([METHODS.md](METHODS.md)); data built
+([docs/DATA.md](docs/DATA.md)), with no route solved yet.** The estimates, the article and a
+critical review follow, each in its own pull request.
+
+## Running it
+
+```bash
+pip install -e ".[dev]"
+python -m pytest -q          # offline, from the committed tables in data/derived/
+```
+
+Rebuilding the tables needs the pinned extract in `data/raw/`. Geofabrik offers a dated
+extract for a few days only; after that, the committed tables and the hashes in their
+manifest are the record. The build checks the extract's hashes first:
+
+```bash
+routing-roads data           # about 3 minutes; writes data/derived/ and docs/DATA.md
+```
 
 - **Customers:** OpenStreetMap pharmacies in Lisboa, Almada, Porto and Vila Nova de Gaia,
   with simulated daily orders.

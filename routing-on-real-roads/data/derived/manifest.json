@@ -1,0 +1,60 @@
+{
+ "extract": {
+  "file": "portugal-261027.osm.pbf",
+  "bytes": 426796277,
+  "md5": "bc612795c7b549382d86abfc169b4b20",
+  "sha256": "73ae017f091747109dbfe0417896090d204f6bed73dd603170646df791e8961a"
+ },
+ "buffer_m": 3000,
+ "projected_crs": "EPSG:3763",
+ "days": 40,
+ "days_seed": 20261028,
+ "versions": {
+  "osmium": "4.3.2",
+  "osmnx": "2.1.1",
+  "pyvrp": "0.14.1",
+  "networkx": "3.7",
+  "numpy": "2.5.4",
+  "scipy": "1.18.1",
+  "shapely": "2.2.0",
+  "pyproj": "3.8.0"
+ },
+ "pairs": {
+  "lisbon": {
+   "city": "Lisboa",
+   "other": "Almada",
+   "order_probability": 0.2,
+   "drivable_ways": 45507,
+   "nodes_read": 227423,
+   "nodes_clipped": 30043,
+   "edges_clipped": 63483,
+   "nodes": 29271,
+   "edges": 62341,
+   "crossings": {
+    "paths": 29988,
+    "bridges": {
+     "Ponte 25 de Abril / Autoestrada do Sul": 1.0
+    }
+   }
+  },
+  "porto": {
+   "city": "Porto",
+   "other": "Vila Nova de Gaia",
+   "order_probability": 0.5,
+   "drivable_ways": 36566,
+   "nodes_read": 201299,
+   "nodes_clipped": 27713,
+   "edges_clipped": 62577,
+   "nodes": 27221,
+   "edges": 61911,
+   "crossings": {
+    "paths": 12600,
+    "bridges": {
+     "Ponte Infante Dom Henrique / Rua Gon\u00e7alves Zarco": 0.6127777777777778,
+     "Via de Cintura Interna / Ponte da Arr\u00e1bida": 0.3503174603174603,
+     "Via de Cintura Interna / Ponte do Freixo": 0.03158730158730159
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,46 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "routing-on-real-roads"
+version = "0.1.0"
+description = "Delivery routes planned on straight-line against road distances, on the OpenStreetMap networks of Lisbon and Porto (a registered study)."
+readme = "README.md"
+license = { text = "Apache-2.0" }
+authors = [{ name = "Diogo Ribeiro" }]
+requires-python = ">=3.11"
+dependencies = [
+    "numpy>=2.0",
+    "scipy>=1.13",
+    "networkx>=3.3",
+    "shapely>=2.0",
+    "pyproj>=3.6",
+    "osmnx==2.1.1",
+    "osmium==4.3.2",
+    "pyvrp==0.14.1",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "ruff>=0.6", "mypy>=1.11"]
+
+[project.scripts]
+routing-roads = "routing_roads.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "SIM"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+ignore_missing_imports = true

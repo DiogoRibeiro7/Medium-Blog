@@ -175,3 +175,35 @@ changes no decision; it is reported beside the main results.
 ## Change log
 
 - **2026-10-28.** Plan registered.
+- **2026-10-28, the data step, before any route: details the plan left open.**
+  - **The drive filter.** It is copied from OSMnx 2.1.1 in Overpass semantics
+    (unanchored, case-sensitive patterns). A test reads OSMnx's own filter string and
+    compares the two.
+  - **Building the network.** Every drivable way with a node inside the bounding box of
+    the buffered area is read, with all its nodes. OSMnx builds the unsimplified directed
+    graph, clips it to the buffered area, simplifies it and keeps the largest strongly
+    connected component. The buffer is computed in EPSG:3763 (ETRS89 / Portugal TM06).
+  - **Locations.** A pharmacy mapped as a way is located at the mean of its distinct
+    nodes. The depot's target is the arithmetic mean of the city's pharmacies' longitudes
+    and latitudes.
+  - **The order of points.** The depot comes first, then the city's pharmacies, then the
+    other municipality's, each block sorted by OSM type and id. The smaller area's
+    matrix is the leading block of the larger one's.
+  - **Days.** One generator, seeded 20261028, draws Lisbon's 40 × 344 uniforms first and
+    then Porto's 40 × 164. A pharmacy orders when its draw is below the pair's
+    probability.
+  - **Earth radius.** OSMnx measures edge lengths with 6,371,009 m; the straight-line
+    distance uses the registered 6,371,008.8 m. The relative difference, 3e-8, is far
+    below the rounding to whole metres. The tests check that no road distance is shorter
+    than the straight line by more than that 1 m of rounding.
+  - **E4's α.** Two pharmacies that snap to the same node have no ratio, so α is the
+    median over pairs with a positive straight-line distance. Such pairs number 24
+    ordered pairs in each Lisbon area and 10 in each Porto area.
+  - **Crossings.** For paths between the two banks, the data step reports the edge whose
+    two ends lie in the pair's two municipalities. Those municipalities meet only in the
+    river.
+  - **What was seen.** The data report, `docs/DATA.md`. It gives the network sizes,
+    snapping distances, orders per day, the distribution of road over straight-line
+    distance (α from 1.28 to 1.32 across the four areas) and its asymmetry. It also shows
+    where the paths between the banks cross: in Lisbon only the 25 de Abril bridge, in
+    Porto three bridges. No route was solved.
