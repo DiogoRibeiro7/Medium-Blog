@@ -200,14 +200,30 @@ def standardised_difference(t: np.ndarray, weights: np.ndarray | None = None) ->
     return float(np.sum(weights * (r[:, 0] - r[:, 1])))
 
 
+def standardised_interval(t: np.ndarray, draws: int = 20_000, seed: int = 7):
+    """Standardised difference with a 95% parametric-bootstrap interval: stratum counts resampled
+    from binomials at the observed rates, common mix held at the observed combined mix."""
+    rng = np.random.default_rng(seed)
+    est = standardised_difference(t)
+    w = t[:, :, 1].sum(axis=1) / t[:, :, 1].sum()
+    r, _ = rates(t)
+    sims = rng.binomial(t[:, :, 1][None], r[None], size=(draws,) + r.shape) / t[:, :, 1][None]
+    vals = (w[None] * (sims[:, :, 0] - sims[:, :, 1])).sum(axis=1)
+    lo, hi = np.percentile(vals, [2.5, 97.5])
+    return est, lo, hi
+
+
 def posterior_reversal(t: np.ndarray, draws: int = 200_000, seed: int = SEED):
     """Posterior probabilities, under uniform Beta priors on every stratum rate and uniform Dirichlet
     priors on each group's allocation across strata, that in the population:
-      - the aggregate rate is higher for group 0;
-      - the standardised (common-mix) difference favours group 1;
-      - every stratum favours group 1;
-      - the aggregate favours group 0 while every stratum favours group 1 (a full reversal).
+      - the aggregate rate favours the group the sample aggregate favours (call it the winner);
+      - the standardised (common-mix) difference favours the other group;
+      - every stratum favours the other group;
+      - the aggregate favours the winner while every stratum favours the other group (a full reversal).
     """
+    _, agg_obs = rates(t)
+    if agg_obs[1] > agg_obs[0]:
+        t = t[:, ::-1, :]
     rng = np.random.default_rng(seed)
     K = t.shape[0]
     s = t[:, :, 0]
@@ -220,6 +236,36 @@ def posterior_reversal(t: np.ndarray, draws: int = 200_000, seed: int = SEED):
     std_1 = (comb * (p[:, :, 0] - p[:, :, 1])).sum(axis=1) < 0
     all_1 = np.all(p[:, :, 1] > p[:, :, 0], axis=1)
     return agg_0.mean(), std_1.mean(), all_1.mean(), (agg_0 & all_1).mean()
+
+
+def chi2_2x2(tab: np.ndarray, yates: bool) -> tuple[float, float]:
+    res = stats.chi2_contingency(tab, correction=yates)
+    return float(res.statistic), float(res.pvalue)
+
+
+def n_per_arm(p1: float, p2: float, alpha: float = 0.05, power: float = 0.8) -> float:
+    """Patients per arm for a two-sided test of two proportions (normal approximation, pooled
+    variance under the null)."""
+    za = stats.norm.ppf(1 - alpha / 2)
+    zb = stats.norm.ppf(power)
+    pbar = (p1 + p2) / 2
+    num = (za * math.sqrt(2 * pbar * (1 - pbar)) + zb * math.sqrt(p1 * (1 - p1) + p2 * (1 - p2))) ** 2
+    return num / (p1 - p2) ** 2
+
+
+def assoc(cells: np.ndarray) -> tuple[float, float, float]:
+    """For a 2 x 2 table of parent attribute (rows: with, without) by offspring attribute
+    (columns: with, without), return P(offspring with | parent with), P(offspring with | parent
+    without) and the cross-product ratio."""
+    a, b, c, d = cells.ravel()
+    return a / (a + b), c / (c + d), (a * d) / (b * c)
+
+
+def critical_mix(t: np.ndarray) -> float:
+    """Two strata: keeping the first group's mix and every stratum rate fixed, the second group's
+    share in stratum 2 at which the two aggregate rates would be equal."""
+    r, agg = rates(t)
+    return float((r[0, 1] - agg[0]) / (r[0, 1] - r[1, 1]))
 
 
 def report_table(name: str, t: np.ndarray, strata: list[str], groups: tuple[str, str],
@@ -246,15 +292,89 @@ def report_table(name: str, t: np.ndarray, strata: list[str], groups: tuple[str,
         total, mix, rate = decomposition(t)
         print(f"    aggregate difference {total:+.4f} = allocation across strata {mix:+.4f}"
               f" + rates within strata {rate:+.4f}")
-        print(f"    difference standardised to the combined mix: {standardised_difference(t):+.4f}")
+        est, lo, hi = standardised_interval(t)
+        print(f"    difference standardised to the combined mix: {est:+.4f} (95% bootstrap interval {lo:+.4f} to {hi:+.4f})")
         pa, ps, pall, prev = posterior_reversal(t)
-        print(f"    posterior P(aggregate favours {groups[0]}) = {pa:.4f};"
-              f" P(standardised difference favours {groups[1]}) = {ps:.4f};"
-              f" P(every stratum favours {groups[1]}) = {pall:.4f}; P(full reversal) = {prev:.4f}")
+        win, other = (groups[0], groups[1]) if agg[0] >= agg[1] else (groups[1], groups[0])
+        print(f"    posterior P(aggregate favours {win}) = {pa:.4f};"
+              f" P(standardised difference favours {other}) = {ps:.4f};"
+              f" P(every stratum favours {other}) = {pall:.4f}; P(full reversal) = {prev:.4f}")
 
 
 def main() -> None:
-    header("3. BERKELEY, FALL 1973: THE SIX LARGEST DEPARTMENTS (Bickel, Hammel and O'Connell, 1975)")
+    header("1. YULE'S MIXED RECORDS (Yule 1903; numbers from his textbook, 8th ed. 1927, pp. 50-51)")
+    print("  An attribute present in 50% of fathers and of sons and in 10% of mothers and of daughters,")
+    print("  independent between parent and offspring within each line (cells per 100 pairs:")
+    print("  parent with & offspring with, with & without, without & with, without & without):")
+    lines = {
+        "fathers and sons": np.outer([0.5, 0.5], [0.5, 0.5]) * 100,
+        "mothers and daughters": np.outer([0.1, 0.9], [0.1, 0.9]) * 100,
+        "fathers and daughters": np.outer([0.5, 0.5], [0.1, 0.9]) * 100,
+        "mothers and sons": np.outer([0.1, 0.9], [0.5, 0.5]) * 100,
+    }
+    for name, cells in lines.items():
+        p1, p0, cr = assoc(cells)
+        print(f"    {name:<22} cells {' '.join(f'{x:g}' for x in cells.ravel())}: P(offspring | parent with) {p1:.3f},"
+              f" P(offspring | parent without) {p0:.3f}, cross-product ratio {cr:.3f}")
+    for label, keys in (("same-sex lines mixed", ("fathers and sons", "mothers and daughters")),
+                        ("cross-sex lines mixed", ("fathers and daughters", "mothers and sons")),
+                        ("all four lines mixed", tuple(lines))):
+        cells = sum(lines[k] for k in keys)
+        p1, p0, cr = assoc(cells)
+        print(f"    {label:<22} cells {' '.join(f'{x:g}' for x in cells.ravel())}: P(offspring | parent with) {p1:.3f},"
+              f" P(offspring | parent without) {p0:.3f}, cross-product ratio {cr:.3f}")
+    print()
+    print("  Yule's hospital: 100 men and 100 women; death rate 30% for men and 60% for women whether treated or not;")
+    print("  treatment given to 80% of the men and 40% of the women:")
+    th = np.array([[[0.8 * 100 * 0.3, 0.8 * 100], [0.2 * 100 * 0.3, 0.2 * 100]],
+                   [[0.4 * 100 * 0.6, 0.4 * 100], [0.6 * 100 * 0.6, 0.6 * 100]]])
+    for k, lab in enumerate(("men", "women")):
+        print(f"    {lab}: treated died {th[k, 0, 0]:g} of {th[k, 0, 1]:g}; untreated died {th[k, 1, 0]:g} of {th[k, 1, 1]:g}")
+    tot = th.sum(axis=0)
+    print(f"    combined: treated died {tot[0, 0]:g} of {tot[0, 1]:g} = {tot[0, 0] / tot[0, 1]:.3f};"
+          f" untreated died {tot[1, 0]:g} of {tot[1, 1]:g} = {tot[1, 0] / tot[1, 1]:.3f}")
+
+    header("2. SIMPSON (1951): THE PACK OF CARDS AND THE MEDICAL TABLE (cells printed as fractions of 52)")
+    ts = np.array([[[8, 13], [4, 7]], [[12, 27], [2, 5]]])  # [sex, (treated, untreated), (alive, total)]
+    for k, lab in enumerate(("males (dirty cards)", "females (clean cards)")):
+        a, b = ts[k, 0, 0], ts[k, 0, 1] - ts[k, 0, 0]
+        c, d = ts[k, 1, 0], ts[k, 1, 1] - ts[k, 1, 0]
+        print(f"    {lab:<22} treated alive {a}/{a + b} = {a / (a + b):.3f}; untreated alive {c}/{c + d} = {c / (c + d):.3f};"
+              f" cross-product ratio {(a * d) / (b * c):.3f}")
+    tt = ts.sum(axis=0)
+    a, b = tt[0, 0], tt[0, 1] - tt[0, 0]
+    c, d = tt[1, 0], tt[1, 1] - tt[1, 0]
+    print(f"    {'combined':<22} treated alive {a}/{a + b} = {a / (a + b):.3f}; untreated alive {c}/{c + d} = {c / (c + d):.3f};"
+          f" cross-product ratio {(a * d) / (b * c):.3f}")
+    print(f"    if the 52 cells were counts: Fisher p for males {stats.fisher_exact(two_by_two(ts[0])).pvalue:.3f},"
+          f" females {stats.fisher_exact(two_by_two(ts[1])).pvalue:.3f}")
+
+    header("3. BLYTH (1972), AS REPRODUCED IN LATER EXPOSITIONS")
+    tbly = np.array([[[1000, 10000], [50, 1000]], [[95, 100], [5000, 10000]]])  # [group, (new, standard), (alive, total)]
+    r, agg = rates(tbly)
+    print(f"    group C: new {r[0, 0]:.3f}, standard {r[0, 1]:.3f}; group C': new {r[1, 0]:.3f}, standard {r[1, 1]:.3f};"
+          f" combined: new {tbly[:, 0, 0].sum()}/{tbly[:, 0, 1].sum()} = {agg[0]:.3f},"
+          f" standard {tbly[:, 1, 0].sum()}/{tbly[:, 1, 1].sum()} = {agg[1]:.3f}")
+    total, mix, rate = decomposition(tbly)
+    print(f"    aggregate difference {total:+.4f} = allocation {mix:+.4f} + rates within groups {rate:+.4f}")
+
+    header("4. BERKELEY, FALL 1973 (Bickel, Hammel and O'Connell, 1975)")
+    agg_tab = np.array([[3738, 8442 - 3738], [1494, 4321 - 1494]])
+    c_y, p_y = chi2_2x2(agg_tab, True)
+    c_n, p_n = chi2_2x2(agg_tab, False)
+    print(f"  all applicants (their Table 1): men 3738/8442 = {3738 / 8442:.3f}; women 1494/4321 = {1494 / 4321:.3f};"
+          f" difference {3738 / 8442 - 1494 / 4321:+.4f}")
+    exp_w = 4321 * (3738 + 1494) / (8442 + 4321)
+    print(f"    chi-square with Yates correction {c_y:.1f} (without {c_n:.1f}), p = {p_y:.2g};"
+          f" women admitted 1494 against {exp_w:.1f} expected if both sexes had the same rate")
+    hyp = np.array([[[200, 400], [100, 200]], [[50, 150], [150, 450]]])  # their hypothetical Table 2
+    r, agg = rates(hyp)
+    c_y, p_y = chi2_2x2(two_by_two(hyp.sum(axis=0)), True)
+    print(f"  their hypothetical two departments: 'Machismatics' men {r[0, 0]:.3f}, women {r[0, 1]:.3f};"
+          f" 'Social warfare' men {r[1, 0]:.3f}, women {r[1, 1]:.3f}; combined men {agg[0]:.3f}, women {agg[1]:.3f};"
+          f" chi-square (Yates) {c_y:.2f}, two-sided p = {p_y:.3f}, one-sided {p_y / 2:.3f}")
+    print()
+    print("  The six largest departments (UCBAdmissions; as in Freedman, Pisani and Purves):")
     depts, tb = load_berkeley()
     report_table("admitted / applied, men against women", tb, [f"department {d}" for d in depts], ("men", "women"))
     w = tb[:, :, 1] / tb[:, :, 1].sum(axis=0)
@@ -289,11 +409,36 @@ def main() -> None:
           f" odds ratio men/women {math.exp(-beta[1]):.3f}"
           f" [{math.exp(-beta[1] - 1.96 * se[1]):.3f}, {math.exp(-beta[1] + 1.96 * se[1]):.3f}]")
 
-    header("5. DEREK JETER AND DAVID JUSTICE, 1995-1997 (Lahman database)")
+    header("5. KIDNEY STONES (Charig, Webb, Payne and Wickham, 1986, Tables I and II)")
+    tk = np.array([[[81, 87], [234, 270]], [[192, 263], [55, 80]]])  # [size, (open, PCNL), (success, total)]
+    report_table("successes / treated, open surgery (1972-80) against percutaneous nephrolithotomy (1980-85)",
+                 tk, ["stones < 2 cm", "stones >= 2 cm or multiple"], ("open", "PCNL"))
+    sh = tk[1, :, 1] / tk[:, :, 1].sum(axis=0)
+    print(f"    share of patients with stones >= 2 cm or multiple: open {sh[0]:.3f}, PCNL {sh[1]:.3f}")
+    print(f"    PCNL share of large or multiple stones at which the two overall rates would be equal: {critical_mix(tk):.3f}")
+    print(f"    ESWL (1985): < 2 cm 200/204 = {200 / 204:.3f}; >= 2 cm or multiple 101/124 = {101 / 124:.3f};"
+          f" overall 301/328 = {301 / 328:.3f}")
+    print("    patients per arm needed for 80% power at a two-sided 5% level, if the observed rates were true:")
+    r, agg = rates(tk)
+    for lab, p1, p2 in (("< 2 cm", r[0, 0], r[0, 1]), (">= 2 cm or multiple", r[1, 0], r[1, 1]),
+                        ("combined", agg[0], agg[1])):
+        print(f"      {lab:<22} {p1:.3f} vs {p2:.3f}: {n_per_arm(p1, p2):.0f}")
+
+    header("6. DEREK JETER AND DAVID JUSTICE, 1995-1997 (Lahman database)")
     years = [1995, 1996, 1997]
     tj = load_batting({"jeterde01": "Jeter", "justida01": "Justice"}, years)
     report_table("hits / at-bats, Jeter against Justice, 1995 and 1996", tj[:2], ["1995", "1996"], ("Jeter", "Justice"))
     report_table("hits / at-bats, Jeter against Justice, 1995 to 1997", tj, ["1995", "1996", "1997"], ("Jeter", "Justice"))
+    share95 = tj[0, :, 1] / tj[:2, :, 1].sum(axis=0)
+    print(f"    share of 1995-96 at-bats that came in 1995: Jeter {share95[0]:.3f}, Justice {share95[1]:.3f}")
+    games = {}
+    with open(fetch("csv/Lahman/Batting.csv")) as f:
+        for row in csv.DictReader(f):
+            if row["playerID"] in ("jeterde01", "justida01") and row["yearID"] in ("1995", "1996"):
+                games[(row["playerID"], row["yearID"])] = games.get((row["playerID"], row["yearID"]), 0) + int(row["G"])
+    print("    games played: " + "; ".join(f"{k[0]} {k[1]} {v}" for k, v in sorted(games.items())))
+    tj2 = tj[:2][::-1]  # strata ordered 1996, 1995 so that stratum 2 is the bad season
+    print(f"    Justice's share of 1995 at-bats at which the two 1995-96 averages would be equal: {critical_mix(tj2):.3f}")
 
 
 if __name__ == "__main__":
