@@ -1,0 +1,87 @@
+MC dropout UCI benchmark, reference protocol (grid search, 100x epochs, one hidden layer)
+mean +- standard error over the published splits; Boston housing excluded
+
+Yacht: 20 splits, n_train 277, n_test 31
+  dropout rate chosen: 0.005 x18, 0.01 x2
+  tau chosen: 0.75 x20
+  RMSE (MC mean): 0.6571 +- 0.0546
+  test LL, MC dropout mixture: -1.2371 +- 0.0160
+  test LL, N(MC mean, 1/tau): -1.2460 +- 0.0382
+  test LL, N(MC mean, validation residual variance): -1.1647 +- 0.1287
+  noise sd 1/sqrt(tau): 1.1547 +- 0.0000
+  mean MC dropout sd: 0.7502 +- 0.0372
+  share of predictive variance from dropout spread: 0.2146 +- 0.0097
+  largest share at any test point: 0.9071 +- 0.0163
+  LL gain of the dropout spread over N(MC mean, 1/tau): 0.0088 +- 0.0256
+  LL gain of MC dropout over N(MC mean, validation residual variance): -0.0724 +- 0.1149
+  Spearman(score, |error|), mc: 0.300 +- 0.035
+  Spearman(score, |error|), ens: 0.405 +- 0.032
+  Spearman(score, |error|), knn: 0.111 +- 0.039
+  RMSE kept/all at 80% coverage, mc: 0.647 +- 0.044; at 50%: 0.562 +- 0.051
+  RMSE kept/all at 80% coverage, ens: 0.773 +- 0.048; at 50%: 0.571 +- 0.044
+  RMSE kept/all at 80% coverage, knn: 0.791 +- 0.050; at 50%: 0.691 +- 0.046
+  RMSE kept/all at 80% coverage, oracle: 0.469 +- 0.029; at 50%: 0.240 +- 0.018
+
+Concrete: 20 splits, n_train 927, n_test 103
+  dropout rate chosen: 0.005 x16, 0.01 x4
+  tau chosen: 0.05 x9, 0.075 x11
+  RMSE (MC mean): 4.8474 +- 0.1520
+  test LL, MC dropout mixture: -2.9510 +- 0.0287
+  test LL, N(MC mean, 1/tau): -3.0734 +- 0.0498
+  test LL, N(MC mean, validation residual variance): -3.0260 +- 0.0340
+  noise sd 1/sqrt(tau): 4.0208 +- 0.0937
+  mean MC dropout sd: 2.2347 +- 0.0419
+  share of predictive variance from dropout spread: 0.2395 +- 0.0108
+  largest share at any test point: 0.5423 +- 0.0189
+  LL gain of the dropout spread over N(MC mean, 1/tau): 0.1224 +- 0.0286
+  LL gain of MC dropout over N(MC mean, validation residual variance): 0.0750 +- 0.0140
+  Spearman(score, |error|), mc: -0.009 +- 0.029
+  Spearman(score, |error|), ens: 0.136 +- 0.026
+  Spearman(score, |error|), knn: 0.128 +- 0.027
+  RMSE kept/all at 80% coverage, mc: 0.991 +- 0.020; at 50%: 0.978 +- 0.042
+  RMSE kept/all at 80% coverage, ens: 0.881 +- 0.027; at 50%: 0.867 +- 0.031
+  RMSE kept/all at 80% coverage, knn: 0.857 +- 0.031; at 50%: 0.852 +- 0.035
+  RMSE kept/all at 80% coverage, oracle: 0.531 +- 0.016; at 50%: 0.294 +- 0.012
+
+Energy: 20 splits, n_train 691, n_test 77
+  dropout rate chosen: 0.005 x20
+  tau chosen: 0.75 x20
+  RMSE (MC mean): 0.5370 +- 0.0140
+  test LL, MC dropout mixture: -1.2118 +- 0.0052
+  test LL, N(MC mean, 1/tau): -1.1723 +- 0.0057
+  test LL, N(MC mean, validation residual variance): -0.8298 +- 0.0295
+  noise sd 1/sqrt(tau): 1.1547 +- 0.0000
+  mean MC dropout sd: 0.6540 +- 0.0083
+  share of predictive variance from dropout spread: 0.2408 +- 0.0042
+  largest share at any test point: 0.5850 +- 0.0118
+  LL gain of the dropout spread over N(MC mean, 1/tau): -0.0395 +- 0.0012
+  LL gain of MC dropout over N(MC mean, validation residual variance): -0.3820 +- 0.0248
+  Spearman(score, |error|), mc: 0.175 +- 0.022
+  Spearman(score, |error|), ens: 0.108 +- 0.021
+  Spearman(score, |error|), knn: 0.175 +- 0.019
+  RMSE kept/all at 80% coverage, mc: 0.944 +- 0.016; at 50%: 0.959 +- 0.036
+  RMSE kept/all at 80% coverage, ens: 0.954 +- 0.018; at 50%: 0.963 +- 0.024
+  RMSE kept/all at 80% coverage, knn: 0.981 +- 0.013; at 50%: 0.890 +- 0.025
+  RMSE kept/all at 80% coverage, oracle: 0.554 +- 0.015; at 50%: 0.288 +- 0.009
+
+Wine: 20 splits, n_train 1439, n_test 160
+  dropout rate chosen: 0.005 x1, 0.01 x1, 0.05 x12, 0.1 x6
+  tau chosen: 2.5 x4, 3 x11, 3.5 x5
+  RMSE (MC mean): 0.6253 +- 0.0090
+  test LL, MC dropout mixture: -0.9353 +- 0.0133
+  test LL, N(MC mean, 1/tau): -0.9634 +- 0.0176
+  test LL, N(MC mean, validation residual variance): -0.9537 +- 0.0151
+  noise sd 1/sqrt(tau): 0.5777 +- 0.0075
+  mean MC dropout sd: 0.2003 +- 0.0030
+  share of predictive variance from dropout spread: 0.1162 +- 0.0038
+  largest share at any test point: 0.5162 +- 0.0216
+  LL gain of the dropout spread over N(MC mean, 1/tau): 0.0281 +- 0.0063
+  LL gain of MC dropout over N(MC mean, validation residual variance): 0.0184 +- 0.0044
+  Spearman(score, |error|), mc: 0.066 +- 0.021
+  Spearman(score, |error|), ens: 0.103 +- 0.016
+  Spearman(score, |error|), knn: 0.099 +- 0.020
+  RMSE kept/all at 80% coverage, mc: 0.926 +- 0.012; at 50%: 0.864 +- 0.017
+  RMSE kept/all at 80% coverage, ens: 0.942 +- 0.009; at 50%: 0.876 +- 0.014
+  RMSE kept/all at 80% coverage, knn: 0.903 +- 0.011; at 50%: 0.859 +- 0.016
+  RMSE kept/all at 80% coverage, oracle: 0.611 +- 0.008; at 50%: 0.354 +- 0.007
+

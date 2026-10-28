@@ -1,0 +1,40 @@
+Covariates: UCI power plant, standardised; outcome simulated from the full-data OLS fit
+true intercept 454.365; true slopes temperature -14.737, vacuum -2.972, pressure 0.369, humidity -2.308
+noise sd sigma 4.557
+covariate correlations: 0.84, -0.51, -0.54, -0.41, -0.31, 0.10
+q=0.995: lambda 0.0050; limit slopes -14.351, -3.203, 0.453, -2.168; limit MC sd of f(x), mean over test points 0.920; limit |bias| of the MC mean, mean over test points 0.122
+q=0.95: lambda 0.0526; limit slopes -11.884, -4.546, 1.007, -1.249; limit MC sd of f(x), mean over test points 2.602; limit |bias| of the MC mean, mean over test points 0.915
+q=0.9: lambda 0.1111; limit slopes -10.267, -5.216, 1.387, -0.616; limit MC sd of f(x), mean over test points 3.461; limit |bias| of the MC mean, mean over test points 1.475
+
+Spread of f(x) (mean over 2000 test points, average of 200 data sets) and coverage of the 95% interval for the true f(x)
+  n=    50; posterior sd 1.464 (cover 0.954); q=0.995: MC sd 0.925 (cover 0.719); q=0.95: MC sd 2.601 (cover 0.927); q=0.9: MC sd 3.464 (cover 0.946)
+  n=    83; posterior sd 1.108 (cover 0.946); q=0.995: MC sd 0.927 (cover 0.787); q=0.95: MC sd 2.608 (cover 0.941); q=0.9: MC sd 3.469 (cover 0.952)
+  n=   138; posterior sd 0.850 (cover 0.948); q=0.995: MC sd 0.926 (cover 0.858); q=0.95: MC sd 2.610 (cover 0.959); q=0.9: MC sd 3.470 (cover 0.962)
+  n=   229; posterior sd 0.657 (cover 0.948); q=0.995: MC sd 0.925 (cover 0.904); q=0.95: MC sd 2.607 (cover 0.965); q=0.9: MC sd 3.464 (cover 0.964)
+  n=   380; posterior sd 0.508 (cover 0.957); q=0.995: MC sd 0.920 (cover 0.937); q=0.95: MC sd 2.600 (cover 0.967); q=0.9: MC sd 3.461 (cover 0.965)
+  n=   630; posterior sd 0.394 (cover 0.951); q=0.995: MC sd 0.924 (cover 0.963); q=0.95: MC sd 2.607 (cover 0.972); q=0.9: MC sd 3.465 (cover 0.967)
+  n=  1046; posterior sd 0.305 (cover 0.952); q=0.995: MC sd 0.922 (cover 0.975); q=0.95: MC sd 2.603 (cover 0.971); q=0.9: MC sd 3.462 (cover 0.966)
+  n=  1736; posterior sd 0.236 (cover 0.948); q=0.995: MC sd 0.921 (cover 0.985); q=0.95: MC sd 2.605 (cover 0.973); q=0.9: MC sd 3.465 (cover 0.968)
+  n=  2881; posterior sd 0.183 (cover 0.949); q=0.995: MC sd 0.921 (cover 0.992); q=0.95: MC sd 2.602 (cover 0.974); q=0.9: MC sd 3.462 (cover 0.968)
+  n=  4782; posterior sd 0.142 (cover 0.946); q=0.995: MC sd 0.920 (cover 0.994); q=0.95: MC sd 2.602 (cover 0.974); q=0.9: MC sd 3.461 (cover 0.968)
+  n=  7937; posterior sd 0.110 (cover 0.949); q=0.995: MC sd 0.920 (cover 0.997); q=0.95: MC sd 2.601 (cover 0.975); q=0.9: MC sd 3.460 (cover 0.968)
+  n= 13174; posterior sd 0.086 (cover 0.947); q=0.995: MC sd 0.921 (cover 0.998); q=0.95: MC sd 2.603 (cover 0.975); q=0.9: MC sd 3.463 (cover 0.968)
+  n= 21867; posterior sd 0.066 (cover 0.948); q=0.995: MC sd 0.921 (cover 0.999); q=0.95: MC sd 2.602 (cover 0.975); q=0.9: MC sd 3.461 (cover 0.968)
+  n= 36296; posterior sd 0.052 (cover 0.947); q=0.995: MC sd 0.920 (cover 1.000); q=0.95: MC sd 2.602 (cover 0.975); q=0.9: MC sd 3.462 (cover 0.968)
+  n= 60246; posterior sd 0.040 (cover 0.955); q=0.995: MC sd 0.921 (cover 1.000); q=0.95: MC sd 2.602 (cover 0.976); q=0.9: MC sd 3.461 (cover 0.968)
+  n=100000; posterior sd 0.031 (cover 0.947); q=0.995: MC sd 0.921 (cover 1.000); q=0.95: MC sd 2.603 (cover 0.976); q=0.9: MC sd 3.462 (cover 0.968)
+
+Spread of f(x) at n=2000 when every slope is multiplied by c (noise fixed)
+  c=0.00: posterior sd 0.220; q=0.995: MC sd 0.022; q=0.95: MC sd 0.055; q=0.9: MC sd 0.066
+  c=0.25: posterior sd 0.220; q=0.995: MC sd 0.231; q=0.95: MC sd 0.652; q=0.9: MC sd 0.868
+  c=0.50: posterior sd 0.220; q=0.995: MC sd 0.463; q=0.95: MC sd 1.307; q=0.9: MC sd 1.737
+  c=0.75: posterior sd 0.220; q=0.995: MC sd 0.692; q=0.95: MC sd 1.956; q=0.9: MC sd 2.600
+  c=1.00: posterior sd 0.220; q=0.995: MC sd 0.920; q=0.95: MC sd 2.600; q=0.9: MC sd 3.459
+  c=1.25: posterior sd 0.220; q=0.995: MC sd 1.150; q=0.95: MC sd 3.253; q=0.9: MC sd 4.328
+  c=1.50: posterior sd 0.220; q=0.995: MC sd 1.381; q=0.95: MC sd 3.901; q=0.9: MC sd 5.190
+  c=1.75: posterior sd 0.220; q=0.995: MC sd 1.611; q=0.95: MC sd 4.555; q=0.9: MC sd 6.060
+  c=2.00: posterior sd 0.220; q=0.995: MC sd 1.841; q=0.95: MC sd 5.203; q=0.9: MC sd 6.921
+  c=2.25: posterior sd 0.220; q=0.995: MC sd 2.072; q=0.95: MC sd 5.854; q=0.9: MC sd 7.785
+  c=2.50: posterior sd 0.220; q=0.995: MC sd 2.300; q=0.95: MC sd 6.507; q=0.9: MC sd 8.659
+  c=2.75: posterior sd 0.220; q=0.995: MC sd 2.532; q=0.95: MC sd 7.158; q=0.9: MC sd 9.521
+  c=3.00: posterior sd 0.220; q=0.995: MC sd 2.760; q=0.95: MC sd 7.799; q=0.9: MC sd 10.376

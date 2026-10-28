@@ -15,3 +15,4 @@ portugal-iva-zero/**/*.csv -filter -diff -merge text
 multiple-imputation/**/*.csv -filter -diff -merge text
 statistical-evidence-and-decisions/**/*.csv -filter -diff -merge text
 post-cutoff-forecasting/**/*.csv -filter -diff -merge text
+mc-dropout-posterior/**/*.csv -filter -diff -merge text
