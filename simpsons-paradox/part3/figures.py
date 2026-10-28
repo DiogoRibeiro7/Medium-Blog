@@ -22,14 +22,13 @@ import numpy as np
 from real_data_numbers import (
     AGES,
     SEED,
-    batting_seasons,
+    baseball,
     cfr_effects,
-    count_pair_reversals,
     load_covid,
     load_penguins,
     load_sat,
     ols,
-    reversal_in_table,
+    random_tables,
 )
 
 OUT = Path(__file__).parent / "figures"
@@ -133,7 +132,7 @@ def figure_sat() -> None:
     d = load_sat()
     q = np.quantile(d["frac"], [1 / 3, 2 / 3])
     g = np.digitize(d["frac"], q)
-    fig, ax = plt.subplots(figsize=(8.8, 5.0))
+    fig, ax = plt.subplots(figsize=(8.8, 5.6))
     cols = (AQUA, VIOLET, ORANGE)
     names = (f"fewer than {q[0]:.0f}% take the SAT", f"{q[0]:.0f}% to {q[1]:.0f}%", f"more than {q[1]:.0f}%")
     for k in range(3):
@@ -152,8 +151,8 @@ def figure_sat() -> None:
             f"holding the share taking fixed: {b2[1]:+.1f} per $1,000", fontsize=8.5, color=INK2, ha="right")
     ax.set_xlabel("average teacher salary, 1994-95 (thousand dollars)")
     ax.set_ylabel("average total SAT score")
-    ax.set_title("Higher-paying states score lower, because more of their students sit the test")
-    ax.legend(loc="lower left", fontsize=8.5)
+    ax.set_title("Higher-paying states score lower, and more of their students sit the test")
+    ax.legend(loc="upper center", bbox_to_anchor=(0.5, -0.14), ncol=2, fontsize=8.5)
     fig.tight_layout()
     fig.savefig(OUT / "fig3_sat.png")
     plt.close(fig)
@@ -184,21 +183,14 @@ def figure_penguins() -> None:
 
 
 def figure_chance() -> None:
+    # the same random stream, in the same order, as section 4 of real_data_numbers.py, so the plotted values
+    # are the ones printed there
     rng = np.random.default_rng(SEED)
-    draws = 400_000
-    cells = rng.dirichlet(np.ones(8), size=draws).reshape(draws, 2, 2, 2)
-    rev = reversal_in_table(cells)
-    pops = cells[~rev][:10_000]
-    flat = pops.reshape(len(pops), 8)
-    ns = [30, 50, 100, 200, 500, 1000, 2000, 5000, 10000]
-    rates = []
-    for n_s in ns:
-        counts = np.array([rng.multinomial(n_s, f) for f in flat]).reshape(len(pops), 2, 2, 2).astype(float)
-        valid = np.all(counts.sum(axis=-1) > 0, axis=(-1, -2))
-        r = reversal_in_table(np.where(counts.sum(axis=-1, keepdims=True) > 0, counts, 1.0))
-        rates.append(100 * np.mean(r[valid]))
+    _, _, sampled = random_tables(rng)
+    bb = baseball(rng)
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 4.4))
-    ax1.plot(ns, rates, "o-", color=BLUE, lw=2.2)
+    ns = [n for n, _, _ in sampled]
+    ax1.plot(ns, [100 * r for _, r, _ in sampled], "o-", color=BLUE, lw=2.2)
     ax1.axhline(100 / 60, color=INK2, lw=1, ls=(0, (4, 2)))
     ax1.text(ns[-1], 100 / 60 + 0.05, "random population tables: 1/60", fontsize=8.5, color=INK2, ha="right")
     ax1.set_xscale("log")
@@ -207,31 +199,20 @@ def figure_chance() -> None:
     ax1.set_title("Spurious reversals in samples from populations without one")
     ax1.set_ylim(0, 2.0)
 
-    seasons = batting_seasons(1990, 2019, 100)
-    obs, null = [], []
-    for y in range(1990, 2019):
-        ids = sorted({pid for (pid, yy) in seasons if yy == y} & {pid for (pid, yy) in seasons if yy == y + 1})
-        h1 = np.array([seasons[(i, y)][0] for i in ids], float)
-        ab1 = np.array([seasons[(i, y)][1] for i in ids], float)
-        h2 = np.array([seasons[(i, y + 1)][0] for i in ids], float)
-        ab2 = np.array([seasons[(i, y + 1)][1] for i in ids], float)
-        r, pairs = count_pair_reversals(h1, ab1, h2, ab2)
-        p_true = (h1 + h2) / (ab1 + ab2)
-        s1 = rng.binomial(ab1.astype(int), p_true).astype(float)
-        s2 = rng.binomial(ab2.astype(int), p_true).astype(float)
-        obs.append(1000 * r / pairs)
-        null.append(1000 * count_pair_reversals(s1, ab1, s2, ab2)[0] / pairs)
-    years = np.arange(1990, 2019)
-    ax2.plot(years, obs, "o-", color=ORANGE, lw=2, ms=4, label="observed")
-    ax2.plot(years, null, "o-", color=MUTED, lw=1.6, ms=4, label="one simulation, true averages constant")
+    per = 1000 / bb["pairs"]
+    ax2.plot(bb["years"], bb["observed"] * per, "o-", color=ORANGE, lw=2, ms=4, label="observed")
+    ax2.plot(bb["years"], bb["swap"].mean(axis=0) * per, "-", color=BLUE, lw=1.6,
+             label="observed averages, at-bat totals swapped at random")
+    ax2.plot(bb["years"], bb["constant"].mean(axis=0) * per, "-", color=MUTED, lw=1.6,
+             label="true averages constant, binomial noise")
     ax2.set_xlabel("first season of the pair")
     ax2.set_ylabel("reversals per 1,000 pairs of players")
-    ax2.set_title("Baseball: more reversals than noise alone produces")
-    ax2.legend(loc="upper left", fontsize=9)
+    ax2.set_title("Baseball: real changes in averages, not noise alone")
+    ax2.set_ylim(0, None)
+    ax2.legend(loc="lower left", fontsize=8.5)
     fig.tight_layout()
     fig.savefig(OUT / "fig5_chance.png")
     plt.close(fig)
-
 
 if __name__ == "__main__":
     figure_covid_age()

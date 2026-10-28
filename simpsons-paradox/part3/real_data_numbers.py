@@ -8,8 +8,8 @@ Data downloaded on first run from pinned commits on GitHub, checked against SHA-
 in data/:
   - Palmer penguins (Horst, Hill and Gorman; data from Gorman, Williams and Fraser, 2014);
   - mosaicData SAT (state averages for 1994-95, assembled by Guber, 1999), via Rdatasets;
-  - Lahman Batting, via Rdatasets.
-The COVID-19 case and death counts by age are short and are written into the script with their sources.
+  - Lahman Batting, via Rdatasets;
+  - COVID-19 confirmed cases and deaths by age, as compiled by von Kuegelgen, Gresele and Schoelkopf (2021).
 
 Sections
 1. COVID-19 case fatality by age, China and Italy.
@@ -212,6 +212,64 @@ def count_pair_reversals(h1, ab1, h2, ab2):
     return int(rev.sum()), n * (n - 1) // 2
 
 
+def random_tables(rng, draws: int = 2_000_000, n_pops: int = 20_000, sizes=(50, 100, 500, 1000, 5000)):
+    """Reversal rate in tables drawn uniformly from the simplex, then, for the first n_pops tables without a
+    reversal, the share of multinomial samples of each size that show one."""
+    cells = rng.dirichlet(np.ones(8), size=draws).reshape(draws, 2, 2, 2)
+    rev = reversal_in_table(cells)
+    pops = cells[~rev][:n_pops]
+    flat = pops.reshape(len(pops), 8)
+    sampled = []
+    for n_s in sizes:
+        counts = np.array([rng.multinomial(n_s, f) for f in flat]).reshape(len(pops), 2, 2, 2).astype(float)
+        valid = np.all(counts.sum(axis=-1) > 0, axis=(-1, -2))
+        rev_s = reversal_in_table(np.where(counts.sum(axis=-1, keepdims=True) > 0, counts, 1.0))
+        sampled.append((n_s, float(np.mean(rev_s[valid])), int(valid.sum())))
+    return float(rev.mean()), draws, sampled
+
+
+def baseball(rng, first: int = 1990, last: int = 2018, min_ab: int = 100, null_sims: int = 20):
+    """Observed pair reversals for each pair of consecutive seasons and three null models, per season pair:
+    constant (each player's true average equal to his two-season average in both seasons, hits binomial);
+    shift (as constant, plus the change in the combined average of these players between the two seasons);
+    swap (each player's observed season averages kept, his two at-bat totals swapped with probability 1/2)."""
+    seasons = batting_seasons(first, last + 1, min_ab)
+    years = list(range(first, last + 1))
+    out = {"years": np.array(years), "pairs": np.zeros(len(years), int), "observed": np.zeros(len(years), int),
+           "null_sims": null_sims, "shift_size": np.zeros(len(years))}
+    for key in ("constant", "shift", "swap"):
+        out[key] = np.zeros((null_sims, len(years)))
+    z_all, d_avg, d_ab = [], [], []
+    for t, y in enumerate(years):
+        ids = sorted({pid for (pid, yy) in seasons if yy == y} & {pid for (pid, yy) in seasons if yy == y + 1})
+        h1 = np.array([seasons[(i, y)][0] for i in ids], float)
+        ab1 = np.array([seasons[(i, y)][1] for i in ids], float)
+        h2 = np.array([seasons[(i, y + 1)][0] for i in ids], float)
+        ab2 = np.array([seasons[(i, y + 1)][1] for i in ids], float)
+        out["observed"][t], out["pairs"][t] = count_pair_reversals(h1, ab1, h2, ab2)
+        z_all.append(reversal_pairs_detail(h1, ab1, h2, ab2))
+        d_avg.append(h2 / ab2 - h1 / ab1)
+        d_ab.append(ab2 - ab1)
+        p_true = (h1 + h2) / (ab1 + ab2)
+        lg1, lg2 = h1.sum() / ab1.sum(), h2.sum() / ab2.sum()
+        lgc = (h1.sum() + h2.sum()) / (ab1.sum() + ab2.sum())
+        out["shift_size"][t] = lg2 - lg1
+        p1, p2 = np.clip(p_true + lg1 - lgc, 0, 1), np.clip(p_true + lg2 - lgc, 0, 1)
+        a1, a2 = h1 / ab1, h2 / ab2
+        n1, n2 = ab1.astype(int), ab2.astype(int)
+        for s in range(null_sims):
+            out["constant"][s, t] = count_pair_reversals(rng.binomial(n1, p_true).astype(float), ab1,
+                                                         rng.binomial(n2, p_true).astype(float), ab2)[0]
+            out["shift"][s, t] = count_pair_reversals(rng.binomial(n1, p1).astype(float), ab1,
+                                                      rng.binomial(n2, p2).astype(float), ab2)[0]
+            swap = rng.random(len(ids)) < 0.5
+            b1, b2 = np.where(swap, ab2, ab1), np.where(swap, ab1, ab2)
+            out["swap"][s, t] = count_pair_reversals(a1 * b1, b1, a2 * b2, b2)[0]
+    out["z"] = tuple(np.concatenate([z[k] for z in z_all]) for k in range(3))
+    out["d_avg"], out["d_ab"] = np.concatenate(d_avg), np.concatenate(d_ab)
+    return out
+
+
 def main() -> None:
     header("1. COVID-19 CASE FATALITY BY AGE: CHINA (17 FEBRUARY 2020) AND ITALY (9 MARCH 2020)")
     cov = load_covid("covid_countries.csv")
@@ -319,6 +377,22 @@ def main() -> None:
         print(f"    {names[i]:<13} crude {100 * crude[i]:5.2f}% (rank {rk_c[i]:.0f}); standardised {100 * stdz[i]:5.2f}% (rank {rk_s[i]:.0f})")
     print(f"    Spearman correlation of the two rankings {stats.spearmanr(crude, stdz).statistic:+.3f};"
           f" largest rank change {int(np.max(np.abs(rk_c - rk_s)))} places")
+    share70 = np.array([latest[c][1][0][7:].sum() / latest[c][1][0].sum() for c in names])
+    share80 = np.array([latest[c][1][0][8] / latest[c][1][0].sum() for c in names])
+    print(f"  share of cases aged 70+ across the eleven countries: {100 * share70.min():.1f}% to {100 * share70.max():.1f}%"
+          f" (ratio {share70.max() / share70.min():.1f}); aged 80+: {100 * share80.min():.1f}% to {100 * share80.max():.1f}%"
+          f" (ratio {share80.max() / share80.min():.1f})")
+    print(f"  Spearman correlation of crude CFR with the share of cases aged 70+: {stats.spearmanr(crude, share70).statistic:+.3f}")
+    print("  CFR in the 80+ band divided by CFR in the 20-29 band (countries with a death at 20-29):")
+    ratios = []
+    for c in names:
+        cc, dd = latest[c][1]
+        if dd[2] > 0:
+            ratios.append((c, (dd[8] / cc[8]) / (dd[2] / cc[2])))
+    print("    " + "; ".join(f"{c} {r:.0f}" for c, r in ratios))
+    pc = sum(latest[c][1][0] for c in names)
+    pdd = sum(latest[c][1][1] for c in names)
+    print(f"    all eleven countries pooled: {(pdd[8] / pc[8]) / (pdd[2] / pc[2]):.0f}")
 
     header("2. SAT SCORES AND TEACHER SALARIES, US STATES, 1994-95 (Guber, 1999; mosaicData::SAT)")
     d = load_sat()
@@ -346,8 +420,9 @@ def main() -> None:
         b, se, dof = ols(d["sat"], X)
         lo, hi = ci(b[1], se[1], dof)
         print(f"    SAT on salary and {label:<28} salary {b[1]:+.3f} per thousand dollars [{lo:+.3f}, {hi:+.3f}]")
-    order = np.argsort(d["frac"])
-    for lab, idx in (("lowest participation", order[:3]), ("highest participation", order[-3:][::-1])):
+    order = np.argsort(d["frac"], kind="stable")
+    low = [i for i in order if d["frac"][i] <= d["frac"][order[2]]]
+    for lab, idx in (("lowest participation (ties included)", low), ("highest participation", order[-3:][::-1])):
         print(f"  {lab}: " + "; ".join(f"{d['state'][i]} {d['frac'][i]:.0f}% taking, SAT {d['sat'][i]:.0f}, salary {d['salary'][i]:.1f}"
                                        for i in idx))
     # thirds by share taking
@@ -382,6 +457,12 @@ def main() -> None:
         lo, hi = ci(b[1], se[1], dof)
         print(f"  {s:<10} mean length {p['length'][m].mean():.1f}, mean depth {p['depth'][m].mean():.2f};"
               f" slope {b[1]:+.4f} [{lo:+.4f}, {hi:+.4f}]; correlation {np.corrcoef(p['length'][m], p['depth'][m])[0, 1]:+.3f}")
+    for s1, s2 in (("Adelie", "Chinstrap"), ("Adelie", "Gentoo"), ("Chinstrap", "Gentoo")):
+        m = (p["species"] == s1) | (p["species"] == s2)
+        X = np.column_stack([np.ones(m.sum()), p["length"][m]])
+        b, se, dof = ols(p["depth"][m], X)
+        lo, hi = ci(b[1], se[1], dof)
+        print(f"  {s1} and {s2} pooled: slope {b[1]:+.4f} [{lo:+.4f}, {hi:+.4f}]")
     tot_cov = np.cov(p["length"], p["depth"], bias=True)[0, 1]
     within, between = 0.0, 0.0
     for s in ("Adelie", "Chinstrap", "Gentoo"):
@@ -405,72 +486,53 @@ def main() -> None:
 
     header("4. HOW OFTEN REVERSALS HAPPEN BY CHANCE")
     rng = np.random.default_rng(SEED)
-    draws = 2_000_000
-    cells = rng.dirichlet(np.ones(8), size=draws).reshape(draws, 2, 2, 2)
-    rev = reversal_in_table(cells)
-    pr = rev.mean()
+    pr, draws, sampled = random_tables(rng)
     print(f"  2 x 2 x 2 tables drawn uniformly from the probability simplex ({draws:,} draws):"
           f" reversal in {pr:.5f} (SE {math.sqrt(pr * (1 - pr) / draws):.5f}); 1/60 = {1 / 60:.5f}")
-    print("  Sampling noise: populations drawn uniformly from the simplex WITHOUT a reversal, samples of n")
-    print("  drawn from each, share of samples showing a reversal the population does not have:")
-    pops = cells[~rev][:20_000]
-    flat = pops.reshape(len(pops), 8)
-    for n_s in (50, 100, 500, 1000, 5000):
-        counts = np.array([rng.multinomial(n_s, f) for f in flat]).reshape(len(pops), 2, 2, 2).astype(float)
-        valid = np.all(counts.sum(axis=-1) > 0, axis=(-1, -2))
-        rev_s = reversal_in_table(np.where(counts.sum(axis=-1, keepdims=True) > 0, counts, 1.0))
-        print(f"    n = {n_s:>5}: {np.mean(rev_s[valid]):.4f} of {valid.sum():,} samples with every cell group non-empty")
+    print("  Sampling noise: the first 20,000 of those population tables WITHOUT a reversal, one sample of n drawn")
+    print("  from each, share of samples showing a reversal the population does not have (samples with an empty")
+    print("  cell group, where a rate is undefined, are left out):")
+    for n_s, rate, valid in sampled:
+        print(f"    n = {n_s:>5}: {rate:.4f} of {valid:,} samples with every cell group non-empty")
     print()
-    print("  Every pair of regular players over consecutive seasons, 1990-2018 (Lahman; at least 100 at-bats in")
-    print("  each season of the pair; 1994-95 strike seasons included as they are):")
-    seasons = batting_seasons(1990, 2019, 100)
-    obs_rev, obs_pairs, null_rev = 0, 0, []
-    d_avg, d_ab = [], []
-    z_all = []
-    null_sims = 20
-    null_counts = np.zeros(null_sims)
-    per_year = []
-    for y in range(1990, 2019):
-        ids = sorted({pid for (pid, yy) in seasons if yy == y} & {pid for (pid, yy) in seasons if yy == y + 1})
-        h1 = np.array([seasons[(i, y)][0] for i in ids], float)
-        ab1 = np.array([seasons[(i, y)][1] for i in ids], float)
-        h2 = np.array([seasons[(i, y + 1)][0] for i in ids], float)
-        ab2 = np.array([seasons[(i, y + 1)][1] for i in ids], float)
-        r, pairs = count_pair_reversals(h1, ab1, h2, ab2)
-        z1, z2, zc = reversal_pairs_detail(h1, ab1, h2, ab2)
-        z_all.append((z1, z2, zc))
-        obs_rev += r
-        obs_pairs += pairs
-        per_year.append((y, len(ids), pairs, r))
-        d_avg.append(h2 / ab2 - h1 / ab1)
-        d_ab.append(ab2 - ab1)
-        p_true = (h1 + h2) / (ab1 + ab2)
-        for s in range(null_sims):
-            s1 = rng.binomial(ab1.astype(int), p_true)
-            s2 = rng.binomial(ab2.astype(int), p_true)
-            null_counts[s] += count_pair_reversals(s1.astype(float), ab1, s2.astype(float), ab2)[0]
-    print(f"    {len(per_year)} season pairs, {obs_pairs:,} player pairs; observed reversals {obs_rev:,}"
+    print("  Every pair of regular players over consecutive seasons, 1990-91 to 2018-19 (Lahman; at least 100")
+    print("  at-bats in each season of the pair; 1994-95 strike seasons included as they are):")
+    bb = baseball(rng)
+    obs_rev, obs_pairs, k = bb["observed"].sum(), bb["pairs"].sum(), bb["null_sims"]
+    print(f"    {len(bb['years'])} season pairs, {obs_pairs:,} player pairs; observed reversals {obs_rev:,}"
           f" ({obs_rev / obs_pairs:.5f} of pairs, about 1 in {obs_pairs / obs_rev:.0f})")
-    print(f"    null model (each player's true average the same in both seasons, hits binomial):"
-          f" mean {null_counts.mean():,.0f} reversals (range {null_counts.min():,.0f} to {null_counts.max():,.0f}"
-          f" over {null_sims} simulations); observed / null {obs_rev / null_counts.mean():.3f}")
-    z1 = np.concatenate([z[0] for z in z_all])
-    z2 = np.concatenate([z[1] for z in z_all])
-    zc = np.concatenate([z[2] for z in z_all])
+    for key, label in (("constant", "null 1, each player's true average the same in both seasons, hits binomial"),
+                       ("shift", "null 2, as null 1 plus the shift in the average of these players between the seasons"),
+                       ("swap", "null 3, each player's observed averages kept, his two at-bat totals swapped between"
+                                " the seasons with probability 1/2")):
+        tot = bb[key].sum(axis=1)
+        print(f"    {label}: mean {tot.mean():,.0f} reversals (range {tot.min():,.0f} to {tot.max():,.0f} over {k}"
+              f" simulations); observed / null {obs_rev / tot.mean():.3f}")
+    above = np.sum(bb["observed"] > bb["constant"].mean(axis=0))
+    print(f"    season pairs in which the observed count exceeds the mean of null 1: {above} of {len(bb['years'])}")
+    c, sh, sw = (bb[key].sum(axis=1).mean() for key in ("constant", "shift", "swap"))
+    print(f"    share of the excess over null 1 accounted for by the shift in the average: {(sh - c) / (obs_rev - c):.3f}")
+    z1, z2, zc = bb["z"]
     both = (z1 > 1.96) & (z2 > 1.96)
     print(f"    of the observed reversals: both within-season differences beyond 1.96 standard errors {both.sum()};"
           f" at least one {np.sum((z1 > 1.96) | (z2 > 1.96))}; combined difference beyond 1.96 {np.sum(np.abs(zc) > 1.96)};"
           f" all three {np.sum(both & (np.abs(zc) > 1.96))}")
     print(f"    median absolute z of the within-season differences {np.median(np.concatenate([z1, z2])):.3f};"
           f" of the combined difference {np.median(np.abs(zc)):.3f}")
-    da, db = np.concatenate(d_avg), np.concatenate(d_ab)
+    da, db = bb["d_avg"], bb["d_ab"]
     rho = stats.spearmanr(da, db)
     print(f"    player season-pairs: {len(da):,}; rank correlation between the change in a player's average and the change"
           f" in his at-bats from one season to the next {rho.statistic:+.3f}")
-    y, k, pairs, r = max(per_year, key=lambda t: t[3] / t[2])
-    y2, k2, pairs2, r2 = min(per_year, key=lambda t: t[3] / t[2])
-    print(f"    highest share: {y}-{y + 1}, {r} of {pairs:,} pairs; lowest: {y2}-{y2 + 1}, {r2} of {pairs2:,}")
-
+    better_heavy = np.mean(np.sign(da) == np.sign(db))
+    print(f"    share of player season-pairs with more at-bats in the season of the higher average {better_heavy:.3f}")
+    shift = 1000 * bb["shift_size"]
+    print(f"    shift in the combined average of the same players from one season to the next, in points of average:"
+          f" median {np.median(shift):+.1f}, from {shift.min():+.1f} to {shift.max():+.1f}; negative in"
+          f" {np.sum(shift < 0)} of {len(shift)}")
+    share = bb["observed"] / bb["pairs"]
+    i, j = np.argmax(share), np.argmin(share)
+    print(f"    highest share: {bb['years'][i]}-{bb['years'][i] + 1}, {bb['observed'][i]} of {bb['pairs'][i]:,} pairs;"
+          f" lowest: {bb['years'][j]}-{bb['years'][j] + 1}, {bb['observed'][j]} of {bb['pairs'][j]:,}")
 
 if __name__ == "__main__":
     main()
