@@ -284,6 +284,10 @@ false.** High; verified.
   - the no-south heat estimate draws 42% of its variation from Romania (I4);
   - area weights give Romania 30%, France 19% and Hungary 12%.
 
+  *Correction, 2026-10-28:* the 30%, 19% and 12% are shares of the sample's maize area.
+  Under area weights, Romania supplies 48% of the identifying variation of EDD
+  ([MAIZE.md](MAIZE.md), after review). The point stands, more strongly.
+
 **C4. The placebo paragraph's explanation does not fit the data.** Medium; verified
 (I5).
 

@@ -227,13 +227,23 @@ def test_the_pointer_to_the_maize_article_matches_its_results() -> None:
     maize = ROOT / "docs" / "maize" / "results" / "results.json"
     if not maize.exists():
         pytest.skip("No maize results.")
-    m = json.loads(maize.read_text(encoding="utf-8"))["decisions"]
+    r = json.loads(maize.read_text(encoding="utf-8"))
+    m, ph, e5 = r["decisions"], r["post_hoc"], r["E5"]
+    lost = {key: sum(1 for x in ph["leave_one_country_out"]
+                     if x[key]["verdict"] != "established negative") for key in ("E1", "E2")}
     text = re.sub(r"\s+", " ", TEMPLATE.read_text(encoding="utf-8"))
     claims = {
-        "heat and drought both lower yields by the study's rules":
-            m["E1"]["verdict"] == m["E2"]["verdict"] == "established negative",
-        "though the heat result passes only narrowly":
-            max(m["E1"]["p_twoway_holm"], m["E1"]["p_bootstrap_holm"]) >= 0.04,
+        "By the study's rules, a dry season lowers maize yields":
+            m["E2"]["verdict"] == "established negative",
+        "and that result is the sturdier of the two": lost["E2"] < lost["E1"],
+        "clears the bar only just":
+            m["E1"]["verdict"] == "established negative"
+            and max(m["E1"]["p_twoway_holm"], m["E1"]["p_bootstrap_holm"]) >= 0.04,
+        "it rests largely on Romania":
+            next(iter(ph["E1_contributions"]["country"])) == "RO",
+        "its check on the weather after maturity is split between the two methods":
+            (e5["p_twoway"] < 0.05) != (e5["p_bootstrap"] < 0.05),
+        "publication/maize/article.md": (ROOT / "publication" / "maize" / "article.md").exists(),
     }
     for phrase, holds in claims.items():
         assert phrase in text, phrase

@@ -229,6 +229,77 @@ def _json(root: Path, *parts: str) -> Any:
     return json.loads(root.joinpath(*parts).read_text(encoding="utf-8"))
 
 
+def _wheat_harvest_edd_median(root: Path) -> float:
+    """Median degree days above 30 °C over wheat's harvest window (Amendment A1), across
+    the wheat panel's region-years that A1's data rule keeps."""
+    import csv
+    import statistics
+
+    with (root / "docs" / "panel" / "panel.csv").open(encoding="utf-8") as stream:
+        keys = {(r["geo"], r["year"]) for r in csv.DictReader(stream)}
+    flags = root / "docs" / "amendment" / "quality_flags.csv"
+    with flags.open(encoding="utf-8") as stream:
+        keys -= {(r["geo"], r["year"]) for r in csv.DictReader(stream)}
+    with (root / "docs" / "panel" / "weather.csv").open(encoding="utf-8") as stream:
+        return statistics.median(float(r["edd_30"]) for r in csv.DictReader(stream)
+                                 if r["window"] == "harvest" and r["weighting"] == "all"
+                                 and (r["geo"], r["year"]) in keys and r["edd_30"] != "")
+
+
+def _after_review_values(r: Mapping[str, Any], wheat_a1: Mapping[str, Any],
+                         root: Path) -> dict[str, str]:
+    """The maize article's values from the checks added after its review (post hoc)."""
+    from eu_wheat_weather.maize_analysis import IRRIGATED, heat_difference
+
+    ph, e1 = r["post_hoc"], r["E1"]["estimate"]
+    contrib, iv, cy = ph["E1_contributions"], ph["identifying_variation"], \
+        ph["without_largest_country_year"]
+    south, pl, swing = ph["south"], ph["placebo"], ph["heat_swing"]
+    ni = ph["not_irrigated_E1_variance"]
+    sens = {(x["variant"], x["estimand"]): x for x in r["sensitivity"]}
+    gap, margin = heat_difference(r["E1"], wheat_a1["E1"])
+    v = {
+        "e1_p_country": p_value3(ph["E1_variance"]["country"]["p"]),
+        "n_loo_e1_lost": str(sum(1 for x in ph["leave_one_country_out"]
+                                 if x["E1"]["verdict"] != "established negative")),
+        "e1_share_ro": _share(contrib["country"]["RO"] / e1),
+        "e1_share_ro32": _share(contrib["region"]["RO32"] / e1),
+        "ro2024_n": str(cy["region_years"]), "ro2024_year": cy["country_year"].split()[1],
+        "ro2024_e1_pct": pct(cy["E1"]["estimate"]),
+        "ro2024_holm_twoway": p_value3(cy["E1"]["p_twoway_holm"]),
+        "ro2024_holm_boot": p_value3(cy["E1"]["p_bootstrap_holm"]),
+        "e1_south_pct": pct(south["south"]["estimate"]),
+        "e1_rest_pct": pct(south["elsewhere"]["estimate"]),
+        **{f"edd_share_{c.lower()}": _share(iv["edd"][c]) for c in ("ES", "IT", "RO")},
+        "south_var_share": _share(sum(s for c, s in iv["edd"].items() if c in IRRIGATED)),
+        "south_area_share": _share(sum(s for c, s in ph["maize_area"].items()
+                                       if c in IRRIGATED)),
+        "swing_median": f"{swing['median_change']:.1f}",
+        "swing_share10": _share(swing["share_changes_10"]),
+        "heat_variance_left": _share(swing["variance_left"]),
+        **{f"hours_{b.removeprefix('t_').replace('_', '')}": f"{h:.0f}"
+           for b, h in ph["hours"].items()},
+        "ge36_share_es": _share(iv["t_ge36"]["ES"]),
+        "placebo_rain_pct": pct(pl["terms"]["p_post_maturity"]["estimate"]),
+        "placebo_rain_p": p_value3(pl["terms"]["p_post_maturity"]["p_twoway"]),
+        "placebo_without_p": p_value3(pl["without_country"]["p_twoway"]),
+        "e1_with_placebo_pct": pct(pl["E1_with_placebo_terms"]["estimate"]),
+        "e2_not_irrigated": pct(sens[("not_irrigated", "E2")]["estimate"]),
+        "ro_share_not_irrigated": _share(iv["edd_not_irrigated"]["RO"]),
+        "ro_share_area_weighted": _share(iv["edd_area_weighted"]["RO"]),
+        "not_irrigated_se_ratio": f"{ni['country']['se'] / ni['twoway']['se']:.1f}",
+        "heat_gap": _signed(gap, 1), "heat_gap_margin": f"{margin:.1f}",
+        "wheat_edd_median": f"{_wheat_harvest_edd_median(root):.1f}",
+        "n_estimated": str(ph["estimated_rows"]["region_years"]),
+        "estimated_first": str(ph["estimated_rows"]["years"][0]),
+    }
+    for year, parts in ph["E4_gap_by_country"].items():
+        if year != "2015":
+            shares = list(parts.values())
+            v[f"e4_{year}_top2"] = _share(sum(shares[:2]) / sum(shares))
+    return v
+
+
 def maize_values(root: Path) -> dict[str, str]:
     """The values the maize article quotes (METHODS.md, section 9)."""
     r = _json(root, "docs", "maize", "results", "results.json")
@@ -279,7 +350,7 @@ def maize_values(root: Path) -> dict[str, str]:
         v[f"e4_{y}_obs"] = _signed(row["eu_yield_observed_pct"], 1) + "%"
         v[f"e4_{y}_pred"] = _signed(row["eu_yield_predicted_pct"], 1) + "%"
         v[f"e4_{y}_corr"] = f"{row['correlation']:.2f}"
-    return v
+    return v | _after_review_values(r, wheat_a1, root)
 
 
 def outputs(root: Path) -> dict[str, str]:
