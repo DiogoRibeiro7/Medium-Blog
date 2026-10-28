@@ -310,7 +310,7 @@ Bansak, K., Hainmueller, J., Hopkins, D. J. and Yamamoto, T. (2018). The Number 
 
 Chernozhukov, V., Demirer, M., Duflo, E. and Fernández-Val, I. (2023). Generic Machine Learning Inference on Heterogeneous Treatment Effects in Randomized Experiments. *Journal of Political Economy*, 131(7), 1805–1851. https://doi.org/10.1086/722086
 
-Dudík, M., Langford, J. and Li, L. (2011). Doubly Robust Policy Evaluation and Learning. *Proceedings of the 28th International Conference on Machine Learning*, 1097–1104.
+Dudík, M., Langford, J. and Li, L. (2011). Doubly Robust Policy Evaluation and Learning. *Proceedings of the 28th International Conference on Machine Learning*, 1097–1104. https://icml.cc/2011/papers/554_icmlpaper.pdf
 
 Hernán, M. A. and Robins, J. M. (2020). *Causal Inference: What If*. Chapman & Hall/CRC. https://miguelhernan.org/whatifbook
 
