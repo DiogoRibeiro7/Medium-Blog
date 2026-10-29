@@ -1,0 +1,79 @@
+name: portugal-housing-generations
+
+on:
+  pull_request:
+    paths:
+      - 'portugal-housing-generations/**'
+      - '.github/workflows/portugal-housing-generations.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'portugal-housing-generations/**'
+      - '.github/workflows/portugal-housing-generations.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: portugal-housing-generations
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      - name: Run the tests
+        run: python -m unittest discover -p 'test_*.py' -v
+
+      - name: Rebuild results.json from the pinned snapshots and compare
+        run: |
+          python analysis.py > /dev/null
+          git diff --exit-code -- results.json
+
+  # Refreshing the ECB series is a manual, reviewed step: dispatch this workflow
+  # on a branch other than main; the job commits the dated raw response and its
+  # retrieval record to that branch, and the change is reviewed in a pull request.
+  # The defaults in analysis.py then have to be pointed at the new files.
+  fetch-mortgage-rates:
+    if: github.event_name == 'workflow_dispatch' && github.ref != 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+    defaults:
+      run:
+        working-directory: portugal-housing-generations
+    steps:
+      - name: Check out the branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      - name: Download the ECB cost-of-borrowing series
+        run: python fetch_mortgage_rates.py --out data
+
+      - name: Commit the raw snapshot and its retrieval record
+        run: |
+          git config user.name "Diogo Ribeiro"
+          git config user.email "diogo_dj@hotmail.com"
+          git add data/ecb_mir_PT_house_purchase_cost_of_borrowing_*
+          if git diff --cached --quiet; then
+            echo "Snapshot unchanged."
+          else
+            git commit -m "Pin ECB cost-of-borrowing snapshot ($(date -u +%Y-%m-%d))"
+            git push
+          fi
