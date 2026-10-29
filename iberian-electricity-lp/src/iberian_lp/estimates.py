@@ -111,15 +111,16 @@ def _mean(b: Bootstrap, t: Table, values: FloatArray, mask: BoolArray,
     return interval(*b.mean(values, t.day, mask), level)
 
 
-def _gap(b: Bootstrap, t: Table, m: FloatArray, mask: BoolArray) -> dict[str, Any]:
+def _gap(b: Bootstrap, t: Table, m: FloatArray, mask: BoolArray,
+         level: float = SIMULTANEOUS_LEVEL) -> dict[str, Any]:
     """E3: G = mean |m| outside midday − mean |m| at midday, with both means."""
     midday = np.isin(t.hour, list(MIDDAY_HOURS))
     out_est, out_boot = b.mean(np.abs(m), t.day, mask & ~midday)
     mid_est, mid_boot = b.mean(np.abs(m), t.day, mask & midday)
-    return {"mean": _mean(b, t, m, mask, SIMULTANEOUS_LEVEL),
-            "outside_abs": interval(out_est, out_boot, SIMULTANEOUS_LEVEL),
-            "midday_abs": interval(mid_est, mid_boot, SIMULTANEOUS_LEVEL),
-            "G": interval(out_est - mid_est, out_boot - mid_boot, SIMULTANEOUS_LEVEL),
+    return {"mean": _mean(b, t, m, mask, level),
+            "outside_abs": interval(out_est, out_boot, level),
+            "midday_abs": interval(mid_est, mid_boot, level),
+            "G": interval(out_est - mid_est, out_boot - mid_boot, level),
             "unbounded": int(np.isnan(m[mask]).sum())}
 
 
@@ -209,6 +210,22 @@ def descriptive(t: Table, d: Derived, spanish: BoolArray) -> dict[str, Any]:
                  if finite.any() else 0.0}}
 
 
+def post_hoc(b: Bootstrap, t: Table, spanish: BoolArray) -> dict[str, Any]:
+    """Added after the results were seen (METHODS.md, change log); descriptive, 95%."""
+    m = t.nearest(f"M{E3_MW}")
+    midday = np.isin(t.hour, list(MIDDAY_HOURS))
+    nonpositive = spanish & (t.price <= 0)
+    lo, hi = t.interval(f"M{E3_MW}")
+    return {
+        "nonpositive": {
+            name: {"periods": int((spanish & mask).sum()),
+                   "count": int((nonpositive & mask).sum())}
+            for name, mask in (("midday", midday), ("outside", ~midday))},
+        "nonpositive_max_abs_m": float(np.max(np.abs(m[nonpositive]), initial=0.0)),
+        "positive": _gap(b, t, m, spanish & (t.price > 0), LEVEL),
+        "midpoint_wide": int(((hi > lo) & spanish).sum())}
+
+
 def estimate(rows: list[dict[str, str]], d: Derived, solver: dict[str, Any]) -> dict[str, Any]:
     t = Table(rows, d.days)
     b = Bootstrap(len(d.days))
@@ -218,7 +235,7 @@ def estimate(rows: list[dict[str, str]], d: Derived, solver: dict[str, Any]) -> 
                 "simultaneous_level": SIMULTANEOUS_LEVEL},
             "solver": solver, "E1": e1(b, t), "E2": e2(b, t, spanish),
             "E3": e3(b, t, spanish), "E4": e4(b, t, spanish),
-            "descriptive": descriptive(t, d, spanish)}
+            "descriptive": descriptive(t, d, spanish), "post_hoc": post_hoc(b, t, spanish)}
 
 
 def write(results: dict[str, Any], path: Path) -> None:
@@ -269,6 +286,15 @@ def render(r: dict[str, Any], command: str) -> str:
             f"{'smaller at midday' if e3_['midday_smaller'] else 'not established'} |"]
     else:
         lines += ["| E2, E3 | (not decided: E1 below the threshold) | see below | descriptive |"]
+    moved = e2_["all"]["moved"]["estimate"]
+    e2_held = not e2_["excludes_zero"] and moved <= 0.5
+    lines += [
+        "", "Expectations stated in the plan (section 6):", "",
+        f"- **E2, no direction and δ = 0 in most periods:** "
+        f"{'borne out' if e2_held else 'not borne out'}; the mean of δ is "
+        f"{_ci(e2_['all']['mean'])} and |δ| > 0.01 in {moved:.1%} of periods.",
+        f"- **E3, G > 0:** {'borne out' if e3_['midday_smaller'] else 'not borne out'}; the "
+        "section after the results shows where G comes from."]
     misses = e1_["misses"]
     lines += [
         "", "## E1: the price as a dual (Q1)", "",
@@ -336,6 +362,34 @@ def render(r: dict[str, Any], command: str) -> str:
               f"offered, {d['steps_summed_median']:,.0f} after summing by price.",
               "- **Share of offered volume accepted:** " + ", ".join(
                   f"{TYPE_NAMES[k]} ({k}) {v:.1%}" for k, v in d["accepted_share"].items())
-              + ".",
-              "", "## Reproduce", "", "```", "iberian-lp programmes", command, "```", ""]
+              + "."]
+    ph = r["post_hoc"]
+    mid, out, pos = ph["nonpositive"]["midday"], ph["nonpositive"]["outside"], ph["positive"]
+    g = pos["G"]
+    if g["low"] > 0:
+        conclusion = "so the effect is smaller at midday also when the price is positive."
+    elif g["high"] < 0:
+        conclusion = "so, when the price is positive, the effect is larger at midday."
+    else:
+        conclusion = ("so the registered G comes from the midday periods priced at or below "
+                      "zero; when the price is positive, no difference between midday and "
+                      "the other hours is established.")
+    zero = ("and m = 0 in every one of them" if ph["nonpositive_max_abs_m"] == 0
+            else f"yet |m| reaches {ph['nonpositive_max_abs_m']:.2f} there")
+    lines += [
+        "", "## After the results (descriptive, not registered)", "",
+        "Added after the results above had been seen ([METHODS.md](../METHODS.md), change "
+        "log). They change no decision. Intervals are 95%.", "",
+        f"- **Where G comes from.** π ≤ 0 in {mid['count']:,} of {mid['periods']:,} midday "
+        f"periods ({mid['count'] / mid['periods']:.1%}) and in {out['count']:,} of "
+        f"{out['periods']:,} others ({out['count'] / out['periods']:.1%}). A sell step at "
+        "0 EUR/MWh changes no step's position at prices below zero, so a price at or below "
+        f"zero that clears `LP_R` still clears it with the extra step, {zero}. Over the "
+        f"periods priced above zero, mean |m| is {_ci(pos['outside_abs'], '{:.2f}')} outside "
+        f"midday and {_ci(pos['midday_abs'], '{:.2f}')} at midday, a difference of "
+        f"{_ci(g)}; {conclusion}",
+        f"- **The midpoint rule.** E3's counterfactual interval is wider than a point in "
+        f"{ph['midpoint_wide']:,} of {d['periods']:,} periods; in the others the two rules "
+        "give the same price.",
+        "", "## Reproduce", "", "```", "iberian-lp programmes", command, "```", ""]
     return "\n".join(lines)

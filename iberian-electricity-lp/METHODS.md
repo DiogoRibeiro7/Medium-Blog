@@ -238,3 +238,16 @@ Each reports its estimand beside the main one and changes no decision.
     wider than a point, with both ends finite.
   - **Where E1 fails.** Whatever E1's value, the report gives the zone-periods where π
     lies outside Λ_R, by zone, with the days, the hours and the distance from π to Λ_R.
+- **2026-10-29, after the programmes were solved: what was seen and what was added.**
+  - **What was seen.** All of `docs/RESULTS.md`: 37,374 programmes, every HiGHS check
+    passed, and every estimand of sections 6 and 7.
+  - **Added after the results, descriptive and labelled so in the report.**
+    - *Where G comes from.* The share of midday and other periods with π ≤ 0, and mean
+      |m| over the periods priced above zero, outside and at midday, with their
+      difference (95%). Added because a sell step at 0 EUR/MWh cannot lower a price
+      already at or below zero, so G could be partly mechanical.
+    - *The midpoint rule.* The number of periods in which E3's counterfactual interval is
+      wider than a point, added because the midpoint-rule row matched the registered row
+      to two decimals.
+    - *Expectations.* Two lines comparing the expectations of section 6 with the outcomes.
+  - **Not changed.** No rule, tolerance, estimand or decision.
