@@ -69,6 +69,20 @@ def main() -> None:
             })
             occurrences.append({"part": part, "position": index, "reference_id": ref_id})
 
+    # Retain evidence only when both the ID and citation text still match.
+    # Editing a citation therefore invalidates its previous verification.
+    previous: dict[str, dict[str, str]] = {}
+    ledger_path = ROOT / "reference_ledger.csv"
+    if ledger_path.is_file():
+        with ledger_path.open(newline="", encoding="utf-8") as handle:
+            previous = {row["reference_id"]: row for row in csv.DictReader(handle)}
+    for ref_id, row in unique.items():
+        old = previous.get(ref_id)
+        if old and old["reference"] == row["reference"] and old["status"] == "verified" and old["verified_source"]:
+            row["status"] = "verified"
+            row["verified_source"] = old["verified_source"]
+            row["verification_note"] = old["verification_note"]
+
     output_files = (
         (ROOT / "reference_ledger.csv", list(unique.values()),
          ["reference_id", "reference", "doi", "status", "verified_source", "verification_note"]),
