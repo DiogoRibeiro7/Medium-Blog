@@ -12,6 +12,14 @@ on:
       - 'portugal-housing-generations/**'
       - '.github/workflows/portugal-housing-generations.yml'
   workflow_dispatch:
+    inputs:
+      task:
+        description: Which source to download
+        type: choice
+        options:
+          - mortgage-rates
+          - regional
+        default: mortgage-rates
 
 permissions:
   contents: read
@@ -34,17 +42,23 @@ jobs:
       - name: Run the tests
         run: python -m unittest discover -p 'test_*.py' -v
 
-      - name: Rebuild results.json from the pinned snapshots and compare
+      - name: Rebuild the results from the pinned snapshots and compare
         run: |
           python analysis.py > /dev/null
-          git diff --exit-code -- results.json
+          python regional.py > /dev/null
+          git diff --exit-code -- results.json results_regional.json regional_panel.csv
+
+      - name: Check that the regional figures script runs
+        run: |
+          python -m pip install matplotlib==3.11.2
+          python regional_figures.py
 
   # Refreshing the ECB series is a manual, reviewed step: dispatch this workflow
   # on a branch other than main; the job commits the dated raw response and its
   # retrieval record to that branch, and the change is reviewed in a pull request.
   # The defaults in analysis.py then have to be pointed at the new files.
   fetch-mortgage-rates:
-    if: github.event_name == 'workflow_dispatch' && github.ref != 'refs/heads/main'
+    if: github.event_name == 'workflow_dispatch' && github.ref != 'refs/heads/main' && inputs.task == 'mortgage-rates'
     runs-on: ubuntu-latest
     timeout-minutes: 15
     permissions:
@@ -75,5 +89,41 @@ jobs:
             echo "Snapshot unchanged."
           else
             git commit -m "Pin ECB cost-of-borrowing snapshot ($(date -u +%Y-%m-%d))"
+            git push
+          fi
+
+  fetch-regional:
+    if: github.event_name == 'workflow_dispatch' && github.ref != 'refs/heads/main' && inputs.task == 'regional'
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    permissions:
+      contents: write
+    defaults:
+      run:
+        working-directory: portugal-housing-generations
+    steps:
+      - name: Check out the branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      - name: Download the INE regional series
+        run: python fetch_regional.py --out data
+
+      - name: Commit the outputs
+        if: always()
+        run: |
+          git config user.name "Diogo Ribeiro"
+          git config user.email "diogo_dj@hotmail.com"
+          git add data
+          if git diff --cached --quiet; then
+            echo "Nothing new."
+          else
+            git commit -m "Regional sources: runner output ($(date -u +%Y-%m-%dT%H:%MZ))"
             git push
           fi
