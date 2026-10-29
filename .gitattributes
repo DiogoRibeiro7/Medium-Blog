@@ -21,3 +21,4 @@ iberian-electricity-lp/**/*.csv -filter -diff -merge text
 tenure-by-age-at-hire/**/*.csv -filter -diff -merge text
 portugal-housing-generations/**/*.csv -filter -diff -merge text
 portugal-housing-generations/data/ecb_mir_*.csv -filter -text
+queueing-theory-for-data-scientists/**/*.csv -filter -diff -merge text
