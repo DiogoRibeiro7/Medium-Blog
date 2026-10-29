@@ -1,0 +1,1024 @@
+{
+ "source": "OMIE (OMI-Polo Español, S.A.), omie.es",
+ "specification": "Modelo de Ficheros para la distribución pública de información, versión 1.37",
+ "period": [
+  "2025-10-01",
+  "2026-09-30"
+ ],
+ "days_per_month": 4,
+ "days_seed": 20261028,
+ "versions": {
+  "numpy": "2.5.4",
+  "scipy": "1.18.1"
+ },
+ "files": [
+  {
+   "kind": "curva_pbc",
+   "day": "2025-10-01",
+   "file": "curva_pbc_20251001.1",
+   "bytes": 17838683,
+   "sha256": "ec415d88fcd18165c49569cd98df8f41e9a7e12831b09425f6f74b68c614fa68"
+  },
+  {
+   "kind": "marginalpdbc",
+   "day": "2025-10-01",
+   "file": "marginalpdbc_20251001.1",
+   "bytes": 2683,
+   "sha256": "6f0b0a5c4f86a4c34eb68c528bc5f9b58987183d80d90ce5fa18458921c3bd0b"
+  },
+  {
+   "kind": "capacidad_inter_pbc",
+   "day": "2025-10-01",
+   "file": "capacidad_inter_pbc_20251001.1",
+   "bytes": 20667,
+   "sha256": "39ce8d5872bba36cfc4e145434f237e865d0ea3ddb0f653a9bf203cd3cf7b6f5"
+  },
+  {
+   "kind": "curva_pbc",
+   "day": "2025-10-05",
+   "file": "curva_pbc_20251005.1",
+   "bytes": 17342777,
+   "sha256": "d6cd07a8f32d545cce9f565f7f5446c22734169823d461f3caa5eccd99c7a064"
+  },
+  {
+   "kind": "marginalpdbc",
+   "day": "2025-10-05",
+   "file": "marginalpdbc_20251005.1",
+   "bytes": 2579,
+   "sha256": "425bd5bca7ed338584e4f8bc27ad5257fd8d781a28b48cf4b9682688e1883962"
+  },
+  {
+   "kind": "capacidad_inter_pbc",
+   "day": "2025-10-05",
+   "file": "capacidad_inter_pbc_20251005.1",
+   "bytes": 22151,
+   "sha256": "50aba147b590d440c7833cce9f50102ed90eb5d62de9b6775de501529e64eb3c"
+  },
+  {
+   "kind": "curva_pbc",
+   "day": "2025-10-06",
+   "file": "curva_pbc_20251006.1",
+   "bytes": 18025336,
+   "sha256": "9883819c1572334a98b4819e252facad9183f89edff10f480fe73c97cd200f56"
+  },
+  {
+   "kind": "marginalpdbc",
+   "day": "2025-10-06",
+   "file": "marginalpdbc_20251006.1",
+   "bytes": 2653,
+   "sha256": "4d8c53c825b7da5fe6b5fc2eb894a196c91d2ee1495859d19d883bdda5efc87a"
+  },
+  {
+   "kind": "capacidad_inter_pbc",
+   "day": "2025-10-06",
+   "file": "capacidad_inter_pbc_20251006.1",
+   "bytes": 22256,
+   "sha256": "539f365c5635cff99df55ea4d23ffc5612171c2f4496bee11d98fc67e85f3dc6"
+  },
+  {
+   "kind": "curva_pbc",
+   "day": "2025-10-17",
+   "file": "curva_pbc_20251017.1",
+   "bytes": 18490141,
+   "sha256": "da00cbddf3a8a00b2788b88d838b382b13c8ad5914731987ee4b0c36eb63fa11"
+  },
+  {
+   "kind": "marginalpdbc",
+   "day": "2025-10-17",
+   "file": "marginalpdbc_20251017.1",
+   "bytes": 2692,
+   "sha256": "c8e16413cace497bb17a4160b80341359a91b11c24f8737e07ac80488b8e3369"
+  },
+  {
+   "kind": "capacidad_inter_pbc",
+   "day": "2025-10-17",
+   "file": "capacidad_inter_pbc_20251017.1",
+   "bytes": 22361,
+   "sha256": "5c5741bc334338608d7817441957418bc55aa39002c8bbd569cf7299ad23e11d"
+  },
+  {
+   "kind": "curva_pbc",
+   "day": "2025-11-01",
+   "file": "curva_pbc_20251101.1",
+   "bytes": 17993948,
+   "sha256": "25ee9990b2d26aa3d15c6436cbbbd49df6c6ee2d3e487036540be2a284e4c3ac"
+  },
+  {
+   "kind": "marginalpdbc",
+   "day": "2025-11-01",
+   "file": "marginalpdbc_20251101.1",
+   "bytes": 2521,
+   "sha256": "50f3c91da111e0149904044a58908363ec0a8222b1e1245cfccc7fcb719a774e"
+  },
+  {
+   "kind": "capacidad_inter_pbc",
+   "day": "2025-11-01",
+   "file": "capacidad_inter_pbc_20251101.1",
+   "bytes": 22472,
+   "sha256": "be1a459134b0f06cae15b8fd79ed4120963c0735e9effcb3f92d6c846f779d1f"
+  },
+  {
+   "kind": "curva_pbc",
+   "day": "2025-11-02",
+   "file": "curva_pbc_20251102.1",
+   "bytes": 17574223,
+   "sha256": "87d1ca9645282156bd9f4e61ae75fbd9e1cc0b6eb68e5c3a4b70c03417a9e57a"
+  },
+  {
+   "kind": "marginalpdbc",
+   "day": "2025-11-02",
+   "file": "marginalpdbc_20251102.1",
+   "bytes": 2417,
+   "sha256": "a4af7f2c399898099ad04b77c184d12157dd5d90a233edf5d4216d5bd0d082d8"
+  },
+  {
+   "kind": "capacidad_inter_pbc",
+   "day": "2025-11-02",
+   "file": "capacidad_inter_pbc_20251102.1",
+   "bytes": 21985,
+   "sha256": "7c412cf571a5eca6174811bf86ab94ccba28ec68d3cc5cd3728fd80eae7257fe"
+  },
+  {
+   "kind": "curva_pbc",
+   "day": "2025-11-04",
+   "file": "curva_pbc_20251104.1",
+   "bytes": 18323855,
+   "sha256": "f3f0c32991b33d40f6aa758e53245290debdd21919592cd1361673411c6e02da"
+  },
+  {
+   "kind": "marginalpdbc",
+   "day": "2025-11-04",
+   "file": "marginalpdbc_20251104.1",
+   "bytes": 2515,
+   "sha256": "84a64b3a5ee7888fce8f30a34c91903590a97931235ed54df9da9548cdbc0c1e"
+  },
+  {
+   "kind": "capacidad_inter_pbc",
+   "day": "2025-11-04",
+   "file": "capacidad_inter_pbc_20251104.1",
+   "bytes": 22179,
+   "sha256": "05b92fd1a730759323dd90e99f8c73469d60298aa66076735edced1e9715af58"
+  },
+  {
+   "kind": "curva_pbc",
+   "day": "2025-11-17",
+   "file": "curva_pbc_20251117.1",
+   "bytes": 17658164,
+   "sha256": "9401e65d10f0935a357f435fc816336a72e1b2587af50c20d0fb7523c1a0baa4"
+  },
+  {
+   "kind": "marginalpdbc",
+   "day": "2025-11-17",
+   "file": "marginalpdbc_20251117.1",
+   "bytes": 2615,
+   "sha256": "cb80479c62af7c0aa8df2b3ec610a68a911c4c317f9f8a9399c5f63e6bff4e9e"
+  },
+  {
+   "kind": "capacidad_inter_pbc",
+   "day": "2025-11-17",
+   "file": "capacidad_inter_pbc_20251117.1",
+   "bytes": 22542,
+   "sha256": "9fd36c24526486a147ebbdc81deb1d4679e31583938fa6c2f4b7ae4ae619b820"
+  },
+  {
+   "kind": "curva_pbc",
+   "day": "2025-12-03",
+   "file": "curva_pbc_20251203.1",
+   "bytes": 18749547,
+   "sha256": "f03f8cd677832dffd6178429b6ea03e6e76ff143f6bc26c33b25fba091bf80a8"
+  },
+  {
+   "kind": "marginalpdbc",
+   "day": "2025-12-03",
+   "file": "marginalpdbc_20251203.1",
+   "bytes": 2569,
+   "sha256": "d2cb44b5c0e03557027acdb114d029ccbd1aa107964513982ea6c68d9e215887"
+  },
+  {
+   "kind": "capacidad_inter_pbc",
+   "day": "2025-12-03",
+   "file": "capacidad_inter_pbc_20251203.1",
+   "bytes": 22532,
+   "sha256": "ef722edb22d3ff57b23e2a3f0d59c9e8930939802fc01b0f0d5b17cee7bd6ffa"
+  },
+  {
+   "kind": "curva_pbc",
+   "day": "2025-12-06",
+   "file": "curva_pbc_20251206.1",
+   "bytes": 18593797,
+   "sha256": "57b22b0becd164801c5f57ce6e2215d4e78f1b175a1c9a8a121b89897446c068"
+  },
+  {
+   "kind": "marginalpdbc",
+   "day": "2025-12-06",
+   "file": "marginalpdbc_20251206.1",
+   "bytes": 2571,
+   "sha256": "472f597911959cbdbabead5e98c9875b5f4e411b19467300ac9528a4ef594f4e"
+  },
+  {
+   "kind": "capacidad_inter_pbc",
+   "day": "2025-12-06",
+   "file": "capacidad_inter_pbc_20251206.1",
+   "bytes": 22660,
+   "sha256": "23ad0467fd34660744bd98f5f867f2e9e910694fcc7886003c2be93dcaff1d69"
+  },
+  {
+   "kind": "curva_pbc",
+   "day": "2025-12-19",
+   "file": "curva_pbc_20251219.1",
+   "bytes": 18122756,
+   "sha256": "89d2fbd89062c953d55573daee56328e6ae5f1b9d3d89bc9f520e3f424d45f75"
+  },
+  {
+   "kind": "marginalpdbc",
+   "day": "2025-12-19",
+   "file": "marginalpdbc_20251219.1",
+   "bytes": 2631,
+   "sha256": "378419e0acb95537a5e670332417660bbbb32a93c5a4cf0e7e6ffd2b4f3ea183"
+  },
+  {
+   "kind": "capacidad_inter_pbc",
+   "day": "2025-12-19",
+   "file": "capacidad_inter_pbc_20251219.1",
+   "bytes": 22329,
+   "sha256": "62e326f337a0f9b429efbac34fea73037dc59abf5694741724dc3bf90a1ed0d5"
+  },
+  {
+   "kind": "curva_pbc",
+   "day": "2025-12-30",
+   "file": "curva_pbc_20251230.1",
+   "bytes": 17335735,
+   "sha256": "d99e7375917d0c7655b4ecdb5f95e05129abbbd36c9c8d366ff8c727c42991b7"
+  },
+  {
+   "kind": "marginalpdbc",
+   "day": "2025-12-30",
+   "file": "marginalpdbc_20251230.1",
+   "bytes": 2681,
+   "sha256": "224aec3c2b917bebabb8970f53448072d96779b4b9227dce9411441e54ed9c7a"
+  },
+  {
+   "kind": "capacidad_inter_pbc",
+   "day": "2025-12-30",
+   "file": "capacidad_inter_pbc_20251230.1",
+   "bytes": 22469,
+   "sha256": "77c61f3c51c77bcb691582d0505410bb41976069a6c28541f60801faee4ac39b"
+  },
+  {
+   "kind": "curva_pbc",
+   "day": "2026-01-10",
+   "file": "curva_pbc_20260110.1",
+   "bytes": 18471918,
+   "sha256": "5df1faf6a654340a3fbb3d9221a7b64de3658260302e4b52fec4293f56c1250d"
+  },
+  {
+   "kind": "marginalpdbc",
+   "day": "2026-01-10",
+   "file": "marginalpdbc_20260110.1",
+   "bytes": 2607,
+   "sha256": "7f68b9fcb98cae38df2161125bc71eadc85a7669c73635ad606173609471226c"
+  },
+  {
+   "kind": "capacidad_inter_pbc",
+   "day": "2026-01-10",
+   "file": "capacidad_inter_pbc_20260110.1",
+   "bytes": 22326,
+   "sha256": "df6adc7607b7b10551823b919438ed2e60c4cbe75d72ca846d97dcdc099cbda3"
+  },
+  {
+   "kind": "curva_pbc",
+   "day": "2026-01-16",
+   "file": "curva_pbc_20260116.1",
+   "bytes": 18626761,
+   "sha256": "e0841d0cf8918865bfd39cd4f29c37e94c4c0af1de9dc35cd62af457ba673a30"
+  },
+  {
+   "kind": "marginalpdbc",
+   "day": "2026-01-16",
+   "file": "marginalpdbc_20260116.1",
+   "bytes": 2779,
+   "sha256": "2ff1e986332ab1edd5d24e1c47289acb6172f31bdcd0eb262b8c49583f9bb7c7"
+  },
+  {
+   "kind": "capacidad_inter_pbc",
+   "day": "2026-01-16",
+   "file": "capacidad_inter_pbc_20260116.1",
+   "bytes": 22448,
+   "sha256": "c294968d9f61519d7ed0a840638028b72ceeb06709817fcd34bd65ad192145c1"
+  },
+  {
+   "kind": "curva_pbc",
+   "day": "2026-01-21",
+   "file": "curva_pbc_20260121.1",
+   "bytes": 18788050,
+   "sha256": "a3472fbfb73c0e204ac15dfdcb28471dbd9b1ef79449172d5f16f366bbd21f70"
+  },
+  {
+   "kind": "marginalpdbc",
+   "day": "2026-01-21",
+   "file": "marginalpdbc_20260121.1",
+   "bytes": 2525,
+   "sha256": "e355366b04e5b7f9b3717795bbe97a057ec8fe03a247280e6fcf54ea5f785f72"
+  },
+  {
+   "kind": "capacidad_inter_pbc",
+   "day": "2026-01-21",
+   "file": "capacidad_inter_pbc_20260121.1",
+   "bytes": 22520,
+   "sha256": "d6d7b236877c5d3b77fc172561fa78c26f22516ee170a4f9dd2408491e2e1482"
+  },
+  {
+   "kind": "curva_pbc",
+   "day": "2026-01-25",
+   "file": "curva_pbc_20260125.1",
+   "bytes": 18027361,
+   "sha256": "23f713c66e5d18940cc223a3b8a70adbe812f8488d5341f7a2a13f1094a881b6"
+  },
+  {
+   "kind": "marginalpdbc",
+   "day": "2026-01-25",
+   "file": "marginalpdbc_20260125.1",
+   "bytes": 2449,
+   "sha256": "f44f7d5d010bd0041b0e8fc2cb06cdc8a8b44b43e44d14e0899184c9b6c00747"
+  },
+  {
+   "kind": "capacidad_inter_pbc",
+   "day": "2026-01-25",
+   "file": "capacidad_inter_pbc_20260125.1",
+   "bytes": 21903,
+   "sha256": "6417b356530bbd84e7ee65854aa0ec156c387ed2d79801cbd8e7637cde049733"
+  },
+  {
+   "kind": "curva_pbc",
+   "day": "2026-02-04",
+   "file": "curva_pbc_20260204.1",
+   "bytes": 18630141,
+   "sha256": "99f280c9c0006acc2518238d5ba12082f5353b27c4f58110037509b305f126c6"
+  },
+  {
+   "kind": "marginalpdbc",
+   "day": "2026-02-04",
+   "file": "marginalpdbc_20260204.1",
+   "bytes": 2456,
+   "sha256": "8ca23cd68a86f19c0d1bb885c9fa70dd90f6b1f036a81ed0eac69492796aa9df"
+  },
+  {
+   "kind": "capacidad_inter_pbc",
+   "day": "2026-02-04",
+   "file": "capacidad_inter_pbc_20260204.1",
+   "bytes": 21974,
+   "sha256": "b6d31e08b2f95c8e0e005ad5d9721dcb8408ea994ecc16bb667b2fb3cbb67c67"
+  },
+  {
+   "kind": "curva_pbc",
+   "day": "2026-02-06",
+   "file": "curva_pbc_20260206.1",
+   "bytes": 17880318,
+   "sha256": "102148e04f52e3aa21d45b551cc36b604c84f1ccbf5fd1337e5677d9fc608c27"
+  },
+  {
+   "kind": "marginalpdbc",
+   "day": "2026-02-06",
+   "file": "marginalpdbc_20260206.1",
+   "bytes": 2433,
+   "sha256": "5369f1758c96938396402cd804939665eadf85a7af903f67126fca6fc129d4f6"
+  },
+  {
+   "kind": "capacidad_inter_pbc",
+   "day": "2026-02-06",
+   "file": "capacidad_inter_pbc_20260206.1",
+   "bytes": 21854,
+   "sha256": "35d52638070370185db8f3f8805f8d8c577491c463ccfcb679cdbfe2f32bed63"
+  },
+  {
+   "kind": "curva_pbc",
+   "day": "2026-02-18",
+   "file": "curva_pbc_20260218.1",
+   "bytes": 18505580,
+   "sha256": "9e6db2d6cbe97819c3e257dd24a6881fa73519c03cdec6404650e72dc7ceaf4b"
+  },
+  {
+   "kind": "marginalpdbc",
+   "day": "2026-02-18",
+   "file": "marginalpdbc_20260218.1",
+   "bytes": 2410,
+   "sha256": "bcd08f0d7d915c8014d9d335010445bf506d2540b6236d40b0c7a274fd533c53"
+  },
+  {
+   "kind": "capacidad_inter_pbc",
+   "day": "2026-02-18",
+   "file": "capacidad_inter_pbc_20260218.1",
+   "bytes": 21990,
+   "sha256": "c30d5477c05c166aa35b03ffc08e5b7b8063ac4d808a60457a6bcc05b8af991f"
+  },
+  {
+   "kind": "curva_pbc",
+   "day": "2026-02-26",
+   "file": "curva_pbc_20260226.1",
+   "bytes": 18668914,
+   "sha256": "a1842979eacd706aa5a19ed218d90182e936a5f20a958e4afa0baec8056d20bd"
+  },
+  {
+   "kind": "marginalpdbc",
+   "day": "2026-02-26",
+   "file": "marginalpdbc_20260226.1",
+   "bytes": 2527,
+   "sha256": "89b8b32d83502b1ef4577bca6971e80eda7e1521b4d794cc61d5db69798768e8"
+  },
+  {
+   "kind": "capacidad_inter_pbc",
+   "day": "2026-02-26",
+   "file": "capacidad_inter_pbc_20260226.1",
+   "bytes": 22039,
+   "sha256": "72c585f7a37f6f37c9bf7d48a0dbe0a0cb55f31ab5c230a6e5ee05e5e9017165"
+  },
+  {
+   "kind": "curva_pbc",
+   "day": "2026-03-03",
+   "file": "curva_pbc_20260303.1",
+   "bytes": 19304606,
+   "sha256": "34fa22da3741e6445cd7991f0d7ddc0b397b749a1311facc60c4aeecf5a02971"
+  },
+  {
+   "kind": "marginalpdbc",
+   "day": "2026-03-03",
+   "file": "marginalpdbc_20260303.1",
+   "bytes": 2467,
+   "sha256": "1d76f7a6e3695635167310f567d4a0ac241988fd8b6ca36323408aaad1955159"
+  },
+  {
+   "kind": "capacidad_inter_pbc",
+   "day": "2026-03-03",
+   "file": "capacidad_inter_pbc_20260303.1",
+   "bytes": 22301,
+   "sha256": "5f8931b6dae3950efb147f1440aaf49a1cdd31f847577a7e10cfffb5f262f1dd"
+  },
+  {
+   "kind": "curva_pbc",
+   "day": "2026-03-08",
+   "file": "curva_pbc_20260308.1",
+   "bytes": 18828566,
+   "sha256": "d2377655b0f1606bfbcffdc19795024ff36132dd63e363a814b685a59be88eae"
+  },
+  {
+   "kind": "marginalpdbc",
+   "day": "2026-03-08",
+   "file": "marginalpdbc_20260308.1",
+   "bytes": 2612,
+   "sha256": "7522ab22c86301f28bc32448c6b1bb35886e4d82d91b595fc2021cebc18070a6"
+  },
+  {
+   "kind": "capacidad_inter_pbc",
+   "day": "2026-03-08",
+   "file": "capacidad_inter_pbc_20260308.1",
+   "bytes": 22401,
+   "sha256": "1a6ab06df6180f48d15ad9efb1c915e484283c936f7ca333baeb0167d94ff490"
+  },
+  {
+   "kind": "curva_pbc",
+   "day": "2026-03-20",
+   "file": "curva_pbc_20260320.1",
+   "bytes": 20279350,
+   "sha256": "fbb7f710a074a8454080dfe271c554890641af722654363a7d4975ae477ecb88"
+  },
+  {
+   "kind": "marginalpdbc",
+   "day": "2026-03-20",
+   "file": "marginalpdbc_20260320.1",
+   "bytes": 2519,
+   "sha256": "7ae4b2daaf9a27503d81842eff4b856446edd9171cc86d8db20a734d796206f0"
+  },
+  {
+   "kind": "capacidad_inter_pbc",
+   "day": "2026-03-20",
+   "file": "capacidad_inter_pbc_20260320.1",
+   "bytes": 22086,
+   "sha256": "e32079ae2f7a3a0530809033348178e4f96a4a88419c99e56a194beb1ec93432"
+  },
+  {
+   "kind": "curva_pbc",
+   "day": "2026-03-28",
+   "file": "curva_pbc_20260328.1",
+   "bytes": 18585331,
+   "sha256": "e706d7052779ffea84005c935f53bafc156433b909e4916c133527e6ee32ba83"
+  },
+  {
+   "kind": "marginalpdbc",
+   "day": "2026-03-28",
+   "file": "marginalpdbc_20260328.1",
+   "bytes": 2415,
+   "sha256": "fe78e26c4ee8cdfdcd7f1c8bf9c42303e2c7ccf2695169c14f32e85d12c18092"
+  },
+  {
+   "kind": "capacidad_inter_pbc",
+   "day": "2026-03-28",
+   "file": "capacidad_inter_pbc_20260328.1",
+   "bytes": 22209,
+   "sha256": "bf2a238fe50902303efe021a8714a11991aa9f1f5a1242cc5b2dda579246407a"
+  },
+  {
+   "kind": "curva_pbc",
+   "day": "2026-04-01",
+   "file": "curva_pbc_20260401.1",
+   "bytes": 19243150,
+   "sha256": "989feb352571a95d03cc862bab46b665cc2ae56b313338c04c3b4d803b6dadd6"
+  },
+  {
+   "kind": "marginalpdbc",
+   "day": "2026-04-01",
+   "file": "marginalpdbc_20260401.1",
+   "bytes": 2500,
+   "sha256": "9b16845a4e6a8a4f2e673bb9a6488e3a321c89e4825d4ce802c65121a8d19e51"
+  },
+  {
+   "kind": "capacidad_inter_pbc",
+   "day": "2026-04-01",
+   "file": "capacidad_inter_pbc_20260401.1",
+   "bytes": 22179,
+   "sha256": "bdb9ffa1ef6468d9b32b1bd6479f4fd0dd194495530b6bffd4db39624c59b4f4"
+  },
+  {
+   "kind": "curva_pbc",
+   "day": "2026-04-09",
+   "file": "curva_pbc_20260409.1",
+   "bytes": 20043407,
+   "sha256": "d34f063b42e1352d544253c653b72ca294e6af1f19d012aca11b2e8683f60098"
+  },
+  {
+   "kind": "marginalpdbc",
+   "day": "2026-04-09",
+   "file": "marginalpdbc_20260409.1",
+   "bytes": 2550,
+   "sha256": "4fcda299db6f79884606d0a2135b6de5ea453a5046dc7660c462cc84d3c963c1"
+  },
+  {
+   "kind": "capacidad_inter_pbc",
+   "day": "2026-04-09",
+   "file": "capacidad_inter_pbc_20260409.1",
+   "bytes": 22481,
+   "sha256": "50c2b6010f618c930e2cbca7b7df4db89e7046a9bed8259a210701c4f3733a34"
+  },
+  {
+   "kind": "curva_pbc",
+   "day": "2026-04-11",
+   "file": "curva_pbc_20260411.1",
+   "bytes": 19743897,
+   "sha256": "ba75fedb5a7861c8cb96361359d62195e7e735bfd874ddd56082f9275f7ee815"
+  },
+  {
+   "kind": "marginalpdbc",
+   "day": "2026-04-11",
+   "file": "marginalpdbc_20260411.1",
+   "bytes": 2453,
+   "sha256": "bfe0a06e39b67ed9c183a02d969ebb16afe1935173d1150f28bc37fc990a263d"
+  },
+  {
+   "kind": "capacidad_inter_pbc",
+   "day": "2026-04-11",
+   "file": "capacidad_inter_pbc_20260411.1",
+   "bytes": 22299,
+   "sha256": "2c329ed8b65fbea932a00060188fac602ada2c8354e4c982dbd353ee57b61450"
+  },
+  {
+   "kind": "curva_pbc",
+   "day": "2026-04-14",
+   "file": "curva_pbc_20260414.1",
+   "bytes": 20404640,
+   "sha256": "a27485d10e98f08e97953a5d53864708bacc0cbdb8dc7ebb5b95f979f504f2d5"
+  },
+  {
+   "kind": "marginalpdbc",
+   "day": "2026-04-14",
+   "file": "marginalpdbc_20260414.1",
+   "bytes": 2475,
+   "sha256": "b7f7fa3f5083f61f7b1540e3640a227c7dc2489debba138733aa10dc07180831"
+  },
+  {
+   "kind": "capacidad_inter_pbc",
+   "day": "2026-04-14",
+   "file": "capacidad_inter_pbc_20260414.1",
+   "bytes": 22029,
+   "sha256": "def0408bdd574d3bb6a9a980f49f8ef69b4a7785ac304bbc14b50ba5d55f56f5"
+  },
+  {
+   "kind": "curva_pbc",
+   "day": "2026-05-02",
+   "file": "curva_pbc_20260502.1",
+   "bytes": 20705601,
+   "sha256": "eac913d98626a03982691b52be42134fc1eac6a6e44a197601fe9b82cf67509a"
+  },
+  {
+   "kind": "marginalpdbc",
+   "day": "2026-05-02",
+   "file": "marginalpdbc_20260502.1",
+   "bytes": 2503,
+   "sha256": "636c4f15cdf1443f45641f3512ce01e2d91f9ca0ed0ecec70e5b77431802fcda"
+  },
+  {
+   "kind": "capacidad_inter_pbc",
+   "day": "2026-05-02",
+   "file": "capacidad_inter_pbc_20260502.1",
+   "bytes": 22395,
+   "sha256": "5862c653c14ba05e614088c9ef15859708b2a53390f4edf966be8981edc5fd12"
+  },
+  {
+   "kind": "curva_pbc",
+   "day": "2026-05-11",
+   "file": "curva_pbc_20260511.1",
+   "bytes": 21434957,
+   "sha256": "1b9858ec0ea1694902c2857225314c0ed8c87aa63e30903ec5d3ccb235f3f283"
+  },
+  {
+   "kind": "marginalpdbc",
+   "day": "2026-05-11",
+   "file": "marginalpdbc_20260511.1",
+   "bytes": 2549,
+   "sha256": "52ef634adfb439f6aa4d18f32f09e50a059f27c585a4f8408df6dadc0fe1cb88"
+  },
+  {
+   "kind": "capacidad_inter_pbc",
+   "day": "2026-05-11",
+   "file": "capacidad_inter_pbc_20260511.1",
+   "bytes": 22423,
+   "sha256": "942f4f193cf404beb90237d978c1c3b52d6e4dff8405965e983dc929138965d5"
+  },
+  {
+   "kind": "curva_pbc",
+   "day": "2026-05-23",
+   "file": "curva_pbc_20260523.1",
+   "bytes": 20794621,
+   "sha256": "801505da23788d94d6d333be7ccf2170a51aa1736feba7f19a258a031aed7e60"
+  },
+  {
+   "kind": "marginalpdbc",
+   "day": "2026-05-23",
+   "file": "marginalpdbc_20260523.1",
+   "bytes": 2459,
+   "sha256": "14d9114d1ec92b85e3600c5a60ab298987d31722195d2ad0c7630ee9b002d3ab"
+  },
+  {
+   "kind": "capacidad_inter_pbc",
+   "day": "2026-05-23",
+   "file": "capacidad_inter_pbc_20260523.1",
+   "bytes": 22582,
+   "sha256": "f2d5b7870c6e2f987d1ba78e4338027e1376bb75fd58ef020cee4568cefd61a1"
+  },
+  {
+   "kind": "curva_pbc",
+   "day": "2026-05-25",
+   "file": "curva_pbc_20260525.1",
+   "bytes": 20889389,
+   "sha256": "4177c3a6b805d3d004f2fb224febe773bac82fc6f7d45ba8bb58c4fb0cfc082c"
+  },
+  {
+   "kind": "marginalpdbc",
+   "day": "2026-05-25",
+   "file": "marginalpdbc_20260525.1",
+   "bytes": 2523,
+   "sha256": "89773ad9106e08b5da5f5690d7dbb66875507d87c512aca92f23cbc98642cdd8"
+  },
+  {
+   "kind": "capacidad_inter_pbc",
+   "day": "2026-05-25",
+   "file": "capacidad_inter_pbc_20260525.1",
+   "bytes": 22664,
+   "sha256": "ead04c23ca2c99005c19bd07dc63d6efd62d04f06b4ffec9c83b249fccc472cf"
+  },
+  {
+   "kind": "curva_pbc",
+   "day": "2026-06-01",
+   "file": "curva_pbc_20260601.1",
+   "bytes": 21810144,
+   "sha256": "7be62692068cab573cce612b3eeb73c1dbdcdf971da896a388039f092355d30b"
+  },
+  {
+   "kind": "marginalpdbc",
+   "day": "2026-06-01",
+   "file": "marginalpdbc_20260601.1",
+   "bytes": 2579,
+   "sha256": "2e3f61b239cbbcc3850cf0c359571c704ad59966dd63f0553d29c04c6261528f"
+  },
+  {
+   "kind": "capacidad_inter_pbc",
+   "day": "2026-06-01",
+   "file": "capacidad_inter_pbc_20260601.1",
+   "bytes": 22661,
+   "sha256": "2860ead8f90cc7a2bd1647afbd872c1fc50c508254746ca8bc43c1a9b0259bd3"
+  },
+  {
+   "kind": "curva_pbc",
+   "day": "2026-06-03",
+   "file": "curva_pbc_20260603.1",
+   "bytes": 21310085,
+   "sha256": "c20f021eea5262c30908e810c873b33460ac81436b610eb3af7ffd089c4c3c17"
+  },
+  {
+   "kind": "marginalpdbc",
+   "day": "2026-06-03",
+   "file": "marginalpdbc_20260603.1",
+   "bytes": 2557,
+   "sha256": "7d319fcf8cde32f727560fcac07e24827c47073cb871e3ead99b871f7ccd55e0"
+  },
+  {
+   "kind": "capacidad_inter_pbc",
+   "day": "2026-06-03",
+   "file": "capacidad_inter_pbc_20260603.1",
+   "bytes": 22286,
+   "sha256": "68af0f39a414325a3870dcba907d10f34aee4116ce0745de0fc5bfe1b0c16c44"
+  },
+  {
+   "kind": "curva_pbc",
+   "day": "2026-06-08",
+   "file": "curva_pbc_20260608.1",
+   "bytes": 21820907,
+   "sha256": "b70ef4d92958d5b5daf13e49d97e9dcabbca0cf429b07b1b4bf5e2d18a321cb9"
+  },
+  {
+   "kind": "marginalpdbc",
+   "day": "2026-06-08",
+   "file": "marginalpdbc_20260608.1",
+   "bytes": 2499,
+   "sha256": "4739b4987a22a9f983181ef478c8157b1b25e15a29ac8f57eb9b913589c7b8b5"
+  },
+  {
+   "kind": "capacidad_inter_pbc",
+   "day": "2026-06-08",
+   "file": "capacidad_inter_pbc_20260608.1",
+   "bytes": 22338,
+   "sha256": "a3f52b8735e29c29d15361fe7b3df7363365c37fd13dbb340569342e7dde8d7c"
+  },
+  {
+   "kind": "curva_pbc",
+   "day": "2026-06-30",
+   "file": "curva_pbc_20260630.1",
+   "bytes": 22064106,
+   "sha256": "34779ae4ac8f01eb9ecdf918147248b8ae001227ea696f456c80a7e78e7a7efe"
+  },
+  {
+   "kind": "marginalpdbc",
+   "day": "2026-06-30",
+   "file": "marginalpdbc_20260630.1",
+   "bytes": 2699,
+   "sha256": "b168897116951dc257b152d1682751143af424b128d41bc2f113273bf0095bdb"
+  },
+  {
+   "kind": "capacidad_inter_pbc",
+   "day": "2026-06-30",
+   "file": "capacidad_inter_pbc_20260630.1",
+   "bytes": 22610,
+   "sha256": "219db672628b716c627c47f37d362b631119e6f3cb8e902a9d2437c99367ffa5"
+  },
+  {
+   "kind": "curva_pbc",
+   "day": "2026-07-07",
+   "file": "curva_pbc_20260707.1",
+   "bytes": 22281128,
+   "sha256": "9f8a0f36ddcec9f7295885c615aef7ef0853231a380be7e8d47d98c1b741d3f1"
+  },
+  {
+   "kind": "marginalpdbc",
+   "day": "2026-07-07",
+   "file": "marginalpdbc_20260707.1",
+   "bytes": 2721,
+   "sha256": "435d41e614cdd695f09bcb5d4e85602dbec42dcafd0418c7c31abd389e4df579"
+  },
+  {
+   "kind": "capacidad_inter_pbc",
+   "day": "2026-07-07",
+   "file": "capacidad_inter_pbc_20260707.1",
+   "bytes": 22151,
+   "sha256": "83114983572a755aafea0188605d3a9c353956b79ae499471249d3af08336c3d"
+  },
+  {
+   "kind": "curva_pbc",
+   "day": "2026-07-15",
+   "file": "curva_pbc_20260715.1",
+   "bytes": 21792874,
+   "sha256": "59318bcc934d7ef4925dcbca82b9a1246efc0120cb34d6a2e946bb2ab8c24567"
+  },
+  {
+   "kind": "marginalpdbc",
+   "day": "2026-07-15",
+   "file": "marginalpdbc_20260715.1",
+   "bytes": 2743,
+   "sha256": "b337f7d92d858118251e91c16a2df444922072ac023755e124146043ae06065c"
+  },
+  {
+   "kind": "capacidad_inter_pbc",
+   "day": "2026-07-15",
+   "file": "capacidad_inter_pbc_20260715.1",
+   "bytes": 22223,
+   "sha256": "67e7ae8e9eb2e02d5c6dc9c1e6430252d8ecf398d728af0f6423cd5e53ae1000"
+  },
+  {
+   "kind": "curva_pbc",
+   "day": "2026-07-20",
+   "file": "curva_pbc_20260720.1",
+   "bytes": 21990415,
+   "sha256": "a89455e124d37e4629443cada4e1b35a8515fb29d131c53a7fe93e9cb5b49ce5"
+  },
+  {
+   "kind": "marginalpdbc",
+   "day": "2026-07-20",
+   "file": "marginalpdbc_20260720.1",
+   "bytes": 2667,
+   "sha256": "4bc18ef0c07bca990b7050e1710e2d09db0ec955999a884822f98833b90797d7"
+  },
+  {
+   "kind": "capacidad_inter_pbc",
+   "day": "2026-07-20",
+   "file": "capacidad_inter_pbc_20260720.1",
+   "bytes": 22240,
+   "sha256": "3680a34b9106942fc7e419b0f1c3f40b78e0cf81163b343323eaa1722b82c3d8"
+  },
+  {
+   "kind": "curva_pbc",
+   "day": "2026-07-25",
+   "file": "curva_pbc_20260725.1",
+   "bytes": 21287606,
+   "sha256": "21019fb6c75c3b53902b2927f1314ceda113b120bfbe7f51ccf09988947ff2e7"
+  },
+  {
+   "kind": "marginalpdbc",
+   "day": "2026-07-25",
+   "file": "marginalpdbc_20260725.1",
+   "bytes": 2583,
+   "sha256": "c8a4d957480c2faddd2daf57c8b313205ca1a5603b34f882625c4cbce72abc12"
+  },
+  {
+   "kind": "capacidad_inter_pbc",
+   "day": "2026-07-25",
+   "file": "capacidad_inter_pbc_20260725.1",
+   "bytes": 22435,
+   "sha256": "c3e886c5a104981c2bff62d9a0d73b02a15a0b8f625406a32aa9a2036dcdd2e8"
+  },
+  {
+   "kind": "curva_pbc",
+   "day": "2026-08-10",
+   "file": "curva_pbc_20260810.1",
+   "bytes": 21760537,
+   "sha256": "aab8ce4e68afe1d170cc0aaf0d25d6eee8a0560d062f444b9b79b9597c807182"
+  },
+  {
+   "kind": "marginalpdbc",
+   "day": "2026-08-10",
+   "file": "marginalpdbc_20260810.1",
+   "bytes": 2693,
+   "sha256": "0e17a337e597dd91c9ae40d9314642581a087ca3ce98cc843baf357bb408208a"
+  },
+  {
+   "kind": "capacidad_inter_pbc",
+   "day": "2026-08-10",
+   "file": "capacidad_inter_pbc_20260810.1",
+   "bytes": 22111,
+   "sha256": "b82629d609bddb890afec8c0b22e88e08b05a04e1fb46d290ba32460fd243512"
+  },
+  {
+   "kind": "curva_pbc",
+   "day": "2026-08-12",
+   "file": "curva_pbc_20260812.1",
+   "bytes": 21694963,
+   "sha256": "9be7d813407b2f6d7b507ecb2a8bd3019af80541626ff705583815e0b921379c"
+  },
+  {
+   "kind": "marginalpdbc",
+   "day": "2026-08-12",
+   "file": "marginalpdbc_20260812.1",
+   "bytes": 2715,
+   "sha256": "816080c06de2ae65600282afe7b841b50245ef0fe589fe7cceb5d7483f79baec"
+  },
+  {
+   "kind": "capacidad_inter_pbc",
+   "day": "2026-08-12",
+   "file": "capacidad_inter_pbc_20260812.1",
+   "bytes": 22046,
+   "sha256": "9885f12f0d5c64e08b16e62a7a87c93cf98568345b75f26161dfb611ccc144d0"
+  },
+  {
+   "kind": "curva_pbc",
+   "day": "2026-08-14",
+   "file": "curva_pbc_20260814.1",
+   "bytes": 21745706,
+   "sha256": "05f9029a258e7400d01f3f5b6a84af1b7f45673e3c671c993f1ff6f10cf79cf4"
+  },
+  {
+   "kind": "marginalpdbc",
+   "day": "2026-08-14",
+   "file": "marginalpdbc_20260814.1",
+   "bytes": 2686,
+   "sha256": "6c21b4fe918de5caf25344dc0467ecbf6eb77bd069eb46eb40b00678b5118353"
+  },
+  {
+   "kind": "capacidad_inter_pbc",
+   "day": "2026-08-14",
+   "file": "capacidad_inter_pbc_20260814.1",
+   "bytes": 22268,
+   "sha256": "c9b7793aebe778e8b4a94c73906146fd1b9dc9d2c41e6fcdc59117299813c036"
+  },
+  {
+   "kind": "curva_pbc",
+   "day": "2026-08-26",
+   "file": "curva_pbc_20260826.1",
+   "bytes": 21794127,
+   "sha256": "fde93dd7765f4700eae56272c3c69ee32bf7374340126b10b4ac0b8fc4fe211d"
+  },
+  {
+   "kind": "marginalpdbc",
+   "day": "2026-08-26",
+   "file": "marginalpdbc_20260826.1",
+   "bytes": 2559,
+   "sha256": "04bb6aebc406e15a6b52ed65d76762214da1d52ab9c781f94a6a02cebac9cbd7"
+  },
+  {
+   "kind": "capacidad_inter_pbc",
+   "day": "2026-08-26",
+   "file": "capacidad_inter_pbc_20260826.1",
+   "bytes": 22235,
+   "sha256": "b72c058f74e44e0797b0cff539c397c81d679c1abd4c41b8126c563c5310d83b"
+  },
+  {
+   "kind": "curva_pbc",
+   "day": "2026-09-03",
+   "file": "curva_pbc_20260903.1",
+   "bytes": 21580520,
+   "sha256": "f189cd7aa8e862be55d9112640fc3c05c3229bbb80370a88373c320db60054c2"
+  },
+  {
+   "kind": "marginalpdbc",
+   "day": "2026-09-03",
+   "file": "marginalpdbc_20260903.1",
+   "bytes": 2712,
+   "sha256": "f29d54ba27ba9c2a10b5525d3fcdd35dc540c8e0d047e2e6d8438483182373c1"
+  },
+  {
+   "kind": "capacidad_inter_pbc",
+   "day": "2026-09-03",
+   "file": "capacidad_inter_pbc_20260903.1",
+   "bytes": 22159,
+   "sha256": "4f4d0c12e3c9762c53d1123cf2df3c396d5886e7893e0e317b168669f6af073a"
+  },
+  {
+   "kind": "curva_pbc",
+   "day": "2026-09-18",
+   "file": "curva_pbc_20260918.1",
+   "bytes": 21405502,
+   "sha256": "5a50d5804e2b0784395e7adc4bbf04a767ac3ba987fcc5d9e02a40705f3b3da7"
+  },
+  {
+   "kind": "marginalpdbc",
+   "day": "2026-09-18",
+   "file": "marginalpdbc_20260918.1",
+   "bytes": 2617,
+   "sha256": "a5d51ddfce9b293005908ea82d0e8bc783fe428976a8a973363407515d7383eb"
+  },
+  {
+   "kind": "capacidad_inter_pbc",
+   "day": "2026-09-18",
+   "file": "capacidad_inter_pbc_20260918.1",
+   "bytes": 22491,
+   "sha256": "c3cb3840a8cfc9deac5159f76c2e56aad3254d6352d35d2dacd2aa1434c714f2"
+  },
+  {
+   "kind": "curva_pbc",
+   "day": "2026-09-19",
+   "file": "curva_pbc_20260919.1",
+   "bytes": 20350944,
+   "sha256": "d314f6b74ffc6bc4ffd0c33521166ae352b42caf46fe6b6d4b96ef2d29c7e810"
+  },
+  {
+   "kind": "marginalpdbc",
+   "day": "2026-09-19",
+   "file": "marginalpdbc_20260919.1",
+   "bytes": 2584,
+   "sha256": "d65beb37d7997f4114a192caf9badca4a289d8dec5d41241272b60a355712489"
+  },
+  {
+   "kind": "capacidad_inter_pbc",
+   "day": "2026-09-19",
+   "file": "capacidad_inter_pbc_20260919.1",
+   "bytes": 22326,
+   "sha256": "16b19d6a2451db3c0138e87d4116a8ecd59da33be39dd9eec054f46e6e59cd92"
+  },
+  {
+   "kind": "curva_pbc",
+   "day": "2026-09-27",
+   "file": "curva_pbc_20260927.1",
+   "bytes": 20262002,
+   "sha256": "8eb2d468a1204c7b6ec5c06585dbe100790471394bfd768973c1d72cd71edfe3"
+  },
+  {
+   "kind": "marginalpdbc",
+   "day": "2026-09-27",
+   "file": "marginalpdbc_20260927.1",
+   "bytes": 2623,
+   "sha256": "9d5890f7415d29cd5839368347ac6913285c5f861af30372b70a69485b00c999"
+  },
+  {
+   "kind": "capacidad_inter_pbc",
+   "day": "2026-09-27",
+   "file": "capacidad_inter_pbc_20260927.1",
+   "bytes": 22557,
+   "sha256": "9cc2b047a8ad526a7df258030367f172828baa71b2c9d348e27d8decb1c0eca5"
+  }
+ ]
+}

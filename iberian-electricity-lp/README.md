@@ -5,11 +5,29 @@ OMIE's public order books? How far do the market's indivisible orders move it, a
 much would 1,000 MW more supply at zero price lower it? A registered study of one year of
 15-minute periods.
 
-**Status: plan registered ([METHODS.md](METHODS.md)).** The data step, the estimates, the
-article and a critical review follow, each in its own pull request.
+**Status: plan registered ([METHODS.md](METHODS.md)); data built
+([docs/DATA.md](docs/DATA.md)), with no programme solved yet.** The estimates, the article
+and a critical review follow, each in its own pull request.
+
+## Running it
+
+```bash
+pip install -e ".[dev]"
+python -m pytest -q          # offline, from the committed tables in data/derived/
+```
+
+Rebuilding the tables downloads 144 files (about 950 MB) from omie.es into `data/raw/`,
+which is not committed:
+
+```bash
+iberian-lp download          # the 48 drawn days, one request a second
+iberian-lp data              # about 4 minutes; writes data/derived/ and docs/DATA.md
+```
 
 ## Data and source
 
 Data: OMIE (OMI-Polo Español, S.A.), [omie.es](https://www.omie.es). OMIE's public
 information may be used freely, keeping its original content intact and citing the
-source. The raw files are not committed; their names and hashes will be in a manifest.
+source. The raw files are not committed; their names, sizes and SHA-256 hashes are in
+`data/derived/manifest.json`. The committed tables in `data/derived/` are derived from
+them: the offered steps summed by price, and one row per zone-period.
