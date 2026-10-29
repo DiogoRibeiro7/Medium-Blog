@@ -1,0 +1,282 @@
+
+==============================================================================
+1. NLSY79 Table 2 across six releases (cumulative % of jobs ended)
+==============================================================================
+release     survey   phrasing         group   <1y   <2y   <5y  <10y  <15y  ongoing
+2015-03-31  2012-13  jobs             18-24   69.1  82.8  92.8  96.3  97.5    1.4
+2015-03-31  2012-13  jobs             25-29   56.1  72.9  86.8  92.7  94.9    3.3
+2015-03-31  2012-13  jobs             30-34   47.8  64.5  82.9  90.9  93.7    5.4
+2015-03-31  2012-13  jobs             35-39   37.8  55.5  76.3  86.6  89.6   10.2
+2015-03-31  2012-13  jobs             40-48   32.0  50.0  69.0     .     .   23.5
+2017-08-24  2014-15  jobs             18-24   69.1  82.9  92.8  96.3  97.5    1.2
+2017-08-24  2014-15  jobs             25-34   52.7  69.4  85.2  92.0  94.4    3.8
+2017-08-24  2014-15  jobs             35-44   35.8  53.7  74.6     .     .   11.6
+2017-08-24  2014-15  jobs             45-50   30.5  47.1     .     .     .   28.4
+2019-08-22  2016-17  jobs             18-24   70.1  83.5  93.0  96.4  97.5    1.0
+2019-08-22  2016-17  jobs             25-34   53.0  69.6  85.4  92.1  94.5    3.4
+2019-08-22  2016-17  jobs             35-44   35.8  53.8  74.8     .     .    9.6
+2019-08-22  2016-17  jobs             45-52   29.4  46.3     .     .     .   25.3
+2021-08-31  2018-19  average worker   18-24   60.8  74.6  86.9  92.5  94.8    2.0
+2021-08-31  2018-19  average worker   25-34   41.9  57.5  74.2  84.3  89.0    5.9
+2021-08-31  2018-19  average worker   35-44   25.6  40.5  60.9     .     .   14.3
+2021-08-31  2018-19  average worker   45-54   21.5  34.7     .     .     .   32.6
+2023-08-22  2020-21  average worker   18-24   60.8  74.5  86.8  92.3  94.6    1.7
+2023-08-22  2020-21  average worker   25-34   41.5  57.1  74.0  84.3  88.8    5.1
+2023-08-22  2020-21  average worker   35-44   25.2  40.0  60.5  75.6     .   12.0
+2023-08-22  2020-21  average worker   45-56   21.4  34.9     .     .     .   27.7
+2025-08-26  2022-23  average worker   18-24   60.7  74.7  86.9  92.5  94.8    1.5
+2025-08-26  2022-23  average worker   25-34   41.7  57.2  74.0  84.1  89.0    4.0
+2025-08-26  2022-23  average worker   35-44   25.3  40.0  60.4  75.2  82.5    9.7
+2025-08-26  2022-23  average worker   45-54   21.4  34.5  55.9     .     .   20.8
+2025-08-26  2022-23  average worker   55-58   23.8  38.2     .     .     .   37.6
+
+The break between the 2019 and 2021 releases (same cohort, two survey years apart):
+  18-24 (2019, 'jobs') vs 18-24 (2021, 'average worker'): <1y 70.1 vs 60.8;  drop in points at 1/2/5 y: 9.3, 8.9, 6.1
+  25-34 (2019, 'jobs') vs 25-34 (2021, 'average worker'): <1y 53.0 vs 41.9;  drop in points at 1/2/5 y: 11.1, 12.1, 11.2
+  35-44 (2019, 'jobs') vs 35-44 (2021, 'average worker'): <1y 35.8 vs 25.6;  drop in points at 1/2/5 y: 10.2, 13.3, 13.9
+  45-52 (2019, 'jobs') vs 45-54 (2021, 'average worker'): <1y 29.4 vs 21.5;  drop in points at 1/2/5 y: 7.9, 11.6
+
+Stability within each phrasing (same cohort, consecutive releases):
+  18-24: <1y by release 2017..2025 = 69.1, 70.1, 60.8, 60.8, 60.7
+  25-34: <1y by release 2017..2025 = 52.7, 53.0, 41.9, 41.5, 41.7
+  35-44: <1y by release 2017..2025 = 35.8, 35.8, 25.6, 25.2, 25.3
+  45+: <1y by release 2017..2025 = 30.5 (45-50), 29.4 (45-52), 21.5 (45-54), 21.4 (45-56), 21.4 (45-54)
+  45+: <2y by release 2017..2025 = 47.1, 46.3, 34.7, 34.9, 34.5
+
+==============================================================================
+2. Survival from hire by age at start
+==============================================================================
+
+Hire-weighted (2019 release, 'jobs')
+group   S(1)   S(2)   S(5)  S(10)  S(15) | hazard/yr in [0,1) [1,2) [2,5) [5,10) [10,15) | median
+18-24   29.9  16.5   7.0   3.6   2.5 |                1.207  0.594  0.286  0.133  0.073 |  0.57 y
+25-34   47.0  30.4  14.6   7.9   5.5 |                0.755  0.436  0.244  0.123  0.072 |  0.92 y
+35-44   64.2  46.2  25.2      .      . |                0.443  0.329  0.202      .      . |  1.76 y
+45-52   70.6  53.7      .      .      . |                0.348  0.274      .      .      . |  >2 y
+
+Worker-averaged (2025 release, 'average worker')
+group   S(1)   S(2)   S(5)  S(10)  S(15) | hazard/yr in [0,1) [1,2) [2,5) [5,10) [10,15) | median
+18-24   39.3  25.3  13.1   7.5   5.2 |                0.934  0.440  0.219  0.112  0.073 |  0.74 y
+25-34   58.3  42.8  26.0  15.9  11.0 |                0.540  0.309  0.166  0.098  0.074 |  1.50 y
+35-44   74.7  60.0  39.6  24.8  17.5 |                0.292  0.219  0.139  0.094  0.070 |  3.32 y
+45-54   78.6  65.5  44.1      .      . |                0.241  0.182  0.132      .      . |  4.05 y
+55-58   76.2  61.8      .      .      . |                0.272  0.209      .      .      . |  >2 y
+
+Ratios of the first-year exit share, younger group over older group:
+  hire-weighted: 18-24 vs 45-52: 2.38x
+  hire-weighted: 25-34 vs 45-52: 1.80x
+  worker-averaged: 18-24 vs 45-54: 2.84x
+  worker-averaged: 25-34 vs 45-54: 1.95x
+
+Restricted mean time with the employer (years) within H years of the hire:
+group         H=1    H=2    H=5   H=10   H=15
+hire   18-24    0.58   0.81   1.14   1.39   1.54
+hire   25-34    0.70   1.08   1.73   2.27   2.61
+hire   35-44    0.81   1.35   2.39      .      .
+hire   45-52    0.84   1.46      .      .      .
+worker 18-24    0.65   0.97   1.52   2.03   2.34
+worker 25-34    0.77   1.27   2.29   3.31   3.98
+worker 35-44    0.87   1.54   3.01   4.59   5.64
+worker 45-54    0.89   1.61   3.23      .      .
+worker 55-58    0.88   1.56      .      .      .
+
+How many of 100 hires are still there at 1 and 2 years (the payback window):
+  hire   18-24   29.9 at 1y,  16.5 at 2y
+  hire   25-34   47.0 at 1y,  30.4 at 2y
+  hire   35-44   64.2 at 1y,  46.2 at 2y
+  hire   45-52   70.6 at 1y,  53.7 at 2y
+  worker 18-24   39.3 at 1y,  25.3 at 2y
+  worker 25-34   58.3 at 1y,  42.8 at 2y
+  worker 35-44   74.7 at 1y,  60.0 at 2y
+  worker 45-54   78.6 at 1y,  65.5 at 2y
+  worker 55-58   76.2 at 1y,  61.8 at 2y
+
+NLSY97 (born 1980-84, 2026 release, 'average worker'):
+  18-24: <1y 61.4, <2y 79.2, <3y 87.2, <6y 95.2, <13y 96.8, ongoing 3.2
+  25-38: <1y 32.4, <2y 48.4, <3y 57.6, <6y 69.5, <13y 75.9, ongoing 23.7
+
+==============================================================================
+3. Censoring: share of starts with less follow-up than the cell needs
+==============================================================================
+cell               published  share of starts short of follow-up   upper bound on the true share
+                              (interview window 2022.5-2023.5 | 2022.0-2024.0)
+55-58 at 1 year     23.8%        1.8% |   1.8%                      25.6%
+55-58 at 2 years    38.2%        7.1% |   7.1%                      45.3%
+45-54 at 5 years    55.9%        2.6% |   2.7%                      58.6%
+45-54 at 2 years    34.5%        0.0% |   0.0%                      34.5%
+
+==============================================================================
+4. Beyond the observed window: worst cases and break-even exit rates
+==============================================================================
+
+worker-averaged, 45-54 (data stop at 5 years, S = 44.1%; last observed hazard 0.132/yr)
+  H=10: 45-54 worst 3.23, carry-forward 4.84, nobody-leaves 5.44 | 25-34 3.31, break-even exit rate 5.360/yr (=100% of stayers per year) | 35-44 4.59, break-even exit rate 0.211/yr (=19% of stayers per year)
+  H=15: 45-54 worst 3.23, carry-forward 5.68, nobody-leaves 7.64 | 25-34 3.98, break-even exit rate 0.589/yr (=44% of stayers per year) | 35-44 5.64, break-even exit rate 0.136/yr (=13% of stayers per year)
+
+worker-averaged, 55-58 (data stop at 2 years, S = 61.8%; last observed hazard 0.209/yr)
+  H= 5: 55-58 worst 1.56, carry-forward 2.94, nobody-leaves 3.42 | 25-34 2.29, break-even exit rate 0.771/yr (=54% of stayers per year) | 35-44 3.01, break-even exit rate 0.172/yr (=16% of stayers per year)
+  H=10: 55-58 worst 1.56, carry-forward 3.96, nobody-leaves 6.51 | 25-34 3.31, break-even exit rate 0.328/yr (=28% of stayers per year) | 35-44 4.59, break-even exit rate 0.134/yr (=13% of stayers per year)
+
+hire-weighted, 45-52 (data stop at 2 years, S = 53.7%; last observed hazard 0.274/yr)
+  H= 5: 45-52 worst 1.46, carry-forward 2.56, nobody-leaves 3.07 | 25-34 1.73, break-even exit rate 2.006/yr (=87% of stayers per year) | 35-44 2.39, break-even exit rate 0.405/yr (=33% of stayers per year)
+  H=10: 45-52 worst 1.46, carry-forward 3.20, nobody-leaves 5.76 | 25-34 2.27, break-even exit rate 0.657/yr (=48% of stayers per year) | 35-44 3.19, break-even exit rate 0.277/yr (=24% of stayers per year)
+
+The break-even exit rate for 55-58 starters against the observed exit rate in their second year:
+  observed hazard in [1,2): 0.209/yr; break-even over 5 years vs 25-34: 0.771/yr; ratio 3.7x
+  with the 1- and 2-year shares at their censoring upper bounds ( 25.6%,  45.3%): RMST(2) 1.51, break-even 0.577/yr = 1.9x the second-year hazard
+  RMST(2) unadjusted: 55-58 1.56 vs 25-34 1.27 vs 35-44 1.54 vs 45-54 1.61
+
+==============================================================================
+5. Hires needed to keep one seat filled (renewal, vacancies filled at once)
+==============================================================================
+group          H=1    H=2    H=5   (each hire drawn from the same age-at-start curve)
+hire   18-24    2.20   3.18   5.53
+hire   25-34    1.75   2.34   3.70
+hire   35-44    1.44   1.81   2.66
+hire   45-52    1.35   1.64      .
+worker 18-24    1.93   2.63   4.19
+worker 25-34    1.54   1.93   2.76
+worker 35-44    1.29   1.53   2.05
+worker 45-54    1.24   1.43   1.90
+worker 55-58    1.27   1.49      .
+
+==============================================================================
+6. Career model: gamma frailty on the exit hazard, calibrated to both estimands
+==============================================================================
+bisection on theta (frailty variance) -> worker-averaged S(1) for 25-34:
+  theta 1.5005: S(1) 70.10%  (target 58.3%)
+  theta 0.7507: S(1) 65.79%  (target 58.3%)
+  theta 0.3759: S(1) 62.86%  (target 58.3%)
+  theta 0.1884: S(1) 60.61%  (target 58.3%)
+  theta 0.0947: S(1) 59.09%  (target 58.3%)
+  theta 0.0479: S(1) 58.16%  (target 58.3%)
+  theta 0.0713: S(1) 58.66%  (target 58.3%)
+  theta 0.0596: S(1) 58.41%  (target 58.3%)
+  theta 0.0537: S(1) 58.27%  (target 58.3%)
+  theta 0.0566: S(1) 58.34%  (target 58.3%)
+  theta 0.0552: S(1) 58.30%  (target 58.3%)
+  theta 0.0559: S(1) 58.32%  (target 58.3%)
+
+theta = 0.056; largest calibration error 0.72 points; persons at job cap: 0
+base hazards (per year, before frailty) by band and tenure interval [0,1) [1,2) [2,5) [5,10) [10,15) [15,inf):
+  18-24:  1.195  0.618  0.305  0.148  0.084  0.084
+  25-34:  0.716  0.425  0.245  0.129  0.078  0.078
+  35-44:  0.414  0.315  0.198  0.117  0.074  0.074
+  45-54:  0.327  0.260  0.189  0.071  0.071  0.071
+  55-58:  0.376  0.264  0.052  0.052  0.052  0.052
+
+The averaging rule alone: identical workers (theta = 0.001), recalibrated to the same targets
+band    pooled <1y  worker-avg <1y (model)  worker-avg <1y (published 2025)
+18-24      70.1        61.0                   60.7
+25-34      53.0        43.1                   41.7
+35-44      35.8        26.7                   25.3
+45-54      29.4        20.8                   21.4
+55-58      33.6        23.8                   23.8
+
+Model vs published, both estimands (cumulative % ended; * = calibration target):
+band   estimand  knot   model  published
+18-24  pooled     1y    70.1    70.1 *
+18-24  pooled     2y    83.5    83.5 *
+18-24  pooled     5y    93.0    93.0 *
+18-24  pooled    10y    96.4    96.4 *
+18-24  pooled    15y    97.5    97.5 *
+18-24  person     1y    59.7    60.7  
+18-24  person     2y    72.8    74.7  
+18-24  person     5y    84.3    86.9  
+18-24  person    10y    91.4    92.5  
+18-24  person    15y    94.0    94.8  
+25-34  pooled     1y    53.0    53.0 *
+25-34  pooled     2y    69.6    69.6 *
+25-34  pooled     5y    85.4    85.4 *
+25-34  pooled    10y    92.1    92.1 *
+25-34  pooled    15y    94.5    94.5 *
+25-34  person     1y    41.7    41.7 *
+25-34  person     2y    56.2    57.2  
+25-34  person     5y    72.8    74.0  
+25-34  person    10y    83.1    84.1  
+25-34  person    15y    88.2    89.0  
+35-44  pooled     1y    35.8    35.8 *
+35-44  pooled     2y    53.8    53.8 *
+35-44  pooled     5y    74.8    74.8 *
+35-44  person     1y    25.9    25.3  
+35-44  person     2y    40.3    40.0  
+35-44  person     5y    60.3    60.4  
+35-44  person    10y    75.1    75.2 *
+35-44  person    15y    82.4    82.5 *
+45-54  pooled     1y    29.4    29.4 *
+45-54  pooled     2y    46.3    46.3 *
+45-54  person     1y    20.4    21.4  
+45-54  person     2y    33.4    34.5  
+45-54  person     5y    55.2    55.9 *
+55-58  person     1y    23.8    23.8 *
+55-58  person     2y    38.2    38.2 *
+
+Out-of-sample cells: 14; mean absolute error 1.04 points; largest 2.60
+ongoing at the survey (model person-avg vs published 2025):
+  18-24: 0.9 vs 1.5
+  25-34: 2.5 vs 4.0
+  35-44: 7.7 vs 9.7
+  45-54: 20.8 vs 20.8
+  55-58: 37.6 vs 37.6
+
+Jobs held per person in each age band (model vs BLS Table 1, 2025: 5.6, 4.5, 2.9, 2.2, 1.3):
+  model: 5.2, 4.4, 3.0, 2.5, 1.5
+
+Why the two estimands differ: jobs per person within the band, among people with a start there
+  18-24: 5.25 starts per person; pooled vs worker-avg <1y 70.1 vs 59.7
+  25-34: 4.23 starts per person; pooled vs worker-avg <1y 53.0 vs 41.7
+  35-44: 2.89 starts per person; pooled vs worker-avg <1y 35.8 vs 25.9
+  45-54: 2.44 starts per person; pooled vs worker-avg <1y 29.4 vs 20.4
+  55-58: 1.57 starts per person; pooled vs worker-avg <1y 34.1 vs 23.8
+
+==============================================================================
+7. Stock (median tenure of current jobs) versus flow (duration of new hires)
+==============================================================================
+age group   CPS Jan 2026   model (age-specific flows)   model (25-34 flows at every age)
+20-24            1.5             1.1                          1.8
+25-34            3.0             2.4                          3.3
+35-44            4.7             4.2                          4.3
+45-54            7.0             5.8                          4.6
+55-64            9.6             7.3                          4.6
+65+              9.9             9.1                          4.7
+
+Median duration of a new hire by age at start (model, followed to retirement):
+  18-24: 0.57 years (flat-flow counterfactual 0.94)
+  25-34: 0.92 years (flat-flow counterfactual 0.91)
+  35-44: 1.76 years (flat-flow counterfactual 0.91)
+  45-54: 2.34 years (flat-flow counterfactual 0.90)
+  55-58: 1.90 years (flat-flow counterfactual 0.89)
+Data-only medians (piecewise-exponential through the knots):
+  hire   18-24: 0.57 years
+  hire   25-34: 0.92 years
+  hire   35-44: 1.76 years
+  hire   45-52: more than 2 years
+  worker 18-24: 0.74 years
+  worker 25-34: 1.50 years
+  worker 35-44: 3.32 years
+  worker 45-54: 4.05 years
+  worker 55-58: more than 2 years
+
+==============================================================================
+8. The employer's view from the calibrated model (hire-weighted, followed to retirement)
+==============================================================================
+band    S(1)   S(2)   S(5)  S(10) | RMST H=2  H=5  H=10 | hires per seat H=2  H=5  H=10
+18-24   29.8  16.4   7.0   3.6 |      0.80  1.13  1.38 |              3.20  5.58  8.96
+25-34   47.0  30.4  14.7   7.9 |      1.08  1.73  2.27 |              2.36  3.73  5.61
+35-44   64.4  46.3  25.2  14.1 |      1.36  2.39  3.35 |              1.81  2.66  3.84
+45-54   70.3  53.5  29.7  17.5 |      1.46  2.67  3.85 |              1.65  2.38  3.33
+55-58   65.9  48.4  32.3   6.0 |      1.39  2.61  3.50 |              1.75  2.39  3.74
+  seats over  2 years, 25-34 / 45-54: 1.43; 25-34 / 55-58: 1.34
+  seats over  5 years, 25-34 / 45-54: 1.57; 25-34 / 55-58: 1.56
+  seats over 10 years, 25-34 / 45-54: 1.68; 25-34 / 55-58: 1.50
+
+==============================================================================
+9. Sensitivity: time between jobs and retirement age (everything re-calibrated)
+==============================================================================
+gap  retire  theta  | 45-54: S(5)  S(10)  RMST10  seats10 | 55-58: S(5)  S(10)  RMST10  seats10 | 25-34 RMST10 seats10
+0.20     64  0.054  |        29.7   17.4    3.86     3.32 |        32.3    6.1    3.49     3.76 |    2.28    5.55   (cal. err 0.98; ongoing 45-54 20.8, 55-58 37.6; post-knot base hazards 0.073, 0.0496)
+0.60     64  0.077  |        29.8   17.4    3.86     3.33 |        33.6    6.2    3.59     3.66 |    2.29    5.53   (cal. err 0.71; ongoing 45-54 20.8, 55-58 37.6; post-knot base hazards 0.073, 0.0489)
+0.35     62  0.065  |        29.0   18.7    3.89     3.28 |        30.5    3.8    3.37     3.86 |    2.29    5.54   (cal. err 5.34; ongoing 45-54 20.8, 55-58 32.3; post-knot base hazards 0.023, 0.0001)
+0.35     66  0.065  |        30.1   16.5    3.83     3.35 |        31.2    7.5    3.49     3.74 |    2.29    5.54   (cal. err 0.68; ongoing 45-54 20.8, 55-58 37.6; post-knot base hazards 0.105, 0.1109)
+
+Saved results/model.npz for figures.py
