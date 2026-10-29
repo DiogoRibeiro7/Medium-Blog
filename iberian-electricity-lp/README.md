@@ -6,15 +6,22 @@ much would 1,000 MW more supply at zero price lower it? A registered study of on
 15-minute periods.
 
 **Status: plan registered ([METHODS.md](METHODS.md)); data built
-([docs/DATA.md](docs/DATA.md)), with no programme solved yet.** The estimates, the article
-and a critical review follow, each in its own pull request.
+([docs/DATA.md](docs/DATA.md)); programmes solved and estimates reported against the plan
+([docs/RESULTS.md](docs/RESULTS.md)).** The article and a critical review follow, each in
+its own pull request.
 
 ## Running it
 
 ```bash
 pip install -e ".[dev]"
-python -m pytest -q          # offline, from the committed tables in data/derived/
+python -m pytest -q          # offline, from the committed tables and results
+iberian-lp programmes        # about 12 minutes; writes results/programmes.csv
+iberian-lp estimates         # writes results/estimates.json and docs/RESULTS.md
 ```
+
+Each programme's dual interval is computed exactly from the integer steps and checked
+against HiGHS. The tests re-solve every programme exactly from the committed steps, and
+check one day against HiGHS.
 
 Rebuilding the tables downloads 144 files (about 950 MB) from omie.es into `data/raw/`,
 which is not committed:

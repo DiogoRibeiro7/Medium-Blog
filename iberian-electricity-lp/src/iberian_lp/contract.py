@@ -24,6 +24,16 @@ NON_CONVEX = ("C01", "C02", "C04")         # simple block, scalable complex, exc
 FLOWS = ("Imp FR", "Exp FR", "Imp PT", "Exp PT", "Imp ES", "Exp ES")
 FRANCE_BORDER = "3"                        # capacidad_inter_pbc: 2 Portugal, 3 France
 
-# Section 6.
+# Sections 6 and 7.
 BOOTSTRAP_DRAWS = 9_999
 BOOTSTRAP_SEED = 20261029
+LEVEL = 0.95                               # reported intervals
+SIMULTANEOUS_LEVEL = 1 - 0.05 / 2          # Q2 and Q3 (Bonferroni over the two)
+E1_TOLERANCE = 0.01                        # EUR/MWh at each end of Λ_R
+E1_TOLERANCE_SENSITIVITY = 0.1             # section 7
+E1_THRESHOLD = 0.99
+VOLUME_TOLERANCE_MW = 0.1
+MOVED = 0.01                               # E2: |δ| above this, in EUR/MWh
+E3_MW = 1_000                              # one more sell step at 0 EUR/MWh
+E3_SENSITIVITY_MW = (500, 2_000)           # section 7
+MIDDAY_HOURS = range(11, 18)               # OMIE's hours 11-17: 10:00 to 17:00

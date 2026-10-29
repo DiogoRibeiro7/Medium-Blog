@@ -1,5 +1,7 @@
 """Command line: ``iberian-lp download`` fetches the drawn days' files from omie.es;
-``iberian-lp data`` builds the derived tables and docs/DATA.md from them."""
+``iberian-lp data`` builds the derived tables and docs/DATA.md from them;
+``iberian-lp programmes`` solves every programme from the derived tables; and
+``iberian-lp estimates`` computes the estimands and docs/RESULTS.md."""
 
 from __future__ import annotations
 
@@ -22,6 +24,15 @@ def main(argv: list[str] | None = None) -> None:
                                  "derived tables")
     report.add_argument("--out", type=Path, default=Path("data/derived"))
     report.add_argument("--report", type=Path, default=Path("docs/DATA.md"))
+    programmes = commands.add_parser("programmes", help="Solve every programme (sections "
+                                     "4-7) into results/programmes.csv")
+    programmes.add_argument("--derived", type=Path, default=Path("data/derived"))
+    programmes.add_argument("--results", type=Path, default=Path("results"))
+    estimates = commands.add_parser("estimates", help="Compute the estimands (sections 5-7) "
+                                    "into results/estimates.json and docs/RESULTS.md")
+    estimates.add_argument("--derived", type=Path, default=Path("data/derived"))
+    estimates.add_argument("--results", type=Path, default=Path("results"))
+    estimates.add_argument("--report", type=Path, default=Path("docs/RESULTS.md"))
     args = parser.parse_args(argv)
 
     if args.command == "download":
@@ -36,6 +47,28 @@ def main(argv: list[str] | None = None) -> None:
                 print(f"{files[-1]['file']}: {files[-1]['bytes']:,} bytes", flush=True)
         (args.raw / "downloads.json").write_text(json.dumps(files, indent=1) + "\n",
                                                  encoding="utf-8", newline="\n")
+        return
+    if args.command == "programmes":
+        from iberian_lp.experiment import run
+
+        checks = run(args.derived, args.results / "programmes.csv",
+                     lambda line: print(line, flush=True))
+        (args.results / "solver.json").write_text(json.dumps(checks, indent=1) + "\n",
+                                                  encoding="utf-8", newline="\n")
+        return
+    if args.command == "estimates":
+        from iberian_lp import estimates as e
+        from iberian_lp.report import load
+
+        solver = json.loads((args.results / "solver.json").read_text(encoding="utf-8"))
+        results = e.estimate(e.load_programmes(args.results / "programmes.csv"),
+                             load(args.derived), solver)
+        e.write(results, args.results / "estimates.json")
+        command = (f"iberian-lp estimates --derived {args.derived.as_posix()} --results "
+                   f"{args.results.as_posix()} --report {args.report.as_posix()}")
+        args.report.parent.mkdir(parents=True, exist_ok=True)
+        args.report.write_text(e.render(results, command), encoding="utf-8", newline="\n")
+        print(f"wrote {args.report}")
         return
     if args.command == "data":
         from iberian_lp.data import build

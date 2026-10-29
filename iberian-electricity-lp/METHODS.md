@@ -198,3 +198,56 @@ Each reports its estimand beside the main one and changes no decision.
     each order type, and the flows with France. It also reports three accounting checks on
     the matched quantities, all of which pass. It shows no price levels, and no curve was
     compared with a price. No programme was solved.
+- **2026-10-29, the programmes and estimates, before any programme of the study period was
+  solved: details the plan left open.**
+  - **Developed on a day outside the study.** The code was written and checked on
+    15 October 2026, after the study period, whose files were read for this plan
+    (section 2). On that day π lay in Λ_R in all 101 zone-periods, and relaxing the
+    non-convex orders lowered the price in most periods (mean δ −10.28 EUR/MWh), against the
+    expectation in section 6. That expectation, and every rule, stand as registered.
+    Earlier in this step, reading the derived table's format printed its first two rows,
+    with two published prices of 1 October 2025; no curve was compared with them.
+  - **The exact interval.** Λ is the set of λ at which
+    [S(<λ) − D(≥λ), S(≤λ) − D(>λ)] contains R, where S and D are the divisible sell and buy
+    volume priced in the given range, and R is the fixed demand minus the fixed supply.
+    This is the fact in section 1. Its ends are step prices; an unbounded end is recorded
+    as infinite.
+  - **The HiGHS check.** `scipy.optimize.linprog` with `method="highs"`. HiGHS's dual of
+    the balance constraint must lie in Λ within 10⁻⁶ EUR/MWh. Its objective must equal the
+    exact optimal value within 10⁻⁹ of the largest the objective could be (the sum of
+    |price| × quantity).
+  - **Fixed volume.** In each programme, R = exports − imports − the accepted volume of
+    the non-convex order types not relaxed. In the partial relaxations of section 7, the
+    type not relaxed stays at its accepted volume. E4 takes the France flows out of R. E3's
+    extra supply is one more sell step at 0.00 EUR/MWh.
+  - **E1's volume check.** When steps are priced exactly at the clearing price, the
+    optimal accepted volume can be an interval. The published accepted buy volume must lie
+    within 0.1 MW of it.
+  - **Prices in cents.** π and the ends of every Λ are whole cents, so E1's tolerance is
+    one cent and every comparison with π is exact. E2's share counts |δ| > 0.01 EUR/MWh,
+    that is, at least two cents.
+  - **Intervals.** One draw of 9,999 × 48 resampled days (`numpy.random.default_rng(20261029)`)
+    serves every estimand. In each resample, a mean over periods is the sum over the drawn
+    days divided by their number of periods. Percentiles use NumPy's default (linear)
+    quantile. Every interval of E2 and E3, including their means by hour and their
+    sensitivity analyses, is at 97.5%; E1's and E4's are at 95%. E1's decision uses the
+    estimated share. For E4, a resample with no period in the subset is dropped.
+  - **E3's midpoint rule.** An unbounded interval has no midpoint; such periods are
+    counted and left out of that analysis.
+  - **Λ_R's width.** The share is over all zone-periods; the median width is over those
+    wider than a point, with both ends finite.
+  - **Where E1 fails.** Whatever E1's value, the report gives the zone-periods where π
+    lies outside Λ_R, by zone, with the days, the hours and the distance from π to Λ_R.
+- **2026-10-29, after the programmes were solved: what was seen and what was added.**
+  - **What was seen.** All of `docs/RESULTS.md`: 37,374 programmes, every HiGHS check
+    passed, and every estimand of sections 6 and 7.
+  - **Added after the results, descriptive and labelled so in the report.**
+    - *Where G comes from.* The share of midday and other periods with π ≤ 0, and mean
+      |m| over the periods priced above zero, outside and at midday, with their
+      difference (95%). Added because a sell step at 0 EUR/MWh cannot lower a price
+      already at or below zero, so G could be partly mechanical.
+    - *The midpoint rule.* The number of periods in which E3's counterfactual interval is
+      wider than a point, added because the midpoint-rule row matched the registered row
+      to two decimals.
+    - *Expectations.* Two lines comparing the expectations of section 6 with the outcomes.
+  - **Not changed.** No rule, tolerance, estimand or decision.
