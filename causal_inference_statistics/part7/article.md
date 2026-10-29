@@ -337,7 +337,7 @@ Imbens, G. W. and Rubin, D. B. (2015). *Causal Inference for Statistics, Social,
 
 Moreira, M. J. (2003). A Conditional Likelihood Ratio Test for Structural Models. *Econometrica*, 71(4), 1027–1048. https://doi.org/10.1111/1468-0262.00438
 
-Nelson, C. R. and Startz, R. (1990). The Distribution of the Instrumental Variables Estimator and Its t-Ratio When the Instrument Is a Poor One. *Journal of Business*, 63(1), S125–S140.
+Nelson, C. R. and Startz, R. (1990). The Distribution of the Instrumental Variables Estimator and Its t-Ratio When the Instrument Is a Poor One. *Journal of Business*, 63(1), S125–S140. https://www.jstor.org/stable/2353264
 
 Staiger, D. and Stock, J. H. (1997). Instrumental Variables Regression with Weak Instruments. *Econometrica*, 65(3), 557–586. https://doi.org/10.2307/2171753
 

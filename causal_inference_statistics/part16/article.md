@@ -292,7 +292,7 @@ Rambachan, A. and Roth, J. (2023). A More Credible Approach to Parallel Trends. 
 
 Rosenbaum, P. R. (2002). *Observational Studies*, 2nd edition. Springer. https://doi.org/10.1007/978-1-4757-3692-2
 
-Rosenbaum, P. R. and Rubin, D. B. (1983). Assessing Sensitivity to an Unobserved Binary Covariate in an Observational Study with Binary Outcome. *Journal of the Royal Statistical Society: Series B*, 45(2), 212–218.
+Rosenbaum, P. R. and Rubin, D. B. (1983). Assessing Sensitivity to an Unobserved Binary Covariate in an Observational Study with Binary Outcome. *Journal of the Royal Statistical Society: Series B*, 45(2), 212–218. https://doi.org/10.1111/j.2517-6161.1983.tb01242.x
 
 VanderWeele, T. J. and Ding, P. (2017). Sensitivity Analysis in Observational Research: Introducing the E-Value. *Annals of Internal Medicine*, 167(4), 268–274. https://doi.org/10.7326/M16-2607
 
