@@ -7,7 +7,9 @@ body unchanged into a gzipped JSON-lines container
 ``data/ine_<code>_<YYYY-MM-DD>.jsonl.gz``. Each line records the URL, retrieval
 time, HTTP status, text encoding, byte count and SHA-256 of the raw body next
 to the body itself, so ``regional.py`` can check every response it reads. The
-first line is a header with the number of responses that follow.
+first line is a header with the number of responses that follow. With ``--set
+rental`` it also downloads the Eurostat datasets in ``EUROSTAT_RENTAL``, writing
+each raw body with a ``.meta.json`` retrieval record (URL, time, size, SHA-256).
 
 Nothing is parsed or transformed here. Run on a GitHub runner (the workflow job
 ``fetch-regional``); standard library only.
@@ -59,7 +61,50 @@ AFFORDABILITY: dict[str, tuple[str, str, dict[str, str]]] = {
     # Median declared gross income per tax household, NUTS 2013 (earlier years).
     "0009763": ("income_gross_household_nuts2013", "all", {}),
 }
-SETS = {"regional": "INDICATORS", "affordability": "AFFORDABILITY"}
+# Rent, tenure and housing-cost series for the rental-market analysis (see rental.py).
+RENTAL: dict[str, tuple[str, str, dict[str, str]]] = {
+    # New lease contracts (INE local rent statistics, tax-authority records): median rent per m2,
+    # number of contracts and quartiles; method 2026, NUTS 2024, calendar years 2020-2025.
+    "0014698": ("new_lease_median_rent_m2_method2026", "all", {}),
+    "0014697": ("new_lease_contracts_method2026", "all", {}),
+    "0014711": ("new_lease_rent_m2_quartiles_method2026", "all", {}),
+    # The same statistics under the 2021 method (NUTS 2024, 2020-2024; NUTS 2013, 2017-2023).
+    "0012600": ("new_lease_median_rent_m2_method2021_nuts2024", "all", {}),
+    "0012601": ("new_lease_contracts_method2021_nuts2024", "all", {}),
+    "0009631": ("new_lease_median_rent_m2_method2021_nuts2013", "all", {}),
+    "0009632": ("new_lease_contracts_method2021_nuts2013", "all", {}),
+    # New leases whose tenant is resident in Portugal: median rent per m2 and contracts, 12 months to Q4.
+    "0014700": ("new_lease_median_rent_m2_resident_tenants", "q4", {}),
+    "0014699": ("new_lease_contracts_resident_tenants", "q4", {}),
+    # Censuses: rented share and mean monthly rent of rented dwellings (the whole stock of tenancies).
+    "0012521": ("census2021_rented_share_nuts2024", "all", {}),
+    "0012522": ("census2021_mean_rent_nuts2024", "all", {}),
+    "0006993": ("census2011_rented_share", "all", {}),
+    "0006995": ("census2011_mean_rent", "all", {}),
+    "0000977": ("census1991_2001_rented_share", "all", {}),
+    "0000777": ("census2001_mean_rent", "all", {}),
+    # Census 2021 tenancies: contract period, rental support, years in the dwelling, rent band by contract period.
+    "0012508": ("census2021_tenancies_by_contract_period", "all", {"Dim3": "T"}),
+    "0012529": ("census2021_tenancies_by_rental_support", "all", {"Dim4": "T"}),
+    "0011522": ("census2021_unsupported_tenancies_by_contract_period_nuts2013", "all", {"Dim3": "2"}),
+    "0012528": ("census2021_tenancies_by_years_in_dwelling", "all", {"Dim3": "T"}),
+    "0011501": ("census2021_tenancies_rent_band_by_contract_period_portugal", "all", {"Dim2": "PT"}),
+    # Housing cost overburden rate (EU-SILC as published by INE), NUTS 2.
+    "0006260": ("overburden_nuts2_a", "all", {}),
+    "0014472": ("overburden_nuts2_b", "all", {}),
+}
+# Eurostat datasets for the rental-market analysis: file tag -> dataset and query (Portugal only).
+EUROSTAT_URL = "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/"
+EUROSTAT_RENTAL: dict[str, str] = {
+    "ilc_lvho07c_PT": "ilc_lvho07c?geo=PT&unit=PC",
+    "ilc_lvho02_PT_by_poverty": "ilc_lvho02?geo=PT&hhcomp=TOTAL&unit=PC",
+    "ilc_mded02_PT": "ilc_mded02?geo=PT&hhcomp=TOTAL&unit=PC",
+    "ilc_di09_PT": "ilc_di09?geo=PT&statinfo=MED_EI&unit=EUR&sex=T&age=TOTAL",
+    "ilc_lvho25_PT": "ilc_lvho25?geo=PT&sex=T&age=Y_GE18&unit=PC",
+    "ilc_lvho07d_PT": "ilc_lvho07d?geo=PT&unit=PC",
+    "prc_hicp_aind_PT_rents": "prc_hicp_aind?geo=PT&geo=EA20&coicop=CP00&coicop=CP041&unit=INX_A_AVG",
+}
+SETS = {"regional": "INDICATORS", "affordability": "AFFORDABILITY", "rental": "RENTAL"}
 PAUSE_SECONDS = 10
 MAX_CELLS = 39_000  # INE serves at most 40,000 values per request
 
@@ -175,6 +220,29 @@ def fetch_indicator(code: str, selection: str | list[int], filters: dict[str, st
     return lines, f"all geographic levels; up to {per_request} periods per request", periods
 
 
+def fetch_eurostat(out: Path, today: str) -> int:
+    """Download each Eurostat dataset in ``EUROSTAT_RENTAL``; write the raw body and a retrieval record."""
+    failures = 0
+    for tag, query in EUROSTAT_RENTAL.items():
+        url = EUROSTAT_URL + query
+        try:
+            body, status, _charset = request(url)
+            document = json.loads(body)
+        except Exception as exc:  # noqa: BLE001 - report and continue with the others
+            log(f"eurostat {tag}: FAILED {exc!r}")
+            failures += 1
+            continue
+        path = out / f"eurostat_{tag}_{today}.json"
+        path.write_bytes(body)
+        record = {"url": url, "retrieved_at_utc": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
+                  "http_status": status, "bytes": len(body), "sha256": hashlib.sha256(body).hexdigest(),
+                  "dataset_label": document.get("label"), "dataset_updated": document.get("updated")}
+        path.with_suffix(".meta.json").write_text(json.dumps(record, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
+        log(f"eurostat {tag}: {len(body)} bytes -> {path.name}")
+        time.sleep(2)
+    return failures
+
+
 def main() -> int:
     """Fetch every indicator and write one container per indicator."""
     parser = argparse.ArgumentParser(description=__doc__)
@@ -194,7 +262,11 @@ def main() -> int:
     args.out.mkdir(parents=True, exist_ok=True)
     today = dt.datetime.now(dt.timezone.utc).date().isoformat()
     failures = 0
-    chosen: dict[str, tuple[str, str | list[int], dict[str, str]]] = dict(INDICATORS if args.set == "regional" else AFFORDABILITY)
+    sets: dict[str, dict[str, tuple[str, str | list[int], dict[str, str]]]] = {
+        "regional": dict(INDICATORS), "affordability": dict(AFFORDABILITY), "rental": dict(RENTAL)}
+    chosen = sets[args.set]
+    if args.set == "rental" and not args.only:
+        failures += fetch_eurostat(args.out, today)
     for code, (name, selection, filters) in chosen.items():
         if args.only and code not in args.only:
             continue
