@@ -37,6 +37,10 @@ TENURE_URL = (
     "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/"
     "ilc_lvho02?geo=PT&rskpovth=TOTAL&hhcomp=TOTAL&unit=PC"
 )
+PERMITS_URL = (
+    "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/"
+    "sts_cobp_a?geo=PT&indic_bt=BPRM_DW&cpa2_1=CPA_F41001_X_410014&s_adj=NSA&unit=THS"
+)
 
 
 def parse_hpi(document: dict[str, Any]) -> dict[int, float]:
@@ -320,6 +324,44 @@ def parse_tenure(document: dict[str, Any]) -> dict[str, dict[int, float]]:
     return selected
 
 
+def parse_dwellings_permitted(document: dict[str, Any]) -> dict[int, float]:
+    """Read annual dwellings covered by building permits (thousands).
+
+    This is authorised *potential* building activity, not completed homes,
+    net additions to stock, permits for each building, or affordable supply.
+    """
+    dimensions = document.get("id")
+    sizes = document.get("size")
+    expected = {
+        "freq": "A", "indic_bt": "BPRM_DW", "cpa2_1": "CPA_F41001_X_410014",
+        "s_adj": "NSA", "unit": "THS", "geo": "PT",
+    }
+    if not isinstance(dimensions, list) or not isinstance(sizes, list) or len(dimensions) != len(sizes):
+        raise ValueError("Invalid permits dimensions")
+    if not all(isinstance(size, int) and size > 0 for size in sizes):
+        raise ValueError("Invalid permits dimension sizes")
+    for name, code in expected.items():
+        if name not in dimensions or document["dimension"][name]["category"]["index"] != {code: 0}:
+            raise ValueError(f"Unexpected permits selection: {name}")
+    if any(size != 1 for name, size in zip(dimensions, sizes, strict=True) if name != "time"):
+        raise ValueError("Expected one permits category per non-time dimension")
+    years = document["dimension"]["time"]["category"]["index"]
+    values = document.get("value", {})
+    if not isinstance(years, dict) or not isinstance(values, dict):
+        raise ValueError("Invalid permits observations")
+    result: dict[int, float] = {}
+    for year, position in years.items():
+        if not isinstance(year, str) or not year.isdigit() or not isinstance(position, int):
+            raise ValueError("Invalid permits time index")
+        value = values.get(str(position))
+        if value is None:
+            continue
+        if not isinstance(value, (int, float)) or isinstance(value, bool) or value < 0:
+            raise ValueError(f"Invalid permits value for {year}")
+        result[int(year)] = float(value)
+    return dict(sorted(result.items()))
+
+
 def main() -> None:
     """Read a pinned source snapshot and export auditable derived data."""
     parser = argparse.ArgumentParser(description=__doc__)
@@ -331,6 +373,7 @@ def main() -> None:
     parser.add_argument("--parents-input", type=Path, default=Path(__file__).parent / "data" / "eurostat_ilc_lvps08_PT_2026-10-29.json")
     parser.add_argument("--leaving-age-input", type=Path, default=Path(__file__).parent / "data" / "eurostat_yth_demo_030_PT_2026-10-29.json")
     parser.add_argument("--tenure-input", type=Path, default=Path(__file__).parent / "data" / "eurostat_ilc_lvho02_PT_2026-10-29.json")
+    parser.add_argument("--permits-input", type=Path, default=Path(__file__).parent / "data" / "eurostat_sts_cobp_a_PT_dwellings_2026-10-29.json")
     parser.add_argument("--output", type=Path, default=Path(__file__).parent / "results.json")
     args = parser.parse_args()
     raw: Any = json.loads(args.input.read_text(encoding="utf-8"))
@@ -364,6 +407,10 @@ def main() -> None:
     raw_tenure: Any = json.loads(args.tenure_input.read_text(encoding="utf-8"))
     if not isinstance(raw_tenure, dict):
         raise ValueError("Expected tenure JSON-stat object")
+    raw_permits: Any = json.loads(args.permits_input.read_text(encoding="utf-8"))
+    if not isinstance(raw_permits, dict):
+        raise ValueError("Expected permits JSON-stat object")
+    permits = parse_dwellings_permitted(raw_permits)
     report = {
         "source_url": EUROSTAT_URL,
         "source_updated": raw.get("updated"),
@@ -385,6 +432,11 @@ def main() -> None:
         "tenure_source_url": TENURE_URL,
         "tenure_source_updated": raw_tenure.get("updated"),
         "population_tenure_pct": parse_tenure(raw_tenure),
+        "building_permits_source_url": PERMITS_URL,
+        "building_permits_source_updated": raw_permits.get("updated"),
+        "building_permits_status_flags": raw_permits.get("status", {}),
+        "dwellings_permitted_thousands": permits,
+        "dwellings_permitted_2015_2025_change_pct": round(100 * (permits[2025] / permits[2015] - 1), 2),
         "descriptives": summarize(series),
     }
     args.output.write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")

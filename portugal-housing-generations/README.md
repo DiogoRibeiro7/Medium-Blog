@@ -62,6 +62,13 @@ historical values.
    The source includes owner with/without outstanding housing loan and
    tenants paying market rent or reduced rent/occupying free. The percentages
    are of **people**, not dwellings or individual ownership titles.
+10. Eurostat `sts_cobp_a`, annual unadjusted building permits for the *number
+    of dwellings* (`indic_bt=BPRM_DW`) in residential buildings excluding
+    residences for communities (`cpa2_1=CPA_F41001_X_410014`), measured in
+    thousands (`unit=THS`):
+    https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/sts_cobp_a?geo=PT&indic_bt=BPRM_DW&cpa2_1=CPA_F41001_X_410014&s_adj=NSA&unit=THS
+    Accessed 2026-10-29. The snapshot contains Eurostat preliminary (`p`)
+    flags for 2022–2025; these are preserved in `results.json`.
 
 ## Relative price/income index
 
@@ -117,6 +124,19 @@ of the population; owners without one rose from 38.3% to 39.7%.
 These are population *stock* categories: they cannot identify first-time
 buyers, entry prices, or wealth transfers. Do not add parent categories to
 their subcategories or assume they are a cohort transition matrix.
+
+## New residential building permits
+
+`dwellings_permitted_thousands` tracks dwellings covered by new-building
+permits, not the number of permit documents or the number of homes completed.
+The published series drops from 73.9 thousand dwellings in 2005 to 8.6
+thousand in 2015, then rises to 40.9 thousand in 2025 (preliminary). The
+2015–2025 change is about +376%, but 2015 is a depressed comparison year;
+2025 remains well below the 2005 observation. Permits are neither a measure
+of net additions to habitable stock nor of dwelling affordability. Annual
+national permits must not be causally compared with house-price inflation:
+there are completion lags, geographic differences, replacement and
+demolition, and unobserved demand and financing conditions.
 
 ## What the calculations support
 
