@@ -49,6 +49,13 @@ historical values.
    This is the percentage of people in a household where net housing costs
    exceed 40% of disposable household income (net of housing allowances).
    Accessed 2026-10-29; raw age-category JSON-stat snapshot and metadata pinned.
+7. Eurostat `ilc_lvps08`, people aged 18–34 living with parents, with
+   selected groups 18–24, 18–34 and 25–34, sex total, percent:
+   https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/ilc_lvps08?geo=PT&sex=T&unit=PC
+8. Eurostat `yth_demo_030`, estimated age when 50% have left the parental
+   home, sex total:
+   https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/yth_demo_030?geo=PT&sex=T
+   Both responses accessed 2026-10-29 and pinned with their source timestamps.
 
 ## Relative price/income index
 
@@ -79,6 +86,19 @@ financial barrier to leaving home or buying a first dwelling. Such selection
 effects mean falling observed overburden rates can coexist with worsening
 entry affordability and rising house prices. Do not equate the two trends or
 infer a causal relationship from their aggregate difference.
+
+## Leaving the parental home
+
+`parental_coresidence_pct_by_age` records the repeated cross-sectional share
+living with parents. `estimated_leaving_parental_home_age` is a model-derived
+threshold (age when 50% no longer co-reside), not the mean age of individual
+departure events. The 18–34 share was 62.9% in 2015, 69.8% in 2020, and
+61.0% in 2025: it did not rise monotonically alongside house prices.
+
+Neither measure identifies *why* someone remains with parents. Family norms,
+education, partnership, employment and housing conditions can all matter.
+These observations must not be used as proof that high prices caused delayed
+emancipation or that housing access has become unproblematic.
 
 ## What the calculations support
 

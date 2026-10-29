@@ -4,7 +4,15 @@ import json
 import unittest
 from pathlib import Path
 
-from analysis import parse_hpi, parse_housing_overburden, parse_income, relative_affordability, summarize
+from analysis import (
+    parse_hpi,
+    parse_housing_overburden,
+    parse_income,
+    parse_leaving_age,
+    parse_parental_coresidence,
+    relative_affordability,
+    summarize,
+)
 
 
 class AnalysisTests(unittest.TestCase):
@@ -70,6 +78,26 @@ class AnalysisTests(unittest.TestCase):
         payload["value"]["0"] = 101
         with self.assertRaises(ValueError):
             parse_housing_overburden(payload)
+
+    def test_parental_coresidence_official_values(self) -> None:
+        path = Path(__file__).parent / "data" / "eurostat_ilc_lvps08_PT_2026-10-29.json"
+        values = parse_parental_coresidence(json.loads(path.read_text(encoding="utf-8")))
+        self.assertEqual(values["Y18-34"][2015], 62.9)
+        self.assertEqual(values["Y18-34"][2020], 69.8)
+        self.assertEqual(values["Y18-34"][2025], 61.0)
+
+    def test_departure_age_official_values(self) -> None:
+        path = Path(__file__).parent / "data" / "eurostat_yth_demo_030_PT_2026-10-29.json"
+        values = parse_leaving_age(json.loads(path.read_text(encoding="utf-8")))
+        self.assertEqual(values[2015], 28.9)
+        self.assertEqual(values[2025], 28.8)
+
+    def test_rejects_other_country_in_co_residence(self) -> None:
+        path = Path(__file__).parent / "data" / "eurostat_ilc_lvps08_PT_2026-10-29.json"
+        payload = json.loads(path.read_text(encoding="utf-8"))
+        payload["dimension"]["geo"]["category"]["index"] = {"ES": 0}
+        with self.assertRaises(ValueError):
+            parse_parental_coresidence(payload)
 
 
 if __name__ == "__main__":
