@@ -13,13 +13,16 @@ python -m unittest discover -p 'test_*.py'
 ```
 
 The regional panel (section below) is built by `python regional.py`, which writes
-`results_regional.json` and `regional_panel.csv`; its figures need matplotlib
-(`pip install matplotlib==3.11.2`, then `python regional_figures.py`). Everything
-else uses the standard library only.
+`results_regional.json` and `regional_panel.csv`; the affordability panel by
+`python affordability.py`, which writes `results_affordability.json` and
+`affordability_panel.csv`. Their figures need matplotlib (`pip install
+matplotlib==3.11.2`, then `python regional_figures.py` and `python
+affordability_figures.py`). Everything else uses the standard library only.
 
 The workflow `.github/workflows/portugal-housing-generations.yml` runs the tests
-and rebuilds `results.json`, `results_regional.json` and `regional_panel.csv` on
-every pull request; the build fails if a committed file differs. `fetch_mortgage_rates.py` is the only script that touches
+and rebuilds `results.json`, `results_regional.json`, `regional_panel.csv`,
+`results_affordability.json` and `affordability_panel.csv` on every pull request;
+the build fails if a committed file differs. `fetch_mortgage_rates.py` is the only script that touches
 the network. It is run by that workflow's manual `fetch-mortgage-rates` job,
 dispatched on a branch other than `main`, which commits the dated response and
 its retrieval record to that branch for review; `analysis.py` never downloads.
@@ -441,12 +444,233 @@ and `fig_regional_growth_and_construction.png`.
 - NUTS 3 averages hide large differences between municipalities; the municipal
   values are in the snapshots for finer work.
 
+## Regional affordability: transaction prices and declared income, 2019–2024
+
+`affordability.py` builds a region-year panel of house prices and incomes for
+Portugal, the 9 NUTS 2 and 26 NUTS 3 regions of NUTS 2024 and the 308
+municipalities, and compares their growth. It writes `results_affordability.json`
+and `affordability_panel.csv`; `affordability_figures.py` draws the figures.
+
+### Sources
+
+From INE's indicator API, downloaded on 2026-10-29 between 19:22 and 19:38 UTC by
+`fetch_regional.py --set affordability` on a GitHub Actions runner. They are stored
+and checked like the regional panel's sources: one container per indicator, every
+response with its SHA-256. INE's last updates were 2026-10-23 (prices), 2026-07-24
+(income) and 2026-04-11 (appraisals). The 2018-method table was last updated in
+2022 and is closed.
+
+| Code | Statistic | Geography | Periods used |
+|---|---|---|---|
+| `0012234` | Median value per m² of family dwellings sold in the last 12 months, by dwelling category (total, new, existing); 2022 method | NUTS 2024 to municipality | Q4 2019–Q4 2025 |
+| `0009490` | The same statistic, 2018 method | NUTS 2013 to municipality | Q4 2016–Q4 2020 |
+| `0012256` | Median bank appraisal value per m², by construction type (total used) | Municipality 2024 | 2019–2025 |
+| `0012712` | Median declared gross income per tax household | NUTS 2024 to municipality | 2019–2024 |
+| `0012741` | Median declared gross income net of IRS per tax household | NUTS 2024 to municipality | 2019–2024 |
+| `0012749` | Median declared gross income per taxpayer | NUTS 2024 to municipality | 2019–2024 |
+| `0009763` | Median declared gross income per tax household | NUTS 2013 to municipality | 2016–2021 |
+
+**Which price is this?** Three different things are called a house price:
+
+- *Transaction prices* (used here): INE's local housing-price statistics are
+  built from the tax authority's administrative records of dwelling sales. They
+  give the median value per m² of the family dwellings actually sold, over the 12
+  months ending in the reference quarter. The fourth-quarter value therefore
+  covers the calendar year, which is how it is aligned with annual income. Where
+  INE publishes a cell without a value, it stays empty here.
+- *Bank appraisal values* (sensitivity check only): the median per m² that banks'
+  valuers assign to dwellings offered as mortgage collateral. They are neither
+  prices paid nor asking prices, cover only mortgage-financed purchases and follow
+  the valuers' methods.
+- *Advertised asking prices*: INE publishes none. They come only from private
+  property portals, with their own coverage, duplicates and listing biases, and
+  are not used.
+
+**Which income?** INE's local income statistics come from personal income-tax
+returns (IRS), as produced by the tax authority, for the year. The headline uses
+the median *declared gross income per tax household* (agregado fiscal: the
+household covered by one return). It is the pre-tax income declared on the
+return, and it excludes anyone who does not file. It is not disposable income, not
+equivalised and not the income of buyers. The net-of-IRS household median and the
+gross median per taxpayer are used as checks.
+
+### Measures and the longest reliable panel
+
+The 2022-method prices start with the 12 months to 2019 Q4 and income ends in
+2024, so **2019–2024 is the longest window in which both are published on one
+method and one geography**. Price-only figures go to 2025. Nothing is spliced
+across the 2018 and 2022 price methods or the 2013 and 2024 NUTS versions; the
+earlier window is reported separately.
+
+- *Square metres per year of income* = median income / median price per m². It
+  reads as the floor area that one year of the median household's gross income
+  would pay for at the median price per m². Lower values mean prices are high
+  relative to incomes.
+- *Price/income index* = (P*t*/P*base*) / (Y*t*/Y*base*) × 100, with base years
+  2019, 2020 and 2021. It measures a relative change, not a level.
+- *Price-minus-income gap* = price growth minus income growth in log points. It
+  equals the log change of the ratio, so a positive gap means prices rose faster
+  than incomes.
+
+**Neither measure is the number of years needed to buy a dwelling.** Both divide
+one median by another median from a different population (dwellings sold vs. tax
+households). They ignore dwelling size, deposits, mortgage rates and terms, taxes
+and transaction costs, savings and wealth, and the fact that buyers are not a
+random sample of tax households. The index is normalised, so 110 means the
+price/income ratio rose 10%, not that a dwelling costs 110% of anything.
+
+Medians are never summed or averaged across areas. Every value is INE's own
+median for that area. So the former Área Metropolitana de Lisboa exists only in
+the NUTS 2013 series, and Lisbon is reported as Grande Lisboa (`1A0`) and
+Península de Setúbal (`1B0`), with Porto as Área Metropolitana do Porto (`11A`).
+
+### Checks
+
+All recorded in `results_affordability.json`; the build stops if any fails.
+
+- The price and the three NUTS 2024 income tables assign the 308 municipalities to
+  the same 26 NUTS 3 and 9 NUTS 2 regions. The five NUTS 2 regions made of a single
+  NUTS 3 region (Grande Lisboa, Península de Setúbal, Algarve, Açores, Madeira)
+  carry identical medians at both levels.
+- Portugal and every NUTS 2 and NUTS 3 region have a price and an income in every
+  year 2019–2024. Gaps occur only in municipalities.
+- **Price method, 2018 vs 2022.** The two methods overlap in the 12 months to Q4
+  2019 and Q4 2020. In the 22 NUTS 3 regions that NUTS 2024 left unchanged, the
+  median absolute difference is 1.2% and all 44 cells are within 5% (largest
+  −3.0%). Across municipalities, matched by DICO, the median difference is 1.9% and
+  80% of cells are within 5%. Small municipalities can differ much more (+75% in
+  one Douro municipality in 2019), which is why the two methods are not spliced.
+- **Income, NUTS 2013 vs 2024.** For 2018–2021, 1,183 of 1,190 municipal cells are
+  identical and the other 7 differ by €1. All 88 cells of the unchanged NUTS 3
+  regions are identical. Only the grouping changed between the two tables.
+- **Coverage.** A municipal price is published for 286 of 308 municipalities in
+  2019, 282 in 2020 and 298–305 from 2021. Municipal income is published for
+  297–299. Both are available for 283 municipalities in 2019 and 299 in 2024, and
+  for 272 in every year 2019–2024. The cells without a value carry INE's sign
+  "Dado nulo ou não aplicável" and are left empty. In 2024 the five municipalities
+  without a price were Barrancos, Corvo, Lajes das Flores, Penedono and Santa Cruz
+  das Flores.
+
+### What the panel shows (2019–2024, nominal)
+
+**Portugal.** The median price per m² of dwellings sold rose from €1,094 to €1,777
+(+10.2% a year), reaching €2,076 in 2025. Median gross household income rose from
+€12,499 to €15,573 (+4.5% a year). Prices grew 26.5 log points faster than
+incomes, so the price/income ratio rose 30%. One year of median income paid for
+11.4 m² at the median price in 2019 and 8.8 m² in 2024.
+
+**Prices outpaced incomes almost everywhere.** This held in all 9 NUTS 2 regions,
+21 of the 26 NUTS 3 regions and 220 of 283 municipalities (215 of the 272 with
+every year published). The five NUTS 3 exceptions are low-price interior regions,
+where prices barely moved: Beira Baixa (gap −21.6 log points), Douro (−18.8), Viseu
+Dão Lafões (−12.0), Beiras e Serra da Estrela (−11.1) and Terras de Trás-os-Montes
+(−10.2).
+
+**Price growth was not accompanied by matching income growth.** Across NUTS 3
+regions the correlation between price and income growth is negative: −0.34
+(Pearson; Spearman −0.29), and −0.21 across municipalities. Regional income growth
+was compressed between 2.8% and 6.1% a year, while price growth ranged from 0.4%
+to 14.6%. Year by year, median NUTS 3 income growth rose from 1.5% (2019–20) to 7.1%
+(2023–24). The number of regions where prices outpaced incomes fell from 24 in 2019–20 to 13 in 2022–23 and
+16 in 2023–24.
+
+**Lisbon and Porto.**
+
+- Grande Lisboa: prices +10.1% a year, but income +2.8%, the slowest of the 26
+  regions. The gap is 34.3 log points (ratio +41%), and 5.7 m² per year of income
+  in 2024 (8.0 in 2019), 0.65 times the national value.
+- Península de Setúbal: prices +13.1% and income +3.3%, the largest gap of any
+  NUTS 3 region (45.5 log points; ratio +58%). It fell from 12.3 to 7.8 m².
+- Área Metropolitana do Porto: prices +12.4% and income +5.0%, a gap of 34.0 log
+  points (ratio +40%). It fell from 11.3 to 8.0 m².
+- The lowest values in 2024 were Algarve (5.0 m²), Grande Lisboa (5.7), Madeira
+  (6.4), Alentejo Litoral (7.5), Península de Setúbal (7.8) and Porto (8.0). The
+  highest were Beira Baixa (25.7) and Alto Alentejo (25.4).
+
+**Disparities widened through prices, not incomes.** Across NUTS 3 regions, the
+coefficient of variation of prices rose from 0.39 in 2019 to 0.50 in 2024 (0.48 in
+2025), and the highest-to-lowest ratio rose from 4.2 to 5.0. Income dispersion fell
+(0.088 to 0.068; ratio 1.48 to 1.28). The m²-per-income-year proxy therefore
+diverged, with the coefficient of variation going from 0.29 to 0.43 and the ratio
+from 4.0 to 5.1.
+
+### Sensitivity
+
+- **Base year.** At 2024 the price/income index is above 100 in 21 of 26 NUTS 3
+  regions with base 2019, 18 with base 2020 and 20 with base 2021. The ranking of
+  regions barely changes (Spearman 0.99 and 0.97 against base 2019), but the level
+  does: Grande Lisboa is 141, 128 or 122 and Portugal 130, 121 or 115. The jump in
+  2020, when price growth was strong and income growth weak, is what a later base
+  removes. These numbers are relative changes and depend on the base; they are not
+  levels.
+- **Definitions** (price minus income growth, NUTS 3):
+  - Net-of-IRS household income gives the same 21 of 26 regions (rank correlation
+    with the headline 0.999).
+  - Gross income per taxpayer gives 19 of 26 (0.997).
+  - Existing-dwelling prices give 20 of 26 (0.98), and new-dwelling prices also 20
+    of 26 but with a different ranking (0.83), since new-build sales are few and
+    vary in location and quality.
+  - Under all nine combinations, the gap for Grande Lisboa, Península de Setúbal and
+    Porto stays between 27 and 46 log points, and for Portugal between 21 and 29.
+- **Transactions vs bank appraisals.** Across NUTS 3, appraisal values rose by a
+  median 7.9% a year against 8.5% for transaction prices (correlation of regional
+  growth rates 0.82). In 2024 the median appraisal was 1.02 times the transaction
+  median. With appraisal values in place of prices, prices outpace incomes in 24 of
+  26 regions. In Lisbon, Setúbal and Porto, appraisals rose 1.4–2.4 points a year
+  less than transactions (Grande Lisboa 8.7% vs 10.1%), but still far faster than
+  incomes.
+- **Earlier window, 2016–2020** (2018-method prices with NUTS 2013 income, never
+  joined to the main window):
+  - Prices outpaced incomes in 24 of 25 NUTS 3 regions.
+  - Portugal: prices +8.2% a year and income +2.9%.
+  - The former Área Metropolitana de Lisboa: +8.4% and +2.1%, with m² per year of
+    income falling from 11.2 (2016) to 8.8 (2020).
+  - Porto: +11.0% and +3.0%.
+  - The divergence did not start in 2019.
+
+### Limitations
+
+- **The m² per year of income measure and the index are proxies, not the years
+  needed to buy a dwelling.** They divide medians of two different populations
+  (dwellings sold, tax households). They take no account of dwelling size,
+  deposits, interest rates, loan terms, taxes, transaction costs, savings or
+  wealth.
+- **The composition of both populations changes.** Sales shift between locations,
+  sizes and ages of dwelling within a region. Tax households change with migration,
+  ageing and filing behaviour. A change in a median is not a change for a typical
+  household that stayed put.
+- **The income is not that of the buyers.** Buyers include non-residents,
+  companies and households from other regions, and they buy where they choose. The
+  median local tax household need not be a potential buyer.
+- **Declared gross income is pre-tax and not equivalised.** It covers only
+  households that file an IRS return. The net and per-taxpayer tables also exclude
+  households whose income net of IRS is negative (INE's note). It is not disposable
+  income or the income concept of the national accounts.
+- **All values are nominal.** Ratios are unaffected by inflation, but growth rates
+  are not real growth.
+- **Medians for small municipalities rest on few sales** and are noisy (see the
+  method comparison). The five NUTS 3 regions where incomes outpaced prices are
+  thin markets.
+- **Renters and financing costs are outside this panel.** Rents of new lease
+  contracts and the cost of borrowing (national, above) would be needed for a fuller
+  picture.
+- **The panel is descriptive.** It does not identify why prices rose (demand from
+  residents, non-residents or tourism, credit, supply, regulation), and the
+  negative regional correlation between price and income growth is not a causal
+  relationship.
+
+Figures: `figures/fig_affordability_price_vs_income_growth.png`,
+`fig_affordability_m2_per_income_year.png`, `fig_affordability_index_base_years.png`
+and `fig_affordability_definitions.png`.
+
 ## What the calculations support
 
 - Nominal house-price-index changes, a relative house-price/income-growth
   proxy for overlapping years, and an initial-mortgage-payment/income index
   that adds the cost of borrowing on new loans; neither includes the deposit.
 - A 19 percentage-point ownership gap between two cohorts at the same age.
+- Regional transaction prices per m² rising faster than declared household income
+  in 2019–2024 (and 2016–2020) in almost every region, as a ratio of medians.
 - The stated breakdown of non-primary-residence dwellings in 2021.
 
 ## What they do not support
@@ -456,8 +680,8 @@ and `fig_regional_growth_and_construction.png`.
 - The assertion that non-votes for PS/PSD indicate opposition to democracy.
 - Aggregating these different vintages and populations into a single causal model.
 
-Next research step: the regional panel above covers population, construction and
-census households; regional prices, incomes and credit would have to be added with
-the same explicit geography and source revisions before any causal design and
-sensitivity checks are specified. Electoral analysis additionally
+Next research step: the regional panels above cover population, construction,
+census households, transaction prices and declared income; regional rents and
+credit would have to be added with the same explicit geography and source
+revisions before any causal design is specified. Electoral analysis additionally
 requires individual-level evidence to avoid ecological inference.

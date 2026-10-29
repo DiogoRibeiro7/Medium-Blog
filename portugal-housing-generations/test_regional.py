@@ -121,7 +121,8 @@ class CorrespondenceTests(unittest.TestCase):
         self.assertIn("population_administrative_basis", R.flags_for(["0001"], 2021))
 
 
-PINNED = sorted(DATA.glob(f"ine_*_{R.SNAPSHOT_DATE}.jsonl.gz"))
+REGIONAL_CODES = ("0012917", "0008273", "0013248", "0013235", "0014406", "0014627")
+PINNED = [p for code in REGIONAL_CODES if (p := DATA / f"ine_{code}_{R.SNAPSHOT_DATE}.jsonl.gz").exists()]
 
 
 class PinnedDataTests(unittest.TestCase):
