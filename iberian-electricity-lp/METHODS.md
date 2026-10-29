@@ -263,3 +263,44 @@ Each reports its estimand beside the main one and changes no decision.
   - **The order types** are described from the EUPHEMIA Public Description (18 December
     2025), read for the article.
   - **Not changed.** No result, rule or estimand.
+- **2026-10-29, corrections after the critical review ([docs/REVIEW.md](docs/REVIEW.md)).**
+  Written before the programmes added here had been solved.
+  - **Data.** The France line's free capacity in each direction (`fr_import_free`,
+    `fr_export_free`) was added to `periods.csv`, rebuilt from the same raw files. No
+    other value changed.
+  - **Programmes added (finding M2).**
+    - *Blocks relaxed with the exclusive blocks fixed* (`X_c01`).
+    - *Blocks relaxed with the exclusive blocks deduplicated* (`X_blocks_dedup`), and
+      *every order relaxed with the exclusive blocks deduplicated* (`X_dedup`). Of the
+      exclusive-block steps with the same quantity in a zone-period, only the cheapest is
+      kept, because the anonymous curves do not say which blocks are alternatives in one
+      group.
+    - *The check.* Each is checked against HiGHS like the others. The registered
+      programmes were solved again with them, and their columns must not change.
+  - **Results added,** descriptive and labelled *review* in `docs/RESULTS.md`:
+    - the zero floor at every price, with mean |m| by band of price (finding I1);
+    - δ and m by the state of the France line (M3);
+    - the exclusive-block variants (M2);
+    - δ in joint and split periods (M5).
+  - **Reporting corrected in `docs/RESULTS.md`.**
+    - *E1* is presented as a consistency check that EUPHEMIA's rules require, with its
+      degenerate interval explained (M1, I2).
+    - *The interval levels* are described correctly (I3).
+    - *The midday comparison* among positive prices is no longer read as a test of the
+      supply curve's slope (I1).
+    - *The rows of E2* are described as upper bounds that do not add up (M2, M4, I5).
+  - **The article** was retitled and rewritten where the review found it overstated or
+    imprecise (C1 to C11). It now cites O'Neill and coauthors (2005) and Ciarreta and
+    coauthors (2014).
+  - **Not changed:** any registered estimate, interval or decision.
+- **2026-10-29, after the corrections' programmes were solved.**
+  - **The checks.** All 51,198 solves passed the HiGHS check, and no value in the
+    registered programmes' columns changed.
+  - **What was seen.** The new part of the section after the results in
+    `docs/RESULTS.md`.
+  - **Two wordings softened after seeing it.**
+    - *The exclusive-block variants* are described as showing how much of the
+      blocks-only row comes from counting alternatives as additive supply, not as bounds
+      on it: neither variant models a group exactly.
+    - *The article* says that the first half of the plan's midday reason (low prices)
+      holds and the second (a flatter supply curve) gets no support.

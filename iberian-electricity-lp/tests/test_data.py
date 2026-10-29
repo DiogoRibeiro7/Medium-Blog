@@ -90,3 +90,10 @@ def test_data_report_regenerates() -> None:
 def test_manifest_records_the_source() -> None:
     m = json.loads((DERIVED / "manifest.json").read_text(encoding="utf-8"))
     assert m["source"].startswith("OMIE") and "omie.es" in m["source"]
+
+
+@needs_data
+def test_every_period_has_the_france_line_capacity() -> None:
+    for r in load(DERIVED).periods:
+        assert r["fr_import_free"] != "" and r["fr_export_free"] != ""
+        assert float(r["fr_import_free"]) <= 0 <= float(r["fr_export_free"])

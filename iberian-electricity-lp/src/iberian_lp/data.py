@@ -44,7 +44,8 @@ PERIOD_FIELDS = (
     "date", "period", "hour", "quarter", "zone", "price_pt", "price_es", "steps_offered",
     "steps_aggregated", "offered_buy", *(f"offered_sell_{t}" for t in TYPES), "matched_buy",
     *(f"matched_sell_{t}" for t in TYPES), "imports_fr", "exports_fr", "imports_ib",
-    "exports_ib", "fr_import_occupied", "fr_export_occupied")
+    "exports_ib", "fr_import_occupied", "fr_export_occupied", "fr_import_free",
+    "fr_export_free")
 STEP_FIELDS = ("period", "zone", "side", "type", "price", "mw")
 PACKAGES = ("numpy", "scipy")
 
@@ -123,7 +124,11 @@ def read_day(raw: Path, day: date) -> tuple[list[dict[str, Any]], list[dict[str,
                                             for t in TYPES},
             **{f: _mw(m[f]) for f in ("imports_fr", "exports_fr", "imports_ib", "exports_ib")},
             "fr_import_occupied": _mw(fr.get("import_occupied", 0)),
-            "fr_export_occupied": _mw(fr.get("export_occupied", 0))})
+            "fr_export_occupied": _mw(fr.get("export_occupied", 0)),
+            # Free capacity on the France line (added after the review); empty if the
+            # capacity file has no row for the period.
+            **{f"fr_{k}_free": _mw(fr[f"{k}_free"]) if fr else "" for k in ("import",
+                                                                             "export")}})
     steps = [{"period": period, "zone": zone, "side": side, "type": kind, "price": _eur(c),
               "mw": _mw(t)} for (period, zone, side, kind, c), t in sorted(offered.items())]
     return rows, steps

@@ -12,7 +12,7 @@ import numpy as np
 import pytest
 
 from iberian_lp.estimates import estimate, load_programmes, render
-from iberian_lp.experiment import PROGRAMMES, SPANISH, solve_day
+from iberian_lp.experiment import POST_HOC, PROGRAMMES, SPANISH, solve_day
 from iberian_lp.programme import Exact, Steps, exact, solve
 from iberian_lp.report import load
 
@@ -41,10 +41,11 @@ def test_every_zone_period_has_its_programmes() -> None:
     rows = load_programmes(RESULTS / "programmes.csv")
     keys = [(r["date"], r["period"], r["zone"]) for r in rows]
     assert len(keys) == len(set(keys)) == len(load(DERIVED).periods)
+    every = (*PROGRAMMES, *POST_HOC)
     for r in rows:
-        names = PROGRAMMES if r["zone"] in SPANISH else ("R",)
+        names = every if r["zone"] in SPANISH else ("R",)
         assert all(r[f"{p}_lo"] and r[f"{p}_hi"] for p in names)
-        assert all(r[f"{p}_lo"] == "" for p in PROGRAMMES if p not in names)
+        assert all(r[f"{p}_lo"] == "" for p in every if p not in names)
 
 
 @needs_results

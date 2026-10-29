@@ -8,8 +8,8 @@
   "simultaneous_level": 0.975
  },
  "solver": {
-  "solves": 37374,
-  "objective_gap_max": 6.021744642907941e-16,
+  "solves": 51198,
+  "objective_gap_max": 6.44331997990331e-16,
   "versions": {
    "numpy": "2.5.4",
    "scipy": "1.18.1"
@@ -462,6 +462,175 @@
    },
    "unbounded": 0
   },
-  "midpoint_wide": 67
+  "midpoint_wide": 67,
+  "floor": {
+   "above_price": 0,
+   "below_zero": 0,
+   "midday": {
+    "positive": 894,
+    "binding": 36,
+    "median_price": 34.885
+   },
+   "outside": {
+    "positive": 3175,
+    "binding": 23,
+    "median_price": 87.79
+   },
+   "bands": [
+    {
+     "low": 0,
+     "high": 10,
+     "midday": {
+      "periods": 253,
+      "mean_abs": 0.9336363636363637
+     },
+     "outside": {
+      "periods": 274,
+      "mean_abs": 1.3026277372262773
+     }
+    },
+    {
+     "low": 10,
+     "high": 20,
+     "midday": {
+      "periods": 112,
+      "mean_abs": 7.993482142857142
+     },
+     "outside": {
+      "periods": 133,
+      "mean_abs": 5.460375939849624
+     }
+    },
+    {
+     "low": 20,
+     "high": 40,
+     "midday": {
+      "periods": 140,
+      "mean_abs": 14.383
+     },
+     "outside": {
+      "periods": 381,
+      "mean_abs": 5.971207349081365
+     }
+    },
+    {
+     "low": 40,
+     "high": 60,
+     "midday": {
+      "periods": 96,
+      "mean_abs": 11.756770833333334
+     },
+     "outside": {
+      "periods": 276,
+      "mean_abs": 8.389601449275363
+     }
+    },
+    {
+     "low": 60,
+     "high": 80,
+     "midday": {
+      "periods": 134,
+      "mean_abs": 8.596119402985076
+     },
+     "outside": {
+      "periods": 322,
+      "mean_abs": 7.992080745341615
+     }
+    },
+    {
+     "low": 80,
+     "high": 120,
+     "midday": {
+      "periods": 148,
+      "mean_abs": 6.325
+     },
+     "outside": {
+      "periods": 888,
+      "mean_abs": 6.709211711711712
+     }
+    },
+    {
+     "low": 120,
+     "high": Infinity,
+     "midday": {
+      "periods": 11,
+      "mean_abs": 7.668181818181818
+     },
+     "outside": {
+      "periods": 901,
+      "mean_abs": 9.540688124306326
+     }
+    }
+   ]
+  },
+  "line": {
+   "with_room": 1717,
+   "periods": 4608,
+   "full": {
+    "delta": {
+     "estimate": -10.928094085091665,
+     "low": -12.732336098136098,
+     "high": -9.193466637218725,
+     "level": 0.95
+    },
+    "m": {
+     "estimate": -5.921975095122795,
+     "low": -6.969556218501114,
+     "high": -4.951219107951267,
+     "level": 0.95
+    }
+   },
+   "room": {
+    "delta": {
+     "estimate": -13.143925451368668,
+     "low": -14.370090752338454,
+     "high": -11.901841603545597,
+     "level": 0.95
+    },
+    "m": {
+     "estimate": -7.062754804892254,
+     "low": -8.196325418362186,
+     "high": -6.023834736605813,
+     "level": 0.95
+    }
+   }
+  },
+  "blocks": {
+   "c01_only": {
+    "estimate": -0.4572547743055556,
+    "low": -0.6854805772569444,
+    "high": -0.2598003472222222,
+    "level": 0.95,
+    "down": 477
+   },
+   "dedup": {
+    "estimate": -0.9475542534722222,
+    "low": -1.3586565755208335,
+    "high": -0.5723991970486112,
+    "level": 0.95,
+    "down": 631
+   },
+   "all_dedup": {
+    "estimate": -11.53626736111111,
+    "low": -12.747858832465276,
+    "high": -10.314733832465281,
+    "level": 0.95,
+    "down": 4080
+   }
+  },
+  "zones": {
+   "joint": {
+    "estimate": -12.374670571010247,
+    "low": -13.61468443797763,
+    "high": -11.098691868353987,
+    "level": 0.95
+   },
+   "split": {
+    "estimate": -6.764392156862745,
+    "low": -11.030151863815172,
+    "high": -3.815034595982045,
+    "level": 0.95
+   }
+  }
  }
 }
