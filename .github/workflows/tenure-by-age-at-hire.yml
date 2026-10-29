@@ -1,0 +1,52 @@
+name: Reproduce tenure-by-age-at-hire
+
+on:
+  pull_request:
+    paths:
+      - 'tenure-by-age-at-hire/**'
+      - '.github/workflows/tenure-by-age-at-hire.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'tenure-by-age-at-hire/**'
+      - '.github/workflows/tenure-by-age-at-hire.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    env:
+      # One BLAS thread, so floating-point reductions run in a fixed order.
+      OPENBLAS_NUM_THREADS: '1'
+    defaults:
+      run:
+        working-directory: tenure-by-age-at-hire
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: tenure-by-age-at-hire/requirements.txt
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Rerun the analysis and compare with the committed output
+        run: |
+          python tenure_numbers.py > "$RUNNER_TEMP/output.txt"
+          if ! diff -u output.txt "$RUNNER_TEMP/output.txt" > "$RUNNER_TEMP/diff.txt"; then
+            cat "$RUNNER_TEMP/diff.txt"
+            detail=$(head -c 30000 "$RUNNER_TEMP/diff.txt" | sed 's/%/%25/g; s/\r/%0D/g' | awk '{printf "%s%%0A", $0}')
+            echo "::error file=tenure-by-age-at-hire/output.txt::output of tenure_numbers.py differs from the committed output.txt%0A$detail"
+            exit 1
+          fi
+
+      - name: Check that the figures script runs
+        run: python figures.py

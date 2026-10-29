@@ -1,0 +1,4 @@
+# Environment used to produce the committed output.txt and figures. Python 3.13.
+numpy==2.5.3
+scipy==1.18.1
+matplotlib==3.11.2

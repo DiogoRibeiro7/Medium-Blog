@@ -18,3 +18,4 @@ post-cutoff-forecasting/**/*.csv -filter -diff -merge text
 mc-dropout-posterior/**/*.csv -filter -diff -merge text
 routing-on-real-roads/**/*.csv -filter -diff -merge text
 iberian-electricity-lp/**/*.csv -filter -diff -merge text
+tenure-by-age-at-hire/**/*.csv -filter -diff -merge text
