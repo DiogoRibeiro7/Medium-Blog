@@ -370,7 +370,7 @@ Hirano, K. and Porter, J. R. (2009). Asymptotics for Statistical Treatment Rules
 
 Imai, K. and Ratkovic, M. (2013). Estimating Treatment Effect Heterogeneity in Randomized Program Evaluation. *Annals of Applied Statistics*, 7(1), 443–470. https://doi.org/10.1214/12-AOAS593
 
-Kallus, N. (2018). Balanced Policy Evaluation and Learning. *Advances in Neural Information Processing Systems*, 31.
+Kallus, N. (2018). Balanced Policy Evaluation and Learning. *Advances in Neural Information Processing Systems*, 31. https://proceedings.neurips.cc/paper/2018/hash/6616758da438b02b8d360ad83a5b3d77-Abstract.html
 
 Kent, D. M., Steyerberg, E. and van Klaveren, D. (2018). Personalized Evidence Based Medicine: Predictive Approaches to Heterogeneous Treatment Effects. *BMJ*, 363, k4245. https://doi.org/10.1136/bmj.k4245
 
