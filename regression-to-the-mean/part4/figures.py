@@ -81,8 +81,8 @@ def figure_winners_arms() -> None:
     ax.set_ylim(0, 38)
     ax.legend(loc="center right", fontsize=9)
     ax.set_title("The winner's lead shrinks when it is measured again")
-    fig.text(0.01, 0.005, f"Simulated archive of {len(wl):,} tests with heavy-tailed effects and one-arm reliability "
-             f"{R:.2f}; assumptions in the text.", color=INK2, fontsize=8)
+    fig.text(0.01, 0.005, f"First simulated archive ({len(wl):,} tests, heavy-tailed effects, estimated one-arm reliability "
+             f"{R:.2f} on half the traffic); assumptions in the text.", color=INK2, fontsize=8)
     fig.tight_layout(rect=(0, 0.03, 1, 1))
     fig.savefig(OUT / "fig1_winners_arms.png")
     plt.close(fig)
@@ -90,8 +90,9 @@ def figure_winners_arms() -> None:
 
 def figure_winners_kept() -> None:
     rows = []
-    for label, R, wl in RES["sims"]:
-        rows.append((f"simulated archive:\n{label}", R, wl.yB.mean() / wl.yA.mean(), wl.yt.mean() / wl.yA.mean(),
+    names = ("first archive:\nheavy-tailed effects", "second archive:\nnormal effects", "third archive:\nlarger heavy-tailed effects")
+    for (label, R, wl), name in zip(RES["sims"], names):
+        rows.append((name, R, wl.yB.mean() / wl.yA.mean(), wl.yt.mean() / wl.yA.mean(),
                      wl.lin.mean() / wl.yA.mean(), wl.npm.mean() / wl.yA.mean()))
     R, wl = RES["routes"]
     rows.append(("best carrier on a\nNew York route (real)", R, wl.pB.mean() / wl.pA.mean(), np.nan,
@@ -101,8 +102,8 @@ def figure_winners_kept() -> None:
     for y, (lab, R, obs, true, lin, npm) in zip(ys, rows):
         ax.plot([0, 1], [y, y], color=GRID, lw=1)
         ax.plot([R], [y], "|", ms=22, mew=2.5, color=MUTED)
-        ax.plot([lin], [y], "D", ms=7, color=AQUA)
-        ax.plot([npm], [y], "s", ms=7, color=VIOLET)
+        ax.plot([lin], [y + 0.13], "D", ms=7, color=AQUA)
+        ax.plot([npm], [y - 0.13], "s", ms=7, color=VIOLET)
         if not np.isnan(true):
             ax.plot([true], [y], "o", ms=10, mfc="none", mec=INK, mew=1.6)
         ax.plot([obs], [y], "o", ms=8, color=BLUE)
@@ -111,7 +112,7 @@ def figure_winners_kept() -> None:
     ax.plot([], [], "o", mfc="none", mec=INK, mew=1.6, ms=10, label="true (simulations only)")
     ax.plot([], [], "D", color=AQUA, ms=7, label="predicted, normal prior")
     ax.plot([], [], "s", color=VIOLET, ms=7, label="predicted, nonparametric prior")
-    ax.plot([], [], "|", color=MUTED, ms=14, mew=2.5, label="reliability of one arm")
+    ax.plot([], [], "|", color=MUTED, ms=14, mew=2.5, label="estimated reliability of one arm")
     ax.legend(loc="upper right", fontsize=8.5, ncol=1)
     ax.set_xlim(0, 1)
     ax.set_ylim(-0.7, len(rows) - 0.3)
@@ -148,7 +149,7 @@ def figure_nsw() -> None:
     ax.set_xticks(years)
     ax.set_xlim(1973.6, 1982.2)
     ax.set_ylim(0, 7.6)
-    ax.set_ylabel("mean annual earnings (thousands of dollars)")
+    ax.set_ylabel("mean annual earnings (thousands of 1982 dollars)")
     ax.set_title("Earnings before and after, by group")
 
     pp = (tr.re78 - tr.re75).mean()
@@ -173,7 +174,7 @@ def figure_nsw() -> None:
     bx.set_yticks([])
     bx.set_xlim(-1.3, 5.6)
     bx.set_ylim(-0.7, len(items) - 0.1)
-    bx.set_xlabel("estimated effect of training on 1978 earnings (thousands of dollars)")
+    bx.set_xlabel("estimated effect of training on 1978 earnings (thousands of 1982 dollars)")
     bx.set_title("Estimates against the experimental benchmark")
     bx.spines["left"].set_visible(False)
     fig.text(0.01, 0.005, "Dehejia–Wahba sample of the NSW demonstration (185 trainees, 260 controls) and the PSID and "
@@ -212,49 +213,48 @@ def figure_alert_path() -> None:
 def figure_segments() -> None:
     tiers, seg = RES["segments"]
     order = ["under 10", "10 to 40", "40 or more"]
-    rules = list(seg)
-    fig, (ax, bx) = plt.subplots(1, 2, figsize=(11.5, 4.6))
+    rules = (("late share of 75% or more, July-December", ORANGE, "late share ≥ 75%"),
+             ("z of 3 or more, July-December", BLUE, "binomial z ≥ 3 against the day"),
+             ("rescaled z of 3 or more, July-December", VIOLET, "z ≥ 3 rescaled by the series' own spread"))
+    fig, (ax, bx) = plt.subplots(1, 2, figsize=(12, 4.9))
     x = np.arange(3)
-    w = 0.26
+    w = 0.2
     flight = [tiers.loc[t, "flight_share"] for t in order]
-    raw = [seg[rules[0]][0].get(t, 0) for t in order]
-    zz = [seg[rules[1]][0].get(t, 0) for t in order]
-    for off, vals, col, lab in ((-w, flight, MUTED, "share of flights"), (0, raw, ORANGE, "share of alerts, late share ≥ 75%"),
-                                (w, zz, BLUE, "share of alerts, z ≥ 3 against the day")):
-        ax.bar(x + off, vals, w, color=col, edgecolor="white", linewidth=2, label=lab)
+    bars = [(-1.5 * w, flight, MUTED, "share of flights")]
+    for i, (key, col, lab) in enumerate(rules):
+        bars.append(((i - 0.5) * w, [seg[key][0].get(t, 0) for t in order], col, f"share of alerts, {lab}"))
+    for off, vals, col, lab in bars:
+        ax.bar(x + off, vals, w, color=col, edgecolor="white", linewidth=1.5, label=lab)
         for xi, v in zip(x + off, vals):
-            ax.text(xi, v + 0.012, f"{v:.2f}", ha="center", fontsize=8.5, color=INK)
+            ax.text(xi, v + 0.012, f"{v:.2f}", ha="center", fontsize=7.5, color=INK)
     ax.set_xticks(x)
     ax.set_xticklabels([f"{t}\nflights a day" for t in order])
-    ax.set_ylim(0, 1.0)
+    ax.set_ylim(0, 1.05)
     ax.set_ylabel("share")
-    ax.legend(loc="upper left", fontsize=9)
+    ax.legend(loc="upper left", fontsize=8.5)
     ax.set_title("Where the alerts come from")
-    for vals_key, col, lab in ((rules[0], ORANGE, "late share ≥ 75%"), (rules[1], BLUE, "z ≥ 3")):
-        tab = seg[vals_key][1]
-        xs = [tab.get(t)[1] for t in order]
-        ns = [tab.get(t)[2] for t in order]
-        al = [tab.get(t)[3] for t in order]
+    offs = (-0.22, 0.0, 0.22)
+    for (key, col, lab), off in zip(rules, offs):
+        tab = seg[key][1]
         for i, t in enumerate(order):
-            bx.annotate("", xy=(i + (0.12 if col == BLUE else -0.12), ns[i]), xytext=(i + (0.12 if col == BLUE else -0.12), xs[i]),
-                        arrowprops=dict(arrowstyle="-|>", color=col, lw=2))
-            bx.plot([i + (0.12 if col == BLUE else -0.12)], [al[i]], "_", ms=14, mew=2, color=INK2)
-    bx.plot([], [], color=ORANGE, lw=2, label="late share ≥ 75%: alert day → next day")
-    bx.plot([], [], color=BLUE, lw=2, label="z ≥ 3: alert day → next day")
-    bx.plot([], [], "_", ms=14, mew=2, color=INK2, label="all flights on the alert day")
-    bx.legend(loc="upper right", fontsize=8.5)
+            n_, xs, ns, al = tab.get(t)
+            bx.annotate("", xy=(i + off, ns), xytext=(i + off, xs), arrowprops=dict(arrowstyle="-|>", color=col, lw=2))
+            bx.plot([i + off + 0.07], [al], "_", ms=9, mew=2, color=INK2)
+    for key, col, lab in rules:
+        bx.plot([], [], color=col, lw=2, label=f"{lab}: alert day → next day")
+    bx.plot([], [], "_", ms=9, mew=2, color=INK2, label="all flights on the alert day")
+    bx.legend(loc="upper right", fontsize=8)
     bx.set_xticks(range(3))
     bx.set_xticklabels([f"{t}\nflights a day" for t in order])
-    bx.set_xlim(-0.6, 2.6)
-    bx.set_ylim(0, 1.18)
+    bx.set_xlim(-0.5, 2.5)
+    bx.set_ylim(0, 1.3)
     bx.set_ylabel("late share")
     bx.set_title("Alert day and the day after")
-    fig.text(0.01, 0.005, "34 carrier-airport series, New York 2013 (nycflights13); 11,708 series-days with a next day.",
-             color=INK2, fontsize=8)
+    fig.text(0.01, 0.005, "34 carrier-airport series, New York (nycflights13); alerts July–December 2013. The rescaled rule "
+             "divides z by each series' standard deviation of z in January–June.", color=INK2, fontsize=8)
     fig.tight_layout(rect=(0, 0.03, 1, 1))
     fig.savefig(OUT / "fig5_segments.png")
     plt.close(fig)
-
 
 if __name__ == "__main__":
     figure_winners_arms()

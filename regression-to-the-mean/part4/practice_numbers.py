@@ -276,6 +276,7 @@ def main() -> dict:
     for si, (label, tail, scale) in enumerate(SCENARIOS):
         df = simulate_portfolio(np.random.default_rng(SEED + 10 + si), n_tests=N_TESTS, tail_df=tail, rel_scale=scale)
         sp = split_halves(df, np.random.default_rng(SEED + 20 + si))
+        dropped = int(((sp.cA == 0) | (sp.cB == 0)).sum())
         sp = sp[(sp.cA > 0) & (sp.cB > 0)].copy()
         sp["yA"], sp["yB"], sp["yt"] = np.log(sp.pA), np.log(sp.pB), np.log(sp.p_true)
         sp["vA"] = (1 - sp.pA) / (sp.nA * sp.pA)
@@ -287,8 +288,23 @@ def main() -> dict:
         oracle = w.groupby("test").apply(
             lambda g: g.yt.to_numpy().max() - np.delete(g.yt.to_numpy(), g.yt.to_numpy().argmax()).mean())
         R = tau2 / (tau2 + w.vd.mean())
-        print(f"{label}: tests {wl.test.nunique():,}, arms {len(w):,}; SD of true deviations (log scale) "
-              f"{math.sqrt(tau2):.3f}, of noise {math.sqrt(w.vd.mean()):.3f}; reliability of one arm {R:.3f}")
+        true_dev = w.yt - w.groupby("test").yt.transform("mean")
+        tau2_true = true_dev.var()
+        noise_actual = ((w.d - true_dev) ** 2).mean()
+        print(f"{label}: tests {wl.test.nunique():,}, arms {len(w):,} ({dropped} arms dropped for a half with no clicks); "
+              f"SD of true deviations (log scale) estimated {math.sqrt(tau2):.3f}, actual {math.sqrt(tau2_true):.3f}; "
+              f"noise SD assumed {math.sqrt(w.vd.mean()):.3f}, actual {math.sqrt(noise_actual):.3f}")
+        print(f"   reliability of one arm (half the traffic): estimated {R:.3f}, actual "
+              f"{tau2_true / (tau2_true + noise_actual):.3f}; with the full traffic, estimated "
+              f"{tau2 / (tau2 + w.vd.mean() / 2):.3f}")
+        lin_true = w.d * tau2_true / (tau2_true + w.vd)
+        vt = (1 - np.exp(w.yt)) / (w.nA * np.exp(w.yt))
+        vdt = vt * (1 - 2 / w.k) + vt.groupby(w.test).transform("sum") / w.k ** 2
+        npm_tv = posterior_mean(w.d.to_numpy(), vdt.to_numpy(), grid, npmle_prior(w.d.to_numpy(), vdt.to_numpy(), grid))
+        extra = winner_leads(w.assign(lin_t=lin_true.to_numpy(), npm_t=npm_tv), "test", ["yA", "lin_t", "npm_t"], "yA")
+        print(f"   normal prior with the actual prior variance: {100 * math.expm1(extra.lin_t.mean()):.1f}%; nonparametric "
+              f"prior with variances from the true rates: {100 * math.expm1(extra.npm_t.mean()):.1f}%; true deviations "
+              f"outside the grid +-1.2: {int((true_dev.abs() > 1.2).sum())}")
         print(f"   winner's lead in half A {wl.yA.mean():.4f}, in half B {wl.yB.mean():.4f}, true {wl.yt.mean():.4f}; "
               f"share kept in B {wl.yB.mean() / wl.yA.mean():.3f}")
         print(f"   predicted from half A alone: normal prior {wl.lin.mean():.4f}, nonparametric prior {wl.npm.mean():.4f}; "
@@ -393,10 +409,35 @@ def main() -> dict:
     for lab, g in (("NSW controls", ct), ("PSID", psid), ("CPS", cps)):
         print(f"   correlation of 1975 and 1978 earnings, {lab}: {np.corrcoef(g.re75, g.re78)[0, 1]:.3f}; "
               f"of 1974 and 1975: {np.corrcoef(g.re74, g.re75)[0, 1]:.3f}")
-    for lab, c in (("PSID", psid), ("CPS", cps)):
+    rule_fns = (("no 1975 earnings", lambda d: d.re75 == 0),
+                ("1975 earnings under 2,000", lambda d: d.re75 < 2000),
+                ("under 2,000 in 1974 and 1975", lambda d: (d.re74 < 2000) & (d.re75 < 2000)))
+    print("the same rule applied to trainees, controls and comparison group alike:")
+    like = {}
+    for rule, fn in rule_fns:
+        t, c0 = tr[fn(tr)], ct[fn(ct)]
+        ch_t, ch_c = (t.re78 - t.re75).mean(), (c0.re78 - c0.re75).mean()
+        exp_r = ch_t - ch_c
+        exp_se = math.hypot(mean_se(t.re78 - t.re75)[1], mean_se(c0.re78 - c0.re75)[1])
+        print(f"   {rule}: trainees {len(t)} (change {ch_t:+,.0f}), controls {len(c0)} (1974 / 1975 / 1978 "
+              f"{c0.re74.mean():,.0f} / {c0.re75.mean():,.0f} / {c0.re78.mean():,.0f}, change {ch_c:+,.0f}); experimental "
+              f"difference in changes {exp_r:+,.0f} (SE {exp_se:,.0f})")
+        for lab, c in (("PSID", psid), ("CPS", cps)):
+            g = c[fn(c)]
+            ch_g = (g.re78 - g.re75).mean()
+            se_g = math.hypot(mean_se(t.re78 - t.re75)[1], mean_se(g.re78 - g.re75)[1])
+            like[(lab, rule)] = (ch_t - ch_g, exp_r)
+            print(f"      {lab}: change {ch_g:+,.0f}; difference-in-differences {ch_t - ch_g:+,.0f} (SE {se_g:,.0f}); "
+                  f"miss against the experiment {ch_t - ch_g - exp_r:+,.0f}")
+    for lab, c in (("NSW controls", ct), ("PSID", psid), ("CPS", cps)):
         g = c[c.re75 < 2000]
-        print(f"   {lab} with 1975 earnings under 2,000: share who earned 5,000 or more in 1974 "
-              f"{(g.re74 >= 5000).mean():.3f}; NSW controls {(ct.re74 >= 5000).mean():.3f}")
+        z = (2000 - c.re75.mean()) / c.re75.std(ddof=1)
+        X = np.column_stack([np.ones(len(c)), c.re75])
+        beta = np.linalg.lstsq(X, c.re78.to_numpy(float), rcond=None)[0]
+        print(f"   {lab}, 1975 earnings under 2,000: share who earned 5,000 or more in 1974 {(g.re74 >= 5000).mean():.3f}; "
+              f"threshold {z:+.2f} SD from the population's 1975 mean; within-population line predicts 1978 mean "
+              f"{(beta[0] + beta[1] * g.re75).mean():,.0f}, actual {g.re78.mean():,.0f}")
+    out["like"] = like
     sd_t, sd_c = tr.re78.std(ddof=1), ct.re78.std(ddof=1)
     print(f"SD of 1978 earnings: trainees {sd_t:,.0f}, controls {sd_c:,.0f}")
     for n in (445, 1000, 5000):
@@ -458,9 +499,20 @@ def main() -> dict:
     hi_all = dayall[dayall.index.month > 6].quantile(0.9)
     print(f"   alerts on days when the all-flights share was in its own July-December top 10% (>= {hi_all:.3f}): "
           f"{(r['all'] >= hi_all).mean():.3f}")
+    print("   alerts by month: " + ", ".join(f"{pd.Timestamp(2013, mth, 1):%b} {c}" for mth, c in
+                                         r.date.dt.month.value_counts().sort_index().items())
+          + f"; on {r.date.nunique()} distinct days, at most {r.groupby('date').size().max()} carriers on one day")
+    dv = dayall.to_numpy()
+    first = dayall.index.month <= 6
+    for lag in (1, 2, 3):
+        print(f"   all-flights late share, lag-{lag} correlation: January-June {lag_corr(np.where(first, dv, np.nan), lag):.3f}, "
+              f"July-December {lag_corr(np.where(~first, dv, np.nan), lag):.3f}")
     valid = cc.dropna(subset=["x"])
+    tot = f.groupby("date").late.agg(["sum", "size"])
+    other = (valid.date.map(tot["sum"]) - valid.k) / (valid.date.map(tot["size"]) - valid.n)
     print(f"correlation of a large carrier's daily late share with the all-flights share: "
-          f"{np.corrcoef(valid.x, valid['all'])[0, 1]:.3f}")
+          f"{np.corrcoef(valid.x, valid['all'])[0, 1]:.3f}; with the share of all other carriers' flights "
+          f"{np.corrcoef(valid.x, other)[0, 1]:.3f}")
     P, M, A = res["paths"]
     print(f"alerts with a complete window from 2 days before to 7 after: {len(P)}")
     print("   day       " + "  ".join(f"{d:+d}".rjust(6) for d in range(-2, 8)))
@@ -477,20 +529,42 @@ def main() -> dict:
           f"{(rl.pred - rl.base).mean():+.3f}; next-day slope b_1 {rel['slopes'][0]:.3f}")
     print(f"   carrier late share on those days {rl.raw.mean():.3f} against all flights {rl['all'].mean():.3f}; "
           f"share of relative alerts on all-flights top-10% days {(rl['all'] >= hi_all).mean():.3f}")
-    for lab, key in (("single breach of the 90th percentile", "single"), ("two consecutive breaches", "double")):
-        q = alert_study(cc, "x", q=0.90, consecutive=(key == "double"))["alerts"]
+    anyb = alert_study(cc, "x", q=0.90)["alerts"]
+    dbl = anyb[anyb.ex_prev >= anyb.thr]
+    sgl = anyb[~(anyb.ex_prev >= anyb.thr)]
+    kept_fn = lambda q: (q.nxt - q.base).mean() / (q.x - q.base).mean()
+    for lab, q in (("any breach of the 90th percentile", anyb), ("second consecutive breach", dbl),
+                   ("first breach only (not preceded by one)", sgl)):
         print(f"   {lab}: {len(q)} alerts, alert day {q.x.mean():.3f}, next day {q.nxt.mean():.3f}, two days later "
-              f"{q.nxt2.mean():.3f}; share of the excess left the next day {(q.nxt - q.base).mean() / (q.x - q.base).mean():.3f}")
+              f"{q.nxt2.mean():.3f}; share of the excess left the next day {kept_fn(q):.3f}")
+    brng = np.random.default_rng(SEED + 40)
+    dk, d2 = [], []
+    for _ in range(2000):
+        a = dbl.iloc[brng.integers(0, len(dbl), len(dbl))]
+        b = sgl.iloc[brng.integers(0, len(sgl), len(sgl))]
+        dk.append(kept_fn(a) - kept_fn(b))
+        d2.append(a.nxt2.mean() - b.nxt2.mean())
+    print(f"   second breach minus first only, bootstrap 95% intervals (2,000 resamples of alerts): share left the next "
+          f"day {kept_fn(dbl) - kept_fn(sgl):+.3f} ({np.quantile(dk, 0.025):+.3f} to {np.quantile(dk, 0.975):+.3f}); late "
+          f"share two days later {dbl.nxt2.mean() - sgl.nxt2.mean():+.3f} ({np.quantile(d2, 0.025):+.3f} to "
+          f"{np.quantile(d2, 0.975):+.3f})")
 
     resid = (r.nxt - r.pred).to_numpy()
     sd_res = resid.std(ddof=1)
     per_year = 2 * len(r)
     print(f"SD of the next-day late share around its prediction, over the alerts: {sd_res:.3f}; about {per_year} "
           f"alerts a year at this rate")
+    day_res = pd.Series(resid, index=r.date.to_numpy()).groupby(level=0).mean()
+    sd_day = day_res.std(ddof=1)
+    days_year = 2 * len(day_res)
+    print(f"   the alerts fall on {len(day_res)} days; SD of the day-average residual {sd_day:.3f}; about {days_year} "
+          f"alert days a year")
     for share in (0.1, 0.2, 0.5):
         se = sd_res * math.sqrt(1 / (per_year * (1 - share)) + 1 / (per_year * share))
-        print(f"   withholding the response from {int(100 * share)}% of alerts at random: standard error of the "
-              f"response's effect on the next day {se:.3f}")
+        se_d = sd_day * math.sqrt(1 / (days_year * (1 - share)) + 1 / (days_year * share))
+        print(f"   withholding the response from {int(100 * share)}%: standard error {se:.3f} if alerts were independent; "
+              f"{se_d:.3f} withholding whole alert days; smallest effect detectable at 5% with 80% power "
+              f"{2.8 * se_d:.3f}")
 
     # Segments of different size: carrier by airport.
     s = daily_series(f, ["carrier", "origin"])
@@ -510,8 +584,20 @@ def main() -> dict:
     for t, row in tiers.iterrows():
         print(f"   average flights a day {t:10s}: {int(row.series):2d} series, {int(row.days):5d} series-days, "
               f"{row.flight_share:.3f} of flights")
+    print(f"   series averaging over 100 flights a day: {', '.join(sorted(vol[vol > 100].index))}")
+    for t, g in s.groupby("tier", observed=True):
+        print(f"   binomial z against the day, series with {t} flights a day: SD {g.z.std():.2f}, share of series-days "
+              f"with z >= 3 {(g.z >= 3).mean():.3f} (normal theory 0.001)")
+    s["h1"] = s.date.dt.month <= 6
+    zsd = s[s.h1].groupby("series").z.std()
+    s["zc"] = s.z / s.series.map(zsd)
+    print(f"   z rescaled by each series' own January-June SD of z: share of July-December series-days at 3 or more "
+          f"{(s.zc[~s.h1] >= 3).mean():.3f}")
     seg = {}
-    for lab, sel in (("late share of 75% or more", s.x >= 0.75), ("z of 3 or more against the day's all-flights share", s.z >= 3)):
+    for lab, sel in (("late share of 75% or more", s.x >= 0.75), ("z of 3 or more against the day's all-flights share", s.z >= 3),
+                     ("rescaled z of 3 or more, July-December", (s.zc >= 3) & ~s.h1),
+                     ("z of 3 or more, July-December", (s.z >= 3) & ~s.h1),
+                     ("late share of 75% or more, July-December", (s.x >= 0.75) & ~s.h1)):
         g = s[sel]
         shares = g.tier.value_counts(normalize=True)
         seg[lab] = (shares, g.groupby("tier", observed=True).apply(lambda h: (len(h), h.x.mean(), h.nxt.mean(), h["all"].mean())))
