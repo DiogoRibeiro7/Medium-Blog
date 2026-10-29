@@ -12,7 +12,7 @@
     stable trait + measurement error (reliability 0.5) k = 1, 2, 3, 5, 10: 0.505, 0.504, 0.496, 0.509, 0.503
     transient state, AR(1) with coefficient 0.7        k = 1, 2, 3, 5, 10: 0.699, 0.488, 0.340, 0.156, 0.018
     trait (0.4) + AR(1) state (0.4) + error (0.2)      k = 1, 2, 3, 5, 10: 0.676, 0.595, 0.532, 0.465, 0.409
-    fitting trait share + state share x phi^k to the lag-1, 2 and 3 correlations of the mixture: phi 0.764, state share 0.452, trait share 0.331, error share 0.217 (true 0.7, 0.4, 0.4, 0.2)
+    fitting trait share + state share x phi^k to the lag-1, 2 and 3 correlations of the mixture: phi 0.764, state share 0.452, trait share 0.331, error share 0.217 (true 0.7, 0.4, 0.4, 0.2); relative error of the trait share -0.172
     theory for the mixture: 0.4 + 0.4 x 0.7^k = 0.680, 0.596, 0.537, 0.467, 0.411
   random walk observed from step 51 on (no stationary mean):
     k =  1: slope of later on earlier 0.9996; slope of earlier on later 0.9807; SD earlier 7.098, later 7.166; correlation 0.9901
@@ -28,6 +28,7 @@
     top 10%: selected mean 1.755 SD; fall 1.228 / 0.877 / 0.526 / 0.175 SD; share of the selected deviation lost 0.7 / 0.5 / 0.3 / 0.1
     top 5%: selected mean 2.063 SD; fall 1.444 / 1.031 / 0.619 / 0.206 SD; share of the selected deviation lost 0.7 / 0.5 / 0.3 / 0.1
     top 1%: selected mean 2.665 SD; fall 1.866 / 1.333 / 0.800 / 0.267 SD; share of the selected deviation lost 0.7 / 0.5 / 0.3 / 0.1
+  selection on a score, outcome correlated 0.3 with it, top 5%: score deviation 2.063 SD; expected outcome deviation 0.619 SD; shortfall 1.444 SD
   simulation, correlation 0.6, top 20%: selected mean 1.4006 (formula 1.3998); fall 0.5590 (formula 0.5599)
   simulation, correlation 0.6, top 5%: selected mean 2.0642 (formula 2.0627); fall 0.8228 (formula 0.8251)
   example in natural units: a measurement with SD 15 and test-retest correlation 0.6, top 10% selected: expected fall 10.53 units from a selected mean 26.32 above the population mean
@@ -63,8 +64,8 @@
 ==============================================================================
 5. SHRINKAGE: KELLEY'S FORMULA
 ==============================================================================
-  reliability 0.5, 1000 units, 2000 simulations: mean squared error of the observed score as an estimate of the true score 0.5000; of Kelley's estimate 0.2504 (theory 0.5000 and 0.2500)
-  share of the true top 50 found in the observed top 50: 0.394 (Kelley's estimate is a monotone transformation of the observed score and ranks the units identically)
+  reliability 0.5, 1000 units, 2000 simulations: mean squared error of the observed score as an estimate of the true score 0.5000; of Kelley's estimate 0.2504 (theory 0.5000 and 0.2500); ratio 0.501
+  share of the true top 50 found in the observed top 50: 0.394; in the top 50 by Kelley's estimate: 0.394
   two groups with means -1 and +1: overall reliability 0.663; mean squared error shrinking to the overall mean 0.6688, to each unit's group mean 0.5025, raw 1.0085
     top 5% on the observed score: share from the upper group 0.967; mean true score 2.203; Kelley to overall mean predicts 2.320, to group means 2.217
   rates from units of different sizes: 2,000 units, true rates Beta(10, 90) (mean 0.10), sizes log-uniform 20 to 2,000,
@@ -82,18 +83,18 @@
   the hottest 5% of days relative to the season (19 days): mean anomaly +12.33 F; mean anomaly k days later (k = 1..5): +7.46, +0.56, -2.60, -0.99, +0.38
   the coldest 5% (19 days): mean anomaly -12.20 F; k days later (k = 1..5): -8.05, -5.16, -2.22, -0.12, +1.26
   DAX, 1860 trading days 1991-1998: slope of the next close on today's close 1.0014; lag-1 correlation of daily log returns -0.0004, slope -0.0004
-    after the 5% largest daily gains: mean gain that day +2.277%, next day +0.124%; mean daily return overall +0.065%
-    days with the close in its top 10% over the period: mean close 4928; 20 trading days later 5021; series mean 2531
+    after the 5% largest daily gains: mean gain that day +2.277%, next day +0.124% (standard error 0.112%, 93 days); mean daily return overall +0.065%
+    days (among the first 1840) with the close in its top 10%: mean close 4928; 20 trading days later 5021; series mean 2531
 
 ==============================================================================
 7. SEPARATING REGRESSION FROM AN EFFECT
 ==============================================================================
   screening simulation: mean 140.0, SD 15.0, reliability 0.6, selected above 160.0 (0.091 of the population), true effect of treatment -5.0; 1000 replications of 20,000 people
-    naive            mean estimate -15.783 (SD across replications 0.293)
-    rct              mean estimate -5.000 (SD across replications 0.596)
-    predicted        mean estimate -4.995 (SD across replications 0.288)
-    second baseline  mean estimate -4.995 (SD across replications 0.326)
-    rd               mean estimate -4.943 (SD across replications 0.758)
+    naive            mean estimate -15.783 (SD across replications 0.293; Monte Carlo SE of the mean 0.009); ratio to the true effect 3.16
+    rct              mean estimate -5.000 (SD across replications 0.596; Monte Carlo SE of the mean 0.019); ratio to the true effect 1.00
+    predicted        mean estimate -4.995 (SD across replications 0.288; Monte Carlo SE of the mean 0.009); ratio to the true effect 1.00
+    second baseline  mean estimate -4.995 (SD across replications 0.326; Monte Carlo SE of the mean 0.010); ratio to the true effect 1.00
+    rd               mean estimate -4.943 (SD across replications 0.758; Monte Carlo SE of the mean 0.024); ratio to the true effect 0.99
     formula: selected mean 166.97, 26.97 above the population mean; expected regression 10.789; an error of 0.05 in the assumed reliability shifts the predicted regression by 1.35
   subtracting a predicted regression with a reliability estimated from a pilot of m people measured twice:
     pilot of   50: mean estimate -4.922, SD across 500 replications 2.456
@@ -101,8 +102,8 @@
     pilot of  500: mean estimate -4.963, SD across 500 replications 0.805
     pilot of 2000: mean estimate -4.976, SD across 500 replications 0.503
   anorexia trial (Hand et al., 1994; MASS::anorexia): 72 patients, weights in pounds
-    Cont n = 26: before 81.56, after 81.11, change -0.45; correlation before-after -0.161; slope of change on before -1.134 (SE 0.167); corr(before, change) -0.810; Oldham's corr(mean, change) -0.185; SD before 5.71, after 4.74
-    CBT  n = 29: before 82.69, after 85.70, change +3.01; correlation before-after +0.492; slope of change on before -0.152 (SE 0.289); corr(before, change) -0.101; Oldham's corr(mean, change) +0.549; SD before 4.85, after 8.35
-    FT   n = 17: before 83.23, after 90.49, change +7.26; correlation before-after +0.538; slope of change on before -0.091 (SE 0.368); corr(before, change) -0.064; Oldham's corr(mean, change) +0.546; SD before 5.02, after 8.48
+    Cont n = 26: before 81.56, after 81.11, change -0.45; correlation before-after -0.161; slope of change on before -1.134 (SE 0.167); corr(before, change) -0.810; Oldham's corr(mean, change) -0.185; SD before 5.71, after 4.74 (ratio 0.83); slope of after on before -0.134
+    CBT  n = 29: before 82.69, after 85.70, change +3.01; correlation before-after +0.492; slope of change on before -0.152 (SE 0.289); corr(before, change) -0.101; Oldham's corr(mean, change) +0.549; SD before 4.85, after 8.35 (ratio 1.72); slope of after on before 0.848
+    FT   n = 17: before 83.23, after 90.49, change +7.26; correlation before-after +0.538; slope of change on before -0.091 (SE 0.368); corr(before, change) -0.064; Oldham's corr(mean, change) +0.546; SD before 5.02, after 8.48 (ratio 1.69); slope of after on before 0.909
     CBT against control: after only +4.59 (SE 1.86); change scores +3.46 (SE 2.06); ANCOVA +4.24 (SE 1.84), coefficient on the baseline +0.305
     FT against control: after only +9.39 (SE 2.02); change scores +7.71 (SE 2.39); ANCOVA +9.03 (SE 2.03), coefficient on the baseline +0.211

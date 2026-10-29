@@ -141,8 +141,8 @@ def figure_selection() -> None:
 
 def figure_nonnormal() -> None:
     pairs = nonnormal_pairs(np.random.default_rng(SEED + 4))
-    fig, axes = plt.subplots(1, 4, figsize=(17, 4.4))
-    for ax, name, title in zip(axes, ("lognormal (skewed)", "Student t with 3 df (heavy tails)",
+    fig, axes = plt.subplots(2, 2, figsize=(11, 9))
+    for ax, name, title in zip(axes.ravel(), ("lognormal (skewed)", "Student t with 3 df (heavy tails)",
                                       "normal component, heavy-tailed noise", "two groups"),
                                ("Skewed shared component", "Heavy-tailed shared component", "Heavy-tailed noise",
                                 "Two groups, means -2 and +2")):
@@ -181,7 +181,11 @@ def figure_series() -> None:
     beta, _ = ols(X, temp)
     anom = temp - X @ beta
     r1 = np.corrcoef(anom[:-1], anom[1:])[0, 1]
-    fig, (ax1, ax2, ax3) = plt.subplots(1, 3, figsize=(14, 4.4))
+    fig = plt.figure(figsize=(11.5, 9))
+    gs = fig.add_gridspec(2, 2)
+    ax1 = fig.add_subplot(gs[0, :])
+    ax2 = fig.add_subplot(gs[1, 0])
+    ax3 = fig.add_subplot(gs[1, 1])
     for sel, col, lab in ((anom > np.quantile(anom, 0.95), ORANGE, "hottest 5% of days"),
                           (anom < np.quantile(anom, 0.05), BLUE, "coldest 5% of days")):
         idx = np.where(sel)[0]

@@ -220,7 +220,8 @@ def main() -> None:
     s_hat = (c2 - c1) / (phi_hat ** 2 - phi_hat)
     tau_hat = c1 - s_hat * phi_hat
     print(f"    fitting trait share + state share x phi^k to the lag-1, 2 and 3 correlations of the mixture: phi {phi_hat:.3f},"
-          f" state share {s_hat:.3f}, trait share {tau_hat:.3f}, error share {1 - s_hat - tau_hat:.3f} (true 0.7, 0.4, 0.4, 0.2)")
+          f" state share {s_hat:.3f}, trait share {tau_hat:.3f}, error share {1 - s_hat - tau_hat:.3f} (true 0.7, 0.4, 0.4, 0.2);"
+          f" relative error of the trait share {(tau_hat - 0.4) / 0.4:+.3f}")
     print(f"    theory for the mixture: 0.4 + 0.4 x 0.7^k = " + ", ".join(f"{0.4 + 0.4 * phi ** k:.3f}" for k in (1, 2, 3, 5, 10)))
     print("  random walk observed from step 51 on (no stationary mean):")
     for k in (1, 5, 10):
@@ -238,6 +239,9 @@ def main() -> None:
         falls = [expected_regression(r, q)[1] for r in (0.3, 0.5, 0.7, 0.9)]
         print(f"    top {q:.0%}: selected mean {sel:.3f} SD; fall " + " / ".join(f"{f:.3f}" for f in falls)
               + " SD; share of the selected deviation lost " + " / ".join(f"{1 - r:.1f}" for r in (0.3, 0.5, 0.7, 0.9)))
+    sel5, fall5 = expected_regression(0.3, 0.05)
+    print(f"  selection on a score, outcome correlated 0.3 with it, top 5%: score deviation {sel5:.3f} SD; expected outcome"
+          f" deviation {sel5 - fall5:.3f} SD; shortfall {fall5:.3f} SD")
     n = 2_000_000
     rho = 0.6
     x = rng.normal(0, 1, n)
@@ -324,11 +328,12 @@ def main() -> None:
         mse_k.append(np.mean((k - t) ** 2))
         top_true = set(np.argsort(-t)[:50])
         overlap_raw.append(len(top_true & set(np.argsort(-x)[:50])) / 50)
+        overlap_k.append(len(top_true & set(np.argsort(-k)[:50])) / 50)
     print(f"  reliability {rel}, {n} units, {reps} simulations: mean squared error of the observed score as an estimate of"
           f" the true score {np.mean(mse_raw):.4f}; of Kelley's estimate {np.mean(mse_k):.4f} (theory {1 - rel:.4f} and"
-          f" {rel * (1 - rel):.4f})")
-    print(f"  share of the true top 50 found in the observed top 50: {np.mean(overlap_raw):.3f}"
-          f" (Kelley's estimate is a monotone transformation of the observed score and ranks the units identically)")
+          f" {rel * (1 - rel):.4f}); ratio {np.mean(mse_k) / np.mean(mse_raw):.3f}")
+    print(f"  share of the true top 50 found in the observed top 50: {np.mean(overlap_raw):.3f}; in the top 50 by Kelley's"
+          f" estimate: {np.mean(overlap_k):.3f}")
     # two groups with different means and the same reliability: shrinking to the wrong mean
     g = rng.random(200_000) < 0.5
     mu = np.where(g, 1.0, -1.0)
@@ -358,7 +363,7 @@ def main() -> None:
           f" {(size >= np.quantile(size, 0.75))[top].mean():.3f}; median size {np.median(size[top]):.0f} against {np.median(size):.0f} overall")
     print(f"    their period-1 rate {r1[top].mean():.4f}, true rate {p_true[top].mean():.4f}, period-2 rate {r2[top].mean():.4f};"
           f" population mean {p_true.mean():.4f}")
-    var_true = np.var(p_true)
+    var_true = np.var(p_true)  # the between-unit variance is taken as known here (in practice it is estimated)
     rel_u = var_true / (var_true + r1.mean() * (1 - r1.mean()) / size)
     shrunk = r1.mean() + rel_u * (r1 - r1.mean())
     top_s = shrunk >= np.quantile(shrunk, 0.95)
@@ -405,10 +410,12 @@ def main() -> None:
     big = ret[:-1] > np.quantile(ret[:-1], 0.95)
     print(f"  DAX, {len(dax)} trading days 1991-1998: slope of the next close on today's close {b_lvl[0]:.4f};"
           f" lag-1 correlation of daily log returns {np.corrcoef(ret[:-1], ret[1:])[0, 1]:+.4f}, slope {b_ret[0]:+.4f}")
+    nxt = ret[1:][big]
     print(f"    after the 5% largest daily gains: mean gain that day {100 * ret[:-1][big].mean():+.3f}%, next day"
-          f" {100 * ret[1:][big].mean():+.3f}%; mean daily return overall {100 * ret.mean():+.3f}%")
+          f" {100 * nxt.mean():+.3f}% (standard error {100 * nxt.std(ddof=1) / math.sqrt(len(nxt)):.3f}%, {len(nxt)} days);"
+          f" mean daily return overall {100 * ret.mean():+.3f}%")
     hi_lvl = dax[:-20] > np.quantile(dax[:-20], 0.9)
-    print(f"    days with the close in its top 10% over the period: mean close {dax[:-20][hi_lvl].mean():.0f};"
+    print(f"    days (among the first {len(dax) - 20}) with the close in its top 10%: mean close {dax[:-20][hi_lvl].mean():.0f};"
           f" 20 trading days later {dax[20:][hi_lvl].mean():.0f}; series mean {dax.mean():.0f}")
 
     header("7. SEPARATING REGRESSION FROM AN EFFECT")
@@ -420,7 +427,8 @@ def main() -> None:
           f" of the population), true effect of treatment {effect}; {reps} replications of {n:,} people")
     for k, v in res.items():
         v = np.array(v)
-        print(f"    {k:<16} mean estimate {v.mean():+.3f} (SD across replications {v.std():.3f})")
+        print(f"    {k:<16} mean estimate {v.mean():+.3f} (SD across replications {v.std():.3f}; Monte Carlo SE of the mean"
+              f" {v.std() / math.sqrt(len(v)):.3f}); ratio to the true effect {v.mean() / effect:.2f}")
     sel_mean = mu + sd * inverse_mills((cut - mu) / sd)
     print(f"    formula: selected mean {sel_mean:.2f}, {sel_mean - mu:.2f} above the population mean; expected regression"
           f" {(1 - rel) * (sel_mean - mu):.3f}; an error of 0.05 in the assumed reliability shifts the predicted regression by"
@@ -453,7 +461,8 @@ def main() -> None:
         print(f"    {g:<4} n = {m.sum()}: before {pre[m].mean():.2f}, after {post[m].mean():.2f}, change {np.mean(post[m] - pre[m]):+.2f};"
               f" correlation before-after {np.corrcoef(pre[m], post[m])[0, 1]:+.3f}; slope of change on before {b[1]:+.3f} (SE {se[1]:.3f});"
               f" corr(before, change) {np.corrcoef(pre[m], post[m] - pre[m])[0, 1]:+.3f}; Oldham's corr(mean, change)"
-              f" {np.corrcoef((pre[m] + post[m]) / 2, post[m] - pre[m])[0, 1]:+.3f}; SD before {pre[m].std(ddof=1):.2f}, after {post[m].std(ddof=1):.2f}")
+              f" {np.corrcoef((pre[m] + post[m]) / 2, post[m] - pre[m])[0, 1]:+.3f}; SD before {pre[m].std(ddof=1):.2f}, after {post[m].std(ddof=1):.2f}"
+              f" (ratio {post[m].std(ddof=1) / pre[m].std(ddof=1):.2f}); slope of after on before {b[1] + 1:.3f}")
     for g in ("CBT", "FT"):
         m = np.isin(treat, ["Cont", g])
         d = (treat[m] == g).astype(float)
