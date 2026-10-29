@@ -25,6 +25,14 @@ OVERBURDEN_URL = (
     "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/"
     "ilc_lvho07a?geo=PT&sex=T&rskpovth=TOTAL&unit=PC"
 )
+PARENTS_URL = (
+    "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/"
+    "ilc_lvps08?geo=PT&sex=T&unit=PC"
+)
+LEAVING_AGE_URL = (
+    "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/"
+    "yth_demo_030?geo=PT&sex=T"
+)
 
 
 def parse_hpi(document: dict[str, Any]) -> dict[int, float]:
@@ -184,6 +192,76 @@ def parse_housing_overburden(document: dict[str, Any]) -> dict[str, dict[int, fl
     return result
 
 
+def parse_parental_coresidence(document: dict[str, Any]) -> dict[str, dict[int, float]]:
+    """Read shares of Portuguese young adults living with parents by age.
+
+    These are repeated survey cross-sections, not longitudinal transitions or
+    measurements of why an individual continues to live with parents.
+    """
+    dimensions = document.get("id")
+    sizes = document.get("size")
+    expected = {"freq": "A", "sex": "T", "unit": "PC", "geo": "PT"}
+    if not isinstance(dimensions, list) or not isinstance(sizes, list) or len(dimensions) != len(sizes):
+        raise ValueError("Invalid co-residence dimensions")
+    if not all(isinstance(size, int) and size > 0 for size in sizes):
+        raise ValueError("Invalid co-residence sizes")
+    for name, code in expected.items():
+        if name not in dimensions or document["dimension"][name]["category"]["index"] != {code: 0}:
+            raise ValueError(f"Unexpected co-residence selection: {name}")
+    ages = document["dimension"]["age"]["category"]["index"]
+    years = document["dimension"]["time"]["category"]["index"]
+    values = document.get("value", {})
+    if not isinstance(values, dict):
+        raise ValueError("Invalid co-residence observations")
+    selected: dict[str, dict[int, float]] = {}
+    for age in ("Y18-24", "Y18-34", "Y25-34"):
+        if age not in ages:
+            raise ValueError(f"Missing co-residence age: {age}")
+        series: dict[int, float] = {}
+        for year, time_pos in years.items():
+            coordinates = {name: 0 for name in dimensions}
+            coordinates["age"] = ages[age]
+            coordinates["time"] = time_pos
+            flat = 0
+            for name, size in zip(dimensions, sizes, strict=True):
+                flat = flat * size + coordinates[name]
+            value = values.get(str(flat))
+            if value is None:
+                continue
+            if not isinstance(value, (int, float)) or isinstance(value, bool) or not 0 <= value <= 100:
+                raise ValueError(f"Invalid co-residence value: {age}/{year}")
+            series[int(year)] = float(value)
+        selected[age] = dict(sorted(series.items()))
+    return selected
+
+
+def parse_leaving_age(document: dict[str, Any]) -> dict[int, float]:
+    """Read Eurostat's modelled age at 50% departure from parental home."""
+    dimensions = document.get("id")
+    sizes = document.get("size")
+    if not isinstance(dimensions, list) or not isinstance(sizes, list) or len(dimensions) != len(sizes):
+        raise ValueError("Invalid departure-age dimensions")
+    expected = {"freq": "A", "unit": "AVG", "sex": "T", "geo": "PT"}
+    for name, code in expected.items():
+        if name not in dimensions or document["dimension"][name]["category"]["index"] != {code: 0}:
+            raise ValueError(f"Unexpected departure-age selection: {name}")
+    if any(size != 1 for name, size in zip(dimensions, sizes, strict=True) if name != "time"):
+        raise ValueError("Departure-age data must have one selected category")
+    years = document["dimension"]["time"]["category"]["index"]
+    values = document.get("value", {})
+    if not isinstance(values, dict):
+        raise ValueError("Invalid departure-age observations")
+    result: dict[int, float] = {}
+    for year, position in years.items():
+        value = values.get(str(position))
+        if value is None:
+            continue
+        if not isinstance(value, (int, float)) or isinstance(value, bool) or not 15 <= value <= 34:
+            raise ValueError(f"Invalid departure-age value: {year}")
+        result[int(year)] = float(value)
+    return dict(sorted(result.items()))
+
+
 def main() -> None:
     """Read a pinned source snapshot and export auditable derived data."""
     parser = argparse.ArgumentParser(description=__doc__)
@@ -192,6 +270,8 @@ def main() -> None:
     parser.add_argument("--income-18-24-input", type=Path, default=Path(__file__).parent / "data" / "eurostat_ilc_di03_PT_Y18-24_2026-10-29.json")
     parser.add_argument("--income-25-49-input", type=Path, default=Path(__file__).parent / "data" / "eurostat_ilc_di03_PT_Y25-49_2026-10-29.json")
     parser.add_argument("--overburden-input", type=Path, default=Path(__file__).parent / "data" / "eurostat_ilc_lvho07a_PT_2026-10-29.json")
+    parser.add_argument("--parents-input", type=Path, default=Path(__file__).parent / "data" / "eurostat_ilc_lvps08_PT_2026-10-29.json")
+    parser.add_argument("--leaving-age-input", type=Path, default=Path(__file__).parent / "data" / "eurostat_yth_demo_030_PT_2026-10-29.json")
     parser.add_argument("--output", type=Path, default=Path(__file__).parent / "results.json")
     args = parser.parse_args()
     raw: Any = json.loads(args.input.read_text(encoding="utf-8"))
@@ -218,6 +298,10 @@ def main() -> None:
     if not isinstance(raw_overburden, dict):
         raise ValueError("Expected overburden JSON-stat object")
     overburden = parse_housing_overburden(raw_overburden)
+    raw_parents: Any = json.loads(args.parents_input.read_text(encoding="utf-8"))
+    raw_leaving_age: Any = json.loads(args.leaving_age_input.read_text(encoding="utf-8"))
+    if not isinstance(raw_parents, dict) or not isinstance(raw_leaving_age, dict):
+        raise ValueError("Expected parental-home JSON-stat objects")
     report = {
         "source_url": EUROSTAT_URL,
         "source_updated": raw.get("updated"),
@@ -230,6 +314,12 @@ def main() -> None:
         "housing_overburden_source_url": OVERBURDEN_URL,
         "housing_overburden_source_updated": raw_overburden.get("updated"),
         "housing_overburden_pct_by_age": overburden,
+        "parental_coresidence_source_url": PARENTS_URL,
+        "parental_coresidence_source_updated": raw_parents.get("updated"),
+        "parental_coresidence_pct_by_age": parse_parental_coresidence(raw_parents),
+        "leaving_parental_home_age_source_url": LEAVING_AGE_URL,
+        "leaving_parental_home_age_source_updated": raw_leaving_age.get("updated"),
+        "estimated_leaving_parental_home_age": parse_leaving_age(raw_leaving_age),
         "descriptives": summarize(series),
     }
     args.output.write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
