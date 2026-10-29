@@ -525,10 +525,14 @@ def render(r: Mapping[str, Any], registered: Mapping[str, Any], command: str) ->
     lines += ["", "## Leave one country out (descriptive)", ""]
     for key in ("E1", "E2"):
         x = loo[key]
+        above = [row["country"] for row in r["leave_one_out"]["rows"]
+                 if row[f"{key}_p_twoway"] >= ALPHA]
         lines.append(f"- **{key}:** from {x['low']:+.4f} to {x['high']:+.4f}; the two-way p is "
                      f"0.05 or more in {x['p_twoway_above_005']} of the "
-                     f"{len(r['leave_one_out']['rows'])} deletions. Leaving out "
-                     f"{x['most_influential']} moves it most, to {x['without_it']:+.4f}.")
+                     f"{len(r['leave_one_out']['rows'])} deletions"
+                     + (f" (without {', '.join(above)})" if above else "") + ". Leaving out "
+                     f"{x['most_influential']} moves the estimate most, to "
+                     f"{x['without_it']:+.4f}.")
     dr = r["data_rule"]
     lines += ["", "## Sample and the wider data rule", "",
               f"- **M1-maize-A2:** {s['n']} region-years in {s['regions']} regions of "

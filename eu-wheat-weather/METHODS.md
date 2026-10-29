@@ -811,3 +811,9 @@ registered methods. They decide nothing.
     `eurostat-maize-irrigation-2026-10-29`, which a test's pattern for the maize crop
     snapshots also matched. It is now `snapshots/eurostat-irrigation-2026-10-29/`, and
     the entry above says so; its files are unchanged.
+- **2026-10-29, the maize article reports Amendment A2.** A section of the maize article,
+  and its fifth figure, report A2 beside the registered results. A test caught a wrong
+  reading before it was published: the one country whose removal lifts heat's two-way p
+  above 0.05 under A2 is France, not Romania; Romania is the one whose removal moves the
+  estimate most (to -3.0%, still clear). The description of the pull request that added
+  A2's results named Romania; `docs/MAIZE_AMENDMENT.md` now names the country.

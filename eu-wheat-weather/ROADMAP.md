@@ -177,7 +177,10 @@ Results are in [docs/RESULTS.md](docs/RESULTS.md). Every rule was fixed before a
   - **Irrigated and rainfed (descriptive):** heat -7.2% in rainfed regions and -2.8% in
     irrigated ones. The map puts Portugal's maize at 2% irrigated against Eurostat's 89%,
     so a post-hoc variant counts Portugal as irrigated; it changes little.
-- [ ] Article: Amendment A2 beside the registered results.
+- [x] Article: Amendment A2 beside the registered results, in a section of its own with
+      a fifth figure; its claims are checked by tests like the rest.
+  - **Heat:** clearer under A2, but smaller without Romania (-3.0%, still clear); the one
+    deletion that breaks it under the two-way method is France.
 - [ ] **Author review and publication** of the maize article, under the same
       non-commercial terms.
 

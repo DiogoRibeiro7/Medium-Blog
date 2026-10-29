@@ -64,8 +64,8 @@ A region is irrigated if at least 50% of its maize on the map is irrigated: 37 r
 
 ## Leave one country out (descriptive)
 
-- **E1:** from -0.0572 to -0.0301; the two-way p is 0.05 or more in 1 of the 19 deletions. Leaving out RO moves it most, to -0.0301.
-- **E2:** from -0.0392 to -0.0333; the two-way p is 0.05 or more in 0 of the 19 deletions. Leaving out EL moves it most, to -0.0392.
+- **E1:** from -0.0572 to -0.0301; the two-way p is 0.05 or more in 1 of the 19 deletions (without FR). Leaving out RO moves the estimate most, to -0.0301.
+- **E2:** from -0.0392 to -0.0333; the two-way p is 0.05 or more in 0 of the 19 deletions. Leaving out EL moves the estimate most, to -0.0392.
 
 ## Sample and the wider data rule
 
