@@ -12,9 +12,14 @@ python analysis.py
 python -m unittest discover -p 'test_*.py'
 ```
 
+The regional panel (section below) is built by `python regional.py`, which writes
+`results_regional.json` and `regional_panel.csv`; its figures need matplotlib
+(`pip install matplotlib==3.11.2`, then `python regional_figures.py`). Everything
+else uses the standard library only.
+
 The workflow `.github/workflows/portugal-housing-generations.yml` runs the tests
-and rebuilds `results.json` on every pull request; the build fails if the
-committed file differs. `fetch_mortgage_rates.py` is the only script that touches
+and rebuilds `results.json`, `results_regional.json` and `regional_panel.csv` on
+every pull request; the build fails if a committed file differs. `fetch_mortgage_rates.py` is the only script that touches
 the network. It is run by that workflow's manual `fetch-mortgage-rates` job,
 dispatched on a branch other than `main`, which commits the dated response and
 its retrieval record to that branch for review; `analysis.py` never downloads.
@@ -299,6 +304,143 @@ What it is **not**:
   2024 break in pension values affects it, the base years differ between the
   two alignments, and young buyers' incomes are not observed here.
 
+## Regional panel: population and new dwellings by NUTS 2024 region, 2011–2025
+
+`regional.py` builds a region-year panel for the 26 NUTS 3 and 9 NUTS 2 regions of
+the NUTS 2024 classification, the union Grande Lisboa + Península de Setúbal
+(code `AML`, identical to the former Área Metropolitana de Lisboa) and Portugal.
+Lisbon is reported as Grande Lisboa (`1A0`), Península de Setúbal (`1B0`) and
+their union; Porto as Área Metropolitana do Porto (`11A`).
+
+### Sources
+
+All from INE's indicator API, downloaded on 2026-10-29 between 17:38 and 17:47
+UTC by `fetch_regional.py` on a GitHub Actions runner (the `fetch-regional` job,
+dispatched on a branch; this workspace cannot reach INE). Each file
+`data/ine_<code>_2026-10-29.jsonl.gz` holds INE's metadata response and its data
+responses byte for byte, each with URL, retrieval time, HTTP status, size and
+SHA-256; `regional.py` re-checks every digest before reading. Metadata pages:
+`https://www.ine.pt/bddXplorer/htdocs/minfo.jsp?var_cd=<code>&lingua=PT`.
+
+- `0012917` Resident population, annual estimates, NUTS 2024, 2021–2025, persons,
+  both sexes, all ages (INE update 2026-06-22).
+- `0008273` The same estimates published on NUTS 2013, 2011–2023 (update
+  2026-07-17); used for 2011–2020.
+- `0013248` Dwellings completed in new construction for family housing, NUTS 2024,
+  2011–2025, all typologies (*Estatísticas das obras concluídas*). INE's note:
+  Amadora under-reported 2011–2017; 2024–2025 from *Estimativas de Obras
+  Concluídas*; final to 2020, preliminary from 2021.
+- `0013235` Dwellings licensed in new construction for family housing, NUTS 2024,
+  2011–2025 (*Inquérito aos projetos de obras de edificação e de demolição*);
+  preliminary from 2021 (INE's note on the same survey's NUTS 2002 table).
+- `0014406` Private households / classical families, censuses, municipal series
+  1864–2021 (2011 and 2021 used). 2011 counted *famílias clássicas* and 2021
+  *agregados domésticos privados*; INE publishes them as one series.
+- `0014627` Private households, Census 2021, NUTS 2024 (used only as a check).
+
+Annual private households are not published below NUTS 2 (Labour Force Survey),
+so households enter the panel only in the census years 2011 and 2021.
+
+### Geography and the NUTS mapping
+
+Every NUTS version is a grouping of the same 308 municipalities, identified by
+their four-digit DICO code. The panel uses INE's NUTS 2024 hierarchy (parents are
+read from INE's category order); series published on another version are
+regrouped through municipalities. Checks, all in `results_regional.json`:
+
+- Each source's municipal values sum exactly to its own published regional and
+  national totals (zero mismatches in every source).
+- Linking NUTS 2013 to NUTS 2024 through shared municipalities finds exactly two
+  changed groups: Área Metropolitana de Lisboa = Grande Lisboa + Península de
+  Setúbal, and Médio Tejo + Beira Baixa (Sertã and Vila de Rei moved between
+  them); the other 22 NUTS 3 regions map one to one. No series is compared across
+  the boundary change without regrouping.
+- The NUTS 2013 population regrouped to NUTS 2024 is identical to INE's NUTS 2024
+  figures in all 111 overlapping region-years (2021–2023), and the census household
+  series regrouped to NUTS 2024 is identical to INE's 2021 NUTS 2024 table.
+- National totals: completions equal the PORDATA/INE series used above in every
+  year 2011–2025; population for year *t* equals Eurostat's 1 January *t*+1 for
+  2011–2020 (so INE's estimates refer to 31 December).
+
+### Panel, coverage and flags
+
+`regional_panel.csv` has one row per region and year, 2011–2025: population,
+completed and permitted dwellings, census households (2011, 2021 only), both
+dwellings per 1,000 residents, and a `flags` column. A region-year with any member
+municipality missing is left empty, never partially summed; in this snapshot no
+cell is missing (390 of 390 NUTS 3 region-years for each annual series), so
+2011–2025 is the longest common complete span. Flags record INE's notes without
+changing values: `completions_underreported_amadora` (2011–2017; affects
+Grande Lisboa, its NUTS 2 region, the Lisbon union and Portugal),
+`construction_preliminary` (2021+), `completions_estimated` (2024–2025) and
+`population_administrative_basis` (2021+).
+
+**The population series has a method break between 2020 and 2021.** Until 2020
+INE's estimates are census-based; from 2021 they are administrative-based. INE's
+2021 figure for Portugal (10,599,117) is 2.0% above its 2020 figure, and from 2021
+INE's series exceeds Eurostat's (1 January of the following year) by 1.7% in 2021,
+3.9% in 2022, 5.3% in 2023 and 5.9% in 2024. Growth is therefore reported
+separately for 2011–2020 and 2021–2025; the 2011–2025 figure in
+`results_regional.json` crosses the break and is labelled so. Rates per 1,000
+residents from 2021 use the higher administrative-based population.
+
+### What the panel shows
+
+Population (average annual change):
+
+- 2011–2020: only five NUTS 3 regions grew: Algarve (+0.42%), Península de
+  Setúbal (+0.36%), Grande Lisboa (+0.19%), Cávado (+0.19%) and Oeste (+0.02%).
+  Portugal fell by 0.17% a year and Área Metropolitana do Porto by 0.11%. The
+  largest falls were in Alto Alentejo (−1.24%), Beiras e Serra da Estrela
+  (−1.15%), Alto Tâmega e Barroso (−1.04%) and Douro (−1.03%).
+- 2021–2025: every region grew. Fastest: Algarve (+3.29%), Alentejo Litoral
+  (+3.09%), Península de Setúbal (+3.06%), Oeste (+2.60%), Grande Lisboa (+2.54%)
+  and Lezíria do Tejo (+2.40%); Portugal +1.89%, Área Metropolitana do Porto
+  +1.37%; slowest Açores (+0.44%), Alto Tâmega e Barroso (+0.45%) and Alto Alentejo
+  (+0.46%).
+- Census households 2011–2021: Portugal +2.6%, Grande Lisboa +2.9%, Península de
+  Setúbal +6.8%, Área Metropolitana do Porto +4.4%, Algarve +6.2%.
+
+Construction (dwellings per 1,000 residents; Portugal first):
+
+- Completions fell from 2.50 in 2011 to 0.69 in 2015 and rose to 2.39 in 2025;
+  permits fell from 1.67 to 0.67 (2014) and rose to 3.68. Nationally, permits
+  have exceeded completions every year since 2015.
+- Mean 2021–2025: completions 2.07 in Portugal, 1.26 in Grande Lisboa, 2.15 in
+  Península de Setúbal (1.51 for the union) and 2.71 in Área Metropolitana do
+  Porto; permits 3.11, 2.03, 2.67 (2.20) and 4.52. Relative to Portugal, Grande
+  Lisboa's completion rate was 0.58 in 2011–2015, 0.44 in 2016–2020 (both lowered
+  by the Amadora gap) and 0.61 in 2021–2025; Porto's was 0.79, 0.85 and 1.31.
+- Highest completions per 1,000 in 2021–2025: Cávado (3.53), Ave (2.84), Oeste
+  (2.73), Área Metropolitana do Porto (2.71); lowest: Baixo Alentejo (0.91),
+  Alentejo Central (1.02), Alto Alentejo (1.07). Dispersion across NUTS 3
+  (coefficient of variation) stayed between 0.28 and 0.38 for completions and 0.28
+  and 0.44 for permits, without a trend.
+- The regions that grew fastest in 2021–2025 are not those with the most
+  construction per resident: Grande Lisboa grew faster than Portugal and built
+  well below the national rate, while Cávado, Ave and Porto built the most.
+
+Figures: `figures/fig_regional_completions_per_1000.png`,
+`fig_regional_permits_and_completions.png`, `fig_regional_population_growth.png`
+and `fig_regional_growth_and_construction.png`.
+
+### What the panel does not show
+
+- **Construction per resident is not a measure of housing shortage or need.** It
+  ignores the existing stock, vacancy, second homes, demolitions, conversions,
+  household size, prices, incomes and where people would live if they could; a low
+  rate can reflect scarce land, regulation or weak demand alike.
+- Associations between regional population growth and construction are
+  descriptive. Both respond to employment, migration, prices, credit and land, and
+  causality can run either way.
+- Permits and completions are different stages, not matched cohorts; a permit
+  ratio above completions does not say how many permitted dwellings will be built.
+- Rates use the population of the same year (31 December). Before and after 2021
+  they rest on different estimation methods, and regional growth after 2021 depends
+  on how administrative records place recent migrants.
+- NUTS 3 averages hide large differences between municipalities; the municipal
+  values are in the snapshots for finer work.
+
 ## What the calculations support
 
 - Nominal house-price-index changes, a relative house-price/income-growth
@@ -314,7 +456,8 @@ What it is **not**:
 - The assertion that non-votes for PS/PSD indicate opposition to democracy.
 - Aggregating these different vintages and populations into a single causal model.
 
-Next research step: assemble comparable municipality/region-year price, income,
-construction, credit and demographic panels with explicit source revisions; only
-then specify a causal design and sensitivity checks. Electoral analysis additionally
+Next research step: the regional panel above covers population, construction and
+census households; regional prices, incomes and credit would have to be added with
+the same explicit geography and source revisions before any causal design and
+sensitivity checks are specified. Electoral analysis additionally
 requires individual-level evidence to avoid ecological inference.
