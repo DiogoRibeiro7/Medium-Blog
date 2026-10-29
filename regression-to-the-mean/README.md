@@ -3,7 +3,7 @@
 Code for a four-part series on Medium by Diogo Ribeiro. The thesis of the series: regression to the mean is not a force acting on individuals but a consequence of selecting on a noisy measurement; its size can be computed from the correlation between measurements and the selection rule, and many effects measured after selecting extremes are partly or wholly this. Every number quoted in the articles is printed by the script in the corresponding folder, and the committed `output.txt` is what the script prints.
 
 - **Part 1 — the history, with the data recomputed** ([`part1/`](part1)). Galton's mid-parents and children (1886), both regressions and the correlation; Galton's family records child by child, with standard errors that respect families; Pearson and Lee's fathers and sons (1903), regression in both directions with equal spreads; and Secrist's design (1933) replicated on major league teams, with the spread across teams season by season.
-- **Part 2 — the mechanism.** Forthcoming.
+- **Part 2 — the mechanism** ([`part2/`](part2)). The measurement model and Kelley's estimate; three sources of disagreement between occasions (measurement error, transient states, stable traits) and a random walk; the closed-form fall of a selected group, checked by simulation, with Spearman–Brown averaging and the second-baseline design; the correlation between starting value and change, and Oldham's correction; skewed, heavy-tailed and two-group populations; shrinkage with common and unit-specific reliabilities; daily temperature anomalies at JFK and the DAX in levels and returns; and five designs compared on a simulated screening programme, with the anorexia trial (MASS).
 - **Part 3 — real data.** Forthcoming.
 - **Part 4 — in data-science practice.** Forthcoming.
 
@@ -16,6 +16,9 @@ pip install -r requirements.txt
 cd part1
 python history_numbers.py > output.txt   # a few seconds; downloads four files on first run
 python figures.py
+cd ../part2
+python mechanism_numbers.py > output.txt  # about a minute; downloads three files on first run
+python figures.py
 ```
 
 A GitHub Actions workflow (`.github/workflows/regression-to-the-mean.yml`) reruns each part on every change and checks that the output matches the committed `output.txt`.
@@ -26,6 +29,10 @@ Downloaded on first run from a pinned commit of the Rdatasets repository (https:
 
 - `HistData/Galton`, `HistData/GaltonFamilies` and `HistData/PearsonLee` (Friendly, R package HistData).
 - `Lahman/Teams`: season records of major league teams (Lahman Baseball Database, CC BY-SA 3.0).
+
+## Data for Part 2
+
+Downloaded on first run from the same pinned commit of Rdatasets, checked against SHA-256 digests and cached in `part2/data/` (not committed): `nycflights13/weather` (hourly weather at the New York airports, 2013), `datasets/EuStockMarkets` (daily closes of four European indices, 1991–1998) and `MASS/anorexia` (weights before and after treatment in a trial for anorexia).
 
 ## Licence
 
