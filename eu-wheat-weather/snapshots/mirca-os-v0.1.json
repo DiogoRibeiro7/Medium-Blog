@@ -1,0 +1,21 @@
+{
+ "description": "MIRCA-OS v0.1, annual harvested area grids; the 2015 5-arcminute layers of irrigated and rainfed maize are extracted. CC BY 4.0. Kebede, E. A., et al. (2025), A global open-source dataset of monthly irrigated and rainfed cropped areas (MIRCA-OS) for the 21st century, Scientific Data 12, 208; data doi:10.4211/hs.60a890eb841c460192c03bb590687145",
+ "retrieved_utc": "2026-10-29T16:01:13Z",
+ "files": {
+  "Annual_Harvested_Area_Grids.rar": {
+   "url": "https://www.hydroshare.org/resource/60a890eb841c460192c03bb590687145/data/contents/Annual%20Harvested%20Area%20Grids/Annual_Harvested_Area_Grids.rar",
+   "bytes": 171883214,
+   "sha256": "3e79faf15a53f9c440e26ef16a424a7e10d7952f7736192898922e08edad5e0f"
+  },
+  "MIRCA-OS_Maize_2015_ir.tif": {
+   "url": "Annual_Harvested_Area_Grids.rar: Annual Harvested Area Grids/2015/5-arcminute/MIRCA-OS_Maize_2015_ir.tif",
+   "bytes": 37351578,
+   "sha256": "d8c4250e67ae87db9aae247a2a62e9eccab2aa00cd188c3bc36ed7ef17b4f328"
+  },
+  "MIRCA-OS_Maize_2015_rf.tif": {
+   "url": "Annual_Harvested_Area_Grids.rar: Annual Harvested Area Grids/2015/5-arcminute/MIRCA-OS_Maize_2015_rf.tif",
+   "bytes": 37351578,
+   "sha256": "5ce40929e75a49fbd468c96c3e8337d8ecdf672525cc9436fc3f7089214e3475"
+  }
+ }
+}

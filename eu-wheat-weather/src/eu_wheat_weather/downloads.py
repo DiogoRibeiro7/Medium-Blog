@@ -1,4 +1,5 @@
-"""Large inputs that are not committed: E-OBS grids and GISCO boundaries.
+"""Large inputs that are not committed: E-OBS grids, GISCO boundaries and the MIRCA-OS
+map of maize.
 
 Each download records its URL, size and SHA-256 in a manifest that is committed, so a
 local copy can be checked against the files the study used.
@@ -8,6 +9,10 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
+import shutil
+import subprocess
+import tempfile
 import urllib.request
 from datetime import UTC, datetime
 from pathlib import Path
@@ -21,10 +26,17 @@ from eu_wheat_weather.contract import (
     EOBS_FILES,
     EOBS_VERSION,
     GISCO_BASE,
+    IRRIGATION_FILTERS,
     MAIZE_CALENDAR_FILE,
+    MIRCA_ARCHIVE,
+    MIRCA_LAYERS,
+    MIRCA_MEMBER_DIR,
+    MIRCA_URL,
+    MIRCA_VERSION,
     NUTS_VERSIONS,
     DataError,
     gisco_file,
+    irrigation_url,
 )
 
 CHUNK = 1 << 20
@@ -98,6 +110,54 @@ def fetch_calendar(directory: Path) -> dict[str, Any]:
                      "CC BY 4.0. Jägermeyr, J., et al. (2021), Climate impacts on global "
                      "agriculture emerge earlier in new generation of climate and crop "
                      "models, Nature Food 2, 873-885; data doi:10.5281/zenodo.5062513")
+
+
+def _bsdtar() -> str:
+    """A tar that reads RAR archives: bsdtar, which Windows ships as its own tar.exe."""
+    candidates = [shutil.which("bsdtar"),
+                  str(Path(os.environ.get("SystemRoot", r"C:\Windows")) / "System32" / "tar.exe"),
+                  shutil.which("tar")]
+    for tar in candidates:
+        if tar and Path(tar).exists():
+            version = subprocess.run([tar, "--version"], capture_output=True, text=True,
+                                     check=False).stdout
+            if "bsdtar" in version:
+                return tar
+    raise DataError("Extracting the MIRCA-OS archive (RAR) needs bsdtar.")
+
+
+def fetch_mirca(directory: Path, manifest: Path) -> dict[str, Any]:
+    """Amendment A2's map of maize (section 10.1): the archive of annual grids, and its two
+    2015 maize layers, extracted. The manifest records all three files."""
+    document = fetch_all({MIRCA_ARCHIVE: MIRCA_URL}, directory, manifest,
+                         f"MIRCA-OS {MIRCA_VERSION}, annual harvested area grids; the 2015 "
+                         "5-arcminute layers of irrigated and rainfed maize are extracted. "
+                         "CC BY 4.0. Kebede, E. A., et al. (2025), A global open-source "
+                         "dataset of monthly irrigated and rainfed cropped areas (MIRCA-OS) "
+                         "for the 21st century, Scientific Data 12, 208; data "
+                         "doi:10.4211/hs.60a890eb841c460192c03bb590687145")
+    with tempfile.TemporaryDirectory(dir=directory) as tmp:
+        subprocess.run([_bsdtar(), "-xf", str(directory / MIRCA_ARCHIVE), "-C", tmp,
+                        *(MIRCA_MEMBER_DIR + name for name in MIRCA_LAYERS.values())],
+                       check=True)
+        for name in MIRCA_LAYERS.values():
+            (Path(tmp) / MIRCA_MEMBER_DIR / name).replace(directory / name)
+    for name in MIRCA_LAYERS.values():
+        path = directory / name
+        document["files"][name] = {"url": f"{MIRCA_ARCHIVE}: {MIRCA_MEMBER_DIR}{name}",
+                                   "bytes": path.stat().st_size, "sha256": file_sha256(path)}
+    manifest.write_text(json.dumps(document, indent=1) + "\n", encoding="utf-8", newline="\n")
+    return document
+
+
+def fetch_irrigation(directory: Path) -> dict[str, Any]:
+    """Section 10.3's check: Eurostat's irrigated and total grain maize area in 2023 for
+    Spain, Portugal, Italy and Greece, small enough to commit with its manifest."""
+    return fetch_all({f"{name}.json": irrigation_url(name) for name in IRRIGATION_FILTERS},
+                     directory, directory / "manifest.json",
+                     "Eurostat integrated farm statistics 2023: irrigated area by crop "
+                     "(ef_lus_irri, C1500T) and area by crop (ef_lus_allcrops, C1500), "
+                     "holdings above the survey threshold, ES, PT, IT and EL")
 
 
 def verify(directory: Path, manifest: Path) -> list[str]:

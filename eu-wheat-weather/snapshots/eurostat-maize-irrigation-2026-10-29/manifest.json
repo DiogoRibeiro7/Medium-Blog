@@ -1,0 +1,16 @@
+{
+ "description": "Eurostat integrated farm statistics 2023: irrigated area by crop (ef_lus_irri, C1500T) and area by crop (ef_lus_allcrops, C1500), holdings above the survey threshold, ES, PT, IT and EL",
+ "retrieved_utc": "2026-10-29T16:10:31Z",
+ "files": {
+  "ef_lus_irri.json": {
+   "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/ef_lus_irri?format=JSON&lang=EN&freq=A&statinfo=ABVTH&crops=C1500T&so_eur=TOTAL&uaarea=TOTAL&unit=HA&geo=ES&geo=PT&geo=IT&geo=EL&time=2023",
+   "bytes": 3988,
+   "sha256": "c23c6bb7db531fb5a60456467c11bbc0d7ebfd485376a5a4ec010f6894cbaf6d"
+  },
+  "ef_lus_allcrops.json": {
+   "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/ef_lus_allcrops?format=JSON&lang=EN&freq=A&statinfo=ABVTH&crops=C1500&so_eur=TOTAL&uaarea=TOTAL&unit=HA&geo=ES&geo=PT&geo=IT&geo=EL&time=2023",
+   "bytes": 3966,
+   "sha256": "4cb8b321e730de9ab01c988be32328501ff22df11486af761f77d351f253976d"
+  }
+ }
+}

@@ -32,6 +32,9 @@ from eu_wheat_weather.quality import (
     q3_carried_forward,
     q4_sums_disagree,
     q5_level_shifts,
+    q6_repeated_yields,
+    q7_join_breaks,
+    q8_other_codes_figures,
 )
 from eu_wheat_weather.regions import CodeMatch, Conflict, HarmonisedRow, harmonise
 
@@ -85,7 +88,12 @@ def _as_panel(h: HarmonisedRow) -> dict[str, str]:
 def build_panel(harmonised: Sequence[HarmonisedRow], published: Sequence[WheatRow],
                 matches: Sequence[CodeMatch],
                 weather: Mapping[tuple[str, int, str, str], Mapping[str, str]],
+                season: tuple[str, str] = SEASON, wider_rule: bool = False,
+                equivalent: Mapping[str, str] | None = None,
                 ) -> tuple[list[MaizeRow], list[Exclusion], list[Flag]]:
+    """The panel of section 9.1. Amendment A2 (section 10) can take the weather of another
+    weighting (``season`` is the window and weighting) and add Q6-Q8 after Q1-Q5;
+    ``equivalent`` gives Q8 the older parent codes that are a region under another name."""
     rows = [h for h in harmonised if FIRST_YEAR <= h.year <= LAST_YEAR]
     excluded: list[Exclusion] = []
     passing = []
@@ -101,12 +109,19 @@ def build_panel(harmonised: Sequence[HarmonisedRow], published: Sequence[WheatRo
              + q3_carried_forward(candidate, harmonised)
              + q4_sums_disagree(candidate, published, matches) + q5_level_shifts(candidate))
     flagged = {(f.geo, f.year) for f in flags}
+    if wider_rule:
+        after = [c for c in candidate if (c["geo"], int(c["year"])) not in flagged]
+        sources = {(h.geo, h.year): h.source for h in passing}
+        recoded = {m.code for m in matches if m.rule == "recode"}
+        flags += (q6_repeated_yields(after) + q7_join_breaks(after, sources, recoded)
+                  + q8_other_codes_figures(after, sources, published, matches, equivalent))
+        flagged = {(f.geo, f.year) for f in flags}
     kept: list[MaizeRow] = []
     for h in passing:
         if (h.geo, h.year) in flagged:
             excluded.append(Exclusion(h.geo, h.year, h.source, "data_rule", h.yield_t_ha))
             continue
-        w = weather.get((h.geo, h.year, *SEASON))
+        w = weather.get((h.geo, h.year, *season))
         if w is None or any(w[v] == "" for v in TERMS):
             excluded.append(Exclusion(h.geo, h.year, h.source, "weather_missing",
                                       h.yield_t_ha))

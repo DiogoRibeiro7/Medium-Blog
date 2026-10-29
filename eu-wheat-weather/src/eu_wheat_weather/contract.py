@@ -43,6 +43,35 @@ MAIZE_CALENDAR_FILE = f"mai_rf_ggcmi_crop_calendar_phase3_{CALENDAR_VERSION}.nc4
 CALENDAR_BASE = "https://zenodo.org/records/5062513/files/"
 CALENDAR_SNAPSHOT = f"snapshots/ggcmi-crop-calendar-{CALENDAR_VERSION}"
 
+# Amendment A2 (METHODS.md, section 10.1): the MIRCA-OS map of maize, 2015, 5 arcminutes.
+# CC BY 4.0; Kebede et al. (2025), doi:10.1038/s41597-024-04313-w; data
+# doi:10.4211/hs.60a890eb841c460192c03bb590687145.
+MIRCA_VERSION = "v0.1"
+MIRCA_ARCHIVE = "Annual_Harvested_Area_Grids.rar"
+MIRCA_URL = ("https://www.hydroshare.org/resource/60a890eb841c460192c03bb590687145/data/"
+             "contents/Annual%20Harvested%20Area%20Grids/" + MIRCA_ARCHIVE)
+MIRCA_MEMBER_DIR = "Annual Harvested Area Grids/2015/5-arcminute/"
+MIRCA_LAYERS: dict[str, str] = {"irrigated": "MIRCA-OS_Maize_2015_ir.tif",
+                                "rainfed": "MIRCA-OS_Maize_2015_rf.tif"}
+MIRCA_MANIFEST = f"snapshots/mirca-os-{MIRCA_VERSION}.json"
+# Section 10.3's check: Eurostat's irrigated and total grain maize in 2023, holdings above
+# the survey threshold (the only level published for all four countries).
+IRRIGATION_COUNTRIES: tuple[str, ...] = ("ES", "PT", "IT", "EL")
+IRRIGATION_FILTERS: dict[str, dict[str, str]] = {
+    "ef_lus_irri": {"freq": "A", "statinfo": "ABVTH", "crops": "C1500T", "so_eur": "TOTAL",
+                    "uaarea": "TOTAL", "unit": "HA"},
+    "ef_lus_allcrops": {"freq": "A", "statinfo": "ABVTH", "crops": "C1500", "so_eur": "TOTAL",
+                        "uaarea": "TOTAL", "unit": "HA"},
+}
+IRRIGATION_SNAPSHOT = "snapshots/eurostat-maize-irrigation-2026-10-29"
+
+
+def irrigation_url(dataset: str) -> str:
+    query = "&".join([*(f"{k}={v}" for k, v in IRRIGATION_FILTERS[dataset].items()),
+                      *(f"geo={g}" for g in IRRIGATION_COUNTRIES), "time=2023"])
+    return ("https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/"
+            f"{dataset}?format=JSON&lang=EN&{query}")
+
 
 def gisco_file(version: int) -> str:
     return f"NUTS_RG_03M_{version}_4326_LEVL_2.geojson"

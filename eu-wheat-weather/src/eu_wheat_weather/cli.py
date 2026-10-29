@@ -12,7 +12,9 @@ from eu_wheat_weather.contract import (
     CALENDAR_FILE,
     CALENDAR_SNAPSHOT,
     CROP_NAMES,
+    IRRIGATION_SNAPSHOT,
     MAIZE_CALENDAR_FILE,
+    MIRCA_MANIFEST,
     DataError,
 )
 
@@ -95,6 +97,42 @@ def build_parser() -> argparse.ArgumentParser:
                            help="Wheat under Amendment A1, shown beside maize")
     maize_est.add_argument("--output-dir", type=Path, default=Path("docs/maize/results"))
     maize_est.add_argument("--report", type=Path, default=Path("docs/MAIZE.md"))
+    mirca = commands.add_parser(
+        "fetch-mirca", help="Download the MIRCA-OS annual grids and extract the 2015 maize "
+        "layers (Amendment A2, section 10.1)")
+    mirca.add_argument("--output-dir", type=Path, default=Path("data/mirca"))
+    mirca.add_argument("--manifest", type=Path, default=Path(MIRCA_MANIFEST))
+    irrigation = commands.add_parser(
+        "fetch-irrigation", help="Download Eurostat's irrigated and total grain maize, 2023, "
+        "for the check of Amendment A2 (section 10.3)")
+    irrigation.add_argument("--output-dir", type=Path, default=Path(IRRIGATION_SNAPSHOT))
+    a2_weather = commands.add_parser(
+        "maize-a2-weather", help="Aggregate E-OBS over each region's maize season under the "
+        "three weightings of Amendment A2, and each region's maize on the map")
+    a2_weather.add_argument("--eobs-dir", type=Path, default=Path("data/eobs"))
+    a2_weather.add_argument("--boundaries-dir", type=Path, default=Path("data/boundaries"))
+    a2_weather.add_argument("--mirca-dir", type=Path, default=Path("data/mirca"))
+    a2_weather.add_argument("--seasons", type=Path, default=Path("docs/maize/season.csv"))
+    a2_weather.add_argument("--output", type=Path,
+                            default=Path("docs/maize/amendment/weather.csv"))
+    a2_weather.add_argument("--map", type=Path,
+                            default=Path("docs/maize/amendment/maize_map.csv"))
+    maize_amend = commands.add_parser(
+        "maize-amend", help="Compute Amendment A2 to the maize study (METHODS.md, section 10) "
+        "and write its report, beside the registered results")
+    maize_amend.add_argument("--crops", type=Path, required=True)
+    maize_amend.add_argument("--region-map", type=Path,
+                             default=Path("docs/maize/region_map.csv"))
+    maize_amend.add_argument("--nuts-changes", type=Path, default=Path(
+        "snapshots/nuts-changes-2026-10-23/processed/changes_nuts2.csv"))
+    maize_amend.add_argument("--weather", type=Path,
+                             default=Path("docs/maize/amendment/weather.csv"))
+    maize_amend.add_argument("--map", type=Path,
+                             default=Path("docs/maize/amendment/maize_map.csv"))
+    maize_amend.add_argument("--irrigation", type=Path, default=Path(IRRIGATION_SNAPSHOT))
+    maize_amend.add_argument("--registered-dir", type=Path, default=Path("docs/maize"))
+    maize_amend.add_argument("--output-dir", type=Path, default=Path("docs/maize/amendment"))
+    maize_amend.add_argument("--report", type=Path, default=Path("docs/MAIZE_AMENDMENT.md"))
     calendar = commands.add_parser(
         "fetch-calendar", help="Download the GGCMI crop calendar (rainfed winter wheat) and "
         "freeze it as a snapshot (Amendment A1)")
@@ -244,6 +282,57 @@ def main(argv: Sequence[str] | None = None) -> int:
             maize_analysis.write_results(results, wheat, args.output_dir, args.report, command)
             print(json.dumps({k: v["verdict"] for k, v in results["decisions"].items()}))
             print(f"placebo significant under both methods: "
+                  f"{results['E5']['significant_both']}")
+        elif args.command == "fetch-mirca":
+            from eu_wheat_weather.downloads import fetch_mirca
+
+            document = fetch_mirca(args.output_dir, args.manifest)
+            print(f"{len(document['files'])} files; manifest in {args.manifest}")
+        elif args.command == "fetch-irrigation":
+            from eu_wheat_weather.downloads import fetch_irrigation
+
+            document = fetch_irrigation(args.output_dir)
+            print(f"{len(document['files'])} files; manifest in {args.output_dir}")
+        elif args.command == "maize-a2-weather":
+            from eu_wheat_weather import maize_map
+            from eu_wheat_weather.contract import LAST_YEAR, MIRCA_LAYERS
+            from eu_wheat_weather.downloads import verify
+            from eu_wheat_weather.maize import FIRST_YEAR as MAIZE_FIRST_YEAR
+            from eu_wheat_weather.maize import read_seasons
+            from eu_wheat_weather.regions import load_all, target_regions
+            from eu_wheat_weather.weather import MAIZE_COLUMNS, write_table
+
+            checked = verify(args.mirca_dir, Path(MIRCA_MANIFEST))
+            if not set(MIRCA_LAYERS.values()) <= set(checked):
+                raise DataError(f"The MIRCA-OS maize layers are missing from {args.mirca_dir}.")
+            rows, regions_map = maize_map.build_weather(
+                args.eobs_dir, target_regions(load_all(args.boundaries_dir)),
+                range(MAIZE_FIRST_YEAR, LAST_YEAR + 1), read_seasons(args.seasons),
+                *(maize_map.read_layer(args.mirca_dir / MIRCA_LAYERS[k])
+                  for k in ("irrigated", "rainfed")))
+            write_table(rows, args.output, MAIZE_COLUMNS)
+            maize_map.write_map(regions_map, args.map)
+            print(f"{len(rows)} region-window rows written to {args.output}")
+        elif args.command == "maize-amend":
+            from eu_wheat_weather import maize_amendment
+
+            command = (f"poetry run eu-wheat maize-amend --crops {args.crops.as_posix()} "
+                       f"--region-map {args.region_map.as_posix()} --nuts-changes "
+                       f"{args.nuts_changes.as_posix()} --weather {args.weather.as_posix()} "
+                       f"--map {args.map.as_posix()} --irrigation {args.irrigation.as_posix()} "
+                       f"--registered-dir {args.registered_dir.as_posix()} --output-dir "
+                       f"{args.output_dir.as_posix()} --report {args.report.as_posix()}")
+            inputs = maize_amendment.load_inputs(args.crops, args.region_map,
+                                                 args.nuts_changes, args.weather)
+            reg = args.registered_dir
+            results = maize_amendment.run(inputs, args.map, args.irrigation, reg / "panel.csv",
+                                          reg / "weather.csv")
+            registered = json.loads((reg / "results" / "results.json").read_text(
+                encoding="utf-8"))
+            maize_amendment.write_results(results, registered, args.output_dir, args.report,
+                                          command)
+            print(json.dumps({k: v["verdict"] for k, v in results["decisions"].items()}))
+            print(f"amended placebo significant under both methods: "
                   f"{results['E5']['significant_both']}")
         elif args.command == "fetch-calendar":
             from eu_wheat_weather.downloads import fetch_calendar
