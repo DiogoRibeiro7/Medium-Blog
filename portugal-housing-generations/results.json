@@ -1,0 +1,36 @@
+{
+  "source_url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/prc_hpi_a?geo=PT&purchase=TOTAL&unit=I15_A_AVG",
+  "source_updated": "2026-10-01T11:00:00+0200",
+  "yearly_hpi": {
+    "2008": 107.53,
+    "2009": 106.54,
+    "2010": 107.36,
+    "2011": 102.09,
+    "2012": 94.87,
+    "2013": 93.09,
+    "2014": 97.04,
+    "2015": 100.0,
+    "2016": 107.12,
+    "2017": 117.02,
+    "2018": 129.03,
+    "2019": 141.88,
+    "2020": 154.33,
+    "2021": 168.84,
+    "2022": 190.17,
+    "2023": 205.76,
+    "2024": 224.44,
+    "2025": 263.85
+  },
+  "descriptives": {
+    "hpi_2015": 100.0,
+    "hpi_2024": 224.44,
+    "hpi_2025": 263.85,
+    "growth_2015_2025_pct": 163.85,
+    "growth_2024_2025_pct": 17.56,
+    "owner_1977_1986_pct": 61,
+    "owner_1987_1996_pct": 42,
+    "owner_gap_percentage_points": -19,
+    "vacant_dwellings_2021_pct": 12,
+    "secondary_dwellings_2021_pct": 19
+  }
+}
