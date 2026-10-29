@@ -1,10 +1,10 @@
 """Figures for the article on job duration by age at hire.
 
-fig1_survival_from_hire.png   Share of hires still with the employer, by age at start, under both published estimands
-fig2_two_estimands.png        The 2019-2021 break in the published table, and what averaging per worker does by itself
-fig3_stock_vs_flow.png        Median tenure of current jobs (stock) against the median duration of new hires (flow)
-fig4_restricted_mean.png      Expected years with the employer within H years of the hire, with worst and best cases
-fig5_hires_per_seat.png       Hires needed to keep one position filled for H years, by age at hire
+fig1_two_estimands.png        The 2019-2021 break in the published table, and what averaging per worker does by itself
+fig2_survival_from_hire.png   Share of hires still with the employer, by age at start, under both published estimands
+fig3_restricted_mean.png      Expected years with the employer within H years of the hire, with worst cases
+fig4_hires_per_seat.png       Hires needed to keep one position filled for H years, by age at hire
+fig5_stock_vs_flow.png        Median tenure of current jobs (stock) against the median duration of new hires (flow)
 
 Run after tenure_numbers.py (which writes results/model.npz):  python figures.py
 """
@@ -104,7 +104,7 @@ fig.suptitle("Share of new jobs that last at least t years, by age at the start 
 source(fig, "Data: BLS, NLSY79 (cohort born 1957-64), Table 2 of the 2019 and 2025 releases. Points are published cells; "
             "lines are constant hazards between them. Diogo Ribeiro.")
 fig.tight_layout(rect=(0, 0.04, 1, 0.95))
-fig.savefig(OUT / "fig1_survival_from_hire.png", dpi=200)
+fig.savefig(OUT / "fig2_survival_from_hire.png", dpi=200)
 plt.close(fig)
 
 
@@ -159,7 +159,7 @@ fig.suptitle("Same cohort, same jobs, two statistics: the drop between releases 
 source(fig, "Data: BLS, NLSY79 Table 2, releases 2017-2025. Right panel: career model calibrated to the pooled cells, "
             "frailty variance 0.001, then averaged per worker. Diogo Ribeiro.")
 fig.tight_layout(rect=(0, 0.04, 1, 0.95))
-fig.savefig(OUT / "fig2_two_estimands.png", dpi=200)
+fig.savefig(OUT / "fig1_two_estimands.png", dpi=200)
 plt.close(fig)
 
 
@@ -189,7 +189,7 @@ ax.legend(loc="upper left", fontsize=8.3)
 ax.set_title("What a cross-section of current jobs shows, and what a new hire does")
 source(fig, "Data: BLS Employee Tenure in 2026 (Table 1); career model calibrated to NLSY79 Table 2. Diogo Ribeiro.")
 fig.tight_layout(rect=(0, 0.04, 1, 1))
-fig.savefig(OUT / "fig3_stock_vs_flow.png", dpi=200)
+fig.savefig(OUT / "fig5_stock_vs_flow.png", dpi=200)
 plt.close(fig)
 
 
@@ -230,7 +230,7 @@ handles = [plt.Line2D([], [], color=INK2, lw=2.2, label="published cells, consta
 ax.legend(handles=handles, loc="upper left", fontsize=8.2)
 source(fig, "Data: BLS, NLSY79 Table 2, 2025 release. Diogo Ribeiro.")
 fig.tight_layout(rect=(0, 0.04, 1, 1))
-fig.savefig(OUT / "fig4_restricted_mean.png", dpi=200)
+fig.savefig(OUT / "fig3_restricted_mean.png", dpi=200)
 plt.close(fig)
 
 
@@ -254,7 +254,7 @@ ax.set_ylabel("Expected number of hires")
 ax.set_title("Hires needed to keep one position filled, if every replacement is hired at the same age")
 source(fig, "Career model calibrated to BLS NLSY79 Table 2 (hire-weighted durations, followed to retirement). Diogo Ribeiro.")
 fig.tight_layout(rect=(0, 0.04, 1, 1))
-fig.savefig(OUT / "fig5_hires_per_seat.png", dpi=200)
+fig.savefig(OUT / "fig4_hires_per_seat.png", dpi=200)
 plt.close(fig)
 
 print("wrote", ", ".join(sorted(p.name for p in OUT.glob("fig*.png"))))
