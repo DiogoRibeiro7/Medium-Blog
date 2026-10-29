@@ -210,20 +210,70 @@ def descriptive(t: Table, d: Derived, spanish: BoolArray) -> dict[str, Any]:
                  if finite.any() else 0.0}}
 
 
-def post_hoc(b: Bootstrap, t: Table, spanish: BoolArray) -> dict[str, Any]:
-    """Added after the results were seen (METHODS.md, change log); descriptive, 95%."""
+BANDS = (0, 10, 20, 40, 60, 80, 120, np.inf)     # EUR/MWh, for the zero floor (review)
+
+
+def line_full(t: Table, d: Derived) -> FloatArray:
+    """Per row: 1 if the France line had no free capacity in the direction of the flow,
+    0 if it had room, NaN outside the Spanish or joint zone or with no flow (review)."""
+    rows = {(r["date"], r["period"], r["zone"]): r for r in d.periods}
+    out = np.full(len(t.rows), np.nan)
+    for i, x in enumerate(t.rows):
+        r = rows[(x["date"], x["period"], x["zone"])]
+        if x["zone"] in SPANISH:
+            side = ("import" if float(r["imports_fr"]) > 0
+                    else "export" if float(r["exports_fr"]) > 0 else None)
+            if side is not None and r[f"fr_{side}_free"] != "":
+                out[i] = float(float(r[f"fr_{side}_free"]) == 0)
+    return out
+
+
+def post_hoc(b: Bootstrap, t: Table, d: Derived, spanish: BoolArray) -> dict[str, Any]:
+    """Added after the results were seen, and after the critical review (METHODS.md,
+    change log; docs/REVIEW.md); descriptive, 95%."""
     m = t.nearest(f"M{E3_MW}")
     midday = np.isin(t.hour, list(MIDDAY_HOURS))
     nonpositive = spanish & (t.price <= 0)
+    positive = spanish & (t.price > 0)
     lo, hi = t.interval(f"M{E3_MW}")
+    new_price = np.round(t.price + 100 * m)               # cents, exact
+    band = np.digitize(t.price / 100, BANDS[1:-1], right=True)
+    full = line_full(t, d)
+    delta = t.nearest("X")
     return {
+        # after the results
         "nonpositive": {
             name: {"periods": int((spanish & mask).sum()),
                    "count": int((nonpositive & mask).sum())}
             for name, mask in (("midday", midday), ("outside", ~midday))},
         "nonpositive_max_abs_m": float(np.max(np.abs(m[nonpositive]), initial=0.0)),
-        "positive": _gap(b, t, m, spanish & (t.price > 0), LEVEL),
-        "midpoint_wide": int(((hi > lo) & spanish).sum())}
+        "positive": _gap(b, t, m, positive, LEVEL),
+        "midpoint_wide": int(((hi > lo) & spanish).sum()),
+        # after the review
+        "floor": {
+            "above_price": int((positive & (np.abs(m) * 100 > t.price + 1e-6)).sum()),
+            "below_zero": int((positive & (new_price < 0)).sum()),
+            **{name: {"positive": int((positive & mask).sum()),
+                      "binding": int((positive & mask & (new_price == 0)).sum()),
+                      "median_price": float(np.median(t.price[positive & mask]) / 100)}
+               for name, mask in (("midday", midday), ("outside", ~midday))},
+            "bands": [{"low": BANDS[k], "high": BANDS[k + 1],
+                       **{name: {"periods": int((positive & mask & (band == k)).sum()),
+                                 "mean_abs": float(np.mean(np.abs(m[positive & mask
+                                                                    & (band == k)])))}
+                          for name, mask in (("midday", midday), ("outside", ~midday))}}
+                      for k in range(len(BANDS) - 1)]},
+        "line": {
+            "with_room": int((full == 0).sum()), "periods": int((~np.isnan(full)).sum()),
+            **{name: {"delta": _mean(b, t, delta, spanish & (full == state), LEVEL),
+                      "m": _mean(b, t, m, spanish & (full == state), LEVEL)}
+               for name, state in (("full", 1), ("room", 0))}},
+        "blocks": {name: {**_mean(b, t, t.nearest(p), spanish, LEVEL),
+                          "down": int(((t.nearest(p) < -MOVED - 1e-9) & spanish).sum())}
+                   for name, p in (("c01_only", "X_c01"), ("dedup", "X_blocks_dedup"),
+                                   ("all_dedup", "X_dedup"))},
+        "zones": {name: _mean(b, t, delta, t.zone == z, LEVEL)
+                  for name, z in (("joint", "MI"), ("split", "ES"))}}
 
 
 def estimate(rows: list[dict[str, str]], d: Derived, solver: dict[str, Any]) -> dict[str, Any]:
@@ -235,7 +285,8 @@ def estimate(rows: list[dict[str, str]], d: Derived, solver: dict[str, Any]) -> 
                 "simultaneous_level": SIMULTANEOUS_LEVEL},
             "solver": solver, "E1": e1(b, t), "E2": e2(b, t, spanish),
             "E3": e3(b, t, spanish), "E4": e4(b, t, spanish),
-            "descriptive": descriptive(t, d, spanish), "post_hoc": post_hoc(b, t, spanish)}
+            "descriptive": descriptive(t, d, spanish),
+            "post_hoc": post_hoc(b, t, d, spanish)}
 
 
 def write(results: dict[str, Any], path: Path) -> None:
@@ -269,9 +320,10 @@ def render(r: dict[str, Any], command: str) -> str:
         f"{d['zone_periods']:,} zone-periods, since {d['split']:,} periods split into Spain "
         "and Portugal.",
         f"- **Intervals:** percentile bootstrap over days, {r['bootstrap']['draws']:,} "
-        f"resamples, seed {r['bootstrap']['seed']}. Q2 and Q3 decide something, and their "
-        f"intervals are simultaneous ({r['bootstrap']['simultaneous_level']:.1%} each, "
-        f"Bonferroni); the others are {r['bootstrap']['level']:.0%}.", "",
+        f"resamples, seed {r['bootstrap']['seed']}. Every interval of E2 and E3, including "
+        f"their breakdowns and hourly means, is at {r['bootstrap']['simultaneous_level']:.1%}"
+        " (Bonferroni over the two questions, not over the hours); the others are "
+        f"{r['bootstrap']['level']:.0%}. E1's decision uses its estimate.", "",
         "## The decisions", "",
         "| Estimand | Registered rule | Estimate [interval] | Outcome |",
         "| --- | --- | --- | --- |",
@@ -293,14 +345,23 @@ def render(r: dict[str, Any], command: str) -> str:
         f"- **E2, no direction and δ = 0 in most periods:** "
         f"{'borne out' if e2_held else 'not borne out'}; the mean of δ is "
         f"{_ci(e2_['all']['mean'])} and |δ| > 0.01 in {moved:.1%} of periods.",
-        f"- **E3, G > 0:** {'borne out' if e3_['midday_smaller'] else 'not borne out'}; the "
-        "section after the results shows where G comes from."]
+        f"- **E3, G > 0:** {'borne out' if e3_['midday_smaller'] else 'not borne out'} for "
+        "its sign; the section after the results examines the reason the plan gave."]
     misses = e1_["misses"]
     lines += [
         "", "## E1: the price as a dual (Q1)", "",
         f"The published price π lies in the dual interval Λ_R of the realised programme, "
         f"widened by {E1_TOLERANCE} EUR/MWh at each end, in {_pct(e1_['share'])} of "
-        "zone-periods.", "",
+        "zone-periods."
+        + (" With every zone-period inside, the bootstrap interval is degenerate and "
+           "carries no information." if e1_["misses"]["count"] == 0 else ""), "",
+        "EUPHEMIA, the algorithm that clears the market, must accept every in-the-money "
+        "period order in full and reject every out-of-the-money one, and it validates its "
+        "solutions by complementary slackness for its selection of block and complex orders "
+        "(EUPHEMIA Public Description, 18 December 2025, sections 5.1 and 8.2). `LP_R` fixes "
+        "that selection, so E1 checks that OMIE's public files and this reconstruction agree; "
+        "it can fail only through an error in the data or the code ([REVIEW.md](REVIEW.md), "
+        "finding M1).", "",
         "| Zone | Zone-periods | π in Λ_R |", "| --- | ---: | ---: |",
         *(f"| {name} | {e1_['by_zone'][z]['zone_periods']:,} | "
           f"{e1_['by_zone'][z]['inside']:,} |" for z, name in ZONES.items()), "",
@@ -330,6 +391,11 @@ def render(r: dict[str, Any], command: str) -> str:
         x = e2_[key]
         lines.append(f"| {name} | {_ci(x['mean'])} | {_pct(x['moved'])} | "
                      f"{_ci(x['mean_abs'], '{:.2f}')} | {x['up']:,} | {x['down']:,} |")
+    lines += [
+        "", "The rows are not additive. The blocks-only row treats the alternatives of an "
+        "exclusive group as additive supply, and every relaxation drops the scalable complex "
+        "orders' fixed terms and keeps the France flows fixed, so each |δ| is an upper bound "
+        "for its kind of relaxation; see the section after the results."]
     lines += [
         "", "## E3: the merit-order effect (Q3)", "",
         f"m = the price of `LP_R` with one more sell step of {E3_MW:,} MW at 0 EUR/MWh, minus "
@@ -365,31 +431,66 @@ def render(r: dict[str, Any], command: str) -> str:
               + "."]
     ph = r["post_hoc"]
     mid, out, pos = ph["nonpositive"]["midday"], ph["nonpositive"]["outside"], ph["positive"]
-    g = pos["G"]
-    if g["low"] > 0:
-        conclusion = "so the effect is smaller at midday also when the price is positive."
-    elif g["high"] < 0:
-        conclusion = "so, when the price is positive, the effect is larger at midday."
-    else:
-        conclusion = ("so the registered G comes from the midday periods priced at or below "
-                      "zero; when the price is positive, no difference between midday and "
-                      "the other hours is established.")
+    fl, line, blocks, zones = ph["floor"], ph["line"], ph["blocks"], ph["zones"]
     zero = ("and m = 0 in every one of them" if ph["nonpositive_max_abs_m"] == 0
             else f"yet |m| reaches {ph['nonpositive_max_abs_m']:.2f} there")
+    both = [x for x in fl["bands"] if x["midday"]["periods"] and x["outside"]["periods"]]
+    larger = sum(1 for x in both if x["midday"]["mean_abs"] > x["outside"]["mean_abs"])
+
+    def band(x: dict[str, Any]) -> str:
+        name = (f"above {x['low']:g}" if x["high"] == np.inf
+                else f"({x['low']:g}, {x['high']:g}]")
+        return (f"| {name} | {x['midday']['mean_abs']:.2f} ({x['midday']['periods']:,}) | "
+                f"{x['outside']['mean_abs']:.2f} ({x['outside']['periods']:,}) |")
+
     lines += [
         "", "## After the results (descriptive, not registered)", "",
-        "Added after the results above had been seen ([METHODS.md](../METHODS.md), change "
-        "log). They change no decision. Intervals are 95%.", "",
-        f"- **Where G comes from.** π ≤ 0 in {mid['count']:,} of {mid['periods']:,} midday "
-        f"periods ({mid['count'] / mid['periods']:.1%}) and in {out['count']:,} of "
-        f"{out['periods']:,} others ({out['count'] / out['periods']:.1%}). A sell step at "
-        "0 EUR/MWh changes no step's position at prices below zero, so a price at or below "
-        f"zero that clears `LP_R` still clears it with the extra step, {zero}. Over the "
-        f"periods priced above zero, mean |m| is {_ci(pos['outside_abs'], '{:.2f}')} outside "
-        f"midday and {_ci(pos['midday_abs'], '{:.2f}')} at midday, a difference of "
-        f"{_ci(g)}; {conclusion}",
-        f"- **The midpoint rule.** E3's counterfactual interval is wider than a point in "
-        f"{ph['midpoint_wide']:,} of {d['periods']:,} periods; in the others the two rules "
-        "give the same price.",
+        "Added after the results above had been seen (*results*), or after the critical "
+        "review (*review*, [REVIEW.md](REVIEW.md)); see the change log of "
+        "[METHODS.md](../METHODS.md). They change no decision. Intervals are 95%.", "",
+        f"- **Where G comes from** (*results*). π ≤ 0 in {mid['count']:,} of "
+        f"{mid['periods']:,} midday periods ({mid['count'] / mid['periods']:.1%}) and in "
+        f"{out['count']:,} of {out['periods']:,} others "
+        f"({out['count'] / out['periods']:.1%}). A sell step at 0 EUR/MWh changes no step's "
+        "position at prices below zero, so a price at or below zero that clears `LP_R` "
+        f"still clears it with the extra step, {zero}.",
+        f"- **The zero floor binds at every price** (*review*). With the extra step, the "
+        f"price never falls below zero ({fl['below_zero']} exceptions), so |m| ≤ π in every "
+        f"period priced above zero ({fl['above_price']} exceptions). The floor binds "
+        f"exactly, with the new price at 0, in {fl['midday']['binding']:,} of "
+        f"{fl['midday']['positive']:,} positive midday periods and "
+        f"{fl['outside']['binding']:,} of {fl['outside']['positive']:,} others, and positive "
+        f"midday prices are lower: median {fl['midday']['median_price']:.2f} against "
+        f"{fl['outside']['median_price']:.2f}. So the comparison of the periods priced above "
+        f"zero, mean |m| {_ci(pos['outside_abs'], '{:.2f}')} outside midday against "
+        f"{_ci(pos['midday_abs'], '{:.2f}')} at midday (outside minus midday "
+        f"{_ci(pos['G'])}), mixes the floor with the slope of the supply curve and does not "
+        "test the slope.",
+        f"- **The reason the plan gave** (*review*). Within price bands, mean |m| is larger "
+        f"at midday in {larger} of {len(both)}. The plan's reason for G > 0, a flatter supply "
+        "curve at midday, gets no support; G comes from the periods at or below zero.", "",
+        "| π (EUR/MWh) | Mean \\|m\\| at midday (periods) | Mean \\|m\\| at other "
+        "hours (periods) |", "| --- | ---: | ---: |",
+        *(band(x) for x in fl["bands"]), "",
+        f"- **The France line** (*review*). The line had free capacity in the direction of "
+        f"the flow in {line['with_room']:,} of {line['periods']:,} periods "
+        f"({line['with_room'] / line['periods']:.1%}), where holding the flow fixed is a strong "
+        f"assumption. Mean δ: {_ci(line['full']['delta'])} with the line full, "
+        f"{_ci(line['room']['delta'])} with room. Mean m: {_ci(line['full']['m'])} and "
+        f"{_ci(line['room']['m'])}.",
+        "- **Exclusive blocks** (*review*). The curves do not say which exclusive blocks are "
+        "alternatives within one group. Two variants show how much of the blocks-only row "
+        "comes from counting them as additive supply; neither models a group exactly. With "
+        "the exclusive blocks deduplicated (of the steps with the same quantity in a period, "
+        f"only the cheapest), mean δ is {_ci(blocks['dedup'])}; with the exclusive blocks "
+        f"not relaxed, {_ci(blocks['c01_only'])}. With every order relaxed and the exclusive "
+        f"blocks deduplicated, {_ci(blocks['all_dedup'])}.",
+        f"- **Joint and split periods** (*review*). Mean δ is {_ci(zones['joint'])} in joint "
+        f"periods, where the relaxation acts on the whole Iberian market, and "
+        f"{_ci(zones['split'])} in Spain in split periods, where Portugal's orders and the "
+        "flow between the two stay fixed.",
+        f"- **The midpoint rule** (*results*). E3's counterfactual interval is wider than a "
+        f"point in {ph['midpoint_wide']:,} of {d['periods']:,} periods; in the others the "
+        "two rules give the same price.",
         "", "## Reproduce", "", "```", "iberian-lp programmes", command, "```", ""]
     return "\n".join(lines)

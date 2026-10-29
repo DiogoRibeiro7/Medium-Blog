@@ -104,6 +104,12 @@ def values(root: Path) -> dict[str, str]:
     sell = {k: sum(float(r[f"offered_sell_{k}"]) for r in d.periods) for k in
             (SIMPLE, *NON_CONVEX)}
     mid, out = ph["nonpositive"]["midday"], ph["nonpositive"]["outside"]
+    bands = [b for b in ph["floor"]["bands"]
+             if b["midday"]["periods"] and b["outside"]["periods"]]
+    line = ph["line"]
+    spanish_price = t.price[np.isin(t.zone, SPANISH)] / 100
+    split_differ = sum(1 for r in d.periods
+                       if r["zone"] == "ES" and r["price_pt"] != r["price_es"])
     v: dict[str, str] = {
         "n_days": str(e["days"]), "days_per_month": word(DAYS_PER_MONTH),
         "first_day": day_text(FIRST_DAY), "last_day": day_text(LAST_DAY),
@@ -112,6 +118,7 @@ def values(root: Path) -> dict[str, str]:
         "scipy_version": e["solver"]["versions"]["scipy"],
         "n_split": f"{desc['split']:,}", "split_pct": pct(desc["split"] / desc["periods"]),
         "split_days": str(s["split_days"]),
+        "split_differ": f"{split_differ:,}",
         "steps_median": f"{desc['steps_median']:,.0f}",
         "steps_summed": f"{desc['steps_summed_median']:,.0f}",
         "nc_offered_pct": pct(sum(sell[k] for k in NON_CONVEX) / sum(sell.values()), 0),
@@ -127,6 +134,15 @@ def values(root: Path) -> dict[str, str]:
         "e2_down": f"{e2['all']['down']:,}", "e2_up": f"{e2['all']['up']:,}",
         "e2_drop": size(e2["all"]["mean"]["estimate"]),
         "e2_blocks_up": f"{e2['blocks']['up']:,}", "e2_blocks_down": f"{e2['blocks']['down']:,}",
+        "line_room_pct": pct(line["with_room"] / line["periods"], 0),
+        "line_full_drop": size(line["full"]["delta"]["estimate"]),
+        "line_room_delta": eur(line["room"]["delta"]["estimate"]),
+        "joint_delta": eur(ph["zones"]["joint"]["estimate"]),
+        "split_delta": eur(ph["zones"]["split"]["estimate"]),
+        "blocks_c01": eur(ph["blocks"]["c01_only"]["estimate"]),
+        "mean_price": f"{float(np.mean(spanish_price)):.2f}",
+        "e2_share_of_price": pct(abs(e2["all"]["mean"]["estimate"])
+                                 / float(np.mean(spanish_price)), 0),
         # E3
         "e3_mw": f"{E3_MW:,}", "e3_drop": size(e3["mean"]["estimate"]),
         "midday_from": f"{MIDDAY_HOURS[0] - 1}:00", "midday_to": f"{MIDDAY_HOURS[-1]}:00",
@@ -134,18 +150,21 @@ def values(root: Path) -> dict[str, str]:
         "e3_midday_abs": f"{e3['midday_abs']['estimate']:.2f}",
         "nonpos_midday_pct": pct(mid["count"] / mid["periods"], 0),
         "nonpos_other_pct": pct(out["count"] / out["periods"], 0),
-        "pos_outside_abs": f"{ph['positive']['outside_abs']['estimate']:.2f}",
-        "pos_midday_abs": f"{ph['positive']['midday_abs']['estimate']:.2f}",
+        "pos_midday_median": f"{ph['floor']['midday']['median_price']:.2f}",
+        "pos_outside_median": f"{ph['floor']['outside']['median_price']:.2f}",
+        "bands_larger": word(sum(1 for b in bands if b["midday"]["mean_abs"]
+                                 > b["outside"]["mean_abs"])),
+        "bands_n": word(len(bands)),
         # E4
         "e4_imports_n": f"{e4['imports']['periods']:,}",
         "e4_exports_n": f"{e4['exports']['periods']:,}",
     }
     _put(v, "e2_mean", e2["all"]["mean"])
     _put(v, "e2_sco", e2["sco"]["mean"])
-    _put(v, "e2_blocks", e2["blocks"]["mean"])
+    v["e2_blocks"] = eur(e2["blocks"]["mean"]["estimate"])
+    _put(v, "line_full_delta", line["full"]["delta"])
     _put(v, "e3_mean", e3["mean"])
     _put(v, "e3_g", e3["G"])
-    _put(v, "pos_g", ph["positive"]["G"])
     small, large = E3_SENSITIVITY_MW
     v |= {"e3_small_mw": f"{small:,}", "e3_large_mw": f"{large:,}",
           "e3_small_drop": size(e3["sensitivity"][f"{small} MW"]["mean"]["estimate"]),

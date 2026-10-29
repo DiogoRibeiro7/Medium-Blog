@@ -1,22 +1,23 @@
 # The Iberian electricity price as a linear programme
 
 Is the Iberian day-ahead electricity price the dual value of a linear programme built from
-OMIE's public order books? How far do the market's indivisible orders move it, and how
+OMIE's public order books? How far do the market's non-convex orders move it, and how
 much would 1,000 MW more supply at zero price lower it? A registered study of one year of
 15-minute periods.
 
 **Status: plan registered ([METHODS.md](METHODS.md)); data built
 ([docs/DATA.md](docs/DATA.md)); programmes solved and estimates reported against the plan
 ([docs/RESULTS.md](docs/RESULTS.md)); the article generated from them
-([publication/article.md](publication/article.md)).** A critical review follows, in its own
-pull request.
+([publication/article.md](publication/article.md)); a critical review
+([docs/REVIEW.md](docs/REVIEW.md)), and the corrections it led to, logged in the plan's
+change log.**
 
 ## Running it
 
 ```bash
 pip install -e ".[dev]"
 python -m pytest -q          # offline, from the committed tables and results
-iberian-lp programmes        # about 12 minutes; writes results/programmes.csv
+iberian-lp programmes        # about 17 minutes; writes results/programmes.csv
 iberian-lp estimates         # writes results/estimates.json and docs/RESULTS.md
 iberian-lp publication       # writes publication/: the article, its values and figures
 ```

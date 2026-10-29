@@ -21,7 +21,7 @@ BLUE = "#2563a8"
 ORANGE = "#d97706"
 GRID = "#e4e7eb"
 SOURCE = "Data: OMIE (OMI-Polo Español, S.A.), omie.es. "
-RELAXATION_NAMES = {"all": "Every indivisible\norder", "sco": "Scalable complex\norders only",
+RELAXATION_NAMES = {"all": "Every non-convex\norder", "sco": "Scalable complex\norders only",
                     "blocks": "Block orders only"}
 
 
@@ -93,7 +93,7 @@ def curves(derived: Path, d: Derived, t: Table, e: dict[str, Any], path: Path) -
     fig, ax = plt.subplots(figsize=(7.5, 4.4))
     ax.stairs(*realised, baseline=None, color=BLUE, lw=2, label="Supply, realised programme")
     ax.stairs(*relaxed, baseline=None, color=ORANGE, lw=2, ls=(0, (4, 2)),
-              label="Supply, indivisible orders made divisible")
+              label="Supply, non-convex orders made divisible")
     ax.stairs(*demand, baseline=None, color=INK, lw=2, label="Demand")
     for y, text in ((price, f"published price {price:.2f}"),
                     (relaxed_price, f"relaxed price {relaxed_price:.2f}")):
@@ -110,11 +110,11 @@ def curves(derived: Path, d: Derived, t: Table, e: dict[str, Any], path: Path) -
     return _save(plt, fig, path, f"{day_text(date.fromisoformat(day))}, "
                  f"{hour - 1}:{15 * (quarter - 1):02d} to {hour - 1}:{15 * quarter:02d}, the "
                  "joint Iberian market.\nThe realised curve starts at the fixed supply: "
-                 "imports and the accepted indivisible orders.")
+                 "imports and the accepted non-convex orders.")
 
 
 def relaxation(t: Table, e: dict[str, Any], path: Path) -> Path:
-    """E2: the change in price from making the indivisible orders divisible, day by day."""
+    """E2: the change in price from making the non-convex orders divisible, day by day."""
     days = daily(t)
     plt = _pyplot()
     fig, ax = plt.subplots(figsize=(7.5, 3.4))
@@ -167,7 +167,7 @@ def hours(t: Table, e: dict[str, Any], path: Path) -> Path:
     bottom.set_xlim(0, 24)
     level = next(iter(by_hour.values()))["level"]
     return _save(plt, fig, path, f"Spanish or joint zone. Top: mean over quarter-hours with "
-                 f"{level:.1%} intervals. Shaded: the registered midday.")
+                 f"{level:.1%} intervals, one per hour. Shaded: the registered midday.")
 
 
 def draw_all(derived: Path, d: Derived, t: Table, e: dict[str, Any], out: Path) -> list[Path]:
