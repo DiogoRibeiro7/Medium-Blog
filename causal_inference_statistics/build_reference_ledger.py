@@ -8,7 +8,6 @@ may be marked verified. This script defaults to 'pending', never guesses.
 from __future__ import annotations
 
 import csv
-import hashlib
 import re
 from pathlib import Path
 
@@ -32,7 +31,12 @@ def canonical_id(reference: str) -> str:
     """Create a stable identifier based on the citation's bibliographic text."""
     normalized = re.sub(r"https?://\S+", "", reference)
     normalized = re.sub(r"\s+", " ", normalized).casefold().strip().rstrip(".")
-    return hashlib.sha256(normalized.encode("utf-8")).hexdigest()[:16]
+    # FNV-1a 64-bit provides deterministic IDs compatible with archived ledger.
+    value = 14695981039346656037
+    for byte in normalized.encode("utf-8"):
+        value ^= byte
+        value = (value * 1099511628211) & ((1 << 64) - 1)
+    return f"{value:016x}"
 
 
 def doi(reference: str) -> str:
