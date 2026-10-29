@@ -1,7 +1,8 @@
 """Command line: ``iberian-lp download`` fetches the drawn days' files from omie.es;
 ``iberian-lp data`` builds the derived tables and docs/DATA.md from them;
-``iberian-lp programmes`` solves every programme from the derived tables; and
-``iberian-lp estimates`` computes the estimands and docs/RESULTS.md."""
+``iberian-lp programmes`` solves every programme from the derived tables;
+``iberian-lp estimates`` computes the estimands and docs/RESULTS.md; and
+``iberian-lp publication`` writes the article from them."""
 
 from __future__ import annotations
 
@@ -33,7 +34,18 @@ def main(argv: list[str] | None = None) -> None:
     estimates.add_argument("--derived", type=Path, default=Path("data/derived"))
     estimates.add_argument("--results", type=Path, default=Path("results"))
     estimates.add_argument("--report", type=Path, default=Path("docs/RESULTS.md"))
+    publication = commands.add_parser("publication", help="Write the article, its values "
+                                      "and figures into publication/")
+    publication.add_argument("--root", type=Path, default=Path("."))
+    publication.add_argument("--no-figures", action="store_true")
     args = parser.parse_args(argv)
+
+    if args.command == "publication":
+        from iberian_lp.publication import write_publication
+
+        for name in write_publication(args.root, figures=not args.no_figures):
+            print(f"wrote {name}")
+        return
 
     if args.command == "download":
         from iberian_lp.contract import KINDS

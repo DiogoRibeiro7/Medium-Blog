@@ -251,3 +251,15 @@ Each reports its estimand beside the main one and changes no decision.
       to two decimals.
     - *Expectations.* Two lines comparing the expectations of section 6 with the outcomes.
   - **Not changed.** No rule, tolerance, estimand or decision.
+- **2026-10-29, the article: what it adds.**
+  - **Figures,** drawn from the committed results: one quarter-hour's bids as the two
+    programmes see them; the mean δ of each day for each relaxation; and the mean m by
+    hour, beside the share of quarter-hours priced at or below zero by hour. The last is
+    descriptive and was computed after the results.
+  - **Figure 1's quarter-hour.** First fixed as 20:00 to 20:15 on the first drawn day.
+    Drawn, it turned out far from typical: δ = −84.23 EUR/MWh, against a mean of −11.75. So
+    it was changed to the first drawn day's joint quarter-hour whose δ is nearest the mean
+    δ, a rule the caption states.
+  - **The order types** are described from the EUPHEMIA Public Description (18 December
+    2025), read for the article.
+  - **Not changed.** No result, rule or estimand.

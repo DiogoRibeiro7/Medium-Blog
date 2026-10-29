@@ -7,8 +7,9 @@ much would 1,000 MW more supply at zero price lower it? A registered study of on
 
 **Status: plan registered ([METHODS.md](METHODS.md)); data built
 ([docs/DATA.md](docs/DATA.md)); programmes solved and estimates reported against the plan
-([docs/RESULTS.md](docs/RESULTS.md)).** The article and a critical review follow, each in
-its own pull request.
+([docs/RESULTS.md](docs/RESULTS.md)); the article generated from them
+([publication/article.md](publication/article.md)).** A critical review follows, in its own
+pull request.
 
 ## Running it
 
@@ -17,7 +18,11 @@ pip install -e ".[dev]"
 python -m pytest -q          # offline, from the committed tables and results
 iberian-lp programmes        # about 12 minutes; writes results/programmes.csv
 iberian-lp estimates         # writes results/estimates.json and docs/RESULTS.md
+iberian-lp publication       # writes publication/: the article, its values and figures
 ```
+
+The article is filled from `publication/article.template.md` by code; the tests check that
+it quotes no number by hand and that each claim in its words holds in the results.
 
 Each programme's dual interval is computed exactly from the integer steps and checked
 against HiGHS. The tests re-solve every programme exactly from the committed steps, and
