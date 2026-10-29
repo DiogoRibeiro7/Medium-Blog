@@ -304,3 +304,11 @@ Each reports its estimand beside the main one and changes no decision.
       on it: neither variant models a group exactly.
     - *The article* says that the first half of the plan's midday reason (low prices)
       holds and the second (a flatter supply curve) gets no support.
+- **2026-10-29, the article's text rewritten.**
+  - **What changed.** `publication/article.template.md` was rewritten as continuous prose,
+    with a fuller account of the clearing programme, its dual interval, the non-convex
+    orders and what each computation holds fixed. Two values were added to the article
+    from the existing results: mean m with the France line full and with room (finding M3).
+    The claims test was updated to the new wording, with a check for each new qualitative
+    statement.
+  - **Not changed:** any result, rule, estimand, decision or figure.
