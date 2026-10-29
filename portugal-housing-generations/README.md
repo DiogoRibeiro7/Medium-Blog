@@ -39,6 +39,10 @@ historical values.
    population, not young people's earnings:
    https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/ilc_di03?geo=PT&age=TOTAL&sex=T&statinfo=MED_EI&unit=EUR
    Accessed 2026-10-29; dataset update timestamp preserved.
+5. Eurostat `ilc_di03` with identical filters but age `Y18-24` and `Y25-49`,
+   pinned as two additional JSON-stat source responses. The 25–49 bracket is
+   wider than millennials, and neither series isolates wage-earners or homebuyers.
+   Both are repeated age cross-sections, **not longitudinal birth cohorts**.
 
 ## Relative price/income index
 
@@ -53,6 +57,12 @@ income from an equivalised household survey population, not borrower income.
 The European Union Statistics on Income and Living Conditions income reference
 period and the index's calendar year may differ; nominal index comparisons are
 descriptive and should not be construed as an exact affordability measure.
+
+`results.json` also records this index separately for the Eurostat 18–24 and
+25–49 income groups, with each age group's own 2015 baseline. These index
+levels should **not** be used to compare absolute affordability across ages:
+the normalization erases their initial income levels, while housing needs,
+household sizes, wealth, and borrowing access vary by group.
 
 ## What the calculations support
 
