@@ -5,7 +5,7 @@
 participants in the file: 20293; aged 18 or over: 12391
 adults with at least one systolic reading: 11424; with all three: 10622
 strata: 29, PSUs: 62, jackknife replicates: 62
-weighted population represented (millions): 204.9
+weighted population represented (millions): 204.9; by all examined adults 229.1; share without three readings 0.106
 share of readings that are even numbers: 1.0000
 last digit of the first reading, shares of 0/2/4/6/8: 0.190 0.184 0.231 0.211 0.184
 largest |BPSysAve - mean of readings 2 and 3|: 0.000
@@ -43,9 +43,11 @@ first reading < 100: n 564, weighted share 0.055
 threshold 130: share at or above on reading 1 0.275 (SE 0.008); on the mean of 2-3 0.242 (SE 0.007)
    of those at or above on reading 1, below on the mean of 2-3: 0.188 (SE 0.009); of those below on reading 1, at or above on the mean of 2-3: 0.026 (SE 0.002)
    people moved down per person moved up: 2.79
+   with the population drift added back to the later mean: below 0.150, above 0.037, moved down per person moved up 1.53
 threshold 140: share at or above on reading 1 0.139 (SE 0.006); on the mean of 2-3 0.122 (SE 0.005)
    of those at or above on reading 1, below on the mean of 2-3: 0.230 (SE 0.014); of those below on reading 1, at or above on the mean of 2-3: 0.018 (SE 0.002)
    people moved down per person moved up: 2.11
+   with the population drift added back to the later mean: below 0.197, above 0.020, moved down per person moved up 1.56
 first reading at which drift and regression cancel (the line crosses zero): 108.1
 share with the mean of readings 2-3 at or above 140, by first reading (weighted):
    134: 0.12  136: 0.15  138: 0.28  140: 0.39  142: 0.55  144: 0.64  146: 0.79  148: 0.79  150: 0.84  152: 0.81  154: 0.90  156: 0.99  158: 0.97
@@ -77,11 +79,17 @@ within-sitting noise by level: SD of (reading 2 - reading 3)/sqrt(2) in bins of 
    160-300: n   393  noise SD 4.81
 by age group:
    18-39: n 3998, mean reading 1 114.59, SD 12.00, noise SD 3.40, slope 0.918, drift -0.65
-      selected at 140: n 124, share of the age group 0.027, first 149.27 -> 147.03; drift -0.65, regression -2.85, residual +1.26
+      slope if within-sitting noise were the only difference 0.920; variance of reading 1 minus reading 3 -2.5
+      selected at 140: n 124, share of the age group 0.027, first 149.27 -> 147.03; drift -0.65, regression -2.85, residual +1.26 (SE 0.31)
+      fall 2.24; fall net of drift 1.58; predicted later mean: own line 145.77, pooled line 145.75
    40-59: n 3339, mean reading 1 121.95, SD 16.61, noise SD 3.94, slope 0.915, drift -0.90
-      selected at 140: n 496, share of the age group 0.125, first 152.62 -> 149.50; drift -0.90, regression -2.61, residual +0.39
+      slope if within-sitting noise were the only difference 0.944; variance of reading 1 minus reading 3 12.6
+      selected at 140: n 496, share of the age group 0.125, first 152.62 -> 149.50; drift -0.90, regression -2.61, residual +0.39 (SE 0.24)
+      fall 3.12; fall net of drift 2.22; predicted later mean: own line 149.12, pooled line 148.81
    60-80: n 3285, mean reading 1 132.86, SD 19.77, noise SD 4.31, slope 0.917, drift -2.40
-      selected at 140: n 1214, share of the age group 0.338, first 154.56 -> 150.24; drift -2.40, regression -1.80, residual -0.12
+      slope if within-sitting noise were the only difference 0.952; variance of reading 1 minus reading 3 22.2
+      selected at 140: n 1214, share of the age group 0.338, first 154.56 -> 150.24; drift -2.40, regression -1.80, residual -0.12 (SE 0.09)
+      fall 4.31; fall net of drift 1.91; predicted later mean: own line 150.36, pooled line 150.59
 mean age of those at or above 140 on reading 1: 62.0; of all adults 46.3
 
 ==============================================================================
@@ -99,13 +107,16 @@ Muntner-based              (visit SD  8.69): selected on reading 1: slope 0.676,
                             selected on mean of 2-3: slope 0.731, 152.71 -> next visit 144.08, below 140 0.418
 day-to-day SD 12           (visit SD 12.30): selected on reading 1: slope 0.426, 153.52 -> next visit 134.14, below 140 0.647
                             selected on mean of 2-3: slope 0.461, 152.71 -> next visit 135.40, below 140 0.619
-share at or above 130: one visit (mean of 2-3) 0.242; usual pressure, NRC rescaling within age-sex groups: Muntner-based 0.201, within-sitting noise only 0.227
+share at or above 130: one visit (mean of 2-3) 0.242; usual pressure, NRC rescaling within age-sex groups: Muntner-based 0.200, within-sitting noise only 0.227
 share at or above 140: one visit (mean of 2-3) 0.122; usual pressure, NRC rescaling within age-sex groups: Muntner-based 0.092, within-sitting noise only 0.113
 
 ==============================================================================
 5. Held-out check: the line from 2009-2010 predicts the selections of 2011-2012
 ==============================================================================
 2009-2010: n 5641, line 10.14 + 0.9028 x; 2011-2012: n 4981, slope 0.9254
+   2009-2010: drift -1.67 (SE 0.09), var1 - var3 +28.78 (SE 4.70), cov12 - cov23 +12.35 (SE 2.58)
+   2011-2012: drift -0.68 (SE 0.16), var1 - var3 +12.59 (SE 5.70), cov12 - cov23 +5.39 (SE 3.18)
+   2011-2012 minus 2009-2010: drift +0.98 (SE 0.18), var1 - var3 -16.19 (SE 7.39), cov12 - cov23 -6.95 (SE 4.10)
    2009-2010: mean reading 1 121.57, SD 17.48, drift to the mean of 2-3 -1.67, noise SD from readings 2-3 3.81, from readings 1-2 4.07, variance of reading 1 minus reading 3 28.8
    2011-2012: mean reading 1 122.02, SD 17.36, drift to the mean of 2-3 -0.68, noise SD from readings 2-3 3.88, from readings 1-2 3.99, variance of reading 1 minus reading 3 12.6
    top 1%     (n   71): first 190.36, observed 185.18, predicted 182.01; kept 0.934 vs 0.903
@@ -137,30 +148,31 @@ balls in play per plate appearance among regulars: 0.718; mean PA 511
 ==============================================================================
 7. Rookies and Rookie of the Year winners
 ==============================================================================
-Rookie of the Year awards 1955-2024 (without 2019 and 2020): 138; winners with 300+ PA in the award season: 101; of these with 130+ career AB before it: 1
-rookie seasons (300+ PA, under 130 AB before): 1473, winners among them 100
-mean age: rookies who did not win 24.03, winners 22.84
+awards (league-seasons) 136; shared awards: 1976 NL, 1979 AL
+Rookie of the Year winners 1955-2024 (without 2019 and 2020): 138; winners with 300+ PA in the award season: 101; of these with more than 130 career AB before it: 0
+rookie seasons (300+ PA, at most 130 AB before): 1482, winners among them 101
+mean age: rookies who did not win 24.05, winners 22.83
    share with 1+ PA the next season: non-winners 0.974, winners 1.000
-   share with 100+ PA the next season: non-winners 0.889, winners 1.000
-   share with 300+ PA the next season: non-winners 0.677, winners 0.920
-winners' raw OPS: rookie season 0.819, next season 0.777
-next-season PA >= 1: non-winners 1337, line -0.0346 + 0.599 d -0.0064 (age - 24) (slope SE 0.041)
-   winners (100): OPS deviation +0.0668 -> +0.0269; predicted +0.0129; difference +0.0140 (SE 0.0083)
-   top 10% of rookies by OPS (144, winners 0.292): +0.1271 -> +0.0474, line predicts +0.0470
-next-season PA >= 100: non-winners 1221, line -0.0248 + 0.564 d -0.0052 (age - 24) (slope SE 0.033)
-   winners (100): OPS deviation +0.0668 -> +0.0269; predicted +0.0190; difference +0.0079 (SE 0.0084)
-   top 10% of rookies by OPS (133, winners 0.308): +0.1302 -> +0.0542, line predicts +0.0536
-next-season PA >= 300: non-winners 930, line -0.0087 + 0.527 d -0.0038 (age - 24) (slope SE 0.033)
-   winners (92): OPS deviation +0.0675 -> +0.0385; predicted +0.0317; difference +0.0069 (SE 0.0076)
-   top 10% of rookies by OPS (103, winners 0.311): +0.1372 -> +0.0724, line predicts +0.0708
-winners' fall in OPS deviation: observed 0.0399, predicted 0.0478, share of the observed fall predicted 1.20
+   share with 100+ PA the next season: non-winners 0.890, winners 1.000
+   share with 300+ PA the next season: non-winners 0.678, winners 0.921
+winners' raw OPS: rookie season 0.820, next season 0.778
+next-season PA >= 1: non-winners 1345, line -0.0343 + 0.602 d -0.0063 (age - 24) (slope SE 0.040)
+   winners (101): OPS deviation +0.0668 -> +0.0280; predicted +0.0133; difference +0.0147 (SE 0.0083)
+   top 10% of rookies by OPS (145, winners 0.290): +0.1270 -> +0.0472, line predicts +0.0474
+next-season PA >= 100: non-winners 1229, line -0.0245 + 0.566 d -0.0052 (age - 24) (slope SE 0.032)
+   winners (101): OPS deviation +0.0668 -> +0.0280; predicted +0.0193; difference +0.0087 (SE 0.0084)
+   top 10% of rookies by OPS (133, winners 0.308): +0.1304 -> +0.0547, line predicts +0.0542
+next-season PA >= 300: non-winners 936, line -0.0084 + 0.531 d -0.0036 (age - 24) (slope SE 0.033)
+   winners (93): OPS deviation +0.0675 -> +0.0396; predicted +0.0321; difference +0.0076 (SE 0.0076)
+   top 10% of rookies by OPS (103, winners 0.301): +0.1373 -> +0.0726, line predicts +0.0715
+winners' fall in OPS deviation: observed 0.0388, predicted 0.0475, share of the observed fall predicted 1.22
 winners' components, rookie season -> next season (deviations from the season mean of regulars):
-   BABIP           +0.0257 -> +0.0109
-   strikeout rate  +0.0179 -> +0.0095
-   walk rate       -0.0042 -> +0.0003
-   home-run rate   +0.0070 -> +0.0029
-rookies, next-season OPS deviation on rookie OPS, rookie BABIP and age: OPS 0.699 (SE 0.034), BABIP -0.554 (SE 0.092), age -0.0052 (SE 0.0012)
-   so two rookies with the same OPS, one with BABIP 0.030 higher: next-season OPS lower by 0.0166
+   BABIP           +0.0257 -> +0.0110
+   strikeout rate  +0.0182 -> +0.0098
+   walk rate       -0.0039 -> +0.0006
+   home-run rate   +0.0070 -> +0.0030
+rookies, next-season OPS deviation on rookie OPS, rookie BABIP and age: OPS 0.698 (SE 0.034), BABIP -0.543 (SE 0.091), age -0.0053 (SE 0.0012)
+   so two rookies with the same OPS, one with BABIP 0.030 higher: next-season OPS lower by 0.0163
 
 ==============================================================================
 8. Teams: run differential and the Pythagorean residual
@@ -221,12 +233,18 @@ Tweedie with Lindsey's method (degree 7, persistence 0.884), OPS selections in t
    mean absolute difference, player-specific: 0.113
    mean absolute difference, Tweedie: 0.025
    Tweedie with degree 9: top 1% 0.768, top 5% 0.686, top 10% 0.664, top 25% 0.635, bottom 25% 0.579, bottom 10% 0.549, bottom 1% 0.496
+Tweedie with one noise variance for everyone, applied to the rates (degree 7), test period:
+   BABIP           top 10% observed 0.409, Tweedie 0.461; bottom 10% observed 0.347, Tweedie 0.381
+   strikeout rate  top 10% observed 0.825, Tweedie 0.845; bottom 10% observed 0.872, Tweedie 0.760
+   walk rate       top 10% observed 0.775, Tweedie 0.800; bottom 10% observed 0.752, Tweedie 0.683
+   home-run rate   top 10% observed 0.671, Tweedie 0.741; bottom 10% observed 0.807, Tweedie 0.323
+Pythagorean exponent fitted on 1961-1989 only: 1.836 (all seasons 1.831); team kept shares are measured from .500
 team pairs: training 688, test 968; training slopes: winning percentage 0.521, expectation 0.597, residual 0.059
    top 10% by wins      n 101: kept 0.490, predicted by components 0.533, by one slope 0.521
    top 25% by wins      n 249: kept 0.509, predicted by components 0.537, by one slope 0.521
    bottom 25% by wins   n 259: kept 0.493, predicted by components 0.528, by one slope 0.521
    top 10% by residual  n  97: kept 0.201, predicted by components 0.093, by one slope 0.521
-Rookie of the Year winners from 1990 (48), line from non-winning rookies before 1990: +0.0915 -> observed +0.0443, predicted +0.0464
+Rookie of the Year winners from 1990 (49), line from non-winning rookies before 1990: +0.0909 -> observed +0.0463, predicted +0.0463
 
 predicted against observed share of the deviation kept, held-out selections:
    blood pressure  top 1%                           n    71  predicted 0.903  observed 0.934  difference +0.031
@@ -252,5 +270,5 @@ predicted against observed share of the deviation kept, held-out selections:
    teams           top 25% by wins                  n   249  predicted 0.537  observed 0.509  difference -0.028
    teams           bottom 25% by wins               n   259  predicted 0.528  observed 0.493  difference -0.036
    teams           top 10% by residual              n    97  predicted 0.093  observed 0.201  difference +0.108
-   batting         Rookie of the Year winners       n    48  predicted 0.508  observed 0.484  difference -0.024
-mean absolute difference 0.043; largest +0.111
+   batting         Rookie of the Year winners       n    49  predicted 0.509  observed 0.509  difference -0.000
+mean absolute difference 0.042; largest +0.111

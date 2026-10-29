@@ -238,8 +238,9 @@ def figure_rookies() -> None:
     ax.set_ylabel("next-season OPS minus the season mean of regulars")
     ax.set_title("Rookie of the Year winners (orange) and the sophomore season")
     fig.text(0.01, 0.005, f"Rookie seasons with 300+ PA, 1955–2024, and 100+ PA the next season "
-             f"({len(r)} players, {int(win.sum())} winners). Lahman Baseball Database.", color=INK2, fontsize=8)
-    fig.tight_layout(rect=(0, 0.03, 1, 1))
+             f"({len(r):,} players, {int(win.sum())} winners);\na few points beyond ±0.3 lie outside the axes. "
+             f"Lahman Baseball Database.", color=INK2, fontsize=8)
+    fig.tight_layout(rect=(0, 0.05, 1, 1))
     fig.savefig(OUT / "fig4_rookies.png")
     plt.close(fig)
 
@@ -266,7 +267,8 @@ def figure_teams() -> None:
                     ax.bar(x, v, width, bottom=neg, color=col, edgecolor="white", linewidth=2)
                     neg += v
             total = 162 * (pe + lu)
-            ax.text(x, (pos if total >= 0 else neg) + (0.5 if total >= 0 else -0.5), f"{total:+.1f}", ha="center",
+            ax.text(x, (pos if total >= 0 else neg) + (0.5 if total >= 0 else -0.5),
+                    f"{total:+.1f}".replace("-", "\u2212"), ha="center",
                     va="bottom" if total >= 0 else "top", color=INK, fontsize=9)
             ax.text(x, -18.6, "selected\nseason" if j == 0 else "next\nseason", ha="center", va="top", color=INK2,
                     fontsize=8.5)
@@ -281,7 +283,7 @@ def figure_teams() -> None:
                        Patch(color=ORANGE, label="residual: wins beyond the runs")],
               loc="lower left", bbox_to_anchor=(0.0, 0.08), fontsize=9)
     ax.set_title("What a winning season is made of, and what survives to the next")
-    fig.text(0.01, 0.005, "Major league teams 1961–2025 without 2020; 1,656 consecutive franchise seasons. "
+    fig.text(0.01, 0.005, "Major league teams 1961–2025 without 2020; 1,656 pairs of consecutive franchise seasons. "
              "Lahman Baseball Database.", color=INK2, fontsize=8)
     fig.tight_layout(rect=(0, 0.03, 1, 1))
     fig.savefig(OUT / "fig5_teams.png")
@@ -300,11 +302,16 @@ def figure_calibration() -> None:
     notes = {"OPS, top 5%": "OPS, top 1% and top 5%", "OPS, bottom 10%": "OPS, bottom 10%",
              "home-run rate, top 10%": "home-run rate, top 10%", "BABIP, bottom 10%": "BABIP, bottom 10%",
              "top 10% by residual": "luckiest tenth of teams"}
+    nudge = {"home-run rate, top 10%": (8, -6), "OPS, bottom 10%": (-8, 0), "OPS, top 5%": (-8, 4)}
     for dom, lab, p, o, n in cal:
         if lab in notes:
-            ha = "left" if p < 0.5 else "right"
-            ax.annotate(notes[lab], (p, o), xytext=(8 if ha == "left" else -8, 0),
-                        textcoords="offset points", ha=ha, va="center", fontsize=8, color=INK2)
+            ha = "left" if (p < 0.5 or lab == "home-run rate, top 10%") else "right"
+            dx, dy = nudge.get(lab, (8 if ha == "left" else -8, 0))
+            ax.annotate(notes[lab], (p, o), xytext=(dx, dy), textcoords="offset points", ha=ha, va="center",
+                        fontsize=8, color=INK2)
+    bp = [c for c in cal if c[0] == "blood pressure"]
+    ax.annotate("six blood-pressure selections", (bp[0][2], max(c[3] for c in bp)), xytext=(-10, 8),
+                textcoords="offset points", ha="right", va="bottom", fontsize=8, color=INK2)
     ax.set_xlim(0, 1)
     ax.set_ylim(0, 1)
     ax.set_aspect("equal")
@@ -334,10 +341,10 @@ def figure_calibration() -> None:
     bx.set_ylabel("share of the deviation kept the next season")
     bx.set_title("OPS: the shape of the distribution sets the extremes")
     del labels
-    fig.text(0.01, 0.005, "Predictions fitted on 2009–2010 (blood pressure) or 1955–1989 (baseball) and applied to "
-             "later selections. Kept share: (mean next − overall mean) / (mean first − overall mean).",
-             color=INK2, fontsize=8)
-    fig.tight_layout(rect=(0, 0.03, 1, 1))
+    fig.text(0.01, 0.005, "Predictions fitted on 2009–2010 (blood pressure) or seasons before 1990 (baseball). "
+             "Kept share: (mean next − mean) / (mean first − mean), with the mean of all held-out units;\n"
+             ".500 for teams and the season mean of regulars for award winners.", color=INK2, fontsize=8)
+    fig.tight_layout(rect=(0, 0.05, 1, 1))
     fig.savefig(OUT / "fig6_calibration.png")
     plt.close(fig)
 

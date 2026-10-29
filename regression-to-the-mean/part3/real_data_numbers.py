@@ -62,7 +62,7 @@ NHANES_COLUMNS = ["SurveyYr", "Gender", "Age", "BPSys1", "BPSys2", "BPSys3", "BP
 MUNTNER_MEAN_SD = 7.7
 SHORT_SEASON = 2020          # 60-game season: no regular reaches 300 plate appearances
 MIN_PA = 300                 # a regular season for a batter
-ROOKIE_AB = 130              # career at-bats before the season below which a player is a rookie
+ROOKIE_AB = 130              # a player is a rookie until his career at-bats before the season exceed this
 FIRST, LAST = 1955, 2024     # first seasons of the batting pairs (sacrifice flies recorded from 1954)
 
 
@@ -194,7 +194,7 @@ def visit_scenario(x1, m23, w, x2, x3, sigma_visit, cut):
 def usual_prevalence(df, sigma_visit, cut):
     """Share with usual pressure >= cut by rescaling deviations within age-sex groups (NRC 1986 method)."""
     w = df.w4.to_numpy()
-    band = np.minimum((df.Age.to_numpy() // 10) * 10, 70)
+    band = np.clip((df.Age.to_numpy() // 10) * 10, 20, 70)   # 18-29, 30-39, ..., 60-69, 70-80
     group = df.Gender.to_numpy() + band.astype(str)
     adj = np.empty(len(df))
     m = df.m23.to_numpy()
@@ -380,7 +380,9 @@ def main() -> dict:
     print(f"adults with at least one systolic reading: {any_bp}; with all three: {len(a)}")
     print(f"strata: {a.SDMVSTRA.nunique()}, PSUs: {a.groupby(['SDMVSTRA', 'SDMVPSU']).ngroups}, "
           f"jackknife replicates: {len(reps)}")
-    print(f"weighted population represented (millions): {w.sum() / 1e6:.1f}")
+    w_adults = adults.WTMEC2YR.to_numpy() / 2
+    print(f"weighted population represented (millions): {w.sum() / 1e6:.1f}; by all examined adults "
+          f"{w_adults.sum() / 1e6:.1f}; share without three readings {1 - w.sum() / w_adults.sum():.3f}")
     even = np.mean(np.concatenate([x1, x2, x3]) % 2 == 0)
     print(f"share of readings that are even numbers: {even:.4f}")
     digits = np.bincount((x1 % 10).astype(int), minlength=10)[::2] / len(x1)
@@ -428,6 +430,12 @@ def main() -> dict:
               f"of those below on reading 1, at or above on the mean of 2-3: {est[3]:.3f} (SE {se[3]:.3f})")
         print(f"   people moved down per person moved up: "
               f"{est[2] * est[0] / (est[3] * (1 - est[0])):.2f}")
+        shift = wmean(x1, w) - wmean(m23, w)
+        pos23d = (m23 + shift) >= cut
+        down = wmean(~pos23d[pos1], w[pos1])
+        up = wmean(pos23d[~pos1], w[~pos1])
+        print(f"   with the population drift added back to the later mean: below {down:.3f}, above {up:.3f}, "
+              f"moved down per person moved up {down * est[0] / (up * (1 - est[0])):.2f}")
     cross = (wmean(m23, w) - b_all * wmean(x1, w)) / (1 - b_all)
     print(f"first reading at which drift and regression cancel (the line crosses zero): {cross:.1f}")
     print("share with the mean of readings 2-3 at or above 140, by first reading (weighted):")
@@ -465,10 +473,18 @@ def main() -> dict:
         nz = math.sqrt(wcov(x2[k] - x3[k], x2[k] - x3[k], w[k]) / 2)
         sk = k & (x1 >= 140)
         r = selection_decomposition(x1[k], m23[k], w[k], x1[k] >= 140)
-        print(f"   {lo}-{hi - 1}: n {k.sum()}, mean reading 1 {wmean(x1[k], w[k]):.2f}, SD {math.sqrt(wcov(x1[k], x1[k], w[k])):.2f}, "
+        v1k = wcov(x1[k], x1[k], w[k])
+        print(f"   {lo}-{hi - 1}: n {k.sum()}, mean reading 1 {wmean(x1[k], w[k]):.2f}, SD {math.sqrt(v1k):.2f}, "
               f"noise SD {nz:.2f}, slope {bk:.3f}, drift {wmean(m23[k], w[k]) - wmean(x1[k], w[k]):+.2f}")
+        print(f"      slope if within-sitting noise were the only difference {(v1k - nz ** 2) / v1k:.3f}; variance of "
+              f"reading 1 minus reading 3 {v1k - wcov(x3[k], x3[k], w[k]):.1f}")
+        _, se_r = jk(lambda ww: selection_decomposition(x1[k], m23[k], ww[k], x1[k] >= 140)["residual"], w, reps)
+        pooled = wmean(m23, w) + b_all * (r["first"] - wmean(x1, w))
         print(f"      selected at 140: n {sk.sum()}, share of the age group {r['share']:.3f}, first {r['first']:.2f} -> "
-              f"{r['later']:.2f}; drift {-r['drift']:+.2f}, regression {-r['regression']:+.2f}, residual {r['residual']:+.2f}")
+              f"{r['later']:.2f}; drift {-r['drift']:+.2f}, regression {-r['regression']:+.2f}, residual {r['residual']:+.2f} "
+              f"(SE {float(se_r):.2f})")
+        print(f"      fall {r['fall']:.2f}; fall net of drift {r['fall'] - r['drift']:.2f}; predicted later mean: own line "
+              f"{r['predicted']:.2f}, pooled line {pooled:.2f}")
     sel = x1 >= 140
     print(f"mean age of those at or above 140 on reading 1: {wmean(age[sel], w[sel]):.1f}; of all adults "
           f"{wmean(age, w):.1f}")
@@ -517,6 +533,21 @@ def main() -> dict:
     a_tr = wmean(m23[tr], w2[tr]) - b_tr * wmean(x1[tr], w2[tr])
     b_te = wcov(x1[te], m23[te], w2[te]) / wcov(x1[te], x1[te], w2[te])
     print(f"2009-2010: n {tr.sum()}, line {a_tr:.2f} + {b_tr:.4f} x; 2011-2012: n {te.sum()}, slope {b_te:.4f}")
+    reps2 = jk_replicates(a.SDMVSTRA.to_numpy(), a.SDMVPSU.to_numpy(), w2)
+
+    def cycle_stats(ww):
+        out = []
+        for k in (tr, te):
+            out += [wmean(m23[k], ww[k]) - wmean(x1[k], ww[k]), wcov(x1[k], x1[k], ww[k]) - wcov(x3[k], x3[k], ww[k]),
+                    wcov(x1[k], x2[k], ww[k]) - wcov(x2[k], x3[k], ww[k])]
+        return out + [out[3] - out[0], out[4] - out[1], out[5] - out[2]]
+
+    est, se = jk(cycle_stats, w2, reps2)
+    names = ("drift", "var1 - var3", "cov12 - cov23")
+    for i, lab in enumerate(("2009-2010", "2011-2012")):
+        print(f"   {lab}: " + ", ".join(f"{names[j]} {est[3 * i + j]:+.2f} (SE {se[3 * i + j]:.2f})" for j in range(3)))
+    print("   2011-2012 minus 2009-2010: " + ", ".join(f"{names[j]} {est[6 + j]:+.2f} (SE {se[6 + j]:.2f})"
+                                                     for j in range(3)))
     for lab, k in (("2009-2010", tr), ("2011-2012", te)):
         xx1, xx2, xx3, mm, ww = x1[k], x2[k], x3[k], m23[k], w2[k]
         print(f"   {lab}: mean reading 1 {wmean(xx1, ww):.2f}, SD {math.sqrt(wcov(xx1, xx1, ww)):.2f}, drift to the mean "
@@ -581,20 +612,25 @@ def main() -> dict:
     # -----------------------------------------------------------------------
     header("7. Rookies and Rookie of the Year winners")
     awards = pd.read_csv(fetch("AwardsPlayers.csv"))
-    roy = awards[awards.awardID == "Rookie of the Year"][["playerID", "yearID"]].drop_duplicates()
+    roy_all = awards[awards.awardID == "Rookie of the Year"]
+    in_window = (roy_all.yearID >= FIRST) & (roy_all.yearID <= LAST) & ~roy_all.yearID.isin([SHORT_SEASON - 1, SHORT_SEASON])
+    n_awards = roy_all[in_window][["yearID", "lgID"]].drop_duplicates().shape[0]
+    roy = roy_all[["playerID", "yearID"]].drop_duplicates()
     roy_years = roy[(roy.yearID >= FIRST) & (roy.yearID <= LAST) & ~roy.yearID.isin([SHORT_SEASON - 1, SHORT_SEASON])]
+    ties = roy_all[in_window].groupby(["yearID", "lgID"]).size()
+    print(f"awards (league-seasons) {n_awards}; shared awards: " + ", ".join(f"{y} {l}" for (y, l), c in ties.items() if c > 1))
     bb = pairs_next(b, cols + ["OPS"])
     bb = bb.merge(roy.assign(roy=1), on=["playerID", "yearID"], how="left")
     bb["roy"] = bb.roy.fillna(0).astype(int)
     window = (bb.yearID >= FIRST) & (bb.yearID <= LAST) & ~bb.yearID.isin([SHORT_SEASON - 1, SHORT_SEASON])
     roy_hit = bb[window & (bb.roy == 1) & (bb.PA >= MIN_PA)]
-    print(f"Rookie of the Year awards {FIRST}-{LAST} (without {SHORT_SEASON - 1} and {SHORT_SEASON}): {len(roy_years)}; "
-          f"winners with {MIN_PA}+ PA in the award season: {len(roy_hit)}; of these with {ROOKIE_AB}+ career AB "
-          f"before it: {int((roy_hit.AB_before >= ROOKIE_AB).sum())}")
-    rk = bb[window & (bb.PA >= MIN_PA) & (bb.AB_before < ROOKIE_AB)].copy()
+    print(f"Rookie of the Year winners {FIRST}-{LAST} (without {SHORT_SEASON - 1} and {SHORT_SEASON}): {len(roy_years)}; "
+          f"winners with {MIN_PA}+ PA in the award season: {len(roy_hit)}; of these with more than {ROOKIE_AB} career AB "
+          f"before it: {int((roy_hit.AB_before > ROOKIE_AB).sum())}")
+    rk = bb[window & (bb.PA >= MIN_PA) & (bb.AB_before <= ROOKIE_AB)].copy()
     rk["PA_n"] = rk.PA_n.fillna(0)
     win = rk.roy == 1
-    print(f"rookie seasons ({MIN_PA}+ PA, under {ROOKIE_AB} AB before): {len(rk)}, winners among them {int(win.sum())}")
+    print(f"rookie seasons ({MIN_PA}+ PA, at most {ROOKIE_AB} AB before): {len(rk)}, winners among them {int(win.sum())}")
     print(f"mean age: rookies who did not win {rk.age[~win].mean():.2f}, winners {rk.age[win].mean():.2f}")
     for thr in (1, 100, 300):
         print(f"   share with {thr}+ PA the next season: non-winners {(rk.PA_n[~win] >= thr).mean():.3f}, "
@@ -640,9 +676,9 @@ def main() -> dict:
     # -----------------------------------------------------------------------
     header("8. Teams: run differential and the Pythagorean residual")
     teams = load_teams()
-    tp, k = pythagorean(teams)
+    tp, k_exp = pythagorean(teams)
     print(f"team seasons 1961-2025 without {SHORT_SEASON}: {len(teams)}; consecutive pairs (franchise): {len(tp)}")
-    print(f"fitted Pythagorean exponent {k:.3f}")
+    print(f"fitted Pythagorean exponent {k_exp:.3f}")
     print(f"SD of winning percentage {teams.wp.std():.4f}; of the Pythagorean expectation {tp.pyth.std():.4f}; "
           f"of the residual {tp.luck.std():.4f}; corr(expectation, residual) {np.corrcoef(tp.pdev, tp.luck)[0, 1]:+.3f}")
     print(f"binomial SD of a winning percentage over 162 games at 0.5: {math.sqrt(0.25 / 162):.4f}")
@@ -733,7 +769,24 @@ def main() -> dict:
                 print(f"   mean absolute difference, {name}: {np.mean([abs(r[1] - r[k]) for r in line]):.3f}")
         else:
             print(f"   Tweedie with degree {degree}: " + ", ".join(f"{r[0]} {r[4]:.3f}" for r in line))
+    print("Tweedie with one noise variance for everyone, applied to the rates (degree 7), test period:")
+    for s in RATES:
+        first_s = reg[reg.yearID <= 1989][s + "_d"].dropna().to_numpy()
+        score = lindsey_score(first_s)
+        nv = trn[s + "_sv"].mean()
+        rho_t = slope(tweedie(trn[s + "_d"].to_numpy(), nv, score), trn[s + "_d_n"])
+        x, y = tst[s + "_d"].to_numpy(), tst[s + "_d_n"].to_numpy()
+        post = tweedie(x, nv, score)
+        parts = []
+        for label, sel in (("top 10%", x >= np.quantile(x, 0.9)), ("bottom 10%", x <= np.quantile(x, 0.1))):
+            dx = x[sel].mean() - x.mean()
+            parts.append(f"{label} observed {(y[sel].mean() - y.mean()) / dx:.3f}, Tweedie "
+                         f"{rho_t * (post[sel].mean() - post.mean()) / dx:.3f}")
+        print(f"   {LABELS[s]:15s} " + "; ".join(parts))
     ttr, tte = tp[tp.yearID <= 1989], tp[tp.yearID >= 1990]
+    _, k_tr = pythagorean(teams[teams.yearID <= 1989])
+    print(f"Pythagorean exponent fitted on 1961-1989 only: {k_tr:.3f} (all seasons {k_exp:.3f}); team kept shares are "
+          f"measured from .500")
     bt = {s: slope(ttr[s], ttr[s + "_n"]) for s in ("dev", "pdev", "luck")}
     print(f"team pairs: training {len(ttr)}, test {len(tte)}; training slopes: winning percentage {bt['dev']:.3f}, "
           f"expectation {bt['pdev']:.3f}, residual {bt['luck']:.3f}")
