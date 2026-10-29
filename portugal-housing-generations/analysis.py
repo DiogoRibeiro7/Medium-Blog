@@ -21,6 +21,10 @@ INCOME_URL = (
     "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/"
     "ilc_di03?geo=PT&age=TOTAL&sex=T&statinfo=MED_EI&unit=EUR"
 )
+OVERBURDEN_URL = (
+    "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/"
+    "ilc_lvho07a?geo=PT&sex=T&rskpovth=TOTAL&unit=PC"
+)
 
 
 def parse_hpi(document: dict[str, Any]) -> dict[int, float]:
@@ -137,6 +141,49 @@ def relative_affordability(hpi: dict[int, float], income: dict[int, float], base
     }
 
 
+def parse_housing_overburden(document: dict[str, Any]) -> dict[str, dict[int, float]]:
+    """Extract official 40%-threshold housing-cost overburden rates by age.
+
+    Rates are shares of *people* living in households above the threshold,
+    not average expenditure, house prices, or homeownership access.
+    """
+    dimensions = document.get("id")
+    sizes = document.get("size")
+    expected = {"freq": "A", "unit": "PC", "rskpovth": "TOTAL", "sex": "T", "geo": "PT"}
+    if not isinstance(dimensions, list) or not isinstance(sizes, list) or len(dimensions) != len(sizes):
+        raise ValueError("Invalid overburden dimensions")
+    for name, code in expected.items():
+        if name not in dimensions or document["dimension"][name]["category"]["index"] != {code: 0}:
+            raise ValueError(f"Unexpected overburden selection: {name}")
+    if not all(isinstance(size, int) and size > 0 for size in sizes):
+        raise ValueError("Invalid overburden dimension sizes")
+    ages = document["dimension"]["age"]["category"]["index"]
+    years = document["dimension"]["time"]["category"]["index"]
+    values = document.get("value", {})
+    if not isinstance(values, dict):
+        raise ValueError("Invalid overburden values")
+    result: dict[str, dict[int, float]] = {}
+    for age in ("TOTAL", "Y18-24", "Y25-29"):
+        if age not in ages:
+            raise ValueError(f"Missing required age group: {age}")
+        observations: dict[int, float] = {}
+        for year, time_pos in years.items():
+            coordinates = {name: 0 for name in dimensions}
+            coordinates["age"] = ages[age]
+            coordinates["time"] = time_pos
+            flat_index = 0
+            for name, size in zip(dimensions, sizes, strict=True):
+                flat_index = flat_index * size + coordinates[name]
+            value = values.get(str(flat_index))
+            if value is None:
+                continue
+            if not isinstance(value, (int, float)) or isinstance(value, bool) or not 0 <= value <= 100:
+                raise ValueError(f"Invalid overburden rate for {age}/{year}")
+            observations[int(year)] = float(value)
+        result[age] = dict(sorted(observations.items()))
+    return result
+
+
 def main() -> None:
     """Read a pinned source snapshot and export auditable derived data."""
     parser = argparse.ArgumentParser(description=__doc__)
@@ -144,6 +191,7 @@ def main() -> None:
     parser.add_argument("--income-input", type=Path, default=Path(__file__).parent / "data" / "eurostat_ilc_di03_PT_2026-10-29.json")
     parser.add_argument("--income-18-24-input", type=Path, default=Path(__file__).parent / "data" / "eurostat_ilc_di03_PT_Y18-24_2026-10-29.json")
     parser.add_argument("--income-25-49-input", type=Path, default=Path(__file__).parent / "data" / "eurostat_ilc_di03_PT_Y25-49_2026-10-29.json")
+    parser.add_argument("--overburden-input", type=Path, default=Path(__file__).parent / "data" / "eurostat_ilc_lvho07a_PT_2026-10-29.json")
     parser.add_argument("--output", type=Path, default=Path(__file__).parent / "results.json")
     args = parser.parse_args()
     raw: Any = json.loads(args.input.read_text(encoding="utf-8"))
@@ -166,6 +214,10 @@ def main() -> None:
             "income_eur": age_income,
             "relative_price_income_index_2015_100": relative_affordability(series, age_income),
         }
+    raw_overburden: Any = json.loads(args.overburden_input.read_text(encoding="utf-8"))
+    if not isinstance(raw_overburden, dict):
+        raise ValueError("Expected overburden JSON-stat object")
+    overburden = parse_housing_overburden(raw_overburden)
     report = {
         "source_url": EUROSTAT_URL,
         "source_updated": raw.get("updated"),
@@ -175,6 +227,9 @@ def main() -> None:
         "yearly_median_equivalised_income_eur": income,
         "relative_price_income_index_2015_100": affordability,
         "income_by_age": by_age,
+        "housing_overburden_source_url": OVERBURDEN_URL,
+        "housing_overburden_source_updated": raw_overburden.get("updated"),
+        "housing_overburden_pct_by_age": overburden,
         "descriptives": summarize(series),
     }
     args.output.write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")

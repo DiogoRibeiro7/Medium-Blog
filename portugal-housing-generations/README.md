@@ -43,6 +43,12 @@ historical values.
    pinned as two additional JSON-stat source responses. The 25–49 bracket is
    wider than millennials, and neither series isolates wage-earners or homebuyers.
    Both are repeated age cross-sections, **not longitudinal birth cohorts**.
+6. Eurostat `ilc_lvho07a`, `geo=PT`, `sex=T`, `rskpovth=TOTAL`,
+   `unit=PC`, ages TOTAL, Y18-24 and Y25-29:
+   https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/ilc_lvho07a?geo=PT&sex=T&rskpovth=TOTAL&unit=PC
+   This is the percentage of people in a household where net housing costs
+   exceed 40% of disposable household income (net of housing allowances).
+   Accessed 2026-10-29; raw age-category JSON-stat snapshot and metadata pinned.
 
 ## Relative price/income index
 
@@ -63,6 +69,16 @@ descriptive and should not be construed as an exact affordability measure.
 levels should **not** be used to compare absolute affordability across ages:
 the normalization erases their initial income levels, while housing needs,
 household sizes, wealth, and borrowing access vary by group.
+
+## Direct housing-cost stress measure
+
+The `housing_overburden_pct_by_age` result adds a direct but different outcome.
+It measures the share above a 40% housing-cost threshold *among all people*,
+including young adults in their parents' homes. It is not a measure of the
+financial barrier to leaving home or buying a first dwelling. Such selection
+effects mean falling observed overburden rates can coexist with worsening
+entry affordability and rising house prices. Do not equate the two trends or
+infer a causal relationship from their aggregate difference.
 
 ## What the calculations support
 
