@@ -4,7 +4,7 @@ import json
 import unittest
 from pathlib import Path
 
-from analysis import parse_hpi, parse_income, relative_affordability, summarize
+from analysis import parse_hpi, parse_housing_overburden, parse_income, relative_affordability, summarize
 
 
 class AnalysisTests(unittest.TestCase):
@@ -56,6 +56,20 @@ class AnalysisTests(unittest.TestCase):
         payload = json.loads(path.read_text(encoding="utf-8"))
         with self.assertRaises(ValueError):
             parse_income(payload, age="Y25-49")
+
+    def test_official_housing_cost_overburden(self) -> None:
+        path = Path(__file__).parent / "data" / "eurostat_ilc_lvho07a_PT_2026-10-29.json"
+        rates = parse_housing_overburden(json.loads(path.read_text(encoding="utf-8")))
+        self.assertEqual(rates["TOTAL"][2015], 9.1)
+        self.assertEqual(rates["Y18-24"][2025], 6.6)
+        self.assertEqual(rates["Y25-29"][2025], 8.4)
+
+    def test_rejects_invalid_overburden_rate(self) -> None:
+        path = Path(__file__).parent / "data" / "eurostat_ilc_lvho07a_PT_2026-10-29.json"
+        payload = json.loads(path.read_text(encoding="utf-8"))
+        payload["value"]["0"] = 101
+        with self.assertRaises(ValueError):
+            parse_housing_overburden(payload)
 
 
 if __name__ == "__main__":
