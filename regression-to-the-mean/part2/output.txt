@@ -1,0 +1,109 @@
+
+==============================================================================
+1. THE MEASUREMENT MODEL: STABLE COMPONENT PLUS NOISE
+==============================================================================
+  reliability 0.5: simulated correlation of two measurements 0.4996; slope of second on first 0.4994; units with first measurement above 2 SD (0.0227 of them): first 2.3758, second 1.1812, true component 1.1875
+  reliability 0.8: simulated correlation of two measurements 0.7996; slope of second on first 0.7991; units with first measurement above 2 SD (0.0227 of them): first 2.3736, second 1.8980, true component 1.8977
+
+==============================================================================
+2. THREE SOURCES OF IMPERFECT CORRELATION, AND A RANDOM WALK
+==============================================================================
+  correlation between occasion 1 and occasion 1 + k:
+    stable trait + measurement error (reliability 0.5) k = 1, 2, 3, 5, 10: 0.505, 0.504, 0.496, 0.509, 0.503
+    transient state, AR(1) with coefficient 0.7        k = 1, 2, 3, 5, 10: 0.699, 0.488, 0.340, 0.156, 0.018
+    trait (0.4) + AR(1) state (0.4) + error (0.2)      k = 1, 2, 3, 5, 10: 0.676, 0.595, 0.532, 0.465, 0.409
+    fitting trait share + state share x phi^k to the lag-1, 2 and 3 correlations of the mixture: phi 0.764, state share 0.452, trait share 0.331, error share 0.217 (true 0.7, 0.4, 0.4, 0.2); relative error of the trait share -0.172
+    theory for the mixture: 0.4 + 0.4 x 0.7^k = 0.680, 0.596, 0.537, 0.467, 0.411
+  random walk observed from step 51 on (no stationary mean):
+    k =  1: slope of later on earlier 0.9996; slope of earlier on later 0.9807; SD earlier 7.098, later 7.166; correlation 0.9901
+    k =  5: slope of later on earlier 1.0008; slope of earlier on later 0.9087; SD earlier 7.098, later 7.449; correlation 0.9536
+    k = 10: slope of later on earlier 0.9959; slope of earlier on later 0.8359; SD earlier 7.098, later 7.747; correlation 0.9124
+
+==============================================================================
+3. HOW MUCH REGRESSION A SELECTION PRODUCES (standard normal scale, equal spreads)
+==============================================================================
+  selected share: mean of the selected on the first measurement; expected fall on the second for correlation 0.3 / 0.5 / 0.7 / 0.9
+    top 50%: selected mean 0.798 SD; fall 0.559 / 0.399 / 0.239 / 0.080 SD; share of the selected deviation lost 0.7 / 0.5 / 0.3 / 0.1
+    top 20%: selected mean 1.400 SD; fall 0.980 / 0.700 / 0.420 / 0.140 SD; share of the selected deviation lost 0.7 / 0.5 / 0.3 / 0.1
+    top 10%: selected mean 1.755 SD; fall 1.228 / 0.877 / 0.526 / 0.175 SD; share of the selected deviation lost 0.7 / 0.5 / 0.3 / 0.1
+    top 5%: selected mean 2.063 SD; fall 1.444 / 1.031 / 0.619 / 0.206 SD; share of the selected deviation lost 0.7 / 0.5 / 0.3 / 0.1
+    top 1%: selected mean 2.665 SD; fall 1.866 / 1.333 / 0.800 / 0.267 SD; share of the selected deviation lost 0.7 / 0.5 / 0.3 / 0.1
+  selection on a score, outcome correlated 0.3 with it, top 5%: score deviation 2.063 SD; expected outcome deviation 0.619 SD; shortfall 1.444 SD
+  simulation, correlation 0.6, top 20%: selected mean 1.4006 (formula 1.3998); fall 0.5590 (formula 0.5599)
+  simulation, correlation 0.6, top 5%: selected mean 2.0642 (formula 2.0627); fall 0.8228 (formula 0.8251)
+  example in natural units: a measurement with SD 15 and test-retest correlation 0.6, top 10% selected: expected fall 10.53 units from a selected mean 26.32 above the population mean
+  reducing the regression by design (reliability of a single measurement 0.6, top 10% selected):
+    select on the mean of 1 measurements: reliability 0.600; selected deviation 1.755 SD of a single measurement; expected fall on a new measurement 0.702 SD (0.400 of the selected deviation)
+    select on the mean of 2 measurements: reliability 0.750; selected deviation 1.570 SD of a single measurement; expected fall on a new measurement 0.392 SD (0.250 of the selected deviation)
+    select on the mean of 3 measurements: reliability 0.818; selected deviation 1.503 SD of a single measurement; expected fall on a new measurement 0.273 SD (0.182 of the selected deviation)
+    select on the mean of 5 measurements: reliability 0.882; selected deviation 1.447 SD of a single measurement; expected fall on a new measurement 0.170 SD (0.118 of the selected deviation)
+    simulation, mean of 3: selected 1.5012, new measurement 1.2280, fall 0.2732
+    select on measurement 1 (top 10%): measurement 1 1.7531, measurement 2 1.0514, measurement 3 1.0518; change 1 to 3 -0.7013, change 2 to 3 +0.0004
+  correlation between the first measurement and the change, with no change in anyone (equal spreads):
+    reliability 0.5: corr(first, change) -0.5001 (theory -0.5000); Oldham's corr(mean of the two, change) +0.0002
+    reliability 0.8: corr(first, change) -0.3167 (theory -0.3162); Oldham's corr(mean of the two, change) -0.0005
+
+==============================================================================
+4. BEYOND THE NORMAL: SKEWED, HEAVY-TAILED AND MIXED POPULATIONS
+==============================================================================
+  lognormal (skewed)                top 10% on the first: first +3.659, second +2.319 (deviations from the means; kept 0.634); correlation 0.501
+  lognormal (skewed)                top 1% on the first: first +7.868, second +6.928 (deviations from the means; kept 0.881); correlation 0.501
+  Student t with 3 df (heavy tails) top 10% on the first: first +4.225, second +1.993 (deviations from the means; kept 0.472); correlation 0.500
+  Student t with 3 df (heavy tails) top 1% on the first: first +7.962, second +5.829 (deviations from the means; kept 0.732); correlation 0.500
+  normal component, heavy-tailed noise top 10% on the first: first +2.438, second +1.289 (deviations from the means; kept 0.529); correlation 0.503
+  normal component, heavy-tailed noise top 1% on the first: first +4.616, second +1.219 (deviations from the means; kept 0.264); correlation 0.503
+  lognormal (skewed)                bottom 10% on the first: first -2.772, second -0.700 (kept 0.253)
+  two groups with means -2 and +2 (within-group reliability 0.5), overall correlation 0.833:
+    first measurement in (1.5, 2.5): first +1.996, second +1.958; share from the upper group 0.979
+    first measurement in (3.5, 4.5): first +3.920, second +2.957; share from the upper group 1.000
+    first measurement in (-0.5, 0.5): first -0.000, second +0.007; share from the upper group 0.502
+    single line's prediction for first measurement in (1.5, 2.5): +1.665
+    single line's prediction for first measurement in (3.5, 4.5): +3.267
+    single-line slope 0.833; within-group slope 0.499
+
+==============================================================================
+5. SHRINKAGE: KELLEY'S FORMULA
+==============================================================================
+  reliability 0.5, 1000 units, 2000 simulations: mean squared error of the observed score as an estimate of the true score 0.5000; of Kelley's estimate 0.2504 (theory 0.5000 and 0.2500); ratio 0.501
+  share of the true top 50 found in the observed top 50: 0.394; in the top 50 by Kelley's estimate: 0.394
+  two groups with means -1 and +1: overall reliability 0.663; mean squared error shrinking to the overall mean 0.6688, to each unit's group mean 0.5025, raw 1.0085
+    top 5% on the observed score: share from the upper group 0.967; mean true score 2.203; Kelley to overall mean predicts 2.320, to group means 2.217
+  rates from units of different sizes: 2,000 units, true rates Beta(10, 90) (mean 0.10), sizes log-uniform 20 to 2,000,
+  two periods with independent binomial counts; the top 5% of units on the period-1 rate:
+    top 5% (101 units): share from the smallest quarter of units 0.604, from the largest quarter 0.089; median size 51 against 195 overall
+    their period-1 rate 0.2140, true rate 0.1445, period-2 rate 0.1521; population mean 0.1003
+    shrinking each unit by its own reliability (from 0.16 for the smallest to 0.95 for the largest): top 5% by shrunk rate has median size 491, true rate 0.1554, period-2 rate 0.1560; share of the true top 5% found 0.500 against 0.410 by raw rate
+
+==============================================================================
+6. REAL SERIES: NEW YORK TEMPERATURE ANOMALIES AND THE DAX
+==============================================================================
+  JFK, 2013: 364 days with readings (days of the year 1-364, 0 gaps); daily mean temperature minus a two-harmonic seasonal curve; SD of the anomaly 5.92 F
+  correlation of the anomaly with itself k days later, k = 1..7: +0.630, +0.235, +0.063, +0.021, -0.045, -0.117, -0.136
+  AR(1) prediction from the lag-1 value, k = 1..7: +0.630, +0.397, +0.250, +0.157, +0.099, +0.062, +0.039
+  the hottest 5% of days relative to the season (19 days): mean anomaly +12.33 F; mean anomaly k days later (k = 1..5): +7.46, +0.56, -2.60, -0.99, +0.38
+  the coldest 5% (19 days): mean anomaly -12.20 F; k days later (k = 1..5): -8.05, -5.16, -2.22, -0.12, +1.26
+  DAX, 1860 trading days 1991-1998: slope of the next close on today's close 1.0014; lag-1 correlation of daily log returns -0.0004, slope -0.0004
+    after the 5% largest daily gains: mean gain that day +2.277%, next day +0.124% (standard error 0.112%, 93 days); mean daily return overall +0.065%
+    days (among the first 1840) with the close in its top 10%: mean close 4928; 20 trading days later 5021; series mean 2531
+
+==============================================================================
+7. SEPARATING REGRESSION FROM AN EFFECT
+==============================================================================
+  screening simulation: mean 140.0, SD 15.0, reliability 0.6, selected above 160.0 (0.091 of the population), true effect of treatment -5.0; 1000 replications of 20,000 people
+    naive            mean estimate -15.783 (SD across replications 0.293; Monte Carlo SE of the mean 0.009); ratio to the true effect 3.16
+    rct              mean estimate -5.000 (SD across replications 0.596; Monte Carlo SE of the mean 0.019); ratio to the true effect 1.00
+    predicted        mean estimate -4.995 (SD across replications 0.288; Monte Carlo SE of the mean 0.009); ratio to the true effect 1.00
+    second baseline  mean estimate -4.995 (SD across replications 0.326; Monte Carlo SE of the mean 0.010); ratio to the true effect 1.00
+    rd               mean estimate -4.943 (SD across replications 0.758; Monte Carlo SE of the mean 0.024); ratio to the true effect 0.99
+    formula: selected mean 166.97, 26.97 above the population mean; expected regression 10.789; an error of 0.05 in the assumed reliability shifts the predicted regression by 1.35
+  subtracting a predicted regression with a reliability estimated from a pilot of m people measured twice:
+    pilot of   50: mean estimate -4.922, SD across 500 replications 2.456
+    pilot of  100: mean estimate -5.007, SD across 500 replications 1.826
+    pilot of  500: mean estimate -4.963, SD across 500 replications 0.805
+    pilot of 2000: mean estimate -4.976, SD across 500 replications 0.503
+  anorexia trial (Hand et al., 1994; MASS::anorexia): 72 patients, weights in pounds
+    Cont n = 26: before 81.56, after 81.11, change -0.45; correlation before-after -0.161; slope of change on before -1.134 (SE 0.167); corr(before, change) -0.810; Oldham's corr(mean, change) -0.185; SD before 5.71, after 4.74 (ratio 0.83); slope of after on before -0.134
+    CBT  n = 29: before 82.69, after 85.70, change +3.01; correlation before-after +0.492; slope of change on before -0.152 (SE 0.289); corr(before, change) -0.101; Oldham's corr(mean, change) +0.549; SD before 4.85, after 8.35 (ratio 1.72); slope of after on before 0.848
+    FT   n = 17: before 83.23, after 90.49, change +7.26; correlation before-after +0.538; slope of change on before -0.091 (SE 0.368); corr(before, change) -0.064; Oldham's corr(mean, change) +0.546; SD before 5.02, after 8.48 (ratio 1.69); slope of after on before 0.909
+    CBT against control: after only +4.59 (SE 1.86); change scores +3.46 (SE 2.06); ANCOVA +4.24 (SE 1.84), coefficient on the baseline +0.305
+    FT against control: after only +9.39 (SE 2.02); change scores +7.71 (SE 2.39); ANCOVA +9.03 (SE 2.03), coefficient on the baseline +0.211
