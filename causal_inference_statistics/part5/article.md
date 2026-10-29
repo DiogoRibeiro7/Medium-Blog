@@ -449,7 +449,7 @@ Hernán, M. A., Hernández-Díaz, S. and Robins, J. M. (2004). A Structural Appr
 
 Imbens, G. W. and Rubin, D. B. (2015). *Causal Inference for Statistics, Social, and Biomedical Sciences*. Cambridge University Press. https://doi.org/10.1017/CBO9781139025751
 
-Morgan, S. L. and Winship, C. (2015). *Counterfactuals and Causal Inference: Methods and Principles for Social Research*, 2nd edition. Cambridge University Press.
+Morgan, S. L. and Winship, C. (2015). *Counterfactuals and Causal Inference: Methods and Principles for Social Research*, 2nd edition. Cambridge University Press. https://doi.org/10.1017/CBO9781107587991
 
 Pearl, J. (1995). Causal Diagrams for Empirical Research. *Biometrika*, 82(4), 669–688. https://doi.org/10.1093/biomet/82.4.669
 
