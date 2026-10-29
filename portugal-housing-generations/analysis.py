@@ -8,6 +8,7 @@ No causal effects or electoral preferences are estimated here.
 from __future__ import annotations
 
 import argparse
+import csv
 import json
 from pathlib import Path
 from typing import Any
@@ -40,6 +41,10 @@ TENURE_URL = (
 PERMITS_URL = (
     "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/"
     "sts_cobp_a?geo=PT&indic_bt=BPRM_DW&cpa2_1=CPA_F41001_X_410014&s_adj=NSA&unit=THS"
+)
+COMPLETIONS_URL = (
+    "https://www.pordata.pt/portugal/"
+    "fogos+concluidos+em+construcoes+novas+para+habitacao+familiar+total+e+por+tipologia+do+fogo-189"
 )
 
 
@@ -362,6 +367,39 @@ def parse_dwellings_permitted(document: dict[str, Any]) -> dict[int, float]:
     return dict(sorted(result.items()))
 
 
+def parse_completed_dwellings(path: Path) -> tuple[dict[int, int], list[int]]:
+    """Read INE/PORDATA annual new-build dwelling completions from CSV.
+
+    A dwelling is a unit, not a building; only construction of new family
+    dwellings is counted. Renovations and net additions to stock are excluded.
+    Returns a year-to-count mapping and years marked preliminary by the source.
+    """
+    result: dict[int, int] = {}
+    preliminary: list[int] = []
+    with path.open(newline="", encoding="utf-8") as source:
+        reader = csv.DictReader(source)
+        if reader.fieldnames != ["year", "completed_dwellings", "preliminary"]:
+            raise ValueError("Unexpected completions CSV schema")
+        for row in reader:
+            if not all(isinstance(row[k], str) for k in reader.fieldnames):
+                raise ValueError("Incomplete completions CSV row")
+            year_text = row["year"]
+            count_text = row["completed_dwellings"]
+            flag = row["preliminary"]
+            if not year_text.isdigit() or not count_text.isdigit() or flag not in {"true", "false"}:
+                raise ValueError("Invalid completions CSV value")
+            year = int(year_text)
+            count = int(count_text)
+            if year in result or count <= 0:
+                raise ValueError("Duplicate year or nonpositive completions count")
+            result[year] = count
+            if flag == "true":
+                preliminary.append(year)
+    if not result or sorted(result) != list(range(min(result), max(result) + 1)):
+        raise ValueError("Completed-dwellings series has missing years")
+    return dict(sorted(result.items())), sorted(preliminary)
+
+
 def main() -> None:
     """Read a pinned source snapshot and export auditable derived data."""
     parser = argparse.ArgumentParser(description=__doc__)
@@ -374,6 +412,7 @@ def main() -> None:
     parser.add_argument("--leaving-age-input", type=Path, default=Path(__file__).parent / "data" / "eurostat_yth_demo_030_PT_2026-10-29.json")
     parser.add_argument("--tenure-input", type=Path, default=Path(__file__).parent / "data" / "eurostat_ilc_lvho02_PT_2026-10-29.json")
     parser.add_argument("--permits-input", type=Path, default=Path(__file__).parent / "data" / "eurostat_sts_cobp_a_PT_dwellings_2026-10-29.json")
+    parser.add_argument("--completions-input", type=Path, default=Path(__file__).parent / "data" / "ine_pordata_completed_new_dwellings_PT_2026-10-29.csv")
     parser.add_argument("--output", type=Path, default=Path(__file__).parent / "results.json")
     args = parser.parse_args()
     raw: Any = json.loads(args.input.read_text(encoding="utf-8"))
@@ -411,6 +450,7 @@ def main() -> None:
     if not isinstance(raw_permits, dict):
         raise ValueError("Expected permits JSON-stat object")
     permits = parse_dwellings_permitted(raw_permits)
+    completed, preliminary_completed = parse_completed_dwellings(args.completions_input)
     report = {
         "source_url": EUROSTAT_URL,
         "source_updated": raw.get("updated"),
@@ -437,6 +477,11 @@ def main() -> None:
         "building_permits_status_flags": raw_permits.get("status", {}),
         "dwellings_permitted_thousands": permits,
         "dwellings_permitted_2015_2025_change_pct": round(100 * (permits[2025] / permits[2015] - 1), 2),
+        "completions_source_url": COMPLETIONS_URL,
+        "completions_original_source": "INE, Estatísticas das obras concluídas; PORDATA annual table",
+        "completed_new_family_dwellings": completed,
+        "completed_new_family_dwellings_preliminary_years": preliminary_completed,
+        "completed_dwellings_2015_2025_change_pct": round(100 * (completed[2025] / completed[2015] - 1), 2),
         "descriptives": summarize(series),
     }
     args.output.write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")

@@ -69,6 +69,15 @@ historical values.
     https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/sts_cobp_a?geo=PT&indic_bt=BPRM_DW&cpa2_1=CPA_F41001_X_410014&s_adj=NSA&unit=THS
     Accessed 2026-10-29. The snapshot contains Eurostat preliminary (`p`)
     flags for 2022–2025; these are preserved in `results.json`.
+11. INE, *Estatísticas das obras concluídas*, as republished by PORDATA,
+    *Fogos concluídos em construções novas para habitação familiar: total e por
+    tipologia do fogo*, nationwide annual total:
+    https://www.pordata.pt/portugal/fogos+concluidos+em+construcoes+novas+para+habitacao+familiar+total+e+por+tipologia+do+fogo-189
+    The 1995–2025 published total column was manually transcribed to the pinned
+    CSV on 2026-10-29 because the INE JSON endpoint returned HTTP 503. This
+    is not an original machine-generated INE export. PORDATA identifies 2021–2025
+    as preliminary; those flags are retained in the CSV and output. INE
+    metadata: https://ine.pt/bddXplorer/htdocs/minfo.jsp?lingua=PT&var_cd=0000076
 
 ## Relative price/income index
 
@@ -137,6 +146,22 @@ of net additions to habitable stock nor of dwelling affordability. Annual
 national permits must not be causally compared with house-price inflation:
 there are completion lags, geographic differences, replacement and
 demolition, and unobserved demand and financing conditions.
+
+## Completed new family dwellings
+
+`completed_new_family_dwellings` adds completed dwellings in *new construction*
+from INE's annual works-completion statistics. Counts are units, not buildings;
+they exclude rehabilitation and do not measure the net change in occupied
+housing stock. They peaked at 125,708 in 2002, reached 7,148 in 2015,
+and recovered to 27,301 in 2025 (preliminary). The 2015 trough makes the
+2015–2025 percentage increase unusually sensitive to the baseline.
+
+Permits and completions refer to different stages of construction, may be
+revised independently, and do **not** form matched cohorts. Consequently,
+dividing completions in year *t* by permits in year *t* is *not* a permit
+conversion rate: a dwelling completed this year may have been permitted in
+an earlier year. We report the two annual series separately and make no
+causal or conversion-rate inference from their difference.
 
 ## What the calculations support
 

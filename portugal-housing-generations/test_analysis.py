@@ -1,10 +1,12 @@
 """Offline regression checks for the Eurostat parser and descriptive statistics."""
 
 import json
+import tempfile
 import unittest
 from pathlib import Path
 
 from analysis import (
+    parse_completed_dwellings,
     parse_dwellings_permitted,
     parse_hpi,
     parse_housing_overburden,
@@ -136,6 +138,25 @@ class AnalysisTests(unittest.TestCase):
         payload["value"]["33"] = -2.0
         with self.assertRaises(ValueError):
             parse_dwellings_permitted(payload)
+
+    def test_completed_dwellings_ine_pordata(self) -> None:
+        path = Path(__file__).parent / "data" / "ine_pordata_completed_new_dwellings_PT_2026-10-29.csv"
+        counts, preliminary = parse_completed_dwellings(path)
+        self.assertEqual(counts[2002], 125708)
+        self.assertEqual(counts[2015], 7148)
+        self.assertEqual(counts[2025], 27301)
+        self.assertEqual(preliminary, [2021, 2022, 2023, 2024, 2025])
+
+    def test_completed_dwellings_rejects_duplicate_year(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "invalid.csv"
+            path.write_text(
+                "year,completed_dwellings,preliminary\n"
+                "2024,200,true\n2024,300,true\n",
+                encoding="utf-8",
+            )
+            with self.assertRaises(ValueError):
+                parse_completed_dwellings(path)
 
 
 if __name__ == "__main__":
