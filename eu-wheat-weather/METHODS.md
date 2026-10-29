@@ -410,6 +410,134 @@ are; maize is reported separately.
 - **Grain maize only.** Silage maize is not included.
 - **Period.** The period is short, which limits E4 and rules out E3.
 
+## 10. Amendment A2 to the maize study (registered 2026-10-29)
+
+Registered after the maize results, the maize review
+([docs/MAIZE_REVIEW.md](docs/MAIZE_REVIEW.md)) and the corrections of its list A, and
+before anything below was computed. It carries out the review's list B, which asks
+whether heat survives once the problems of measurement are fixed. Its results are
+reported beside the registered maize results of section 9 and never replace them. Where
+the verdicts differ, both are reported, the registered one first.
+
+**What was seen before it was written.**
+
+- **Results:** every registered maize result, and every post-hoc check in the change log
+  of 2026-10-28. Among them: E1's standard error under each one-way clustering, leaving
+  one country out, Romania 2024, and E1 in the irrigated south and elsewhere.
+- **The review's explorations** (its findings D1, D3, D5 and I6):
+  - heat over cells below 800 m;
+  - E1 without six flat or repeated Italian series;
+  - the Croatian code-years;
+  - an incomplete simulation of how often the tests reject when there is no effect.
+- **The map of maize (MIRCA-OS):** its licence, its list of files and its
+  documentation. No value of it was looked at. SPAM 2020 (IFPRI) was considered first;
+  it was not used because its files are released only through a form that asks for
+  personal details.
+
+### 10.1 Weather over where maize grows (review, D2)
+
+- **Source.** MIRCA-OS (Kebede et al. 2025, Scientific Data, 12, 208,
+  doi:10.1038/s41597-024-04313-w; data on HydroShare,
+  doi:10.4211/hs.60a890eb841c460192c03bb590687145; CC BY 4.0).
+  - Layers: the annual harvested area of irrigated and of rainfed maize, in hectares, on
+    the 5-arcminute grid, for 2015, the last year it covers.
+  - The archive is frozen with its SHA-256 hash in `snapshots/`.
+- **Maize in an E-OBS cell.** Each 0.25° cell holds 3 × 3 cells of the 5-arcminute grid.
+  Its maize is the sum of their irrigated and rainfed harvested areas.
+- **Weights.** A cell's weight in a region is the share of the cell's area that lies
+  inside the region's NUTS-2021 boundary, times the cell's maize. Maize is taken as
+  spread evenly within a cell.
+- **Everything else is as in section 3.2.**
+  - Nonlinear quantities are computed per cell and day.
+  - Missing cells are dropped and the weights renormalised.
+  - A region-day is missing if less than half of the region's weight is observed.
+- **The variables.** `GDD`, `EDD`, `P`, the bins and the placebo window, as in 9.1, with
+  each region's season dates unchanged.
+- **Regions without maize on the map.** A region whose weights sum to zero is left out of
+  every analysis of this amendment. The report lists such regions.
+- **A minimum check (descriptive).** The same analyses with section 3.2's weights over
+  the cells below 800 m, the review's proxy.
+
+### 10.2 A wider data rule (review, D3 and D5)
+
+It applies after Q1-Q5 of section 8.2 and before the 10-year rule, in this order. Regions
+are then checked again against the 10-year rule, and singletons are dropped as before.
+
+- **Q6, repeated yields.** Take a run of three or more consecutive harvest years of a
+  region in which each year's yield is within 1% of the year before. The years of the
+  run after the first are excluded.
+- **Q7, a break where two codes join.**
+  - The setting: a region whose series joins two published codes, by an official recode
+    (change log of 2026-10-23). Let `j` be the first year of the later code.
+  - The test: the region's change in log yield from `j-1` to `j`, against the median
+    change of the country's other panel regions over the same two years.
+  - The rule: if the two differ by more than 0.3, the region's years before `j` are
+    excluded. With fewer than two other regions in the country, the rule does not apply.
+- **Q8, a figure that belongs to another code.** If a region-year's published area and
+  production both equal, within 0.1%, those of another code of the same country
+  published for the same year, the region-year is excluded. The exception is a code
+  whose only NUTS-2 region is this one, the join that section 9.1 allows.
+- **How the thresholds were set.** They were set after the review described the Italian
+  and Croatian series, so they are informed by the data. They are not informed by any
+  estimate of this amendment. The report lists every excluded row by rule and says
+  which of the review's cases each rule catches.
+
+### 10.3 Irrigated and rainfed maize (review, I3)
+
+- **A region's irrigated share.** Irrigated maize over all maize, with the map and the
+  weights of 10.1.
+- **Two groups.** A region is irrigated if its share is at least one half, and rainfed
+  otherwise.
+- **The model (descriptive).** M1-maize-A2, with `EDD` and the dry-season term each
+  interacted with the irrigated group. It gives heat and drought for rainfed regions and
+  for irrigated regions, and the differences, with two-way intervals and the bootstrap
+  p-values of 8.3.
+- **This decides nothing.** The review has already compared the south with the rest.
+- **A check.** The map's share of irrigated maize in Spain, Portugal, Italy and Greece,
+  beside Eurostat's farm statistics for 2023 (`ef_lus_irri` and `ef_lus_allcrops`).
+
+### 10.4 Inference with few clusters (review, I1 and I6)
+
+Both are reported for E1 and E2, in the registered model and in M1-maize-A2, beside the
+registered methods. They decide nothing.
+
+- **One-way country clustering.** The country-clustered variance of the existing code,
+  with its small-sample factor G/(G-1) · (n-1)/(n-k), and a t distribution with G-1
+  degrees of freedom, where G is the number of countries.
+- **A randomization test.**
+  - The permutations: 9,999 random permutations of the harvest years, seed 20261103.
+  - In each, every region-year gets the region's weather of the permuted year. The same
+    permutation applies to every region, which keeps the dependence across regions
+    within a year.
+  - What stays fixed: yields, the fixed effects, and the dry-season constants `d1` and
+    `d2`.
+  - A region-year whose permuted weather is missing is left out of that permutation.
+  - The statistic: the two-way t. The p-value is (1 + c) / (1 + 9,999), where c counts
+    the permutations whose |t| is at least the observed one.
+
+### 10.5 Specification, decisions and reporting
+
+- **M1-maize-A2.** M1-maize on the sample of 9.1 with the rule of 10.2, and with the
+  weather of 10.1.
+- **E1-A2 and E2-A2.** Defined as E1-maize and E2-maize, and decided as in section 9.2.
+  - Holm over the two, under the two-way method and under the bootstrap of 8.3 (seeds
+    20261101 and 20261102, 9,999 draws).
+  - A result is established only if it is rejected under both, and is negative.
+- **E5-A2, the placebo.** As E5-maize, with the weather of 10.1. It is stated before the
+  other results.
+- **Which change does what (descriptive).** E1 and E2, with two-way intervals and both
+  p-values:
+  - with the maize weights alone;
+  - with the rule of 10.2 alone;
+  - with both, which is M1-maize-A2;
+  - with the weights over cells below 800 m and the rule of 10.2.
+- **Leave one country out (descriptive).** E1-A2 and E2-A2 without each country in turn,
+  as in 8.3.
+- **Not recomputed.** E4, M3, the sensitivity analyses of 9.2, and wheat.
+- **Report.** `docs/MAIZE_AMENDMENT.md`, generated like `docs/MAIZE.md`, with its
+  results in `docs/maize/amendment/`. Any change to this section after a result is
+  computed goes in the change log.
+
 ## Change log
 
 - **2026-10-23, phase 1, before any estimate: NUTS-1 regions.**
@@ -633,3 +761,8 @@ are; maize is reported separately.
   - **Articles.** The maize article is revised as the review recommends (its section
     "Recommended corrections", A). The wheat article's pointer to maize is revised, and
     both articles' crop-calendar credits link to the licence and state the changes made.
+- **2026-10-29, after the maize review and its corrections: Amendment A2 registered
+  (section 10), before any of it is computed.** It carries out the review's list B:
+  weather over where maize grows, from the MIRCA-OS map; a wider data rule (Q6-Q8);
+  irrigated and rainfed maize apart; and inference with few clusters. Section 10 says
+  what was seen first. No maize result changes.

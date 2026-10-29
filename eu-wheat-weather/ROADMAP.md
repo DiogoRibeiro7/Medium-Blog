@@ -157,8 +157,17 @@ Results are in [docs/RESULTS.md](docs/RESULTS.md). Every rule was fixed before a
     swing, robustness, placebo, comparison and prediction passages are rewritten, and a
     "Not every country equally" bullet is added. Each new claim is tested.
   - **Figures:** Figure 4 relabelled and captioned, and each colour has one meaning.
-- [ ] **Optional, registered first:** the review's new analyses (its section B), such as
-      weather over where maize grows and irrigated and rainfed maize apart.
+- [x] **Amendment A2 registered** ([METHODS.md](METHODS.md), section 10), before any of
+      it is computed: the review's section B.
+  - **Weather over maize:** cells weighted by the maize on the MIRCA-OS map, with the
+    cells below 800 m as a minimum check.
+  - **Data rule:** repeated yields, breaks where two codes join, and figures that belong
+    to another code (Q6-Q8).
+  - **Irrigated and rainfed maize:** heat and drought for each group (descriptive).
+  - **Few clusters:** one-way country clustering and a randomization test (descriptive).
+  - **Decisions:** E1-A2 and E2-A2 by the registered rule, beside the registered results.
+- [ ] Amendment A2 computed and reported ([docs/MAIZE_AMENDMENT.md](docs/MAIZE_AMENDMENT.md)).
+- [ ] Article: Amendment A2 beside the registered results.
 - [ ] **Author review and publication** of the maize article, under the same
       non-commercial terms.
 
