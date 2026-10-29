@@ -78,6 +78,17 @@ historical values.
     is not an original machine-generated INE export. PORDATA identifies 2021–2025
     as preliminary; those flags are retained in the CSV and output. INE
     metadata: https://ine.pt/bddXplorer/htdocs/minfo.jsp?lingua=PT&var_cd=0000076
+12. Eurostat `lfst_hhnhtych`: total private households in Portugal,
+    `phhcomp=TOTAL`, `agechild=TOTAL`, `n_child=TOTAL`, `unit=THS_HH`:
+    https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/lfst_hhnhtych?geo=PT&unit=THS_HH&agechild=TOTAL&n_child=TOTAL&phhcomp=TOTAL
+    These are household estimates from the Labour Force Survey, not an
+    administrative register of dwelling addresses. Eurostat marks structural
+    breaks in 2011 and 2021 (`b`). The dated source JSON retains these flags.
+13. Eurostat `demo_pjan`: total usually resident population on 1 January,
+    Portugal, all ages and both sexes, number of persons:
+    https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/demo_pjan?geo=PT&age=TOTAL&sex=T
+    This is a date-specific demographic stock, not a calendar-year average.
+    Both sources accessed 2026-10-29, with source update timestamps pinned.
 
 ## Relative price/income index
 
@@ -162,6 +173,25 @@ dividing completions in year *t* by permits in year *t* is *not* a permit
 conversion rate: a dwelling completed this year may have been permitted in
 an earlier year. We report the two annual series separately and make no
 causal or conversion-rate inference from their difference.
+
+## Population, households and construction intensity
+
+`completed_new_dwellings_construction_intensity` reports annual completed
+new-family dwellings divided by two independently observed stocks: population
+on 1 January and number of private households (both standardized per 1,000).
+In 2015 there were 0.688 completions per 1,000 residents and 1.743 per
+1,000 households; in 2025 the figures were 2.540 and 5.984, respectively.
+
+The denominator measures need *imperfectly*. Household formation itself can
+be suppressed by high housing costs, while additional demand can arise from
+internal migration, location, second homes, the condition of existing homes,
+and changes in household size. The private-household series is survey-based
+and has Eurostat break flags in 2011 and 2021; its apparent jumps across
+those years must not be interpreted as pure demographic changes. Nor should
+the change in annual household stock be subtracted mechanically from annual
+completions to declare a national housing shortage: the former is a stock
+estimate and the latter a selected gross construction flow, and geographic
+matching, replacement, vacancy, and conversion are unobserved.
 
 ## What the calculations support
 

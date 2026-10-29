@@ -606,6 +606,187 @@
     2025
   ],
   "completed_dwellings_2015_2025_change_pct": 281.94,
+  "households_source_url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/lfst_hhnhtych?geo=PT&unit=THS_HH&agechild=TOTAL&n_child=TOTAL&phhcomp=TOTAL",
+  "households_source_updated": "2026-09-10T23:00:00+0200",
+  "private_households_thousands": {
+    "2006": 3819.1,
+    "2007": 3836.2,
+    "2008": 3879.1,
+    "2009": 3910.9,
+    "2010": 3942.1,
+    "2011": 4008.9,
+    "2012": 4018.6,
+    "2013": 4017.2,
+    "2014": 4077.2,
+    "2015": 4100.8,
+    "2016": 4105.3,
+    "2017": 4132.9,
+    "2018": 4182.6,
+    "2019": 4200.2,
+    "2020": 4122.2,
+    "2021": 3939.9,
+    "2022": 4102.6,
+    "2023": 4382.0,
+    "2024": 4473.3,
+    "2025": 4562.1
+  },
+  "private_households_status_flags": {
+    "2011": "b",
+    "2021": "b"
+  },
+  "population_source_url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/demo_pjan?geo=PT&age=TOTAL&sex=T",
+  "population_source_updated": "2026-09-25T23:00:00+0200",
+  "population_on_january_1": {
+    "1960": 8826040.0,
+    "1961": 8889392.0,
+    "1962": 8969240.0,
+    "1963": 9018730.0,
+    "1964": 9041980.0,
+    "1965": 9028750.0,
+    "1966": 8968440.0,
+    "1967": 8893540.0,
+    "1968": 8855500.0,
+    "1969": 8817800.0,
+    "1970": 8697610.0,
+    "1971": 8663252.0,
+    "1972": 8624260.0,
+    "1973": 8636600.0,
+    "1974": 8629600.0,
+    "1975": 8879130.0,
+    "1976": 9307810.0,
+    "1977": 9403810.0,
+    "1978": 9507540.0,
+    "1979": 9608960.0,
+    "1980": 9713570.0,
+    "1981": 9819054.0,
+    "1982": 9883670.0,
+    "1983": 9939871.0,
+    "1984": 9975859.0,
+    "1985": 10016605.0,
+    "1986": 10030621.0,
+    "1987": 10034846.0,
+    "1988": 10025215.0,
+    "1989": 10014005.0,
+    "1990": 9995995.0,
+    "1991": 9970441.0,
+    "1992": 9950029.0,
+    "1993": 9954958.0,
+    "1994": 9974391.0,
+    "1995": 10008659.0,
+    "1996": 10043693.0,
+    "1997": 10084196.0,
+    "1998": 10133758.0,
+    "1999": 10186634.0,
+    "2000": 10249022.0,
+    "2001": 10330774.0,
+    "2002": 10394669.0,
+    "2003": 10444592.0,
+    "2004": 10473050.0,
+    "2005": 10494672.0,
+    "2006": 10511988.0,
+    "2007": 10532588.0,
+    "2008": 10553339.0,
+    "2009": 10563014.0,
+    "2010": 10573479.0,
+    "2011": 10572721.0,
+    "2012": 10558950.0,
+    "2013": 10503889.0,
+    "2014": 10444092.0,
+    "2015": 10395121.0,
+    "2016": 10368554.0,
+    "2017": 10344478.0,
+    "2018": 10335770.0,
+    "2019": 10333496.0,
+    "2020": 10375395.0,
+    "2021": 10394297.0,
+    "2022": 10421117.0,
+    "2023": 10516621.0,
+    "2024": 10639726.0,
+    "2025": 10749635.0
+  },
+  "population_status_flags": {},
+  "completed_new_dwellings_construction_intensity": {
+    "2006": {
+      "completed_per_1000_residents": 6.541,
+      "completed_per_1000_households": 18.005
+    },
+    "2007": {
+      "completed_per_1000_residents": 6.405,
+      "completed_per_1000_households": 17.586
+    },
+    "2008": {
+      "completed_per_1000_residents": 5.615,
+      "completed_per_1000_households": 15.276
+    },
+    "2009": {
+      "completed_per_1000_residents": 4.536,
+      "completed_per_1000_households": 12.252
+    },
+    "2010": {
+      "completed_per_1000_residents": 3.352,
+      "completed_per_1000_households": 8.991
+    },
+    "2011": {
+      "completed_per_1000_residents": 2.495,
+      "completed_per_1000_households": 6.581
+    },
+    "2012": {
+      "completed_per_1000_residents": 1.864,
+      "completed_per_1000_households": 4.898
+    },
+    "2013": {
+      "completed_per_1000_residents": 1.214,
+      "completed_per_1000_households": 3.174
+    },
+    "2014": {
+      "completed_per_1000_residents": 0.796,
+      "completed_per_1000_households": 2.039
+    },
+    "2015": {
+      "completed_per_1000_residents": 0.688,
+      "completed_per_1000_households": 1.743
+    },
+    "2016": {
+      "completed_per_1000_residents": 0.763,
+      "completed_per_1000_households": 1.927
+    },
+    "2017": {
+      "completed_per_1000_residents": 0.794,
+      "completed_per_1000_households": 1.987
+    },
+    "2018": {
+      "completed_per_1000_residents": 1.04,
+      "completed_per_1000_households": 2.57
+    },
+    "2019": {
+      "completed_per_1000_residents": 1.254,
+      "completed_per_1000_households": 3.084
+    },
+    "2020": {
+      "completed_per_1000_residents": 1.631,
+      "completed_per_1000_households": 4.105
+    },
+    "2021": {
+      "completed_per_1000_residents": 1.917,
+      "completed_per_1000_households": 5.057
+    },
+    "2022": {
+      "completed_per_1000_residents": 2.02,
+      "completed_per_1000_households": 5.13
+    },
+    "2023": {
+      "completed_per_1000_residents": 2.119,
+      "completed_per_1000_households": 5.084
+    },
+    "2024": {
+      "completed_per_1000_residents": 2.318,
+      "completed_per_1000_households": 5.514
+    },
+    "2025": {
+      "completed_per_1000_residents": 2.54,
+      "completed_per_1000_households": 5.984
+    }
+  },
   "descriptives": {
     "hpi_2015": 100.0,
     "hpi_2024": 224.44,
