@@ -44,6 +44,10 @@ from eu_wheat_weather.regions import CodeMatch, HarmonisedRow, harmonise
 RANDOMIZATION_DRAWS = 9_999
 RANDOMIZATION_SEED = 20261103
 IRRIGATED_SHARE = 0.5                     # a region is irrigated at one half or more (10.3)
+# After the results (change log): the map puts Portugal's maize at about 2% irrigated against
+# Eurostat's 89%, so the split is also shown with Portugal's regions counted as irrigated.
+POST_HOC_IRRIGATED = ("PT",)
+COUNTRY_NAMES = {"PT": "Portugal"}
 PRIMARY = ("maize", True)                 # M1-maize-A2: maize weights and the wider rule
 COMBINATIONS: tuple[tuple[str, str, str, bool], ...] = (
     ("weights", "Maize weights alone", "maize", False),
@@ -243,21 +247,43 @@ class _TwoWay:
         return float(beta[j] / np.sqrt(v[j, j]))
 
 
-def _designs(obs: Sequence[Obs], weather: Mapping[WeatherKey, Mapping[str, str]],
-             years: Mapping[int, int], d1: float, d2: float,
-             ) -> tuple[np.ndarray, np.ndarray] | None:
-    """M1's and the contrast model's columns with each region-year given the weather of
-    ``years[year]``; None if any of it is missing."""
-    rows = []
-    for o in obs:
-        w = weather.get((o.geo, years[o.year], "season"))
-        if w is None or any(w[v] == "" for v in ("gdd_10_30", "edd_30", "prec")):
-            return None
-        rows.append((float(w["gdd_10_30"]) / 100, float(w["edd_30"]) / 10,
-                     float(w["prec"]) / 100))
-    g, e, p = (np.array(c) for c in zip(*rows, strict=True))
+def _weather_table(obs: Sequence[Obs], weather: Mapping[WeatherKey, Mapping[str, str]],
+                   years: Sequence[int]) -> np.ndarray:
+    """Each region-year's season weather (GDD in hundreds, EDD in tens, P in hundreds of
+    mm) in every harvest year: observations x years x 3, NaN where missing."""
+    out = np.full((len(obs), len(years), 3), np.nan)
+    for i, o in enumerate(obs):
+        for k, year in enumerate(years):
+            w = weather.get((o.geo, year, "season"))
+            if w is not None and all(w[v] != "" for v in ("gdd_10_30", "edd_30", "prec")):
+                out[i, k] = (float(w["gdd_10_30"]) / 100, float(w["edd_30"]) / 10,
+                             float(w["prec"]) / 100)
+    return out
+
+
+def _designs(values: np.ndarray, d1: float, d2: float) -> tuple[np.ndarray, np.ndarray]:
+    """M1's columns and the contrast model's, from GDD, EDD and P."""
+    g, e, p = values.T
     return (np.column_stack([g, e, p, p * p]),
             np.column_stack([g, e, p / d1, p * p - (d2 / d1) * p]))
+
+
+class _Prepared:
+    """A sample's fixed effects, partialled out once: an orthonormal basis of the dummies,
+    the residual log yield, and the clusters."""
+
+    def __init__(self, obs: Sequence[Obs]) -> None:
+        u, s, _ = np.linalg.svd(controls(obs, EFFECTS), full_matrices=False)
+        self.basis = u[:, s > s[0] * 1e-10]
+        y = np.array([o.log_yield for o in obs])
+        self.y = y - self.basis @ (self.basis.T @ y)
+        self.two_way = _TwoWay(np.array([o.country for o in obs]),
+                               np.array([str(o.year) for o in obs]))
+
+    def t_values(self, designs: tuple[np.ndarray, np.ndarray]) -> list[float]:
+        """The two-way t of E1 (M1's `edd`) and of E2 (the contrast)."""
+        return [self.two_way.t(x - self.basis @ (self.basis.T @ x), self.y, j)
+                for x, j in zip(designs, (1, 2), strict=True)]
 
 
 def randomization(obs: Sequence[Obs], weather: Mapping[WeatherKey, Mapping[str, str]],
@@ -269,22 +295,14 @@ def randomization(obs: Sequence[Obs], weather: Mapping[WeatherKey, Mapping[str, 
     out of that permutation."""
     years = sorted({o.year for o in obs})
     d1, d2 = _dry_deltas(obs)
-    identity = {y: y for y in years}
-    observed = _designs(obs, weather, identity, d1, d2)
-    if observed is None:
+    table = _weather_table(obs, weather, years)
+    rows = np.arange(len(obs))
+    position = np.array([years.index(o.year) for o in obs])
+    observed = table[rows, position]
+    if np.isnan(observed).any():
         raise DataError("The observed sample has missing weather.")
-
-    def t_values(sub: Sequence[Obs], designs: tuple[np.ndarray, np.ndarray]) -> list[float]:
-        ctrl = controls(sub, EFFECTS)
-        u, s, _ = np.linalg.svd(ctrl, full_matrices=False)
-        basis = u[:, s > s[0] * 1e-10]
-        y = np.array([o.log_yield for o in sub])
-        yt = y - basis @ (basis.T @ y)
-        tw = _TwoWay(np.array([o.country for o in sub]), np.array([str(o.year) for o in sub]))
-        return [tw.t(x - basis @ (basis.T @ x), yt, j)
-                for x, j in zip(designs, (1, 2), strict=True)]
-
-    t_obs = t_values(obs, observed)
+    prepared = {tuple(range(len(obs))): _Prepared(obs)}
+    t_obs = prepared[tuple(range(len(obs)))].t_values(_designs(observed, d1, d2))
     m1, c = estimate(obs, BASE, EFFECTS), contrast_fit(obs)
     registered = [t_test(f.beta, twoway_vcov(f)[0], f.index([term])[0], 1)[0]
                   for f, term in ((m1, "edd"), (c, "contrast"))]
@@ -294,17 +312,18 @@ def randomization(obs: Sequence[Obs], weather: Mapping[WeatherKey, Mapping[str, 
     counts, partial = [0, 0], 0
     for _ in range(draws):
         order = rng.permutation(len(years))
-        mapping = {y: years[i] for y, i in zip(years, order, strict=True)}
-        designs = _designs(obs, weather, mapping, d1, d2)
-        sub: Sequence[Obs] = obs
-        if designs is None:
+        values = table[rows, order[position]]
+        keep = tuple(range(len(obs)))
+        missing = np.isnan(values).any(axis=1)
+        if missing.any():
             partial += 1
-            sub, _ = without_singletons(
-                [o for o in obs if _designs([o], weather, mapping, d1, d2) is not None],
-                EFFECTS)
-            designs = _designs(sub, weather, mapping, d1, d2)
-            assert designs is not None
-        for k, t in enumerate(t_values(sub, designs)):
+            present = [obs[i] for i in rows[~missing]]
+            kept = {id(o) for o in without_singletons(present, EFFECTS)[0]}
+            keep = tuple(i for i in rows[~missing] if id(obs[i]) in kept)
+        if keep not in prepared:
+            prepared[keep] = _Prepared([obs[i] for i in keep])
+        t_draw = prepared[keep].t_values(_designs(values[list(keep)], d1, d2))
+        for k, t in enumerate(t_draw):
             counts[k] += abs(t) >= abs(t_obs[k]) * (1 - 1e-12)
     return {"draws": draws, "seed": seed, "permutations_with_missing_weather": partial,
             **{key: {"t": t_obs[k], "p": (1 + counts[k]) / (1 + draws)}
@@ -372,6 +391,8 @@ def run(inputs: Inputs, map_path: Path, irrigation_dir: Path,
         "leave_one_out": leave_one_country_out(obs, {"E1": e1["estimate"],
                                                      "E2": e2["estimate"]}),
         "irrigation": irrigation(obs, shares),
+        "irrigation_post_hoc": irrigation(obs, {g: (1.0 if g.startswith(POST_HOC_IRRIGATED)
+                                                    else s) for g, s in shares.items()}),
         "few_clusters": {"registered": few_clusters(reg_obs, reg_weather),
                          "amended": few_clusters(obs, by_window(inputs.weather, "maize"))},
         "data_rule": {
@@ -484,6 +505,22 @@ def render(r: Mapping[str, Any], registered: Mapping[str, Any], command: str) ->
         for group in ("rainfed", "irrigated", "difference"):
             x = irr[key][group]
             lines.append(f"| {key} | {group} | {_ci(x)} | {_p(x['p_twoway'])} | {_boot(x)} |")
+    m = r["map"]
+    off = [c for c in m["eurostat_check"] if c["country"] in POST_HOC_IRRIGATED]
+    ph = r["irrigation_post_hoc"]
+    lines += ["", "**After the results: Portugal counted as irrigated (post hoc).** The map puts "
+              + "; ".join(f"{COUNTRY_NAMES[c['country']]}'s maize at {c['map_share']:.0%} "
+                          "irrigated, against "
+                          f"Eurostat's {c['eurostat_share']:.0%}" for c in off)
+              + " (the check below), so its regions count as rainfed above. The same model with "
+              f"them counted as irrigated: {ph['regions']['irrigated']} irrigated regions and "
+              f"{ph['regions']['rainfed']} rainfed. Added after the results; it decides nothing.",
+              "", "| Estimand | Group | Estimate [95% interval] | p, two-way | "
+              "p, bootstrap (country, year) |", "| --- | --- | ---: | ---: | ---: |"]
+    for key in ("E1", "E2"):
+        for group in ("rainfed", "irrigated", "difference"):
+            x = ph[key][group]
+            lines.append(f"| {key} | {group} | {_ci(x)} | {_p(x['p_twoway'])} | {_boot(x)} |")
     loo = r["leave_one_out"]["summary"]
     lines += ["", "## Leave one country out (descriptive)", ""]
     for key in ("E1", "E2"):
@@ -508,7 +545,6 @@ def render(r: Mapping[str, Any], registered: Mapping[str, Any], command: str) ->
               "| --- | ---: | ---: | --- |"]
     lines += [f"| {c['case']} | {c['in_panel']} | {c['excluded']} | {c['rules'] or '-'} |"
               for c in dr["review_cases"]]
-    m = r["map"]
     lines += ["", "## The map of maize (10.1)", "",
               f"- **Regions:** of the {m['regions']} NUTS-2021 regions, "
               f"{len(m['without_maize'])} have no maize on the map; of the registered panel's "

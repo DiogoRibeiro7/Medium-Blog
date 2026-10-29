@@ -789,10 +789,25 @@ registered methods. They decide nothing.
     `EDD`, contrast and curvature terms each split by group, and the differences from the
     same model written with interactions. `d1` and `d2` are common to both groups. The
     check uses Eurostat's 2023 figures for holdings above the survey threshold, frozen in
-    `snapshots/eurostat-maize-irrigation-2026-10-29/`.
+    `snapshots/eurostat-irrigation-2026-10-29/`.
   - **The randomization test (10.4).**
     - The same 9,999 permutations serve E1 and E2, and the registered and amended models.
     - The fixed effects are partialled out once per sample, and the two-way t is the
       registered one: the code stops if the observed t differs from
       `estimation.twoway_vcov`'s.
     - The identity permutation counts if it is drawn.
+- **2026-10-29, Amendment A2, after its results.** `docs/MAIZE_AMENDMENT.md` reports
+  section 10 under its rules. No rule was changed.
+  - **A run stopped early.** The first run was stopped before it wrote anything, because
+    its randomization test recomputed the fixed effects in every permutation. The
+    corrected code computes them once per sample and gives the same statistic; nothing
+    from the stopped run was seen.
+  - **Added after the results: Portugal counted as irrigated.** The check of 10.3 shows
+    the map putting Portugal's maize at 2% irrigated, against Eurostat's 89% (its
+    Portuguese totals are right, so the weights of 10.1 are not affected). The split of
+    10.3 stays as registered. Beside it, the same model with Portugal's regions counted
+    as irrigated is reported, labelled post hoc. It decides nothing.
+  - **A renamed folder.** The irrigation snapshot was first named
+    `eurostat-maize-irrigation-2026-10-29`, which a test's pattern for the maize crop
+    snapshots also matched. It is now `snapshots/eurostat-irrigation-2026-10-29/`, and
+    the entry above says so; its files are unchanged.

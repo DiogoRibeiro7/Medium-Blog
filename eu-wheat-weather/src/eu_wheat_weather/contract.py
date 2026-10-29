@@ -63,7 +63,7 @@ IRRIGATION_FILTERS: dict[str, dict[str, str]] = {
     "ef_lus_allcrops": {"freq": "A", "statinfo": "ABVTH", "crops": "C1500", "so_eur": "TOTAL",
                         "uaarea": "TOTAL", "unit": "HA"},
 }
-IRRIGATION_SNAPSHOT = "snapshots/eurostat-maize-irrigation-2026-10-29"
+IRRIGATION_SNAPSHOT = "snapshots/eurostat-irrigation-2026-10-29"
 
 
 def irrigation_url(dataset: str) -> str:

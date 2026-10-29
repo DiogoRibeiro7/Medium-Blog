@@ -6,7 +6,8 @@ Union respond to extreme heat and drought during the growing season, 2000-2024.
 **Status: article drafted and corrected after a critical review (phase 3). Amendment A1
 ([METHODS.md](METHODS.md), section 8) is registered and computed
 ([docs/AMENDMENT.md](docs/AMENDMENT.md)). A second crop, grain maize, is registered
-([METHODS.md](METHODS.md), section 9) and estimated ([docs/MAIZE.md](docs/MAIZE.md)).**
+([METHODS.md](METHODS.md), section 9) and estimated ([docs/MAIZE.md](docs/MAIZE.md)), and its
+Amendment A2 (section 10) is computed ([docs/MAIZE_AMENDMENT.md](docs/MAIZE_AMENDMENT.md)).**
 
 - **Plan.** [METHODS.md](METHODS.md) was committed before any yield was related to any
   weather variable. Its change log records the decisions made before any estimate, and
@@ -51,6 +52,12 @@ Union respond to extreme heat and drought during the growing season, 2000-2024.
   - **Placebo:** it passes by the registered rule: the bootstrap does not reject
     (p = 0.158). The two-way rejection (p = 0.043) comes from rain after maturity, with a
     positive sign, mostly in France (post hoc).
+  - **Amendment A2** ([docs/MAIZE_AMENDMENT.md](docs/MAIZE_AMENDMENT.md)), registered after
+    the maize review. With weather over where maize grows and a wider data rule, heat
+    (-4.4%) and drought (-3.5%) are both still established, beside the registered results.
+    Heat's p stays below 0.05 with one-way country clustering (0.029) and with a
+    randomization test (0.040). Heat costs rainfed regions more than irrigated ones
+    (descriptive).
 - **Review.** [docs/REVIEW.md](docs/REVIEW.md) is a critical review written after the
   results and before publication. Its checks are in the "After review (post hoc)"
   section of [docs/RESULTS.md](docs/RESULTS.md), beside the registered results and
@@ -91,6 +98,8 @@ are not effects of a permanent change in climate, to which farmers adapt.
 | Eurostat `apro_cpshr` | Common wheat (`C1110`) and, for section 9, grain maize (`C1500`): area and harvested production at EU standard humidity, NUTS-2, annual | Free reuse with attribution: © European Union, Eurostat |
 | E-OBS v33.0e (ECA&D, Copernicus) | Daily maximum and minimum temperature, precipitation and elevation, 0.25° grid, 1950-2025 | Non-commercial research and education only (below) |
 | GISCO NUTS boundaries | NUTS-2 polygons of the 2006, 2010, 2013, 2016, 2021 and 2024 versions, 1:3 million | Non-commercial use only, with the notice © EuroGeographics for the administrative boundaries (below) |
+| MIRCA-OS v0.1 (Amendment A2) | Harvested area of irrigated and rainfed maize in 2015, 5-arcminute grid (Kebede et al. 2025, Scientific Data 12, 208; data doi:10.4211/hs.60a890eb841c460192c03bb590687145) | CC BY 4.0, with attribution; summed onto the E-OBS grid and used as weights |
+| Eurostat `ef_lus_irri`, `ef_lus_allcrops` (Amendment A2) | Irrigated and total grain maize area, 2023, Spain, Portugal, Italy and Greece, for a check of the map | Free reuse with attribution: © European Union, Eurostat |
 | GGCMI Phase 3 crop calendar v1.01 (Amendment A1 and section 9) | Rainfed winter wheat maturity day, and rainfed maize planting and maturity days, 0.5° grid (Jägermeyr et al. 2021, Nature Food 2, 873-885; doi:10.5281/zenodo.5062513) | CC BY 4.0, with attribution; mapped to the E-OBS grid, averaged per region and rounded to whole days |
 
 **E-OBS terms.** "These observational data are strictly for use in non-commercial
@@ -120,6 +129,9 @@ article carries it under its subtitle.
 - The derived tables are committed in `docs/panel/`: the region map, the regional
   weather, each region's centroid latitude and maturity date, and the panel. The panel
   regenerates in the offline tests.
+- Amendment A2's Eurostat irrigation figures (`snapshots/eurostat-irrigation-2026-10-29/`)
+  are committed. The MIRCA-OS archive (172 MB) and its two maize layers stay in
+  `data/mirca/`, with their hashes in `snapshots/mirca-os-v0.1.json`.
 - The E-OBS files (about 2.5 GB) and the boundary files (about 37 MB) are not committed.
   Their URLs and SHA-256 hashes are, and `eu-wheat audit` checks local copies against
   them.
@@ -148,6 +160,11 @@ poetry run eu-wheat regions --crops snapshots/eurostat-maize-2026-10-26 --nuts-c
 poetry run eu-wheat maize-weather --eobs-dir data/eobs --boundaries-dir data/boundaries --output docs/maize/weather.csv --seasons docs/maize/season.csv   # about an hour
 poetry run eu-wheat maize-panel --crops snapshots/eurostat-maize-2026-10-26
 poetry run eu-wheat maize-estimate   # beside wheat under Amendment A1
+# Maize, Amendment A2 (METHODS.md, section 10)
+poetry run eu-wheat fetch-mirca        # the MIRCA-OS map of maize, 172 MB, into data/mirca (needs bsdtar)
+poetry run eu-wheat fetch-irrigation   # Eurostat's irrigated maize in 2023, for the map check
+poetry run eu-wheat maize-a2-weather   # the season weather under three weightings, about 2 minutes
+poetry run eu-wheat maize-amend --crops snapshots/eurostat-maize-2026-10-26   # beside the registered results
 poetry run eu-wheat publication            # values, article and figures; --check compares
 poetry run pytest
 poetry run ruff check src tests
