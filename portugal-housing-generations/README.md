@@ -12,8 +12,9 @@ python analysis.py
 python -m unittest discover -p 'test_*.py'
 ```
 
-`results.json` contains the annual HPI and arithmetic summaries. To refresh the
-Eurostat source, download the URL below and replace the dated snapshot; update
+`results.json` contains the annual HPI, income, normalized price/income index,
+and arithmetic summaries. To refresh a
+Eurostat source, download the URLs below and replace the dated snapshots; update
 the filename and the script/test defaults as part of a reviewed change. The
 snapshot is intentionally pinned to avoid silent changes when Eurostat revises
 historical values.
@@ -33,11 +34,30 @@ historical values.
    https://www.oecd.org/en/publications/oecd-economic-surveys-portugal-2026_025b3445-en/full-report/tackling-portugal-s-housing-affordability-challenge-promoting-sustainable-and-inclusive-housing_c920df36.html
    The 2021 dwelling stock: 12% vacant and 19% used as holiday/secondary homes.
    These categories do **not** indicate immediately available market supply.
+4. Eurostat `ilc_di03`: Portugal, `statinfo=MED_EI`, `unit=EUR`,
+   `age=TOTAL`, `sex=T`; annual median equivalised net income of the overall
+   population, not young people's earnings:
+   https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/ilc_di03?geo=PT&age=TOTAL&sex=T&statinfo=MED_EI&unit=EUR
+   Accessed 2026-10-29; dataset update timestamp preserved.
+
+## Relative price/income index
+
+For each year with both series, compute
+
+`100 * (HPI[year] / HPI[2015]) / (income[year] / income[2015])`.
+
+This yields a *national relative price/income growth proxy* (2015=100), not
+the number of median-income years required to purchase a typical home. It uses
+the house-price transaction index, not a fixed dwelling's sale price, and
+income from an equivalised household survey population, not borrower income.
+The European Union Statistics on Income and Living Conditions income reference
+period and the index's calendar year may differ; nominal index comparisons are
+descriptive and should not be construed as an exact affordability measure.
 
 ## What the calculations support
 
-- Nominal house-price-index changes between the stated years, not price-to-income
-  affordability (income data are not in this dataset).
+- Nominal house-price-index changes and a relative house-price/income-growth
+  proxy for overlapping years; no mortgage interest or down payment adjustment.
 - A 19 percentage-point ownership gap between two cohorts at the same age.
 - The stated breakdown of non-primary-residence dwellings in 2021.
 
