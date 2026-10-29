@@ -19,3 +19,5 @@ mc-dropout-posterior/**/*.csv -filter -diff -merge text
 routing-on-real-roads/**/*.csv -filter -diff -merge text
 iberian-electricity-lp/**/*.csv -filter -diff -merge text
 tenure-by-age-at-hire/**/*.csv -filter -diff -merge text
+portugal-housing-generations/**/*.csv -filter -diff -merge text
+portugal-housing-generations/data/ecb_mir_*.csv -filter -text

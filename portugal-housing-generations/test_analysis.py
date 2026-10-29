@@ -1,12 +1,18 @@
 """Offline regression checks for the Eurostat parser and descriptive statistics."""
 
+import csv
 import json
+import math
 import tempfile
 import unittest
+from collections.abc import Callable
 from pathlib import Path
 
 from analysis import (
+    annual_mean_rates,
+    annuity_factor,
     construction_intensity,
+    decompose_payment_change,
     parse_completed_dwellings,
     parse_demographic_totals,
     parse_dwellings_permitted,
@@ -14,11 +20,15 @@ from analysis import (
     parse_housing_overburden,
     parse_income,
     parse_leaving_age,
+    parse_mortgage_rates,
     parse_parental_coresidence,
     parse_tenure,
+    payment_to_income_index,
     relative_affordability,
     summarize,
+    verify_snapshot,
 )
+from fetch_mortgage_rates import check_body
 
 
 class AnalysisTests(unittest.TestCase):
@@ -190,6 +200,134 @@ class AnalysisTests(unittest.TestCase):
         raw["dimension"]["unit"]["category"]["index"] = {"NR": 0}
         with self.assertRaises(ValueError):
             parse_demographic_totals(raw, households=True)
+
+
+RATE_CSV = Path(__file__).parent / "data" / "ecb_mir_PT_house_purchase_cost_of_borrowing_2026-10-29.csv"
+RATE_RECORD = Path(__file__).parent / "data" / "ecb_mir_PT_house_purchase_cost_of_borrowing_2026-10-29.meta.json"
+
+
+def _rewrite_rate_csv(directory: str, edit: Callable[[list[dict[str, str]]], None]) -> Path:
+    """Copy the pinned ECB file with ``edit`` applied to its rows."""
+    with RATE_CSV.open(newline="", encoding="utf-8") as source:
+        reader = csv.DictReader(source)
+        fieldnames = list(reader.fieldnames or [])
+        rows = list(reader)
+    edit(rows)
+    path = Path(directory) / "rates.csv"
+    with path.open("w", newline="", encoding="utf-8") as target:
+        writer = csv.DictWriter(target, fieldnames=fieldnames)
+        writer.writeheader()
+        writer.writerows(rows)
+    return path
+
+
+class MortgageCostTests(unittest.TestCase):
+    """The ECB cost-of-borrowing snapshot and the payment-to-income index built on it."""
+
+    def test_snapshot_matches_retrieval_record(self) -> None:
+        record = verify_snapshot(RATE_CSV, RATE_RECORD)
+        self.assertEqual(record["series_key"], "MIR.M.PT.B.A2C.AM.R.A.2250.EUR.N")
+        self.assertEqual(record["http_status"], 200)
+        self.assertEqual(check_body(RATE_CSV.read_bytes()), 284)
+
+    def test_snapshot_detects_line_ending_normalisation(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            copy = Path(directory) / "rates.csv"
+            copy.write_bytes(RATE_CSV.read_bytes().replace(b"\r\n", b"\n"))
+            with self.assertRaises(ValueError):
+                verify_snapshot(copy, RATE_RECORD)
+
+    def test_official_monthly_and_annual_values(self) -> None:
+        monthly, flags = parse_mortgage_rates(RATE_CSV)
+        self.assertEqual(len(monthly), 284)
+        self.assertEqual(monthly["2003-01"], 4.4)
+        self.assertEqual(min(monthly), "2003-01")
+        self.assertEqual(max(monthly), "2026-08")
+        self.assertEqual(flags, {})
+        annual, incomplete = annual_mean_rates(monthly)
+        self.assertEqual(annual[2021], 0.83)
+        self.assertAlmostEqual(annual[2023], 4.1308, places=4)
+        self.assertEqual(incomplete, {2026: 8})
+        self.assertNotIn(2026, annual)
+
+    def test_rate_parser_rejects_other_series_unit_gaps_and_duplicates(self) -> None:
+        def other_country(rows: list[dict[str, str]]) -> None:
+            rows[0]["REF_AREA"] = "ES"
+
+        def other_unit(rows: list[dict[str, str]]) -> None:
+            rows[5]["UNIT"] = "PC"
+
+        def gap(rows: list[dict[str, str]]) -> None:
+            del rows[10]
+
+        def duplicate(rows: list[dict[str, str]]) -> None:
+            rows.insert(3, dict(rows[2]))
+
+        def implausible(rows: list[dict[str, str]]) -> None:
+            rows[7]["OBS_VALUE"] = "-0.5"
+
+        for edit in (other_country, other_unit, gap, duplicate, implausible):
+            with self.subTest(edit=edit.__name__), tempfile.TemporaryDirectory() as directory:
+                with self.assertRaises(ValueError):
+                    parse_mortgage_rates(_rewrite_rate_csv(directory, edit))
+
+    def test_missing_month_is_not_filled(self) -> None:
+        def blank_march_2010(rows: list[dict[str, str]]) -> None:
+            for row in rows:
+                if row["TIME_PERIOD"] == "2010-03":
+                    row["OBS_VALUE"] = ""
+
+        with tempfile.TemporaryDirectory() as directory:
+            monthly, _ = parse_mortgage_rates(_rewrite_rate_csv(directory, blank_march_2010))
+        self.assertNotIn("2010-03", monthly)
+        annual, incomplete = annual_mean_rates(monthly)
+        self.assertNotIn(2010, annual)
+        self.assertEqual(incomplete[2010], 11)
+
+    def test_annuity_factor(self) -> None:
+        self.assertAlmostEqual(annuity_factor(0.0, 30), 1 / 360)
+        self.assertAlmostEqual(annuity_factor(6.0, 30), 0.00599551, places=8)
+        self.assertLess(annuity_factor(1.0, 30), annuity_factor(4.0, 30))
+        self.assertGreater(annuity_factor(3.0, 25), annuity_factor(3.0, 40))
+        for rate, term in ((-1.0, 30), (3.0, 0)):
+            with self.assertRaises(ValueError):
+                annuity_factor(rate, term)
+
+    def test_constant_rate_reduces_to_price_income_index(self) -> None:
+        hpi = {2015: 100.0, 2020: 150.0, 2025: 250.0}
+        income = {2015: 10.0, 2020: 12.0, 2025: 15.0}
+        flat = {2015: 2.0, 2020: 2.0, 2025: 2.0}
+        self.assertEqual(payment_to_income_index(hpi, income, flat), relative_affordability(hpi, income))
+
+    def test_income_alignment_and_missing_years(self) -> None:
+        hpi = {2015: 100.0, 2016: 110.0, 2017: 120.0}
+        income = {2015: 10.0, 2016: 11.0, 2017: 12.0}
+        rates = {2015: 2.0, 2016: 2.0, 2017: 2.0}
+        same_year = payment_to_income_index(hpi, income, rates)
+        next_survey = payment_to_income_index(hpi, income, {2015: 2.0, 2016: 2.0, 2017: 2.0}, income_survey_offset=1)
+        self.assertEqual(same_year[2016], 100.0)
+        self.assertEqual(next_survey[2015], 100.0)
+        self.assertEqual(next_survey[2016], round(100 * 1.1 / (12 / 11), 2))
+        self.assertNotIn(2017, next_survey)  # survey 2018 is not available; nothing is extrapolated
+        del rates[2016]
+        self.assertNotIn(2016, payment_to_income_index(hpi, income, rates))
+
+    def test_decomposition_is_an_exact_identity(self) -> None:
+        hpi = parse_hpi(json.loads((Path(__file__).parent / "data" / "eurostat_prc_hpi_a_PT_2026-10-29.json").read_text(encoding="utf-8")))
+        income = parse_income(json.loads((Path(__file__).parent / "data" / "eurostat_ilc_di03_PT_2026-10-29.json").read_text(encoding="utf-8")))
+        rates, _ = annual_mean_rates(parse_mortgage_rates(RATE_CSV)[0])
+        index = payment_to_income_index(hpi, income, rates)
+        parts = decompose_payment_change(hpi, income, rates, 2021, 2023)
+        self.assertAlmostEqual(parts["total"], parts["price"] + parts["financing_cost"] - parts["income"], places=1)
+        self.assertAlmostEqual(parts["total"], 100 * math.log(index[2023] / index[2021]), places=1)
+        self.assertGreater(parts["financing_cost"], parts["price"])  # 2021-2023 was driven by the rate rise
+        with self.assertRaises(ValueError):
+            decompose_payment_change(hpi, income, rates, 2015, 2026)
+
+    def test_fetch_check_rejects_other_series(self) -> None:
+        body = RATE_CSV.read_bytes().replace(b"MIR.M.PT.", b"MIR.M.ES.", 1)
+        with self.assertRaises(ValueError):
+            check_body(body)
 
 
 if __name__ == "__main__":

@@ -12,6 +12,13 @@ python analysis.py
 python -m unittest discover -p 'test_*.py'
 ```
 
+The workflow `.github/workflows/portugal-housing-generations.yml` runs the tests
+and rebuilds `results.json` on every pull request; the build fails if the
+committed file differs. `fetch_mortgage_rates.py` is the only script that touches
+the network. It is run by that workflow's manual `fetch-mortgage-rates` job,
+dispatched on a branch other than `main`, which commits the dated response and
+its retrieval record to that branch for review; `analysis.py` never downloads.
+
 `results.json` contains the annual HPI, income, normalized price/income index,
 and arithmetic summaries. To refresh a
 Eurostat source, download the URLs below and replace the dated snapshots; update
@@ -89,6 +96,40 @@ historical values.
     https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/demo_pjan?geo=PT&age=TOTAL&sex=T
     This is a date-specific demographic stock, not a calendar-year average.
     Both sources accessed 2026-10-29, with source update timestamps pinned.
+14. ECB MFI interest rate statistics (MIR), series
+    `MIR.M.PT.B.A2C.AM.R.A.2250.EUR.N`, *Cost of borrowing for households for
+    house purchase*, Portugal, monthly, percent per annum (`UNIT=PCPA`), source
+    agency code `PT2` (Banco de Portugal), January 2003 to August 2026:
+    https://data-api.ecb.europa.eu/service/data/MIR/M.PT.B.A2C.AM.R.A.2250.EUR.N?format=csvdata
+    Retrieved 2026-10-29T14:49:43Z by `fetch_mortgage_rates.py` on a GitHub
+    Actions runner (response `Last-Modified: Thu, 01 Oct 2026 08:00:00 GMT`).
+    The raw SDMX-CSV is stored byte for byte, with its original CRLF line
+    endings (`.gitattributes` marks it `-text`). Next to it,
+    `*.meta.json` records the URL, retrieval time, HTTP status, headers and
+    SHA-256; `analysis.py` refuses to run if the file no longer matches.
+    Definition, from the response's `TITLE_COMPL`: annualised agreed rate
+    (AAR) / narrowly defined effective rate (NDER) on *new business* lending to
+    households and NPISH for house purchase, in euro, by monetary financial
+    institutions; the total across rate-fixation periods is weighted by new
+    business volumes with a moving average. Every observation has status `A`
+    (normal); the response carries no break flags. The ECB documents one change
+    in content: from reference period December 2014 renegotiated loans are also
+    reported separately (Regulation ECB/2013/34), and "new business" has always
+    included renegotiations of existing loans, not only first-time borrowing:
+    https://data.ecb.europa.eu/methodology/bank-interest-rates
+15. Banco de Portugal, macroprudential recommendation on new consumer and
+    housing credit (in force since July 2018; amended version applies to
+    agreements from 1 April 2022): maximum original maturity of 40 years for
+    borrowers aged 30 or under, 37 years from 31 to 35 and 35 years above 35, with
+    average maturity converging to 30 years by the end of 2022. Used only to
+    choose the loan terms below:
+    https://www.bportugal.pt/sites/default/files/documents/2024-01/31012022_Recomendacao_versao_alteradora_EN.pdf
+16. INE, EU-SILC quality report for Portugal (Eurostat metadata `ilc_simsilc_pt`):
+    income refers to the calendar year *before* the survey; the 2024 survey
+    introduced administrative tax data for contributory old-age pensions, a break
+    that lowers pension values. The Eurostat `ilc_di03` snapshots flag only a
+    2004 break (`b`):
+    https://ec.europa.eu/eurostat/cache/metadata/en/ilc_simsilc_pt.htm
 
 ## Relative price/income index
 
@@ -193,10 +234,76 @@ completions to declare a national housing shortage: the former is a stock
 estimate and the latter a selected gross construction flow, and geographic
 matching, replacement, vacancy, and conversion are unobserved.
 
+## Mortgage financing cost and the initial payment
+
+`initial_payment_to_income_index_2015_100` turns the price/income index into the
+first monthly instalment on a new loan relative to income. For calendar year
+*t* and base year 2015:
+
+`100 * (HPI[t] / HPI[2015]) * (a(r[t]) / a(r[2015])) / (Y[t+k] / Y[2015+k])`
+
+where `a(r)` is the level-payment annuity factor for a loan at annual rate *r*
+(compounded monthly) over 30 years, *r* is the unweighted mean of the twelve
+monthly cost-of-borrowing values (2026 has eight months and gets no annual
+value), and *Y* is median equivalised net income. Two alignments are reported:
+`survey_year_alignment` (*k* = 0) pairs prices with the EU-SILC survey of the
+same year, as the price/income index above does; and
+`income_reference_year_alignment` (*k* = 1) pairs them with the next survey,
+whose income refers to year *t*, so the last year it covers is 2024. With a
+constant rate the index reduces exactly to the price/income index.
+`initial_payment_to_income_index_term_sensitivity_2015_100` repeats the
+income-reference-year version with 25-, 35- and 40-year terms.
+`initial_payment_to_income_change_log_points` splits the change between two
+years into price, financing-cost and income terms (100 × natural-log ratios,
+which add up exactly: total = price + financing cost − income).
+
+What the numbers show (2015 = 100; survey-year alignment first, then
+income-reference-year alignment):
+
+- The annual mean cost of borrowing fell from 2.38% in 2015 to 0.83% in 2021,
+  rose to 4.13% in 2023 and was 3.94% in 2024 and 2.99% in 2025. It was 5.43%
+  in 2008.
+- From 2015 to 2021 the price/income index rose to 128.4. The initial-payment
+  index ended at 103.7 (108.7): lower rates offset 21.4 log points of a 52.4
+  log-point price rise.
+- From 2021 to 2023 the payment index rose to 183.1 (178.2), +56.9 (+49.5) log
+  points. The financing-cost term, +43.5, was larger than the price term, +19.8.
+- 2023 is the highest year of the series under both alignments and every term
+  tested, above 2008 (161.4; 165.2), the first year of the price index and the
+  year with the highest annual cost of borrowing (5.43%). In 2025 the index was
+  166.5, still 66% above 2015, with prices up 24.9 log points since 2023,
+  financing cost down 14.2 and income up 20.2.
+- Longer terms make the payment more sensitive to the rate. With a 40-year
+  term the 2023 index is 188.4; with 25 years, 172.8. Whether 2024 lies above
+  2008 depends on the term: it does at 25 and 30 years (161.6 against 157.1;
+  166.2 against 165.2) and does not at 35 and 40 years (170.6 against 172.9;
+  174.8 against 180.3).
+
+What it is **not**:
+
+- Not a repayment burden of any household. The loan is assumed proportional to
+  the house price index (constant loan-to-value and dwelling quality); fees,
+  insurance, taxes and the deposit are left out; the rate is an AAR/NDER, not the
+  annual percentage rate of charge.
+- Not the payment path of a cohort. On a variable-rate or short-fixation loan
+  the instalment moves with market rates after the first reset; the index
+  describes the cost of entry only, at the average rate of the year of entry.
+- The rate covers renegotiated as well as first-time loans and is a national
+  average over borrowers who obtained credit; it says nothing about those who
+  were refused, and the 2018 macroprudential limits changed who qualifies.
+- The decomposition is an accounting identity, not a counterfactual. Rates and
+  house prices are jointly determined, so "prices without the rate fall" is not
+  identified by these series; nor does the index measure an effect of interest
+  rates on household formation, ownership or voting.
+- Income is one national median for the whole population. The INE-documented
+  2024 break in pension values affects it, the base years differ between the
+  two alignments, and young buyers' incomes are not observed here.
+
 ## What the calculations support
 
-- Nominal house-price-index changes and a relative house-price/income-growth
-  proxy for overlapping years; no mortgage interest or down payment adjustment.
+- Nominal house-price-index changes, a relative house-price/income-growth
+  proxy for overlapping years, and an initial-mortgage-payment/income index
+  that adds the cost of borrowing on new loans; neither includes the deposit.
 - A 19 percentage-point ownership gap between two cohorts at the same age.
 - The stated breakdown of non-primary-residence dwellings in 2021.
 
