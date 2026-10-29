@@ -20,6 +20,7 @@ on:
           - mortgage-rates
           - regional
           - affordability
+          - rental
         default: mortgage-rates
 
 permissions:
@@ -48,14 +49,16 @@ jobs:
           python analysis.py > /dev/null
           python regional.py > /dev/null
           python affordability.py > /dev/null
+          python rental.py > /dev/null
           git diff --exit-code -- results.json results_regional.json regional_panel.csv \
-            results_affordability.json affordability_panel.csv
+            results_affordability.json affordability_panel.csv results_rental.json rental_panel.csv
 
       - name: Check that the figure scripts run
         run: |
           python -m pip install matplotlib==3.11.2
           python regional_figures.py
           python affordability_figures.py
+          python rental_figures.py
 
   # Refreshing the ECB series is a manual, reviewed step: dispatch this workflow
   # on a branch other than main; the job commits the dated raw response and its
@@ -97,7 +100,7 @@ jobs:
           fi
 
   fetch-regional:
-    if: github.event_name == 'workflow_dispatch' && github.ref != 'refs/heads/main' && (inputs.task == 'regional' || inputs.task == 'affordability')
+    if: github.event_name == 'workflow_dispatch' && github.ref != 'refs/heads/main' && (inputs.task == 'regional' || inputs.task == 'affordability' || inputs.task == 'rental')
     runs-on: ubuntu-latest
     timeout-minutes: 300
     permissions:

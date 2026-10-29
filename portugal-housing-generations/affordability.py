@@ -75,6 +75,7 @@ class Series:
     names: dict[str, str] = field(default_factory=dict)
     dims: dict[str, dict[str, str]] = field(default_factory=dict)
     retrieved: list[str] = field(default_factory=list)
+    unknown_geo_rows: int = 0
 
     def combo(self, dims: dict[str, str] | None = None) -> tuple[str, ...]:
         """The dimension-code tuple for a selection such as {"3": "H.1"} (every extra dimension must be named)."""
@@ -108,8 +109,14 @@ class Series:
         return sorted({year for _geo, year, _combo in self.values})
 
 
-def parse_series(path: Path) -> Series:
-    """Decode a container; quarterly series keep only fourth quarters (12 months to December)."""
+def parse_series(path: Path, allow_zero: bool = False, skip_unknown_geo: bool = False) -> Series:
+    """Decode a container; quarterly series keep only fourth quarters (12 months to December).
+
+    Values must be positive (prices, incomes); ``allow_zero`` accepts zeros for counts and shares.
+    Rows for a geographic code missing from INE's own metadata are an error, unless
+    ``skip_unknown_geo`` (old census tables with withdrawn parish codes), when they
+    are counted in ``Series.unknown_geo_rows`` and left out.
+    """
     header, responses = R.read_container(path)
     meta = json.loads(responses[0]["body"])[0]
     if meta["IndicadorCod"] != header["indicator"]:
@@ -149,14 +156,17 @@ def parse_series(path: Path) -> Series:
                 raise ValueError(f"{path.name}: unexpected quarter in {label}")
             for row in rows:
                 if row["geocod"] not in series.levels:
-                    raise ValueError(f"{path.name}: unknown geographic code {row['geocod']}")
+                    if not skip_unknown_geo:
+                        raise ValueError(f"{path.name}: unknown geographic code {row['geocod']}")
+                    series.unknown_geo_rows += 1
+                    continue
                 combo = tuple(category(n, row[f"dim_{n}"]) for n in other)
                 key = (row["geocod"], year, combo)
                 if key in series.values or key in series.unavailable:
                     raise ValueError(f"{path.name}: duplicate {key}")
                 if "valor" in row and row["valor"] not in ("", None):
                     value = float(row["valor"])
-                    if value <= 0:
+                    if value < 0 or (value == 0 and not allow_zero):
                         raise ValueError(f"{path.name}: non-positive value {key}")
                     series.values[key] = value
                 else:

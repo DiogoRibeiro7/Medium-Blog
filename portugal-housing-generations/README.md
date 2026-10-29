@@ -15,13 +15,16 @@ python -m unittest discover -p 'test_*.py'
 The regional panel (section below) is built by `python regional.py`, which writes
 `results_regional.json` and `regional_panel.csv`; the affordability panel by
 `python affordability.py`, which writes `results_affordability.json` and
-`affordability_panel.csv`. Their figures need matplotlib (`pip install
-matplotlib==3.11.2`, then `python regional_figures.py` and `python
-affordability_figures.py`). Everything else uses the standard library only.
+`affordability_panel.csv`; the rental analysis by `python rental.py`, which
+writes `results_rental.json` and `rental_panel.csv`. Their figures need
+matplotlib (`pip install matplotlib==3.11.2`, then `python regional_figures.py`,
+`python affordability_figures.py` and `python rental_figures.py`). Everything
+else uses the standard library only.
 
 The workflow `.github/workflows/portugal-housing-generations.yml` runs the tests
 and rebuilds `results.json`, `results_regional.json`, `regional_panel.csv`,
-`results_affordability.json` and `affordability_panel.csv` on every pull request;
+`results_affordability.json`, `affordability_panel.csv`, `results_rental.json`
+and `rental_panel.csv` on every pull request;
 the build fails if a committed file differs. `fetch_mortgage_rates.py` is the only script that touches
 the network. It is run by that workflow's manual `fetch-mortgage-rates` job,
 dispatched on a branch other than `main`, which commits the dated response and
@@ -663,6 +666,233 @@ Figures: `figures/fig_affordability_price_vs_income_growth.png`,
 `fig_affordability_m2_per_income_year.png`, `fig_affordability_index_base_years.png`
 and `fig_affordability_definitions.png`.
 
+## Rental market: rents, tenure and housing-cost burden
+
+`rental.py` sets three rent measures side by side, plus tenure and housing-cost
+burden. It writes `results_rental.json` and `rental_panel.csv`;
+`rental_figures.py` draws the figures. Nothing is spliced across measures,
+methods or geographies, and nothing here identifies a cause. Immigration,
+tourism, investment demand and regulation are not tested.
+
+### Three rent measures and the populations behind them
+
+| Measure | What it covers | Population | Source |
+|---|---|---|---|
+| Median rent per m² of **new lease contracts** | Contracts for family dwellings registered with the tax authority in the year | Dwellings let in that year (movers) | INE, *Estatísticas de rendas da habitação ao nível local* |
+| **Mean monthly rent** at the census | All rented dwellings of usual residence, old and new contracts, social rents included | Every tenancy on census day | INE, Censos 2001, 2011, 2021 |
+| **HICP actual rentals** (COICOP 04.1) | Price change of the rents that tenants pay, quality-adjusted | Sitting tenants (an index, not a level) | Eurostat `prc_hicp_aind` |
+| Rent share, tenure, overburden | Rent and housing costs as reported in a household survey | Persons in private households | Eurostat EU-SILC |
+
+**Advertised asking rents** are published by no official source. Property-portal
+listings have their own coverage, duplicates and listing biases, and are not
+used. The contracted rents above are what tenants agreed to pay, as registered.
+The HICP measures how rents change for the same kind of tenancy and has no rent
+level.
+
+### Sources
+
+All series were downloaded on 2026-10-29 by `fetch_regional.py --set rental` on
+a GitHub Actions runner: Eurostat at 21:04 UTC, INE between 21:13 and 22:06 UTC.
+Every INE response is stored with its SHA-256, and every Eurostat body with a
+`.meta.json` retrieval record. `rental.py` checks all of them before reading.
+
+- **INE, new leases** (latest update 2026-09-29):
+  - `0014698` median rent per m², 2026 method, NUTS 2024, 2020–2025;
+  - `0014697` number of contracts;
+  - `0014711` quartiles;
+  - `0014700`/`0014699` contracts whose tenant is resident in Portugal, regions
+    and municipalities over 100,000 inhabitants, 12 months to Q4;
+  - `0012600`/`0012601` the 2021 method on NUTS 2024, 2020–2024;
+  - `0009631`/`0009632` the 2021 method on NUTS 2013, 2017–2023.
+- **INE, censuses:**
+  - `0012521`, `0006993`, `0000977` share of dwellings rented, 1991–2021;
+  - `0012522`, `0006995`, `0000777` mean monthly rent, 2001–2021;
+  - Census 2021 tenancies by contract date (`0012508`), rental support
+    (`0012529`; `0011522` for unsupported tenancies by contract date), years in
+    the dwelling (`0012528`) and rent band by contract date for Portugal
+    (`0011501`).
+  - The 1991/2001 tables carry 3 rows for parish codes absent from INE's own
+    metadata; they are counted and skipped.
+- **INE, overburden by NUTS 2** (EU-SILC as published by INE): `0006260` on
+  NUTS 2013, 2004–2025, and `0014472` on NUTS 2024, 2024–2025.
+- **Eurostat EU-SILC** (update 2026-10-20):
+  - `ilc_lvho07c` overburden by tenure;
+  - `ilc_lvho02` tenure by poverty status;
+  - `ilc_mded02` share of rent in disposable income;
+  - `ilc_di09` median income by tenure;
+  - `ilc_lvho25` overburden by citizenship (adults);
+  - `ilc_lvho07d` overburden by degree of urbanisation.
+- **Eurostat HICP:** `prc_hicp_aind`, CP041 and CP00, Portugal and the euro
+  area, 1996–2025 (update 2026-02-06).
+- **Already pinned:** INE IRS income (`0012712`) and EU-SILC median income
+  (`ilc_di03`). EU-SILC income refers to the year before the survey, and both
+  alignments are reported.
+
+### Checks
+
+- New-lease medians are complete for Portugal and all 9 NUTS 2 and 26 NUTS 3
+  regions in 2020–2025. Municipal medians are published for 222 of 308
+  municipalities in 2020 and 247 in 2025, and 217 have both rent and income in
+  every year 2020–2024. INE's second quartile equals its published median in
+  every cell.
+- **Method 2021 vs 2026** (2020–2024): the median NUTS 3 difference is 2.1%, and
+  75% of cells are within 5%. For Portugal the 2026 method is 3–6% higher, and
+  annual growth over 2020–2024 is 10.0% against 9.2% under the 2021 method.
+  Only the 2026 method is used for 2020–2025.
+- The 2021-method tables on NUTS 2013 and NUTS 2024 are identical in all 88
+  cells of the 22 regions that did not change.
+- The EU-SILC overburden rates by tenure, weighted by the tenure shares,
+  reproduce the published total within 0.1 points in every year 2005–2025.
+- Census 2021 tenancy counts add up across contract periods and support
+  categories in every region.
+
+### What the data show
+
+**New leases rose faster than incomes almost everywhere (2020–2024).**
+
+- *Portugal:* the median rent per m² of new contracts rose from €5.79 to €8.47
+  (+10.0% a year) and reached €9.29 in 2025. Median gross household income (IRS)
+  rose 5.5% a year, so rents outpaced income by 16.6 log points (+18% in the
+  ratio).
+- *Regions:* rents outpaced income in 8 of 9 NUTS 2 regions, 24 of 26 NUTS 3
+  regions and 190 of 217 municipalities. The exceptions were the Açores and
+  Alto Tâmega e Barroso.
+- *Growth rates were unrelated:* across NUTS 3 regions, rent growth and income
+  growth were weakly negatively correlated (−0.24), and uncorrelated across
+  municipalities (−0.05).
+- *Disparities were broadly stable:*
+  - the spread of new-lease rents across NUTS 3 regions changed little
+    (coefficient of variation 0.34 in 2020, 0.36 in 2025);
+  - within Portugal, the third-to-first quartile ratio moved from 2.34 to 2.40.
+- *The same pattern appears earlier:* under the 2021 method, Portugal's new-lease
+  rents rose 10.1% a year in 2017–2019, the former Área Metropolitana de Lisboa's
+  15.4% and Porto's 12.1%.
+
+**Lisbon and Porto.**
+
+| Area | Rent €/m², 2020 → 2025 | Rent growth 2020–24 | Income growth 2020–24 | m² per month of income, 2020 → 2024 |
+|---|---|---|---|---|
+| Grande Lisboa | 9.38 → 14.19 | 9.2% | 3.6% | 129 → 104 |
+| Lisboa (municipality) | 11.54 → 16.88 | 9.0% | 2.9% | 114 → 90 |
+| Península de Setúbal | 6.63 → 11.05 | 11.3% | 4.1% | 176 → 135 |
+| Área Metropolitana do Porto | 6.14 → 10.17 | 10.5% | 6.2% | 171 → 146 |
+| Porto (municipality) | 8.97 → 14.13 | 10.2% | 3.1% | 128 → 98 |
+| Portugal | 5.79 → 9.29 | 10.0% | 5.5% | 181 → 153 |
+
+*m² per month of income* is the median gross household income for one month
+divided by the median new-lease rent per m². It is a ratio of medians from two
+different populations, not the rent any household pays.
+
+**Sitting tenants and the stock of tenancies tell a different story.**
+
+- *HICP index:* actual rentals rose 2.5% a year in 2001–2011, 2.1% in 2011–2021
+  and 4.9% in 2021–2025 (euro area 2.3% in 2020–2025). Measured against EU-SILC
+  median equivalised income (income-year alignment), this index fell to 79 in
+  2024 (2015 = 100), or 90 with base 2019. By that measure, rents for comparable
+  ongoing tenancies grew more slowly than income.
+- *Census mean rent:* it rose faster than the index, from €123 (2001) to €235
+  (2011) and €334 (2021), i.e. +6.7% then +3.6% a year. In the Lisboa
+  municipality it went from €118 to €269 and €471; in Porto from €94 to €191 and
+  €318. The two are consistent: the census mean also moves as old, low-rent
+  contracts end and new ones begin, which the quality-adjusted index excludes.
+- *Contract dates in 2021:*
+  - 45% of the 922,810 tenancies had been signed in 2017–2021, 20% in 2012–2016
+    and 16% before 1991;
+  - in the Lisboa and Porto municipalities, 24% and 26% of unsupported tenancies
+    were pre-1991 contracts;
+  - pre-1987 contracts had a median rent band of €100–150, with 68% below €100;
+    contracts from 2017–2021 had a median band of €300–400, with 30% at €500 or
+    more.
+- *Rent share:* EU-SILC's share of rent in disposable household income
+  (`ilc_mded02`) rose from 16% (2004) to 21% (2019) and 24% (2025); below the
+  poverty threshold it was 33%.
+
+**Who pays market rents.**
+
+- *EU-SILC:* tenants at market rent were 10.8% of the population in 2004, 13.2%
+  in 2019, 10.9% in 2021 (pandemic-year surveys) and 16.3% in 2025. Tenants at a
+  reduced rent or free fell from 14.6% to 12.5%. Market-rent tenants went from
+  43% to 57% of all tenants. Among people below the poverty threshold, the
+  market-rent share rose from 12.6% to 23.9%.
+- *Censuses:* the share of dwellings rented fell from 27.5% (1991) to 19.9%
+  (2011) and rose to 22.3% (2021). In the Lisboa municipality it fell from 60% to
+  42%, and in Porto from 59% to 44%.
+- *Support in 2021:* 93.1% of tenancies had no rental support. 4.3% paid a
+  social or supported rent and 2.5% received a rent subsidy. "Without support"
+  is not the same as "at market rent": contracts from before 1990 were signed
+  under earlier rent laws, and the census does not say how far their rents are
+  from market levels.
+
+**Housing-cost overburden** (housing costs above 40% of disposable income):
+
+- *Trend:* 4.3% of the population in 2005, 9.2% at the 2014 peak, 4.1% in 2020
+  and 6.2% in 2025.
+- *By tenure:* market-rent tenants are by far the most exposed: 22.5% in 2005,
+  35.8% in 2012, 26.3% in 2019 and 27.2% in 2025. Owners with a mortgage were at
+  3.0% in 2025.
+- *Regions (INE, NUTS 2):* the former Área Metropolitana de Lisboa went from 6.2%
+  (2018) to 9.0% (2025). On NUTS 2024 in 2025, the highest rates were Grande
+  Lisboa (10.0%) and Algarve (8.6%), the lowest Alentejo (3.7%). Cities were at
+  7.7% and rural areas at 3.3%.
+- *Composition:* between 2019 and 2025 the national rate rose 0.53 points. The
+  shift towards market-rent tenure accounts for +0.72 points, and rates within
+  each tenure group for −0.19. Over 2015–2025 the rate fell 2.84 points: −3.75
+  within groups, +0.92 composition.
+
+### Composition and selection
+
+Several features of the data can move these measures without any change in what
+a given household pays:
+
+- **Movers vs stayers.** New-lease medians describe the dwellings let that year
+  and the people who moved. A change in the mix of locations, sizes or quality
+  of the dwellings let moves the median.
+- **Turnover in the stock.** The census mean rises when old, low-rent contracts
+  end, even if no existing rent changes. The HICP tries to hold the tenancy
+  constant, which is why it rises much less.
+- **Tenure composition.** More people in market-rent tenure raises the national
+  overburden rate even when each group's rate is flat. This accounts for all of
+  the 2019–2025 rise.
+- **Who rents.** Renters' median equivalised income stayed between 0.74 and 0.86
+  times owners' since 2004 (0.75 in 2025), so the gap between the two groups
+  shows no trend.
+- **Non-resident tenants.** About 3% of new contracts in 2025 had a tenant not
+  resident in Portugal. Excluding them changes the 2025 medians by a median 0.3%,
+  and at most 1.2% (Lisboa municipality).
+- **Citizenship.** Adults with foreign citizenship had a far higher overburden
+  rate than nationals (35% vs 4% in 2025). That series rests on small samples:
+  it fell to 10% in 2018, and Eurostat flags a break in 2021. A growing group
+  with high overburden can raise the national rate by composition, but the
+  shares needed to measure this are not in these tables. No conclusion about
+  the effect of immigration follows.
+- **Survey changes.** EU-SILC 2020–2021 was collected during the pandemic, and
+  the 2024 survey changed how pensions are recorded.
+
+### Limitations
+
+- The three rent measures describe different populations and are not
+  interchangeable. A rent per m² cannot be converted into a monthly rent without
+  dwelling sizes.
+- Medians of new contracts are published only where enough contracts were
+  registered. The 61–86 municipalities without a value are left empty.
+- IRS income is gross income per tax household, not tenants' income or
+  disposable income. EU-SILC income is equivalised disposable income of all
+  persons, with a one-year lag.
+- EU-SILC is a sample survey; the regional, citizenship and tenure breakdowns
+  have wide margins of error.
+- Informal tenancies that are never registered are missing from the new-lease
+  statistics.
+- Everything here is descriptive. Changes in rents, tenure or burden are not
+  attributed to immigration, tourism, investment demand, short-term letting or
+  regulation: none of these is identified by these data.
+
+Figures:
+- `figures/fig_rental_three_measures.png`
+- `figures/fig_rental_tenure.png`
+- `figures/fig_rental_overburden.png`
+- `figures/fig_rental_regional_growth.png`
+- `figures/fig_rental_census_contracts.png`
+
 ## What the calculations support
 
 - Nominal house-price-index changes, a relative house-price/income-growth
@@ -671,6 +901,10 @@ and `fig_affordability_definitions.png`.
 - A 19 percentage-point ownership gap between two cohorts at the same age.
 - Regional transaction prices per m² rising faster than declared household income
   in 2019–2024 (and 2016–2020) in almost every region, as a ratio of medians.
+- New-lease rents per m² rising faster than declared household income in
+  2020–2024 in 24 of 26 NUTS 3 regions, while the rent index for sitting tenants
+  rose more slowly than median income; a larger share of the population renting
+  at market prices.
 - The stated breakdown of non-primary-residence dwellings in 2021.
 
 ## What they do not support
@@ -681,7 +915,7 @@ and `fig_affordability_definitions.png`.
 - Aggregating these different vintages and populations into a single causal model.
 
 Next research step: the regional panels above cover population, construction,
-census households, transaction prices and declared income; regional rents and
+census households, transaction prices, declared income and rents; regional
 credit would have to be added with the same explicit geography and source
 revisions before any causal design is specified. Electoral analysis additionally
 requires individual-level evidence to avoid ecological inference.
