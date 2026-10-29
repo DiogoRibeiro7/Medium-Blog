@@ -137,6 +137,8 @@ def values(root: Path) -> dict[str, str]:
         "line_room_pct": pct(line["with_room"] / line["periods"], 0),
         "line_full_drop": size(line["full"]["delta"]["estimate"]),
         "line_room_delta": eur(line["room"]["delta"]["estimate"]),
+        "line_full_m": eur(line["full"]["m"]["estimate"]),
+        "line_room_m": eur(line["room"]["m"]["estimate"]),
         "joint_delta": eur(ph["zones"]["joint"]["estimate"]),
         "split_delta": eur(ph["zones"]["split"]["estimate"]),
         "blocks_c01": eur(ph["blocks"]["c01_only"]["estimate"]),
