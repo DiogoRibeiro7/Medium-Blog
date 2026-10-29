@@ -46,6 +46,14 @@ COMPLETIONS_URL = (
     "https://www.pordata.pt/portugal/"
     "fogos+concluidos+em+construcoes+novas+para+habitacao+familiar+total+e+por+tipologia+do+fogo-189"
 )
+HOUSEHOLDS_URL = (
+    "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/"
+    "lfst_hhnhtych?geo=PT&unit=THS_HH&agechild=TOTAL&n_child=TOTAL&phhcomp=TOTAL"
+)
+POPULATION_URL = (
+    "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/"
+    "demo_pjan?geo=PT&age=TOTAL&sex=T"
+)
 
 
 def parse_hpi(document: dict[str, Any]) -> dict[int, float]:
@@ -400,6 +408,79 @@ def parse_completed_dwellings(path: Path) -> tuple[dict[int, int], list[int]]:
     return dict(sorted(result.items())), sorted(preliminary)
 
 
+def parse_demographic_totals(
+    document: dict[str, Any], *, households: bool,
+) -> tuple[dict[int, float], dict[int, str]]:
+    """Validate a one-category Eurostat household or population time series.
+
+    Household observations are in thousands; population observations are
+    persons on 1 January. Break/status flags are keyed to calendar year.
+    """
+    expected = (
+        {"freq": "A", "agechild": "TOTAL", "n_child": "TOTAL", "phhcomp": "TOTAL", "unit": "THS_HH", "geo": "PT"}
+        if households else {"freq": "A", "unit": "NR", "age": "TOTAL", "sex": "T", "geo": "PT"}
+    )
+    dimensions = document.get("id")
+    sizes = document.get("size")
+    if not isinstance(dimensions, list) or not isinstance(sizes, list) or len(dimensions) != len(sizes):
+        raise ValueError("Invalid demographic JSON-stat dimensions")
+    if not all(isinstance(size, int) and size > 0 for size in sizes):
+        raise ValueError("Invalid demographic JSON-stat sizes")
+    if set(dimensions) != set(expected) | {"time"}:
+        raise ValueError("Unexpected demographic dimensions")
+    for name, category in expected.items():
+        if document["dimension"][name]["category"]["index"] != {category: 0}:
+            raise ValueError(f"Unexpected demographic category: {name}")
+    if any(size != 1 for name, size in zip(dimensions, sizes, strict=True) if name != "time"):
+        raise ValueError("Expected single non-time demographic categories")
+    years = document["dimension"]["time"]["category"]["index"]
+    values = document.get("value", {})
+    statuses = document.get("status", {})
+    if not isinstance(years, dict) or not isinstance(values, dict) or not isinstance(statuses, dict):
+        raise ValueError("Invalid demographic observations or flags")
+    observations: dict[int, float] = {}
+    flags: dict[int, str] = {}
+    for year, position in years.items():
+        if not isinstance(year, str) or not year.isdigit() or not isinstance(position, int):
+            raise ValueError("Invalid demographic time index")
+        if position < 0 or position >= sizes[dimensions.index("time")]:
+            raise ValueError("Demographic time index outside shape")
+        value = values.get(str(position))
+        if value is None:
+            continue
+        if not isinstance(value, (int, float)) or isinstance(value, bool) or value <= 0:
+            raise ValueError(f"Invalid demographic observation in {year}")
+        observations[int(year)] = float(value)
+        if str(position) in statuses:
+            flag = statuses[str(position)]
+            if not isinstance(flag, str):
+                raise ValueError("Invalid demographic observation flag")
+            flags[int(year)] = flag
+    return dict(sorted(observations.items())), dict(sorted(flags.items()))
+
+
+def construction_intensity(
+    completions: dict[int, int], population: dict[int, float], households: dict[int, float],
+) -> dict[int, dict[str, float]]:
+    """Calculate completed new dwellings per 1,000 people and households.
+
+    Household totals are already in thousands, while population is in persons.
+    These stock-standardized construction flows do not estimate housing need.
+    """
+    common = sorted(completions.keys() & population.keys() & households.keys())
+    result: dict[int, dict[str, float]] = {}
+    for year in common:
+        people = population[year]
+        thousand_households = households[year]
+        if people <= 0 or thousand_households <= 0:
+            raise ValueError(f"Invalid denominator for {year}")
+        result[year] = {
+            "completed_per_1000_residents": round(1000 * completions[year] / people, 3),
+            "completed_per_1000_households": round(completions[year] / thousand_households, 3),
+        }
+    return result
+
+
 def main() -> None:
     """Read a pinned source snapshot and export auditable derived data."""
     parser = argparse.ArgumentParser(description=__doc__)
@@ -413,6 +494,8 @@ def main() -> None:
     parser.add_argument("--tenure-input", type=Path, default=Path(__file__).parent / "data" / "eurostat_ilc_lvho02_PT_2026-10-29.json")
     parser.add_argument("--permits-input", type=Path, default=Path(__file__).parent / "data" / "eurostat_sts_cobp_a_PT_dwellings_2026-10-29.json")
     parser.add_argument("--completions-input", type=Path, default=Path(__file__).parent / "data" / "ine_pordata_completed_new_dwellings_PT_2026-10-29.csv")
+    parser.add_argument("--households-input", type=Path, default=Path(__file__).parent / "data" / "eurostat_lfst_hhnhtych_PT_2026-10-29.json")
+    parser.add_argument("--population-input", type=Path, default=Path(__file__).parent / "data" / "eurostat_demo_pjan_PT_2026-10-29.json")
     parser.add_argument("--output", type=Path, default=Path(__file__).parent / "results.json")
     args = parser.parse_args()
     raw: Any = json.loads(args.input.read_text(encoding="utf-8"))
@@ -451,6 +534,12 @@ def main() -> None:
         raise ValueError("Expected permits JSON-stat object")
     permits = parse_dwellings_permitted(raw_permits)
     completed, preliminary_completed = parse_completed_dwellings(args.completions_input)
+    raw_households: Any = json.loads(args.households_input.read_text(encoding="utf-8"))
+    raw_population: Any = json.loads(args.population_input.read_text(encoding="utf-8"))
+    if not isinstance(raw_households, dict) or not isinstance(raw_population, dict):
+        raise ValueError("Expected demographic JSON-stat objects")
+    households, household_flags = parse_demographic_totals(raw_households, households=True)
+    population, population_flags = parse_demographic_totals(raw_population, households=False)
     report = {
         "source_url": EUROSTAT_URL,
         "source_updated": raw.get("updated"),
@@ -482,6 +571,15 @@ def main() -> None:
         "completed_new_family_dwellings": completed,
         "completed_new_family_dwellings_preliminary_years": preliminary_completed,
         "completed_dwellings_2015_2025_change_pct": round(100 * (completed[2025] / completed[2015] - 1), 2),
+        "households_source_url": HOUSEHOLDS_URL,
+        "households_source_updated": raw_households.get("updated"),
+        "private_households_thousands": households,
+        "private_households_status_flags": household_flags,
+        "population_source_url": POPULATION_URL,
+        "population_source_updated": raw_population.get("updated"),
+        "population_on_january_1": population,
+        "population_status_flags": population_flags,
+        "completed_new_dwellings_construction_intensity": construction_intensity(completed, population, households),
         "descriptives": summarize(series),
     }
     args.output.write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")

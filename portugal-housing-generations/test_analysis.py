@@ -6,7 +6,9 @@ import unittest
 from pathlib import Path
 
 from analysis import (
+    construction_intensity,
     parse_completed_dwellings,
+    parse_demographic_totals,
     parse_dwellings_permitted,
     parse_hpi,
     parse_housing_overburden,
@@ -157,6 +159,37 @@ class AnalysisTests(unittest.TestCase):
             )
             with self.assertRaises(ValueError):
                 parse_completed_dwellings(path)
+
+    def test_official_household_and_population_totals(self) -> None:
+        folder = Path(__file__).parent / "data"
+        household_raw = json.loads((folder / "eurostat_lfst_hhnhtych_PT_2026-10-29.json").read_text(encoding="utf-8"))
+        population_raw = json.loads((folder / "eurostat_demo_pjan_PT_2026-10-29.json").read_text(encoding="utf-8"))
+        households, flags = parse_demographic_totals(household_raw, households=True)
+        people, population_flags = parse_demographic_totals(population_raw, households=False)
+        self.assertEqual(households[2015], 4100.8)
+        self.assertEqual(households[2025], 4562.1)
+        self.assertEqual(flags[2021], "b")
+        self.assertEqual(people[2025], 10749635.0)
+        self.assertEqual(population_flags, {})
+
+    def test_construction_intensity_units_and_missing_years(self) -> None:
+        rates = construction_intensity(
+            {2024: 25000, 2025: 27301},
+            {2025: 10749635.0},
+            {2025: 4562.1},
+        )
+        self.assertEqual(list(rates), [2025])
+        self.assertEqual(rates[2025]["completed_per_1000_residents"], 2.54)
+        self.assertEqual(rates[2025]["completed_per_1000_households"], 5.984)
+        with self.assertRaises(ValueError):
+            construction_intensity({2025: 1}, {2025: 100.0}, {2025: 0.0})
+
+    def test_household_parser_rejects_wrong_unit(self) -> None:
+        path = Path(__file__).parent / "data" / "eurostat_lfst_hhnhtych_PT_2026-10-29.json"
+        raw = json.loads(path.read_text(encoding="utf-8"))
+        raw["dimension"]["unit"]["category"]["index"] = {"NR": 0}
+        with self.assertRaises(ValueError):
+            parse_demographic_totals(raw, households=True)
 
 
 if __name__ == "__main__":
