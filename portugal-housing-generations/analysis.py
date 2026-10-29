@@ -17,6 +17,10 @@ EUROSTAT_URL = (
     "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/"
     "prc_hpi_a?geo=PT&purchase=TOTAL&unit=I15_A_AVG"
 )
+INCOME_URL = (
+    "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/"
+    "ilc_di03?geo=PT&age=TOTAL&sex=T&statinfo=MED_EI&unit=EUR"
+)
 
 
 def parse_hpi(document: dict[str, Any]) -> dict[int, float]:
@@ -85,17 +89,78 @@ def summarize(series: dict[int, float]) -> dict[str, float | int]:
     }
 
 
+def parse_income(document: dict[str, Any]) -> dict[int, float]:
+    """Read Eurostat annual median equivalised net income (EUR/person).
+
+    The selection is deliberately national/all-ages: this proxy must not be
+    described as the income of young first-time buyers.
+    """
+    expected = {"freq": "A", "geo": "PT", "age": "TOTAL", "sex": "T", "statinfo": "MED_EI", "unit": "EUR"}
+    dimensions = document.get("id")
+    sizes = document.get("size")
+    if not isinstance(dimensions, list) or not isinstance(sizes, list) or len(dimensions) != len(sizes):
+        raise ValueError("Invalid income dimensions")
+    for name, code in expected.items():
+        if name not in dimensions or document["dimension"][name]["category"]["index"] != {code: 0}:
+            raise ValueError(f"Unexpected income selection: {name}")
+    if not all(isinstance(size, int) and size > 0 for size in sizes):
+        raise ValueError("Invalid income shape")
+    if any(size != 1 for name, size in zip(dimensions, sizes, strict=True) if name != "time"):
+        raise ValueError("Expected one income category per dimension")
+    years = document["dimension"]["time"]["category"]["index"]
+    observations = document.get("value", {})
+    result: dict[int, float] = {}
+    for year, position in years.items():
+        value = observations.get(str(position))
+        if value is None:
+            continue
+        if not isinstance(value, (int, float)) or isinstance(value, bool) or value <= 0:
+            raise ValueError(f"Invalid income for {year}")
+        result[int(year)] = float(value)
+    return dict(sorted(result.items()))
+
+
+def relative_affordability(hpi: dict[int, float], income: dict[int, float], base_year: int = 2015) -> dict[int, float]:
+    """Price-index / income-index proxy, normalized to 100 in `base_year`.
+
+    This is not a transaction-price-to-income multiple, repayment burden, or
+    causal estimate: it compares two national indices with different units.
+    """
+    if base_year not in hpi or base_year not in income or income[base_year] <= 0:
+        raise ValueError("Missing or invalid common base year")
+    common = sorted(hpi.keys() & income.keys())
+    return {
+        year: round(100 * (hpi[year] / hpi[base_year]) / (income[year] / income[base_year]), 2)
+        for year in common if income[year] > 0
+    }
+
+
 def main() -> None:
     """Read a pinned source snapshot and export auditable derived data."""
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--input", type=Path, default=Path(__file__).parent / "data" / "eurostat_prc_hpi_a_PT_2026-10-29.json")
+    parser.add_argument("--income-input", type=Path, default=Path(__file__).parent / "data" / "eurostat_ilc_di03_PT_2026-10-29.json")
     parser.add_argument("--output", type=Path, default=Path(__file__).parent / "results.json")
     args = parser.parse_args()
     raw: Any = json.loads(args.input.read_text(encoding="utf-8"))
     if not isinstance(raw, dict):
         raise ValueError("Expected JSON-stat object")
     series = parse_hpi(raw)
-    report = {"source_url": EUROSTAT_URL, "source_updated": raw.get("updated"), "yearly_hpi": series, "descriptives": summarize(series)}
+    raw_income: Any = json.loads(args.income_input.read_text(encoding="utf-8"))
+    if not isinstance(raw_income, dict):
+        raise ValueError("Expected income JSON-stat object")
+    income = parse_income(raw_income)
+    affordability = relative_affordability(series, income)
+    report = {
+        "source_url": EUROSTAT_URL,
+        "source_updated": raw.get("updated"),
+        "income_source_url": INCOME_URL,
+        "income_source_updated": raw_income.get("updated"),
+        "yearly_hpi": series,
+        "yearly_median_equivalised_income_eur": income,
+        "relative_price_income_index_2015_100": affordability,
+        "descriptives": summarize(series),
+    }
     args.output.write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     print(json.dumps(report["descriptives"], indent=2))
 
