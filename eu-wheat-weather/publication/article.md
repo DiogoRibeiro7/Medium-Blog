@@ -118,7 +118,7 @@ One combination comes close. Dropping the suspect yields on its own gives heat a
 
 ## And maize?
 
-A [companion piece](https://github.com/DiogoRibeiro7/Medium-Blog/blob/main/eu-wheat-weather/publication/maize/article.md) applies a similar design to grain maize, registered before any maize yield was looked at. Maize grows through the hottest weeks of the summer. By the study's rules, a dry season lowers maize yields, by −3.3%, and that result is the sturdier of the two. Heat, −4.9% for ten more degree days above 30 °C, clears the bar only just: it rests largely on Romania, and its check on the weather after maturity is split between the two methods.
+A [companion piece](https://github.com/DiogoRibeiro7/Medium-Blog/blob/main/eu-wheat-weather/publication/maize/article.md) applies a similar design to grain maize, registered before any maize yield was looked at. Maize grows through the hottest weeks of the summer. By the study's rules, a dry season lowers maize yields, by −3.3%, and that result is the sturdier of the two. Heat, −4.9% for ten more degree days above 30 °C, clears the bar only just: it rests largely on Romania, and its check on the weather after maturity is split between the two methods. A second maize analysis, registered after a critical review, measures the weather where maize grows and removes more flawed figures: both results hold, heat at −4.4% and a dry season at −3.5%, and without Romania heat is smaller, −3.0%, but still clear with two-way clustering.
 
 ## Data, code and acknowledgements
 
