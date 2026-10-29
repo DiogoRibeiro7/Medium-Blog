@@ -107,7 +107,9 @@ def _name(data: dict[str, Any]) -> str:
 
 def crossing_names(net: Network, nodes: Sequence[int], node_bank: Sequence[str]) -> list[str]:
     """The edges along a path of node indices whose two ends lie in different
-    municipalities of the pair. The two meet only in the river, so these are the bridges."""
+    municipalities of the pair. Porto and Vila Nova de Gaia meet in the Douro. The OSM
+    boundaries of Lisboa and Almada do not touch, but the bridge's edge joins a node in
+    each, so in both pairs these are the bridges (docs/REVIEW.md, M6)."""
     out: list[str] = []
     for a, b in zip(nodes, nodes[1:], strict=False):
         if node_bank[a] and node_bank[b] and node_bank[a] != node_bank[b]:

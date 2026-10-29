@@ -28,7 +28,13 @@ from routing_roads.contract import (
     SENSITIVITY_SEEDS,
     SIMULTANEOUS_LEVEL,
 )
-from routing_roads.estimates import costs, load_solves, noise_by_day, regret_by_day
+from routing_roads.estimates import (
+    LENGTH_BANDS_M,
+    costs,
+    load_solves,
+    noise_by_day,
+    regret_by_day,
+)
 from routing_roads.experiment import AREAS, VARIANTS
 from routing_roads.report import area_indices, load, matrix_summary, orders
 
@@ -38,6 +44,9 @@ WORDS = ("zero", "one", "two", "three", "four", "five", "six", "seven", "eight",
 MONTHS = ("January", "February", "March", "April", "May", "June", "July", "August",
           "September", "October", "November", "December")
 TEMPLATE = "publication/article.template.md"
+# "About as much as other legs of the same length": within 0.03 of the ratio of pairs of
+# that length (docs/RESULTS.md, after the critical review).
+LEGS_TYPICAL = 0.03
 
 
 def pct(x: float, digits: int = 1) -> str:
@@ -55,6 +64,7 @@ def points(x: float) -> str:
     """A change in percentage points, signed."""
     text = f"{100 * x:+.1f}"
     return text.replace("-", MINUS)
+
 
 
 def floor_pct(x: float) -> str:
@@ -113,7 +123,7 @@ def values(root: Path) -> dict[str, str]:
     m = d.manifest
     lisbon, porto = (p.key for p in PAIRS)
     v: dict[str, str] = {
-        "n_solves": f"{len(rows):,}", "n_days": str(DAYS), "capacity": str(CAPACITY),
+        "n_days": str(DAYS), "capacity": str(CAPACITY),
         "iterations": f"{ITERATIONS:,}", "n_seeds": word(len(SEEDS)),
         "buffer_km": f"{BUFFER_M / 1000:.0f}", "extract_file": EXTRACT,
         "extract_date": _extract_date(EXTRACT),
@@ -121,12 +131,12 @@ def values(root: Path) -> dict[str, str]:
         "simultaneous_level": f"{SIMULTANEOUS_LEVEL:.2%}",
         "porto_bridges": word(sum(1 for s in m["pairs"][porto]["crossings"]["bridges"].values()
                                   if s >= 0.01)),
+        "porto_bridge_share": pct(sum(s for s in m["pairs"][porto]["crossings"]["bridges"]
+                                      .values() if s >= 0.01)),
     }
     v["e1_min"], v["e1_max"] = _range([a["E1"]["estimate"] for a in areas])
     v["noise_min"], v["noise_max"] = _range([a["noise"]["estimate"] for a in areas],
                                             lambda x: pct(x, 2))
-    v["noise_times"] = str(10 * math.floor(
-        min(a["E1"]["estimate"] / a["noise"]["estimate"] for a in areas) / 10))
     v["r_day_min"] = floor_pct(min(float(x["regret"].min()) for x in days.values()))
     v["noise_day_max"] = ceil_pct(max(float(x["noise"].max()) for x in days.values()))
     v["e4_own_min"], v["e4_own_max"] = _range([abs(a["E4"]["own"]["estimate"]) for a in areas])
@@ -149,16 +159,14 @@ def values(root: Path) -> dict[str, str]:
               f"km_{k}": f"{ph[k]['straight']['road_km'] - ph[k]['road']['road_km']:.1f}"}
     for pair in PAIRS:
         w = e["water"][pair.key]
-        both = _area(e, pair.key, "both")
         v |= {f"e3_{pair.key}": points(w["estimate"]), f"e3_{pair.key}_low": points(w["low"]),
               f"e3_{pair.key}_high": points(w["high"]),
-              f"cross_straight_{pair.key}": pct(both["cross_bank_straight"], 0),
-              f"cross_road_{pair.key}": pct(both["cross_bank_road"], 0),
-              f"pi_{pair.key}": f"{pair.order_probability:g}"}
+              f"pi_{pair.key}": f"{pair.order_probability:g}",
+              f"orders_up_{pair.key}": pct(_area(e, pair.key, "both")["clients"]
+                                           / _area(e, pair.key, "city")["clients"] - 1, 0)}
         for area in AREAS:
             idx = area_indices(d, pair, area == "both")
             s = matrix_summary(d.road[pair.key], d.straight[pair.key], idx)
-            v[f"asym_{pair.key}_{area}"] = pct(s["asymmetry"]["p50"])
             v[f"orders_{pair.key}_{area}"] = f"{orders(d, pair, idx)['mean']:.0f}"
             if (pair.key, area) == (lisbon, "city"):
                 v |= {"alpha_lisbon_city": f"{s['ratio']['p50']:.2f}",
@@ -171,7 +179,67 @@ def values(root: Path) -> dict[str, str]:
                         and p["municipality"] == name) for name in _municipalities()}
     v |= {"n_lisboa": str(counts["Lisboa"]), "n_almada": str(counts["Almada"]),
           "n_porto": str(counts["Porto"]), "n_gaia": str(counts["Vila Nova de Gaia"])}
-    return v | _sensitivity_values(e)
+    return v | _sensitivity_values(e) | _review_values(e)
+
+
+def _review_values(e: Mapping[str, Any]) -> dict[str, str]:
+    """After the critical review (docs/REVIEW.md): route direction, the straight-line plan's
+    seed noise, the river without direction and in kilometres, and the legs."""
+    r = e["after_review"]
+    keys = [f"{p.key}_{a}" for p in PAIRS for a in AREAS]
+    ra = r["areas"]
+    lisbon, porto = (p.key for p in PAIRS)
+    v: dict[str, str] = {}
+    v["dir_min"], v["dir_max"] = _range([ra[k]["direction_share"] for k in keys],
+                                        lambda x: pct(x, 0))
+    v["dir_var_min"], v["dir_var_max"] = _range(
+        [x["share"] for x in r["direction_by_variant"]], lambda x: pct(x, 0))
+    v["same_min"], v["same_max"] = _range([ra[k]["same_routes"] for k in keys],
+                                          lambda x: pct(x, 0))
+    v["or_min"], v["or_max"] = _range([ra[k]["oriented"]["estimate"] for k in keys])
+    v["noise_s_min"], v["noise_s_max"] = _range([ra[k]["noise_straight"]["estimate"]
+                                                 for k in keys])
+    v["noise_s_flat_max"] = pct(max(ra[k]["noise_straight_on_straight"] for k in keys), 2)
+    v["times_s_min"], v["times_s_max"] = _range(
+        [e["areas"][k]["E1"]["estimate"] / ra[k]["noise_straight"]["estimate"] for k in keys],
+        lambda x: f"{x:.1f}")
+    for k in keys:
+        o = ra[k]["oriented"]
+        v |= {f"or_{k}": pct(o["estimate"]), f"or_{k}_low": pct(o["low"]),
+              f"or_{k}_high": pct(o["high"])}
+    for pair in PAIRS:
+        w = r["water"][pair.key]
+        v |= {f"e3o_{pair.key}": points(w["oriented"]["estimate"]),
+              f"e3o_{pair.key}_low": points(w["oriented"]["low"]),
+              f"e3o_{pair.key}_high": points(w["oriented"]["high"])}
+    w = r["water"][lisbon]["registered_at_95"]
+    v |= {"e3_lisbon_95_low": points(w["low"]), "e3_lisbon_95_high": points(w["high"])}
+    w = r["water"][porto]
+    v |= {"e3_km_porto": f"{w['km']['estimate']:.1f}", "e3_km_porto_low": f"{w['km']['low']:.1f}",
+          "e3_km_porto_high": f"{w['km']['high']:.1f}",
+          "asym_porto_city": pct(w["asymmetry"]["city"]),
+          "asym_porto_other": pct(w["asymmetry"]["other"]),
+          "asym_porto_across": pct(w["asymmetry"]["across"])}
+    v |= {f"road_km_porto_{a}": f"{e['post_hoc'][f'{porto}_{a}']['road']['road_km']:.0f}"
+          for a in AREAS}
+    bands = list(next(iter(ra.values()))["ratio"]["median_by_length"])
+    v["short_min"], v["short_max"] = _range(
+        [ra[k]["ratio"]["median_by_length"][bands[1]] for k in keys], lambda x: f"{x:.2f}")
+    v["long_min"], v["long_max"] = _range(
+        [ra[k]["ratio"]["median_by_length"][bands[-1]] for k in keys], lambda x: f"{x:.2f}")
+    v["long_km"] = f"{LENGTH_BANDS_M[-1][0] / 1000:g}"
+    v["ratio_mean_min"], v["ratio_mean_max"] = _range([ra[k]["ratio"]["mean"] for k in keys],
+                                                      lambda x: f"{x:.2f}")
+    legs = {k: ra[k]["legs"]["straight"] for k in keys}
+    v["legs_typical"] = word(sum(1 for x in legs.values()
+                                 if abs(x["circuity"] - x["like"]) < LEGS_TYPICAL))
+    v["almada_legs"] = f"{legs[f'{lisbon}_both']['circuity']:.2f}"
+    v["almada_like"] = f"{legs[f'{lisbon}_both']['like']:.2f}"
+    steps = list(next(iter(r["capacity"].values())))
+    v["cap_up_min"], v["cap_up_max"] = _range(
+        [r["capacity"][k][steps[0]]["estimate"] for k in keys], lambda x: f"{100 * x:.1f}")
+    v["cap_24_up"] = word(sum(1 for k in keys if r["capacity"][k][steps[-1]]["estimate"] > 0))
+    return v
 
 
 def _municipalities() -> list[str]:
@@ -204,12 +272,11 @@ def _sensitivity_values(e: Mapping[str, Any]) -> dict[str, str]:
          "iter_large": f"{longer:,}", "effort_ratio": word(longer // ITERATIONS).capitalize(),
          "iter_max_change": f"{math.ceil(1000 * max(changes)) / 10:.1f}",
          "lisbon_e3_positive": word(sum(1 for x in lisbon_e3 if x["estimate"] > 0)),
-         "lisbon_e3_above": word(sum(1 for x in lisbon_e3 if x["low"] > 0))}
+         "lisbon_e3_above": word(sum(1 for x in lisbon_e3 if x["low"] > 0)),
+         "porto_e3_with_zero": word(sum(1 for x in variants
+                                        if by[(x.key, PAIRS[1].key)]["E3"]["low"] < 0
+                                        < by[(x.key, PAIRS[1].key)]["E3"]["high"]))}
     v["sens_e1_min"], v["sens_e1_max"] = pct(min(e1)), pct(max(e1))
-    for pair in PAIRS:
-        for label, key in (("small", f"capacity_{capacities[0]}"), ("main", "main"),
-                           ("large", f"capacity_{capacities[-1]}")):
-            v[f"cap_{label}_{pair.key}"] = pct(by[(key, pair.key)]["E1_city"]["estimate"])
     return v
 
 
