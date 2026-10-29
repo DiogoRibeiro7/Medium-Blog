@@ -8,7 +8,6 @@ may be marked verified. This script defaults to 'pending', never guesses.
 from __future__ import annotations
 
 import csv
-import hashlib
 import re
 from pathlib import Path
 
@@ -32,7 +31,12 @@ def canonical_id(reference: str) -> str:
     """Create a stable identifier based on the citation's bibliographic text."""
     normalized = re.sub(r"https?://\S+", "", reference)
     normalized = re.sub(r"\s+", " ", normalized).casefold().strip().rstrip(".")
-    return hashlib.sha256(normalized.encode("utf-8")).hexdigest()[:16]
+    # FNV-1a 64-bit provides deterministic IDs compatible with archived ledger.
+    value = 14695981039346656037
+    for byte in normalized.encode("utf-8"):
+        value ^= byte
+        value = (value * 1099511628211) & ((1 << 64) - 1)
+    return f"{value:016x}"
 
 
 def doi(reference: str) -> str:
@@ -64,6 +68,20 @@ def main() -> None:
                 "verification_note": "",
             })
             occurrences.append({"part": part, "position": index, "reference_id": ref_id})
+
+    # Retain evidence only when both the ID and citation text still match.
+    # Editing a citation therefore invalidates its previous verification.
+    previous: dict[str, dict[str, str]] = {}
+    ledger_path = ROOT / "reference_ledger.csv"
+    if ledger_path.is_file():
+        with ledger_path.open(newline="", encoding="utf-8") as handle:
+            previous = {row["reference_id"]: row for row in csv.DictReader(handle)}
+    for ref_id, row in unique.items():
+        old = previous.get(ref_id)
+        if old and old["reference"] == row["reference"] and old["status"] == "verified" and old["verified_source"]:
+            row["status"] = "verified"
+            row["verified_source"] = old["verified_source"]
+            row["verification_note"] = old["verification_note"]
 
     output_files = (
         (ROOT / "reference_ledger.csv", list(unique.values()),
