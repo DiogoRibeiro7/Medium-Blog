@@ -133,6 +133,13 @@ def collect_values(root: Path) -> dict[str, str]:
     if maize.exists():                       # the pointer to the maize article
         m = json.loads(maize.read_text(encoding="utf-8"))
         v["maize_e1_pct"], v["maize_e2_pct"] = pct(m["E1"]["estimate"]), pct(m["E2"]["estimate"])
+    amended_maize = root / "docs" / "maize" / "amendment" / "results.json"
+    if amended_maize.exists():               # the maize study's Amendment A2
+        a2 = json.loads(amended_maize.read_text(encoding="utf-8"))
+        ro = next(r for r in a2["leave_one_out"]["rows"] if r["country"] == "RO")
+        v |= {"maize_a2_e1_pct": pct(a2["E1"]["estimate"]),
+              "maize_a2_e2_pct": pct(a2["E2"]["estimate"]),
+              "maize_a2_without_ro_pct": pct(ro["E1"])}
     return v
 
 

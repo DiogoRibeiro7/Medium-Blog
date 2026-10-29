@@ -220,7 +220,7 @@ def test_figures_render(tmp_path: Path) -> None:
         shutil.copytree(ROOT / part, tmp_path / part)
     written = write_publication(tmp_path)
     figures = [tmp_path / w for w in written if w.endswith(".png")]
-    # five for the wheat article, four for the maize article
+    # five for the wheat article, five for the maize article
     assert len(figures) == 10 and all(f.stat().st_size > 10_000 for f in figures)
 
 
@@ -246,6 +246,20 @@ def test_the_pointer_to_the_maize_article_matches_its_results() -> None:
             (e5["p_twoway"] < 0.05) != (e5["p_bootstrap"] < 0.05),
         "publication/maize/article.md": (ROOT / "publication" / "maize" / "article.md").exists(),
     }
+    amended = ROOT / "docs" / "maize" / "amendment" / "results.json"
+    if amended.exists():
+        a2 = json.loads(amended.read_text(encoding="utf-8"))
+        ro = next(x for x in a2["leave_one_out"]["rows"] if x["country"] == "RO")
+        methods = (ROOT / "METHODS.md").read_text(encoding="utf-8")
+        claims |= {
+            "A second maize analysis, registered after a critical review":
+                "## 10. Amendment A2 to the maize study" in methods,
+            "both results hold": all(a2["decisions"][k]["verdict"] == "established negative"
+                                     for k in ("E1", "E2")),
+            "without Romania heat is smaller":
+                abs(ro["E1"]) < abs(a2["E1"]["estimate"]),
+            "but still clear with two-way clustering": ro["E1_p_twoway"] < 0.05,
+        }
     for phrase, holds in claims.items():
         assert phrase in text, phrase
         assert holds, phrase
