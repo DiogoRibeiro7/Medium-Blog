@@ -5,6 +5,7 @@ import unittest
 from pathlib import Path
 
 from analysis import (
+    parse_dwellings_permitted,
     parse_hpi,
     parse_housing_overburden,
     parse_income,
@@ -116,6 +117,25 @@ class AnalysisTests(unittest.TestCase):
         payload["value"][str(index)] = 60.0
         with self.assertRaises(ValueError):
             parse_tenure(payload)
+
+    def test_official_dwellings_permitted(self) -> None:
+        path = Path(__file__).parent / "data" / "eurostat_sts_cobp_a_PT_dwellings_2026-10-29.json"
+        values = parse_dwellings_permitted(json.loads(path.read_text(encoding="utf-8")))
+        self.assertEqual(values[2005], 73.9)
+        self.assertEqual(values[2015], 8.6)
+        self.assertEqual(values[2025], 40.9)
+        self.assertNotIn(1992, values)  # Eurostat publishes no observation for this year.
+
+    def test_rejects_different_permits_indicator_and_negative_values(self) -> None:
+        path = Path(__file__).parent / "data" / "eurostat_sts_cobp_a_PT_dwellings_2026-10-29.json"
+        payload = json.loads(path.read_text(encoding="utf-8"))
+        payload["dimension"]["indic_bt"]["category"]["index"] = {"BPRM_SQM": 0}
+        with self.assertRaises(ValueError):
+            parse_dwellings_permitted(payload)
+        payload["dimension"]["indic_bt"]["category"]["index"] = {"BPRM_DW": 0}
+        payload["value"]["33"] = -2.0
+        with self.assertRaises(ValueError):
+            parse_dwellings_permitted(payload)
 
 
 if __name__ == "__main__":

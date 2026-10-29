@@ -531,6 +531,38 @@
       "2025": 12.5
     }
   },
+  "building_permits_source_url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/sts_cobp_a?geo=PT&indic_bt=BPRM_DW&cpa2_1=CPA_F41001_X_410014&s_adj=NSA&unit=THS",
+  "building_permits_source_updated": "2026-10-29T11:00:00+0100",
+  "building_permits_status_flags": {
+    "30": "p",
+    "31": "p",
+    "32": "p",
+    "33": "p"
+  },
+  "dwellings_permitted_thousands": {
+    "2005": 73.9,
+    "2006": 71.9,
+    "2007": 65.9,
+    "2008": 46.0,
+    "2009": 27.3,
+    "2010": 25.1,
+    "2011": 17.6,
+    "2012": 11.5,
+    "2013": 7.5,
+    "2014": 7.0,
+    "2015": 8.6,
+    "2016": 11.8,
+    "2017": 14.9,
+    "2018": 21.0,
+    "2019": 24.2,
+    "2020": 25.1,
+    "2021": 27.3,
+    "2022": 30.2,
+    "2023": 31.9,
+    "2024": 33.7,
+    "2025": 40.9
+  },
+  "dwellings_permitted_2015_2025_change_pct": 375.58,
   "descriptives": {
     "hpi_2015": 100.0,
     "hpi_2024": 224.44,
