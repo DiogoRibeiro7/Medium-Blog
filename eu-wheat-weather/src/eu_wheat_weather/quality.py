@@ -3,7 +3,8 @@
 Five rules, each evaluated on the panel of section 3.1 (and, for Q3 and Q4, on the
 published values behind it). They use areas, productions and yields only, never weather.
 A region-year excluded by any rule leaves the panel; regions are then checked again
-against the 10-year rule.
+against the 10-year rule. Amendment A2 (section 10.2) adds Q6-Q8 for maize, evaluated on
+the region-years that pass Q1-Q5.
 """
 
 from __future__ import annotations
@@ -22,6 +23,11 @@ Q2_MIN_REGIONS, Q2_MAX_SD = 4, 0.02       # sample SD of the change in log yield
 Q4_PRODUCTION_TOL, Q4_AREA_GAP = 0.01, 0.05
 Q5_RUN, Q5_FACTOR = 3, 2.0
 RULES = ("Q1", "Q2", "Q3", "Q4", "Q5")
+# Amendment A2, section 10.2.
+Q6_RUN, Q6_STEP = 3, 0.01         # three or more years, each within 1% of the year before
+Q7_BREAK, Q7_MIN_OTHERS = 0.3, 2  # change in log yield against the country's median change
+Q8_TOL = 0.001                    # area and production within 0.1% of another code's
+RULES_A2 = ("Q6", "Q7", "Q8")
 
 # The review's cases (docs/REVIEW.md, finding D1), to report which the rule catches.
 REVIEW_CASES: tuple[tuple[str, tuple[str, ...], tuple[int, ...]], ...] = (
@@ -30,6 +36,15 @@ REVIEW_CASES: tuple[tuple[str, tuple[str, ...], tuple[int, ...]], ...] = (
     ("DK04, area understated, 2006-2009", ("DK04",), (2006, 2007, 2008, 2009)),
     ("NL22 and NL23, production swapped, 2004", ("NL22", "NL23"), (2004,)),
     ("ITF2, about 1 t/ha, 2012-2015", ("ITF2",), (2012, 2013, 2014, 2015)),
+)
+
+
+# The maize review's cases (docs/MAIZE_REVIEW.md, findings D3 and D5) for Q6-Q8.
+REVIEW_CASES_A2: tuple[tuple[str, tuple[str, ...], tuple[int, ...]], ...] = (
+    ("ITH4, repeated yields, 2015-2017", ("ITH4",), (2015, 2016, 2017)),
+    ("ITG2, repeated yields, 2019-2021", ("ITG2",), (2019, 2020, 2021)),
+    ("ITH4, break where its codes join in 2014/15", ("ITH4",), tuple(range(2010, 2015))),
+    ("HR02, HR04's figures, 2013-2014", ("HR02",), (2013, 2014)),
 )
 
 
@@ -143,6 +158,85 @@ def q5_level_shifts(panel: Sequence[Mapping[str, str]]) -> list[Flag]:
     return flags
 
 
+def q6_repeated_yields(panel: Sequence[Mapping[str, str]]) -> list[Flag]:
+    """A run of three or more consecutive years, each yield within 1% of the year before:
+    the years of the run after the first."""
+    flags = []
+    for (geo,), rows in sorted(_by(panel, "geo").items()):
+        yields = {int(r["year"]): float(r["yield_t_ha"]) for r in rows}
+        runs: list[list[int]] = []
+        for year in sorted(yields):
+            if (runs and year == runs[-1][-1] + 1
+                    and abs(yields[year] / yields[runs[-1][-1]] - 1) < Q6_STEP):
+                runs[-1].append(year)
+            else:
+                runs.append([year])
+        for run in runs:
+            if len(run) >= Q6_RUN:
+                flags += [Flag(geo, t, "Q6", f"{len(run)} years from {run[0]}, each within "
+                               f"{Q6_STEP:.0%} of the year before") for t in run[1:]]
+    return flags
+
+
+def q7_join_breaks(panel: Sequence[Mapping[str, str]], sources: Mapping[tuple[str, int], str],
+                   recoded: set[str]) -> list[Flag]:
+    """Where a region's series joins two codes by an official recode: if its change in log
+    yield at the join differs from the country's other regions' median change by more
+    than 0.3, the years before the join."""
+    log_yield = {(r["geo"], int(r["year"])): float(r["log_yield"]) for r in panel}
+    country = {r["geo"]: r["country"] for r in panel}
+    flags = []
+    for geo in sorted(country):
+        years = sorted(y for (g, y) in log_yield if g == geo)
+        for j in years:
+            before, after = sources.get((geo, j - 1)), sources.get((geo, j))
+            if (geo, j - 1) not in log_yield or before == after or not {before, after} & recoded:
+                continue
+            others = [g for g in country if g != geo and country[g] == country[geo]
+                      and (g, j - 1) in log_yield and (g, j) in log_yield]
+            if len(others) < Q7_MIN_OTHERS:
+                continue
+            median = statistics.median(log_yield[(g, j)] - log_yield[(g, j - 1)] for g in others)
+            change = log_yield[(geo, j)] - log_yield[(geo, j - 1)]
+            if abs(change - median) > Q7_BREAK:
+                detail = (f"{before} to {after} in {j}: change in log yield {change:+.3f}, "
+                          f"the country's median {median:+.3f}")
+                flags += [Flag(geo, t, "Q7", detail) for t in years if t < j]
+    return flags
+
+
+def q8_other_codes_figures(panel: Sequence[Mapping[str, str]],
+                           sources: Mapping[tuple[str, int], str],
+                           published: Sequence[WheatRow], matches: Sequence[CodeMatch],
+                           equivalent: Mapping[str, str] | None = None) -> list[Flag]:
+    """A region-year whose area and production both equal, within 0.1%, another code's of
+    the same country and year. Not counted: the region's own source, codes that map to
+    the region, and a parent code whose only NUTS-2 region it is: in NUTS 2021, or, for
+    an older code, in its own version (``equivalent``: code -> NUTS-2021 region)."""
+    target = {m.code: m.target for m in matches}
+    nuts2021 = {m.target for m in matches if m.target}
+    values: dict[tuple[str, int], list[tuple[str, float, float]]] = defaultdict(list)
+    for w in published:
+        if w.area_kha and w.production_kt:
+            values[(w.geo[:2], w.year)].append((w.geo, w.area_kha, w.production_kt))
+    flags = []
+    for r in panel:
+        geo, year = r["geo"], int(r["year"])
+        area, production = float(r["area_kha"]), float(r["production_kt"])
+        for code, a, p in values.get((geo[:2], year), []):
+            if (code == sources.get((geo, year)) or target.get(code) == geo
+                    or (equivalent or {}).get(code) == geo):
+                continue
+            if geo.startswith(code) and not any(n != geo and n.startswith(code)
+                                                for n in nuts2021):
+                continue
+            if abs(a / area - 1) <= Q8_TOL and abs(p / production - 1) <= Q8_TOL:
+                flags.append(Flag(geo, year, "Q8", f"area {area} and production {production} "
+                                  f"as {code}'s"))
+                break
+    return flags
+
+
 def apply_rule(panel: Sequence[Mapping[str, str]], harmonised: Sequence[HarmonisedRow],
                published: Sequence[WheatRow], matches: Sequence[CodeMatch],
                ) -> tuple[list[Mapping[str, str]], list[Flag], list[str]]:
@@ -158,6 +252,7 @@ def apply_rule(panel: Sequence[Mapping[str, str]], harmonised: Sequence[Harmonis
 
 
 def review_cases(flags: Sequence[Flag], panel: Sequence[Mapping[str, str]],
+                 cases: Sequence[tuple[str, tuple[str, ...], tuple[int, ...]]] = REVIEW_CASES,
                  ) -> list[dict[str, object]]:
     """For each of the review's cases: its region-years in the panel, and how many the
     rule excludes, by rule."""
@@ -165,7 +260,7 @@ def review_cases(flags: Sequence[Flag], panel: Sequence[Mapping[str, str]],
     for f in flags:
         flagged[(f.geo, f.year)].add(f.rule)
     out = []
-    for label, prefixes, years in REVIEW_CASES:
+    for label, prefixes, years in cases:
         rows = [(r["geo"], int(r["year"])) for r in panel
                 if int(r["year"]) in years and r["geo"].startswith(prefixes)]
         caught = [k for k in rows if k in flagged]

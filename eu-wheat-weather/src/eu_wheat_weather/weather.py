@@ -480,6 +480,30 @@ def _month_day(text: object) -> tuple[int, int]:
     return int(str(text)[:2]), int(str(text)[3:])
 
 
+def maize_daily(eobs_dir: Path, days: Sequence[dt.date], weights: RegionWeights,
+                ) -> dict[str, Array]:
+    """Region-day values of the maize variables over ``days``, from the E-OBS files."""
+    first, last = (days[0] - EPOCH).days, (days[-1] - EPOCH).days
+    tx, obs_x = _read(eobs_dir / EOBS_FILES["tx"], "tx", first, last, weights.cells)
+    tn, obs_n = _read(eobs_dir / EOBS_FILES["tn"], "tn", first, last, weights.cells)
+    rr, obs_r = _read(eobs_dir / EOBS_FILES["rr"], "rr", first, last, weights.cells)
+    obs_t = obs_x & obs_n
+    tn, tx = np.where(obs_t, tn, 0.0), np.where(obs_t, tx, 0.0)
+    rr = np.where(obs_r, rr, 0.0)
+    return daily_region_variables(tn, tx, rr, obs_t, obs_r, days, weights, MAIZE_GDD_BASE)
+
+
+def maize_row(code: str, year: int, window: str, weighting: str,
+              sums: Mapping[str, Array], r: int) -> dict[str, object]:
+    """One row of the maize weather table: region ``r`` of ``sums``."""
+    row: dict[str, object] = {"geo": code, "year": year, "window": window,
+                              "weighting": weighting}
+    for v in ("missing_temp", "missing_prec", *MAIZE_VARIABLES):
+        x = float(sums[v][r])
+        row[v] = "" if math.isnan(x) else (int(x) if v.startswith("missing") else round(x, 6))
+    return row
+
+
 def build_maize_weather(eobs_dir: Path, regions: Mapping[str, BaseGeometry],
                         years: Sequence[int], calendar: Path,
                         ) -> tuple[list[dict[str, object]], list[dict[str, object]]]:
@@ -494,26 +518,12 @@ def build_maize_weather(eobs_dir: Path, regions: Mapping[str, BaseGeometry],
     rows: list[dict[str, object]] = []
     for year in years:
         days = season_days(year, MAIZE_READ_TO)
-        first, last = (days[0] - EPOCH).days, (days[-1] - EPOCH).days
-        tx, obs_x = _read(eobs_dir / EOBS_FILES["tx"], "tx", first, last, weights.cells)
-        tn, obs_n = _read(eobs_dir / EOBS_FILES["tn"], "tn", first, last, weights.cells)
-        rr, obs_r = _read(eobs_dir / EOBS_FILES["rr"], "rr", first, last, weights.cells)
-        obs_t = obs_x & obs_n
-        tn, tx = np.where(obs_t, tn, 0.0), np.where(obs_t, tx, 0.0)
-        rr = np.where(obs_r, rr, 0.0)
-        daily = daily_region_variables(tn, tx, rr, obs_t, obs_r, days, weights,
-                                       MAIZE_GDD_BASE)
+        daily = maize_daily(eobs_dir, days, weights)
         windows = season_window_sums(daily, days, dates)
         windows.update(window_sums(daily, days, MAIZE_WINDOWS, MAIZE_VARIABLES))
         for window, sums in windows.items():
-            for r, code in enumerate(weights.codes):
-                row: dict[str, object] = {"geo": code, "year": year, "window": window,
-                                          "weighting": "all"}
-                for v in ("missing_temp", "missing_prec", *MAIZE_VARIABLES):
-                    x = float(sums[v][r])
-                    row[v] = "" if math.isnan(x) else (int(x) if v.startswith("missing")
-                                                       else round(x, 6))
-                rows.append(row)
+            rows += [maize_row(code, year, window, "all", sums, r)
+                     for r, code in enumerate(weights.codes)]
     return rows, seasons
 
 

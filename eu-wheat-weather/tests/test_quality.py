@@ -12,6 +12,9 @@ from eu_wheat_weather.quality import (
     q3_carried_forward,
     q4_sums_disagree,
     q5_level_shifts,
+    q6_repeated_yields,
+    q7_join_breaks,
+    q8_other_codes_figures,
 )
 from eu_wheat_weather.regions import CodeMatch, HarmonisedRow
 
@@ -92,3 +95,44 @@ def test_q5_skips_a_region_with_a_single_year() -> None:
     """Maize applies the rule before the 10-year rule (section 9.1), so a region can have
     one year; with no other year there is nothing to compare."""
     assert q5_level_shifts([row("AA11", 2015, 7.0)]) == []
+
+
+# Amendment A2 (section 10.2), for maize.
+
+
+def test_q6_repeated_yields_keep_the_first_year_of_a_run() -> None:
+    panel = [row("AA11", 2010, 9.0), row("AA11", 2011, 11.28), row("AA11", 2012, 11.29),
+             row("AA11", 2013, 11.29), row("AA11", 2014, 9.5)]
+    assert {(f.geo, f.year) for f in q6_repeated_yields(panel)} == {("AA11", 2012),
+                                                                    ("AA11", 2013)}
+    two = [row("AA12", 2010, 8.0), row("AA12", 2011, 8.05), row("AA12", 2012, 9.0)]
+    gap = [row("AA13", 2010, 8.0), row("AA13", 2011, 8.05), row("AA13", 2013, 8.06)]
+    assert q6_repeated_yields(two + gap) == []        # a run of two, or a gap
+
+
+def test_q7_a_break_where_two_codes_join() -> None:
+    geos = ["AA11", "AA12", "AA13"]
+    panel = varied(geos, range(2010, 2016))
+    jumped = [r if not (r["geo"] == "AA11" and int(r["year"]) >= 2014)
+              else row("AA11", int(r["year"]), float(r["yield_t_ha"]) * 1.6) for r in panel]
+    sources = {(g, t): ("AA99" if g == "AA11" and t < 2014 else g)
+               for g in geos for t in range(2010, 2016)}
+    flags = q7_join_breaks(jumped, sources, {"AA99"})
+    assert {(f.geo, f.year) for f in flags} == {("AA11", t) for t in range(2010, 2014)}
+    assert q7_join_breaks(panel, sources, {"AA99"}) == []        # no break
+    assert q7_join_breaks(jumped, sources, set()) == []          # not an official recode
+    assert q7_join_breaks([r for r in jumped if r["geo"] != "AA13"], sources, {"AA99"}) == []
+
+
+def test_q8_figures_that_belong_to_another_code() -> None:
+    panel = [row("AA11", 2013, 6.0, area=30.0), row("AA12", 2013, 7.0, area=20.0)]
+    published = [WheatRow("AA11", 2013, 30.0, 180.0, "", ""),
+                 WheatRow("AA14", 2013, 30.0, 180.0, "", ""),      # another region's code
+                 WheatRow("AA2", 2013, 20.0, 140.0, "", "")]       # an older parent
+    sources = {("AA11", 2013): "AA11", ("AA12", 2013): "AA12"}
+    matches = [CodeMatch("AA11", "AA11", "nuts2021", 2021, 0.0, "AA11"),
+               CodeMatch("AA12", "AA12", "nuts2021", 2021, 0.0, "AA12")]
+    flags = q8_other_codes_figures(panel, sources, published, matches)
+    assert {(f.geo, f.year) for f in flags} == {("AA11", 2013), ("AA12", 2013)}
+    with_parent = q8_other_codes_figures(panel, sources, published, matches, {"AA2": "AA12"})
+    assert {(f.geo, f.year) for f in with_parent} == {("AA11", 2013)}

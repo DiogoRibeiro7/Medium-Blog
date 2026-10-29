@@ -766,3 +766,48 @@ registered methods. They decide nothing.
   weather over where maize grows, from the MIRCA-OS map; a wider data rule (Q6-Q8);
   irrigated and rainfed maize apart; and inference with few clusters. Section 10 says
   what was seen first. No maize result changes.
+- **2026-10-29, Amendment A2, before any of its estimates: details section 10 left open.**
+  - **The map.** The MIRCA-OS archive and its two 2015 maize layers are frozen with their
+    SHA-256 hashes in `snapshots/mirca-os-v0.1.json`; the archive's MD5 matches the one
+    HydroShare publishes. The files stay in `data/mirca/`, like E-OBS.
+  - **The weather.** It is built in one pass with three weightings: all cells, maize, and
+    cells below 800 m. Season dates are read from the registered `docs/maize/season.csv`.
+    The all-cells rows reproduce the registered weather exactly (checked). Of the 242
+    NUTS-2021 regions, 17 have no maize on the map, none of them in the registered panel.
+  - **Q8's exception, in each code's own version.** The exception is "a code whose only
+    NUTS-2 region is this one". It is applied to older parent codes through the NUTS
+    change tables: a NUTS-0 or NUTS-1 code counts as a region if all its NUTS-2 regions,
+    in every version, lead to that region. This keeps FR3 (Nord-Pas-de-Calais before
+    2016, today FRE1) from flagging FRE1 against itself. A parent with other NUTS-2
+    regions is "another code" as worded, even when those regions have no maize (HU1 in
+    2024, NL3 in 2012).
+  - **What was seen first.** The list of Q6-Q8 flags, which led to the exception above:
+    Q6 14 region-years (ITF2, ITF3, ITG2, ITH4, FRD1), Q7 5 (ITH4 before 2015) and Q8 9
+    (HR02 2013-2014, SI03 2010-2013, HU12 2024, NL13 2011, NL34 2012). Also the panel
+    sizes. No estimate was seen.
+  - **Irrigated and rainfed (10.3).** The groups' estimates come from one model with the
+    `EDD`, contrast and curvature terms each split by group, and the differences from the
+    same model written with interactions. `d1` and `d2` are common to both groups. The
+    check uses Eurostat's 2023 figures for holdings above the survey threshold, frozen in
+    `snapshots/eurostat-irrigation-2026-10-29/`.
+  - **The randomization test (10.4).**
+    - The same 9,999 permutations serve E1 and E2, and the registered and amended models.
+    - The fixed effects are partialled out once per sample, and the two-way t is the
+      registered one: the code stops if the observed t differs from
+      `estimation.twoway_vcov`'s.
+    - The identity permutation counts if it is drawn.
+- **2026-10-29, Amendment A2, after its results.** `docs/MAIZE_AMENDMENT.md` reports
+  section 10 under its rules. No rule was changed.
+  - **A run stopped early.** The first run was stopped before it wrote anything, because
+    its randomization test recomputed the fixed effects in every permutation. The
+    corrected code computes them once per sample and gives the same statistic; nothing
+    from the stopped run was seen.
+  - **Added after the results: Portugal counted as irrigated.** The check of 10.3 shows
+    the map putting Portugal's maize at 2% irrigated, against Eurostat's 89% (its
+    Portuguese totals are right, so the weights of 10.1 are not affected). The split of
+    10.3 stays as registered. Beside it, the same model with Portugal's regions counted
+    as irrigated is reported, labelled post hoc. It decides nothing.
+  - **A renamed folder.** The irrigation snapshot was first named
+    `eurostat-maize-irrigation-2026-10-29`, which a test's pattern for the maize crop
+    snapshots also matched. It is now `snapshots/eurostat-irrigation-2026-10-29/`, and
+    the entry above says so; its files are unchanged.

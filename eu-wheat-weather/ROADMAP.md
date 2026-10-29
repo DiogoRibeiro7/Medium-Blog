@@ -166,7 +166,17 @@ Results are in [docs/RESULTS.md](docs/RESULTS.md). Every rule was fixed before a
   - **Irrigated and rainfed maize:** heat and drought for each group (descriptive).
   - **Few clusters:** one-way country clustering and a randomization test (descriptive).
   - **Decisions:** E1-A2 and E2-A2 by the registered rule, beside the registered results.
-- [ ] Amendment A2 computed and reported ([docs/MAIZE_AMENDMENT.md](docs/MAIZE_AMENDMENT.md)).
+- [x] Amendment A2 computed and reported ([docs/MAIZE_AMENDMENT.md](docs/MAIZE_AMENDMENT.md)).
+  - **Data rule:** Q6-Q8 flag 28 region-years and catch all four of the review's cases;
+    M1-maize-A2 has 1,854 region-years in 131 regions.
+  - **Heat (E1-A2):** -4.4% per 10 degree days above 30 °C, established (Holm p = 0.033
+    two-way, 0.018 bootstrap).
+  - **Drought (E2-A2):** -3.5% in a dry season, established (p = 0.004 and 0.013).
+  - **Few clusters:** heat's p is 0.029 with country clustering and 0.040 by
+    randomization (registered model: 0.047 and 0.050).
+  - **Irrigated and rainfed (descriptive):** heat -7.2% in rainfed regions and -2.8% in
+    irrigated ones. The map puts Portugal's maize at 2% irrigated against Eurostat's 89%,
+    so a post-hoc variant counts Portugal as irrigated; it changes little.
 - [ ] Article: Amendment A2 beside the registered results.
 - [ ] **Author review and publication** of the maize article, under the same
       non-commercial terms.
