@@ -26,9 +26,10 @@ CITATION = ("Cornes, R., G. van der Schrier, E.J.M. van den Besselaar, and P.D. 
             "An Ensemble Version of the E-OBS Temperature and Precipitation Datasets, "
             "J. Geophys. Res. Atmos., 123. doi:10.1029/2017JD028200")
 # Numbers that are design, not results: thresholds, the season, the test years, the period
-# split, the interval level, the elevation cut-off and the latitude of the post-hoc split.
+# split, the interval level, the elevation cut-off, the latitude of the post-hoc split and
+# the years of the cited works.
 DESIGN_CONSTANTS = {"30", "36", "15", "18", "1", "31", "2003", "2018", "2022", "2000", "2011",
-                    "2012", "2024", "95", "800", "40"}
+                    "2012", "2024", "95", "800", "40", "2005", "2019", "2023"}
 REPOSITORY = "https://github.com/DiogoRibeiro7/Medium-Blog/tree/main/eu-wheat-weather"
 NUMBER = re.compile(r"(?<![\w.])\d+(?:[.,]\d+)?")
 

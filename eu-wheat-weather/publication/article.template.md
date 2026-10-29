@@ -4,7 +4,7 @@
 
 *Wheat statistics © European Union, Eurostat. Weather: E-OBS v33.0e (ECA&D and the Copernicus Climate Change Service), for non-commercial research and education. Regional boundaries © EuroGeographics for the administrative boundaries, from GISCO, for non-commercial use.*
 
-Wheat is the most widely grown crop in the European Union, and its harvest depends on a few months of weather.<!-- TODO[CITATION]: verify or add source for "the most widely grown crop in the European Union" (Eurostat crop areas). --> In 2003, 2018 and 2022, heat and drought hit much of the continent in spring and summer.<!-- TODO[CITATION]: verify or add source for the heat and drought of these three years. --> Each of those years raised two questions: how much yield does a hot or dry season cost, and has that cost fallen as farms adapt?
+Wheat is the most widely grown crop in the European Union (Eurostat's crop statistics), and its harvest depends on a few months of weather. In the summers of 2003, 2018 and 2022, heat and drought hit large parts of Europe (Ciais and coauthors, 2005; Toreti and coauthors, 2019; Tripathy and Mishra, 2023). Each of those years raised two questions: how much yield does a hot or dry season cost, and has that cost fallen as farms adapt?
 
 This piece reports what a reproducible study of the EU's regions found, where it falls short, and what a second, registered analysis found when it fixed the main problems. The full analysis, with every table, test and line of code, is in the [project repository](https://github.com/DiogoRibeiro7/Medium-Blog/tree/main/eu-wheat-weather), along with a critical review written before publication. Every number below is read by code from the same result files, so the article and the analysis cannot drift apart.
 
@@ -113,7 +113,7 @@ One combination comes close. Dropping the suspect yields on its own gives heat a
 - **Not every country equally.** Spain, Italy and Romania supply most of the variation in heat, so the estimates say most about them.
 - **Not the fields themselves.** The weather is averaged over whole regions, including forests and mountains, and E-OBS is interpolated from stations, which are sparse in places and smooth out the hottest days: 36 °C on the grid is not 36 °C in a field.
 - **Not perfect yields.** The first analysis keeps regional yield series that look pro-rated from national figures or carried forward from one year to the next. The second analysis removes them by a rule, but it misses at least one case the review found: two Dutch regions whose production figures look swapped in one year.
-- **One crop calendar.** The second analysis ends every region's season at the maturity date of winter wheat, though in Finland and Sweden much of the wheat is sown in spring.<!-- TODO[CITATION]: verify or add source for the share of spring-sown wheat in Finland and Sweden. -->
+- **One crop calendar.** The second analysis ends every region's season at the maturity date of winter wheat, though in Finland most of the wheat is sown in spring, and in Sweden a minority of it (Eurostat's crop statistics).
 
 ## And maize?
 
@@ -126,3 +126,11 @@ The data, the code, the research plan with every change made to it, the full res
 We acknowledge the E-OBS dataset from the EU-FP6 project UERRA (https://www.uerra.eu) and the Copernicus Climate Change Service, and the data providers in the ECA&D project (https://www.ecad.eu).
 
 Cornes, R., G. van der Schrier, E.J.M. van den Besselaar, and P.D. Jones. 2018: An Ensemble Version of the E-OBS Temperature and Precipitation Datasets, J. Geophys. Res. Atmos., 123. doi:10.1029/2017JD028200
+
+Eurostat: Crop production in EU standard humidity (apro_cpsh1), areas of the main crops and of winter and spring common wheat. https://ec.europa.eu/eurostat/databrowser/view/apro_cpsh1/default/table
+
+Ciais, P., M. Reichstein, N. Viovy, et al. 2005: Europe-wide reduction in primary productivity caused by the heat and drought in 2003, Nature, 437, 529-533. doi:10.1038/nature03972
+
+Toreti, A., A. Belward, I. Pérez-Domínguez, et al. 2019: The Exceptional 2018 European Water Seesaw Calls for Action on Adaptation, Earth's Future, 7, 652-663. doi:10.1029/2019EF001170
+
+Tripathy, K. P., and A. K. Mishra. 2023: How Unusual Is the 2022 European Compound Drought and Heatwave Event?, Geophysical Research Letters, 50, e2023GL105453. doi:10.1029/2023GL105453
