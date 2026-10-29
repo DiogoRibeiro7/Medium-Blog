@@ -342,7 +342,7 @@ Hernán, M. A. and Robins, J. M. (2020). *Causal Inference: What If*. Chapman & 
 
 Kang, J. D. Y. and Schafer, J. L. (2007). Demystifying Double Robustness: A Comparison of Alternative Strategies for Estimating a Population Mean from Incomplete Data. *Statistical Science*, 22(4), 523–539. https://doi.org/10.1214/07-STS227
 
-Kennedy, E. H. (2016). Semiparametric Theory and Empirical Processes in Causal Inference. In *Statistical Causal Inferences and Their Applications in Public Health Research*, 141–167. https://doi.org/10.1007/978-3-319-41259-7_7
+Kennedy, E. H. (2016). Semiparametric Theory and Empirical Processes in Causal Inference. In *Statistical Causal Inferences and Their Applications in Public Health Research*, 141–167. https://doi.org/10.1007/978-3-319-41259-7_8
 
 Lunceford, J. K. and Davidian, M. (2004). Stratification and Weighting via the Propensity Score in Estimation of Causal Treatment Effects: A Comparative Study. *Statistics in Medicine*, 23(19), 2937–2960. https://doi.org/10.1002/sim.1903
 
