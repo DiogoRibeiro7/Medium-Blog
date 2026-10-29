@@ -251,9 +251,45 @@ def crops(rows: Sequence[tuple[str, Mapping[str, Mapping[str, float]]]], path: P
           "Lines: 95% intervals (two-way clustered).")
 
 
+MAIZE_AMENDMENT_ROWS = (("registered", "Registered analysis"),
+                        ("weights", "Weather where maize grows"),
+                        ("rule", "Wider data rule"),
+                        ("below_800m", "Cells below 800 m, wider rule"),
+                        ("both", "Both: the second analysis"))
+MAP_SOURCE = " Map of maize: MIRCA-OS (2015)."
+
+
+def maize_amendment(registered: Mapping[str, Any], amended: Mapping[str, Any],
+                    path: Path) -> None:
+    """Heat and drought under the registered maize analysis and Amendment A2's changes."""
+    plt = _pyplot()
+    rows = {"registered": {"E1": registered["E1"], "E2": registered["E2"]},
+            **{c["key"]: c for c in amended["combinations"]}}
+    fig, axes = plt.subplots(1, 2, figsize=(9.5, 3.4), sharey=True)
+    ys = list(range(len(MAIZE_AMENDMENT_ROWS)))[::-1]
+    for ax, key, title in zip(axes, ("E1", "E2"),
+                              ("Heat: 10 more degree days\nabove 30 °C",
+                               "Drought: a dry season\n(10th percentile against the median)"),
+                              strict=True):
+        for y, (name, _) in zip(ys, MAIZE_AMENDMENT_ROWS, strict=True):
+            r = rows[name][key]
+            colour = INK if name == "registered" else ORANGE if name == "both" else BLUE
+            ax.plot([_pct(r["low"]), _pct(r["high"])], [y, y], color=colour, lw=1.6)
+            ax.plot(_pct(r["estimate"]), y, "o", color=colour, ms=5)
+        ax.axvline(0, color=MUTED, lw=0.8)
+        ax.set_yticks(ys, [label for _, label in MAIZE_AMENDMENT_ROWS], fontsize=8)
+        ax.set_title(title, fontsize=9.5, loc="left", color=INK)
+        ax.set_xlabel("Yield change (%)")
+        ax.grid(axis="x", color=GRID, lw=0.6)
+    _save(plt, fig, path, MAIZE_SOURCE + MAP_SOURCE + " Lines: 95% intervals (two-way "
+          "clustered).")
+
+
 def draw_maize(results: Mapping[str, Any], wheat_amended: Mapping[str, Any],
-               wheat: Mapping[str, Any], directory: Path) -> list[Path]:
-    """Every figure of the maize article, from the maize and wheat results."""
+               wheat: Mapping[str, Any], directory: Path,
+               amended: Mapping[str, Any] | None = None) -> list[Path]:
+    """Every figure of the maize article, from the maize and wheat results, and Amendment
+    A2's once it is computed."""
     paths = [directory / name for name in ("fig1_temperature.png", "fig2_crops.png",
                                            "fig3_out_of_sample.png", "fig4_sensitivity.png")]
     temperature_response(results["M3"], paths[0], "planting to maturity", MAIZE_SOURCE,
@@ -267,4 +303,7 @@ def draw_maize(results: Mapping[str, Any], wheat_amended: Mapping[str, Any],
     out_of_sample(results["E4_regions"], results["E4"], paths[2], MAIZE_SOURCE, "")
     sensitivity(results["sensitivity"], {"E1": results["E1"], "E2": results["E2"]}, paths[3],
                 MAIZE_SOURCE, "Main model")
+    if amended is not None:
+        paths.append(directory / "fig5_amendment.png")
+        maize_amendment(results, amended, paths[4])
     return paths

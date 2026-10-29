@@ -221,7 +221,7 @@ def test_figures_render(tmp_path: Path) -> None:
     written = write_publication(tmp_path)
     figures = [tmp_path / w for w in written if w.endswith(".png")]
     # five for the wheat article, four for the maize article
-    assert len(figures) == 9 and all(f.stat().st_size > 10_000 for f in figures)
+    assert len(figures) == 10 and all(f.stat().st_size > 10_000 for f in figures)
 
 
 def test_the_pointer_to_the_maize_article_matches_its_results() -> None:

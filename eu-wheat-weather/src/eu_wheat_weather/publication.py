@@ -223,6 +223,11 @@ def render(template: str, values: Mapping[str, str]) -> str:
 
 
 MAIZE_DIR = "publication/maize"
+COUNTRY_NAMES = {"AT": "Austria", "BE": "Belgium", "BG": "Bulgaria", "CZ": "Czechia",
+                 "DE": "Germany", "DK": "Denmark", "EL": "Greece", "ES": "Spain",
+                 "FR": "France", "HR": "Croatia", "HU": "Hungary", "IT": "Italy",
+                 "LT": "Lithuania", "NL": "the Netherlands", "PL": "Poland", "PT": "Portugal",
+                 "RO": "Romania", "SE": "Sweden", "SI": "Slovenia", "SK": "Slovakia"}
 
 
 def _json(root: Path, *parts: str) -> Any:
@@ -350,7 +355,43 @@ def maize_values(root: Path) -> dict[str, str]:
         v[f"e4_{y}_obs"] = _signed(row["eu_yield_observed_pct"], 1) + "%"
         v[f"e4_{y}_pred"] = _signed(row["eu_yield_predicted_pct"], 1) + "%"
         v[f"e4_{y}_corr"] = f"{row['correlation']:.2f}"
-    return v | _after_review_values(r, wheat_a1, root)
+    v |= _after_review_values(r, wheat_a1, root)
+    if (root / "docs" / "maize" / "amendment" / "results.json").exists():
+        v |= _amendment_a2_values(_json(root, "docs", "maize", "amendment", "results.json"))
+    return v
+
+
+def _amendment_a2_values(a: Mapping[str, Any]) -> dict[str, str]:
+    """The maize article's values from Amendment A2 (METHODS.md, section 10)."""
+    d, fc, irr = a["decisions"], a["few_clusters"], a["irrigation"]
+    combos = {c["key"]: c for c in a["combinations"]}
+    pt = next(c for c in a["map"]["eurostat_check"] if c["country"] == "PT")
+    rows = a["leave_one_out"]["rows"]
+    without_ro = next(r for r in rows if r["country"] == "RO")
+    lost = [r for r in rows if r["E1_p_twoway"] >= 0.05]
+    v = {"a2_n_flagged": str(sum(a["data_rule"]["by_rule"].values())),
+         "a2_n_cases": str(len(a["data_rule"]["review_cases"])),
+         "a2_e5_p_twoway": p_value3(a["E5"]["p_twoway"]),
+         "a2_e5_p_boot": p_value3(a["E5"]["p_bootstrap"]),
+         "a2_weights_e1_pct": pct(combos["weights"]["E1"]["estimate"]),
+         "a2_rule_e1_pct": pct(combos["rule"]["E1"]["estimate"]),
+         "a2_e1_p_country": p_value3(fc["amended"]["E1"]["country"]["p"]),
+         "a2_e1_p_rand": p_value3(fc["amended"]["E1"]["randomization"]["p"]),
+         "reg_e1_p_rand": p_value3(fc["registered"]["E1"]["randomization"]["p"]),
+         "a2_without_ro_pct": pct(without_ro["E1"]),
+         "a2_without_ro_p": p_value3(without_ro["E1_p_twoway"]),
+         "a2_loo_lost_country": ", ".join(COUNTRY_NAMES[r["country"]] for r in lost),
+         "a2_loo_lost_p": ", ".join(p_value3(r["E1_p_twoway"]) for r in lost),
+         "a2_pt_map": _share(pt["map_share"]), "a2_pt_eurostat": _share(pt["eurostat_share"])}
+    for key in ("E1", "E2"):
+        x, k = a[key], key.lower()
+        v |= {f"a2_{k}_pct": pct(x["estimate"]), f"a2_{k}_low": pct(x["low"]),
+              f"a2_{k}_high": pct(x["high"]),
+              f"a2_{k}_holm_twoway": p_value3(d[key]["p_twoway_holm"]),
+              f"a2_{k}_holm_boot": p_value3(d[key]["p_bootstrap_holm"]),
+              f"a2_rf_{k}_pct": pct(irr[key]["rainfed"]["estimate"]),
+              f"a2_ir_{k}_pct": pct(irr[key]["irrigated"]["estimate"])}
+    return v
 
 
 def outputs(root: Path) -> dict[str, str]:
@@ -388,10 +429,12 @@ def write_publication(root: Path, figures: bool = True) -> list[str]:
         if (root / MAIZE_DIR / "article.template.md").exists():
             from eu_wheat_weather.figures import draw_maize
 
+            amended = root / "docs" / "maize" / "amendment" / "results.json"
             written += [str(p.relative_to(root).as_posix()) for p in draw_maize(
                 _json(root, "docs", "maize", "results", "results.json"),
                 _json(root, "docs", "amendment", "results.json"), results,
-                root / MAIZE_DIR / "figures")]
+                root / MAIZE_DIR / "figures",
+                _json(root, *amended.relative_to(root).parts) if amended.exists() else None)]
     return written
 
 

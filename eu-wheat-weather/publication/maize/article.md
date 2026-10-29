@@ -3,11 +3,11 @@
 
 *What 15 harvests in 132 regions say about a hot or dry summer*
 
-*Maize statistics © European Union, Eurostat. Weather: E-OBS v33.0e (ECA&D and the Copernicus Climate Change Service), for non-commercial research and education. Regional boundaries © EuroGeographics for the administrative boundaries, from GISCO, for non-commercial use. Crop calendar: GGCMI, under a Creative Commons Attribution licence (details below).*
+*Maize statistics © European Union, Eurostat. Weather: E-OBS v33.0e (ECA&D and the Copernicus Climate Change Service), for non-commercial research and education. Regional boundaries © EuroGeographics for the administrative boundaries, from GISCO, for non-commercial use. Crop calendar: GGCMI, and map of maize: MIRCA-OS, both under a Creative Commons Attribution licence (details below).*
 
 Grain maize is one of the European Union's main cereals, and unlike wheat it grows through the hottest weeks of the summer. A companion study of wheat, with a similar design, found no established effect of heat or drought on wheat yields once its flawed drought test was corrected. This piece asks the same questions of maize. The design was registered before any maize yield was looked at, and every number below is read by code from the result files in the [project repository](https://github.com/DiogoRibeiro7/Medium-Blog/tree/main/eu-wheat-weather).
 
-In short: by the study's rules, a dry season lowers maize yields, and that result survives leaving out any single country except Spain. Heat probably lowers them too, but it only just clears the bar the study set itself, and much of its estimate comes from one country.
+In short: by the study's rules, a dry season lowers maize yields, and that result survives leaving out any single country except Spain. Heat probably lowers them too, but it only just clears the bar the study set itself, and much of its estimate comes from one country. A second analysis, registered after a critical review, measures the weather where maize grows and removes more flawed figures: both results hold there, heat a little more clearly, though it is smaller without Romania.
 
 ## The data
 
@@ -42,7 +42,7 @@ Ten more degree days above 30 °C go with a change in yield of −4.9% (interval
 - **Romania supplies 49% of the estimate**, and one small region, Bucharest and its surroundings, 22%.
 - **The pooled number describes neither group.** A model that lets heat differ in Spain, Portugal, Italy and Greece, where much maize is irrigated, gives −0.3% there and −11.3% elsewhere.
 
-Heat probably lowers maize yields, but the evidence here is marginal.
+Heat probably lowers maize yields, but the evidence here is marginal; the second analysis below makes it a little clearer.
 
 An average season has 208 hours at 27–30 °C, 105 at 30–33 °C, 37 at 33–36 °C and 9 at 36 °C and above. Splitting temperature into these three-degree bands hints that the harm begins below 30 °C, though the pattern is irregular. Under both methods, only time at 27–30 °C and at 33–36 °C differs from zero: −0.10% and −0.12% per hour, against an hour at 15–18 °C. The band between them, 30–33 °C, does not. One cool band, 12–15 °C, differs under the first method only. Time at 36 °C and above has the largest estimate, −0.19% per hour, but it is rare, Spain supplies 54% of its variation, its interval is wide (−0.41% to +0.03%) and the second method puts it right at the line (p = 0.050). The bands are a descriptive check, with no correction for looking at many at once.
 
@@ -74,6 +74,22 @@ Heat is larger without the irrigated south (−10.8%) and with area weights (−
 
 *The main model, then each variation fixed in advance. Lines are 95% intervals (two-way clustered).*
 
+## A second analysis: the weather where maize grows
+
+A critical review of the study found two problems of measurement. The weather was averaged over whole regions, including hills and mountains where no maize grows, and some flat or repeated regional series had passed the data rule. A second analysis, registered after the review and before any of it was computed, fixes both. It weights each region's weather by where maize grows, from a map of maize fields in 2015, and a wider data rule removes 28 more regional harvests, including the 4 cases the review found. It is reported beside the first analysis, not in its place.
+
+Both results hold, and heat a little more clearly. Ten more degree days above 30 °C change yield by −4.4% (interval −8.2% to −0.4%; corrected p = 0.033 and 0.018), and a dry season by −3.5% (−5.5% to −1.6%; corrected p = 0.004 and 0.013). Both are established. The check after maturity passes again (p = 0.071 and 0.261). Of the two fixes on their own, the map gives heat −4.2% and the wider data rule −5.2%.
+
+With only 19 countries, the usual measures of uncertainty can be too confident, so the second analysis adds two others, fixed in advance. With errors grouped by country alone, heat's p is 0.029. A randomization test, which gives every region the weather of a shuffled year thousands of times and asks how often an effect this large turns up by chance, gives 0.040; for the first analysis it gives 0.050, right at the line.
+
+Romania still supplies much of heat's size: without it, heat is −3.0%, though still clear under the first method (p = 0.037). Leaving out one country at a time, heat stays clear under the first method in every case but one: without France, its p is 0.056.
+
+The map also shows where maize is mostly irrigated. Splitting regions that way, heat costs rainfed regions −7.2% and irrigated ones −2.8%. A dry season costs rainfed regions −3.9%; in irrigated ones its effect, −1.8%, is not established. This split was described, not decided, and the map has a flaw: it puts Portugal's maize at 2% irrigated, against 89% in Eurostat's farm statistics. Counting Portugal as irrigated changes little.
+
+![Heat and drought in the first analysis and the second](figures/fig5_amendment.png)
+
+*The first analysis; each change of the second on its own; the check over cells below 800 m, with the wider rule; and both changes together, which is the second analysis. Lines are 95% intervals (two-way clustered).*
+
 ## Can the weather predict a bad year?
 
 A version of the model fitted without one year predicted that year from the weather alone, for the study's regions weighted by their maize area:
@@ -92,18 +108,18 @@ The 2015 total is predicted well, but in 2012 and 2022 the losses were far large
 
 - **Not climate change.** These are effects of one season's weather on that season's harvest. Farmers adapt to a changing climate in ways they cannot adapt to a single bad year.
 - **Not the mechanism.** A hot spell comes with sun, dry air and its own timing, and the model does not separate them.
-- **Not irrigated and rainfed maize apart.** Most of southern Europe's grain maize is irrigated (Eurostat's farm statistics); the estimates average over both, and one rainfed crop calendar is used everywhere.
+- **Irrigated and rainfed maize only roughly apart.** Most of southern Europe's grain maize is irrigated (Eurostat's farm statistics). The main estimates average over both and use one rainfed crop calendar everywhere; the second analysis splits regions with a map that is wrong for Portugal.
 - **Not every country equally.** Spain supplies 28% of the variation in heat that the comparison uses, Italy 21% and Romania 18%. Spain, Portugal, Italy and Greece together supply 58% of it but grow 15% of the maize.
 - **Not nationwide shocks.** The comparison ignores whatever hits a whole country at once; only the prediction test counts it.
 - **Probably too small.** Only 5% of the variation in heat is left once regions of a country are compared, and errors in the weather data pull the estimates toward zero.
-- **Not the fields themselves.** The weather is averaged over whole regions, including hills and mountains where no maize grows, and E-OBS is interpolated from stations, which smooth out the hottest days: 36 °C on the grid is not 36 °C in a field.
-- **Not perfect yields.** The data rule misses some flat or repeated regional series, and all 68 Greek regional harvests from 2016 on are Eurostat estimates rather than measurements.
+- **Not the fields themselves.** The first analysis averages the weather over whole regions, including hills and mountains where no maize grows; the second weights it by where maize grew in 2015. Both use E-OBS, interpolated from stations, which smooth out the hottest days: 36 °C on the grid is not 36 °C in a field.
+- **Not perfect yields.** The first analysis's data rule misses some flat or repeated regional series, which the second removes, and all 68 Greek regional harvests from 2016 on are Eurostat estimates rather than measurements.
 - **Not a trend.** With 15 harvests, there are too few to test whether maize has become more or less sensitive.
 - **Not silage maize.** Only grain maize is covered.
 
 ## Data, code and acknowledgements
 
-The data, the code, the research plan with every change made to it, the full results and the critical review are in the [project repository](https://github.com/DiogoRibeiro7/Medium-Blog/tree/main/eu-wheat-weather). Maize statistics: © European Union, Eurostat. Regional boundaries: © EuroGeographics for the administrative boundaries, from GISCO, for non-commercial use. Weather: E-OBS v33.0e, for non-commercial research and education. Crop calendar: GGCMI Phase 3 crop calendar v1.01, CC BY 4.0 ([licence](https://creativecommons.org/licenses/by/4.0/)), from Jägermeyr, J., C. Müller, A. C. Ruane, et al. 2021: Climate impacts on global agriculture emerge earlier in new generation of climate and crop models, Nature Food, 2, 873-885. doi:10.1038/s43016-021-00400-y; data doi:10.5281/zenodo.5062513. Changes: the calendar's planting and maturity days were mapped to the E-OBS grid, averaged over each region and rounded to whole days.
+The data, the code, the research plan with every change made to it, the full results, the critical review and the second analysis are in the [project repository](https://github.com/DiogoRibeiro7/Medium-Blog/tree/main/eu-wheat-weather). Maize statistics: © European Union, Eurostat. Regional boundaries: © EuroGeographics for the administrative boundaries, from GISCO, for non-commercial use. Weather: E-OBS v33.0e, for non-commercial research and education. Crop calendar: GGCMI Phase 3 crop calendar v1.01, CC BY 4.0 ([licence](https://creativecommons.org/licenses/by/4.0/)), from Jägermeyr, J., C. Müller, A. C. Ruane, et al. 2021: Climate impacts on global agriculture emerge earlier in new generation of climate and crop models, Nature Food, 2, 873-885. doi:10.1038/s43016-021-00400-y; data doi:10.5281/zenodo.5062513. Changes: the calendar's planting and maturity days were mapped to the E-OBS grid, averaged over each region and rounded to whole days. Map of maize (second analysis): MIRCA-OS v0.1, CC BY 4.0 ([licence](https://creativecommons.org/licenses/by/4.0/)), from Kebede, E. A., K. O. Oluoch, S. Siebert, et al. 2025: A global open-source dataset of monthly irrigated and rainfed cropped areas (MIRCA-OS) for the 21st century, Scientific Data, 12, 208. doi:10.1038/s41597-024-04313-w; data doi:10.4211/hs.60a890eb841c460192c03bb590687145. Changes: the 2015 harvested areas of maize were summed onto the E-OBS grid and used as weights.
 
 We acknowledge the E-OBS dataset from the EU-FP6 project UERRA (https://www.uerra.eu) and the Copernicus Climate Change Service, and the data providers in the ECA&D project (https://www.ecad.eu).
 

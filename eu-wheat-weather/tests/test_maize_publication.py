@@ -16,6 +16,7 @@ ROOT = Path(__file__).resolve().parents[1]
 PUB = ROOT / "publication" / "maize"
 TEMPLATE = PUB / "article.template.md"
 RESULTS = ROOT / "docs" / "maize" / "results" / "results.json"
+AMENDED = ROOT / "docs" / "maize" / "amendment" / "results.json"
 WHEAT_A1 = ROOT / "docs" / "amendment" / "results.json"
 ACKNOWLEDGEMENT = (
     "We acknowledge the E-OBS dataset from the EU-FP6 project UERRA (https://www.uerra.eu) "
@@ -25,9 +26,9 @@ CITATION = ("Cornes, R., G. van der Schrier, E.J.M. van den Besselaar, and P.D. 
             "An Ensemble Version of the E-OBS Temperature and Precipitation Datasets, "
             "J. Geophys. Res. Atmos., 123. doi:10.1029/2017JD028200")
 # Design, not results: the thresholds, the temperature bands, the test years, the interval
-# level, the unit of precipitation and the year of a cited work.
+# level, the unit of precipitation, the year of a cited work and the elevation cut-off.
 DESIGN_CONSTANTS = {"30", "36", "27", "33", "15", "18", "12", "2012", "2015", "2022", "95",
-                    "100", "2011"}
+                    "100", "2011", "800"}
 NUMBER = re.compile(r"(?<![\w.])\d+(?:[.,]\d+)?")
 
 pytestmark = pytest.mark.skipif(not (RESULTS.exists() and TEMPLATE.exists()),
@@ -49,6 +50,10 @@ def test_article_carries_the_notices_acknowledgement_and_citations() -> None:
     assert "for non-commercial use" in intro and "E-OBS v33.0e" in intro
     assert ("GGCMI Phase 3 crop calendar v1.01, CC BY 4.0" in article
             and "doi:10.5281/zenodo.5062513" in article)
+    if AMENDED.exists():
+        assert "MIRCA-OS" in intro and "MIRCA-OS v0.1, CC BY 4.0" in article
+        assert ("doi:10.1038/s41597-024-04313-w" in article
+                and "doi:10.4211/hs.60a890eb841c460192c03bb590687145" in article)
 
 
 def _first(shares: dict[str, float], n: int) -> list[str]:
@@ -202,6 +207,58 @@ def test_words_in_the_article_match_the_results() -> None:
         "Probably too small.** Only": swing["variance_left"] < 0.1,
         "Greek regional harvests from": ph["estimated_rows"]["countries"] == ["EL"]
         and len(greek_later) == ph["estimated_rows"]["region_years"],
+    }
+    for phrase, holds in claims.items():
+        assert phrase in text, phrase
+        assert holds, phrase
+
+
+@pytest.mark.skipif(not AMENDED.exists(), reason="No Amendment A2 results.")
+def test_words_about_the_second_analysis_match_its_results() -> None:
+    r = json.loads(RESULTS.read_text(encoding="utf-8"))
+    a = json.loads(AMENDED.read_text(encoding="utf-8"))
+    text = re.sub(r"\s+", " ", TEMPLATE.read_text(encoding="utf-8"))
+    d, reg = a["decisions"], r["decisions"]
+    fc, irr, ph = a["few_clusters"], a["irrigation"], a["irrigation_post_hoc"]
+    rows = a["leave_one_out"]["rows"]
+    lost = [x["country"] for x in rows if x["E1_p_twoway"] >= 0.05]
+    without_ro = next(x for x in rows if x["country"] == "RO")
+    leans = (a["leave_one_out"]["summary"]["E1"]["most_influential"] == "RO"
+             and abs(without_ro["E1"]) < 0.75 * abs(a["E1"]["estimate"]))
+    methods = (ROOT / "METHODS.md").read_text(encoding="utf-8")
+    claims = {
+        "A second analysis, registered after a critical review":
+            "## 10. Amendment A2 to the maize study" in methods,
+        "both results hold there, heat a little more clearly":
+            all(d[k]["verdict"] == "established negative" for k in ("E1", "E2"))
+            and all(d["E1"][p] < reg["E1"][p] for p in ("p_twoway_holm", "p_bootstrap_holm")),
+        "though it is smaller without Romania": leans,
+        "including the": all(c["excluded"] > 0 for c in a["data_rule"]["review_cases"]),
+        "Both results hold, and heat a little more clearly":
+            all(d[k]["verdict"] == "established negative" for k in ("E1", "E2")),
+        "Both are established.":
+            all(d[k]["verdict"] == "established negative" for k in ("E1", "E2")),
+        "The check after maturity passes again": not a["E5"]["significant_both"],
+        "With errors grouped by country alone, heat's p is":
+            fc["amended"]["E1"]["country"]["p"] < 0.05,
+        "for the first analysis it gives":
+            fc["amended"]["E1"]["randomization"]["p"] < 0.05,
+        "right at the line": 0.045 <= fc["registered"]["E1"]["randomization"]["p"] <= 0.055,
+        "Romania still supplies much of heat's size": leans,
+        "though still clear under the first method": without_ro["E1_p_twoway"] < 0.05,
+        "heat stays clear under the first method in every case but one": len(lost) == 1
+        and "RO" not in lost,
+        "heat costs rainfed regions":
+            irr["E1"]["rainfed"]["estimate"] < irr["E1"]["irrigated"]["estimate"] < 0
+            and irr["E1"]["rainfed"]["high"] < 0 and irr["E1"]["irrigated"]["high"] < 0,
+        "A dry season costs rainfed regions": irr["E2"]["rainfed"]["high"] < 0,
+        "is not established": irr["E2"]["irrigated"]["low"] < 0 < irr["E2"]["irrigated"]["high"],
+        "it puts Portugal's maize at": next(
+            c for c in a["map"]["eurostat_check"] if c["country"] == "PT")["map_share"] < 0.1,
+        "Counting Portugal as irrigated changes little": all(
+            abs(ph[k][g]["estimate"] - irr[k][g]["estimate"]) < 0.01
+            and (ph[k][g]["estimate"] < 0) == (irr[k][g]["estimate"] < 0)
+            for k in ("E1", "E2") for g in ("rainfed", "irrigated")),
     }
     for phrase, holds in claims.items():
         assert phrase in text, phrase
