@@ -30,7 +30,7 @@ A result counts as **established** only if it survives a correction for asking t
 
 If the comparison works, the weather in the two months after each region's maturity date should have nothing to do with that year's yield. By the rule fixed in advance, both methods would have to find a link for the check to fail. The second method does not (p = {{e5_p_boot}}), so the check passes.
 
-The first method does find one (p = {{e5_p_twoway}}). What it finds is rain after maturity going with higher yields, {{placebo_rain_pct}} for each 100 mm (p = {{placebo_rain_p}}), mostly in France: without France, its p rises to {{placebo_without_p}}. That rain is unrelated to the season's own rain, and adding it to the model leaves the heat estimate at {{e1_with_placebo_pct}}. A late harvest would not explain it: maize left standing through a wet autumn loses yield, which predicts the opposite sign.<!-- TODO[CITATION]: verify or add source for yield losses of grain maize left standing through wet weather. --> Two explanations remain, and these data cannot tell them apart: a calendar maturity date that is too early for late regions, or chance.
+The first method does find one (p = {{e5_p_twoway}}). What it finds is rain after maturity going with higher yields, {{placebo_rain_pct}} for each 100 mm (p = {{placebo_rain_p}}), mostly in France: without France, its p rises to {{placebo_without_p}}. That rain is unrelated to the season's own rain, and adding it to the model leaves the heat estimate at {{e1_with_placebo_pct}}. A late harvest would not explain it: rain that delays the harvest leaves maize standing longer, and long delays tend to cost yield through stalk rot and lodging (Thomison and coauthors, 2011), which predicts the opposite sign. Two explanations remain, and these data cannot tell them apart: a calendar maturity date that is too early for late regions, or chance.
 
 ## Heat: probably harmful, only just past the bar
 
@@ -91,7 +91,7 @@ The 2015 total is predicted well, but in 2012 and 2022 the losses were far large
 
 - **Not climate change.** These are effects of one season's weather on that season's harvest. Farmers adapt to a changing climate in ways they cannot adapt to a single bad year.
 - **Not the mechanism.** A hot spell comes with sun, dry air and its own timing, and the model does not separate them.
-- **Not irrigated and rainfed maize apart.** Much of southern Europe's maize is irrigated;<!-- TODO[CITATION]: verify or add source for the share of irrigated grain maize in Spain, Portugal, Italy and Greece. --> the estimates average over both, and one rainfed crop calendar is used everywhere.
+- **Not irrigated and rainfed maize apart.** Most of southern Europe's grain maize is irrigated (Eurostat's farm statistics); the estimates average over both, and one rainfed crop calendar is used everywhere.
 - **Not every country equally.** Spain supplies {{edd_share_es}} of the variation in heat that the comparison uses, Italy {{edd_share_it}} and Romania {{edd_share_ro}}. Spain, Portugal, Italy and Greece together supply {{south_var_share}} of it but grow {{south_area_share}} of the maize.
 - **Not nationwide shocks.** The comparison ignores whatever hits a whole country at once; only the prediction test counts it.
 - **Probably too small.** Only {{heat_variance_left}} of the variation in heat is left once regions of a country are compared, and errors in the weather data pull the estimates toward zero.
@@ -107,3 +107,7 @@ The data, the code, the research plan with every change made to it, the full res
 We acknowledge the E-OBS dataset from the EU-FP6 project UERRA (https://www.uerra.eu) and the Copernicus Climate Change Service, and the data providers in the ECA&D project (https://www.ecad.eu).
 
 Cornes, R., G. van der Schrier, E.J.M. van den Besselaar, and P.D. Jones. 2018: An Ensemble Version of the E-OBS Temperature and Precipitation Datasets, J. Geophys. Res. Atmos., 123. doi:10.1029/2017JD028200
+
+Thomison, P. R., R. W. Mullen, P. E. Lipps, T. Doerge, and A. B. Geyer. 2011: Corn Response to Harvest Date as Affected by Plant Population and Hybrid, Agronomy Journal, 103, 1765-1772. doi:10.2134/agronj2011.0147
+
+Eurostat: Integrated farm statistics 2023, irrigated area by crop (ef_lus_irri) and area by crop (ef_lus_allcrops), grain maize. https://ec.europa.eu/eurostat/databrowser/view/ef_lus_irri/default/table

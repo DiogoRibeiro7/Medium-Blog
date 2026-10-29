@@ -25,9 +25,9 @@ CITATION = ("Cornes, R., G. van der Schrier, E.J.M. van den Besselaar, and P.D. 
             "An Ensemble Version of the E-OBS Temperature and Precipitation Datasets, "
             "J. Geophys. Res. Atmos., 123. doi:10.1029/2017JD028200")
 # Design, not results: the thresholds, the temperature bands, the test years, the interval
-# level and the unit of precipitation.
+# level, the unit of precipitation and the year of a cited work.
 DESIGN_CONSTANTS = {"30", "36", "27", "33", "15", "18", "12", "2012", "2015", "2022", "95",
-                    "100"}
+                    "100", "2011"}
 NUMBER = re.compile(r"(?<![\w.])\d+(?:[.,]\d+)?")
 
 pytestmark = pytest.mark.skipif(not (RESULTS.exists() and TEMPLATE.exists()),
