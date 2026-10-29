@@ -480,5 +480,377 @@
     "leg_straight_m": 1381.343607
    }
   }
+ },
+ "after_review": {
+  "areas": {
+   "lisbon_city": {
+    "oriented": {
+     "estimate": 0.04782347152,
+     "low": 0.04004039269,
+     "high": 0.05620162998,
+     "level": 0.95
+    },
+    "direction_share": 0.3289357387,
+    "same_routes": 0.4458333333,
+    "noise_straight": {
+     "estimate": 0.01485689265,
+     "low": 0.01256902571,
+     "high": 0.0172354982,
+     "level": 0.95
+    },
+    "noise_straight_on_straight": 0.001666483452,
+    "legs": {
+     "straight": {
+      "circuity": 1.542088353,
+      "like": 1.51754413
+     },
+     "road": {
+      "circuity": 1.374064797,
+      "like": 1.505021844
+     }
+    },
+    "ratio": {
+     "mean": 1.344626434,
+     "sums": 1.291151411,
+     "median_by_length": {
+      "0-500": 1.524587489,
+      "500-1000": 1.483293116,
+      "1000-2500": 1.369879517,
+      "2500-": 1.265055505
+     }
+    }
+   },
+   "lisbon_both": {
+    "oriented": {
+     "estimate": 0.06580488606,
+     "low": 0.05641891027,
+     "high": 0.075942289,
+     "level": 0.95
+    },
+    "direction_share": 0.2209793355,
+    "same_routes": 0.5125,
+    "noise_straight": {
+     "estimate": 0.01397507765,
+     "low": 0.01155326811,
+     "high": 0.01681357305,
+     "level": 0.95
+    },
+    "noise_straight_on_straight": 0.0008392925064,
+    "legs": {
+     "straight": {
+      "circuity": 1.631553461,
+      "like": 1.505100265
+     },
+     "road": {
+      "circuity": 1.381757401,
+      "like": 1.494255164
+     }
+    },
+    "ratio": {
+     "mean": 1.43190736,
+     "sums": 1.40436359,
+     "median_by_length": {
+      "0-500": 1.524109015,
+      "500-1000": 1.47904348,
+      "1000-2500": 1.36938245,
+      "2500-": 1.30542687
+     }
+    }
+   },
+   "porto_city": {
+    "oriented": {
+     "estimate": 0.04480126959,
+     "low": 0.03891745258,
+     "high": 0.05091364693,
+     "level": 0.95
+    },
+    "direction_share": 0.4974642495,
+    "same_routes": 0.4125,
+    "noise_straight": {
+     "estimate": 0.02813558915,
+     "low": 0.02383019317,
+     "high": 0.03246926781,
+     "level": 0.95
+    },
+    "noise_straight_on_straight": 0.0002663694547,
+    "legs": {
+     "straight": {
+      "circuity": 1.603837073,
+      "like": 1.619840072
+     },
+     "road": {
+      "circuity": 1.408465327,
+      "like": 1.600621324
+     }
+    },
+    "ratio": {
+     "mean": 1.369780687,
+     "sums": 1.28755411,
+     "median_by_length": {
+      "0-500": 1.886669416,
+      "500-1000": 1.509307761,
+      "1000-2500": 1.355222611,
+      "2500-": 1.245630484
+     }
+    }
+   },
+   "porto_both": {
+    "oriented": {
+     "estimate": 0.04491499806,
+     "low": 0.03957977272,
+     "high": 0.05049744608,
+     "level": 0.95
+    },
+    "direction_share": 0.3953245809,
+    "same_routes": 0.2875,
+    "noise_straight": {
+     "estimate": 0.01820197094,
+     "low": 0.01570906082,
+     "high": 0.02066827443,
+     "level": 0.95
+    },
+    "noise_straight_on_straight": 0.0005242593336,
+    "legs": {
+     "straight": {
+      "circuity": 1.506964342,
+      "like": 1.508063524
+     },
+     "road": {
+      "circuity": 1.354762926,
+      "like": 1.49915613
+     }
+    },
+    "ratio": {
+     "mean": 1.390139467,
+     "sums": 1.307675676,
+     "median_by_length": {
+      "0-500": 1.848316008,
+      "500-1000": 1.495774067,
+      "1000-2500": 1.388219726,
+      "2500-": 1.282156519
+     }
+    }
+   }
+  },
+  "water": {
+   "lisbon": {
+    "registered_at_95": {
+     "estimate": 0.01320618253,
+     "low": 0.001222836533,
+     "high": 0.02631775036,
+     "level": 0.95
+    },
+    "oriented": {
+     "estimate": 0.01798141454,
+     "low": 0.002151575501,
+     "high": 0.03503808893,
+     "level": 0.9875
+    },
+    "direction": {
+     "estimate": -0.004775232009,
+     "low": -0.00931584636,
+     "high": -0.0001927404199,
+     "level": 0.9875
+    },
+    "km": {
+     "estimate": 5.35505,
+     "low": 3.422844141,
+     "high": 7.60382125,
+     "level": 0.9875
+    },
+    "asymmetry": {
+     "city": 0.0391227368,
+     "other": 0.02693523832,
+     "across": 0.04228868937
+    }
+   },
+   "porto": {
+    "registered_at_95": {
+     "estimate": -0.01487089577,
+     "low": -0.023076809,
+     "high": -0.006548640295,
+     "level": 0.95
+    },
+    "oriented": {
+     "estimate": 0.0001137284784,
+     "low": -0.008309456015,
+     "high": 0.00889010835,
+     "level": 0.9875
+    },
+    "direction": {
+     "estimate": -0.01498462425,
+     "low": -0.02473502802,
+     "high": -0.005182674579,
+     "level": 0.9875
+    },
+    "km": {
+     "estimate": 6.49789375,
+     "low": 5.236763516,
+     "high": 7.815127656,
+     "level": 0.9875
+    },
+    "asymmetry": {
+     "city": 0.07700312175,
+     "other": 0.0247074714,
+     "across": 0.03262442885
+    }
+   }
+  },
+  "direction_by_variant": [
+   {
+    "variant": "depot_all",
+    "pair": "lisbon",
+    "area": "city",
+    "share": 0.2732860083
+   },
+   {
+    "variant": "depot_all",
+    "pair": "lisbon",
+    "area": "both",
+    "share": 0.2265272614
+   },
+   {
+    "variant": "depot_all",
+    "pair": "porto",
+    "area": "city",
+    "share": 0.3110457946
+   },
+   {
+    "variant": "depot_all",
+    "pair": "porto",
+    "area": "both",
+    "share": 0.2890714098
+   },
+   {
+    "variant": "capacity_6",
+    "pair": "lisbon",
+    "area": "city",
+    "share": 0.3964386684
+   },
+   {
+    "variant": "capacity_6",
+    "pair": "lisbon",
+    "area": "both",
+    "share": 0.2537328156
+   },
+   {
+    "variant": "capacity_6",
+    "pair": "porto",
+    "area": "city",
+    "share": 0.6137113422
+   },
+   {
+    "variant": "capacity_6",
+    "pair": "porto",
+    "area": "both",
+    "share": 0.5084593874
+   },
+   {
+    "variant": "capacity_24",
+    "pair": "lisbon",
+    "area": "city",
+    "share": 0.2888783044
+   },
+   {
+    "variant": "capacity_24",
+    "pair": "lisbon",
+    "area": "both",
+    "share": 0.1911643394
+   },
+   {
+    "variant": "capacity_24",
+    "pair": "porto",
+    "area": "city",
+    "share": 0.3586453115
+   },
+   {
+    "variant": "capacity_24",
+    "pair": "porto",
+    "area": "both",
+    "share": 0.3113769126
+   },
+   {
+    "variant": "iterations_20000",
+    "pair": "lisbon",
+    "area": "city",
+    "share": 0.2903319299
+   },
+   {
+    "variant": "iterations_20000",
+    "pair": "lisbon",
+    "area": "both",
+    "share": 0.2491611504
+   },
+   {
+    "variant": "iterations_20000",
+    "pair": "porto",
+    "area": "city",
+    "share": 0.4938735568
+   },
+   {
+    "variant": "iterations_20000",
+    "pair": "porto",
+    "area": "both",
+    "share": 0.3709024577
+   }
+  ],
+  "capacity": {
+   "lisbon_city": {
+    "6_to_12": {
+     "estimate": 0.01412986331,
+     "low": 0.003512618119,
+     "high": 0.02410361242,
+     "level": 0.95
+    },
+    "12_to_24": {
+     "estimate": 0.007801519158,
+     "low": 0.0002066280958,
+     "high": 0.01562057245,
+     "level": 0.95
+    }
+   },
+   "lisbon_both": {
+    "6_to_12": {
+     "estimate": 0.01399055364,
+     "low": 0.002252050763,
+     "high": 0.02519426646,
+     "level": 0.95
+    },
+    "12_to_24": {
+     "estimate": -0.01370379681,
+     "low": -0.02797425306,
+     "high": -0.001254837524,
+     "level": 0.95
+    }
+   },
+   "porto_city": {
+    "6_to_12": {
+     "estimate": 0.01082046106,
+     "low": -0.0002215547952,
+     "high": 0.02212058292,
+     "level": 0.95
+    },
+    "12_to_24": {
+     "estimate": 0.004428668438,
+     "low": -0.0083842685,
+     "high": 0.01707792349,
+     "level": 0.95
+    }
+   },
+   "porto_both": {
+    "6_to_12": {
+     "estimate": 0.01772567202,
+     "low": 0.01043001348,
+     "high": 0.02572570352,
+     "level": 0.95
+    },
+    "12_to_24": {
+     "estimate": 0.004362686016,
+     "low": -0.007250872238,
+     "high": 0.01597335991,
+     "level": 0.95
+    }
+   }
+  }
  }
 }

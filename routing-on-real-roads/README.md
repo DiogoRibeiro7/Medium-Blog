@@ -7,8 +7,9 @@ worse? A reproducible study on the OpenStreetMap road networks of Lisbon and Por
 **Status: plan registered ([METHODS.md](METHODS.md)); data built
 ([docs/DATA.md](docs/DATA.md)); every registered route solved and estimated
 ([docs/RESULTS.md](docs/RESULTS.md)); the article written from the results
-([publication/article.md](publication/article.md)).** A critical review follows in its own
-pull request.
+([publication/article.md](publication/article.md)); a critical review
+([docs/REVIEW.md](docs/REVIEW.md)) and the corrections it recommended, logged in the plan's
+change log.**
 
 ## Running it
 
@@ -50,4 +51,6 @@ routing-roads publication    # publication/article.md, values.json and figures/
 
 Map data © OpenStreetMap contributors, available under the Open Database Licence (ODbL),
 from Geofabrik's dated extract `portugal-261027.osm.pbf`. The raw extract is not
-committed. Derived tables, once committed, are published under the ODbL.
+committed. The derived tables in `data/derived/` and the solves computed from them are
+published under the ODbL ([data/derived/NOTICE.md](data/derived/NOTICE.md)); the code is
+under the repository's licence.

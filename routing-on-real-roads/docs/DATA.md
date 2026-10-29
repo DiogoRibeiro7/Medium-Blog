@@ -27,7 +27,7 @@ Over ordered pairs of distinct pharmacies, the depot left out. The median ratio 
 
 ## Where the shortest road paths cross the water
 
-For every ordered pair of points on opposite banks (each point's bank is its municipality), the edge where the shortest road path between them crosses: an edge whose two ends lie in the pair's two municipalities, which meet only in the river. Each crossing's share of those paths; crossings on under 1% of paths are left out.
+For every ordered pair of points on opposite banks (each point's bank is its municipality), the edge where the shortest road path between them crosses: an edge whose two ends lie in the pair's two municipalities. Porto and Vila Nova de Gaia meet in the Douro; the OSM boundaries of Lisboa and Almada do not touch, but the bridge's edge joins a node in each. Each crossing's share of those paths; crossings on under 1% of paths are left out.
 
 - **Lisboa and Almada** (29,988 paths): Autoestrada do Sul / Ponte 25 de Abril 100%.
 - **Porto and Vila Nova de Gaia** (12,600 paths): Ponte Infante Dom Henrique / Rua Gonçalves Zarco 61%; Ponte da Arrábida / Via de Cintura Interna 35%; Ponte do Freixo / Via de Cintura Interna 3%.

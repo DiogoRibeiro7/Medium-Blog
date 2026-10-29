@@ -137,9 +137,10 @@ def render(d: Derived, command: str) -> str:
     lines += ["", "## Where the shortest road paths cross the water", "",
               "For every ordered pair of points on opposite banks (each point's bank is its "
               "municipality), the edge where the shortest road path between them crosses: an "
-              "edge whose two ends lie in the pair's two municipalities, which meet only in "
-              "the river. Each crossing's share of those paths; crossings on under 1% of "
-              "paths are left out.", ""]
+              "edge whose two ends lie in the pair's two municipalities. Porto and Vila "
+              "Nova de Gaia meet in the Douro; the OSM boundaries of Lisboa and Almada do not "
+              "touch, but the bridge's edge joins a node in each. Each crossing's share of "
+              "those paths; crossings on under 1% of paths are left out.", ""]
     for pair in PAIRS:
         c = m["pairs"][pair.key]["crossings"]
         used = [(n, v) for n, v in c["bridges"].items() if v >= 0.01]

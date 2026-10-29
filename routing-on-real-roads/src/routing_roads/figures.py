@@ -19,10 +19,10 @@ MUTED = "#7b8794"
 BLUE = "#2563a8"
 ORANGE = "#d97706"
 GRID = "#e4e7eb"
-SOURCE = (f"Map data © OpenStreetMap contributors (ODbL), Geofabrik extract {EXTRACT}. "
-          "Simulated daily orders from OSM pharmacies. Routes: PyVRP.")
+SOURCE = f"Map data © OpenStreetMap contributors (ODbL), Geofabrik extract {EXTRACT}."
+ROUTES = " Simulated daily orders from OSM pharmacies. Routes: PyVRP."
 AREA_KEYS = [(p.key, a) for p in PAIRS for a in AREAS]
-SHORT = {"main": "Main design", "depot_all": "Depot at the\npair's mean"}
+SHORT = {"main": "Main design,\ndays 1-20, seeds 1-2", "depot_all": "Depot at the\npair's mean"}
 
 
 def _pyplot() -> Any:
@@ -37,11 +37,12 @@ def _pyplot() -> Any:
     return plt
 
 
-def _save(plt: Any, fig: Any, path: Path, note: str = "") -> Path:
+def _save(plt: Any, fig: Any, path: Path, note: str = "", routes: bool = True) -> Path:
     # Just below everything drawn so far; the tight bounding box grows to include it.
     fig.canvas.draw()
     bottom = fig.get_tightbbox().y0 / fig.get_figheight()
-    fig.text(0.01, bottom - 0.01, SOURCE + (f"\n{note}" if note else ""), fontsize=7,
+    source = SOURCE + (ROUTES if routes else "")
+    fig.text(0.01, bottom - 0.01, source + (f"\n{note}" if note else ""), fontsize=7,
              color=MUTED, ha="left", va="top")
     path.parent.mkdir(parents=True, exist_ok=True)
     fig.savefig(path, dpi=150, bbox_inches="tight", metadata={"Software": None})
@@ -85,23 +86,28 @@ def ratios(d: Derived, path: Path) -> Path:
     axes[0].set_title("How much further the road is than the straight line, over every pair "
                       "of pharmacies", fontsize=10, loc="left", color=INK)
     return _save(plt, fig, path, "One-way streets respected: each ordered pair counts once "
-                 "in each direction.")
+                 "in each direction.", routes=False)
 
 
 def regret(rows: Sequence[dict[str, str]], e: dict[str, Any], path: Path) -> Path:
-    """Per day: the regret of the straight-line plan, and the solver's seed noise."""
+    """Per day: the regret of the straight-line plan, and each plan's seed noise on the
+    road (the straight-line plan's added after the critical review)."""
     plt = _pyplot()
-    fig, ax = plt.subplots(figsize=(7.5, 4.0))
+    fig, ax = plt.subplots(figsize=(7.5, 4.6))
     rng = np.random.default_rng(0)                 # vertical jitter only
     for i, (pair_key, area) in enumerate(AREA_KEYS):
         c = _cells(rows, pair_key, area)
         r = regret_by_day(c["straight_road"], c["road_road"])
         noise = noise_by_day(c["road_road"])
+        noise_straight = noise_by_day(c["straight_road"])
         y = len(AREA_KEYS) - 1 - i
-        ax.scatter(_pct(r), y + 0.12 + rng.uniform(-0.08, 0.08, r.size), s=14, color=BLUE,
+        ax.scatter(_pct(r), y + 0.12 + rng.uniform(-0.06, 0.06, r.size), s=14, color=BLUE,
                    alpha=0.55, lw=0, label="Straight-line plan against road plan"
                    if i == 0 else None)
-        ax.scatter(_pct(noise), y - 0.22 + rng.uniform(-0.05, 0.05, noise.size), s=14,
+        ax.scatter(_pct(noise_straight), y - 0.1 + rng.uniform(-0.05, 0.05, r.size), s=14,
+                   color=ORANGE, alpha=0.6, lw=0,
+                   label="Straight-line plan, one seed against another" if i == 0 else None)
+        ax.scatter(_pct(noise), y - 0.3 + rng.uniform(-0.05, 0.05, noise.size), s=14,
                    color=MUTED, alpha=0.6, lw=0,
                    label="Road plan, one seed against another" if i == 0 else None)
         e1 = e["areas"][f"{pair_key}_{area}"]["E1"]
@@ -112,13 +118,14 @@ def regret(rows: Sequence[dict[str, str]], e: dict[str, Any], path: Path) -> Pat
                   [AREA_NAMES[k].replace(" with ", "\nwith ") for k in AREA_KEYS[::-1]],
                   fontsize=8)
     ax.set_xlabel("Extra road distance (%), one dot a day")
-    ax.set_title("Extra road distance of routes planned on straight lines, and the solver's "
-                 "own noise", fontsize=10, loc="left", color=INK, pad=24)
+    ax.set_title("Extra road distance of routes planned on straight lines, and each plan's "
+                 "seed noise on the road", fontsize=10, loc="left", color=INK, pad=38)
     ax.grid(axis="x", color=GRID, lw=0.6)
     ax.legend(loc="lower left", bbox_to_anchor=(0.0, 1.0), ncol=2, fontsize=8,
               frameon=False, borderaxespad=0.2)
     return _save(plt, fig, path, "Black: mean over days with its 95% interval. Seed noise "
-                 "averages the 12 ordered pairs of seeds.")
+                 "averages the 12 ordered pairs of seeds; the straight-line plan's was added "
+                 "after the critical review.")
 
 
 def water(rows: Sequence[dict[str, str]], e: dict[str, Any], path: Path) -> Path:
@@ -149,7 +156,7 @@ def water(rows: Sequence[dict[str, str]], e: dict[str, Any], path: Path) -> Path
     ax.grid(axis="x", color=GRID, lw=0.6)
     level = e["water"][PAIRS[0].key]["level"]
     return _save(plt, fig, path, f"Black: mean over days with its {level:.2%} interval "
-                 "(simultaneous across the four areas).")
+                 "(Bonferroni over the four areas).")
 
 
 def estimate(rows: Sequence[dict[str, str]], e: dict[str, Any], path: Path) -> Path:
@@ -200,14 +207,14 @@ def sensitivity(e: dict[str, Any], path: Path) -> Path:
               ("E1_both", "Regret, with the other bank (%)"),
               ("E3", "Change from the other bank (points)"))
     fig, axes = plt.subplots(1, len(panels), figsize=(7.5, 3.4), sharey=True)
-    colours = (BLUE, ORANGE)
+    styles = ((INK, "o"), (MUTED, "s"))     # not blue: blue is the straight-line plan
     for ax, (key, label) in zip(axes, panels, strict=True):
-        for j, (pair, colour) in enumerate(zip(PAIRS, colours, strict=True)):
+        for j, (pair, (colour, marker)) in enumerate(zip(PAIRS, styles, strict=True)):
             for i, v in enumerate(variants):
                 x = by[(v, pair.key)][key]
                 y = len(variants) - 1 - i + (0.14 if j == 0 else -0.14)
                 ax.plot(_pct([x["low"], x["high"]]), [y, y], color=colour, lw=1.6)
-                ax.plot(_pct(x["estimate"]), y, marker="o", color=colour, ms=4.5,
+                ax.plot(_pct(x["estimate"]), y, marker=marker, color=colour, ms=4.5,
                         label=pair.city if i == 0 and key == "E1_city" else None)
         if key == "E3":
             ax.axvline(0, color=MUTED, lw=0.8)

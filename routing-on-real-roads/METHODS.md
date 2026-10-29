@@ -255,3 +255,56 @@ changes no decision; it is reported beside the main results.
     one pattern that fits E3's result in both cities, and says that two cities cannot
     test it.
   - No registered number changed.
+- **2026-10-29, corrections after the critical review ([docs/REVIEW.md](docs/REVIEW.md)).**
+  Made after the review and every result above had been seen. No route was solved again.
+  - **The solver (finding M2).** Section 5 calls PyVRP 0.14.1 a hybrid genetic search.
+    Version 0.14.1 runs an iterated local search, and the 5,000 iterations are its
+    iterations. The reason the change log gives for the coordinates, PyVRP's SWAP*
+    operator, is wrong: 0.14.1 has no such operator, and two registered instances
+    re-solved with every coordinate at zero return the same routes. The coordinates are
+    kept, so that no solve changes.
+  - **The placebo (I1).** Section 8 says that E2 measures the solver's own noise. It
+    measures the road plan's. The straight-line plan's road distance varies far more
+    between seeds, mostly through the direction in which its routes are driven.
+  - **The crossings (M6).** The two municipalities of a pair "meet only in the river"
+    holds for Porto and Vila Nova de Gaia, but the OSM boundaries of Lisboa and Almada are
+    1,620 m apart. The bridge's simplified edge joins a node in each, so the crossing
+    report is unchanged. Its wording in `docs/DATA.md` and in the code is corrected.
+  - **Limits of the network, stated now (M3 to M6).**
+    - *The filter.* The registered drive filter keeps some bus-only (`highway=busway`),
+      `access=no` and mis-tagged ways, and treats ways tagged `junction=circular` with no
+      `oneway` tag as two-way.
+    - *Turn restrictions.* They are not modelled, and they change distances, not only
+      times.
+    - *Snapping.* Porto's pharmacy 164 snaps to a node on a motorway, and pharmacy 1 to a
+      node on a pedestrian crossing.
+    - *The depot variant.* Porto's variant depot lies in Vila Nova de Gaia, so in that
+      variant every route of Porto alone crosses the river.
+  - **Analyses added (M1, I1 to I4, I6).** They are in `results/estimates.json` under
+    `after_review` and in a labelled section of `docs/RESULTS.md`. They use the registered
+    bootstrap draws and decide nothing.
+    - *Route direction.* The straight-line plans with each route driven in its shorter
+      direction on the road, and the share of the regret this removes, by area and
+      variant. Also the share of pairs of seeds whose straight-line plans have the same
+      routes up to direction.
+    - *Seed noise.* E2's placebo applied to the straight-line plan, on both matrices.
+    - *E3.* At 95%, without route direction, its direction part, and in kilometres a day.
+      Also the asymmetry within each municipality and across the river.
+    - *E4.* Each plan's legs against pairs of the same straight-line length. Also the
+      mean ratio, the ratio of sums and the median ratio by length over pairs of
+      pharmacies.
+    - *Capacity.* The capacity variants paired by day.
+  - **Reporting corrected.**
+    - *`docs/RESULTS.md`.* The seed noise is labelled the road plan's. E3's level is
+      noted as conservative for its two comparisons. Porto's fall is described as a fall
+      in a ratio.
+    - *The article.* It is rewritten where the review found it wrong or incomplete (C1 to
+      C6, I1 to I8): route direction, the straight-line plan's noise in place of "more
+      than 60 times the solver's own noise", the river, the explanation of E4, the
+      solver, the subtitle, the advice and the limits.
+    - *The figures.* Figure 2 adds the straight-line plan's seed noise. Figure 5 no
+      longer uses blue for Lisbon and labels the main design's days and seeds. Figure 1's
+      footer no longer mentions routes.
+  - **A licence notice** for the derived tables and the solves, `data/derived/NOTICE.md`.
+  - **Not changed:** any registered estimate, interval, decision or solve. The registered
+    parts of `results/estimates.json` are identical (checked).

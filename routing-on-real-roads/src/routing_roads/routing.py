@@ -21,9 +21,11 @@ Routes = list[list[int]]
 
 
 def projected(lon: Sequence[float], lat: Sequence[float]) -> NDArray[np.float64]:
-    """Points in EPSG:3763 metres. PyVRP's SWAP* operator compares routes by the angles of
-    their clients around the depot, so it is given real coordinates; the distances it
-    optimises come from the matrix alone."""
+    """Points in EPSG:3763 metres, given to PyVRP as each location's coordinates. The
+    distances it optimises come from the matrix alone. The change log first gave PyVRP's
+    SWAP* operator as the reason; version 0.14.1 has no such operator, and re-solves with
+    every coordinate at zero return the same routes (docs/REVIEW.md, M2). The coordinates
+    are kept so that no registered solve changes."""
     to = Transformer.from_crs("EPSG:4326", PROJECTED_CRS, always_xy=True)
     x, y = to.transform(np.asarray(lon, dtype=float), np.asarray(lat, dtype=float))
     return np.column_stack([x, y])
