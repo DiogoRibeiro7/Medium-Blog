@@ -19,6 +19,7 @@ on:
         options:
           - mortgage-rates
           - regional
+          - affordability
         default: mortgage-rates
 
 permissions:
@@ -46,12 +47,15 @@ jobs:
         run: |
           python analysis.py > /dev/null
           python regional.py > /dev/null
-          git diff --exit-code -- results.json results_regional.json regional_panel.csv
+          python affordability.py > /dev/null
+          git diff --exit-code -- results.json results_regional.json regional_panel.csv \
+            results_affordability.json affordability_panel.csv
 
-      - name: Check that the regional figures script runs
+      - name: Check that the figure scripts run
         run: |
           python -m pip install matplotlib==3.11.2
           python regional_figures.py
+          python affordability_figures.py
 
   # Refreshing the ECB series is a manual, reviewed step: dispatch this workflow
   # on a branch other than main; the job commits the dated raw response and its
@@ -93,7 +97,7 @@ jobs:
           fi
 
   fetch-regional:
-    if: github.event_name == 'workflow_dispatch' && github.ref != 'refs/heads/main' && inputs.task == 'regional'
+    if: github.event_name == 'workflow_dispatch' && github.ref != 'refs/heads/main' && (inputs.task == 'regional' || inputs.task == 'affordability')
     runs-on: ubuntu-latest
     timeout-minutes: 300
     permissions:
@@ -112,8 +116,8 @@ jobs:
         with:
           python-version: '3.13'
 
-      - name: Download the INE regional series
-        run: python fetch_regional.py --out data
+      - name: Download the INE series
+        run: python fetch_regional.py --out data --set ${{ inputs.task }}
 
       - name: Commit the outputs
         if: always()

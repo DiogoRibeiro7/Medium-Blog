@@ -1,8 +1,9 @@
-"""Download and pin the INE series used by the regional panel.
+"""Download and pin the INE series used by the regional and affordability panels.
 
-For each indicator in ``INDICATORS`` the script requests INE's metadata and then
-the data, as many years per request as INE's 40,000-value limit allows, and writes every response body
-unchanged into a gzipped JSON-lines container
+For each indicator in ``INDICATORS`` (or ``AFFORDABILITY`` with ``--set
+affordability``) the script requests INE's metadata and then the data, as many
+periods per request as INE's 40,000-value limit allows, and writes every response
+body unchanged into a gzipped JSON-lines container
 ``data/ine_<code>_<YYYY-MM-DD>.jsonl.gz``. Each line records the URL, retrieval
 time, HTTP status, text encoding, byte count and SHA-256 of the raw body next
 to the body itself, so ``regional.py`` can check every response it reads. The
@@ -11,7 +12,7 @@ first line is a header with the number of responses that follow.
 Nothing is parsed or transformed here. Run on a GitHub runner (the workflow job
 ``fetch-regional``); standard library only.
 
-Run:  python fetch_regional.py --out data
+Run:  python fetch_regional.py --out data [--set regional|affordability]
 """
 
 from __future__ import annotations
@@ -21,7 +22,6 @@ import datetime as dt
 import gzip
 import hashlib
 import json
-import sys
 import time
 import urllib.error
 import urllib.parse
@@ -43,11 +43,40 @@ INDICATORS: dict[str, tuple[str, list[int], dict[str, str]]] = {
     "0014406": ("households_census_series", [2011, 2021], {}),
     "0014627": ("households_census2021_nuts2024", [2021], {"Dim3": "T", "Dim4": "T", "Dim5": "T"}),
 }
+# Price and income series for the affordability panel. Periods: "q4" = the fourth-quarter
+# codes of a quarterly indicator (12-month windows ending in December), "all" = every period.
+AFFORDABILITY: dict[str, tuple[str, str, dict[str, str]]] = {
+    # Median value per m2 of family dwellings sold, last 12 months, method 2022, NUTS 2024; all categories.
+    "0012234": ("sales_price_m2_nuts2024", "q4", {}),
+    # The same statistic under the 2018 method, NUTS 2013 (to 2021 Q3).
+    "0009490": ("sales_price_m2_method2018_nuts2013", "q4", {}),
+    # Median bank appraisal value per m2, annual, municipalities 2024.
+    "0012256": ("appraisal_m2_nuts2024", "all", {}),
+    # Median declared gross income per tax household / net of IRS / per taxpayer (IRS-based, NUTS 2024).
+    "0012712": ("income_gross_household_nuts2024", "all", {}),
+    "0012741": ("income_net_household_nuts2024", "all", {}),
+    "0012749": ("income_gross_taxpayer_nuts2024", "all", {}),
+    # Median declared gross income per tax household, NUTS 2013 (earlier years).
+    "0009763": ("income_gross_household_nuts2013", "all", {}),
+}
+SETS = {"regional": "INDICATORS", "affordability": "AFFORDABILITY"}
 PAUSE_SECONDS = 10
 MAX_CELLS = 39_000  # INE serves at most 40,000 values per request
 
 
-def request(url: str, timeout: float = 600.0, attempts: int = 6) -> tuple[bytes, int, str]:
+LOG: list[Path] = []
+
+
+def log(message: str) -> None:
+    """Print a progress line and append it to the log file, if one is set."""
+    line = f"{dt.datetime.now(dt.timezone.utc):%H:%M:%S} {message}"
+    print(line, flush=True)
+    for path in LOG:
+        with path.open("a", encoding="utf-8") as fh:
+            fh.write(line + "\n")
+
+
+def request(url: str, timeout: float = 300.0, attempts: int = 6) -> tuple[bytes, int, str]:
     """GET ``url``; on HTTP 429 or a network error wait (honouring Retry-After) and retry."""
     last_error: Exception | None = None
     for attempt in range(attempts):
@@ -63,7 +92,10 @@ def request(url: str, timeout: float = 600.0, attempts: int = 6) -> tuple[bytes,
             time.sleep(min(int(exc.headers.get("Retry-After") or 60 * (attempt + 1)), 300))
         except (urllib.error.URLError, TimeoutError, ConnectionError) as exc:
             last_error = exc
-            time.sleep(60 * (attempt + 1))
+            log(f"network error on attempt {attempt + 1}: {exc!r}")
+            if attempt >= 2:
+                break  # an unreachable host does not come back within minutes; fail and let the job be rerun
+            time.sleep(30)
     assert last_error is not None
     raise last_error
 
@@ -85,64 +117,102 @@ def record(url: str, body: bytes, status: int, charset: str, kind: str) -> dict[
     }
 
 
-def geography_count(metadata: bytes, charset: str) -> int:
-    """Number of geographic categories (every level) listed in the metadata."""
+def cells_per_period(metadata: bytes, charset: str, filters: dict[str, str]) -> int:
+    """Values in one period: geographic categories times every other dimension left unfiltered."""
     item = json.loads(metadata.decode(charset))[0]
-    return sum(1 for key in item["Dimensoes"]["Categoria_Dim"][0] if key.startswith("Dim_Num2_"))
+    categories = item["Dimensoes"]["Categoria_Dim"][0]
+    total = 1
+    for dim in item["Dimensoes"]["Descricao_Dim"]:
+        n = dim["dim_num"]
+        if n == "1" or f"Dim{n}" in filters:
+            continue
+        total *= sum(1 for key in categories if key.startswith(f"Dim_Num{n}_"))
+    return total
 
 
-def returned_years(body: bytes, charset: str) -> set[str]:
-    """Years present in a data response (empty if INE reports a failure)."""
+def period_codes(metadata: bytes, charset: str, selection: str | list[int]) -> list[str]:
+    """Period codes to request: explicit years (annual), every period, or fourth quarters."""
+    if isinstance(selection, list):
+        return [f"S7A{y}" for y in selection]
+    item = json.loads(metadata.decode(charset))[0]
+    categories = item["Dimensoes"]["Categoria_Dim"][0]
+    codes = [v[0] for k, v in categories.items() if k.startswith("Dim_Num1_")]
+    codes = [c["categ_cod"] for c in sorted(codes, key=lambda c: int(c["categ_ord"]))]
+    if selection == "all":
+        return codes
+    if selection == "q4":
+        return [c for c in codes if c.startswith("S5A") and c.endswith("4")]
+    raise ValueError(f"Unknown period selection {selection!r}")
+
+
+def returned_periods(body: bytes, charset: str) -> set[str]:
+    """Period labels present in a data response (empty if INE reports a failure)."""
     item = json.loads(body.decode(charset))[0]
     if "Verdadeiro" not in item.get("Sucesso", {}):
         return set()
-    return {year for year, rows in item.get("Dados", {}).items() if rows}
+    return {period for period, rows in item.get("Dados", {}).items() if rows}
 
 
-def fetch_indicator(code: str, years: list[int], filters: dict[str, str]) -> tuple[list[dict[str, object]], str]:
-    """Metadata plus the data, several years per request within INE's cell limit."""
+def fetch_indicator(code: str, selection: str | list[int], filters: dict[str, str]) -> tuple[list[dict[str, object]], str, list[str]]:
+    """Metadata plus the data, as many periods per request as INE's cell limit allows."""
     lines = []
     meta_url = f"{META_URL}?{urllib.parse.urlencode({'varcd': code, 'lang': 'PT'})}"
     meta_body, meta_status, meta_charset = request(meta_url)
     lines.append(record(meta_url, meta_body, meta_status, meta_charset, kind="metadata"))
-    per_request = max(1, MAX_CELLS // geography_count(meta_body, meta_charset))
-    batches = [years[i:i + per_request] for i in range(0, len(years), per_request)]
-    for batch in batches:
-        query = {"op": "2", "varcd": code, "lang": "PT", "Dim1": ",".join(f"S7A{y}" for y in batch), **filters}
+    periods = period_codes(meta_body, meta_charset, selection)
+    per_request = max(1, MAX_CELLS // cells_per_period(meta_body, meta_charset, filters))
+    for i in range(0, len(periods), per_request):
+        batch = periods[i:i + per_request]
+        query = {"op": "2", "varcd": code, "lang": "PT", "Dim1": ",".join(batch), **filters}
         url = f"{DATA_URL}?{urllib.parse.urlencode(query)}"
+        log(f"{code}: requesting {len(batch)} periods")
         body, status, charset = request(url)
-        if returned_years(body, charset) != {str(y) for y in batch}:
-            raise ValueError(f"{code}: response for {batch} has years {sorted(returned_years(body, charset))}")
+        log(f"{code}: {len(body)} bytes")
+        if len(returned_periods(body, charset)) != len(batch):
+            raise ValueError(f"{code}: response for {batch} has periods {sorted(returned_periods(body, charset))}")
         lines.append(record(url, body, status, charset, kind="data"))
         time.sleep(PAUSE_SECONDS)
-    return lines, f"all geographic levels; up to {per_request} years per request"
+    return lines, f"all geographic levels; up to {per_request} periods per request", periods
 
 
 def main() -> int:
     """Fetch every indicator and write one container per indicator."""
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--out", type=Path, default=Path(__file__).parent / "data")
-    parser.add_argument("--only", nargs="*", default=None, help="indicator codes to fetch (default: all)")
+    parser.add_argument("--only", nargs="*", default=None, help="indicator codes to fetch (default: all in the set)")
+    parser.add_argument("--set", choices=sorted(SETS), default="regional", help="which group of indicators to fetch")
+    parser.add_argument("--log", type=Path, default=None, help="also append progress lines to this file")
     args = parser.parse_args()
+    if args.log:
+        LOG.append(args.log)
+    try:  # one short request first: if INE is unreachable from this runner, stop now rather than after hours of retries
+        request(f"{META_URL}?varcd=0008273&lang=PT", timeout=45, attempts=1)
+        log("INE reachable")
+    except Exception as exc:  # noqa: BLE001
+        log(f"INE unreachable: {exc!r}")
+        return 2
     args.out.mkdir(parents=True, exist_ok=True)
     today = dt.datetime.now(dt.timezone.utc).date().isoformat()
     failures = 0
-    for code, (name, years, filters) in INDICATORS.items():
+    chosen: dict[str, tuple[str, str | list[int], dict[str, str]]] = dict(INDICATORS if args.set == "regional" else AFFORDABILITY)
+    for code, (name, selection, filters) in chosen.items():
         if args.only and code not in args.only:
             continue
         try:
-            lines, mode = fetch_indicator(code, years, filters)
+            lines, mode, periods = fetch_indicator(code, selection, filters)
         except Exception as exc:  # noqa: BLE001 - report and continue with the others
-            print(f"{code} {name}: FAILED {exc!r}", file=sys.stderr)
+            log(f"{code} {name}: FAILED {exc!r}")
             failures += 1
             continue
         header = {"kind": "header", "indicator": code, "name": name, "filters": filters, "geography": mode,
-                  "years": years, "responses": len(lines)}
+                  "periods": periods, "responses": len(lines)}
+        if isinstance(selection, list):
+            header["years"] = selection
         path = args.out / f"ine_{code}_{today}.jsonl.gz"
         with gzip.open(path, "wt", encoding="utf-8", compresslevel=9) as fh:
             for line in (header, *lines):
                 fh.write(json.dumps(line, ensure_ascii=False) + "\n")
-        print(f"{code} {name}: {len(lines)} responses, {mode} -> {path.name}", flush=True)
+        log(f"{code} {name}: {len(lines)} responses, {mode} -> {path.name}")
     return 1 if failures else 0
 
 
