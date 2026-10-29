@@ -83,7 +83,7 @@ def curve(ax, r: dict, color: str, label: str, dy: float = 0, leader: bool = Fal
 
 
 # ---------------------------------------------------------------------------
-# Figure 1: survival from hire
+# Figure 2: survival from hire
 # ---------------------------------------------------------------------------
 
 fig, axes = plt.subplots(1, 2, figsize=(11, 4.6), sharey=True)
@@ -109,7 +109,7 @@ plt.close(fig)
 
 
 # ---------------------------------------------------------------------------
-# Figure 2: the two estimands
+# Figure 1: the two estimands
 # ---------------------------------------------------------------------------
 
 fig, axes = plt.subplots(1, 2, figsize=(11, 4.6), gridspec_kw={"width_ratios": [1.15, 1]})
@@ -156,15 +156,15 @@ handles = [plt.Line2D([], [], marker="o", ls="", color=INK2, ms=7, label="pooled
 ax.legend(handles=handles, loc="lower right", fontsize=7.8)
 fig.suptitle("Same cohort, same jobs, two statistics: the drop between releases is what averaging per worker does",
              x=0.01, ha="left", fontsize=12, fontweight="bold", color=INK)
-source(fig, "Data: BLS, NLSY79 Table 2, releases 2017-2025. Right panel: career model calibrated to the pooled cells, "
-            "frailty variance 0.001, then averaged per worker. Diogo Ribeiro.")
+source(fig, "Data: BLS, NLSY79 Table 2, 2017-2025. Right: career model with frailty variance 0.001, refitted to the main model's "
+            "cells (these include the 55-58 averaged value). Diogo Ribeiro.")
 fig.tight_layout(rect=(0, 0.04, 1, 0.95))
 fig.savefig(OUT / "fig1_two_estimands.png", dpi=200)
 plt.close(fig)
 
 
 # ---------------------------------------------------------------------------
-# Figure 3: stock versus flow
+# Figure 5: stock versus flow
 # ---------------------------------------------------------------------------
 
 cps = {r["age_group"]: float(r["jan2026"]) for r in read_csv("cps_median_tenure.csv")}
@@ -194,7 +194,7 @@ plt.close(fig)
 
 
 # ---------------------------------------------------------------------------
-# Figure 4: restricted mean time with the employer, data only
+# Figure 3: restricted mean time with the employer, data only
 # ---------------------------------------------------------------------------
 
 fig, ax = plt.subplots(figsize=(9.5, 5))
@@ -235,7 +235,7 @@ plt.close(fig)
 
 
 # ---------------------------------------------------------------------------
-# Figure 5: hires per seat
+# Figure 4: hires per seat
 # ---------------------------------------------------------------------------
 
 fig, ax = plt.subplots(figsize=(9.5, 4.8))
