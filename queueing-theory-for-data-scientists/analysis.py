@@ -356,6 +356,104 @@ def run_experiment(quick: bool = False) -> tuple[list[dict[str, object]], list[d
     return rows, tails, sensitivity
 
 
+def run_visual_diagnostics(
+    quick: bool = False,
+) -> tuple[list[dict[str, object]], list[dict[str, object]], list[dict[str, object]]]:
+    """Create independent evidence for input shape, queue memory and convergence.
+
+    Figure 4 samples input distributions. Figure 5 is deliberately a *single*
+    fixed-seed trace, not a distributional estimate. Figure 7 compares
+    independent repetition means at several observation lengths. Each
+    diagnostic owns a seed namespace distinct from the main study.
+    """
+    if not isinstance(quick, bool):
+        raise TypeError("quick must be bool")
+
+    sample_size = 10_000 if quick else 200_000
+    thresholds = np.geomspace(0.05, 25.0, num=45)
+    inputs: list[dict[str, object]] = []
+    input_specs: tuple[tuple[str, str, str], ...] = (
+        ("service", "deterministic", "deterministic"),
+        ("service", "exponential", "exponential"),
+        ("service", "lognormal", "lognormal"),
+        ("interarrival", "exponential", "exponential"),
+        ("interarrival", "hyperexponential", "hyperexponential"),
+    )
+    for j, (family, label, kind) in enumerate(input_specs):
+        rng = np.random.default_rng(np.random.SeedSequence([SEED, 20, j]))
+        if family == "service":
+            observations = sample_services(rng, sample_size, 1.0, kind)  # type: ignore[arg-type]
+        else:
+            observations = sample_interarrivals(rng, sample_size, ARRIVAL_RATE, kind)  # type: ignore[arg-type]
+        for threshold in thresholds:
+            inputs.append(
+                {
+                    "family": family,
+                    "distribution": label,
+                    "sample_size": sample_size,
+                    "threshold_min": float(threshold),
+                    "fraction_exceeding": float(np.mean(observations > threshold)),
+                }
+            )
+
+    trace_jobs = 220 if quick else 500
+    service_rng = np.random.default_rng(np.random.SeedSequence([SEED, 21, 0]))
+    shared_services = sample_services(service_rng, trace_jobs, 1.0, "exponential")
+    traces: list[dict[str, object]] = []
+    for j, kind in enumerate(("exponential", "hyperexponential")):
+        arrival_rng = np.random.default_rng(np.random.SeedSequence([SEED, 21, 1 + j]))
+        gaps = sample_interarrivals(arrival_rng, trace_jobs, ARRIVAL_RATE, kind)
+        arrival_times = np.cumsum(gaps)
+        waits = simulate_fcfs(arrival_times, shared_services)
+        for k in range(trace_jobs):
+            traces.append(
+                {
+                    "process": kind,
+                    "arrival_number": k + 1,
+                    "interarrival_min": float(gaps[k]),
+                    "arrival_time_min": float(arrival_times[k]),
+                    "wait_min": float(waits[k]),
+                }
+            )
+
+    convergence: list[dict[str, object]] = []
+    sample_lengths = (300, 1_200, 4_000, 8_000) if quick else (1_000, 5_000, 20_000, 80_000)
+    repetitions = 3 if quick else 16
+    for scenario in (SPECS[0], SPECS[2]):  # M/M/1 and high-variance M/G/1.
+        _, true_mean = prediction(scenario)
+        for observed in sample_lengths:
+            warmup = max(1_000, observed // 5)
+            estimates = np.array(
+                [
+                    float(
+                        one_replication(
+                            scenario,
+                            repetition=10_000 + r,
+                            n_observed=observed,
+                            n_warmup=warmup,
+                            seed=SEED + 30,
+                        ).mean()
+                    )
+                    for r in range(repetitions)
+                ],
+                dtype=np.float64,
+            )
+            low, high = _confidence_interval(estimates)
+            convergence.append(
+                {
+                    "scenario": scenario.slug,
+                    "recorded_arrivals_per_rep": observed,
+                    "warmup_arrivals_per_rep": warmup,
+                    "repetitions": repetitions,
+                    "simulated_mean_wait_min": float(estimates.mean()),
+                    "ci95_low_min": low,
+                    "ci95_high_min": high,
+                    "exact_mean_wait_min": true_mean,
+                }
+            )
+    return inputs, traces, convergence
+
+
 def write_csv(path: Path, rows: list[dict[str, object]]) -> None:
     """Write stable column-ordered CSV with an explicit UTF-8 encoding."""
     if not rows:
@@ -374,6 +472,9 @@ def make_figures(
     output: Path,
     *,
     suffix: str = "",
+    inputs: list[dict[str, object]] | None = None,
+    traces: list[dict[str, object]] | None = None,
+    convergence: list[dict[str, object]] | None = None,
 ) -> None:
     """Render article figures from recorded estimates only, never hardcoded points."""
     output.mkdir(parents=True, exist_ok=True)
@@ -439,6 +540,123 @@ def make_figures(
     fig.savefig(output / f"fig3_waiting_tails{suffix}.png", dpi=170)
     plt.close(fig)
 
+    if inputs is None and traces is None and convergence is None:
+        return
+    if inputs is None or traces is None or convergence is None:
+        raise ValueError("all three visual diagnostic tables are required together")
+
+    fig, axes = plt.subplots(1, 2, figsize=(11.0, 4.7), constrained_layout=True)
+    for ax, family, title in zip(
+        axes,
+        ("service", "interarrival"),
+        ("Service duration: mean = 1 min", "Interarrival gap: mean = 1.25 min"),
+    ):
+        distributions = (
+            ("deterministic", "exponential", "lognormal")
+            if family == "service"
+            else ("exponential", "hyperexponential")
+        )
+        for name in distributions:
+            points = sorted(
+                (r for r in inputs if r["family"] == family and r["distribution"] == name),
+                key=lambda r: float(r["threshold_min"]),
+            )
+            xvals = [float(r["threshold_min"]) for r in points]
+            yvals = [float(r["fraction_exceeding"]) for r in points]
+            # Zero exceedances cannot appear on a logarithmic axis.
+            ax.plot(xvals, [value if value > 0 else np.nan for value in yvals], label=name)
+        ax.set_xscale("log")
+        ax.set_yscale("log")
+        ax.set_ylim(1e-5, 1.1)
+        ax.set_xlabel("Duration threshold (minutes)")
+        ax.set_ylabel("Fraction exceeding threshold")
+        ax.set_title(title)
+        ax.legend()
+        ax.grid(alpha=0.22, which="both")
+    fig.suptitle("Matching a mean does not match the distribution of the input")
+    fig.savefig(output / f"fig4_input_variability{suffix}.png", dpi=170)
+    plt.close(fig)
+
+    fig, axes = plt.subplots(2, 1, figsize=(10.5, 7), sharex=True, constrained_layout=True)
+    for process, caption in (
+        ("exponential", "Poisson arrivals"),
+        ("hyperexponential", "Irregular renewal arrivals"),
+    ):
+        points = sorted(
+            (r for r in traces if r["process"] == process),
+            key=lambda r: int(r["arrival_number"]),
+        )
+        order = np.array([int(p["arrival_number"]) for p in points])
+        gaps = np.array([float(p["interarrival_min"]) for p in points])
+        waits = np.array([float(p["wait_min"]) for p in points])
+        # A trailing rolling average communicates runs of short arrival gaps.
+        window = 12
+        moving = np.convolve(gaps, np.ones(window) / window, mode="valid")
+        axes[0].plot(order[window - 1 :], moving, label=caption, alpha=0.85)
+        axes[1].plot(order, waits, label=caption, alpha=0.85)
+    axes[0].axhline(1.0 / ARRIVAL_RATE, color="black", linestyle=":", linewidth=1, label="Common mean")
+    axes[0].set_ylabel("Last 12 interarrival gaps (mean min)")
+    axes[0].set_title("Arrival variability on one seeded trace")
+    axes[1].set_ylabel("Waiting before service (min)")
+    axes[1].set_xlabel("Arrival number")
+    axes[1].set_title("The queue retains the consequences of earlier gaps")
+    for ax in axes:
+        ax.grid(alpha=0.24)
+        ax.legend(loc="upper right")
+    fig.suptitle("The queue remembers bursts: a single realization, not an estimate")
+    fig.savefig(output / f"fig5_queue_memory{suffix}.png", dpi=170)
+    plt.close(fig)
+
+    policy_slugs = ("mm1", "mm1_fast", "mm2")
+    policy_names = ("Baseline", "15% faster", "Two servers")
+    policy = [next(row for row in summary if row["scenario"] == slug) for slug in policy_slugs]
+    metrics = (
+        ("simulated_mean_wait_min", "Mean queue wait", "Minutes", 1.0),
+        ("simulated_p95_wait_min", "95th-percentile wait", "Minutes", 1.0),
+        ("fraction_wait_over_5min", "Wait > 5 minutes", "Percent of arrivals", 100.0),
+    )
+    fig, axes = plt.subplots(1, 3, figsize=(12.8, 4.6), constrained_layout=True)
+    bar_colors = ("#415e80", "#50a0a5", "#8ac078")
+    for ax, (field, title, unit, factor) in zip(axes, metrics):
+        y = [float(row[field]) * factor for row in policy]
+        bars = ax.bar(policy_names, y, color=bar_colors, width=0.66)
+        ax.bar_label(bars, fmt="%.2f", padding=3)
+        ax.set_ylim(0, max(y) * 1.20)
+        ax.set_title(title)
+        ax.set_ylabel(unit)
+        ax.grid(axis="y", alpha=0.2)
+    fig.suptitle("The capacity intervention changes several service metrics")
+    fig.savefig(output / f"fig6_capacity_outcomes{suffix}.png", dpi=170)
+    plt.close(fig)
+
+    fig, axes = plt.subplots(1, 2, figsize=(11.5, 4.8), constrained_layout=True)
+    for ax, slug, title in zip(
+        axes,
+        ("mm1", "mg1"),
+        ("Exponential service, CV² = 1", "Lognormal service, CV² = 4"),
+    ):
+        points = sorted(
+            (r for r in convergence if r["scenario"] == slug),
+            key=lambda r: int(r["recorded_arrivals_per_rep"]),
+        )
+        ns = np.array([int(p["recorded_arrivals_per_rep"]) for p in points])
+        means = np.array([float(p["simulated_mean_wait_min"]) for p in points])
+        lower = means - np.array([float(p["ci95_low_min"]) for p in points])
+        upper = np.array([float(p["ci95_high_min"]) for p in points]) - means
+        exact = float(points[0]["exact_mean_wait_min"])
+        ax.errorbar(ns, means, yerr=[lower, upper], marker="o", capsize=4, label="Simulation ± MC interval")
+        ax.axhline(exact, color="#b34b4b", linestyle="--", label=f"Exact mean: {exact:g} min")
+        ax.set_xscale("log")
+        ax.set_xticks(ns, [f"{n:,}" for n in ns], rotation=25)
+        ax.set_xlabel("Retained arrivals per repetition")
+        ax.set_ylabel("Mean queue wait (min)")
+        ax.set_title(title)
+        ax.grid(alpha=0.22)
+        ax.legend()
+    fig.suptitle("Rare busy periods make finite-run estimates less predictable")
+    fig.savefig(output / f"fig7_monte_carlo_convergence{suffix}.png", dpi=170)
+    plt.close(fig)
+
 
 def main() -> None:
     """Recreate the tables and figures for either the full or quick experiment."""
@@ -449,12 +667,25 @@ def main() -> None:
     if not isinstance(args.output_root, Path):
         raise TypeError("output_root must be a pathlib.Path")
     summary, tails, sensitivity = run_experiment(quick=bool(args.quick))
+    inputs, traces, convergence = run_visual_diagnostics(quick=bool(args.quick))
     suffix = "_quick" if args.quick else ""
     result_dir = args.output_root / "results"
     write_csv(result_dir / f"summary{suffix}.csv", summary)
     write_csv(result_dir / f"tails{suffix}.csv", tails)
     write_csv(result_dir / f"sensitivity{suffix}.csv", sensitivity)
-    make_figures(summary, tails, sensitivity, args.output_root / "figures", suffix=suffix)
+    write_csv(result_dir / f"input_variability{suffix}.csv", inputs)
+    write_csv(result_dir / f"queue_trace{suffix}.csv", traces)
+    write_csv(result_dir / f"convergence{suffix}.csv", convergence)
+    make_figures(
+        summary,
+        tails,
+        sensitivity,
+        args.output_root / "figures",
+        suffix=suffix,
+        inputs=inputs,
+        traces=traces,
+        convergence=convergence,
+    )
     for row in summary:
         print(
             f"{row['scenario']:9}  theory={float(row['predicted_mean_wait_min']):7.3f}  "

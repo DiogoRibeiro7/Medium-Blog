@@ -35,6 +35,9 @@ implementations in this repository:
   used for each Poisson-arrival scenario within a repetition.
 - Additional utilization sweep from 0.50 to 0.95 for three service-time
   distributions, with longer runs near saturation to reduce start-empty bias.
+- Four complementary figure diagnostics: independently sampled input
+  distributions, a single seeded queue trace, policy outcomes across three
+  service metrics, and a separate run-length convergence study.
 - Queue wait excludes service time. Figures show queue wait, not end-to-end
   system time, unless otherwise stated.
 
@@ -70,14 +73,22 @@ workflow. It leaves full-study results untouched.
 | `results/summary.csv` | Main comparison: mean wait, CI, p95, delay probability |
 | `results/tails.csv` | Waiting-time exceedance curves |
 | `results/sensitivity.csv` | Analytic and simulated utilization sweep |
+| `results/input_variability.csv` | Sampled input survival curves (200,000 draws per distribution) |
+| `results/queue_trace.csv` | Two 500-arrival sample paths, shared service draws |
+| `results/convergence.csv` | Run-length sensitivity with sixteen independent repetitions |
 | `figures/fig1_same_mean_different_wait.png` | Queue means and analytic comparison |
 | `figures/fig2_utilization_cliff.png` | Nonlinear response to utilization |
 | `figures/fig3_waiting_tails.png` | Waiting-time tail by scenario |
+| `figures/fig4_input_variability.png` | Service/interarrival input distributions |
+| `figures/fig5_queue_memory.png` | Burst and backlog dynamics on one trace |
+| `figures/fig6_capacity_outcomes.png` | Three operational metrics under staffing policies |
+| `figures/fig7_monte_carlo_convergence.png` | Uncertainty across simulation run lengths |
 | `tests/test_analysis.py` | Analytical identities, trace invariants, notebook smoke |
 
 Generated `*_quick` files are smoke-test byproducts and should not be used
 as article evidence. Commit the full results/figures after running the full
-command. The seed is `20261029`; exact floating-point outputs may vary by
+command. The main seed is `20261029`, with independent diagnostic seed
+namespaces; exact floating-point outputs may vary by
 platform and dependency version, while the main quantitative relationships
 must remain stable.
 

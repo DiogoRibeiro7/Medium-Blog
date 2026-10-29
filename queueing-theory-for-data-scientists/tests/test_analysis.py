@@ -23,6 +23,7 @@ from analysis import (
     one_replication,
     prediction,
     run_experiment,
+    run_visual_diagnostics,
     sample_interarrivals,
     sample_services,
     simulate_fcfs,
@@ -96,18 +97,32 @@ class ArtifactTests(unittest.TestCase):
 
     def test_quick_experiment_and_figures(self) -> None:
         summary, tails, sensitivity = run_experiment(quick=True)
+        inputs, traces, convergence = run_visual_diagnostics(quick=True)
         self.assertEqual(len(summary), 6)
         self.assertEqual(len(tails), 6 * 10)
         self.assertEqual(len(sensitivity), 5 * 3)
+        self.assertEqual(len(inputs), 5 * 45)
+        self.assertEqual(len(traces), 2 * 220)
+        self.assertEqual(len(convergence), 2 * 4)
         self.assertTrue(all(float(row["simulated_mean_wait_min"]) >= 0 for row in summary))
         self.assertTrue(all(math.isfinite(float(row["simulated_p95_wait_min"])) for row in summary))
+        self.assertTrue(all(0 <= float(row["fraction_exceeding"]) <= 1 for row in inputs))
+        self.assertTrue(all(float(row["ci95_low_min"]) <= float(row["ci95_high_min"]) for row in convergence))
         with tempfile.TemporaryDirectory(prefix="queue-test-") as folder:
             output = Path(folder)
             write_csv(output / "results" / "summary_quick.csv", summary)
-            make_figures(summary, tails, sensitivity, output / "figures", suffix="_quick")
+            make_figures(
+                summary, tails, sensitivity, output / "figures", suffix="_quick",
+                inputs=inputs, traces=traces, convergence=convergence,
+            )
             with (output / "results" / "summary_quick.csv").open(encoding="utf-8", newline="") as stream:
                 self.assertEqual(len(list(csv.DictReader(stream))), 6)
-            self.assertEqual(len(list((output / "figures").glob("*.png"))), 3)
+            self.assertEqual(len(list((output / "figures").glob("*.png"))), 7)
+
+    def test_visual_diagnostics_reproducibility(self) -> None:
+        first = run_visual_diagnostics(quick=True)
+        second = run_visual_diagnostics(quick=True)
+        self.assertEqual(first, second)
 
     def test_notebook_schema_and_python_cells_compile(self) -> None:
         # A dependency-free check is useful even when the optional Jupyter
