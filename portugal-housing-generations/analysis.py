@@ -33,6 +33,10 @@ LEAVING_AGE_URL = (
     "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/"
     "yth_demo_030?geo=PT&sex=T"
 )
+TENURE_URL = (
+    "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/"
+    "ilc_lvho02?geo=PT&rskpovth=TOTAL&hhcomp=TOTAL&unit=PC"
+)
 
 
 def parse_hpi(document: dict[str, Any]) -> dict[int, float]:
@@ -262,6 +266,60 @@ def parse_leaving_age(document: dict[str, Any]) -> dict[int, float]:
     return dict(sorted(result.items()))
 
 
+def parse_tenure(document: dict[str, Any]) -> dict[str, dict[int, float]]:
+    """Extract person-weighted housing-tenure shares from Eurostat JSON-stat.
+
+    Categories decompose population, not dwellings or property transactions.
+    OWN_L/OWN_NL and RENT_MKT/RENT_FR are subsets of OWN and RENT.
+    """
+    dimensions = document.get("id")
+    sizes = document.get("size")
+    expected = {"freq": "A", "rskpovth": "TOTAL", "hhcomp": "TOTAL", "unit": "PC", "geo": "PT"}
+    if not isinstance(dimensions, list) or not isinstance(sizes, list) or len(dimensions) != len(sizes):
+        raise ValueError("Invalid tenure dimensions")
+    if not all(isinstance(size, int) and size > 0 for size in sizes):
+        raise ValueError("Invalid tenure sizes")
+    for name, code in expected.items():
+        if name not in dimensions or document["dimension"][name]["category"]["index"] != {code: 0}:
+            raise ValueError(f"Unexpected tenure selection: {name}")
+    categories = document["dimension"]["tenure"]["category"]["index"]
+    years = document["dimension"]["time"]["category"]["index"]
+    values = document.get("value", {})
+    if not isinstance(values, dict):
+        raise ValueError("Invalid tenure observations")
+    selected: dict[str, dict[int, float]] = {}
+    for category in ("TOTAL", "OWN", "OWN_L", "OWN_NL", "RENT", "RENT_MKT", "RENT_FR"):
+        if category not in categories:
+            raise ValueError(f"Missing tenure category: {category}")
+        series: dict[int, float] = {}
+        for year, time_pos in years.items():
+            coordinates = {name: 0 for name in dimensions}
+            coordinates["tenure"] = categories[category]
+            coordinates["time"] = time_pos
+            flat = 0
+            for name, size in zip(dimensions, sizes, strict=True):
+                flat = flat * size + coordinates[name]
+            value = values.get(str(flat))
+            if value is None:
+                continue
+            if not isinstance(value, (int, float)) or isinstance(value, bool) or not 0 <= value <= 100:
+                raise ValueError(f"Invalid tenure rate: {category}/{year}")
+            series[int(year)] = float(value)
+        selected[category] = dict(sorted(series.items()))
+    for year in years:
+        y = int(year)
+        if all(y in selected[key] for key in selected):
+            owner = selected["OWN"][y]
+            renter = selected["RENT"][y]
+            if abs(owner + renter - selected["TOTAL"][y]) > 0.21:
+                raise ValueError(f"Tenure total does not balance for {year}")
+            if abs(selected["OWN_L"][y] + selected["OWN_NL"][y] - owner) > 0.21:
+                raise ValueError(f"Ownership composition does not balance for {year}")
+            if abs(selected["RENT_MKT"][y] + selected["RENT_FR"][y] - renter) > 0.21:
+                raise ValueError(f"Rental composition does not balance for {year}")
+    return selected
+
+
 def main() -> None:
     """Read a pinned source snapshot and export auditable derived data."""
     parser = argparse.ArgumentParser(description=__doc__)
@@ -272,6 +330,7 @@ def main() -> None:
     parser.add_argument("--overburden-input", type=Path, default=Path(__file__).parent / "data" / "eurostat_ilc_lvho07a_PT_2026-10-29.json")
     parser.add_argument("--parents-input", type=Path, default=Path(__file__).parent / "data" / "eurostat_ilc_lvps08_PT_2026-10-29.json")
     parser.add_argument("--leaving-age-input", type=Path, default=Path(__file__).parent / "data" / "eurostat_yth_demo_030_PT_2026-10-29.json")
+    parser.add_argument("--tenure-input", type=Path, default=Path(__file__).parent / "data" / "eurostat_ilc_lvho02_PT_2026-10-29.json")
     parser.add_argument("--output", type=Path, default=Path(__file__).parent / "results.json")
     args = parser.parse_args()
     raw: Any = json.loads(args.input.read_text(encoding="utf-8"))
@@ -302,6 +361,9 @@ def main() -> None:
     raw_leaving_age: Any = json.loads(args.leaving_age_input.read_text(encoding="utf-8"))
     if not isinstance(raw_parents, dict) or not isinstance(raw_leaving_age, dict):
         raise ValueError("Expected parental-home JSON-stat objects")
+    raw_tenure: Any = json.loads(args.tenure_input.read_text(encoding="utf-8"))
+    if not isinstance(raw_tenure, dict):
+        raise ValueError("Expected tenure JSON-stat object")
     report = {
         "source_url": EUROSTAT_URL,
         "source_updated": raw.get("updated"),
@@ -320,6 +382,9 @@ def main() -> None:
         "leaving_parental_home_age_source_url": LEAVING_AGE_URL,
         "leaving_parental_home_age_source_updated": raw_leaving_age.get("updated"),
         "estimated_leaving_parental_home_age": parse_leaving_age(raw_leaving_age),
+        "tenure_source_url": TENURE_URL,
+        "tenure_source_updated": raw_tenure.get("updated"),
+        "population_tenure_pct": parse_tenure(raw_tenure),
         "descriptives": summarize(series),
     }
     args.output.write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")

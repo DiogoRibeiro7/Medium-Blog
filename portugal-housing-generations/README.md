@@ -56,6 +56,12 @@ historical values.
    home, sex total:
    https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/yth_demo_030?geo=PT&sex=T
    Both responses accessed 2026-10-29 and pinned with their source timestamps.
+9. Eurostat `ilc_lvho02`, population shares by housing tenure, selected
+   `geo=PT`, `hhcomp=TOTAL`, `rskpovth=TOTAL`, `unit=PC`:
+   https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/ilc_lvho02?geo=PT&rskpovth=TOTAL&hhcomp=TOTAL&unit=PC
+   The source includes owner with/without outstanding housing loan and
+   tenants paying market rent or reduced rent/occupying free. The percentages
+   are of **people**, not dwellings or individual ownership titles.
 
 ## Relative price/income index
 
@@ -99,6 +105,18 @@ Neither measure identifies *why* someone remains with parents. Family norms,
 education, partnership, employment and housing conditions can all matter.
 These observations must not be used as proof that high prices caused delayed
 emancipation or that housing access has become unproblematic.
+
+## Tenure composition and aggregation
+
+`population_tenure_pct` provides population shares by tenure status, with
+internal sum checks allowing for published rounding. The 2015→2025 owner
+share moved from 74.8% to 71.2%, while market-price renters increased from
+12.7% to 16.3%. Owners with an outstanding mortgage fell from 36.5% to 31.5%
+of the population; owners without one rose from 38.3% to 39.7%.
+
+These are population *stock* categories: they cannot identify first-time
+buyers, entry prices, or wealth transfers. Do not add parent categories to
+their subcategories or assume they are a cohort transition matrix.
 
 ## What the calculations support
 

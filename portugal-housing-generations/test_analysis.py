@@ -10,6 +10,7 @@ from analysis import (
     parse_income,
     parse_leaving_age,
     parse_parental_coresidence,
+    parse_tenure,
     relative_affordability,
     summarize,
 )
@@ -98,6 +99,23 @@ class AnalysisTests(unittest.TestCase):
         payload["dimension"]["geo"]["category"]["index"] = {"ES": 0}
         with self.assertRaises(ValueError):
             parse_parental_coresidence(payload)
+
+    def test_tenure_distribution_official_values(self) -> None:
+        path = Path(__file__).parent / "data" / "eurostat_ilc_lvho02_PT_2026-10-29.json"
+        values = parse_tenure(json.loads(path.read_text(encoding="utf-8")))
+        self.assertEqual(values["OWN"][2015], 74.8)
+        self.assertEqual(values["OWN"][2025], 71.2)
+        self.assertEqual(values["RENT_MKT"][2025], 16.3)
+
+    def test_tenure_composition_detects_error(self) -> None:
+        path = Path(__file__).parent / "data" / "eurostat_ilc_lvho02_PT_2026-10-29.json"
+        payload = json.loads(path.read_text(encoding="utf-8"))
+        categories = payload["dimension"]["tenure"]["category"]["index"]
+        years = payload["dimension"]["time"]["category"]["index"]
+        index = categories["OWN"] * len(years) + years["2025"]
+        payload["value"][str(index)] = 60.0
+        with self.assertRaises(ValueError):
+            parse_tenure(payload)
 
 
 if __name__ == "__main__":
