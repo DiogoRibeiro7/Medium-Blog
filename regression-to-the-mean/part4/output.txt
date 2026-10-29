@@ -1,0 +1,171 @@
+
+==============================================================================
+1. Picking winners
+==============================================================================
+simulated archives of 6,000 tests each: 2-6 arms (shares 0.30/0.25/0.20/0.15/0.10), base click rate
+Beta(6, 394) (mean 1.5%), impressions per arm lognormal with median 5,000, relative effects scale * t or normal;
+each arm's impressions split at random into halves A and B; the winner is the arm with the highest rate in A
+heavy-tailed effects, small: tests 5,998, arms 20,904 (12 arms dropped for a half with no clicks); SD of true deviations (log scale) estimated 0.079, actual 0.073; noise SD assumed 0.171, actual 0.172
+   reliability of one arm (half the traffic): estimated 0.174, actual 0.152; with the full traffic, estimated 0.296
+   normal prior with the actual prior variance: 5.2%; nonparametric prior with variances from the true rates: 5.1%; true deviations outside the grid +-1.2: 1
+   winner's lead in half A 0.2634, in half B 0.0510, true 0.0432; share kept in B 0.194
+   predicted from half A alone: normal prior 0.0570, nonparametric prior 0.0393; half-A winner is the truly best arm in 0.480 of tests
+   as a percentage lead in click rate: A 30.1%, B 5.2%, true 4.4%, normal prior 5.9%, nonparametric 4.0%
+   true lead of the truly best arm (what an oracle would pick) 10.1%; the half-A winner's true lead is 0.450 of it
+   2 arms (1,813 tests): A 0.2365, B 0.0473, true 0.0380, normal 0.0608, nonparametric 0.0405; in percent A 26.7%, B 4.8%, true 3.9%
+   3 arms (1,508 tests): A 0.2597, B 0.0528, true 0.0424, normal 0.0555, nonparametric 0.0370; in percent A 29.7%, B 5.4%, true 4.3%
+   4 arms (1,198 tests): A 0.2741, B 0.0544, true 0.0438, normal 0.0546, nonparametric 0.0380; in percent A 31.5%, B 5.6%, true 4.5%
+   5 arms (912 tests): A 0.2854, B 0.0488, true 0.0484, normal 0.0559, nonparametric 0.0413; in percent A 33.0%, B 5.0%, true 5.0%
+   6 arms (567 tests): A 0.3006, B 0.0544, true 0.0521, normal 0.0553, nonparametric 0.0413; in percent A 35.1%, B 5.6%, true 5.3%
+   winner's lead significant at 5% (z >= 1.96): 871 tests (0.145); lead in A 64.7%, in B 12.7%, true 11.7%; share of the measured lead that is real 0.221
+   not significant: 5,127 tests (0.855); lead in A 25.0%, in B 4.0%, true 3.2%; share of the measured lead that is real 0.142
+   tests in the smallest third by impressions per arm (median 2,022 per half): lead in A 34.9%, true 3.8%, share real 0.124
+   tests in the middle third by impressions per arm (median 2,811 per half): lead in A 30.3%, true 4.4%, share real 0.162
+   tests in the largest third by impressions per arm (median 3,960 per half): lead in A 25.4%, true 5.1%, share real 0.219
+normal effects, small: tests 6,000, arms 21,235 (10 arms dropped for a half with no clicks); SD of true deviations (log scale) estimated 0.077, actual 0.068; noise SD assumed 0.171, actual 0.174
+   reliability of one arm (half the traffic): estimated 0.168, actual 0.133; with the full traffic, estimated 0.288
+   normal prior with the actual prior variance: 4.7%; nonparametric prior with variances from the true rates: 4.9%; true deviations outside the grid +-1.2: 0
+   winner's lead in half A 0.2648, in half B 0.0360, true 0.0426; share kept in B 0.136
+   predicted from half A alone: normal prior 0.0548, nonparametric prior 0.0400; half-A winner is the truly best arm in 0.482 of tests
+   as a percentage lead in click rate: A 30.3%, B 3.7%, true 4.4%, normal prior 5.6%, nonparametric 4.1%
+   true lead of the truly best arm (what an oracle would pick) 10.9%; the half-A winner's true lead is 0.413 of it
+   2 arms (1,770 tests): A 0.2355, B 0.0281, true 0.0355, normal 0.0577, nonparametric 0.0424; in percent A 26.6%, B 2.9%, true 3.6%
+   3 arms (1,419 tests): A 0.2617, B 0.0347, true 0.0443, normal 0.0535, nonparametric 0.0390; in percent A 29.9%, B 3.5%, true 4.5%
+   4 arms (1,239 tests): A 0.2705, B 0.0357, true 0.0462, normal 0.0518, nonparametric 0.0377; in percent A 31.1%, B 3.6%, true 4.7%
+   5 arms (950 tests): A 0.2903, B 0.0426, true 0.0441, normal 0.0539, nonparametric 0.0392; in percent A 33.7%, B 4.4%, true 4.5%
+   6 arms (622 tests): A 0.3045, B 0.0521, true 0.0495, normal 0.0565, nonparametric 0.0412; in percent A 35.6%, B 5.3%, true 5.1%
+heavy-tailed effects, larger: tests 5,996, arms 20,958 (35 arms dropped for a half with no clicks); SD of true deviations (log scale) estimated 0.149, actual 0.148; noise SD assumed 0.172, actual 0.174
+   reliability of one arm (half the traffic): estimated 0.429, actual 0.419; with the full traffic, estimated 0.601
+   normal prior with the actual prior variance: 15.8%; nonparametric prior with variances from the true rates: 13.5%; true deviations outside the grid +-1.2: 19
+   winner's lead in half A 0.3120, in half B 0.1224, true 0.1222; share kept in B 0.392
+   predicted from half A alone: normal prior 0.1485, nonparametric prior 0.1181; half-A winner is the truly best arm in 0.586 of tests
+   as a percentage lead in click rate: A 36.6%, B 13.0%, true 13.0%, normal prior 16.0%, nonparametric 12.5%
+   true lead of the truly best arm (what an oracle would pick) 20.3%; the half-A winner's true lead is 0.660 of it
+   2 arms (1,822 tests): A 0.2736, B 0.1038, true 0.1057, normal 0.1446, nonparametric 0.1101; in percent A 31.5%, B 10.9%, true 11.1%
+   3 arms (1,496 tests): A 0.3089, B 0.1230, true 0.1180, normal 0.1438, nonparametric 0.1125; in percent A 36.2%, B 13.1%, true 12.5%
+   4 arms (1,167 tests): A 0.3285, B 0.1272, true 0.1299, normal 0.1492, nonparametric 0.1198; in percent A 38.9%, B 13.6%, true 13.9%
+   5 arms (908 tests): A 0.3407, B 0.1355, true 0.1343, normal 0.1511, nonparametric 0.1242; in percent A 40.6%, B 14.5%, true 14.4%
+   6 arms (603 tests): A 0.3604, B 0.1480, true 0.1496, normal 0.1673, nonparametric 0.1440; in percent A 43.4%, B 16.0%, true 16.1%
+routes from New York served by 2+ carriers with 20+ flights on both odd and even days: 96, carrier-routes 243; median flights per carrier-route on odd days 359
+   SD of true differences in on-time share 0.0581, of noise 0.0264; reliability 0.828
+   best carrier on odd days: lead 0.1036 on odd days, 0.0866 on even days (kept 0.836); predicted from odd days: normal prior 0.0869, nonparametric 0.0883; same carrier best on even days in 0.802 of routes
+   2 carriers (57 routes): odd 0.0992, even 0.0820, normal 0.0852, nonparametric 0.0881
+   3 carriers (29 routes): odd 0.1114, even 0.0920, normal 0.0891, nonparametric 0.0878
+   4 carriers (8 routes): odd 0.1161, even 0.1039, normal 0.0974, nonparametric 0.0982
+   5 carriers (2 routes): odd 0.0653, even 0.0716, normal 0.0627, nonparametric 0.0619
+
+==============================================================================
+2. Interventions on the worst performers: the NSW experiment
+==============================================================================
+Dehejia-Wahba sample: 445 men, 185 trainees and 260 randomised controls
+   trainees  n    185  mean earnings 1974 / 1975 / 1978: 2,096 / 1,532 / 6,349;  share with zero: 0.708 / 0.600 / 0.243
+   controls  n    260  mean earnings 1974 / 1975 / 1978: 2,107 / 1,267 / 4,555;  share with zero: 0.750 / 0.685 / 0.354
+   PSID      n   2490  mean earnings 1974 / 1975 / 1978: 19,429 / 19,063 / 21,554;  share with zero: 0.086 / 0.100 / 0.115
+   CPS       n  15992  mean earnings 1974 / 1975 / 1978: 14,017 / 13,651 / 14,847;  share with zero: 0.120 / 0.109 / 0.136
+controls: 1974 -> 1975 -840; 1975 -> 1978 +3,288 (SE of the paired change 376)
+trainees' change 1975 -> 1978 (the before-and-after estimate): +4,817 (SE 608)
+experimental estimate, trainees minus controls in 1978: +1,794 (SE 671); difference in changes +1,529 (SE 715)
+before-and-after over experimental: 2.68; the control group's change is 0.68 of the trainees' change
+1975 earnings, trainees minus controls: +265 (SE 305)
+   PSID everyone                     n   2490: 1974 / 1975 / 1978  19,429 /  19,063 /  21,554; change  +2,491; difference-in-differences  +2,327
+   PSID no 1975 earnings             n    249: 1974 / 1975 / 1978   4,833 /       0 /   5,426; change  +5,426; difference-in-differences    -609
+   PSID 1975 earnings under 2,000    n    288: 1974 / 1975 / 1978   5,128 /     150 /   5,610; change  +5,460; difference-in-differences    -643
+   PSID under 2,000 in 1974 and 1975 n    189: 1974 / 1975 / 1978     128 /      86 /   2,619; change  +2,532; difference-in-differences  +2,285
+   CPS everyone                     n  15992: 1974 / 1975 / 1978  14,017 /  13,651 /  14,847; change  +1,196; difference-in-differences  +3,621
+   CPS no 1975 earnings             n   1748: 1974 / 1975 / 1978   1,863 /       0 /   3,978; change  +3,978; difference-in-differences    +839
+   CPS 1975 earnings under 2,000    n   2930: 1974 / 1975 / 1978   2,201 /     373 /   5,100; change  +4,727; difference-in-differences     +90
+   CPS under 2,000 in 1974 and 1975 n   2195: 1974 / 1975 / 1978     226 /     316 /   4,219; change  +3,903; difference-in-differences    +914
+   correlation of 1975 and 1978 earnings, NSW controls: 0.088; of 1974 and 1975: 0.675
+   correlation of 1975 and 1978 earnings, PSID: 0.731; of 1974 and 1975: 0.841
+   correlation of 1975 and 1978 earnings, CPS: 0.668; of 1974 and 1975: 0.870
+the same rule applied to trainees, controls and comparison group alike:
+   no 1975 earnings: trainees 111 (change +5,927), controls 178 (1974 / 1975 / 1978 276 / 0 / 4,216, change +4,216); experimental difference in changes +1,711 (SE 739)
+      PSID: change +5,426; difference-in-differences +501 (SE 1,080); miss against the experiment -1,210
+      CPS: change +3,978; difference-in-differences +1,949 (SE 668); miss against the experiment +238
+   1975 earnings under 2,000: trainees 139 (change +6,132), controls 216 (1974 / 1975 / 1978 630 / 158 / 4,433, change +4,275); experimental difference in changes +1,857 (SE 775)
+      PSID: change +5,460; difference-in-differences +672 (SE 1,032); miss against the experiment -1,185
+      CPS: change +4,727; difference-in-differences +1,405 (SE 697); miss against the experiment -452
+   under 2,000 in 1974 and 1975: trainees 125 (change +6,365), controls 199 (1974 / 1975 / 1978 58 / 98 / 4,216, change +4,118); experimental difference in changes +2,247 (SE 807)
+      PSID: change +2,532; difference-in-differences +3,833 (SE 908); miss against the experiment +1,586
+      CPS: change +3,903; difference-in-differences +2,462 (SE 745); miss against the experiment +215
+   NSW controls, 1975 earnings under 2,000: share who earned 5,000 or more in 1974 0.042; threshold +0.24 SD from the population's 1975 mean; within-population line predicts 1978 mean 4,383, actual 4,433
+   PSID, 1975 earnings under 2,000: share who earned 5,000 or more in 1974 0.292; threshold -1.25 SD from the population's 1975 mean; within-population line predicts 1978 mean 5,727, actual 5,610
+   CPS, 1975 earnings under 2,000: share who earned 5,000 or more in 1974 0.140; threshold -1.26 SD from the population's 1975 mean; within-population line predicts 1978 mean 5,612, actual 5,100
+SD of 1978 earnings: trainees 7,867, controls 5,484
+     445 flagged units, standard error of the effect with a random holdout of 5%: 1,224, 10%: 911, 20%: 715, 50%: 643
+    1000 flagged units, standard error of the effect with a random holdout of 5%: 816, 10%: 608, 20%: 477, 50%: 429
+    5000 flagged units, standard error of the effect with a random holdout of 5%: 365, 10%: 272, 20%: 213, 50%: 192
+scorecard: 304 carrier-routes with 20+ flights in each half of 2013; on-time share January-June 0.704, July-December 0.735
+   reliability of a half-year on-time share as a measure of that half-year (sampling noise only) 0.905; correlation between the two halves 0.671
+   worst tenth in January-June (30): 0.509 -> 0.640; share of the gap to the mean kept 0.487
+   best tenth in January-June (30): 0.853 -> 0.830; share of the gap to the mean kept 0.640
+
+==============================================================================
+3. Alerts: daily late-arrival shares at the New York airports, 2013
+==============================================================================
+flights 336,776; late (15+ minutes or did not arrive) 0.266
+all flights, daily late share: mean 0.262, SD 0.163, lag-1 correlation 0.407, lag-2 0.136, lag-7 0.095
+carriers 16; with 20+ flights a day on average: 9 (9E, AA, B6, DL, EV, MQ, UA, US, WN), carrying 0.968 of flights
+alert rule: a carrier's daily late share exceeds its trailing 28-day mean by at least the 95th percentile
+of that excess in January-June; predictions x(t+k) = baseline + a_k + b_k * excess, with a_k and b_k fitted
+on January-June days of all nine carriers pooled; alerts counted from July to December
+   horizon slopes b_1..b_7 (share of the excess expected to remain): 0.386, 0.102, 0.108, 0.069, 0.005, 0.055, 0.080
+   intercepts a_1..a_7: +0.013, +0.017, +0.018, +0.017, +0.016, +0.015, +0.016
+alerts 63 on 9 carriers: baseline 0.240, late share on the alert day 0.709, next day 0.415, predicted 0.434
+   fall from the alert day to the next 0.294, predicted 0.276; share of the excess still present the next day 0.373
+   all-flights late share on alert days 0.646, next day 0.386
+   alerts on days when the all-flights share was in its own July-December top 10% (>= 0.503): 0.873
+   alerts by month: Jul 3, Aug 3, Sep 8, Oct 6, Nov 2, Dec 41; on 17 distinct days, at most 9 carriers on one day
+   all-flights late share, lag-1 correlation: January-June 0.345, July-December 0.437
+   all-flights late share, lag-2 correlation: January-June 0.048, July-December 0.194
+   all-flights late share, lag-3 correlation: January-June 0.038, July-December 0.205
+correlation of a large carrier's daily late share with the all-flights share: 0.858; with the share of all other carriers' flights 0.818
+alerts with a complete window from 2 days before to 7 after: 63
+   day           -2      -1      +0      +1      +2      +3      +4      +5      +6      +7
+   observed   0.298   0.379   0.709   0.415   0.285   0.325   0.366   0.355   0.354   0.345
+   predicted                  0.709   0.434   0.305   0.308   0.289   0.258   0.281   0.293
+   baseline   0.240 (trailing 28 days)
+   all        0.295   0.364   0.646   0.386   0.279   0.315   0.348   0.352   0.330   0.326
+relative alerts (carrier share minus all-flights share, same rule): 58; excess over its baseline on the alert day +0.181, next day +0.053, predicted +0.055; next-day slope b_1 0.303
+   carrier late share on those days 0.476 against all flights 0.290; share of relative alerts on all-flights top-10% days 0.052
+   any breach of the 90th percentile: 134 alerts, alert day 0.637, next day 0.367, two days later 0.257; share of the excess left the next day 0.321
+   second consecutive breach: 32 alerts, alert day 0.661, next day 0.419, two days later 0.358; share of the excess left the next day 0.424
+   first breach only (not preceded by one): 102 alerts, alert day 0.629, next day 0.351, two days later 0.226; share of the excess left the next day 0.285
+   second breach minus first only, bootstrap 95% intervals (2,000 resamples of alerts): share left the next day +0.138 (-0.070 to +0.357); late share two days later +0.132 (+0.057 to +0.212)
+SD of the next-day late share around its prediction, over the alerts: 0.210; about 126 alerts a year at this rate
+   the alerts fall on 17 days; SD of the day-average residual 0.197; about 34 alert days a year
+   withholding the response from 10%: standard error 0.062 if alerts were independent; 0.113 withholding whole alert days; smallest effect detectable at 5% with 80% power 0.316
+   withholding the response from 20%: standard error 0.047 if alerts were independent; 0.085 withholding whole alert days; smallest effect detectable at 5% with 80% power 0.237
+   withholding the response from 50%: standard error 0.037 if alerts were independent; 0.068 withholding whole alert days; smallest effect detectable at 5% with 80% power 0.189
+carrier-airport series: 34, series-days with a next day: 11,708
+   average flights a day under 10  : 14 series,  4428 series-days, 0.073 of flights
+   average flights a day 10 to 40  : 12 series,  4368 series-days, 0.265 of flights
+   average flights a day 40 or more:  8 series,  2912 series-days, 0.662 of flights
+   series averaging over 100 flights a day: B6-JFK, EV-EWR, UA-EWR
+   binomial z against the day, series with under 10 flights a day: SD 1.20, share of series-days with z >= 3 0.019 (normal theory 0.001)
+   binomial z against the day, series with 10 to 40 flights a day: SD 1.46, share of series-days with z >= 3 0.029 (normal theory 0.001)
+   binomial z against the day, series with 40 or more flights a day: SD 2.38, share of series-days with z >= 3 0.106 (normal theory 0.001)
+   z rescaled by each series' own January-June SD of z: share of July-December series-days at 3 or more 0.010
+alert rule 'late share of 75% or more': 669 alerts; share from series with under 10 / 10 to 40 / 40 or more flights a day: 0.641 / 0.233 / 0.126
+   under 10  :  429 alerts, late share 0.924 -> next day 0.431; all flights that day 0.450
+   10 to 40  :  156 alerts, late share 0.819 -> next day 0.401; all flights that day 0.606
+   40 or more:   84 alerts, late share 0.824 -> next day 0.481; all flights that day 0.624
+alert rule 'z of 3 or more against the day's all-flights share': 521 alerts; share from series with under 10 / 10 to 40 / 40 or more flights a day: 0.165 / 0.244 / 0.591
+   under 10  :   86 alerts, late share 0.768 -> next day 0.363; all flights that day 0.166
+   10 to 40  :  127 alerts, late share 0.577 -> next day 0.326; all flights that day 0.236
+   40 or more:  308 alerts, late share 0.510 -> next day 0.379; all flights that day 0.300
+alert rule 'rescaled z of 3 or more, July-December': 59 alerts; share from series with under 10 / 10 to 40 / 40 or more flights a day: 0.475 / 0.458 / 0.068
+   under 10  :   28 alerts, late share 0.836 -> next day 0.426; all flights that day 0.118
+   10 to 40  :   27 alerts, late share 0.569 -> next day 0.266; all flights that day 0.216
+   40 or more:    4 alerts, late share 0.639 -> next day 0.379; all flights that day 0.298
+alert rule 'z of 3 or more, July-December': 239 alerts; share from series with under 10 / 10 to 40 / 40 or more flights a day: 0.201 / 0.293 / 0.506
+   under 10  :   48 alerts, late share 0.747 -> next day 0.379; all flights that day 0.140
+   10 to 40  :   70 alerts, late share 0.519 -> next day 0.291; all flights that day 0.213
+   40 or more:  121 alerts, late share 0.489 -> next day 0.331; all flights that day 0.296
+alert rule 'late share of 75% or more, July-December': 309 alerts; share from series with under 10 / 10 to 40 / 40 or more flights a day: 0.696 / 0.214 / 0.091
+   under 10  :  215 alerts, late share 0.924 -> next day 0.415; all flights that day 0.451
+   10 to 40  :   66 alerts, late share 0.816 -> next day 0.384; all flights that day 0.631
+   40 or more:   28 alerts, late share 0.847 -> next day 0.521; all flights that day 0.664
+   lag-1 correlation of the excess over all flights, series with under 10 flights a day: 0.230
+   lag-1 correlation of the excess over all flights, series with 10 to 40 flights a day: 0.297
+   lag-1 correlation of the excess over all flights, series with 40 or more flights a day: 0.432
