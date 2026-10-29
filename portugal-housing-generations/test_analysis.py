@@ -41,6 +41,22 @@ class AnalysisTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             parse_income(raw)
 
+    def test_age_specific_income(self) -> None:
+        hpi = parse_hpi(self.payload)
+        for age in ("Y18-24", "Y25-49"):
+            path = Path(__file__).parent / "data" / f"eurostat_ilc_di03_PT_{age}_2026-10-29.json"
+            income = parse_income(json.loads(path.read_text(encoding="utf-8")), age=age)
+            self.assertGreater(income[2025], income[2015])
+            self.assertEqual(relative_affordability(hpi, income)[2015], 100.0)
+        with self.assertRaises(ValueError):
+            parse_income({}, age="Y25-34")
+
+    def test_age_source_mismatch_rejected(self) -> None:
+        path = Path(__file__).parent / "data" / "eurostat_ilc_di03_PT_Y18-24_2026-10-29.json"
+        payload = json.loads(path.read_text(encoding="utf-8"))
+        with self.assertRaises(ValueError):
+            parse_income(payload, age="Y25-49")
+
 
 if __name__ == "__main__":
     unittest.main()

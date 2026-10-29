@@ -89,13 +89,15 @@ def summarize(series: dict[int, float]) -> dict[str, float | int]:
     }
 
 
-def parse_income(document: dict[str, Any]) -> dict[int, float]:
-    """Read Eurostat annual median equivalised net income (EUR/person).
+def parse_income(document: dict[str, Any], age: str = "TOTAL") -> dict[int, float]:
+    """Read Eurostat annual median equivalised net income by age (EUR/person).
 
-    The selection is deliberately national/all-ages: this proxy must not be
-    described as the income of young first-time buyers.
+    Income is equivalised household income attributed to individuals in each
+    age group, not the wages of those individuals or first-time buyers.
     """
-    expected = {"freq": "A", "geo": "PT", "age": "TOTAL", "sex": "T", "statinfo": "MED_EI", "unit": "EUR"}
+    if age not in {"TOTAL", "Y18-24", "Y25-49"}:
+        raise ValueError(f"Unsupported age category: {age}")
+    expected = {"freq": "A", "geo": "PT", "age": age, "sex": "T", "statinfo": "MED_EI", "unit": "EUR"}
     dimensions = document.get("id")
     sizes = document.get("size")
     if not isinstance(dimensions, list) or not isinstance(sizes, list) or len(dimensions) != len(sizes):
@@ -140,6 +142,8 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--input", type=Path, default=Path(__file__).parent / "data" / "eurostat_prc_hpi_a_PT_2026-10-29.json")
     parser.add_argument("--income-input", type=Path, default=Path(__file__).parent / "data" / "eurostat_ilc_di03_PT_2026-10-29.json")
+    parser.add_argument("--income-18-24-input", type=Path, default=Path(__file__).parent / "data" / "eurostat_ilc_di03_PT_Y18-24_2026-10-29.json")
+    parser.add_argument("--income-25-49-input", type=Path, default=Path(__file__).parent / "data" / "eurostat_ilc_di03_PT_Y25-49_2026-10-29.json")
     parser.add_argument("--output", type=Path, default=Path(__file__).parent / "results.json")
     args = parser.parse_args()
     raw: Any = json.loads(args.input.read_text(encoding="utf-8"))
@@ -151,6 +155,17 @@ def main() -> None:
         raise ValueError("Expected income JSON-stat object")
     income = parse_income(raw_income)
     affordability = relative_affordability(series, income)
+    by_age: dict[str, dict[str, Any]] = {}
+    for label, path in {"Y18-24": args.income_18_24_input, "Y25-49": args.income_25_49_input}.items():
+        payload: Any = json.loads(path.read_text(encoding="utf-8"))
+        if not isinstance(payload, dict):
+            raise ValueError(f"Expected JSON-stat object for {label}")
+        age_income = parse_income(payload, age=label)
+        by_age[label] = {
+            "source_updated": payload.get("updated"),
+            "income_eur": age_income,
+            "relative_price_income_index_2015_100": relative_affordability(series, age_income),
+        }
     report = {
         "source_url": EUROSTAT_URL,
         "source_updated": raw.get("updated"),
@@ -159,6 +174,7 @@ def main() -> None:
         "yearly_hpi": series,
         "yearly_median_equivalised_income_eur": income,
         "relative_price_income_index_2015_100": affordability,
+        "income_by_age": by_age,
         "descriptives": summarize(series),
     }
     args.output.write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
