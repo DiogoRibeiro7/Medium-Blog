@@ -1,0 +1,3154 @@
+{
+ "layers": {
+  "robust_descriptive": "levels, growth and rank correlations that hold across samples, definitions and NUTS levels",
+  "model_dependent": "within-municipality associations from fixed-effects, first-difference and long-difference models",
+  "requires_causal_identification": "any statement about what raises or lowers prices or rents"
+ },
+ "join_checks": {
+  "population_nuts2013_vs_nuts2024_2021_2023_identical": true,
+  "income_nuts2013_vs_nuts2024_overlap": {
+   "cells": 1190,
+   "identical": 1183,
+   "max_abs_diff_eur": 1.0
+  }
+ },
+ "audit": [
+  {
+   "variable": "population",
+   "source": "INE 0008273 (to 2020) + 0012917 (from 2021)",
+   "description": "Resident population, 31 December (census-based to 2020, administrative-based from 2021)",
+   "unit": "persons",
+   "time_alignment": "end of year",
+   "geography": "NUTS 2024 municipalities (DICO); source table Local de residência (NUTS - 2013), Sexo e Grupo etário",
+   "first_year": 2011,
+   "last_year": 2025,
+   "municipalities_min": 308,
+   "municipalities_max": 308,
+   "missing_cells": 0,
+   "min_value": 380.0,
+   "max_value": 665141.0,
+   "non_positive_values": 0,
+   "breaks_and_notes": "2020/2021: census-based to administrative-based estimates (+2.0% for Portugal); never compared across"
+  },
+  {
+   "variable": "completions",
+   "source": "INE 0013248",
+   "description": "Dwellings completed in new construction for family housing",
+   "unit": "dwellings",
+   "time_alignment": "calendar year",
+   "geography": "NUTS 2024 municipalities (DICO); source table Localização geográfica (NUTS - 2024) e Tipologia do fogo",
+   "first_year": 2011,
+   "last_year": 2025,
+   "municipalities_min": 308,
+   "municipalities_max": 308,
+   "missing_cells": 0,
+   "min_value": 0.0,
+   "max_value": 1901.0,
+   "non_positive_values": 126,
+   "breaks_and_notes": "Amadora under-reported 2011-2017; 2021+ preliminary; 2024-2025 estimated"
+  },
+  {
+   "variable": "permits",
+   "source": "INE 0013235",
+   "description": "Dwellings licensed in new construction for family housing",
+   "unit": "dwellings",
+   "time_alignment": "calendar year",
+   "geography": "NUTS 2024 municipalities (DICO); source table Localização geográfica (NUTS - 2024) e Tipologia do fogo",
+   "first_year": 2011,
+   "last_year": 2025,
+   "municipalities_min": 308,
+   "municipalities_max": 308,
+   "missing_cells": 0,
+   "min_value": 0.0,
+   "max_value": 3355.0,
+   "non_positive_values": 90,
+   "breaks_and_notes": "2021+ preliminary"
+  },
+  {
+   "variable": "price_m2",
+   "source": "INE 0012234",
+   "description": "Median value per m2 of family dwellings sold, 2022 method",
+   "unit": "EUR/m2",
+   "time_alignment": "12 months to Q4 = calendar year",
+   "geography": "NUTS 2024 municipalities (DICO); source table Localização geográfica (NUTS - 2024) e Categoria do alojamen",
+   "first_year": 2019,
+   "last_year": 2025,
+   "municipalities_min": 282,
+   "municipalities_max": 305,
+   "missing_cells": 81,
+   "min_value": 156.0,
+   "max_value": 4875.0,
+   "non_positive_values": 0,
+   "breaks_and_notes": "2022 method from 2019 Q4; not spliced with the 2018 method"
+  },
+  {
+   "variable": "price_m2_existing",
+   "source": "INE 0012234 (existing)",
+   "description": "Same, existing dwellings only",
+   "unit": "EUR/m2",
+   "time_alignment": "12 months to Q4 = calendar year",
+   "geography": "NUTS 2024 municipalities (DICO); source table Localização geográfica (NUTS - 2024) e Categoria do alojamen",
+   "first_year": 2019,
+   "last_year": 2025,
+   "municipalities_min": 272,
+   "municipalities_max": 302,
+   "missing_cells": 130,
+   "min_value": 138.0,
+   "max_value": 4725.0,
+   "non_positive_values": 0,
+   "breaks_and_notes": "as price_m2"
+  },
+  {
+   "variable": "price_m2_2018m",
+   "source": "INE 0009490",
+   "description": "Median value per m2 of family dwellings sold, 2018 method (NUTS 2013 table)",
+   "unit": "EUR/m2",
+   "time_alignment": "12 months to Q4 = calendar year",
+   "geography": "NUTS 2024 municipalities (DICO); source table Localização geográfica (NUTS - 2013)",
+   "first_year": 2016,
+   "last_year": 2020,
+   "municipalities_min": 303,
+   "municipalities_max": 306,
+   "missing_cells": 17,
+   "min_value": 107.0,
+   "max_value": 3377.0,
+   "non_positive_values": 0,
+   "breaks_and_notes": "2018 method, closed at 2021 Q3; NUTS 2013 table"
+  },
+  {
+   "variable": "appraisal_m2",
+   "source": "INE 0012256",
+   "description": "Median bank appraisal value per m2 (all construction types)",
+   "unit": "EUR/m2",
+   "time_alignment": "calendar year",
+   "geography": "NUTS 2024 municipalities (DICO); source table Localização geográfica (Município - 2024) e Tipo de construç",
+   "first_year": 2011,
+   "last_year": 2025,
+   "municipalities_min": 141,
+   "municipalities_max": 261,
+   "missing_cells": 1501,
+   "min_value": 455.0,
+   "max_value": 4337.0,
+   "non_positive_values": 0,
+   "breaks_and_notes": "survey of bank valuations; suppressed where few appraisals"
+  },
+  {
+   "variable": "income",
+   "source": "INE 0012712 (2018+) + 0009763 (2015-2017)",
+   "description": "Median declared gross income per tax household (IRS)",
+   "unit": "EUR/year",
+   "time_alignment": "tax year",
+   "geography": "NUTS 2024 municipalities (DICO); source table Localização geográfica (NUTS - 2024)",
+   "first_year": 2015,
+   "last_year": 2024,
+   "municipalities_min": 297,
+   "municipalities_max": 299,
+   "missing_cells": 102,
+   "min_value": 7303.0,
+   "max_value": 21700.0,
+   "non_positive_values": 0,
+   "breaks_and_notes": "two geography tables of one statistic, identical in 2018-2021"
+  },
+  {
+   "variable": "income_net",
+   "source": "INE 0012741",
+   "description": "Median declared income net of IRS per tax household",
+   "unit": "EUR/year",
+   "time_alignment": "tax year",
+   "geography": "NUTS 2024 municipalities (DICO); source table Localização geográfica (NUTS - 2024)",
+   "first_year": 2018,
+   "last_year": 2024,
+   "municipalities_min": 297,
+   "municipalities_max": 299,
+   "missing_cells": 71,
+   "min_value": 8328.0,
+   "max_value": 19942.0,
+   "non_positive_values": 0,
+   "breaks_and_notes": "net of IRS"
+  },
+  {
+   "variable": "rent_m2",
+   "source": "INE 0014698",
+   "description": "Median monthly rent per m2 of new lease contracts, 2026 method",
+   "unit": "EUR/m2/month",
+   "time_alignment": "contracts of the calendar year",
+   "geography": "NUTS 2024 municipalities (DICO); source table Localização geográfica (NUTS - 2024)",
+   "first_year": 2020,
+   "last_year": 2025,
+   "municipalities_min": 222,
+   "municipalities_max": 247,
+   "missing_cells": 438,
+   "min_value": 1.89,
+   "max_value": 16.88,
+   "non_positive_values": 0,
+   "breaks_and_notes": "2026 method from 2020; not spliced with the 2021 method"
+  },
+  {
+   "variable": "rent_m2_2021m",
+   "source": "INE 0009631",
+   "description": "Same, 2021 method (NUTS 2013 table)",
+   "unit": "EUR/m2/month",
+   "time_alignment": "contracts of the calendar year",
+   "geography": "NUTS 2024 municipalities (DICO); source table Localização geográfica (NUTS - 2013)",
+   "first_year": 2017,
+   "last_year": 2023,
+   "municipalities_min": 193,
+   "municipalities_max": 215,
+   "missing_cells": 756,
+   "min_value": 1.6,
+   "max_value": 15.22,
+   "non_positive_values": 0,
+   "breaks_and_notes": "2021 method, NUTS 2013 table, 2017-2023"
+  }
+ ],
+ "samples": {
+  "A_transactions_2019_2024": {
+   "years": [
+    2019,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024
+   ],
+   "variables": [
+    "price_m2",
+    "income",
+    "completions",
+    "population"
+   ],
+   "note": "2022 price method; IRS income; population enters only through a fixed 2019 denominator",
+   "municipalities": 272,
+   "metro_municipalities": 35
+  },
+  "A2_transactions_population_2021_2024": {
+   "years": [
+    2021,
+    2022,
+    2023,
+    2024
+   ],
+   "variables": [
+    "price_m2",
+    "income",
+    "completions",
+    "population"
+   ],
+   "note": "administrative-based population only (after the 2020/2021 break)",
+   "municipalities": 289,
+   "metro_municipalities": 35
+  },
+  "B_transactions_2018_method_2016_2020": {
+   "years": [
+    2016,
+    2017,
+    2018,
+    2019,
+    2020
+   ],
+   "variables": [
+    "price_m2_2018m",
+    "income",
+    "completions",
+    "population"
+   ],
+   "note": "2018 price method; census-based population throughout",
+   "municipalities": 295,
+   "metro_municipalities": 35
+  },
+  "C_appraisal_2015_2024": {
+   "years": [
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024
+   ],
+   "variables": [
+    "appraisal_m2",
+    "income",
+    "completions",
+    "population"
+   ],
+   "note": "bank appraisals, the longest consistent price-like series; selected (larger) municipalities",
+   "municipalities": 179,
+   "metro_municipalities": 35
+  },
+  "D_rents_2020_2024": {
+   "years": [
+    2020,
+    2021,
+    2022,
+    2023,
+    2024
+   ],
+   "variables": [
+    "price_m2",
+    "rent_m2",
+    "income"
+   ],
+   "note": "2026 rent method; 2022 price method",
+   "municipalities": 215,
+   "metro_municipalities": 35
+  }
+ },
+ "cross_section_municipalities": {
+  "levels_2024": {
+   "log_price_vs_log_income": {
+    "n": 299.0,
+    "clusters": 26.0,
+    "pearson": 0.442,
+    "pearson_ci95_low": 0.192,
+    "pearson_ci95_high": 0.65,
+    "spearman": 0.453,
+    "spearman_ci95_low": 0.181,
+    "spearman_ci95_high": 0.663
+   },
+   "log_price_vs_log_rent": {
+    "n": 244.0,
+    "clusters": 26.0,
+    "pearson": 0.921,
+    "pearson_ci95_low": 0.869,
+    "pearson_ci95_high": 0.948,
+    "spearman": 0.924,
+    "spearman_ci95_low": 0.847,
+    "spearman_ci95_high": 0.954
+   },
+   "log_price_vs_completions_per_1000_2021_2024": {
+    "n": 303.0,
+    "clusters": 26.0,
+    "pearson": 0.447,
+    "pearson_ci95_low": 0.306,
+    "pearson_ci95_high": 0.552,
+    "spearman": 0.46,
+    "spearman_ci95_low": 0.298,
+    "spearman_ci95_high": 0.57
+   },
+   "log_price_vs_population_growth_2021_2024": {
+    "n": 303.0,
+    "clusters": 26.0,
+    "pearson": 0.696,
+    "pearson_ci95_low": 0.555,
+    "pearson_ci95_high": 0.786,
+    "spearman": 0.719,
+    "spearman_ci95_low": 0.57,
+    "spearman_ci95_high": 0.816
+   }
+  },
+  "changes_2019_2024": {
+   "price_growth_vs_income_growth": {
+    "n": 283.0,
+    "clusters": 26.0,
+    "pearson": -0.215,
+    "pearson_ci95_low": -0.357,
+    "pearson_ci95_high": -0.078,
+    "spearman": -0.233,
+    "spearman_ci95_low": -0.384,
+    "spearman_ci95_high": -0.07
+   },
+   "price_growth_vs_completions_per_1000": {
+    "n": 286.0,
+    "clusters": 26.0,
+    "pearson": 0.183,
+    "pearson_ci95_low": 0.05,
+    "pearson_ci95_high": 0.305,
+    "spearman": 0.187,
+    "spearman_ci95_low": 0.043,
+    "spearman_ci95_high": 0.327
+   },
+   "price_growth_vs_population_growth_2021_2024": {
+    "n": 286.0,
+    "clusters": 26.0,
+    "pearson": 0.348,
+    "pearson_ci95_low": 0.174,
+    "pearson_ci95_high": 0.519,
+    "spearman": 0.371,
+    "spearman_ci95_low": 0.186,
+    "spearman_ci95_high": 0.55
+   },
+   "price_growth_vs_rent_growth_2020_2024": {
+    "n": 219.0,
+    "clusters": 26.0,
+    "pearson": 0.421,
+    "pearson_ci95_low": 0.277,
+    "pearson_ci95_high": 0.53,
+    "spearman": 0.377,
+    "spearman_ci95_low": 0.21,
+    "spearman_ci95_high": 0.519
+   }
+  },
+  "changes_2016_2020_2018_method": {
+   "price_growth_vs_income_growth": {
+    "n": 295.0,
+    "clusters": 26.0,
+    "pearson": -0.08,
+    "pearson_ci95_low": -0.258,
+    "pearson_ci95_high": 0.13,
+    "spearman": -0.095,
+    "spearman_ci95_low": -0.279,
+    "spearman_ci95_high": 0.114
+   },
+   "price_growth_vs_completions_per_1000": {
+    "n": 302.0,
+    "clusters": 26.0,
+    "pearson": -0.003,
+    "pearson_ci95_low": -0.118,
+    "pearson_ci95_high": 0.088,
+    "spearman": -0.028,
+    "spearman_ci95_low": -0.148,
+    "spearman_ci95_high": 0.084
+   },
+   "price_growth_vs_population_growth": {
+    "n": 302.0,
+    "clusters": 26.0,
+    "pearson": 0.094,
+    "pearson_ci95_low": -0.045,
+    "pearson_ci95_high": 0.212,
+    "spearman": 0.154,
+    "spearman_ci95_low": -0.01,
+    "spearman_ci95_high": 0.284
+   },
+   "price_growth_vs_rent_growth_2017_2019": {
+    "n": 191.0,
+    "clusters": 26.0,
+    "pearson": 0.314,
+    "pearson_ci95_low": 0.083,
+    "pearson_ci95_high": 0.5,
+    "spearman": 0.37,
+    "spearman_ci95_low": 0.113,
+    "spearman_ci95_high": 0.541
+   }
+  },
+  "changes_2015_2024_appraisal": {
+   "appraisal_growth_vs_income_growth": {
+    "n": 186.0,
+    "clusters": 26.0,
+    "pearson": -0.365,
+    "pearson_ci95_low": -0.565,
+    "pearson_ci95_high": -0.067,
+    "spearman": -0.336,
+    "spearman_ci95_low": -0.57,
+    "spearman_ci95_high": -0.038
+   },
+   "appraisal_growth_vs_completions_per_1000": {
+    "n": 186.0,
+    "clusters": 26.0,
+    "pearson": 0.243,
+    "pearson_ci95_low": 0.038,
+    "pearson_ci95_high": 0.423,
+    "spearman": 0.218,
+    "spearman_ci95_low": -0.012,
+    "spearman_ci95_high": 0.422
+   },
+   "appraisal_growth_vs_population_growth_2015_2020": {
+    "n": 183.0,
+    "clusters": 26.0,
+    "pearson": 0.559,
+    "pearson_ci95_low": 0.397,
+    "pearson_ci95_high": 0.687,
+    "spearman": 0.623,
+    "spearman_ci95_low": 0.42,
+    "spearman_ci95_high": 0.736
+   }
+  }
+ },
+ "cross_section_nuts3": {
+  "price_growth_vs_income_growth_2019_2024": {
+   "n": 26,
+   "pearson": -0.342,
+   "pearson_ci95": [
+    -0.644,
+    0.052
+   ],
+   "spearman": -0.289
+  },
+  "price_growth_vs_completions_per_1000_2019_2024": {
+   "n": 26,
+   "pearson": 0.364,
+   "pearson_ci95": [
+    -0.027,
+    0.659
+   ],
+   "spearman": 0.417
+  },
+  "price_growth_2019_2024_vs_population_growth_2021_2024": {
+   "n": 26,
+   "pearson": 0.544,
+   "pearson_ci95": [
+    0.199,
+    0.769
+   ],
+   "spearman": 0.567
+  },
+  "price_growth_vs_rent_growth_2020_2024": {
+   "n": 26,
+   "pearson": 0.608,
+   "pearson_ci95": [
+    0.289,
+    0.806
+   ],
+   "spearman": 0.709
+  },
+  "log_price_vs_log_income_2024": {
+   "n": 26,
+   "pearson": 0.275,
+   "pearson_ci95": [
+    -0.126,
+    0.598
+   ],
+   "spearman": 0.334
+  }
+ },
+ "gross_rental_yield_pct": {
+  "note": "12 x median new-lease rent per m2 / median sale price per m2; medians of different dwellings",
+  "nuts3_falling_2020_2025": 16,
+  "by_region": {
+   "PT": {
+    "2020": 5.84,
+    "2021": 5.84,
+    "2022": 5.56,
+    "2023": 5.68,
+    "2024": 5.72,
+    "2025": 5.37
+   },
+   "11": {
+    "2020": 5.59,
+    "2021": 5.6,
+    "2022": 5.4,
+    "2023": 5.58,
+    "2024": 5.56,
+    "2025": 5.26
+   },
+   "15": {
+    "2020": 4.45,
+    "2021": 4.16,
+    "2022": 3.95,
+    "2023": 3.95,
+    "2024": 4.25,
+    "2025": 4.03
+   },
+   "19": {
+    "2020": 5.99,
+    "2021": 6.11,
+    "2022": 6.03,
+    "2023": 6.57,
+    "2024": 6.85,
+    "2025": 6.4
+   },
+   "1A": {
+    "2020": 5.64,
+    "2021": 5.31,
+    "2022": 5.21,
+    "2023": 5.32,
+    "2024": 5.44,
+    "2025": 4.95
+   },
+   "1B": {
+    "2020": 6.05,
+    "2021": 5.84,
+    "2022": 5.55,
+    "2023": 5.64,
+    "2024": 5.76,
+    "2025": 5.11
+   },
+   "1C": {
+    "2020": 6.32,
+    "2021": 6.29,
+    "2022": 6.38,
+    "2023": 7.05,
+    "2024": 7.27,
+    "2025": 6.61
+   },
+   "1D": {
+    "2020": 5.72,
+    "2021": 5.76,
+    "2022": 5.71,
+    "2023": 5.88,
+    "2024": 5.87,
+    "2025": 5.43
+   },
+   "20": {
+    "2020": 6.14,
+    "2021": 6.03,
+    "2022": 5.69,
+    "2023": 5.59,
+    "2024": 5.56,
+    "2025": 5.0
+   },
+   "30": {
+    "2020": 5.82,
+    "2021": 5.55,
+    "2022": 6.0,
+    "2023": 5.82,
+    "2024": 5.32,
+    "2025": 5.44
+   },
+   "111": {
+    "2020": 5.39,
+    "2021": 5.45,
+    "2022": 5.29,
+    "2023": 5.79,
+    "2024": 5.77,
+    "2025": 5.57
+   },
+   "112": {
+    "2020": 5.93,
+    "2021": 5.65,
+    "2022": 5.63,
+    "2023": 5.71,
+    "2024": 5.8,
+    "2025": 5.2
+   },
+   "119": {
+    "2020": 4.7,
+    "2021": 4.62,
+    "2022": 4.73,
+    "2023": 4.89,
+    "2024": 5.03,
+    "2025": 4.64
+   },
+   "11A": {
+    "2020": 5.93,
+    "2021": 5.75,
+    "2022": 5.44,
+    "2023": 5.47,
+    "2024": 5.52,
+    "2025": 5.29
+   },
+   "11B": {
+    "2020": 6.23,
+    "2021": 6.55,
+    "2022": 6.1,
+    "2023": 6.53,
+    "2024": 6.12,
+    "2025": 6.43
+   },
+   "11C": {
+    "2020": 4.53,
+    "2021": 4.66,
+    "2022": 4.55,
+    "2023": 4.84,
+    "2024": 4.94,
+    "2025": 4.71
+   },
+   "11D": {
+    "2020": 6.72,
+    "2021": 6.6,
+    "2022": 6.76,
+    "2023": 7.34,
+    "2024": 8.39,
+    "2025": 7.3
+   },
+   "11E": {
+    "2020": 5.14,
+    "2021": 5.48,
+    "2022": 5.12,
+    "2023": 5.68,
+    "2024": 5.95,
+    "2025": 5.42
+   },
+   "150": {
+    "2020": 4.45,
+    "2021": 4.16,
+    "2022": 3.95,
+    "2023": 3.95,
+    "2024": 4.25,
+    "2025": 4.03
+   },
+   "191": {
+    "2020": 5.73,
+    "2021": 5.81,
+    "2022": 5.54,
+    "2023": 5.71,
+    "2024": 5.94,
+    "2025": 5.53
+   },
+   "192": {
+    "2020": 6.17,
+    "2021": 6.25,
+    "2022": 6.01,
+    "2023": 6.61,
+    "2024": 6.76,
+    "2025": 6.4
+   },
+   "193": {
+    "2020": 5.95,
+    "2021": 5.9,
+    "2022": 5.76,
+    "2023": 5.83,
+    "2024": 6.15,
+    "2025": 5.61
+   },
+   "194": {
+    "2020": 6.08,
+    "2021": 6.14,
+    "2022": 6.66,
+    "2023": 7.59,
+    "2024": 7.91,
+    "2025": 7.2
+   },
+   "195": {
+    "2020": 6.58,
+    "2021": 7.1,
+    "2022": 7.01,
+    "2023": 8.83,
+    "2024": 9.49,
+    "2025": 7.76
+   },
+   "196": {
+    "2020": 6.31,
+    "2021": 6.92,
+    "2022": 7.24,
+    "2023": 8.06,
+    "2024": 8.65,
+    "2025": 8.37
+   },
+   "1A0": {
+    "2020": 5.64,
+    "2021": 5.31,
+    "2022": 5.21,
+    "2023": 5.32,
+    "2024": 5.44,
+    "2025": 4.95
+   },
+   "1B0": {
+    "2020": 6.05,
+    "2021": 5.84,
+    "2022": 5.55,
+    "2023": 5.64,
+    "2024": 5.76,
+    "2025": 5.11
+   },
+   "1C1": {
+    "2020": 5.09,
+    "2021": 5.14,
+    "2022": 4.79,
+    "2023": 5.1,
+    "2024": 5.4,
+    "2025": 4.95
+   },
+   "1C2": {
+    "2020": 8.26,
+    "2021": 7.82,
+    "2022": 7.67,
+    "2023": 8.99,
+    "2024": 9.23,
+    "2025": 7.63
+   },
+   "1C3": {
+    "2020": 7.87,
+    "2021": 7.64,
+    "2022": 8.16,
+    "2023": 8.31,
+    "2024": 8.4,
+    "2025": 6.85
+   },
+   "1C4": {
+    "2020": 6.03,
+    "2021": 6.34,
+    "2022": 5.82,
+    "2023": 6.21,
+    "2024": 6.43,
+    "2025": 6.06
+   },
+   "1D1": {
+    "2020": 5.38,
+    "2021": 5.11,
+    "2022": 5.01,
+    "2023": 5.11,
+    "2024": 5.25,
+    "2025": 4.79
+   },
+   "1D2": {
+    "2020": 6.59,
+    "2021": 6.91,
+    "2022": 6.88,
+    "2023": 7.12,
+    "2024": 7.12,
+    "2025": 6.51
+   },
+   "1D3": {
+    "2020": 6.0,
+    "2021": 6.19,
+    "2022": 5.94,
+    "2023": 5.95,
+    "2024": 5.94,
+    "2025": 5.33
+   },
+   "200": {
+    "2020": 6.14,
+    "2021": 6.03,
+    "2022": 5.69,
+    "2023": 5.59,
+    "2024": 5.56,
+    "2025": 5.0
+   },
+   "300": {
+    "2020": 5.82,
+    "2021": 5.55,
+    "2022": 6.0,
+    "2023": 5.82,
+    "2024": 5.32,
+    "2025": 5.44
+   }
+  }
+ },
+ "models": {
+  "A1_twoway_income": {
+   "spec": {
+    "y": "log_price_m2",
+    "x": [
+     "log_income"
+    ],
+    "years": [
+     2019,
+     2024
+    ],
+    "transform": "twoway"
+   },
+   "municipalities": 272,
+   "n": 1632,
+   "clusters": 272,
+   "coefficients": {
+    "log_income": {
+     "estimate": -0.6345,
+     "se_cr1": 0.2035,
+     "ci95_cr1": [
+      -1.0352,
+      -0.2338
+     ],
+     "se_conventional": 0.1498
+    }
+   },
+   "within_variance_share": {
+    "log_price_m2": 0.0316,
+    "log_income": 0.0134
+   },
+   "wild_cluster_bootstrap_nuts3": {
+    "log_income": {
+     "ci95_low": -1.2142,
+     "ci95_high": -0.0296,
+     "p_value": 0.034,
+     "reps": 1999.0,
+     "clusters": 26.0
+    }
+   }
+  },
+  "A1_fd_income": {
+   "spec": {
+    "y": "log_price_m2",
+    "x": [
+     "log_income"
+    ],
+    "years": [
+     2019,
+     2024
+    ],
+    "transform": "fd"
+   },
+   "municipalities": 272,
+   "n": 1360,
+   "clusters": 272,
+   "coefficients": {
+    "log_income": {
+     "estimate": -0.0937,
+     "se_cr1": 0.2623,
+     "ci95_cr1": [
+      -0.61,
+      0.4227
+     ],
+     "se_conventional": 0.2591
+    }
+   },
+   "within_variance_share": null,
+   "wild_cluster_bootstrap_nuts3": {
+    "log_income": {
+     "ci95_low": -0.5994,
+     "ci95_high": 0.424,
+     "p_value": 0.7099,
+     "reps": 1999.0,
+     "clusters": 26.0
+    }
+   }
+  },
+  "A1_region_year_income": {
+   "spec": {
+    "y": "log_price_m2",
+    "x": [
+     "log_income"
+    ],
+    "years": [
+     2019,
+     2024
+    ],
+    "transform": "region_year"
+   },
+   "municipalities": 272,
+   "n": 1632,
+   "clusters": 272,
+   "coefficients": {
+    "log_income": {
+     "estimate": 0.0589,
+     "se_cr1": 0.251,
+     "ci95_cr1": [
+      -0.4352,
+      0.5529
+     ],
+     "se_conventional": 0.1761
+    }
+   },
+   "within_variance_share": null,
+   "wild_cluster_bootstrap_nuts3": {
+    "log_income": {
+     "ci95_low": -0.4514,
+     "ci95_high": 0.5789,
+     "p_value": 0.8129,
+     "reps": 1999.0,
+     "clusters": 26.0
+    }
+   }
+  },
+  "A2_twoway_full": {
+   "spec": {
+    "y": "log_price_m2",
+    "x": [
+     "log_income",
+     "completions_per_1000",
+     "log_population"
+    ],
+    "years": [
+     2021,
+     2024
+    ],
+    "transform": "twoway"
+   },
+   "municipalities": 289,
+   "n": 1156,
+   "clusters": 289,
+   "coefficients": {
+    "log_income": {
+     "estimate": 0.7946,
+     "se_cr1": 0.2653,
+     "ci95_cr1": [
+      0.2724,
+      1.3169
+     ],
+     "se_conventional": 0.2402
+    },
+    "completions_per_1000": {
+     "estimate": 0.0119,
+     "se_cr1": 0.0038,
+     "ci95_cr1": [
+      0.0045,
+      0.0194
+     ],
+     "se_conventional": 0.0035
+    },
+    "log_population": {
+     "estimate": 1.6383,
+     "se_cr1": 0.2656,
+     "ci95_cr1": [
+      1.1156,
+      2.161
+     ],
+     "se_conventional": 0.1972
+    }
+   },
+   "within_variance_share": {
+    "log_price_m2": 0.0256,
+    "log_income": 0.0113,
+    "completions_per_1000": 0.289,
+    "log_population": 0.0002
+   },
+   "wild_cluster_bootstrap_nuts3": {
+    "log_income": {
+     "ci95_low": 0.1758,
+     "ci95_high": 1.422,
+     "p_value": 0.0195,
+     "reps": 1999.0,
+     "clusters": 26.0
+    },
+    "completions_per_1000": {
+     "ci95_low": 0.0031,
+     "ci95_high": 0.0213,
+     "p_value": 0.011,
+     "reps": 1999.0,
+     "clusters": 26.0
+    },
+    "log_population": {
+     "ci95_low": 0.6337,
+     "ci95_high": 2.6232,
+     "p_value": 0.0,
+     "reps": 1999.0,
+     "clusters": 26.0
+    }
+   }
+  },
+  "A2_twoway_income_completions": {
+   "spec": {
+    "y": "log_price_m2",
+    "x": [
+     "log_income",
+     "completions_per_1000"
+    ],
+    "years": [
+     2021,
+     2024
+    ],
+    "transform": "twoway"
+   },
+   "municipalities": 289,
+   "n": 1156,
+   "clusters": 289,
+   "coefficients": {
+    "log_income": {
+     "estimate": -0.3437,
+     "se_cr1": 0.2428,
+     "ci95_cr1": [
+      -0.8217,
+      0.1342
+     ],
+     "se_conventional": 0.203
+    },
+    "completions_per_1000": {
+     "estimate": 0.0141,
+     "se_cr1": 0.0037,
+     "ci95_cr1": [
+      0.0068,
+      0.0213
+     ],
+     "se_conventional": 0.0036
+    }
+   },
+   "within_variance_share": {
+    "log_price_m2": 0.0256,
+    "log_income": 0.0113,
+    "completions_per_1000": 0.289
+   },
+   "wild_cluster_bootstrap_nuts3": {
+    "log_income": {
+     "ci95_low": -0.9641,
+     "ci95_high": 0.3327,
+     "p_value": 0.2961,
+     "reps": 1999.0,
+     "clusters": 26.0
+    },
+    "completions_per_1000": {
+     "ci95_low": 0.005,
+     "ci95_high": 0.0247,
+     "p_value": 0.0085,
+     "reps": 1999.0,
+     "clusters": 26.0
+    }
+   }
+  },
+  "A2_fd_income_completions": {
+   "spec": {
+    "y": "log_price_m2",
+    "x": [
+     "log_income",
+     "completions_per_1000"
+    ],
+    "years": [
+     2021,
+     2024
+    ],
+    "transform": "fd"
+   },
+   "municipalities": 289,
+   "n": 867,
+   "clusters": 289,
+   "coefficients": {
+    "log_income": {
+     "estimate": 0.0349,
+     "se_cr1": 0.2942,
+     "ci95_cr1": [
+      -0.5441,
+      0.614
+     ],
+     "se_conventional": 0.3265
+    },
+    "completions_per_1000": {
+     "estimate": 0.0084,
+     "se_cr1": 0.004,
+     "ci95_cr1": [
+      0.0005,
+      0.0163
+     ],
+     "se_conventional": 0.004
+    }
+   },
+   "within_variance_share": null,
+   "wild_cluster_bootstrap_nuts3": {
+    "log_income": {
+     "ci95_low": -0.5878,
+     "ci95_high": 0.7186,
+     "p_value": 0.9175,
+     "reps": 1999.0,
+     "clusters": 26.0
+    },
+    "completions_per_1000": {
+     "ci95_low": 0.0001,
+     "ci95_high": 0.0167,
+     "p_value": 0.047,
+     "reps": 1999.0,
+     "clusters": 26.0
+    }
+   }
+  },
+  "A2_twoway_existing_prices": {
+   "spec": {
+    "y": "log_price_m2_existing",
+    "x": [
+     "log_income",
+     "completions_per_1000"
+    ],
+    "years": [
+     2021,
+     2024
+    ],
+    "transform": "twoway"
+   },
+   "municipalities": 279,
+   "n": 1116,
+   "clusters": 279,
+   "coefficients": {
+    "log_income": {
+     "estimate": -0.3095,
+     "se_cr1": 0.2435,
+     "ci95_cr1": [
+      -0.7887,
+      0.1698
+     ],
+     "se_conventional": 0.2026
+    },
+    "completions_per_1000": {
+     "estimate": 0.0004,
+     "se_cr1": 0.0038,
+     "ci95_cr1": [
+      -0.0071,
+      0.0078
+     ],
+     "se_conventional": 0.0036
+    }
+   },
+   "within_variance_share": {
+    "log_price_m2_existing": 0.0238,
+    "log_income": 0.0113,
+    "completions_per_1000": 0.2899
+   },
+   "wild_cluster_bootstrap_nuts3": {
+    "log_income": {
+     "ci95_low": -0.9273,
+     "ci95_high": 0.3257,
+     "p_value": 0.3142,
+     "reps": 1999.0,
+     "clusters": 26.0
+    },
+    "completions_per_1000": {
+     "ci95_low": -0.0077,
+     "ci95_high": 0.0084,
+     "p_value": 0.935,
+     "reps": 1999.0,
+     "clusters": 26.0
+    }
+   }
+  },
+  "A2_fd_full": {
+   "spec": {
+    "y": "log_price_m2",
+    "x": [
+     "log_income",
+     "completions_per_1000",
+     "log_population"
+    ],
+    "years": [
+     2021,
+     2024
+    ],
+    "transform": "fd"
+   },
+   "municipalities": 289,
+   "n": 867,
+   "clusters": 289,
+   "coefficients": {
+    "log_income": {
+     "estimate": 0.7758,
+     "se_cr1": 0.344,
+     "ci95_cr1": [
+      0.0987,
+      1.4529
+     ],
+     "se_conventional": 0.3578
+    },
+    "completions_per_1000": {
+     "estimate": 0.0076,
+     "se_cr1": 0.0041,
+     "ci95_cr1": [
+      -0.0005,
+      0.0156
+     ],
+     "se_conventional": 0.004
+    },
+    "log_population": {
+     "estimate": 1.5847,
+     "se_cr1": 0.276,
+     "ci95_cr1": [
+      1.0414,
+      2.128
+     ],
+     "se_conventional": 0.3318
+    }
+   },
+   "within_variance_share": null,
+   "wild_cluster_bootstrap_nuts3": {
+    "log_income": {
+     "ci95_low": 0.1335,
+     "ci95_high": 1.4637,
+     "p_value": 0.0195,
+     "reps": 1999.0,
+     "clusters": 26.0
+    },
+    "completions_per_1000": {
+     "ci95_low": -0.0006,
+     "ci95_high": 0.0158,
+     "p_value": 0.0685,
+     "reps": 1999.0,
+     "clusters": 26.0
+    },
+    "log_population": {
+     "ci95_low": 0.6875,
+     "ci95_high": 2.4639,
+     "p_value": 0.0,
+     "reps": 1999.0,
+     "clusters": 26.0
+    }
+   }
+  },
+  "B_twoway_full": {
+   "spec": {
+    "y": "log_price_m2_2018m",
+    "x": [
+     "log_income",
+     "completions_per_1000",
+     "log_population"
+    ],
+    "years": [
+     2016,
+     2020
+    ],
+    "transform": "twoway"
+   },
+   "municipalities": 295,
+   "n": 1475,
+   "clusters": 295,
+   "coefficients": {
+    "log_income": {
+     "estimate": -0.3241,
+     "se_cr1": 0.3832,
+     "ci95_cr1": [
+      -1.0782,
+      0.4301
+     ],
+     "se_conventional": 0.2549
+    },
+    "completions_per_1000": {
+     "estimate": 0.0095,
+     "se_cr1": 0.009,
+     "ci95_cr1": [
+      -0.0082,
+      0.0271
+     ],
+     "se_conventional": 0.0062
+    },
+    "log_population": {
+     "estimate": 0.8763,
+     "se_cr1": 0.4047,
+     "ci95_cr1": [
+      0.0798,
+      1.6728
+     ],
+     "se_conventional": 0.3067
+    }
+   },
+   "within_variance_share": {
+    "log_price_m2_2018m": 0.0554,
+    "log_income": 0.0092,
+    "completions_per_1000": 0.3009,
+    "log_population": 0.0001
+   },
+   "wild_cluster_bootstrap_nuts3": {
+    "log_income": {
+     "ci95_low": -1.2536,
+     "ci95_high": 0.6418,
+     "p_value": 0.4892,
+     "reps": 1999.0,
+     "clusters": 26.0
+    },
+    "completions_per_1000": {
+     "ci95_low": -0.0105,
+     "ci95_high": 0.0287,
+     "p_value": 0.4047,
+     "reps": 1999.0,
+     "clusters": 26.0
+    },
+    "log_population": {
+     "ci95_low": 0.111,
+     "ci95_high": 1.6109,
+     "p_value": 0.019,
+     "reps": 1999.0,
+     "clusters": 26.0
+    }
+   }
+  },
+  "B_fd_full": {
+   "spec": {
+    "y": "log_price_m2_2018m",
+    "x": [
+     "log_income",
+     "completions_per_1000",
+     "log_population"
+    ],
+    "years": [
+     2016,
+     2020
+    ],
+    "transform": "fd"
+   },
+   "municipalities": 295,
+   "n": 1180,
+   "clusters": 295,
+   "coefficients": {
+    "log_income": {
+     "estimate": -0.2051,
+     "se_cr1": 0.4813,
+     "ci95_cr1": [
+      -1.1523,
+      0.7421
+     ],
+     "se_conventional": 0.3906
+    },
+    "completions_per_1000": {
+     "estimate": 0.0123,
+     "se_cr1": 0.0089,
+     "ci95_cr1": [
+      -0.0051,
+      0.0297
+     ],
+     "se_conventional": 0.0068
+    },
+    "log_population": {
+     "estimate": 1.0079,
+     "se_cr1": 0.4431,
+     "ci95_cr1": [
+      0.1359,
+      1.8798
+     ],
+     "se_conventional": 0.6231
+    }
+   },
+   "within_variance_share": null,
+   "wild_cluster_bootstrap_nuts3": {
+    "log_income": {
+     "ci95_low": -1.1491,
+     "ci95_high": 0.7184,
+     "p_value": 0.6508,
+     "reps": 1999.0,
+     "clusters": 26.0
+    },
+    "completions_per_1000": {
+     "ci95_low": -0.0077,
+     "ci95_high": 0.0319,
+     "p_value": 0.2306,
+     "reps": 1999.0,
+     "clusters": 26.0
+    },
+    "log_population": {
+     "ci95_low": 0.1005,
+     "ci95_high": 1.852,
+     "p_value": 0.0245,
+     "reps": 1999.0,
+     "clusters": 26.0
+    }
+   }
+  },
+  "C_twoway_income_completions": {
+   "spec": {
+    "y": "log_appraisal_m2",
+    "x": [
+     "log_income",
+     "completions_per_1000"
+    ],
+    "years": [
+     2015,
+     2024
+    ],
+    "transform": "twoway"
+   },
+   "municipalities": 179,
+   "n": 1790,
+   "clusters": 179,
+   "coefficients": {
+    "log_income": {
+     "estimate": -0.726,
+     "se_cr1": 0.1517,
+     "ci95_cr1": [
+      -1.0254,
+      -0.4266
+     ],
+     "se_conventional": 0.0669
+    },
+    "completions_per_1000": {
+     "estimate": 0.0187,
+     "se_cr1": 0.0028,
+     "ci95_cr1": [
+      0.0131,
+      0.0243
+     ],
+     "se_conventional": 0.002
+    }
+   },
+   "within_variance_share": {
+    "log_appraisal_m2": 0.0399,
+    "log_income": 0.0193,
+    "completions_per_1000": 0.3573
+   },
+   "wild_cluster_bootstrap_nuts3": {
+    "log_income": {
+     "ci95_low": -1.397,
+     "ci95_high": -0.0337,
+     "p_value": 0.0375,
+     "reps": 1999.0,
+     "clusters": 26.0
+    },
+    "completions_per_1000": {
+     "ci95_low": 0.0097,
+     "ci95_high": 0.0279,
+     "p_value": 0.0,
+     "reps": 1999.0,
+     "clusters": 26.0
+    }
+   }
+  },
+  "C_fd_income_completions": {
+   "spec": {
+    "y": "log_appraisal_m2",
+    "x": [
+     "log_income",
+     "completions_per_1000"
+    ],
+    "years": [
+     2015,
+     2024
+    ],
+    "transform": "fd"
+   },
+   "municipalities": 179,
+   "n": 1611,
+   "clusters": 179,
+   "coefficients": {
+    "log_income": {
+     "estimate": -0.1296,
+     "se_cr1": 0.1251,
+     "ci95_cr1": [
+      -0.3764,
+      0.1171
+     ],
+     "se_conventional": 0.1126
+    },
+    "completions_per_1000": {
+     "estimate": 0.0063,
+     "se_cr1": 0.0014,
+     "ci95_cr1": [
+      0.0036,
+      0.009
+     ],
+     "se_conventional": 0.0014
+    }
+   },
+   "within_variance_share": null,
+   "wild_cluster_bootstrap_nuts3": {
+    "log_income": {
+     "ci95_low": -0.3897,
+     "ci95_high": 0.1333,
+     "p_value": 0.2966,
+     "reps": 1999.0,
+     "clusters": 26.0
+    },
+    "completions_per_1000": {
+     "ci95_low": 0.004,
+     "ci95_high": 0.0086,
+     "p_value": 0.0,
+     "reps": 1999.0,
+     "clusters": 26.0
+    }
+   }
+  },
+  "D_twoway_price_on_rent": {
+   "spec": {
+    "y": "log_price_m2",
+    "x": [
+     "log_rent_m2"
+    ],
+    "years": [
+     2020,
+     2024
+    ],
+    "transform": "twoway"
+   },
+   "municipalities": 215,
+   "n": 1075,
+   "clusters": 215,
+   "coefficients": {
+    "log_rent_m2": {
+     "estimate": 0.4424,
+     "se_cr1": 0.0658,
+     "ci95_cr1": [
+      0.3126,
+      0.5721
+     ],
+     "se_conventional": 0.045
+    }
+   },
+   "within_variance_share": {
+    "log_price_m2": 0.0234,
+    "log_rent_m2": 0.018
+   },
+   "wild_cluster_bootstrap_nuts3": {
+    "log_rent_m2": {
+     "ci95_low": 0.2866,
+     "ci95_high": 0.6114,
+     "p_value": 0.0,
+     "reps": 1999.0,
+     "clusters": 26.0
+    }
+   }
+  },
+  "D_fd_price_on_rent": {
+   "spec": {
+    "y": "log_price_m2",
+    "x": [
+     "log_rent_m2"
+    ],
+    "years": [
+     2020,
+     2024
+    ],
+    "transform": "fd"
+   },
+   "municipalities": 215,
+   "n": 860,
+   "clusters": 215,
+   "coefficients": {
+    "log_rent_m2": {
+     "estimate": 0.3096,
+     "se_cr1": 0.0803,
+     "ci95_cr1": [
+      0.1513,
+      0.4678
+     ],
+     "se_conventional": 0.0565
+    }
+   },
+   "within_variance_share": null,
+   "wild_cluster_bootstrap_nuts3": {
+    "log_rent_m2": {
+     "ci95_low": 0.1484,
+     "ci95_high": 0.4844,
+     "p_value": 0.001,
+     "reps": 1999.0,
+     "clusters": 26.0
+    }
+   }
+  },
+  "D_twoway_rent_on_income": {
+   "spec": {
+    "y": "log_rent_m2",
+    "x": [
+     "log_income"
+    ],
+    "years": [
+     2020,
+     2024
+    ],
+    "transform": "twoway"
+   },
+   "municipalities": 217,
+   "n": 1085,
+   "clusters": 217,
+   "coefficients": {
+    "log_income": {
+     "estimate": -0.0877,
+     "se_cr1": 0.1622,
+     "ci95_cr1": [
+      -0.4074,
+      0.232
+     ],
+     "se_conventional": 0.1003
+    }
+   },
+   "within_variance_share": {
+    "log_rent_m2": 0.018,
+    "log_income": 0.0132
+   },
+   "wild_cluster_bootstrap_nuts3": {
+    "log_income": {
+     "ci95_low": -0.427,
+     "ci95_high": 0.2806,
+     "p_value": 0.6068,
+     "reps": 1999.0,
+     "clusters": 26.0
+    }
+   }
+  },
+  "A1_twoway_existing_prices": {
+   "spec": {
+    "y": "log_price_m2_existing",
+    "x": [
+     "log_income"
+    ],
+    "years": [
+     2019,
+     2024
+    ],
+    "transform": "twoway"
+   },
+   "municipalities": 265,
+   "n": 1590,
+   "clusters": 265,
+   "coefficients": {
+    "log_income": {
+     "estimate": -0.7362,
+     "se_cr1": 0.2145,
+     "ci95_cr1": [
+      -1.1586,
+      -0.3138
+     ],
+     "se_conventional": 0.1542
+    }
+   },
+   "within_variance_share": {
+    "log_price_m2_existing": 0.0319,
+    "log_income": 0.0134
+   },
+   "wild_cluster_bootstrap_nuts3": {
+    "log_income": {
+     "ci95_low": -1.3573,
+     "ci95_high": -0.0893,
+     "p_value": 0.025,
+     "reps": 1999.0,
+     "clusters": 26.0
+    }
+   }
+  },
+  "A1_twoway_net_income": {
+   "spec": {
+    "y": "log_price_m2",
+    "x": [
+     "log_income_net"
+    ],
+    "years": [
+     2019,
+     2024
+    ],
+    "transform": "twoway"
+   },
+   "municipalities": 272,
+   "n": 1632,
+   "clusters": 272,
+   "coefficients": {
+    "log_income_net": {
+     "estimate": -0.6744,
+     "se_cr1": 0.2166,
+     "ci95_cr1": [
+      -1.1008,
+      -0.248
+     ],
+     "se_conventional": 0.1578
+    }
+   },
+   "within_variance_share": {
+    "log_price_m2": 0.0316,
+    "log_income_net": 0.0138
+   },
+   "wild_cluster_bootstrap_nuts3": {
+    "log_income_net": {
+     "ci95_low": -1.3195,
+     "ci95_high": -0.0115,
+     "p_value": 0.0415,
+     "reps": 1999.0,
+     "clusters": 26.0
+    }
+   }
+  },
+  "A1_twoway_2019_2022": {
+   "spec": {
+    "y": "log_price_m2",
+    "x": [
+     "log_income"
+    ],
+    "years": [
+     2019,
+     2022
+    ],
+    "transform": "twoway"
+   },
+   "municipalities": 273,
+   "n": 1092,
+   "clusters": 273,
+   "coefficients": {
+    "log_income": {
+     "estimate": -0.4277,
+     "se_cr1": 0.2867,
+     "ci95_cr1": [
+      -0.9921,
+      0.1368
+     ],
+     "se_conventional": 0.2478
+    }
+   },
+   "within_variance_share": {
+    "log_price_m2": 0.0263,
+    "log_income": 0.0073
+   },
+   "wild_cluster_bootstrap_nuts3": {
+    "log_income": {
+     "ci95_low": -1.0715,
+     "ci95_high": 0.2081,
+     "p_value": 0.2046,
+     "reps": 1999.0,
+     "clusters": 26.0
+    }
+   }
+  },
+  "A1_twoway_2021_2024": {
+   "spec": {
+    "y": "log_price_m2",
+    "x": [
+     "log_income"
+    ],
+    "years": [
+     2021,
+     2024
+    ],
+    "transform": "twoway"
+   },
+   "municipalities": 289,
+   "n": 1156,
+   "clusters": 289,
+   "coefficients": {
+    "log_income": {
+     "estimate": -0.3729,
+     "se_cr1": 0.2449,
+     "ci95_cr1": [
+      -0.855,
+      0.1091
+     ],
+     "se_conventional": 0.2041
+    }
+   },
+   "within_variance_share": {
+    "log_price_m2": 0.0256,
+    "log_income": 0.0113
+   },
+   "wild_cluster_bootstrap_nuts3": {
+    "log_income": {
+     "ci95_low": -0.9914,
+     "ci95_high": 0.3064,
+     "p_value": 0.2681,
+     "reps": 1999.0,
+     "clusters": 26.0
+    }
+   }
+  }
+ },
+ "long_differences": {
+  "price_on_income_2019_2024": {
+   "spec": {
+    "y": "dlog_price_m2",
+    "x": [
+     "dlog_income"
+    ],
+    "years": [
+     2019,
+     2024
+    ],
+    "transform": "long difference, NUTS 2 effects"
+   },
+   "municipalities": 283,
+   "n": 283,
+   "clusters": 26,
+   "coefficients": {
+    "dlog_income": {
+     "estimate": -0.2502,
+     "se_cr1": 0.3547,
+     "ci95_cr1": [
+      -0.9808,
+      0.4804
+     ],
+     "se_conventional": 0.3371
+    }
+   },
+   "wild_cluster_bootstrap_nuts3": {
+    "dlog_income": {
+     "ci95_low": -1.0245,
+     "ci95_high": 0.5281,
+     "p_value": 0.4842,
+     "reps": 1999.0,
+     "clusters": 26.0
+    }
+   }
+  },
+  "price_2018m_on_income_2016_2020": {
+   "spec": {
+    "y": "dlog_price_m2_2018m",
+    "x": [
+     "dlog_income"
+    ],
+    "years": [
+     2016,
+     2020
+    ],
+    "transform": "long difference, NUTS 2 effects"
+   },
+   "municipalities": 295,
+   "n": 295,
+   "clusters": 26,
+   "coefficients": {
+    "dlog_income": {
+     "estimate": 0.2277,
+     "se_cr1": 0.6484,
+     "ci95_cr1": [
+      -1.1078,
+      1.5631
+     ],
+     "se_conventional": 0.4426
+    }
+   },
+   "wild_cluster_bootstrap_nuts3": {
+    "dlog_income": {
+     "ci95_low": -1.1424,
+     "ci95_high": 1.5644,
+     "p_value": 0.7344,
+     "reps": 1999.0,
+     "clusters": 26.0
+    }
+   }
+  },
+  "price_on_rent_2020_2024": {
+   "spec": {
+    "y": "dlog_price_m2",
+    "x": [
+     "dlog_rent_m2"
+    ],
+    "years": [
+     2020,
+     2024
+    ],
+    "transform": "long difference, NUTS 2 effects"
+   },
+   "municipalities": 219,
+   "n": 219,
+   "clusters": 26,
+   "coefficients": {
+    "dlog_rent_m2": {
+     "estimate": 0.5015,
+     "se_cr1": 0.1231,
+     "ci95_cr1": [
+      0.2479,
+      0.7552
+     ],
+     "se_conventional": 0.0856
+    }
+   },
+   "wild_cluster_bootstrap_nuts3": {
+    "dlog_rent_m2": {
+     "ci95_low": 0.2624,
+     "ci95_high": 0.7622,
+     "p_value": 0.0,
+     "reps": 1999.0,
+     "clusters": 26.0
+    }
+   }
+  }
+ },
+ "diagnostics": {
+  "A1_twoway_income": {
+   "wooldridge_fd_serial_correlation": {
+    "slope": -0.442,
+    "se_cr1": 0.037,
+    "t_vs_minus_half": 1.592,
+    "n": 1088.0
+   },
+   "fe_vs_fd": {
+    "log_income": {
+     "fe": -0.6345,
+     "fd": -0.0937
+    }
+   },
+   "cluster_robust_over_conventional_se": {
+    "log_income": 1.36
+   },
+   "leave_one_nuts3_out": {
+    "log_income": {
+     "min": -0.7314,
+     "max": -0.4422,
+     "region_at_min": "1C2",
+     "region_at_max": "1B0"
+    }
+   },
+   "without_lisbon_and_porto_metro": {
+    "log_income": {
+     "estimate": -0.4966,
+     "se_cr1": 0.2795,
+     "ci95_cr1": [
+      -1.0472,
+      0.0541
+     ],
+     "se_conventional": 0.1943
+    },
+    "municipalities": 237
+   },
+   "without_top5pct_influential": {
+    "log_income": {
+     "estimate": -0.687,
+     "se_cr1": 0.1798,
+     "ci95_cr1": [
+      -1.0411,
+      -0.333
+     ],
+     "se_conventional": 0.1783
+    },
+    "dropped": [
+     "Aljezur",
+     "Baião",
+     "Barreiro",
+     "Beja",
+     "Castelo de Vide",
+     "Constância",
+     "Entroncamento",
+     "Ferreira do Alentejo",
+     "Lagoa (R.A.A.)",
+     "Lisboa",
+     "Moita",
+     "Odemira",
+     "Odivelas",
+     "Sines"
+    ]
+   }
+  },
+  "A2_twoway_full": {
+   "wooldridge_fd_serial_correlation": {
+    "slope": -0.461,
+    "se_cr1": 0.066,
+    "t_vs_minus_half": 0.585,
+    "n": 578.0
+   },
+   "fe_vs_fd": {
+    "log_income": {
+     "fe": 0.7946,
+     "fd": 0.7758
+    },
+    "completions_per_1000": {
+     "fe": 0.0119,
+     "fd": 0.0076
+    },
+    "log_population": {
+     "fe": 1.6383,
+     "fd": 1.5847
+    }
+   },
+   "cluster_robust_over_conventional_se": {
+    "log_income": 1.1,
+    "completions_per_1000": 1.09,
+    "log_population": 1.35
+   },
+   "leave_one_nuts3_out": {
+    "log_income": {
+     "min": 0.6395,
+     "max": 0.9298,
+     "region_at_min": "11D",
+     "region_at_max": "150"
+    },
+    "completions_per_1000": {
+     "min": 0.0102,
+     "max": 0.0134,
+     "region_at_min": "200",
+     "region_at_max": "1C2"
+    },
+    "log_population": {
+     "min": 1.2654,
+     "max": 1.8336,
+     "region_at_min": "11D",
+     "region_at_max": "150"
+    }
+   },
+   "without_lisbon_and_porto_metro": {
+    "log_income": {
+     "estimate": 0.8665,
+     "se_cr1": 0.343,
+     "ci95_cr1": [
+      0.1909,
+      1.5421
+     ],
+     "se_conventional": 0.2888
+    },
+    "completions_per_1000": {
+     "estimate": 0.0104,
+     "se_cr1": 0.0041,
+     "ci95_cr1": [
+      0.0023,
+      0.0186
+     ],
+     "se_conventional": 0.0039
+    },
+    "log_population": {
+     "estimate": 1.6136,
+     "se_cr1": 0.2715,
+     "ci95_cr1": [
+      1.0789,
+      2.1483
+     ],
+     "se_conventional": 0.2131
+    },
+    "municipalities": 254
+   },
+   "without_top5pct_influential": {
+    "log_income": {
+     "estimate": 0.6615,
+     "se_cr1": 0.2361,
+     "ci95_cr1": [
+      0.1967,
+      1.1263
+     ],
+     "se_conventional": 0.2583
+    },
+    "completions_per_1000": {
+     "estimate": 0.0099,
+     "se_cr1": 0.0037,
+     "ci95_cr1": [
+      0.0027,
+      0.0171
+     ],
+     "se_conventional": 0.0035
+    },
+    "log_population": {
+     "estimate": 1.7479,
+     "se_cr1": 0.2684,
+     "ci95_cr1": [
+      1.2195,
+      2.2763
+     ],
+     "se_conventional": 0.2084
+    },
+    "dropped": [
+     "Albufeira",
+     "Beja",
+     "Câmara de Lobos",
+     "Entroncamento",
+     "Ferreira do Alentejo",
+     "Fornos de Algodres",
+     "Fronteira",
+     "Manteigas",
+     "Miranda do Douro",
+     "Odemira",
+     "Ribeira de Pena",
+     "São Roque do Pico",
+     "Torre de Moncorvo",
+     "Vila de Rei"
+    ]
+   }
+  },
+  "A2_twoway_income_completions": {
+   "wooldridge_fd_serial_correlation": {
+    "slope": -0.421,
+    "se_cr1": 0.068,
+    "t_vs_minus_half": 1.155,
+    "n": 578.0
+   },
+   "fe_vs_fd": {
+    "log_income": {
+     "fe": -0.3437,
+     "fd": 0.0349
+    },
+    "completions_per_1000": {
+     "fe": 0.0141,
+     "fd": 0.0084
+    }
+   },
+   "cluster_robust_over_conventional_se": {
+    "log_income": 1.2,
+    "completions_per_1000": 1.03
+   },
+   "leave_one_nuts3_out": {
+    "log_income": {
+     "min": -0.5432,
+     "max": -0.202,
+     "region_at_min": "200",
+     "region_at_max": "1B0"
+    },
+    "completions_per_1000": {
+     "min": 0.012,
+     "max": 0.0162,
+     "region_at_min": "300",
+     "region_at_max": "150"
+    }
+   },
+   "without_lisbon_and_porto_metro": {
+    "log_income": {
+     "estimate": -0.2044,
+     "se_cr1": 0.3321,
+     "ci95_cr1": [
+      -0.8584,
+      0.4497
+     ],
+     "se_conventional": 0.2586
+    },
+    "completions_per_1000": {
+     "estimate": 0.013,
+     "se_cr1": 0.0041,
+     "ci95_cr1": [
+      0.005,
+      0.0211
+     ],
+     "se_conventional": 0.004
+    },
+    "municipalities": 254
+   },
+   "without_top5pct_influential": {
+    "log_income": {
+     "estimate": -0.434,
+     "se_cr1": 0.1981,
+     "ci95_cr1": [
+      -0.8239,
+      -0.0441
+     ],
+     "se_conventional": 0.2173
+    },
+    "completions_per_1000": {
+     "estimate": 0.0118,
+     "se_cr1": 0.0034,
+     "ci95_cr1": [
+      0.0051,
+      0.0185
+     ],
+     "se_conventional": 0.0035
+    },
+    "dropped": [
+     "Baião",
+     "Barreiro",
+     "Beja",
+     "Câmara de Lobos",
+     "Entroncamento",
+     "Ferreira do Alentejo",
+     "Manteigas",
+     "Marvão",
+     "Nordeste",
+     "Odemira",
+     "Ribeira de Pena",
+     "São Roque do Pico",
+     "Tabuaço",
+     "Trancoso"
+    ]
+   }
+  },
+  "B_twoway_full": {
+   "wooldridge_fd_serial_correlation": {
+    "slope": -0.421,
+    "se_cr1": 0.042,
+    "t_vs_minus_half": 1.872,
+    "n": 885.0
+   },
+   "fe_vs_fd": {
+    "log_income": {
+     "fe": -0.3241,
+     "fd": -0.2051
+    },
+    "completions_per_1000": {
+     "fe": 0.0095,
+     "fd": 0.0123
+    },
+    "log_population": {
+     "fe": 0.8763,
+     "fd": 1.0079
+    }
+   },
+   "cluster_robust_over_conventional_se": {
+    "log_income": 1.5,
+    "completions_per_1000": 1.45,
+    "log_population": 1.32
+   },
+   "leave_one_nuts3_out": {
+    "log_income": {
+     "min": -0.5651,
+     "max": -0.1524,
+     "region_at_min": "1C2",
+     "region_at_max": "1A0"
+    },
+    "completions_per_1000": {
+     "min": 0.0032,
+     "max": 0.0163,
+     "region_at_min": "11D",
+     "region_at_max": "195"
+    },
+    "log_population": {
+     "min": 0.7241,
+     "max": 1.0359,
+     "region_at_min": "1A0",
+     "region_at_max": "11B"
+    }
+   },
+   "without_lisbon_and_porto_metro": {
+    "log_income": {
+     "estimate": 0.1076,
+     "se_cr1": 0.4188,
+     "ci95_cr1": [
+      -0.717,
+      0.9323
+     ],
+     "se_conventional": 0.2877
+    },
+    "completions_per_1000": {
+     "estimate": 0.0087,
+     "se_cr1": 0.0094,
+     "ci95_cr1": [
+      -0.0097,
+      0.0272
+     ],
+     "se_conventional": 0.0067
+    },
+    "log_population": {
+     "estimate": 0.3892,
+     "se_cr1": 0.4186,
+     "ci95_cr1": [
+      -0.4351,
+      1.2136
+     ],
+     "se_conventional": 0.3434
+    },
+    "municipalities": 260
+   },
+   "without_top5pct_influential": {
+    "log_income": {
+     "estimate": -0.6137,
+     "se_cr1": 0.2725,
+     "ci95_cr1": [
+      -1.1501,
+      -0.0773
+     ],
+     "se_conventional": 0.2462
+    },
+    "completions_per_1000": {
+     "estimate": 0.013,
+     "se_cr1": 0.009,
+     "ci95_cr1": [
+      -0.0047,
+      0.0307
+     ],
+     "se_conventional": 0.0057
+    },
+    "log_population": {
+     "estimate": 0.8125,
+     "se_cr1": 0.3778,
+     "ci95_cr1": [
+      0.0689,
+      1.5561
+     ],
+     "se_conventional": 0.2843
+    },
+    "dropped": [
+     "Amadora",
+     "Boticas",
+     "Castro Daire",
+     "Constância",
+     "Cuba",
+     "Entroncamento",
+     "Ferreira do Alentejo",
+     "Figueira de Castelo Rodrigo",
+     "Lajes do Pico",
+     "Mêda",
+     "Pampilhosa da Serra",
+     "Paredes de Coura",
+     "Portel",
+     "Vila Flor",
+     "Vila Viçosa"
+    ]
+   }
+  },
+  "C_twoway_income_completions": {
+   "wooldridge_fd_serial_correlation": {
+    "slope": -0.192,
+    "se_cr1": 0.041,
+    "t_vs_minus_half": 7.5,
+    "n": 1432.0
+   },
+   "fe_vs_fd": {
+    "log_income": {
+     "fe": -0.726,
+     "fd": -0.1296
+    },
+    "completions_per_1000": {
+     "fe": 0.0187,
+     "fd": 0.0063
+    }
+   },
+   "cluster_robust_over_conventional_se": {
+    "log_income": 2.27,
+    "completions_per_1000": 1.4
+   },
+   "leave_one_nuts3_out": {
+    "log_income": {
+     "min": -0.7987,
+     "max": -0.5404,
+     "region_at_min": "1D2",
+     "region_at_max": "1A0"
+    },
+    "completions_per_1000": {
+     "min": 0.0177,
+     "max": 0.021,
+     "region_at_min": "1C2",
+     "region_at_max": "111"
+    }
+   },
+   "without_lisbon_and_porto_metro": {
+    "log_income": {
+     "estimate": -0.2267,
+     "se_cr1": 0.1712,
+     "ci95_cr1": [
+      -0.5651,
+      0.1117
+     ],
+     "se_conventional": 0.0821
+    },
+    "completions_per_1000": {
+     "estimate": 0.0176,
+     "se_cr1": 0.0028,
+     "ci95_cr1": [
+      0.012,
+      0.0231
+     ],
+     "se_conventional": 0.002
+    },
+    "municipalities": 144
+   },
+   "without_top5pct_influential": {
+    "log_income": {
+     "estimate": -0.6535,
+     "se_cr1": 0.1335,
+     "ci95_cr1": [
+      -0.917,
+      -0.3901
+     ],
+     "se_conventional": 0.0736
+    },
+    "completions_per_1000": {
+     "estimate": 0.0189,
+     "se_cr1": 0.0028,
+     "ci95_cr1": [
+      0.0133,
+      0.0245
+     ],
+     "se_conventional": 0.0019
+    },
+    "dropped": [
+     "Amadora",
+     "Barreiro",
+     "Beja",
+     "Campo Maior",
+     "Cascais",
+     "Entroncamento",
+     "Moita",
+     "Oeiras",
+     "Sintra"
+    ]
+   }
+  },
+  "D_twoway_price_on_rent": {
+   "wooldridge_fd_serial_correlation": {
+    "slope": -0.456,
+    "se_cr1": 0.049,
+    "t_vs_minus_half": 0.897,
+    "n": 645.0
+   },
+   "fe_vs_fd": {
+    "log_rent_m2": {
+     "fe": 0.4424,
+     "fd": 0.3096
+    }
+   },
+   "cluster_robust_over_conventional_se": {
+    "log_rent_m2": 1.46
+   },
+   "leave_one_nuts3_out": {
+    "log_rent_m2": {
+     "min": 0.4133,
+     "max": 0.4851,
+     "region_at_min": "196",
+     "region_at_max": "194"
+    }
+   },
+   "without_lisbon_and_porto_metro": {
+    "log_rent_m2": {
+     "estimate": 0.4256,
+     "se_cr1": 0.0671,
+     "ci95_cr1": [
+      0.2931,
+      0.5581
+     ],
+     "se_conventional": 0.0482
+    },
+    "municipalities": 180
+   },
+   "without_top5pct_influential": {
+    "log_rent_m2": {
+     "estimate": 0.428,
+     "se_cr1": 0.0528,
+     "ci95_cr1": [
+      0.3239,
+      0.5321
+     ],
+     "se_conventional": 0.0455
+    },
+    "dropped": [
+     "Baião",
+     "Borba",
+     "Calheta (R.A.M.)",
+     "Castro Daire",
+     "Celorico da Beira",
+     "Cinfães",
+     "Entroncamento",
+     "Horta",
+     "Reguengos de Monsaraz",
+     "Sabugal",
+     "Torre de Moncorvo"
+    ]
+   }
+  }
+ },
+ "verdicts": {
+  "A1_twoway_income:log_income": {
+   "estimate": -0.6345,
+   "within_variance_share": 0.0134,
+   "checks": {
+    "regressor_keeps_at_least_1pct_of_variance_after_fixed_effects": true,
+    "wild_bootstrap_interval_excludes_zero": true,
+    "same_sign_in_first_differences": true,
+    "same_sign_leaving_out_any_nuts3": true,
+    "same_sign_without_lisbon_porto_metro": true,
+    "sign_shared_by_at_least_80pct_of_specifications": false
+   },
+   "cautions": [
+    "under 5% of the regressor's variance is within-municipality: measurement error in medians attenuates the estimate"
+   ],
+   "verdict": "fragile"
+  },
+  "A2_twoway_full:log_income": {
+   "estimate": 0.7946,
+   "within_variance_share": 0.0113,
+   "checks": {
+    "regressor_keeps_at_least_1pct_of_variance_after_fixed_effects": true,
+    "wild_bootstrap_interval_excludes_zero": true,
+    "same_sign_in_first_differences": true,
+    "same_sign_leaving_out_any_nuts3": true,
+    "same_sign_without_lisbon_porto_metro": true,
+    "sign_shared_by_at_least_80pct_of_specifications": false
+   },
+   "cautions": [
+    "under 5% of the regressor's variance is within-municipality: measurement error in medians attenuates the estimate"
+   ],
+   "verdict": "fragile"
+  },
+  "A2_twoway_full:completions_per_1000": {
+   "estimate": 0.0119,
+   "within_variance_share": 0.289,
+   "checks": {
+    "regressor_keeps_at_least_1pct_of_variance_after_fixed_effects": true,
+    "wild_bootstrap_interval_excludes_zero": true,
+    "same_sign_in_first_differences": true,
+    "same_sign_leaving_out_any_nuts3": true,
+    "same_sign_without_lisbon_porto_metro": true,
+    "sign_shared_by_at_least_80pct_of_specifications": true
+   },
+   "cautions": [],
+   "verdict": "robust"
+  },
+  "A2_twoway_full:log_population": {
+   "estimate": 1.6383,
+   "within_variance_share": 0.0002,
+   "checks": {
+    "regressor_keeps_at_least_1pct_of_variance_after_fixed_effects": false,
+    "wild_bootstrap_interval_excludes_zero": true,
+    "same_sign_in_first_differences": true,
+    "same_sign_leaving_out_any_nuts3": true,
+    "same_sign_without_lisbon_porto_metro": true,
+    "sign_shared_by_at_least_80pct_of_specifications": true
+   },
+   "cautions": [
+    "under 5% of the regressor's variance is within-municipality: measurement error in medians attenuates the estimate"
+   ],
+   "verdict": "fragile"
+  },
+  "A2_twoway_income_completions:log_income": {
+   "estimate": -0.3437,
+   "within_variance_share": 0.0113,
+   "checks": {
+    "regressor_keeps_at_least_1pct_of_variance_after_fixed_effects": true,
+    "wild_bootstrap_interval_excludes_zero": false,
+    "same_sign_in_first_differences": false,
+    "same_sign_leaving_out_any_nuts3": true,
+    "same_sign_without_lisbon_porto_metro": true,
+    "sign_shared_by_at_least_80pct_of_specifications": false
+   },
+   "cautions": [
+    "under 5% of the regressor's variance is within-municipality: measurement error in medians attenuates the estimate"
+   ],
+   "verdict": "not supported"
+  },
+  "A2_twoway_income_completions:completions_per_1000": {
+   "estimate": 0.0141,
+   "within_variance_share": 0.289,
+   "checks": {
+    "regressor_keeps_at_least_1pct_of_variance_after_fixed_effects": true,
+    "wild_bootstrap_interval_excludes_zero": true,
+    "same_sign_in_first_differences": true,
+    "same_sign_leaving_out_any_nuts3": true,
+    "same_sign_without_lisbon_porto_metro": true,
+    "sign_shared_by_at_least_80pct_of_specifications": true
+   },
+   "cautions": [],
+   "verdict": "robust"
+  },
+  "B_twoway_full:log_income": {
+   "estimate": -0.3241,
+   "within_variance_share": 0.0092,
+   "checks": {
+    "regressor_keeps_at_least_1pct_of_variance_after_fixed_effects": false,
+    "wild_bootstrap_interval_excludes_zero": false,
+    "same_sign_in_first_differences": true,
+    "same_sign_leaving_out_any_nuts3": true,
+    "same_sign_without_lisbon_porto_metro": false,
+    "sign_shared_by_at_least_80pct_of_specifications": false
+   },
+   "cautions": [
+    "under 5% of the regressor's variance is within-municipality: measurement error in medians attenuates the estimate"
+   ],
+   "verdict": "not supported"
+  },
+  "B_twoway_full:completions_per_1000": {
+   "estimate": 0.0095,
+   "within_variance_share": 0.3009,
+   "checks": {
+    "regressor_keeps_at_least_1pct_of_variance_after_fixed_effects": true,
+    "wild_bootstrap_interval_excludes_zero": false,
+    "same_sign_in_first_differences": true,
+    "same_sign_leaving_out_any_nuts3": true,
+    "same_sign_without_lisbon_porto_metro": true,
+    "sign_shared_by_at_least_80pct_of_specifications": true
+   },
+   "cautions": [],
+   "verdict": "not supported"
+  },
+  "B_twoway_full:log_population": {
+   "estimate": 0.8763,
+   "within_variance_share": 0.0001,
+   "checks": {
+    "regressor_keeps_at_least_1pct_of_variance_after_fixed_effects": false,
+    "wild_bootstrap_interval_excludes_zero": true,
+    "same_sign_in_first_differences": true,
+    "same_sign_leaving_out_any_nuts3": true,
+    "same_sign_without_lisbon_porto_metro": true,
+    "sign_shared_by_at_least_80pct_of_specifications": true
+   },
+   "cautions": [
+    "under 5% of the regressor's variance is within-municipality: measurement error in medians attenuates the estimate"
+   ],
+   "verdict": "fragile"
+  },
+  "C_twoway_income_completions:log_income": {
+   "estimate": -0.726,
+   "within_variance_share": 0.0193,
+   "checks": {
+    "regressor_keeps_at_least_1pct_of_variance_after_fixed_effects": true,
+    "wild_bootstrap_interval_excludes_zero": true,
+    "same_sign_in_first_differences": true,
+    "same_sign_leaving_out_any_nuts3": true,
+    "same_sign_without_lisbon_porto_metro": true,
+    "sign_shared_by_at_least_80pct_of_specifications": false
+   },
+   "cautions": [
+    "under 5% of the regressor's variance is within-municipality: measurement error in medians attenuates the estimate",
+    "first-difference residuals are serially correlated: errors are persistent, prefer the first-difference estimate"
+   ],
+   "verdict": "fragile"
+  },
+  "C_twoway_income_completions:completions_per_1000": {
+   "estimate": 0.0187,
+   "within_variance_share": 0.3573,
+   "checks": {
+    "regressor_keeps_at_least_1pct_of_variance_after_fixed_effects": true,
+    "wild_bootstrap_interval_excludes_zero": true,
+    "same_sign_in_first_differences": true,
+    "same_sign_leaving_out_any_nuts3": true,
+    "same_sign_without_lisbon_porto_metro": true,
+    "sign_shared_by_at_least_80pct_of_specifications": true
+   },
+   "cautions": [
+    "first-difference residuals are serially correlated: errors are persistent, prefer the first-difference estimate"
+   ],
+   "verdict": "robust"
+  },
+  "D_twoway_price_on_rent:log_rent_m2": {
+   "estimate": 0.4424,
+   "within_variance_share": 0.018,
+   "checks": {
+    "regressor_keeps_at_least_1pct_of_variance_after_fixed_effects": true,
+    "wild_bootstrap_interval_excludes_zero": true,
+    "same_sign_in_first_differences": true,
+    "same_sign_leaving_out_any_nuts3": true,
+    "same_sign_without_lisbon_porto_metro": true,
+    "sign_shared_by_at_least_80pct_of_specifications": true
+   },
+   "cautions": [
+    "under 5% of the regressor's variance is within-municipality: measurement error in medians attenuates the estimate"
+   ],
+   "verdict": "robust"
+  }
+ },
+ "completions_composition_check": {
+  "note": "Median price of all sales vs existing dwellings only, same sample and years (2021-2024): if the completions association vanishes for existing dwellings, it reflects new dwellings entering the sale mix",
+  "all_dwellings": {
+   "estimate": 0.0141,
+   "se_cr1": 0.0037,
+   "ci95_cr1": [
+    0.0068,
+    0.0213
+   ],
+   "se_conventional": 0.0036
+  },
+  "existing_dwellings": {
+   "estimate": 0.0004,
+   "se_cr1": 0.0038,
+   "ci95_cr1": [
+    -0.0071,
+    0.0078
+   ],
+   "se_conventional": 0.0036
+  },
+  "municipalities": [
+   289,
+   279
+  ]
+ },
+ "across_specifications": {
+  "income": {
+   "specifications": 18,
+   "positive": 5,
+   "negative": 13,
+   "excluding_zero": 6,
+   "estimates": [
+    {
+     "spec": "A1_twoway_income",
+     "outcome": "log_price_m2",
+     "estimate": -0.6345,
+     "ci95_wild_bootstrap": [
+      -1.2142,
+      -0.0296
+     ]
+    },
+    {
+     "spec": "A1_fd_income",
+     "outcome": "log_price_m2",
+     "estimate": -0.0937,
+     "ci95_wild_bootstrap": [
+      -0.5994,
+      0.424
+     ]
+    },
+    {
+     "spec": "A1_region_year_income",
+     "outcome": "log_price_m2",
+     "estimate": 0.0589,
+     "ci95_wild_bootstrap": [
+      -0.4514,
+      0.5789
+     ]
+    },
+    {
+     "spec": "A2_twoway_full",
+     "outcome": "log_price_m2",
+     "estimate": 0.7946,
+     "ci95_wild_bootstrap": [
+      0.1758,
+      1.422
+     ]
+    },
+    {
+     "spec": "A2_twoway_income_completions",
+     "outcome": "log_price_m2",
+     "estimate": -0.3437,
+     "ci95_wild_bootstrap": [
+      -0.9641,
+      0.3327
+     ]
+    },
+    {
+     "spec": "A2_fd_income_completions",
+     "outcome": "log_price_m2",
+     "estimate": 0.0349,
+     "ci95_wild_bootstrap": [
+      -0.5878,
+      0.7186
+     ]
+    },
+    {
+     "spec": "A2_twoway_existing_prices",
+     "outcome": "log_price_m2_existing",
+     "estimate": -0.3095,
+     "ci95_wild_bootstrap": [
+      -0.9273,
+      0.3257
+     ]
+    },
+    {
+     "spec": "A2_fd_full",
+     "outcome": "log_price_m2",
+     "estimate": 0.7758,
+     "ci95_wild_bootstrap": [
+      0.1335,
+      1.4637
+     ]
+    },
+    {
+     "spec": "B_twoway_full",
+     "outcome": "log_price_m2_2018m",
+     "estimate": -0.3241,
+     "ci95_wild_bootstrap": [
+      -1.2536,
+      0.6418
+     ]
+    },
+    {
+     "spec": "B_fd_full",
+     "outcome": "log_price_m2_2018m",
+     "estimate": -0.2051,
+     "ci95_wild_bootstrap": [
+      -1.1491,
+      0.7184
+     ]
+    },
+    {
+     "spec": "C_twoway_income_completions",
+     "outcome": "log_appraisal_m2",
+     "estimate": -0.726,
+     "ci95_wild_bootstrap": [
+      -1.397,
+      -0.0337
+     ]
+    },
+    {
+     "spec": "C_fd_income_completions",
+     "outcome": "log_appraisal_m2",
+     "estimate": -0.1296,
+     "ci95_wild_bootstrap": [
+      -0.3897,
+      0.1333
+     ]
+    },
+    {
+     "spec": "A1_twoway_existing_prices",
+     "outcome": "log_price_m2_existing",
+     "estimate": -0.7362,
+     "ci95_wild_bootstrap": [
+      -1.3573,
+      -0.0893
+     ]
+    },
+    {
+     "spec": "A1_twoway_net_income",
+     "outcome": "log_price_m2",
+     "estimate": -0.6744,
+     "ci95_wild_bootstrap": [
+      -1.3195,
+      -0.0115
+     ]
+    },
+    {
+     "spec": "A1_twoway_2019_2022",
+     "outcome": "log_price_m2",
+     "estimate": -0.4277,
+     "ci95_wild_bootstrap": [
+      -1.0715,
+      0.2081
+     ]
+    },
+    {
+     "spec": "A1_twoway_2021_2024",
+     "outcome": "log_price_m2",
+     "estimate": -0.3729,
+     "ci95_wild_bootstrap": [
+      -0.9914,
+      0.3064
+     ]
+    },
+    {
+     "spec": "LD_price_on_income_2019_2024",
+     "outcome": "dlog_price_m2",
+     "estimate": -0.2502,
+     "ci95_wild_bootstrap": [
+      -1.0245,
+      0.5281
+     ]
+    },
+    {
+     "spec": "LD_price_2018m_on_income_2016_2020",
+     "outcome": "dlog_price_m2_2018m",
+     "estimate": 0.2277,
+     "ci95_wild_bootstrap": [
+      -1.1424,
+      1.5644
+     ]
+    }
+   ]
+  },
+  "completions_per_1000": {
+   "specifications": 9,
+   "positive": 9,
+   "negative": 0,
+   "excluding_zero": 5,
+   "estimates": [
+    {
+     "spec": "A2_twoway_full",
+     "outcome": "log_price_m2",
+     "estimate": 0.0119,
+     "ci95_wild_bootstrap": [
+      0.0031,
+      0.0213
+     ]
+    },
+    {
+     "spec": "A2_twoway_income_completions",
+     "outcome": "log_price_m2",
+     "estimate": 0.0141,
+     "ci95_wild_bootstrap": [
+      0.005,
+      0.0247
+     ]
+    },
+    {
+     "spec": "A2_fd_income_completions",
+     "outcome": "log_price_m2",
+     "estimate": 0.0084,
+     "ci95_wild_bootstrap": [
+      0.0001,
+      0.0167
+     ]
+    },
+    {
+     "spec": "A2_twoway_existing_prices",
+     "outcome": "log_price_m2_existing",
+     "estimate": 0.0004,
+     "ci95_wild_bootstrap": [
+      -0.0077,
+      0.0084
+     ]
+    },
+    {
+     "spec": "A2_fd_full",
+     "outcome": "log_price_m2",
+     "estimate": 0.0076,
+     "ci95_wild_bootstrap": [
+      -0.0006,
+      0.0158
+     ]
+    },
+    {
+     "spec": "B_twoway_full",
+     "outcome": "log_price_m2_2018m",
+     "estimate": 0.0095,
+     "ci95_wild_bootstrap": [
+      -0.0105,
+      0.0287
+     ]
+    },
+    {
+     "spec": "B_fd_full",
+     "outcome": "log_price_m2_2018m",
+     "estimate": 0.0123,
+     "ci95_wild_bootstrap": [
+      -0.0077,
+      0.0319
+     ]
+    },
+    {
+     "spec": "C_twoway_income_completions",
+     "outcome": "log_appraisal_m2",
+     "estimate": 0.0187,
+     "ci95_wild_bootstrap": [
+      0.0097,
+      0.0279
+     ]
+    },
+    {
+     "spec": "C_fd_income_completions",
+     "outcome": "log_appraisal_m2",
+     "estimate": 0.0063,
+     "ci95_wild_bootstrap": [
+      0.004,
+      0.0086
+     ]
+    }
+   ]
+  },
+  "population": {
+   "specifications": 4,
+   "positive": 4,
+   "negative": 0,
+   "excluding_zero": 4,
+   "estimates": [
+    {
+     "spec": "A2_twoway_full",
+     "outcome": "log_price_m2",
+     "estimate": 1.6383,
+     "ci95_wild_bootstrap": [
+      0.6337,
+      2.6232
+     ]
+    },
+    {
+     "spec": "A2_fd_full",
+     "outcome": "log_price_m2",
+     "estimate": 1.5847,
+     "ci95_wild_bootstrap": [
+      0.6875,
+      2.4639
+     ]
+    },
+    {
+     "spec": "B_twoway_full",
+     "outcome": "log_price_m2_2018m",
+     "estimate": 0.8763,
+     "ci95_wild_bootstrap": [
+      0.111,
+      1.6109
+     ]
+    },
+    {
+     "spec": "B_fd_full",
+     "outcome": "log_price_m2_2018m",
+     "estimate": 1.0079,
+     "ci95_wild_bootstrap": [
+      0.1005,
+      1.852
+     ]
+    }
+   ]
+  },
+  "rent": {
+   "specifications": 3,
+   "positive": 3,
+   "negative": 0,
+   "excluding_zero": 3,
+   "estimates": [
+    {
+     "spec": "D_twoway_price_on_rent",
+     "outcome": "log_price_m2",
+     "estimate": 0.4424,
+     "ci95_wild_bootstrap": [
+      0.2866,
+      0.6114
+     ]
+    },
+    {
+     "spec": "D_fd_price_on_rent",
+     "outcome": "log_price_m2",
+     "estimate": 0.3096,
+     "ci95_wild_bootstrap": [
+      0.1484,
+      0.4844
+     ]
+    },
+    {
+     "spec": "LD_price_on_rent_2020_2024",
+     "outcome": "dlog_price_m2",
+     "estimate": 0.5015,
+     "ci95_wild_bootstrap": [
+      0.2624,
+      0.7622
+     ]
+    }
+   ]
+  }
+ },
+ "national_time_series": {
+  "note": "Correlations of annual growth rates; effective sample size from the lag-1 autocorrelations (Bartlett).",
+  "2005_2024": {
+   "income_silc_income_year": {
+    "years": [
+     2009,
+     2024
+    ],
+    "n": 16,
+    "pearson": 0.627,
+    "effective_n": 8.5,
+    "ci95": [
+     -0.102,
+     0.918
+    ]
+   },
+   "completions": {
+    "years": [
+     2009,
+     2024
+    ],
+    "n": 16,
+    "pearson": 0.812,
+    "effective_n": 3.3,
+    "ci95": [
+     -0.99,
+     1.0
+    ]
+   },
+   "population_end_of_year": {
+    "years": [
+     2009,
+     2024
+    ],
+    "n": 16,
+    "pearson": 0.613,
+    "effective_n": 3.6,
+    "ci95": [
+     -0.938,
+     0.996
+    ]
+   },
+   "rents_hicp": {
+    "years": [
+     2009,
+     2024
+    ],
+    "n": 16,
+    "pearson": 0.332,
+    "effective_n": 10.8,
+    "ci95": [
+     -0.34,
+     0.78
+    ]
+   },
+   "mortgage_rate": {
+    "years": [
+     2009,
+     2024
+    ],
+    "n": 16,
+    "pearson": 0.173,
+    "effective_n": 12.2,
+    "ci95": [
+     -0.44,
+     0.676
+    ]
+   }
+  },
+  "2013_2024": {
+   "income_silc_income_year": {
+    "years": [
+     2013,
+     2024
+    ],
+    "n": 12,
+    "pearson": 0.448,
+    "effective_n": 10.0,
+    "ci95": [
+     -0.252,
+     0.84
+    ]
+   },
+   "completions": {
+    "years": [
+     2013,
+     2024
+    ],
+    "n": 12,
+    "pearson": 0.828,
+    "effective_n": 6.6,
+    "ci95": [
+     0.151,
+     0.976
+    ]
+   },
+   "population_end_of_year": {
+    "years": [
+     2013,
+     2024
+    ],
+    "n": 12,
+    "pearson": 0.662,
+    "effective_n": 6.1,
+    "ci95": [
+     -0.3,
+     0.956
+    ]
+   },
+   "rents_hicp": {
+    "years": [
+     2013,
+     2024
+    ],
+    "n": 12,
+    "pearson": 0.234,
+    "effective_n": 10.0,
+    "ci95": [
+     -0.463,
+     0.753
+    ]
+   },
+   "mortgage_rate": {
+    "years": [
+     2013,
+     2024
+    ],
+    "n": 12,
+    "pearson": 0.384,
+    "effective_n": 9.3,
+    "ci95": [
+     -0.358,
+     0.829
+    ]
+   }
+  },
+  "series_years": {
+   "house_prices_hpi": [
+    2008,
+    2025
+   ],
+   "income_silc_income_year": [
+    1994,
+    2024
+   ],
+   "completions": [
+    1995,
+    2025
+   ],
+   "population_end_of_year": [
+    1959,
+    2024
+   ],
+   "rents_hicp": [
+    1996,
+    2025
+   ],
+   "consumer_prices_hicp": [
+    1996,
+    2025
+   ],
+   "mortgage_rate": [
+    2003,
+    2025
+   ]
+  }
+ }
+}
