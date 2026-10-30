@@ -50,8 +50,10 @@ jobs:
           python regional.py > /dev/null
           python affordability.py > /dev/null
           python rental.py > /dev/null
+          python integrated.py > /dev/null
           git diff --exit-code -- results.json results_regional.json regional_panel.csv \
-            results_affordability.json affordability_panel.csv results_rental.json rental_panel.csv
+            results_affordability.json affordability_panel.csv results_rental.json rental_panel.csv \
+            results_integrated.json integrated_panel.csv data_audit.csv
 
       - name: Check that the figure scripts run
         run: |
@@ -59,6 +61,7 @@ jobs:
           python regional_figures.py
           python affordability_figures.py
           python rental_figures.py
+          python integrated_figures.py
 
   # Refreshing the ECB series is a manual, reviewed step: dispatch this workflow
   # on a branch other than main; the job commits the dated raw response and its

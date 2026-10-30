@@ -16,15 +16,18 @@ The regional panel (section below) is built by `python regional.py`, which write
 `results_regional.json` and `regional_panel.csv`; the affordability panel by
 `python affordability.py`, which writes `results_affordability.json` and
 `affordability_panel.csv`; the rental analysis by `python rental.py`, which
-writes `results_rental.json` and `rental_panel.csv`. Their figures need
-matplotlib (`pip install matplotlib==3.11.2`, then `python regional_figures.py`,
-`python affordability_figures.py` and `python rental_figures.py`). Everything
-else uses the standard library only.
+writes `results_rental.json` and `rental_panel.csv`; the integrated assessment by
+`python integrated.py`, which writes `results_integrated.json`,
+`integrated_panel.csv` and `data_audit.csv`. Their figures need matplotlib
+(`pip install matplotlib==3.11.2`, then `python regional_figures.py`,
+`python affordability_figures.py`, `python rental_figures.py` and
+`python integrated_figures.py`). Everything else uses the standard library only.
 
 The workflow `.github/workflows/portugal-housing-generations.yml` runs the tests
 and rebuilds `results.json`, `results_regional.json`, `regional_panel.csv`,
-`results_affordability.json`, `affordability_panel.csv`, `results_rental.json`
-and `rental_panel.csv` on every pull request;
+`results_affordability.json`, `affordability_panel.csv`, `results_rental.json`,
+`rental_panel.csv`, `results_integrated.json`, `integrated_panel.csv` and
+`data_audit.csv` on every pull request;
 the build fails if a committed file differs. `fetch_mortgage_rates.py` is the only script that touches
 the network. It is run by that workflow's manual `fetch-mortgage-rates` job,
 dispatched on a branch other than `main`, which commits the dated response and
@@ -893,6 +896,277 @@ Figures:
 - `figures/fig_rental_regional_growth.png`
 - `figures/fig_rental_census_contracts.png`
 
+## Integrated assessment: prices, income, construction, population and rents
+
+`integrated.py` joins the series pinned by the earlier analyses into one
+municipality-year panel and asks how house prices relate to income, construction,
+population and rents. It downloads nothing. It writes:
+- `data_audit.csv`, the audit of every variable;
+- `integrated_panel.csv`, 308 municipalities × 2011–2025, NUTS 2024 geography,
+  municipalities matched by DICO code;
+- `results_integrated.json`, every estimate, interval and diagnostic.
+
+`integrated_figures.py` draws the figures. The estimators are in
+`panel_stats.py`, written in the standard library so every step can be checked.
+The run is deterministic: the bootstrap seeds are fixed, and CI rebuilds the
+outputs and compares them.
+
+Findings come in three layers, kept apart below:
+- **robust descriptive** facts;
+- **model-dependent** associations;
+- **questions that need a causal design.** These data cannot answer them.
+
+No correlation or coefficient here is a causal effect.
+
+### Audit
+
+| Variable | Source | Years | Municipalities published | Alignment | Breaks and notes |
+|---|---|---|---|---|---|
+| population | INE 0008273 + 0012917 | 2011–2025 | 308 every year | 31 December | Census-based to 2020, administrative-based from 2021 (+2.0% for Portugal in one step) |
+| completions, permits | INE 0013248, 0013235 | 2011–2025 | 308 | calendar year | Amadora under-reported 2011–2017; 2021+ preliminary; completions 2024–2025 estimated |
+| price per m² (sales) | INE 0012234 | 2019–2025 | 282–305 | 12 months to Q4 | 2022 method; existing dwellings 272–302 |
+| price per m² (2018 method) | INE 0009490 | 2016–2020 | 303–306 | 12 months to Q4 | closed series, NUTS 2013 table |
+| bank appraisal per m² | INE 0012256 | 2011–2025 | 141–261 | calendar year | suppressed where appraisals are few: selected, larger municipalities |
+| income per tax household | INE 0012712 + 0009763 | 2015–2024 | 297–299 | tax year | two geography tables of one statistic; 1,183 of 1,190 overlapping cells identical, the rest differ by €1 |
+| new-lease rent per m² | INE 0014698 | 2020–2025 | 222–247 | contracts of the year | 2026 method; the 2021 method (2017–2023, 193–215) is kept separate |
+
+All values are positive except completions and permits, where zeros are real.
+Units are not mixed:
+- prices and appraisals are € per m²;
+- rents are € per m² per month;
+- income is € per year;
+- population is persons;
+- construction is dwellings, and becomes a rate per 1,000 residents of a fixed
+  base year, so the population break cannot leak into it.
+
+All calendar alignments are annual. Two exceptions are handled explicitly:
+- EU-SILC income refers to the year before the survey and is shifted.
+- Eurostat's 1 January population is assigned to 31 December of the year before.
+
+### Analytical samples
+
+Each sample uses one price method, one population basis and one geography, and is
+balanced: a municipality enters only if every variable is published in every
+year. A value that is published, even an imprecise one, is never dropped.
+
+| Sample | Years | Outcome | Regressors | Municipalities |
+|---|---|---|---|---|
+| A | 2019–2024 | sale price (2022 method) | income | 272 |
+| A2 | 2021–2024 | sale price | income, completions per 1,000, population (administrative basis only) | 289 |
+| B | 2016–2020 | sale price (2018 method) | income, completions per 1,000, population (census basis only) | 295 |
+| C | 2015–2024 | bank appraisal | income, completions per 1,000 | 179 |
+| D | 2020–2024 | sale price | new-lease rent | 215 |
+
+**Methods.**
+
+- *Estimand.* The within-municipality association between log price and each
+  regressor, conditional on municipality effects (time-invariant differences)
+  and year effects (shocks common to all municipalities). It is a conditional
+  association, not a causal effect.
+- *Specifications compared:* two-way fixed effects; first differences with year
+  effects; NUTS 2 × year effects (regional shocks); long differences across the
+  whole window with NUTS 2 effects; existing-dwelling prices; net income; and
+  sub-periods.
+- *Inference:*
+  - cluster-robust (CR1) standard errors by municipality;
+  - a wild cluster bootstrap-t by NUTS 3 region (26 clusters, Rademacher
+    weights, 1,999 replications) to allow for spatial correlation within
+    regions. The intervals quoted below are the bootstrap ones unless stated
+    otherwise.
+- *Diagnostics:*
+  - *Within variation:* the share of each regressor's variance left after the
+    fixed effects.
+  - *Serial correlation:* Wooldridge's test on first-difference residuals. A
+    slope near −0.5 supports fixed effects; near 0, first differences.
+  - *Stability:*
+    - fixed effects against first differences;
+    - leaving out each NUTS 3 region in turn;
+    - dropping the Lisbon and Porto metropolitan municipalities;
+    - dropping the 5% most influential municipalities (one-step DFBETA).
+- *Verdicts.* An association is called **robust** only if all of these hold:
+  - the regressor keeps at least 1% of its variance after the fixed effects;
+  - the bootstrap interval excludes zero;
+  - the sign holds in first differences, without any single NUTS 3 region and
+    without the metropolitan areas;
+  - the sign is shared by at least 80% of all specifications of the same
+    regressor.
+
+  It is **fragile** if the interval excludes zero but some other check fails,
+  and **not supported** otherwise.
+
+### Layer 1: robust descriptive findings
+
+These are correlations across municipalities, as Spearman rank correlations with
+95% intervals from a bootstrap that resamples whole NUTS 3 regions.
+
+**Levels in 2024.** Municipalities with higher sale prices per m² have:
+- higher new-lease rents per m² (0.92 [0.85, 0.95]);
+- faster population growth in 2021–2024 (0.72 [0.57, 0.82]);
+- higher completions per 1,000 residents (0.46 [0.30, 0.57]);
+- higher median income (0.45 [0.18, 0.66]).
+
+**Changes.**
+
+| Price growth against | 2019–2024 (2022 method) | 2016–2020 (2018 method) | 2015–2024 (appraisals) | NUTS 3, 2019–2024 |
+|---|---|---|---|---|
+| income growth | −0.23 [−0.38, −0.07] | −0.10 [−0.28, 0.11] | −0.34 [−0.57, −0.04] | −0.29 |
+| population growth | +0.37 [0.19, 0.55] (2021–24) | +0.15 [−0.01, 0.28] | +0.62 [0.42, 0.74] (2015–20) | +0.57 |
+| completions per 1,000 | +0.19 [0.04, 0.33] | −0.03 [−0.15, 0.08] | +0.22 [−0.01, 0.42] | +0.42 |
+| new-lease rent growth | +0.38 [0.21, 0.52] (2020–24) | +0.37 [0.11, 0.54] (2017–19) | | +0.71 |
+
+- *Price and rent:* prices and rents move together across places and over time.
+  This holds in every window and at both geographic levels.
+- *Price and population:* prices rose more where population grew more after
+  2015. The relationship is clearest after 2021 and in the appraisal series.
+- *Price and income:* prices did **not** rise more where incomes rose more. If
+  anything the opposite holds: the correlation is negative in two of three
+  windows and at NUTS 3.
+- *Price and construction:* the link with completions is weak and changes with
+  the window.
+
+**Rental yield.** The gross rental yield (12 × new-lease rent ÷ sale price, both
+medians per m²) fell from 2020 to 2025 in 16 of 26 NUTS 3 regions. It fell from
+5.8% to 5.4% for Portugal, from 5.6% to 5.0% in Grande Lisboa and from 5.9% to
+5.3% in Porto.
+
+**National time series, 2009–2024.**
+- *Same-direction movements:* annual house-price growth moved with growth in
+  completions (r = 0.81), median income (0.63) and population (0.61). It moved
+  less with sitting tenants' rents (0.33) and with changes in the mortgage rate
+  (0.17).
+- *None is precise:* the series are strongly autocorrelated, so the effective
+  samples are 3–12 years. No interval excludes zero except completions in
+  2013–2024 (0.83 [0.15, 0.98], effective n ≈ 7).
+- *Nothing more is attempted:* sixteen annual observations with breaks
+  (2008–2014 crisis, pandemic, the 2024 EU-SILC pension change) do not support
+  cointegration or dynamic models.
+
+### Layer 2: model-dependent associations
+
+These are within-municipality estimates.
+
+**Income: not identified.**
+- *Range:* the income elasticity of price ranges from −0.74 to +0.79 across 18
+  specifications. 13 are negative and 5 positive. Four exclude zero below it
+  and two above it.
+- *Why the sign moves:* log income keeps only 0.9–1.9% of its variance once
+  municipality and year effects are removed. Municipal income medians move
+  almost in parallel, and what is left is mostly noise. The sign changes with
+  the window, with first differences and with the controls: −0.63 in sample A,
+  −0.09 in first differences, +0.06 with NUTS 2 × year effects, and +0.79 once
+  population is added in A2.
+- *Conclusion:* these data cannot say how prices respond to local income growth
+  within a municipality.
+
+**Completions: an artefact of the sale mix.**
+- *All sales:* more completions per 1,000 residents go with a higher median price
+  of all sales, about +1.4% per extra dwelling per 1,000 residents in A2
+  (CR1 interval [0.7%, 2.1%]). This passes every check.
+- *Existing dwellings only:* for the same municipalities and years the estimate
+  is 0.0% [−0.7%, 0.8%].
+- *Interpretation:* new dwellings are dearer and enter the median of all sales.
+  The association reflects a change in what is sold, not a price change for a
+  given dwelling. It must not be read as "construction raises prices" or the
+  reverse.
+
+**Population: consistent in sign, fragile.**
+- *Estimates:* the elasticity of price with respect to population is 0.9–1.6,
+  positive in all four specifications (A2 and B, fixed effects and first
+  differences), with intervals above zero.
+- *Why fragile:* log population keeps only 0.01–0.02% of its variance after the
+  fixed effects. Official population estimates are smooth trends, and the
+  coefficient is identified from tiny deviations from them. Those deviations
+  include the administrative re-estimation of migrants after 2021.
+
+**Rents: robust co-movement.**
+- *Estimates:*
+  - two-way effects 0.44 [0.29, 0.61];
+  - first differences 0.31 [0.15, 0.48];
+  - long difference 2020–2024 with NUTS 2 effects 0.50 [0.26, 0.76].
+- *Stability:*
+  - 0.41–0.49 leaving out any NUTS 3 region;
+  - 0.43 without the metropolitan areas;
+  - 0.43 without the most influential municipalities.
+- *Serial correlation:* the Wooldridge slope (−0.46) supports fixed effects.
+- *Reading:* both prices and rents respond to local demand and supply, so this
+  is a co-movement, not one causing the other. Little within variation remains
+  in rents (1.8%), so measurement error in the medians probably biases the
+  estimate towards zero.
+
+**Diagnostics.**
+- *Errors:*
+  - Cluster-robust standard errors are 1.0–2.3 times the conventional ones.
+  - First-difference residuals in the sale-price samples are consistent with
+    fixed effects (slopes −0.42 to −0.46).
+  - In the appraisal sample the errors are persistent (slope −0.19). There the
+    first-difference estimates are preferred: income −0.13 [−0.39, 0.13],
+    completions +0.6% per dwelling per 1,000.
+- *Influence:* leaving out single regions or the most influential municipalities
+  changes no sign except where the cross-specification check already fails.
+
+### Layer 3: questions that need a causal design
+
+These questions cannot be answered with these data:
+- Does local income growth raise prices or rents?
+- Does more construction lower them?
+- Does population growth (migration) raise them?
+- Do immigration, tourism, investment demand, short-term letting or regulation
+  explain the divergence between prices, rents and income?
+
+**Why the data do not support a credible design.**
+- *Short panels:* 4–6 years of sale prices and 10 of appraisals, with a method
+  break in prices, rents and population.
+- *Little variation:* income and population barely vary once municipality and
+  year effects are removed.
+- *Changing composition:* medians shift with the mix of what is sold or let, as
+  the completions result shows.
+- *Simultaneity:* prices, construction and migration determine one another.
+- *Spillovers:* effects cross municipal borders.
+- *No exogenous source of variation:* nothing here, no instrument and no
+  policy change with documented timing and geography, separates cause from
+  response.
+
+**Evidence that would be needed.**
+- *Composition-free prices and rents:* transaction-level or repeat-sales data
+  (hedonic or repeat-sales indices by municipality).
+- *Policy timing and geography*, for event studies or difference-in-differences
+  with pre-trend tests:
+  - short-term rental restrictions (containment areas in Lisbon and Porto; the
+    2023 *Mais Habitação* licensing changes);
+  - the end of the Golden Visa for housing and of the NHR regime;
+  - the 2023 cap on rent updates.
+- *Demand shifters with pre-determined exposure* (shift-share designs with
+  balance checks), each by municipality and year:
+  - foreign buyers (INE publishes prices by buyer domicile);
+  - tourism capacity and short-term rental registrations (RNAL);
+  - residence permits (AIMA).
+- *Supply:* zoning and land constraints, building costs and permit processing
+  times, to estimate supply responses.
+- *Household data:* income of buyers and tenants, rather than all tax
+  households, from linked tax and property records.
+
+### Limitations
+
+- Municipal medians are noisy where few sales or contracts occur. The balanced
+  samples drop municipalities with any gap, which leaves the smallest ones out.
+  The appraisal sample (179) is particularly selected.
+- Population after 2021 includes INE's administrative re-estimation. Growth
+  across 2020/2021 is never used, and models with population stay on one side of
+  the break.
+- Construction data for 2021–2025 are preliminary or estimated, and Amadora's
+  completions are under-reported in 2011–2017. This touches samples B and C.
+- With 26 NUTS 3 clusters, the wild bootstrap is the main source of inference.
+  Spatial correlation across regions is not modelled.
+- Effect sizes are associations at the municipal level. Applying them to
+  households would commit the ecological fallacy.
+
+Figures:
+- `figures/fig_integrated_coverage.png`
+- `figures/fig_integrated_cross_section.png`
+- `figures/fig_integrated_specifications.png`
+- `figures/fig_integrated_influence.png`
+- `figures/fig_integrated_national.png`
+
 ## What the calculations support
 
 - Nominal house-price-index changes, a relative house-price/income-growth
@@ -905,17 +1179,22 @@ Figures:
   2020–2024 in 24 of 26 NUTS 3 regions, while the rent index for sitting tenants
   rose more slowly than median income; a larger share of the population renting
   at market prices.
+- Across municipalities: prices and rents moving together; price growth higher
+  where population grew more and not higher where income grew more.
 - The stated breakdown of non-primary-residence dwellings in 2021.
 
 ## What they do not support
 
 - A causal effect of speculation, immigration, or regulation on housing prices.
+- Any within-municipality elasticity of prices with respect to income, construction
+  or population: these change sign or rest on almost no variation.
 - A claim that young people reject democracy because of housing costs.
 - The assertion that non-votes for PS/PSD indicate opposition to democracy.
 - Aggregating these different vintages and populations into a single causal model.
 
 Next research step: the regional panels above cover population, construction,
-census households, transaction prices, declared income and rents; regional
-credit would have to be added with the same explicit geography and source
-revisions before any causal design is specified. Electoral analysis additionally
+census households, transaction prices, declared income and rents, and the
+integrated assessment shows what they can and cannot support. A causal design
+needs the additional evidence listed there (composition-free prices, policy
+timing and geography, pre-determined demand exposure, supply constraints). Electoral analysis additionally
 requires individual-level evidence to avoid ecological inference.
