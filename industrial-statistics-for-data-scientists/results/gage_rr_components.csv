@@ -1,0 +1,5 @@
+source,nominal_generating_variance,one_study_anova_variance,nominal_generating_sd,one_study_anova_sd,note
+repeatability,0.0081,0.00898763892241137,0.09,0.09480315882085032,The generating variance is a simulation parameter.
+operator,0.0064,0.022204929924535863,0.08,0.14901318708267353,The generating variance is a simulation parameter.
+part_operator,0.0016,0.0013087321287813373,0.04,0.036176402927617576,The generating variance is a simulation parameter.
+part,0.17106267738249006,0.17103096683635194,0.4135972405402266,0.4135589037082287,"Part term is the realized spread of selected reference parts, not a production-process variance."
