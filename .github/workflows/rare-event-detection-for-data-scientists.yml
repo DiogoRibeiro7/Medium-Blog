@@ -1,0 +1,33 @@
+name: Rare-event detection article evidence
+
+on:
+  pull_request:
+    paths:
+      - "rare-event-detection-for-data-scientists/**"
+      - ".github/workflows/rare-event-detection-for-data-scientists.yml"
+  push:
+    branches: [main]
+    paths:
+      - "rare-event-detection-for-data-scientists/**"
+      - ".github/workflows/rare-event-detection-for-data-scientists.yml"
+
+jobs:
+  verify-reproducibility:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: rare-event-detection-for-data-scientists
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: rare-event-detection-for-data-scientists/requirements.txt
+      - name: Install scientific and notebook dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Mathematical tests and fresh-kernel notebook execution
+        run: python -m unittest discover -s tests -v
+      - name: Reproduce the small study
+        run: python analysis.py --quick
