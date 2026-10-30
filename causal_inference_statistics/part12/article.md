@@ -366,7 +366,7 @@ Dudík, M., Langford, J. and Li, L. (2011). Doubly Robust Policy Evaluation and 
 
 Hill, J. L. (2011). Bayesian Nonparametric Modeling for Causal Inference. *Journal of Computational and Graphical Statistics*, 20(1), 217–240. https://doi.org/10.1198/jcgs.2010.08162
 
-Hirano, K. and Porter, J. R. (2009). Asymptotics for Statistical Treatment Rules. *Econometrica*, 77(5), 1683–1701. https://doi.org/10.3982/ECTA6688
+Hirano, K. and Porter, J. R. (2009). Asymptotics for Statistical Treatment Rules. *Econometrica*, 77(5), 1683–1701. https://doi.org/10.3982/ECTA6630
 
 Imai, K. and Ratkovic, M. (2013). Estimating Treatment Effect Heterogeneity in Randomized Program Evaluation. *Annals of Applied Statistics*, 7(1), 443–470. https://doi.org/10.1214/12-AOAS593
 

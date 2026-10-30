@@ -280,7 +280,7 @@ Cornfield, J., Haenszel, W., Hammond, E. C., Lilienfeld, A. M., Shimkin, M. B. a
 
 Ding, P. and VanderWeele, T. J. (2016). Sensitivity Analysis Without Assumptions. *Epidemiology*, 27(3), 368–377. https://doi.org/10.1097/EDE.0000000000000457
 
-Greenland, S. (1996). Basic Methods for Sensitivity Analysis of Biases. *International Journal of Epidemiology*, 25(6), 1107–1116. https://doi.org/10.1093/ije/25.6.1107
+Greenland, S. (1996). Basic Methods for Sensitivity Analysis of Biases. *International Journal of Epidemiology*, 25(6), 1107–1116. https://doi.org/10.1093/ije/25.6.1107-a
 
 Hernán, M. A. and Robins, J. M. (2020). *Causal Inference: What If*. Chapman & Hall/CRC. https://miguelhernan.org/whatifbook
 
