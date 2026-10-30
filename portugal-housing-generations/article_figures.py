@@ -95,7 +95,7 @@ def completions_composition() -> None:
     b.grid(axis="y", visible=False)
     b.set_xlabel("% price change per extra completion per 1,000 residents")
     b.set_title("Within-municipality association, 2021–2024", loc="left", fontsize=10.5, color=INK)
-    fig.suptitle("The price–construction association comes from the mix of dwellings sold",
+    fig.suptitle("New dwellings sell at a premium; the completions association is near zero for existing dwellings",
                  x=0.01, ha="left", fontsize=11.5, fontweight="bold", color=INK)
     fig.text(0.01, 0.01, "Right: two-way fixed effects with income, municipality and year effects; 95% intervals "
              "cluster-robust by municipality. Sources: INE 0012234, 0013248, 0012712, 0012917. Diogo Ribeiro.",

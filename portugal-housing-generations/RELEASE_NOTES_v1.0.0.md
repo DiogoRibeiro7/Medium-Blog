@@ -19,7 +19,8 @@ First research release, prepared on 30 October 2026 from data snapshots of 29 Oc
   - unit tests with known answers and simulations;
   - snapshot-integrity tests;
   - pinned-result tests;
-  - 128 report-claim checks that tie each quoted number to the results.
+  - 132 report-claim checks that tie each quoted number to the results;
+  - wording guards for the two statements corrected after an independent review.
 - **Reproduction.** `python reproduce.py`.
 - **Review log.** [`REVIEW.md`](REVIEW.md).
 - **Metadata.** [`CITATION.cff`](CITATION.cff) and [`.zenodo.json`](.zenodo.json).
@@ -38,7 +39,10 @@ Each finding is assigned to an evidence layer in the report.
 - **Descriptive associations.**
   - Prices and rents move together, the only within-municipality association that passes every check.
   - Prices rose more where population grew, not where income grew.
-  - The positive association between prices and completions reflects the mix of dwellings sold.
+  - The positive association between prices and completions disappears for existing dwellings. This is
+    consistent with the mix of dwellings sold, but the mechanism is not identified.
+  - The HICP rent index rose more slowly than median income. It is a price index for a sample of rented
+    dwellings (new and existing contracts), not a measure of what any fixed group of tenants pays.
 - **Unresolved.** No causal claim about tourism, foreign demand, immigration, interest rates, regulation or
   supply is supported. Report Section 8.3 lists the data a causal design would need.
 
@@ -63,6 +67,17 @@ uses them. No verdict changed.
 - *Rent methods.* The README range for the difference between rent methods is now 3.2–6.3% (was "3–6%").
 
 **Wording.** Three README passages now state associations and accounting identities without causal language.
+
+**Corrected after an independent scientific review** (no estimate changed):
+- *HICP actual rentals.* The release had described the index as tracking "sitting tenants". Its target coverage is
+  new and existing contracts for private, public and social rental units (HICP Methodological Manual 2024,
+  section 12.4), and it follows a panel of dwellings, not households. The report now explains what the index
+  measures, and how it differs from new-lease medians in population, weighting, level versus index and coverage.
+  The inference that incumbent tenants' rent burden fell was removed.
+- *Completions.* The association was described as "a sale-mix artefact". It is now described as consistent with
+  sale-mix composition but not identified, with the alternative explanations and the data needed to separate
+  them.
+- *Figures.* Labels and titles in five figures were updated to match; no plotted value changed.
 
 **CI:**
 - tests on Python 3.10 and 3.13;

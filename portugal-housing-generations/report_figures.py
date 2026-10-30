@@ -42,7 +42,7 @@ def main() -> None:
     fig, (a, b, c) = plt.subplots(1, 3, figsize=(13.2, 4.8), gridspec_kw={"width_ratios": [1.25, 1, 0.75]})
     for d, label, colour, ls, lw in ((hpi, "House prices (Eurostat HPI)", INK, "-", 2.4),
                                      (income_idx, "Median equivalised income (EU-SILC, income year)", BLUE, "--", 2.0),
-                                     (rents, "Rents paid by sitting tenants (HICP 04.1)", ORANGE, "-", 2.0),
+                                     (rents, "Actual rentals (HICP 04.1, price index)", ORANGE, "-", 2.0),
                                      (cpi, "All consumer prices (HICP)", MUTED, ":", 1.8)):
         x, y = series(d)
         a.plot(x, y, color=colour, ls=ls, lw=lw, label=label)
