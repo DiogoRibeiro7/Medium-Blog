@@ -208,8 +208,7 @@ Make automation reflect the monorepo structure instead of pretending the reposit
 
 - Keep project-specific workflows path-scoped.
 - Preserve the blood-pressure workflows as project-specific automation.
-- Fix Dependabot so Python dependency updates target actual maintained dependency roots rather than `/` when no root Python project exists.
-- Keep GitHub Actions dependency updates at repository level.
+- Dependabot version updates were removed on 2026-10-30 rather than fixed. Its pip pull requests targeted `/`, where there is no Python project, and failed their checks, and a monorepo of finished articles does not need a bot updating pinned versions. Each project's dependencies are updated by hand when that project is maintained. Dependabot security updates are a repository setting and are not affected.
 - Add a lightweight repository-hygiene workflow that does not execute historical notebooks.
 
 The hygiene workflow should check only structural invariants, for example:
@@ -451,7 +450,7 @@ The recommended sequence is:
 1. root README + repository architecture document
 2. machine-readable catalogue and schema
 3. conventions for new projects
-4. Dependabot and repository-hygiene CI
+4. repository-hygiene CI
 5. root-file audit
 6. prioritized legacy-project audits
 7. reproducibility tiers and publication metadata
@@ -473,7 +472,7 @@ Add the catalogue schema and enumerate every top-level item with provisional sta
 
 ### PR C — automation alignment
 
-Correct Dependabot and add catalogue/hygiene validation without attempting to execute historical projects.
+Add catalogue/hygiene validation without attempting to execute historical projects. (Dependabot version updates were removed instead of corrected; see Phase 4.)
 
 ### PR D — root artifact audit
 
