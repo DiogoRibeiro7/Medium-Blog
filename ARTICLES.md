@@ -1,6 +1,6 @@
 # Articles Developed in This Chat
 
-This is a chronological index of the nine long-form articles developed in
+This is a chronological index of the ten long-form articles developed in
 this conversation for `Medium-Blog`. It is **not** a complete
 catalogue of the repository's articles or historical notebooks.
 
@@ -15,6 +15,7 @@ catalogue of the repository's articles or historical notebooks.
 | 7 | [The Lowest RMSE Is Not the Best Decision: From Prediction to Stochastic Optimization](decision-focused-optimization-for-data-scientists/article.md) | Decision-aware prediction, critical fractile, asymmetric loss, sample-average approximation, capacity-constrained linear programming, CVaR, value of information, distribution shift | 8 | [Study README](decision-focused-optimization-for-data-scientists/README.md) · [Python analysis](decision-focused-optimization-for-data-scientists/analysis.py) · [Notebook](decision-focused-optimization-for-data-scientists/decision_focused_optimization.ipynb) |
 | 8 | [A Machine Does Not Fail at Its Mean: Reliability Statistics, Censoring, and Maintenance Decisions](reliability-statistics-for-data-scientists/article.md) | Weibull hazard and survival, right-censoring, Kaplan–Meier, Nelson–Aalen, censored likelihood, age-replacement optimization, renewal–reward theory, competing risks and Aalen–Johansen | 8 | [Study README](reliability-statistics-for-data-scientists/README.md) · [Python analysis](reliability-statistics-for-data-scientists/analysis.py) · [Notebook](reliability-statistics-for-data-scientists/reliability_statistics.ipynb) |
 | 9 | [An Alarm Score Is Not a Probability: Rare Events, Base Rates, and Decision Thresholds](rare-event-detection-for-data-scientists/article.md) | Rare-event detection, Bayes precision, label shift, ROC and PR, probability calibration, proper scoring rules, prevalence estimation, cost-optimal alarms, review capacity, selective labels | 8 | [Study README](rare-event-detection-for-data-scientists/README.md) · [Python analysis](rare-event-detection-for-data-scientists/analysis.py) · [Notebook](rare-event-detection-for-data-scientists/rare_event_detection.ipynb) |
+| 10 | [A Thousand Observations Are Not a Thousand Replicates: Autocorrelation, Effective Sample Size, and the Block Bootstrap](dependent-data-uncertainty-for-data-scientists/article.md) | Serial dependence, exact effective sample size, long-run variance, Bartlett/Newey–West HAC, IID versus moving-block bootstrap, coverage calibration, time-ordered forecasting validation | 8 | [Study README](dependent-data-uncertainty-for-data-scientists/README.md) · [Python analysis](dependent-data-uncertainty-for-data-scientists/analysis.py) · [Notebook](dependent-data-uncertainty-for-data-scientists/dependent_data_uncertainty.ipynb) |
 
 ## Reproducibility
 
