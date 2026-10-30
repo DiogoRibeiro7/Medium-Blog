@@ -1,0 +1,33 @@
+name: Decision-focused optimization article evidence
+
+on:
+  pull_request:
+    paths:
+      - "decision-focused-optimization-for-data-scientists/**"
+      - ".github/workflows/decision-focused-optimization-for-data-scientists.yml"
+  push:
+    branches: [main]
+    paths:
+      - "decision-focused-optimization-for-data-scientists/**"
+      - ".github/workflows/decision-focused-optimization-for-data-scientists.yml"
+
+jobs:
+  reproduce-quick-study:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: decision-focused-optimization-for-data-scientists
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: decision-focused-optimization-for-data-scientists/requirements.txt
+      - name: Install pinned scientific dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Unit tests and fresh-kernel notebook
+        run: python -m unittest discover -s tests -v
+      - name: Quick reproducibility check
+        run: python analysis.py --quick
