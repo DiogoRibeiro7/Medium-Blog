@@ -69,9 +69,9 @@ class MetadataTests(unittest.TestCase):
         self.assertTrue((HERE / "REVIEW.md").exists())
 
     def test_every_figure_is_used_and_every_figure_script_is_reproduced(self) -> None:
-        docs = (HERE / "README.md").read_text(encoding="utf-8") + (HERE / "REPORT.md").read_text(encoding="utf-8")
+        docs = "".join((HERE / name).read_text(encoding="utf-8") for name in ("README.md", "REPORT.md", "article.md"))
         figures = sorted((HERE / "figures").glob("*.png"))
-        self.assertEqual(len(figures), 19)
+        self.assertEqual(len(figures), 21)
         for fig in figures:
             with self.subTest(figure=fig.name):
                 self.assertIn(fig.name, docs)

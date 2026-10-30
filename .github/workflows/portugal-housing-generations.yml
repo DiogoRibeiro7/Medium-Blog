@@ -74,6 +74,7 @@ jobs:
           python rental_figures.py
           python integrated_figures.py
           python report_figures.py
+          python article_figures.py
 
   # Builds the folder archive for a manual Zenodo upload. It reproduces every result
   # first and uploads the zip and its SHA-256 as a workflow artifact; it creates no

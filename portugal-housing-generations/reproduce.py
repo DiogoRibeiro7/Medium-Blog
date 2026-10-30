@@ -34,7 +34,8 @@ ANALYSES = {
     "rental.py": ["results_rental.json", "rental_panel.csv"],
     "integrated.py": ["results_integrated.json", "integrated_panel.csv", "data_audit.csv"],
 }
-FIGURE_SCRIPTS = ["regional_figures.py", "affordability_figures.py", "rental_figures.py", "integrated_figures.py", "report_figures.py"]
+FIGURE_SCRIPTS = ["regional_figures.py", "affordability_figures.py", "rental_figures.py", "integrated_figures.py",
+                  "report_figures.py", "article_figures.py"]
 
 
 def sha256(path: Path) -> str:

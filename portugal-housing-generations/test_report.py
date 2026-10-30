@@ -211,7 +211,7 @@ CLAIMS: list[tuple[str, float, int, Callable[[], float]]] = [
     ("the national rate rose 0.53 points in 2019–2025", 0.53, 2, ren("overburden.shift_share.2019_2025.change")),
     ("accounts arithmetically for +0.72 points", 0.72, 2, ren("overburden.shift_share.2019_2025.composition")),
     ("rates within each tenure for −0.19", 0.19, 2, lambda: -get("results_rental.json", "overburden.shift_share.2019_2025.within_groups")),
-    ("by 0.28% for the median municipality in 2025 and by at most 1.24% (Lisboa)", 1.24, 2,
+    ("by a median of 0.28% across the 60 areas published in both versions in 2025, and by at most 1.24% (Lisboa)", 1.24, 2,
      lambda: -get("results_rental.json", "resident_tenants.largest_diff_2025.diff_pct")),
     ("The 2026 method is 3.2–6.3% higher", 6.3, 1, lambda: 100 * (
         get("results_rental.json", "methods_and_windows.portugal.2024.method_2026")

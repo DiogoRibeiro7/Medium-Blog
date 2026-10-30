@@ -39,7 +39,7 @@ rendering differs between systems. Individual steps:
 | Regional purchase affordability | `python affordability.py` | `results_affordability.json`, `affordability_panel.csv` |
 | Rental market | `python rental.py` | `results_rental.json`, `rental_panel.csv` |
 | Integrated assessment | `python integrated.py` | `results_integrated.json`, `integrated_panel.csv`, `data_audit.csv` |
-| Figures | `python regional_figures.py`, `affordability_figures.py`, `rental_figures.py`, `integrated_figures.py`, `report_figures.py` | `figures/*.png` |
+| Figures | `python regional_figures.py`, `affordability_figures.py`, `rental_figures.py`, `integrated_figures.py`, `report_figures.py`, `article_figures.py` | `figures/*.png` |
 | Tests | `python -m unittest discover -p 'test_*.py'` | — |
 
 `test_report.py` recomputes the numbers quoted in `REPORT.md` from the result files, so the report cannot drift
@@ -72,10 +72,11 @@ review the change.
 | `regional_core.py`, `affordability_core.py`, `rental_core.py`, `panel_stats.py` | Parsers, geography, index and decomposition helpers, and the panel estimators (OLS, CR1, wild cluster bootstrap) |
 | `fetch_*.py` | Downloaders used only by the manual workflow jobs |
 | `results*.json`, `*_panel.csv`, `data_audit.csv` | Generated results, committed and checked in CI |
-| `*_figures.py`, `report_figures.py`, `figures/` | Figure scripts and the 19 figures |
+| `*_figures.py`, `figures/` | Figure scripts and the 21 figures (two drawn for the Medium article) |
 | `test_*.py` | Unit, snapshot, pinned-result and report-claim tests |
 | `reproduce.py` | One-command reproduction |
 | `REPORT.md`, `REVIEW.md`, `RELEASE_NOTES_v1.0.0.md` | Report, review log, release notes |
+| `article.md` | Medium article based on the release |
 | `CITATION.cff`, `.zenodo.json` | Citation and archive metadata |
 
 ## Citing and licences

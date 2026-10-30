@@ -13,13 +13,13 @@ First research release, prepared on 30 October 2026 from data snapshots of 29 Oc
 - **Data.** 63 pinned source files from INE, Eurostat and the ECB (and one PORDATA transcription), with
   retrieval records and SHA-256 checksums in [`data/SHA256SUMS`](data/SHA256SUMS).
 - **Code.** Five standard-library Python pipelines (national, regional, affordability, rental, integrated) and
-  their helper modules, plus five figure scripts producing 19 figures.
+  their helper modules, plus six figure scripts producing 21 figures.
 - **Results.** Ten generated result files, committed and rebuilt byte for byte in CI.
 - **Tests.**
   - unit tests with known answers and simulations;
   - snapshot-integrity tests;
   - pinned-result tests;
-  - 128 report-claim tests that tie each quoted number to the results.
+  - 128 report-claim checks that tie each quoted number to the results.
 - **Reproduction.** `python reproduce.py`.
 - **Review log.** [`REVIEW.md`](REVIEW.md).
 - **Metadata.** [`CITATION.cff`](CITATION.cff) and [`.zenodo.json`](.zenodo.json).
@@ -49,6 +49,7 @@ Relative to the merged stages (#354, #368, #371, #374, #376):
 **Added:**
 - the research report;
 - the national overview figure;
+- a Medium article (`article.md`) and two figures drawn for it;
 - one-command reproduction and the data checksum manifest;
 - citation and archive metadata, the review log and these notes.
 
