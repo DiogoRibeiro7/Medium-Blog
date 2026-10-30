@@ -1,6 +1,8 @@
 """Offline regression checks for the Eurostat parser and descriptive statistics."""
 
 import csv
+import gzip
+import hashlib
 import json
 import math
 import tempfile
@@ -9,9 +11,12 @@ from collections.abc import Callable
 from pathlib import Path
 
 from analysis import (
+    COMPLETIONS_FILE,
+    COMPLETIONS_LONG_FILE,
     annual_mean_rates,
     annuity_factor,
     construction_intensity,
+    container_metadata,
     decompose_payment_change,
     parse_completed_dwellings,
     parse_demographic_totals,
@@ -153,24 +158,56 @@ class AnalysisTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             parse_dwellings_permitted(payload)
 
-    def test_completed_dwellings_ine_pordata(self) -> None:
-        path = Path(__file__).parent / "data" / "ine_pordata_completed_new_dwellings_PT_2026-10-29.csv"
-        counts, preliminary = parse_completed_dwellings(path)
+    def test_completed_dwellings_from_ine(self) -> None:
+        data = Path(__file__).parent / "data"
+        counts, preliminary = parse_completed_dwellings(data / COMPLETIONS_FILE)
+        self.assertEqual(sorted(counts), list(range(1995, 2026)))
         self.assertEqual(counts[2002], 125708)
         self.assertEqual(counts[2015], 7148)
         self.assertEqual(counts[2025], 27301)
+        # INE's note: "Dados definitivos até 2020 e preliminares de 2021 em diante".
         self.assertEqual(preliminary, [2021, 2022, 2023, 2024, 2025])
+        self.assertEqual(container_metadata(data / COMPLETIONS_FILE)["indicator"], "0000076")
 
-    def test_completed_dwellings_rejects_duplicate_year(self) -> None:
+    def test_long_series_is_higher_in_every_year(self) -> None:
+        data = Path(__file__).parent / "data"
+        counts, _ = parse_completed_dwellings(data / COMPLETIONS_FILE)
+        long_series, _ = parse_completed_dwellings(data / COMPLETIONS_LONG_FILE)
+        self.assertEqual(sorted(long_series), list(range(1975, 2026)))
+        self.assertTrue(all(long_series[y] > counts[y] for y in counts))
+        self.assertEqual(long_series[2025], 30425)
+
+    def test_completed_dwellings_rejects_a_tampered_or_duplicated_container(self) -> None:
+        def body(value: object) -> str:
+            return json.dumps(value, ensure_ascii=False)
+
+        def response(kind: str, text: str) -> dict[str, object]:
+            raw = text.encode("utf-8")
+            return {"kind": kind, "url": "https://www.ine.pt/test", "retrieved_at_utc": "2026-10-30T00:00:00+00:00",
+                    "http_status": 200, "encoding": "utf-8", "bytes": len(raw),
+                    "sha256": hashlib.sha256(raw).hexdigest(), "body": text}
+
+        meta = body([{"IndicadorCod": "0000076", "IndicadorNome": "test", "Nota": "preliminares de 2024 em diante"}])
+        rows = [{"geocod": "PT", "dim_3": "T", "valor": "200"}, {"geocod": "PT", "dim_3": "1", "valor": "50"}]
+        data = body([{"IndicadorCod": "0000076", "Sucesso": {"Verdadeiro": [{"Msg": "OK"}]},
+                      "Dados": {"2024": rows, "2025": rows[:1]}}])
         with tempfile.TemporaryDirectory() as directory:
-            path = Path(directory) / "invalid.csv"
-            path.write_text(
-                "year,completed_dwellings,preliminary\n"
-                "2024,200,true\n2024,300,true\n",
-                encoding="utf-8",
-            )
+            def write(name: str, *lines: dict[str, object]) -> Path:
+                path = Path(directory) / name
+                header = {"kind": "header", "indicator": "0000076", "responses": len(lines)}
+                with gzip.open(path, "wt", encoding="utf-8") as fh:
+                    for line in (header, *lines):
+                        fh.write(json.dumps(line, ensure_ascii=False) + "\n")
+                return path
+
+            good = write("good.jsonl.gz", response("metadata", meta), response("data", data))
+            self.assertEqual(parse_completed_dwellings(good), ({2024: 200, 2025: 200}, [2024, 2025]))
+            tampered = response("data", data) | {"body": data.replace('"200"', '"201"')}
             with self.assertRaises(ValueError):
-                parse_completed_dwellings(path)
+                parse_completed_dwellings(write("tampered.jsonl.gz", response("metadata", meta), tampered))
+            with self.assertRaises(ValueError):
+                parse_completed_dwellings(write("duplicated.jsonl.gz", response("metadata", meta),
+                                                response("data", data), response("data", data)))
 
     def test_official_household_and_population_totals(self) -> None:
         folder = Path(__file__).parent / "data"

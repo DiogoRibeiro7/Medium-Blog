@@ -21,6 +21,7 @@ on:
           - regional
           - affordability
           - rental
+          - national
           - release-archive
         default: mortgage-rates
 
@@ -160,7 +161,7 @@ jobs:
           fi
 
   fetch-regional:
-    if: github.event_name == 'workflow_dispatch' && github.ref != 'refs/heads/main' && (inputs.task == 'regional' || inputs.task == 'affordability' || inputs.task == 'rental')
+    if: github.event_name == 'workflow_dispatch' && github.ref != 'refs/heads/main' && (inputs.task == 'regional' || inputs.task == 'affordability' || inputs.task == 'rental' || inputs.task == 'national')
     runs-on: ubuntu-latest
     timeout-minutes: 300
     permissions:

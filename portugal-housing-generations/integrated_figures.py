@@ -221,7 +221,7 @@ def national_figure(results: dict[str, Any]) -> None:
     fig.suptitle("Portugal: annual growth of house prices and of possible correlates, 2009-2024",
                  x=0.01, ha="left", fontsize=11, fontweight="bold", color=INK)
     fig.text(0.01, 0.01, "Sources: Eurostat prc_hpi_a, ilc_di03 (income of the year before the survey), demo_pjan, prc_hicp_aind; "
-             "INE/PORDATA completions. Completions and population on the right axis. Diogo Ribeiro.", fontsize=6.9, color=MUTED)
+             "INE completions (indicator 0000076). Completions and population on the right axis. Diogo Ribeiro.", fontsize=6.9, color=MUTED)
     fig.tight_layout(rect=(0, 0.03, 1, 0.95))
     fig.savefig(OUT / "fig_integrated_national.png")
     plt.close(fig)

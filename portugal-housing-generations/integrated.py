@@ -35,6 +35,7 @@ import panel_stats as S
 import regional as R
 import rental as RT
 from analysis import (
+    COMPLETIONS_FILE,
     annual_mean_rates,
     parse_completed_dwellings,
     parse_demographic_totals,
@@ -330,7 +331,7 @@ def national_series(folder: Path, date: str) -> dict[str, dict[int, float]]:
     """National annual series, each keyed by the calendar year it describes."""
     hpi = parse_hpi(json.loads((folder / f"eurostat_prc_hpi_a_PT_{date}.json").read_text(encoding="utf-8")))
     silc = parse_income(json.loads((folder / f"eurostat_ilc_di03_PT_{date}.json").read_text(encoding="utf-8")))
-    completions, _prelim = parse_completed_dwellings(folder / f"ine_pordata_completed_new_dwellings_PT_{date}.csv")
+    completions, _prelim = parse_completed_dwellings(folder / COMPLETIONS_FILE)
     pop, _flags = parse_demographic_totals(json.loads((folder / f"eurostat_demo_pjan_PT_{date}.json").read_text(encoding="utf-8")),
                                            households=False)
     monthly, _status = parse_mortgage_rates(folder / f"ecb_mir_PT_house_purchase_cost_of_borrowing_{date}.csv")

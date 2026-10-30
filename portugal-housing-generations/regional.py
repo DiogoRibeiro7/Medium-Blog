@@ -15,15 +15,13 @@ from __future__ import annotations
 
 import argparse
 import csv
-import gzip
-import hashlib
 import json
 from collections import defaultdict
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
 
-from analysis import parse_completed_dwellings, parse_demographic_totals
+from analysis import COMPLETIONS_FILE, parse_completed_dwellings, parse_demographic_totals, read_container
 from regional_core import (
     coefficient_of_variation,
     coverage,
@@ -62,25 +60,6 @@ class Source:
     geo_order: list[str] = field(default_factory=list)
     years: list[int] = field(default_factory=list)
     retrieved: list[str] = field(default_factory=list)
-
-
-def read_container(path: Path) -> tuple[dict[str, Any], list[dict[str, Any]]]:
-    """Read a pinned container and check every body against its recorded size and SHA-256."""
-    with gzip.open(path, "rt", encoding="utf-8") as fh:
-        lines = [json.loads(line) for line in fh if line.strip()]
-    if not lines or lines[0].get("kind") != "header":
-        raise ValueError(f"{path.name}: missing header")
-    header, responses = lines[0], lines[1:]
-    if header["responses"] != len(responses):
-        raise ValueError(f"{path.name}: header announces {header['responses']} responses, found {len(responses)}")
-    if [r["kind"] for r in responses[:1]] != ["metadata"] or any(r["kind"] != "data" for r in responses[1:]):
-        raise ValueError(f"{path.name}: expected one metadata response followed by data responses")
-    for response in responses:
-        body = response["body"].encode(response["encoding"])
-        if response["http_status"] != 200 or len(body) != response["bytes"] \
-                or hashlib.sha256(body).hexdigest() != response["sha256"]:
-            raise ValueError(f"{path.name}: response does not match its record: {response['url'][:120]}")
-    return header, responses
 
 
 def parse_source(path: Path) -> Source:
@@ -361,7 +340,7 @@ def main() -> None:  # noqa: C901 - one linear pipeline, kept in one place for a
     # National cross-checks against series already pinned for the national analysis.
     eurostat_raw = json.loads((args.data / "eurostat_demo_pjan_PT_2026-10-29.json").read_text(encoding="utf-8"))
     eurostat_pop, _flags = parse_demographic_totals(eurostat_raw, households=False)
-    pordata_completions, _prelim = parse_completed_dwellings(args.data / "ine_pordata_completed_new_dwellings_PT_2026-10-29.csv")
+    national_completions, _prelim = parse_completed_dwellings(args.data / COMPLETIONS_FILE)
     national_checks = {
         "population_ine_year_t_vs_eurostat_1_january_t_plus_1": {
             str(y): {"ine": reg_pop, "eurostat": eurostat_pop.get(y + 1),
@@ -369,10 +348,10 @@ def main() -> None:  # noqa: C901 - one linear pipeline, kept in one place for a
             for y in range(2011, 2026)
             for reg_pop in [(reg["pop13"] if y <= 2020 else reg["pop24"]).get(("PT", y))] if reg_pop is not None
         },
-        "completions_ine_api_vs_pordata_national_series": {
-            "years_compared": sorted(y for y in range(2011, 2026) if y in pordata_completions),
+        "completions_nuts2024_vs_national_series_0000076": {
+            "years_compared": sorted(y for y in range(2011, 2026) if y in national_completions),
             "years_differing": [y for y in range(2011, 2026)
-                                if y in pordata_completions and reg["comp24"][("PT", y)] != pordata_completions[y]],
+                                if y in national_completions and reg["comp24"][("PT", y)] != national_completions[y]],
         },
     }
 

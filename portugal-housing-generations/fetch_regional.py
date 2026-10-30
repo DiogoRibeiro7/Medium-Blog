@@ -14,7 +14,7 @@ each raw body with a ``.meta.json`` retrieval record (URL, time, size, SHA-256).
 Nothing is parsed or transformed here. Run on a GitHub runner (the workflow job
 ``fetch-regional``); standard library only.
 
-Run:  python fetch_regional.py --out data [--set regional|affordability]
+Run:  python fetch_regional.py --out data [--set regional|affordability|rental|national]
 """
 
 from __future__ import annotations
@@ -93,6 +93,14 @@ RENTAL: dict[str, tuple[str, str, dict[str, str]]] = {
     "0006260": ("overburden_nuts2_a", "all", {}),
     "0014472": ("overburden_nuts2_b", "all", {}),
 }
+# National completions, 1995-2025 (replaces a transcription from PORDATA's republication of the same INE table).
+NATIONAL: dict[str, tuple[str, str | list[int], dict[str, str]]] = {
+    # Dwellings completed in new construction for family housing, NUTS 2002, by typology; annual from 1995.
+    # Portugal only: the parish-level table is about 7 MB and only the national total is used.
+    "0000076": ("completions_portugal_by_typology", list(range(1995, 2026)), {"Dim2": "PT"}),
+    # INE's national long series of the same statistic, from 1975 (a cross-check).
+    "0011725": ("completions_long_series_portugal", "all", {}),
+}
 # Eurostat datasets for the rental-market analysis: file tag -> dataset and query (Portugal only).
 EUROSTAT_URL = "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/"
 EUROSTAT_RENTAL: dict[str, str] = {
@@ -104,7 +112,7 @@ EUROSTAT_RENTAL: dict[str, str] = {
     "ilc_lvho07d_PT": "ilc_lvho07d?geo=PT&unit=PC",
     "prc_hicp_aind_PT_rents": "prc_hicp_aind?geo=PT&geo=EA20&coicop=CP00&coicop=CP041&unit=INX_A_AVG",
 }
-SETS = {"regional": "INDICATORS", "affordability": "AFFORDABILITY", "rental": "RENTAL"}
+SETS = {"regional": "INDICATORS", "affordability": "AFFORDABILITY", "rental": "RENTAL", "national": "NATIONAL"}
 PAUSE_SECONDS = 10
 MAX_CELLS = 39_000  # INE serves at most 40,000 values per request
 
@@ -263,7 +271,8 @@ def main() -> int:
     today = dt.datetime.now(dt.timezone.utc).date().isoformat()
     failures = 0
     sets: dict[str, dict[str, tuple[str, str | list[int], dict[str, str]]]] = {
-        "regional": dict(INDICATORS), "affordability": dict(AFFORDABILITY), "rental": dict(RENTAL)}
+        "regional": dict(INDICATORS), "affordability": dict(AFFORDABILITY), "rental": dict(RENTAL),
+        "national": dict(NATIONAL)}
     chosen = sets[args.set]
     if args.set == "rental" and not args.only:
         failures += fetch_eurostat(args.out, today)
