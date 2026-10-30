@@ -1,0 +1,32 @@
+name: Causal bibliography ledger
+
+on:
+  pull_request:
+    paths:
+      - "causal_inference_statistics/reference_ledger.csv"
+      - "causal_inference_statistics/validate_reference_ledger.py"
+      - "causal_inference_statistics/test_validate_reference_ledger.py"
+      - ".github/workflows/causal-reference-ledger.yml"
+  push:
+    branches: [main]
+    paths:
+      - "causal_inference_statistics/reference_ledger.csv"
+      - "causal_inference_statistics/validate_reference_ledger.py"
+      - "causal_inference_statistics/test_validate_reference_ledger.py"
+      - ".github/workflows/causal-reference-ledger.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate ledger
+        run: python causal_inference_statistics/validate_reference_ledger.py
+      - name: Test validation rules
+        run: python -m unittest discover -s causal_inference_statistics -p "test_validate_reference_ledger.py" -v
