@@ -482,8 +482,8 @@ market rent, because many old contracts were signed under earlier rent laws.
 - *Regions:* it is highest in Grande Lisboa (10.0%) among NUTS 2 regions.
 - *Composition:* the national rate rose 0.53 points in 2019–2025. The shift towards market-rent tenure accounts
   arithmetically for +0.72 points, and rates within each tenure for −0.19 (Figure 9).
-- *Non-resident tenants* (3–5% of new contracts a year) change the new-lease medians little: by 0.28% for the
-  median municipality in 2025 and by at most 1.24% (Lisboa).
+- *Non-resident tenants* (3–5% of new contracts a year) change the new-lease medians little: by a median of 0.28%
+  across the 60 areas published in both versions in 2025, and by at most 1.24% (Lisboa).
 
 ![Figure 7. Three rent measures](figures/fig_rental_three_measures.png)
 
@@ -783,7 +783,7 @@ analysis. Figures need matplotlib 3.11.2 on Python 3.13.
 ```bash
 cd portugal-housing-generations
 python reproduce.py            # checks data/SHA256SUMS, runs the tests, rebuilds every output and compares bytes
-pip install matplotlib==3.11.2 && python reproduce.py   # also redraws the 19 figures
+pip install matplotlib==3.11.2 && python reproduce.py   # also redraws the 21 figures
 ```
 
 `reproduce.py` prints `REPRODUCED` when every check passes. Individual steps:
@@ -795,7 +795,7 @@ pip install matplotlib==3.11.2 && python reproduce.py   # also redraws the 19 fi
 | Regional purchase affordability | `python affordability.py` | `results_affordability.json`, `affordability_panel.csv` |
 | Rental market | `python rental.py` | `results_rental.json`, `rental_panel.csv` |
 | Integrated assessment | `python integrated.py` | `results_integrated.json`, `integrated_panel.csv`, `data_audit.csv` |
-| Figures | `python regional_figures.py`, `affordability_figures.py`, `rental_figures.py`, `integrated_figures.py`, `report_figures.py` | `figures/*.png` |
+| Figures | `python regional_figures.py`, `affordability_figures.py`, `rental_figures.py`, `integrated_figures.py`, `report_figures.py`, `article_figures.py` | `figures/*.png` |
 | Tests | `python -m unittest discover -p 'test_*.py'` | test report |
 
 Every number in this report that is checked by `test_report.py` is recomputed from the result files. The data

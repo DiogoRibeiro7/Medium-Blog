@@ -133,14 +133,15 @@ averages, or compares measures of different populations.
    - The README sentence and the census-contracts figure were updated.
 2. **Rent methods.** The README said the 2026 rent method is "3–6%" above the 2021 method for Portugal; the
    computed range is 3.2–6.3%.
-3. **Report drafting errors** caught by the claim tests before release:
+3. **Report drafting errors** caught while checking each quoted number against the results (these checks now
+   run as tests):
    - the regions with the largest rent–income gaps (Alentejo Litoral, Madeira and Península de Setúbal, not
      Lisbon and Porto);
    - the NUTS 2 regions with the widest price–income gaps (Madeira is second);
    - the share of non-resident tenants (3–5%, not "about 3%");
    - the agreement of the two bootstrap p-values (within 0.024, not 0.02).
 
-**Figures.** Every figure script was re-run, and each of the 19 figures is referenced in the README or the
+**Figures.** Every figure script was re-run, and each of the 21 figures is referenced in the README or the
 report.
 
 ## 7–9. Report, figures and reproducibility instructions
@@ -149,7 +150,10 @@ report.
 - `REPORT.md`: about 7,400 words with Abstract, Introduction, Research questions, Literature and institutional
   context, Data, Methodology, Results, Statistical analysis, Discussion, Limitations, Conclusions, References
   and two appendices;
-- `report_figures.py`: the national overview figure (`fig_report_national_overview.png`).
+- `report_figures.py`: the national overview figure (`fig_report_national_overview.png`). An earlier version
+  plotted the mortgage rate on a second y-axis; it now has its own panel.
+- `article.md` and `article_figures.py`: a Medium article based on the release, with two figures of its own
+  (the payment decomposition and the completions composition check). Its numbers come from the same results.
 
 **Reproduction instructions** are in the README, in the report's Appendix A and in the `reproduce.py`
 docstring.

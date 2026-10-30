@@ -39,47 +39,45 @@ def main() -> None:
     rel = rent["stock"]["hicp_rentals_relative_to_all_items_2015_100"]
     cpi = {y: rents[y] * 100 / v for y, v in rel.items() if y in rents}
 
-    fig, (a, b) = plt.subplots(1, 2, figsize=(11.6, 4.8), gridspec_kw={"width_ratios": [1.2, 1]})
+    fig, (a, b, c) = plt.subplots(1, 3, figsize=(13.2, 4.8), gridspec_kw={"width_ratios": [1.25, 1, 0.75]})
     for d, label, colour, ls, lw in ((hpi, "House prices (Eurostat HPI)", INK, "-", 2.4),
                                      (income_idx, "Median equivalised income (EU-SILC, income year)", BLUE, "--", 2.0),
                                      (rents, "Rents paid by sitting tenants (HICP 04.1)", ORANGE, "-", 2.0),
                                      (cpi, "All consumer prices (HICP)", MUTED, ":", 1.8)):
         x, y = series(d)
         a.plot(x, y, color=colour, ls=ls, lw=lw, label=label)
-        a.annotate(f"{y[-1]:.0f}", (x[-1], y[-1]), xytext=(4, 0), textcoords="offset points", fontsize=8, color=colour, va="center")
+        a.annotate(f"{y[-1]:.0f}", (x[-1], y[-1]), xytext=(4, 0), textcoords="offset points", fontsize=8, color=INK, va="center")
     a.axhline(100, color=GRID, lw=1)
     a.set_xlim(2007.5, 2026.4)
     a.set_title("Indices, 2015 = 100")
     a.set_xticks(range(2008, 2026, 2))
-    a.legend(loc="upper left", fontsize=7.8)
+    a.legend(loc="upper left", fontsize=7.6)
     pay = nat["initial_payment_to_income_index_2015_100"]["survey_year_alignment"]
     pir = nat["relative_price_income_index_2015_100"]
     x, y = series(pay)
-    b.plot(x, y, color=INK, lw=2.3, label="first mortgage payment / income (30-year loan)")
+    b.plot(x, y, color=INK, lw=2.3, label="first mortgage payment / income\n(30-year loan)")
+    b.annotate(f"{y[-1]:.0f}", (x[-1], y[-1]), xytext=(4, 0), textcoords="offset points", fontsize=8, color=INK, va="center")
     x, y = series(pir)
     b.plot(x, y, color=BLUE, lw=1.8, ls="--", label="house prices / income")
+    b.annotate(f"{y[-1]:.0f}", (x[-1], y[-1]), xytext=(4, 0), textcoords="offset points", fontsize=8, color=INK, va="center")
     b.axhline(100, color=GRID, lw=1)
-    b.set_ylabel("2015 = 100")
-    b2 = b.twinx()
+    b.set_xlim(2007.5, 2026.4)
+    b.set_title("Cost of entering ownership, 2015 = 100")
+    b.set_xticks(range(2008, 2026, 2))
+    b.legend(loc="upper left", fontsize=7.6)
     rates = nat["mortgage_cost_of_borrowing_annual_mean_pct"]
     x, y = series(rates)
-    b2.bar(x, y, color=ORANGE, alpha=0.25, width=0.7, label="mortgage rate on new loans (%)")
-    b2.set_ylabel("% a year", color=ORANGE)
-    b2.tick_params(axis="y", colors=ORANGE)
-    b2.spines["right"].set_visible(True)
-    b2.grid(False)
-    b2.set_ylim(0, 12)
-    b.set_zorder(b2.get_zorder() + 1)
-    b.patch.set_visible(False)
-    h1, l1 = b.get_legend_handles_labels()
-    h2, l2 = b2.get_legend_handles_labels()
-    b.legend(h1 + h2, l1 + l2, loc="upper left", fontsize=7.6)
-    b.set_title("The cost of entering ownership, 2015 = 100")
-    b.set_xticks(range(2008, 2026, 2))
+    c.bar(x, y, color=ORANGE, width=0.72)
+    for yr in (2008, 2015, 2021, 2023, 2025):
+        c.annotate(f"{rates[str(yr)]:.1f}", (yr, rates[str(yr)]), xytext=(0, 3), textcoords="offset points",
+                   ha="center", fontsize=7.6, color=INK)
+    c.set_title("Mortgage rate, new loans (%)")
+    c.set_xticks(range(2008, 2026, 4))
+    c.set_ylim(0, 6.4)
     fig.suptitle("Portugal: house prices outpaced incomes and consumer prices after 2015",
                  x=0.01, ha="left", fontsize=11.5, fontweight="bold", color=INK)
     fig.text(0.01, 0.01, "Sources: Eurostat prc_hpi_a, ilc_di03, prc_hicp_aind; ECB MIR (Banco de Portugal). Nominal; "
-             "survey-year alignment in the right panel. Indices, not levels. Diogo Ribeiro.", fontsize=6.9, color=MUTED)
+             "survey-year alignment in the middle panel. Indices, not levels. Diogo Ribeiro.", fontsize=6.9, color=MUTED)
     fig.tight_layout(rect=(0, 0.035, 1, 0.94))
     fig.savefig(OUT / "fig_report_national_overview.png")
     plt.close(fig)
