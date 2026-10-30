@@ -29,8 +29,9 @@ pip install matplotlib==3.11.2 && python reproduce.py  # also redraws the figure
 2. the unit tests pass;
 3. the five analysis scripts rebuild their outputs byte for byte.
 
-Figures are redrawn too, but byte differences in figures are reported as a warning only, because font
-rendering differs between systems. Individual steps:
+Figures are redrawn too. A figure whose PNG bytes differ is decoded and compared pixel by pixel: a difference
+in compression alone (Pillow builds use different zlib levels) is counted but not flagged, and a pixel
+difference is reported as a warning only, because text rendering can differ between systems. Individual steps:
 
 | Step | Command | Writes |
 |---|---|---|
@@ -57,7 +58,8 @@ Data are never downloaded while computing. The workflow's manual jobs (`fetch-mo
 `fetch-affordability`, `fetch-rental`) download dated snapshots with retrieval records. They are dispatched on a
 branch other than `main` and commit to that branch for review. After a reviewed refresh, run
 `python reproduce.py --write-manifest` to update the checksums. The manual `release-archive` job builds the
-archive for a Zenodo upload (see the release notes); it publishes nothing.
+archive for a Zenodo upload (see `RELEASE_CHECKLIST_v1.0.0.md`); it publishes nothing, and it stops while any
+data file's redistribution has not been established.
 
 Each Eurostat and INE snapshot is pinned to avoid silent changes when providers revise historical values. To
 refresh a source, replace the dated snapshot, update the file name and the script and test defaults, and
@@ -78,6 +80,8 @@ review the change.
 | `REPORT.md`, `REVIEW.md`, `RELEASE_NOTES_v1.0.0.md` | Report, review log, release notes |
 | `article.md` | Medium article based on the release |
 | `CITATION.cff`, `.zenodo.json` | Citation and archive metadata |
+| `DATA_SOURCES.md`, `DATA_SOURCES.csv`, `data_sources.py` | Data inventory, provider terms and redistribution status |
+| `RELEASE_CHECKLIST_v1.0.0.md` | Release-readiness checklist and manual release steps |
 
 ## Citing and licences
 
@@ -86,21 +90,20 @@ Cite the release with the metadata in [`CITATION.cff`](CITATION.cff):
 > Ribeiro, D. (2026). *Prices, incomes, construction and rents in Portugal's housing market, 2008–2025: a
 > reproducible descriptive assessment* (Version 1.0.0) [Research release]. https://github.com/DiogoRibeiro7/Medium-Blog/tree/main/portugal-housing-generations
 
-A DOI will be added when the release is archived on Zenodo.
+No DOI exists yet. One will be added if and when the release is deposited on Zenodo.
 
-- **Code and documentation** are covered by the repository's Apache License 2.0.
-- **Third-party data** in `data/` remain under their providers' terms, and are redistributed here unmodified for
-  reproducibility:
-  - Eurostat: Eurostat's copyright notice permits re-use with acknowledgement of the source;
-  - European Central Bank: publicly available ESCB statistics "may be reused free of charge on the condition
-    that the source is quoted", without modification
-    ([ECB usage policy](https://www.ecb.europa.eu/stats/ecb_statistics/governance_and_quality_framework/html/usage_policy.en.html));
-  - INE (Statistics Portugal): see INE's terms of use;
-  - PORDATA: the national completions series is transcribed from PORDATA's republication of INE data; see
-    PORDATA's terms of use.
-
-  The INE and PORDATA terms were not re-checked for this release. Check each provider's current terms before
-  redistributing the data.
+- **Code and documentation** (scripts, tests, reports, figures and generated results) are covered by the
+  repository's Apache License 2.0.
+- **Third-party data** in `data/` are **not** relicensed under Apache-2.0. Each file keeps its provider's terms,
+  and redistribution follows those terms. [`DATA_SOURCES.md`](DATA_SOURCES.md) gives the terms as checked on
+  2026-10-30, and [`DATA_SOURCES.csv`](DATA_SOURCES.csv) gives the provider, source, retrieval time, attribution
+  and status of every file:
+  - INE: CC BY 4.0; cite "Fonte: Instituto Nacional de Estatística, IP – Portugal".
+  - Eurostat: reuse authorised with acknowledgement of the source and the dataset DOI.
+  - European Central Bank: free reuse with the source quoted, without modification.
+  - PORDATA: **redistribution not established.** One transcribed file, the national completions series for
+    1995–2025, is blocked from any public archive until it is replaced with INE data or permission is obtained
+    (see `DATA_SOURCES.md`).
 
 ## Sources and definitions
 
@@ -108,15 +111,29 @@ A DOI will be added when the release is archived on Zenodo.
    frequency `A`, annual house price index, 2015=100. Source JSON:
    https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/prc_hpi_a?geo=PT&purchase=TOTAL&unit=I15_A_AVG
    Accessed 2026-10-29; source `updated` timestamp is preserved in JSON.
-2. Banco de Portugal, *Boletim Económico*, October 2023, p. 30:
-   https://www.bportugal.pt/sites/default/files/anexos/pdf-boletim/be_out2023_p.pdf
-   Owner-occupied-family share when the family representative is aged 25–34:
-   birth cohorts 1977–1986: 61%; 1987–1996: 42%. These are rounded,
-   published figures, **not individual homeownership rates**.
-3. OECD, *Economic Surveys: Portugal 2026*, housing chapter:
-   https://www.oecd.org/en/publications/oecd-economic-surveys-portugal-2026_025b3445-en/full-report/tackling-portugal-s-housing-affordability-challenge-promoting-sustainable-and-inclusive-housing_c920df36.html
-   The 2021 dwelling stock: 12% vacant and 19% used as holiday/secondary homes.
+2. Costa, Farinha, Lourenço and Mesquita (Banco de Portugal), "Habitação em
+   Portugal nos últimos 40 anos: regime de ocupação e recurso ao crédito".
+   - Published in *Boletim Económico*, October 2023:
+     https://www.bportugal.pt/sites/default/files/anexos/pdf-boletim/be_out2023_p.pdf
+   - Slides of 21 November 2023:
+     https://www.bportugal.pt/sites/default/files/forum_economia_habitacao_portugal.pdf
+   - Measure: the share of households that own their home when the reference
+     person is aged 25–34, from the censuses of 1981–2021.
+   - Values: about 70% for the 1967–1976 cohort, 60% for 1977–1986 and 40%
+     for 1987–1996. These are the rounded values on slide 12; press reports
+     of the bulletin give 61% and 42%.
+   - These are household shares, **not individual homeownership rates**.
+3. INE, Censos 2021, indicator 0011495 (conventional dwellings by type of
+   occupancy), accessed 2026-10-30 through INE's JSON API and quoted, not
+   pinned:
+   - 5,970,677 dwellings in total;
+   - 1,104,881 (18.5%) secondary residences;
+   - 723,215 (12.1%) vacant: 348,097 for sale or rent and 375,118 for other
+     reasons.
+
    These categories do **not** indicate immediately available market supply.
+   An earlier version quoted the OECD's *Economic Surveys: Portugal 2026* (12%
+   and 19%); the census is the primary source.
 4. Eurostat `ilc_di03`: Portugal, `statinfo=MED_EI`, `unit=EUR`,
    `age=TOTAL`, `sex=T`; annual median equivalised net income of the overall
    population, not young people's earnings:
@@ -1253,7 +1270,8 @@ Figures:
 - Nominal house-price-index changes, a relative house-price/income-growth
   proxy for overlapping years, and an initial-mortgage-payment/income index
   that adds the cost of borrowing on new loans; neither includes the deposit.
-- A 19 percentage-point ownership gap between two cohorts at the same age.
+- An ownership gap of about 20 percentage points between two cohorts at the same age
+  (rounded figures quoted from Banco de Portugal economists, not recomputed).
 - Regional transaction prices per m² rising faster than declared household income
   in 2019–2024 (and 2016–2020) in almost every region, as a ratio of medians.
 - New-lease rents per m² rising faster than declared household income in

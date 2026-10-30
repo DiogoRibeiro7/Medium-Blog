@@ -42,7 +42,9 @@ class AnalysisTests(unittest.TestCase):
         series = parse_hpi(self.payload)
         self.assertEqual(series[2015], 100.0)
         self.assertEqual(series[2025], 263.85)
-        self.assertEqual(summarize(series)["owner_gap_percentage_points"], -19)
+        self.assertEqual(summarize(series)["owner_gap_percentage_points"], -20)
+        self.assertEqual(summarize(series)["vacant_dwellings_2021_pct"], 12.1)
+        self.assertEqual(summarize(series)["secondary_dwellings_2021_pct"], 18.5)
 
     def test_rejects_other_geography(self) -> None:
         self.payload["dimension"]["geo"]["category"]["index"] = {"ES": 0}

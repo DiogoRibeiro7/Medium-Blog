@@ -35,6 +35,9 @@ plt.rcParams.update({
     "xtick.color": INK2, "ytick.color": INK2, "axes.spines.top": False, "axes.spines.right": False,
     "axes.grid": True, "axes.axisbelow": True, "grid.color": GRID, "grid.linewidth": 0.8,
     "legend.frameon": False, "figure.facecolor": "white", "axes.facecolor": "white", "savefig.dpi": 170,
+    # Set here, not left to a site-wide matplotlibrc: hinting changes how text is rasterised, so a different
+    # default (matplotlib's own is "default") moves text pixels in every figure. The release figures use none.
+    "text.hinting": "no_hinting",
 })
 
 
@@ -106,7 +109,7 @@ def permits_figure(panel: dict[str, dict[int, dict[str, str]]], results: dict) -
         ax.plot(xn, yn, color=MUTED, lw=1.0, ls="--", label="completed, Portugal")
         ax.set_title(results["regions"][r]["name"], fontsize=9.3)
         ax.set_xticks([2011, 2015, 2020, 2025])
-    axes.flat[0].legend(loc="upper right", fontsize=7.6)
+    axes.flat[0].legend(loc="upper left", fontsize=7.6)
     for ax in axes[:, 0]:
         ax.set_ylabel("per 1,000 residents")
     fig.suptitle("Permitted and completed new family dwellings per 1,000 residents, NUTS 2 regions (2011-2025)",
@@ -170,7 +173,8 @@ def scatter_figure(results: dict) -> None:
             colour = HIGHLIGHT[r][1] if r in HIGHLIGHT else MUTED
             ax.plot(x, y, "o", color=colour, ms=7 if r in HIGHLIGHT else 5.5, zorder=3)
             if r in HIGHLIGHT or y == max(p[3] for p in pts) or x == max(p[2] for p in pts) or x == min(p[2] for p in pts):
-                ax.annotate(name, (x, y), xytext=(5, 3), textcoords="offset points", fontsize=7.6, color=INK2)
+                short = name.replace("Região Autónoma dos ", "").replace("Região Autónoma da ", "")
+                ax.annotate(short, (x, y), xytext=(5, 3), textcoords="offset points", fontsize=7.6, color=INK2)
         ax.axvline(0, color=INK2, lw=0.8)
         ax.set_xlabel(f"Average annual population change {a}-{b} (%)")
         ax.set_title(f"{a}-{b}")

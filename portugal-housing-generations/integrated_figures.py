@@ -68,6 +68,8 @@ def coverage_figure(results: dict[str, Any]) -> None:
     ax.axvline(years.index(2021) - 0.5, color=ORANGE, lw=1.6)
     ax.text(years.index(2021) - 0.45, -0.75, "population: census-based | administrative-based", fontsize=7.2, color=ORANGE, ha="center")
     cb = fig.colorbar(im, ax=ax, fraction=0.025, pad=0.01)
+    cb.set_ticks([0, 0.2, 0.4, 0.6, 0.8, 1.0])
+    cb.set_ticklabels(["0", "20", "40", "60", "80", "100"])
     cb.set_label("% of 308 municipalities", fontsize=8)
     ax.set_title("Municipal coverage of each variable (cells: % of municipalities with a published value)", pad=16)
     fig.text(0.01, 0.01, SOURCE + " Separate rows are separate methods; none is spliced.", fontsize=6.9, color=MUTED)
@@ -144,7 +146,7 @@ def specifications_figure(results: dict[str, Any]) -> None:
         ax.set_title(title, fontsize=9.2)
     axes[0].plot([], [], "o-", color=BLUE, label="95% interval excludes zero")
     axes[0].plot([], [], "o-", color=MUTED, label="includes zero")
-    axes[0].legend(loc="lower left", fontsize=7.4)
+    axes[0].legend(loc="upper right", fontsize=7.4)
     fig.suptitle("Within-municipality associations with house prices, across samples, definitions and transforms",
                  x=0.01, ha="left", fontsize=11, fontweight="bold", color=INK)
     fig.text(0.01, 0.01, "A: 2022-method sales 2019-2024 (A2: 2021-2024); B: 2018-method sales 2016-2020; C: bank appraisals 2015-2024; "

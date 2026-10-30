@@ -42,7 +42,7 @@ null when resampling, gives better-sized tests (Cameron, Gelbach and Miller, 200
 
 - **One command.** `reproduce.py` checks the data checksums, runs the tests, re-runs the five analyses and
   compares every output byte for byte. All ten result files rebuild identically.
-- **Report claims.** `test_report.py` holds 132 numerical claims quoted in `REPORT.md`. For each, the test
+- **Report claims.** `test_report.py` holds 136 numerical claims quoted in `REPORT.md`. For each, the test
   checks:
   - that the sentence is in the report;
   - that the number in the sentence equals the value read or computed from the result files, at the precision
@@ -244,13 +244,76 @@ values are unchanged. Only definition and note strings in two result files and l
   follows the review's specification and agrees with Eurostat's 2015 recommendations.
 - INE's rent-survey note dates from 2014 and may have been revised.
 
+## Release-readiness review (30 October 2026)
+
+**Data licensing.** Provider terms were read on the providers' own pages, and every data file is listed in
+`DATA_SOURCES.csv`, built by `data_sources.py` from the retrieval records.
+- *INE:* CC BY 4.0 under the Portal terms of use.
+- *Eurostat:* reuse authorised with acknowledgement and the dataset DOI.
+- *ECB:* free reuse with the source quoted, without modification.
+- *PORDATA:* the legal terms (updated 19.07.2024) claim copyright and related rights and grant no reuse licence,
+  so redistribution of the transcribed national completions series has not been established.
+
+The archive task now stops while such a file exists. `DATA_SOURCES.md` gives three routes to clear it. The file
+remains in the public GitHub repository, which is a decision for the maintainer.
+
+**External evidence.**
+- *Cohort ownership.* The primary document is Costa, Farinha, Lourenço and Mesquita (2023), "Habitação em
+  Portugal nos últimos 40 anos" (Banco de Portugal, *Boletim Económico*, October 2023), with slides of
+  21 November 2023.
+  - Measure: households whose reference person is aged 25–34, from the censuses of 1981–2021.
+  - Slide 12 gives about 70%, 60% and 40% for the cohorts born in 1967–76, 1977–86 and 1987–96. Press reports of
+    the bulletin give 61% and 42%.
+  - The bulletin text could not be retrieved, so the report, README and `results.json` now use the rounded
+    primary values.
+- *Vacancy and secondary homes.* These were quoted from the OECD (12% and 19%). They are now taken from INE's
+  2021 census (indicator 0011495): 723,215 vacant (12.1%; 348,097 for sale or rent and 375,118 for other
+  reasons) and 1,104,881 secondary residences (18.5%) of 5,970,677 dwellings. The OECD's 19% was a rounding of
+  18.5%.
+
+**Reproducibility.**
+- *Checks run:* the full test suite on Python 3.10 and 3.13, the manifest check (`sha256sum --check` and
+  `reproduce.py`), and a full `reproduce.py` run.
+- *Results:* every result file rebuilds byte-identically. The only changes against `main` are the five corrected
+  external descriptives in `results.json` and the new `DATA_SOURCES.csv`.
+- *Figures:* all 21 were inspected. Four were fixed for legend, label or colour-bar defects (listed in the release
+  notes), with no plotted value changed. The other 17 were not redrawn into new bytes.
+
+**Why PNG bytes differed between environments.** The figures rebuild byte-identically in the environment that
+drew them, but CI on this pull request (matplotlib 3.11.2 installed from PyPI) first reported 3–9% of
+pixels changed in every figure it listed. The data and plotted values were the same. Two settings of the drawing
+environment, not of the scripts, explain it:
+- *Text hinting (pixels).* That environment's site-wide `matplotlibrc` sets `text.hinting: no_hinting`; the PyPI
+  wheel's default is `default`. Hinting changes how glyphs are rasterised, so every text label moved by a few
+  pixels. Font (the bundled DejaVu Sans, set by the scripts), matplotlib 3.11.2 and FreeType 2.14.3 were the
+  same in both.
+- *PNG compression (bytes only).* That environment's Pillow writes PNGs at zlib level 3; the PyPI wheel uses
+  zlib's default, level 6. The decoded pixels and filter bytes are identical; only the compressed stream differs.
+- Each PNG stores one metadata text, the matplotlib version, and no timestamp, so metadata is not a source.
+
+*Fix.* The shared figure style in `regional_figures.py` now sets `text.hinting: no_hinting`, so the figures no
+longer depend on a site-wide configuration. With matplotlib 3.11.2 and Pillow 13.0.0 from PyPI, all 21 figures
+then rebuild pixel-identical to the committed PNGs and differ only in compression. No PNG was replaced:
+recompressing them would change bytes and nothing else.
+
+*Reporting.* `reproduce.py` decodes any PNG whose bytes differ. It counts encoding-only differences without
+flagging them, and warns (as a GitHub annotation in CI) for any figure whose pixels differ. Neither fails the run.
+
+**Metadata.**
+- *Affiliation:* "Faculdade de Media Artes e Design, Universidade Técnica do Porto". Portaria n.º 332-A/2026/1
+  (11 August 2026) lists FMAD among the units of the Universidade Técnica do Porto, created from the Politécnico
+  do Porto.
+- *Contact e-mail:* unchanged (dfr@esmad.ipp.pt).
+- *Dates and DOI:* the planned release date was removed from `CITATION.cff` and `.zenodo.json` until the tag
+  exists. No DOI is recorded.
+
+The status of every item is in `RELEASE_CHECKLIST_v1.0.0.md`.
+
 ## Open items before publishing
 
-1. **Affiliation.** Confirm the affiliation in `CITATION.cff` and `.zenodo.json`. It is currently "ESMAD –
-   Escola Superior de Media Artes e Design, Politécnico do Porto".
-2. **Release date.** Confirm `date-released` and `publication_date` (2026-10-30) or update them on the day of
-   the tag.
-3. **External figures.** Decide whether to keep the two figures that cannot be recomputed from the pinned data
-   (Banco de Portugal cohort shares; OECD vacancy shares), or re-verify them against the publications.
-4. **Data terms.** Check INE's and PORDATA's current terms of use before depositing the data on Zenodo.
-5. **DOI.** After the Zenodo deposit, add the DOI to `CITATION.cff`, the README and the report.
+1. **PORDATA transcription (blocker).** Replace it with INE data, or obtain permission, before any public
+   archive. See `DATA_SOURCES.md`.
+2. **Repository copy.** Decide whether the PORDATA file should stay in the public GitHub repository.
+3. **Release date.** Set `date-released` in `CITATION.cff` and the publication date on Zenodo when the tag is
+   created.
+4. **DOI.** After the Zenodo deposit, add the DOI to `CITATION.cff`, the README and the report.

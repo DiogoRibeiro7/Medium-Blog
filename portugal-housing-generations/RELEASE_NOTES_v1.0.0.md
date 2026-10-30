@@ -10,8 +10,11 @@ First research release, prepared on 30 October 2026 from data snapshots of 29 Oc
 - **Report.** [`REPORT.md`](REPORT.md) is a consolidated research report: research questions, institutional
   context, data, methods, results, statistical analysis, discussion, limitations, conclusions and references,
   with 14 figures.
-- **Data.** 63 pinned source files from INE, Eurostat and the ECB (and one PORDATA transcription), with
-  retrieval records and SHA-256 checksums in [`data/SHA256SUMS`](data/SHA256SUMS).
+- **Data.** 55 pinned data files: 35 from INE, 18 from Eurostat, 1 from the ECB and 1 transcription from
+  PORDATA. There are also 8 retrieval records, and all 63 files carry SHA-256 checksums in
+  [`data/SHA256SUMS`](data/SHA256SUMS). [`DATA_SOURCES.md`](DATA_SOURCES.md) and
+  [`DATA_SOURCES.csv`](DATA_SOURCES.csv) give each file's provider, source, retrieval time, terms, attribution
+  and redistribution status.
 - **Code.** Five standard-library Python pipelines (national, regional, affordability, rental, integrated) and
   their helper modules, plus six figure scripts producing 21 figures.
 - **Results.** Ten generated result files, committed and rebuilt byte for byte in CI.
@@ -19,11 +22,24 @@ First research release, prepared on 30 October 2026 from data snapshots of 29 Oc
   - unit tests with known answers and simulations;
   - snapshot-integrity tests;
   - pinned-result tests;
-  - 132 report-claim checks that tie each quoted number to the results;
+  - 136 report-claim checks that tie each quoted number to the results;
+  - data-inventory and licensing checks;
   - wording guards for the two statements corrected after an independent review.
 - **Reproduction.** `python reproduce.py`.
 - **Review log.** [`REVIEW.md`](REVIEW.md).
-- **Metadata.** [`CITATION.cff`](CITATION.cff) and [`.zenodo.json`](.zenodo.json).
+- **Metadata.** [`CITATION.cff`](CITATION.cff) and [`.zenodo.json`](.zenodo.json). No release date or DOI
+  is recorded yet: both are set when the tag and the Zenodo deposit exist.
+- **Release checklist.** [`RELEASE_CHECKLIST_v1.0.0.md`](RELEASE_CHECKLIST_v1.0.0.md).
+
+## Licences
+
+Original code and documentation are under the Apache License 2.0. Third-party data are **not** relicensed. INE
+data are reused under CC BY 4.0, and Eurostat and ECB data under their providers' reuse terms, each with the
+attribution listed in `DATA_SOURCES.md`.
+
+Redistribution of the PORDATA transcription (`ine_pordata_completed_new_dwellings_PT_2026-10-29.csv`) has not
+been established: PORDATA's terms grant no reuse licence. The archive task stops until the file is replaced with
+INE data or permission is obtained. **This blocks the Zenodo deposit.**
 
 ## Main findings
 
@@ -85,6 +101,29 @@ uses them. No verdict changed.
 - the report figure;
 - a manual `release-archive` task that builds the archive without publishing it.
 
+**Release-readiness review (30 October 2026):**
+- *Data licensing.* Added a file-by-file inventory with provider terms checked on the providers' own pages. The
+  PORDATA file is flagged and blocked from the archive.
+- *External evidence.*
+  - The cohort ownership figures now follow the authors' own rounded values (about 70%, 60% and 40%), in place
+    of the press-reported 61% and 42%.
+  - The vacancy and secondary-home shares now come from INE's 2021 census counts (12.1% and 18.5%), in place of
+    the OECD's 12% and 19%.
+  - `results.json` records the corrected values.
+- *Affiliation.* Changed to Faculdade de Media Artes e Design, Universidade Técnica do Porto (Portaria n.º
+  332-A/2026/1). The planned release date was removed from the metadata until the tag exists.
+- *Figures.* All 21 figures were inspected, and four were fixed for legend, label and colour-bar defects:
+  - `fig_integrated_coverage`: the colour bar is now labelled in %;
+  - `fig_integrated_specifications`: the legend no longer covers intervals;
+  - `fig_regional_growth_and_construction`: a label no longer covers a point;
+  - `fig_regional_permits_and_completions`: the legend no longer covers a line.
+
+  No plotted value changed.
+- *Figure reproducibility.* The figure style now fixes text hinting, which had come from a site-wide
+  `matplotlibrc` and moved text pixels when the figures were drawn with matplotlib from PyPI. With matplotlib
+  3.11.2 from PyPI, all 21 figures now rebuild pixel-identical to the committed PNGs; their bytes still differ
+  because Pillow's PNG compression level differs. `reproduce.py` warns only when pixels differ.
+
 ## Known limitations
 
 These are listed in full in report Section 9:
@@ -93,23 +132,11 @@ These are listed in full in report Section 9:
 - selection towards larger municipalities;
 - methodological breaks that shorten every window;
 - approximate inference with 26 clusters;
-- two figures quoted from external publications (Banco de Portugal; OECD);
+- two sets of figures quoted, not recomputed (Banco de Portugal economists' cohort shares; INE census occupancy
+  counts);
 - preliminary construction data for 2021–2025.
 
-## Before publishing (manual steps, nothing is automated)
+## Before publishing
 
-1. Merge the release pull request after review.
-2. Confirm the affiliation and release date in `CITATION.cff` and `.zenodo.json`.
-3. Tag the merge commit on `main` as `portugal-housing-generations-v1.0.0`.
-4. In GitHub Actions, run the `portugal-housing-generations` workflow on that tag with task `release-archive`.
-   Download the artifact and check the zip against its `.sha256` file.
-5. Create a new upload on Zenodo:
-   - attach the zip;
-   - fill in the metadata from `.zenodo.json` (upload type report, licence Apache-2.0, ORCID, keywords, related
-     identifier);
-   - reserve the DOI, then publish.
-6. Add the DOI to `CITATION.cff`, the README citation block and the report header in a follow-up commit.
-   Optionally create a GitHub release for the tag and paste these notes.
-
-Zenodo's GitHub integration is not used, because it would archive the whole repository rather than this
-project's folder.
+See [`RELEASE_CHECKLIST_v1.0.0.md`](RELEASE_CHECKLIST_v1.0.0.md) for the status of every check and the manual
+steps for the tag, archive checksum, Zenodo deposit and DOI update. Nothing is published automatically.
