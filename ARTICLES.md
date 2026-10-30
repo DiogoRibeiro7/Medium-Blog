@@ -1,6 +1,6 @@
 # Articles Developed in This Chat
 
-This is a chronological index of the six long-form articles developed in
+This is a chronological index of the seven long-form articles developed in
 this conversation for `Medium-Blog`. It is **not** a complete
 catalogue of the repository's articles or historical notebooks.
 
@@ -12,6 +12,7 @@ catalogue of the repository's articles or historical notebooks.
 | 4 | [A Factory Is Not a Histogram: Industrial Statistics for Data Scientists](industrial-statistics-for-data-scientists/article.md) | Rational subgrouping, statistical process control, capability indices, crossed gauge R&R, measurement misclassification, guard bands, factorial experiment | 8 | [Study README](industrial-statistics-for-data-scientists/README.md) · [Python analysis](industrial-statistics-for-data-scientists/analysis.py) · [Notebook](industrial-statistics-for-data-scientists/industrial_statistics.ipynb) |
 | 5 | [A Good Fit Is Not an Identified Model: Inverse Problems for Data Scientists](inverse-problems-for-data-scientists/article.md) | Identifiability, singular-value decay, truncated SVD, Tikhonov regularization, GCV, Gaussian inverse uncertainty, sensor placement | 8 | [Study README](inverse-problems-for-data-scientists/README.md) · [Python analysis](inverse-problems-for-data-scientists/analysis.py) · [Notebook](inverse-problems-for-data-scientists/inverse_problems.ipynb) |
 | 6 | [A 90% Interval Is Not a Promise: Conformal Prediction Under Distribution Shift](conformal-prediction-for-data-scientists/article.md) | Marginal versus group coverage, split conformal ranks, Mondrian and normalized intervals, covariate and conditional shift, online recalibration, simultaneous targets | 8 | [Study README](conformal-prediction-for-data-scientists/README.md) · [Python analysis](conformal-prediction-for-data-scientists/analysis.py) · [Notebook](conformal-prediction-for-data-scientists/conformal_prediction.ipynb) |
+| 7 | [The Lowest RMSE Is Not the Best Decision: From Prediction to Stochastic Optimization](decision-focused-optimization-for-data-scientists/article.md) | Decision-aware prediction, critical fractile, asymmetric loss, sample-average approximation, capacity-constrained linear programming, CVaR, value of information, distribution shift | 8 | [Study README](decision-focused-optimization-for-data-scientists/README.md) · [Python analysis](decision-focused-optimization-for-data-scientists/analysis.py) · [Notebook](decision-focused-optimization-for-data-scientists/decision_focused_optimization.ipynb) |
 
 ## Reproducibility
 
