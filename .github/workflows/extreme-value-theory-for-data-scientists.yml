@@ -1,0 +1,33 @@
+name: Extreme value theory article evidence
+
+on:
+  pull_request:
+    paths:
+      - "extreme-value-theory-for-data-scientists/**"
+      - ".github/workflows/extreme-value-theory-for-data-scientists.yml"
+  push:
+    branches: [main]
+    paths:
+      - "extreme-value-theory-for-data-scientists/**"
+      - ".github/workflows/extreme-value-theory-for-data-scientists.yml"
+
+jobs:
+  reproduce-quick-study:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    defaults:
+      run:
+        working-directory: extreme-value-theory-for-data-scientists
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: extreme-value-theory-for-data-scientists/requirements.txt
+      - name: Install study dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Mathematical tests and fresh-kernel notebook
+        run: python -m unittest discover -s tests -v
+      - name: Reproduce smoke-test figures and tables
+        run: python analysis.py --quick

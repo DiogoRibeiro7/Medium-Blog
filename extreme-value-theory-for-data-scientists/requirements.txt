@@ -1,0 +1,7 @@
+# Project-owned, Python 3.12 scientific environment.
+numpy==2.3.5
+scipy==1.17.0
+matplotlib==3.10.8
+nbformat>=5.10,<6
+nbclient>=0.10,<1
+ipykernel>=6.29,<7
