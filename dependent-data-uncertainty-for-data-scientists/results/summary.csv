@@ -1,0 +1,17 @@
+measure,value
+n,240.0
+main_phi,0.8
+variance_inflation_phi_0_8,8.833333333333336
+effective_n_phi_0_8,27.16981132075471
+long_run_variance_phi_0_8,9.000000000000002
+naive_coverage_phi_0_8,0.49
+iid_bootstrap_coverage_phi_0_8,0.495
+hac_coverage_phi_0_8,0.8675
+block_coverage_phi_0_8,0.8575
+oracle_coverage_phi_0_8,0.935
+hac_bandwidth,13.0
+bootstrap_draws,190.0
+coverage_replications_per_phi,400.0
+forecast_random_mixed_rmse_mean,0.8949667681499028
+forecast_past_only_rmse_mean,0.832370774586344
+forecast_genuine_future_rmse_mean,1.412519749946738
