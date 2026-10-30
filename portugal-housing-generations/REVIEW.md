@@ -279,15 +279,25 @@ remains in the public GitHub repository, which is a decision for the maintainer.
 - *Figures:* all 21 were inspected. Four were fixed for legend, label or colour-bar defects (listed in the release
   notes), with no plotted value changed. The other 17 were not redrawn into new bytes.
 
-**Why PNG bytes can differ between environments.** In this environment the figures rebuild byte-identically:
-matplotlib 3.11.2, FreeType 2.14.3, NumPy 2.5.3. Each PNG stores only one metadata text, the matplotlib
-version, and no timestamp. Bytes can still differ elsewhere for reasons that are not changes in content:
-- a different matplotlib version changes that text and may change rendering;
-- a different FreeType build or fonts change glyph rasterisation;
-- a different zlib build compresses identical pixels into different bytes.
+**Why PNG bytes differed between environments.** The figures rebuild byte-identically in the environment that
+drew them, but CI on this pull request (matplotlib 3.11.2 installed from PyPI) first reported 3–9% of
+pixels changed in every figure it listed. The data and plotted values were the same. Two settings of the drawing
+environment, not of the scripts, explain it:
+- *Text hinting (pixels).* That environment's site-wide `matplotlibrc` sets `text.hinting: no_hinting`; the PyPI
+  wheel's default is `default`. Hinting changes how glyphs are rasterised, so every text label moved by a few
+  pixels. Font (the bundled DejaVu Sans, set by the scripts), matplotlib 3.11.2 and FreeType 2.14.3 were the
+  same in both.
+- *PNG compression (bytes only).* That environment's Pillow writes PNGs at zlib level 3; the PyPI wheel uses
+  zlib's default, level 6. The decoded pixels and filter bytes are identical; only the compressed stream differs.
+- Each PNG stores one metadata text, the matplotlib version, and no timestamp, so metadata is not a source.
 
-`reproduce.py` now decodes any PNG whose bytes differ and reports whether its pixels differ. Byte-only or small
-pixel differences are rendering drift, and images are not replaced for that reason alone.
+*Fix.* The shared figure style in `regional_figures.py` now sets `text.hinting: no_hinting`, so the figures no
+longer depend on a site-wide configuration. With matplotlib 3.11.2 and Pillow 13.0.0 from PyPI, all 21 figures
+then rebuild pixel-identical to the committed PNGs and differ only in compression. No PNG was replaced:
+recompressing them would change bytes and nothing else.
+
+*Reporting.* `reproduce.py` decodes any PNG whose bytes differ. It counts encoding-only differences without
+flagging them, and warns (as a GitHub annotation in CI) for any figure whose pixels differ. Neither fails the run.
 
 **Metadata.**
 - *Affiliation:* "Faculdade de Media Artes e Design, Universidade Técnica do Porto". Portaria n.º 332-A/2026/1

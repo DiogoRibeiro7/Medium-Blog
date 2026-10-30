@@ -907,7 +907,7 @@ pip install matplotlib==3.11.2 && python reproduce.py   # also redraws the 21 fi
 ```
 
 `reproduce.py` prints `REPRODUCED` when every check passes. Figures are compared byte for byte and, where bytes
-differ, pixel by pixel; any difference is reported as a warning (see the README). `DATA_SOURCES.md` lists the
+differ, pixel by pixel; a pixel difference is reported as a warning (see the README). `DATA_SOURCES.md` lists the
 provider, terms and redistribution status of every data file. Individual steps:
 
 | Step | Command | Output |

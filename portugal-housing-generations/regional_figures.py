@@ -35,6 +35,9 @@ plt.rcParams.update({
     "xtick.color": INK2, "ytick.color": INK2, "axes.spines.top": False, "axes.spines.right": False,
     "axes.grid": True, "axes.axisbelow": True, "grid.color": GRID, "grid.linewidth": 0.8,
     "legend.frameon": False, "figure.facecolor": "white", "axes.facecolor": "white", "savefig.dpi": 170,
+    # Set here, not left to a site-wide matplotlibrc: hinting changes how text is rasterised, so a different
+    # default (matplotlib's own is "default") moves text pixels in every figure. The release figures use none.
+    "text.hinting": "no_hinting",
 })
 
 

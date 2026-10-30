@@ -118,7 +118,11 @@ uses them. No verdict changed.
   - `fig_regional_growth_and_construction`: a label no longer covers a point;
   - `fig_regional_permits_and_completions`: the legend no longer covers a line.
 
-  No plotted value changed. `reproduce.py` now says whether a figure whose bytes differ also differs in pixels.
+  No plotted value changed.
+- *Figure reproducibility.* The figure style now fixes text hinting, which had come from a site-wide
+  `matplotlibrc` and moved text pixels when the figures were drawn with matplotlib from PyPI. With matplotlib
+  3.11.2 from PyPI, all 21 figures now rebuild pixel-identical to the committed PNGs; their bytes still differ
+  because Pillow's PNG compression level differs. `reproduce.py` warns only when pixels differ.
 
 ## Known limitations
 

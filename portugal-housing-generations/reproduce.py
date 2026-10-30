@@ -6,11 +6,11 @@ Steps (standard library only; matplotlib only for step 4):
 2. run the unit tests;
 3. re-run the five analysis scripts and the data inventory, and check that each
    output file is byte-identical to the one shipped with the release;
-4. redraw the figures if matplotlib is installed and report any figure whose
-   bytes changed, saying whether its decoded pixels changed too (a warning only:
-   a different matplotlib, FreeType or zlib build can change PNG bytes, and a
-   different matplotlib or FreeType can also move pixels, without any change in
-   the data).
+4. redraw the figures if matplotlib is installed, decode any figure whose bytes
+   changed, and warn if its pixels changed too. A figure that differs only in
+   PNG encoding (a different compression level or zlib build) is counted but not
+   flagged; a pixel difference without any change in the data comes from a
+   different matplotlib, FreeType or font build. Neither fails the run.
 
 Works from a plain copy of the folder (no git needed).
 
@@ -79,6 +79,9 @@ def write_manifest() -> None:
     MANIFEST.write_text("".join(f"{sha256(p)}  {p.name}\n" for p in data_files()), encoding="utf-8")
 
 
+ENCODING_ONLY = "identical pixels (encoding only)"
+
+
 def pixel_difference(old_png: bytes, new_png: bytes) -> str:
     """Describe how two PNGs differ once decoded: identical pixels, a size change, or the share of changed pixels."""
     import io
@@ -91,7 +94,7 @@ def pixel_difference(old_png: bytes, new_png: bytes) -> str:
         return f"size {old.shape[1]}x{old.shape[0]} -> {new.shape[1]}x{new.shape[0]}"
     changed = np.any(np.abs(old - new) > 1e-6, axis=-1) if old.ndim == 3 else np.abs(old - new) > 1e-6
     share = float(changed.mean())
-    return "identical pixels (encoding only)" if share == 0 else f"{100 * share:.3f}% of pixels differ"
+    return ENCODING_ONLY if share == 0 else f"{100 * share:.3f}% of pixels differ"
 
 
 def run(cmd: list[str], quiet: bool = False) -> int:
@@ -141,19 +144,25 @@ def main() -> int:
         for script in FIGURE_SCRIPTS:
             if run([sys.executable, script], quiet=True) != 0:
                 failures += 1
-        diff = [f for f in sorted((HERE / "figures").glob("*.png")) if before_png.get(f.name) != f.read_bytes()]
+        after = sorted((HERE / "figures").glob("*.png"))
+        diff = {f.name: pixel_difference(before_png[f.name], f.read_bytes()) if f.name in before_png else "new file"
+                for f in after if before_png.get(f.name) != f.read_bytes()}
+        drift = {name: detail for name, detail in diff.items() if detail != ENCODING_ONLY}
         on_ci = os.environ.get("GITHUB_ACTIONS") == "true"  # also report as annotations readable through the API
         if not diff:
-            print("4. figures: all byte-identical")
-            if on_ci:
-                print(f"::notice title=Figures::all {len(figures)} figures byte-identical to the committed PNGs")
+            summary = f"all {len(after)} figures byte-identical to the committed PNGs"
+        elif not drift:
+            summary = (f"all {len(after)} figures pixel-identical to the committed PNGs; {len(diff)} differ only in "
+                       "PNG encoding")
         else:
-            print(f"4. figures: {len(diff)} differ in bytes (warning; check visually):")
-            for f in diff:
-                detail = pixel_difference(before_png[f.name], f.read_bytes()) if f.name in before_png else "new file"
-                print(f"   {f.name}: {detail}")
-                if on_ci:
-                    print(f"::warning title=Figure drift::{f.name}: {detail}")
+            summary = f"{len(drift)} of {len(after)} figures differ in pixels (warning; check visually)"
+        print(f"4. figures: {summary}")
+        if on_ci and not drift:
+            print(f"::notice title=Figures::{summary}")
+        for name, detail in drift.items():
+            print(f"   {name}: {detail}")
+            if on_ci:
+                print(f"::warning title=Figure drift::{name}: {detail}")
     print("REPRODUCED" if failures == 0 else "NOT REPRODUCED")
     return 0 if failures == 0 else 1
 

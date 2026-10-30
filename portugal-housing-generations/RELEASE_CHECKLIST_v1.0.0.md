@@ -31,12 +31,12 @@ for a defensible v1.0.0 is in place, apart from the release steps themselves (se
 
 | # | Check | Status | Evidence |
 |---|---|---|---|
-| C1 | Full test suite | PASS | 121 tests pass on Python 3.10 and 3.13 (locally; CI result in the pull request) |
+| C1 | Full test suite | PASS | 122 tests pass on Python 3.10 and 3.13, locally and in CI |
 | C2 | Manifest validation | PASS | `sha256sum --check data/SHA256SUMS` (63 files) and `reproduce.py` step 1 |
-| C3 | `reproduce.py` | PASS | Prints `REPRODUCED`; all result files and figures rebuild byte-identically in this environment |
+| C3 | `reproduce.py` | PASS | Prints `REPRODUCED` locally and in CI. Result files rebuild byte-identically in both; figures byte-identically locally and pixel-identically in CI (C6) |
 | C4 | Generated results match committed values | PASS | Only intended changes against `main`: five external descriptives in `results.json` and the new `DATA_SOURCES.csv` |
 | C5 | All 21 figures inspected visually | PASS | Four fixed (coverage colour bar, specifications legend, one overlapping label, one overlapping legend); no plotted value changed |
-| C6 | PNG byte differences between environments explained | PASS | PNGs carry only a matplotlib-version text. Bytes can differ with matplotlib, FreeType or zlib builds. `reproduce.py` reports byte-only and pixel differences as warnings (`REVIEW.md`) |
+| C6 | PNG byte differences between environments explained | PASS | Pixels: text hinting came from a site-wide `matplotlibrc`; now set in the figure style. Bytes: Pillow's zlib level (3 locally, 6 from PyPI); pixels identical. No PNG replaced (`REVIEW.md`) |
 | C7 | Optional: replace the secondary y-axes in `fig_integrated_national.png` with separate panels | NOT YET DONE | Design improvement, not a defect; values are correct |
 
 ## D. Publication metadata

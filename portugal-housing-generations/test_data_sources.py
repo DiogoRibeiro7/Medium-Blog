@@ -54,8 +54,11 @@ class InventoryTests(unittest.TestCase):
                     self.assertTrue(row["source_url"].startswith("https://data-api.ecb.europa.eu/"))
         self.assertEqual({r["provider"] for r in rows}, {"INE", "Eurostat", "ECB", "PORDATA"})
 
-    def test_pordata_file_blocks_a_public_archive(self) -> None:
+    def test_pordata_file_is_the_only_one_not_cleared(self) -> None:
         self.assertEqual(D.blocked(D.inventory()), ["ine_pordata_completed_new_dwellings_PT_2026-10-29.csv"])
+
+    @unittest.skipUnless(WORKFLOW.exists(), "workflow is outside this folder (e.g. in the release archive)")
+    def test_archive_task_checks_redistribution_first(self) -> None:
         workflow = WORKFLOW.read_text(encoding="utf-8")
         archive_job = workflow.split("release-archive:\n", 1)[1]
         check = archive_job.index("python data_sources.py --check-redistribution")
@@ -69,7 +72,7 @@ class InventoryTests(unittest.TestCase):
             with self.subTest(snippet=snippet):
                 self.assertIn(snippet, doc)
         notes = re.sub(r"\s+", " ", (HERE / "RELEASE_NOTES_v1.0.0.md").read_text(encoding="utf-8"))
-        self.assertRegex(notes, re.compile(r"PORDATA.*not been established|not established.*PORDATA", re.S))
+        self.assertRegex(notes, re.compile(r"PORDATA.*not been established|not established.*PORDATA", re.DOTALL))
 
 
 if __name__ == "__main__":

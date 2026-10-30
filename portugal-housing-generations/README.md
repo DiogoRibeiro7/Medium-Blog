@@ -29,8 +29,9 @@ pip install matplotlib==3.11.2 && python reproduce.py  # also redraws the figure
 2. the unit tests pass;
 3. the five analysis scripts rebuild their outputs byte for byte.
 
-Figures are redrawn too, but byte differences in figures are reported as a warning only, because font
-rendering differs between systems. Individual steps:
+Figures are redrawn too. A figure whose PNG bytes differ is decoded and compared pixel by pixel: a difference
+in compression alone (Pillow builds use different zlib levels) is counted but not flagged, and a pixel
+difference is reported as a warning only, because text rendering can differ between systems. Individual steps:
 
 | Step | Command | Writes |
 |---|---|---|
