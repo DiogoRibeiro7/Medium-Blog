@@ -36,15 +36,16 @@ new 30-year mortgage, relative to income, reached its highest value of the serie
 **Findings by region.** Regional sale prices per m² outpaced declared household income in all nine NUTS 2
 regions in 2019–2024. The widest gaps were in Península de Setúbal, Madeira and Grande Lisboa; among NUTS 3
 regions, Alentejo Litoral and the Porto metropolitan area also had wide gaps. Rents of new leases rose about 10% a year in 2020–2024, faster than income in 24 of 26 NUTS 3 regions.
-The rent index of sitting tenants rose more slowly than median income. The share of the population renting at
-market prices rose from 13.2% (2019) to 16.3% (2025).
+The HICP actual-rentals price index, which covers new and existing contracts in a sample of rented dwellings, rose
+more slowly than median income; it measures average rent change for comparable dwellings, not the rents of a fixed
+group of tenants. The share of the population renting at market prices rose from 13.2% (2019) to 16.3% (2025).
 
 **Associations.** Across municipalities, prices and rents move together, and price growth was higher where
 population grew. Price growth was not higher where income grew; the correlation is slightly negative.
 Within-municipality panel models give the following picture:
 - The association with income is not identified: it changes sign across 18 specifications.
-- The positive association with completions disappears when only existing dwellings are priced, which shows it
-  to be a change in the mix of dwellings sold.
+- The positive association with completions disappears when only existing dwellings are priced. This is
+  consistent with a change in the mix of dwellings sold, but the data do not identify the mechanism.
 - Price–rent co-movement is the only within-municipality association that survives every check.
 
 **Limits.** None of these results is causal. The data do not support a credible causal design, and the report
@@ -135,9 +136,14 @@ Three families of indicators are common, and they are not interchangeable:
   disposable income, both net of housing allowances (Eurostat). It is measured on households as they are,
   including young adults living with their parents. It can therefore fall while entry into the market becomes
   harder.
-- **Rent measures.** There are three: medians of new contracts, averages over all tenancies, and quality-
-  adjusted price indices for sitting tenants. They diverge whenever old contracts with low rents are replaced by
-  new ones.
+- **Rent measures.** There are three, and they measure different things:
+  - medians of new contracts: a rent level for the flow of new lettings;
+  - averages over all tenancies: a rent level for the whole stock;
+  - the HICP actual-rentals price index: the average rent change for a sample of rented dwellings, covering new
+    and existing contracts and private, public and social units (Eurostat, 2024, Section 12.4). It has no level.
+
+  Their growth rates can diverge for many reasons, including turnover of contracts, changes in the rental stock,
+  weighting and quality adjustment (Section 6.4).
 
 ### 3.4 What causal studies identify, and what that implies here
 
@@ -359,8 +365,9 @@ integration.
 
 ![Figure 2. National overview](figures/fig_report_national_overview.png)
 
-*Figure 2. Left: house prices, rents of sitting tenants, median income and consumer prices (2015 = 100). Right:
-house price/income and first-mortgage-payment/income indices, with the mortgage rate on new loans.*
+*Figure 2. Left: house prices, the HICP actual-rentals price index, median income and consumer prices
+(2015 = 100). Middle: house price/income and first-mortgage-payment/income indices. Right: average interest rate
+on new mortgages.*
 
 **Prices and income.**
 - Prices: the Eurostat house price index rose from 100 in 2015 to 263.9 in 2025 (+164%). Consumer prices rose
@@ -460,10 +467,60 @@ pay for, 2019 and 2024 (a proxy, not years to buy).*
 **Three measures disagree in a predictable way** (Figure 7):
 - *New leases:* rents of new contracts rose from €5.79 to €9.29 per m² between 2020 and 2025, about 10.0% a year
   to 2024 against 5.5% for income. That is 16.6 log points faster than income.
-- *Sitting tenants:* the HICP rent index rose 2.1% a year in 2011–2021 and 4.9% in 2021–2025. Against EU-SILC
-  median income it fell to 78.6 in 2024 (2015 = 100).
+- *HICP actual rentals:* the price index rose 2.1% a year in 2011–2021 and 4.9% in 2021–2025. Against EU-SILC
+  median income it fell to 78.6 in 2024 (2015 = 100). This is a ratio of two indices with different
+  populations; it does not show that any tenant's rent fell relative to that tenant's income (see below).
 - *All tenancies:* the census mean rent rose from €235 (2011) to €334 (2021), 3.6% a year. That is faster than
-  the index, because old low-rent contracts were replaced by new ones.
+  the index. A stock average and a price index can diverge because dwellings enter and leave the rental stock,
+  because location, size and quality shift, and because old low-rent contracts are replaced by new ones in
+  proportions the index's weights need not follow. These data cannot separate those sources.
+
+**What the HICP rent index measures.** COICOP 04.1, actual rentals for housing, is a price index, not a rent
+level. Its target coverage is the rents actually paid by tenants, under new and existing contracts, for private,
+public and social rental units (Eurostat, 2024, Section 12.4). In Portugal it
+is compiled from INE's monthly housing-rent survey (*Inquérito às Rendas de Habitação*). INE's methodological
+note (INE, 2014, version 2.1) describes the survey design:
+- a panel of 3,921 rented dwellings, drawn by a stratified two-stage sample of 1 km² grid cells and dwellings;
+- strata that combine region, rent class and contract-date class, covering free, conditioned (controlled) and
+  supported (social) rents;
+- monthly collection, with dwellings that leave the scope replaced at the end of each year, and non-response
+  imputed with the stratum's average change;
+- stratum indices computed as geometric means of rent per m² and aggregated with stratum weights, whose
+  updating for changes in the rented stock was described as under study.
+
+Eurostat's guidance requires rent changes that occur at a change of tenant to be reflected in the index. It
+treats wear and tear as broadly offset by repairs, and modernisation as a quality change to be adjusted for
+(Eurostat, 2015). INE's 2014 note lists no explicit quality-adjustment method.
+
+**Why the index cannot describe a fixed group of sitting tenants.** The index follows dwellings, not households.
+When a sampled dwelling is re-let, the new contract's rent enters the comparison, and a tenant who moves leaves
+it. The index averages controlled, social and market rents with stratum weights, renews part of its sample
+every year and aims at constant quality. Its movement therefore mixes updates within ongoing contracts with
+resets at re-letting, in proportions that depend on turnover. It also contains no information on the incomes of
+the tenants it covers.
+
+So the fall of the index relative to median income does not show that rent burdens fell for tenants who kept
+their contracts. The direct EU-SILC measure does not support that reading either. The share of rent in the
+disposable income of tenant households (`ilc_mded02`) was 23.1% in 2015, 25.1% in 2024 and 24.0% in 2025. That
+measure is itself a cross-section of whoever rents in each year, not a cohort. Following the burden of a fixed
+group of tenants would need panel data that link each tenancy's rent to the household's income over time.
+
+**Comparing the index with new-lease medians.** The comparison remains informative if it is read as a comparison
+of two different statistics:
+- *Population:* new-lease medians cover contracts for family dwellings registered with the tax authority in the
+  year, the flow of new lettings. The HICP covers rented dwellings in the survey panel, under old and new,
+  market, controlled and social contracts.
+- *Weighting:* the median gives each contract signed in the year equal weight, so its geography and dwelling mix
+  follow where and what was let. The HICP aggregates stratum indices with stratum weights.
+- *Index versus level:* the HICP has no rent level and aims at constant quality. The median is a level in euros
+  per m², and it moves with the size, location and quality of what is let.
+- *Coverage and timing:* lettings not registered with the tax authority are outside the new-lease statistics. The
+  HICP annual index averages monthly indices, while the new-lease median covers the 12 months to the fourth
+  quarter.
+
+New-lease medians describe what households pay when they sign. The HICP describes the average rent change across
+rented dwellings. That new-lease rents rose much faster than the index is consistent with a widening gap between
+rents for new lettings and rents in ongoing contracts. Measuring that gap would require contract-level data.
 
 **The stock of tenancies in 2021.** 45% of tenancies had been signed in 2017–2021 and 16% before 1991.
 Contracts from before 1987 had a median rent band of €100–150, and 49% paid under €100 a month. Contracts
@@ -487,8 +544,9 @@ market rent, because many old contracts were signed under earlier rent laws.
 
 ![Figure 7. Three rent measures](figures/fig_rental_three_measures.png)
 
-*Figure 7. Left: HICP rents of sitting tenants against median income and consumer prices (2015 = 100). Right:
-median rent per m² of new leases against median gross household income (2020 = 100).*
+*Figure 7. Left: the HICP actual-rentals price index against median income and consumer prices (2015 = 100).
+Right: median rent per m² of new leases against median gross household income (2020 = 100). The left panel
+compares indices of change; it does not show rent burdens.*
 
 ![Figure 8. New-lease rents and income by NUTS 3](figures/fig_rental_regional_growth.png)
 
@@ -536,15 +594,45 @@ correlations and NUTS 3-cluster bootstrap intervals.*
 | Association | Range of estimates | Verdict | Main reason |
 |---|---|---|---|
 | Income (elasticity) | −0.74 to +0.79 across 18 specifications (13 negative) | not identified | Log income keeps 0.9–1.9% of its variance after fixed effects; the sign changes with window, transform and controls |
-| Completions per 1,000 (semi-elasticity) | 0.0% to +1.9% per dwelling per 1,000; positive in all 9 specifications, 5 exclude zero | robust by the rule, but a sale-mix artefact | +1.4% for all sales against 0.0% [−0.7%, 0.8%] for existing dwellings only (A2, same years, 279 of the 289 municipalities) |
+| Completions per 1,000 (semi-elasticity) | 0.0% to +1.9% per dwelling per 1,000; positive in all 9 specifications, 5 exclude zero | robust by the rule; consistent with sale-mix composition, mechanism not identified | +1.4% for all sales against 0.0% [−0.7%, 0.8%] for existing dwellings only (A2, same years, 279 of the 289 municipalities) |
 | Population (elasticity) | 0.9 to 1.6, positive in all 4 specifications | fragile | Log population keeps 0.01–0.02% of its variance; smooth official estimates |
 | New-lease rent (elasticity) | 0.44 [0.29, 0.61] FE; 0.31 [0.15, 0.48] FD; 0.50 [0.26, 0.76] long difference | robust | Passes every check; caution: 1.8% within variation |
 
-**Completions.** The completions result illustrates why the composition of the sale mix matters. The median
-price of all sales rises where more new dwellings are completed, because new dwellings are dearer. The prices of
-existing dwellings show no such association. The estimate says nothing about whether construction raises or
-lowers the price of a given dwelling. Bank appraisals (sample C, +1.9%) also cover new dwellings, and no
-appraisal series for existing dwellings alone is published, so the same caveat applies there.
+**Completions.** In sample A2 the completions coefficient is +1.4% for the median price of all sales and 0.0%
+[−0.7%, 0.8%] for existing dwellings only (same years and controls; 279 of the 289 municipalities). New
+dwellings sell at a premium: in 2024 the median price per m² of new dwellings was 27% above that of existing
+dwellings in Portugal. The pattern is consistent with a composition effect. More completions bring more new,
+dearer dwellings into the sales, which raises the median of all sales without any change in the price of a given
+dwelling.
+
+The data do not identify that mechanism, and other explanations remain open:
+- *Reverse causality and timing.* Developers may complete more where and when prices of new dwellings are high,
+  so those prices can drive completions rather than the reverse. Completions in a year also reflect permits
+  granted years earlier.
+- *Prices of new dwellings.* The all-sales coefficient may partly reflect how prices of new dwellings co-move with
+  completions, for example through the location or quality of new projects within a municipality, and not only
+  their weight in the sales.
+- *Offsetting effects on existing dwellings.* A near-zero coefficient for existing dwellings does not show that
+  construction leaves their prices unchanged. A supply effect and a demand shock that triggers construction
+  could offset each other.
+- *Samples and precision.* The two models use 289 and 279 municipalities, and the difference between the two
+  coefficients is not tested formally.
+- *Medians are not additive.* The median of all sales is not a weighted average of the medians of new and
+  existing sales, so even with transaction counts a composition decomposition of medians is approximate.
+
+Identifying the mechanism would need, at a minimum:
+1. counts of new and existing sales by municipality and year (not among this release's pinned sources), to test
+   whether the new-dwelling share of sales tracks completions;
+2. a joint model of all-sales and existing-dwelling prices on a common sample, with a formal test of the
+   difference;
+3. ideally, transaction-level microdata with dwelling characteristics, to build composition-constant (hedonic or
+   repeat-sales) indices and to decompose changes in the price distribution into composition and price effects,
+   for example by reweighting (DiNardo, Fortin and Lemieux, 1996).
+
+Saying anything about the effect of construction on prices would further require exogenous variation in
+completions, such as the timing of permits approved before the period. Bank appraisals (sample C, +1.9%) also
+cover new dwellings, and no appraisal series for existing dwellings alone is published, so the same caveat
+applies there.
 
 **Rents.** The price–rent elasticity is a co-movement. Prices and rents are both likely to respond to the same
 local conditions, and neither series is exogenous to the other.
@@ -569,7 +657,8 @@ bootstrap intervals (blue: excludes zero).*
 ![Figure 13. Stability of the main estimates](figures/fig_integrated_influence.png)
 
 *Figure 13. Main estimates against leave-one-region-out ranges, exclusion of the metropolitan areas and of the
-most influential municipalities, and first differences.*
+most influential municipalities, and first differences. Verdicts follow the mechanical rule of Section 5.4; the
+completions verdict does not identify a price effect (Section 7.2).*
 
 ### 7.4 National time series
 
@@ -597,8 +686,9 @@ statistics:
 2. The cost of entering ownership with a mortgage rose most in 2021–2023, when financing costs and prices rose
    together. It remained well above 2015 in 2025.
 3. Regional price levels diverged while regional incomes converged.
-4. New-lease rents rose about twice as fast as incomes in 2020–2024. The rents of sitting tenants rose more
-   slowly than incomes. The stock of tenancies mixes contract vintages with very different rents.
+4. New-lease rents rose about twice as fast as incomes in 2020–2024. The HICP actual-rentals price index, which
+   covers new and existing contracts in a sample of rented dwellings, rose more slowly than median income. The
+   stock of tenancies mixes contract vintages with very different rents.
 5. A larger share of the population rents at market prices than a decade ago. Market tenants carry most of the
    housing-cost overburden.
 
@@ -612,8 +702,9 @@ These are real in the data but say nothing about mechanisms:
   series. The within-municipality version rests on almost no variation.
 - *Prices and income.* Prices did not rise more where incomes rose more. Within municipalities the association
   cannot be pinned down.
-- *Prices and construction.* The positive within-municipality association with completions is an artefact of
-  the sale mix. In the cross-section the association is weak and depends on the window.
+- *Prices and construction.* The positive within-municipality association with completions is absent for
+  existing dwellings. That is consistent with a change in the mix of dwellings sold, but the mechanism is not
+  identified (Section 7.2). In the cross-section the association is weak and depends on the window.
 - *Overburden.* The recent rise in the national rate is accounted for, arithmetically, by more people renting at
   market prices.
 
@@ -653,8 +744,11 @@ A credible design would need:
 
 Several comparisons that are common in public debate would mislead, and this release does not make them:
 - *Years of income needed to buy a home.* The price/income indices and floor-area proxies are not this measure.
-- *New-lease rents against the HICP rent index or census averages.* These are different populations of
-  tenancies, and the comparison confuses market entry with the rents of sitting tenants.
+- *New-lease rents against the HICP rent index or census averages as if they measured the same thing.* They
+  differ in population, weighting, coverage, and level versus index (Section 6.4). Comparing their growth rates
+  is informative; reading the gap as the rent path of incumbent tenants is not.
+- *An aggregate rent index divided by median income as a measure of tenants' rent burden.* Neither series
+  follows the same households (Section 6.4).
 - *Permits against completions as a "conversion rate", or completions against household growth as a "shortage".*
   They are different stages and different concepts.
 - *Population growth across 2020/2021.* It mixes estimation methods.
@@ -671,7 +765,10 @@ Several comparisons that are common in public debate would mislead, and this rel
   - EU-SILC covers private households only.
   - IRS data cover only households that file.
 - **Measurement.**
-  - Medians move with composition.
+  - Medians move with composition, and the published data cannot separate composition from price change.
+  - The HICP rent index measures average rent change for comparable rented dwellings; no source here follows the
+    rents or incomes of a fixed group of tenants. The description of the Portuguese rent survey relies on INE's
+    2014 methodological note, which may have been revised since.
   - Gross declared income is not disposable income.
   - Survey sub-groups (citizenship, regions) have wide margins of error.
   - National completions for 2021–2025 are preliminary, and the national series was transcribed.
@@ -694,9 +791,9 @@ highest relative to incomes in the Algarve and Grande Lisboa. Financing costs ma
 sharpest deterioration in the cost of entering ownership.
 
 The same statistics show that several popular explanations cannot be tested with municipal averages. Prices
-did not rise most where incomes rose most. The apparent link between construction and prices is an artefact of
-which dwellings are sold, and the population link rests on almost no independent variation. Only the co-movement
-of prices and rents is robust.
+did not rise most where incomes rose most. The apparent link between construction and prices disappears for
+existing dwellings, which is consistent with a change in which dwellings are sold but does not identify it. The
+population link rests on almost no independent variation. Only the co-movement of prices and rents is robust.
 
 Claims about the causes of the crisis, whether tourism, foreign demand, immigration, interest rates, regulation
 or supply, require the transaction-level data, policy timing and exogenous variation set out in Section 8.3. The
@@ -721,11 +818,20 @@ spatial degrees of freedom of a time-varying field. *Journal of Climate*, 12(7),
 Cameron, A. C., Gelbach, J. B. and Miller, D. L. (2008). Bootstrap-based improvements for inference with
 clustered errors. *Review of Economics and Statistics*, 90(3), 414–427.
 
+DiNardo, J., Fortin, N. M. and Lemieux, T. (1996). Labor market institutions and the distribution of wages,
+1973–1992: A semiparametric approach. *Econometrica*, 64(5), 1001–1044.
+
 Drukker, D. M. (2003). Testing for serial correlation in linear panel-data models. *Stata Journal*, 3(2),
 168–177.
 
 European Central Bank. Bank interest rate statistics (MIR): methodology.
 https://data.ecb.europa.eu/methodology/bank-interest-rates
+
+Eurostat (2015). *HPI-HICP recommendations on the treatment of rents*. June 2015.
+https://ec.europa.eu/eurostat/documents/272892/7048317/HPI-HICP+Recommendations+on+the+treatment+of+rents+-+June+2015
+
+Eurostat (2024). *Harmonised Index of Consumer Prices (HICP) Methodological Manual — 2024 edition*. Manuals and
+Guidelines, KS-GQ-24-003. Section 12.4, Actual rentals. https://ec.europa.eu/eurostat/documents/3859598/18594110/KS-GQ-24-003-EN-N.pdf
 
 Eurostat. Glossary: Housing cost overburden rate.
 https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Glossary:Housing_cost_overburden_rate
@@ -744,6 +850,9 @@ Glaeser, E. L., Gyourko, J. and Saks, R. (2005). Why is Manhattan so expensive? 
 housing prices. *Journal of Law and Economics*, 48(2), 331–369.
 
 Hill, G. W. (1970). Algorithm 396: Student's t-quantiles. *Communications of the ACM*, 13(10), 619–620.
+
+INE, Instituto Nacional de Estatística (2014). *Inquérito às Rendas de Habitação (IRH): documento
+metodológico*, version 2.1. https://www.ine.pt/ngt_server/attachfileu.jsp?look_parentBoui=262060895&att_display=n&att_download=y
 
 INE, Instituto Nacional de Estatística. Indicator metadata for each code in Section 4.1:
 `https://www.ine.pt/bddXplorer/htdocs/minfo.jsp?var_cd=<code>&lingua=PT`.

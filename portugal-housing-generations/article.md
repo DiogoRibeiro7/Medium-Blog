@@ -18,9 +18,9 @@ The code, data, tests and a longer technical report are in the [project folder o
 
 Take three statements that all circulate in Portugal and are all, in a narrow sense, correct.
 
-The first: rents rose about 10% a year between 2020 and 2024. That is the median rent per square metre of new lease contracts registered with the tax authority, as published by INE. The second: rents rose by roughly 2% a year in the decade to 2021. That is the actual-rentals component of the harmonised consumer price index. It follows the rents paid by sitting tenants for the same dwelling over time. The third: the average monthly rent in Portugal was €334 in 2021, up from €235 in 2011. That is the census, covering every rented dwelling of usual residence, whatever the date or terms of its contract.
+The first: rents rose about 10% a year between 2020 and 2024. That is the median rent per square metre of new lease contracts registered with the tax authority, as published by INE. The second: rents rose by roughly 2% a year in the decade to 2021. That is the actual-rentals component of the harmonised consumer price index, a price index of the rents paid for a sample of rented dwellings, under new and existing contracts. The third: the average monthly rent in Portugal was €334 in 2021, up from €235 in 2011. That is the census, covering every rented dwelling of usual residence, whatever the date or terms of its contract.
 
-These are three different objects. The first describes the market a household faces when it signs a new contract. The second describes how much the rent on an existing contract changes. The third averages over the whole stock, in which a 1985 contract under an old rent law sits next to one signed last month. You can build a crisis or a non-crisis out of them depending on which you pick. None of them is wrong. A data scientist's first job here is to say which question each one answers.
+These are three different objects. The first describes the market a household faces when it signs a new contract. The second describes how rents change, on average, across a sample of rented dwellings of constant quality, and it has no level at all. The third averages over the whole stock, in which a 1985 contract under an old rent law sits next to one signed last month. You can build a crisis or a non-crisis out of them depending on which you pick. None of them is wrong. A data scientist's first job here is to say which question each one answers.
 
 The same thing happens with purchase prices. Eurostat's house price index is a quality-adjusted index for the country. INE's median value per square metre of dwellings sold is a median over whatever happened to be sold, and it can move because the mix of dwellings sold changes. Bank appraisals are valuations made for mortgage purposes, and they exist only where banks were asked to value something. Income is no simpler. EU-SILC survey income is equivalised disposable income and refers to the year before the survey. IRS declared income is gross income per tax household, and it covers only households that file. Population changed estimation method in 2021. Construction is counted as permits, which come first, and as completions, which come years later and are revised.
 
@@ -80,7 +80,7 @@ Income rose too, but much less. Median equivalised disposable income from EU-SIL
 
 ![National overview](figures/fig_report_national_overview.png)
 
-*Left: house prices, rents of sitting tenants, median income and consumer prices, 2015 = 100. Middle: house prices relative to income, and the first mortgage payment relative to income. Right: average interest rate on new mortgages. Sources: Eurostat prc_hpi_a, ilc_di03, prc_hicp_aind; ECB MIR. Author's calculations.*
+*Left: house prices, the HICP actual-rentals price index, median income and consumer prices, 2015 = 100. Middle: house prices relative to income, and the first mortgage payment relative to income. Right: average interest rate on new mortgages. Sources: Eurostat prc_hpi_a, ilc_di03, prc_hicp_aind; ECB MIR. Author's calculations.*
 
 ### Adding the price of money
 
@@ -174,11 +174,15 @@ The three rent measures introduced at the start can now be read properly.
 
 ![Three rent measures](figures/fig_rental_three_measures.png)
 
-*Left: the HICP rent index for sitting tenants against median income and consumer prices, 2015 = 100. Right: the median rent per square metre of new leases against median declared household income, 2020 = 100. Sources: Eurostat prc_hicp_aind, ilc_di03; INE. Author's calculations.*
+*Left: the HICP actual-rentals price index against median income and consumer prices, 2015 = 100; a comparison of indices of change, not of rent burdens. Right: the median rent per square metre of new leases against median declared household income, 2020 = 100. Sources: Eurostat prc_hicp_aind, ilc_di03; INE. Author's calculations.*
 
 Rents of new leases are the market a household meets when it moves. The median rent per square metre of new contracts in Portugal rose from €5.79 in 2020 to €9.29 in 2025. To 2024, the last year with income data, it grew about 10.0% a year against 5.5% for median declared income, 16.6 log points faster. In the municipality of Lisboa the median new lease went from €11.54 to €16.88 per square metre between 2020 and 2025. In the municipality of Porto it went from €8.97 to €14.13.
 
-Rents of sitting tenants are what the consumer price index follows. The HICP actual-rentals index for Portugal rose 2.1% a year in 2011–2021 and 4.9% a year in 2021–2025. Relative to median income, aligned by income year, it fell to 78.6 in 2024 (2015 = 100). For a household that already had a lease, rent became a smaller share of income over the decade.
+The consumer price index measures something else. The HICP actual-rentals index for Portugal rose 2.1% a year in 2011–2021 and 4.9% a year in 2021–2025. Relative to median income, aligned by income year, it fell to 78.6 in 2024 (2015 = 100). It is tempting to read that as rents becoming lighter for people who kept their lease. The index cannot support that reading, and the reason is worth spelling out.
+
+Eurostat's methodological manual defines the target coverage of this index as the rents actually paid under new and existing contracts, for private, public and social rental units (section 12.4 of the 2024 edition). In Portugal the index comes from INE's monthly housing-rent survey. According to INE's methodological note, it follows a panel of rented dwellings, 3,921 in the 2014 design. The panel is stratified by region, rent class and contract date, and it covers free, controlled and social rents. Dwellings that leave the scope are replaced at the end of each year. The stratum indices are geometric means of rent per square metre, combined with stratum weights. Eurostat's guidance also requires rent changes that happen when a dwelling changes tenant to be reflected in the index. It treats renovations as quality changes to be adjusted for.
+
+So the index follows dwellings, not households. When a sampled dwelling is re-let, the new contract's rent enters the comparison, and the tenant who moved out leaves it. Controlled, social and market rents are averaged together, part of the sample is renewed every year, and the index aims at constant quality. Its movement mixes rent updates within ongoing contracts with resets at re-letting, in proportions that depend on how often dwellings change hands. Nothing in it records a tenant's income. Dividing it by median income gives a ratio of two indices with different populations. That ratio says nothing about the rent burden of any group of incumbent tenants. The direct survey measure does not point downwards either. EU-SILC's share of rent in the disposable income of tenant households was 23.1% in 2015, 25.1% in 2024 and 24.0% in 2025. That measure is itself a cross-section of whoever rents in each year, not a cohort. Following the burden of tenants who kept their contracts would need panel data linking each tenancy's rent to the household's income.
 
 The census average sits between the two. The mean monthly rent of rented dwellings of usual residence rose from €235 in 2011 to €334 in 2021, 3.6% a year. That is faster than the index and slower than new leases.
 
@@ -188,7 +192,11 @@ These three facts are consistent, and the census tells you why. In 2021 Portugal
 
 *Rented dwellings of usual residence in 2021 by date of contract, by region (left), and the share paying under €100 or €500 or more a month by contract period, Portugal (right). Source: INE, Censos 2021; author's calculations.*
 
-The census average rises faster than the index for a mechanical reason. Each year some old, low-rent contracts end and new ones begin at market rents. The quality-adjusted index, by design, excludes that replacement. New leases rise fastest because they are, by construction, the market price at the margin. None of the three is "the" rent. A sitting tenant with a 2010 contract and a household signing in 2024 live in the same city but face different rental markets. Policy that targets one of them will not necessarily help the other.
+Why the census average rose faster than the index cannot be settled with these data, but the candidates are clear. A stock average is a level over a changing set of dwellings. It moves when dwellings enter or leave the rental stock, when the mix of locations, sizes and quality shifts, and when old low-rent contracts are replaced by new ones. The index records re-lets only in the dwellings it samples, weights them by stratum and adjusts for quality, so it need not follow those shifts in the same proportions.
+
+The comparison with new-lease medians stays informative, provided it is read as a comparison of two different statistics. They cover different populations: the medians cover contracts registered with the tax authority in the year, the flow of new lettings, while the index covers the rented dwellings in a survey panel, under every kind of contract. They are weighted differently. The median gives each new contract equal weight, so its geography and dwelling mix follow whatever was let that year, while the index combines strata with their own weights. One is a level and the other is not: the median is euros per square metre and moves with the size, location and quality of what was let, while the index has no level and aims at constant quality. And coverage differs: lettings that are not registered with the tax authority are outside the new-lease figures.
+
+Read that way, the two series say something useful together. What households pay when they sign has risen much faster than the average rent change across rented dwellings. That is consistent with a widening gap between rents for new lettings and rents in ongoing contracts, although measuring that gap would need contract-level data. None of the three statistics is "the" rent. A tenant with a 2010 contract and a household signing in 2024 can live in the same city and face very different rents. Policy that targets one of them will not necessarily help the other.
 
 There is a further point for anyone building indicators. Absence of rental support is not the same thing as a market rent. In 2021, 93.1% of tenancies received no rental support of any kind. Many of them were still old contracts, signed under earlier rent laws, with rents well below market. A "market" category defined by the absence of subsidies would overstate how many tenants pay market rents.
 
@@ -266,7 +274,7 @@ It shows. Across 18 specifications the income elasticity ranges from −0.74 to 
 
 That conclusion and the cross-sectional one fit together. Prices did not rise more where incomes rose more. Within municipalities the data are too thin to say anything about income at all. Neither result supports the claim that regional price growth was driven by regional income growth, and the regional divergence of prices alongside converging incomes points the same way.
 
-### The construction coefficient that measured the sale mix
+### The construction coefficient and the mix of dwellings sold
 
 Construction behaves very differently, and this is the result I find most instructive.
 
@@ -274,15 +282,19 @@ Completions per 1,000 residents keep about 29% of their variance after the fixed
 
 Taken at face value it says something strange: building more raises prices. A naive reading could support whatever argument one prefers. Developers build where prices are high. Or new construction gentrifies. Or supply does not matter.
 
-The mechanism is much more mundane, and the data show it directly. INE's median price of all dwellings sold includes new dwellings, and new dwellings are dearer. In 2024 the median price per square metre of new dwellings sold was 27% above that of existing dwellings for Portugal as a whole. The premium was 36% in Grande Lisboa and the Porto metropolitan area, and 21% in Península de Setúbal. When a municipality completes more dwellings, more new dwellings enter the sales, and the median of all sales rises even if no individual dwelling's price changes.
+There is a much more mundane explanation, which the data support but cannot prove. INE's median price of all dwellings sold includes new dwellings, and new dwellings are dearer. In 2024 the median price per square metre of new dwellings sold was 27% above that of existing dwellings for Portugal as a whole. The premium was 36% in Grande Lisboa and the Porto metropolitan area, and 21% in Península de Setúbal. If a municipality that completes more dwellings also sells more new dwellings, the median of all sales can rise even if no individual dwelling's price changes.
 
-The test is to rerun the same model with the median price of existing dwellings only. Same years, same controls, 279 of the 289 municipalities, because the existing-dwelling median is unpublished in a few. The coefficient falls from +1.4% to 0.0%, with an interval of [−0.7%, 0.8%].
+One check is to rerun the same model with the median price of existing dwellings only. Same years, same controls, 279 of the 289 municipalities, because the existing-dwelling median is unpublished in a few. The coefficient falls from +1.4% to 0.0%, with an interval of [−0.7%, 0.8%].
 
 ![Composition check](figures/fig_article_completions_composition.png)
 
 *Left: median price per square metre of new and existing dwellings sold in 2024. Right: within-municipality association between completions per 1,000 residents and the median sale price, for all sales and for existing dwellings only, 2021–2024, with cluster-robust 95% intervals. Source: INE; author's calculations.*
 
-The association lives entirely in the composition of what is sold. It says nothing about whether construction raises or lowers the price of a given dwelling, which is the question anyone asking about supply actually cares about. There is a lesson here for any analysis of medians, and I think it generalises well beyond housing. A statistic of a population whose composition responds to the regressor will pick up the composition effect. A mechanical stability rule cannot detect that. The completions coefficient passed every check I designed. It took a substantive question about what the median is a median of to see through it.
+This is what a composition effect would produce, and it is the most plausible reading. It is still a reading, not an identification, and the other explanations have not gone away. Developers may complete more where and when new-dwelling prices are high, so the causality can run from prices to completions, and completions in a year reflect permits granted years before. The all-sales coefficient may partly track how the prices of new dwellings themselves move with completions, through the location or quality of new projects, and not only their share of sales. A near-zero coefficient for existing dwellings does not show that construction leaves their prices alone: a supply effect and the demand shock that prompted the building could cancel out. The two models use slightly different sets of municipalities, and I have not tested the difference between the coefficients formally. And medians do not add up: the median of all sales is not a weighted average of the new and existing medians, so even a decomposition with transaction counts would be approximate.
+
+Pinning the mechanism down would take more data. Counts of new and existing sales by municipality and year would show whether the new-dwelling share of sales actually tracks completions. A joint model of both price series on a common sample would allow a proper test of the difference. Ideally, transaction-level microdata with dwelling characteristics would allow composition-constant indices, hedonic or repeat-sales, and a decomposition of the change in the price distribution into composition and price effects, for instance by the reweighting approach of DiNardo, Fortin and Lemieux. Saying anything about the effect of construction on prices would also need variation in completions that does not come from current prices.
+
+What can be said is narrower and still useful. The estimate says nothing about whether construction raises or lowers the price of a given dwelling, which is the question anyone asking about supply actually cares about. There is a lesson here for any analysis of medians, and I think it generalises well beyond housing. A statistic of a population whose composition can respond to the regressor may pick up a composition effect, and a mechanical stability rule cannot detect that. The completions coefficient passed every check I designed. It took a substantive question about what the median is a median of to see the problem.
 
 The bank-appraisal sample shows the same kind of association, 1.9% per extra dwelling per 1,000. Appraisals also include new dwellings, and INE does not publish an appraisal series for existing dwellings alone. The same caveat applies there, without the means to check it.
 
@@ -356,7 +368,7 @@ Some common comparisons are not in this analysis, on purpose, and the reasons ar
 
 I do not convert price-to-income ratios into "years of income needed to buy a home". The ratios here are indices of relative change, built from medians of different populations, and they do not measure any household's purchasing problem. The floor-area proxy, square metres per year of income, is presented as a proxy and only compared over time.
 
-I do not compare new-lease rents with the HICP rent index or the census average as if one of them were the true rent. They describe different sets of tenancies, and putting them side by side as competing measures of the same thing confuses the market for movers with the rents of people who stay.
+I do not compare new-lease rents with the HICP rent index or the census average as if one of them were the true rent. They describe different populations, are weighted differently, and one of them has no level at all. Comparing their growth rates is informative. Reading the gap between them as the rent path of incumbent tenants is not, and neither is dividing a rent index by median income and calling the result a rent burden.
 
 I do not divide completions by permits to get a "conversion rate", or completions by household growth to get a "shortage". Permits and completions are different stages, not matched cohorts. A shortage needs a model of household formation, vacancy, second homes and location that these numbers do not provide.
 
@@ -377,7 +389,7 @@ python reproduce.py
 
 The script verifies every data file against the checksum manifest and runs the test suite. It then reruns the five analysis pipelines (national, regional, affordability, rental and integrated) and compares every output with the committed version, byte for byte. With matplotlib installed it redraws the figures. The analysis uses only the Python standard library, including the least-squares solver, the cluster-robust standard errors and the bootstrap, so there are no version drifts in numerical libraries to worry about. Results built on Python 3.10 are byte-identical to those built on 3.13.
 
-The test suite has 107 tests. Some check the estimators against hand-computed values and against simulations with known answers, including the restricted bootstrap under a true effect and under the null. Some check that the pinned snapshots match their retrieval records and that a tampered file is detected. Others pin key results. And one test runs 128 checks. It takes each number quoted in the research report, finds the sentence it appears in, and checks that it equals the value recomputed from the results, at the precision quoted. If a sentence is edited, or a result changes, the check fails.
+The test suite has 113 tests. Some check the estimators against hand-computed values and against simulations with known answers, including the restricted bootstrap under a true effect and under the null. Some check that the pinned snapshots match their retrieval records and that a tampered file is detected. Others pin key results, and a group of wording checks fails if the text overstates what the rent index or the completions coefficient can show. One more test runs 132 checks. It takes each number quoted in the research report, finds the sentence it appears in, and checks that it equals the value recomputed from the results, at the precision quoted. If a sentence is edited, or a result changes, the check fails.
 
 This is not decoration. A reader of a housing analysis cannot usually tell whether a number is a typo, a stale value from an earlier run, an error in a join, or correct. Making every number reproducible, and every quoted number tested, turns that question into one the reader can answer.
 
@@ -385,9 +397,9 @@ This is not decoration. A reader of a housing analysis cannot usually tell wheth
 
 Put together, the official statistics support the following.
 
-Established: since 2015, the cost of housing in Portugal has risen far faster than incomes and consumer prices, both for purchase and for new rental contracts, nationally and in almost every region and municipality. Prices rose furthest ahead of incomes around Lisbon and Setúbal, in Madeira, in Alentejo Litoral and in the Porto metropolitan area, and they are highest relative to incomes in the Algarve and Grande Lisboa. The sharpest deterioration in the cost of entering ownership came in 2021–2023, and it was driven more by financing costs than by prices. Regional price levels diverged while regional incomes converged. New-lease rents rose about twice as fast as incomes, while the rents of sitting tenants rose more slowly than incomes. A larger share of the population rents at market prices than a decade ago, and market tenants carry most of the housing-cost burden.
+Established: since 2015, the cost of housing in Portugal has risen far faster than incomes and consumer prices, both for purchase and for new rental contracts, nationally and in almost every region and municipality. Prices rose furthest ahead of incomes around Lisbon and Setúbal, in Madeira, in Alentejo Litoral and in the Porto metropolitan area, and they are highest relative to incomes in the Algarve and Grande Lisboa. The sharpest deterioration in the cost of entering ownership came in 2021–2023, and it was driven more by financing costs than by prices. Regional price levels diverged while regional incomes converged. New-lease rents rose about twice as fast as incomes, while the HICP rent index, which measures average rent change across a sample of rented dwellings, rose more slowly than median income. A larger share of the population rents at market prices than a decade ago, and market tenants carry most of the housing-cost burden.
 
-Associated, but not explained: prices and rents move together, across places and within places over time. Prices rose more where population grew, and did not rise more where incomes grew. The apparent link between construction and prices is a change in the mix of dwellings sold. The recent rise in the national overburden rate is accounted for, arithmetically, by the shift into market renting.
+Associated, but not explained: prices and rents move together, across places and within places over time. Prices rose more where population grew, and did not rise more where incomes grew. The apparent link between construction and prices disappears for existing dwellings, which is consistent with a change in the mix of dwellings sold, though the data cannot confirm that mechanism. The recent rise in the national overburden rate is accounted for, arithmetically, by the shift into market renting.
 
 Unresolved: the role of tourism, foreign demand, immigration, interest rates, regulation and supply in causing any of this. These are serious hypotheses and some of them are probably right in some places. They cannot be settled with annual medians for 308 municipalities, and claims that they have been settled with such data should be treated with suspicion.
 
@@ -405,9 +417,15 @@ Bretherton, C. S., Widmann, M., Dymnikov, V. P., Wallace, J. M. and Bladé, I. (
 
 Cameron, A. C., Gelbach, J. B. and Miller, D. L. (2008). Bootstrap-based improvements for inference with clustered errors. *Review of Economics and Statistics*, 90(3), 414–427.
 
+DiNardo, J., Fortin, N. M. and Lemieux, T. (1996). Labor market institutions and the distribution of wages, 1973–1992: A semiparametric approach. *Econometrica*, 64(5), 1001–1044.
+
 Drukker, D. M. (2003). Testing for serial correlation in linear panel-data models. *Stata Journal*, 3(2), 168–177.
 
 European Central Bank. Bank interest rate statistics (MIR): methodology. [data.ecb.europa.eu](https://data.ecb.europa.eu/methodology/bank-interest-rates)
+
+Eurostat (2015). HPI-HICP recommendations on the treatment of rents. [ec.europa.eu](https://ec.europa.eu/eurostat/documents/272892/7048317/HPI-HICP+Recommendations+on+the+treatment+of+rents+-+June+2015)
+
+Eurostat (2024). *Harmonised Index of Consumer Prices (HICP) Methodological Manual — 2024 edition*, KS-GQ-24-003, section 12.4 (Actual rentals). [ec.europa.eu](https://ec.europa.eu/eurostat/documents/3859598/18594110/KS-GQ-24-003-EN-N.pdf)
 
 Eurostat. Glossary: Housing cost overburden rate. [ec.europa.eu](https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Glossary:Housing_cost_overburden_rate)
 
@@ -416,6 +434,8 @@ Franco, S. F. and Santos, C. D. (2021). The impact of Airbnb on residential prop
 Garcia-López, M.-À., Jofre-Monseny, J., Martínez-Mazza, R. and Segú, M. (2020). Do short-term rental platforms affect housing markets? Evidence from Airbnb in Barcelona. *Journal of Urban Economics*, 119, 103278.
 
 Glaeser, E. L., Gyourko, J. and Saks, R. (2005). Why is Manhattan so expensive? Regulation and the rise in housing prices. *Journal of Law and Economics*, 48(2), 331–369.
+
+INE, Instituto Nacional de Estatística (2014). Inquérito às Rendas de Habitação (IRH): documento metodológico, version 2.1. [ine.pt](https://www.ine.pt/ngt_server/attachfileu.jsp?look_parentBoui=262060895&att_display=n&att_download=y)
 
 INE, Instituto Nacional de Estatística. Indicator metadata for each source code, at `https://www.ine.pt/bddXplorer/htdocs/minfo.jsp?var_cd=<code>&lingua=PT`.
 

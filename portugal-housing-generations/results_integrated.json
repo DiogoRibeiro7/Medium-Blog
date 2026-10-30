@@ -2655,7 +2655,7 @@
   }
  },
  "completions_composition_check": {
-  "note": "Median price of all sales vs existing dwellings only, same sample and years (2021-2024): if the completions association vanishes for existing dwellings, it reflects new dwellings entering the sale mix",
+  "note": "Median price of all sales vs existing dwellings only, same years and controls (2021-2024; existing-dwelling medians are unpublished for some municipalities): a near-zero coefficient for existing dwellings is consistent with new dwellings entering the sale mix, but does not identify that mechanism",
   "all_dwellings": {
    "estimate": 0.0141,
    "se_cr1": 0.0037,

@@ -7,8 +7,10 @@ reports three different rent measures side by side without splicing them:
 * new lease contracts registered with the tax authority (INE local rent
   statistics): the median rent per m2 of contracts signed in a year;
 * the stock of tenancies: the mean monthly rent of all rented dwellings at each
-  census (2001, 2011, 2021) and the HICP actual-rentals index, which follows the
-  rents paid by sitting tenants;
+  census (2001, 2011, 2021);
+* the HICP actual-rentals price index (COICOP 04.1), which measures the average
+  rent change of a sample of rented dwellings (new and existing contracts;
+  private, public and social units) and has no rent level;
 * EU-SILC housing-cost burden and tenure, which describe households, not
   dwellings or contracts.
 
@@ -465,8 +467,10 @@ def main() -> None:  # noqa: C901 - one linear pipeline, kept in one place for a
                                  "the tax authority in the year (INE, method 2026); contracts signed, not the rents of all tenants",
             "census_mean_rent": "Mean monthly rent of all rented classic dwellings of usual residence at the census date "
                                 "(old and new contracts, social rents included)",
-            "hicp_actual_rentals": "Eurostat HICP, COICOP 04.1 actual rentals for housing, 2015=100: price change of rents "
-                                   "paid by tenants, a quality-adjusted index, not a rent level",
+            "hicp_actual_rentals": "Eurostat HICP, COICOP 04.1 actual rentals for housing, 2015=100: average rent change of a "
+                                   "sample of rented dwellings, covering new and existing contracts and private, public and social "
+                                   "units (HICP Methodological Manual 2024, section 12.4); a price index, not a rent level, and not "
+                                   "the rent path of a fixed group of tenants",
             "m2_per_month_of_income": "Median gross household income / 12 / median new-lease rent per m2: floor area that one "
                                       "month of median income would rent at the median new-lease rate. A ratio of medians from "
                                       "different populations; not the rent any household pays",

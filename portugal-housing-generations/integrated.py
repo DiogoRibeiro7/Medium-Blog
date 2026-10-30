@@ -629,8 +629,9 @@ def main() -> None:  # noqa: C901 - one linear pipeline, kept in one place for a
         "diagnostics": diagnostics,
         "verdicts": verdicts,
         "completions_composition_check": {
-            "note": "Median price of all sales vs existing dwellings only, same sample and years (2021-2024): if the completions "
-                    "association vanishes for existing dwellings, it reflects new dwellings entering the sale mix",
+            "note": "Median price of all sales vs existing dwellings only, same years and controls (2021-2024; existing-dwelling "
+                    "medians are unpublished for some municipalities): a near-zero coefficient for existing dwellings is "
+                    "consistent with new dwellings entering the sale mix, but does not identify that mechanism",
             "all_dwellings": strip(models["A2_twoway_income_completions"])["coefficients"]["completions_per_1000"],
             "existing_dwellings": strip(models["A2_twoway_existing_prices"])["coefficients"]["completions_per_1000"],
             "municipalities": [models["A2_twoway_income_completions"]["municipalities"], models["A2_twoway_existing_prices"]["municipalities"]],

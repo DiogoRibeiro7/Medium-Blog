@@ -2,7 +2,7 @@
  "definitions": {
   "new_lease_rent_m2": "Median monthly rent per m2 of the new lease contracts for family dwellings registered with the tax authority in the year (INE, method 2026); contracts signed, not the rents of all tenants",
   "census_mean_rent": "Mean monthly rent of all rented classic dwellings of usual residence at the census date (old and new contracts, social rents included)",
-  "hicp_actual_rentals": "Eurostat HICP, COICOP 04.1 actual rentals for housing, 2015=100: price change of rents paid by tenants, a quality-adjusted index, not a rent level",
+  "hicp_actual_rentals": "Eurostat HICP, COICOP 04.1 actual rentals for housing, 2015=100: average rent change of a sample of rented dwellings, covering new and existing contracts and private, public and social units (HICP Methodological Manual 2024, section 12.4); a price index, not a rent level, and not the rent path of a fixed group of tenants",
   "m2_per_month_of_income": "Median gross household income / 12 / median new-lease rent per m2: floor area that one month of median income would rent at the median new-lease rate. A ratio of medians from different populations; not the rent any household pays",
   "overburden": "Share of people living in households whose housing costs, net of housing allowances, exceed 40% of disposable income, net of housing allowances (EU-SILC)",
   "asking_rents": "No official statistics of advertised rents exist; portal listings are not used"

@@ -42,7 +42,7 @@ null when resampling, gives better-sized tests (Cameron, Gelbach and Miller, 200
 
 - **One command.** `reproduce.py` checks the data checksums, runs the tests, re-runs the five analyses and
   compares every output byte for byte. All ten result files rebuild identically.
-- **Report claims.** `test_report.py` holds 128 numerical claims quoted in `REPORT.md`. For each, the test
+- **Report claims.** `test_report.py` holds 132 numerical claims quoted in `REPORT.md`. For each, the test
   checks:
   - that the sentence is in the report;
   - that the number in the sentence equals the value read or computed from the result files, at the precision
@@ -98,8 +98,8 @@ averages, or compares measures of different populations.
 - Tenure composition "raises" overburden → "arithmetically raises", with a note that the shift-share
   decomposition is an accounting identity.
 - Prices and rents "respond to" local conditions → "are likely to respond to".
-- The completions association passes the mechanical "robust" rule, but it is now labelled in the README and
-  report as a sale-mix artefact.
+- The completions association passes the mechanical "robust" rule, but it is now described as consistent with
+  sale-mix composition, with the mechanism not identified (see the corrections section below).
 
 **Already handled correctly:**
 - Ecological inference: municipal correlations are never read as household behaviour.
@@ -184,7 +184,7 @@ Nothing is published automatically.
 - It verifies `data/SHA256SUMS` with `sha256sum --check`.
 - It also runs `report_figures.py`.
 
-The full suite (107 tests) and `mypy` (default settings) pass locally on Python 3.10 and 3.13, and results
+The full suite (113 tests, after the corrections below) and `mypy` (default settings) pass locally on Python 3.10 and 3.13, and results
 rebuilt on 3.10 are byte-identical to those built on 3.13.
 
 ## 12. Artefacts removed
@@ -194,6 +194,55 @@ referenced.
 
 **Locally:** two untracked caches left over from development (`discovery/`, which held only bytecode, and
 `__pycache__/`) were deleted. They were never committed.
+
+## Corrections after an independent scientific review (30 October 2026)
+
+An independent review identified two methodological overstatements. Both were corrected without changing any
+estimate, because no computational error was found.
+
+**1. HICP actual rentals.**
+- *Problem.* The README, report, article, figure labels and the result-file definition described the HICP
+  actual-rentals index (COICOP 04.1) as the rents of "sitting tenants", or as following the same dwelling's rent
+  over time. The article also inferred that rents became a smaller share of income for households that already
+  had a lease.
+- *What the index is.* Its target coverage is the rents paid under new and existing contracts, for private, public
+  and social rental units. This is from section 12.4 of the 2024 HICP Methodological Manual, as specified in the
+  review; the text of the section itself was not retrieved during this correction. Eurostat's 2015 recommendations on rents and
+  INE's 2014 note on the Portuguese rent survey were read directly.
+  - The survey follows a stratified panel of dwellings, covering free, controlled and social rents.
+  - Part of the panel is replaced each year.
+  - Strata are aggregated with stratum weights.
+  - Rent changes at a change of tenant are to be reflected, and renovations are treated as quality changes.
+- *Correction.* All descriptions now present the index as an average rent change for a sample of rented
+  dwellings, with no level. The report gives the coverage, sampling, weighting and quality-adjustment basis,
+  explains why the index cannot describe a fixed cohort of tenants, and sets out how it differs from new-lease
+  medians in population, weighting, level versus index, and coverage and timing. The burden inference was
+  removed. The report notes that EU-SILC's direct rent share for tenant households did not fall (23.1% in 2015,
+  24.0% in 2025), while warning that this too is a cross-section.
+
+**2. Completions and composition.**
+- *Problem.* The README, report, article, release notes, one figure title, one figure label and the result-file
+  note stated that the completions association "is" a sale-mix artefact.
+- *Correction.* A near-zero coefficient for existing dwellings is consistent with transaction composition but
+  does not identify it. The report now lists the alternatives:
+  - reverse causality and timing;
+  - co-movement of new-dwelling prices;
+  - offsetting effects on existing dwellings;
+  - different samples and no formal test of the difference;
+  - the non-additivity of medians.
+
+  It also lists the data needed to separate them: counts of new and existing sales, a joint model on a common
+  sample, and transaction microdata for composition-constant indices and a reweighting decomposition.
+
+**Checks.** `test_wording.py` now fails if any of the corrected statements reappears in the documents, figure
+scripts or result-file notes. It also checks that the qualified statements and the methodology references are
+present, and that the HICP source identifiers match the pinned snapshot. All estimates, result values and plotted
+values are unchanged. Only definition and note strings in two result files and labels in five figures changed.
+
+**Residual uncertainty.**
+- The text of section 12.4 of the 2024 manual was not retrieved during this correction. The coverage statement
+  follows the review's specification and agrees with Eurostat's 2015 recommendations.
+- INE's rent-survey note dates from 2014 and may have been revised.
 
 ## Open items before publishing
 

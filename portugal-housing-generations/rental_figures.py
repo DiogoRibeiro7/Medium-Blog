@@ -62,13 +62,13 @@ def measures_figure(r: dict[str, Any], panel: dict[str, dict[int, dict[str, str]
     inc_idx = {y: 100 * stock[y] / v for y, v in income.items() if y in stock}
     rel = r["stock"]["hicp_rentals_relative_to_all_items_2015_100"]
     all_items = {y: stock[y] * 100 / v for y, v in rel.items() if y in stock}
-    for d, label, colour, ls in ((stock, "Rents paid by tenants (HICP 04.1)", BLUE, "-"),
+    for d, label, colour, ls in ((stock, "Actual rentals (HICP 04.1, price index)", BLUE, "-"),
                                  (inc_idx, "Median equivalised income (EU-SILC, income year)", INK, "--"),
                                  (all_items, "All consumer prices (HICP)", MUTED, ":")):
         x, y = series(d, 2004)
         a.plot(x, y, color=colour, ls=ls, lw=2.1, label=label)
     a.axhline(100, color=GRID, lw=1)
-    a.set_title("Rent index of sitting tenants against income, 2015 = 100")
+    a.set_title("HICP rent index against income, 2015 = 100")
     a.legend(loc="upper left", fontsize=7.8)
     a.set_xticks(range(2005, 2026, 5))
     ends: list[tuple[float, str]] = []
@@ -94,7 +94,7 @@ def measures_figure(r: dict[str, Any], panel: dict[str, dict[int, dict[str, str]
     b.set_xlim(2019.6, 2027.6)
     b.set_xticks([2020, 2021, 2022, 2023, 2024, 2025])
     b.set_title("New leases and income, 2020 = 100")
-    fig.suptitle("Three views of rents: an index for sitting tenants and the medians of new contracts",
+    fig.suptitle("Two rent statistics: a price index for rented dwellings and the median of new contracts",
                  x=0.01, ha="left", fontsize=11, fontweight="bold", color=INK)
     footer(fig, "Sources: Eurostat HICP (prc_hicp_aind) and EU-SILC (ilc_di03; income of the year before the survey); "
                 "INE, Estatísticas de rendas da habitação ao nível local (method 2026) and Estatísticas do Rendimento ao nível local. Diogo Ribeiro.")

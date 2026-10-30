@@ -11,6 +11,7 @@ A further test checks that every figure and local link in the report exists.
 
 from __future__ import annotations
 
+import csv
 import json
 import math
 import re
@@ -76,6 +77,13 @@ def hicp_all_items(year: str) -> float:
 def income_year(year: int) -> float:
     """EU-SILC median equivalised income of an income year (published with the next year's survey)."""
     return float(get("results.json", f"yearly_median_equivalised_income_eur.{year + 1}"))
+
+
+def new_dwelling_premium_pct(region: str = "PT", year: str = "2024") -> float:
+    """Median price per m2 of new dwellings over that of existing dwellings, minus one, in %."""
+    with (HERE / "affordability_panel.csv").open(encoding="utf-8") as f:
+        row = next(r for r in csv.DictReader(f) if r["region_code"] == region and r["year"] == year)
+    return 100 * (float(row["price_m2_new"]) / float(row["price_m2_existing"]) - 1)
 
 
 def m2(name: str, path: str, scale: float = 1.0) -> Callable[[], float]:
@@ -216,6 +224,15 @@ CLAIMS: list[tuple[str, float, int, Callable[[], float]]] = [
     ("The 2026 method is 3.2–6.3% higher", 6.3, 1, lambda: 100 * (
         get("results_rental.json", "methods_and_windows.portugal.2024.method_2026")
         / get("results_rental.json", "methods_and_windows.portugal.2024.method_2021") - 1)),
+    # HICP interpretation and the completions composition check
+    ("was 23.1% in 2015, 25.1% in 2024 and 24.0% in 2025", 23.1, 1,
+     ren("affordability.share_of_rent_in_disposable_income_pct.TOTAL.2015")),
+    ("was 23.1% in 2015, 25.1% in 2024 and 24.0% in 2025", 25.1, 1,
+     ren("affordability.share_of_rent_in_disposable_income_pct.TOTAL.2024")),
+    ("was 23.1% in 2015, 25.1% in 2024 and 24.0% in 2025", 24.0, 1,
+     ren("affordability.share_of_rent_in_disposable_income_pct.TOTAL.2025")),
+    ("the median price per m² of new dwellings was 27% above that of existing dwellings in Portugal", 27, 0,
+     new_dwelling_premium_pct),
     # Integrated assessment
     ("| income growth | −0.23 [−0.38, −0.07] |", 0.23, 2, lambda: -get("results_integrated.json", f"{SP}.price_growth_vs_income_growth.spearman")),
     ("| income growth | −0.23 [−0.38, −0.07] | −0.10 [−0.28, 0.11] |", 0.10, 2,

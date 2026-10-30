@@ -157,7 +157,7 @@ def specifications_figure(results: dict[str, Any]) -> None:
 
 def influence_figure(results: dict[str, Any]) -> None:
     items = [("A1_twoway_income", "log_income", "Income\n(sales 2019-2024)"),
-             ("A2_twoway_income_completions", "completions_per_1000", "Completions per 1,000 (sales 2021-24;\n0.000 for existing dwellings: sale mix)"),
+             ("A2_twoway_income_completions", "completions_per_1000", "Completions per 1,000\n(sales 2021-24; existing: 0.000)"),
              ("A2_twoway_full", "log_population", "Population\n(sales 2021-2024)"),
              ("D_twoway_price_on_rent", "log_rent_m2", "New-lease rent\n(2020-2024)")]
     fig, axes = plt.subplots(1, 4, figsize=(12.4, 4.0))
@@ -195,7 +195,7 @@ def national_figure(results: dict[str, Any]) -> None:
     g = {k: I.growth_rates(v, log=k != "mortgage_rate") for k, v in nat.items()}
     corr = results["national_time_series"]["2005_2024"]
     pairs = [("income_silc_income_year", "Median equivalised income (EU-SILC)"), ("completions", "Completed dwellings"),
-             ("population_end_of_year", "Population"), ("rents_hicp", "Rents of sitting tenants (HICP)")]
+             ("population_end_of_year", "Population"), ("rents_hicp", "Actual rentals (HICP price index)")]
     fig, axes2 = plt.subplots(2, 2, figsize=(11.2, 7.4), sharex=True)
     axes = list(axes2.flat)
     years = [y for y in range(2009, 2025) if y in g["house_prices_hpi"]]
