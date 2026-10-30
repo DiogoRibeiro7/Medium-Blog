@@ -1,0 +1,7 @@
+population,mean,sigma_used,cp,cpk,cpm,normal_model_nonconformance,methodological_note
+baseline_latent_true_model,10.04,0.2,1.3333333333333344,1.266666666666669,1.3074409009212289,8.569379294098844e-05,"Exact normal theory for a stationary baseline, known by simulation."
+baseline_latent_sample,10.039082641165498,0.18477552500647088,1.4431925800634482,1.372687857889287,1.411953977555336,2.1901646728217372e-05,Estimate of within-subgroup latent truth; reference segment only.
+baseline_measured_sample,10.1401958920723,0.20230834124685365,1.3181199797455911,1.0871262217221462,1.0834063137577559,0.0005560405602584861,"Gauge-inclusive, biased observations; stable reference segment only."
+postshift_latent_true_model,10.399999999999999,0.2,1.3333333333333344,0.6666666666666701,0.5962847939999462,0.022750132934766354,Exact normal theory after the known imposed mean shift.
+postshift_measured_sample,10.493531419334534,0.22589671874286382,1.180480478648347,0.45222522099331147,0.49130417239929164,0.08744214946405715,"Gauge-inclusive estimate within the postshift regime, not a claim of overall stability."
+pooled_measured_descriptive,10.287419028431563,0.27902951347647015,0.9556934079991299,0.6123378194921815,0.6656955275967856,0.03315262057212598,Overall-Ppk-style descriptive index: mixture across two regimes; NOT valid stationary capability.

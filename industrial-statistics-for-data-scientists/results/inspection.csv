@@ -1,0 +1,3 @@
+reading_policy,guardband,parts,truly_conforming,truly_nonconforming,false_accepts,false_rejects,false_accepts_per_10000,false_rejects_per_10000,false_accepts_given_bad,false_rejects_given_good,illustrative_loss_per_10000
+raw,0.0,200000,198319,1681,259,7798,12.95,389.9,0.15407495538370017,0.039320488707587274,1037.4
+master_bias_corrected,0.0,200000,198319,1681,481,3569,24.05,178.45,0.2861392028554432,0.017996258553139133,1380.95
