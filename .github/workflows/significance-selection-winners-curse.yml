@@ -1,0 +1,33 @@
+name: Significance selection article evidence
+
+on:
+  pull_request:
+    paths:
+      - "significance-selection-winners-curse/**"
+      - ".github/workflows/significance-selection-winners-curse.yml"
+  push:
+    branches: [main]
+    paths:
+      - "significance-selection-winners-curse/**"
+      - ".github/workflows/significance-selection-winners-curse.yml"
+
+jobs:
+  verify-article:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: significance-selection-winners-curse
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: significance-selection-winners-curse/requirements.txt
+      - name: Install scientific and notebook dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Test mathematical formulas and notebook from a clean kernel
+        run: python -m unittest discover -s tests -v
+      - name: Regenerate lightweight independent evidence
+        run: python analysis.py --quick
