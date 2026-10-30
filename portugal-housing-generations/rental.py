@@ -23,12 +23,14 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+import math
+import re
 from pathlib import Path
 from typing import Any
 
 import affordability as F
 import regional as R
-from affordability_core import Panel, annual_growth, growth_comparison, median, pearson, spearman
+from affordability_core import Panel, annual_growth, growth_comparison, median
 from analysis import parse_income, verify_snapshot
 from rental_core import jsonstat_select, relative_index, shift_share, years
 
@@ -113,6 +115,23 @@ def shares(counts: dict[str, float], total: float) -> dict[str, float]:
     if total <= 0:
         raise ValueError("Non-positive total")
     return {k: round(100 * v / total, 1) for k, v in counts.items()}
+
+
+def _band_amounts(label: str) -> list[float]:
+    """Euro amounts in an INE rent-band label ('De 100 a 149,99 euros' -> [100.0, 149.99])."""
+    return [float(n.replace(",", ".")) for n in re.findall(r"\d+(?:,\d+)?", label)]
+
+
+def band_lower_eur(label: str) -> float:
+    """Lower bound of an INE rent band ('Menos de 20 euros' -> 0; '1000 euros ou mais' -> 1000)."""
+    return 0.0 if label.startswith("Menos de") else _band_amounts(label)[0]
+
+
+def band_upper_eur(label: str) -> float:
+    """Upper bound of an INE rent band, rounded up to whole euros ('De 75 a 99,99 euros' -> 100; open band -> inf)."""
+    if label.endswith("ou mais"):
+        return math.inf
+    return math.ceil(_band_amounts(label)[-1])
 
 
 def band_median(counts: dict[str, float], order: list[str], labels: dict[str, str]) -> str:
@@ -365,6 +384,8 @@ def main() -> None:  # noqa: C901 - one linear pipeline, kept in one place for a
     pt_unsupported_total = unsupported_pt["T"] or 0
     band = src["census21_rent_band_by_contract_period"]
     band_codes = [c for c in band.dims["3"] if c != "T"]
+    below_100 = [b for b in band_codes if band_upper_eur(band.dims["3"][b]) <= 100]
+    from_500 = [b for b in band_codes if band_lower_eur(band.dims["3"][b]) >= 500]
     band_by_period = {}
     for p in periods:
         counts = {b: band.get({"3": b, "4": p}).get(("PT", 2021), 0.0) for b in band_codes}
@@ -373,8 +394,8 @@ def main() -> None:  # noqa: C901 - one linear pipeline, kept in one place for a
             raise ValueError(f"Rent bands do not add up for contract period {p}")
         band_by_period[band.dims["4"][p]] = {
             "tenancies": tot, "median_band": band_median(counts, band_codes, band.dims["3"]),
-            "share_below_100_eur_pct": round(100 * sum(counts[b] for b in band_codes[:5]) / tot, 1),
-            "share_500_eur_or_more_pct": round(100 * sum(counts[b] for b in band_codes[9:]) / tot, 1),
+            "share_below_100_eur_pct": round(100 * sum(counts[b] for b in below_100) / tot, 1),
+            "share_500_eur_or_more_pct": round(100 * sum(counts[b] for b in from_500) / tot, 1),
         }
     tenure = {
         "eu_silc_population_shares_pct": {p: {t: round_series(s, 1) for t, s in by_t.items()} for p, by_t in tenure_shares.items()},

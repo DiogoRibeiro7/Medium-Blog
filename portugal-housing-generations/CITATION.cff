@@ -1,0 +1,43 @@
+cff-version: 1.2.0
+message: "If you use this release, please cite it using these metadata."
+type: software
+title: "Prices, incomes, construction and rents in Portugal's housing market, 2008–2025: a reproducible descriptive assessment"
+abstract: >-
+  Pinned official statistics (INE, Eurostat, ECB), standard-library Python code, tests, figures and a research
+  report on house prices, incomes, construction, population and rents in Portugal, its 9 NUTS 2 and 26 NUTS 3
+  regions and 308 municipalities, 2008–2025. Every reported number is recomputed from checksummed source files.
+  The release separates established descriptive findings, descriptive associations and unresolved causal
+  hypotheses; none of its associations is causal.
+authors:
+  - family-names: Ribeiro
+    given-names: Diogo
+    orcid: "https://orcid.org/0009-0001-2022-7072"
+    email: dfr@esmad.ipp.pt
+    affiliation: "ESMAD – Escola Superior de Media Artes e Design, Politécnico do Porto"
+version: 1.0.0
+date-released: "2026-10-30"
+license: Apache-2.0
+repository-code: "https://github.com/DiogoRibeiro7/Medium-Blog"
+url: "https://github.com/DiogoRibeiro7/Medium-Blog/tree/main/portugal-housing-generations"
+keywords:
+  - housing affordability
+  - house prices
+  - rents
+  - Portugal
+  - NUTS regions
+  - official statistics
+  - panel data
+  - wild cluster bootstrap
+  - reproducibility
+preferred-citation:
+  type: report
+  title: "Prices, incomes, construction and rents in Portugal's housing market, 2008–2025: a reproducible descriptive assessment"
+  authors:
+    - family-names: Ribeiro
+      given-names: Diogo
+      orcid: "https://orcid.org/0009-0001-2022-7072"
+      affiliation: "ESMAD – Escola Superior de Media Artes e Design, Politécnico do Porto"
+  version: 1.0.0
+  year: 2026
+  month: 10
+  url: "https://github.com/DiogoRibeiro7/Medium-Blog/tree/main/portugal-housing-generations"

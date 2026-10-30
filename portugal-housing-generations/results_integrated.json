@@ -834,6 +834,7 @@
      "ci95_low": -1.2142,
      "ci95_high": -0.0296,
      "p_value": 0.034,
+     "p_value_restricted": 0.031,
      "reps": 1999.0,
      "clusters": 26.0
     }
@@ -871,6 +872,7 @@
      "ci95_low": -0.5994,
      "ci95_high": 0.424,
      "p_value": 0.7099,
+     "p_value_restricted": 0.7194,
      "reps": 1999.0,
      "clusters": 26.0
     }
@@ -908,6 +910,7 @@
      "ci95_low": -0.4514,
      "ci95_high": 0.5789,
      "p_value": 0.8129,
+     "p_value_restricted": 0.8264,
      "reps": 1999.0,
      "clusters": 26.0
     }
@@ -970,6 +973,7 @@
      "ci95_low": 0.1758,
      "ci95_high": 1.422,
      "p_value": 0.0195,
+     "p_value_restricted": 0.02,
      "reps": 1999.0,
      "clusters": 26.0
     },
@@ -977,6 +981,7 @@
      "ci95_low": 0.0031,
      "ci95_high": 0.0213,
      "p_value": 0.011,
+     "p_value_restricted": 0.011,
      "reps": 1999.0,
      "clusters": 26.0
     },
@@ -984,6 +989,7 @@
      "ci95_low": 0.6337,
      "ci95_high": 2.6232,
      "p_value": 0.0,
+     "p_value_restricted": 0.0,
      "reps": 1999.0,
      "clusters": 26.0
     }
@@ -1035,6 +1041,7 @@
      "ci95_low": -0.9641,
      "ci95_high": 0.3327,
      "p_value": 0.2961,
+     "p_value_restricted": 0.2826,
      "reps": 1999.0,
      "clusters": 26.0
     },
@@ -1042,6 +1049,7 @@
      "ci95_low": 0.005,
      "ci95_high": 0.0247,
      "p_value": 0.0085,
+     "p_value_restricted": 0.005,
      "reps": 1999.0,
      "clusters": 26.0
     }
@@ -1089,6 +1097,7 @@
      "ci95_low": -0.5878,
      "ci95_high": 0.7186,
      "p_value": 0.9175,
+     "p_value_restricted": 0.9105,
      "reps": 1999.0,
      "clusters": 26.0
     },
@@ -1096,6 +1105,7 @@
      "ci95_low": 0.0001,
      "ci95_high": 0.0167,
      "p_value": 0.047,
+     "p_value_restricted": 0.043,
      "reps": 1999.0,
      "clusters": 26.0
     }
@@ -1147,6 +1157,7 @@
      "ci95_low": -0.9273,
      "ci95_high": 0.3257,
      "p_value": 0.3142,
+     "p_value_restricted": 0.3062,
      "reps": 1999.0,
      "clusters": 26.0
     },
@@ -1154,6 +1165,7 @@
      "ci95_low": -0.0077,
      "ci95_high": 0.0084,
      "p_value": 0.935,
+     "p_value_restricted": 0.928,
      "reps": 1999.0,
      "clusters": 26.0
     }
@@ -1211,6 +1223,7 @@
      "ci95_low": 0.1335,
      "ci95_high": 1.4637,
      "p_value": 0.0195,
+     "p_value_restricted": 0.0195,
      "reps": 1999.0,
      "clusters": 26.0
     },
@@ -1218,6 +1231,7 @@
      "ci95_low": -0.0006,
      "ci95_high": 0.0158,
      "p_value": 0.0685,
+     "p_value_restricted": 0.075,
      "reps": 1999.0,
      "clusters": 26.0
     },
@@ -1225,6 +1239,7 @@
      "ci95_low": 0.6875,
      "ci95_high": 2.4639,
      "p_value": 0.0,
+     "p_value_restricted": 0.0,
      "reps": 1999.0,
      "clusters": 26.0
     }
@@ -1287,6 +1302,7 @@
      "ci95_low": -1.2536,
      "ci95_high": 0.6418,
      "p_value": 0.4892,
+     "p_value_restricted": 0.5083,
      "reps": 1999.0,
      "clusters": 26.0
     },
@@ -1294,6 +1310,7 @@
      "ci95_low": -0.0105,
      "ci95_high": 0.0287,
      "p_value": 0.4047,
+     "p_value_restricted": 0.3967,
      "reps": 1999.0,
      "clusters": 26.0
     },
@@ -1301,6 +1318,7 @@
      "ci95_low": 0.111,
      "ci95_high": 1.6109,
      "p_value": 0.019,
+     "p_value_restricted": 0.031,
      "reps": 1999.0,
      "clusters": 26.0
     }
@@ -1358,6 +1376,7 @@
      "ci95_low": -1.1491,
      "ci95_high": 0.7184,
      "p_value": 0.6508,
+     "p_value_restricted": 0.6583,
      "reps": 1999.0,
      "clusters": 26.0
     },
@@ -1365,6 +1384,7 @@
      "ci95_low": -0.0077,
      "ci95_high": 0.0319,
      "p_value": 0.2306,
+     "p_value_restricted": 0.2366,
      "reps": 1999.0,
      "clusters": 26.0
     },
@@ -1372,6 +1392,7 @@
      "ci95_low": 0.1005,
      "ci95_high": 1.852,
      "p_value": 0.0245,
+     "p_value_restricted": 0.0375,
      "reps": 1999.0,
      "clusters": 26.0
     }
@@ -1423,6 +1444,7 @@
      "ci95_low": -1.397,
      "ci95_high": -0.0337,
      "p_value": 0.0375,
+     "p_value_restricted": 0.034,
      "reps": 1999.0,
      "clusters": 26.0
     },
@@ -1430,6 +1452,7 @@
      "ci95_low": 0.0097,
      "ci95_high": 0.0279,
      "p_value": 0.0,
+     "p_value_restricted": 0.0,
      "reps": 1999.0,
      "clusters": 26.0
     }
@@ -1477,6 +1500,7 @@
      "ci95_low": -0.3897,
      "ci95_high": 0.1333,
      "p_value": 0.2966,
+     "p_value_restricted": 0.3152,
      "reps": 1999.0,
      "clusters": 26.0
     },
@@ -1484,6 +1508,7 @@
      "ci95_low": 0.004,
      "ci95_high": 0.0086,
      "p_value": 0.0,
+     "p_value_restricted": 0.0015,
      "reps": 1999.0,
      "clusters": 26.0
     }
@@ -1524,6 +1549,7 @@
      "ci95_low": 0.2866,
      "ci95_high": 0.6114,
      "p_value": 0.0,
+     "p_value_restricted": 0.0,
      "reps": 1999.0,
      "clusters": 26.0
     }
@@ -1561,6 +1587,7 @@
      "ci95_low": 0.1484,
      "ci95_high": 0.4844,
      "p_value": 0.001,
+     "p_value_restricted": 0.0005,
      "reps": 1999.0,
      "clusters": 26.0
     }
@@ -1601,6 +1628,7 @@
      "ci95_low": -0.427,
      "ci95_high": 0.2806,
      "p_value": 0.6068,
+     "p_value_restricted": 0.6303,
      "reps": 1999.0,
      "clusters": 26.0
     }
@@ -1641,6 +1669,7 @@
      "ci95_low": -1.3573,
      "ci95_high": -0.0893,
      "p_value": 0.025,
+     "p_value_restricted": 0.0215,
      "reps": 1999.0,
      "clusters": 26.0
     }
@@ -1681,6 +1710,7 @@
      "ci95_low": -1.3195,
      "ci95_high": -0.0115,
      "p_value": 0.0415,
+     "p_value_restricted": 0.04,
      "reps": 1999.0,
      "clusters": 26.0
     }
@@ -1721,6 +1751,7 @@
      "ci95_low": -1.0715,
      "ci95_high": 0.2081,
      "p_value": 0.2046,
+     "p_value_restricted": 0.1986,
      "reps": 1999.0,
      "clusters": 26.0
     }
@@ -1761,6 +1792,7 @@
      "ci95_low": -0.9914,
      "ci95_high": 0.3064,
      "p_value": 0.2681,
+     "p_value_restricted": 0.2476,
      "reps": 1999.0,
      "clusters": 26.0
     }
@@ -1799,6 +1831,7 @@
      "ci95_low": -1.0245,
      "ci95_high": 0.5281,
      "p_value": 0.4842,
+     "p_value_restricted": 0.4972,
      "reps": 1999.0,
      "clusters": 26.0
     }
@@ -1835,6 +1868,7 @@
      "ci95_low": -1.1424,
      "ci95_high": 1.5644,
      "p_value": 0.7344,
+     "p_value_restricted": 0.7314,
      "reps": 1999.0,
      "clusters": 26.0
     }
@@ -1871,6 +1905,7 @@
      "ci95_low": 0.2624,
      "ci95_high": 0.7622,
      "p_value": 0.0,
+     "p_value_restricted": 0.0045,
      "reps": 1999.0,
      "clusters": 26.0
     }

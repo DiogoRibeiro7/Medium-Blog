@@ -14,13 +14,14 @@ on:
   workflow_dispatch:
     inputs:
       task:
-        description: Which source to download
+        description: Which source to download, or release-archive to build the archive for a Zenodo upload
         type: choice
         options:
           - mortgage-rates
           - regional
           - affordability
           - rental
+          - release-archive
         default: mortgage-rates
 
 permissions:
@@ -28,7 +29,12 @@ permissions:
 
 jobs:
   test:
+    if: github.event_name != 'workflow_dispatch'
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.10', '3.13']
     defaults:
       run:
         working-directory: portugal-housing-generations
@@ -39,7 +45,11 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.13'
+          python-version: ${{ matrix.python-version }}
+
+      - name: Check the pinned data against their checksums
+        working-directory: portugal-housing-generations/data
+        run: sha256sum --check --strict --quiet SHA256SUMS
 
       - name: Run the tests
         run: python -m unittest discover -p 'test_*.py' -v
@@ -56,12 +66,55 @@ jobs:
             results_integrated.json integrated_panel.csv data_audit.csv
 
       - name: Check that the figure scripts run
+        if: matrix.python-version == '3.13'
         run: |
           python -m pip install matplotlib==3.11.2
           python regional_figures.py
           python affordability_figures.py
           python rental_figures.py
           python integrated_figures.py
+          python report_figures.py
+
+  # Builds the folder archive for a manual Zenodo upload. It reproduces every result
+  # first and uploads the zip and its SHA-256 as a workflow artifact; it creates no
+  # GitHub release, tag or Zenodo record.
+  release-archive:
+    if: github.event_name == 'workflow_dispatch' && inputs.task == 'release-archive'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: portugal-housing-generations
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      - name: Reproduce the release
+        run: |
+          python -m pip install matplotlib==3.11.2
+          python reproduce.py
+
+      - name: Build the archive from the committed folder
+        id: archive
+        run: |
+          version=$(sed -n 's/^version: *//p' CITATION.cff)
+          name="portugal-housing-generations-v${version}"
+          mkdir -p ../dist
+          git archive --format=zip --prefix="${name}/" -o "../dist/${name}.zip" HEAD:portugal-housing-generations
+          (cd ../dist && sha256sum "${name}.zip" > "${name}.zip.sha256" && cat "${name}.zip.sha256")
+          echo "name=${name}" >> "$GITHUB_OUTPUT"
+
+      - name: Upload the archive
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ steps.archive.outputs.name }}
+          path: dist/
+          if-no-files-found: error
 
   # Refreshing the ECB series is a manual, reviewed step: dispatch this workflow
   # on a branch other than main; the job commits the dated raw response and its

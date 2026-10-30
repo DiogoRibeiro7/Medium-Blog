@@ -26,6 +26,15 @@ class HelperTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             RT.band_median({"1": 0.0}, ["1"], labels)
 
+    def test_band_bounds_follow_the_published_labels(self) -> None:
+        self.assertEqual(RT.band_lower_eur("Menos de 20 euros"), 0.0)
+        self.assertEqual(RT.band_upper_eur("Menos de 20 euros"), 20)
+        self.assertEqual(RT.band_upper_eur("De 75 a 99,99 euros"), 100)
+        self.assertEqual(RT.band_lower_eur("De 100 a 149,99 euros"), 100.0)
+        self.assertEqual(RT.band_upper_eur("De 100 a 149,99 euros"), 150)
+        self.assertEqual(RT.band_lower_eur("1000 euros ou mais"), 1000.0)
+        self.assertEqual(RT.band_upper_eur("1000 euros ou mais"), float("inf"))
+
     def test_round_series(self) -> None:
         self.assertEqual(RT.round_series({2021: 1.26, 2020: 3.0}), {"2020": 3.0, "2021": 1.3})
 

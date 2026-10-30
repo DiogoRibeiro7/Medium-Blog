@@ -1,44 +1,105 @@
-# Portugal housing, generations, and political claims
+# Portugal's housing market, 2008–2025: a reproducible descriptive assessment
 
-This is a reproducible *descriptive* check of selected assertions in José Jordão's
-28 October 2026 article, **Habitação, Reforma ou Revolução**. It does not establish
-that housing conditions cause any voting pattern or political instability.
+**Research release v1.0.0.** This folder holds pinned official data, standard-library Python code, tests,
+figures and a research report on house prices, incomes, construction, population and rents in Portugal.
 
-## Run (Python 3.10+, standard library only)
+- **Report:** [`REPORT.md`](REPORT.md) is the consolidated research report: questions, institutional context,
+  data, methods, results, statistical analysis, discussion, limitations and references.
+- **Review log:** [`REVIEW.md`](REVIEW.md) records the scientific and technical review of this release.
+- **Release notes:** [`RELEASE_NOTES_v1.0.0.md`](RELEASE_NOTES_v1.0.0.md).
+
+The work began as a descriptive check of statistics quoted in José Jordão's 28 October 2026 article,
+**Habitação, Reforma ou Revolução**. It does not establish that housing conditions cause any voting pattern or
+political instability, and none of its associations is causal. The sections below document every source,
+definition, check and result in detail.
+
+## Reproducing the release
+
+Requirements: Python 3.10 or later (CI tests 3.10 and 3.13). The analysis uses the standard library only.
+Figures need matplotlib 3.11.2.
 
 ```bash
 cd portugal-housing-generations
-python analysis.py
-python -m unittest discover -p 'test_*.py'
+python reproduce.py                                    # data checksums, tests, rebuild, byte comparison
+pip install matplotlib==3.11.2 && python reproduce.py  # also redraws the figures
 ```
 
-The regional panel (section below) is built by `python regional.py`, which writes
-`results_regional.json` and `regional_panel.csv`; the affordability panel by
-`python affordability.py`, which writes `results_affordability.json` and
-`affordability_panel.csv`; the rental analysis by `python rental.py`, which
-writes `results_rental.json` and `rental_panel.csv`; the integrated assessment by
-`python integrated.py`, which writes `results_integrated.json`,
-`integrated_panel.csv` and `data_audit.csv`. Their figures need matplotlib
-(`pip install matplotlib==3.11.2`, then `python regional_figures.py`,
-`python affordability_figures.py`, `python rental_figures.py` and
-`python integrated_figures.py`). Everything else uses the standard library only.
+`reproduce.py` prints `REPRODUCED` when:
+1. every file in `data/` matches [`data/SHA256SUMS`](data/SHA256SUMS);
+2. the unit tests pass;
+3. the five analysis scripts rebuild their outputs byte for byte.
 
-The workflow `.github/workflows/portugal-housing-generations.yml` runs the tests
-and rebuilds `results.json`, `results_regional.json`, `regional_panel.csv`,
-`results_affordability.json`, `affordability_panel.csv`, `results_rental.json`,
-`rental_panel.csv`, `results_integrated.json`, `integrated_panel.csv` and
-`data_audit.csv` on every pull request;
-the build fails if a committed file differs. `fetch_mortgage_rates.py` is the only script that touches
-the network. It is run by that workflow's manual `fetch-mortgage-rates` job,
-dispatched on a branch other than `main`, which commits the dated response and
-its retrieval record to that branch for review; `analysis.py` never downloads.
+Figures are redrawn too, but byte differences in figures are reported as a warning only, because font
+rendering differs between systems. Individual steps:
 
-`results.json` contains the annual HPI, income, normalized price/income index,
-and arithmetic summaries. To refresh a
-Eurostat source, download the URLs below and replace the dated snapshots; update
-the filename and the script/test defaults as part of a reviewed change. The
-snapshot is intentionally pinned to avoid silent changes when Eurostat revises
-historical values.
+| Step | Command | Writes |
+|---|---|---|
+| National series | `python analysis.py` | `results.json` |
+| Regional population and construction | `python regional.py` | `results_regional.json`, `regional_panel.csv` |
+| Regional purchase affordability | `python affordability.py` | `results_affordability.json`, `affordability_panel.csv` |
+| Rental market | `python rental.py` | `results_rental.json`, `rental_panel.csv` |
+| Integrated assessment | `python integrated.py` | `results_integrated.json`, `integrated_panel.csv`, `data_audit.csv` |
+| Figures | `python regional_figures.py`, `affordability_figures.py`, `rental_figures.py`, `integrated_figures.py`, `report_figures.py` | `figures/*.png` |
+| Tests | `python -m unittest discover -p 'test_*.py'` | — |
+
+`test_report.py` recomputes the numbers quoted in `REPORT.md` from the result files, so the report cannot drift
+from the code.
+
+### Continuous integration and data refreshes
+
+The workflow `.github/workflows/portugal-housing-generations.yml` runs on every pull request that touches this
+folder:
+- the tests, on Python 3.10 and 3.13;
+- a rebuild of every result file, which fails if a committed file differs;
+- the figure scripts.
+
+Data are never downloaded while computing. The workflow's manual jobs (`fetch-mortgage-rates`, `fetch-regional`,
+`fetch-affordability`, `fetch-rental`) download dated snapshots with retrieval records. They are dispatched on a
+branch other than `main` and commit to that branch for review. After a reviewed refresh, run
+`python reproduce.py --write-manifest` to update the checksums. The manual `release-archive` job builds the
+archive for a Zenodo upload (see the release notes); it publishes nothing.
+
+Each Eurostat and INE snapshot is pinned to avoid silent changes when providers revise historical values. To
+refresh a source, replace the dated snapshot, update the file name and the script and test defaults, and
+review the change.
+
+## Repository map
+
+| Path | Contents |
+|---|---|
+| `data/` | 63 pinned source files (INE `.jsonl.gz` containers, Eurostat and ECB JSON with `.meta.json` retrieval records, one PORDATA transcription) and `SHA256SUMS` |
+| `analysis.py`, `regional.py`, `affordability.py`, `rental.py`, `integrated.py` | Analysis pipelines (one per release stage) |
+| `regional_core.py`, `affordability_core.py`, `rental_core.py`, `panel_stats.py` | Parsers, geography, index and decomposition helpers, and the panel estimators (OLS, CR1, wild cluster bootstrap) |
+| `fetch_*.py` | Downloaders used only by the manual workflow jobs |
+| `results*.json`, `*_panel.csv`, `data_audit.csv` | Generated results, committed and checked in CI |
+| `*_figures.py`, `report_figures.py`, `figures/` | Figure scripts and the 19 figures |
+| `test_*.py` | Unit, snapshot, pinned-result and report-claim tests |
+| `reproduce.py` | One-command reproduction |
+| `REPORT.md`, `REVIEW.md`, `RELEASE_NOTES_v1.0.0.md` | Report, review log, release notes |
+| `CITATION.cff`, `.zenodo.json` | Citation and archive metadata |
+
+## Citing and licences
+
+Cite the release with the metadata in [`CITATION.cff`](CITATION.cff):
+
+> Ribeiro, D. (2026). *Prices, incomes, construction and rents in Portugal's housing market, 2008–2025: a
+> reproducible descriptive assessment* (Version 1.0.0) [Research release]. https://github.com/DiogoRibeiro7/Medium-Blog/tree/main/portugal-housing-generations
+
+A DOI will be added when the release is archived on Zenodo.
+
+- **Code and documentation** are covered by the repository's Apache License 2.0.
+- **Third-party data** in `data/` remain under their providers' terms, and are redistributed here unmodified for
+  reproducibility:
+  - Eurostat: Eurostat's copyright notice permits re-use with acknowledgement of the source;
+  - European Central Bank: publicly available ESCB statistics "may be reused free of charge on the condition
+    that the source is quoted", without modification
+    ([ECB usage policy](https://www.ecb.europa.eu/stats/ecb_statistics/governance_and_quality_framework/html/usage_policy.en.html));
+  - INE (Statistics Portugal): see INE's terms of use;
+  - PORDATA: the national completions series is transcribed from PORDATA's republication of INE data; see
+    PORDATA's terms of use.
+
+  The INE and PORDATA terms were not re-checked for this release. Check each provider's current terms before
+  redistributing the data.
 
 ## Sources and definitions
 
@@ -440,8 +501,8 @@ and `fig_regional_growth_and_construction.png`.
   household size, prices, incomes and where people would live if they could; a low
   rate can reflect scarce land, regulation or weak demand alike.
 - Associations between regional population growth and construction are
-  descriptive. Both respond to employment, migration, prices, credit and land, and
-  causality can run either way.
+  descriptive. Both can respond to employment, migration, prices, credit and land,
+  and causality can run either way.
 - Permits and completions are different stages, not matched cohorts; a permit
   ratio above completions does not say how many permitted dwellings will be built.
 - Rates use the population of the same year (31 December). Before and after 2021
@@ -739,7 +800,7 @@ Every INE response is stored with its SHA-256, and every Eurostat body with a
   every year 2020–2024. INE's second quartile equals its published median in
   every cell.
 - **Method 2021 vs 2026** (2020–2024): the median NUTS 3 difference is 2.1%, and
-  75% of cells are within 5%. For Portugal the 2026 method is 3–6% higher, and
+  75% of cells are within 5%. For Portugal the 2026 method is 3.2–6.3% higher, and
   annual growth over 2020–2024 is 10.0% against 9.2% under the 2021 method.
   Only the 2026 method is used for 2020–2025.
 - The 2021-method tables on NUTS 2013 and NUTS 2024 are identical in all 88
@@ -803,7 +864,7 @@ different populations, not the rent any household pays.
     and 16% before 1991;
   - in the Lisboa and Porto municipalities, 24% and 26% of unsupported tenancies
     were pre-1991 contracts;
-  - pre-1987 contracts had a median rent band of €100–150, with 68% below €100;
+  - pre-1987 contracts had a median rent band of €100–150, with 49% below €100;
     contracts from 2017–2021 had a median band of €300–400, with 30% at €500 or
     more.
 - *Rent share:* EU-SILC's share of rent in disposable household income
@@ -853,9 +914,10 @@ a given household pays:
 - **Turnover in the stock.** The census mean rises when old, low-rent contracts
   end, even if no existing rent changes. The HICP tries to hold the tenancy
   constant, which is why it rises much less.
-- **Tenure composition.** More people in market-rent tenure raises the national
-  overburden rate even when each group's rate is flat. This accounts for all of
-  the 2019–2025 rise.
+- **Tenure composition.** More people in market-rent tenure arithmetically raises
+  the national overburden rate even when each group's rate is flat. In the
+  shift-share decomposition it accounts for all of the 2019–2025 rise; this is an
+  accounting identity, not an explanation of why tenure changed.
 - **Who rents.** Renters' median equivalised income stayed between 0.74 and 0.86
   times owners' since 2004 (0.75 in 2025), so the gap between the two groups
   shows no trend.
@@ -971,8 +1033,11 @@ year. A value that is published, even an imprecise one, is never dropped.
   - cluster-robust (CR1) standard errors by municipality;
   - a wild cluster bootstrap-t by NUTS 3 region (26 clusters, Rademacher
     weights, 1,999 replications) to allow for spatial correlation within
-    regions. The intervals quoted below are the bootstrap ones unless stated
-    otherwise.
+    regions. The intervals quoted below come from the unrestricted bootstrap
+    (WCU) unless stated otherwise. P-values come from the restricted bootstrap
+    (WCR), which imposes the null hypothesis when resampling and is more
+    reliable with few clusters (MacKinnon and Webb, 2017). The two p-values
+    differ by at most 0.024, and none falls on the other side of 0.05.
 - *Diagnostics:*
   - *Within variation:* the share of each regressor's variance left after the
     fixed effects.
@@ -985,14 +1050,16 @@ year. A value that is published, even an imprecise one, is never dropped.
     - dropping the 5% most influential municipalities (one-step DFBETA).
 - *Verdicts.* An association is called **robust** only if all of these hold:
   - the regressor keeps at least 1% of its variance after the fixed effects;
-  - the bootstrap interval excludes zero;
+  - the bootstrap interval excludes zero and the restricted-bootstrap p-value is
+    below 0.05;
   - the sign holds in first differences, without any single NUTS 3 region and
     without the metropolitan areas;
   - the sign is shared by at least 80% of all specifications of the same
     regressor.
 
-  It is **fragile** if the interval excludes zero but some other check fails,
-  and **not supported** otherwise.
+  It is **fragile** if the bootstrap test rejects zero but some other check
+  fails, and **not supported** otherwise. The rule is mechanical: the completions
+  association passes it but is shown below to reflect the sale mix.
 
 ### Layer 1: robust descriptive findings
 
@@ -1088,7 +1155,7 @@ These are within-municipality estimates.
   - 0.43 without the metropolitan areas;
   - 0.43 without the most influential municipalities.
 - *Serial correlation:* the Wooldridge slope (−0.46) supports fixed effects.
-- *Reading:* both prices and rents respond to local demand and supply, so this
+- *Reading:* both prices and rents are likely to respond to local demand and supply, so this
   is a co-movement, not one causing the other. Little within variation remains
   in rents (1.8%), so measurement error in the medians probably biases the
   estimate towards zero.
