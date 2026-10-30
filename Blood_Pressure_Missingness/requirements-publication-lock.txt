@@ -9,7 +9,7 @@
 
 asttokens==3.0.2
 attrs==26.1.0
-certifi==2026.7.22
+certifi==2026.10.18
 cffi==2.1.1
 charset-normalizer==3.5.1
 comm==0.2.3
@@ -42,13 +42,13 @@ nbclient==0.11.0
 nbformat==5.11.1
 nest-asyncio2==1.7.2
 numpy==2.5.3
-oauthlib==3.3.1
+oauthlib==4.0.0
 packaging==26.3
 pandas==3.0.5
 parso==0.8.7
 patsy==1.0.3
 pexpect==4.9.0
-pillow==12.3.0
+pillow==13.0.0
 platformdirs==4.11.8
 prompt-toolkit==3.0.53
 psutil==7.2.2
@@ -69,7 +69,7 @@ scipy==1.18.1
 six==1.17.0
 stack-data==0.6.3
 statsmodels==0.15.0
-tornado==6.5.10
+tornado==6.6
 traitlets==5.16.1
 typing-extensions==4.16.0
 urllib3==2.8.0
