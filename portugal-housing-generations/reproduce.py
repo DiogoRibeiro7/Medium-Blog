@@ -23,6 +23,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import importlib.util
+import os
 import subprocess
 import sys
 from pathlib import Path
@@ -141,13 +142,18 @@ def main() -> int:
             if run([sys.executable, script], quiet=True) != 0:
                 failures += 1
         diff = [f for f in sorted((HERE / "figures").glob("*.png")) if before_png.get(f.name) != f.read_bytes()]
+        on_ci = os.environ.get("GITHUB_ACTIONS") == "true"  # also report as annotations readable through the API
         if not diff:
             print("4. figures: all byte-identical")
+            if on_ci:
+                print(f"::notice title=Figures::all {len(figures)} figures byte-identical to the committed PNGs")
         else:
             print(f"4. figures: {len(diff)} differ in bytes (warning; check visually):")
             for f in diff:
                 detail = pixel_difference(before_png[f.name], f.read_bytes()) if f.name in before_png else "new file"
                 print(f"   {f.name}: {detail}")
+                if on_ci:
+                    print(f"::warning title=Figure drift::{f.name}: {detail}")
     print("REPRODUCED" if failures == 0 else "NOT REPRODUCED")
     return 0 if failures == 0 else 1
 
