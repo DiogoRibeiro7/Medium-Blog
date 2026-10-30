@@ -780,7 +780,7 @@ def write_results(study: Study, directory: Path, *, quick: bool = False) -> None
             raise ValueError("unexpected or empty result table")
         target = directory / name.replace(".csv", "_quick.csv" if quick else ".csv")
         with target.open("w", newline="", encoding="utf-8") as stream:
-            writer = csv.DictWriter(stream, fieldnames=list(data[0]))
+            writer = csv.DictWriter(stream, fieldnames=list(data[0]), lineterminator="\n")
             writer.writeheader()
             writer.writerows(data)
 
