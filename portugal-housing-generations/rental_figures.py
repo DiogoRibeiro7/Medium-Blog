@@ -23,7 +23,7 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
-from regional_figures import AQUA, BLUE, GREY, GRID, INK, INK2, MUTED, ORANGE
+from regional_figures import AQUA, BLUE, GRID, INK, INK2, MUTED, ORANGE
 
 HERE = Path(__file__).parent
 OUT = HERE / "figures"

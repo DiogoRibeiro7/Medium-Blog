@@ -242,7 +242,11 @@ def strip(model: dict[str, Any]) -> dict[str, Any]:
 
 
 def influence(model: dict[str, Any], panel: Panel, geo: R.Geography, refit: Callable[[list[str]], dict[str, Any]]) -> dict[str, Any]:
-    """Leave-one-NUTS3-out range, dropping Lisbon/Porto metro areas, and dropping the 5% most influential municipalities."""
+    """Leave-one-NUTS3-out range, dropping Lisbon/Porto metro areas, and dropping the 5% most influential municipalities.
+
+    Influence is the one-step DFBETA of each municipality on the first regressor
+    of the specification (the coefficient of interest in every model here).
+    """
     internal = model["_internal"]
     sample, fit = internal["sample"], internal["fit"]
     names = model["spec"]["x"]
@@ -581,7 +585,7 @@ def main() -> None:  # noqa: C901 - one linear pipeline, kept in one place for a
         loo = d["leave_one_nuts3_out"][x]
         checks = {
             "regressor_keeps_at_least_1pct_of_variance_after_fixed_effects": share is not None and share >= 0.01,
-            "wild_bootstrap_interval_excludes_zero": wb["ci95_low"] > 0 or wb["ci95_high"] < 0,
+            "wild_bootstrap_interval_excludes_zero": (wb["ci95_low"] > 0 or wb["ci95_high"] < 0) and wb["p_value_restricted"] < 0.05,
             "same_sign_in_first_differences": est * d["fe_vs_fd"][x]["fd"] > 0,
             "same_sign_leaving_out_any_nuts3": loo["min"] * loo["max"] > 0 and loo["min"] * est > 0,
             "same_sign_without_lisbon_porto_metro": d["without_lisbon_and_porto_metro"][x]["estimate"] * est > 0,

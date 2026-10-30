@@ -130,11 +130,17 @@ def ols(x: Sequence[Vector], y: Vector, clusters: Sequence[Hashable], names: lis
 
 def wild_cluster_bootstrap(x: Sequence[Vector], y: Vector, clusters: Sequence[Hashable], j: int,
                            reps: int = 1999, seed: int = 20261029) -> dict[str, float]:
-    """Unrestricted wild cluster bootstrap-t (Rademacher weights) for coefficient ``j``.
+    """Wild cluster bootstrap-t (Rademacher weights) for coefficient ``j``.
 
     Re-uses X'X: each replication only re-weights the cluster scores, so the
-    bootstrap is exact for the linear model and cheap. Returns a percentile-t 95%
-    interval and the bootstrap p-value for beta_j = 0 (symmetric).
+    bootstrap is exact for the linear model and cheap. Returns
+
+    * a percentile-t 95% interval from the unrestricted bootstrap (WCU);
+    * the symmetric p-value for beta_j = 0 from the unrestricted bootstrap; and
+    * the symmetric p-value from the restricted bootstrap (WCR), which imposes
+      beta_j = 0 when generating the bootstrap samples and is the better-behaved
+      test with few or unequal clusters (Cameron, Gelbach and Miller 2008;
+      MacKinnon and Webb 2017).
     """
     fit = ols(x, y, clusters, [str(i) for i in range(len(x[0]))])
     k = len(x[0])
@@ -167,8 +173,38 @@ def wild_cluster_bootstrap(x: Sequence[Vector], y: Vector, clusters: Sequence[Ha
     lo_q, hi_q = quantile(t_stats, 0.025), quantile(t_stats, 0.975)
     t_obs = fit.beta[j] / fit.se[j] if fit.se[j] > 0 else float("inf")
     p_value = sum(1 for t in t_stats if abs(t) >= abs(t_obs)) / len(t_stats)
+
+    # Restricted bootstrap: residuals and fitted values of the model without regressor j.
+    if k == 1:
+        y_null, u_null = [0.0] * n, list(y)
+    else:
+        xr = [[row[c] for c in range(k) if c != j] for row in x]
+        restricted = ols(xr, y, clusters, [str(c) for c in range(k - 1)])
+        u_null = restricted.resid
+        y_null = [yi - ui for yi, ui in zip(y, u_null, strict=True)]
+    b_null = matvec(a, [sum(row[c] * yi for row, yi in zip(x, y_null, strict=True)) for c in range(k)])
+    s_null = {g: [sum(x[i][c] * u_null[i] for i in groups[g]) for c in range(k)] for g in keys}
+    f_null = {g: [sum(x[i][c] * y_null[i] for i in groups[g]) for c in range(k)] for g in keys}
+    rng_r = random.Random(seed + 1)
+    exceed, valid = 0, 0
+    for _ in range(reps):
+        v = {g: (1.0 if rng_r.random() < 0.5 else -1.0) for g in keys}
+        total = [sum(v[g] * s_null[g][c] for g in keys) for c in range(k)]
+        beta_star = [b + d for b, d in zip(b_null, matvec(a, total), strict=True)]
+        meat = [[0.0] * k for _ in range(k)]
+        for g in keys:
+            mb = matvec(m[g], beta_star)
+            sg = [f_null[g][c] + v[g] * s_null[g][c] - mb[c] for c in range(k)]
+            for p in range(k):
+                for q in range(k):
+                    meat[p][q] += sg[p] * sg[q]
+        var_j = adj * sum(a[j][p] * meat[p][q] * a[q][j] for p in range(k) for q in range(k))
+        if var_j > 0:
+            valid += 1
+            exceed += abs(beta_star[j] / math.sqrt(var_j)) >= abs(t_obs)
     return {"ci95_low": fit.beta[j] - hi_q * fit.se[j], "ci95_high": fit.beta[j] - lo_q * fit.se[j],
-            "p_value": p_value, "reps": float(len(t_stats)), "clusters": float(g_count)}
+            "p_value": p_value, "p_value_restricted": exceed / valid if valid else float("nan"),
+            "reps": float(len(t_stats)), "clusters": float(g_count)}
 
 
 def two_way_within(values: Mapping[tuple[U, int], float], units: Sequence[U], years: Sequence[int]) -> dict[tuple[U, int], float]:

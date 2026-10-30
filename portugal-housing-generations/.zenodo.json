@@ -1,0 +1,38 @@
+{
+  "upload_type": "publication",
+  "publication_type": "report",
+  "title": "Prices, incomes, construction and rents in Portugal's housing market, 2008–2025: a reproducible descriptive assessment",
+  "version": "1.0.0",
+  "publication_date": "2026-10-30",
+  "language": "eng",
+  "creators": [
+    {
+      "name": "Ribeiro, Diogo",
+      "orcid": "0009-0001-2022-7072",
+      "affiliation": "ESMAD – Escola Superior de Media Artes e Design, Politécnico do Porto"
+    }
+  ],
+  "description": "<p>Research release v1.0.0: a reproducible descriptive assessment of house prices, incomes, construction, population and rents in Portugal, its 9 NUTS 2 and 26 NUTS 3 regions and 308 municipalities, 2008–2025.</p><p>The archive contains the research report (REPORT.md), 63 pinned source files from INE, Eurostat and the ECB with SHA-256 checksums, standard-library Python code, unit and reproduction tests, generated results and 19 figures. Running <code>python reproduce.py</code> verifies the checksums, runs the tests and rebuilds every result byte for byte.</p><p>The report separates established descriptive findings, descriptive associations and unresolved causal hypotheses. None of its associations is causal.</p><p>Code and documentation: Apache License 2.0. Third-party data remain under their providers' terms (Eurostat, INE, ECB, PORDATA) and are redistributed unmodified with source acknowledgement.</p>",
+  "access_right": "open",
+  "license": "Apache-2.0",
+  "keywords": [
+    "housing affordability",
+    "house prices",
+    "rents",
+    "Portugal",
+    "NUTS regions",
+    "official statistics",
+    "panel data",
+    "wild cluster bootstrap",
+    "reproducibility"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/DiogoRibeiro7/Medium-Blog/tree/portugal-housing-generations-v1.0.0/portugal-housing-generations",
+      "relation": "isSupplementTo",
+      "resource_type": "software",
+      "scheme": "url"
+    }
+  ],
+  "notes": "Built by the release-archive task of .github/workflows/portugal-housing-generations.yml from the tag portugal-housing-generations-v1.0.0. The archive's SHA-256 is published with the workflow artifact."
+}

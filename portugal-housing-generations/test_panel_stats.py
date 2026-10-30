@@ -67,6 +67,15 @@ class OlsTests(unittest.TestCase):
         self.assertLess(boot["ci95_low"], 0.8)
         self.assertGreater(boot["ci95_high"], 0.8)
         self.assertLess(boot["p_value"], 0.01)
+        self.assertLess(boot["p_value_restricted"], 0.01)
+        # Under a true null the restricted p-value is not small.
+        y0 = {(u, t): alpha[u] + gamma[t] + rng.gauss(0, 0.5) for u in units for t in years}
+        wy0 = S.two_way_within(y0, units, years)
+        null = S.wild_cluster_bootstrap([[wx[k]] for k in keys], [wy0[k] for k in keys], [k[0] % 12 for k in keys], 0, reps=499)
+        self.assertGreater(null["p_value_restricted"], 0.05)
+        # With two regressors the restricted bootstrap drops only the tested one.
+        two = S.wild_cluster_bootstrap([[wx[k], wy0[k]] for k in keys], [wy[k] for k in keys], [k[0] % 12 for k in keys], 0, reps=199)
+        self.assertLess(two["p_value_restricted"], 0.05)
         self.assertGreater(S.within_share(x, units, years), 0.0)
         with self.assertRaises(ValueError):
             S.two_way_within({(0, 2015): 1.0}, [0], [2015, 2016])
