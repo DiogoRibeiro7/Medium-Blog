@@ -224,6 +224,11 @@ CLAIMS: list[tuple[str, float, int, Callable[[], float]]] = [
     ("The 2026 method is 3.2–6.3% higher", 6.3, 1, lambda: 100 * (
         get("results_rental.json", "methods_and_windows.portugal.2024.method_2026")
         / get("results_rental.json", "methods_and_windows.portugal.2024.method_2021") - 1)),
+    # External figures quoted in the report (recorded in results.json, not computed from pinned data)
+    ("1,104,881 (18.5%) were secondary residences", 18.5, 1, nat("descriptives.secondary_dwellings_2021_pct")),
+    ("723,215 (12.1%) were vacant", 12.1, 1, nat("descriptives.vacant_dwellings_2021_pct")),
+    ("about 60% for 1977–1986 and about 40% for 1987–1996", 60, 0, nat("descriptives.owner_1977_1986_pct")),
+    ("about 60% for 1977–1986 and about 40% for 1987–1996", 40, 0, nat("descriptives.owner_1987_1996_pct")),
     # HICP interpretation and the completions composition check
     ("was 23.1% in 2015, 25.1% in 2024 and 24.0% in 2025", 23.1, 1,
      ren("affordability.share_of_rent_in_disposable_income_pct.TOTAL.2015")),

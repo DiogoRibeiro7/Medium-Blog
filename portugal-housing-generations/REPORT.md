@@ -2,12 +2,13 @@
 
 **A reproducible descriptive assessment**
 
-Diogo Ribeiro · ORCID [0009-0001-2022-7072](https://orcid.org/0009-0001-2022-7072) · dfr@esmad.ipp.pt
+Diogo Ribeiro · Faculdade de Media Artes e Design, Universidade Técnica do Porto · ORCID
+[0009-0001-2022-7072](https://orcid.org/0009-0001-2022-7072) · dfr@esmad.ipp.pt
 
-Research release **v1.0.0** · 30 October 2026 · data snapshot of 29 October 2026
+Research release **v1.0.0** · prepared 30 October 2026 · data snapshot of 29 October 2026
 
-How to cite: see [`CITATION.cff`](CITATION.cff). Code: Apache License 2.0 (repository licence). Third-party data remain
-under their providers' terms (see [Citing and licences](README.md#citing-and-licences)).
+How to cite: see [`CITATION.cff`](CITATION.cff). Code and documentation: Apache License 2.0 (repository licence).
+Third-party data are not relicensed; they remain under their providers' terms (see [`DATA_SOURCES.md`](DATA_SOURCES.md)).
 
 ---
 
@@ -99,12 +100,18 @@ then recovered from 2014 (Lourenço and Rodrigues, 2017). The Eurostat index use
 - completions fell from 125,708 dwellings in 2002 to 7,148 in 2015;
 - dwellings in new-building permits fell from 73.9 thousand (2005) to 8.6 thousand (2015).
 
-The cost of mortgage credit fell to historical lows in 2020–2021 and roughly quintupled by 2023. The Banco de
-Portugal reports that the share of families who own their home, among those whose representative is aged 25–34,
-was 61% for the cohorts born in 1977–1986 and 42% for those born in 1987–1996 (Banco de Portugal, 2023). This is
-a fall in young-adult ownership across cohorts that this release cites but cannot recompute. The OECD reports
-that, of the 2021 dwelling stock, 12% was vacant and 19% was used as secondary or holiday homes (OECD, 2026).
-These categories do not measure supply that is immediately available to the market.
+The cost of mortgage credit fell to historical lows in 2020–2021 and roughly quintupled by 2023.
+
+Home ownership among young households has fallen across cohorts. Banco de Portugal economists used the censuses
+of 1981–2021 to measure the share of households that own their home when the household's reference person is
+aged 25–34. That share fell from about 70% for those born in 1967–1976 to about 60% for 1977–1986 and about 40%
+for 1987–1996 (Costa et al., 2023; the slides give these rounded values, and press reports of the study give 61%
+and 42% for the last two cohorts). This release cites the figures but cannot recompute them.
+
+The 2021 census counted 5,970,677 conventional dwellings. Of these, 1,104,881 (18.5%) were secondary residences
+and 723,215 (12.1%) were vacant (INE indicator 0011495). The vacant dwellings comprise 348,097 for sale or rent
+and 375,118 vacant for other reasons. None of these categories measures supply that is immediately available to
+the market.
 
 ### 3.2 Institutions that bear on the indicators
 
@@ -778,8 +785,10 @@ Several comparisons that are common in public debate would mislead, and this rel
   - With 26 NUTS 3 clusters, wild-bootstrap inference is approximate.
   - Spatial correlation between regions is not modelled.
   - National time series are too short for formal dynamic analysis.
-- **External figures.** The Banco de Portugal cohort ownership shares and the OECD vacancy and secondary-home
-  shares are cited from publications and cannot be recomputed from the pinned data.
+- **External figures.** The cohort ownership shares (Costa et al., 2023) and the 2021 census occupancy counts (INE
+  indicator 0011495) are quoted, not computed from the pinned data. The cohort shares were checked against the
+  authors' slides, which give rounded values. The text of the October 2023 *Boletim Económico* article could not
+  be retrieved to confirm the press-reported 61% and 42%.
 - **Scope.** The release describes 2008–2025 and does not forecast. It evaluates no policy.
 
 ## 10. Conclusions
@@ -806,8 +815,10 @@ Banco de Portugal (2022). *Recommendation within the scope of new credit agreeme
 version, applicable from 1 April 2022).
 https://www.bportugal.pt/sites/default/files/documents/2024-01/31012022_Recomendacao_versao_alteradora_EN.pdf
 
-Banco de Portugal (2023). *Boletim Económico*, outubro de 2023.
-https://www.bportugal.pt/sites/default/files/anexos/pdf-boletim/be_out2023_p.pdf
+Costa, S., Farinha, L., Lourenço, N. and Mesquita, R. (2023). Habitação em Portugal nos últimos 40 anos: regime
+de ocupação e recurso ao crédito. *Boletim Económico*, Banco de Portugal, outubro de 2023 (Tema em destaque),
+https://www.bportugal.pt/sites/default/files/anexos/pdf-boletim/be_out2023_p.pdf. Presentation slides, 21 November
+2023 (slides 10 and 12): https://www.bportugal.pt/sites/default/files/forum_economia_habitacao_portugal.pdf
 
 Barron, K., Kung, E. and Proserpio, D. (2021). The effect of home-sharing on house prices and rents: Evidence
 from Airbnb. *Marketing Science*, 40(1), 23–47.
@@ -854,6 +865,10 @@ Hill, G. W. (1970). Algorithm 396: Student's t-quantiles. *Communications of the
 INE, Instituto Nacional de Estatística (2014). *Inquérito às Rendas de Habitação (IRH): documento
 metodológico*, version 2.1. https://www.ine.pt/ngt_server/attachfileu.jsp?look_parentBoui=262060895&att_display=n&att_download=y
 
+INE, Instituto Nacional de Estatística (2021). Censos 2021, indicator 0011495: Alojamentos familiares clássicos
+(N.º) por forma de ocupação. https://www.ine.pt/ine/json_indicador/pindica.jsp?op=2&varcd=0011495&Dim1=S7A2021&Dim2=PT&lang=PT
+(accessed 30 October 2026).
+
 INE, Instituto Nacional de Estatística. Indicator metadata for each code in Section 4.1:
 `https://www.ine.pt/bddXplorer/htdocs/minfo.jsp?var_cd=<code>&lingua=PT`.
 
@@ -865,10 +880,6 @@ Lourenço, R. F. and Rodrigues, P. M. M. (2017). House prices in Portugal — wh
 
 MacKinnon, J. G. and Webb, M. D. (2017). Wild bootstrap inference for wildly different cluster sizes. *Journal
 of Applied Econometrics*, 32(2), 233–254.
-
-OECD (2026). *OECD Economic Surveys: Portugal 2026*, chapter "Tackling Portugal's housing affordability
-challenge".
-https://www.oecd.org/en/publications/oecd-economic-surveys-portugal-2026_025b3445-en/full-report/tackling-portugal-s-housing-affordability-challenge-promoting-sustainable-and-inclusive-housing_c920df36.html
 
 Portugal. Lei n.º 6/2006, de 27 de fevereiro (Novo Regime do Arrendamento Urbano); Lei n.º 31/2012, de 14 de
 agosto; Decreto-Lei n.º 249/2009, de 23 de setembro (residentes não habituais); Decreto-Lei n.º 128/2014, de 29
@@ -895,7 +906,9 @@ python reproduce.py            # checks data/SHA256SUMS, runs the tests, rebuild
 pip install matplotlib==3.11.2 && python reproduce.py   # also redraws the 21 figures
 ```
 
-`reproduce.py` prints `REPRODUCED` when every check passes. Individual steps:
+`reproduce.py` prints `REPRODUCED` when every check passes. Figures are compared byte for byte and, where bytes
+differ, pixel by pixel; any difference is reported as a warning (see the README). `DATA_SOURCES.md` lists the
+provider, terms and redistribution status of every data file. Individual steps:
 
 | Step | Command | Output |
 |---|---|---|

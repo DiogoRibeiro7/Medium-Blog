@@ -61,20 +61,18 @@ jobs:
           python affordability.py > /dev/null
           python rental.py > /dev/null
           python integrated.py > /dev/null
+          python data_sources.py > /dev/null
           git diff --exit-code -- results.json results_regional.json regional_panel.csv \
             results_affordability.json affordability_panel.csv results_rental.json rental_panel.csv \
-            results_integrated.json integrated_panel.csv data_audit.csv
+            results_integrated.json integrated_panel.csv data_audit.csv DATA_SOURCES.csv
 
-      - name: Check that the figure scripts run
+      # Redraws every figure and reports, as a warning, any PNG whose bytes or pixels
+      # differ from the committed one; it fails only if a script fails.
+      - name: Reproduce the release, including the figures
         if: matrix.python-version == '3.13'
         run: |
           python -m pip install matplotlib==3.11.2
-          python regional_figures.py
-          python affordability_figures.py
-          python rental_figures.py
-          python integrated_figures.py
-          python report_figures.py
-          python article_figures.py
+          python reproduce.py
 
   # Builds the folder archive for a manual Zenodo upload. It reproduces every result
   # first and uploads the zip and its SHA-256 as a workflow artifact; it creates no
@@ -99,6 +97,11 @@ jobs:
         run: |
           python -m pip install matplotlib==3.11.2
           python reproduce.py
+
+      # Stops here while any data file's redistribution has not been established
+      # (see DATA_SOURCES.md), so no such file reaches a public archive.
+      - name: Check that every data file may be redistributed
+        run: python data_sources.py --check-redistribution
 
       - name: Build the archive from the committed folder
         id: archive

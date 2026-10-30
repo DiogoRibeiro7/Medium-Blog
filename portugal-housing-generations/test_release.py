@@ -15,6 +15,9 @@ import reproduce
 HERE = Path(__file__).parent
 VERSION = "1.0.0"
 ORCID = "0009-0001-2022-7072"
+# Portaria n.º 332-A/2026/1 (11 August 2026): the Politécnico do Porto became the Universidade Técnica do Porto,
+# with the Faculdade de Media Artes e Design (FMAD) among its units.
+AFFILIATION = "Faculdade de Media Artes e Design, Universidade Técnica do Porto"
 
 
 def cff_field(text: str, key: str) -> str:
@@ -56,13 +59,36 @@ class MetadataTests(unittest.TestCase):
         self.assertEqual(zenodo["version"], VERSION)
         self.assertEqual(cff_field(cff, "title"), zenodo["title"])
         self.assertEqual(cff_field(cff, "license"), zenodo["license"])
-        self.assertEqual(cff_field(cff, "date-released"), zenodo["publication_date"])
         self.assertIn(f"https://orcid.org/{ORCID}", cff)
         self.assertEqual([c["orcid"] for c in zenodo["creators"]], [ORCID])
         self.assertIn(f"-v{VERSION}", zenodo["related_identifiers"][0]["identifier"])
+        self.assertEqual(cff.count(f'affiliation: "{AFFILIATION}"'), 2)
+        self.assertEqual([c["affiliation"] for c in zenodo["creators"]], [AFFILIATION])
+        self.assertIn("email: dfr@esmad.ipp.pt", cff)
+
+    def test_no_release_date_or_doi_before_the_release_exists(self) -> None:
+        """The date and DOI are set when the tag and the Zenodo deposit exist; none may be invented before."""
+        cff = (HERE / "CITATION.cff").read_text(encoding="utf-8")
+        zenodo = json.loads((HERE / ".zenodo.json").read_text(encoding="utf-8"))
+        self.assertNotIn("date-released", cff)
+        self.assertNotIn("doi", cff.lower().replace("doi.org/10.2908", ""))
+        self.assertNotIn("publication_date", zenodo)
+        self.assertNotIn("doi", zenodo)
+        for name in ("README.md", "REPORT.md", "RELEASE_NOTES_v1.0.0.md", "RELEASE_CHECKLIST_v1.0.0.md"):
+            with self.subTest(file=name):
+                self.assertNotRegex((HERE / name).read_text(encoding="utf-8"), r"10\.5281/zenodo")
+
+    def test_licence_statements_do_not_relicense_third_party_data(self) -> None:
+        zenodo = json.loads((HERE / ".zenodo.json").read_text(encoding="utf-8"))
+        self.assertIn("Third-party data are not relicensed", zenodo["description"])
+        readme = (HERE / "README.md").read_text(encoding="utf-8")
+        self.assertIn("are **not** relicensed under Apache-2.0", readme)
+        self.assertIn("are **not** relicensed under Apache-2.0", (HERE / "DATA_SOURCES.md").read_text(encoding="utf-8"))
 
     def test_release_documents_name_the_version(self) -> None:
-        self.assertIn(f"v{VERSION}", (HERE / "REPORT.md").read_text(encoding="utf-8").splitlines()[6])
+        header = "\n".join((HERE / "REPORT.md").read_text(encoding="utf-8").splitlines()[:10])
+        self.assertIn(f"Research release **v{VERSION}**", header)
+        self.assertIn(AFFILIATION, header.replace("\n", " "))
         notes = HERE / f"RELEASE_NOTES_v{VERSION}.md"
         self.assertTrue(notes.exists())
         self.assertIn(f"v{VERSION}", notes.read_text(encoding="utf-8"))

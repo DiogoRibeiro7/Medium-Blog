@@ -118,11 +118,15 @@ def summarize(series: dict[int, float]) -> dict[str, float | int]:
         "hpi_2025": series[2025],
         "growth_2015_2025_pct": round(100 * (series[2025] / series[2015] - 1), 2),
         "growth_2024_2025_pct": round(100 * (series[2025] / series[2024] - 1), 2),
-        "owner_1977_1986_pct": 61,
-        "owner_1987_1996_pct": 42,
-        "owner_gap_percentage_points": 42 - 61,
-        "vacant_dwellings_2021_pct": 12,
-        "secondary_dwellings_2021_pct": 19,
+        # External figures, quoted and not computed from the pinned data (see README, Sources 2 and 3).
+        # Households whose reference person is aged 25-34, by birth cohort, Censos 1981-2021: "70%" (1967-76),
+        # "60%" (1977-86) and "40%" (1987-96), as rounded in Costa, Farinha, Lourenço and Mesquita (2023).
+        "owner_1977_1986_pct": 60,
+        "owner_1987_1996_pct": 40,
+        "owner_gap_percentage_points": 40 - 60,
+        # INE, Censos 2021, indicator 0011495: 723,215 vacant and 1,104,881 secondary of 5,970,677 dwellings.
+        "vacant_dwellings_2021_pct": round(100 * 723_215 / 5_970_677, 1),
+        "secondary_dwellings_2021_pct": round(100 * 1_104_881 / 5_970_677, 1),
     }
 
 
