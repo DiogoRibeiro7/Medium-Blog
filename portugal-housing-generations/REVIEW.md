@@ -79,8 +79,8 @@ Both are labelled as external in the report.
 - Breaks are never crossed: population 2020/2021, price methods 2018/2022, rent methods 2021/2026.
 
 **Cross-checks recorded in the results:**
-- The transcribed PORDATA completions series equals INE's municipal series summed to Portugal in every year
-  2011–2025.
+- The national completions series (INE 0000076, which replaced the PORDATA transcription) equals INE's municipal
+  series summed to Portugal in every year 2011–2025.
 - INE's administrative-based population exceeds Eurostat's by 1.7–5.9% in 2021–2024. This is documented as
   uncertainty about recent growth.
 - The 2025 overburden total is 6.3% in `ilc_lvho07a` and 6.2% in `ilc_lvho07c`. Each table is used only for its
@@ -254,8 +254,19 @@ values are unchanged. Only definition and note strings in two result files and l
 - *PORDATA:* the legal terms (updated 19.07.2024) claim copyright and related rights and grant no reuse licence,
   so redistribution of the transcribed national completions series has not been established.
 
-The archive task now stops while such a file exists. `DATA_SOURCES.md` gives three routes to clear it. The file
-remains in the public GitHub repository, which is a decision for the maintainer.
+The archive task now stops while such a file exists.
+
+**Resolution of the PORDATA blocker (30 October 2026).** The transcription was replaced by INE indicator 0000076
+(NUTS 2002 by typology, 1995–2025), found in INE's indicator catalogue and fetched for Portugal through the
+workflow task `national`. Its totals equal the transcription in all 31 years, so no result changed, only the
+provenance fields in `results.json`. The preliminary years 2021–2025 now come from INE's own note. The file was
+removed from `data/`; it remains in the git history.
+
+INE's national long series (0011725, 1975–2025) is pinned as a cross-check. It is higher than 0000076 in every
+year, by 2.0–4.9% to 2002 and by 24–37% in 2011–2017. INE's metadata does not explain the gap. It is attributed
+to a different INE operation, and 0000076's note reports incomplete responses for three municipalities in some
+years. 0000076 is kept because it is the series the analysis has always used, and the national counterpart of
+the municipal panel.
 
 **External evidence.**
 - *Cohort ownership.* The primary document is Costa, Farinha, Lourenço and Mesquita (2023), "Habitação em
@@ -311,9 +322,8 @@ The status of every item is in `RELEASE_CHECKLIST_v1.0.0.md`.
 
 ## Open items before publishing
 
-1. **PORDATA transcription (blocker).** Replace it with INE data, or obtain permission, before any public
-   archive. See `DATA_SOURCES.md`.
-2. **Repository copy.** Decide whether the PORDATA file should stay in the public GitHub repository.
-3. **Release date.** Set `date-released` in `CITATION.cff` and the publication date on Zenodo when the tag is
+1. **Completions series.** Decide whether to keep INE 0000076 or move the national figures to INE's long series
+   (0011725), which is 2–37% higher. See `DATA_SOURCES.md`.
+2. **Release date.** Set `date-released` in `CITATION.cff` and the publication date on Zenodo when the tag is
    created.
-4. **DOI.** After the Zenodo deposit, add the DOI to `CITATION.cff`, the README and the report.
+3. **DOI.** After the Zenodo deposit, add the DOI to `CITATION.cff`, the README and the report.

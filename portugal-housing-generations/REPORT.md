@@ -24,7 +24,7 @@ evidence on the housing market.
 - resident population;
 - new-lease rents, the stock of tenancies, tenure and housing-cost burden.
 
-It spans Portugal, the 9 NUTS 2 and 26 NUTS 3 regions of NUTS 2024 and the 308 municipalities. All 63 source
+It spans Portugal, the 9 NUTS 2 and 26 NUTS 3 regions of NUTS 2024 and the 308 municipalities. All 64 source
 files are pinned with checksums. Every number in the report is recomputed from them by code that is tested in
 continuous integration.
 
@@ -174,9 +174,10 @@ Two further points of method apply throughout:
 
 ### 4.1 Sources
 
-All sources are official statistics, except the 1995–2025 national completions series. That series was
-transcribed from PORDATA's republication of INE data because the INE endpoint was unavailable at the time; it
-is identified as such.
+All sources are official statistics, pinned as the providers' unmodified API responses. The 1995–2025 national
+completions series is INE indicator 0000076. Earlier versions used a transcription of PORDATA's republication of
+the same table, with identical values; it was replaced because its redistribution could not be established
+(`DATA_SOURCES.md`).
 
 | Domain | Statistic (source, code) | Unit | Geography | Years used |
 |---|---|---|---|---|
@@ -188,7 +189,7 @@ is identified as such.
 | Income | Median declared gross income per tax household (INE 0012712, 0009763; net 0012741; per taxpayer 0012749) | €/year | NUTS 2024 to municipality | 2015–2024 |
 | Financing | Cost of borrowing for house purchase, new business (ECB MIR) | % a year | Portugal | 2003–2025 |
 | Construction | Dwellings completed / licensed in new construction (INE 0013248, 0013235) | dwellings | municipality | 2011–2025 |
-| Construction | National completions (INE via PORDATA); permits (Eurostat `sts_cobp_a`) | dwellings | Portugal | 1995–2025 |
+| Construction | National completions (INE 0000076); permits (Eurostat `sts_cobp_a`) | dwellings | Portugal | 1995–2025 |
 | Population | Resident population (INE 0008273, 0012917; Eurostat `demo_pjan`) | persons | municipality / Portugal | 2011–2025 |
 | Households | Private households (censuses 2011, 2021: INE 0014406, 0014627; LFS: Eurostat `lfst_hhnhtych`) | households | municipality / Portugal | 2006–2025 |
 | Rents | Median rent per m² of new leases, 2026 method (INE 0014698, 0014697, 0014711); 2021 method (0012600, 0012601, 0009631, 0009632); resident tenants (0014700, 0014699) | €/m²/month | NUTS 2024 to municipality | 2017–2025 |
@@ -253,7 +254,7 @@ geography, timing and units for every variable.
 | Municipal medians | Unpublished where there are few sales or contracts: 3–26 municipalities a year for prices, 61–86 for rents | Left empty; balanced samples drop them |
 | EU-SILC | 2004 break; pandemic-year surveys 2020–2021; administrative pension data from the 2024 survey; small samples for sub-groups | Flags kept; sub-groups reported with caution |
 | Overburden, 2025 | `ilc_lvho07a` gives 6.3% and `ilc_lvho07c` gives 6.2% for the same total (rounding or revision between tables) | Each table used for its own breakdown |
-| National completions | Manually transcribed from PORDATA (INE endpoint unavailable). For 2011–2025 it equals INE's municipal series summed to Portugal in every year. | Labelled; 2021–2025 preliminary |
+| National completions | INE 0000076. For 2011–2025 it equals INE's municipal series summed to Portugal in every year. INE's long series (0011725) is 2–37% higher in every year, unexplained in INE's metadata; incomplete responses for Lisboa and Seia (2002–2005) and Amadora (2011–2017) | 0000076 kept; 2021–2025 preliminary (INE note) |
 
 ![Figure 1. Coverage of each municipal variable](figures/fig_integrated_coverage.png)
 

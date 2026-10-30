@@ -10,8 +10,8 @@ First research release, prepared on 30 October 2026 from data snapshots of 29 Oc
 - **Report.** [`REPORT.md`](REPORT.md) is a consolidated research report: research questions, institutional
   context, data, methods, results, statistical analysis, discussion, limitations, conclusions and references,
   with 14 figures.
-- **Data.** 55 pinned data files: 35 from INE, 18 from Eurostat, 1 from the ECB and 1 transcription from
-  PORDATA. There are also 8 retrieval records, and all 63 files carry SHA-256 checksums in
+- **Data.** 56 pinned data files: 37 from INE, 18 from Eurostat and 1 from the ECB. There are also 8 retrieval
+  records, and all 64 files carry SHA-256 checksums in
   [`data/SHA256SUMS`](data/SHA256SUMS). [`DATA_SOURCES.md`](DATA_SOURCES.md) and
   [`DATA_SOURCES.csv`](DATA_SOURCES.csv) give each file's provider, source, retrieval time, terms, attribution
   and redistribution status.
@@ -37,9 +37,10 @@ Original code and documentation are under the Apache License 2.0. Third-party da
 data are reused under CC BY 4.0, and Eurostat and ECB data under their providers' reuse terms, each with the
 attribution listed in `DATA_SOURCES.md`.
 
-Redistribution of the PORDATA transcription (`ine_pordata_completed_new_dwellings_PT_2026-10-29.csv`) has not
-been established: PORDATA's terms grant no reuse licence. The archive task stops until the file is replaced with
-INE data or permission is obtained. **This blocks the Zenodo deposit.**
+Every pinned file may be redistributed with attribution. The national completions series, 1995–2025, which was
+earlier transcribed from PORDATA (whose terms grant no reuse licence), has been replaced by INE indicator 0000076,
+fetched from INE's API. Its values are identical in all 31 years. The archive task still checks every file's
+status before building the archive.
 
 ## Main findings
 
@@ -103,7 +104,9 @@ uses them. No verdict changed.
 
 **Release-readiness review (30 October 2026):**
 - *Data licensing.* Added a file-by-file inventory with provider terms checked on the providers' own pages. The
-  PORDATA file is flagged and blocked from the archive.
+  PORDATA transcription, whose redistribution could not be established, was replaced by INE indicator 0000076
+  (identical values, 1995–2025). INE's national long series (0011725), which is 2–37% higher, is pinned as a
+  documented cross-check.
 - *External evidence.*
   - The cohort ownership figures now follow the authors' own rounded values (about 70%, 60% and 40%), in place
     of the press-reported 61% and 42%.
@@ -134,7 +137,8 @@ These are listed in full in report Section 9:
 - approximate inference with 26 clusters;
 - two sets of figures quoted, not recomputed (Banco de Portugal economists' cohort shares; INE census occupancy
   counts);
-- preliminary construction data for 2021–2025.
+- preliminary construction data for 2021–2025, and a national completions series below INE's long series by
+  2–37% (`DATA_SOURCES.md`).
 
 ## Before publishing
 

@@ -1,9 +1,9 @@
 """Reproduce selected descriptive claims about Portuguese housing affordability.
 
 Inputs are pinned snapshots of official series: Eurostat JSON-stat responses
-(house prices, income, housing conditions, permits, households, population), an
-INE/PORDATA transcription of completed dwellings, and the ECB/Banco de Portugal
-cost of borrowing for house purchase. Nothing is downloaded here.
+(house prices, income, housing conditions, permits, households, population), INE
+API responses for completed dwellings, and the ECB/Banco de Portugal cost of
+borrowing for house purchase. Nothing is downloaded here.
 No causal effects or electoral preferences are estimated here.
 """
 
@@ -11,9 +11,11 @@ from __future__ import annotations
 
 import argparse
 import csv
+import gzip
 import hashlib
 import json
 import math
+import re
 from pathlib import Path
 from typing import Any
 
@@ -46,10 +48,13 @@ PERMITS_URL = (
     "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/"
     "sts_cobp_a?geo=PT&indic_bt=BPRM_DW&cpa2_1=CPA_F41001_X_410014&s_adj=NSA&unit=THS"
 )
-COMPLETIONS_URL = (
-    "https://www.pordata.pt/portugal/"
-    "fogos+concluidos+em+construcoes+novas+para+habitacao+familiar+total+e+por+tipologia+do+fogo-189"
-)
+# Dwellings completed in new construction for family housing (INE, Estatísticas das obras concluídas), NUTS 2002,
+# by typology, 1995-2025, and INE's national long series of the same statistic from 1975 (a cross-check).
+COMPLETIONS_INDICATOR = "0000076"
+COMPLETIONS_URL = f"https://www.ine.pt/xurl/indx/{COMPLETIONS_INDICATOR}/PT"
+COMPLETIONS_FILE = f"ine_{COMPLETIONS_INDICATOR}_2026-10-30.jsonl.gz"
+COMPLETIONS_LONG_FILE = "ine_0011725_2026-10-30.jsonl.gz"
+PROVISIONAL_SIGNS = {"Po", "Pe"}  # INE conventional signs: provisional, preliminary
 HOUSEHOLDS_URL = (
     "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/"
     "lfst_hhnhtych?geo=PT&unit=THS_HH&agechild=TOTAL&n_child=TOTAL&phhcomp=TOTAL"
@@ -383,34 +388,68 @@ def parse_dwellings_permitted(document: dict[str, Any]) -> dict[int, float]:
     return dict(sorted(result.items()))
 
 
+def read_container(path: Path) -> tuple[dict[str, Any], list[dict[str, Any]]]:
+    """Read a pinned INE container and check every body against its recorded size and SHA-256."""
+    with gzip.open(path, "rt", encoding="utf-8") as fh:
+        lines = [json.loads(line) for line in fh if line.strip()]
+    if not lines or lines[0].get("kind") != "header":
+        raise ValueError(f"{path.name}: missing header")
+    header, responses = lines[0], lines[1:]
+    if header["responses"] != len(responses):
+        raise ValueError(f"{path.name}: header announces {header['responses']} responses, found {len(responses)}")
+    if [r["kind"] for r in responses[:1]] != ["metadata"] or any(r["kind"] != "data" for r in responses[1:]):
+        raise ValueError(f"{path.name}: expected one metadata response followed by data responses")
+    for response in responses:
+        body = response["body"].encode(response["encoding"])
+        if response["http_status"] != 200 or len(body) != response["bytes"] \
+                or hashlib.sha256(body).hexdigest() != response["sha256"]:
+            raise ValueError(f"{path.name}: response does not match its record: {response['url'][:120]}")
+    return header, responses
+
+
+def container_metadata(path: Path) -> dict[str, str]:
+    """Indicator code, title and INE's last-update stamp of a pinned container."""
+    header, responses = read_container(path)
+    meta = json.loads(responses[0]["body"])[0]
+    if meta["IndicadorCod"] != header["indicator"]:
+        raise ValueError(f"{path.name}: metadata is for {meta['IndicadorCod']}")
+    return {"indicator": meta["IndicadorCod"], "title": meta["IndicadorNome"],
+            "last_update": meta.get("DataUltimaAtualizacao", "")}
+
+
 def parse_completed_dwellings(path: Path) -> tuple[dict[int, int], list[int]]:
-    """Read INE/PORDATA annual new-build dwelling completions from CSV.
+    """Read INE's annual new-build dwelling completions for Portugal from a pinned API container.
 
     A dwelling is a unit, not a building; only construction of new family
     dwellings is counted. Renovations and net additions to stock are excluded.
-    Returns a year-to-count mapping and years marked preliminary by the source.
+    Takes the Portugal row and, where the indicator has a typology dimension,
+    the all-typologies total. Returns a year-to-count mapping and the years INE
+    marks as provisional or preliminary, by a sign on the value or in the
+    indicator note.
     """
+    header, responses = read_container(path)
+    code = header["indicator"]
+    # INE states the provisional years in the indicator note ("Dados definitivos até 2020 e preliminares de 2021
+    # em diante"), not as a sign on each value.
+    note = re.search(r"preliminares de (\d{4}) em diante", json.loads(responses[0]["body"])[0].get("Nota") or "")
+    first_preliminary = int(note.group(1)) if note else None
     result: dict[int, int] = {}
     preliminary: list[int] = []
-    with path.open(newline="", encoding="utf-8") as source:
-        reader = csv.DictReader(source)
-        if reader.fieldnames != ["year", "completed_dwellings", "preliminary"]:
-            raise ValueError("Unexpected completions CSV schema")
-        for row in reader:
-            if not all(isinstance(row[k], str) for k in reader.fieldnames):
-                raise ValueError("Incomplete completions CSV row")
-            year_text = row["year"]
-            count_text = row["completed_dwellings"]
-            flag = row["preliminary"]
-            if not year_text.isdigit() or not count_text.isdigit() or flag not in {"true", "false"}:
-                raise ValueError("Invalid completions CSV value")
-            year = int(year_text)
-            count = int(count_text)
-            if year in result or count <= 0:
-                raise ValueError("Duplicate year or nonpositive completions count")
-            result[year] = count
-            if flag == "true":
-                preliminary.append(year)
+    for response in responses[1:]:
+        item = json.loads(response["body"])[0]
+        if item["IndicadorCod"] != code or "Verdadeiro" not in item.get("Sucesso", {}):
+            raise ValueError(f"{path.name}: INE reported a failure for {response['url'][:120]}")
+        for year_text, rows in item["Dados"].items():
+            for row in rows:
+                if row["geocod"] != "PT" or row.get("dim_3", "T") != "T":
+                    continue
+                year = int(year_text)
+                if year in result or "valor" not in row or float(row["valor"]) <= 0 \
+                        or float(row["valor"]) != int(float(row["valor"])):
+                    raise ValueError(f"{path.name}: duplicate, missing or invalid national value for {year}")
+                result[year] = int(float(row["valor"]))
+                if row.get("sinal_conv") in PROVISIONAL_SIGNS or (first_preliminary is not None and year >= first_preliminary):
+                    preliminary.append(year)
     if not result or sorted(result) != list(range(min(result), max(result) + 1)):
         raise ValueError("Completed-dwellings series has missing years")
     return dict(sorted(result.items())), sorted(preliminary)
@@ -658,7 +697,8 @@ def main() -> None:
     parser.add_argument("--leaving-age-input", type=Path, default=Path(__file__).parent / "data" / "eurostat_yth_demo_030_PT_2026-10-29.json")
     parser.add_argument("--tenure-input", type=Path, default=Path(__file__).parent / "data" / "eurostat_ilc_lvho02_PT_2026-10-29.json")
     parser.add_argument("--permits-input", type=Path, default=Path(__file__).parent / "data" / "eurostat_sts_cobp_a_PT_dwellings_2026-10-29.json")
-    parser.add_argument("--completions-input", type=Path, default=Path(__file__).parent / "data" / "ine_pordata_completed_new_dwellings_PT_2026-10-29.csv")
+    parser.add_argument("--completions-input", type=Path, default=Path(__file__).parent / "data" / COMPLETIONS_FILE)
+    parser.add_argument("--completions-long-input", type=Path, default=Path(__file__).parent / "data" / COMPLETIONS_LONG_FILE)
     parser.add_argument("--households-input", type=Path, default=Path(__file__).parent / "data" / "eurostat_lfst_hhnhtych_PT_2026-10-29.json")
     parser.add_argument("--population-input", type=Path, default=Path(__file__).parent / "data" / "eurostat_demo_pjan_PT_2026-10-29.json")
     parser.add_argument("--mortgage-rate-input", type=Path, default=Path(__file__).parent / "data" / "ecb_mir_PT_house_purchase_cost_of_borrowing_2026-10-29.csv")
@@ -701,6 +741,9 @@ def main() -> None:
         raise ValueError("Expected permits JSON-stat object")
     permits = parse_dwellings_permitted(raw_permits)
     completed, preliminary_completed = parse_completed_dwellings(args.completions_input)
+    completions_meta = container_metadata(args.completions_input)
+    long_series, _long_preliminary = parse_completed_dwellings(args.completions_long_input)
+    long_meta = container_metadata(args.completions_long_input)
     raw_households: Any = json.loads(args.households_input.read_text(encoding="utf-8"))
     raw_population: Any = json.loads(args.population_input.read_text(encoding="utf-8"))
     if not isinstance(raw_households, dict) or not isinstance(raw_population, dict):
@@ -755,7 +798,16 @@ def main() -> None:
         "dwellings_permitted_thousands": permits,
         "dwellings_permitted_2015_2025_change_pct": round(100 * (permits[2025] / permits[2015] - 1), 2),
         "completions_source_url": COMPLETIONS_URL,
-        "completions_original_source": "INE, Estatísticas das obras concluídas; PORDATA annual table",
+        "completions_source_indicator": completions_meta["indicator"],
+        "completions_source_title": completions_meta["title"],
+        "completions_source_updated": completions_meta["last_update"],
+        "completions_long_series_check": {
+            "indicator": long_meta["indicator"],
+            "title": long_meta["title"],
+            "years_compared": [y for y in completed if y in long_series],
+            "differences": {str(y): {"by_typology_total": completed[y], "long_series": long_series[y]}
+                            for y in completed if y in long_series and long_series[y] != completed[y]},
+        },
         "completed_new_family_dwellings": completed,
         "completed_new_family_dwellings_preliminary_years": preliminary_completed,
         "completed_dwellings_2015_2025_change_pct": round(100 * (completed[2025] / completed[2015] - 1), 2),

@@ -69,7 +69,7 @@ review the change.
 
 | Path | Contents |
 |---|---|
-| `data/` | 63 pinned source files (INE `.jsonl.gz` containers, Eurostat and ECB JSON with `.meta.json` retrieval records, one PORDATA transcription) and `SHA256SUMS` |
+| `data/` | 64 pinned source files (INE `.jsonl.gz` containers, Eurostat and ECB JSON with `.meta.json` retrieval records) and `SHA256SUMS` |
 | `analysis.py`, `regional.py`, `affordability.py`, `rental.py`, `integrated.py` | Analysis pipelines (one per release stage) |
 | `regional_core.py`, `affordability_core.py`, `rental_core.py`, `panel_stats.py` | Parsers, geography, index and decomposition helpers, and the panel estimators (OLS, CR1, wild cluster bootstrap) |
 | `fetch_*.py` | Downloaders used only by the manual workflow jobs |
@@ -101,9 +101,8 @@ No DOI exists yet. One will be added if and when the release is deposited on Zen
   - INE: CC BY 4.0; cite "Fonte: Instituto Nacional de Estatística, IP – Portugal".
   - Eurostat: reuse authorised with acknowledgement of the source and the dataset DOI.
   - European Central Bank: free reuse with the source quoted, without modification.
-  - PORDATA: **redistribution not established.** One transcribed file, the national completions series for
-    1995–2025, is blocked from any public archive until it is replaced with INE data or permission is obtained
-    (see `DATA_SOURCES.md`).
+  - No file is pending clearance. The national completions series for 1995–2025, earlier transcribed from
+    PORDATA, now comes from INE's API (indicator 0000076; see `DATA_SOURCES.md`).
 
 ## Sources and definitions
 
@@ -169,15 +168,18 @@ No DOI exists yet. One will be added if and when the release is deposited on Zen
     https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/sts_cobp_a?geo=PT&indic_bt=BPRM_DW&cpa2_1=CPA_F41001_X_410014&s_adj=NSA&unit=THS
     Accessed 2026-10-29. The snapshot contains Eurostat preliminary (`p`)
     flags for 2022–2025; these are preserved in `results.json`.
-11. INE, *Estatísticas das obras concluídas*, as republished by PORDATA,
-    *Fogos concluídos em construções novas para habitação familiar: total e por
-    tipologia do fogo*, nationwide annual total:
-    https://www.pordata.pt/portugal/fogos+concluidos+em+construcoes+novas+para+habitacao+familiar+total+e+por+tipologia+do+fogo-189
-    The 1995–2025 published total column was manually transcribed to the pinned
-    CSV on 2026-10-29 because the INE JSON endpoint returned HTTP 503. This
-    is not an original machine-generated INE export. PORDATA identifies 2021–2025
-    as preliminary; those flags are retained in the CSV and output. INE
-    metadata: https://ine.pt/bddXplorer/htdocs/minfo.jsp?lingua=PT&var_cd=0000076
+11. INE, *Estatísticas das obras concluídas*, indicator 0000076, *Fogos
+    concluídos (N.º) em construções novas para habitação familiar por Localização
+    geográfica (NUTS - 2002) e Tipologia do fogo; Anual*, Portugal, all typologies,
+    1995–2025: https://www.ine.pt/xurl/indx/0000076/PT
+    Fetched for Portugal from INE's JSON API on 2026-10-30 by
+    `fetch_regional.py --set national` on a GitHub Actions runner, and pinned
+    unmodified with its retrieval record. INE's note marks 2021 onwards as
+    preliminary and 2024–2025 as based on its completed-works estimates; these
+    years are flagged in `results.json`. The values are identical to the PORDATA
+    republication transcribed for earlier versions. INE's national long series
+    (indicator 0011725, 1975–2025) is pinned as a cross-check; it is 2–37% higher
+    in every year, for reasons INE's metadata does not state (`DATA_SOURCES.md`).
 12. Eurostat `lfst_hhnhtych`: total private households in Portugal,
     `phhcomp=TOTAL`, `agechild=TOTAL`, `n_child=TOTAL`, `unit=THS_HH`:
     https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/lfst_hhnhtych?geo=PT&unit=THS_HH&agechild=TOTAL&n_child=TOTAL&phhcomp=TOTAL
@@ -446,8 +448,8 @@ regrouped through municipalities. Checks, all in `results_regional.json`:
 - The NUTS 2013 population regrouped to NUTS 2024 is identical to INE's NUTS 2024
   figures in all 111 overlapping region-years (2021–2023), and the census household
   series regrouped to NUTS 2024 is identical to INE's 2021 NUTS 2024 table.
-- National totals: completions equal the PORDATA/INE series used above in every
-  year 2011–2025; population for year *t* equals Eurostat's 1 January *t*+1 for
+- National totals: completions equal INE's national series (indicator 0000076)
+  in every year 2011–2025; population for year *t* equals Eurostat's 1 January *t*+1 for
   2011–2020 (so INE's estimates refer to 31 December).
 
 ### Panel, coverage and flags

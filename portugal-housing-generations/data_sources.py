@@ -36,9 +36,6 @@ TERMS = {
     "ECB": ("ECB statistics usage policy: free reuse provided the source is quoted; statistics and metadata not "
             "modified",
             "Source: ECB statistics (ECB Data Portal), series key"),
-    "PORDATA": ("PORDATA Termos Legais (updated 19.07.2024): content protected by copyright and related rights; no "
-                "reuse licence granted",
-                "Fonte: PORDATA (data originally from INE)"),
 }
 PERMITTED = "permitted"
 NOT_ESTABLISHED = "not established"
@@ -109,14 +106,6 @@ def ecb_row(path: Path) -> dict[str, str]:
                 notes="compiled by Banco de Portugal within the ESCB; published by the ECB")
 
 
-def pordata_row(path: Path) -> dict[str, str]:
-    return _row(path.name, "PORDATA", dataset="Fogos concluídos em construções novas para habitação familiar",
-                title="Completed dwellings in new construction for family housing, Portugal, 1995-2025",
-                source_url=A.COMPLETIONS_URL, retrieved_utc=path.name[-14:-4], redistribution=NOT_ESTABLISHED,
-                notes="manual transcription; 2011-2025 equal the sum of INE indicator 0013248 over municipalities "
-                      "(see results_regional.json); 1995-2010 have no pinned INE equivalent")
-
-
 def inventory() -> list[dict[str, str]]:
     """One row per pinned data file (retrieval records are listed with the file they describe)."""
     rows = []
@@ -126,8 +115,6 @@ def inventory() -> list[dict[str, str]]:
             continue
         if name.startswith("eurostat_"):
             rows.append(eurostat_row(path))
-        elif name.startswith("ine_pordata_"):
-            rows.append(pordata_row(path))
         elif name.startswith("ine_"):
             rows.append(ine_row(path))
         elif name.startswith("ecb_"):

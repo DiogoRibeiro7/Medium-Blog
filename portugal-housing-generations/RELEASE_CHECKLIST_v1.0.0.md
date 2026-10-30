@@ -4,21 +4,22 @@ Status as of 30 October 2026. Each entry is **PASS** (done and verified), **BLOC
 something outside this repository changes) or **NOT YET DONE** (a step for the maintainer, which nothing here
 does automatically).
 
-**Verdict: not ready for a Zenodo deposit.** One data file blocks a public archive (A5). Everything else needed
-for a defensible v1.0.0 is in place, apart from the release steps themselves (section E).
+**Verdict: no blocker remains.** Every data file may be redistributed (A5). What is left are the release steps
+themselves (section E) and one optional decision on the completions series (A9).
 
 ## A. Data and licensing
 
 | # | Check | Status | Evidence |
 |---|---|---|---|
-| A1 | Every data file listed with provider, source URL, retrieval time, provider update, terms, attribution and redistribution status | PASS | `DATA_SOURCES.csv` (55 data files and 8 retrieval records), built by `data_sources.py`; `test_data_sources.py` |
+| A1 | Every data file listed with provider, source URL, retrieval time, provider update, terms, attribution and redistribution status | PASS | `DATA_SOURCES.csv` (56 data files and 8 retrieval records), built by `data_sources.py`; `test_data_sources.py` |
 | A2 | INE terms verified | PASS | INE Portal terms: CC BY 4.0, cite "Fonte: Instituto Nacional de Estatística, IP – Portugal" (`DATA_SOURCES.md`) |
 | A3 | Eurostat terms verified | PASS | Eurostat copyright notice: reuse authorised with acknowledgement, dataset DOIs `10.2908/<DATASET>` |
 | A4 | ECB terms verified | PASS | ECB statistics usage policy: free reuse with the source quoted, no modification |
-| A5 | PORDATA transcription redistributable | **BLOCKED** | PORDATA legal terms grant no reuse licence. Routes: replace with INE data, obtain permission, or shorten the series to 2011–2025 (`DATA_SOURCES.md`) |
+| A5 | Every data file redistributable | PASS | The PORDATA transcription (no reuse licence) was replaced by INE indicator 0000076, fetched by the workflow task `national`; identical values 1995–2025. `data_sources.py --check-redistribution` passes |
 | A6 | Code and documentation licence kept separate from third-party data; no relicensing of data under Apache-2.0 | PASS | README "Citing and licences", `DATA_SOURCES.md`, `.zenodo.json` description; `test_release.py` |
-| A7 | Archive cannot silently include a file that is not cleared | PASS | `release-archive` runs `python data_sources.py --check-redistribution` before `git archive` and stops on A5 |
-| A8 | Decide whether the PORDATA file stays in the public GitHub repository | NOT YET DONE | Maintainer decision; the file has been public since an earlier pull request |
+| A7 | Archive cannot silently include a file that is not cleared | PASS | `release-archive` runs `python data_sources.py --check-redistribution` before `git archive` and stops on any file not cleared |
+| A8 | PORDATA file removed from the repository | PASS | Deleted from `data/` and the manifest; it remains in the git history |
+| A9 | Optional: national completions on INE's long series instead | NOT YET DONE | INE 0011725 (pinned as a cross-check) is 2–37% higher than 0000076 in every year; INE's metadata gives no reason. 0000076 is kept, consistent with the municipal panel (`DATA_SOURCES.md`) |
 
 ## B. External evidence
 
@@ -31,10 +32,10 @@ for a defensible v1.0.0 is in place, apart from the release steps themselves (se
 
 | # | Check | Status | Evidence |
 |---|---|---|---|
-| C1 | Full test suite | PASS | 122 tests pass on Python 3.10 and 3.13, locally and in CI |
-| C2 | Manifest validation | PASS | `sha256sum --check data/SHA256SUMS` (63 files) and `reproduce.py` step 1 |
+| C1 | Full test suite | PASS | 123 tests pass on Python 3.10 and 3.13, locally and in CI |
+| C2 | Manifest validation | PASS | `sha256sum --check data/SHA256SUMS` (64 files) and `reproduce.py` step 1 |
 | C3 | `reproduce.py` | PASS | Prints `REPRODUCED` locally and in CI. Result files rebuild byte-identically in both; figures byte-identically locally and pixel-identically in CI (C6) |
-| C4 | Generated results match committed values | PASS | Only intended changes against `main`: five external descriptives in `results.json` and the new `DATA_SOURCES.csv` |
+| C4 | Generated results match committed values | PASS | Replacing the completions source changed no value: only its provenance fields and long-series check in `results.json`, one renamed cross-check in `results_regional.json`, `DATA_SOURCES.csv`, and the source line of `fig_integrated_national.png` |
 | C5 | All 21 figures inspected visually | PASS | Four fixed (coverage colour bar, specifications legend, one overlapping label, one overlapping legend); no plotted value changed |
 | C6 | PNG byte differences between environments explained | PASS | Pixels: text hinting came from a site-wide `matplotlibrc`; now set in the figure style. Bytes: Pillow's zlib level (3 locally, 6 from PyPI); pixels identical. No PNG replaced (`REVIEW.md`) |
 | C7 | Optional: replace the secondary y-axes in `fig_integrated_national.png` with separate panels | NOT YET DONE | Design improvement, not a defect; values are correct |
@@ -55,8 +56,8 @@ for a defensible v1.0.0 is in place, apart from the release steps themselves (se
 
 | # | Step | Status |
 |---|---|---|
-| E1 | Merge the readiness pull request | NOT YET DONE |
-| E2 | Clear A5 (replace or license the PORDATA file), rebuild `DATA_SOURCES.csv`, rerun `reproduce.py` | **BLOCKED** |
+| E1 | Merge the readiness pull requests (#388 merged; the completions-source pull request open) | NOT YET DONE |
+| E2 | Clear A5 (replace or license the PORDATA file), rebuild `DATA_SOURCES.csv`, rerun `reproduce.py` | PASS |
 | E3 | Set the release date in `CITATION.cff` | NOT YET DONE |
 | E4 | Create the tag `portugal-housing-generations-v1.0.0` on the merge commit | NOT YET DONE |
 | E5 | Build the archive and its checksum | NOT YET DONE |

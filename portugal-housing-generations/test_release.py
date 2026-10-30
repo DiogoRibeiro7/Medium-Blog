@@ -31,7 +31,7 @@ def cff_field(text: str, key: str) -> str:
 class DataManifestTests(unittest.TestCase):
     def test_every_pinned_file_matches_its_checksum(self) -> None:
         self.assertEqual(reproduce.check_manifest(), [])
-        self.assertEqual(len(reproduce.read_manifest()), 63)
+        self.assertEqual(len(reproduce.read_manifest()), 64)
 
     def test_a_changed_or_extra_file_is_reported(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:

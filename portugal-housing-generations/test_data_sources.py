@@ -52,10 +52,11 @@ class InventoryTests(unittest.TestCase):
                 elif row["provider"] == "ECB":
                     self.assertIn("quoted", row["terms"])
                     self.assertTrue(row["source_url"].startswith("https://data-api.ecb.europa.eu/"))
-        self.assertEqual({r["provider"] for r in rows}, {"INE", "Eurostat", "ECB", "PORDATA"})
+        self.assertEqual({r["provider"] for r in rows}, {"INE", "Eurostat", "ECB"})
 
-    def test_pordata_file_is_the_only_one_not_cleared(self) -> None:
-        self.assertEqual(D.blocked(D.inventory()), ["ine_pordata_completed_new_dwellings_PT_2026-10-29.csv"])
+    def test_every_file_may_be_redistributed(self) -> None:
+        self.assertEqual(D.blocked(D.inventory()), [])
+        self.assertFalse(any("pordata" in name for name in reproduce.read_manifest()))
 
     @unittest.skipUnless(WORKFLOW.exists(), "workflow is outside this folder (e.g. in the release archive)")
     def test_archive_task_checks_redistribution_first(self) -> None:
@@ -64,16 +65,17 @@ class InventoryTests(unittest.TestCase):
         check = archive_job.index("python data_sources.py --check-redistribution")
         self.assertLess(check, archive_job.index("git archive"))
 
-    def test_documents_describe_the_blocker(self) -> None:
+    def test_documents_describe_the_sources_and_the_replaced_transcription(self) -> None:
         doc = (HERE / "DATA_SOURCES.md").read_text(encoding="utf-8")
-        for snippet in ("Blocker: the PORDATA transcription", "Routes to clear it", "pordata@ffms.pt",
+        for snippet in ("INE replaces the PORDATA transcription", "https://www.ine.pt/xurl/indx/0000076/PT",
+                        "https://www.ine.pt/xurl/indx/0011725/PT", "equal the PORDATA transcription in all 31 years",
                         "https://www.pordata.pt/Termos+Legais", "https://ec.europa.eu/eurostat/help/copyright-notice",
                         "usage_policy.en.html", "INST=3585857"):
             with self.subTest(snippet=snippet):
                 self.assertIn(snippet, doc)
         notes = re.sub(r"\s+", " ", (HERE / "RELEASE_NOTES_v1.0.0.md").read_text(encoding="utf-8"))
-        self.assertRegex(notes, re.compile(r"PORDATA.*not been established|not established.*PORDATA", re.DOTALL))
-
+        self.assertIn("replaced by INE indicator 0000076", notes)
+        self.assertNotRegex(notes, r"PORDATA.*not been established|This blocks the Zenodo deposit")
 
 if __name__ == "__main__":
     unittest.main()

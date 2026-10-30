@@ -563,8 +563,173 @@
     "2025": 40.9
   },
   "dwellings_permitted_2015_2025_change_pct": 375.58,
-  "completions_source_url": "https://www.pordata.pt/portugal/fogos+concluidos+em+construcoes+novas+para+habitacao+familiar+total+e+por+tipologia+do+fogo-189",
-  "completions_original_source": "INE, Estatísticas das obras concluídas; PORDATA annual table",
+  "completions_source_url": "https://www.ine.pt/xurl/indx/0000076/PT",
+  "completions_source_indicator": "0000076",
+  "completions_source_title": "Fogos concluídos (N.º) em construções novas para habitação familiar por Localização geográfica (NUTS - 2002) e Tipologia do fogo; Anual - INE, Estatísticas das obras concluídas",
+  "completions_source_updated": "2026-07-17",
+  "completions_long_series_check": {
+    "indicator": "0011725",
+    "title": "Fogos concluídos em construções novas para habitação familiar (Série longa, início 1975 - N.º); Anual - INE, Inquérito aos projetos de obras de edificação e de demolição de edifícios",
+    "years_compared": [
+      1995,
+      1996,
+      1997,
+      1998,
+      1999,
+      2000,
+      2001,
+      2002,
+      2003,
+      2004,
+      2005,
+      2006,
+      2007,
+      2008,
+      2009,
+      2010,
+      2011,
+      2012,
+      2013,
+      2014,
+      2015,
+      2016,
+      2017,
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023,
+      2024,
+      2025
+    ],
+    "differences": {
+      "1995": {
+        "by_typology_total": 68825,
+        "long_series": 72180
+      },
+      "1996": {
+        "by_typology_total": 69718,
+        "long_series": 72195
+      },
+      "1997": {
+        "by_typology_total": 74221,
+        "long_series": 76486
+      },
+      "1998": {
+        "by_typology_total": 90946,
+        "long_series": 93383
+      },
+      "1999": {
+        "by_typology_total": 108198,
+        "long_series": 110671
+      },
+      "2000": {
+        "by_typology_total": 112612,
+        "long_series": 114858
+      },
+      "2001": {
+        "by_typology_total": 115154,
+        "long_series": 117776
+      },
+      "2002": {
+        "by_typology_total": 125708,
+        "long_series": 130247
+      },
+      "2003": {
+        "by_typology_total": 92508,
+        "long_series": 99013
+      },
+      "2004": {
+        "by_typology_total": 74261,
+        "long_series": 80723
+      },
+      "2005": {
+        "by_typology_total": 76123,
+        "long_series": 83370
+      },
+      "2006": {
+        "by_typology_total": 68764,
+        "long_series": 77701
+      },
+      "2007": {
+        "by_typology_total": 67463,
+        "long_series": 75836
+      },
+      "2008": {
+        "by_typology_total": 59256,
+        "long_series": 68336
+      },
+      "2009": {
+        "by_typology_total": 47915,
+        "long_series": 55097
+      },
+      "2010": {
+        "by_typology_total": 35442,
+        "long_series": 41368
+      },
+      "2011": {
+        "by_typology_total": 26382,
+        "long_series": 32808
+      },
+      "2012": {
+        "by_typology_total": 19684,
+        "long_series": 25721
+      },
+      "2013": {
+        "by_typology_total": 12751,
+        "long_series": 16657
+      },
+      "2014": {
+        "by_typology_total": 8313,
+        "long_series": 11407
+      },
+      "2015": {
+        "by_typology_total": 7148,
+        "long_series": 9625
+      },
+      "2016": {
+        "by_typology_total": 7909,
+        "long_series": 10539
+      },
+      "2017": {
+        "by_typology_total": 8213,
+        "long_series": 11215
+      },
+      "2018": {
+        "by_typology_total": 10751,
+        "long_series": 13912
+      },
+      "2019": {
+        "by_typology_total": 12954,
+        "long_series": 16494
+      },
+      "2020": {
+        "by_typology_total": 16923,
+        "long_series": 20805
+      },
+      "2021": {
+        "by_typology_total": 19926,
+        "long_series": 24281
+      },
+      "2022": {
+        "by_typology_total": 21047,
+        "long_series": 25288
+      },
+      "2023": {
+        "by_typology_total": 22280,
+        "long_series": 25591
+      },
+      "2024": {
+        "by_typology_total": 24666,
+        "long_series": 27987
+      },
+      "2025": {
+        "by_typology_total": 27301,
+        "long_series": 30425
+      }
+    }
+  },
   "completed_new_family_dwellings": {
     "1995": 68825,
     "1996": 69718,
