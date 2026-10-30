@@ -23,3 +23,4 @@ portugal-housing-generations/**/*.csv -filter -diff -merge text
 portugal-housing-generations/data/ecb_mir_*.csv -filter -text
 queueing-theory-for-data-scientists/**/*.csv -filter -diff -merge text
 extreme-value-theory-for-data-scientists/**/*.csv -filter -diff -merge text
+sequential-change-detection-for-data-scientists/**/*.csv -filter -diff -merge text
