@@ -48,7 +48,12 @@ class PublicationTests(unittest.TestCase):
         for domain in ("news.gallup.com", "realclearpolitics.com", "presidency.ucsb.edu"):
             self.assertIn(domain, provenance)
         index = (ROOT.parent / "ARTICLES.md").read_text(encoding="utf-8")
-        self.assertIn("| 17 | [The Forecast Is Not the Fit", index)
+        self.assertRegex(
+            index,
+            r"(?m)^\|\s*\d+\s*\|\s*\[The Forecast Is Not the Fit: "
+            r"Rebuilding an 89% Midterm Election Model\]"
+            r"\(midterm-forecast-fit-vs-prediction/article\.md\)",
+        )
 
 
 if __name__ == "__main__":
