@@ -381,7 +381,7 @@ All numerical tables are reproduced by \`experiment.py\` in \`causal_inference_s
 
 Angrist, J. D. and Pischke, J.-S. (2009). *Mostly Harmless Econometrics: An Empiricist's Companion*. Princeton University Press. https://press.princeton.edu/books/paperback/9780691120355/mostly-harmless-econometrics
 
-Cochran, W. G. (1965). The Planning of Observational Studies of Human Populations. *Journal of the Royal Statistical Society: Series A*, 128(2), 234–266. https://doi.org/10.2307/2344179
+Cochran, W. G. (1965). The Planning of Observational Studies of Human Populations. *Journal of the Royal Statistical Society: Series A*, 128(2), 234–255. https://doi.org/10.2307/2344179
 
 Freedman, D. A. (2008). On Regression Adjustments to Experimental Data. *Advances in Applied Mathematics*, 40(2), 180–193. https://doi.org/10.1016/j.aam.2006.12.003
 

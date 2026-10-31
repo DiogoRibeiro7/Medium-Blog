@@ -363,7 +363,7 @@ Pearl, J. (2009). *Causality: Models, Reasoning, and Inference*, 2nd edition. Ca
 
 Rambachan, A. and Roth, J. (2023). A More Credible Approach to Parallel Trends. *Review of Economic Studies*, 90(5), 2555–2591. https://doi.org/10.1093/restud/rdad018
 
-Rosenbaum, P. R. (1987). The Role of a Second Control Group in an Observational Study. *Statistical Science*, 2(3), 292–306. https://doi.org/10.1214/ss/1177013224
+Rosenbaum, P. R. (1987). The Role of a Second Control Group in an Observational Study. *Statistical Science*, 2(3), 292–306. https://doi.org/10.1214/ss/1177013232
 
 Roth, J. (2022). Pretest with Caution: Event-Study Estimates after Testing for Parallel Trends. *American Economic Review: Insights*, 4(3), 305–322. https://doi.org/10.1257/aeri.20210236
 

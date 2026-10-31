@@ -308,7 +308,7 @@ Athey, S. and Imbens, G. W. (2016). Recursive Partitioning for Heterogeneous Cau
 
 Bansak, K., Hainmueller, J., Hopkins, D. J. and Yamamoto, T. (2018). The Number of Choice Tasks and Survey Satisficing in Conjoint Experiments. *Political Analysis*, 26(1), 112–119. https://doi.org/10.1017/pan.2017.40
 
-Chernozhukov, V., Demirer, M., Duflo, E. and Fernández-Val, I. (2023). Generic Machine Learning Inference on Heterogeneous Treatment Effects in Randomized Experiments. *Journal of Political Economy*, 131(7), 1805–1851. https://doi.org/10.1086/722086
+Chernozhukov, V., Demirer, M., Duflo, E. and Fernández-Val, I. (2025). Fisher–Schultz Lecture: Generic Machine Learning Inference on Heterogeneous Treatment Effects in Randomized Experiments, With an Application to Immunization in India. *Econometrica*, 93(4), 1121–1164. https://doi.org/10.3982/ECTA19303
 
 Dudík, M., Langford, J. and Li, L. (2011). Doubly Robust Policy Evaluation and Learning. *Proceedings of the 28th International Conference on Machine Learning*, 1097–1104. https://icml.cc/2011/papers/554_icmlpaper.pdf
 

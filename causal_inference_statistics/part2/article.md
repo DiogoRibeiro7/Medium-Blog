@@ -342,7 +342,7 @@ Angrist, J. D. and Pischke, J.-S. (2009). *Mostly Harmless Econometrics: An Empi
 
 Aronow, P. M. and Middleton, J. A. (2013). A Class of Unbiased Estimators of the Average Treatment Effect in Randomized Experiments. *Journal of Causal Inference*, 1(1), 135–154. https://doi.org/10.1515/jci-2012-0009
 
-Cochran, W. G. (1965). The Planning of Observational Studies of Human Populations. *Journal of the Royal Statistical Society: Series A*, 128(2), 234–266. https://doi.org/10.2307/2344179
+Cochran, W. G. (1965). The Planning of Observational Studies of Human Populations. *Journal of the Royal Statistical Society: Series A*, 128(2), 234–255. https://doi.org/10.2307/2344179
 
 Ding, P. (2017). A Paradox from Randomization-Based Causal Inference. *Statistical Science*, 32(3), 331–345. https://doi.org/10.1214/16-STS571
 
