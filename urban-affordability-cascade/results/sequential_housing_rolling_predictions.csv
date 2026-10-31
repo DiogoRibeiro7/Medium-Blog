@@ -1,0 +1,103 @@
+outcome,target_year,municipality,observed_log_growth_pct,baseline_prediction_pct,network_prediction_pct
+sold_price,2023,Arouca,12.429772,20.342224,18.553279
+sold_price,2023,Espinho,10.657558,10.399788,9.346095
+sold_price,2023,Gondomar,5.970944,9.934706,10.007234
+sold_price,2023,Maia,11.301866,10.861875,10.884908
+sold_price,2023,Matosinhos,17.599875,12.054108,11.875843
+sold_price,2023,Oliveira de Azeméis,8.229524,8.145518,7.045862
+sold_price,2023,Paredes,7.289900,12.685054,12.550013
+sold_price,2023,Porto,10.978994,11.553572,11.099854
+sold_price,2023,Póvoa de Varzim,5.685368,11.223801,11.356483
+sold_price,2023,Santa Maria da Feira,7.613766,8.490405,7.592076
+sold_price,2023,Santo Tirso,17.791701,16.165586,15.594369
+sold_price,2023,São João da Madeira,2.806545,4.990368,4.188286
+sold_price,2023,Trofa,4.640833,8.942812,9.511602
+sold_price,2023,Vale de Cambra,12.915289,7.636760,7.653956
+sold_price,2023,Valongo,9.393678,11.243785,11.293850
+sold_price,2023,Vila Nova de Gaia,12.797899,7.935461,8.082185
+sold_price,2023,Vila do Conde,9.036849,11.518477,11.530256
+sold_price,2024,Arouca,9.590032,11.328989,11.386908
+sold_price,2024,Espinho,26.362450,12.129543,11.853307
+sold_price,2024,Gondomar,10.625184,14.246604,13.600758
+sold_price,2024,Maia,12.477221,11.838493,11.289150
+sold_price,2024,Matosinhos,3.626728,8.993524,8.798271
+sold_price,2024,Oliveira de Azeméis,10.526051,13.226346,13.566757
+sold_price,2024,Paredes,19.290367,13.650798,13.248785
+sold_price,2024,Porto,4.034735,11.984342,11.436571
+sold_price,2024,Póvoa de Varzim,10.068640,14.375606,14.084316
+sold_price,2024,Santa Maria da Feira,8.900006,13.504500,13.371292
+sold_price,2024,Santo Tirso,1.600034,8.906871,8.966478
+sold_price,2024,São João da Madeira,17.243272,15.676042,15.774571
+sold_price,2024,Trofa,14.528766,14.847448,14.017411
+sold_price,2024,Vale de Cambra,-6.249283,11.109669,11.167724
+sold_price,2024,Valongo,13.107419,12.700469,12.335937
+sold_price,2024,Vila Nova de Gaia,12.764115,11.162697,10.847023
+sold_price,2024,Vila do Conde,9.604305,12.861657,12.704363
+sold_price,2025,Arouca,3.857759,11.775166,12.477205
+sold_price,2025,Espinho,12.642180,2.949654,3.234002
+sold_price,2025,Gondomar,20.254336,11.230478,11.818364
+sold_price,2025,Maia,14.700329,10.255950,10.839570
+sold_price,2025,Matosinhos,15.099322,14.913009,15.239807
+sold_price,2025,Oliveira de Azeméis,18.217153,11.282641,11.428814
+sold_price,2025,Paredes,17.901072,6.670928,7.104640
+sold_price,2025,Porto,11.479974,14.698319,14.682336
+sold_price,2025,Póvoa de Varzim,16.737438,11.523327,11.906084
+sold_price,2025,Santa Maria da Feira,20.933348,12.138252,11.787663
+sold_price,2025,Santo Tirso,32.156274,15.979439,16.015714
+sold_price,2025,São João da Madeira,26.451198,7.748093,8.074877
+sold_price,2025,Trofa,19.196613,9.176444,9.672497
+sold_price,2025,Vale de Cambra,12.692469,20.109687,20.037427
+sold_price,2025,Valongo,17.685313,9.924346,10.222688
+sold_price,2025,Vila Nova de Gaia,15.065370,10.104989,10.694071
+sold_price,2025,Vila do Conde,12.386948,11.767656,12.107985
+new_contract_rent,2023,Arouca,20.597575,7.835073,8.234469
+new_contract_rent,2023,Espinho,12.664572,7.136334,3.695020
+new_contract_rent,2023,Gondomar,9.745534,5.662855,1.345834
+new_contract_rent,2023,Maia,11.714057,7.088298,2.700783
+new_contract_rent,2023,Matosinhos,12.529185,4.041038,0.053033
+new_contract_rent,2023,Oliveira de Azeméis,12.711700,8.206457,6.788845
+new_contract_rent,2023,Paredes,11.517139,4.813079,1.302559
+new_contract_rent,2023,Porto,16.333827,4.932171,1.209014
+new_contract_rent,2023,Póvoa de Varzim,8.898104,5.426026,-0.545367
+new_contract_rent,2023,Santa Maria da Feira,8.020741,5.399236,3.144004
+new_contract_rent,2023,Santo Tirso,14.397535,9.329101,7.335008
+new_contract_rent,2023,São João da Madeira,11.230357,6.169852,4.884154
+new_contract_rent,2023,Trofa,14.799681,8.731186,7.055154
+new_contract_rent,2023,Vale de Cambra,31.050667,10.886983,10.792941
+new_contract_rent,2023,Valongo,11.993126,6.734950,2.985176
+new_contract_rent,2023,Vila Nova de Gaia,12.804555,6.185203,1.742325
+new_contract_rent,2023,Vila do Conde,13.117820,4.026698,0.035351
+new_contract_rent,2024,Arouca,7.904321,11.049509,12.267413
+new_contract_rent,2024,Espinho,11.239454,18.021435,24.519754
+new_contract_rent,2024,Gondomar,8.092144,20.586834,22.947962
+new_contract_rent,2024,Maia,10.831245,18.856796,22.602825
+new_contract_rent,2024,Matosinhos,9.916375,18.140420,21.607041
+new_contract_rent,2024,Oliveira de Azeméis,14.445128,17.980016,21.052757
+new_contract_rent,2024,Paredes,12.933851,19.029858,22.941746
+new_contract_rent,2024,Porto,7.871883,14.796708,21.577416
+new_contract_rent,2024,Póvoa de Varzim,15.476892,21.331598,24.711584
+new_contract_rent,2024,Santa Maria da Feira,15.865773,22.102670,25.487462
+new_contract_rent,2024,Santo Tirso,17.089286,16.498419,20.544829
+new_contract_rent,2024,São João da Madeira,15.257959,19.281896,25.696742
+new_contract_rent,2024,Trofa,14.427593,16.144992,20.831336
+new_contract_rent,2024,Vale de Cambra,-2.150621,1.862800,7.721758
+new_contract_rent,2024,Valongo,9.022509,18.611536,22.997639
+new_contract_rent,2024,Vila Nova de Gaia,11.349537,17.898411,21.495349
+new_contract_rent,2024,Vila do Conde,6.809292,17.623098,23.661231
+new_contract_rent,2025,Arouca,5.448819,13.897067,13.716129
+new_contract_rent,2025,Espinho,14.239966,11.487983,11.744781
+new_contract_rent,2025,Gondomar,12.143614,13.761396,13.464191
+new_contract_rent,2025,Maia,10.085210,11.782847,11.503539
+new_contract_rent,2025,Matosinhos,5.774099,12.443690,12.148891
+new_contract_rent,2025,Oliveira de Azeméis,9.300378,9.172411,9.243086
+new_contract_rent,2025,Paredes,5.193647,10.264060,9.968402
+new_contract_rent,2025,Porto,6.732608,13.920498,13.870895
+new_contract_rent,2025,Póvoa de Varzim,7.269429,8.427132,7.851786
+new_contract_rent,2025,Santa Maria da Feira,9.638273,8.146230,8.187939
+new_contract_rent,2025,Santo Tirso,15.415068,7.262443,7.155852
+new_contract_rent,2025,São João da Madeira,6.689423,8.585275,9.087072
+new_contract_rent,2025,Trofa,7.356257,9.185078,9.154543
+new_contract_rent,2025,Vale de Cambra,12.260232,21.160106,21.532392
+new_contract_rent,2025,Valongo,4.972344,13.089360,12.910358
+new_contract_rent,2025,Vila Nova de Gaia,10.191709,11.408466,11.161899
+new_contract_rent,2025,Vila do Conde,11.871631,14.688046,14.908973

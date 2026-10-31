@@ -130,6 +130,26 @@ checks. The accompanying [residential_od_intake.py](residential_od_intake.py)
 requires exact published counts or explicitly suppressed cells. Unit tests
 are synthetic and cannot stand in for collected migration data.
 
+**Annual timing / rolling-prediction checkpoint (31 October 2026).** The
+fixed 2019–2025 sold-price and 2020–2025 new-contract rent medians now
+support an audited Stage B first-passage calculation and an exploratory
+**2023–2025 one-year-ahead** forecasting exercise. The extra predictor is
+the *2021 undirected commuting-weighted* lagged neighbor growth **minus
+the preceding-year metropolitan mean growth**; a two-feature baseline
+already contains own and metropolitan lagged growth. Fixed
+train-standardized ridge regressions are re-estimated in each rolling
+origin without using held-out outcomes. In 51 municipality-year forecasts
+per outcome, network augmentation changes pooled MAE from **5.257 to
+5.188** log-growth points for sold-price medians, but worsens it from
+**5.790 to 8.141** for new-contract rents. Alternative network weights
+do not reverse the qualitative rent result. The 999 network-label shuffles
+are an **informal predictive benchmark**, not calibrated randomization
+inference or causal significance. All 17 new-contract rent medians crossed
++25% versus 2020 during the *published year* 2023; this annual nominal
+threshold pattern cannot establish a diffusion sequence or mobility.
+The OD data request remains **unsent**, and temporal association does not
+establish displacement or a directed propagation parameter.
+
 ## Planned analysis sequence
 
 ### Stage 0 — Obtain or document denial of directed residential counts
