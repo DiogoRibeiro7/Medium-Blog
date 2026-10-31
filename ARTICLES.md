@@ -1,6 +1,6 @@
 # Articles Developed in This Chat
 
-This is a chronological index of the sixteen long-form articles developed in
+This is a chronological index of the seventeen long-form articles developed in
 this conversation for `Medium-Blog`. It is **not** a complete
 catalogue of the repository's articles or historical notebooks.
 
@@ -22,6 +22,7 @@ catalogue of the repository's articles or historical notebooks.
 | 14 | [When Power Calls for Civility: How Moderation Can Contain Social Change](civility-and-political-change/article.md) | Alex Zamalin and Martin Luther King Jr., political civility, nonviolent direct action, bargaining asymmetry, historical comparison, protest evidence, ethical tradeoffs, delay costs | 8 | [Study README](civility-and-political-change/README.md) · [Python analysis](civility-and-political-change/analysis.py) · [Notebook](civility-and-political-change/model_walkthrough.ipynb) |
 | 15 | [A Missing Edge Is Not a Missing Relationship: Gaussian Graphical Models and Conditional Independence](gaussian-graphical-models-for-data-scientists/article.md) | Gaussian precision and partial correlation, chain and collider, latent factors, high-dimensional singularity, graphical lasso support recovery, held-out likelihood, bootstrap stability, nonlinear dependence and non-identifiable causal direction | 9 | [Study README](gaussian-graphical-models-for-data-scientists/README.md) · [Python analysis](gaussian-graphical-models-for-data-scientists/analysis.py) · [Notebook](gaussian-graphical-models-for-data-scientists/gaussian_graphical_models.ipynb) |
 | 16 | [The Gold Was Real. So Was the Gilding: The Political Economy of America's Gilded Age](gilded-age-political-economy/article.md) | Gilded Age, railroad expansion, immigration, wealth concentration, real wages, monopoly and network costs, labor conflict, regulation, political exclusion, source uncertainty | 8 | [Study README](gilded-age-political-economy/README.md) · [Python analysis](gilded-age-political-economy/analysis.py) · [Notebook](gilded-age-political-economy/model_walkthrough.ipynb) |
+| 17 | [A Law Is Not a Reform: What the Progressive Era Actually Changed](progressive-era-reform-gap/article.md) | Progressive Era, trust-busting, Federal Reserve, federal income tax, unions, child labor, women's suffrage, racial exclusion, administrative enforcement and distributional effects | 8 | [Study README](progressive-era-reform-gap/README.md) · [Python analysis](progressive-era-reform-gap/analysis.py) · [Notebook](progressive-era-reform-gap/model_walkthrough.ipynb) |
 
 ## Reproducibility
 
