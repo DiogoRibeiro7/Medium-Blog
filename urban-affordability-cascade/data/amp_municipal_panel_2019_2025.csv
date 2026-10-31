@@ -1,0 +1,120 @@
+dico,municipality,nuts3,nuts2,year,population,completions,permits,price_m2,price_m2_existing,price_m2_2018m,appraisal_m2,income,income_net,rent_m2,rent_m2_2021m,population_basis,flags
+0104,Arouca,11A,11,2019,21290,29,84,667,619,667,739,10611,10316,,3.51,census-based,
+0104,Arouca,11A,11,2020,21241,21,49,668,622,663,746,10813,10511,3.46,3.73,census-based,
+0104,Arouca,11A,11,2021,21041,39,79,849,756,,802,11420,11024,3.48,3.64,administrative-based,construction_preliminary;population_administrative_basis
+0104,Arouca,11A,11,2022,21159,45,77,816,714,,872,12380,11840,3.76,3.66,administrative-based,construction_preliminary;population_administrative_basis
+0104,Arouca,11A,11,2023,21360,39,46,924,692,,982,13104,12516,4.62,4.59,administrative-based,construction_preliminary;population_administrative_basis
+0104,Arouca,11A,11,2024,21486,48,77,1017,727,,1093,14334,13822,5,,administrative-based,construction_preliminary;population_administrative_basis;completions_estimated
+0104,Arouca,11A,11,2025,21459,26,80,1057,967,,1176,,,5.28,,administrative-based,construction_preliminary;population_administrative_basis;completions_estimated
+0107,Espinho,11A,11,2019,31266,29,123,1190,1159,1190,1131,12175,11682,,6.06,census-based,
+0107,Espinho,11A,11,2020,31175,93,139,1429,1264,1344,1233,12313,11785,5.8,5.81,census-based,
+0107,Espinho,11A,11,2021,31642,56,238,1429,1323,,1393,12943,12342,6.17,5.84,administrative-based,construction_preliminary;population_administrative_basis
+0107,Espinho,11A,11,2022,31894,118,322,1645,1592,,1473,13885,13113,6.74,6.65,administrative-based,construction_preliminary;population_administrative_basis
+0107,Espinho,11A,11,2023,32210,182,151,1830,1610,,1647,14856,14011,7.65,6.92,administrative-based,construction_preliminary;population_administrative_basis
+0107,Espinho,11A,11,2024,32399,163,86,2382,2315,,1939,15779,15134,8.56,,administrative-based,construction_preliminary;population_administrative_basis;completions_estimated
+0107,Espinho,11A,11,2025,32455,62,100,2703,2333,,2103,,,9.87,,administrative-based,construction_preliminary;population_administrative_basis;completions_estimated
+1304,Gondomar,11A,11,2019,164774,70,323,975,959,964,932,12088,11601,,5.22,census-based,
+1304,Gondomar,11A,11,2020,164939,91,171,1136,1129,1125,1039,12197,11702,5.42,5.45,census-based,
+1304,Gondomar,11A,11,2021,165213,254,185,1274,1234,,1163,12751,12188,5.68,5.78,administrative-based,construction_preliminary;population_administrative_basis
+1304,Gondomar,11A,11,2022,167292,173,319,1479,1444,,1292,13709,13009,6.35,6.21,administrative-based,construction_preliminary;population_administrative_basis
+1304,Gondomar,11A,11,2023,169122,133,326,1570,1551,,1385,14663,13899,7,6.91,administrative-based,construction_preliminary;population_administrative_basis
+1304,Gondomar,11A,11,2024,170293,261,405,1746,1724,,1536,15673,15032,7.59,,administrative-based,construction_preliminary;population_administrative_basis;completions_estimated
+1304,Gondomar,11A,11,2025,170597,274,555,2138,2115,,1869,,,8.57,,administrative-based,construction_preliminary;population_administrative_basis;completions_estimated
+1306,Maia,11A,11,2019,135267,39,158,1163,1151,1152,1067,14476,13680,,5.78,census-based,
+1306,Maia,11A,11,2020,135439,208,260,1283,1250,1283,1176,14516,13735,6.11,6.09,census-based,
+1306,Maia,11A,11,2021,136452,170,399,1413,1371,,1273,15114,14213,6.33,6.35,administrative-based,construction_preliminary;population_administrative_basis
+1306,Maia,11A,11,2022,138885,298,645,1613,1602,,1461,16137,15080,6.92,6.9,administrative-based,construction_preliminary;population_administrative_basis
+1306,Maia,11A,11,2023,140501,276,663,1806,1725,,1560,17180,16020,7.78,7.69,administrative-based,construction_preliminary;population_administrative_basis
+1306,Maia,11A,11,2024,141673,571,1098,2046,1899,,1731,18512,17524,8.67,,administrative-based,construction_preliminary;population_administrative_basis;completions_estimated
+1306,Maia,11A,11,2025,142129,447,1115,2370,2281,,2032,,,9.59,,administrative-based,construction_preliminary;population_administrative_basis;completions_estimated
+1308,Matosinhos,11A,11,2019,174302,71,616,1480,1429,1471,1376,14006,13293,,7.55,census-based,
+1308,Matosinhos,11A,11,2020,173241,384,842,1637,1592,1637,1504,14024,13326,7.66,7.72,census-based,
+1308,Matosinhos,11A,11,2021,174717,501,1033,1870,1722,,1600,14570,13743,7.97,7.83,administrative-based,construction_preliminary;population_administrative_basis
+1308,Matosinhos,11A,11,2022,177981,320,820,2089,2000,,1830,15478,14512,9.14,9.03,administrative-based,construction_preliminary;population_administrative_basis
+1308,Matosinhos,11A,11,2023,180417,668,686,2491,2147,,1944,16378,15361,10.36,10,administrative-based,construction_preliminary;population_administrative_basis
+1308,Matosinhos,11A,11,2024,181632,416,723,2583,2387,,2072,17562,16667,11.44,,administrative-based,construction_preliminary;population_administrative_basis;completions_estimated
+1308,Matosinhos,11A,11,2025,181930,678,581,3004,2746,,2494,,,12.12,,administrative-based,construction_preliminary;population_administrative_basis;completions_estimated
+0113,Oliveira de Azeméis,11A,11,2019,66137,69,142,732,656,721,726,12204,11704,,3.3,census-based,
+0113,Oliveira de Azeméis,11A,11,2020,66460,64,106,795,712,805,791,12188,11687,3.36,3.32,census-based,
+0113,Oliveira de Azeméis,11A,11,2021,66918,64,115,768,744,,822,12726,12150,3.64,3.59,administrative-based,construction_preliminary;population_administrative_basis
+0113,Oliveira de Azeméis,11A,11,2022,68178,117,141,921,868,,901,13816,13084,3.91,3.76,administrative-based,construction_preliminary;population_administrative_basis
+0113,Oliveira de Azeméis,11A,11,2023,69109,97,140,1000,954,,926,14749,13996,4.44,4.35,administrative-based,construction_preliminary;population_administrative_basis
+0113,Oliveira de Azeméis,11A,11,2024,69573,116,197,1111,1046,,1037,15950,15266,5.13,,administrative-based,construction_preliminary;population_administrative_basis;completions_estimated
+0113,Oliveira de Azeméis,11A,11,2025,70027,93,91,1333,1302,,1229,,,5.63,,administrative-based,construction_preliminary;population_administrative_basis;completions_estimated
+1310,Paredes,11A,11,2019,84335,87,180,739,728,736,748,10004,9705,,3.33,census-based,
+1310,Paredes,11A,11,2020,84711,126,313,844,822,849,825,10192,9881,3.62,3.62,census-based,
+1310,Paredes,11A,11,2021,84382,143,261,910,860,,872,10662,10323,3.76,3.75,administrative-based,construction_preliminary;population_administrative_basis
+1310,Paredes,11A,11,2022,85740,168,285,1005,1008,,984,11614,11209,4.26,4.17,administrative-based,construction_preliminary;population_administrative_basis
+1310,Paredes,11A,11,2023,86924,291,300,1081,1021,,1095,12448,11966,4.78,4.75,administrative-based,construction_preliminary;population_administrative_basis
+1310,Paredes,11A,11,2024,87894,313,378,1311,1200,,1236,13531,13171,5.44,,administrative-based,construction_preliminary;population_administrative_basis;completions_estimated
+1310,Paredes,11A,11,2025,88858,240,495,1568,1532,,1442,,,5.73,,administrative-based,construction_preliminary;population_administrative_basis;completions_estimated
+1312,Porto,11A,11,2019,237003,309,930,1856,1718,1837,1875,13918,13063,,8.83,census-based,
+1312,Porto,11A,11,2020,232873,791,1484,2112,1866,2142,1956,13761,12925,8.97,8.7,census-based,
+1312,Porto,11A,11,2021,244174,1229,1771,2278,2011,,2074,14200,13291,9.17,8.85,administrative-based,construction_preliminary;population_administrative_basis
+1312,Porto,11A,11,2022,256269,926,1701,2568,2282,,2405,14683,13674,10.37,9.98,administrative-based,construction_preliminary;population_administrative_basis
+1312,Porto,11A,11,2023,267236,1223,1625,2866,2548,,2458,15000,14012,12.21,11.72,administrative-based,construction_preliminary;population_administrative_basis
+1312,Porto,11A,11,2024,273979,1379,2558,2984,2757,,2580,15523,14705,13.21,,administrative-based,construction_preliminary;population_administrative_basis;completions_estimated
+1312,Porto,11A,11,2025,273476,1306,1904,3347,3120,,2963,,,14.13,,administrative-based,construction_preliminary;population_administrative_basis;completions_estimated
+1313,Póvoa de Varzim,11A,11,2019,64245,115,140,1179,1138,1201,1120,11284,10888,,5.08,census-based,
+1313,Póvoa de Varzim,11A,11,2020,64522,168,191,1300,1278,1316,1204,11486,11054,5.36,5.41,census-based,
+1313,Póvoa de Varzim,11A,11,2021,65874,107,127,1447,1399,,1281,12132,11605,5.65,5.67,administrative-based,construction_preliminary;population_administrative_basis
+1313,Póvoa de Varzim,11A,11,2022,68103,81,84,1641,1600,,1464,13043,12417,6.34,6.37,administrative-based,construction_preliminary;population_administrative_basis
+1313,Póvoa de Varzim,11A,11,2023,70149,14,191,1737,1710,,1587,13916,13186,6.93,6.88,administrative-based,construction_preliminary;population_administrative_basis
+1313,Póvoa de Varzim,11A,11,2024,71581,43,182,1921,1863,,1764,14920,14359,8.09,,administrative-based,construction_preliminary;population_administrative_basis;completions_estimated
+1313,Póvoa de Varzim,11A,11,2025,72364,1,238,2271,2266,,2076,,,8.7,,administrative-based,construction_preliminary;population_administrative_basis;completions_estimated
+0109,Santa Maria da Feira,11A,11,2019,136695,124,301,814,758,796,771,11694,11220,,3.87,census-based,
+0109,Santa Maria da Feira,11A,11,2020,137224,177,199,904,870,895,862,11796,11326,3.89,3.96,census-based,
+0109,Santa Maria da Feira,11A,11,2021,137613,220,209,944,922,,899,12437,11894,4.16,4.29,administrative-based,construction_preliminary;population_administrative_basis
+0109,Santa Maria da Feira,11A,11,2022,139670,256,275,1125,1089,,1026,13429,12767,4.67,4.69,administrative-based,construction_preliminary;population_administrative_basis
+0109,Santa Maria da Feira,11A,11,2023,141386,250,279,1214,1165,,1093,14406,13687,5.06,5.08,administrative-based,construction_preliminary;population_administrative_basis
+0109,Santa Maria da Feira,11A,11,2024,142311,219,288,1327,1297,,1206,15516,14881,5.93,,administrative-based,construction_preliminary;population_administrative_basis;completions_estimated
+0109,Santa Maria da Feira,11A,11,2025,142676,314,296,1636,1606,,1450,,,6.53,,administrative-based,construction_preliminary;population_administrative_basis;completions_estimated
+1314,Santo Tirso,11A,11,2019,68087,36,96,833,813,833,794,11600,11169,,3.25,census-based,
+1314,Santo Tirso,11A,11,2020,67987,87,172,857,844,838,853,11781,11321,3.32,3.53,census-based,
+1314,Santo Tirso,11A,11,2021,67765,125,125,951,931,,923,12306,11782,3.61,3.91,administrative-based,construction_preliminary;population_administrative_basis
+1314,Santo Tirso,11A,11,2022,68430,114,89,986,969,,1054,13488,12809,3.81,3.71,administrative-based,construction_preliminary;population_administrative_basis
+1314,Santo Tirso,11A,11,2023,69184,109,150,1178,1101,,1150,14364,13686,4.4,4.31,administrative-based,construction_preliminary;population_administrative_basis
+1314,Santo Tirso,11A,11,2024,69657,141,257,1197,1224,,1238,15666,15056,5.22,,administrative-based,construction_preliminary;population_administrative_basis;completions_estimated
+1314,Santo Tirso,11A,11,2025,69810,134,245,1651,1487,,1468,,,6.09,,administrative-based,construction_preliminary;population_administrative_basis;completions_estimated
+0116,São João da Madeira,11A,11,2019,22237,7,47,803,751,800,819,11875,11369,,3.87,census-based,
+0116,São João da Madeira,11A,11,2020,22250,18,51,862,825,867,870,11784,11305,4.28,4.29,census-based,
+0116,São João da Madeira,11A,11,2021,22867,35,40,830,776,,900,12318,11799,4.4,4.49,administrative-based,construction_preliminary;population_administrative_basis
+0116,São João da Madeira,11A,11,2022,23597,27,54,1054,1006,,1018,13341,12666,4.88,4.85,administrative-based,construction_preliminary;population_administrative_basis
+0116,São João da Madeira,11A,11,2023,23995,5,35,1084,1084,,1087,14198,13498,5.46,5.26,administrative-based,construction_preliminary;population_administrative_basis
+0116,São João da Madeira,11A,11,2024,24013,39,187,1288,1224,,1214,15389,14750,6.36,,administrative-based,construction_preliminary;population_administrative_basis;completions_estimated
+0116,São João da Madeira,11A,11,2025,23991,131,15,1678,1535,,1548,,,6.8,,administrative-based,construction_preliminary;population_administrative_basis;completions_estimated
+1318,Trofa,11A,11,2019,38556,26,97,815,805,791,844,12190,11670,,4.08,census-based,
+1318,Trofa,11A,11,2020,38659,35,53,917,900,900,941,12135,11632,4.19,4.54,census-based,
+1318,Trofa,11A,11,2021,38940,84,70,1033,979,,992,12811,12182,4.59,4.65,administrative-based,construction_preliminary;population_administrative_basis
+1318,Trofa,11A,11,2022,39758,45,69,1221,1170,,1125,13751,13004,4.89,5.23,administrative-based,construction_preliminary;population_administrative_basis
+1318,Trofa,11A,11,2023,40759,58,30,1279,1271,,1251,14649,13864,5.67,6,administrative-based,construction_preliminary;population_administrative_basis
+1318,Trofa,11A,11,2024,41315,47,44,1479,1446,,1377,15684,15043,6.55,,administrative-based,construction_preliminary;population_administrative_basis;completions_estimated
+1318,Trofa,11A,11,2025,41512,59,148,1792,1782,,1638,,,7.05,,administrative-based,construction_preliminary;population_administrative_basis;completions_estimated
+0119,Vale de Cambra,11A,11,2019,21325,8,64,733,713,741,769,12193,11712,,3.45,census-based,
+0119,Vale de Cambra,11A,11,2020,21345,15,98,725,658,747,777,12528,12009,3.46,3.33,census-based,
+0119,Vale de Cambra,11A,11,2021,21410,23,55,851,846,,832,13110,12471,3.68,3.44,administrative-based,construction_preliminary;population_administrative_basis
+0119,Vale de Cambra,11A,11,2022,21722,47,48,1030,979,,978,13859,13100,3.79,3.85,administrative-based,construction_preliminary;population_administrative_basis
+0119,Vale de Cambra,11A,11,2023,22008,97,49,1172,852,,1055,14842,14088,5.17,5,administrative-based,construction_preliminary;population_administrative_basis
+0119,Vale de Cambra,11A,11,2024,22104,35,71,1101,1026,,1013,16109,15445,5.06,,administrative-based,construction_preliminary;population_administrative_basis;completions_estimated
+0119,Vale de Cambra,11A,11,2025,22066,48,59,1250,1250,,1120,,,5.72,,administrative-based,construction_preliminary;population_administrative_basis;completions_estimated
+1315,Valongo,11A,11,2019,94419,74,93,951,923,944,909,12439,11923,,5.06,census-based,
+1315,Valongo,11A,11,2020,95018,139,86,1142,1110,1128,1030,12529,11986,5.32,5.42,census-based,
+1315,Valongo,11A,11,2021,95689,52,206,1227,1185,,1102,13160,12534,5.64,5.76,administrative-based,construction_preliminary;population_administrative_basis
+1315,Valongo,11A,11,2022,96922,76,227,1391,1369,,1240,14138,13360,6.2,6.24,administrative-based,construction_preliminary;population_administrative_basis
+1315,Valongo,11A,11,2023,98264,147,159,1528,1505,,1340,15173,14353,6.99,7,administrative-based,construction_preliminary;population_administrative_basis
+1315,Valongo,11A,11,2024,98841,184,116,1742,1715,,1495,16339,15590,7.65,,administrative-based,construction_preliminary;population_administrative_basis;completions_estimated
+1315,Valongo,11A,11,2025,98930,162,79,2079,2074,,1802,,,8.04,,administrative-based,construction_preliminary;population_administrative_basis;completions_estimated
+1316,Vila do Conde,11A,11,2019,80702,60,251,1124,1109,1122,1012,12190,11720,,4.64,census-based,
+1316,Vila do Conde,11A,11,2020,81236,127,368,1233,1239,1246,1125,12343,11841,5.01,5,census-based,
+1316,Vila do Conde,11A,11,2021,81731,138,299,1406,1364,,1234,13006,12421,5.1,5.11,administrative-based,construction_preliminary;population_administrative_basis
+1316,Vila do Conde,11A,11,2022,83469,260,333,1586,1538,,1407,14043,13330,5.85,5.84,administrative-based,construction_preliminary;population_administrative_basis
+1316,Vila do Conde,11A,11,2023,84710,255,309,1736,1710,,1488,14964,14196,6.67,6.76,administrative-based,construction_preliminary;population_administrative_basis
+1316,Vila do Conde,11A,11,2024,85740,233,351,1911,1886,,1649,16180,15483,7.14,,administrative-based,construction_preliminary;population_administrative_basis;completions_estimated
+1316,Vila do Conde,11A,11,2025,86245,308,732,2163,2175,,1918,,,8.04,,administrative-based,construction_preliminary;population_administrative_basis;completions_estimated
+1317,Vila Nova de Gaia,11A,11,2019,304668,389,1198,1096,1055,1087,1048,12770,12203,,6.25,census-based,
+1317,Vila Nova de Gaia,11A,11,2020,304952,600,1167,1238,1197,1240,1159,12816,12248,6.51,6.5,census-based,
+1317,Vila Nova de Gaia,11A,11,2021,306649,783,1453,1369,1298,,1281,13424,12763,6.8,6.83,administrative-based,construction_preliminary;population_administrative_basis
+1317,Vila Nova de Gaia,11A,11,2022,313065,672,1985,1648,1567,,1445,14323,13545,7.54,7.49,administrative-based,construction_preliminary;population_administrative_basis
+1317,Vila Nova de Gaia,11A,11,2023,318087,1183,3355,1873,1701,,1564,15217,14359,8.57,8.51,administrative-based,construction_preliminary;population_administrative_basis
+1317,Vila Nova de Gaia,11A,11,2024,321729,1596,1897,2128,1912,,1744,16256,15543,9.6,,administrative-based,construction_preliminary;population_administrative_basis;completions_estimated
+1317,Vila Nova de Gaia,11A,11,2025,323202,1901,2987,2474,2289,,2057,,,10.63,,administrative-based,construction_preliminary;population_administrative_basis;completions_estimated
