@@ -127,7 +127,7 @@ The present purpose is diagnostic: use a simple fixed-bandwidth procedure and ex
 
 The simulation records, for each scenario and bandwidth, the mean estimated discontinuity, bias relative to −1, root mean squared error, mean fitted standard error, empirical coverage of the nominal 95% interval, and mean number of observations in the estimation window. Monte Carlo variability comes from independently regenerating the entire dataset for each replication.
 
-## A study with 4,800 datasets
+## A study with 1,200 datasets and 4,800 regression fits
 
 The experiment consists of 400 independently generated datasets for each of the three scenarios, or 1,200 datasets in total. Each dataset is analysed at four bandwidths, producing 4,800 separate RD regression fits. The independent replication count per scenario is 400.
 
