@@ -42,6 +42,13 @@ class PublicationTests(unittest.TestCase):
         self.assertIn(f"{model['in_sample_r2']:.4f}", self.article)
         self.assertIn(f"{model['forward_rmse']:.2f}", self.article)
         self.assertIn(f"{model['loocv_rmse']:.2f}", self.article)
+        self.assertIn(f"{model['forward_generic_only_rmse']:.2f}", self.article)
+        self.assertIn(f"{model['forward_seats_only_rmse']:.2f}", self.article)
+        self.assertIn(f"{model['forecast_generic_only']:.2f}".replace("-", "−"),
+                      self.article)
+        self.assertIn(f"{model['alternative_forward_rmse']:.2f}", self.article)
+        self.assertIn(f"{model['alternative_forward_generic_only_rmse']:.2f}",
+                      self.article)
 
     def test_sources_and_index_are_complete(self) -> None:
         provenance = (ROOT / "data" / "PROVENANCE.md").read_text(encoding="utf-8")

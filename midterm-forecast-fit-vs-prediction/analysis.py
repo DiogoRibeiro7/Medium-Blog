@@ -15,7 +15,7 @@ import json
 import math
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any, Iterable
+from typing import Any, Iterable, Literal
 
 import numpy as np
 import numpy.typing as npt
@@ -106,6 +106,17 @@ class Holdout:
 
 
 @dataclass(frozen=True)
+class ReducedHoldout:
+    """Chronological holdout forecasts from single-feature OLS benchmarks."""
+
+    year: int
+    actual: int
+    train_count: int
+    generic_only: float
+    seats_only: float
+
+
+@dataclass(frozen=True)
 class Evidence:
     """Computed values shared by the tables, figures and publication draft."""
 
@@ -114,6 +125,7 @@ class Evidence:
     model: OLSFit
     leave_one_out: tuple[Holdout, ...]
     forward: tuple[Holdout, ...]
+    reduced_forward: tuple[ReducedHoldout, ...]
     bootstrapped_future: Array
     alternative_model: OLSFit
     metrics: dict[str, Any]
@@ -299,6 +311,65 @@ def expanding_backtest(
     )
 
 
+def reduced_predict(
+    elections: Iterable[Election], feature: Literal["generic", "seats"],
+    *, margin: float, seats: float,
+) -> float:
+    """Fit intercept plus one feature; never use the test outcome in estimation.
+
+    Both benchmarks use the same OLS solver and source observations as the
+    headline model. The test prediction uses its contemporaneous feature,
+    but not its observed seat change or any later election.
+    """
+
+    if feature not in {"generic", "seats"}:
+        raise ValueError("Feature must be 'generic' or 'seats'")
+    rows: tuple[Election, ...] = tuple(elections)
+    if len(rows) < 3:
+        raise ValueError("At least three training elections are required")
+    for election in rows:
+        _validate_election(election)
+    predictor(margin, seats)
+    training_feature: Array = np.asarray(
+        [row.party_margin if feature == "generic" else row.seats for row in rows],
+        dtype=float,
+    )
+    x: Array = np.column_stack((np.ones(len(rows), dtype=float), training_feature))
+    if np.linalg.matrix_rank(x) != 2:
+        raise ValueError("Reduced benchmark has a rank-deficient design")
+    y: Array = np.asarray([row.change for row in rows], dtype=float)
+    coefficients: Array = np.linalg.lstsq(x, y, rcond=None)[0]
+    test_feature: float = margin if feature == "generic" else seats
+    return float(np.array([1.0, test_feature]) @ coefficients)
+
+
+def expanding_reduced_backtest(
+    elections: tuple[Election, ...], minimum_train: int = 8,
+) -> tuple[ReducedHoldout, ...]:
+    """Use identical historical origins for two simpler predictive rules."""
+
+    if isinstance(minimum_train, bool) or not isinstance(minimum_train, int):
+        raise TypeError("minimum_train must be an integer")
+    if not 5 <= minimum_train < len(elections):
+        raise ValueError("Training window must leave at least one future election")
+    return tuple(
+        ReducedHoldout(
+            year=elections[i].year,
+            actual=elections[i].change,
+            train_count=i,
+            generic_only=reduced_predict(
+                elections[:i], "generic", margin=elections[i].party_margin,
+                seats=elections[i].seats,
+            ),
+            seats_only=reduced_predict(
+                elections[:i], "seats", margin=elections[i].party_margin,
+                seats=elections[i].seats,
+            ),
+        )
+        for i in range(minimum_train, len(elections))
+    )
+
+
 def influence(model: OLSFit) -> tuple[Array, Array, Array]:
     """Return leverage, internally studentized residuals, and Cook's distance."""
 
@@ -401,7 +472,15 @@ def compute_evidence(draws: int = 5000, seed: int = 20261031) -> Evidence:
     model: OLSFit = fit_model(elections)
     loocv: tuple[Holdout, ...] = leave_one_out(elections)
     forward: tuple[Holdout, ...] = expanding_backtest(elections)
-    alternative: OLSFit = fit_model(alternative_gallup(elections))
+    reduced_forward: tuple[ReducedHoldout, ...] = expanding_reduced_backtest(elections)
+    if [(row.year, row.actual, row.train_count) for row in forward] != [
+        (row.year, row.actual, row.train_count) for row in reduced_forward
+    ]:
+        raise ArithmeticError("Forward benchmark test sets do not align")
+    alternative_elections: tuple[Election, ...] = alternative_gallup(elections)
+    alternative: OLSFit = fit_model(alternative_elections)
+    alternative_forward: tuple[Holdout, ...] = expanding_backtest(alternative_elections)
+    alternative_reduced: tuple[ReducedHoldout, ...] = expanding_reduced_backtest(alternative_elections)
     bootstrap: Array = bootstrap_future(elections, scenario, draws=draws, seed=seed)
     y: Array = model.outcomes
     heldout_actual: Array = np.array([row.actual for row in loocv], dtype=float)
@@ -409,9 +488,20 @@ def compute_evidence(draws: int = 5000, seed: int = 20261031) -> Evidence:
     forward_actual: Array = np.array([row.actual for row in forward], dtype=float)
     forward_pred: Array = np.array([row.predicted for row in forward], dtype=float)
     baseline_pred: Array = np.array([row.baseline for row in forward], dtype=float)
+    generic_pred: Array = np.array([row.generic_only for row in reduced_forward], dtype=float)
+    seats_pred: Array = np.array([row.seats_only for row in reduced_forward], dtype=float)
     loo_metrics: dict[str, float] = _errors(heldout_actual, heldout_pred)
     forward_metrics: dict[str, float] = _errors(forward_actual, forward_pred)
     baseline_metrics: dict[str, float] = _errors(forward_actual, baseline_pred)
+    generic_metrics: dict[str, float] = _errors(forward_actual, generic_pred)
+    seats_metrics: dict[str, float] = _errors(forward_actual, seats_pred)
+    alternative_full_pred: Array = np.array([row.predicted for row in alternative_forward], dtype=float)
+    alternative_generic_pred: Array = np.array([row.generic_only for row in alternative_reduced], dtype=float)
+    alternative_actual: Array = np.array([row.actual for row in alternative_forward], dtype=float)
+    if [row.year for row in alternative_forward] != [row.year for row in forward]:
+        raise ArithmeticError("Alternative Gallup and primary fold years do not match")
+    alternative_forward_metrics: dict[str, float] = _errors(alternative_actual, alternative_full_pred)
+    alternative_generic_metrics: dict[str, float] = _errors(alternative_actual, alternative_generic_pred)
     q90: tuple[float, float] = prediction_interval(model, scenario.party_margin, scenario.seats, 0.9)
     q95: tuple[float, float] = prediction_interval(model, scenario.party_margin, scenario.seats, 0.95)
     forecast_loo: list[float] = [
@@ -436,6 +526,15 @@ def compute_evidence(draws: int = 5000, seed: int = 20261031) -> Evidence:
         "forward_mean_baseline_rmse": baseline_metrics["rmse"],
         "forward_mean_baseline_mae": baseline_metrics["mae"],
         "forward_mean_baseline_r2": baseline_metrics["r2"],
+        "forward_generic_only_rmse": generic_metrics["rmse"],
+        "forward_generic_only_mae": generic_metrics["mae"],
+        "forward_generic_only_r2": generic_metrics["r2"],
+        "forward_seats_only_rmse": seats_metrics["rmse"],
+        "forward_seats_only_mae": seats_metrics["mae"],
+        "forward_seats_only_r2": seats_metrics["r2"],
+        "forward_full_beats_generic_absolute_count": int(np.sum(
+            np.abs(forward_pred - forward_actual) < np.abs(generic_pred - forward_actual)
+        )),
         "loocv_90_coverage": float(np.mean([row.lower_90 <= row.actual <= row.upper_90 for row in loocv])),
         "loocv_95_coverage": float(np.mean([row.lower_95 <= row.actual <= row.upper_95 for row in loocv])),
         "forward_90_coverage": float(np.mean([row.lower_90 <= row.actual <= row.upper_90 for row in forward])),
@@ -443,6 +542,12 @@ def compute_evidence(draws: int = 5000, seed: int = 20261031) -> Evidence:
         "scenario_party_margin": scenario.party_margin,
         "scenario_seats": scenario.seats,
         "forecast": model.predict(scenario.party_margin, scenario.seats),
+        "forecast_generic_only": reduced_predict(
+            elections, "generic", margin=scenario.party_margin, seats=scenario.seats,
+        ),
+        "forecast_seats_only": reduced_predict(
+            elections, "seats", margin=scenario.party_margin, seats=scenario.seats,
+        ),
         "original_rattner_forecast": -33,
         "parametric_90_interval": list(q90),
         "parametric_95_interval": list(q95),
@@ -451,6 +556,12 @@ def compute_evidence(draws: int = 5000, seed: int = 20261031) -> Evidence:
         "bootstrap_95_interval": [float(v) for v in np.quantile(bootstrap, [0.025, 0.975])],
         "alternative_gallup_r2": alternative.r_squared,
         "alternative_gallup_forecast": alternative.predict(scenario.party_margin, scenario.seats),
+        "alternative_forward_rmse": alternative_forward_metrics["rmse"],
+        "alternative_forward_generic_only_rmse": alternative_generic_metrics["rmse"],
+        "alternative_forward_full_beats_generic_absolute_count": int(np.sum(
+            np.abs(alternative_full_pred - alternative_actual)
+            < np.abs(alternative_generic_pred - alternative_actual)
+        )),
         "forecast_omit_one_year_min": min(forecast_loo),
         "forecast_omit_one_year_max": max(forecast_loo),
         "largest_cook_year": elections[int(np.argmax(cooks))].year,
@@ -458,7 +569,8 @@ def compute_evidence(draws: int = 5000, seed: int = 20261031) -> Evidence:
         "max_leverage": float(np.max(leverage)),
         "max_studentized_absolute_residual": float(np.max(np.abs(standardized))),
     }
-    return Evidence(elections, scenario, model, loocv, forward, bootstrap, alternative, metrics)
+    return Evidence(elections, scenario, model, loocv, forward, reduced_forward,
+                    bootstrap, alternative, metrics)
 
 
 def _write_csv(path: Path, fields: tuple[str, ...], rows: Iterable[dict[str, Any]]) -> None:
@@ -484,6 +596,18 @@ def save_tables(evidence: Evidence, directory: Path) -> None:
             {name: (row.error if name == "error" else getattr(row, name)) for name in fields}
             for row in results
         ))
+    _write_csv(
+        directory / "forward_model_comparison.csv",
+        ("year", "actual", "train_count", "two_predictor", "generic_only",
+         "seats_only", "historical_mean"),
+        (
+            {"year": full.year, "actual": full.actual,
+             "train_count": full.train_count, "two_predictor": full.predicted,
+             "generic_only": reduced.generic_only, "seats_only": reduced.seats_only,
+             "historical_mean": full.baseline}
+            for full, reduced in zip(evidence.forward, evidence.reduced_forward, strict=True)
+        ),
+    )
     _write_csv(
         directory / "historical_fits.csv",
         ("year", "president_party", "house_seats_defended", "party_margin",
@@ -539,14 +663,22 @@ def save_tables(evidence: Evidence, directory: Path) -> None:
     )
     _write_csv(
         directory / "source_sensitivity.csv",
-        ("historical_gallup_source", "observations", "r_squared", "forecast_2026"),
+        ("historical_gallup_source", "observations", "r_squared", "forecast_2026",
+         "forward_rmse", "forward_generic_only_rmse", "full_beats_generic_absolute_count"),
         (
             {"historical_gallup_source": source, "observations": len(evidence.elections),
              "r_squared": model.r_squared,
-             "forecast_2026": model.predict(evidence.scenario.party_margin, evidence.scenario.seats)}
-            for source, model in (
-                ("Gallup_2002_primary", evidence.model),
-                ("Gallup_2004_alternative", evidence.alternative_model),
+             "forecast_2026": model.predict(evidence.scenario.party_margin, evidence.scenario.seats),
+             "forward_rmse": evidence.metrics[full_key],
+             "forward_generic_only_rmse": evidence.metrics[generic_key],
+             "full_beats_generic_absolute_count": evidence.metrics[wins_key]}
+            for source, model, full_key, generic_key, wins_key in (
+                ("Gallup_2002_primary", evidence.model,
+                 "forward_rmse", "forward_generic_only_rmse",
+                 "forward_full_beats_generic_absolute_count"),
+                ("Gallup_2004_alternative", evidence.alternative_model,
+                 "alternative_forward_rmse", "alternative_forward_generic_only_rmse",
+                 "alternative_forward_full_beats_generic_absolute_count"),
             )
         ),
     )
@@ -568,6 +700,7 @@ def main() -> None:
     for key in (
         "observations", "in_sample_r2", "in_sample_rmse", "loocv_rmse",
         "loocv_r2", "forward_rmse", "forward_mean_baseline_rmse", "forecast",
+        "forward_generic_only_rmse", "forward_seats_only_rmse",
         "parametric_95_interval", "bootstrap_95_interval", "alternative_gallup_forecast",
     ):
         print(f"{key}: {evidence.metrics[key]}")

@@ -1,3 +1,3 @@
-historical_gallup_source,observations,r_squared,forecast_2026
-Gallup_2002_primary,18,0.893447684694887,-32.32288802630563
-Gallup_2004_alternative,18,0.8884426254042618,-31.911588848641994
+historical_gallup_source,observations,r_squared,forecast_2026,forward_rmse,forward_generic_only_rmse,full_beats_generic_absolute_count
+Gallup_2002_primary,18,0.893447684694887,-32.32288802630563,8.695800072815182,20.094321028177408,9
+Gallup_2004_alternative,18,0.8884426254042618,-31.911588848641994,8.973563283594627,20.625485289655586,9
