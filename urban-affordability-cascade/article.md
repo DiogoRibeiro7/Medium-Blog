@@ -535,6 +535,117 @@ information was collected. Whether the required cross-tabulation can be
 released at this geographic resolution remains an empirical data-access
 question. Until then, the cascade is a hypothesis, not a measured epidemic.
 
+## Methodological note: even the direction of the exchange is unidentified
+
+We can now go a step further than saying that an origin–destination table is
+missing. Using only the official Census margins already available, we can
+prove that the direction of the residential exchange between Porto and the
+surrounding municipalities is *not statistically identified*. This is not a
+claim that there was no outward movement. It is a precise statement about
+what the published observations do and do not determine.
+
+Take the 2021 Census category of people who lived in **another Portuguese
+municipality on 31 December 2019**. The official table reports 124,618 such
+current residents for the Porto Metropolitan Area (AMP). Of these, 15,724
+were living in Porto in April 2021. Since the Porto figure is included in
+the metropolitan total, simple subtraction leaves **108,894 current
+residents of the other 16 AMP municipalities** whose earlier residence was
+in a different municipality. This is an observable difference between
+two nested *destination margins*. It is not itself a measured flow *from*
+Porto to those municipalities.
+
+Let \(x\) be the unknown number of those 108,894 people who previously lived
+in Porto. Let \(y\) be the unknown number of Porto's 15,724 intermunicipal
+in-movers who previously lived in one of the other 16 AMP municipalities.
+Both numbers refer to changes of usual residence between the same Census
+reference dates. They describe individuals who were living somewhere in
+the AMP in 2021, not every person who departed from a municipality in the
+intervening period. Then the observations impose only the following
+restrictions:
+
+\[
+0\leq x\leq108{,}894,\qquad 0\leq y\leq15{,}724.
+\]
+
+If we define *net exchange towards the other 16 municipalities* as
+\(N=x-y\), the mathematically valid interval is therefore
+
+\[
+\boxed{-15{,}724\leq N\leq108{,}894}.
+\]
+
+These are **sharp logical bounds conditional on the two observed destination
+margins**, not a confidence interval or a forecast. To see why they are
+sharp, choose any nonnegative integers \(x\) and \(y\) inside the stated
+ranges. Allocate \(x\) of the intermunicipal in-movers in other AMP
+municipalities to a previous Porto residence, and allocate \(y\) of Porto's
+in-movers to a previous residence elsewhere in the AMP. The remaining
+\(108{,}894-x\) and \(15{,}724-y\) people can have previous residences in
+other municipalities not identified by the table. Both observed destination
+totals still reconcile. No point in that rectangle is ruled out by the
+published origin categories alone.
+
+For example, consider two deliberately hypothetical allocations:
+
+- **World A:** 25,000 people moved from Porto to another AMP municipality,
+  while 5,000 moved in the opposite direction. The net exchange is 20,000
+  towards the surrounding municipalities.
+- **World B:** 5,000 people moved from Porto to another AMP municipality,
+  while 12,000 moved in the opposite direction. The net exchange is 7,000
+  towards Porto.
+
+Both worlds produce *exactly the same* published metropolitan and Porto
+residential-origin margins. The second does not refute the first, nor does
+the first provide evidence for the price-displacement hypothesis. It is
+possible to construct other worlds with zero exchange or either extreme of
+the interval. The source does not assign probabilities to these worlds.
+The [reproducible companion calculation](residential_identifiability.py)
+rejects invalid allocations, checks both destination accounting identities,
+and exports each example with an explicit *hypothetical* label.
+
+![Figure 13. Sharp logical constraints on Porto↔rest-AMP residential exchange, with contrasting hypothetical worlds consistent with the same observed Census margins.](figures/fig13_residential_od_identification_set.png)
+
+Figure 13 makes the problem visible. Each point in the shaded rectangle
+represents a distinct hypothetical pair of directional flows. The diagonal
+marks zero net exchange; points on either side imply opposite directions.
+The narrower panel shows the entire range of feasible net differences.
+The area of the rectangle is **not a probability distribution**. Its right
+endpoint must not be reported as the number of people forced out of Porto.
+The bounds omit departures to places outside the AMP, deaths and other
+unobserved population changes; neither residence change nor the difference
+of residence changes directly measures housing stress.
+
+The distinction matters for empirical modelling. A symmetric commuting
+interaction matrix cannot repair this missing residential direction.
+Neither can a municipal net migration estimate be used to infer who moved
+to which named municipality. The [INE Census 2021 migration indicator
+0011631](https://www.ine.pt/xurl/indx/0011631/PT) groups current residents
+by place, sex and migration *category*, but its public catalog metadata
+does not describe a two-municipality origin–destination dimension. The
+[INE's population-estimates methodology](https://www.pordata.pt/sites/default/files/methodological_documentation/Documento_metodologico_estimativas_anuais_da_populacao_residente_113.pdf)
+explains that annual internal migration estimates are based partly on
+Census previous-residence structures. Such a balance is different from a
+pair-level mover register. These are the inspected public routes, not proof
+that no restricted or unpublished cross-tabulation exists.
+
+The useful next request to the statistical authority is therefore quite
+specific: a privacy-safe matrix with municipality of residence on
+31 December 2019 as rows, municipality of residence on 19 April 2021 as
+columns, stable official geographic codes, a clearly stated population
+universe, treatment of suppressed cells and reproducible aggregation to
+the AMP. A household panel linking housing costs, tenure and reasons for
+moving would answer a deeper question. Even a true residential OD matrix
+would establish *where people moved*, not necessarily *why*. Estimating
+whether unaffordability displaced them would still require a credible
+causal strategy and information about their economic circumstances.
+
+The conclusion is not pessimistic. It prevents an attractive narrative from
+becoming an unearned empirical claim. The strong result we can presently
+defend is about **non-identification**: the same observed 2021 Census
+counts are compatible with sharply different metropolitan residential
+exchanges. The housing cascade remains a testable hypothesis. The needed
+test has become more precise.
+
 ---
 
 ## Sources and reproducibility
@@ -556,5 +667,7 @@ The original eight images and three tabular outputs, plus four observed mobility
 13. Instituto Nacional de Estatística. [Censos 2021 individual questionnaire, question 10: residence on 31 December 2019](https://censos.ine.pt/scripts/censos_css_js/quest/PT_Q_Individual_Censos2021_INE.pdf).
 14. Município do Porto / INE. [Official open-data archive: Censos 2021 population indicators by parish, municipality and region](https://dadosabertos.cm-porto.pt/dataset/indicadores-relativos-populacao-residente-no-porto-resultados-definitivos-censos-2021). See [the frozen residential data](data/porto_census2021_residential_mobility.csv) and [source metadata](data/porto_census2021_residential_provenance.json).
 15. Instituto Nacional de Estatística. [Censos 2021 municipal work/study interaction indicator 0012340](https://www.ine.pt/xurl/indx/0012340/PT), as transcribed in [André Brito's Census-derived workbook](https://github.com/andrebrito0/OD_Data_Portugal_Census_2021). This intermediary extract has not been rechecked against a working official INE API endpoint.
+16. Instituto Nacional de Estatística. [Censos 2021 population by municipality of current residence, sex and migration category, indicator 0011631](https://www.ine.pt/xurl/indx/0011631/PT). The inspected public catalog entry does not specify the prior municipality as an independent dimension.
+17. Instituto Nacional de Estatística. [Methodological document 113, annual resident population estimates](https://www.pordata.pt/sites/default/files/methodological_documentation/Documento_metodologico_estimativas_anuais_da_populacao_residente_113.pdf), section on estimating internal migration balances from Census previous-residence information.
 
 *Publication status: manuscript prepared for technical review. The reported descriptive statistics refer to the pinned October 2026 source snapshot. No estimates of observed displaced households, spatial transmission coefficients or policy causal effects are claimed.*
