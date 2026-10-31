@@ -85,6 +85,34 @@ residents leaving for Gaia, Maia, Valongo, or other suburbs. Nor is its single
 retrospective window a longitudinal moving panel or a causal response to
 2019–2025 prices. A directed residential OD source remains the priority.
 
+**Partial-identification checkpoint (31 October 2026).** The official
+2021 AMP intermunicipal destination margin is 124,618, versus 15,724 in
+Porto alone, leaving 108,894 at the other 16 destinations. For the exchange
+between Porto and those 16 municipalities, let \(x\) count their 2021
+residents who previously lived in Porto and let \(y\) count Porto's 2021
+residents who previously lived in the other 16. With no observed
+origin-municipality detail, the *sharp identified set* from these two
+destination margins alone is
+
+\[
+0\leq x\leq 108{,}894,\quad 0\leq y\leq 15{,}724,\quad
+-15{,}724\leq x-y\leq108{,}894.
+\]
+
+The sign of within-AMP net exchange is **not identified**. The bound is a
+logical constraint among **people resident in AMP in 2021**, not a frequentist
+interval, a model estimate, an annual net-migration rate, all departures from
+Porto or a displacement estimate. The companion's Figure 13 and machine-
+readable allocations give an explicit proof by counterexample, including
+opposite directions under identical observed margins. Census 2021 individual
+question Q10 confirms that previous residence was asked; inspected published
+INE indicator 0011631 provides migration *categories*, not municipality pairs;
+indicator 0012340 is about *commuting*. INE annual municipal population-
+estimation methodology 113 describes *estimated internal migration balances*,
+which are also not pair-level residential flows. A published/releasable
+municipality×municipality retrospective cross-tabulation remains an open
+source-access question; do not substitute a modelled allocation.
+
 ## Planned analysis sequence
 
 ### Stage A — Source and descriptive validation

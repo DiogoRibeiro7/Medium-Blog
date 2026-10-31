@@ -84,6 +84,11 @@ zero. The analysis's exact-period comparisons enforce those distinctions.
 | 6 | fig6_population_vs_price_growth.png | Municipal population vs median sold-dwelling price changes | Observed, descriptive association |
 | 7 | fig7_hypothetical_cascade_absorption.png | Different assumed fractions of households absorbed in three abstract tiers | **Hypothetical**, no fitted relocation |
 | 8 | fig8_hypothetical_generalized_cost.png | Assumed rent savings vs monetary travel and value of commuting time | **Hypothetical**, no measured Porto journey |
+| 9 | fig9_2021_commuting_interactions.png | Undirected work/study links from 2021, not changing residence | Observed interaction pairs; third-party extract |
+| 10 | fig10_commuting_moran_null.png | Null permutation distributions for exploratory spatial association | Descriptive, conditional on fixed 2021 network |
+| 11 | fig11_parish_intermunicipal_in_mobility.png | Porto parish shares with 2019 residence in another municipality | Observed destination margins, not OD flows |
+| 12 | fig12_parish_residential_mover_mix.png | Previous-residence categories among 2021 parish movers | Observed composition, not OD flows |
+| 13 | fig13_residential_od_identification_set.png | All directed Porto↔rest-AMP allocations allowed by observed margins | **Sharp logical bounds and hypothetical feasible worlds; not observed OD** |
 
 The figure titles, manuscript captions and generated tables repeat the
 evidence-class distinction. There are no charts of invented historical
@@ -257,7 +262,81 @@ The committed outputs include:
 
 Twelve additional tests enforce category partitions, the full parish-to-city
 reconciliation, source schema, hashes and publication artifacts. The combined
-test suite now contains **40 tests**.
+test suite had **40 tests** at the observed-residential-baseline checkpoint.
+
+## Follow-up: sharp bounds on the missing Porto-to-suburb flow
+
+The official Census origin categories tell us **how many 2021 residents of a
+destination lived in another municipality on 31 December 2019**, but not the
+specific origin. This produces a formal *partial-identification* problem.
+The nested official counts above imply:
+
+- **15,724** intermunicipal in-movers now living in Porto;
+- **124,618** in-movers now living in any AMP municipality, including Porto;
+- **108,894 = 124,618 − 15,724** in-movers now living in the other **16** AMP
+  municipalities, whose previous municipality could have been Porto, another
+  AMP municipality, or a municipality outside AMP.
+
+Let **x** be the unobserved number of these people now living in the other
+16 municipalities who lived in Porto in 2019. Let **y** be current Porto
+residents who lived in one of the other 16 municipalities. With these
+destination margins alone:
+
+\[
+0 \leq x \leq 108{,}894,\qquad 0 \leq y \leq 15{,}724,
+\qquad -15{,}724 \leq x-y \leq 108{,}894.
+\]
+
+These bounds are *sharp given only the published margins*: every integer
+point in the rectangle can be completed by assigning the remaining in-movers
+to other origins, which are not identified in the extract. Two explicit
+allocations both reconcile exactly to the observations:
+
+- `x=25,000`, `y=5,000`: hypothetical net **20,000 toward the other AMP
+  municipalities**;
+- `x=5,000`, `y=12,000`: hypothetical net **7,000 toward Porto**.
+
+The very different stories require no change to the observed Porto or AMP
+counts. Therefore even the **sign** of the exchange cannot be determined.
+The large right-hand endpoint is a logical ceiling, *not* an estimate of
+outward displacement. Neither this range nor the picture is a confidence
+interval or probability distribution. It covers only people recorded as
+2021 AMP residents with an intermunicipal prior residence, not moves out of
+the region, international movement, deaths, households, or move motives.
+
+Reproduce the construction and Figure 13 without network access:
+
+    python residential_identifiability.py --output /tmp/porto-residential-od-bounds
+
+This produces:
+
+- `results/residential_od_identification_bounds.json` with the observed
+  margins, sharp bounds, source hashes and explicit inference limitations;
+- `results/residential_od_feasible_worlds.csv` with five fully reconciled
+  **hypothetical** allocations and their residual-origin categories;
+- `figures/fig13_residential_od_identification_set.png` showing the rectangle
+  of feasible allocations and the full net-exchange bound.
+
+Nine additional tests check the sharp endpoints, signs, accounting identities,
+invalid inputs and deterministic artifacts: **49 tests in total**.
+
+### Audited access routes for an actual directed OD table
+
+| Source | Available information | Missing for our estimand |
+| --- | --- | --- |
+| [INE Census 2021 individual questionnaire, Q10](https://censos.ine.pt/scripts/censos_css_js/quest/PT_Q_Individual_Censos2021_INE.pdf) | Earlier usual residence question | Published privacy-safe cross-tabulation of previous **and** current municipality |
+| [INE Census indicator 0011631](https://www.ine.pt/xurl/indx/0011631/PT) | Current place, sex and previous-residence migration **category** | Named pair of municipalities; the public catalog metadata gives no OD dimension |
+| [Municipality of Porto official Census archive](https://dadosabertos.cm-porto.pt/dataset/indicadores-relativos-populacao-residente-no-porto-resultados-definitivos-censos-2021) | Porto/parish residential origin margins, with exact checksums | Destination-specific original municipality and departures from Porto |
+| [INE indicator 0012340](https://www.ine.pt/xurl/indx/0012340/PT) | Work/study *commuting* interactions | Residential relocations (commutes are not moves) |
+| [INE annual resident population estimates: methodological document 113](https://www.pordata.pt/sites/default/files/methodological_documentation/Documento_metodologico_estimativas_anuais_da_populacao_residente_113.pdf) | Estimated municipal demographic components and internal-migration balance | Bilateral migration flows, individual reasons for moving |
+
+These are the sources inspected, not a claim that no other table or restricted
+access route exists. The next empirical requirement is a disclosed,
+privacy-safe cross-tab of **municipality of residence on 31 December 2019 ×
+municipality on 19 April 2021**, with a clear universe, cell suppression,
+geographic version and access/licensing terms. To test housing displacement
+rather than mere exchange, origin/tenure and housing-cost information or a
+defensible causal design would also be needed.
 
 ## Boundaries before publication
 
