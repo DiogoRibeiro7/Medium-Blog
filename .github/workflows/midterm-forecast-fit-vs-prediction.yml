@@ -42,15 +42,48 @@ jobs:
       - name: Verify canonical numerical snapshot is current
         run: |
           python - <<'PY'
+          import csv
           import json
+          import math
           from pathlib import Path
+
+          # BLAS/LAPACK and Python builds can differ at the last few bits.
+          # Compare numerical evidence tightly, while checking metadata and
+          # schemas exactly, rather than requiring bitwise-float identity.
+          def equivalent(expected, actual, label):
+              if isinstance(expected, dict):
+                  assert isinstance(actual, dict) and expected.keys() == actual.keys(), f'{label}: schema mismatch'
+                  for key in expected:
+                      equivalent(expected[key], actual[key], f'{label}.{key}')
+              elif isinstance(expected, list):
+                  assert isinstance(actual, list) and len(expected) == len(actual), f'{label}: shape mismatch'
+                  for i, (left, right) in enumerate(zip(expected, actual, strict=True)):
+                      equivalent(left, right, f'{label}[{i}]')
+              elif isinstance(expected, (int, float)) and not isinstance(expected, bool):
+                  assert isinstance(actual, (int, float)) and not isinstance(actual, bool), f'{label}: type mismatch'
+                  assert math.isclose(expected, actual, rel_tol=1e-9, abs_tol=1e-9), f'{label}: {expected} != {actual}'
+              else:
+                  assert expected == actual, f'{label}: {expected!r} != {actual!r}'
+
           primary = json.loads(Path('results/summary.json').read_text())
           duplicate = json.loads(Path('/tmp/midterm-reproduction/results/summary.json').read_text())
-          assert primary == duplicate, 'Scientific metrics do not match regenerated evidence'
+          equivalent(primary, duplicate, 'summary')
           for filename in ('forward_model_comparison.csv', 'source_sensitivity.csv'):
-              committed = (Path('results') / filename).read_text()
-              regenerated = (Path('/tmp/midterm-reproduction/results') / filename).read_text()
-              assert committed == regenerated, f'{filename} differs from regenerated evidence'
+              with (Path('results') / filename).open(newline='') as source:
+                  reader = csv.DictReader(source)
+                  columns = reader.fieldnames
+                  committed = list(reader)
+              with (Path('/tmp/midterm-reproduction/results') / filename).open(newline='') as source:
+                  reader = csv.DictReader(source)
+                  assert columns == reader.fieldnames, f'{filename}: columns differ'
+                  regenerated = list(reader)
+              assert len(committed) == len(regenerated), f'{filename}: row count differs'
+              for i, (left, right) in enumerate(zip(committed, regenerated, strict=True)):
+                  for field in columns:
+                      try:
+                          equivalent(float(left[field]), float(right[field]), f'{filename}[{i}].{field}')
+                      except ValueError:
+                          equivalent(left[field], right[field], f'{filename}[{i}].{field}')
           assert len(list(Path('/tmp/midterm-reproduction/figures').glob('fig*.png'))) == 9
           print('Canonical metrics and nine publication figures verified')
           PY

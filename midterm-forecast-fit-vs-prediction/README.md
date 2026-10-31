@@ -50,9 +50,12 @@ and run **32 scientific, data-provenance and fresh-kernel notebook tests**.
 The notebook is [model_walkthrough.ipynb](model_walkthrough.ipynb).
 The `.github/workflows/midterm-forecast-fit-vs-prediction.yml` job is scoped to
 this folder and can be dispatched manually. It regenerates into a separate
-temporary folder and checks the canonical numerical summary against that
-reproduction. No API tokens, proprietary datasets or election-night data are
-needed.
+temporary folder and compares canonical numerical metrics and both benchmark
+tables using tight floating-point tolerances (1e-9 absolute and relative),
+while requiring exact metadata, schemas, row counts and figure counts. This
+allows harmless platform-level BLAS differences without accepting substantive
+numerical drift. No API tokens, proprietary datasets or election-night data
+are needed.
 
 For a direct test of whether the second predictor adds value, the study also
 fits two simpler OLS models from scratch at each strictly earlier training
