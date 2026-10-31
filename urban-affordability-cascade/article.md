@@ -436,11 +436,110 @@ The central lesson is a straightforward one:
 
 Housing scarcity does not disappear when we draw a wider circle on a map. We have to measure how the costs move, identify the constraints, and decide what kind of metropolitan area we want people to be able to inhabit.
 
+## Postscript: What two additional 2021 mobility datasets reveal
+
+After completing the original municipality-price analysis, I added two
+observational companions. One describes interactions between places for work
+and study. The other describes where Porto's 2021 residents had lived on a
+previous reference date. They are related to housing-market geography, but
+they answer different statistical questions. Neither can be relabelled as a
+count of residents pushed outward by expensive housing.
+
+The first companion is a Census 2021 municipal work/study interaction matrix,
+derived from a published workbook attributed to INE indicator 0012340. For
+the 17 municipalities in the legal Porto Metropolitan Area, the matrix is
+exactly symmetric: every pair appears once in each direction with the same
+number, and every diagonal cell is zero. We therefore retain **136 unique
+unordered pairs**, representing **339,378 reported pair interactions** after
+counting each pair only once. Porto–Vila Nova de Gaia is the strongest pair
+in this subset, with 39,960 reported interactions. Those are not 39,960
+households moving from Porto to Gaia. The extracted table does not establish
+the direction of commuting, much less changes in residence. Its topology is
+shown in [Figure 9](figures/fig9_2021_commuting_interactions.png).
+
+![Figure 9. Symmetric work/study interactions in 2021, by municipality pair.](figures/fig9_2021_commuting_interactions.png)
+
+As a descriptive spatial check, I calculated global Moran's I with these
+observed pair counts as a fixed weight matrix, using municipality-specific
+sale-price growth from 2019 to 2025 and new-contract rent growth from 2020
+to 2025. With 9,999 reproducible random-label permutations, the raw-weight
+sale-price statistic was −0.197 (two-sided p = 0.303); the new-rent statistic
+was +0.156 (two-sided p = 0.114). [Figure 10](figures/fig10_commuting_moran_null.png)
+shows the reference distributions. Neither primary result is compelling
+evidence of spatial transmission. The conclusion is additionally sensitive to
+weight transformations and to excluding Porto: the sign of the sale-price
+association changes in that sensitivity. The network is observed in 2021,
+*during* the period whose changes are being compared. It cannot establish
+that the network preceded a shock. A correlation in a set of linked places is
+not an estimate of the response to an exogenous shock in another place.
+
+![Figure 10. Exploratory weighted Moran's I and the two-sided random-label benchmark.](figures/fig10_commuting_moran_null.png)
+
+The second companion is closer to the actual movement question. The Porto
+open-data portal redistributes an INE Census 2021 spreadsheet of residents'
+*local de proveniência*: where each enumerated resident was living on
+**31 December 2019**. The question appears directly in the Census 2021
+individual questionnaire, whose reference date is 19 April 2021. This is a
+retrospective window of more than a year, not an annual migration series.
+Its categories distinguish people who had not yet been born, those remaining
+in the same home, moves within a parish, moves from another parish within
+the same municipality, moves from another municipality, and moves from
+abroad. The data include Portugal, Norte, AMP, Porto municipality, and
+**all seven Porto parishes**, but not every municipality in the AMP.
+
+Porto had 231,800 residents at the Census reference date. Of these, 2,073
+had not yet been born on 31 December 2019, leaving a precisely specified
+eligible denominator of 229,727 current residents. **15,724 people, or
+6.84% of that denominator, had resided in another Portuguese municipality**
+on the earlier date; another 4,345, or 1.89%, had lived abroad. In this
+published table, all seven parishes reconcile exactly to Porto's totals
+for each residence-origin count. These are observed in-mover counts among
+Porto's residents, not out-movers who left Porto.
+
+The parish variation is substantial enough to justify further investigation.
+In the present-day union of Cedofeita, Santo Ildefonso, Sé, Miragaia, São
+Nicolau and Vitória, 8.40% of eligible 2021 residents had lived in a different
+municipality on the earlier date. In Campanhã, the corresponding share was
+5.94%. Across all reasons and origins for a change of residence, the shares
+who had moved were 20.60% and 11.53%, respectively. Figure 11 shows the
+intermunicipal-origin shares, with Porto (6.84%) and the overlapping AMP
+(7.24%) as descriptive benchmarks. Figure 12 answers a different question:
+*among movers only*, how did previous-residence categories contribute to the
+total? Its stacked percentages must not be mistaken for shares of all
+residents.
+
+![Figure 11. Residents of Porto parishes who lived in a different municipality on 31 December 2019.](figures/fig11_parish_intermunicipal_in_mobility.png)
+
+![Figure 12. Composition of changes of residence among movers in each Porto parish.](figures/fig12_parish_residential_mover_mix.png)
+
+These parish contrasts have several competing explanations. They can reflect
+age composition, household formation, the availability of rental units,
+international arrivals, students, job changes, neighbourhood redevelopment,
+and changing boundaries of opportunity. A higher observed share of movers
+into the historic centre does not imply the centre is affordable, nor does
+it contradict the possibility of displacement. Some people are arriving;
+others may be leaving. The provided aggregate table records the former among
+current residents, not the latter among people who no longer live there.
+It does not identify the specific municipality from which an in-mover came,
+and it does not link movers to incomes, rents, or reasons for relocation.
+
+The result is a more useful statement of the research gap. We can describe
+observed housing costs across 17 municipalities, the relative strength of
+commuting interactions, and residential change among the current residents
+of Porto's seven parishes. We **still cannot trace a Porto resident's move
+to a named suburban municipality** or attribute it to a price increase.
+That requires an appropriately protected directed residential
+origin–destination table or a longitudinal household survey, alongside an
+identification design. The Census questions show that the earlier-residence
+information was collected. Whether the required cross-tabulation can be
+released at this geographic resolution remains an empirical data-access
+question. Until then, the cascade is a hypothesis, not a measured epidemic.
+
 ---
 
 ## Sources and reproducibility
 
-The eight images and three tabular outputs can be regenerated using the commands in the [study README](README.md). The [fixed 17-municipality input](data/amp_municipal_panel_2019_2025.csv) is a derived extract from [DiogoRibeiro7/portugal-housing-generations](https://github.com/DiogoRibeiro7/portugal-housing-generations), pinned to [upstream commit 0407fae](https://github.com/DiogoRibeiro7/portugal-housing-generations/tree/0407faed1f08209b3d7682e19fc57e7120e62879). It does not assert that 2025 income observations or 2019 new-lease observations exist.
+The original eight images and three tabular outputs, plus four observed mobility figures and companion CSV results, can be regenerated using the commands in the [study README](README.md). The [fixed 17-municipality input](data/amp_municipal_panel_2019_2025.csv) is a derived extract from [DiogoRibeiro7/portugal-housing-generations](https://github.com/DiogoRibeiro7/portugal-housing-generations), pinned to [upstream commit 0407fae](https://github.com/DiogoRibeiro7/portugal-housing-generations/tree/0407faed1f08209b3d7682e19fc57e7120e62879). It does not assert that 2025 income observations or 2019 new-lease observations exist. The new mobility extracts have separate checksummed source records and distinct limitations.
 
 1. Área Metropolitana do Porto. [Statutory definition and its 17 municipalities](https://www.amp.pt/en/amp-instituicao/area-metropolitana-do-porto-or-lei-no-752013/).
 2. Instituto Nacional de Estatística. [Local housing price methodology and geospatial context](https://www.ine.pt/ine_novidades/semin/INEWS38/files/assets/common/downloads/publication.pdf).
@@ -454,5 +553,8 @@ The eight images and three tabular outputs can be regenerated using the commands
 10. Autor, D., Palmer, C. & Pathak, P. (2012/2014). [Housing Market Spillovers: Evidence from the End of Rent Control in Cambridge, Massachusetts](https://www.nber.org/papers/w18125). NBER Working Paper 18125.
 11. OECD (2023). [Changes in the Geography of Housing Demand After the Onset of COVID-19](https://www.oecd.org/en/publications/bricks-taxes-and-spending_7a22f9a6-en/full-report/component-4.html), in *Bricks, Taxes and Spending*.
 12. Ribeiro, D. (2026). [Portugal's Housing Market, 2008–2025: A Reproducible Analysis](https://diogo-ribeiro-1975.medium.com/portugals-housing-market-2008-2025-a-reproducible-analysis-of-prices-incomes-construction-and-18c715332adf). Related but separate national evidence, not a causal spatial-displacement study.
+13. Instituto Nacional de Estatística. [Censos 2021 individual questionnaire, question 10: residence on 31 December 2019](https://censos.ine.pt/scripts/censos_css_js/quest/PT_Q_Individual_Censos2021_INE.pdf).
+14. Município do Porto / INE. [Official open-data archive: Censos 2021 population indicators by parish, municipality and region](https://dadosabertos.cm-porto.pt/dataset/indicadores-relativos-populacao-residente-no-porto-resultados-definitivos-censos-2021). See [the frozen residential data](data/porto_census2021_residential_mobility.csv) and [source metadata](data/porto_census2021_residential_provenance.json).
+15. Instituto Nacional de Estatística. [Censos 2021 municipal work/study interaction indicator 0012340](https://www.ine.pt/xurl/indx/0012340/PT), as transcribed in [André Brito's Census-derived workbook](https://github.com/andrebrito0/OD_Data_Portugal_Census_2021). This intermediary extract has not been rechecked against a working official INE API endpoint.
 
 *Publication status: manuscript prepared for technical review. The reported descriptive statistics refer to the pinned October 2026 source snapshot. No estimates of observed displaced households, spatial transmission coefficients or policy causal effects are claimed.*
