@@ -1,6 +1,6 @@
 # Articles Developed in This Chat
 
-This is a chronological index of the thirteen long-form articles developed in
+This is a chronological index of the fourteen long-form articles developed in
 this conversation for `Medium-Blog`. It is **not** a complete
 catalogue of the repository's articles or historical notebooks.
 
@@ -19,6 +19,8 @@ catalogue of the repository's articles or historical notebooks.
 | 11 | [A Significant Result Is Not a Replicable Effect: Statistical Power, Type S and Type M Errors, and the Winner's Curse](significance-selection-winners-curse/article.md) | Gaussian statistical power, selection bias, Type S/M errors, exaggerated effects, independent replication, FWER and FDR, Benjamini–Hochberg, oracle-prior shrinkage, post-selection CI coverage | 8 | [Study README](significance-selection-winners-curse/README.md) · [Python analysis](significance-selection-winners-curse/analysis.py) · [Notebook](significance-selection-winners-curse/significance_selection.ipynb) |
 | 12 | [A Randomized Trial Is Not a Universal Policy: Transporting Causal Effects, External Validity, and the Price of an Unrepresentative Experiment](causal-transportability-for-data-scientists/article.md) | Source-versus-target causal ATE, selection exchangeability and positivity, g-formula, inverse selection odds, doubly robust augmentation, weight concentration, unobserved modifiers, paired-cohort bootstrap | 8 | [Study README](causal-transportability-for-data-scientists/README.md) · [Python analysis](causal-transportability-for-data-scientists/analysis.py) · [Notebook](causal-transportability-for-data-scientists/transportability.ipynb) |
 | 13 | [A High R² Is Not a Long-Run Relationship: Spurious Regression, Unit Roots, and Cointegration](spurious-regression-cointegration/article.md) | Independent stochastic trends, spurious OLS, Dickey–Fuller, Engle–Granger residual calibration, cointegrated equilibrium, error-correction models, slope convergence, structural breaks | 8 | [Study README](spurious-regression-cointegration/README.md) · [Python analysis](spurious-regression-cointegration/analysis.py) · [Notebook](spurious-regression-cointegration/spurious_regression_cointegration.ipynb) |
+
+| 14 | [A Missing Edge Is Not a Missing Relationship: Gaussian Graphical Models and Conditional Independence](gaussian-graphical-models-for-data-scientists/article.md) | Gaussian precision and partial correlation, chain and collider, latent factors, high-dimensional singularity, graphical lasso support recovery, held-out likelihood, bootstrap stability, nonlinear dependence and non-identifiable causal direction | 9 | [Study README](gaussian-graphical-models-for-data-scientists/README.md) · [Python analysis](gaussian-graphical-models-for-data-scientists/analysis.py) · [Notebook](gaussian-graphical-models-for-data-scientists/gaussian_graphical_models.ipynb) |
 
 ## Reproducibility
 
