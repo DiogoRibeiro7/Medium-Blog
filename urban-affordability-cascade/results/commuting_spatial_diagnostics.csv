@@ -1,0 +1,9 @@
+outcome,network,sample,n_municipalities,observed_moran_i,random_label_expected_i,two_sided_p,permutations
+sale_price_growth_2019_2025_pct,raw,all_17,17,-0.196927,-0.062500,0.302600,9999
+new_lease_rent_growth_2020_2025_pct,raw,all_17,17,0.156464,-0.062500,0.113500,9999
+sale_price_growth_2019_2025_pct,sqrt,all_17,17,-0.027058,-0.062500,0.517300,9999
+new_lease_rent_growth_2020_2025_pct,sqrt,all_17,17,0.032201,-0.062500,0.109300,9999
+sale_price_growth_2019_2025_pct,top3_union,all_17,17,-0.259837,-0.062500,0.261000,9999
+new_lease_rent_growth_2020_2025_pct,top3_union,all_17,17,0.215208,-0.062500,0.111800,9999
+sale_price_growth_2019_2025_pct,raw,exclude_porto,16,0.172080,-0.066667,0.066400,9999
+new_lease_rent_growth_2020_2025_pct,raw,exclude_porto,16,0.130552,-0.066667,0.114900,9999

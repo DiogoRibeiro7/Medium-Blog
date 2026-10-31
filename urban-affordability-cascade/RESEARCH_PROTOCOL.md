@@ -55,7 +55,7 @@ commuting-to-work flows.
 | Fiscal-household median income | INE / Autoridade Tributária | 2019–2024 | Household concept and tax definition |
 | Permits, completions, stock | INE | Existing panel partial | Lags, gross vs net stock, vacancy |
 | True residential origin–destination moves | INE Census/administrative, subject to availability | **Missing** | Definition, coverage, privacy and frequency |
-| Commuting origin–destination | INE Census or transport authority | **Missing** | Not a substitute for residential moves |
+| Commuting interactions (unordered pairs) | INE Census 2021, indicator 0012340, via pinned third-party workbook | **Preliminary 2021 17-municipality extract** | Exact symmetry; independent direct-INE verification still pending; not directed relocations |
 | Scheduled and observed travel-time network | Official transport publisher, dated timetable data | **Missing** | Generalized cost, service frequency, reliability |
 | Household expenditure / burden distribution | INE and validated surveys | **Missing** | Tenant/owner split; income and time valuation |
 | Employment, interest rates and policy changes | INE, Eurostat, Banco de Portugal, municipalities | To assemble | Common-shock controls and event calendar |
@@ -63,6 +63,15 @@ commuting-to-work flows.
 All new inputs require exact source URL, indicator identifier, extraction date,
 geographic identifiers, original bytes, licence/redistribution review, checksum
 and missingness audit. Never fill official suppression with zero.
+
+**Stage B checkpoint (31 October 2026).** The companion now includes a
+source-hashed 2021 municipal commuting **interaction** extract and exploratory
+permutation tests. The original 17×17 table is symmetric, so no commuting
+direction or household moves can be reconstructed from it. The source workbook
+is pinned to an external GitHub commit attributed to INE; the direct INE JSON
+endpoint returned HTTP 503 at extraction and remains a verification task.
+Moran's I tests on 17 endpoint growth rates are hypothesis-generating only;
+the 2021 network is not a pretreatment instrument for 2019–2025 changes.
 
 ## Planned analysis sequence
 
