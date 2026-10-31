@@ -32,11 +32,13 @@ jobs:
       - name: Install pinned dependencies
         run: python -m pip install -r requirements.txt
       - name: Compile source and tests
-        run: python -m compileall -q analysis.py figures.py tests
+        run: python -m compileall -q analysis.py model_extensions.py figures.py tests
       - name: Run scientific tests and fresh-kernel notebook
         run: python -m unittest discover -s tests -v
       - name: Recompute all numerical tables
         run: python analysis.py --output /tmp/midterm-reproduction
+      - name: Recompute alternative-model comparisons
+        run: python model_extensions.py --output /tmp/midterm-reproduction
       - name: Recompute all original figures
         run: python figures.py --output /tmp/midterm-reproduction
       - name: Verify canonical numerical snapshot is current
@@ -50,25 +52,38 @@ jobs:
           # BLAS/LAPACK and Python builds can differ at the last few bits.
           # Compare numerical evidence tightly, while checking metadata and
           # schemas exactly, rather than requiring bitwise-float identity.
-          def equivalent(expected, actual, label):
+          def equivalent(expected, actual, label, tolerance=1e-9):
               if isinstance(expected, dict):
                   assert isinstance(actual, dict) and expected.keys() == actual.keys(), f'{label}: schema mismatch'
                   for key in expected:
-                      equivalent(expected[key], actual[key], f'{label}.{key}')
+                      equivalent(expected[key], actual[key], f'{label}.{key}', tolerance)
               elif isinstance(expected, list):
                   assert isinstance(actual, list) and len(expected) == len(actual), f'{label}: shape mismatch'
                   for i, (left, right) in enumerate(zip(expected, actual, strict=True)):
-                      equivalent(left, right, f'{label}[{i}]')
+                      equivalent(left, right, f'{label}[{i}]', tolerance)
               elif isinstance(expected, (int, float)) and not isinstance(expected, bool):
                   assert isinstance(actual, (int, float)) and not isinstance(actual, bool), f'{label}: type mismatch'
-                  assert math.isclose(expected, actual, rel_tol=1e-9, abs_tol=1e-9), f'{label}: {expected} != {actual}'
+                  assert math.isclose(expected, actual, rel_tol=tolerance, abs_tol=tolerance), f'{label}: {expected} != {actual}'
               else:
                   assert expected == actual, f'{label}: {expected!r} != {actual!r}'
 
           primary = json.loads(Path('results/summary.json').read_text())
           duplicate = json.loads(Path('/tmp/midterm-reproduction/results/summary.json').read_text())
           equivalent(primary, duplicate, 'summary')
-          for filename in ('forward_model_comparison.csv', 'source_sensitivity.csv'):
+          extension = json.loads(Path('results/alternative_models_summary.json').read_text())
+          regenerated_extension = json.loads(Path('/tmp/midterm-reproduction/results/alternative_models_summary.json').read_text())
+          for field in ('as_of', 'observations', 'forward_count', 'forward_elections',
+                        'student_t_df_fixed', 'ridge_alpha_fixed', 'recency_half_life_years_fixed'):
+              assert extension[field] == regenerated_extension[field], f'{field}: alternative-model design changed'
+          equivalent(extension, regenerated_extension, 'alternative_models', tolerance=1e-5)
+          tables = (
+              ('forward_model_comparison.csv', 1e-9),
+              ('source_sensitivity.csv', 1e-9),
+              ('alternative_model_forward.csv', 1e-5),
+              ('alternative_model_forward_gallup.csv', 1e-5),
+              ('alternative_model_path.csv', 1e-5),
+          )
+          for filename, tolerance in tables:
               with (Path('results') / filename).open(newline='') as source:
                   reader = csv.DictReader(source)
                   columns = reader.fieldnames
@@ -81,9 +96,9 @@ jobs:
               for i, (left, right) in enumerate(zip(committed, regenerated, strict=True)):
                   for field in columns:
                       try:
-                          equivalent(float(left[field]), float(right[field]), f'{filename}[{i}].{field}')
+                          equivalent(float(left[field]), float(right[field]), f'{filename}[{i}].{field}', tolerance)
                       except ValueError:
                           equivalent(left[field], right[field], f'{filename}[{i}].{field}')
-          assert len(list(Path('/tmp/midterm-reproduction/figures').glob('fig*.png'))) == 9
-          print('Canonical metrics and nine publication figures verified')
+          assert len(list(Path('/tmp/midterm-reproduction/figures').glob('fig*.png'))) == 11
+          print('Canonical metrics, alternative models, and eleven publication figures verified')
           PY

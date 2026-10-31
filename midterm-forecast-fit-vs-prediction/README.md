@@ -27,6 +27,9 @@ are a **snapshot of the original forecast**, not an ongoing live poll average.
 | Parametric Student-t 95% predictive interval | [−48.43, −16.22] seats |
 | Pairs/residual bootstrap 95% sensitivity interval | [−41.75, −14.37] seats |
 | Gallup retrospective alternative forecast | −31.91 seats |
+| Fixed Student-t (ν=4) forward RMSE / 2026 conditional forecast | 8.48 / −33.76 seats |
+| Fixed ridge (α=2) forward RMSE / 2026 conditional forecast | 12.18 / −31.06 seats |
+| Fixed 24-year recency WLS forward RMSE / 2026 conditional forecast | 9.13 / −30.98 seats |
 
 The original chart says approximately **−33** and **R²=0.89**. These numerical
 matches are close, but **not exact replication**: the author's design matrix,
@@ -41,18 +44,21 @@ directory:
 ```bash
 python -m pip install -r requirements.txt
 python analysis.py
+python model_extensions.py
 python figures.py
 python -m unittest discover -s tests -v
 ```
 
-These commands regenerate committed data tables, nine original PNG figures,
-and run **32 scientific, data-provenance and fresh-kernel notebook tests**.
+These commands regenerate committed data tables, eleven original PNG figures,
+and run **43 scientific, data-provenance and fresh-kernel notebook tests**.
 The notebook is [model_walkthrough.ipynb](model_walkthrough.ipynb).
 The `.github/workflows/midterm-forecast-fit-vs-prediction.yml` job is scoped to
 this folder and can be dispatched manually. It regenerates into a separate
 temporary folder and compares canonical numerical metrics and both benchmark
 tables using tight floating-point tolerances (1e-9 absolute and relative),
-while requiring exact metadata, schemas, row counts and figure counts. This
+while requiring exact metadata, schemas, row counts and figure counts. The
+additional Student-t optimizer snapshots receive a 1e-5 numeric tolerance,
+with all schemas, evaluation dates and parameter choices checked exactly. This
 allows harmless platform-level BLAS differences without accepting substantive
 numerical drift. No API tokens, proprietary datasets or election-night data
 are needed.
@@ -70,15 +76,35 @@ The same ranking and nine-of-ten count hold when replacing Gallup's two
 disputed historical retrospective values. Exact alternative-source forward
 errors are committed in [`results/source_sensitivity.csv`](results/source_sensitivity.csv).
 
+The second comparison holds the predictors and ten forward origins fixed while
+changing the estimator: heavy-tailed Student-t likelihood (degrees of freedom
+4), ridge (alpha 2 on fold-standardized slopes, unpenalized intercept), and
+recency-weighted OLS (24-year age-weight half-life). Their settings are **fixed
+without selecting the winner from historical backtests**. Student-t has a
+slight primary-source RMSE advantage of about 0.21 seats over OLS; that
+advantage reverses under the alternative Gallup figures. Neither ridge nor
+recency weighting improves primary-source RMSE. The original OLS 2026 point
+forecast remains the frozen reference, not a revised prediction chosen after
+testing. All values and assumptions are recorded in
+[`results/alternative_models_summary.json`](results/alternative_models_summary.json),
+with ten common forward predictions in
+[`results/alternative_model_forward.csv`](results/alternative_model_forward.csv),
+the source sensitivity in
+[`results/alternative_model_forward_gallup.csv`](results/alternative_model_forward_gallup.csv),
+and retrospective fixed-2026-input training-path calculations in
+[`results/alternative_model_path.csv`](results/alternative_model_path.csv).
+
 To regenerate without changing the working tree:
 
 ```bash
 python analysis.py --output /tmp/midterm-reproduction
+python model_extensions.py --output /tmp/midterm-reproduction
 python figures.py --output /tmp/midterm-reproduction
 ```
 
 The model uses only a few dependencies: NumPy for transparent OLS and linear
-algebra, SciPy for Student-t critical values, Matplotlib for original figures,
+algebra, SciPy for Student-t critical values and robust maximum likelihood,
+Matplotlib for original figures,
 and the Jupyter kernel/client for notebook reproducibility. No scikit-learn or
 polling API is required.
 
@@ -122,7 +148,7 @@ The 2026 input \(G^{(P)}=-8\), \(S=220\) produces approximately
 associations, not policy effects**; in particular, the defended-seats
 coefficient is partly a mechanical capacity/context measure.
 
-## Nine original evidence figures
+## Eleven original evidence figures
 
 | # | PNG | Exact claim or diagnostic |
 | --- | --- | --- |
@@ -135,8 +161,10 @@ coefficient is partly a mechanical capacity/context measure.
 | 7 | [polling sensitivity](figures/fig7_polling_sensitivity.png) | Conditional response to D+2…D+14 and 210/220/230 seats |
 | 8 | [influence](figures/fig8_influence_diagnostics.png) | Leverage, standardized residual and Cook's distance |
 | 9 | [scenario heatmap](figures/fig9_scenario_heatmap.png) | Two-input sensitivity surface; not a probability distribution |
+| 10 | [estimator RMSE comparison](figures/fig10_candidate_model_rmse.png) | OLS, Student-t, ridge, recency weighting and ballot-only on common targets under both Gallup source readings |
+| 11 | [training-endpoint stability](figures/fig11_training_origin_stability.png) | Four historical coefficient paths for the fixed 2026 scenario; explicitly not contemporary historical forecasts |
 
-Figures 1–9 are generated **exclusively** from committed data and source code,
+Figures 1–11 are generated **exclusively** from committed data and source code,
 never digitized from the Rattner screenshot. Every generated table under
 [`results/`](results/) is either a result, diagnostic, forecast or scenario—not
 newly observed historical data. `results/summary.json` records the exact
@@ -164,10 +192,14 @@ numbers cited in the article, including reproducibility seed and draw count.
    public sentiment, policies or campaigns. Its popularity-poll covariate is a
    predictive summary. Correlation is entirely sufficient for some forecasting
    tasks, but predictive stability still needs testing.
+7. **Alternative-model uncertainty:** Changing the estimator does not produce
+   calibrated uncertainty for the new Student-t, ridge or recency methods.
+   Comparing their point forecasts is not model averaging or an interval.
+   Small differences in forward RMSE on ten elections do not select a winner.
 
 ## Publication contract
 
-The draft has more than 8,000 words, original derivations, nine data-grounded
+The draft has more than 8,000 words, original derivations, eleven data-grounded
 figures with captions and alt text, links to all primary data and methodology,
 and a balanced conclusion distinguishing fit from prediction. No claims of
 post-election success or failure are made before 3 November 2026.
