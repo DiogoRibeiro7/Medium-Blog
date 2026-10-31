@@ -1,0 +1,42 @@
+{
+  "snapshot_date_utc": "2026-10-31",
+  "period": "1990-2007",
+  "fred_export": "https://fred.stlouisfed.org/graph/fredgraph.csv",
+  "fred_series": {
+    "MANEMP": {"source": "Bureau of Labor Statistics", "frequency": "monthly", "units": "thousands of employees; seasonally adjusted", "url": "https://fred.stlouisfed.org/series/MANEMP"},
+    "PAYEMS": {"source": "Bureau of Labor Statistics", "frequency": "monthly", "units": "thousands of employees; seasonally adjusted", "url": "https://fred.stlouisfed.org/series/PAYEMS"},
+    "FEDFUNDS": {"source": "Board of Governors of the Federal Reserve System", "frequency": "monthly", "units": "percent; effective federal funds rate", "url": "https://fred.stlouisfed.org/series/FEDFUNDS"},
+    "GS10": {"source": "Board of Governors of the Federal Reserve System", "frequency": "monthly", "units": "percent; ten-year Treasury constant maturity rate", "url": "https://fred.stlouisfed.org/series/GS10"},
+    "GDP": {"source": "Bureau of Economic Analysis", "frequency": "quarterly", "units": "billions of dollars; seasonally adjusted annual rate", "url": "https://fred.stlouisfed.org/series/GDP"},
+    "NETEXP": {"source": "Bureau of Economic Analysis", "frequency": "quarterly", "units": "billions of dollars; seasonally adjusted annual rate", "url": "https://fred.stlouisfed.org/series/NETEXP"},
+    "IMPGS": {"source": "Bureau of Economic Analysis", "frequency": "quarterly", "units": "billions of dollars; seasonally adjusted annual rate", "url": "https://fred.stlouisfed.org/series/IMPGS"},
+    "EXPGS": {"source": "Bureau of Economic Analysis", "frequency": "quarterly", "units": "billions of dollars; seasonally adjusted annual rate", "url": "https://fred.stlouisfed.org/series/EXPGS"},
+    "A939RX0Q048SBEA": {"source": "Bureau of Economic Analysis", "frequency": "quarterly", "units": "chained 2017 dollars per person; seasonally adjusted annual rate", "url": "https://fred.stlouisfed.org/series/A939RX0Q048SBEA"},
+    "USSTHPI": {"source": "Federal Housing Finance Agency", "frequency": "quarterly", "units": "all-transactions price index; 1980 Q1=100, not seasonally adjusted", "url": "https://fred.stlouisfed.org/series/USSTHPI"},
+    "CMDEBT": {"source": "Board of Governors of the Federal Reserve System, Z.1", "frequency": "quarterly; end-of-period stock", "units": "millions of dollars", "url": "https://fred.stlouisfed.org/series/CMDEBT"},
+    "HHMSDODNS": {"source": "Board of Governors of the Federal Reserve System, Z.1", "frequency": "quarterly; end-of-period stock", "units": "millions of dollars; one-to-four-family residential mortgages", "url": "https://fred.stlouisfed.org/series/HHMSDODNS"},
+    "MEHOINUSA646N": {"source": "U.S. Census Bureau, CPS ASEC", "frequency": "annual", "units": "current dollars; nominal household median", "url": "https://fred.stlouisfed.org/series/MEHOINUSA646N"},
+    "MEHOINUSA672N": {"source": "U.S. Census Bureau, CPS ASEC", "frequency": "annual", "units": "2025 C-CPI-U dollars; pre-2000 adjusted using R-CPI-U-RS", "url": "https://fred.stlouisfed.org/series/MEHOINUSA672N"},
+    "GINIALLRH": {"source": "U.S. Census Bureau, CPS ASEC", "frequency": "annual", "units": "income Gini ratio for all households", "url": "https://fred.stlouisfed.org/series/GINIALLRH"}
+  },
+  "bls_union_membership": {
+    "url": "https://www.bls.gov/spotlight/2016/union-membership-in-the-united-states/home.htm",
+    "units": "rate percent; member counts thousands; 1990-2007",
+    "transcription_note": "Total and sector member counts are rounded independently by BLS; small apparent differences between sums are not errors."
+  },
+  "aggregation": {
+    "monthly_rates_and_jobs": "arithmetic average of twelve monthly observations",
+    "quarterly_flow_and_price_index": "arithmetic average of four quarterly observations",
+    "debt_stocks": "fourth-quarter end-of-period observations divided by contemporaneous fourth-quarter GDP annualized flow",
+    "trade_ratios": "ratio of calendar-year average quarterly annualized flows",
+    "price_income_indices": "each series normalized separately to its 1990 annual mean",
+    "causal_warning": "These co-moving aggregates cannot identify policy, trade, or finance causal effects."
+  },
+  "methodology_notes": [
+    "The raw quarterly FRED export segregated end-of-period debt stocks from other quarterly data; the two CSVs are retained separately.",
+    "The FRED TDSP series in the October 2026 export has no observations before 2005; it is deliberately omitted from the 1990-2007 figure to avoid invented values.",
+    "A comparison between per-capita GDP and median household income is not an accounting decomposition; demographics and survey definitions differ.",
+    "Census income questionnaire and collection methods changed in 1993; a continuous Gini line is not a homogeneous measurement instrument.",
+    "FRED historical series are revised over time; these checked-in values freeze the observed October 2026 vintage, not original 1990-era releases."
+  ]
+}
