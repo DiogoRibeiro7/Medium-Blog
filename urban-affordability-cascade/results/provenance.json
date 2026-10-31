@@ -1,0 +1,17 @@
+{
+  "observational_source": "DiogoRibeiro7/portugal-housing-generations/results/integrated_panel.csv",
+  "observational_source_commit": "0407faed1f08209b3d7682e19fc57e7120e62879",
+  "observational_source_blob_sha": "9bade430163315e7c5da323251daa0715e1ffede",
+  "local_extract_sha256": "88502e15b55a4d46536eed42ddc1924d30f555498d2c4a7e7a1b41fbeed71c66",
+  "source_underlying_publications": "INE price, new-lease rent, tax income, resident population and building statistics; see source project provenance",
+  "observed_municipalities": 17,
+  "observed_years": [
+    2019,
+    2025
+  ],
+  "missingness": "2019 new-lease rent and 2025 fiscal-household income not assumed/imputed",
+  "research_status": "descriptive observational comparisons plus separately labelled illustrative models",
+  "relocation_flow_data_present": false,
+  "causal_effect_estimated": false,
+  "figure_count": 8
+}

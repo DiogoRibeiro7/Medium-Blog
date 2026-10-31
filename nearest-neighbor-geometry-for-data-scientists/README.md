@@ -1,4 +1,4 @@
-# Article #17: A Nearest Neighbor Is Not Necessarily Similar
+# Article #23: A Nearest Neighbor Is Not Necessarily Similar
 
 **Full title:** *A Nearest Neighbor Is Not Necessarily Similar: Distance Concentration, Hubness, and the Geometry of High-Dimensional Data*
 

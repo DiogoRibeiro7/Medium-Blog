@@ -1,0 +1,33 @@
+name: Civil rights and Great Society article reproducibility
+
+on:
+  pull_request:
+    paths:
+      - "civil-rights-great-society/**"
+      - ".github/workflows/great-society-article.yml"
+  push:
+    paths:
+      - "civil-rights-great-society/**"
+      - ".github/workflows/great-society-article.yml"
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: civil-rights-great-society
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: civil-rights-great-society/requirements.txt
+      - name: Install requirements
+        run: python -m pip install -r requirements.txt
+      - name: Check sources, model contracts, article and notebook
+        run: python -m unittest discover -s tests -v
+      - name: Reproduce publication images and results
+        run: python analysis.py
+      - name: Verify published output count
+        run: python -c "from pathlib import Path; assert len(list(Path('figures').glob('figure_*.png'))) == 8; assert len(list(Path('results').glob('*.csv'))) == 3"

@@ -1,6 +1,6 @@
 # A Nearest Neighbor Is Not Necessarily Similar: Distance Concentration, Hubness, and the Geometry of High-Dimensional Data
 
-*Article #17 · A mathematical and reproducible investigation · 31 October 2026*
+*Article #23 · A mathematical and reproducible investigation · 31 October 2026*
 
 > **Abstract.** Nearest-neighbor methods turn a ranking by numerical distance
 > into a claim about similarity. That move is sometimes useful and sometimes

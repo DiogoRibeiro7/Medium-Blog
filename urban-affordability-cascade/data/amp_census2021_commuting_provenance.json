@@ -1,0 +1,15 @@
+{
+  "indicator": "INE Censos 2021 0012340 (NUTS 2024 municipality geography)",
+  "indicator_url": "https://www.ine.pt/xurl/indx/0012340/PT",
+  "source_type": "third-party workbook export attributed to INE; not independently re-fetched from INE",
+  "source_repository": "andrebrito0/OD_Data_Portugal_Census_2021",
+  "source_commit": "a3bd023b8eab56962cb377d1f07c6279cde67007",
+  "source_url": "https://raw.githubusercontent.com/andrebrito0/OD_Data_Portugal_Census_2021/a3bd023b8eab56962cb377d1f07c6279cde67007/all_data.xlsx",
+  "source_workbook_sha256": "7d6dbb58be8356c868c9d0d548a81db27025228f662c5c09d71cd4ba1ee7dace",
+  "derived_csv_sha256": "0cd66cdefac5c8d5112f611e02217fda30916759d85f3b3f250d9080e055a8e2",
+  "geography": "17 AMP municipalities, 2021",
+  "row_count": 136,
+  "semantics": "undirected symmetric pair interactions for work/study; NOT residential relocation",
+  "diagonal": "all 17 self-pairs zero in source export; not a within-city commuter count",
+  "license": "Statistics Portugal open-data attribution CC BY 4.0; credit INE and workbook author"
+}

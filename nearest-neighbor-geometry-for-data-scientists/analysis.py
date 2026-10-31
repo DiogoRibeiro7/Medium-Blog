@@ -1,4 +1,4 @@
-"""Seeded geometry, neighbor, and metric experiments for article #17.
+"""Seeded geometry, neighbor, and metric experiments for article #23.
 
 All data are synthetic. Examples intentionally change the generating
 distribution between experiments; the observed patterns are not universal

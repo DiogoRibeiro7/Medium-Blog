@@ -1,0 +1,42 @@
+name: Porto metropolitan housing article reproducibility
+
+on:
+  pull_request:
+    paths:
+      - "urban-affordability-cascade/**"
+      - ".github/workflows/urban-affordability-cascade.yml"
+  push:
+    branches: [main]
+    paths:
+      - "urban-affordability-cascade/**"
+      - ".github/workflows/urban-affordability-cascade.yml"
+
+jobs:
+  study:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    defaults:
+      run:
+        working-directory: urban-affordability-cascade
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: urban-affordability-cascade/requirements.txt
+      - name: Install pinned scientific packages
+        run: python -m pip install -r requirements.txt
+      - name: Verify 63 tests for fixed sources, OD intake, bounds, and figures
+        run: python -m unittest discover -s tests -v
+      - name: Generate original figures into a clean output folder
+        run: python analysis.py --output /tmp/porto-housing-reproduction
+      - name: Regenerate observed commuting network diagnostics
+        run: python commuting_network.py --output /tmp/porto-commuting-reproduction
+      - name: Regenerate Census residential origin diagnostics
+        run: python residential_mobility.py --output /tmp/porto-residential-reproduction
+      - name: Regenerate sharp residential origin-destination bounds
+        run: python residential_identifiability.py --output /tmp/porto-residential-identifiability
+      - name: Verify manuscript length and figure references
+        run: |
+          python -c "from pathlib import Path; a=Path('article.md').read_text(encoding='utf-8'); assert len(a.split()) >= 8000, 'Long-form article below 8000 words'; assert all(f'figures/fig{i}_' in a for i in range(1,14)), 'Missing figure references'"

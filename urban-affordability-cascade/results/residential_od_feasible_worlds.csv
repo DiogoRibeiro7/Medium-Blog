@@ -1,0 +1,6 @@
+scenario,porto_to_rest_amp,rest_amp_to_porto,porto_inbound_from_elsewhere,rest_amp_inbound_from_non_porto,net_porto_to_rest_amp,evidence_class
+Zero within-AMP exchange,0,0,15724,108894,0,hypothetical_feasible_allocation_not_observed
+Hypothetical net outward,25000,5000,10724,83894,20000,hypothetical_feasible_allocation_not_observed
+Hypothetical net inward,5000,12000,3724,103894,-7000,hypothetical_feasible_allocation_not_observed
+Sharp outward endpoint,108894,0,15724,0,108894,hypothetical_feasible_allocation_not_observed
+Sharp inward endpoint,0,15724,0,108894,-15724,hypothetical_feasible_allocation_not_observed

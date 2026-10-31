@@ -17,7 +17,7 @@ def build() -> Path:
     cells = [
         nbformat.v4.new_markdown_cell(r"""# A nearest neighbor is not necessarily similar
 
-This is the executable companion to **article #17**, a study of distance
+This is the executable companion to **article #23**, a study of distance
 concentration, irrelevant dimensions, hubness, and task-dependent metrics.
 
 All data in this notebook are **synthetic**. It independently runs the reduced
