@@ -1,0 +1,40 @@
+name: Article 17 - Nearest Neighbor Geometry
+
+on:
+  pull_request:
+    paths:
+      - 'nearest-neighbor-geometry-for-data-scientists/**'
+      - '.github/workflows/nearest-neighbor-geometry.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'nearest-neighbor-geometry-for-data-scientists/**'
+      - '.github/workflows/nearest-neighbor-geometry.yml'
+
+jobs:
+  scientific-reproduction:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: nearest-neighbor-geometry-for-data-scientists
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: nearest-neighbor-geometry-for-data-scientists/requirements.txt
+      - name: Install pinned-range scientific dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Run numerical, evidence, and fresh-kernel notebook tests
+        env:
+          RUN_NOTEBOOK_EXECUTION: '1'
+          MPLBACKEND: Agg
+          OPENBLAS_NUM_THREADS: '1'
+        run: python -m unittest discover -s tests -v
+      - name: Run isolated quick replication
+        env:
+          MPLBACKEND: Agg
+          OPENBLAS_NUM_THREADS: '1'
+        run: python analysis.py --quick
