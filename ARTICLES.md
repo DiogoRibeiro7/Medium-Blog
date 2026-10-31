@@ -1,6 +1,6 @@
 # Articles Developed in This Chat
 
-This is a chronological index of the fifteen long-form articles developed in
+This is a chronological index of the sixteen long-form articles developed in
 this conversation for `Medium-Blog`. It is **not** a complete
 catalogue of the repository's articles or historical notebooks.
 
@@ -21,6 +21,7 @@ catalogue of the repository's articles or historical notebooks.
 | 13 | [A High R² Is Not a Long-Run Relationship: Spurious Regression, Unit Roots, and Cointegration](spurious-regression-cointegration/article.md) | Independent stochastic trends, spurious OLS, Dickey–Fuller, Engle–Granger residual calibration, cointegrated equilibrium, error-correction models, slope convergence, structural breaks | 8 | [Study README](spurious-regression-cointegration/README.md) · [Python analysis](spurious-regression-cointegration/analysis.py) · [Notebook](spurious-regression-cointegration/spurious_regression_cointegration.ipynb) |
 | 14 | [When Power Calls for Civility: How Moderation Can Contain Social Change](civility-and-political-change/article.md) | Alex Zamalin and Martin Luther King Jr., political civility, nonviolent direct action, bargaining asymmetry, historical comparison, protest evidence, ethical tradeoffs, delay costs | 8 | [Study README](civility-and-political-change/README.md) · [Python analysis](civility-and-political-change/analysis.py) · [Notebook](civility-and-political-change/model_walkthrough.ipynb) |
 | 15 | [A Missing Edge Is Not a Missing Relationship: Gaussian Graphical Models and Conditional Independence](gaussian-graphical-models-for-data-scientists/article.md) | Gaussian precision and partial correlation, chain and collider, latent factors, high-dimensional singularity, graphical lasso support recovery, held-out likelihood, bootstrap stability, nonlinear dependence and non-identifiable causal direction | 9 | [Study README](gaussian-graphical-models-for-data-scientists/README.md) · [Python analysis](gaussian-graphical-models-for-data-scientists/analysis.py) · [Notebook](gaussian-graphical-models-for-data-scientists/gaussian_graphical_models.ipynb) |
+| 16 | [A Nearest Neighbor Is Not Necessarily Similar: Distance Concentration, Hubness, and the Geometry of High-Dimensional Data](nearest-neighbor-geometry-for-data-scientists/article.md) | Exact Gaussian distance moments, relative contrast, irrelevant dimensions in 7-NN, nuisance scaling, Johnson–Lindenstrauss projections, neighbor hubness, spectral effective rank, angular and radial similarity | 9 | [Study README](nearest-neighbor-geometry-for-data-scientists/README.md) · [Python analysis](nearest-neighbor-geometry-for-data-scientists/analysis.py) · [Notebook](nearest-neighbor-geometry-for-data-scientists/nearest_neighbor_geometry.ipynb) |
 
 ## Reproducibility
 
