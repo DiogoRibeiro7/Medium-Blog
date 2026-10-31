@@ -1,0 +1,34 @@
+name: Civility and political change - reproducibility
+
+on:
+  pull_request:
+    paths:
+      - "civility-and-political-change/**"
+      - ".github/workflows/civility-and-political-change.yml"
+  push:
+    branches: [main]
+    paths:
+      - "civility-and-political-change/**"
+      - ".github/workflows/civility-and-political-change.yml"
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: civility-and-political-change
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install local requirements
+        run: python -m pip install -r requirements.txt
+      - name: Check Python compilation
+        run: python -m compileall -q analysis.py tests
+      - name: Verify mathematical and notebook contracts
+        run: python -m unittest discover -s tests -v
+      - name: Rebuild figures and evidence tables
+        run: python analysis.py --output /tmp/civility-article-verification

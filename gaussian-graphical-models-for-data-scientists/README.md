@@ -2,7 +2,7 @@
 
 This directory accompanies the 8,000+-word Medium essay
 **[A Missing Edge Is Not a Missing Relationship](article.md)** by Diogo Ribeiro.
-It is article **#14** of the long-form, original-figure series recorded in
+It is article **#15** of the long-form, original-figure series recorded in
 [`../ARTICLES.md`](../ARTICLES.md).
 
 The entire study is **synthetic**. Its deliberately known graph, Gaussian
