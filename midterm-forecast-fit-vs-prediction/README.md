@@ -18,8 +18,12 @@ are a **snapshot of the original forecast**, not an ongoing live poll average.
 | Leave-one-election-out RMSE | 7.99 seats |
 | Leave-one-election-out R² | 0.8465 |
 | Expanding-origin forward RMSE (10 test elections) | 8.70 seats |
+| Expanding-origin generic-ballot-only RMSE (same 10) | 20.09 seats |
+| Expanding-origin seats-only RMSE (same 10) | 23.00 seats |
 | Expanding-origin past-mean baseline RMSE | 23.81 seats |
 | Conditional forecast: Republicans, 2026 | −32.32 seats |
+| Generic-ballot-only conditional 2026 forecast | −31.56 seats |
+| Alternative Gallup source: forward full / generic-only RMSE | 8.97 / 20.63 seats |
 | Parametric Student-t 95% predictive interval | [−48.43, −16.22] seats |
 | Pairs/residual bootstrap 95% sensitivity interval | [−41.75, −14.37] seats |
 | Gallup retrospective alternative forecast | −31.91 seats |
@@ -42,13 +46,26 @@ python -m unittest discover -s tests -v
 ```
 
 These commands regenerate committed data tables, nine original PNG figures,
-and run **28 scientific, data-provenance and fresh-kernel notebook tests**.
+and run **32 scientific, data-provenance and fresh-kernel notebook tests**.
 The notebook is [model_walkthrough.ipynb](model_walkthrough.ipynb).
 The `.github/workflows/midterm-forecast-fit-vs-prediction.yml` job is scoped to
 this folder and can be dispatched manually. It regenerates into a separate
 temporary folder and checks the canonical numerical summary against that
 reproduction. No API tokens, proprietary datasets or election-night data are
 needed.
+
+For a direct test of whether the second predictor adds value, the study also
+fits two simpler OLS models from scratch at each strictly earlier training
+origin: intercept + generic ballot and intercept + defended seats. All four
+rules (including the historical mean) predict the **same ten elections** with
+the **same information cutoff**. The row-level table is
+[`results/forward_model_comparison.csv`](results/forward_model_comparison.csv).
+The full model beats generic-ballot-only absolute error on nine of ten target
+years, although its 2006 error is larger. The comparisons are exploratory and
+not an evaluation against district-level or probabilistic election forecasts.
+The same ranking and nine-of-ten count hold when replacing Gallup's two
+disputed historical retrospective values. Exact alternative-source forward
+errors are committed in [`results/source_sensitivity.csv`](results/source_sensitivity.csv).
 
 To regenerate without changing the working tree:
 
@@ -110,7 +127,7 @@ coefficient is partly a mechanical capacity/context measure.
 | 2 | [historical residuals](figures/fig2_residuals_over_time.png) | Within-sample errors by year, including 2006 |
 | 3 | [leave-one-out](figures/fig3_leave_one_out.png) | Held-out predictions, distinguish from fitted predictions |
 | 4 | [forward testing](figures/fig4_forward_validation.png) | Model vs actual vs historical mean using earlier years only |
-| 5 | [error comparison](figures/fig5_error_comparison.png) | RMSE scales, matching test-set qualifications |
+| 5 | [forward model comparison](figures/fig5_error_comparison.png) | Fair RMSE comparison: full model vs ballot-only, seats-only and earlier-election mean on the same 10 elections |
 | 6 | [2026 intervals](figures/fig6_2026_prediction_intervals.png) | Conditional Student-t and pairs/residual-bootstrap uncertainty |
 | 7 | [polling sensitivity](figures/fig7_polling_sensitivity.png) | Conditional response to D+2…D+14 and 210/220/230 seats |
 | 8 | [influence](figures/fig8_influence_diagnostics.png) | Leverage, standardized residual and Cook's distance |

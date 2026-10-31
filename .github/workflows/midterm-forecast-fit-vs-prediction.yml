@@ -47,6 +47,10 @@ jobs:
           primary = json.loads(Path('results/summary.json').read_text())
           duplicate = json.loads(Path('/tmp/midterm-reproduction/results/summary.json').read_text())
           assert primary == duplicate, 'Scientific metrics do not match regenerated evidence'
+          for filename in ('forward_model_comparison.csv', 'source_sensitivity.csv'):
+              committed = (Path('results') / filename).read_text()
+              regenerated = (Path('/tmp/midterm-reproduction/results') / filename).read_text()
+              assert committed == regenerated, f'{filename} differs from regenerated evidence'
           assert len(list(Path('/tmp/midterm-reproduction/figures').glob('fig*.png'))) == 9
           print('Canonical metrics and nine publication figures verified')
           PY
