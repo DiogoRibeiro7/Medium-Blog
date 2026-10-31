@@ -23,9 +23,11 @@ municipality panel with two separately classified hypothetical models.
 
 The intended next stage is an empirical study of actual residential mobility,
 spatial connectivity, housing stock, and transport burden. It is described in
-[the research protocol](RESEARCH_PROTOCOL.md). There are currently **no**
-observed origin–destination household flow data, estimated spatial propagation
-coefficients, or causal treatment effects in this project.
+[the research protocol](RESEARCH_PROTOCOL.md). A follow-up companion now adds
+**preliminary Census-derived commuting connectivity** and exploratory spatial
+association diagnostics (below). There are still **no observed residential
+origin–destination household flows**, estimated propagation coefficients, or
+causal treatment effects in this project.
 
 ## Reproduce
 
@@ -129,9 +131,71 @@ The hypothetical commuting calculation uses a monthly rent function
 where \(d\) is a one-way distance in kilometres. None of these coefficients
 is estimated from Portuguese transport or expenditure surveys.
 
-The 13 unit tests check provenance-specific reference values, missingness,
+The original 13 unit tests check provenance-specific reference values, missingness,
 duplicate rejection, numerical growth, conservation, parameter bounds,
-comparative statics, costs and reproducible outputs.
+comparative statics, costs and reproducible outputs. Fifteen additional tests
+audit the Census-derived pairs, undirected counting, Moran calculations,
+permutation determinism, and new generated artifacts.
+
+## Follow-up: observed commuting connectivity (2021)
+
+The additional module [commuting_network.py](commuting_network.py) joins a
+fixed 2021 **work/study commuting interaction** matrix to the same 17 AMP
+municipalities. Its source is [INE Census 2021 indicator 0012340](https://www.ine.pt/xurl/indx/0012340/PT),
+**as transcribed into** [a third-party workbook](https://github.com/andrebrito0/OD_Data_Portugal_Census_2021)
+at pinned commit `a3bd023b8eab56962cb377d1f07c6279cde67007`.
+The source workbook SHA-256 is
+`7d6dbb58be8356c868c9d0d548a81db27025228f662c5c09d71cd4ba1ee7dace`.
+The direct INE JSON API returned HTTP 503 during extraction, so the workbook
+has **not yet been independently reconciled with the official API**. The
+derived 136-pair CSV and detailed provenance are included for audit. Credit
+INE and the workbook's author; the INE data portal lists CC BY 4.0.
+
+Crucially, the 17×17 source matrix is **exactly symmetric**, with 136 positive
+unordered municipality pairs and zeros on its diagonal. The derived CSV keeps
+one row per unordered pair. It reports a total of **339,378 pair
+interactions** within the AMP subset (the full symmetric matrix would double
+that count). The strongest link is Porto–Vila Nova de Gaia (**39,960** reported
+pair interactions). These counts do not identify commuter direction,
+within-municipality commuting, household relocation, or displaced tenants.
+
+Reproduce the frozen extract after obtaining the pinned upstream workbook:
+
+    python extract_commuting.py --source-xlsx /path/to/all_data.xlsx \
+      --output /tmp/reproduced_commuting_pairs.csv \
+      --provenance /tmp/reproduced_commuting_provenance.json
+
+Then regenerate the two additional observed-data figures and diagnostics:
+
+    python commuting_network.py --output /tmp/porto-commuting-check
+
+The reproducible outputs are:
+
+- `figures/fig9_2021_commuting_interactions.png`: log-colour heatmap of
+  **observed** undirected interactions (not migration);
+- `figures/fig10_commuting_moran_null.png`: prespecified fixed-seed,
+  two-sided random-label null comparisons for municipal growth rates;
+- `results/commuting_spatial_diagnostics.csv`: raw weights (primary), square-root
+  weights and top-three strongest-neighbor union (sensitivities), plus excluding
+  Porto from the raw-weight calculation;
+- `results/commuting_municipal_exposure.csv`: each municipality's observed
+  interaction strength and the fixed-network-weighted mean of *other*
+  municipalities' sale/rent growth;
+- `results/commuting_diagnostics_provenance.json`: source identity, interpretation,
+  configuration and numerical results.
+
+With 9,999 random-label permutations, global Moran's I using **raw symmetric
+interactions** is **−0.197** for sold-price growth 2019–2025 (two-sided
+`p = 0.303`) and **+0.156** for new-contract rent growth 2020–2025
+(`p = 0.114`). These are exploratory correlations among just 17 municipalities,
+**not evidence of causal price contagion or non-contagion**. The fixed 2021
+commuting network overlaps the periods whose endpoints are compared, so it
+cannot establish temporal order. Most importantly, binary adjacency is
+complete (every pair has a positive count); converting this matrix to a binary
+graph would make Moran's I degenerate under permutation. We therefore do not
+claim binary-neighbor significance or infer residential moving flows. Removing
+Porto also changes the *sign* of the raw-weight sale-price association, so a
+single metropolitan summary is not a stable account of the mechanism.
 
 ## Boundaries before publication
 
@@ -141,6 +205,9 @@ comparative statics, costs and reproducible outputs.
 - The fixed geographic AMP perimeter does not equal a measured commuting
   or housing-search market.
 - A descriptive spatial lag or temporal ordering is not a causal spillover.
+- 2021 commuting interactions are undirected and do not reveal where households
+  moved. The cached external workbook has not been cross-checked against a
+  fresh official INE API download.
 - The 2019–2025 municipal sample is too short for a high-dimensional
   multi-lag causal model without further sources and identification.
 - No household-level rent or generalized transport burden is measured here.

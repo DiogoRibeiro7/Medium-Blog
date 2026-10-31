@@ -27,10 +27,12 @@ jobs:
           cache-dependency-path: urban-affordability-cascade/requirements.txt
       - name: Install pinned scientific packages
         run: python -m pip install -r requirements.txt
-      - name: Verify source integrity and reproduce eight figures
+      - name: Verify source integrity and reproduce ten figures
         run: python -m unittest discover -s tests -v
-      - name: Generate independently into a clean output folder
+      - name: Generate original figures into a clean output folder
         run: python analysis.py --output /tmp/porto-housing-reproduction
+      - name: Regenerate observed commuting network diagnostics
+        run: python commuting_network.py --output /tmp/porto-commuting-reproduction
       - name: Verify manuscript length and figure references
         run: |
           python -c "from pathlib import Path; a=Path('article.md').read_text(encoding='utf-8'); assert len(a.split()) >= 8000, 'Long-form article below 8000 words'; assert all(f'figures/fig{i}_' in a for i in range(1,9)), 'Missing figure references'"
