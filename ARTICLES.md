@@ -1,6 +1,6 @@
 # Articles Developed in This Chat
 
-This is a chronological index of the eighteen long-form articles developed in
+This is a chronological index of the nineteen long-form articles developed in
 this conversation for `Medium-Blog`. It is **not** a complete
 catalogue of the repository's articles or historical notebooks.
 
@@ -24,6 +24,7 @@ catalogue of the repository's articles or historical notebooks.
 | 16 | [The Gold Was Real. So Was the Gilding: The Political Economy of America's Gilded Age](gilded-age-political-economy/article.md) | Gilded Age, railroad expansion, immigration, wealth concentration, real wages, monopoly and network costs, labor conflict, regulation, political exclusion, source uncertainty | 8 | [Study README](gilded-age-political-economy/README.md) · [Python analysis](gilded-age-political-economy/analysis.py) · [Notebook](gilded-age-political-economy/model_walkthrough.ipynb) |
 | 17 | [A Law Is Not a Reform: What the Progressive Era Actually Changed](progressive-era-reform-gap/article.md) | Progressive Era, trust-busting, Federal Reserve, federal income tax, unions, child labor, women's suffrage, racial exclusion, administrative enforcement and distributional effects | 8 | [Study README](progressive-era-reform-gap/README.md) · [Python analysis](progressive-era-reform-gap/analysis.py) · [Notebook](progressive-era-reform-gap/model_walkthrough.ipynb) |
 | 18 | [The Forecast Is Not the Fit: Rebuilding an 89% Midterm Election Model](midterm-forecast-fit-vs-prediction/article.md) | 2026 House midterm forecast, historical poll provenance, OLS, R², leave-one-out and forward validation, forecast uncertainty, bootstrap, source sensitivity, non-causal prediction | 9 | [Study README](midterm-forecast-fit-vs-prediction/README.md) · [Python analysis](midterm-forecast-fit-vs-prediction/analysis.py) · [Notebook](midterm-forecast-fit-vs-prediction/model_walkthrough.ipynb) |
+| 19 | [A Safety Net Is Not a Social Contract: What the New Deal Built—and Whom It Left Out](new-deal-social-contract/article.md) | Great Depression and New Deal; unemployment and GDP measurement, banking panics, deposit insurance, public work, Social Security, labor rights, racial and gender exclusions, institutional legacies | 8 | [Study README](new-deal-social-contract/README.md) · [Python analysis](new-deal-social-contract/analysis.py) · [Notebook](new-deal-social-contract/model_walkthrough.ipynb) |
 
 ## Reproducibility
 
