@@ -1,0 +1,60 @@
+{
+  "alternative_gallup_forecast": -31.911588848641994,
+  "alternative_gallup_r2": 0.8884426254042618,
+  "as_of": "2026-10-31",
+  "bootstrap_90_interval": [
+    -40.8162083004529,
+    -16.433602720626755
+  ],
+  "bootstrap_95_interval": [
+    -41.75170811125731,
+    -14.373974322873948
+  ],
+  "bootstrap_draws": 5000,
+  "bootstrap_seed": 20261031,
+  "data_period": "1950-2022",
+  "degrees_of_freedom": 15,
+  "forecast": -32.32288802630563,
+  "forecast_omit_one_year_max": -31.384367912105873,
+  "forecast_omit_one_year_min": -34.23333571797409,
+  "forward_90_coverage": 0.9,
+  "forward_95_coverage": 0.9,
+  "forward_mae": 6.002811322637854,
+  "forward_mean_baseline_mae": 20.75788784744667,
+  "forward_mean_baseline_r2": -0.09998789170136768,
+  "forward_mean_baseline_rmse": 23.809446861849118,
+  "forward_r2": 0.853273558471025,
+  "forward_rmse": 8.695800072815182,
+  "forward_test_count": 10,
+  "in_sample_mae": 4.715325880092842,
+  "in_sample_r2": 0.893447684694887,
+  "in_sample_rmse": 6.661216427261937,
+  "largest_cook_year": 2006,
+  "loocv_90_coverage": 0.9444444444444444,
+  "loocv_95_coverage": 0.9444444444444444,
+  "loocv_mae": 5.700234575916163,
+  "loocv_r2": 0.8465094769050757,
+  "loocv_rmse": 7.994897164630908,
+  "max_cooks_distance": 0.4302418598419396,
+  "max_leverage": 0.2784813494654038,
+  "max_studentized_absolute_residual": 2.7769743080144025,
+  "missing_1986": true,
+  "model_coefficients": [
+    106.9979288216479,
+    2.708461055698213,
+    -0.5347869472834901
+  ],
+  "observations": 18,
+  "original_rattner_forecast": -33,
+  "parametric_90_interval": [
+    -45.56915509154573,
+    -19.076620961065522
+  ],
+  "parametric_95_interval": [
+    -48.428386550570906,
+    -16.217389502040344
+  ],
+  "predictors_excluding_intercept": 2,
+  "scenario_party_margin": -8.0,
+  "scenario_seats": 220
+}
