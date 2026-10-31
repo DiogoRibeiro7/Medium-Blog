@@ -1,6 +1,6 @@
 # Articles Developed in This Chat
 
-This is a chronological index of the twenty-one long-form articles developed in
+This is a chronological index of the twenty-two long-form articles developed in
 this conversation for `Medium-Blog`. It is **not** a complete
 catalogue of the repository's articles or historical notebooks.
 
@@ -27,6 +27,7 @@ catalogue of the repository's articles or historical notebooks.
 | 19 | [A Safety Net Is Not a Social Contract: What the New Deal Built—and Whom It Left Out](new-deal-social-contract/article.md) | Great Depression and New Deal; unemployment and GDP measurement, banking panics, deposit insurance, public work, Social Security, labor rights, racial and gender exclusions, institutional legacies | 8 | [Study README](new-deal-social-contract/README.md) · [Python analysis](new-deal-social-contract/analysis.py) · [Notebook](new-deal-social-contract/model_walkthrough.ipynb) |
 | 20 | [The Right to Vote Was Only the Beginning: Civil Rights, the Great Society, and the Limits of Reform](civil-rights-great-society/article.md) | Civil rights movement, voting rights and enforcement, Medicare and Medicaid, education, fair housing, 1959–1975 poverty by race and age, historical measurement and hypothetical access models | 8 | [Study README](civil-rights-great-society/README.md) · [Python analysis](civil-rights-great-society/analysis.py) · [Notebook](civil-rights-great-society/model_walkthrough.ipynb) |
 | 21 | [The Suburb Is Not an Escape: How Housing Unaffordability Can Spread Across a Metropolitan Area](urban-affordability-cascade/article.md) | Porto metropolitan area, housing affordability, spatial price spillovers, municipal prices and new-contract rents, displacement identification, commuting burden, counterfactual cascade scenarios | 8 | [Study README](urban-affordability-cascade/README.md) · [Python analysis](urban-affordability-cascade/analysis.py) · [Notebook](urban-affordability-cascade/model_walkthrough.ipynb) |
+| 22 | [The Price of Stability Was Not Shared Equally: Stagflation, Volcker, Reagan, and America's Market Turn](stagflation-market-turn/article.md) | 1970–1990 U.S. economic history; CPI inflation, unemployment and racial disparities, monetary tightening, household Gini, union membership, tax acts, deregulation, federal deficits, hypothetical wage indexation | 8 | [Study README](stagflation-market-turn/README.md) · [Python analysis](stagflation-market-turn/analysis.py) · [Notebook](stagflation-market-turn/model_walkthrough.ipynb) |
 
 ## Reproducibility
 
