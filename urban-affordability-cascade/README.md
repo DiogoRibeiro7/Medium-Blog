@@ -197,6 +197,68 @@ claim binary-neighbor significance or infer residential moving flows. Removing
 Porto also changes the *sign* of the raw-weight sale-price association, so a
 single metropolitan summary is not a stable account of the mechanism.
 
+## Follow-up: observed residential origins, Porto Census 2021
+
+The [official Porto open-data portal](https://dadosabertos.cm-porto.pt/dataset/indicadores-relativos-populacao-residente-no-porto-resultados-definitivos-censos-2021)
+redistributes an **INE Census 2021** table about the whereabouts of current
+residents on **31 December 2019**, classified into same home, changed home within
+the same parish, another parish in the same municipality, another municipality,
+abroad, and not yet born. [Question 10 of the Census questionnaire](https://censos.ine.pt/scripts/censos_css_js/quest/PT_Q_Individual_Censos2021_INE.pdf)
+confirms the exact question and the 19 April 2021 Census reference date. This
+interval is *longer than one year* and cannot be converted into an annual rate.
+
+Unlike the commuting matrix, these are genuinely **residential-origin counts**,
+but the accessible table supplies only 11 nested geographic rows: Portugal,
+Norte, AMP, Porto, and Porto's seven contemporary parishes. Crucially, its
+"other municipality" category does **not name which origin municipality**.
+The extract therefore measures inbound origins for 2021 Porto residents, **not
+Porto-to-suburb exits** or a 17×17 residential-migration matrix.
+
+The public archive is fixed at SHA-256
+`52f447ed1e1e159132ca94c9719d74ab7553f3eefaee4107f391ea0cd54fdf14`;
+the selected XLS member at SHA-256
+`0d82ac3a057202c3781ec73ebfbb32ee29d3c60f0c86e9b64a3e1b2b8d47def5`.
+The dedicated [extract_residential_mobility.py](extract_residential_mobility.py)
+validates these hashes and the original INE dimension labels, preserves stable
+2021 geographic codes, and rejects suppression or non-integer counts.
+
+Porto counted **231,800** residents in 2021, of whom **2,073** had not yet
+been born on the prior reference date. Among the remaining **229,727** people,
+**15,724 (6.84%)** had lived in a *different municipality* at the earlier date;
+**4,345 (1.89%)** had lived abroad. This is an observed inbound-residence
+comparison, not a count of residents priced out. The municipality's seven
+parishes sum **exactly** to the municipality in all eight independently checked
+population categories. Their other-municipality shares range from **5.92%**
+(Aldoar–Foz–Nevogilde) to **8.40%** (Cedofeita–Santo Ildefonso–Sé–Miragaia–
+São Nicolau–Vitória union). These differences alone cannot identify why people
+moved or whether anyone was displaced.
+
+Reproduce from the frozen public ZIP, which need not enter version control:
+
+    python extract_residential_mobility.py --source-zip /path/to/archive.zip \
+      --output /tmp/reproduced_residential.csv \
+      --provenance /tmp/reproduced_residential_source.json
+
+And regenerate the observed diagnostic tables and figures:
+
+    python residential_mobility.py --output /tmp/porto-residential-check
+
+The committed outputs include:
+
+- `data/porto_census2021_residential_mobility.csv` and a paired source-provenance
+  JSON, with all 11 geographic margins and explicit 2019-eligible denominators;
+- `figures/fig11_parish_intermunicipal_in_mobility.png`, an observed comparison
+  of the seven parishes with Porto and AMP reference rates;
+- `figures/fig12_parish_residential_mover_mix.png`, a separate category
+  composition **among movers only**, never confused with all residents;
+- `results/residential_mobility_parish_summary.csv` and
+  `results/residential_mobility_reconciliation.json`, including exact
+  accounting controls and unobserved-flow limitations.
+
+Twelve additional tests enforce category partitions, the full parish-to-city
+reconciliation, source schema, hashes and publication artifacts. The combined
+test suite now contains **40 tests**.
+
 ## Boundaries before publication
 
 - Prices of sold homes are not quality-adjusted repeated-sales observations.
@@ -208,6 +270,9 @@ single metropolitan summary is not a stable account of the mechanism.
 - 2021 commuting interactions are undirected and do not reveal where households
   moved. The cached external workbook has not been cross-checked against a
   fresh official INE API download.
+- The separate Porto residential-origin counts do not identify which
+  municipality anybody came from, Porto's outflows, household income, rent,
+  search motives, or a directed movement network.
 - The 2019–2025 municipal sample is too short for a high-dimensional
   multi-lag causal model without further sources and identification.
 - No household-level rent or generalized transport burden is measured here.

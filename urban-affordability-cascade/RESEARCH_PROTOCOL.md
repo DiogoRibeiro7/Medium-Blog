@@ -54,7 +54,8 @@ commuting-to-work flows.
 | Annual municipal population | INE | 2019–2025 | Revision status and net vs gross movements |
 | Fiscal-household median income | INE / Autoridade Tributária | 2019–2024 | Household concept and tax definition |
 | Permits, completions, stock | INE | Existing panel partial | Lags, gross vs net stock, vacancy |
-| True residential origin–destination moves | INE Census/administrative, subject to availability | **Missing** | Definition, coverage, privacy and frequency |
+| Residential origin categories (inbound to Porto) | INE Censos 2021 via Município do Porto official open-data archive | **Observed 2021 Porto and seven parishes, referenced to 31 Dec 2019** | Full category/denominator audit; source does not publish origin municipality in this extract |
+| True directed intermunicipal residential origin–destination moves | INE Census/administrative, subject to availability | **Missing** | Both origin and destination municipality, scope, privacy and timing |
 | Commuting interactions (unordered pairs) | INE Census 2021, indicator 0012340, via pinned third-party workbook | **Preliminary 2021 17-municipality extract** | Exact symmetry; independent direct-INE verification still pending; not directed relocations |
 | Scheduled and observed travel-time network | Official transport publisher, dated timetable data | **Missing** | Generalized cost, service frequency, reliability |
 | Household expenditure / burden distribution | INE and validated surveys | **Missing** | Tenant/owner split; income and time valuation |
@@ -72,6 +73,17 @@ is pinned to an external GitHub commit attributed to INE; the direct INE JSON
 endpoint returned HTTP 503 at extraction and remains a verification task.
 Moran's I tests on 17 endpoint growth rates are hypothesis-generating only;
 the 2021 network is not a pretreatment instrument for 2019–2025 changes.
+
+**Residential checkpoint (31 October 2026).** The official Porto municipal
+open-data archive includes a fixed INE table of residential provenance from
+31 December 2019 to the Census reference date (19 April 2021). We have pinned
+the ZIP and member XLS hashes, extracted 11 nested geographies, independently
+reconciled all seven parishes against Porto, and created transparent in-mover
+rate denominators. The published category "other municipality" does not
+identify the actual origin. Therefore this evidence **cannot** test Porto
+residents leaving for Gaia, Maia, Valongo, or other suburbs. Nor is its single
+retrospective window a longitudinal moving panel or a causal response to
+2019–2025 prices. A directed residential OD source remains the priority.
 
 ## Planned analysis sequence
 
