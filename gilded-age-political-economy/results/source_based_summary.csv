@@ -1,0 +1,7 @@
+metric,value,unit,evidence_class,source
+railroad_mileage_factor_1870_1900,3.670722950757719,ratio,historical derived,1904 US Statistical Abstract Table 101
+foreign_born_headcount_factor_1850_1910,6.136363636363636,ratio,rounded historical derived,US Census Bureau 2022
+massachusetts_top1_change_1870_1900,10.000000000000004,percentage points,historical derived; local sample,Rockoff 2008 Table 2
+constructed_index_real_gdp_per_capita,204.6407394226133,1870=100,"compounded historic average, not observed series",Rockoff 2008 Table 1
+constructed_index_real_national_income_per_capita,168.23745343651558,1870=100,"compounded historic average, not observed series",Rockoff 2008 Table 1
+constructed_index_real_wage_of_unskilled_labor,150.94764405566644,1870=100,"compounded historic average, not observed series",Rockoff 2008 Table 1

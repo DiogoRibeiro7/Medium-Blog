@@ -1,0 +1,36 @@
+name: Gilded Age - source and model reproducibility
+
+on:
+  pull_request:
+    paths:
+      - "gilded-age-political-economy/**"
+      - ".github/workflows/gilded-age-political-economy.yml"
+  push:
+    branches: [main]
+    paths:
+      - "gilded-age-political-economy/**"
+      - ".github/workflows/gilded-age-political-economy.yml"
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    env:
+      MPLCONFIGDIR: /tmp/matplotlib-gilded-age
+    defaults:
+      run:
+        working-directory: gilded-age-political-economy
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Compile Python sources
+        run: python -m compileall -q analysis.py tests
+      - name: Verify data contracts, models, and notebook
+        run: python -m unittest discover -s tests -v
+      - name: Reproduce figures and tables
+        run: python analysis.py --output /tmp/gilded-age-reproducibility
