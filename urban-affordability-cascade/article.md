@@ -646,11 +646,71 @@ counts are compatible with sharply different metropolitan residential
 exchanges. The housing cascade remains a testable hypothesis. The needed
 test has become more precise.
 
+## Data-access note: from an unidentified flow to a testable one
+
+The next research step should begin with a request for data, not a more
+elaborate migration model. A closer inspection of the **original English
+version of the Census 2021 individual questionnaire** establishes a
+particularly useful fact: [question 10](https://censos.ine.pt/scripts/censos_css_js/quest/EN_Q_IND_Censos2021_EN_v03.pdf)
+did not merely ask whether a person had lived in another municipality on
+31 December 2019. It requested the **name of that municipality and its
+parish**. The statistical system therefore collected more detailed
+residential-origin information than the published aggregate table makes
+available. This does not establish that every response has been successfully
+geocoded or that the information can safely be released in cross-tabular
+form, but it makes a targeted data request reasonable.
+
+For the Porto question, the minimum useful release is small: 17 destination
+municipalities, each of the 17 Porto Metropolitan Area municipalities as
+potential origins, plus a single group representing every other Portuguese
+municipality. That is an 18-by-17 table of *aggregate person counts*, not
+an individual-level dataset. The 17 same-municipality diagonal cells are
+excluded by the definition of arriving from another municipality. With
+matching definitions and no confidentiality adjustment, the sum of these
+counts should agree with the independently observed **124,618** people in
+the metropolitan area who previously lived in another municipality. The
+Porto destination column should agree with **15,724**. Publishing an
+explicit suppression flag for protected cells would be more informative
+and honest than silently reporting them as zero.
+
+Two official access routes are documented. First, INE has described a
+[statistical-information request service](https://www.ine.pt/ine_novidades/semin/FI_RIIBES_47/files/assets/basic-html/page10.html)
+for custom tabulations, including Census questions. The historical form
+link was not available during this work, so its current operation and
+possible cost need confirmation. Second, an [INE–FCT–DGEEC scientific
+research arrangement](https://www.ine.pt/ine_novidades/semin/FI_RIIBES_51/files/assets/basic-html/page6.html)
+has provided options for authorized researchers, including approved
+anonymized statistical tabulations and secure access. INE's
+[April 2026 research-infrastructure report](https://www.ine.pt/ine_novidades/semin/INEWS65/index.html)
+confirms ongoing safe-centre activity, including in Porto. Neither route
+guarantees access to this Census variable or automatic eligibility for
+an applicant. It is sensible to ask first about a no-cost research option
+and permissible redistribution before commissioning anything.
+
+The [companion source-request protocol](OD_DATA_ACCESS.md) now defines the
+universe, geographic codes, dates, confidentiality questions and exact
+reconciliation totals. It also contains a reviewable Portuguese-language
+request to INE, **not sent as part of this research**. The companion
+intake validator checks any future approved aggregate table for source
+identity, missing or duplicated cells, correct arithmetic, and suppressed
+values. It can preserve logically valid bounds if some flows are hidden.
+Its tests generate artificial tables only in temporary directories; these
+are software test fixtures, not Portuguese relocation measurements.
+
+Even once an authentic residential origin–destination table arrives, the
+research question will not be finished. It would establish movements
+between municipalities by people residing in the metropolitan area at
+the Census date, while the causal question concerns *which households were
+priced out*, when, and under what alternatives. Reasons for moving,
+household tenure, economic circumstances and a credible exposure design
+would still matter. The statistical data-access task is a necessary step
+towards that analysis, not a substitute for it.
+
 ---
 
 ## Sources and reproducibility
 
-The original eight images and three tabular outputs, plus four observed mobility figures and companion CSV results, can be regenerated using the commands in the [study README](README.md). The [fixed 17-municipality input](data/amp_municipal_panel_2019_2025.csv) is a derived extract from [DiogoRibeiro7/portugal-housing-generations](https://github.com/DiogoRibeiro7/portugal-housing-generations), pinned to [upstream commit 0407fae](https://github.com/DiogoRibeiro7/portugal-housing-generations/tree/0407faed1f08209b3d7682e19fc57e7120e62879). It does not assert that 2025 income observations or 2019 new-lease observations exist. The new mobility extracts have separate checksummed source records and distinct limitations.
+The original eight figures and three tabular outputs, four observed mobility figures, and one sharp non-identification figure with companion CSV results can be regenerated using the commands in the [study README](README.md). The new directed-OD intake suite is software-only until a genuine aggregate table is released. The [fixed 17-municipality input](data/amp_municipal_panel_2019_2025.csv) is a derived extract from [DiogoRibeiro7/portugal-housing-generations](https://github.com/DiogoRibeiro7/portugal-housing-generations), pinned to [upstream commit 0407fae](https://github.com/DiogoRibeiro7/portugal-housing-generations/tree/0407faed1f08209b3d7682e19fc57e7120e62879). It does not assert that 2025 income observations or 2019 new-lease observations exist. The published mobility extracts have separate checksummed source records and distinct limitations.
 
 1. Área Metropolitana do Porto. [Statutory definition and its 17 municipalities](https://www.amp.pt/en/amp-instituicao/area-metropolitana-do-porto-or-lei-no-752013/).
 2. Instituto Nacional de Estatística. [Local housing price methodology and geospatial context](https://www.ine.pt/ine_novidades/semin/INEWS38/files/assets/common/downloads/publication.pdf).
@@ -669,5 +729,9 @@ The original eight images and three tabular outputs, plus four observed mobility
 15. Instituto Nacional de Estatística. [Censos 2021 municipal work/study interaction indicator 0012340](https://www.ine.pt/xurl/indx/0012340/PT), as transcribed in [André Brito's Census-derived workbook](https://github.com/andrebrito0/OD_Data_Portugal_Census_2021). This intermediary extract has not been rechecked against a working official INE API endpoint.
 16. Instituto Nacional de Estatística. [Censos 2021 population by municipality of current residence, sex and migration category, indicator 0011631](https://www.ine.pt/xurl/indx/0011631/PT). The inspected public catalog entry does not specify the prior municipality as an independent dimension.
 17. Instituto Nacional de Estatística. [Methodological document 113, annual resident population estimates](https://www.pordata.pt/sites/default/files/methodological_documentation/Documento_metodologico_estimativas_anuais_da_populacao_residente_113.pdf), section on estimating internal migration balances from Census previous-residence information.
+18. Instituto Nacional de Estatística. [English-language Census 2021 individual questionnaire, question 10](https://censos.ine.pt/scripts/censos_css_js/quest/EN_Q_IND_Censos2021_EN_v03.pdf). For a different previous municipality, it requests its name and parish.
+19. Instituto Nacional de Estatística. [Information-service notice on custom statistical tables](https://www.ine.pt/ine_novidades/semin/FI_RIIBES_47/files/assets/basic-html/page10.html). The historic request-form link requires current confirmation.
+20. Instituto Nacional de Estatística. [Researcher access under the INE–FCT–DGEEC arrangement](https://www.ine.pt/ine_novidades/semin/FI_RIIBES_51/files/assets/basic-html/page6.html), subject to accreditation and confidentiality terms.
+21. Instituto Nacional de Estatística. [INEWS 65 (April 2026), research data infrastructure and safe centres](https://www.ine.pt/ine_novidades/semin/INEWS65/index.html), including Porto.
 
 *Publication status: manuscript prepared for technical review. The reported descriptive statistics refer to the pinned October 2026 source snapshot. No estimates of observed displaced households, spatial transmission coefficients or policy causal effects are claimed.*
