@@ -7,14 +7,16 @@ import json
 import math
 import tempfile
 import unittest
+from dataclasses import replace
 from pathlib import Path
 
 import numpy as np
 
 from analysis import (
     Election, alternative_gallup, bootstrap_future, compute_evidence,
-    expanding_backtest, fit_model, influence, leave_one_out,
-    prediction_interval, predictor, read_elections, read_scenario, save_tables,
+    expanding_backtest, expanding_reduced_backtest, fit_model, influence,
+    leave_one_out, prediction_interval, predictor, read_elections,
+    read_scenario, reduced_predict, save_tables,
 )
 from figures import FIGURE_FILES, generate_figures
 
@@ -153,6 +155,59 @@ class ForecastValidationTests(unittest.TestCase):
             expected = fit_model(self.rows[:i]).predict(self.rows[i].party_margin, self.rows[i].seats)
             self.assertAlmostEqual(roll.predicted, expected)
 
+    def test_reduced_models_use_identical_forward_folds(self) -> None:
+        full = expanding_backtest(self.rows)
+        reduced = expanding_reduced_backtest(self.rows)
+        self.assertEqual(
+            [(r.year, r.actual, r.train_count) for r in full],
+            [(r.year, r.actual, r.train_count) for r in reduced],
+        )
+        self.assertEqual(len(reduced), 10)
+        training = self.rows[:8]
+        first = self.rows[8]
+        independent = np.linalg.lstsq(
+            np.array([[1.0, r.party_margin] for r in training]),
+            np.array([r.change for r in training], dtype=float), rcond=None,
+        )[0]
+        self.assertAlmostEqual(reduced[0].generic_only,
+                               float(np.array([1.0, first.party_margin]) @ independent))
+
+    def test_reduced_features_are_separate_and_validated(self) -> None:
+        scenario = read_scenario()
+        ballot = reduced_predict(self.rows, "generic", margin=scenario.party_margin,
+                                 seats=scenario.seats)
+        seats = reduced_predict(self.rows, "seats", margin=scenario.party_margin,
+                                seats=scenario.seats)
+        self.assertAlmostEqual(ballot, -31.5560783367, places=6)
+        self.assertAlmostEqual(seats, -23.5344316141, places=6)
+        self.assertAlmostEqual(
+            ballot, reduced_predict(self.rows, "generic", margin=-8, seats=230),
+        )
+        self.assertAlmostEqual(
+            seats, reduced_predict(self.rows, "seats", margin=-5, seats=220),
+        )
+        with self.assertRaises(ValueError):
+            reduced_predict(self.rows, "unsupported", margin=-8, seats=220)
+
+    def test_reduced_backtest_cannot_see_its_held_out_outcome(self) -> None:
+        before = expanding_reduced_backtest(self.rows)
+        updated = tuple(
+            replace(row, change=-48) if row.year == 1994 else row
+            for row in self.rows
+        )
+        after = expanding_reduced_backtest(updated)
+        # A change to 1994's outcome must not alter its own predictions.
+        original = next(row for row in before if row.year == 1994)
+        altered = next(row for row in after if row.year == 1994)
+        self.assertEqual((original.generic_only, original.seats_only),
+                         (altered.generic_only, altered.seats_only))
+
+    def test_reduced_backtest_rejects_invalid_training_window(self) -> None:
+        with self.assertRaises(ValueError):
+            expanding_reduced_backtest(self.rows, minimum_train=18)
+        with self.assertRaises(TypeError):
+            expanding_reduced_backtest(self.rows, minimum_train=True)
+
     def test_rolling_window_bounds(self) -> None:
         with self.assertRaises(ValueError):
             expanding_backtest(self.rows, minimum_train=18)
@@ -180,6 +235,16 @@ class ReproducibilityTests(unittest.TestCase):
         self.assertEqual(evidence.metrics["forward_test_count"], 10)
         self.assertLess(evidence.metrics["forward_rmse"],
                         evidence.metrics["forward_mean_baseline_rmse"])
+        self.assertAlmostEqual(evidence.metrics["forward_generic_only_rmse"],
+                               20.094, delta=0.01)
+        self.assertAlmostEqual(evidence.metrics["forward_seats_only_rmse"],
+                               23.003, delta=0.01)
+        self.assertEqual(evidence.metrics["forward_full_beats_generic_absolute_count"], 9)
+        self.assertAlmostEqual(evidence.metrics["alternative_forward_rmse"],
+                               8.97356, delta=0.01)
+        self.assertAlmostEqual(evidence.metrics["alternative_forward_generic_only_rmse"],
+                               20.62549, delta=0.01)
+        self.assertEqual(evidence.metrics["alternative_forward_full_beats_generic_absolute_count"], 9)
         with tempfile.TemporaryDirectory() as temporary:
             dest = Path(temporary) / "results"
             save_tables(evidence, dest)
@@ -189,6 +254,17 @@ class ReproducibilityTests(unittest.TestCase):
                 self.assertEqual(len(list(csv.DictReader(stream))), 18)
             with (dest / "scenario_grid.csv").open(encoding="utf-8", newline="") as stream:
                 self.assertEqual(len(list(csv.DictReader(stream))), 45)
+            with (dest / "forward_model_comparison.csv").open(encoding="utf-8", newline="") as stream:
+                rows = list(csv.DictReader(stream))
+                self.assertEqual(len(rows), 10)
+                self.assertEqual([int(row["year"]) for row in rows],
+                                 [r.year for r in evidence.forward])
+            with (dest / "source_sensitivity.csv").open(encoding="utf-8", newline="") as stream:
+                rows = list(csv.DictReader(stream))
+                self.assertEqual(len(rows), 2)
+                self.assertIn("forward_generic_only_rmse", rows[0])
+                self.assertGreater(float(rows[1]["forward_generic_only_rmse"]),
+                                   float(rows[1]["forward_rmse"]))
 
     def test_nine_publication_figures_regenerate(self) -> None:
         evidence = compute_evidence(draws=200)

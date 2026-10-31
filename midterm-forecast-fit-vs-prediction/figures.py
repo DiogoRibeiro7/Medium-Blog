@@ -160,13 +160,15 @@ def forward_rolling(e: Evidence, dest: Path) -> None:
 
 
 def error_comparison(e: Evidence, dest: Path) -> None:
-    """Figure 5: distinguish in-sample and genuine predictive error scales."""
+    """Figure 5: compare four models on exactly the same forward test set."""
 
-    labels = ["In-sample OLS", "Leave-one-out", "Forward-in-time", "Forward mean\nbaseline"]
-    values = [e.metrics["in_sample_rmse"], e.metrics["loocv_rmse"],
-              e.metrics["forward_rmse"], e.metrics["forward_mean_baseline_rmse"]]
+    labels = ["Generic ballot + seats", "Generic ballot only",
+              "Seats defended only", "Past-election mean"]
+    values = [e.metrics["forward_rmse"], e.metrics["forward_generic_only_rmse"],
+              e.metrics["forward_seats_only_rmse"],
+              e.metrics["forward_mean_baseline_rmse"]]
     fig, ax = plt.subplots(figsize=(10.3, 6.1))
-    bars = ax.barh(np.arange(4), values, color=[GRAY, BLUE, GREEN, GOLD],
+    bars = ax.barh(np.arange(4), values, color=[GREEN, BLUE, GRAY, GOLD],
                    edgecolor=PAPER, height=0.65, zorder=3)
     ax.set_yticks(np.arange(4), labels=labels)
     ax.invert_yaxis()
@@ -175,9 +177,9 @@ def error_comparison(e: Evidence, dest: Path) -> None:
         ax.text(bar.get_width() + 0.45, bar.get_y() + bar.get_height() / 2,
                 f"{value:.2f}", va="center", color=INK, weight="bold")
     ax.set_xlabel("Root mean squared error in House seats (lower is better)")
-    ax.set_title("Fit, resampling and future-facing tests answer different questions")
+    ax.set_title("Do both predictors earn their place?  |  Strictly forward tests")
     ax.grid(True, axis="x", alpha=0.2)
-    _footer(fig, "In-sample and LOOCV use 18 elections; forward model and baseline use the same 10 later elections.")
+    _footer(fig, "Same ten held-out elections and training origins, 1982–2022. Final pre-election ballots known in every fold.")
     _save(fig, dest)
 
 
