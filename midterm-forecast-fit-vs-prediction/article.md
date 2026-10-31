@@ -324,6 +324,88 @@ There is a deeper statistical point in this visualization. A high historical coe
 
 The local derivatives are informative within the model's conditional language. Increasing the president's party generic-ballot margin by one point changes the fitted seat expectation by approximately 2.71 seats, holding defended seats fixed. Increasing defended seats by one changes the fitted expected seat change by about −0.535, holding the margin fixed. Those derivatives are a concise description of a parameterized predictive surface. They become causal comparative statics only if an additional structural argument justifies interpreting the manipulated inputs as feasible interventions that leave all other relevant aspects of the system unchanged. This study does not make that argument. The mathematical derivative of a regression function is not a substitute for a causal estimand.
 
+## Three more models: does changing the estimator change the evidence?
+
+The objection to a simple regression is sometimes phrased as a demand for a more sophisticated algorithm. That demand confuses two distinct possibilities. A new *predictor* can supply information absent from the generic ballot and defended-seat count; a new *estimator* can change how the existing information is weighted or constrained. With only eighteen observations, those are very different risks. Before expanding the covariate set or introducing a flexible machine-learning system, it is instructive to hold the original two predictors fixed and change only three statistical assumptions: the shape of the residual distribution, the treatment of unstable coefficients, and the relevance of older elections.
+
+These extensions are deliberately modest. They are not fitted to an enormous, continuously refreshed dataset. They are not a search over hundreds of specifications. All three alternatives retain an intercept, the president-party-oriented generic-ballot margin, and the number of seats defended. I assign their tuning constants explicitly—**four Student-t degrees of freedom, ridge penalty two, and a twenty-four-year weighting half-life**—rather than finding the values that maximize these ten historical test scores. Within every training fold, each model uses only earlier election outcomes, and any standardization of the predictor columns is calculated from those earlier observations alone. We evaluate all four procedures, including the original OLS, against precisely the same ten held-out elections: 1982 and 1990–2022, with the unsupported 1986 poll still omitted.
+
+### Heavy tails: Student-t regression
+
+Ordinary least squares gives residuals a quadratic cost. That is well motivated for Gaussian errors, but a large election-specific departure receives considerable influence. The 2006 result, whose original full-sample fitted residual is about nineteen seats, makes this issue concrete. A heavy-tailed likelihood offers one way to prevent a single unusually large error from exerting an ever-growing quadratic pull on the estimated regression plane. Following the robust-regression tradition formalized by Lange, Little and Taylor [17], I fit the same location equation with independent Student-t residuals:
+
+\[
+Y_t=\beta_0+\beta_1G_t^{(P)}+\beta_2S_t+\varepsilon_t,
+\qquad \varepsilon_t\sim t_{\nu}(0,\sigma),\quad\nu=4.
+\]
+
+Ignoring terms constant in the parameters, the minimized negative log-likelihood is
+
+\[
+\mathcal L(\beta,\sigma)=n\log\sigma
++\frac{\nu+1}{2}\sum_{t=1}^{n}
+\log\!\left(1+\frac{(Y_t-X_t^\top\beta)^2}{\nu\sigma^2}\right).
+\]
+
+The residual contribution grows roughly logarithmically rather than quadratically in the tails. The resulting estimating equations downweight a case when its residual is extreme relative to the fitted scale. This is a defensible sensitivity analysis because 2006 should neither be erased nor granted unlimited leverage on the fitted slopes. I fix \(\nu=4\) and estimate the regression coefficients and scale by deterministic numerical likelihood optimization; estimating the tail parameter itself from eight to eighteen observations per fold would add another poorly identified degree of freedom. The code checks the analytic gradient and the optimizer's convergence. In this model, the Student-t parameter is a likelihood assumption about residuals. It must **not** be confused with the Student-t *critical value* used earlier to construct the conventional OLS prediction interval. The new fit supplies a point forecast; it does **not** establish the nominal coverage of a new heavy-tailed predictive interval.
+
+### Shrinking slopes: ridge regression
+
+The second alternative attacks variance rather than residual tails. Two correlated, finite-sample predictors can yield slopes that change more than we would like when an influential election enters or leaves the training set. Ridge regression trades some fitting bias for potentially lower sampling variance by shrinking those slopes toward zero. In the notation of Hoerl and Kennard's original method [18], with a separately estimated intercept and predictor columns centered and scaled **inside each training fold**, I minimize
+
+\[
+\sum_{t\in\mathcal T}
+\big(Y_t-a-\theta_1Z_{t1}-\theta_2Z_{t2}\big)^2
++2\big(\theta_1^2+\theta_2^2\big).
+\]
+
+The penalty coefficient here is \(\alpha=2\), not a value optimized on the subsequent elections. The intercept is unpenalized; otherwise even the historical sample mean would be pulled arbitrarily toward zero seats. Standardization makes a two-unit penalty comparable across a generic-ballot variable measured in percentage points and a defended-seat variable measured in hundreds of seats. Each fitted coefficient vector is then transformed back into the original units for predictions. Setting the penalty to zero reproduces OLS in the tests. Shrinkage is a methodological preference for smaller slopes, **not** a guarantee of lower forecast error. An estimator can become more stable while also becoming more biased for the election process actually observed.
+
+### Discounting older elections: recency-weighted least squares
+
+The third estimator addresses a political rather than numerical worry: why should the national vote-to-seats relationship estimated from the 1950s receive the same weight as the one observed in 2022? Party coalitions, district maps, ticket-splitting, survey methods and electoral institutions have changed. A transparent alternative is weighted least squares, using an exponentially declining function of the age of each *training* election. For target year \(T\), define
+
+\[
+w_t(T)=2^{-(T-t)/24},\qquad
+\widehat\beta_T=\operatorname*{arg\,min}_{\beta}
+\sum_{t<T}w_t(T)\big(Y_t-X_t^\top\beta\big)^2.
+\]
+
+The fixed half-life is twenty-four years, or six ordinary midterm cycles: one election that is twenty-four years older than another receives half its weight. For a 2026 prediction, the oldest eligible election is discounted considerably, but it remains in the sample. The weights have an effective sample size \((\sum w)^2/\sum w^2\) of approximately **13.02** out of eighteen when evaluating the specified 2026 scenario. In each historical forward fold the weights are recomputed using that fold's target year, without looking at its actual seat change. Choosing to privilege recent elections is intelligible, but it is also a substantive assertion that the current political regime resembles the recent past more than the distant past. If occasional rare episodes contain essential information about future volatility, forgetting them can make prediction worse.
+
+### The common test: ten elections, four rules
+
+The comparison is not a contest between a model's in-sample \(R^2\) and another model's holdout RMSE. Every RMSE below is computed using the **same ten chronologically held-out seat changes**, and every corresponding 2026 point forecast uses the same frozen D+8, 220-seat inputs. The separate column changes *only* the disputed Gallup retrospective values in 1962 and 1998; it repeats the entire chronological exercise under that alternative source transcription.
+
+| Estimator | Forward RMSE, primary Gallup | Forward RMSE, alternative Gallup | 2026 GOP seat-change forecast |
+| --- | ---: | ---: | ---: |
+| Ordinary least squares | **8.70** | **8.97** | −32.32 |
+| Student-t likelihood, \(\nu=4\) | 8.48 | 9.02 | −33.76 |
+| Ridge, \(\alpha=2\) | 12.18 | 12.67 | −31.06 |
+| Recency-weighted OLS, 24-year half-life | 9.13 | 9.37 | −30.98 |
+
+![Grouped comparison of ten-election forward root mean squared seat errors for OLS, four-degree Student-t regression, ridge regression, recency-weighted least squares and the generic-only benchmark under both Gallup source transcriptions.](figures/fig10_candidate_model_rmse.png)
+
+*Figure 10. Ten held-out midterms, identical chronological cutoff for each method. The two bars per method represent different published Gallup retrospective tables, not independent datasets or repeated randomized experiments. Student-t achieves the lowest primary-series RMSE by about 0.21 seats relative to OLS; its narrow lead reverses under the alternate Gallup transcription. The ballot-only benchmark is included to preserve the scale of the original two-predictor improvement.*
+
+It would be statistically indefensible to describe Student-t's 8.48 as a decisive victory over OLS's 8.70. Their difference is approximately **0.21 seats** in an RMSE estimated from just ten heterogeneous elections. Under the alternative Gallup table, OLS instead has the slight advantage, 8.97 versus 9.02. The change of winner is not evidence that either published source is erroneous; it shows that the apparent ranking of two nearly tied estimators is less stable than the much larger improvement over the ballot-only rule. Nor should the last decimal be treated as a replicated result from a large sampling experiment. The design is exploratory, with deliberately simple fixed settings, and the hyperparameters themselves have not undergone a separate nested or prospective tuning protocol.
+
+Ridge is a useful negative result. With \(\alpha=2\), it performs markedly worse in forward RMSE than unpenalized OLS despite its potential variance-reduction appeal. Shrinking standardized slopes on a tiny, strong-signal dataset can discard real information. A different penalty could perform differently, but choosing one *after* inspecting these historical errors would contaminate an already small evaluation set. Recency weighting comes closer to OLS, at 9.13 seats on the primary source, yet does not improve the historical RMSE. This is equally informative: a concern about political regime change is not itself empirical proof that systematically discounting older midterms helps predict the next election. Both alternatives deserve to remain visible as failed-to-improve tests of reasonable assumptions rather than disappear from a tidy success narrative.
+
+The four point forecasts for the frozen 2026 scenario range from **−33.76 to −30.98 Republican seats**, a span of fewer than three seats. That numerical agreement is reassuring in a limited sense: these three estimation changes do not overturn the rough magnitude of the original −33 estimate. But the span is **not a model-averaged credible interval**, a forecast distribution, or a calibrated uncertainty band. The earlier OLS 95% prediction interval remains the explicitly conditional interval derived and tested for that particular specification. Comparing a handful of conditional means neither accounts for polling-input uncertainty nor puts probability mass on unforeseen electoral shocks. All four estimators could be wrong together if a shared predictor becomes misleading.
+
+### What changes when the history gets longer?
+
+One more check focuses on the stability of the *2026 scenario calculation* as historical observations are accumulated. For each training endpoint from 1978 through 2022, I fit all four estimators on the first eight, nine, and eventually eighteen eligible elections and then plug the same **2026 inputs** into the fitted function. In other words, the horizontal axis represents the **last election used to estimate the parameters**, not the date when the 2026 generic-ballot observation was available. No analyst in 1978 could have observed the specific October 2026 D+8 value. These are retrospective coefficient-path sensitivity calculations, explicitly **not** contemporaneously issued forecasts.
+
+![Training-endpoint sensitivity of four midterm model predictions for the identical 2026 Republican D-plus-eight and 220-defended-seat scenario, with a marker showing the inclusion of the 2006 outcome.](figures/fig11_training_origin_stability.png)
+
+*Figure 11. Four estimates of the same fixed 2026 conditional scenario, refitted as the historical training sample expands from eight to eighteen elections. The vertical reference marks inclusion of the 2006 outcome. Because the 2026 predictors are held fixed retrospectively, this is an estimator-stability diagnostic—not an ex-ante historical forecast record and not an error-based validation plot.*
+
+The 2006 election illustrates the difference among methods particularly clearly. The OLS 2026-scenario estimate moves from approximately −34.48 seats after the 2002 training endpoint to −31.84 when 2006 is included. The recency-weighted estimate shifts even more, from approximately −34.31 to −29.34, because a fresh 2006 observation receives substantial weight. Student-t changes less, from about −34.29 to −33.45, consistent with its less aggressive response to a large residual. This comparison is about **sensitivity**, not a determination that 2006 should have been discounted: a heavy-tailed estimator could underreact to a genuinely informative change. After subsequent elections, the final predictions converge toward the range reported above, although their trajectories do not become identical.
+
+The lesson is narrower and more durable than “the robust model wins.” An election model can be challenged along distinct axes—outliers, coefficient shrinkage, temporal relevance—and reasonable adjustments can succeed, fail, or yield almost identical future conditional expectations. Using a common chronological protocol exposes those tradeoffs without manufacturing extra observations. The [primary forward prediction rows](results/alternative_model_forward.csv), [alternative Gallup rows](results/alternative_model_forward_gallup.csv), [retrospective coefficient-path table](results/alternative_model_path.csv), and [parameter and score summary](results/alternative_models_summary.json) make the comparison auditable. The implementation, notebook, deterministic output generation, numerical checks and workflow are part of the same reproducibility companion. A more flexible random forest or boosting model trained on eighteen national elections might produce an attractive historical fit, but without a defensible independent validation design it would make the risk of specification search considerably worse. The present evidence warrants maintaining the original interpretable OLS as a reference while treating the alternative fits as **sensitivity analyses**, not as post-hoc grounds for silently replacing the pre-election forecast.
+
 ## Why the correlation–causation objection was misplaced here
 
 The distinction that initiated this investigation deserves a direct answer. There is no requirement that a predictor cause the target for it to be useful. The final generic ballot is not a randomized treatment; it is a contemporaneous aggregate measurement of expressed voter preference. Its success as a predictor is entirely compatible with its being a proxy for a large set of political and social processes. It can absorb information about presidential popularity, perceived economic conditions, candidate quality, ideological polarization, campaign effects and other circumstances without identifying the individual effects of those processes. If the task is forecasting the next aggregate election from information currently available, the test is whether the relationship generalizes and how well the uncertainty is calibrated.
@@ -362,7 +444,7 @@ The most important conclusion is therefore neither “the chart is proof” nor 
 
 ## Reproducibility and references
 
-The complete [reproducibility companion](README.md) provides the historical CSV with source keys, original public data links, typed NumPy/SciPy implementation, nine independent Matplotlib figures, an executable Jupyter notebook, numerical output tables, tests, and a path-scoped GitHub Actions workflow. The analysis uses a frozen pre-election 2026 scenario, fixed random seed for the bootstrap, and no post-election observations. It is independently reproducible without live API credentials or proprietary data.
+The complete [reproducibility companion](README.md) provides the historical CSV with source keys, original public data links, typed NumPy/SciPy implementation, **eleven** independent Matplotlib figures, an executable Jupyter notebook, numerical output tables, tests, and a path-scoped GitHub Actions workflow. The analysis uses a frozen pre-election 2026 scenario, fixed random seed for the bootstrap, and no post-election observations. It is independently reproducible without live API credentials or proprietary data.
 
 The source classes are distinguished throughout: election and poll records are **historical observations and published measurements**; regression estimates, cross-validation errors and intervals are **derived statistics**; source swaps and 2026 input grids are **sensitivity scenarios**, not additional observed elections. The bootstrap draws are **resampling computations**, not simulated realizations with known electoral data-generating truth. No causal interpretation of the regression coefficients is claimed.
 
@@ -382,5 +464,7 @@ The source classes are distinguished throughout: election and poll records are *
 14. Hyndman, R. J., & Koehler, A. B. (2006). “Another Look at Measures of Forecast Accuracy.” *International Journal of Forecasting*, **22**(4), 679–688. [DOI: 10.1016/j.ijforecast.2006.03.001](https://doi.org/10.1016/j.ijforecast.2006.03.001). On careful selection and interpretation of predictive error measures.
 15. King, G., and collaborators (2026). “ElectIt: Forecasts for All U.S. House and Senate Seats in the 11/3/2026 Election.” [Harvard project and published methodology](https://gking.harvard.edu/electit/). Distinct district-level modeling approach with one-election-ahead validation and multiple forecast information sets.
 16. Efron, B., & Gong, G. (1983). “A Leisurely Look at the Bootstrap, the Jackknife, and Cross-Validation.” *The American Statistician*, **37**(1), 36–48. [DOI: 10.1080/00031305.1983.10483087](https://doi.org/10.1080/00031305.1983.10483087). Foundational methodological discussion of resampling variability.
+17. Lange, K. L., Little, R. J. A., & Taylor, J. M. G. (1989). “Robust Statistical Modeling Using the t Distribution.” *Journal of the American Statistical Association*, **84**(408), 881–896. [DOI: 10.1080/01621459.1989.10478852](https://doi.org/10.1080/01621459.1989.10478852). Heavy-tailed likelihood and robust regression.
+18. Hoerl, A. E., & Kennard, R. W. (1970). “Ridge Regression: Biased Estimation for Nonorthogonal Problems.” *Technometrics*, **12**(1), 55–67. [DOI: 10.1080/00401706.1970.10488634](https://doi.org/10.1080/00401706.1970.10488634). Shrinkage estimation for linear regression.
 
 *Editorial status: draft for author review and manual Medium publication. No 2026 result is known or used in this document as of its preparation date.*
