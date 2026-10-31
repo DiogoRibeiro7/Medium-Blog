@@ -320,6 +320,46 @@ This produces:
 Nine additional tests check the sharp endpoints, signs, accounting identities,
 invalid inputs and deterministic artifacts: **49 tests in total**.
 
+## Next empirical step: request and validate actual residential OD counts
+
+The [data-access and intake specification](OD_DATA_ACCESS.md) now describes
+two documented INE routes: a special statistical cross-tabulation request,
+and an accredited scientific-research route whose eligibility must be
+confirmed. Census 2021 question 10 explicitly requested the **named
+municipality** of previous residence from people who had moved from another
+municipality. The available published extract groups that detail into
+"other municipality", so the cross-tabulation still needs authorization.
+
+The target is a **17-destination × 18-origin** aggregated table:
+
+- Destinations: the 17 official AMP 2021 DICO municipalities.
+- Origins: those 17 plus `REST_PT` for all other Portuguese municipalities.
+- Counts: individual 2021 residents formerly living in another Portuguese
+  municipality on **31 December 2019**, not commuters or households.
+- Privacy: explicit `observed`, `suppressed` and `structural_zero` statuses;
+  suppressed cells remain unknown, never zero-imputed.
+
+The new [residential_od_intake.py](residential_od_intake.py) validates a real
+authorized aggregate source **once it is obtained**, with a pinned SHA-256,
+exact DICO scope, a complete 306-cell grid, source metadata and reconciliation
+to **15,724 for Porto** and **124,618 for AMP**. With suppressions, it computes
+conservative sharp count bounds from the published marginal totals and the
+reported cell mask. It rejects changed universe, wrong dates, duplicate or
+missing municipality pairs, malformed integers, and personal-level columns.
+
+The command is intentionally unusable without a supplied authorized source:
+
+    python residential_od_intake.py \
+      --source-csv /path/to/approved_aggregate_od.csv \
+      --metadata-json /path/to/approved_release_metadata.json \
+      --output-json /tmp/porto-residential-od-audit.json
+
+**No real directed OD table has been received or committed.** Fourteen new
+tests use only disposable synthetic 18×17 tables; **63 total tests pass**.
+No statistical request has been submitted or external party contacted by
+this repository update. The manuscript remains a descriptive study until
+such a source is validated.
+
 ### Audited access routes for an actual directed OD table
 
 | Source | Available information | Missing for our estimand |
