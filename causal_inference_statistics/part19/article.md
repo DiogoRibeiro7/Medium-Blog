@@ -319,7 +319,7 @@ Tipton, E. (2014). How Generalizable Is Your Experiment? An Index for Comparing 
 
 Westreich, D., Edwards, J. K., Lesko, C. R., Stuart, E. A. and Cole, S. R. (2017). Transportability of Trial Results Using Inverse Odds of Sampling Weights. *American Journal of Epidemiology*, 186(8), 1010–1014. https://doi.org/10.1093/aje/kwx164
 
-Zivich, P. N., Cole, S. R. and Westreich, D. (2022). Transportability and Generalizability of Causal Effects: A Practical Guide. *American Journal of Epidemiology*, 191(4), 722–728.
+Degtiar, I. and Rose, S. (2023). A Review of Generalizability and Transportability. *Annual Review of Statistics and Its Application*, 10, 501–524. https://doi.org/10.1146/annurev-statistics-042522-103837
 
 ## Reproducibility correction (October 2026)
 
