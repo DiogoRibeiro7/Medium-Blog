@@ -1,0 +1,36 @@
+{
+  "publisher": "INE Census 2021, redistributed by Município do Porto open-data portal",
+  "source_url": "https://dadosabertos.cm-porto.pt/dataset/71f0710c-9e19-11f1-84ed-6abdb6d5cf34/resource/e00c8545-474a-4b6e-a87d-cf5159a1cb69/download/indicadores-diversos-relativos-a-populacao-residente-individuos.zip",
+  "source_archive_sha256": "52f447ed1e1e159132ca94c9719d74ab7553f3eefaee4107f391ea0cd54fdf14",
+  "source_member_sha256": "0d82ac3a057202c3781ec73ebfbb32ee29d3c60f0c86e9b64a3e1b2b8d47def5",
+  "source_workbook_extracted": "2023-01-04",
+  "source_workbook_last_updated": "2022-11-23",
+  "portal_resource_published": "2026-09-04",
+  "source_questionnaire": "https://censos.ine.pt/scripts/censos_css_js/quest/PT_Q_Individual_Censos2021_INE.pdf",
+  "source_question": 10,
+  "reference_start": "2019-12-31",
+  "census_reference": "2021-04-19",
+  "geographies": [
+    "PT",
+    "11",
+    "11A",
+    "1312",
+    "131202",
+    "131203",
+    "131210",
+    "131211",
+    "131216",
+    "131217",
+    "131218"
+  ],
+  "derived_csv_sha256": "91cd3b83c8ed91169ff961f89128b7610d581419323bedb982a553a59bfcd928",
+  "row_count": 11,
+  "semantic_limits": [
+    "current 2021 residents grouped by their broad 2019 residence-location category",
+    "in-movers from another municipality are NOT identified by origin municipality",
+    "does not measure Porto resident outflows or municipality-to-municipality migration pairs",
+    "not an annual rate: 31 Dec 2019 to 19 Apr 2021 is more than one year",
+    "individuals, not households; no rents, reasons for moving or individual finances"
+  ],
+  "license": "CCZero as specified by the Porto open-data portal (credit INE)"
+}

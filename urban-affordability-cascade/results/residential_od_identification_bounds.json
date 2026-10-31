@@ -1,0 +1,81 @@
+{
+  "evidence_class": "sharp_partial_identification_from_observed_destination_margins",
+  "source_extract_sha256": "91cd3b83c8ed91169ff961f89128b7610d581419323bedb982a553a59bfcd928",
+  "source_archive_sha256": "52f447ed1e1e159132ca94c9719d74ab7553f3eefaee4107f391ea0cd54fdf14",
+  "reference_start": "2019-12-31",
+  "census_reference": "2021-04-19",
+  "observed_other_municipality_destination_margins": {
+    "porto": 15724,
+    "amp_including_porto": 124618,
+    "other_16_amp": 108894
+  },
+  "sharp_bounds_given_these_margins_only": {
+    "porto_to_other_amp": [
+      0,
+      108894
+    ],
+    "other_amp_to_porto": [
+      0,
+      15724
+    ],
+    "net_outward_porto_to_other_amp": [
+      -15724,
+      108894
+    ]
+  },
+  "worlds": [
+    {
+      "scenario": "Zero within-AMP exchange",
+      "porto_to_rest_amp": 0,
+      "rest_amp_to_porto": 0,
+      "porto_inbound_from_elsewhere": 15724,
+      "rest_amp_inbound_from_non_porto": 108894,
+      "net_porto_to_rest_amp": 0,
+      "evidence_class": "hypothetical_feasible_allocation_not_observed"
+    },
+    {
+      "scenario": "Hypothetical net outward",
+      "porto_to_rest_amp": 25000,
+      "rest_amp_to_porto": 5000,
+      "porto_inbound_from_elsewhere": 10724,
+      "rest_amp_inbound_from_non_porto": 83894,
+      "net_porto_to_rest_amp": 20000,
+      "evidence_class": "hypothetical_feasible_allocation_not_observed"
+    },
+    {
+      "scenario": "Hypothetical net inward",
+      "porto_to_rest_amp": 5000,
+      "rest_amp_to_porto": 12000,
+      "porto_inbound_from_elsewhere": 3724,
+      "rest_amp_inbound_from_non_porto": 103894,
+      "net_porto_to_rest_amp": -7000,
+      "evidence_class": "hypothetical_feasible_allocation_not_observed"
+    },
+    {
+      "scenario": "Sharp outward endpoint",
+      "porto_to_rest_amp": 108894,
+      "rest_amp_to_porto": 0,
+      "porto_inbound_from_elsewhere": 15724,
+      "rest_amp_inbound_from_non_porto": 0,
+      "net_porto_to_rest_amp": 108894,
+      "evidence_class": "hypothetical_feasible_allocation_not_observed"
+    },
+    {
+      "scenario": "Sharp inward endpoint",
+      "porto_to_rest_amp": 0,
+      "rest_amp_to_porto": 15724,
+      "porto_inbound_from_elsewhere": 0,
+      "rest_amp_inbound_from_non_porto": 108894,
+      "net_porto_to_rest_amp": -15724,
+      "evidence_class": "hypothetical_feasible_allocation_not_observed"
+    }
+  ],
+  "interpretation": "Sharp logical bounds for cross-municipality exchange between Porto and the other 16 AMP municipalities among 2021 residents. They are NOT statistical confidence intervals, estimated flows, historical net migration, or housing displacement.",
+  "why_unidentified": "The published other-municipality category does not disclose the prior municipality and may include prior residence outside AMP. Either sign of exchange is feasible.",
+  "requirements_to_identify": [
+    "municipality of residence on 31 Dec 2019 by municipality on 19 Apr 2021",
+    "privacy-safe cross-tabulation with official geography codes and suppressed-cell rules",
+    "tenure, household, housing cost and move-reason data for any price-displacement claim",
+    "multi-period variation and an identification strategy for causal housing spillovers"
+  ]
+}

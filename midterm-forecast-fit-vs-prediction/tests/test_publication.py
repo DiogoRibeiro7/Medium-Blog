@@ -21,7 +21,7 @@ class PublicationTests(unittest.TestCase):
         self.assertIn("causation", self.article.lower())
         self.assertIn("1986", self.article)
 
-    def test_all_nine_figures_are_embedded_once_with_alt_text(self) -> None:
+    def test_all_eleven_figures_are_embedded_once_with_alt_text(self) -> None:
         references = re.findall(r"!\[([^\]]+)\]\((figures/[^)]+)\)", self.article)
         self.assertEqual(len(references), len(FIGURE_FILES))
         self.assertEqual({Path(path).name for _, path in references}, set(FIGURE_FILES))

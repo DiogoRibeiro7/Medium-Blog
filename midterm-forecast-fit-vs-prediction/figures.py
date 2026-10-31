@@ -1,7 +1,8 @@
-"""Render nine original, source-linked visualizations of midterm model evidence.
+"""Render eleven original, source-linked visualizations of midterm evidence.
 
-All plotted coordinates come from ``analysis.compute_evidence``; no sourced
-graphic is copied or edited. The exercise is reproducible and seed-fixed.
+All plotted coordinates come from ``analysis.compute_evidence`` and
+``model_extensions.compute_model_evidence``; no sourced graphic is copied or
+edited. The exercise is reproducible and seed-fixed.
 """
 
 from __future__ import annotations
@@ -19,6 +20,7 @@ from matplotlib.axes import Axes
 from matplotlib.figure import Figure
 
 from analysis import Evidence, ROOT, compute_evidence, influence, prediction_interval
+from model_extensions import ModelEvidence, compute_model_evidence
 
 Array = npt.NDArray[np.float64]
 INK = "#183047"
@@ -40,6 +42,8 @@ FIGURE_FILES: tuple[str, ...] = (
     "fig7_polling_sensitivity.png",
     "fig8_influence_diagnostics.png",
     "fig9_scenario_heatmap.png",
+    "fig10_candidate_model_rmse.png",
+    "fig11_training_origin_stability.png",
 )
 
 
@@ -284,6 +288,68 @@ def scenario_heatmap(e: Evidence, dest: Path) -> None:
     _save(fig, dest)
 
 
+def candidate_model_rmse(e: Evidence, extensions: ModelEvidence, dest: Path) -> None:
+    """Figure 10: identical forward targets, two Gallup sources, no selection."""
+
+    names = ["Student-t (df=4)", "OLS reference", "Recency WLS (24 y)",
+             "Ridge (alpha=2)", "Generic ballot only"]
+    primary = extensions.summary["primary"]
+    alternative = extensions.summary["alternative_gallup"]
+    keys = ("student_t", "ols", "recency_wls", "ridge")
+    x_primary = [float(primary[key]["rmse"]) for key in keys]
+    x_alternative = [float(alternative[key]["rmse"]) for key in keys]
+    x_primary.append(e.metrics["forward_generic_only_rmse"])
+    x_alternative.append(e.metrics["alternative_forward_generic_only_rmse"])
+    fig, ax = plt.subplots(figsize=(11.2, 6.9))
+    y = np.arange(len(names), dtype=float)
+    height = 0.32
+    ax.barh(y - height / 2, x_primary, height=height, color=BLUE,
+            edgecolor=PAPER, label="Primary Gallup transcription", zorder=3)
+    ax.barh(y + height / 2, x_alternative, height=height, color=GOLD,
+            edgecolor=PAPER, label="Alternative Gallup values", zorder=3)
+    for i, (a, b) in enumerate(zip(x_primary, x_alternative, strict=True)):
+        ax.text(a + 0.23, y[i] - height / 2, f"{a:.2f}", va="center", size=9)
+        ax.text(b + 0.23, y[i] + height / 2, f"{b:.2f}", va="center", size=9)
+    ax.set_yticks(y, labels=names)
+    ax.invert_yaxis()
+    ax.set_xlim(0, max((*x_primary, *x_alternative)) * 1.19)
+    ax.set_xlabel("Forward RMSE in House seats (lower is better)")
+    ax.set_title("Small model changes do not guarantee predictive gains")
+    ax.legend(frameon=False, loc="upper right", fontsize=10)
+    ax.grid(True, axis="x", alpha=0.2)
+    _footer(fig, "Ten identical forward targets, 1982–2022. Fixed model parameters; alternative Gallup swaps only 1962 and 1998.")
+    _save(fig, dest)
+
+
+def training_origin_stability(extensions: ModelEvidence, dest: Path) -> None:
+    """Figure 11: retrospective 2026-input fit as training history accumulates."""
+
+    fig, ax = plt.subplots(figsize=(11.1, 6.6))
+    years: Array = np.array([row.train_end_year for row in extensions.coefficient_path], dtype=float)
+    series = (
+        ("OLS reference", "ols", INK, "o-"),
+        ("Student-t (df=4)", "student_t", RED, "s-"),
+        ("Ridge (alpha=2)", "ridge", BLUE, "^-"),
+        ("Recency WLS (24 y)", "recency_wls", GREEN, "D-"),
+    )
+    for label, name, color, style in series:
+        values = [getattr(row, name) for row in extensions.coefficient_path]
+        ax.plot(years, values, style, color=color, lw=2.0, ms=6,
+                label=label, zorder=3)
+    ax.axvline(2006, ls="--", lw=1.0, color=GRAY, alpha=0.75)
+    ax.annotate("2006 included", (2006, -27.4), xytext=(5, 0),
+                textcoords="offset points", color=GRAY, size=9)
+    ax.set_xticks(years)
+    ax.tick_params(axis="x", rotation=45)
+    ax.set_ylim(-37.0, -27.0)
+    _axis(ax, "Model prediction for fixed 2026 inputs (seats)", "Last midterm included in training")
+    ax.set_title("A frozen 2026 scenario, refitted as history accumulates")
+    ax.legend(frameon=False, loc="lower right", fontsize=9)
+    fig.subplots_adjust(bottom=0.22)
+    _footer(fig, "Retrospective coefficient sensitivity, NOT genuine forecasts made at those historical dates.")
+    _save(fig, dest)
+
+
 def generate_figures(evidence: Evidence, output: Path) -> tuple[Path, ...]:
     """Create every figure deterministically and return the verified paths."""
 
@@ -296,8 +362,11 @@ def generate_figures(evidence: Evidence, output: Path) -> tuple[Path, ...]:
         error_comparison, forecast_intervals, polling_sensitivity,
         influence_diagnostics, scenario_heatmap,
     )
-    for function, filename in zip(functions, FIGURE_FILES, strict=True):
+    for function, filename in zip(functions, FIGURE_FILES[:9], strict=True):
         function(evidence, output / filename)
+    extensions = compute_model_evidence()
+    candidate_model_rmse(evidence, extensions, output / FIGURE_FILES[9])
+    training_origin_stability(extensions, output / FIGURE_FILES[10])
     paths: tuple[Path, ...] = tuple(output / name for name in FIGURE_FILES)
     if not all(path.exists() and path.stat().st_size > 10_000 for path in paths):
         raise OSError("A figure was not correctly generated")
