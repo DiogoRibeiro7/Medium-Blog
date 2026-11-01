@@ -1647,6 +1647,135 @@ weights retain their separate, less-direct Census-derived provenance.
 
 ---
 
+## Could construction absorb the rent pressure instead?
+
+The spatial checks leave another plausible explanation unresolved.
+Municipalities do not experience demand pressure in a fixed housing
+stock: some produce many additional homes, while others complete
+few. A place receiving new households might absorb demand without
+substantial rent inflation if an adequate number of suitable homes
+became available. Conversely, rapid construction can be a *response*
+to existing demand, so it may be positively associated with the
+same price changes that attract builders. A correlation between
+the two does not establish the effect of supply on rents.
+
+We can test a restricted descriptive version using construction
+columns already preserved in the fixed 17-municipality panel.
+The upstream project's INE series distinguish the **number of new
+family-housing dwellings completed** (indicator 0013248) from the
+**number of new family-housing dwellings licensed** (indicator
+0013235). These are counts of *dwellings*, not buildings; the
+second measure is not a promise that every licensed dwelling was
+completed, let alone offered for rent. The underlying concepts
+are documented in the [INE completed-works metadata](https://ine.pt/bddXplorer/htdocs/minfo.jsp?lingua=PT&var_cd=0000076&var_cd=0000085)
+and the pinned [upstream source inventory](https://github.com/DiogoRibeiro7/portugal-housing-generations/tree/0407faed1f08209b3d7682e19fc57e7120e62879).
+The analysis reuses the exact fixed-panel SHA-256, rather than
+retrieving a second, possibly revised series during reproduction.
+
+For each of the **16 non-Porto AMP municipalities** we sum the
+annual count of new dwellings completed, or separately licensed,
+over **2020–2023**. The primary normalization divides the cumulative
+count by **2020 resident population** and multiplies by 1,000.
+This gives an approximate construction-flow intensity over four
+calendar years, not a percentage increase in usable housing stock.
+The denominator is a baseline headcount of *people*, not households,
+new tenant arrivals, rental demand or the previous stock of dwellings.
+We also report raw counts and a 2021-population denominator, plus
+the longer construction windows **2020–2024** and **2020–2025**.
+Changing the endpoint is sensitivity analysis: the windows nest
+inside one another and are not independent studies.
+
+The first outcome is the already defined 2020–2025 percentage-point
+compression of a municipality's new-contract rent discount relative
+to Porto. The second is that municipality's own nominal percentage
+growth in new-contract median rent per square metre, 2020–2025.
+They ask different questions. The first describes convergence
+against a common Porto reference; the second describes local
+growth with no Porto denominator. A national, common HICP deflator
+does not alter the cross-municipality ordering of a fixed-period
+rent-growth ratio, but it would change its numeric level. None
+of these outcomes is the rent paid by a tracked household.
+
+![Figure 28. Cumulative 2020–2023 new-family-dwelling completions and licenses, each per 1,000 2020 residents, plotted separately against Porto-relative 2020–2025 new-contract rent-discount compression for all 16 comparator municipalities.](figures/fig28_municipal_construction_vs_porto_rent_pressure.png)
+
+The central result is weak. Across the 16 municipalities, Spearman's
+correlation between **completed dwellings per 1,000 2020 residents**
+and 2020–2025 Porto-discount compression is **+0.18**; for **licensed
+dwellings per 1,000 residents** it is **−0.06**. If more observed
+construction necessarily implied less measured rent pressure in
+this cross-section, the first coefficient would not be positive.
+But this does not mean that completing homes raises rents:
+development may be responding to the same local demand shocks
+that raise the number and price of new leases. Households may also
+be buying the completed dwellings, or the supply may enter a
+different segment from the homes available to renters.
+
+Raw construction counts tell a somewhat different story, as size
+would lead us to expect. The 2020–2023 raw count of completed
+dwellings has a rank correlation of just **+0.01** with discount
+compression; raw dwelling licenses have about **−0.19**. When the
+population denominator changes from 2020 to 2021, completed-dwelling
+intensity still has **+0.18**, while licensed-dwelling intensity
+changes from **−0.06** to roughly **−0.03**. These are not
+population-adjusted structural parameters. They simply show that
+the choice of denominator affects the exposure's rank ordering.
+
+![Figure 29. Rank correlation of construction flows per 1,000 baseline residents with Porto-relative discount compression and municipality-specific new-contract rent growth, using three nested construction windows.](figures/fig29_construction_rent_rank_window_sensitivity.png)
+
+Extending the supply window does not uncover a large negative
+rank gradient. The **2020–2024** completion-versus-discount
+correlation is about **+0.20**, and the **2020–2025** comparison
+is about **+0.17**. The corresponding licensed-dwelling values
+are approximately **−0.03** and **−0.04**. Using instead each
+municipality's own nominal new-contract rent growth gives **+0.16**
+for primary-window completions and **−0.09** for licenses, again
+not strong cross-sectional relationships. Deleting each municipality
+in turn leaves the primary completion/discount correlation between
+roughly **+0.04 and +0.26**; the license/discount correlation
+ranges from **−0.25 to +0.08**. These leave-one-out ranges are
+influence diagnostics, not sampling confidence intervals.
+
+The source status of the later construction counts makes the
+window comparison especially important. In the pinned dataset,
+2021 onward carries a **construction-preliminary** flag, and
+the **2024–2025 completed-dwelling counts are explicitly flagged
+as estimated**. Across all 17 municipalities, that means 85
+provisional municipality-year construction rows from 2021–2025
+and 34 estimated completion rows in 2024–2025. They must not be
+presented as a finalized longitudinal physical-housing inventory.
+Permits and completions cannot be divided by one another year by
+year to obtain a construction-conversion rate: permits and completed
+homes belong to different building cohorts with differing lags.
+Nor can one infer net affordable rental additions from either
+gross count, since tenure, demolition, vacancy, quality, rent
+level, family suitability and destination of the new dwelling
+are unobserved in this screen.
+
+The limited empirical conclusion is **not** that housing supply
+is irrelevant. It is that, for these 16 municipalities and the
+three measured construction windows, the rank ordering of gross
+new-family-dwelling construction activity does not consistently
+account for the observed new-lease rent-pressure ordering. The
+result cannot establish supply elasticity, distinguish increased
+construction from the demand it responds to, or test whether
+displaced Porto renters actually found the homes being completed.
+A policy analysis would require suitable available housing stock,
+household formation and arrivals, land-use constraints, rents by
+dwelling type and credible exogenous supply changes. Without those,
+a recommendation to move away from Porto remains an untested
+claim about *actual accessible alternatives*.
+
+The [reproduction module](porto_supply_screen.py) audits all 119
+construction observations, two flow definitions, three windows,
+three denominator conventions and two rent outcomes. It publishes
+the complete **36 rank comparisons**, **32 one-municipality
+deletions**, the municipal exposure table, these two figures
+and a provenance/limitations ledger. All outputs regenerate from
+the existing pinned panel without the third-party commuting
+matrix or a network request.
+
+---
+
 ## Sources and reproducibility
 
 The original eight figures and three tabular outputs, four observed mobility figures, one sharp non-identification figure, two annual timing/prediction figures, two forecast-robustness figures, **two nominal-vs-deflated figures**, and **two matched fiscal-income screening-proxy figures** with companion CSV results can be regenerated using the commands in the [study README](README.md). The new directed-OD intake suite is software-only until a genuine aggregate table is released. The [fixed 17-municipality input](data/amp_municipal_panel_2019_2025.csv) is a derived extract from [DiogoRibeiro7/portugal-housing-generations](https://github.com/DiogoRibeiro7/portugal-housing-generations), pinned to [upstream commit 0407fae](https://github.com/DiogoRibeiro7/portugal-housing-generations/tree/0407faed1f08209b3d7682e19fc57e7120e62879). It does not assert that 2025 income observations or 2019 new-lease observations exist. The observed Portugal HICP 2019–2025 source is independently frozen at [Eurostat dataset `prc_hicp_ainr`](https://doi.org/10.2908/PRC_HICP_AINR). The published mobility extracts have separate checksummed source records and distinct limitations.
@@ -1660,6 +1789,10 @@ third-party 2021 work/study interaction matrix, not migration flows.
 Figures 26–27 add an independently sourced official DGT CAOP2025
 projected municipal-centroid sensitivity and four derived diagnostic
 outputs; they do not measure transport access or household moves.
+Figures 28–29 add an independently calculated screen of the frozen
+INE-derived municipal completed- and licensed-dwelling flows;
+construction counts cannot identify the accessible rental supply
+or a causal housing-supply response.
 
 1. Área Metropolitana do Porto. [Statutory definition and its 17 municipalities](https://www.amp.pt/en/amp-instituicao/area-metropolitana-do-porto-or-lei-no-752013/).
 2. Instituto Nacional de Estatística. [Local housing price methodology and geospatial context](https://www.ine.pt/ine_novidades/semin/INEWS38/files/assets/common/downloads/publication.pdf).

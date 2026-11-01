@@ -1,0 +1,54 @@
+{
+  "evidence_class": "exploratory_noncausal_municipal_construction_flow_rent_rank_screen",
+  "source": "Frozen upstream INE-derived 17×7 municipal panel; indicators 0013248 (completed dwellings), 0013235 (licensed dwellings)",
+  "source_sha256": "88502e15b55a4d46536eed42ddc1924d30f555498d2c4a7e7a1b41fbeed71c66",
+  "municipalities": 16,
+  "construction_windows": [
+    [
+      2020,
+      2023
+    ],
+    [
+      2020,
+      2024
+    ],
+    [
+      2020,
+      2025
+    ]
+  ],
+  "rent_window": [
+    2020,
+    2025
+  ],
+  "exposures": [
+    "completed_dwellings",
+    "licensed_dwellings"
+  ],
+  "normalizations": [
+    "raw_count",
+    "per_1000_population_2020",
+    "per_1000_population_2021"
+  ],
+  "outcomes": [
+    "porto_discount_compression_2020_2025_pp",
+    "own_nominal_rent_growth_2020_2025_pct"
+  ],
+  "rank_diagnostic_rows": 36,
+  "influence_rows": 32,
+  "construction_preliminary_rows_2021_2025": 85,
+  "estimated_completed_dwellings_rows_2024_2025": 34,
+  "primary_completion_vs_discount_rho": "0.179412",
+  "primary_permit_vs_discount_rho": "-0.055882",
+  "limitations": [
+    "New family-housing dwellings completed/licensed are gross flows, not vacant affordable or rental housing units",
+    "Licensed dwellings do not necessarily become completed, occupied or available to rent",
+    "Annual completion and permit series are preliminary from 2021 onward; 2024-2025 completions are estimated",
+    "Supply counts and 2020-2025 rent outcomes overlap, allowing reverse causality and common demand shocks",
+    "One municipality's new-contract rent median does not identify a constant-quality dwelling",
+    "Fixed 2020/2021 population denominators are administrative counts, not renter households or new household formation",
+    "The sixteen observations share Porto's reference rent, are spatially dependent and not an exchangeable sample",
+    "Many correlated exposure and outcome conventions are exploratory diagnostics, not confirmatory tests",
+    "No supply elasticity, household welfare, vacancy, residential displacement or causal metropolitan price transmission is identified"
+  ]
+}
