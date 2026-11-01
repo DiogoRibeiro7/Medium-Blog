@@ -150,6 +150,27 @@ threshold pattern cannot establish a diffusion sequence or mobility.
 The OD data request remains **unsent**, and temporal association does not
 establish displacement or a directed propagation parameter.
 
+**Retrospective forecast robustness checkpoint (after the annual timing
+stage).** We retain the original fixed ridge specifications and score three
+unfitted benchmarks on the same held-out years: no annual growth, own
+prior-year growth, and the unweighted 17-municipality *prior-year mean*.
+The prior metropolitan mean yields pooled **3.855** MAE log-growth
+percentage points for new-contract rents, beating both ridge baseline
+(5.790) and network augmentation (8.141). All 17 municipalities have a
+negative *individual mean* network contribution to rent forecasting across
+the three tested years. The small sale gain (+0.069) vanishes (−0.002)
+when the 2025 **evaluation year** is omitted and is slightly negative
+(−0.010) when Porto and its network links are excluded **and the models
+are refitted**. These deletion exercises are descriptive sensitivity
+checks, not confidence intervals or treatments. Most critically, the
+2023 test fold's sole training target year is 2022: its metropolitan prior
+mean feature is constant across rows and collinear with the intercept.
+In addition, publication-vintage availability has not been audited; a
+lagged calendar year is not guaranteed to be a real-time-available data
+release. The evidence strengthens the need to evaluate common metropolitan
+factors before interpreting any remaining network correlation. It neither
+identifies a causal common shock nor disproves household displacement.
+
 ## Planned analysis sequence
 
 ### Stage 0 — Obtain or document denial of directed residential counts
