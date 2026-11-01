@@ -1,0 +1,72 @@
+{
+  "description": "Immutable input snapshot manifest for article 26, United States 2019-2025",
+  "research_data_vintage": "2026-10/2026-11 retrospective government and FRED snapshots",
+  "last_verified_utc": "2026-11-01",
+  "reuse_policy": "Original FRED CSV snapshots were independently frozen for article 25; those identical source bytes are retained here so article 26 remains self-contained and offline-reproducible.",
+  "sources": [
+    {
+      "file": "data/raw/bls_monthly_2018_2025.json",
+      "format": "BLS Public Data API JSON",
+      "source": "United States Bureau of Labor Statistics",
+      "source_url": "https://api.bls.gov/publicAPI/v2/timeseries/data/",
+      "series": ["LNS14000000", "LNS14000003", "LNS14000006", "CUSR0000SA0", "CUUR0000SA0", "CUSR0000SAH1", "CES0500000003"],
+      "temporal_scope": "2018-01 through 2025-12; 2018 required for 2019 12-month CPI changes; missing October 2025 values are published dashes in six series",
+      "sha256": "0ec853d59f257d669e0f1c98decbbeaae4f058255b2e98656c35d86310badd63"
+    },
+    {
+      "file": "data/raw/fred_PAYEMS.csv",
+      "format": "FRED graph export CSV",
+      "source": "Bureau of Labor Statistics, Current Employment Statistics, via FRED",
+      "source_url": "https://fred.stlouisfed.org/series/PAYEMS",
+      "series": ["PAYEMS"],
+      "units": "Thousands of employees, monthly, seasonally adjusted",
+      "sha256": "c8c429818ed73de6db985f4ff565d64bd2a5ba66a6b651b39373a1532924fc0e"
+    },
+    {
+      "file": "data/raw/fred_GDPC1.csv",
+      "format": "FRED graph export CSV",
+      "source": "Bureau of Economic Analysis, National Income and Product Accounts, via FRED",
+      "source_url": "https://fred.stlouisfed.org/series/GDPC1",
+      "series": ["GDPC1"],
+      "units": "Billions of chained dollars, quarterly, seasonally adjusted annual rate",
+      "sha256": "1c6c6e9f59e383e20c849dd299175c7a307526c09abdc18f18da9754fc5b3343"
+    },
+    {
+      "file": "data/raw/fred_FEDFUNDS.csv",
+      "format": "FRED graph export CSV",
+      "source": "Board of Governors of the Federal Reserve System via FRED",
+      "source_url": "https://fred.stlouisfed.org/series/FEDFUNDS",
+      "series": ["FEDFUNDS"],
+      "units": "Percent, monthly average, not seasonally adjusted",
+      "sha256": "74680b2d09bb28f90fb30c1c09e93ac2d443de1b7345ba5a9112b3eca9be0a25"
+    },
+    {
+      "file": "data/raw/fred_WALCL.csv",
+      "format": "FRED graph export CSV",
+      "source": "Board of Governors of the Federal Reserve System via FRED",
+      "source_url": "https://fred.stlouisfed.org/series/WALCL",
+      "series": ["WALCL"],
+      "units": "Millions of US dollars, weekly Wednesday",
+      "sha256": "b9c8df38665edb5c52c193080bf1d510234434316216448ede4b29cc411de220"
+    },
+    {
+      "file": "data/raw/fred_debt_housing.csv",
+      "format": "FRED multi-series graph export CSV, additional original columns preserved",
+      "source": "Federal Housing Finance Agency all-transactions U.S. House Price Index via FRED",
+      "source_url": "https://fred.stlouisfed.org/series/USSTHPI",
+      "series": ["USSTHPI"],
+      "units": "Quarterly house-price index, not seasonally adjusted",
+      "sha256": "cd40e9cd95059fb1a504860dea678f2743febed31efc4e7cf1bbbec4914eeb86"
+    },
+    {
+      "file": "data/raw/fred_income_gini.csv",
+      "format": "FRED multi-series graph export CSV, additional original columns preserved",
+      "source": "United States Census Bureau, Current Population Survey ASEC, via FRED",
+      "source_url": "https://fred.stlouisfed.org/series/MEHOINUSA672N",
+      "related_source_url": "https://fred.stlouisfed.org/series/GINIALLRH",
+      "series": ["MEHOINUSA672N", "GINIALLRH"],
+      "units": "Real median household money income in 2025 USD; household money-income Gini, annually",
+      "sha256": "f5655f2c7a61095c44d5f264a3a815fc583d350b7289cb55b44a3ac9122715da"
+    }
+  ]
+}
