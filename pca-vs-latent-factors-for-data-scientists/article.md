@@ -1,6 +1,6 @@
 # A Principal Component Is Not a Latent Factor: Eigenvectors, Noise, and the Limits of PCA
 
-*Article #24 · Mathematical derivations and reproducible synthetic experiments · 1 November 2026*
+*Article #25 · Mathematical derivations and reproducible synthetic experiments · 1 November 2026*
 
 > **Abstract.** Principal component analysis is one of the most useful
 > transformations in statistical computing, but its popularity has encouraged

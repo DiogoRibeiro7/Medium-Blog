@@ -7,6 +7,8 @@ midterm forecast. The companion supports the [Medium-ready article](article.md).
 **As-of date:** 31 October 2026. The 2026 election has not occurred in this
 dataset. The House generic-ballot input D+8 and 220 Republican seats defended
 are a **snapshot of the original forecast**, not an ongoing live poll average.
+The original inputs and predictions were separately **registered on 1 November
+2026**, before election day, in a [content-addressed forecast lock](PRE_ELECTION_REGISTRATION.md).
 
 ## The finding, before any interpretation
 
@@ -48,12 +50,14 @@ python -m pip install -r requirements.txt
 python analysis.py
 python model_extensions.py
 python comparison_uncertainty.py
+python forecast_lock.py
 python figures.py
 python -m unittest discover -s tests -v
 ```
 
 These commands regenerate committed data tables, thirteen original PNG figures,
-and run **53 scientific, data-provenance and fresh-kernel notebook tests**.
+and run **65 scientific, data-provenance, post-election guard, and fresh-kernel
+notebook tests**.
 The notebook is [model_walkthrough.ipynb](model_walkthrough.ipynb).
 The `.github/workflows/midterm-forecast-fit-vs-prediction.yml` job is scoped to
 this folder and can be dispatched manually. It regenerates into a separate
@@ -62,7 +66,8 @@ tables using tight floating-point tolerances (1e-9 absolute and relative),
 while requiring exact metadata, schemas, row counts and figure counts. The
 additional Student-t optimizer snapshots receive a 1e-5 numeric tolerance,
 as do its paired-error diagnostics, with schemas, evaluation dates and fixed
-seed/draw specifications checked exactly. This
+seed/draw specifications checked exactly. The pre-election registration
+manifest must match **exact source SHA-256 fingerprints**. This
 allows harmless platform-level BLAS differences without accepting substantive
 numerical drift. No API tokens, proprietary datasets or election-night data
 are needed.
@@ -113,12 +118,32 @@ history. The outputs are the [per-year squared-loss differences](results/paired_
 [one-year omission rows](results/paired_leave_one_year_out.csv), and
 [run specification](results/paired_uncertainty_summary.json).
 
+### Pre-election registration and subsequent evaluation
+
+The [registration protocol](PRE_ELECTION_REGISTRATION.md) and
+[`results/forecast_lock.json`](results/forecast_lock.json) preserve the exact
+October OLS forecast **−32.322888**, its 95% conditional interval
+**[−48.428387, −16.217390]**, all alternative point estimates, the frozen
+input scenario, and twelve source/evidence SHA-256 hashes. The information
+cut-off (**31 October**) is explicitly distinguished from the registration
+date (**1 November**). The source commit is independently inspectable in Git;
+this is not third-party notarization, nor a claim that the historical
+specification was selected without hindsight.
+
+The [post-election scoring program](score_after_election.py) is prepared, but
+**no 2026 outcome is recorded or scored yet**. It refuses dates before the
+3 November 2026 election, requires an explicitly confirmed final result from
+the House Historian or American Presidency Project, and writes a new report
+without modifying the locked forecast. Details and a future CLI example are in
+the registration protocol. Synthetic unit-test results are not election data.
+
 To regenerate without changing the working tree:
 
 ```bash
 python analysis.py --output /tmp/midterm-reproduction
 python model_extensions.py --output /tmp/midterm-reproduction
 python comparison_uncertainty.py --output /tmp/midterm-reproduction
+python forecast_lock.py --output /tmp/midterm-reproduction
 python figures.py --output /tmp/midterm-reproduction
 ```
 

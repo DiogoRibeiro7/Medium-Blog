@@ -20,6 +20,9 @@ municipality panel with two separately classified hypothetical models.
   supply elasticity.
 - Hypothetical: household absorption by three abstract tiers; illustrative
   generalized commuting and housing cost by distance.
+- General-inflation comparison: frozen official **Portugal annual average
+  all-items HICP** (2019–2025, 2025=100), used as a *national deflator* of
+  published municipal medians, **not** an income-based housing-burden measure.
 
 The intended next stage is an empirical study of actual residential mobility,
 spatial connectivity, housing stock, and transport burden. It is described in
@@ -93,6 +96,8 @@ zero. The analysis's exact-period comparisons enforce those distinctions.
 | 15 | fig15_rolling_housing_prediction_mae.png | Held-out annual growth forecast errors with and without one fixed commuting-network lag | **Exploratory prediction; not a causal transmission test** |
 | 16 | fig16_rolling_housing_naive_benchmarks.png | Fixed, unfitted zero-change, own-persistence and metropolitan-prior-mean forecasts vs two ridge models | **Retrospective held-out predictive benchmark; not a causal test** |
 | 17 | fig17_network_prediction_municipal_influence.png | Municipality-level contribution to baseline-minus-network error, averaged over three held-out years | **Heterogeneous prediction error; not observed moves** |
+| 18 | fig18_nominal_vs_hicp_deflated_housing_growth.png | Unweighted median of 17 municipalities' nominal and national-HICP-deflated housing median changes | **Observed inputs; derived consumer-price adjustment, not affordability** |
+| 19 | fig19_nominal_vs_real_housing_first_passage.png | First nominal versus HICP-deflated rent/price threshold years, with not-yet-crossed cells | **Descriptive annual first passage; not residential migration** |
 
 The figure titles, manuscript captions and generated tables repeat the
 evidence-class distinction. There are no charts of invented historical
@@ -513,6 +518,77 @@ predictors, Porto ablation, fold design rank and limitations). Eleven
 additional unit tests validate identities and artifacts: **87 tests pass**.
 No bootstrap interval, randomization p-value, housing spillover coefficient
 or displacement estimate is inferred from these short, dependent series.
+
+## Fixed Eurostat HICP and nominal-versus-deflated housing growth
+
+The next [real_housing_pressure.py](real_housing_pressure.py) check adds an
+**official Eurostat input** that was absent from the initial fixed panel:
+[HICP annual indices and rates, `prc_hicp_ainr`](https://doi.org/10.2908/PRC_HICP_AINR),
+Portugal (`PT`), annual (`A`), all-items (`TOTAL` under ECOICOP 2018),
+unit `INX_A_AVG`, **2025=100**, years **2019–2025**. This is the *current*
+series; the older `prc_hicp_aind` has been retired. The Eurostat dataset's
+last update in our frozen response is **17 September 2026**. It was
+retrieved on **1 November 2026**. The original 4,213-byte official
+JSON-stat response is committed at
+`data/portugal_eurostat_hicp_2019_2025.json` with SHA-256
+`11742a14bd70d43c22e7170b07b65081f582d2a85eeac22005448f20327bd117`.
+Eurostat [authorizes statistical-data reuse with attribution](https://ec.europa.eu/eurostat/help/copyright-notice).
+
+Reconstruct the seven-row validated HICP extract and its source identity:
+
+    python extract_hicp.py --output /tmp/porto-hicp-check
+
+Then reproduce the housing arithmetic, figures 18–19 and three CSV results:
+
+    python real_housing_pressure.py --output /tmp/porto-real-housing-check
+
+The calculation for each municipality's original annual median \(P\) is:
+
+\[
+G^{\mathrm{deflated}}_{i,t}
+=100\left[\frac{P_{i,t}/P_{i,b}}{H_t/H_b}-1\right],
+\]
+
+where \(H\) is **Portugal's annual average all-items HICP** and \(b\)
+is **2019 for sale medians** or **2020 for new-contract rent medians**.
+The national deflator is shared by all 17 municipalities. The yearly
+national index is **83.07** in 2019, **82.97** in 2020 and **100.00** in
+2025: general consumer prices rose **20.38%** from 2019 and **20.53%**
+from 2020 to 2025, on this source vintage.
+
+| Unweighted median across 17 municipalities | Nominal growth to 2025 | HICP-deflated growth to 2025 |
+| --- | ---: | ---: |
+| Sale-price median change since 2019 | 102.97% | **68.61%** |
+| New-contract rent median change since 2020 | 60.48% | **33.15%** |
+
+The initial observation that **all 17** municipality new-contract rent
+medians first crossed **nominal +25%** in 2023 changes after deflation:
+only **one** first crosses +25% HICP-deflated in 2023; **ten** first cross
+in 2024 and **six** in 2025. Porto crosses **real +25% in 2025**, not
+2023. At a +50% rent threshold, all 17 nominal series crossed by 2025,
+but only **one** HICP-deflated series did. For sale medians, **17**
+crossed nominal +50% by 2025, compared with **14** deflated; Porto's
+sale median had **not yet** crossed real +50% by 2025. Missing 2019
+rent remains unobserved. A *first observed crossing* is not an
+intrayear date or guarantee of staying above a threshold.
+
+These are **consumer-basket-adjusted comparisons** of municipality
+annual medians, not constant-quality housing-price series, regional
+cost-of-living indices, real salaries, mortgage service ratios or
+the rent burdens of individual households. National HICP includes
+consumer actual rents but excludes imputed owner-occupied housing
+costs. Common inflation can materially shift threshold dates without
+identifying common shocks, causal effects or moving flows. The article
+now makes this distinction explicit.
+
+The added results are `results/real_housing_annual_municipal_medians.csv`
+(13 annual outcome-year rows), `results/real_housing_first_passage.csv`
+(17 municipality rows), `results/real_housing_municipal_endpoints.csv`
+(34 municipality-outcome rows) and `results/real_housing_provenance.json`.
+The paired HICP source and derivation are also stored in `data/`, with
+independently audited SHA-256 hashes. Twelve new tests enforce source
+identity, exact dimensions, missingness, arithmetic and artifacts:
+**99 tests in total**.
 
 ## Boundaries before publication
 

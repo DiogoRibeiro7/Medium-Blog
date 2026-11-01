@@ -51,6 +51,7 @@ commuting-to-work flows.
 | --- | --- | --- | --- |
 | Median sold-price EUR/m² | INE, via pinned housing project | 2019–2025 | Transaction mix and geographic methodology |
 | Median new-contract rent EUR/m² | INE, via pinned housing project | 2020–2025 | Contract counts, suppression and vintage |
+| Portugal all-items HICP annual average (2025=100) | Eurostat `prc_hicp_ainr`, official frozen JSON-stat | **Observed 2019–2025, source updated 17 Sep 2026** | National inflation normalization; **not** municipal inflation, income or housing burden |
 | Annual municipal population | INE | 2019–2025 | Revision status and net vs gross movements |
 | Fiscal-household median income | INE / Autoridade Tributária | 2019–2024 | Household concept and tax definition |
 | Permits, completions, stock | INE | Existing panel partial | Lags, gross vs net stock, vacancy |
@@ -170,6 +171,24 @@ lagged calendar year is not guaranteed to be a real-time-available data
 release. The evidence strengthens the need to evaluate common metropolitan
 factors before interpreting any remaining network correlation. It neither
 identifies a causal common shock nor disproves household displacement.
+
+**National consumer inflation checkpoint (1 November 2026).** An official
+Eurostat Portugal annual **all-items HICP** 2019–2025 response was
+retrieved at an exact five-dimension API selection (`prc_hicp_ainr`,
+`A`, `INX_A_AVG`, `TOTAL`, `PT`) and frozen by SHA-256. The 2025=100
+index implies **20.38%** general consumer inflation since 2019 and
+**20.53%** since 2020. Deflating each municipal median by the national
+index changes the observed timing diagnostic: all **17** rent medians
+first passed nominal +25% relative to 2020 in **2023**, but only
+**one** passed HICP-deflated +25% that year; **ten** first did so in
+2024 and **six** in 2025. The unweighted median municipality new-rent
+change over 2020–2025 is **+60.48% nominal** versus **+33.15%
+HICP-deflated**. No real income, local cost-of-living index, fixed-
+quality housing index or housing moves are measured by this conversion.
+The appearance of a universal 2023 nominal threshold was partly sensitive
+to the inflation convention; this neither identifies a common shock nor
+disproves outward displacement. Figures 18–19, frozen input bytes and
+source/derived checksum records document the result.
 
 ## Planned analysis sequence
 
