@@ -445,7 +445,7 @@ We can now formulate the central distinction without metaphor. Suppose \(A\) is 
 \tag{14}
 \]
 
-Equation (14) concerns a contrast between potential outcomes of a system under two interventions. It is not, in general, a coefficient, impurity score, permutation MSE change, or Shapley allocation. The causal question must specify the intervention: changing a value in a database, administering a treatment, moving a sensor, altering a price, and modifying a person's underlying state are different actions even if they are all recorded in the same column.
+Equation (14) concerns a contrast between potential outcomes of a system under two interventions, in the tradition of Rubin's treatment-effect formulation [10]. It is not, in general, a coefficient, impurity score, permutation MSE change, or Shapley allocation. The causal question must specify the intervention: changing a value in a database, administering a treatment, moving a sensor, altering a price, and modifying a person's underlying state are different actions even if they are all recorded in the same column.
 
 The potential-outcomes formulation needs assumptions before observations identify \(\tau\). One common route uses consistency of observed outcomes with assigned treatments, conditional exchangeability given appropriately measured pre-treatment covariates, positivity of treatment assignment within those covariate strata, and suitable handling of interference. Under these conditions,
 
@@ -458,7 +458,7 @@ The potential-outcomes formulation needs assumptions before observations identif
 \tag{15}
 \]
 
-where \(C\) is a justified sufficient adjustment set. The adjustment formula involves *outcome contrasts under treatment status* and a covariate distribution; it is not derived by perturbing a trained predictor's feature column independently of its causal relations. If the assumptions fail, the formula does not identify the intended effect.
+where \(C\) is a justified sufficient adjustment set. Pearl's graphical work formalizes when causal assumptions support such observational identification through adjustment [11]. The formula involves *outcome contrasts under treatment status* and a covariate distribution; it is not derived by perturbing a trained predictor's feature column independently of its causal relations. If the assumptions fail, the formula does not identify the intended effect.
 
 In structural causal language, consider independent exogenous disturbances \(U_A,U_Y\), pre-treatment covariates \(C\), and equations
 
@@ -639,6 +639,7 @@ The source audit separates *where a concept comes from* from *where a numerical 
 | Causal semantics of feature relevance | Janzing, Minorics, Blöbaum [6] | Distinguishes probability and causal questions |
 | Extrapolation induced by unrestricted permutation | Hooker, Mentch, Zhou [7] | Motivation for conditional/grouped alternatives |
 | Prediction-time leakage and its avoidance | Kaufman et al. [8] | Data availability and evaluation discipline |
+| Potential outcomes and observational identification | Rubin [10]; Pearl [11] | Causal estimands and adjustment assumptions |
 | Nine figures, reported means, benchmark formulas | analysis.py; results/ and figures/ | This article's original synthetic demonstration |
 
 No cited source is presented as proving our Monte Carlo figures; those were independently produced by the companion code. Conversely, our illustrative figures are not used to claim empirical facts about healthcare, finance, manufacturing, or any other domain. The motivating examples are hypothetical and explicitly distinguished from observations.
@@ -664,3 +665,5 @@ If a feature has high importance, the safe next question is **“Important for w
 7. Hooker, G., Mentch, L., & Zhou, S. (2019). **Unrestricted Permutation Forces Extrapolation: Variable Importance Requires at Least One More Model, or There Is No Free Variable Importance.** [Original preprint, arXiv:1905.03151](https://arxiv.org/abs/1905.03151).
 8. Kaufman, S., Rosset, S., Perlich, C., & Stitelman, O. (2012). **Leakage in Data Mining: Formulation, Detection, and Avoidance.** *ACM Transactions on Knowledge Discovery from Data*, 6(4). [Original article, DOI:10.1145/2382577.2382579](https://doi.org/10.1145/2382577.2382579).
 9. Shapley, L. S. (1953). **A Value for n-Person Games.** In *Contributions to the Theory of Games, Volume II*, pp. 307–318. Princeton University Press. [Original chapter, DOI](https://doi.org/10.1515/9781400881970-018).
+10. Rubin, D. B. (1974). **Estimating Causal Effects of Treatments in Randomized and Nonrandomized Studies.** *Journal of Educational Psychology*, 66(5), 688–701. [Original article, DOI:10.1037/h0037350](https://doi.org/10.1037/h0037350).
+11. Pearl, J. (1995). **Causal Diagrams for Empirical Research.** *Biometrika*, 82(4), 669–688. [Original article, DOI:10.1093/biomet/82.4.669](https://doi.org/10.1093/biomet/82.4.669).

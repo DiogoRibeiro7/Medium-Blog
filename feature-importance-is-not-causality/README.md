@@ -118,7 +118,7 @@ The **107-test local suite** checks numerical identities, input validation,
 independent seed streams, perturbation contracts, exact attribution
 efficiency, nine studies, eighteen tables, nine nontrivial PNG figures,
 canonical numerical results, summary intervals, notebook structure, and
-the generated notebook's byte-level JSON structure. Two notebook-library
+the generated notebook's exact parsed JSON structure. Two notebook-library
 checks are skipped locally if unavailable or not enabled; CI installs
 the dependencies and sets RUN_NOTEBOOK_EXECUTION=1 so both run.
 
