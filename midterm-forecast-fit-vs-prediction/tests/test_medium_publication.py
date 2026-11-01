@@ -28,7 +28,7 @@ class MediumPublicationTests(unittest.TestCase):
     def test_full_release_check(self) -> None:
         words, figures, equations = check_release(self.source, self.release)
         self.assertGreaterEqual(words, 8000)
-        self.assertEqual((figures, equations), (13, 15))
+        self.assertEqual((figures, equations), (17, 15))
 
     def test_inline_latex_is_replaced(self) -> None:
         self.assertGreater(len(INLINE_MATH.findall(self.source)), 50)
@@ -46,7 +46,7 @@ class MediumPublicationTests(unittest.TestCase):
 
     def test_figure_loss_cannot_pass(self) -> None:
         manuscript = self.source.replace("![Historical fitted versus actual", "[Historical fitted versus actual", 1)
-        with self.assertRaisesRegex(ValueError, "thirteen original evidence figures"):
+        with self.assertRaisesRegex(ValueError, "thirteen original evidence figures and four table images"):
             build_release_markdown(manuscript)
 
     def test_draft_status_cannot_pass(self) -> None:
