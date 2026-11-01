@@ -14,15 +14,14 @@ import hashlib
 import io
 import json
 import math
+import re
 import sys
 import urllib.request
 from pathlib import Path
 from typing import Any, Sequence
 
-from analysis import MUNICIPALITIES, ROOT
-from extract_commuting import municipality_codes_from_panel
-
-
+ROOT = Path(__file__).resolve().parent
+PANEL = ROOT / "data" / "amp_municipal_panel_2019_2025.csv"
 SOURCE_URL = (
     "https://ogcapi.dgterritorio.gov.pt/collections/municipios/items?"
     "f=json&nuts3_cod=11A&limit=100&"
@@ -32,6 +31,28 @@ SNAPSHOT = ROOT / "data" / "amp_caop2025_municipal_centroids.csv"
 PROVENANCE = ROOT / "data" / "amp_caop2025_municipal_centroids_provenance.json"
 FIELDS = ("municipality", "municipality_code", "centroid_easting_epsg3763_m",
           "centroid_northing_epsg3763_m", "official_area_ha")
+
+
+def panel_municipality_codes(panel_path: Path = PANEL) -> dict[str, str]:
+    """Obtain the 17 fixed AMP DICO identities without scientific dependencies."""
+    mapping: dict[str, str] = {}
+    municipality_years: set[tuple[str, int]] = set()
+    with panel_path.open(encoding="utf-8", newline="") as handle:
+        reader = csv.DictReader(handle)
+        if not {"dico", "municipality", "nuts3", "year"}.issubset(reader.fieldnames or ()):
+            raise ValueError("Expected fixed municipal DICO panel columns")
+        for row in reader:
+            code, name = row["dico"], row["municipality"]
+            year = int(row["year"])
+            if (not re.fullmatch(r"\d{4}", code) or not name or row["nuts3"] != "11A"
+                    or year not in range(2019, 2026) or (code, year) in municipality_years
+                    or (code in mapping and mapping[code] != name)):
+                raise ValueError("Invalid pinned AMP municipality DICO, name, year or NUTS3")
+            municipality_years.add((code, year))
+            mapping[code] = name
+    if len(mapping) != 17 or len(set(mapping.values())) != 17 or len(municipality_years) != 119:
+        raise ValueError("Expected 17 complete AMP municipal time series")
+    return mapping
 
 
 def ring_area_centroid(points: Sequence[Sequence[float]]) -> tuple[float, float, float]:
@@ -92,15 +113,15 @@ def parse_caop(source_bytes: bytes) -> tuple[list[dict[str, str]], dict[str, obj
         source = json.loads(source_bytes)
     except (UnicodeDecodeError, json.JSONDecodeError) as exc:
         raise ValueError("Invalid CAOP API JSON") from exc
-    features = source.get("features") if isinstance(source, dict) else None
+    if not isinstance(source, dict):
+        raise ValueError("Expected a CAOP FeatureCollection object")
+    features = source.get("features")
     if (source.get("type") != "FeatureCollection" or not isinstance(features, list)
             or len(features) != 17 or source.get("numberReturned") != 17
             or source.get("numberMatched") != 17):
         raise ValueError("Expected exactly 17 CAOP2025 AMP features")
-    codes = municipality_codes_from_panel()
+    codes = panel_municipality_codes()
     expected_codes = {name: code for code, name in codes.items()}
-    if set(expected_codes) != set(MUNICIPALITIES):
-        raise ValueError("Unexpected existing AMP municipality code mapping")
     rows: list[dict[str, str]] = []
     for feature in features:
         properties = feature.get("properties", {})
@@ -131,8 +152,11 @@ def parse_caop(source_bytes: bytes) -> tuple[list[dict[str, str]], dict[str, obj
         "source_url": SOURCE_URL,
         "source_response_sha256": hashlib.sha256(source_bytes).hexdigest(),
         "source_license": "CC-BY 4.0; attribution: Direção-Geral do Território",
-        "source_year": 2025,
-        "source_publication": "2026-02-18",
+        "asserted_version_year": 2025,
+        "asserted_publication_date": "2026-02-18",
+        "asserted_dates_basis": "DGT official CAOP2025 landing page; not attributes of the OGC feature response",
+        "asserted_dates_source_url": "https://www.dgterritorio.gov.pt/atividades/cartografia/cartografia-tematica/caop",
+        "raw_response_retention": "Response bytes not committed; the recorded response SHA-256 requires an independent re-download to verify",
         "source_epsg": 3763,
         "source_nuts3_code": "11A",
         "records": len(rows),
@@ -177,6 +201,8 @@ def main(argv: Sequence[str] | None = None) -> None:
             raise ValueError("CAOP response exceeds bounded 25 MB download")
     else:
         raw = sys.stdin.buffer.read(25_000_001)
+        if len(raw) > 25_000_000:
+            raise ValueError("CAOP stdin input exceeds bounded 25 MB")
     derived, metadata = extract(raw)
     if args.print_snapshot:
         print(json.dumps({"csv": derived.decode("utf-8"), "provenance": metadata.decode("utf-8")}, ensure_ascii=False))

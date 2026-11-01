@@ -105,8 +105,8 @@ def _distance(rows: Sequence[dict[str, str]]) -> np.ndarray:
 
 def diagnostics(rows: Sequence[dict[str, str]]) -> tuple[list[dict[str, str | int]], list[dict[str, str]]]:
     """Report all combinations plus all 16 primary partial-rank deletions."""
-    if len(rows) != 16 or len({r["municipality"] for r in rows}) != 16:
-        raise ValueError("Exactly 16 unique comparators required")
+    if len(rows) != 16 or {r["municipality"] for r in rows} != set(MUNICIPALITIES) - {"Porto"}:
+        raise ValueError("Exactly the 16 named AMP comparators are required")
     distance = _distance(rows)
     stats: list[dict[str, str | int]] = []
     deletions: list[dict[str, str]] = []

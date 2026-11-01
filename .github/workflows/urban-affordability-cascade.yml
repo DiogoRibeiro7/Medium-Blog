@@ -27,7 +27,7 @@ jobs:
           cache-dependency-path: urban-affordability-cascade/requirements.txt
       - name: Install pinned scientific packages
         run: python -m pip install -r requirements.txt
-      - name: Verify 161 tests for sources, OD, geography, timing, forecasts, income and rental alternatives
+      - name: Verify 165 tests for sources, OD, geography, timing, forecasts, income and rental alternatives
         run: python -m unittest discover -s tests -v
       - name: Generate original figures into a clean output folder
         run: python analysis.py --output /tmp/porto-housing-reproduction

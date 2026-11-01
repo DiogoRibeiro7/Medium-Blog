@@ -5,13 +5,15 @@ from __future__ import annotations
 import csv
 import hashlib
 import json
+import subprocess
+import sys
 import tempfile
 import unittest
 from pathlib import Path
 
 import numpy as np
 
-from extract_caop import (PROVENANCE, SNAPSHOT, multipolygon_area_centroid,
+from extract_caop import (PROVENANCE, SNAPSHOT, panel_municipality_codes, multipolygon_area_centroid,
                           parse_caop, ring_area_centroid, serialize_csv)
 from porto_distance_sensitivity import (FIGURES, RESULTS, comparison_table,
                                         diagnostics, load_centroids, partial_rank_correlation, run)
@@ -53,7 +55,7 @@ class OfficialCaopGeometryTests(unittest.TestCase):
             multipolygon_area_centroid([[little, big]])
 
     def test_invalid_source_rejected(self):
-        for payload in (b'not-json', b'{"type":"FeatureCollection","numberMatched":0,"numberReturned":0,"features":[]}'):
+        for payload in (b'not-json', b'[]', b'{"type":"FeatureCollection","numberMatched":0,"numberReturned":0,"features":[]}'):
             with self.subTest(payload=payload), self.assertRaises(ValueError):
                 parse_caop(payload)
 
@@ -64,6 +66,26 @@ class OfficialCaopGeometryTests(unittest.TestCase):
         self.assertEqual(meta['records'], 17)
         self.assertEqual(hashlib.sha256(SNAPSHOT.read_bytes()).hexdigest(), meta['derived_csv_sha256'])
         self.assertIn('CC-BY', meta['source_license'])
+        self.assertEqual(meta['asserted_publication_date'], '2026-02-18')
+        self.assertIn('not attributes', meta['asserted_dates_basis'])
+        self.assertIn('not committed', meta['raw_response_retention'])
+
+    def test_standalone_extractor_uses_only_python_standard_library(self):
+        script = Path(__file__).resolve().parents[1] / 'extract_caop.py'
+        completed = subprocess.run([sys.executable, '-S', str(script), '--help'],
+                                   capture_output=True, text=True, check=True)
+        self.assertIn('--download', completed.stdout)
+
+    def test_complete_17_municipality_code_registry(self):
+        self.assertEqual(len(panel_municipality_codes()), 17)
+        self.assertEqual(panel_municipality_codes()['1312'], 'Porto')
+
+    def test_oversize_stdin_rejected_explicitly(self):
+        script = Path(__file__).resolve().parents[1] / 'extract_caop.py'
+        completed = subprocess.run([sys.executable, str(script), '--stdin'],
+                                   input=b' ' * 25_000_001, capture_output=True, check=False)
+        self.assertNotEqual(completed.returncode, 0)
+        self.assertIn(b'CAOP stdin input exceeds bounded 25 MB', completed.stderr)
 
     def test_derivative_checksum_tampering_rejected(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -98,6 +120,12 @@ class PortoDistanceRankTests(unittest.TestCase):
     def test_four_windows_four_exposures(self):
         self.assertEqual(len(self.stats), 16)
         self.assertEqual(len({(r['start_year'], r['exposure']) for r in self.stats}), 16)
+
+    def test_reject_unknown_comparator_name(self):
+        mutated = [dict(row) for row in self.rows]
+        mutated[0]['municipality'] = 'Outside AMP'
+        with self.assertRaises(ValueError):
+            diagnostics(mutated)
 
     def test_primary_distance_rank(self):
         r = next(r for r in self.stats if r['start_year'] == 2020 and r['exposure'] == 'centroid_distance_km')

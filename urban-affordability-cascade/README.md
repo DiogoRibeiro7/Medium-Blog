@@ -774,7 +774,9 @@ checksummed, third-party commuter-link workbook. The pinned OGC API
 request filters NUTS3 code **11A** and requests **EPSG:3763** projected
 MultiPolygon coordinates. The code in [extract_caop.py](extract_caop.py)
 computes area-weighted centroids of the 17 administrative municipal
-polygons, subtracts interior holes, rejects malformed geometry and
+polygons, subtracts interior holes, rejects too-short, unclosed,
+non-finite or degenerate rings (but does not perform full polygon
+topology validation), and
 validates the official listed area to 2.5%. The checked-in frozen
 17-row centroid CSV has SHA-256
 **a05cfb55ffba89dc9cc33756480470005fb771c35e824b331f81759e02a80966**.
@@ -817,7 +819,7 @@ and compare the source checksum before replacing the frozen derivative:
 This extraction should **not** be run on every CI build: reproducible
 tests and figures use the pinned CSV, which is checked against its
 recorded SHA-256. The new extractor and distance sensitivity add
-**21 unit tests, 161 total**.
+**25 unit tests, 165 total**.
 
 ## Boundaries before publication
 
