@@ -1,0 +1,17 @@
+start_year,end_year,exposure,municipalities,unadjusted_spearman_rho,partial_spearman_controlling_centroid_distance,exposure_vs_distance_spearman_rho
+2020,2025,centroid_distance_km,16,0.176471,,1.000000
+2020,2025,raw_interactions,16,-0.179412,-0.056232,-0.852941
+2020,2025,per_1000_residents,16,-0.297059,-0.421057,-0.950000
+2020,2025,share_of_amp_interactions,16,-0.270588,-0.218583,-0.797059
+2021,2025,centroid_distance_km,16,0.364706,,1.000000
+2021,2025,raw_interactions,16,-0.282353,0.059088,-0.852941
+2021,2025,per_1000_residents,16,-0.388235,-0.143648,-0.950000
+2021,2025,share_of_amp_interactions,16,-0.338235,-0.084550,-0.797059
+2022,2025,centroid_distance_km,16,0.314706,,1.000000
+2022,2025,raw_interactions,16,-0.417647,-0.301163,-0.852941
+2022,2025,per_1000_residents,16,-0.435294,-0.459955,-0.950000
+2022,2025,share_of_amp_interactions,16,-0.438235,-0.326920,-0.797059
+2023,2025,centroid_distance_km,16,-0.155882,,1.000000
+2023,2025,raw_interactions,16,0.158824,0.050162,-0.852941
+2023,2025,per_1000_residents,16,0.023529,-0.403844,-0.950000
+2023,2025,share_of_amp_interactions,16,0.050000,-0.124468,-0.797059

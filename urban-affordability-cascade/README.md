@@ -108,6 +108,8 @@ zero. The analysis's exact-period comparisons enforce those distinctions.
 | 23 | fig23_porto_rent_discount_and_real_savings_annual.png | Annual median/IQR of relative discounts and illustrative 70 m² rent savings adjusted to 2020 consumer euros | **Synthetic rent-only comparisons; no actual moving or travel expenses** |
 | 24 | fig24_porto_link_intensity_vs_rent_discount_compression.png | 2021 Porto-pair interactions per 1,000 comparator residents against 2020–2025 percentage-point rent-discount compression | **Undirected work/study links, not resident movers or causal exposure** |
 | 25 | fig25_porto_link_rank_sensitivity_windows.png | Spearman correlations over 2020/2021/2022/2023–2025 windows and three Porto-link exposure normalizations | **Exploratory window sensitivity; shared Porto denominator and dependent municipalities** |
+| 26 | fig26_porto_geographic_distance_vs_rent_discount_compression.png | Official CAOP2025 municipal centroid distance to Porto against rent-discount compression | **Administrative centroid straight-line distance, not travel time or housing-search accessibility** |
+| 27 | fig27_porto_commuting_gradient_distance_adjustment.png | Unadjusted and centroid-distance-conditional Spearman coefficients over all three network exposures and four windows | **Severe proximity/commuting rank collinearity; partial association is not a causal effect** |
 
 The figure titles, manuscript captions and generated tables repeat the
 evidence-class distinction. There are no charts of invented historical
@@ -763,6 +765,61 @@ are descriptive and cannot establish displacement or rent spillovers.
 Fourteen additional unit tests cover rankings, source-linked exact
 values, shuffles, window stability, deletions and regenerated outputs:
 **140 tests total**.
+
+## Official DGT geography and Porto-link distance sensitivity (figures 26–27)
+
+The official [DGT CAOP2025 municipal geometry collection](https://ogcapi.dgterritorio.gov.pt/collections/municipios)
+supplies a geographic benchmark independent of the previously
+checksummed, third-party commuter-link workbook. The pinned OGC API
+request filters NUTS3 code **11A** and requests **EPSG:3763** projected
+MultiPolygon coordinates. The code in [extract_caop.py](extract_caop.py)
+computes area-weighted centroids of the 17 administrative municipal
+polygons, subtracts interior holes, rejects too-short, unclosed,
+non-finite or degenerate rings (but does not perform full polygon
+topology validation), and
+validates the official listed area to 2.5%. The checked-in frozen
+17-row centroid CSV has SHA-256
+**a05cfb55ffba89dc9cc33756480470005fb771c35e824b331f81759e02a80966**.
+The response bytes SHA-256
+**9eb0060c8bdd60c785800ed43e79bf166e646969bc3e694719e44cc81aef917b**
+is recorded alongside the exact request and the attribution required
+by the official DGT **CC-BY 4.0** license in
+data/amp_caop2025_municipal_centroids_provenance.json.
+
+This geometry is current as of **CAOP2025**, not a reconstruction of
+each 2020–2025 municipal perimeter. It yields 16 positive Euclidean
+municipal-centroid distances from Porto (about 7.10–43.64 km), not
+road routes, centre-to-centre commuting time, housing-search
+accessibility or the location of the median resident.
+
+For the 2020–2025 rent-discount compression outcome, geographic
+distance alone has Spearman **+0.176471**. Distances are very
+closely ranked against 2021 Porto link strength: raw count
+**−0.852941**, count per 1,000 municipal residents **−0.950000**,
+and the within-AMP link share **−0.797059**. Conditioning each
+commuting exposure and outcome's ranks on distance produces a
+purely descriptive partial Spearman: for 2020–2025, raw counts
+**−0.056232**, per-resident links **−0.421057** and within-AMP
+share **−0.218583**. In the per-resident case, distance and commuting
+exposure are so nearly collinear that partial correlations must not
+be interpreted as independent channel effects. Neither the direct
+nor adjusted comparisons identify geographic housing displacement.
+
+Offline reproduction of the 16-row municipal join, 16 rank/window
+diagnostics, 16 leave-one-out partial-rank values, ledger and figures:
+
+    python porto_distance_sensitivity.py --output /tmp/porto-distance-sensitivity
+
+The four files appear under results/porto_distance_sensitivity_*.
+To *re-query* the official geometry deliberately (network required)
+and compare the source checksum before replacing the frozen derivative:
+
+    python extract_caop.py --download --output /tmp/caop-refresh
+
+This extraction should **not** be run on every CI build: reproducible
+tests and figures use the pinned CSV, which is checked against its
+recorded SHA-256. The new extractor and distance sensitivity add
+**25 unit tests, 165 total**.
 
 ## Boundaries before publication
 
