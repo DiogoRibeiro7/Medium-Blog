@@ -157,7 +157,7 @@ def diagnostics(rows: Sequence[dict[str, str]]) -> tuple[list[dict[str, str | in
                         "spearman_rho": f"{rho:.6f}",
                         "leave_one_out_min_rho": f"{min(leave):.6f}",
                         "leave_one_out_max_rho": f"{max(leave):.6f}",
-                        "includes_2024_2025_estimated_completions": str(mode == "completed_dwellings" and end >= 2024).lower(),
+                        "includes_estimated_completions": str(mode == "completed_dwellings" and end >= 2024).lower(),
                     })
                     if end == 2023 and norm == "per_1000_population_2020" and outcome == OUTCOMES[0]:
                         for row, r in zip(rows, leave):

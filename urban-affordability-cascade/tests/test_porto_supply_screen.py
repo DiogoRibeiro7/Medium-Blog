@@ -66,9 +66,15 @@ class PortoSupplyScreenTests(unittest.TestCase):
         self.assertAlmostEqual(self._rho(2025, MODES[0], OUTCOMES[0]), .167647, places=6)
         self.assertAlmostEqual(self._rho(2024, MODES[1], OUTCOMES[0]), -.032353, places=6)
         self.assertAlmostEqual(self._rho(2025, MODES[1], OUTCOMES[0]), -.044118, places=6)
+        for record in self.stats:
+            expected = (record['construction_exposure'] == MODES[0]
+                        and record['construction_window_end'] >= 2024)
+            self.assertEqual(record['includes_estimated_completions'], str(expected).lower())
 
     def test_output_is_independent_of_commuting_matrix(self):
-        with mock.patch('commuting_network.load_weights', side_effect=AssertionError('commuting source not required')):
+        # The previous gradient extractor binds its imported load_weights at
+        # module load time, so guard that *actual* lookup as well.
+        with mock.patch('porto_network_gradient.load_weights', side_effect=AssertionError('commuting source not required')):
             self.assertEqual(len(municipal_exposures()), 16)
 
     def test_population_denominator_arithmetic(self):
