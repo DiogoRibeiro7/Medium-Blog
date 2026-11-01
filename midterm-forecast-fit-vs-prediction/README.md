@@ -253,12 +253,3 @@ numbers cited in the article, including reproducibility seed and draw count.
    quantile bands and resampling frequencies are diagnostic descriptions,
    not confidence intervals or probabilities of future superiority.
 
-## Publication contract
-
-The draft has more than 8,000 words, original derivations, thirteen data-grounded
-figures with captions and alt text, links to all primary data and methodology,
-and a balanced conclusion distinguishing fit from prediction. No claims of
-post-election success or failure are made before 3 November 2026.
-
-This repository change is meant for **a reviewable PR only**. It does not
-merge itself or publish on Medium.
