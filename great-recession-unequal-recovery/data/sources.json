@@ -1,0 +1,132 @@
+{
+  "article": "The Recession Ended; the Damage Did Not",
+  "research_window": "2007-01-01 through 2019-12-31 inclusive",
+  "data_retrieval_vintage": "2026-10-31 and 2026-11-01",
+  "archival_rule": "Keep source bytes immutable; transformations run without network access. Source vintages are retrospective, not the information sets policymakers saw in 2008.",
+  "source_files": [
+    {
+      "path": "data/raw/fred_UNRATE.csv",
+      "sha256": "ba5e4a3709b4715c1fbd6d84e79fe7c701dd861f6a4a2fe18a07cdf5c6cc46eb",
+      "retrieved_on": "2026-11-01",
+      "publisher": "U.S. Bureau of Labor Statistics, Current Population Survey; distributed by FRED",
+      "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=UNRATE&cosd=2007-01-01&coed=2019-12-31",
+      "series": ["UNRATE"],
+      "frequency": "monthly, seasonally adjusted",
+      "unit": "percent of civilian labor force",
+      "method": "Twelve-month arithmetic means; monthly values shown directly in figure 1."
+    },
+    {
+      "path": "data/raw/fred_PAYEMS.csv",
+      "sha256": "c8c429818ed73de6db985f4ff565d64bd2a5ba66a6b651b39373a1532924fc0e",
+      "retrieved_on": "2026-11-01",
+      "publisher": "U.S. Bureau of Labor Statistics, Current Employment Statistics; distributed by FRED",
+      "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=PAYEMS",
+      "series": ["PAYEMS"],
+      "frequency": "monthly, seasonally adjusted",
+      "unit": "thousands of nonfarm jobs",
+      "method": "Divide by December 2007 observation for figure 2; annual mean divided by 1,000 gives millions of payroll jobs."
+    },
+    {
+      "path": "data/raw/fred_FEDFUNDS.csv",
+      "sha256": "74680b2d09bb28f90fb30c1c09e93ac2d443de1b7345ba5a9112b3eca9be0a25",
+      "retrieved_on": "2026-11-01",
+      "publisher": "Board of Governors of the Federal Reserve System; distributed by FRED",
+      "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=FEDFUNDS",
+      "series": ["FEDFUNDS"],
+      "frequency": "monthly",
+      "unit": "percent, monthly average effective rate",
+      "method": "Twelve-month arithmetic mean in annual panel; original monthly levels in figure 6."
+    },
+    {
+      "path": "data/raw/fred_GDPC1.csv",
+      "sha256": "1c6c6e9f59e383e20c849dd299175c7a307526c09abdc18f18da9754fc5b3343",
+      "retrieved_on": "2026-11-01",
+      "publisher": "U.S. Bureau of Economic Analysis; distributed by FRED",
+      "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=GDPC1",
+      "series": ["GDPC1"],
+      "frequency": "quarterly, seasonally adjusted annual rate",
+      "unit": "billions of chained dollars",
+      "method": "Divide original quarterly values by 2007Q4 value; take four-quarter arithmetic mean for annual panel, without claiming quarterly flows are annual totals."
+    },
+    {
+      "path": "data/raw/fred_debt_housing.csv",
+      "sha256": "cd40e9cd95059fb1a504860dea678f2743febed31efc4e7cf1bbbec4914eeb86",
+      "retrieved_on": "2026-10-31",
+      "publisher": "Federal Housing Finance Agency and Board of Governors of the Federal Reserve System; distributed by FRED",
+      "url": "https://fred.stlouisfed.org/",
+      "series": ["USSTHPI", "TDSP"],
+      "frequency": "quarterly; USSTHPI not seasonally adjusted, TDSP seasonally adjusted",
+      "unit": "house-price index 1980Q1=100; household debt-service payments as percent of disposable personal income",
+      "method": "Preserved from the previous article's public FRED graph export, with full original date history and columns; normalize price to 2007Q4, show TDSP in original percent units. Unused columns remain unaltered."
+    },
+    {
+      "path": "data/raw/fred_income_gini.csv",
+      "sha256": "f5655f2c7a61095c44d5f264a3a815fc583d350b7289cb55b44a3ac9122715da",
+      "retrieved_on": "2026-10-31",
+      "publisher": "U.S. Census Bureau, CPS ASEC; distributed by FRED",
+      "url": "https://fred.stlouisfed.org/",
+      "series": ["MEHOINUSA672N", "GINIALLRH"],
+      "frequency": "annual",
+      "unit": "real median household income in 2025 U.S. dollars; Gini unitless",
+      "method": "Preserved from previous article's public FRED graph export; annual median indexed to 2007 value; Gini left as supplied. Survey-method changes and revision vintage documented."
+    },
+    {
+      "path": "data/raw/fred_WALCL.csv",
+      "sha256": "b9c8df38665edb5c52c193080bf1d510234434316216448ede4b29cc411de220",
+      "retrieved_on": "2026-11-01",
+      "publisher": "Board of Governors of the Federal Reserve System; distributed by FRED",
+      "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=WALCL",
+      "series": ["WALCL"],
+      "frequency": "weekly, Wednesday observations",
+      "unit": "millions of U.S. dollars, not seasonally adjusted",
+      "method": "Divide by 1,000,000 to express trillions; arithmetic mean of weekly observations by calendar year only for descriptive annual panel."
+    },
+    {
+      "path": "data/raw/bls_race_2007_2016.json",
+      "sha256": "ce75efba2f3784d0f9dfc6467890b7cfbef85eb2141eaad2a9e03c05b20d65ed",
+      "retrieved_on": "2026-11-01",
+      "publisher": "U.S. Bureau of Labor Statistics, CPS Public Data API",
+      "url": "https://api.bls.gov/publicAPI/v2/timeseries/data/",
+      "series": ["LNS14000003", "LNS14000006"],
+      "frequency": "monthly, seasonally adjusted, 2007–2016",
+      "unit": "percent of corresponding civilian labor force",
+      "method": "Original public API POST response for 2007–2016, preserving all returned fields; period M13 ignored, not used to replace any monthly observation."
+    },
+    {
+      "path": "data/raw/bls_race_2017_2019.json",
+      "sha256": "f5a72a781c06d5877ddc7f9ca2f235c2a59909b61a2815d0196d7ec58ccc7e27",
+      "retrieved_on": "2026-11-01",
+      "publisher": "U.S. Bureau of Labor Statistics, CPS Public Data API",
+      "url": "https://api.bls.gov/publicAPI/v2/timeseries/data/",
+      "series": ["LNS14000003", "LNS14000006"],
+      "frequency": "monthly, seasonally adjusted, 2017–2019",
+      "unit": "percent of corresponding civilian labor force",
+      "method": "Original public API POST response for 2017–2019; join only on uniquely dated monthly observations with 2007–2016 file."
+    },
+    {
+      "path": "data/scf_median_wealth_2022_dollars.csv",
+      "sha256": "34f818bcd6434507a8c42096261218d3633e3df5a2850b5eb14eca3f0e49490f",
+      "retrieved_on": "2026-11-01",
+      "publisher": "Board of Governors of the Federal Reserve System, Survey of Consumer Finances",
+      "url": "https://www.federalreserve.gov/econres/notes/feds-notes/greater-wealth-greater-uncertainty-changes-in-racial-inequality-in-the-survey-of-consumer-finances-accessible-20231018.htm",
+      "series": ["median net worth by race and ethnicity, Figure 2 top panel of accessible data"],
+      "frequency": "triennial repeated cross-sections, selected 2007–2019 waves",
+      "unit": "thousands of 2022 U.S. dollars",
+      "method": "Manual transcription of Fed accessible-table values to two decimal places for White, Black, and Hispanic family groups; no interpolation, person-level panel reconstruction, or invented survey standard errors."
+    }
+  ],
+  "derived_files": [
+    "data/annual_panel_2007_2019.csv",
+    "data/race_monthly_2007_2019.csv",
+    "results/recovery_milestones.csv",
+    "results/racial_outcomes.csv",
+    "results/capital_scenarios.csv"
+  ],
+  "interpretation_constraints": [
+    "Observational charts are descriptive, not estimates of fiscal, monetary, or regulatory treatment effects.",
+    "The recession dates are NBER committee dating, not a formula derived from the plotted unemployment series.",
+    "The 2019 endpoint is deliberately pre-pandemic.",
+    "Index recovery is not welfare recovery, potential-output recovery, or recovery for a fixed panel of households.",
+    "The bank-capital figure is an explicitly invented accounting scenario, not an estimate of bank failures, lending, or systemic spillovers."
+  ]
+}
