@@ -283,6 +283,8 @@ def run(output: Path = ROOT) -> dict[str, object]:
         "final_year_summary": summary[-1],
         "porto_proxy_relative_growth_pct": porto["synthetic_proxy_relative_growth_pct"],
         "limits": [
+            "Both source statistics are reported in nominal EUR; fiscal-income and rent growth are nominal",
+            "Annual summaries are unweighted medians of 17 municipal changes, not pooled contracts or tax households",
             "The rent statistic covers newly signed tenancy contracts, not all existing tenants",
             "Gross declared fiscal income covers an IRS filing population, not every resident or actual new renter",
             "Tax households and tenants need not be the same set of people or household definition",

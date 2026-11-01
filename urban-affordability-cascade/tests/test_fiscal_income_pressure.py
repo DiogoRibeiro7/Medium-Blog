@@ -17,6 +17,7 @@ from fiscal_income_pressure import (
     FIGURES,
     RESULTS,
     YEARS,
+    _pair,
     annual_table,
     endpoint_table,
     relative_proxy_growth_percent,
@@ -88,6 +89,10 @@ class FiscalIncomePressureTests(unittest.TestCase):
             relative_proxy_growth_percent(8, 10, 0, 16000)
 
     def test_reject_unsupported_year_and_partial_municipality_list(self) -> None:
+        for unsupported_year in (2019, 2025):
+            with self.subTest(year=unsupported_year):
+                with self.assertRaisesRegex(ValueError, "Unsupported"):
+                    _pair(self.panel, "Porto", unsupported_year)
         with self.assertRaisesRegex(ValueError, "exactly once"):
             annual_table(self.panel, self.names[:-1])
         with self.assertRaisesRegex(ValueError, "exactly once"):

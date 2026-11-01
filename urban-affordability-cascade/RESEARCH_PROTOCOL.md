@@ -206,8 +206,10 @@ municipality relative increases is **+15.17%**, with Porto at **+30.55%**.
 These values do not measure household disposable income, tenant-level
 affordability, or migration. Source definitions follow the
 [INE/AT local-income technical note](https://www.ine.pt/documentos/municipios/rnlocal/ano2022/1B0.pdf)
-and the pinned upstream panel. Figures 20–21 and the code-generated
-tables document the sensitivity to 50/70/90 m² *assumed* sizes.
+and the pinned upstream panel. The code-generated table
+`results/fiscal_income_rent_annual_municipal_proxy.csv` documents the
+50/70/90 m² *assumed* size sensitivity. Figure 20 illustrates the
+70 m² level only, and Figure 21 compares area-independent growth.
 
 ## Planned analysis sequence
 
