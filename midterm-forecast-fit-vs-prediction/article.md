@@ -68,16 +68,7 @@ For 1950 through 1998, I use Gallup's 2002 retrospective Democratic two-party ge
 
 The following examples show exactly how the signs work. The model sees the ballot after it has been oriented toward the party holding the presidency:
 
-**Selected historical elections** (party = president's party; seats = House seats defended; margin = generic-ballot margin for that party; change = actual House seat change):
-
-- **1950 — Democrats:** 263 seats; ballot margin +2.0 points; actual change −28 seats.
-- **1974 — Republicans:** 192 seats; ballot margin −20.0 points; actual change −48 seats.
-- **1998 — Democrats:** 207 seats; ballot margin +4.2 points; actual change +4 seats.
-- **2002 — Republicans:** 220 seats; ballot margin +6.0 points; actual change +8 seats.
-- **2006 — Republicans:** 233 seats; ballot margin −11.5 points; actual change −30 seats.
-- **2010 — Democrats:** 257 seats; ballot margin −9.4 points; actual change −63 seats.
-- **2018 — Republicans:** 241 seats; ballot margin −7.3 points; actual change −41 seats.
-- **2022 — Democrats:** 222 seats; ballot margin −2.5 points; actual change −9 seats.
+![Historical midterm election examples with party, defended seats, generic-ballot margin and observed seat change.](figures/historical-election-examples.png)
 
 These are selected rows, not a substitute for the full dataset. The exact eighteen-row table and its source mapping are in `data/historical_midterms.csv` and `data/PROVENANCE.md`. The columns have explicit units and can be checked against the original Gallup, RCP and American Presidency Project pages. The comparison also reveals why the president's party matters: a reported Democratic lead is favorable when a Democrat holds the presidency and unfavorable when a Republican does. Consistently orienting the margin toward the incumbent presidential party is an analytical decision, not a change in the survey results.
 
@@ -206,12 +197,7 @@ The fact that the most difficult 2006 prediction survives both validation proced
 
 There is a stronger question than whether a model informed by current polling beats an uninformed historical average. If the generic ballot already captures the country's partisan mood, does adding the number of seats defended contribute genuine forward-predictive value? Conversely, could the seat count alone explain most of the results? I answer those questions with the *same ten target elections*, the *same first-eight-election training origin*, and the *same expanding training sets* as the headline model. The single-feature equations each have an intercept and one estimated slope; the full equation has an intercept and two slopes. There is no tuning, cross-validation-based selection or extra external input available to one model but not the others.
 
-**Forward-validation comparison** (errors measured in House seats; lower is better):
-
-- **Two-predictor OLS** — generic ballot and defended seats: **RMSE 8.70; MAE 6.00**.
-- **Generic-ballot-only OLS** — party-aligned final generic ballot: RMSE 20.09; MAE 18.18.
-- **Seats-only OLS** — president's party seats defended: RMSE 23.00; MAE 20.17.
-- **Historical training mean** — no contemporaneous predictor: RMSE 23.81; MAE 20.76.
+![Forward-validation errors by forecast model, including RMSE and MAE in House seats.](figures/forward-validation-comparison.png)
 
 This is a material improvement over merely defeating the historical mean. The two-variable model gives smaller absolute errors than the generic-ballot-only regression in **nine of the ten** held-out elections, although its roughly 22-seat miss in 2006 is an important exception: in that year, the ballot-only model's prediction was considerably closer to the eventual result. In 1994, for instance, the two-predictor model anticipates a roughly 54-seat Democratic loss, close to the observed loss of 54, while the ballot-only model predicts roughly 28 seats lost. In 2002, the full model predicts a modest Republican gain, close to the actual eight-seat gain; the ballot-only model instead predicts a loss. These are not new outcomes or extra data points. They are alternative predictions of the original ten historical targets, all independently reproduced in the companion's [forward model comparison CSV](results/forward_model_comparison.csv).
 
@@ -381,12 +367,7 @@ The fixed half-life is twenty-four years, or six ordinary midterm cycles: one el
 
 The comparison is not a contest between a model's in-sample \(R^2\) and another model's holdout RMSE. Every RMSE below is computed using the **same ten chronologically held-out seat changes**, and every corresponding 2026 point forecast uses the same frozen D+8, 220-seat inputs. The separate column changes *only* the disputed Gallup retrospective values in 1962 and 1998; it repeats the entire chronological exercise under that alternative source transcription.
 
-**Estimator sensitivity** (forward RMSE in seats under the primary and alternative Gallup series, followed by the conditional 2026 Republican seat-change forecast):
-
-- **Ordinary least squares:** primary **8.70**; alternative **8.97**; 2026 forecast −32.32 seats.
-- **Student-t likelihood** (\(\nu=4\)): primary 8.48; alternative 9.02; forecast −33.76 seats.
-- **Ridge** (\(\alpha=2\)): primary 12.18; alternative 12.67; forecast −31.06 seats.
-- **Recency-weighted OLS** (24-year half-life): primary 9.13; alternative 9.37; forecast −30.98 seats.
+![Estimator comparisons under two polling series and conditional 2026 Republican seat-change forecasts.](figures/estimator-sensitivity.png)
 
 ![Grouped comparison of ten-election forward root mean squared seat errors for OLS, four-degree Student-t regression, ridge regression, recency-weighted least squares and the generic-only benchmark under both Gallup source transcriptions.](figures/fig10_candidate_model_rmse.png)
 
@@ -453,11 +434,7 @@ Ridge shows an interesting contrast. Its primary-source RMSE remains worse than 
 
 The second diagnostic is a fixed-seed Monte Carlo resampling of the ten historical *test-year pairs*. In each of **20,000** replications (seed **20261031**) I sample ten indices with replacement from the ten evaluation years. For a sampled index, I carry its candidate and OLS losses together; I then recompute the candidate's RMSE minus OLS's RMSE on that resampled set. The **same resampled index matrix** is reused for the three candidate estimators and for both Gallup source transcriptions. This preserves within-year pairing and makes the numerical comparisons directly reproducible. It does **not** refit the historical regressions on a resampled collection of test outcomes, alter the expanding training cutoffs, or introduce a fictional 2026 result.
 
-**Paired-resampling comparison with OLS** (RMSE differences in seats; negative favors the candidate; brackets give the 2.5%–97.5% resampling range):
-
-- **Student-t** (\(\nu=4\)): primary difference −0.21 [−0.98, +0.33]; alternative difference +0.05 [−0.97, +0.51].
-- **Ridge** (\(\alpha=2\)): primary difference +3.48 [−1.72, +9.24]; alternative difference +3.69 [−2.17, +10.03].
-- **Recency-weighted least squares** (24-year half-life): primary difference +0.43 [−0.22, +1.88]; alternative difference +0.40 [−0.31, +1.99].
+![Paired resampling differences in forward RMSE against OLS, with 2.5–97.5 percent ranges.](figures/paired-resampling-comparison.png)
 
 ![Paired test-year bootstrap percentile ranges for differences in forward RMSE between Student-t, ridge, recency-weighted estimators and OLS, under primary and alternative Gallup sources, with the zero-difference line highlighted.](figures/fig13_paired_rmse_uncertainty.png)
 
