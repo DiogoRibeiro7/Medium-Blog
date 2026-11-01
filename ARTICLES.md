@@ -1,6 +1,6 @@
 # Articles Developed in This Chat
 
-This is a chronological index of the twenty-seven long-form articles developed in
+This is a chronological index of the twenty-eight long-form articles developed in
 this conversation for `Medium-Blog`. It is **not** a complete
 catalogue of the repository's articles or historical notebooks.
 
@@ -34,6 +34,8 @@ catalogue of the repository's articles or historical notebooks.
 | 26 | [Inflation Fell; Prices Did Not: The Pandemic Shock, Inflation, and the Unequal Adjustment, 2020–2025](pandemic-inflation-unequal-recovery/article.md) | 2020–2025 U.S. pandemic recession and unequal recovery; GDP and payroll jobs, CPI price-level versus inflation rate, wage selection, race and employment, federal relief, household income and inequality, Fed tightening, FHFA house prices, CPI shelter and the October 2025 data gap | 8 | [Study README](pandemic-inflation-unequal-recovery/README.md) · [Python analysis](pandemic-inflation-unequal-recovery/analysis.py) · [Notebook](pandemic-inflation-unequal-recovery/model_walkthrough.ipynb) |
 
 | 27 | [A Principal Component Is Not a Latent Factor: Eigenvectors, Noise, and the Limits of PCA](pca-vs-latent-factors-for-data-scientists/article.md) | PCA and factor-model identifiability, sample covariance spectra, spiked-eigenvector recovery, reconstruction versus denoising, low-variance predictive signals, feature scaling and outliers, factor rotation, parallel analysis, anisotropic noise | 9 | [Study README](pca-vs-latent-factors-for-data-scientists/README.md) · [Python analysis](pca-vs-latent-factors-for-data-scientists/analysis.py) · [Notebook](pca-vs-latent-factors-for-data-scientists/pca_latent_factors.ipynb) |
+
+| 28 | [A Cluster Is Not a Population: K-means, Mixtures, Stability, and the Limits of Unsupervised Labels](clustering-is-not-a-population/article.md) | K-means objective and elbow, feature-scale dependence, DBSCAN and non-convex geometry, Gaussian mixtures and EM/BIC, irrelevant dimensions, silhouette selection, adjusted Rand index, bootstrap stability, overlapping memberships | 10 | [Study README](clustering-is-not-a-population/README.md) · [Python analysis](clustering-is-not-a-population/analysis.py) · [Notebook](clustering-is-not-a-population/clustering_is_not_a_population.ipynb) |
 
 ## Reproducibility
 
