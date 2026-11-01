@@ -969,11 +969,139 @@ median series*, not proof that households did not move. The unobserved
 direction of residential movement remains the central obstacle to
 testing the outward-cascade claim as a causal process.
 
+## Inflation-adjusted chronology: was the 2023 rent threshold truly simultaneous?
+
+The first-passage result deserves one more test before it can be used
+as a stylized fact about metropolitan housing markets. We observed that
+all 17 municipalities crossed **25% cumulative nominal growth** in
+the median rent on *newly signed contracts* relative to 2020 during the
+published year 2023. However, 2022 and 2023 were also years in which
+general consumer prices rose substantially. When the threshold is
+expressed in current euros, part of the apparent synchronization may
+come from a **shared change in the purchasing power of money**.
+
+There is an official source for a limited but transparent correction.
+[Eurostat's harmonised index of consumer prices](https://doi.org/10.2908/PRC_HICP_AINR),
+dataset `prc_hicp_ainr`, reports an annual average all-items index
+for Portugal. We use the current **ECOICOP version 2** series, with
+the exact selection `freq=A`, `unit=INX_A_AVG`, `coicop18=TOTAL`,
+`geo=PT`, and the seven years **2019–2025**. The series has the
+reference **2025=100**. It reports **83.07 in 2019, 82.97 in 2020,
+90.54 in 2022, 95.31 in 2023 and 100.00 in 2025**. The Eurostat
+dataset was updated on 17 September 2026; the exact API response
+obtained on 1 November 2026 is frozen, checksummed and validated in
+the [study repository](data/portugal_eurostat_hicp_2019_2025.json).
+The obsolete `prc_hicp_aind` series is not joined silently to the
+current one. Reuse follows [Eurostat's source-attribution policy](https://ec.europa.eu/eurostat/help/copyright-notice).
+
+For municipality \(i\), let \(P_{i,t}\) denote the original observed
+annual median sold price or new-contract rent per square metre, and
+let \(H_t\) denote Portugal's annual average general HICP. We define
+the cumulative consumer-price-adjusted change from baseline year
+\(b\) as
+
+\[
+g^{\mathrm{HICP}}_{i,t;b}
+=100\left(\frac{P_{i,t}/P_{i,b}}{H_t/H_b}-1\right).
+\]
+
+We use \(b=2019\) for sale-price medians and \(b=2020\) for
+new-contract rent medians, respecting the missing 2019 rent values.
+Changing the arbitrary index reference from 2025=100 to another
+constant would **not** change the result, because only \(H_t/H_b\)
+enters. This is a division of two observed ratios. It does not estimate
+the parameters of a housing market, a person's income or the
+quality-adjusted appreciation of an unchanged dwelling.
+
+### How much of the nominal rise survives the adjustment?
+
+The national HICP rose **20.38%** from 2019 to 2025 and **20.53%**
+from 2020 to 2025. Comparing the nominal median of the 17
+municipalities' cumulative growth rates with the HICP-deflated
+version gives:
+
+| Median across municipalities, not pooled transaction prices | Nominal 2025 growth | HICP-deflated 2025 growth |
+| --- | ---: | ---: |
+| Sold-price median, from 2019 | +102.97% | **+68.61%** |
+| New-contract rent median, from 2020 | +60.48% | **+33.15%** |
+
+These are still substantial increases relative to the general
+consumer basket. The adjustment changes their magnitude, however,
+and it would be misleading to present the nominal figures as though
+every percentage point represented an increase in purchasing-power
+terms. The statistics also differ from *housing affordability*:
+they do not divide rents or house payments by the incomes of the
+people who need to pay them. The national index does not measure
+different inflation in Porto, Maia or the surrounding municipalities.
+
+![Figure 18. Median of 17 municipality nominal and general-HICP-deflated cumulative housing median changes, alongside Portugal's all-items consumer inflation.](figures/fig18_nominal_vs_hicp_deflated_housing_growth.png)
+
+Figure 18 also illustrates why using the correct baseline matters.
+The sale-price series is available from 2019, whereas the rental
+series begins in 2020. Both use exactly the same national HICP but
+different reference-year ratios. In 2023, for example, the unweighted
+median cumulative new-contract rent increase relative to 2020 was
+**32.04% nominal** and **14.95% HICP-deflated**. General prices had
+risen **14.87%** since the rental baseline. A nominal rent threshold
+of +25% at that date corresponds to only about **+8.8%** after that
+general price adjustment. The nominal and adjusted +25% thresholds
+therefore answer meaningfully different questions.
+
+### Revisit first-passage dates with the same threshold in real terms
+
+We reran the observed annual threshold calculation on both versions
+of the series, preserving the same 17 municipalities, the same
+first-available-year rule and explicit *not yet reached* cells.
+The new-contract rent +25% crossing counts are particularly clear:
+
+| First observed threshold year | Nominal new-rent +25% | HICP-deflated new-rent +25% |
+| --- | ---: | ---: |
+| 2023 | 17 | **1** |
+| 2024 | 0 | **10** |
+| 2025 | 0 | **6** |
+
+The original observation of *universal nominal crossing in 2023*
+does not survive this inflation convention. Porto's median new-contract
+rent first crossed **HICP-deflated +25% in 2025**, two published years
+after its nominal crossing. At a more demanding cumulative +50%
+threshold, **all 17 nominal new-contract rent medians** had crossed
+by 2025, but **only one** of the HICP-deflated ones had. The sale-price
+comparisons shift as well: **all 17** crossed nominal +50% by 2025,
+while **14** crossed deflated +50%; Porto had not crossed the latter.
+No municipality crossed +100% HICP-deflated sale growth by 2025,
+versus **ten** under the nominal definition.
+
+![Figure 19. First observed annual crossing years for paired nominal and HICP-deflated sale/rent median thresholds in the 17 AMP municipalities; unpassed thresholds are censored.](figures/fig19_nominal_vs_real_housing_first_passage.png)
+
+There are two important qualifications. First, these are annual
+observations. A first crossing does not reveal the month, the
+sequence of households changing residence or whether the statistic
+stayed above its threshold in subsequent years. Second, the general
+HICP includes consumer expenditure on actual rents, but it is not a
+fixed-quality house-price index and excludes imputed costs of
+owner-occupied housing. The source does not measure local costs of
+living, tenure-specific inflation, mortgage financing or wages.
+Our adjustment is precisely described as **national general-consumer-
+price deflation of observed municipal housing medians**.
+
+This correction matters to the argument, because the earlier
+universal 2023 crossing had seemed to suggest one shared metropolitan
+rent event. After adjustment, the first-passage years are spread
+over 2023–2025. The simpler common-trend forecast still predicts
+annual new-rent changes better than the tested network model, but
+neither observation identifies the *cause* of the metropolitan
+changes. Inflation itself does not explain the entire real increase.
+The evidence rules out one careless interpretation: **a simultaneous
+nominal threshold crossing is not automatically a simultaneous
+real housing-affordability shock**. A genuine displacement test still
+needs the directed movement data and household economic information
+described earlier.
+
 ---
 
 ## Sources and reproducibility
 
-The original eight figures and three tabular outputs, four observed mobility figures, one sharp non-identification figure, two annual timing/prediction figures and **two forecast-robustness figures** with companion CSV results can be regenerated using the commands in the [study README](README.md). The new directed-OD intake suite is software-only until a genuine aggregate table is released. The [fixed 17-municipality input](data/amp_municipal_panel_2019_2025.csv) is a derived extract from [DiogoRibeiro7/portugal-housing-generations](https://github.com/DiogoRibeiro7/portugal-housing-generations), pinned to [upstream commit 0407fae](https://github.com/DiogoRibeiro7/portugal-housing-generations/tree/0407faed1f08209b3d7682e19fc57e7120e62879). It does not assert that 2025 income observations or 2019 new-lease observations exist. The published mobility extracts have separate checksummed source records and distinct limitations.
+The original eight figures and three tabular outputs, four observed mobility figures, one sharp non-identification figure, two annual timing/prediction figures, two forecast-robustness figures, and **two nominal-vs-deflated figures** with companion CSV results can be regenerated using the commands in the [study README](README.md). The new directed-OD intake suite is software-only until a genuine aggregate table is released. The [fixed 17-municipality input](data/amp_municipal_panel_2019_2025.csv) is a derived extract from [DiogoRibeiro7/portugal-housing-generations](https://github.com/DiogoRibeiro7/portugal-housing-generations), pinned to [upstream commit 0407fae](https://github.com/DiogoRibeiro7/portugal-housing-generations/tree/0407faed1f08209b3d7682e19fc57e7120e62879). It does not assert that 2025 income observations or 2019 new-lease observations exist. The observed Portugal HICP 2019–2025 source is independently frozen at [Eurostat dataset `prc_hicp_ainr`](https://doi.org/10.2908/PRC_HICP_AINR). The published mobility extracts have separate checksummed source records and distinct limitations.
 
 1. Área Metropolitana do Porto. [Statutory definition and its 17 municipalities](https://www.amp.pt/en/amp-instituicao/area-metropolitana-do-porto-or-lei-no-752013/).
 2. Instituto Nacional de Estatística. [Local housing price methodology and geospatial context](https://www.ine.pt/ine_novidades/semin/INEWS38/files/assets/common/downloads/publication.pdf).
@@ -996,5 +1124,7 @@ The original eight figures and three tabular outputs, four observed mobility fig
 19. Instituto Nacional de Estatística. [Information-service notice on custom statistical tables](https://www.ine.pt/ine_novidades/semin/FI_RIIBES_47/files/assets/basic-html/page10.html). The historic request-form link requires current confirmation.
 20. Instituto Nacional de Estatística. [Researcher access under the INE–FCT–DGEEC arrangement](https://www.ine.pt/ine_novidades/semin/FI_RIIBES_51/files/assets/basic-html/page6.html), subject to accreditation and confidentiality terms.
 21. Instituto Nacional de Estatística. [INEWS 65 (April 2026), research data infrastructure and safe centres](https://www.ine.pt/ine_novidades/semin/INEWS65/index.html), including Porto.
+22. Eurostat. [Harmonised index of consumer prices, ECOICOP ver.2, annual indices and rates of change (`prc_hicp_ainr`)](https://doi.org/10.2908/PRC_HICP_AINR). Portugal all-items annual average index (`INX_A_AVG`, `TOTAL`, `PT`, 2019–2025), 2025=100; source updated 17 September 2026, official API snapshot retrieved 1 November 2026.
+23. Eurostat. [Copyright notice and free re-use of statistical data](https://ec.europa.eu/eurostat/help/copyright-notice). Statistical-source reuse permitted with acknowledgement.
 
-*Publication status: manuscript prepared for technical review. The reported descriptive statistics refer to the pinned October 2026 source snapshot. No estimates of observed displaced households, spatial transmission coefficients or policy causal effects are claimed.*
+*Publication status: manuscript prepared for technical review. The municipal descriptive statistics refer to the pinned October 2026 housing extract; general inflation uses the separately frozen Eurostat September 2026 vintage retrieved in November 2026. No estimates of observed displaced households, spatial transmission coefficients or policy causal effects are claimed.*
