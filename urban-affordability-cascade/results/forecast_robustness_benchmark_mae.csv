@@ -1,0 +1,9 @@
+outcome,target_year,n_municipality_years,no_change_mae_log_points,persistence_mae_log_points,amp_prior_mean_mae_log_points,baseline_ridge_mae_log_points,network_ridge_mae_log_points,baseline_minus_network_mae_log_points
+sold_price,2023,17,9.831786,7.826936,4.498221,3.127834,3.099421,0.028413
+sold_price,2024,17,11.211683,7.603178,5.081857,4.859833,4.892026,-0.032192
+sold_price,2025,17,16.909241,8.884749,7.211440,7.783215,7.572227,0.210989
+sold_price,pooled,51,12.650903,8.104954,5.597173,5.256961,5.187891,0.069070
+new_contract_rent,2023,17,13.772128,5.344119,4.409069,7.148331,10.080463,-2.932132
+new_contract_rent,2024,17,11.216698,5.666481,3.976664,6.153889,10.369543,-4.215654
+new_contract_rent,2025,17,9.093100,4.991192,3.177888,4.067566,3.973651,0.093914
+new_contract_rent,pooled,51,11.360642,5.333931,3.854540,5.789929,8.141219,-2.351290

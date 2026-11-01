@@ -91,6 +91,8 @@ zero. The analysis's exact-period comparisons enforce those distinctions.
 | 13 | fig13_residential_od_identification_set.png | All directed Porto↔rest-AMP allocations allowed by observed margins | **Sharp logical bounds and hypothetical feasible worlds; not observed OD** |
 | 14 | fig14_nominal_housing_first_passage.png | Earliest reported annual median crossing four fixed nominal thresholds, with right-censored municipalities | **Observed median comparisons; no mover or displacement observations** |
 | 15 | fig15_rolling_housing_prediction_mae.png | Held-out annual growth forecast errors with and without one fixed commuting-network lag | **Exploratory prediction; not a causal transmission test** |
+| 16 | fig16_rolling_housing_naive_benchmarks.png | Fixed, unfitted zero-change, own-persistence and metropolitan-prior-mean forecasts vs two ridge models | **Retrospective held-out predictive benchmark; not a causal test** |
+| 17 | fig17_network_prediction_municipal_influence.png | Municipality-level contribution to baseline-minus-network error, averaged over three held-out years | **Heterogeneous prediction error; not observed moves** |
 
 The figure titles, manuscript captions and generated tables repeat the
 evidence-class distinction. There are no charts of invented historical
@@ -452,6 +454,65 @@ housing-affordability epidemic. Actual directed residential flows,
 household-level affordability and an identification strategy are still
 missing. Thirteen new tests enforce timing, censoring, model inputs,
 prediction leakage and deterministic outputs: **76 total tests**.
+
+## Forecast robustness: do simpler alternatives do better?
+
+The [forecast_robustness.py](forecast_robustness.py) companion deliberately
+does **not select new network coefficients or retune the existing model**.
+Instead, it compares the same 2023–2025 held-out annual-median predictions
+with three transparent, unfitted benchmarks: **zero annual log growth**,
+**each municipality's previous-year annual log growth**, and **the
+unweighted AMP mean of previous-year annual log growth**. No target-year
+outcome enters any benchmark. All values are mean absolute error in
+annual log-growth percentage points (not percentages of households moving).
+
+Reproduce the two new figures and four auditable files offline:
+
+    python forecast_robustness.py --output /tmp/porto-forecast-robustness
+
+| Held-out pooled 2023–2025 model | Median sale-price MAE | New-contract rent MAE |
+| --- | ---: | ---: |
+| No annual change | 12.65 | 11.36 |
+| Own prior-year growth (persistence) | 8.10 | 5.33 |
+| AMP prior-year mean growth | 5.60 | **3.85** |
+| Own + AMP prior-year ridge | 5.26 | 5.79 |
+| Add 2021 commuting-network deviation | **5.19** | 8.14 |
+
+For **new-contract rents**, the *unfitted AMP prior mean* beats both ridge
+models in each of the three annual folds. The network feature worsens
+absolute error in **all 17 municipalities when each is averaged over the
+three test years**. These outcomes are consistent with a broad common
+metropolitan pattern, but they do not identify the reason it occurs.
+For sales, deleting 2025 from the **evaluation** changes the network's
+pooled improvement from +0.069 to **−0.002**; its modest advantage is not
+stable to which forecast years are scored.
+
+Deleting any municipality's three *held-out evaluation cells* (without
+refitting) leaves sale-network gains in **+0.048 to +0.100** and rent gains
+in **−2.485 to −2.280** log-growth points. A separate ablation actually
+**refits both ridge models on the remaining 16 municipalities**, removes
+Porto from the network and recomputes the metropolitan mean: sale-network
+improvement becomes **−0.010**, rent improvement **−2.077**. This is a
+sample/network-scope sensitivity, **not** a counterfactual effect of Porto.
+
+The 2023 forecast fold has an additional identifiable design limitation:
+its training targets come *only from 2022*, so the AMP mean prior-growth
+feature is **constant across training municipalities** and is collinear
+with the intercept. It cannot be independently estimated in this first
+fold. Moreover, the source observations describe the previous reference
+year, but the actual *publication dates* of the municipal medians have not
+been reconstructed. These are retrospective one-year-ahead diagnostics,
+not verified real-time forecasts.
+
+The new outputs are `results/forecast_robustness_benchmark_mae.csv`
+(eight fold/pooled rows),
+`results/forecast_robustness_municipality_deletions.csv` (34 evaluation
+deletions), `results/forecast_robustness_year_deletions.csv` (six), and
+`results/forecast_robustness_provenance.json` (source hash, fixed
+predictors, Porto ablation, fold design rank and limitations). Eleven
+additional unit tests validate identities and artifacts: **87 tests pass**.
+No bootstrap interval, randomization p-value, housing spillover coefficient
+or displacement estimate is inferred from these short, dependent series.
 
 ## Boundaries before publication
 

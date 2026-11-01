@@ -851,11 +851,129 @@ failed to improve rental prediction. The next decisive empirical input
 remains an authorized, genuinely directed residential origin–destination
 table, followed by evidence on tenure, affordability and why moves occurred.
 
+## A simpler challenge to the network model: predict the common trend
+
+There is a useful risk in a research workflow like this: adding a spatial
+network to a forecasting model may look sophisticated even when it fails
+to beat a more elementary description of the data. The previous rolling
+exercise compared the fixed network model with a ridge baseline that
+already contained local and metropolitan lagged changes. But the
+**baseline itself must earn its complexity**. A fair evaluation should
+ask whether any fitted regression is better than forecasts requiring no
+estimated coefficients at all.
+
+We therefore kept the same **17 municipalities**, the same **three
+held-out calendar years (2023, 2024 and 2025)**, and the same annual
+log-growth outcomes. No revised penalty, network weighting or feature
+selection was chosen after seeing the earlier results. We added three
+unfitted predictions: a zero-change forecast of annual log growth,
+the municipality's own prior-year log growth (persistence), and the
+unweighted AMP mean of *all municipalities'* prior-year log growth.
+All three use information dated in the previous observation year, not
+the actual outcome in the held-out target year. These are retrospective
+diagnostics; the original source release dates have **not** been audited
+to establish that the lagged statistics would have been available to a
+real-time decision-maker at each forecast origin.
+
+![Figure 16. Pooled out-of-year absolute-error comparison of three unfitted forecasts and the two previously evaluated ridge models, for sold-price and new-contract rent medians.](figures/fig16_rolling_housing_naive_benchmarks.png)
+
+The distinction is material. Figure 16 shows the mean absolute error in
+**annual log-growth percentage points** over 51 held-out
+municipality-years per outcome:
+
+| Forecast based on information from previous year | Sale-median MAE | New-contract rent-median MAE |
+| --- | ---: | ---: |
+| No annual log growth | 12.65 | 11.36 |
+| Municipality's own prior annual growth | 8.10 | 5.33 |
+| **AMP prior-year mean growth** | **5.60** | **3.85** |
+| Own and AMP lags, fixed ridge regression | 5.26 | 5.79 |
+| Same ridge with a commuting-network deviation | 5.19 | 8.14 |
+
+For **new-contract rents**, forecasting every municipality with the *same
+previous-year metropolitan mean* is more accurate than either fitted
+regression. It beats both ridge alternatives **in each held-out year**,
+not just after pooling. This does not prove that a single common shock
+*caused* the rent changes: unmeasured local factors, reporting composition,
+and shared trends can coexist. It does show that an explanatory story
+based on a distinct spatial-network signal needs to overcome a strong
+and remarkably simple competitor. For sold-price medians, the network
+ridge has the lowest pooled error, but its 0.07-point gain over the
+two-feature ridge is small compared with both models' absolute errors.
+
+### Which municipalities and years drive the apparent gain?
+
+A network may improve the metropolitan average while harming predictions
+in individual places. To make that possibility visible, calculate the
+baseline-minus-network *absolute-error difference* separately for each
+municipality, then average its three held-out years. Positive values
+favour the network; negative values favour the simpler ridge model.
+This is a descriptive decomposition of forecast errors, **not** a
+municipality-specific treatment effect.
+
+![Figure 17. Municipality-level mean changes in held-out forecast absolute error after adding 2021 commuting interactions. Negative bars mean worse network predictions, not outward residential flows.](figures/fig17_network_prediction_municipal_influence.png)
+
+For **new-contract rent**, the network model is worse on the three-year
+average in **all 17 municipalities**. This is stronger evidence of a
+predictive shortcoming than a negative metropolitan average driven by a
+single outlier. Deleting one municipality's three *evaluation cells*
+at a time leaves the overall rent-network advantage between **−2.485
+and −2.280** points; it never becomes positive. For sale prices, the
+same deletion leaves a small positive advantage between **+0.048 and
++0.100** points. That does not imply every municipality benefits: the
+individual bars have both signs. It only says that no single municipality
+alone reverses the pooled sign when the already-fitted predictions are
+rescored.
+
+Deleting whole calendar years gives a different warning. Removing the
+2025 held-out year from the *evaluation* leaves 2023 and 2024, and the
+sale-network improvement becomes approximately **−0.002 point** rather
+than +0.069. The small pooled sale gain depends on including the last
+test year. For rent, removing any one of the three test years still
+leaves the network worse. These are deliberate finite-sample
+perturbations, **not** bootstrap confidence intervals. There are only
+three target years, and errors for municipalities within a shared year
+should not be treated as independent samples.
+
+We also ran a separate, more demanding scope check. Exclude Porto
+altogether, remove its links from the interaction network, recompute
+the metropolitan mean over the other 16 municipalities, and **refit
+both ridge models** on their remaining prior observations. Under that
+specification, the network's pooled sale-price advantage becomes
+**−0.010 point**, and the rent advantage remains **−2.077 points**.
+This comparison changes several components of the prediction problem
+at once. It is not the counterfactual effect of removing Porto or a
+measure of housing transmission from Porto to the suburbs. It does
+show that the tiny apparent sale-network benefit is sensitive to the
+composition of the estimated metropolitan system.
+
+One further technical limitation deserves explicit disclosure. The
+2023 forecast uses **2022 as its only training target year**. All 17
+training municipalities therefore have the *same* predictor value
+for the AMP average growth in 2021. That feature is constant across
+training rows and **collinear with the regression intercept**. Its
+coefficient cannot be independently learned in that first fold,
+although the network deviation varies across municipalities. Later
+folds have more than one training target year, but the entire sample
+remains extremely short. We have not claimed an operational forecast
+with verified historical publication lags or a statistically identified
+spatial propagation effect.
+
+What does this mean for the original argument? A simultaneous rise in
+new-contract rents across the metropolitan area is compatible with
+scarcity spilling over between residential substitutes, but it is also
+compatible with a shared market-wide pressure. In this observed panel,
+the **simplest common-metropolitan forecast is the most successful rent
+predictor of those tested**, while the network fails to deliver
+incremental accuracy. This is a finding about *forecasting the annual
+median series*, not proof that households did not move. The unobserved
+direction of residential movement remains the central obstacle to
+testing the outward-cascade claim as a causal process.
+
 ---
 
 ## Sources and reproducibility
 
-The original eight figures and three tabular outputs, four observed mobility figures, one sharp non-identification figure and **two new annual timing/prediction figures** with companion CSV results can be regenerated using the commands in the [study README](README.md). The new directed-OD intake suite is software-only until a genuine aggregate table is released. The [fixed 17-municipality input](data/amp_municipal_panel_2019_2025.csv) is a derived extract from [DiogoRibeiro7/portugal-housing-generations](https://github.com/DiogoRibeiro7/portugal-housing-generations), pinned to [upstream commit 0407fae](https://github.com/DiogoRibeiro7/portugal-housing-generations/tree/0407faed1f08209b3d7682e19fc57e7120e62879). It does not assert that 2025 income observations or 2019 new-lease observations exist. The published mobility extracts have separate checksummed source records and distinct limitations.
+The original eight figures and three tabular outputs, four observed mobility figures, one sharp non-identification figure, two annual timing/prediction figures and **two forecast-robustness figures** with companion CSV results can be regenerated using the commands in the [study README](README.md). The new directed-OD intake suite is software-only until a genuine aggregate table is released. The [fixed 17-municipality input](data/amp_municipal_panel_2019_2025.csv) is a derived extract from [DiogoRibeiro7/portugal-housing-generations](https://github.com/DiogoRibeiro7/portugal-housing-generations), pinned to [upstream commit 0407fae](https://github.com/DiogoRibeiro7/portugal-housing-generations/tree/0407faed1f08209b3d7682e19fc57e7120e62879). It does not assert that 2025 income observations or 2019 new-lease observations exist. The published mobility extracts have separate checksummed source records and distinct limitations.
 
 1. Área Metropolitana do Porto. [Statutory definition and its 17 municipalities](https://www.amp.pt/en/amp-instituicao/area-metropolitana-do-porto-or-lei-no-752013/).
 2. Instituto Nacional de Estatística. [Local housing price methodology and geospatial context](https://www.ine.pt/ine_novidades/semin/INEWS38/files/assets/common/downloads/publication.pdf).

@@ -1,0 +1,150 @@
+{
+  "evidence_class": "observed_median_outcomes_exploratory_forecast_stress_test",
+  "source_panel_sha256": "88502e15b55a4d46536eed42ddc1924d30f555498d2c4a7e7a1b41fbeed71c66",
+  "network_source": "fixed_2021_undirected_work_study_interaction_matrix_not_residential_od",
+  "network_source_provenance": {
+    "indicator": "INE Censos 2021 0012340 (NUTS 2024 municipality geography)",
+    "indicator_url": "https://www.ine.pt/xurl/indx/0012340/PT",
+    "source_type": "third-party workbook export attributed to INE; not independently re-fetched from INE",
+    "source_repository": "andrebrito0/OD_Data_Portugal_Census_2021",
+    "source_commit": "a3bd023b8eab56962cb377d1f07c6279cde67007",
+    "source_url": "https://raw.githubusercontent.com/andrebrito0/OD_Data_Portugal_Census_2021/a3bd023b8eab56962cb377d1f07c6279cde67007/all_data.xlsx",
+    "source_workbook_sha256": "7d6dbb58be8356c868c9d0d548a81db27025228f662c5c09d71cd4ba1ee7dace",
+    "derived_csv_sha256": "0cd66cdefac5c8d5112f611e02217fda30916759d85f3b3f250d9080e055a8e2",
+    "geography": "17 AMP municipalities, 2021",
+    "row_count": 136,
+    "semantics": "undirected symmetric pair interactions for work/study; NOT residential relocation",
+    "diagonal": "all 17 self-pairs zero in source export; not a within-city commuter count",
+    "license": "Statistics Portugal open-data attribution CC BY 4.0; credit INE and workbook author"
+  },
+  "predictor_set": [
+    "no_change",
+    "persistence",
+    "amp_prior_mean",
+    "baseline_ridge",
+    "network_ridge"
+  ],
+  "test_years": [
+    2023,
+    2024,
+    2025
+  ],
+  "held_out_years": 3,
+  "municipalities": 17,
+  "benchmark_definitions": {
+    "no_change": "predict_annual_log_growth_zero",
+    "persistence": "predict_own_previous_year_annual_log_growth",
+    "amp_prior_mean": "predict_17_municipality_mean_previous_year_annual_log_growth",
+    "baseline_ridge": "own_prior_and_amp_prior_growth_fixed_ridge_lambda_1",
+    "network_ridge": "baseline_plus_2021_commuting_weighted_neighbor_prior_deviation_from_amp"
+  },
+  "pooled_benchmark": [
+    {
+      "outcome": "sold_price",
+      "target_year": "pooled",
+      "n_municipality_years": 51,
+      "no_change_mae_log_points": "12.650903",
+      "persistence_mae_log_points": "8.104954",
+      "amp_prior_mean_mae_log_points": "5.597173",
+      "baseline_ridge_mae_log_points": "5.256961",
+      "network_ridge_mae_log_points": "5.187891",
+      "baseline_minus_network_mae_log_points": "0.069070"
+    },
+    {
+      "outcome": "new_contract_rent",
+      "target_year": "pooled",
+      "n_municipality_years": 51,
+      "no_change_mae_log_points": "11.360642",
+      "persistence_mae_log_points": "5.333931",
+      "amp_prior_mean_mae_log_points": "3.854540",
+      "baseline_ridge_mae_log_points": "5.789929",
+      "network_ridge_mae_log_points": "8.141219",
+      "baseline_minus_network_mae_log_points": "-2.351290"
+    }
+  ],
+  "municipality_evaluation_deletion": {
+    "sold_price": {
+      "min_remaining_gain": 0.047816,
+      "max_remaining_gain": 0.100342
+    },
+    "new_contract_rent": {
+      "min_remaining_gain": -2.484963,
+      "max_remaining_gain": -2.280449
+    }
+  },
+  "year_evaluation_deletion": [
+    {
+      "outcome": "sold_price",
+      "excluded_test_year": 2023,
+      "n_remaining": 34,
+      "gain_after_evaluation_deletion": "0.089398"
+    },
+    {
+      "outcome": "sold_price",
+      "excluded_test_year": 2024,
+      "n_remaining": 34,
+      "gain_after_evaluation_deletion": "0.119701"
+    },
+    {
+      "outcome": "sold_price",
+      "excluded_test_year": 2025,
+      "n_remaining": 34,
+      "gain_after_evaluation_deletion": "-0.001890"
+    },
+    {
+      "outcome": "new_contract_rent",
+      "excluded_test_year": 2023,
+      "n_remaining": 34,
+      "gain_after_evaluation_deletion": "-2.060870"
+    },
+    {
+      "outcome": "new_contract_rent",
+      "excluded_test_year": 2024,
+      "n_remaining": 34,
+      "gain_after_evaluation_deletion": "-1.419109"
+    },
+    {
+      "outcome": "new_contract_rent",
+      "excluded_test_year": 2025,
+      "n_remaining": 34,
+      "gain_after_evaluation_deletion": "-3.573893"
+    }
+  ],
+  "porto_network_and_training_ablation": {
+    "sold_price": {
+      "all_17_gain": 0.06907,
+      "original_models_evaluation_without_porto_gain": 0.052189,
+      "refitted_16_and_network_without_porto_gain": -0.009595,
+      "held_out_municipality_years_after_refit": 48
+    },
+    "new_contract_rent": {
+      "all_17_gain": -2.35129,
+      "original_models_evaluation_without_porto_gain": -2.280449,
+      "refitted_16_and_network_without_porto_gain": -2.077093,
+      "held_out_municipality_years_after_refit": 48
+    }
+  },
+  "first_training_fold_feature_identifiability": {
+    "sold_price": {
+      "train_targets": 17,
+      "amp_prior_lag_train_sd": 0.0,
+      "baseline_intercept_augmented_rank": 2,
+      "network_intercept_augmented_rank": 3
+    },
+    "new_contract_rent": {
+      "train_targets": 17,
+      "amp_prior_lag_train_sd": 0.0,
+      "baseline_intercept_augmented_rank": 2,
+      "network_intercept_augmented_rank": 3
+    }
+  },
+  "limitations": [
+    "Only three held-out annual folds; municipality-years are spatially and temporally correlated",
+    "Historical prior-year observed medians may not have been published before real-time forecast decisions",
+    "Evaluation-only deletions are not refits, cluster bootstrap confidence intervals or formal hypothesis tests",
+    "The 2023 fold trains on a single calendar year, so its AMP prior mean is collinear with intercept",
+    "Porto removal changes training composition and row-normalized undirected weights, not an exogenous treatment",
+    "Nominal municipality medians are not fixed-quality housing indices or household affordability burdens",
+    "The commuting network does not identify directed residential moves or causal transmission"
+  ]
+}
