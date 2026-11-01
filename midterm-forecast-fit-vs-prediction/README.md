@@ -2,7 +2,11 @@
 
 A reproducible, historical-source-based statistical reconstruction and
 independent predictive audit of Steve Rattner's 30 October 2026 U.S. House
-midterm forecast. The companion supports the [Medium-ready article](article.md).
+midterm forecast. The companion supports the [final pre-election article](article.md)
+and the [Medium publication package](publication/README.md), including
+individually rendered equation images. The study is complete as an **ex-ante
+analysis**; post-election scoring is an optional follow-up rather than a
+blocker for publication.
 
 **As-of date:** 31 October 2026. The 2026 election has not occurred in this
 dataset. The House generic-ballot input D+8 and 220 Republican seats defended

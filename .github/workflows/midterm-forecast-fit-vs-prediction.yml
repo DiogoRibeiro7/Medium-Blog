@@ -32,9 +32,11 @@ jobs:
       - name: Install pinned dependencies
         run: python -m pip install -r requirements.txt
       - name: Compile source and tests
-        run: python -m compileall -q analysis.py model_extensions.py comparison_uncertainty.py forecast_lock.py score_after_election.py figures.py tests
+        run: python -m compileall -q analysis.py model_extensions.py comparison_uncertainty.py forecast_lock.py score_after_election.py figures.py prepare_medium_publication.py tests
       - name: Run scientific tests and fresh-kernel notebook
         run: python -m unittest discover -s tests -v
+      - name: Verify final Medium manuscript and equation artwork
+        run: python prepare_medium_publication.py --check
       - name: Recompute all numerical tables
         run: python analysis.py --output /tmp/midterm-reproduction
       - name: Recompute alternative-model comparisons
