@@ -32,7 +32,7 @@ DISPLAY_MATH: Final[re.Pattern[str]] = re.compile(r"(?ms)^\\\[\n(.*?)\n\\\]$")
 INLINE_MATH: Final[re.Pattern[str]] = re.compile(r"\\\((.*?)\\\)")
 FIGURE: Final[re.Pattern[str]] = re.compile(r"!\[([^\]]+)\]\((figures/[^)\s]+\.png)\)")
 MARKDOWN_LINK: Final[re.Pattern[str]] = re.compile(r"(?<!!)\[([^\]]+)\]\(([^)\s]+)\)")
-REFERENCES: Final[re.Pattern[str]] = re.compile(r"(?m)^(\d+)\. .+")
+TABLE_FIGURES: Final[tuple[str, ...]] = (\n    "historical-election-examples.png",\n    "forward-validation-comparison.png",\n    "estimator-sensitivity.png",\n    "paired-resampling-comparison.png",\n)\nTABLE_FIGURE_REF: Final[str] = "e31ce5cd4b0ec9f64c4e2977168514785796393e"\nREFERENCES: Final[re.Pattern[str]] = re.compile(r"(?m)^(\d+)\. .+")
 
 # All inline math expressions in the locked original are explicit. Reject new
 # expressions until a human chooses their publication-friendly wording.
@@ -149,7 +149,7 @@ def build_release_markdown(source: str) -> str:
         if not (ROOT / relative).is_file():
             raise ValueError(f"Missing figure: {relative}")
         # Pin the scientific figure to the existing merged pre-election revision.
-        url = f"https://raw.githubusercontent.com/{REPOSITORY}/{FROZEN_PUBLIC_REF}/{ARTICLE_DIRECTORY}/{relative}"
+        ref = TABLE_FIGURE_REF if Path(relative).name in TABLE_FIGURES else FROZEN_PUBLIC_REF\n        url = f"https://raw.githubusercontent.com/{REPOSITORY}/{ref}/{ARTICLE_DIRECTORY}/{relative}"
         return f"![{alt}]({url})"
 
     rendered = FIGURE.sub(replace_figure, rendered)
