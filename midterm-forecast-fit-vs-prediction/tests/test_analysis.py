@@ -266,11 +266,11 @@ class ReproducibilityTests(unittest.TestCase):
                 self.assertGreater(float(rows[1]["forward_generic_only_rmse"]),
                                    float(rows[1]["forward_rmse"]))
 
-    def test_eleven_publication_figures_regenerate(self) -> None:
+    def test_thirteen_publication_figures_regenerate(self) -> None:
         evidence = compute_evidence(draws=200)
         with tempfile.TemporaryDirectory() as temporary:
             paths = generate_figures(evidence, Path(temporary) / "figures")
-            self.assertEqual(len(paths), 11)
+            self.assertEqual(len(paths), 13)
             self.assertEqual([path.name for path in paths], list(FIGURE_FILES))
             self.assertTrue(all(path.stat().st_size > 10_000 for path in paths))
 

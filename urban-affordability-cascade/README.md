@@ -89,6 +89,8 @@ zero. The analysis's exact-period comparisons enforce those distinctions.
 | 11 | fig11_parish_intermunicipal_in_mobility.png | Porto parish shares with 2019 residence in another municipality | Observed destination margins, not OD flows |
 | 12 | fig12_parish_residential_mover_mix.png | Previous-residence categories among 2021 parish movers | Observed composition, not OD flows |
 | 13 | fig13_residential_od_identification_set.png | All directed Porto↔rest-AMP allocations allowed by observed margins | **Sharp logical bounds and hypothetical feasible worlds; not observed OD** |
+| 14 | fig14_nominal_housing_first_passage.png | Earliest reported annual median crossing four fixed nominal thresholds, with right-censored municipalities | **Observed median comparisons; no mover or displacement observations** |
+| 15 | fig15_rolling_housing_prediction_mae.png | Held-out annual growth forecast errors with and without one fixed commuting-network lag | **Exploratory prediction; not a causal transmission test** |
 
 The figure titles, manuscript captions and generated tables repeat the
 evidence-class distinction. There are no charts of invented historical
@@ -109,6 +111,13 @@ real municipalities.
 The municipal medians of growth rates in the article are unweighted across
 17 municipalities. They are *not* equivalent to the growth of a pooled or
 transaction-weighted metropolitan median.
+
+The temporal module adds `results/sequential_housing_first_passage.csv`,
+`results/sequential_housing_rolling_predictions.csv` (102 held-out
+municipality-years across both outcomes),
+`results/sequential_housing_rolling_summary.csv` (fold and pooled MAE), and
+`results/sequential_housing_provenance.json` (source identity, model contract,
+network-label benchmark and alternative-weight sensitivity).
 
 ## Mathematics and integrity checks
 
@@ -320,6 +329,46 @@ This produces:
 Nine additional tests check the sharp endpoints, signs, accounting identities,
 invalid inputs and deterministic artifacts: **49 tests in total**.
 
+## Next empirical step: request and validate actual residential OD counts
+
+The [data-access and intake specification](OD_DATA_ACCESS.md) now describes
+two documented INE routes: a special statistical cross-tabulation request,
+and an accredited scientific-research route whose eligibility must be
+confirmed. Census 2021 question 10 explicitly requested the **named
+municipality** of previous residence from people who had moved from another
+municipality. The available published extract groups that detail into
+"other municipality", so the cross-tabulation still needs authorization.
+
+The target is a **17-destination × 18-origin** aggregated table:
+
+- Destinations: the 17 official AMP 2021 DICO municipalities.
+- Origins: those 17 plus `REST_PT` for all other Portuguese municipalities.
+- Counts: individual 2021 residents formerly living in another Portuguese
+  municipality on **31 December 2019**, not commuters or households.
+- Privacy: explicit `observed`, `suppressed` and `structural_zero` statuses;
+  suppressed cells remain unknown, never zero-imputed.
+
+The new [residential_od_intake.py](residential_od_intake.py) validates a real
+authorized aggregate source **once it is obtained**, with a pinned SHA-256,
+exact DICO scope, a complete 306-cell grid, source metadata and reconciliation
+to **15,724 for Porto** and **124,618 for AMP**. With suppressions, it computes
+conservative sharp count bounds from the published marginal totals and the
+reported cell mask. It rejects changed universe, wrong dates, duplicate or
+missing municipality pairs, malformed integers, and personal-level columns.
+
+The command is intentionally unusable without a supplied authorized source:
+
+    python residential_od_intake.py \
+      --source-csv /path/to/approved_aggregate_od.csv \
+      --metadata-json /path/to/approved_release_metadata.json \
+      --output-json /tmp/porto-residential-od-audit.json
+
+**No real directed OD table has been received or committed.** Fourteen new
+tests use only disposable synthetic 18×17 tables; **63 total tests pass**.
+No statistical request has been submitted or external party contacted by
+this repository update. The manuscript remains a descriptive study until
+such a source is validated.
+
 ### Audited access routes for an actual directed OD table
 
 | Source | Available information | Missing for our estimand |
@@ -337,6 +386,72 @@ municipality on 19 April 2021**, with a clear universe, cell suppression,
 geographic version and access/licensing terms. To test housing displacement
 rather than mere exchange, origin/tenure and housing-cost information or a
 defensible causal design would also be needed.
+
+## Observed annual timing and rolling prediction (Stage B)
+
+The [sequential_pressure.py](sequential_pressure.py) follow-up reuses the
+**source-hashed** 17-municipality annual panel and the fixed 2021
+**undirected work/study interaction** weights. It adds no new data source.
+Run it offline, with 999 deterministic network-label shuffles, using:
+
+    python sequential_pressure.py --output /tmp/porto-sequential-check --shuffles 999
+
+The observed first-passage table reports the earliest *published year* in
+which a municipality median crosses a **nominal** cumulative threshold:
+sales use 2019 as baseline (+25/50/75/100%), while new-contract rents
+use 2020 (+25/50/75%). An empty cell means the threshold had **not** been
+reached through 2025; it is not imputed or assumed never to occur. All
+**17** municipalities first exceeded the +25% new-contract rent threshold
+in **2023**. For sold-price medians, +50% was first reached by **2** in
+2022, **8** in 2023, **6** in 2024, and **1** in 2025. Porto's median first
+reached sale +50% in 2023 and new-contract rent +50% in 2025. These
+aggregate thresholds provide neither a date for a household move nor
+evidence that one municipality drove another's price.
+
+To examine whether the observed connectivity helps *predict* later changes,
+the outcome is 100× the annual log ratio of successive medians. For each
+municipality and target year the fixed two-feature baseline contains its
+**own preceding-year growth** and the **AMP mean of the preceding-year
+growth**. The extra network feature is its 2021 interaction-weighted mean
+of **other** municipalities' preceding-year growth, *minus the AMP
+preceding-year mean*. The difference isolates the network-specific departure
+from a common metro change; it is not a measured spatial spillover.
+
+Both regressions use fixed ridge penalty **1.0**, with coefficients and
+feature standardization learned strictly from training years. Targets from
+**2022** form the first training fold; **2023**, **2024** and **2025** are
+tested one year at a time on 17 municipalities, without using any test-year
+outcome for its prediction. The short time series yields just **three
+held-out calendar years**, 51 municipality-years per outcome, and correlated
+observations; its predictive uncertainty is large and is not quantified by
+pretending the 51 observations are independent.
+
+| Held-out target | Sales baseline MAE | Sales + network | New-rent baseline MAE | New-rent + network |
+| --- | ---: | ---: | ---: | ---: |
+| 2023 | 3.13 | 3.10 | 7.15 | 10.08 |
+| 2024 | 4.86 | 4.89 | 6.15 | 10.37 |
+| 2025 | 7.78 | 7.57 | 4.07 | 3.97 |
+| **Pooled** | **5.26** | **5.19** | **5.79** | **8.14** |
+
+All values are MAE in **annual log-growth percentage points**, not median
+house prices or percentages of displaced households. For sale medians the
+network reduces pooled MAE by only **0.069** point. For new-contract rent
+it *increases* pooled MAE by **2.351** points. Alternative square-root and
+top-three-union weights leave the price improvement small (+0.057 and
++0.043), and the rent result worse (−2.817 and −1.654). In an informal
+999-draw network-label shuffle, the fractions with as much or more pooled
+improvement were **0.094** for sales and **0.989** for rents. These fractions
+are **not calibrated p-values**: municipality identities cannot reasonably
+be treated as exchangeable assignments, and the fixed 2021 network overlaps
+the outcomes' overall periods.
+
+The strongest defensible finding is **synchronized nominal new-rent
+thresholds but no consistent incremental network forecasting advantage**.
+Neither the threshold heatmap nor the forecasts identify an outward
+housing-affordability epidemic. Actual directed residential flows,
+household-level affordability and an identification strategy are still
+missing. Thirteen new tests enforce timing, censoring, model inputs,
+prediction leakage and deterministic outputs: **76 total tests**.
 
 ## Boundaries before publication
 

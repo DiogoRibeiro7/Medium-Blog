@@ -113,7 +113,59 @@ which are also not pair-level residential flows. A published/releasable
 municipality×municipality retrospective cross-tabulation remains an open
 source-access question; do not substitute a modelled allocation.
 
+**INE access checkpoint (31 October 2026).** Question 10 of the original
+Census 2021 individual questionnaire explicitly requests the *municipality
+and parish names* for previous residence in a different municipality. INE
+documents a user service for custom statistical cross-tabulations, and an
+INE–FCT–DGEEC protocol and safe-centre routes for eligible accredited
+scientific research. This is a realistic *request route*, not a guarantee of
+field availability, approval, price or public redistribution. The independent
+April 2026 INE newsletter confirms that research safe centres are active,
+including a Porto facility. The public request-form link did not load during
+this work session. All access and affiliation requirements must be confirmed
+before any submission. See [OD_DATA_ACCESS.md](OD_DATA_ACCESS.md) for a
+reviewable request text, the 17-destination×18-origin disclosure-safe grouping,
+the expected 15,724/124,618 nested reconciliation and the planned response
+checks. The accompanying [residential_od_intake.py](residential_od_intake.py)
+requires exact published counts or explicitly suppressed cells. Unit tests
+are synthetic and cannot stand in for collected migration data.
+
+**Annual timing / rolling-prediction checkpoint (31 October 2026).** The
+fixed 2019–2025 sold-price and 2020–2025 new-contract rent medians now
+support an audited Stage B first-passage calculation and an exploratory
+**2023–2025 one-year-ahead** forecasting exercise. The extra predictor is
+the *2021 undirected commuting-weighted* lagged neighbor growth **minus
+the preceding-year metropolitan mean growth**; a two-feature baseline
+already contains own and metropolitan lagged growth. Fixed
+train-standardized ridge regressions are re-estimated in each rolling
+origin without using held-out outcomes. In 51 municipality-year forecasts
+per outcome, network augmentation changes pooled MAE from **5.257 to
+5.188** log-growth points for sold-price medians, but worsens it from
+**5.790 to 8.141** for new-contract rents. Alternative network weights
+do not reverse the qualitative rent result. The 999 network-label shuffles
+are an **informal predictive benchmark**, not calibrated randomization
+inference or causal significance. All 17 new-contract rent medians crossed
++25% versus 2020 during the *published year* 2023; this annual nominal
+threshold pattern cannot establish a diffusion sequence or mobility.
+The OD data request remains **unsent**, and temporal association does not
+establish displacement or a directed propagation parameter.
+
 ## Planned analysis sequence
+
+### Stage 0 — Obtain or document denial of directed residential counts
+
+1. Ask INE whether an **aggregated anonymized custom tabulation** of Census
+   2021 question 10 can be made available and whether a no-cost academic
+   route applies. Do not submit without the researcher's approval.
+2. Request 2019 origin municipality × 2021 AMP destination municipality,
+   with all non-AMP Portuguese origins safely aggregated into one category.
+3. Require official geographic version, universe, count status, privacy
+   treatment, reference dates, citation, license, and source bytes/checksum.
+4. Validate complete scope and Porto/AMP totals. If suppressed, keep residual
+   uncertainty as a bound. If unavailable, maintain the original broad
+   non-identification result instead of inferring moves from commuting.
+5. Distinguish bilateral location change from *causally induced* housing
+   displacement; an OD table does not identify move motives.
 
 ### Stage A — Source and descriptive validation
 

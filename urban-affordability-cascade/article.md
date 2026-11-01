@@ -646,11 +646,216 @@ counts are compatible with sharply different metropolitan residential
 exchanges. The housing cascade remains a testable hypothesis. The needed
 test has become more precise.
 
+## Data-access note: from an unidentified flow to a testable one
+
+The next research step should begin with a request for data, not a more
+elaborate migration model. A closer inspection of the **original English
+version of the Census 2021 individual questionnaire** establishes a
+particularly useful fact: [question 10](https://censos.ine.pt/scripts/censos_css_js/quest/EN_Q_IND_Censos2021_EN_v03.pdf)
+did not merely ask whether a person had lived in another municipality on
+31 December 2019. It requested the **name of that municipality and its
+parish**. The statistical system therefore collected more detailed
+residential-origin information than the published aggregate table makes
+available. This does not establish that every response has been successfully
+geocoded or that the information can safely be released in cross-tabular
+form, but it makes a targeted data request reasonable.
+
+For the Porto question, the minimum useful release is small: 17 destination
+municipalities, each of the 17 Porto Metropolitan Area municipalities as
+potential origins, plus a single group representing every other Portuguese
+municipality. That is an 18-by-17 table of *aggregate person counts*, not
+an individual-level dataset. The 17 same-municipality diagonal cells are
+excluded by the definition of arriving from another municipality. With
+matching definitions and no confidentiality adjustment, the sum of these
+counts should agree with the independently observed **124,618** people in
+the metropolitan area who previously lived in another municipality. The
+Porto destination column should agree with **15,724**. Publishing an
+explicit suppression flag for protected cells would be more informative
+and honest than silently reporting them as zero.
+
+Two official access routes are documented. First, INE has described a
+[statistical-information request service](https://www.ine.pt/ine_novidades/semin/FI_RIIBES_47/files/assets/basic-html/page10.html)
+for custom tabulations, including Census questions. The historical form
+link was not available during this work, so its current operation and
+possible cost need confirmation. Second, an [INE–FCT–DGEEC scientific
+research arrangement](https://www.ine.pt/ine_novidades/semin/FI_RIIBES_51/files/assets/basic-html/page6.html)
+has provided options for authorized researchers, including approved
+anonymized statistical tabulations and secure access. INE's
+[April 2026 research-infrastructure report](https://www.ine.pt/ine_novidades/semin/INEWS65/index.html)
+confirms ongoing safe-centre activity, including in Porto. Neither route
+guarantees access to this Census variable or automatic eligibility for
+an applicant. It is sensible to ask first about a no-cost research option
+and permissible redistribution before commissioning anything.
+
+The [companion source-request protocol](OD_DATA_ACCESS.md) now defines the
+universe, geographic codes, dates, confidentiality questions and exact
+reconciliation totals. It also contains a reviewable Portuguese-language
+request to INE, **not sent as part of this research**. The companion
+intake validator checks any future approved aggregate table for source
+identity, missing or duplicated cells, correct arithmetic, and suppressed
+values. It can preserve logically valid bounds if some flows are hidden.
+Its tests generate artificial tables only in temporary directories; these
+are software test fixtures, not Portuguese relocation measurements.
+
+Even once an authentic residential origin–destination table arrives, the
+research question will not be finished. It would establish movements
+between municipalities by people residing in the metropolitan area at
+the Census date, while the causal question concerns *which households were
+priced out*, when, and under what alternatives. Reasons for moving,
+household tenure, economic circumstances and a credible exposure design
+would still matter. The statistical data-access task is a necessary step
+towards that analysis, not a substitute for it.
+
+## A chronology check: did housing pressure move outward from Porto?
+
+The housing cascade argument contains a temporal claim as well as a spatial
+one. It implies that housing prices or rents become difficult in the core,
+then that pressure is transmitted to plausible alternatives, and eventually
+that alternatives farther away become difficult too. The previous sections
+show why an actual *residential* origin–destination matrix is necessary to
+test the movement mechanism. But we can still ask two narrower questions
+using the published annual medians: **which municipalities crossed comparable
+nominal price-growth thresholds first**, and **does an observed spatial
+interaction network improve forecasts of subsequent housing-price changes?**
+
+Both questions are descriptive or predictive. Neither can by itself show
+that a tenant left Porto because of a rent increase, or that an outward
+move then caused higher rents in the destination. They are nonetheless
+worth pursuing: a cascade story should be compared with a common
+metropolitan shock, and a network should have to earn its place in a
+predictive model rather than be treated as confirmation by construction.
+
+### First-passage years from the observed annual series
+
+Consider each municipality's median **sold dwelling price per square
+metre** relative to its own 2019 value and its median **new-contract rent
+per square metre** relative to its own 2020 value. For a threshold of
+25%, 50%, 75% or 100% nominal cumulative growth, where available, identify
+the first **published calendar year** at or above that threshold. The
+choice of round-number thresholds is a transparent descriptive comparison,
+not a theory-derived definition of unaffordability. If a threshold is not
+reached by 2025, mark it *not yet* rather than making up a crossing date.
+The 2019 rent observation is missing from this source and is never
+interpolated. A municipal median is not the price trajectory of one
+unchanged property or the rent paid by an incumbent household.
+
+![Figure 14. First observed nominal median-price and new-contract rent threshold years in the 17 AMP municipalities. Blank thresholds remain explicitly right-censored rather than estimated.](figures/fig14_nominal_housing_first_passage.png)
+
+The chronology is striking, but not in the direction of a simple outward
+wave. All **17 municipalities** first crossed a **25% increase in median
+new-contract rents relative to 2020 in 2023**. At a 50% rent threshold,
+six crossed in 2024 and eleven in 2025, including Porto. At the 50%
+**sold-price** threshold, two had crossed by 2022, eight more in 2023,
+six in 2024 and the last one in 2025. Porto's sale median first passed
++50% in **2023**, later than Gondomar and Vila Nova de Gaia, and had
+not yet doubled relative to 2019 by 2025. Ten other municipalities had
+reached the +100% sale threshold by then; seven, including Porto, had not.
+
+This cannot establish that the surrounding municipalities became
+unaffordable before Porto. Growth measured against each municipality's
+different starting level need not track whether an actual household can
+afford to live there. Nor does an annual first-passage record establish
+the order of changes *within* 2023. Broad inflation, financing costs,
+housing-market composition, local supply and correlated demand could all
+contribute. The honest result is that the observed crossing dates **do
+not support a clear sequence of Porto first and every suburb later**.
+The shared 2023 rent crossing looks more like a synchronized annual
+pattern than a resolved municipality-by-municipality chain.
+
+### Does yesterday's commuting network help forecast tomorrow's prices?
+
+An even stricter diagnostic asks whether the fixed 2021 work/study
+interaction network adds anything to a simple forecast, **after including
+a metropolitan-wide lag**. Define the observed annual growth outcome for
+municipality (i) as
+
+\[
+g_{i,t}=100\log\left(\frac{P_{i,t}}{P_{i,t-1}}\right),
+\]
+
+where (P) denotes a published sale or new-contract rental median,
+analysed separately. The baseline model predicts (g_{i,t}) with the
+municipality's own prior-year change (g_{i,t-1}) and the mean prior-year
+change over all 17 AMP municipalities, \(\bar g_{t-1}\). The network-augmented
+model adds exactly one extra feature:
+
+\[
+x^{W}_{i,t-1}
+=\frac{\sum_{j\ne i}W_{ij}g_{j,t-1}}{\sum_{j\ne i}W_{ij}}
+-\bar g_{t-1}.
+\]
+
+Here (W_{ij}) is the *symmetric*, source-pinned count of 2021 work/study
+interactions between municipalities. The zero diagonal excludes the
+municipality's own growth from its neighbor term. Subtracting the AMP
+prior-year mean makes the additional predictor a **network-specific
+deviation from common metropolitan growth**. This distinction matters
+in a dense network where every municipality pair has a positive reported
+interaction: simply feeding the same broad metropolitan trend into a
+model twice would not isolate a useful connectivity signal.
+
+Both models use a simple ridge regression with a fixed penalty of 1.0,
+an unpenalized intercept, and predictor standardization estimated *only
+on the training years*. The first target in training is 2022, whose
+features come from 2021. For the 2023 held-out test, the model uses 2022
+as its only target-year training block; for 2024, it uses 2022–2023;
+and for 2025, 2022–2024. This is **rolling-origin, one-year-ahead**
+validation, not an in-sample fit. The 2021 network was measured before
+all forecast target years, but was **not** measured before the entire
+housing observation period, so it is not an instrument or causal shock.
+
+![Figure 15. One-year-ahead absolute prediction errors for annual log growth of the reported housing medians. The commuting-network predictor does not consistently improve held-out forecasts.](figures/fig15_rolling_housing_prediction_mae.png)
+
+Across the three held-out years there are **51 municipality-year
+predictions per outcome**. For median **sold prices**, the average
+absolute prediction error falls from **5.257** to **5.188** annual
+log-growth percentage points with the network feature: an improvement
+of just **0.069 point**. The feature helps slightly in 2023 and 2025
+but worsens the 2024 fold. For median **new-contract rents**, the error
+instead rises from **5.790 to 8.141 points**: the network feature
+*hurts* overall forecast accuracy by **2.351 points**, especially in
+the 2023 and 2024 folds. It helps rents only marginally in 2025.
+That is a clear warning against interpreting the interaction network as
+an automatically informative channel of rental-price transmission.
+
+Changing the network weighting does not rescue a strong prediction
+claim. Square-root-transformed weights and a network retaining unions
+of each municipality's three strongest partners produce pooled sold-price
+MAE improvements of only **0.057** and **0.043 points**, respectively.
+Their new-rent improvements are **negative** at **−2.817** and
+**−1.654 points**. A reproducible 999-draw shuffle of municipality labels
+on the network provides an informal comparison: **9.4%** of shuffled
+assignments have at least the observed sold-price improvement, versus
+**98.9%** for the observed rent improvement, which is unusually poor.
+Those fractions are **not formal p-values**. Municipalities are not
+exchangeable random treatment assignments, the shuffle is not a causal
+design, and three test years provide a very small time dimension.
+
+Equally important, the 51 predictions within each housing outcome are
+correlated in time and metropolitan space; they are not 51 independent
+replications of a causal effect. The models omit many potential common
+drivers, and their extra feature is a **commuting-interaction** lag,
+not a flow of households changing their residence. The output
+therefore neither proves that a cascade happened nor disproves that
+some people were displaced. It says something more specific: within this
+short annual panel, **the observed network has no consistent added
+forecasting advantage over local history and a common metropolitan lag**.
+
+The combined result refines the opening argument. Telling priced-out
+households to move outward does not magically create additional housing
+capacity; widespread scarcity and onward price pressure are economically
+plausible. Yet plausibility is not evidence of an epidemic moving in a
+particular direction. The annual nominal rent thresholds moved together,
+not in a resolved outward succession, and an extra connectivity feature
+failed to improve rental prediction. The next decisive empirical input
+remains an authorized, genuinely directed residential origin–destination
+table, followed by evidence on tenure, affordability and why moves occurred.
+
 ---
 
 ## Sources and reproducibility
 
-The original eight images and three tabular outputs, plus four observed mobility figures and companion CSV results, can be regenerated using the commands in the [study README](README.md). The [fixed 17-municipality input](data/amp_municipal_panel_2019_2025.csv) is a derived extract from [DiogoRibeiro7/portugal-housing-generations](https://github.com/DiogoRibeiro7/portugal-housing-generations), pinned to [upstream commit 0407fae](https://github.com/DiogoRibeiro7/portugal-housing-generations/tree/0407faed1f08209b3d7682e19fc57e7120e62879). It does not assert that 2025 income observations or 2019 new-lease observations exist. The new mobility extracts have separate checksummed source records and distinct limitations.
+The original eight figures and three tabular outputs, four observed mobility figures, one sharp non-identification figure and **two new annual timing/prediction figures** with companion CSV results can be regenerated using the commands in the [study README](README.md). The new directed-OD intake suite is software-only until a genuine aggregate table is released. The [fixed 17-municipality input](data/amp_municipal_panel_2019_2025.csv) is a derived extract from [DiogoRibeiro7/portugal-housing-generations](https://github.com/DiogoRibeiro7/portugal-housing-generations), pinned to [upstream commit 0407fae](https://github.com/DiogoRibeiro7/portugal-housing-generations/tree/0407faed1f08209b3d7682e19fc57e7120e62879). It does not assert that 2025 income observations or 2019 new-lease observations exist. The published mobility extracts have separate checksummed source records and distinct limitations.
 
 1. Área Metropolitana do Porto. [Statutory definition and its 17 municipalities](https://www.amp.pt/en/amp-instituicao/area-metropolitana-do-porto-or-lei-no-752013/).
 2. Instituto Nacional de Estatística. [Local housing price methodology and geospatial context](https://www.ine.pt/ine_novidades/semin/INEWS38/files/assets/common/downloads/publication.pdf).
@@ -669,5 +874,9 @@ The original eight images and three tabular outputs, plus four observed mobility
 15. Instituto Nacional de Estatística. [Censos 2021 municipal work/study interaction indicator 0012340](https://www.ine.pt/xurl/indx/0012340/PT), as transcribed in [André Brito's Census-derived workbook](https://github.com/andrebrito0/OD_Data_Portugal_Census_2021). This intermediary extract has not been rechecked against a working official INE API endpoint.
 16. Instituto Nacional de Estatística. [Censos 2021 population by municipality of current residence, sex and migration category, indicator 0011631](https://www.ine.pt/xurl/indx/0011631/PT). The inspected public catalog entry does not specify the prior municipality as an independent dimension.
 17. Instituto Nacional de Estatística. [Methodological document 113, annual resident population estimates](https://www.pordata.pt/sites/default/files/methodological_documentation/Documento_metodologico_estimativas_anuais_da_populacao_residente_113.pdf), section on estimating internal migration balances from Census previous-residence information.
+18. Instituto Nacional de Estatística. [English-language Census 2021 individual questionnaire, question 10](https://censos.ine.pt/scripts/censos_css_js/quest/EN_Q_IND_Censos2021_EN_v03.pdf). For a different previous municipality, it requests its name and parish.
+19. Instituto Nacional de Estatística. [Information-service notice on custom statistical tables](https://www.ine.pt/ine_novidades/semin/FI_RIIBES_47/files/assets/basic-html/page10.html). The historic request-form link requires current confirmation.
+20. Instituto Nacional de Estatística. [Researcher access under the INE–FCT–DGEEC arrangement](https://www.ine.pt/ine_novidades/semin/FI_RIIBES_51/files/assets/basic-html/page6.html), subject to accreditation and confidentiality terms.
+21. Instituto Nacional de Estatística. [INEWS 65 (April 2026), research data infrastructure and safe centres](https://www.ine.pt/ine_novidades/semin/INEWS65/index.html), including Porto.
 
 *Publication status: manuscript prepared for technical review. The reported descriptive statistics refer to the pinned October 2026 source snapshot. No estimates of observed displaced households, spatial transmission coefficients or policy causal effects are claimed.*

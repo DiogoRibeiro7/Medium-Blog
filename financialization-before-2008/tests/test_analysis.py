@@ -1,4 +1,4 @@
-"""Regression, source, measurement and publication checks for article #23."""
+"""Regression, source, measurement and publication checks for article #24."""
 
 from __future__ import annotations
 

@@ -1,0 +1,108 @@
+{
+  "evidence_classes": [
+    "observed_nominal_median_threshold",
+    "exploratory_prediction"
+  ],
+  "municipality_count": 17,
+  "source_panel_sha256": "88502e15b55a4d46536eed42ddc1924d30f555498d2c4a7e7a1b41fbeed71c66",
+  "commuting_source": {
+    "indicator": "INE Censos 2021 0012340 (NUTS 2024 municipality geography)",
+    "indicator_url": "https://www.ine.pt/xurl/indx/0012340/PT",
+    "source_type": "third-party workbook export attributed to INE; not independently re-fetched from INE",
+    "source_repository": "andrebrito0/OD_Data_Portugal_Census_2021",
+    "source_commit": "a3bd023b8eab56962cb377d1f07c6279cde67007",
+    "source_url": "https://raw.githubusercontent.com/andrebrito0/OD_Data_Portugal_Census_2021/a3bd023b8eab56962cb377d1f07c6279cde67007/all_data.xlsx",
+    "source_workbook_sha256": "7d6dbb58be8356c868c9d0d548a81db27025228f662c5c09d71cd4ba1ee7dace",
+    "derived_csv_sha256": "0cd66cdefac5c8d5112f611e02217fda30916759d85f3b3f250d9080e055a8e2",
+    "geography": "17 AMP municipalities, 2021",
+    "row_count": 136,
+    "semantics": "undirected symmetric pair interactions for work/study; NOT residential relocation",
+    "diagonal": "all 17 self-pairs zero in source export; not a within-city commuter count",
+    "license": "Statistics Portugal open-data attribution CC BY 4.0; credit INE and workbook author"
+  },
+  "residential_source_identity_not_used_for_predictions": "91cd3b83c8ed91169ff961f89128b7610d581419323bedb982a553a59bfcd928",
+  "outcome_definitions": {
+    "sold_price": "annual 100*log median sold EUR/m2 ratio, available 2019–2025",
+    "new_contract_rent": "annual 100*log new-lease median EUR/m2 ratio, available 2020–2025"
+  },
+  "thresholds_nominal_pct": {
+    "sold_price": [
+      25,
+      50,
+      75,
+      100
+    ],
+    "new_contract_rent": [
+      25,
+      50,
+      75
+    ]
+  },
+  "first_training_target": 2022,
+  "rolling_test_years": [
+    2023,
+    2024,
+    2025
+  ],
+  "baseline_features": [
+    "municipality_prior_annual_log_growth",
+    "amp_prior_annual_mean_log_growth"
+  ],
+  "network_additional_feature": "2021_undirected_interaction_weighted_prior_annual_neighbor_log_growth_minus_amp_prior_mean",
+  "ridge_lambda_on_train_standardized_features": 1.0,
+  "network_weights": "raw_symmetric_interaction_counts_row_normalized_for_feature",
+  "network_shuffle_benchmark_seed": 20261031,
+  "network_shuffles": 999,
+  "pooled_results": [
+    {
+      "outcome": "sold_price",
+      "test_year": "pooled",
+      "n_municipality_years": 51,
+      "baseline_mae_log_points": "5.256961",
+      "network_mae_log_points": "5.187891",
+      "baseline_minus_network_mae": "0.069070"
+    },
+    {
+      "outcome": "new_contract_rent",
+      "test_year": "pooled",
+      "n_municipality_years": 51,
+      "baseline_mae_log_points": "5.789929",
+      "network_mae_log_points": "8.141219",
+      "baseline_minus_network_mae": "-2.351290"
+    }
+  ],
+  "network_label_shuffle": {
+    "sold_price": {
+      "observed_network_mae_improvement": 0.06907,
+      "shuffle_median_improvement": -0.092216,
+      "shuffle_90th_percentile": 0.065826,
+      "fraction_shuffled_at_least_observed": 0.094,
+      "shuffles": 999
+    },
+    "new_contract_rent": {
+      "observed_network_mae_improvement": -2.35129,
+      "shuffle_median_improvement": -0.040803,
+      "shuffle_90th_percentile": 0.538142,
+      "fraction_shuffled_at_least_observed": 0.989,
+      "shuffles": 999
+    }
+  },
+  "alternative_network_weight_improvement_mae_points": {
+    "sqrt": {
+      "sold_price": 0.056639,
+      "new_contract_rent": -2.816708
+    },
+    "top3_union": {
+      "sold_price": 0.04327,
+      "new_contract_rent": -1.654227
+    }
+  },
+  "limits": [
+    "seven sale years, six new-rent years, and only three forecast evaluation years",
+    "nominal transaction and new-contract medians, not fixed-quality prices or incumbent rent",
+    "one 2021 commuting network, not a residential migration OD or a pretreatment instrument",
+    "forecast error difference is not an identified effect of network transmission",
+    "network-label permutations are an informal benchmark, not calibrated causal p-values",
+    "no measurement of household moves, eviction, affordability shocks, or real rent burdens"
+  ]
+}

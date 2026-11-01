@@ -32,13 +32,15 @@ jobs:
       - name: Install pinned dependencies
         run: python -m pip install -r requirements.txt
       - name: Compile source and tests
-        run: python -m compileall -q analysis.py model_extensions.py figures.py tests
+        run: python -m compileall -q analysis.py model_extensions.py comparison_uncertainty.py figures.py tests
       - name: Run scientific tests and fresh-kernel notebook
         run: python -m unittest discover -s tests -v
       - name: Recompute all numerical tables
         run: python analysis.py --output /tmp/midterm-reproduction
       - name: Recompute alternative-model comparisons
         run: python model_extensions.py --output /tmp/midterm-reproduction
+      - name: Recompute paired model-comparison uncertainty
+        run: python comparison_uncertainty.py --output /tmp/midterm-reproduction
       - name: Recompute all original figures
         run: python figures.py --output /tmp/midterm-reproduction
       - name: Verify canonical numerical snapshot is current
@@ -76,12 +78,22 @@ jobs:
                         'student_t_df_fixed', 'ridge_alpha_fixed', 'recency_half_life_years_fixed'):
               assert extension[field] == regenerated_extension[field], f'{field}: alternative-model design changed'
           equivalent(extension, regenerated_extension, 'alternative_models', tolerance=1e-5)
+          paired = json.loads(Path('results/paired_uncertainty_summary.json').read_text())
+          regenerated_paired = json.loads(Path('/tmp/midterm-reproduction/results/paired_uncertainty_summary.json').read_text())
+          for field in ('as_of', 'method', 'bootstrap_seed', 'bootstrap_draws',
+                        'bootstrap_quantiles', 'historical_forward_years', 'forward_count',
+                        'candidate_names', 'source_names', 'interpretation'):
+              assert paired[field] == regenerated_paired[field], f'{field}: paired design changed'
+          equivalent(paired, regenerated_paired, 'paired_uncertainty', tolerance=1e-5)
           tables = (
               ('forward_model_comparison.csv', 1e-9),
               ('source_sensitivity.csv', 1e-9),
               ('alternative_model_forward.csv', 1e-5),
               ('alternative_model_forward_gallup.csv', 1e-5),
               ('alternative_model_path.csv', 1e-5),
+              ('paired_loss_differences.csv', 1e-5),
+              ('paired_model_comparisons.csv', 1e-5),
+              ('paired_leave_one_year_out.csv', 1e-5),
           )
           for filename, tolerance in tables:
               with (Path('results') / filename).open(newline='') as source:
@@ -99,6 +111,6 @@ jobs:
                           equivalent(float(left[field]), float(right[field]), f'{filename}[{i}].{field}', tolerance)
                       except ValueError:
                           equivalent(left[field], right[field], f'{filename}[{i}].{field}')
-          assert len(list(Path('/tmp/midterm-reproduction/figures').glob('fig*.png'))) == 11
-          print('Canonical metrics, alternative models, and eleven publication figures verified')
+          assert len(list(Path('/tmp/midterm-reproduction/figures').glob('fig*.png'))) == 13
+          print('Canonical metrics, paired model uncertainty, and thirteen publication figures verified')
           PY
