@@ -1,0 +1,3 @@
+scenario,repeats,top_eigenvalue_mean,top_eigenvalue_mc_se,top_alignment_mean,top_alignment_mc_se,variance_explained_top_mean,variance_explained_top_mc_se,sample_size,ambient_dimension,population_spike
+noise,18,2.55454774473,0.0141190929788,0.00883453916703,0.00302545596512,0.0212981681675,0.000119766016077,320,120,0
+spike,18,4.53834541243,0.0888980949312,0.849126213128,0.00764168249622,0.0369186471153,0.000708513685702,320,120,3
