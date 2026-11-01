@@ -1,0 +1,135 @@
+{
+  "as_of": "2026-10-31",
+  "baseline_ols_rmse": {
+    "alternative_gallup": 8.973563283594627,
+    "primary": 8.695800072815182
+  },
+  "bootstrap_draws": 20000,
+  "bootstrap_quantiles": [
+    0.025,
+    0.975
+  ],
+  "bootstrap_seed": 20261031,
+  "candidate_names": [
+    "student_t",
+    "ridge",
+    "recency_wls"
+  ],
+  "forward_count": 10,
+  "historical_forward_years": [
+    1982,
+    1990,
+    1994,
+    1998,
+    2002,
+    2006,
+    2010,
+    2014,
+    2018,
+    2022
+  ],
+  "interpretation": "Descriptive paired-year resampling, not calibrated confidence intervals; electoral cycles may be dependent/nonexchangeable, and historical model specification choices precede this diagnostic.",
+  "method": "paired_year_bootstrap_and_leave_one_year_out",
+  "model_comparisons": [
+    {
+      "bootstrap_fraction_better": 0.77175,
+      "bootstrap_q025": -0.9824989735278743,
+      "bootstrap_q975": 0.330453387190318,
+      "candidate": "student_t",
+      "count": 10,
+      "delta_mse": -3.6827835480681976,
+      "delta_rmse": -0.2143995187613683,
+      "largest_loss_difference_share": 0.51391704759972,
+      "largest_loss_difference_year": 2010,
+      "lower_absolute_error_count": 5,
+      "omitted_year_delta_max": 0.032727303352697135,
+      "omitted_year_delta_min": -0.31078756359981874,
+      "omitted_year_reversal_count": 1,
+      "source": "primary"
+    },
+    {
+      "bootstrap_fraction_better": 0.09815,
+      "bootstrap_q025": -1.7202173140874475,
+      "bootstrap_q975": 9.23814357381749,
+      "candidate": "ridge",
+      "count": 10,
+      "delta_mse": 72.71376178549869,
+      "delta_rmse": 3.4833091184135103,
+      "largest_loss_difference_share": 0.22401534290485284,
+      "largest_loss_difference_year": 2006,
+      "lower_absolute_error_count": 2,
+      "omitted_year_delta_max": 6.656928786992474,
+      "omitted_year_delta_min": 2.398522592427703,
+      "omitted_year_reversal_count": 0,
+      "source": "primary"
+    },
+    {
+      "bootstrap_fraction_better": 0.2374,
+      "bootstrap_q025": -0.21691295939356933,
+      "bootstrap_q975": 1.8779238127003954,
+      "candidate": "recency_wls",
+      "count": 10,
+      "delta_mse": 7.6986380600727555,
+      "delta_rmse": 0.43193661085647683,
+      "largest_loss_difference_share": 0.6731157212851846,
+      "largest_loss_difference_year": 2010,
+      "lower_absolute_error_count": 5,
+      "omitted_year_delta_max": 0.9264225763000482,
+      "omitted_year_delta_min": -0.07639189412226521,
+      "omitted_year_reversal_count": 1,
+      "source": "primary"
+    },
+    {
+      "bootstrap_fraction_better": 0.42435,
+      "bootstrap_q025": -0.9739198601017393,
+      "bootstrap_q975": 0.5103012232662192,
+      "candidate": "student_t",
+      "count": 10,
+      "delta_mse": 0.8727439099861168,
+      "delta_rmse": 0.048497562723342824,
+      "largest_loss_difference_share": 0.2993859467841024,
+      "largest_loss_difference_year": 2010,
+      "lower_absolute_error_count": 5,
+      "omitted_year_delta_max": 0.2809623423239902,
+      "omitted_year_delta_min": -0.23982365924261106,
+      "omitted_year_reversal_count": 3,
+      "source": "alternative_gallup"
+    },
+    {
+      "bootstrap_fraction_better": 0.11065,
+      "bootstrap_q025": -2.1739978805943325,
+      "bootstrap_q975": 10.030043280539717,
+      "candidate": "ridge",
+      "count": 10,
+      "delta_mse": 79.92625806129807,
+      "delta_rmse": 3.6933659443585967,
+      "largest_loss_difference_share": 0.22402769821377974,
+      "largest_loss_difference_year": 2006,
+      "lower_absolute_error_count": 3,
+      "omitted_year_delta_max": 7.279247500268144,
+      "omitted_year_delta_min": 2.5378537698065244,
+      "omitted_year_reversal_count": 0,
+      "source": "alternative_gallup"
+    },
+    {
+      "bootstrap_fraction_better": 0.23315,
+      "bootstrap_q025": -0.31316004720697066,
+      "bootstrap_q975": 1.9935610455053,
+      "candidate": "recency_wls",
+      "count": 10,
+      "delta_mse": 7.279874785163993,
+      "delta_rmse": 0.39685361160494637,
+      "largest_loss_difference_share": 0.5743819213830086,
+      "largest_loss_difference_year": 2010,
+      "lower_absolute_error_count": 4,
+      "omitted_year_delta_max": 1.0133986376794297,
+      "omitted_year_delta_min": -0.08551888615100012,
+      "omitted_year_reversal_count": 1,
+      "source": "alternative_gallup"
+    }
+  ],
+  "source_names": [
+    "primary",
+    "alternative_gallup"
+  ]
+}

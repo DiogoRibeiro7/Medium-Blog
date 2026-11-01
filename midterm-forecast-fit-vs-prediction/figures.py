@@ -1,8 +1,8 @@
-"""Render eleven original, source-linked visualizations of midterm evidence.
+"""Render thirteen original, source-linked visualizations of midterm evidence.
 
 All plotted coordinates come from ``analysis.compute_evidence`` and
-``model_extensions.compute_model_evidence``; no sourced graphic is copied or
-edited. The exercise is reproducible and seed-fixed.
+``model_extensions.compute_model_evidence`` plus paired uncertainty diagnostics;
+no sourced graphic is copied or edited. Reproducibility seeds are fixed.
 """
 
 from __future__ import annotations
@@ -20,6 +20,7 @@ from matplotlib.axes import Axes
 from matplotlib.figure import Figure
 
 from analysis import Evidence, ROOT, compute_evidence, influence, prediction_interval
+from comparison_uncertainty import PairedEvidence, compute_paired_evidence
 from model_extensions import ModelEvidence, compute_model_evidence
 
 Array = npt.NDArray[np.float64]
@@ -44,6 +45,8 @@ FIGURE_FILES: tuple[str, ...] = (
     "fig9_scenario_heatmap.png",
     "fig10_candidate_model_rmse.png",
     "fig11_training_origin_stability.png",
+    "fig12_student_t_paired_losses.png",
+    "fig13_paired_rmse_uncertainty.png",
 )
 
 
@@ -350,6 +353,62 @@ def training_origin_stability(extensions: ModelEvidence, dest: Path) -> None:
     _save(fig, dest)
 
 
+def student_t_paired_losses(paired: PairedEvidence, dest: Path) -> None:
+    """Figure 12: which held-out years drive the Student-t/OLS RMSE gap?"""
+
+    primary = [row for row in paired.losses if row.source == "primary"]
+    alternative = [row for row in paired.losses if row.source == "alternative_gallup"]
+    years = [row.year for row in primary]
+    if years != [row.year for row in alternative]:
+        raise ValueError("Gallup series must share the same test elections")
+    x = np.arange(len(years), dtype=float)
+    fig, ax = plt.subplots(figsize=(11.3, 6.3))
+    ax.axhline(0, lw=1.2, color=INK, zorder=2)
+    ax.bar(x - 0.19, [r.student_t_minus_ols for r in primary], width=0.37,
+           color=BLUE, label="Primary Gallup", zorder=3)
+    ax.bar(x + 0.19, [r.student_t_minus_ols for r in alternative], width=0.37,
+           color=GOLD, label="Alternative Gallup", zorder=3)
+    ax.set_xticks(x, labels=[str(year) for year in years])
+    ax.set_ylabel("Student-t squared error − OLS squared error (seats²)")
+    ax.set_xlabel("Chronologically held-out midterm election")
+    ax.set_title("One loss differential is not ten identical improvements")
+    ax.grid(True, axis="y", zorder=0, alpha=0.2)
+    ax.legend(frameon=False, loc="upper left")
+    _footer(fig, "Negative = Student-t lower squared error. Same observed outcomes; only 1962/1998 Gallup training inputs change.")
+    fig.subplots_adjust(bottom=0.15)
+    _save(fig, dest)
+
+
+def paired_rmse_uncertainty(paired: PairedEvidence, dest: Path) -> None:
+    """Figure 13: descriptive resampling percentiles, not confidence intervals."""
+
+    fig, ax = plt.subplots(figsize=(10.9, 6.25))
+    candidates = ("student_t", "recency_wls", "ridge")
+    names = ("Student-t (df=4)", "Recency WLS (24 y)", "Ridge (alpha=2)")
+    specs = (("primary", BLUE, -0.17, "Primary Gallup"),
+             ("alternative_gallup", GOLD, 0.17, "Alternative Gallup"))
+    lookup = {(row.source, row.candidate): row for row in paired.comparisons}
+    for source, color, offset, label in specs:
+        for i, name in enumerate(candidates):
+            row = lookup[(source, name)]
+            y = float(i) + offset
+            ax.hlines(y, row.bootstrap_q025, row.bootstrap_q975, lw=4.0,
+                      color=color, alpha=0.83, zorder=3)
+            ax.plot(row.delta_rmse, y, "o", color=color, markersize=8,
+                    markeredgecolor=PAPER, zorder=4)
+        ax.plot([], [], "o-", color=color, label=label)
+    ax.axvline(0, color=INK, lw=1.2, zorder=2)
+    ax.set_yticks(np.arange(len(names)), labels=names)
+    ax.invert_yaxis()
+    ax.set_xlabel("Candidate RMSE − OLS RMSE (House seats)")
+    ax.set_title("Ten paired errors cannot establish a precise leaderboard")
+    ax.legend(frameon=False, loc="upper right")
+    ax.grid(True, axis="x", zorder=0, alpha=0.2)
+    _footer(fig, "Dots: original 10-year RMSE gap. Lines: paired-year bootstrap 2.5–97.5% percentiles; NOT calibrated CIs.")
+    fig.subplots_adjust(left=0.24, bottom=0.13)
+    _save(fig, dest)
+
+
 def generate_figures(evidence: Evidence, output: Path) -> tuple[Path, ...]:
     """Create every figure deterministically and return the verified paths."""
 
@@ -367,6 +426,9 @@ def generate_figures(evidence: Evidence, output: Path) -> tuple[Path, ...]:
     extensions = compute_model_evidence()
     candidate_model_rmse(evidence, extensions, output / FIGURE_FILES[9])
     training_origin_stability(extensions, output / FIGURE_FILES[10])
+    paired = compute_paired_evidence(extensions)
+    student_t_paired_losses(paired, output / FIGURE_FILES[11])
+    paired_rmse_uncertainty(paired, output / FIGURE_FILES[12])
     paths: tuple[Path, ...] = tuple(output / name for name in FIGURE_FILES)
     if not all(path.exists() and path.stat().st_size > 10_000 for path in paths):
         raise OSError("A figure was not correctly generated")

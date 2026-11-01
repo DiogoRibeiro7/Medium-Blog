@@ -30,6 +30,8 @@ are a **snapshot of the original forecast**, not an ongoing live poll average.
 | Fixed Student-t (ν=4) forward RMSE / 2026 conditional forecast | 8.48 / −33.76 seats |
 | Fixed ridge (α=2) forward RMSE / 2026 conditional forecast | 12.18 / −31.06 seats |
 | Fixed 24-year recency WLS forward RMSE / 2026 conditional forecast | 9.13 / −30.98 seats |
+| Student-t minus OLS forward RMSE, primary / alternative Gallup | −0.214 / +0.048 seats |
+| Student-t minus OLS paired-bootstrap percentile range, primary | [−0.98, +0.33] seats (descriptive, **not** a CI) |
 
 The original chart says approximately **−33** and **R²=0.89**. These numerical
 matches are close, but **not exact replication**: the author's design matrix,
@@ -45,12 +47,13 @@ directory:
 python -m pip install -r requirements.txt
 python analysis.py
 python model_extensions.py
+python comparison_uncertainty.py
 python figures.py
 python -m unittest discover -s tests -v
 ```
 
-These commands regenerate committed data tables, eleven original PNG figures,
-and run **43 scientific, data-provenance and fresh-kernel notebook tests**.
+These commands regenerate committed data tables, thirteen original PNG figures,
+and run **53 scientific, data-provenance and fresh-kernel notebook tests**.
 The notebook is [model_walkthrough.ipynb](model_walkthrough.ipynb).
 The `.github/workflows/midterm-forecast-fit-vs-prediction.yml` job is scoped to
 this folder and can be dispatched manually. It regenerates into a separate
@@ -58,7 +61,8 @@ temporary folder and compares canonical numerical metrics and both benchmark
 tables using tight floating-point tolerances (1e-9 absolute and relative),
 while requiring exact metadata, schemas, row counts and figure counts. The
 additional Student-t optimizer snapshots receive a 1e-5 numeric tolerance,
-with all schemas, evaluation dates and parameter choices checked exactly. This
+as do its paired-error diagnostics, with schemas, evaluation dates and fixed
+seed/draw specifications checked exactly. This
 allows harmless platform-level BLAS differences without accepting substantive
 numerical drift. No API tokens, proprietary datasets or election-night data
 are needed.
@@ -94,11 +98,27 @@ the source sensitivity in
 and retrospective fixed-2026-input training-path calculations in
 [`results/alternative_model_path.csv`](results/alternative_model_path.csv).
 
+The third analysis audits how stable the **model ranking** is, without changing
+the forecasts. It computes candidate-minus-OLS squared loss for every common
+test election, omits each test year simultaneously from both methods, and
+resamples the ten **paired** forecast-error rows 20,000 times (seed 20261031).
+Under the primary Gallup transcription, Student-t's apparent 0.214-seat RMSE
+advantage reverses if the 2010 test year is omitted. The primary paired
+bootstrap 2.5–97.5% RMSE-difference percentile range is [−0.98, +0.33]; the
+alternative-Gallup range is [−0.97, +0.51]. These are **descriptive resampling
+ranges, not calibrated confidence intervals**. Resampling does not create
+independent midterm elections, and chronological errors can share training
+history. The outputs are the [per-year squared-loss differences](results/paired_loss_differences.csv),
+[paired resampling summaries](results/paired_model_comparisons.csv),
+[one-year omission rows](results/paired_leave_one_year_out.csv), and
+[run specification](results/paired_uncertainty_summary.json).
+
 To regenerate without changing the working tree:
 
 ```bash
 python analysis.py --output /tmp/midterm-reproduction
 python model_extensions.py --output /tmp/midterm-reproduction
+python comparison_uncertainty.py --output /tmp/midterm-reproduction
 python figures.py --output /tmp/midterm-reproduction
 ```
 
@@ -148,7 +168,7 @@ The 2026 input \(G^{(P)}=-8\), \(S=220\) produces approximately
 associations, not policy effects**; in particular, the defended-seats
 coefficient is partly a mechanical capacity/context measure.
 
-## Eleven original evidence figures
+## Thirteen original evidence figures
 
 | # | PNG | Exact claim or diagnostic |
 | --- | --- | --- |
@@ -163,8 +183,10 @@ coefficient is partly a mechanical capacity/context measure.
 | 9 | [scenario heatmap](figures/fig9_scenario_heatmap.png) | Two-input sensitivity surface; not a probability distribution |
 | 10 | [estimator RMSE comparison](figures/fig10_candidate_model_rmse.png) | OLS, Student-t, ridge, recency weighting and ballot-only on common targets under both Gallup source readings |
 | 11 | [training-endpoint stability](figures/fig11_training_origin_stability.png) | Four historical coefficient paths for the fixed 2026 scenario; explicitly not contemporary historical forecasts |
+| 12 | [Student-t paired losses](figures/fig12_student_t_paired_losses.png) | Held-out squared-error differences relative to OLS, primary and alternative Gallup sources |
+| 13 | [paired RMSE uncertainty](figures/fig13_paired_rmse_uncertainty.png) | Paired-year bootstrap percentile ranges for candidate-minus-OLS RMSE; **not confidence intervals** |
 
-Figures 1–11 are generated **exclusively** from committed data and source code,
+Figures 1–13 are generated **exclusively** from committed data and source code,
 never digitized from the Rattner screenshot. Every generated table under
 [`results/`](results/) is either a result, diagnostic, forecast or scenario—not
 newly observed historical data. `results/summary.json` records the exact
@@ -196,10 +218,15 @@ numbers cited in the article, including reproducibility seed and draw count.
    calibrated uncertainty for the new Student-t, ridge or recency methods.
    Comparing their point forecasts is not model averaging or an interval.
    Small differences in forward RMSE on ten elections do not select a winner.
+8. **Paired-bootstrap limitation:** Resampling ten shared error pairs avoids
+   treating candidate and reference losses as independent, but it does not
+   establish exchangeability or independence across electoral cycles. Its
+   quantile bands and resampling frequencies are diagnostic descriptions,
+   not confidence intervals or probabilities of future superiority.
 
 ## Publication contract
 
-The draft has more than 8,000 words, original derivations, eleven data-grounded
+The draft has more than 8,000 words, original derivations, thirteen data-grounded
 figures with captions and alt text, links to all primary data and methodology,
 and a balanced conclusion distinguishing fit from prediction. No claims of
 post-election success or failure are made before 3 November 2026.
