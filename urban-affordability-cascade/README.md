@@ -106,6 +106,8 @@ zero. The analysis's exact-period comparisons enforce those distinctions.
 | 21 | fig21_rent_vs_fiscal_income_growth_2020_2024.png | Municipal new-contract rent median growth vs gross fiscal-income median growth | **Descriptive separate-population medians, not tenant income** |
 | 22 | fig22_porto_relative_rent_discounts_2020_2025.png | Porto-relative percentage discount in every other AMP municipality, 2020 and 2025 | **Independent municipal new-rent medians; not a set of available moving choices** |
 | 23 | fig23_porto_rent_discount_and_real_savings_annual.png | Annual median/IQR of relative discounts and illustrative 70 m² rent savings adjusted to 2020 consumer euros | **Synthetic rent-only comparisons; no actual moving or travel expenses** |
+| 24 | fig24_porto_link_intensity_vs_rent_discount_compression.png | 2021 Porto-pair interactions per 1,000 comparator residents against 2020–2025 percentage-point rent-discount compression | **Undirected work/study links, not resident movers or causal exposure** |
+| 25 | fig25_porto_link_rank_sensitivity_windows.png | Spearman correlations over 2020/2021/2022/2023–2025 windows and three Porto-link exposure normalizations | **Exploratory window sensitivity; shared Porto denominator and dependent municipalities** |
 
 The figure titles, manuscript captions and generated tables repeat the
 evidence-class distinction. There are no charts of invented historical
@@ -725,6 +727,42 @@ municipal rent medians need not compare equivalent dwellings.
 Savings exclude moving costs, jobs, transport, time, household income,
 vacancy and rental availability, so they do not measure net benefits
 for anyone asked to move out of Porto.
+
+## Porto-link intensity and rent-discount compression (figures 24–25)
+
+The reproducible follow-up tests whether the 2021 **undirected**
+Porto work/study pair intensity aligns with percentage-point compression
+of the comparator's Porto-relative new-contract rent discount through
+2025. The 16-municipality 2020–2025 Spearman values are **−0.179412**
+for raw Porto pair counts, **−0.297059** for counts per 1,000 2021
+municipal residents and **−0.270588** for Porto's share of the
+municipality's within-AMP pair strength. Raw Porto pair counts are
+very closely ranked with population (**+0.973529**). With 2023 rather
+than 2020 as the baseline, all three correlations become weakly
+positive (about +0.16, +0.02 and +0.05). The 16 primary
+population-normalized leave-one-out correlations remain negative.
+
+Regenerate figures 24–25, the 16-row exposure table, 12 rank/shuffle
+benchmarks, 16 leave-one-out comparisons and a source/caveat ledger:
+
+    python porto_network_gradient.py --output /tmp/porto-network-gradient --shuffles 9999
+
+Results are saved as
+results/porto_network_gradient_municipal_exposures.csv,
+results/porto_network_gradient_rank_benchmarks.csv,
+results/porto_network_gradient_leave_one_out.csv and
+results/porto_network_gradient_provenance.json. The fixed-seed
+random-label shuffle tail fractions are deliberately labeled **not
+inferential p-values**; they assume implausible municipal label
+exchangeability. Population normalization is not a commuter share.
+The source is a checksummed *third-party* Census-derived workbook
+attributed to INE, not a verified direct INE download. Counts are
+undirected work/study interactions, not residential OD moves; the
+2021 network overlaps the 2020–2025 outcome. These correlations
+are descriptive and cannot establish displacement or rent spillovers.
+Fourteen additional unit tests cover rankings, source-linked exact
+values, shuffles, window stability, deletions and regenerated outputs:
+**140 tests total**.
 
 ## Boundaries before publication
 

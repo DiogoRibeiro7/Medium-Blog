@@ -1,0 +1,60 @@
+{
+  "evidence_class": "exploratory_noncausal_fixed_commuting_pair_rent_discount_rank_association",
+  "housing_upstream_commit": "0407faed1f08209b3d7682e19fc57e7120e62879",
+  "housing_fixed_panel_sha256": "88502e15b55a4d46536eed42ddc1924d30f555498d2c4a7e7a1b41fbeed71c66",
+  "commuting_derived_csv_sha256": "0cd66cdefac5c8d5112f611e02217fda30916759d85f3b3f250d9080e055a8e2",
+  "commuting_source_workbook_sha256": "7d6dbb58be8356c868c9d0d548a81db27025228f662c5c09d71cd4ba1ee7dace",
+  "commuting_interpretation": "undirected symmetric pair interactions for work/study; NOT residential relocation",
+  "hicp_official_source_sha256": "11742a14bd70d43c22e7170b07b65081f582d2a85eeac22005448f20327bd117",
+  "municipalities": 16,
+  "windows": [
+    [
+      2020,
+      2025
+    ],
+    [
+      2021,
+      2025
+    ],
+    [
+      2022,
+      2025
+    ],
+    [
+      2023,
+      2025
+    ]
+  ],
+  "exposure_modes": [
+    "raw_interactions",
+    "per_1000_residents",
+    "share_of_amp_interactions"
+  ],
+  "shuffles": 9999,
+  "seed": 20261101,
+  "raw_porto_pair_count_vs_2021_population_spearman_rho": "0.973529",
+  "primary_per_1000_2020_2025": {
+    "window_start_year": 2020,
+    "window_end_year": 2025,
+    "exposure_mode": "per_1000_residents",
+    "municipalities": 16,
+    "spearman_rho": "-0.297059",
+    "shuffled_label_two_sided_tail_fraction_not_p_value": "0.265200",
+    "leave_one_out_min_rho": "-0.503571",
+    "leave_one_out_max_rho": "-0.221429",
+    "shuffles": 9999,
+    "seed": 20261101
+  },
+  "limits": [
+    "Original 2021 commuting interaction counts are symmetric and have no direction; they are not residential moves",
+    "2021 work/study interactions are a third-party workbook extract not independently verified by a direct INE API response",
+    "The network overlaps 2020-2025 housing outcomes and cannot act as an exogenous pre-treatment exposure",
+    "Porto pair intensity per 1,000 residents is a mechanical normalization, not an individual commuter probability",
+    "The within-AMP share denominator excludes all interactions outside the 17-municipality subset",
+    "The outcome is a difference of independent new-contract rent median ratios, not a quality-adjusted rent change",
+    "Random-label benchmark fractions are not inferential p-values: municipal exchangeability is implausible",
+    "Three exposure conventions and four timing windows are exploratory, not a post-selection causal model",
+    "Only 16 dependent municipality comparisons share the same Porto reference; no directional price transmission identified",
+    "No household displacement, residential OD flow, real renter burden or travel-time accessibility is measured"
+  ]
+}

@@ -232,6 +232,29 @@ transmission. Figures 22–23 and the derived 96-row annual
 comparison table document the result. Housing and HICP sources
 retain their original pinned checksums.
 
+**Porto-link rent-gradient checkpoint (1 November 2026).** The
+2021 symmetric work/study pair matrix supports an exploratory
+rank-comparison diagnostic, **not** directional commuting, residential
+origin–destination moves or a causal spillover design. For each of
+the 16 other AMP municipalities, compare the 2020 Porto-relative
+new-rent discount with its 2025 value. The Spearman association
+between the resulting percentage-point discount compression and
+the municipality's Porto-pair interactions is **−0.179412** raw,
+**−0.297059** divided by its 2021 population (per 1,000) and
+**−0.270588** divided by its within-AMP interaction strength.
+Raw Porto links rank with municipal population at **+0.973529**.
+Compare alternative 2021/2022/2023 baselines against 2025; the
+three exposure associations all become weakly positive with the
+2023 baseline. Recalculate all 16 leave-one-out results rather
+than selecting favorable municipalities. A fixed-seed random-label
+shuffle benchmark is **not** an inferential p-value: municipalities
+are spatially dependent and not exchangeable. The 2021 network
+overlaps the rent window, and its third-party workbook provenance
+has not been confirmed against the official direct INE API.
+Figures 24–25 and four diagnostic result files preserve these
+boundaries. Do not interpret negative correlations as absence of
+displacement or positive alternatives as causal evidence.
+
 ## Planned analysis sequence
 
 ### Stage 0 — Obtain or document denial of directed residential counts

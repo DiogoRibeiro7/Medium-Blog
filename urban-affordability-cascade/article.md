@@ -1416,6 +1416,112 @@ residential relocation mechanism.
 
 ---
 
+## Does a stronger Porto commuting link predict rent-discount compression?
+
+The next test asks a narrower, falsifiable question. If housing pressure
+spreads most strongly along Porto's everyday metropolitan connections,
+would municipalities with more intense Porto links in the 2021 work/study
+interaction network show greater *subsequent or contemporaneous* narrowing
+of their new-contract rent discounts relative to Porto? This is a useful
+descriptive diagnostic, but it is not an identification strategy for
+housing displacement. The network is undirected and its 2021 observation
+falls inside the rent comparison period.
+
+We retain the same 16 non-Porto AMP municipalities and the same pinned
+municipal rent medians. For municipality j and year t, the earlier
+discount is 100 times one minus the ratio of its new-contract rent
+median to Porto's. The outcome here is its starting-year discount
+minus its 2025 discount, measured in percentage points. A positive
+number denotes a narrowing relative discount; it does **not** mean
+that rents, rental homes or households were individually tracked.
+The main window starts in 2020, the first year with the required
+new-lease medians. We also inspect baselines of 2021, 2022 and 2023
+against the same 2025 endpoint. These overlapping windows are
+sensitivity checks, not independent replications.
+
+The exposure has three deliberately distinct definitions: the raw
+2021 undirected work/study interaction count between Porto and the
+municipality; that count divided by the municipality's 2021
+population and multiplied by 1,000; and the Porto pair count divided
+by the municipality's total weighted interactions *within the
+17-municipality AMP network*. The per-resident quotient is not the
+fraction of residents commuting to Porto: an undirected count has
+neither a residential origin nor an identified unique-commuter
+denominator. The AMP share excludes external links. None of the
+three measures residential moving choices.
+
+![Figure 24. Scatter of 2021 Porto-linked work/study interactions per 1,000 municipal residents against the 2020–2025 percentage-point compression in Porto-relative new-lease rent discounts; the descriptive rank correlation is negative.](figures/fig24_porto_link_intensity_vs_rent_discount_compression.png)
+
+In the 16 comparisons, Spearman's rank association between 2021
+Porto-link counts and 2020–2025 discount compression is approximately
+**−0.18** using raw counts, **−0.30** using interactions per 1,000
+municipal residents and **−0.27** using the within-AMP network share.
+The elementary prediction of a *positive* cross-sectional rank
+gradient is not apparent in this window. But a small negative rank
+association is not proof of a negative spillover, and certainly not
+evidence that the metropolitan affordability mechanism is absent.
+The 16 observations share Porto's rent denominator and are spatially
+dependent; measurement error and local supply, income, transport and
+housing-composition differences remain unresolved.
+
+There is a severe denominator and size consideration. The raw pair
+count's Spearman correlation with 2021 municipal population is
+**+0.97**. A large municipality therefore tends to have a large
+Porto pair count even without especially intensive connection per
+resident. Dividing by population changes the exposure question but
+does not solve selection, directionality, cross-boundary travel or
+confounding. For scale, the fixed undirected Porto pair weights are
+39,960 for Vila Nova de Gaia, 31,142 for Matosinhos and 512 for
+Arouca; they are **not** counts of people displaced from Porto.
+
+![Figure 25. Heatmap of Spearman correlations for three definitions of Porto-link intensity and four start-year windows ending in 2025; the sign and magnitude vary with the window.](figures/fig25_porto_link_rank_sensitivity_windows.png)
+
+The time window matters. With a 2021 baseline, the rank correlations
+are roughly **−0.28**, **−0.39** and **−0.34** for raw, per-resident
+and AMP-share exposure respectively; with 2022 they are **−0.42**,
+**−0.44** and **−0.44**. By contrast, with 2023 as the baseline the
+values become about **+0.16**, **+0.02** and **+0.05**. This sign
+change makes a timeless claim that strong commuting links *predict*
+rent convergence especially fragile. Nor does choosing a favorable
+baseline after inspection create an independent test.
+
+Deleting each municipality in turn does not make the primary
+per-resident 2020–2025 association positive: the leave-one-out
+correlations run approximately from **−0.50 to −0.22**. The output
+also contains a fixed-seed, two-sided random-label shuffle fraction
+for each of the 12 exposure/window combinations. Those numbers
+are **not inferential p-values**. Municipalities are not plausibly
+exchangeable draws: they share geography, employers, a Porto
+reference series and overlapping networks. Shuffling labels merely
+shows how unusual an observed rank matching is under an artificial
+assignment exercise, without making that assignment credible.
+
+There is a further provenance limit. The 2021 commuting pair matrix
+is frozen and checksummed, but comes from a third-party workbook
+attributed to an INE Census indicator; we have not reconciled these
+specific values against a fresh direct official API response. The
+network measures undirected work/study interactions, not migration,
+and it cannot be treated as a pre-2020 exogenous exposure for a
+2020–2025 outcome. The rent medians refer to changing sets of new
+contracts, not quality-adjusted rents for repeated homes. The
+national HICP does not affect a within-year ratio of municipal rents,
+although the source ledger preserves the inflation pin used by the
+upstream rent-option comparisons.
+
+This checkpoint therefore **weakens the simple empirical claim** that
+the places more strongly linked to Porto necessarily experienced the
+most rent-discount convergence. It cannot adjudicate whether families
+were pushed out, which alternatives they considered, whether
+particular rents rose because they arrived, or whether the long-run
+system responds to metropolitan housing shortage. Those questions
+need residential origin–destination observations, and causal analysis
+would require additional identification beyond such counts. The
+[reproduction script](porto_network_gradient.py) saves the 16-row
+exposure table, 12 rank/window checks, 16 leave-one-out comparisons,
+two figures and a source-and-limit ledger.
+
+---
+
 ## Sources and reproducibility
 
 The original eight figures and three tabular outputs, four observed mobility figures, one sharp non-identification figure, two annual timing/prediction figures, two forecast-robustness figures, **two nominal-vs-deflated figures**, and **two matched fiscal-income screening-proxy figures** with companion CSV results can be regenerated using the commands in the [study README](README.md). The new directed-OD intake suite is software-only until a genuine aggregate table is released. The [fixed 17-municipality input](data/amp_municipal_panel_2019_2025.csv) is a derived extract from [DiogoRibeiro7/portugal-housing-generations](https://github.com/DiogoRibeiro7/portugal-housing-generations), pinned to [upstream commit 0407fae](https://github.com/DiogoRibeiro7/portugal-housing-generations/tree/0407faed1f08209b3d7682e19fc57e7120e62879). It does not assert that 2025 income observations or 2019 new-lease observations exist. The observed Portugal HICP 2019–2025 source is independently frozen at [Eurostat dataset `prc_hicp_ainr`](https://doi.org/10.2908/PRC_HICP_AINR). The published mobility extracts have separate checksummed source records and distinct limitations.
@@ -1423,7 +1529,9 @@ The original eight figures and three tabular outputs, four observed mobility fig
 The subsequent Porto-relative analysis adds figures 22–23 and four
 regenerable rent-option output files. Its 2025 comparisons use the
 already pinned annual HICP and housing panel, not a new rental-inventory
-sample or observed residential origin–destination movements.
+sample or observed residential origin–destination movements. Figures
+24–25 add a descriptive Porto-link rank audit from the already pinned
+third-party 2021 work/study interaction matrix, not migration flows.
 
 1. Área Metropolitana do Porto. [Statutory definition and its 17 municipalities](https://www.amp.pt/en/amp-instituicao/area-metropolitana-do-porto-or-lei-no-752013/).
 2. Instituto Nacional de Estatística. [Local housing price methodology and geospatial context](https://www.ine.pt/ine_novidades/semin/INEWS38/files/assets/common/downloads/publication.pdf).
