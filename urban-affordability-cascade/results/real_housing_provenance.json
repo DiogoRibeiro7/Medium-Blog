@@ -1,0 +1,99 @@
+{
+  "evidence_classes": [
+    "observed_nominal_housing_median",
+    "observed_official_national_hicp",
+    "derived_hicp_deflated_municipal_median_comparison"
+  ],
+  "input_housing_panel_sha256": "88502e15b55a4d46536eed42ddc1924d30f555498d2c4a7e7a1b41fbeed71c66",
+  "hicp_input_source_sha256": "11742a14bd70d43c22e7170b07b65081f582d2a85eeac22005448f20327bd117",
+  "hicp_derived_csv_sha256": "0efd6f7fe28b59811e1662751c4c830f4c96a6256b9c492e75e3df0641d94930",
+  "hicp_source_query": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/prc_hicp_ainr?geo=PT&freq=A&coicop18=TOTAL&unit=INX_A_AVG&sinceTimePeriod=2019&untilTimePeriod=2025",
+  "hicp_source_dataset_updated": "2026-09-17T11:00:00+0200",
+  "hicp_reference": "2025=100_national_all_items_annual_average",
+  "housing_outcomes": {
+    "sold_price": {
+      "field": "price_m2",
+      "baseline_year": 2019,
+      "thresholds_pct": [
+        25,
+        50,
+        75,
+        100
+      ]
+    },
+    "new_contract_rent": {
+      "field": "rent_m2",
+      "baseline_year": 2020,
+      "thresholds_pct": [
+        25,
+        50,
+        75
+      ]
+    }
+  },
+  "municipality_count": 17,
+  "endpoint_summary": [
+    {
+      "outcome": "sold_price",
+      "year": 2025,
+      "baseline_year": 2019,
+      "municipalities": 17,
+      "portugal_hicp_annual_average_index": "100.00",
+      "national_general_inflation_since_baseline_pct": "20.380402",
+      "median_municipality_nominal_growth_pct": "102.972973",
+      "median_municipality_hicp_deflated_growth_pct": "68.609649"
+    },
+    {
+      "outcome": "new_contract_rent",
+      "year": 2025,
+      "baseline_year": 2020,
+      "municipalities": 17,
+      "portugal_hicp_annual_average_index": "100.00",
+      "national_general_inflation_since_baseline_pct": "20.525491",
+      "median_municipality_nominal_growth_pct": "60.479042",
+      "median_municipality_hicp_deflated_growth_pct": "33.149461"
+    }
+  ],
+  "crossing_counts": {
+    "sold_price": {
+      "plus_25": {
+        "nominal": 17,
+        "hicp_deflated": 17
+      },
+      "plus_50": {
+        "nominal": 17,
+        "hicp_deflated": 14
+      },
+      "plus_75": {
+        "nominal": 15,
+        "hicp_deflated": 6
+      },
+      "plus_100": {
+        "nominal": 10,
+        "hicp_deflated": 0
+      }
+    },
+    "new_contract_rent": {
+      "plus_25": {
+        "nominal": 17,
+        "hicp_deflated": 17
+      },
+      "plus_50": {
+        "nominal": 17,
+        "hicp_deflated": 1
+      },
+      "plus_75": {
+        "nominal": 1,
+        "hicp_deflated": 0
+      }
+    }
+  },
+  "limits": [
+    "HICP is national all-items consumer inflation, not a municipal cost-of-living deflator",
+    "HICP excludes imputed owner-occupied housing costs and is not a house-price index",
+    "The result is real relative to an all-items consumer basket, not real income-based affordability",
+    "Sold-price and new-contract rent annual medians reflect transaction and contract composition",
+    "The annual first-passage comparison cannot determine intrayear sequence or household relocation",
+    "No directed residential migration OD, tenancy panel, or causal spillover is identified"
+  ]
+}
