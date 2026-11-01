@@ -199,6 +199,8 @@ There is a stronger question than whether a model informed by current polling be
 
 ![Forward-validation errors by forecast model, including RMSE and MAE in House seats.](figures/forward-validation-comparison.png)
 
+For clarity, the seats-only OLS benchmark has a forward RMSE of **23.00 seats**, compared with **8.70 seats** for the two-predictor model.
+
 This is a material improvement over merely defeating the historical mean. The two-variable model gives smaller absolute errors than the generic-ballot-only regression in **nine of the ten** held-out elections, although its roughly 22-seat miss in 2006 is an important exception: in that year, the ballot-only model's prediction was considerably closer to the eventual result. In 1994, for instance, the two-predictor model anticipates a roughly 54-seat Democratic loss, close to the observed loss of 54, while the ballot-only model predicts roughly 28 seats lost. In 2002, the full model predicts a modest Republican gain, close to the actual eight-seat gain; the ballot-only model instead predicts a loss. These are not new outcomes or extra data points. They are alternative predictions of the original ten historical targets, all independently reproduced in the companion's [forward model comparison CSV](results/forward_model_comparison.csv).
 
 ![Four horizontal bars on one common forward test set, comparing RMSE for the two-predictor election model, generic-ballot-only regression, seats-defended-only regression, and training-period mean.](figures/fig5_error_comparison.png)
