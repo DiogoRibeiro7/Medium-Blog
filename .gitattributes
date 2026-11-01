@@ -43,3 +43,4 @@ new-deal-social-contract/**/*.csv -filter -diff -merge text
 civil-rights-great-society/**/*.csv -filter -diff -merge text
 stagflation-market-turn/**/*.csv -filter -diff -merge text
 nearest-neighbor-geometry-for-data-scientists/**/*.csv -filter -diff -merge text
+pca-vs-latent-factors-for-data-scientists/**/*.csv -filter -diff -merge text

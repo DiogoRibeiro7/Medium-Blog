@@ -1,0 +1,40 @@
+name: Article 24 - Principal Components and Latent Factors
+
+on:
+  pull_request:
+    paths:
+      - 'pca-vs-latent-factors-for-data-scientists/**'
+      - '.github/workflows/pca-latent-factors.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'pca-vs-latent-factors-for-data-scientists/**'
+      - '.github/workflows/pca-latent-factors.yml'
+
+jobs:
+  reproduce-study:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: pca-vs-latent-factors-for-data-scientists
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: pca-vs-latent-factors-for-data-scientists/requirements.txt
+      - name: Install scientific dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Run numerical, evidence, and fresh-kernel notebook checks
+        env:
+          RUN_NOTEBOOK_EXECUTION: '1'
+          OPENBLAS_NUM_THREADS: '1'
+          MPLBACKEND: Agg
+        run: python -m unittest discover -s tests -v
+      - name: Run isolated quick replication
+        env:
+          OPENBLAS_NUM_THREADS: '1'
+          MPLBACKEND: Agg
+        run: python analysis.py --quick
