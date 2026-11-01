@@ -156,7 +156,8 @@ def build_release_markdown(source: str) -> str:
         if not (ROOT / relative).is_file():
             raise ValueError(f"Missing figure: {relative}")
         # Pin the scientific figure to the existing merged pre-election revision.
-        ref = TABLE_FIGURE_REF if Path(relative).name in TABLE_FIGURES else FROZEN_PUBLIC_REF\n        url = f"https://raw.githubusercontent.com/{REPOSITORY}/{ref}/{ARTICLE_DIRECTORY}/{relative}"
+        ref = TABLE_FIGURE_REF if Path(relative).name in TABLE_FIGURES else FROZEN_PUBLIC_REF
+        url = f"https://raw.githubusercontent.com/{REPOSITORY}/{ref}/{ARTICLE_DIRECTORY}/{relative}"
         return f"![{alt}]({url})"
 
     rendered = FIGURE.sub(replace_figure, rendered)
