@@ -1,0 +1,52 @@
+{
+  "evidence_class": "derived_cross_statistic_municipality_median_ratio_not_household_burden",
+  "source_project": "DiogoRibeiro7/portugal-housing-generations",
+  "source_commit": "0407faed1f08209b3d7682e19fc57e7120e62879",
+  "source_blob_sha": "9bade430163315e7c5da323251daa0715e1ffede",
+  "fixed_municipal_panel_sha256": "88502e15b55a4d46536eed42ddc1924d30f555498d2c4a7e7a1b41fbeed71c66",
+  "official_income_methodology": "https://www.ine.pt/documentos/municipios/rnlocal/ano2022/1B0.pdf",
+  "official_income_2024_release": "https://webinq.ine.pt/home.aspx",
+  "source_variables": {
+    "rent_m2": "median_new_contract_housing_rent_EUR_m2_month",
+    "income": "median_gross_declared_IRS_income_per_fiscal_household_EUR_year"
+  },
+  "matched_years": [
+    2020,
+    2021,
+    2022,
+    2023,
+    2024
+  ],
+  "municipalities": 17,
+  "municipality_years": 85,
+  "illustrative_floor_areas_m2": [
+    50,
+    70,
+    90
+  ],
+  "formula": "100 * (12 * floor_area_m2 * municipal_rent_median_eur_m2_month) / municipal_gross_fiscal_income_median_eur_year",
+  "growth_formula": "100 * ((rent_t/rent_2020)/(income_t/income_2020)-1); floor area cancels",
+  "final_year_summary": {
+    "year": 2024,
+    "municipalities": 17,
+    "median_municipal_new_rent_growth_from_2020_pct": "47.586207",
+    "median_municipal_fiscal_income_growth_from_2020_pct": "29.897266",
+    "median_municipal_synthetic_proxy_relative_growth_pct": "15.167562",
+    "median_municipal_synthetic_70m2_proxy_level_pct": "37.067985",
+    "synthetic_70m2_proxy_level_q25_pct": "32.103635",
+    "synthetic_70m2_proxy_level_q75_pct": "45.546917",
+    "municipalities_proxy_worse_than_2020": 17,
+    "municipalities_proxy_better_than_2020": 0
+  },
+  "porto_proxy_relative_growth_pct": "30.552355",
+  "limits": [
+    "The rent statistic covers newly signed tenancy contracts, not all existing tenants",
+    "Gross declared fiscal income covers an IRS filing population, not every resident or actual new renter",
+    "Tax households and tenants need not be the same set of people or household definition",
+    "Ratio of two municipal medians is not a median of household-level rent/income burdens",
+    "Dwelling sizes 50, 70 and 90 m2 are assumptions, not observed tenancy floor areas",
+    "Gross fiscal income is before IRS and other deductions; it is not disposable household income",
+    "No income observations for 2025 and no published new-contract rent medians for 2019",
+    "No repeated-property constant-quality adjustment or displacement, migration and spillover identification"
+  ]
+}
