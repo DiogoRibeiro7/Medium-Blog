@@ -32,7 +32,14 @@ DISPLAY_MATH: Final[re.Pattern[str]] = re.compile(r"(?ms)^\\\[\n(.*?)\n\\\]$")
 INLINE_MATH: Final[re.Pattern[str]] = re.compile(r"\\\((.*?)\\\)")
 FIGURE: Final[re.Pattern[str]] = re.compile(r"!\[([^\]]+)\]\((figures/[^)\s]+\.png)\)")
 MARKDOWN_LINK: Final[re.Pattern[str]] = re.compile(r"(?<!!)\[([^\]]+)\]\(([^)\s]+)\)")
-TABLE_FIGURES: Final[tuple[str, ...]] = (\n    "historical-election-examples.png",\n    "forward-validation-comparison.png",\n    "estimator-sensitivity.png",\n    "paired-resampling-comparison.png",\n)\nTABLE_FIGURE_REF: Final[str] = "e31ce5cd4b0ec9f64c4e2977168514785796393e"\nREFERENCES: Final[re.Pattern[str]] = re.compile(r"(?m)^(\d+)\. .+")
+TABLE_FIGURES: Final[tuple[str, ...]] = (
+    "historical-election-examples.png",
+    "forward-validation-comparison.png",
+    "estimator-sensitivity.png",
+    "paired-resampling-comparison.png",
+)
+TABLE_FIGURE_REF: Final[str] = "e31ce5cd4b0ec9f64c4e2977168514785796393e"
+REFERENCES: Final[re.Pattern[str]] = re.compile(r"(?m)^(\d+)\. .+")
 
 # All inline math expressions in the locked original are explicit. Reject new
 # expressions until a human chooses their publication-friendly wording.
