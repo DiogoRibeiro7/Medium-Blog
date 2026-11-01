@@ -1522,6 +1522,131 @@ two figures and a source-and-limit ledger.
 
 ---
 
+## Is the commuting gradient merely a geography gradient?
+
+The preceding rank comparison left an immediate ambiguity. A high
+Porto work/study interaction count may indicate a geographically close
+municipality, rather than a separate channel through which expensive
+housing pushes households outward. We therefore add an independently
+sourced geographic baseline to check whether the commuter-network
+pattern can even be separated descriptively from proximity. The
+question is deliberately smaller than whether actual displacement
+occurred: **do centroid distance and commuting-link intensity provide
+distinct rank information for the same 16 municipal rent outcomes?**
+
+An official spatial reference is available. Portugal's
+[Direção-Geral do Território (DGT) CAOP2025 municipal boundaries](https://www.dgterritorio.gov.pt/atividades/cartografia/cartografia-tematica/caop)
+are published through its [open-data OGC API](https://ogcapi.dgterritorio.gov.pt/collections/municipios).
+We retrieved precisely the **17 municipal MultiPolygon geometries**
+identified with the metropolitan NUTS3 code 11A and requested the
+ETRS89/PT-TM06 projected coordinate reference system (EPSG:3763).
+For each municipality we computed the planar area-weighted polygon
+centroid, explicitly subtracting interior holes and combining
+disconnected polygon parts. The resulting 17-coordinate derivative,
+the exact official API response SHA-256, the derivative SHA-256,
+the original response URL and the DGT **CC-BY 4.0** attribution
+are recorded with the analysis. The extraction requires no special
+geospatial library and rejects malformed rings, mismatched municipal
+codes or area disagreement.
+
+Our distance is the Euclidean separation in kilometres between each
+other municipality's **administrative land-area centroid** and the
+Porto municipality's centroid. It ranges from roughly **7.10 to
+43.64 km** among the 16 comparators. This is an intentionally simple
+null geography, not a public-transport travel-time matrix, road
+distance, population-weighted centre, housing-search radius or
+employment-accessibility index. It should never be used to infer
+individual commuting cost. The official **2025** geography also does
+not reconstruct a separate set of historical municipal boundaries
+for every rent-series year.
+
+![Figure 26. The 2020–2025 Porto-relative new-contract rent discount compression plotted against projected straight-line CAOP2025 municipal centroid distance from Porto.](figures/fig26_porto_geographic_distance_vs_rent_discount_compression.png)
+
+Figure 26 gives a Spearman rank correlation of approximately **+0.18**
+between centroid distance and 2020–2025 percentage-point discount
+compression. Distance alone is not a strong monotonic predictor of
+which municipalities closed their percentage rent gap with Porto.
+Nor is this positive coefficient a distance-decay price-transmission
+effect: both terms are municipal summaries, and the housing outcome
+compares changing sets of newly signed contracts.
+
+The important finding is the **exposure collinearity**. Across these
+same 16 municipalities, centroid distance has a Spearman association
+of about **−0.85** with raw Porto-pair work/study counts, **−0.95**
+with counts per 1,000 comparator residents and **−0.80** with Porto's
+share of within-AMP weighted interactions. The more intensive the
+observed Porto link, the closer its municipality's area centroid
+typically lies to Porto. A rank correlation of −0.95 leaves very
+little independent ordering between distance and the per-resident
+commuting-link measure, so a two-exposure model would be fragile
+even before considering other covariates.
+
+We compute a limited *partial Spearman* check. For each of the three
+commuting-exposure definitions and each of the four baseline years,
+the ranks of exposure and of rent-discount compression are each
+linearly residualized against the ranks of centroid distance; we
+then correlate the residuals. Equivalently, for rank correlations
+between exposure X, outcome Y and distance Z, the coefficient is
+
+\[
+\rho_{XY\cdot Z}=\frac{\rho_{XY}-\rho_{XZ}\rho_{YZ}}
+{\sqrt{(1-\rho_{XZ}^{2})(1-\rho_{YZ}^{2})}}.
+\]
+
+This algebra does **not** create conditional exchangeability,
+remove spatial confounding or identify a counterfactual commuting
+effect. In particular, residualizing a measure whose rank correlation
+with distance is −0.95 magnifies small rank differences and
+measurement choices. There are only 16 locations and a shared
+Porto rent denominator, with no observations of moves, equivalent
+individual rental options or travel-time accessibility.
+
+![Figure 27. Unadjusted and centroid-distance-adjusted Spearman rank coefficients for three commuting exposure definitions over four windows ending in 2025.](figures/fig27_porto_commuting_gradient_distance_adjustment.png)
+
+For the primary 2020–2025 window, the raw Porto-pair association
+changes from **−0.18** before adjustment to **−0.06** after the
+centroid-distance partial-rank calculation. The per-resident
+association changes from **−0.30** to **−0.42**, and the within-AMP
+share association from **−0.27** to **−0.22**. The primary
+per-resident adjusted coefficient remains negative when deleting
+each municipality in turn, ranging from approximately **−0.56
+to −0.29**. That observation is an influence diagnostic, not an
+uncertainty interval or an argument for a negative spillover.
+
+The year-window sensitivity remains substantial. For per-resident
+Porto links, the partial-rank coefficients are approximately
+**−0.42**, **−0.14**, **−0.46** and **−0.40** for the 2020,
+2021, 2022 and 2023 baselines, respectively. In the last window,
+the unadjusted association was only **+0.02**. Conditioning on an
+almost collinear distance rank changes the comparison enough to
+make that adjusted negative value especially unsuitable as a causal
+estimate. The display reports all three exposure conventions in
+every window; none was chosen by a significance threshold.
+
+This is a useful negative finding about *measurement separability*.
+The official geography confirms that Porto work/study link intensity
+mostly follows how close a municipality is, leaving a narrow
+independent contrast for this small observational design. But it
+also shows that proximity alone has no strong monotonic rank
+association with the selected rent-discount change. The two facts
+do not prove or refute an epidemic-like spatial housing mechanism.
+The evidence required to assess that mechanism remains richer
+residential origin–destination counts, household housing choices,
+comparable dwelling rents, and defensible travel-access or policy
+shocks. A partial-rank correction is not a replacement for those
+missing observations.
+
+The new [official geometry extractor](extract_caop.py) documents the
+API query and validates the polygon-centroid construction; the
+[offline geographic sensitivity reproduction](porto_distance_sensitivity.py)
+delivers the complete 16-municipality geographic join, 16
+window/exposure rows, 16 leave-one-out calculations, both figures
+and a checksummed source/limitation ledger. The geometric reference
+has independent official DGT attribution, while the commuting
+weights retain their separate, less-direct Census-derived provenance.
+
+---
+
 ## Sources and reproducibility
 
 The original eight figures and three tabular outputs, four observed mobility figures, one sharp non-identification figure, two annual timing/prediction figures, two forecast-robustness figures, **two nominal-vs-deflated figures**, and **two matched fiscal-income screening-proxy figures** with companion CSV results can be regenerated using the commands in the [study README](README.md). The new directed-OD intake suite is software-only until a genuine aggregate table is released. The [fixed 17-municipality input](data/amp_municipal_panel_2019_2025.csv) is a derived extract from [DiogoRibeiro7/portugal-housing-generations](https://github.com/DiogoRibeiro7/portugal-housing-generations), pinned to [upstream commit 0407fae](https://github.com/DiogoRibeiro7/portugal-housing-generations/tree/0407faed1f08209b3d7682e19fc57e7120e62879). It does not assert that 2025 income observations or 2019 new-lease observations exist. The observed Portugal HICP 2019–2025 source is independently frozen at [Eurostat dataset `prc_hicp_ainr`](https://doi.org/10.2908/PRC_HICP_AINR). The published mobility extracts have separate checksummed source records and distinct limitations.
@@ -1532,6 +1657,9 @@ already pinned annual HICP and housing panel, not a new rental-inventory
 sample or observed residential origin–destination movements. Figures
 24–25 add a descriptive Porto-link rank audit from the already pinned
 third-party 2021 work/study interaction matrix, not migration flows.
+Figures 26–27 add an independently sourced official DGT CAOP2025
+projected municipal-centroid sensitivity and four derived diagnostic
+outputs; they do not measure transport access or household moves.
 
 1. Área Metropolitana do Porto. [Statutory definition and its 17 municipalities](https://www.amp.pt/en/amp-instituicao/area-metropolitana-do-porto-or-lei-no-752013/).
 2. Instituto Nacional de Estatística. [Local housing price methodology and geospatial context](https://www.ine.pt/ine_novidades/semin/INEWS38/files/assets/common/downloads/publication.pdf).

@@ -1,0 +1,21 @@
+{
+  "source_name": "DGT Carta Administrativa Oficial de Portugal, CAOP2025 Municípios",
+  "source_url": "https://ogcapi.dgterritorio.gov.pt/collections/municipios/items?f=json&nuts3_cod=11A&limit=100&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F3763",
+  "source_response_sha256": "9eb0060c8bdd60c785800ed43e79bf166e646969bc3e694719e44cc81aef917b",
+  "source_license": "CC-BY 4.0; attribution: Direção-Geral do Território",
+  "source_year": 2025,
+  "source_publication": "2026-02-18",
+  "source_epsg": 3763,
+  "source_nuts3_code": "11A",
+  "records": 17,
+  "method": "Area-weighted planar centroids of official municipal MultiPolygon rings in EPSG:3763; holes subtracted",
+  "not_a_measure_of": [
+    "household location",
+    "urban-centre distance",
+    "road route",
+    "travel time",
+    "migration"
+  ],
+  "temporal_caveat": "CAOP2025 boundaries are a geographic reference, not annual 2020-2025 boundary vintages",
+  "derived_csv_sha256": "a05cfb55ffba89dc9cc33756480470005fb771c35e824b331f81759e02a80966"
+}

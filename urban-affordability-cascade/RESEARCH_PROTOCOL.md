@@ -255,6 +255,35 @@ Figures 24–25 and four diagnostic result files preserve these
 boundaries. Do not interpret negative correlations as absence of
 displacement or positive alternatives as causal evidence.
 
+**Official-geography distance sensitivity checkpoint (1 November
+2026).** Obtain the 17 AMP municipal MultiPolygon features from
+the DGT CAOP2025 OGC API under CC-BY 4.0, filter NUTS3 code 11A,
+and explicitly request projected EPSG:3763 geometry. Freeze
+the source-response SHA-256, official request URL and 17-row
+area-weighted centroid derivative SHA-256. Subtract holes and
+combine disconnected polygon parts; check municipality identities
+and each official area. This is a **2025 administrative boundary
+reference**, not a reconstructed historical geographic panel.
+The 16 straight-line Porto centroid distances are not commuting
+times, resident population centres or feasible housing options.
+
+Against 2020–2025 Porto-relative rent-discount compression, distance
+has Spearman **+0.176471**, while centroid distance and the
+municipal population-normalized 2021 Porto work/study pair count
+have Spearman **−0.950000**. Geography and commuting intensity
+are therefore nearly rank-collinear. Partial Spearman for the
+per-resident pair link, controlling the distance rank, is **−0.421057**;
+the 16 leave-one-out values run about −0.56 to −0.29. For raw pair
+counts the 2020–2025 adjusted coefficient is only **−0.056232**.
+All three exposure conventions and 2020/2021/2022/2023 baselines
+are retained in Figure 27 rather than selecting a preferred window.
+These partial ranks are *descriptive algebra only*; near collinearity,
+shared Porto denominator, unmeasured supply/demand and spatial
+dependence prevent causal identification. The independent official
+geography validates neither the third-party undirected commute
+counts nor any residential moving claim. Figures 26–27 and four
+derived files provide the complete provenance and sensitivity audit.
+
 ## Planned analysis sequence
 
 ### Stage 0 — Obtain or document denial of directed residential counts

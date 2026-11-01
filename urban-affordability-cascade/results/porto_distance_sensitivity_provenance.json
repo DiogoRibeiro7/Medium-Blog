@@ -1,0 +1,42 @@
+{
+  "evidence_class": "descriptive_noncausal_caop2025_centroid_distance_sensitivity",
+  "caop2025_source_url": "https://ogcapi.dgterritorio.gov.pt/collections/municipios/items?f=json&nuts3_cod=11A&limit=100&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F3763",
+  "caop2025_source_response_sha256": "9eb0060c8bdd60c785800ed43e79bf166e646969bc3e694719e44cc81aef917b",
+  "caop2025_derived_csv_sha256": "a05cfb55ffba89dc9cc33756480470005fb771c35e824b331f81759e02a80966",
+  "caop2025_license": "CC-BY 4.0; attribution: Direção-Geral do Território",
+  "exposure_source": "Pinned 2021 undirected work/study Census-derived third-party pair workbook",
+  "municipalities": 16,
+  "windows": [
+    [
+      2020,
+      2025
+    ],
+    [
+      2021,
+      2025
+    ],
+    [
+      2022,
+      2025
+    ],
+    [
+      2023,
+      2025
+    ]
+  ],
+  "diagnostic_rows": 16,
+  "leave_one_out_rows": 16,
+  "primary_distance_spearman": "0.176471",
+  "primary_per_resident_partial_spearman": "-0.421057",
+  "limits": [
+    "CAOP2025 municipal centroids are area-weighted polygon centers, not housing or population centers",
+    "Straight-line projected distances are not drive time, public-transport access or realistic search costs",
+    "CAOP2025 boundaries are not geography reconstructed separately for each housing observation year",
+    "Only 16 municipality outcomes share the Porto rent-reference denominator and strong regional dependence",
+    "Partial Spearman rank adjustment leaves unmeasured confounding, collinearity and nonlinear selection",
+    "The 2021 commuting network overlaps outcomes and represents undirected work/study interaction, not residential moves",
+    "Third-party Census-derived commuting interactions have not been independently confirmed against official INE API",
+    "Changing newly signed rental dwellings and publication granularity prevent quality-adjusted price comparisons",
+    "Neither direction of migration nor housing price propagation or causal displacement can be inferred"
+  ]
+}
