@@ -1,0 +1,86 @@
+{
+  "alternative_conditional_point_forecasts": {
+    "ols": -32.32288802630563,
+    "recency_wls": -30.97597265810168,
+    "ridge": -31.060791226510172,
+    "student_t": -33.75754882316428
+  },
+  "bootstrap_95_sensitivity_interval": [
+    -41.75170811125731,
+    -14.373974322873948
+  ],
+  "forecast_information_as_of": "2026-10-31",
+  "general_election_date": "2026-11-03",
+  "historical_sample": {
+    "chronological_test_years": [
+      1982,
+      1990,
+      1994,
+      1998,
+      2002,
+      2006,
+      2010,
+      2014,
+      2018,
+      2022
+    ],
+    "first_year": 1950,
+    "last_year": 2022,
+    "observed_elections": 18,
+    "unsupported_missing_ballot_year": 1986
+  },
+  "interpretation": "Ex-ante registration relative to the 2026 election outcome, not pre-registration of the historically selected specification. A Git commit documents content but is not independent notarization.",
+  "manifest_version": 1,
+  "original_published_reference_forecast": -33,
+  "primary_forecast": {
+    "forward_rmse_house_seats": 8.695800072815182,
+    "in_sample_r_squared": 0.893447684694887,
+    "interval_caveat": "Conditional on fixed polling inputs and stable classical regression assumptions; not a guarantee",
+    "method": "OLS on the two frozen predictors, not causally identified",
+    "model_based_95_prediction_interval": [
+      -48.428386550570906,
+      -16.217389502040344
+    ],
+    "predicted_seat_change": -32.32288802630563
+  },
+  "registration_date": "2026-11-01",
+  "scenario": {
+    "democratic_generic_ballot_lead_points": 8.0,
+    "president_party": "R",
+    "president_party_seats_defended": 220,
+    "president_party_signed_generic_margin_points": -8.0,
+    "source": "Rattner, presentation of 2026-10-30",
+    "year": 2026
+  },
+  "scoring_protocol": {
+    "absolute_error_definition": "abs(predicted_minus_observed_seat_change)",
+    "do_not_refit_on_2026_outcome": true,
+    "interval_hit_definition": "lower <= observed_outcome <= upper; conditional OLS interval only",
+    "record_official_source_url": true,
+    "score_when": "Only after 2026-11-03 and after an identified final House Historian-aligned outcome is available",
+    "signed_error_definition": "predicted_minus_observed_seat_change",
+    "write_result_separately": true
+  },
+  "source_commit": "fe98742efb86756fc30967477098482eb7505783",
+  "source_repository": "https://github.com/DiogoRibeiro7/Medium-Blog",
+  "source_sha256_normalized_utf8_lf": {
+    "analysis.py": "df59d87793c8578684574d495df8e3bd6e44f3484ee0e8714841248a8e682f05",
+    "comparison_uncertainty.py": "b02c93fb8531928bd3f2774bc9d55d18ab042452aac429e0358a37877d3d1d0f",
+    "data/2026_scenario.csv": "483adb66ab255f9acd9a32e77b14e3924a1b5be2167d8d5837a10c790a592a66",
+    "data/PROVENANCE.md": "552d7d61bbb53bd84e7cf82fc9d2d7e12c0aac404f96b78573573d62d49abdc4",
+    "data/gallup_alternative.csv": "c3a2c4ecea06087920c88b5c5835d0e7d57685787847921a2183f8dea3abbae6",
+    "data/historical_midterms.csv": "13152d3842549eb8470fd1434d644ac61c9cc1bbd3a1c13f665f906f294c3956",
+    "model_extensions.py": "4344c233b18c48b4e2a53a645d8b17a538bfe426f11937176c2f9adb9b4117a3",
+    "model_walkthrough.ipynb": "e1d1d8a4b8d6d82b7f2bb3f2a5bbb54538ca462dff239bcc6f483165a19056c2",
+    "requirements.txt": "8358bec876dc09165f9b6f8f1834d97c7b4f3b6721f52028a64659c358e7e371",
+    "results/alternative_models_summary.json": "b3640dc88dc8897606ea498b0ee6093d8f1783a6de39eba30eeedeae477e164b",
+    "results/paired_uncertainty_summary.json": "94674e834cb0087cd95118b07a7126832f9d5d09a778df1e57405fadaa49dc11",
+    "results/summary.json": "11fe92f217133a7f269a569730af5e5c6e2b78d0daab94073266b5bb6cab869e"
+  },
+  "target": {
+    "description": "Republican president's party net change in U.S. House seats",
+    "observed_2026_outcome": null,
+    "outcome_definition": "Change in initial-election House party divisions, aligned with the American Presidency Project / House Historian historical series",
+    "unit": "House seats"
+  }
+}
