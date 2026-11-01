@@ -131,8 +131,8 @@ def build_release_markdown(source: str) -> str:
         raise ValueError("The information and registration dates must remain visible")
 
     equations = extract_equations(source)
-    if len(FIGURE.findall(source)) != 13:
-        raise ValueError("Expected exactly thirteen original evidence figures")
+    if len(FIGURE.findall(source)) != 13 + len(TABLE_FIGURES):
+        raise ValueError("Expected thirteen original evidence figures and four table images")
 
     equation_index = iter(range(1, len(equations) + 1))
 
@@ -232,8 +232,10 @@ def check_release(source: str, rendered: str) -> tuple[int, int, int]:
     if rendered != expected:
         raise ValueError("Publication Markdown is stale relative to the final manuscript")
     figures = FIGURE.findall(source)
-    if len(set(path for _, path in figures)) != 13:
-        raise ValueError("Original figure references are missing or duplicated")
+    if len(set(path for _, path in figures)) != 13 + len(TABLE_FIGURES):
+        raise ValueError("Figure references are missing or duplicated")
+    if {Path(path).name for _, path in figures if Path(path).name in TABLE_FIGURES} != set(TABLE_FIGURES):
+        raise ValueError("Required table images are missing")
     references = [int(item) for item in REFERENCES.findall(source)]
     if references != list(range(1, 20)):
         raise ValueError("Expected nineteen consecutively numbered references")
