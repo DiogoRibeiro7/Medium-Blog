@@ -1265,9 +1265,165 @@ household data. None has been conjured from the two municipal medians.
 
 ---
 
+## The cheaper suburb paradox: shrinking discounts and growing euro savings
+
+The previous comparison showed that by 2024, median new-contract rents had
+grown faster than median gross fiscal-household income in every AMP
+municipality. It would be easy to turn that into a slogan: moving outward
+no longer saves money. But an observation about *income-adjusted municipal
+growth* does not establish the rent difference between two municipalities
+at a point in time. We can test that narrower statement directly.
+
+The fixed municipal panel records annual median new-contract rents per
+square metre from 2020 to 2025. It does not contain matched listings,
+equivalent dwellings, available rentals or moving households. We can
+nevertheless ask: **was the observed new-contract rent median in Porto
+higher than the median in each of the other 16 AMP municipalities, and
+did the gap change?** Those 16 administrative jurisdictions are not
+necessarily feasible substitutes for the same person. Arouca and
+Matosinhos, for example, should not be treated as interchangeable
+commuting options.
+
+### A percentage discount is not a euro saving
+
+Let \(R_{P,t}\) denote Porto's EUR/m²/month new-contract median and
+\(R_{j,t}\) the median in comparison municipality \(j\). Define
+
+\[
+D_{j,t}=100\left(1-\frac{R_{j,t}}{R_{P,t}}\right),\qquad
+S_{j,t}(A)=A(R_{P,t}-R_{j,t}).
+\]
+
+The first expression is the **percentage rent discount** relative to
+Porto. The second is the **hypothetical monthly euro difference** for
+equal dwelling floor area \(A\) m², excluding all other expenses.
+Both formulas permit negative differences: they do not assume that
+every alternative is cheaper. The shared national deflator and
+floor area cancel from the same-year percentage discount.
+
+To compare hypothetical savings in purchasing-power units, we convert
+the nominal euro gap into **2020 national-consumer-price euros** using
+the archived Eurostat Portugal annual average all-items HICP:
+
+\[
+S^{2020€}_{j,t}(A)=S_{j,t}(A)\frac{H_{2020}}{H_t}.
+\]
+
+The indices are **82.97 in 2020** and **100.00 in 2025**.
+Under this convention, €100 in 2025 is €82.97 measured against the
+2020 general consumer basket. It is not a local housing-cost index
+or an estimate of transport expenditure. We use **70 m²** for the
+main figure, with **50 m² and 90 m²** sensitivities recorded in
+the reproducible data table. Area changes a hypothetical cash
+difference proportionally, never a percentage discount.
+
+### A result that changes with the denominator
+
+All 16 other AMP municipalities had new-contract rent medians below
+Porto in both 2020 and 2025. This narrow empirical statement matters:
+the proposition that the published suburban medians had all
+converged fully to the Porto median would be false. The more
+interesting result concerns the difference between *relative*
+and *absolute* prices.
+
+| Unweighted comparison across 16 other AMP municipalities | 2020 | 2025 |
+| --- | ---: | ---: |
+| Median percentage rent discount relative to Porto | 48.22% | **46.60%** |
+| Median monthly nominal difference, hypothetical 70 m² dwelling | €302.75 | **€460.95** |
+| Median monthly difference in **2020 consumer euros**, same hypothetical 70 m² | €302.75 | **€382.45** |
+| Municipalities with a lower new-contract median than Porto | 16 | 16 |
+
+In **13 of 16** endpoint comparisons, the percentage discount
+**narrowed** between 2020 and 2025. Nevertheless, the *absolute*
+HICP-deflated hypothetical euro gap **increased in all 16**.
+This is not contradictory. The percentage ratio can converge
+while the difference between two increasing price levels widens,
+including after general inflation is removed. These are
+mathematically different properties of the same observed medians.
+
+![Figure 22. Porto-relative percentage new-contract rent discounts across the 16 other AMP municipalities, comparing 2020 with 2025. Thirteen discounts narrowed; every endpoint discount remained positive.](figures/fig22_porto_relative_rent_discounts_2020_2025.png)
+
+Matosinhos illustrates the distinction. Its median new-contract
+rent was **14.60%** below Porto's in 2020 and **14.23%** below
+Porto's in 2025. The relative discount shrank. But on an assumed
+70 m² dwelling, the nominal monthly difference rose from
+**€91.70** to **€140.70**; that 2025 difference is **€116.74**
+in 2020 consumer euros. Vila Nova de Gaia's discount narrowed
+from **27.42%** to **24.77%**, while the illustrative
+constant-consumer-euro difference rose from **€172.20** to
+**€203.28**. None of those numbers compares the asking rents of
+identical apartments offered to an actual household.
+
+This is also **not a monotonic outward price-convergence wave**.
+The unweighted median percentage discount was **48.22% in 2020**,
+**47.16% in 2021**, **48.22% in 2022**, **49.47% in 2023**,
+**48.18% in 2024**, and **46.60% in 2025**. The median discount
+was actually *larger* in 2023 than at the starting point, before
+falling in the last two published years. A monotonic domino
+interpretation cannot be read from these annual aggregates.
+
+![Figure 23. Annual medians and interquartile ranges across 16 Porto-relative municipality rent discounts and hypothetical monthly 70 m² savings expressed in 2020 consumer euros.](figures/fig23_porto_rent_discount_and_real_savings_annual.png)
+
+The two panels in Figure 23 use the same 16 municipality-year
+comparisons but report different objects: proportional discounts
+on the left, hypothetical real euro gaps on the right. We use
+**unweighted** medians and interquartile ranges across municipalities,
+not pooled contract medians, simulated mover-choice distributions
+or inferential confidence intervals. Both the sign and the size
+of an aggregate price gap can matter, but neither is a complete
+measure of a household's opportunity set.
+
+### The difference between an advertised alternative and a feasible move
+
+The limitations are structural. Annual medians are not
+constant-quality rents for the same apartment. Changing the mix
+of newly leased homes can change the median per square metre without
+the same change for a fixed property. No local availability, vacancy,
+deposit requirement, dwelling-size match, existing tenant rent or
+individual rent offer is identified by the published series.
+
+A positive rent-only saving also excludes employment access,
+commuting costs and lost time, moving expenses, childcare and
+the actual income of the household. Earlier in this article the
+commuting-cost model was intentionally hypothetical; its coefficients
+were not estimated for these 16 local markets. We must not combine
+that illustrative model with the observed municipal medians and
+claim to have measured real household welfare.
+
+The previous fiscal-income comparison ends at **2024**, since
+the fixed panel has no published 2025 fiscal-income observations.
+There is consequently no legitimate 2025 income-adjusted household
+net saving to calculate by mixing two different years and
+populations. Nor can relative rent differences identify whether
+any family actually moved out of Porto, much less why it moved
+or which alternative it selected.
+
+The policy point is more precise after this check: **the other
+municipalities did not cease to be cheaper on their published
+new-contract rent medians, while the broader municipal fiscal-income
+proxy had still deteriorated by 2024**. Lower sticker rent elsewhere
+is a *possible* advantage, not proof of an available, affordable
+home or improved life after moving. The claim that a city can
+simply export its affordability problem fails as a metropolitan
+policy, but it should not be defended with an incorrect statement
+that every relative price difference has disappeared.
+
+The new [Porto rent-option diagnostic](porto_rent_options.py)
+preserves both exact source checksums and regenerates 96 annual
+comparisons, 16 endpoints, six annual summaries and a caveat ledger.
+It makes the rent arithmetic verifiable without claiming an observed
+residential relocation mechanism.
+
+---
+
 ## Sources and reproducibility
 
 The original eight figures and three tabular outputs, four observed mobility figures, one sharp non-identification figure, two annual timing/prediction figures, two forecast-robustness figures, **two nominal-vs-deflated figures**, and **two matched fiscal-income screening-proxy figures** with companion CSV results can be regenerated using the commands in the [study README](README.md). The new directed-OD intake suite is software-only until a genuine aggregate table is released. The [fixed 17-municipality input](data/amp_municipal_panel_2019_2025.csv) is a derived extract from [DiogoRibeiro7/portugal-housing-generations](https://github.com/DiogoRibeiro7/portugal-housing-generations), pinned to [upstream commit 0407fae](https://github.com/DiogoRibeiro7/portugal-housing-generations/tree/0407faed1f08209b3d7682e19fc57e7120e62879). It does not assert that 2025 income observations or 2019 new-lease observations exist. The observed Portugal HICP 2019–2025 source is independently frozen at [Eurostat dataset `prc_hicp_ainr`](https://doi.org/10.2908/PRC_HICP_AINR). The published mobility extracts have separate checksummed source records and distinct limitations.
+
+The subsequent Porto-relative analysis adds figures 22–23 and four
+regenerable rent-option output files. Its 2025 comparisons use the
+already pinned annual HICP and housing panel, not a new rental-inventory
+sample or observed residential origin–destination movements.
 
 1. Área Metropolitana do Porto. [Statutory definition and its 17 municipalities](https://www.amp.pt/en/amp-instituicao/area-metropolitana-do-porto-or-lei-no-752013/).
 2. Instituto Nacional de Estatística. [Local housing price methodology and geospatial context](https://www.ine.pt/ine_novidades/semin/INEWS38/files/assets/common/downloads/publication.pdf).

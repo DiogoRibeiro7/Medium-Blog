@@ -104,6 +104,8 @@ zero. The analysis's exact-period comparisons enforce those distinctions.
 | 19 | fig19_nominal_vs_real_housing_first_passage.png | First nominal versus HICP-deflated rent/price threshold years, with not-yet-crossed cells | **Descriptive annual first passage; not residential migration** |
 | 20 | fig20_synthetic_rent_fiscal_income_70m2.png | Paired 2020/2024 synthetic annual new-rent / gross fiscal-income ratios for a stipulated 70 m² dwelling | **Derived cross-statistic ratio; not a measured household rental burden** |
 | 21 | fig21_rent_vs_fiscal_income_growth_2020_2024.png | Municipal new-contract rent median growth vs gross fiscal-income median growth | **Descriptive separate-population medians, not tenant income** |
+| 22 | fig22_porto_relative_rent_discounts_2020_2025.png | Porto-relative percentage discount in every other AMP municipality, 2020 and 2025 | **Independent municipal new-rent medians; not a set of available moving choices** |
+| 23 | fig23_porto_rent_discount_and_real_savings_annual.png | Annual median/IQR of relative discounts and illustrative 70 m² rent savings adjusted to 2020 consumer euros | **Synthetic rent-only comparisons; no actual moving or travel expenses** |
 
 The figure titles, manuscript captions and generated tables repeat the
 evidence-class distinction. There are no charts of invented historical
@@ -661,6 +663,68 @@ incomes, household size, after-tax disposable income, incumbent rents,
 non-IRS incomes or travel costs. Income is missing for **2025**, so no
 2025 income-adjusted claim is made. Neither the direction nor the cause
 of any residential move follows from this all-municipality association.
+
+## Porto-to-other-municipality rent gaps, 2020–2025
+
+The subsequent [porto_rent_options.py](porto_rent_options.py) module
+asks a different question: **does a lower new-contract rent median
+outside Porto still exist, and does its *relative discount* move with
+its *absolute euro saving*?** It uses only two already frozen inputs:
+the same fixed 17-municipality INE-derived rent panel and Eurostat's
+Portugal national all-items annual average HICP. There is **no new
+housing inventory, matching of actual homes, residence change or
+measured transport cost**.
+
+For each of the other 16 AMP municipalities \(j\) and year \(t\):
+
+\[
+D_{j,t}=100(1-R_{j,t}/R_{\mathrm{Porto},t}), \qquad
+S_{j,t}(A)=A(R_{\mathrm{Porto},t}-R_{j,t}),
+\]
+
+where \(R\) is the published new-contract median in EUR/m²/month
+and \(A\) is an **assumed** constant floor area (50, 70 or 90 m²).
+The euro saving \(S\) is illustrative and *rent only*. To compare
+its purchasing-power value over time, report
+\(S_{j,t}^{2020€}=S_{j,t}H_{2020}/H_t\) using the national HICP
+(2020 index **82.97**, 2025 index **100.00**). The same-year
+percentage discount is already independent of a common deflator
+and of floor area.
+
+The 2020–2025 descriptive result is subtle:
+
+| Unweighted comparison across the 16 other AMP municipalities | 2020 | 2025 |
+| --- | ---: | ---: |
+| Median relative new-rent discount to Porto | 48.22% | **46.60%** |
+| Median hypothetical 70 m² monthly rent saving, nominal EUR | €302.75 | **€460.95** |
+| Median hypothetical 70 m² monthly saving, 2020 consumer EUR | €302.75 | **€382.45** |
+| Municipalities with lower new-rent medians than Porto | 16/16 | **16/16** |
+
+Among the 16 endpoint pairs, the relative percentage discount
+**narrowed in 13**, yet the hypothetical **real euro gap increased
+in all 16**. This is algebraically compatible: relative and
+absolute differences are not the same measure. The annual sequence
+is not monotonic (the median relative discount is **49.47% in
+2023**, higher than its 2020 value). No spatial price wave or
+displacement event is inferred from these comparisons.
+
+Generate **96** municipality-year rows, 16 endpoint rows, six annual
+summaries, the provenance ledger and figures 22–23:
+
+    python porto_rent_options.py --output /tmp/porto-rent-options-check
+
+Outputs are the annual comparison, municipal endpoint, annual summary
+and provenance files under results/porto_rent_options_*. Fourteen
+additional tests check the official source pin, 2020/2025 endpoints,
+denominator and floor-area invariants, negative-gap support,
+reproducibility and missing-data rejection: **126 tests total**.
+
+The other AMP municipalities are **administrative comparators**,
+not demonstrated housing-search substitutes. Ratios of annual
+municipal rent medians need not compare equivalent dwellings.
+Savings exclude moving costs, jobs, transport, time, household income,
+vacancy and rental availability, so they do not measure net benefits
+for anyone asked to move out of Porto.
 
 ## Boundaries before publication
 
