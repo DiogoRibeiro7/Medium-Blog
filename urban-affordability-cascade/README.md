@@ -110,6 +110,8 @@ zero. The analysis's exact-period comparisons enforce those distinctions.
 | 25 | fig25_porto_link_rank_sensitivity_windows.png | Spearman correlations over 2020/2021/2022/2023–2025 windows and three Porto-link exposure normalizations | **Exploratory window sensitivity; shared Porto denominator and dependent municipalities** |
 | 26 | fig26_porto_geographic_distance_vs_rent_discount_compression.png | Official CAOP2025 municipal centroid distance to Porto against rent-discount compression | **Administrative centroid straight-line distance, not travel time or housing-search accessibility** |
 | 27 | fig27_porto_commuting_gradient_distance_adjustment.png | Unadjusted and centroid-distance-conditional Spearman coefficients over all three network exposures and four windows | **Severe proximity/commuting rank collinearity; partial association is not a causal effect** |
+| 28 | fig28_municipal_construction_vs_porto_rent_pressure.png | Cumulative 2020–2023 new-family-dwelling completions/licenses per 1,000 2020 residents against Porto-relative rental-discount compression | **Gross dwelling flows, not available rental stock or housing-supply causal elasticity** |
+| 29 | fig29_construction_rent_rank_window_sensitivity.png | Rank comparisons for three nested construction windows, two INE new-dwelling flow measures and two rent outcomes | **Exploratory, dependent windows; 2021+ provisional and 2024–2025 completed-dwelling estimates** |
 
 The figure titles, manuscript captions and generated tables repeat the
 evidence-class distinction. There are no charts of invented historical
@@ -820,6 +822,59 @@ This extraction should **not** be run on every CI build: reproducible
 tests and figures use the pinned CSV, which is checked against its
 recorded SHA-256. The new extractor and distance sensitivity add
 **25 unit tests, 165 total**.
+
+## Construction-flow counter-explanation screen (figures 28–29)
+
+The pinned INE-derived municipal panel has two complementary annual
+new-family-housing **dwelling** counts: **completed** dwellings
+(upstream INE indicator **0013248**) and **licensed** dwellings
+(indicator **0013235**). These are not numbers of apartment buildings,
+market rental listings, gross permits issued or net additions to
+occupied or affordable homes. The independent upstream source
+inventory and [INE metadata for completed works](https://ine.pt/bddXplorer/htdocs/minfo.jsp?lingua=PT&var_cd=0000076&var_cd=0000085)
+record their statistical meaning. No fresh external data are needed:
+the audited panel remains at SHA-256
+**88502e15b55a4d46536eed42ddc1924d30f555498d2c4a7e7a1b41fbeed71c66**.
+
+The [porto_supply_screen.py](porto_supply_screen.py) module uses
+the **16 non-Porto municipalities**, summed dwelling completions
+or licenses over **2020–2023** (primary), **2020–2024** and
+**2020–2025** (sensitivity). Each sum is retained as a raw count
+or divided by 2020 or 2021 baseline municipal population per
+1,000 people. The two outcomes are 2020–2025 percentage-point
+compression in Porto-relative new-contract rent discounts and the
+municipality's own 2020–2025 nominal new-lease rent growth.
+
+Primary **2020–2023 per 1,000 2020 resident** Spearman correlations
+with rent-discount compression: **+0.179412** for completed dwellings
+and **−0.055882** for licensed dwellings. Own-municipality new-rent
+growth correlations are **+0.161765** and **−0.085294**. Extending
+construction totals through 2024 or 2025 leaves these relationships
+weak. Counts with no per-capita scaling produce different ranks,
+so all conventions are reported, rather than selecting the
+most favorable one.
+
+All **85** rows for 2021–2025 across the 17 municipalities have a
+**construction_preliminary** flag, and all **34** completion
+observations for 2024–2025 have a **completions_estimated** flag.
+Licensed homes are not necessarily completed and completed units
+need not enter the affordable rental market. Periods overlap the
+rent outcome; endogenous building and compositional rent changes
+prevent causal or welfare interpretation. Nor should annual
+completion/permit ratios be treated as cohort construction rates.
+
+Regenerate the two figures, 16 municipal exposure rows, 36
+construction/exposure/outcome rank checks, all 32 primary
+one-municipality deletions and the source/limitations ledger:
+
+    python porto_supply_screen.py --output /tmp/porto-supply-screen
+
+The four data artifacts are results/porto_supply_screen_municipal_exposures.csv,
+results/porto_supply_screen_rank_windows.csv,
+results/porto_supply_screen_leave_one_out.csv and
+results/porto_supply_screen_provenance.json. The new validations,
+source independence and tests for exact rank patterns add **20 tests**:
+**185 total**.
 
 ## Boundaries before publication
 

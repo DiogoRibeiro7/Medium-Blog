@@ -284,6 +284,35 @@ geography validates neither the third-party undirected commute
 counts nor any residential moving claim. Figures 26–27 and four
 derived files provide the complete provenance and sensitivity audit.
 
+**Construction-flow supply-screen checkpoint (1 November 2026).**
+Use the frozen 17×7 municipal panel's new-family-housing dwellings
+**completed** (INE indicator 0013248) and **licensed** (0013235)
+as separate annual construction-flow series. They are not building
+counts or available dwellings for rent. For the 16 non-Porto
+municipalities, define cumulative 2020–2023 completed or licensed
+dwellings per 1,000 **2020 residents**, with 2020–2024 and
+2020–2025 window and 2021-population denominator sensitivity.
+Compare ranks to 2020–2025 percentage-point compression in
+Porto-relative new-contract rent discounts, plus each municipality's
+2020–2025 nominal median new-rent growth.
+
+Primary Spearman against discount compression is **+0.179412**
+for completed dwellings and **−0.055882** for licensed dwellings;
+against own rent growth it is **+0.161765** and **−0.085294**.
+All window alternatives remain weak and do not identify a supply
+elasticity. Report each of 36 combinations and 32 primary
+one-municipality deletions, not a selected coefficient. The
+underlying flags matter: **2021–2025 construction data are
+preliminary** (85 municipality-year rows), with **2024–2025
+completions estimated** (34 municipality-year rows).
+
+Building may respond to local housing demand, and period windows
+overlap 2020–2025 rent outcomes. Neither gross construction flows
+nor the number of licenses reveals available rental stock, vacancy,
+cohort conversion, household relocation or causal mitigation of
+rent pressure. Figures 28–29, the verified 119-row source reader,
+and four reproducible derived data files preserve this limit.
+
 ## Planned analysis sequence
 
 ### Stage 0 — Obtain or document denial of directed residential counts
