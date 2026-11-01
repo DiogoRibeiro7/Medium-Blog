@@ -360,7 +360,7 @@ Athey, S. and Imbens, G. W. (2016). Recursive Partitioning for Heterogeneous Cau
 
 Athey, S. and Wager, S. (2021). Policy Learning with Observational Data. *Econometrica*, 89(1), 133–161. https://doi.org/10.3982/ECTA15732
 
-Chernozhukov, V., Demirer, M., Duflo, E. and Fernández-Val, I. (2023). Generic Machine Learning Inference on Heterogeneous Treatment Effects in Randomized Experiments, with an Application to Immunization in India. *Econometrica*, 91(1), 1–31. https://doi.org/10.3982/ECTA19837
+Chernozhukov, V., Demirer, M., Duflo, E. and Fernández-Val, I. (2025). Fisher–Schultz Lecture: Generic Machine Learning Inference on Heterogeneous Treatment Effects in Randomized Experiments, With an Application to Immunization in India. *Econometrica*, 93(4), 1121–1164. https://doi.org/10.3982/ECTA19303
 
 Dudík, M., Langford, J. and Li, L. (2011). Doubly Robust Policy Evaluation and Learning. *Proceedings of the 28th International Conference on Machine Learning*, 1097–1104.
 
