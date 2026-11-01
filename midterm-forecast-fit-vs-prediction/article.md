@@ -3,6 +3,8 @@
 *Diogo Ribeiro — 31 October 2026*
 *An independent, reproducible assessment prepared before the 3 November 2026 U.S. midterm elections.*
 
+**How to read the headline forecast:** A loss of **32.32 Republican House seats** is the model's *conditional prediction* under the original D+8 generic-ballot and 220-defended-seat assumptions. It is not an observed election result, and an historical \(R^2\) near 0.89 is **not** an 89% probability that Republicans will lose those seats or lose the majority. The registered 95% model-based prediction interval corresponds to losses of approximately **16–48 seats**, conditional on the model's assumptions.
+
 An attractive chart can perform two jobs at once. It can communicate an empirical relationship with remarkable efficiency, and it can encourage us to believe more than the underlying analysis establishes. The better the graphic, the easier it is to move from observation to expectation without pausing over the uncertainty between them. The interesting question is not whether an elegant regression is somehow dishonest. It is whether the conclusions attached to it are calibrated to the evidence it actually contains.
 
 On 30 October 2026, Steve Rattner presented a simple model of United States House of Representatives midterm elections. It used two familiar quantities: the national generic congressional ballot and the number of seats already held by the president's party. A scatterplot placed the model's estimated seat changes against the changes that actually occurred in elections from the middle of the twentieth century through 2022. The fitted and observed values lined up remarkably well. The reported coefficient of determination was 0.89. With Republicans defending 220 House seats and Democrats ahead by eight points in the generic ballot, the model projected a loss of approximately 33 Republican seats in the November 2026 election. The accompanying description made the substantive claim that those two predictors accounted for approximately 89% of the historical variation in midterm outcomes [1].
@@ -419,7 +421,7 @@ The word *paired* does important work. The Student-t and OLS models did not pred
 For candidate estimator \(j\) and held-out year \(t\), write the forecast error as \(e_{j,t}=\widehat Y_{j,t}-Y_t\). The per-election squared-loss differential against OLS is
 
 \[
-d_{j,t}=e_{j,t}^{,2}-e_{\mathrm{OLS},t}^{,2}.
+d_{j,t}=e_{j,t}^{2}-e_{\mathrm{OLS},t}^{2}.
 \]
 
 Negative \(d_{j,t}\) favors the candidate, positive \(d_{j,t}\) favors OLS, and zero is a tie. Because the methods share the same ten targets,
@@ -541,4 +543,4 @@ The preceding analysis retains its **31 October 2026 information cut-off**. On *
 
 For a later audit, [the scoring implementation](score_after_election.py) is prepared to compare those unchanged predictions with a **final** House Historian-aligned result, once such a result exists. It refuses to score before election day, requires a named official source and an explicit final-result confirmation, and writes the observed result to a **new report**, never to the frozen data or forecast. As of this addendum, no 2026 seat-change outcome is known, supplied or used. One future observation will be informative about this registered prediction, but it will not by itself establish the long-run calibration or causal correctness of any model.
 
-*Editorial status: draft for author review and manual Medium publication. No 2026 result is known or used in this document as of its preparation date.*
+*Editorial status: final pre-election manuscript, prepared for Medium publication on 1 November 2026. No 2026 election outcome is known or used in this manuscript. A separate post-election evaluation is optional future work, not a prerequisite for publishing this study.*

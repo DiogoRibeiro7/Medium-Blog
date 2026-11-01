@@ -190,6 +190,48 @@ to the inflation convention; this neither identifies a common shock nor
 disproves outward displacement. Figures 18–19, frozen input bytes and
 source/derived checksum records document the result.
 
+**Matched fiscal-income checkpoint (1 November 2026).** The same fixed
+municipal extract also contains annual median gross IRS-declared income
+per fiscal household. We joined that *municipal statistic* to the
+median EUR/m²/month of newly signed rental contracts only in
+**2020–2024** (85 matched municipality-years); 2019 new-rent medians and
+2025 fiscal incomes remain missing. For each municipality and a stated
+illustrative floor area, the synthetic level
+\(Q=100(12A R/Y)\) is the quotient of two separate published medians,
+**not an actual tenant burden**. The relative 2020–2024 quotient
+increase is independent of floor area and HICP if both numerator and
+denominator receive the same HICP adjustment. All **17** municipalities
+show a higher 2024 than 2020 quotient; the unweighted median of
+municipality relative increases is **+15.17%**, with Porto at **+30.55%**.
+These values do not measure household disposable income, tenant-level
+affordability, or migration. Source definitions follow the
+[INE/AT local-income technical note](https://www.ine.pt/documentos/municipios/rnlocal/ano2022/1B0.pdf)
+and the pinned upstream panel. The code-generated table
+`results/fiscal_income_rent_annual_municipal_proxy.csv` documents the
+50/70/90 m² *assumed* size sensitivity. Figure 20 illustrates the
+70 m² level only, and Figure 21 compares area-independent growth.
+
+**Porto-option price-gradient checkpoint (1 November 2026).** For
+the 16 other AMP municipalities and published new-contract rent
+medians in **2020–2025**, a Porto-relative same-year discount
+\(D_{j,t}=100(1-R_{j,t}/R_{\mathrm{Porto},t})\) and a
+size-assumed rent-only cash gap \(S_{j,t}(A)=A(R_{\mathrm{Porto},t}-R_{j,t})\)
+answer distinct questions. The synthetic cash gap can be reported
+in **2020 national-HICP consumer euros** via multiplication by
+\(H_{2020}/H_t\). All 16 other municipal new-contract medians were
+below Porto's in 2025. Yet **13** offered a *smaller proportional
+discount* than in 2020, even as all **16** offered a *larger
+HICP-deflated euro gap* for the same assumed dwelling area. The
+unweighted median 16-municipality discount changed from **48.22%
+to 46.60%**; the median 70 m² monthly cash difference changed from
+**€302.75 to €382.45 in 2020 consumer euros**. The annual median
+discount was not monotonic (2023: 49.47%). These numbers do not
+compare actual homes, measure rental availability, commute costs,
+household welfare, population relocation or directional price
+transmission. Figures 22–23 and the derived 96-row annual
+comparison table document the result. Housing and HICP sources
+retain their original pinned checksums.
+
 ## Planned analysis sequence
 
 ### Stage 0 — Obtain or document denial of directed residential counts

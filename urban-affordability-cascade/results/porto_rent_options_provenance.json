@@ -1,0 +1,68 @@
+{
+  "evidence_class": "descriptive_comparison_of_independent_municipal_new_contract_rent_medians",
+  "housing_source_upstream_commit": "0407faed1f08209b3d7682e19fc57e7120e62879",
+  "housing_source_fixed_subset_sha256": "88502e15b55a4d46536eed42ddc1924d30f555498d2c4a7e7a1b41fbeed71c66",
+  "hicp_official_dataset_doi": "https://doi.org/10.2908/PRC_HICP_AINR",
+  "hicp_source_response_sha256": "11742a14bd70d43c22e7170b07b65081f582d2a85eeac22005448f20327bd117",
+  "observed_years": [
+    2020,
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+  ],
+  "porto_reference": "Porto",
+  "comparison_municipalities": [
+    "Arouca",
+    "Espinho",
+    "Gondomar",
+    "Maia",
+    "Matosinhos",
+    "Oliveira de Azeméis",
+    "Paredes",
+    "Póvoa de Varzim",
+    "Santa Maria da Feira",
+    "Santo Tirso",
+    "São João da Madeira",
+    "Trofa",
+    "Vale de Cambra",
+    "Valongo",
+    "Vila Nova de Gaia",
+    "Vila do Conde"
+  ],
+  "municipality_year_comparisons": 96,
+  "hypothetical_dwelling_sizes_m2": [
+    50,
+    70,
+    90
+  ],
+  "nominal_saving_formula": "area_m2 * (Porto median new-rent EUR/m2/month - comparator median new-rent EUR/m2/month)",
+  "real_saving_formula": "nominal_saving * (Portugal annual average HICP 2020 / HICP current year)",
+  "relative_discount_formula": "100 * (1 - comparator median new-rent EUR/m2/month / Porto median new-rent EUR/m2/month)",
+  "2025_summary": {
+    "year": 2025,
+    "comparison_municipalities": 16,
+    "median_relative_discount_pct": "46.602972",
+    "relative_discount_q25_pct": "36.854211",
+    "relative_discount_q75_pct": "57.537155",
+    "median_synthetic_70m2_nominal_monthly_saving_eur": "460.950000",
+    "median_synthetic_70m2_real_2020_eur_monthly_saving": "382.450215",
+    "synthetic_70m2_real_saving_q25_2020_eur": "302.446393",
+    "synthetic_70m2_real_saving_q75_2020_eur": "472.182270",
+    "alternative_municipalities_cheaper_than_porto": 16,
+    "alternative_municipalities_with_smaller_discount_than_2020": 13,
+    "alternative_municipalities_with_higher_real_savings_than_2020": 16
+  },
+  "limits": [
+    "Independent annual municipal medians are not matched apartments or constant-quality new-rent indices",
+    "The 16 other AMP municipalities are administrative comparators, not validated substitutable suburbs",
+    "70 m2 is an assumed same-size apartment; 50/90 m2 scenarios scale cash amounts, not observed rentals",
+    "No unit availability, vacancy, contract mix, location within municipality or household sorting is measured",
+    "Nominal and HICP-deflated savings include no actual transport cost, time, moving cost or household tax/income",
+    "HICP is the Portugal national all-items deflator, not a municipal housing-cost index",
+    "A positive monthly rent difference cannot prove a feasible or welfare-improving household move",
+    "Cross-municipal rent growth and relative discount changes cannot identify directional housing-price contagion",
+    "Medians and quartiles summarize 16 equally weighted municipality comparisons; not a pooled tenancy estimate"
+  ]
+}

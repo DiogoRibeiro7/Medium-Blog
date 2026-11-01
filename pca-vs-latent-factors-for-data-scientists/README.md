@@ -1,4 +1,4 @@
-# Article #25 — A Principal Component Is Not a Latent Factor
+# Article #27 — A Principal Component Is Not a Latent Factor
 
 **Full title:** *A Principal Component Is Not a Latent Factor: Eigenvectors,
 Noise, and the Limits of PCA*

@@ -1,0 +1,42 @@
+name: Pandemic inflation and unequal recovery article reproducibility
+
+on:
+  pull_request:
+    paths:
+      - "pandemic-inflation-unequal-recovery/**"
+      - ".github/workflows/pandemic-inflation-unequal-recovery.yml"
+  push:
+    paths:
+      - "pandemic-inflation-unequal-recovery/**"
+      - ".github/workflows/pandemic-inflation-unequal-recovery.yml"
+
+jobs:
+  reproducibility:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: pandemic-inflation-unequal-recovery
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: pandemic-inflation-unequal-recovery/requirements.txt
+      - name: Install pinned analytical dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Verify raw source hashes and prepared tables
+        run: |
+          python prepare_data.py --check
+          python -m unittest discover -s tests -v
+      - name: Regenerate descriptive figures and analytical results
+        run: |
+          python analysis.py
+          python analysis.py --check
+      - name: Verify deterministic CSV outputs and inventory
+        run: |
+          python -c "from pathlib import Path; assert len(list(Path('figures').glob('figure_*.png'))) == 8; assert len(list(Path('results').glob('*.csv'))) == 3"
+          git diff --exit-code -- data/monthly_panel_2019_2025.csv data/annual_panel_2019_2025.csv results/
+      - name: Execute notebook code cells with standard Python
+        run: |
+          python -c 'import json; from pathlib import Path; notebook=json.loads(Path("model_walkthrough.ipynb").read_text(encoding="utf-8")); state={"__name__":"__main__"}; [exec("".join(cell["source"]), state) for cell in notebook["cells"] if cell["cell_type"]=="code"]'
