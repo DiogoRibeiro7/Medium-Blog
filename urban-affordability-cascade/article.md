@@ -1099,9 +1099,175 @@ described earlier.
 
 ---
 
+## A further check: were new rents rising faster than local fiscal incomes?
+
+The HICP correction answers a purchasing-power question about the
+general consumer basket. It does not answer the more direct housing
+question: *what happened to rents relative to the income statistic
+available for each municipality?* Those are different denominators.
+Inflation may be common to the whole country while local incomes and
+the kinds of homes entering the new-contract market differ sharply.
+An annual rental median can rise substantially faster than a municipal
+income median even after the consumer-price adjustment has removed part
+of its nominal growth.
+
+The fixed INE-derived municipal panel already contains median **gross
+IRS-declared annual income per fiscal household** from 2019 to 2024.
+It also contains median monthly rent per square metre in **newly signed
+contracts**, from 2020 to 2025. Their overlap is only **2020–2024**:
+we must not invent a 2019 new-lease rent or a 2025 fiscal income
+observation. The INE's [local-income statistics and technical
+notes](https://www.ine.pt/documentos/municipios/rnlocal/ano2022/1B0.pdf)
+identify the income as an administrative fiscal statistic derived from
+IRS Modelo 3 returns, and the [2024 INE
+release](https://webinq.ine.pt/home.aspx) explains the coverage. Tax
+households with relevant income are not the same population as tenants
+signing new leases, and they need not even have the same household
+definition. Our comparison is deliberately a *cross-statistic proxy*.
+
+### What an explicitly synthetic rental ratio can—and cannot—tell us
+
+Let \(R_{i,t}\) be the published municipality \(i\)'s median new-
+contract rent in EUR/m²/month in year \(t\), and let \(Y_{i,t}\) be
+the municipality's median annual gross declared fiscal-household
+income. For a hypothetical floor area \(A\) m², define
+
+\[
+Q_{i,t}(A)=100\,\frac{12A R_{i,t}}{Y_{i,t}}.
+\]
+
+The factor 12 converts a *monthly* rent into an illustrative annual
+payment; \(A\) specifies the size of a *hypothetical* newly contracted
+dwelling. For 70 m², \(Q=50\) means that twelve months of new-contract
+rent calculated using the municipal median EUR/m² would equal half
+the municipal median gross fiscal annual income. It does **not** mean
+that half of an actual tenant's income is spent on rent. Taking a
+quotient of two separate municipal medians is **not** the same as
+calculating rent-to-income ratios for observed households and taking
+their median. That distinction is fundamental, not a footnote.
+
+The useful descriptive comparison is the change in the synthetic
+quotient with the *same* assumed area:
+
+\[
+100\left[\frac{Q_{i,t}(A)}{Q_{i,2020}(A)}-1\right]
+=100\left[\frac{R_{i,t}/R_{i,2020}}{Y_{i,t}/Y_{i,2020}}-1\right].
+\]
+
+The arbitrary area \(A\) cancels from this growth calculation. Changing
+the assumed dwelling from 50 m² to 70 or 90 m² changes the ratio's
+**level**, not its percentage increase, provided the same size is
+maintained over time. The exercise still cannot correct changes in
+the *actual* contract mix, property size, household composition or
+income distribution. We therefore report both the floor-area
+assumption and the exact source numerator and denominator.
+
+### The matched 2020–2024 record
+
+For each of the 17 municipalities, we calculate the rent, income and
+synthetic-proxy growth rates separately, then report the **unweighted
+median across those 17 growth rates**. This is intentionally different
+from taking the ratio of two metropolitan medians or aggregating
+individual rental payments we do not possess.
+
+| Observation year | Median municipal new-rent growth since 2020 | Median municipal gross fiscal-income growth since 2020 | Median municipal proxy growth | Municipalities with a higher proxy than in 2020 |
+| --- | ---: | ---: | ---: | ---: |
+| 2021 | +4.80% | +4.65% | +0.15% | 9 of 17 |
+| 2022 | +16.37% | +13.21% | +3.05% | 15 of 17 |
+| 2023 | +32.04% | +20.72% | +9.20% | 17 of 17 |
+| 2024 | **+47.59%** | **+29.90%** | **+15.17%** | **17 of 17** |
+
+Every municipality's synthetic rent-to-fiscal-income quotient was
+higher in 2024 than in 2020. The median relative change across
+municipalities was **+15.17%**. This does not say the typical tenant
+experienced a 15% increase in their rent burden. It says that two
+published annual municipal medians moved at different rates, with
+the synthetic ratio deteriorating everywhere by the latest year
+for which both series are available.
+
+![Figure 20. The same illustrative 70 m² new-rent-to-gross-fiscal-income quotient for all 17 AMP municipalities in 2020 and 2024. The levels are ratios of separate municipal medians, not measured household burdens.](figures/fig20_synthetic_rent_fiscal_income_70m2.png)
+
+Porto is a revealing outlier. From 2020 to 2024, its municipal
+new-contract rent median rose **47.27%**, while the median gross
+declared fiscal-household income rose **12.80%**. Their relative
+quotient therefore increased **30.55%**, the largest increase among
+the 17 municipalities. Under the purely illustrative 70 m² calculation,
+the level moves from **54.75%** to **71.48%** of the municipality's
+gross fiscal-income median, a rise of **16.73 percentage points**.
+Again: no renter-by-renter income and rental contract was matched
+to derive these percentages, and a fiscal tax unit is not necessarily
+the household renting this hypothetical dwelling.
+
+For context, the same 70 m² synthetic quotient in Matosinhos rises
+from **45.88%** to **54.72%**, and in Vila Nova de Gaia from **42.67%**
+to **49.61%**. In Arouca, where the rent and income medians are lower,
+it rises from **26.88%** to **29.30%**. A lower *level* in an outer
+municipality does not imply that an actual displaced Porto household
+can obtain the same dwelling there, has the same fiscal income, or
+incurs no additional travel expense. The graph describes differences
+between municipal statistics, not the feasible relocation set for a
+particular person.
+
+![Figure 21. Matched nominal percentage growth of new-contract rent medians and gross fiscal-income medians, 2020–2024, with equality marked. Each dot is one municipality and the Porto observation is highlighted.](figures/fig21_rent_vs_fiscal_income_growth_2020_2024.png)
+
+The scatterplot exposes another useful pattern: every municipality
+lies above the equal-growth line. The conclusion is narrower than
+an epidemic of outward price transmission but stronger than an
+isolated Porto observation: over this matched four-year window,
+the available local income median did not keep pace with the
+available new-contract rent median in any AMP municipality.
+That pattern is compatible with simultaneous metropolitan housing
+pressure, not proof that a shock travelled from Porto to every
+destination in a particular order.
+
+### Why this is not another inflation adjustment—or a rent-burden survey
+
+The previous section applied the common Portugal HICP to *rents alone*
+and compared the result with nominal rent growth. For the present
+quotient, deflating **both** its nominal rent numerator and its nominal
+income denominator by the same annual HICP factor leaves it unchanged:
+
+\[
+\frac{R_{i,t}/H_t}{Y_{i,t}/H_t}
+=\frac{R_{i,t}}{Y_{i,t}}.
+\]
+
+That arithmetic identity makes the two checks complementary, not
+interchangeable. HICP provides a national consumer-basket benchmark;
+municipal fiscal-income growth provides a different local benchmark.
+Neither measures the actual incomes and costs of the *same* tenants,
+nor accounts for income taxes, social contributions, benefits, shared
+accommodation, rent regulation, household sizes, differences between
+new and incumbent contracts, the value of commuting time, or the
+distribution of rents and incomes within a municipality. Moreover,
+gross IRS-declared income may exclude relevant non-filing or
+non-declaring populations; it is not household disposable income.
+
+This measurement boundary also explains why we refuse to extend the
+calculation to 2025. The fixed source panel has 2025 rent medians
+but **no 2025 fiscal-income medians**. Projecting the 2024 fiscal
+denominator one year forward would fabricate a new assumption and
+make the attractive 2025 comparison less credible. The reproducible
+file `fiscal_income_pressure.py` stops at 2024, outputs 85 matched
+municipality-year observations, records 50/70/90 m² sensitivities,
+and preserves the fixed upstream panel checksum. Its tests check
+the median aggregation and exact HICP cancellation identity.
+
+The substantive conclusion is therefore precise: **the nominal
+new-contract rental median outgrew the median gross fiscal-income
+statistic in all 17 AMP municipalities from 2020 to 2024**. That
+provides another reason why an instruction to move outward does not
+solve a metropolitan affordability problem merely by changing an
+address. But to claim that outward-moving households *caused* the
+observed changes, we still need the directed residential movement
+table, a defensible common-shock design and income- and tenure-linked
+household data. None has been conjured from the two municipal medians.
+
+---
+
 ## Sources and reproducibility
 
-The original eight figures and three tabular outputs, four observed mobility figures, one sharp non-identification figure, two annual timing/prediction figures, two forecast-robustness figures, and **two nominal-vs-deflated figures** with companion CSV results can be regenerated using the commands in the [study README](README.md). The new directed-OD intake suite is software-only until a genuine aggregate table is released. The [fixed 17-municipality input](data/amp_municipal_panel_2019_2025.csv) is a derived extract from [DiogoRibeiro7/portugal-housing-generations](https://github.com/DiogoRibeiro7/portugal-housing-generations), pinned to [upstream commit 0407fae](https://github.com/DiogoRibeiro7/portugal-housing-generations/tree/0407faed1f08209b3d7682e19fc57e7120e62879). It does not assert that 2025 income observations or 2019 new-lease observations exist. The observed Portugal HICP 2019–2025 source is independently frozen at [Eurostat dataset `prc_hicp_ainr`](https://doi.org/10.2908/PRC_HICP_AINR). The published mobility extracts have separate checksummed source records and distinct limitations.
+The original eight figures and three tabular outputs, four observed mobility figures, one sharp non-identification figure, two annual timing/prediction figures, two forecast-robustness figures, **two nominal-vs-deflated figures**, and **two matched fiscal-income screening-proxy figures** with companion CSV results can be regenerated using the commands in the [study README](README.md). The new directed-OD intake suite is software-only until a genuine aggregate table is released. The [fixed 17-municipality input](data/amp_municipal_panel_2019_2025.csv) is a derived extract from [DiogoRibeiro7/portugal-housing-generations](https://github.com/DiogoRibeiro7/portugal-housing-generations), pinned to [upstream commit 0407fae](https://github.com/DiogoRibeiro7/portugal-housing-generations/tree/0407faed1f08209b3d7682e19fc57e7120e62879). It does not assert that 2025 income observations or 2019 new-lease observations exist. The observed Portugal HICP 2019–2025 source is independently frozen at [Eurostat dataset `prc_hicp_ainr`](https://doi.org/10.2908/PRC_HICP_AINR). The published mobility extracts have separate checksummed source records and distinct limitations.
 
 1. Área Metropolitana do Porto. [Statutory definition and its 17 municipalities](https://www.amp.pt/en/amp-instituicao/area-metropolitana-do-porto-or-lei-no-752013/).
 2. Instituto Nacional de Estatística. [Local housing price methodology and geospatial context](https://www.ine.pt/ine_novidades/semin/INEWS38/files/assets/common/downloads/publication.pdf).
@@ -1126,5 +1292,6 @@ The original eight figures and three tabular outputs, four observed mobility fig
 21. Instituto Nacional de Estatística. [INEWS 65 (April 2026), research data infrastructure and safe centres](https://www.ine.pt/ine_novidades/semin/INEWS65/index.html), including Porto.
 22. Eurostat. [Harmonised index of consumer prices, ECOICOP ver.2, annual indices and rates of change (`prc_hicp_ainr`)](https://doi.org/10.2908/PRC_HICP_AINR). Portugal all-items annual average index (`INX_A_AVG`, `TOTAL`, `PT`, 2019–2025), 2025=100; source updated 17 September 2026, official API snapshot retrieved 1 November 2026.
 23. Eurostat. [Copyright notice and free re-use of statistical data](https://ec.europa.eu/eurostat/help/copyright-notice). Statistical-source reuse permitted with acknowledgement.
+24. Instituto Nacional de Estatística / Autoridade Tributária e Aduaneira. [Statistics of Income at Local Level: fiscal households and methodological note](https://www.ine.pt/documentos/municipios/rnlocal/ano2022/1B0.pdf), and [INE 2024 local-income release](https://webinq.ine.pt/home.aspx). IRS Modelo 3 administrative statistics, not a matched tenant survey.
 
 *Publication status: manuscript prepared for technical review. The municipal descriptive statistics refer to the pinned October 2026 housing extract; general inflation uses the separately frozen Eurostat September 2026 vintage retrieved in November 2026. No estimates of observed displaced households, spatial transmission coefficients or policy causal effects are claimed.*

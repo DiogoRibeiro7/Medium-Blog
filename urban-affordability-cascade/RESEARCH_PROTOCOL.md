@@ -190,6 +190,27 @@ to the inflation convention; this neither identifies a common shock nor
 disproves outward displacement. Figures 18–19, frozen input bytes and
 source/derived checksum records document the result.
 
+**Matched fiscal-income checkpoint (1 November 2026).** The same fixed
+municipal extract also contains annual median gross IRS-declared income
+per fiscal household. We joined that *municipal statistic* to the
+median EUR/m²/month of newly signed rental contracts only in
+**2020–2024** (85 matched municipality-years); 2019 new-rent medians and
+2025 fiscal incomes remain missing. For each municipality and a stated
+illustrative floor area, the synthetic level
+\(Q=100(12A R/Y)\) is the quotient of two separate published medians,
+**not an actual tenant burden**. The relative 2020–2024 quotient
+increase is independent of floor area and HICP if both numerator and
+denominator receive the same HICP adjustment. All **17** municipalities
+show a higher 2024 than 2020 quotient; the unweighted median of
+municipality relative increases is **+15.17%**, with Porto at **+30.55%**.
+These values do not measure household disposable income, tenant-level
+affordability, or migration. Source definitions follow the
+[INE/AT local-income technical note](https://www.ine.pt/documentos/municipios/rnlocal/ano2022/1B0.pdf)
+and the pinned upstream panel. The code-generated table
+`results/fiscal_income_rent_annual_municipal_proxy.csv` documents the
+50/70/90 m² *assumed* size sensitivity. Figure 20 illustrates the
+70 m² level only, and Figure 21 compares area-independent growth.
+
 ## Planned analysis sequence
 
 ### Stage 0 — Obtain or document denial of directed residential counts
