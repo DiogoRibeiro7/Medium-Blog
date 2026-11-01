@@ -32,6 +32,13 @@ DISPLAY_MATH: Final[re.Pattern[str]] = re.compile(r"(?ms)^\\\[\n(.*?)\n\\\]$")
 INLINE_MATH: Final[re.Pattern[str]] = re.compile(r"\\\((.*?)\\\)")
 FIGURE: Final[re.Pattern[str]] = re.compile(r"!\[([^\]]+)\]\((figures/[^)\s]+\.png)\)")
 MARKDOWN_LINK: Final[re.Pattern[str]] = re.compile(r"(?<!!)\[([^\]]+)\]\(([^)\s]+)\)")
+TABLE_FIGURES: Final[tuple[str, ...]] = (
+    "historical-election-examples.png",
+    "forward-validation-comparison.png",
+    "estimator-sensitivity.png",
+    "paired-resampling-comparison.png",
+)
+TABLE_FIGURE_REF: Final[str] = "e31ce5cd4b0ec9f64c4e2977168514785796393e"
 REFERENCES: Final[re.Pattern[str]] = re.compile(r"(?m)^(\d+)\. .+")
 
 # All inline math expressions in the locked original are explicit. Reject new
@@ -124,8 +131,8 @@ def build_release_markdown(source: str) -> str:
         raise ValueError("The information and registration dates must remain visible")
 
     equations = extract_equations(source)
-    if len(FIGURE.findall(source)) != 13:
-        raise ValueError("Expected exactly thirteen original evidence figures")
+    if len(FIGURE.findall(source)) != 13 + len(TABLE_FIGURES):
+        raise ValueError("Expected thirteen original evidence figures and four table images")
 
     equation_index = iter(range(1, len(equations) + 1))
 
@@ -149,7 +156,8 @@ def build_release_markdown(source: str) -> str:
         if not (ROOT / relative).is_file():
             raise ValueError(f"Missing figure: {relative}")
         # Pin the scientific figure to the existing merged pre-election revision.
-        url = f"https://raw.githubusercontent.com/{REPOSITORY}/{FROZEN_PUBLIC_REF}/{ARTICLE_DIRECTORY}/{relative}"
+        ref = TABLE_FIGURE_REF if Path(relative).name in TABLE_FIGURES else FROZEN_PUBLIC_REF
+        url = f"https://raw.githubusercontent.com/{REPOSITORY}/{ref}/{ARTICLE_DIRECTORY}/{relative}"
         return f"![{alt}]({url})"
 
     rendered = FIGURE.sub(replace_figure, rendered)
@@ -224,8 +232,10 @@ def check_release(source: str, rendered: str) -> tuple[int, int, int]:
     if rendered != expected:
         raise ValueError("Publication Markdown is stale relative to the final manuscript")
     figures = FIGURE.findall(source)
-    if len(set(path for _, path in figures)) != 13:
-        raise ValueError("Original figure references are missing or duplicated")
+    if len(set(path for _, path in figures)) != 13 + len(TABLE_FIGURES):
+        raise ValueError("Figure references are missing or duplicated")
+    if {Path(path).name for _, path in figures if Path(path).name in TABLE_FIGURES} != set(TABLE_FIGURES):
+        raise ValueError("Required table images are missing")
     references = [int(item) for item in REFERENCES.findall(source)]
     if references != list(range(1, 20)):
         raise ValueError("Expected nineteen consecutively numbered references")
