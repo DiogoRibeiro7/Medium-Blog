@@ -1,6 +1,6 @@
 # Articles Developed in This Chat
 
-This is a chronological index of the twenty-four long-form articles developed in
+This is a chronological index of the twenty-five long-form articles developed in
 this conversation for `Medium-Blog`. It is **not** a complete
 catalogue of the repository's articles or historical notebooks.
 
@@ -30,6 +30,7 @@ catalogue of the repository's articles or historical notebooks.
 | 22 | [The Price of Stability Was Not Shared Equally: Stagflation, Volcker, Reagan, and America's Market Turn](stagflation-market-turn/article.md) | 1970–1990 U.S. economic history; CPI inflation, unemployment and racial disparities, monetary tightening, household Gini, union membership, tax acts, deregulation, federal deficits, hypothetical wage indexation | 8 | [Study README](stagflation-market-turn/README.md) · [Python analysis](stagflation-market-turn/analysis.py) · [Notebook](stagflation-market-turn/model_walkthrough.ipynb) |
 | 23 | [A Nearest Neighbor Is Not Necessarily Similar: Distance Concentration, Hubness, and the Geometry of High-Dimensional Data](nearest-neighbor-geometry-for-data-scientists/article.md) | Exact Gaussian distance moments, relative contrast, irrelevant dimensions in 7-NN, nuisance scaling, Johnson–Lindenstrauss projections, neighbor hubness, spectral effective rank, angular and radial similarity | 9 | [Study README](nearest-neighbor-geometry-for-data-scientists/README.md) · [Python analysis](nearest-neighbor-geometry-for-data-scientists/analysis.py) · [Notebook](nearest-neighbor-geometry-for-data-scientists/nearest_neighbor_geometry.ipynb) |
 | 24 | [The Boom Was Not a Balance Sheet: Globalization, Household Credit, and the Fragile Prosperity Before 2008](financialization-before-2008/article.md) | 1990–2007 U.S. globalization and financialization; manufacturing employment, trade, median income and household Gini, union membership, FHFA house prices, household-and-nonprofit debt, interest rates, hypothetical collateral leverage | 8 | [Study README](financialization-before-2008/README.md) · [Python analysis](financialization-before-2008/analysis.py) · [Notebook](financialization-before-2008/model_walkthrough.ipynb) |
+| 25 | [The Recession Ended; the Damage Did Not: The Financial Crisis of 2008, the Great Recession, and America's Unequal Recovery](great-recession-unequal-recovery/article.md) | 2007–2019 U.S. financial crisis and unequal recovery; NBER recession, GDP and payroll recovery, Black/White unemployment, FHFA housing and debt service, median household income and Gini, Fed balance sheet, SCF racial wealth, hypothetical bank deleveraging | 8 | [Study README](great-recession-unequal-recovery/README.md) · [Python analysis](great-recession-unequal-recovery/analysis.py) · [Notebook](great-recession-unequal-recovery/model_walkthrough.ipynb) |
 
 ## Reproducibility
 
