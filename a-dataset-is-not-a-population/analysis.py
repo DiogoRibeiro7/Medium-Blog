@@ -1,6 +1,6 @@
 """Deterministic, synthetic finite-population sampling experiments.
 
-The first three studies are implemented; the remaining six are specified in
+The first six studies are implemented; the remaining three are specified in
 RESEARCH_PLAN.md. No published evidence is claimed until the full suite exists.
 """
 
@@ -18,11 +18,14 @@ import numpy as np
 from numpy.typing import NDArray
 
 SEED = 20261102
-STUDIES = ("srs", "strata", "nonresponse")
+STUDIES = ("srs", "strata", "nonresponse", "coverage", "volunteer", "calibration")
 METHODS = {
     "srs": ("sample_mean",),
     "strata": ("unweighted", "poststratified", "ht", "hajek"),
     "nonresponse": ("respondents", "ipw_known", "ipw_misspecified"),
+    "coverage": ("frame_mean",),
+    "volunteer": ("opt_in", "probability_sample"),
+    "calibration": ("unweighted", "marginal_calibration", "joint_calibration"),
 }
 FIELDNAMES = ("study", "scenario", "replicate", "method", "estimate", "target", "error")
 
@@ -120,8 +123,73 @@ def nonresponse(replicate: int, seed: int = SEED) -> list[Observation]:
             for name, value in estimates.items()]
 
 
+def coverage(replicate: int, seed: int = SEED) -> list[Observation]:
+    """Measure an inaccessible 20% population segment with zero inclusion chance.
+
+    Repeating a larger or smaller frame sample cannot identify the omitted
+    segment's mean without external information or extrapolation assumptions.
+    """
+    population_rng = np.random.default_rng(np.random.SeedSequence([seed, 303]))
+    frame = population_rng.normal(0.0, 1.0, 800)
+    excluded = population_rng.normal(5.0, 1.0, 200)
+    generator = rng_for("coverage", replicate, seed)
+    indices = generator.choice(len(frame), size=200, replace=False)
+    target = float((frame.sum() + excluded.sum()) / 1000)
+    estimate = float(frame[indices].mean())
+    return [Observation("coverage", "frame_excludes_high_group", replicate, "frame_mean", estimate, target)]
+
+
+def volunteer(replicate: int, seed: int = SEED) -> list[Observation]:
+    """Compare a large tilted opt-in sample with a small random sample."""
+    population_rng = np.random.default_rng(np.random.SeedSequence([seed, 404]))
+    x = population_rng.normal(size=5000)
+    y = 1.0 + 2.0 * x + population_rng.normal(size=5000)
+    generator = rng_for("volunteer", replicate, seed)
+    # A convenience panel is not a probability sample of the target population.
+    probability = 1.0 / (1.0 + np.exp(-(-0.9 + 1.8 * x)))
+    opt_in = generator.random(len(y)) < probability
+    random_ids = generator.choice(len(y), size=150, replace=False)
+    estimates = {"opt_in": float(y[opt_in].mean()),
+                 "probability_sample": float(y[random_ids].mean())}
+    target = float(y.mean())
+    return [Observation("volunteer", "tilted_opt_in", replicate, name, value, target)
+            for name, value in estimates.items()]
+
+
+def calibration(replicate: int, seed: int = SEED) -> list[Observation]:
+    """Show that exact marginal balance does not imply joint-cell balance.
+
+    The target has diagonal cell shares 0.4 each, off-diagonal shares 0.1.
+    The sample reverses those shares but keeps BOTH binary margins at 0.5.
+    Thus marginal calibration cannot recover an interaction outcome; knowing
+    the four joint cell totals permits exact joint poststratification.
+    """
+    population_rng = np.random.default_rng(np.random.SeedSequence([seed, 505]))
+    cells = ((0, 0), (0, 1), (1, 0), (1, 1))
+    population_counts = (400, 100, 100, 400)
+    sample_counts = (20, 80, 80, 20)
+    generator = rng_for("calibration", replicate, seed)
+    cell_values: list[NDArray[np.float64]] = []
+    sampled_means: list[float] = []
+    for (a, b), size, take in zip(cells, population_counts, sample_counts, strict=True):
+        # Outcome depends on joint alignment, not either marginal alone.
+        values = 3.0 * float(a == b) + population_rng.normal(0.0, 1.0, size)
+        cell_values.append(values)
+        sampled_means.append(float(values[generator.choice(size, take, replace=False)].mean()))
+    target = float(sum(values.sum() for values in cell_values) / 1000)
+    unweighted = float(np.average(sampled_means, weights=sample_counts))
+    joint = float(np.average(sampled_means, weights=population_counts))
+    # Sample X1 and X2 margins already match the target exactly. Raking to
+    # these margins consequently leaves every sample weight unchanged.
+    estimates = {"unweighted": unweighted, "marginal_calibration": unweighted,
+                 "joint_calibration": joint}
+    return [Observation("calibration", "joint_mismatch_margins_match", replicate, name, value, target)
+            for name, value in estimates.items()]
+
+
 RUNNERS: dict[str, Callable[[int, int], list[Observation]]] = {
     "srs": srs, "strata": strata, "nonresponse": nonresponse,
+    "coverage": coverage, "volunteer": volunteer, "calibration": calibration,
 }
 
 
