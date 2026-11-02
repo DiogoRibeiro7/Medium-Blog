@@ -3,6 +3,9 @@
 from __future__ import annotations
 
 import unittest
+import csv
+import math
+from pathlib import Path
 
 import numpy as np
 
@@ -15,6 +18,7 @@ from analysis import (
     instrument_theoretical_wald,
     overlap_theoretical_ess_fraction,
     simpson_exact_marginal_difference,
+    summarize,
     simulate,
     summarize,
 )
@@ -86,6 +90,31 @@ class CausalStudyTests(unittest.TestCase):
         self.assertAlmostEqual(effective_sample_size(np.ones(10)), 10.0)
         self.assertLess(effective_sample_size(np.array([1.0, 1.0, 1.0, 100.0])), 2.0)
 
+
+    def test_canonical_csv_archives_match_regeneration(self) -> None:
+        """Audit each committed CSV against independent deterministic simulation."""
+        root = Path(__file__).resolve().parents[1] / "data"
+        for study in STUDY_IDS:
+            results = simulate(study, repetitions=300)
+            expected_replicates = [vars(item) | {"error": item.error} for item in results]
+            expected_summary = summarize(results)
+            for suffix, expected in (("replicates", expected_replicates), ("summary", expected_summary)):
+                with (root / f"{study}_{suffix}.csv").open(newline="", encoding="utf-8") as handle:
+                    archived = list(csv.DictReader(handle))
+                self.assertEqual(len(archived), len(expected), f"{study}/{suffix} row count")
+                for index, (actual_row, expected_row) in enumerate(zip(archived, expected)):
+                    self.assertEqual(set(actual_row), set(expected_row))
+                    for column, expected_value in expected_row.items():
+                        actual = actual_row[column]
+                        if isinstance(expected_value, str):
+                            self.assertEqual(actual, expected_value)
+                        elif isinstance(expected_value, int):
+                            self.assertEqual(int(actual), expected_value)
+                        else:
+                            self.assertTrue(
+                                math.isclose(float(actual), float(expected_value), rel_tol=1e-12, abs_tol=1e-12),
+                                f"{study}/{suffix} row={index} field={column}: {actual} vs {expected_value}",
+                            )
 
 if __name__ == "__main__":
     unittest.main()
