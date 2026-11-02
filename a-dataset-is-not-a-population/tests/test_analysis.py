@@ -65,6 +65,29 @@ class SamplingStudiesTests(unittest.TestCase):
         self.assertLess(float(by_method["unweighted"].mean()), -1.5)
         self.assertLess(abs(float(by_method["joint_calibration"].mean())), 0.08)
 
+    def test_raw_ipw_reduces_selection_bias_but_clipping_can_reintroduce_it(self) -> None:
+        rows = simulate("weighting", 300)
+        bias = {method: float(np.mean([row.estimate - row.target for row in rows if row.method == method]))
+                for method in METHODS["weighting"]}
+        self.assertGreater(bias["unweighted"], 0.5)
+        self.assertLess(abs(bias["ipw_raw"]), 0.13)
+        self.assertGreater(bias["ipw_clipped"], bias["ipw_raw"] + 0.08)
+
+    def test_covariate_shift_changes_deployment_risk(self) -> None:
+        rows = simulate("predictive", 180)
+        risk = {method: float(np.mean([row.estimate for row in rows if row.method == method]))
+                for method in METHODS["predictive"]}
+        self.assertGreater(risk["target_test"], risk["sampled_test"] + 2.0)
+        self.assertLess(risk["target_weighted_fit"], risk["target_test"] - 1.0)
+
+    def test_composition_reweighting_cannot_fix_concept_shift(self) -> None:
+        rows = simulate("drift", 180)
+        bias = {method: float(np.mean([row.estimate - row.target for row in rows if row.method == method]))
+                for method in METHODS["drift"]}
+        self.assertLess(bias["historical"], -1.7)
+        self.assertLess(abs(bias["updated_margins_stable"]), 0.08)
+        self.assertLess(bias["updated_margins_shift"], -1.3)
+
     def test_archived_summaries_have_correct_identities(self) -> None:
         rows = simulate("srs", 8)
         with tempfile.TemporaryDirectory() as directory:
