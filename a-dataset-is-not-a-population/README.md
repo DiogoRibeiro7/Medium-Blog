@@ -62,7 +62,7 @@ coverage directly.
 
 ## Verification scope
 
-The twelve standard-library unittest cases verify deterministic streams,
+The thirteen unittest cases verify deterministic streams,
 complete methods and finite rows, algebraic archive identities, known-weight
 correction of stratified oversampling, and an oracle-weight improvement over
 the intentionally misspecified response mechanism, undercoverage, opt-in
@@ -70,3 +70,23 @@ selection bias, marginal-versus-joint calibration, weight clipping,
 covariate-shift prediction risk and concept shift. They are regression
 checks, not substitutes for the remaining experimental, theoretical and
 source audit requirements.
+
+## Full synthetic evidence and figures
+
+The deterministic full-run protocol uses 300 independent repetitions per
+study, with the default seed 20261102. Each study writes a replication-level
+CSV and a summary CSV. The plotting script reads the archived replications
+and creates one PNG per study, with the mean signed error and ±1.96 Monte
+Carlo standard errors. For predictive risk, signed error means excess
+squared-error loss above the theoretical Bayes noise risk 0.25.
+
+```bash
+python analysis.py --output /tmp/article34-full --repetitions 300
+python figures.py --data /tmp/article34-full --output /tmp/article34-figures
+```
+
+These outputs are synthetic experiment evidence, not representative empirical
+survey observations. Cross-repetition intervals quantify simulation means.
+The plot colors are descriptive visual markers and must not be interpreted as
+formal accept/reject decisions. A complete article still needs a checked
+manuscript, sources, notebook and independent evidence audit.
