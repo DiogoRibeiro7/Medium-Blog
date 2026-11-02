@@ -1,6 +1,6 @@
 # Medium figure catalogue and upload notes
 
-The SVG files in results/ are the versioned research originals. The accompanying GitHub Actions workflow rasterizes the 11 SVGs to 2,200-pixel-wide PNGs and uploads an artifact named **tax-cuts-rich-medium-png**. These PNGs are **not** committed. Download the zip from the latest successful **Historical tax-response model** workflow run for PR #451, extract it, and upload the individual PNGs to Medium. The artifact expires after 30 days. Local reproduction:
+The SVG files in `results/` are the versioned research originals. The 11 publication PNGs are committed in [`figures/medium/`](figures/medium/) from the supplied `tax-cuts-rich-medium-png.zip`, at 2,200 pixels wide. Upload the individual PNGs to Medium from that directory. The GitHub Actions workflow also regenerates them and uploads a temporary artifact named **tax-cuts-rich-medium-png**, but the committed images remain available after the artifact expires. Local reproduction:
 
     python -m pip install "CairoSVG==2.7.1"
     python tax-cuts-rich-historical-cycles/export_medium_png.py --out tax-cuts-rich-historical-cycles/publication_png
@@ -23,7 +23,7 @@ Do not paste SVG links as publication figures. Medium captions below distinguish
 
 ## Publication quality checklist
 
-- [ ] Download and inspect all 11 PNGs for legible text, tick labels, and uncut titles.
+- [ ] Inspect all 11 committed PNGs for legible text, tick labels, and uncut titles.
 - [ ] Upload only figures actively referenced in the public narrative, in the corresponding sections.
 - [ ] Attach each figure's caption and alt text; hyperlink the underlying source/provenance in the surrounding paragraph.
 - [ ] Avoid converting the data into pasted Markdown tables; Medium may not render them correctly.
