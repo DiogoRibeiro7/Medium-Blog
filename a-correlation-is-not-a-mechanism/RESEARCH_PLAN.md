@@ -17,13 +17,13 @@ This article concerns causal identification from observational data. It is disti
 
 ## Causal questions and estimands
 
-Let (T\in\{0,1\}) be treatment, (Y(t)) potential outcomes, (X) measured baseline common causes, (U) unobserved common causes and (S) selection. The principal estimand is the finite or superpopulation average treatment effect:
+Let $T\in\{0,1\}$ be treatment, $Y(t)$ potential outcomes, $X$ measured baseline common causes, $U$ unobserved common causes and $S$ selection. The principal estimand is the finite or superpopulation average treatment effect:
 
-[
+$
 \tau=\mathbb E[Y(1)-Y(0)].
-]
+$
 
-Contrast it explicitly with the observational difference (mathbb E[Y\mid T=1]-\mathbb E[Y\mid T=0]), the covariate-standardized contrast, conditional average effects and associations conditioned on post-treatment variables. Consistency, conditional exchangeability, positivity and suitable selection conditions must be stated before any point identification claim.
+Contrast it explicitly with the observational difference $\mathbb E[Y\mid T=1]-\mathbb E[Y\mid T=0]$, the covariate-standardized contrast, conditional average effects and associations conditioned on post-treatment variables. Consistency, conditional exchangeability, positivity and suitable selection conditions must be stated before any point identification claim.
 
 ## Nine reproducible synthetic studies
 
