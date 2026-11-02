@@ -89,4 +89,22 @@ These outputs are synthetic experiment evidence, not representative empirical
 survey observations. Cross-repetition intervals quantify simulation means.
 The plot colors are descriptive visual markers and must not be interpreted as
 formal accept/reject decisions. A complete article still needs a checked
-manuscript, sources, notebook and independent evidence audit.
+manuscript, sources and independent evidence audit.
+
+## Executable notebook
+
+The notebook is built deterministically from `notebook_builder.py`. It has
+no committed execution outputs and writes exclusively to a temporary
+directory. The execution test sets `POPULATION_ARTICLE_DIR`, starts a fresh
+Python kernel from an unrelated working directory, and verifies that all
+canonical CSVs remain unchanged.
+
+```bash
+python notebook_builder.py
+RUN_NOTEBOOK_EXECUTION=1 python -m unittest discover -s tests -v
+```
+
+The notebook runs three replications per study, generates eighteen temporary
+CSVs and nine temporary figures, and displays explicit interpretation limits.
+It does not rerun 300-repetition publication evidence on every execution.
+
