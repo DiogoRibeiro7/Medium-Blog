@@ -1,0 +1,3 @@
+study,scenario,method,repetitions,target,mean_estimate,bias,monte_carlo_se,sampling_sd
+instrument,exclusion_violation,wald,300,1.2,1.6963514194584592,0.4963514194584593,0.002411809104226067,0.0417737590667673
+instrument,valid_exclusion,wald,300,1.2,1.1937277272943114,-0.006272272705688531,0.002894383009268057,0.05013218428616376
