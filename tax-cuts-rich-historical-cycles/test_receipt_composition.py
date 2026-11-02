@@ -2,6 +2,7 @@
 
 import tempfile
 import unittest
+from xml.etree import ElementTree
 from pathlib import Path
 
 from receipt_composition import ReceiptMix, load_mix, render_mix
@@ -34,6 +35,9 @@ class ReceiptCompositionTests(unittest.TestCase):
         rows = load_mix()
         self.assertEqual(render_mix(rows), render_mix(rows))
         self.assertIn("do not isolate effects", render_mix(rows))
+        root = ElementTree.fromstring(render_mix(rows))
+        self.assertTrue(root.tag.endswith("svg"))
+        self.assertIn("Social insurance &amp; retirement", render_mix(rows))
 
 
 if __name__ == "__main__":
