@@ -155,6 +155,18 @@ A useful scientific account begins by defining the estimand. In potential-outcom
 
 The political question is broader than the reported confidence interval. If a reform reliably raises post-tax concentration but produces only an uncertain growth benefit, the burden of justification changes. A government can still choose the reform for reasons such as administrative simplicity, mobility of a particular tax base, or a preference for private allocation. It should state those values openly rather than promising an empirically guaranteed windfall for everyone.
 
+### The household inequality record is not a tax-incidence study
+
+The Census Bureau's [annual household money-income Gini series](data/household_gini_1967_2018.csv), distributed by FRED as GINIALLRH, supplies a separate descriptive view of inequality from 1967 to 2018. The [figure](results/household_gini.svg) deliberately splits the line at the 1993 CPS survey redesign rather than interpreting the 1992–1993 jump as a sudden economic redistribution. The [source note](data/inequality_sources.md) documents the comparability issue, the income concept, and the fact that no 1964–1966 household values were fabricated.
+
+Within the earlier measurement regime, the recorded household Gini was 0.403 in 1980, 0.406 in 1981, and 0.426 in 1988. By 1992 it was 0.433. Those observations are consistent with an era in which measured pretax household money-income inequality increased, but they cannot apportion responsibility among tax policy, changes in compensation, household composition, unemployment, technology, trade, unionization, and the business cycle. The series alone does not estimate the effect of the Reagan legislation.
+
+In the later survey regime, the Gini was 0.462 in 2000, 0.464 in 2003, and 0.486 in 2018, with 0.489 recorded for 2017. A one-year decline between 2017 and 2018 is neither proof that the TCJA reduced structural inequality nor evidence of a net benefit to lower-income households. It is one observation of a particular survey measure, affected by sampling variation, the income definition, and many simultaneous changes. In addition, the 1993 discontinuity cautions against naive long-run slopes spanning both measurement regimes.
+
+The deeper limitation is especially important for a discussion about taxing the wealthy. Census *money income* excludes some forms of asset returns, notably capital gains, and does not subtract income or payroll taxes or incorporate in-kind transfer values. The resulting Gini is **not** a measure of after-tax-and-transfer resources, and it is not a wealth Gini. A tax reform that changes realized capital gains or tax liabilities can have significant distributional effects that this series does not directly record. A separate CBO distributional-incidence analysis is necessary to evaluate that mechanism.
+
+This additional evidence supports a narrow descriptive proposition: the measured pretax household inequality environment changed substantially during the same broad decades in which tax policy, labor institutions, and financial markets changed. The historical association raises questions for causal research. It does not answer them.
+
 ## 8. Why the revenue cannot be treated as free
 
 A tax reduction changes government arithmetic. At any horizon, the accounting constraint relates expenditure, revenues, borrowing, interest, and the debt stock. Growth feedback can recover some revenue, but “some” is not “all.” A reform is self-financing only if the induced tax-base expansion and other effects fully offset the direct loss relative to a credible baseline.
