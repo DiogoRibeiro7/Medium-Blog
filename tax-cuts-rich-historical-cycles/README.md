@@ -54,11 +54,17 @@ These are 52 years of *pretax household money-income* Gini, not the wealth distr
 
 The three selected quintiles compare average household income before and after **means-tested transfers and all modeled federal taxes** in the same year. They are not a measure of the 2017 tax law's effect. Separately, CBO's modeled prior-law comparison estimates that the 2017 act reduced average federal rates by about 1.3 percentage points in the lowest two quintiles and 2.7 points in the highest quintile. That counterfactual estimate is discussed in the essay, not reverse-engineered from the income bars. The expanded suite passes **27 local tests**. Regenerate the chart with `python tax-cuts-rich-historical-cycles/cbo_distribution.py`.
 
+## OMB fiscal balance and publicly held debt
+
+[OMB/FRED 1964–2018 balance and public-debt CSV](data/federal_balance_public_debt_1964_2018.csv) · [provenance and denominator notes](data/fiscal_balance_debt_sources.md) · [two-panel fiscal figure](results/fiscal_balance_public_debt.svg) · [typed renderer](fiscal_balance_debt.py) · [tests](test_fiscal_balance_debt.py).
+
+The annual budget surplus or deficit is a flow; debt held by the public is a stock. Both FRED ratios use nominal annual GDP, and their OMB federal fiscal-year numerators are not aligned perfectly with the calendar-year denominators. They cannot measure the stand-alone causal consequences of tax cuts. Regenerate with `python tax-cuts-rich-historical-cycles/fiscal_balance_debt.py`. **37 local tests pass**.
+
 ## Publication gates
 
 1. Independently verify the statute timelines and the precise scope of each historical tax reform against IRS, Congress, Treasury, CRS, and original law text.
 2. ~~Freeze the first official top statutory rate series~~ — IRS 1964–2018 slice completed with caveats; add earlier historical period and current-year statutes only when independently verified, and keep effective tax burdens separate.
-3. ~~Start source-verified descriptive historical figures~~ — statutory rate, receipts/GDP, BEA growth/investment, and Census household Gini now exist as SVG; add revenue composition, a full after-tax distribution time series, investment components (equipment, structures, and IP), debt, wealth, and Medium-compatible PNGs.
+3. ~~Start source-verified descriptive historical figures~~ — statutory rate, receipts/GDP, BEA growth/investment, and Census household Gini now exist as SVG; add revenue composition, a full after-tax distribution time series, investment components (equipment, structures, and IP), a fiscal revenue/spending decomposition, wealth, and Medium-compatible PNGs.
 4. Implement a typed, documented Python 3.12 companion with source manifest and SHA-256 checks, deterministic plots, notebook, tests, and path-scoped CI.
 5. ~~Add an initial hypothetical sensitivity analysis~~ — completed as an explicitly illustrative model; extend robustness and validate notation before publication, without presenting invented coefficients as historical causal effects.
 6. Audit the tax research literature, including the measurement critique of the TCJA investment estimates and the identifying assumptions in the cross-country study.
