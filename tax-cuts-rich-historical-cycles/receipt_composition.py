@@ -6,6 +6,7 @@ import argparse
 import csv
 import math
 from dataclasses import dataclass
+from xml.sax.saxutils import escape
 from pathlib import Path
 
 
@@ -85,7 +86,7 @@ def render_mix(rows: list[ReceiptMix]) -> str:
         svg.append(f'<polyline points="{points}" fill="none" stroke="{color}" stroke-width="3"/>')
     for x, (name, color, _) in zip((100, 420, 720), series, strict=True):
         svg.append(f'<line x1="{x}" x2="{x+36}" y1="506" y2="506" stroke="{color}" stroke-width="4"/>')
-        svg.append(f'<text x="{x+44}" y="511" font-family="sans-serif" font-size="14">{name}</text>')
+        svg.append(f'<text x="{x+44}" y="511" font-family="sans-serif" font-size="14">{escape(name)}</text>')
     svg.extend([
         '<text x="550" y="548" text-anchor="middle" font-family="sans-serif" font-size="14">Excise and other receipts are included in the CSV, but omitted from this three-line figure.</text>',
         '<text x="550" y="574" text-anchor="middle" font-family="sans-serif" font-size="14">Shares are not tax rates on wealthy households and do not isolate effects of tax reforms.</text>',
