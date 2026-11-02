@@ -199,6 +199,12 @@ For illustration, the federal fiscal deficit was approximately 2.58% of GDP in 1
 
 A deficit is determined jointly by spending, revenues, interest costs, and automatic fiscal responses to the business cycle. The debt-to-GDP ratio also responds to the denominator: rapid nominal growth can lower it without a nominal debt reduction. The 1980s coincided with disinflation, changing defense spending, monetary policy, and cyclical conditions; the 2018 observation supplies little information about long-run effects of a law passed in late 2017. Neither the chart nor the dates isolate a tax-cut contribution. A credible self-financing claim requires estimated revenues relative to the *same economy under the counterfactual tax schedule*, with behavioral feedback and fiscal offsets made explicit.
 
+### Receipts and outlays: an accounting reconciliation, not a tax-law counterfactual
+
+An annual deficit is the difference between federal receipts and federal net outlays. The companion now pairs the [OMB/FRED net-outlays series](data/federal_net_outlays_gdp_1964_2018.csv) with previously frozen federal receipts and verifies the resulting budget balance against the separately reported deficit series for every year from 1964 to 2018. The largest difference between independently published percentage-of-GDP ratios is just 0.00013 percentage points; the published values are not forced into artificial exact equality. The [revenue-and-outlays figure](results/revenue_outlays.svg) and [methodological note](data/revenue_outlays_sources.md) document the calculation.
+
+The [accounting identity] makes the fiscal constraint visible: a lower revenue share must coincide with a lower spending share, a larger deficit, or some combination, relative to the relevant comparison. But the three observed time series do not identify which laws generated each movement. GDP appears in every denominator, spending includes automatic cyclical responses, and observed receipts reflect both tax rules and the tax base. A convincing claim that an upper-income tax cut paid for itself requires revenues under the reform to be compared against revenues under a defensible no-reform counterfactual—not merely against receipts in the year before legislation.
+
 ## 9. A compact model of the missing mechanism
 
 The familiar supply-side story can be expressed as a chain:
