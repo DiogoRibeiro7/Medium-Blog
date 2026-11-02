@@ -60,11 +60,17 @@ The three selected quintiles compare average household income before and after *
 
 The annual budget surplus or deficit is a flow; debt held by the public is a stock. Both FRED ratios use nominal annual GDP, and their OMB federal fiscal-year numerators are not aligned perfectly with the calendar-year denominators. They cannot measure the stand-alone causal consequences of tax cuts. Regenerate with `python tax-cuts-rich-historical-cycles/fiscal_balance_debt.py`. **37 local tests pass**.
 
+## Receipts versus net outlays
+
+[OMB/FRED annual net outlays, 1964–2018](data/federal_net_outlays_gdp_1964_2018.csv) · [accounting and vintage notes](data/revenue_outlays_sources.md) · [paired receipts/outlays SVG](results/revenue_outlays.svg) · [typed reconciliation and renderer](revenue_outlays.py) · [tests](test_revenue_outlays.py).
+
+The independently frozen receipts, net outlays, and deficit series reconcile within a documented 0.00015 percentage-point tolerance; the maximum residual is 0.00013 points. This is an **accounting** check and no tax-law counterfactual is estimated. The local suite now passes **42 tests**. Regenerate with `python tax-cuts-rich-historical-cycles/revenue_outlays.py`.
+
 ## Publication gates
 
 1. Independently verify the statute timelines and the precise scope of each historical tax reform against IRS, Congress, Treasury, CRS, and original law text.
 2. ~~Freeze the first official top statutory rate series~~ — IRS 1964–2018 slice completed with caveats; add earlier historical period and current-year statutes only when independently verified, and keep effective tax burdens separate.
-3. ~~Start source-verified descriptive historical figures~~ — statutory rate, receipts/GDP, BEA growth/investment, and Census household Gini now exist as SVG; add revenue composition, a full after-tax distribution time series, investment components (equipment, structures, and IP), a fiscal revenue/spending decomposition, wealth, and Medium-compatible PNGs.
+3. ~~Start source-verified descriptive historical figures~~ — statutory rate, receipts/GDP, BEA growth/investment, and Census household Gini now exist as SVG; add revenue composition, a full after-tax distribution time series, investment components (equipment, structures, and IP), revenue-by-source and spending-by-function breakdowns, wealth, and Medium-compatible PNGs.
 4. Implement a typed, documented Python 3.12 companion with source manifest and SHA-256 checks, deterministic plots, notebook, tests, and path-scoped CI.
 5. ~~Add an initial hypothetical sensitivity analysis~~ — completed as an explicitly illustrative model; extend robustness and validate notation before publication, without presenting invented coefficients as historical causal effects.
 6. Audit the tax research literature, including the measurement critique of the TCJA investment estimates and the identifying assumptions in the cross-country study.
