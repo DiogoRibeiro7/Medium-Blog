@@ -5,6 +5,7 @@ Requirements: Python >=3.12, numpy, scipy, scikit-learn.
 from __future__ import annotations
 
 from dataclasses import dataclass
+from typing import Literal
 import numpy as np
 from numpy.typing import NDArray
 from scipy.special import expit
@@ -40,10 +41,25 @@ def effective_size(weights: NDArray[np.float64]) -> float:
     return float(weights.sum() ** 2 / np.square(weights).sum())
 
 
-def simulate(rng: np.random.Generator, strength: float, n: int = N) -> Result:
-    """Generate observational treatment data and evaluate four estimators."""
+def simulate(
+    rng: np.random.Generator,
+    strength: float,
+    n: int = N,
+    *,
+    propensity_source: Literal["fitted", "oracle"] = "fitted",
+    clipping_threshold: float = TRIM,
+) -> Result:
+    """Evaluate IPW with fitted or known propensity and optional clipping.
+
+    Defaults reproduce the original Part 4 experiment unchanged. Oracle
+    scores are available only because this synthetic DGP defines the truth.
+    """
     if n < 20 or not np.isfinite(strength) or strength < 0:
         raise ValueError("n >= 20 and finite nonnegative strength required")
+    if propensity_source not in ("fitted", "oracle"):
+        raise ValueError("propensity_source must be fitted or oracle")
+    if not np.isfinite(clipping_threshold) or not 0 < clipping_threshold < 0.5:
+        raise ValueError("clipping_threshold must be strictly between zero and 0.5")
     x = rng.normal(size=n)
     noise = rng.normal(size=n)
     true_p = expit(strength * x)
@@ -51,16 +67,19 @@ def simulate(rng: np.random.Generator, strength: float, n: int = N) -> Result:
     y = TRUE_ATE * a + 2.0 * x + noise
     if a.min() == a.max():
         raise ValueError("both groups required")
-    model = LogisticRegression(C=1e6, max_iter=200)
-    model.fit(x[:, None], a.astype(int))
-    p: NDArray[np.float64] = model.predict_proba(x[:, None])[:, 1]
+    if propensity_source == "oracle":
+        p: NDArray[np.float64] = true_p
+    else:
+        model = LogisticRegression(C=1e6, max_iter=200)
+        model.fit(x[:, None], a.astype(int))
+        p = model.predict_proba(x[:, None])[:, 1]
     treated = a == 1
     naive = float(y[treated].mean() - y[~treated].mean())
     wt = a / p
     wc = (1 - a) / (1 - p)
     ipw = float(np.mean(wt * y - wc * y))
     hajek = float(np.sum(wt * y) / wt.sum() - np.sum(wc * y) / wc.sum())
-    pc = np.clip(p, TRIM, 1 - TRIM)
+    pc = np.clip(p, clipping_threshold, 1 - clipping_threshold)
     wtc = a / pc
     wcc = (1 - a) / (1 - pc)
     clipped = float(np.sum(wtc * y) / wtc.sum() - np.sum(wcc * y) / wcc.sum())
@@ -69,7 +88,7 @@ def simulate(rng: np.random.Generator, strength: float, n: int = N) -> Result:
         naive, ipw, hajek, clipped,
         effective_size(wt[treated]), effective_size(wc[~treated]),
         float(w_actual.max()),
-        float(np.mean((p < TRIM) | (p > 1 - TRIM))),
+        float(np.mean((p < clipping_threshold) | (p > 1 - clipping_threshold))),
         float(p.min()), float(p.max()),
     )
 
