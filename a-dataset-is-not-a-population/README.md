@@ -115,5 +115,6 @@ See [SCIENTIFIC_AUDIT.md](SCIENTIFIC_AUDIT.md) for a study-by-study audit of
 the 300-repetition results, the realised Monte Carlo deviations, the
 limits of the identifying assumptions, and the primary reference checks.
 The test suite regenerates all nine full studies in a temporary directory
-and compares every canonical replicate and summary CSV row exactly.
+and compares every canonical replicate and summary CSV row, with exact
+identifiers and a tight 1e-12 numeric tolerance for cross-platform rounding.
 
