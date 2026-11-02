@@ -62,7 +62,8 @@ coverage directly.
 
 ## Verification scope
 
-The thirteen unittest cases verify deterministic streams,
+The sixteen unittest cases (including an opt-in notebook execution test)
+verify deterministic streams,
 complete methods and finite rows, algebraic archive identities, known-weight
 correction of stratified oversampling, and an oracle-weight improvement over
 the intentionally misspecified response mechanism, undercoverage, opt-in
@@ -107,4 +108,12 @@ RUN_NOTEBOOK_EXECUTION=1 python -m unittest discover -s tests -v
 The notebook runs three replications per study, generates eighteen temporary
 CSVs and nine temporary figures, and displays explicit interpretation limits.
 It does not rerun 300-repetition publication evidence on every execution.
+
+## Scientific audit
+
+See [SCIENTIFIC_AUDIT.md](SCIENTIFIC_AUDIT.md) for a study-by-study audit of
+the 300-repetition results, the realised Monte Carlo deviations, the
+limits of the identifying assumptions, and the primary reference checks.
+The test suite regenerates all nine full studies in a temporary directory
+and compares every canonical replicate and summary CSV row exactly.
 
