@@ -1,0 +1,32 @@
+name: Historical tax-response model
+
+on:
+  pull_request:
+    paths:
+      - "tax-cuts-rich-historical-cycles/**"
+      - ".github/workflows/tax-cuts-rich-historical-cycles.yml"
+      - ".gitattributes"
+  push:
+    branches: [main]
+    paths:
+      - "tax-cuts-rich-historical-cycles/**"
+      - ".github/workflows/tax-cuts-rich-historical-cycles.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  model:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Unit tests
+        run: python -m unittest discover -s tax-cuts-rich-historical-cycles -p "test_*.py" -v
+      - name: Regenerate scenario artifacts
+        run: python tax-cuts-rich-historical-cycles/model.py --out tax-cuts-rich-historical-cycles/results
+      - name: Check committed evidence is reproducible
+        run: git diff --exit-code -- tax-cuts-rich-historical-cycles/results
