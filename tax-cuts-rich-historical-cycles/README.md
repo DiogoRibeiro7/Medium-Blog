@@ -8,7 +8,7 @@ This folder develops a cross-era political-economy essay about top-income and co
 - Literature: CRS, CBO, GAO, peer-reviewed cross-national tax-reform study, and firm-level TCJA research; direct source links are in the manuscript.
 - Identification boundary: no new empirical causal effects are estimated or implied.
 - **Reproducible hypothetical supplement now included:** typed standard-library Python model, six unit/integration tests, a nine-cell sensitivity CSV, an SVG figure, and path-scoped CI. These are not historical estimates.
-- Official historical datasets and source-verified descriptive figures: **not yet created**. This remains an editorial draft, not a complete historical research release.
+- First official historical evidence slice added: IRS/FRED highest statutory individual rate, 1964–2018, a source-noted 55-year CSV and deterministic descriptive SVG; structural and landmark tests are included. Other historical datasets and Medium-compatible publication PNGs are **not yet created**.
 
 ## Hypothetical model reproduction
 
@@ -18,10 +18,16 @@ The sensitivity model holds labor and baseline productivity fixed, varies taxabl
 
 [Figure: hypothetical output sensitivity](results/sensitivity.svg) · [Machine-readable nine-cell results](results/sensitivity.csv) · [Model implementation](model.py) · [Unit tests](test_model.py)
 
+## Official IRS historical-rate evidence
+
+[Annual top-bracket rates, 1964–2018](data/top_marginal_rate_1964_2018.csv) · [Provenance and interpretation](data/historical_rates_sources.md) · [Historical rate SVG](results/historical_top_rate.svg) · [Typed renderer](historical_rates.py) · [Tests](test_historical_rates.py).
+
+The original source is IRS Statistics of Income Table 23, viewed through [FRED IITTRHB](https://fred.stlouisfed.org/data/IITTRHB). This is the top regular-income-tax *statutory marginal* rate, not an effective rate or a causal determinant of growth. The FRED series ends in 2018; no recent rates are imputed. Regenerate with `python tax-cuts-rich-historical-cycles/historical_rates.py` and run all 10 tests using the command above. The same path-scoped workflow now regenerates and compares both evidence charts.
+
 ## Publication gates
 
 1. Independently verify the statute timelines and the precise scope of each historical tax reform against IRS, Congress, Treasury, CRS, and original law text.
-2. Freeze the official top statutory rate series and explain the marginal-versus-effective-rate distinction, changes in tax base, and appropriate comparison periods.
+2. ~~Freeze the first official top statutory rate series~~ — IRS 1964–2018 slice completed with caveats; add earlier historical period and current-year statutes only when independently verified, and keep effective tax burdens separate.
 3. Add original source-verified figures for rate schedules, revenue composition, household distribution, investment, debt, and inequality; label historical associations descriptive.
 4. Implement a typed, documented Python 3.12 companion with source manifest and SHA-256 checks, deterministic plots, notebook, tests, and path-scoped CI.
 5. ~~Add an initial hypothetical sensitivity analysis~~ — completed as an explicitly illustrative model; extend robustness and validate notation before publication, without presenting invented coefficients as historical causal effects.
