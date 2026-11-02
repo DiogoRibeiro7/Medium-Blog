@@ -1,0 +1,57 @@
+{
+  "evidence_class": "fixed_source_rent_gap_declared_synthetic_household_commute_cost_scenarios",
+  "housing_upstream_commit": "0407faed1f08209b3d7682e19fc57e7120e62879",
+  "housing_panel_sha256": "88502e15b55a4d46536eed42ddc1924d30f555498d2c4a7e7a1b41fbeed71c66",
+  "rent_reference_year": 2025,
+  "money_units": "nominal 2025 EUR/month; no HICP deflation needed for within-2025 cash comparison",
+  "comparator_municipalities": 16,
+  "assumed_dwelling_areas_m2": [
+    50,
+    70,
+    90
+  ],
+  "assumed_added_one_way_minutes": [
+    15,
+    30,
+    45,
+    60
+  ],
+  "scenarios": [
+    {
+      "name": "low_friction",
+      "commuters": 1,
+      "commuting_days_month": 16,
+      "time_value_eur_hour": 5,
+      "incremental_household_cash_eur_month": 0
+    },
+    {
+      "name": "reference",
+      "commuters": 1,
+      "commuting_days_month": 20,
+      "time_value_eur_hour": 10,
+      "incremental_household_cash_eur_month": 40
+    },
+    {
+      "name": "two_commuter_high_cost",
+      "commuters": 2,
+      "commuting_days_month": 22,
+      "time_value_eur_hour": 15,
+      "incremental_household_cash_eur_month": 80
+    }
+  ],
+  "municipal_scenario_rows": 144,
+  "duration_summary_rows": 36,
+  "reference_70m2_median_break_even_added_one_way_minutes": "63.142500",
+  "limits": [
+    "2025 municipal medians for independent newly signed rental contracts do not compare available equivalent homes",
+    "50/70/90 m² floor areas are hypothetical; the published rent median is per square metre",
+    "Commuting days, time valuations, number of commuters and cash increments are assumptions, not measured Portugal costs",
+    "Extra one-way time is the incremental time *versus the current commute*, not the entire trip from Porto",
+    "Every assumed added minute is incurred on both trip legs on each commuting day by each assumed commuter",
+    "Extra travel cash is an incremental monthly household amount, not an Andante price or transit fare",
+    "Time value is a modeled opportunity cost, not observed expenditure or a statutory salary rate",
+    "No dwelling availability, moving cost, household composition, employment access, care needs or amenity differences are measured",
+    "Municipal options are administrative comparisons, not verified feasible relocation choices",
+    "Break-even thresholds do not identify migration, regional price spillovers, displacement or a causal policy effect"
+  ]
+}

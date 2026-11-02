@@ -1,0 +1,145 @@
+municipality,year,assumed_dwelling_area_m2,scenario,commuters,commuting_days_month,time_value_eur_hour,incremental_cash_cost_eur_month,municipal_new_rent_gap_eur_m2_month,synthetic_rent_only_saving_eur_month,already_no_saving_at_zero_extra_time,break_even_extra_one_way_minutes_workday
+Arouca,2025,50,low_friction,1,16,5.00,0.00,8.850000,442.500000,false,165.937500
+Arouca,2025,50,reference,1,20,10.00,40.00,8.850000,442.500000,false,60.375000
+Arouca,2025,50,two_commuter_high_cost,2,22,15.00,80.00,8.850000,442.500000,false,16.477273
+Arouca,2025,70,low_friction,1,16,5.00,0.00,8.850000,619.500000,false,232.312500
+Arouca,2025,70,reference,1,20,10.00,40.00,8.850000,619.500000,false,86.925000
+Arouca,2025,70,two_commuter_high_cost,2,22,15.00,80.00,8.850000,619.500000,false,24.522727
+Arouca,2025,90,low_friction,1,16,5.00,0.00,8.850000,796.500000,false,298.687500
+Arouca,2025,90,reference,1,20,10.00,40.00,8.850000,796.500000,false,113.475000
+Arouca,2025,90,two_commuter_high_cost,2,22,15.00,80.00,8.850000,796.500000,false,32.568182
+Espinho,2025,50,low_friction,1,16,5.00,0.00,4.260000,213.000000,false,79.875000
+Espinho,2025,50,reference,1,20,10.00,40.00,4.260000,213.000000,false,25.950000
+Espinho,2025,50,two_commuter_high_cost,2,22,15.00,80.00,4.260000,213.000000,false,6.045455
+Espinho,2025,70,low_friction,1,16,5.00,0.00,4.260000,298.200000,false,111.825000
+Espinho,2025,70,reference,1,20,10.00,40.00,4.260000,298.200000,false,38.730000
+Espinho,2025,70,two_commuter_high_cost,2,22,15.00,80.00,4.260000,298.200000,false,9.918182
+Espinho,2025,90,low_friction,1,16,5.00,0.00,4.260000,383.400000,false,143.775000
+Espinho,2025,90,reference,1,20,10.00,40.00,4.260000,383.400000,false,51.510000
+Espinho,2025,90,two_commuter_high_cost,2,22,15.00,80.00,4.260000,383.400000,false,13.790909
+Gondomar,2025,50,low_friction,1,16,5.00,0.00,5.560000,278.000000,false,104.250000
+Gondomar,2025,50,reference,1,20,10.00,40.00,5.560000,278.000000,false,35.700000
+Gondomar,2025,50,two_commuter_high_cost,2,22,15.00,80.00,5.560000,278.000000,false,9.000000
+Gondomar,2025,70,low_friction,1,16,5.00,0.00,5.560000,389.200000,false,145.950000
+Gondomar,2025,70,reference,1,20,10.00,40.00,5.560000,389.200000,false,52.380000
+Gondomar,2025,70,two_commuter_high_cost,2,22,15.00,80.00,5.560000,389.200000,false,14.054545
+Gondomar,2025,90,low_friction,1,16,5.00,0.00,5.560000,500.400000,false,187.650000
+Gondomar,2025,90,reference,1,20,10.00,40.00,5.560000,500.400000,false,69.060000
+Gondomar,2025,90,two_commuter_high_cost,2,22,15.00,80.00,5.560000,500.400000,false,19.109091
+Maia,2025,50,low_friction,1,16,5.00,0.00,4.540000,227.000000,false,85.125000
+Maia,2025,50,reference,1,20,10.00,40.00,4.540000,227.000000,false,28.050000
+Maia,2025,50,two_commuter_high_cost,2,22,15.00,80.00,4.540000,227.000000,false,6.681818
+Maia,2025,70,low_friction,1,16,5.00,0.00,4.540000,317.800000,false,119.175000
+Maia,2025,70,reference,1,20,10.00,40.00,4.540000,317.800000,false,41.670000
+Maia,2025,70,two_commuter_high_cost,2,22,15.00,80.00,4.540000,317.800000,false,10.809091
+Maia,2025,90,low_friction,1,16,5.00,0.00,4.540000,408.600000,false,153.225000
+Maia,2025,90,reference,1,20,10.00,40.00,4.540000,408.600000,false,55.290000
+Maia,2025,90,two_commuter_high_cost,2,22,15.00,80.00,4.540000,408.600000,false,14.936364
+Matosinhos,2025,50,low_friction,1,16,5.00,0.00,2.010000,100.500000,false,37.687500
+Matosinhos,2025,50,reference,1,20,10.00,40.00,2.010000,100.500000,false,9.075000
+Matosinhos,2025,50,two_commuter_high_cost,2,22,15.00,80.00,2.010000,100.500000,false,0.931818
+Matosinhos,2025,70,low_friction,1,16,5.00,0.00,2.010000,140.700000,false,52.762500
+Matosinhos,2025,70,reference,1,20,10.00,40.00,2.010000,140.700000,false,15.105000
+Matosinhos,2025,70,two_commuter_high_cost,2,22,15.00,80.00,2.010000,140.700000,false,2.759091
+Matosinhos,2025,90,low_friction,1,16,5.00,0.00,2.010000,180.900000,false,67.837500
+Matosinhos,2025,90,reference,1,20,10.00,40.00,2.010000,180.900000,false,21.135000
+Matosinhos,2025,90,two_commuter_high_cost,2,22,15.00,80.00,2.010000,180.900000,false,4.586364
+Oliveira de Azeméis,2025,50,low_friction,1,16,5.00,0.00,8.500000,425.000000,false,159.375000
+Oliveira de Azeméis,2025,50,reference,1,20,10.00,40.00,8.500000,425.000000,false,57.750000
+Oliveira de Azeméis,2025,50,two_commuter_high_cost,2,22,15.00,80.00,8.500000,425.000000,false,15.681818
+Oliveira de Azeméis,2025,70,low_friction,1,16,5.00,0.00,8.500000,595.000000,false,223.125000
+Oliveira de Azeméis,2025,70,reference,1,20,10.00,40.00,8.500000,595.000000,false,83.250000
+Oliveira de Azeméis,2025,70,two_commuter_high_cost,2,22,15.00,80.00,8.500000,595.000000,false,23.409091
+Oliveira de Azeméis,2025,90,low_friction,1,16,5.00,0.00,8.500000,765.000000,false,286.875000
+Oliveira de Azeméis,2025,90,reference,1,20,10.00,40.00,8.500000,765.000000,false,108.750000
+Oliveira de Azeméis,2025,90,two_commuter_high_cost,2,22,15.00,80.00,8.500000,765.000000,false,31.136364
+Paredes,2025,50,low_friction,1,16,5.00,0.00,8.400000,420.000000,false,157.500000
+Paredes,2025,50,reference,1,20,10.00,40.00,8.400000,420.000000,false,57.000000
+Paredes,2025,50,two_commuter_high_cost,2,22,15.00,80.00,8.400000,420.000000,false,15.454545
+Paredes,2025,70,low_friction,1,16,5.00,0.00,8.400000,588.000000,false,220.500000
+Paredes,2025,70,reference,1,20,10.00,40.00,8.400000,588.000000,false,82.200000
+Paredes,2025,70,two_commuter_high_cost,2,22,15.00,80.00,8.400000,588.000000,false,23.090909
+Paredes,2025,90,low_friction,1,16,5.00,0.00,8.400000,756.000000,false,283.500000
+Paredes,2025,90,reference,1,20,10.00,40.00,8.400000,756.000000,false,107.400000
+Paredes,2025,90,two_commuter_high_cost,2,22,15.00,80.00,8.400000,756.000000,false,30.727273
+Póvoa de Varzim,2025,50,low_friction,1,16,5.00,0.00,5.430000,271.500000,false,101.812500
+Póvoa de Varzim,2025,50,reference,1,20,10.00,40.00,5.430000,271.500000,false,34.725000
+Póvoa de Varzim,2025,50,two_commuter_high_cost,2,22,15.00,80.00,5.430000,271.500000,false,8.704545
+Póvoa de Varzim,2025,70,low_friction,1,16,5.00,0.00,5.430000,380.100000,false,142.537500
+Póvoa de Varzim,2025,70,reference,1,20,10.00,40.00,5.430000,380.100000,false,51.015000
+Póvoa de Varzim,2025,70,two_commuter_high_cost,2,22,15.00,80.00,5.430000,380.100000,false,13.640909
+Póvoa de Varzim,2025,90,low_friction,1,16,5.00,0.00,5.430000,488.700000,false,183.262500
+Póvoa de Varzim,2025,90,reference,1,20,10.00,40.00,5.430000,488.700000,false,67.305000
+Póvoa de Varzim,2025,90,two_commuter_high_cost,2,22,15.00,80.00,5.430000,488.700000,false,18.577273
+Santa Maria da Feira,2025,50,low_friction,1,16,5.00,0.00,7.600000,380.000000,false,142.500000
+Santa Maria da Feira,2025,50,reference,1,20,10.00,40.00,7.600000,380.000000,false,51.000000
+Santa Maria da Feira,2025,50,two_commuter_high_cost,2,22,15.00,80.00,7.600000,380.000000,false,13.636364
+Santa Maria da Feira,2025,70,low_friction,1,16,5.00,0.00,7.600000,532.000000,false,199.500000
+Santa Maria da Feira,2025,70,reference,1,20,10.00,40.00,7.600000,532.000000,false,73.800000
+Santa Maria da Feira,2025,70,two_commuter_high_cost,2,22,15.00,80.00,7.600000,532.000000,false,20.545455
+Santa Maria da Feira,2025,90,low_friction,1,16,5.00,0.00,7.600000,684.000000,false,256.500000
+Santa Maria da Feira,2025,90,reference,1,20,10.00,40.00,7.600000,684.000000,false,96.600000
+Santa Maria da Feira,2025,90,two_commuter_high_cost,2,22,15.00,80.00,7.600000,684.000000,false,27.454545
+Santo Tirso,2025,50,low_friction,1,16,5.00,0.00,8.040000,402.000000,false,150.750000
+Santo Tirso,2025,50,reference,1,20,10.00,40.00,8.040000,402.000000,false,54.300000
+Santo Tirso,2025,50,two_commuter_high_cost,2,22,15.00,80.00,8.040000,402.000000,false,14.636364
+Santo Tirso,2025,70,low_friction,1,16,5.00,0.00,8.040000,562.800000,false,211.050000
+Santo Tirso,2025,70,reference,1,20,10.00,40.00,8.040000,562.800000,false,78.420000
+Santo Tirso,2025,70,two_commuter_high_cost,2,22,15.00,80.00,8.040000,562.800000,false,21.945455
+Santo Tirso,2025,90,low_friction,1,16,5.00,0.00,8.040000,723.600000,false,271.350000
+Santo Tirso,2025,90,reference,1,20,10.00,40.00,8.040000,723.600000,false,102.540000
+Santo Tirso,2025,90,two_commuter_high_cost,2,22,15.00,80.00,8.040000,723.600000,false,29.254545
+São João da Madeira,2025,50,low_friction,1,16,5.00,0.00,7.330000,366.500000,false,137.437500
+São João da Madeira,2025,50,reference,1,20,10.00,40.00,7.330000,366.500000,false,48.975000
+São João da Madeira,2025,50,two_commuter_high_cost,2,22,15.00,80.00,7.330000,366.500000,false,13.022727
+São João da Madeira,2025,70,low_friction,1,16,5.00,0.00,7.330000,513.100000,false,192.412500
+São João da Madeira,2025,70,reference,1,20,10.00,40.00,7.330000,513.100000,false,70.965000
+São João da Madeira,2025,70,two_commuter_high_cost,2,22,15.00,80.00,7.330000,513.100000,false,19.686364
+São João da Madeira,2025,90,low_friction,1,16,5.00,0.00,7.330000,659.700000,false,247.387500
+São João da Madeira,2025,90,reference,1,20,10.00,40.00,7.330000,659.700000,false,92.955000
+São João da Madeira,2025,90,two_commuter_high_cost,2,22,15.00,80.00,7.330000,659.700000,false,26.350000
+Trofa,2025,50,low_friction,1,16,5.00,0.00,7.080000,354.000000,false,132.750000
+Trofa,2025,50,reference,1,20,10.00,40.00,7.080000,354.000000,false,47.100000
+Trofa,2025,50,two_commuter_high_cost,2,22,15.00,80.00,7.080000,354.000000,false,12.454545
+Trofa,2025,70,low_friction,1,16,5.00,0.00,7.080000,495.600000,false,185.850000
+Trofa,2025,70,reference,1,20,10.00,40.00,7.080000,495.600000,false,68.340000
+Trofa,2025,70,two_commuter_high_cost,2,22,15.00,80.00,7.080000,495.600000,false,18.890909
+Trofa,2025,90,low_friction,1,16,5.00,0.00,7.080000,637.200000,false,238.950000
+Trofa,2025,90,reference,1,20,10.00,40.00,7.080000,637.200000,false,89.580000
+Trofa,2025,90,two_commuter_high_cost,2,22,15.00,80.00,7.080000,637.200000,false,25.327273
+Vale de Cambra,2025,50,low_friction,1,16,5.00,0.00,8.410000,420.500000,false,157.687500
+Vale de Cambra,2025,50,reference,1,20,10.00,40.00,8.410000,420.500000,false,57.075000
+Vale de Cambra,2025,50,two_commuter_high_cost,2,22,15.00,80.00,8.410000,420.500000,false,15.477273
+Vale de Cambra,2025,70,low_friction,1,16,5.00,0.00,8.410000,588.700000,false,220.762500
+Vale de Cambra,2025,70,reference,1,20,10.00,40.00,8.410000,588.700000,false,82.305000
+Vale de Cambra,2025,70,two_commuter_high_cost,2,22,15.00,80.00,8.410000,588.700000,false,23.122727
+Vale de Cambra,2025,90,low_friction,1,16,5.00,0.00,8.410000,756.900000,false,283.837500
+Vale de Cambra,2025,90,reference,1,20,10.00,40.00,8.410000,756.900000,false,107.535000
+Vale de Cambra,2025,90,two_commuter_high_cost,2,22,15.00,80.00,8.410000,756.900000,false,30.768182
+Valongo,2025,50,low_friction,1,16,5.00,0.00,6.090000,304.500000,false,114.187500
+Valongo,2025,50,reference,1,20,10.00,40.00,6.090000,304.500000,false,39.675000
+Valongo,2025,50,two_commuter_high_cost,2,22,15.00,80.00,6.090000,304.500000,false,10.204545
+Valongo,2025,70,low_friction,1,16,5.00,0.00,6.090000,426.300000,false,159.862500
+Valongo,2025,70,reference,1,20,10.00,40.00,6.090000,426.300000,false,57.945000
+Valongo,2025,70,two_commuter_high_cost,2,22,15.00,80.00,6.090000,426.300000,false,15.740909
+Valongo,2025,90,low_friction,1,16,5.00,0.00,6.090000,548.100000,false,205.537500
+Valongo,2025,90,reference,1,20,10.00,40.00,6.090000,548.100000,false,76.215000
+Valongo,2025,90,two_commuter_high_cost,2,22,15.00,80.00,6.090000,548.100000,false,21.277273
+Vila Nova de Gaia,2025,50,low_friction,1,16,5.00,0.00,3.500000,175.000000,false,65.625000
+Vila Nova de Gaia,2025,50,reference,1,20,10.00,40.00,3.500000,175.000000,false,20.250000
+Vila Nova de Gaia,2025,50,two_commuter_high_cost,2,22,15.00,80.00,3.500000,175.000000,false,4.318182
+Vila Nova de Gaia,2025,70,low_friction,1,16,5.00,0.00,3.500000,245.000000,false,91.875000
+Vila Nova de Gaia,2025,70,reference,1,20,10.00,40.00,3.500000,245.000000,false,30.750000
+Vila Nova de Gaia,2025,70,two_commuter_high_cost,2,22,15.00,80.00,3.500000,245.000000,false,7.500000
+Vila Nova de Gaia,2025,90,low_friction,1,16,5.00,0.00,3.500000,315.000000,false,118.125000
+Vila Nova de Gaia,2025,90,reference,1,20,10.00,40.00,3.500000,315.000000,false,41.250000
+Vila Nova de Gaia,2025,90,two_commuter_high_cost,2,22,15.00,80.00,3.500000,315.000000,false,10.681818
+Vila do Conde,2025,50,low_friction,1,16,5.00,0.00,6.090000,304.500000,false,114.187500
+Vila do Conde,2025,50,reference,1,20,10.00,40.00,6.090000,304.500000,false,39.675000
+Vila do Conde,2025,50,two_commuter_high_cost,2,22,15.00,80.00,6.090000,304.500000,false,10.204545
+Vila do Conde,2025,70,low_friction,1,16,5.00,0.00,6.090000,426.300000,false,159.862500
+Vila do Conde,2025,70,reference,1,20,10.00,40.00,6.090000,426.300000,false,57.945000
+Vila do Conde,2025,70,two_commuter_high_cost,2,22,15.00,80.00,6.090000,426.300000,false,15.740909
+Vila do Conde,2025,90,low_friction,1,16,5.00,0.00,6.090000,548.100000,false,205.537500
+Vila do Conde,2025,90,reference,1,20,10.00,40.00,6.090000,548.100000,false,76.215000
+Vila do Conde,2025,90,two_commuter_high_cost,2,22,15.00,80.00,6.090000,548.100000,false,21.277273
