@@ -90,6 +90,22 @@ SCENARIOS: tuple[CommuteScenario, ...] = (
                     time_value_eur_hour=15, cash_extra_eur_month=80),
 )
 
+SCENARIO_DISPLAY = {
+    "low_friction": "Low friction",
+    "reference": "Reference",
+    "two_commuter_high_cost": "Two commuters, high cost",
+}
+
+
+def scenario_legend_label(scenario: CommuteScenario) -> str:
+    """Render assumptions directly from the validated scenario object."""
+    if not isinstance(scenario, CommuteScenario):
+        raise ValueError("Expected a declared CommuteScenario")
+    title = SCENARIO_DISPLAY.get(scenario.name, scenario.name.replace("_", " ").title())
+    noun = "commuter" if scenario.commuters == 1 else "commuters"
+    return (f"{title}: {scenario.commuters} {noun} / {scenario.commuting_days_month}d "
+            f"/ €{scenario.time_value_eur_hour:g}/h / €{scenario.cash_extra_eur_month:g} extra")
+
 
 def additional_time_cost_eur_month(extra_one_way_minutes: float, scenario: CommuteScenario) -> float:
     """Value of two added one-way legs on each assumed commuting day."""
@@ -236,20 +252,16 @@ def plot_break_even(primary: Sequence[dict[str, str]], path: Path) -> None:
     places = [r["municipality"] for r in sorted_rows]
     y = np.arange(len(places))
     fig, ax = plt.subplots(figsize=(10.4, 8.2))
-    for scenario, color, label in (
-        ("low_friction", "#2f8b69", "Low friction: 1 commuter / 16d / €5h / €0 extra"),
-        ("reference", "#347db0", "Reference: 1 commuter / 20d / €10h / €40 extra"),
-        ("two_commuter_high_cost", "#c4703d", "Two commuters: 22d / €15h / €80 extra"),
-    ):
-        x = np.array([float(r[f"{scenario}_break_even_added_one_way_minutes"]) for r in sorted_rows])
-        ax.scatter(x, y, s=55, color=color, label=label, alpha=.9, zorder=3)
+    for scenario, color in zip(SCENARIOS, ("#2f8b69", "#347db0", "#c4703d")):
+        x = np.array([float(r[f"{scenario.name}_break_even_added_one_way_minutes"]) for r in sorted_rows])
+        ax.scatter(x, y, s=55, color=color, label=scenario_legend_label(scenario), alpha=.9, zorder=3)
     ax.set_yticks(y, places, fontsize=9)
     ax.invert_yaxis()
     ax.set_xlabel("Break-even added one-way commute minutes per working day")
     fig.suptitle("2025 synthetic 70 m² rent gaps: how much extra travel time?", y=.98, fontsize=12.5)
     ax.grid(axis="x", alpha=.2)
     ax.spines[["top", "right"]].set_visible(False)
-    fig.legend(loc="upper center", bbox_to_anchor=(.59, .941), ncol=3, fontsize=7.6, frameon=False)
+    fig.legend(loc="upper center", bbox_to_anchor=(.59, .941), ncol=3, fontsize=7.0, frameon=False)
     fig.text(.02, .019, "Assumed time/cash costs, not actual journeys. Break-even dots are scenarios, not statistical uncertainty.",
              fontsize=8.5, color="#566570")
     fig.subplots_adjust(left=.21, right=.97, bottom=.12, top=.865)
@@ -269,7 +281,8 @@ def plot_threshold_counts(summary: Sequence[dict[str, str | int]], path: Path) -
     ])
     fig, ax = plt.subplots(figsize=(9.2, 4.8))
     heat = ax.imshow(matrix, cmap="YlOrRd", vmin=0, vmax=16, aspect="auto")
-    ax.set_yticks(range(3), ["Low friction", "Reference", "Two commuters, high cost"])
+    ax.set_yticks(range(len(SCENARIOS)),
+                  [SCENARIO_DISPLAY.get(s.name, s.name.replace("_", " ").title()) for s in SCENARIOS])
     ax.set_xticks(range(4), [f"{d} min" for d in EXTRA_ONE_WAY_MINUTES])
     ax.set_xlabel("Assumed additional one-way minutes on each commuting day")
     ax.set_title("Synthetic rent-only advantage exhausted (out of 16 comparators)", fontsize=12.6, pad=11)

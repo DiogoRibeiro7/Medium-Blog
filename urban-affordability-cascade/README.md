@@ -929,7 +929,7 @@ two figures and a full assumption/provenance ledger:
 
 Results are saved under results/porto_commute_break_even_*.
 The run requires no external travel API and does not impute one.
-**21 new tests, 206 total** validate dimensions, algebra,
+**22 new tests, 207 total** validate dimensions, algebra,
 source-linked rent gaps, scenario boundaries and reproducibility.
 Do not mistake these thresholds for observed time, generalized
 household welfare, or evidence of displacement.

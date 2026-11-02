@@ -17,7 +17,7 @@ from porto_commute_break_even import (
     SCENARIOS, CommuteScenario, additional_time_cost_eur_month,
     break_even_extra_one_way_minutes, duration_thresholds,
     net_monthly_saving_eur, primary_municipality_table,
-    rent_gaps_2025, run, scenario_table,
+    rent_gaps_2025, run, scenario_table, scenario_legend_label,
 )
 
 
@@ -49,6 +49,15 @@ class PortoCommuteBreakEvenTests(unittest.TestCase):
     def test_low_friction_one_hour_added_cost(self):
         s = SCENARIOS[0]
         self.assertAlmostEqual(additional_time_cost_eur_month(60, s), 160)
+
+    def test_scenario_legend_tracks_parameter_changes(self):
+        changed = CommuteScenario('reference', commuters=2, commuting_days_month=18,
+                                  time_value_eur_hour=12, cash_extra_eur_month=55)
+        label = scenario_legend_label(changed)
+        self.assertIn('2 commuters', label)
+        self.assertIn('18d', label)
+        self.assertIn('€12/h', label)
+        self.assertIn('€55 extra', label)
 
     def test_cash_cost_can_exhaust_before_any_added_time(self):
         s = SCENARIOS[1]
@@ -163,10 +172,11 @@ class PortoCommuteBreakEvenTests(unittest.TestCase):
                 self.assertGreater((output / 'figures' / figure).stat().st_size, 10000)
             for result in RESULTS:
                 self.assertTrue((output / 'results' / result).is_file())
-            with (output / 'results' / RESULTS[0]).open(encoding='utf-8', newline='') as f:
-                self.assertEqual(len(list(csv.DictReader(f))), 144)
+            for result, count in zip(RESULTS[:3], (144, 36, 16)):
+                with (output / 'results' / result).open(encoding='utf-8', newline='') as f:
+                    self.assertEqual(len(list(csv.DictReader(f))), count)
             loaded = json.loads((output / 'results' / RESULTS[-1]).read_text(encoding='utf-8'))
-            self.assertEqual(loaded['comparator_municipalities'], 16)
+            self.assertEqual(loaded, report)
 
 
 if __name__ == '__main__':
