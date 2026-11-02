@@ -191,6 +191,14 @@ The distinction between **deficit financing** and **spending cuts** is central. 
 
 Recent CBO distributional analyses of U.S. legislative changes demonstrate why taxes and transfers should be assessed together. They describe the resources households retain after both tax changes and affected programs, not merely the statutory marginal rates. As of this manuscript, the 2025 U.S. reconciliation law adds another politically relevant episode, but its enacted provisions and future effects require a separate, current-law evaluation rather than being conflated with the original 2017 act.
 
+### The fiscal ledger: annual deficits are not the public-debt stock
+
+The federal receipts series is only one side of public finance. The [OMB/FRED annual balance and publicly held debt dataset](data/federal_balance_public_debt_1964_2018.csv) adds two related but distinct measures for 1964–2018. The *budget balance* is the government's annual surplus or deficit expressed as a percentage of nominal GDP; negative values indicate a deficit. *Debt held by the public* is a stock of outstanding federal obligations relative to GDP. That stock differs from total gross federal debt, which also includes intragovernmental holdings. The [two-panel figure](results/fiscal_balance_public_debt.svg) makes the separate scales visible.
+
+For illustration, the federal fiscal deficit was approximately 2.58% of GDP in 1980, 5.72% in 1983, 2.96% in 1988, 3.39% in 2017, and 3.77% in 2018. The publicly held debt ratio rose from approximately 24.9% in 1980 to 39.2% in 1988, and from 74.8% in 2017 to 76.2% in 2018. These values reproduce OMB estimates distributed by FRED, using fiscal-year numerators and annual GDP denominators; the differing fiscal and calendar definitions are documented in the [source note](data/fiscal_balance_debt_sources.md). They should not be read as a clean event study.
+
+A deficit is determined jointly by spending, revenues, interest costs, and automatic fiscal responses to the business cycle. The debt-to-GDP ratio also responds to the denominator: rapid nominal growth can lower it without a nominal debt reduction. The 1980s coincided with disinflation, changing defense spending, monetary policy, and cyclical conditions; the 2018 observation supplies little information about long-run effects of a law passed in late 2017. Neither the chart nor the dates isolate a tax-cut contribution. A credible self-financing claim requires estimated revenues relative to the *same economy under the counterfactual tax schedule*, with behavioral feedback and fiscal offsets made explicit.
+
 ## 9. A compact model of the missing mechanism
 
 The familiar supply-side story can be expressed as a chain:
