@@ -12,6 +12,8 @@ Python 3.12 is the tested environment. Install dependencies in your virtual envi
 python -m pip install -r requirements.txt
 ```
 
+The four numerical libraries are pinned to the versions used for the archived evidence: NumPy 2.3.5, SciPy 1.17.0, Matplotlib 3.10.8 and scikit-learn 1.8.0. Notebook execution dependencies have compatible bounded ranges. This controls known numerical-version drift, though bit-for-bit floating-point reproduction may still vary across platforms or BLAS implementations.
+
 From this directory, regenerate the complete canonical evidence:
 
 ```bash
@@ -27,6 +29,8 @@ python analysis.py --quick
 ```
 
 Quick mode creates `*_quick.csv` and `*_quick.png` variants; it does not alter the published canonical results. It uses three independent outer repetitions for most studies and sixteen for interval coverage (full mode uses 24 or 30, and 500 for coverage). Some quick-mode sample sizes, per-repetition inner repetitions, or ensemble sizes are smaller by design.
+
+If you want to use a different random seed in **full** mode, specify a separate output directory: `python analysis.py --seed 123 --output /tmp/outlier-experiment-123`. The command rejects a noncanonical full seed targeting the article directory so that an exploratory run cannot silently replace the archived results.
 
 To rebuild the checked-in, deliberately *unexecuted* notebook from its deterministic builder:
 
@@ -64,6 +68,8 @@ The dedicated [GitHub Actions workflow](../.github/workflows/outlier-is-not-an-e
 | 8 | `tail_risk` | `fig8_tail_deletion_changes_risk.png` | 30 | How much do top-1% deletion and capping change a lognormal mean, q99, and ES99? |
 | 9 | `shift` | `fig9_thresholds_under_shift.png` | 30 | What does a fixed 1% reference threshold do under tail and variance shift, and what is lost in recalibration? |
 
+The `tails` CSV metrics are explicitly named `q75_abs_error_sample_mean`, `q75_abs_error_median` and `q75_abs_error_trimmed_10pct`. Their `mean` summary field is the **across-outer-replication average of that 75th-percentile statistic**, not a sample or population mean. In particular, the Cauchy population mean does not exist. Under the normal model the analytic benchmark is `norm.ppf(.875)/sqrt(n)`, not `norm.ppf(.75)/sqrt(n)`.
+
 There are **18 canonical CSVs** (raw independent replication observations plus one summary per study), **9 original PNGs**, **one executable notebook**, and the analysis, builder, tests, and workflow. CSV `theory` fields are blank when no analytic benchmark is provided; blank is not zero.
 
 ## Selected results to cross-check
@@ -83,5 +89,7 @@ All figures and prose are based on the checked-in `*_summary.csv` values. Roundo
 ## Interpretation and source constraints
 
 The estimator called `huber_location` uses a *known unit scale* and clips its score at 1.345; it is not a robust joint scale estimator. The Theil–Sen study uses SciPy's one-predictor slope plus its separate intercept convention. The MCD study uses scikit-learn MinCovDet `support_fraction=.7`; chi-square screening on fitted distances is a model-dependent heuristic. Isolation Forest's top-5% alert rule is a rank-based review-budget choice. The simulated minority is defined as *valid*, and the deliberately shifted cluster used for multivariate component TPR is not a confirmed measurement error. The sign interval assumes continuous IID sampling. Study 9's threshold recalibration deliberately uses its current background to expose the review-budget/recall tradeoff; a deployment would require independent calibration and review-label governance.
+
+The `minority` evidence includes a per-replicate **score cutoff**, which is an experimentally varying quantity; the exact 5% alert budget is a design constraint, not a variable Monte Carlo outcome. In the `shift` evidence, `sd_1.5` denotes a *standard deviation* of 1.5 (variance 2.25). Fixed-threshold background alert rates have no claimed analytic `theory` value in the CSV, while recalibrated rates have a 0.01 rank-budget reference by construction. A blank theory field does not imply a zero event rate.
 
 For the historical method sources, exact definitions, full experimental assumptions, and source audit, see the manuscript's final sections. Don't use any of these synthetic numerical rates as forecasts for an unobserved system.

@@ -235,7 +235,7 @@ def regression_diagnostics(x: FloatArray, y: FloatArray) -> tuple[FloatArray, Fl
 def expected_shortfall_lognormal(p: float, sigma: float) -> tuple[float, float]:
     """Lognormal(mu=0,sigma) q_p and ES_p=E[Y|Y>=q_p]."""
 
-    if not 0 < p < 1 or sigma <= 0:
+    if not 0 < p < 1 or not math.isfinite(sigma) or sigma <= 0:
         raise ValueError("invalid tail probability or scale")
     z = float(norm.ppf(p))
     quantile = math.exp(sigma*z)
@@ -250,6 +250,10 @@ def population_distances(x: NDArray[np.floating], robust: bool,
     a = np.asarray(x, dtype=float)
     if a.ndim != 2 or a.shape[1] != 2 or a.shape[0] < 20 or not np.isfinite(a).all():
         raise ValueError("expected finite n-by-2 data, n>=20")
+    # A singular design makes classical Mahalanobis inversion undefined and
+    # invalidates the full-rank scatter model used by MCD as well.
+    if np.linalg.matrix_rank(a-a.mean(axis=0)) < 2:
+        raise ValueError("expected a full-rank two-dimensional sample")
     if robust:
         estimator = MinCovDet(support_fraction=.7, random_state=seed).fit(a)
         return np.asarray(estimator.mahalanobis(a), dtype=float)
@@ -299,8 +303,10 @@ def tails_study(rng: np.random.Generator, rep: int, quick: bool) -> list[Row]:
     rows = []
     for family in ("normal", "t3", "cauchy"):
         for n in (40, 200, 800):
-            errors: dict[str, list[float]] = {"sample_mean": [], "median": [],
-                                             "trimmed_10pct": []}
+            errors: dict[str, list[float]] = {
+                "q75_abs_error_sample_mean": [], "q75_abs_error_median": [],
+                "q75_abs_error_trimmed_10pct": [],
+            }
             for _ in range(5 if quick else 15):
                 if family == "normal":
                     x = rng.normal(size=n)
@@ -308,9 +314,10 @@ def tails_study(rng: np.random.Generator, rep: int, quick: bool) -> list[Row]:
                     x = rng.standard_t(df=3, size=n)/math.sqrt(3.)
                 else:
                     x = rng.standard_cauchy(size=n)
-                errors["sample_mean"].append(abs(float(np.mean(x))))
-                errors["median"].append(abs(float(np.median(x))))
-                errors["trimmed_10pct"].append(abs(float(trim_mean(x, .1))))
+                errors["q75_abs_error_sample_mean"].append(abs(float(np.mean(x))))
+                errors["q75_abs_error_median"].append(abs(float(np.median(x))))
+                errors["q75_abs_error_trimmed_10pct"].append(
+                    abs(float(trim_mean(x, .1))))
             for method, error in errors.items():
                 rows.append(observation(rep, f"{family}:{n}", method,
                                         float(np.quantile(error, .75))))
@@ -429,14 +436,15 @@ def minority_study(rng: np.random.Generator, rep: int, quick: bool) -> list[Row]
         forest = IsolationForest(n_estimators=80 if quick else 100,
                                  max_samples=min(256, n), random_state=rep,
                                  n_jobs=1).fit(values)
-        flags = threshold_alert(-forest.score_samples(values), .05)
+        anomaly_scores = -forest.score_samples(values)
+        flags = threshold_alert(anomaly_scores, .05)
         cond = f"{share:.2f}"
         rows.extend((
             observation(rep, cond, "minority_flagged_fraction", float(flags[minority].mean())),
             observation(rep, cond, "majority_flagged_fraction", float(flags[~minority].mean())),
             observation(rep, cond, "flagged_share_valid_minority",
                         float(minority[flags].mean())),
-            observation(rep, cond, "alert_fraction", float(flags.mean()), .05),
+            observation(rep, cond, "score_cutoff", float(anomaly_scores[flags].min())),
         ))
     return rows
 
@@ -471,12 +479,12 @@ def shift_study(rng: np.random.Generator, rep: int, quick: bool) -> list[Row]:
     base = rng.normal(size=n)
     baseline_threshold = float(np.quantile(np.abs(base), .99))
     rows = []
-    for name in ("normal", "t3_unit_var", "variance_1.5", "location_0.6"):
+    for name in ("normal", "t3_unit_var", "sd_1.5", "location_0.6"):
         if name == "normal":
             background = rng.normal(size=n)
         elif name == "t3_unit_var":
             background = rng.standard_t(df=3, size=n)/math.sqrt(3.)
-        elif name == "variance_1.5":
+        elif name == "sd_1.5":
             background = rng.normal(scale=1.5, size=n)
         else:
             background = rng.normal(loc=.6, size=n)
@@ -484,8 +492,12 @@ def shift_study(rng: np.random.Generator, rep: int, quick: bool) -> list[Row]:
         updated_threshold = float(np.quantile(np.abs(background), .99))
         for method, threshold in (("fixed", baseline_threshold),
                                   ("recalibrated", updated_threshold)):
+            # Exactly 1% of a continuous current-background sample lies above
+            # its recalibrated 99% quantile. That is an operational budget,
+            # not the analytic tail rate of a shifted fixed threshold.
+            theory = .01 if method == "recalibrated" else None
             rows.append(observation(rep, name, f"{method}_background_alert_rate",
-                                    float(np.mean(np.abs(background)>threshold)), .01))
+                                    float(np.mean(np.abs(background)>threshold)), theory))
             rows.append(observation(rep, name, f"{method}_anomaly_recall",
                                     float(np.mean(np.abs(anomalies)>threshold))))
     return rows
@@ -548,9 +560,9 @@ def plot_study(name: str, summary: list[Row], filename: Path) -> None:
             x = [40., 200., 800.]
             cond = [f"{family}:{int(n)}" for n in x]
             for method, method_label, color in (
-                ("sample_mean", "Mean of sample", orange),
-                ("median", "Median", navy),
-                ("trimmed_10pct", "10% trim", teal),
+                ("q75_abs_error_sample_mean", "Mean of sample", orange),
+                ("q75_abs_error_median", "Median", navy),
+                ("q75_abs_error_trimmed_10pct", "10% trim", teal),
             ):
                 series(ax, summary, cond, method, method_label, color, x)
             ax.set(xscale="log", yscale="log", xlabel="Sample size",
@@ -648,7 +660,7 @@ def plot_study(name: str, summary: list[Row], filename: Path) -> None:
     elif name == "shift":
         plt.close(fig)
         fig, axes = plt.subplots(1, 2, figsize=(12.1, 5.0), layout="constrained")
-        c = ["normal", "t3_unit_var", "variance_1.5", "location_0.6"]
+        c = ["normal", "t3_unit_var", "sd_1.5", "location_0.6"]
         labels = ["Normal", "t(3), unit variance", "SD ×1.5", "Mean +0.6"]
         positions = np.arange(len(c))
         for ax, outcome, heading in zip(axes,
@@ -664,6 +676,7 @@ def plot_study(name: str, summary: list[Row], filename: Path) -> None:
             ax.set_xticks(positions, labels, rotation=16, ha="right")
             ax.set(title=heading, ylabel="Fraction", ylim=(0, 1.03))
         axes[0].axhline(.01, c="#555555", ls="--", label="1% budget")
+        axes[0].legend(frameon=False, fontsize=9)
         axes[1].legend(frameon=False, fontsize=9)
         fig.suptitle("9  |  Recalibration maintains a budget, not the meaning of an alarm",
                      fontsize=15)
@@ -687,6 +700,8 @@ def run(design: Design = Design()) -> dict[str, list[Row]]:
         raise TypeError("output root must be a pathlib.Path")
     if not isinstance(design.seed, int) or design.seed < 0:
         raise ValueError("seed must be a nonnegative integer")
+    if not design.quick and design.seed != SEED and design.root.resolve() == ROOT.resolve():
+        raise ValueError("non-canonical full seed requires an explicit output directory")
     suffix = "_quick" if design.quick else ""
     summaries: dict[str, list[Row]] = {}
     for i, name in enumerate(EXPERIMENTS):

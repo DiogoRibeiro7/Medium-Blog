@@ -91,6 +91,10 @@ class VectorAndSeedTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             analysis.run(analysis.Design(quick=True, seed=-1))
 
+    def test_noncanonical_full_seed_requires_separate_directory(self) -> None:
+        with self.assertRaises(ValueError):
+            analysis.run(analysis.Design(seed=analysis.SEED+1))
+
     def test_nine_unique_study_keys(self) -> None:
         self.assertEqual(len(set(analysis.EXPERIMENTS)), 9)
 
@@ -257,6 +261,14 @@ class EstimatorMathTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             analysis.expected_shortfall_lognormal(.99, 0.)
 
+    def test_log_normal_reject_infinite_scale(self) -> None:
+        with self.assertRaises(ValueError):
+            analysis.expected_shortfall_lognormal(.99, float("inf"))
+
+    def test_log_normal_reject_nan_scale(self) -> None:
+        with self.assertRaises(ValueError):
+            analysis.expected_shortfall_lognormal(.99, float("nan"))
+
     def test_distance_outputs_positive(self) -> None:
         rng = np.random.default_rng(0)
         scores = analysis.population_distances(rng.normal(size=(50, 2)), False)
@@ -276,6 +288,23 @@ class EstimatorMathTests(unittest.TestCase):
         x[0, 0] = np.nan
         with self.assertRaises(ValueError):
             analysis.population_distances(x, False)
+
+    def test_classical_distance_reject_singular_covariance(self) -> None:
+        x = np.arange(30., dtype=float)
+        with self.assertRaises(ValueError):
+            analysis.population_distances(np.column_stack((x, 2*x)), False)
+
+    def test_mcd_distance_reject_singular_covariance(self) -> None:
+        x = np.arange(30., dtype=float)
+        with self.assertRaises(ValueError):
+            analysis.population_distances(np.column_stack((x, 2*x)), True)
+
+    def test_normal_75th_absolute_quantile_is_not_signed_quantile(self) -> None:
+        # P(|Z| <= q) = 2 Phi(q) - 1, so q=.875 normal quantile.
+        q_abs = norm.ppf(.875)
+        self.assertAlmostEqual(q_abs, 1.150349380376, places=10)
+        self.assertAlmostEqual(float(2*norm.cdf(q_abs)-1), .75)
+        self.assertGreater(q_abs, norm.ppf(.75))
 
     def test_threshold_exact_count(self) -> None:
         flags = analysis.threshold_alert(np.arange(100.), .05)
@@ -382,6 +411,10 @@ class StudyContractTests(unittest.TestCase):
         rows = analysis.tails_study(analysis.stream(1, "tails", 0), 0, True)
         self.assertTrue(all(r["value"] >= 0 for r in rows))
 
+    def test_tails_metrics_are_explicit_about_aggregation(self) -> None:
+        rows = analysis.tails_study(analysis.stream(1, "tails", 0), 0, True)
+        self.assertTrue(all(str(r["metric"]).startswith("q75_abs_error_") for r in rows))
+
     def test_interval_exposes_two_distinct_targets(self) -> None:
         rows = analysis.intervals_study(analysis.stream(1, "intervals", 0), 0, True)
         self.assertEqual(set(r["condition"].split(":")[-1] for r in rows),
@@ -410,10 +443,12 @@ class StudyContractTests(unittest.TestCase):
         rows = analysis.minority_study(analysis.stream(1, "minority", 0), 0, True)
         self.assertTrue(all("error_rate" not in str(r["metric"]) for r in rows))
 
-    def test_minority_exact_alert_budget(self) -> None:
+    def test_minority_score_cutoff_is_experimental(self) -> None:
         rows = analysis.minority_study(analysis.stream(1, "minority", 0), 0, True)
-        rates = [r["value"] for r in rows if r["metric"] == "alert_fraction"]
-        self.assertTrue(all(abs(float(v)-.05) < .005 for v in rates))
+        cutoffs = [r["value"] for r in rows if r["metric"] == "score_cutoff"]
+        self.assertEqual(len(cutoffs), 4)
+        self.assertTrue(all(float(v) > 0 for v in cutoffs))
+        self.assertGreater(len(set(cutoffs)), 1)
 
     def test_tail_methods(self) -> None:
         rows = analysis.tail_risk_study(analysis.stream(1, "tail_risk", 0), 0, True)
@@ -425,6 +460,21 @@ class StudyContractTests(unittest.TestCase):
         metrics = {r["metric"] for r in rows}
         self.assertIn("fixed_background_alert_rate", metrics)
         self.assertIn("recalibrated_background_alert_rate", metrics)
+
+    def test_shift_sd_name_is_not_variance_label(self) -> None:
+        rows = analysis.shift_study(analysis.stream(1, "shift", 0), 0, True)
+        self.assertIn("sd_1.5", {r["condition"] for r in rows})
+        self.assertNotIn("variance_1.5", {r["condition"] for r in rows})
+
+    def test_shift_fixed_threshold_has_no_fake_analytic_theory(self) -> None:
+        rows = analysis.shift_study(analysis.stream(1, "shift", 0), 0, True)
+        fixed = [r for r in rows if r["metric"] == "fixed_background_alert_rate"]
+        self.assertTrue(all(r["theory"] is None for r in fixed))
+
+    def test_shift_recalibrated_budget_has_exact_reference(self) -> None:
+        rows = analysis.shift_study(analysis.stream(1, "shift", 0), 0, True)
+        current = [r for r in rows if r["metric"] == "recalibrated_background_alert_rate"]
+        self.assertTrue(all(r["theory"] == .01 for r in current))
 
 
 class ArchivedEvidenceTests(unittest.TestCase):
@@ -515,9 +565,14 @@ class NotebookAndDocumentationTests(unittest.TestCase):
         self.assertIn("EXPERIMENTS, FIGURES", notebook_text)
         self.assertIn("zip(EXPERIMENTS, FIGURES)", notebook_text)
 
-    def test_no_hardcoded_user_data(self) -> None:
+    def test_readme_discloses_synthetic_data(self) -> None:
         text = (ROOT/"README.md").read_text(encoding="utf-8")
         self.assertIn("synthetic", text.lower())
+
+    def test_scientific_versions_are_pinned(self) -> None:
+        lines = (ROOT/"requirements.txt").read_text(encoding="utf-8").splitlines()
+        for name in ("numpy", "scipy", "matplotlib", "scikit-learn"):
+            self.assertTrue(any(line.startswith(name+"==") for line in lines))
 
     def test_manuscript_nine_figures(self) -> None:
         text = (ROOT/"article.md").read_text(encoding="utf-8")

@@ -139,6 +139,8 @@ The median is a different story. A Cauchy density is positive at its center, so 
 
 In the synthetic results, the Cauchy sample average's outer-averaged 75th-percentile absolute departure is about **3.23** at \(n=40\), **2.49** at \(n=200\), and **2.35** at \(n=800\). These finite Monte Carlo estimates are themselves variable—especially because the Cauchy is heavy-tailed—so do not read a small apparent downward slope as consistency. The corresponding Cauchy median departures drop from about **0.285** to **0.127** to **0.062**. Under the normal distribution, the sample mean behaves as expected: the same metric decreases from about **0.178** at \(n=40\) to **0.039** at \(n=800\).
 
+There is a useful analytic check on those last two values. For a normal sample mean \(\bar X\sim N(0,1/n)\), the 75th percentile of the **absolute** error is \(\Phi^{-1}(0.875)/\sqrt n\approx1.15035/\sqrt n\), giving approximately **0.182** at \(n=40\) and **0.0407** at \(n=800\). The value 0.67449 is the 75th percentile of a *signed* standard normal, not of its absolute value. The simulated values agree with the correct absolute-error benchmark within finite Monte Carlo variation.
+
 One temptation is to remove Cauchy values beyond a chosen standard-deviation threshold. That does not merely “fix” the original data. The Cauchy standard deviation is undefined; empirical standard deviations swing wildly, and deleting observations changes the population one is implicitly describing. A winsorized or trimmed estimator can be a sensible estimator of location, but a separate operational argument is required before changing or discarding valid records.
 
 ### Tail geometry, not only distribution names

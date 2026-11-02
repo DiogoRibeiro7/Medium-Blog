@@ -6,13 +6,19 @@ on:
       - 'outlier-is-not-an-error/**'
       - '.github/workflows/outlier-is-not-an-error.yml'
   push:
+    branches:
+      - main
     paths:
       - 'outlier-is-not-an-error/**'
       - '.github/workflows/outlier-is-not-an-error.yml'
 
+permissions:
+  contents: read
+
 jobs:
   validate:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     defaults:
       run:
         working-directory: outlier-is-not-an-error
