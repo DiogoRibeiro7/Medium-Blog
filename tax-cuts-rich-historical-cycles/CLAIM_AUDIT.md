@@ -4,7 +4,7 @@ Status: pre-publication review ledger (2026-11-02). This is a verification map, 
 
 | Claim or exhibit | Primary evidence / repository path | Interpretation and remaining check |
 | --- | --- | --- |
-| Highest U.S. individual statutory marginal rate, 1964–2018 | IRS Statistics of Income Table 23 via FRED IITTRHB; `data/top_marginal_rate_1964_2018.csv` | Descriptive top bracket, not average effective tax; cross-check 1970s earned-income cap and pre-1964 landmark claims against IRS schedules. |
+| Major federal tax-law enactments, 1964–2017 | Authenticated laws and congressional record; `data/legislative_chronology_sources.md` | Enactment dates, phase-ins and statute-level revenue claims checked; detailed 1986 phase-out/surcharge and pre-1913 legal history remain open. |\n| Highest U.S. individual statutory marginal rate, 1964–2018 | IRS Statistics of Income Table 23 via FRED IITTRHB; `data/top_marginal_rate_1964_2018.csv` | Descriptive top bracket, not average effective tax; cross-check 1970s earned-income cap and pre-1964 landmark claims against IRS schedules. |
 | Federal receipts relative to GDP, 1964–2018 | OMB/FRED FYFRGDA188S; `data/federal_receipts_gdp_1964_2018.csv` | Total federal receipts, fiscal-year amount divided by annual GDP. Not top-earner revenue or a causal revenue estimate. |
 | Federal receipt categories, 1964–2018 | OMB FY2027 Historical Table 2.3; `data/omb_receipts_by_source_1964_2018.csv` | Five categories, one decimal each; a different source vintage from FRED total receipts. Not a causal/incidence decomposition. |
 | Broad federal spending categories, 1964–2018 | OMB FY2027 Historical Table 3.1; `data/omb_outlays_by_function_1964_2018.csv` | Six superfunctions, including negative offsetting receipts; function labels are not causal policy effects. |
@@ -23,7 +23,7 @@ Status: pre-publication review ledger (2026-11-02). This is a verification map, 
 
 ## Final review checks
 
-- [ ] Verify pre-1964 chronology, major legislation dates and tax-base changes against statutes, Treasury and IRS records.
+- [ ] Finish pre-1913 constitutional chronology and detailed tax-base / 1986 surcharge audit. Major law numbers, enactment dates, phase-ins and 1964 Section 1 revenue-feedback claim are independently sourced in `data/legislative_chronology_sources.md`.
 - [ ] Verify all paper titles, publication years, page numbers and links in the bibliography.
 - [ ] Audit the quoted 2017-act incidence and investment-response estimates against primary texts, including horizons and uncertainty.
 - [ ] Obtain or explicitly scope out historical CBO after-transfer/after-tax series and fixed-investment components.
