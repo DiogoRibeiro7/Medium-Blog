@@ -31,7 +31,7 @@ Status: pre-publication review ledger (2026-11-02). This is a verification map, 
 - [x] Freeze OMB broad spending-by-function categories with a consistent FY2027 vintage.
 - [ ] Audit finer spending categories where needed to evaluate public-investment tradeoffs.
 - [ ] Regenerate charts, verify source provenance and byte-level deterministic artifacts in CI.
-- [ ] Convert publication figures into Medium-compatible image files, add alt text and clear captions.
+- [ ] Visually inspect and download all 11 CI-generated Medium PNGs. PNG exporter, artifact upload, captions and alt text now exist in `MEDIUM_FIGURES.md`; successful CI and rendered-image QA remain mandatory.
 - [ ] Review the final manuscript and add it to the historical-series index only after verification.
 
 The ledger is intentionally conservative: a descriptive time series may check a numerical statement while leaving the causal proposition untested.
