@@ -38,5 +38,7 @@ jobs:
         run: python tax-cuts-rich-historical-cycles/inequality_context.py
       - name: Regenerate CBO household distribution comparison
         run: python tax-cuts-rich-historical-cycles/cbo_distribution.py
+      - name: Regenerate BEA nonresidential investment comparison
+        run: python tax-cuts-rich-historical-cycles/nonresidential_investment.py
       - name: Check committed evidence is reproducible
         run: git diff --exit-code -- tax-cuts-rich-historical-cycles/results
