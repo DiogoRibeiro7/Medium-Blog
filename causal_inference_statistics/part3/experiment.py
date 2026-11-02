@@ -26,6 +26,10 @@ class Estimate:
     matched_fraction: float
     x_difference: float
     u_difference: float
+    x_absolute_smd: float
+    x_pre_match_smd: float
+    distinct_control_fraction: float
+    maximum_control_reuse: int
 
 
 def simulate(rng: np.random.Generator, *, hidden: bool, n: int = N) -> Estimate:
@@ -68,12 +72,26 @@ def simulate(rng: np.random.Generator, *, hidden: bool, n: int = N) -> Estimate:
     if matched_treated.size == 0:
         raise ValueError("Caliper excluded every treated subject")
 
+    # Standardize by pooled pre-match within-group SD, independent of matching.
+    treated_variance = float(np.var(x[treated], ddof=1))
+    control_variance = float(np.var(x[controls], ddof=1))
+    pooled_sd = float(np.sqrt((treated_variance + control_variance) / 2.0))
+    if not np.isfinite(pooled_sd) or pooled_sd <= 0:
+        raise ValueError("Covariate dispersion must be positive and finite")
+
+    _, reuse_counts = np.unique(matched_control, return_counts=True)
+    matched_difference = float(x[matched_treated].mean() - x[matched_control].mean())
+
     return Estimate(
         naive=float(outcome[treatment == 1].mean() - outcome[treatment == 0].mean()),
         matched=float((outcome[matched_treated] - outcome[matched_control]).mean()),
         matched_fraction=float(matched_treated.size / treated.size),
-        x_difference=float(x[matched_treated].mean() - x[matched_control].mean()),
+        x_difference=matched_difference,
         u_difference=float(u[matched_treated].mean() - u[matched_control].mean()),
+        x_absolute_smd=abs(matched_difference) / pooled_sd,
+        x_pre_match_smd=abs(float(x[treated].mean() - x[controls].mean())) / pooled_sd,
+        distinct_control_fraction=float(reuse_counts.size / matched_control.size),
+        maximum_control_reuse=int(reuse_counts.max()),
     )
 
 
