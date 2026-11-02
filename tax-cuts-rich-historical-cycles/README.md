@@ -82,7 +82,7 @@ This is a five-category decomposition of federal receipts expressed in percent o
 
 The six OMB superfunctions (including negative undistributed offsetting receipts) reconcile with the official total to within source rounding for each fiscal year from 1964 through 2018. The figures use the same FY2027 source vintage as the new OMB receipts-by-source chart; they are **not** an estimate of reform-induced spending changes. The new module passes five local tests; the complete project runs in CI.
 
-## Publication gates
+## Medium PNG export\n\n[Figure catalogue, captions and alt text](MEDIUM_FIGURES.md) and [typed publication exporter](export_medium_png.py) prepare all eleven tracked SVG charts as 2,200-pixel-wide PNGs. The path-scoped GitHub Actions workflow uploads a 30-day publication artifact named `tax-cuts-rich-medium-png` on successful runs. The PNG files are generated, not tracked; download and visually inspect them before pasting into Medium.\n\n## Publication gates
 
 1. Independently verify the statute timelines and the precise scope of each historical tax reform against IRS, Congress, Treasury, CRS, and original law text.
 2. ~~Freeze the first official top statutory rate series~~ — IRS 1964–2018 slice completed with caveats; add earlier historical period and current-year statutes only when independently verified, and keep effective tax burdens separate.
