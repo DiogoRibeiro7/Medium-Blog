@@ -210,11 +210,26 @@ When an instrument is weak, conventional Wald confidence intervals around a two-
 
 Alternative procedures include Anderson–Rubin tests and confidence sets, which test hypotheses about the structural treatment coefficient without relying on the same strong-first-stage approximation. Depending on the model, weak-identification-robust procedures can produce wide, unbounded or disconnected confidence sets. Such results may be unsatisfying to readers expecting a short interval, but they can faithfully express limited identification.
 
-The present benchmark does not compute Anderson–Rubin confidence sets, conditional likelihood ratio tests or weak-IV-robust coverage. Its purpose is to make the instability visible in raw estimator distributions. A publication-quality extension should include a comparison of ordinary and weak-IV-robust inference across the same simulated designs.
+The original point-estimator benchmark did not compute Anderson–Rubin tests. A separate, fixed-seed inference extension now compares the membership of the true coefficient in conventional Wald intervals with non-rejection by the Anderson–Rubin test. This evaluates coverage at the known coefficient, without claiming to compute the full geometry of the inverted Anderson–Rubin confidence set.
 
 If the resulting confidence set is broad or unbounded, that is not necessarily a failure of the inferential procedure. It may be an appropriate statement that the data contain insufficient exogenous treatment variation to determine the effect precisely.
 
 The scientific response to weak identification is not simply to report a stronger-looking first-stage statistic from another specification. It is to evaluate the validity of the alternative instrument, the causal estimand it identifies, and the uncertainty remaining under an appropriate procedure.
+
+## A reproducible Anderson–Rubin inference extension
+
+The accompanying `weak_iv_inference.py` uses an independent seed (20261102) and reproduces the same four structural designs, with 500 new samples of 1,000 observations per design. For each sample it reports whether the conventional homoskedastic just-identified IV Wald interval includes the known structural coefficient τ=1. It also tests that coefficient using an Anderson–Rubin (AR) regression of Y−τX on an intercept and Z, with a two-sided Student-t critical value and n−2 degrees of freedom. This regression tests the reduced-form restriction implied by the hypothesized treatment effect without dividing its test statistic by the estimated first-stage coefficient.
+
+| Design | Wald interval includes τ=1 | AR does not reject τ=1 | First-stage F below 10 |
+| --- | ---: | ---: | ---: |
+| Valid, strong | 96.4% | 96.6% | 0.0% |
+| Valid, moderate | 95.0% | 95.4% | 0.0% |
+| Valid, weak | 94.2% | 93.6% | 82.4% |
+| Invalid, strong | 0.0% | 0.0% | 0.0% |
+
+These are Monte Carlo frequencies, not confidence intervals around the percentages. For 500 independent replications, a proportion near 95% has Monte Carlo standard error of approximately one percentage point. The observed valid-instrument differences are therefore too small to establish that one procedure has better coverage in this particular simulation. The AR test's advantage is structural: under the Gaussian valid-instrument null its finite-sample t reference distribution does not require strong instrument relevance. The conventional Wald statistic relies on a ratio approximation that can fail badly in more weakly identified designs.
+
+The invalid strong-instrument design has a direct effect δ=0.3, violating exclusion. Both procedures reject the candidate structural effect in all 500 simulations: **the AR test is robust to weak relevance, not to invalid instruments**. Inverting the AR test across candidate effects can yield unbounded or disconnected confidence sets, but this extension checks only whether the known value belongs to that set. It does not claim to calculate or summarize the complete set. The experiment requires NumPy and SciPy, saves `weak_iv_inference_results.csv`, and includes deterministic regression tests.
 
 ## Multiple instruments and overidentification
 
@@ -270,7 +285,7 @@ The strong invalid scenario violates exclusion by adding a direct effect of Z to
 
 The simulation uses 500 datasets of 1,000 observations per scenario. Extreme weak-IV estimates can make Monte Carlo moments highly sensitive to the number of replications and seed. Reporting a numerical mean and RMSE does not imply that the corresponding theoretical moments are well behaved. That qualification is especially important for the weakest instrument.
 
-The first-stage F-statistic is computed for a single-instrument linear model with an intercept. This is not a substitute for diagnostics designed for heteroskedastic settings, multiple endogenous variables or many instruments. Nor does this article provide formal weak-IV-robust confidence sets.
+The first-stage F-statistic is computed for a single-instrument linear model with an intercept. This is not a substitute for diagnostics designed for heteroskedastic settings, multiple endogenous variables or many instruments. The accompanying extension evaluates Anderson–Rubin test non-rejection at the known coefficient but does not invert the tests across candidate coefficients to report complete weak-IV-robust confidence sets.
 
 The experiment is not an empirical evaluation of job-search support, educational attainment or any other real intervention. It demonstrates what the specified estimators do under known mechanisms. Deciding whether a proposed instrument is credible in a substantive application remains a separate research task.
 
