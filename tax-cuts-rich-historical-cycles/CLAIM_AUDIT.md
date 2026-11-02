@@ -15,8 +15,8 @@ Status: pre-publication review ledger (2026-11-02). This is a verification map, 
 | Census pretax household inequality, 1967–2018 | Census/FRED GINIALLRH; `data/household_gini_1967_2018.csv` | 1993 CPS redesign is a discontinuity; the series is not after-tax inequality or wealth. |
 | CBO selected 2018 quintile resources | CBO, *Distribution of Household Income, 2018*; `data/cbo_2018_distribution.csv` | Before/after transfer-and-tax gap is **not** the effect of TCJA. Extend to full quintiles and historical years. |
 | 2017 tax act estimated reductions in average federal rates | CBO, *Distribution of Household Income, 2018*, 2017 Tax Act section | Lowest two quintiles ≈1.3 percentage-point decrease; highest ≈2.7. Model-based prior-law counterfactual; independently verify incidence assumptions. |
-| Major top-end tax cuts and average macroeconomic effects | Hope and Limberg (2022), DOI 10.1093/ser/mwab061 | Report study's scope, estimands, uncertainty and identifying assumptions; do not generalize to all instruments or episodes. |
-| TCJA business-investment response | Chodorow-Reich, Zidar and Zwick (2024), JEP 38(3) | Firm-level identification and investment response must remain distinct from aggregate before/after plot. Audit working-paper versus published specifications. |
+| Major top-end tax cuts and average macroeconomic effects | Hope and Limberg (2022), DOI 10.1093/ser/mwab061 | Validated 18-country 1965–2015 design, pretax top-1% outcome, approximate +0.6 pp at year three; uncertainty and identifying assumptions documented in `data/research_estimate_audit.md`. |
+| TCJA business-investment response | Chodorow-Reich, Zidar and Zwick (2024), JEP 38(3) | Published JEP 38(3) synthesis describes a *loose consensus* ~11% relative tangible-corporate-investment effect, not GDP-share percentage points. CRS R48485's ~4.5% measurement sensitivity is separately documented in `data/research_estimate_audit.md`; further study-level uncertainty remains. |
 | Projected TCJA macro-fiscal effects | CBO (2018), *How the 2017 Tax Act Affects CBO's Projections* | Projection, not ex-post causal estimate. Cross-check original score, baseline, horizon and definition of feedback. |
 | Postwar top-rate/growth descriptive association | CRS R42729 (2012) and contemporary critiques | Correlations do not identify the effect of top rates. Verify the critique is presented as a competing interpretation. |
 | Illustrative tax-response sensitivity | `model.py`, `results/sensitivity.csv` | Invented parameters only; model results must never be described as measured historical effects. |
@@ -24,8 +24,8 @@ Status: pre-publication review ledger (2026-11-02). This is a verification map, 
 ## Final review checks
 
 - [ ] Finish pre-1913 constitutional chronology and detailed tax-base / 1986 surcharge audit. Major law numbers, enactment dates, phase-ins and 1964 Section 1 revenue-feedback claim are independently sourced in `data/legislative_chronology_sources.md`.
-- [ ] Verify all paper titles, publication years, page numbers and links in the bibliography.
-- [ ] Audit the quoted 2017-act incidence and investment-response estimates against primary texts, including horizons and uncertainty.
+- [ ] Complete full bibliography verification; Hope–Limberg and JEP journal details checked and GAO report publication year corrected to 2022 (despite report number GAO-23).
+- [ ] Finish underlying study-level uncertainty and 2017-act incidence counterfactual audit. The published 11% investment synthesis and CRS 4.5% sensitivity are now cross-checked in `data/research_estimate_audit.md`.
 - [ ] Obtain or explicitly scope out historical CBO after-transfer/after-tax series and fixed-investment components.
 - [x] Freeze OMB revenue-by-source categories with documented vintage differences.
 - [x] Freeze OMB broad spending-by-function categories with a consistent FY2027 vintage.
