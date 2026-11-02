@@ -8,7 +8,7 @@ This folder develops a cross-era political-economy essay about top-income and co
 - Literature: CRS, CBO, GAO, peer-reviewed cross-national tax-reform study, and firm-level TCJA research; direct source links are in the manuscript.
 - Identification boundary: no new empirical causal effects are estimated or implied.
 - **Reproducible hypothetical supplement now included:** typed standard-library Python model, six unit/integration tests, a nine-cell sensitivity CSV, an SVG figure, and path-scoped CI. These are not historical estimates.
-- First official historical evidence slice added: IRS/FRED highest statutory individual rate, 1964–2018, a source-noted 55-year CSV and deterministic descriptive SVG; structural and landmark tests are included. A second official OMB/FRED 1964–2018 total federal receipts/GDP series and two-panel chart are now added, with fiscal/calendar measurement caveats. Investment, inequality, and Medium-compatible publication PNGs are **not yet created**.
+- First official historical evidence slice added: IRS/FRED highest statutory individual rate, 1964–2018, a source-noted 55-year CSV and deterministic descriptive SVG; structural and landmark tests are included. A second official OMB/FRED 1964–2018 total federal receipts/GDP series and two-panel chart are now added, with fiscal/calendar measurement caveats. BEA real growth and gross private domestic investment share are now also frozen for 55 years with a descriptive figure and tests. Inequality, disaggregated fixed investment, and Medium-compatible PNGs are **not yet created**.
 
 ## Hypothetical model reproduction
 
@@ -30,11 +30,17 @@ The original source is IRS Statistics of Income Table 23, viewed through [FRED I
 
 This is total federal receipts from all revenue sources divided by nominal annual GDP, **not** a measure of taxes paid by wealthy households. FRED pairs federal fiscal-year receipts with annual GDP, and the statutory tax-rate series has a different economic denominator altogether. There is no regression or causal interpretation. Regenerate with `python tax-cuts-rich-historical-cycles/fiscal_context.py`; the path-scoped workflow tests and verifies every committed CSV/SVG result. All 14 local tests passed.
 
+## BEA growth and investment context
+
+[FRED/BEA annual macro CSV](data/real_growth_private_investment_1964_2018.csv) · [source and measurement notes](data/macro_sources.md) · [descriptive two-panel figure](results/growth_and_investment.svg) · [typed renderer](macro_context.py) · [tests](test_macro_context.py).
+
+The BEA data are annual real GDP percentage growth and gross private domestic investment as a share of nominal GDP, not an estimate of tax-induced business fixed investment. The latter includes housing and inventories. Both are retrospective revised accounts. The deterministic figure is regenerated with `python tax-cuts-rich-historical-cycles/macro_context.py`, and GitHub Actions checks it against the committed file. All 18 local tests passed across the companion.
+
 ## Publication gates
 
 1. Independently verify the statute timelines and the precise scope of each historical tax reform against IRS, Congress, Treasury, CRS, and original law text.
 2. ~~Freeze the first official top statutory rate series~~ — IRS 1964–2018 slice completed with caveats; add earlier historical period and current-year statutes only when independently verified, and keep effective tax burdens separate.
-3. ~~Start source-verified descriptive historical figures~~ — statutory rate and total receipts/GDP charts now exist as SVG; add revenue composition, household distribution, investment, debt, inequality, and Medium-compatible PNGs.
+3. ~~Start source-verified descriptive historical figures~~ — statutory rate, total receipts/GDP, and BEA growth/investment charts now exist as SVG; add revenue composition, household distribution, fixed business investment, debt, inequality, and Medium-compatible PNGs.
 4. Implement a typed, documented Python 3.12 companion with source manifest and SHA-256 checks, deterministic plots, notebook, tests, and path-scoped CI.
 5. ~~Add an initial hypothetical sensitivity analysis~~ — completed as an explicitly illustrative model; extend robustness and validate notation before publication, without presenting invented coefficients as historical causal effects.
 6. Audit the tax research literature, including the measurement critique of the TCJA investment estimates and the identifying assumptions in the cross-country study.
