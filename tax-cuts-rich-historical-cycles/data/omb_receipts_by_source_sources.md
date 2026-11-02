@@ -1,0 +1,9 @@
+# OMB federal receipts by source, 1964–2018
+
+Source: U.S. Office of Management and Budget (OMB), *Historical Tables, Fiscal Year 2027 Budget*, Table 2.3, “Receipts by Source as Percentages of GDP: 1934–2031,” XLSX at https://www.whitehouse.gov/wp-content/uploads/2026/04/hist02z3_fy2027.xlsx, linked from https://www.whitehouse.gov/omb/information-resources/budget/historical-tables/ (accessed 2026-11-02).
+
+The frozen CSV transcribes fiscal years 1964–2018 and the five nonoverlapping OMB categories: individual income taxes, corporation income taxes, total social insurance and retirement receipts, excise taxes, and other receipts. Total receipts is included independently from the same sheet. All numbers are **percentages of nominal GDP** rounded by OMB to **one decimal place**; summing five rounded categories can differ from the displayed rounded total by as much as roughly 0.2 percentage points. On-budget and off-budget social-insurance subtotals are deliberately excluded to avoid double counting.
+
+The OMB FY2027 vintage does not necessarily match the separately frozen FRED FYFRGDA188S ratios, which were extracted from a different historical release and carry more displayed decimals. Do **not** force these independently revised vintages to agree or silently present any cross-vintage difference as a data error. The OMB figures are fiscal receipts, not household incidence, effective average taxes, or receipts attributable to a particular tax law. The category "individual income taxes" includes taxes paid by people across the distribution; social-insurance receipts largely reflect payroll contributions and are not disposable household benefits.
+
+This data is suitable for descriptive tax-mix comparisons, not identifying tax-cut effects. Total fiscal receipts respond to macroeconomic conditions, income composition, capital-gains realizations, enforcement, timing, and legislative changes beyond the top statutory rate.
