@@ -8,7 +8,7 @@ This folder develops a cross-era political-economy essay about top-income and co
 - Literature: CRS, CBO, GAO, peer-reviewed cross-national tax-reform study, and firm-level TCJA research; direct source links are in the manuscript.
 - Identification boundary: no new empirical causal effects are estimated or implied.
 - **Reproducible hypothetical supplement now included:** typed standard-library Python model, six unit/integration tests, a nine-cell sensitivity CSV, an SVG figure, and path-scoped CI. These are not historical estimates.
-- First official historical evidence slice added: IRS/FRED highest statutory individual rate, 1964–2018, a source-noted 55-year CSV and deterministic descriptive SVG; structural and landmark tests are included. Other historical datasets and Medium-compatible publication PNGs are **not yet created**.
+- First official historical evidence slice added: IRS/FRED highest statutory individual rate, 1964–2018, a source-noted 55-year CSV and deterministic descriptive SVG; structural and landmark tests are included. A second official OMB/FRED 1964–2018 total federal receipts/GDP series and two-panel chart are now added, with fiscal/calendar measurement caveats. Investment, inequality, and Medium-compatible publication PNGs are **not yet created**.
 
 ## Hypothetical model reproduction
 
@@ -24,11 +24,17 @@ The sensitivity model holds labor and baseline productivity fixed, varies taxabl
 
 The original source is IRS Statistics of Income Table 23, viewed through [FRED IITTRHB](https://fred.stlouisfed.org/data/IITTRHB). This is the top regular-income-tax *statutory marginal* rate, not an effective rate or a causal determinant of growth. The FRED series ends in 2018; no recent rates are imputed. Regenerate with `python tax-cuts-rich-historical-cycles/historical_rates.py` and run all 10 tests using the command above. The same path-scoped workflow now regenerates and compares both evidence charts.
 
+## Federal receipts comparison
+
+[OMB/FRED FYFRGDA188S 55-year CSV](data/federal_receipts_gdp_1964_2018.csv) · [source and alignment caveats](data/federal_receipts_sources.md) · [two-panel historical chart](results/tax_rate_and_receipts.svg) · [typed renderer](fiscal_context.py) · [structural tests](test_fiscal_context.py).
+
+This is total federal receipts from all revenue sources divided by nominal annual GDP, **not** a measure of taxes paid by wealthy households. FRED pairs federal fiscal-year receipts with annual GDP, and the statutory tax-rate series has a different economic denominator altogether. There is no regression or causal interpretation. Regenerate with `python tax-cuts-rich-historical-cycles/fiscal_context.py`; the path-scoped workflow tests and verifies every committed CSV/SVG result. All 14 local tests passed.
+
 ## Publication gates
 
 1. Independently verify the statute timelines and the precise scope of each historical tax reform against IRS, Congress, Treasury, CRS, and original law text.
 2. ~~Freeze the first official top statutory rate series~~ — IRS 1964–2018 slice completed with caveats; add earlier historical period and current-year statutes only when independently verified, and keep effective tax burdens separate.
-3. Add original source-verified figures for rate schedules, revenue composition, household distribution, investment, debt, and inequality; label historical associations descriptive.
+3. ~~Start source-verified descriptive historical figures~~ — statutory rate and total receipts/GDP charts now exist as SVG; add revenue composition, household distribution, investment, debt, inequality, and Medium-compatible PNGs.
 4. Implement a typed, documented Python 3.12 companion with source manifest and SHA-256 checks, deterministic plots, notebook, tests, and path-scoped CI.
 5. ~~Add an initial hypothetical sensitivity analysis~~ — completed as an explicitly illustrative model; extend robustness and validate notation before publication, without presenting invented coefficients as historical causal effects.
 6. Audit the tax research literature, including the measurement critique of the TCJA investment estimates and the identifying assumptions in the cross-country study.
