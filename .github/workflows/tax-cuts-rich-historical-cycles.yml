@@ -28,5 +28,7 @@ jobs:
         run: python -m unittest discover -s tax-cuts-rich-historical-cycles -p "test_*.py" -v
       - name: Regenerate scenario artifacts
         run: python tax-cuts-rich-historical-cycles/model.py --out tax-cuts-rich-historical-cycles/results
+      - name: Regenerate documented IRS-rate chart
+        run: python tax-cuts-rich-historical-cycles/historical_rates.py
       - name: Check committed evidence is reproducible
         run: git diff --exit-code -- tax-cuts-rich-historical-cycles/results
