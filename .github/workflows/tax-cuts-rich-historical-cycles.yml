@@ -44,5 +44,7 @@ jobs:
         run: python tax-cuts-rich-historical-cycles/fiscal_balance_debt.py
       - name: Reconcile and regenerate OMB receipts and outlays
         run: python tax-cuts-rich-historical-cycles/revenue_outlays.py
+      - name: Regenerate OMB receipt-composition chart
+        run: python tax-cuts-rich-historical-cycles/receipt_composition.py
       - name: Check committed evidence is reproducible
         run: git diff --exit-code -- tax-cuts-rich-historical-cycles/results
