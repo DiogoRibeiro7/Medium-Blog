@@ -1,5 +1,5 @@
-scenario,n,replications,nominal_coverage,wald_coverage_of_true_effect,ar_nonrejection_of_true_effect,fraction_first_stage_f_below_10,median_first_stage_f
-valid_strong,1000,500,0.95,0.964,0.966,0.0,501.45384475093573
-valid_moderate,1000,500,0.95,0.95,0.954,0.0,44.81729396519605
-valid_weak,1000,500,0.95,0.942,0.936,0.824,4.758529659004299
-invalid_strong,1000,500,0.95,0.0,0.0,0.0,501.75573115040675
+scenario,n,replications,nominal_coverage,wald_coverage_of_true_effect,ar_nonrejection_of_true_effect,ar_set_coverage_of_true_effect,ar_bounded_fraction,ar_disconnected_fraction,ar_half_line_fraction,ar_all_real_fraction,fraction_first_stage_f_below_10,median_first_stage_f
+valid_strong,1000,500,0.95,0.964,0.966,0.966,1.0,0.0,0.0,0.0,0.0,501.45384475093573
+valid_moderate,1000,500,0.95,0.95,0.954,0.954,1.0,0.0,0.0,0.0,0.0,44.81729396519605
+valid_weak,1000,500,0.95,0.942,0.936,0.936,0.6,0.202,0.0,0.198,0.824,4.758529659004299
+invalid_strong,1000,500,0.95,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,501.75573115040675
