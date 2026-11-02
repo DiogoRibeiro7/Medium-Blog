@@ -42,5 +42,7 @@ jobs:
         run: python tax-cuts-rich-historical-cycles/nonresidential_investment.py
       - name: Regenerate OMB fiscal balance and debt chart
         run: python tax-cuts-rich-historical-cycles/fiscal_balance_debt.py
+      - name: Reconcile and regenerate OMB receipts and outlays
+        run: python tax-cuts-rich-historical-cycles/revenue_outlays.py
       - name: Check committed evidence is reproducible
         run: git diff --exit-code -- tax-cuts-rich-historical-cycles/results
