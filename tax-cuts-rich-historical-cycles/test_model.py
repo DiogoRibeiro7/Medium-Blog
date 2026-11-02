@@ -47,6 +47,7 @@ class ScenarioTests(unittest.TestCase):
             write_outputs(output)
             self.assertEqual(first_csv, (output / "sensitivity.csv").read_bytes())
             self.assertEqual(first_svg, (output / "sensitivity.svg").read_bytes())
+            self.assertNotIn(b"\r", first_csv, "CSV output must use LF on every OS")
             with (output / "sensitivity.csv").open(newline="", encoding="utf-8") as handle:
                 rows = list(csv.DictReader(handle))
             self.assertEqual(len(rows), 9)
