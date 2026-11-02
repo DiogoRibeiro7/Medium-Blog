@@ -2,7 +2,7 @@
 
 This directory is the staged, synthetic research companion for Article #34.
 The [research plan](RESEARCH_PLAN.md) specifies nine studies. **Only the
-first six are implemented.** There is no complete article, final figure
+all nine simulation mechanisms are implemented.** There is no complete article, final figure
 set, publication dataset, or notebook yet; this branch remains a draft.
 
 ## Implemented studies
@@ -23,6 +23,17 @@ set, publication dataset, or notebook yet; this branch remains a draft.
 6. `calibration`: matching the marginal shares of two binary covariates while
    reversing their joint-cell frequencies. Marginal raking is the identity
    in this design; externally known joint counts permit poststratification.
+7. `weighting`: unequal Poisson inclusion with known probabilities, comparing
+   unweighted, raw inverse-weight and 90th-percentile capped-weight Hájek
+   estimators. The cap is a sensitivity choice, not a principled optimum.
+8. `predictive`: a deliberately misspecified constant predictor, estimated
+   under training covariates centred at −1 and deployed to target covariates
+   centred at +1. The conditional outcome law stays invariant; exact density
+   ratios allow target-weighted fitting. Reported losses are compared with
+   the irreducible Bayes squared-error risk of 0.25, not a survey mean.
+9. `drift`: historical versus updated group shares, distinguishing a stable
+   group outcome law from a subsequently changed group outcome law. Known
+   target composition alone cannot fix a change in conditional means.
 
 All populations and responses are synthetic. No empirical survey is used.
 Each outer repetition has a study-specific stable random stream. The SRS and
@@ -41,7 +52,7 @@ python analysis.py --quick
 python analysis.py --output /tmp/population-experiments --repetitions 300
 ```
 
-Quick mode produces twelve `*_quick.csv` files in `data/`, which are not
+Quick mode produces eighteen `*_quick.csv` files in `data/`, which are not
 publication outputs. Full provisional runs must select an explicit output
 directory to avoid accidentally presenting unreviewed numbers as canonical.
 The summary interval is a normal-approximation 95% Monte Carlo interval for
@@ -51,10 +62,11 @@ coverage directly.
 
 ## Verification scope
 
-The nine standard-library unittest cases verify deterministic streams,
+The twelve standard-library unittest cases verify deterministic streams,
 complete methods and finite rows, algebraic archive identities, known-weight
 correction of stratified oversampling, and an oracle-weight improvement over
 the intentionally misspecified response mechanism, undercoverage, opt-in
-selection bias and marginal-versus-joint calibration. They are regression
+selection bias, marginal-versus-joint calibration, weight clipping,
+covariate-shift prediction risk and concept shift. They are regression
 checks, not substitutes for the remaining experimental, theoretical and
 source audit requirements.
