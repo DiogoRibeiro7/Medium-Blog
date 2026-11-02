@@ -1,0 +1,42 @@
+name: Article 30 - Missing Data and Identification
+
+on:
+  pull_request:
+    paths:
+      - 'missing-data-is-not-zero/**'
+      - '.github/workflows/missing-data-is-not-zero.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'missing-data-is-not-zero/**'
+      - '.github/workflows/missing-data-is-not-zero.yml'
+
+jobs:
+  reproducible-study:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: missing-data-is-not-zero
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: missing-data-is-not-zero/requirements.txt
+      - name: Install scientific dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Test numerical methods, evidence, and fresh notebook kernel
+        env:
+          OPENBLAS_NUM_THREADS: '1'
+          OMP_NUM_THREADS: '1'
+          MPLBACKEND: Agg
+          RUN_NOTEBOOK_EXECUTION: '1'
+        run: python -m unittest discover -s tests -v
+      - name: Isolated quick regeneration
+        env:
+          OPENBLAS_NUM_THREADS: '1'
+          OMP_NUM_THREADS: '1'
+          MPLBACKEND: Agg
+        run: python analysis.py --quick

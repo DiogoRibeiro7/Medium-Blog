@@ -1,0 +1,147 @@
+"""Deterministically build the fresh-kernel missing-data study notebook."""
+
+from __future__ import annotations
+
+import json
+from pathlib import Path
+from typing import Any
+
+
+ROOT = Path(__file__).resolve().parent
+FILENAME = "missing_data_is_not_zero.ipynb"
+
+
+def markdown(source: str, identifier: str) -> dict[str, Any]:
+    """Create a Jupyter v4 Markdown cell with a stable ID."""
+
+    return {"cell_type": "markdown", "id": identifier, "metadata": {},
+            "source": source.splitlines(keepends=True)}
+
+
+def code(source: str, identifier: str) -> dict[str, Any]:
+    """Create a clean Jupyter v4 code cell."""
+
+    return {"cell_type": "code", "id": identifier, "metadata": {},
+            "source": source.splitlines(keepends=True),
+            "execution_count": None, "outputs": []}
+
+
+def notebook() -> dict[str, Any]:
+    """Provide all nine study figures and explicit interpretation boundaries."""
+
+    cells = [
+        markdown(
+            "# A Missing Value Is Not a Zero\n\n"
+            "Article #30 companion: nine independent synthetic experiments, "
+            "nine original figures, and eighteen CSV evidence tables. "
+            "A missingness indicator R=1 means **observed** throughout. "
+            "No field population or causal effect is estimated here.\n",
+            "introduction",
+        ),
+        markdown(
+            "## Missingness mechanisms are conditional independence claims\n\n"
+            "- MCAR: R is independent of observed and unobserved data.\n"
+            "- MAR: conditional on observed auxiliaries Z, R is independent "
+            "of the missing value Y; this does not mean unconditional random "
+            "missingness.\n"
+            "- MNAR: even after conditioning on the observed information "
+            "available for identification, R may depend on unseen Y.\n\n"
+            "These conditions are relative to the data and model. The names "
+            "alone do not identify a mechanism from an incomplete table.\n",
+            "mechanisms",
+        ),
+        code(
+            "from pathlib import Path\n"
+            "import tempfile\n"
+            "from IPython.display import display, Image\n"
+            "from analysis import Design, EXPERIMENTS, FIGURES, SEED, run\n"
+            "print('Canonical seed:', SEED, '| experiments:', ', '.join(EXPERIMENTS))\n",
+            "imports",
+        ),
+        markdown(
+            "## Recoverability and uncertainty\n\n"
+            "For Y observed when R=1 and fully observed Z, MAR means "
+            "P(R=1|Y,Z)=P(R=1|Z). If its probability π(Z) is known and "
+            "bounded away from zero, an inverse-probability mean can "
+            "recover a marginal target. The study uses the self-normalized "
+            "Hájek form, not a generic doubly robust estimator.\n\n"
+            "For normal outcomes with **known** variance, the dedicated "
+            "MI function draws missing observations after drawing a "
+            "posterior mean and pools within/between variation. This "
+            "is not a general-purpose MICE implementation.\n",
+            "methods",
+        ),
+        code(
+            "import numpy as np\n"
+            "from analysis import normal_multiple_imputation, hajek_mean\n"
+            "rng = np.random.default_rng(123)\n"
+            "mu, variance = normal_multiple_imputation(rng, np.array([1.,2.,3.,4.]), 3)\n"
+            "assert np.isfinite(mu) and variance > 0\n"
+            "print('Illustrative MI mean and variance:', mu, variance)\n",
+            "identities",
+        ),
+        markdown(
+            "## Short study execution without altering canonical evidence\n\n"
+            "The full article uses 24 independent outer repetitions in "
+            "most experiments, and 300 in its interval-coverage experiment. "
+            "Quick mode uses three repetitions in most studies, ten for "
+            "coverage, and isolated output paths. It calls precisely the "
+            "same synthetic generator, estimator, and figure functions.\n",
+            "execution_description",
+        ),
+        code(
+            "with tempfile.TemporaryDirectory() as directory:\n"
+            "    root = Path(directory)\n"
+            "    summaries = run(Design(root=root, quick=True))\n"
+            "    tables = sorted((root/'results').glob('*_quick.csv'))\n"
+            "    figures = sorted((root/'figures').glob('*_quick.png'))\n"
+            "    assert len(tables) == 18 and len(figures) == 9\n"
+            "    print('Tables:', len(tables), '| figures:', len(figures))\n"
+            "    for study, figure in zip(EXPERIMENTS, FIGURES):\n"
+            "        print('\\nStudy:', study, 'summary rows:', len(summaries[study]))\n"
+            "        display(Image(filename=str(root/'figures'/f'{figure}_quick.png')))\n",
+            "execute",
+        ),
+        markdown(
+            "## Evidence boundaries\n\n"
+            "- Complete cases can have unbiased conditional regression "
+            "coefficients while yielding biased marginal summaries.\n"
+            "- MAR corrections require usable auxiliaries and observation "
+            "probabilities with adequate support. Oracle probabilities "
+            "in a simulation are not observable in real data.\n"
+            "- MNAR pattern-mixture delta is a sensitivity assumption; "
+            "the hidden complete-data truth is shown only because the "
+            "synthetic generator supplies it.\n"
+            "- Proper MI is model-dependent and its uncertainty differs "
+            "from pretending an imputed value was observed.\n"
+            "- A missingness indicator can be predictive only while the "
+            "measurement workflow is stable.\n\n"
+            "See the manuscript for derivations, exact assumptions, "
+            "limitations, source audit, and reporting protocol.\n",
+            "limits",
+        ),
+    ]
+    return {
+        "cells": cells,
+        "metadata": {
+            "kernelspec": {"display_name": "Python 3", "language": "python",
+                           "name": "python3"},
+            "language_info": {"name": "python", "version": "3.12"},
+        },
+        "nbformat": 4, "nbformat_minor": 5,
+    }
+
+
+def main() -> None:
+    """Write the unexecuted canonical notebook beside this builder."""
+
+    target = ROOT / FILENAME
+    target.write_text(
+        json.dumps(notebook(), indent=2, ensure_ascii=False) + "\n",
+        encoding="utf-8",
+    )
+    print(target.name)
+
+
+if __name__ == "__main__":
+    main()
