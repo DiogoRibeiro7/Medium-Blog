@@ -66,6 +66,10 @@ The annual budget surplus or deficit is a flow; debt held by the public is a sto
 
 The independently frozen receipts, net outlays, and deficit series reconcile within a documented 0.00015 percentage-point tolerance; the maximum residual is 0.00013 points. This is an **accounting** check and no tax-law counterfactual is estimated. The local suite now passes **42 tests**. Regenerate with `python tax-cuts-rich-historical-cycles/revenue_outlays.py`.
 
+## Claim audit and release readiness
+
+[Claim-to-source ledger](CLAIM_AUDIT.md) identifies which numerical observations are reproduced and which historical, causal and bibliographic assertions still need independent validation. Successful local tests and earlier CI checks establish reproducibility of the frozen artifacts, not causal identification or publication readiness.
+
 ## Publication gates
 
 1. Independently verify the statute timelines and the precise scope of each historical tax reform against IRS, Congress, Treasury, CRS, and original law text.
