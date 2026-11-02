@@ -1,0 +1,37 @@
+name: Outlier article reproducibility
+
+on:
+  pull_request:
+    paths:
+      - 'outlier-is-not-an-error/**'
+      - '.github/workflows/outlier-is-not-an-error.yml'
+  push:
+    paths:
+      - 'outlier-is-not-an-error/**'
+      - '.github/workflows/outlier-is-not-an-error.yml'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: outlier-is-not-an-error
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MPLBACKEND: Agg
+      MPLCONFIGDIR: /tmp/mpl-outlier-ci
+      RUN_NOTEBOOK_EXECUTION: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: outlier-is-not-an-error/requirements.txt
+      - name: Install scientific and notebook dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Test numerical assumptions and archived results, execute notebook
+        run: python -m unittest discover -s tests -v
+      - name: Reproduce smoke-test evidence without overwriting full results
+        run: python analysis.py --quick
