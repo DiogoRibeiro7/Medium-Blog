@@ -343,6 +343,36 @@ figures 30–31, and a complete assumptions ledger. None of this
 establishes an actual feasible housing option, price transmission,
 travel-time matrix or residential displacement.
 
+**Administrative rent–distance Pareto-screen checkpoint
+(2 November 2026).** Pair the SHA-256-pinned **2020 and 2025**
+municipal new-contract median rent (EUR/m²/month) with each of
+the 16 comparator municipalities' checksummed DGT CAOP2025
+area-weighted centroid separation from Porto (EPSG:3763).
+Hold the **2025 administrative geography fixed** for both years.
+Municipality `j` is dominated in this *two-summary comparison*
+only if another non-Porto municipality `k` has a weakly shorter
+centroid distance and weakly lower new-rent median, with at least
+one strict gain. This does not compare actual available apartments,
+routes, employment access, income or full household welfare.
+
+On the zero-margin criterion, **6/16** municipal summaries are
+nondominated in 2020 versus **7/16** in 2025. Santo Tirso leaves
+the mathematical frontier and Arouca and Oliveira de Azeméis
+enter. Check the complete **3×3** grid of minimum distance
+advantages (0/2/5 km) and minimum new-rent advantages
+(0/0.5/1 EUR/m²/month) separately in both years. In 2025 the
+zero-margin **9/16** dominated count falls to **3/16** when
+at least 5 km and €1/m²/month of joint advantage is required.
+These thresholds are **declared margins, not uncertainty
+intervals**; rent estimates, actual dwellings and centroid choices
+are not quality- or access-adjusted. A positive floor-area
+multiplier cannot change the rent-level Pareto order. Report all
+32 municipal-year observations, every possible dominating
+administrative summary, 18 margin cells, 16 year-to-year status
+records, figures 32–33 and both independent source checksums.
+No number identifies migration, municipality desirability or
+epidemic-like price transmission.
+
 ## Planned analysis sequence
 
 ### Stage 0 — Obtain or document denial of directed residential counts

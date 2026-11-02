@@ -114,6 +114,8 @@ zero. The analysis's exact-period comparisons enforce those distinctions.
 | 29 | fig29_construction_rent_rank_window_sensitivity.png | Rank comparisons for three nested construction windows, two INE new-dwelling flow measures and two rent outcomes | **Exploratory, dependent windows; 2021+ provisional and 2024–2025 completed-dwelling estimates** |
 | 30 | fig30_porto_rent_break_even_extra_commute_minutes.png | Maximum hypothetical additional one-way travel minutes per workday before 70 m² 2025 Porto-relative rent gaps are consumed by commuting time/cash costs | **Assumed household scenarios, not observed journeys or available rental homes** |
 | 31 | fig31_rent_saving_exhaustion_by_commute_scenario.png | Counts of 16 municipal synthetic 70 m² options whose rent gap disappears at added 15/30/45/60-minute one-way commuting increments | **Scenario counts, not households, travel-time estimates or displacement probabilities** |
+| 32 | fig32_porto_rent_distance_pareto_2020_2025.png | Two-dimensional nondominated municipality median new-rent/CAOP2025 Porto centroid distance pairs in 2020 and 2025 | **Descriptive municipal-summary Pareto order, not a set of available homes, times or choices** |
+| 33 | fig33_rent_distance_dominance_margin_sensitivity.png | Municipal-summary dominance counts under nine deterministic minimum distance/rent advantage margins, 2020 versus 2025 | **Assumed material-gain thresholds, not measurement uncertainty, migration or causal spillover** |
 
 The figure titles, manuscript captions and generated tables repeat the
 evidence-class distinction. There are no charts of invented historical
@@ -934,6 +936,55 @@ source-linked rent gaps, scenario boundaries and reproducibility.
 Do not mistake these thresholds for observed time, generalized
 household welfare, or evidence of displacement.
 
+## Municipal rent–distance frontier sensitivity (figures 32–33)
+
+The [porto_rent_distance_frontier.py](porto_rent_distance_frontier.py)
+module adds a distinct diagnostic: which of the 16 non-Porto AMP
+municipality **median new-rent versus administrative distance pairs**
+are mathematically nondominated? The source observations are the
+already SHA-256-pinned **2020 and 2025** new-contract rent medians
+(EUR/m²/month) and the previously verified **DGT CAOP2025**
+area-weighted municipal centroids in EPSG:3763. The 2025
+administrative geometry is held fixed for both rental years.
+
+For municipality `j`, a municipal *summary* `k` dominates it
+if `distance(k) <= distance(j)` and `new_rent(k) <= new_rent(j)`
+with at least one strict inequality. The distance is **straight-line
+centroid separation from Porto**, not a road route, public transport
+time, an individual's commute or a calibrated measure of access.
+This criterion does not identify actual rental inventory, household
+preferences, comparability of dwellings or welfare.
+
+- **2020:** six nondominated summaries: Matosinhos, Maia, Valongo,
+  Trofa, Paredes and Santo Tirso (ten dominated).
+- **2025:** seven: Matosinhos, Maia, Valongo, Trofa, Paredes,
+  Oliveira de Azeméis and Arouca (nine dominated). Santo Tirso
+  leaves the 2D mathematical frontier; Oliveira de Azeméis and
+  Arouca enter. This is not evidence of observed moves.
+- A stricter deterministic material gain must be met in **both**
+  dimensions: `0/2/5 km` minimum shorter centroid separation and
+  `0/0.5/1 EUR/m²/month` minimum lower new rent. At zero margins,
+  at least one dimension must be strictly improved. For 2025,
+  requiring **5 km** less distance and **€1/m²/month** less rent
+  reduces the dominated count from **9/16 to 3/16**. These margins
+  are assumptions, **not confidence intervals or measurement errors**.
+
+The **70 m²** monthly euro columns are explicitly synthetic; uniform
+positive floor-area scaling does not change the municipality ranking.
+Nothing in this module measures available homes, transport service,
+employment locations, residential displacement or spatial contagion.
+
+Regenerate 32 municipal-year records including every qualifying
+dominator, 18 distance/rent margin-grid records, 16 frontier-change
+records, two figures and a checksummed source/provenance ledger:
+
+    python porto_rent_distance_frontier.py --output /tmp/porto-rent-distance-frontier
+
+Results live under `results/porto_rent_distance_frontier_*`. The
+module makes no API requests and introduces **23 tests; 232 total**,
+including exact set membership, strict/tied comparisons, margin
+monotonicity, paired years and artifact regeneration.
+
 ## Boundaries before publication
 
 - Prices of sold homes are not quality-adjusted repeated-sales observations.
@@ -951,6 +1002,9 @@ household welfare, or evidence of displacement.
 - The 2019–2025 municipal sample is too short for a high-dimensional
   multi-lag causal model without further sources and identification.
 - No household-level rent or generalized transport burden is measured here.
+- A two-dimensional rent-versus-administrative-centroid Pareto screen is
+  neither a catalogue of accessible apartments nor a claim that some
+  municipalities are intrinsically worse places to live.
 - Do not use the hypothetical curves to infer the number of people actually
   displaced, transmission elasticities, or policy effect sizes.
 - The article is a manuscript for review and **is not automatically published
