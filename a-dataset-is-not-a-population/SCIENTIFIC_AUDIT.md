@@ -10,8 +10,11 @@ The canonical archive contains nine `*_replicates.csv` and nine
 `*_summary.csv` files at seed **20261102**, with **300 repetitions per study**.
 `tests/test_analysis.py` independently calls the source simulation and summary
 writer in a temporary directory, then checks every archived CSV row and
-summary field for exact equality. This audit was run after retrieving the
-committed archives from the PR branch. All 18 comparisons passed.
+summary field. Categorical identifiers, schemas and repetition counts are
+checked exactly; finite numerical fields are compared at relative and
+absolute tolerance 1e-12 to accommodate last-bit differences across
+numerical libraries and CPU architectures. This audit was run after
+retrieving the committed archives from the PR branch.
 
 The fresh-kernel notebook check separately exercises quick synthetic runs
 from an unrelated working directory, without changing archival evidence.
