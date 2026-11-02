@@ -9,6 +9,7 @@ import os
 import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 import numpy as np
 
@@ -24,6 +25,62 @@ except ImportError:
 
 
 ROOT = Path(__file__).resolve().parents[1]
+
+# Exact study contracts guard both the generated observations and archived CSVs
+# against silent loss, duplication, or renaming of conditions and metrics.
+STUDY_CONTRACTS: dict[str, tuple[tuple[str, ...], tuple[str, ...]]] = {
+    "symmetric": (
+        ("0.00", "0.05", "0.15", "0.30"),
+        ("clean_test_auc", "clean_test_brier", "empirical_train_flip_rate"),
+    ),
+    "asymmetric": (
+        ("0.00:0.00", "0.05:0.10", "0.05:0.30", "0.15:0.40"),
+        ("observed_positive_fraction", "oracle_corrected_prevalence",
+         "latent_sample_prevalence"),
+    ),
+    "instance": (
+        ("uniform", "boundary", "high_margin"),
+        ("clean_test_auc", "clean_test_brier", "observed_flip_fraction"),
+    ),
+    "annotators": (
+        ("3_similar", "5_heterogeneous", "5_weak_majority"),
+        ("majority_accuracy", "em_accuracy", "em_brier"),
+    ),
+    "correlation": (
+        ("0.00", "0.05", "0.10", "0.20"),
+        ("majority_error_rate", "em_error_rate", "confident_wrong_fraction",
+         "worker_flip_fraction"),
+    ),
+    "selection": (
+        ("0.10", "0.20", "0.40"),
+        ("review_only_prevalence", "review_and_random_audit_ht",
+         "latent_population_prevalence", "audit_fraction"),
+    ),
+    "benchmark": (
+        ("0.00", "0.10", "0.25", "0.50", "0.75"),
+        ("true_accuracy_A", "true_accuracy_B", "observed_accuracy_A",
+         "observed_accuracy_B", "label_error_fraction"),
+    ),
+    "leakage": (
+        ("row_split", "entity_holdout"),
+        ("test_accuracy", "test_entity_overlap"),
+    ),
+    "policy": (
+        ("baseline", "lenient", "strict"),
+        ("latent_outcome_prevalence", "recorded_positive_fraction",
+         "true_model_accuracy", "recorded_label_accuracy"),
+    ),
+}
+REPLICATION_FIELDS = ("replicate", "condition", "metric", "value", "theory")
+SUMMARY_FIELDS = ("condition", "metric", "n", "mean", "sd", "se",
+                  "lower95", "upper95", "theory")
+
+
+def expected_keys(study: str) -> set[tuple[str, str]]:
+    """The exhaustive condition-by-metric contract for one named study."""
+
+    conditions, metrics = STUDY_CONTRACTS[study]
+    return {(condition, metric) for condition in conditions for metric in metrics}
 
 
 def read_csv(path: Path) -> list[dict[str, str]]:
@@ -177,6 +234,12 @@ class NoiseChannelTests(unittest.TestCase):
         pi, eta0, eta1 = .31, .04, .27
         q = eta0+(1-eta0-eta1)*pi
         self.assertAlmostEqual(analysis.invert_noisy_prevalence(q, eta0, eta1), pi)
+
+    def test_invert_negative_orientation_is_identifiable(self) -> None:
+        pi, eta0, eta1 = .35, .8, .4
+        q = eta0+(1-eta0-eta1)*pi
+        self.assertAlmostEqual(analysis.invert_noisy_prevalence(q, eta0, eta1), pi)
+        self.assertLess(q, eta0)
 
     def test_invert_reject_unidentified_channel(self) -> None:
         with self.assertRaises(ValueError):
@@ -404,11 +467,13 @@ class StudyContractTests(unittest.TestCase):
                 self.assertTrue(all(np.isfinite(r["value"]) for r in rows))
 
     def test_study_keys_unique(self) -> None:
+        self.assertEqual(set(STUDY_CONTRACTS), set(analysis.EXPERIMENTS))
         for name in analysis.EXPERIMENTS:
             with self.subTest(study=name):
                 rows = analysis.STUDIES[name](analysis.stream(4, name, 1), 1, True)
                 keys = [(r["condition"], r["metric"]) for r in rows]
                 self.assertEqual(len(keys), len(set(keys)))
+                self.assertEqual(set(keys), expected_keys(name))
 
     def test_studies_reproducible(self) -> None:
         for name in analysis.EXPERIMENTS:
@@ -486,6 +551,38 @@ class StudyContractTests(unittest.TestCase):
 
 
 class ArchivedEvidenceTests(unittest.TestCase):
+    def assert_strict_csv_rows(
+        self,
+        rows: list[dict[str, str]],
+        expected_fields: tuple[str, ...],
+        integer_fields: tuple[str, ...],
+    ) -> None:
+        """Reject missing, extra, malformed, or nonfinite archival data."""
+
+        self.assertTrue(rows, "archived evidence must contain data rows")
+        for row_number, row in enumerate(rows, start=2):
+            with self.subTest(csv_row=row_number):
+                # DictReader preserves header order and exposes surplus cells
+                # with a None key. Checking every row catches ragged CSVs.
+                self.assertEqual(tuple(row), expected_fields)
+                for field in expected_fields:
+                    self.assertIsInstance(row[field], str)
+                    if field != "theory":
+                        self.assertNotEqual(row[field], "")
+                self.assertTrue(row["condition"].strip())
+                self.assertTrue(row["metric"].strip())
+                for field in expected_fields:
+                    if field in ("condition", "metric", "theory"):
+                        continue
+                    value = float(row[field])
+                    self.assertTrue(math.isfinite(value), f"nonfinite {field}")
+                    if field in ("sd", "se"):
+                        self.assertGreaterEqual(value, 0.)
+                for field in integer_fields:
+                    self.assertRegex(row[field], r"^(0|[1-9][0-9]*)$")
+                if row["theory"] != "":
+                    self.assertTrue(math.isfinite(float(row["theory"])))
+
     def test_eighteen_canonical_csvs(self) -> None:
         paths = [p for p in (ROOT/"results").glob("*.csv")
                  if not p.name.endswith("_quick.csv")]
@@ -502,15 +599,24 @@ class ArchivedEvidenceTests(unittest.TestCase):
         for name in analysis.EXPERIMENTS:
             with self.subTest(study=name):
                 rows = read_csv(ROOT/"results"/f"{name}_replicates.csv")
-                self.assertEqual(set(rows[0]), {"replicate", "condition", "metric",
-                                                "value", "theory"})
+                self.assert_strict_csv_rows(rows, REPLICATION_FIELDS, ("replicate",))
+                actual = {(r["condition"], r["metric"]) for r in rows}
+                self.assertEqual(actual, expected_keys(name))
+                for condition, metric in actual:
+                    repetitions = sorted(int(r["replicate"]) for r in rows
+                                         if (r["condition"], r["metric"]) ==
+                                         (condition, metric))
+                    self.assertEqual(repetitions,
+                                     list(range(analysis.REPETITIONS[name])))
 
     def test_summary_schema(self) -> None:
         for name in analysis.EXPERIMENTS:
             with self.subTest(study=name):
                 rows = read_csv(ROOT/"results"/f"{name}_summary.csv")
-                self.assertEqual(set(rows[0]), {"condition", "metric", "n", "mean",
-                                                "sd", "se", "lower95", "upper95", "theory"})
+                self.assert_strict_csv_rows(rows, SUMMARY_FIELDS, ("n",))
+                self.assertEqual({(r["condition"], r["metric"]) for r in rows},
+                                 expected_keys(name))
+                self.assertEqual(len(rows), len(expected_keys(name)))
 
     def test_counts_match_outer_replications(self) -> None:
         for name in analysis.EXPERIMENTS:
@@ -543,11 +649,34 @@ class ArchivedEvidenceTests(unittest.TestCase):
 
     def test_quick_writes_only_isolated_suffixed_artifacts(self) -> None:
         with tempfile.TemporaryDirectory() as dirname:
+            result_dir = Path(dirname)/"results"
+            figure_dir = Path(dirname)/"figures"
+            result_dir.mkdir()
+            figure_dir.mkdir()
+            # Seed all canonical names to prove that quick runs preserve them.
+            sentinels: dict[Path, bytes] = {}
+            for name in analysis.EXPERIMENTS:
+                for kind in ("replicates", "summary"):
+                    path = result_dir/f"{name}_{kind}.csv"
+                    sentinels[path] = f"immutable:{path.name}\n".encode("utf-8")
+            for name in analysis.FIGURES:
+                path = figure_dir/f"{name}.png"
+                sentinels[path] = f"immutable:{path.name}\n".encode("utf-8")
+            for path, data in sentinels.items():
+                path.write_bytes(data)
+
             result = analysis.run(analysis.Design(root=Path(dirname), quick=True))
             self.assertEqual(set(result), set(analysis.EXPERIMENTS))
-            self.assertEqual(len(list((Path(dirname)/"results").glob("*_quick.csv"))), 18)
-            self.assertEqual(len(list((Path(dirname)/"figures").glob("*_quick.png"))), 9)
-            self.assertFalse(list((Path(dirname)/"results").glob("*_summary.csv")))
+            quick_csv = {f"{name}_{kind}_quick.csv"
+                         for name in analysis.EXPERIMENTS
+                         for kind in ("replicates", "summary")}
+            quick_png = {f"{name}_quick.png" for name in analysis.FIGURES}
+            self.assertEqual({path.name for path in result_dir.iterdir()},
+                             quick_csv | {p.name for p in sentinels if p.parent == result_dir})
+            self.assertEqual({path.name for path in figure_dir.iterdir()},
+                             quick_png | {p.name for p in sentinels if p.parent == figure_dir})
+            for path, original in sentinels.items():
+                self.assertEqual(path.read_bytes(), original, f"quick overwrote {path.name}")
 
 
 class NotebookAndDocumentationTests(unittest.TestCase):
@@ -604,9 +733,33 @@ class NotebookAndDocumentationTests(unittest.TestCase):
         if nbformat is None or NotebookClient is None:
             self.fail("CI requires nbformat/nbclient")
         notebook = nbformat.read(ROOT/notebook_builder.FILENAME, as_version=4)
-        executed = NotebookClient(notebook, timeout=600,
-                                  kernel_name="python3",
-                                  resources={"metadata": {"path": str(ROOT)}}).execute()
+        # No resources.metadata.path: kernel starts in the repository root.
+        previous_cwd = Path.cwd()
+        try:
+            os.chdir(ROOT.parent)
+            executed = NotebookClient(notebook, timeout=600,
+                                      kernel_name="python3").execute()
+        finally:
+            os.chdir(previous_cwd)
+        self.assertTrue(all(not c.get("outputs") or
+                            not any(x.get("output_type") == "error" for x in c["outputs"])
+                            for c in executed.cells if c["cell_type"] == "code"))
+
+    @unittest.skipUnless(os.environ.get("RUN_NOTEBOOK_EXECUTION") == "1",
+                         "Fresh-kernel execution requested in CI")
+    def test_notebook_runs_from_external_directory_with_hint(self) -> None:
+        if nbformat is None or NotebookClient is None:
+            self.fail("CI requires nbformat/nbclient")
+        notebook = nbformat.read(ROOT/notebook_builder.FILENAME, as_version=4)
+        previous_cwd = Path.cwd()
+        try:
+            with tempfile.TemporaryDirectory() as outside:
+                with patch.dict(os.environ, {"LABEL_STUDY_DIR": str(ROOT)}):
+                    os.chdir(outside)
+                    executed = NotebookClient(notebook, timeout=600,
+                                              kernel_name="python3").execute()
+        finally:
+            os.chdir(previous_cwd)
         self.assertTrue(all(not c.get("outputs") or
                             not any(x.get("output_type") == "error" for x in c["outputs"])
                             for c in executed.cells if c["cell_type"] == "code"))

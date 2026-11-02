@@ -61,6 +61,12 @@ The canonical archive contains **18 CSVs** and **9 original publication PNGs**, 
 
 ## Scope and nonidentification boundaries
 
-The conditional noise-channel inversion assumes rates are known and their sum is below one. The EM algorithm assumes binary outcomes, complete worker votes, conditional independence, an oriented initialization, and regularized confusion matrices. It does not prove that the consensus equals truth. The shared-error study intentionally violates conditional independence. The review-audit estimator assumes true random audits of the unreviewed population with known inclusion probability; auditing only alerts would not support that correction. The model-ranking reversal is *intentionally preferential label replacement*, not independent random noise. The random entity labels in study eight are constructed to expose an evaluation split error, not to describe actual people. None of these simulations supplies an external validity guarantee.
+The conditional noise-channel inversion assumes rates are known and their sum differs from one; the published examples use sums below one, while the correction function also supports negatively oriented, invertible channels. The EM algorithm assumes binary outcomes, complete worker votes, conditional independence, an oriented initialization, and regularized confusion matrices. It does not prove that the consensus equals truth. The shared-error study intentionally violates conditional independence. The review-audit estimator assumes true random audits of the unreviewed population with known inclusion probability; auditing only alerts would not support that correction. The model-ranking reversal is *intentionally preferential label replacement*, not independent random noise. The random entity labels in study eight are constructed to expose an evaluation split error, not to describe actual people. None of these simulations supplies an external validity guarantee.
 
 The manuscript provides the precise definitions, source audit, interpretation limits, and a practical protocol for real-world label governance.
+
+The notebook can be executed with the kernel working directory set to the
+article directory or to the repository root. When the kernel starts in an
+unrelated directory, point the environment variable LABEL_STUDY_DIR at the
+absolute article directory before launching the notebook. Its import cell
+checks for both the analysis source and companion notebook before importing.

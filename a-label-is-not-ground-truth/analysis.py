@@ -182,11 +182,13 @@ def invert_noisy_prevalence(observed: float, eta0: float, eta1: float) -> float:
     q=P(tilde Y=1)=eta0+(1-eta0-eta1)*pi. This returns the linear
     unbiased correction without clipping; out-of-range finite-sample values
     are meaningful diagnostics of sampling uncertainty/model incompatibility.
+    A channel with eta0+eta1>1 is negatively oriented but still invertible.
+    A channel whose rates sum to exactly one has no information about pi.
     """
 
     if (not all(math.isfinite(v) for v in (observed, eta0, eta1)) or
             not 0 <= observed <= 1 or not 0 <= eta0 < 1 or
-            not 0 <= eta1 < 1 or eta0+eta1 >= 1):
+            not 0 <= eta1 < 1 or eta0+eta1 == 1):
         raise ValueError("invalid prevalence correction or nonidentifiable channel")
     return (observed-eta0)/(1-eta0-eta1)
 
