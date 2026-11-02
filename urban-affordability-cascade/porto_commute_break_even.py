@@ -95,6 +95,11 @@ SCENARIO_DISPLAY = {
     "reference": "Reference",
     "two_commuter_high_cost": "Two commuters, high cost",
 }
+SCENARIO_COLORS = {
+    "low_friction": "#2f8b69",
+    "reference": "#347db0",
+    "two_commuter_high_cost": "#c4703d",
+}
 
 
 def scenario_legend_label(scenario: CommuteScenario) -> str:
@@ -248,13 +253,16 @@ def _write_csv(path: Path, rows: Sequence[dict[str, str | int]]) -> None:
 
 def plot_break_even(primary: Sequence[dict[str, str]], path: Path) -> None:
     """Display scenario thresholds per comparator without treating them as CIs."""
+    if set(SCENARIO_COLORS) != {s.name for s in SCENARIOS}:
+        raise ValueError("Plot colors must match declared commute scenarios exactly")
     sorted_rows = sorted(primary, key=lambda r: float(r["reference_break_even_added_one_way_minutes"]))
     places = [r["municipality"] for r in sorted_rows]
     y = np.arange(len(places))
     fig, ax = plt.subplots(figsize=(10.4, 8.2))
-    for scenario, color in zip(SCENARIOS, ("#2f8b69", "#347db0", "#c4703d")):
+    for scenario in SCENARIOS:
         x = np.array([float(r[f"{scenario.name}_break_even_added_one_way_minutes"]) for r in sorted_rows])
-        ax.scatter(x, y, s=55, color=color, label=scenario_legend_label(scenario), alpha=.9, zorder=3)
+        ax.scatter(x, y, s=55, color=SCENARIO_COLORS[scenario.name],
+                   label=scenario_legend_label(scenario), alpha=.9, zorder=3)
     ax.set_yticks(y, places, fontsize=9)
     ax.invert_yaxis()
     ax.set_xlabel("Break-even added one-way commute minutes per working day")
@@ -283,11 +291,11 @@ def plot_threshold_counts(summary: Sequence[dict[str, str | int]], path: Path) -
     heat = ax.imshow(matrix, cmap="YlOrRd", vmin=0, vmax=16, aspect="auto")
     ax.set_yticks(range(len(SCENARIOS)),
                   [SCENARIO_DISPLAY.get(s.name, s.name.replace("_", " ").title()) for s in SCENARIOS])
-    ax.set_xticks(range(4), [f"{d} min" for d in EXTRA_ONE_WAY_MINUTES])
+    ax.set_xticks(range(len(EXTRA_ONE_WAY_MINUTES)), [f"{d} min" for d in EXTRA_ONE_WAY_MINUTES])
     ax.set_xlabel("Assumed additional one-way minutes on each commuting day")
     ax.set_title("Synthetic rent-only advantage exhausted (out of 16 comparators)", fontsize=12.6, pad=11)
-    for i in range(3):
-        for j in range(4):
+    for i in range(matrix.shape[0]):
+        for j in range(matrix.shape[1]):
             ax.text(j, i, str(matrix[i, j]), ha="center", va="center",
                     color="white" if matrix[i, j] >= 10 else "#273544", fontsize=13, weight="bold")
     fig.colorbar(heat, ax=ax, fraction=.04, pad=.03, label="Municipal comparisons, 0–16")

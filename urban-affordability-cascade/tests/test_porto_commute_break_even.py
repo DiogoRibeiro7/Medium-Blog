@@ -8,6 +8,10 @@ import math
 import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import patch
+
+import matplotlib.axes
+import porto_commute_break_even as commute
 
 from analysis import load_panel
 from extract_hicp import load_hicp
@@ -58,6 +62,24 @@ class PortoCommuteBreakEvenTests(unittest.TestCase):
         self.assertIn('18d', label)
         self.assertIn('€12/h', label)
         self.assertIn('€55 extra', label)
+
+    def test_plot_palette_covers_declared_scenarios_and_rejects_missing_color(self):
+        self.assertEqual(set(commute.SCENARIO_COLORS), {scenario.name for scenario in SCENARIOS})
+        with tempfile.TemporaryDirectory() as tmp:
+            with patch.dict(commute.SCENARIO_COLORS, clear=True):
+                with self.assertRaisesRegex(ValueError, 'Plot colors must match'):
+                    commute.plot_break_even(self.primary, Path(tmp) / 'invalid.png')
+
+    def test_heatmap_annotates_every_scenario_row(self):
+        extra = CommuteScenario('fourth_illustrative', 1, 18, 8, 20)
+        extra_rows = [{**row, 'scenario': extra.name} for row in self.summary
+                      if row['scenario'] == 'reference' and row['assumed_dwelling_area_m2'] == 70]
+        self.assertEqual(len(extra_rows), len(EXTRA_ONE_WAY_MINUTES))
+        with tempfile.TemporaryDirectory() as tmp:
+            with patch.object(commute, 'SCENARIOS', SCENARIOS + (extra,)):
+                with patch.object(matplotlib.axes.Axes, 'text', autospec=True) as annotate:
+                    commute.plot_threshold_counts(self.summary + extra_rows, Path(tmp) / 'four.png')
+                    self.assertEqual(annotate.call_count, 4 * len(EXTRA_ONE_WAY_MINUTES))
 
     def test_cash_cost_can_exhaust_before_any_added_time(self):
         s = SCENARIOS[1]
