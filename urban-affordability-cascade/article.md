@@ -1951,6 +1951,177 @@ an affordable or accessible housing option.
 
 ---
 
+## The cheaper-and-closer frontier: are all municipal alternatives distinct?
+
+The commuting scenarios in the previous section were intentionally
+independent of geography: the added travel minutes were stipulated,
+not calculated from municipal locations. Yet the original advice to
+leave the expensive centre contains a more basic assumption. It treats
+the municipalities beyond Porto as if each offers a meaningful new
+point on a universal tradeoff between rent and distance. A cheaper
+address farther away is not necessarily the only place with that
+price; another municipality might be both closer to Porto *and*
+have a lower reported new-lease median. We can examine that claim
+without inventing journey times or available dwellings.
+
+This is a **two-variable municipal-summary screen**, not a housing
+choice model. We combine two independently sourced observations:
+
+1. The already frozen **2020 and 2025 median new-contract rent per
+   square metre** for all 16 non-Porto AMP municipalities, from the
+   checksum-pinned housing panel. These are separate cross-sectional
+   medians, not rents for repeated or equivalent properties.
+2. The **Euclidean separation in kilometres** between the official
+   **CAOP2025 area-weighted administrative centroid** of each
+   municipality and Porto's corresponding centroid. The 17 geometric
+   source features and the derivative coordinates come from the
+   previously checksummed [DGT CAOP2025 extract](extract_caop.py),
+   projected in EPSG:3763. The 2025 geography is held fixed while
+   comparing the two rent years.
+
+This reuses a verified geographic baseline rather than introducing
+an unobserved accessibility measure. An administrative centroid
+weights **land area**, not homes, residents, workplaces, transport
+nodes or house-hunting activity. A person living near one municipal
+boundary may have a shorter journey than one living near the centre
+of the closer municipality; jobs may also be in the suburbs. The
+distance is not an observed commute, route distance, migration
+destination or service level.
+
+### The mathematical comparison
+
+For a municipality \(j\) in rent year \(t\), let \(d_j\) be
+its fixed centroid-to-Porto distance and \(r_{jt}\) its published
+new-contract median rent in EUR/m²/month. We call \(j\)
+*dominated in these two summary dimensions* if at least one other
+non-Porto municipality \(k\) satisfies
+
+\[
+d_k\leq d_j,\quad r_{kt}\leq r_{jt},\quad
+(d_k<d_j\ \text{or}\ r_{kt}<r_{jt}).
+\]
+
+Thus, another administrative observation is no farther away and
+no more expensive, with a strict improvement in at least one
+dimension. If no such \(k\) exists, \(j\) is *nondominated* on
+this deliberately narrow frontier. The definition is ordinary
+Pareto ordering, with *lower* values preferred on both axes.
+Porto is the reference centroid and is excluded from the 16-way
+comparison. The calculation retains every dominating municipality
+for each dominated one, not just a convenient example.
+
+The wording matters. A mathematically dominated **municipal
+statistic** is not an inferior town, and a nondominated statistic
+is not a dwelling someone can rent. The ordering omits dwelling
+quality, the supply and location of actual listings, the conditions
+of leases, commuting routes, family and care networks, school
+catchments, jobs, amenities, risk and moving costs. It supplies
+no interpersonal welfare comparison. Even the 70 m² monthly
+amounts in the accompanying table are synthetic products of
+independent municipal medians. Multiplying every rent by the
+same assumed floor area leaves the two-dimensional dominance
+ordering unchanged.
+
+![Figure 32. Non-dominated versus dominated municipal new-contract median rent and administrative centroid-distance comparisons, 2020 and 2025, with a line connecting the mathematical frontier, not a travel or household choice curve.](figures/fig32_porto_rent_distance_pareto_2020_2025.png)
+
+Figure 32 gives a strong descriptive result with a narrow meaning.
+In **2020**, **6 of the 16** comparators are nondominated in the
+two coordinates: Matosinhos, Maia, Valongo, Trofa, Paredes and
+Santo Tirso. In **2025**, there are **7**: Matosinhos, Maia,
+Valongo, Trofa, Paredes, Oliveira de Azeméis and Arouca. Santo
+Tirso leaves this mathematical set; Oliveira de Azeméis and
+Arouca enter. Therefore **10 comparisons in 2020 and 9 in
+2025** have at least one other municipality with a weakly
+shorter centroid separation and a weakly lower rental median,
+with one strict gain. These are municipality counts, not counts
+of homes, households or displaced people.
+
+To see the arithmetic, consider Vila Nova de Gaia in **2025**:
+its centroid is approximately **10.27 km** from Porto's centroid
+and its median new-lease rent is **€10.63/m²/month**. Maia's
+centroid is approximately **9.39 km** away and its median is
+**€9.59/m²/month**. By these two measurements alone, Maia
+dominates Vila Nova de Gaia. That does **not** mean Gaia's
+available apartments cost more, that Maia is easier to reach
+from a particular workplace, or that anyone should move there.
+It means only that the aggregate pair of numbers attached to
+Gaia does not add a nondominated point to this highly simplified
+comparison.
+
+At the more distant end, the **2025** median for Vale de Cambra
+is **€5.72/m²/month**, at approximately **43.64 km** centroid
+separation. Oliveira de Azeméis has a lower median of **€5.63**
+at approximately **37.73 km**; Arouca has **€5.28** at about
+**40.41 km**. On the chosen axes, Vale de Cambra is therefore
+dominated despite being the most distant municipality in this
+particular set. Even in this artificially simple environment,
+*farther* is not equivalent to *cheaper* in a one-to-one sequence.
+
+### A frontier without sensitivity checks would be too brittle
+
+Pareto comparisons can flip after small changes in reported
+medians or selected locations. The published aggregate medians
+do not provide suitable joint measurement-error distributions
+for the two variables, so a confidence interval for this frontier
+would be invented. Instead we predeclare **deterministic
+material-advantage margins**. A municipality is counted as
+dominated under a margin pair \((\delta_d,\delta_r)\) only
+when another is at least \(\delta_d\) kilometres closer in
+centroid separation and at least \(\delta_r\) EUR/m²/month
+cheaper in new rent, retaining a strict improvement for the
+zero-margin case. We evaluate all **3 × 3** combinations of
+\(\delta_d\in\{0,2,5\}\) km and
+\(\delta_r\in\{0,0.5,1\}\) EUR/m²/month, for both years.
+These thresholds are *not* inferred measurement uncertainty,
+precision requirements or confidence bounds. They are a
+transparent test of how demanding the ranking rule is.
+
+![Figure 33. Counts of municipal summary comparisons dominated under 0/2/5 km minimum centroid-distance advantages and 0/0.5/1 EUR/m²/month minimum rent advantages, by rent year, showing deterministic margin sensitivity.](figures/fig33_rent_distance_dominance_margin_sensitivity.png)
+
+Figure 33 shows that the apparent option-set reduction is
+sensitive to what constitutes a material advantage. In **2025**,
+the zero-margin criterion dominates **9/16** municipal summaries.
+Demanding at least **€0.50/m²/month** of rent advantage, with
+no minimum kilometre margin, lowers the count to **7/16**;
+demanding **€1/m²/month** lowers it to **5/16**. Requiring both
+at least **5 km** less centroid separation and **€1/m²/month**
+less rent leaves **3/16** dominated. For **2020**, the corresponding
+zero-margin count is **10/16**, falling to **1/16** under
+the strictest pair of material margins. The ordering of the
+zero-margin counts is therefore not a universal ordering of
+"how many inferior suburbs" there were in each year. It is
+a property of the two-dimensional summary and the chosen
+definition of an appreciable difference.
+
+The year comparison should not be given a dynamic-market
+interpretation it cannot bear. A municipality entering the
+2025 frontier need not have become a feasible relocation option.
+Its median may change because newly signed lease contracts
+cover different types or locations of properties, while the
+centroid remains fixed. Nor does a smaller set of frontier
+municipalities mean that demand from Porto flowed to those
+places, raised their rents and pushed someone farther outward.
+There are no housing-search records, residential origins and
+destinations, matching units, commuting journeys or exogenous
+shocks in this calculation.
+
+The new [rent–distance frontier reproduction](porto_rent_distance_frontier.py)
+publishes **32 municipal-year comparisons**, every named
+dominating municipality, **18 material-margin combinations**,
+**16 frontier-status comparisons**, two figures and a ledger
+linking the pinned municipal rent source to the independent
+official DGT geometry. It runs offline and deliberately avoids
+turning geographic separation into travel minutes. The combined
+lesson of the commuting and Pareto checkpoints is a specific
+challenge to the advice "just move farther away": municipal
+median rent alone does not measure **net household affordability**,
+and a map of municipality distances does not identify the
+**housing alternatives accessible to that household**. The
+epidemic-like cascade hypothesis remains a causal hypothesis,
+not an empirical conclusion from these screens.
+
+---
+
 ## Sources and reproducibility
 
 The original eight figures and three tabular outputs, four observed mobility figures, one sharp non-identification figure, two annual timing/prediction figures, two forecast-robustness figures, **two nominal-vs-deflated figures**, and **two matched fiscal-income screening-proxy figures** with companion CSV results can be regenerated using the commands in the [study README](README.md). The new directed-OD intake suite is software-only until a genuine aggregate table is released. The [fixed 17-municipality input](data/amp_municipal_panel_2019_2025.csv) is a derived extract from [DiogoRibeiro7/portugal-housing-generations](https://github.com/DiogoRibeiro7/portugal-housing-generations), pinned to [upstream commit 0407fae](https://github.com/DiogoRibeiro7/portugal-housing-generations/tree/0407faed1f08209b3d7682e19fc57e7120e62879). It does not assert that 2025 income observations or 2019 new-lease observations exist. The observed Portugal HICP 2019–2025 source is independently frozen at [Eurostat dataset `prc_hicp_ainr`](https://doi.org/10.2908/PRC_HICP_AINR). The published mobility extracts have separate checksummed source records and distinct limitations.
