@@ -34,3 +34,5 @@ jobs:
         run: python -m unittest discover -s tests -v
       - name: Generate isolated quick evidence
         run: python analysis.py --quick
+      - name: Render quick synthetic figures
+        run: python figures.py --data data --output figures --quick
