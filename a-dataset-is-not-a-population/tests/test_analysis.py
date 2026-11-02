@@ -106,6 +106,23 @@ class SamplingStudiesTests(unittest.TestCase):
             self.assertAlmostEqual(float(summary["rmse"]), float(np.sqrt(np.mean(errors**2))))
             self.assertGreaterEqual(float(summary["ci_high"]), float(summary["ci_low"]))
 
+    def test_canonical_archives_match_independent_regeneration(self) -> None:
+        """Every archived replicate and summary must match the source code."""
+        canonical = NOTEBOOK.parent / "data"
+        with tempfile.TemporaryDirectory() as directory:
+            regenerated = Path(directory)
+            for study in STUDIES:
+                rows = simulate(study, 300)
+                write_evidence(rows, regenerated)
+                for suffix in ("replicates", "summary"):
+                    name = f"{study}_{suffix}.csv"
+                    with self.subTest(file=name):
+                        with (canonical / name).open(newline="", encoding="utf-8") as handle:
+                            archive = list(csv.DictReader(handle))
+                        with (regenerated / name).open(newline="", encoding="utf-8") as handle:
+                            comparison = list(csv.DictReader(handle))
+                        self.assertEqual(archive, comparison)
+
     def test_invalid_arguments(self) -> None:
         with self.assertRaises(ValueError):
             simulate("missing", 10)
