@@ -213,6 +213,14 @@ In this OMB vintage, corporate income-tax receipts were 2.3% of GDP in fiscal 19
 
 The [source note](data/omb_receipts_by_source_sources.md) matters for cross-chart interpretation. OMB reports these categories to one decimal place in its FY2027 historical-table vintage. The previously frozen FRED total-receipts series is a different revision and cannot be required to match the newer OMB table exactly. The category mix adds descriptive context, but identifying the marginal effect of a reform still requires a coherent counterfactual and consistent incidence conventions.
 
+### Where did federal spending go?
+
+An apparent fiscal cost is also an opportunity-cost question: what spending, borrowing, or alternative taxation was available? The [OMB Historical Table 3.1](https://www.whitehouse.gov/omb/information-resources/budget/historical-tables/) separates federal outlays into national defense, human resources, physical resources, net interest, other functions, and undistributed offsetting receipts. The accompanying [1964–2018 dataset](data/omb_outlays_by_function_1964_2018.csv) preserves each broad category as a share of GDP, including negative offsets, while the [figure](results/outlay_composition.svg) plots four major functions.
+
+In fiscal 1980, national defense represented 4.8% of GDP, human resources 11.2%, physical resources 2.4%, and net interest 1.9%. By fiscal 1988, these were 5.7%, 10.4%, 1.3%, and 3.0%, respectively. The mix changed substantially during the decade in which top individual tax rates were cut. But the spending composition reflected many other decisions and conditions, including defense priorities, interest rates, inflation, demographics and economic growth. One cannot identify which spending outcome would have occurred without a tax change by comparing these two dates alone.
+
+The OMB category “human resources” includes Social Security, Medicare, health, income security, and education; it is not simply cash welfare. “Physical resources” is likewise broader than measured public infrastructure investment. The [source note](data/omb_outlays_by_function_sources.md) documents those definitions. These FY2027 historical estimates are also a different vintage from the previously frozen FRED net-outlays series, so a forced cross-vintage accounting equality would be inappropriate. Descriptive budget composition can inform the political-economy narrative; it is not a causal financing estimate.
+
 ## 9. A compact model of the missing mechanism
 
 The familiar supply-side story can be expressed as a chain:
