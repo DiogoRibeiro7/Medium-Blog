@@ -105,7 +105,7 @@ def write_outputs(directory: Path) -> None:
     rows = elasticity_grid()
     columns = ("base_elasticity", "public_productivity", "revenue_feedback_pct", "output_change_pct")
     with (directory / "sensitivity.csv").open("w", encoding="utf-8", newline="") as handle:
-        writer = csv.DictWriter(handle, fieldnames=columns)
+        writer = csv.DictWriter(handle, fieldnames=columns, lineterminator="\n")
         writer.writeheader()
         writer.writerows(rows)
 
