@@ -313,6 +313,36 @@ cohort conversion, household relocation or causal mitigation of
 rent pressure. Figures 28–29, the verified 119-row source reader,
 and four reproducible derived data files preserve this limit.
 
+**Rent-versus-incremental-commute break-even checkpoint
+(2 November 2026).** Use the same pinned 2025 municipal new-contract
+rent medians as the Porto alternative analysis, and explicitly
+stipulated 50/70/90 m² dwelling sizes. For each of the 16 non-Porto
+municipal comparators, the *synthetic* rent-only saving
+is \(A(R_{\mathrm{Porto}}-R_j)\) nominal 2025 EUR/month. Model the
+additional commuting cost of relocating as
+\(M+2ndw\tau/60\), where \(M\) is extra monthly household cash
+expense; \(n\) is commuters; \(d\) commuting days/month;
+\(w\) assigned hourly time value; and \(\tau\) is **incremental
+one-way minutes per workday** versus the current commute. All
+inputs except the municipal rent medians and stipulated floor
+areas are **declared assumptions**. They are not inferred from
+routes, household records, fares or observed wage distributions.
+
+Under a predefined **one-commuter, 20-day, €10/hour, €40-extra-cash**
+scenario, the unweighted 16-municipality median of the 70 m²
+break-even added one-way travel times is **63.1425 minutes**.
+At an assumed 60 added minutes, 8/16 comparisons lose their
+synthetic rent-only financial advantage. A low-friction case
+(one commuter, 16 days, €5/hour, €0 extra cash) and a two-commuter
+higher-cost case (22 days, €15/hour, €80 household cash) span
+different household contexts, **not uncertainty bounds**.
+At 30 added minutes, all 16 comparisons are exhausted in the
+two-commuter case. Compute all 144 municipality/area/scenario
+thresholds, 36 duration-grid counts, 16 primary 70 m² rows,
+figures 30–31, and a complete assumptions ledger. None of this
+establishes an actual feasible housing option, price transmission,
+travel-time matrix or residential displacement.
+
 ## Planned analysis sequence
 
 ### Stage 0 — Obtain or document denial of directed residential counts

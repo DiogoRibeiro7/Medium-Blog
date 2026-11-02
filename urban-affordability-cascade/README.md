@@ -112,6 +112,8 @@ zero. The analysis's exact-period comparisons enforce those distinctions.
 | 27 | fig27_porto_commuting_gradient_distance_adjustment.png | Unadjusted and centroid-distance-conditional Spearman coefficients over all three network exposures and four windows | **Severe proximity/commuting rank collinearity; partial association is not a causal effect** |
 | 28 | fig28_municipal_construction_vs_porto_rent_pressure.png | Cumulative 2020–2023 new-family-dwelling completions/licenses per 1,000 2020 residents against Porto-relative rental-discount compression | **Gross dwelling flows, not available rental stock or housing-supply causal elasticity** |
 | 29 | fig29_construction_rent_rank_window_sensitivity.png | Rank comparisons for three nested construction windows, two INE new-dwelling flow measures and two rent outcomes | **Exploratory, dependent windows; 2021+ provisional and 2024–2025 completed-dwelling estimates** |
+| 30 | fig30_porto_rent_break_even_extra_commute_minutes.png | Maximum hypothetical additional one-way travel minutes per workday before 70 m² 2025 Porto-relative rent gaps are consumed by commuting time/cash costs | **Assumed household scenarios, not observed journeys or available rental homes** |
+| 31 | fig31_rent_saving_exhaustion_by_commute_scenario.png | Counts of 16 municipal synthetic 70 m² options whose rent gap disappears at added 15/30/45/60-minute one-way commuting increments | **Scenario counts, not households, travel-time estimates or displacement probabilities** |
 
 The figure titles, manuscript captions and generated tables repeat the
 evidence-class distinction. There are no charts of invented historical
@@ -875,6 +877,62 @@ results/porto_supply_screen_leave_one_out.csv and
 results/porto_supply_screen_provenance.json. The new validations,
 source independence and tests for exact rank patterns add **20 tests**:
 **185 total**.
+
+## Incremental commuting break-even scenarios (figures 30–31)
+
+The new [porto_commute_break_even.py](porto_commute_break_even.py)
+module uses the **published 2025 new-lease municipal rent medians**
+and the predeclared synthetic floor areas **50, 70 and 90 m²**.
+No observed commute, journey time, household location, route fare,
+job location or available rental inventory is introduced.
+The nominal rent-only gap is
+\(S_j(A)=A(R_{\mathrm{Porto},2025}-R_{j,2025})\) EUR/month.
+
+Let \(\tau\) be the **additional one-way minutes per working day**
+created by moving, *relative to the existing commute*. For
+\(n\) commuters, \(d\) days/month, an **assumed** hourly time
+valuation \(w\) and an incremental household cash commuting
+expense \(M\) EUR/month, the modeled extra monthly cost is
+\(M+2ndw\tau/60\). The threshold at which net synthetic savings
+reach zero is \(60\max(0,S-M)/(2ndw)\) minutes one-way. This is
+generalized cost, **not actual cash spent**, because time is
+valued by assumption. The \(M\) parameter is an assumed
+incremental *household* cost, **not an Andante price**.
+
+Three intentionally contrasting, **unestimated** scenario settings:
+
+- **Low friction:** one commuter, 16 days/month, €5/hour, €0 extra
+  household travel cash/month.
+- **Reference:** one commuter, 20 days/month, €10/hour, €40 extra
+  household travel cash/month.
+- **Two-commuter high cost:** two commuters, 22 days/month,
+  €15/hour each, €80 extra household travel cash/month.
+
+For **70 m²**, the median of the 16 municipality-specific
+break-even thresholds is **63.1425 extra one-way minutes** under
+the reference assumptions. In the low-friction case it is about
+**172.86 minutes**, versus **17.32 minutes** with the two-commuter
+higher-cost assumptions. At **60 extra one-way minutes**, the
+reference case exhausts the rent-only advantage in **8/16**
+municipal comparisons; at **30 extra minutes**, the two-commuter
+case exhausts it in **16/16**. These are scenario arithmetic counts,
+not estimates of households, real journey times, probabilities or
+feasible housing moves. In particular, more than one commuter is
+modeled as facing the *same* extra one-way journey time, a deliberately
+simple parameterization.
+
+Reproduce the 144 full municipality/area/scenario thresholds,
+36 duration-grid summaries, 16 primary 70 m² municipal rows,
+two figures and a full assumption/provenance ledger:
+
+    python porto_commute_break_even.py --output /tmp/porto-commute-break-even
+
+Results are saved under results/porto_commute_break_even_*.
+The run requires no external travel API and does not impute one.
+**21 new tests, 206 total** validate dimensions, algebra,
+source-linked rent gaps, scenario boundaries and reproducibility.
+Do not mistake these thresholds for observed time, generalized
+household welfare, or evidence of displacement.
 
 ## Boundaries before publication
 

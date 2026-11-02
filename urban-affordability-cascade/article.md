@@ -1776,6 +1776,181 @@ matrix or a network request.
 
 ---
 
+## When does the cheaper suburb stop being cheaper?
+
+The original policy advice — move to a cheaper municipality —
+usually compares a city-centre rent with a suburban rent and stops
+there. But changing where one lives can change the time and cash
+required to reach work, education, care and other essential
+destinations. A cheaper municipal new-lease median is a possible
+financial advantage; it is not a household's net gain after
+relocation. We can make that distinction explicit without pretending
+to possess journey observations that have not been collected.
+
+The previous Porto-relative rental option comparison established
+that, in **2025**, all **16** other AMP municipalities had a lower
+published median rent per square metre on *new contracts* than
+Porto itself. Those differences are observed aggregate statistics.
+The next calculation holds them fixed and asks a strictly
+counterfactual question: **under what declared assumptions about
+additional commuting time and money would the synthetic rent-only
+saving be exhausted?** This is a break-even budget calculation,
+not an estimate of the travel burden of a resident, commuter or
+displaced household.
+
+For municipality j, let the nominal 2025 new-contract rent medians
+per square metre be \(R_{P}\) in Porto and \(R_j\) elsewhere.
+Assuming a dwelling area \(A\), the synthetic monthly rent-only
+advantage of the alternative is
+
+\[
+S_j(A)=A(R_{P}-R_j).
+\]
+
+We reuse the **50, 70 and 90 m²** hypothetical dwelling sizes
+already declared in the rent-option module. The construction does
+*not* match equivalent dwellings or check whether a home of that
+size can be found at either municipal median. Its amounts are
+**nominal 2025 EUR/month**; the earlier HICP adjustment is
+unnecessary because the rent gap, extra cash assumptions and
+time-value assumptions all refer to the same nominal comparison.
+
+Let \(\tau\) denote the **additional one-way minutes per working
+day** caused by a proposed move, relative to the household's
+current commute — not the full journey to Porto. Suppose \(n\)
+members of the household make this incremental journey on \(d\)
+days per month, each hour of their extra travel time is assigned
+an illustrative value \(w\) euros, and the move adds \(M\) euros
+to the household's *monthly* monetary travel expenses. Counting
+both legs of each commute, the assumed additional generalized
+cost is
+
+\[
+K(\tau)=M+n\,d\,w\frac{2\tau}{60},
+\qquad
+N_j(A,\tau)=S_j(A)-K(\tau).
+\]
+
+The break-even extra one-way minutes at which synthetic net savings
+fall to zero are therefore
+
+\[
+\tau_j^*(A)=\frac{60\max\{0,S_j(A)-M\}}{2ndw}.
+\]
+
+A zero threshold denotes a rent gap already exhausted by the
+assumed extra cash cost, even with no additional travel time.
+This algebra requires a positive assumed value of time, number
+of commuters and commuting days. It is not a labour-market wage
+estimate or a measure of the value of leisure to any particular
+person. Nor does valuing travel time make it a cash payment:
+money costs and opportunity costs are shown together only for
+an explicit *generalized-cost* comparison.
+
+We report three predefined, contrasting household scenarios:
+
+- **Low friction:** one commuter, 16 days per month, €5/hour
+  assigned to extra time and no extra monthly household cash cost.
+- **Reference:** one commuter, 20 days per month, €10/hour
+  assigned to extra time and €40 in extra household cash cost.
+- **Two-commuter higher cost:** two commuters, each with 22 days
+  per month, €15/hour assigned to their extra time and €80 in
+  additional total monthly household cash cost.
+
+These numbers are **assumptions for sensitivity analysis**, not
+observed Portuguese commuter attributes, an Andante tariff, a
+calibrated hourly wage or a statement about how much money a
+particular household would spend after moving. The monetary amount
+is the *total additional monthly household cost*, not a fare
+charged to each commuter. We deliberately avoid attaching actual
+route times to individual municipalities: the current study has
+neither validated home-to-work coordinates nor a complete public
+transport or road travel-time matrix.
+
+![Figure 30. For all 16 non-Porto municipal rent medians, the maximum assumed additional one-way commuting minutes per workday before the synthetic 2025 rent-only gap for a 70 m² dwelling is exhausted, shown under three stated household scenarios.](figures/fig30_porto_rent_break_even_extra_commute_minutes.png)
+
+Under the **reference** assumptions, the unweighted median of the
+16 break-even thresholds for an illustrative **70 m²** rental is
+approximately **63.1 additional one-way minutes** per working day.
+This number is a median of *municipal comparison thresholds*,
+not the expected commute of a random displaced household. For a
+Matosinhos comparison, the synthetic 70 m² rent-only difference
+in 2025 is **€140.70 per month**; after the assumed €40 extra
+cash cost, it would be exhausted by about **15.1** extra one-way
+minutes on 20 commuting days at €10/hour. The corresponding
+Arouca comparison yields a rent gap of **€619.50 per month** and
+a break-even threshold of roughly **86.9** extra minutes. Neither
+calculation tells us how long anyone would actually travel,
+whether a job is reachable, or whether a comparable vacant rental
+exists in those municipalities.
+
+The scenario dependence is substantial. With one commuter,
+16 commuting days, €5/hour for time and no additional cash cost,
+the median break-even is about **172.9 extra one-way minutes**.
+With two commuters, 22 days, €15/hour each and an assumed extra
+€80 cash expense per household, the median is only **17.3 minutes**.
+The scenarios are intentionally not confidence bounds around an
+unknown population quantity. They represent different household
+budgets and different valuations of time. Larger stipulated
+dwelling sizes raise the rent-only gaps in proportion to floor
+area, although the fixed extra travel cash cost does not scale
+with floor area.
+
+![Figure 31. Number of the 16 municipal comparisons for which a synthetic 70 m² Porto-relative rent saving is erased under four assumed increments to each daily one-way journey, separately for the three household cost scenarios.](figures/fig31_rent_saving_exhaustion_by_commute_scenario.png)
+
+Figure 31 holds the synthetic floor area at **70 m²** and varies
+the assumed added one-way journey by 15, 30, 45 or 60 minutes.
+In the **reference** case, the illustrative rent saving is
+exhausted in **0, 1, 4 and 8** of the 16 municipal comparisons,
+respectively. Under the low-friction case, it is exhausted in
+**only one** comparison even at 60 added minutes. Under the
+two-commuter higher-cost case, a **30-minute additional one-way
+journey** exhausts it in **all 16** comparisons. The numbers
+are counts of *hypothetical municipal arithmetic comparisons*.
+They are not counts of people who should or should not move,
+probabilities of displacement, or an estimate of transport
+accessibility in the AMP.
+
+This reveals why advice that regards suburban relocation as
+automatically cheaper is incomplete even when the rental price
+gradient is real. Which household members travel, how often
+they travel, whether work-from-home is feasible, what services
+must be reached, what income they forgo and which rental homes
+are available all change the relevant budget. Time has a
+distribution, as do jobs and rent offers. The same municipality
+can be a plausible choice for one household and inaccessible
+for another. A single median price difference cannot encode
+those constraints.
+
+The calculation also does **not** demonstrate an epidemic-like
+process of spatial rent propagation. The municipal new-contract
+rental medians are independent aggregate observations, not
+matched available homes, and none of the scenario inputs was
+estimated from observed Porto resident moves. Some households
+can commute in the opposite direction or change employment,
+and others face housing decisions with multiple workplaces,
+school places, informal care or health limitations. Moving,
+deposits, childcare, transaction costs and changes in local
+amenities are all excluded. Consequently, even positive
+synthetic net savings are neither sufficient nor necessary to
+establish that a move is feasible or improves welfare.
+
+The reproduction code in [porto_commute_break_even.py](porto_commute_break_even.py)
+publishes all **144** municipality × area × scenario thresholds,
+**36** counts and threshold summaries over four assumed journey
+increments, **16** primary 70 m² municipal comparisons, both
+figures and an assumptions/provenance ledger. It has no route API
+or fare dependency and makes no claim to measure observed travel.
+The next empirical step, if appropriately licensed aggregate
+journey or household data become available, would be to replace
+the illustrative time and cost increments with validated
+accessibility distributions, then study who can actually choose
+between the locations. Until then, the relevant policy claim is
+modest and important: a lower suburban rent is **not by itself**
+an affordable or accessible housing option.
+
+---
+
 ## Sources and reproducibility
 
 The original eight figures and three tabular outputs, four observed mobility figures, one sharp non-identification figure, two annual timing/prediction figures, two forecast-robustness figures, **two nominal-vs-deflated figures**, and **two matched fiscal-income screening-proxy figures** with companion CSV results can be regenerated using the commands in the [study README](README.md). The new directed-OD intake suite is software-only until a genuine aggregate table is released. The [fixed 17-municipality input](data/amp_municipal_panel_2019_2025.csv) is a derived extract from [DiogoRibeiro7/portugal-housing-generations](https://github.com/DiogoRibeiro7/portugal-housing-generations), pinned to [upstream commit 0407fae](https://github.com/DiogoRibeiro7/portugal-housing-generations/tree/0407faed1f08209b3d7682e19fc57e7120e62879). It does not assert that 2025 income observations or 2019 new-lease observations exist. The observed Portugal HICP 2019–2025 source is independently frozen at [Eurostat dataset `prc_hicp_ainr`](https://doi.org/10.2908/PRC_HICP_AINR). The published mobility extracts have separate checksummed source records and distinct limitations.
@@ -1793,6 +1968,11 @@ Figures 28–29 add an independently calculated screen of the frozen
 INE-derived municipal completed- and licensed-dwelling flows;
 construction counts cannot identify the accessible rental supply
 or a causal housing-supply response.
+Figures 30–31 show purely stipulated incremental commuting costs
+applied to the fixed 2025 new-contract rent medians. Their
+household travel assumptions, unlike the rent observations,
+are explicitly hypothetical and should not be interpreted as
+observed journey, fare or actual choice data.
 
 1. Área Metropolitana do Porto. [Statutory definition and its 17 municipalities](https://www.amp.pt/en/amp-instituicao/area-metropolitana-do-porto-or-lei-no-752013/).
 2. Instituto Nacional de Estatística. [Local housing price methodology and geospatial context](https://www.ine.pt/ine_novidades/semin/INEWS38/files/assets/common/downloads/publication.pdf).
