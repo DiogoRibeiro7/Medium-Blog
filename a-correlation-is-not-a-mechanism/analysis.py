@@ -17,7 +17,10 @@ import numpy as np
 
 
 DEFAULT_SEED = 20261102
-STUDY_IDS = ("confounding", "simpson", "collider", "mediator", "instrument", "backdoor")
+STUDY_IDS = (
+    "confounding", "simpson", "collider", "mediator", "instrument",
+    "backdoor", "overlap", "nonidentification", "prediction",
+)
 
 
 @dataclass(frozen=True)
@@ -254,6 +257,112 @@ def backdoor_theoretical_collider_bias() -> float:
     return -0.7
 
 
+def effective_sample_size(weights: np.ndarray) -> float:
+    """Kish effective sample size for finite nonnegative weights."""
+
+    weights = np.asarray(weights, dtype=float)
+    if weights.ndim != 1 or weights.size == 0:
+        raise ValueError("weights must be a nonempty one-dimensional array")
+    if not np.all(np.isfinite(weights)) or np.any(weights < 0):
+        raise ValueError("weights must be finite and nonnegative")
+    total = float(np.sum(weights))
+    if total == 0:
+        raise ValueError("at least one weight must be positive")
+    return total**2 / float(np.dot(weights, weights))
+
+
+def overlap_experiment(
+    rng: np.random.Generator, replicate: int, sample_size: int = 4000
+) -> list[StudyResult]:
+    """Compare covariate overlap and inverse-probability weighting.
+
+    X is balanced binary; treatment assignment depends strongly on X.
+    Potential outcomes are Y(t)=2X+t+noise and the true ATE is one.
+    The true propensity is known by construction, so uncertainty arises
+    from positivity/finite samples rather than propensity-model fitting.
+    """
+
+    if sample_size < 100:
+        raise ValueError("sample_size must be at least 100")
+    covariate = rng.binomial(1, 0.5, size=sample_size)
+    noise = rng.normal(size=sample_size)
+    rows: list[StudyResult] = []
+    # Share covariates and potential outcomes across scenarios.
+    for label, low in (("adequate", 0.25), ("poor", 0.01)):
+        propensity = np.where(covariate == 1, 1.0 - low, low)
+        treatment = rng.binomial(1, propensity)
+        outcome = 2.0 * covariate + treatment + noise
+        if not treatment.any() or np.all(treatment):
+            raise RuntimeError("empty treatment arm")
+        naive = float(outcome[treatment == 1].mean() - outcome[treatment == 0].mean())
+        # Horvitz-Thompson estimator of both potential-outcome means.
+        ipw = float(np.mean(treatment * outcome / propensity - (1 - treatment) * outcome / (1 - propensity)))
+        rows.extend((
+            StudyResult("overlap", label, "naive", replicate, naive, 1.0),
+            StudyResult("overlap", label, "ipw", replicate, ipw, 1.0),
+        ))
+    return rows
+
+
+def overlap_theoretical_ess_fraction(low_probability: float) -> float:
+    """Large-sample ESS/n for inverse assignment weights in binary X design."""
+
+    if not 0 < low_probability <= 0.5:
+        raise ValueError("low_probability must be in (0, 0.5]")
+    # W = T/e(X) + (1-T)/(1-e(X)), E[W]=2,
+    # E[W²]=1/e+1/(1-e) under balanced symmetric strata.
+    return 4.0 / (1.0 / low_probability + 1.0 / (1.0 - low_probability))
+
+
+def nonidentification_experiment(
+    rng: np.random.Generator, replicate: int, sample_size: int = 2000
+) -> list[StudyResult]:
+    """Two models with identical observational (T,Y) laws but different ATEs.
+
+    Model A: T~N(0,1), Y=T+eps, eps~N(0,4).
+    Model B: U~N(0,1), T=0.5U+sqrt(0.75)eps_T,
+             Y=2U+eps_Y, eps_Y~N(0,1).
+    Both yield Var(T)=1, Var(Y)=5, Cov(T,Y)=1, while ATEs are 1 and 0.
+    """
+
+    if sample_size < 4:
+        raise ValueError("sample_size must be at least four")
+    treatment_a = rng.normal(size=sample_size)
+    outcome_a = treatment_a + 2.0 * rng.normal(size=sample_size)
+    latent = rng.normal(size=sample_size)
+    treatment_b = 0.5 * latent + math.sqrt(0.75) * rng.normal(size=sample_size)
+    outcome_b = 2.0 * latent + rng.normal(size=sample_size)
+    return [
+        StudyResult("nonidentification", "causal_model", "observed_slope", replicate, _slope(treatment_a, outcome_a), 1.0),
+        StudyResult("nonidentification", "confounded_model", "observed_slope", replicate, _slope(treatment_b, outcome_b), 0.0),
+    ]
+
+
+def prediction_experiment(
+    rng: np.random.Generator, replicate: int, sample_size: int = 1500
+) -> list[StudyResult]:
+    """Show that a predictive proxy is not itself a manipulable cause.
+
+    U causes both a measured proxy X and outcome Y, but not treatment T.
+    Intervening on measured X leaves Y unchanged, while intervening on T
+    changes Y by two. Predictive regression assigns a nonzero X coefficient.
+    """
+
+    if sample_size < 4:
+        raise ValueError("sample_size must be at least four")
+    latent = rng.normal(size=sample_size)
+    proxy = latent + 0.5 * rng.normal(size=sample_size)
+    treatment = rng.binomial(1, 0.5, size=sample_size).astype(float)
+    outcome = 2.0 * treatment + 3.0 * latent + rng.normal(size=sample_size)
+    coefficients = np.linalg.lstsq(
+        np.column_stack((np.ones(sample_size), treatment, proxy)), outcome, rcond=None,
+    )[0]
+    return [
+        StudyResult("prediction", "proxy_not_intervention", "proxy_association", replicate, float(coefficients[2]), 0.0),
+        StudyResult("prediction", "proxy_not_intervention", "treatment_effect", replicate, float(coefficients[1]), 2.0),
+    ]
+
+
 EXPERIMENTS: dict[str, Callable[[np.random.Generator, int, int], list[StudyResult]]] = {
     "confounding": confounding_experiment,
     "simpson": simpson_experiment,
@@ -261,10 +370,14 @@ EXPERIMENTS: dict[str, Callable[[np.random.Generator, int, int], list[StudyResul
     "mediator": mediator_experiment,
     "instrument": instrument_experiment,
     "backdoor": backdoor_experiment,
+    "overlap": overlap_experiment,
+    "nonidentification": nonidentification_experiment,
+    "prediction": prediction_experiment,
 }
 DEFAULT_SIZES = {
     "confounding": 1000, "simpson": 4000, "collider": 1500,
     "mediator": 1500, "instrument": 2000, "backdoor": 1800,
+    "overlap": 4000, "nonidentification": 2000, "prediction": 1500,
 }
 
 
