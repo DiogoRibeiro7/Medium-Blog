@@ -32,5 +32,7 @@ jobs:
         run: python tax-cuts-rich-historical-cycles/historical_rates.py
       - name: Regenerate OMB/FRED receipts comparison
         run: python tax-cuts-rich-historical-cycles/fiscal_context.py
+      - name: Regenerate BEA growth and investment chart
+        run: python tax-cuts-rich-historical-cycles/macro_context.py
       - name: Check committed evidence is reproducible
         run: git diff --exit-code -- tax-cuts-rich-historical-cycles/results
