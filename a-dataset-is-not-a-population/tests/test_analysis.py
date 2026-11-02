@@ -152,6 +152,17 @@ class SamplingStudiesTests(unittest.TestCase):
         self.assertEqual(expected, current)
         self.assertTrue(all(not cell.get("outputs") for cell in current.cells if cell.cell_type == "code"))
 
+    def test_manuscript_evidence_and_publication_contract(self) -> None:
+        """Guard long-form length, nine figure references and Medium rendering."""
+        article = (NOTEBOOK.parent / "article.md").read_text(encoding="utf-8")
+        self.assertGreaterEqual(len(article.split()), 8000)
+        for name in FIGURE_NAMES.values():
+            with self.subTest(figure=name):
+                self.assertEqual(article.count(f"figures/{name}.png"), 1)
+        self.assertNotIn("\n| ---", article)  # Medium does not render Markdown tables reliably.
+        self.assertIn("## References", article)
+        self.assertIn("## Reproducibility and data availability", article)
+
     @unittest.skipUnless(os.environ.get("RUN_NOTEBOOK_EXECUTION") == "1", "opt-in fresh kernel")
     def test_notebook_from_external_working_directory(self) -> None:
         """A fresh kernel runs without changing archival publication files."""
