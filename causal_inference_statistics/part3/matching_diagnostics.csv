@@ -1,0 +1,11 @@
+hidden_confounding,n,replications,metric,mean,median,p95
+False,1500,300,x_pre_match_smd,0.8309,0.8336,0.9143
+False,1500,300,x_absolute_smd,0.0009,0.0008,0.0022
+False,1500,300,matched_fraction,0.9898,0.9913,1.0
+False,1500,300,distinct_control_fraction,0.4741,0.4731,0.5077
+False,1500,300,maximum_control_reuse,14.97,15.0,21.0
+True,1500,300,x_pre_match_smd,0.6684,0.6644,0.758
+True,1500,300,x_absolute_smd,0.0007,0.0006,0.0019
+True,1500,300,matched_fraction,0.9928,0.9945,0.9988
+True,1500,300,distinct_control_fraction,0.5009,0.502,0.5314
+True,1500,300,maximum_control_reuse,12.5367,12.0,18.0
