@@ -76,11 +76,17 @@ The independently frozen receipts, net outlays, and deficit series reconcile wit
 
 This is a five-category decomposition of federal receipts expressed in percent of GDP, with each component published to one decimal. It is kept **separate from the previously frozen FRED total-receipts vintage**. Category shares are not high-income effective tax rates or causal estimates. The new module passes five tests locally; all repository tests remain checked by CI.
 
+## OMB federal spending by function
+
+[OMB FY2027 Table 3.1 annual fiscal categories](data/omb_outlays_by_function_1964_2018.csv) · [official definitions and vintage caveats](data/omb_outlays_by_function_sources.md) · [functional-spending SVG](results/outlay_composition.svg) · [typed renderer](outlay_composition.py) · [tests](test_outlay_composition.py).
+
+The six OMB superfunctions (including negative undistributed offsetting receipts) reconcile with the official total to within source rounding for each fiscal year from 1964 through 2018. The figures use the same FY2027 source vintage as the new OMB receipts-by-source chart; they are **not** an estimate of reform-induced spending changes. The new module passes five local tests; the complete project runs in CI.
+
 ## Publication gates
 
 1. Independently verify the statute timelines and the precise scope of each historical tax reform against IRS, Congress, Treasury, CRS, and original law text.
 2. ~~Freeze the first official top statutory rate series~~ — IRS 1964–2018 slice completed with caveats; add earlier historical period and current-year statutes only when independently verified, and keep effective tax burdens separate.
-3. ~~Start source-verified descriptive historical figures~~ — statutory rate, receipts/GDP, BEA growth/investment, and Census household Gini now exist as SVG; add revenue composition, a full after-tax distribution time series, investment components (equipment, structures, and IP), spending-by-function breakdowns, wealth, and Medium-compatible PNGs.
+3. ~~Start source-verified descriptive historical figures~~ — statutory rate, receipts/GDP, BEA growth/investment, and Census household Gini now exist as SVG; add revenue composition, a full after-tax distribution time series, investment components (equipment, structures, and IP), subfunction and investment breakdowns, wealth, and Medium-compatible PNGs.
 4. Implement a typed, documented Python 3.12 companion with source manifest and SHA-256 checks, deterministic plots, notebook, tests, and path-scoped CI.
 5. ~~Add an initial hypothetical sensitivity analysis~~ — completed as an explicitly illustrative model; extend robustness and validate notation before publication, without presenting invented coefficients as historical causal effects.
 6. Audit the tax research literature, including the measurement critique of the TCJA investment estimates and the identifying assumptions in the cross-country study.
