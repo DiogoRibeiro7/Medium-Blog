@@ -10,6 +10,7 @@ from pathlib import Path
 import numpy as np
 
 from analysis import METHODS, STUDIES, rng_for, simulate, write_evidence
+from figures import FIGURE_NAMES, read_replications, render_all
 
 
 class SamplingStudiesTests(unittest.TestCase):
@@ -110,6 +111,18 @@ class SamplingStudiesTests(unittest.TestCase):
             simulate("srs", 0)
         with self.assertRaises(ValueError):
             rng_for("srs", -1)
+
+    def test_nine_figures_generated_from_archived_replications(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            data = root / "data"
+            for study in STUDIES:
+                write_evidence(simulate(study, 4), data, "_quick")
+            outputs = render_all(data, root / "figures", "_quick")
+            self.assertEqual(len(outputs), len(STUDIES))
+            self.assertEqual(len(FIGURE_NAMES), len(STUDIES))
+            self.assertTrue(all(path.is_file() and path.stat().st_size > 5000 for path in outputs))
+            self.assertEqual(len(read_replications(data / "drift_replicates_quick.csv", "drift")), 3)
 
 
 if __name__ == "__main__":
