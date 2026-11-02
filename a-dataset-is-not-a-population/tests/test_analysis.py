@@ -43,6 +43,28 @@ class SamplingStudiesTests(unittest.TestCase):
         self.assertLess(biases["ipw_known"], biases["respondents"])
         self.assertLess(biases["ipw_known"], biases["ipw_misspecified"])
 
+    def test_zero_coverage_cannot_estimate_full_population(self) -> None:
+        rows = simulate("coverage", 200)
+        errors = np.asarray([row.estimate - row.target for row in rows])
+        self.assertLess(float(errors.mean()), -0.85)
+        # More repeated frame draws cannot eliminate a systematic frame gap.
+        self.assertLess(abs(float(errors[100:].mean()) - float(errors[:100].mean())), 0.15)
+
+    def test_large_volunteer_panel_is_more_biased_than_probability_sample(self) -> None:
+        rows = simulate("volunteer", 200)
+        by_method = {method: np.asarray([row.estimate - row.target for row in rows if row.method == method])
+                     for method in METHODS["volunteer"]}
+        self.assertGreater(float(by_method["opt_in"].mean()), 0.5)
+        self.assertLess(abs(float(by_method["probability_sample"].mean())), 0.08)
+
+    def test_margins_do_not_identify_joint_cell_composition(self) -> None:
+        rows = simulate("calibration", 200)
+        by_method = {method: np.asarray([row.estimate - row.target for row in rows if row.method == method])
+                     for method in METHODS["calibration"]}
+        np.testing.assert_array_equal(by_method["unweighted"], by_method["marginal_calibration"])
+        self.assertLess(float(by_method["unweighted"].mean()), -1.5)
+        self.assertLess(abs(float(by_method["joint_calibration"].mean())), 0.08)
+
     def test_archived_summaries_have_correct_identities(self) -> None:
         rows = simulate("srs", 8)
         with tempfile.TemporaryDirectory() as directory:
