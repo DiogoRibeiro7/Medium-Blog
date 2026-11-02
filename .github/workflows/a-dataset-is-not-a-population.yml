@@ -1,0 +1,36 @@
+name: Population sampling article studies
+
+on:
+  pull_request:
+    paths:
+      - 'a-dataset-is-not-a-population/**'
+      - '.github/workflows/a-dataset-is-not-a-population.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'a-dataset-is-not-a-population/**'
+      - '.github/workflows/a-dataset-is-not-a-population.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  numerical-contracts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: a-dataset-is-not-a-population
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: a-dataset-is-not-a-population/requirements.txt
+      - name: Install pinned numerical dependency
+        run: python -m pip install -r requirements.txt
+      - name: Validate deterministic sampling studies
+        run: python -m unittest discover -s tests -v
+      - name: Generate isolated quick evidence
+        run: python analysis.py --quick
