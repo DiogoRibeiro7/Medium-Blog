@@ -36,5 +36,7 @@ jobs:
         run: python tax-cuts-rich-historical-cycles/macro_context.py
       - name: Regenerate Census income inequality figure
         run: python tax-cuts-rich-historical-cycles/inequality_context.py
+      - name: Regenerate CBO household distribution comparison
+        run: python tax-cuts-rich-historical-cycles/cbo_distribution.py
       - name: Check committed evidence is reproducible
         run: git diff --exit-code -- tax-cuts-rich-historical-cycles/results
