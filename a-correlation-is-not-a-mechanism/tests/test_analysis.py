@@ -11,7 +11,9 @@ from analysis import (
     backdoor_theoretical_collider_bias,
     collider_theoretical_slope,
     confounding_theoretical_bias,
+    effective_sample_size,
     instrument_theoretical_wald,
+    overlap_theoretical_ess_fraction,
     simpson_exact_marginal_difference,
     simulate,
     summarize,
@@ -27,6 +29,8 @@ class CausalStudyTests(unittest.TestCase):
         self.assertAlmostEqual(simpson_exact_marginal_difference(), -0.39)
         self.assertAlmostEqual(instrument_theoretical_wald(0.4), 1.7)
         self.assertAlmostEqual(backdoor_theoretical_collider_bias(), -0.7)
+        self.assertAlmostEqual(overlap_theoretical_ess_fraction(0.25), 0.75)
+        self.assertAlmostEqual(overlap_theoretical_ess_fraction(0.01), 0.0396)
 
     def test_study_seeds_are_deterministic(self) -> None:
         for study in STUDY_IDS:
@@ -48,6 +52,15 @@ class CausalStudyTests(unittest.TestCase):
         self.assertAlmostEqual(float(estimates["backdoor"]["valid_adjustment"]["mean_estimate"]), 1.0, delta=0.05)
         self.assertAlmostEqual(float(estimates["backdoor"]["collider_adjustment"]["bias"]), -0.7, delta=0.06)
         self.assertGreater(float(estimates["backdoor"]["naive"]["bias"]), 0.3)
+        overlap = {(row["scenario"], row["method"]): row for row in summarize(simulate("overlap", 300))}
+        self.assertAlmostEqual(float(overlap[("adequate", "ipw")]["bias"]), 0.0, delta=0.08)
+        self.assertAlmostEqual(float(overlap[("poor", "ipw")]["bias"]), 0.0, delta=0.15)
+        self.assertGreater(float(overlap[("poor", "ipw")]["sampling_sd"]), float(overlap[("adequate", "ipw")]["sampling_sd"]) * 2)
+        models = {row["scenario"]: row for row in summarize(simulate("nonidentification", 300))}
+        self.assertAlmostEqual(float(models["causal_model"]["mean_estimate"]), 1.0, delta=0.06)
+        self.assertAlmostEqual(float(models["confounded_model"]["mean_estimate"]), 1.0, delta=0.06)
+        self.assertAlmostEqual(float(estimates["prediction"]["treatment_effect"]["mean_estimate"]), 2.0, delta=0.06)
+        self.assertGreater(float(estimates["prediction"]["proxy_association"]["mean_estimate"]), 1.5)
 
     def test_replicate_keys_unique(self) -> None:
         for study in STUDY_IDS:
@@ -64,6 +77,14 @@ class CausalStudyTests(unittest.TestCase):
             collider_theoretical_slope(-1)
         with self.assertRaises(ValueError):
             instrument_theoretical_wald(0.0, first_stage=0.0)
+        with self.assertRaises(ValueError):
+            overlap_theoretical_ess_fraction(0.0)
+        with self.assertRaises(ValueError):
+            effective_sample_size(np.array([0.0, 0.0]))
+
+    def test_effective_sample_size(self) -> None:
+        self.assertAlmostEqual(effective_sample_size(np.ones(10)), 10.0)
+        self.assertLess(effective_sample_size(np.array([1.0, 1.0, 1.0, 100.0])), 2.0)
 
 
 if __name__ == "__main__":
