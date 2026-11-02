@@ -1,30 +1,60 @@
-# Causal Inference series: reproducibility audit
+# Causal Inference in Statistics — consolidated reproducibility audit
 
-This directory contains twenty manuscripts and twenty `partN/experiment.py` scripts.
+Audit updated: 2026-11-02.
 
-## Inventory (audited 2026-10-19)
+## Current numerical reproduction status
 
-- Parts 1–5: `experiment.py` exists; no committed `results.csv` was found. These are **not** yet comparable with archived output.
-- Parts 6–20: both `experiment.py` and `results.csv` exist.
-- The inventory is a file-presence check only. It is **not** evidence that scripts have been rerun successfully or that numerical claims in the manuscripts have been checked.
+The 20-part series has **20 primary experiment/result pairs** and **one additional Part 13 nuisance-model validation pair**. Every currently catalogued table has been independently recalculated and matched against its committed CSV output:
 
-## Run the audit
+- **21 tables, 221 result rows** in total.
+- Fixed-seed computations were reproduced in the audit environment (Python 3.12, NumPy 2.3.5, SciPy 1.17.0, scikit-learn 1.8.0).
+- Reported numerical values matched the committed files within the verifiers' tolerance of `1e-8`. Committed result files were not rewritten.
+- The earlier inventory dated 2026-10-19 is superseded by this audit. Its claim that Parts 1–5 lacked results or had not been rerun is no longer current.
 
-From the repository root, install the relevant scientific dependencies in an isolated environment. Scripts collectively require NumPy, SciPy and scikit-learn.
+These findings establish computational reproducibility for the covered deterministic experiments. They do **not** by themselves certify the correctness of causal assumptions, identification arguments, or every statement in the manuscripts.
 
-```sh
-python causal_inference_statistics/audit_reproducibility.py --parts 6 7
+## One-command verification
+
+Run from the repository root:
+
+```bash
+# Fast consistency checks of the committed numerical outputs
+python verify_causal_series.py
+
+# Independently rerun all 20 experiments and Part 13 validation
+python verify_causal_series.py --recompute
+```
+
+The consolidated verifier invokes the six specialised verification modules. Its complete recomputation mode passed on 2026-11-02.
+
+The existing independent audit runner remains available:
+
+```bash
 python causal_inference_statistics/audit_reproducibility.py --all --timeout 600
 ```
 
-The checker copies each script into a temporary directory, runs it with the current Python interpreter, then compares generated and archived CSV files using exact text/header comparison and floating-point tolerance (default `1e-8`). It reports missing files, process failures, timeouts, and numerical differences with a nonzero exit status. It does not modify the checked-in results or install dependencies. Execution times vary substantially; the `--all` option may be computationally expensive.
+## Detailed audit record
 
-## Next steps
+| Coverage | Reproduced rows | Evidence |
+| --- | ---: | --- |
+| Parts 1–5: foundations | 82 | [Foundations audit](FOUNDATIONS_REPRODUCIBILITY_AUDIT.md) |
+| Parts 6–10: identification | 48 | [Identification audit](IDENTIFICATION_REPRODUCIBILITY_AUDIT.md) |
+| Parts 11 and 15: longitudinal | 8 | [Longitudinal audit](LONGITUDINAL_REPRODUCIBILITY_AUDIT.md) |
+| Parts 12–14: advanced | 37 | [Advanced audit](ADVANCED_REPRODUCIBILITY_AUDIT.md) |
+| Parts 16–20: sensitivity | 40 | [Sensitivity audit](SENSITIVITY_REPRODUCIBILITY_AUDIT.md) |
+| Part 13: additional nuisance validation | 6 | [Part 13 validation audit](part13/NUISANCE_VALIDATION_AUDIT.md) |
+| **Total** | **221** | **21 numerical tables** |
 
-1. Generate and archive the missing outputs for Parts 1–5, adjusting those scripts to write CSVs when needed.
-2. Rerun Parts 6–20 in an environment with recorded package versions. Investigate mismatches rather than rewriting CSVs to force a pass.
-3. Check that each manuscript table is generated from its matching CSV.
-4. Introduce deterministic assertions for known estimands, expected result schemas and analysis-specific assumptions.
-5. Extend to CI in smaller batches after confirming runtime and dependency constraints.
+The main series has one `experiment.py` and one `results.csv` per part. Part 13 also includes a separately audited validation experiment and output. The table counts describe currently checked artefacts, not every possible additional robustness experiment.
 
-The reproducibility audit is not complete until all twenty parts pass in a clean environment and manuscript claims are checked against the generated outputs.
+## Interpretation and remaining work
+
+Computational reproduction and scientific validity are separate questions. The following remain appropriate before treating the series as fully scientifically reviewed:
+
+1. **Identification and design:** review exchangeability, consistency, positivity/overlap, selection, interference, treatment-version assumptions, and design-specific conditions such as exclusion restrictions and parallel trends where relevant.
+2. **Robustness:** test alternative random seeds, sample sizes, data-generating processes, nuisance-model specifications, overlap regimes, and Monte Carlo error. Fixed-seed agreement does not replace these checks.
+3. **Manuscript-to-evidence alignment:** check equations, figure sources, rounding, captions, and textual claims against the experiments. In particular, verify article and Medium rendering separately from CSV reproduction.
+4. **References and provenance:** complete outstanding source-ledger and bibliography metadata checks, without assuming that a reproduced numerical result independently validates its cited source.
+5. **Automation:** consider a CI job for the fast checker and an optional scheduled full recomputation with a measured runtime budget; the present audit was run manually.
+
+Additional manuscript/result and claim-evidence audits elsewhere in this directory remain complementary to this numerical verification record.
