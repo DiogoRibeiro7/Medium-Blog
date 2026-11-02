@@ -1,7 +1,7 @@
 """Deterministic, synthetic finite-population sampling experiments.
 
-The first six studies are implemented; the remaining three are specified in
-RESEARCH_PLAN.md. No published evidence is claimed until the full suite exists.
+All nine experimental mechanisms are implemented. The archival figures,
+publication evidence, and manuscript remain to be validated and completed.
 """
 
 from __future__ import annotations
@@ -18,7 +18,8 @@ import numpy as np
 from numpy.typing import NDArray
 
 SEED = 20261102
-STUDIES = ("srs", "strata", "nonresponse", "coverage", "volunteer", "calibration")
+STUDIES = ("srs", "strata", "nonresponse", "coverage", "volunteer", "calibration",
+           "weighting", "predictive", "drift")
 METHODS = {
     "srs": ("sample_mean",),
     "strata": ("unweighted", "poststratified", "ht", "hajek"),
@@ -26,6 +27,9 @@ METHODS = {
     "coverage": ("frame_mean",),
     "volunteer": ("opt_in", "probability_sample"),
     "calibration": ("unweighted", "marginal_calibration", "joint_calibration"),
+    "weighting": ("unweighted", "ipw_raw", "ipw_clipped"),
+    "predictive": ("sampled_test", "target_test", "target_weighted_fit"),
+    "drift": ("historical", "updated_margins_stable", "updated_margins_shift"),
 }
 FIELDNAMES = ("study", "scenario", "replicate", "method", "estimate", "target", "error")
 
@@ -187,9 +191,93 @@ def calibration(replicate: int, seed: int = SEED) -> list[Observation]:
             for name, value in estimates.items()]
 
 
+def weighting(replicate: int, seed: int = SEED) -> list[Observation]:
+    """Unequal Poisson inclusion: raw inverse weights versus capped weights.
+
+    Probabilities are known by construction. Capping at the 90th percentile
+    creates a deliberately biased stabilization; no universal optimal cap is
+    asserted. Each replicate conditions on its realized finite population.
+    """
+    generator = rng_for("weighting", replicate, seed)
+    x = generator.normal(size=3500)
+    y = 1.0 + 1.7 * x + generator.normal(scale=0.7, size=len(x))
+    probability = 0.015 + 0.70 / (1.0 + np.exp(-2.7 * x))
+    included = generator.random(len(y)) < probability
+    if not np.any(included):
+        raise RuntimeError("No observations from Poisson sampling")
+    observed = y[included]
+    weights = 1.0 / probability[included]
+    cap = float(np.quantile(weights, 0.90))
+    estimates = {
+        "unweighted": float(observed.mean()),
+        "ipw_raw": float(np.average(observed, weights=weights)),
+        "ipw_clipped": float(np.average(observed, weights=np.minimum(weights, cap))),
+    }
+    target = float(y.mean())
+    return [Observation("weighting", "highly_unequal_poisson", replicate, name, value, target)
+            for name, value in estimates.items()]
+
+
+def predictive(replicate: int, seed: int = SEED) -> list[Observation]:
+    """Covariate-shift risk for a misspecified constant forecasting model.
+
+    The outcome law Y|X is invariant, but the target X composition shifts.
+    Exact density ratios reweight the training distribution to target X.
+    The target-weighted *fit* is evaluated on an independent target draw.
+    The sampled-test comparator evaluates the unweighted fit on training X.
+    """
+    generator = rng_for("predictive", replicate, seed)
+    x_train = generator.normal(loc=-1.0, size=700)
+    x_sample_test = generator.normal(loc=-1.0, size=1200)
+    x_target_test = generator.normal(loc=1.0, size=1200)
+    # Invariant conditional mechanism: E[Y|X] = X, noise variance 0.25.
+    train_y = x_train + generator.normal(scale=0.5, size=len(x_train))
+    sampled_y = x_sample_test + generator.normal(scale=0.5, size=len(x_sample_test))
+    target_y = x_target_test + generator.normal(scale=0.5, size=len(x_target_test))
+    constant = float(train_y.mean())
+    # Normal density ratio N(1,1) / N(-1,1) = exp(2*x).
+    log_weights = 2.0 * x_train
+    weights = np.exp(log_weights - log_weights.max())
+    target_constant = float(np.average(train_y, weights=weights))
+    # All three losses are compared to the irreducible Bayes noise risk 0.25;
+    # their observation populations are identified by the method labels.
+    sampled_risk = float(np.mean((sampled_y - constant) ** 2))
+    target_risk = float(np.mean((target_y - constant) ** 2))
+    weighted_risk = float(np.mean((target_y - target_constant) ** 2))
+    return [
+        Observation("predictive", "invariant_conditional_shifted_x", replicate, "sampled_test", sampled_risk, 0.25),
+        Observation("predictive", "invariant_conditional_shifted_x", replicate, "target_test", target_risk, 0.25),
+        Observation("predictive", "invariant_conditional_shifted_x", replicate, "target_weighted_fit", weighted_risk, 0.25),
+    ]
+
+
+def drift(replicate: int, seed: int = SEED) -> list[Observation]:
+    """Separate changing group shares from changing group outcome laws.
+
+    Historical P(group=1)=0.2; target P(group=1)=0.7. Historical group
+    conditional means are 0 and 4. Under mechanism shift the group-1 mean
+    rises to 6. Updated composition fixes only the stable-law target.
+    """
+    generator = rng_for("drift", replicate, seed)
+    early0 = generator.normal(loc=0.0, scale=1.0, size=800)
+    early1 = generator.normal(loc=4.0, scale=1.0, size=200)
+    mean0, mean1 = float(early0.mean()), float(early1.mean())
+    historical = 0.8 * mean0 + 0.2 * mean1
+    updated = 0.3 * mean0 + 0.7 * mean1
+    # Exact data-generating target expectations, not noisy new draws.
+    stable_target = 0.3 * 0.0 + 0.7 * 4.0
+    shifted_target = 0.3 * 0.0 + 0.7 * 6.0
+    return [
+        Observation("drift", "composition_only", replicate, "historical", historical, stable_target),
+        Observation("drift", "composition_only", replicate, "updated_margins_stable", updated, stable_target),
+        Observation("drift", "composition_plus_mechanism", replicate, "updated_margins_shift", updated, shifted_target),
+    ]
+
+
 RUNNERS: dict[str, Callable[[int, int], list[Observation]]] = {
     "srs": srs, "strata": strata, "nonresponse": nonresponse,
     "coverage": coverage, "volunteer": volunteer, "calibration": calibration,
+    "weighting": weighting, "predictive": predictive, "drift": drift,
 }
 
 
