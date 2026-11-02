@@ -1,6 +1,6 @@
 # Articles Developed in This Chat
 
-This is a chronological index of the thirty-one long-form articles developed in
+This is a chronological index of the thirty-two long-form articles developed in
 this conversation for `Medium-Blog`. It is **not** a complete
 catalogue of the repository's articles or historical notebooks.
 
@@ -37,6 +37,7 @@ catalogue of the repository's articles or historical notebooks.
 | 29 | [A Feature Importance Score Is Not a Causal Effect: Permutation, Dependence, and the Limits of Model Explanations](feature-importance-is-not-causality/article.md) | Marginal versus conditional permutation, correlated proxies and retraining, random-forest impurity bias, exact Shapley coalition games, interaction screening, leakage, covariate-shift importance, subgroup reliance, selection optimism, causal identification boundaries | 9 | [Study README](feature-importance-is-not-causality/README.md) · [Python analysis](feature-importance-is-not-causality/analysis.py) · [Notebook](feature-importance-is-not-causality/feature_importance_is_not_causality.ipynb) |
 | 30 | [A Missing Value Is Not a Zero: MCAR, MAR, MNAR, Imputation, and the Limits of Complete Cases](missing-data-is-not-zero/article.md) | Missingness mechanisms and selection, zero-coded data, complete-case mean versus conditional slope, MAR weighting and outcome standardization, mean-imputation variance, multiple-imputation interval coverage, MNAR pattern-mixture sensitivity, missingness indicators under workflow drift, inverse-weight positivity | 9 | [Study README](missing-data-is-not-zero/README.md) · [Python analysis](missing-data-is-not-zero/analysis.py) · [Notebook](missing-data-is-not-zero/missing_data_is_not_zero.ipynb) |
 | 31 | [An Outlier Is Not an Error: Robust Estimation, Influence, Heavy Tails, and the Limits of Anomaly Scores](outlier-is-not-an-error/article.md) | Contaminated-normal location, bounded influence and breakdown, Cauchy versus finite-variance tails, mean-versus-median interval coverage, vertical regression contamination, leverage and Cook's distance, robust Mahalanobis masking, legitimate minority anomaly flags, lognormal tail-risk deletion, threshold drift and recalibration | 9 | [Study README](outlier-is-not-an-error/README.md) · [Python analysis](outlier-is-not-an-error/analysis.py) · [Notebook](outlier-is-not-an-error/outlier_is_not_an_error.ipynb) |
+| 32 | [A Label Is Not Ground Truth: Label Noise, Annotator Disagreement, Selective Labels, and the Illusion of Benchmark Accuracy](a-label-is-not-ground-truth/article.md) | Symmetric and asymmetric label noise, instance-dependent errors, Dawid–Skene aggregation, correlated workers, selective review and randomized audits, biased test labels, entity leakage, and label-policy drift | 9 | [Study README](a-label-is-not-ground-truth/README.md) · [Python analysis](a-label-is-not-ground-truth/analysis.py) · [Notebook](a-label-is-not-ground-truth/a_label_is_not_ground_truth.ipynb) |
 
 ## Reproducibility
 
