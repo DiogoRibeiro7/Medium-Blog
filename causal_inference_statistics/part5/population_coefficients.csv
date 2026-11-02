@@ -1,0 +1,9 @@
+scenario,model,n,causal_total_effect,population_ols_coefficient,monte_carlo_mean,absolute_discrepancy
+collider,unadjusted,5000,1.0,1.0,1.000868,0.000868
+collider,adjusted,5000,1.0,0.5,0.500067,6.7e-05
+confounder,unadjusted,5000,1.0,1.5,1.50023,0.00023
+confounder,adjusted,5000,1.0,1.0,1.000262,0.000262
+mediator,unadjusted,5000,2.0,2.0,2.000436,0.000436
+mediator,adjusted,5000,2.0,1.0,0.999981,1.9e-05
+irrelevant,unadjusted,5000,1.0,1.0,1.000258,0.000258
+irrelevant,adjusted,5000,1.0,1.0,1.000258,0.000258

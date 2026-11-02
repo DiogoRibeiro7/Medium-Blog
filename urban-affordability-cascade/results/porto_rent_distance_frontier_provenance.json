@@ -1,0 +1,58 @@
+{
+  "evidence_class": "source_pinned_municipal_new_lease_rent_medians_and_administrative_centroid_pareto_screen",
+  "housing_upstream_commit": "0407faed1f08209b3d7682e19fc57e7120e62879",
+  "housing_panel_sha256": "88502e15b55a4d46536eed42ddc1924d30f555498d2c4a7e7a1b41fbeed71c66",
+  "geography_publisher": "DGT, CAOP2025 administrative municipal boundaries; CC-BY 4.0",
+  "geography_source_response_sha256": "9eb0060c8bdd60c785800ed43e79bf166e646969bc3e694719e44cc81aef917b",
+  "geography_derived_centroids_sha256": "a05cfb55ffba89dc9cc33756480470005fb771c35e824b331f81759e02a80966",
+  "geography_epsg": 3763,
+  "rent_reference_years": [
+    2020,
+    2025
+  ],
+  "assumed_dwelling_area_m2_for_euro_display": 70,
+  "minimum_centroid_distance_gain_km": [
+    0.0,
+    2.0,
+    5.0
+  ],
+  "minimum_new_rent_gain_eur_m2_month": [
+    0.0,
+    0.5,
+    1.0
+  ],
+  "municipal_year_rows": 32,
+  "margin_scenarios": 18,
+  "comparison_year_changes": 16,
+  "nondominated_municipal_summaries_by_year": {
+    "2020": [
+      "Maia",
+      "Matosinhos",
+      "Paredes",
+      "Santo Tirso",
+      "Trofa",
+      "Valongo"
+    ],
+    "2025": [
+      "Arouca",
+      "Maia",
+      "Matosinhos",
+      "Oliveira de Azeméis",
+      "Paredes",
+      "Trofa",
+      "Valongo"
+    ]
+  },
+  "limits": [
+    "Municipal new-contract median rents do not identify available equivalent homes or the rent faced by any given household",
+    "Both 2020 and 2025 rent slices use official CAOP2025 administrative area-weighted centroids, not year-specific historic boundaries",
+    "Straight-line centroid distance from Porto is not a route, time, job access, public transport or household travel burden",
+    "Dominance considers only two summaries: lower municipal median new rent and shorter centroid separation",
+    "Rent magnitudes refer to different changing pools of new leases with no quality or type matching",
+    "Dominated mathematical summaries can still be preferred by households for reasons outside the two measured dimensions",
+    "Material-improvement margins are hypothetical cutoffs, not confidence intervals, uncertainty estimates or measurement corrections",
+    "The 70 square metre multiplication is synthetic; no market listing, rental stock or dwelling availability is checked",
+    "The 16 comparisons are municipalities, not independent search alternatives, people, flows or observed movers",
+    "No spatial price contagion, causal migration mechanism, displacement, supply response or welfare effect is identified"
+  ]
+}

@@ -1,0 +1,33 @@
+municipality,rent_year,geography_reference,centroid_to_porto_euclidean_km,new_contract_median_rent_eur_m2_month,porto_new_contract_median_rent_eur_m2_month,synthetic_70m2_monthly_rent_eur,synthetic_70m2_rent_saving_vs_porto_eur_month,pareto_nondominated_in_two_municipal_summary_dimensions,number_of_municipal_summary_dominators,closer_and_no_more_expensive_summary_municipalities
+Arouca,2020,DGT CAOP2025 EPSG:3763 municipal area centroid,40.409155,3.460000,8.970000,242.200000,385.700000,false,2,Santo Tirso|Oliveira de Azeméis
+Espinho,2020,DGT CAOP2025 EPSG:3763 municipal area centroid,18.544405,5.800000,8.970000,406.000000,221.900000,false,3,Valongo|Gondomar|Trofa
+Gondomar,2020,DGT CAOP2025 EPSG:3763 municipal area centroid,12.950261,5.420000,8.970000,379.400000,248.500000,false,1,Valongo
+Maia,2020,DGT CAOP2025 EPSG:3763 municipal area centroid,9.390283,6.110000,8.970000,427.700000,200.200000,true,0,
+Matosinhos,2020,DGT CAOP2025 EPSG:3763 municipal area centroid,7.096492,7.660000,8.970000,536.200000,91.700000,true,0,
+Oliveira de Azeméis,2020,DGT CAOP2025 EPSG:3763 municipal area centroid,37.732444,3.360000,8.970000,235.200000,392.700000,false,1,Santo Tirso
+Paredes,2020,DGT CAOP2025 EPSG:3763 municipal area centroid,18.990514,3.620000,8.970000,253.400000,374.500000,true,0,
+Póvoa de Varzim,2020,DGT CAOP2025 EPSG:3763 municipal area centroid,29.716950,5.360000,8.970000,375.200000,252.700000,false,6,Valongo|Trofa|Paredes|Vila do Conde|Santo Tirso|Santa Maria da Feira
+Santa Maria da Feira,2020,DGT CAOP2025 EPSG:3763 municipal area centroid,23.535033,3.890000,8.970000,272.300000,355.600000,false,2,Paredes|Santo Tirso
+Santo Tirso,2020,DGT CAOP2025 EPSG:3763 municipal area centroid,23.072175,3.320000,8.970000,232.400000,395.500000,true,0,
+São João da Madeira,2020,DGT CAOP2025 EPSG:3763 municipal area centroid,31.523140,4.280000,8.970000,299.600000,328.300000,false,4,Trofa|Paredes|Santo Tirso|Santa Maria da Feira
+Trofa,2020,DGT CAOP2025 EPSG:3763 municipal area centroid,17.221217,4.190000,8.970000,293.300000,334.600000,true,0,
+Vale de Cambra,2020,DGT CAOP2025 EPSG:3763 municipal area centroid,43.641129,3.460000,8.970000,242.200000,385.700000,false,3,Santo Tirso|Oliveira de Azeméis|Arouca
+Valongo,2020,DGT CAOP2025 EPSG:3763 municipal area centroid,11.749698,5.320000,8.970000,372.400000,255.500000,true,0,
+Vila Nova de Gaia,2020,DGT CAOP2025 EPSG:3763 municipal area centroid,10.268622,6.510000,8.970000,455.700000,172.200000,false,1,Maia
+Vila do Conde,2020,DGT CAOP2025 EPSG:3763 municipal area centroid,20.257757,5.010000,8.970000,350.700000,277.200000,false,2,Trofa|Paredes
+Arouca,2025,DGT CAOP2025 EPSG:3763 municipal area centroid,40.409155,5.280000,14.130000,369.600000,619.500000,true,0,
+Espinho,2025,DGT CAOP2025 EPSG:3763 municipal area centroid,18.544405,9.870000,14.130000,690.900000,298.200000,false,4,Maia|Valongo|Gondomar|Trofa
+Gondomar,2025,DGT CAOP2025 EPSG:3763 municipal area centroid,12.950261,8.570000,14.130000,599.900000,389.200000,false,1,Valongo
+Maia,2025,DGT CAOP2025 EPSG:3763 municipal area centroid,9.390283,9.590000,14.130000,671.300000,317.800000,true,0,
+Matosinhos,2025,DGT CAOP2025 EPSG:3763 municipal area centroid,7.096492,12.120000,14.130000,848.400000,140.700000,true,0,
+Oliveira de Azeméis,2025,DGT CAOP2025 EPSG:3763 municipal area centroid,37.732444,5.630000,14.130000,394.100000,595.000000,true,0,
+Paredes,2025,DGT CAOP2025 EPSG:3763 municipal area centroid,18.990514,5.730000,14.130000,401.100000,588.000000,true,0,
+Póvoa de Varzim,2025,DGT CAOP2025 EPSG:3763 municipal area centroid,29.716950,8.700000,14.130000,609.000000,380.100000,false,7,Valongo|Gondomar|Trofa|Paredes|Vila do Conde|Santo Tirso|Santa Maria da Feira
+Santa Maria da Feira,2025,DGT CAOP2025 EPSG:3763 municipal area centroid,23.535033,6.530000,14.130000,457.100000,532.000000,false,2,Paredes|Santo Tirso
+Santo Tirso,2025,DGT CAOP2025 EPSG:3763 municipal area centroid,23.072175,6.090000,14.130000,426.300000,562.800000,false,1,Paredes
+São João da Madeira,2025,DGT CAOP2025 EPSG:3763 municipal area centroid,31.523140,6.800000,14.130000,476.000000,513.100000,false,3,Paredes|Santo Tirso|Santa Maria da Feira
+Trofa,2025,DGT CAOP2025 EPSG:3763 municipal area centroid,17.221217,7.050000,14.130000,493.500000,495.600000,true,0,
+Vale de Cambra,2025,DGT CAOP2025 EPSG:3763 municipal area centroid,43.641129,5.720000,14.130000,400.400000,588.700000,false,2,Oliveira de Azeméis|Arouca
+Valongo,2025,DGT CAOP2025 EPSG:3763 municipal area centroid,11.749698,8.040000,14.130000,562.800000,426.300000,true,0,
+Vila Nova de Gaia,2025,DGT CAOP2025 EPSG:3763 municipal area centroid,10.268622,10.630000,14.130000,744.100000,245.000000,false,1,Maia
+Vila do Conde,2025,DGT CAOP2025 EPSG:3763 municipal area centroid,20.257757,8.040000,14.130000,562.800000,426.300000,false,3,Valongo|Trofa|Paredes

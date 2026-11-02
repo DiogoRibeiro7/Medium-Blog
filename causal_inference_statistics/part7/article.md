@@ -16,15 +16,11 @@ The empirical difficulty is distinguishing these two statements: the candidate i
 
 For each dataset I generate four independent standard normal variables, Z, U, V and ε. The candidate instrument is Z. Treatment is generated as
 
-[
-X=pi Z+U+V,
-]
+X = πZ + U + V
 
 and the outcome as
 
-[
-Y=	au X+U+arepsilon+delta Z.
-]
+Y = τX + U + ε + δZ
 
 The treatment effect is fixed at τ=1 in every scenario. The coefficient π controls how strongly the instrument changes treatment. The coefficient δ represents a direct pathway from the instrument to the outcome, outside treatment. An instrument satisfying the exclusion restriction has δ=0 in this model.
 
@@ -38,17 +34,11 @@ This design deliberately avoids treatment-effect heterogeneity, nonlinearities a
 
 The population coefficient of an unadjusted regression of Y on X is Cov(X,Y)/Var(X). Substituting the outcome equation gives
 
-[
-eta_{mathrm{OLS}}
-=	au+rac{operatorname{Cov}(X,U)}{operatorname{Var}(X)}
-+deltarac{operatorname{Cov}(X,Z)}{operatorname{Var}(X)}.
-]
+β_OLS = τ + Cov(X, U) / Var(X) + δ Cov(X, Z) / Var(X)
 
 Because Z, U and V are independent standard normal variables and X=πZ+U+V, Var(X)=π²+2, Cov(X,U)=1 and Cov(X,Z)=π. Hence
 
-[
-eta_{mathrm{OLS}}=1+rac{1+deltapi}{pi^2+2}.
-]
+β_OLS = 1 + (1 + δπ) / (π² + 2)
 
 For the strong valid instrument π=1, δ=0, the observational slope is 1+1/3, or approximately 1.333. The candidate instrument is exogenous, but ordinary regression does not use that exogeneity to isolate the treatment effect. It still sees the confounded treatment assignment containing U.
 
@@ -62,26 +52,17 @@ A narrower confidence interval around any of these observational coefficients wo
 
 With one instrument and one endogenous treatment, the population Wald or just-identified IV ratio can be written
 
-[
-eta_{mathrm{IV}}
-=rac{operatorname{Cov}(Z,Y)}{operatorname{Cov}(Z,X)}.
-]
+β_IV = Cov(Z, Y) / Cov(Z, X)
 
 The denominator is the first-stage relationship: the amount of observed treatment variation associated with the instrument. The numerator is the reduced-form relationship between the instrument and the outcome. The ratio asks how much the outcome changes per unit of treatment variation induced by the instrument.
 
 Under the published structural model,
 
-[
-operatorname{Cov}(Z,X)=pi,
-qquad
-operatorname{Cov}(Z,Y)=	aupi+delta.
-]
+Cov(Z, X) = π; Cov(Z, Y) = τπ + δ
 
 Consequently
 
-[
-eta_{mathrm{IV}}=	au+rac{delta}{pi}.
-]
+β_IV = τ + δ / π
 
 The formula makes both identification conditions transparent. If π=0, the ratio is undefined because the candidate instrument does not shift treatment. If δ=0 and π≠0, the ratio equals the causal effect τ. If δ≠0, the result includes an extra component δ/π that has nothing to do with treatment's structural effect.
 
@@ -126,7 +107,7 @@ The Monte Carlo summaries show a sharp contrast among the designs.
 
 The true treatment effect is one. Strong valid IV recovers that effect closely. Ordinary regression remains biased because U confounds treatment and outcome. With moderate relevance, IV remains centred reasonably close to the target but shows more sampling variability.
 
-The weak valid instrument is the unusual case. Its mean IV estimate is approximately 0.477, even though its median is approximately 1.000. That large difference means that the average is being pulled by unusual realizations of the IV ratio rather than representing a stable central tendency. A report showing only the mean would make the method appear substantially biased in a direction that does not describe the typical replication.
+The weak valid instrument is the unusual case. Its mean IV estimate is approximately 1.129, while its median is approximately 1.035. That large difference means that the average is being pulled by unusual realizations of the IV ratio rather than representing a stable central tendency. A report showing only the mean would make the method appear substantially biased in a direction that does not describe the typical replication.
 
 The invalid strong instrument provides the other failure. Its IV mean is approximately 1.300, matching the structural expression τ+δ/π=1.3. The first stage is extremely strong by ordinary diagnostic standards, yet the estimator converges toward a noncausal coefficient.
 
@@ -159,13 +140,13 @@ Strong valid IV has a relatively concentrated distribution around one. The moder
 
 The weak design's fifth-to-ninety-fifth percentile range already includes negative values, despite a true positive effect. It does not convey the full tail severity: the RMSE of 3.2620 reflects realizations far outside this central ninety-percent range. The contrast between quantiles and RMSE is an important diagnostic of heavy-tailed behaviour.
 
-For the invalid strong instrument, estimates are tightly concentrated around approximately 1.3. Its RMSE relative to the causal effect is about 0.3023, mainly reflecting the exclusion-induced discrepancy rather than sampling noise. This design can produce precisely estimated answers that are systematically wrong for the intervention question.
+For the invalid strong instrument, estimates are tightly concentrated around approximately 1.3. Its RMSE relative to the causal effect is about 0.3021, mainly reflecting the exclusion-induced discrepancy rather than sampling noise. This design can produce precisely estimated answers that are systematically wrong for the intervention question.
 
 An analyst reporting the invalid instrument's tight interval without discussing the exclusion pathway would give readers a false sense of causal certainty. An analyst reporting a conventional weak-IV interval without examining its reliability could make an entirely different mistake: treating an unstable ratio as if normal large-sample approximations were adequate.
 
 ## What the first-stage F-statistic tells us
 
-The first-stage F-statistic describes how strongly the instrument predicts treatment in the specified regression. For the strong valid and strong invalid instruments it averages about 500. The moderate valid instrument averages about 47.7. The weak valid instrument averages about 5.7, with a median around 5.4.
+The first-stage F-statistic describes how strongly the instrument predicts treatment in the specified regression. For the strong valid and strong invalid instruments it averages about 500. The moderate valid instrument averages about 47.7. The weak valid instrument averages about 5.7, with a median around 4.7.
 
 A first-stage F near 500 makes the estimated denominator of the IV ratio relatively stable in these samples. It does not distinguish the strong valid and strong invalid scenarios, because the treatment equation is equally relevant in both. The difference lies in the outcome equation, where the invalid design contains the direct effect δZ.
 
@@ -229,11 +210,26 @@ When an instrument is weak, conventional Wald confidence intervals around a two-
 
 Alternative procedures include Anderson–Rubin tests and confidence sets, which test hypotheses about the structural treatment coefficient without relying on the same strong-first-stage approximation. Depending on the model, weak-identification-robust procedures can produce wide, unbounded or disconnected confidence sets. Such results may be unsatisfying to readers expecting a short interval, but they can faithfully express limited identification.
 
-The present benchmark does not compute Anderson–Rubin confidence sets, conditional likelihood ratio tests or weak-IV-robust coverage. Its purpose is to make the instability visible in raw estimator distributions. A publication-quality extension should include a comparison of ordinary and weak-IV-robust inference across the same simulated designs.
+The original point-estimator benchmark did not compute Anderson–Rubin tests. A separate, fixed-seed inference extension now compares the membership of the true coefficient in conventional Wald intervals with non-rejection by the Anderson–Rubin test. This evaluates coverage at the known coefficient, without claiming to compute the full geometry of the inverted Anderson–Rubin confidence set.
 
 If the resulting confidence set is broad or unbounded, that is not necessarily a failure of the inferential procedure. It may be an appropriate statement that the data contain insufficient exogenous treatment variation to determine the effect precisely.
 
 The scientific response to weak identification is not simply to report a stronger-looking first-stage statistic from another specification. It is to evaluate the validity of the alternative instrument, the causal estimand it identifies, and the uncertainty remaining under an appropriate procedure.
+
+## A reproducible Anderson–Rubin inference extension
+
+The accompanying `weak_iv_inference.py` uses an independent seed (20261102) and reproduces the same four structural designs, with 500 new samples of 1,000 observations per design. For each sample it reports whether the conventional homoskedastic just-identified IV Wald interval includes the known structural coefficient τ=1. It also tests that coefficient using an Anderson–Rubin (AR) regression of Y−τX on an intercept and Z, with a two-sided Student-t critical value and n−2 degrees of freedom. This regression tests the reduced-form restriction implied by the hypothesized treatment effect without dividing its test statistic by the estimated first-stage coefficient.
+
+| Design | Wald interval includes τ=1 | AR does not reject τ=1 | First-stage F below 10 |
+| --- | ---: | ---: | ---: |
+| Valid, strong | 96.4% | 96.6% | 0.0% |
+| Valid, moderate | 95.0% | 95.4% | 0.0% |
+| Valid, weak | 94.2% | 93.6% | 82.4% |
+| Invalid, strong | 0.0% | 0.0% | 0.0% |
+
+These are Monte Carlo frequencies, not confidence intervals around the percentages. For 500 independent replications, a proportion near 95% has Monte Carlo standard error of approximately one percentage point. The observed valid-instrument differences are therefore too small to establish that one procedure has better coverage in this particular simulation. The AR test's advantage is structural: under the Gaussian valid-instrument null its finite-sample t reference distribution does not require strong instrument relevance. The conventional Wald statistic relies on a ratio approximation that can fail badly in more weakly identified designs.
+
+The invalid strong-instrument design has a direct effect δ=0.3, violating exclusion. Both procedures reject the candidate structural effect in all 500 simulations: **the AR test is robust to weak relevance, not to invalid instruments**. Inverting the AR test across candidate effects can yield unbounded or disconnected confidence sets, but this extension checks only whether the known value belongs to that set. It does not claim to calculate or summarize the complete set. The experiment requires NumPy and SciPy, saves `weak_iv_inference_results.csv`, and includes deterministic regression tests.
 
 ## Multiple instruments and overidentification
 
@@ -249,7 +245,7 @@ The existence of more candidate variables should not be confused with more indep
 
 ## Why the median and RMSE disagree
 
-In the weak valid design, the Monte Carlo median estimate of about 1.0346 is almost exactly the structural effect. Yet its mean is 1.1290 and its RMSE is nearly 8.75. This combination would look contradictory if one assumed that an estimator with a good typical value must have low average squared error.
+In the weak valid design, the Monte Carlo median estimate of about 1.0346 is almost exactly the structural effect. Yet its mean is 1.1290 and its RMSE is approximately 3.2620. This combination would look contradictory if one assumed that an estimator with a good typical value must have low average squared error.
 
 The discrepancy is mathematical. RMSE squares the error before averaging. A small number of enormous estimates can dominate this calculation. The sample mean can also be pulled strongly by a few tail observations. The median is resistant to their magnitude and therefore describes the centre of the realized distribution more faithfully here.
 
@@ -289,7 +285,7 @@ The strong invalid scenario violates exclusion by adding a direct effect of Z to
 
 The simulation uses 500 datasets of 1,000 observations per scenario. Extreme weak-IV estimates can make Monte Carlo moments highly sensitive to the number of replications and seed. Reporting a numerical mean and RMSE does not imply that the corresponding theoretical moments are well behaved. That qualification is especially important for the weakest instrument.
 
-The first-stage F-statistic is computed for a single-instrument linear model with an intercept. This is not a substitute for diagnostics designed for heteroskedastic settings, multiple endogenous variables or many instruments. Nor does this article provide formal weak-IV-robust confidence sets.
+The first-stage F-statistic is computed for a single-instrument linear model with an intercept. This is not a substitute for diagnostics designed for heteroskedastic settings, multiple endogenous variables or many instruments. The accompanying extension evaluates Anderson–Rubin test non-rejection at the known coefficient but does not invert the tests across candidate coefficients to report complete weak-IV-robust confidence sets.
 
 The experiment is not an empirical evaluation of job-search support, educational attainment or any other real intervention. It demonstrates what the specified estimators do under known mechanisms. Deciding whether a proposed instrument is credible in a substantive application remains a separate research task.
 
@@ -302,6 +298,8 @@ The two failure modes demand different interpretations. Weak relevance creates n
 A strong first-stage F-statistic does not establish a valid causal design, and a plausible identification identity does not guarantee stable finite-sample estimation. Both identification and inference matter. The next investigations will examine designs that use discontinuities and other localized treatment variation, where the same obligation remains: define the counterfactual, justify why it is identified, and only then estimate its effect.
 
 ## Code and reproducibility
+
+Equations above use Unicode symbols and explicit division parentheses so that the mathematics remains readable when copied to Medium, which does not reliably render LaTeX display math.
 
 The experiment is implemented in `causal_inference_statistics/part7/experiment.py`. It generates the independent structural variables using NumPy, applies the published coefficients and records OLS, IV and first-stage summaries in `results.csv`. The random seed is 20261016 and no external dataset is required. The fifth and ninety-fifth percentiles are Monte Carlo quantiles, not fitted confidence limits; the calculations deliberately retain extreme weak-instrument results.
 
