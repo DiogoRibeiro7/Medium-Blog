@@ -7,6 +7,7 @@ Status: pre-publication review ledger (2026-11-02). This is a verification map, 
 | Highest U.S. individual statutory marginal rate, 1964–2018 | IRS Statistics of Income Table 23 via FRED IITTRHB; `data/top_marginal_rate_1964_2018.csv` | Descriptive top bracket, not average effective tax; cross-check 1970s earned-income cap and pre-1964 landmark claims against IRS schedules. |
 | Federal receipts relative to GDP, 1964–2018 | OMB/FRED FYFRGDA188S; `data/federal_receipts_gdp_1964_2018.csv` | Total federal receipts, fiscal-year amount divided by annual GDP. Not top-earner revenue or a causal revenue estimate. |
 | Federal receipt categories, 1964–2018 | OMB FY2027 Historical Table 2.3; `data/omb_receipts_by_source_1964_2018.csv` | Five categories, one decimal each; a different source vintage from FRED total receipts. Not a causal/incidence decomposition. |
+| Broad federal spending categories, 1964–2018 | OMB FY2027 Historical Table 3.1; `data/omb_outlays_by_function_1964_2018.csv` | Six superfunctions, including negative offsetting receipts; function labels are not causal policy effects. |
 | Federal balance and public debt, 1964–2018 | OMB/FRED FYFSGDA188S and FYPUGDA188S; `data/federal_balance_public_debt_1964_2018.csv` | Distinguish flow from stock; debt held by public differs from gross federal debt. |
 | Net federal outlays versus receipts | OMB/FRED FYONGDA188S, FYFRGDA188S and FYFSGDA188S; `data/federal_net_outlays_gdp_1964_2018.csv` | Accounting identity reconciled within 0.00015 percentage points, not an attribution to tax statutes. |
 | Real GDP growth and gross private domestic investment share | BEA/FRED; `data/real_growth_private_investment_1964_2018.csv` | GDP growth and investment/GDP have different denominators and units. Gross investment includes housing and inventories. |
@@ -27,7 +28,8 @@ Status: pre-publication review ledger (2026-11-02). This is a verification map, 
 - [ ] Audit the quoted 2017-act incidence and investment-response estimates against primary texts, including horizons and uncertainty.
 - [ ] Obtain or explicitly scope out historical CBO after-transfer/after-tax series and fixed-investment components.
 - [x] Freeze OMB revenue-by-source categories with documented vintage differences.
-- [ ] Complete a spending-by-function breakdown with a consistent source and scope.
+- [x] Freeze OMB broad spending-by-function categories with a consistent FY2027 vintage.
+- [ ] Audit finer spending categories where needed to evaluate public-investment tradeoffs.
 - [ ] Regenerate charts, verify source provenance and byte-level deterministic artifacts in CI.
 - [ ] Convert publication figures into Medium-compatible image files, add alt text and clear captions.
 - [ ] Review the final manuscript and add it to the historical-series index only after verification.
