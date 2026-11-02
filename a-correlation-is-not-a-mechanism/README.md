@@ -1,6 +1,6 @@
 # Article #35 — A Correlation Is Not a Mechanism
 
-This directory develops a causal-identification article with nine planned synthetic experiments. **Currently implemented: all nine experimental models; archival figures and manuscript are pending.** The manuscript, figures, remaining studies and scientific audit are not complete.
+This directory develops a causal-identification article using nine completed synthetic experiments. The 18 canonical CSV evidence tables and nine PNG figures are archived. The long-form manuscript, executable notebook, independent scientific audit and CI workflow remain to be completed.
 
 ## Reproduce current studies
 
@@ -8,6 +8,7 @@ This directory develops a causal-identification article with nine planned synthe
 python -m pip install -r requirements.txt
 python -m unittest discover -s tests -v
 python analysis.py --output-dir /tmp/causal-identification-study
+python figures.py --data-dir /tmp/causal-identification-study --output-dir /tmp/causal-identification-figures
 ```
 
 The analysis writes eighteen CSVs (replicate-level and summary for each study) to the explicit output directory; it does not modify tracked evidence files. Default seed is `20261102` with 300 replications per study, each using a stable study-specific NumPy SeedSequence and independent child streams. Results are synthetic and are not empirical causal estimates.
