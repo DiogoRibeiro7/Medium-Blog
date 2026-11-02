@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import csv
+import math
 import os
 import tempfile
 import unittest
@@ -107,7 +108,7 @@ class SamplingStudiesTests(unittest.TestCase):
             self.assertGreaterEqual(float(summary["ci_high"]), float(summary["ci_low"]))
 
     def test_canonical_archives_match_independent_regeneration(self) -> None:
-        """Every archived replicate and summary must match the source code."""
+        """Verify identities exactly and floating metrics within BLAS tolerance."""
         canonical = NOTEBOOK.parent / "data"
         with tempfile.TemporaryDirectory() as directory:
             regenerated = Path(directory)
@@ -121,7 +122,20 @@ class SamplingStudiesTests(unittest.TestCase):
                             archive = list(csv.DictReader(handle))
                         with (regenerated / name).open(newline="", encoding="utf-8") as handle:
                             comparison = list(csv.DictReader(handle))
-                        self.assertEqual(archive, comparison)
+                        self.assertEqual(len(archive), len(comparison))
+                        for row_index, (expected, actual) in enumerate(zip(archive, comparison, strict=True)):
+                            self.assertEqual(expected.keys(), actual.keys())
+                            for field in expected:
+                                with self.subTest(row=row_index, field=field):
+                                    if field in {"study", "scenario", "method", "replicate", "repetitions"}:
+                                        self.assertEqual(expected[field], actual[field])
+                                    else:
+                                        lhs, rhs = float(expected[field]), float(actual[field])
+                                        self.assertTrue(math.isfinite(lhs) and math.isfinite(rhs))
+                                        self.assertTrue(
+                                            math.isclose(lhs, rhs, rel_tol=1e-12, abs_tol=1e-12),
+                                            f"{name} row {row_index}, {field}: {lhs} != {rhs}",
+                                        )
 
     def test_invalid_arguments(self) -> None:
         with self.assertRaises(ValueError):
