@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import csv
+import os
 import tempfile
 import unittest
 from pathlib import Path
@@ -11,6 +12,7 @@ import numpy as np
 
 from analysis import METHODS, STUDIES, rng_for, simulate, write_evidence
 from figures import FIGURE_NAMES, read_replications, render_all
+from notebook_builder import NOTEBOOK, build
 
 
 class SamplingStudiesTests(unittest.TestCase):
@@ -124,6 +126,39 @@ class SamplingStudiesTests(unittest.TestCase):
             self.assertTrue(all(path.is_file() and path.stat().st_size > 5000 for path in outputs))
             self.assertEqual(len(read_replications(data / "drift_replicates_quick.csv", "drift")), 3)
 
+    def test_notebook_is_deterministic_and_output_free(self) -> None:
+        """The checked-in notebook must match the source builder exactly."""
+        import nbformat
+
+        expected = build()
+        current = nbformat.read(NOTEBOOK, as_version=4)
+        self.assertEqual(expected, current)
+        self.assertTrue(all(not cell.get("outputs") for cell in current.cells if cell.cell_type == "code"))
+
+    @unittest.skipUnless(os.environ.get("RUN_NOTEBOOK_EXECUTION") == "1", "opt-in fresh kernel")
+    def test_notebook_from_external_working_directory(self) -> None:
+        """A fresh kernel runs without changing archival publication files."""
+        import nbformat
+        from nbclient import NotebookClient
+
+        with tempfile.TemporaryDirectory() as directory:
+            before = {path.name: path.read_bytes() for path in NOTEBOOK.parent.glob("data/*.csv")}
+            prior = os.environ.get("POPULATION_ARTICLE_DIR")
+            os.environ["POPULATION_ARTICLE_DIR"] = str(NOTEBOOK.parent)
+            try:
+                client = NotebookClient(nbformat.read(NOTEBOOK, as_version=4), timeout=120,
+                                        kernel_name="python3", resources={"metadata": {"path": directory}})
+                executed = client.execute()
+                self.assertEqual(len([cell for cell in executed.cells if cell.cell_type == "code"]), 2)
+            finally:
+                if prior is None:
+                    os.environ.pop("POPULATION_ARTICLE_DIR", None)
+                else:
+                    os.environ["POPULATION_ARTICLE_DIR"] = prior
+            after = {path.name: path.read_bytes() for path in NOTEBOOK.parent.glob("data/*.csv")}
+            self.assertEqual(before, after)
+
 
 if __name__ == "__main__":
     unittest.main()
+
