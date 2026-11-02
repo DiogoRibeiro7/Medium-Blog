@@ -205,6 +205,14 @@ An annual deficit is the difference between federal receipts and federal net out
 
 The [accounting identity] makes the fiscal constraint visible: a lower revenue share must coincide with a lower spending share, a larger deficit, or some combination, relative to the relevant comparison. But the three observed time series do not identify which laws generated each movement. GDP appears in every denominator, spending includes automatic cyclical responses, and observed receipts reflect both tax rules and the tax base. A convincing claim that an upper-income tax cut paid for itself requires revenues under the reform to be compared against revenues under a defensible no-reform counterfactual—not merely against receipts in the year before legislation.
 
+### What changed in the tax mix?
+
+Total receipts can conceal changes in *who and what is being taxed*. The Office of Management and Budget's [Historical Table 2.3](https://www.whitehouse.gov/omb/information-resources/budget/historical-tables/) now provides a frozen [1964–2018 decomposition](data/omb_receipts_by_source_1964_2018.csv) into individual income taxes, corporate income taxes, social insurance and retirement receipts, excise taxes, and other receipts, each expressed as a share of nominal GDP. The [three-series chart](results/receipt_composition.svg) highlights the largest categories; the remaining two are preserved in the CSV.
+
+In this OMB vintage, corporate income-tax receipts were 2.3% of GDP in fiscal 1980 and 1.8% in 1988; social-insurance and retirement receipts were 5.7% and 6.5%, respectively. In fiscal 2017, corporate income-tax receipts were 1.5% of GDP, compared with 1.0% in 2018; individual income-tax receipts were 8.2% in both years. This does not show the tax burden borne by wealthy households. Nor can the decline in corporate receipts be assigned entirely to tax cuts without considering profits, business cycles, the tax base, realizations, timing, and other legislative changes.
+
+The [source note](data/omb_receipts_by_source_sources.md) matters for cross-chart interpretation. OMB reports these categories to one decimal place in its FY2027 historical-table vintage. The previously frozen FRED total-receipts series is a different revision and cannot be required to match the newer OMB table exactly. The category mix adds descriptive context, but identifying the marginal effect of a reform still requires a coherent counterfactual and consistent incidence conventions.
+
 ## 9. A compact model of the missing mechanism
 
 The familiar supply-side story can be expressed as a chain:
