@@ -17,7 +17,7 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
-from causal_studies import STUDY_IDS
+from analysis import STUDY_IDS
 
 
 TITLES: dict[str, str] = {
