@@ -60,6 +60,14 @@ For example, a tax reduction may increase a household's incentive to acquire ski
 
 The postwar chapter should therefore be read as a warning against mechanical “rates caused growth” narratives on both sides. Historical coincidence can falsify an absolute claim that high top rates make growth impossible. It cannot supply the counterfactual growth path for an economy that never enacted those rates.
 
+### A documented statutory-rate timeline
+
+The accompanying [IRS/FRED annual series](data/top_marginal_rate_1964_2018.csv) gives the highest U.S. individual regular-income-tax bracket rate for every year from 1964 to 2018. The rate fell from 77% in 1964 to 70% in 1965. It was 70% in 1980, 50% in 1982, 38.5% in 1987, and 28% in 1988. After reaching 39.6% in 1993, it fell to 35% in 2003, rose to 39.6% in 2013, and fell to 37% in 2018. These figures are statutory rate observations, not tax burdens actually paid by wealthy households.
+
+The [source-linked descriptive chart](results/historical_top_rate.svg) and its [provenance note](data/historical_rates_sources.md) record the IRS Statistics of Income Table 23 series distributed as FRED IITTRHB. The 1970s top-rate comparison requires special caution: the rate for earned income was capped at 50%, while the 70% schedule concerned other income. Changing bracket thresholds, surtaxes, deductions, and tax bases further limit direct comparability. A later publication PNG is still needed for Medium's image workflow; the SVG is a versioned analytical preview.
+
+The series establishes the timing and size of particular statutory changes. It **cannot** show whether these changes caused higher or lower growth, investment, wages, inequality, or receipts. Those outcomes require separately sourced panels and a credible identification strategy. This distinction is precisely why the historical comparison begins with measurement rather than a regression of GDP on a headline tax rate.
+
 ## 4. The 1980s: Reagan's rate cuts did not occur in a laboratory
 
 The Economic Recovery Tax Act of 1981 and the Tax Reform Act of 1986 are often grouped into a single story about supply-side economics. They are better understood separately. The 1981 law made substantial individual tax reductions, while the 1986 reform sharply lowered statutory rates and broadened important parts of the tax base. Corporate and individual changes, depreciation rules, and incentives did not all move in the same direction. The political and economic context also changed between enactments.
