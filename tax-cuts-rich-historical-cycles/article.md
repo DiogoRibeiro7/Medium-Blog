@@ -361,9 +361,9 @@ Economic history is most useful when it prevents us from making the same inferen
 
 ## Research notes: boundaries and follow-up work
 
-This manuscript is a **historical and methodological synthesis**, not a new econometric estimate. The accompanying Python research package now contains nine versioned descriptive or explicitly hypothetical figures, frozen source-linked annual series for 1964–2018 where available, and 42 local tests. Its fiscal ratios, statutory rates, business investment, inequality and household resources measures represent different concepts and are not estimated effects of any single tax law.
+This manuscript is a **historical and methodological synthesis**, not a new econometric estimate. The accompanying Python research package now contains eleven versioned descriptive or explicitly hypothetical SVG figures, frozen source-linked annual series for 1964–2018 where available, and a path-scoped CI suite. Its fiscal ratios, statutory rates, business investment, inequality and household resources measures represent different concepts and are not estimated effects of any single tax law.
 
-The [claim-and-source audit](CLAIM_AUDIT.md) lists the evidence supporting each major numerical claim and the remaining independent verification work. Pending tasks include earlier-period statutory validation, full after-tax distributional history, investment components, revenue-category breakdown, the literature's identifying assumptions, source/claim checks and Medium-ready image formats. The illustrative sensitivity grid is not a factual policy forecast; additional financing scenarios (debt, spending reductions and alternative taxation) remain proposed extensions.
+The [claim-and-source audit](CLAIM_AUDIT.md) lists the evidence supporting each major numerical claim and the remaining independent verification work. Pending tasks include earlier-period statutory validation, full after-tax distributional history, investment components, revenue-category breakdown, the literature's identifying assumptions, source/claim checks and final visual inspection of the [Medium PNG export bundle](MEDIUM_FIGURES.md). The illustrative sensitivity grid is not a factual policy forecast; additional financing scenarios (debt, spending reductions and alternative taxation) remain proposed extensions.
 
 ## References and primary-source reading
 
