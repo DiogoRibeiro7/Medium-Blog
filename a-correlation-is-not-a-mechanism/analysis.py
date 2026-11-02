@@ -17,7 +17,7 @@ import numpy as np
 
 
 DEFAULT_SEED = 20261102
-STUDY_IDS = ("confounding", "simpson", "collider")
+STUDY_IDS = ("confounding", "simpson", "collider", "mediator", "instrument", "backdoor")
 
 
 @dataclass(frozen=True)
@@ -155,12 +155,117 @@ def collider_theoretical_slope(collider_noise_variance: float = 1.0) -> float:
     return -1.0 / (1.0 + collider_noise_variance)
 
 
+def mediator_experiment(
+    rng: np.random.Generator, replicate: int, sample_size: int = 1500
+) -> list[StudyResult]:
+    """Distinguish randomized total and controlled-direct effects.
+
+    T is randomized; M=0.8*T+eps_M; Y=T+1.5*M+eps_Y. The total
+    effect is 2.2, whereas the controlled direct effect is 1.0. Both
+    are identified here because there is no mediator-outcome confounding.
+    """
+
+    if sample_size < 4:
+        raise ValueError("sample_size must be at least four")
+    treatment = rng.binomial(1, 0.5, size=sample_size).astype(float)
+    mediator = 0.8 * treatment + rng.normal(size=sample_size)
+    outcome = treatment + 1.5 * mediator + rng.normal(size=sample_size)
+    total = _slope(treatment, outcome)
+    direct = float(np.linalg.lstsq(
+        np.column_stack((np.ones(sample_size), treatment, mediator)),
+        outcome, rcond=None,
+    )[0][1])
+    return [
+        StudyResult("mediator", "randomized_mediation", "total", replicate, total, 2.2),
+        StudyResult("mediator", "randomized_mediation", "direct", replicate, direct, 1.0),
+    ]
+
+
+def instrument_experiment(
+    rng: np.random.Generator, replicate: int, sample_size: int = 2000
+) -> list[StudyResult]:
+    """Contrast a valid instrument against direct-path exclusion violation.
+
+    Z is independent of U. T=0.8*Z+U+eps_T. Y=1.2*T+gamma*Z+1.5*U+eps_Y.
+    The population Wald estimand is 1.2+gamma/0.8, whereas the structural
+    intervention effect of T is 1.2 in both scenarios.
+    """
+
+    if sample_size < 4:
+        raise ValueError("sample_size must be at least four")
+    instrument = rng.normal(size=sample_size)
+    latent = rng.normal(size=sample_size)
+    treatment = 0.8 * instrument + latent + rng.normal(size=sample_size)
+    denominator = _slope(instrument, treatment)
+    if abs(denominator) < 1e-12:
+        raise RuntimeError("near-zero sample first stage")
+    results: list[StudyResult] = []
+    shared_noise = rng.normal(size=sample_size)
+    for label, gamma in (("valid_exclusion", 0.0), ("exclusion_violation", 0.4)):
+        outcome = 1.2 * treatment + gamma * instrument + 1.5 * latent + shared_noise
+        wald = _slope(instrument, outcome) / denominator
+        results.append(StudyResult("instrument", label, "wald", replicate, wald, 1.2))
+    return results
+
+
+def instrument_theoretical_wald(gamma: float, first_stage: float = 0.8) -> float:
+    """Population instrumental-variable ratio for this linear model."""
+
+    if first_stage == 0.0 or not math.isfinite(first_stage) or not math.isfinite(gamma):
+        raise ValueError("finite nonzero first stage and finite direct path required")
+    return 1.2 + gamma / first_stage
+
+
+def backdoor_experiment(
+    rng: np.random.Generator, replicate: int, sample_size: int = 1800
+) -> list[StudyResult]:
+    """Compare an admissible adjustment set with a collider-augmented set.
+
+    U causes both T and Y. V causes Y and the collider C, while T also
+    causes C. Adjusting for U blocks confounding; adding C opens T->C<-V->Y.
+    """
+
+    if sample_size < 4:
+        raise ValueError("sample_size must be at least four")
+    latent = rng.normal(size=sample_size)
+    competing_cause = rng.normal(size=sample_size)
+    treatment = 0.9 * latent + rng.normal(size=sample_size)
+    collider = treatment + competing_cause + rng.normal(size=sample_size)
+    outcome = 1.0 * treatment + 1.2 * latent + 1.4 * competing_cause + rng.normal(size=sample_size)
+    naive = _slope(treatment, outcome)
+    adjusted = float(np.linalg.lstsq(
+        np.column_stack((np.ones(sample_size), treatment, latent)), outcome, rcond=None,
+    )[0][1])
+    collider_adjusted = float(np.linalg.lstsq(
+        np.column_stack((np.ones(sample_size), treatment, latent, collider)), outcome, rcond=None,
+    )[0][1])
+    return [
+        StudyResult("backdoor", "confounder_and_collider", "naive", replicate, naive, 1.0),
+        StudyResult("backdoor", "confounder_and_collider", "valid_adjustment", replicate, adjusted, 1.0),
+        StudyResult("backdoor", "confounder_and_collider", "collider_adjustment", replicate, collider_adjusted, 1.0),
+    ]
+
+
+def backdoor_theoretical_collider_bias() -> float:
+    """Exact linear-Gaussian collider-adjustment bias after controlling U."""
+
+    # After controlling U, T's residual is independent of V, and C=T+V+eps.
+    # Conditioning on C gives coefficient -1.4/(1+1) on T through V.
+    return -0.7
+
+
 EXPERIMENTS: dict[str, Callable[[np.random.Generator, int, int], list[StudyResult]]] = {
     "confounding": confounding_experiment,
     "simpson": simpson_experiment,
     "collider": collider_experiment,
+    "mediator": mediator_experiment,
+    "instrument": instrument_experiment,
+    "backdoor": backdoor_experiment,
 }
-DEFAULT_SIZES = {"confounding": 1000, "simpson": 4000, "collider": 1500}
+DEFAULT_SIZES = {
+    "confounding": 1000, "simpson": 4000, "collider": 1500,
+    "mediator": 1500, "instrument": 2000, "backdoor": 1800,
+}
 
 
 def simulate(study: str, repetitions: int = 300, seed: int = DEFAULT_SEED) -> list[StudyResult]:
