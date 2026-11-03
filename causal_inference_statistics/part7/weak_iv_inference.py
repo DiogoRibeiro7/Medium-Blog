@@ -11,6 +11,7 @@ its t test has exact finite-sample size at the true structural coefficient.
 from __future__ import annotations
 
 import csv
+from dataclasses import dataclass
 from pathlib import Path
 
 import numpy as np
@@ -28,6 +29,80 @@ SCENARIOS: dict[str, tuple[float, float]] = {
     "valid_weak": (0.1, 0.0),
     "invalid_strong": (1.0, 0.3),
 }
+
+
+@dataclass(frozen=True)
+class ARConfidenceSet:
+    """A union of closed intervals; infinite endpoints indicate unboundedness."""
+
+    intervals: tuple[tuple[float, float], ...]
+
+    @property
+    def shape(self) -> str:
+        """Classify the geometry of the inverted confidence set."""
+        if len(self.intervals) == 2:
+            return "disconnected"
+        lower, upper = self.intervals[0]
+        if np.isneginf(lower) and np.isposinf(upper):
+            return "all_real"
+        if np.isinf(lower) or np.isinf(upper):
+            return "half_line"
+        return "bounded"
+
+    def contains(self, value: float) -> bool:
+        """Check membership in any component, including infinite intervals."""
+        return any(low <= value <= high for low, high in self.intervals)
+
+
+def invert_anderson_rubin(
+    z: NDArray[np.float64],
+    x: NDArray[np.float64],
+    y: NDArray[np.float64],
+    cutoff: float,
+) -> ARConfidenceSet:
+    """Analytically invert the two-sided homoskedastic AR t test.
+
+    The accepted coefficients satisfy a quadratic inequality derived from
+    the regression of Y-beta*X on an intercept and Z. This avoids a finite
+    candidate grid, which would incorrectly truncate unbounded sets.
+    """
+    n: int = len(z)
+    if n < 3 or len(x) != n or len(y) != n or cutoff <= 0:
+        raise ValueError("Expected matched arrays of length >=3 and positive cutoff")
+    zc = z - z.mean()
+    xc = x - x.mean()
+    yc = y - y.mean()
+    zz: float = float(zc @ zc)
+    if zz <= 0:
+        raise ValueError("The instrument must have nonzero sample variance")
+    zy: float = float(zc @ yc)
+    zx: float = float(zc @ xc)
+    yp = yc - (zy / zz) * zc
+    xp = xc - (zx / zz) * zc
+    factor: float = cutoff * cutoff * zz
+    a: float = (n - 2) * zx * zx - factor * float(xp @ xp)
+    b: float = -2 * (n - 2) * zx * zy + 2 * factor * float(xp @ yp)
+    c: float = (n - 2) * zy * zy - factor * float(yp @ yp)
+    scale: float = max(abs(a), abs(b), abs(c), 1.0)
+    tolerance: float = 1e-12 * scale
+    if abs(a) <= tolerance:
+        if abs(b) <= tolerance:
+            if c <= tolerance:
+                return ARConfidenceSet(((-np.inf, np.inf),))
+            raise ArithmeticError("Empty AR set: inspect numerical conditioning")
+        root = -c / b
+        return ARConfidenceSet(((-np.inf, root),) if b > 0 else ((root, np.inf),))
+    discriminant: float = b * b - 4 * a * c
+    if discriminant < -1e-12 * max(b * b, abs(4 * a * c), 1.0):
+        if a < 0:
+            return ARConfidenceSet(((-np.inf, np.inf),))
+        raise ArithmeticError("Empty AR set: inspect numerical conditioning")
+    root_delta: float = np.sqrt(max(discriminant, 0.0))
+    low: float = min((-b - root_delta) / (2 * a), (-b + root_delta) / (2 * a))
+    high: float = max((-b - root_delta) / (2 * a), (-b + root_delta) / (2 * a))
+    if a > 0:
+        return ARConfidenceSet(((low, high),))
+    return ARConfidenceSet(((-np.inf, low), (high, np.inf)))
 
 
 def test_statistics(
@@ -68,6 +143,7 @@ def run() -> list[dict[str, str | float | int]]:
     for scenario, (first_stage, direct_effect) in SCENARIOS.items():
         wald_covers: list[bool] = []
         ar_accepts: list[bool] = []
+        ar_sets: list[ARConfidenceSet] = []
         first_stage_f: list[float] = []
         for _ in range(REPLICATIONS):
             z, u, v, noise = rng.standard_normal((4, SAMPLE_SIZE))
@@ -76,6 +152,7 @@ def run() -> list[dict[str, str | float | int]]:
             estimate, se, ar_t = test_statistics(z, x, y)
             wald_covers.append(abs(estimate - TRUE_EFFECT) <= cutoff * se)
             ar_accepts.append(abs(ar_t) <= cutoff)
+            ar_sets.append(invert_anderson_rubin(z, x, y, cutoff))
             r: float = float(np.corrcoef(z, x)[0, 1])
             first_stage_f.append((SAMPLE_SIZE - 2) * r * r / (1 - r * r))
         rows.append(
@@ -86,6 +163,11 @@ def run() -> list[dict[str, str | float | int]]:
                 "nominal_coverage": 1 - ALPHA,
                 "wald_coverage_of_true_effect": float(np.mean(wald_covers)),
                 "ar_nonrejection_of_true_effect": float(np.mean(ar_accepts)),
+                "ar_set_coverage_of_true_effect": float(np.mean([item.contains(TRUE_EFFECT) for item in ar_sets])),
+                "ar_bounded_fraction": float(np.mean([item.shape == "bounded" for item in ar_sets])),
+                "ar_disconnected_fraction": float(np.mean([item.shape == "disconnected" for item in ar_sets])),
+                "ar_half_line_fraction": float(np.mean([item.shape == "half_line" for item in ar_sets])),
+                "ar_all_real_fraction": float(np.mean([item.shape == "all_real" for item in ar_sets])),
                 "fraction_first_stage_f_below_10": float(np.mean(np.array(first_stage_f) < 10)),
                 "median_first_stage_f": float(np.median(first_stage_f)),
             }

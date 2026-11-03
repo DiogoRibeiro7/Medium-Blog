@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 640" role="img" aria-labelledby="title desc">
+<title id="title">U.S. federal receipts and net outlays as percentages of GDP, 1964–2018</title>
+<desc id="desc">Annual OMB/FRED federal receipts and net outlays, whose difference equals the annual budget balance. Observed movements do not identify tax-policy effects.</desc>
+<rect width="1100" height="640" fill="white"/>
+<text x="550" y="38" text-anchor="middle" font-family="sans-serif" font-size="22" font-weight="bold">Federal receipts and net outlays, 1964–2018</text>
+<text x="550" y="65" text-anchor="middle" font-family="sans-serif" font-size="14">OMB/FRED · percent of annual nominal GDP · federal fiscal-year numerators</text>
+<line x1="100.0" x2="1010.0" y1="468.00" y2="468.00" stroke="#ddd"/>
+<text x="86" y="473.00" text-anchor="end" font-family="sans-serif" font-size="13">12%</text>
+<line x1="100.0" x2="1010.0" y1="396.40" y2="396.40" stroke="#ddd"/>
+<text x="86" y="401.40" text-anchor="end" font-family="sans-serif" font-size="13">15%</text>
+<line x1="100.0" x2="1010.0" y1="324.80" y2="324.80" stroke="#ddd"/>
+<text x="86" y="329.80" text-anchor="end" font-family="sans-serif" font-size="13">18%</text>
+<line x1="100.0" x2="1010.0" y1="253.20" y2="253.20" stroke="#ddd"/>
+<text x="86" y="258.20" text-anchor="end" font-family="sans-serif" font-size="13">21%</text>
+<line x1="100.0" x2="1010.0" y1="181.60" y2="181.60" stroke="#ddd"/>
+<text x="86" y="186.60" text-anchor="end" font-family="sans-serif" font-size="13">24%</text>
+<line x1="100.0" x2="1010.0" y1="110.00" y2="110.00" stroke="#ddd"/>
+<text x="86" y="115.00" text-anchor="end" font-family="sans-serif" font-size="13">27%</text>
+<text x="100.00" y="495" text-anchor="middle" font-family="sans-serif" font-size="13">1964</text>
+<text x="268.52" y="495" text-anchor="middle" font-family="sans-serif" font-size="13">1974</text>
+<text x="437.04" y="495" text-anchor="middle" font-family="sans-serif" font-size="13">1984</text>
+<text x="605.56" y="495" text-anchor="middle" font-family="sans-serif" font-size="13">1994</text>
+<text x="774.07" y="495" text-anchor="middle" font-family="sans-serif" font-size="13">2004</text>
+<text x="942.59" y="495" text-anchor="middle" font-family="sans-serif" font-size="13">2014</text>
+<text x="1010.00" y="495" text-anchor="middle" font-family="sans-serif" font-size="13">2018</text>
+<polyline points="100.00,361.73 116.85,378.80 133.70,370.51 150.56,341.37 167.41,366.27 184.26,316.10 201.11,325.66 217.96,370.97 234.81,367.59 251.67,367.95 268.52,347.84 285.37,359.07 302.22,374.68 319.07,346.78 335.93,348.88 352.78,333.54 369.63,322.46 386.48,308.42 403.33,313.46 420.19,359.98 437.04,360.46 453.89,350.64 470.74,353.56 487.59,334.46 504.44,339.99 521.30,335.11 538.15,341.37 555.00,345.53 571.85,354.98 588.70,352.71 605.56,342.20 622.41,332.10 639.26,324.83 656.11,314.99 672.96,300.99 689.81,301.55 706.67,282.89 723.52,305.33 740.37,349.72 757.22,383.10 774.07,387.11 790.93,360.21 807.78,338.61 824.63,330.96 841.48,346.55 858.33,407.40 875.19,411.41 892.04,401.98 908.89,394.65 925.74,362.04 942.59,344.86 959.44,330.59 976.30,339.80 993.15,351.00 1010.00,369.79" stroke="#2779a3" fill="none" stroke-width="3"/>
+<polyline points="100.00,341.10 116.85,374.26 133.70,359.66 150.56,317.39 167.41,302.43 184.26,323.70 201.11,319.34 217.96,323.78 234.81,323.98 251.67,342.99 268.52,338.37 285.37,283.65 302.22,280.75 319.07,285.26 335.93,288.81 352.78,296.54 369.63,260.80 386.48,249.66 403.33,222.12 420.19,223.50 437.04,250.89 453.89,233.86 470.74,238.26 487.59,260.86 504.44,269.26 521.30,270.54 538.15,252.91 555.00,241.18 571.85,248.71 588.70,263.96 605.56,275.66 622.41,280.88 639.26,293.07 656.11,308.90 672.96,319.23 689.81,332.67 706.67,337.89 723.52,334.25 740.37,315.27 757.22,304.44 774.07,306.49 790.93,301.94 807.78,295.74 824.63,304.46 841.48,272.45 858.33,174.52 875.19,206.13 892.04,203.15 908.89,236.57 925.74,265.93 942.59,279.15 959.44,273.33 976.30,265.25 993.15,269.99 1010.00,279.79" stroke="#bc6938" fill="none" stroke-width="3"/>
+<line x1="310" x2="355" y1="523" y2="523" stroke="#2779a3" stroke-width="4"/>
+<text x="363" y="529" font-family="sans-serif" font-size="15">Federal receipts</text>
+<line x1="600" x2="645" y1="523" y2="523" stroke="#bc6938" stroke-width="4"/>
+<text x="653" y="529" font-family="sans-serif" font-size="15">Federal net outlays</text>
+<text x="550" y="563" text-anchor="middle" font-family="sans-serif" font-size="14">Receipts − outlays = surplus (or deficit); independently checked for all 55 years.</text>
+<text x="550" y="587" text-anchor="middle" font-family="sans-serif" font-size="14">An accounting gap is not the causal effect of any tax reform.</text>
+<text x="550" y="613" text-anchor="middle" font-family="sans-serif" font-size="13">Source: OMB / FRED FYFRGDA188S, FYONGDA188S, FYFSGDA188S (2026 vintage).</text>
+</svg>

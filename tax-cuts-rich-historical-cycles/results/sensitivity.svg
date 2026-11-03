@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 790 480">
+<rect width="790" height="480" fill="white"/>
+<text x="395" y="32" text-anchor="middle" font-size="22" font-weight="bold">Hypothetical output response to a tax cut</text>
+<text x="395" y="58" text-anchor="middle" font-size="14">Rows: public capital productivity (g); columns: taxable-base elasticity (e)</text>
+<text x="300" y="88" text-anchor="middle">e = 0.0</text>
+<text x="480" y="88" text-anchor="middle">e = 0.5</text>
+<text x="660" y="88" text-anchor="middle">e = 1.0</text>
+<text x="195" y="168" text-anchor="end">g = 0.0</text>
+<text x="195" y="268" text-anchor="end">g = 0.3</text>
+<text x="195" y="368" text-anchor="end">g = 0.6</text>
+<rect x="210" y="115" width="172" height="92" fill="#d9ead3" stroke="#666"/>
+<text x="296" y="167" text-anchor="middle" font-size="23">+1.23%</text>
+<rect x="210" y="215" width="172" height="92" fill="#f4cccc" stroke="#666"/>
+<text x="296" y="267" text-anchor="middle" font-size="23">-1.27%</text>
+<rect x="210" y="315" width="172" height="92" fill="#f4cccc" stroke="#666"/>
+<text x="296" y="367" text-anchor="middle" font-size="23">-3.71%</text>
+<rect x="390" y="115" width="172" height="92" fill="#d9ead3" stroke="#666"/>
+<text x="476" y="167" text-anchor="middle" font-size="23">+1.23%</text>
+<rect x="390" y="215" width="172" height="92" fill="#f4cccc" stroke="#666"/>
+<text x="476" y="267" text-anchor="middle" font-size="23">-0.73%</text>
+<rect x="390" y="315" width="172" height="92" fill="#f4cccc" stroke="#666"/>
+<text x="476" y="367" text-anchor="middle" font-size="23">-2.65%</text>
+<rect x="570" y="115" width="172" height="92" fill="#d9ead3" stroke="#666"/>
+<text x="656" y="167" text-anchor="middle" font-size="23">+1.23%</text>
+<rect x="570" y="215" width="172" height="92" fill="#f4cccc" stroke="#666"/>
+<text x="656" y="267" text-anchor="middle" font-size="23">-0.17%</text>
+<rect x="570" y="315" width="172" height="92" fill="#f4cccc" stroke="#666"/>
+<text x="656" y="367" text-anchor="middle" font-size="23">-1.56%</text>
+<text x="395" y="446" text-anchor="middle" font-size="14">Invented parameters; colours show sign, not statistical significance</text>
+</svg>

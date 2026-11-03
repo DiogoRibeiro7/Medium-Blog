@@ -1,0 +1,63 @@
+name: Historical tax-response model
+
+on:
+  pull_request:
+    paths:
+      - "tax-cuts-rich-historical-cycles/**"
+      - ".github/workflows/tax-cuts-rich-historical-cycles.yml"
+      - ".gitattributes"
+  push:
+    branches: [main]
+    paths:
+      - "tax-cuts-rich-historical-cycles/**"
+      - ".github/workflows/tax-cuts-rich-historical-cycles.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  model:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Unit tests
+        run: python -m unittest discover -s tax-cuts-rich-historical-cycles -p "test_*.py" -v
+      - name: Regenerate scenario artifacts
+        run: python tax-cuts-rich-historical-cycles/model.py --out tax-cuts-rich-historical-cycles/results
+      - name: Regenerate documented IRS-rate chart
+        run: python tax-cuts-rich-historical-cycles/historical_rates.py
+      - name: Regenerate OMB/FRED receipts comparison
+        run: python tax-cuts-rich-historical-cycles/fiscal_context.py
+      - name: Regenerate BEA growth and investment chart
+        run: python tax-cuts-rich-historical-cycles/macro_context.py
+      - name: Regenerate Census income inequality figure
+        run: python tax-cuts-rich-historical-cycles/inequality_context.py
+      - name: Regenerate CBO household distribution comparison
+        run: python tax-cuts-rich-historical-cycles/cbo_distribution.py
+      - name: Regenerate BEA nonresidential investment comparison
+        run: python tax-cuts-rich-historical-cycles/nonresidential_investment.py
+      - name: Regenerate OMB fiscal balance and debt chart
+        run: python tax-cuts-rich-historical-cycles/fiscal_balance_debt.py
+      - name: Reconcile and regenerate OMB receipts and outlays
+        run: python tax-cuts-rich-historical-cycles/revenue_outlays.py
+      - name: Regenerate OMB receipt-composition chart
+        run: python tax-cuts-rich-historical-cycles/receipt_composition.py
+      - name: Regenerate OMB functional spending chart
+        run: python tax-cuts-rich-historical-cycles/outlay_composition.py
+      - name: Check committed evidence is reproducible
+        run: git diff --exit-code -- tax-cuts-rich-historical-cycles/results
+      - name: Install SVG rasterizer
+        run: python -m pip install --disable-pip-version-check "CairoSVG==2.7.1"
+      - name: Export publication PNGs at 2200 px
+        run: python tax-cuts-rich-historical-cycles/export_medium_png.py --out tax-cuts-rich-historical-cycles/publication_png
+      - name: Upload Medium-ready charts
+        uses: actions/upload-artifact@v4
+        with:
+          name: tax-cuts-rich-medium-png
+          path: tax-cuts-rich-historical-cycles/publication_png/*.png
+          if-no-files-found: error
+          retention-days: 30

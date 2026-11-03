@@ -175,7 +175,22 @@ The conventional standard error continues to decrease as the bandwidth expands. 
 
 The smallest bandwidth has substantially less approximation bias but more sampling variation. Interestingly, h=0.60 has the lowest observed RMSE, approximately 0.1397, even though its interval coverage is below nominal. Minimizing point-estimation RMSE and constructing a valid confidence interval are not the same objective. Bias that is tolerable for a point estimate may be unacceptable for conventional inference.
 
-The h=0.30 mean lies extremely close to −1, but the near-zero Monte Carlo bias is not a universal feature of that threshold. It reflects the particular curvature, finite sample and random seed. It would be inappropriate to recommend h=0.30 as an optimal general bandwidth on the basis of this single experiment.
+The h=0.30 Monte Carlo mean lies extremely close to −1, but that proximity is partly sampling variation: the population local-linear estimand is approximately −1.018, not exactly −1. A deterministic weighted-projection calculation separates this systematic smoothing bias from Monte Carlo noise. It would be inappropriate to recommend h=0.30 as an optimal general bandwidth on the basis of this single experiment.
+
+### The exact population smoothing bias
+
+Under the uniform running-variable distribution, triangular weights, and a quadratic term 2X² on the right side, the population weighted regression of the quadratic component on an intercept and X has right-side intercept **−0.2h²**. The left side has no quadratic component. Consequently, even with infinitely many observations and a fixed bandwidth h, the fitted RD intercept difference is −1−0.2h².
+
+| Bandwidth | Population local-linear target | Population smoothing bias | Simulated mean |
+| ---: | ---: | ---: | ---: |
+| 0.15 | −1.0045 | −0.0045 | −0.9775 |
+| 0.30 | −1.0180 | −0.0180 | −0.9999 |
+| 0.60 | −1.0720 | −0.0720 | −1.0652 |
+| 1.00 | −1.2000 | −0.2000 | −1.1965 |
+
+The agreement improves in absolute terms at broader bandwidths because the deterministic bias becomes large relative to Monte Carlo variability; the differences at narrow bandwidths reflect finite-sample variation across 400 replications. The full-range population bias is exactly −0.2 under the specified model, explaining why the original simulation's mean bias is close to −0.1965.
+
+This derivation is independently reproducible in `rd_population_bias.py`; numerical quadrature tests check the boundary intercept to eight decimal places. It makes a critical distinction: **identification remains valid at the cutoff, while a fixed positive bandwidth can converge to a biased local-polynomial approximation**.
 
 ## Results: a discontinuity in untreated prognosis
 
@@ -235,6 +250,22 @@ Covariate continuity is a meaningful falsification exercise when the variables a
 Multiple such tests also create interpretation problems: with many covariates, some rejection can arise by chance, while selecting or redesigning the study until all p-values exceed a threshold can bias the reported evidence. A joint test or a careful descriptive account may be more informative than treating every baseline p-value as an independent validity certificate.
 
 The correct question is why the threshold could plausibly be as good as locally random for the potential outcomes being studied. Administrative details, timing, incentives and knowledge of score construction matter. Diagnostics are evidence about observable implications of that explanation, not substitutes for it.
+
+## A falsification experiment with two observable diagnostics
+
+The separate `rd_falsification.py` extension adds 400 independent datasets for each of three mechanisms, again with 2,000 observations per dataset. It tests two observable implications at bandwidth 0.20: a **symmetric-bin density screen**, based on the count difference immediately above and below zero, and a triangular-weighted local-linear continuity test for a measured predetermined covariate. Both use a two-sided normal reference threshold of approximately 1.96.
+
+| Mechanism | Density screen rejects | Covariate screen rejects | Mean measured covariate jump |
+| --- | ---: | ---: | ---: |
+| Valid smooth benchmark | 3.0% | 4.75% | +0.004 |
+| Latent-prognosis discontinuity with measured proxy | 5.0% | 88.5% | +0.686 |
+| Explicit running-score sorting | 100.0% | 4.0% | +0.004 |
+
+The smooth benchmark has neither density nor covariate jumps. In the second design, the running variable remains uniform but the measured, pre-treatment prognosis proxy shifts by 0.7 at the cutoff; a density screen has no reason to reject, although the covariate test often does. In the third, scores are selected with twice the acceptance probability just above zero compared with just below it, generating a genuine density discontinuity, while an independent predetermined covariate remains balanced. The sorting scenario demonstrates a **diagnostic signal**, not automatically a failure of causal identification: manipulation undermines identification when it induces relevant differences in potential outcomes across the threshold.
+
+These are simplified screens, not a formal McCrary or bias-corrected local-polynomial density test. The count comparison presumes locally flat densities on either side of zero; a sloping but continuous density could trigger it in an applied dataset. The covariate statistic uses the same fixed-bandwidth HC1 approximation as the main demonstration and is not a joint balance test. A latent prognosis jump would remain undetected if the relevant covariate were unmeasured. These limitations are part of the lesson: falsification checks can challenge particular observable implications, but **passing them cannot certify continuity of potential outcomes**.
+
+The extension writes `rd_falsification_results.csv` using seed 20261103 and includes deterministic tests. It does not change the original 1,200-dataset outcome experiment or its archived results.
 
 ## The role of institutional knowledge
 
