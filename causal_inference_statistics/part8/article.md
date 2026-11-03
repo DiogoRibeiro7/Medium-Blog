@@ -251,6 +251,22 @@ Multiple such tests also create interpretation problems: with many covariates, s
 
 The correct question is why the threshold could plausibly be as good as locally random for the potential outcomes being studied. Administrative details, timing, incentives and knowledge of score construction matter. Diagnostics are evidence about observable implications of that explanation, not substitutes for it.
 
+## A falsification experiment with two observable diagnostics
+
+The separate `rd_falsification.py` extension adds 400 independent datasets for each of three mechanisms, again with 2,000 observations per dataset. It tests two observable implications at bandwidth 0.20: a **symmetric-bin density screen**, based on the count difference immediately above and below zero, and a triangular-weighted local-linear continuity test for a measured predetermined covariate. Both use a two-sided normal reference threshold of approximately 1.96.
+
+| Mechanism | Density screen rejects | Covariate screen rejects | Mean measured covariate jump |
+| --- | ---: | ---: | ---: |
+| Valid smooth benchmark | 3.0% | 4.75% | +0.004 |
+| Latent-prognosis discontinuity with measured proxy | 5.0% | 88.5% | +0.686 |
+| Explicit running-score sorting | 100.0% | 4.0% | +0.004 |
+
+The smooth benchmark has neither density nor covariate jumps. In the second design, the running variable remains uniform but the measured, pre-treatment prognosis proxy shifts by 0.7 at the cutoff; a density screen has no reason to reject, although the covariate test often does. In the third, scores are selected with twice the acceptance probability just above zero compared with just below it, generating a genuine density discontinuity, while an independent predetermined covariate remains balanced. The sorting scenario demonstrates a **diagnostic signal**, not automatically a failure of causal identification: manipulation undermines identification when it induces relevant differences in potential outcomes across the threshold.
+
+These are simplified screens, not a formal McCrary or bias-corrected local-polynomial density test. The count comparison presumes locally flat densities on either side of zero; a sloping but continuous density could trigger it in an applied dataset. The covariate statistic uses the same fixed-bandwidth HC1 approximation as the main demonstration and is not a joint balance test. A latent prognosis jump would remain undetected if the relevant covariate were unmeasured. These limitations are part of the lesson: falsification checks can challenge particular observable implications, but **passing them cannot certify continuity of potential outcomes**.
+
+The extension writes `rd_falsification_results.csv` using seed 20261103 and includes deterministic tests. It does not change the original 1,200-dataset outcome experiment or its archived results.
+
 ## The role of institutional knowledge
 
 One reason regression discontinuity can be credible is that administrative thresholds are often documented precisely. A rule might have been fixed before outcomes occurred, and people near the threshold may not have been able to control their position accurately. In such settings a local comparison can have a persuasive design-based interpretation.
