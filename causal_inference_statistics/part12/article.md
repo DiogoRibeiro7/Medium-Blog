@@ -228,7 +228,7 @@ For the exact oracle, the equal-effect boundaries are r and −3−r. The upper 
 
 These population benchmarks are distinct from the article's **finite-test-set** averages near 2.644. Each replication ranks exactly 240 of 1,200 newly sampled observations, so its realized cutoff and top-group mean differ from the deterministic population-threshold calculation. The near-equality of the empirical linear, quadratic and oracle policies is thus explained by the geometry of the true effect surface and the tiny probability mass in the distant lower tail; it is not evidence that the CATE is globally monotone or that the linear model estimates the full effect function correctly.
 
-The supplementary \`part12_policy_population.py\` evaluates these Gaussian integrals using only the Python standard library, and \`test_part12_policy_population.py\` verifies the capacity constraint, the two-tail oracle construction and the benchmark values. It does not change the original Monte Carlo design or its reported CSV.
+The supplementary `part12_policy_population.py` evaluates these Gaussian integrals using only the Python standard library, and `test_part12_policy_population.py` verifies the capacity constraint, the two-tail oracle construction and the benchmark values. It does not change the original Monte Carlo design or its reported CSV.
 
 ## Why a zero average effect would not settle the question
 
