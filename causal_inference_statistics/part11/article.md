@@ -134,6 +134,20 @@ The conditional-coefficient contrast averages 1.8066, close to the direct coeffi
 
 The contrast between these two failures matters more than choosing the estimator with the smallest numerical error. One procedure attempts g-computation with an insufficient outcome model, while the other uses a valid conditional model but extracts an estimand that excludes the mediated pathway. Statistical model validity and causal estimand validity are distinct questions.
 
+## An exact finite-sample decomposition of the fitted effect
+
+The linear specification permits an additional audit that does not rely on the Monte Carlo average. Within **each** fitted dataset, let \(\widehat\beta_{A_0},\widehat\beta_{L_1},\widehat\beta_{A_1}\) be the three relevant coefficients in the full outcome regression, and let \(\widehat\gamma_{A_0}\) be the first-treatment coefficient in the fitted model for the intermediate measurement. The standardized contrast computed by the script satisfies the exact identity
+
+\[
+\widehat\tau_{g}=\widehat\beta_{A_0}+\widehat\beta_{A_1}+\widehat\gamma_{A_0}\widehat\beta_{L_1}.
+\]
+
+The first two terms equal the script's conventional conditional-coefficient contrast; the final product is the fitted mediated contribution. This follows by substituting the fitted linear transition equation into the fitted linear outcome equation. The intercept, baseline terms and any sample mean of baseline prognosis cancel when the same observations are standardized under both regimes.
+
+This equality holds up to floating-point arithmetic in every finite sample. It does **not** require the fitted coefficients to equal their true structural values, and it is not a general identity for nonlinear outcomes, interactions or arbitrary dynamic regimes. A regression with the intermediate variable omitted has a separate exact identity: its regime contrast is simply the sum of the two treatment coefficients in the **reduced** outcome regression. Because that prediction never uses the simulated intermediate history, fitting the transition regression in that branch is redundant.
+
+The accompanying `test_part11_gformula_identity.py` checks both identities on independently generated data. They make the numerical comparison more interpretable: the near-1.8 conditional contrast omits a fitted pathway contribution near 1.56, whereas the approximately 4.11 reduced-model contrast absorbs associations through its misspecified treatment coefficients. These checks validate the implementation's algebra, not the causal assumptions in observational applications.
+
 ## Why the first intervention has a larger total effect
 
 The first treatment changes the immediate outcome contribution by 0.7, but it also changes the next-period prognosis L1 by 1.2. Since L1 influences final outcome with coefficient 1.3, the pathway through the intermediate state contributes an additional 1.56. The total effect of A0 holding the second treatment strategy fixed is therefore 2.26. The direct effect of A1 adds 1.1, producing the total 3.36.
@@ -148,7 +162,7 @@ The g-formula does not ignore the intermediate variable or treat it as an ordina
 
 Why does the misspecified g-computation estimate overshoot 3.36 rather than simply return the direct-effect sum 1.8? The answer is that omitting L1 is not equivalent to conditioning on it and removing a mediated path. It changes the fitted conditional outcome relationship. The omitted L1 is associated with A0 because A0 affects it, and associated with A1 because A1 assignment depends on it. It also directly contributes to Y. Regression coefficients for treatment can therefore absorb associations arising from the unmodelled intermediate process.
 
-The program fits separate outcome predictions for the A1 treatment groups under the misspecified model, but those groups differ in their observed L1 distribution. A1 then acts partly as a proxy for prognosis. This induces a different sort of error from simply extracting conditional direct coefficients in the correctly specified model.
+The program fits a single reduced outcome regression that excludes L1; because treatment A1 depends on the observed L1 history, its fitted coefficient absorbs some of that omitted prognostic association. A1 then acts partly as a proxy for prognosis. This induces a different sort of error from simply extracting conditional direct coefficients in the correctly specified model.
 
 This distinction is important in applied longitudinal evaluations. One might conclude that intermediate biomarkers, adherence measurements or updated risk scores should be omitted because they are affected by past treatment. That could be appropriate for certain simple total-effect regressions under restrictive designs, but it is not a general solution when the same variables also influence subsequent treatment assignment. A longitudinal method must deal with both causal roles.
 
