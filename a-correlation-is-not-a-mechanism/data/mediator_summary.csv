@@ -1,0 +1,3 @@
+study,scenario,method,repetitions,target,mean_estimate,bias,monte_carlo_se,sampling_sd
+mediator,randomized_mediation,direct,300,1.0,0.9989732383777357,-0.0010267616222643383,0.003210725555244607,0.05561139790843454
+mediator,randomized_mediation,total,300,2.2,2.2025838313375248,0.0025838313375246003,0.005194904194218176,0.0899783800483854

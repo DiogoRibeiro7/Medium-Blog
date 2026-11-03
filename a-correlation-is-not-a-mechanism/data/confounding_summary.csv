@@ -1,0 +1,3 @@
+study,scenario,method,repetitions,target,mean_estimate,bias,monte_carlo_se,sampling_sd
+confounding,common_cause,adjusted,300,1.0,0.9958106965489851,-0.00418930345101487,0.0019521088627030036,0.033811517321071
+confounding,common_cause,naive,300,1.0,1.7353297448950369,0.7353297448950369,0.00163444746542548,0.028309460524191078

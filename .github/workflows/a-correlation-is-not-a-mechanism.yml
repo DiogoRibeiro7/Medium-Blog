@@ -1,0 +1,57 @@
+name: Causal identification article studies
+
+on:
+  pull_request:
+    paths:
+      - 'a-correlation-is-not-a-mechanism/**'
+      - '.github/workflows/a-correlation-is-not-a-mechanism.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'a-correlation-is-not-a-mechanism/**'
+      - '.github/workflows/a-correlation-is-not-a-mechanism.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: causal-identification-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  study:
+    name: Numerical archive and notebook
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: a-correlation-is-not-a-mechanism
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+          cache-dependency-path: a-correlation-is-not-a-mechanism/requirements.txt
+      - name: Install dependencies
+        run: |
+          python -m pip install -r requirements.txt
+          python -m pip install nbconvert ipykernel
+      - name: Numerical tests and archived evidence audit
+        env:
+          OPENBLAS_NUM_THREADS: '1'
+        run: python -m unittest discover -s tests -v
+      - name: Fresh-kernel notebook execution
+        env:
+          OPENBLAS_NUM_THREADS: '1'
+          MPLBACKEND: Agg
+        run: jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=180 --output /tmp/causal-identification-executed.ipynb a_correlation_is_not_a_mechanism.ipynb
+      - name: Verify regenerated figure inventory
+        env:
+          OPENBLAS_NUM_THREADS: '1'
+          MPLBACKEND: Agg
+        run: |
+          python analysis.py --output-dir /tmp/causal-identification-data
+          python figures.py --data-dir /tmp/causal-identification-data --output-dir /tmp/causal-identification-figures
+          test "$(find /tmp/causal-identification-data -maxdepth 1 -name '*.csv' | wc -l)" -eq 18
+          test "$(find /tmp/causal-identification-figures -maxdepth 1 -name '*.png' | wc -l)" -eq 9

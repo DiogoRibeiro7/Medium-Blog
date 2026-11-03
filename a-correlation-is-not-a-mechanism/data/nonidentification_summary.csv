@@ -1,0 +1,3 @@
+study,scenario,method,repetitions,target,mean_estimate,bias,monte_carlo_se,sampling_sd
+nonidentification,causal_model,observed_slope,300,1.0,1.0008491058411477,0.0008491058411477237,0.0025693122869849634,0.04450179421568945
+nonidentification,confounded_model,observed_slope,300,0.0,0.9969987113549477,0.9969987113549477,0.002611666923749201,0.0452353980438073

@@ -1,0 +1,3 @@
+study,scenario,method,repetitions,target,mean_estimate,bias,monte_carlo_se,sampling_sd
+collider,gaussian_common_effect,conditioned,300,0.0,-0.49944134408750834,-0.49944134408750834,0.002308960855846514,0.03999237515013881
+collider,gaussian_common_effect,marginal,300,0.0,-0.001219314628203958,-0.001219314628203958,0.002069216391293129,0.03583987921574022
