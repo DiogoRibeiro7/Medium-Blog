@@ -1,6 +1,6 @@
 # Articles Developed in This Chat
 
-This is a chronological index of the thirty-four long-form articles developed in
+This is a chronological index of the thirty-five long-form articles developed in
 this conversation for `Medium-Blog`. It is **not** a complete
 catalogue of the repository's articles or historical notebooks.
 
@@ -41,6 +41,8 @@ catalogue of the repository's articles or historical notebooks.
 | 33 | [The Test Set Is Not an Oracle: Selection Bias, Leakage, Temporal Splits, and Adaptive Model Evaluation](the-test-set-is-not-an-oracle/article.md) | Cross-validation estimands, model-search optimism, nested selection, supervised preprocessing leakage, temporal drift and look-ahead features, group transfer, fold uncertainty, adaptive holdout reuse | 9 | [Study README](the-test-set-is-not-an-oracle/README.md) · [Python analysis](the-test-set-is-not-an-oracle/analysis.py) · [Notebook](the-test-set-is-not-an-oracle/the_test_set_is_not_an_oracle.ipynb) |
 
 | 34 | [A Dataset Is Not a Population: Selection, Coverage, Survey Weights, and the Limits of Representativeness](a-dataset-is-not-a-population/article.md) | Finite-population estimands, probability samples and stratification, nonresponse and frame undercoverage, volunteer-selection bias, calibration margins, inverse-probability weighting and clipping, effective sample size, predictive transport and concept drift | 9 | [Study README](a-dataset-is-not-a-population/README.md) · [Python analysis](a-dataset-is-not-a-population/analysis.py) · [Notebook](a-dataset-is-not-a-population/a_dataset_is_not_a_population.ipynb) |
+
+| 35 | [A Correlation Is Not a Mechanism: Confounding, Collider Bias, and the Limits of Observational Evidence](a-correlation-is-not-a-mechanism/article.md) | Confounding, Simpson's paradox, collider bias, mediation, instrumental variables, backdoor adjustment, positivity and overlap, nonidentification, prediction versus intervention | 9 | [Study README](a-correlation-is-not-a-mechanism/README.md) · [Python analysis](a-correlation-is-not-a-mechanism/analysis.py) · [Notebook](a-correlation-is-not-a-mechanism/a_correlation_is_not_a_mechanism.ipynb) |
 
 ## Reproducibility
 
