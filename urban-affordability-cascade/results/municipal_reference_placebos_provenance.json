@@ -1,0 +1,53 @@
+{
+  "evidence_class": "descriptive_reference_node_negative_control_undirected_2021_work_study_and_municipal_new_lease_rents",
+  "housing_upstream_commit": "0407faed1f08209b3d7682e19fc57e7120e62879",
+  "housing_panel_sha256": "88502e15b55a4d46536eed42ddc1924d30f555498d2c4a7e7a1b41fbeed71c66",
+  "commuting_source_status": "third-party workbook export attributed to INE; not independently re-fetched from INE",
+  "commuting_source_workbook_sha256": "7d6dbb58be8356c868c9d0d548a81db27025228f662c5c09d71cd4ba1ee7dace",
+  "commuting_derived_pairs_sha256": "0cd66cdefac5c8d5112f611e02217fda30916759d85f3b3f250d9080e055a8e2",
+  "commuting_reference_year": 2021,
+  "rent_comparison_years": [
+    2020,
+    2025
+  ],
+  "outcomes": [
+    "own_new_rent_growth_2020_2025_pct",
+    "reference_discount_compression_2020_2025_pp"
+  ],
+  "exposure_modes": [
+    "raw_interactions",
+    "per_1000_residents",
+    "share_of_amp_interactions"
+  ],
+  "reference_nodes": 17,
+  "comparators_per_reference": 16,
+  "reference_comparator_rows": 272,
+  "full_reference_rank_rows": 102,
+  "matched_porto_alternative_contrasts": 96,
+  "primary_leave_one_out_rows": 272,
+  "porto_primary_reference": {
+    "own_new_rent_growth_2020_2025_pct": {
+      "rho": "-0.385294118",
+      "absolute_rank_among_17": 2
+    },
+    "reference_discount_compression_2020_2025_pp": {
+      "rho": "-0.297058824",
+      "absolute_rank_among_17": 6
+    }
+  },
+  "alternative_references_more_negative_than_porto_on_same_15_own_growth": [
+    "Gondomar"
+  ],
+  "limits": [
+    "2021 Census-derived undirected work/study pair counts are not directional moves or residential displacement",
+    "Third-party commuting workbook is attributed to INE but not independently reconciled with a fresh official API response",
+    "2021 commuting exposure occurs after the 2020 rent baseline and is not an exogenous pretreatment measure",
+    "Changing a network reference is a descriptive negative control, not a randomized placebo or inferential p-value",
+    "Each full reference excludes itself; matched comparisons use identical sets of 15 other municipalities",
+    "Own municipal rent growth is reference-invariant; reference-relative rent discount compression changes with the reference rent denominator",
+    "Rent medians describe changing sets of newly signed contracts and are not quality-adjusted unit-level prices",
+    "Municipalities share national and metropolitan shocks and are not independent draws or exchangeable labels",
+    "Differences in correlation signs or magnitudes do not identify spillover transmission, migration flows or timing",
+    "Rank correlations, counts and leave-one-out variation cannot establish a causal relationship or welfare consequence"
+  ]
+}

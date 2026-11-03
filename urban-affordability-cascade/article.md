@@ -2122,6 +2122,181 @@ not an empirical conclusion from these screens.
 
 ---
 
+## Is the Porto commuting reference special—or would another municipality produce the pattern?
+
+The original cascade hypothesis has a geographic centre: a housing
+price shock in Porto might change where households search, placing
+pressure on adjoining or connected municipalities. Earlier network
+screens compared Porto's 2021 work/study interaction intensity with
+the subsequent ranking of rent changes. The evidence was already
+weaker than a simple outward-contagion story: the primary per-resident
+Porto-link association with 2020–2025 *Porto-relative rent-discount
+compression* was negative, about **−0.30**, and the measured
+work/study intensity was strongly collinear with centroid proximity.
+
+There is a further falsification question we can ask using no
+additional unobserved migration data. **Is the pattern specific
+to choosing Porto as the reference municipality?** A network
+may look predictive because its most connected locations are
+large, close or exposed to a shared metropolitan price cycle.
+If the analyst changes which node acts as the reference, the
+rank coefficient may change even though the underlying rental
+history has not. An exceptional coefficient might also be a
+consequence of omitting that reference from the comparison set.
+We therefore compute the same descriptive screens for **all 17
+AMP municipalities as reference nodes** and then compare them
+against Porto on *matched* municipality sets.
+
+The word *reference* is deliberate. The frozen 2021 network is
+a symmetric **work/study interaction** matrix transcribed from
+a third-party Census-derived workbook attributed to INE. It
+contains **no directed residential origins or destinations**.
+Calling a municipality a reference in this calculation does
+not make it the origin of a mover or an exogenous housing shock.
+The commuting extract remains checksum-validated, but its
+specific cells have **not** been independently reconciled with
+a fresh official INE API response. Because the links are measured
+in 2021, they are also **not a pre-2020 instrument** for the rent
+outcomes used below.
+
+### An anchor-rotation diagnostic with two different outcomes
+
+For every reference municipality \(i\), we use each of the
+other 16 municipalities \(j\) as a comparator. Let \(W_{ij}\)
+be the symmetric 2021 work/study interaction count; \(P_j\) the
+comparator's 2021 resident population; and \(R_{jt}\) its
+new-contract median rent in year \(t\). The primary exposure,
+consistent with the earlier Porto-link screen, is
+
+\[
+X_{ij}=1000\,W_{ij}/P_j,\qquad j\neq i.
+\]
+
+We retain two outcomes because they test different weaknesses
+in the argument. First, a reference-invariant observation:
+
+\[
+G_j=100\left(\frac{R_{j,2025}}{R_{j,2020}}-1\right),
+\]
+
+the comparator's **own nominal percentage growth** in its
+new-contract rental median. Second, the already used
+reference-relative percentage-point discount compression:
+
+\[
+D_{ij,t}=100\left(1-\frac{R_{jt}}{R_{it}}\right),\qquad
+C_{ij}=D_{ij,2020}-D_{ij,2025}.
+\]
+
+Unlike \(G_j\), the value of \(C_{ij}\) itself changes when
+the reference changes because its denominator becomes another
+municipality's rent. Neither is a repeat-home rent index. We
+calculate Spearman's rank coefficient between the **16** link
+values and each outcome for every reference. As sensitivity,
+we also use **raw interaction counts** and the link's share of
+the comparator's total observed AMP interaction strength.
+That yields **17 × 3 × 2 = 102** defined comparisons rather
+than one convenient Porto coefficient. This is descriptive
+rank algebra: the reference nodes and municipal outcomes are
+interdependent, so their coefficients do not form an independent
+sample for a classical significance test.
+
+![Figure 34. The two prespecified rank associations for all 17 alternative network reference municipalities, using 2021 pair interactions per 1,000 comparator residents; Porto is highlighted but all reference nodes have their own 16-municipality comparator sets.](figures/fig34_rent_growth_rank_by_commuting_reference.png)
+
+Figure 34 presents the primary per-resident link convention. For
+**Porto** as reference, the coefficient is approximately **−0.385**
+against a comparator's **own 2020–2025 nominal rent growth** and
+**−0.297** against the Porto-relative **discount compression**.
+The former is the **second-largest absolute** coefficient among
+the 17 reference choices, and the latter is the **sixth-largest**.
+With **Gondomar** as reference, the corresponding coefficients
+are about **−0.576** and **−0.529**. Several other references
+also yield negative values, while more peripheral reference
+choices yield positive ones. Porto does not uniquely generate
+a negative ranking, but the strength of that ranking depends
+substantially on the reference selected.
+
+A negative value of the own-rent-growth coefficient is
+particularly awkward for an uncomplicated positive-transmission
+claim: municipalities with stronger links to the reference
+tended to rank **lower**, not higher, in percentage growth
+over this fixed period. But that reversal does *not* prove that
+connectivity reduces rents. Rents may already be high in more
+central markets, common shocks may produce different percentage
+growth from different baselines, and the network captures
+work/study interactions rather than household searches. A
+correlation sign cannot distinguish those mechanisms or quantify
+housing-supply responses.
+
+### Compare identical sets of fifteen municipalities
+
+Changing the reference in Figure 34 necessarily removes a
+different municipality from the sample. We therefore repeat
+the contrast on common support. For each non-Porto alternative
+reference \(a\), form the same **15** comparator municipalities
+by excluding **both Porto and \(a\)**. Calculate the Spearman
+coefficient once using Porto's network links to those 15 and
+again using \(a\)'s links to precisely those *same* 15.
+For the own-rent-growth outcome, the vector of 15 rent outcomes
+is identical in the two calculations; only the network-reference
+exposure changes. For discount compression, the outcome still
+changes algebraically with the reference rent, so its matched
+comparison isolates the **sample-set change**, not the
+denominator change. The output labels that distinction for
+every one of the **16 × 3 × 2 = 96** matched contrasts.
+
+![Figure 35. Alternative reference minus Porto Spearman coefficient for comparator-specific nominal new-rent growth, using exactly the same 15 municipalities in each pairwise comparison and all three work/study-link exposure conventions.](figures/fig35_matched_porto_alternative_reference_rank_differences.png)
+
+Figure 35 shows the difference \(\rho_a-\rho_{\mathrm{Porto}}\)
+for own nominal rent growth. Negative cells mean that the
+alternative reference produces a **more negative** rank
+coefficient on the same 15 municipal outcomes. Under the
+primary per-resident convention, **only Gondomar out of the
+16 alternative reference nodes** is more negative than Porto
+on matched support; its coefficient is about **0.21 below**
+the matched Porto coefficient. Thus Porto is comparatively
+distinctive *within this chosen network/exposure/rent window*,
+although not uniquely negative. The raw-count and
+comparator-link-share normalizations move the differences
+again. That instability is part of the finding, not a reason
+to select the normalization giving the desired narrative.
+
+An additional safeguard deletes each comparator municipality
+in turn from each 16-place primary reference comparison. The
+new record retains all **272** single-municipality deletions,
+not only those that help Porto. Porto's own-rent-growth
+per-resident coefficients across the 15-place deletion screens
+range approximately from **−0.607 to −0.318**, while Gondomar's
+range from **−0.696 to −0.496**. This demonstrates a persistent
+negative rank pattern in those particular deletion exercises.
+It is an **influence diagnostic**, not a bootstrap interval,
+spatially valid standard error or causal spillover estimate.
+
+The scientific conclusion is narrower than either an endorsement
+or a dismissal of the outward-cascade hypothesis. Porto's
+position in this 2021 network is not interchangeable with
+every other municipality's, yet another reference can produce
+a stronger negative association. The coefficients depend on
+how one defines a link and an outcome, and the 2021 network
+cannot identify who moved or why. The causal claim that Porto's
+rents **pushed households outward and then raised the rents
+of the places they entered** is still untested by these
+aggregate links. The relevant evidence would be directed
+residential origin–destination counts, actual search and
+available-rent distributions, transport accessibility, and
+a defensible shock design controlling common trends.
+
+The [offline reference-node audit](municipal_reference_placebos.py)
+reproduces all **272** reference-comparator views, **102**
+full-reference rank comparisons, **96** matched-support
+contrasts, **272** deletions, both figures and the separate
+housing/work-study source checksums. Its ledger explicitly
+records the third-party commuting-data limitation. The result
+is a new falsification checkpoint, not a newly identified
+mechanism of metropolitan rent contagion.
+
+---
+
 ## Sources and reproducibility
 
 The original eight figures and three tabular outputs, four observed mobility figures, one sharp non-identification figure, two annual timing/prediction figures, two forecast-robustness figures, **two nominal-vs-deflated figures**, and **two matched fiscal-income screening-proxy figures** with companion CSV results can be regenerated using the commands in the [study README](README.md). The new directed-OD intake suite is software-only until a genuine aggregate table is released. The [fixed 17-municipality input](data/amp_municipal_panel_2019_2025.csv) is a derived extract from [DiogoRibeiro7/portugal-housing-generations](https://github.com/DiogoRibeiro7/portugal-housing-generations), pinned to [upstream commit 0407fae](https://github.com/DiogoRibeiro7/portugal-housing-generations/tree/0407faed1f08209b3d7682e19fc57e7120e62879). It does not assert that 2025 income observations or 2019 new-lease observations exist. The observed Portugal HICP 2019–2025 source is independently frozen at [Eurostat dataset `prc_hicp_ainr`](https://doi.org/10.2908/PRC_HICP_AINR). The published mobility extracts have separate checksummed source records and distinct limitations.
@@ -2144,6 +2319,12 @@ applied to the fixed 2025 new-contract rent medians. Their
 household travel assumptions, unlike the rent observations,
 are explicitly hypothetical and should not be interpreted as
 observed journey, fare or actual choice data.
+Figures 32–33 screen the pinned 2020/2025 municipal new-rent
+medians against already verified DGT administrative centroid
+separations, rather than actual available rental alternatives.
+Figures 34–35 rotate the frozen 2021 undirected work/study
+reference node and test matched comparator support. They do
+not infer migration, a causal spillover or a significance test.
 
 1. Área Metropolitana do Porto. [Statutory definition and its 17 municipalities](https://www.amp.pt/en/amp-instituicao/area-metropolitana-do-porto-or-lei-no-752013/).
 2. Instituto Nacional de Estatística. [Local housing price methodology and geospatial context](https://www.ine.pt/ine_novidades/semin/INEWS38/files/assets/common/downloads/publication.pdf).

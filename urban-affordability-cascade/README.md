@@ -116,6 +116,8 @@ zero. The analysis's exact-period comparisons enforce those distinctions.
 | 31 | fig31_rent_saving_exhaustion_by_commute_scenario.png | Counts of 16 municipal synthetic 70 m² options whose rent gap disappears at added 15/30/45/60-minute one-way commuting increments | **Scenario counts, not households, travel-time estimates or displacement probabilities** |
 | 32 | fig32_porto_rent_distance_pareto_2020_2025.png | Two-dimensional nondominated municipality median new-rent/CAOP2025 Porto centroid distance pairs in 2020 and 2025 | **Descriptive municipal-summary Pareto order, not a set of available homes, times or choices** |
 | 33 | fig33_rent_distance_dominance_margin_sensitivity.png | Municipal-summary dominance counts under nine deterministic minimum distance/rent advantage margins, 2020 versus 2025 | **Assumed material-gain thresholds, not measurement uncertainty, migration or causal spillover** |
+| 34 | fig34_rent_growth_rank_by_commuting_reference.png | Per-resident 2021 work/study interaction rank association with 2020–2025 new-rent growth and reference-relative compression under all 17 alternative reference nodes | **Descriptive anchor sensitivity, not observed residential migration or inference** |
+| 35 | fig35_matched_porto_alternative_reference_rank_differences.png | Alternative-minus-Porto rank-coefficient contrasts for each of 16 references on exactly the same 15 rent-growth comparison municipalities | **Fixed support and rent outcome; undirected work/study links, not an exogenous shock** |
 
 The figure titles, manuscript captions and generated tables repeat the
 evidence-class distinction. There are no charts of invented historical
@@ -985,6 +987,63 @@ module makes no API requests and introduces **23 tests; 232 total**,
 including exact set membership, strict/tied comparisons, margin
 monotonicity, paired years and artifact regeneration.
 
+## Is Porto the distinctive reference? (figures 34–35)
+
+The [municipal_reference_placebos.py](municipal_reference_placebos.py)
+module rotates the reference through **all 17 AMP municipalities**
+in the frozen, **symmetric 2021 work/study interaction network**.
+It does not treat a node as a residential origin, causal treatment
+or actual shock. The pair counts come from the third-party
+Census-derived workbook attributed to INE, not independently
+reconciled to a new official API response.
+
+For each reference and the other **16** municipalities, compare
+work/study interaction intensity (primarily **pairs per 1,000
+comparator residents**) to two 2020–2025 new-contract rent outcomes:
+
+1. Each comparator's **own nominal percentage growth**, which is
+   identical whichever reference is chosen.
+2. **Reference-relative rent-discount compression**, whose values
+   change with the reference municipality's rent denominator.
+
+Three predeclared link modes—raw pairs, per-resident pairs,
+and the link's share of comparator AMP interactions—give
+**17 × 3 × 2 = 102** descriptive coefficients. On the primary
+per-resident mode, Porto's coefficient is approximately **−0.385**
+for own growth and **−0.297** for reference-relative compression,
+ranking second and sixth, respectively, by **absolute magnitude**
+among 17 references. Gondomar gives **−0.576** and **−0.529**.
+This is a negative association, not a positive-price transmission
+estimate or evidence that connectivity lowers rent.
+
+To control the changing reference's excluded municipality, for
+each alternative to Porto we use **the same 15 comparator names**
+in both the alternative and Porto calculation. For own-rent growth,
+the 15 outcome values are exactly unchanged. Under per-resident
+normalization, **only Gondomar of 16** produces a more negative
+correlation than Porto on that fixed support. With relative
+discount compression the outcomes change with the reference,
+so matched support does **not** isolate just the link exposure.
+The module labels this explicitly and publishes all **96**
+paired-reference comparisons. It also reports **272** distinct
+leave-one-comparator-out rank checks for the primary mode and
+own-growth outcome (17 references × 16 exclusions).
+
+Regenerate all 272 reference/comparator observations, 102 full
+reference coefficients, 96 matched-support contrasts, 272
+single-comparator deletions, the two figures and a provenance
+ledger from both pinned input sources:
+
+    python municipal_reference_placebos.py --output /tmp/porto-reference-placebos
+
+Results live under `results/municipal_reference_placebos_*`.
+The **22 additional unit tests bring the suite to 254 tests**.
+No random-label assignment or inferential p-values are introduced.
+The network predates neither the 2020 rent baseline nor the
+beginning of the outcome window, and the reference rankings do
+not identify relocation, housing-price contagion, welfare or
+policy effects.
+
 ## Boundaries before publication
 
 - Prices of sold homes are not quality-adjusted repeated-sales observations.
@@ -1005,6 +1064,9 @@ monotonicity, paired years and artifact regeneration.
 - A two-dimensional rent-versus-administrative-centroid Pareto screen is
   neither a catalogue of accessible apartments nor a claim that some
   municipalities are intrinsically worse places to live.
+- Changing the 2021 work/study network reference to another municipality
+  is a descriptive negative control, not a randomized placebo design,
+  directed residential movement observation or causal identification.
 - Do not use the hypothetical curves to infer the number of people actually
   displaced, transmission elasticities, or policy effect sizes.
 - The article is a manuscript for review and **is not automatically published

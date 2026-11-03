@@ -373,6 +373,46 @@ records, figures 32–33 and both independent source checksums.
 No number identifies migration, municipality desirability or
 epidemic-like price transmission.
 
+**All-reference commuting-link negative-control checkpoint
+(2 November 2026).** Reuse the frozen and checksummed **2021**
+symmetric AMP work/study pair matrix and the fixed **2020/2025**
+municipal new-contract rent medians. For every one of **17**
+reference municipalities, form its **16** distinct comparator
+nodes. For three declared link normalizations (raw pairs,
+per 1,000 comparator residents, and share of the comparator's
+observed AMP pair strength), compute Spearman ranks against:
+(1) each comparator's **own nominal 2020–2025 new-lease rent
+growth**; and (2) the **reference-relative discount compression**
+in percentage points. Report all **102** coefficients and the
+full **272** link/outcome observations, never one selected node.
+
+The primary Porto-reference per-resident coefficients are
+**−0.385294** for own rent growth and **−0.297059** for
+reference-relative discount compression; they rank **second**
+and **sixth** by absolute magnitude among the 17 choices.
+Gondomar's comparable coefficients are **−0.576471** and
+**−0.529412** (rounded here). Since each reference excludes
+itself, also compute **16 alternative-versus-Porto contrasts
+on the same 15 comparator municipalities**, for every link
+mode and outcome (**96** contrasts). The own-rent-growth
+outcome is unchanged when rotating the reference, whereas
+reference-relative compression is *not* unchanged because
+the reference rent denominator changes. State this distinction
+in the tables and interpretation. For matched own-growth
+per-resident comparisons, only Gondomar is more negative
+than Porto. Audit all **272 single-comparator deletions**
+for the full-reference primary outcome and exposure.
+
+No reference is an observed migration origin. The commuting
+source remains a third-party Census-derived workbook attributed
+to INE, not cross-checked against a fresh direct official API
+response. The 2021 network is not a pretreatment exposure
+for 2020 onward. Coefficients from the 17 changing, overlapping
+reference groups are dependent and are **not sampling p-values**,
+randomized placebos or causal spillover elasticities. Figures
+34–35 and five derived files retain source checksums, all
+alternative reference names and explicit limits.
+
 ## Planned analysis sequence
 
 ### Stage 0 — Obtain or document denial of directed residential counts
