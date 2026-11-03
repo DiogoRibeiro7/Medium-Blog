@@ -108,6 +108,22 @@ This is a transparent version of the classical synthetic control idea, not a ben
 
 Keeping the optimization elementary lets the article focus on a central issue: under what data-generating conditions does a good pre-treatment fit support a credible future counterfactual?
 
+## A held-out pre-treatment falsification check
+
+A good in-sample fit cannot distinguish a stable counterfactual model from one that absorbs anticipated treatment into its training data. The independent `sc_preperiod_holdout.py` extension therefore fits donor weights using only the first 20 pre-treatment periods and evaluates the residual in the **last four pre-treatment periods**, which were not used to select weights. It reproduces the same three structural mechanisms under a separate fixed seed (20261103), with 300 new panels per scenario.
+
+| Scenario | Mean held-out pre-period gap | Mean held-out RMSPE | Fraction with gap below −0.4 |
+| --- | ---: | ---: | ---: |
+| Stable relationship | +0.0151 | 0.2089 | 0.33% |
+| Treated-only post-period shock | +0.0002 | 0.2145 | 0.33% |
+| Anticipation in final four pre-periods | −0.7935 | 0.8135 | 100.0% |
+
+For the anticipation design, the true pre-intervention trajectory is altered by −0.8 in exactly the held-out window. The synthetic control trained on earlier unaffected periods consequently overpredicts the altered late pre-treatment outcomes, producing a mean gap near −0.8. Training fit remains comparatively good (mean training RMSPE about 0.179). This is a concrete case in which **temporal validation reveals contamination hidden by an aggregate pre-period fit**.
+
+The treated-only post-period shock, by contrast, does not occur in any pre-treatment observation. The held-out pre-period residual behaves like the stable scenario even though the post-intervention causal estimate is biased. This is the central limitation: a successful holdout test probes stability over historical windows; it cannot validate future counterfactual stability, rule out novel shocks, or prove absence of spillovers.
+
+The threshold −0.4 is a descriptive detection screen chosen for this synthetic −0.8 perturbation, not a universally calibrated hypothesis test. A real application should inspect trajectories and multiple holdout windows, account for dependence across time, and pre-specify diagnostics. The extension commits a separate reproducible CSV and automated tests; the original 900-panel benchmark remains unchanged.
+
 ## Two simple baselines
 
 A useful benchmark needs alternatives. The first is an eight-period before–after comparison: the mean observed treated outcome during the 12 post-treatment periods minus its mean over the final eight pre-treatment periods. This ignores all donor outcomes and therefore attributes common time changes to the intervention.
