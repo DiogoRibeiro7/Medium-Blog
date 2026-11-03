@@ -118,6 +118,8 @@ zero. The analysis's exact-period comparisons enforce those distinctions.
 | 33 | fig33_rent_distance_dominance_margin_sensitivity.png | Municipal-summary dominance counts under nine deterministic minimum distance/rent advantage margins, 2020 versus 2025 | **Assumed material-gain thresholds, not measurement uncertainty, migration or causal spillover** |
 | 34 | fig34_rent_growth_rank_by_commuting_reference.png | Per-resident 2021 work/study interaction rank association with 2020–2025 new-rent growth and reference-relative compression under all 17 alternative reference nodes | **Descriptive anchor sensitivity, not observed residential migration or inference** |
 | 35 | fig35_matched_porto_alternative_reference_rank_differences.png | Alternative-minus-Porto rank-coefficient contrasts for each of 16 references on exactly the same 15 rent-growth comparison municipalities | **Fixed support and rent outcome; undirected work/study links, not an exogenous shock** |
+| 36 | fig36_municipal_reference_rank_window_sensitivity.png | All 17 reference-node rank correlations for own new-rent growth and reference-relative discount compression across 2020/2021/2022/2023–2025 baselines | **Nested windows with one 2025 endpoint; descriptive association, not independent experiments** |
+| 37 | fig37_matched_porto_reference_window_differences.png | Alternative-minus-Porto coefficients for own new-rent growth on the same 15 municipalities, each of 16 alternative reference nodes and four rent windows | **Fixed own-rent outcomes per matched comparison, not inferred residential moves or causal exposure** |
 
 The figure titles, manuscript captions and generated tables repeat the
 evidence-class distinction. There are no charts of invented historical
@@ -1044,6 +1046,59 @@ beginning of the outcome window, and the reference rankings do
 not identify relocation, housing-price contagion, welfare or
 policy effects.
 
+## Does the reference-node pattern persist across rent windows? (figures 36–37)
+
+The [municipal_reference_window_sensitivity.py](municipal_reference_window_sensitivity.py)
+module keeps the **symmetric 2021 work/study interaction matrix fixed**
+and varies the new-contract rent baseline over **2020, 2021, 2022,
+2023**, with **2025 as the shared endpoint**. For each of the **17**
+possible network references and **16** other municipalities, it
+records the network's three prespecified exposure modes and two
+distinct rent outcomes: each comparator's own nominal rent growth,
+and reference-relative discount compression. Own growth is invariant
+to which reference is chosen; relative compression is not.
+
+The primary exposure is undirected work/study pairs per 1,000
+comparator residents. Its Porto-reference Spearman coefficients
+for **own rent growth** are **−0.385, −0.365, −0.565 and −0.221**
+as the window begins in 2020, 2021, 2022 or 2023. Porto's absolute
+rank among 17 references changes **2, 6, 2, 8**. For
+**reference-relative discount compression** the corresponding
+coefficients are **−0.297, −0.388, −0.435 and +0.024**, with
+absolute ranks **6, 4, 6, 17**. The 2023 compression coefficient
+is close to zero; Figure 36 shows every alternative reference,
+not only Porto's best-performing baseline.
+
+The matched-support negative control compares each alternative
+to Porto on exactly the same **15** municipal own-rent growth
+outcomes. Under the primary exposure, the number of alternatives
+with more negative coefficients is **1, 5, 0, 5** out of 16
+for the four starts; with a declared descriptive margin of
+at least **0.05 Spearman units**, the counts become **1, 2,
+0, 5**. This is a materiality screen, **not** an inferential
+threshold. Figure 37 and the complete CSV retain all alternative
+names and three link normalisations. We do *not* use matched
+reference-relative compression to claim fixed outcomes, because
+its denominator changes with the reference.
+
+Regenerate **1,088** reference–comparator–year observations,
+**408** reference coefficient rows, **192** matched comparisons,
+**eight** primary summaries, **two figures** and a source/limits
+provenance ledger from pinned local files:
+
+    python municipal_reference_window_sensitivity.py --output /tmp/porto-reference-window
+
+Outputs are `results/municipal_reference_window_*` and Figures
+36–37. The **21 new unit tests bring the suite to 275 tests**.
+They verify data completeness, source-linked rent calculations,
+network invariance, matched comparator support and reproduction
+of the earlier 2020 window. The four rent windows overlap,
+share a 2025 endpoint and are not independent replications.
+The 2021 network cannot serve as a pretreatment exposure for
+the 2020 baseline; the later baselines do not make it exogenous.
+The links are not residential origin–destination moves, and
+new-contract medians are not quality-adjusted repeated rents.
+
 ## Boundaries before publication
 
 - Prices of sold homes are not quality-adjusted repeated-sales observations.
@@ -1067,6 +1122,10 @@ policy effects.
 - Changing the 2021 work/study network reference to another municipality
   is a descriptive negative control, not a randomized placebo design,
   directed residential movement observation or causal identification.
+- Comparing 2020/2021/2022/2023 rent baselines against a single 2025
+  endpoint yields dependent, overlapping windows. A changing reference
+  can also change the discount-compression denominator, unlike a
+  municipality's own rent growth.
 - Do not use the hypothetical curves to infer the number of people actually
   displaced, transmission elasticities, or policy effect sizes.
 - The article is a manuscript for review and **is not automatically published

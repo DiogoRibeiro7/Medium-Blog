@@ -413,6 +413,49 @@ randomized placebos or causal spillover elasticities. Figures
 34–35 and five derived files retain source checksums, all
 alternative reference names and explicit limits.
 
+**Temporal reference-node negative-control checkpoint
+(3 November 2026).** Hold the checksummed **2021** undirected
+AMP work/study matrix, all 17 candidate reference nodes, all
+three network normalisations and the **2025** rental endpoint
+constant, while changing the new-contract median rent baseline
+across **2020, 2021, 2022 and 2023**. For each reference and
+each of 16 comparators, compute both the comparator's own
+nominal rent growth and its reference-relative rent-discount
+compression. Report the full **1,088** source-linked
+reference/comparator/window observations and **408** Spearman
+coefficients (four windows × 17 references × three exposures
+× two outcomes). Never select a baseline by the size or
+direction of its result.
+
+For Porto in the primary per-1,000-comparator-residents exposure,
+the own-growth coefficients across the four windows are
+**−0.385, −0.365, −0.565 and −0.221**, respectively;
+absolute ranks among the 17 references are **2, 6, 2 and 8**.
+The relative-discount compression coefficients are **−0.297,
+−0.388, −0.435 and +0.024**, with ranks **6, 4, 6 and 17**.
+Preserve the latter near-zero 2023 observation rather than
+discarding it. Match every alternative reference to Porto
+on exactly the same 15 comparator municipalities, using
+**own growth only** so the outcome vector cannot change
+when the reference changes. Record **192** matched comparisons
+(four windows × 16 alternative references × three exposures).
+Under the primary per-resident exposure, alternatives more
+negative than Porto on matched support number **1, 5, 0 and 5**;
+under a declared **0.05 Spearman-unit** descriptive difference
+margin, **1, 2, 0 and 5**. Neither screen supplies a p-value
+or an uncertainty interval.
+
+All four rent-change windows are nested and share the same
+2025 endpoint. The frozen work/study matrix is neither
+strictly prior to the 2020 window nor evidence of an
+exogenous shock for post-2021 windows. No directed household
+migration, rent contagion, independent replication, causal
+elasticity, welfare effect or supply response is observed.
+Medians describe new lease contracts of potentially differing
+composition. Figures 36–37 and the five derived result files
+retain the full grid, named alternative references, source
+checksums, and interpretive limits.
+
 ## Planned analysis sequence
 
 ### Stage 0 — Obtain or document denial of directed residential counts
