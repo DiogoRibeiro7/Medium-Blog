@@ -205,6 +205,31 @@ The oracle benchmark helps reveal this directly. The quadratic model's selected-
 
 A responsible interpretation is therefore not that the two prediction models are equivalent. They plainly differ in global CATE MSE. It is that the more accurate model does not yield a practically distinguishable targeting advantage for the specified decision in this data-generating process. Changing the decision could expose their differences.
 
+## An exact population benchmark for the targeting rule
+
+The near-oracle allocation can be checked independently of estimated coefficients and finite test samples. Complete the square in the true CATE:
+
+\[
+\tau(x)=0.4(x+1.5)^2-0.8.
+\]
+
+The effect is therefore **not** globally increasing in X. Its minimum occurs at X=−1.5, and sufficiently extreme negative values also have large positive effects. An oracle ranking by the true quadratic effect selects observations in **both** tails, whereas a positive-slope linear ranking selects only the upper X tail.
+
+At population capacity 20%, a rule choosing the largest X values has cutoff approximately 0.841621. Standard-normal truncated-moment identities give its exact selected-group mean:
+
+\[
+E[\tau(X)\mid X>c]
+=0.5+\frac{\phi(c)}{0.2}\left(1.2+0.4c\right)
+\approx 2.651015,
+\quad c=\Phi^{-1}(0.8).
+\]
+
+For the exact oracle, the equal-effect boundaries are r and −3−r. The upper and lower tail probabilities together must equal 0.2. Solving that one-dimensional equation and integrating the known quadratic produces a population selected mean of approximately **2.651161**. Only **0.0000611** of the population lies in the oracle's additional lower tail, and the population oracle gain over upper-tail ranking is approximately **0.000146** mean outcome units per selected person.
+
+These population benchmarks are distinct from the article's **finite-test-set** averages near 2.644. Each replication ranks exactly 240 of 1,200 newly sampled observations, so its realized cutoff and top-group mean differ from the deterministic population-threshold calculation. The near-equality of the empirical linear, quadratic and oracle policies is thus explained by the geometry of the true effect surface and the tiny probability mass in the distant lower tail; it is not evidence that the CATE is globally monotone or that the linear model estimates the full effect function correctly.
+
+The supplementary \`part12_policy_population.py\` evaluates these Gaussian integrals using only the Python standard library, and \`test_part12_policy_population.py\` verifies the capacity constraint, the two-tail oracle construction and the benchmark values. It does not change the original Monte Carlo design or its reported CSV.
+
 ## Why a zero average effect would not settle the question
 
 The ATE in this experiment is positive but modest relative to the variation in τ(X). A different intercept in the treatment-effect function could make the population ATE zero without eliminating the differences among people. Positive and negative individual effects might cancel in the population average.
