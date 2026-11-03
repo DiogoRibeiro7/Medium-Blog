@@ -10,6 +10,28 @@ The results separate robustness from efficiency. When both nuisance models are c
 
 An additional result is worth reporting rather than hiding. The naive treated-minus-control contrast happens to be close to one in this simulation despite nonrandom treatment assignment. The assignment and nonlinear outcome relationships generate opposing contributions to selection bias that nearly cancel in the marginal mean. A correct-looking unadjusted estimate does not establish exchangeability, just as a biased-looking one does not identify which assumption failed. This cancellation is part of the investigation and a reminder that agreement with the truth in one simulated design must be interpreted through the data-generating process.
 
+## Why the naive comparison nearly cancels its confounding bias
+
+The near-correct unadjusted contrast is not a proof of random assignment. It can be explained at the population level without relying on simulation. Let p(X) be the true treatment probability and m₀(X)=1+0.7X+0.8X² the untreated conditional mean. Because the treatment effect is constant at one, the unadjusted population contrast is
+
+**E[Y | A=1] − E[Y | A=0] = 1 + 0.7ΔX + 0.8Δ(X²),**
+
+where Δf(X) denotes E[f(X)|A=1]−E[f(X)|A=0]. Both terms are selection effects, not treatment effects. They can have opposing signs.
+
+Numerical Gauss–Hermite integration of the exact standard-normal running covariate and nonlinear logistic assignment mechanism yields:
+
+| Population component | Contribution to naive contrast |
+| --- | ---: |
+| True average treatment effect | +1.000000 |
+| Selection through 0.7X | +0.369317 |
+| Selection through 0.8X² | −0.348353 |
+| Net selection bias | +0.020964 |
+| **Population unadjusted contrast** | **1.020964** |
+
+The linear selection term increases the observed treated–control gap, while the quadratic term decreases it. Almost all of the two biases cancel. The finite-sample naive means in the published Monte Carlo table (approximately 1.006–1.033, depending on scenario-specific random draws) fluctuate around the population contrast 1.020964.
+
+This is a particularly sharp demonstration of why **small net bias does not imply that confounding is small**. The individual selection contributions are around 0.35 in magnitude. Modest changes to the assignment rule, covariate distribution, or outcome regression could destroy the cancellation. The reproducible derivation is implemented in `aipw_population_confounding.py`, with quadrature-convergence tests. The original Monte Carlo data and results remain unchanged.
+
 ## The decision and the estimand
 
 Suppose an employment service offers job-search support according to a rule using information about a person's initial circumstances. It wants to know the effect of providing the support, not merely whether those who received it performed differently from those who did not. Since support is not randomized, a comparison of outcomes by treatment status can be confounded by characteristics used in the allocation rule.
