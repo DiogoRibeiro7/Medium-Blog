@@ -472,6 +472,18 @@ Prediction is valuable. Association is informative. Neither is automatically a m
 
 The best causal analysis is not the one that produces the most impressive coefficient. It is the one whose answer still makes sense when somebody asks: *what, precisely, would happen if we actually did this?*
 
+## A final methodological caution: design decisions are part of the result
+
+Several choices that appear to be technical details can change the question a study answers. Consider how treatment is measured. “Received treatment” may mean that a patient was prescribed a drug, collected it, took the first dose, or adhered to a regimen for six months. These are different interventions. An association with prescription records cannot automatically be interpreted as the effect of sustained adherence. The same issue appears in economic studies: announcing a tax incentive, qualifying for it, claiming it, and actually changing investment decisions are distinct events.
+
+Timing matters equally. A variable recorded before treatment can be a plausible confounder; that same variable measured after treatment may already have been affected by the intervention. Adjusting for the latter can remove part of the effect or create selection bias. In longitudinal settings, earlier treatment can alter a later confounder that influences subsequent treatment. A conventional regression that includes the evolving covariate without acknowledging this feedback may not estimate the intended effect. The longitudinal g-methods discussed by Hernán and Robins were developed precisely because ordinary adjustment can be inadequate under treatment–confounder feedback.
+
+Missing observations require causal reasoning too. If follow-up disappears more frequently among people with severe outcomes, analyzing complete cases can select a population whose outcome distribution differs from the target population. Complete-case analysis is not made unbiased simply by collecting more observations. One must understand why records are missing, whether the missingness process can be modeled, and which assumptions would justify weighting, imputation, or sensitivity analysis. An apparently precise estimate based on a selected sample is still an estimate about a selected sample.
+
+Finally, external validity is a separate claim from internal identification. Even a well-randomized experiment in one hospital, region, or historical period may not transport unchanged to another setting. Baseline risks, implementation, adherence, competing interventions, and treatment-effect modifiers can differ. The correct question becomes whether the relevant causal mechanisms and effect modifiers are stable enough to justify extrapolation, and whether the new population is adequately represented.
+
+These issues reinforce a practical principle: the data-processing pipeline, measurement definitions, inclusion criteria, and time windows are not neutral preliminaries. They help define the estimand and the population to which the result applies. Record those decisions before examining outcomes wherever possible, report them alongside model diagnostics, and distinguish identification assumptions from statistical uncertainty. Reproducibility means making the calculation repeatable; causal credibility additionally requires making the proposed intervention and the assumptions open to criticism.
+
 ## References and further reading
 
 - Angrist, J. D., Imbens, G. W., & Rubin, D. B. (1996). [Identification of Causal Effects Using Instrumental Variables](https://doi.org/10.1080/01621459.1996.10476902). *Journal of the American Statistical Association*, 91(434), 444–455. Discusses treatment noncompliance, instrumental-variable assumptions, and the interpretation of local effects.
