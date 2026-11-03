@@ -209,6 +209,26 @@ As the bandwidth increases, the estimate becomes more precise around −0.3. The
 
 This scenario is deliberately labelled a violation of untreated potential-outcome continuity. It is not evidence that manipulation of the running-variable density necessarily occurred. The running variable remains uniform on the original support, and an empirical density plot would not detect the unobserved prognosis jump directly. A study can fail continuity without displaying a dramatic density anomaly.
 
+## A fixed-bandwidth bias-correction benchmark
+
+The main experiment deliberately reports conventional local-linear confidence intervals, without smoothing-bias correction. To measure the difference, `rd_bias_corrected.py` replays the exact 1,200 original datasets using the same seed. It first fits the original local-linear estimator at bandwidth h, then estimates each side's curvature using a triangular-weighted local quadratic fit with pilot bandwidth b=min(2h,1). The estimated leading local-linear intercept bias is subtracted from the treatment-side and comparison-side fits.
+
+A critical detail is uncertainty: the corrected estimate combines weights from the original local-linear fit and both pilot quadratic fits. Its heteroskedasticity-consistent standard error uses the **combined observation-level influence weights**, including overlap and covariance between the fits. Reusing the original standard error after correcting the point estimate would ignore the cost of estimating curvature and could substantially overstate precision. This benchmark uses fixed bandwidths and a transparent HC0 approximation; it is *not* a full implementation of Calonico–Cattaneo–Titiunik's bandwidth-selection and coverage-error-optimal procedures.
+
+| Scenario | Bandwidth | Original 95% coverage | Bias-corrected 95% coverage | Corrected mean |
+| --- | ---: | ---: | ---: | ---: |
+| Linear, valid | 1.00 | 95.75% | 96.00% | −1.0063 |
+| Curved, valid | 0.30 | 93.75% | 95.25% | −0.9793 |
+| Curved, valid | 0.60 | 91.75% | 94.75% | −0.9913 |
+| Curved, valid | 1.00 | 50.75% | 94.00% | −0.9917 |
+| Untreated-outcome jump | 1.00 | 0.00% | 0.25% | −0.2991 |
+
+The correction has its largest practical effect where the original local-linear fit suffers substantial curvature bias. At h=1.00, coverage rises from 50.75% to 94.00% in the valid curved design. It also increases uncertainty: the mean corrected standard error at h=1.00 is approximately 0.143 rather than the original 0.098. At smaller bandwidths, the bias-variance trade-off remains visible, and this procedure need not minimize RMSE.
+
+Crucially, the correction does **not** fix the untreated-potential-outcome discontinuity. Under that invalid design, the estimator remains close to −0.3 even after quadratic adjustment, because the counterfactual jump is real in the structural process. The revised interval still almost never covers the intervention effect −1. Statistical bias correction addresses approximation to an observed discontinuity; it cannot manufacture a valid causal comparison.
+
+The extension saves a separate `rd_bias_corrected_results.csv` and includes exact quadratic-function tests and deterministic Monte Carlo assertions. No values in the original `results.csv` are overwritten.
+
 ## The bandwidth trade-off is not only a numerical nuisance
 
 Bandwidth choice determines which observations contribute to the boundary approximation. Under a continuously differentiable conditional mean, a sufficiently narrow local window can reduce approximation error as sample size increases, although it also reduces the effective sample size. For a local linear estimator, the leading bias can depend on curvature and bandwidth squared under common smoothness conditions, while variance scales roughly with the inverse of sample size times bandwidth.
