@@ -109,6 +109,41 @@ The nonlinear design creates a similar association through sine, quadratic and i
 
 Machine learning is relevant because it can approximate complicated m and q functions without manually specifying every basis expansion. But the approximation must be sufficiently accurate for the orthogonal moment to behave as desired. In the experiment boosting is an improvement, not a complete solution.
 
+## Exact population bias of the linear nuisance specification
+
+The nonlinear-design failure can be calculated from the data-generating equations, independently of either Monte Carlo table. This helps distinguish persistent approximation bias from the randomness of 20 replications.
+
+Let \(P_L\) denote population projection onto the linear span of the intercept and the three observed X coordinates. Write \(m_\perp=m-P_Lm\) and \(g_\perp=g-P_Lg\). Because the treatment disturbance V is independent of X and the outcome disturbance, the limiting partialling-out coefficient under **linear-only** nuisance regressions is
+
+\[
+\tau_{\mathrm{linear}}^*
+=\tau+\frac{E[m_\perp g_\perp]}{E[m_\perp^2]+\operatorname{Var}(V)}.
+\]
+
+Cross-fitting prevents an observation from supplying its own fitted nuisance predictions, but it does not remove these residual population components if the fitted nuisance class remains linear.
+
+For an independent standard-normal coordinate Z, the population linear projection of \(\sin Z\) is \(e^{-1/2}Z\), leaving residual variance
+
+\[
+v_{\sin}=\frac{1-e^{-2}}{2}-e^{-1}\approx0.0644529172.
+\]
+
+The centered quadratic term \(X_1^2-1\) has variance 2; the product \(X_0X_2\) has variance 1. Both are orthogonal to the linear regressors and to the residualized sine term in this independent Gaussian design. Therefore, with the structural coefficients actually used by the script,
+
+\[
+E[m_\perp^2]=1.4^2v_{\sin}+0.9^2(2)+0.5^2
+\approx1.996327718,
+\]
+
+\[
+E[m_\perp g_\perp]=1.4(1.2)v_{\sin}+0.9(1.3)(2)+0.5(0.8)
+\approx2.848280901.
+\]
+
+Since \(\tau=1\) and \(\operatorname{Var}(V)=1\), the misspecified linear nuisance estimator converges to approximately **1.950591**, not 1.0. The committed nonlinear-design linear-cross-fitted Monte Carlo mean of 1.947962 (20 replications) and the independent 1,000-replication nuisance-basis validation mean of 1.950933 are consistent with this exact limit.
+
+This is a **population projection result**, not a guarantee that a particular finite sample or learning algorithm returns the stated number. It also assumes the same linear nuisance basis for the treatment and outcome, the documented Gaussian model and correct identification conditions. The new standard-library script `part13_linear_projection_bias.py` reproduces the calculation; its regression tests check the numerical limit and sensitivity to independent treatment-noise variance.
+
 ## What cross-fitting removes
 
 Cross-fitting primarily addresses dependence between nuisance fitting errors and the individual observations used in the final score. By constructing predictions for held-out units, it avoids directly scoring each observation using a flexible nuisance model trained on that observation's own outcome and treatment.
