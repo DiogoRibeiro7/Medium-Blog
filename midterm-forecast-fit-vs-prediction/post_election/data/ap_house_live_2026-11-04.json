@@ -1,0 +1,21 @@
+{
+  "snapshot_kind": "live_unofficial",
+  "source_name": "Associated Press",
+  "source_url": "https://apnews.com/hub/elections",
+  "election_date": "2026-11-03",
+  "reported_at_utc": "2026-11-04T10:51:02Z",
+  "retrieved_at_utc": "2026-11-04T10:51:54Z",
+  "retrieval_note": "AP national House balance-of-power live snapshot; 'leading' is not 'won'. Retrieved through an election-results data source on 4 November 2026. This is a transcription of the displayed aggregate counts, not a certified result.",
+  "house": {
+    "total_seats": 435,
+    "majority_threshold": 218,
+    "democratic_won": 228,
+    "republican_won": 139,
+    "democratic_leading_uncalled": 35,
+    "republican_leading_uncalled": 33,
+    "other_won_or_leading": 0
+  },
+  "official_initial_election_party_division_available": false,
+  "observed_republican_seat_change": null,
+  "not_a_final_score": true
+}
