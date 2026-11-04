@@ -1,0 +1,42 @@
+name: Capture public billionaire-poverty source snapshots
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  capture-public-sources:
+    name: Download and verify OWID/WDI source vintages
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: billionaires-poverty-audit/requirements.txt
+      - name: Install project dependencies
+        run: python -m pip install -r billionaires-poverty-audit/requirements.txt
+      - name: Run all offline tests
+        working-directory: billionaires-poverty-audit
+        run: python -m unittest discover -s tests -p 'test_*.py' -v
+      - name: Download official public files and hash exact bytes
+        working-directory: billionaires-poverty-audit
+        run: |
+          python source_pipeline.py fetch --output-dir data/source_snapshots
+      - name: Verify captured hashes and coverage
+        working-directory: billionaires-poverty-audit
+        run: |
+          python source_preflight.py             --snapshot-dir data/source_snapshots             --output results/public_source_coverage.json
+      - name: Archive exact source inputs and source coverage
+        uses: actions/upload-artifact@v4
+        with:
+          name: billionaire-poverty-public-sources-${{ github.run_id }}
+          path: |
+            billionaires-poverty-audit/data/source_snapshots/
+            billionaires-poverty-audit/results/public_source_coverage.json
+          retention-days: 30
+          if-no-files-found: error
