@@ -26,8 +26,8 @@ import pandas as pd
 Attribution = Literal["residence", "citizenship"]
 
 OWID_URL = (
-    "https://archive.ourworldindata.org/20261102-112946/grapher/"
-    "poverty-share-on-less-than-30-per-day.csv?csvType=full&useColumnShortNames=false"
+    "https://ourworldindata.org/grapher/"
+    "poverty-share-on-less-than-30-per-day.csv?v=1&csvType=full&useColumnShortNames=false"
 )
 WDI_GDP_URL = (
     "https://api.worldbank.org/v2/country/all/indicator/NY.GDP.PCAP.PP.KD"
@@ -81,7 +81,7 @@ def fetch_public_inputs(output_dir: Path) -> dict[str, Any]:
     manifest: dict[str, Any] = {
         "retrieved_at_utc": retrieved,
         "files": records,
-        "note": "WDI values may be revised; OWID archive has its own vintage.",
+        "note": "Live OWID/WDI sources may be revised; exact bytes and retrieval date are captured.",
     }
     (output_dir / "SOURCE_MANIFEST.json").write_text(
         json.dumps(manifest, indent=2, sort_keys=True) + "\n", encoding="utf-8"
