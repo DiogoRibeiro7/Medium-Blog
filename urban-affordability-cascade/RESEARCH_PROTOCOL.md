@@ -456,6 +456,52 @@ composition. Figures 36–37 and the five derived result files
 retain the full grid, named alternative references, source
 checksums, and interpretive limits.
 
+**All-reference geography-confounding checkpoint
+(3 November 2026).** Reuse the checksum-verified DGT
+**CAOP2025 EPSG:3763 polygon centroids** for all 17 AMP
+municipalities. Calculate exactly **272** positive and
+symmetric reference-to-comparator straight-line distance
+values, keeping the official source year and projected CRS
+explicit. These area-weighted municipal centres are not
+population centroids, homes, measured transport routes,
+travel time or a mobility origin–destination table.
+
+On the full **four rent windows × 17 reference municipalities
+× three network modes × two rent outcomes = 408** rank grid,
+preserve every previously reported unadjusted coefficient
+and compute one-covariate **partial Spearman** rank
+coefficients conditional on the selected reference's
+centroid distance to each comparator. Report the exposure–
+distance and outcome–distance rank correlations in all
+cells, and flag absolute exposure–distance correlations
+of at least **0.90** as a descriptive collinearity warning,
+not a statistical threshold or model selection criterion.
+Porto's primary per-resident exposure–distance rank
+association is **−0.950**, and **4/17** references meet
+the warning threshold. Its own-growth conditional coefficients
+over the four baselines are **−0.409, −0.120, −0.501 and
+−0.440**, versus previous unadjusted **−0.385, −0.365,
+−0.565 and −0.221**. Report the 2023 reference-relative
+discount compression's change from **+0.024** to
+**−0.404** without presenting it as a causal sign reversal.
+
+Retain **192** matched alternative-versus-Porto comparisons
+using **the same 15 own-growth rent outcomes**, but make
+explicit that Porto and alternative reference partial
+correlations each condition on **different distances**.
+The primary-mode alternatives with a more negative
+conditional correlation number **2, 5, 0 and 4** across
+the 2020/2021/2022/2023 starts. At the declared
+**−0.05 Spearman-unit descriptive margin**, the numbers
+are **1, 4, 0 and 4**. Record all **64** Porto per-resident
+own-growth comparator deletions, including the single
+sign change in the 2021 window, and **eight** summary
+rows. All results are dependent exploratory algebra,
+not sampling confidence intervals, causal spillovers
+or independent temporal replications. Figures 38–39
+and six derived files must retain separate official
+CAOP, Census-derived work/study and housing hashes.
+
 ## Planned analysis sequence
 
 ### Stage 0 — Obtain or document denial of directed residential counts

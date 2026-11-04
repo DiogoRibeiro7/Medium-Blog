@@ -1,0 +1,409 @@
+window_start_year,window_end_year,commuting_network_year,caop_centroid_year,reference_municipality,exposure_mode,outcome,comparators,unadjusted_spearman_rho,conditional_on_centroid_distance_partial_spearman_rho,exposure_vs_centroid_distance_spearman_rho,outcome_vs_centroid_distance_spearman_rho,rank_distance_vif_diagnostic,strong_exposure_distance_collinearity_flag,unadjusted_absolute_rank_among_17,conditional_absolute_rank_among_17
+2020,2025,2021,2025,Arouca,raw_interactions,own_new_rent_growth_window_pct,16,-0.085294118,-0.152579790,-0.617647059,-0.055882353,1.616783,0,15,12
+2020,2025,2021,2025,Arouca,raw_interactions,reference_discount_compression_window_pp,16,-0.126470588,-0.031893799,-0.617647059,0.164705882,1.616783,0,14,17
+2020,2025,2021,2025,Arouca,per_1000_residents,own_new_rent_growth_window_pct,16,0.261764706,0.275333344,-0.538235294,-0.055882353,1.407850,0,8,9
+2020,2025,2021,2025,Arouca,per_1000_residents,reference_discount_compression_window_pp,16,0.029411765,0.142023948,-0.538235294,0.164705882,1.407850,0,16,12
+2020,2025,2021,2025,Arouca,share_of_amp_interactions,own_new_rent_growth_window_pct,16,0.423529412,0.456106346,-0.494117647,-0.055882353,1.323018,0,6,7
+2020,2025,2021,2025,Arouca,share_of_amp_interactions,reference_discount_compression_window_pp,16,0.102941176,0.214951186,-0.494117647,0.164705882,1.323018,0,14,11
+2020,2025,2021,2025,Espinho,raw_interactions,own_new_rent_growth_window_pct,16,-0.091176471,0.047890738,-0.820588235,0.144117647,3.061522,0,14,16
+2020,2025,2021,2025,Espinho,raw_interactions,reference_discount_compression_window_pp,16,-0.317647059,-0.148236533,-0.820588235,0.288235294,3.061522,0,3,12
+2020,2025,2021,2025,Espinho,per_1000_residents,own_new_rent_growth_window_pct,16,0.114705882,0.318535816,-0.720588235,0.144117647,2.080072,0,16,7
+2020,2025,2021,2025,Espinho,per_1000_residents,reference_discount_compression_window_pp,16,0.005882353,0.321689300,-0.720588235,0.288235294,2.080072,0,17,7
+2020,2025,2021,2025,Espinho,share_of_amp_interactions,own_new_rent_growth_window_pct,16,0.458823529,0.604724239,-0.473529412,0.144117647,1.289042,0,3,3
+2020,2025,2021,2025,Espinho,share_of_amp_interactions,reference_discount_compression_window_pp,16,0.420588235,0.660514359,-0.473529412,0.288235294,1.289042,0,6,2
+2020,2025,2021,2025,Gondomar,raw_interactions,own_new_rent_growth_window_pct,16,-0.323529412,-0.268863555,-0.679411765,0.191176471,1.857356,0,6,6
+2020,2025,2021,2025,Gondomar,raw_interactions,reference_discount_compression_window_pp,16,-0.261764706,-0.236273978,-0.679411765,0.132352941,1.857356,0,11,7
+2020,2025,2021,2025,Gondomar,per_1000_residents,own_new_rent_growth_window_pct,16,-0.576470588,-0.592803338,-0.614705882,0.191176471,1.607364,0,1,1
+2020,2025,2021,2025,Gondomar,per_1000_residents,reference_discount_compression_window_pp,16,-0.529411765,-0.573092394,-0.614705882,0.132352941,1.607364,0,1,1
+2020,2025,2021,2025,Gondomar,share_of_amp_interactions,own_new_rent_growth_window_pct,16,-0.508823529,-0.524976672,-0.676470588,0.191176471,1.843700,0,1,6
+2020,2025,2021,2025,Gondomar,share_of_amp_interactions,reference_discount_compression_window_pp,16,-0.470588235,-0.522000320,-0.676470588,0.132352941,1.843700,0,4,6
+2020,2025,2021,2025,Maia,raw_interactions,own_new_rent_growth_window_pct,16,-0.344117647,-0.292161658,-0.852941176,0.229411765,3.669841,0,1,4
+2020,2025,2021,2025,Maia,raw_interactions,reference_discount_compression_window_pp,16,-0.205882353,-0.203587978,-0.852941176,0.117647059,3.669841,0,12,10
+2020,2025,2021,2025,Maia,per_1000_residents,own_new_rent_growth_window_pct,16,-0.229411765,-0.037741879,-0.950000000,0.229411765,10.256410,1,11,16
+2020,2025,2021,2025,Maia,per_1000_residents,reference_discount_compression_window_pp,16,-0.102941176,0.028455520,-0.950000000,0.117647059,10.256410,1,14,17
+2020,2025,2021,2025,Maia,share_of_amp_interactions,own_new_rent_growth_window_pct,16,-0.276470588,-0.181810691,-0.938235294,0.229411765,8.353205,1,10,11
+2020,2025,2021,2025,Maia,share_of_amp_interactions,reference_discount_compression_window_pp,16,-0.173529412,-0.183788393,-0.938235294,0.117647059,8.353205,1,12,13
+2020,2025,2021,2025,Matosinhos,raw_interactions,own_new_rent_growth_window_pct,16,-0.341176471,-0.225772946,-0.829411765,0.264705882,3.204346,0,3,9
+2020,2025,2021,2025,Matosinhos,raw_interactions,reference_discount_compression_window_pp,16,-0.282352941,-0.195456072,-0.829411765,0.211764706,3.204346,0,8,11
+2020,2025,2021,2025,Matosinhos,per_1000_residents,own_new_rent_growth_window_pct,16,-0.373529412,-0.375156041,-0.938235294,0.264705882,8.353205,1,3,5
+2020,2025,2021,2025,Matosinhos,per_1000_residents,reference_discount_compression_window_pp,16,-0.329411765,-0.386592643,-0.938235294,0.211764706,8.353205,1,5,4
+2020,2025,2021,2025,Matosinhos,share_of_amp_interactions,own_new_rent_growth_window_pct,16,-0.288235294,-0.118313277,-0.914705882,0.264705882,6.123206,1,9,14
+2020,2025,2021,2025,Matosinhos,share_of_amp_interactions,reference_discount_compression_window_pp,16,-0.235294118,-0.105307417,-0.914705882,0.211764706,6.123206,1,9,16
+2020,2025,2021,2025,Oliveira de Azeméis,raw_interactions,own_new_rent_growth_window_pct,16,-0.250000000,-0.361757991,-0.761764706,0.020588235,2.382572,0,9,3
+2020,2025,2021,2025,Oliveira de Azeméis,raw_interactions,reference_discount_compression_window_pp,16,-0.294117647,-0.478297299,-0.761764706,-0.020588235,2.382572,0,6,1
+2020,2025,2021,2025,Oliveira de Azeméis,per_1000_residents,own_new_rent_growth_window_pct,16,0.232352941,0.370819607,-0.744117647,0.020588235,2.240701,0,10,6
+2020,2025,2021,2025,Oliveira de Azeméis,per_1000_residents,reference_discount_compression_window_pp,16,0.258823529,0.364576897,-0.744117647,-0.020588235,2.240701,0,9,6
+2020,2025,2021,2025,Oliveira de Azeméis,share_of_amp_interactions,own_new_rent_growth_window_pct,16,0.417647059,0.557859044,-0.635294118,0.020588235,1.676723,0,7,5
+2020,2025,2021,2025,Oliveira de Azeméis,share_of_amp_interactions,reference_discount_compression_window_pp,16,0.491176471,0.619210991,-0.635294118,-0.020588235,1.676723,0,2,5
+2020,2025,2021,2025,Paredes,raw_interactions,own_new_rent_growth_window_pct,16,-0.344117647,-0.217183443,-0.805882353,0.273529412,2.852631,0,1,10
+2020,2025,2021,2025,Paredes,raw_interactions,reference_discount_compression_window_pp,16,-0.294117647,-0.205439319,-0.805882353,0.217647059,2.852631,0,6,9
+2020,2025,2021,2025,Paredes,per_1000_residents,own_new_rent_growth_window_pct,16,-0.358823529,-0.246317356,-0.664705882,0.273529412,1.791581,0,4,10
+2020,2025,2021,2025,Paredes,per_1000_residents,reference_discount_compression_window_pp,16,-0.364705882,-0.301749936,-0.664705882,0.217647059,1.791581,0,2,8
+2020,2025,2021,2025,Paredes,share_of_amp_interactions,own_new_rent_growth_window_pct,16,-0.264705882,-0.093614597,-0.750000000,0.273529412,2.285714,0,11,16
+2020,2025,2021,2025,Paredes,share_of_amp_interactions,reference_discount_compression_window_pp,16,-0.250000000,-0.134397750,-0.750000000,0.217647059,2.285714,0,8,15
+2020,2025,2021,2025,Porto,raw_interactions,own_new_rent_growth_window_pct,16,-0.282352941,-0.092771500,-0.852941176,0.276470588,3.669841,0,7,14
+2020,2025,2021,2025,Porto,raw_interactions,reference_discount_compression_window_pp,16,-0.179411765,-0.056231825,-0.852941176,0.176470588,3.669841,0,13,15
+2020,2025,2021,2025,Porto,per_1000_residents,own_new_rent_growth_window_pct,16,-0.385294118,-0.408715708,-0.950000000,0.276470588,10.256410,1,2,3
+2020,2025,2021,2025,Porto,per_1000_residents,reference_discount_compression_window_pp,16,-0.297058824,-0.421057451,-0.950000000,0.176470588,10.256410,1,6,3
+2020,2025,2021,2025,Porto,share_of_amp_interactions,own_new_rent_growth_window_pct,16,-0.355882353,-0.233507349,-0.797058824,0.276470588,2.742001,0,8,10
+2020,2025,2021,2025,Porto,share_of_amp_interactions,reference_discount_compression_window_pp,16,-0.270588235,-0.218582692,-0.797058824,0.176470588,2.742001,0,7,10
+2020,2025,2021,2025,Póvoa de Varzim,raw_interactions,own_new_rent_growth_window_pct,16,-0.076470588,0.001117598,-0.750000000,0.102941176,2.285714,0,16,17
+2020,2025,2021,2025,Póvoa de Varzim,raw_interactions,reference_discount_compression_window_pp,16,-0.120588235,-0.049255103,-0.750000000,0.117647059,2.285714,0,15,16
+2020,2025,2021,2025,Póvoa de Varzim,per_1000_residents,own_new_rent_growth_window_pct,16,0.179411765,0.286190264,-0.555882353,0.102941176,1.447189,0,13,8
+2020,2025,2021,2025,Póvoa de Varzim,per_1000_residents,reference_discount_compression_window_pp,16,0.114705882,0.218178519,-0.555882353,0.117647059,1.447189,0,13,11
+2020,2025,2021,2025,Póvoa de Varzim,share_of_amp_interactions,own_new_rent_growth_window_pct,16,0.214705882,0.331187194,-0.561764706,0.102941176,1.461090,0,13,9
+2020,2025,2021,2025,Póvoa de Varzim,share_of_amp_interactions,reference_discount_compression_window_pp,16,0.188235294,0.309566894,-0.561764706,0.117647059,1.461090,0,11,9
+2020,2025,2021,2025,Santa Maria da Feira,raw_interactions,own_new_rent_growth_window_pct,16,-0.123529412,-0.259118664,-0.797058824,-0.041176471,2.742001,0,13,8
+2020,2025,2021,2025,Santa Maria da Feira,raw_interactions,reference_discount_compression_window_pp,16,-0.264705882,-0.461689470,-0.797058824,-0.017647059,2.742001,0,10,2
+2020,2025,2021,2025,Santa Maria da Feira,per_1000_residents,own_new_rent_growth_window_pct,16,0.167647059,0.214451888,-0.773529412,-0.041176471,2.489716,0,14,12
+2020,2025,2021,2025,Santa Maria da Feira,per_1000_residents,reference_discount_compression_window_pp,16,0.158823529,0.229101755,-0.773529412,-0.017647059,2.489716,0,12,10
+2020,2025,2021,2025,Santa Maria da Feira,share_of_amp_interactions,own_new_rent_growth_window_pct,16,0.429411765,0.561411867,-0.700000000,-0.041176471,1.960784,0,5,4
+2020,2025,2021,2025,Santa Maria da Feira,share_of_amp_interactions,reference_discount_compression_window_pp,16,0.458823529,0.625281243,-0.700000000,-0.017647059,1.960784,0,5,4
+2020,2025,2021,2025,Santo Tirso,raw_interactions,own_new_rent_growth_window_pct,16,-0.235294118,0.088205102,-0.826470588,0.341176471,3.155108,0,10,15
+2020,2025,2021,2025,Santo Tirso,raw_interactions,reference_discount_compression_window_pp,16,-0.567647059,-0.281375371,-0.826470588,0.523529412,3.155108,0,1,6
+2020,2025,2021,2025,Santo Tirso,per_1000_residents,own_new_rent_growth_window_pct,16,-0.250000000,-0.022274564,-0.688235294,0.341176471,1.899941,0,9,17
+2020,2025,2021,2025,Santo Tirso,per_1000_residents,reference_discount_compression_window_pp,16,-0.294117647,0.107088712,-0.688235294,0.523529412,1.899941,0,7,13
+2020,2025,2021,2025,Santo Tirso,share_of_amp_interactions,own_new_rent_growth_window_pct,16,-0.229411765,0.006419306,-0.685294118,0.341176471,1.885469,0,12,17
+2020,2025,2021,2025,Santo Tirso,share_of_amp_interactions,reference_discount_compression_window_pp,16,-0.073529412,0.459705867,-0.685294118,0.523529412,1.885469,0,15,7
+2020,2025,2021,2025,São João da Madeira,raw_interactions,own_new_rent_growth_window_pct,16,-0.050000000,-0.276697338,-0.826470588,-0.126470588,3.155108,0,17,5
+2020,2025,2021,2025,São João da Madeira,raw_interactions,reference_discount_compression_window_pp,16,-0.064705882,-0.289655389,-0.826470588,-0.117647059,3.155108,0,16,5
+2020,2025,2021,2025,São João da Madeira,per_1000_residents,own_new_rent_growth_window_pct,16,0.320588235,0.420480454,-0.861764706,-0.126470588,3.885584,0,6,2
+2020,2025,2021,2025,São João da Madeira,per_1000_residents,reference_discount_compression_window_pp,16,0.294117647,0.382570939,-0.861764706,-0.117647059,3.885584,0,7,5
+2020,2025,2021,2025,São João da Madeira,share_of_amp_interactions,own_new_rent_growth_window_pct,16,0.494117647,0.630359267,-0.773529412,-0.126470588,2.489716,0,2,1
+2020,2025,2021,2025,São João da Madeira,share_of_amp_interactions,reference_discount_compression_window_pp,16,0.488235294,0.631168673,-0.773529412,-0.117647059,2.489716,0,3,3
+2020,2025,2021,2025,Trofa,raw_interactions,own_new_rent_growth_window_pct,16,-0.145695404,0.260831582,-0.872700751,0.305882353,4.194747,0,12,7
+2020,2025,2021,2025,Trofa,raw_interactions,reference_discount_compression_window_pp,16,-0.304635844,0.064376519,-0.872700751,0.382352941,4.194747,0,5,14
+2020,2025,2021,2025,Trofa,per_1000_residents,own_new_rent_growth_window_pct,16,-0.211764706,0.090968978,-0.844117647,0.305882353,3.478680,0,12,14
+2020,2025,2021,2025,Trofa,per_1000_residents,reference_discount_compression_window_pp,16,-0.341176471,-0.037191982,-0.844117647,0.382352941,3.478680,0,3,16
+2020,2025,2021,2025,Trofa,share_of_amp_interactions,own_new_rent_growth_window_pct,16,-0.194117647,0.128418206,-0.847058824,0.305882353,3.539931,0,15,13
+2020,2025,2021,2025,Trofa,share_of_amp_interactions,reference_discount_compression_window_pp,16,-0.220588235,0.210312098,-0.847058824,0.382352941,3.539931,0,10,12
+2020,2025,2021,2025,Vale de Cambra,raw_interactions,own_new_rent_growth_window_pct,16,-0.326470588,-0.371109811,-0.652941176,0.070588235,1.743169,0,4,2
+2020,2025,2021,2025,Vale de Cambra,raw_interactions,reference_discount_compression_window_pp,16,-0.314705882,-0.415503433,-0.652941176,0.000000000,1.743169,0,4,3
+2020,2025,2021,2025,Vale de Cambra,per_1000_residents,own_new_rent_growth_window_pct,16,0.152941176,0.239297661,-0.582352941,0.070588235,1.513168,0,15,11
+2020,2025,2021,2025,Vale de Cambra,per_1000_residents,reference_discount_compression_window_pp,16,0.214705882,0.264111645,-0.582352941,0.000000000,1.513168,0,11,9
+2020,2025,2021,2025,Vale de Cambra,share_of_amp_interactions,own_new_rent_growth_window_pct,16,0.458823529,0.611042189,-0.573529412,0.070588235,1.490171,0,3,2
+2020,2025,2021,2025,Vale de Cambra,share_of_amp_interactions,reference_discount_compression_window_pp,16,0.561764706,0.685760514,-0.573529412,0.000000000,1.490171,0,1,1
+2020,2025,2021,2025,Valongo,raw_interactions,own_new_rent_growth_window_pct,16,-0.323767564,-0.184271846,-0.896247483,0.273529412,5.082839,0,5,11
+2020,2025,2021,2025,Valongo,raw_interactions,reference_discount_compression_window_pp,16,0.023546732,0.112564680,-0.896247483,0.029411765,5.082839,0,17,13
+2020,2025,2021,2025,Valongo,per_1000_residents,own_new_rent_growth_window_pct,16,-0.273529412,-0.055557140,-0.926470588,0.273529412,7.059542,1,7,15
+2020,2025,2021,2025,Valongo,per_1000_residents,reference_discount_compression_window_pp,16,-0.052941176,-0.068292782,-0.926470588,0.029411765,7.059542,1,15,14
+2020,2025,2021,2025,Valongo,share_of_amp_interactions,own_new_rent_growth_window_pct,16,-0.200000000,0.110136286,-0.900000000,0.273529412,5.263158,1,14,15
+2020,2025,2021,2025,Valongo,share_of_amp_interactions,reference_discount_compression_window_pp,16,-0.041176471,-0.033752210,-0.900000000,0.029411765,5.263158,1,16,17
+2020,2025,2021,2025,Vila Nova de Gaia,raw_interactions,own_new_rent_growth_window_pct,16,-0.217647059,-0.102967305,-0.791176471,0.197058824,2.673512,0,11,13
+2020,2025,2021,2025,Vila Nova de Gaia,raw_interactions,reference_discount_compression_window_pp,16,-0.341176471,-0.215861597,-0.791176471,0.270588235,2.673512,0,2,8
+2020,2025,2021,2025,Vila Nova de Gaia,per_1000_residents,own_new_rent_growth_window_pct,16,-0.105882353,0.091174794,-0.805882353,0.197058824,2.852631,0,17,13
+2020,2025,2021,2025,Vila Nova de Gaia,per_1000_residents,reference_discount_compression_window_pp,16,-0.244117647,-0.045712092,-0.805882353,0.270588235,2.852631,0,10,15
+2020,2025,2021,2025,Vila Nova de Gaia,share_of_amp_interactions,own_new_rent_growth_window_pct,16,0.108823529,0.434234072,-0.785294118,0.197058824,2.608833,0,17,8
+2020,2025,2021,2025,Vila Nova de Gaia,share_of_amp_interactions,reference_discount_compression_window_pp,16,0.002941176,0.361447827,-0.785294118,0.270588235,2.608833,0,17,8
+2020,2025,2021,2025,Vila do Conde,raw_interactions,own_new_rent_growth_window_pct,16,-0.279411765,-0.397569009,-0.835294118,0.073529412,3.308150,0,8,1
+2020,2025,2021,2025,Vila do Conde,raw_interactions,reference_discount_compression_window_pp,16,-0.267647059,-0.393720144,-0.835294118,0.061764706,3.308150,0,9,4
+2020,2025,2021,2025,Vila do Conde,per_1000_residents,own_new_rent_growth_window_pct,16,-0.323529412,-0.392677103,-0.723529412,0.073529412,2.098613,0,5,4
+2020,2025,2021,2025,Vila do Conde,per_1000_residents,reference_discount_compression_window_pp,16,-0.341176471,-0.430331478,-0.723529412,0.061764706,2.098613,0,3,2
+2020,2025,2021,2025,Vila do Conde,share_of_amp_interactions,own_new_rent_growth_window_pct,16,-0.150000000,-0.140927742,-0.726470588,0.073529412,2.117565,0,16,12
+2020,2025,2021,2025,Vila do Conde,share_of_amp_interactions,reference_discount_compression_window_pp,16,-0.164705882,-0.174716679,-0.726470588,0.061764706,2.117565,0,13,14
+2021,2025,2021,2025,Arouca,raw_interactions,own_new_rent_growth_window_pct,16,0.200000000,0.188004502,-0.617647059,-0.085294118,1.616783,0,9,5
+2021,2025,2021,2025,Arouca,raw_interactions,reference_discount_compression_window_pp,16,0.108823529,0.191938814,-0.617647059,0.067647059,1.616783,0,8,7
+2021,2025,2021,2025,Arouca,per_1000_residents,own_new_rent_growth_window_pct,16,0.464705882,0.498732818,-0.538235294,-0.085294118,1.407850,0,4,3
+2021,2025,2021,2025,Arouca,per_1000_residents,reference_discount_compression_window_pp,16,0.302941176,0.403574413,-0.538235294,0.067647059,1.407850,0,7,5
+2021,2025,2021,2025,Arouca,share_of_amp_interactions,own_new_rent_growth_window_pct,16,0.511764706,0.542143662,-0.494117647,-0.085294118,1.323018,0,4,7
+2021,2025,2021,2025,Arouca,share_of_amp_interactions,reference_discount_compression_window_pp,16,0.338235294,0.428475195,-0.494117647,0.067647059,1.323018,0,7,7
+2021,2025,2021,2025,Espinho,raw_interactions,own_new_rent_growth_window_pct,16,0.067647059,0.173388469,-0.820588235,0.038235294,3.061522,0,13,6
+2021,2025,2021,2025,Espinho,raw_interactions,reference_discount_compression_window_pp,16,-0.179411765,-0.120775613,-0.820588235,0.135294118,3.061522,0,7,10
+2021,2025,2021,2025,Espinho,per_1000_residents,own_new_rent_growth_window_pct,16,0.297058824,0.468510940,-0.720588235,0.038235294,2.080072,0,11,5
+2021,2025,2021,2025,Espinho,per_1000_residents,reference_discount_compression_window_pp,16,0.141176471,0.347411865,-0.720588235,0.135294118,2.080072,0,14,7
+2021,2025,2021,2025,Espinho,share_of_amp_interactions,own_new_rent_growth_window_pct,16,0.538235294,0.632109272,-0.473529412,0.038235294,1.289042,0,2,3
+2021,2025,2021,2025,Espinho,share_of_amp_interactions,reference_discount_compression_window_pp,16,0.432352941,0.568844100,-0.473529412,0.135294118,1.289042,0,5,4
+2021,2025,2021,2025,Gondomar,raw_interactions,own_new_rent_growth_window_pct,16,-0.223529412,-0.159602256,-0.679411765,0.158823529,1.857356,0,7,7
+2021,2025,2021,2025,Gondomar,raw_interactions,reference_discount_compression_window_pp,16,-0.023529412,0.014247563,-0.679411765,0.050000000,1.857356,0,15,15
+2021,2025,2021,2025,Gondomar,per_1000_residents,own_new_rent_growth_window_pct,16,-0.476470588,-0.486476277,-0.614705882,0.158823529,1.607364,0,2,4
+2021,2025,2021,2025,Gondomar,per_1000_residents,reference_discount_compression_window_pp,16,-0.302941176,-0.345539858,-0.614705882,0.050000000,1.607364,0,7,8
+2021,2025,2021,2025,Gondomar,share_of_amp_interactions,own_new_rent_growth_window_pct,16,-0.455882353,-0.479208557,-0.676470588,0.158823529,1.843700,0,7,8
+2021,2025,2021,2025,Gondomar,share_of_amp_interactions,reference_discount_compression_window_pp,16,-0.291176471,-0.349878963,-0.676470588,0.050000000,1.843700,0,9,11
+2021,2025,2021,2025,Maia,raw_interactions,own_new_rent_growth_window_pct,16,-0.264705882,-0.067478136,-0.852941176,0.270588235,3.669841,0,4,12
+2021,2025,2021,2025,Maia,raw_interactions,reference_discount_compression_window_pp,16,-0.079411765,0.001664554,-0.852941176,0.094117647,3.669841,0,11,16
+2021,2025,2021,2025,Maia,per_1000_residents,own_new_rent_growth_window_pct,16,-0.288235294,-0.103713632,-0.950000000,0.270588235,10.256410,1,12,15
+2021,2025,2021,2025,Maia,per_1000_residents,reference_discount_compression_window_pp,16,-0.091176471,-0.005676781,-0.950000000,0.094117647,10.256410,1,16,17
+2021,2025,2021,2025,Maia,share_of_amp_interactions,own_new_rent_growth_window_pct,16,-0.367647059,-0.341563718,-0.938235294,0.270588235,8.353205,1,9,10
+2021,2025,2021,2025,Maia,share_of_amp_interactions,reference_discount_compression_window_pp,16,-0.226470588,-0.401106887,-0.938235294,0.094117647,8.353205,1,11,9
+2021,2025,2021,2025,Matosinhos,raw_interactions,own_new_rent_growth_window_pct,16,-0.223529412,-0.074458909,-0.829411765,0.220588235,3.204346,0,7,11
+2021,2025,2021,2025,Matosinhos,raw_interactions,reference_discount_compression_window_pp,16,-0.094117647,-0.041993568,-0.829411765,0.085294118,3.204346,0,10,13
+2021,2025,2021,2025,Matosinhos,per_1000_residents,own_new_rent_growth_window_pct,16,-0.279411765,-0.214676979,-0.938235294,0.220588235,8.353205,1,14,11
+2021,2025,2021,2025,Matosinhos,per_1000_residents,reference_discount_compression_window_pp,16,-0.132352941,-0.151788145,-0.938235294,0.085294118,8.353205,1,15,13
+2021,2025,2021,2025,Matosinhos,share_of_amp_interactions,own_new_rent_growth_window_pct,16,-0.170588235,0.079116814,-0.914705882,0.220588235,6.123206,1,15,16
+2021,2025,2021,2025,Matosinhos,share_of_amp_interactions,reference_discount_compression_window_pp,16,-0.041176471,0.091500774,-0.914705882,0.085294118,6.123206,1,16,14
+2021,2025,2021,2025,Oliveira de Azeméis,raw_interactions,own_new_rent_growth_window_pct,16,0.002941176,-0.092607594,-0.761764706,-0.082352941,2.382572,0,17,9
+2021,2025,2021,2025,Oliveira de Azeméis,raw_interactions,reference_discount_compression_window_pp,16,-0.064705882,-0.162354697,-0.761764706,-0.052941176,2.382572,0,13,8
+2021,2025,2021,2025,Oliveira de Azeméis,per_1000_residents,own_new_rent_growth_window_pct,16,0.485294118,0.636868381,-0.744117647,-0.082352941,2.240701,0,1,1
+2021,2025,2021,2025,Oliveira de Azeméis,per_1000_residents,reference_discount_compression_window_pp,16,0.485294118,0.668403241,-0.744117647,-0.052941176,2.240701,0,2,1
+2021,2025,2021,2025,Oliveira de Azeméis,share_of_amp_interactions,own_new_rent_growth_window_pct,16,0.550000000,0.646636220,-0.635294118,-0.082352941,1.676723,0,1,2
+2021,2025,2021,2025,Oliveira de Azeméis,share_of_amp_interactions,reference_discount_compression_window_pp,16,0.576470588,0.703898248,-0.635294118,-0.052941176,1.676723,0,2,3
+2021,2025,2021,2025,Paredes,raw_interactions,own_new_rent_growth_window_pct,16,-0.258823529,0.016141710,-0.805882353,0.332352941,2.852631,0,5,16
+2021,2025,2021,2025,Paredes,raw_interactions,reference_discount_compression_window_pp,16,-0.194117647,0.000421537,-0.805882353,0.241176471,2.852631,0,6,17
+2021,2025,2021,2025,Paredes,per_1000_residents,own_new_rent_growth_window_pct,16,-0.305882353,-0.120580550,-0.664705882,0.332352941,1.791581,0,9,13
+2021,2025,2021,2025,Paredes,per_1000_residents,reference_discount_compression_window_pp,16,-0.273529412,-0.156151646,-0.664705882,0.241176471,1.791581,0,9,12
+2021,2025,2021,2025,Paredes,share_of_amp_interactions,own_new_rent_growth_window_pct,16,-0.252941176,-0.005893305,-0.750000000,0.332352941,2.285714,0,14,17
+2021,2025,2021,2025,Paredes,share_of_amp_interactions,reference_discount_compression_window_pp,16,-0.214705882,-0.052691763,-0.750000000,0.241176471,2.285714,0,13,17
+2021,2025,2021,2025,Porto,raw_interactions,own_new_rent_growth_window_pct,16,-0.255882353,0.081988601,-0.852941176,0.347058824,3.669841,0,6,10
+2021,2025,2021,2025,Porto,raw_interactions,reference_discount_compression_window_pp,16,-0.282352941,0.059087680,-0.852941176,0.364705882,3.669841,0,4,11
+2021,2025,2021,2025,Porto,per_1000_residents,own_new_rent_growth_window_pct,16,-0.364705882,-0.119518581,-0.950000000,0.347058824,10.256410,1,6,14
+2021,2025,2021,2025,Porto,per_1000_residents,reference_discount_compression_window_pp,16,-0.388235294,-0.143648194,-0.950000000,0.364705882,10.256410,1,4,14
+2021,2025,2021,2025,Porto,share_of_amp_interactions,own_new_rent_growth_window_pct,16,-0.332352941,-0.098393485,-0.797058824,0.347058824,2.742001,0,10,12
+2021,2025,2021,2025,Porto,share_of_amp_interactions,reference_discount_compression_window_pp,16,-0.338235294,-0.084550408,-0.797058824,0.364705882,2.742001,0,7,15
+2021,2025,2021,2025,Póvoa de Varzim,raw_interactions,own_new_rent_growth_window_pct,16,0.055882353,0.226288527,-0.750000000,0.123529412,2.285714,0,14,3
+2021,2025,2021,2025,Póvoa de Varzim,raw_interactions,reference_discount_compression_window_pp,16,0.026470588,0.209041552,-0.750000000,0.147058824,2.285714,0,14,5
+2021,2025,2021,2025,Póvoa de Varzim,per_1000_residents,own_new_rent_growth_window_pct,16,0.285294118,0.429099763,-0.555882353,0.123529412,1.447189,0,13,7
+2021,2025,2021,2025,Póvoa de Varzim,per_1000_residents,reference_discount_compression_window_pp,16,0.267647059,0.424938657,-0.555882353,0.147058824,1.447189,0,10,4
+2021,2025,2021,2025,Póvoa de Varzim,share_of_amp_interactions,own_new_rent_growth_window_pct,16,0.285294118,0.432040871,-0.561764706,0.123529412,1.461090,0,13,9
+2021,2025,2021,2025,Póvoa de Varzim,share_of_amp_interactions,reference_discount_compression_window_pp,16,0.276470588,0.438814567,-0.561764706,0.147058824,1.461090,0,10,6
+2021,2025,2021,2025,Santa Maria da Feira,raw_interactions,own_new_rent_growth_window_pct,16,0.117647059,0.028115330,-0.797058824,-0.126470588,2.742001,0,10,14
+2021,2025,2021,2025,Santa Maria da Feira,raw_interactions,reference_discount_compression_window_pp,16,-0.020588235,-0.226671844,-0.797058824,-0.144117647,2.742001,0,16,4
+2021,2025,2021,2025,Santa Maria da Feira,per_1000_residents,own_new_rent_growth_window_pct,16,0.300000000,0.321584912,-0.773529412,-0.126470588,2.489716,0,10,10
+2021,2025,2021,2025,Santa Maria da Feira,per_1000_residents,reference_discount_compression_window_pp,16,0.252941176,0.225565213,-0.773529412,-0.144117647,2.489716,0,11,9
+2021,2025,2021,2025,Santa Maria da Feira,share_of_amp_interactions,own_new_rent_growth_window_pct,16,0.491176471,0.568382566,-0.700000000,-0.126470588,1.960784,0,6,5
+2021,2025,2021,2025,Santa Maria da Feira,share_of_amp_interactions,reference_discount_compression_window_pp,16,0.500000000,0.564772399,-0.700000000,-0.144117647,1.960784,0,4,5
+2021,2025,2021,2025,Santo Tirso,raw_interactions,own_new_rent_growth_window_pct,16,-0.276470588,0.253149307,-0.826470588,0.485294118,3.155108,0,3,1
+2021,2025,2021,2025,Santo Tirso,raw_interactions,reference_discount_compression_window_pp,16,-0.670588235,-0.339273371,-0.826470588,0.632352941,3.155108,0,1,2
+2021,2025,2021,2025,Santo Tirso,per_1000_residents,own_new_rent_growth_window_pct,16,-0.276470588,0.090687630,-0.688235294,0.485294118,1.899941,0,15,16
+2021,2025,2021,2025,Santo Tirso,per_1000_residents,reference_discount_compression_window_pp,16,-0.405882353,0.052178227,-0.688235294,0.632352941,1.899941,0,3,16
+2021,2025,2021,2025,Santo Tirso,share_of_amp_interactions,own_new_rent_growth_window_pct,16,-0.385294118,-0.082801804,-0.685294118,0.485294118,1.885469,0,8,15
+2021,2025,2021,2025,Santo Tirso,share_of_amp_interactions,reference_discount_compression_window_pp,16,-0.217647059,0.382330262,-0.685294118,0.632352941,1.885469,0,12,10
+2021,2025,2021,2025,São João da Madeira,raw_interactions,own_new_rent_growth_window_pct,16,0.111764706,0.021654483,-0.826470588,-0.120588235,3.155108,0,11,15
+2021,2025,2021,2025,São João da Madeira,raw_interactions,reference_discount_compression_window_pp,16,0.073529412,-0.016276922,-0.826470588,-0.100000000,3.155108,0,12,14
+2021,2025,2021,2025,São João da Madeira,per_1000_residents,own_new_rent_growth_window_pct,16,0.355882353,0.500318878,-0.861764706,-0.120588235,3.885584,0,7,2
+2021,2025,2021,2025,São João da Madeira,per_1000_residents,reference_discount_compression_window_pp,16,0.341176471,0.505185313,-0.861764706,-0.100000000,3.885584,0,6,2
+2021,2025,2021,2025,São João da Madeira,share_of_amp_interactions,own_new_rent_growth_window_pct,16,0.514705882,0.669851348,-0.773529412,-0.120588235,2.489716,0,3,1
+2021,2025,2021,2025,São João da Madeira,share_of_amp_interactions,reference_discount_compression_window_pp,16,0.535294118,0.726217979,-0.773529412,-0.100000000,2.489716,0,3,1
+2021,2025,2021,2025,Trofa,raw_interactions,own_new_rent_growth_window_pct,16,-0.023546732,0.244124923,-0.872700751,0.161764706,4.194747,0,16,2
+2021,2025,2021,2025,Trofa,raw_interactions,reference_discount_compression_window_pp,16,0.008830024,0.251508510,-0.872700751,0.129411765,4.194747,0,17,3
+2021,2025,2021,2025,Trofa,per_1000_residents,own_new_rent_growth_window_pct,16,-0.052941176,0.158018951,-0.844117647,0.161764706,3.478680,0,16,12
+2021,2025,2021,2025,Trofa,per_1000_residents,reference_discount_compression_window_pp,16,0.002941176,0.211003582,-0.844117647,0.129411765,3.478680,0,17,10
+2021,2025,2021,2025,Trofa,share_of_amp_interactions,own_new_rent_growth_window_pct,16,-0.091176471,0.087412471,-0.847058824,0.161764706,3.539931,0,17,14
+2021,2025,2021,2025,Trofa,share_of_amp_interactions,reference_discount_compression_window_pp,16,-0.058823529,0.096381368,-0.847058824,0.129411765,3.539931,0,14,13
+2021,2025,2021,2025,Vale de Cambra,raw_interactions,own_new_rent_growth_window_pct,16,-0.041176471,-0.059436978,-0.652941176,-0.005882353,1.743169,0,15,13
+2021,2025,2021,2025,Vale de Cambra,raw_interactions,reference_discount_compression_window_pp,16,-0.108823529,-0.161461533,-0.652941176,-0.020588235,1.743169,0,8,9
+2021,2025,2021,2025,Vale de Cambra,per_1000_residents,own_new_rent_growth_window_pct,16,0.367647059,0.448039851,-0.582352941,-0.005882353,1.513168,0,5,6
+2021,2025,2021,2025,Vale de Cambra,per_1000_residents,reference_discount_compression_window_pp,16,0.379411765,0.452065119,-0.582352941,-0.020588235,1.513168,0,5,3
+2021,2025,2021,2025,Vale de Cambra,share_of_amp_interactions,own_new_rent_growth_window_pct,16,0.508823529,0.617026180,-0.573529412,-0.005882353,1.490171,0,5,4
+2021,2025,2021,2025,Vale de Cambra,share_of_amp_interactions,reference_discount_compression_window_pp,16,0.591176471,0.707399871,-0.573529412,-0.020588235,1.490171,0,1,2
+2021,2025,2021,2025,Valongo,raw_interactions,own_new_rent_growth_window_pct,16,-0.335540930,-0.008258222,-0.896247483,0.370588235,5.082839,0,2,17
+2021,2025,2021,2025,Valongo,raw_interactions,reference_discount_compression_window_pp,16,0.226637295,0.192481000,-0.896247483,-0.158823529,5.082839,0,5,6
+2021,2025,2021,2025,Valongo,per_1000_residents,own_new_rent_growth_window_pct,16,-0.326470588,0.048255199,-0.926470588,0.370588235,7.059542,1,8,17
+2021,2025,2021,2025,Valongo,per_1000_residents,reference_discount_compression_window_pp,16,0.176470588,0.078918335,-0.926470588,-0.158823529,7.059542,1,12,15
+2021,2025,2021,2025,Valongo,share_of_amp_interactions,own_new_rent_growth_window_pct,16,-0.297058824,0.090083456,-0.900000000,0.370588235,5.263158,1,12,13
+2021,2025,2021,2025,Valongo,share_of_amp_interactions,reference_discount_compression_window_pp,16,0.055882353,-0.202294364,-0.900000000,-0.158823529,5.263158,1,15,12
+2021,2025,2021,2025,Vila Nova de Gaia,raw_interactions,own_new_rent_growth_window_pct,16,-0.097058824,0.141860732,-0.791176471,0.229411765,2.673512,0,12,8
+2021,2025,2021,2025,Vila Nova de Gaia,raw_interactions,reference_discount_compression_window_pp,16,-0.288235294,-0.047817671,-0.791176471,0.329411765,2.673512,0,3,12
+2021,2025,2021,2025,Vila Nova de Gaia,per_1000_residents,own_new_rent_growth_window_pct,16,0.026470588,0.366744897,-0.805882353,0.229411765,2.852631,0,17,9
+2021,2025,2021,2025,Vila Nova de Gaia,per_1000_residents,reference_discount_compression_window_pp,16,-0.150000000,0.206549146,-0.805882353,0.329411765,2.852631,0,13,11
+2021,2025,2021,2025,Vila Nova de Gaia,share_of_amp_interactions,own_new_rent_growth_window_pct,16,0.155882353,0.557637207,-0.785294118,0.229411765,2.608833,0,16,6
+2021,2025,2021,2025,Vila Nova de Gaia,share_of_amp_interactions,reference_discount_compression_window_pp,16,-0.008823529,0.427429920,-0.785294118,0.329411765,2.608833,0,17,8
+2021,2025,2021,2025,Vila do Conde,raw_interactions,own_new_rent_growth_window_pct,16,-0.355882353,-0.205245690,-0.835294118,0.297058824,3.308150,0,1,4
+2021,2025,2021,2025,Vila do Conde,raw_interactions,reference_discount_compression_window_pp,16,-0.564705882,-0.388937879,-0.835294118,0.447058824,3.308150,0,2,1
+2021,2025,2021,2025,Vila do Conde,per_1000_residents,own_new_rent_growth_window_pct,16,-0.467647059,-0.383407006,-0.723529412,0.297058824,2.098613,0,3,8
+2021,2025,2021,2025,Vila do Conde,per_1000_residents,reference_discount_compression_window_pp,16,-0.555882353,-0.376409979,-0.723529412,0.447058824,2.098613,0,1,6
+2021,2025,2021,2025,Vila do Conde,share_of_amp_interactions,own_new_rent_growth_window_pct,16,-0.314705882,-0.150723661,-0.726470588,0.297058824,2.117565,0,11,11
+2021,2025,2021,2025,Vila do Conde,share_of_amp_interactions,reference_discount_compression_window_pp,16,-0.370588235,-0.074529117,-0.726470588,0.447058824,2.117565,0,6,16
+2022,2025,2021,2025,Arouca,raw_interactions,own_new_rent_growth_window_pct,16,0.126470588,-0.005627312,-0.617647059,-0.211764706,1.616783,0,14,17
+2022,2025,2021,2025,Arouca,raw_interactions,reference_discount_compression_window_pp,16,0.035294118,-0.136529776,-0.617647059,-0.226470588,1.616783,0,14,14
+2022,2025,2021,2025,Arouca,per_1000_residents,own_new_rent_growth_window_pct,16,0.505882353,0.475794999,-0.538235294,-0.211764706,1.407850,0,6,8
+2022,2025,2021,2025,Arouca,per_1000_residents,reference_discount_compression_window_pp,16,0.452941176,0.403274296,-0.538235294,-0.226470588,1.407850,0,5,8
+2022,2025,2021,2025,Arouca,share_of_amp_interactions,own_new_rent_growth_window_pct,16,0.447058824,0.403002364,-0.494117647,-0.211764706,1.323018,0,8,7
+2022,2025,2021,2025,Arouca,share_of_amp_interactions,reference_discount_compression_window_pp,16,0.429411765,0.374948322,-0.494117647,-0.226470588,1.323018,0,8,8
+2022,2025,2021,2025,Espinho,raw_interactions,own_new_rent_growth_window_pct,16,-0.285294118,-0.253883165,-0.820588235,0.173529412,3.061522,0,11,10
+2022,2025,2021,2025,Espinho,raw_interactions,reference_discount_compression_window_pp,16,-0.414705882,-0.415181087,-0.820588235,0.223529412,3.061522,0,6,3
+2022,2025,2021,2025,Espinho,per_1000_residents,own_new_rent_growth_window_pct,16,0.238235294,0.532008097,-0.720588235,0.173529412,2.080072,0,14,4
+2022,2025,2021,2025,Espinho,per_1000_residents,reference_discount_compression_window_pp,16,0.164705882,0.482049849,-0.720588235,0.223529412,2.080072,0,15,4
+2022,2025,2021,2025,Espinho,share_of_amp_interactions,own_new_rent_growth_window_pct,16,0.467647059,0.633858136,-0.473529412,0.173529412,1.289042,0,6,4
+2022,2025,2021,2025,Espinho,share_of_amp_interactions,reference_discount_compression_window_pp,16,0.455882353,0.654322005,-0.473529412,0.223529412,1.289042,0,6,4
+2022,2025,2021,2025,Gondomar,raw_interactions,own_new_rent_growth_window_pct,16,-0.514705882,-0.439294592,-0.679411765,0.305882353,1.857356,0,6,1
+2022,2025,2021,2025,Gondomar,raw_interactions,reference_discount_compression_window_pp,16,-0.344117647,-0.310452158,-0.679411765,0.176470588,1.857356,0,8,9
+2022,2025,2021,2025,Gondomar,per_1000_residents,own_new_rent_growth_window_pct,16,-0.488235294,-0.399770026,-0.614705882,0.305882353,1.607364,0,7,10
+2022,2025,2021,2025,Gondomar,per_1000_residents,reference_discount_compression_window_pp,16,-0.385294118,-0.356548938,-0.614705882,0.176470588,1.607364,0,8,9
+2022,2025,2021,2025,Gondomar,share_of_amp_interactions,own_new_rent_growth_window_pct,16,-0.441176471,-0.334093021,-0.676470588,0.305882353,1.843700,0,9,9
+2022,2025,2021,2025,Gondomar,share_of_amp_interactions,reference_discount_compression_window_pp,16,-0.361764706,-0.334368494,-0.676470588,0.176470588,1.843700,0,9,9
+2022,2025,2021,2025,Maia,raw_interactions,own_new_rent_growth_window_pct,16,-0.567647059,-0.365773664,-0.852941176,0.467647059,3.669841,0,1,4
+2022,2025,2021,2025,Maia,raw_interactions,reference_discount_compression_window_pp,16,-0.605882353,-0.425274583,-0.852941176,0.482352941,3.669841,0,2,1
+2022,2025,2021,2025,Maia,per_1000_residents,own_new_rent_growth_window_pct,16,-0.394117647,0.181690623,-0.950000000,0.467647059,10.256410,1,10,13
+2022,2025,2021,2025,Maia,per_1000_residents,reference_discount_compression_window_pp,16,-0.426470588,0.116131449,-0.950000000,0.482352941,10.256410,1,7,15
+2022,2025,2021,2025,Maia,share_of_amp_interactions,own_new_rent_growth_window_pct,16,-0.452941176,-0.046359318,-0.938235294,0.467647059,8.353205,1,7,17
+2022,2025,2021,2025,Maia,share_of_amp_interactions,reference_discount_compression_window_pp,16,-0.473529412,-0.069184476,-0.938235294,0.482352941,8.353205,1,5,16
+2022,2025,2021,2025,Matosinhos,raw_interactions,own_new_rent_growth_window_pct,16,-0.555882353,-0.429414137,-0.829411765,0.405882353,3.204346,0,2,3
+2022,2025,2021,2025,Matosinhos,raw_interactions,reference_discount_compression_window_pp,16,-0.255882353,-0.246649840,-0.829411765,0.144117647,3.204346,0,11,13
+2022,2025,2021,2025,Matosinhos,per_1000_residents,own_new_rent_growth_window_pct,16,-0.520588235,-0.442023762,-0.938235294,0.405882353,8.353205,1,5,9
+2022,2025,2021,2025,Matosinhos,per_1000_residents,reference_discount_compression_window_pp,16,-0.235294118,-0.292295528,-0.938235294,0.144117647,8.353205,1,12,10
+2022,2025,2021,2025,Matosinhos,share_of_amp_interactions,own_new_rent_growth_window_pct,16,-0.391176471,-0.053917059,-0.914705882,0.405882353,6.123206,1,10,16
+2022,2025,2021,2025,Matosinhos,share_of_amp_interactions,reference_discount_compression_window_pp,16,-0.117647059,0.035454239,-0.914705882,0.144117647,6.123206,1,13,17
+2022,2025,2021,2025,Oliveira de Azeméis,raw_interactions,own_new_rent_growth_window_pct,16,0.029411765,-0.252940992,-0.761764706,-0.247058824,2.382572,0,15,11
+2022,2025,2021,2025,Oliveira de Azeméis,raw_interactions,reference_discount_compression_window_pp,16,0.017647059,-0.333336261,-0.761764706,-0.294117647,2.382572,0,17,7
+2022,2025,2021,2025,Oliveira de Azeméis,per_1000_residents,own_new_rent_growth_window_pct,16,0.591176471,0.629245851,-0.744117647,-0.247058824,2.240701,0,1,1
+2022,2025,2021,2025,Oliveira de Azeméis,per_1000_residents,reference_discount_compression_window_pp,16,0.632352941,0.647603168,-0.744117647,-0.294117647,2.240701,0,1,1
+2022,2025,2021,2025,Oliveira de Azeméis,share_of_amp_interactions,own_new_rent_growth_window_pct,16,0.611764706,0.607765988,-0.635294118,-0.247058824,1.676723,0,3,5
+2022,2025,2021,2025,Oliveira de Azeméis,share_of_amp_interactions,reference_discount_compression_window_pp,16,0.688235294,0.679278986,-0.635294118,-0.294117647,1.676723,0,2,3
+2022,2025,2021,2025,Paredes,raw_interactions,own_new_rent_growth_window_pct,16,-0.529411765,-0.438472395,-0.805882353,0.355882353,2.852631,0,4,2
+2022,2025,2021,2025,Paredes,raw_interactions,reference_discount_compression_window_pp,16,-0.320588235,-0.270875595,-0.805882353,0.202941176,2.852631,0,9,11
+2022,2025,2021,2025,Paredes,per_1000_residents,own_new_rent_growth_window_pct,16,-0.311764706,-0.107717552,-0.664705882,0.355882353,1.791581,0,12,14
+2022,2025,2021,2025,Paredes,per_1000_residents,reference_discount_compression_window_pp,16,-0.129411765,0.007496910,-0.664705882,0.202941176,1.791581,0,16,17
+2022,2025,2021,2025,Paredes,share_of_amp_interactions,own_new_rent_growth_window_pct,16,-0.173529412,0.151071375,-0.750000000,0.355882353,2.285714,0,15,15
+2022,2025,2021,2025,Paredes,share_of_amp_interactions,reference_discount_compression_window_pp,16,-0.044117647,0.166886811,-0.750000000,0.202941176,2.285714,0,17,14
+2022,2025,2021,2025,Porto,raw_interactions,own_new_rent_growth_window_pct,16,-0.544117647,-0.348660594,-0.852941176,0.447058824,3.669841,0,3,5
+2022,2025,2021,2025,Porto,raw_interactions,reference_discount_compression_window_pp,16,-0.417647059,-0.301163337,-0.852941176,0.314705882,3.669841,0,5,10
+2022,2025,2021,2025,Porto,per_1000_residents,own_new_rent_growth_window_pct,16,-0.564705882,-0.501237054,-0.950000000,0.447058824,10.256410,1,2,7
+2022,2025,2021,2025,Porto,per_1000_residents,reference_discount_compression_window_pp,16,-0.435294118,-0.459955386,-0.950000000,0.314705882,10.256410,1,6,6
+2022,2025,2021,2025,Porto,share_of_amp_interactions,own_new_rent_growth_window_pct,16,-0.538235294,-0.336737390,-0.797058824,0.447058824,2.742001,0,5,8
+2022,2025,2021,2025,Porto,share_of_amp_interactions,reference_discount_compression_window_pp,16,-0.438235294,-0.326920178,-0.797058824,0.314705882,2.742001,0,7,10
+2022,2025,2021,2025,Póvoa de Varzim,raw_interactions,own_new_rent_growth_window_pct,16,-0.297058824,-0.059266838,-0.750000000,0.347058824,2.285714,0,10,15
+2022,2025,2021,2025,Póvoa de Varzim,raw_interactions,reference_discount_compression_window_pp,16,-0.258823529,-0.043245285,-0.750000000,0.308823529,2.285714,0,10,16
+2022,2025,2021,2025,Póvoa de Varzim,per_1000_residents,own_new_rent_growth_window_pct,16,0.226470588,0.537966201,-0.555882353,0.347058824,1.447189,0,15,3
+2022,2025,2021,2025,Póvoa de Varzim,per_1000_residents,reference_discount_compression_window_pp,16,0.214705882,0.488694096,-0.555882353,0.308823529,1.447189,0,13,3
+2022,2025,2021,2025,Póvoa de Varzim,share_of_amp_interactions,own_new_rent_growth_window_pct,16,0.267647059,0.596246079,-0.561764706,0.347058824,1.461090,0,14,6
+2022,2025,2021,2025,Póvoa de Varzim,share_of_amp_interactions,reference_discount_compression_window_pp,16,0.244117647,0.530723051,-0.561764706,0.308823529,1.461090,0,11,6
+2022,2025,2021,2025,Santa Maria da Feira,raw_interactions,own_new_rent_growth_window_pct,16,0.014705882,-0.248674884,-0.797058824,-0.202941176,2.742001,0,17,12
+2022,2025,2021,2025,Santa Maria da Feira,raw_interactions,reference_discount_compression_window_pp,16,-0.035294118,-0.345782973,-0.797058824,-0.211764706,2.742001,0,14,6
+2022,2025,2021,2025,Santa Maria da Feira,per_1000_residents,own_new_rent_growth_window_pct,16,0.485294118,0.529048872,-0.773529412,-0.202941176,2.489716,0,8,6
+2022,2025,2021,2025,Santa Maria da Feira,per_1000_residents,reference_discount_compression_window_pp,16,0.458823529,0.476305170,-0.773529412,-0.211764706,2.489716,0,4,5
+2022,2025,2021,2025,Santa Maria da Feira,share_of_amp_interactions,own_new_rent_growth_window_pct,16,0.602941176,0.659079205,-0.700000000,-0.202941176,1.960784,0,4,3
+2022,2025,2021,2025,Santa Maria da Feira,share_of_amp_interactions,reference_discount_compression_window_pp,16,0.597058824,0.643062879,-0.700000000,-0.211764706,1.960784,0,4,5
+2022,2025,2021,2025,Santo Tirso,raw_interactions,own_new_rent_growth_window_pct,16,-0.438235294,0.045268976,-0.826470588,0.555882353,3.155108,0,8,16
+2022,2025,2021,2025,Santo Tirso,raw_interactions,reference_discount_compression_window_pp,16,-0.644117647,-0.360142693,-0.826470588,0.579411765,3.155108,0,1,4
+2022,2025,2021,2025,Santo Tirso,per_1000_residents,own_new_rent_growth_window_pct,16,-0.329411765,0.088159145,-0.688235294,0.555882353,1.899941,0,11,17
+2022,2025,2021,2025,Santo Tirso,per_1000_residents,reference_discount_compression_window_pp,16,-0.291176471,0.181964434,-0.688235294,0.579411765,1.899941,0,10,13
+2022,2025,2021,2025,Santo Tirso,share_of_amp_interactions,own_new_rent_growth_window_pct,16,-0.270588235,0.182290084,-0.685294118,0.555882353,1.885469,0,13,13
+2022,2025,2021,2025,Santo Tirso,share_of_amp_interactions,reference_discount_compression_window_pp,16,-0.082352941,0.530212877,-0.685294118,0.579411765,1.885469,0,15,7
+2022,2025,2021,2025,São João da Madeira,raw_interactions,own_new_rent_growth_window_pct,16,0.144117647,-0.146713641,-0.826470588,-0.270588235,3.155108,0,13,14
+2022,2025,2021,2025,São João da Madeira,raw_interactions,reference_discount_compression_window_pp,16,0.073529412,-0.267531336,-0.826470588,-0.264705882,3.155108,0,13,12
+2022,2025,2021,2025,São João da Madeira,per_1000_residents,own_new_rent_growth_window_pct,16,0.535294118,0.618593684,-0.861764706,-0.270588235,3.885584,0,3,2
+2022,2025,2021,2025,São João da Madeira,per_1000_residents,reference_discount_compression_window_pp,16,0.511764706,0.579810933,-0.861764706,-0.264705882,3.885584,0,3,2
+2022,2025,2021,2025,São João da Madeira,share_of_amp_interactions,own_new_rent_growth_window_pct,16,0.658823529,0.736768147,-0.773529412,-0.270588235,2.489716,0,1,1
+2022,2025,2021,2025,São João da Madeira,share_of_amp_interactions,reference_discount_compression_window_pp,16,0.664705882,0.752589941,-0.773529412,-0.264705882,2.489716,0,3,2
+2022,2025,2021,2025,Trofa,raw_interactions,own_new_rent_growth_window_pct,16,-0.275202429,0.314475363,-0.872700751,0.470588235,4.194747,0,12,7
+2022,2025,2021,2025,Trofa,raw_interactions,reference_discount_compression_window_pp,16,-0.401766113,0.100599712,-0.872700751,0.508823529,4.194747,0,7,15
+2022,2025,2021,2025,Trofa,per_1000_residents,own_new_rent_growth_window_pct,16,-0.241176471,0.329870572,-0.844117647,0.470588235,3.478680,0,13,11
+2022,2025,2021,2025,Trofa,per_1000_residents,reference_discount_compression_window_pp,16,-0.329411765,0.216861407,-0.844117647,0.508823529,3.478680,0,9,11
+2022,2025,2021,2025,Trofa,share_of_amp_interactions,own_new_rent_growth_window_pct,16,-0.279411765,0.254182981,-0.847058824,0.470588235,3.539931,0,12,12
+2022,2025,2021,2025,Trofa,share_of_amp_interactions,reference_discount_compression_window_pp,16,-0.326470588,0.228461122,-0.847058824,0.508823529,3.539931,0,10,12
+2022,2025,2021,2025,Vale de Cambra,raw_interactions,own_new_rent_growth_window_pct,16,-0.029411765,-0.207466664,-0.652941176,-0.191176471,1.743169,0,15,13
+2022,2025,2021,2025,Vale de Cambra,raw_interactions,reference_discount_compression_window_pp,16,-0.026470588,-0.350072353,-0.652941176,-0.341176471,1.743169,0,16,5
+2022,2025,2021,2025,Vale de Cambra,per_1000_residents,own_new_rent_growth_window_pct,16,0.535294118,0.531319229,-0.582352941,-0.191176471,1.513168,0,3,5
+2022,2025,2021,2025,Vale de Cambra,per_1000_residents,reference_discount_compression_window_pp,16,0.544117647,0.452042556,-0.582352941,-0.341176471,1.513168,0,2,7
+2022,2025,2021,2025,Vale de Cambra,share_of_amp_interactions,own_new_rent_growth_window_pct,16,0.641176471,0.661046177,-0.573529412,-0.191176471,1.490171,0,2,2
+2022,2025,2021,2025,Vale de Cambra,share_of_amp_interactions,reference_discount_compression_window_pp,16,0.797058824,0.780984547,-0.573529412,-0.341176471,1.490171,0,1,1
+2022,2025,2021,2025,Valongo,raw_interactions,own_new_rent_growth_window_pct,16,-0.522443114,-0.269767354,-0.896247483,0.464705882,5.082839,0,5,9
+2022,2025,2021,2025,Valongo,raw_interactions,reference_discount_compression_window_pp,16,-0.101545281,0.038839127,-0.896247483,0.132352941,5.082839,0,12,17
+2022,2025,2021,2025,Valongo,per_1000_residents,own_new_rent_growth_window_pct,16,-0.400000000,0.091629156,-0.926470588,0.464705882,7.059542,1,9,15
+2022,2025,2021,2025,Valongo,per_1000_residents,reference_discount_compression_window_pp,16,-0.050000000,0.194665358,-0.926470588,0.132352941,7.059542,1,17,12
+2022,2025,2021,2025,Valongo,share_of_amp_interactions,own_new_rent_growth_window_pct,16,-0.355882353,0.161550645,-0.900000000,0.464705882,5.263158,1,11,14
+2022,2025,2021,2025,Valongo,share_of_amp_interactions,reference_discount_compression_window_pp,16,-0.088235294,0.071477792,-0.900000000,0.132352941,5.263158,1,14,15
+2022,2025,2021,2025,Vila Nova de Gaia,raw_interactions,own_new_rent_growth_window_pct,16,-0.497058824,-0.347926659,-0.791176471,0.379411765,2.673512,0,7,6
+2022,2025,2021,2025,Vila Nova de Gaia,raw_interactions,reference_discount_compression_window_pp,16,-0.555882353,-0.420001058,-0.791176471,0.405882353,2.673512,0,3,2
+2022,2025,2021,2025,Vila Nova de Gaia,per_1000_residents,own_new_rent_growth_window_pct,16,-0.179411765,0.230646832,-0.805882353,0.379411765,2.852631,0,17,12
+2022,2025,2021,2025,Vila Nova de Gaia,per_1000_residents,reference_discount_compression_window_pp,16,-0.258823529,0.126165697,-0.805882353,0.405882353,2.852631,0,11,14
+2022,2025,2021,2025,Vila Nova de Gaia,share_of_amp_interactions,own_new_rent_growth_window_pct,16,-0.108823529,0.330161425,-0.785294118,0.379411765,2.608833,0,16,10
+2022,2025,2021,2025,Vila Nova de Gaia,share_of_amp_interactions,reference_discount_compression_window_pp,16,-0.158823529,0.282616517,-0.785294118,0.405882353,2.608833,0,12,11
+2022,2025,2021,2025,Vila do Conde,raw_interactions,own_new_rent_growth_window_pct,16,-0.426470588,-0.273769059,-0.835294118,0.341176471,3.308150,0,9,8
+2022,2025,2021,2025,Vila do Conde,raw_interactions,reference_discount_compression_window_pp,16,-0.423529412,-0.312239543,-0.835294118,0.311764706,3.308150,0,4,8
+2022,2025,2021,2025,Vila do Conde,per_1000_residents,own_new_rent_growth_window_pct,16,-0.188235294,0.090334622,-0.723529412,0.341176471,2.098613,0,16,16
+2022,2025,2021,2025,Vila do Conde,per_1000_residents,reference_discount_compression_window_pp,16,-0.205882353,0.030018167,-0.723529412,0.311764706,2.098613,0,14,16
+2022,2025,2021,2025,Vila do Conde,share_of_amp_interactions,own_new_rent_growth_window_pct,16,-0.082352941,0.256208431,-0.726470588,0.341176471,2.117565,0,17,11
+2022,2025,2021,2025,Vila do Conde,share_of_amp_interactions,reference_discount_compression_window_pp,16,-0.079411765,0.225249652,-0.726470588,0.311764706,2.117565,0,16,13
+2023,2025,2021,2025,Arouca,raw_interactions,own_new_rent_growth_window_pct,16,-0.144117647,-0.164816288,-0.617647059,0.023529412,1.616783,0,6,6
+2023,2025,2021,2025,Arouca,raw_interactions,reference_discount_compression_window_pp,16,-0.356144320,-0.291984049,-0.617647059,0.213392258,1.616783,0,3,7
+2023,2025,2021,2025,Arouca,per_1000_residents,own_new_rent_growth_window_pct,16,0.170588235,0.217494677,-0.538235294,0.023529412,1.407850,0,10,11
+2023,2025,2021,2025,Arouca,per_1000_residents,reference_discount_compression_window_pp,16,-0.119205330,-0.005283191,-0.538235294,0.213392258,1.407850,0,12,17
+2023,2025,2021,2025,Arouca,share_of_amp_interactions,own_new_rent_growth_window_pct,16,0.238235294,0.287476662,-0.494117647,0.023529412,1.323018,0,8,11
+2023,2025,2021,2025,Arouca,share_of_amp_interactions,reference_discount_compression_window_pp,16,-0.139808721,-0.040462747,-0.494117647,0.213392258,1.323018,0,10,17
+2023,2025,2021,2025,Espinho,raw_interactions,own_new_rent_growth_window_pct,16,0.214705882,0.291721600,-0.820588235,-0.058823529,3.061522,0,3,2
+2023,2025,2021,2025,Espinho,raw_interactions,reference_discount_compression_window_pp,16,0.000000000,0.067642000,-0.820588235,0.047058824,3.061522,0,17,15
+2023,2025,2021,2025,Espinho,per_1000_residents,own_new_rent_growth_window_pct,16,0.061764706,0.027995101,-0.720588235,-0.058823529,2.080072,0,14,17
+2023,2025,2021,2025,Espinho,per_1000_residents,reference_discount_compression_window_pp,16,0.055882353,0.129646296,-0.720588235,0.047058824,2.080072,0,15,14
+2023,2025,2021,2025,Espinho,share_of_amp_interactions,own_new_rent_growth_window_pct,16,0.270588235,0.276067987,-0.473529412,-0.058823529,1.289042,0,5,12
+2023,2025,2021,2025,Espinho,share_of_amp_interactions,reference_discount_compression_window_pp,16,0.361764706,0.436516797,-0.473529412,0.047058824,1.289042,0,5,5
+2023,2025,2021,2025,Gondomar,raw_interactions,own_new_rent_growth_window_pct,16,-0.138235294,-0.150394578,-0.679411765,0.041176471,1.857356,0,7,8
+2023,2025,2021,2025,Gondomar,raw_interactions,reference_discount_compression_window_pp,16,-0.261764706,-0.318889367,-0.679411765,0.041176471,1.857356,0,6,4
+2023,2025,2021,2025,Gondomar,per_1000_residents,own_new_rent_growth_window_pct,16,-0.626470588,-0.762807683,-0.614705882,0.041176471,1.607364,0,1,1
+2023,2025,2021,2025,Gondomar,per_1000_residents,reference_discount_compression_window_pp,16,-0.682352941,-0.833716505,-0.614705882,0.041176471,1.607364,0,1,1
+2023,2025,2021,2025,Gondomar,share_of_amp_interactions,own_new_rent_growth_window_pct,16,-0.455882353,-0.581681819,-0.676470588,0.041176471,1.843700,0,2,1
+2023,2025,2021,2025,Gondomar,share_of_amp_interactions,reference_discount_compression_window_pp,16,-0.488235294,-0.625648876,-0.676470588,0.041176471,1.843700,0,1,1
+2023,2025,2021,2025,Maia,raw_interactions,own_new_rent_growth_window_pct,16,-0.229411765,-0.225201327,-0.852941176,0.132352941,3.669841,0,2,4
+2023,2025,2021,2025,Maia,raw_interactions,reference_discount_compression_window_pp,16,-0.402941176,-0.304811701,-0.852941176,0.294117647,3.669841,0,2,6
+2023,2025,2021,2025,Maia,per_1000_residents,own_new_rent_growth_window_pct,16,-0.288235294,-0.525035419,-0.950000000,0.132352941,10.256410,1,4,4
+2023,2025,2021,2025,Maia,per_1000_residents,reference_discount_compression_window_pp,16,-0.426470588,-0.492760330,-0.950000000,0.294117647,10.256410,1,2,4
+2023,2025,2021,2025,Maia,share_of_amp_interactions,own_new_rent_growth_window_pct,16,-0.291176471,-0.486940703,-0.938235294,0.132352941,8.353205,1,4,3
+2023,2025,2021,2025,Maia,share_of_amp_interactions,reference_discount_compression_window_pp,16,-0.417647059,-0.428479041,-0.938235294,0.294117647,8.353205,1,3,6
+2023,2025,2021,2025,Matosinhos,raw_interactions,own_new_rent_growth_window_pct,16,-0.132352941,-0.119394959,-0.829411765,0.079411765,3.204346,0,8,10
+2023,2025,2021,2025,Matosinhos,raw_interactions,reference_discount_compression_window_pp,16,-0.023529412,-0.068330568,-0.829411765,-0.017647059,3.204346,0,15,14
+2023,2025,2021,2025,Matosinhos,per_1000_residents,own_new_rent_growth_window_pct,16,-0.282352941,-0.602617852,-0.938235294,0.079411765,8.353205,1,5,3
+2023,2025,2021,2025,Matosinhos,per_1000_residents,reference_discount_compression_window_pp,16,-0.176470588,-0.557973780,-0.938235294,-0.017647059,8.353205,1,9,2
+2023,2025,2021,2025,Matosinhos,share_of_amp_interactions,own_new_rent_growth_window_pct,16,-0.208823529,-0.338059233,-0.914705882,0.079411765,6.123206,1,10,9
+2023,2025,2021,2025,Matosinhos,share_of_amp_interactions,reference_discount_compression_window_pp,16,-0.058823529,-0.185531608,-0.914705882,-0.017647059,6.123206,1,14,12
+2023,2025,2021,2025,Oliveira de Azeméis,raw_interactions,own_new_rent_growth_window_pct,16,-0.250000000,-0.194885332,-0.761764706,0.164705882,2.382572,0,1,5
+2023,2025,2021,2025,Oliveira de Azeméis,raw_interactions,reference_discount_compression_window_pp,16,-0.273529412,-0.350252600,-0.761764706,0.061764706,2.382572,0,5,2
+2023,2025,2021,2025,Oliveira de Azeméis,per_1000_residents,own_new_rent_growth_window_pct,16,0.020588235,0.217245994,-0.744117647,0.164705882,2.240701,0,17,12
+2023,2025,2021,2025,Oliveira de Azeméis,per_1000_residents,reference_discount_compression_window_pp,16,0.132352941,0.267427022,-0.744117647,0.061764706,2.240701,0,11,9
+2023,2025,2021,2025,Oliveira de Azeméis,share_of_amp_interactions,own_new_rent_growth_window_pct,16,0.185294118,0.380624886,-0.635294118,0.164705882,1.676723,0,14,7
+2023,2025,2021,2025,Oliveira de Azeméis,share_of_amp_interactions,reference_discount_compression_window_pp,16,0.341176471,0.493535666,-0.635294118,0.061764706,1.676723,0,6,4
+2023,2025,2021,2025,Paredes,raw_interactions,own_new_rent_growth_window_pct,16,-0.091176471,-0.106021364,-0.805882353,0.035294118,2.852631,0,11,11
+2023,2025,2021,2025,Paredes,raw_interactions,reference_discount_compression_window_pp,16,-0.150000000,-0.205434668,-0.805882353,0.035294118,2.852631,0,9,10
+2023,2025,2021,2025,Paredes,per_1000_residents,own_new_rent_growth_window_pct,16,-0.255882353,-0.311290914,-0.664705882,0.035294118,1.791581,0,6,7
+2023,2025,2021,2025,Paredes,per_1000_residents,reference_discount_compression_window_pp,16,-0.329411765,-0.409771366,-0.664705882,0.035294118,1.791581,0,4,6
+2023,2025,2021,2025,Paredes,share_of_amp_interactions,own_new_rent_growth_window_pct,16,-0.261764706,-0.355953039,-0.750000000,0.035294118,2.285714,0,6,8
+2023,2025,2021,2025,Paredes,share_of_amp_interactions,reference_discount_compression_window_pp,16,-0.244117647,-0.329256561,-0.750000000,0.035294118,2.285714,0,7,7
+2023,2025,2021,2025,Porto,raw_interactions,own_new_rent_growth_window_pct,16,-0.041176471,0.065547968,-0.852941176,0.088235294,3.669841,0,16,14
+2023,2025,2021,2025,Porto,raw_interactions,reference_discount_compression_window_pp,16,0.158823529,0.050162444,-0.852941176,-0.155882353,3.669841,0,8,16
+2023,2025,2021,2025,Porto,per_1000_residents,own_new_rent_growth_window_pct,16,-0.220588235,-0.439712626,-0.950000000,0.088235294,10.256410,1,8,6
+2023,2025,2021,2025,Porto,per_1000_residents,reference_discount_compression_window_pp,16,0.023529412,-0.403844231,-0.950000000,-0.155882353,10.256410,1,17,7
+2023,2025,2021,2025,Porto,share_of_amp_interactions,own_new_rent_growth_window_pct,16,-0.194117647,-0.205784554,-0.797058824,0.088235294,2.742001,0,12,14
+2023,2025,2021,2025,Porto,share_of_amp_interactions,reference_discount_compression_window_pp,16,0.050000000,-0.124467721,-0.797058824,-0.155882353,2.742001,0,15,14
+2023,2025,2021,2025,Póvoa de Varzim,raw_interactions,own_new_rent_growth_window_pct,16,0.041176471,0.042249667,-0.750000000,-0.017647059,2.285714,0,16,16
+2023,2025,2021,2025,Póvoa de Varzim,raw_interactions,reference_discount_compression_window_pp,16,-0.202941176,-0.138298921,-0.750000000,0.150000000,2.285714,0,7,13
+2023,2025,2021,2025,Póvoa de Varzim,per_1000_residents,own_new_rent_growth_window_pct,16,-0.044117647,-0.064884238,-0.555882353,-0.017647059,1.447189,0,16,15
+2023,2025,2021,2025,Póvoa de Varzim,per_1000_residents,reference_discount_compression_window_pp,16,-0.182352941,-0.120423259,-0.555882353,0.150000000,1.447189,0,8,15
+2023,2025,2021,2025,Póvoa de Varzim,share_of_amp_interactions,own_new_rent_growth_window_pct,16,-0.029411765,-0.047542034,-0.561764706,-0.017647059,1.461090,0,17,17
+2023,2025,2021,2025,Póvoa de Varzim,share_of_amp_interactions,reference_discount_compression_window_pp,16,-0.138235294,-0.065983795,-0.561764706,0.150000000,1.461090,0,11,16
+2023,2025,2021,2025,Santa Maria da Feira,raw_interactions,own_new_rent_growth_window_pct,16,0.044117647,0.038130545,-0.797058824,-0.026470588,2.742001,0,15,17
+2023,2025,2021,2025,Santa Maria da Feira,raw_interactions,reference_discount_compression_window_pp,16,-0.055882353,-0.217723022,-0.797058824,-0.094117647,2.742001,0,14,9
+2023,2025,2021,2025,Santa Maria da Feira,per_1000_residents,own_new_rent_growth_window_pct,16,0.111764706,0.144093772,-0.773529412,-0.026470588,2.489716,0,12,14
+2023,2025,2021,2025,Santa Maria da Feira,per_1000_residents,reference_discount_compression_window_pp,16,0.188235294,0.182951168,-0.773529412,-0.094117647,2.489716,0,7,12
+2023,2025,2021,2025,Santa Maria da Feira,share_of_amp_interactions,own_new_rent_growth_window_pct,16,0.302941176,0.398395731,-0.700000000,-0.026470588,1.960784,0,3,6
+2023,2025,2021,2025,Santa Maria da Feira,share_of_amp_interactions,reference_discount_compression_window_pp,16,0.447058824,0.536133674,-0.700000000,-0.094117647,1.960784,0,2,3
+2023,2025,2021,2025,Santo Tirso,raw_interactions,own_new_rent_growth_window_pct,16,-0.105882353,0.085421459,-0.826470588,0.185294118,3.155108,0,9,12
+2023,2025,2021,2025,Santo Tirso,raw_interactions,reference_discount_compression_window_pp,16,-0.452941176,-0.331511020,-0.826470588,0.335294118,3.155108,0,1,3
+2023,2025,2021,2025,Santo Tirso,per_1000_residents,own_new_rent_growth_window_pct,16,-0.314705882,-0.262552302,-0.688235294,0.185294118,1.899941,0,3,9
+2023,2025,2021,2025,Santo Tirso,per_1000_residents,reference_discount_compression_window_pp,16,-0.364705882,-0.195971148,-0.688235294,0.335294118,1.899941,0,3,11
+2023,2025,2021,2025,Santo Tirso,share_of_amp_interactions,own_new_rent_growth_window_pct,16,-0.232352941,-0.147238484,-0.685294118,0.185294118,1.885469,0,9,16
+2023,2025,2021,2025,Santo Tirso,share_of_amp_interactions,reference_discount_compression_window_pp,16,-0.111764706,0.171999308,-0.685294118,0.335294118,1.885469,0,13,13
+2023,2025,2021,2025,São João da Madeira,raw_interactions,own_new_rent_growth_window_pct,16,-0.082352941,-0.081593906,-0.826470588,0.044117647,3.155108,0,12,13
+2023,2025,2021,2025,São João da Madeira,raw_interactions,reference_discount_compression_window_pp,16,-0.117647059,-0.274004796,-0.826470588,-0.044117647,3.155108,0,13,8
+2023,2025,2021,2025,São João da Madeira,per_1000_residents,own_new_rent_growth_window_pct,16,0.094117647,0.260720138,-0.861764706,0.044117647,3.885584,0,13,10
+2023,2025,2021,2025,São João da Madeira,per_1000_residents,reference_discount_compression_window_pp,16,0.170588235,0.261573559,-0.861764706,-0.044117647,3.885584,0,10,10
+2023,2025,2021,2025,São João da Madeira,share_of_amp_interactions,own_new_rent_growth_window_pct,16,0.258823529,0.462691162,-0.773529412,0.044117647,2.489716,0,7,4
+2023,2025,2021,2025,São João da Madeira,share_of_amp_interactions,reference_discount_compression_window_pp,16,0.388235294,0.559287250,-0.773529412,-0.044117647,2.489716,0,4,2
+2023,2025,2021,2025,Trofa,raw_interactions,own_new_rent_growth_window_pct,16,0.075055208,0.132702303,-0.872700751,-0.011764706,4.194747,0,14,9
+2023,2025,2021,2025,Trofa,raw_interactions,reference_discount_compression_window_pp,16,-0.126563684,-0.017554773,-0.872700751,0.135294118,4.194747,0,11,17
+2023,2025,2021,2025,Trofa,per_1000_residents,own_new_rent_growth_window_pct,16,-0.138235294,-0.276366939,-0.844117647,-0.011764706,3.478680,0,11,8
+2023,2025,2021,2025,Trofa,per_1000_residents,reference_discount_compression_window_pp,16,-0.267647059,-0.288845515,-0.844117647,0.135294118,3.478680,0,6,8
+2023,2025,2021,2025,Trofa,share_of_amp_interactions,own_new_rent_growth_window_pct,16,-0.158823529,-0.317593374,-0.847058824,-0.011764706,3.539931,0,16,10
+2023,2025,2021,2025,Trofa,share_of_amp_interactions,reference_discount_compression_window_pp,16,-0.241176471,-0.240355952,-0.847058824,0.135294118,3.539931,0,8,11
+2023,2025,2021,2025,Vale de Cambra,raw_interactions,own_new_rent_growth_window_pct,16,-0.179411765,-0.275176328,-0.652941176,-0.044117647,1.743169,0,4,3
+2023,2025,2021,2025,Vale de Cambra,raw_interactions,reference_discount_compression_window_pp,16,-0.347058824,-0.313378156,-0.652941176,0.173529412,1.743169,0,4,5
+2023,2025,2021,2025,Vale de Cambra,per_1000_residents,own_new_rent_growth_window_pct,16,0.200000000,0.214626767,-0.582352941,-0.044117647,1.513168,0,9,13
+2023,2025,2021,2025,Vale de Cambra,per_1000_residents,reference_discount_compression_window_pp,16,-0.052941176,0.060097453,-0.582352941,0.173529412,1.513168,0,16,16
+2023,2025,2021,2025,Vale de Cambra,share_of_amp_interactions,own_new_rent_growth_window_pct,16,0.479411765,0.554882708,-0.573529412,-0.044117647,1.490171,0,1,2
+2023,2025,2021,2025,Vale de Cambra,share_of_amp_interactions,reference_discount_compression_window_pp,16,0.123529412,0.276481856,-0.573529412,0.173529412,1.490171,0,12,10
+2023,2025,2021,2025,Valongo,raw_interactions,own_new_rent_growth_window_pct,16,-0.144223733,-0.153367901,-0.896247483,0.085294118,5.082839,0,5,7
+2023,2025,2021,2025,Valongo,raw_interactions,reference_discount_compression_window_pp,16,0.004415012,-0.175006738,-0.896247483,-0.091176471,5.082839,0,16,11
+2023,2025,2021,2025,Valongo,per_1000_residents,own_new_rent_growth_window_pct,16,-0.250000000,-0.455945346,-0.926470588,0.085294118,7.059542,1,7,5
+2023,2025,2021,2025,Valongo,per_1000_residents,reference_discount_compression_window_pp,16,-0.073529412,-0.421563331,-0.926470588,-0.091176471,7.059542,1,14,5
+2023,2025,2021,2025,Valongo,share_of_amp_interactions,own_new_rent_growth_window_pct,16,-0.170588235,-0.216033203,-0.900000000,0.085294118,5.263158,1,15,13
+2023,2025,2021,2025,Valongo,share_of_amp_interactions,reference_discount_compression_window_pp,16,-0.041176471,-0.283903684,-0.900000000,-0.091176471,5.263158,1,16,9
+2023,2025,2021,2025,Vila Nova de Gaia,raw_interactions,own_new_rent_growth_window_pct,16,0.105882353,0.051601365,-0.791176471,-0.094117647,2.673512,0,9,15
+2023,2025,2021,2025,Vila Nova de Gaia,raw_interactions,reference_discount_compression_window_pp,16,-0.123529412,-0.160212155,-0.791176471,0.032352941,2.673512,0,12,12
+2023,2025,2021,2025,Vila Nova de Gaia,per_1000_residents,own_new_rent_growth_window_pct,16,0.055882353,-0.033871375,-0.805882353,-0.094117647,2.852631,0,15,16
+2023,2025,2021,2025,Vila Nova de Gaia,per_1000_residents,reference_discount_compression_window_pp,16,-0.111764706,-0.144807369,-0.805882353,0.032352941,2.852631,0,13,13
+2023,2025,2021,2025,Vila Nova de Gaia,share_of_amp_interactions,own_new_rent_growth_window_pct,16,0.191176471,0.190251880,-0.785294118,-0.094117647,2.608833,0,13,15
+2023,2025,2021,2025,Vila Nova de Gaia,share_of_amp_interactions,reference_discount_compression_window_pp,16,0.032352941,0.093341353,-0.785294118,0.032352941,2.608833,0,17,15
+2023,2025,2021,2025,Vila do Conde,raw_interactions,own_new_rent_growth_window_pct,16,-0.079411765,-0.367222402,-0.835294118,-0.144117647,3.308150,0,13,1
+2023,2025,2021,2025,Vila do Conde,raw_interactions,reference_discount_compression_window_pp,16,-0.144117647,-0.365737044,-0.835294118,-0.067647059,3.308150,0,10,1
+2023,2025,2021,2025,Vila do Conde,per_1000_residents,own_new_rent_growth_window_pct,16,-0.326470588,-0.630584055,-0.723529412,-0.144117647,2.098613,0,2,2
+2023,2025,2021,2025,Vila do Conde,per_1000_residents,reference_discount_compression_window_pp,16,-0.323529412,-0.540826763,-0.723529412,-0.067647059,2.098613,0,5,3
+2023,2025,2021,2025,Vila do Conde,share_of_amp_interactions,own_new_rent_growth_window_pct,16,-0.202941176,-0.452393722,-0.726470588,-0.144117647,2.117565,0,11,5
+2023,2025,2021,2025,Vila do Conde,share_of_amp_interactions,reference_discount_compression_window_pp,16,-0.173529412,-0.324774517,-0.726470588,-0.067647059,2.117565,0,9,8

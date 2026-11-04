@@ -120,6 +120,8 @@ zero. The analysis's exact-period comparisons enforce those distinctions.
 | 35 | fig35_matched_porto_alternative_reference_rank_differences.png | Alternative-minus-Porto rank-coefficient contrasts for each of 16 references on exactly the same 15 rent-growth comparison municipalities | **Fixed support and rent outcome; undirected work/study links, not an exogenous shock** |
 | 36 | fig36_municipal_reference_rank_window_sensitivity.png | All 17 reference-node rank correlations for own new-rent growth and reference-relative discount compression across 2020/2021/2022/2023–2025 baselines | **Nested windows with one 2025 endpoint; descriptive association, not independent experiments** |
 | 37 | fig37_matched_porto_reference_window_differences.png | Alternative-minus-Porto coefficients for own new-rent growth on the same 15 municipalities, each of 16 alternative reference nodes and four rent windows | **Fixed own-rent outcomes per matched comparison, not inferred residential moves or causal exposure** |
+| 38 | fig38_reference_exposure_distance_collinearity.png | Rank correlation of each 2021 work/study reference link exposure with CAOP2025 straight-line pair-centroid distances under three normalisations | **Geographic rank confounding diagnostic, not travel access, directional moves or a statistical test** |
+| 39 | fig39_municipal_reference_distance_adjusted_ranks.png | Unadjusted vs one-distance-conditional rank coefficients for own nominal new-rent growth across all 17 reference nodes and four nested windows | **One-variable partial Spearman with small, dependent samples and strong link-distance collinearity, not a causal effect** |
 
 The figure titles, manuscript captions and generated tables repeat the
 evidence-class distinction. There are no charts of invented historical
@@ -1099,6 +1101,71 @@ the 2020 baseline; the later baselines do not make it exogenous.
 The links are not residential origin–destination moves, and
 new-contract medians are not quality-adjusted repeated rents.
 
+## Does commuting connectivity add information beyond distance? (figures 38–39)
+
+The [municipal_reference_geography_controls.py](municipal_reference_geography_controls.py)
+module retains the pinned **2021 undirected work/study links** and all
+four baseline-to-**2025** rent windows. It additionally reuses the
+independently verified official **DGT CAOP2025 EPSG:3763 municipal
+polygon centroids** to compute straight-line reference-to-comparator
+distances for every one of the **272** ordered distinct municipal pairs.
+These are area-weighted polygon-centre distances, not measured commute
+time, housing access, population centres or residential movement.
+
+For the primary per-1,000-comparator-residents network exposure,
+Porto's Spearman rank coefficient with geographic distance is
+**−0.950**. Across 17 candidate reference municipalities, **four**
+have absolute network-distance coefficients of at least **0.90**
+under that normalisation. This is a declared **collinearity warning**,
+not a sampling threshold. Figure 38 shows every reference and all
+three link modes, including raw pair counts and within-AMP shares.
+
+For each of **408** reference/window/mode/outcome observations, the
+module reports both unadjusted Spearman and the **one-covariate
+partial Spearman** controlling rank distance. In the primary
+own-nominal-new-rent-growth comparison Porto changes:
+
+- **2020–2025:** −0.385 → **−0.409**; adjusted absolute rank **3/17**.
+- **2021–2025:** −0.365 → **−0.120**; adjusted rank **14/17**.
+- **2022–2025:** −0.565 → **−0.501**; adjusted rank **7/17**.
+- **2023–2025:** −0.221 → **−0.440**; adjusted rank **6/17**.
+
+For reference-relative compression, Porto's short-window
+**2023–2025** coefficient changes **+0.024 → −0.404**.
+Figure 39 reports the complete own-growth reference grid
+before and after adjustment, with the Porto row highlighted.
+The conditional coefficient can become *stronger* with
+one-variable adjustment; it must not be interpreted as
+an uncovered causal mechanism.
+
+Matched comparisons retain the same **15 municipal own-growth
+outcomes** for Porto and every alternative reference, but
+**each reference has a different geographic distance control**.
+Consequently the changed partial coefficients do *not* isolate
+solely a new network reference. The numbers of the 16
+alternatives with more negative conditional coefficients
+are **2, 5, 0, 4** for the four start years; with an
+explicitly non-inferential **0.05-rho** margin they are
+**1, 4, 0, 4**. The Porto-only one-comparator deletion
+check adds **64** rows and finds a sign change in one
+2021-start deletion. There are no confidence intervals
+or claimed independent replications.
+
+Regenerate the **272** source-linked pair distances, **408**
+full rank controls, **192** matched support controls, **64**
+Porto influence checks, **eight** primary summary rows,
+**two figures** and a three-source provenance ledger offline:
+
+    python municipal_reference_geography_controls.py --output /tmp/porto-reference-geo
+
+Results use the prefix `results/municipal_reference_geography_*`.
+The **27 new regression tests bring the suite to 302 tests**.
+Both the 2021 link network and CAOP2025 centroids are fixed;
+the four overlapping rent windows are not independent.
+Rank-distance conditioning cannot remove unmeasured
+confounding, and high collinearity with only 15 or 16
+comparators limits interpretability.
+
 ## Boundaries before publication
 
 - Prices of sold homes are not quality-adjusted repeated-sales observations.
@@ -1126,6 +1193,10 @@ new-contract medians are not quality-adjusted repeated rents.
   endpoint yields dependent, overlapping windows. A changing reference
   can also change the discount-compression denominator, unlike a
   municipality's own rent growth.
+- Conditioning 2021 work/study-link ranks on straight-line CAOP2025
+  administrative centroid distances is descriptive and often highly
+  collinear. Matched-reference comparisons use different distance
+  control vectors; neither measure identifies residential displacement.
 - Do not use the hypothetical curves to infer the number of people actually
   displaced, transmission elasticities, or policy effect sizes.
 - The article is a manuscript for review and **is not automatically published
