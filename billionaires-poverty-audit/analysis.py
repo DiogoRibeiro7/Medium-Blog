@@ -47,7 +47,7 @@ def validate_frame(frame: pd.DataFrame) -> tuple[pd.DataFrame, Attribution]:
     if missing:
         raise ValueError(f"Required columns missing: {', '.join(missing)}")
 
-    data = frame.loc[:, REQUIRED_COLUMNS].copy()
+    data = frame.loc[:, list(REQUIRED_COLUMNS)].copy()
     if data.empty:
         raise ValueError("No country rows were supplied")
     for field in ("country", "iso3", "billionaire_method"):
