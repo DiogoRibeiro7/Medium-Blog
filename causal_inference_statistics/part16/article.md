@@ -125,6 +125,46 @@ The decrease in the observed-only standard error with increasing λ is especiall
 
 In the oracle model, coverage remains close to 95% and standard errors near 0.0224 across the scenarios. Finite Monte Carlo variation explains small departures. The oracle is stable because controlling for U isolates the structural treatment variation supplied by ε_X.
 
+## Why hidden confounding can make the standard error smaller
+
+The observed-only regression's shrinking standard error can be derived from the same Gaussian structural model, without treating this phenomenon as a numerical accident. After adjusting for W, residual treatment is \(\widetilde X=\lambda U+\varepsilon_X\), with variance \(1+\lambda^2\). Joint normality gives
+
+\[
+\operatorname{Var}(U\mid X,W)=\frac{1}{1+\lambda^2}.
+\]
+
+The correctly specified **observational conditional regression** therefore has residual variance
+
+\[
+\sigma_{\mathrm{obs}}^2(\lambda)=
+1+\frac{1.5^2}{1+\lambda^2}
+=1+\frac{2.25}{1+\lambda^2}.
+\]
+
+As the hidden U component becomes more predictive of treatment, X also reveals more of U. The conditional residual variance falls even as the observational slope moves further away from the intervention effect. Combining this with the residual treatment variance gives the leading large-sample standard error
+
+\[
+\operatorname{SE}_{\mathrm{obs}}(\lambda)
+\approx
+\sqrt{\frac{1+2.25/(1+\lambda^2)}{n(1+\lambda^2)}}.
+\]
+
+At \(n=2000\), the formula predicts approximate SEs of **0.04031**, **0.03830**, **0.03347** and **0.02305** at the four simulated strengths. The corresponding Monte Carlo means of the reported regression SEs are 0.04033, 0.03836, 0.03349 and 0.02307. This close agreement confirms that the narrowing intervals arise from the conditional Gaussian likelihood and treatment dispersion—not from improving causal identification.
+
+Under the large-sample normal approximation, a central 95% interval around the biased observational coefficient has approximate coverage for the true causal effect
+
+\[
+P\!\left(
+-1.96\leq Z+\frac{\beta_{\mathrm{obs}}(\lambda)-\tau}
+{\operatorname{SE}_{\mathrm{obs}}(\lambda)}
+\leq1.96
+\right),\qquad Z\sim N(0,1).
+\]
+
+For \(\lambda=0\), the expression is approximately 95%. For the three positive confounding strengths at this sample size, bias is many standard errors away from the causal target, and the predicted causal coverage is effectively zero. These are **asymptotic approximations**, not exact finite-sample coverage statements. The companion standard-library script `part16_omitted_precision.py` calculates them; its tests verify the precision pattern and guard against invalid parameters.
+
+This resolves the apparent paradox: the analysis becomes more precise about a **statistical observational slope** while becoming less accurate for the **causal intervention effect**. Treating the latter as the parameter covered by the former's confidence interval is the scientific error.
+
 ## RMSE and effective uncertainty
 
 For the observed-only estimator, the RMSE rises from about 0.0384 at λ=0 to 0.3532, 0.6011 and 0.7496 as hidden confounding becomes stronger. The corresponding oracle RMSE values remain near 0.021–0.023. These are errors relative to the true effect, not relative to the observational regression's population coefficient.
