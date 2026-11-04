@@ -1,0 +1,86 @@
+name: Capture public billionaire-poverty source snapshots
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/billionaires-poverty-capture.yml"
+      - "billionaires-poverty-audit/source_pipeline.py"
+      - "billionaires-poverty-audit/source_preflight.py"
+      - "billionaires-poverty-audit/tests/**"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  capture-public-sources:
+    name: Download and verify OWID/WDI source vintages
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: billionaires-poverty-audit/requirements.txt
+
+      - name: Install project dependencies
+        run: python -m pip install -r billionaires-poverty-audit/requirements.txt
+
+      - name: Run all offline contract tests
+        working-directory: billionaires-poverty-audit
+        run: python -m unittest discover -s tests -p "test_*.py" -v
+
+      - name: Fetch public OWID/WDI files and hash original bytes
+        working-directory: billionaires-poverty-audit
+        run: python source_pipeline.py fetch --output-dir data/source_snapshots
+
+      - name: Verify exact hashes, indicator schemas, and country coverage
+        working-directory: billionaires-poverty-audit
+        run: |
+          python source_preflight.py \
+            --snapshot-dir data/source_snapshots \
+            --output results/public_source_coverage.json
+
+      - name: Publish verified coverage summary
+        working-directory: billionaires-poverty-audit
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          report = json.loads(
+              Path("results/public_source_coverage.json").read_text(encoding="utf-8")
+          )
+          lines = [
+              "## Public poverty/development source capture",
+              "",
+              "Source inputs were downloaded and validated in this run.",
+              "",
+              f"- OWID poverty countries: {report['n_owid_countries_in_2020_to_2025_window']}",
+              f"- WDI GDP countries: {report['n_wdi_gdp_countries_in_2020_to_2025_window']}",
+              f"- WDI population countries: {report['n_wdi_population_countries_in_2020_to_2025_window']}",
+              f"- Three-source overlap: {report['n_countries_in_all_three']}",
+              "- No Forbes country counts were included, and no regression was fitted.",
+              "- OWID observation year is not necessarily the household survey year.",
+              "",
+              "The uploaded artifact contains the exact downloaded bytes and source hashes.",
+              "",
+          ]
+          with Path(__import__("os").environ["GITHUB_STEP_SUMMARY"]).open(
+              "a", encoding="utf-8"
+          ) as summary:
+              summary.write("\n".join(lines))
+          print("\n".join(lines))
+          PY
+
+      - name: Archive exact source snapshots and coverage JSON
+        uses: actions/upload-artifact@v4
+        with:
+          name: billionaire-poverty-public-sources-${{ github.run_id }}
+          path: |
+            billionaires-poverty-audit/data/source_snapshots/
+            billionaires-poverty-audit/results/public_source_coverage.json
+          retention-days: 30
+          if-no-files-found: error

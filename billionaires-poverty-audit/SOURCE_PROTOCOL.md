@@ -15,12 +15,12 @@ analysis and distinguishes **country of residence** from **citizenship**.
 
 | File | Meaning | Source |
 | --- | --- | --- |
-| owid_30usd_2021_ppp.csv | Share below $30/day at 2021 PPP | [OWID archived Grapher](https://archive.ourworldindata.org/20261102-112946/grapher/poverty-share-on-less-than-30-per-day.csv?csvType=full&useColumnShortNames=false) |
+| owid_30usd_2021_ppp.csv | Share below $30/day at 2021 PPP | [OWID live Grapher CSV API](https://ourworldindata.org/grapher/poverty-share-on-less-than-30-per-day.csv?v=1&csvType=full&useColumnShortNames=false) |
 | wdi_gdp_ppp_constant.json | GDP per capita, constant international dollars | [World Bank API](https://api.worldbank.org/v2/country/all/indicator/NY.GDP.PCAP.PP.KD?format=json&date=2020:2025&per_page=20000) |
 | wdi_population.json | Population (total) | [World Bank API](https://api.worldbank.org/v2/country/all/indicator/SP.POP.TOTL?format=json&date=2020:2025&per_page=20000) |
 | forbes_2026_country_counts.csv | Reviewed Forbes country totals | [Forbes 2026 ranking](https://www.forbes.com/billionaires/) |
 
-The archived OWID snapshot date is not a guarantee of an underlying
+The live OWID API is not an immutable snapshot; each successful run preserves exact downloaded bytes, retrieval date and SHA-256. The OWID source page also provides a dated archive of the indicator page, but the previous archived CSV URL returned HTTP 404 in GitHub Actions. The source snapshot date is not a guarantee of an underlying
 household survey in the same year. The source file's Year column is
 called poverty_year only for compatibility with the existing analysis.py;
 it remains an **observation year** and requires PIP survey-date metadata
