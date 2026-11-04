@@ -2319,10 +2319,10 @@ that records the weaker and sign-changing results too.
 
 ### What is being compared?
 
-Let (R_{j,t}\) denote the published median new-contract rent
-per square metre in municipality (j\) in year (t\), and let
-(i\) be the chosen network reference. For baseline year
-(s\in\{2020,2021,2022,2023\}\), define the comparator's own
+Let R[j,t] denote the published median new-contract rent
+per square metre in municipality j in year t, and let
+i be the chosen network reference. For baseline year
+s in {2020, 2021, 2022, 2023}, define the comparator's own
 nominal percentage rent growth as
 
 \[
@@ -2332,8 +2332,8 @@ G_{j,s\rightarrow2025}
 
 Unlike a Porto-relative discount, this value is *identical*
 when the analyst selects a different reference municipality.
-The second outcome is the change in (j\)'s rental discount
-relative to reference (i\), in percentage points:
+The second outcome is the change in j's rental discount
+relative to reference i, in percentage points:
 
 \[
 C_{ij,s\rightarrow2025}
@@ -2342,12 +2342,12 @@ C_{ij,s\rightarrow2025}
 \]
 
 Here the denominator changes with the reference, so neither
-the levels nor the ranks of (C\) can be interpreted as a
+the levels nor the ranks of the compression outcome can be interpreted as a
 reference-invariant outcome. The distinction matters for the
 matched-comparator comparisons below.
 
-For each of **17** references (i\) and the other **16**
-municipalities (j\), take the Spearman correlation of their
+For each of **17** reference municipalities and the other **16**
+comparator municipalities, take the Spearman correlation of their
 2021 work/study interaction intensity with each rent outcome.
 The primary exposure scales undirected interaction pairs by
 **1,000 comparator residents**. As checks, recompute every
@@ -2423,8 +2423,8 @@ network exposure and the set of municipal outcomes. The
 preceding section fixed that problem once, for 2020–2025.
 We now repeat the same design for every baseline.
 
-For each of the other **16** candidate references (a\),
-remove *both* Porto and (a\) from the comparator list.
+For each of the other **16** candidate references a,
+remove *both* Porto and a from the comparator list.
 On those exact **15** municipalities and for each baseline,
 calculate the rank correlation with own nominal new-rent
 growth under the Porto exposure and the alternative exposure.
@@ -2508,6 +2508,205 @@ strategy that separates shared demand from displacement.
 
 ---
 
+## How much of the reference-node pattern is simply geography?
+
+There is still a fundamental ambiguity in the correlations
+reported above. The 2021 work/study network may be capturing
+something as ordinary as **distance**. Nearby municipalities
+often share workplaces, schools, rail services and economic
+conditions. If those municipalities also happen to have
+similar rents, the network can appear to explain an outcome
+even when it contributes no distinct information about
+residential relocation.
+
+This deserves a direct check before describing the map as a
+housing-price epidemic. We already have a separately pinned
+and checksummed geographic source: the official Portuguese
+**DGT CAOP2025** municipal polygon centroids, calculated in
+**ETRS89/PT-TM06 (EPSG:3763)**. We can calculate the
+straight-line projected distance between any two
+municipalities and compare it with their 2021 work/study
+interaction intensity. This is not a fresh estimate of
+journey length or public-transport travel time. A municipal
+polygon's area-weighted centre may be a poor representation
+of where its population, workplaces or available housing
+actually lie. But an imperfect geographic baseline can
+still show whether the network variable is largely a proxy
+for metropolitan proximity.
+
+### The network and the distance variable are strongly entangled
+
+For **every one of the 17 network reference municipalities**,
+we compute its distance to each of the other **16** municipal
+centroids. For the primary exposure—2021 work/study pairs
+per 1,000 comparator residents—the Spearman correlation
+between interaction intensity and centroid distance is
+**−0.950 for Porto**. A more intense observed link typically
+means a closer comparator. That alone is not surprising;
+the important consequence is what the two variables can
+and cannot distinguish statistically.
+
+The strength of this rank overlap depends on how connectivity
+is normalised. Under Porto as reference, the link-distance
+coefficient is about **−0.853** for raw pair counts,
+**−0.950** for pairs per 1,000 comparator residents and
+**−0.797** for the link's share of the comparator's
+within-AMP work/study interactions. For the primary
+per-resident measure, **four of the 17 references** have
+an absolute exposure-distance rank coefficient of at
+least **0.90**. We flag this threshold as a diagnostic
+of strong collinearity, **not** as a significance test.
+Normalising an interaction count is a substantive model
+choice; it can strengthen its geographic overlap.
+
+![Figure 38. Every reference municipality's 2021 work/study-link rank association with straight-line CAOP2025 reference-to-comparator centroid distance under three normalisations. The Porto row is outlined; stars flag absolute coefficients of at least 0.90 before rounding.](figures/fig38_reference_exposure_distance_collinearity.png)
+
+Figure 38 makes visible something that is lost in an
+isolated Porto plot. Most work/study link-distance
+coefficients are negative, but their magnitude varies
+across the metropolitan network and its normalisations.
+The columns are not independent observations, and the
+matrix contains no residential movements. It measures
+the mechanical proximity content of three ways of
+expressing the same undirected 2021 interaction data.
+
+### Conditioning changes the result—but does not identify the mechanism
+
+To make the geographic comparison explicit, compute a
+**partial Spearman rank correlation** for each reference,
+rent window, link normalisation and rent outcome.
+First rank the work/study exposure, the municipal rent
+outcome and the reference-to-comparator centroid
+distance, using average ranks for ties. Then remove the
+linear rank component associated with distance from
+both the network exposure and the outcome, and correlate
+the two residuals. Equivalently, if r(X,Y) is their
+ordinary Spearman coefficient, the conditional
+coefficient is
+
+**[r(X,Y) − r(X,D) × r(Y,D)] /
+√[(1 − r(X,D)²) × (1 − r(Y,D)²)]**, 
+
+where D is the measured centroid distance. This is
+an algebraic one-control adjustment of ranks, not
+a fitted relocation mechanism. Close-to-perfect
+rank overlap between X and D leaves little independent
+variation in X and can make the conditional result
+very sensitive to individual municipalities.
+
+The exercise extends all **408** rank comparisons from
+the previous section: four overlapping baseline
+windows, 17 candidate reference nodes, three exposure
+normalisations and two rent outcomes. It retains the
+original unadjusted coefficients alongside the
+conditional results, rather than replacing the earlier
+finding with a selectively adjusted headline.
+
+For Porto and the primary per-resident link measure,
+the **own nominal new-rent growth** correlations change
+as follows:
+
+- **2020–2025:** unadjusted **−0.385**; distance-conditional **−0.409**.
+- **2021–2025:** unadjusted **−0.365**; distance-conditional **−0.120**.
+- **2022–2025:** unadjusted **−0.565**; distance-conditional **−0.501**.
+- **2023–2025:** unadjusted **−0.221**; distance-conditional **−0.440**.
+
+Porto's absolute-magnitude rank among 17 references
+after conditioning becomes **third, fourteenth, seventh
+and sixth**, respectively. In other words, a pattern
+that looked comparatively strong in the 2021-baseline
+window is quite ordinary once this geographic rank
+control is imposed. In the shortest window, however,
+the coefficient becomes *more* negative. Conditioning
+does not uniformly reduce a coefficient towards zero;
+correlated regressors can produce suppressor-like
+changes, particularly in a small, dependent set of
+municipalities. A stronger residual coefficient is
+not evidence that the network caused anything.
+
+![Figure 39. Unadjusted versus CAOP2025-centroid-distance-conditional Spearman coefficients for own nominal new-rent growth under every network reference and all four overlapping windows, using 2021 work/study pairs per 1,000 residents. Porto is outlined in both panels.](figures/fig39_municipal_reference_distance_adjusted_ranks.png)
+
+Figure 39 is intentionally complete rather than
+Porto-only. Several alternative references change
+substantially, and positive as well as negative
+conditional correlations remain. For Porto's other
+outcome—**reference-relative discount compression**—
+the 2023–2025 coefficient changes from approximately
+**+0.024 unadjusted** to **−0.404 conditional on
+centroid distance**. This sign change is a warning
+about sensitivity to the adjustment and the
+reference-dependent denominator, not a discovery
+of a previously hidden rental spillover.
+
+### Two ways the adjustment can still mislead
+
+First, a partial rank coefficient with 16 municipalities
+can be disproportionately affected by one observation.
+For each of Porto's four windows we remove one comparator
+at a time and recompute the per-resident, own-growth
+conditional coefficient on the remaining **15**.
+The ranges are approximately **−0.567 to −0.280**
+for 2020, **−0.283 to +0.016** for 2021,
+**−0.634 to −0.353** for 2022 and **−0.527 to
+−0.248** for 2023. In the 2021 window, one deletion
+even changes the sign. These **64 deletions** are
+influence checks—not confidence intervals and
+not 64 independent tests.
+
+Second, we can continue to compare the alternative
+reference nodes on a matched set of municipalities,
+but the definition of the geographic adjustment
+now changes with the reference. For each of the 16
+alternatives, we again use the exact same **15
+municipal own-rent growth outcomes** for Porto and
+that alternative. We condition Porto's network links
+on *distance to Porto* and the alternative's links
+on *distance to that alternative*. Under the
+per-resident normalisation, the number of alternatives
+with a more negative conditional coefficient is
+**2, 5, 0 and 4** across the 2020/2021/2022/2023
+baselines. Requiring an additional **0.05** negative
+difference gives **1, 4, 0 and 4**. These are descriptive
+screens. Although the rent outcomes are fixed within
+each matched comparison, the two geographic controls
+are *not* identical; the resulting differences cannot
+be attributed solely to substituting a network node.
+All **192** matched contrasts retain this warning.
+
+The deeper lesson is methodological. A network model
+of suburban housing pressure has to show what the
+network adds **beyond geography, common economic
+conditions, the available housing stock and changing
+composition of new rental contracts**. This simple
+rank conditioning removes none of the unmeasured
+factors. Worse, a near −0.95 exposure-distance
+correlation leaves weak separation of the two
+measured concepts in a set of only 16 comparators.
+There is no defensible sampling p-value or
+causal effect size to report from this design.
+
+The [geography-conditioned reference audit](municipal_reference_geography_controls.py)
+uses the existing pinned housing, Census-derived
+work/study and official CAOP2025 geometry files.
+It records all **272** reference–comparator distances,
+**408** full reference coefficients, **192** matched
+reference controls, **64** Porto deletions and
+**eight** primary summary records, together with
+both figures and a machine-readable provenance
+ledger. Tests validate its exact agreement with the
+earlier unadjusted analysis and with the existing
+Porto-only geography diagnostic. The observational
+bottom line remains specific: changing a rent
+baseline or conditioning on a crude geographic
+proxy changes the apparent pattern. Determining
+whether unaffordable centres *cause* households
+to relocate and raise peripheral rents requires
+directed moves, household circumstances,
+actual transport access and credible exogenous
+variation, not a correlation surviving one control.
+
+---
+
 ## Sources and reproducibility
 
 The original eight figures and three tabular outputs, four observed mobility figures, one sharp non-identification figure, two annual timing/prediction figures, two forecast-robustness figures, **two nominal-vs-deflated figures**, and **two matched fiscal-income screening-proxy figures** with companion CSV results can be regenerated using the commands in the [study README](README.md). The new directed-OD intake suite is software-only until a genuine aggregate table is released. The [fixed 17-municipality input](data/amp_municipal_panel_2019_2025.csv) is a derived extract from [DiogoRibeiro7/portugal-housing-generations](https://github.com/DiogoRibeiro7/portugal-housing-generations), pinned to [upstream commit 0407fae](https://github.com/DiogoRibeiro7/portugal-housing-generations/tree/0407faed1f08209b3d7682e19fc57e7120e62879). It does not assert that 2025 income observations or 2019 new-lease observations exist. The observed Portugal HICP 2019–2025 source is independently frozen at [Eurostat dataset `prc_hicp_ainr`](https://doi.org/10.2908/PRC_HICP_AINR). The published mobility extracts have separate checksummed source records and distinct limitations.
@@ -2541,6 +2740,11 @@ all four observed 2020/2021/2022/2023–2025 rent windows,
 keeping the network and endpoint fixed. The windows overlap
 and the rank coefficients are descriptive, not independent
 causal tests.
+Figures 38–39 extend all 17 reference-window correlations to
+a one-covariate rank conditioning on already pinned official
+DGT CAOP2025 area-weighted centroid distances. A strong
+network-distance association and reference-specific
+geographic controls prevent causal interpretation.
 
 1. Área Metropolitana do Porto. [Statutory definition and its 17 municipalities](https://www.amp.pt/en/amp-instituicao/area-metropolitana-do-porto-or-lei-no-752013/).
 2. Instituto Nacional de Estatística. [Local housing price methodology and geospatial context](https://www.ine.pt/ine_novidades/semin/INEWS38/files/assets/common/downloads/publication.pdf).

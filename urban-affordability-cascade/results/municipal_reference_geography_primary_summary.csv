@@ -1,0 +1,9 @@
+window_start_year,window_end_year,outcome,exposure_mode,porto_unadjusted_rho,porto_conditional_rho,porto_unadjusted_absolute_rank_among_17,porto_conditional_absolute_rank_among_17,porto_exposure_distance_rho,high_collinearity_references_out_of_17,matched_alternatives_more_negative_conditional_count,matched_alternatives_more_negative_conditional_names,matched_alternatives_at_least_0_05_more_negative_count,matched_alternatives_at_least_0_05_more_negative_names,porto_primary_loo_conditional_min,porto_primary_loo_conditional_max,porto_primary_loo_sign_changes
+2020,2025,own_new_rent_growth_window_pct,per_1000_residents,-0.385294118,-0.408715708,2,3,-0.950000000,4,2,Gondomar|Vila do Conde,1,Gondomar,-0.567346326,-0.280192264,0
+2020,2025,reference_discount_compression_window_pp,per_1000_residents,-0.297058824,-0.421057451,6,3,-0.950000000,4,,,,,,,
+2021,2025,own_new_rent_growth_window_pct,per_1000_residents,-0.364705882,-0.119518581,6,14,-0.950000000,4,5,Gondomar|Maia|Matosinhos|Paredes|Vila do Conde,4,Gondomar|Matosinhos|Paredes|Vila do Conde,-0.283065032,0.016495193,1
+2021,2025,reference_discount_compression_window_pp,per_1000_residents,-0.388235294,-0.143648194,4,14,-0.950000000,4,,,,,,,
+2022,2025,own_new_rent_growth_window_pct,per_1000_residents,-0.564705882,-0.501237054,2,7,-0.950000000,4,0,,0,,-0.633699634,-0.353363806,0
+2022,2025,reference_discount_compression_window_pp,per_1000_residents,-0.435294118,-0.459955386,6,6,-0.950000000,4,,,,,,,
+2023,2025,own_new_rent_growth_window_pct,per_1000_residents,-0.220588235,-0.439712626,8,6,-0.950000000,4,4,Gondomar|Maia|Matosinhos|Vila do Conde,4,Gondomar|Maia|Matosinhos|Vila do Conde,-0.526745340,-0.247894078,0
+2023,2025,reference_discount_compression_window_pp,per_1000_residents,0.023529412,-0.403844231,17,7,-0.950000000,4,,,,,,,
