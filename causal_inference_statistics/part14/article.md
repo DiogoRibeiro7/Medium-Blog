@@ -180,6 +180,29 @@ This is a useful reminder that 'informative prior' is not synonymous with 'more 
 
 A complete applied analysis should therefore vary plausible priors, report the estimand, and distinguish posterior precision conditional on assumptions from sensitivity to those assumptions. One posterior interval cannot summarize uncertainty about every modelling decision used to construct it.
 
+## An exact expected-design benchmark for prior shrinkage
+
+The regularization patterns in the Monte Carlo table can be checked without random simulation by replacing the sample cross-products in the posterior normal equations with their population expectations. This produces an **expected-design benchmark**, not the exact finite-sample expectation of the posterior mean: matrix inversion and expectation do not generally commute.
+
+In the unadjusted model, \(E[X^2]=2\) and \(E[XY]=4\). For sample size n and prior precision penalty \(\lambda\), the expected-design treatment coefficient is
+
+\[
+\beta_{\mathrm{unadj}}^*(n,\lambda)=\frac{4n}{2n+\lambda}.
+\]
+
+As \(n/\lambda\) grows, it approaches **2**, the confounded observational slope, rather than the causal effect of 1. At \(n=100,\lambda=100\), it equals \(4/3\approx1.3333\), near the corresponding simulated posterior mean of 1.3319. That numerical closeness to 1 is the result of shrinkage of the wrong estimand.
+
+In the adjusted model, the population second-moment matrix for \((X,U)\) is \(\begin{pmatrix}2&1\\1&1\end{pmatrix}\) and the corresponding outcome covariance vector is \((4,3)\). Solving the two penalized population normal equations yields
+
+\[
+\beta_{\mathrm{adj}}^*(n,\lambda)=
+\frac{n^2+4n\lambda}{n^2+3n\lambda+\lambda^2}.
+\]
+
+The adjusted expression is **not monotone** in the penalty. It coincides with the true coefficient at \(\lambda=n\), because the numerator and denominator then both equal \(5n^2\). In particular, \(n=100,\lambda=100\) produces a benchmark of exactly **1.0**; the simulated posterior mean of about 1.003 is therefore not evidence that strong shrinkage is harmless. The near-zero bias is a cancellation particular to the current structural coefficients, Gaussian design and relative penalty size.
+
+When \(\lambda\) is fixed and n grows, the adjusted benchmark approaches 1, whereas the unadjusted benchmark approaches 2. These limits show why increasing observational sample size concentrates inference around the estimand encoded by the likelihood and identification assumptions. The companion standard-library script `part14_prior_population.py` calculates both expressions and its tests check their limiting behaviour, the special cancellation and invalid inputs. The original Monte Carlo experiment is unchanged.
+
 ## Priors over parameters and priors over causal structures
 
 The experiment assigns priors to regression coefficients while holding the causal graph fixed. This is a narrower setting than Bayesian model uncertainty. An analyst might instead place prior mass on different causal structures, such as a model with a confounder and another without, or on a range of strengths for an unmeasured common cause.
