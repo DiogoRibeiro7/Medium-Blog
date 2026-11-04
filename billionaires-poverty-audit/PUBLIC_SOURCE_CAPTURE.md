@@ -72,3 +72,25 @@ zero billionaires.
 
 The Python test fixtures are synthetic and test the **software contracts**,
 not the truth of any country-level statistic.
+
+## Download-timeout recovery (4 November 2026)
+
+The second live-source workflow attempt passed all 37 offline tests but
+failed with `TimeoutError: The read operation timed out` in the public
+download step. This is **not** evidence that the source content or regression
+was invalid. The downloader now records the exact source URL and filename
+before each request, allows a 120-second socket timeout, and makes at most
+two attempts with a bounded delay for timeouts, transient HTTP 5xx/429/408,
+and incomplete HTTP reads. It never retries a hard HTTP 404.
+
+Every accepted download must contain at least 100 bytes, must not be an HTML
+error page, and must match any `Content-Length` response header. The SHA-256
+manifest still uses the exact returned file bytes. A later revision of a live
+OWID/WDI response will therefore yield a different checksum.
+
+**These safeguards improve diagnostics and failure handling; they do not
+guarantee that public data endpoints are available.** If the live capture
+fails again, inspect the newly identified filename and URL in the CI log,
+rather than changing the article's empirical figures or using synthetic
+country observations.
+
