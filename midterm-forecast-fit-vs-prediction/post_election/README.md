@@ -50,6 +50,12 @@ The analysis has no network dependency. It writes:
 - no changes to pre-election model, outputs, locks, historical rows or
   registered estimators.
 
+The separate [Medium preparation package](publication/README.md) checks a
+mechanically derived [`publication/medium_ready.md`](publication/medium_ready.md)
+with eight immutable, SHA-256-verified PNG links and pinned companion URLs.
+The import package is still a research **draft**, because the registered
+official-outcome requirement has not yet been satisfied.
+
 All unit tests are source-aware. They reject a snapshot mislabeled as final,
 an observed target inserted into the live record, invalid seat-accounting
 arithmetic and forecast-lock drift. They also verify that the registered
@@ -84,7 +90,10 @@ and then issue a new, dated article revision without rewriting this archived
 - The model predicts the president's party *change in House seats*, not a
   Senate majority, gubernatorial races or national vote shares.
 - The frozen 220-seat baseline is the original conditional **model input**;
-  it need not equal the AP's election-day incumbent membership total.
+  it is corroborated by the House Historian's 119th Congress initial-election
+  party division (220 Republicans, 215 Democrats) and the American Presidency
+  Project's 2026 defended-seats column. It need not equal the AP's
+  election-day incumbent membership total.
 - AP's current leads have no assigned probabilities here; an if-leads-hold
   scenario is not a national probabilistic forecast.
 - A seat within the nominal 95% prediction interval does not validate its

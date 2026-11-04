@@ -236,9 +236,13 @@ from which the change is measured. The original scenario used 220 seats
 defended. On that input, minus 32.322888 seats corresponds to approximately
 187.677 Republican seats, usually described as about 188. This conversion
 is mathematically correct under the conditional scenario. But it does not
-establish that 220 was the final officially recorded number of Republican
-seats at any particular moment before the election, or that the live AP
-current-membership display uses the same definition.
+establish that the live AP current-membership display uses the same
+definition. The [House Historian's initial-election record](https://history.house.gov/Institution/Party-Divisions/Party-Divisions/)
+for the 119th Congress does list 220 Republicans and 215 Democrats, and the
+[American Presidency Project's 2026 row](https://www.presidency.ucsb.edu/statistics/data/seats-congress-gainedlost-the-presidents-party-mid-term-elections)
+likewise lists 220 Republican seats defended. That supports the registered
+baseline under the stated historical source convention. It does not supply
+the still-missing initial-election division of the 120th Congress.
 
 Vacancies, special elections, minor-party affiliations, resignations,
 district changes and the difference between initial election results and
