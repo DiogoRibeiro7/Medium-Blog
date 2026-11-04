@@ -19,7 +19,7 @@ import re
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Literal, Mapping
-from urllib.request import Request, urlopen
+from resilient_fetch import fetch_bytes
 
 import pandas as pd
 
@@ -61,14 +61,7 @@ def fetch_public_inputs(output_dir: Path) -> dict[str, Any]:
     retrieved = datetime.now(timezone.utc).isoformat()
     records: dict[str, dict[str, Any]] = {}
     for filename, url in SOURCE_URLS.items():
-        request = Request(
-            url,
-            headers={"User-Agent": "billionaires-poverty-audit/1.0 research"},
-        )
-        with urlopen(request, timeout=30) as response:
-            content = response.read()
-        if len(content) < 100:
-            raise ValueError(f"Suspiciously short source: {url}")
+        content = fetch_bytes(url, name=filename)
         target = output_dir / filename
         if target.exists():
             raise FileExistsError(f"Refuse to overwrite a snapshot: {target}")
