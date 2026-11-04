@@ -161,6 +161,35 @@ The causal interpretation depends on the whole procedure, not on whether L₁ ap
 
 This distinction is a general feature of longitudinal causal methods. A time-varying confounder affected by earlier treatment cannot always be handled by inserting every observed time-dependent covariate into an ordinary regression and summing its treatment coefficients. The g-methods were developed to address precisely this kind of feedback.
 
+## A direct check of the weighted intervention distribution
+
+The equivalence of normalized regime-IPW to a saturated marginal structural regression is an algebraic check on **two estimators applied to the same weights**. A separate scientific check asks whether the weighting operation reconstructs the intervention distribution under the known assignment mechanism.
+
+In the simulated structural system, baseline L₀ is standard normal, and setting the first treatment to a₀ gives
+
+\[
+E[L_0(a_0)]=0,\qquad E[L_1(a_0)]=1.2a_0.
+\]
+
+Under sustained regime \((a,a)\), the outcome mean is
+
+\[
+E[Y(a,a)]=1+(0.7+1.3\cdot1.2+1.1)a=1+3.36a.
+\]
+
+These identities predict the means **1.0** and **4.36** under the two regimes. The attached independent diagnostic samples 300,000 individuals from the original structural mechanism, uses the **true** logistic treatment probabilities without fitting or clipping, and computes normalized inverse-weighted moments among the observed sustained-treatment groups. With fixed seed 20261104, it obtains:
+
+| Target | Sustained (0,0) | Sustained (1,1) |
+| --- | ---: | ---: |
+| Weighted baseline L₀ | −0.00083 | −0.00229 |
+| Weighted intermediate L₁ | −0.00085 | 1.19514 |
+| Weighted outcome Y | 0.99530 | 4.35788 |
+| Structural outcome expectation | 1.00000 | 4.36000 |
+
+The weighted outcome contrast is approximately **3.36258**, close to its known target of 3.36. This validates the sequential weighting *identification identity* in a favourable large independent sample, beyond the previously verified saturated-MSM equivalence. It does not imply estimated propensity scores or clipped weights must perform identically in finite samples, nor does it validate exchangeability in a real observational dataset.
+
+The supplementary `part15_oracle_ipw_moments.py` uses NumPy and the published equations; two deterministic tests verify the intervention moments and reject invalid sample sizes. The original 160-replication experiment and its results are unchanged.
+
 ## Parametric G-computation
 
 The G-formula reconstructs intervention outcomes by modelling the conditional distribution of intermediate variables and outcomes and then averaging the predicted outcomes under a specified treatment strategy. In this simulation, linear models suffice because the structural intermediate and outcome equations are linear.
