@@ -1,6 +1,6 @@
 # Articles Developed in This Series
 
-This is an index of thirty-six long-form articles developed across the
+This is an index of thirty-seven long-form articles developed across the
 `Medium-Blog` working series, ordered by their addition to this index. It is **not** a complete
 catalogue of the repository's articles or historical notebooks.
 
@@ -43,6 +43,8 @@ catalogue of the repository's articles or historical notebooks.
 | 35 | [The Promise Returns: Tax Cuts for the Rich, Historical Recurrence, and the Distribution of Prosperity](tax-cuts-rich-historical-cycles/article.md) | Gilded Age to 2017 U.S. tax reform, statutory versus effective taxation, top-income inequality, investment responses, CBO incidence, federal receipts and outlays, public debt, identification limits, hypothetical sensitivity analysis | 11 | [Study README](tax-cuts-rich-historical-cycles/README.md) · [Python model](tax-cuts-rich-historical-cycles/model.py) · [Claim audit](tax-cuts-rich-historical-cycles/CLAIM_AUDIT.md) · [Medium figures guide](tax-cuts-rich-historical-cycles/MEDIUM_FIGURES.md) |
 
 | 36 | [A Correlation Is Not a Mechanism: Confounding, Collider Bias, and the Limits of Observational Evidence](a-correlation-is-not-a-mechanism/article.md) | Confounding, Simpson's paradox, collider bias, mediation, instrumental variables, backdoor adjustment, positivity and overlap, nonidentification, prediction versus intervention | 9 | [Study README](a-correlation-is-not-a-mechanism/README.md) · [Python analysis](a-correlation-is-not-a-mechanism/analysis.py) · [Notebook](a-correlation-is-not-a-mechanism/a_correlation_is_not_a_mechanism.ipynb) |
+
+| 37 | [A Billionaire Is Not a Poverty Policy: What a Global Correlation Really Tells Us](billionaires-poverty-audit/article.md) | Billionaire density, $30/day PPP poverty, GDP per capita, omitted development factors, wealth concentration, survey definitions, citizenship versus residence, causal identification, longitudinal estimands; **independent reconstruction figures provisional pending source restoration** | Pending source-verified figures | [Study README](billionaires-poverty-audit/README.md) · [Python analysis](billionaires-poverty-audit/analysis.py) · [Claim audit](billionaires-poverty-audit/CLAIM_AUDIT.md) |
 
 ## Reproducibility
 
