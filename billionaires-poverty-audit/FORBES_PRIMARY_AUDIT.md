@@ -89,3 +89,41 @@ A successfully retrieved API list still needs historical-vintage reconciliation
 against Forbes' published March 2026 annual release. The `country` field is
 not equated with residence without an explicit source definition. No
 publication figures or conclusions are approved by this change.
+
+## Country-code reconciliation gate
+
+After a **successful live Forbes retrieval**, the manual workflow now runs
+`forbes_reconciliation.py` against the aggregate `counts_citizenship.csv` and
+the incomplete secondary table. The Forbes auditor records SHA-256 hashes for
+all its generated CSVs, and reconciliation refuses a country-count file that
+differs from the one covered by `audit.json`. The reconciliation also refuses
+test fixtures, an incorrect annual-list count, inconsistent citizenship
+coverage, duplicate labels and attempts to substitute the ambiguous Forbes
+API `country` field for `countryOfCitizenship`.
+
+The output is a **review queue**, not a validated Forbes-to-ISO3 crosswalk:
+
+| Output | Meaning |
+| --- | --- |
+| `reconciliation/exact_label_candidates.csv` | Exact label matches to the secondary transcription, with provisional ISO3 codes and count differences |
+| `reconciliation/unmapped_primary_labels.csv` | Primary citizenship labels without an exact secondary match, for manual review |
+| `reconciliation/secondary_without_exact_primary_label.csv` | Secondary labels absent as exact primary labels; **not** verified zero counts |
+| `reconciliation/summary.json` | Source and aggregate digests, coverage, mapping-review counts and explicit publication blockers |
+
+This step performs **no fuzzy country-name matching**. Exact spelling is not
+independent confirmation of the country code, territorial definition or
+citizenship assignment. Before accepting a crosswalk, inspect each source
+label, territory and contested geography manually; retain the raw label,
+selected ISO3 and documented evidence for each decision. Missing primary
+labels must remain missing, never be imputed as zero.
+
+For offline verification, run:
+
+```bash
+python -m unittest discover -s tests -p 'test_forbes*.py' -v
+```
+
+The manual source workflow remains necessary because the previously observed
+HTTP 503 has not been resolved. Even a completed ISO3 review will **not**
+establish a historical March 2026 source vintage, residence rather than
+citizenship, the original chart's 64-country selection or a causal effect.

@@ -6,8 +6,11 @@ on:
       - "billionaires-poverty-audit/forbes_primary.py"
       - "billionaires-poverty-audit/tests/test_forbes_primary.py"
       - "billionaires-poverty-audit/tests/test_forbes_pages.py"
+      - "billionaires-poverty-audit/tests/test_forbes_reconciliation.py"
       - "billionaires-poverty-audit/forbes_pages.py"
+      - "billionaires-poverty-audit/forbes_reconciliation.py"
       - "billionaires-poverty-audit/FORBES_PRIMARY_AUDIT.md"
+      - "billionaires-poverty-audit/data/forbes_2026_citizenship_secondary.csv"
       - ".github/workflows/billionaires-forbes-primary-audit.yml"
   workflow_dispatch:
 
@@ -29,7 +32,11 @@ jobs:
       - name: Install study dependencies
         run: python -m pip install -r billionaires-poverty-audit/requirements.txt
       - name: Validate parser code
-        run: python -m py_compile billionaires-poverty-audit/forbes_primary.py billionaires-poverty-audit/forbes_pages.py
+        run: |
+          python -m py_compile \
+            billionaires-poverty-audit/forbes_primary.py \
+            billionaires-poverty-audit/forbes_pages.py \
+            billionaires-poverty-audit/forbes_reconciliation.py
       - name: Run deterministic Forbes parser tests
         working-directory: billionaires-poverty-audit
         run: python -m unittest discover -s tests -p "test_forbes*.py" -v
@@ -53,6 +60,13 @@ jobs:
           python forbes_primary.py \
             --out-dir results/forbes_primary_2026 \
             --secondary data/forbes_2026_citizenship_secondary.csv
+      - name: Reconcile citizenship labels to provisional ISO3 candidates
+        working-directory: billionaires-poverty-audit
+        run: |
+          python forbes_reconciliation.py \
+            --primary-dir results/forbes_primary_2026 \
+            --secondary data/forbes_2026_citizenship_secondary.csv \
+            --out-dir results/forbes_primary_2026/reconciliation
       - name: Summarize primary geography coverage
         working-directory: billionaires-poverty-audit
         run: |
@@ -64,6 +78,11 @@ jobs:
           evidence = json.loads(
               Path("results/forbes_primary_2026/audit.json").read_text(encoding="utf-8")
           )
+          country_review = json.loads(
+              Path("results/forbes_primary_2026/reconciliation/summary.json").read_text(
+                  encoding="utf-8"
+              )
+          )
           fields = evidence["coverage"]
           report = [
               "## Forbes 2026 primary person-list geography audit",
@@ -73,8 +92,12 @@ jobs:
               f"- API country-attributed entries: {fields['api_country']['assigned']}",
               f"- Unassigned citizenship: {fields['citizenship']['missing']}",
               f"- Source response SHA-256: `{evidence['source_sha256']}`",
+              f"- Exact-label ISO3 candidates, not verified: {country_review['n_exact_label_candidates']}",
+              f"- Primary country labels needing review: {country_review['n_unmapped_primary_labels']}",
+              f"- People in those unresolved labels: {country_review['primary_people_with_unresolved_label']}",
               "",
               "**The Forbes API country field is not assumed to represent residence.**",
+              "The ISO3 candidates come from an incomplete secondary transcription and require review.",
               "This audit does not identify the original chart's 64-country sample or infer causality.",
               "",
           ]
