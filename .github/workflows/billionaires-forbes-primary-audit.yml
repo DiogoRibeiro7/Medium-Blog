@@ -5,6 +5,7 @@ on:
     paths:
       - "billionaires-poverty-audit/forbes_primary.py"
       - "billionaires-poverty-audit/tests/test_forbes_primary.py"
+      - "billionaires-poverty-audit/FORBES_PRIMARY_AUDIT.md"
       - ".github/workflows/billionaires-forbes-primary-audit.yml"
   workflow_dispatch:
 
@@ -13,7 +14,7 @@ permissions:
 
 jobs:
   offline-audit-tests:
-    name: Check Forbes country attribution contracts
+    name: Validate Forbes 2026 country-count contracts
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -26,15 +27,13 @@ jobs:
       - name: Install study dependencies
         run: python -m pip install -r billionaires-poverty-audit/requirements.txt
       - name: Validate parser code
-        run: |
-          python -m py_compile billionaires-poverty-audit/forbes_primary.py
-      - name: Run Forbes parser unit tests
+        run: python -m py_compile billionaires-poverty-audit/forbes_primary.py
+      - name: Run deterministic Forbes parser tests
         working-directory: billionaires-poverty-audit
         run: python -m unittest discover -s tests -p "test_forbes_primary.py" -v
 
   primary-fetch:
-    name: Capture Forbes annual country aggregates (manual only)
-    if: ${{ github.event_name == 'workflow_dispatch' }}
+    name: Audit live Forbes annual country aggregates
     needs: offline-audit-tests
     runs-on: ubuntu-latest
     timeout-minutes: 15
@@ -45,16 +44,45 @@ jobs:
           python-version: "3.12"
       - name: Install dependencies
         run: python -m pip install -r billionaires-poverty-audit/requirements.txt
-      - name: Fetch and verify exact annual list; save only country aggregates
+      - name: Fetch and verify 2026 list; save only aggregate geography
         working-directory: billionaires-poverty-audit
         run: |
           python forbes_primary.py \
             --out-dir results/forbes_primary_2026 \
             --secondary data/forbes_2026_citizenship_secondary.csv
-      - name: Archive aggregate counts, discrepancies and source SHA
+      - name: Summarize primary geography coverage
+        working-directory: billionaires-poverty-audit
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          evidence = json.loads(
+              Path("results/forbes_primary_2026/audit.json").read_text(encoding="utf-8")
+          )
+          fields = evidence["coverage"]
+          report = [
+              "## Forbes 2026 primary person-list geography audit",
+              "",
+              f"- Source entries checked: {evidence['schema']['n_persons']}",
+              f"- Citizen-attributed entries: {fields['citizenship']['assigned']}",
+              f"- API country-attributed entries: {fields['api_country']['assigned']}",
+              f"- Unassigned citizenship: {fields['citizenship']['missing']}",
+              f"- Source response SHA-256: `{evidence['source_sha256']}`",
+              "",
+              "**The Forbes API country field is not assumed to represent residence.**",
+              "This audit does not identify the original chart's 64-country sample or infer causality.",
+              "",
+          ]
+          with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as file:
+              file.write("\n".join(report))
+          print("\n".join(report))
+          PY
+      - name: Archive only aggregated counts, reconciliation and source hash
         uses: actions/upload-artifact@v4
         with:
-          name: forbes-2026-aggregate-audit-${{ github.run_id }}
+          name: forbes-2026-primary-country-audit-${{ github.run_id }}
           path: billionaires-poverty-audit/results/forbes_primary_2026/
           retention-days: 30
           if-no-files-found: error
