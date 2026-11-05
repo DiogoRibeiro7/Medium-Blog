@@ -1,6 +1,6 @@
 # The Boom Was Not a Balance Sheet
 
-Reproducible companion to **[The Boom Was Not a Balance Sheet: Globalization, Household Credit, and the Fragile Prosperity Before 2008](article.md)**, the next installment in the [political-economic history series](../ARTICLES.md). It follows [the stagflation and market turn essay](../stagflation-market-turn/article.md).
+Public reproducibility companion for *The Boom Was Not a Balance Sheet: Globalization, Household Credit, and the Fragile Prosperity Before 2008*. The full editorial manuscript is maintained in the private `DiogoRibeiro7/research-articles-medium` repository; [article.md](article.md) is now a short migration notice. This study belongs to the [political-economic history series](../ARTICLES.md) and follows [the stagflation and market turn study](../stagflation-market-turn/).
 
 The period is **1990–2007**. Seven figures summarize original government economic time series. A separate eighth figure illustrates a **hypothetical** collateral and household-equity identity. No regression, graph, or scenario identifies the effect of a historical policy on any economic outcome.
 
@@ -29,7 +29,7 @@ The script creates exactly eight PNGs in `figures/` and three CSVs in `results/`
 
 | Path | Purpose |
 | --- | --- |
-| [`article.md`](article.md) | Long-form Medium-ready essay with source notes and figure placement |
+| [`article.md`](article.md) | Brief pointer to the separately archived private editorial manuscript |
 | [`prepare_data.py`](prepare_data.py) | Typed, validated annualization from original source snapshots |
 | [`analysis.py`](analysis.py) | Seven historical figures, one hypothetical figure, and three diagnostic tables |
 | [`data/sources.json`](data/sources.json) | Exact series IDs, origin institutions, measurement definitions, retrieval vintage and transformations |
@@ -39,7 +39,7 @@ The script creates exactly eight PNGs in `figures/` and three CSVs in `results/`
 | [`results/endpoint_comparisons.csv`](results/endpoint_comparisons.csv) | Same-unit 1990 and 2007 endpoints and transformations |
 | [`results/lead_lag_sensitivity.csv`](results/lead_lag_sensitivity.csv) | **Descriptive-only** small-sample correlations after first differencing |
 | [`results/hypothetical_leverage.csv`](results/hypothetical_leverage.csv) | Explicitly invented mortgage loan-to-value stress scenarios |
-| [`tests/test_analysis.py`](tests/test_analysis.py) | Data completeness, measurement, reproduction and publication checks |
+| [`tests/test_analysis.py`](tests/test_analysis.py) | Data completeness, measurement, reproduction, source provenance and archived artifact checks |
 
 ## Eight figures
 
@@ -96,4 +96,4 @@ E(d,L) = 1-d-L, \qquad \mathrm{loss\ of\ original\ equity} = \frac{d}{1-L}.
 - Mortgage securitization and underwriting can be studied with the Federal Reserve's [2006 HMDA analysis](https://www.federalreserve.gov/pubs/bulletin/2007/articles/hmda/) and Mian and Sufi's [mortgage-credit evidence](https://www.nber.org/papers/w13936), not inferred from the national co-movement plot.
 - The [Financial Crisis Inquiry Commission](https://www.govinfo.gov/app/details/GPO-FCIC) found substantial institutional and regulatory failures; its published report also contains dissenting interpretations. A single interest-rate or trade chart cannot adjudicate those disputes.
 
-The manuscript is for Medium publication, but inclusion in this repository does not imply it has already appeared on Medium.
+The editorial manuscript is maintained separately for Medium. This public research companion makes no claim about its publication status.

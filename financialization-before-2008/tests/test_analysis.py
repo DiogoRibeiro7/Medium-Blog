@@ -141,25 +141,44 @@ class AnalysisModelTests(unittest.TestCase):
 
 
 class PublicationTests(unittest.TestCase):
-    """Keep the long-form manuscript and notebook connected to their sources."""
+    """Check public replication artifacts after the editorial manuscript migration."""
 
-    def test_article_minimum_eight_thousand_words(self) -> None:
-        text = (ROOT / "article.md").read_text(encoding="utf-8")
-        self.assertGreaterEqual(len(text.split()), 8_000)
-        self.assertNotIn("TODO", text)
+    def test_private_editorial_manuscript_notice(self) -> None:
+        """Keep a short pointer without requiring private article text in CI."""
+        notice = (ROOT / "article.md").read_text(encoding="utf-8")
+        self.assertIn("research-articles-medium", notice)
+        self.assertIn("private", notice.lower())
+        self.assertLess(len(notice.split()), 150)
 
-    def test_figures_referenced_and_hypothetical_labeled(self) -> None:
-        text = (ROOT / "article.md").read_text(encoding="utf-8")
+    def test_eight_archived_figures_have_valid_png_headers(self) -> None:
+        """Validate published figure files without depending on Markdown links."""
+        figures = ROOT / "figures"
+        self.assertEqual(
+            {path.name for path in figures.glob("figure_*.png")},
+            set(analysis.FIGURE_NAMES),
+        )
         for name in analysis.FIGURE_NAMES:
-            self.assertIn(f"figures/{name}", text)
-        self.assertIn("HYPOTHETICAL", text)
-        self.assertIn("1993", text)
+            with self.subTest(figure=name):
+                with (figures / name).open("rb") as image:
+                    header = image.read(24)
+                self.assertEqual(header[:8], b"\x89PNG\r\n\x1a\n")
+                self.assertEqual(header[12:16], b"IHDR")
+                self.assertGreater(int.from_bytes(header[16:20], "big"), 0)
+                self.assertGreater(int.from_bytes(header[20:24], "big"), 0)
 
-    def test_primary_source_links(self) -> None:
-        text = (ROOT / "article.md").read_text(encoding="utf-8")
-        self.assertGreaterEqual(text.count("https://"), 18)
-        for publisher in ("fred.stlouisfed.org", "www.bls.gov", "www.census.gov", "www.federalreserve.gov", "www.govinfo.gov", "www.nber.org"):
-            self.assertIn(publisher, text)
+    def test_public_research_provenance_links(self) -> None:
+        """Keep official source references verifiable in the public companion."""
+        readme = (ROOT / "README.md").read_text(encoding="utf-8")
+        metadata = json.loads((ROOT / "data" / "sources.json").read_text(encoding="utf-8"))
+        for publisher in (
+            "www.census.gov", "www.federalreserve.gov",
+            "www.govinfo.gov", "www.nber.org",
+        ):
+            self.assertIn(publisher, readme)
+        self.assertEqual(len(metadata["fred_series"]), 15)
+        for info in metadata["fred_series"].values():
+            self.assertTrue(info["url"].startswith("https://fred.stlouisfed.org/series/"))
+        self.assertIn("www.bls.gov", metadata["bls_union_membership"]["url"])
 
     def test_notebook_code_cells_compile_without_embedded_outputs(self) -> None:
         notebook = json.loads((ROOT / "model_walkthrough.ipynb").read_text(encoding="utf-8"))
