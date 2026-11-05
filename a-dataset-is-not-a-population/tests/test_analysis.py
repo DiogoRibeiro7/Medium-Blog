@@ -166,16 +166,35 @@ class SamplingStudiesTests(unittest.TestCase):
         self.assertEqual(expected, current)
         self.assertTrue(all(not cell.get("outputs") for cell in current.cells if cell.cell_type == "code"))
 
-    def test_manuscript_evidence_and_publication_contract(self) -> None:
-        """Guard long-form length, nine figure references and Medium rendering."""
-        article = (NOTEBOOK.parent / "article.md").read_text(encoding="utf-8")
-        self.assertGreaterEqual(len(article.split()), 8000)
-        for name in FIGURE_NAMES.values():
+    def test_public_editorial_path_is_a_private_source_notice(self) -> None:
+        """Keep old public links functional without retaining article prose."""
+        notice: str = (NOTEBOOK.parent / "article.md").read_text(encoding="utf-8")
+        self.assertIn("research-articles-medium", notice)
+        self.assertIn("private", notice.lower())
+        self.assertLess(len(notice.split()), 250)
+
+    def test_nine_canonical_figures_have_valid_png_headers(self) -> None:
+        """Check canonical evidence images independently of article layout."""
+        figure_dir: Path = NOTEBOOK.parent / "figures"
+        expected_names: set[str] = {f"{name}.png" for name in FIGURE_NAMES.values()}
+        actual_names: set[str] = {
+            path.name for path in figure_dir.glob("fig*.png")
+            if not path.stem.endswith("_quick")
+        }
+        self.assertEqual(actual_names, expected_names)
+        for name in sorted(expected_names):
             with self.subTest(figure=name):
-                self.assertEqual(article.count(f"figures/{name}.png"), 1)
-        self.assertNotIn("\n| ---", article)  # Medium does not render Markdown tables reliably.
-        self.assertIn("## References", article)
-        self.assertIn("## Reproducibility and data availability", article)
+                figure_path: Path = figure_dir / name
+                with figure_path.open("rb") as stream:
+                    header: bytes = stream.read(24)
+                # PNG signature and IHDR dimensions expose incomplete files.
+                self.assertEqual(len(header), 24)
+                self.assertEqual(header[:8], b"\x89PNG\r\n\x1a\n")
+                self.assertEqual(header[12:16], b"IHDR")
+                width: int = int.from_bytes(header[16:20], "big")
+                height: int = int.from_bytes(header[20:24], "big")
+                self.assertGreater(width, 0)
+                self.assertGreater(height, 0)
 
     @unittest.skipUnless(os.environ.get("RUN_NOTEBOOK_EXECUTION") == "1", "opt-in fresh kernel")
     def test_notebook_from_external_working_directory(self) -> None:
