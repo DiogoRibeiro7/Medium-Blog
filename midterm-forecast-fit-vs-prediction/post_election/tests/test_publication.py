@@ -1,4 +1,4 @@
-"""Verify that Medium derivatives do not modify the frozen scientific claim."""
+"""Test the publication converter without storing a public manuscript copy."""
 
 from __future__ import annotations
 
@@ -17,18 +17,40 @@ sys.modules[SPEC.name] = publication
 SPEC.loader.exec_module(publication)
 
 
+def synthetic_manuscript(figure_names: list[str]) -> str:
+    """Build a clearly synthetic long-form fixture with every required link."""
+
+    paragraphs: str = (
+        "Synthetic conversion test prose only, not certified election results. " * 900
+    )
+    illustrations: str = "\n".join(
+        f"![Synthetic figure {index}](figures/{name})"
+        for index, name in enumerate(figure_names, start=1)
+    )
+    return (
+        "# The Votes Are In: Testing an 89% Midterm Model Against the 2026 Election\n\n"
+        "Research draft, 4 November 2026. "
+        "The 31 October information cutoff and 1 November registration differ. "
+        "In the first live scenario, 68 House races remained uncalled. "
+        "The 5 November update still has 48 uncalled races. "
+        "These are not certified election results.\n\n"
+        "[AP follow-up JSON](data/ap_house_live_2026-11-05.json)\n\n"
+        f"{paragraphs}\n\n{illustrations}\n"
+    )
+
+
 class PublicationTests(unittest.TestCase):
-    """Enforce reproducible image bytes and unambiguous publication status."""
+    """Enforce reproducible image bytes and the provisional publication contract."""
 
     @classmethod
     def setUpClass(cls) -> None:
         cls.manifest = publication.load_figure_manifest()
-        cls.source = publication.SOURCE.read_text(encoding="utf-8")
+        cls.source = synthetic_manuscript(list(cls.manifest.sha256))
 
-    def test_publication_copy_is_current(self) -> None:
-        prepared = publication.build_medium_copy(self.source, self.manifest)
-        current = publication.OUTPUT.read_text(encoding="utf-8")
-        self.assertEqual(prepared, current)
+    def test_publication_conversion_is_deterministic(self) -> None:
+        prepared: str = publication.build_medium_copy(self.source, self.manifest)
+        self.assertEqual(prepared, publication.build_medium_copy(self.source, self.manifest))
+        self.assertEqual(len(prepared.split()), len(self.source.split()))
 
     def test_eight_images_link_to_a_fixed_commit(self) -> None:
         prepared = publication.build_medium_copy(self.source, self.manifest)

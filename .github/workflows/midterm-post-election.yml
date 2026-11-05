@@ -35,15 +35,14 @@ jobs:
         run: |
           python -m compileall -q post_election
           python -m unittest discover -s post_election/tests -v
-      - name: Verify pinned Medium publication copy
-        run: python post_election/prepare_medium_publication.py --check
       - name: Verify dated AP live-snapshot chronology
         run: python post_election/snapshot_history.py --check
       - name: Reproduce independently from archived inputs
         run: python post_election/analysis.py --output-dir /tmp/midterm-post-election-reproduction
-      - name: Check scientific output, figures and manuscript readiness
+      - name: Check scientific output and pinned research figures
         run: |
           python - <<'PY'
+          import hashlib
           import json
           from pathlib import Path
 
@@ -60,10 +59,15 @@ jobs:
               figures = list(directory.glob('fig*.png'))
               assert len(figures) == 8, 'Expected eight original PNG figures'
               assert all(path.read_bytes().startswith(b'\x89PNG\r\n\x1a\n') for path in figures)
-          manuscript = (study / 'article.md').read_text(encoding='utf-8')
-          assert len(manuscript.split()) >= 8000, 'Long-form manuscript must exceed 8000 words'
-          assert manuscript.count('](figures/fig') == 8, 'All eight figures need manuscript placements'
-          assert 'Research draft' in manuscript and 'uncalled' in manuscript.lower()
+          figure_manifest = json.loads((study / 'publication/figure_manifest.json').read_text())
+          assert figure_manifest['status'] == 'draft_provisional_not_final_result'
+          expected = figure_manifest['sha256']
+          assert len(expected) == 8, 'Eight publication figures must be pinned'
+          for name, digest in expected.items():
+              actual = hashlib.sha256((study / 'figures' / name).read_bytes()).hexdigest()
+              assert actual == digest, f'Figure bytes differ from manifest: {name}'
+          assert not (study / 'article.md').exists(), 'Editorial source belongs in private repository'
+          assert not (study / 'publication/medium_ready.md').exists(), 'Medium derivative belongs in private repository'
           assert not (study / 'verified_2026_score.json').exists(), 'Premature official scoring'
-          print('Archived AP snapshot, reproducible figures, source labels and draft verified')
+          print('Archived AP snapshots, reproduced figures and pinned source labels verified')
           PY

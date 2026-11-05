@@ -1,14 +1,14 @@
-"""Prepare a Medium-compatible provisional sequel, preserving the scientific draft.
+"""Prepare a Medium-compatible manuscript held in a separate private repository.
 
 No election outcome is scored here. This mechanically converts eight relative
 figure links to immutable raw PNG URLs and relative companion links to pinned
 GitHub references. The article already uses prose/Unicode in place of tables
 and LaTeX, so no new mathematical rasterization is required.
 
-Usage::
+Usage (with the two repositories checked out next to each other)::
 
-    python prepare_medium_publication.py --write
-    python prepare_medium_publication.py --check
+    python prepare_medium_publication.py --write --source /path/to/private/article.md --output /path/to/private/medium_ready.md
+    python prepare_medium_publication.py --check --source /path/to/private/article.md --output /path/to/private/medium_ready.md
 
 The first command is an idempotent bulk publication formatting operation.
 The second is read-only and intended for GitHub Actions.
@@ -26,9 +26,7 @@ from typing import Final
 
 ROOT: Final[Path] = Path(__file__).resolve().parent
 REPO_ROOT: Final[Path] = ROOT.parents[1]
-SOURCE: Final[Path] = ROOT / "article.md"
 PUBLICATION: Final[Path] = ROOT / "publication"
-OUTPUT: Final[Path] = PUBLICATION / "medium_ready.md"
 MANIFEST: Final[Path] = PUBLICATION / "figure_manifest.json"
 REPOSITORY: Final[str] = "DiogoRibeiro7/Medium-Blog"
 ARTICLE_DIRECTORY: Final[str] = "midterm-forecast-fit-vs-prediction/post_election"
@@ -165,21 +163,33 @@ def build_medium_copy(source: str, figure_manifest: FigureManifest) -> str:
 
 
 def main() -> None:
-    """Build or check a deterministic publication derivative from the draft."""
+    """Build or check a derivative at explicit private editorial paths."""
 
     parser = argparse.ArgumentParser(description=__doc__)
     action = parser.add_mutually_exclusive_group(required=True)
     action.add_argument("--write", action="store_true", help="Regenerate the Medium Markdown derivative")
     action.add_argument("--check", action="store_true", help="Verify committed derivative without modifying files")
+    parser.add_argument(
+        "--source", required=True, type=Path,
+        help="Path to the source article in the private manuscript checkout",
+    )
+    parser.add_argument(
+        "--output", required=True, type=Path,
+        help="Path to the Medium-ready file in the private manuscript checkout",
+    )
     args = parser.parse_args()
+    source_path: Path = args.source.resolve(strict=True)
+    output_path: Path = args.output.resolve()
+    if source_path == output_path:
+        parser.error("Source and output paths must differ")
     manifest = load_figure_manifest()
-    source = SOURCE.read_text(encoding="utf-8")
+    source: str = source_path.read_text(encoding="utf-8")
     prepared = build_medium_copy(source, manifest)
     if args.write:
-        OUTPUT.parent.mkdir(parents=True, exist_ok=True)
-        OUTPUT.write_text(prepared, encoding="utf-8")
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+        output_path.write_text(prepared, encoding="utf-8")
     else:
-        current = OUTPUT.read_text(encoding="utf-8")
+        current: str = output_path.read_text(encoding="utf-8")
         if current != prepared:
             raise ValueError("Medium copy is stale; regenerate before review")
     print(f"Provisional Medium copy: {len(prepared.split())} words, 8 pinned PNG figures, "

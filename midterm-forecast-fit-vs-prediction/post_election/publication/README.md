@@ -1,55 +1,40 @@
-# Medium preparation — 2026 House forecast sequel
+# Medium preparation utility — 2026 House forecast sequel
 
-This is a **provisional** import package for the 4–5 November 2026 live-results
-study, not a final scored post-election publication. It preserves the article's
-full methodological caveats. The original manuscript is
-[`../article.md`](../article.md). The generated derivative is
-[`medium_ready.md`](medium_ready.md).
+The **article source and Medium-ready derivative are private editorial files**
+in [`research-articles-medium`](https://github.com/DiogoRibeiro7/research-articles-medium/tree/main/midterm-forecast-fit-vs-prediction/post_election)
+(owner access required). They are deliberately not stored in this public
+research repository. The historical forecast, reproducibility code, dated
+snapshots, eight figures and research tests remain here.
 
-## What this package does
+This folder retains [`figure_manifest.json`](figure_manifest.json), which
+pins the exact SHA-256 digest of each of the eight public figures and the
+immutable figure commit `b83108c28d11a31e9dba6c34304730579df0cfd3`.
+The independent research CI verifies these bytes without reading any private
+files or requiring a private-repository token.
 
-1. Converts eight `figures/*.png` Markdown references to full public GitHub
-   raw image URLs pinned to commit `b83108c28d11a31e9dba6c34304730579df0cfd3`.
-2. Verifies each image's SHA-256 against
-   [`figure_manifest.json`](figure_manifest.json) before including its URL.
-3. Converts relative repository-companion references to links at that same
-   immutable commit, which contains **both dated snapshots**;
-   external source URLs remain unchanged.
-4. Checks that the manuscript is at least 8,000 words, is marked as a
-   research draft, distinguishes the 68 and 48 uncalled races in the two
-   snapshots, retains both pre-election dates, and contains no unsupported
-   Markdown pipe tables or LaTeX.
-5. Leaves the 31 October forecast, 1 November lock, source analysis and
-   archived 4 November AP snapshot untouched. The 5 November follow-up
-   appears in an independently verifiable dated archive.
+## Rebuild the Medium derivative locally
 
-## Reproduce
-
-From the original study directory:
+Clone both repositories as siblings. From the **Medium-Blog repository root**:
 
 ```bash
-python post_election/prepare_medium_publication.py --write
-python post_election/prepare_medium_publication.py --check
+python midterm-forecast-fit-vs-prediction/post_election/prepare_medium_publication.py \
+  --write \
+  --source ../research-articles-medium/midterm-forecast-fit-vs-prediction/post_election/article.md \
+  --output ../research-articles-medium/midterm-forecast-fit-vs-prediction/post_election/publication/medium_ready.md
+
+python midterm-forecast-fit-vs-prediction/post_election/prepare_medium_publication.py \
+  --check \
+  --source ../research-articles-medium/midterm-forecast-fit-vs-prediction/post_election/article.md \
+  --output ../research-articles-medium/midterm-forecast-fit-vs-prediction/post_election/publication/medium_ready.md
 ```
 
-The script uses only the Python standard library. CI runs `--check`, not
-`--write`; no publication or external account operation is performed.
+The converter (standard library only) checks the provisional-result
+disclaimers, source dates, eight figure placements and Medium-compatible
+format. It embeds immutable public image links after verifying each figure's
+checksum. It never modifies model inputs or computes an official election
+score. Its tests use a clearly synthetic manuscript fixture, so public CI
+does not need access to a private editorial document.
 
-## Medium import checklist
-
-- Use `medium_ready.md` as the copy source, not the raw `article.md`.
-- Check that all eight figure images import correctly and keep their captions.
-- If Medium does not preserve a linked image, upload the corresponding PNG
-  manually from `../figures/`; the image name is in the manifest.
-- Keep the opening provisional-results disclaimer and distinguish AP leads
-  from called races; do not present either the 172- or 174-seat scenario as official.
-- Do not call this a final outcome study until a House Historian / American
-  Presidency Project aligned initial-election result has been recorded and
-  scored separately through the pre-registered scorer.
-- Review citations and link behavior in the Medium editor before publication.
-
-The article uses plain language and Unicode notation; there are no raw
-LaTeX display equations or Markdown data tables to convert. When the final
-result is published, regenerate a *new dated edition* and update the pinned
-figure reference and checksums if any figures change. Do not silently edit
-the archived provisional snapshot or overwrite the original forecast lock.
+The 4 and 5 November AP snapshots are **live, provisional observations**.
+Neither snapshot is a certified initial-election House division. The final
+score must follow [`../FINALIZATION_PROTOCOL.md`](../FINALIZATION_PROTOCOL.md).

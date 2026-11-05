@@ -73,10 +73,12 @@ The analysis has no network dependency. It writes:
 - no changes to pre-election model, outputs, locks, historical rows or
   registered estimators.
 
-The separate [Medium preparation package](publication/README.md) checks a
-mechanically derived [`publication/medium_ready.md`](publication/medium_ready.md)
-with eight immutable, SHA-256-verified PNG links and pinned companion URLs.
-The import package is still a research **draft**, because the registered
+The [Medium preparation utility](publication/README.md) validates a manuscript
+checked out from the **private**
+[`research-articles-medium`](https://github.com/DiogoRibeiro7/research-articles-medium/tree/main/midterm-forecast-fit-vs-prediction/post_election)
+repository and creates the publication derivative there. The public code and
+figures are reusable without access to that private editorial repository.
+The manuscript remains a research **draft**, because the registered
 official-outcome requirement has not yet been satisfied.
 
 All unit tests are source-aware. They reject a snapshot mislabeled as final,
@@ -102,8 +104,8 @@ consistency, signed differences and rejection of an illicit observed target.
 | `fig8_history_vs_one_provisional_discrepancy.png` | Historical forward RMSE versus one conditional discrepancy, expressly not a calibration test |
 
 For publishing in Medium, the images should be uploaded and explicitly
-captioned; an uncalled lead must never be labeled as a winner. The manuscript
-[`article.md`](article.md) remains a **draft** until the final initial-election
+captioned; an uncalled lead must never be labeled as a winner. The privately
+maintained manuscript remains a **draft** until the final initial-election
 outcome can be scored, verified, and independently reviewed. Once the
 House Historian or American Presidency Project updates its relevant series,
 run the existing verified scorer into a **new** JSON report in this directory,
