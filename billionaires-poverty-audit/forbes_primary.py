@@ -203,6 +203,7 @@ def run_primary_audit(
         "privacy": "raw list and person-level fields are not saved",
     }
     output_dir.mkdir(parents=True, exist_ok=True)
+    output_hashes: dict[str, str] = {}
     for name, counter in counts.items():
         rows = [
             {
@@ -213,14 +214,21 @@ def run_primary_audit(
             }
             for label, n in sorted(counter.items())
         ]
+        count_path = output_dir / f"counts_{name}.csv"
         pd.DataFrame(
             rows,
             columns=["country_label", "billionaires", "attribution", "source_field"],
-        ).to_csv(output_dir / f"counts_{name}.csv", index=False)
+        ).to_csv(count_path, index=False)
+        output_hashes[count_path.name] = hashlib.sha256(count_path.read_bytes()).hexdigest()
     if secondary_csv is not None:
-        pd.DataFrame(comparison).to_csv(
-            output_dir / "secondary_discrepancies.csv", index=False
-        )
+        comparison_path = output_dir / "secondary_discrepancies.csv"
+        pd.DataFrame(comparison).to_csv(comparison_path, index=False)
+        output_hashes[comparison_path.name] = hashlib.sha256(
+            comparison_path.read_bytes()
+        ).hexdigest()
+    # Bind the country-level artifacts to this exact source audit. A downstream
+    # join must refuse manually edited or substituted aggregate files.
+    audit["aggregated_output_sha256"] = output_hashes
     (output_dir / "audit.json").write_text(
         json.dumps(audit, indent=2, sort_keys=True) + "\n", encoding="utf-8"
     )
