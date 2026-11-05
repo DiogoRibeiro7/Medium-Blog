@@ -122,6 +122,8 @@ zero. The analysis's exact-period comparisons enforce those distinctions.
 | 37 | fig37_matched_porto_reference_window_differences.png | Alternative-minus-Porto coefficients for own new-rent growth on the same 15 municipalities, each of 16 alternative reference nodes and four rent windows | **Fixed own-rent outcomes per matched comparison, not inferred residential moves or causal exposure** |
 | 38 | fig38_reference_exposure_distance_collinearity.png | Rank correlation of each 2021 work/study reference link exposure with CAOP2025 straight-line pair-centroid distances under three normalisations | **Geographic rank confounding diagnostic, not travel access, directional moves or a statistical test** |
 | 39 | fig39_municipal_reference_distance_adjusted_ranks.png | Unadjusted vs one-distance-conditional rank coefficients for own nominal new-rent growth across all 17 reference nodes and four nested windows | **One-variable partial Spearman with small, dependent samples and strong link-distance collinearity, not a causal effect** |
+| 40 | fig40_matched_shared_geography_rank_contrasts.png | All 16 alternative-minus-Porto rank-correlation contrasts across four rent windows after conditioning both exposures on the identical *pair* of geographic distances | **Matched descriptive residual-rank contrasts, not a causal treatment comparison** |
+| 41 | fig41_shared_geography_reference_robustness.png | Alternative reference counts under Porto-only, alternative-only and both shared geographic controls, with and without a descriptive −0.05 Spearman-unit difference margin | **Control-specification sensitivity, not statistical significance, independent replication or displacement evidence** |
 
 The figure titles, manuscript captions and generated tables repeat the
 evidence-class distinction. There are no charts of invented historical
@@ -1166,6 +1168,66 @@ Rank-distance conditioning cannot remove unmeasured
 confounding, and high collinearity with only 15 or 16
 comparators limits interpretability.
 
+## Matched reference comparisons with identical geography (figures 40–41)
+
+The preceding comparison fixed the 15 comparator municipalities and
+their *own* new-rent growth but used different geography controls for
+Porto and for each alternative reference. The
+[municipal_reference_common_geography.py](municipal_reference_common_geography.py)
+module tests the identified **comparison-procedure** ambiguity:
+both reference network variables and the common rent-growth outcome
+are now projected on **the very same geographic control columns**.
+
+For every alternative reference and every 2020/2021/2022/2023–2025
+rent window, compute residual correlations of average ranks under:
+
+1. Distance to Porto, applied to both reference exposures.
+2. Distance to that alternative, applied to both reference exposures.
+3. Both reference distances, applied identically to each exposure
+   and the single invariant rent-growth outcome.
+
+These are three sensitivity specifications, not 3 independent
+samples. The two-distance case is symmetric in the reference
+identities but often leaves little residual network information.
+Unadjusted and previous *different-control* coefficients are
+retained for comparison. No observed origin–destination moves,
+route-based travel times or new external data are introduced.
+
+The primary exposure is the **2021 symmetric work/study pair count
+per 1,000 comparator residents**. Alternatives more negatively
+associated with municipal own-new-rent growth than Porto, out of 16:
+
+| Baseline → 2025 | Previous different controls | Common Porto distance | Common alternative distance | Both distances in common |
+| --- | ---: | ---: | ---: | ---: |
+| 2020 | 2 | 1 | 2 | 2 |
+| 2021 | 5 | 6 | 4 | 4 |
+| 2022 | 0 | 0 | 1 | 0 |
+| 2023 | 4 | 1 | 7 | 4 |
+
+With a descriptive margin of at least **−0.05** in the
+alternative-minus-Porto coefficient, the symmetric two-distance
+counts become **2, 4, 0, 4**. The baseline-year windows overlap,
+all share the same 2025 endpoint, and the matched support changes
+between alternative references; these counts are not significance
+tests or independent replications. At least one primary-mode exposure
+retains as little as **7.6%** of its original rank variance after
+the joint geographic projection, which warns against treating the
+residual association as a stable independent economic mechanism.
+
+Reproduce all **576** individual matched specifications, **36**
+window-by-exposure-by-common-control summary cells, both figures,
+and a three-source provenance JSON without network access:
+
+    python municipal_reference_common_geography.py --output /tmp/porto-common-geography
+
+Outputs use `results/municipal_reference_common_geography_*` and
+`figures/fig40_*` / `figures/fig41_*`. The additional **22** tests
+check complete grids, fixed outcomes, rank-projection algebra,
+previous single-control oracles, tie handling, numerical failure
+conditions, specification stability and reproducibility. None of
+this identifies actual residential relocation, exogenous shocks,
+transport availability or causal housing-price contagion.
+
 ## Boundaries before publication
 
 - Prices of sold homes are not quality-adjusted repeated-sales observations.
@@ -1195,8 +1257,12 @@ comparators limits interpretability.
   municipality's own rent growth.
 - Conditioning 2021 work/study-link ranks on straight-line CAOP2025
   administrative centroid distances is descriptive and often highly
-  collinear. Matched-reference comparisons use different distance
-  control vectors; neither measure identifies residential displacement.
+  collinear. The *earlier* matched-reference comparison used different
+  distance control vectors; neither procedure identifies displacement.
+- Applying identical Porto, alternative or two-reference centroid-distance
+  control ranks to both network exposures fixes one matched-comparison
+  ambiguity, but leaves 15 dependent municipal observations and often
+  very little residual network rank variation, not identified spillovers.
 - Do not use the hypothetical curves to infer the number of people actually
   displaced, transmission elasticities, or policy effect sizes.
 - The article is a manuscript for review and **is not automatically published
