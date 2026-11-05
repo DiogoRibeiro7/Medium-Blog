@@ -709,18 +709,12 @@ class NotebookAndDocumentationTests(unittest.TestCase):
         for name in ("numpy", "scipy", "matplotlib", "scikit-learn"):
             self.assertTrue(any(r.startswith(name+"==") for r in reqs))
 
-    def test_manuscript_over_8000_words(self) -> None:
-        text = (ROOT/"article.md").read_text(encoding="utf-8")
-        self.assertGreaterEqual(len(text.split()), 8000)
-
-    def test_manuscript_nine_graphics(self) -> None:
-        text = (ROOT/"article.md").read_text(encoding="utf-8")
-        self.assertEqual(text.count("![Figure "), 9)
-
-    def test_manuscript_primary_sources(self) -> None:
-        text = (ROOT/"article.md").read_text(encoding="utf-8")
-        self.assertIn("doi.org/10.2307/2346806", text)
-        self.assertIn("papers.nips.cc/paper/5073", text)
+    def test_public_article_is_a_private_archive_notice(self) -> None:
+        """Preserve a public pointer without requiring private prose in CI."""
+        notice = (ROOT / "article.md").read_text(encoding="utf-8")
+        self.assertIn("research-articles-medium", notice)
+        self.assertIn("private", notice.lower())
+        self.assertLess(len(notice.split()), 150)
 
     @unittest.skipIf(nbformat is None, "nbformat/nbclient optional locally")
     def test_jupyter_schema(self) -> None:
