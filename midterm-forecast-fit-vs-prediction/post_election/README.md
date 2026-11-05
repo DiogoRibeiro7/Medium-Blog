@@ -4,6 +4,8 @@
 forecast and 1 November registration remain frozen. This folder adds an
 independent 4 November Associated Press *live* snapshot and calculations that
 are explicitly conditional on all currently leading candidates winning.
+An additional 5 November snapshot preserves the subsequent changes in AP
+calls and leads without editing the original evidence or fitting a new model.
 It does **not** record the final House Historian-aligned initial-election
 party division. The eventual, final forecast score must be produced through
 [`../score_after_election.py`](../score_after_election.py) when its source
@@ -20,6 +22,7 @@ historical training data to accommodate the election result.
 | Source commit | [`fe98742efb86756fc30967477098482eb7505783`](https://github.com/DiogoRibeiro7/Medium-Blog/tree/fe98742efb86756fc30967477098482eb7505783) |
 | Election date | 3 November 2026, [FEC](https://www.fec.gov/introduction-campaign-finance/election-results-and-voting-information/) |
 | AP live snapshot | [AP election results hub](https://apnews.com/hub/elections), report 2026-11-04 10:51:02 UTC, retrieved 10:51:54 UTC |
+| AP follow-up snapshot | Same [AP source](https://apnews.com/hub/elections), report 2026-11-05 13:10:04 UTC, retrieved 13:10:31 UTC |
 | Historical outcome definition | [House Historian initial-election party divisions](https://history.house.gov/Institution/Party-Divisions/Party-Divisions/) and [American Presidency Project](https://www.presidency.ucsb.edu/statistics/data/seats-congress-gainedlost-the-presidents-party-mid-term-elections) |
 
 The AP snapshot is a labeled transcription of one aggregate results feed, not
@@ -31,6 +34,15 @@ seats; Democrats led 35 additional uncalled seats and Republicans led 33. The
 majority. The 172-seat GOP *trend* is a conditional hypothetical, not an
 observed initial-election count.
 
+At the second retrieval, AP reported 240 Democratic calls, 147 Republican
+calls, 21 Democratic leads and 27 Republican leads (48 races uncalled).
+Its *if-leads-hold* GOP total had moved to 174, corresponding to a
+hypothetical −46-seat change under the unchanged 220-seat forecast input.
+The conditional OLS difference therefore moved from +15.68 to +13.68 seats.
+Neither point is a scored election outcome. The two raw records remain
+separate under `data/` and are compared by
+[`results/snapshot_history.json`](results/snapshot_history.json).
+
 ## Reproduce
 
 Python 3.12. Use the existing article's pinned
@@ -39,6 +51,7 @@ Python 3.12. Use the existing article's pinned
 ```bash
 python -m pip install -r midterm-forecast-fit-vs-prediction/requirements.txt
 python midterm-forecast-fit-vs-prediction/post_election/analysis.py
+python midterm-forecast-fit-vs-prediction/post_election/snapshot_history.py --check
 python -m unittest discover -s midterm-forecast-fit-vs-prediction/post_election/tests -v
 ```
 
@@ -47,6 +60,9 @@ The analysis has no network dependency. It writes:
 - [`results/provisional_diagnostics.json`](results/provisional_diagnostics.json):
   labeled, deterministic derived values from the source snapshot and lock;
 - eight `figures/fig*.png` scientific illustrations;
+- [`results/snapshot_history.json`](results/snapshot_history.json): a
+  second reproducible report showing how the *live* scenario changed from
+  4 to 5 November without overwriting the first observation;
 - no changes to pre-election model, outputs, locks, historical rows or
   registered estimators.
 
@@ -62,6 +78,8 @@ arithmetic and forecast-lock drift. They also verify that the registered
 signed-error convention is `prediction - observation`, that the interval
 contains 172 but not 171 Republican House seats under the fixed 220-seat
 baseline, and that eight PNGs can be rendered from the archived inputs.
+Additional chronology tests check the second AP tally, dated-file
+consistency, signed differences and rejection of an illicit observed target.
 
 ## Figure map
 
@@ -83,7 +101,7 @@ outcome can be scored, verified, and independently reviewed. Once the
 House Historian or American Presidency Project updates its relevant series,
 run the existing verified scorer into a **new** JSON report in this directory,
 and then issue a new, dated article revision without rewriting this archived
-4 November snapshot.
+4 November snapshot or the independent 5 November follow-up.
 
 ## Scope and limitations
 

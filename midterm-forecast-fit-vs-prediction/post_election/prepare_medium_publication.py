@@ -83,6 +83,8 @@ def validate_manuscript(source: str) -> None:
         raise ValueError("The provisional publication status was removed")
     if "68 House races remained uncalled" not in source:
         raise ValueError("The live-results uncertainty disclaimer was removed")
+    if "48 uncalled races" not in source or "5 November" not in source:
+        raise ValueError("The 5 November dated update was removed")
     if "31 October" not in source or "1 November" not in source:
         raise ValueError("The distinct information and registration dates must remain visible")
     if len(source.split()) < 8000:

@@ -14,10 +14,13 @@ the interpretation of the new data is necessarily post-election.
 | 0.8934 historical in-sample R², forward RMSE 8.70 | Historical diagnostics | Same manifest and original reproducibility code; neither is a 2026 accuracy percentage |
 | Republican 220-seat starting assumption matches the initial 119th Congress party division | Verified historical source alignment, not a new 2026 result | [House Historian](https://history.house.gov/Institution/Party-Divisions/Party-Divisions/) lists 220 Republicans and 215 Democrats for the 119th; [American Presidency Project](https://www.presidency.ucsb.edu/statistics/data/seats-congress-gainedlost-the-presidents-party-mid-term-elections) lists 220 Republican House seats to defend for 2026 |
 | AP on 4 Nov had Dem 228 called and GOP 139 called, with 35/33 leads | Live, not certified | `data/ap_house_live_2026-11-04.json`; AP report 10:51:02 UTC, retrieved 10:51:54 UTC, [publisher](https://apnews.com/hub/elections) |
+| AP on 5 Nov had Dem 240 called and GOP 147 called, with 21/27 leads | Follow-up live snapshot, not certified | `data/ap_house_live_2026-11-05.json`; AP report 13:10:04 UTC, retrieved 13:10:31 UTC, same publisher |
 | Democrats have mathematically secured the House majority | AP called seats | 228 called exceeds 218-seat majority, even if all remaining 68 seats were Republican |
 | If all AP leads hold, GOP would obtain 172 seats | Conditional arithmetic, not observed | 139 called GOP + 33 GOP leads; not a final tally, not a probability forecast |
 | GOP change would be −48 relative to the registered 220-seat baseline | Conditional arithmetic only | 172 − 220; requires future source-compatible final party divisions before it can be used in the official scorer |
 | Registered signed discrepancy would be +15.677112 for OLS if leads hold | Hypothetical, not observed score | −32.322888 − (−48); sign defined as prediction minus observation in registration |
+| In the later AP snapshot, GOP 174 if leads hold, implying −46 change and +13.677112 conditional OLS discrepancy | Hypothetical, not an official score | 147 called GOP + 27 leads, minus locked 220-seat baseline; `results/snapshot_history.json` |
+| Twenty more districts called between snapshots, with GOP scenario trend moving +2 | Live-data reporting process | 387 − 367 called; 174 − 172 conditional GOP seats; no inference about individual district lead reversals from aggregate data |
 | GOP final seats 172–203 correspond to integer losses covered by 95% OLS interval | Deterministic boundary calculation | ceil(220 − 48.42838655) = 172; floor(220 − 16.21738950) = 203 |
 | A 171 GOP-seat official outcome would be outside the model interval | Hypothetical threshold | 171 − 220 = −49, below −48.42838655; **not** a claim that 171 is the result |
 | Live scenario lies outside bootstrap sensitivity band | Conditional diagnostic | −48 is below the lower bootstrap sensitivity bound −41.7517; the band is not a calibrated 95% prediction interval |
@@ -27,8 +30,9 @@ the interpretation of the new data is necessarily post-election.
 
 ## Editorial guardrails
 
-1. Use **if all current leads hold** for 172 seats, −48 seat change and
-   differences from model points; never write these as observed election data.
+1. State which dated snapshot is being described: **4 November** gives
+   172 GOP seats and −48 conditional change; **5 November** gives 174 GOP
+   seats and −46 conditional change. Neither is an observed election outcome.
 2. Report the 31 October information cutoff and the distinct 1 November
    registration date honestly; do not call both an October preregistration.
 3. Keep the original OLS forecast and three estimator alternatives fixed. No
@@ -45,7 +49,7 @@ the interpretation of the new data is necessarily post-election.
 
 - [Diogo Ribeiro (31 October 2026), *The Forecast Is Not the Fit*](https://diogo-ribeiro-1975.medium.com/the-forecast-is-not-the-fit-rebuilding-an-89-midterm-election-model-8fb36cc269be).
 - [Registered model record and methodology](../PRE_ELECTION_REGISTRATION.md); [`forecast_lock.json`](../results/forecast_lock.json), signed 1 November 2026.
-- [Associated Press, 2026 U.S. election results](https://apnews.com/hub/elections), 4 November 2026 live snapshot.
+- [Associated Press, 2026 U.S. election results](https://apnews.com/hub/elections), archived live snapshots of 4 and 5 November 2026.
 - [Associated Press, Democrats win congressional control](https://apnews.com/article/ef6199e25927a9ac9f4c18eae0e497cd), 4 November 2026 live report.
 - [Federal Election Commission, general federal election date](https://www.fec.gov/introduction-campaign-finance/election-results-and-voting-information/).
 - [House Historian, Party Divisions](https://history.house.gov/Institution/Party-Divisions/Party-Divisions/), initial-election result convention.

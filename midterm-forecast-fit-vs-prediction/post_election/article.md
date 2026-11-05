@@ -1,6 +1,6 @@
 # The Votes Are In: Testing an 89% Midterm Model Against the 2026 Election
 
-*Diogo Ribeiro — Research draft, 4 November 2026. Not yet a final election score.*
+*Diogo Ribeiro — Research draft, 4 November 2026; live-count update added 5 November. Not yet a final election score.*
 
 **Reader's note.** This essay compares a published, frozen forecast for the
 3 November 2026 U.S. House election with an Associated Press live-results
@@ -8,7 +8,11 @@ snapshot retrieved on 4 November at 10:51:54 UTC. AP had called a Democratic
 majority, but 68 House races remained uncalled in that snapshot. Every
 statement involving 172 Republican seats, a 48-seat Republican loss, or
 errors against that outcome is **conditional on all candidates then leading
-eventually winning**. Those are not certified election results. Our
+eventually winning**. Those are not certified election results.
+A second snapshot, dated 5 November at 13:10 UTC,
+contains 48 uncalled races and a different conditional 174-seat Republican
+trend; the original 4 November analysis remains deliberately archived.
+Neither scenario is a certified election result. Our
 pre-election registration explicitly requires the initial-election
 party-division series published by the House Historian or American Presidency
 Project for the definitive score. We will append a separately dated final
@@ -48,14 +52,17 @@ reconstruction published on 31 October. Whatever happened next would be
 informative, but it would not be another opportunity to move the goalposts.
 
 Now we have the first live returns. Democrats have already been called the
-winners of enough House seats to hold a majority. The latest AP aggregate
-available to this analysis shows substantially larger Republican losses than
-the original conditional point forecast if the current district leads are
-ultimately sustained. The interesting scientific finding is not simply that
-the model may have missed by roughly sixteen seats. It is that the apparent
-outcome sits almost exactly at the outer edge of the interval that we
-registered before the election. A single seat separates an interval hit from
-an interval miss under the integer-valued House outcome.
+winners of enough House seats to hold a majority. The 4 November AP aggregate
+shows substantially larger Republican losses than the original conditional
+point forecast if the district leads recorded at that time are sustained.
+The first, highly provisional discrepancy was roughly sixteen seats; the
+5 November snapshot moves the same scenario calculation to roughly fourteen
+seats. The scientific finding is not the apparent magnitude alone. The
+original 4 November scenario sat almost exactly at the lower edge of the
+interval registered before the election; a hypothetical outcome of 171
+Republican seats, just one fewer than that first trend, would have been an
+interval miss. The next day's leads move the trend away from that edge,
+without changing a single forecast coefficient or a single registered bound.
 
 There is a temptation, here, to begin the story with that dramatic boundary
 and end it there. I think that would repeat the very mistake the first
@@ -227,6 +234,51 @@ only when their evidential boundaries are clear.
 called Democratic and Republican seats; hatched segments represent the
 uncalled races in which each party led. The graphic is a composition of a
 live results feed, not a final certified party division.*
+
+### A dated update: what changed by 5 November?
+
+A second AP balance-of-power report, timestamped **13:10:04 UTC on
+5 November** and retrieved 27 seconds later, had called **240 Democratic
+House seats and 147 Republican seats**. Democrats led another 21 uncalled
+districts, while Republicans led 27. The sum remains 435: the agency had
+called 387 races, leaving 48 without a called winner. This is a separate
+observation of the reporting process, archived alongside rather than on top
+of the 4 November source. The counts should never be collapsed into a single
+apparently definitive election-night total.
+
+Under the *same* if-all-leads-hold thought experiment, that later snapshot
+would give Democrats 261 seats and Republicans 174. Holding the registered
+220-seat forecasting baseline constant, the latter implies a hypothetical
+Republican change of **minus 46 seats**. The frozen OLS forecast remains
+minus 32.322888, giving a hypothetical forecast-minus-scenario difference
+of **positive 13.677112 seats**. The 95% model-based interval still includes
+minus 46, whereas the narrower, uncalibrated bootstrap sensitivity band
+still does not. These are updates to the scenario input, not updates to the
+forecast or to its original uncertainty quantification.
+
+Between the two timestamps, twenty more districts had called winners:
+the Democratic called count rose by twelve and the Republican called count
+by eight. The number of uncalled races fell from 68 to 48, and the sum of
+Republican calls and leads changed from 172 to 174. That two-seat change
+does not mean two certified Republican gains occurred between the snapshots.
+New calls and changes in which party leads the uncalled contests can both
+move a national conditional total. Without individual-district source
+histories, these aggregate records do not establish which mechanism explains
+the movement. This is an observation about *information arriving*, not a
+time series of final electoral outcomes.
+
+The later feed also reports 219 current Republican House members plus one
+other member caucusing with Republicans. That is not a reason to replace the
+registered model's 220-seat defended baseline. The two numbers describe
+different reporting conventions and reference dates; our forecast explicitly
+conditions on the latter. The independent chronology in
+[`results/snapshot_history.json`](results/snapshot_history.json) records
+both snapshots and their differences, with unit tests verifying the
+arithmetic. The two archived inputs are
+[`4 November`](data/ap_house_live_2026-11-04.json) and
+[`5 November`](data/ap_house_live_2026-11-05.json), respectively. Neither
+contains an official target value. That remains the condition for computing
+the formal prospective score.
 
 ## 3. The seat-change baseline is not a minor detail
 
@@ -1135,11 +1187,11 @@ does not follow the choice of a conclusion.
 
 ## Conclusion: the forecast becomes evidence only if we refuse to move it
 
-The current AP snapshot makes the 2026 House
+The original 4 November AP snapshot makes the 2026 House
 election a meaningful test of our October
 forecast. Democrats have been called winners
 of a House majority. If every uncalled race
-retains its current leader, the Republican
+retains its 4 November leader, the Republican
 total would be 172 seats, implying a
 48-seat loss against the model's registered
 220-seat baseline. All four frozen point
@@ -1147,7 +1199,12 @@ estimators predicted losses closer to
 31–34 seats. The OLS conditional interval
 would include the minus-48 outcome, but only
 just. One additional Republican loss would
-cross its lower numerical boundary.
+cross its lower numerical boundary. The separate
+5 November snapshot instead yields 174 seats
+if its then-current leads hold, a −46 change
+and a +13.68-seat conditional OLS discrepancy.
+That movement is why neither live scenario
+should be mistaken for a final observed score.
 
 Those are useful facts. They are not the final
 score. AP leads are not official initial-
@@ -1182,18 +1239,21 @@ to meet.
 1. **Ribeiro, Diogo (31 October 2026).** [*The Forecast Is Not the Fit: Rebuilding an 89% Midterm Election Model*](https://diogo-ribeiro-1975.medium.com/the-forecast-is-not-the-fit-rebuilding-an-89-midterm-election-model-8fb36cc269be). The original pre-election analysis; historical model, figures, forward tests and provenance.
 2. **Ribeiro, Diogo (1 November 2026).** [Pre-election registration](../PRE_ELECTION_REGISTRATION.md) and [immutable forecasting manifest](../results/forecast_lock.json). Information cutoff 31 October; registered reference source commit `fe98742efb86756fc30967477098482eb7505783`.
 3. **Associated Press (4 November 2026).** [U.S. election results hub](https://apnews.com/hub/elections). Aggregate House snapshot reported 10:51:02 UTC and retrieved 10:51:54 UTC, archived in [`data/ap_house_live_2026-11-04.json`](data/ap_house_live_2026-11-04.json). Source status live and unofficial.
-4. **Associated Press (4 November 2026).** [Democrats win control of Congress](https://apnews.com/article/ef6199e25927a9ac9f4c18eae0e497cd). News report provides contemporaneous political context, not the official numeric seat-change target.
-5. **Federal Election Commission.** [Election and voting information](https://www.fec.gov/introduction-campaign-finance/election-results-and-voting-information/). Identifies 3 November 2026 as the regular federal election date.
-6. **U.S. House Historian.** [Party Divisions of the House of Representatives](https://history.house.gov/Institution/Party-Divisions/Party-Divisions/). Historical initial-election party divisions; required source category for final outcome scoring.
-7. **American Presidency Project.** [Seats in Congress Gained/Lost by the President's Party in Mid-Term Elections](https://www.presidency.ucsb.edu/statistics/data/seats-congress-gainedlost-the-presidents-party-mid-term-elections). Historical target series based on the House party divisions.
-8. **Gneiting, Tilmann, and Adrian E. Raftery (2007).** [Strictly Proper Scoring Rules, Prediction, and Estimation](https://doi.org/10.1198/016214506000001437). *Journal of the American Statistical Association*, 102(477), 359–378. Theoretical reference for probabilistic forecast evaluation; no new proper score is retroactively assigned here.
+4. **Associated Press (5 November 2026).** [U.S. election results hub](https://apnews.com/hub/elections). Follow-up aggregate House snapshot reported 13:10:04 UTC and retrieved 13:10:31 UTC, archived separately in [`data/ap_house_live_2026-11-05.json`](data/ap_house_live_2026-11-05.json). Source status still live and unofficial.
+5. **Associated Press (4 November 2026).** [Democrats win control of Congress](https://apnews.com/article/ef6199e25927a9ac9f4c18eae0e497cd). News report provides contemporaneous political context, not the official numeric seat-change target.
+6. **Federal Election Commission.** [Election and voting information](https://www.fec.gov/introduction-campaign-finance/election-results-and-voting-information/). Identifies 3 November 2026 as the regular federal election date.
+7. **U.S. House Historian.** [Party Divisions of the House of Representatives](https://history.house.gov/Institution/Party-Divisions/Party-Divisions/). Historical initial-election party divisions; required source category for final outcome scoring.
+8. **American Presidency Project.** [Seats in Congress Gained/Lost by the President's Party in Mid-Term Elections](https://www.presidency.ucsb.edu/statistics/data/seats-congress-gainedlost-the-presidents-party-mid-term-elections). Historical target series based on the House party divisions.
+9. **Gneiting, Tilmann, and Adrian E. Raftery (2007).** [Strictly Proper Scoring Rules, Prediction, and Estimation](https://doi.org/10.1198/016214506000001437). *Journal of the American Statistical Association*, 102(477), 359–378. Theoretical reference for probabilistic forecast evaluation; no new proper score is retroactively assigned here.
 
 **Reproducibility.** The complete source, archived input, generated figures,
 numeric diagnostics and unit tests are under
 [`midterm-forecast-fit-vs-prediction/post_election/`](.).
 The eight figures and all quoted conditional calculations are regenerated
 by `analysis.py`, which reads the archived AP snapshot and the frozen
-forecast lock without network access. The final official scorer remains
+forecast lock without network access. The additional dated comparison is
+regenerated by `snapshot_history.py`, which reads both AP snapshots and
+the same frozen lock. The final official scorer remains
 `../score_after_election.py`; it has not been run on the live AP data.
 The [claim-by-claim evidence ledger](CLAIM_AUDIT.md) lists what is fixed,
 what is provisional, what is hypothetical and what is not established.

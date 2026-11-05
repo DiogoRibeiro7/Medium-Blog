@@ -37,6 +37,8 @@ jobs:
           python -m unittest discover -s post_election/tests -v
       - name: Verify pinned Medium publication copy
         run: python post_election/prepare_medium_publication.py --check
+      - name: Verify dated AP live-snapshot chronology
+        run: python post_election/snapshot_history.py --check
       - name: Reproduce independently from archived inputs
         run: python post_election/analysis.py --output-dir /tmp/midterm-post-election-reproduction
       - name: Check scientific output, figures and manuscript readiness
