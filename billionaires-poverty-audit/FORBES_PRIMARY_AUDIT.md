@@ -64,3 +64,28 @@ wealth concentration, or any causal effect on poverty.
 The next evidence tasks are a manually reviewed ISO3 mapping, comparison
 against the original chart's country list if obtained, and updated sensitivity
 models against **matched country-year welfare measures**.
+
+## Upstream 503 and publication status (5 November 2026)
+
+GitHub Actions run 42053766035 failed in the live source job after two requests
+to the Forbes person-list API. The upstream response was HTTP 503,
+`first byte timeout`. The parser's offline tests and repository hygiene
+passed. No primary Forbes country figures were recovered by that run.
+
+The parser now supports a bounded **page-by-page fallback** if the full feed
+temporarily fails. Every page must have its requested number of records and
+the assembled annual list must contain the expected number of unique
+identifiers. Original response-page SHA-256 digests, offsets and request URLs
+are recorded. A combined in-memory payload is explicitly labelled **derived**,
+not represented as untouched primary-source bytes.
+
+The live Forbes job is intentionally **manual** (workflow_dispatch). It cannot
+be a required CI condition on every PR while Forbes responds unreliably.
+Offline contract tests remain required on PRs. A failed manual audit is a
+real unresolved source-access blocker, not a reason to replace official
+counts with inferred or fabricated data.
+
+A successfully retrieved API list still needs historical-vintage reconciliation
+against Forbes' published March 2026 annual release. The `country` field is
+not equated with residence without an explicit source definition. No
+publication figures or conclusions are approved by this change.
