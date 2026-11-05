@@ -156,7 +156,7 @@ Were the effect function to bend sharply beyond X=1, the trial could fit perfect
 
 ## What the overlap results show
 
-In 400 simulations, the unweighted trial effect averages 1.0020, close to its trial target of one. The full-target extrapolated estimate averages 2.5024, close to the true full-target effect of 2.5, with RMSE approximately 0.1590. The supported-subpopulation estimate averages 1.7499, close to its different truth of 1.75, with RMSE approximately 0.0933.
+In 400 simulations, the unweighted trial effect averages 1.0003, close to its trial target of one. The full-target extrapolated estimate averages 2.5024, close to the true full-target effect of 2.5, with RMSE approximately 0.1643. The supported-subpopulation estimate averages 1.7499, close to its different truth of 1.75, with RMSE approximately 0.0966.
 
 The apparent success of the full-target prediction is conditional on the correctly specified linear interaction. The experiment does not contain evidence about whether linearity would continue outside the trial in another system. The extra uncertainty due to plausible model departures is not represented by the reported Monte Carlo RMSE, because every simulated dataset follows the same linear relationship.
 
@@ -165,6 +165,32 @@ The retained target fraction averages about 0.2494 in this scenario. Only roughl
 The restriction may be scientifically preferable when the full-population extrapolation is not credible. If policy must cover the entire target, however, the restricted effect alone is not enough to forecast the policy's average consequence. An analyst must then explicitly state what assumptions or outside evidence are needed to speak about the unsupported portion.
 
 The simulation uses the sample minimum and maximum of trial X to define empirical common support. Those bounds differ slightly across replications, and this produces small sampling variation in the retained fraction. The target subset's theoretical benchmark remains 1.75 for the population overlap interval [0.5,1]. The approximation is adequate at this sample size, but the distinction between population support and empirical min–max support should be made explicit.
+
+### A trial-indistinguishable extrapolation failure
+
+The simulation's successful linear extrapolation is not evidence that its full-target effect is identified from the trial alone. Consider a second causal data-generating process with the same trial covariate and treatment distributions, the same baseline outcome mechanism, and treatment-effect curve
+
+\[
+\tau_\delta(x)=1+x+\delta\max(x-1,0)^2.
+\]
+
+For every trial participant \(x\in[-1,1]\), this equals exactly \(1+x\), regardless of \(\delta\). Thus **every observable distribution in the randomized trial is identical** under the original and alternative models. The two models also give the same effect of 1.75 among the supported target subpopulation \(X\in[0.5,1]\).
+
+However, for the full target \(X\sim\operatorname{Uniform}(0.5,2.5)\),
+
+\[
+E_T[\max(X-1,0)^2]=\frac{1}{2}\int_1^{2.5}(x-1)^2\,dx=\frac{9}{16},
+\qquad \operatorname{ATE}_T=2.5+\frac{9}{16}\delta.
+\]
+
+| Unsupported curvature \(\delta\) | Target ATE | Linear transport estimate | Asymptotic transport bias |
+| ---: | ---: | ---: | ---: |
+| 0.0 | 2.5000 | 2.5000 | 0.0000 |
+| 0.5 | 2.7813 | 2.5000 | −0.2813 |
+| 1.0 | 3.0625 | 2.5000 | −0.5625 |
+| 2.0 | 3.6250 | 2.5000 | −1.1250 |
+
+All four worlds yield the same trial data distribution, including in the limit of an infinitely large trial. Only their effects in the unsupported target region differ. Consequently, no estimator using those trial observations and the target's covariate distribution alone can distinguish their full-target ATEs. The table is a *structural sensitivity analysis*, not a confidence interval or a data-driven estimate of \(\delta\). Reproduce its exact values with `part19_extrapolation_sensitivity.py` and accompanying unit tests.
 
 ## Why transport weights can become unstable
 
