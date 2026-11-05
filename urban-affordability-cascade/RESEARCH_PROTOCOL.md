@@ -502,6 +502,54 @@ or independent temporal replications. Figures 38–39
 and six derived files must retain separate official
 CAOP, Census-derived work/study and housing hashes.
 
+**Matched shared-geography comparison checkpoint
+(5 November 2026).** The previous 192 matched Porto-versus-
+alternative partial rank contrasts held 15 comparator municipalities
+and the own-new-rent-growth outcome fixed, but conditioned the Porto
+network variable on distance to Porto and the alternative network
+variable on **distance to that alternative**. Such a comparison
+changes the geographic control at the same time as the reference
+node. We now require that the *identical* geographic control
+matrix be used for both exposures and the shared outcome for each
+matched alternative.
+
+For each of four overlapping rent baselines, 16 alternative
+reference nodes and three already declared 2021 work/study-link
+normalisations, calculate the two exposure–outcome residual
+rank correlations under three declared common-control designs:
+(1) CAOP2025 distance to Porto, (2) CAOP2025 distance to the
+alternative, and (3) both distances together. Average-rank ties,
+an intercept and rank least-squares residuals are required;
+reject rank-deficient control columns and exhausted residual
+variance. Record the remaining exposure/outcome rank-variance
+fractions. Preserve the old unadjusted and different-control
+coefficients as benchmarks, not as substitutable estimands.
+The resulting grid has exactly **576** rows and **36**
+window/mode/control summaries. Only **own municipal new-rent
+growth** is admissible as the matched invariant outcome.
+
+In the primary pairs-per-1,000-comparator-residents mode, alternative
+references with more-negative conditional correlations than Porto
+number **1, 6, 0, 1** when both use Porto distance; **2, 4, 1, 7**
+when both use alternative distance; and **2, 4, 0, 4** when both
+use the two distances. The prior different-control comparison
+counted **2, 5, 0, 4**. The two-control, descriptively at-least-
+0.05-more-negative screen gives **2, 4, 0, 4**; it is not
+a p-value. Primary two-distance rank projections can leave just
+**7.6%** of at least one exposure's initial rank variance.
+Report all counts and rows, including inconvenient signs and
+small residual fractions; never choose a specification by its
+result. Figures 40–41, two CSVs and a provenance JSON must
+regenerate from the original three fixed, source-checked inputs.
+
+This solves only the **common-conditioning-matrix** issue within
+each 15-municipality contrast. It does not make comparisons
+independent across reference nodes, cure high network–distance
+collinearity, supply official directed residential movement,
+measure access to work or housing, or identify an outward price-
+transmission effect. The original causal hypotheses remain untested
+without additional defensible data and research design.
+
 ## Planned analysis sequence
 
 ### Stage 0 — Obtain or document denial of directed residential counts

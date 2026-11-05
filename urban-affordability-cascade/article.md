@@ -2705,6 +2705,188 @@ directed moves, household circumstances,
 actual transport access and credible exogenous
 variation, not a correlation surviving one control.
 
+## A Geography Control Is Not a Matched Comparison
+
+The previous audit found that Porto's work/study interaction
+strength is closely related to geographic proximity. It also
+revealed a less obvious problem in the apparent competition
+between Porto and the 16 alternative network reference nodes:
+we were comparing coefficients adjusted for **different
+distance variables**. Porto's link exposure was adjusted
+for distance *from Porto*, while Gondomar's or Matosinhos's
+was adjusted for distance *from that other municipality*.
+Even though the set of 15 rent observations was held fixed,
+changing the network reference also changed the statistical
+control. That was an honest descriptive comparison, but
+it could not distinguish the two changes.
+
+This matters because a partial correlation is conditional
+on the variables placed in its projection. A rank residual
+from distance to Porto can differ substantially from one
+using distance to Maia. Those geometric vectors are not
+interchangeable, and ordinary metropolitan geometry can
+explain part of an observed contrast. The prior comparison
+was useful for discovering this methodological limitation;
+it should not be used as a standalone test of whether a
+Porto-origin housing-pressure mechanism is distinctive.
+
+### Hold the conditioning variables identical
+
+We now make a narrower comparison. For each alternative
+reference \(a\), remove Porto and \(a\) from the fixed
+17-municipality set. That leaves the **same 15 named
+comparator municipalities**, hence the same 15 own
+new-contract rent-growth outcomes, whether the work/study
+link exposure is anchored on Porto or on \(a\). Construct
+two previously checked CAOP2025 distance vectors on that
+identical support: \(D_P\), distance to Porto, and \(D_a\),
+distance to the alternative. Then calculate three
+predeclared paired conditional comparisons:
+
+1. Condition **both** link exposure vectors and the common
+   outcome on \(D_P\) alone. This preserves a Porto-centred
+   geographic convention for both reference nodes.
+2. Condition **both** on \(D_a\) alone. This provides the
+   alternative-centred counterpart without changing the
+   adjustment between the two coefficients.
+3. Condition **both** on the joint columns \((D_P,D_a)\).
+   This is symmetric in the identity of the two references,
+   although its two potentially correlated geographic
+   controls can consume substantial rank variation.
+
+For each specification, use average ranks for ties and
+least-squares projection, including an intercept, of both
+exposure ranks and outcome ranks on the **same** control
+rank matrix \(Z\). Correlate the residual ranks:
+
+\[
+\rho_{P\mid Z}=\operatorname{cor}\bigl((I-P_Z)r(X_P),
+                         (I-P_Z)r(Y)\bigr),\qquad
+\rho_{a\mid Z}=\operatorname{cor}\bigl((I-P_Z)r(X_a),
+                         (I-P_Z)r(Y)\bigr).
+\]
+
+Here \(P_Z\) is the projection onto an intercept and the
+ranked distance control columns. The descriptive contrast
+is \(\Delta_{a,P\mid Z}=\rho_{a\mid Z}-\rho_{P\mid Z}\).
+Negative values mean a more negative conditional
+association for the alternative than for Porto on this
+specific support; they do **not** mean stronger outward
+housing-price pressure, let alone a causal effect.
+Zero or near-zero residual rank variance makes such an
+association undefined or unstable, so the implementation
+rejects essentially exhausted projections. It also records
+the fraction of each exposure's rank variance remaining
+after adjustment rather than hiding collinearity.
+
+We retain **all four overlapping 2020/2021/2022/2023–2025
+rent windows**, all **16 alternatives**, and **three**
+previously defined work/study link normalisations. For
+each one we apply the three identical-control designs,
+producing **576 matched records**. The prior different-
+control result and the raw matched correlation are kept
+as benchmarks. The reference-relative discount-compression
+outcome is *excluded* again because its Porto and
+alternative denominators—and hence its outcome vectors—
+would differ, defeating this comparison's purpose.
+
+### What changes when geography is genuinely common?
+
+For the primary 2021 undirected work/study exposure, measured
+as link interactions per 1,000 comparator residents, the
+count of alternative references with a **more negative**
+conditional coefficient than Porto is:
+
+| New-rent baseline → 2025 | Prior different controls | Both use Porto distance | Both use alternative distance | Both use both distances |
+| --- | ---: | ---: | ---: | ---: |
+| 2020 → 2025 | 2 of 16 | 1 | 2 | 2 |
+| 2021 → 2025 | 5 of 16 | 6 | 4 | 4 |
+| 2022 → 2025 | 0 of 16 | 0 | 1 | 0 |
+| 2023 → 2025 | 4 of 16 | 1 | 7 | 4 |
+
+The numbers are **descriptive sign counts**, not discoveries
+at a five-percent significance level. We also preserve
+the earlier **0.05 Spearman-unit** difference margin,
+which is only a practical screen. Under the symmetric
+two-distance control, **2, 4, 0 and 4** alternatives
+clear that negative margin across the four years.
+With shared Porto distance alone, **1, 4, 0 and 1**
+do so; with shared alternative distance, **2, 3, 0
+and 6** do so. Small changes in the conditioning choice
+can therefore change the apparent uniqueness of an
+urban reference node, even though the rent outcomes
+and comparator names are identical within each pair.
+
+![Figure 40. Alternative-minus-Porto partial Spearman contrasts for each of 16 alternative references and four overlapping rent windows. Both network exposures and the common outcome use the same joint Porto-and-alternative CAOP2025 centroid-distance control columns; the primary exposure is 2021 work/study pairs per 1,000 comparator residents.](figures/fig40_matched_shared_geography_rank_contrasts.png)
+
+Figure 40 prints every alternative and year, including
+positive contrasts. Under the symmetric two-distance
+specification, there are only **two** alternatives with
+more negative coefficients than Porto for the longest
+window, **four** in each of the 2021 and 2023 windows,
+and **none** for 2022. That is not a temporal law:
+all four rent-change windows share the same 2025
+endpoint, their source observations overlap, and the
+2021 network is neither residential mobility nor a
+plausibly exogenous pretreatment source for them.
+
+![Figure 41. Counts of the 16 matched alternative references with more negative partial Spearman correlations than Porto, and counts clearing a descriptive −0.05 contrast margin, across the four rental baselines and three common geographic control definitions. The bars are not independent tests or statistical significance levels.](figures/fig41_shared_geography_reference_robustness.png)
+
+The strongest specification warning appears in the
+**2023–2025** window. Using the same Porto-distance
+control for both exposure vectors produces **one**
+more-negative alternative, whereas using the same
+alternative-distance control produces **seven**.
+The symmetric two-control adjustment produces **four**.
+There is no principled reason to select the largest
+count or the most striking individual coefficient
+after seeing the results. Figure 41 therefore shows
+the entire declared adjustment grid, including the
+more demanding descriptive margin.
+
+Crucially, identical controls do not cure the underlying
+identification problem. The matched comparator set
+still changes across alternative references, and each
+pair has only **15** municipalities. In the primary
+two-distance comparisons, at least one network exposure
+retains as little as **7.6%** of its original rank
+variance after the geographic projection. The two
+distance vectors can be highly correlated with each
+other, while normalized network exposures can be even
+more tightly associated with distance. Residual rank
+correlations can therefore be especially fragile to
+one municipality, a source revision or the choice of
+distance proxy. These residual fractions are numerical
+diagnostics, not estimates of the share of the housing
+mechanism explained by geography.
+
+There are further limits that no projection can remove:
+the CAOP2025 area-weighted polygon centroids are not
+travel times, job accessibility, population centres
+or actual rental search regions; the Census-derived
+network describes **undirected work/study interactions**,
+not household moves; and new-contract median rents do
+not follow constant-quality dwellings or fixed tenants.
+No shock or identified treatment is introduced here.
+The negative contrasts have no causal interpretation
+and the matched groups cannot justify independent
+sampling p-values or confidence intervals.
+
+This check resolves one specific comparability defect:
+the **outcomes, comparator municipalities and geographic
+control matrix are now all held fixed within every
+Porto-versus-alternative contrast**. What remains is a
+descriptive difference between two network-link variables,
+not proof of outward rent contagion or displacement.
+A genuine empirical test of the proposed suburban cascade
+will still require directed residential origin–destination
+movements, observed transport access and credible timing
+or exogenous variation. The [matched shared-geography
+audit](municipal_reference_common_geography.py) regenerates
+all 576 records, **36** cross-specification summary cells,
+Figures 40–41 and a three-source checksum ledger without
+new network requests.
+
 ---
 
 ## Sources and reproducibility
@@ -2745,6 +2927,11 @@ a one-covariate rank conditioning on already pinned official
 DGT CAOP2025 area-weighted centroid distances. A strong
 network-distance association and reference-specific
 geographic controls prevent causal interpretation.
+Figures 40–41 hold the 15 comparator outcomes and geographic
+controls identical within each matched alternative-versus-Porto
+comparison, then vary the common distance specification.
+They test rank-association comparability, not residential
+movement, causal contagion or statistical significance.
 
 1. Área Metropolitana do Porto. [Statutory definition and its 17 municipalities](https://www.amp.pt/en/amp-instituicao/area-metropolitana-do-porto-or-lei-no-752013/).
 2. Instituto Nacional de Estatística. [Local housing price methodology and geospatial context](https://www.ine.pt/ine_novidades/semin/INEWS38/files/assets/common/downloads/publication.pdf).
