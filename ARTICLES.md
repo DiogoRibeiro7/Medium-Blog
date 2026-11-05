@@ -1,5 +1,7 @@
 # Articles Developed in This Series
 
+> **Editorial migration:** Manuscripts are now maintained in the private [research-articles-medium](https://github.com/DiogoRibeiro7/research-articles-medium) repository. This public index remains temporarily for research-companion links; some `article.md` links lead to compatibility notices. See [migration tracking](EDITORIAL_MIGRATION.md).
+
 This is an index of thirty-seven long-form articles developed across the
 `Medium-Blog` working series, ordered by their addition to this index. It is **not** a complete
 catalogue of the repository's articles or historical notebooks.
