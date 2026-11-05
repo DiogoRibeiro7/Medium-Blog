@@ -1,6 +1,8 @@
 # A Law Is Not a Reform: Reproducible companion
 
-Companion to **[A Law Is Not a Reform: What the Progressive Era Actually Changed](article.md)**, a Medium-ready historical essay on American political reform, economic power, administrative capacity, organized labor, suffrage, and exclusion between roughly 1890 and 1920.
+Companion to **[A Law Is Not a Reform: What the Progressive Era Actually Changed](https://github.com/DiogoRibeiro7/research-articles-medium/blob/main/progressive-era-reform-gap/article.md)**, a Medium-ready historical essay on American political reform, economic power, administrative capacity, organized labor, suffrage, and exclusion between roughly 1890 and 1920.
+
+The complete editorial manuscript is maintained in the private `research-articles-medium` repository. The public code, source transcriptions, results, figures, and tests remain here for independent verification.
 
 ## The evidence boundary
 

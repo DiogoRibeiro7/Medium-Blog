@@ -118,14 +118,30 @@ class IllustrationTests(unittest.TestCase):
 
 
 class PublicationTests(unittest.TestCase):
-    def test_article_has_all_figures_and_minimum_length(self) -> None:
-        root = Path(__file__).resolve().parents[1]
-        article = (root / "article.md").read_text(encoding="utf-8")
-        self.assertGreaterEqual(len(article.split()), 8000)
-        for number, name in enumerate(FIGURE_NAMES, 1):
-            self.assertEqual(article.count(f"](figures/{name})"), 1)
-            self.assertIn(f"Figure {number} —", article)
-        self.assertIn("## Sources and reproducibility notes", article)
+    def test_article_path_is_private_manuscript_notice(self) -> None:
+        """Historical links remain valid without testing private editorial prose."""
+        root: Path = Path(__file__).resolve().parents[1]
+        notice: str = (root / "article.md").read_text(encoding="utf-8")
+        self.assertIn("research-articles-medium", notice)
+        self.assertIn("stagflation-market-turn/article.md", notice)
+        self.assertLess(len(notice.split()), 200)
+
+    def test_archived_figures_have_valid_png_headers(self) -> None:
+        """The public computational outputs stand independently of Medium text."""
+        root: Path = Path(__file__).resolve().parents[1]
+        self.assertEqual(len(FIGURE_NAMES), 8)
+        for filename in FIGURE_NAMES:
+            with self.subTest(figure=filename):
+                figure: Path = root / "figures" / filename
+                payload: bytes = figure.read_bytes()
+                self.assertGreater(len(payload), 10_000)
+                self.assertEqual(payload[:8], b"\x89PNG\r\n\x1a\n")
+                self.assertEqual(payload[12:16], b"IHDR")
+                # PNG width and height are stored in the IHDR chunk.
+                width: int = int.from_bytes(payload[16:20], "big")
+                height: int = int.from_bytes(payload[20:24], "big")
+                self.assertGreater(width, 0)
+                self.assertGreater(height, 0)
 
     def test_notebook_reuses_main_code(self) -> None:
         root = Path(__file__).resolve().parents[1]
