@@ -131,14 +131,31 @@ class MathematicalIllustrationTests(unittest.TestCase):
 
 
 class PublicationArtifactTests(unittest.TestCase):
-    def test_article_has_eight_referenced_figures_and_length(self) -> None:
-        article=(Path(__file__).resolve().parents[1]/"article.md").read_text(
+    def test_editorial_manuscript_migration_notice(self) -> None:
+        """The public article path should not depend on private editorial prose."""
+        notice = (Path(__file__).resolve().parents[1] / "article.md").read_text(
             encoding="utf-8"
         )
-        self.assertGreaterEqual(len(article.split()),8000)
-        for i,name in enumerate(FIGURE_NAMES,start=1):
-            self.assertEqual(article.count(f"](figures/{name})"),1)
-            self.assertIn(f"Figure {i} —",article)
+        self.assertIn("research-articles-medium", notice)
+        self.assertIn("private", notice.lower())
+        self.assertLess(len(notice.split()), 150)
+
+    def test_public_figure_inventory_and_png_headers(self) -> None:
+        """Ensure each archived research figure survives the manuscript split."""
+        figures_dir = Path(__file__).resolve().parents[1] / "figures"
+        self.assertEqual(len(FIGURE_NAMES), 8)
+        self.assertEqual(len(set(FIGURE_NAMES)), 8)
+        self.assertEqual(
+            {path.name for path in figures_dir.glob("figure_*.png")},
+            set(FIGURE_NAMES),
+        )
+        for name in FIGURE_NAMES:
+            with self.subTest(figure=name):
+                image = figures_dir / name
+                self.assertGreater(image.stat().st_size, 10_000)
+                with image.open("rb") as stream:
+                    # Validate the file signature independently of the article.
+                    self.assertEqual(stream.read(8), b"\x89PNG\r\n\x1a\n")
 
     def test_notebook_json_schema_and_code_reuse(self) -> None:
         path=Path(__file__).resolve().parents[1]/"model_walkthrough.ipynb"
