@@ -7,10 +7,13 @@ on:
       - "billionaires-poverty-audit/tests/test_forbes_primary.py"
       - "billionaires-poverty-audit/tests/test_forbes_pages.py"
       - "billionaires-poverty-audit/tests/test_forbes_reconciliation.py"
+      - "billionaires-poverty-audit/tests/test_forbes_evidence.py"
       - "billionaires-poverty-audit/forbes_pages.py"
       - "billionaires-poverty-audit/forbes_reconciliation.py"
       - "billionaires-poverty-audit/FORBES_PRIMARY_AUDIT.md"
+      - "billionaires-poverty-audit/evidence/**"
       - "billionaires-poverty-audit/data/forbes_2026_citizenship_secondary.csv"
+      - ".gitattributes"
       - ".github/workflows/billionaires-forbes-primary-audit.yml"
   workflow_dispatch:
 
@@ -37,7 +40,7 @@ jobs:
             billionaires-poverty-audit/forbes_primary.py \
             billionaires-poverty-audit/forbes_pages.py \
             billionaires-poverty-audit/forbes_reconciliation.py
-      - name: Run deterministic Forbes parser tests
+      - name: Run deterministic Forbes parser and frozen-evidence tests
         working-directory: billionaires-poverty-audit
         run: python -m unittest discover -s tests -p "test_forbes*.py" -v
 

@@ -8,8 +8,10 @@ definitions.
 ## What is verified
 
 The earlier official-data capture and the 54-country citizenship regression
-have passed GitHub Actions. The **Forbes source list itself has not yet been
-independently reconciled** with the secondary transcription.
+have passed GitHub Actions. The **live Forbes person-list extraction succeeded
+on 5 November 2026**, but the geographical crosswalk and historical March
+edition have **not** been independently verified. The secondary transcription
+must not be treated as equivalent to the primary counts.
 
 The March 2026 Forbes annual release reported **3,428 billionaires**. Its
 person-list endpoint can change over time, and its schema is not a substitute
@@ -123,8 +125,8 @@ For offline verification, run:
 python -m unittest discover -s tests -p 'test_forbes*.py' -v
 ```
 
-The manual source workflow remains necessary because the previously observed
-HTTP 503 has not been resolved. Even a completed ISO3 review will **not**
+The manual source workflow remains necessary because the Forbes endpoint has
+returned intermittent HTTP 503 and can change. Even a completed ISO3 review will **not**
 establish a historical March 2026 source vintage, residence rather than
 citizenship, the original chart's 64-country selection or a causal effect.
 
@@ -147,8 +149,43 @@ logging person-level data. The required **3,428** person count, URI
 uniqueness, field typing and at least 95% citizenship-field coverage have
 not been loosened.
 
-The exact live response shape has **not yet been independently captured** in
-the audit's aggregate-only results. Re-run the manual job after merging this
-schema correction; if it still fails, inspect the safe key-name diagnostic
-before considering another supported layout. No Forbes counts or new
-regression conclusions are confirmed by this parser change alone.
+The schema correction was subsequently validated by a successful manual run.
+The response used `personList.personsLists`, and the audit archived aggregate
+counts without persisting raw individual profiles.
+
+## Successful primary-source capture: 5 November 2026
+
+[Manual workflow run 42099896845](https://github.com/DiogoRibeiro7/Medium-Blog/actions/runs/42099896845)
+completed successfully at commit `bfe1f9af0c909a38f7f2ff1151818895b116cf5d`.
+Its [aggregate-only artifact](https://github.com/DiogoRibeiro7/Medium-Blog/actions/runs/42099896845/artifacts/13449541578)
+was downloaded and verified against GitHub's ZIP SHA-256 digest. The original
+artifact expires after 30 days, so its eight constituent files are preserved
+verbatim under [evidence/forbes-2026-run-42099896845](evidence/forbes-2026-run-42099896845/README.md).
+No person-level Forbes profiles are in the repository.
+
+| Audit measure | Captured value |
+| --- | ---: |
+| People in Forbes endpoint | 3,428 |
+| People with `countryOfCitizenship` | 3,428 (100%) |
+| Distinct primary citizenship labels | 80 |
+| People with nonempty ambiguous API `country` | 3,407 (21 missing) |
+| Primary labels with an exact secondary name | 75 |
+| Primary labels without an exact secondary name | 5 (6 people) |
+| Primary/secondary exact-name matches with different counts | 35 of 75 |
+| People counted in secondary transcription | 3,359 |
+| Difference in total people (primary − secondary) | +69 |
+
+Most of the 69-person gap reflects different counts **within shared country
+names**, not just unmatched labels. For example, Spain is 44 rather than 34,
+Australia 56 rather than 47, and Belgium 18 rather than 11. The live payload
+has SHA-256 `42fd8cec21e84360adb812fb206afdcb7814483ffd718b3087e8f73502c1d17c`.
+
+The five unmatched primary labels are Afghanistan (1), Eswatini (Swaziland)
+(1), Pakistan (1), Peru (1) and St. Kitts and Nevis (2). The secondary `Eswatini`
+entry is only a candidate alias, **not** an independently established match.
+The original 2026 March vintage, all ISO3 decisions, the residence definition
+and the original chart's 64-country selection remain unverified.
+
+The archived JSON retains `approved_for_publication_or_regression: false`.
+Do not substitute these counts into the 54-country regression until geography,
+vintage and survey-year alignment have been reviewed and logged.

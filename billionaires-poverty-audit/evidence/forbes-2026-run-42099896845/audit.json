@@ -1,0 +1,48 @@
+{
+  "aggregated_output_sha256": {
+    "counts_api_country.csv": "e15ac77c0c25d884fadea58f6fc56211b63c7f3913f2d08f94b770dd7502db33",
+    "counts_citizenship.csv": "5936ce1c1f89d7bd7f2adf31ab0d7fc39c21d2fd42702e6296ef0e3ae8242696",
+    "secondary_discrepancies.csv": "e45089cc2c52fa2051662aa91333b6bd357d36768e19cfc72dc16aa5626d9226"
+  },
+  "coverage": {
+    "api_country": {
+      "assigned": 3407,
+      "distinct_labels": 79,
+      "field": "country",
+      "fraction_assigned": 0.9938739789964994,
+      "missing": 21
+    },
+    "citizenship": {
+      "assigned": 3428,
+      "distinct_labels": 80,
+      "field": "countryOfCitizenship",
+      "fraction_assigned": 1.0,
+      "missing": 0
+    }
+  },
+  "geography_warning": "CountryOfCitizenship is citizenship; API country is ambiguous and MUST NOT be labelled residence without separate evidence.",
+  "privacy": "raw list and person-level fields are not saved",
+  "research_status": "aggregate audit, not an exact chart replication",
+  "retrieved_at_utc": "2026-11-05T20:05:46.667300+00:00",
+  "schema": {
+    "expected_count": 3428,
+    "json_array_path": "personList.personsLists",
+    "n_persons": 3428,
+    "n_uris": 3428,
+    "root_keys": [
+      "personList"
+    ]
+  },
+  "secondary_comparison_rows": 81,
+  "source_bytes": 6502586,
+  "source_retrieval": {
+    "body_bytes": 6502586,
+    "body_sha256": "42fd8cec21e84360adb812fb206afdcb7814483ffd718b3087e8f73502c1d17c",
+    "mode": "single_response",
+    "n_people": 3428,
+    "url": "https://www.forbes.com/forbesapi/person/billionaires/2026/position/true.json?limit=5000"
+  },
+  "source_sha256": "42fd8cec21e84360adb812fb206afdcb7814483ffd718b3087e8f73502c1d17c",
+  "source_sha256_meaning": "Raw response for single-response mode, derived in-memory JSON for paginated mode. Raw page hashes are in source_retrieval.",
+  "source_url": "https://www.forbes.com/forbesapi/person/billionaires/2026/position/true.json?limit=5000"
+}
