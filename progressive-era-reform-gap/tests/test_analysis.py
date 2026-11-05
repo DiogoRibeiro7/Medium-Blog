@@ -127,14 +127,30 @@ class HypotheticalModelTests(unittest.TestCase):
 
 
 class ArtifactTests(unittest.TestCase):
-    def test_article_links_all_eight_figures_once(self) -> None:
-        article = (Path(__file__).resolve().parents[1] / "article.md").read_text(
-            encoding="utf-8"
-        )
-        for i, name in enumerate(FIGURE_NAMES, start=1):
-            self.assertEqual(article.count(f"]" + f"(figures/{name})"), 1)
-            self.assertIn(f"Figure {i} —", article)
-        self.assertGreaterEqual(len(article.split()), 8_000)
+    def test_article_path_is_private_manuscript_notice(self) -> None:
+        """Historical links remain valid without testing private editorial prose."""
+        root: Path = Path(__file__).resolve().parents[1]
+        notice: str = (root / "article.md").read_text(encoding="utf-8")
+        self.assertIn("research-articles-medium", notice)
+        self.assertIn("progressive-era-reform-gap/article.md", notice)
+        self.assertLess(len(notice.split()), 200)
+
+    def test_archived_figures_have_valid_png_headers(self) -> None:
+        """The public computational outputs stand independently of Medium text."""
+        root: Path = Path(__file__).resolve().parents[1]
+        self.assertEqual(len(FIGURE_NAMES), 8)
+        for filename in FIGURE_NAMES:
+            with self.subTest(figure=filename):
+                figure: Path = root / "figures" / filename
+                payload: bytes = figure.read_bytes()
+                self.assertGreater(len(payload), 10_000)
+                self.assertEqual(payload[:8], b"\x89PNG\r\n\x1a\n")
+                self.assertEqual(payload[12:16], b"IHDR")
+                # PNG width and height are stored in the IHDR chunk.
+                width: int = int.from_bytes(payload[16:20], "big")
+                height: int = int.from_bytes(payload[20:24], "big")
+                self.assertGreater(width, 0)
+                self.assertGreater(height, 0)
 
     def test_notebook_is_valid_json_with_same_analysis_import(self) -> None:
         notebook = json.loads(

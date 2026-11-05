@@ -1,6 +1,8 @@
 # A Safety Net Is Not a Social Contract
 
-Reproducible companion for **[A Safety Net Is Not a Social Contract: What the New Deal Built—and Whom It Left Out](article.md)**, a Medium-ready essay linking the Gilded Age and Progressive Era histories to the U.S. Great Depression and the New Deal.
+Reproducible companion for **[A Safety Net Is Not a Social Contract: What the New Deal Built—and Whom It Left Out](https://github.com/DiogoRibeiro7/research-articles-medium/blob/main/new-deal-social-contract/article.md)**, a Medium-ready essay linking the Gilded Age and Progressive Era histories to the U.S. Great Depression and the New Deal.
+
+The complete editorial manuscript is maintained in the private `research-articles-medium` repository. The public code, source transcriptions, results, figures, and tests remain here for independent verification.
 
 The research question is not simply whether recovery occurred. It is which parts of the New Deal were **emergency relief**, which built **durable institutions**, and how legal eligibility, measurement choices, regional discretion, and monetary policy shaped the interpretation.
 

@@ -1,6 +1,8 @@
 # The Price of Stability Was Not Shared Equally
 
-Reproducible companion for **[The Price of Stability Was Not Shared Equally: Stagflation, Volcker, Reagan, and America's Market Turn, 1970–1990](article.md)**. This long-form Medium-ready essay follows [the civil-rights and Great Society article](../civil-rights-great-society/article.md) in the political-economic history series.
+Reproducible companion for **[The Price of Stability Was Not Shared Equally: Stagflation, Volcker, Reagan, and America's Market Turn, 1970–1990](https://github.com/DiogoRibeiro7/research-articles-medium/blob/main/stagflation-market-turn/article.md)**. This long-form Medium-ready essay follows [the civil-rights and Great Society article](../civil-rights-great-society/article.md) in the political-economic history series.
+
+The complete editorial manuscript is maintained in the private `research-articles-medium` repository. The public code, source transcriptions, results, figures, and tests remain here for independent verification.
 
 The question is not merely whether inflation fell. It is how inflation control interacted with unemployment, racial labor-market disparities, tax and fiscal policy, collective bargaining, and the redistribution of economic risk. Seven figures use carefully delimited historical series from original public institutions, and one uses **invented** mathematical parameters. None claims a causal effect from chronology alone.
 
