@@ -6,7 +6,6 @@ import csv
 import json
 import math
 import os
-import re
 import tempfile
 import unittest
 from collections import defaultdict
@@ -585,10 +584,19 @@ class ArchivedEvidenceTests(unittest.TestCase):
         self.assertEqual(actual, {f"{name}.png" for name in analysis.FIGURES})
 
     def test_png_signatures(self) -> None:
+        """Validate each archived figure without reading editorial Markdown."""
         for name in analysis.FIGURES:
             with self.subTest(figure=name):
-                self.assertEqual((ROOT/"figures"/f"{name}.png").read_bytes()[:8],
-                                 b"\x89PNG\r\n\x1a\n")
+                path: Path = ROOT/"figures"/f"{name}.png"
+                contents: bytes = path.read_bytes()
+                self.assertGreaterEqual(len(contents), 24)
+                self.assertEqual(contents[:8], b"\x89PNG\r\n\x1a\n")
+                self.assertEqual(contents[12:16], b"IHDR")
+                # The PNG header stores unsigned, big-endian pixel dimensions.
+                width: int = int.from_bytes(contents[16:20], "big")
+                height: int = int.from_bytes(contents[20:24], "big")
+                self.assertGreater(width, 0)
+                self.assertGreater(height, 0)
 
     def test_pngs_nonempty(self) -> None:
         self.assertTrue(all((ROOT/"figures"/f"{name}.png").stat().st_size > 25_000
@@ -840,36 +848,12 @@ class NotebookAndDocumentationTests(unittest.TestCase):
         source = self.notebook_path().read_text(encoding="utf-8")
         self.assertNotIn("/workspace/scratch", source)
 
-    def test_manuscript_word_count(self) -> None:
-        content = (ROOT/"article.md").read_text(encoding="utf-8")
-        words = re.findall(r"\b[\w'-]+\b", content)
-        self.assertGreaterEqual(len(words), 9_000)
-
-    def test_manuscript_nine_original_figures(self) -> None:
-        content = (ROOT/"article.md").read_text(encoding="utf-8")
-        references = re.findall(r"!\[Figure \d+[^\]]+\]\(([^)]+)\)", content)
-        self.assertEqual(len(references), 9)
-        self.assertEqual(set(references), {f"figures/{name}.png" for name in analysis.FIGURES})
-
-    def test_manuscript_all_eight_primary_sources(self) -> None:
-        content = (ROOT/"article.md").read_text(encoding="utf-8")
-        for token in ("cawley10a.pdf", "1471-2105-7-91",
-                      "10.1073/pnas.102102699", "10.1111/ecog.02881",
-                      "10.1016/j.csda.2017.11.003",
-                      "10.1080/01621459.2023.2197686",
-                      "pubmed.ncbi.nlm.nih.gov/26250683", "1411.2664"):
-            with self.subTest(source=token):
-                self.assertIn(token, content)
-
-    def test_manuscript_synthetic_scope(self) -> None:
-        content = (ROOT/"article.md").read_text(encoding="utf-8").lower()
-        self.assertIn("synthetic", content)
-        self.assertIn("not estimates of", content)
-
-    def test_manuscript_section_one_to_fifteen(self) -> None:
-        content = (ROOT/"article.md").read_text(encoding="utf-8")
-        for number in range(1, 16):
-            self.assertIn(f"## {number}.", content)
+    def test_public_article_is_private_manuscript_notice(self) -> None:
+        """Preserve the historical path while owning only computational evidence."""
+        notice: str = (ROOT/"article.md").read_text(encoding="utf-8")
+        self.assertIn("research-articles-medium", notice)
+        self.assertIn("the-test-set-is-not-an-oracle/article.md", notice)
+        self.assertLess(len(notice.split()), 200)
 
     def test_readme_nine_studies(self) -> None:
         content = (ROOT/"README.md").read_text(encoding="utf-8")
