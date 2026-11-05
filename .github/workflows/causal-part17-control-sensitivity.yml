@@ -1,0 +1,28 @@
+name: Causal Part 17 control sensitivity
+
+on:
+  pull_request:
+    paths:
+      - 'causal_inference_statistics/part17/part17_control_sensitivity.py'
+      - 'causal_inference_statistics/part17/test_part17_control_sensitivity.py'
+      - 'causal_inference_statistics/part17/CONTROL_SENSITIVITY.md'
+      - '.github/workflows/causal-part17-control-sensitivity.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  analytical-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run analytical invariants
+        run: |
+          python -m unittest discover -s causal_inference_statistics/part17 \
+            -p 'test_part17_control_sensitivity.py' -v
+      - name: Print benchmark grid
+        run: python causal_inference_statistics/part17/part17_control_sensitivity.py
