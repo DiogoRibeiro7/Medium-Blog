@@ -7,7 +7,6 @@ import hashlib
 import io
 import json
 import math
-import re
 import struct
 import sys
 import unittest
@@ -269,18 +268,22 @@ class ResultsAndModelTests(unittest.TestCase):
 
 
 class PublicationTests(unittest.TestCase):
-    @classmethod
-    def setUpClass(cls) -> None:
-        cls.article = (ROOT / "article.md").read_text(encoding="utf-8")
+    """Validate public research artifacts independently of private editorial prose."""
 
-    def test_47_article_exceeds_eight_thousand_words(self) -> None:
-        self.assertGreaterEqual(len(self.article.split()), 8000)
+    def test_47_editorial_manuscript_moved_to_private_archive(self) -> None:
+        """Maintain a brief discoverable notice without reading private content."""
+        notice = (ROOT / "article.md").read_text(encoding="utf-8")
+        self.assertIn("research-articles-medium", notice)
+        self.assertIn("private", notice.lower())
+        self.assertLess(len(notice.split()), 150)
 
-    def test_48_all_eight_figures_embedded_once(self) -> None:
-        self.assertEqual(len(re.findall(r"!\[[^\]]+\]\(figures/[^\)]+\)", self.article)), 8)
+    def test_48_eight_unique_figure_assets_remain_public(self) -> None:
+        """Protect the archived figure inventory after prose links are retired."""
         self.assertEqual(len(FIGURE_NAMES), len(set(FIGURE_NAMES)))
-        for filename in FIGURE_NAMES:
-            self.assertEqual(self.article.count(f"(figures/{filename})"), 1)
+        self.assertEqual(
+            {path.name for path in (ROOT / "figures").glob("figure_*.png")},
+            set(FIGURE_NAMES),
+        )
 
     def test_49_figures_are_nontrivial_pngs(self) -> None:
         for filename in FIGURE_NAMES:
@@ -293,18 +296,14 @@ class PublicationTests(unittest.TestCase):
                 self.assertGreaterEqual(width, 1200)
                 self.assertGreaterEqual(height, 600)
 
-    def test_50_article_numbers_primary_sources(self) -> None:
-        for n in range(1, 35):
-            self.assertRegex(self.article, rf"(?m)^{n}\.\s+\*\*")
-
-    def test_51_article_labels_hypothetical_model(self) -> None:
-        self.assertIn("HYPOTHETICAL", self.article.upper())
-        self.assertIn("not a claim that exactly half", self.article.lower())
-
-    def test_52_article_discusses_shutdown_and_revisions(self) -> None:
-        self.assertIn("October 2025", self.article)
-        self.assertIn("SPM", self.article)
-        self.assertIn("2026", self.article)
+    def test_50_public_readme_tracks_historical_caveats(self) -> None:
+        """Keep data limitations visible without the privately archived essay."""
+        readme = (ROOT / "README.md").read_text(encoding="utf-8")
+        for phrase in (
+            "October 2025", "2026 poverty revision", "SPM",
+            "HYPOTHETICAL", "repeated cross-sections",
+        ):
+            self.assertIn(phrase, readme)
 
     def test_53_notebook_is_structurally_valid_json(self) -> None:
         nb = json.loads((ROOT / "model_walkthrough.ipynb").read_text(encoding="utf-8"))

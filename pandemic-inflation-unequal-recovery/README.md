@@ -1,6 +1,6 @@
 # Inflation Fell; Prices Did Not — Article 26
 
-Research companion to [the long-form manuscript](article.md) on the pandemic recession, inflation, and the unequal U.S. adjustment, 2020–2025. It contains approximately 13,000 words of original prose; eight original graphics (seven from historical sources and one explicitly hypothetical model); seven frozen raw files, two derived data panels, three results tables, Python scripts, a reproducible notebook, and unit tests.
+Public reproducibility companion to *Inflation Fell; Prices Did Not*, article #26 on the pandemic recession, inflation, and unequal U.S. adjustment, 2020–2025. The complete 12,972-word editorial manuscript is held in the private `DiogoRibeiro7/research-articles-medium` repository; [article.md](article.md) is a short migration notice. This public directory contains eight original graphics (seven historical, one hypothetical), seven frozen raw files, two derived data panels, three result tables, Python scripts, a reproducible notebook, and unit tests.
 
 This is descriptive historical analysis, not a causal attribution of inflation or recovery to an individual law, leader, company, or central-bank action. The data are retrospective 2026-10/2026-11 vintages, not the estimates available in real time in each historical year.
 
@@ -66,10 +66,10 @@ Figure 8 is a pure selection identity. If the low-pay worker share is *s*, low p
 
 **2020 CPS survey problems:** some workers absent because of the pandemic were misclassified as employed, and BLS documented the potential understatement of unemployment. We plot the official data, with a caveat, instead of inventing a corrected series.
 
-**2026 poverty revision:** Census and BLS corrected historical Supplemental Poverty Measure thresholds for 2019–2024. Rather than freezing superseded 2021–2022 SPM point estimates, the article discusses the change and directs readers to the corrected Census publications.
+**2026 poverty revision:** Census and BLS corrected historical Supplemental Poverty Measure thresholds for 2019–2024. Rather than freezing superseded 2021–2022 SPM point estimates, the privately archived manuscript discusses the change and directs readers to corrected Census publications.
 
 **Different measures:** GDP level recovery is not a counterfactual growth-path recovery; payroll jobs differ from work hours; a shifting-workforce wage average differs from individual wage gains; household income is not disposable income; Census repeated cross-sections are not family panels; FHFA purchase/refinance valuations are not CPI shelter services or affordability; Fed security holdings are not household grants. These distinctions are material to interpretation.
 
 ## CI
 
-The accompanying path-scoped GitHub Actions workflow verifies source integrity, runs both preparation and plotting, checks the generated CSV files, confirms all eight PNG files exist, and runs a comprehensive unit test suite. The generated figures and tables are committed so nontechnical readers can read the article as published without running code. Small CSV datasets are exempted from Git LFS in the repository's attributes file.
+The accompanying path-scoped GitHub Actions workflow verifies source integrity, runs both preparation and plotting, checks the generated CSV files, confirms all eight PNG files exist, and runs a comprehensive unit test suite. The generated figures and tables remain public so readers can inspect the evidence without running code; the editorial manuscript is archived separately. Small CSV datasets are exempted from Git LFS in the repository's attributes file.
