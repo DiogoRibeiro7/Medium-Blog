@@ -6,16 +6,16 @@ import json
 import unittest
 from urllib.parse import parse_qs, urlsplit
 
-from forbes_pages import ForbesSourceError, page_url, retrieve_annual_list
+from forbes_pages import ForbesSourceError, get_people, page_url, retrieve_annual_list
 
 
 URL = "https://www.forbes.com/forbesapi/person/billionaires/2026/position/true.json?limit=5000"
 
 
-def encode_people(start: int, n: int) -> bytes:
+def encode_people(start: int, n: int, *, array_key: str = "persons") -> bytes:
     """Create explicitly fictional person-list records with unique identifiers."""
     return json.dumps({
-        "personList": {"persons": [
+        "personList": {array_key: [
             {"uri": f"fictional-{i}", "countryOfCitizenship": "Example"}
             for i in range(start, start + n)
         ]}
@@ -44,6 +44,42 @@ class PageFallbackTests(unittest.TestCase):
         self.assertEqual(ledger["mode"], "single_response")
         self.assertEqual(len(json.loads(data)["personList"]["persons"]), 6)
         self.assertEqual(calls, [URL])
+
+    def test_plural_persons_lists_is_explicitly_supported(self) -> None:
+        """Forbes has also used `personList.personsLists` for person arrays."""
+        def retrieve(url: str, **kwargs: object) -> bytes:
+            return encode_people(0, 6, array_key="personsLists")
+
+        data, ledger = retrieve_annual_list(
+            URL, expected_count=6, fetcher=retrieve
+        )
+        self.assertEqual(ledger["mode"], "single_response")
+        self.assertEqual(len(get_people(data)), 6)
+
+    def test_plural_paginated_response_preserves_uniqueness_checks(self) -> None:
+        """The paginated fallback must accept the same explicit array path."""
+        def retrieve(url: str, **kwargs: object) -> bytes:
+            if url == URL:
+                raise RuntimeError("HTTP 503 first byte timeout")
+            parameters = parse_qs(urlsplit(url).query)
+            return encode_people(
+                int(parameters["start"][0]),
+                int(parameters["limit"][0]),
+                array_key="personsLists",
+            )
+
+        data, ledger = retrieve_annual_list(
+            URL, expected_count=7, page_limit=3, fetcher=retrieve
+        )
+        self.assertEqual(ledger["page_count"], 3)
+        self.assertEqual(len(get_people(data)), 7)
+
+    def test_ambiguous_array_keys_fail_closed(self) -> None:
+        """Do not silently choose a person list if two plausible ones exist."""
+        document = json.loads(encode_people(0, 6))
+        document["personList"]["personsLists"] = document["personList"]["persons"]
+        with self.assertRaisesRegex(ForbesSourceError, "ambiguous person arrays"):
+            get_people(json.dumps(document).encode("utf-8"))
 
     def test_transient_503_falls_back_to_pages(self) -> None:
         requested: list[str] = []

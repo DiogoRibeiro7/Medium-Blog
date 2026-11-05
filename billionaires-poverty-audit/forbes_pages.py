@@ -21,22 +21,46 @@ class ForbesSourceError(ValueError):
     """Reject inconsistent Forbes pages or unsupported response shapes."""
 
 
+def extract_people(document: Any) -> tuple[list[dict[str, Any]], str]:
+    """Select exactly one explicitly recognized Forbes person-array layout.
+
+    The public feed has used both ``personList.persons`` and the plural
+    ``personList.personsLists``. A change of spelling is not a reason to
+    relax the subsequent annual count, identity or citizenship checks.
+    Unknown and ambiguous layouts fail with key names only, never records.
+    """
+    if not isinstance(document, dict):
+        raise ForbesSourceError("Forbes response is not a JSON object")
+    section = document.get("personList")
+    if isinstance(section, dict):
+        candidates = [
+            ("personList.persons", section.get("persons")),
+            ("personList.personsLists", section.get("personsLists")),
+        ]
+    else:
+        candidates = [("persons", document.get("persons"))]
+    arrays = [(path, value) for path, value in candidates if isinstance(value, list)]
+    if len(arrays) != 1:
+        section_keys = sorted(section) if isinstance(section, dict) else []
+        raise ForbesSourceError(
+            "Forbes schema changed or has ambiguous person arrays; "
+            f"root keys={sorted(document)}, personList keys={section_keys}"
+        )
+    path, people = arrays[0]
+    if any(not isinstance(record, dict) for record in people):
+        raise ForbesSourceError("Forbes persons array contains invalid entries")
+    return people, path
+
+
 def get_people(data: bytes) -> list[dict[str, Any]]:
-    """Extract people from documented Forbes JSON layouts without guessing."""
+    """Decode a Forbes payload using the same schema contract as the auditor."""
     if not isinstance(data, bytes):
         raise TypeError("Forbes response must be bytes")
     try:
         document: Any = json.loads(data)
     except (UnicodeDecodeError, ValueError) as exc:
         raise ForbesSourceError("Forbes response is not JSON") from exc
-    if not isinstance(document, dict):
-        raise ForbesSourceError("Forbes response is not a JSON object")
-    section = document.get("personList")
-    people = section.get("persons") if isinstance(section, dict) else document.get("persons")
-    if not isinstance(people, list):
-        raise ForbesSourceError("Forbes response contains no persons array")
-    if any(not isinstance(record, dict) for record in people):
-        raise ForbesSourceError("Forbes persons array contains invalid entries")
+    people, _ = extract_people(document)
     return people
 
 
