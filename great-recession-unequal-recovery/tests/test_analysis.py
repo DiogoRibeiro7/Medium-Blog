@@ -198,20 +198,35 @@ class ModelTests(unittest.TestCase):
 class PublicationTests(unittest.TestCase):
     """Check deliverable consistency and reproducible graphics."""
 
-    def test_article_is_long_form(self) -> None:
-        manuscript = (ROOT / "article.md").read_text(encoding="utf-8")
-        self.assertGreaterEqual(len(manuscript.split()), 8000)
+    def test_editorial_article_moved_to_private_archive(self) -> None:
+        """Keep a public pointer without checking private editorial prose."""
+        notice = (ROOT / "article.md").read_text(encoding="utf-8")
+        self.assertIn("research-articles-medium", notice)
+        self.assertIn("private", notice.lower())
+        self.assertLess(len(notice.split()), 150)
 
-    def test_eight_unique_figures_are_embedded(self) -> None:
-        manuscript = (ROOT / "article.md").read_text(encoding="utf-8")
-        self.assertEqual(len(FIGURE_NAMES), 8)
-        for figure in FIGURE_NAMES:
-            self.assertEqual(manuscript.count(f"(figures/{figure})"), 1, figure)
+    def test_eight_archived_figures_have_valid_png_headers(self) -> None:
+        """Validate the checked-in plot archive independently of Markdown embeds."""
+        figures = ROOT / "figures"
+        self.assertEqual(
+            {path.name for path in figures.glob("figure_*.png")},
+            set(FIGURE_NAMES),
+        )
+        for name in FIGURE_NAMES:
+            with self.subTest(figure=name):
+                with (figures / name).open("rb") as image:
+                    header = image.read(24)
+                self.assertEqual(header[:8], b"\x89PNG\r\n\x1a\n")
+                self.assertEqual(header[12:16], b"IHDR")
+                self.assertGreater(int.from_bytes(header[16:20], "big"), 0)
+                self.assertGreater(int.from_bytes(header[20:24], "big"), 0)
 
-    def test_hypothetical_model_clearly_disclosed(self) -> None:
-        manuscript = (ROOT / "article.md").read_text(encoding="utf-8").lower()
-        for phrase in ("hypothetical", "not a causal", "repeated cross-section", "limitations"):
-            self.assertIn(phrase, manuscript)
+    def test_public_readme_discloses_evidence_limits(self) -> None:
+        """Retain essential caveats in the public reproducibility companion."""
+        readme = (ROOT / "README.md").read_text(encoding="utf-8").lower()
+        self.assertIn("hypothetical", readme)
+        self.assertIn("repeated cross-section", readme)
+        self.assertIn("none estimates a causal", readme)
 
     def test_offline_artifact_generation_and_counts(self) -> None:
         with tempfile.TemporaryDirectory(prefix="great-recession-test-") as tmp:
