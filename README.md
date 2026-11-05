@@ -12,6 +12,12 @@ Code, notebooks, data-analysis examples, and reproducible case studies accompany
 
 This repository has accumulated material over many years. It is intentionally treated as a **research and article monorepo**, not as one Python application with one dependency set or one execution environment.
 
+## Editorial manuscript migration
+
+The editorial sources for 90 Medium articles have been imported into the private [research-articles-medium](https://github.com/DiogoRibeiro7/research-articles-medium) repository. This public repository continues to hold the computational studies, figures, code, tests and reproducibility records.
+
+The separation is staged to protect CI: 50 manuscript bodies have been replaced by compatibility notices; 40 manuscript paths still participate in publication generators or tests and require independent refactoring. See [migration tracking](EDITORIAL_MIGRATION.md). Historical public Git commits remain accessible.
+
 ## Repository model
 
 The repository contains two broad classes of material:
