@@ -1,0 +1,62 @@
+{
+  "called_democratic": 228,
+  "called_republican": 139,
+  "candidate_scenario_differences": {
+    "ols": {
+      "if_leads_hold_absolute_difference": 15.677111973694373,
+      "if_leads_hold_predicted_minus_conditional_change": 15.677111973694373,
+      "registered_point": -32.32288802630563
+    },
+    "recency_wls": {
+      "if_leads_hold_absolute_difference": 17.02402734189832,
+      "if_leads_hold_predicted_minus_conditional_change": 17.02402734189832,
+      "registered_point": -30.97597265810168
+    },
+    "ridge": {
+      "if_leads_hold_absolute_difference": 16.939208773489828,
+      "if_leads_hold_predicted_minus_conditional_change": 16.939208773489828,
+      "registered_point": -31.060791226510172
+    },
+    "student_t": {
+      "if_leads_hold_absolute_difference": 14.242451176835722,
+      "if_leads_hold_predicted_minus_conditional_change": 14.242451176835722,
+      "registered_point": -33.75754882316428
+    }
+  },
+  "democrats_called_majority": true,
+  "final_outcome_recorded": false,
+  "if_leads_hold_bootstrap_sensitivity_band_inclusion": false,
+  "if_leads_hold_interval_inclusion": true,
+  "illustrative_change_if_all_leads_hold": -48,
+  "integer_republican_seats_in_locked_ols_interval": [
+    172,
+    203
+  ],
+  "locked_bootstrap_sensitivity_interval_not_calibrated": [
+    -41.75170811125731,
+    -14.373974322873948
+  ],
+  "locked_ols_95_interval": [
+    -48.428386550570906,
+    -16.217389502040344
+  ],
+  "locked_republican_seats_defended": 220,
+  "not_inferences": [
+    "No final observed 2026 House party division exists in this record.",
+    "AP leads are not election results; the if-leads-hold scenario is not a probability forecast.",
+    "One election cannot establish interval coverage or statistical calibration.",
+    "Do not use this file in place of the locked official scorer."
+  ],
+  "publisher": "Associated Press",
+  "report_type": "provisional_house_scenario_diagnostics_not_official_scoring",
+  "reported_at_utc": "2026-11-04T10:51:02Z",
+  "republican_seats_if_all_leads_hold": 172,
+  "republican_total_lower_bound_from_current_calls": 139,
+  "republican_total_upper_bound_from_current_calls": 207,
+  "retrieved_at_utc": "2026-11-04T10:51:54Z",
+  "snapshot_status": "live_unofficial",
+  "source_url": "https://apnews.com/hub/elections",
+  "uncalled_democratic_leads": 35,
+  "uncalled_races": 68,
+  "uncalled_republican_leads": 33
+}

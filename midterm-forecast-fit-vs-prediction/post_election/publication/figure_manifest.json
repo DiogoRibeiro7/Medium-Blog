@@ -1,0 +1,16 @@
+{
+  "manifest_version": 1,
+  "immutable_figure_commit": "b83108c28d11a31e9dba6c34304730579df0cfd3",
+  "figure_source": "Archived 4 November 2026 AP live snapshot and 1 November forecast lock",
+  "status": "draft_provisional_not_final_result",
+  "sha256": {
+    "fig1_registered_interval_and_live_scenario.png": "934d2eb0473d9443119059dc605a8597f0de8984639b616c19745561a019f21e",
+    "fig2_called_seats_vs_uncalled_leads.png": "51daee4f01a8137253c5b40cd467e6f92681475f131f4f45fbc6cd8ee571418f",
+    "fig3_frozen_estimators_vs_live_scenario.png": "8738fe2b4268e3da35a1e81261e345636d53aa8ea8609ee3f1cdcb62efc5bede",
+    "fig4_integer_interval_hit_boundary.png": "226e2ee05e9de6561656a41fd411d4118fa6924f6c501bfa9bf9e5aecda19017",
+    "fig5_error_sensitivity_to_final_totals.png": "7ba3f48372ca00abf804495b4bdb92d40dd173a3d00ea39b3edb94a99693c343",
+    "fig6_model_interval_vs_bootstrap_sensitivity.png": "ec71bbb4252c4de47641d85e4c37462c378a7b91b1a346d568ad4a1ea4c32103",
+    "fig7_ex_ante_to_unverified_and_final_timeline.png": "896aea60076786464acd3e3ef7895fa23601c3edeb3fd87d40174784423d2fa9",
+    "fig8_history_vs_one_provisional_discrepancy.png": "cf4c31d5445385d594f7dbe1ea6a3b77ba890fba3be90b3fbded4b132abb8595"
+  }
+}

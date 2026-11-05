@@ -1,6 +1,6 @@
 # Articles Developed in This Series
 
-This is an index of thirty-seven long-form articles developed across the
+This is an index of thirty-eight long-form articles developed across the
 `Medium-Blog` working series, ordered by their addition to this index. It is **not** a complete
 catalogue of the repository's articles or historical notebooks.
 
@@ -45,6 +45,8 @@ catalogue of the repository's articles or historical notebooks.
 | 36 | [A Correlation Is Not a Mechanism: Confounding, Collider Bias, and the Limits of Observational Evidence](a-correlation-is-not-a-mechanism/article.md) | Confounding, Simpson's paradox, collider bias, mediation, instrumental variables, backdoor adjustment, positivity and overlap, nonidentification, prediction versus intervention | 9 | [Study README](a-correlation-is-not-a-mechanism/README.md) · [Python analysis](a-correlation-is-not-a-mechanism/analysis.py) · [Notebook](a-correlation-is-not-a-mechanism/a_correlation_is_not_a_mechanism.ipynb) |
 
 | 37 | [A Billionaire Is Not a Poverty Policy: What a Global Correlation Really Tells Us](billionaires-poverty-audit/article.md) | Billionaire density, $30/day PPP poverty, GDP per capita, omitted development factors, wealth concentration, survey definitions, citizenship versus residence, causal identification, longitudinal estimands; **independent reconstruction figures provisional pending source restoration** | Pending source-verified figures | [Study README](billionaires-poverty-audit/README.md) · [Python analysis](billionaires-poverty-audit/analysis.py) · [Claim audit](billionaires-poverty-audit/CLAIM_AUDIT.md) |
+
+| 38 | [The Votes Are In: Testing an 89% Midterm Model Against the 2026 Election — private research draft](https://github.com/DiogoRibeiro7/research-articles-medium/blob/main/midterm-forecast-fit-vs-prediction/post_election/article.md) | 2026 U.S. House provisional results, registered ex-ante forecasts, AP called-versus-leading seat accounting, 95% integer-boundary diagnostics, signed error scenarios, measurement and calibration limits; **official final score pending**, editorial source in private repository | 8 | [Study README](midterm-forecast-fit-vs-prediction/post_election/README.md) · [Python audit](midterm-forecast-fit-vs-prediction/post_election/analysis.py) · [Claim audit](midterm-forecast-fit-vs-prediction/post_election/CLAIM_AUDIT.md) |
 
 ## Reproducibility
 

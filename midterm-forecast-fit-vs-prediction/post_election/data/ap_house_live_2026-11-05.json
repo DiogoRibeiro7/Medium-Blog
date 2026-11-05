@@ -1,0 +1,26 @@
+{
+  "snapshot_kind": "live_unofficial",
+  "source_name": "Associated Press",
+  "source_url": "https://apnews.com/hub/elections",
+  "election_date": "2026-11-03",
+  "reported_at_utc": "2026-11-05T13:10:04Z",
+  "retrieved_at_utc": "2026-11-05T13:10:31.143499Z",
+  "retrieval_note": "AP national House balance-of-power live feed, retrieved through the 2026 election-results data source on 5 November 2026. This archived aggregate is neither certified nor the House Historian-aligned initial-election outcome. Current House membership in the same feed (219 GOP plus one GOP-caucusing other) is not substituted for the registered 220-seat historical-model baseline.",
+  "house": {
+    "total_seats": 435,
+    "majority_threshold": 218,
+    "democratic_won": 240,
+    "republican_won": 147,
+    "democratic_leading_uncalled": 21,
+    "republican_leading_uncalled": 27,
+    "other_won_or_leading": 0
+  },
+  "ap_reported_current_house_context_not_model_baseline": {
+    "democratic_current": 215,
+    "republican_current": 219,
+    "republican_caucusing_others_current": 1
+  },
+  "official_initial_election_party_division_available": false,
+  "observed_republican_seat_change": null,
+  "not_a_final_score": true
+}

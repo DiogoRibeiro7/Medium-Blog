@@ -1,0 +1,73 @@
+name: Midterm 2026 - provisional post-election evidence audit
+
+on:
+  pull_request:
+    paths:
+      - "midterm-forecast-fit-vs-prediction/post_election/**"
+      - ".github/workflows/midterm-post-election.yml"
+  push:
+    branches: [main]
+    paths:
+      - "midterm-forecast-fit-vs-prediction/post_election/**"
+      - ".github/workflows/midterm-post-election.yml"
+  workflow_dispatch:
+
+jobs:
+  verify-unofficial-snapshot:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: midterm-forecast-fit-vs-prediction
+    env:
+      MPLCONFIGDIR: /tmp/mpl-midterm-post-election
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: midterm-forecast-fit-vs-prediction/requirements.txt
+      - name: Install existing pinned plotting dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Compile and test provisional audit
+        run: |
+          python -m compileall -q post_election
+          python -m unittest discover -s post_election/tests -v
+      - name: Verify dated AP live-snapshot chronology
+        run: python post_election/snapshot_history.py --check
+      - name: Reproduce independently from archived inputs
+        run: python post_election/analysis.py --output-dir /tmp/midterm-post-election-reproduction
+      - name: Check scientific output and pinned research figures
+        run: |
+          python - <<'PY'
+          import hashlib
+          import json
+          from pathlib import Path
+
+          study = Path('post_election')
+          reproduced = Path('/tmp/midterm-post-election-reproduction')
+          original = json.loads((study / 'results/provisional_diagnostics.json').read_text())
+          regenerated = json.loads((reproduced / 'results/provisional_diagnostics.json').read_text())
+          assert original == regenerated, 'Provisional numerical audit changed'
+          assert not original['final_outcome_recorded'], 'Official score cannot come from live data'
+          assert original['snapshot_status'] == 'live_unofficial'
+          assert original['uncalled_races'] == 68
+          assert original['republican_seats_if_all_leads_hold'] == 172
+          for directory in (study / 'figures', reproduced / 'figures'):
+              figures = list(directory.glob('fig*.png'))
+              assert len(figures) == 8, 'Expected eight original PNG figures'
+              assert all(path.read_bytes().startswith(b'\x89PNG\r\n\x1a\n') for path in figures)
+          figure_manifest = json.loads((study / 'publication/figure_manifest.json').read_text())
+          assert figure_manifest['status'] == 'draft_provisional_not_final_result'
+          expected = figure_manifest['sha256']
+          assert len(expected) == 8, 'Eight publication figures must be pinned'
+          for name, digest in expected.items():
+              actual = hashlib.sha256((study / 'figures' / name).read_bytes()).hexdigest()
+              assert actual == digest, f'Figure bytes differ from manifest: {name}'
+          assert not (study / 'article.md').exists(), 'Editorial source belongs in private repository'
+          assert not (study / 'publication/medium_ready.md').exists(), 'Medium derivative belongs in private repository'
+          assert not (study / 'verified_2026_score.json').exists(), 'Premature official scoring'
+          print('Archived AP snapshots, reproduced figures and pinned source labels verified')
+          PY

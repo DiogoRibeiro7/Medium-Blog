@@ -1,0 +1,61 @@
+{
+  "caveats": [
+    "All seat totals and differences derived from leads are hypothetical, not observations.",
+    "Changing leads and newly called races can jointly alter the aggregate trend.",
+    "The initial-election House Historian-aligned target remains unavailable here.",
+    "A new AP snapshot cannot authorize modification of the registered forecast."
+  ],
+  "frozen_ols_95_interval": [
+    -48.428386550570906,
+    -16.217389502040344
+  ],
+  "frozen_ols_point": -32.32288802630563,
+  "historical_model_input_lock": "../results/forecast_lock.json",
+  "movements": [
+    {
+      "additional_called_races": 20,
+      "change_in_conditional_ols_signed_difference": -2.0,
+      "change_in_conditional_republican_seats": 2,
+      "change_in_uncalled_races": -20,
+      "from_snapshot": "ap_house_live_2026-11-04.json",
+      "to_snapshot": "ap_house_live_2026-11-05.json"
+    }
+  ],
+  "official_initial_election_outcome_scored": false,
+  "registered_house_seats_defended": 220,
+  "report_type": "unofficial_ap_live_snapshot_history_not_final_scoring",
+  "snapshots": [
+    {
+      "archived_source_filename": "ap_house_live_2026-11-04.json",
+      "conditional_ols_forecast_minus_scenario": 15.677111973694373,
+      "conditional_ols_interval_inclusion": true,
+      "conditional_republican_seat_change": -48,
+      "democratic_called": 228,
+      "democratic_leading_uncalled": 35,
+      "reported_at_utc": "2026-11-04T10:51:02Z",
+      "republican_called": 139,
+      "republican_leading_uncalled": 33,
+      "republican_total_if_leads_hold": 172,
+      "retrieved_at_utc": "2026-11-04T10:51:54Z",
+      "total_called": 367,
+      "total_uncalled": 68
+    },
+    {
+      "archived_source_filename": "ap_house_live_2026-11-05.json",
+      "conditional_ols_forecast_minus_scenario": 13.677111973694373,
+      "conditional_ols_interval_inclusion": true,
+      "conditional_republican_seat_change": -46,
+      "democratic_called": 240,
+      "democratic_leading_uncalled": 21,
+      "reported_at_utc": "2026-11-05T13:10:04Z",
+      "republican_called": 147,
+      "republican_leading_uncalled": 27,
+      "republican_total_if_leads_hold": 174,
+      "retrieved_at_utc": "2026-11-05T13:10:31.143499Z",
+      "total_called": 387,
+      "total_uncalled": 48
+    }
+  ],
+  "source_name": "Associated Press",
+  "source_url": "https://apnews.com/hub/elections"
+}
