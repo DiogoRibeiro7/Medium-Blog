@@ -6,8 +6,11 @@ Produces bibliographic_inventory.csv; extraction only, not DOI validation.
 from __future__ import annotations
 
 import csv
+import argparse
 import re
 from pathlib import Path
+
+from manuscript_sources import read_manuscript
 
 ROOT: Path = Path(__file__).resolve().parent
 REFERENCE: re.Pattern[str] = re.compile(r"^\s*([^\n]+?)\s*$")
@@ -38,12 +41,12 @@ def extract_doi(reference: str) -> str:
 
 def main() -> None:
     """Write an auditable reference inventory without external network calls."""
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--manuscript-root", type=Path, default=ROOT)
+    args = parser.parse_args()
     rows: list[dict[str, str | int]] = []
     for part in range(1, 21):
-        path = ROOT / f"part{part}" / "article.md"
-        if not path.is_file():
-            raise FileNotFoundError(path)
-        for index, ref in enumerate(references(path.read_text(encoding="utf-8")), 1):
+        for index, ref in enumerate(references(read_manuscript(args.manuscript_root, part)), 1):
             rows.append({
                 "part": part,
                 "index": index,
