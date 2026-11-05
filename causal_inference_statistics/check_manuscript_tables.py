@@ -13,14 +13,16 @@ import re
 from decimal import Decimal, InvalidOperation
 from pathlib import Path
 
+from manuscript_sources import read_manuscript
+
 ROOT = Path(__file__).resolve().parent
 CELL = re.compile(r"^-?\d[\d,]*\.\d{4}$")
 
 
-def audit(part: int) -> list[str]:
+def audit(part: int, *, manuscript_root: Path = ROOT) -> list[str]:
     """Return manuscript numeric table cells unsupported by archived output."""
     folder = ROOT / f"part{part}"
-    manuscript = (folder / "article.md").read_text(encoding="utf-8")
+    manuscript = read_manuscript(manuscript_root, part)
     with (folder / "results.csv").open(newline="", encoding="utf-8") as handle:
         rows = list(csv.DictReader(handle))
     values: set[Decimal] = set()
@@ -49,12 +51,13 @@ def main() -> int:
     """Run a conservative numeric-table consistency check."""
     parser = argparse.ArgumentParser()
     parser.add_argument("--parts", nargs="+", type=int, required=True)
+    parser.add_argument("--manuscript-root", type=Path, default=ROOT)
     args = parser.parse_args()
     failures = 0
     for part in args.parts:
         if not 1 <= part <= 20:
             parser.error("Part must be 1–20")
-        problems = audit(part)
+        problems = audit(part, manuscript_root=args.manuscript_root)
         print(f"Part {part}: {'PASS' if not problems else 'REVIEW'}")
         for issue in problems:
             print(issue)
