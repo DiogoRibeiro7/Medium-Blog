@@ -1,6 +1,6 @@
 # An Outlier Is Not an Error — reproducible companion
 
-Article #31 in the `Medium-Blog` long-form collection. The [11,000+ word manuscript](article.md) distinguishes data validity from model-based rarity and develops robust location, heavy tails, interval coverage, regression contamination, leverage, multivariate masking, minority-group alerts, tail-risk deletion, and distribution-shift calibration.
+Article #31 in the `Medium-Blog` long-form collection. The 11,000+ word [editorial manuscript is maintained privately](https://github.com/DiogoRibeiro7/research-articles-medium/blob/main/outlier-is-not-an-error/article.md). This public companion develops reproducible experiments covering robust location, heavy tails, interval coverage, regression contamination, leverage, multivariate masking, minority-group alerts, tail-risk deletion, and distribution-shift calibration.
 
 **Everything here is synthetic.** No proprietary files or real-world error labels are used. The deliberately shifted population in a simulation is *not* asserted to consist of bad records. Figures and statistics are original experimental outputs.
 
@@ -92,4 +92,4 @@ The estimator called `huber_location` uses a *known unit scale* and clips its sc
 
 The `minority` evidence includes a per-replicate **score cutoff**, which is an experimentally varying quantity; the exact 5% alert budget is a design constraint, not a variable Monte Carlo outcome. In the `shift` evidence, `sd_1.5` denotes a *standard deviation* of 1.5 (variance 2.25). Fixed-threshold background alert rates have no claimed analytic `theory` value in the CSV, while recalibrated rates have a 0.01 rank-budget reference by construction. A blank theory field does not imply a zero event rate.
 
-For the historical method sources, exact definitions, full experimental assumptions, and source audit, see the manuscript's final sections. Don't use any of these synthetic numerical rates as forecasts for an unobserved system.
+The full editorial discussion and historical method source audit are in the private manuscript. The public code, pinned dependencies, tests, original figures, and archived evidence remain available here for verification. Don't use any of these synthetic numerical rates as forecasts for an unobserved system.

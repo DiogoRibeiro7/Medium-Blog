@@ -484,11 +484,20 @@ class ArchivedEvidenceTests(unittest.TestCase):
                               if not p.name.endswith("_quick.csv")]), 18)
 
     def test_all_nine_full_figures(self) -> None:
+        """Check committed scientific figure files independently of the manuscript."""
         for fig in analysis.FIGURES:
             with self.subTest(figure=fig):
-                path = ROOT/"figures"/f"{fig}.png"
+                path: Path = ROOT/"figures"/f"{fig}.png"
                 self.assertTrue(path.is_file())
-                self.assertEqual(path.read_bytes()[:8], b"\x89PNG\r\n\x1a\n")
+                contents: bytes = path.read_bytes()
+                self.assertGreaterEqual(len(contents), 24)
+                self.assertEqual(contents[:8], b"\x89PNG\r\n\x1a\n")
+                self.assertEqual(contents[12:16], b"IHDR")
+                # The first PNG chunk records 32-bit big-endian pixel dimensions.
+                width: int = int.from_bytes(contents[16:20], byteorder="big")
+                height: int = int.from_bytes(contents[20:24], byteorder="big")
+                self.assertGreater(width, 0)
+                self.assertGreater(height, 0)
 
     def test_summary_columns(self) -> None:
         for name in analysis.EXPERIMENTS:
@@ -574,18 +583,12 @@ class NotebookAndDocumentationTests(unittest.TestCase):
         for name in ("numpy", "scipy", "matplotlib", "scikit-learn"):
             self.assertTrue(any(line.startswith(name+"==") for line in lines))
 
-    def test_manuscript_nine_figures(self) -> None:
-        text = (ROOT/"article.md").read_text(encoding="utf-8")
-        self.assertEqual(text.count("![Figure "), 9)
-
-    def test_manuscript_exceeds_8000_words(self) -> None:
-        text = (ROOT/"article.md").read_text(encoding="utf-8")
-        self.assertGreaterEqual(len(text.split()), 8000)
-
-    def test_manuscript_has_sources(self) -> None:
-        text = (ROOT/"article.md").read_text(encoding="utf-8")
-        self.assertIn("doi.org/10.1214/aoms/1177703732", text)
-        self.assertIn("doi.org/10.1109/ICDM.2008.17", text)
+    def test_public_article_is_private_manuscript_notice(self) -> None:
+        """The public path preserves links without owning editorial content."""
+        notice: str = (ROOT/"article.md").read_text(encoding="utf-8")
+        self.assertIn("research-articles-medium", notice)
+        self.assertIn("outlier-is-not-an-error/article.md", notice)
+        self.assertLess(len(notice.split()), 200)
 
     @unittest.skipIf(nbformat is None, "nbformat/nbclient optional locally")
     def test_jupyter_notebook_schema(self) -> None:
