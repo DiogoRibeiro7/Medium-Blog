@@ -1,0 +1,60 @@
+name: Forbes 2026 primary source audit
+
+on:
+  pull_request:
+    paths:
+      - "billionaires-poverty-audit/forbes_primary.py"
+      - "billionaires-poverty-audit/tests/test_forbes_primary.py"
+      - ".github/workflows/billionaires-forbes-primary-audit.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  offline-audit-tests:
+    name: Check Forbes country attribution contracts
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: billionaires-poverty-audit/requirements.txt
+      - name: Install study dependencies
+        run: python -m pip install -r billionaires-poverty-audit/requirements.txt
+      - name: Validate parser code
+        run: |
+          python -m py_compile billionaires-poverty-audit/forbes_primary.py
+      - name: Run Forbes parser unit tests
+        working-directory: billionaires-poverty-audit
+        run: python -m unittest discover -s tests -p "test_forbes_primary.py" -v
+
+  primary-fetch:
+    name: Capture Forbes annual country aggregates (manual only)
+    if: ${{ github.event_name == 'workflow_dispatch' }}
+    needs: offline-audit-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: python -m pip install -r billionaires-poverty-audit/requirements.txt
+      - name: Fetch and verify exact annual list; save only country aggregates
+        working-directory: billionaires-poverty-audit
+        run: |
+          python forbes_primary.py \
+            --out-dir results/forbes_primary_2026 \
+            --secondary data/forbes_2026_citizenship_secondary.csv
+      - name: Archive aggregate counts, discrepancies and source SHA
+        uses: actions/upload-artifact@v4
+        with:
+          name: forbes-2026-aggregate-audit-${{ github.run_id }}
+          path: billionaires-poverty-audit/results/forbes_primary_2026/
+          retention-days: 30
+          if-no-files-found: error
