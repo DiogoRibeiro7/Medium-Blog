@@ -5,6 +5,8 @@ on:
     paths:
       - "billionaires-poverty-audit/forbes_primary.py"
       - "billionaires-poverty-audit/tests/test_forbes_primary.py"
+      - "billionaires-poverty-audit/tests/test_forbes_pages.py"
+      - "billionaires-poverty-audit/forbes_pages.py"
       - "billionaires-poverty-audit/FORBES_PRIMARY_AUDIT.md"
       - ".github/workflows/billionaires-forbes-primary-audit.yml"
   workflow_dispatch:
@@ -27,13 +29,14 @@ jobs:
       - name: Install study dependencies
         run: python -m pip install -r billionaires-poverty-audit/requirements.txt
       - name: Validate parser code
-        run: python -m py_compile billionaires-poverty-audit/forbes_primary.py
+        run: python -m py_compile billionaires-poverty-audit/forbes_primary.py billionaires-poverty-audit/forbes_pages.py
       - name: Run deterministic Forbes parser tests
         working-directory: billionaires-poverty-audit
-        run: python -m unittest discover -s tests -p "test_forbes_primary.py" -v
+        run: python -m unittest discover -s tests -p "test_forbes*.py" -v
 
   primary-fetch:
     name: Audit live Forbes annual country aggregates
+    if: github.event_name == 'workflow_dispatch'
     needs: offline-audit-tests
     runs-on: ubuntu-latest
     timeout-minutes: 15
