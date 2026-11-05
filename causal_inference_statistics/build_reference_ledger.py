@@ -8,8 +8,11 @@ may be marked verified. This script defaults to 'pending', never guesses.
 from __future__ import annotations
 
 import csv
+import argparse
 import re
 from pathlib import Path
+
+from manuscript_sources import read_manuscript
 
 ROOT = Path(__file__).resolve().parent
 DOI = re.compile(r"https?://(?:dx\.)?doi\.org/(\S+)", re.IGNORECASE)
@@ -47,11 +50,13 @@ def doi(reference: str) -> str:
 
 def main() -> None:
     """Write occurrence and unique-reference CSVs without changing source files."""
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--manuscript-root", type=Path, default=ROOT)
+    args = parser.parse_args()
     unique: dict[str, dict[str, str]] = {}
     occurrences: list[dict[str, str | int]] = []
     for part in range(1, 21):
-        path = ROOT / f"part{part}" / "article.md"
-        for index, citation in enumerate(bibliography(path.read_text(encoding="utf-8")), start=1):
+        for index, citation in enumerate(bibliography(read_manuscript(args.manuscript_root, part)), start=1):
             ref_id = canonical_id(citation)
             if ref_id in unique and unique[ref_id]["reference"] != citation:
                 # Differences limited to identifier links are allowed; other
