@@ -147,8 +147,8 @@ on which published Gallup retrospective series was used and on an
 influential election in the ten-election test set.
 
 The recorded forecasts are available in
-[`results/forecast_lock.json`](https://github.com/DiogoRibeiro7/Medium-Blog/blob/30e41b905990e321826bc0746d2ef8b09e239d7d/midterm-forecast-fit-vs-prediction/results/forecast_lock.json) and the
-[registration report](https://github.com/DiogoRibeiro7/Medium-Blog/blob/30e41b905990e321826bc0746d2ef8b09e239d7d/midterm-forecast-fit-vs-prediction/PRE_ELECTION_REGISTRATION.md). The source commit
+[`results/forecast_lock.json`](https://github.com/DiogoRibeiro7/Medium-Blog/blob/b83108c28d11a31e9dba6c34304730579df0cfd3/midterm-forecast-fit-vs-prediction/results/forecast_lock.json) and the
+[registration report](https://github.com/DiogoRibeiro7/Medium-Blog/blob/b83108c28d11a31e9dba6c34304730579df0cfd3/midterm-forecast-fit-vs-prediction/PRE_ELECTION_REGISTRATION.md). The source commit
 was `fe98742efb86756fc30967477098482eb7505783`. The locked scoring rule
 sets signed error equal to forecast minus final observed seat change, with
 absolute error equal to its magnitude. It requires the final House
@@ -159,7 +159,7 @@ forecast manifest. The research question is stronger because the boundary
 is explicit: the 2026 data cannot teach the original model how to predict
 2026.
 
-![Registered OLS prediction and conditional AP scenario](https://raw.githubusercontent.com/DiogoRibeiro7/Medium-Blog/30e41b905990e321826bc0746d2ef8b09e239d7d/midterm-forecast-fit-vs-prediction/post_election/figures/fig1_registered_interval_and_live_scenario.png)
+![Registered OLS prediction and conditional AP scenario](https://raw.githubusercontent.com/DiogoRibeiro7/Medium-Blog/b83108c28d11a31e9dba6c34304730579df0cfd3/midterm-forecast-fit-vs-prediction/post_election/figures/fig1_registered_interval_and_live_scenario.png)
 
 *Figure 1. The frozen OLS point and model-based prediction interval are
 compared with the 4 November AP scenario in which all then-current leads
@@ -228,7 +228,7 @@ uncertainty distribution of the House regression. Broad political
 interpretation and precise model evaluation are complementary activities
 only when their evidential boundaries are clear.
 
-![Called House seats separated from uncalled leads](https://raw.githubusercontent.com/DiogoRibeiro7/Medium-Blog/30e41b905990e321826bc0746d2ef8b09e239d7d/midterm-forecast-fit-vs-prediction/post_election/figures/fig2_called_seats_vs_uncalled_leads.png)
+![Called House seats separated from uncalled leads](https://raw.githubusercontent.com/DiogoRibeiro7/Medium-Blog/b83108c28d11a31e9dba6c34304730579df0cfd3/midterm-forecast-fit-vs-prediction/post_election/figures/fig2_called_seats_vs_uncalled_leads.png)
 
 *Figure 2. The AP aggregate at 10:51:02 UTC: solid segments represent
 called Democratic and Republican seats; hatched segments represent the
@@ -272,11 +272,11 @@ other member caucusing with Republicans. That is not a reason to replace the
 registered model's 220-seat defended baseline. The two numbers describe
 different reporting conventions and reference dates; our forecast explicitly
 conditions on the latter. The independent chronology in
-[`results/snapshot_history.json`](https://github.com/DiogoRibeiro7/Medium-Blog/blob/30e41b905990e321826bc0746d2ef8b09e239d7d/midterm-forecast-fit-vs-prediction/post_election/results/snapshot_history.json) records
+[`results/snapshot_history.json`](https://github.com/DiogoRibeiro7/Medium-Blog/blob/b83108c28d11a31e9dba6c34304730579df0cfd3/midterm-forecast-fit-vs-prediction/post_election/results/snapshot_history.json) records
 both snapshots and their differences, with unit tests verifying the
 arithmetic. The two archived inputs are
-[`4 November`](https://github.com/DiogoRibeiro7/Medium-Blog/blob/30e41b905990e321826bc0746d2ef8b09e239d7d/midterm-forecast-fit-vs-prediction/post_election/data/ap_house_live_2026-11-04.json) and
-[`5 November`](https://github.com/DiogoRibeiro7/Medium-Blog/blob/30e41b905990e321826bc0746d2ef8b09e239d7d/midterm-forecast-fit-vs-prediction/post_election/data/ap_house_live_2026-11-05.json), respectively. Neither
+[`4 November`](https://github.com/DiogoRibeiro7/Medium-Blog/blob/b83108c28d11a31e9dba6c34304730579df0cfd3/midterm-forecast-fit-vs-prediction/post_election/data/ap_house_live_2026-11-04.json) and
+[`5 November`](https://github.com/DiogoRibeiro7/Medium-Blog/blob/b83108c28d11a31e9dba6c34304730579df0cfd3/midterm-forecast-fit-vs-prediction/post_election/data/ap_house_live_2026-11-05.json), respectively. Neither
 contains an official target value. That remains the condition for computing
 the formal prospective score.
 
@@ -388,7 +388,7 @@ for interpretation. Here, the exact interval-hit result must be recorded
 when final data exist, while the associated forecast error and source
 uncertainty must be discussed separately.
 
-![Integer thresholds for final GOP total](https://raw.githubusercontent.com/DiogoRibeiro7/Medium-Blog/30e41b905990e321826bc0746d2ef8b09e239d7d/midterm-forecast-fit-vs-prediction/post_election/figures/fig4_integer_interval_hit_boundary.png)
+![Integer thresholds for final GOP total](https://raw.githubusercontent.com/DiogoRibeiro7/Medium-Blog/b83108c28d11a31e9dba6c34304730579df0cfd3/midterm-forecast-fit-vs-prediction/post_election/figures/fig4_integer_interval_hit_boundary.png)
 
 *Figure 3. Under the pre-election baseline of 220 GOP seats, integers
 172–203 fall within the frozen OLS 95% model-based interval. A 171-seat
@@ -454,7 +454,7 @@ hypothetical seat totals. The line chart tells the reader how the
 score *would* change under different eventual outcomes. It does not
 forecast which of those eventual outcomes is most likely.
 
-![Four registered point forecasts and conditional AP trend](https://raw.githubusercontent.com/DiogoRibeiro7/Medium-Blog/30e41b905990e321826bc0746d2ef8b09e239d7d/midterm-forecast-fit-vs-prediction/post_election/figures/fig3_frozen_estimators_vs_live_scenario.png)
+![Four registered point forecasts and conditional AP trend](https://raw.githubusercontent.com/DiogoRibeiro7/Medium-Blog/b83108c28d11a31e9dba6c34304730579df0cfd3/midterm-forecast-fit-vs-prediction/post_election/figures/fig3_frozen_estimators_vs_live_scenario.png)
 
 *Figure 4. The four registered candidate point forecasts all imply losses
 of roughly 31–34 seats. The common AP if-leads-hold conditional scenario
@@ -462,7 +462,7 @@ is a 48-seat loss under the registered baseline. The red marker is held
 fixed to show the discrepancy; selecting a candidate estimator after
 seeing it would constitute hindsight model selection.*
 
-![Error sensitivity with different hypothetical GOP totals](https://raw.githubusercontent.com/DiogoRibeiro7/Medium-Blog/30e41b905990e321826bc0746d2ef8b09e239d7d/midterm-forecast-fit-vs-prediction/post_election/figures/fig5_error_sensitivity_to_final_totals.png)
+![Error sensitivity with different hypothetical GOP totals](https://raw.githubusercontent.com/DiogoRibeiro7/Medium-Blog/b83108c28d11a31e9dba6c34304730579df0cfd3/midterm-forecast-fit-vs-prediction/post_election/figures/fig5_error_sensitivity_to_final_totals.png)
 
 *Figure 5. Signed differences are forecast minus hypothetical observed
 change. Positive numbers represent losses that would be underestimated
@@ -528,7 +528,7 @@ primary interval selected for formal scoring. If the source-compatible
 final outcome differs from the live scenario, the comparison must be
 recomputed without changing the definitions.
 
-![Classical prediction interval and bootstrap sensitivity band](https://raw.githubusercontent.com/DiogoRibeiro7/Medium-Blog/30e41b905990e321826bc0746d2ef8b09e239d7d/midterm-forecast-fit-vs-prediction/post_election/figures/fig6_model_interval_vs_bootstrap_sensitivity.png)
+![Classical prediction interval and bootstrap sensitivity band](https://raw.githubusercontent.com/DiogoRibeiro7/Medium-Blog/b83108c28d11a31e9dba6c34304730579df0cfd3/midterm-forecast-fit-vs-prediction/post_election/figures/fig6_model_interval_vs_bootstrap_sensitivity.png)
 
 *Figure 6. The model-based 95% prediction interval and the bootstrap
 sensitivity range have different inferential statuses. The conditional
@@ -600,7 +600,7 @@ management, industrial forecasting and healthcare prediction as well
 as to electoral analysis. Decisions often turn on individual cases,
 while estimates of average model accuracy require repeated evaluation.
 
-![Historical forward RMSE beside one conditional discrepancy](https://raw.githubusercontent.com/DiogoRibeiro7/Medium-Blog/30e41b905990e321826bc0746d2ef8b09e239d7d/midterm-forecast-fit-vs-prediction/post_election/figures/fig8_history_vs_one_provisional_discrepancy.png)
+![Historical forward RMSE beside one conditional discrepancy](https://raw.githubusercontent.com/DiogoRibeiro7/Medium-Blog/b83108c28d11a31e9dba6c34304730579df0cfd3/midterm-forecast-fit-vs-prediction/post_election/figures/fig8_history_vs_one_provisional_discrepancy.png)
 
 *Figure 7. An RMSE computed from ten earlier forward test elections
 and a single discrepancy against an unconfirmed live scenario share
@@ -987,7 +987,7 @@ two statements is essential because a prospective
 test may be valid even when the candidate forecast
 was developed through historical exploration.
 
-![Chronology of information and evaluation](https://raw.githubusercontent.com/DiogoRibeiro7/Medium-Blog/30e41b905990e321826bc0746d2ef8b09e239d7d/midterm-forecast-fit-vs-prediction/post_election/figures/fig7_ex_ante_to_unverified_and_final_timeline.png)
+![Chronology of information and evaluation](https://raw.githubusercontent.com/DiogoRibeiro7/Medium-Blog/b83108c28d11a31e9dba6c34304730579df0cfd3/midterm-forecast-fit-vs-prediction/post_election/figures/fig7_ex_ante_to_unverified_and_final_timeline.png)
 
 *Figure 8. The chronology is part of the evidence. A forecast information
 cutoff on 31 October is not the same date as the 1 November registration.
@@ -1237,9 +1237,9 @@ to meet.
 ## Sources, reproducibility and disclosure
 
 1. **Ribeiro, Diogo (31 October 2026).** [*The Forecast Is Not the Fit: Rebuilding an 89% Midterm Election Model*](https://diogo-ribeiro-1975.medium.com/the-forecast-is-not-the-fit-rebuilding-an-89-midterm-election-model-8fb36cc269be). The original pre-election analysis; historical model, figures, forward tests and provenance.
-2. **Ribeiro, Diogo (1 November 2026).** [Pre-election registration](https://github.com/DiogoRibeiro7/Medium-Blog/blob/30e41b905990e321826bc0746d2ef8b09e239d7d/midterm-forecast-fit-vs-prediction/PRE_ELECTION_REGISTRATION.md) and [immutable forecasting manifest](https://github.com/DiogoRibeiro7/Medium-Blog/blob/30e41b905990e321826bc0746d2ef8b09e239d7d/midterm-forecast-fit-vs-prediction/results/forecast_lock.json). Information cutoff 31 October; registered reference source commit `fe98742efb86756fc30967477098482eb7505783`.
-3. **Associated Press (4 November 2026).** [U.S. election results hub](https://apnews.com/hub/elections). Aggregate House snapshot reported 10:51:02 UTC and retrieved 10:51:54 UTC, archived in [`data/ap_house_live_2026-11-04.json`](https://github.com/DiogoRibeiro7/Medium-Blog/blob/30e41b905990e321826bc0746d2ef8b09e239d7d/midterm-forecast-fit-vs-prediction/post_election/data/ap_house_live_2026-11-04.json). Source status live and unofficial.
-4. **Associated Press (5 November 2026).** [U.S. election results hub](https://apnews.com/hub/elections). Follow-up aggregate House snapshot reported 13:10:04 UTC and retrieved 13:10:31 UTC, archived separately in [`data/ap_house_live_2026-11-05.json`](https://github.com/DiogoRibeiro7/Medium-Blog/blob/30e41b905990e321826bc0746d2ef8b09e239d7d/midterm-forecast-fit-vs-prediction/post_election/data/ap_house_live_2026-11-05.json). Source status still live and unofficial.
+2. **Ribeiro, Diogo (1 November 2026).** [Pre-election registration](https://github.com/DiogoRibeiro7/Medium-Blog/blob/b83108c28d11a31e9dba6c34304730579df0cfd3/midterm-forecast-fit-vs-prediction/PRE_ELECTION_REGISTRATION.md) and [immutable forecasting manifest](https://github.com/DiogoRibeiro7/Medium-Blog/blob/b83108c28d11a31e9dba6c34304730579df0cfd3/midterm-forecast-fit-vs-prediction/results/forecast_lock.json). Information cutoff 31 October; registered reference source commit `fe98742efb86756fc30967477098482eb7505783`.
+3. **Associated Press (4 November 2026).** [U.S. election results hub](https://apnews.com/hub/elections). Aggregate House snapshot reported 10:51:02 UTC and retrieved 10:51:54 UTC, archived in [`data/ap_house_live_2026-11-04.json`](https://github.com/DiogoRibeiro7/Medium-Blog/blob/b83108c28d11a31e9dba6c34304730579df0cfd3/midterm-forecast-fit-vs-prediction/post_election/data/ap_house_live_2026-11-04.json). Source status live and unofficial.
+4. **Associated Press (5 November 2026).** [U.S. election results hub](https://apnews.com/hub/elections). Follow-up aggregate House snapshot reported 13:10:04 UTC and retrieved 13:10:31 UTC, archived separately in [`data/ap_house_live_2026-11-05.json`](https://github.com/DiogoRibeiro7/Medium-Blog/blob/b83108c28d11a31e9dba6c34304730579df0cfd3/midterm-forecast-fit-vs-prediction/post_election/data/ap_house_live_2026-11-05.json). Source status still live and unofficial.
 5. **Associated Press (4 November 2026).** [Democrats win control of Congress](https://apnews.com/article/ef6199e25927a9ac9f4c18eae0e497cd). News report provides contemporaneous political context, not the official numeric seat-change target.
 6. **Federal Election Commission.** [Election and voting information](https://www.fec.gov/introduction-campaign-finance/election-results-and-voting-information/). Identifies 3 November 2026 as the regular federal election date.
 7. **U.S. House Historian.** [Party Divisions of the House of Representatives](https://history.house.gov/Institution/Party-Divisions/Party-Divisions/). Historical initial-election party divisions; required source category for final outcome scoring.
@@ -1248,12 +1248,12 @@ to meet.
 
 **Reproducibility.** The complete source, archived input, generated figures,
 numeric diagnostics and unit tests are under
-[`midterm-forecast-fit-vs-prediction/post_election/`](https://github.com/DiogoRibeiro7/Medium-Blog/tree/30e41b905990e321826bc0746d2ef8b09e239d7d/midterm-forecast-fit-vs-prediction/post_election).
+[`midterm-forecast-fit-vs-prediction/post_election/`](https://github.com/DiogoRibeiro7/Medium-Blog/tree/b83108c28d11a31e9dba6c34304730579df0cfd3/midterm-forecast-fit-vs-prediction/post_election).
 The eight figures and all quoted conditional calculations are regenerated
 by `analysis.py`, which reads the archived AP snapshot and the frozen
 forecast lock without network access. The additional dated comparison is
 regenerated by `snapshot_history.py`, which reads both AP snapshots and
 the same frozen lock. The final official scorer remains
 `../score_after_election.py`; it has not been run on the live AP data.
-The [claim-by-claim evidence ledger](https://github.com/DiogoRibeiro7/Medium-Blog/blob/30e41b905990e321826bc0746d2ef8b09e239d7d/midterm-forecast-fit-vs-prediction/post_election/CLAIM_AUDIT.md) lists what is fixed,
+The [claim-by-claim evidence ledger](https://github.com/DiogoRibeiro7/Medium-Blog/blob/b83108c28d11a31e9dba6c34304730579df0cfd3/midterm-forecast-fit-vs-prediction/post_election/CLAIM_AUDIT.md) lists what is fixed,
 what is provisional, what is hypothetical and what is not established.

@@ -65,6 +65,16 @@ class PublicationTests(unittest.TestCase):
         self.assertIn("Research draft, 4 November 2026", prepared)
         self.assertIn("not certified election results", prepared)
         self.assertIn("https://github.com/DiogoRibeiro7/Medium-Blog/blob/", prepared)
+        self.assertIn(
+            f"https://github.com/{publication.REPOSITORY}/blob/{self.manifest.commit}/"
+            "midterm-forecast-fit-vs-prediction/post_election/data/ap_house_live_2026-11-05.json",
+            prepared,
+        )
+
+    def test_removed_november_fifth_update_is_rejected(self) -> None:
+        without_update = self.source.replace("48 uncalled races", "no update after the first snapshot")
+        with self.assertRaisesRegex(ValueError, "5 November dated update"):
+            publication.validate_manuscript(without_update)
 
 
 if __name__ == "__main__":

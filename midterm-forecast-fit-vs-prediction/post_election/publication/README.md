@@ -9,10 +9,11 @@ full methodological caveats. The original manuscript is
 ## What this package does
 
 1. Converts eight `figures/*.png` Markdown references to full public GitHub
-   raw image URLs pinned to commit `30e41b905990e321826bc0746d2ef8b09e239d7d`.
+   raw image URLs pinned to commit `b83108c28d11a31e9dba6c34304730579df0cfd3`.
 2. Verifies each image's SHA-256 against
    [`figure_manifest.json`](figure_manifest.json) before including its URL.
-3. Converts relative repository-companion references to pinned GitHub links;
+3. Converts relative repository-companion references to links at that same
+   immutable commit, which contains **both dated snapshots**;
    external source URLs remain unchanged.
 4. Checks that the manuscript is at least 8,000 words, is marked as a
    research draft, distinguishes the 68 and 48 uncalled races in the two
