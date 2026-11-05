@@ -1,0 +1,85 @@
+name: Exploratory 2026 Forbes citizenship association
+
+on:
+  pull_request:
+    paths:
+      - "billionaires-poverty-audit/**"
+      - ".github/workflows/billionaires-poverty-citizenship.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exploratory-citizenship:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: billionaires-poverty-audit/requirements.txt
+      - name: Install packages
+        run: python -m pip install -r billionaires-poverty-audit/requirements.txt
+      - name: Run deterministic contract tests
+        working-directory: billionaires-poverty-audit
+        run: python -m unittest discover -s tests -p "test_*.py" -v
+      - name: Capture public OWID/WDI inputs with integrity ledger
+        working-directory: billionaires-poverty-audit
+        run: python source_pipeline.py fetch --output-dir data/source_snapshots
+      - name: Validate official-source coverage
+        working-directory: billionaires-poverty-audit
+        run: |
+          python source_preflight.py \
+            --snapshot-dir data/source_snapshots \
+            --output results/public_source_coverage.json
+      - name: Run exploratory citizenship models on real official snapshots
+        working-directory: billionaires-poverty-audit
+        run: |
+          python secondary_citizenship.py \
+            --snapshots data/source_snapshots \
+            --forbes data/forbes_2026_citizenship_secondary.csv \
+            --output results/citizenship_exploratory
+      - name: Show source coverage and results (provisional)
+        working-directory: billionaires-poverty-audit
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          record = json.loads(
+              Path("results/citizenship_exploratory/analysis.json").read_text()
+          )
+          models = record["models"]["models"]
+          lines = [
+              "## Exploratory Forbes 2026 citizenship comparison",
+              "",
+              "**Not the original figure and not causal evidence.**",
+              "",
+              f"- Matched country observations: {record['n_matched_countries']}",
+              f"- Unmatched secondary-transcription countries: {record['n_unmatched_secondary_countries']}",
+              f"- Raw R²: {models['billionaires_only']['r_squared']:.4f}",
+              f"- GDP-only R²: {models['gdp_only']['r_squared']:.4f}",
+              f"- GDP + billionaire R²: {models['both']['r_squared']:.4f}",
+              f"- Incremental R²: {record['models']['incremental_r2_billionaires_conditional_on_gdp']:.4f}",
+              "",
+              "Full verified-input provenance and country exclusions are in the artifact.",
+          ]
+          with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as f:
+              f.write("\n".join(lines) + "\n")
+          print("\n".join(lines))
+          PY
+      - name: Archive source snapshots, country panel and result diagnostics
+        uses: actions/upload-artifact@v4
+        with:
+          name: billionaire-poverty-citizenship-exploratory-${{ github.run_id }}
+          path: |
+            billionaires-poverty-audit/data/source_snapshots/
+            billionaires-poverty-audit/data/forbes_2026_citizenship_secondary.csv
+            billionaires-poverty-audit/results/public_source_coverage.json
+            billionaires-poverty-audit/results/citizenship_exploratory/
+          retention-days: 30
+          if-no-files-found: error
