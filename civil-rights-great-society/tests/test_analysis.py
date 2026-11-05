@@ -126,14 +126,28 @@ class HypotheticalMechanismTests(unittest.TestCase):
 
 
 class PublicationContractTests(unittest.TestCase):
-    def test_medium_article_long_form_and_figure_links(self) -> None:
+    def test_public_manuscript_is_a_private_archive_notice(self) -> None:
+        """Keep the editorial location discoverable without testing private prose."""
         root = Path(__file__).resolve().parents[1]
-        article = (root / "article.md").read_text(encoding="utf-8")
-        self.assertGreaterEqual(len(article.split()), 8000)
-        for number, name in enumerate(FIGURE_NAMES, 1):
-            self.assertEqual(article.count(f"](figures/{name})"), 1)
-            self.assertIn(f"Figure {number} —", article)
-        self.assertIn("## Sources and methodological notes", article)
+        notice = (root / "article.md").read_text(encoding="utf-8")
+        self.assertIn("research-articles-medium", notice)
+        self.assertIn("private", notice.lower())
+        self.assertLess(len(notice.split()), 150)
+
+    def test_checked_in_figures_have_valid_png_headers(self) -> None:
+        """Check the public eight-figure archive independently of manuscript text."""
+        root = Path(__file__).resolve().parents[1] / "figures"
+        self.assertEqual(
+            {path.name for path in root.glob("figure_*.png")}, set(FIGURE_NAMES)
+        )
+        for figure_name in FIGURE_NAMES:
+            with self.subTest(figure=figure_name):
+                with (root / figure_name).open("rb") as image:
+                    header = image.read(24)
+                self.assertEqual(header[:8], b"\x89PNG\r\n\x1a\n")
+                self.assertEqual(header[12:16], b"IHDR")
+                self.assertGreater(int.from_bytes(header[16:20], "big"), 0)
+                self.assertGreater(int.from_bytes(header[20:24], "big"), 0)
 
     def test_notebook_reuses_single_calculation_module(self) -> None:
         root = Path(__file__).resolve().parents[1]

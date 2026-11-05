@@ -1,0 +1,28 @@
+name: Causal Part 20 capacity frontier
+
+on:
+  pull_request:
+    paths:
+      - 'causal_inference_statistics/part20/part20_capacity_frontier.py'
+      - 'causal_inference_statistics/part20/test_part20_capacity_frontier.py'
+      - 'causal_inference_statistics/part20/CAPACITY_FRONTIER.md'
+      - '.github/workflows/causal-part20-capacity-frontier.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  analytical-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate Gaussian welfare frontier
+        run: |
+          python -m unittest discover -s causal_inference_statistics/part20 \
+            -p 'test_part20_capacity_frontier.py' -v
+      - name: Print exact capacity comparison
+        run: python causal_inference_statistics/part20/part20_capacity_frontier.py

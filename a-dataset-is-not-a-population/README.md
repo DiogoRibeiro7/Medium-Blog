@@ -1,9 +1,13 @@
-# A Dataset Is Not a Population — research companion (in progress)
+# A Dataset Is Not a Population — public research companion
 
-This directory is the staged, synthetic research companion for Article #34.
-The [research plan](RESEARCH_PLAN.md) specifies nine studies. **Only the
-all nine simulation mechanisms are implemented.** There is no complete article, final figure
-set, publication dataset, or notebook yet; this branch remains a draft.
+This directory contains the reproducible synthetic experiments supporting
+**A Dataset Is Not a Population**. The full [editorial manuscript](https://github.com/DiogoRibeiro7/research-articles-medium/blob/main/a-dataset-is-not-a-population/article.md)
+is maintained privately, while [`article.md`](article.md) preserves the
+historical public path as a compatibility notice.
+
+The [research plan](RESEARCH_PLAN.md) specifies nine implemented studies.
+Their code, canonical evidence tables, figures, notebook and scientific audit
+remain in this public repository.
 
 ## Implemented studies
 
@@ -62,15 +66,16 @@ coverage directly.
 
 ## Verification scope
 
-The sixteen unittest cases (including an opt-in notebook execution test)
-verify deterministic streams,
+The unittest suite (including an opt-in notebook execution test)
+verifies deterministic streams,
 complete methods and finite rows, algebraic archive identities, known-weight
 correction of stratified oversampling, and an oracle-weight improvement over
 the intentionally misspecified response mechanism, undercoverage, opt-in
 selection bias, marginal-versus-joint calibration, weight clipping,
 covariate-shift prediction risk and concept shift. They are regression
 checks, not substitutes for the remaining experimental, theoretical and
-source audit requirements.
+source audit requirements. The public checks also validate the nine canonical PNG
+headers and dimensions without relying on manuscript formatting.
 
 ## Full synthetic evidence and figures
 
@@ -89,8 +94,8 @@ python figures.py --data /tmp/article34-full --output /tmp/article34-figures
 These outputs are synthetic experiment evidence, not representative empirical
 survey observations. Cross-repetition intervals quantify simulation means.
 The plot colors are descriptive visual markers and must not be interpreted as
-formal accept/reject decisions. A complete article still needs a checked
-manuscript, sources and independent evidence audit.
+formal accept/reject decisions. Editorial source review takes place in the
+private manuscript repository; public CI validates the generated evidence.
 
 ## Executable notebook
 

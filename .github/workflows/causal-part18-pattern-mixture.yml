@@ -1,0 +1,28 @@
+name: Causal Part 18 pattern-mixture sensitivity
+
+on:
+  pull_request:
+    paths:
+      - 'causal_inference_statistics/part18/part18_pattern_mixture.py'
+      - 'causal_inference_statistics/part18/test_part18_pattern_mixture.py'
+      - 'causal_inference_statistics/part18/PATTERN_MIXTURE_SENSITIVITY.md'
+      - '.github/workflows/causal-part18-pattern-mixture.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  analytical-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify pattern-mixture identities and edge cases
+        run: |
+          python -m unittest discover -s causal_inference_statistics/part18 \
+            -p 'test_part18_pattern_mixture.py' -v
+      - name: Print illustrative tipping point
+        run: python causal_inference_statistics/part18/part18_pattern_mixture.py

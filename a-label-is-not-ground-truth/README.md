@@ -1,6 +1,6 @@
 # A Label Is Not Ground Truth — reproducible companion
 
-Article #32 of the `Medium-Blog` long-form series. The [manuscript](article.md) addresses binary label noise, annotation quality, latent-variable aggregation, selective observation, test-label bias, entity leakage and label-policy changes. It includes original derivations and nine seeded experiments.
+Public reproducibility companion for article #32 of the `Medium-Blog` series. The complete editorial manuscript now lives in the private `DiogoRibeiro7/research-articles-medium` repository; [article.md](article.md) is a short migration notice. The study covers binary label noise, annotation quality, latent-variable aggregation, selective observation, test-label bias, entity leakage and label-policy changes, with nine seeded experiments.
 
 **All observations and latent outcomes are synthetic.** The simulation knows latent truth because it creates it. A deployed dataset ordinarily has no such oracle labels. Reported rates are demonstrations under the specified generators, not estimates of real-world annotation error or a recommendation to relabel any actual person.
 
@@ -46,7 +46,7 @@ The workflow [`a-label-is-not-ground-truth.yml`](../.github/workflows/a-label-is
 | `fig8_entity_leakage.png` | `leakage` | 20 | Repeated entity fingerprints with random entity labels; row split versus truly unseen-entity split |
 | `fig9_annotation_policy_drift.png` | `policy` | 30 | Fixed latent outcomes and predictions; change the labeler's false-positive/false-negative policy |
 
-The canonical archive contains **18 CSVs** and **9 original publication PNGs**, plus this README, article, analysis source, notebook generator, executable notebook, pinned numerical dependencies, and tests. No external dataset download, secret, or cloud credential is required.
+The public computational archive contains **18 CSVs** and **9 original publication PNGs**, plus this README, manuscript migration notice, analysis source, notebook generator, executable notebook, pinned numerical dependencies, and tests. No external dataset download, secret, or cloud credential is required.
 
 ## Numerical cross-checks
 
@@ -63,7 +63,7 @@ The canonical archive contains **18 CSVs** and **9 original publication PNGs**, 
 
 The conditional noise-channel inversion assumes rates are known and their sum differs from one; the published examples use sums below one, while the correction function also supports negatively oriented, invertible channels. The EM algorithm assumes binary outcomes, complete worker votes, conditional independence, an oriented initialization, and regularized confusion matrices. It does not prove that the consensus equals truth. The shared-error study intentionally violates conditional independence. The review-audit estimator assumes true random audits of the unreviewed population with known inclusion probability; auditing only alerts would not support that correction. The model-ranking reversal is *intentionally preferential label replacement*, not independent random noise. The random entity labels in study eight are constructed to expose an evaluation split error, not to describe actual people. None of these simulations supplies an external validity guarantee.
 
-The manuscript provides the precise definitions, source audit, interpretation limits, and a practical protocol for real-world label governance.
+The privately archived manuscript provides the precise definitions, source audit, interpretation limits, and a practical protocol for real-world label governance.
 
 The notebook can be executed with the kernel working directory set to the
 article directory or to the repository root. When the kernel starts in an

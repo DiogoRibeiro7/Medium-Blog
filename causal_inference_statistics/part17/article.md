@@ -28,17 +28,19 @@ The substantive question remains whether the intervention changes the outcome, n
 
 ## The causal target
 
-Let A indicate treatment and Y the observed outcome. The individual potential outcomes Y(1) and Y(0) represent the outcome under intervention and control. The average treatment effect is
+In the numerical experiment, A is a **continuous Gaussian treatment intensity**, not a binary treatment indicator. Let Y(a) be the potential outcome under an intervention fixing A to level a. The causal target is the average effect of increasing treatment intensity by one unit,
 
 \[
-\tau=E\{Y(1)-Y(0)\}.
+\tau(a)=E\{Y(a+1)-Y(a)\}=1
 \]
+
+for every a. This is a unit-shift intervention effect, not a binary-treatment average treatment effect. The structural outcome model is linear in A with coefficient one, so the causal derivative \(\partial E[Y(a)]/\partial a\) also equals one.
 
 In the constructed studies, the structural effect is constant and equals one for every individual. This removes effect heterogeneity from the diagnosis. A regression estimate near one is appropriate for the target, while a value around 1.75 reflects a difference between the associational slope and the known intervention effect.
 
 To identify the effect from an observational comparison, an analyst might assume that treatment is independent of the potential outcomes conditional on measured baseline information. Our experiment omits all baseline causes from the fitted regression to make the hidden-confounding mechanism visible. The relevant distinction is whether the omitted variables influence treatment and the outcome. Some omitted prognostic variables need not be confounders; others generate bias because they influence both.
 
-A negative-control outcome N is assumed to have no causal response to A. This can be written as N(1)=N(0), or equivalently as a zero causal treatment effect on N under the specified intervention. A test of association between A and N is therefore an attempt to find evidence incompatible with some combination of no treatment effect on N and the asserted comparability of the groups.
+A negative-control outcome N is assumed to have no causal response to A. In this continuous-treatment experiment that means N(a)=N(a') for any two intervention levels a and a', or equivalently a zero causal effect of a unit shift on N. A test of association between A and N is therefore an attempt to find evidence incompatible with some combination of no treatment effect on N and the asserted comparability of the groups.
 
 The no-effect assumption is not a statistical property that can be confirmed from the same observations. It is a substantive statement about how the negative-control outcome is generated and when it is measured. If treatment actually affects N, a detected association cannot be attributed uniquely to confounding. This is why the choice of controls requires domain knowledge and causal timing, not a search for variables with convenient p-values.
 
@@ -69,7 +71,7 @@ A=U+\varepsilon_X,\qquad
 Y=A+1.5U+V+\varepsilon_Y.
 \]
 
-Now U affects treatment, the primary outcome and the negative-control outcome. N does not respond to intervention on A, but the common cause U makes it associated with A in observational data. This is precisely the structure under which the negative control should detect that the treated and untreated comparisons differ in an unobserved prognostic characteristic.
+Now U affects treatment, the primary outcome and the negative-control outcome. N does not respond to intervention on A, but the common cause U makes it associated with A in observational data. This is precisely the structure under which the negative control should detect that observations with different treatment intensities differ in an unobserved prognostic characteristic.
 
 In the outcome-specific-confounder scenario,
 
@@ -108,6 +110,20 @@ In the outcome-specific design, A depends on V while N depends on U, and U and V
 For the independent placebo exposure P, Cov(P,Y)=0 in every scenario. The placebo regression should therefore be approximately zero even in the two studies where treatment is confounded. A non-rejection in this placebo test does not favor one causal structure over another because its distribution is essentially the same under all three.
 
 The algebra explains the eventual Monte Carlo result. It also shows why these cases cannot be distinguished by making the primary regression more precise. Both confounded designs consistently estimate the same wrong slope, but the selected negative control responds to only one of them.
+
+### Population benchmarks for all three regressions
+
+The exact population slopes and leading-order homoskedastic standard errors follow directly from the structural equations. For a regression of response R on regressor X, the population slope is \(\operatorname{Cov}(X,R)/\operatorname{Var}(X)\), and its large-sample standard error is approximately \(\sqrt{\operatorname{Var}(R\mid X)/(n\operatorname{Var}(X))}\) here, where the Gaussian conditional variance is constant and \(n=1200\).
+
+| Assignment structure | Target slope (SE) | Negative-control slope (SE) | Placebo slope (SE) |
+| --- | ---: | ---: | ---: |
+| No treatment confounding | 1.00 (0.0500) | 0.00 (0.0408) | 0.00 (0.0577) |
+| Confounder shared with negative control | 1.75 (0.0361) | 0.50 (0.0250) | 0.00 (0.0878) |
+| Confounder specific to primary outcome | 1.75 (0.0361) | 0.00 (0.0289) | 0.00 (0.0878) |
+
+For instance, the shared-confounder design has \(\operatorname{Var}(A)=2\), \(\operatorname{Var}(Y\mid A)=3.125\), and \(\operatorname{Var}(N\mid A)=1.5\). The corresponding standard errors are \(\sqrt{3.125/(2n)}\) and \(\sqrt{1.5/(2n)}\). For the independent placebo, \(\operatorname{Var}(P)=1\), \(\operatorname{Cov}(P,Y)=0\), and the standard error is approximately \(\sqrt{\operatorname{Var}(Y)/n}\). The outcome variances are 4 in the unconfounded design and 9.25 in each confounded design.
+
+These are population and asymptotic benchmarks, not the exact finite-sample average standard errors. Their agreement with the Monte Carlo results provides an independent numerical cross-check. Importantly, the placebo has an *exactly zero population slope* in all scenarios, so increasing sample size will never make it reveal the confounding by itself. Reproduce the calculations with `part17_population_moments.py` and its accompanying unit tests.
 
 ## The Monte Carlo design
 
@@ -153,7 +169,7 @@ The mean coefficients from the negative-control regression are:
 | Confounder shared with negative control | 0.5011 | 100.0% |
 | Confounder specific to primary outcome | −0.0002 | 4.8% |
 
-The negative-control outcome has no causal response to treatment under any design. In the shared-confounder scenario, however, its observed association with A is approximately 0.5, matching the theoretical covariance calculation. The usual significance test detects that association in every simulated dataset. This is a successful falsification of the assumption that the observed treatment groups are exchangeable for all the relevant baseline causes linked with N.
+The negative-control outcome has no causal response to treatment under any design. In the shared-confounder scenario, however, its observed association with A is approximately 0.5, matching the theoretical covariance calculation. The usual significance test detects that association in every simulated dataset. This is a successful falsification of the assumption that observed treatment intensities are exchangeable with respect to the relevant baseline causes linked with N.
 
 In the outcome-specific scenario, the negative-control coefficient is effectively zero, and the rejection rate of 4.8% is near the nominal level. This reassuring result coexists with severe confounding of the target effect. The negative control is valid in the narrow sense that treatment cannot cause it, but it is poorly connected to the latent variable that actually threatens the analysis.
 

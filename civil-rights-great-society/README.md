@@ -1,6 +1,6 @@
 # The Right to Vote Was Only the Beginning
 
-Reproducible companion to **[The Right to Vote Was Only the Beginning: Civil Rights, the Great Society, and the Limits of Reform](article.md)**, a long-form Medium-ready historical essay. It follows earlier articles on the Gilded Age, Progressive Era, New Deal, and political civility.
+Public reproducibility companion for *The Right to Vote Was Only the Beginning: Civil Rights, the Great Society, and the Limits of Reform*. The full editorial manuscript is maintained in the private `DiogoRibeiro7/research-articles-medium` repository; [article.md](article.md) is now a short migration notice. The study follows earlier articles on the Gilded Age, Progressive Era, New Deal, and political civility.
 
 The manuscript treats civil rights and the Great Society as an interacting set of institutionsâ€”not a single intervention or a simple before-and-after experiment. It distinguishes **legal eligibility**, **enforcement and realized access**, **public-service or insurance coverage**, and **changes in observed outcomes**. No chart identifies the causal effect of a law from temporal adjacency alone.
 
@@ -20,7 +20,7 @@ For an isolated destination:
 python analysis.py --output /tmp/great-society-figures
 ```
 
-The script generates **eight original publication figures** under [figures/](figures/) and **three machine-readable result files** under [results/](results/), including a typed evidence-class column. The [Jupyter walkthrough](model_walkthrough.ipynb) imports the same functions from [analysis.py](analysis.py); it does not reproduce logic separately. A [scoped GitHub Actions workflow](../.github/workflows/great-society-article.yml) tests the sources, model contracts, manuscript, notebook structure, and regenerated figures.
+The script generates **eight original publication figures** under [figures/](figures/) and **three machine-readable result files** under [results/](results/), including a typed evidence-class column. The [Jupyter walkthrough](model_walkthrough.ipynb) imports the same functions from [analysis.py](analysis.py); it does not reproduce logic separately. A [scoped GitHub Actions workflow](../.github/workflows/great-society-article.yml) tests the sources, model contracts, the public archive notice, notebook structure, and regenerated figures.
 
 Only the checked-in CSV transcriptions are required to regenerate visuals: **no API token, network download, random seed, hidden data file, or interpolated observation** is needed.
 
@@ -130,7 +130,7 @@ The source summary includes **17 national, 34 racial, 51 age, and 30 CMS** yearâ
 6. Medicare's largely noncash coverage does not mechanically enter the official poverty resource calculation; Social Security cash payments can.
 7. Medicare and Medicaid have materially different institutional designs and should not be merged into a single number.
 8. A dated law and the enforcement capacity that makes it usable may arrive in different years.
-9. Hypothetical illustrations are labeled in **figure, code, output table, caption, and manuscript**; they are not reconstructed historical effects.
+9. Hypothetical illustrations are labeled in **figure, code, output table, and privately archived manuscript**; they are not reconstructed historical effects.
 10. The cited [historical SPM](https://www.nber.org/papers/w19789), [full-income](https://www.nber.org/papers/w26532), and [long-run dependency](https://www.nber.org/papers/w34759) studies answer different measurement questions and should not be treated as directly interchangeable estimates.
 
 **Reproducible does not mean causally identified.** It means the source values, definitions, missingness, transformations, and illustrative assumptions are visible and testable.

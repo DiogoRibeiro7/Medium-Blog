@@ -1,8 +1,10 @@
 # The Recession Ended; the Damage Did Not
 
-Reproducible companion for **[Article #25: The Financial Crisis of 2008, the Great Recession, and America's Unequal Recovery, 2007–2019](article.md)** in the [Medium-Blog article series](../ARTICLES.md). The companion follows [the pre-2008 globalization and credit history](../financialization-before-2008/article.md).
+Public reproducibility companion for *Article #25: The Financial Crisis of 2008, the Great Recession, and America's Unequal Recovery, 2007–2019* in the [Medium-Blog research series](../ARTICLES.md). The complete editorial manuscript is maintained in the private `DiogoRibeiro7/research-articles-medium` repository; [article.md](article.md) is a migration notice. This companion follows [the pre-2008 globalization and credit study](../financialization-before-2008/).
 
 The analytical interval ends **31 December 2019**, before COVID-19. The first **seven publication figures** use original public institutional observations. The **eighth** is a clearly labeled hypothetical bank-capital identity. None estimates a causal policy effect, default probability, or bank-specific solvency.
+
+Racial-wealth and other survey comparisons are descriptive **repeated cross-sections**, not observations of the same households over time. These figures identify neither treatment effects nor a policy counterfactual.
 
 ## Reproduce entirely offline
 
@@ -29,7 +31,7 @@ The analysis creates **exactly eight PNGs** and **three CSV result tables**. The
 
 | File | Role |
 | --- | --- |
-| [article.md](article.md) | Long-form Medium-ready source-based historical manuscript |
+| [article.md](article.md) | Short pointer to the privately archived editorial manuscript |
 | [prepare_data.py](prepare_data.py) | Typed BLS API parsing, completeness validation, FRED annualization and deterministic table generation |
 | [analysis.py](analysis.py) | Figures, recovery benchmarks, SCF comparisons, hypothetical sensitivity grid |
 | [model_walkthrough.ipynb](model_walkthrough.ipynb) | Executable tour of analytical choices |
@@ -41,7 +43,7 @@ The analysis creates **exactly eight PNGs** and **three CSV result tables**. The
 | [results/recovery_milestones.csv](results/recovery_milestones.csv) | Four benchmark dates and their first post-recession crossings |
 | [results/racial_outcomes.csv](results/racial_outcomes.csv) | Triennial SCF medians, group ratios and independently measured BLS gap |
 | [results/capital_scenarios.csv](results/capital_scenarios.csv) | Fictional bank sales after markdowns under three initial capital buffers |
-| [tests/test_analysis.py](tests/test_analysis.py) | Source, arithmetic, plotting and publication checks |
+| [tests/test_analysis.py](tests/test_analysis.py) | Source, arithmetic, archived artifacts and offline reproduction checks |
 
 ## Eight publication figures
 
@@ -83,6 +85,6 @@ The SCF CSV transcribes fifteen values from the **median wealth by race** panel 
 
 ### What the charts cannot determine
 
-They do not estimate TARP's counterfactual employment effect, the loss prevented by an AIG or Bear Stearns intervention, the number of foreclosures a mortgage program avoided, the benefits and costs of QE, or the cause of racial disparities. Those require identifiable treatments, comparisons, survey uncertainty, matched firm or household data, and explicit assumptions. The citations in the manuscript lead to government reports and relevant original research where such mechanisms are discussed.
+They do not estimate TARP's counterfactual employment effect, the loss prevented by an AIG or Bear Stearns intervention, the number of foreclosures a mortgage program avoided, the benefits and costs of QE, or the cause of racial disparities. Those require identifiable treatments, comparisons, survey uncertainty, matched firm or household data, and explicit assumptions. The citations in the privately archived manuscript lead to government reports and relevant original research where such mechanisms are discussed.
 
-This is a publication-ready manuscript in a repository. It is **not** an automatic posting to Medium.
+The full editorial manuscript is privately archived. The public repository is its reproducibility companion, not an automatic posting to Medium.
