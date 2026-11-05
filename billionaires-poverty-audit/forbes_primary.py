@@ -17,7 +17,7 @@ from typing import Any, Mapping
 
 import pandas as pd
 
-from resilient_fetch import fetch_bytes
+from forbes_pages import retrieve_annual_list
 
 FORBES_URL: str = (
     "https://www.forbes.com/forbesapi/person/billionaires/"
@@ -165,9 +165,17 @@ def run_primary_audit(
         raise FileExistsError(f"Refusing to replace existing audit: {output_dir}")
     if payload is not None and not isinstance(payload, bytes):
         raise TypeError("payload must be bytes or None")
-    raw = payload if payload is not None else fetch_bytes(
-        source_url, name="forbes_2026_annual.json"
-    )
+    if payload is None:
+        raw, source_provenance = retrieve_annual_list(
+            source_url, expected_count=expected_count
+        )
+    else:
+        raw = payload
+        source_provenance = {
+            "mode": "provided_test_fixture",
+            "sha256": hashlib.sha256(raw).hexdigest(),
+            "raw_response": False,
+        }
     persons, schema = parse_annual_list(raw, expected_count=expected_count)
     counts, coverage = aggregate_country_fields(persons)
     comparison = (
@@ -179,6 +187,11 @@ def run_primary_audit(
         "retrieved_at_utc": datetime.now(timezone.utc).isoformat(),
         "source_sha256": hashlib.sha256(raw).hexdigest(),
         "source_bytes": len(raw),
+        "source_retrieval": source_provenance,
+        "source_sha256_meaning": (
+            "Raw response for single-response mode, derived in-memory JSON "
+            "for paginated mode. Raw page hashes are in source_retrieval."
+        ),
         "schema": schema,
         "coverage": coverage,
         "secondary_comparison_rows": len(comparison),
