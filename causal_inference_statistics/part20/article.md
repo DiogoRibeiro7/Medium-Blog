@@ -340,4 +340,14 @@ The original experiment deliberately uses a monotonic linear treatment benefit a
 
 A separate reproducibility script, `validate_policy.py`, extends the experiment to a nonlinear treatment benefit, `0.5 + 1.5 X - 0.8(X² - 1)`, comparing linear and quadratic CATE rankings with risk targeting, random assignment and the oracle under a 20% capacity constraint. It includes an otherwise similar target-population shift and a smaller, noisier randomized training sample. The polynomial baseline-outcome features are held fixed while the treatment-effect specification varies, so the comparison isolates effect-model misspecification.
 
-The stress-test has been committed as a planned validation, but its numerical results have **not yet been reproduced in the execution environment** and are deliberately not reported here. Do not interpret the existing near-oracle outcome as evidence about these harder regimes until `validation_results.csv` has been generated, checked, and incorporated. No original findings or tables have been replaced.
+The stress test has now been executed with the prespecified seed 20261019, 500 replications per scenario, and an independently generated held-out population of 2,000 individuals per replication. It produces `validation_results.csv` and the following average per-treated benefits and regrets (each relative to its own scenario's oracle):
+
+| Scenario | Random benefit | Risk benefit | Linear CATE benefit (regret) | Quadratic CATE benefit (regret) | Oracle benefit |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Nonlinear, original population | 0.506 | −2.536 | 1.657 (0.305) | 1.959 (0.003) | 1.962 |
+| Shifted target population | 1.147 | 0.795 | −0.387 (2.372) | 1.982 (0.003) | 1.985 |
+| Small, noisy training trial | 0.504 | −2.546 | 1.658 (0.304) | 1.918 (0.044) | 1.962 |
+
+The deployment shift is decisive. The linear CATE fit is systematically misspecified for the quadratic benefit curve. Its ranking prioritizes large X, but the true benefit peaks at an intermediate value and declines for sufficiently large X. Under the shifted target distribution, the linear policy has **negative average benefit** even though the quadratic model remains near the oracle. This is model-dependent policy regret, not a failure of randomization. Smaller, noisier training data also increase the quadratic model's average regret from about 0.003 to 0.044.
+
+The original experiment and its `results.csv` remain unchanged. The validation results are held-out **structural** benefits known from the synthetic data-generating process, not unbiased off-policy estimates from real observational data. Reproduce them with `python causal_inference_statistics/part20/validate_policy.py` and check basic invariants with `python -m unittest -v test_part20_validate_policy` from that part's directory.
