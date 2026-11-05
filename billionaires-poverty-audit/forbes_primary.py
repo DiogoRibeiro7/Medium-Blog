@@ -17,7 +17,7 @@ from typing import Any, Mapping
 
 import pandas as pd
 
-from forbes_pages import retrieve_annual_list
+from forbes_pages import extract_people, retrieve_annual_list
 
 FORBES_URL: str = (
     "https://www.forbes.com/forbesapi/person/billionaires/"
@@ -48,15 +48,9 @@ def parse_annual_list(
         raise ValueError("Forbes feed did not return valid JSON") from exc
     if not isinstance(doc, dict):
         raise ValueError("Forbes response must be a JSON object")
-    parent = doc.get("personList")
-    if isinstance(parent, dict):
-        persons = parent.get("persons")
-        path = "personList.persons"
-    else:
-        persons = doc.get("persons")
-        path = "persons"
-    if not isinstance(persons, list):
-        raise ValueError(f"Forbes schema changed, no persons array: {sorted(doc)}")
+    # Share the exact schema rules with the pagination path, so accepting a
+    # valid plural Forbes key never bypasses count or uniqueness checks.
+    persons, path = extract_people(doc)
     if len(persons) != expected_count:
         raise ValueError(
             f"Expected {expected_count} entries in annual list, got {len(persons)}; "

@@ -40,6 +40,38 @@ class ForbesPrimaryTests(unittest.TestCase):
         self.assertEqual(len(persons), 6)
         self.assertEqual(info["json_array_path"], "personList.persons")
 
+    def test_plural_primary_list_still_checks_every_record(self) -> None:
+        """Accept a known Forbes array spelling without changing audit gates."""
+        document = json.loads(synthetic_json())
+        section = document["personList"]
+        section["personsLists"] = section.pop("persons")
+        payload = json.dumps(document).encode("utf-8")
+        persons, info = parse_annual_list(payload, expected_count=6)
+        self.assertEqual(info["json_array_path"], "personList.personsLists")
+        self.assertEqual(info["n_uris"], 6)
+        counts, coverage = aggregate_country_fields(persons)
+        self.assertEqual(counts["citizenship"]["Country A"], 3)
+        self.assertEqual(coverage["citizenship"]["assigned"], 6)
+        with self.assertRaisesRegex(ValueError, "Expected 3428"):
+            parse_annual_list(payload)
+
+    def test_plural_primary_output_remains_aggregated(self) -> None:
+        """Record only country totals and an explicit source array path."""
+        document = json.loads(synthetic_json())
+        section = document["personList"]
+        section["personsLists"] = section.pop("persons")
+        with tempfile.TemporaryDirectory() as directory:
+            output = Path(directory) / "audit"
+            report = run_primary_audit(
+                output, payload=json.dumps(document).encode("utf-8"),
+                expected_count=6,
+            )
+            self.assertEqual(report["schema"]["json_array_path"], "personList.personsLists")
+            self.assertEqual(
+                sorted(file.name for file in output.iterdir()),
+                ["audit.json", "counts_api_country.csv", "counts_citizenship.csv"],
+            )
+
     def test_refuse_partial_annual_list(self) -> None:
         with self.assertRaisesRegex(ValueError, "Expected 3428"):
             parse_annual_list(synthetic_json())

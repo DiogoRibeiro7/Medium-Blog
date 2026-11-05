@@ -127,3 +127,28 @@ The manual source workflow remains necessary because the previously observed
 HTTP 503 has not been resolved. Even a completed ISO3 review will **not**
 establish a historical March 2026 source vintage, residence rather than
 citizenship, the original chart's 64-country selection or a causal effect.
+
+## Follow-up: live response schema (5 November 2026)
+
+[Workflow run 42097705351](https://github.com/DiogoRibeiro7/Medium-Blog/actions/runs/42097705351)
+passed its offline tests but failed during primary-source retrieval. Its
+first request received HTTP 503; the second downloaded **6,502,586 bytes**
+of JSON successfully. The parser then rejected the response because it could
+not find the expected `personList.persons` array. This was a **schema** error
+after network access succeeded, not evidence that Forbes returned an
+incomplete person count. No country-level evidence was archived by that run.
+
+A [public Forbes API client](https://github.com/TheAlgorithms/Python/blob/master/web_programming/get_top_billionaires.py)
+uses the plural
+`personList.personsLists`. The auditor and pagination fallback now recognize
+that explicit path alongside `personList.persons` and top-level `persons`.
+Ambiguous or unknown paths still fail with **key names only**, without
+logging person-level data. The required **3,428** person count, URI
+uniqueness, field typing and at least 95% citizenship-field coverage have
+not been loosened.
+
+The exact live response shape has **not yet been independently captured** in
+the audit's aggregate-only results. Re-run the manual job after merging this
+schema correction; if it still fails, inspect the safe key-name diagnostic
+before considering another supported layout. No Forbes counts or new
+regression conclusions are confirmed by this parser change alone.
