@@ -13,6 +13,13 @@ requirements are satisfied. Never alter
 [`../results/forecast_lock.json`](../results/forecast_lock.json) or the
 historical training data to accommodate the election result.
 
+The [finalization protocol](FINALIZATION_PROTOCOL.md) now documents the
+independent House Historian / American Presidency Project evidence receipt
+required for scoring. Its typed
+[`final_outcome_handoff.py`](final_outcome_handoff.py) validator can check
+source consistency once both final rows exist, but does not infer a result
+from live returns, download unverified numbers or run the registered scorer.
+
 ## Exact inputs
 
 | Evidence | Frozen information |

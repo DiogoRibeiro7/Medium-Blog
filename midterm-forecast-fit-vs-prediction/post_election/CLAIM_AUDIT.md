@@ -25,6 +25,7 @@ the interpretation of the new data is necessarily post-election.
 | A 171 GOP-seat official outcome would be outside the model interval | Hypothetical threshold | 171 − 220 = −49, below −48.42838655; **not** a claim that 171 is the result |
 | Live scenario lies outside bootstrap sensitivity band | Conditional diagnostic | −48 is below the lower bootstrap sensitivity bound −41.7517; the band is not a calibrated 95% prediction interval |
 | Final 2026 House seat change is known | **Not established** | Do not claim it: wait for [House Historian](https://history.house.gov/Institution/Party-Divisions/Party-Divisions/) / [American Presidency Project](https://www.presidency.ucsb.edu/statistics/data/seats-congress-gainedlost-the-presidents-party-mid-term-elections) aligned initial-election series |
+| Final-scoring source requirements are satisfied on 5 November | **No** | Historian still shows the 119th initial division and the American Presidency Project 2026 seat-change cell remains blank; see `FINALIZATION_PROTOCOL.md`. A source receipt cannot be produced from live AP numbers |
 | A single 2026 observation validates or invalidates 95% coverage | **Unsupported** | Coverage is a repeated-sampling property; one hit/miss is insufficient |
 | The model's predictors are causal effects | **Unsupported** | Observational predictive associations are not policy-treatment effects |
 
