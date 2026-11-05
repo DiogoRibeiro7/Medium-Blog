@@ -54,3 +54,4 @@ outlier-is-not-an-error/**/*.csv -filter -diff -merge text
 a-label-is-not-ground-truth/**/*.csv -filter -diff -merge text
 the-test-set-is-not-an-oracle/**/*.csv -filter -diff -merge text
 tax-cuts-rich-historical-cycles/**/*.csv -filter -diff -merge text
+billionaires-poverty-audit/evidence/**/*.csv -filter -diff -merge text

@@ -1,0 +1,20 @@
+{
+  "approved_for_publication_or_regression": false,
+  "citizenship_people_missing_from_source": 0,
+  "historical_2026_vintage_verified": false,
+  "interpretation": "Exact spelling matches to an incomplete secondary citizenship table are candidate ISO3 mappings only. Unmatched labels are unknown, not zero.",
+  "iso3_mappings_independently_verified": false,
+  "method": "citizenship_only",
+  "n_exact_label_candidates": 75,
+  "n_primary_country_labels": 80,
+  "n_secondary_labels_absent_from_primary": 1,
+  "n_unmapped_primary_labels": 5,
+  "primary_aggregate_sha256": "5936ce1c1f89d7bd7f2adf31ab0d7fc39c21d2fd42702e6296ef0e3ae8242696",
+  "primary_people_with_exact_label_candidate": 3422,
+  "primary_people_with_unresolved_label": 6,
+  "residence_attribution_verified": false,
+  "secondary_transcription_sha256": "0cb8973cf76e9194ec7a1d5cd6376193695a61317d7a3ab9f0ec096cb2fabe3b",
+  "source_person_count": 3428,
+  "source_retrieval_mode": "single_response",
+  "source_sha256": "42fd8cec21e84360adb812fb206afdcb7814483ffd718b3087e8f73502c1d17c"
+}
