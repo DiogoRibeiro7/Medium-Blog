@@ -1,4 +1,4 @@
-"""Review the published article, canonical evidence, and notebook contract."""
+"""Review canonical evidence artifacts and the executable notebook contract."""
 
 from __future__ import annotations
 
@@ -6,6 +6,7 @@ import csv
 import math
 import unittest
 from pathlib import Path
+from typing import Final
 
 import nbformat
 from nbclient import NotebookClient
@@ -15,27 +16,76 @@ PROJECT = Path(__file__).resolve().parents[1]
 NOTEBOOK = PROJECT / "spurious_regression_cointegration.ipynb"
 
 
-class ArticleAndNotebookTests(unittest.TestCase):
-    """Guard the scientific manuscript and executable reader companion."""
+PNG_SIGNATURE: Final[bytes] = b"\x89PNG\r\n\x1a\n"
 
-    def test_article_is_at_least_five_thousand_words(self) -> None:
-        words = (PROJECT / "article.md").read_text(encoding="utf-8").split()
-        self.assertGreaterEqual(len(words), 5000)
+FIGURE_NAMES: Final[tuple[str, ...]] = (
+    "fig1_independent_random_walks.png",
+    "fig2_naive_t_distribution.png",
+    "fig3_r_squared_nulls.png",
+    "fig4_false_discovery_rates.png",
+    "fig5_df_versus_eg_null.png",
+    "fig6_genuine_cointegration.png",
+    "fig7_slope_convergence.png",
+    "fig8_breaks_and_instability.png",
+)
 
-    def test_article_has_eight_figure_links(self) -> None:
-        manuscript = (PROJECT / "article.md").read_text(encoding="utf-8")
-        self.assertEqual(manuscript.count("![]("), 0)
-        for number in range(1, 9):
-            with self.subTest(number=number):
-                self.assertIn(f"(figures/fig{number}_", manuscript)
+TABLE_NAMES: Final[tuple[str, ...]] = (
+    "break_replicates.csv",
+    "break_summary.csv",
+    "broken_relation_path.csv",
+    "calibrated_critical_values.csv",
+    "cointegrated_path.csv",
+    "cointegration_diagnostics.csv",
+    "illustrative_null_path.csv",
+    "naive_t_histogram.csv",
+    "null_regression_replicates.csv",
+    "null_regression_summary.csv",
+    "rolling_break_estimates.csv",
+    "slope_scaling_replicates.csv",
+    "slope_scaling_summary.csv",
+    "study_summary.csv",
+    "unit_root_null_replicates.csv",
+)
 
-    def test_all_eight_canonical_figures_exist(self) -> None:
-        self.assertEqual(len(list((PROJECT / "figures").glob("fig*.png"))), 8)
 
-    def test_all_fifteen_canonical_tables_exist(self) -> None:
-        self.assertEqual(len(list((PROJECT / "results").glob("*.csv"))), 15)
+class ResearchArtifactsAndNotebookTests(unittest.TestCase):
+    """Guard public numerical evidence and notebook execution, not private prose."""
 
-    def test_canonical_numbers_support_article_claim(self) -> None:
+    def test_article_path_is_a_short_compatibility_notice(self) -> None:
+        notice: str = (PROJECT / "article.md").read_text(encoding="utf-8")
+        self.assertIn("research-articles-medium", notice)
+        self.assertIn("private", notice.lower())
+        self.assertLess(len(notice.split()), 250)
+
+    def test_all_eight_canonical_figures_are_valid_pngs(self) -> None:
+        figure_dir: Path = PROJECT / "figures"
+        actual_names: set[str] = {path.name for path in figure_dir.glob("*.png")}
+        self.assertEqual(actual_names, set(FIGURE_NAMES))
+        for name in FIGURE_NAMES:
+            with self.subTest(figure=name):
+                # The PNG signature and IHDR dimensions catch incomplete artifacts.
+                with (figure_dir / name).open("rb") as stream:
+                    header: bytes = stream.read(24)
+                self.assertEqual(len(header), 24)
+                self.assertEqual(header[:8], PNG_SIGNATURE)
+                self.assertEqual(header[12:16], b"IHDR")
+                self.assertGreater(int.from_bytes(header[16:20], "big"), 0)
+                self.assertGreater(int.from_bytes(header[20:24], "big"), 0)
+
+    def test_all_fifteen_canonical_tables_have_records(self) -> None:
+        result_dir: Path = PROJECT / "results"
+        actual_names: set[str] = {path.name for path in result_dir.glob("*.csv")}
+        self.assertEqual(actual_names, set(TABLE_NAMES))
+        for name in TABLE_NAMES:
+            with self.subTest(table=name):
+                with (result_dir / name).open(newline="", encoding="utf-8") as stream:
+                    reader = csv.reader(stream)
+                    header: list[str] | None = next(reader, None)
+                    self.assertIsNotNone(header)
+                    self.assertTrue(header and all(column.strip() for column in header))
+                    self.assertIsNotNone(next(reader, None))
+
+    def test_canonical_numbers_validate_research_claims(self) -> None:
         values: dict[str, float] = {}
         with (PROJECT / "results/study_summary.csv").open(newline="", encoding="utf-8") as stream:
             for row in csv.DictReader(stream):
