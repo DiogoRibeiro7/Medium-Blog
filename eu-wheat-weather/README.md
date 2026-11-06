@@ -64,12 +64,11 @@ Amendment A2 (section 10) is computed ([docs/MAIZE_AMENDMENT.md](docs/MAIZE_AMEN
   never in place of them. Maize has its own review
   ([docs/MAIZE_REVIEW.md](docs/MAIZE_REVIEW.md)), with its checks in the same section of
   [docs/MAIZE.md](docs/MAIZE.md).
-- **Article.** The Medium article ([publication/article.md](publication/article.md))
-  and its five figures are generated from the committed results. It carries the E-OBS
-  acknowledgement and citation, and the Eurostat and GISCO notices under its subtitle.
-  It is not published: the author reviews and publishes it. A separate maize article
-  ([publication/maize/article.md](publication/maize/article.md)) is generated the same
-  way.
+- **Scientific publication outputs.** The wheat and maize numerical manifests
+  (`publication/values.json` and `publication/maize/values.json`) and their figures
+  are regenerated from committed results. Editorial manuscripts and templates have
+  moved to the private `DiogoRibeiro7/research-articles-medium` repository.
+  Attribution requirements for any publication remain documented in the data sources.
 - [ROADMAP.md](ROADMAP.md) lists the stages.
 
 ## Question and estimands
@@ -165,7 +164,7 @@ poetry run eu-wheat fetch-mirca        # the MIRCA-OS map of maize, 172 MB, into
 poetry run eu-wheat fetch-irrigation   # Eurostat's irrigated maize in 2023, for the map check
 poetry run eu-wheat maize-a2-weather   # the season weather under three weightings, about 2 minutes
 poetry run eu-wheat maize-amend --crops snapshots/eurostat-maize-2026-10-26   # beside the registered results
-poetry run eu-wheat publication            # values, article and figures; --check compares
+poetry run eu-wheat publication            # numerical values and public figures; --check compares
 poetry run eu-wheat publication --values-only   # numerical manifests; no article templates needed
 poetry run eu-wheat publication --check-values  # verify wheat and maize manifests only
 poetry run pytest
