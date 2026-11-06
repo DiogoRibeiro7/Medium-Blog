@@ -52,25 +52,25 @@ Gap = tradable minus non-tradable; 90% intervals from a bootstrap over countries
 
    Cure model against a lognormal model with no never-recover fraction (same covariates, by depth band)
     A*64 emp absolute: AIC cure 1764.4, lognormal 1772.9
-      <0.30: n=212; still below peak, observed (Kaplan-Meier) 10 y 0.38 (at risk 60), 20 y 0.24 (at risk 3); cure model 10/20/40 y 0.42/0.28/0.22; lognormal 10/20/40 y 0.41/0.21/0.08, median 6.1 y
-      0.30-0.50: n=207; still below peak, observed (Kaplan-Meier) 10 y 0.59 (at risk 65), 20 y 0.44 (at risk 1); cure model 10/20/40 y 0.54/0.31/0.16; lognormal 10/20/40 y 0.56/0.34/0.16, median 9.5 y
-      0.50-0.80: n=136; still below peak, observed (Kaplan-Meier) 10 y 0.73 (at risk 56), 20 y 0.62 (at risk 1); cure model 10/20/40 y 0.70/0.51/0.37; lognormal 10/20/40 y 0.71/0.50/0.28, median 26.8 y
-      >0.80: n=84; still below peak, observed (Kaplan-Meier) 10 y 0.83 (at risk 32), 20 y 0.83 (at risk 1); cure model 10/20/40 y 0.82/0.63/0.43; lognormal 10/20/40 y 0.83/0.64/0.42, median 33.0 y
+      <0.30: n=212; still below peak, observed (Kaplan-Meier) 10 y 0.38 (at risk 60), 20 y 0.24 (at risk 3); cure model 10/15/20/40 y 0.42/0.33/0.28/0.22; lognormal 10/15/20/40 y 0.41/0.29/0.21/0.08, median 6.1 y; still below peak now 89, of which 20 years past the trough by 2035: 48
+      0.30-0.50: n=207; still below peak, observed (Kaplan-Meier) 10 y 0.59 (at risk 65), 20 y 0.44 (at risk 1); cure model 10/15/20/40 y 0.54/0.40/0.31/0.16; lognormal 10/15/20/40 y 0.56/0.43/0.34/0.16, median 9.5 y; still below peak now 132, of which 20 years past the trough by 2035: 55
+      0.50-0.80: n=136; still below peak, observed (Kaplan-Meier) 10 y 0.73 (at risk 56), 20 y 0.62 (at risk 1); cure model 10/15/20/40 y 0.70/0.59/0.51/0.37; lognormal 10/15/20/40 y 0.71/0.59/0.50/0.28, median 26.8 y; still below peak now 103, of which 20 years past the trough by 2035: 50
+      >0.80: n=84; still below peak, observed (Kaplan-Meier) 10 y 0.83 (at risk 32), 20 y 0.83 (at risk 1); cure model 10/15/20/40 y 0.82/0.72/0.63/0.43; lognormal 10/15/20/40 y 0.83/0.73/0.64/0.42, median 33.0 y; still below peak now 74, of which 20 years past the trough by 2035: 32
     A*64 emp relative: AIC cure 1496.5, lognormal 1497.9
-      <0.30: n=204; still below peak, observed (Kaplan-Meier) 10 y 0.48 (at risk 51), 20 y 0.36 (at risk 0); cure model 10/20/40 y 0.47/0.34/0.29; lognormal 10/20/40 y 0.49/0.29/0.14, median 11.3 y
-      0.30-0.50: n=253; still below peak, observed (Kaplan-Meier) 10 y 0.65 (at risk 67), 20 y 0.53 (at risk 2); cure model 10/20/40 y 0.62/0.53/0.50; lognormal 10/20/40 y 0.60/0.39/0.21, median 16.1 y
-      0.50-0.80: n=131; still below peak, observed (Kaplan-Meier) 10 y 0.78 (at risk 37), 20 y 0.62 (at risk 1); cure model 10/20/40 y 0.74/0.60/0.52; lognormal 10/20/40 y 0.76/0.57/0.36, median 28.6 y
-      >0.80: n=83; still below peak, observed (Kaplan-Meier) 10 y 0.88 (at risk 27), 20 y 0.84 (at risk 0); cure model 10/20/40 y 0.88/0.84/0.82; lognormal 10/20/40 y 0.87/0.73/0.53, median 52.0 y
+      <0.30: n=204; still below peak, observed (Kaplan-Meier) 10 y 0.48 (at risk 51), 20 y 0.36 (at risk 0); cure model 10/15/20/40 y 0.47/0.38/0.34/0.29; lognormal 10/15/20/40 y 0.49/0.37/0.29/0.14, median 11.3 y; still below peak now 116, of which 20 years past the trough by 2035: 42
+      0.30-0.50: n=253; still below peak, observed (Kaplan-Meier) 10 y 0.65 (at risk 67), 20 y 0.53 (at risk 2); cure model 10/15/20/40 y 0.62/0.56/0.53/0.50; lognormal 10/15/20/40 y 0.60/0.47/0.39/0.21, median 16.1 y; still below peak now 180, of which 20 years past the trough by 2035: 58
+      0.50-0.80: n=131; still below peak, observed (Kaplan-Meier) 10 y 0.78 (at risk 37), 20 y 0.62 (at risk 1); cure model 10/15/20/40 y 0.74/0.66/0.60/0.52; lognormal 10/15/20/40 y 0.76/0.65/0.57/0.36, median 28.6 y; still below peak now 108, of which 20 years past the trough by 2035: 32
+      >0.80: n=83; still below peak, observed (Kaplan-Meier) 10 y 0.88 (at risk 27), 20 y 0.84 (at risk 0); cure model 10/15/20/40 y 0.88/0.85/0.84/0.82; lognormal 10/15/20/40 y 0.87/0.79/0.73/0.53, median 52.0 y; still below peak now 76, of which 20 years past the trough by 2035: 26
     A*64 gva absolute: AIC cure 3706.3, lognormal 3696.3
-      <0.30: n=330; still below peak, observed (Kaplan-Meier) 10 y 0.09 (at risk 19), 20 y 0.00 (at risk 0); cure model 10/20/40 y 0.11/0.03/0.02; lognormal 10/20/40 y 0.12/0.03/0.00, median 3.8 y
-      0.30-0.50: n=340; still below peak, observed (Kaplan-Meier) 10 y 0.19 (at risk 44), 20 y 0.11 (at risk 0); cure model 10/20/40 y 0.24/0.11/0.08; lognormal 10/20/40 y 0.24/0.07/0.01, median 5.8 y
-      0.50-0.80: n=253; still below peak, observed (Kaplan-Meier) 10 y 0.45 (at risk 52), 20 y 0.33 (at risk 0); cure model 10/20/40 y 0.44/0.28/0.22; lognormal 10/20/40 y 0.41/0.16/0.04, median 8.8 y
-      >0.80: n=240; still below peak, observed (Kaplan-Meier) 10 y 0.65 (at risk 55), 20 y 0.28 (at risk 1); cure model 10/20/40 y 0.62/0.43/0.35; lognormal 10/20/40 y 0.59/0.30/0.10, median 13.3 y
+      <0.30: n=330; still below peak, observed (Kaplan-Meier) 10 y 0.09 (at risk 19), 20 y 0.00 (at risk 0); cure model 10/15/20/40 y 0.11/0.05/0.03/0.02; lognormal 10/15/20/40 y 0.12/0.05/0.03/0.00, median 3.8 y; still below peak now 70, of which 20 years past the trough by 2035: 12
+      0.30-0.50: n=340; still below peak, observed (Kaplan-Meier) 10 y 0.19 (at risk 44), 20 y 0.11 (at risk 0); cure model 10/15/20/40 y 0.24/0.15/0.11/0.08; lognormal 10/15/20/40 y 0.24/0.12/0.07/0.01, median 5.8 y; still below peak now 128, of which 20 years past the trough by 2035: 24
+      0.50-0.80: n=253; still below peak, observed (Kaplan-Meier) 10 y 0.45 (at risk 52), 20 y 0.33 (at risk 0); cure model 10/15/20/40 y 0.44/0.33/0.28/0.22; lognormal 10/15/20/40 y 0.41/0.25/0.16/0.04, median 8.8 y; still below peak now 151, of which 20 years past the trough by 2035: 42
+      >0.80: n=240; still below peak, observed (Kaplan-Meier) 10 y 0.65 (at risk 55), 20 y 0.28 (at risk 1); cure model 10/15/20/40 y 0.62/0.50/0.43/0.35; lognormal 10/15/20/40 y 0.59/0.42/0.30/0.10, median 13.3 y; still below peak now 183, of which 20 years past the trough by 2035: 50
     A*64 gva relative: AIC cure 2817.9, lognormal 2819.7
-      <0.30: n=250; still below peak, observed (Kaplan-Meier) 10 y 0.19 (at risk 24), 20 y 0.07 (at risk 2); cure model 10/20/40 y 0.17/0.06/0.04; lognormal 10/20/40 y 0.19/0.06/0.01, median 4.3 y
-      0.30-0.50: n=300; still below peak, observed (Kaplan-Meier) 10 y 0.35 (at risk 42), 20 y 0.21 (at risk 1); cure model 10/20/40 y 0.37/0.25/0.21; lognormal 10/20/40 y 0.34/0.14/0.04, median 6.8 y
-      0.50-0.80: n=246; still below peak, observed (Kaplan-Meier) 10 y 0.53 (at risk 57), 20 y 0.33 (at risk 2); cure model 10/20/40 y 0.54/0.29/0.15; lognormal 10/20/40 y 0.57/0.30/0.11, median 12.1 y
-      >0.80: n=257; still below peak, observed (Kaplan-Meier) 10 y 0.75 (at risk 62), 20 y 0.67 (at risk 2); cure model 10/20/40 y 0.74/0.64/0.60; lognormal 10/20/40 y 0.70/0.43/0.19, median 17.0 y
+      <0.30: n=250; still below peak, observed (Kaplan-Meier) 10 y 0.19 (at risk 24), 20 y 0.07 (at risk 2); cure model 10/15/20/40 y 0.17/0.09/0.06/0.04; lognormal 10/15/20/40 y 0.19/0.10/0.06/0.01, median 4.3 y; still below peak now 80, of which 20 years past the trough by 2035: 12
+      0.30-0.50: n=300; still below peak, observed (Kaplan-Meier) 10 y 0.35 (at risk 42), 20 y 0.21 (at risk 1); cure model 10/15/20/40 y 0.37/0.28/0.25/0.21; lognormal 10/15/20/40 y 0.34/0.21/0.14/0.04, median 6.8 y; still below peak now 160, of which 20 years past the trough by 2035: 34
+      0.50-0.80: n=246; still below peak, observed (Kaplan-Meier) 10 y 0.53 (at risk 57), 20 y 0.33 (at risk 2); cure model 10/15/20/40 y 0.54/0.38/0.29/0.15; lognormal 10/15/20/40 y 0.57/0.41/0.30/0.11, median 12.1 y; still below peak now 165, of which 20 years past the trough by 2035: 41
+      >0.80: n=257; still below peak, observed (Kaplan-Meier) 10 y 0.75 (at risk 62), 20 y 0.67 (at risk 2); cure model 10/15/20/40 y 0.74/0.67/0.64/0.60; lognormal 10/15/20/40 y 0.70/0.54/0.43/0.19, median 17.0 y; still below peak now 214, of which 20 years past the trough by 2035: 58
 
 2. Across stages: AMECO sectors, 1960-2025
   AMECO emp absolute

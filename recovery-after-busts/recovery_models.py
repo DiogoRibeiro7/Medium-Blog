@@ -212,7 +212,7 @@ def with_bands(d: pd.DataFrame) -> tuple[pd.DataFrame, list[str]]:
     return d, names
 
 
-def cure_vs_lognormal(g: pd.DataFrame, label: str, horizons=(10, 20, 40)) -> list[dict]:
+def cure_vs_lognormal(g: pd.DataFrame, label: str, horizons=(10, 15, 20, 40)) -> list[dict]:
     """Same timing covariates with and without a never-recover fraction; fit and extrapolation by band."""
     d, bands = with_bands(g)
     c = fit(d, "t_full", "full_recovered", bands + ["tradable", "euro"], bands + ["tradable"])
@@ -234,6 +234,8 @@ def cure_vs_lognormal(g: pd.DataFrame, label: str, horizons=(10, 20, 40)) -> lis
             "at_risk_10": int((sub.t_full >= 10).sum()),
             "at_risk_20": int((sub.t_full >= 20).sum()),
             "max_follow_up": int(sub.follow_up.max()),
+            "still_below_now": int((sub.full_recovered == 0).sum()),
+            "reach_20y_by_2035": int(((sub.full_recovered == 0) & (sub.trough_year <= 2015)).sum()),
         }
         for h in horizons:
             row[f"cure_{h}"] = float(not_recovered(c, sub, h).mean())
@@ -434,7 +436,7 @@ def main() -> None:
         r0 = g.iloc[0]
         say(f"    {s_}: AIC cure {r0.aic_cure:.1f}, lognormal {r0.aic_lognormal:.1f}")
         for _, r in g.iterrows():
-            say(f"      {r.band}: n={r.n}; still below peak, observed (Kaplan-Meier) 10 y {r.km_10:.2f} (at risk {r.at_risk_10}), 20 y {r.km_20:.2f} (at risk {r.at_risk_20}); cure model 10/20/40 y {r.cure_10:.2f}/{r.cure_20:.2f}/{r.cure_40:.2f}; lognormal 10/20/40 y {r.lognormal_10:.2f}/{r.lognormal_20:.2f}/{r.lognormal_40:.2f}, median {r.lognormal_median_years:.1f} y")
+            say(f"      {r.band}: n={r.n}; still below peak, observed (Kaplan-Meier) 10 y {r.km_10:.2f} (at risk {r.at_risk_10}), 20 y {r.km_20:.2f} (at risk {r.at_risk_20}); cure model 10/15/20/40 y {r.cure_10:.2f}/{r.cure_15:.2f}/{r.cure_20:.2f}/{r.cure_40:.2f}; lognormal 10/15/20/40 y {r.lognormal_10:.2f}/{r.lognormal_15:.2f}/{r.lognormal_20:.2f}/{r.lognormal_40:.2f}, median {r.lognormal_median_years:.1f} y; still below peak now {r.still_below_now}, of which 20 years past the trough by 2035: {r.reach_20y_by_2035}")
     say("\n2. Across stages: AMECO sectors, 1960-2025")
     for s, g in Lg.groupby("sample", sort=False):
         say(f"  {s}")
