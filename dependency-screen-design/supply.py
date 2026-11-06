@@ -80,6 +80,7 @@ def build() -> tuple[pd.DataFrame, dict]:
             "hhi": (shares**2).groupby(level=0).sum(),
             "top_partner": shares.groupby(level=0).idxmax().str[1],
             "top_share": shares.groupby(level=0).max(),
+            "second_share": shares.groupby(level=0).apply(lambda s: float(s.nlargest(2).iloc[-1]) if len(s) > 1 else 0.0),
             "partner_imports": by_partner.groupby(level=0).sum(),
         }
     )
@@ -95,6 +96,7 @@ def build() -> tuple[pd.DataFrame, dict]:
     d["outside_share"] = d.imports_extra / d.supply
     d["eu_share"] = d.PRODVAL / d.supply
     d["exposure"] = d.top_share * d.imports_extra / d.supply
+    d["exposure_second"] = d.second_share * d.imports_extra / d.supply
     d["consumption"] = d.PRODVAL + d.imports_extra - d.exports_extra
     d["exposure_consumption"] = np.where(d.consumption > 0, d.top_share * d.imports_extra / d.consumption.where(d.consumption > 0, 1), np.nan)
     d["importance"] = d.imports_extra / (d.imports_extra + d.imports_intra)
@@ -163,6 +165,45 @@ def main() -> None:
     say("\nThe trade-only stand-in (largest supplier's share of all EU imports) against supply-based exposure")
     tp = d.exposure_trade > E_MIN
     say(f"  Spearman {d.exposure_trade.rank().corr(d.exposure.rank()):.3f}; E > 25%: {int(P.sum())}; trade-only > 25%: {int(tp.sum())}; both {int((P & tp).sum())}; E only {int((P & ~tp).sum())}; trade-only only {int((~P & tp).sum())}")
+
+    say("\nWhere trade circulates inside the single market: by NACE division (first two digits of the Prodcom code), divisions with at least 40 products")
+    d["division"] = d.prodcom.str[:2]
+    dv = d.groupby("division").agg(n=("prodcom", "size"), intra_over_prod=("imports_intra", "sum"), prod=("PRODVAL", "sum"), exports_over_prod_share=("prodcom", "size"))
+    rows = []
+    for div, g2 in d.groupby("division"):
+        if len(g2) < 40:
+            continue
+        rows.append({"division": div, "products": len(g2), "median_intra_over_production": float((g2.imports_intra / g2.PRODVAL).median()), "share_exports_above_production": float(((g2.exports_extra + g2.exports_intra) > g2.PRODVAL).mean()), "flagged_proposed": int(g2.proposed.sum()), "flagged_commission": int(g2.commission.sum())})
+    DV = pd.DataFrame(rows).sort_values("share_exports_above_production", ascending=False)
+    DV.to_csv(RES / "supply_divisions.csv", index=False, float_format="%.6g")
+    for r in DV.itertuples():
+        say(f"  {r.division}: {r.products} products; median intra-EU imports / production {r.median_intra_over_production:.2f}; total exports above production {r.share_exports_above_production:.0%}; flagged: supply-based {r.flagged_proposed}, Commission {r.flagged_commission}")
+
+    say("\nHow concentrated the value at stake is (imports from the largest supplier, products flagged by the supply-based screen)")
+    vs = d[P].sup_imports.sort_values(ascending=False)
+    for k in (10, 20, 50, 100, 200):
+        say(f"  largest {k}: {vs.head(k).sum() / vs.sum():.0%} of EUR {vs.sum() / 1e9:,.0f} bn")
+
+    say("\nA second outside source (second-largest outside supplier's share of EU supply), products flagged by the supply-based screen")
+    f = d[P]
+    say(f"  second supplier below 5% of EU supply: {int((f.exposure_second < 0.05).sum())} of {len(f)} ({(f.exposure_second < 0.05).mean():.0%}); below 10%: {int((f.exposure_second < 0.10).sum())}; EU production below 10% of supply as well: {int(((f.exposure_second < 0.05) & (f.eu_share < 0.10)).sum())}")
+    sp = f[(f.exposure_second < 0.05) & (f.eu_share < 0.10)].sort_values("sup_imports", ascending=False)
+    sp.to_csv(RES / "supply_single_points.csv", index=False, float_format="%.6g")
+    say("  largest by value among those with neither a second outside source above 5% nor EU production above 10%: " + "; ".join(f"{str(r.label)[:40]} ({NAMES.get(r.top_partner, r.top_partner)} {r.exposure:.0%}, EUR {r.sup_imports / 1e9:,.1f} bn)" for _, r in sp.head(8).iterrows()))
+
+    say("\nWorked examples")
+    co_big = d[C & ~P].sort_values("sup_imports", ascending=False).head(1).prodcom.tolist()
+    for code in ["26201100", "26302210", "27202430", "30313410", "26112230"] + co_big:
+        r = d[d.prodcom == code]
+        if not len(r):
+            continue
+        r = r.iloc[0]
+        say(
+            f"  {code} {str(r.label)[:60]}: production EUR {r.PRODVAL / 1e9:,.2f} bn; extra-EU imports EUR {r.imports_extra / 1e9:,.2f} bn ({NAMES.get(r.top_partner, r.top_partner)} {r.top_share:.0%}, second {r.second_share:.0%}); "
+            f"intra-EU imports EUR {r.imports_intra / 1e9:,.2f} bn; exports extra EUR {r.exports_extra / 1e9:,.2f} bn, intra EUR {r.exports_intra / 1e9:,.2f} bn; "
+            f"HHI {r.hhi:.2f}, importance {r.importance:.2f}, ratio {r.substitutability:.2f} -> Commission {'yes' if r.commission else 'no'}; "
+            f"outside share of supply {r.outside_share:.0%}, exposure {r.exposure:.0%} -> supply-based {'yes' if r.proposed else 'no'}"
+        )
 
     say("\nHighest exposure, products with extra-EU imports above EUR 200 m")
     top = d[d.imports_extra > 2e8].sort_values("exposure", ascending=False).head(25)

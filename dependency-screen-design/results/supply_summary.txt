@@ -32,6 +32,46 @@ Sensitivity of the proposed screen to its threshold
 The trade-only stand-in (largest supplier's share of all EU imports) against supply-based exposure
   Spearman 0.815; E > 25%: 760; trade-only > 25%: 799; both 553; E only 207; trade-only only 246
 
+Where trade circulates inside the single market: by NACE division (first two digits of the Prodcom code), divisions with at least 40 products
+  14: 119 products; median intra-EU imports / production 2.99; total exports above production 91%; flagged: supply-based 57, Commission 0
+  32: 142 products; median intra-EU imports / production 1.22; total exports above production 87%; flagged: supply-based 71, Commission 7
+  26: 194 products; median intra-EU imports / production 0.86; total exports above production 74%; flagged: supply-based 66, Commission 7
+  15: 49 products; median intra-EU imports / production 1.21; total exports above production 69%; flagged: supply-based 15, Commission 1
+  27: 219 products; median intra-EU imports / production 0.76; total exports above production 68%; flagged: supply-based 63, Commission 4
+  21: 53 products; median intra-EU imports / production 0.55; total exports above production 66%; flagged: supply-based 14, Commission 3
+  13: 145 products; median intra-EU imports / production 0.67; total exports above production 59%; flagged: supply-based 47, Commission 13
+  24: 206 products; median intra-EU imports / production 0.70; total exports above production 57%; flagged: supply-based 58, Commission 11
+  20: 569 products; median intra-EU imports / production 0.75; total exports above production 56%; flagged: supply-based 118, Commission 24
+  30: 54 products; median intra-EU imports / production 0.49; total exports above production 56%; flagged: supply-based 22, Commission 6
+  25: 255 products; median intra-EU imports / production 0.70; total exports above production 55%; flagged: supply-based 54, Commission 3
+  28: 540 products; median intra-EU imports / production 0.45; total exports above production 54%; flagged: supply-based 56, Commission 4
+  29: 74 products; median intra-EU imports / production 0.67; total exports above production 50%; flagged: supply-based 7, Commission 1
+  22: 124 products; median intra-EU imports / production 0.63; total exports above production 46%; flagged: supply-based 20, Commission 3
+  08: 47 products; median intra-EU imports / production 0.43; total exports above production 34%; flagged: supply-based 10, Commission 4
+  23: 142 products; median intra-EU imports / production 0.43; total exports above production 34%; flagged: supply-based 15, Commission 2
+  10: 298 products; median intra-EU imports / production 0.50; total exports above production 32%; flagged: supply-based 27, Commission 8
+  17: 103 products; median intra-EU imports / production 0.52; total exports above production 30%; flagged: supply-based 6, Commission 0
+  16: 65 products; median intra-EU imports / production 0.47; total exports above production 25%; flagged: supply-based 8, Commission 3
+
+How concentrated the value at stake is (imports from the largest supplier, products flagged by the supply-based screen)
+  largest 10: 37% of EUR 450 bn
+  largest 20: 47% of EUR 450 bn
+  largest 50: 61% of EUR 450 bn
+  largest 100: 75% of EUR 450 bn
+  largest 200: 87% of EUR 450 bn
+
+A second outside source (second-largest outside supplier's share of EU supply), products flagged by the supply-based screen
+  second supplier below 5% of EU supply: 240 of 760 (32%); below 10%: 432; EU production below 10% of supply as well: 18
+  largest by value among those with neither a second outside source above 5% nor EU production above 10%: Photovoltaic cells assembled in modules  (China 96%, EUR 7.8 bn); Wrist-watches, pocket-watches, with case (Switzerland 90%, EUR 2.3 bn); Artificial flowers, foliage and fruit an (China 95%, EUR 0.7 bn); Nickel mattes (Russia 93%, EUR 0.7 bn); Electrical vibratory-massage apparatus (China 87%, EUR 0.5 bn); Vacuum flasks and other vacuum vessels,  (China 89%, EUR 0.5 bn); Other telephones for cellular networks o (China 79%, EUR 0.2 bn); Personal weighing machines, including ba (China 95%, EUR 0.2 bn)
+
+Worked examples
+  26201100 Laptop PCs and palm-top organisers: production EUR 0.38 bn; extra-EU imports EUR 30.57 bn (China 87%, second 8%); intra-EU imports EUR 29.37 bn; exports extra EUR 4.12 bn, intra EUR 29.91 bn; HHI 0.76, importance 0.51, ratio 0.90 -> Commission no; outside share of supply 99%, exposure 86% -> supply-based yes
+  26302210 Smartphones: production EUR 0.07 bn; extra-EU imports EUR 39.81 bn (China 66%, second 16%); intra-EU imports EUR 38.56 bn; exports extra EUR 6.53 bn, intra EUR 42.64 bn; HHI 0.48, importance 0.51, ratio 0.81 -> Commission no; outside share of supply 100%, exposure 66% -> supply-based yes
+  27202430 Lithium-ion accumulators: production EUR 12.00 bn; extra-EU imports EUR 28.50 bn (China 90%, second 2%); intra-EU imports EUR 20.39 bn; exports extra EUR 4.96 bn, intra EUR 19.76 bn; HHI 0.81, importance 0.58, ratio 1.15 -> Commission yes; outside share of supply 70%, exposure 63% -> supply-based yes
+  30313410 Aeroplanes and other aircraft of an unladen weight > 15 000 : production EUR 15.93 bn; extra-EU imports EUR 22.24 bn (United States 72%, second 10%); intra-EU imports EUR 12.73 bn; exports extra EUR 48.43 bn, intra EUR 10.95 bn; HHI 0.53, importance 0.64, ratio 0.37 -> Commission no; outside share of supply 58%, exposure 42% -> supply-based yes
+  26112230 Photovoltaic cells assembled in modules or made up into pane: production EUR 0.22 bn; extra-EU imports EUR 7.96 bn (China 99%, second 0%); intra-EU imports EUR 4.95 bn; exports extra EUR 0.55 bn, intra EUR 5.05 bn; HHI 0.97, importance 0.62, ratio 1.42 -> Commission yes; outside share of supply 97%, exposure 96% -> supply-based yes
+  10414190 Oilcake and other solid residues from extraction of vegetabl: production EUR 0.46 bn; extra-EU imports EUR 0.25 bn (Indonesia 68%, second 9%); intra-EU imports EUR 0.14 bn; exports extra EUR 0.02 bn, intra EUR 0.17 bn; HHI 0.48, importance 0.65, ratio 1.30 -> Commission yes; outside share of supply 35%, exposure 24% -> supply-based no
+
 Highest exposure, products with extra-EU imports above EUR 200 m
   26112230 Photovoltaic cells assembled in modules or made up into panels: China 96% of EU supply (outside share 97%, HHI 0.97); imports EUR 7.96 bn; Commission yes
   32995500 Artificial flowers, foliage and fruit and parts thereof: China 95% of EU supply (outside share 97%, HHI 0.95); imports EUR 0.76 bn; Commission yes
