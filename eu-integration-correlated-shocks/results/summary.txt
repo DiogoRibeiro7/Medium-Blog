@@ -1,0 +1,96 @@
+== Calibration
+member states 27; producers with shocks 26
+baseline share priced out (population-weighted meal deprivation): 0.0844
+EU demand elasticity at the reference price: -0.257
+anchored supply at the reference: 1.0000 of consumption; world buffer M = 0.05
+empirical correlation shrunk 10% towards identity: mean pairwise 0.208
+simulated EU log-supply sd 0.0627 (data: EU aggregate shock sd 0.0594)
+
+== Pooled vs unpooled at the empirical correlation
+  mean_excess_pp: pooled -0.0343, unpooled 2.4783
+  national_cvar95_pp: pooled 9.1598, unpooled 24.1999
+  eu_cvar95_pp: pooled 9.1598, unpooled 13.0140
+  prob_eu_excess_gt_1pp: pooled 0.1428, unpooled 0.5747
+  pooled EU price: sd of log 0.1168; 95th percentile 1.173; share of years at the world price 0.575
+
+== Priced-out share by member state at a common price (model demand)
+  price 1.173: RO 18.1->27.8; BG 15.8->22.0; HU 15.1->23.1; SK 14.2->24.6; EL 12.8->19.5; DE 11.1->17.6; FR 11.2->17.7; IT 9.3->14.9; ES 5.3->9.1; PL 3.0->6.3; NL 2.5->5.3; PT 1.9->3.7; IE 1.7->3.6
+  price 1.460: RO 18.1->44.2; BG 15.8->32.3; HU 15.1->37.2; SK 14.2->43.8; EL 12.8->31.6; DE 11.1->29.8; FR 11.2->29.8; IT 9.3->25.7; ES 5.3->17.3; PL 3.0->15.0; NL 2.5->12.5; PT 1.9->8.1; IE 1.7->8.8
+
+== Correlation sweep (weather-type shocks only)
+  mean corr 0.000: mean excess pooled -0.167 pp, unpooled 2.477 pp, insurance 2.644 pp (1.07); national bad-year risk pooled 1.818 pp, unpooled 24.203 pp, insurance 22.385 pp (0.92); EU worst-5% pooled 1.818, unpooled 8.872
+  mean corr 0.050: mean excess pooled -0.181 pp, unpooled 2.476 pp, insurance 2.658 pp (1.07); national bad-year risk pooled 3.853 pp, unpooled 24.243 pp, insurance 20.389 pp (0.84); EU worst-5% pooled 3.853, unpooled 9.862
+  mean corr 0.100: mean excess pooled -0.164 pp, unpooled 2.473 pp, insurance 2.637 pp (1.07); national bad-year risk pooled 5.667 pp, unpooled 24.242 pp, insurance 18.576 pp (0.77); EU worst-5% pooled 5.667, unpooled 10.882
+  mean corr 0.150: mean excess pooled -0.120 pp, unpooled 2.471 pp, insurance 2.591 pp (1.05); national bad-year risk pooled 7.338 pp, unpooled 24.234 pp, insurance 16.896 pp (0.70); EU worst-5% pooled 7.338, unpooled 11.875
+  mean corr 0.200: mean excess pooled -0.048 pp, unpooled 2.477 pp, insurance 2.525 pp (1.02); national bad-year risk pooled 8.914 pp, unpooled 24.202 pp, insurance 15.288 pp (0.63); EU worst-5% pooled 8.914, unpooled 12.851
+  mean corr 0.208: mean excess pooled -0.034 pp, unpooled 2.478 pp, insurance 2.513 pp (1.01); national bad-year risk pooled 9.160 pp, unpooled 24.200 pp, insurance 15.040 pp (0.62); EU worst-5% pooled 9.160, unpooled 13.014
+  mean corr 0.250: mean excess pooled 0.034 pp, unpooled 2.478 pp, insurance 2.444 pp (0.99); national bad-year risk pooled 10.427 pp, unpooled 24.190 pp, insurance 13.763 pp (0.57); EU worst-5% pooled 10.427, unpooled 13.631
+  mean corr 0.300: mean excess pooled 0.125 pp, unpooled 2.478 pp, insurance 2.353 pp (0.95); national bad-year risk pooled 11.881 pp, unpooled 24.176 pp, insurance 12.295 pp (0.51); EU worst-5% pooled 11.881, unpooled 14.372
+  mean corr 0.350: mean excess pooled 0.224 pp, unpooled 2.478 pp, insurance 2.254 pp (0.91); national bad-year risk pooled 13.273 pp, unpooled 24.163 pp, insurance 10.890 pp (0.45); EU worst-5% pooled 13.273, unpooled 15.118
+  mean corr 0.400: mean excess pooled 0.328 pp, unpooled 2.478 pp, insurance 2.150 pp (0.87); national bad-year risk pooled 14.616 pp, unpooled 24.153 pp, insurance 9.537 pp (0.39); EU worst-5% pooled 14.616, unpooled 15.866
+  mean corr 0.450: mean excess pooled 0.435 pp, unpooled 2.477 pp, insurance 2.042 pp (0.82); national bad-year risk pooled 15.905 pp, unpooled 24.144 pp, insurance 8.239 pp (0.34); EU worst-5% pooled 15.905, unpooled 16.605
+  mean corr 0.500: mean excess pooled 0.546 pp, unpooled 2.476 pp, insurance 1.930 pp (0.78); national bad-year risk pooled 17.138 pp, unpooled 24.133 pp, insurance 6.996 pp (0.29); EU worst-5% pooled 17.138, unpooled 17.335
+  mean corr 0.550: mean excess pooled 0.658 pp, unpooled 2.474 pp, insurance 1.816 pp (0.73); national bad-year risk pooled 18.326 pp, unpooled 24.120 pp, insurance 5.793 pp (0.24); EU worst-5% pooled 18.326, unpooled 18.051
+  mean corr 0.600: mean excess pooled 0.773 pp, unpooled 2.472 pp, insurance 1.699 pp (0.69); national bad-year risk pooled 19.460 pp, unpooled 24.107 pp, insurance 4.646 pp (0.19); EU worst-5% pooled 19.460, unpooled 18.755
+  mean corr 0.650: mean excess pooled 0.890 pp, unpooled 2.470 pp, insurance 1.580 pp (0.64); national bad-year risk pooled 20.553 pp, unpooled 24.093 pp, insurance 3.540 pp (0.15); EU worst-5% pooled 20.553, unpooled 19.447
+  mean corr 0.700: mean excess pooled 1.007 pp, unpooled 2.468 pp, insurance 1.460 pp (0.59); national bad-year risk pooled 21.603 pp, unpooled 24.081 pp, insurance 2.477 pp (0.10); EU worst-5% pooled 21.603, unpooled 20.121
+  mean corr 0.750: mean excess pooled 1.126 pp, unpooled 2.467 pp, insurance 1.340 pp (0.54); national bad-year risk pooled 22.607 pp, unpooled 24.063 pp, insurance 1.456 pp (0.06); EU worst-5% pooled 22.607, unpooled 20.782
+  mean corr 0.800: mean excess pooled 1.247 pp, unpooled 2.466 pp, insurance 1.219 pp (0.49); national bad-year risk pooled 23.560 pp, unpooled 24.040 pp, insurance 0.480 pp (0.02); EU worst-5% pooled 23.560, unpooled 21.432
+  mean corr 0.850: mean excess pooled 1.368 pp, unpooled 2.466 pp, insurance 1.098 pp (0.45); national bad-year risk pooled 24.494 pp, unpooled 24.009 pp, insurance -0.485 pp (-0.02); EU worst-5% pooled 24.494, unpooled 22.072
+  mean corr 0.900: mean excess pooled 1.492 pp, unpooled 2.466 pp, insurance 0.974 pp (0.40); national bad-year risk pooled 25.398 pp, unpooled 23.978 pp, insurance -1.421 pp (-0.06); EU worst-5% pooled 25.398, unpooled 22.699
+  mean corr 0.950: mean excess pooled 1.616 pp, unpooled 2.464 pp, insurance 0.848 pp (0.34); national bad-year risk pooled 26.270 pp, unpooled 23.929 pp, insurance -2.341 pp (-0.10); EU worst-5% pooled 26.270, unpooled 23.297
+  mean corr 1.000: mean excess pooled 1.744 pp, unpooled 2.464 pp, insurance 0.720 pp (0.29); national bad-year risk pooled 27.065 pp, unpooled 23.839 pp, insurance -3.226 pp (-0.14); EU worst-5% pooled 27.065, unpooled 23.839
+
+== Common-shock sweep (share of each producer's variance moved to one common factor; world price moves with it)
+  common share 0.0: mean excess pooled -0.034, unpooled 2.478 (insurance share 1.01); national bad-year risk pooled 9.160, unpooled 24.200 (insurance share 0.62)
+  common share 0.1: mean excess pooled 0.719, unpooled 2.900 (insurance share 0.75); national bad-year risk pooled 14.581, unpooled 27.180 (insurance share 0.46)
+  common share 0.2: mean excess pooled 1.463, unpooled 3.259 (insurance share 0.55); national bad-year risk pooled 21.019, unpooled 29.142 (insurance share 0.28)
+  common share 0.3: mean excess pooled 2.182, unpooled 3.580 (insurance share 0.39); national bad-year risk pooled 26.739, unpooled 30.929 (insurance share 0.14)
+  common share 0.4: mean excess pooled 2.870, unpooled 3.880 (insurance share 0.26); national bad-year risk pooled 31.639, unpooled 32.641 (insurance share 0.03)
+  common share 0.5: mean excess pooled 3.527, unpooled 4.169 (insurance share 0.15); national bad-year risk pooled 35.724, unpooled 34.310 (insurance share -0.04)
+  common share 0.6: mean excess pooled 4.157, unpooled 4.453 (insurance share 0.07); national bad-year risk pooled 39.088, unpooled 35.907 (insurance share -0.09)
+  common share 0.7: mean excess pooled 4.764, unpooled 4.741 (insurance share -0.00); national bad-year risk pooled 41.838, unpooled 37.404 (insurance share -0.12)
+  common share 0.8: mean excess pooled 5.350, unpooled 5.043 (insurance share -0.06); national bad-year risk pooled 44.062, unpooled 38.767 (insurance share -0.14)
+  common share 0.9: mean excess pooled 5.911, unpooled 5.372 (insurance share -0.10); national bad-year risk pooled 45.836, unpooled 39.898 (insurance share -0.15)
+  common share 1.0: mean excess pooled 6.436, unpooled 5.742 (insurance share -0.12); national bad-year risk pooled 47.244, unpooled 40.683 (insurance share -0.16)
+
+== By member state, empirical correlation
+  LT: self-sufficiency 3.01, baseline 0.089; 95th pct excess pooled 4.61 pp, unpooled 83.80 pp; in EU-wide bad years 7.73 pp
+  HU: self-sufficiency 2.36, baseline 0.151; 95th pct excess pooled 8.02 pp, unpooled 79.67 pp; in EU-wide bad years 13.18 pp
+  RO: self-sufficiency 1.96, baseline 0.181; 95th pct excess pooled 9.69 pp, unpooled 79.49 pp; in EU-wide bad years 15.75 pp
+  BG: self-sufficiency 2.46, baseline 0.158; 95th pct excess pooled 6.15 pp, unpooled 75.21 pp; in EU-wide bad years 9.97 pp
+  LV: self-sufficiency 2.49, baseline 0.079; 95th pct excess pooled 4.24 pp, unpooled 68.41 pp; in EU-wide bad years 7.14 pp
+  EE: self-sufficiency 1.54, baseline 0.062; 95th pct excess pooled 4.27 pp, unpooled 59.14 pp; in EU-wide bad years 7.41 pp
+  DK: self-sufficiency 2.34, baseline 0.031; 95th pct excess pooled 2.90 pp, unpooled 49.28 pp; in EU-wide bad years 5.31 pp
+  SK: self-sufficiency 1.19, baseline 0.142; 95th pct excess pooled 10.42 pp, unpooled 46.16 pp; in EU-wide bad years 17.41 pp
+  HR: self-sufficiency 1.36, baseline 0.047; 95th pct excess pooled 3.89 pp, unpooled 37.20 pp; in EU-wide bad years 6.93 pp
+  CZ: self-sufficiency 1.16, baseline 0.057; 95th pct excess pooled 5.58 pp, unpooled 23.61 pp; in EU-wide bad years 10.02 pp
+  FR: self-sufficiency 1.46, baseline 0.112; 95th pct excess pooled 6.47 pp, unpooled 23.45 pp; in EU-wide bad years 10.84 pp
+  ES: self-sufficiency 0.70, baseline 0.053; 95th pct excess pooled 3.84 pp, unpooled 21.75 pp; in EU-wide bad years 6.72 pp
+  PL: self-sufficiency 1.38, baseline 0.030; 95th pct excess pooled 3.35 pp, unpooled 20.92 pp; in EU-wide bad years 6.28 pp
+  SE: self-sufficiency 0.81, baseline 0.035; 95th pct excess pooled 3.12 pp, unpooled 17.16 pp; in EU-wide bad years 5.65 pp
+  FI: self-sufficiency 0.96, baseline 0.033; 95th pct excess pooled 3.21 pp, unpooled 14.87 pp; in EU-wide bad years 5.89 pp
+  DE: self-sufficiency 0.83, baseline 0.111; 95th pct excess pooled 6.52 pp, unpooled 6.66 pp; in EU-wide bad years 10.92 pp
+  AT: self-sufficiency 0.90, baseline 0.033; 95th pct excess pooled 3.16 pp, unpooled 5.77 pp; in EU-wide bad years 5.79 pp
+  IE: self-sufficiency 0.64, baseline 0.017; 95th pct excess pooled 1.92 pp, unpooled 3.12 pp; in EU-wide bad years 3.67 pp
+  SI: self-sufficiency 0.48, baseline 0.044; 95th pct excess pooled 4.50 pp, unpooled 3.04 pp; in EU-wide bad years 8.23 pp
+  EL: self-sufficiency 0.50, baseline 0.128; 95th pct excess pooled 6.71 pp, unpooled 2.95 pp; in EU-wide bad years 11.10 pp
+  CY: self-sufficiency 0.08, baseline 0.012; 95th pct excess pooled 1.20 pp, unpooled 0.10 pp; in EU-wide bad years 2.27 pp
+  LU: self-sufficiency 0.37, baseline 0.045; 95th pct excess pooled 3.45 pp, unpooled 0.00 pp; in EU-wide bad years 6.11 pp
+  IT: self-sufficiency 0.44, baseline 0.093; 95th pct excess pooled 5.61 pp, unpooled 0.00 pp; in EU-wide bad years 9.49 pp
+  BE: self-sufficiency 0.35, baseline 0.048; 95th pct excess pooled 5.12 pp, unpooled 0.00 pp; in EU-wide bad years 9.36 pp
+  NL: self-sufficiency 0.13, baseline 0.025; 95th pct excess pooled 2.77 pp, unpooled -0.00 pp; in EU-wide bad years 5.22 pp
+  PT: self-sufficiency 0.16, baseline 0.019; 95th pct excess pooled 1.76 pp, unpooled -0.00 pp; in EU-wide bad years 3.25 pp
+  MT: self-sufficiency 0.00, baseline 0.115; 95th pct excess pooled 6.91 pp, unpooled -0.00 pp; in EU-wide bad years 11.58 pp
+  member states with a worse 95th percentile when pooled: BE, EL, IT, CY, LU, MT, NL, PT, SI
+
+== Buffer sensitivity (empirical correlation)
+  M 0.000: national bad-year risk pooled 18.646, unpooled 32.518; mean pooled 1.000, unpooled 4.337
+  M 0.025: national bad-year risk pooled 13.716, unpooled 28.242; mean pooled 0.291, unpooled 3.253
+  M 0.050: national bad-year risk pooled 9.160, unpooled 24.200; mean pooled -0.034, unpooled 2.478
+  M 0.100: national bad-year risk pooled 1.874, unpooled 17.398; mean pooled -0.121, unpooled 1.511
+
+== Ageing: capacity not replaced where managers are 65+
+  none: EU capacity loss 0.0000; median price 1.000, 95th pct 1.173; mean excess -0.034 pp, national bad-year risk 9.160 pp
+  unreplaced share of 65+ capacity, by country: EU capacity loss 0.0661; median price 1.043, 95th pct 1.460; mean excess 3.973 pp, national bad-year risk 20.217 pp
+  same EU-wide loss, spread evenly: EU capacity loss 0.0661; median price 1.042, 95th pct 1.463; mean excess 3.993 pp, national bad-year risk 20.395 pp
