@@ -52,6 +52,13 @@ REQUESTS: dict[str, tuple[str, list[Filters]]] = {
             [("sex", "T"), ("unit", "HLD")],
         ],
     ),
+    "farm_output_by_age": (
+        "ef_m_farmang",
+        [
+            [("sex", "T"), ("so_eur", "TOTAL"), ("uaarea", "TOTAL"), ("unit", "EUR"), ("statinfo", "TOTAL")],
+            [("sex", "T"), ("unit", "EUR")],
+        ],
+    ),
     "employment_industry": (
         "nama_10_a10_e",
         [
