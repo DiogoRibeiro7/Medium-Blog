@@ -5,11 +5,13 @@ from __future__ import annotations
 import importlib.util
 import tempfile
 import unittest
+import sys
 from pathlib import Path
 
 import numpy as np
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
 SPEC = importlib.util.spec_from_file_location("survey_vintage_audit", ROOT / "survey_vintage_audit.py")
 assert SPEC is not None and SPEC.loader is not None
 module = importlib.util.module_from_spec(SPEC)
