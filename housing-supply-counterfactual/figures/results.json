@@ -1,0 +1,56 @@
+{
+  "analysis_type": "descriptive_and_explicitly_synthetic_scenario",
+  "bulgaria_2021_2025_completion_growth_pct": 110.27,
+  "bulgaria_2025_completions_pct_fixed_2025_stock": 0.8616,
+  "causal_effect_estimated": false,
+  "figure_files": [
+    "fig01_bulgaria_observed.png",
+    "fig02_bulgaria_stock_flow.png",
+    "fig03_portugal_new_completions.png",
+    "fig04_portugal_occupancy.png",
+    "fig05_european_permit_intensity.png",
+    "fig06_european_real_hpi.png",
+    "fig07_portugal_permits_prices.png",
+    "fig08_correlations_by_lag.png",
+    "fig09_price_income_relative.png",
+    "fig10_synthetic_counterfactual.png"
+  ],
+  "figure_sha256": {
+    "fig01_bulgaria_observed.png": "9aec9be57c140d6d4ffdfe750738cc6efabefc96b2dee9ac84d65cde6055c256",
+    "fig02_bulgaria_stock_flow.png": "9dfd1bc5389f647582d5abe97620d4890ffc752d7f67872b6e785d7598cd5760",
+    "fig03_portugal_new_completions.png": "adf1f5184ed6417299384e0481dd49fa399249ecb39c8b81296e8f38f9492a6b",
+    "fig04_portugal_occupancy.png": "ad1bcad10f38625686e2c31bd2759bbba09ba1a21a7b7dadfbc1ed3ac75d857e",
+    "fig05_european_permit_intensity.png": "d8837ec43b4292ec94feae0a7560108463f3ebbc68af110a5a99900dcbc87309",
+    "fig06_european_real_hpi.png": "b4778c12a8d9de49c98a42828c1e093be77b8bc8b4a267a82e71bae49e9d7cb9",
+    "fig07_portugal_permits_prices.png": "4582d49cf3c8b1e22450eeba40023e7b52d1b4abd22a09fde7c0d06ea4f4ec0b",
+    "fig08_correlations_by_lag.png": "59d3722340f2aea7e3412c1e4f1e8cc050e4f951e513ec478af56451b549b43a",
+    "fig09_price_income_relative.png": "9d194daf6b125c136ab119d45efb46b03433dcd6f592ff68875ecc3affbfaa31",
+    "fig10_synthetic_counterfactual.png": "6ed406a363fe231df8fad88f8edf22e9f03c0820e966b3c5f606d48fa5406ee7"
+  },
+  "limitations": [
+    "Bulgaria completions annual vs house-price growth in Q2",
+    "Bulgarian HPI data-source break beginning Q1 2022",
+    "Eurostat country panels count permitted dwellings, not completed dwellings",
+    "Only four independent country series and at most ten usable annual pairs each",
+    "EU27 is an overlapping aggregate, not another independent country",
+    "No investment-demand, effective vacancy, municipal market or causal supply shocks in this panel",
+    "The hypothetical price curves use uncalibrated assumptions"
+  ],
+  "portugal_2006_completions": 68764,
+  "portugal_2021_habitual_stock": 4142581,
+  "portugal_2021_vacant_stock": 723215,
+  "portugal_2025_preliminary_completions": 27301,
+  "portugal_contemporaneous_permits_real_hpi_pearson_r": 0.248972,
+  "portugal_contemporaneous_unflagged_r": 0.890857,
+  "portugal_unflagged_n": 5,
+  "source_sha256": {
+    "annual_housing_indices_2015_2025.csv": "e3aede12542f414a07c6706fc0686724954b4590b29000c7649f978e8591a892",
+    "annual_supply_intensity_2015_2025.csv": "e50fa1c33dbf8d6a1e6a0b8020dbd8f6e0e7128396839ba04274cf43efc1706b",
+    "annual_supply_price_diagnostics_2015_2025.csv": "56ab6e9446f4f167a66b41d52a7c2024e6e04f96a8c673e6e9d3ed3fd0b5b901",
+    "annual_supply_price_diagnostics_2015_2025_associations.csv": "b8b2db9b566a53444afa2802c05a6ae240962c0b9bbe2e5391420418d50cebc0",
+    "bulgaria_chart_audit_2021_2025.csv": "79cd918e645a359a2efc2823d39ee235e97ea93b8ac55ff18aaeacd61df3aefc",
+    "portugal_housing_2021.csv": "560e246d63f5d701ae79331707a24822d254150e04485187065d43eaa957b8b4",
+    "portugal_new_builds_1995_2025.csv": "c9602b42e2cb9f3fdc30b86381b5ab6a9bafbba471544ebc963ff985e11ae943",
+    "source_manifest.json": "133372c966b3490a7f4886d9313421d51158a43a3160d4e19295c6fcfb236b69"
+  }
+}

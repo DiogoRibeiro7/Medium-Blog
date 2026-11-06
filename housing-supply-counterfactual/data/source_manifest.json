@@ -1,0 +1,48 @@
+{
+  "frozen_at": "2026-11-06",
+  "scope": "Descriptive reproduction only: four countries and an EU27 reference; Bulgaria chart audit; Portugal construction and Census anchors",
+  "source_data": {
+    "annual_housing_indices_2015_2025.csv": {
+      "upstream_project": "DiogoRibeiro7/european-housing-affordability",
+      "upstream_path": "reports/empirical/annual_housing_indices_2015_2025.csv",
+      "original_datasets": ["Eurostat prc_hpi_q", "Eurostat tipsho30", "Eurostat tipsho60"],
+      "caution": "Country-specific price-to-income ratios use distinct historical national benchmarks"
+    },
+    "annual_supply_intensity_2015_2025.csv": {
+      "upstream_project": "DiogoRibeiro7/european-housing-affordability",
+      "upstream_path": "reports/empirical/annual_supply_intensity_2015_2025.csv",
+      "original_datasets": ["Eurostat sts_cobp_a", "Eurostat lfst_hhnhtych"],
+      "caution": "Permits are not completions, household survey breaks flagged"
+    },
+    "annual_supply_price_diagnostics_2015_2025.csv": {
+      "upstream_project": "DiogoRibeiro7/european-housing-affordability",
+      "upstream_path": "reports/empirical/annual_supply_price_diagnostics_2015_2025.csv",
+      "caution": "Association only, not causal effects"
+    },
+    "annual_supply_price_diagnostics_2015_2025_associations.csv": {
+      "upstream_project": "DiogoRibeiro7/european-housing-affordability",
+      "upstream_path": "reports/empirical/annual_supply_price_diagnostics_2015_2025_associations.csv",
+      "caution": "At most 10 annual observations per country/lag; EU27 aggregate overlaps member countries"
+    },
+    "bulgaria_chart_audit_2021_2025.csv": {
+      "source_urls": [
+        "https://www.nsi.bg/file/30721/StatBook2025_en.pdf",
+        "https://www.nsi.bg/en/announcement/short-term-statistics-of-residential-buildings-9009",
+        "https://ec.europa.eu/eurostat/databrowser/view/prc_hpi_q/default/table"
+      ],
+      "caution": "Whole-calendar-year completions versus second-quarter year-on-year HPI; Bulgarian HPI methodological break at Q1 2022"
+    },
+    "portugal_new_builds_1995_2025.csv": {
+      "source_url": "https://www.pordata.pt/portugal/fogos+concluidos+em+construcoes+novas+para+habitacao+familiar+total+e+por+tipologia+do+fogo-189",
+      "underlying_publisher": "INE",
+      "last_updated": "2026-07-17",
+      "caution": "2021-2025 preliminary; only newly built family dwellings, not all refurbishment or net stock change"
+    },
+    "portugal_housing_2021.csv": {
+      "source_url": "https://www.ine.pt/ine_novidades/semin/INEWS60/82-83/",
+      "underlying_publisher": "INE/LNEC, Censos 2021",
+      "caution": "Vacancy does not imply physical or market availability"
+    }
+  },
+  "not_estimated": ["Construction's causal price elasticity", "Investor demand effect", "National housing shortfall", "Counterfactual observed price path"]
+}
