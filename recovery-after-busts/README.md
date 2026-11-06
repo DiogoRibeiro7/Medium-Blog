@@ -13,6 +13,7 @@ python long_episodes.py     # AMECO sectors, 1960-2025: results/long_episodes.cs
 python recovery_models.py   # Kaplan-Meier and mixture cure models: results/cure_*.csv, km_*.csv, cure_summary.txt (about 6 minutes)
 python figures.py           # figures/fig1_*.png ... fig5_*.png
 python -m pytest -q tests
+python check_results.py results/cure_summary.txt   # compare with the committed summary, within tolerance
 ```
 
 ## Definitions

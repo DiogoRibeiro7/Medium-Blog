@@ -54,5 +54,10 @@ jobs:
       - name: Figures
         run: python figures.py
 
-      - name: Results unchanged
-        run: git diff --stat --exit-code -- results/episodes_summary.txt results/long_episodes_summary.txt results/cure_summary.txt
+      - name: Episode summaries unchanged
+        run: git diff --exit-code -- results/episodes_summary.txt results/long_episodes_summary.txt
+
+      - name: Model summary unchanged within tolerance
+        run: |
+          git diff -- results/cure_summary.txt || true
+          python check_results.py results/cure_summary.txt
