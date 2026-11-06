@@ -38,12 +38,28 @@ def main(argv: list[str] | None = None) -> None:
                                       "and figures into publication/")
     publication.add_argument("--root", type=Path, default=Path("."))
     publication.add_argument("--no-figures", action="store_true")
+    mode = publication.add_mutually_exclusive_group()
+    mode.add_argument("--values-only", action="store_true",
+                      help="Generate scientific values without reading Medium prose")
+    mode.add_argument("--check-values", action="store_true",
+                      help="Check scientific values without reading Medium prose")
     args = parser.parse_args(argv)
 
     if args.command == "publication":
-        from iberian_lp.publication import write_publication
+        from iberian_lp.publication import check_scientific, write_publication, write_scientific
 
-        for name in write_publication(args.root, figures=not args.no_figures):
+        if args.check_values:
+            stale = check_scientific(args.root)
+            if stale:
+                parser.error("Scientific publication output is missing or stale: "
+                             + ", ".join(stale))
+            print("Scientific publication values are current")
+            return
+        if args.values_only:
+            written = write_scientific(args.root)
+        else:
+            written = write_publication(args.root, figures=not args.no_figures)
+        for name in written:
             print(f"wrote {name}")
         return
 

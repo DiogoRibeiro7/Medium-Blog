@@ -204,6 +204,17 @@ def check_scientific(root: Path) -> list[str]:
             or (root / name).read_text(encoding="utf-8") != text]
 
 
+def write_scientific(root: Path) -> list[str]:
+    """Write public research values without opening or recreating editorial text."""
+    written: list[str] = []
+    for name, body in scientific_outputs(root).items():
+        destination = root / name
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        destination.write_text(body, encoding="utf-8", newline="\n")
+        written.append(name)
+    return written
+
+
 def outputs(root: Path) -> dict[str, str]:
     """Return scientific values and the editorial article for legacy builds."""
     scientific = scientific_outputs(root)

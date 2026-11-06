@@ -20,6 +20,8 @@ python -m pytest -q          # offline, from the committed tables and results
 iberian-lp programmes        # about 17 minutes; writes results/programmes.csv
 iberian-lp estimates         # writes results/estimates.json and docs/RESULTS.md
 iberian-lp publication       # writes publication/: the article, its values and figures
+iberian-lp publication --values-only   # update scientific values, no article/template
+iberian-lp publication --check-values  # verify scientific values, no article/template
 ```
 
 The article is filled from `publication/article.template.md` by code; the tests check that
