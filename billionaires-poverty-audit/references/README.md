@@ -10,6 +10,13 @@ evidence URL, name-review classification and explicit territory-review flag.
 The reference was compiled against official live UN metadata on **6 November
 2026**; it is a reviewed code mapping, **not** a frozen copy of the UN website.
 
+The separate `forbes_2026_march_top10_official.csv` contains **only ten**
+independently published Forbes March 2026 country counts, with their
+publication date, wealth snapshot date and primary source URL. It is SHA-256
+validated by `forbes_march_vintage.py`. The [March-vintage report](../FORBES_MARCH_VINTAGE.md)
+documents three disagreements with the later November API. The other 70
+March country counts remain **unknown**, not zero.
+
 ## Authoritative references
 
 - [UN Statistics Division, M49 country or area codes (English)](https://unstats.un.org/unsd/methodology/m49/overview/): 79 of the 80 area-code records. This list covers both states and other statistical areas; its codes do **not** establish sovereignty.
@@ -20,8 +27,9 @@ and **one separately referenced UN Population Division area entry**. Every
 ISO3 code agrees with the previously proposed candidate, including the five
 labels absent as exact names in the secondary transcription. This validates
 the **area-code assignments** against the cited UN entries; it does not
-verify Forbes's historical March vintage or the meaning of each citizenship
-attribution.
+establish a complete historical March vintage or the meaning of each
+citizenship attribution. The published March top ten actually contradicts
+the live November API for three countries.
 
 Examples of nonidentical names, checked against the source records:
 
@@ -53,8 +61,8 @@ uses a different list vintage, record selection, or counting policy.
 
 Even with the ISO3 references established, the following remain blockers:
 
-1. Independently establish Forbes's **March 2026 historical list vintage**
-   relative to the live November snapshot.
+1. Recover and authenticate the **complete March 2026 country distribution**;
+   the published top ten disproves exact equivalence to November.
 2. Verify geographical semantics and territory-to-population comparability;
    `countryOfCitizenship` is not automatically residence.
 3. Recover the original chart's **64-country selection** and align GDP and
@@ -73,6 +81,8 @@ input; **no regression has been rerun on this crosswalk**.
 cd billionaires-poverty-audit
 python -m unittest discover -s tests -p 'test_forbes_iso3_review.py' -v
 python forbes_iso3_review.py --output results/forbes_iso3_review.csv
+python -m unittest discover -s tests -p 'test_forbes_march_vintage.py' -v
+python forbes_march_vintage.py --out-dir results/forbes_march_vintage
 ```
 
 The generator refuses altered primary, secondary or reference CSV bytes and
