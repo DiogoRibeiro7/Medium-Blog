@@ -1,14 +1,15 @@
-# Europe's deindustrialisation: what it was, what it cost, and whether the turn back is visible
+# The EU's dependence on suppliers outside the bloc, and what deindustrialisation had to do with it
 
-Code and data for the article *What Deindustrialisation Cost the European Union, and What a 20% Manufacturing Target Would Require*.
+Code and data for the article *Measuring the European Union's Dependence on Suppliers Outside the Bloc, Product by Product, 2002–2025*.
 
-The analysis has five parts.
+The analysis has six parts.
 
 1. **What deindustrialisation was** (`decompose.py`). Manufacturing's share of employment, its share of value added at current prices and its share at constant (2020) prices, for each member state, the EU-27, the EU-15, the United Kingdom and the United States, from 1960 where the data reach back. Two identities split the fall in the employment share into a change in the real output share and a rise in relative productivity, and the fall in the nominal share into the real share and the relative price of manufactures.
 2. **External balances** (`external.py`). Goods balance and current account as a share of GDP and the net international investment position, set against each member state's change in its real manufacturing share over 2000–2024; dispersion of current accounts within the first twelve euro members.
 3. **Regions** (`regions.py`). 232 NUTS 2 regions in 26 member states. Exposure is the change in manufacturing employment over 2000–2008 as a share of 2000 employment; outcomes over 2008–2023 are total and manufacturing jobs, GDP per head relative to the national mean, population, the employment rate and unemployment. Within-country least squares with standard errors clustered by country.
-4. **Dependencies** (`dependencies.py`). Extra-EU imports by HS chapter and fifteen strategic HS 4-digit headings, 1999–2025: Herfindahl–Hirschman index of supplier shares, China's share, the largest supplier. Natural-gas imports by partner, 1990–2024, and energy import dependency.
-5. **The turn** (`turn.py`). Industrial production, manufacturing investment and employment since 2015–2019; manufacturing's share of GDP; the growth that the target of 20% of GDP by 2035 requires, against the fastest 11-year increases in the real manufacturing share that any member state has achieved since 1995.
+4. **A dependency screen for every product** (`screen.py`). The three criteria of the Commission's 2021 review of strategic dependencies (Herfindahl index of outside suppliers above 0.4, extra-EU imports above half of EU imports, extra-EU imports above EU exports) applied to every HS 6-digit product in eleven years from 2002 to 2025, with the largest supplier behind each; and an alternative screen in which the first criterion is replaced by the largest outside supplier holding more than 40% of extra-EU imports, which catches dependence on one large supplier when the rest of the imports are spread (Russian gas in 2021, US liquefied natural gas in 2025).
+5. **Dependencies by chapter, heading and fuel** (`dependencies.py`). Extra-EU imports by HS chapter and fifteen strategic HS 4-digit headings, 1999–2025: Herfindahl–Hirschman index of supplier shares, China's share, the largest supplier. Natural-gas imports by partner, 1990–2024, energy import dependency, and Russia's share of EU gas consumption and of extra-EU imports of crude oil and hard coal.
+6. **The turn** (`turn.py`). Industrial production, manufacturing investment and employment since 2015–2019; manufacturing's share of GDP; the growth that the target of 20% of GDP by 2035 requires, against the fastest 11-year increases in the real manufacturing share that any member state has achieved since 1995.
 
 ## Data
 
@@ -17,6 +18,10 @@ All inputs are public and are fetched by GitHub Actions (`.github/workflows/euro
 - `fetch.py`: Eurostat dissemination API (JSON-stat). National accounts by industry (`nama_10_a64`, `nama_10_a64_e`, `nama_10_a64_p5`), GDP and trade (`nama_10_gdp`), international investment position (`tipsii10`), current account (`tipsbp10`), industrial production (`sts_inpr_a`), energy dependency (`nrg_ind_id`), gas imports by partner (`nrg_ti_gas`), and the regional tables `nama_10r_3empers`, `nama_10r_2gdp`, `demo_r_d2jan`, `lfst_r_lfu3rt`, `lfst_r_lfe2emprt`.
 - `fetch_long.py`: AMECO (European Commission) through DBnomics, for the long series from 1960: employment, gross value added at current and constant prices, current account and net exports of goods.
 - `fetch_comext.py`: Eurostat Comext `DS-045409`, EU-27 imports by partner in euros, every HS chapter and fifteen HS 4-digit headings, 1999–2025.
+- `fetch_hs6.py`: Comext `DS-045409` for every HS 6-digit product in eleven years: imports and exports to and from outside and inside the EU, and imports by partner, reduced in the script to one row per product and year (Herfindahl index, largest supplier and its share, shares of selected partners).
+- `fetch_labels.py`: the names of the HS products.
+
+The data workflow can be run for one fetcher at a time (`workflow_dispatch` input `only`).
 
 `data/fetch_log.txt` records every request and its status.
 
@@ -25,7 +30,7 @@ All inputs are public and are fetched by GitHub Actions (`.github/workflows/euro
 ```
 python -m pip install -r requirements.txt
 python -m pytest -q tests
-python decompose.py && python external.py && python regions.py && python dependencies.py && python turn.py
+python decompose.py && python external.py && python regions.py && python dependencies.py && python turn.py && python screen.py
 python figures.py
 ```
 
@@ -38,4 +43,5 @@ Each script writes CSV files and a `*_summary.txt` to `results/`. `check_results
 - Germany before 1991 is West Germany. Bulgaria lacks a complete AMECO series for the 2000–2024 decomposition.
 - Ireland's manufacturing value added is inflated by the accounting of multinational groups since 2015; Ireland, Luxembourg, Malta and Cyprus are shown but excluded from the cross-country fits in Part 2.
 - Regional manufacturing employment for 2024 covers too few regions, so the regional outcome window ends in 2023.
+- The screen uses intra-EU trade as a stand-in for EU supply, as the Commission did; goods re-shipped between member states inflate intra-EU imports, so some products look less dependent than they are. HS codes change with each revision of the nomenclature, so the product lists differ slightly between years.
 - In Comext, the United Kingdom is partner `GB` and counts as extra-EU in every year, because the reporter is the EU-27 in its 2020 composition.

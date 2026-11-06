@@ -57,11 +57,14 @@ jobs:
       - name: Part 5, the turn and the 2035 target
         run: python turn.py > /dev/null
 
+      - name: Dependency screen by HS 6-digit product
+        run: python screen.py > /dev/null
+
       - name: Figures
         run: python figures.py
 
       - name: Summaries unchanged within tolerance
         run: |
-          S="results/decompose_summary.txt results/external_summary.txt results/regions_summary.txt results/dependencies_summary.txt results/turn_summary.txt"
+          S="results/decompose_summary.txt results/external_summary.txt results/regions_summary.txt results/dependencies_summary.txt results/turn_summary.txt results/screen_summary.txt"
           git diff --stat -- $S || true
           python check_results.py $S
