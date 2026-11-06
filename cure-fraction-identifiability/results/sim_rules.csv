@@ -1,0 +1,6 @@
+rule,pass_share,fail_if_pass,fail_if_flagged,failures_flagged
+Maller-Zhou says sufficient (alpha_n < 0.05),0.679127,0.178158,0.301509,0.444323
+latency families agree (gap < 0.05),0.468016,0.144141,0.282485,0.690177
+estimate near the Kaplan-Meier bound (within 0.05),0.622143,0.0947187,0.42029,0.72936
+AIC prefers a cure model,0.784365,0.0783669,0.724696,0.717696
+families agree and AIC prefers a cure model,0.41996,0.0463952,0.341794,0.910516
