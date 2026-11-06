@@ -1,4 +1,4 @@
-# fetch.py run 2026-11-06T17:30:35+00:00
+# fetch.py run 2026-11-06T19:59:37+00:00
 gva_a64_current	200	[["unit", "CP_MEUR"], ["na_item", "B1G"], ["nace_r2", "TOTAL"], ["nace_r2", "B-E"], ["nace_r2", "C"], ["nace_r2", "F"]]	e3620a7e55f202ff888db483236453a49fa8082e748f1873eeb44c6a5db45a3e	60210 bytes	https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/nama_10_a64?lang=en&format=JSON&unit=CP_MEUR&na_item=B1G&nace_r2=TOTAL&nace_r2=B-E&nace_r2=C&nace_r2=F&geo=BE&geo=BG&geo=CZ&geo=DK&geo=DE&geo=EE&geo=IE&geo=EL&geo=ES&geo=FR&geo=HR&geo=IT&geo=CY&geo=LV&geo=LT&geo=LU&geo=HU&geo=MT&geo=NL&geo=AT&geo=PL&geo=PT&geo=RO&geo=SI&geo=SK&geo=FI&geo=SE&geo=EU27_2020
 gva_a64_current	ROWS	3692
 gva_a64_volume	200	[["unit", "CLV20_MEUR"], ["na_item", "B1G"], ["nace_r2", "TOTAL"], ["nace_r2", "B-E"], ["nace_r2", "C"], ["nace_r2", "F"]]	a85d9c766fdc8e9caab66692c01bb2b6727325062173e052513946ed759def05	60365 bytes	https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/nama_10_a64?lang=en&format=JSON&unit=CLV20_MEUR&na_item=B1G&nace_r2=TOTAL&nace_r2=B-E&nace_r2=C&nace_r2=F&geo=BE&geo=BG&geo=CZ&geo=DK&geo=DE&geo=EE&geo=IE&geo=EL&geo=ES&geo=FR&geo=HR&geo=IT&geo=CY&geo=LV&geo=LT&geo=LU&geo=HU&geo=MT&geo=NL&geo=AT&geo=PL&geo=PT&geo=RO&geo=SI&geo=SK&geo=FI&geo=SE&geo=EU27_2020
@@ -21,6 +21,15 @@ energy_dependency	200	[["unit", "PC"]]	6ca624c387a3f38c4157e52eab176838cf05600a6
 energy_dependency	ROWS	12740
 gas_imports_by_partner	200	[["siec", "G3000"], ["unit", "TJ_GCV"]]	b38734f4d364c08c9edb4abbb0657280df370f65884e5df74aa5f0caf7e9a979	86814 bytes	https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/nrg_ti_gas?lang=en&format=JSON&siec=G3000&unit=TJ_GCV&geo=EU27_2020
 gas_imports_by_partner	ROWS	5805
+gas_supply	404	[["siec", "G3000"], ["unit", "TJ_GCV"]]	a34bb329d12cb6d40471d85a0379cc68b80638cd34ed4787bee9f6c2284a0218	133 bytes	https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/nrg_cb_ga?lang=en&format=JSON&siec=G3000&unit=TJ_GCV&geo=EU27_2020
+gas_supply	BODY	b'{ "error": [{"status": 404,"id": 100,"label": "ERR_NOT_FOUND_4: NRG_CB_GA (DATA_FLOW:ALL,1.0) is not available for dissemination."}]}'
+gas_supply	404	[["siec", "G3000"]]	a34bb329d12cb6d40471d85a0379cc68b80638cd34ed4787bee9f6c2284a0218	133 bytes	https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/nrg_cb_ga?lang=en&format=JSON&siec=G3000&geo=EU27_2020
+gas_supply	BODY	b'{ "error": [{"status": 404,"id": 100,"label": "ERR_NOT_FOUND_4: NRG_CB_GA (DATA_FLOW:ALL,1.0) is not available for dissemination."}]}'
+gas_supply	FAILED
+oil_imports_by_partner	200	[["siec", "O4100_TOT"], ["unit", "THS_T"]]	1956bc427179199908a78cec377489ea776376c54db2e1897b8c4b02509a1389	87319 bytes	https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/nrg_ti_oil?lang=en&format=JSON&siec=O4100_TOT&unit=THS_T&geo=EU27_2020
+oil_imports_by_partner	ROWS	5805
+coal_imports_by_partner	200	[["siec", "C0100"], ["unit", "THS_T"]]	171bc457b56bab2f236230376b00254727d9f28a8503fb3492b232a74094c44a	85493 bytes	https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/nrg_ti_sff?lang=en&format=JSON&siec=C0100&unit=THS_T&geo=EU27_2020
+coal_imports_by_partner	ROWS	5805
 regional_employment	200	[["wstatus", "EMP"], ["unit", "THS"], ["nace_r2", "TOTAL"], ["nace_r2", "B-E"], ["nace_r2", "C"]]	737b28b0e377b61e44b420d0f8bde0ddf4241c4c29ad2e1afed976193d537cfd	1749100 bytes	https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/nama_10r_3empers?lang=en&format=JSON&wstatus=EMP&unit=THS&nace_r2=TOTAL&nace_r2=B-E&nace_r2=C
 regional_employment	ROWS	117076
 regional_gdp_per_head	200	[["unit", "PPS_EU27_2020_HAB"]]	b2c97ebd072402649826b62566f50e17affe2c63b604c362fa3370d17b209eb1	164149 bytes	https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/nama_10r_2gdp?lang=en&format=JSON&unit=PPS_EU27_2020_HAB
@@ -31,7 +40,7 @@ regional_unemployment	200	[["sex", "T"], ["age", "Y15-74"], ["isced11", "TOTAL"]
 regional_unemployment	ROWS	11967
 regional_employment_rate	200	[["sex", "T"], ["age", "Y20-64"], ["unit", "PC"]]	77f14a94098998070c05e39c8466dcc4c05b03ae371e91b6219dae019e04b0a8	197833 bytes	https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/lfst_r_lfe2emprt?lang=en&format=JSON&sex=T&age=Y20-64&unit=PC
 regional_employment_rate	ROWS	12116
-# fetch_long.py run 2026-11-06T17:31:02+00:00
+# fetch_long.py run 2026-11-06T19:59:56+00:00
 datasets	offset 0	500	f1a7e782d2c4a88990aac60b94d0d41260038ed6b49bbb1871e8d4409f277202	https://api.db.nomics.world/v22/datasets/AMECO?limit=500&offset=0
 datasets found 500, kept 37: HVG1E, HVG2E, HVG4E, HVG5E, HVGME, HVGMW, NET1, NET2, NET4, NET5, NETD, NETM, NETN, OVG0, OVG1, OVG2, OVG4, OVG5, OVGE, OVGM, RVG1E, RVG2E, RVG4E, RVG5E, RVGME, RVGMW, UBCA, UBGN, UBGS, UGVAC, UVG0, UVG1, UVG2, UVG4, UVG5, UVGE, UVGM
 series	HVG1E	offset 0	49	ea76e48a109dadb27964e56f743c4a7cae64c86c5acb03f40f9d02ac8e003b3f	https://api.db.nomics.world/v22/series/AMECO/HVG1E?observations=1&limit=1000&offset=0
@@ -72,7 +81,7 @@ series	UVG5	offset 0	104	2b2aa9cad83853bfe85215d76bf37b1bfcea027d758d1a3d645afa4
 series	UVGE	offset 0	150	8e72dc4cc6a5ba1ae02b9d6be79eca63a5fed5dab2ebe66f50e507c6f8f6c7eb	https://api.db.nomics.world/v22/series/AMECO/UVGE?observations=1&limit=1000&offset=0
 series	UVGM	offset 0	104	c6625afa2110295c76d6bfa293134f2989fe29e29312a04aef7e92bcf7009a37	https://api.db.nomics.world/v22/series/AMECO/UVGM?observations=1&limit=1000&offset=0
 rows 106921
-# fetch_comext.py run 2026-11-06T17:33:25+00:00
+# fetch_comext.py run 2026-11-06T20:02:19+00:00
 comext 01	200	EU27_2020	7c2132f38ded42dbe25e1cde05745252bbe506436a92f58c0f75426d03b6a64a	64797 bytes	https://ec.europa.eu/eurostat/api/comext/dissemination/statistics/1.0/data/DS-045409?format=JSON&lang=en&freq=A&reporter=EU27_2020&product=01&flow=1&indicators=VALUE_IN_EUROS
 comext 02	200	EU27_2020	9d940ad194f183d1d7017d6328a0f51338f48695f3762d7167f2e125d6d9dda8	51958 bytes	https://ec.europa.eu/eurostat/api/comext/dissemination/statistics/1.0/data/DS-045409?format=JSON&lang=en&freq=A&reporter=EU27_2020&product=02&flow=1&indicators=VALUE_IN_EUROS
 comext 03	200	EU27_2020	a7f818ceeab526830c9f3312721b9e5575b4ba77abc92798c8f6ca17942bb35b	82444 bytes	https://ec.europa.eu/eurostat/api/comext/dissemination/statistics/1.0/data/DS-045409?format=JSON&lang=en&freq=A&reporter=EU27_2020&product=03&flow=1&indicators=VALUE_IN_EUROS
