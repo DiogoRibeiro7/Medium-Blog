@@ -20,7 +20,8 @@ def test_scientific_outputs_do_not_need_article_templates(tmp_path: Path) -> Non
         with patch("eu_wheat_weather.publication.maize_values") as maize:
             actual = scientific_outputs(tmp_path)
 
-    assert actual == {"publication/values.json": '{\n  "e1": "2.6%"\n}\n'}
+    assert set(actual) == {"publication/values.json"}
+    assert json.loads(actual["publication/values.json"]) == {"e1": "2.6%"}
     wheat.assert_called_once_with(tmp_path)
     maize.assert_not_called()
 
