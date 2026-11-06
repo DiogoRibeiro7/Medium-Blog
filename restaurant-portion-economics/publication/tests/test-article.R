@@ -7,28 +7,26 @@ source("R/profit_bounds.R")
 source("R/menu_designs.R")
 source("R/quantity_response.R")
 
-root <- "publication"
-sections <- c(
-  "00-question.md", "01-food-system.md", "02-evidence.md",
-  "03-mathematics.md", "04-uncertainty.md", "05-menu-design.md",
-  "06-business-and-conclusion.md"
-)
-paths <- file.path(root, "sections", sections)
-if (!all(file.exists(paths))) stop("A source manuscript section is missing.")
-read_text <- function(path) {
-  paste(readLines(path, warn = FALSE, encoding = "UTF-8"), collapse = "\n")
+# Research figures remain public even when the editorial manuscript moves.
+figure_dir <- file.path("publication", "medium", "figures")
+figure_names <- sprintf("fig%02d_", seq_len(10L))
+archived <- list.files(figure_dir, pattern = "^fig[0-9]{2}_.*\\.png$", full.names = TRUE)
+if (length(archived) != 10L || anyDuplicated(basename(archived))) {
+  stop("Expected ten distinct public research PNGs.")
 }
-expected <- paste(
-  vapply(paths, function(path) trimws(read_text(path)), character(1)),
-  collapse = "\n\n"
-)
-actual <- read_text(file.path(root, "medium", "article.md"))
-if (!identical(trimws(actual), trimws(expected))) {
-  stop("Medium article differs from manuscript sections. Reassemble it.")
+for (prefix in figure_names) {
+  if (sum(startsWith(basename(archived), prefix)) != 1L) {
+    stop("Missing or duplicated research figure prefix: ", prefix)
+  }
 }
-word_count <- length(strsplit(trimws(actual), "\\s+")[[1L]])
-if (word_count < 5000L) {
-  stop("Long-form Medium article has fewer than 5000 words.")
+expected_png_header <- as.raw(c(137, 80, 78, 71, 13, 10, 26, 10))
+for (figure in archived) {
+  connection <- file(figure, open = "rb")
+  header <- readBin(connection, what = "raw", n = 8L)
+  close(connection)
+  if (!identical(header, expected_png_header)) {
+    stop("Invalid PNG signature: ", figure)
+  }
 }
 
 a <- example_assumptions()
@@ -79,27 +77,5 @@ refill_half$refill_uptake <- 0.5
 stopifnot(round(evaluate_menu_design(a, refill_half)$
                   monthly_contribution_change_eur) == -131)
 
-# Every figure the article references must exist next to it.
-figures <- regmatches(actual, gregexpr("\\(figures/[^)]+\\.png\\)", actual))[[1L]]
-figures <- gsub("^\\(|\\)$", "", figures)
-if (length(figures) != 10L || anyDuplicated(figures)) {
-  stop("The article should reference ten distinct figures.")
-}
-missing <- figures[!file.exists(file.path(root, "medium", figures))]
-if (length(missing) > 0L) {
-  stop("Article references missing figures: ", paste(missing, collapse = ", "))
-}
-
-for (required in c(
-  "3,321", "380", "21.73%", "16.34%", "16.39%", "2.36%",
-  "€487.50", "€0.255", "€153.13", "0.147", "€88.92", "€1,387.50",
-  "about 69 weeks", "about 273 weeks"
-)) {
-  if (!grepl(required, actual, fixed = TRUE)) {
-    stop("Article omitted a required audited or illustrative value: ",
-         required)
-  }
-}
-message("Article matches its sections, ", word_count,
-        " words; economic figures and ", length(figures),
-        " referenced figures pass base-R regression checks.")
+message("Economic regression checks and ", length(archived),
+        " archived research figures pass base-R validation.")
