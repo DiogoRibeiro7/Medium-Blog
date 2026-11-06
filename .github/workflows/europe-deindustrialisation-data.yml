@@ -88,10 +88,13 @@ jobs:
             echo "Snapshot unchanged."
           else
             git commit -m "Refresh data snapshot for europe-deindustrialisation ($(date -u +%Y-%m-%d))"
+            # files outside data/ can show line-ending changes in the checkout, so no rebase: push, and
+            # if the branch moved meanwhile, merge it (it never touches those files) and push again
             pushed=no
             for i in 1 2 3; do
-              if git pull --rebase --autostash origin "${GITHUB_REF_NAME}" && git push; then pushed=yes; break; fi
-              sleep 10
+              if git push; then pushed=yes; break; fi
+              git pull --no-rebase --no-edit origin "${GITHUB_REF_NAME}" || true
+              sleep 5
             done
             test "$pushed" = yes
           fi
