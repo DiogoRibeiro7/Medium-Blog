@@ -170,6 +170,10 @@ def build_parser() -> argparse.ArgumentParser:
     pub.add_argument("--root", type=Path, default=Path("."))
     pub.add_argument("--check", action="store_true")
     pub.add_argument("--no-figures", action="store_true")
+    pub.add_argument("--values-only", action="store_true",
+                     help="Regenerate numerical manifests without article templates")
+    pub.add_argument("--check-values", action="store_true",
+                     help="Check numerical manifests without article templates")
     return parser
 
 
@@ -379,9 +383,22 @@ def main(argv: Sequence[str] | None = None) -> int:
             print(f"amended placebo significant under both methods: "
                   f"{results['E5']['significant_both']}")
         elif args.command == "publication":
-            from eu_wheat_weather.publication import check, write_publication
+            from eu_wheat_weather.publication import (
+                check,
+                check_scientific,
+                write_publication,
+                write_scientific,
+            )
 
-            if args.check:
+            if args.check_values:
+                stale = check_scientific(args.root)
+                if stale:
+                    parser.exit(1, "Out of date: " + ", ".join(stale) + "\n")
+                print("The scientific value manifests are current.")
+            elif args.values_only:
+                written = write_scientific(args.root)
+                print(f"{len(written)} scientific value manifests written")
+            elif args.check:
                 stale = check(args.root)
                 if stale:
                     parser.exit(1, "Out of date: " + ", ".join(stale) + "\n")
