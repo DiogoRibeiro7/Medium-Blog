@@ -339,6 +339,18 @@ def main() -> None:
         say(f"  {k}: pooled {a[k]:.4f}, unpooled {b[k]:.4f}")
     say(f"  pooled EU price: sd of log {np.std(np.log(p_p)):.4f}; 95th percentile {np.quantile(p_p, 0.95):.3f}; share of years at the world price {np.mean(np.isclose(p_p, 1.0)):.3f}")
 
+    say("\n== Priced-out share by member state at a common price (model demand)")
+    rows = []
+    for p in (float(np.quantile(p_p, 0.95)), 1.46):
+        parts = []
+        for g in ("RO", "BG", "HU", "SK", "EL", "DE", "FR", "IT", "ES", "PL", "NL", "PT", "IE"):
+            i = u.geo.index(g)
+            po = float(u.dem[i].priced_out(p))
+            parts.append(f"{g} {100 * u.b[i]:.1f}->{100 * po:.1f}")
+            rows.append({"price": p, "geo": g, "baseline": u.b[i], "priced_out": po})
+        say(f"  price {p:.3f}: " + "; ".join(parts))
+    pd.DataFrame(rows).to_csv(RES / "model_common_price_exposure.csv", index=False)
+
     say("\n== Correlation sweep (weather-type shocks only)")
     cs = correlation_sweep(u)
     cs.to_csv(RES / "model_correlation_sweep.csv", index=False)

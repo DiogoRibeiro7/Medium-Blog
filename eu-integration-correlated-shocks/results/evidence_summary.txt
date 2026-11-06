@@ -17,6 +17,17 @@ principal components of the correlation matrix: variance shares 0.309, 0.189, 0.
 second component (sign arbitrary): HU -0.30, RO -0.27, HR -0.25, SK -0.25, IT -0.23, BG -0.22, SI -0.19, AT -0.16, CZ -0.12, ES -0.07, EL -0.05, PT -0.01, PL +0.01, FR +0.03, DE +0.03, IE +0.09, LU +0.12, CY +0.15, NL +0.16, BE +0.18, LT +0.23, LV +0.24, FI +0.25, DK +0.27, SE +0.27, EE +0.29
 EU aggregate shocks by year: 2000 -0.011, 2001 +0.029, 2002 +0.026, 2003 -0.127, 2004 +0.143, 2005 +0.011, 2006 -0.064, 2007 -0.096, 2008 +0.086, 2009 +0.023, 2010 -0.041, 2011 -0.026, 2012 -0.058, 2013 +0.021, 2014 +0.082, 2015 +0.023, 2016 -0.021, 2017 +0.004, 2018 -0.041, 2019 +0.051, 2020 +0.010, 2021 +0.060, 2022 -0.024, 2023 -0.010, 2024 -0.051
 concentration of production (HHI): 2000 0.1270, 2010 0.1206, 2024 0.1062; equivalent number of equal producers 2000 7.9, 2024 9.4
+blocs from the second component: HU, RO, HR, SK, IT, BG, SI | BE, LT, LV, FI, DK, SE, EE
+  mean correlation within first bloc 0.536, within second 0.575, across -0.002
+robustness to detrending (cereals): 
+  hp: mean pairwise correlation 0.231; n_eff 3.17; diversification ratio 0.562
+  quadratic: mean pairwise correlation 0.220; n_eff 3.14; diversification ratio 0.564
+  diff: mean pairwise correlation 0.205; n_eff 3.14; diversification ratio 0.564
+by crop (HP detrending; countries with complete, non-zero 2000-2024 series):
+  cereals: 26 countries; mean pairwise correlation 0.231; weighted national sd 0.116; union sd 0.065; n_eff 3.17
+  wheat: 25 countries; mean pairwise correlation 0.223; weighted national sd 0.128; union sd 0.077; n_eff 2.73
+  barley: 26 countries; mean pairwise correlation 0.180; weighted national sd 0.135; union sd 0.062; n_eff 4.77
+  grain maize: 18 countries; mean pairwise correlation 0.264; weighted national sd 0.190; union sd 0.121; n_eff 2.44
 
 == Food prices (HICP CP011, annual log change)
 2019: mean 0.023, min -0.006 (IE), max 0.056 (RO), countries 27

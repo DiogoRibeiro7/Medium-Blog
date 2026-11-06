@@ -116,6 +116,38 @@ def tail_coexceedance(s: pd.DataFrame, q: float = 0.2) -> dict:
     return {"empirical_lower": float(np.mean(emp_lo)), "empirical_upper": float(np.mean(emp_hi)), "gaussian": float(np.mean(gau)), "independent": q}
 
 
+def crop_shocks(crop: str, detrend: str = "hp") -> pd.DataFrame:
+    """Shocks for one crop code, countries with a complete 2000-2024 series and non-zero output."""
+    d = pd.read_csv(DATA / "crops.csv", low_memory=False)
+    p = d[(d.crops == crop) & (d.strucpro == "HPRD_HUMD_EU_THS_T")].pivot_table(index="time", columns="geo", values="value")
+    p = p.loc[2000:2024].drop(columns=[c for c in ("EU27_2020", "MT") if c in p.columns]).astype(float)
+    p = p.loc[:, (p.notna().all()) & (p.min() > 0)]
+    return detrended(np.log(p), detrend)
+
+
+def detrended(logp: pd.DataFrame, how: str) -> pd.DataFrame:
+    if how == "hp":
+        return logp - logp.apply(lambda c: pd.Series(hp_trend(c.values), index=c.index))
+    if how == "quadratic":
+        t = np.arange(len(logp))
+        X = np.column_stack([np.ones_like(t), t, t**2]).astype(float)
+        beta, *_ = np.linalg.lstsq(X, logp.values, rcond=None)
+        return logp - X @ beta
+    if how == "diff":
+        return logp.diff().dropna()
+    raise ValueError(how)
+
+
+def bloc_correlations(s: pd.DataFrame, k: int = 7) -> dict:
+    """Mean correlation within the two ends of the second principal component and across them."""
+    c = s.corr()
+    ev, evec = np.linalg.eigh(c.values)
+    pc2 = pd.Series(evec[:, -2], index=c.index).drop("CY", errors="ignore").sort_values()
+    a, b = list(pc2.index[:k]), list(pc2.index[-k:])
+    within = lambda g: pairwise(c.loc[g, g].values).mean()
+    return {"bloc_a": a, "bloc_b": b, "within_a": within(a), "within_b": within(b), "across": float(c.loc[a, b].values.mean())}
+
+
 def food_inflation() -> pd.DataFrame:
     f = pd.read_csv(DATA / "food_prices.csv")
     f = f[(f.unit == "INX_A_AVG") & (f.coicop == "CP011")].pivot_table(index="time", columns="geo", values="value")
@@ -268,6 +300,29 @@ def main() -> None:
     pd.DataFrame({"hhi": hhi, "equivalent_producers": 1 / hhi}).to_csv(RES / "evidence_concentration.csv")
     pd.DataFrame(c, index=s.columns, columns=s.columns).to_csv(RES / "evidence_correlation.csv")
     bs.to_csv(RES / "evidence_bootstrap.csv", index=False)
+
+    bl = bloc_correlations(s)
+    say(f"blocs from the second component: {', '.join(bl['bloc_a'])} | {', '.join(bl['bloc_b'])}")
+    say(f"  mean correlation within first bloc {bl['within_a']:.3f}, within second {bl['within_b']:.3f}, across {bl['across']:.3f}")
+    say("robustness to detrending (cereals): ")
+    nat = prod.drop(columns=["EU27_2020", "MT"])
+    for how in ("hp", "quadratic", "diff"):
+        sh = detrended(np.log(nat), how)
+        dvh = diversification(sh, w)
+        say(f"  {how}: mean pairwise correlation {pairwise(sh.corr().values).mean():.3f}; n_eff {dvh['n_eff']:.2f}; diversification ratio {dvh['diversification_ratio']:.3f}")
+    say("by crop (HP detrending; countries with complete, non-zero 2000-2024 series):")
+    crop_rows = []
+    for code, name in (("C0000", "cereals"), ("C1100", "wheat"), ("C1300", "barley"), ("C1500", "grain maize")):
+        sh = crop_shocks(code)
+        d = pd.read_csv(DATA / "crops.csv", low_memory=False)
+        pp = d[(d.crops == code) & (d.strucpro == "HPRD_HUMD_EU_THS_T")].pivot_table(index="time", columns="geo", values="value")
+        wc = pp.loc[SHARE_YEARS[0] : SHARE_YEARS[1], sh.columns].mean()
+        wc = wc / wc.sum()
+        dvc = diversification(sh, wc)
+        mc_ = pairwise(sh.corr().values).mean()
+        crop_rows.append({"crop": name, "countries": sh.shape[1], "mean_corr": mc_, "n_eff": dvc["n_eff"], "weighted_sd": dvc["weighted_national_sd"], "union_sd": dvc["eu_sd_from_cov"]})
+        say(f"  {name}: {sh.shape[1]} countries; mean pairwise correlation {mc_:.3f}; weighted national sd {dvc['weighted_national_sd']:.3f}; union sd {dvc['eu_sd_from_cov']:.3f}; n_eff {dvc['n_eff']:.2f}")
+    pd.DataFrame(crop_rows).to_csv(RES / "evidence_by_crop.csv", index=False)
 
     say("\n== Food prices (HICP CP011, annual log change)")
     fi = food_inflation()

@@ -13,6 +13,10 @@ simulated EU log-supply sd 0.0627 (data: EU aggregate shock sd 0.0594)
   prob_eu_excess_gt_1pp: pooled 0.1428, unpooled 0.5747
   pooled EU price: sd of log 0.1168; 95th percentile 1.173; share of years at the world price 0.575
 
+== Priced-out share by member state at a common price (model demand)
+  price 1.173: RO 18.1->27.8; BG 15.8->22.0; HU 15.1->23.1; SK 14.2->24.6; EL 12.8->19.5; DE 11.1->17.6; FR 11.2->17.7; IT 9.3->14.9; ES 5.3->9.1; PL 3.0->6.3; NL 2.5->5.3; PT 1.9->3.7; IE 1.7->3.6
+  price 1.460: RO 18.1->44.2; BG 15.8->32.3; HU 15.1->37.2; SK 14.2->43.8; EL 12.8->31.6; DE 11.1->29.8; FR 11.2->29.8; IT 9.3->25.7; ES 5.3->17.3; PL 3.0->15.0; NL 2.5->12.5; PT 1.9->8.1; IE 1.7->8.8
+
 == Correlation sweep (weather-type shocks only)
   mean corr 0.000: mean excess pooled -0.167 pp, unpooled 2.477 pp, insurance 2.644 pp (1.07); national bad-year risk pooled 1.818 pp, unpooled 24.203 pp, insurance 22.385 pp (0.92); EU worst-5% pooled 1.818, unpooled 8.872
   mean corr 0.050: mean excess pooled -0.181 pp, unpooled 2.476 pp, insurance 2.658 pp (1.07); national bad-year risk pooled 3.853 pp, unpooled 24.243 pp, insurance 20.389 pp (0.84); EU worst-5% pooled 3.853, unpooled 9.862
