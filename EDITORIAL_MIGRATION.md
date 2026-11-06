@@ -7,8 +7,8 @@ Medium manuscripts are maintained in the private [research-articles-medium](http
 - Source snapshot imported: [`6e6f84c85931`](https://github.com/DiogoRibeiro7/Medium-Blog/commit/6e6f84c8593198fbd70811fd8d1915def98373a8).
 - Later synchronized amendment: causal inference part 16 from [`d603e96c1986`](https://github.com/DiogoRibeiro7/Medium-Blog/commit/d603e96c19869780e04f38df294808368453d5f2).
 - Private import: [PR #2](https://github.com/DiogoRibeiro7/research-articles-medium/pull/2), 90 manuscripts and editorial indexes.
-- Public migration stages 1–2: replace 82 `article.md` bodies with historical-path notices.
-- Deferred: 8 manuscripts whose text is still read by tests, publication generators, or source-level audits.
+- Public migration stages 1–2: replace 83 `article.md` bodies with historical-path notices.
+- Deferred: 7 manuscripts whose text is still read by tests, publication generators, or source-level audits.
 
 ## Why stages are required
 
@@ -107,6 +107,10 @@ The private import must be merged and verified before this public cleanup is mer
 - `causal_inference_statistics/part19/article.md`
 - `causal_inference_statistics/part20/article.md`
 
+## Stage 3 — metropolitan affordability manuscript
+
+- `urban-affordability-cascade/article.md`
+
 ## Deferred manuscript paths
 
 - `eu-okun-law/publication/medium/article.md`
@@ -116,7 +120,6 @@ The private import must be merged and verified before this public cleanup is mer
 - `midterm-forecast-fit-vs-prediction/article.md`
 - `restaurant-portion-economics/publication/medium/article.md`
 - `routing-on-real-roads/publication/article.md`
-- `urban-affordability-cascade/article.md`
 
 ## Historical links and privacy
 
