@@ -3,10 +3,10 @@
 from __future__ import annotations
 
 import json
-
-import pytest
 from pathlib import Path
 from unittest.mock import patch
+
+import pytest
 
 from iberian_lp.publication import check_scientific, scientific_outputs
 
