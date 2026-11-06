@@ -212,6 +212,15 @@ def write_summary(raw: pd.DataFrame, cells: pd.DataFrame) -> None:
                     f"cover LN {r.ln_cover:.2f} WB {r.wb_cover:.2f}; width LN {r.ln_width:.3f}; "
                     f"cure preferred {r.cure_preferred:.2f}; MZ says sufficient {r.mz_sufficient:.2f}; family gap {r.family_gap:.3f}"
                 )
+    short = raw.ratio <= 0.75
+    in_bound = raw.km_plateau >= raw.pi - 0.02
+    cov_ln = (raw.pi_ln_lo <= raw.pi) & (raw.pi <= raw.pi_ln_hi)
+    cov_wb = (raw.pi_wb_lo <= raw.pi) & (raw.pi <= raw.pi_wb_hi)
+    cov_best = cov_ln.where(raw.aic_ln <= raw.aic_wb, cov_wb)
+    say(
+        f"\nFollow-up ratios up to 0.75: the identified set [0, Kaplan-Meier plateau] contains the truth (within 0.02) in {in_bound[short].mean():.3f} of datasets; "
+        f"the 90% interval of the AIC-chosen cure model contains it in {cov_best[short].mean():.3f}"
+    )
     rules = diagnostic_rules(raw)
     rules.to_csv(RES / "sim_rules.csv", index=False, float_format="%.6g")
     say(f"\nDiagnostic rules over all datasets (failure rate of the AIC-best cure estimate: {((raw.pi_best - raw.pi).abs() > BAD).mean():.3f})")

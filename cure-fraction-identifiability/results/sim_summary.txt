@@ -134,6 +134,8 @@ weibull-1.5, pi = 0.5
   n= 4000 R=2.00 (P(T0>tau)=0.000): bias KM +0.001 LN -0.067 WB +0.001 best +0.001; fail KM 0.00 LN 0.03 WB 0.00 best 0.00; cover LN 0.00 WB 0.88; width LN 0.048; cure preferred 1.00; MZ says sufficient 0.85; family gap 0.066
   n= 4000 R=3.00 (P(T0>tau)=0.000): bias KM +0.001 LN -0.024 WB +0.001 best +0.001; fail KM 0.00 LN 0.00 WB 0.00 best 0.00; cover LN 0.21 WB 0.92; width LN 0.033; cure preferred 1.00; MZ says sufficient 0.99; family gap 0.025
 
+Follow-up ratios up to 0.75: the identified set [0, Kaplan-Meier plateau] contains the truth (within 0.02) in 0.990 of datasets; the 90% interval of the AIC-chosen cure model contains it in 0.790
+
 Diagnostic rules over all datasets (failure rate of the AIC-best cure estimate: 0.218)
   Maller-Zhou says sufficient (alpha_n < 0.05): passes 0.679 of datasets; failure rate if passed 0.178, if flagged 0.302; share of failures flagged 0.444
   latency families agree (gap < 0.05): passes 0.468 of datasets; failure rate if passed 0.144, if flagged 0.282; share of failures flagged 0.690
