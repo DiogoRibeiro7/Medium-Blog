@@ -1,10 +1,9 @@
-"""Scientific publication values generated from committed research results.
+"""Regenerate and validate public research values and publication figures.
 
-``values`` reads ``results/estimates.json``, ``results/programmes.csv`` and
-``data/derived`` and formats each quoted number once. ``render`` fills the ``{{key}}``
-placeholders of a separately maintained private editorial template.
-``write_publication`` writes the values, the article and the figures; ``check`` compares
-the committed values and article with what the code produces.
+``values`` derives numerical claims from committed results and data. The default
+``write_publication`` command writes numerical JSON and figures but never rewrites
+editorial prose. ``render`` remains available for callers that explicitly supply a
+privately maintained manuscript template.
 """
 
 from __future__ import annotations
@@ -41,7 +40,6 @@ MINUS = "−"
 WORDS = ("zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten")
 MONTHS = ("January", "February", "March", "April", "May", "June", "July", "August",
           "September", "October", "November", "December")
-TEMPLATE = "publication/article.template.md"
 RELAXATIONS = (("all", "X"), ("blocks", "X_blocks"), ("sco", "X_sco"))
 
 

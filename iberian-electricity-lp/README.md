@@ -7,8 +7,9 @@ much would 1,000 MW more supply at zero price lower it? A registered study of on
 
 **Status: plan registered ([METHODS.md](METHODS.md)); data built
 ([docs/DATA.md](docs/DATA.md)); programmes solved and estimates reported against the plan
-([docs/RESULTS.md](docs/RESULTS.md)); the article generated from them
-([publication/article.md](publication/article.md), private manuscript notice); a critical review
+([docs/RESULTS.md](docs/RESULTS.md)); reproducible values and figures available
+([publication/values.json](publication/values.json)); editorial manuscript archived privately
+([public notice](publication/article.md)); a critical review
 ([docs/REVIEW.md](docs/REVIEW.md)), and the corrections it led to, logged in the plan's
 change log.**
 
@@ -24,8 +25,12 @@ iberian-lp publication --values-only   # update scientific values, no article/te
 iberian-lp publication --check-values  # verify scientific values, no article/template
 ```
 
-The article and its former template are maintained in the private [research-articles-medium](https://github.com/DiogoRibeiro7/research-articles-medium/tree/main/iberian-electricity-lp/publication) repository. The public tests check that
-it quotes no number by hand and that each claim in its words holds in the results.
+The full Medium article and former parameterized template are maintained in the private
+[research-articles-medium](https://github.com/DiogoRibeiro7/research-articles-medium/tree/main/iberian-electricity-lp/publication)
+repository. The [public notice](publication/article.md) preserves historical links. The
+publication command regenerates only numerical values and research figures, never the
+editorial text. Public tests validate the numerical claims, source provenance and generated
+research outputs independently of manuscript wording.
 
 Each programme's dual interval is computed exactly from the integer steps and checked
 against HiGHS. The tests re-solve every programme exactly from the committed steps, and

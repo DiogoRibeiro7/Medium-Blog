@@ -8,7 +8,7 @@ from unittest.mock import patch
 
 import pytest
 
-from iberian_lp.publication import check_scientific, scientific_outputs
+from iberian_lp.publication import check_scientific, scientific_outputs, write_publication
 
 
 def test_scientific_values_do_not_require_a_medium_template(tmp_path: Path) -> None:
@@ -19,6 +19,21 @@ def test_scientific_values_do_not_require_a_medium_template(tmp_path: Path) -> N
     assert list(generated) == ["publication/values.json"]
     assert json.loads(generated["publication/values.json"]) == {"estimate": "−1.25"}
     assert not (tmp_path / "publication" / "article.template.md").exists()
+
+
+def test_default_publication_preserves_editorial_notice(tmp_path: Path) -> None:
+    """The ordinary publication command cannot replace a historical-path notice."""
+    publication = tmp_path / "publication"
+    publication.mkdir()
+    notice = publication / "article.md"
+    notice.write_text("Private editorial archive notice.\n", encoding="utf-8")
+
+    with patch("iberian_lp.publication.values", return_value={"estimate": "−1.25"}):
+        written = write_publication(tmp_path, figures=False)
+
+    assert written == ["publication/values.json"]
+    assert notice.read_text(encoding="utf-8") == "Private editorial archive notice.\n"
+    assert not (publication / "article.template.md").exists()
 
 
 def test_scientific_check_detects_missing_and_stale_values(tmp_path: Path) -> None:
