@@ -10,8 +10,13 @@ from pathlib import Path
 import numpy as np
 import pytest
 
-from eu_wheat_weather.publication import (check, outputs, render, scientific_outputs,
-                                          write_publication)
+from eu_wheat_weather.publication import (
+    check,
+    outputs,
+    render,
+    scientific_outputs,
+    write_publication,
+)
 
 ROOT = Path(__file__).resolve().parents[1]
 RESULTS = ROOT / "docs" / "results" / "results.json"
