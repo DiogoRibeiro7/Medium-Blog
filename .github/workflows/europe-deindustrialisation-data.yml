@@ -9,8 +9,18 @@ on:
       - 'europe-deindustrialisation/fetch_long.py'
       - 'europe-deindustrialisation/fetch_comext.py'
       - 'europe-deindustrialisation/fetch_hs6.py'
+      - 'europe-deindustrialisation/fetch_labels.py'
       - '.github/workflows/europe-deindustrialisation-data.yml'
   workflow_dispatch:
+    inputs:
+      only:
+        description: 'Run only one fetcher (eurostat, ameco, comext, hs6, labels); empty runs all'
+        required: false
+        default: ''
+      hs6_limit:
+        description: 'Only the first N HS6 products (testing); empty for all'
+        required: false
+        default: ''
 
 permissions:
   contents: write
@@ -39,24 +49,34 @@ jobs:
         run: python -m pip install -r requirements.txt
 
       - name: Download the Eurostat series
+        if: inputs.only == '' || inputs.only == null || inputs.only == 'eurostat'
         id: fetch
         continue-on-error: true
         run: python fetch.py --out data
 
       - name: Download the long AMECO series (DBnomics)
+        if: inputs.only == '' || inputs.only == null || inputs.only == 'ameco'
         id: fetch_long
         continue-on-error: true
         run: python fetch_long.py --out data
 
       - name: Download EU imports by supplier (Comext)
+        if: inputs.only == '' || inputs.only == null || inputs.only == 'comext'
         id: fetch_comext
         continue-on-error: true
         run: python fetch_comext.py --out data
 
       - name: Download the dependency screen inputs by HS 6-digit product (Comext)
+        if: inputs.only == '' || inputs.only == null || inputs.only == 'hs6'
         id: fetch_hs6
         continue-on-error: true
-        run: python fetch_hs6.py --out data
+        run: python fetch_hs6.py --out data ${{ inputs.hs6_limit && format('--limit {0}', inputs.hs6_limit) || '' }}
+
+      - name: Download the names of HS products (Comext)
+        id: fetch_labels
+        if: inputs.only == '' || inputs.only == null || inputs.only == 'labels'
+        continue-on-error: true
+        run: python fetch_labels.py --out data
 
       - name: Commit the snapshot and its log if they changed
         if: always()
@@ -72,7 +92,7 @@ jobs:
           fi
 
       - name: Fail if any request failed
-        if: steps.fetch.outcome == 'failure' || steps.fetch_long.outcome == 'failure' || steps.fetch_comext.outcome == 'failure' || steps.fetch_hs6.outcome == 'failure'
+        if: steps.fetch.outcome == 'failure' || steps.fetch_long.outcome == 'failure' || steps.fetch_comext.outcome == 'failure' || steps.fetch_hs6.outcome == 'failure' || steps.fetch_labels.outcome == 'failure'
         run: |
           cat data/fetch_log.txt
           exit 1

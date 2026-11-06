@@ -35,7 +35,7 @@ YEARS = (2002, 2005, 2008, 2012, 2015, 2019, 2021, 2022, 2023, 2024, 2025)
 REPORTERS = ("EU27_2020", "EU")
 EU27 = {"AT", "BE", "BG", "CY", "CZ", "DE", "DK", "EE", "EL", "GR", "ES", "FI", "FR", "HR", "HU", "IE", "IT", "LT", "LU", "LV", "MT", "NL", "PL", "PT", "RO", "SE", "SI", "SK"}
 PARTNERS = ("CN", "RU", "US", "GB", "CH", "NO", "TR", "JP", "KR", "IN", "TW", "VN", "BR", "UA", "BY")
-CHUNK = 40
+CHUNK = 20
 
 
 def url(params: list[tuple[str, str]], years: tuple[int, ...] = YEARS) -> str:
@@ -54,7 +54,14 @@ def request(params: list[tuple[str, str]], log: list[str], tag: str, years: tupl
     if status != 200:
         log.append(f"hs6 {tag}\tBODY\t{body[:300]!r}")
         return None
-    doc = json.loads(body)
+    try:
+        doc = json.loads(body)
+    except json.JSONDecodeError:
+        log.append(f"hs6 {tag}\tNOT JSON\t{body[:200]!r}")
+        return None
+    if "value" not in doc and "warning" in json.dumps(doc)[:500].lower():
+        log.append(f"hs6 {tag}\tWARNING\t{json.dumps(doc)[:300]}")
+        return None
     if not doc.get("value"):
         log.append(f"hs6 {tag}\tEMPTY")
         return pd.DataFrame()
@@ -90,6 +97,7 @@ def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--out", default="data")
     ap.add_argument("--limit", type=int, default=None, help="only the first N products (for testing)")
+    ap.add_argument("--refresh-totals", action="store_true", help="download the totals even if data/hs6_totals.csv exists")
     args = ap.parse_args(argv)
     out = Path(args.out)
     out.mkdir(parents=True, exist_ok=True)
@@ -97,6 +105,10 @@ def main(argv: list[str] | None = None) -> int:
 
     # 1. totals by product
     reporter, totals = None, []
+    if (out / "hs6_totals.csv").exists() and not args.refresh_totals:
+        tw = pd.read_csv(out / "hs6_totals.csv", dtype={"product": str})
+        log.append(f"hs6 totals\tREUSED\t{len(tw)} rows")
+        return suppliers(tw, REPORTERS[0], out, log, args.limit)
     for flow in ("1", "2"):
         for partner in ("EXT_EU27_2020", "INT_EU27_2020"):
             got = None
@@ -126,11 +138,14 @@ def main(argv: list[str] | None = None) -> int:
     tw = t.pivot_table(index=["product", "time"], columns="col", values="value", aggfunc="sum").reset_index().rename(columns={"time": "year"})
     tw.to_csv(out / "hs6_totals.csv", index=False)
     log.append(f"hs6 totals\tROWS\t{len(tw)}\tproducts {tw['product'].nunique()}")
+    return suppliers(tw, reporter, out, log, args.limit)
 
-    # 2. imports by supplier, in chunks of products
-    products = sorted(tw.loc[tw.get("imports_extra", pd.Series(dtype=float)).fillna(0) > 0, "product"].unique())
-    if args.limit:
-        products = products[: args.limit]
+
+def suppliers(tw: pd.DataFrame, reporter: str, out: Path, log: list[str], limit: int | None) -> int:
+    """Imports by supplier, in chunks of products, reduced to one row per product and year."""
+    products = sorted(tw.loc[tw["imports_extra"].fillna(0) > 0, "product"].unique())
+    if limit:
+        products = products[:limit]
     parts, failed = [], []
     queue = [products[i : i + CHUNK] for i in range(0, len(products), CHUNK)]
     while queue:

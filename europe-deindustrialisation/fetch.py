@@ -88,7 +88,7 @@ REQUESTS: dict[str, tuple[str, list[Filters], tuple[str, ...] | None]] = {
         [[("siec", "G3000"), ("unit", "TJ_GCV")], [("siec", "G3000"), ("unit", "MIO_M3")], [("siec", "G3000")]],
         ("EU27_2020",),
     ),
-    "gas_supply": ("nrg_cb_ga", [[("siec", "G3000"), ("unit", "TJ_GCV")], [("siec", "G3000")]], ("EU27_2020",)),
+    "gas_supply": ("nrg_cb_gas", [[("siec", "G3000"), ("unit", "TJ_GCV")], [("siec", "G3000")]], ("EU27_2020",)),
     "oil_imports_by_partner": ("nrg_ti_oil", [[("siec", "O4100_TOT"), ("unit", "THS_T")], [("siec", "O4100_TOT")]], ("EU27_2020",)),
     "coal_imports_by_partner": ("nrg_ti_sff", [[("siec", "C0100"), ("unit", "THS_T")], [("siec", "C0100")]], ("EU27_2020",)),
     # regions (NUTS 2 kept downstream)
