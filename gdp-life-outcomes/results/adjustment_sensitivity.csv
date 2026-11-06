@@ -1,0 +1,4 @@
+model,n_countries,log2_gdp_coefficient,hc3_lower,hc3_upper,r_squared,gini_coefficient,health_expenditure_coefficient
+all_countries_gdp_only,197,3.650926416,3.362927469,3.938925363,0.7419131339,,
+matched_countries_gdp_only,132,3.877472198,3.54063477,4.214309625,0.7849362312,,
+matched_plus_gini_and_health,132,3.45448416,2.939422726,3.969545595,0.7934562821,-0.01968355585,0.368003343

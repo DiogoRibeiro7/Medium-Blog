@@ -1,0 +1,93 @@
+{
+  "source": "World Bank World Development Indicators API v2",
+  "source_documentation": "https://datahelpdesk.worldbank.org/knowledgebase/articles/889392",
+  "retrieved_utc": "2026-11-06T08:22:18.429563+00:00",
+  "years": {
+    "first": 2000,
+    "last": 2023
+  },
+  "country_metadata": {
+    "url": "https://api.worldbank.org/v2/country?format=json&per_page=500",
+    "rows": 296,
+    "sha256": "af5cf525b1ad3e621da8f4d70ce7933d003df7b3367d834929be97f2648ffee6",
+    "last_updated": "unknown",
+    "country_count": 217
+  },
+  "indicators": {
+    "NY.GDP.PCAP.PP.KD": {
+      "description": "GDP per capita, constant 2021 international dollars",
+      "url": "https://api.worldbank.org/v2/country/all/indicator/NY.GDP.PCAP.PP.KD?format=json&date=2000:2023&per_page=20000",
+      "raw_rows": 6384,
+      "country_observations": 389,
+      "source_last_updated": "2026-10-08",
+      "api_response_canonical_sha256": "54e418aad99c77e738b09fa6d3b78f4c24843db11d3891df69494c75228d05af"
+    },
+    "SP.DYN.LE00.IN": {
+      "description": "Life expectancy at birth, total, years",
+      "url": "https://api.worldbank.org/v2/country/all/indicator/SP.DYN.LE00.IN?format=json&date=2000:2023&per_page=20000",
+      "raw_rows": 6384,
+      "country_observations": 434,
+      "source_last_updated": "2026-10-08",
+      "api_response_canonical_sha256": "3df6d96e8812125e18923a9b3b0070ea4839724022c18e473fc5da815c041003"
+    },
+    "SH.DYN.MORT": {
+      "description": "Under-five mortality rate, per 1,000 live births",
+      "url": "https://api.worldbank.org/v2/country/all/indicator/SH.DYN.MORT?format=json&date=2000:2023&per_page=20000",
+      "raw_rows": 6384,
+      "country_observations": 392,
+      "source_last_updated": "2026-10-08",
+      "api_response_canonical_sha256": "a95ed9cc6b28ef2208d1e0d93390ed2db85fcba8753f9f7f241eeb8beb1c269c"
+    },
+    "EG.ELC.ACCS.ZS": {
+      "description": "Access to electricity, percent of population",
+      "url": "https://api.worldbank.org/v2/country/all/indicator/EG.ELC.ACCS.ZS?format=json&date=2000:2023&per_page=20000",
+      "raw_rows": 6384,
+      "country_observations": 215,
+      "source_last_updated": "2026-10-08",
+      "api_response_canonical_sha256": "2ba725fb556a4f4cafd18a19b67be870fe98a6b5ac4a0ec27874d7ff30b05076"
+    },
+    "SH.H2O.SMDW.ZS": {
+      "description": "Safely managed drinking water, percent of population",
+      "url": "https://api.worldbank.org/v2/country/all/indicator/SH.H2O.SMDW.ZS?format=json&date=2000:2023&per_page=20000",
+      "raw_rows": 6384,
+      "country_observations": 149,
+      "source_last_updated": "2026-10-08",
+      "api_response_canonical_sha256": "f75cd7b967a3af3d869bebb327b9284904d85c0742cde6f086f293f0820b8bed"
+    },
+    "SH.XPD.GHED.GD.ZS": {
+      "description": "Domestic general government health expenditure, percent of GDP",
+      "url": "https://api.worldbank.org/v2/country/all/indicator/SH.XPD.GHED.GD.ZS?format=json&date=2000:2023&per_page=20000",
+      "raw_rows": 6384,
+      "country_observations": 770,
+      "source_last_updated": "2026-10-08",
+      "api_response_canonical_sha256": "940a04ef72e6463109ba8c3598b97fb4859caa2f01101583c8b1388029c6d05a"
+    },
+    "SI.POV.GINI": {
+      "description": "Gini index, World Bank survey estimate",
+      "url": "https://api.worldbank.org/v2/country/all/indicator/SI.POV.GINI?format=json&date=2000:2023&per_page=20000",
+      "raw_rows": 6384,
+      "country_observations": 455,
+      "source_last_updated": "2026-10-08",
+      "api_response_canonical_sha256": "a60500ce8518b61d032fadd032d4ddf82608a4581819df10522a2b7afa2c4770"
+    },
+    "SP.POP.TOTL": {
+      "description": "Population, total",
+      "url": "https://api.worldbank.org/v2/country/all/indicator/SP.POP.TOTL?format=json&date=2000:2023&per_page=20000",
+      "raw_rows": 6384,
+      "country_observations": 217,
+      "source_last_updated": "2026-10-08",
+      "api_response_canonical_sha256": "b63bb1fe2cf1507ee002107cc69c6f1a40ba06194f5997cf8f3fdaaf48d8f94d"
+    }
+  },
+  "panel_rows": 3021,
+  "panel_sha256": "999ab4c83977537fc18db91d2d396685433872c9c98fd303a8e9c2c96f73e7c2",
+  "notes": [
+    "World Bank aggregates removed by official region metadata (region id NA).",
+    "Only endpoint years are archived for GDP, life expectancy and under-five mortality.",
+    "Only the last six years of Gini and four years of health-spending observations are retained.",
+    "Other indicators retain the final-year observation only, matching the prespecified analysis.",
+    "Panel observations use the indicator-specific source vintage documented above.",
+    "Missing observations are omitted, never imputed or filled forward.",
+    "Latest available values may differ from the Our World in Data 2026 graphic."
+  ]
+}

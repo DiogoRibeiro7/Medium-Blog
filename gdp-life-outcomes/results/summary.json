@@ -1,0 +1,127 @@
+{
+  "data_sha256": "999ab4c83977537fc18db91d2d396685433872c9c98fd303a8e9c2c96f73e7c2",
+  "analysis_year": 2023,
+  "change_start_year": 2000,
+  "source": "World Bank WDI snapshot; original 2026 OWID chart not directly replicated",
+  "number_of_wdi_rows": 3021,
+  "country_count_2023_any_indicator": 217,
+  "outcomes": [
+    {
+      "outcome": "life_expectancy",
+      "year": 2023,
+      "n_countries": 197,
+      "y_transform": "level",
+      "coefficient_per_gdp_doubling": 3.6509264160482156,
+      "hc3_lower": 3.3629274688593114,
+      "hc3_upper": 3.9389253632371197,
+      "r_squared": 0.7419131339244165,
+      "spearman_rho": 0.8722468412422472,
+      "population_weighted_coefficient": 3.7523796487458747
+    },
+    {
+      "outcome": "under_five_mortality",
+      "year": 2023,
+      "n_countries": 187,
+      "y_transform": "log2",
+      "coefficient_per_gdp_doubling": -0.819286183074644,
+      "hc3_lower": -0.8830656828870587,
+      "hc3_upper": -0.7555066832622293,
+      "r_squared": 0.7414127919390323,
+      "spearman_rho": -0.8688253150890614,
+      "population_weighted_coefficient": -0.9358028364435371
+    },
+    {
+      "outcome": "electricity_access",
+      "year": 2023,
+      "n_countries": 196,
+      "y_transform": "level",
+      "coefficient_per_gdp_doubling": 9.783807235440918,
+      "hc3_lower": 8.081657918949974,
+      "hc3_upper": 11.485956551931862,
+      "r_squared": 0.5431741337735376,
+      "spearman_rho": 0.7751629963648554,
+      "population_weighted_coefficient": 9.489330927384719
+    },
+    {
+      "outcome": "safely_managed_water",
+      "year": 2023,
+      "n_countries": 137,
+      "y_transform": "level",
+      "coefficient_per_gdp_doubling": 15.924733786265666,
+      "hc3_lower": 14.615845136182296,
+      "hc3_upper": 17.233622436349034,
+      "r_squared": 0.7596798991690077,
+      "spearman_rho": 0.8885427357687197,
+      "population_weighted_coefficient": 14.687854629425985
+    }
+  ],
+  "paired_changes": [
+    {
+      "outcome": "life_expectancy",
+      "first_year": 2000,
+      "last_year": 2023,
+      "n_countries": 191,
+      "y_change_transform": "level",
+      "slope_per_gdp_doubling": 0.8783594510215921,
+      "hc3_lower": -0.11128650462865008,
+      "hc3_upper": 1.8680054066718341,
+      "r_squared": 0.014756407445351227,
+      "spearman_rho": 0.16059176081565169
+    },
+    {
+      "outcome": "under_five_mortality",
+      "first_year": 2000,
+      "last_year": 2023,
+      "n_countries": 184,
+      "y_change_transform": "log2",
+      "slope_per_gdp_doubling": -0.46872339577732836,
+      "hc3_lower": -0.620597913367734,
+      "hc3_upper": -0.3168488781869228,
+      "r_squared": 0.18716348103897662,
+      "spearman_rho": -0.42047466841072684
+    }
+  ],
+  "sensitivity": [
+    {
+      "model": "all_countries_gdp_only",
+      "n_countries": 197,
+      "log2_gdp_coefficient": 3.6509264160482156,
+      "hc3_lower": 3.3629274688593114,
+      "hc3_upper": 3.9389253632371197,
+      "r_squared": 0.7419131339244165,
+      "gini_coefficient": null,
+      "health_expenditure_coefficient": null
+    },
+    {
+      "model": "matched_countries_gdp_only",
+      "n_countries": 132,
+      "log2_gdp_coefficient": 3.8774721976069477,
+      "hc3_lower": 3.540634769827613,
+      "hc3_upper": 4.214309625386282,
+      "r_squared": 0.7849362311907773,
+      "gini_coefficient": null,
+      "health_expenditure_coefficient": null
+    },
+    {
+      "model": "matched_plus_gini_and_health",
+      "n_countries": 132,
+      "log2_gdp_coefficient": 3.454484160451625,
+      "hc3_lower": 2.9394227261627717,
+      "hc3_upper": 3.9695455947404787,
+      "r_squared": 0.793456282061958,
+      "gini_coefficient": -0.01968355585215764,
+      "health_expenditure_coefficient": 0.3680033429684526
+    }
+  ],
+  "coverage": [
+    {
+      "gdp_life_countries": 197,
+      "gini_available_2018_2023": 133,
+      "health_available_2020_2023": 185,
+      "complete_cases": 132,
+      "gini_earliest_vintage": 2018,
+      "health_earliest_vintage": 2021
+    }
+  ],
+  "important_caveat": "All estimates are descriptive. No intervention is identified; covariance, within-country differences and conditioning do not establish causation."
+}
