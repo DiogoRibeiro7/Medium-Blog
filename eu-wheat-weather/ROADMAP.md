@@ -1,5 +1,11 @@
 # Roadmap
 
+> Editorial migration (November 2026): the wheat and maize manuscripts and
+> editable templates are archived in the private `research-articles-medium`
+> repository. The historic `publication/article.md` paths now contain
+> compatibility notices; this checklist records earlier publication stages.
+> Numeric manifests, figures and the underlying research remain public.
+
 ## Phase 0: foundation
 
 - [x] Question, estimands and data sources, with their licences ([README.md](README.md)).

@@ -64,12 +64,14 @@ Amendment A2 (section 10) is computed ([docs/MAIZE_AMENDMENT.md](docs/MAIZE_AMEN
   never in place of them. Maize has its own review
   ([docs/MAIZE_REVIEW.md](docs/MAIZE_REVIEW.md)), with its checks in the same section of
   [docs/MAIZE.md](docs/MAIZE.md).
-- **Article.** The Medium article ([publication/article.md](publication/article.md))
-  and its five figures are generated from the committed results. It carries the E-OBS
-  acknowledgement and citation, and the Eurostat and GISCO notices under its subtitle.
-  It is not published: the author reviews and publishes it. A separate maize article
-  ([publication/maize/article.md](publication/maize/article.md)) is generated the same
-  way.
+- **Articles.** The wheat and maize editorial manuscripts and their editable
+  templates are held in the private
+  [research-articles-medium](https://github.com/DiogoRibeiro7/research-articles-medium)
+  repository. The historical public paths
+  ([wheat](publication/article.md), [maize](publication/maize/article.md)) now contain
+  short notices. Public numeric manifests, research figures, provenance and tests
+  remain generated independently of the articles. E-OBS, Eurostat, GISCO, GGCMI and
+  MIRCA-OS licence notices and scientific references remain in this README.
 - [ROADMAP.md](ROADMAP.md) lists the stages.
 
 ## Question and estimands
@@ -98,7 +100,7 @@ are not effects of a permanent change in climate, to which farmers adapt.
 | Eurostat `apro_cpshr` | Common wheat (`C1110`) and, for section 9, grain maize (`C1500`): area and harvested production at EU standard humidity, NUTS-2, annual | Free reuse with attribution: © European Union, Eurostat |
 | E-OBS v33.0e (ECA&D, Copernicus) | Daily maximum and minimum temperature, precipitation and elevation, 0.25° grid, 1950-2025 | Non-commercial research and education only (below) |
 | GISCO NUTS boundaries | NUTS-2 polygons of the 2006, 2010, 2013, 2016, 2021 and 2024 versions, 1:3 million | Non-commercial use only, with the notice © EuroGeographics for the administrative boundaries (below) |
-| MIRCA-OS v0.1 (Amendment A2) | Harvested area of irrigated and rainfed maize in 2015, 5-arcminute grid (Kebede et al. 2025, Scientific Data 12, 208; data doi:10.4211/hs.60a890eb841c460192c03bb590687145) | CC BY 4.0, with attribution; summed onto the E-OBS grid and used as weights |
+| MIRCA-OS v0.1 (Amendment A2) | Harvested area of irrigated and rainfed maize in 2015, 5-arcminute grid (Kebede et al. 2025, Scientific Data 12, 208; article doi:10.1038/s41597-024-04313-w; data doi:10.4211/hs.60a890eb841c460192c03bb590687145) | CC BY 4.0, with attribution; summed onto the E-OBS grid and used as weights |
 | Eurostat `ef_lus_irri`, `ef_lus_allcrops` (Amendment A2) | Irrigated and total grain maize area, 2023, Spain, Portugal, Italy and Greece, for a check of the map | Free reuse with attribution: © European Union, Eurostat |
 | GGCMI Phase 3 crop calendar v1.01 (Amendment A1 and section 9) | Rainfed winter wheat maturity day, and rainfed maize planting and maturity days, 0.5° grid (Jägermeyr et al. 2021, Nature Food 2, 873-885; doi:10.5281/zenodo.5062513) | CC BY 4.0, with attribution; mapped to the E-OBS grid, averaged per region and rounded to whole days |
 
@@ -117,7 +119,7 @@ not commercial. Any publication must carry:
 **GISCO terms.** The boundaries may be used "on condition that the data will not be
 used for commercial purposes", and the copyright notice "© EuroGeographics for the
 administrative boundaries" must appear on the publication's introductory page. The
-article carries it under its subtitle.
+private editorial articles carry it under their subtitles; this public README retains it.
 
 **What is committed.**
 
@@ -165,7 +167,7 @@ poetry run eu-wheat fetch-mirca        # the MIRCA-OS map of maize, 172 MB, into
 poetry run eu-wheat fetch-irrigation   # Eurostat's irrigated maize in 2023, for the map check
 poetry run eu-wheat maize-a2-weather   # the season weather under three weightings, about 2 minutes
 poetry run eu-wheat maize-amend --crops snapshots/eurostat-maize-2026-10-26   # beside the registered results
-poetry run eu-wheat publication            # values, article and figures; --check compares
+poetry run eu-wheat publication            # numerical values, public notices and figures; --check compares
 poetry run eu-wheat publication --values-only   # numerical manifests; no article templates needed
 poetry run eu-wheat publication --check-values  # verify wheat and maize manifests only
 poetry run pytest
