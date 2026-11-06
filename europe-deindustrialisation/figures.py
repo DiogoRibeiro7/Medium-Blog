@@ -189,7 +189,7 @@ def fig4_regions() -> None:
     suptitle(fig, "Regions that lost more manufacturing jobs before 2008 fell behind slowly afterwards")
     note(fig, "Sources: Eurostat nama_10r_3empers, nama_10r_2gdp, demo_r_d2jan; author's calculations. Both axes demeaned within country; no further controls", y=-0.04)
     fig.tight_layout()
-    save(fig, "fig4_regional_exposure.png")
+    save(fig, "fig9_regional_exposure.png")
 
 
 def fig5_china() -> None:
@@ -217,7 +217,7 @@ def fig5_china() -> None:
     suptitle(fig, "In a quarter of a century China went from one supplier among many to the largest one", y=1.04)
     note(fig, "Source: Eurostat Comext DS-045409, EU-27 imports from outside the EU, HS chapters 28–96 except 71 and 93; author's calculations", y=-0.03)
     fig.tight_layout()
-    save(fig, "fig5_china_share_manufactured.png")
+    save(fig, "fig7_china_share_manufactured.png")
 
 
 def fig6_strategic() -> None:
@@ -247,7 +247,7 @@ def fig6_strategic() -> None:
     ax.set_title("China's share of extra-EU imports in fifteen strategic products, 2019 and 2024", loc="left", fontsize=10.5)
     note(fig, "Source: Eurostat Comext DS-045409, HS 4-digit headings; author's calculations. Labels name the largest supplier where it is not China")
     fig.tight_layout()
-    save(fig, "fig6_strategic_products.png")
+    save(fig, "fig8_strategic_products.png")
 
 
 def fig7_gas() -> None:
@@ -278,7 +278,7 @@ def fig7_gas() -> None:
     ax.set_title("Where the EU's imported natural gas came from, share of extra-EU imports by energy content", loc="left", fontsize=10.5)
     note(fig, "Source: Eurostat nrg_ti_gas (TJ, gross calorific value), EU-27 imports from outside the EU, pipeline and LNG; author's calculations", y=-0.12)
     fig.tight_layout()
-    save(fig, "fig7_gas_suppliers.png")
+    save(fig, "fig6_gas_suppliers.png")
 
 
 def fig8_production() -> None:
@@ -303,7 +303,7 @@ def fig8_production() -> None:
     ax.set_title("Manufacturing output, 2015–2025: the European total is flat, Germany and Italy are falling", loc="left", fontsize=10.5)
     note(fig, "Source: Eurostat sts_inpr_a, NACE C, calendar adjusted, annual averages")
     fig.tight_layout()
-    save(fig, "fig8_industrial_production.png")
+    save(fig, "fig10_industrial_production.png")
 
 
 def fig9_target() -> None:
@@ -331,16 +331,140 @@ def fig9_target() -> None:
     save(fig, "fig9_target_arithmetic.png")
 
 
+def fig_russia_energy() -> None:
+    r = pd.read_csv(RES / "dependencies_russia_energy.csv").set_index("year")
+    r = r[r.index >= 1995]
+    fig, axes = plt.subplots(1, 2, figsize=(11.8, 4.8), sharey=True)
+    ax = axes[0]
+    ax.plot(r.index, r.gas_russia_share_of_consumption, color=BLUE, label="supplied by Russia")
+    ax.plot(r.index, r.gas_eu_production_share_of_consumption, color=ORANGE, label="produced in the EU")
+    for col, yr, dy in (("gas_russia_share_of_consumption", 2021, 8), ("gas_russia_share_of_consumption", 2024, 8), ("gas_eu_production_share_of_consumption", 1995, 8), ("gas_eu_production_share_of_consumption", 2024, -14)):
+        v = r.loc[yr, col]
+        ax.plot([yr], [v], "o", color=BLUE if "russia" in col else ORANGE, ms=6, mec=SURFACE, mew=1.5)
+        ax.annotate(f"{v:.0%}", (yr, v), xytext=(10, 2) if yr == 1995 else (0, dy), textcoords="offset points", ha="left" if yr == 1995 else "center", fontsize=8.6, color=INK2)
+    ax.axvspan(2022, 2024.5, color=SHADE, zorder=0)
+    ax.set_xlim(1995, 2025)
+    ax.set_ylim(0, 0.7)
+    pct(ax)
+    ax.legend(loc="upper right", fontsize=8.8)
+    ax.set_title("Natural gas: share of EU consumption", fontsize=10.5)
+    ax = axes[1]
+    ax.plot(r.index, r.oil_russia_share_of_extra_imports, color=BLUE, label="crude oil")
+    ax.plot(r.index, r.coal_russia_share_of_extra_imports, color=AQUA, label="hard coal")
+    ax.plot(r.index, r.gas_russia_share_of_extra_imports, color=MUTED, lw=1.4, ls="--", label="natural gas")
+    for col, yr, col_c in (("coal_russia_share_of_extra_imports", 2021, AQUA), ("oil_russia_share_of_extra_imports", 2021, BLUE)):
+        v = r.loc[yr, col]
+        ax.plot([yr], [v], "o", color=col_c, ms=6, mec=SURFACE, mew=1.5)
+        ax.annotate(f"{v:.0%}", (yr, v), xytext=(-6, 6), textcoords="offset points", ha="right", fontsize=8.6, color=INK2)
+    ax.axvspan(2022, 2024.5, color=SHADE, zorder=0)
+    ax.set_xlim(1995, 2025)
+    ax.legend(loc="upper left", fontsize=8.8)
+    ax.set_title("Russia's share of EU imports from outside the EU", fontsize=10.5)
+    suptitle(fig, "Russian energy: a dependence that grew as EU gas production fell, and was cut within two years", y=1.04)
+    note(fig, "Sources: Eurostat nrg_ti_gas, nrg_ti_oil, nrg_ti_sff, nrg_cb_gas (EU-27); author's calculations. Shaded: 2022 onwards", y=-0.03)
+    fig.tight_layout()
+    save(fig, "fig5_russian_energy.png")
+
+
+def fig_screen() -> None:
+    y = pd.read_csv(RES / "screen_by_year.csv")
+    a = pd.read_csv(RES / "screen_single_supplier_by_year.csv")
+    groups = [("CN", "China", BLUE), ("US", "United States", ORANGE), ("RU", "Russia", AQUA)]
+    fig, axes = plt.subplots(1, 2, figsize=(12.4, 5.0))
+    x = np.arange(len(y))
+    for ax, data, getter, ylab, title in (
+        (axes[0], y, lambda d, p: d[f"dependent_top_{p}"] if p else d.dependent - sum(d[f"dependent_top_{q}"] for q, _, _ in groups), "products (HS 6-digit)", "Commission screen: number of products"),
+        (axes[1], a, lambda d, p: (d[f"value_{p}"] if p else d.value_other) / 1e9, "EUR billion of extra-EU imports", "Single-supplier screen: value of imports"),
+    ):
+        bottom = np.zeros(len(data))
+        for p, lab, colr in groups + [(None, "other suppliers", GREY)]:
+            v = getter(data, p).to_numpy(dtype=float)
+            ax.bar(x, v, bottom=bottom, color=colr, edgecolor=SURFACE, linewidth=1.5, width=0.72, label=lab)
+            bottom += v
+        for xi, tot in zip(x, bottom):
+            ax.annotate(f"{tot:,.0f}", (xi, tot), xytext=(0, 3), textcoords="offset points", ha="center", fontsize=8.2, color=INK2)
+        ax.set_xticks(x)
+        ax.set_xticklabels(data.year, fontsize=9)
+        ax.set_ylabel(ylab)
+        ax.set_title(title, fontsize=10.5)
+        ax.set_ylim(0, bottom.max() * 1.12)
+    axes[0].legend(loc="upper left", fontsize=8.6, ncol=2)
+    suptitle(fig, "Dependence on outside suppliers, by largest supplier, 2002–2025", y=1.04)
+    note(
+        fig,
+        "Source: Eurostat Comext DS-045409, every HS 6-digit product; author's calculations. Both screens require extra-EU imports > 50% of EU imports and > EU exports.\n"
+        "Commission screen: HHI of outside suppliers > 0.4. Single-supplier screen: largest outside supplier > 40% of extra-EU imports. Values in current euros",
+        y=-0.03,
+    )
+    fig.tight_layout()
+    save(fig, "fig3_dependency_screen.png")
+
+
+def fig_single_country() -> None:
+    top = pd.read_csv(RES / "screen_largest_single_supplier.csv", dtype={"product": str}).head(15)
+    lab = pd.read_csv(HERE / "data" / "hs6_labels.csv", dtype={"product": str}).set_index("product").label
+    top = top.iloc[::-1]
+    cols = {"CN": BLUE, "US": ORANGE, "RU": AQUA}
+    fig, ax = plt.subplots(figsize=(10.8, 7.0))
+    yy = np.arange(len(top))
+    ax.barh(yy, top.imports_extra / 1e9, color=[cols.get(p, GREY) for p in top.top_partner], height=0.66, edgecolor=SURFACE, linewidth=1.5)
+    for yi, (_, r) in zip(yy, top.iterrows()):
+        mark = "" if r.dependent else " *"
+        ax.annotate(f"{NAMES_ISO.get(r.top_partner, r.top_partner)} {r.top_share:.0%}{mark}", (r.imports_extra / 1e9, yi), xytext=(5, 0), textcoords="offset points", va="center", fontsize=8.3, color=INK2)
+    ax.set_yticks(yy)
+    ax.set_yticklabels([short_label(lab.get(p, p), code=p) + f" ({p})" for p in top["product"]], fontsize=8.8)
+    ax.set_xlim(0, top.imports_extra.max() / 1e9 * 1.3)
+    ax.grid(axis="x", color=GRID)
+    ax.grid(axis="y", visible=False)
+    ax.set_xlabel("extra-EU imports, EUR billion")
+    last = int(pd.read_csv(RES / "screen_by_year.csv").year.max())
+    ax.set_title(f"The fifteen largest products under the single-supplier screen, {last}", loc="left", fontsize=10.5)
+    note(fig, "Source: Eurostat Comext DS-045409; author's calculations. Labels: largest outside supplier and its share of extra-EU imports. Bars: China blue, United States orange,\nother grey. Names shortened from the HS nomenclature. * not flagged by the Commission screen (HHI of outside suppliers at or below 0.4)")
+    fig.tight_layout()
+    save(fig, "fig4_single_country_products.png")
+
+
+NAMES_ISO = {"CN": "China", "US": "United States", "RU": "Russia", "GB": "United Kingdom", "CH": "Switzerland", "NO": "Norway", "TR": "Türkiye", "JP": "Japan", "KR": "South Korea", "IN": "India", "TW": "Taiwan", "VN": "Vietnam", "BR": "Brazil", "UA": "Ukraine", "BY": "Belarus"}
+
+
+SHORT = {
+    "271111": "Liquefied natural gas",
+    "850760": "Lithium-ion batteries",
+    "841191": "Parts of turbojets and turbopropellers",
+    "293399": "Heterocyclic compounds with nitrogen, n.e.s.",
+    "854143": "Photovoltaic modules and panels",
+    "230400": "Soya-bean oilcake",
+    "890190": "Cargo vessels (excl. tankers, reefers, ferries)",
+    "030214": "Fresh or chilled Atlantic salmon",
+    "271112": "Liquefied propane",
+    "120190": "Soya beans",
+    "853400": "Printed circuits",
+    "852491": "LCD flat panel display modules",
+    "100590": "Maize",
+    "293339": "Pyridine-ring compounds, n.e.s.",
+    "293590": "Sulphonamides",
+}
+
+
+def short_label(s: str, n: int = 50, code: str | None = None) -> str:
+    if code in SHORT:
+        return SHORT[code]
+    s = str(s).replace("{s}", "(s)").split(";")[0].split(" (excl.")[0].split(", whether or not")[0]
+    s = s[0].upper() + s[1:] if s else s
+    return s if len(s) <= n else s[: n - 1].rstrip() + "…"
+
+
 def main() -> None:
     fig1_long_run()
     fig2_countries()
-    fig3_goods_balance()
-    fig4_regions()
+    fig_screen()
+    fig_single_country()
+    fig_russia_energy()
+    fig7_gas()
     fig5_china()
     fig6_strategic()
-    fig7_gas()
+    fig4_regions()
     fig8_production()
-    fig9_target()
 
 
 if __name__ == "__main__":

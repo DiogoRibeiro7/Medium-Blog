@@ -93,6 +93,37 @@ def energy() -> tuple[pd.DataFrame, pd.DataFrame]:
     return shares, dep
 
 
+def partner_shares(name: str) -> pd.DataFrame:
+    """Shares of extra-EU imports by partner, and the absolute imports, from an nrg_ti_* table."""
+    g = pd.read_csv(DATA / f"{name}.csv", keep_default_na=False, na_values=[""])
+    g["value"] = pd.to_numeric(g.value, errors="coerce")
+    g = g[g.geo == "EU27_2020"]
+    extra = g[~g.partner.isin(EU27 | {"TOTAL", "NSP"})]
+    tot = extra.groupby("time").value.sum()
+    ru = g[g.partner == "RU"].set_index("time").value
+    return pd.DataFrame({"extra_imports": tot, "russia": ru, "russia_share": ru / tot})
+
+
+def russia_energy() -> pd.DataFrame:
+    """Russia's share of extra-EU imports of natural gas, crude oil and hard coal, and of EU gas use."""
+    gas = partner_shares("gas_imports_by_partner")
+    oil = partner_shares("oil_imports_by_partner")
+    coal = partner_shares("coal_imports_by_partner")
+    b = pd.read_csv(DATA / "gas_supply.csv")
+    b = b[b.geo == "EU27_2020"].pivot_table(index="time", columns="nrg_bal", values="value")
+    d = pd.DataFrame(
+        {
+            "gas_russia_share_of_extra_imports": gas.russia_share,
+            "gas_russia_share_of_consumption": gas.russia / b["IC_CAL"],
+            "gas_eu_production_share_of_consumption": b["IPRD"] / b["IC_CAL"],
+            "oil_russia_share_of_extra_imports": oil.russia_share,
+            "coal_russia_share_of_extra_imports": coal.russia_share,
+        }
+    )
+    d.index.name = "year"
+    return d[(d.index >= 1990) & (d.index <= 2024)]
+
+
 def main() -> None:
     RES.mkdir(exist_ok=True)
     c = load()
@@ -150,6 +181,16 @@ def main() -> None:
         if y in dep.index:
             r = dep.loc[y]
             say(f"  {y}: all energy {r.all_energy:.1f}, natural gas {r.natural_gas:.1f}, oil {r.oil:.1f}, solid fossil fuels {r.solid_fossil:.1f}")
+    ru = russia_energy()
+    ru.to_csv(RES / "dependencies_russia_energy.csv", float_format="%.6g")
+    say("\nRussia's share of EU-27 energy supply (gas in TJ GCV, crude oil and hard coal in tonnes)")
+    for y in (1990, 2000, 2005, 2010, 2014, 2019, 2021, 2022, 2023, 2024):
+        if y in ru.index:
+            r = ru.loc[y]
+            say(
+                f"  {y}: gas, share of extra-EU imports {r.gas_russia_share_of_extra_imports:.2f}, of EU consumption {r.gas_russia_share_of_consumption:.2f} "
+                f"(EU production {r.gas_eu_production_share_of_consumption:.2f} of consumption); crude oil {r.oil_russia_share_of_extra_imports:.2f}; hard coal {r.coal_russia_share_of_extra_imports:.2f}"
+            )
     text = "\n".join(L) + "\n"
     (RES / "dependencies_summary.txt").write_text(text)
     print(text)

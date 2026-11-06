@@ -15,6 +15,7 @@ from decompose import decompose, finish  # noqa: E402
 from dependencies import concentration  # noqa: E402
 from fetch import jsonstat_to_long  # noqa: E402
 from regions import fe_ols  # noqa: E402
+from screen import criteria  # noqa: E402
 from turn import required_growth  # noqa: E402
 
 
@@ -101,3 +102,23 @@ def test_jsonstat_reader_maps_flat_index_to_categories() -> None:
 def test_required_growth_reaches_the_target() -> None:
     g = required_growth(0.143, 0.20, 11)
     assert 0.143 * np.exp(11 * g) == pytest.approx(0.20)
+
+
+def test_screen_criteria() -> None:
+    totals = pd.DataFrame(
+        {
+            "product": ["850760", "850760", "300490"],
+            "year": [2019, 2024, 2024],
+            "imports_extra": [40.0, 90.0, 50.0],
+            "imports_intra": [60.0, 10.0, 200.0],
+            "exports_extra": [30.0, 20.0, 400.0],
+            "exports_intra": [50.0, 10.0, 300.0],
+        }
+    )
+    suppliers = pd.DataFrame({"product": ["850760", "850760", "300490"], "year": [2019, 2024, 2024], "hhi": [0.3, 0.7, 0.5], "top_partner": ["CN", "CN", "CH"], "top_share": [0.5, 0.8, 0.6]})
+    d = criteria(totals, suppliers).set_index(["product", "year"])
+    assert not d.loc[("850760", 2019), "dependent"]  # extra-EU share 0.4 and HHI 0.3
+    r = d.loc[("850760", 2024)]
+    assert r.dependent and r.extra_share == pytest.approx(0.9) and r.import_export_ratio == pytest.approx(3.0)
+    assert r.top_share_of_all_imports == pytest.approx(0.72)
+    assert not d.loc[("300490", 2024), "dependent"]  # concentrated, but most imports come from inside the EU
