@@ -2,10 +2,9 @@
 
 A reproducible, historical-source-based statistical reconstruction and
 independent predictive audit of Steve Rattner's 30 October 2026 U.S. House
-midterm forecast. The public companion retains the [editorial archive notice](article.md)
-and the [scientific publication assets](publication/README.md), including
-individually rendered equation images. The complete editorial manuscript and
-Medium-ready text are preserved in private `DiogoRibeiro7/research-articles-medium`. The study is complete as an **ex-ante
+midterm forecast. The companion supports the [final pre-election article](article.md)
+and the [Medium publication package](publication/README.md), including
+individually rendered equation images. The study is complete as an **ex-ante
 analysis**; post-election scoring is an optional follow-up rather than a
 blocker for publication.
 
@@ -61,8 +60,8 @@ python -m unittest discover -s tests -v
 ```
 
 These commands regenerate committed data tables, thirteen original PNG figures,
-and run **65 scientific, data-provenance, post-election guard, and fresh-kernel
-notebook tests**.
+and run scientific, data-provenance, post-election guard, and fresh-kernel
+notebook tests.
 The notebook is [model_walkthrough.ipynb](model_walkthrough.ipynb).
 The `.github/workflows/midterm-forecast-fit-vs-prediction.yml` job is scoped to
 this folder and can be dispatched manually. It regenerates into a separate
