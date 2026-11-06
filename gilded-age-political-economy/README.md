@@ -1,7 +1,7 @@
 # The Gilded Age in Data, Power, and Political Economy
 
 Reproducible companion for the Medium-ready historical essay
-**[The Gold Was Real. So Was the Gilding: The Political Economy of America's Gilded Age](article.md)**.
+**[Growth, Wealth and Political Rights in America's Gilded Age, 1870–1900](article.md)**.
 
 ## Scope and interpretation
 
