@@ -6,6 +6,7 @@ on:
       - dependency-screen-design
     paths:
       - 'dependency-screen-design/fetch_prodcom.py'
+      - 'dependency-screen-design/fetch_cn8.py'
       - '.github/workflows/dependency-screen-design-data.yml'
   workflow_dispatch:
 
@@ -15,7 +16,7 @@ permissions:
 jobs:
   fetch:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 90
     defaults:
       run:
         working-directory: dependency-screen-design
@@ -40,6 +41,11 @@ jobs:
         continue-on-error: true
         run: python fetch_prodcom.py --out data
 
+      - name: Download 2025 trade by CN 8-digit code and supplier
+        id: fetch_cn8
+        continue-on-error: true
+        run: python fetch_cn8.py --out data
+
       - name: Commit the snapshot and its log if they changed
         if: always()
         run: |
@@ -60,7 +66,7 @@ jobs:
           fi
 
       - name: Fail if a request failed
-        if: steps.fetch.outcome == 'failure'
+        if: steps.fetch.outcome == 'failure' || steps.fetch_cn8.outcome == 'failure'
         run: |
           cat data/fetch_log.txt
           exit 1
