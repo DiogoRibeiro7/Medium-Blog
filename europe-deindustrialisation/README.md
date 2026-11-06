@@ -1,6 +1,6 @@
 # Europe's deindustrialisation: what it was, what it cost, and whether the turn back is visible
 
-Code and data for the article *European Deindustrialisation, 1960–2025: Jobs, Real Output, External Balances, Regions, Import Dependence and the 2035 Target*.
+Code and data for the article *What Deindustrialisation Cost the European Union, and What a 20% Manufacturing Target Would Require*.
 
 The analysis has five parts.
 
