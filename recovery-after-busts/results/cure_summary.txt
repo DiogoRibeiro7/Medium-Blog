@@ -1,0 +1,66 @@
+Share of busts that never regain their peak (mixture cure model), at the median depth.
+Gap = tradable minus non-tradable; 90% intervals from a bootstrap over countries.
+
+1. Within the open market: A*64 industries, EU-27, troughs 1995-2024
+  A*64 emp absolute: n=639, regained=241; never (single market) non-tradable 0.00, tradable 0.50, gap +0.50 [+0.01, +0.69]; never (euro) non-tradable 0.00, tradable 0.40, gap +0.40 [+0.00, +0.61]; depth effect on never-recover (logit) -0.25 [-7.42, +2.64]; median years to regain (recoverers) non-tradable 9.2, tradable 10.3; depth effect on log time +0.97 [+0.50, +1.39]
+  A*64 emp absolute + GDP after trough: n=639, regained=241; never (single market) non-tradable 0.00, tradable 0.51, gap +0.51 [+0.10, +0.69]; never (euro) non-tradable 0.00, tradable 0.34, gap +0.34 [+0.00, +0.63]; depth effect on never-recover (logit) -0.29 [-5.48, +2.60]; median years to regain (recoverers) non-tradable 9.4, tradable 10.6; depth effect on log time +1.01 [+0.51, +1.38]
+  A*64 emp relative: n=671, regained=191; never (single market) non-tradable 0.31, tradable 0.36, gap +0.04 [-0.08, +0.20]; never (euro) non-tradable 0.52, tradable 0.57, gap +0.05 [-0.12, +0.24]; depth effect on never-recover (logit) +1.29 [+0.27, +2.67]; median years to regain (recoverers) non-tradable 6.9, tradable 6.7; depth effect on log time +0.52 [+0.24, +0.99]
+  A*64 emp relative + GDP after trough: n=671, regained=191; never (single market) non-tradable 0.31, tradable 0.35, gap +0.04 [-0.09, +0.17]; never (euro) non-tradable 0.53, tradable 0.58, gap +0.05 [-0.15, +0.22]; depth effect on never-recover (logit) +1.45 [+0.20, +3.06]; median years to regain (recoverers) non-tradable 7.0, tradable 6.7; depth effect on log time +0.52 [+0.26, +1.13]
+  A*64 gva absolute: n=1163, regained=631; never (single market) non-tradable 0.01, tradable 0.05, gap +0.04 [+0.00, +0.09]; never (euro) non-tradable 0.04, tradable 0.19, gap +0.15 [+0.03, +0.26]; depth effect on never-recover (logit) +1.70 [+0.97, +2.79]; median years to regain (recoverers) non-tradable 5.1, tradable 4.7; depth effect on log time +0.63 [+0.47, +0.77]
+  A*64 gva absolute + GDP after trough: n=1163, regained=631; never (single market) non-tradable 0.00, tradable 0.05, gap +0.04 [+0.00, +0.09]; never (euro) non-tradable 0.01, tradable 0.18, gap +0.16 [+0.04, +0.29]; depth effect on never-recover (logit) +1.79 [+1.06, +2.92]; median years to regain (recoverers) non-tradable 5.3, tradable 4.7; depth effect on log time +0.67 [+0.49, +0.80]
+  A*64 gva relative: n=1053, regained=434; never (single market) non-tradable 0.02, tradable 0.04, gap +0.02 [-0.02, +0.06]; never (euro) non-tradable 0.12, tradable 0.24, gap +0.12 [-0.04, +0.29]; depth effect on never-recover (logit) +1.54 [+0.77, +2.52]; median years to regain (recoverers) non-tradable 6.7, tradable 5.1; depth effect on log time +0.73 [+0.45, +0.96]
+  A*64 gva relative + GDP after trough: n=1053, regained=434; never (single market) non-tradable 0.02, tradable 0.04, gap +0.02 [-0.03, +0.06]; never (euro) non-tradable 0.11, tradable 0.23, gap +0.12 [-0.04, +0.28]; depth effect on never-recover (logit) +1.54 [+0.78, +2.64]; median years to regain (recoverers) non-tradable 6.8, tradable 5.1; depth effect on log time +0.74 [+0.46, +0.96]
+
+   Robustness (same model, no demand control)
+    A*64 emp absolute: trough by 2015 (10+ years of follow-up): n=381; gap single market -0.02 [-0.06, +0.55], gap euro -0.07 [-0.25, +0.52]; depth (logit) +3.46 [+0.72, +17.36]
+    A*64 emp absolute: tradable services counted as tradable: n=639; gap single market +0.35 [+0.02, +0.56], gap euro +0.39 [+0.11, +0.57]; depth (logit) +0.52 [-0.63, +2.44]
+    A*64 emp absolute: pandemic busts dropped: n=615; gap single market +0.50 [+0.01, +0.70], gap euro +0.42 [+0.00, +0.62]; depth (logit) -0.18 [-8.97, +2.63]
+    A*64 emp absolute: EU-15 only: n=275; gap single market +0.86 [+0.49, +1.00], gap euro +0.51 [+0.00, +0.76]; depth (logit) -0.77 [-6.46, +15.27]
+    A*64 emp relative: trough by 2015 (10+ years of follow-up): n=308; gap single market +0.06 [-0.09, +0.18], gap euro +0.07 [-0.14, +0.25]; depth (logit) +1.25 [-0.32, +3.81]
+    A*64 emp relative: tradable services counted as tradable: n=671; gap single market -0.12 [-0.30, +0.01], gap euro -0.12 [-0.27, +0.08]; depth (logit) +1.36 [+0.65, +2.78]
+    A*64 emp relative: pandemic busts dropped: n=664; gap single market +0.05 [-0.10, +0.21], gap euro +0.05 [-0.14, +0.27]; depth (logit) +1.30 [+0.26, +2.86]
+    A*64 emp relative: EU-15 only: n=333; gap single market +0.23 [-0.10, +0.63], gap euro +0.24 [-0.10, +0.71]; depth (logit) +1.39 [-2.38, +12.78]
+    A*64 gva absolute: trough by 2015 (10+ years of follow-up): n=572; gap single market +0.03 [-0.00, +0.09], gap euro +0.11 [-0.02, +0.22]; depth (logit) +1.58 [+0.63, +4.85]
+    A*64 gva absolute: tradable services counted as tradable: n=1163; gap single market +0.00 [+0.00, +0.03], gap euro +0.13 [+0.01, +0.21]; depth (logit) +1.37 [+0.65, +2.43]
+    A*64 gva absolute: pandemic busts dropped: n=1046; gap single market +0.01 [-0.00, +0.08], gap euro +0.12 [-0.02, +0.25]; depth (logit) +1.51 [+0.69, +2.88]
+    A*64 gva absolute: EU-15 only: n=573; gap single market +0.01 [-0.01, +0.09], gap euro +0.02 [-0.06, +0.13]; depth (logit) +2.44 [+0.87, +19.88]
+    A*64 gva relative: trough by 2015 (10+ years of follow-up): n=474; gap single market +0.03 [-0.04, +0.09], gap euro +0.07 [-0.06, +0.29]; depth (logit) +1.47 [+0.34, +2.84]
+    A*64 gva relative: tradable services counted as tradable: n=1053; gap single market +0.01 [-0.09, +0.04], gap euro +0.09 [-0.12, +0.27]; depth (logit) +1.59 [+0.87, +3.13]
+    A*64 gva relative: pandemic busts dropped: n=1022; gap single market +0.02 [-0.02, +0.06], gap euro +0.13 [-0.04, +0.30]; depth (logit) +1.49 [+0.73, +2.39]
+    A*64 gva relative: EU-15 only: n=517; gap single market +0.01 [-0.13, +0.18], gap euro +0.01 [-0.12, +0.22]; depth (logit) +1.83 [+1.28, +2.62]
+
+   By depth band (log points), single market and euro stages
+    A*64 emp absolute: <0.30 n=212 never 0.00 [0.00, 0.02], median 5.1 y, observed speed 0.059/y; 0.30-0.50 n=207 never 0.00 [0.00, 0.04], median 9.7 y, observed speed 0.075/y; 0.50-0.80 n=136 never 0.00 [0.00, 0.19], median 12.1 y, observed speed 0.121/y; >0.80 n=84 never 0.00 [0.00, 0.69], median 20.7 y, observed speed 0.223/y
+    A*64 emp relative: <0.30 n=204 never 0.17 [0.01, 0.30], median 5.4 y, observed speed 0.061/y; 0.30-0.50 n=253 never 0.36 [0.04, 0.54], median 5.1 y, observed speed 0.112/y; 0.50-0.80 n=131 never 0.34 [0.00, 0.78], median 10.1 y, observed speed 0.140/y; >0.80 n=83 never 0.73 [0.03, 0.88], median 7.2 y, observed speed 0.235/y
+    A*64 gva absolute: <0.30 n=330 never 0.00 [0.00, 0.01], median 3.4 y, observed speed 0.082/y; 0.30-0.50 n=340 never 0.02 [0.00, 0.04], median 4.8 y, observed speed 0.101/y; 0.50-0.80 n=253 never 0.07 [0.00, 0.28], median 6.5 y, observed speed 0.144/y; >0.80 n=240 never 0.13 [0.00, 0.50], median 8.8 y, observed speed 0.251/y
+    A*64 gva relative: <0.30 n=250 never 0.01 [0.00, 0.04], median 4.2 y, observed speed 0.075/y; 0.30-0.50 n=300 never 0.08 [0.00, 0.15], median 5.4 y, observed speed 0.106/y; 0.50-0.80 n=246 never 0.04 [0.00, 0.15], median 11.0 y, observed speed 0.105/y; >0.80 n=257 never 0.35 [0.00, 0.58], median 8.2 y, observed speed 0.252/y
+
+2. Across stages: AMECO sectors, 1960-2025
+  AMECO emp absolute
+    before single market   n=5/2  never non-tradable 0.20, tradable 0.01, gap -0.18 [-0.30, +0.00]
+    single market          n=12/7  never non-tradable 0.52, tradable 1.00, gap +0.47 [-0.58, +0.94]
+    euro                   n=8/25  never non-tradable 0.20, tradable 0.75, gap +0.55 [-0.86, +0.74]
+    outside                n=6/14  never non-tradable 0.00, tradable 0.99, gap +0.99 [-0.06, +0.99]
+    DiD single market vs before: +0.66 [-0.58, +0.97]
+    DiD euro vs before: +0.73 [-0.81, +0.88]
+  AMECO emp relative
+    before single market   n=6/7  never non-tradable 0.08, tradable 0.90, gap +0.82 [-0.67, +0.98]
+    single market          n=10/8  never non-tradable 0.23, tradable 0.98, gap +0.75 [-0.01, +0.98]
+    euro                   n=13/16  never non-tradable 0.75, tradable 0.95, gap +0.20 [-0.34, +0.59]
+    outside                n=8/17  never non-tradable 0.00, tradable 0.00, gap -0.00 [-0.25, +0.98]
+    DiD single market vs before: -0.07 [-0.82, +1.32]
+    DiD euro vs before: -0.62 [-1.07, +0.82]
+  AMECO gva absolute
+    before single market   n=7/9  never non-tradable 0.00, tradable 0.00, gap -0.00 [-0.01, -0.00]
+    single market          n=14/29  never non-tradable 0.00, tradable 0.00, gap +0.00 [-0.00, +0.13]
+    euro                   n=13/42  never non-tradable 0.00, tradable 0.05, gap +0.05 [-0.97, +0.22]
+    outside                n=11/21  never non-tradable 0.00, tradable 0.04, gap +0.03 [-0.56, +0.24]
+    DiD single market vs before: +0.00 [+0.00, +0.14]
+    DiD euro vs before: +0.05 [-0.97, +0.22]
+  AMECO gva relative
+    before single market   n=2/13  never non-tradable 0.01, tradable 0.30, gap +0.28 [-0.00, +0.49]
+    single market          n=17/21  never non-tradable 0.00, tradable 0.09, gap +0.09 [-0.00, +0.65]
+    euro                   n=13/42  never non-tradable 0.40, tradable 0.14, gap -0.26 [-1.00, +0.50]
+    outside                n=9/23  never non-tradable 0.06, tradable 0.12, gap +0.05 [-0.80, +0.16]
+    DiD single market vs before: -0.20 [-0.40, +0.36]
+    DiD euro vs before: -0.54 [-1.26, +0.17]

@@ -1,0 +1,55 @@
+name: Reproduce recovery-after-busts
+
+on:
+  pull_request:
+    paths:
+      - 'recovery-after-busts/**'
+      - '.github/workflows/recovery-after-busts.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'recovery-after-busts/**'
+      - '.github/workflows/recovery-after-busts.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    defaults:
+      run:
+        working-directory: recovery-after-busts
+    env:
+      MPLBACKEND: Agg
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: recovery-after-busts/requirements.txt
+
+      - name: Install pinned dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Tests
+        run: python -m pytest -q tests
+
+      - name: Episodes (A*64, 1995-2025)
+        run: python episodes.py
+
+      - name: Episodes (AMECO, 1960-2025)
+        run: python long_episodes.py
+
+      - name: Cure models
+        run: python recovery_models.py
+
+      - name: Results unchanged
+        run: git diff --stat --exit-code -- results/episodes_summary.txt results/long_episodes_summary.txt results/cure_summary.txt

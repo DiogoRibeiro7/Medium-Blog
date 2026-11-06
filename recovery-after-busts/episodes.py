@@ -28,6 +28,8 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
+from stages import stage, transition
+
 HERE = Path(__file__).resolve().parent
 DATA = HERE / "data"
 RES = HERE / "results"
@@ -48,9 +50,13 @@ SECTOR = {
     "G": "trade", "H": "transport", "I": "accommodation", "J": "information", "K": "finance", "L": "real estate",
     "M": "business services", "N": "business services", "R": "other services", "S": "other services",
 }
+# goods are tradable; construction, utilities and services are not (sensitivity: the
+# services most traded across borders, listed below, counted as tradable)
+TRADABLE_SERVICES = ("H50", "H51", "J58", "J59_J60", "J61", "J62_J63", "K64", "K65", "K66", "M69_M70", "M71", "M72", "M73", "M74_M75")
 THETA = 0.20
 FIRST, LAST = 1995, 2025
 MIN_SIZE = 2.0  # thousand persons at the peak
+MIN_SIZE_GVA = 50.0  # million euro (2020 prices) at the peak
 
 
 def panel(name: str, **filters) -> pd.DataFrame:
@@ -105,29 +111,67 @@ def window_growth(series: pd.Series, a: int, b: int) -> float:
     return float(np.log(vb / va) / (b - a))
 
 
-def build(theta: float = THETA, min_size: float = MIN_SIZE) -> pd.DataFrame:
+def relative(p: pd.DataFrame, min_peers: int = 3) -> pd.DataFrame:
+    """Own log level minus the cumulated leave-one-out mean log change of the other columns.
+
+    The result keeps each country's own year-to-year movements net of what the same sector
+    did on average elsewhere in the same year, so a common trend or a shock that hits every
+    country alike does not register as a bust.
+    """
+    dx = p.diff()
+    n = dx.notna().sum(axis=1)
+    tot = dx.sum(axis=1, min_count=1)
+    rel = pd.DataFrame(index=p.index, columns=p.columns, dtype=float)
+    for c in p.columns:
+        valid = p[c].dropna().index
+        if len(valid) == 0:
+            continue
+        k = n - dx[c].notna().astype(int)
+        others = ((tot - dx[c].fillna(0)) / k).where(k >= min_peers)
+        cum = others.reindex(valid).iloc[1:].cumsum()
+        rel[c] = p[c].reindex(valid) - pd.concat([pd.Series([0.0], index=[valid[0]]), cum])
+    return rel
+
+
+def build(theta: float = THETA, measure: str = "emp", version: str = "absolute") -> pd.DataFrame:
+    """One row per episode. ``measure`` is ``emp`` (persons) or ``gva`` (volume);
+    ``version`` is ``absolute`` or ``relative`` (to the other member states)."""
     emp = panel("employment_a64", unit="THS_PER", na_item="EMP_DC")
     gva = panel("gva_a64_volume")
     gdp = pd.read_csv(DATA / "gdp_volume.csv").pivot_table(index="time", columns="geo", values="value").loc[FIRST:LAST]
     hpi = pd.read_csv(DATA / "house_prices.csv").pivot_table(index="time", columns="geo", values="value")
+    level = emp if measure == "emp" else gva
+    logs = np.log(level.where(level > 0))
+    if version == "relative":
+        parts = []
+        for ind in LEAF:
+            cols = [(g, ind) for g in EU27 if (g, ind) in logs.columns]
+            if cols:
+                parts.append(relative(logs[cols]))
+        track = pd.concat(parts, axis=1)
+    else:
+        track = logs
+    min_size = MIN_SIZE if measure == "emp" else MIN_SIZE_GVA
     rows = []
     for geo in EU27:
         for ind in LEAF:
-            if (geo, ind) not in emp.columns:
+            if (geo, ind) not in track.columns or (geo, ind) not in level.columns:
                 continue
-            e = emp[(geo, ind)]
-            if e.dropna().empty or (e.dropna() <= 0).any():
+            raw = level[(geo, ind)]
+            if raw.dropna().empty or (raw.dropna() <= 0).any():
                 continue
-            x = np.log(e)
-            last = int(x.dropna().index.max())
-            first = int(x.dropna().index.min())
+            x = track[(geo, ind)].dropna()
+            if x.empty:
+                continue
+            last = int(x.index.max())
+            first = int(x.index.min())
             eu_emp = emp[("EU27_2020", ind)] if ("EU27_2020", ind) in emp.columns else pd.Series(dtype=float)
             eu_gva = gva[("EU27_2020", ind)] if ("EU27_2020", ind) in gva.columns else pd.Series(dtype=float)
             own_gva = gva[(geo, ind)] if (geo, ind) in gva.columns else pd.Series(dtype=float)
             for ep in find_episodes(x, theta):
                 pk, tr = ep["peak_year"], ep["trough_year"]
                 depth = ep["peak_log"] - ep["trough_log"]
-                if tr >= last or np.exp(ep["peak_log"]) < min_size:
+                if tr >= last or raw.get(pk, np.nan) < min_size:
                     continue
                 target = ep["trough_log"] + 0.5 * depth
                 after = x.loc[tr + 1 :].dropna()
@@ -141,10 +185,11 @@ def build(theta: float = THETA, min_size: float = MIN_SIZE) -> pd.DataFrame:
                         "geo": geo,
                         "industry": ind,
                         "sector": SECTOR[ind[0]],
+                        "measure": measure,
+                        "version": version,
                         "peak_year": pk,
                         "trough_year": tr,
-                        "peak_emp": float(np.exp(ep["peak_log"])),
-                        "trough_emp": float(np.exp(ep["trough_log"])),
+                        "peak_level": float(raw.get(pk, np.nan)),
                         "depth": depth,
                         "loss_share": 1 - np.exp(-depth),
                         "fall_years": tr - pk,
@@ -153,6 +198,14 @@ def build(theta: float = THETA, min_size: float = MIN_SIZE) -> pd.DataFrame:
                         "t_half": t_half,
                         "half_recovered": event,
                         "regained_peak": ep["regained_year"] is not None,
+                        "t_full": int(ep["regained_year"] - tr) if ep["regained_year"] is not None else int(last - tr),
+                        "full_recovered": int(ep["regained_year"] is not None),
+                        "follow_up": int(last - tr),
+                        "tradable": int(ind[0] in "ABC"),
+                        "tradable_wide": int(ind[0] in "ABC" or ind in TRADABLE_SERVICES),
+                        "stage": stage(geo, tr),
+                        "stage_at_peak": stage(geo, pk),
+                        "transition": transition(geo, tr),
                         "g5": g5,
                         "r5": g5 / depth if np.isfinite(g5) else np.nan,
                         "eu_emp_trend": window_growth(eu_emp, int(eu_emp.dropna().index.min()), int(eu_emp.dropna().index.max())) if eu_emp.notna().any() else np.nan,
@@ -165,13 +218,17 @@ def build(theta: float = THETA, min_size: float = MIN_SIZE) -> pd.DataFrame:
                         "great_recession": 2008 <= tr <= 2016 and pk >= 2004,
                     }
                 )
-    return pd.DataFrame(rows)
+    ep = pd.DataFrame(rows)
+    ep["main"] = ~ep.left_censored_peak & ~ep.transition
+    return ep
 
 
 def main() -> None:
     RES.mkdir(exist_ok=True)
     ep = build()
     ep.to_csv(RES / "episodes.csv", index=False)
+    allv = pd.concat([build(THETA, m, v) for m in ("emp", "gva") for v in ("absolute", "relative")], ignore_index=True)
+    allv.to_csv(RES / "episodes_all.csv", index=False)
     L = []
     say = L.append
     say(f"episodes (fall of at least {THETA} log points, peak at least {MIN_SIZE} thousand persons): {len(ep)}")
@@ -179,6 +236,8 @@ def main() -> None:
     say(f"half-recovered by the last year: {ep.half_recovered.mean():.3f}; regained the peak: {ep.regained_peak.mean():.3f}")
     say(f"depth: median {ep.depth.median():.3f} log points (loss share {ep.loss_share.median():.3f}); 90th percentile {ep.depth.quantile(0.9):.3f}")
     say(f"pandemic episodes (peak 2018+, trough 2020-21): {int(ep.covid.sum())}; great-recession episodes (peak 2004+, trough 2008-16): {int(ep.great_recession.sum())}")
+    for (m, v), g in allv[allv.main].groupby(["measure", "version"]):
+        say(f"main sample {m}/{v}: {len(g)} episodes; regained the peak {g.full_recovered.mean():.3f} (tradable {g[g.tradable == 1].full_recovered.mean():.3f}, non-tradable {g[g.tradable == 0].full_recovered.mean():.3f})")
     by = ep.groupby("sector").agg(n=("depth", "size"), depth=("depth", "median"), half=("half_recovered", "mean"))
     for s, r in by.sort_values("n", ascending=False).iterrows():
         say(f"  {s}: {int(r.n)} episodes, median depth {r.depth:.3f}, half-recovered {r.half:.3f}")

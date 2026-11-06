@@ -1,0 +1,624 @@
+geo,measure,sector,version,tradable,series_first,series_last,peak_year,trough_year,depth,fall_years,left_censored_peak,stage,stage_at_peak,transition,t_half,half_recovered,t_full,full_recovered,follow_up,main
+AT,emp,agriculture,relative,1,1976,2025,2010,2023,0.21292467110833968,13,False,euro,euro,False,2,0,2,0,2,True
+AU,emp,agriculture,absolute,1,1994,2023,1995,2019,0.2822051644028871,24,False,outside,outside,False,4,0,4,0,4,True
+BE,emp,agriculture,absolute,1,1970,2025,1970,2024,1.2400892546585087,54,True,euro,customs union,False,1,0,1,0,1,False
+BG,emp,agriculture,relative,1,1995,2025,2009,2024,0.2397071160225357,15,False,single market,single market,False,1,0,1,0,1,True
+CA,emp,agriculture,absolute,1,1997,2024,1997,2020,0.4374067104431978,23,True,outside,outside,False,4,0,4,0,4,False
+CH,emp,agriculture,absolute,1,1991,2025,1999,2022,0.42603647517777965,23,False,outside,outside,False,3,0,3,0,3,True
+CH,emp,agriculture,relative,1,1991,2025,2014,2022,0.3067963294023599,8,False,outside,outside,False,3,0,3,0,3,True
+CY,emp,agriculture,absolute,1,1995,2025,1995,2014,0.4200505991270571,19,True,euro,pre-accession,False,11,0,11,0,11,False
+CY,emp,agriculture,relative,1,1995,2025,2004,2006,0.16913836734916332,2,False,single market,single market,False,1,1,3,1,19,True
+CZ,emp,agriculture,absolute,1,1993,2025,1993,2021,0.6636070353124754,28,True,single market,pre-accession,False,4,0,4,0,4,False
+CZ,emp,agriculture,relative,1,1993,2025,1996,2010,0.1928256070565384,14,False,single market,pre-accession,False,3,1,15,0,15,True
+DE,emp,agriculture,relative,1,1960,2025,1960,1997,0.5504235356322251,37,True,single market,pre-accession,False,28,0,28,0,28,False
+DK,emp,agriculture,absolute,1,1966,2025,1966,2021,1.5190034245943167,55,True,single market,pre-accession,False,4,0,4,0,4,False
+DK,emp,agriculture,relative,1,1966,2025,1977,2006,0.2866629502647262,29,False,single market,customs union,False,19,1,19,0,19,True
+EE,emp,agriculture,absolute,1,1990,2025,1990,2021,2.286585786321612,31,True,euro,pre-accession,False,4,0,4,0,4,False
+EE,emp,agriculture,relative,1,1990,2025,1990,2021,1.6965316123019298,31,True,euro,pre-accession,False,4,0,4,0,4,False
+ES,emp,agriculture,absolute,1,1980,2025,1980,2024,0.9218687656278846,44,True,euro,pre-accession,False,1,0,1,0,1,False
+ES,emp,agriculture,relative,1,1980,2025,1980,1995,0.2722653504484098,15,True,single market,pre-accession,False,5,1,22,1,30,False
+FR,emp,agriculture,relative,1,1960,2025,1963,1996,0.3560866051630054,33,False,single market,pre-accession,False,29,0,29,0,29,True
+HR,emp,agriculture,absolute,1,1995,2025,2010,2023,1.1398748860438603,13,False,euro,pre-accession,False,2,0,2,0,2,True
+HR,emp,agriculture,relative,1,1995,2025,2010,2023,1.0148814730356008,13,False,euro,pre-accession,False,2,0,2,0,2,True
+HU,emp,agriculture,relative,1,1995,2025,1996,2009,0.40166979232875555,13,False,single market,pre-accession,False,7,1,16,0,16,True
+IE,emp,agriculture,absolute,1,1960,2025,1960,2019,1.293790037087362,59,True,euro,pre-accession,False,6,0,6,0,6,False
+IS,emp,agriculture,absolute,1,1963,2025,1970,2020,0.6868338148801647,50,False,outside,outside,False,5,0,5,0,5,True
+IS,emp,agriculture,relative,1,1963,2025,1999,2008,0.22684624191034297,9,False,outside,outside,False,4,1,17,0,17,True
+IT,emp,agriculture,absolute,1,1960,2025,1960,2013,2.0249864280723555,53,True,euro,pre-accession,False,12,0,12,0,12,False
+IT,emp,agriculture,relative,1,1960,2025,1960,1999,0.7373781768180336,39,True,euro,pre-accession,False,26,1,26,0,26,False
+LT,emp,agriculture,relative,1,1990,2025,1997,2021,0.9992848658248779,24,False,euro,pre-accession,False,4,0,4,0,4,True
+LU,emp,agriculture,absolute,1,1970,2025,1970,2019,1.5227440939837962,49,True,euro,customs union,False,6,0,6,0,6,False
+LU,emp,agriculture,relative,1,1970,2025,1971,2004,0.5046469449651854,33,False,euro,customs union,False,16,1,21,0,21,True
+LV,emp,agriculture,absolute,1,1990,2025,1992,2019,1.1671213558667661,27,False,euro,pre-accession,False,6,0,6,0,6,True
+LV,emp,agriculture,relative,1,1990,2025,1992,2010,0.6760115404625635,18,False,single market,pre-accession,False,15,0,15,0,15,True
+NL,emp,agriculture,absolute,1,1969,2025,1969,2015,0.3749524832467701,46,True,euro,customs union,False,10,0,10,0,10,False
+NO,emp,agriculture,absolute,1,1970,2025,1970,2013,1.202409082349754,43,True,outside,outside,False,12,0,12,0,12,False
+NO,emp,agriculture,relative,1,1970,2025,1989,2009,0.19646472934810966,20,False,outside,outside,False,9,1,14,1,16,True
+NZ,emp,agriculture,absolute,1,1989,2023,1989,1990,0.1541506966691566,1,True,outside,outside,False,3,1,4,1,33,False
+NZ,emp,agriculture,absolute,1,1989,2023,1996,2000,0.8404718946246712,4,False,outside,outside,False,3,1,23,0,23,True
+NZ,emp,agriculture,relative,1,1989,2023,1996,2000,0.7386875793081513,4,False,outside,outside,False,2,1,8,1,23,True
+NZ,emp,agriculture,relative,1,1989,2023,2008,2009,0.19277057516706897,1,False,outside,outside,False,6,1,7,1,14,True
+PT,emp,agriculture,relative,1,1977,2025,1977,1993,0.2515708481036265,16,True,single market,pre-accession,False,7,1,13,1,32,False
+SE,emp,agriculture,absolute,1,1970,2025,1970,2008,1.0546351227059025,38,True,single market,pre-accession,False,17,0,17,0,17,False
+SK,emp,agriculture,relative,1,1995,2025,1995,2012,0.683493401855845,17,True,euro,pre-accession,False,13,0,13,0,13,False
+UK,emp,agriculture,absolute,1,1979,2024,1979,2002,0.5500708226426347,23,True,single market,customs union,False,22,0,22,0,22,False
+UK,emp,agriculture,relative,1,1979,2024,1997,2001,0.19305781180265047,4,False,single market,single market,False,3,1,7,1,23,True
+US,emp,agriculture,absolute,1,1960,2024,1960,2023,0.8703245870743013,63,True,outside,outside,False,1,0,1,0,1,False
+US,emp,agriculture,relative,1,1960,2024,2022,2023,0.421513962947456,1,False,outside,outside,False,1,0,1,0,1,True
+AT,emp,construction,absolute,0,1976,2025,1977,1987,0.18931927855016006,10,False,pre-accession,pre-accession,False,4,1,8,1,38,True
+AT,emp,construction,relative,0,1976,2025,1996,2007,0.35789589750690975,11,False,euro,single market,False,4,1,18,0,18,True
+BE,emp,construction,absolute,0,1970,2025,1970,1985,0.4108823083304989,15,True,customs union,customs union,False,14,1,38,1,40,False
+BE,emp,construction,relative,0,1970,2025,1977,1987,0.35648252487686083,10,False,customs union,customs union,False,5,1,38,0,38,True
+BG,emp,construction,absolute,0,1995,2025,1995,2001,0.31182382721816637,6,True,pre-accession,pre-accession,True,4,1,5,1,24,False
+BG,emp,construction,absolute,0,1995,2025,2008,2016,0.5303058415859123,8,False,single market,single market,False,9,0,9,0,9,True
+BG,emp,construction,relative,0,1995,2025,1995,2003,0.4163707998807924,8,True,pre-accession,pre-accession,True,3,1,4,1,22,False
+BG,emp,construction,relative,0,1995,2025,2009,2022,0.45706427071448275,13,False,single market,single market,False,3,0,3,0,3,True
+CA,emp,construction,relative,0,1997,2024,2014,2020,0.18586425743426016,6,False,outside,outside,False,1,1,4,0,4,True
+CH,emp,construction,absolute,0,1991,2025,1991,1999,0.194699219504316,8,True,outside,outside,False,9,1,15,1,26,False
+CH,emp,construction,relative,0,1991,2025,1995,2008,0.39871562624985923,13,False,outside,outside,False,3,1,17,0,17,True
+CY,emp,construction,absolute,0,1995,2025,2008,2015,0.6416372718533414,7,False,euro,euro,False,3,1,10,1,10,True
+CY,emp,construction,relative,0,1995,2025,2010,2015,0.5417870853081088,5,False,euro,euro,False,4,1,10,0,10,True
+CZ,emp,construction,absolute,0,1993,2025,1995,2020,0.3039313229735354,25,False,single market,pre-accession,False,5,0,5,0,5,True
+CZ,emp,construction,relative,0,1993,2025,1995,2022,0.5944898632431981,27,False,single market,pre-accession,False,3,0,3,0,3,True
+DE,emp,construction,absolute,0,1960,2025,1965,2006,0.3983595625200209,41,False,euro,pre-accession,False,19,0,19,0,19,True
+DE,emp,construction,relative,0,1960,2025,1963,1989,0.2766236276022678,26,False,customs union,pre-accession,False,3,1,5,1,36,True
+DE,emp,construction,relative,0,1960,2025,1995,2008,0.7281362281418957,13,False,euro,single market,False,17,0,17,0,17,True
+DK,emp,construction,absolute,0,1966,2025,1970,1993,0.5202795813362666,23,False,single market,pre-accession,False,13,1,32,0,32,True
+DK,emp,construction,relative,0,1966,2025,1970,1991,0.4379600102946295,21,False,customs union,pre-accession,False,34,0,34,0,34,True
+EE,emp,construction,absolute,0,1990,2025,1990,1995,0.6543941751571976,5,True,pre-accession,pre-accession,True,11,1,12,1,30,False
+EE,emp,construction,absolute,0,1990,2025,2007,2010,0.7252354951114457,3,False,single market,single market,False,15,0,15,0,15,True
+EE,emp,construction,relative,0,1990,2025,1991,2010,0.6697646250280989,19,False,single market,pre-accession,False,5,1,15,0,15,True
+EL,emp,construction,absolute,0,1995,2025,2007,2021,0.6288322127856762,14,False,euro,euro,False,4,0,4,0,4,True
+EL,emp,construction,relative,0,1995,2025,2003,2022,0.6833464371517239,19,False,euro,euro,False,3,0,3,0,3,True
+ES,emp,construction,absolute,0,1980,2025,1980,1985,0.3111521733453326,5,True,pre-accession,pre-accession,False,2,1,4,1,40,False
+ES,emp,construction,absolute,0,1980,2025,1991,1994,0.18343935477288653,3,False,single market,customs union,False,3,1,4,1,31,True
+ES,emp,construction,absolute,0,1980,2025,2007,2014,0.9942843459173005,7,False,euro,euro,False,11,0,11,0,11,True
+ES,emp,construction,relative,0,1980,2025,1980,1985,0.19707916259420255,5,True,pre-accession,pre-accession,False,2,1,3,1,40,False
+ES,emp,construction,relative,0,1980,2025,2005,2014,0.833735929987343,9,False,euro,euro,False,11,0,11,0,11,True
+FI,emp,construction,absolute,0,1960,2025,1973,1994,0.6281454320593571,21,False,single market,pre-accession,False,10,1,31,0,31,True
+FI,emp,construction,relative,0,1960,2025,1960,1994,0.6190486921643545,34,True,single market,pre-accession,False,17,1,31,0,31,False
+FR,emp,construction,absolute,0,1960,2025,1974,1998,0.3290884473367903,24,False,single market,customs union,False,7,1,24,1,27,True
+FR,emp,construction,relative,0,1960,2025,1970,2007,0.2125420672331959,37,False,euro,customs union,False,3,1,6,1,18,True
+HR,emp,construction,absolute,0,1995,2025,2008,2017,0.4583715450160275,9,False,single market,pre-accession,False,6,1,8,0,8,True
+HR,emp,construction,relative,0,1995,2025,2009,2017,0.365507695048473,8,False,single market,pre-accession,False,7,1,8,0,8,True
+HU,emp,construction,absolute,0,1995,2025,2007,2013,0.21419891997440743,6,False,single market,single market,False,4,1,5,1,12,True
+HU,emp,construction,relative,0,1995,2025,2004,2010,0.18902304376214474,6,False,single market,single market,False,7,1,8,1,15,True
+IE,emp,construction,absolute,0,1971,2025,1980,1989,0.4300363546052468,9,False,customs union,customs union,False,9,1,11,1,36,True
+IE,emp,construction,absolute,0,1971,2025,2007,2012,1.0450749145415728,5,False,euro,euro,False,6,1,13,0,13,True
+IE,emp,construction,relative,0,1971,2025,1981,1989,0.42130497450401005,8,False,customs union,customs union,False,5,1,10,1,36,True
+IE,emp,construction,relative,0,1971,2025,2006,2012,0.9031805153967607,6,False,euro,euro,False,6,1,13,0,13,True
+IS,emp,construction,absolute,0,1963,2025,1968,1970,0.19666536728148332,2,False,outside,outside,False,1,1,3,1,55,True
+IS,emp,construction,absolute,0,1963,2025,1976,1979,0.1503453331662019,3,False,outside,outside,False,3,1,8,1,46,True
+IS,emp,construction,absolute,0,1963,2025,1989,1996,0.22181707334448175,7,False,outside,outside,False,2,1,6,1,29,True
+IS,emp,construction,absolute,0,1963,2025,2008,2012,0.6991532046201572,4,False,outside,outside,False,5,1,11,1,13,True
+IS,emp,construction,relative,0,1963,2025,1968,1970,0.2348877668554572,2,False,outside,outside,False,3,1,5,1,55,True
+IS,emp,construction,relative,0,1963,2025,1976,1979,0.1815746520473316,3,False,outside,outside,False,3,1,3,1,46,True
+IS,emp,construction,relative,0,1963,2025,2002,2003,0.15020504872042384,1,False,outside,outside,False,3,1,3,1,22,True
+IS,emp,construction,relative,0,1963,2025,2008,2011,0.5202462351303532,3,False,outside,outside,False,5,1,12,1,14,True
+IT,emp,construction,absolute,0,1960,2025,1964,1998,0.35630997036890744,34,False,single market,pre-accession,False,5,1,27,0,27,True
+IT,emp,construction,relative,0,1960,2025,1963,2019,0.48452479238503265,56,False,euro,pre-accession,False,6,0,6,0,6,True
+LT,emp,construction,absolute,0,1990,2025,1990,2001,0.687325706790185,11,True,pre-accession,pre-accession,True,4,1,24,0,24,False
+LT,emp,construction,relative,0,1990,2025,1990,2011,0.691468084587183,21,True,single market,pre-accession,False,14,0,14,0,14,False
+LU,emp,construction,absolute,0,1970,2025,1974,1985,0.20002093419953004,11,False,customs union,customs union,False,2,1,4,1,40,True
+LV,emp,construction,absolute,0,1990,2025,1990,2000,1.0505280162802793,10,True,pre-accession,pre-accession,True,6,1,25,0,25,False
+LV,emp,construction,relative,0,1990,2025,1990,2024,1.2416126250452315,34,True,euro,pre-accession,False,1,0,1,0,1,False
+MT,emp,construction,relative,0,1995,2025,1995,2007,0.16029286577966184,12,True,single market,pre-accession,False,3,1,11,1,18,False
+NL,emp,construction,absolute,0,1969,2025,1970,1983,0.398231817717968,13,False,customs union,customs union,False,14,1,42,0,42,True
+NL,emp,construction,relative,0,1969,2025,1970,1983,0.3537178636743654,13,False,customs union,customs union,False,10,1,42,0,42,True
+NO,emp,construction,absolute,0,1970,2025,1987,1993,0.45783309362547975,6,False,outside,outside,False,4,1,10,1,32,True
+NO,emp,construction,relative,0,1970,2025,1987,1991,0.3965444960118818,4,False,outside,outside,False,6,1,16,1,34,True
+NZ,emp,construction,absolute,0,1989,2023,1989,1992,0.20654420257412553,3,True,outside,outside,False,3,1,4,1,31,False
+PL,emp,construction,absolute,0,1992,2025,1992,1994,0.22267973678741804,2,True,pre-accession,pre-accession,True,4,1,7,1,31,False
+PL,emp,construction,absolute,0,1992,2025,2001,2003,0.17699514497286994,2,False,pre-accession,pre-accession,True,3,1,4,1,22,False
+PL,emp,construction,relative,0,1992,2025,1992,1994,0.1588048117109082,2,True,pre-accession,pre-accession,True,3,1,7,1,31,False
+PL,emp,construction,relative,0,1992,2025,2001,2004,0.245190595182593,3,False,single market,pre-accession,False,4,1,5,1,21,True
+PL,emp,construction,relative,0,1992,2025,2011,2024,0.18035339167046693,13,False,single market,single market,False,1,0,1,0,1,True
+PT,emp,construction,absolute,0,1977,2025,1983,1986,0.20667588489017863,3,False,customs union,pre-accession,False,5,1,12,1,39,True
+PT,emp,construction,absolute,0,1977,2025,2002,2014,0.7709548556354582,12,False,euro,euro,False,11,1,11,0,11,True
+PT,emp,construction,relative,0,1977,2025,1983,1986,0.18969390765149452,3,False,customs union,pre-accession,False,7,1,11,1,39,True
+PT,emp,construction,relative,0,1977,2025,2000,2015,0.8452105101065692,15,False,euro,euro,False,10,0,10,0,10,True
+RO,emp,construction,absolute,0,1990,2025,1990,2004,0.588409126103703,14,True,pre-accession,pre-accession,True,3,1,21,0,21,False
+RO,emp,construction,relative,0,1990,2025,1990,1991,0.24447647232126268,1,True,pre-accession,pre-accession,True,1,1,2,1,34,False
+RO,emp,construction,relative,0,1990,2025,1993,2004,0.602298002114888,11,False,pre-accession,pre-accession,True,8,1,21,0,21,False
+SE,emp,construction,absolute,0,1970,2025,1970,1997,0.5911376533072357,27,True,single market,pre-accession,False,10,1,20,1,28,False
+SE,emp,construction,relative,0,1970,2025,1970,1998,0.46850634543400815,28,True,single market,pre-accession,False,12,1,27,0,27,False
+SI,emp,construction,absolute,0,1995,2025,2008,2016,0.3937583415510506,8,False,euro,euro,False,4,1,9,0,9,True
+SI,emp,construction,relative,0,1995,2025,2009,2017,0.30587041688418903,8,False,euro,euro,False,5,1,8,0,8,True
+SK,emp,construction,absolute,0,1995,2025,1996,2001,0.19933888185461157,5,False,pre-accession,pre-accession,True,2,1,4,1,24,False
+SK,emp,construction,absolute,0,1995,2025,2009,2015,0.15154316236119758,6,False,euro,euro,False,4,1,8,1,10,True
+SK,emp,construction,relative,0,1995,2025,1996,2001,0.2850317019035682,5,False,pre-accession,pre-accession,True,7,1,9,1,24,False
+UK,emp,construction,absolute,0,1979,2024,1979,1996,0.3304587243917805,17,True,single market,customs union,False,9,1,28,0,28,False
+US,emp,construction,absolute,0,1960,2024,2006,2011,0.3069183802593791,5,False,outside,outside,False,5,1,13,0,13,True
+US,emp,construction,relative,0,1960,2024,2000,2023,0.3419354301135087,23,False,outside,outside,False,1,0,1,0,1,True
+AT,emp,industry,absolute,1,1976,2025,1978,2010,0.3248856467660515,32,False,euro,pre-accession,False,15,0,15,0,15,True
+AU,emp,industry,absolute,1,1994,2023,1994,2016,0.16252999871310347,22,True,outside,outside,False,5,1,7,0,7,False
+CA,emp,industry,absolute,1,1997,2024,2000,2020,0.19912358405820285,20,False,outside,outside,False,2,1,4,0,4,True
+CH,emp,industry,absolute,1,1991,2025,1991,2004,0.20838780792589962,13,True,outside,outside,False,21,0,21,0,21,False
+CY,emp,industry,absolute,1,1995,2025,1995,2014,0.3421567214484482,19,True,euro,pre-accession,False,8,1,11,0,11,False
+CY,emp,industry,relative,1,1995,2025,1995,2002,0.16997409046481948,7,True,pre-accession,pre-accession,False,2,1,5,1,23,False
+CY,emp,industry,relative,1,1995,2025,2010,2014,0.22730345492966686,4,False,euro,euro,False,6,1,11,0,11,True
+CZ,emp,industry,absolute,1,1993,2025,1997,2010,0.15805260937578502,13,False,single market,pre-accession,False,5,1,15,0,15,True
+DE,emp,industry,absolute,1,1960,2025,1965,2010,0.4443412847670185,45,False,euro,pre-accession,False,15,0,15,0,15,True
+DE,emp,industry,relative,1,1960,2025,1961,1976,0.2275799191226593,15,False,customs union,pre-accession,False,14,1,49,0,49,True
+DK,emp,industry,absolute,1,1966,2025,1966,2014,0.6498158730125247,48,True,single market,pre-accession,False,11,0,11,0,11,False
+DK,emp,industry,relative,1,1966,2025,1966,1981,0.2722997971519723,15,True,customs union,pre-accession,False,4,1,44,0,44,False
+EL,emp,industry,absolute,1,1981,2025,2008,2015,0.30997434970225424,7,False,euro,euro,False,7,1,10,0,10,True
+EL,emp,industry,relative,1,1981,2025,2009,2015,0.23833995778606276,6,False,euro,euro,False,7,1,10,0,10,True
+ES,emp,industry,absolute,1,1980,2025,1980,1985,0.17620052929041918,5,True,pre-accession,pre-accession,False,4,1,15,1,40,False
+ES,emp,industry,absolute,1,1980,2025,2000,2014,0.3791257025407937,14,False,euro,euro,False,11,1,11,0,11,True
+ES,emp,industry,relative,1,1980,2025,2005,2014,0.25516048045624373,9,False,euro,euro,False,11,1,11,0,11,True
+FI,emp,industry,absolute,1,1960,2025,1980,2016,0.4832777887016233,36,False,euro,pre-accession,False,9,0,9,0,9,True
+FI,emp,industry,relative,1,1960,2025,1983,1993,0.22497992615810514,10,False,pre-accession,pre-accession,False,4,1,8,1,32,True
+FR,emp,industry,absolute,1,1960,2025,1974,2017,0.6375526474932718,43,False,euro,customs union,False,8,0,8,0,8,True
+FR,emp,industry,relative,1,1960,2025,1964,2018,0.22756450743789536,54,False,euro,pre-accession,False,7,0,7,0,7,True
+HR,emp,industry,absolute,1,1995,2025,2008,2013,0.23129719810386096,5,False,single market,pre-accession,False,12,0,12,0,12,True
+HU,emp,industry,absolute,1,1995,2025,1999,2013,0.273982028108259,14,False,single market,pre-accession,False,12,0,12,0,12,True
+IE,emp,industry,absolute,1,1971,2025,1980,1987,0.15726497199766332,7,False,customs union,customs union,False,7,1,9,1,38,True
+IE,emp,industry,absolute,1,1971,2025,2001,2012,0.3643109545867036,11,False,euro,euro,False,5,1,13,1,13,True
+IE,emp,industry,relative,1,1971,2025,2001,2012,0.2131734900809379,11,False,euro,euro,False,3,1,8,1,13,True
+IS,emp,industry,absolute,1,1963,2025,1987,2009,0.3911461870047783,22,False,outside,outside,False,16,0,16,0,16,True
+IS,emp,industry,relative,1,1963,2025,1987,1990,0.18125575574755004,3,False,outside,outside,False,4,1,8,1,35,True
+IS,emp,industry,relative,1,1963,2025,1998,2007,0.1512265386635101,9,False,outside,outside,False,3,1,5,1,18,True
+IT,emp,industry,absolute,1,1960,2025,1980,2015,0.3647835111917139,35,False,euro,customs union,False,10,0,10,0,10,True
+JP,emp,industry,absolute,1,1970,2024,1992,2022,0.38508678921990835,30,False,outside,outside,False,2,0,2,0,2,True
+LT,emp,industry,absolute,1,1990,2025,1990,2010,0.8392212630813765,20,True,single market,pre-accession,False,15,0,15,0,15,False
+LT,emp,industry,relative,1,1990,2025,1990,2010,0.5220084931685518,20,True,single market,pre-accession,False,15,0,15,0,15,False
+LU,emp,industry,absolute,1,1970,2025,1974,1994,0.37091553246533726,20,False,single market,customs union,False,31,0,31,0,31,True
+LU,emp,industry,relative,1,1970,2025,1975,1988,0.18948093758665419,13,False,customs union,customs union,False,9,1,14,1,37,True
+MT,emp,industry,absolute,1,1995,2025,1995,2015,0.4555067310666905,20,True,euro,pre-accession,False,10,0,10,0,10,False
+MT,emp,industry,relative,1,1995,2025,2000,2015,0.2606678659355053,15,False,euro,pre-accession,False,10,0,10,0,10,True
+NL,emp,industry,absolute,1,1969,2025,1970,2014,0.4688657214722678,44,False,euro,customs union,False,11,0,11,0,11,True
+NL,emp,industry,relative,1,1969,2025,1969,1984,0.21973839294438147,15,True,customs union,customs union,False,7,1,36,1,41,False
+NO,emp,industry,absolute,1,1970,2025,1974,2004,0.3037636716701231,30,False,outside,outside,False,21,1,21,0,21,True
+NZ,emp,industry,absolute,1,1989,2023,1989,2012,0.15473517873603804,23,True,outside,outside,False,10,1,11,0,11,False
+PL,emp,industry,absolute,1,1992,2025,1997,2003,0.27178925017499544,6,False,pre-accession,pre-accession,True,4,1,22,0,22,False
+PL,emp,industry,relative,1,1992,2025,1997,2002,0.2255815110727184,5,False,pre-accession,pre-accession,True,4,1,6,1,23,False
+PT,emp,industry,absolute,1,1977,2025,1981,2013,0.533615210918243,32,False,euro,pre-accession,False,12,0,12,0,12,True
+PT,emp,industry,relative,1,1977,2025,1999,2013,0.23539757110794746,14,False,euro,euro,False,12,0,12,0,12,True
+SE,emp,industry,absolute,1,1970,2025,1970,2016,0.555364330326281,46,True,single market,pre-accession,False,9,0,9,0,9,False
+SE,emp,industry,relative,1,1970,2025,1970,1992,0.16974773968473045,22,True,pre-accession,pre-accession,False,6,1,33,0,33,False
+SI,emp,industry,absolute,1,1995,2025,1995,2013,0.3624971345515302,18,True,euro,pre-accession,False,12,0,12,0,12,False
+SI,emp,industry,relative,1,1995,2025,1995,2013,0.15406840117140952,18,True,euro,pre-accession,False,6,1,12,0,12,False
+SK,emp,industry,absolute,1,1995,2025,1996,2010,0.2273493812325249,14,False,euro,pre-accession,False,7,1,15,0,15,True
+UK,emp,industry,absolute,1,1979,2024,1979,2010,0.8546551594326663,31,True,single market,customs union,False,14,0,14,0,14,False
+US,emp,industry,absolute,1,1960,2024,1979,2010,0.5156298799654024,31,False,outside,outside,False,14,0,14,0,14,True
+US,emp,industry,relative,1,1960,2024,2000,2009,0.21339460125792087,9,False,outside,outside,False,15,0,15,0,15,True
+AT,emp,manufacturing,absolute,1,1976,2025,1978,2010,0.33090455043834677,32,False,euro,pre-accession,False,15,0,15,0,15,True
+AU,emp,manufacturing,absolute,1,1994,2023,1994,2016,0.26987711676479265,22,True,outside,outside,False,7,0,7,0,7,False
+BG,emp,manufacturing,relative,1,1995,2025,1996,2001,0.19331161061474234,5,False,pre-accession,pre-accession,True,4,1,7,1,24,False
+CA,emp,manufacturing,absolute,1,1997,2024,2000,2020,0.29631694936482944,20,False,outside,outside,False,4,0,4,0,4,True
+CA,emp,manufacturing,relative,1,1997,2024,2004,2020,0.16749237643121084,16,False,outside,outside,False,3,1,4,0,4,True
+CH,emp,manufacturing,absolute,1,1991,2025,1991,2004,0.21649659507046515,13,True,outside,outside,False,21,0,21,0,21,False
+CY,emp,manufacturing,absolute,1,1995,2025,1995,2014,0.4260771915563031,19,True,euro,pre-accession,False,8,1,11,0,11,False
+CY,emp,manufacturing,relative,1,1995,2025,1995,2002,0.20181295539685884,7,True,pre-accession,pre-accession,False,3,1,7,1,23,False
+CY,emp,manufacturing,relative,1,1995,2025,2010,2014,0.2532729828447744,4,False,euro,euro,False,6,1,11,0,11,True
+DE,emp,manufacturing,absolute,1,1960,2025,1970,2010,0.42913184681745875,40,False,euro,customs union,False,15,0,15,0,15,True
+DE,emp,manufacturing,relative,1,1960,2025,1961,1976,0.252644329268394,15,False,customs union,pre-accession,False,14,1,49,0,49,True
+DK,emp,manufacturing,absolute,1,1966,2025,1966,2014,0.7086352469440804,48,True,single market,pre-accession,False,11,0,11,0,11,False
+DK,emp,manufacturing,relative,1,1966,2025,1966,2019,0.29623606961787274,53,True,single market,pre-accession,False,6,0,6,0,6,False
+EE,emp,manufacturing,absolute,1,1990,2025,1990,2010,0.7069304683625273,20,True,single market,pre-accession,False,15,0,15,0,15,False
+EE,emp,manufacturing,relative,1,1990,2025,1990,1999,0.3882430098450369,9,True,pre-accession,pre-accession,True,26,0,26,0,26,False
+EL,emp,manufacturing,absolute,1,1995,2025,2008,2015,0.3687264325785904,7,False,euro,euro,False,7,1,10,0,10,True
+EL,emp,manufacturing,relative,1,1995,2025,2009,2015,0.2865249610967444,6,False,euro,euro,False,6,1,10,0,10,True
+ES,emp,manufacturing,absolute,1,1960,2025,1975,2014,0.4860668767864844,39,False,euro,pre-accession,False,11,0,11,0,11,True
+ES,emp,manufacturing,relative,1,1960,2025,1975,1985,0.18715458884889014,10,False,pre-accession,pre-accession,False,4,1,10,1,40,True
+ES,emp,manufacturing,relative,1,1960,2025,2005,2014,0.279695769590143,9,False,euro,euro,False,11,1,11,0,11,True
+FI,emp,manufacturing,absolute,1,1960,2025,1974,2016,0.5184564880456541,42,False,euro,pre-accession,False,9,0,9,0,9,True
+FI,emp,manufacturing,relative,1,1960,2025,1983,1993,0.23512380337140915,10,False,pre-accession,pre-accession,False,4,1,8,1,32,True
+FR,emp,manufacturing,absolute,1,1960,2025,1974,2017,0.6847244661417244,43,False,euro,customs union,False,8,0,8,0,8,True
+FR,emp,manufacturing,relative,1,1960,2025,1960,2018,0.2836862138605287,58,True,euro,pre-accession,False,7,0,7,0,7,False
+HR,emp,manufacturing,absolute,1,1995,2025,2000,2013,0.27566079964346635,13,False,single market,pre-accession,False,12,0,12,0,12,True
+HU,emp,manufacturing,absolute,1,1995,2025,2001,2011,0.25536985893194686,10,False,single market,pre-accession,False,11,1,14,0,14,True
+IE,emp,manufacturing,absolute,1,1960,2025,1980,1985,0.1700514724545954,5,False,customs union,customs union,False,5,1,10,1,40,True
+IE,emp,manufacturing,absolute,1,1960,2025,2000,2012,0.3976807468364294,12,False,euro,euro,False,8,1,13,0,13,True
+IE,emp,manufacturing,relative,1,1960,2025,2001,2012,0.22231142394526593,11,False,euro,euro,False,3,1,9,1,13,True
+IS,emp,manufacturing,absolute,1,1963,2025,1987,2009,0.4280163887004931,22,False,outside,outside,False,16,0,16,0,16,True
+IS,emp,manufacturing,relative,1,1963,2025,1964,1968,0.1594117125614809,4,False,outside,outside,False,2,1,3,1,57,True
+IS,emp,manufacturing,relative,1,1963,2025,1987,1990,0.19275050176684516,3,False,outside,outside,False,4,1,22,1,35,True
+IT,emp,manufacturing,absolute,1,1960,2025,1980,2015,0.3933126435268033,35,False,euro,customs union,False,10,0,10,0,10,True
+JP,emp,manufacturing,absolute,1,1960,2024,1992,2022,0.4047777324256039,30,False,outside,outside,False,2,0,2,0,2,True
+JP,emp,manufacturing,relative,1,1960,2024,1993,2005,0.18281381703511457,12,False,outside,outside,False,9,1,19,0,19,True
+LT,emp,manufacturing,absolute,1,1990,2025,1991,2010,0.8043487432130885,19,False,single market,pre-accession,False,15,0,15,0,15,True
+LT,emp,manufacturing,relative,1,1990,2025,1992,2001,0.5350334071497524,9,False,pre-accession,pre-accession,True,24,0,24,0,24,False
+LU,emp,manufacturing,absolute,1,1970,2025,1974,2014,0.4036695767706884,40,False,euro,customs union,False,11,0,11,0,11,True
+LU,emp,manufacturing,relative,1,1970,2025,1975,1988,0.17861237439649846,13,False,customs union,customs union,False,9,1,15,1,37,True
+MT,emp,manufacturing,absolute,1,1995,2025,1995,2009,0.4300961272766939,14,True,euro,pre-accession,False,16,0,16,0,16,False
+MT,emp,manufacturing,relative,1,1995,2025,1995,2009,0.2577089545315876,14,True,euro,pre-accession,False,14,1,16,0,16,False
+NL,emp,manufacturing,absolute,1,1969,2025,1970,2014,0.5075401327484856,44,False,euro,customs union,False,11,0,11,0,11,True
+NL,emp,manufacturing,relative,1,1969,2025,1969,1984,0.21213704884599593,15,True,customs union,customs union,False,7,1,36,1,41,False
+NO,emp,manufacturing,absolute,1,1962,2025,1974,2017,0.5300834403704053,43,False,outside,outside,False,8,0,8,0,8,True
+NO,emp,manufacturing,relative,1,1962,2025,1967,1991,0.25096940311311844,24,False,outside,outside,False,3,1,7,1,34,True
+NO,emp,manufacturing,relative,1,1962,2025,1998,2004,0.1665475641443539,6,False,outside,outside,False,3,1,9,1,21,True
+NZ,emp,manufacturing,absolute,1,1989,2023,1989,2012,0.15793152688600554,23,True,outside,outside,False,11,0,11,0,11,False
+PL,emp,manufacturing,absolute,1,1992,2025,1997,2002,0.24909236726984219,5,False,pre-accession,pre-accession,True,5,1,15,1,23,False
+PL,emp,manufacturing,relative,1,1992,2025,1997,2002,0.2065463665810645,5,False,pre-accession,pre-accession,True,3,1,5,1,23,False
+PT,emp,manufacturing,absolute,1,1977,2025,1981,2013,0.5633846048761839,32,False,euro,pre-accession,False,12,0,12,0,12,True
+PT,emp,manufacturing,relative,1,1977,2025,1999,2013,0.23479010309047066,14,False,euro,euro,False,12,0,12,0,12,True
+SE,emp,manufacturing,absolute,1,1970,2025,1970,2016,0.6427786583992185,46,True,single market,pre-accession,False,9,0,9,0,9,False
+SE,emp,manufacturing,relative,1,1970,2025,1970,1993,0.2013143112814051,23,True,pre-accession,pre-accession,False,5,1,32,0,32,False
+SI,emp,manufacturing,absolute,1,1995,2025,1995,2013,0.3855774793244082,18,True,euro,pre-accession,False,12,0,12,0,12,False
+SI,emp,manufacturing,relative,1,1995,2025,1995,2013,0.15443720909868297,18,True,euro,pre-accession,False,5,1,12,0,12,False
+SK,emp,manufacturing,absolute,1,1995,2025,1996,2010,0.20111581393797806,14,False,euro,pre-accession,False,7,1,15,0,15,True
+UK,emp,manufacturing,absolute,1,1979,2024,1979,2021,0.8944590290243717,42,True,outside,customs union,False,3,0,3,0,3,False
+US,emp,manufacturing,absolute,1,1960,2024,1979,2010,0.5437216554854949,31,False,outside,outside,False,14,0,14,0,14,True
+US,emp,manufacturing,relative,1,1960,2024,1968,1975,0.1530430841306245,7,False,outside,outside,False,2,1,4,1,49,True
+US,emp,manufacturing,relative,1,1960,2024,2000,2009,0.2320124154024299,9,False,outside,outside,False,15,0,15,0,15,True
+BG,emp,services,relative,0,1995,2025,1996,2022,0.21520111235633355,26,False,single market,pre-accession,False,3,0,3,0,3,True
+CZ,emp,services,relative,0,1993,2025,1994,2022,0.24980893903721313,28,False,single market,pre-accession,False,3,0,3,0,3,True
+EE,emp,services,relative,0,1990,2025,1990,2010,0.265699735089032,20,True,single market,pre-accession,False,15,0,15,0,15,False
+EL,emp,services,relative,0,1981,2025,2004,2017,0.15998136516783568,13,False,euro,euro,False,8,0,8,0,8,True
+FI,emp,services,absolute,0,1960,2025,1990,1994,0.15222387610062782,4,False,single market,pre-accession,False,4,1,7,1,31,True
+HR,emp,services,relative,0,1995,2025,1995,2021,0.17415341009817542,26,True,single market,pre-accession,False,4,1,4,0,4,False
+IT,emp,services,relative,0,1960,2025,1961,2022,0.20746528231538441,61,False,euro,pre-accession,False,3,0,3,0,3,True
+LT,emp,services,relative,0,1990,2025,1991,2021,0.2975622208290707,30,False,euro,pre-accession,False,4,0,4,0,4,True
+LV,emp,services,absolute,0,1990,2025,1991,2001,0.21994467031102882,10,False,pre-accession,pre-accession,True,4,1,6,1,24,False
+LV,emp,services,absolute,0,1990,2025,2007,2010,0.1718665117003706,3,False,single market,single market,False,9,1,15,0,15,True
+RO,emp,services,relative,0,1990,2025,1991,2023,0.2662117230305885,32,False,single market,pre-accession,False,2,0,2,0,2,True
+AT,gva,agriculture,relative,1,1960,2025,1961,1965,0.1697753439855042,4,False,pre-accession,pre-accession,False,2,1,11,1,60,True
+AT,gva,agriculture,relative,1,1960,2025,1976,1993,0.36533334810953155,17,False,pre-accession,pre-accession,False,15,1,32,0,32,True
+AU,gva,agriculture,absolute,1,1970,2024,1978,1982,0.3580139799237596,4,False,outside,outside,False,1,1,1,1,42,True
+AU,gva,agriculture,absolute,1,1970,2024,1993,1994,0.15844195748997336,1,False,outside,outside,False,1,1,1,1,30,True
+AU,gva,agriculture,absolute,1,1970,2024,2001,2002,0.24276229012281547,1,False,outside,outside,False,1,1,2,1,22,True
+AU,gva,agriculture,absolute,1,1970,2024,2005,2006,0.16444216550059965,1,False,outside,outside,False,2,1,2,1,18,True
+AU,gva,agriculture,absolute,1,1970,2024,2016,2019,0.24196846763118662,3,False,outside,outside,False,1,1,2,1,5,True
+AU,gva,agriculture,relative,1,1970,2024,1978,1982,0.49795428567513866,4,False,outside,outside,False,1,1,16,1,42,True
+AU,gva,agriculture,relative,1,1970,2024,2001,2002,0.27778953067641643,1,False,outside,outside,False,1,1,3,1,22,True
+AU,gva,agriculture,relative,1,1970,2024,2005,2006,0.16018014739577247,1,False,outside,outside,False,1,1,2,1,18,True
+AU,gva,agriculture,relative,1,1970,2024,2013,2019,0.29287811605450775,6,False,outside,outside,False,1,1,2,1,5,True
+BE,gva,agriculture,absolute,1,1970,2025,1974,1976,0.22217601151509306,2,False,customs union,customs union,False,2,1,5,1,49,True
+BE,gva,agriculture,absolute,1,1970,2025,2015,2022,0.16012438375088056,7,False,euro,euro,False,1,1,3,0,3,True
+BE,gva,agriculture,relative,1,1970,2025,1973,1976,0.22689788844119055,3,False,customs union,customs union,False,6,1,16,1,49,True
+BE,gva,agriculture,relative,1,1970,2025,2015,2022,0.18948102172261083,7,False,euro,euro,False,1,1,3,0,3,True
+BG,gva,agriculture,absolute,1,1995,2025,1997,2007,0.7117765126174109,10,False,single market,pre-accession,False,14,1,18,0,18,True
+BG,gva,agriculture,relative,1,1995,2025,1997,2015,0.8285576304147803,18,False,single market,pre-accession,False,10,0,10,0,10,True
+CA,gva,agriculture,absolute,1,1997,2025,2020,2021,0.16310196396085308,1,False,outside,outside,False,1,1,1,1,4,True
+CA,gva,agriculture,relative,1,1997,2025,2013,2021,0.2156963157975067,8,False,outside,outside,False,1,1,1,1,4,True
+CH,gva,agriculture,absolute,1,1980,2025,1980,2003,0.4457201871142342,23,True,outside,outside,False,8,1,22,0,22,False
+CH,gva,agriculture,relative,1,1980,2025,1980,2021,0.7939654236642071,41,True,outside,outside,False,4,0,4,0,4,False
+CY,gva,agriculture,absolute,1,1995,2025,1996,1997,0.17268880082616916,1,False,pre-accession,pre-accession,False,1,1,2,1,28,True
+CY,gva,agriculture,absolute,1,1995,2025,2002,2022,0.7052587778102941,20,False,euro,pre-accession,False,3,0,3,0,3,True
+CY,gva,agriculture,relative,1,1995,2025,1996,1997,0.20013408266612798,1,False,pre-accession,pre-accession,False,1,1,4,1,28,True
+CY,gva,agriculture,relative,1,1995,2025,2002,2024,0.8334210525495364,22,False,euro,pre-accession,False,1,0,1,0,1,True
+CZ,gva,agriculture,absolute,1,1990,2025,1991,1992,0.18878400352499725,1,False,pre-accession,pre-accession,True,1,1,1,1,33,False
+CZ,gva,agriculture,absolute,1,1990,2025,1994,1997,0.19222011957198948,3,False,pre-accession,pre-accession,True,7,1,8,1,28,False
+CZ,gva,agriculture,absolute,1,1990,2025,2005,2011,0.35707804706798374,6,False,single market,single market,False,4,1,9,1,14,True
+CZ,gva,agriculture,relative,1,1990,2025,1991,1992,0.18979661271151382,1,False,pre-accession,pre-accession,True,1,1,2,1,33,False
+CZ,gva,agriculture,relative,1,1990,2025,1994,2011,0.4624448394314111,17,False,single market,pre-accession,False,5,1,14,0,14,True
+DE,gva,agriculture,absolute,1,1960,2025,1990,1994,0.3096332675837683,4,False,single market,customs union,False,5,1,10,1,31,True
+DE,gva,agriculture,absolute,1,1960,2025,2004,2018,0.320538977979858,14,False,euro,euro,False,3,1,7,0,7,True
+DE,gva,agriculture,relative,1,1960,2025,1977,2018,0.6047498119025678,41,False,euro,customs union,False,7,0,7,0,7,True
+DK,gva,agriculture,absolute,1,1966,2025,1969,1970,0.2190541507361412,1,False,pre-accession,pre-accession,False,1,1,4,1,55,True
+DK,gva,agriculture,absolute,1,1966,2025,1974,1976,0.178180699667565,2,False,customs union,customs union,False,1,1,3,1,49,True
+DK,gva,agriculture,absolute,1,1966,2025,2007,2009,0.34429864456898596,2,False,single market,single market,False,1,1,5,1,16,True
+DK,gva,agriculture,relative,1,1966,2025,1969,1970,0.2573792137464057,1,False,pre-accession,pre-accession,False,1,1,14,1,55,True
+DK,gva,agriculture,relative,1,1966,2025,1984,1987,0.15415146290985504,3,False,customs union,customs union,False,2,1,6,1,38,True
+EE,gva,agriculture,absolute,1,1993,2025,1998,2001,0.23256213840839102,3,False,pre-accession,pre-accession,True,1,1,2,1,24,False
+EE,gva,agriculture,absolute,1,1993,2025,2008,2009,0.2067792116756325,1,False,single market,single market,False,2,1,5,1,16,True
+EE,gva,agriculture,absolute,1,1993,2025,2015,2023,0.685964961512647,8,False,euro,euro,False,2,0,2,0,2,True
+EE,gva,agriculture,relative,1,1993,2025,1998,2001,0.25102156558688027,3,False,pre-accession,pre-accession,True,2,1,5,1,24,False
+EE,gva,agriculture,relative,1,1993,2025,2007,2009,0.21432025703226443,2,False,single market,single market,False,1,1,6,1,16,True
+EE,gva,agriculture,relative,1,1993,2025,2015,2023,0.674348210505823,8,False,euro,euro,False,2,0,2,0,2,True
+EL,gva,agriculture,absolute,1,1988,2025,2005,2023,0.3265619307434984,18,False,euro,euro,False,2,0,2,0,2,True
+EL,gva,agriculture,relative,1,1988,2025,1988,1990,0.18701944927960779,2,True,customs union,customs union,False,1,1,4,1,35,False
+EL,gva,agriculture,relative,1,1988,2025,1999,2024,0.44064420507112745,25,False,euro,single market,False,1,0,1,0,1,True
+ES,gva,agriculture,absolute,1,1980,2025,2021,2022,0.18474903954005395,1,False,euro,euro,False,2,1,3,0,3,True
+ES,gva,agriculture,relative,1,1980,2025,1980,1982,0.16910113873214527,2,True,pre-accession,pre-accession,False,5,1,6,1,43,False
+ES,gva,agriculture,relative,1,1980,2025,2000,2005,0.1597347434508678,5,False,euro,euro,False,2,1,8,1,20,True
+ES,gva,agriculture,relative,1,1980,2025,2018,2022,0.19182237514594647,4,False,euro,euro,False,2,1,3,0,3,True
+FI,gva,agriculture,absolute,1,1960,2025,1984,1987,0.2604903111751864,3,False,pre-accession,pre-accession,False,3,1,20,1,38,True
+FI,gva,agriculture,relative,1,1960,2025,1961,2004,0.6382026156043282,43,False,euro,pre-accession,False,21,0,21,0,21,True
+FR,gva,agriculture,absolute,1,1960,2025,2002,2003,0.16725160340203482,1,False,euro,euro,False,1,1,1,1,22,True
+FR,gva,agriculture,absolute,1,1960,2025,2014,2024,0.25141484216162313,10,False,euro,euro,False,1,0,1,0,1,True
+FR,gva,agriculture,relative,1,1960,2025,1973,1976,0.16769244233052838,3,False,customs union,customs union,False,2,1,6,1,49,True
+FR,gva,agriculture,relative,1,1960,2025,1999,2003,0.16870975329551552,4,False,euro,euro,False,1,1,6,1,22,True
+FR,gva,agriculture,relative,1,1960,2025,2011,2024,0.3154682284996433,13,False,euro,euro,False,1,0,1,0,1,True
+HR,gva,agriculture,absolute,1,1995,2025,2008,2014,0.4483146291645281,6,False,single market,pre-accession,False,7,1,11,0,11,True
+HR,gva,agriculture,relative,1,1995,2025,2008,2014,0.5117872512038001,6,False,single market,pre-accession,False,9,1,11,0,11,True
+HU,gva,agriculture,absolute,1,1991,2025,1991,2003,0.36044858025436266,12,True,pre-accession,pre-accession,True,1,1,1,1,22,False
+HU,gva,agriculture,absolute,1,1991,2025,2004,2007,0.3487311484962188,3,False,single market,single market,False,1,1,1,1,18,True
+HU,gva,agriculture,absolute,1,1991,2025,2008,2022,0.5047456148844667,14,False,single market,single market,False,1,1,3,0,3,True
+HU,gva,agriculture,relative,1,1991,2025,1991,2002,0.4793394099620656,11,True,pre-accession,pre-accession,True,2,1,6,1,23,False
+HU,gva,agriculture,relative,1,1991,2025,2008,2022,0.5901999136698377,14,False,single market,single market,False,1,1,3,0,3,True
+IE,gva,agriculture,absolute,1,1995,2025,1998,2009,0.488914992087514,11,False,euro,single market,False,2,1,7,1,16,True
+IE,gva,agriculture,relative,1,1995,2025,1997,2009,0.5731294765053381,12,False,euro,single market,False,2,1,8,1,16,True
+IS,gva,agriculture,absolute,1,1973,2025,1981,1983,0.2090182960441318,2,False,outside,outside,False,2,1,3,1,42,True
+IS,gva,agriculture,absolute,1,1973,2025,1990,2011,0.2669050770548367,21,False,outside,outside,False,7,1,10,1,14,True
+IS,gva,agriculture,relative,1,1973,2025,1980,1984,0.2968711439113374,4,False,outside,outside,False,2,1,3,1,41,True
+IS,gva,agriculture,relative,1,1973,2025,1988,2011,0.47597679889878286,23,False,outside,outside,False,11,1,14,0,14,True
+IT,gva,agriculture,relative,1,1960,2025,1967,2021,0.37238670138633134,54,False,euro,pre-accession,False,4,0,4,0,4,True
+JP,gva,agriculture,absolute,1,1994,2023,2000,2018,0.5109587001751787,18,False,outside,outside,False,5,0,5,0,5,True
+JP,gva,agriculture,relative,1,1994,2023,1994,2020,0.6852323910551164,26,True,outside,outside,False,3,0,3,0,3,False
+LT,gva,agriculture,absolute,1,1995,2025,1997,2006,0.28909564916735936,9,False,single market,pre-accession,False,3,1,9,1,19,True
+LT,gva,agriculture,absolute,1,1995,2025,2015,2018,0.15094851736783244,3,False,euro,euro,False,1,1,2,1,7,True
+LT,gva,agriculture,relative,1,1995,2025,1997,2006,0.3563848609685795,9,False,single market,pre-accession,False,6,1,14,1,19,True
+LU,gva,agriculture,absolute,1,1985,2025,1995,1997,0.15678950888891374,2,False,single market,single market,False,1,1,2,1,28,True
+LU,gva,agriculture,absolute,1,1985,2025,1999,2023,1.0090037434197014,24,False,euro,euro,False,2,0,2,0,2,True
+LU,gva,agriculture,relative,1,1985,2025,1986,1991,0.21789059947967804,5,False,customs union,customs union,False,1,1,1,1,34,True
+LU,gva,agriculture,relative,1,1985,2025,1995,1997,0.20238464581462456,2,False,single market,single market,False,1,1,2,1,28,True
+LU,gva,agriculture,relative,1,1985,2025,1999,2023,1.1280292606390623,24,False,euro,euro,False,2,0,2,0,2,True
+LV,gva,agriculture,absolute,1,1990,2025,1990,1999,0.7610762239710694,9,True,pre-accession,pre-accession,True,6,1,26,0,26,False
+LV,gva,agriculture,relative,1,1990,2025,1990,1999,0.8509208485832106,9,True,pre-accession,pre-accession,True,10,1,26,0,26,False
+MT,gva,agriculture,absolute,1,2000,2025,2006,2023,2.109790052970137,17,False,euro,single market,False,1,1,1,1,2,True
+MT,gva,agriculture,relative,1,2000,2025,2006,2023,2.2055093241749715,17,False,euro,single market,False,1,1,1,1,2,True
+NO,gva,agriculture,absolute,1,1970,2025,1984,1986,0.1701352546091388,2,False,outside,outside,False,3,1,5,1,39,True
+NO,gva,agriculture,absolute,1,1970,2025,2022,2023,0.20962225852249006,1,False,outside,outside,False,2,0,2,0,2,True
+NO,gva,agriculture,relative,1,1970,2025,1976,1986,0.3362480656558344,10,False,outside,outside,False,7,1,9,1,39,True
+NO,gva,agriculture,relative,1,1970,2025,1995,2001,0.17276777042710822,6,False,outside,outside,False,3,1,5,1,24,True
+NO,gva,agriculture,relative,1,1970,2025,2012,2016,0.1893481093891496,4,False,outside,outside,False,5,1,6,1,9,True
+NO,gva,agriculture,relative,1,1970,2025,2022,2024,0.22467003014459586,2,False,outside,outside,False,1,0,1,0,1,True
+NZ,gva,agriculture,absolute,1,1977,2023,2006,2007,0.15919960427852953,1,False,outside,outside,False,1,1,5,1,16,True
+NZ,gva,agriculture,relative,1,1977,2023,2003,2007,0.16684479911182093,4,False,outside,outside,False,2,1,5,1,16,True
+PL,gva,agriculture,absolute,1,1992,2025,1993,2000,0.42617721128344055,7,False,pre-accession,pre-accession,True,9,1,25,0,25,False
+PL,gva,agriculture,relative,1,1992,2025,1993,2021,0.5210742132488919,28,False,single market,pre-accession,False,4,0,4,0,4,True
+PT,gva,agriculture,absolute,1,1960,2025,1962,1977,0.3857570448717399,15,False,pre-accession,pre-accession,False,2,1,8,1,48,True
+PT,gva,agriculture,relative,1,1960,2025,1962,1977,0.6091180608426194,15,False,pre-accession,pre-accession,False,13,1,48,0,48,True
+RO,gva,agriculture,absolute,1,1995,2025,1995,2000,0.31963606573755055,5,True,pre-accession,pre-accession,True,1,1,4,1,25,False
+RO,gva,agriculture,absolute,1,1995,2025,2004,2012,0.5494841058420792,8,False,single market,pre-accession,False,1,1,13,0,13,True
+RO,gva,agriculture,relative,1,1995,2025,1995,2012,0.5670780018207413,17,True,single market,pre-accession,False,1,1,13,0,13,False
+SE,gva,agriculture,absolute,1,1970,2025,1974,1977,0.16448624855284022,3,False,pre-accession,pre-accession,False,5,1,6,1,48,True
+SE,gva,agriculture,absolute,1,1970,2025,1990,1998,0.21095124114491837,8,False,single market,pre-accession,False,4,1,6,1,27,True
+SE,gva,agriculture,absolute,1,1970,2025,2007,2008,0.16825283988225914,1,False,single market,single market,False,3,1,6,1,17,True
+SE,gva,agriculture,relative,1,1970,2025,1971,1998,0.5101487327847432,27,False,single market,pre-accession,False,16,1,27,0,27,True
+SI,gva,agriculture,absolute,1,1990,2025,2002,2003,0.2896326607522466,1,False,pre-accession,pre-accession,True,1,1,17,1,22,False
+SI,gva,agriculture,absolute,1,1990,2025,2020,2021,0.15406986544375756,1,False,euro,euro,False,3,1,4,0,4,True
+SI,gva,agriculture,relative,1,1990,2025,1990,1993,0.1520883085756521,3,True,pre-accession,pre-accession,True,3,1,9,1,32,False
+SI,gva,agriculture,relative,1,1990,2025,2002,2014,0.31998114700552804,12,False,euro,pre-accession,False,1,1,11,0,11,True
+SK,gva,agriculture,absolute,1,1993,2025,1998,1999,0.2948407094718932,1,False,pre-accession,pre-accession,True,2,1,2,1,26,False
+SK,gva,agriculture,absolute,1,1993,2025,2008,2010,0.2681114719643879,2,False,euro,single market,False,1,1,3,1,15,True
+SK,gva,agriculture,relative,1,1993,2025,1997,1999,0.30705539225552436,2,False,pre-accession,pre-accession,True,2,1,2,1,26,False
+SK,gva,agriculture,relative,1,1993,2025,2008,2010,0.25066779802979317,2,False,euro,single market,False,1,1,3,1,15,True
+SK,gva,agriculture,relative,1,1993,2025,2014,2022,0.2824694408088777,8,False,euro,euro,False,1,1,1,1,3,True
+UK,gva,agriculture,absolute,1,1960,2025,1974,1976,0.16497933501356754,2,False,customs union,customs union,False,1,1,2,1,49,True
+UK,gva,agriculture,absolute,1,1960,2025,2002,2007,0.17487280978188258,5,False,single market,single market,False,1,1,1,1,18,True
+UK,gva,agriculture,absolute,1,1960,2025,2008,2010,0.22845832021206913,2,False,single market,single market,False,1,1,4,1,15,True
+UK,gva,agriculture,absolute,1,1960,2025,2014,2018,0.23708005003400823,4,False,single market,single market,False,1,1,4,1,7,True
+UK,gva,agriculture,relative,1,1960,2025,1973,1976,0.18793533295104226,3,False,customs union,customs union,False,1,1,6,1,49,True
+UK,gva,agriculture,relative,1,1960,2025,1984,1996,0.20573729317093292,12,False,single market,customs union,False,2,1,3,1,29,True
+UK,gva,agriculture,relative,1,1960,2025,2002,2004,0.20120818257440765,2,False,single market,single market,False,1,1,4,1,21,True
+UK,gva,agriculture,relative,1,1960,2025,2008,2010,0.20988169908455112,2,False,single market,single market,False,1,1,4,1,15,True
+UK,gva,agriculture,relative,1,1960,2025,2014,2018,0.2418725847841332,4,False,single market,single market,False,1,1,7,0,7,True
+US,gva,agriculture,absolute,1,1960,2025,1982,1983,0.18153124987427205,1,False,outside,outside,False,1,1,2,1,42,True
+US,gva,agriculture,relative,1,1960,2025,1970,1983,0.22168993299930229,13,False,outside,outside,False,2,1,2,1,42,True
+AT,gva,construction,absolute,0,1960,2025,1977,1984,0.17273849853686585,7,False,pre-accession,pre-accession,False,6,1,7,1,41,True
+AT,gva,construction,relative,0,1960,2025,1977,1989,0.24501728118658406,12,False,pre-accession,pre-accession,False,2,1,3,1,36,True
+AU,gva,construction,absolute,0,1970,2024,1989,1991,0.1538523344759799,2,False,outside,outside,False,2,1,3,1,33,True
+AU,gva,construction,absolute,0,1970,2024,1999,2000,0.15090001653893914,1,False,outside,outside,False,1,1,2,1,24,True
+AU,gva,construction,relative,0,1970,2024,1999,2000,0.17086998277600518,1,False,outside,outside,False,1,1,2,1,24,True
+AU,gva,construction,relative,0,1970,2024,2013,2019,0.25839698024237734,6,False,outside,outside,False,5,0,5,0,5,True
+BE,gva,construction,absolute,0,1970,2025,1980,1984,0.37627145227659753,4,False,customs union,customs union,False,4,1,13,1,41,True
+BE,gva,construction,relative,0,1970,2025,1980,1984,0.3667187867021906,4,False,customs union,customs union,False,7,1,25,1,41,True
+BG,gva,construction,absolute,0,1995,2025,2009,2021,0.48629654186905946,12,False,single market,single market,False,4,1,4,0,4,True
+BG,gva,construction,relative,0,1995,2025,2009,2021,0.5684665397184796,12,False,single market,single market,False,4,0,4,0,4,True
+CA,gva,construction,relative,0,1997,2025,2014,2019,0.1745977257058673,5,False,outside,outside,False,6,0,6,0,6,True
+CH,gva,construction,absolute,0,1980,2025,1989,2001,0.283930734382706,12,False,outside,outside,False,12,1,24,0,24,True
+CH,gva,construction,relative,0,1980,2025,1993,2007,0.6706981118325759,14,False,outside,outside,False,5,1,18,0,18,True
+CY,gva,construction,absolute,0,1995,2025,2007,2015,0.9477878731220482,8,False,euro,single market,False,3,1,10,0,10,True
+CY,gva,construction,relative,0,1995,2025,1995,1998,0.18520250424617885,3,True,pre-accession,pre-accession,False,3,1,5,1,27,False
+CY,gva,construction,relative,0,1995,2025,2007,2015,0.7784723478294937,8,False,euro,single market,False,3,1,10,0,10,True
+CZ,gva,construction,absolute,0,1990,2025,1990,2022,0.7884596238408115,32,True,single market,pre-accession,False,3,0,3,0,3,False
+CZ,gva,construction,relative,0,1990,2025,1990,2023,1.104271379574743,33,True,single market,pre-accession,False,2,0,2,0,2,False
+DE,gva,construction,absolute,0,1960,2025,1973,1987,0.19255401752844659,14,False,customs union,customs union,False,3,1,7,1,38,True
+DK,gva,construction,absolute,0,1966,2025,1972,1982,0.4171318150462593,10,False,customs union,pre-accession,False,4,1,24,1,43,True
+DK,gva,construction,absolute,0,1966,2025,2006,2010,0.23163946824146908,4,False,single market,single market,False,5,1,6,1,15,True
+EE,gva,construction,absolute,0,1993,2025,1998,1999,0.17933411401606258,1,False,pre-accession,pre-accession,True,1,1,1,1,26,False
+EE,gva,construction,absolute,0,1993,2025,2008,2010,0.4720515560073301,2,False,single market,single market,False,1,1,8,1,15,True
+EE,gva,construction,relative,0,1993,2025,1998,1999,0.20155894226658888,1,False,pre-accession,pre-accession,True,1,1,1,1,26,False
+EE,gva,construction,relative,0,1993,2025,2008,2009,0.3196868978293114,1,False,single market,single market,False,2,1,3,1,16,True
+EL,gva,construction,absolute,0,1988,2025,2004,2005,0.2086911267240965,1,False,euro,euro,False,1,1,1,1,20,True
+EL,gva,construction,absolute,0,1988,2025,2006,2017,1.7166665834699075,11,False,euro,euro,False,8,0,8,0,8,True
+EL,gva,construction,relative,0,1988,2025,1993,1996,0.15604683413552967,3,False,single market,single market,False,2,1,5,1,29,True
+EL,gva,construction,relative,0,1988,2025,2004,2005,0.26033400496864,1,False,euro,euro,False,1,1,1,1,20,True
+EL,gva,construction,relative,0,1988,2025,2006,2017,1.6760174656421158,11,False,euro,euro,False,8,0,8,0,8,True
+ES,gva,construction,absolute,0,1980,2025,2007,2014,0.6262504113504237,7,False,euro,euro,False,11,0,11,0,11,True
+ES,gva,construction,relative,0,1980,2025,2002,2021,0.695640007256185,19,False,euro,euro,False,4,0,4,0,4,True
+FI,gva,construction,absolute,0,1960,2025,1989,1995,0.5316857640773174,6,False,single market,pre-accession,False,9,1,30,0,30,True
+FI,gva,construction,relative,0,1960,2025,1960,1968,0.17004574298180208,8,True,pre-accession,pre-accession,False,5,1,6,1,57,False
+FR,gva,construction,absolute,0,1960,2025,1992,1998,0.1685272701444731,6,False,single market,customs union,False,2,1,7,1,27,True
+FR,gva,construction,absolute,0,1960,2025,2007,2020,0.22304458687184603,13,False,euro,euro,False,5,0,5,0,5,True
+HR,gva,construction,absolute,0,1995,2025,1997,2000,0.18705875924409965,3,False,pre-accession,pre-accession,True,3,1,3,1,25,False
+HR,gva,construction,absolute,0,1995,2025,2008,2014,0.6795995322752065,6,False,single market,pre-accession,False,5,1,9,1,11,True
+HR,gva,construction,relative,0,1995,2025,1997,2000,0.28180751611320853,3,False,pre-accession,pre-accession,True,3,1,5,1,25,False
+HR,gva,construction,relative,0,1995,2025,2009,2014,0.4793652101845865,5,False,single market,pre-accession,False,6,1,9,1,11,True
+HU,gva,construction,absolute,0,1991,2025,1992,1996,0.15961163780704446,4,False,pre-accession,pre-accession,True,2,1,2,1,29,False
+HU,gva,construction,absolute,0,1991,2025,2005,2012,0.41566082875472254,7,False,single market,single market,False,3,1,7,1,13,True
+HU,gva,construction,relative,0,1991,2025,1994,1996,0.20779006255144417,2,False,pre-accession,pre-accession,True,3,1,4,1,29,False
+HU,gva,construction,relative,0,1991,2025,2002,2008,0.37311818542363007,6,False,single market,pre-accession,False,6,1,11,1,17,True
+IE,gva,construction,absolute,0,1995,2025,2007,2012,0.8514723571037177,5,False,euro,euro,False,6,1,13,0,13,True
+IE,gva,construction,relative,0,1995,2025,2005,2012,0.7017948021546598,7,False,euro,euro,False,7,1,13,0,13,True
+IS,gva,construction,absolute,0,1973,2025,1976,1979,0.18716715572154996,3,False,outside,outside,False,1,1,8,1,46,True
+IS,gva,construction,absolute,0,1973,2025,1991,1995,0.1844290155355255,4,False,outside,outside,False,2,1,4,1,30,True
+IS,gva,construction,absolute,0,1973,2025,2007,2012,0.913154586809795,5,False,outside,outside,False,4,1,13,0,13,True
+IS,gva,construction,relative,0,1973,2025,1976,1979,0.19809758670035027,3,False,outside,outside,False,1,1,3,1,46,True
+IS,gva,construction,relative,0,1973,2025,2007,2011,0.739155509435343,4,False,outside,outside,False,5,1,14,0,14,True
+IT,gva,construction,absolute,0,1960,2025,2006,2020,0.497611718374551,14,False,euro,euro,False,2,1,5,0,5,True
+IT,gva,construction,relative,0,1960,2025,1963,2020,0.8758030174077369,57,False,euro,pre-accession,False,5,0,5,0,5,True
+JP,gva,construction,absolute,0,1994,2023,1996,2010,0.5720710277408649,14,False,outside,outside,False,13,0,13,0,13,True
+JP,gva,construction,relative,0,1994,2023,1994,2008,0.9841669207227692,14,True,outside,outside,False,15,0,15,0,15,False
+LT,gva,construction,absolute,0,1995,2025,1998,2000,0.26551820674528426,2,False,pre-accession,pre-accession,True,2,1,3,1,25,False
+LT,gva,construction,absolute,0,1995,2025,2008,2010,0.662750261439472,2,False,single market,single market,False,4,1,14,1,15,True
+LT,gva,construction,relative,0,1995,2025,1998,2000,0.3058095917090612,2,False,pre-accession,pre-accession,True,2,1,3,1,25,False
+LT,gva,construction,relative,0,1995,2025,2008,2009,0.5104705654517531,1,False,single market,single market,False,4,1,15,1,16,True
+LU,gva,construction,absolute,0,1985,2025,2019,2023,0.5018547405122361,4,False,euro,euro,False,2,0,2,0,2,True
+LU,gva,construction,relative,0,1985,2025,2016,2023,0.5662913966849665,7,False,euro,euro,False,2,0,2,0,2,True
+LV,gva,construction,absolute,0,1990,2025,1990,1993,2.0747394464269555,3,True,pre-accession,pre-accession,True,13,1,32,0,32,False
+LV,gva,construction,relative,0,1990,2025,1990,1995,2.000659409909742,5,True,pre-accession,pre-accession,True,12,1,30,0,30,False
+MT,gva,construction,absolute,0,2000,2025,2003,2007,0.47732119270062334,4,False,single market,pre-accession,False,9,1,11,1,18,True
+MT,gva,construction,absolute,0,2000,2025,2019,2022,0.17005676952952192,3,False,euro,euro,False,2,1,3,0,3,True
+MT,gva,construction,relative,0,2000,2025,2003,2007,0.6987586923054531,4,False,single market,pre-accession,False,6,1,12,1,18,True
+MT,gva,construction,relative,0,2000,2025,2019,2022,0.17118150077982786,3,False,euro,euro,False,2,1,3,0,3,True
+NL,gva,construction,absolute,0,1969,2025,1970,1983,0.5822986788701541,13,False,customs union,customs union,False,16,1,40,1,42,True
+NL,gva,construction,relative,0,1969,2025,1969,2013,0.8155761423138363,44,True,euro,customs union,False,12,0,12,0,12,False
+NO,gva,construction,absolute,0,1970,2025,1988,1993,0.18749639608331403,5,False,outside,outside,False,2,1,4,1,32,True
+NO,gva,construction,relative,0,1970,2025,1986,1991,0.17946075008960882,5,False,outside,outside,False,3,1,6,1,34,True
+NZ,gva,construction,absolute,0,1977,2023,1977,1980,0.16795790887146067,3,True,outside,outside,False,2,1,3,1,43,False
+NZ,gva,construction,absolute,0,1977,2023,1985,1992,0.3672821986701311,7,False,outside,outside,False,2,1,4,1,31,True
+NZ,gva,construction,relative,0,1977,2023,1977,1980,0.18023425989747244,3,True,outside,outside,False,1,1,3,1,43,False
+NZ,gva,construction,relative,0,1977,2023,1985,1991,0.4630729260850974,6,False,outside,outside,False,3,1,11,1,32,True
+PL,gva,construction,absolute,0,1992,2025,1999,2003,0.16396692446315786,4,False,pre-accession,pre-accession,True,3,1,6,1,22,False
+PL,gva,construction,relative,0,1992,2025,1998,2008,0.3981790266067762,10,False,single market,pre-accession,False,1,1,3,1,17,True
+PT,gva,construction,absolute,0,1960,2025,1973,2015,0.9696979509003605,42,False,euro,pre-accession,False,10,0,10,0,10,True
+PT,gva,construction,relative,0,1960,2025,1973,2016,1.2650794546543738,43,False,euro,pre-accession,False,9,0,9,0,9,True
+RO,gva,construction,absolute,0,1995,2025,1996,1999,0.262791568387855,3,False,pre-accession,pre-accession,True,2,1,4,1,26,False
+RO,gva,construction,absolute,0,1995,2025,2008,2012,0.6477643575554239,4,False,single market,single market,False,11,1,13,0,13,True
+RO,gva,construction,relative,0,1995,2025,1996,1999,0.3694911593405332,3,False,pre-accession,pre-accession,True,5,1,7,1,26,False
+RO,gva,construction,relative,0,1995,2025,2009,2011,0.4637518288978484,2,False,single market,single market,False,14,1,14,0,14,True
+SE,gva,construction,absolute,0,1970,2025,1989,1993,0.18539294265632922,4,False,pre-accession,pre-accession,False,6,1,8,1,32,True
+SE,gva,construction,relative,0,1970,2025,1984,2008,0.22495890328323842,24,False,single market,pre-accession,False,1,1,3,1,17,True
+SI,gva,construction,absolute,0,1990,2025,1990,1993,0.26549147460880895,3,True,pre-accession,pre-accession,True,3,1,6,1,32,False
+SI,gva,construction,absolute,0,1990,2025,2008,2013,0.6123427094759298,5,False,euro,euro,False,8,1,12,0,12,True
+SI,gva,construction,relative,0,1990,2025,1999,2005,0.1929265755217573,6,False,single market,pre-accession,False,2,1,2,1,20,True
+SI,gva,construction,relative,0,1990,2025,2008,2016,0.43472572124906106,8,False,euro,euro,False,7,1,9,0,9,True
+SK,gva,construction,absolute,0,1993,2025,1998,1999,0.24617450259242868,1,False,pre-accession,pre-accession,True,3,1,5,1,26,False
+SK,gva,construction,absolute,0,1993,2025,2008,2013,0.18119192236206505,5,False,euro,single market,False,4,1,8,1,12,True
+SK,gva,construction,relative,0,1993,2025,1996,2001,0.30592216111983417,5,False,pre-accession,pre-accession,True,5,1,7,1,24,False
+SK,gva,construction,relative,0,1993,2025,2012,2019,0.31147048251672826,7,False,euro,euro,False,2,1,6,0,6,True
+UK,gva,construction,absolute,0,1960,2025,1973,1981,0.2742159423538153,8,False,customs union,customs union,False,2,1,6,1,44,True
+UK,gva,construction,absolute,0,1960,2025,2001,2009,0.26519462953788775,8,False,single market,single market,False,2,1,8,1,16,True
+UK,gva,construction,absolute,0,1960,2025,2017,2020,0.15557392690740546,3,False,single market,single market,False,1,1,2,1,5,True
+UK,gva,construction,relative,0,1960,2025,1961,2009,0.49797396263447347,48,False,single market,pre-accession,False,4,1,16,0,16,True
+US,gva,construction,absolute,0,1960,2025,1966,1982,0.31379954397580434,16,False,outside,outside,False,3,1,14,1,43,True
+US,gva,construction,absolute,0,1960,2025,2005,2011,0.3641978191783597,6,False,outside,outside,False,5,1,14,0,14,True
+US,gva,construction,relative,0,1960,2025,1960,2009,0.7557312338697297,49,True,outside,outside,False,16,0,16,0,16,False
+AU,gva,industry,relative,1,1970,2024,1993,2007,0.1861231306424873,14,False,outside,outside,False,2,1,6,1,17,True
+BE,gva,industry,relative,1,1970,2025,1992,2021,0.3991094213318145,29,False,euro,customs union,False,4,0,4,0,4,True
+BG,gva,industry,relative,1,1996,2025,1997,1999,0.18140208738044739,2,False,pre-accession,pre-accession,True,2,1,4,1,26,False
+CA,gva,industry,absolute,1,1997,2025,2005,2009,0.16269979146344138,4,False,outside,outside,False,2,1,5,1,16,True
+CA,gva,industry,relative,1,1997,2025,2000,2021,0.26282218177645955,21,False,outside,outside,False,4,0,4,0,4,True
+CH,gva,industry,relative,1,1980,2025,1980,2004,0.25916761688034473,24,True,outside,outside,False,7,1,17,1,21,False
+CY,gva,industry,absolute,1,1995,2025,2008,2014,0.38377761429578483,6,False,euro,euro,False,3,1,5,1,11,True
+CY,gva,industry,relative,1,1995,2025,1995,2014,0.6147479255628769,19,True,euro,pre-accession,False,11,0,11,0,11,False
+DE,gva,industry,absolute,1,1960,2025,2007,2009,0.19248880689844405,2,False,euro,euro,False,1,1,2,1,16,True
+DK,gva,industry,absolute,1,1966,2025,2001,2009,0.169975156810505,8,False,single market,single market,False,8,1,10,1,16,True
+DK,gva,industry,relative,1,1966,2025,1968,1981,0.15665252739245172,13,False,customs union,pre-accession,False,1,1,4,1,44,True
+DK,gva,industry,relative,1,1966,2025,1986,2015,0.47027619947824384,29,False,single market,customs union,False,8,1,10,1,10,True
+EE,gva,industry,absolute,1,1993,2025,2007,2009,0.27326003836900714,2,False,single market,single market,False,1,1,4,1,16,True
+EE,gva,industry,absolute,1,1993,2025,2021,2024,0.28853692126858244,3,False,euro,euro,False,1,0,1,0,1,True
+EE,gva,industry,relative,1,1993,2025,2007,2009,0.16521606524043253,2,False,single market,single market,False,1,1,2,1,16,True
+EE,gva,industry,relative,1,1993,2025,2018,2024,0.3156058184531152,6,False,euro,euro,False,1,0,1,0,1,True
+EL,gva,industry,absolute,1,1988,2025,2005,2015,0.4298435698379546,10,False,euro,euro,False,9,1,10,0,10,True
+EL,gva,industry,relative,1,1988,2025,2003,2017,0.5736343408057394,14,False,euro,euro,False,8,0,8,0,8,True
+ES,gva,industry,absolute,1,1980,2025,2007,2013,0.19161922399451647,6,False,euro,euro,False,4,1,12,0,12,True
+ES,gva,industry,relative,1,1980,2025,1992,2021,0.386060663957295,29,False,euro,customs union,False,4,0,4,0,4,True
+FI,gva,industry,absolute,1,1960,2025,2007,2014,0.28120924822440907,7,False,euro,euro,False,11,0,11,0,11,True
+FI,gva,industry,relative,1,1960,2025,2007,2022,0.3971947223003991,15,False,euro,euro,False,3,0,3,0,3,True
+FR,gva,industry,relative,1,1960,2025,1977,2022,0.4440254000775581,45,False,euro,customs union,False,3,0,3,0,3,True
+HR,gva,industry,absolute,1,1995,2025,2008,2013,0.21615163584887442,5,False,single market,pre-accession,False,6,1,12,0,12,True
+HR,gva,industry,relative,1,1995,2025,2000,2020,0.2545636670750928,20,False,single market,pre-accession,False,5,0,5,0,5,True
+HU,gva,industry,absolute,1,1991,2025,2007,2009,0.19666201931142702,2,False,single market,single market,False,6,1,8,1,16,True
+IE,gva,industry,absolute,1,1995,2025,2022,2024,0.18787106277177035,2,False,euro,euro,False,1,1,1,1,1,True
+IE,gva,industry,relative,1,1995,2025,2022,2024,0.20229547866068298,2,False,euro,euro,False,1,1,1,1,1,True
+IS,gva,industry,absolute,1,1973,2025,1987,1993,0.21075948647739917,6,False,outside,outside,False,6,1,8,1,32,True
+IS,gva,industry,relative,1,1973,2025,1981,2003,0.5300780305167248,22,False,outside,outside,False,9,1,22,0,22,True
+IT,gva,industry,absolute,1,1960,2025,2007,2020,0.22570248809626925,13,False,euro,euro,False,1,1,5,0,5,True
+IT,gva,industry,relative,1,1960,2025,1995,2020,0.639757586964611,25,False,euro,single market,False,5,0,5,0,5,True
+JP,gva,industry,absolute,1,1994,2023,2008,2009,0.19848691399242746,1,False,outside,outside,False,1,1,8,1,14,True
+JP,gva,industry,relative,1,1994,2023,1996,2020,0.32020577940244976,24,False,outside,outside,False,3,0,3,0,3,True
+LT,gva,industry,absolute,1,1995,2025,2008,2009,0.15493196226780648,1,False,single market,single market,False,2,1,3,1,16,True
+LU,gva,industry,absolute,1,1985,2025,2007,2011,0.442112990590918,4,False,euro,euro,False,4,1,13,1,14,True
+LU,gva,industry,relative,1,1985,2025,2003,2011,0.4792652782551696,8,False,euro,euro,False,4,1,14,0,14,True
+LV,gva,industry,absolute,1,1990,2025,1991,1994,1.0214424863527538,3,False,pre-accession,pre-accession,True,12,1,31,0,31,False
+LV,gva,industry,relative,1,1990,2025,1991,2024,1.162493602478212,33,False,euro,pre-accession,False,1,0,1,0,1,True
+MT,gva,industry,absolute,1,2000,2025,2000,2005,0.2175558079006512,5,True,single market,pre-accession,False,3,1,3,1,20,False
+MT,gva,industry,absolute,1,2000,2025,2008,2012,0.15275494111952237,4,False,euro,euro,False,3,1,6,1,13,True
+MT,gva,industry,relative,1,2000,2025,2000,2006,0.4105799996087795,6,True,single market,pre-accession,False,17,1,19,0,19,False
+NL,gva,industry,relative,1,1969,2025,1974,2019,0.32358056097838084,45,False,euro,customs union,False,6,0,6,0,6,True
+NO,gva,industry,relative,1,1970,2025,1997,2019,0.48919620808214415,22,False,outside,outside,False,6,0,6,0,6,True
+PL,gva,industry,relative,1,1992,2025,1995,2002,0.2474583289351866,7,False,pre-accession,pre-accession,True,2,1,5,1,23,False
+PT,gva,industry,relative,1,1960,2025,1998,2021,0.3148192366321265,23,False,euro,single market,False,4,0,4,0,4,True
+RO,gva,industry,absolute,1,1995,2025,1996,1999,0.16743517348321646,3,False,pre-accession,pre-accession,True,2,1,3,1,26,False
+RO,gva,industry,absolute,1,1995,2025,2011,2013,0.2075169905611043,2,False,single market,single market,False,2,1,4,1,12,True
+RO,gva,industry,relative,1,1995,2025,1996,2000,0.2803503780044574,4,False,pre-accession,pre-accession,True,6,1,9,1,25,False
+SE,gva,industry,absolute,1,1970,2025,2007,2009,0.24266021699499873,2,False,single market,single market,False,1,1,12,1,16,True
+SE,gva,industry,relative,1,1970,2025,1970,1992,0.27535889351976106,22,True,pre-accession,pre-accession,False,3,1,8,1,33,False
+SI,gva,industry,absolute,1,1990,2025,1990,1993,0.28263887598538373,3,True,pre-accession,pre-accession,True,4,1,7,1,32,False
+SI,gva,industry,absolute,1,1990,2025,2008,2009,0.1532810537675604,1,False,euro,euro,False,2,1,7,1,16,True
+SI,gva,industry,relative,1,1990,2025,1990,1993,0.24525649604550082,3,True,pre-accession,pre-accession,True,11,1,25,1,32,False
+SK,gva,industry,absolute,1,1993,2025,2007,2009,0.2060502976614491,2,False,euro,single market,False,1,1,2,1,16,True
+SK,gva,industry,absolute,1,1993,2025,2019,2023,0.18432881806455903,4,False,euro,euro,False,2,0,2,0,2,True
+SK,gva,industry,relative,1,1993,2025,2019,2022,0.2116781338203979,3,False,euro,euro,False,3,0,3,0,3,True
+UK,gva,industry,absolute,1,1960,2025,2006,2012,0.16743205164847463,6,False,single market,single market,False,6,1,13,0,13,True
+US,gva,industry,relative,1,1960,2025,1966,1983,0.4191995431924651,17,False,outside,outside,False,29,1,42,0,42,True
+AT,gva,manufacturing,absolute,1,1960,2025,2008,2009,0.1534404028294465,1,False,euro,euro,False,1,1,3,1,16,True
+BE,gva,manufacturing,relative,1,1960,2025,1992,2021,0.49519594240556764,29,False,euro,customs union,False,4,0,4,0,4,True
+BG,gva,manufacturing,relative,1,1996,2025,1997,1999,0.21178658211997847,2,False,pre-accession,pre-accession,True,2,1,4,1,26,False
+BG,gva,manufacturing,relative,1,1996,2025,2012,2021,0.1762852355151081,9,False,single market,single market,False,1,1,1,1,4,True
+CA,gva,manufacturing,absolute,1,1997,2025,2005,2009,0.25014437936714007,4,False,outside,outside,False,8,1,16,0,16,True
+CH,gva,manufacturing,relative,1,1980,2025,1993,2004,0.243997983251393,11,False,outside,outside,False,7,1,17,1,21,True
+CY,gva,manufacturing,absolute,1,1995,2025,2008,2013,0.46191194671913277,5,False,euro,euro,False,4,1,5,1,12,True
+CY,gva,manufacturing,relative,1,1995,2025,1995,2014,0.8995505173588416,19,True,euro,pre-accession,False,6,1,11,0,11,False
+CZ,gva,manufacturing,absolute,1,1990,2025,1990,1992,0.3307671241230832,2,True,pre-accession,pre-accession,True,4,1,7,1,33,False
+CZ,gva,manufacturing,relative,1,1990,2025,1990,1992,0.2869835706784363,2,True,pre-accession,pre-accession,True,9,1,13,1,33,False
+DE,gva,manufacturing,absolute,1,1960,2025,2007,2009,0.2429514295466335,2,False,euro,euro,False,1,1,2,1,16,True
+DK,gva,manufacturing,relative,1,1960,2025,1962,2010,0.5365432168591697,48,False,single market,pre-accession,False,12,1,14,1,15,True
+EE,gva,manufacturing,absolute,1,1993,2025,2007,2009,0.30063373298728924,2,False,single market,single market,False,1,1,2,1,16,True
+EE,gva,manufacturing,absolute,1,1993,2025,2021,2024,0.2276352151499288,3,False,euro,euro,False,1,0,1,0,1,True
+EE,gva,manufacturing,relative,1,1993,2025,2006,2009,0.17225635448918353,3,False,single market,single market,False,1,1,2,1,16,True
+EE,gva,manufacturing,relative,1,1993,2025,2019,2024,0.28697886942714945,5,False,euro,euro,False,1,0,1,0,1,True
+EL,gva,manufacturing,absolute,1,1960,2025,2005,2016,0.5074562312025068,11,False,euro,euro,False,5,1,9,0,9,True
+EL,gva,manufacturing,relative,1,1960,2025,1979,2016,0.8932046271859169,37,False,euro,pre-accession,False,9,0,9,0,9,True
+ES,gva,manufacturing,absolute,1,1960,2025,2007,2020,0.24559908124038543,13,False,euro,euro,False,1,1,5,0,5,True
+ES,gva,manufacturing,relative,1,1960,2025,1974,1986,0.17094349264535857,12,False,customs union,pre-accession,False,4,1,6,1,39,True
+ES,gva,manufacturing,relative,1,1960,2025,1992,2020,0.5749896815322781,28,False,euro,customs union,False,5,0,5,0,5,True
+FI,gva,manufacturing,absolute,1,1960,2025,2007,2023,0.3562280886176792,16,False,euro,euro,False,2,0,2,0,2,True
+FI,gva,manufacturing,relative,1,1960,2025,2007,2023,0.5550394658201507,16,False,euro,euro,False,2,0,2,0,2,True
+FR,gva,manufacturing,relative,1,1960,2025,1971,2022,0.42833839812462937,51,False,euro,customs union,False,3,0,3,0,3,True
+HR,gva,manufacturing,absolute,1,1995,2025,2008,2013,0.2540493240030508,5,False,single market,pre-accession,False,3,1,9,1,12,True
+HR,gva,manufacturing,relative,1,1995,2025,1995,2020,0.251089333462279,25,True,single market,pre-accession,False,5,0,5,0,5,False
+HU,gva,manufacturing,absolute,1,1995,2025,2007,2009,0.22979493829582687,2,False,single market,single market,False,5,1,8,1,16,True
+IE,gva,manufacturing,absolute,1,1960,2025,2007,2013,0.15298545007657127,6,False,euro,euro,False,1,1,2,1,12,True
+IE,gva,manufacturing,absolute,1,1960,2025,2022,2024,0.23852608053739033,2,False,euro,euro,False,1,1,1,1,1,True
+IE,gva,manufacturing,relative,1,1960,2025,2002,2008,0.18857597032597795,6,False,euro,euro,False,6,1,7,1,17,True
+IE,gva,manufacturing,relative,1,1960,2025,2022,2024,0.2553378900348968,2,False,euro,euro,False,1,1,1,1,1,True
+IS,gva,manufacturing,absolute,1,1973,2025,1981,1993,0.35743512787991083,12,False,outside,outside,False,8,1,14,1,32,True
+IS,gva,manufacturing,relative,1,1973,2025,1981,2003,0.7361692744453343,22,False,outside,outside,False,22,0,22,0,22,True
+IT,gva,manufacturing,absolute,1,1960,2025,2007,2009,0.2433872668442847,2,False,euro,euro,False,8,1,16,0,16,True
+IT,gva,manufacturing,relative,1,1960,2025,1994,2020,0.6981881890317521,26,False,euro,single market,False,5,0,5,0,5,True
+JP,gva,manufacturing,absolute,1,1994,2023,2007,2009,0.19995018589001567,2,False,outside,outside,False,1,1,8,1,14,True
+JP,gva,manufacturing,relative,1,1994,2023,1996,2022,0.36994880866712876,26,False,outside,outside,False,1,0,1,0,1,True
+LT,gva,manufacturing,absolute,1,1995,2025,2008,2009,0.17474098026732454,1,False,single market,single market,False,2,1,2,1,16,True
+LU,gva,manufacturing,absolute,1,1985,2025,2007,2011,0.4793624924056551,4,False,euro,euro,False,4,1,12,1,14,True
+LU,gva,manufacturing,relative,1,1985,2025,2003,2011,0.5303154399699097,8,False,euro,euro,False,4,1,14,0,14,True
+LV,gva,manufacturing,absolute,1,1990,2025,1991,1995,1.1478851597929665,4,False,pre-accession,pre-accession,True,10,1,30,0,30,False
+LV,gva,manufacturing,relative,1,1990,2025,1991,2009,1.2575060550032033,18,False,single market,pre-accession,False,16,0,16,0,16,True
+MT,gva,manufacturing,absolute,1,2000,2025,2000,2006,0.2037831008422314,6,True,single market,pre-accession,False,2,1,2,1,19,False
+MT,gva,manufacturing,absolute,1,2000,2025,2008,2009,0.16835710872555618,1,False,euro,euro,False,1,1,9,1,16,True
+MT,gva,manufacturing,relative,1,2000,2025,2000,2006,0.42977031576934877,6,True,single market,pre-accession,False,6,1,19,0,19,False
+NL,gva,manufacturing,relative,1,1960,2025,1960,1981,0.1670983957212253,21,True,customs union,pre-accession,False,10,1,13,1,44,False
+NL,gva,manufacturing,relative,1,1960,2025,1994,2015,0.1557717111113024,21,False,euro,single market,False,6,1,10,0,10,True
+NO,gva,manufacturing,relative,1,1960,2025,1960,2023,0.9946729772388556,63,True,outside,outside,False,2,0,2,0,2,False
+NZ,gva,manufacturing,absolute,1,1960,2023,1984,1991,0.1778807541911931,7,False,outside,outside,False,2,1,4,1,32,True
+NZ,gva,manufacturing,absolute,1,1960,2023,2005,2009,0.15108753327605529,4,False,outside,outside,False,6,1,14,0,14,True
+PL,gva,manufacturing,relative,1,1992,2025,1995,2002,0.2457712691978502,7,False,pre-accession,pre-accession,True,2,1,4,1,23,False
+RO,gva,manufacturing,absolute,1,1995,2025,1996,1999,0.1619689112738465,3,False,pre-accession,pre-accession,True,2,1,2,1,26,False
+RO,gva,manufacturing,relative,1,1995,2025,1996,1999,0.28709927907968336,3,False,pre-accession,pre-accession,True,4,1,9,1,26,False
+RO,gva,manufacturing,relative,1,1995,2025,2011,2022,0.22648967499395756,11,False,single market,single market,False,3,0,3,0,3,True
+SE,gva,manufacturing,absolute,1,1960,2025,2007,2009,0.2890580072176716,2,False,single market,single market,False,1,1,12,1,16,True
+SE,gva,manufacturing,relative,1,1960,2025,1961,1992,0.3857512475813616,31,False,pre-accession,pre-accession,False,4,1,33,0,33,True
+SI,gva,manufacturing,absolute,1,1990,2025,1990,1993,0.29763015789163516,3,True,pre-accession,pre-accession,True,3,1,7,1,32,False
+SI,gva,manufacturing,absolute,1,1990,2025,2008,2009,0.17058735514035206,1,False,euro,euro,False,2,1,7,1,16,True
+SI,gva,manufacturing,relative,1,1990,2025,1990,1993,0.23924595645912405,3,True,pre-accession,pre-accession,True,10,1,24,1,32,False
+SK,gva,manufacturing,absolute,1,1993,2025,2008,2009,0.16584763519180834,1,False,euro,single market,False,1,1,1,1,16,True
+SK,gva,manufacturing,absolute,1,1993,2025,2019,2023,0.17665640398758775,4,False,euro,euro,False,2,0,2,0,2,True
+SK,gva,manufacturing,relative,1,1993,2025,2019,2023,0.23237538261855573,4,False,euro,euro,False,2,0,2,0,2,True
+UK,gva,manufacturing,absolute,1,1960,2025,1973,1982,0.1990069603640272,9,False,customs union,customs union,False,5,1,6,1,43,True
+US,gva,manufacturing,relative,1,1960,2025,1966,1975,0.3220308861346899,9,False,outside,outside,False,12,1,23,1,50,True
+BG,gva,services,absolute,0,1995,2025,1996,1999,0.40037854058857025,3,False,pre-accession,pre-accession,True,4,1,7,1,26,False
+BG,gva,services,relative,0,1995,2025,1996,1999,0.513468483469318,3,False,pre-accession,pre-accession,True,10,1,26,0,26,False
+CH,gva,services,relative,0,1980,2025,1981,2023,0.39801592410822106,42,False,outside,outside,False,2,0,2,0,2,True
+CZ,gva,services,relative,0,1993,2025,1993,2023,0.16830509260732285,30,True,single market,pre-accession,False,2,0,2,0,2,False
+DK,gva,services,relative,0,1966,2025,1969,2024,0.5461865736008251,55,False,single market,pre-accession,False,1,0,1,0,1,True
+EE,gva,services,absolute,0,1993,2025,2007,2009,0.15380321296419774,2,False,single market,single market,False,3,1,6,1,16,True
+EE,gva,services,relative,0,1993,2025,2007,2010,0.15924857874460763,3,False,single market,single market,False,7,1,15,0,15,True
+EL,gva,services,absolute,0,1988,2025,2008,2020,0.2975023449766292,12,False,euro,euro,False,3,1,5,0,5,True
+ES,gva,services,relative,0,1980,2025,2009,2021,0.15529595779485117,12,False,euro,euro,False,4,1,4,0,4,True
+HR,gva,services,relative,0,1995,2025,1997,2020,0.15553291120899138,23,False,single market,pre-accession,False,2,1,5,0,5,True
+HU,gva,services,relative,0,1991,2025,1991,2012,0.2155513336755206,21,True,single market,pre-accession,False,9,1,13,0,13,False
+LV,gva,services,absolute,0,1990,2025,1990,1992,0.28902693559274106,2,True,pre-accession,pre-accession,True,5,1,7,1,33,False
+LV,gva,services,absolute,0,1990,2025,2007,2010,0.1591680407306333,3,False,single market,single market,False,2,1,5,1,15,True
+LV,gva,services,relative,0,1990,2025,1990,1992,0.31965325054329186,2,True,pre-accession,pre-accession,True,9,1,12,1,33,False
+LV,gva,services,relative,0,1990,2025,2007,2010,0.17383380073273935,3,False,single market,single market,False,6,1,15,0,15,True
+PT,gva,services,relative,0,1960,2025,1993,2021,0.3164355306658506,28,False,euro,single market,False,4,0,4,0,4,True
+RO,gva,services,relative,0,1995,2025,1996,2001,0.18682479181648937,5,False,pre-accession,pre-accession,True,4,1,6,1,24,False
+SE,gva,services,relative,0,1970,2025,1970,2023,0.37033225514758694,53,True,single market,pre-accession,False,2,0,2,0,2,False
+SK,gva,services,relative,0,1993,2025,1997,2004,0.24706942850952807,7,False,single market,pre-accession,False,4,1,21,0,21,True
+UK,gva,services,relative,0,1960,2025,1960,2020,0.5207744072553764,60,True,single market,pre-accession,False,5,0,5,0,5,False
