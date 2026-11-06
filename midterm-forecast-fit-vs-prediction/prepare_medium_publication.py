@@ -1,10 +1,9 @@
-"""Prepare a self-contained, publication-oriented copy of the frozen study.
+"""Check public scientific assets and optionally prepare private Medium copy.
 
-The scientific source, its forecast lock, and numerical evidence are never
-rewritten. Medium does not natively typeset LaTeX, so the release copy replaces
-display equations with reproducible PNG images and short inline expressions
-with readable Unicode. Building the PNGs requires a local LaTeX installation;
-the CI check validates the committed release without installing TeX.
+The long-form manuscript lives in a separate private repository. This public
+research companion checks figure and equation PNGs without accessing that
+manuscript. Authors may explicitly supply a private source and output to use
+the historical Medium renderer; it never writes a public editorial notice.
 """
 
 from __future__ import annotations
@@ -19,9 +18,7 @@ from typing import Final
 
 
 ROOT: Final[Path] = Path(__file__).resolve().parent
-SOURCE: Final[Path] = ROOT / "article.md"
 PACKAGE: Final[Path] = ROOT / "publication"
-OUTPUT: Final[Path] = PACKAGE / "medium_ready.md"
 EQUATIONS: Final[Path] = PACKAGE / "equations"
 REPOSITORY: Final[str] = "DiogoRibeiro7/Medium-Blog"
 ARTICLE_DIRECTORY: Final[str] = "midterm-forecast-fit-vs-prediction"
@@ -109,6 +106,26 @@ EQUATION_CAPTIONS: Final[tuple[str, ...]] = (
 )
 
 
+# The private archive pins former relative research links to their public SHA.
+# Recover the original relative references before applying the frozen renderer.
+PINNED_FIGURE: Final[re.Pattern[str]] = re.compile(
+    rf"(?<=\]\()https://raw\.githubusercontent\.com/{re.escape(REPOSITORY)}/"
+    rf"[0-9a-f]{{40}}/{re.escape(ARTICLE_DIRECTORY)}/(figures/[^)\s]+\.png)(?=\))"
+)
+PINNED_COMPANION: Final[re.Pattern[str]] = re.compile(
+    rf"(?<=\]\()https://github\.com/{re.escape(REPOSITORY)}/(?:blob|tree)/"
+    rf"[0-9a-f]{{40}}/{re.escape(ARTICLE_DIRECTORY)}/([^)\s]+)(?=\))"
+)
+
+
+def normalize_public_companion_links(source: str) -> str:
+    """Resolve pinned public research URLs in private articles to local paths."""
+    if not isinstance(source, str):
+        raise TypeError("source must be a string")
+    relative_figures: str = PINNED_FIGURE.sub(lambda match: match.group(1), source)
+    return PINNED_COMPANION.sub(lambda match: match.group(1), relative_figures)
+
+
 def extract_equations(source: str) -> tuple[str, ...]:
     """Return display-math bodies, verifying the editorial equation count."""
     if not isinstance(source, str):
@@ -123,6 +140,7 @@ def build_release_markdown(source: str) -> str:
     """Transform the manuscript without modifying its frozen scientific source."""
     if not isinstance(source, str):
         raise TypeError("source must be a string")
+    source = normalize_public_companion_links(source)
     if not source.startswith("# The Forecast Is Not the Fit:"):
         raise ValueError("Unexpected article title")
     if "final pre-election manuscript" not in source:
@@ -228,6 +246,7 @@ def render_equation_png(number: int, latex: str, destination: Path) -> None:
 
 def check_release(source: str, rendered: str) -> tuple[int, int, int]:
     """Validate the publication text, bibliography, image assets and fidelity."""
+    source = normalize_public_companion_links(source)
     expected = build_release_markdown(source)
     if rendered != expected:
         raise ValueError("Publication Markdown is stale relative to the final manuscript")
@@ -252,25 +271,69 @@ def check_release(source: str, rendered: str) -> tuple[int, int, int]:
     return word_count, len(figures), len(EQUATION_CAPTIONS)
 
 
+def check_scientific_assets(root: Path = ROOT) -> tuple[int, int]:
+    """Check the research figures and rendered equations without editorial text."""
+    from figures import FIGURE_FILES
+
+    figure_names: tuple[str, ...] = (*FIGURE_FILES, *TABLE_FIGURES)
+    if len(FIGURE_FILES) != 13 or len(set(figure_names)) != 17:
+        raise ValueError("Expected thirteen unique scientific and four table figures")
+
+    equation_names: tuple[str, ...] = tuple(
+        f"equation_{index:02d}.png" for index in range(1, len(EQUATION_CAPTIONS) + 1)
+    )
+    assets: tuple[Path, ...] = (
+        *(root / "figures" / name for name in figure_names),
+        *(root / "publication" / "equations" / name for name in equation_names),
+    )
+    for asset in assets:
+        if not asset.is_file() or asset.stat().st_size < 500:
+            raise ValueError(f"Missing or undersized scientific PNG: {asset}")
+        with asset.open("rb") as image:
+            if image.read(8) != b"\x89PNG\r\n\x1a\n":
+                raise ValueError(f"Invalid scientific PNG header: {asset}")
+    return len(figure_names), len(equation_names)
+
+
 def main() -> int:
-    """Build the publication copy, or verify its committed form in CI."""
+    """Validate public assets, or render/check explicitly provided private copy."""
     parser = argparse.ArgumentParser(description=__doc__)
     mode = parser.add_mutually_exclusive_group(required=True)
-    mode.add_argument("--build", action="store_true", help="Render equations and write the final Medium copy")
-    mode.add_argument("--check", action="store_true", help="Check committed copy and images without TeX")
+    mode.add_argument("--build", action="store_true", help="Generate an explicitly private Medium copy")
+    mode.add_argument("--check", action="store_true", help="Compare explicitly private publication copy")
+    mode.add_argument(
+        "--check-scientific",
+        action="store_true",
+        help="Check public figures and equation PNGs without private editorial content",
+    )
+    parser.add_argument("--source", type=Path, help="Private source manuscript (editorial modes only)")
+    parser.add_argument("--output", type=Path, help="Private Medium-ready file (editorial modes only)")
     args = parser.parse_args()
 
-    manuscript = SOURCE.read_text(encoding="utf-8")
-    publication = build_release_markdown(manuscript)
+    if args.check_scientific:
+        figures, equations = check_scientific_assets()
+        print(f"Public scientific assets verified: {figures} figures, {equations} equations")
+        return 0
+
+    if args.source is None or args.output is None:
+        parser.error("--build and --check require explicit --source and --output private paths")
+    for location in (args.source, args.output):
+        if location.resolve().is_relative_to(ROOT.resolve()):
+            parser.error("Editorial input and output paths must be outside this public research repository")
+
+    manuscript: str = args.source.read_text(encoding="utf-8")
+    publication: str = build_release_markdown(manuscript)
     if args.build:
         for index, equation in enumerate(extract_equations(manuscript), start=1):
             render_equation_png(index, equation, EQUATIONS / f"equation_{index:02d}.png")
-        PACKAGE.mkdir(parents=True, exist_ok=True)
-        OUTPUT.write_text(publication, encoding="utf-8")
-    if not OUTPUT.is_file():
-        raise ValueError(f"Missing publication manuscript: {OUTPUT}")
-    words, figures, equations = check_release(manuscript, OUTPUT.read_text(encoding="utf-8"))
-    print(f"Medium copy verified: {words} words, {figures} figures, {equations} rendered equations, 19 references")
+        args.output.parent.mkdir(parents=True, exist_ok=True)
+        args.output.write_text(publication, encoding="utf-8")
+    if not args.output.is_file():
+        raise ValueError(f"Missing private publication manuscript: {args.output}")
+    words, figures, equations = check_release(
+        manuscript, args.output.read_text(encoding="utf-8")
+    )
+    print(f"Private Medium copy verified: {words} words, {figures} figures, {equations} equations")
     return 0
 
 
