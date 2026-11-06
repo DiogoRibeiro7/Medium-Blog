@@ -1,5 +1,22 @@
-# fetch.py run 2026-11-06T11:27:03+00:00
+# fetch.py run 2026-11-06T12:18:25+00:00
 employment_a64	200	[["unit", "THS_PER"], ["na_item", "EMP_DC"]]	87dada6e6f18fd4432520af7cd4a0d48dde043ab457dd5632e1849a3aaf2d29b	https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/nama_10_a64_e?lang=en&format=JSON&unit=THS_PER&na_item=EMP_DC&geo=BE&geo=BG&geo=CZ&geo=DK&geo=DE&geo=EE&geo=IE&geo=EL&geo=ES&geo=FR&geo=HR&geo=IT&geo=CY&geo=LV&geo=LT&geo=LU&geo=HU&geo=MT&geo=NL&geo=AT&geo=PL&geo=PT&geo=RO&geo=SI&geo=SK&geo=FI&geo=SE&geo=EU27_2020
 gva_a64_volume	200	[["unit", "CLV20_MEUR"], ["na_item", "B1G"]]	280c7ee340e4e3ffeb94b04d61fb0c9ca0dcecf9afcdcab9141b2c83cafb758a	https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/nama_10_a64?lang=en&format=JSON&unit=CLV20_MEUR&na_item=B1G&geo=BE&geo=BG&geo=CZ&geo=DK&geo=DE&geo=EE&geo=IE&geo=EL&geo=ES&geo=FR&geo=HR&geo=IT&geo=CY&geo=LV&geo=LT&geo=LU&geo=HU&geo=MT&geo=NL&geo=AT&geo=PL&geo=PT&geo=RO&geo=SI&geo=SK&geo=FI&geo=SE&geo=EU27_2020
 gdp_volume	200	[["unit", "CLV20_MEUR"], ["na_item", "B1GQ"]]	292280a92a8919b2e124eb442123f4d2731681d194569f4258b61a1ef857754c	https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/nama_10_gdp?lang=en&format=JSON&unit=CLV20_MEUR&na_item=B1GQ&geo=BE&geo=BG&geo=CZ&geo=DK&geo=DE&geo=EE&geo=IE&geo=EL&geo=ES&geo=FR&geo=HR&geo=IT&geo=CY&geo=LV&geo=LT&geo=LU&geo=HU&geo=MT&geo=NL&geo=AT&geo=PL&geo=PT&geo=RO&geo=SI&geo=SK&geo=FI&geo=SE&geo=EU27_2020
 house_prices	200	[["purchase", "TOTAL"], ["unit", "I15_A_AVG"]]	453191447da207c2a7111e654a62e80fe6fde577359d51b774b8fd834cae3eac	https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/prc_hpi_a?lang=en&format=JSON&purchase=TOTAL&unit=I15_A_AVG&geo=BE&geo=BG&geo=CZ&geo=DK&geo=DE&geo=EE&geo=IE&geo=EL&geo=ES&geo=FR&geo=HR&geo=IT&geo=CY&geo=LV&geo=LT&geo=LU&geo=HU&geo=MT&geo=NL&geo=AT&geo=PL&geo=PT&geo=RO&geo=SI&geo=SK&geo=FI&geo=SE&geo=EU27_2020
+# fetch_long.py run 2026-11-06T12:18:32+00:00
+datasets	offset 0	500	f1a7e782d2c4a88990aac60b94d0d41260038ed6b49bbb1871e8d4409f277202	https://api.db.nomics.world/v22/datasets/AMECO?limit=500&offset=0
+datasets found 500, kept 13: NET1, NET2, NET4, NET5, NETD, NETM, NETN, OVG0, OVG1, OVG2, OVG4, OVG5, OVGM
+series	NET1	offset 0	49	06630e74d1bcc5ad885d742c8cf856268456f957cd59b8d30871e04188100520	https://api.db.nomics.world/v22/series/AMECO/NET1?observations=1&limit=1000&offset=0
+series	NET2	offset 0	49	20cd05c20b56d8d736eb7c58278e649cba6724eac740444c99f7c8a2e38019cb	https://api.db.nomics.world/v22/series/AMECO/NET2?observations=1&limit=1000&offset=0
+series	NET4	offset 0	47	6731d6d35224e6febee6665c916c6425d4ad5549226d14a0a37be008554c6b78	https://api.db.nomics.world/v22/series/AMECO/NET4?observations=1&limit=1000&offset=0
+series	NET5	offset 0	49	ceccc8a5652194009fce219125197a4573b641d7a71e79c76efa73374e837517	https://api.db.nomics.world/v22/series/AMECO/NET5?observations=1&limit=1000&offset=0
+series	NETD	offset 0	52	617213c43ac3ff83e4d2e13eaeeb54e1fd6f1eada7631796eb846cce9b1360db	https://api.db.nomics.world/v22/series/AMECO/NETD?observations=1&limit=1000&offset=0
+series	NETM	offset 0	47	9bbaec446ca4b544133f39c06952d44b44306871e6775393f2bf41c084571c1e	https://api.db.nomics.world/v22/series/AMECO/NETM?observations=1&limit=1000&offset=0
+series	NETN	offset 0	50	e18ee24e92bf832efdaa752c3bffba6e76db1cecf0f9e30bc8796650d6cc869f	https://api.db.nomics.world/v22/series/AMECO/NETN?observations=1&limit=1000&offset=0
+series	OVG0	offset 0	50	1f11d86a1cea4783ed3580934e0230cf4860988d0821a43c245b2dc7aabaa0b2	https://api.db.nomics.world/v22/series/AMECO/OVG0?observations=1&limit=1000&offset=0
+series	OVG1	offset 0	50	9cbb0d3a1b52ae67319d6022d54e78bc4df2b513cc61d438360aa9f788728072	https://api.db.nomics.world/v22/series/AMECO/OVG1?observations=1&limit=1000&offset=0
+series	OVG2	offset 0	50	05d4bdcca58c7cb7dec993bed0a7c83ea1d674dd1b91fe331f490c653c140341	https://api.db.nomics.world/v22/series/AMECO/OVG2?observations=1&limit=1000&offset=0
+series	OVG4	offset 0	50	9df5014bea415e4ad15987f1902dd0ff4f7e26f8a3e8237df8a6ded77cbedd29	https://api.db.nomics.world/v22/series/AMECO/OVG4?observations=1&limit=1000&offset=0
+series	OVG5	offset 0	50	b8a4a8d12866aae5b152dfbb382ab941da2e9f61a522500cda7e696bd545ef91	https://api.db.nomics.world/v22/series/AMECO/OVG5?observations=1&limit=1000&offset=0
+series	OVGM	offset 0	52	6f6768bdf5ee211882769e615de3b9687b5b663cfa127bb77880e9df271c4e2c	https://api.db.nomics.world/v22/series/AMECO/OVGM?observations=1&limit=1000&offset=0
+rows 27409
