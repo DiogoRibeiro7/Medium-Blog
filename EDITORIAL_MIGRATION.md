@@ -118,7 +118,6 @@ The private import must be merged and verified before this public cleanup is mer
 - `eu-wheat-weather/publication/maize/article.md`
 - `iberian-electricity-lp/publication/article.md`
 - `midterm-forecast-fit-vs-prediction/article.md`
-- `restaurant-portion-economics/publication/medium/article.md`
 - `routing-on-real-roads/publication/article.md`
 
 ## Historical links and privacy
