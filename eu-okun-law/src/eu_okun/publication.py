@@ -1096,12 +1096,25 @@ def scientific_outputs(root: Path) -> dict[str, str]:
 
 def build_scientific(root: Path, figures_too: bool = True) -> dict[str, str]:
     """Regenerate public scientific artifacts, preserving private editorial content."""
-    return build(root, figures_too=figures_too)
+    outputs = scientific_outputs(root)
+    for relative_path, content in outputs.items():
+        target = root / relative_path
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_text(content, encoding="utf-8", newline="\n")
+    if figures_too:
+        figures(root, root / "publication" / "manuscript" / "figures",
+                root / "publication" / "medium" / "figures")
+    return outputs
 
 
 def check_scientific(root: Path) -> list[str]:
     """Validate scientific artifacts without requiring Medium article files."""
-    return check(root)
+    return [
+        relative_path
+        for relative_path, content in scientific_outputs(root).items()
+        if not (root / relative_path).is_file()
+        or (root / relative_path).read_text(encoding="utf-8") != content
+    ]
 
 
 def checks_as_rows(checks: Sequence[Check]) -> list[dict[str, Any]]:
