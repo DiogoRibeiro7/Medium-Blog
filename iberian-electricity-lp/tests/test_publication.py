@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import re
 from pathlib import Path
 
 import numpy as np
@@ -13,10 +14,6 @@ from iberian_lp.publication import check_scientific, daily, render, table
 ROOT = Path(__file__).resolve().parents[1]
 PUB = ROOT / "publication"
 ESTIMATES = ROOT / "results" / "estimates.json"
-# Not results: the bounds in the programme (0 ≤ s), the 95% level and citations' years.
-DESIGN_CONSTANTS = {"0", "95", "2005", "2008", "2014"}
-NUMBER = re.compile(r"(?<![\w.])\d+(?:[.,:]\d+)?")
-
 pytestmark = pytest.mark.skipif(not ESTIMATES.exists(), reason="No frozen results.")
 
 
