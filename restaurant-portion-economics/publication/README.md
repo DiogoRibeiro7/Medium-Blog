@@ -1,66 +1,61 @@
-# Publication: the economics of the uneaten meal
+# Publication companion: the economics of the uneaten meal
 
-A long-form Medium article drafted from the restaurant food-waste,
-commercial-data-audit, and restaurant-contribution-margin research.
+The article manuscript and its seven editorial sections are maintained in
+[the private research-articles-medium repository](https://github.com/DiogoRibeiro7/research-articles-medium/tree/main/restaurant-portion-economics/publication).
+Access requires permission from the repository owner.
 
-## Files
+This public project retains the reproducible scientific analysis and publication
+assets, without copying the private editorial text back into the public repository.
 
-- \`sections/*.md\`: maintained narrative source sections.
-- \`medium/article.md\`: assembled, copy-ready Medium article (not published).
-- \`medium/figures/*.png\`: the ten article figures, drawn in base R by
-  \`R/figures.R\` through \`scripts/make-figures.R\`. Upload them to Medium
-  in the order they appear in \`medium/article.md\`.
-- \`tests/test-article.R\`: verifies the assembled text, minimum 5,000-word
-  length, the most important hypothetical financial calculations, and that
-  every figure the article references exists.
+## Public files
 
-## Run
+- `medium/article.md`: historical-path notice, **not** the article text.
+- `medium/figures/*.png`: ten figures generated in base R by
+  `R/figures.R` through `scripts/make-figures.R`.
+- `tests/test-article.R`: independent regression checks for economic
+  calculations and presence and PNG signatures of ten research figures.
+- `build-article.R`: optional assembler that reads and writes only inside
+  an explicitly supplied private repository checkout.
 
-From \`restaurant-portion-economics/\`:
+## Run public tests
 
-\`\`\`sh
+From `restaurant-portion-economics/`:
+
+```sh
 Rscript publication/tests/test-article.R
 Rscript tests/test-economics.R
 Rscript tests/test-profit-bounds.R
 Rscript tests/test-menu-designs.R
-\`\`\`
+```
 
-To reassemble locally if a section is edited, use
-\`Rscript publication/build-article.R\`, then commit the edited sections
-and regenerated \`medium/article.md\` in the same PR. CI will reject drift.
+To assemble the editorial manuscript privately, after checking out the
+private repository with appropriate access:
 
-Publication is manual. No workflow posts text to Medium.
+```sh
+Rscript publication/build-article.R /path/to/research-articles-medium
+```
 
-## Figures
+This command reads the seven private `publication/sections/*.md` files and
+writes the private `publication/medium/article.md`. It does **not** modify
+the public compatibility notice or publish to Medium.
+
+## Figures and evidence
 
 Six figures (waste stages, contribution, tornado, feasibility map,
-break-even elasticity, menu designs) need no external data. The four
-empirical figures (URBAN-WASTE selection and ratio fragility, Finnish daily
-series and sensitivity) need the Zenodo files, so the
-\`restaurant-portion-empirical.yml\` workflow downloads and checksum-verifies
-the sources, runs the analyses, redraws all ten figures and commits any
-changed PNG back to the pull-request branch. Locally, after
-\`scripts/download-data.R\` and the analysis scripts:
+break-even elasticity, menu designs) need no external data. Four empirical
+figures (URBAN-WASTE selection and ratio fragility, Finnish daily
+series and sensitivity) need Zenodo files. The
+`restaurant-portion-empirical.yml` workflow downloads and checksums the
+source data, runs the analyses and regenerates the research PNGs.
 
-\`\`\`sh
+Locally, after downloading original sources and running the analyses:
+
+```sh
 Rscript scripts/make-figures.R
-\`\`\`
+```
 
-## Evidence labels
-
-- Actual measurements: Finnish school waste; URBAN-WASTE commercial CSV
-  subset eligibility, sample composition and sensitivity.
-- Real published industry benchmark: US respondent medians of food and
-  non-alcoholic beverage spending as a share of sales.
-- Hypothetical parameters: restaurant meal price, per-meal costs, avoidable
-  cost fractions, customer losses, discounts, refill uptake, and
-  implementation expense.
-- Unidentified effects: response of demand to smaller same-price portions,
-  corresponding real restaurant profit effects, and food composition/calories.
-
-The commercial source's waste-weight units and source-to-portion
-measurement-window matching remain unresolved. No physical unit or
-financial benefit is inferred from its provisional ratios.
-
-The article is research commentary and a conditional business analysis,
-not a claim that restaurants should reduce portions unconditionally.
+Measured data, published cost benchmarks and hypothetical financial
+parameters remain explicitly distinguished in the public computations.
+The source's commercial waste-weight units and measurement-window matching
+remain unresolved. No physical units or financial effects are inferred
+from provisional ratios.
