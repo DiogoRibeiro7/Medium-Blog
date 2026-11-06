@@ -58,3 +58,4 @@ billionaires-poverty-audit/evidence/**/*.csv -filter -diff -merge text
 billionaires-poverty-audit/references/**/*.csv -filter -diff -merge text
 market-capacity-lock-in/**/*.csv -filter -diff -merge text
 eu-integration-correlated-shocks/**/*.csv -filter -diff -merge text
+recovery-after-busts/**/*.csv -filter -diff -merge text
