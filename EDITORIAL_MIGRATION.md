@@ -7,8 +7,8 @@ Medium manuscripts are maintained in the private [research-articles-medium](http
 - Source snapshot imported: [`6e6f84c85931`](https://github.com/DiogoRibeiro7/Medium-Blog/commit/6e6f84c8593198fbd70811fd8d1915def98373a8).
 - Later synchronized amendment: causal inference part 16 from [`d603e96c1986`](https://github.com/DiogoRibeiro7/Medium-Blog/commit/d603e96c19869780e04f38df294808368453d5f2).
 - Private import: [PR #2](https://github.com/DiogoRibeiro7/research-articles-medium/pull/2), 90 manuscripts and editorial indexes.
-- Public migration stages 1–2: replace 70 `article.md` bodies with historical-path notices.
-- Deferred: 20 manuscripts whose text is still read by tests, publication generators, or source-level audits.
+- Public migration stages 1–2: replace 82 `article.md` bodies with historical-path notices.
+- Deferred: 8 manuscripts whose text is still read by tests, publication generators, or source-level audits.
 
 ## Why stages are required
 
@@ -69,6 +69,21 @@ The private import must be merged and verified before this public cleanup is mer
 - `tax-cuts-rich-historical-cycles/article.md`
 - `tenure-by-age-at-hire/article.md`
 
+## Reconciled compatibility notices (previously misclassified)
+
+- `a-dataset-is-not-a-population/article.md`
+- `a-label-is-not-ground-truth/article.md`
+- `civil-rights-great-society/article.md`
+- `financialization-before-2008/article.md`
+- `great-recession-unequal-recovery/article.md`
+- `new-deal-social-contract/article.md`
+- `outlier-is-not-an-error/article.md`
+- `pandemic-inflation-unequal-recovery/article.md`
+- `progressive-era-reform-gap/article.md`
+- `spurious-regression-cointegration/article.md`
+- `stagflation-market-turn/article.md`
+- `the-test-set-is-not-an-oracle/article.md`
+
 ## Stage 2 — causal inference series
 
 - `causal_inference_statistics/part1/article.md`
@@ -94,27 +109,15 @@ The private import must be merged and verified before this public cleanup is mer
 
 ## Deferred manuscript paths
 
-- `a-dataset-is-not-a-population/article.md`
-- `a-label-is-not-ground-truth/article.md`
-- `civil-rights-great-society/article.md`
 - `eu-okun-law/publication/medium/article.md`
 - `eu-wheat-weather/publication/article.md`
 - `eu-wheat-weather/publication/maize/article.md`
-- `financialization-before-2008/article.md`
-- `great-recession-unequal-recovery/article.md`
 - `iberian-electricity-lp/publication/article.md`
 - `midterm-forecast-fit-vs-prediction/article.md`
-- `new-deal-social-contract/article.md`
-- `outlier-is-not-an-error/article.md`
-- `pandemic-inflation-unequal-recovery/article.md`
-- `progressive-era-reform-gap/article.md`
 - `restaurant-portion-economics/publication/medium/article.md`
 - `routing-on-real-roads/publication/article.md`
-- `spurious-regression-cointegration/article.md`
-- `stagflation-market-turn/article.md`
-- `the-test-set-is-not-an-oracle/article.md`
 - `urban-affordability-cascade/article.md`
 
 ## Historical links and privacy
 
-The compatibility notices preserve public file paths, while the article prose is absent from the current branch for stage-1 files. Earlier public commits, forks, cached pages and prior pull-request diffs can still contain the manuscripts. This migration is an ownership split, not a history purge.
+The compatibility notices preserve public file paths, while the article prose is absent from the current branch for files migrated to notices. Earlier public commits, forks, cached pages and prior pull-request diffs can still contain the manuscripts. This migration is an ownership split, not a history purge.
