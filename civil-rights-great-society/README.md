@@ -1,6 +1,6 @@
-# The Right to Vote Was Only the Beginning
+# Enforcing Rights and Measuring Poverty
 
-Public reproducibility companion for *The Right to Vote Was Only the Beginning: Civil Rights, the Great Society, and the Limits of Reform*. The full editorial manuscript is maintained in the private `DiogoRibeiro7/research-articles-medium` repository; [article.md](article.md) is now a short migration notice. The study follows earlier articles on the Gilded Age, Progressive Era, New Deal, and political civility.
+Public reproducibility companion for **[Enforcing Rights and Measuring Poverty: Civil Rights and the Great Society, 1963–1975](https://github.com/DiogoRibeiro7/research-articles-medium/blob/main/us-political-economy/04-civil-rights-great-society.md)**. The full editorial manuscript is maintained in the private `DiogoRibeiro7/research-articles-medium` repository; [article.md](article.md) is now a short migration notice. The study follows earlier articles on the Gilded Age, Progressive Era, New Deal, and political civility.
 
 The manuscript treats civil rights and the Great Society as an interacting set of institutions—not a single intervention or a simple before-and-after experiment. It distinguishes **legal eligibility**, **enforcement and realized access**, **public-service or insurance coverage**, and **changes in observed outcomes**. No chart identifies the causal effect of a law from temporal adjacency alone.
 

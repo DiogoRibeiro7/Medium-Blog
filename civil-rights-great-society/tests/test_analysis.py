@@ -132,6 +132,7 @@ class PublicationContractTests(unittest.TestCase):
         notice = (root / "article.md").read_text(encoding="utf-8")
         self.assertIn("research-articles-medium", notice)
         self.assertIn("private", notice.lower())
+        self.assertIn("us-political-economy/04-civil-rights-great-society.md", notice)
         self.assertLess(len(notice.split()), 150)
 
     def test_checked_in_figures_have_valid_png_headers(self) -> None:
