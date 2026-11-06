@@ -7,8 +7,9 @@ much would 1,000 MW more supply at zero price lower it? A registered study of on
 
 **Status: plan registered ([METHODS.md](METHODS.md)); data built
 ([docs/DATA.md](docs/DATA.md)); programmes solved and estimates reported against the plan
-([docs/RESULTS.md](docs/RESULTS.md)); the article generated from them
-([publication/article.md](publication/article.md)); a critical review
+([docs/RESULTS.md](docs/RESULTS.md)); reproducible figures and values generated
+([publication/values.json](publication/values.json)); the editorial manuscript archived
+privately ([public notice](publication/article.md)); a critical review
 ([docs/REVIEW.md](docs/REVIEW.md)), and the corrections it led to, logged in the plan's
 change log.**
 
@@ -19,11 +20,15 @@ pip install -e ".[dev]"
 python -m pytest -q          # offline, from the committed tables and results
 iberian-lp programmes        # about 17 minutes; writes results/programmes.csv
 iberian-lp estimates         # writes results/estimates.json and docs/RESULTS.md
-iberian-lp publication       # writes publication/: the article, its values and figures
+iberian-lp publication       # regenerates publication/values.json and figures/
 ```
 
-The article is filled from `publication/article.template.md` by code; the tests check that
-it quotes no number by hand and that each claim in its words holds in the results.
+The complete Medium manuscript and its parameterized authoring template are maintained in
+the private [research-articles-medium](https://github.com/DiogoRibeiro7/research-articles-medium)
+repository. The [public notice](publication/article.md) preserves historical links.
+The public publication command regenerates only numerical values and research figures; it
+never rewrites the private editorial text. Tests still check the underlying numerical claims,
+source provenance, generated values and figure reproducibility.
 
 Each programme's dual interval is computed exactly from the integer steps and checked
 against HiGHS. The tests re-solve every programme exactly from the committed steps, and
