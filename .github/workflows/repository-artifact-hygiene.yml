@@ -27,3 +27,6 @@ jobs:
 
       - name: Check tracked files for disposable artifacts
         run: python scripts/check_tracked_artifacts.py
+
+      - name: Ensure editorial manuscripts remain private
+        run: python scripts/check_public_editorial.py
