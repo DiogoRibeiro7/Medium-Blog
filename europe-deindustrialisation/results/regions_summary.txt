@@ -1,0 +1,17 @@
+NUTS 2 regions with manufacturing employment in 2000 and 2008: 232 in 26 member states
+Exposure (manufacturing jobs 2000-2008, % of 2000 employment): median -0.32, 10th percentile -2.85, 90th percentile +2.00; regions that lost manufacturing jobs: 0.59
+Manufacturing share of employment, median region: 2000 17.5%, 2023 12.9%
+
+Within-country regressions on the 2000-2008 exposure (per percentage point of 2000 employment lost; negative exposure = loss)
+controls: manufacturing share 2000, GDP per head relative to the national average 2000; country fixed effects; SE clustered by country
+  manufacturing jobs 2008-2023 (log change): coefficient +0.0142 (SE 0.0107, t +1.3); n=227, countries 21
+  total jobs 2008-2023 (log change): coefficient +0.0099 (SE 0.0061, t +1.6); n=227, countries 21
+  GDP per head relative to the national average 2008-2023 (log change): coefficient +0.0054 (SE 0.0029, t +1.8); n=219, countries 20
+  population 2008-2023 (log change): coefficient +0.0094 (SE 0.0041, t +2.3); n=203, countries 19
+  employment rate 20-64, 2008-2023 (points): coefficient +0.1453 (SE 0.1143, t +1.3); n=205, countries 17
+  unemployment rate 2008-2023 (points): coefficient -0.1299 (SE 0.1253, t -1.0); n=201, countries 17
+
+Within-country terciles of exposure: mean outcome relative to the country mean
+  largest loss: exposure -1.79 pp, manufacturing share 2000 18.3%; manufacturing jobs 2008-23 -0.021, total jobs -0.005, relative GDP per head -0.024, population -0.005, employment rate -0.39, unemployment +0.20
+  middle: exposure -0.41 pp, manufacturing share 2000 17.0%; manufacturing jobs 2008-23 -0.020, total jobs -0.007, relative GDP per head +0.006, population +0.003, employment rate -0.39, unemployment +0.61
+  smallest loss: exposure +1.09 pp, manufacturing share 2000 17.2%; manufacturing jobs 2008-23 +0.040, total jobs +0.011, relative GDP per head +0.020, population +0.002, employment rate +0.76, unemployment -0.77

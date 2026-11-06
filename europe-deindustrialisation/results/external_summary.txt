@@ -1,0 +1,60 @@
+Change in the real manufacturing share, 2000-2024 (log points), against external balances
+ all member states
+  mean goods balance 2000-2024 (% GDP): n=26, Pearson +0.47 (p=0.015), Spearman +0.37 (p=0.064), slope +1.45 points per 0.10 log points of real share
+  change in goods balance 2000-2024 (points): n=26, Pearson +0.24 (p=0.232), Spearman +0.24 (p=0.231), slope +0.39 points per 0.10 log points of real share
+  mean current account 2000-2024 (% GDP): n=26, Pearson +0.09 (p=0.673), Spearman +0.06 (p=0.779), slope +0.11 points per 0.10 log points of real share
+  net international investment position 2024 (% GDP): n=26, Pearson -0.15 (p=0.461), Spearman -0.09 (p=0.662), slope -2.61 points per 0.10 log points of real share
+ without IE, LU, MT, CY
+  mean goods balance 2000-2024 (% GDP): n=22, Pearson +0.25 (p=0.253), Spearman +0.15 (p=0.510), slope +0.69 points per 0.10 log points of real share
+  change in goods balance 2000-2024 (points): n=22, Pearson +0.51 (p=0.016), Spearman +0.45 (p=0.035), slope +0.99 points per 0.10 log points of real share
+  mean current account 2000-2024 (% GDP): n=22, Pearson +0.03 (p=0.890), Spearman +0.03 (p=0.879), slope +0.05 points per 0.10 log points of real share
+  net international investment position 2024 (% GDP): n=22, Pearson +0.00 (p=0.996), Spearman +0.04 (p=0.871), slope +0.02 points per 0.10 log points of real share
+
+By member state: real-share change 2000-2024, mean goods balance and current account 2000-2024, NIIP 2024 (% GDP)
+  MT: real share -0.91; goods balance -16.0; current account +0.1; NIIP 2024 +84
+  CY: real share -0.55; goods balance -22.1; current account -7.7; NIIP 2024 -81
+  ES: real share -0.34; goods balance -4.0; current account -1.7; NIIP 2024 -40
+  HR: real share -0.31; goods balance -18.6; current account -2.7; NIIP 2024 -36
+  LV: real share -0.26; goods balance -14.0; current account -4.9; NIIP 2024 -20
+  BE: real share -0.26; goods balance +1.1; current account +1.9; NIIP 2024 +56
+  LU: real share -0.24; goods balance -0.8; current account +3.8; NIIP 2024 +50
+  FI: real share -0.19; goods balance +4.2; current account +1.5; NIIP 2024 +24
+  SE: real share -0.18; goods balance +4.9; current account +4.8; NIIP 2024 +67
+  FR: real share -0.15; goods balance -1.6; current account +0.0; NIIP 2024 -24
+  HU: real share -0.12; goods balance -1.6; current account -3.1; NIIP 2024 -32
+  IT: real share -0.12; goods balance +1.2; current account +0.1; NIIP 2024 +14
+  PT: real share -0.11; goods balance -9.2; current account -4.4; NIIP 2024 -58
+  RO: real share -0.10; goods balance -9.7; current account -4.3; NIIP 2024 -41
+  EE: real share -0.03; goods balance -8.8; current account -3.8; NIIP 2024 -8
+  DE: real share +0.02; goods balance +6.0; current account +5.5; NIIP 2024 +79
+  NL: real share +0.04; goods balance +8.0; current account +6.3; NIIP 2024 +65
+  EL: real share +0.05; goods balance -14.2; current account -7.7; NIIP 2024 -138
+  AT: real share +0.12; goods balance +0.1; current account +1.9; NIIP 2024 +26
+  SI: real share +0.14; goods balance -0.6; current account +1.2; NIIP 2024 +10
+  IE: real share +0.22; goods balance +27.1; current account +0.0; NIIP 2024 -86
+  LT: real share +0.28; goods balance -7.8; current account -2.7; NIIP 2024 -1
+  CZ: real share +0.42; goods balance +1.0; current account -2.5; NIIP 2024 -7
+  DK: real share +0.44; goods balance +4.3; current account +6.0; NIIP 2024 +63
+  PL: real share +0.48; goods balance -2.6; current account -2.7; NIIP 2024 -29
+  SK: real share +0.54; goods balance -1.6; current account -3.7; NIIP 2024 -54
+
+Current accounts of the 12 first euro members (% GDP): cross-country standard deviation, minimum and maximum
+  1995: sd 3.6, min -3.4, max +7.5
+  1999: sd 5.0, min -8.8, max +6.8
+  2003: sd 4.9, min -10.2, max +6.0
+  2007: sd 7.9, min -14.3, max +11.8
+  2008: sd 7.2, min -14.9, max +7.2
+  2012: sd 4.1, min -4.6, max +7.5
+  2016: sd 3.5, min -2.7, max +8.9
+  2020: sd 4.6, min -8.2, max +6.4
+  2024: sd 6.1, min -7.4, max +16.2
+  largest dispersion in 2007: sd 7.9
+  DE: current account 1999 -1.4, 2007 +6.6, 2013 +6.6, 2024 +6.0
+  NL: current account 1999 +4.3, 2007 +4.9, 2013 +7.9, 2024 +9.2
+  ES: current account 1999 -3.2, 2007 -9.4, 2013 +2.1, 2024 +3.2
+  PT: current account 1999 -8.8, 2007 -9.7, 2013 +0.8, 2024 +2.0
+  EL: current account 1999 -6.9, 2007 -14.3, 2013 -2.2, 2024 -7.4
+  IT: current account 1999 +0.8, 2007 -1.4, 2013 +1.0, 2024 +1.0
+  FR: current account 1999 +3.3, 2007 -0.1, 2013 -0.5, 2024 -0.1
+
+EU27 goods balance (% GDP): 2000 +0.6, 2008 +0.0, 2019 +2.4, 2022 -0.2, 2024 +2.2

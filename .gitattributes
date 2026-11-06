@@ -60,3 +60,4 @@ market-capacity-lock-in/**/*.csv -filter -diff -merge text
 eu-integration-correlated-shocks/**/*.csv -filter -diff -merge text
 recovery-after-busts/**/*.csv -filter -diff -merge text
 cure-fraction-identifiability/**/*.csv -filter -diff -merge text
+europe-deindustrialisation/**/*.csv -filter -diff -merge text

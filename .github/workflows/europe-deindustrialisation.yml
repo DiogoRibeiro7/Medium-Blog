@@ -1,0 +1,67 @@
+name: Reproduce europe-deindustrialisation
+
+on:
+  pull_request:
+    paths:
+      - 'europe-deindustrialisation/**'
+      - '.github/workflows/europe-deindustrialisation.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'europe-deindustrialisation/**'
+      - '.github/workflows/europe-deindustrialisation.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: europe-deindustrialisation
+    env:
+      MPLBACKEND: Agg
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: europe-deindustrialisation/requirements.txt
+
+      - name: Install pinned dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Tests
+        run: python -m pytest -q tests
+
+      - name: Part 1, what deindustrialisation was
+        run: python decompose.py > /dev/null
+
+      - name: Part 2, external balances
+        run: python external.py > /dev/null
+
+      - name: Part 3, regions
+        run: python regions.py > /dev/null
+
+      - name: Part 4, dependencies
+        run: python dependencies.py > /dev/null
+
+      - name: Part 5, the turn and the 2035 target
+        run: python turn.py > /dev/null
+
+      - name: Figures
+        run: python figures.py
+
+      - name: Summaries unchanged within tolerance
+        run: |
+          S="results/decompose_summary.txt results/external_summary.txt results/regions_summary.txt results/dependencies_summary.txt results/turn_summary.txt"
+          git diff --stat -- $S || true
+          python check_results.py $S

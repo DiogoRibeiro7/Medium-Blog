@@ -1,0 +1,109 @@
+Manufacturing shares (employment, nominal value added, real value added at 2020 prices) and their decomposition
+log s_N = log s_R + log p ; log s_E = log s_R - log q (p relative price, q relative productivity)
+
+From 1995 to 2024 (log points; shares in percent)
+  LU    emp share  15.1 ->   6.3 (-0.87) = real share -0.26 - rel. productivity +0.61; nominal share  13.2 ->   4.4 (-1.11) = real -0.26 + rel. price -0.85; manufacturing jobs -0.01, real output +0.54
+  UK    emp share  15.5 ->   7.2 (-0.76) = real share +0.04 - rel. productivity +0.80; nominal share  16.9 ->   8.8 (-0.65) = real +0.04 + rel. price -0.69; manufacturing jobs -0.50, real output +0.58
+  CY    emp share  14.7 ->   7.1 (-0.72) = real share -0.78 - rel. productivity -0.06; nominal share  10.4 ->   5.0 (-0.73) = real -0.78 + rel. price +0.04; manufacturing jobs -0.18, real output +0.15
+  IE    emp share  19.9 ->  10.6 (-0.64) = real share +0.43 - rel. productivity +1.07; nominal share  22.9 ->  31.1 (+0.30) = real +0.43 + rel. price -0.13; manufacturing jobs -0.02, real output +1.95
+  BE    emp share  17.5 ->   9.7 (-0.59) = real share -0.21 - rel. productivity +0.38; nominal share  20.3 ->  12.6 (-0.48) = real -0.21 + rel. price -0.26; manufacturing jobs -0.31, real output +0.30
+  US    emp share  13.2 ->   7.4 (-0.58) = real share -0.09 - rel. productivity +0.49; nominal share  16.6 ->   9.8 (-0.52) = real -0.09 + rel. price -0.43; manufacturing jobs -0.34, real output +0.63
+  ES    emp share  17.2 ->  10.0 (-0.54) = real share -0.29 - rel. productivity +0.25; nominal share  17.6 ->  11.9 (-0.39) = real -0.29 + rel. price -0.10; manufacturing jobs -0.08, real output +0.29
+  DK    emp share  16.5 ->   9.9 (-0.51) = real share +0.40 - rel. productivity +0.91; nominal share  17.0 ->  20.2 (+0.17) = real +0.40 + rel. price -0.23; manufacturing jobs -0.30, real output +0.88
+  FR    emp share  15.1 ->   9.2 (-0.50) = real share -0.10 - rel. productivity +0.40; nominal share  16.4 ->  10.7 (-0.43) = real -0.10 + rel. price -0.33; manufacturing jobs -0.25, real output +0.36
+  PT    emp share  22.2 ->  13.9 (-0.47) = real share -0.06 - rel. productivity +0.41; nominal share  18.1 ->  13.5 (-0.29) = real -0.06 + rel. price -0.24; manufacturing jobs -0.32, real output +0.37
+  SE    emp share  16.8 ->  10.5 (-0.47) = real share -0.00 - rel. productivity +0.47; nominal share  22.2 ->  14.6 (-0.42) = real -0.00 + rel. price -0.42; manufacturing jobs -0.20, real output +0.64
+  EE    emp share  24.7 ->  15.9 (-0.44) = real share +0.06 - rel. productivity +0.51; nominal share  19.2 ->  12.4 (-0.44) = real +0.06 + rel. price -0.50; manufacturing jobs -0.36, real output +1.05
+  EU15  emp share  17.9 ->  11.5 (-0.44) = real share -0.02 - rel. productivity +0.42; nominal share  19.4 ->  14.5 (-0.29) = real -0.02 + rel. price -0.27; manufacturing jobs -0.18, real output +0.44
+  NL    emp share  11.5 ->   7.4 (-0.44) = real share +0.02 - rel. productivity +0.46; nominal share  16.1 ->  11.2 (-0.36) = real +0.02 + rel. price -0.38; manufacturing jobs -0.09, real output +0.61
+  FI    emp share  19.2 ->  12.6 (-0.42) = real share +0.01 - rel. productivity +0.43; nominal share  25.4 ->  16.3 (-0.45) = real +0.01 + rel. price -0.46; manufacturing jobs -0.14, real output +0.51
+  SI    emp share  30.0 ->  20.1 (-0.40) = real share +0.22 - rel. productivity +0.62; nominal share  24.9 ->  21.9 (-0.13) = real +0.22 + rel. price -0.35; manufacturing jobs -0.22, real output +0.99
+  IT    emp share  21.0 ->  14.9 (-0.34) = real share -0.17 - rel. productivity +0.17; nominal share  21.2 ->  16.9 (-0.23) = real -0.17 + rel. price -0.06; manufacturing jobs -0.14, real output +0.04
+  HR    emp share  20.5 ->  15.7 (-0.27) = real share -0.28 - rel. productivity -0.01; nominal share  22.2 ->  12.6 (-0.57) = real -0.28 + rel. price -0.28; manufacturing jobs -0.15, real output +0.43
+  DE    emp share  21.1 ->  16.1 (-0.27) = real share +0.02 - rel. productivity +0.29; nominal share  22.3 ->  19.9 (-0.12) = real +0.02 + rel. price -0.14; manufacturing jobs -0.08, real output +0.38
+  EL    emp share  10.5 ->   8.1 (-0.26) = real share +0.02 - rel. productivity +0.28; nominal share  12.5 ->  10.4 (-0.18) = real +0.02 + rel. price -0.20; manufacturing jobs -0.04, real output +0.30
+  LV    emp share  16.0 ->  12.3 (-0.26) = real share -0.26 - rel. productivity -0.00; nominal share  20.6 ->  11.4 (-0.59) = real -0.26 + rel. price -0.33; manufacturing jobs -0.29, real output +0.72
+  AT    emp share  18.7 ->  14.6 (-0.25) = real share +0.14 - rel. productivity +0.40; nominal share  20.6 ->  16.9 (-0.20) = real +0.14 + rel. price -0.34; manufacturing jobs +0.02, real output +0.61
+  HU    emp share  23.2 ->  18.2 (-0.24) = real share +0.10 - rel. productivity +0.34; nominal share  21.4 ->  18.5 (-0.15) = real +0.10 + rel. price -0.25; manufacturing jobs -0.04, real output +0.81
+  SK    emp share  26.2 ->  20.7 (-0.23) = real share +0.72 - rel. productivity +0.96; nominal share  21.2 ->  18.0 (-0.16) = real +0.72 + rel. price -0.89; manufacturing jobs -0.09, real output +1.69
+  RO    emp share  21.2 ->  17.0 (-0.22) = real share -0.06 - rel. productivity +0.16; nominal share  25.2 ->  14.6 (-0.55) = real -0.06 + rel. price -0.49; manufacturing jobs -0.52, real output +0.69
+  PL    emp share  21.8 ->  19.1 (-0.13) = real share +0.25 - rel. productivity +0.38; nominal share  21.9 ->  17.3 (-0.23) = real +0.25 + rel. price -0.48; manufacturing jobs +0.04, real output +1.33
+  CZ    emp share  26.6 ->  24.1 (-0.10) = real share +0.61 - rel. productivity +0.71; nominal share  23.5 ->  21.8 (-0.08) = real +0.61 + rel. price -0.69; manufacturing jobs -0.03, real output +1.25
+  LT    emp share  17.3 ->  15.9 (-0.08) = real share +0.39 - rel. productivity +0.48; nominal share  19.0 ->  15.2 (-0.23) = real +0.39 + rel. price -0.62; manufacturing jobs -0.07, real output +1.53
+
+From 1970 to 2024 (log points; shares in percent)
+  BE    emp share  29.4 ->   9.7 (-1.11) = real share -0.19 - rel. productivity +0.92; nominal share  29.7 ->  12.6 (-0.85) = real -0.19 + rel. price -0.67; manufacturing jobs -0.79, real output +0.93
+  US    emp share  21.1 ->   7.4 (-1.05) = real share +0.03 - rel. productivity +1.08; nominal share  23.2 ->   9.8 (-0.86) = real +0.03 + rel. price -0.89; manufacturing jobs -0.38, real output +1.40
+  NL    emp share  19.8 ->   7.4 (-0.99) = real share -0.03 - rel. productivity +0.96; nominal share  23.4 ->  11.2 (-0.73) = real -0.03 + rel. price -0.71; manufacturing jobs -0.37, real output +1.19
+  FR    emp share  23.1 ->   9.2 (-0.93) = real share -0.25 - rel. productivity +0.67; nominal share  22.8 ->  10.7 (-0.76) = real -0.25 + rel. price -0.51; manufacturing jobs -0.56, real output +0.88
+  SE    emp share  25.4 ->  10.5 (-0.88) = real share -0.01 - rel. productivity +0.87; nominal share  27.5 ->  14.6 (-0.63) = real -0.01 + rel. price -0.62; manufacturing jobs -0.57, real output +1.10
+  DK    emp share  23.0 ->   9.9 (-0.84) = real share +0.31 - rel. productivity +1.16; nominal share  19.2 ->  20.2 (+0.05) = real +0.31 + rel. price -0.27; manufacturing jobs -0.56, real output +1.34
+  DE    emp share  35.8 ->  16.1 (-0.80) = real share -0.35 - rel. productivity +0.45; nominal share  36.5 ->  19.9 (-0.61) = real -0.35 + rel. price -0.26; manufacturing jobs -0.25, real output +0.74
+  FI    emp share  22.0 ->  12.6 (-0.56) = real share +0.17 - rel. productivity +0.72; nominal share  25.7 ->  16.3 (-0.46) = real +0.17 + rel. price -0.62; manufacturing jobs -0.37, real output +1.36
+  IT    emp share  25.0 ->  14.9 (-0.52) = real share +0.05 - rel. productivity +0.57; nominal share  26.2 ->  16.9 (-0.44) = real +0.05 + rel. price -0.49; manufacturing jobs -0.22, real output +0.97
+
+From 2000 to 2024 (log points; shares in percent)
+  MT    emp share  20.1 ->   7.7 (-0.96) = real share -0.91 - rel. productivity +0.05; nominal share  21.8 ->   6.2 (-1.26) = real -0.91 + rel. price -0.35; manufacturing jobs -0.22, real output +0.18
+  LU    emp share  12.9 ->   6.3 (-0.72) = real share -0.24 - rel. productivity +0.47; nominal share  10.8 ->   4.4 (-0.91) = real -0.24 + rel. price -0.67; manufacturing jobs -0.05, real output +0.30
+  UK    emp share  13.6 ->   7.2 (-0.64) = real share +0.01 - rel. productivity +0.65; nominal share  14.8 ->   8.8 (-0.52) = real +0.01 + rel. price -0.53; manufacturing jobs -0.43, real output +0.38
+  ES    emp share  17.3 ->  10.0 (-0.55) = real share -0.34 - rel. productivity +0.21; nominal share  17.9 ->  11.9 (-0.41) = real -0.34 + rel. price -0.07; manufacturing jobs -0.27, real output +0.05
+  IE    emp share  17.7 ->  10.6 (-0.52) = real share +0.22 - rel. productivity +0.74; nominal share  25.9 ->  31.1 (+0.18) = real +0.22 + rel. price -0.04; manufacturing jobs -0.08, real output +1.33
+  BE    emp share  15.9 ->   9.7 (-0.49) = real share -0.26 - rel. productivity +0.23; nominal share  19.7 ->  12.6 (-0.44) = real -0.26 + rel. price -0.18; manufacturing jobs -0.28, real output +0.12
+  US    emp share  11.9 ->   7.4 (-0.48) = real share -0.14 - rel. productivity +0.34; nominal share  15.1 ->   9.8 (-0.43) = real -0.14 + rel. price -0.29; manufacturing jobs -0.32, real output +0.36
+  CY    emp share  11.4 ->   7.1 (-0.47) = real share -0.55 - rel. productivity -0.08; nominal share   8.9 ->   5.0 (-0.58) = real -0.55 + rel. price -0.03; manufacturing jobs +0.01, real output +0.17
+  SE    emp share  16.4 ->  10.5 (-0.44) = real share -0.18 - rel. productivity +0.27; nominal share  22.3 ->  14.6 (-0.43) = real -0.18 + rel. price -0.25; manufacturing jobs -0.22, real output +0.28
+  FI    emp share  19.1 ->  12.6 (-0.42) = real share -0.19 - rel. productivity +0.23; nominal share  27.6 ->  16.3 (-0.53) = real -0.19 + rel. price -0.34; manufacturing jobs -0.24, real output +0.06
+  FR    emp share  13.7 ->   9.2 (-0.40) = real share -0.15 - rel. productivity +0.25; nominal share  16.1 ->  10.7 (-0.41) = real -0.15 + rel. price -0.26; manufacturing jobs -0.22, real output +0.16
+  DK    emp share  14.6 ->   9.9 (-0.39) = real share +0.44 - rel. productivity +0.83; nominal share  16.4 ->  20.2 (+0.20) = real +0.44 + rel. price -0.24; manufacturing jobs -0.23, real output +0.77
+  PT    emp share  20.4 ->  13.9 (-0.39) = real share -0.11 - rel. productivity +0.28; nominal share  17.2 ->  13.5 (-0.24) = real -0.11 + rel. price -0.14; manufacturing jobs -0.34, real output +0.14
+  EU15  emp share  16.5 ->  11.5 (-0.36) = real share -0.03 - rel. productivity +0.33; nominal share  18.5 ->  14.5 (-0.24) = real -0.03 + rel. price -0.21; manufacturing jobs -0.18, real output +0.28
+  EE    emp share  22.2 ->  15.9 (-0.33) = real share -0.03 - rel. productivity +0.31; nominal share  17.3 ->  12.4 (-0.34) = real -0.03 + rel. price -0.31; manufacturing jobs -0.17, real output +0.65
+  NL    emp share  10.2 ->   7.4 (-0.32) = real share +0.04 - rel. productivity +0.36; nominal share  14.2 ->  11.2 (-0.23) = real +0.04 + rel. price -0.27; manufacturing jobs -0.10, real output +0.42
+  SI    emp share  27.2 ->  20.1 (-0.30) = real share +0.14 - rel. productivity +0.45; nominal share  24.8 ->  21.9 (-0.13) = real +0.14 + rel. price -0.27; manufacturing jobs -0.11, real output +0.73
+  HR    emp share  21.1 ->  15.7 (-0.30) = real share -0.31 - rel. productivity -0.01; nominal share  20.2 ->  12.6 (-0.47) = real -0.31 + rel. price -0.16; manufacturing jobs -0.17, real output +0.24
+  HU    emp share  24.5 ->  18.2 (-0.29) = real share -0.12 - rel. productivity +0.17; nominal share  22.4 ->  18.5 (-0.19) = real -0.12 + rel. price -0.07; manufacturing jobs -0.14, real output +0.44
+  IT    emp share  19.7 ->  14.9 (-0.28) = real share -0.12 - rel. productivity +0.16; nominal share  19.7 ->  16.9 (-0.16) = real -0.12 + rel. price -0.04; manufacturing jobs -0.13, real output -0.00
+  EU27  emp share  18.0 ->  13.7 (-0.27) = real share -0.01 - rel. productivity +0.26; nominal share  19.4 ->  15.9 (-0.20) = real -0.01 + rel. price -0.19; manufacturing jobs -0.12, real output +0.33
+  LV    emp share  15.9 ->  12.3 (-0.26) = real share -0.26 - rel. productivity -0.00; nominal share  15.6 ->  11.4 (-0.32) = real -0.26 + rel. price -0.05; manufacturing jobs -0.27, real output +0.45
+  DE    emp share  19.6 ->  16.1 (-0.20) = real share +0.02 - rel. productivity +0.21; nominal share  22.6 ->  19.9 (-0.13) = real +0.02 + rel. price -0.14; manufacturing jobs -0.06, real output +0.28
+  EL    emp share   9.8 ->   8.1 (-0.19) = real share +0.05 - rel. productivity +0.24; nominal share  11.2 ->  10.4 (-0.07) = real +0.05 + rel. price -0.11; manufacturing jobs -0.01, real output +0.19
+  AT    emp share  17.4 ->  14.6 (-0.18) = real share +0.12 - rel. productivity +0.30; nominal share  21.0 ->  16.9 (-0.22) = real +0.12 + rel. price -0.34; manufacturing jobs +0.05, real output +0.44
+  SK    emp share  24.4 ->  20.7 (-0.17) = real share +0.54 - rel. productivity +0.70; nominal share  22.2 ->  18.0 (-0.21) = real +0.54 + rel. price -0.74; manufacturing jobs +0.02, real output +1.34
+  CZ    emp share  27.4 ->  24.1 (-0.13) = real share +0.42 - rel. productivity +0.55; nominal share  25.5 ->  21.8 (-0.16) = real +0.42 + rel. price -0.57; manufacturing jobs -0.02, real output +0.98
+  RO    emp share  18.6 ->  17.0 (-0.09) = real share -0.10 - rel. productivity -0.01; nominal share  21.9 ->  14.6 (-0.41) = real -0.10 + rel. price -0.31; manufacturing jobs -0.31, real output +0.71
+  LT    emp share  17.0 ->  15.9 (-0.07) = real share +0.28 - rel. productivity +0.35; nominal share  19.1 ->  15.2 (-0.23) = real +0.28 + rel. price -0.51; manufacturing jobs +0.00, real output +1.19
+  PL    emp share  20.1 ->  19.1 (-0.05) = real share +0.48 - rel. productivity +0.53; nominal share  17.9 ->  17.3 (-0.04) = real +0.48 + rel. price -0.51; manufacturing jobs +0.13, real output +1.32
+
+Peak manufacturing employment share in the data
+  AT    peak 25.0% in 1977 (data from 1976); 2024 14.6%
+  BE    peak 30.5% in 1965 (data from 1960); 2024 9.7%
+  BG    peak 22.6% in 1995 (data from 1995); 2024 16.0%
+  CY    peak 14.7% in 1995 (data from 1995); 2024 7.1%
+  CZ    peak 28.4% in 1998 (data from 1993); 2024 24.1%
+  DE    peak 35.8% in 1970 (data from 1960); 2024 16.1%
+  DK    peak 24.2% in 1966 (data from 1966); 2024 9.9%
+  EE    peak 25.5% in 1990 (data from 1990); 2024 15.9%
+  EL    peak 10.6% in 1996 (data from 1995); 2024 8.1%
+  ES    peak 22.3% in 1977 (data from 1960); 2024 10.0%
+  EU15  peak 17.9% in 1995 (data from 1995); 2024 11.5%
+  EU27  peak 19.4% in 1995 (data from 1995); 2024 13.7%
+  FI    peak 24.2% in 1974 (data from 1960); 2024 12.6%
+  FR    peak 23.6% in 1974 (data from 1960); 2024 9.2%
+  HR    peak 21.1% in 2000 (data from 1995); 2024 15.7%
+  HU    peak 24.6% in 1999 (data from 1995); 2024 18.2%
+  IE    peak 21.3% in 1974 (data from 1960); 2024 10.6%
+  IT    peak 26.4% in 1979 (data from 1960); 2024 14.9%
+  JP    peak 25.6% in 1973 (data from 1960); 2024 14.6%
+  LT    peak 25.2% in 1992 (data from 1990); 2024 15.9%
+  LU    peak 30.6% in 1970 (data from 1970); 2024 6.3%
+  LV    peak 20.8% in 1990 (data from 1990); 2024 12.3%
+  MT    peak 22.8% in 1995 (data from 1995); 2024 7.7%
+  NL    peak 20.0% in 1969 (data from 1969); 2024 7.4%
+  PL    peak 21.8% in 1996 (data from 1992); 2024 19.1%
+  PT    peak 25.8% in 1983 (data from 1977); 2024 13.9%
+  RO    peak 28.2% in 1990 (data from 1990); 2024 17.0%
+  SE    peak 25.4% in 1970 (data from 1970); 2024 10.5%
+  SI    peak 30.0% in 1995 (data from 1995); 2024 20.1%
+  SK    peak 26.5% in 1997 (data from 1995); 2024 20.7%
+  UK    peak 23.5% in 1979 (data from 1979); 2024 7.2%
+  US    peak 22.7% in 1966 (data from 1960); 2024 7.4%
