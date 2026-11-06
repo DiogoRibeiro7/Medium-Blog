@@ -1,11 +1,5 @@
 # Roadmap
 
-> Editorial migration (November 2026): the wheat and maize manuscripts and
-> editable templates are archived in the private `research-articles-medium`
-> repository. The historic `publication/article.md` paths now contain
-> compatibility notices; this checklist records earlier publication stages.
-> Numeric manifests, figures and the underlying research remain public.
-
 ## Phase 0: foundation
 
 - [x] Question, estimands and data sources, with their licences ([README.md](README.md)).
@@ -68,12 +62,19 @@ Results are in [docs/RESULTS.md](docs/RESULTS.md). Every rule was fixed before a
       committed results in the tests: text and integers exactly, floating-point values
       within a relative tolerance of 1e-7.
 
+> Editorial migration (November 2026): the wheat and maize manuscripts and
+> editable templates were archived in the private
+> [research-articles-medium](https://github.com/DiogoRibeiro7/research-articles-medium)
+> repository. Their former public files were removed. The checklist below
+> records historical publication work; the current public command generates
+> numerical manifests and figures, and `--check` validates the manifests only.
+
 ## Phase 3: publication
 
 - [x] **Report.** [docs/RESULTS.md](docs/RESULTS.md) generates every number from the
       results.
-- [x] **Article.** The Medium article is
-      [publication/article.md](publication/article.md), generated from
+- [x] **Article (archived privately).** The Medium article was
+      `publication/article.md`, generated from
       `publication/article.template.md` with every number filled in from the results, and
       it has five figures.
   - **Tests:**
@@ -83,8 +84,8 @@ Results are in [docs/RESULTS.md](docs/RESULTS.md). Every rule was fixed before a
     - the E-OBS acknowledgement, the citation, the dataset version, the repository link
       and the Eurostat and GISCO notices are present, the GISCO notice before the first
       section.
-  - **Check.** `eu-wheat publication --check` compares the committed article and values
-    with the code's output.
+  - **Check.** The original publication verification compared article and values;
+    the current `eu-wheat publication --check` verifies scientific values only.
 - [x] **Critical review** ([docs/REVIEW.md](docs/REVIEW.md)), after the results and
       before publication, with every finding marked verified or plausible.
 - [x] **Corrections without new analysis** (the review's list A).
@@ -143,8 +144,8 @@ Results are in [docs/RESULTS.md](docs/RESULTS.md). Every rule was fixed before a
   - **Sensitivity analyses:** no sign reverses in any of the five.
   - **Out of sample:** the 2015 total is predicted well; 2012 and 2022 are
     under-predicted (-16.5% against -6.8%, and -21.7% against -11.8%).
-- [x] Article: a separate maize article
-      ([publication/maize/article.md](publication/maize/article.md)), with four figures.
+- [x] Article (archived privately): a separate maize article
+      (`publication/maize/article.md`), with four figures.
   - **Tests:** every number is generated from the results, its claims in words are
     checked, and the notices and citations are tested, as for wheat.
   - **The wheat article** gets a short paragraph pointing to it.

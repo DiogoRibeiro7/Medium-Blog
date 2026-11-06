@@ -5,7 +5,7 @@ results:
 
 - ``manuscript/generated/values.tex`` (one macro per quoted value) and the data tables;
 - the figures, as PDF for the manuscript and PNG for the Medium article;
-- ``medium/article.md`` from ``medium/article.template.md`` (``{{key}}`` placeholders);
+- numerical values, reproducibility manifests and research manuscript artifacts;
 - the frozen manifests of data, experiments, environment and quoted values;
 - ``AUDIT.md``, the audit of the research outputs.
 
@@ -1053,7 +1053,6 @@ def text_outputs(root: Path) -> dict[str, str]:
     """Every generated text file of publication/, keyed by path relative to root."""
     pub = "publication"
     values = collect_values(root)
-    template = (root / pub / "medium" / "article.template.md").read_text(encoding="utf-8")
     checks = audit(root)
     return {
         f"{pub}/manuscript/generated/values.tex": values_tex(values),
@@ -1063,7 +1062,6 @@ def text_outputs(root: Path) -> dict[str, str]:
         f"{pub}/manuscript/generated/tab_casestudy.tex": table_case_study(root),
         f"{pub}/manuscript/generated/tab_reproducibility.tex": table_reproducibility(root),
         f"{pub}/manuscript/generated/tab_prereg.tex": table_preregistration(root),
-        f"{pub}/medium/article.md": render_medium(template, values),
         f"{pub}/manifest/data.json": dump_json(data_manifest(root)),
         f"{pub}/manifest/experiments.json": dump_json(experiment_manifest(root)),
         f"{pub}/manifest/environment.json": dump_json(environment_manifest(root)),

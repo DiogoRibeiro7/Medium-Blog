@@ -64,14 +64,14 @@ Amendment A2 (section 10) is computed ([docs/MAIZE_AMENDMENT.md](docs/MAIZE_AMEN
   never in place of them. Maize has its own review
   ([docs/MAIZE_REVIEW.md](docs/MAIZE_REVIEW.md)), with its checks in the same section of
   [docs/MAIZE.md](docs/MAIZE.md).
-- **Articles.** The wheat and maize editorial manuscripts and their editable
-  templates are held in the private
+- **Scientific publication outputs.** Wheat and maize numerical manifests
+  (`publication/values.json` and `publication/maize/values.json`) and figures
+  are regenerated from committed results. Editorial manuscripts and templates
+  are archived in the private
   [research-articles-medium](https://github.com/DiogoRibeiro7/research-articles-medium)
-  repository. The historical public paths
-  ([wheat](publication/article.md), [maize](publication/maize/article.md)) now contain
-  short notices. Public numeric manifests, research figures, provenance and tests
-  remain generated independently of the articles. E-OBS, Eurostat, GISCO, GGCMI and
-  MIRCA-OS licence notices and scientific references remain in this README.
+  repository, and the historical public article files have been removed.
+  `eu-wheat publication --check` verifies numerical manifests without those files;
+  data licences and scientific references remain in this public README.
 - [ROADMAP.md](ROADMAP.md) lists the stages.
 
 ## Question and estimands
@@ -119,7 +119,7 @@ not commercial. Any publication must carry:
 **GISCO terms.** The boundaries may be used "on condition that the data will not be
 used for commercial purposes", and the copyright notice "© EuroGeographics for the
 administrative boundaries" must appear on the publication's introductory page. The
-private editorial articles carry it under their subtitles; this public README retains it.
+private editorial manuscripts carry this notice; it remains here for public attribution.
 
 **What is committed.**
 
@@ -167,7 +167,7 @@ poetry run eu-wheat fetch-mirca        # the MIRCA-OS map of maize, 172 MB, into
 poetry run eu-wheat fetch-irrigation   # Eurostat's irrigated maize in 2023, for the map check
 poetry run eu-wheat maize-a2-weather   # the season weather under three weightings, about 2 minutes
 poetry run eu-wheat maize-amend --crops snapshots/eurostat-maize-2026-10-26   # beside the registered results
-poetry run eu-wheat publication            # numerical values, public notices and figures; --check compares
+poetry run eu-wheat publication            # numerical values and public figures; --check compares
 poetry run eu-wheat publication --values-only   # numerical manifests; no article templates needed
 poetry run eu-wheat publication --check-values  # verify wheat and maize manifests only
 poetry run pytest

@@ -9,7 +9,7 @@ from pathlib import Path
 import numpy as np
 import pytest
 
-from iberian_lp.publication import check_scientific, daily, render, table
+from iberian_lp.publication import check, check_scientific, daily, outputs, render, table
 
 ROOT = Path(__file__).resolve().parents[1]
 PUB = ROOT / "publication"
@@ -20,6 +20,29 @@ pytestmark = pytest.mark.skipif(not ESTIMATES.exists(), reason="No frozen result
 def test_generated_scientific_values_are_current() -> None:
     """Frozen numerical values must agree with the committed result tables."""
     assert check_scientific(ROOT) == []
+
+
+def test_manuscript_is_private_and_public_notice_is_short() -> None:
+    """Prevent accidental recommitment of the long-form Medium source."""
+    notice = (PUB / "article.md").read_text(encoding="utf-8")
+    assert "research-articles-medium" in notice
+    assert "private" in notice.lower()
+    assert len(notice.split()) < 150
+    assert not (PUB / "article.template.md").exists()
+
+
+def test_default_publication_checks_only_research_values() -> None:
+    """The generic check and scientific check must agree on the public contract."""
+    assert set(outputs(ROOT)) == {"publication/values.json"}
+    assert check(ROOT) == check_scientific(ROOT)
+
+
+def test_omie_source_attribution_remains_public() -> None:
+    """Keep source provenance accessible after migrating editorial text."""
+    readme = (ROOT / "README.md").read_text(encoding="utf-8")
+    assert "OMIE (OMI-Polo Español, S.A.)" in readme
+    assert "https://www.omie.es" in readme
+    assert "keeping its original content intact and citing" in readme
 
 
 def test_unknown_and_unused_values_are_errors() -> None:

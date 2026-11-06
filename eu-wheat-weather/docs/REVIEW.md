@@ -1,9 +1,8 @@
 # Critical review of the wheat study (2026-10-26)
 
 This review was written after the registered results ([RESULTS.md](RESULTS.md)) and the
-draft article (now in the private editorial archive; the
-[public path](../publication/article.md) contains a compatibility notice), and before
-publication.
+draft article (now in the private editorial archive; its former public file
+was removed), and before publication.
 
 **How it was done.**
 

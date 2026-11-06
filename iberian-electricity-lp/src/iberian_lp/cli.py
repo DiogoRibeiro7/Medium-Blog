@@ -34,8 +34,8 @@ def main(argv: list[str] | None = None) -> None:
     estimates.add_argument("--derived", type=Path, default=Path("data/derived"))
     estimates.add_argument("--results", type=Path, default=Path("results"))
     estimates.add_argument("--report", type=Path, default=Path("docs/RESULTS.md"))
-    publication = commands.add_parser("publication", help="Write the article, its values "
-                                      "and figures into publication/")
+    publication = commands.add_parser("publication", help="Regenerate public numerical values "
+                                      "and research figures, never editorial prose")
     publication.add_argument("--root", type=Path, default=Path("."))
     publication.add_argument("--no-figures", action="store_true")
     mode = publication.add_mutually_exclusive_group()

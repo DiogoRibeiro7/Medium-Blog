@@ -1,7 +1,7 @@
-"""Tests of the publication pipeline: every value quoted in the manuscript and the Medium
-article comes from the committed results, the generated files are current, the audit
-passes, the manifests hash what they list and the bibliography record is complete. Reads
-the committed repository; no network."""
+"""Offline tests of scientific manuscript values and publication reproducibility.
+
+Checks numerical provenance, generated output, bibliography, and audit manifests.
+"""
 
 from __future__ import annotations
 
@@ -34,7 +34,6 @@ ROOT = Path(__file__).resolve().parents[1]
 PUB = ROOT / "publication"
 MANUSCRIPT = PUB / "manuscript"
 SECTIONS = sorted((MANUSCRIPT / "sections").glob("*.tex"))
-TEMPLATE = PUB / "medium" / "article.template.md"
 
 # Numbers fixed by design (protocol thresholds, prior scales, horizons, lags, sampler
 # settings, interval levels) or quoted from the literature. Anything else in the
@@ -109,13 +108,7 @@ def test_every_val_in_the_manuscript_is_defined(values: dict[str, Value]) -> Non
     assert sorted(used - set(values)) == []
 
 
-def test_every_placeholder_in_the_medium_template_is_defined(values: dict[str, Value]) -> None:
-    used = set(PLACEHOLDER.findall(TEMPLATE.read_text(encoding="utf-8")))
-    assert used
-    assert sorted(used - set(values)) == []
-
-
-@pytest.mark.parametrize("path", [*SECTIONS, TEMPLATE], ids=lambda p: p.name)
+@pytest.mark.parametrize("path", SECTIONS, ids=lambda p: p.name)
 def test_no_result_is_typed_by_hand(path: Path) -> None:
     body = _strip(path.read_text(encoding="utf-8"), path.suffix == ".tex")
     found = {m.group(0) for m in NUMBER.finditer(body)}
@@ -124,7 +117,7 @@ def test_no_result_is_typed_by_hand(path: Path) -> None:
 
 def test_counts_written_as_words_match_the_values(values: dict[str, Value]) -> None:
     text = " ".join(re.sub(r"\s+", " ", p.read_text(encoding="utf-8"))
-                    for p in [*SECTIONS, TEMPLATE])
+                    for p in SECTIONS)
     for phrase, key, expected in WORD_CLAIMS:
         if phrase in text:
             assert values[key].raw == expected, (phrase, key)
@@ -164,14 +157,6 @@ def test_the_audit_passes() -> None:
 
 def test_generated_files_are_current() -> None:
     assert check(ROOT) == []
-
-
-def test_medium_article_is_medium_compatible() -> None:
-    article = (PUB / "medium" / "article.md").read_text(encoding="utf-8")
-    assert "$" not in article and "{{" not in article
-    assert not re.search(r"^\s*\|.*\|\s*$", article, re.M)
-    for image in re.findall(r"!\[[^]]*\]\(([^)]+)\)", article):
-        assert (PUB / "medium" / image).exists(), image
 
 
 def test_render_medium_refuses_what_medium_cannot_show(values: dict[str, Value]) -> None:

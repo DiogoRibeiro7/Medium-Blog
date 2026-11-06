@@ -1,4 +1,4 @@
-"""Reproducible wheat results, provenance, publication notices, and figure checks."""
+"""Tests for the scientific outputs underlying the wheat study."""
 
 from __future__ import annotations
 
@@ -10,29 +10,48 @@ from pathlib import Path
 import numpy as np
 import pytest
 
-from eu_wheat_weather.publication import check, render, write_publication
+from eu_wheat_weather.publication import (check, outputs, render, scientific_outputs,
+                                          write_publication)
 
 ROOT = Path(__file__).resolve().parents[1]
-PUB = ROOT / "publication"
 RESULTS = ROOT / "docs" / "results" / "results.json"
 AMENDED = ROOT / "docs" / "amendment" / "results.json"
-
 pytestmark = pytest.mark.skipif(not RESULTS.exists(), reason="No committed results.")
 
 
-def test_public_articles_are_short_compatibility_notices() -> None:
-    """Keep editorial prose and templates in the private archive."""
-    wheat = (PUB / "article.md").read_text(encoding="utf-8")
-    maize = (PUB / "maize" / "article.md").read_text(encoding="utf-8")
-    assert all(len(notice.split()) < 125 for notice in (wheat, maize))
-    assert all("research-articles-medium" in notice for notice in (wheat, maize))
-    assert all("values.json" in notice for notice in (wheat, maize))
-    assert not (PUB / "article.template.md").exists()
-    assert not (PUB / "maize" / "article.template.md").exists()
-
-
-def test_generated_article_and_values_are_current() -> None:
+def test_scientific_value_manifests_are_current() -> None:
     assert check(ROOT) == []
+
+
+def test_public_editorial_manuscripts_are_not_regenerated() -> None:
+    """Keep manuscript files and templates out of the public numerical workflow."""
+    assert outputs(ROOT) == scientific_outputs(ROOT)
+    assert set(outputs(ROOT)).isdisjoint({
+        "publication/article.md", "publication/maize/article.md",
+    })
+    for name in (
+        "publication/article.md",
+        "publication/article.template.md",
+        "publication/maize/article.md",
+        "publication/maize/article.template.md",
+    ):
+        assert not (ROOT / name).exists(), name
+
+
+def test_data_sources_and_attribution_remain_public() -> None:
+    """Scientific references and licences must not depend on private prose."""
+    readme = (ROOT / "README.md").read_text(encoding="utf-8")
+    required = (
+        "We acknowledge the E-OBS dataset", "Copernicus Climate Change Service",
+        "Cornes, R.", "10.1029/2017JD028200",
+        "© European Union, Eurostat", "© EuroGeographics",
+        "non-commercial", "E-OBS v33.0e",
+        "GGCMI Phase 3 crop calendar v1.01", "doi:10.5281/zenodo.5062513",
+        "MIRCA-OS v0.1", "doi:10.1038/s41597-024-04313-w",
+        "doi:10.4211/hs.60a890eb841c460192c03bb590687145",
+    )
+    for citation in required:
+        assert citation in readme, citation
 
 
 def test_unknown_and_unused_values_are_errors() -> None:
@@ -40,28 +59,6 @@ def test_unknown_and_unused_values_are_errors() -> None:
         render("{{a}} {{b}}", {"a": "1"})
     with pytest.raises(KeyError, match="does not use"):
         render("{{a}}", {"a": "1", "b": "2"})
-
-
-def test_required_data_attribution_remains_in_the_public_readme() -> None:
-    """Check scientific citation and licensing without reading editorial prose."""
-    readme = (ROOT / "README.md").read_text(encoding="utf-8")
-    required = (
-        "We acknowledge the E-OBS dataset",
-        "Copernicus Climate Change Service",
-        "Cornes, R.",
-        "10.1029/2017JD028200",
-        "© European Union, Eurostat",
-        "© EuroGeographics",
-        "non-commercial",
-        "E-OBS v33.0e",
-        "GGCMI Phase 3 crop calendar v1.01",
-        "doi:10.5281/zenodo.5062513",
-        "MIRCA-OS v0.1",
-        "doi:10.1038/s41597-024-04313-w",
-        "doi:10.4211/hs.60a890eb841c460192c03bb590687145",
-    )
-    for citation in required:
-        assert citation in readme, citation
 
 
 def _pct(log_points: float) -> float:
@@ -76,7 +73,7 @@ def _ends_only(flags: list[bool]) -> bool:
     return not any(inner)
 
 
-def test_registered_wheat_claims_match_the_results() -> None:
+def test_wheat_registered_findings_match_results() -> None:
     r = json.loads(RESULTS.read_text(encoding="utf-8"))
     d, ph, dry = r["decisions"], r["post_hoc"], r["E2"]["dry_season"]
     edd = next(c for c in r["coefficients"] if c["model"] == "M1" and c["term"] == "edd")
@@ -158,11 +155,11 @@ def test_registered_wheat_claims_match_the_results() -> None:
         < abs(dry["effect"]) and abs(sens[("area_weighted", "E2")]["estimate"])
         < abs(dry["effect"]),
     }
-    for claim, holds in claims.items():
-        assert holds, claim
+    for phrase, holds in claims.items():
+        assert holds, phrase
 
 
-def test_amended_wheat_claims_match_the_results() -> None:
+def test_wheat_amendment_findings_match_results() -> None:
     """Amendment A1 (METHODS.md, section 8), as the article reports it."""
     r = json.loads(RESULTS.read_text(encoding="utf-8"))
     a = json.loads(AMENDED.read_text(encoding="utf-8"))
@@ -197,8 +194,8 @@ def test_amended_wheat_claims_match_the_results() -> None:
         "the interval widens again once the season also ends at harvest":
             a["E1"]["high"] - a["E1"]["low"] > data["high"] - data["low"] and a["E1"]["high"] > 0,
     }
-    for claim, holds in claims.items():
-        assert holds, claim
+    for phrase, holds in claims.items():
+        assert holds, phrase
 
 
 def test_figures_render(tmp_path: Path) -> None:
@@ -212,7 +209,7 @@ def test_figures_render(tmp_path: Path) -> None:
     assert len(figures) == 10 and all(f.stat().st_size > 10_000 for f in figures)
 
 
-def test_maize_summary_matches_its_results() -> None:
+def test_maize_comparison_findings_match_results() -> None:
     maize = ROOT / "docs" / "maize" / "results" / "results.json"
     if not maize.exists():
         pytest.skip("No maize results.")
@@ -231,8 +228,7 @@ def test_maize_summary_matches_its_results() -> None:
             next(iter(ph["E1_contributions"]["country"])) == "RO",
         "its check on the weather after maturity is split between the two methods":
             (e5["p_twoway"] < 0.05) != (e5["p_bootstrap"] < 0.05),
-        "maize compatibility notice": (ROOT / "publication" / "maize" / "article.md").exists(),
-    }
+            }
     amended = ROOT / "docs" / "maize" / "amendment" / "results.json"
     if amended.exists():
         a2 = json.loads(amended.read_text(encoding="utf-8"))
@@ -247,5 +243,5 @@ def test_maize_summary_matches_its_results() -> None:
                 abs(ro["E1"]) < abs(a2["E1"]["estimate"]),
             "but still clear with two-way clustering": ro["E1_p_twoway"] < 0.05,
         }
-    for claim, holds in claims.items():
-        assert holds, claim
+    for phrase, holds in claims.items():
+        assert holds, phrase

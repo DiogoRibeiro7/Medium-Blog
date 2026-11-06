@@ -1,4 +1,4 @@
-"""Reproducible maize results, source attribution, and publication notice checks."""
+"""Tests for the registered maize findings and reproducible results."""
 
 from __future__ import annotations
 
@@ -10,37 +10,22 @@ import numpy as np
 import pytest
 
 ROOT = Path(__file__).resolve().parents[1]
-PUB = ROOT / "publication" / "maize"
 RESULTS = ROOT / "docs" / "maize" / "results" / "results.json"
 AMENDED = ROOT / "docs" / "maize" / "amendment" / "results.json"
 WHEAT_A1 = ROOT / "docs" / "amendment" / "results.json"
-
-pytestmark = pytest.mark.skipif(not RESULTS.exists(),
-                                reason="No committed maize results.")
+pytestmark = pytest.mark.skipif(not RESULTS.exists(), reason="No maize results.")
 
 
-def test_public_maize_article_is_a_short_notice() -> None:
-    """The full editorial text and template belong in the private archive."""
-    notice = (PUB / "article.md").read_text(encoding="utf-8")
-    assert len(notice.split()) < 125
-    assert "research-articles-medium" in notice
-    assert "values.json" in notice and "docs/MAIZE.md" in notice
-    assert not (PUB / "article.template.md").exists()
-
-
-def test_maize_data_notices_and_citations_remain_public() -> None:
-    """Check licences and scientific references in the public research README."""
+def test_maize_publication_preserves_licensing_without_editorial_files() -> None:
+    """Keep maize data-use notices public after the manuscript migration."""
+    assert not (ROOT / "publication" / "maize" / "article.md").exists()
+    assert not (ROOT / "publication" / "maize" / "article.template.md").exists()
     readme = (ROOT / "README.md").read_text(encoding="utf-8")
     required = (
-        "© European Union, Eurostat",
-        "© EuroGeographics",
-        "non-commercial",
-        "E-OBS v33.0e",
-        "10.1029/2017JD028200",
+        "© European Union, Eurostat", "© EuroGeographics",
+        "E-OBS v33.0e", "non-commercial",
         "GGCMI Phase 3 crop calendar v1.01",
-        "doi:10.5281/zenodo.5062513",
-        "MIRCA-OS v0.1",
-        "CC BY 4.0",
+        "doi:10.5281/zenodo.5062513", "MIRCA-OS v0.1", "CC BY 4.0",
         "doi:10.1038/s41597-024-04313-w",
         "doi:10.4211/hs.60a890eb841c460192c03bb590687145",
     )
@@ -52,7 +37,7 @@ def _first(shares: dict[str, float], n: int) -> list[str]:
     return list(shares)[:n]
 
 
-def test_registered_maize_claims_match_the_results() -> None:
+def test_registered_maize_findings_match_results() -> None:
     from eu_wheat_weather.maize_analysis import heat_difference
     from eu_wheat_weather.publication import _wheat_harvest_edd_median
 
@@ -199,12 +184,12 @@ def test_registered_maize_claims_match_the_results() -> None:
         "Greek regional harvests from": ph["estimated_rows"]["countries"] == ["EL"]
         and len(greek_later) == ph["estimated_rows"]["region_years"],
     }
-    for claim, holds in claims.items():
-        assert holds, claim
+    for phrase, holds in claims.items():
+        assert holds, phrase
 
 
 @pytest.mark.skipif(not AMENDED.exists(), reason="No Amendment A2 results.")
-def test_amended_maize_claims_match_the_results() -> None:
+def test_maize_amendment_findings_match_results() -> None:
     r = json.loads(RESULTS.read_text(encoding="utf-8"))
     a = json.loads(AMENDED.read_text(encoding="utf-8"))
     d, reg = a["decisions"], r["decisions"]
@@ -249,5 +234,5 @@ def test_amended_maize_claims_match_the_results() -> None:
             and (ph[k][g]["estimate"] < 0) == (irr[k][g]["estimate"] < 0)
             for k in ("E1", "E2") for g in ("rainfed", "irrigated")),
     }
-    for claim, holds in claims.items():
-        assert holds, claim
+    for phrase, holds in claims.items():
+        assert holds, phrase
