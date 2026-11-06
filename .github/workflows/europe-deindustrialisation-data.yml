@@ -8,6 +8,7 @@ on:
       - 'europe-deindustrialisation/fetch.py'
       - 'europe-deindustrialisation/fetch_long.py'
       - 'europe-deindustrialisation/fetch_comext.py'
+      - 'europe-deindustrialisation/fetch_hs6.py'
       - '.github/workflows/europe-deindustrialisation-data.yml'
   workflow_dispatch:
 
@@ -17,7 +18,7 @@ permissions:
 jobs:
   fetch:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 150
     defaults:
       run:
         working-directory: europe-deindustrialisation
@@ -52,6 +53,11 @@ jobs:
         continue-on-error: true
         run: python fetch_comext.py --out data
 
+      - name: Download the dependency screen inputs by HS 6-digit product (Comext)
+        id: fetch_hs6
+        continue-on-error: true
+        run: python fetch_hs6.py --out data
+
       - name: Commit the snapshot and its log if they changed
         if: always()
         run: |
@@ -66,7 +72,7 @@ jobs:
           fi
 
       - name: Fail if any request failed
-        if: steps.fetch.outcome == 'failure' || steps.fetch_long.outcome == 'failure' || steps.fetch_comext.outcome == 'failure'
+        if: steps.fetch.outcome == 'failure' || steps.fetch_long.outcome == 'failure' || steps.fetch_comext.outcome == 'failure' || steps.fetch_hs6.outcome == 'failure'
         run: |
           cat data/fetch_log.txt
           exit 1
