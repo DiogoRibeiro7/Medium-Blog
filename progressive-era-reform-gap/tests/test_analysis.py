@@ -132,7 +132,7 @@ class ArtifactTests(unittest.TestCase):
         root: Path = Path(__file__).resolve().parents[1]
         notice: str = (root / "article.md").read_text(encoding="utf-8")
         self.assertIn("research-articles-medium", notice)
-        self.assertIn("progressive-era-reform-gap/article.md", notice)
+        self.assertIn("us-political-economy/02-progressive-era.md", notice)
         self.assertLess(len(notice.split()), 200)
 
     def test_archived_figures_have_valid_png_headers(self) -> None:
