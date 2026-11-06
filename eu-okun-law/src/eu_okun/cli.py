@@ -415,13 +415,17 @@ def main(argv: Sequence[str] | None = None) -> int:
     window.add_argument("--output-dir", type=Path, default=Path("results/window-sensitivity"))
     window.add_argument("--report", type=Path, default=None)
     pub = commands.add_parser(
-        "publication", help="Audit the outputs and build the manuscript's values, tables, "
-                            "figures, the Medium article and the manifests")
+        "publication", help="Build or check reproducible values, tables, figures and "
+                            "manifests, optionally including the Medium manuscript")
     pub_mode = pub.add_mutually_exclusive_group()
     pub_mode.add_argument("--build", action="store_true",
                           help="Write every generated file (the default)")
     pub_mode.add_argument("--check", action="store_true",
                           help="Fail if a committed generated file differs from the code's output")
+    pub_mode.add_argument("--scientific-only", action="store_true",
+                          help="Build research artifacts without reading Medium prose")
+    pub_mode.add_argument("--check-scientific", action="store_true",
+                          help="Check research artifacts without reading Medium prose")
     pub_mode.add_argument("--verify-bibliography", action="store_true",
                           help="Resolve every DOI and URL of references.bib (needs internet)")
     pub.add_argument("--root", type=Path, default=Path("."))
@@ -1011,13 +1015,18 @@ def main(argv: Sequence[str] | None = None) -> int:
                     print(f"  {problem}")
                 return 1 if problems else 0
             audit_failed = [c for c in audit_outputs(root) if not c.passed]
-            if args.check:
-                stale = publication.check(root)
+            if args.check or args.check_scientific:
+                stale = (publication.check_scientific(root) if args.check_scientific
+                         else publication.check(root))
                 for rel in stale:
                     print(f"out of date: {rel}")
             else:
                 stale = []
-                outputs = publication.build(root, figures_too=not args.no_figures)
+                if args.scientific_only:
+                    outputs = publication.build_scientific(
+                        root, figures_too=not args.no_figures)
+                else:
+                    outputs = publication.build(root, figures_too=not args.no_figures)
                 print(f"Wrote {len(outputs)} generated files under {root / 'publication'}")
         except (FileNotFoundError, ValueError, KeyError, OSError) as exc:
             parser.exit(2, f"Publication build failed: {exc}\n")

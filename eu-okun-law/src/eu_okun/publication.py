@@ -1,17 +1,11 @@
-"""Publication build: manuscript values and tables, figures, Medium article, manifests.
+"""Publication build: reproducible research outputs and optional editorial rendering.
 
-``build`` regenerates everything under ``publication/`` that is derived from the committed
-results:
-
-- ``manuscript/generated/values.tex`` (one macro per quoted value) and the data tables;
-- the figures, as PDF for the manuscript and PNG for the Medium article;
-- ``medium/article.md`` from ``medium/article.template.md`` (``{{key}}`` placeholders);
-- the frozen manifests of data, experiments, environment and quoted values;
-- ``AUDIT.md``, the audit of the research outputs.
-
-The prose of the manuscript (``manuscript/sections``) and of the Medium template is written
-by hand, but every empirical number in it is a placeholder for a value of
-``publication_values.collect_values``; a test rejects hard-coded decimals.
+``scientific_outputs``, ``build_scientific`` and ``check_scientific`` operate on
+committed result tables, manuscript numerical macros, research figures, manifests
+and audits without reading the Medium article or its template. The legacy
+``text_outputs`` and ``build`` functions still generate the article until the
+separate editorial migration is complete. Empirical values come from
+``publication_values.collect_values``, not manually typed publication numbers.
 """
 
 from __future__ import annotations
@@ -1049,11 +1043,9 @@ def dump_json(obj: Any) -> str:
     return json.dumps(obj, indent=1, ensure_ascii=False, sort_keys=False) + "\n"
 
 
-def text_outputs(root: Path) -> dict[str, str]:
-    """Every generated text file of publication/, keyed by path relative to root."""
+def _scientific_text_outputs(root: Path, values: Mapping[str, Value]) -> dict[str, str]:
+    """Render the research contract without reading either Medium article file."""
     pub = "publication"
-    values = collect_values(root)
-    template = (root / pub / "medium" / "article.template.md").read_text(encoding="utf-8")
     checks = audit(root)
     return {
         f"{pub}/manuscript/generated/values.tex": values_tex(values),
@@ -1063,7 +1055,6 @@ def text_outputs(root: Path) -> dict[str, str]:
         f"{pub}/manuscript/generated/tab_casestudy.tex": table_case_study(root),
         f"{pub}/manuscript/generated/tab_reproducibility.tex": table_reproducibility(root),
         f"{pub}/manuscript/generated/tab_prereg.tex": table_preregistration(root),
-        f"{pub}/medium/article.md": render_medium(template, values),
         f"{pub}/manifest/data.json": dump_json(data_manifest(root)),
         f"{pub}/manifest/experiments.json": dump_json(experiment_manifest(root)),
         f"{pub}/manifest/environment.json": dump_json(environment_manifest(root)),
@@ -1072,12 +1063,55 @@ def text_outputs(root: Path) -> dict[str, str]:
     }
 
 
-def build(root: Path, figures_too: bool = True) -> dict[str, str]:
-    outputs = text_outputs(root)
+def scientific_outputs(root: Path) -> dict[str, str]:
+    """Return reproducible scientific artifacts, independent of Medium prose."""
+    return _scientific_text_outputs(root, collect_values(root))
+
+
+def text_outputs(root: Path) -> dict[str, str]:
+    """Return the existing publication outputs, including the Medium manuscript.
+
+    The public build still supports its original article-rendering contract until
+    the editorial migration is completed in a separate pull request.
+    """
+    values = collect_values(root)
+    outputs = _scientific_text_outputs(root, values)
+    template = (root / "publication" / "medium" / "article.template.md").read_text(
+        encoding="utf-8"
+    )
+    outputs["publication/medium/article.md"] = render_medium(template, values)
+    return outputs
+
+
+def _write_text_outputs(root: Path, outputs: Mapping[str, str]) -> None:
+    """Persist generated text files using stable UTF-8 and LF line endings."""
     for rel, content in outputs.items():
         path = root / rel
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(content, encoding="utf-8", newline="\n")
+
+
+def build_scientific(root: Path, figures_too: bool = True) -> dict[str, str]:
+    """Regenerate values, tables, manifests, audit and figures without editorial text."""
+    outputs = scientific_outputs(root)
+    _write_text_outputs(root, outputs)
+    if figures_too:
+        figures(root, root / "publication" / "manuscript" / "figures",
+                root / "publication" / "medium" / "figures")
+    return outputs
+
+
+def check_scientific(root: Path) -> list[str]:
+    """Return missing or stale research artifacts without reading the Medium template."""
+    return [rel for rel, content in scientific_outputs(root).items()
+            if not (root / rel).is_file()
+            or (root / rel).read_text(encoding="utf-8") != content]
+
+
+def build(root: Path, figures_too: bool = True) -> dict[str, str]:
+    """Preserve the legacy build, including the generated Medium article."""
+    outputs = text_outputs(root)
+    _write_text_outputs(root, outputs)
     if figures_too:
         figures(root, root / "publication" / "manuscript" / "figures",
                 root / "publication" / "medium" / "figures")
@@ -1085,9 +1119,9 @@ def build(root: Path, figures_too: bool = True) -> dict[str, str]:
 
 
 def check(root: Path) -> list[str]:
-    """Generated text files that differ from what the code produces now."""
+    """Generated text files that differ from the full publication build."""
     return [rel for rel, content in text_outputs(root).items()
-            if not (root / rel).exists()
+            if not (root / rel).is_file()
             or (root / rel).read_text(encoding="utf-8") != content]
 
 
