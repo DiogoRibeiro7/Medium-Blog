@@ -1,0 +1,55 @@
+name: Reproduce market-capacity-lock-in
+
+on:
+  pull_request:
+    paths:
+      - 'market-capacity-lock-in/**'
+      - '.github/workflows/market-capacity-lock-in.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'market-capacity-lock-in/**'
+      - '.github/workflows/market-capacity-lock-in.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: market-capacity-lock-in
+    env:
+      MPLBACKEND: Agg
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: market-capacity-lock-in/requirements.txt
+
+      - name: Install pinned dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Tests
+        run: python -m pytest -q tests
+
+      - name: Evidence
+        run: python evidence.py
+
+      - name: Model experiments
+        run: python scenarios.py
+
+      - name: Figures
+        run: python figures.py
+
+      - name: Results unchanged
+        run: git diff --stat --exit-code -- results/summary.txt results/evidence_summary.txt
