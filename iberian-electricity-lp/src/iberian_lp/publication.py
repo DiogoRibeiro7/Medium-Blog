@@ -210,7 +210,7 @@ def write_scientific(root: Path) -> list[str]:
     for name, body in scientific_outputs(root).items():
         destination = root / name
         destination.parent.mkdir(parents=True, exist_ok=True)
-        destination.write_text(body, encoding="utf-8", newline="\\n")
+        destination.write_text(body, encoding="utf-8", newline="\n")
         written.append(name)
     return written
 
