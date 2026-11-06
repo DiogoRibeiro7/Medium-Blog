@@ -1,0 +1,72 @@
+name: Refresh dependency-screen-design data
+
+on:
+  push:
+    branches:
+      - dependency-screen-design
+    paths:
+      - 'dependency-screen-design/fetch_prodcom.py'
+      - 'dependency-screen-design/fetch_cn8.py'
+      - '.github/workflows/dependency-screen-design-data.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    defaults:
+      run:
+        working-directory: dependency-screen-design
+    steps:
+      - name: Check out the branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: dependency-screen-design/requirements.txt
+
+      - name: Install pinned dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Download Prodcom 2025 and the CN-Prodcom correspondence
+        id: fetch
+        continue-on-error: true
+        run: python fetch_prodcom.py --out data
+
+      - name: Download 2025 trade by CN 8-digit code and supplier
+        id: fetch_cn8
+        continue-on-error: true
+        run: python fetch_cn8.py --out data
+
+      - name: Commit the snapshot and its log if they changed
+        if: always()
+        run: |
+          git config user.name "Diogo Ribeiro"
+          git config user.email "diogo_dj@hotmail.com"
+          git add data
+          if git diff --cached --quiet; then
+            echo "Snapshot unchanged."
+          else
+            git commit -m "Refresh data snapshot for dependency-screen-design ($(date -u +%Y-%m-%d))"
+            pushed=no
+            for i in 1 2 3; do
+              if git push; then pushed=yes; break; fi
+              git pull --no-rebase --no-edit origin "${GITHUB_REF_NAME}" || true
+              sleep 5
+            done
+            test "$pushed" = yes
+          fi
+
+      - name: Fail if a request failed
+        if: steps.fetch.outcome == 'failure' || steps.fetch_cn8.outcome == 'failure'
+        run: |
+          cat data/fetch_log.txt
+          exit 1

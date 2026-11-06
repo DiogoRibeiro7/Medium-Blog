@@ -1,0 +1,122 @@
+Supply-based screen, 2025 (Prodcom 2025 production, Comext 2025 trade summed from CN 8-digit codes)
+  Prodcom codes with data: 4151; linked to CN trade: 3504; dropped because a CN code is shared between Prodcom codes: 276
+  excluded: production not published 8, no extra-EU imports 1
+  analysed: 3495 products; EU production EUR 5,023 bn, extra-EU imports EUR 1,849 bn, extra-EU exports EUR 2,254 bn
+  check: Prodcom's published extra-EU imports against the CN aggregation, 3474 products: median ratio 1.000, within 5% for 99%
+  apparent consumption is zero or negative for 111 products and below a tenth of supply for 36; consumption-based exposure exceeds 100% for 136
+
+Importance criterion (extra-EU share of all EU imports) against the outside share of EU supply
+  Spearman 0.762; median importance 0.33, median outside share of supply 0.22
+  importance > 0.5: 734; outside share of supply > 0.5: 792; both 453; importance only 281; supply only 339
+  intra-EU imports exceed EU production for 1077 products (31%); median intra-EU imports / production 0.64
+
+Substitutability criterion (extra-EU imports / total EU exports) against EU production relative to extra-EU imports
+  Spearman of the ratio with the EU share of supply -0.809
+  ratio > 1: 260; EU production below extra-EU imports: 792; both 202; ratio only 58; production only 590
+  total EU exports (extra + intra) exceed EU production for 1923 products (55%)
+
+Screens on the same 3495 products
+  Commission: 110 products, extra-EU imports EUR 113.6 bn, imports from the largest supplier EUR 90.0 bn
+  proposed (E > 25%): 760 products, extra-EU imports EUR 734.3 bn, imports from the largest supplier EUR 450.3 bn
+  both: 93 products, extra-EU imports EUR 112.5 bn, imports from the largest supplier EUR 89.2 bn
+  Commission only: 17 products, extra-EU imports EUR 1.1 bn, imports from the largest supplier EUR 0.9 bn
+  proposed only: 667 products, extra-EU imports EUR 621.8 bn, imports from the largest supplier EUR 361.1 bn
+  Commission-only products: median exposure 0.13; median EU share of supply 0.80
+  proposed-only products: failing HHI 284, importance 345, substitutability 579 (of 667)
+  proposed screen by largest supplier (products; EUR bn from that supplier): China 454 (271.7); United States 68 (85.2); Switzerland 20 (25.9); Bangladesh 14 (10.2); Brazil 12 (5.9); Türkiye 23 (5.1); South Korea 8 (4.7); United Kingdom 19 (4.6)
+  Commission screen by largest supplier (products; EUR bn from that supplier): China 42 (53.0); United States 13 (20.0); Switzerland 8 (6.7); Ukraine 1 (2.1); Pakistan 2 (1.3); Indonesia 3 (1.0); South Korea 2 (1.0); Russia 2 (0.8)
+
+Sensitivity of the proposed screen to its threshold
+  10%: 1702 products (EUR 719 bn); 15%: 1269 products (EUR 620 bn); 20%: 966 products (EUR 537 bn); 25%: 760 products (EUR 450 bn); 30%: 586 products (EUR 349 bn); 35%: 464 products (EUR 309 bn); 40%: 361 products (EUR 250 bn); 50%: 223 products (EUR 177 bn); 60%: 129 products (EUR 141 bn)
+
+The trade-only stand-in (largest supplier's share of all EU imports) against supply-based exposure
+  Spearman 0.815; E > 25%: 760; trade-only > 25%: 799; both 553; E only 207; trade-only only 246
+
+Where trade circulates inside the single market: by NACE division (first two digits of the Prodcom code), divisions with at least 40 products
+  14: 119 products; median intra-EU imports / production 2.99; total exports above production 91%; flagged: supply-based 57, Commission 0
+  32: 142 products; median intra-EU imports / production 1.22; total exports above production 87%; flagged: supply-based 71, Commission 7
+  26: 194 products; median intra-EU imports / production 0.86; total exports above production 74%; flagged: supply-based 66, Commission 7
+  15: 49 products; median intra-EU imports / production 1.21; total exports above production 69%; flagged: supply-based 15, Commission 1
+  27: 219 products; median intra-EU imports / production 0.76; total exports above production 68%; flagged: supply-based 63, Commission 4
+  21: 53 products; median intra-EU imports / production 0.55; total exports above production 66%; flagged: supply-based 14, Commission 3
+  13: 145 products; median intra-EU imports / production 0.67; total exports above production 59%; flagged: supply-based 47, Commission 13
+  24: 206 products; median intra-EU imports / production 0.70; total exports above production 57%; flagged: supply-based 58, Commission 11
+  20: 569 products; median intra-EU imports / production 0.75; total exports above production 56%; flagged: supply-based 118, Commission 24
+  30: 54 products; median intra-EU imports / production 0.49; total exports above production 56%; flagged: supply-based 22, Commission 6
+  25: 255 products; median intra-EU imports / production 0.70; total exports above production 55%; flagged: supply-based 54, Commission 3
+  28: 540 products; median intra-EU imports / production 0.45; total exports above production 54%; flagged: supply-based 56, Commission 4
+  29: 74 products; median intra-EU imports / production 0.67; total exports above production 50%; flagged: supply-based 7, Commission 1
+  22: 124 products; median intra-EU imports / production 0.63; total exports above production 46%; flagged: supply-based 20, Commission 3
+  08: 47 products; median intra-EU imports / production 0.43; total exports above production 34%; flagged: supply-based 10, Commission 4
+  23: 142 products; median intra-EU imports / production 0.43; total exports above production 34%; flagged: supply-based 15, Commission 2
+  10: 298 products; median intra-EU imports / production 0.50; total exports above production 32%; flagged: supply-based 27, Commission 8
+  17: 103 products; median intra-EU imports / production 0.52; total exports above production 30%; flagged: supply-based 6, Commission 0
+  16: 65 products; median intra-EU imports / production 0.47; total exports above production 25%; flagged: supply-based 8, Commission 3
+
+How concentrated the value at stake is (imports from the largest supplier, products flagged by the supply-based screen)
+  largest 10: 37% of EUR 450 bn
+  largest 20: 47% of EUR 450 bn
+  largest 50: 61% of EUR 450 bn
+  largest 100: 75% of EUR 450 bn
+  largest 200: 87% of EUR 450 bn
+
+A second outside source (second-largest outside supplier's share of EU supply), products flagged by the supply-based screen
+  second supplier below 5% of EU supply: 240 of 760 (32%); below 10%: 432; EU production below 10% of supply as well: 18
+  largest by value among those with neither a second outside source above 5% nor EU production above 10%: Photovoltaic cells assembled in modules  (China 96%, EUR 7.8 bn); Wrist-watches, pocket-watches, with case (Switzerland 90%, EUR 2.3 bn); Artificial flowers, foliage and fruit an (China 95%, EUR 0.7 bn); Nickel mattes (Russia 93%, EUR 0.7 bn); Electrical vibratory-massage apparatus (China 87%, EUR 0.5 bn); Vacuum flasks and other vacuum vessels,  (China 89%, EUR 0.5 bn); Other telephones for cellular networks o (China 79%, EUR 0.2 bn); Personal weighing machines, including ba (China 95%, EUR 0.2 bn)
+
+Worked examples
+  26201100 Laptop PCs and palm-top organisers: production EUR 0.38 bn; extra-EU imports EUR 30.57 bn (China 87%, second 8%); intra-EU imports EUR 29.37 bn; exports extra EUR 4.12 bn, intra EUR 29.91 bn; HHI 0.76, importance 0.51, ratio 0.90 -> Commission no; outside share of supply 99%, exposure 86% -> supply-based yes
+  26302210 Smartphones: production EUR 0.07 bn; extra-EU imports EUR 39.81 bn (China 66%, second 16%); intra-EU imports EUR 38.56 bn; exports extra EUR 6.53 bn, intra EUR 42.64 bn; HHI 0.48, importance 0.51, ratio 0.81 -> Commission no; outside share of supply 100%, exposure 66% -> supply-based yes
+  27202430 Lithium-ion accumulators: production EUR 12.00 bn; extra-EU imports EUR 28.50 bn (China 90%, second 2%); intra-EU imports EUR 20.39 bn; exports extra EUR 4.96 bn, intra EUR 19.76 bn; HHI 0.81, importance 0.58, ratio 1.15 -> Commission yes; outside share of supply 70%, exposure 63% -> supply-based yes
+  30313410 Aeroplanes and other aircraft of an unladen weight > 15 000 : production EUR 15.93 bn; extra-EU imports EUR 22.24 bn (United States 72%, second 10%); intra-EU imports EUR 12.73 bn; exports extra EUR 48.43 bn, intra EUR 10.95 bn; HHI 0.53, importance 0.64, ratio 0.37 -> Commission no; outside share of supply 58%, exposure 42% -> supply-based yes
+  26112230 Photovoltaic cells assembled in modules or made up into pane: production EUR 0.22 bn; extra-EU imports EUR 7.96 bn (China 99%, second 0%); intra-EU imports EUR 4.95 bn; exports extra EUR 0.55 bn, intra EUR 5.05 bn; HHI 0.97, importance 0.62, ratio 1.42 -> Commission yes; outside share of supply 97%, exposure 96% -> supply-based yes
+  10414190 Oilcake and other solid residues from extraction of vegetabl: production EUR 0.46 bn; extra-EU imports EUR 0.25 bn (Indonesia 68%, second 9%); intra-EU imports EUR 0.14 bn; exports extra EUR 0.02 bn, intra EUR 0.17 bn; HHI 0.48, importance 0.65, ratio 1.30 -> Commission yes; outside share of supply 35%, exposure 24% -> supply-based no
+
+Highest exposure, products with extra-EU imports above EUR 200 m
+  26112230 Photovoltaic cells assembled in modules or made up into panels: China 96% of EU supply (outside share 97%, HHI 0.97); imports EUR 7.96 bn; Commission yes
+  32995500 Artificial flowers, foliage and fruit and parts thereof: China 95% of EU supply (outside share 97%, HHI 0.95); imports EUR 0.76 bn; Commission yes
+  24451210 Nickel mattes: Russia 93% of EU supply (outside share 93%, HHI 1.00); imports EUR 0.69 bn; Commission yes
+  26521100 Wrist-watches, pocket-watches, with case of precious metal or of metal: Switzerland 90% of EU supply (outside share 92%, HHI 0.95); imports EUR 2.38 bn; Commission no
+  32995960 Vacuum flasks and other vacuum vessels, complete, and parts thereof (e: China 89% of EU supply (outside share 95%, HHI 0.89); imports EUR 0.52 bn; Commission no
+  26601510 Electrical vibratory-massage apparatus: China 87% of EU supply (outside share 91%, HHI 0.92); imports EUR 0.54 bn; Commission no
+  26201100 Laptop PCs and palm-top organisers: China 86% of EU supply (outside share 99%, HHI 0.76); imports EUR 30.57 bn; Commission no
+  27512850 Domestic electric grills and roasters: China 85% of EU supply (outside share 87%, HHI 0.96); imports EUR 0.25 bn; Commission no
+  32301560 Tennis, badminton or similar rackets, whether or not strung: China 84% of EU supply (outside share 100%, HHI 0.72); imports EUR 0.24 bn; Commission no
+  27512490 Electro-thermic appliances, for domestic use (excluding hairdressing a: China 83% of EU supply (outside share 87%, HHI 0.91); imports EUR 1.71 bn; Commission no
+  26201650 Keyboards: China 83% of EU supply (outside share 90%, HHI 0.85); imports EUR 0.88 bn; Commission no
+  20595980 Products containing nicotine or nicotine substitutes, intended for inh: China 82% of EU supply (outside share 87%, HHI 0.90); imports EUR 1.41 bn; Commission yes
+  24101270 Ferro-niobium: Brazil 82% of EU supply (outside share 99%, HHI 0.71); imports EUR 0.45 bn; Commission no
+  30924030 Baby carriages: China 82% of EU supply (outside share 83%, HHI 0.97); imports EUR 0.35 bn; Commission no
+  32995130 Articles for Christmas festivities (excluding electric garlands, natur: China 82% of EU supply (outside share 89%, HHI 0.84); imports EUR 0.83 bn; Commission yes
+  26406050 Video game consoles (not operated by means of payments): China 80% of EU supply (outside share 100%, HHI 0.65); imports EUR 4.86 bn; Commission no
+  20598300 Fireworks: China 80% of EU supply (outside share 82%, HHI 0.94); imports EUR 0.40 bn; Commission yes
+  26302211 Other telephones for cellular networks or for other wireless networks : China 79% of EU supply (outside share 95%, HHI 0.69); imports EUR 0.30 bn; Commission no
+  22262420 Statuettes and other ornamental articles of plastic (including photogr: China 79% of EU supply (outside share 88%, HHI 0.79); imports EUR 0.62 bn; Commission yes
+  13921150 Blankets and travelling rugs of synthetic fibres (excluding electric b: China 77% of EU supply (outside share 85%, HHI 0.83); imports EUR 0.41 bn; Commission yes
+  26521200 Other wrist-watches, pocket-watches and other watches, including stop-: Switzerland 75% of EU supply (outside share 96%, HHI 0.63); imports EUR 5.04 bn; Commission yes
+  27512890 Domestic electric ovens (excluding those for building-in, microwave ov: China 74% of EU supply (outside share 87%, HHI 0.74); imports EUR 0.54 bn; Commission no
+  32403100 Wheeled toys designed to be ridden by children (excluding bicycles); d: China 74% of EU supply (outside share 77%, HHI 0.93); imports EUR 0.46 bn; Commission no
+  32401200 Toys representing animals or non-human creatures: China 74% of EU supply (outside share 93%, HHI 0.64); imports EUR 1.59 bn; Commission yes
+  30315070 Unmanned multi rotor aircraft, for remote-controlled flight only, with: China 73% of EU supply (outside share 81%, HHI 0.81); imports EUR 1.11 bn; Commission no
+
+Largest products by imports from the main supplier among those flagged by the proposed screen
+  26201100 Laptop PCs and palm-top organisers: China EUR 26.61 bn, 86% of EU supply; Commission no (HHI 0.76, importance 0.51, ratio 0.90)
+  26302210 Smartphones: China EUR 26.24 bn, 66% of EU supply; Commission no (HHI 0.48, importance 0.51, ratio 0.81)
+  27202430 Lithium-ion accumulators: China EUR 25.66 bn, 63% of EU supply; Commission yes (HHI 0.81, importance 0.58, ratio 1.15)
+  21105200 Hormones, prostaglandins, thromboxanes and leukotrienes, natural or re: United States EUR 16.03 bn, 25% of EU supply; Commission no (HHI 0.51, importance 0.82, ratio 0.40)
+  30311600 Parts of turbo-jets or turbo-propellers, for use in civil aircraft: United States EUR 16.02 bn, 38% of EU supply; Commission yes (HHI 0.43, importance 0.84, ratio 1.06)
+  30313410 Aeroplanes and other aircraft of an unladen weight > 15 000 kg, for ci: United States EUR 15.99 bn, 42% of EU supply; Commission no (HHI 0.53, importance 0.64, ratio 0.37)
+  30311200 Turbo-jets and turbo-propellers, for civil use: United States EUR 10.75 bn, 35% of EU supply; Commission no (HHI 0.38, importance 0.87, ratio 0.73)
+  26302320 Machines for the reception, conversion and transmission or regeneratio: China EUR 10.28 bn, 28% of EU supply; Commission no (HHI 0.17, importance 0.52, ratio 0.68)
+  20145280 Compounds containing in the structure an unfused pyridine ring or a qu: China EUR 9.25 bn, 32% of EU supply; Commission no (HHI 0.28, importance 0.72, ratio 1.78)
+  26112230 Photovoltaic cells assembled in modules or made up into panels: China EUR 7.85 bn, 96% of EU supply; Commission yes (HHI 0.97, importance 0.62, ratio 1.42)
+  24412040 Gold (including gold plated with platinum), unwrought: Switzerland EUR 7.82 bn, 28% of EU supply; Commission no (HHI 0.37, importance 0.59, ratio 0.38)
+  21103159 Compounds containing a pyrimidine ring (whether or not hydrogenated) o: China EUR 5.92 bn, 28% of EU supply; Commission no (HHI 0.42, importance 0.81, ratio 0.96)
+  24412050 Gold, in semi-manufactured forms for non-monetary use (including plate: Switzerland EUR 5.22 bn, 47% of EU supply; Commission no (HHI 0.68, importance 0.56, ratio 0.72)
+  14102300 T-shirts, singlets and vests, knitted or crocheted: Bangladesh EUR 3.91 bn, 36% of EU supply; Commission no (HHI 0.21, importance 0.44, ratio 0.61)
+  26521200 Other wrist-watches, pocket-watches and other watches, including stop-: Switzerland EUR 3.91 bn, 75% of EU supply; Commission yes (HHI 0.63, importance 0.60, ratio 1.09)
+  26406050 Video game consoles (not operated by means of payments): China EUR 3.88 bn, 80% of EU supply; Commission no (HHI 0.65, importance 0.45, ratio 0.66)
+  26601280 Electro-diagnostic, apparatus (excluding electro-cardiographs), n.e.c.: United States EUR 3.68 bn, 29% of EU supply; Commission no (HHI 0.36, importance 0.47, ratio 0.50)
+  27512123 Vacuum cleaners with a self-contained electric motor of a power ≤ 1 50: China EUR 3.53 bn, 69% of EU supply; Commission no (HHI 0.70, importance 0.49, ratio 0.71)
+  10414130 Oilcake and other solid residues resulting from the extraction of soya: Brazil EUR 3.50 bn, 43% of EU supply; Commission no (HHI 0.36, importance 0.74, ratio 2.36)
+  26201700 Monitors and projectors, principally used in an automatic data process: China EUR 3.43 bn, 71% of EU supply; Commission no (HHI 0.59, importance 0.52, ratio 0.77)
