@@ -1,6 +1,6 @@
-# More Homes, Higher Prices? The Housing Supply Counterfactual
+# Construction, House Prices and the Missing Counterfactual
 
-This is the public, executable companion to the Medium article **“More Homes, Higher Prices: The Housing Chart That Forgot Its Counterfactual.”** The manuscript is maintained separately in the private `research-articles-medium` editorial repository.
+This is the public, executable companion to the Medium article **“Construction, House Prices and the Missing Counterfactual: Evidence from Bulgaria, Portugal and Four European Housing Markets.”** The article numbers its figures in order of appearance; the file names here keep the companion's own numbering. The manuscript is maintained separately in the private `research-articles-medium` editorial repository.
 
 The project examines a widely circulated 2021–2025 Bulgarian chart that plots the number of completed homes against annual house-price growth in the second quarter. It checks the stated figures, explains why their coexistence is not evidence that construction fails to moderate price growth, and adds audited Portuguese and four-country Eurostat context.
 
