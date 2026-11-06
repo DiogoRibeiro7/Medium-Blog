@@ -6,6 +6,7 @@ on:
       - recovery-after-busts
     paths:
       - 'recovery-after-busts/fetch.py'
+      - 'recovery-after-busts/fetch_long.py'
       - '.github/workflows/recovery-after-busts-data.yml'
   workflow_dispatch:
 
@@ -40,6 +41,11 @@ jobs:
         continue-on-error: true
         run: python fetch.py --out data
 
+      - name: Download the long AMECO series (DBnomics)
+        id: fetch_long
+        continue-on-error: true
+        run: python fetch_long.py --out data
+
       - name: Commit the snapshot and its log if they changed
         if: always()
         run: |
@@ -54,7 +60,7 @@ jobs:
           fi
 
       - name: Fail if any request failed
-        if: steps.fetch.outcome == 'failure'
+        if: steps.fetch.outcome == 'failure' || steps.fetch_long.outcome == 'failure'
         run: |
           cat data/fetch_log.txt
           exit 1
