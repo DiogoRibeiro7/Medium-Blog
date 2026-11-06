@@ -121,8 +121,7 @@ def run_cell(args: tuple) -> list[dict]:
 
 
 def cells_summary(raw: pd.DataFrame) -> pd.DataFrame:
-    def agg(g: pd.DataFrame) -> pd.Series:
-        pi = g.pi.iloc[0]
+    def agg(g: pd.DataFrame, pi: float) -> dict:
         out = {"reps": len(g), "tail_at_tau": g.tail_at_tau.iloc[0], "event_share": (g.events / g.n).mean()}
         for k in ("km_plateau", "pi_ln", "pi_wb", "pi_best"):
             err = g[k] - pi
@@ -139,9 +138,13 @@ def cells_summary(raw: pd.DataFrame) -> pd.DataFrame:
         out["family_gap"] = g.family_gap.median()
         out["extrap_gap"] = g.extrap_gap.median()
         out["converged"] = g.converged.mean()
-        return pd.Series(out)
+        return out
 
-    return raw.groupby(["latency", "pi", "n", "ratio"]).apply(agg).reset_index()
+    # explicit loop: groupby.apply drops the grouping columns in pandas 3
+    rows = []
+    for (lat, pi, n, ratio), g in raw.groupby(["latency", "pi", "n", "ratio"]):
+        rows.append({"latency": lat, "pi": pi, "n": n, "ratio": ratio, **agg(g, pi)})
+    return pd.DataFrame(rows)
 
 
 RULES = {
