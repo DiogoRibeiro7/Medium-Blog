@@ -27,6 +27,11 @@ Nothing here is published automatically.
 | `manifest/bibliography.json` | The result of resolving every DOI and URL | `eu-okun publication --verify-bibliography` |
 | `AUDIT.md` | Snapshot audits, consistency checks and checks of quoted numbers | `eu-okun publication` |
 
+The `--scientific-only` and `--check-scientific` modes are explicit aliases
+for the public research build and check. Both operate without the private Medium
+article or template. The standard `--build` and `--check` modes now have that
+same scientific-only behavior after the manuscript migration.
+
 ## How the numbers reach the text
 
 1. `collect_values` in `src/eu_okun/publication_values.py` reads every quoted number from
@@ -56,6 +61,8 @@ Run from `eu-okun-law/`, one command per line:
 poetry install --extras dev
 poetry check --lock
 poetry run eu-okun publication --check
+poetry run eu-okun publication --check-scientific
+poetry run eu-okun publication --scientific-only --no-figures
 poetry run pytest tests/test_publication.py
 poetry run eu-okun publication --build
 cd publication/manuscript
