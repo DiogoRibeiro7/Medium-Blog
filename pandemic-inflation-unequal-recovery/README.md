@@ -1,6 +1,6 @@
-# Inflation Fell; Prices Did Not — Article 26
+# Measuring the Pandemic Recovery — Article 26
 
-Public reproducibility companion to *Inflation Fell; Prices Did Not*, article #26 on the pandemic recession, inflation, and unequal U.S. adjustment, 2020–2025. The complete 12,972-word editorial manuscript is held in the private `DiogoRibeiro7/research-articles-medium` repository; [article.md](article.md) is a short migration notice. This public directory contains eight original graphics (seven historical, one hypothetical), seven frozen raw files, two derived data panels, three result tables, Python scripts, a reproducible notebook, and unit tests.
+Public reproducibility companion to **[Measuring the Pandemic Recovery: Jobs, the Price Level, Wages, Housing and Household Income in the United States, 2020–2025](https://github.com/DiogoRibeiro7/research-articles-medium/blob/main/us-political-economy/08-pandemic-inflation.md)**, article #26 on the pandemic recession, inflation, and unequal U.S. adjustment, 2020–2025. The complete editorial manuscript is held in the private `DiogoRibeiro7/research-articles-medium` repository; [article.md](article.md) is a short migration notice. This public directory contains eight original graphics (seven historical, one hypothetical), seven frozen raw files, two derived data panels, three result tables, Python scripts, a reproducible notebook, and unit tests.
 
 This is descriptive historical analysis, not a causal attribution of inflation or recovery to an individual law, leader, company, or central-bank action. The data are retrospective 2026-10/2026-11 vintages, not the estimates available in real time in each historical year.
 
