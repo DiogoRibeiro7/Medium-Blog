@@ -1,4 +1,4 @@
-"""The article: generated values, no hand-typed results, true claims."""
+"""Public research validation independent of the private editorial manuscript."""
 
 from __future__ import annotations
 
@@ -9,30 +9,17 @@ from pathlib import Path
 import numpy as np
 import pytest
 
-from iberian_lp.publication import PLACEHOLDER, check, daily, render, table
+from iberian_lp.publication import check_scientific, daily, render, table
 
 ROOT = Path(__file__).resolve().parents[1]
 PUB = ROOT / "publication"
-TEMPLATE = PUB / "article.template.md"
 ESTIMATES = ROOT / "results" / "estimates.json"
-REPOSITORY = "https://github.com/DiogoRibeiro7/Medium-Blog/tree/main/iberian-electricity-lp"
-# Not results: the bounds in the programme (0 ≤ s), the 95% level and citations' years.
-DESIGN_CONSTANTS = {"0", "95", "2005", "2008", "2014"}
-NUMBER = re.compile(r"(?<![\w.])\d+(?:[.,:]\d+)?")
-
-pytestmark = pytest.mark.skipif(not (ESTIMATES.exists() and TEMPLATE.exists()),
-                                reason="No results or article.")
+pytestmark = pytest.mark.skipif(not ESTIMATES.exists(), reason="No frozen results.")
 
 
-def test_no_result_is_typed_by_hand() -> None:
-    text = TEMPLATE.read_text(encoding="utf-8").split("## Data, code and acknowledgements")[0]
-    text = re.sub(r"\]\([^)]*\)", "]", PLACEHOLDER.sub(" ", text))     # link targets
-    found = {m.group(0) for m in NUMBER.finditer(text)}
-    assert sorted(found - DESIGN_CONSTANTS) == [], "use {{placeholders}} for results"
-
-
-def test_generated_article_and_values_are_current() -> None:
-    assert check(ROOT) == []
+def test_generated_scientific_values_are_current() -> None:
+    """Frozen numerical values must agree with the committed result tables."""
+    assert check_scientific(ROOT) == []
 
 
 def test_unknown_and_unused_values_are_errors() -> None:
@@ -40,17 +27,6 @@ def test_unknown_and_unused_values_are_errors() -> None:
         render("{{a}} {{b}}", {"a": "1"})
     with pytest.raises(KeyError, match="does not use"):
         render("{{a}}", {"a": "1", "b": "2"})
-
-
-def test_article_cites_the_source_and_the_software() -> None:
-    article = re.sub(r"\s+", " ", (PUB / "article.md").read_text(encoding="utf-8"))
-    source = "Data: OMIE (OMI-Polo Español, S.A.), [omie.es](https://www.omie.es)"
-    assert source in article[:article.index("## A market is a linear programme")]
-    assert "keeping its original content intact and citing the source" in article
-    assert REPOSITORY in article
-    for doi in ("10.1007/s12532-017-0130-5", "10.1038/s41592-019-0686-2",
-                "10.1016/j.enpol.2008.03.035"):
-        assert doi in article
 
 
 def _accepted_never_above_offered_below_price() -> bool:
@@ -71,11 +47,10 @@ def _accepted_never_above_offered_below_price() -> bool:
     return True
 
 
-def test_words_in_the_article_match_the_results() -> None:
+def test_registered_numerical_claim_conditions_hold() -> None:
     e = json.loads(ESTIMATES.read_text(encoding="utf-8"))
     e1, e2, e3, e4, ph = (e[k] for k in ("E1", "E2", "E3", "E4", "post_hoc"))
     desc = e["descriptive"]
-    text = re.sub(r"\s+", " ", TEMPLATE.read_text(encoding="utf-8"))
     methods = re.sub(r"\s+", " ", (ROOT / "METHODS.md").read_text(encoding="utf-8"))
     sens = e3["sensitivity"]
     ratio_small = e3["mean"]["estimate"] / sens["500 MW"]["mean"]["estimate"]
@@ -187,12 +162,9 @@ def test_words_in_the_article_match_the_results() -> None:
             e4["imports"]["low"] > 0 and e4["exports"]["high"] < 0,
         "the response to losing imports was about twice the response to losing exports":
             1.7 < abs(e4["imports"]["estimate"] / e4["exports"]["estimate"]) < 2.3,
-        "the market imports when Iberian prices are high":
-            "A plausible reading, which the study did not test" in text,
     }
-    for phrase, holds in claims.items():
-        assert phrase in text, phrase
-        assert holds, phrase
+    for claim, holds in claims.items():
+        assert holds, claim
 
 
 def _split_prices_differ() -> float:

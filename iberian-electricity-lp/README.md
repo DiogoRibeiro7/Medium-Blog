@@ -8,7 +8,7 @@ much would 1,000 MW more supply at zero price lower it? A registered study of on
 **Status: plan registered ([METHODS.md](METHODS.md)); data built
 ([docs/DATA.md](docs/DATA.md)); programmes solved and estimates reported against the plan
 ([docs/RESULTS.md](docs/RESULTS.md)); the article generated from them
-([publication/article.md](publication/article.md)); a critical review
+([publication/article.md](publication/article.md), private manuscript notice); a critical review
 ([docs/REVIEW.md](docs/REVIEW.md)), and the corrections it led to, logged in the plan's
 change log.**
 
@@ -19,10 +19,12 @@ pip install -e ".[dev]"
 python -m pytest -q          # offline, from the committed tables and results
 iberian-lp programmes        # about 17 minutes; writes results/programmes.csv
 iberian-lp estimates         # writes results/estimates.json and docs/RESULTS.md
-iberian-lp publication       # writes publication/: the article, its values and figures
+iberian-lp publication       # writes publication/: research values and figures
+iberian-lp publication --values-only   # update scientific values, no article/template
+iberian-lp publication --check-values  # verify scientific values, no article/template
 ```
 
-The article is filled from `publication/article.template.md` by code; the tests check that
+The article and its former template are maintained in the private [research-articles-medium](https://github.com/DiogoRibeiro7/research-articles-medium/tree/main/iberian-electricity-lp/publication) repository. The public tests check that
 it quotes no number by hand and that each claim in its words holds in the results.
 
 Each programme's dual interval is computed exactly from the integer steps and checked

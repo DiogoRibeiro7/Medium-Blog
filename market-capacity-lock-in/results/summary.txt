@@ -1,0 +1,87 @@
+== Demand calibration
+Gini 0.309 -> lognormal sigma 0.5621
+food reference price: 3% priced out; need bought at p0 = 0.9946
+food discretionary layer x = 0.25 per household at p0, eta = 1.0; price elasticity of total demand at p0: -0.221
+need-only demand elasticity at p0: -0.025
+  food price x1.25: total demand 0.953; priced out 0.069, unmet need 0.014
+  food price x1.5: total demand 0.915; priced out 0.123, unmet need 0.027
+  food price x2: total demand 0.849; priced out 0.259, unmet need 0.068
+  food price x3: total demand 0.727; priced out 0.529, unmet need 0.178
+  housing price x1.25: priced out 0.106
+  housing price x1.5: priced out 0.178
+  housing price x1.65: priced out 0.225
+  housing price x2: priced out 0.340
+
+== Food: equilibria and the fold
+open borrowing (M >= 1.000): fold at phi_c = 0.2821, K at fold = 0.4806
+phi0 = 0.1: anchored capacity 0.9339 of need; borrowed 0.0661
+restart needs price above c(0) = 1.4321 p0 at phi_c (world price 1.0)
+restart premium at phi_c: 0.4321 p0 per unit; at phi0: 0.2500
+  open, phi 0.10: upper branch K = 0.9339, price 1.000
+  open, phi 0.20: upper branch K = 0.7564, price 1.000
+  open, phi 0.25: upper branch K = 0.6381, price 1.000
+  open, phi 0.27: upper branch K = 0.5718, price 1.000
+capped (M = 0.3): upper branch at phi 0.40 = 0.6682
+
+== Food: erosion with a disruption
+open world, phi 0.10 -> 0.35 over 40 years: {'price_up_2pct': 50.0, 'capacity_down_20pct': 21.05, 'capacity_below_10pct_of_need': 60.75}
+capped world (M = 0.3): {'price_up_2pct': 25.6, 'capacity_down_20pct': 21.05, 'capacity_below_10pct_of_need': None}
+  open_shock_year50: anchored K at shock start 0.2250; peak price 3.021 p0; peak priced out 0.534; peak unmet need 0.180
+  open_shock_year5: anchored K at shock start 0.9089; peak price 1.000 p0; peak priced out 0.030; peak unmet need 0.005
+  open world after the disruption, year 70: K 0.03432, price 1.000
+  capped world, year 70: K 0.6767, price 1.115 p0, priced out 0.046
+  disruption removes 15% of borrowed supply, anchored K 0.00: price 1.996 p0, priced out 0.257, unmet 0.067
+  disruption removes 15% of borrowed supply, anchored K 0.25: price 1.705 p0, priced out 0.176, unmet 0.042
+  disruption removes 15% of borrowed supply, anchored K 0.50: price 1.432 p0, priced out 0.107, unmet 0.023
+  disruption removes 15% of borrowed supply, anchored K 0.75: price 1.193 p0, priced out 0.059, unmet 0.012
+  disruption removes 15% of borrowed supply, anchored K 0.90: price 1.072 p0, priced out 0.039, unmet 0.007
+  disruption removes 30% of borrowed supply, anchored K 0.00: price 3.239 p0, priced out 0.583, unmet 0.206
+  disruption removes 30% of borrowed supply, anchored K 0.25: price 2.600 p0, priced out 0.428, unmet 0.132
+  disruption removes 30% of borrowed supply, anchored K 0.50: price 1.996 p0, priced out 0.257, unmet 0.067
+  disruption removes 30% of borrowed supply, anchored K 0.75: price 1.432 p0, priced out 0.107, unmet 0.023
+  disruption removes 30% of borrowed supply, anchored K 0.90: price 1.151 p0, priced out 0.051, unmet 0.010
+  disruption removes 50% of borrowed supply, anchored K 0.00: price 5.395 p0, priced out 0.868, unmet 0.424
+  disruption removes 50% of borrowed supply, anchored K 0.25: price 3.944 p0, priced out 0.712, unmet 0.286
+  disruption removes 50% of borrowed supply, anchored K 0.50: price 2.808 p0, priced out 0.482, unmet 0.156
+  disruption removes 50% of borrowed supply, anchored K 0.75: price 1.801 p0, priced out 0.202, unmet 0.050
+  disruption removes 50% of borrowed supply, anchored K 0.90: price 1.268 p0, priced out 0.072, unmet 0.015
+
+== Food: retirement wave
+Portugal 2023, farm managers aged 65+: 0.519
+  exit rate if they all leave within 10 years: 0.0732 per year
+  exit rate if they all leave within 15 years: 0.0488 per year
+  exit rate if they all leave within 20 years: 0.0366 per year
+  M = 1, phi 0.10: start K 0.9339; longest wave that is not survived: None years
+  M = 1, phi 0.18: start K 0.7961; longest wave that is not survived: None years
+  M = 1, phi 0.22: start K 0.7133; longest wave that is not survived: None years
+  M = 1, phi 0.25: start K 0.6381; longest wave that is not survived: 5.0 years
+  M = 1, phi 0.27: start K 0.5718; longest wave that is not survived: 12.0 years
+  M = 0.3, phi 0.10: start K 0.9339; longest wave that is not survived: None years
+  M = 0.3, phi 0.18: start K 0.7961; longest wave that is not survived: None years
+  M = 0.3, phi 0.22: start K 0.7133; longest wave that is not survived: None years
+  M = 0.3, phi 0.25: start K 0.6952; longest wave that is not survived: None years
+  M = 0.3, phi 0.27: start K 0.6913; longest wave that is not survived: None years
+
+== Food: Monte Carlo over the capacity curve
+draws 2000, with a domestic sector viable above phi0 + 0.02: 1797
+  headroom phi_c - phi0: median 0.1538, 10-90% 0.0602 to 0.2602
+  restart premium at the fold: median 0.3785 p0; 10-90% 0.1650 to 0.6326; share <= 0 (no lock-in) 0.001
+  anchored capacity at the fold: median 0.4982
+  wave over 5 years: share that never recovers, open 0.402, capped 0.000
+  wave over 10 years: share that never recovers, open 0.182, capped 0.000
+  wave over 15 years: share that never recovers, open 0.056, capped 0.000
+  wave over 20 years: share that never recovers, open 0.009, capped 0.000
+
+== Housing: fit to Portugal, 2008-2025
+household growth from Eurostat lfst_hhnhtych: 0.0073 (2006-2019), 0.0138 (2019-2025)
+fitted: kappa 0.121 p0, non-primary demand x0.859 in 2009-2013, x1.382 by 2025
+mean squared log error per point (both series): 0.00355; RMSE 0.0422
+  2013: capacity model 0.635 data 0.572; price model 0.928 data 0.849; priced out 0.028
+  2014: capacity model 0.580 data 0.548; price model 0.937 data 0.897; priced out 0.029
+  2019: capacity model 0.640 data 0.654; price model 1.147 data 1.152; priced out 0.062
+  2025: capacity model 0.790 data 0.819; price model 1.474 data 1.511; priced out 0.137
+  fitted: capacity 2014 0.491, 2025 0.670, 2030 0.805; price 2025 1.363 p0; priced out 2025 0.137, 2030 0.165
+  floor_80pct_2008_2016: capacity 2014 0.800, 2025 1.033, 2030 1.233; price 2025 1.213 p0; priced out 2025 0.096, 2030 0.101
+  rebuild_as_fast_as_loss: capacity 2014 0.499, 2025 1.012, 2030 1.412; price 2025 1.298 p0; priced out 2025 0.119, 2030 0.117
+  no_bust: capacity 2014 0.848, 2025 1.108, 2030 1.255; price 2025 1.181 p0; priced out 2025 0.089, 2030 0.091
+  bust_until_2018: capacity 2014 0.491, 2025 0.373, 2030 0.436; price 2025 1.453 p0; priced out 2025 0.164, 2030 0.223
