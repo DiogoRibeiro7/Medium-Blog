@@ -77,6 +77,40 @@ def fit(df: pd.DataFrame, t: str, event: str, z_cols: list[str], x_cols: list[st
     )
 
 
+def fit_lognormal(df: pd.DataFrame, t: str, event: str, x_cols: list[str], ridge: float = 1e-3) -> CureFit:
+    """Lognormal accelerated failure time model with no never-recover fraction (pi = 0)."""
+    T = np.maximum(df[t].to_numpy(dtype=float), 0.5)
+    E = df[event].to_numpy(dtype=float)
+    X = _design(df, x_cols)
+    logT = np.log(T)
+
+    def nll(theta):
+        b, ls = theta[:-1], theta[-1]
+        s = np.exp(ls)
+        u = (logT - X @ b) / s
+        logf = -0.5 * u * u - np.log(s * np.sqrt(2 * np.pi)) - logT
+        ll = np.where(E == 1, logf, log_ndtr(-u))
+        return -ll.sum() + ridge * np.sum(b**2)
+
+    start = np.zeros(X.shape[1] + 1)
+    start[0] = np.log(np.median(T))
+    res = minimize(nll, start, method="BFGS", options={"maxiter": 2000, "gtol": 1e-6})
+    th = res.x
+    return CureFit(gamma=pd.Series(dtype=float), beta=pd.Series(th[:-1], index=["const"] + x_cols), log_s=float(th[-1]), loglik=float(-res.fun), n=len(df), events=int(E.sum()))
+
+
+def not_recovered(f: CureFit, df: pd.DataFrame, t: float) -> np.ndarray:
+    """Model probability that each episode is still below its peak t years after the trough."""
+    X = _design(df, [c for c in f.beta.index if c != "const"])
+    u = (np.log(t) - X @ f.beta.to_numpy()) / np.exp(f.log_s)
+    S = ndtr(-u)
+    if f.gamma.empty:
+        return S
+    Z = _design(df, [c for c in f.gamma.index if c != "const"])
+    pi = expit(Z @ f.gamma.to_numpy())
+    return pi + (1 - pi) * S
+
+
 def bootstrap(df: pd.DataFrame, t: str, event: str, z_cols: list[str], x_cols: list[str], cluster: str = "geo", B: int = 400, seed: int = 11) -> pd.DataFrame:
     """Cluster bootstrap over countries; returns one row per replicate."""
     rng = np.random.default_rng(seed)

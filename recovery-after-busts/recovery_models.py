@@ -25,7 +25,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-from cure import bootstrap, fit, km
+from cure import bootstrap, fit, fit_lognormal, km, not_recovered
 
 HERE = Path(__file__).resolve().parent
 RES = HERE / "results"
@@ -201,6 +201,137 @@ def depth_bands(d: pd.DataFrame, B: int, label: str) -> list[dict]:
     return rows
 
 
+def with_bands(d: pd.DataFrame) -> tuple[pd.DataFrame, list[str]]:
+    d = d[d.stage.isin(["single market", "euro"])].copy()
+    d["band"] = pd.cut(d.depth, DEPTH_BANDS, labels=DEPTH_LABELS, right=False)
+    names = []
+    for i, lab in enumerate(DEPTH_LABELS[1:], start=1):
+        d[f"band{i}"] = (d.band == lab).astype(int)
+        names.append(f"band{i}")
+    d["euro"] = (d.stage == "euro").astype(int)
+    return d, names
+
+
+def cure_vs_lognormal(g: pd.DataFrame, label: str, horizons=(10, 20, 40)) -> list[dict]:
+    """Same timing covariates with and without a never-recover fraction; fit and extrapolation by band."""
+    d, bands = with_bands(g)
+    c = fit(d, "t_full", "full_recovered", bands + ["tradable", "euro"], bands + ["tradable"])
+    l = fit_lognormal(d, "t_full", "full_recovered", bands + ["tradable", "euro"])
+    k_c = len(c.gamma) + len(c.beta) + 1
+    k_l = len(l.beta) + 1
+    rows = []
+    for lab in DEPTH_LABELS:
+        sub = d[d.band == lab]
+        obs = km(sub.t_full.to_numpy(), sub.full_recovered.to_numpy(), np.array([10.0, 20.0]))
+        row = {
+            "sample": label,
+            "band": lab,
+            "n": len(sub),
+            "aic_cure": 2 * k_c - 2 * c.loglik,
+            "aic_lognormal": 2 * k_l - 2 * l.loglik,
+            "km_10": obs[0],
+            "km_20": obs[1],
+            "at_risk_10": int((sub.t_full >= 10).sum()),
+            "at_risk_20": int((sub.t_full >= 20).sum()),
+            "max_follow_up": int(sub.follow_up.max()),
+        }
+        for h in horizons:
+            row[f"cure_{h}"] = float(not_recovered(c, sub, h).mean())
+            row[f"lognormal_{h}"] = float(not_recovered(l, sub, h).mean())
+        row["lognormal_median_years"] = float(np.median(np.exp(np.column_stack([np.ones(len(sub))] + [sub[k].to_numpy(float) for k in bands + ["tradable", "euro"]]) @ l.beta.to_numpy())))
+        rows.append(row)
+    return rows
+
+
+def long_tail(g: pd.DataFrame, label: str) -> list[dict]:
+    """How much follow-up the long series carry: Kaplan-Meier and numbers still at risk, EU members."""
+    g = g[g.stage != "outside"].copy()
+    edges, labels = [0.0, 0.3, 0.5, np.inf], ["<0.30", "0.30-0.50", ">0.50"]
+    g["band"] = pd.cut(g.depth, edges, labels=labels, right=False)
+    rows = []
+    for lab in labels:
+        s = g[g.band == lab]
+        k = km(s.t_full.to_numpy(), s.full_recovered.to_numpy(), np.array([10.0, 20.0, 30.0]))
+        rows.append({"sample": label, "band": lab, "n": len(s), "km_10": k[0], "km_20": k[1], "km_30": k[2], "at_risk_10": int((s.t_full >= 10).sum()), "at_risk_20": int((s.t_full >= 20).sum()), "at_risk_30": int((s.t_full >= 30).sum())})
+    return rows
+
+
+def km_boot(d: pd.DataFrame, horizons, B: int, seed: int = 5) -> tuple[np.ndarray, np.ndarray]:
+    """Kaplan-Meier share still below peak at the horizons, and country-bootstrap replicates."""
+    h = np.array(horizons, float)
+    est = km(d.t_full.to_numpy(), d.full_recovered.to_numpy(), h)
+    rng = np.random.default_rng(seed)
+    geos = d.geo.unique()
+    idx = {g: np.flatnonzero(d.geo.to_numpy() == g) for g in geos}
+    reps = []
+    for _ in range(B):
+        rows = np.concatenate([idx[g] for g in rng.choice(geos, len(geos), replace=True)])
+        b = d.iloc[rows]
+        reps.append(km(b.t_full.to_numpy(), b.full_recovered.to_numpy(), h))
+    return est, np.array(reps)
+
+
+def km_depth(g: pd.DataFrame, B: int, label: str) -> list[dict]:
+    """Model-free: share still below the peak 5 and 10 years after the trough, by depth band."""
+    d, _ = with_bands(g)
+    rows = []
+    for lab in DEPTH_LABELS:
+        sub = d[d.band == lab]
+        est, reps = km_boot(sub, (5, 10), B)
+        rows.append(
+            {
+                "sample": label,
+                "band": lab,
+                "n": len(sub),
+                "below_5": est[0],
+                "below_5_lo": float(np.percentile(reps[:, 0], 5)),
+                "below_5_hi": float(np.percentile(reps[:, 0], 95)),
+                "below_10": est[1],
+                "below_10_lo": float(np.percentile(reps[:, 1], 5)),
+                "below_10_hi": float(np.percentile(reps[:, 1], 95)),
+                "at_risk_10": int((sub.t_full >= 10).sum()),
+            }
+        )
+    return rows
+
+
+def km_tradable_gap(g: pd.DataFrame, B: int, label: str) -> list[dict]:
+    """Model-free tradable gap: share still below peak at 10 years, tradable minus non-tradable."""
+    rows = []
+    for st in ("single market", "euro"):
+        d = g[g.stage == st]
+        a, ra = km_boot(d[d.tradable == 1], (5, 10), B, seed=7)
+        b, rb = km_boot(d[d.tradable == 0], (5, 10), B, seed=7)
+        # resample tradable and non-tradable with the same country draws
+        rng = np.random.default_rng(9)
+        geos = d.geo.unique()
+        reps = []
+        for _ in range(B):
+            pick = rng.choice(geos, len(geos), replace=True)
+            bt = pd.concat([d[(d.geo == x)] for x in pick])
+            t1 = km(bt[bt.tradable == 1].t_full.to_numpy(), bt[bt.tradable == 1].full_recovered.to_numpy(), np.array([5.0, 10.0]))
+            t0 = km(bt[bt.tradable == 0].t_full.to_numpy(), bt[bt.tradable == 0].full_recovered.to_numpy(), np.array([5.0, 10.0]))
+            reps.append(t1 - t0)
+        reps = np.array(reps)
+        rows.append(
+            {
+                "sample": label,
+                "stage": st,
+                "n_tradable": int((d.tradable == 1).sum()),
+                "n_nontradable": int((d.tradable == 0).sum()),
+                "tradable_below_10": a[1],
+                "nontradable_below_10": b[1],
+                "gap_5": a[0] - b[0],
+                "gap_5_lo": float(np.percentile(reps[:, 0], 5)),
+                "gap_5_hi": float(np.percentile(reps[:, 0], 95)),
+                "gap_10": a[1] - b[1],
+                "gap_10_lo": float(np.percentile(reps[:, 1], 5)),
+                "gap_10_hi": float(np.percentile(reps[:, 1], 95)),
+            }
+        )
+    return rows
+
+
 def robustness(g: pd.DataFrame, B: int, label: str) -> list[dict]:
     checks = {
         "trough by 2015 (10+ years of follow-up)": g[g.trough_year <= 2015],
@@ -232,17 +363,22 @@ def main() -> None:
     a64 = prep(pd.read_csv(RES / "episodes_all.csv"))
     longe = prep(pd.read_csv(RES / "long_episodes.csv"))
 
-    a_rows, l_rows, km_rows, band_rows, rob_rows = [], [], [], [], []
+    a_rows, l_rows, km_rows, band_rows, rob_rows, cmp_rows, kmd_rows, kmg_rows = [], [], [], [], [], [], [], []
     for (m, v), g in a64.groupby(["measure", "version"]):
         for controls in (False, True):
             d, z, x = a64_spec(g, controls)
             a_rows.append(summarise_a64(d, z, x, args.boot, f"A*64 {m} {v}" + (" + GDP after trough" if controls else "")))
         band_rows += depth_bands(g, args.boot, f"A*64 {m} {v}")
+        cmp_rows += cure_vs_lognormal(g, f"A*64 {m} {v}")
+        kmd_rows += km_depth(g, args.boot, f"A*64 {m} {v}")
+        kmg_rows += km_tradable_gap(g, args.boot, f"A*64 {m} {v}")
         rob_rows += robustness(g, args.boot, f"A*64 {m} {v}")
         kt = km_table(g[g.stage.isin(["single market", "euro"])], ["stage", "tradable"])
         kt.insert(0, "sample", f"A*64 {m} {v}")
         km_rows.append(kt)
+    tail_rows = []
     for (m, v), g in longe.groupby(["measure", "version"]):
+        tail_rows += long_tail(g, f"AMECO {m} {v}")
         d, z, x = long_spec(g)
         l_rows += summarise_long(d, z, x, args.boot, f"AMECO {m} {v}")
         kt = km_table(d, ["group", "tradable"])
@@ -255,6 +391,14 @@ def main() -> None:
     Lg = pd.DataFrame(l_rows)
     R.to_csv(RES / "cure_a64_robustness.csv", index=False)
     D.to_csv(RES / "cure_depth_bands.csv", index=False)
+    C = pd.DataFrame(cmp_rows)
+    C.to_csv(RES / "cure_vs_lognormal.csv", index=False)
+    KD = pd.DataFrame(kmd_rows)
+    KG = pd.DataFrame(kmg_rows)
+    KD.to_csv(RES / "km_depth_bands.csv", index=False)
+    KG.to_csv(RES / "km_tradable_gap.csv", index=False)
+    T = pd.DataFrame(tail_rows)
+    T.to_csv(RES / "long_follow_up.csv", index=False)
     K = pd.concat(km_rows, ignore_index=True)
     A.to_csv(RES / "cure_a64.csv", index=False)
     Lg.to_csv(RES / "cure_long.csv", index=False)
@@ -262,6 +406,13 @@ def main() -> None:
 
     L = []
     say = L.append
+    say("0. Model-free (Kaplan-Meier): share still below the peak 5 and 10 years after the trough, single market and euro stages, 90% country-bootstrap intervals")
+    for s_, g in KD.groupby("sample", sort=False):
+        say(f"  {s_}: " + "; ".join(f"{r.band} n={r.n} 5 y {r.below_5:.2f} [{r.below_5_lo:.2f}, {r.below_5_hi:.2f}], 10 y {r.below_10:.2f} [{r.below_10_lo:.2f}, {r.below_10_hi:.2f}] (at risk {r.at_risk_10})" for _, r in g.iterrows()))
+    say("  Tradable minus non-tradable, share still below peak")
+    for _, r in KG.iterrows():
+        say(f"    {r['sample']} {r.stage}: n={r.n_tradable}/{r.n_nontradable}; 10 y tradable {r.tradable_below_10:.2f}, non-tradable {r.nontradable_below_10:.2f}; gap 5 y {r.gap_5:+.2f} [{r.gap_5_lo:+.2f}, {r.gap_5_hi:+.2f}], 10 y {r.gap_10:+.2f} [{r.gap_10_lo:+.2f}, {r.gap_10_hi:+.2f}]")
+    say("")
     say("Share of busts that never regain their peak (mixture cure model), at the median depth.")
     say("Gap = tradable minus non-tradable; 90% intervals from a bootstrap over countries.\n")
     say("1. Within the open market: A*64 industries, EU-27, troughs 1995-2024")
@@ -278,6 +429,12 @@ def main() -> None:
     say("\n   By depth band (log points), single market and euro stages")
     for s_, g in D.groupby("sample", sort=False):
         say(f"    {s_}: " + "; ".join(f"{r.band} n={r.n} never {r.never:.2f} [{r.never_lo:.2f}, {r.never_hi:.2f}], median {r.median_years_recoverers:.1f} y, observed speed {r.observed_regain_speed:.3f}/y" for _, r in g.iterrows()))
+    say("\n   Cure model against a lognormal model with no never-recover fraction (same covariates, by depth band)")
+    for s_, g in C.groupby("sample", sort=False):
+        r0 = g.iloc[0]
+        say(f"    {s_}: AIC cure {r0.aic_cure:.1f}, lognormal {r0.aic_lognormal:.1f}")
+        for _, r in g.iterrows():
+            say(f"      {r.band}: n={r.n}; still below peak, observed (Kaplan-Meier) 10 y {r.km_10:.2f} (at risk {r.at_risk_10}), 20 y {r.km_20:.2f} (at risk {r.at_risk_20}); cure model 10/20/40 y {r.cure_10:.2f}/{r.cure_20:.2f}/{r.cure_40:.2f}; lognormal 10/20/40 y {r.lognormal_10:.2f}/{r.lognormal_20:.2f}/{r.lognormal_40:.2f}, median {r.lognormal_median_years:.1f} y")
     say("\n2. Across stages: AMECO sectors, 1960-2025")
     for s, g in Lg.groupby("sample", sort=False):
         say(f"  {s}")
@@ -286,6 +443,9 @@ def main() -> None:
                 say(f"    {r.group}: {r.gap:+.2f} [{r.gap_lo:+.2f}, {r.gap_hi:+.2f}]")
             else:
                 say(f"    {r.group:22s} n={int(r.n_nontradable)}/{int(r.n_tradable)}  never non-tradable {r.never_nontradable:.2f}, tradable {r.never_tradable:.2f}, gap {r.gap:+.2f} [{r.gap_lo:+.2f}, {r.gap_hi:+.2f}]")
+    say("\n   Follow-up in the long series (EU members): share still below peak and episodes still observed")
+    for _, r in T.iterrows():
+        say(f"    {r['sample']} {r.band}: n={r.n}; 10 y {r.km_10:.2f} (at risk {r.at_risk_10}), 20 y {r.km_20:.2f} (at risk {r.at_risk_20}), 30 y {r.km_30:.2f} (at risk {r.at_risk_30})")
     text = "\n".join(L) + "\n"
     (RES / "cure_summary.txt").write_text(text)
     print(text)

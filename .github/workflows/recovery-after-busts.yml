@@ -51,5 +51,8 @@ jobs:
       - name: Cure models
         run: python recovery_models.py
 
+      - name: Figures
+        run: python figures.py
+
       - name: Results unchanged
         run: git diff --stat --exit-code -- results/episodes_summary.txt results/long_episodes_summary.txt results/cure_summary.txt

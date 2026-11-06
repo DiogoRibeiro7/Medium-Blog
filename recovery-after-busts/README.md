@@ -10,7 +10,8 @@ traded across the single market?
 python -m pip install -r requirements.txt
 python episodes.py          # A*64 industries, 1995-2025: results/episodes.csv, episodes_all.csv, episodes_summary.txt
 python long_episodes.py     # AMECO sectors, 1960-2025: results/long_episodes.csv, long_episodes_summary.txt
-python recovery_models.py   # mixture cure models: results/cure_*.csv, km_not_recovered.csv, cure_summary.txt (about 5 minutes)
+python recovery_models.py   # Kaplan-Meier and mixture cure models: results/cure_*.csv, km_*.csv, cure_summary.txt (about 6 minutes)
+python figures.py           # figures/fig1_*.png ... fig5_*.png
 python -m pytest -q tests
 ```
 
@@ -36,11 +37,17 @@ python -m pytest -q tests
 
 ## Model
 
-A mixture cure model (`cure.py`): each bust either never regains its peak, with logit probability depending
+Model-free first: Kaplan-Meier estimates of the share of busts still below their peak 5 and 10 years after
+the trough, by depth band and by tradability, with 90% intervals from a bootstrap over countries.
+
+Then a mixture cure model (`cure.py`): each bust either never regains its peak, with logit probability depending
 on tradability, stage and log depth, or regains it after a lognormal time depending on tradability and log
 depth. Fitted by maximum likelihood (BFGS, light ridge penalty); 90% intervals from a bootstrap over
 countries. The never-recover share is identified by the plateau of the recovery curve, so it is fragile when
-follow-up is short: the A*64 robustness check restricted to troughs up to 2015 shows how much.
+follow-up is short: the A*64 robustness check restricted to troughs up to 2015 shows how much. A lognormal
+model with no never-recover fraction is fitted to the same data for comparison (`results/cure_vs_lognormal.csv`):
+the two agree over the observed years and diverge beyond them, and `results/long_follow_up.csv` shows how few
+busts are still observed 20 and 30 years after the trough, even in the 1960-2025 series.
 
 ## Data
 
