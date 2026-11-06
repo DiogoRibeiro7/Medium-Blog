@@ -1061,7 +1061,7 @@ Results are in [docs/HOURS.md](docs/HOURS.md):
 [publication/](publication/README.md) holds the final outputs:
 
 - the LaTeX manuscript ([publication/manuscript/](publication/manuscript/));
-- the Medium article generated from the same values ([publication/medium/article.md](publication/medium/article.md));
+- the numerical values and figures used by the privately maintained Medium article;
 - the data, experiment, environment and value manifests ([publication/manifest/](publication/manifest/));
 - the audit of every prior output ([publication/AUDIT.md](publication/AUDIT.md)).
 

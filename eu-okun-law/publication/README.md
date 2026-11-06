@@ -19,8 +19,6 @@ Nothing here is published automatically.
 | `manuscript/generated/values.tex` | Every number quoted in the text, as `\val{key}` macros | `eu-okun publication` |
 | `manuscript/generated/tab_*.tex` | Tables 2, 3, 4, 6 and the appendix tables | `eu-okun publication` |
 | `manuscript/figures/*.pdf` | Figures for the manuscript | `eu-okun publication` |
-| `medium/article.template.md` | The Medium text, with `{{key}}` placeholders | hand |
-| `medium/article.md` | The Medium article with the values filled in | `eu-okun publication` |
 | `medium/figures/*.png` | Figures for the Medium article | `eu-okun publication` |
 | `manifest/data.json` | SHA-256 of every file of every frozen snapshot | `eu-okun publication` |
 | `manifest/experiments.json` | Each analysis, registered or post hoc: protocol, report, commands, seeds, replication, output fingerprints | `eu-okun publication` |
@@ -29,25 +27,22 @@ Nothing here is published automatically.
 | `manifest/bibliography.json` | The result of resolving every DOI and URL | `eu-okun publication --verify-bibliography` |
 | `AUDIT.md` | Snapshot audits, consistency checks and checks of quoted numbers | `eu-okun publication` |
 
-The `--scientific-only` and `--check-scientific` options regenerate or verify
-numerical macros, research tables, audit reports and machine-readable manifests
-without reading the editorial Medium template or rewriting `medium/article.md`.
-Omit `--no-figures` to regenerate the published scientific figures. The original
-`--build` and `--check` modes continue to include the Medium manuscript until
-its separate public-repository migration is complete.
+The `--scientific-only` and `--check-scientific` modes are explicit aliases
+for the public research build and check. Both operate without the private Medium
+article or template. The standard `--build` and `--check` modes now have that
+same scientific-only behavior after the manuscript migration.
 
 ## How the numbers reach the text
 
 1. `collect_values` in `src/eu_okun/publication_values.py` reads every quoted number from
    the committed result tables under `docs/` and records its source file.
-2. The build writes these values twice from the same source:
-   - as LaTeX macros (`\val{by_mu}`);
-   - into the Medium placeholders (`{{by_mu}}`).
-3. Compilation stops on an undefined key, and so does the Medium rendering.
-4. A test fails if a decimal number other than a protocol constant (a threshold or prior
-   scale) is typed by hand in the manuscript or the Medium template.
+2. The public build writes these values as LaTeX macros (`\val{by_mu}`), and also
+   maintains an auditable numerical registry in `manifest/values.json`.
+3. Compilation stops on an undefined key.
+4. A test fails if a decimal number other than a protocol constant (a threshold or
+   prior scale) is typed by hand in the scientific manuscript.
 
-To change the text, edit `manuscript/sections/*.tex` or `medium/article.template.md`.
+To change the scientific manuscript, edit `manuscript/sections/*.tex`.
 Never edit a generated file: `--check` fails if one differs from what the code produces.
 
 ## Requirements
@@ -66,8 +61,6 @@ Run from `eu-okun-law/`, one command per line:
 poetry install --extras dev
 poetry check --lock
 poetry run eu-okun publication --check
-
-# Manuscript-independent scientific reproduction (preparatory migration modes)
 poetry run eu-okun publication --check-scientific
 poetry run eu-okun publication --scientific-only --no-figures
 poetry run pytest tests/test_publication.py
@@ -288,10 +281,7 @@ snapshot with today's data.
 
 ## Medium
 
-`medium/article.md` contains no LaTeX and no tables, and the build refuses to write it if
-either appears. Medium does not import Markdown files, so the article is posted by hand:
-
-1. paste the text into the editor;
-2. upload each PNG from `medium/figures/` where the article references it.
-
+The editorial Medium article and its source template are maintained in the private
+`DiogoRibeiro7/research-articles-medium` repository. This public companion retains
+the numerical values, research manuscript, methodological audit, and PNG figures.
 Publication is left to the author.
