@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 import json
+
+import pytest
 from pathlib import Path
 from unittest.mock import patch
 
@@ -30,3 +32,24 @@ def test_scientific_check_detects_missing_and_stale_values(tmp_path: Path) -> No
         destination.write_text(scientific_outputs(tmp_path)["publication/values.json"],
                                encoding="utf-8")
         assert check_scientific(tmp_path) == []
+
+
+def test_cli_values_only_and_check_values_without_manuscript(
+    tmp_path: Path, capsys: pytest.CaptureFixture[str]
+) -> None:
+    """CLI generation and verification do not need editorial Markdown."""
+    from iberian_lp.cli import main
+
+    root_flag = ["--root", str(tmp_path)]
+    with patch("iberian_lp.publication.values", return_value={"estimate": "−1.25"}):
+        main(["publication", *root_flag, "--values-only"])
+        assert (tmp_path / "publication" / "values.json").is_file()
+        assert not (tmp_path / "publication" / "article.md").exists()
+        assert not (tmp_path / "publication" / "article.template.md").exists()
+        main(["publication", *root_flag, "--check-values"])
+        assert "current" in capsys.readouterr().out
+
+        (tmp_path / "publication" / "values.json").write_text("{}\n", encoding="utf-8")
+        with pytest.raises(SystemExit) as error:
+            main(["publication", *root_flag, "--check-values"])
+        assert error.value.code == 2
