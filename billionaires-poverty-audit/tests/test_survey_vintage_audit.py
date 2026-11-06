@@ -45,6 +45,29 @@ class SurveyVintageAuditTests(unittest.TestCase):
             places=9,
         )
 
+    def test_reproduces_published_rounded_lag_coefficients(self) -> None:
+        # Broad numerical tolerances absorb minor backend precision differences;
+        # they do not approve the secondary citizenship panel for causal claims.
+        result = module.audit(self.frame)
+        expected = {
+            2: (35, -9.497, 0.028),
+            3: (43, -7.406, 0.111),
+            4: (49, -9.789, 0.054),
+            5: (54, -7.912, 0.119),
+        }
+        fitted = {
+            row["max_years_between_poverty_and_gdp"]: row
+            for row in result["maximum_lag_restrictions"] if row["fitted"]
+        }
+        self.assertEqual(set(fitted), set(expected))
+        for lag, (n, coefficient, p_value) in expected.items():
+            with self.subTest(max_lag=lag):
+                row = fitted[lag]
+                self.assertEqual(row["n"], n)
+                self.assertAlmostEqual(row["billionaire_coef_pp_per_log10"],
+                                       coefficient, delta=0.03)
+                self.assertAlmostEqual(row["hc3_p"], p_value, delta=0.01)
+
     def test_rejects_future_poverty_year(self) -> None:
         corrupted = self.frame.copy()
         corrupted.loc[corrupted.index[0], "poverty_year"] = 2030
