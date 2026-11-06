@@ -1,6 +1,6 @@
-# The Boom Was Not a Balance Sheet
+# Trade, Household Debt and Housing Collateral in the U.S. Expansion, 1990–2007
 
-The full editorial manuscript, *The Boom Was Not a Balance Sheet: Globalization, Household Credit, and the Fragile Prosperity Before 2008*, is maintained in the private [research-articles-medium](https://github.com/DiogoRibeiro7/research-articles-medium) repository.
+The full editorial manuscript is maintained in the private [research-articles-medium](https://github.com/DiogoRibeiro7/research-articles-medium/blob/main/us-political-economy/06-financialization-before-2008.md) repository.
 
 This directory remains its reproducible research companion. The [source snapshots](data/), [data preparation](prepare_data.py), [analysis code](analysis.py), [eight figures](figures/), [three result tables](results/), [notebook](model_walkthrough.ipynb), and [tests](tests/) remain public.
 
