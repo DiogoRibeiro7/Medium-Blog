@@ -67,6 +67,22 @@ jobs:
         run: python municipal_reference_geography_controls.py --output /tmp/porto-reference-geo
       - name: Reproduce matched reference contrasts under identical geographic controls
         run: python municipal_reference_common_geography.py --output /tmp/porto-common-geography
-      - name: Verify manuscript length and figure references
+      - name: Verify private-manuscript notice and public figure archive
         run: |
-          python -c "from pathlib import Path; a=Path('article.md').read_text(encoding='utf-8'); assert len(a.split()) >= 8000, 'Long-form article below 8000 words'; assert all(f'figures/fig{i}_' in a for i in range(1,42)), 'Missing figure references'"
+          python - <<'PY'
+          from pathlib import Path
+
+          notice: str = Path("article.md").read_text(encoding="utf-8")
+          private_path: str = "research-articles-medium/blob/main/urban-affordability-cascade/article.md"
+          assert private_path in notice, "Missing link to private manuscript"
+          assert "not** the manuscript" in notice.lower(), "Missing compatibility-notice warning"
+          assert len(notice.split()) < 200, "Public manuscript body was not removed"
+
+          figure_paths: list[Path] = sorted(Path("figures").glob("fig[0-9]*_*.png"))
+          assert len(figure_paths) == 41, "Public 41-figure archive is incomplete"
+          figure_numbers: set[int] = {int(path.name.split("_", 1)[0][3:]) for path in figure_paths}
+          assert figure_numbers == set(range(1, 42)), "Missing or duplicate figure numbers"
+          for figure in figure_paths:
+              with figure.open("rb") as stream:
+                  assert stream.read(8) == b"\\x89PNG\\r\\n\\x1a\\n", f"Invalid PNG: {figure}"
+          PY
