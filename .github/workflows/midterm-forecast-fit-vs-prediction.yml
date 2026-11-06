@@ -35,6 +35,8 @@ jobs:
         run: python -m compileall -q analysis.py model_extensions.py comparison_uncertainty.py forecast_lock.py score_after_election.py figures.py prepare_medium_publication.py tests
       - name: Run scientific tests and fresh-kernel notebook
         run: python -m unittest discover -s tests -v
+      - name: Verify public scientific figure and equation artwork
+        run: python prepare_medium_publication.py --check-scientific
       - name: Recompute all numerical tables
         run: python analysis.py --output /tmp/midterm-reproduction
       - name: Recompute alternative-model comparisons

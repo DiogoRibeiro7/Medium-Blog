@@ -8,9 +8,10 @@ Medium manuscripts are maintained in the private [research-articles-medium](http
 - Later synchronized amendment: causal inference part 16 from [`d603e96c1986`](https://github.com/DiogoRibeiro7/Medium-Blog/commit/d603e96c19869780e04f38df294808368453d5f2).
 - Private import: [PR #2](https://github.com/DiogoRibeiro7/research-articles-medium/pull/2), 90 manuscripts and editorial indexes.
 - Private editable source templates and sections: [PR #17](https://github.com/DiogoRibeiro7/research-articles-medium/pull/17), merged before public generator cleanup.
-- Public migration stages 1–8: separate 89 manuscript bodies by compatibility notices
-  or source-file removals after private archiving.
-- Deferred: 1 manuscript requiring further publication-generator or source-audit decoupling.
+- Public migration stages 1–9: separate all 90 manuscript bodies by compatibility
+  notices or source-file removals after private archiving.
+- Deferred: none. Public scientific tests and asset validation no longer require
+  a private Medium manuscript.
 
 ## Why stages are required
 
@@ -140,9 +141,22 @@ The private import must be merged and verified before this public cleanup is mer
 - The scientific LaTeX manuscript, numerical manifests, tests, research figures,
   source provenance and bibliography validation remain public.
 
+## Stage 9 — 2026 midterm forecast manuscripts
+
+- `midterm-forecast-fit-vs-prediction/article.md` and
+  `midterm-forecast-fit-vs-prediction/publication/medium_ready.md` are public
+  archive notices after [PR #563](https://github.com/DiogoRibeiro7/Medium-Blog/pull/563).
+- Both original editorial copies are preserved in the private repository:
+  [PR #31](https://github.com/DiogoRibeiro7/research-articles-medium/pull/31).
+- Public historical poll data, registered pre-election forecast, analysis code,
+  scientific figures, rendered equations, numerical reports and regression tests
+  remain independently reproducible. The editorial renderer requires explicit
+  paths to an authorized private checkout.
+
 ## Deferred manuscript paths
 
-- `midterm-forecast-fit-vs-prediction/article.md`
+None as of the completion of stage 9. New Medium editorial articles should be
+authored in the private repository and linked to public computational companions.
 
 ## Historical links and privacy
 
