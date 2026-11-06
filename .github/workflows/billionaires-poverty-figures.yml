@@ -5,6 +5,8 @@ on:
     paths:
       - "billionaires-poverty-audit/observed_figures.py"
       - "billionaires-poverty-audit/tests/test_observed_figures.py"
+      - "billionaires-poverty-audit/survey_vintage_audit.py"
+      - "billionaires-poverty-audit/tests/test_survey_vintage_audit.py"
       - "billionaires-poverty-audit/data/observed_citizenship_54_2026.csv"
       - "billionaires-poverty-audit/requirements.txt"
       - ".github/workflows/billionaires-poverty-figures.yml"
@@ -30,10 +32,55 @@ jobs:
         run: |
           python -m py_compile \
             billionaires-poverty-audit/observed_figures.py \
-            billionaires-poverty-audit/tests/test_observed_figures.py
+            billionaires-poverty-audit/tests/test_observed_figures.py \
+            billionaires-poverty-audit/survey_vintage_audit.py \
+            billionaires-poverty-audit/tests/test_survey_vintage_audit.py
       - name: Validate original CI panel and statistical models
         working-directory: billionaires-poverty-audit
         run: python -m unittest discover -s tests -p "test_observed_figures.py" -v
+      - name: Validate survey-vintage sensitivity contracts
+        working-directory: billionaires-poverty-audit
+        run: python -m unittest discover -s tests -p "test_survey_vintage_audit.py" -v
+      - name: Reproduce poverty survey-vintage sensitivity
+        working-directory: billionaires-poverty-audit
+        run: python survey_vintage_audit.py --output results/survey_vintage_sensitivity
+      - name: Summarize survey-vintage sample attrition
+        working-directory: billionaires-poverty-audit
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          output = Path("results/survey_vintage_sensitivity/audit.json")
+          result = json.loads(output.read_text(encoding="utf-8"))
+          records = result["maximum_lag_restrictions"]
+          fitted = [row for row in records if row["fitted"]]
+          if not fitted or records[-1]["n"] != 54:
+              raise SystemExit("Survey-vintage output is incomplete")
+          lines = [
+              "## Exploratory poverty survey-vintage audit",
+              "",
+              "Secondary citizenship comparison only; not a historical residence replication.",
+              f"- Countries: {result['n']}",
+              f"- Poverty survey years: {result['min_poverty_year']}–{result['max_poverty_year']}",
+              f"- Maximum GDP-to-poverty observation lag: {result['max_survey_lag']} years",
+              f"- Fitted lag thresholds: {len(fitted)}",
+              "",
+              "| Maximum lag | Countries | GDP-adjusted billionaire coefficient (pp/log10) | HC3 p |",
+              "| ---: | ---: | ---: | ---: |",
+          ]
+          for row in fitted:
+              lines.append(
+                  f"| {row['max_years_between_poverty_and_gdp']} | {row['n']} | "
+                  f"{row['billionaire_coef_pp_per_log10']:.3f} | {row['hc3_p']:.3f} |"
+              )
+          lines.append("")
+          lines.append("Threshold samples change composition; coefficients are descriptive, not causal.")
+          with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as summary:
+              summary.write("\n".join(lines) + "\n")
+          print("\n".join(lines))
+          PY
       - name: Render eight PNG/SVG pairs from frozen input
         working-directory: billionaires-poverty-audit
         run: |
@@ -76,5 +123,7 @@ jobs:
             billionaires-poverty-audit/figures/citizenship_exploratory/
             billionaires-poverty-audit/data/observed_citizenship_54_2026.csv
             billionaires-poverty-audit/OBSERVED_FIGURES.md
+            billionaires-poverty-audit/results/survey_vintage_sensitivity/
+            billionaires-poverty-audit/SURVEY_VINTAGE_AUDIT.md
           retention-days: 30
           if-no-files-found: error
