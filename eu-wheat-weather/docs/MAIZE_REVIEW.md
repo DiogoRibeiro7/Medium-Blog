@@ -1,8 +1,8 @@
 # Critical review of the grain maize extension (2026-10-28)
 
 This review was written after the maize results ([MAIZE.md](MAIZE.md)) and the draft maize
-article ([../publication/maize/article.md](../publication/maize/article.md)), and before
-publication. It follows the wheat study's review ([REVIEW.md](REVIEW.md)).
+article (now in the private editorial archive; its former public file was
+removed), and before publication. It follows the wheat study's review ([REVIEW.md](REVIEW.md)).
 
 **How it was done.**
 

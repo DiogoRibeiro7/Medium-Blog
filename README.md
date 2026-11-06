@@ -16,7 +16,7 @@ This repository has accumulated material over many years. It is intentionally tr
 
 The editorial sources for 90 Medium articles have been imported into the private [research-articles-medium](https://github.com/DiogoRibeiro7/research-articles-medium) repository. This public repository continues to hold the computational studies, figures, code, tests and reproducibility records.
 
-The separation is staged to protect CI: 86 manuscript bodies have been replaced by compatibility notices; 4 manuscript paths still participate in publication generators or tests and require independent refactoring. See [migration tracking](EDITORIAL_MIGRATION.md). Historical public Git commits remain accessible.
+The separation is staged to protect CI: 89 manuscript bodies have been separated from public main through compatibility notices or removal after private archiving; 1 manuscript path still requires independent publication-generator or source-audit refactoring. See [migration tracking](EDITORIAL_MIGRATION.md). Historical public Git commits remain accessible.
 
 ## Repository model
 

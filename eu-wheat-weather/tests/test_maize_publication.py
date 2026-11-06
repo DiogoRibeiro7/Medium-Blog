@@ -16,6 +16,23 @@ WHEAT_A1 = ROOT / "docs" / "amendment" / "results.json"
 pytestmark = pytest.mark.skipif(not RESULTS.exists(), reason="No maize results.")
 
 
+def test_maize_publication_preserves_licensing_without_editorial_files() -> None:
+    """Keep maize data-use notices public after the manuscript migration."""
+    assert not (ROOT / "publication" / "maize" / "article.md").exists()
+    assert not (ROOT / "publication" / "maize" / "article.template.md").exists()
+    readme = (ROOT / "README.md").read_text(encoding="utf-8")
+    required = (
+        "© European Union, Eurostat", "© EuroGeographics",
+        "E-OBS v33.0e", "non-commercial",
+        "GGCMI Phase 3 crop calendar v1.01",
+        "doi:10.5281/zenodo.5062513", "MIRCA-OS v0.1", "CC BY 4.0",
+        "doi:10.1038/s41597-024-04313-w",
+        "doi:10.4211/hs.60a890eb841c460192c03bb590687145",
+    )
+    for citation in required:
+        assert citation in readme, citation
+
+
 def _first(shares: dict[str, float], n: int) -> list[str]:
     return list(shares)[:n]
 

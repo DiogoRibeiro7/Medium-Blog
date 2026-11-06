@@ -8,8 +8,9 @@ Medium manuscripts are maintained in the private [research-articles-medium](http
 - Later synchronized amendment: causal inference part 16 from [`d603e96c1986`](https://github.com/DiogoRibeiro7/Medium-Blog/commit/d603e96c19869780e04f38df294808368453d5f2).
 - Private import: [PR #2](https://github.com/DiogoRibeiro7/research-articles-medium/pull/2), 90 manuscripts and editorial indexes.
 - Private editable source templates and sections: [PR #17](https://github.com/DiogoRibeiro7/research-articles-medium/pull/17), merged before public generator cleanup.
-- Public migration stages 1–6: replace 86 `article.md` bodies with historical-path notices.
-- Deferred: 4 manuscripts requiring further publication-generator or source-audit decoupling.
+- Public migration stages 1–8: separate 89 manuscript bodies by compatibility notices
+  or source-file removals after private archiving.
+- Deferred: 1 manuscript requiring further publication-generator or source-audit decoupling.
 
 ## Why stages are required
 
@@ -122,13 +123,27 @@ The private import must be merged and verified before this public cleanup is mer
 - `routing-on-real-roads/publication/article.md`
 - The source template and full article are archived privately. The public publication command generates numeric values, research figures, and a short notice; scientific assertions and attribution remain independently testable.
 
+## Stage 7 — European wheat and maize weather studies
+
+- `eu-wheat-weather/publication/article.md` (removed from public main)
+- `eu-wheat-weather/publication/maize/article.md` (removed from public main)
+- Both original articles and editable templates were preserved privately in
+  [PR #17](https://github.com/DiogoRibeiro7/research-articles-medium/pull/17).
+- Numerical manifests, ten research figures, scientific tests, data licences
+  and provenance remain public and independent of the editorial manuscripts.
+
+## Stage 8 — EU Okun Law Medium article
+
+- `eu-okun-law/publication/medium/article.md` and its template were removed
+  in [PR #559](https://github.com/DiogoRibeiro7/Medium-Blog/pull/559),
+  after private archiving.
+- The scientific LaTeX manuscript, numerical manifests, tests, research figures,
+  source provenance and bibliography validation remain public.
+
 ## Deferred manuscript paths
 
-- `eu-okun-law/publication/medium/article.md`
-- `eu-wheat-weather/publication/article.md`
-- `eu-wheat-weather/publication/maize/article.md`
 - `midterm-forecast-fit-vs-prediction/article.md`
 
 ## Historical links and privacy
 
-The compatibility notices preserve public file paths, while the article prose is absent from the current branch for files migrated to notices. Earlier public commits, forks, cached pages and prior pull-request diffs can still contain the manuscripts. This migration is an ownership split, not a history purge.
+Compatibility notices preserve most historical paths; others were intentionally removed after private archiving. The article prose is absent from the current public branch. Earlier public commits, forks, cached pages and prior pull-request diffs can still contain the manuscripts. This migration is an ownership split, not a history purge.

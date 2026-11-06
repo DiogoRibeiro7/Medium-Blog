@@ -10,7 +10,13 @@ from pathlib import Path
 import numpy as np
 import pytest
 
-from eu_wheat_weather.publication import check, render, write_publication
+from eu_wheat_weather.publication import (
+    check,
+    outputs,
+    render,
+    scientific_outputs,
+    write_publication,
+)
 
 ROOT = Path(__file__).resolve().parents[1]
 RESULTS = ROOT / "docs" / "results" / "results.json"
@@ -20,6 +26,37 @@ pytestmark = pytest.mark.skipif(not RESULTS.exists(), reason="No committed resul
 
 def test_scientific_value_manifests_are_current() -> None:
     assert check(ROOT) == []
+
+
+def test_public_editorial_manuscripts_are_not_regenerated() -> None:
+    """Keep manuscript files and templates out of the public numerical workflow."""
+    assert outputs(ROOT) == scientific_outputs(ROOT)
+    assert set(outputs(ROOT)).isdisjoint({
+        "publication/article.md", "publication/maize/article.md",
+    })
+    for name in (
+        "publication/article.md",
+        "publication/article.template.md",
+        "publication/maize/article.md",
+        "publication/maize/article.template.md",
+    ):
+        assert not (ROOT / name).exists(), name
+
+
+def test_data_sources_and_attribution_remain_public() -> None:
+    """Scientific references and licences must not depend on private prose."""
+    readme = (ROOT / "README.md").read_text(encoding="utf-8")
+    required = (
+        "We acknowledge the E-OBS dataset", "Copernicus Climate Change Service",
+        "Cornes, R.", "10.1029/2017JD028200",
+        "© European Union, Eurostat", "© EuroGeographics",
+        "non-commercial", "E-OBS v33.0e",
+        "GGCMI Phase 3 crop calendar v1.01", "doi:10.5281/zenodo.5062513",
+        "MIRCA-OS v0.1", "doi:10.1038/s41597-024-04313-w",
+        "doi:10.4211/hs.60a890eb841c460192c03bb590687145",
+    )
+    for citation in required:
+        assert citation in readme, citation
 
 
 def test_unknown_and_unused_values_are_errors() -> None:
