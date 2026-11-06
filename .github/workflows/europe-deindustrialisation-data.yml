@@ -88,7 +88,7 @@ jobs:
             echo "Snapshot unchanged."
           else
             git commit -m "Refresh data snapshot for europe-deindustrialisation ($(date -u +%Y-%m-%d))"
-            git push
+            for i in 1 2 3; do git pull --rebase origin "${GITHUB_REF_NAME}" && git push && break; sleep 10; done
           fi
 
       - name: Fail if any request failed
