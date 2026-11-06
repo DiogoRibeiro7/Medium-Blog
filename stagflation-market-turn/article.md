@@ -1,4 +1,4 @@
-# The Price of Stability Was Not Shared Equally — Stagflation, Volcker, Reagan, and America's Market Turn
+# Stagflation, Disinflation and the Distribution of Adjustment Costs in the United States, 1970–1990
 
 The full editorial article is maintained privately in [research-articles-medium](https://github.com/DiogoRibeiro7/research-articles-medium/blob/main/us-political-economy/05-stagflation-market-turn.md).
 
