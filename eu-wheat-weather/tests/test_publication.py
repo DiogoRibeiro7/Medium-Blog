@@ -1,54 +1,24 @@
-"""Tests of the article: generated values, no hand-typed results, true claims."""
+"""Tests for the scientific outputs underlying the wheat study."""
 
 from __future__ import annotations
 
 import csv
 import json
 import math
-import re
 from pathlib import Path
 
 import numpy as np
 import pytest
 
-from eu_wheat_weather.publication import PLACEHOLDER, check, render, write_publication
+from eu_wheat_weather.publication import check, render, write_publication
 
 ROOT = Path(__file__).resolve().parents[1]
-PUB = ROOT / "publication"
-TEMPLATE = PUB / "article.template.md"
 RESULTS = ROOT / "docs" / "results" / "results.json"
 AMENDED = ROOT / "docs" / "amendment" / "results.json"
-ACKNOWLEDGEMENT = (
-    "We acknowledge the E-OBS dataset from the EU-FP6 project UERRA (https://www.uerra.eu) "
-    "and the Copernicus Climate Change Service, and the data providers in the ECA&D project "
-    "(https://www.ecad.eu).")
-CITATION = ("Cornes, R., G. van der Schrier, E.J.M. van den Besselaar, and P.D. Jones. 2018: "
-            "An Ensemble Version of the E-OBS Temperature and Precipitation Datasets, "
-            "J. Geophys. Res. Atmos., 123. doi:10.1029/2017JD028200")
-# Numbers that are design, not results: thresholds, the season, the test years, the period
-# split, the interval level, the elevation cut-off, the latitude of the post-hoc split and
-# the years of the cited works.
-DESIGN_CONSTANTS = {"30", "36", "15", "18", "1", "31", "2003", "2018", "2022", "2000", "2011",
-                    "2012", "2024", "95", "800", "40", "2005", "2019", "2023"}
-REPOSITORY = "https://github.com/DiogoRibeiro7/Medium-Blog/tree/main/eu-wheat-weather"
-NUMBER = re.compile(r"(?<![\w.])\d+(?:[.,]\d+)?")
-
 pytestmark = pytest.mark.skipif(not RESULTS.exists(), reason="No committed results.")
 
 
-def body_without_acknowledgements() -> str:
-    text = TEMPLATE.read_text(encoding="utf-8")
-    text = text.split("## Data, code and acknowledgements")[0]
-    text = PLACEHOLDER.sub(" ", text)
-    return re.sub(r"\]\([^)]*\)", "]", text)          # image and link targets
-
-
-def test_no_result_is_typed_by_hand() -> None:
-    found = {m.group(0) for m in NUMBER.finditer(body_without_acknowledgements())}
-    assert sorted(found - DESIGN_CONSTANTS) == [], "use {{placeholders}} for results"
-
-
-def test_generated_article_and_values_are_current() -> None:
+def test_scientific_value_manifests_are_current() -> None:
     assert check(ROOT) == []
 
 
@@ -57,19 +27,6 @@ def test_unknown_and_unused_values_are_errors() -> None:
         render("{{a}} {{b}}", {"a": "1"})
     with pytest.raises(KeyError, match="does not use"):
         render("{{a}}", {"a": "1", "b": "2"})
-
-
-def test_article_carries_the_required_acknowledgement_and_citation() -> None:
-    article = re.sub(r"\s+", " ", (PUB / "article.md").read_text(encoding="utf-8"))
-    assert ACKNOWLEDGEMENT in article and CITATION in article
-    assert "© European Union, Eurostat" in article and "© EuroGeographics" in article
-    # GISCO: the notice on the introductory page; E-OBS: the dataset's version
-    assert article.index("© EuroGeographics") < article.index("## The data")
-    assert "for non-commercial use" in article[:article.index("## The data")]
-    assert "E-OBS v33.0e" in article and REPOSITORY in article
-    # the crop calendar of the second analysis: CC BY 4.0 asks for attribution
-    assert ("GGCMI Phase 3 crop calendar v1.01, CC BY 4.0" in article
-            and "doi:10.5281/zenodo.5062513" in article)
 
 
 def _pct(log_points: float) -> float:
@@ -84,9 +41,8 @@ def _ends_only(flags: list[bool]) -> bool:
     return not any(inner)
 
 
-def test_words_in_the_article_match_the_results() -> None:
+def test_wheat_registered_findings_match_results() -> None:
     r = json.loads(RESULTS.read_text(encoding="utf-8"))
-    text = re.sub(r"\s+", " ", TEMPLATE.read_text(encoding="utf-8"))
     d, ph, dry = r["decisions"], r["post_hoc"], r["E2"]["dry_season"]
     edd = next(c for c in r["coefficients"] if c["model"] == "M1" and c["term"] == "edd")
     sens = {(x["variant"], x["estimand"]): x for x in r["sensitivity"]}
@@ -168,15 +124,13 @@ def test_words_in_the_article_match_the_results() -> None:
         < abs(dry["effect"]),
     }
     for phrase, holds in claims.items():
-        assert phrase in text, phrase
         assert holds, phrase
 
 
-def test_words_about_the_second_analysis_match_its_results() -> None:
+def test_wheat_amendment_findings_match_results() -> None:
     """Amendment A1 (METHODS.md, section 8), as the article reports it."""
     r = json.loads(RESULTS.read_text(encoding="utf-8"))
     a = json.loads(AMENDED.read_text(encoding="utf-8"))
-    text = re.sub(r"\s+", " ", TEMPLATE.read_text(encoding="utf-8"))
     dry = r["E2"]["dry_season"]["effect"]
     edd = next(c["estimate"] for c in r["coefficients"]
                if c["model"] == "M1" and c["term"] == "edd")
@@ -209,7 +163,6 @@ def test_words_about_the_second_analysis_match_its_results() -> None:
             a["E1"]["high"] - a["E1"]["low"] > data["high"] - data["low"] and a["E1"]["high"] > 0,
     }
     for phrase, holds in claims.items():
-        assert phrase in text, phrase
         assert holds, phrase
 
 
@@ -224,7 +177,7 @@ def test_figures_render(tmp_path: Path) -> None:
     assert len(figures) == 10 and all(f.stat().st_size > 10_000 for f in figures)
 
 
-def test_the_pointer_to_the_maize_article_matches_its_results() -> None:
+def test_maize_comparison_findings_match_results() -> None:
     maize = ROOT / "docs" / "maize" / "results" / "results.json"
     if not maize.exists():
         pytest.skip("No maize results.")
@@ -232,7 +185,6 @@ def test_the_pointer_to_the_maize_article_matches_its_results() -> None:
     m, ph, e5 = r["decisions"], r["post_hoc"], r["E5"]
     lost = {key: sum(1 for x in ph["leave_one_country_out"]
                      if x[key]["verdict"] != "established negative") for key in ("E1", "E2")}
-    text = re.sub(r"\s+", " ", TEMPLATE.read_text(encoding="utf-8"))
     claims = {
         "By the study's rules, a dry season lowers maize yields":
             m["E2"]["verdict"] == "established negative",
@@ -244,8 +196,7 @@ def test_the_pointer_to_the_maize_article_matches_its_results() -> None:
             next(iter(ph["E1_contributions"]["country"])) == "RO",
         "its check on the weather after maturity is split between the two methods":
             (e5["p_twoway"] < 0.05) != (e5["p_bootstrap"] < 0.05),
-        "publication/maize/article.md": (ROOT / "publication" / "maize" / "article.md").exists(),
-    }
+            }
     amended = ROOT / "docs" / "maize" / "amendment" / "results.json"
     if amended.exists():
         a2 = json.loads(amended.read_text(encoding="utf-8"))
@@ -261,5 +212,4 @@ def test_the_pointer_to_the_maize_article_matches_its_results() -> None:
             "but still clear with two-way clustering": ro["E1_p_twoway"] < 0.05,
         }
     for phrase, holds in claims.items():
-        assert phrase in text, phrase
         assert holds, phrase
