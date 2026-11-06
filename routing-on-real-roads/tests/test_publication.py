@@ -1,37 +1,31 @@
-"""The article: generated values, no hand-typed results, true claims."""
+"""Publication checks: generated research outputs and independent numeric claims."""
 
 from __future__ import annotations
 
 import json
-import re
 from pathlib import Path
 
 import numpy as np
 import pytest
 
 from routing_roads.contract import PAIRS
-from routing_roads.publication import PLACEHOLDER, check, per_day, render
+from routing_roads.publication import check, per_day, render
 from routing_roads.report import area_indices, load, matrix_summary
 
 ROOT = Path(__file__).resolve().parents[1]
 PUB = ROOT / "publication"
-TEMPLATE = PUB / "article.template.md"
 ESTIMATES = ROOT / "results" / "estimates.json"
-REPOSITORY = "https://github.com/DiogoRibeiro7/Medium-Blog/tree/main/routing-on-real-roads"
-# Not results: the 1 in the formulas, a bridge's name (25 de Abril), the interval level and
-# a citation's year.
-DESIGN_CONSTANTS = {"1", "25", "95", "2006"}
-NUMBER = re.compile(r"(?<![\w.])\d+(?:[.,]\d+)?")
-
-pytestmark = pytest.mark.skipif(not (ESTIMATES.exists() and TEMPLATE.exists()),
-                                reason="No results or article.")
+pytestmark = pytest.mark.skipif(not ESTIMATES.exists(),
+                                reason="No committed estimates.")
 
 
-def test_no_result_is_typed_by_hand() -> None:
-    text = TEMPLATE.read_text(encoding="utf-8").split("## Data, code and acknowledgements")[0]
-    text = re.sub(r"\]\([^)]*\)", "]", PLACEHOLDER.sub(" ", text))     # link targets
-    found = {m.group(0) for m in NUMBER.finditer(text)}
-    assert sorted(found - DESIGN_CONSTANTS) == [], "use {{placeholders}} for results"
+def test_public_article_is_a_short_compatibility_notice() -> None:
+    """Never commit the full editorial article or its source template."""
+    notice = (PUB / "article.md").read_text(encoding="utf-8")
+    assert len(notice.split()) < 125
+    assert "research-articles-medium" in notice
+    assert "values.json" in notice and "docs/RESULTS.md" in notice
+    assert not (PUB / "article.template.md").exists()
 
 
 def test_generated_article_and_values_are_current() -> None:
@@ -45,13 +39,16 @@ def test_unknown_and_unused_values_are_errors() -> None:
         render("{{a}}", {"a": "1", "b": "2"})
 
 
-def test_article_carries_the_licence_notice_and_citations() -> None:
-    article = re.sub(r"\s+", " ", (PUB / "article.md").read_text(encoding="utf-8"))
-    notice = "© OpenStreetMap contributors, available under the Open Database Licence"
-    assert notice in article[:article.index("## Two plans")] and REPOSITORY in article
-    assert "https://www.openstreetmap.org/copyright" in article
-    for doi in ("10.1111/gean.70009", "10.1287/ijoc.2023.0055", "10.1287/mnsc.1050.0451"):
-        assert doi in article
+def test_open_data_licence_and_literature_remain_public() -> None:
+    """Keep research attribution independently of the private editorial text."""
+    readme = (ROOT / "README.md").read_text(encoding="utf-8")
+    notice = (ROOT / "data" / "derived" / "NOTICE.md").read_text(encoding="utf-8")
+    assert "© OpenStreetMap contributors" in readme
+    assert "Open Database Licence" in readme
+    assert "openstreetmap.org/copyright" in notice
+    for doi in ("10.1111/gean.70009", "10.1287/ijoc.2023.0055",
+                "10.1287/mnsc.1050.0451"):
+        assert doi in readme
 
 
 def _same_routes_drive_differently(rows: list[dict[str, str]]) -> bool:
@@ -70,14 +67,13 @@ def _same_routes_drive_differently(rows: list[dict[str, str]]) -> bool:
     return len(same) > 0 and sum(same) / len(same) > 0.9
 
 
-def test_words_in_the_article_match_the_results() -> None:
+def test_registered_numeric_claims_match_the_results() -> None:
     from routing_roads.estimates import load_solves
     from routing_roads.publication import LEGS_TYPICAL
 
     e = json.loads(ESTIMATES.read_text(encoding="utf-8"))
     d = load(ROOT / "data" / "derived")
     days = per_day(ROOT)
-    text = re.sub(r"\s+", " ", TEMPLATE.read_text(encoding="utf-8"))
     areas, water, ph, review = e["areas"], e["water"], e["post_hoc"], e["after_review"]
     ra, rw, cap = review["areas"], review["water"], review["capacity"]
     lisbon, porto = (p.key for p in PAIRS)
@@ -177,9 +173,8 @@ def test_words_in_the_article_match_the_results() -> None:
             k for k in variations if sens[(k, lisbon)]["E3"]["estimate"] < 0]
         == ["capacity_24"],
     }
-    for phrase, holds in claims.items():
-        assert phrase in text, phrase
-        assert holds, phrase
+    for claim, holds in claims.items():
+        assert holds, claim
 
 
 def test_figures_draw(tmp_path: Path) -> None:

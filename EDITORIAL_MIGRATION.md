@@ -7,8 +7,9 @@ Medium manuscripts are maintained in the private [research-articles-medium](http
 - Source snapshot imported: [`6e6f84c85931`](https://github.com/DiogoRibeiro7/Medium-Blog/commit/6e6f84c8593198fbd70811fd8d1915def98373a8).
 - Later synchronized amendment: causal inference part 16 from [`d603e96c1986`](https://github.com/DiogoRibeiro7/Medium-Blog/commit/d603e96c19869780e04f38df294808368453d5f2).
 - Private import: [PR #2](https://github.com/DiogoRibeiro7/research-articles-medium/pull/2), 90 manuscripts and editorial indexes.
-- Public migration stages 1–5: replace 85 `article.md` bodies with historical-path notices.
-- Deferred: 5 manuscripts requiring further publication-generator or source-audit decoupling.
+- Private editable source templates and sections: [PR #17](https://github.com/DiogoRibeiro7/research-articles-medium/pull/17), merged before public generator cleanup.
+- Public migration stages 1–6: replace 86 `article.md` bodies with historical-path notices.
+- Deferred: 4 manuscripts requiring further publication-generator or source-audit decoupling.
 
 ## Why stages are required
 
@@ -116,13 +117,17 @@ The private import must be merged and verified before this public cleanup is mer
 - `iberian-electricity-lp/publication/article.md`
 - The editorial source template and article are archived in the private repository; public numerical-value checks and figure generation no longer require them.
 
+## Stage 6 — routing on real roads
+
+- `routing-on-real-roads/publication/article.md`
+- The source template and full article are archived privately. The public publication command generates numeric values, research figures, and a short notice; scientific assertions and attribution remain independently testable.
+
 ## Deferred manuscript paths
 
 - `eu-okun-law/publication/medium/article.md`
 - `eu-wheat-weather/publication/article.md`
 - `eu-wheat-weather/publication/maize/article.md`
 - `midterm-forecast-fit-vs-prediction/article.md`
-- `routing-on-real-roads/publication/article.md`
 
 ## Historical links and privacy
 
