@@ -2,7 +2,7 @@
 ``iberian-lp data`` builds the derived tables and docs/DATA.md from them;
 ``iberian-lp programmes`` solves every programme from the derived tables;
 ``iberian-lp estimates`` computes the estimands and docs/RESULTS.md; and
-``iberian-lp publication`` writes the article from them."""
+``iberian-lp publication`` writes public values and research figures."""
 
 from __future__ import annotations
 
