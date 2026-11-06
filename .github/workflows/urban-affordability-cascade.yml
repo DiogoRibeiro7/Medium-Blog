@@ -84,5 +84,5 @@ jobs:
           assert figure_numbers == set(range(1, 42)), "Missing or duplicate figure numbers"
           for figure in figure_paths:
               with figure.open("rb") as stream:
-                  assert stream.read(8) == b"\\x89PNG\\r\\n\\x1a\\n", f"Invalid PNG: {figure}"
+                  assert stream.read(8) == bytes.fromhex("89504e470d0a1a0a"), f"Invalid PNG: {figure}"
           PY
