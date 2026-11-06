@@ -7,8 +7,8 @@ Medium manuscripts are maintained in the private [research-articles-medium](http
 - Source snapshot imported: [`6e6f84c85931`](https://github.com/DiogoRibeiro7/Medium-Blog/commit/6e6f84c8593198fbd70811fd8d1915def98373a8).
 - Later synchronized amendment: causal inference part 16 from [`d603e96c1986`](https://github.com/DiogoRibeiro7/Medium-Blog/commit/d603e96c19869780e04f38df294808368453d5f2).
 - Private import: [PR #2](https://github.com/DiogoRibeiro7/research-articles-medium/pull/2), 90 manuscripts and editorial indexes.
-- Public migration stage 1: replace 50 uncoupled `article.md` bodies with historical-path notices.
-- Deferred: 40 manuscripts whose text is read by tests, publication generators, or source-level audits.
+- Public migration stages 1–2: replace 70 `article.md` bodies with historical-path notices.
+- Deferred: 20 manuscripts whose text is still read by tests, publication generators, or source-level audits.
 
 ## Why stages are required
 
@@ -69,11 +69,17 @@ The private import must be merged and verified before this public cleanup is mer
 - `tax-cuts-rich-historical-cycles/article.md`
 - `tenure-by-age-at-hire/article.md`
 
-## Deferred manuscript paths
+## Stage 2 — causal inference series
 
-- `a-dataset-is-not-a-population/article.md`
-- `a-label-is-not-ground-truth/article.md`
 - `causal_inference_statistics/part1/article.md`
+- `causal_inference_statistics/part2/article.md`
+- `causal_inference_statistics/part3/article.md`
+- `causal_inference_statistics/part4/article.md`
+- `causal_inference_statistics/part5/article.md`
+- `causal_inference_statistics/part6/article.md`
+- `causal_inference_statistics/part7/article.md`
+- `causal_inference_statistics/part8/article.md`
+- `causal_inference_statistics/part9/article.md`
 - `causal_inference_statistics/part10/article.md`
 - `causal_inference_statistics/part11/article.md`
 - `causal_inference_statistics/part12/article.md`
@@ -84,15 +90,12 @@ The private import must be merged and verified before this public cleanup is mer
 - `causal_inference_statistics/part17/article.md`
 - `causal_inference_statistics/part18/article.md`
 - `causal_inference_statistics/part19/article.md`
-- `causal_inference_statistics/part2/article.md`
 - `causal_inference_statistics/part20/article.md`
-- `causal_inference_statistics/part3/article.md`
-- `causal_inference_statistics/part4/article.md`
-- `causal_inference_statistics/part5/article.md`
-- `causal_inference_statistics/part6/article.md`
-- `causal_inference_statistics/part7/article.md`
-- `causal_inference_statistics/part8/article.md`
-- `causal_inference_statistics/part9/article.md`
+
+## Deferred manuscript paths
+
+- `a-dataset-is-not-a-population/article.md`
+- `a-label-is-not-ground-truth/article.md`
 - `civil-rights-great-society/article.md`
 - `eu-okun-law/publication/medium/article.md`
 - `eu-wheat-weather/publication/article.md`
