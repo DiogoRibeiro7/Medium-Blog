@@ -6,10 +6,10 @@ worse? A reproducible study on the OpenStreetMap road networks of Lisbon and Por
 
 **Status: plan registered ([METHODS.md](METHODS.md)); data built
 ([docs/DATA.md](docs/DATA.md)); every registered route solved and estimated
-([docs/RESULTS.md](docs/RESULTS.md)); the article written from the results
-([publication/article.md](publication/article.md)); a critical review
-([docs/REVIEW.md](docs/REVIEW.md)) and the corrections it recommended, logged in the plan's
-change log.**
+([docs/RESULTS.md](docs/RESULTS.md)); public publication values, figures, and a
+[compatibility notice](publication/article.md) generated from committed results;
+a critical [review](docs/REVIEW.md) and its corrections logged in the plan.
+The editorial manuscript is maintained in the private research article archive.**
 
 ## Running it
 
@@ -33,12 +33,17 @@ routing-roads route          # 2,560 solves on 4 processes, about an hour; resum
 routing-roads estimate       # results/estimates.json and docs/RESULTS.md, in seconds
 ```
 
-The article is generated from the committed results; a test checks that it is current, that
-it types no result by hand and that its claims in words match the results:
+The public publication step generates an independent value registry, figures, and a
+short notice in place of the editorial manuscript. Tests check generated outputs and
+the quantitative conclusions directly against committed results:
 
 ```bash
-routing-roads publication    # publication/article.md, values.json and figures/
+routing-roads publication    # publication/article.md notice, values.json and figures/
 ```
+
+The complete article and its writing template are kept separately in the private
+[research-articles-medium](https://github.com/DiogoRibeiro7/research-articles-medium)
+repository. The public project contains the code and evidence needed to reproduce it.
 
 - **Customers:** OpenStreetMap pharmacies in Lisboa, Almada, Porto and Vila Nova de Gaia,
   with simulated daily orders.
@@ -54,3 +59,13 @@ from Geofabrik's dated extract `portugal-261027.osm.pbf`. The raw extract is not
 committed. The derived tables in `data/derived/` and the solves computed from them are
 published under the ODbL ([data/derived/NOTICE.md](data/derived/NOTICE.md)); the code is
 under the repository's licence.
+
+## Literature cited in the article
+
+Research references remain public for reproducibility and attribution:
+
+- https://doi.org/10.1111/gean.70009
+- https://doi.org/10.1287/ijoc.2023.0055
+- https://doi.org/10.1287/mnsc.1050.0451
+
+For OpenStreetMap contributor attribution and licensing, see the [data notice](data/derived/NOTICE.md).

@@ -401,6 +401,41 @@ def _amendment_a2_values(a: Mapping[str, Any]) -> dict[str, str]:
     return v
 
 
+def scientific_outputs(root: Path) -> dict[str, str]:
+    """Return reproducible numerical manifests without requiring article templates.
+
+    Maize availability is determined by committed scientific results, not prose.
+    """
+    values = {"publication/values.json": collect_values(root)}
+    maize_results = root / "docs" / "maize" / "results" / "results.json"
+    if maize_results.is_file():
+        values[f"{MAIZE_DIR}/values.json"] = maize_values(root)
+    return {
+        path: json.dumps(data, indent=1, ensure_ascii=False) + "\n"
+        for path, data in values.items()
+    }
+
+
+def write_scientific(root: Path) -> list[str]:
+    """Write only numerical manifests, leaving editorial files untouched."""
+    written: list[str] = []
+    for name, content in scientific_outputs(root).items():
+        target = root / name
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_text(content, encoding="utf-8", newline="\n")
+        written.append(name)
+    return written
+
+
+def check_scientific(root: Path) -> list[str]:
+    """List missing or stale numerical manifests, independently of article text."""
+    return [
+        name for name, content in scientific_outputs(root).items()
+        if not (root / name).is_file()
+        or (root / name).read_text(encoding="utf-8") != content
+    ]
+
+
 def outputs(root: Path) -> dict[str, str]:
     """The text files the publication step writes, by path relative to ``root``: the wheat
     article and, once its results exist, the maize article."""
@@ -433,7 +468,7 @@ def write_publication(root: Path, figures: bool = True) -> list[str]:
         written += [str(p.relative_to(root).as_posix())
                     for p in draw_all(results, root / "publication" / "figures",
                                       _amendment(root))]
-        if (root / MAIZE_DIR / "article.template.md").exists():
+        if (root / "docs" / "maize" / "results" / "results.json").is_file():
             from eu_wheat_weather.figures import draw_maize
 
             amended = root / "docs" / "maize" / "amendment" / "results.json"

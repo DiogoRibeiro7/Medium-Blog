@@ -1,4 +1,4 @@
-"""Validate numerical evidence independently of private editorial manuscript prose."""
+"""Public research validation independent of the private editorial manuscript."""
 
 from __future__ import annotations
 
@@ -9,29 +9,40 @@ from pathlib import Path
 import numpy as np
 import pytest
 
-from iberian_lp.publication import check, daily, outputs, render, table
+from iberian_lp.publication import check, check_scientific, daily, outputs, render, table
 
 ROOT = Path(__file__).resolve().parents[1]
 PUB = ROOT / "publication"
-TEMPLATE = PUB / "article.template.md"
 ESTIMATES = ROOT / "results" / "estimates.json"
+pytestmark = pytest.mark.skipif(not ESTIMATES.exists(), reason="No frozen results.")
 
-pytestmark = pytest.mark.skipif(not ESTIMATES.exists(), reason="No committed estimates.")
+
+def test_generated_scientific_values_are_current() -> None:
+    """Frozen numerical values must agree with the committed result tables."""
+    assert check_scientific(ROOT) == []
 
 
-def test_editorial_manuscript_is_a_short_private_notice() -> None:
-    """The public research repository must contain no full editorial template."""
+def test_manuscript_is_private_and_public_notice_is_short() -> None:
+    """Prevent accidental recommitment of the long-form Medium source."""
     notice = (PUB / "article.md").read_text(encoding="utf-8")
     assert "research-articles-medium" in notice
     assert "private" in notice.lower()
     assert len(notice.split()) < 150
-    assert not TEMPLATE.exists()
+    assert not (PUB / "article.template.md").exists()
 
 
-def test_generated_public_values_are_current() -> None:
-    """Regenerate numerical values without touching the editorial notice."""
+def test_default_publication_checks_only_research_values() -> None:
+    """The generic check and scientific check must agree on the public contract."""
     assert set(outputs(ROOT)) == {"publication/values.json"}
-    assert check(ROOT) == []
+    assert check(ROOT) == check_scientific(ROOT)
+
+
+def test_omie_source_attribution_remains_public() -> None:
+    """Keep source provenance accessible after migrating editorial text."""
+    readme = (ROOT / "README.md").read_text(encoding="utf-8")
+    assert "OMIE (OMI-Polo Español, S.A.)" in readme
+    assert "https://www.omie.es" in readme
+    assert "keeping its original content intact and citing" in readme
 
 
 def test_unknown_and_unused_values_are_errors() -> None:
@@ -39,14 +50,6 @@ def test_unknown_and_unused_values_are_errors() -> None:
         render("{{a}} {{b}}", {"a": "1"})
     with pytest.raises(KeyError, match="does not use"):
         render("{{a}}", {"a": "1", "b": "2"})
-
-
-def test_omie_source_attribution_remains_public() -> None:
-    """Keep evidence provenance independent of the private Medium article."""
-    readme = (ROOT / "README.md").read_text(encoding="utf-8")
-    assert "OMIE (OMI-Polo Español, S.A.)" in readme
-    assert "https://www.omie.es" in readme
-    assert "keeping its original content intact and citing" in readme
 
 
 def _accepted_never_above_offered_below_price() -> bool:
@@ -67,7 +70,7 @@ def _accepted_never_above_offered_below_price() -> bool:
     return True
 
 
-def test_numeric_claims_match_committed_results() -> None:
+def test_registered_numerical_claim_conditions_hold() -> None:
     e = json.loads(ESTIMATES.read_text(encoding="utf-8"))
     e1, e2, e3, e4, ph = (e[k] for k in ("E1", "E2", "E3", "E4", "post_hoc"))
     desc = e["descriptive"]

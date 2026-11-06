@@ -1,0 +1,82 @@
+== Farm managers by age (Eurostat ef_m_farmang, holdings)
+PT 2023: managers 261,500; under 35 2.3%; under 40 4.9%; 55+ 76.3%; 65+ 51.9%; managers per manager under 35: 44.1
+EU27_2020 2020: managers 9,067,520; under 35 6.5%; under 40 11.9%; 55+ 57.6%; 65+ 33.2%; managers per manager under 35: 15.4
+ES 2020: managers 914,870; under 35 3.9%; under 40 7.7%; 55+ 66.8%; 65+ 41.3%; managers per manager under 35: 25.4
+IT 2020: managers 1,130,530; under 35 5.5%; under 40 9.3%; 55+ 67.3%; 65+ 42.6%; managers per manager under 35: 18.3
+FR 2023: managers 360,410; under 35 10.9%; under 40 20.7%; 55+ 42.3%; 65+ 11.4%; managers per manager under 35: 9.2
+AT 2023: managers 101,040; under 35 13.3%; under 40 24.1%; 55+ 33.5%; 65+ 6.8%; managers per manager under 35: 7.5
+PL 2020: managers 1,301,490; under 35 11.0%; under 40 21.0%; 55+ 39.4%; 65+ 13.7%; managers per manager under 35: 9.1
+EL 2020: managers 530,680; under 35 3.5%; under 40 7.2%; 55+ 64.8%; 65+ 37.1%; managers per manager under 35: 28.5
+PT 65+ share: 2010 46.5%, 2013 50.1%, 2016 52.0%, 2020 50.3%, 2023 51.9%
+PT under-35 share: 2010 2.6%, 2013 2.5%, 2016 1.9%, 2020 3.1%, 2023 2.3%
+
+== Agricultural labour input, Portugal (aact_ali01, thousand annual work units)
+1980: total 932.3, non-salaried 758.3, salaried 174.0, salaried share 0.187
+1995: total 435.2, non-salaried 338.4, salaried 96.8, salaried share 0.222
+2010: total 309.5, non-salaried 237.1, salaried 72.4, salaried share 0.234
+2025: total 213.1, non-salaried 119.4, salaried 93.7, salaried share 0.440
+change 1980-2025: total -0.771; non-salaried -0.843
+annual log rate 1980-2025, total: -0.0328
+salaried 2010 -> 2025: 72.4 -> 93.7; non-salaried 237.1 -> 119.4
+
+== Agricultural output, Portugal (aact_eaa05, output of the agricultural industry, 2015 = 100)
+1980: volume 79.1; real price nan
+1995: volume 87.6; real price nan
+2005: volume 92.1; real price 107.4
+2010: volume 93.9; real price 100.9
+2015: volume 100.0; real price 100.0
+2019: volume 105.8; real price 99.8
+2020: volume 106.0; real price 98.4
+2022: volume 109.3; real price 114.3
+2023: volume 111.6; real price 122.3
+2025: volume 114.1; real price 110.1
+output volume per AWU, 1995 -> 2025: x2.661; 1980 -> 2025: x6.311
+
+== Employment and pay by industry, Portugal (nama_10_a10_e, nama_10_a10)
+1995: agriculture-forestry-fishing 655.3k (self-employed 548.3k); construction 418.7k
+2002: agriculture-forestry-fishing 634.0k (self-employed 539.1k); construction 593.7k
+2008: agriculture-forestry-fishing 580.4k (self-employed 483.5k); construction 501.1k
+2013: agriculture-forestry-fishing 469.0k (self-employed 374.1k); construction 286.4k
+2014: agriculture-forestry-fishing 437.9k (self-employed 339.7k); construction 274.6k
+2025: agriculture-forestry-fishing 257.5k (self-employed 167.3k); construction 410.2k
+construction employment 2008 -> 2013: annual log rate -0.1118
+construction employment 2014 -> 2025: annual log rate 0.0365
+construction employment 2002 peak 593.7k (2002); trough 274.6k (2014); 2025 410.2k
+  pay per employee relative to the economy, 1995: agriculture 0.561, construction 0.683
+  pay per employee relative to the economy, 2005: agriculture 0.513, construction 0.741
+  pay per employee relative to the economy, 2015: agriculture 0.524, construction 0.841
+  pay per employee relative to the economy, 2019: agriculture 0.585, construction 0.833
+  pay per employee relative to the economy, 2024: agriculture 0.603, construction 0.865
+  pay per employee relative to the economy, 2025: agriculture 0.684, construction 0.873
+
+== Food prices relative to all items (HICP CP011 / CP00, 1996 = 1)
+1996: 1.000
+2005: 0.947
+2010: 0.914
+2015: 0.911
+2019: 0.903
+2021: 0.923
+2022: 0.968
+2023: 1.012
+2025: 1.015
+
+== Housing, Portugal
+completions (INE 0000076): peak 125,708 in 2002; trough 7,148 in 2015; 2025 27,301
+  trough / peak 0.057; 2025 / peak 0.217
+  mean 1995-2007 88,039; 2025 / that mean 0.310
+completions long series (INE 0011725): 1975 35,411; 2025 30,425
+  years 1975-1987 below 2025 level? min 33,196
+completions growth 2015 -> 2025: annual log rate 0.1340; 2002 -> 2015 -0.2205
+licensed dwellings (INE 0013235): 2013 7,494; 2025 42,066
+construction production (sts_copr_a, 2021 = 100): 2005 281.5; 2016 95.7; 2025 113.0
+house price index (prc_hpi_a, 2015 = 100): 2008 107.5; 2013 93.1; 2025 263.9
+pay per employee 2015 -> 2025: x1.603
+house prices relative to pay per employee (2015 = 100): 2008 108.9; 2013 92.5; 2025 164.6
+  2015: housing-cost overburden 9.1% (25-29: 10.7%); aged 25-34 living with parents 45.7%; population in owner-occupied homes 74.8% (no loan 38.3%), reduced or free rent 12.5%
+  2019: housing-cost overburden 5.7% (25-29: 6.4%); aged 25-34 living with parents 45.2%; population in owner-occupied homes 73.9% (no loan 37.6%), reduced or free rent 12.9%
+  2022: housing-cost overburden 5.0% (25-29: 7.8%); aged 25-34 living with parents 54.4%; population in owner-occupied homes 77.8% (no loan 41.5%), reduced or free rent 10.7%
+  2024: housing-cost overburden 6.9% (25-29: 8.9%); aged 25-34 living with parents 43.6%; population in owner-occupied homes 73.4% (no loan 40.9%), reduced or free rent 12.2%
+  2025: housing-cost overburden 6.3% (25-29: 8.4%); aged 25-34 living with parents 42.1%; population in owner-occupied homes 71.2% (no loan 39.7%), reduced or free rent 12.5%
+
+Gini (ilc_di12): 2025 30.9
+household growth (lfst_hhnhtych): 2006-2019 0.0073/yr; 2019-2025 0.0138/yr

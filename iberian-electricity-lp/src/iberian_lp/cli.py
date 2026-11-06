@@ -2,7 +2,7 @@
 ``iberian-lp data`` builds the derived tables and docs/DATA.md from them;
 ``iberian-lp programmes`` solves every programme from the derived tables;
 ``iberian-lp estimates`` computes the estimands and docs/RESULTS.md; and
-``iberian-lp publication`` regenerates public numerical values and figures."""
+``iberian-lp publication`` writes public values and research figures."""
 
 from __future__ import annotations
 
@@ -34,16 +34,32 @@ def main(argv: list[str] | None = None) -> None:
     estimates.add_argument("--derived", type=Path, default=Path("data/derived"))
     estimates.add_argument("--results", type=Path, default=Path("results"))
     estimates.add_argument("--report", type=Path, default=Path("docs/RESULTS.md"))
-    publication = commands.add_parser("publication", help="Rebuild public numerical values "
-                                      "and figures, never editorial prose")
+    publication = commands.add_parser("publication", help="Regenerate public numerical values "
+                                      "and research figures, never editorial prose")
     publication.add_argument("--root", type=Path, default=Path("."))
     publication.add_argument("--no-figures", action="store_true")
+    mode = publication.add_mutually_exclusive_group()
+    mode.add_argument("--values-only", action="store_true",
+                      help="Generate scientific values without reading Medium prose")
+    mode.add_argument("--check-values", action="store_true",
+                      help="Check scientific values without reading Medium prose")
     args = parser.parse_args(argv)
 
     if args.command == "publication":
-        from iberian_lp.publication import write_publication
+        from iberian_lp.publication import check_scientific, write_publication, write_scientific
 
-        for name in write_publication(args.root, figures=not args.no_figures):
+        if args.check_values:
+            stale = check_scientific(args.root)
+            if stale:
+                parser.error("Scientific publication output is missing or stale: "
+                             + ", ".join(stale))
+            print("Scientific publication values are current")
+            return
+        if args.values_only:
+            written = write_scientific(args.root)
+        else:
+            written = write_publication(args.root, figures=not args.no_figures)
+        for name in written:
             print(f"wrote {name}")
         return
 

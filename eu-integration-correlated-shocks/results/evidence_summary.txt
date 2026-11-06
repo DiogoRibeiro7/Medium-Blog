@@ -1,0 +1,145 @@
+== Cereal production shocks, 26 member states, 2000-2024 (log deviation from HP trend, lambda 100)
+years 2000-2024; countries 26
+national shock sd: IT 0.063, AT 0.074, DE 0.075, LU 0.077, PL 0.080, FR 0.082, DK 0.084, BE 0.087, EL 0.094, NL 0.095, CZ 0.095, IE 0.098, FI 0.104, SI 0.106, PT 0.113, HR 0.123, LV 0.128, SE 0.137, LT 0.147, SK 0.150, EE 0.168, BG 0.180, HU 0.185, ES 0.186, RO 0.248, CY 0.727
+production-weighted mean national sd: 0.1157; EU aggregate shock sd (from EU series): 0.0594
+mean pairwise correlation 0.231 (median 0.221); production-weighted 0.289
+diversification: eu_sd_from_cov 0.0650, weighted_national_sd 0.1157, diversification_ratio 0.5619, n_eff 3.1677, n_eff_if_independent 9.8773
+  bootstrap 90% interval, mean_corr: 0.158 to 0.305
+  bootstrap 90% interval, n_eff: 2.197 to 5.032
+  bootstrap 90% interval, diversification_ratio: 0.446 to 0.675
+  mean pairwise correlation 2000-2008: 0.321; n_eff 2.01
+  mean pairwise correlation 2008-2016: 0.224; n_eff 3.28
+  mean pairwise correlation 2016-2024: 0.161; n_eff 7.95
+  mean pairwise correlation 2000-2012: 0.276; n_eff 2.29
+  mean pairwise correlation 2012-2024: 0.177; n_eff 5.43
+tail co-exceedance at q = 0.2: empirical_lower 0.296, empirical_upper 0.317, gaussian 0.312, independent 0.200
+principal components of the correlation matrix: variance shares 0.309, 0.189, 0.119
+second component (sign arbitrary): HU -0.30, RO -0.27, HR -0.25, SK -0.25, IT -0.23, BG -0.22, SI -0.19, AT -0.16, CZ -0.12, ES -0.07, EL -0.05, PT -0.01, PL +0.01, FR +0.03, DE +0.03, IE +0.09, LU +0.12, CY +0.15, NL +0.16, BE +0.18, LT +0.23, LV +0.24, FI +0.25, DK +0.27, SE +0.27, EE +0.29
+EU aggregate shocks by year: 2000 -0.011, 2001 +0.029, 2002 +0.026, 2003 -0.127, 2004 +0.143, 2005 +0.011, 2006 -0.064, 2007 -0.096, 2008 +0.086, 2009 +0.023, 2010 -0.041, 2011 -0.026, 2012 -0.058, 2013 +0.021, 2014 +0.082, 2015 +0.023, 2016 -0.021, 2017 +0.004, 2018 -0.041, 2019 +0.051, 2020 +0.010, 2021 +0.060, 2022 -0.024, 2023 -0.010, 2024 -0.051
+concentration of production (HHI): 2000 0.1270, 2010 0.1206, 2024 0.1062; equivalent number of equal producers 2000 7.9, 2024 9.4
+blocs from the second component: HU, RO, HR, SK, IT, BG, SI | BE, LT, LV, FI, DK, SE, EE
+  mean correlation within first bloc 0.536, within second 0.575, across -0.002
+robustness to detrending (cereals): 
+  hp: mean pairwise correlation 0.231; n_eff 3.17; diversification ratio 0.562
+  quadratic: mean pairwise correlation 0.220; n_eff 3.14; diversification ratio 0.564
+  diff: mean pairwise correlation 0.205; n_eff 3.14; diversification ratio 0.564
+by crop (HP detrending; countries with complete, non-zero 2000-2024 series):
+  cereals: 26 countries; mean pairwise correlation 0.231; weighted national sd 0.116; union sd 0.065; n_eff 3.17
+  wheat: 25 countries; mean pairwise correlation 0.223; weighted national sd 0.128; union sd 0.077; n_eff 2.73
+  barley: 26 countries; mean pairwise correlation 0.180; weighted national sd 0.135; union sd 0.062; n_eff 4.77
+  grain maize: 18 countries; mean pairwise correlation 0.264; weighted national sd 0.190; union sd 0.121; n_eff 2.44
+
+== Food prices (HICP CP011, annual log change)
+2019: mean 0.023, min -0.006 (IE), max 0.056 (RO), countries 27
+2021: mean 0.013, min -0.004 (BE), max 0.035 (HU), countries 27
+2022: mean 0.132, min 0.068 (IE), max 0.255 (HU), countries 27
+2023: mean 0.119, min 0.073 (CY), max 0.206 (HU), countries 27
+2024: mean 0.019, min -0.029 (CZ), max 0.050 (MT), countries 27
+food inflation 2001-2025: first component 0.803 of variance; mean pairwise correlation 0.792; 25 countries
+cereal production shocks: first component 0.309; mean pairwise correlation 0.231; 26 countries
+EU cereal shock 2022: -0.024; 2003: -0.127; 2007: -0.096
+
+== Housing
+house price growth 2011-2025: first component 0.478; mean pairwise correlation 0.392; 26 countries
+share of member states with falling construction employment: 2006 0.07, 2007 0.04, 2008 0.33, 2009 0.78, 2010 0.78, 2011 0.59, 2012 0.67, 2013 0.74, 2014 0.56, 2015 0.48, 2016 0.30, 2017 0.26, 2018 0.07, 2019 0.15, 2020 0.33, 2021 0.11, 2022 0.07, 2023 0.30, 2024 0.48, 2025 0.48
+  IE: peak 2007.0 trough 2012.0, fall -0.648, down -0.2087/yr, up 0.0615/yr, 2025 vs peak 0.783
+  ES: peak 2007.0 trough 2014.0, fall -0.630, down -0.1420/yr, up 0.0405/yr, 2025 vs peak 0.578
+  EE: peak 2007.0 trough 2010.0, fall -0.516, down -0.2417/yr, up 0.0228/yr, 2025 vs peak 0.681
+  PT: peak 2004.0 trough 2014.0, fall -0.489, down -0.0671/yr, up 0.0365/yr, 2025 vs peak 0.763
+  LT: peak 2007.0 trough 2011.0, fall -0.475, down -0.1610/yr, up 0.0207/yr, 2025 vs peak 0.702
+  CY: peak 2008.0 trough 2015.0, fall -0.474, down -0.0917/yr, up 0.0665/yr, 2025 vs peak 1.024
+  EL: peak 2007.0 trough 2021.0, fall -0.467, down -0.0449/yr, up 0.0416/yr, 2025 vs peak 0.630
+  LV: peak 2008.0 trough 2010.0, fall -0.463, down -0.3107/yr, up 0.0021/yr, 2025 vs peak 0.554
+  BG: peak 2008.0 trough 2016.0, fall -0.412, down -0.0663/yr, up 0.0226/yr, 2025 vs peak 0.721
+  HR: peak 2008.0 trough 2017.0, fall -0.409, down -0.0585/yr, up 0.0416/yr, 2025 vs peak 0.824
+  SI: peak 2008.0 trough 2016.0, fall -0.325, down -0.0492/yr, up 0.0343/yr, 2025 vs peak 0.918
+  member states losing more than 30% of construction employment after 2004-2010 peak: 11
+  median down rate among them -0.0917, median up rate 0.0365, median ratio 2.93
+
+== Farm managers and labour
+  CY 2023: 65+ 52.3%, under 35 2.0%
+  PT 2023: 65+ 51.9%, under 35 2.3%
+  MT 2023: 65+ 43.4%, under 35 4.4%
+  IT 2020: 65+ 42.6%, under 35 5.5%
+  RO 2023: 65+ 41.7%, under 35 3.8%
+  ES 2020: 65+ 41.3%, under 35 3.9%
+  SI 2020: 65+ 38.1%, under 35 4.6%
+  IE 2023: 65+ 37.7%, under 35 4.4%
+  EL 2020: 65+ 37.1%, under 35 3.5%
+  HU 2023: 65+ 36.8%, under 35 5.0%
+  SE 2023: 65+ 35.7%, under 35 6.1%
+  HR 2023: 65+ 35.4%, under 35 8.3%
+  EU27_2020 2020: 65+ 33.2%, under 35 6.5%
+  LV 2023: 65+ 32.3%, under 35 4.9%
+  LT 2020: 65+ 32.2%, under 35 6.7%
+  BG 2020: 65+ 30.8%, under 35 9.0%
+  DK 2023: 65+ 28.9%, under 35 13.0%
+  EE 2023: 65+ 28.0%, under 35 8.8%
+  BE 2023: 65+ 24.1%, under 35 6.7%
+  NL 2023: 65+ 23.9%, under 35 5.1%
+  SK 2023: 65+ 23.1%, under 35 11.2%
+  FI 2023: 65+ 21.1%, under 35 6.4%
+  LU 2023: 65+ 20.8%, under 35 10.4%
+  CZ 2023: 65+ 20.7%, under 35 11.2%
+  DE 2023: 65+ 14.6%, under 35 7.7%
+  PL 2020: 65+ 13.7%, under 35 11.0%
+  FR 2023: 65+ 11.4%, under 35 10.9%
+  AT 2023: 65+ 6.8%, under 35 13.3%
+  IE: share of standard output on holdings run by managers 65+ 32.2% (share of holdings 37.7%)
+  CY: share of standard output on holdings run by managers 65+ 26.4% (share of holdings 52.3%)
+  PT: share of standard output on holdings run by managers 65+ 25.8% (share of holdings 51.9%)
+  HU: share of standard output on holdings run by managers 65+ 25.6% (share of holdings 36.8%)
+  RO: share of standard output on holdings run by managers 65+ 24.4% (share of holdings 41.7%)
+  MT: share of standard output on holdings run by managers 65+ 24.2% (share of holdings 43.4%)
+  IT: share of standard output on holdings run by managers 65+ 23.0% (share of holdings 42.6%)
+  ES: share of standard output on holdings run by managers 65+ 20.4% (share of holdings 41.3%)
+  EL: share of standard output on holdings run by managers 65+ 20.2% (share of holdings 37.1%)
+  SI: share of standard output on holdings run by managers 65+ 19.4% (share of holdings 38.1%)
+  SE: share of standard output on holdings run by managers 65+ 18.1% (share of holdings 35.7%)
+  BG: share of standard output on holdings run by managers 65+ 17.1% (share of holdings 30.8%)
+  SK: share of standard output on holdings run by managers 65+ 16.9% (share of holdings 23.1%)
+  CZ: share of standard output on holdings run by managers 65+ 15.7% (share of holdings 20.7%)
+  LV: share of standard output on holdings run by managers 65+ 14.5% (share of holdings 32.3%)
+  HR: share of standard output on holdings run by managers 65+ 14.4% (share of holdings 35.4%)
+  LT: share of standard output on holdings run by managers 65+ 14.3% (share of holdings 32.2%)
+  EU27_2020: share of standard output on holdings run by managers 65+ 13.8% (share of holdings 33.2%)
+  EE: share of standard output on holdings run by managers 65+ 12.9% (share of holdings 28.0%)
+  NL: share of standard output on holdings run by managers 65+ 11.5% (share of holdings 23.9%)
+  DK: share of standard output on holdings run by managers 65+ 10.6% (share of holdings 28.9%)
+  DE: share of standard output on holdings run by managers 65+ 9.8% (share of holdings 14.6%)
+  BE: share of standard output on holdings run by managers 65+ 9.3% (share of holdings 24.1%)
+  FI: share of standard output on holdings run by managers 65+ 7.9% (share of holdings 21.1%)
+  PL: share of standard output on holdings run by managers 65+ 7.9% (share of holdings 13.7%)
+  LU: share of standard output on holdings run by managers 65+ 5.9% (share of holdings 20.8%)
+  FR: share of standard output on holdings run by managers 65+ 5.0% (share of holdings 11.4%)
+  AT: share of standard output on holdings run by managers 65+ 2.8% (share of holdings 6.8%)
+  EU-27 labour input 2005 -> 2025: total -0.410, non-salaried -0.502
+
+== Country table for the model
+  LT: pop share 0.0064, production share 0.0193, self-sufficiency proxy 3.01, shock sd 0.147, meal deprivation 0.089, Gini 0.355
+  LV: pop share 0.0042, production share 0.0104, self-sufficiency proxy 2.49, shock sd 0.128, meal deprivation 0.079, Gini 0.356
+  BG: pop share 0.0143, production share 0.0352, self-sufficiency proxy 2.46, shock sd 0.180, meal deprivation 0.158, Gini 0.377
+  HU: pop share 0.0213, production share 0.0502, self-sufficiency proxy 2.36, shock sd 0.185, meal deprivation 0.151, Gini 0.295
+  DK: pop share 0.0132, production share 0.0310, self-sufficiency proxy 2.34, shock sd 0.084, meal deprivation 0.031, Gini 0.282
+  RO: pop share 0.0424, production share 0.0830, self-sufficiency proxy 1.96, shock sd 0.248, meal deprivation 0.181, Gini 0.273
+  EE: pop share 0.0031, production share 0.0047, self-sufficiency proxy 1.54, shock sd 0.168, meal deprivation 0.062, Gini 0.309
+  FR: pop share 0.1526, production share 0.2229, self-sufficiency proxy 1.46, shock sd 0.082, meal deprivation 0.112, Gini 0.304
+  PL: pop share 0.0814, production share 0.1123, self-sufficiency proxy 1.38, shock sd 0.080, meal deprivation 0.030, Gini 0.249
+  HR: pop share 0.0086, production share 0.0117, self-sufficiency proxy 1.36, shock sd 0.123, meal deprivation 0.047, Gini 0.285
+  SK: pop share 0.0121, production share 0.0144, self-sufficiency proxy 1.19, shock sd 0.150, meal deprivation 0.142, Gini 0.230
+  CZ: pop share 0.0242, production share 0.0280, self-sufficiency proxy 1.16, shock sd 0.095, meal deprivation 0.057, Gini 0.240
+  FI: pop share 0.0125, production share 0.0119, self-sufficiency proxy 0.96, shock sd 0.104, meal deprivation 0.033, Gini 0.271
+  AT: pop share 0.0204, production share 0.0184, self-sufficiency proxy 0.90, shock sd 0.074, meal deprivation 0.033, Gini 0.274
+  DE: pop share 0.1854, production share 0.1537, self-sufficiency proxy 0.83, shock sd 0.075, meal deprivation 0.111, Gini 0.301
+  SE: pop share 0.0234, production share 0.0189, self-sufficiency proxy 0.81, shock sd 0.137, meal deprivation 0.035, Gini 0.286
+  ES: pop share 0.1080, production share 0.0759, self-sufficiency proxy 0.70, shock sd 0.186, meal deprivation 0.053, Gini 0.308
+  IE: pop share 0.0119, production share 0.0076, self-sufficiency proxy 0.64, shock sd 0.098, meal deprivation 0.017, Gini 0.272
+  EL: pop share 0.0231, production share 0.0115, self-sufficiency proxy 0.50, shock sd 0.094, meal deprivation 0.128, Gini 0.316
+  SI: pop share 0.0047, production share 0.0023, self-sufficiency proxy 0.48, shock sd 0.106, meal deprivation 0.044, Gini 0.246
+  IT: pop share 0.1310, production share 0.0579, self-sufficiency proxy 0.44, shock sd 0.063, meal deprivation 0.093, Gini 0.310
+  LU: pop share 0.0015, production share 0.0005, self-sufficiency proxy 0.37, shock sd 0.077, meal deprivation 0.045, Gini 0.305
+  BE: pop share 0.0263, production share 0.0091, self-sufficiency proxy 0.35, shock sd 0.087, meal deprivation 0.048, Gini 0.234
+  PT: pop share 0.0249, production share 0.0039, self-sufficiency proxy 0.16, shock sd 0.113, meal deprivation 0.019, Gini 0.309
+  NL: pop share 0.0399, production share 0.0050, self-sufficiency proxy 0.13, shock sd 0.095, meal deprivation 0.025, Gini 0.259
+  CY: pop share 0.0021, production share 0.0002, self-sufficiency proxy 0.08, shock sd 0.727, meal deprivation 0.012, Gini 0.312
+  MT: pop share 0.0013, production share 0.0000, self-sufficiency proxy 0.00, shock sd nan, meal deprivation 0.115, Gini 0.292

@@ -1,10 +1,9 @@
-"""Public publication artifacts: reproducible numerical values and research figures.
+"""Regenerate and validate public research values and publication figures.
 
-``values`` reads committed results and derived data, formatting numerical values
-consistently. ``write_publication`` regenerates public ``publication/values.json``
-and figures; ``check`` verifies the committed values. Full Medium manuscripts
-and templates are privately maintained. ``render`` remains available for callers
-that explicitly supply a private editorial template.
+``values`` derives numerical claims from committed results and data. The default
+``write_publication`` command writes numerical JSON and figures but never rewrites
+editorial prose. ``render`` remains available for callers that explicitly supply a
+privately maintained manuscript template.
 """
 
 from __future__ import annotations
@@ -186,10 +185,37 @@ def render(template: str, values: Mapping[str, str]) -> str:
     return PLACEHOLDER.sub(lambda m: values[m.group(1)], template)
 
 
+def scientific_outputs(root: Path) -> dict[str, str]:
+    """Return reproducible research values without reading editorial manuscripts.
+
+    This public contract is independent of the Medium article template and the
+    generated article. The research results remain auditable after prose moves.
+    """
+    v = values(root)
+    return {"publication/values.json": json.dumps(v, indent=1, ensure_ascii=False) + "\n"}
+
+
+def check_scientific(root: Path) -> list[str]:
+    """Report stale or missing generated research-value files."""
+    return [name for name, text in scientific_outputs(root).items()
+            if not (root / name).is_file()
+            or (root / name).read_text(encoding="utf-8") != text]
+
+
+def write_scientific(root: Path) -> list[str]:
+    """Write public research values without opening or recreating editorial text."""
+    written: list[str] = []
+    for name, body in scientific_outputs(root).items():
+        destination = root / name
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        destination.write_text(body, encoding="utf-8", newline="\n")
+        written.append(name)
+    return written
+
+
 def outputs(root: Path) -> dict[str, str]:
-    """Return only public machine-readable outputs, never private editorial prose."""
-    payload = json.dumps(values(root), indent=1, ensure_ascii=False) + "\n"
-    return {"publication/values.json": payload}
+    """Return public scientific outputs; editorial rendering is private."""
+    return scientific_outputs(root)
 
 
 def write_publication(root: Path, figures: bool = True) -> list[str]:

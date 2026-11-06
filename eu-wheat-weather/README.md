@@ -166,6 +166,8 @@ poetry run eu-wheat fetch-irrigation   # Eurostat's irrigated maize in 2023, for
 poetry run eu-wheat maize-a2-weather   # the season weather under three weightings, about 2 minutes
 poetry run eu-wheat maize-amend --crops snapshots/eurostat-maize-2026-10-26   # beside the registered results
 poetry run eu-wheat publication            # values, article and figures; --check compares
+poetry run eu-wheat publication --values-only   # numerical manifests; no article templates needed
+poetry run eu-wheat publication --check-values  # verify wheat and maize manifests only
 poetry run pytest
 poetry run ruff check src tests
 poetry run mypy src

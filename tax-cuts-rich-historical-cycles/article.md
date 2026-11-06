@@ -1,4 +1,4 @@
-# The Promise Returns: Tax Cuts for the Rich, Historical Recurrence, and the Distribution of Prosperity
+# Tax Cuts at the Top, Federal Finances and Inequality: U.S. Tax Reforms from 1964 to 2017
 
 > The full editorial manuscript is now maintained in the [private Medium article repository](https://github.com/DiogoRibeiro7/research-articles-medium/blob/main/us-political-economy/09-tax-cuts-historical-cycles.md). Access requires permission from the repository owner.
 
