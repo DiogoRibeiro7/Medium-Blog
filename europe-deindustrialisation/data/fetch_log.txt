@@ -37,3 +37,4 @@ regional_unemployment	200	[["sex", "T"], ["age", "Y15-74"], ["isced11", "TOTAL"]
 regional_unemployment	ROWS	11967
 regional_employment_rate	200	[["sex", "T"], ["age", "Y20-64"], ["unit", "PC"]]	77f14a94098998070c05e39c8466dcc4c05b03ae371e91b6219dae019e04b0a8	197833 bytes	https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/lfst_r_lfe2emprt?lang=en&format=JSON&sex=T&age=Y20-64&unit=PC
 regional_employment_rate	ROWS	12116
+labels	ROWS	8255
