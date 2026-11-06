@@ -1,7 +1,8 @@
 # Critical review of the routing study (2026-10-29)
 
 This review was written after the registered results ([RESULTS.md](RESULTS.md)) and the
-generated article ([../publication/article.md](../publication/article.md)), and before
+generated article (now in the private research archive; the
+[public compatibility notice](../publication/article.md) preserves its path), and before
 publication.
 
 **How it was done.**

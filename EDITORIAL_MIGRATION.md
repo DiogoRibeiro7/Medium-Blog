@@ -7,8 +7,9 @@ Medium manuscripts are maintained in the private [research-articles-medium](http
 - Source snapshot imported: [`6e6f84c85931`](https://github.com/DiogoRibeiro7/Medium-Blog/commit/6e6f84c8593198fbd70811fd8d1915def98373a8).
 - Later synchronized amendment: causal inference part 16 from [`d603e96c1986`](https://github.com/DiogoRibeiro7/Medium-Blog/commit/d603e96c19869780e04f38df294808368453d5f2).
 - Private import: [PR #2](https://github.com/DiogoRibeiro7/research-articles-medium/pull/2), 90 manuscripts and editorial indexes.
-- Public migration stages 1–4: replace 84 `article.md` bodies with historical-path notices.
-- Deferred: 6 manuscripts requiring further publication-generator or source-audit decoupling.
+- Public migration stages 1–5: replace 85 `article.md` bodies with historical-path notices.
+- Deferred: 5 manuscripts requiring further publication-generator or source-audit decoupling.
+- Private editorial templates and sections archived in [PR #17](https://github.com/DiogoRibeiro7/research-articles-medium/pull/17) before generator cleanup.
 
 ## Why stages are required
 
@@ -118,7 +119,6 @@ The private import must be merged and verified before this public cleanup is mer
 - `eu-wheat-weather/publication/maize/article.md`
 - `iberian-electricity-lp/publication/article.md`
 - `midterm-forecast-fit-vs-prediction/article.md`
-- `routing-on-real-roads/publication/article.md`
 
 ## Historical links and privacy
 
