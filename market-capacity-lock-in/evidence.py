@@ -144,7 +144,18 @@ def overburden() -> pd.DataFrame:
     ob = eurostat_json("eurostat_ilc_lvho07a_PT_2026-10-29.json")
     ob = ob[ob.rskpovth == "TOTAL"].pivot_table(index="time", columns="age", values="value")
     lp = eurostat_json("eurostat_ilc_lvps08_PT_2026-10-29.json").pivot_table(index="time", columns="age", values="value")
-    out = pd.DataFrame({"overburden_total": ob["TOTAL"], "overburden_25_29": ob["Y25-29"], "with_parents_25_34": lp["Y25-34"]})
+    ten = eurostat_json("eurostat_ilc_lvho02_PT_2026-10-29.json")
+    ten = ten[(ten.hhcomp == "TOTAL") & (ten.rskpovth == "TOTAL")].pivot_table(index="time", columns="tenure", values="value")
+    out = pd.DataFrame(
+        {
+            "overburden_total": ob["TOTAL"],
+            "overburden_25_29": ob["Y25-29"],
+            "with_parents_25_34": lp["Y25-34"],
+            "owner": ten["OWN"],
+            "owner_no_loan": ten["OWN_NL"],
+            "reduced_or_free_rent": ten["RENT_FR"],
+        }
+    )
     return out
 
 
@@ -249,7 +260,10 @@ def main() -> None:
     ob = ev["overburden"]
     for y in (2015, 2019, 2022, 2024, 2025):
         r = ob.loc[y]
-        say(f"  {y}: housing-cost overburden {r.overburden_total:.1f}% (25-29: {r.overburden_25_29:.1f}%); aged 25-34 living with parents {r.with_parents_25_34:.1f}%")
+        say(
+            f"  {y}: housing-cost overburden {r.overburden_total:.1f}% (25-29: {r.overburden_25_29:.1f}%); aged 25-34 living with parents {r.with_parents_25_34:.1f}%; "
+            f"population in owner-occupied homes {r.owner:.1f}% (no loan {r.owner_no_loan:.1f}%), reduced or free rent {r.reduced_or_free_rent:.1f}%"
+        )
     g = ev["gini"]
     say(f"\nGini (ilc_di12): {int(g.index.max())} {g.iloc[-1]:.1f}")
     hg = ev["household_growth"]

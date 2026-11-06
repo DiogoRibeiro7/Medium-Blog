@@ -176,10 +176,12 @@ def fig3_exclusion() -> None:
     ax.plot(d.price_ratio, 100 * d.food_priced_out, color=C2)
     label_end(ax, 4.0, 100 * d.housing_priced_out.iloc[-1], "housing\n(5% at the\nreference price)", C1, dx=0.05)
     label_end(ax, 4.0, 100 * d.food_priced_out.iloc[-1], "food\n(3% at the\nreference price)", C2, dx=0.05, dy=-8)
-    r = 1.646
+    fh = pd.read_csv(RES / "housing_fitted.csv")
+    row = fh.iloc[int(np.argmin(np.abs(fh.year.to_numpy() - 2025)))]
+    r = float(row.price)
     y = 100 * float(np.interp(r, d.price_ratio, d.housing_priced_out))
     ax.scatter([r], [y], s=55, color=C1, edgecolor=SURFACE, linewidth=1.5, zorder=4)
-    ax.annotate(f"house prices / pay,\n2025 vs 2015 (x{r:.2f}):\n{y:.0f}% of entrants", (r, y), xytext=(1.9, 8), fontsize=9.2, color=INK2, arrowprops=dict(arrowstyle="-", color=MUTED, lw=0.8))
+    ax.annotate(f"fitted housing model, 2025:\nprice {r:.2f} x reference,\n{y:.1f}% of entrants priced out", (r, y), xytext=(1.75, 4), fontsize=9.2, color=INK2, arrowprops=dict(arrowstyle="-", color=MUTED, lw=0.8))
     ax.set_xlim(0.5, 4.6)
     ax.set_ylim(0, 100)
     ax.set_xlabel("price relative to the reference price")
@@ -306,7 +308,7 @@ def fig7_housing_model() -> None:
     fig.suptitle("Portugal's housing, 2008-2025, fitted with three parameters, and four other histories", x=0.01, ha="left", fontsize=13, fontweight="bold", color=INK, y=1.03)
     note(fig, "Data: Eurostat (nama_10_a10_e, prc_hpi_a, nama_10_a10). Model: capacity speeds from construction employment; household growth from lfst_hhnhtych")
     fig.tight_layout(rect=(0, 0.04, 1, 1))
-    save(fig, "fig7_housing_model.png")
+    save(fig, "fig8_housing_model.png")
 
 
 def fig8_exposure() -> None:
@@ -325,7 +327,7 @@ def fig8_exposure() -> None:
     ax.set_title("What anchored capacity buys: protection when borrowing fails")
     note(fig, "Model: food case; price clears the market during the disruption; Gini 30.9")
     fig.tight_layout(rect=(0, 0.04, 1, 1))
-    save(fig, "fig8_exposure.png")
+    save(fig, "fig7_exposure.png")
 
 
 def main() -> None:
@@ -335,8 +337,8 @@ def main() -> None:
     fig4_fold()
     fig5_erosion()
     fig6_wave()
-    fig7_housing_model()
     fig8_exposure()
+    fig7_housing_model()
 
 
 if __name__ == "__main__":

@@ -34,8 +34,8 @@ python -m pytest -q tests
 - `fig4_fold`: steady states of anchored food capacity against the effort premium, open and capped borrowing
 - `fig5_erosion`: a slow rise in the effort premium, then a disruption to borrowed supply
 - `fig6_wave`: capacity after a retirement wave, by its speed and by how eroded the sector already was
-- `fig7_housing_model`: the housing fit and four counterfactual histories
-- `fig8_exposure`: priced-out share during a disruption, as a function of anchored capacity
+- `fig7_exposure`: priced-out share during a disruption, as a function of anchored capacity
+- `fig8_housing_model`: the housing fit and four counterfactual histories
 
 ## The model in one paragraph
 
@@ -46,8 +46,8 @@ need. Food demand also has a discretionary layer, so the aggregate price elastic
 small (no suppliers, buyers or people to learn from), falls as it grows and rises again at large scale. It
 also includes a premium *φ* for drawing people into physical work. Capacity grows at most 7% a year (scaled by
 *K/(K+K_g)*, since newcomers learn from incumbents) and shrinks at up to 9% a year when production loses money,
-plus 2.5% attrition. With these rates, the fastest net rebuild is about 3.7% a year and the fastest loss 11.5%,
-which matches Portuguese construction employment in 2014–2025 and 2008–2013. Borrowed supply is available at
+plus 2.5% attrition. With these rates, the fastest net rebuild of a full-sized sector is about 3.8% a year and the
+fastest loss 11.5%, against 3.7% and 11.2% measured on Portuguese construction employment in 2014–2025 and 2008–2013. Borrowed supply is available at
 the reference price up to a cap *M*.
 
 All model parameters are in `model.py` and `scenarios.py`. The Monte Carlo redraws the shape of the cost curve
@@ -63,7 +63,7 @@ and the speeds over wide ranges (2,000 draws) to check which conclusions survive
   `data/archived/SHA256SUMS`:
   - from `portugal-housing-generations` at commit `7883bad` (the project now lives in its own repository): INE
     indicators 0000076 and 0011725 (dwellings completed), 0013235 (dwellings licensed); Eurostat `prc_hpi_a`,
-    `sts_cobp_a`, `ilc_lvho07a`, `ilc_lvps08`, `lfst_hhnhtych`, `prc_hicp_aind` (rents);
+    `sts_cobp_a`, `ilc_lvho02`, `ilc_lvho07a`, `ilc_lvps08`, `lfst_hhnhtych`, `prc_hicp_aind` (rents);
   - from `portugal-labour-share-industries`: Eurostat `nama_10_a10`, `nama_10_a10_e`;
   - from `portugal-household-spending`: Eurostat `prc_hicp_aind`.
 
