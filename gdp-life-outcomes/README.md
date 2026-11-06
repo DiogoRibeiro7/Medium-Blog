@@ -1,9 +1,8 @@
-# Twelve Charts, One Correlation, and the Missing Causal Question
+# GDP per Capita, Life Expectancy and Basic Services: What Cross-Country Correlations Can and Cannot Identify
 
 This directory is the **public computational companion** to the long-form
-Medium manuscript in the author's private
-[`research-articles-medium`](https://github.com/DiogoRibeiro7/research-articles-medium)
-repository. It examines a popular interpretation of Max Roser's
+Medium manuscript [GDP per Capita, Life Expectancy and Basic Services: What Cross-Country Correlations Can and Cannot Identify](https://github.com/DiogoRibeiro7/research-articles-medium/blob/main/gdp-life-outcomes/article.md), kept in the author's private
+`research-articles-medium` repository. It examines a popular interpretation of Max Roser's
 [29 October 2026 Our World in Data chart](https://ourworldindata.org/data-insights/how-is-life-at-different-levels-of-gdp-per-capita).
 
 **Scope:** an independent, reproducible World Bank WDI analysis of four
