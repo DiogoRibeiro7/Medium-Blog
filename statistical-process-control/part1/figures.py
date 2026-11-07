@@ -216,7 +216,7 @@ def figure_estimated_limits() -> None:
     ax2.set_ylabel("conditional in-control ARL (log scale)")
     ax2.set_title("How slowly the band closes on 370")
     ax2.legend(loc="upper right", fontsize=8.5)
-    fig.suptitle("With estimated limits, the in-control ARL is a property of the sample, not of the chart",
+    fig.suptitle("With estimated limits, each chart's in-control ARL depends on the Phase I sample it was built from",
                  x=0.01, ha="left", fontsize=12, fontweight="bold", color=INK)
     fig.subplots_adjust(top=0.86, bottom=0.14, wspace=0.28)
     credit(fig)

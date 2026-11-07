@@ -97,11 +97,13 @@ numpy 2.5.3; master seed 19240516
     gamma, shape 4 (skewness 1)    skew  1.00, excess kurtosis   1.50: upper 0.01034, lower 0.00000, total 0.01034, ARL 96.7
     lognormal, log-sd 0.5          skew  1.75, excess kurtosis   5.90: upper 0.01538, lower 0.00000, total 0.01538, ARL 65.0
     exponential (skewness 2)       skew  2.00, excess kurtosis   6.00: upper 0.01832, lower 0.00000, total 0.01832, ARL 54.6
-  means of n = 5: numerical convolution (grid step 0.002); exact gamma result shown for the check
-    normal                         upper 0.00135, lower 0.00135, total 0.00270, ARL 370.3  [exact: 0.00270]
-    uniform                        upper 0.00047, lower 0.00047, total 0.00095, ARL 1,055.4
+  means of n = 5: numerical convolution (grid step 0.002) for all eight; exact results printed beside it where a
+  closed form or a one-dimensional integral exists (normal, uniform via Irwin-Hall, Laplace via a difference of gammas,
+  gamma and exponential via the gamma distribution of the sum)
+    normal                         upper 0.00135, lower 0.00135, total 0.00270, ARL 370.4  [exact: total 0.00270, ARL 370.4]
+    uniform                        upper 0.00047, lower 0.00047, total 0.00095, ARL 1,056.0  [exact Irwin-Hall: upper 0.00047, lower 0.00047, ARL 1056.0]
     logistic                       upper 0.00210, lower 0.00210, total 0.00419, ARL 238.6
-    Laplace (double exponential)   upper 0.00305, lower 0.00305, total 0.00611, ARL 163.7
+    Laplace (double exponential)   upper 0.00305, lower 0.00305, total 0.00611, ARL 163.8  [exact difference of gammas: upper 0.00305, lower 0.00305, ARL 163.8]
     Student t, 5 df                upper 0.00327, lower 0.00327, total 0.00655, ARL 152.7
     gamma, shape 4 (skewness 1)    upper 0.00492, lower 0.00002, total 0.00494, ARL 202.3  [exact gamma(20): upper 0.00492, lower 0.00002, ARL 202.3]
     lognormal, log-sd 0.5          upper 0.00846, lower 0.00000, total 0.00846, ARL 118.3
@@ -151,6 +153,9 @@ numpy 2.5.3; master seed 19240516
     probability of at least one false alarm in 1000 future in-control subgroups: 0.8970  (known limits 0.9330)
     sigma_hat/sigma: mean 1.0000, SD 0.0742; 5th and 95th percentiles 0.880 and 1.124
     a chart whose sigma_hat is 10% low (0.90 sigma) and mean exact: ARL 144.2; 10% high (1.10 sigma): 1034.3
+    the two estimation errors separately: median conditional ARL with sigma_hat error only (exact centre line) 366.0; with centre-line error only (exact sigma) 339.9; both 310.8
+    variance of log conditional ARL: both errors 0.552; sigma_hat only 0.538; centre line only 0.042
+    a centre-line error alone never lengthens the run: share of charts with exact sigma and ARL above 370.4: 0.000
     two charts only, sigma_hat 10% low and 10% high: reciprocal of their average false-alarm probability 253.1; their average ARL 589.3
     10th / 90th percentile of sigma_hat/sigma (0.906 / 1.096) as limits with exact mean: ARL 151.7 / 987.7
   widening the limits to k = 3.1365 sigma_hat restores the average false-alarm probability to 0.00270 (A2 becomes 0.6031 instead of 0.5768)

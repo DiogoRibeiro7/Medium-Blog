@@ -363,24 +363,37 @@ def tail_individual(dist) -> tuple[float, float]:
 
 def tail_mean_of_n(dist, n: int, step: float = 0.002, half_width: float = 60.0) -> tuple[float, float, float]:
     """Tails beyond +-3 sigma/sqrt(n) of the mean of n i.i.d. draws, by numerical convolution of the
-    standardized density on a grid (trapezoid-consistent discretization of the CDF)."""
+    standardized distribution discretized on a grid.  The mass of each cell of the n-fold sum is treated as
+    spread uniformly over the cell, so the cell that straddles the cut contributes its fractional part."""
     from scipy.signal import fftconvolve
     mu, sd = standardized(dist)
     edges = np.arange(-half_width, half_width + step / 2, step)
     cdf = dist.cdf(mu + sd * edges)
-    mass = np.diff(cdf)
-    mass = np.clip(mass, 0, None)
+    mass = np.clip(np.diff(cdf), 0, None)
     lost = 1 - mass.sum()
     total = mass.copy()
     for _ in range(n - 1):
-        total = fftconvolve(total, mass)
-        total = np.clip(total, 0, None)
-    # cell j of the n-fold sum has midpoint n*(-half_width) + (j + n/2) * step
+        total = np.clip(fftconvolve(total, mass), 0, None)
+    # cell j of the n-fold sum has midpoint n*(-half_width) + (j + n/2) * step and width step
     mids = n * (-half_width) + (np.arange(total.size) + n / 2) * step
+    lo_edge, hi_edge = mids - step / 2, mids + step / 2
     cut = 3 * math.sqrt(n)  # the sum of n standardized values, with limits at 3 sigma of the mean
-    upper = total[mids > cut].sum()
-    lower = total[mids < -cut].sum()
-    return float(upper), float(lower), float(lost)
+    up_frac = np.clip((hi_edge - cut) / step, 0, 1)
+    lo_frac = np.clip((-cut - lo_edge) / step, 0, 1)
+    return float((total * up_frac).sum()), float((total * lo_frac).sum()), float(lost)
+
+
+def irwin_hall_sf(x: float, n: int) -> float:
+    """Survival function of the sum of n independent uniform(0, 1) variables."""
+    cdf = sum((-1) ** k * math.comb(n, k) * (x - k) ** n for k in range(int(math.floor(x)) + 1)) / math.factorial(n)
+    return 1.0 - cdf
+
+
+def laplace_sum_sf(c: float, n: int) -> float:
+    """P(sum of n standard Laplace variables > c), as P(G1 - G2 > c) with G1, G2 ~ Gamma(n, 1) independent."""
+    g = stats.gamma(n)
+    val, _ = integrate.quad(lambda y: g.pdf(y) * g.sf(y + c), 0, np.inf, limit=200)
+    return val
 
 
 def section_nonnormal() -> None:
@@ -404,7 +417,9 @@ def section_nonnormal() -> None:
         sk, ku = (float(x) for x in d.stats(moments="sk"))
         print(f"    {name:30s} skew {sk:5.2f}, excess kurtosis {ku:6.2f}: upper {up:.5f}, lower {lo:.5f}, total {p:.5f},"
               f" ARL {fmt_arl(1 / p) if p > 0 else 'infinite'}")
-    print("  means of n = 5: numerical convolution (grid step 0.002); exact gamma result shown for the check")
+    print("  means of n = 5: numerical convolution (grid step 0.002) for all eight; exact results printed beside it where a")
+    print("  closed form or a one-dimensional integral exists (normal, uniform via Irwin-Hall, Laplace via a difference of gammas,")
+    print("  gamma and exponential via the gamma distribution of the sum)")
     for name, d in dists:
         up, lo, lost = tail_mean_of_n(d, 5)
         p = up + lo
@@ -420,7 +435,14 @@ def section_nonnormal() -> None:
             ex_lo = exact.cdf(4 - 3 * 2 / math.sqrt(5))
             extra = f"  [exact gamma(20): upper {ex_up:.5f}, lower {ex_lo:.5f}, ARL {1 / (ex_up + ex_lo):.1f}]"
         elif name == "normal":
-            extra = f"  [exact: {2 * PHIBAR(3):.5f}]"
+            extra = f"  [exact: total {2 * PHIBAR(3):.5f}, ARL {1 / (2 * PHIBAR(3)):.1f}]"
+        elif name == "uniform":
+            # sum of 5 uniform(0,1): mean 2.5, sd sqrt(5/12); limits at 3 sd of the sum
+            ex = irwin_hall_sf(2.5 + 3 * math.sqrt(5 / 12), 5)
+            extra = f"  [exact Irwin-Hall: upper {ex:.5f}, lower {ex:.5f}, ARL {1 / (2 * ex):.1f}]"
+        elif name.startswith("Laplace"):
+            ex = laplace_sum_sf(3 * math.sqrt(5) * math.sqrt(2), 5)
+            extra = f"  [exact difference of gammas: upper {ex:.5f}, lower {ex:.5f}, ARL {1 / (2 * ex):.1f}]"
         print(f"    {name:30s} upper {up:.5f}, lower {lo:.5f}, total {p:.5f}, ARL {fmt_arl(1 / p) if p > 0 else 'infinite'}{extra}")
 
 
@@ -550,6 +572,15 @@ def section_estimated() -> None:
     lo_s, hi_s = np.percentile(sd_rel, [10, 90])
     print(f"    a chart whose sigma_hat is 10% low (0.90 sigma) and mean exact: ARL {1 / conditional_p(np.array([0.0]), np.array([0.9]), 5)[0]:.1f};"
           f" 10% high (1.10 sigma): {1 / conditional_p(np.array([0.0]), np.array([1.1]), 5)[0]:.1f}")
+    c_full = 1 / p
+    c_sig = 1 / conditional_p(np.zeros_like(s_hat), s_hat, 5)
+    c_mu = 1 / conditional_p(mu_hat, np.ones_like(mu_hat), 5)
+    print(f"    the two estimation errors separately: median conditional ARL with sigma_hat error only (exact centre line)"
+          f" {np.median(c_sig):.1f}; with centre-line error only (exact sigma) {np.median(c_mu):.1f}; both {np.median(c_full):.1f}")
+    print(f"    variance of log conditional ARL: both errors {np.log(c_full).var():.3f}; sigma_hat only {np.log(c_sig).var():.3f};"
+          f" centre line only {np.log(c_mu).var():.3f}")
+    print(f"    a centre-line error alone never lengthens the run: share of charts with exact sigma and ARL above 370.4:"
+          f" {np.mean(c_mu > 370.4):.3f}")
     a_lo = 1 / conditional_p(np.array([0.0]), np.array([0.9]), 5)[0]
     a_hi = 1 / conditional_p(np.array([0.0]), np.array([1.1]), 5)[0]
     print(f"    two charts only, sigma_hat 10% low and 10% high: reciprocal of their average false-alarm probability"
