@@ -1,0 +1,132 @@
+Horizon 3 years, features from t-3 to t, watchlist 200 products, rolling origins 2010-2025
+Eligible product-origins (unflagged in t-2..t, history from t-3): 93482; with known outcome: 73074; entry rate 0.0181
+Scored out of time with known outcome: 52497 product-origins, 904 entries within 3 years
+
+Pooled out-of-time performance (product-cluster bootstrap 95% interval):
+  auc_near_miss: 0.843 [0.824, 0.863]
+  ap_near_miss: 0.122 [0.101, 0.149]
+  recall200_near_miss: 0.343 [0.307, 0.383]
+  auc_snapshot: 0.881 [0.867, 0.894]
+  ap_snapshot: 0.138 [0.119, 0.170]
+  recall200_snapshot: 0.399 [0.359, 0.440]
+  auc_trajectory: 0.889 [0.876, 0.902]
+  ap_trajectory: 0.144 [0.126, 0.176]
+  recall200_trajectory: 0.394 [0.352, 0.436]
+  auc_boosting: 0.889 [0.874, 0.903]
+  ap_boosting: 0.164 [0.140, 0.199]
+  recall200_boosting: 0.436 [0.394, 0.479]
+  auc_expected_value: 0.793 [0.767, 0.818]
+  ap_expected_value: 0.088 [0.073, 0.109]
+  recall200_expected_value: 0.299 [0.258, 0.347]
+  auc_trajectory_minus_snapshot: 0.008 [0.001, 0.015]
+  ap_trajectory_minus_snapshot: 0.005 [-0.008, 0.021]
+  recall200_trajectory_minus_snapshot: -0.006 [-0.040, 0.028]
+  auc_boosting_minus_snapshot: 0.008 [-0.005, 0.020]
+  ap_boosting_minus_snapshot: 0.026 [-0.005, 0.054]
+  recall200_boosting_minus_snapshot: 0.037 [-0.002, 0.077]
+  auc_snapshot_minus_near_miss: 0.038 [0.024, 0.050]
+  ap_snapshot_minus_near_miss: 0.016 [-0.008, 0.044]
+  recall200_snapshot_minus_near_miss: 0.056 [0.003, 0.111]
+  auc_boosting_minus_trajectory: 0.000 [-0.011, 0.010]
+  ap_boosting_minus_trajectory: 0.021 [-0.008, 0.045]
+  recall200_boosting_minus_trajectory: 0.042 [-0.002, 0.082]
+
+By origin (AUC, average precision, recall in the top 200):
+  2010: entries 70 of 4222; near_miss 0.867/0.132/0.36; snapshot 0.873/0.095/0.34; trajectory 0.863/0.105/0.34; boosting 0.878/0.146/0.41; expected_value 0.820/0.087/0.34
+  2011: entries 67 of 4249; near_miss 0.830/0.093/0.33; snapshot 0.865/0.122/0.36; trajectory 0.864/0.118/0.36; boosting 0.889/0.199/0.46; expected_value 0.825/0.096/0.31
+  2012: entries 58 of 4249; near_miss 0.862/0.108/0.31; snapshot 0.887/0.153/0.34; trajectory 0.890/0.175/0.43; boosting 0.877/0.150/0.43; expected_value 0.824/0.095/0.40
+  2013: entries 57 of 4207; near_miss 0.862/0.130/0.42; snapshot 0.890/0.154/0.46; trajectory 0.898/0.165/0.47; boosting 0.907/0.254/0.60; expected_value 0.852/0.117/0.46
+  2014: entries 59 of 4224; near_miss 0.875/0.136/0.36; snapshot 0.894/0.133/0.42; trajectory 0.903/0.141/0.42; boosting 0.877/0.158/0.46; expected_value 0.788/0.087/0.27
+  2015: entries 66 of 4463; near_miss 0.853/0.128/0.35; snapshot 0.889/0.177/0.47; trajectory 0.915/0.204/0.47; boosting 0.886/0.157/0.45; expected_value 0.771/0.053/0.20
+  2016: entries 74 of 4475; near_miss 0.843/0.099/0.34; snapshot 0.874/0.125/0.41; trajectory 0.908/0.152/0.45; boosting 0.890/0.176/0.46; expected_value 0.768/0.084/0.24
+  2017: entries 80 of 4478; near_miss 0.862/0.128/0.33; snapshot 0.899/0.185/0.46; trajectory 0.908/0.217/0.49; boosting 0.909/0.224/0.44; expected_value 0.791/0.103/0.33
+  2018: entries 83 of 4380; near_miss 0.843/0.172/0.40; snapshot 0.890/0.179/0.41; trajectory 0.892/0.163/0.41; boosting 0.888/0.166/0.42; expected_value 0.780/0.094/0.31
+  2019: entries 98 of 4390; near_miss 0.818/0.146/0.34; snapshot 0.884/0.218/0.41; trajectory 0.888/0.198/0.40; boosting 0.896/0.190/0.40; expected_value 0.771/0.133/0.33
+  2020: entries 101 of 4588; near_miss 0.822/0.154/0.30; snapshot 0.878/0.163/0.38; trajectory 0.882/0.160/0.32; boosting 0.902/0.184/0.40; expected_value 0.779/0.108/0.25
+  2021: entries 91 of 4572; near_miss 0.818/0.148/0.33; snapshot 0.875/0.140/0.35; trajectory 0.883/0.132/0.25; boosting 0.899/0.146/0.38; expected_value 0.776/0.092/0.22
+
+Mean over origins of recall and precision by watchlist size:
+  near_miss: top 100 recall 0.229 precision 0.175; top 200 recall 0.345 precision 0.132; top 400 recall 0.493 precision 0.095
+  snapshot: top 100 recall 0.246 precision 0.187; top 200 recall 0.401 precision 0.153; top 400 recall 0.597 precision 0.114
+  trajectory: top 100 recall 0.260 precision 0.196; top 200 recall 0.401 precision 0.151; top 400 recall 0.596 precision 0.113
+  boosting: top 100 recall 0.295 precision 0.222; top 200 recall 0.443 precision 0.168; top 400 recall 0.631 precision 0.120
+  expected_value: top 100 recall 0.176 precision 0.136; top 200 recall 0.304 precision 0.116; top 400 recall 0.479 precision 0.091
+
+Value-weighted recall in the top 200 (entering supplier's imports in the entry year), mean over origins: near_miss 0.464; snapshot 0.365; trajectory 0.384; boosting 0.335; expected_value 0.769
+Average number of products ranked per origin: 4375; entries per origin 75.3
+
+Horizon 5 years, mean over origins (AUC, AP, recall top 200):
+  near_miss: 0.828, 0.155, 0.296 (9 origins)
+  snapshot: 0.868, 0.203, 0.368 (9 origins)
+  trajectory: 0.872, 0.191, 0.341 (9 origins)
+  boosting: 0.873, 0.208, 0.374 (9 origins)
+  expected_value: 0.777, 0.114, 0.264 (9 origins)
+
+Lead time before durable entries 2013-2024 (348 entries; on the top-200 list at t = E-3, E-2 or E-1):
+  near_miss: warned 0.555 (value-weighted 0.514); 3 years ahead 0.147; 2+ years 0.307; mean lead 1.01
+  snapshot: warned 0.560 (value-weighted 0.469); 3 years ahead 0.218; 2+ years 0.356; mean lead 1.14
+  trajectory: warned 0.534 (value-weighted 0.480); 3 years ahead 0.216; 2+ years 0.376; mean lead 1.13
+  boosting: warned 0.655 (value-weighted 0.599); 3 years ahead 0.221; 2+ years 0.385; mean lead 1.26
+  expected_value: warned 0.391 (value-weighted 0.909); 3 years ahead 0.175; 2+ years 0.273; mean lead 0.84
+  warned share boosting minus near_miss: +0.101 [+0.049, +0.155]
+  warned share boosting minus snapshot: +0.095 [+0.044, +0.151]
+  warned share snapshot minus near_miss: +0.006 [-0.058, +0.066]
+  warned share trajectory minus snapshot: -0.026 [-0.070, +0.011]
+  entries with the entering supplier's imports >= EUR 10 m at entry (246): near_miss warned 0.585, 3 years ahead 0.163; snapshot warned 0.520, 3 years ahead 0.220; trajectory warned 0.508, 3 years ahead 0.220; boosting warned 0.654, 3 years ahead 0.220; expected_value warned 0.549, 3 years ahead 0.248
+
+Feature groups, trajectory logistic, pooled out-of-time AUC / AP:
+  levels only (12): 0.881 / 0.138
+  + own changes (20): 0.883 / 0.141
+  + challenger and China (24): 0.886 / 0.142
+  + unit values (26): 0.885 / 0.142
+  + flag history and chapter (all) (29): 0.889 / 0.144
+
+Largest standardised coefficients, trajectory model on all known outcomes:
+  top_share: +1.558
+  hhi: -1.020
+  log_ratio_c: +0.956
+  extra_share: +0.395
+  d3_log_value: -0.286
+  chapter_rate: +0.279
+  c_extra: +0.272
+  second_share: +0.266
+  log_value: -0.224
+  log_suppliers: -0.166
+  years_since_flag: -0.147
+  d3_extra_share: +0.136
+  c_top: -0.128
+  challenger_gain: +0.127
+
+Grouped permutation importance, boosting, fitted on origins <= 2016, tested on 2020-2021 (9160 product-origins, 192 entries), 20 shuffles:
+  none: AP 0.162 (drop +0.000), AUC 0.901 (drop +0.000)
+  Largest supplier's share and concentration: AP 0.125 (drop +0.037), AUC 0.886 (drop +0.015)
+  Extra-EU share of imports: AP 0.123 (drop +0.039), AUC 0.881 (drop +0.021)
+  Imports relative to EU exports: AP 0.049 (drop +0.113), AUC 0.716 (drop +0.186)
+  Criteria met: AP 0.145 (drop +0.017), AUC 0.897 (drop +0.004)
+  Size and growth of imports: AP 0.160 (drop +0.002), AUC 0.893 (drop +0.008)
+  Changes in the three criteria: AP 0.161 (drop +0.001), AUC 0.887 (drop +0.014)
+  China's share and the fastest riser: AP 0.168 (drop -0.006), AUC 0.896 (drop +0.005)
+  Relative unit values: AP 0.170 (drop -0.008), AUC 0.900 (drop +0.001)
+  Flag history: AP 0.157 (drop +0.005), AUC 0.899 (drop +0.002)
+  Chapter base rate: AP 0.154 (drop +0.008), AUC 0.871 (drop +0.030)
+
+Watchlist products (boosting, top 200) that did not enter within 3 years: 1957 product-origins; largest supplier above 40% 3 years later 0.689, above 60% 0.403; flagged in at least one year t+1..t+4 0.245
+
+Products with extra-EU imports >= EUR 10 m at the origin (39194 product-origins, 634 entries), same scores:
+  near_miss: AUC 0.880, AP 0.128
+  snapshot: AUC 0.897, AP 0.157
+  trajectory: AUC 0.906, AP 0.156
+  boosting: AUC 0.903, AP 0.179
+  expected_value: AUC 0.875, AP 0.106
+
+Calibration, trajectory model (deciles of the score, predicted vs observed):
+  1: 0.0002 vs 0.0004 (n 5250)
+  2: 0.0005 vs 0.0004 (n 5250)
+  3: 0.0009 vs 0.0006 (n 5249)
+  4: 0.0016 vs 0.0013 (n 5250)
+  5: 0.0025 vs 0.0029 (n 5250)
+  6: 0.0040 vs 0.0044 (n 5249)
+  7: 0.0070 vs 0.0084 (n 5250)
+  8: 0.0135 vs 0.0128 (n 5249)
+  9: 0.0325 vs 0.0364 (n 5250)
+  10: 0.1437 vs 0.1048 (n 5250)

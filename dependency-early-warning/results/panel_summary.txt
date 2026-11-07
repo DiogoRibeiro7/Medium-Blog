@@ -1,0 +1,57 @@
+Annual panel 2002-2025: 6421 HS 6-digit codes, 127034 product-years
+Codes present in every year: 4478
+
+Single-supplier screen by year (flagged products, entries, exits, durable entries, EUR bn from the largest supplier):
+  2002: 553 flagged, 0 in, 0 out, 0 durable, EUR 69.1 bn
+  2003: 544 flagged, 104 in, 113 out, 0 durable, EUR 66.2 bn
+  2004: 534 flagged, 110 in, 120 out, 0 durable, EUR 66.7 bn
+  2005: 541 flagged, 111 in, 104 out, 41 durable, EUR 68.8 bn
+  2006: 555 flagged, 106 in, 92 out, 29 durable, EUR 77.0 bn
+  2007: 514 flagged, 97 in, 100 out, 37 durable, EUR 82.0 bn
+  2008: 529 flagged, 108 in, 94 out, 23 durable, EUR 97.3 bn
+  2009: 494 flagged, 99 in, 134 out, 28 durable, EUR 79.5 bn
+  2010: 551 flagged, 127 in, 70 out, 46 durable, EUR 132.0 bn
+  2011: 520 flagged, 77 in, 108 out, 24 durable, EUR 137.3 bn
+  2012: 529 flagged, 87 in, 100 out, 24 durable, EUR 132.3 bn
+  2013: 511 flagged, 91 in, 109 out, 21 durable, EUR 113.4 bn
+  2014: 510 flagged, 98 in, 99 out, 25 durable, EUR 115.6 bn
+  2015: 537 flagged, 113 in, 86 out, 26 durable, EUR 122.6 bn
+  2016: 488 flagged, 74 in, 123 out, 22 durable, EUR 109.4 bn
+  2017: 509 flagged, 92 in, 92 out, 26 durable, EUR 91.8 bn
+  2018: 518 flagged, 98 in, 90 out, 29 durable, EUR 96.8 bn
+  2019: 533 flagged, 106 in, 91 out, 31 durable, EUR 96.4 bn
+  2020: 509 flagged, 91 in, 115 out, 28 durable, EUR 117.5 bn
+  2021: 507 flagged, 115 in, 117 out, 43 durable, EUR 152.7 bn
+  2022: 615 flagged, 166 in, 84 out, 40 durable, EUR 246.3 bn
+  2023: 492 flagged, 89 in, 212 out, 27 durable, EUR 161.3 bn
+  2024: 544 flagged, 142 in, 89 out, 30 durable, EUR 149.9 bn
+  2025: 555 flagged, 114 in, 103 out, 0 durable, EUR 196.6 bn
+
+Durable entries (flagged in E and E+1 after 3 clean years), E = 2005-2024: 600
+  largest supplier at entry: CN 188, US 63, TR 41, GB 40, IN 36, CH 26, PK 21, RU 18
+  criterion met last: c_ratio 238 (40%), c_top 153 (26%), joint 151 (25%), c_extra 58 (10%)
+  years c_top already met before entry: median 3, share >= 3 years 55%
+  years c_extra already met before entry: median 3, share >= 3 years 57%
+  years c_ratio already met before entry: median 0, share >= 3 years 24%
+  years the entering supplier was already the largest: median 3, share >= 3 years 61%
+  supplier criterion met at least one year before entry: 63%; entering supplier's share >= 40% three years before: 50%
+  entries with extra-EU imports >= EUR 10 m at entry: 458; criterion met last: c_ratio 42%, c_top 29%, joint 22%, c_extra 7%; supplier largest for a median 4 years; supplier criterion met >= 1 year before 61%
+  entering supplier's share at -5: median 0.379 (n 522)
+  entering supplier's share at -3: median 0.404 (n 600)
+  entering supplier's share at -1: median 0.466 (n 600)
+  entering supplier's share at 0: median 0.574 (n 600)
+  extra-EU imports at entry vs three years before: median ratio 1.40 (n 591)
+
+Run-up, medians by year relative to entry (entering supplier's share, extra-EU share, imports/exports, share flagged):
+  -8: n 415, share 0.356 [0.154, 0.598], extra 0.557, ratio 0.87, flagged 0.22
+  -7: n 448, share 0.356 [0.155, 0.605], extra 0.550, ratio 0.85, flagged 0.19
+  -6: n 476, share 0.369 [0.188, 0.627], extra 0.557, ratio 0.84, flagged 0.19
+  -5: n 522, share 0.379 [0.211, 0.640], extra 0.565, ratio 0.86, flagged 0.18
+  -4: n 553, share 0.390 [0.235, 0.643], extra 0.567, ratio 0.89, flagged 0.13
+  -3: n 600, share 0.404 [0.268, 0.646], extra 0.560, ratio 0.83, flagged 0.00
+  -2: n 600, share 0.428 [0.301, 0.664], extra 0.563, ratio 0.89, flagged 0.00
+  -1: n 600, share 0.466 [0.354, 0.678], extra 0.584, ratio 0.94, flagged 0.00
+  +0: n 600, share 0.574 [0.463, 0.771], extra 0.651, ratio 1.30, flagged 1.00
+  +1: n 600, share 0.575 [0.453, 0.763], extra 0.670, ratio 1.39, flagged 1.00
+  +2: n 562, share 0.561 [0.416, 0.750], extra 0.655, ratio 1.30, flagged 0.65
+  +3: n 529, share 0.533 [0.402, 0.728], extra 0.641, ratio 1.21, flagged 0.57
