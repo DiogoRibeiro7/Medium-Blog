@@ -18,7 +18,7 @@ permissions:
   contents: write
 
 env:
-  LIMIT: ${{ github.event.inputs.limit || '40' }}
+  LIMIT: ${{ github.event.inputs.limit || '' }}
 
 jobs:
   fetch:
