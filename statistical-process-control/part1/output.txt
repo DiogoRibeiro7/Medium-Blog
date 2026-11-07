@@ -1,0 +1,217 @@
+Statistical process control, Part 1: where the 370 comes from (numbers recomputed)
+numpy 2.5.3; master seed 19240516
+
+==============================================================================
+1. THREE SIGMA: THE NORMAL TAIL AGAINST DISTRIBUTION-FREE BOUNDS
+==============================================================================
+  P(|X - mu| >= k sigma) for limits at k sigma, and the in-control ARL = 1/P for independent points
+  bound 'Chebyshev' holds for every distribution with finite variance: 1/k^2
+  bound 'unimodal' holds when the distribution is unimodal (Vysochanskii-Petunin, k >= sqrt(8/3));
+    with mode equal to mean it is the Gauss / Camp-Meidell bound, the same 4/(9 k^2) for k >= 2/sqrt(3)
+  k = 1.00: normal 0.317311 (ARL      3.15);  Chebyshev 1.00000 (ARL >=   1.00);  unimodal n/a (k < sqrt(8/3))
+  k = 1.50: normal 0.133614 (ARL      7.48);  Chebyshev 0.44444 (ARL >=   2.25);  unimodal n/a (k < sqrt(8/3))
+  k = 1.96: normal 0.049996 (ARL     20.00);  Chebyshev 0.26031 (ARL >=   3.84);  unimodal 0.11569 (ARL >=    8.64)
+  k = 2.00: normal 0.045500 (ARL     21.98);  Chebyshev 0.25000 (ARL >=   4.00);  unimodal 0.11111 (ARL >=    9.00)
+  k = 2.50: normal 0.012419 (ARL     80.52);  Chebyshev 0.16000 (ARL >=   6.25);  unimodal 0.07111 (ARL >=   14.06)
+  k = 3.00: normal 0.002700 (ARL    370.40);  Chebyshev 0.11111 (ARL >=   9.00);  unimodal 0.04938 (ARL >=   20.25)
+  k = 3.09: normal 0.002002 (ARL    499.61);  Chebyshev 0.10473 (ARL >=   9.55);  unimodal 0.04655 (ARL >=   21.48)
+  k = 3.50: normal 0.000465 (ARL   2149.34);  Chebyshev 0.08163 (ARL >=  12.25);  unimodal 0.03628 (ARL >=   27.56)
+  k = 4.00: normal 0.000063 (ARL  15787.19);  Chebyshev 0.06250 (ARL >=  16.00);  unimodal 0.02778 (ARL >=   36.00)
+  normal, k = 3, two-sided: p = 0.0026998; 1/p = 370.398
+  normal, k = 3, one side only: p = 0.0013499; 1/p = 740.797
+  ratio of the Chebyshev bound to the normal tail at k = 3: 41.2; of the unimodal bound: 18.3
+  limits needed for a guaranteed false-alarm probability of 0.0027: Chebyshev k = 19.25; unimodal k = 12.83
+
+==============================================================================
+2. THE RUN LENGTH OF A THREE-SIGMA CHART WITH KNOWN PARAMETERS
+==============================================================================
+  in control: p = 0.002700; run length geometric with mean 370.40, SD 369.90, median 257
+     5th percentile of the run length: 19
+    10th percentile of the run length: 39
+    25th percentile of the run length: 107
+    75th percentile of the run length: 513
+    90th percentile of the run length: 852
+    95th percentile of the run length: 1109
+  probability that the first false alarm comes before point 370: 0.6312
+  probability of at least one false alarm in   25 in-control points: 0.0654; expected number 0.067
+  probability of at least one false alarm in   50 in-control points: 0.1264; expected number 0.135
+  probability of at least one false alarm in  100 in-control points: 0.2369; expected number 0.270
+  probability of at least one false alarm in  250 in-control points: 0.4913; expected number 0.675
+  probability of at least one false alarm in  350 in-control points: 0.6118; expected number 0.945
+  probability of at least one false alarm in  500 in-control points: 0.7412; expected number 1.350
+  probability of at least one false alarm in 1000 in-control points: 0.9330; expected number 2.700
+  probability of at least one false alarm in 2000 in-control points: 0.9955; expected number 5.400
+  out of control, X-bar chart of subgroups of n, process mean shifted by delta (sigma of individual values):
+    n = 1:  delta 0.5: ARL  155.22; delta 1.0: ARL   43.89; delta 1.5: ARL   14.97; delta 2.0: ARL    6.30; delta 3.0: ARL    2.00
+    n = 4:  delta 0.5: ARL   43.89; delta 1.0: ARL    6.30; delta 1.5: ARL    2.00; delta 2.0: ARL    1.19; delta 3.0: ARL    1.00
+    n = 5:  delta 0.5: ARL   33.40; delta 1.0: ARL    4.50; delta 1.5: ARL    1.57; delta 2.0: ARL    1.08; delta 3.0: ARL    1.00
+
+==============================================================================
+3. THE WESTERN ELECTRIC ZONE TESTS AND NELSON'S EIGHT TESTS
+==============================================================================
+  tests: 1 = one point beyond 3 sigma; 2 = two of three beyond 2 sigma, same side;
+         3 = four of five beyond 1 sigma, same side; 4 = eight in a row on one side of the centre line
+  exact ARL (Markov chain); shift delta in units of the standard deviation of the plotted statistic
+    tests 1        (     1 states): d=0.0:  370.40 d=0.5:  155.22 d=1.0:   43.89 d=1.5:   14.97 d=2.0:    6.30 d=3.0:    2.00
+    tests 1+2      (    41 states): d=0.0:  225.44 d=0.5:   77.72 d=1.0:   20.01 d=1.5:    7.30 d=2.0:    3.65 d=3.0:    1.68
+    tests 1+3      (  1523 states): d=0.0:  166.05 d=0.5:   46.18 d=1.0:   12.66 d=1.5:    5.86 d=2.0:    3.68 d=3.0:    1.89
+    tests 1+4      (    15 states): d=0.0:  152.73 d=0.5:   44.28 d=1.0:   14.58 d=1.5:    7.75 d=2.0:    4.89 d=3.0:    1.99
+    tests 1+2+3    (  1221 states): d=0.0:  132.89 d=0.5:   38.64 d=1.0:   10.95 d=1.5:    5.08 d=2.0:    3.14 d=3.0:    1.67
+    tests 1+2+4    (   121 states): d=0.0:  122.05 d=0.5:   36.18 d=1.0:   11.73 d=1.5:    5.90 d=2.0:    3.50 d=3.0:    1.68
+    tests 1+3+4    (  1913 states): d=0.0:  105.78 d=0.5:   30.39 d=1.0:   10.19 d=1.5:    5.50 d=2.0:    3.65 d=3.0:    1.89
+    tests 1+2+3+4  (  1497 states): d=0.0:   91.75 d=0.5:   27.33 d=1.0:    9.22 d=1.5:    4.87 d=2.0:    3.13 d=3.0:    1.67
+  in control, all four tests: ARL 91.75, i.e. 4.04 times as many false alarms as test 1 alone; per-point false-alarm rate about 0.01090
+  simulation check, tests 1-4, 200,000 chains: mean run length 91.55 (MC SE 0.20); median 65
+  Nelson's eight tests (1: beyond 3 sigma; 2: nine in a row on one side; 3: six steadily increasing or
+  decreasing; 4: fourteen alternating; 5: two of three beyond 2 sigma; 6: four of five beyond 1 sigma;
+  7: fifteen in a row within 1 sigma; 8: eight in a row beyond 1 sigma, either side), by simulation:
+    in control, 200,000 chains: mean run length 73.39 (MC SE 0.15); median 53; 5.05 times the false alarms of test 1 alone
+    shift 1.0: mean run length 9.60 (MC SE 0.02)
+    shift 2.0: mean run length 3.13 (MC SE 0.01)
+
+==============================================================================
+4. THE BRITISH CONVENTION: ACTION LIMITS AT 3.09 SIGMA, WARNING LIMITS AT 1.96 SIGMA
+==============================================================================
+  limits at 3.09 sigma: one tail 0.00100 (1 in 999); both tails 0.00200; ARL 499.6
+  limits at 1.96 sigma: one tail 0.02500 (1 in 40); both tails 0.05000; ARL 20.0
+  3-sigma limits on one tail: 1 in 741; the 3.09 action limit is the one-tail 1-in-1000 point: z = 3.0902; the 1.96 warning line is the 1-in-40 point: z = 1.9600
+  action at 3.09 sigma, plus a signal on two successive points beyond the same 1.96 warning line:
+    shift 0.0: ARL   319.87   (action limits alone:   499.61; American 3-sigma alone:   370.40)
+    shift 0.5: ARL   108.00   (action limits alone:   201.44; American 3-sigma alone:   155.22)
+    shift 1.0: ARL    26.35   (action limits alone:    54.55; American 3-sigma alone:    43.89)
+    shift 1.5: ARL     8.92   (action limits alone:    17.88; American 3-sigma alone:    14.97)
+    shift 2.0: ARL     4.14   (action limits alone:     7.25; American 3-sigma alone:     6.30)
+    shift 3.0: ARL     1.75   (action limits alone:     2.15; American 3-sigma alone:     2.00)
+  the same scheme when two successive points in the warning zones signal whichever side they fall on:
+    shift 0.0: ARL 238.12; shift 1.0: ARL 26.10; shift 2.0: ARL 4.14
+
+==============================================================================
+5. KNOWN PARAMETERS, OTHER DISTRIBUTIONS: IN-CONTROL ARL OF THREE-SIGMA LIMITS
+==============================================================================
+  individual values (n = 1): exact tail probabilities
+    normal                         skew  0.00, excess kurtosis   0.00: upper 0.00135, lower 0.00135, total 0.00270, ARL 370.4
+    uniform                        skew  0.00, excess kurtosis  -1.20: upper 0.00000, lower 0.00000, total 0.00000, ARL infinite
+    logistic                       skew  0.00, excess kurtosis   1.20: upper 0.00431, lower 0.00431, total 0.00863, ARL 115.9
+    Laplace (double exponential)   skew  0.00, excess kurtosis   3.00: upper 0.00718, lower 0.00718, total 0.01437, ARL 69.6
+    Student t, 5 df                skew  0.00, excess kurtosis   6.00: upper 0.00586, lower 0.00586, total 0.01172, ARL 85.3
+    gamma, shape 4 (skewness 1)    skew  1.00, excess kurtosis   1.50: upper 0.01034, lower 0.00000, total 0.01034, ARL 96.7
+    lognormal, log-sd 0.5          skew  1.75, excess kurtosis   5.90: upper 0.01538, lower 0.00000, total 0.01538, ARL 65.0
+    exponential (skewness 2)       skew  2.00, excess kurtosis   6.00: upper 0.01832, lower 0.00000, total 0.01832, ARL 54.6
+  means of n = 5: numerical convolution (grid step 0.002) for all eight; exact results printed beside it where a
+  closed form or a one-dimensional integral exists (normal, uniform via Irwin-Hall, Laplace via a difference of gammas,
+  gamma and exponential via the gamma distribution of the sum)
+    normal                         upper 0.00135, lower 0.00135, total 0.00270, ARL 370.4  [exact: total 0.00270, ARL 370.4]
+    uniform                        upper 0.00047, lower 0.00047, total 0.00095, ARL 1,056.0  [exact Irwin-Hall: upper 0.00047, lower 0.00047, ARL 1056.0]
+    logistic                       upper 0.00210, lower 0.00210, total 0.00419, ARL 238.6
+    Laplace (double exponential)   upper 0.00305, lower 0.00305, total 0.00611, ARL 163.8  [exact difference of gammas: upper 0.00305, lower 0.00305, ARL 163.8]
+    Student t, 5 df                upper 0.00327, lower 0.00327, total 0.00655, ARL 152.7
+    gamma, shape 4 (skewness 1)    upper 0.00492, lower 0.00002, total 0.00494, ARL 202.3  [exact gamma(20): upper 0.00492, lower 0.00002, ARL 202.3]
+    lognormal, log-sd 0.5          upper 0.00846, lower 0.00000, total 0.00846, ARL 118.3
+    exponential (skewness 2)       upper 0.00931, lower 0.00000, total 0.00931, ARL 107.4  [exact gamma(5): upper 0.00931, lower 0.00000, ARL 107.4]
+
+==============================================================================
+6. ESTIMATED PARAMETERS, A FIRST LOOK: THE CONDITIONAL IN-CONTROL ARL
+==============================================================================
+  d2(2) = 1.1284; A2(2) = 3/(d2 sqrt n) = 1.8800
+  d2(4) = 2.0588; A2(4) = 3/(d2 sqrt n) = 0.7286
+  d2(5) = 2.3259; A2(5) = 3/(d2 sqrt n) = 0.5768
+  average false-alarm probability per future subgroup, E[p], subgroups of 4, limits from m subgroups
+  (the quantity of Proschan and Savage 1952/1960 and Hillier 1964/1969); Rbar/d2 by simulation (100,000
+  Phase I samples per m), pooled standard deviation exactly: P(|t_nu| > 3/sqrt(1 + 1/m)), nu = 3m
+    m =  2: Rbar/d2 E[p] 0.04534; pooled s E[p] 0.04983
+    m =  3: Rbar/d2 E[p] 0.02663; pooled s E[p] 0.02883
+    m =  4: Rbar/d2 E[p] 0.01841; pooled s E[p] 0.01992
+    m =  5: Rbar/d2 E[p] 0.01462; pooled s E[p] 0.01523
+    m =  6: Rbar/d2 E[p] 0.01187; pooled s E[p] 0.01242
+    m =  7: Rbar/d2 E[p] 0.01013; pooled s E[p] 0.01058
+    m =  8: Rbar/d2 E[p] 0.00900; pooled s E[p] 0.00929
+    m =  9: Rbar/d2 E[p] 0.00806; pooled s E[p] 0.00835
+    m = 10: Rbar/d2 E[p] 0.00741; pooled s E[p] 0.00763
+    m = 12: Rbar/d2 E[p] 0.00648; pooled s E[p] 0.00662
+    m = 15: Rbar/d2 E[p] 0.00559; pooled s E[p] 0.00568
+    m = 18: Rbar/d2 E[p] 0.00505; pooled s E[p] 0.00510
+    m = 19: Rbar/d2 E[p] 0.00493; pooled s E[p] 0.00495
+    m = 20: Rbar/d2 E[p] 0.00480; pooled s E[p] 0.00482
+    m = 25: Rbar/d2 E[p] 0.00431; pooled s E[p] 0.00434
+    m = 30: Rbar/d2 E[p] 0.00400; pooled s E[p] 0.00404
+  smallest m in this list with E[p] <= 0.01 (Rbar/d2): 8; with E[p] <= 0.005 (pooled s): 19
+  every chart below: in-control normal process, limits grand mean +- 3 sigma_hat/sqrt(n) estimated from a
+  Phase I sample assumed clean; the conditional false-alarm probability p of each chart computed exactly
+  given its estimates; conditional ARL = 1/p.
+  X-bar chart, 25 subgroups of 5, sigma from Rbar/d2 (the textbook A2*Rbar limits)
+    200,000 simulated Phase I samples; average false-alarm probability E[p] = 0.00404 (known limits 0.00270); 1/E[p] = 247.8
+    conditional in-control ARL: mean (AARL) 431.3 (MC SE 0.9), SD (SDARL) 422.6, median 310.8
+    percentiles 5/10/25/50/75/90/95: 100 / 127 / 192 / 311 / 520 / 847 / 1146
+    share of charts with conditional ARL below 100.0: 0.049
+    share of charts with conditional ARL below 200.0: 0.269
+    share of charts with conditional ARL below 300.0: 0.481
+    share of charts with conditional ARL below 370.4: 0.592
+    share above 1,000: 0.069
+    alarms of one chart: correlation between the alarm indicators of two future points of the same chart 0.00239; P(alarm at a later point | alarm now) = 0.00642 against P(alarm) = 0.00404 (ratio 1.59)
+    probability of at least one false alarm in 100 future in-control subgroups: 0.3056  (known limits 0.2369)
+    probability of at least one false alarm in 370 future in-control subgroups: 0.6703  (known limits 0.6322)
+    probability of at least one false alarm in 1000 future in-control subgroups: 0.8970  (known limits 0.9330)
+    sigma_hat/sigma: mean 1.0000, SD 0.0742; 5th and 95th percentiles 0.880 and 1.124
+    a chart whose sigma_hat is 10% low (0.90 sigma) and mean exact: ARL 144.2; 10% high (1.10 sigma): 1034.3
+    the two estimation errors separately: median conditional ARL with sigma_hat error only (exact centre line) 366.0; with centre-line error only (exact sigma) 339.9; both 310.8
+    variance of log conditional ARL: both errors 0.552; sigma_hat only 0.538; centre line only 0.042
+    a centre-line error alone never lengthens the run: share of charts with exact sigma and ARL above 370.4: 0.000
+    two charts only, sigma_hat 10% low and 10% high: reciprocal of their average false-alarm probability 253.1; their average ARL 589.3
+    10th / 90th percentile of sigma_hat/sigma (0.906 / 1.096) as limits with exact mean: ARL 151.7 / 987.7
+  widening the limits to k = 3.1365 sigma_hat restores the average false-alarm probability to 0.00270 (A2 becomes 0.6031 instead of 0.5768)
+  X-bar chart, 25 subgroups of 5, Rbar/d2, limits at k = 3.136
+    200,000 simulated Phase I samples; average false-alarm probability E[p] = 0.00270 (known limits 0.00270); 1/E[p] = 370.4
+    conditional in-control ARL: mean (AARL) 711.8 (MC SE 1.8), SD (SDARL) 793.5, median 484.1
+    percentiles 5/10/25/50/75/90/95: 142 / 183 / 287 / 484 / 846 / 1438 / 1996
+    share of charts with conditional ARL below 100.0: 0.016
+    share of charts with conditional ARL below 200.0: 0.123
+    share of charts with conditional ARL below 300.0: 0.269
+    share of charts with conditional ARL below 370.4: 0.367
+    share above 1,000: 0.193
+  limits that make the MEDIAN conditional ARL equal to 370.4: k = 3.0547
+  limits that make 90% of charts have a conditional ARL of at least 370.4: k = 3.3838
+    1-sigma shift, limits at 3 sigma_hat: out-of-control ARL median 4.49, 10th-90th percentile 2.85-7.98  (known limits at 3 sigma: 4.50)
+    1-sigma shift, limits at 3.384 sigma_hat: out-of-control ARL median 7.94, 10th-90th percentile 4.36-16.88  (known limits at 3 sigma: 4.50)
+  X-bar chart, 25 subgroups of 4, sigma from Rbar/d2
+    200,000 simulated Phase I samples; average false-alarm probability E[p] = 0.00431 (known limits 0.00270); 1/E[p] = 232.2
+    conditional in-control ARL: mean (AARL) 481.8 (MC SE 1.4), SD (SDARL) 622.0, median 309.0
+    percentiles 5/10/25/50/75/90/95: 87 / 113 / 179 / 309 / 558 / 985 / 1401
+    share of charts with conditional ARL below 100.0: 0.074
+    share of charts with conditional ARL below 200.0: 0.297
+    share of charts with conditional ARL below 300.0: 0.486
+    share of charts with conditional ARL below 370.4: 0.584
+    share above 1,000: 0.097
+  individuals chart, 25 observations, sigma from MRbar/d2(2)
+    200,000 simulated Phase I samples; average false-alarm probability E[p] = 0.00887 (known limits 0.00270); 1/E[p] = 112.7
+    conditional in-control ARL: median 286.5; the mean is not a usable summary here -- the top 0.1% of charts carry 69.0% of the summed ARL (largest simulated value 1.29e+08)
+    percentiles 5/10/25/50/75/90/95: 28 / 43 / 97 / 286 / 1044 / 4089 / 10271
+    share of charts with conditional ARL below 100.0: 0.257
+    share of charts with conditional ARL below 200.0: 0.417
+    share of charts with conditional ARL below 300.0: 0.510
+    share of charts with conditional ARL below 370.4: 0.557
+    share above 1,000: 0.257
+    alarms of one chart: correlation between the alarm indicators of two future points of the same chart 0.02444; P(alarm at a later point | alarm now) = 0.03309 against P(alarm) = 0.00887 (ratio 3.73)
+    probability of at least one false alarm in 100 future in-control points: 0.3824
+    probability of at least one false alarm in 370 future in-control points: 0.6284
+  how the conditional ARL tightens with the size of Phase I (100,000 Phase I samples per row):
+    X-bar, n = 5, m = 1200 (the Phase I size reported for Saleh et al. 2015): AARL 371.1; SDARL 39.4 (10.7% of 370.4); median 368.9; 10th-90th percentile 322.4-422.7; share below 300: 0.025; share outside 333-407 (370.4 +- 10%): 0.344
+    X-bar, n = 5, Rbar/d2:
+      m =   20: E[p] 0.00442; AARL  454.3; SDARL  582.3; median  299.4; 10th-90th percentile  110.7-  917.0; share below 370.4: 0.600; share below 200: 0.309
+      m =   25: E[p] 0.00401; AARL  433.1; SDARL  429.0; median  313.5; 10th-90th percentile  128.1-  842.6; share below 370.4: 0.589; share below 200: 0.266
+      m =   30: E[p] 0.00380; AARL  418.0; SDARL  357.9; median  319.6; 10th-90th percentile  140.3-  791.3; share below 370.4: 0.587; share below 200: 0.238
+      m =   50: E[p] 0.00334; AARL  394.2; SDARL  234.0; median  336.5; 10th-90th percentile  176.9-  675.5; share below 370.4: 0.573; share below 200: 0.151
+      m =   75: E[p] 0.00312; AARL  385.2; SDARL  179.6; median  347.1; 10th-90th percentile  204.7-  610.0; share below 370.4: 0.561; share below 200: 0.090
+      m =  100: E[p] 0.00300; AARL  381.4; SDARL  149.7; median  352.9; 10th-90th percentile  223.1-  573.3; share below 370.4: 0.553; share below 200: 0.055
+      m =  150: E[p] 0.00291; AARL  376.6; SDARL  117.3; median  358.0; 10th-90th percentile  245.8-  531.2; share below 370.4: 0.545; share below 200: 0.023
+      m =  300: E[p] 0.00280; AARL  373.0; SDARL   80.6; median  363.8; 10th-90th percentile  278.5-  478.7; share below 370.4: 0.534; share below 200: 0.002
+      m = 1000: E[p] 0.00273; AARL  371.4; SDARL   43.2; median  368.6; 10th-90th percentile  318.3-  428.3; share below 370.4: 0.517; share below 200: 0.000
+    individuals, MRbar/d2:
+      m =   20: E[p] 0.01088; median  269.1; 10th-90th percentile   33.9- 5685.2; share below 370.4: 0.564; share below 200: 0.437
+      m =   25: E[p] 0.00896; median  283.3; 10th-90th percentile   42.4- 4131.1; share below 370.4: 0.559; share below 200: 0.419
+      m =   30: E[p] 0.00769; median  294.9; 10th-90th percentile   50.2- 3322.9; share below 370.4: 0.555; share below 200: 0.402
+      m =   50: E[p] 0.00540; median  323.6; 10th-90th percentile   76.7- 1961.6; share below 370.4: 0.542; share below 200: 0.345
+      m =   75: E[p] 0.00439; median  337.6; 10th-90th percentile  102.3- 1431.4; share below 370.4: 0.535; share below 200: 0.299
+      m =  100: E[p] 0.00393; median  345.8; 10th-90th percentile  120.6- 1199.3; share below 370.4: 0.531; share below 200: 0.263
+      m =  150: E[p] 0.00350; median  352.3; 10th-90th percentile  147.2-  954.1; share below 370.4: 0.527; share below 200: 0.208
+      m =  300: E[p] 0.00309; median  360.8; 10th-90th percentile  191.6-  723.3; share below 370.4: 0.520; share below 200: 0.117
+      m = 1000: E[p] 0.00281; median  367.9; 10th-90th percentile  258.4-  534.2; share below 370.4: 0.509; share below 200: 0.012
