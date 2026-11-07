@@ -47,13 +47,18 @@ jobs:
       - name: Simulation study
         run: python simulate.py --workers 4
 
+      - name: No-cure negative control
+        run: python no_cure_audit.py --reps 100 --workers 4
+
       - name: EU application
         run: python application.py
 
       - name: Figures
-        run: python figures.py
+        run: |
+          python figures.py
+          python plot_no_cure.py
 
       - name: Summaries unchanged within tolerance
         run: |
-          git diff -- results/sim_summary.txt results/application_summary.txt || true
-          python check_results.py results/sim_summary.txt results/application_summary.txt
+          git diff -- results/sim_summary.txt results/application_summary.txt results/no_cure_summary.txt || true
+          python check_results.py results/sim_summary.txt results/application_summary.txt results/no_cure_summary.txt

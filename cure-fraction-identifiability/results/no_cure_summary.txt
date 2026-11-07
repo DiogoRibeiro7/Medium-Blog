@@ -1,0 +1,31 @@
+No-cure stress test: pi = 0 for every simulated dataset
+Datasets: 2400; cells: 24; replicates per cell: 100
+Latency 95th percentile: 10; ratios: 0.25, 0.5, 1, 2
+False cure report = AIC prefers cure AND lognormal/Weibull cure fractions agree within 0.05 AND selected cure fraction > 0.10.
+Intervals: two-sided 95% Wilson binomial intervals (100 Monte Carlo replicates per cell).
+Across grid: AIC prefers cure 0.094; screen passes 0.043; false cure reported 0.019; all four fits converge 0.953.
+
+lognormal-0.5 n= 250 R=0.25: observed event share 0.025; mean selected pi 0.704; pi>0.10 0.830; AIC cure 0.260; combined screen 0.240; false report 0.240; 95% interval [0.167, 0.332]; converged 0.960
+lognormal-0.5 n= 250 R=0.50: observed event share 0.200; mean selected pi 0.203; pi>0.10 0.600; AIC cure 0.150; combined screen 0.030; false report 0.030; 95% interval [0.010, 0.085]; converged 1.000
+lognormal-0.5 n= 250 R=1.00: observed event share 0.522; mean selected pi 0.023; pi>0.10 0.050; AIC cure 0.080; combined screen 0.040; false report 0.010; 95% interval [0.002, 0.054]; converged 0.980
+lognormal-0.5 n= 250 R=2.00: observed event share 0.753; mean selected pi 0.003; pi>0.10 0.000; AIC cure 0.030; combined screen 0.030; false report 0.000; 95% interval [0.000, 0.037]; converged 0.970
+lognormal-0.5 n=1000 R=0.25: observed event share 0.026; mean selected pi 0.586; pi>0.10 0.790; AIC cure 0.180; combined screen 0.170; false report 0.170; 95% interval [0.109, 0.255]; converged 0.950
+lognormal-0.5 n=1000 R=0.50: observed event share 0.199; mean selected pi 0.119; pi>0.10 0.480; AIC cure 0.100; combined screen 0.000; false report 0.000; 95% interval [0.000, 0.037]; converged 0.890
+lognormal-0.5 n=1000 R=1.00: observed event share 0.515; mean selected pi 0.013; pi>0.10 0.000; AIC cure 0.060; combined screen 0.010; false report 0.000; 95% interval [0.000, 0.037]; converged 0.930
+lognormal-0.5 n=1000 R=2.00: observed event share 0.751; mean selected pi 0.001; pi>0.10 0.000; AIC cure 0.100; combined screen 0.100; false report 0.000; 95% interval [0.000, 0.037]; converged 0.970
+lognormal-1.0 n= 250 R=0.25: observed event share 0.307; mean selected pi 0.226; pi>0.10 0.660; AIC cure 0.240; combined screen 0.000; false report 0.000; 95% interval [0.000, 0.037]; converged 0.980
+lognormal-1.0 n= 250 R=0.50: observed event share 0.523; mean selected pi 0.059; pi>0.10 0.260; AIC cure 0.130; combined screen 0.000; false report 0.000; 95% interval [0.000, 0.037]; converged 1.000
+lognormal-1.0 n= 250 R=1.00: observed event share 0.718; mean selected pi 0.018; pi>0.10 0.010; AIC cure 0.080; combined screen 0.070; false report 0.000; 95% interval [0.000, 0.037]; converged 0.990
+lognormal-1.0 n= 250 R=2.00: observed event share 0.849; mean selected pi 0.006; pi>0.10 0.000; AIC cure 0.110; combined screen 0.110; false report 0.000; 95% interval [0.000, 0.037]; converged 0.990
+lognormal-1.0 n=1000 R=0.25: observed event share 0.310; mean selected pi 0.075; pi>0.10 0.330; AIC cure 0.070; combined screen 0.000; false report 0.000; 95% interval [0.000, 0.037]; converged 0.940
+lognormal-1.0 n=1000 R=0.50: observed event share 0.522; mean selected pi 0.031; pi>0.10 0.080; AIC cure 0.090; combined screen 0.000; false report 0.000; 95% interval [0.000, 0.037]; converged 0.940
+lognormal-1.0 n=1000 R=1.00: observed event share 0.714; mean selected pi 0.008; pi>0.10 0.000; AIC cure 0.070; combined screen 0.010; false report 0.000; 95% interval [0.000, 0.037]; converged 0.930
+lognormal-1.0 n=1000 R=2.00: observed event share 0.846; mean selected pi 0.003; pi>0.10 0.000; AIC cure 0.090; combined screen 0.090; false report 0.000; 95% interval [0.000, 0.037]; converged 0.980
+weibull-1.5 n= 250 R=0.25: observed event share 0.134; mean selected pi 0.248; pi>0.10 0.440; AIC cure 0.040; combined screen 0.010; false report 0.010; 95% interval [0.002, 0.054]; converged 0.940
+weibull-1.5 n= 250 R=0.50: observed event share 0.318; mean selected pi 0.114; pi>0.10 0.400; AIC cure 0.050; combined screen 0.000; false report 0.000; 95% interval [0.000, 0.037]; converged 0.970
+weibull-1.5 n= 250 R=1.00: observed event share 0.580; mean selected pi 0.025; pi>0.10 0.060; AIC cure 0.080; combined screen 0.000; false report 0.000; 95% interval [0.000, 0.037]; converged 0.940
+weibull-1.5 n= 250 R=2.00: observed event share 0.786; mean selected pi 0.002; pi>0.10 0.000; AIC cure 0.030; combined screen 0.030; false report 0.000; 95% interval [0.000, 0.037]; converged 1.000
+weibull-1.5 n=1000 R=0.25: observed event share 0.135; mean selected pi 0.231; pi>0.10 0.530; AIC cure 0.030; combined screen 0.000; false report 0.000; 95% interval [0.000, 0.037]; converged 0.860
+weibull-1.5 n=1000 R=0.50: observed event share 0.314; mean selected pi 0.056; pi>0.10 0.240; AIC cure 0.040; combined screen 0.000; false report 0.000; 95% interval [0.000, 0.037]; converged 0.890
+weibull-1.5 n=1000 R=1.00: observed event share 0.577; mean selected pi 0.012; pi>0.10 0.000; AIC cure 0.110; combined screen 0.060; false report 0.000; 95% interval [0.000, 0.037]; converged 0.930
+weibull-1.5 n=1000 R=2.00: observed event share 0.784; mean selected pi 0.001; pi>0.10 0.000; AIC cure 0.040; combined screen 0.040; false report 0.000; 95% interval [0.000, 0.037]; converged 0.950

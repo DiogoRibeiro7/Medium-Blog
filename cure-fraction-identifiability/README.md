@@ -14,6 +14,9 @@ python simulate.py         # results/sim_raw.csv, sim_cells.csv, sim_summary.txt
 python application.py      # results/application.csv, application_summary.txt (EU industry busts)
 python figures.py          # figures/fig1_*.png ... fig6_*.png
 python check_results.py results/sim_summary.txt results/application_summary.txt   # compare with the committed versions, within tolerance
+python no_cure_audit.py --reps 100 --workers 4  # separate 2,400-dataset zero-cure control
+python plot_no_cure.py    # figures/fig7_no_cure_false_discovery.png
+python check_results.py results/no_cure_summary.txt
 ```
 
 ## What is computed
@@ -30,6 +33,10 @@ python check_results.py results/sim_summary.txt results/application_summary.txt 
   latency family; coverage and width of the Wald intervals; whether AIC prefers a cure model; whether the
   Maller-Zhou statistic declares follow-up sufficient; the gap between the two latency families; the gap
   between the best cure and the best no-cure model at twice the longest follow-up.
+- **No-cure control** (`no_cure_audit.py`, [full design and results](NO_CURE_AUDIT.md)): 2,400 additional
+  datasets with true cure fraction zero, testing whether AIC and cross-family agreement can falsely claim
+  a substantive cure fraction when administrative follow-up is short. Separate outputs preserve the
+  original simulation results, with cell-level Wilson uncertainty intervals and Figure 7.
 - **Application** (`application.py`): the same quantities for busts in EU industries by depth band, from
   `../recovery-after-busts/results/episodes_all.csv`, with a stable upper bound for the never-recover share
   (Kaplan-Meier at the last time with at least 10 busts at risk).
