@@ -1,0 +1,102 @@
+name: Refresh dependency-early-warning data
+
+on:
+  push:
+    branches:
+      - dependency-early-warning
+    paths:
+      - 'dependency-early-warning/fetch_panel.py'
+      - '.github/workflows/dependency-early-warning-data.yml'
+  workflow_dispatch:
+    inputs:
+      limit:
+        description: 'Only the first N products (empty for all)'
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+
+env:
+  LIMIT: ${{ github.event.inputs.limit || '40' }}
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    strategy:
+      fail-fast: false
+      matrix:
+        years: ['2002-2007', '2008-2013', '2014-2019', '2020-2025']
+    defaults:
+      run:
+        working-directory: dependency-early-warning
+    steps:
+      - name: Check out the branch
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: dependency-early-warning/requirements.txt
+
+      - name: Install pinned dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Download ${{ matrix.years }}
+        run: python fetch_panel.py --out parts --years ${{ matrix.years }} ${LIMIT:+--limit $LIMIT}
+
+      - name: Keep the part
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: panel-${{ matrix.years }}
+          path: dependency-early-warning/parts/
+          if-no-files-found: warn
+          retention-days: 3
+
+  commit:
+    needs: fetch
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out the branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+
+      - name: Collect the parts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: panel-*
+          path: dependency-early-warning/data/parts
+          merge-multiple: true
+
+      - name: Commit the snapshot and its log if they changed
+        working-directory: dependency-early-warning
+        run: |
+          ls -la data/parts
+          cat data/parts/log_*.txt >> data/fetch_log.txt
+          rm data/parts/log_*.txt
+          git config user.name "Diogo Ribeiro"
+          git config user.email "diogo_dj@hotmail.com"
+          git add data
+          if git diff --cached --quiet; then
+            echo "Snapshot unchanged."
+          else
+            git commit -m "Refresh data snapshot for dependency-early-warning ($(date -u +%Y-%m-%d))"
+            pushed=no
+            for i in 1 2 3; do
+              if git push; then pushed=yes; break; fi
+              git pull --no-rebase --no-edit origin "${GITHUB_REF_NAME}" || true
+              sleep 5
+            done
+            test "$pushed" = yes
+          fi
+
+      - name: Fail if a range failed
+        if: needs.fetch.result != 'success'
+        run: exit 1
