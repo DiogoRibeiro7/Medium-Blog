@@ -65,6 +65,8 @@ EUROSTAT_REQUESTS: dict[str, tuple[str, list[Filters], tuple[str, ...] | None]] 
 SUPPLEMENTARY = ("gov_10dd_igl", "gov_dd_igl", "gov_10dd_ilg", "gov_10dd_fins", "gov_dd_fi", "gov_10dd_fi")
 
 FRED_SERIES = {c: f"IRLTLT01{c}M156N" for c in ("US", "GB", "CA", "SE", "NO", "CH", "JP", "AU", "NZ", "DK", "DE", "FR", "NL", "IT", "ES")}
+FRED_SERIES["USD_PER_EUR"] = "EXUSEU"
+BIS_CODELISTS = ("CL_L_SECTOR", "CL_CBS_BASIS", "CL_L_POSITION", "CL_CBS_BANK_TYPE")
 
 # BIS consolidated banking statistics. Key order: FREQ.L_MEASURE.L_REP_CTY.CBS_BANK_TYPE.CBS_BASIS.
 # L_POSITION.L_INSTR.REM_MATURITY.CURR_TYPE_BOOK.L_CP_SECTOR.L_CP_COUNTRY
@@ -209,9 +211,34 @@ def bis(out: Path, log: list[str]) -> bool:
             d = pd.read_csv(io.BytesIO(body), dtype=str)
             d.to_csv(out / "bis_cbs.csv.gz", index=False, compression={"method": "gzip", "mtime": 0})
             log.append(f"bis\tROWS\t{len(d)}\tcolumns {list(d.columns)[:20]}")
+            codelists(out, log)
             return True
     log.append("bis\tFAILED")
     return False
+
+
+def codelists(out: Path, log: list[str]) -> None:
+    """Names of the BIS codes used in the consolidated banking statistics."""
+    lines = []
+    for cl in BIS_CODELISTS:
+        for base in ("https://stats.bis.org/api/v1/codelist/BIS/{cl}", "https://data.bis.org/api/v1/codelist/BIS/{cl}"):
+            url = base.format(cl=cl)
+            try:
+                status, body = get(url, timeout=120)
+            except RuntimeError as e:
+                log.append(f"bis codelist {cl}\tERROR\t{e}")
+                continue
+            log_response(log, f"bis codelist {cl}", url, status, body)
+            if status != 200:
+                continue
+            text = body.decode("utf-8", errors="replace")
+            import re
+
+            for code, name in re.findall(r'<str:Code[^>]*id="([^"]+)"[^>]*>.*?<com:Name[^>]*>([^<]+)</com:Name>', text, flags=re.S):
+                lines.append(f"{cl}\t{code}\t{name.strip()}")
+            break
+    (out / "bis_codelists.txt").write_text("\n".join(lines) + "\n", encoding="utf-8")
+    log.append(f"bis codelists\tROWS\t{len(lines)}")
 
 
 def main(argv: list[str] | None = None) -> int:
