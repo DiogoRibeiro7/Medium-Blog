@@ -1,6 +1,6 @@
 # A ledger of the euro-area crisis, 2010–2025
 
-Code and data for the article *Who Gained and Who Paid in the Euro-Area Crisis: A Counterfactual Ledger of Interest, Official Loans and Bank Exposures, 2010–2025*.
+Code and data for the article *A Counterfactual Ledger of the Euro-Area Debt Crisis: Interest Savings, Official Loans and the Exit of Private Creditors, 2010–2025*.
 
 The ledger covers five programme countries (Greece, Ireland, Portugal, Cyprus, Spain) and five core countries (Germany, France, the Netherlands, Finland, Austria). It keeps three kinds of entry apart: transfers measured from data (interest saved or paid because of the crisis, against two counterfactuals), transfers documented by those who paid or received them (central-bank income on Greek bonds, the 2012 private-sector haircut), and positions that are not yet costs (official loans outstanding).
 
