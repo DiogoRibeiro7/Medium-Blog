@@ -104,7 +104,7 @@ def main() -> int:
     for c in CORE + PROGRAMME:
         r = {"country": c}
         for cf in ("no_fragmentation", "safe_asset"):
-            for m in ("market_effect", "actual_effect", "market_effect_to_2014"):
+            for m in ("market_effect", "actual_effect", "actual_effect_full", "market_effect_to_2014"):
                 s = main_tot[(main_tot["geo"] == c) & (main_tot["cf"] == cf) & (main_tot["method"] == m)]
                 r[f"{m}_{cf}"] = float(s["eur_bn"].iloc[0])
         rng = tot[(tot["geo"] == c) & (tot["method"] == "market_effect")]["eur_bn"]
@@ -113,17 +113,17 @@ def main() -> int:
     led = pd.DataFrame(rows)
     led.to_csv(RESULTS / "ledger_interest.csv", index=False, float_format="%.4f")
 
-    lines = ["Interest account, cumulative 2010-2025, EUR bn (negative = saved, positive = paid), market repricing / actual against counterfactual:"]
+    lines = ["Interest account, cumulative 2010-2025, EUR bn (negative = saved, positive = paid): market repricing / actual against window counterfactual / actual against no-crisis counterfactual:"]
     for r in led.itertuples(index=False):
         lines.append(
-            f"  {r.country}: no-fragmentation {r.market_effect_no_fragmentation:+.1f} / {r.actual_effect_no_fragmentation:+.1f}; "
-            f"safe-asset {r.market_effect_safe_asset:+.1f} / {r.actual_effect_safe_asset:+.1f}; "
+            f"  {r.country}: no-fragmentation {r.market_effect_no_fragmentation:+.1f} / {r.actual_effect_no_fragmentation:+.1f} / {r.actual_effect_full_no_fragmentation:+.1f}; "
+            f"safe-asset {r.market_effect_safe_asset:+.1f} / {r.actual_effect_safe_asset:+.1f} / {r.actual_effect_full_safe_asset:+.1f}; "
             f"market repricing across all rho variants and both counterfactuals {r.market_effect_min:+.1f} to {r.market_effect_max:+.1f}"
         )
     core = led[led["country"].isin(CORE)]
     lines.append(f"  core total, market repricing: no-fragmentation {core.market_effect_no_fragmentation.sum():+.1f}, safe-asset {core.market_effect_safe_asset.sum():+.1f}")
     prog = led[led["country"].isin(PROGRAMME)]
-    lines.append(f"  programme total: market repricing {prog.market_effect_no_fragmentation.sum():+.1f} / {prog.market_effect_safe_asset.sum():+.1f}; actual against counterfactual {prog.actual_effect_no_fragmentation.sum():+.1f} / {prog.actual_effect_safe_asset.sum():+.1f}")
+    lines.append(f"  programme total: market repricing {prog.market_effect_no_fragmentation.sum():+.1f} / {prog.market_effect_safe_asset.sum():+.1f}; actual against window counterfactual {prog.actual_effect_no_fragmentation.sum():+.1f} / {prog.actual_effect_safe_asset.sum():+.1f}; actual against no-crisis counterfactual {prog.actual_effect_full_no_fragmentation.sum():+.1f} / {prog.actual_effect_full_safe_asset.sum():+.1f}")
 
     lines += ["", "Documented central-bank income on Greek bonds (EUR bn):"]
     for item in ("smp_interest_ecb_greek", "smp_anfa_returned", "smp_bundesbank", "smp_anfa_france_retained"):

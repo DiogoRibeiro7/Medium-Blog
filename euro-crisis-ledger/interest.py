@@ -19,7 +19,8 @@ Two calculations, for each counterfactual:
 - **Actual against counterfactual** (all countries; the relevant one for programme countries,
   which stopped borrowing in the market and paid official rates instead): actual interest
   minus the interest that a counterfactual implicit rate, simulated from 2009 with the
-  counterfactual yields, would have produced on the actual debt.
+  counterfactual yields, would have produced on the actual debt. Two versions: counterfactual
+  yields in the window only, and in every year from 2010 (no crisis at all).
 
 Positive numbers are extra interest paid because of the crisis; negative numbers are savings.
 Writes ``results/interest_*.csv`` and ``results/interest_summary.txt``.
@@ -110,6 +111,12 @@ def run(rho_by: dict[str, float], rate: pd.DataFrame, avg_debt: pd.DataFrame, in
             for y in range(WINDOW[0], WINDOW[1] + 1):
                 xcf[y] = x[c][y] - gap[y]
             sim_cf = simulate(float(rate.loc[WINDOW[0] - 1, c]), xcf, rho, years)
+            # no crisis at all: counterfactual yields in every year from 2010, not only in the window
+            xfull = x[c].copy()
+            for y in years:
+                if y in gap.index and not np.isnan(gap[y]):
+                    xfull[y] = x[c][y] - gap[y]
+            sim_full = simulate(float(rate.loc[WINDOW[0] - 1, c]), xfull, rho, years)
             sim_act = simulate(float(rate.loc[WINDOW[0] - 1, c]), x[c], rho, years)
             for y in years:
                 D = float(avg_debt.loc[y, c])
@@ -117,6 +124,7 @@ def run(rho_by: dict[str, float], rate: pd.DataFrame, avg_debt: pd.DataFrame, in
                     "geo": c, "cf": cf, "year": y, "rho": rho, "gap": float(gap.get(y, np.nan)), "repricing_pp": d[y],
                     "market_effect": d[y] / 100 * D, "actual_rate": float(rate.loc[y, c]), "cf_rate": sim_cf[y], "model_rate": sim_act[y],
                     "actual_effect": (float(rate.loc[y, c]) - sim_cf[y]) / 100 * D, "model_error": (float(rate.loc[y, c]) - sim_act[y]) / 100 * D,
+                    "cf_rate_full": sim_full[y], "actual_effect_full": (float(rate.loc[y, c]) - sim_full[y]) / 100 * D,
                     "interest": float(interest.loc[y, c]), "avg_debt": D, "gdp": float(gdp.loc[y, c]),
                 })
     return pd.DataFrame(rows)
@@ -139,7 +147,7 @@ def main() -> int:
     rows = []
     for name, rb in variants.items():
         r = main_r if name == "pooled" else run(rb, rate, avg_debt, interest, gdp, x, annual)
-        for col in ("market_effect", "actual_effect"):
+        for col in ("market_effect", "actual_effect", "actual_effect_full"):
             t = totals(r, col)
             t["method"], t["rho_variant"] = col, name
             rows.append(t)
@@ -158,7 +166,7 @@ def main() -> int:
     ]
     for c in COUNTRIES:
         lines.append(f"  {c}: " + " / ".join(f"{rate.loc[y, c]:.2f}" for y in (2009, 2012, 2014, 2019, 2025)))
-    for method, label in (("market_effect", "Market repricing"), ("actual_effect", "Actual against counterfactual")):
+    for method, label in (("market_effect", "Market repricing"), ("actual_effect", "Actual against counterfactual (window yields)"), ("actual_effect_full", "Actual against a no-crisis counterfactual (counterfactual yields in every year from 2010)")):
         lines += ["", f"{label}, cumulative 2010-{LAST}, EUR bn (sum of annual % of GDP), pooled rho; no-fragmentation | safe-asset:"]
         t = tot[(tot["method"] == method) & (tot["rho_variant"] == "pooled")]
         for c in COUNTRIES:
@@ -181,7 +189,7 @@ def main() -> int:
     lines.append("  " + ", ".join(f"{c} {me[c]:+.1f}" for c in COUNTRIES))
     for grp, members in (("core", CORE), ("programme", PROGRAMME)):
         for cf in CFS:
-            for method in ("market_effect", "actual_effect"):
+            for method in ("market_effect", "actual_effect", "actual_effect_full"):
                 t = tot[(tot["method"] == method) & (tot["rho_variant"] == "pooled") & (tot["cf"] == cf) & tot["geo"].isin(members)]
                 lines.append(f"Total {grp}, {cf}, {method}: EUR {t.eur_bn.sum():+.1f} bn")
     text = "\n".join(lines) + "\n"

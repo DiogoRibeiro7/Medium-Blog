@@ -197,23 +197,25 @@ def fig5_cumulative() -> None:
             s = r[(r["geo"] == c) & (r["cf"] == cf)].sort_values("year")
             a.plot(s["year"], s["market_effect"].cumsum() / 1e3, color=COLORS[c], ls=ls, lw=1.7, label=NAMES[c] if cf == "no_fragmentation" else None)
     for c in PROGRAMME:
-        for cf, ls in (("no_fragmentation", "-"), ("safe_asset", "--")):
-            s = r[(r["geo"] == c) & (r["cf"] == cf)].sort_values("year")
-            b.plot(s["year"], s["market_effect"].cumsum() / 1e3, color=COLORS[c], ls=ls, lw=1.7, label=NAMES[c] if cf == "no_fragmentation" else None)
-    for ax, t in ((a, "Core countries"), (b, "Programme countries, at market yields")):
+        s = r[(r["geo"] == c) & (r["cf"] == "no_fragmentation")].sort_values("year")
+        b.plot(s["year"], s["actual_effect_full"].cumsum() / 1e3, color=COLORS[c], lw=1.9, label=NAMES[c])
+        b.plot(s["year"], s["market_effect"].cumsum() / 1e3, color=COLORS[c], lw=1.1, ls=":")
+    for ax, t in ((a, "Core countries: market repricing"), (b, "Programme countries: interest actually paid")):
         ax.axhline(0, color=INK2, lw=1)
         ax.axvspan(2009.5, 2014.5, color=SHADE, lw=0, zorder=0)
         ax.set_title(t)
         ax.set_ylabel("EUR bn, cumulative since 2010")
         ax.set_xlim(2010, 2025.4)
-    a.legend(loc="lower left", fontsize=8.5)
-    b.legend(loc="upper left", fontsize=8.5)
     a.plot([], [], color=INK2, ls="-", label="no-fragmentation")
     a.plot([], [], color=INK2, ls="--", label="safe-asset")
     handles, labels = a.get_legend_handles_labels()
     a.legend(handles, labels, loc="lower left", fontsize=8.2, ncol=2)
-    suptitle(fig, "Crisis-era yields kept acting for a decade through debt issued in 2010-2014")
-    note(fig, "Market repricing: the 2010-2014 yield gap passes into the implicit rate at rho = 0.17 a year and is applied to actual debt; negative = interest saved.\nSolid: no-fragmentation counterfactual; dashed: safe-asset counterfactual. Sources: Eurostat; OECD via FRED; author's calculations", y=-0.03)
+    suptitle(fig, "Crisis yields kept acting for a decade; official lenders kept most of them off the debtors' bills")
+    b.plot([], [], color=INK2, lw=1.9, label="actual minus no-crisis")
+    b.plot([], [], color=INK2, lw=1.1, ls=":", label="at their own market yields")
+    hb, lb = b.get_legend_handles_labels()
+    b.legend(hb, lb, loc="upper left", fontsize=8.2, ncol=2)
+    note(fig, "Left: the 2010-2014 yield gap passes into the implicit rate at rho = 0.17 a year and is applied to actual debt; solid no-fragmentation, dashed safe-asset counterfactual.\nRight, no-fragmentation counterfactual: solid, actual interest minus interest at counterfactual yields in every year from 2010; dotted, what market yields would\nhave cost. Negative = interest saved. Sources: Eurostat; OECD via FRED; author's calculations", y=-0.03)
     save(fig, "fig5_cumulative")
 
 

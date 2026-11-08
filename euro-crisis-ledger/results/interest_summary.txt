@@ -30,7 +30,7 @@ Market repricing, cumulative 2010-2025, EUR bn (sum of annual % of GDP), pooled 
   IT: +98.5 (+5.71) | +211.2 (+12.28)
   BE: -8.2 (-1.86) | +14.1 (+3.29)
 
-Actual against counterfactual, cumulative 2010-2025, EUR bn (sum of annual % of GDP), pooled rho; no-fragmentation | safe-asset:
+Actual against counterfactual (window yields), cumulative 2010-2025, EUR bn (sum of annual % of GDP), pooled rho; no-fragmentation | safe-asset:
   EL: -107.7 (-57.80) | -91.2 (-48.83)
   IE: +5.1 (+1.77) | +15.3 (+6.00)
   PT: -1.3 (-0.33) | +10.3 (+5.81)
@@ -43,6 +43,20 @@ Actual against counterfactual, cumulative 2010-2025, EUR bn (sum of annual % of 
   AT: -4.2 (-1.67) | +10.0 (+2.38)
   IT: +18.5 (+0.81) | +131.2 (+7.38)
   BE: +4.7 (+0.22) | +27.0 (+5.38)
+
+Actual against a no-crisis counterfactual (counterfactual yields in every year from 2010), cumulative 2010-2025, EUR bn (sum of annual % of GDP), pooled rho; no-fragmentation | safe-asset:
+  EL: -28.5 (-16.12) | -13.2 (-7.81)
+  IE: +3.4 (+1.38) | +12.8 (+5.45)
+  PT: +12.7 (+6.10) | +23.3 (+11.83)
+  CY: -2.6 (-11.34) | -1.7 (-6.96)
+  ES: +65.4 (+4.88) | +114.1 (+9.24)
+  DE: -217.8 (-6.88) | -114.8 (-3.54)
+  FR: -104.1 (-4.83) | -5.5 (-0.41)
+  NL: -37.6 (-5.11) | -17.4 (-2.29)
+  FI: -12.8 (-5.78) | -6.5 (-2.88)
+  AT: -11.8 (-3.50) | +1.2 (+0.28)
+  IT: +167.4 (+8.42) | +270.6 (+14.49)
+  BE: -5.3 (-1.74) | +15.0 (+3.06)
 
 Market repricing, 2010-2014 only, EUR bn; no-fragmentation | safe-asset:
   EL: +65.6 | +73.6
@@ -76,9 +90,13 @@ Model check: actual interest minus interest simulated from actual yields, cumula
   EL -250.9, IE -15.8, PT -42.7, CY -4.9, ES -32.0, DE +23.4, FR +16.3, NL -2.1, FI -1.7, AT +7.0, IT -80.0, BE +12.9
 Total core, no_fragmentation, market_effect: EUR -254.9 bn
 Total core, no_fragmentation, actual_effect: EUR -211.9 bn
+Total core, no_fragmentation, actual_effect_full: EUR -384.1 bn
 Total core, safe_asset, market_effect: EUR +8.4 bn
 Total core, safe_asset, actual_effect: EUR +51.4 bn
+Total core, safe_asset, actual_effect_full: EUR -143.0 bn
 Total programme, no_fragmentation, market_effect: EUR +270.5 bn
 Total programme, no_fragmentation, actual_effect: EUR -75.8 bn
+Total programme, no_fragmentation, actual_effect_full: EUR +50.4 bn
 Total programme, safe_asset, market_effect: EUR +363.6 bn
 Total programme, safe_asset, actual_effect: EUR +17.3 bn
+Total programme, safe_asset, actual_effect_full: EUR +135.3 bn
