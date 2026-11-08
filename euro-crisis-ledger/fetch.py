@@ -66,8 +66,6 @@ EUROSTAT_REQUESTS: dict[str, tuple[str, list[Filters], tuple[str, ...] | None]] 
     ),
     "debt_structure": ("gov_10dd_ggd", [[("unit", "MIO_EUR"), ("sector", "S13")], []], ("EL", "IE", "PT", "CY", "ES", "DE", "FR", "NL", "FI", "AT", "IT")),
 }
-# filled in from the table of contents if these codes exist; tried as given otherwise
-SUPPLEMENTARY = ("gov_10dd_igl", "gov_dd_igl", "gov_10dd_ilg", "gov_10dd_fins", "gov_dd_fi", "gov_10dd_fi")
 
 FRED_SERIES = {c: f"IRLTLT01{c}M156N" for c in ("US", "GB", "CA", "SE", "NO", "CH", "JP", "AU", "NZ", "DK", "DE", "FR", "NL", "IT", "ES")}
 FRED_SERIES["USD_PER_EUR"] = "EXUSEU"
@@ -237,10 +235,9 @@ def main(argv: list[str] | None = None) -> int:
         ok &= eurostat(name, ds, fs, geos, out, log)
         time.sleep(1)
     if not want or "supplementary" in want:
-        codes = toc(out, log)
-        for code in list(dict.fromkeys([c for c in codes if any(k in c for k in ("igl", "fi", "ilg"))] + list(SUPPLEMENTARY))):
-            eurostat(f"supp_{code}", code, [[("unit", "MIO_EUR")], []], None, out, log)
-            time.sleep(1)
+        # the supplementary tables on intergovernmental lending are published as spreadsheets, not
+        # through the API; the table of contents is searched and kept for the record
+        toc(out, log)
     if not want or "fred" in want:
         ok &= fred(out, log)
     if not want or "bis" in want:
