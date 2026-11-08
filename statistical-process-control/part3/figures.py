@@ -58,7 +58,7 @@ plt.rcParams.update({
 })
 
 CODE = "Code: github.com/DiogoRibeiro7/Medium-Blog/tree/main/statistical-process-control"
-LIVELINE = "Data: Liveline Technologies (2019), multi-stage continuous-flow manufacturing process."
+LIVELINE = "Data: Liveline Technologies, multi-stage continuous-flow manufacturing process (Kaggle, 2020)."
 SECOM = "Data: SECOM, UCI Machine Learning Repository (McCann and Johnston 2008)."
 FLOOR = 1e-4   # realized rates of exactly 0 are drawn here, on log axes
 

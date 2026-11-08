@@ -8,7 +8,7 @@ continuous_factory_process.csv: 8495105 bytes, sha256 5d1358bc03b3bc68... verifi
 secom.data: 5388416 bytes, sha256 4503bdb42e63687d... verified
 secom_labels.data: 39071 bytes, sha256 2fb2e8b5dfe77ba9... verified
 
-Continuous-flow line (Liveline Technologies, 2019)
+Continuous-flow line (Liveline Technologies; posted on Kaggle in 2020; recorded on 6 March 2019)
 rows 14088, columns 116 (time stamp + 115)
 first 2019-03-06 10:52:33, last 2019-03-06 14:47:20, span 3.913 h, minutes indexed 235
    interval 0 s: 14
@@ -25,6 +25,9 @@ share of readings exactly 0 (sensor dropouts), by measurement location 0..14
    stage 1: 0.005 0.419 0.006 0.010 0.012 0.951 0.334 0.622 0.055 0.051 0.019 0.743 0.226 0.024 0.355
    stage 2: 0.087 0.048 0.043 0.055 0.905 0.013 0.013 0.025 0.069 0.298 0.045 0.045 0.018 0.014 0.065
 usable (dropout share < 0.10): stage 1 locations [0, 2, 3, 4, 8, 9, 10, 13] (8), stage 2 locations [0, 1, 2, 3, 5, 6, 7, 8, 10, 11, 12, 13, 14] (13)
+same statistic at every minute of the record (no pause; 215 split points): median over series has median 0.14, 10/90% 0.06 / 0.47
+pause 11:54:27-11:55:01 (35 rows): change in the mean of the 10 minute means after vs before, in SDs of the minute means, over the 21 usable series: median 0.17, max 3.26
+pause 12:02:50-12:03:10 (21 rows): change in the mean of the 10 minute means after vs before, in SDs of the minute means, over the 21 usable series: median 0.19, max 2.98
 Machine4.Pressure.C.Actual identical to Machine4.Temperature4.C.Actual: True
 
 SECOM semiconductor line (McCann and Johnston, 2008)
@@ -70,6 +73,7 @@ stage 1: median held share 0.586; r1 range 0.820 to 0.995
 stage 2: median held share 0.209; r1 range 0.433 to 0.949
    median normalized semivariogram by lag: 0.141 0.187 0.200 0.210 0.247 0.299 0.349 0.386 0.541 0.596 0.608 0.759
    median MRsigma/SD 0.209; median within-minute ratio 0.069
+excluding the first 30 minutes: median MRsigma/SD stage 1 0.061, stage 2 0.272; median gamma(1)/var stage 1 0.036, stage 2 0.349
 all 21: gamma(1)/var range 0.004 to 0.514, median 0.079; gamma(3600)/var median 0.788
 limits from MR at 1 Hz are narrower than 3 SD by a median factor 0.139; 3 x that factor = 0.417 SD, normal tail beyond it 0.677
 
@@ -220,11 +224,12 @@ stage1_all lag  5 min, m 120, predictors 8: pairs 96; in-window R^2 median 0.67;
 stage1_all lag 15 min, m  60, predictors 8: pairs 91; in-window R^2 median 0.49; worse 0.82; alarm median adjusted 0.570 vs unadjusted 0.176
 stage1_all lag 15 min, m 120, predictors 8: pairs 87; in-window R^2 median 0.49; worse 0.70; alarm median adjusted 0.347 vs unadjusted 0.051
 
-independent-normal reference for the out-of-sample inflation of the residual SD: sqrt(1 + (p + 1)/m)
-   p 1, m 60: 1.017
-   p 1, m 120: 1.008
-   p 8, m 60: 1.072
-   p 8, m 120: 1.037
+independent-normal reference for the out-of-sample inflation of the residual SD: sqrt(1 + (p + 1)/m) for a
+fixed design; sqrt((1 + 1/m)(m - 2)/(m - p - 2)) for Gaussian predictors
+   p 1, m 60: 1.017 / 1.017
+   p 1, m 120: 1.008 / 1.008
+   p 8, m 60: 1.072 / 1.086
+   p 8, m 120: 1.037 / 1.040
 
 ==============================================================================
 6. Many sensors, one chart each: SECOM
@@ -274,10 +279,12 @@ Decomposition at m = 100: where does the excess come from?
        other passing runs: per-sensor 10/50/90% 0.0007 / 0.0095 / 0.0289; runs with an alarm, median over draws 0.902
    (d) Phase I = the first 100 passing runs: per-sensor 10/50/90% 0.0000 / 0.0088 / 0.0608; runs with an alarm 0.982
 
-excess kurtosis of charted sensors over all passing runs, 25/50/75/90%: 1.4538 / 14.9432 / 170.2506 / 581.3232
-matching Var(S^2) to a chi-square: effective degrees of freedom at m = 100, nu = 2/(2/(m-1) + kurtosis/m)
-   10/50/90%: 0.3429 / 11.7903 / 108.3522; share with nu <= 9: 0.446; share with nu <= 2: 0.296
-   (negative excess kurtosis gives nu above m - 1: share 0.122)
+excess kurtosis of the 428 sensors charted at m = 100, computed over all passing runs, 25/50/75/90%: 1.3952 / 15.1523 / 161.9719 / 547.6938
+matching Var(S^2) to a chi-square (Shoemaker's adjusted degrees of freedom): nu = 2/(2/(m-1) + kurtosis/m) at m = 100
+   10/50/90%: 0.3638 / 11.6474 / 109.0839; share with nu <= 9: 0.446; share with nu <= 2: 0.292
+   (negative excess kurtosis gives nu above m - 1: share 0.126)
+   share of the Phase I sum of squared deviations from the two most extreme of the first 100 runs:
+   sensors with nu <= 2 (125): median 0.279, share above one half 0.304; other sensors: median 0.158; independent normal with m = 100, expected about 0.136
 
 limit width k against the share of passing runs with an alarm (first-100 limits):
    3.00:0.982 3.25:0.962 3.50:0.943 3.75:0.906 4.00:0.883 4.25:0.864 4.50:0.844 4.75:0.822 5.00:0.798 5.25:0.781 5.50:0.767 5.75:0.755 6.00:0.746 6.25:0.731 6.50:0.718 6.75:0.707 7.00:0.690 7.25:0.678 7.50:0.667 7.75:0.660 8.00:0.646
@@ -302,7 +309,7 @@ m = 100, p = 428 (Phase I rank at most 99); Phase II passing 1363, failing 86
    robust out-of-sample variance / Phase I eigenvalue, PCs 1 2 5 10 20 50: 0.21 0.46 0.89 1.21 2.99 8.40
    k 5: median SPE phase I 274.8, Phase II passing 1049.6, ratio 3.82
    k 20: median SPE phase I 167.5, Phase II passing 906.4, ratio 5.41
-   normal reference (median of 10): k 2: T2 0.000 SPE 0.002 k 5: T2 0.000 SPE 0.007 k 10: T2 0.000 SPE 0.049 k 20: T2 0.000 SPE 0.511 k 50: T2 0.000 SPE 1.000
+   normal reference (median of 10): k 2: T2 0.0000 SPE 0.0022 k 5: T2 0.0000 SPE 0.0073 k 10: T2 0.0000 SPE 0.0492 k 20: T2 0.0000 SPE 0.5114 k 50: T2 0.0000 SPE 1.0000
    normal reference, robust out-of-sample variance / eigenvalue, PCs 1 2 5 10 20 50: 0.68 0.63 0.53 0.46 0.54 0.88
 
 m = 200, p = 428 (Phase I rank at most 199); Phase II passing 1263, failing 73
@@ -314,7 +321,7 @@ m = 200, p = 428 (Phase I rank at most 199); Phase II passing 1263, failing 73
    robust out-of-sample variance / Phase I eigenvalue, PCs 1 2 5 10 20 50: 0.59 0.42 0.60 0.44 0.84 1.04
    k 5: median SPE phase I 288.9, Phase II passing 717.7, ratio 2.48
    k 20: median SPE phase I 192.7, Phase II passing 637.4, ratio 3.31
-   normal reference (median of 10): k 2: T2 0.000 SPE 0.003 k 5: T2 0.000 SPE 0.004 k 10: T2 0.000 SPE 0.021 k 20: T2 0.000 SPE 0.159 k 50: T2 0.000 SPE 0.969
+   normal reference (median of 10): k 2: T2 0.0000 SPE 0.0028 k 5: T2 0.0000 SPE 0.0040 k 10: T2 0.0000 SPE 0.0206 k 20: T2 0.0000 SPE 0.1591 k 50: T2 0.0000 SPE 0.9691
    normal reference, robust out-of-sample variance / eigenvalue, PCs 1 2 5 10 20 50: 0.83 0.73 0.63 0.58 0.67 0.88
 
 m = 400, p = 420 (Phase I rank at most 399); Phase II passing 1063, failing 46
@@ -326,5 +333,10 @@ m = 400, p = 420 (Phase I rank at most 399); Phase II passing 1063, failing 46
    robust out-of-sample variance / Phase I eigenvalue, PCs 1 2 5 10 20 50: 0.04 0.16 0.66 1.27 1.16 2.38
    k 5: median SPE phase I 271.6, Phase II passing 896.6, ratio 3.30
    k 20: median SPE phase I 193.9, Phase II passing 811.2, ratio 4.18
-   normal reference (median of 10): k 2: T2 0.001 SPE 0.003 k 5: T2 0.000 SPE 0.005 k 10: T2 0.000 SPE 0.008 k 20: T2 0.000 SPE 0.048 k 50: T2 0.000 SPE 0.497
+   normal reference (median of 10): k 2: T2 0.0014 SPE 0.0028 k 5: T2 0.0005 SPE 0.0047 k 10: T2 0.0000 SPE 0.0080 k 20: T2 0.0000 SPE 0.0475 k 50: T2 0.0000 SPE 0.4967
    normal reference, robust out-of-sample variance / eigenvalue, PCs 1 2 5 10 20 50: 0.89 0.80 0.77 0.78 0.81 0.99
+
+Phase I = 100 passing runs drawn at random from the whole period (20 draws), evaluated on the other
+passing runs: same procedure; medians over draws
+   k 2: T2 0.023 SPE 0.156 k 5: T2 0.033 SPE 0.184 k 10: T2 0.041 SPE 0.237 k 20: T2 0.042 SPE 0.454 k 50: T2 0.036 SPE 1.000
+   robust out-of-sample variance / Phase I eigenvalue, PCs 1 2 5 10 20 50: 0.35 0.56 0.44 0.41 0.52 0.87

@@ -16,7 +16,7 @@ below is set beside a reference computed for independent normal data with the sa
 same number of evaluated points.
 
 Sections
-1. The data: a multistage continuous-flow line (Liveline Technologies, 2019; 1 Hz, about four hours) and the
+1. The data: a multistage continuous-flow line (Liveline Technologies, Kaggle 2020; 1 Hz, about four hours) and the
    SECOM semiconductor line (McCann and Johnston, 2008; 1,567 production runs, 590 sensors, pass/fail).
 2. Which sigma? Time scales on the continuous line: held readings, autocorrelation, the semivariogram, and
    the realized alarm rate of four textbook chart designs.
@@ -230,7 +230,7 @@ def section_data(L: Line, X, y, stamps) -> tuple[list, list]:
         p = DATA / name
         print(f"{name}: {p.stat().st_size} bytes, sha256 {SOURCES[name]['sha256'][:16]}... verified")
 
-    print("\nContinuous-flow line (Liveline Technologies, 2019)")
+    print("\nContinuous-flow line (Liveline Technologies; posted on Kaggle in 2020; recorded on 6 March 2019)")
     print(f"rows {L.vals.shape[0]}, columns {len(L.cols)} (time stamp + {L.vals.shape[1]})")
     print(f"first {L.stamps[0]}, last {L.stamps[-1]}, span {L.t[-1] / 3600:.3f} h, minutes indexed {L.nmin}")
     gaps = np.diff(L.t)
@@ -259,6 +259,35 @@ def section_data(L: Line, X, y, stamps) -> tuple[list, list]:
                 use.append(k)
         print(f"   stage {stage}: " + " ".join(f"{s:.3f}" for s in shares))
     print(f"usable (dropout share < 0.10): stage 1 locations {use1} ({len(use1)}), stage 2 locations {use2} ({len(use2)})")
+    starts = np.flatnonzero(np.diff(paused.astype(int)) == 1) + 1
+    ends = np.flatnonzero(np.diff(paused.astype(int)) == -1)
+    allmeans = [L.minute_means(L.meas(stage, k))[0] for stage, ks in ((1, use1), (2, use2)) for k in ks]
+
+    def split_shift(m0, m1):
+        j = np.arange(L.nmin)
+        out = []
+        for mean in allmeans:
+            before = mean[(j >= m0 - 10) & (j < m0)]
+            after = mean[(j > m1) & (j <= m1 + 10)]
+            out.append(abs(np.nanmean(after) - np.nanmean(before)) / np.nanstd(mean, ddof=1))
+        return np.array(out)
+
+    base = np.array([np.median(split_shift(t, t)) for t in range(10, L.nmin - 10)])
+    print(f"same statistic at every minute of the record (no pause; {len(base)} split points): median over series has "
+          f"median {np.median(base):.2f}, 10/90% {np.percentile(base, 10):.2f} / {np.percentile(base, 90):.2f}")
+    for a0, a1 in zip(starts, ends):
+        m0, m1 = L.minute[a0], L.minute[a1]
+        shifts = []
+        for stage, ks in ((1, use1), (2, use2)):
+            for k in ks:
+                mean, _, _ = L.minute_means(L.meas(stage, k))
+                j = np.arange(L.nmin)
+                before = mean[(j >= m0 - 10) & (j < m0)]
+                after = mean[(j > m1) & (j <= m1 + 10)]
+                shifts.append((np.nanmean(after) - np.nanmean(before)) / np.nanstd(mean, ddof=1))
+        shifts = np.abs(shifts)
+        print(f"pause {L.stamps[a0].time()}-{L.stamps[a1].time()} ({a1 - a0 + 1} rows): change in the mean of the 10 minute means "
+              f"after vs before, in SDs of the minute means, over the {len(shifts)} usable series: median {np.median(shifts):.2f}, max {shifts.max():.2f}")
     dup = np.array_equal(L.raw("Machine4.Pressure.C.Actual"), L.raw("Machine4.Temperature4.C.Actual"))
     print(f"Machine4.Pressure.C.Actual identical to Machine4.Temperature4.C.Actual: {dup}")
 
@@ -340,6 +369,16 @@ def section_sigma(L: Line, use1, use2) -> list:
         print(f"   median normalized semivariogram by lag: " + " ".join(f"{v:.3f}" for v in np.median(vg[sel], axis=0)))
         print(f"   median MRsigma/SD {np.median(np.array(ratio_mr)[sel]):.3f}; median within-minute ratio "
               f"{np.median(np.array(ratio_sub)[sel]):.3f}")
+    late_mr, late_g1 = [], []
+    for stage, k in series:
+        x = L.meas(stage, k).copy()
+        x[L.minute < PHASE1_MIN] = np.nan
+        v = float(np.nanvar(x, ddof=1))
+        late_mr.append(mr_sigma(x) / np.sqrt(v))
+        late_g1.append(semivariogram(x, 1) / v)
+    late_mr, late_g1 = np.array(late_mr), np.array(late_g1)
+    print(f"excluding the first {PHASE1_MIN} minutes: median MRsigma/SD stage 1 {np.median(late_mr[:n1]):.3f}, stage 2 "
+          f"{np.median(late_mr[n1:]):.3f}; median gamma(1)/var stage 1 {np.median(late_g1[:n1]):.3f}, stage 2 {np.median(late_g1[n1:]):.3f}")
     print(f"all {len(series)}: gamma(1)/var range {vg[:, 0].min():.3f} to {vg[:, 0].max():.3f}, median {np.median(vg[:, 0]):.3f}; "
           f"gamma(3600)/var median {np.median(vg[:, -1]):.3f}")
     print(f"limits from MR at 1 Hz are narrower than 3 SD by a median factor {np.median(ratio_mr):.3f}; "
@@ -572,10 +611,11 @@ def section_series(L: Line, use1, use2) -> None:
                 s = np.array(stats_, dtype=float)
                 print(f"{spec:10s} lag {lag:2d} min, m {m:3d}, predictors {p}: pairs {len(s)}; in-window R^2 median {np.median(s[:, 0]):.2f}; "
                       f"worse {np.mean(s[:, 1]):.2f}; alarm median adjusted {np.median(s[:, 2]):.3f} vs unadjusted {np.median(s[:, 3]):.3f}")
-    print("\nindependent-normal reference for the out-of-sample inflation of the residual SD: sqrt(1 + (p + 1)/m)")
+    print("\nindependent-normal reference for the out-of-sample inflation of the residual SD: sqrt(1 + (p + 1)/m) for a")
+    print("fixed design; sqrt((1 + 1/m)(m - 2)/(m - p - 2)) for Gaussian predictors")
     for p in (1, 8):
         for m in (60, 120):
-            print(f"   p {p}, m {m}: {np.sqrt(1 + (p + 1) / m):.3f}")
+            print(f"   p {p}, m {m}: {np.sqrt(1 + (p + 1) / m):.3f} / {np.sqrt((1 + 1 / m) * (m - 2) / (m - p - 2)):.3f}")
 
 
 # ---------------------------------------------------------------------------------------------------
@@ -679,13 +719,26 @@ def section_secom_univariate(X, y, stamps) -> None:
     print(f"   (d) Phase I = the first {m} passing runs: per-sensor 10/50/90% {q3(first)}; runs with an alarm "
           f"{A_first.any(axis=1).mean():.3f}")
 
-    kurt = np.array([stats.kurtosis(c[~np.isnan(c)]) for c in X[np.ix_(allpass, use_o)].T])
+    kurt = np.array([stats.kurtosis(c[~np.isnan(c)]) for c in X[np.ix_(allpass, usable)].T])
     nu = 2 / (2 / (m - 1) + kurt / m)
-    print(f"\nexcess kurtosis of charted sensors over all passing runs, 25/50/75/90%: {q3(kurt, (25, 50, 75, 90))}")
-    print(f"matching Var(S^2) to a chi-square: effective degrees of freedom at m = {m}, nu = 2/(2/(m-1) + kurtosis/m)")
+    print(f"\nexcess kurtosis of the {K} sensors charted at m = {m}, computed over all passing runs, 25/50/75/90%: "
+          f"{q3(kurt, (25, 50, 75, 90))}")
+    print(f"matching Var(S^2) to a chi-square (Shoemaker's adjusted degrees of freedom): nu = 2/(2/(m-1) + kurtosis/m) at m = {m}")
     nu_c = np.where(nu > 0, nu, np.inf)
     print(f"   10/50/90%: {q3(nu_c)}; share with nu <= 9: {np.mean(nu_c <= 9):.3f}; share with nu <= 2: {np.mean(nu_c <= 2):.3f}")
     print(f"   (negative excess kurtosis gives nu above m - 1: share {np.mean(kurt < 0):.3f})")
+    P1 = X[np.ix_(rows, usable)]
+    top2 = []
+    for col in P1.T:
+        v = col[~np.isnan(col)]
+        d = np.sort((v - v.mean()) ** 2)[::-1]
+        top2.append(d[:2].sum() / d.sum())
+    top2 = np.array(top2)
+    low = nu_c <= 2
+    print(f"   share of the Phase I sum of squared deviations from the two most extreme of the first {m} runs:")
+    print(f"   sensors with nu <= 2 ({int(low.sum())}): median {np.median(top2[low]):.3f}, share above one half {np.mean(top2[low] > 0.5):.3f}; "
+          f"other sensors: median {np.median(top2[~low]):.3f}; independent normal with m = {m}, expected about "
+          f"{np.mean([np.sort((z - z.mean()) ** 2)[::-1][:2].sum() / ((z - z.mean()) ** 2).sum() for z in RNG['spare1'].standard_normal((2000, m))]):.3f}")
 
     kgrid = np.round(np.arange(3.0, 8.01, 0.25), 2)
     any_real, any_nom = [], []
@@ -794,11 +847,30 @@ def section_secom_pca(X, y) -> None:
             ratios.append(np.median(scg * scg, axis=0) / stats.chi2.median(1) / lam_g[:50])
         reps = np.array(reps)
         med = np.median(reps, axis=0)
-        print("   normal reference (median of 10): " + " ".join(f"k {k}: T2 {med[i, 0]:.3f} SPE {med[i, 1]:.3f}" for i, k in enumerate(KS)))
+        print("   normal reference (median of 10): " + " ".join(f"k {k}: T2 {med[i, 0]:.4f} SPE {med[i, 1]:.4f}" for i, k in enumerate(KS)))
         rg = np.median(np.array(ratios), axis=0)
         print("   normal reference, robust out-of-sample variance / eigenvalue, PCs 1 2 5 10 20 50: "
               + " ".join(f"{rg[i]:.2f}" for i in (0, 1, 4, 9, 19, 49)))
         fig["ref"][m] = med.tolist()
+    m = 100
+    print(f"\nPhase I = {m} passing runs drawn at random from the whole period (20 draws), evaluated on the other")
+    print("passing runs: same procedure; medians over draws")
+    rates, ratios = [], []
+    for _ in range(20):
+        sel = np.sort(RNG["spare2"].choice(len(passi), m, replace=False))
+        rest = np.setdiff1d(np.arange(len(passi)), sel)
+        mu, sd, use, _ = secom_limits(X, passi[sel])
+        Z1 = standardize(X[passi[sel]], mu, sd, use)
+        Zr = standardize(X[passi[rest]], mu, sd, use)
+        o, lam, Vt = pca_monitor(Z1, {"pass": Zr})
+        rates.append([[o[k]["pass"][0], o[k]["pass"][1]] for k in KS])
+        sc = (Zr - Z1.mean(axis=0)) @ Vt[:50].T
+        ratios.append(np.median(sc * sc, axis=0) / stats.chi2.median(1) / lam[:50])
+    med = np.median(np.array(rates), axis=0)
+    rr = np.median(np.array(ratios), axis=0)
+    print("   " + " ".join(f"k {k}: T2 {med[i, 0]:.3f} SPE {med[i, 1]:.3f}" for i, k in enumerate(KS)))
+    print("   robust out-of-sample variance / Phase I eigenvalue, PCs 1 2 5 10 20 50: "
+          + " ".join(f"{rr[i]:.2f}" for i in (0, 1, 4, 9, 19, 49)))
     FIG["pca"] = fig
 
 
