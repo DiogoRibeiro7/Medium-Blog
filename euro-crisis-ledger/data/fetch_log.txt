@@ -59,3 +59,65 @@ fred IRLTLT01ESM156N	200	66fbf11f2bf885660cdf881b863d32b192407dfb9bd4ed52f631628
 fred	ROWS	10125	countries ['AU', 'CA', 'CH', 'DE', 'DK', 'ES', 'FR', 'GB', 'IT', 'JP', 'NL', 'NO', 'NZ', 'SE', 'US']
 bis Q.S..4R...A.A.TO1..GR+IE+PT+CY+ES+IT	200	146ee810b9e8b3ab8ffc5b27daaa0ab004d1ae2dbac9cba1dc8f5b89b7588252	7731926 bytes	https://stats.bis.org/api/v1/data/WS_CBS_PUB/Q.S..4R...A.A.TO1..GR+IE+PT+CY+ES+IT?startPeriod=2005-Q1&format=csv
 bis	ROWS	123098	columns ['FREQ', 'L_MEASURE', 'L_REP_CTY', 'CBS_BANK_TYPE', 'CBS_BASIS', 'L_POSITION', 'L_INSTR', 'REM_MATURITY', 'CURR_TYPE_BOOK', 'L_CP_SECTOR', 'L_CP_COUNTRY', 'DECIMALS', 'UNIT_MEASURE', 'UNIT_MULT', 'AVAILABILITY', 'TITLE_GRP', 'TIME_FORMAT', 'COLLECTION', 'ORG_VISIBILITY', 'TIME_PERIOD']
+# fetch.py run 2026-11-08T12:43:38+00:00
+eurostat yields_monthly	200	e4a7bb56145e7aa969dd1f03b3f85a01f84484c5a692a291cf95cee3ad442d23	174150 bytes	https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/irt_lt_mcby_m?format=JSON&lang=EN&geo=BE&geo=DE&geo=EE&geo=IE&geo=EL&geo=ES&geo=FR&geo=HR&geo=IT&geo=CY&geo=LV&geo=LT&geo=LU&geo=MT&geo=NL&geo=AT&geo=PT&geo=SI&geo=SK&geo=FI&geo=DK&geo=SE&geo=EA20&geo=EA19&geo=EU27_2020
+eurostat yields_monthly	ROWS	9587	columns ['freq', 'int_rt', 'geo', 'time', 'value']	filters []
+eurostat debt	200	9c8195b64df87ad6ef6a1f8590fe9d4b3c377aac197644a4797f03100b9a38ad	15189 bytes	https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/gov_10dd_edpt1?format=JSON&lang=EN&unit=MIO_EUR&sector=S13&na_item=GD&geo=BE&geo=DE&geo=EE&geo=IE&geo=EL&geo=ES&geo=FR&geo=HR&geo=IT&geo=CY&geo=LV&geo=LT&geo=LU&geo=MT&geo=NL&geo=AT&geo=PT&geo=SI&geo=SK&geo=FI&geo=DK&geo=SE&geo=EA20
+eurostat debt	ROWS	765	columns ['freq', 'unit', 'sector', 'na_item', 'geo', 'time', 'value']	filters [('unit', 'MIO_EUR'), ('sector', 'S13'), ('na_item', 'GD')]
+eurostat gov_main	200	ce615e5456d6359e6a7734e463cc3e1d1cdd2ba3c9053c73c586c06ce35c10ff	60258 bytes	https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/gov_10a_main?format=JSON&lang=EN&unit=MIO_EUR&sector=S13&na_item=D41PAY&na_item=D41REC&na_item=B9&na_item=D4PAY&na_item=D4REC&geo=BE&geo=DE&geo=EE&geo=IE&geo=EL&geo=ES&geo=FR&geo=HR&geo=IT&geo=CY&geo=LV&geo=LT&geo=LU&geo=MT&geo=NL&g
+eurostat gov_main	ROWS	3966	columns ['freq', 'unit', 'sector', 'na_item', 'geo', 'time', 'value']	filters [('unit', 'MIO_EUR'), ('sector', 'S13'), ('na_item', 'D41PAY'), ('na_item', 'D41REC'), ('na_item', 'B9'), ('na_item', 'D4PAY'), ('na_item', 'D4REC')]
+eurostat gdp	200	435860d67c99cc22c5a2af1de000c58870d8d570d53ad31e26d1e7a5c5823d3d	17306 bytes	https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/nama_10_gdp?format=JSON&lang=EN&unit=CP_MEUR&na_item=B1GQ&geo=BE&geo=DE&geo=EE&geo=IE&geo=EL&geo=ES&geo=FR&geo=HR&geo=IT&geo=CY&geo=LV&geo=LT&geo=LU&geo=MT&geo=NL&geo=AT&geo=PT&geo=SI&geo=SK&geo=FI&geo=DK&geo=SE&geo=EA20&geo=EA19&ge
+eurostat gdp	ROWS	816	columns ['freq', 'unit', 'na_item', 'geo', 'time', 'value']	filters [('unit', 'CP_MEUR'), ('na_item', 'B1GQ')]
+eurostat debt_structure	200	d5c21f38effc43c3748de9fcf7d244762b88d090c8998ff9acf76ae837c5b59b	496833 bytes	https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/gov_10dd_ggd?format=JSON&lang=EN&unit=MIO_EUR&sector=S13&geo=EL&geo=IE&geo=PT&geo=CY&geo=ES&geo=DE&geo=FR&geo=NL&geo=FI&geo=AT&geo=IT
+eurostat debt_structure	ROWS	20821	columns ['freq', 'na_item', 'sector2', 'sector', 'maturity', 'unit', 'geo', 'time', 'value']	filters [('unit', 'MIO_EUR'), ('sector', 'S13')]
+toc	200	0fcb74faea15a6e7e5b0ad4dce22034359889eee13f4ea0f200db91a81b00e81	1981839 bytes	https://ec.europa.eu/eurostat/api/dissemination/catalogue/toc/txt?lang=en
+toc	MATCHES	6 lines	codes ['gov_10dd_ggd', 'gov_10dd_guar', 'gov_10dd_sgd', 'gov_10q_ggdebt', 'gov_cl', 'gov_gb']
+eurostat supp_gov_10dd_igl	404	613f03f9e8bb1a9ca89236b6f2100a5a4db35c23ef1f0733c7dcff5b5ff27e85	136 bytes	https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/gov_10dd_igl?format=JSON&lang=EN&unit=MIO_EUR
+eurostat supp_gov_10dd_igl	BODY	b'{ "error": [{"status": 404,"id": 100,"label": "ERR_NOT_FOUND_4: GOV_10DD_IGL (DATA_FLOW:ALL,1.0) is not available for dissemination."}]}'
+eurostat supp_gov_10dd_igl	404	613f03f9e8bb1a9ca89236b6f2100a5a4db35c23ef1f0733c7dcff5b5ff27e85	136 bytes	https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/gov_10dd_igl?format=JSON&lang=EN
+eurostat supp_gov_10dd_igl	BODY	b'{ "error": [{"status": 404,"id": 100,"label": "ERR_NOT_FOUND_4: GOV_10DD_IGL (DATA_FLOW:ALL,1.0) is not available for dissemination."}]}'
+eurostat supp_gov_10dd_igl	FAILED
+eurostat supp_gov_dd_igl	404	35d71812e1ef97bdc1bc3175b980af8c9313841cbe341afb29f7fc8cfc99dfb7	134 bytes	https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/gov_dd_igl?format=JSON&lang=EN&unit=MIO_EUR
+eurostat supp_gov_dd_igl	BODY	b'{ "error": [{"status": 404,"id": 100,"label": "ERR_NOT_FOUND_4: GOV_DD_IGL (DATA_FLOW:ALL,1.0) is not available for dissemination."}]}'
+eurostat supp_gov_dd_igl	404	35d71812e1ef97bdc1bc3175b980af8c9313841cbe341afb29f7fc8cfc99dfb7	134 bytes	https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/gov_dd_igl?format=JSON&lang=EN
+eurostat supp_gov_dd_igl	BODY	b'{ "error": [{"status": 404,"id": 100,"label": "ERR_NOT_FOUND_4: GOV_DD_IGL (DATA_FLOW:ALL,1.0) is not available for dissemination."}]}'
+eurostat supp_gov_dd_igl	FAILED
+eurostat supp_gov_10dd_ilg	404	cb43937014843fc7f23429fdfaf02941bcd50823cfc9bb239dbeb4b5d33c52dc	136 bytes	https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/gov_10dd_ilg?format=JSON&lang=EN&unit=MIO_EUR
+eurostat supp_gov_10dd_ilg	BODY	b'{ "error": [{"status": 404,"id": 100,"label": "ERR_NOT_FOUND_4: GOV_10DD_ILG (DATA_FLOW:ALL,1.0) is not available for dissemination."}]}'
+eurostat supp_gov_10dd_ilg	404	cb43937014843fc7f23429fdfaf02941bcd50823cfc9bb239dbeb4b5d33c52dc	136 bytes	https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/gov_10dd_ilg?format=JSON&lang=EN
+eurostat supp_gov_10dd_ilg	BODY	b'{ "error": [{"status": 404,"id": 100,"label": "ERR_NOT_FOUND_4: GOV_10DD_ILG (DATA_FLOW:ALL,1.0) is not available for dissemination."}]}'
+eurostat supp_gov_10dd_ilg	FAILED
+eurostat supp_gov_10dd_fins	404	a5c3e4e71832c203d35aee5d9a9703ec785de1cc8a518b3e1a147b91e09ab154	137 bytes	https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/gov_10dd_fins?format=JSON&lang=EN&unit=MIO_EUR
+eurostat supp_gov_10dd_fins	BODY	b'{ "error": [{"status": 404,"id": 100,"label": "ERR_NOT_FOUND_4: GOV_10DD_FINS (DATA_FLOW:ALL,1.0) is not available for dissemination."}]}'
+eurostat supp_gov_10dd_fins	404	a5c3e4e71832c203d35aee5d9a9703ec785de1cc8a518b3e1a147b91e09ab154	137 bytes	https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/gov_10dd_fins?format=JSON&lang=EN
+eurostat supp_gov_10dd_fins	BODY	b'{ "error": [{"status": 404,"id": 100,"label": "ERR_NOT_FOUND_4: GOV_10DD_FINS (DATA_FLOW:ALL,1.0) is not available for dissemination."}]}'
+eurostat supp_gov_10dd_fins	FAILED
+eurostat supp_gov_dd_fi	404	d371707874e682abee8a895badab387434c08d0a416aadab4861b8f352c69ebd	133 bytes	https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/gov_dd_fi?format=JSON&lang=EN&unit=MIO_EUR
+eurostat supp_gov_dd_fi	BODY	b'{ "error": [{"status": 404,"id": 100,"label": "ERR_NOT_FOUND_4: GOV_DD_FI (DATA_FLOW:ALL,1.0) is not available for dissemination."}]}'
+eurostat supp_gov_dd_fi	404	d371707874e682abee8a895badab387434c08d0a416aadab4861b8f352c69ebd	133 bytes	https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/gov_dd_fi?format=JSON&lang=EN
+eurostat supp_gov_dd_fi	BODY	b'{ "error": [{"status": 404,"id": 100,"label": "ERR_NOT_FOUND_4: GOV_DD_FI (DATA_FLOW:ALL,1.0) is not available for dissemination."}]}'
+eurostat supp_gov_dd_fi	FAILED
+eurostat supp_gov_10dd_fi	404	2a30b7fff9375a6de7931ada640b5595fb00f9a31cacc6935ddca7bd5f61584c	135 bytes	https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/gov_10dd_fi?format=JSON&lang=EN&unit=MIO_EUR
+eurostat supp_gov_10dd_fi	BODY	b'{ "error": [{"status": 404,"id": 100,"label": "ERR_NOT_FOUND_4: GOV_10DD_FI (DATA_FLOW:ALL,1.0) is not available for dissemination."}]}'
+eurostat supp_gov_10dd_fi	404	2a30b7fff9375a6de7931ada640b5595fb00f9a31cacc6935ddca7bd5f61584c	135 bytes	https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/gov_10dd_fi?format=JSON&lang=EN
+eurostat supp_gov_10dd_fi	BODY	b'{ "error": [{"status": 404,"id": 100,"label": "ERR_NOT_FOUND_4: GOV_10DD_FI (DATA_FLOW:ALL,1.0) is not available for dissemination."}]}'
+eurostat supp_gov_10dd_fi	FAILED
+fred IRLTLT01USM156N	200	19b92f1ce2372cb3ee89f57fe54993415e22a17b5fd0c69ec95d5d48b02ccbea	14217 bytes	https://fred.stlouisfed.org/graph/fredgraph.csv?id=IRLTLT01USM156N
+fred IRLTLT01GBM156N	200	2b36258f47ac159b494f45a74b7e79dd67b0f018a241de7ad46a51dadfbcdb8e	14641 bytes	https://fred.stlouisfed.org/graph/fredgraph.csv?id=IRLTLT01GBM156N
+fred IRLTLT01CAM156N	200	e6aa7237c2a5173c6828aba5f10f227ebf830dcd17e1559ee93c54b4c155429e	25103 bytes	https://fred.stlouisfed.org/graph/fredgraph.csv?id=IRLTLT01CAM156N
+fred IRLTLT01SEM156N	200	5523abe5d149eef8081f775a7bbf57a60dcea2ab0d2677fd7887b5bf662bd503	10163 bytes	https://fred.stlouisfed.org/graph/fredgraph.csv?id=IRLTLT01SEM156N
+fred IRLTLT01NOM156N	200	10e4994e39c0f95595a9f1f6ab329501152b7fa722b63ca6d7ce3283775c49ac	14139 bytes	https://fred.stlouisfed.org/graph/fredgraph.csv?id=IRLTLT01NOM156N
+fred IRLTLT01CHM156N	200	fadd34ee6af1fbb575451d2d09f8260ff831f90072ba3659eeb6382fb27d05ea	14742 bytes	https://fred.stlouisfed.org/graph/fredgraph.csv?id=IRLTLT01CHM156N
+fred IRLTLT01JPM156N	200	8264bacf3c9778d7a4dde36cdef626eabdde749bfc81d6d934daca075c7f2c12	7758 bytes	https://fred.stlouisfed.org/graph/fredgraph.csv?id=IRLTLT01JPM156N
+fred IRLTLT01AUM156N	200	cc50f2f46b7bb364e0b287b60b67c0f5cce1a4540ca07933d879cf09bf2df8ee	19449 bytes	https://fred.stlouisfed.org/graph/fredgraph.csv?id=IRLTLT01AUM156N
+fred IRLTLT01NZM156N	200	48950237ead9123f2b4e0cd9d8b41c0e2b5e6644b52b1165ff57d67633fe1c2b	11078 bytes	https://fred.stlouisfed.org/graph/fredgraph.csv?id=IRLTLT01NZM156N
+fred IRLTLT01DKM156N	200	deb2f55afd391b1f8d9a93b27cf6db1998a8548c4f39e57ac348ed9889b3fa2d	8183 bytes	https://fred.stlouisfed.org/graph/fredgraph.csv?id=IRLTLT01DKM156N
+fred IRLTLT01DEM156N	200	82ffb5732399839871c66fcbf4a37acb18c50d17d53f7be54307eeefdfee30bf	24593 bytes	https://fred.stlouisfed.org/graph/fredgraph.csv?id=IRLTLT01DEM156N
+fred IRLTLT01FRM156N	200	9e21b1f59409209f2c00fec3c898c838c40fa940437d534c6940a6c2c0be8ac1	14619 bytes	https://fred.stlouisfed.org/graph/fredgraph.csv?id=IRLTLT01FRM156N
+fred IRLTLT01NLM156N	200	1ebf6b07b04f401d194ec677d741a5e0e580c3ac7813066384f2ea5bd81999e8	13903 bytes	https://fred.stlouisfed.org/graph/fredgraph.csv?id=IRLTLT01NLM156N
+fred IRLTLT01ITM156N	200	083e2388e09fa076a71e3ba0e6e003f3c49110dacb088be98afc67c337f655b9	7327 bytes	https://fred.stlouisfed.org/graph/fredgraph.csv?id=IRLTLT01ITM156N
+fred IRLTLT01ESM156N	200	66fbf11f2bf885660cdf881b863d32b192407dfb9bd4ed52f631628309a96ac8	17044 bytes	https://fred.stlouisfed.org/graph/fredgraph.csv?id=IRLTLT01ESM156N
+fred EXUSEU	200	45a53d0ce24e5e645cb43f9db8cdc5f30cc1fddefdae1ea89a4353c89d568c93	6036 bytes	https://fred.stlouisfed.org/graph/fredgraph.csv?id=EXUSEU
+fred	ROWS	10459	countries ['AU', 'CA', 'CH', 'DE', 'DK', 'ES', 'FR', 'GB', 'IT', 'JP', 'NL', 'NO', 'NZ', 'SE', 'US', 'USD_PER_EUR']
+bis Q.S..4R...A.A.TO1..GR+IE+PT+CY+ES+IT	200	146ee810b9e8b3ab8ffc5b27daaa0ab004d1ae2dbac9cba1dc8f5b89b7588252	7731926 bytes	https://stats.bis.org/api/v1/data/WS_CBS_PUB/Q.S..4R...A.A.TO1..GR+IE+PT+CY+ES+IT?startPeriod=2005-Q1&format=csv
+bis	ROWS	123098	columns ['FREQ', 'L_MEASURE', 'L_REP_CTY', 'CBS_BANK_TYPE', 'CBS_BASIS', 'L_POSITION', 'L_INSTR', 'REM_MATURITY', 'CURR_TYPE_BOOK', 'L_CP_SECTOR', 'L_CP_COUNTRY', 'DECIMALS', 'UNIT_MEASURE', 'UNIT_MULT', 'AVAILABILITY', 'TITLE_GRP', 'TIME_FORMAT', 'COLLECTION', 'ORG_VISIBILITY', 'TIME_PERIOD']
