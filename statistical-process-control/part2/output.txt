@@ -1,0 +1,185 @@
+Statistical process control, Part 2: the mechanism, from one chart to a production line
+numpy 2.5.3; master seed 20261107
+nominal false-alarm probability 0.0026998; nominal in-control ARL 370.398
+
+==============================================================================
+1. ONE CHART, EXACTLY: THE CONDITIONAL ARL AND THE ESTIMATOR OF SIGMA
+==============================================================================
+  limits at 3.00 sigma: d log ARL / d log sigma_hat = 9.85 (exact centre line); a 1% error in sigma_hat moves the ARL by about 10.3%
+  limits at 3.64 sigma: d log ARL / d log sigma_hat = 14.15 (exact centre line); a 1% error in sigma_hat moves the ARL by about 15.1%
+  limits at 4.04 sigma: d log ARL / d log sigma_hat = 17.20 (exact centre line); a 1% error in sigma_hat moves the ARL by about 18.7%
+  limits at 4.55 sigma: d log ARL / d log sigma_hat = 21.61 (exact centre line); a 1% error in sigma_hat moves the ARL by about 24.0%
+  X-bar chart, n = 5, m = 25 subgroups: three estimators of sigma, 200,000 simulated Phase I samples each
+    pooled S / c4(nu+1), nu = 100: sigma_hat/sigma mean 1.0000, SD 0.0708
+      pooled S / c4(nu+1), nu = 100: mean    418.3; median   311.8; 10th-90th   131.5-   809.6; below 370.4 0.595; below 200 0.260; below 100 0.044
+    S-bar / c4(5): sigma_hat/sigma mean 1.0001, SD 0.0726
+      S-bar / c4(5): mean    424.9; median   311.7; 10th-90th   129.2-   829.5; below 370.4 0.593; below 200 0.264; below 100 0.047
+    R-bar / d2(5): sigma_hat/sigma mean 1.0001, SD 0.0742
+      R-bar / d2(5): mean    431.3; median   311.6; 10th-90th   126.9-   847.7; below 370.4 0.591; below 200 0.269; below 100 0.049
+  exact (by conditioning and quadrature), pooled S / c4, same chart:
+    10th / 50th / 90th percentile: 131.4 / 312.0 / 808.3; P(conditional ARL < 370.4) = 0.5950; P(< 200) = 0.2598
+    exact mean (AARL): 418.5
+  individuals chart, sigma from the sample standard deviation S/c4 of m values (nu = m - 1):
+    m =  10: exact 10th / 50th / 90th percentile     21.9 /   235.0 /     7596.1; P(< 370.4) = 0.5776
+    m =  11: exact 10th / 50th / 90th percentile     24.9 /   243.7 /     6422.0; P(< 370.4) = 0.5753
+    m =  25: exact 10th / 50th / 90th percentile     60.8 /   302.5 /     2255.1; P(< 370.4) = 0.5566
+    m =  50: exact 10th / 50th / 90th percentile    103.2 /   332.9 /     1307.0; P(< 370.4) = 0.5427
+  the mean conditional ARL, integrated over sigma_hat up to s_max (individuals chart, S/c4):
+    m =  10 (nu =  9): s_max 2 / 3 / 4 / 5 / 6 -> 5.821e+04 / 6.998e+06 / 4.31e+08 / 2.325e+10 / 1.398e+12
+    m =  11 (nu = 10): s_max 2 / 3 / 4 / 5 / 6 -> 3.588e+04 / 8.321e+05 / 4.03e+06 / 8.057e+06 / 1.009e+07
+    m =  25 (nu = 24): s_max 2 / 3 / 4 / 5 / 6 -> 1345 / 1345 / 1345 / 1345 / 1345
+  divergence condition: 1/p grows like exp(4.5 s^2) while the density of s falls like exp(-nu c4^2 s^2 / 2); the mean is finite only if nu > 9 / c4(nu+1)^2:
+    nu =  8: nu c4^2 = 7.517, 9 / c4^2 = 9.579 -> infinite
+    nu =  9: nu c4^2 = 8.515, 9 / c4^2 = 9.513 -> infinite
+    nu = 10: nu c4^2 = 9.513, 9 / c4^2 = 9.461 -> finite
+    nu = 11: nu c4^2 = 10.512, 9 / c4^2 = 9.418 -> finite
+  moving-range estimate MRbar/d2(2) of m individual values: the sum of the m - 1 absolute moving ranges is at least
+  |L| for the alternating-sign sum L ~ N(0, (4m - 6) sigma^2), and at most the largest of 2^(m-1) such sums, so s
+  has a normal-type tail with variance v = (4m - 6)/((m - 1)^2 d2(2)^2); the mean ARL is finite iff 4.5 v < 1/2:
+    m = 25: v = 0.1282 against 1/9 = 0.1111 -> infinite
+    m = 28: v = 0.1142 against 1/9 = 0.1111 -> infinite
+    m = 29: v = 0.1102 against 1/9 = 0.1111 -> finite
+    m = 30: v = 0.1065 against 1/9 = 0.1111 -> finite
+
+==============================================================================
+2. MACHINES IN PARALLEL: THE LINE-LEVEL CONDITIONAL ARL
+==============================================================================
+  K machines, one X-bar chart each (n = 5); the line signals when any chart signals.
+  known parameters:
+    K =   1: every chart at 3 sigma -> line ARL  370.40; Sidak limits for a line ARL of 370.4: k = 3.000 sigma per chart (per-chart ARL 370)
+    K =  10: every chart at 3 sigma -> line ARL   37.49; Sidak limits for a line ARL of 370.4: k = 3.642 sigma per chart (per-chart ARL 3,699)
+    K =  50: every chart at 3 sigma -> line ARL    7.91; Sidak limits for a line ARL of 370.4: k = 4.037 sigma per chart (per-chart ARL 18,495)
+    K = 500: every chart at 3 sigma -> line ARL    1.35; Sidak limits for a line ARL of 370.4: k = 4.548 sigma per chart (per-chart ARL 184,950)
+  estimated limits: each machine's own Phase I of m = 25 subgroups, sigma from Rbar/d2, limits at the Sidak k
+    K =   1 (20,000 simulated lines): median   310.0; 10th-90th   127.6-   839.1; below 370.4 0.589; below 200 0.268; below 100 0.051
+      mean per-chart false-alarm ratio to nominal with sigma_hat error only 1.25; with centre-line error only 1.21
+      share of lines with a false-alarm rate between 2 and 3.5 times the design: 0.174; at least 2 times: 0.234; above the design rate: 0.589
+      mean per-chart false-alarm probability 4.03e-03 against nominal 2.70e-03 (ratio 1.49); the narrowest chart carries a median 100.0% of the line's false-alarm probability
+    K =  10 (4,000 simulated lines): median   193.6; 10th-90th   125.0-   309.3; below 370.4 0.959; below 200 0.540; below 100 0.030
+      share of lines with a false-alarm rate between 2 and 3.5 times the design: 0.405; at least 2 times: 0.446; above the design rate: 0.959
+      mean per-chart false-alarm probability 5.47e-04 against nominal 2.70e-04 (ratio 2.02); the narrowest chart carries a median 29.5% of the line's false-alarm probability, the narrowest 10% of charts 29.5%
+    K =  50 (2,000 simulated lines): median   143.5; 10th-90th   109.5-   187.1; below 370.4 1.000; below 200 0.944; below 100 0.045
+      mean per-chart false-alarm ratio to nominal with sigma_hat error only 2.00; with centre-line error only 1.39
+      share of lines with a false-alarm rate between 2 and 3.5 times the design: 0.817; at least 2 times: 0.891; above the design rate: 1.000
+      mean per-chart false-alarm probability 1.44e-04 against nominal 5.41e-05 (ratio 2.66); the narrowest chart carries a median 13.2% of the line's false-alarm probability, the narrowest 10% of charts 42.1%
+    K = 500 (400 simulated lines): median    90.8; 10th-90th    79.6-   102.4; below 370.4 1.000; below 200 1.000; below 100 0.833
+      share of lines with a false-alarm rate between 2 and 3.5 times the design: 0.052; at least 2 times: 1.000; above the design rate: 1.000
+      mean per-chart false-alarm probability 2.23e-05 against nominal 5.41e-06 (ratio 4.12); the narrowest chart carries a median 4.6% of the line's false-alarm probability, the narrowest 10% of charts 54.7%
+  K = 50 machines, Sidak limits, each machine's own Phase I of m subgroups (400 simulated lines per m):
+    m =   25 subgroups per machine: median   148.4; 10th-90th   108.2-   193.4; below 370.4 1.000; below 200 0.925; below 100 0.040
+    m =  100 subgroups per machine: median   283.0; 10th-90th   251.0-   319.9; below 370.4 1.000; below 200 0.000; below 100 0.000
+    m =  400 subgroups per machine: median   347.3; 10th-90th   325.9-   368.0; below 370.4 0.920; below 200 0.000; below 100 0.000
+    m = 1000 subgroups per machine: median   361.6; 10th-90th   348.8-   374.6; below 370.4 0.802; below 200 0.000; below 100 0.000
+  pooled Phase I when the K = 50 machines are identical: sigma from all 50 x 25 subgroups, machine means own:
+    K =  50, pooled sigma, identical machines: median   266.2; 10th-90th   210.5-   339.1; below 370.4 0.965; below 200 0.062; below 100 0.000
+  pooled sigma when the machines differ: true sigma_k lognormal with log-SD 0.10 around the pooled value:
+    K =  50, pooled sigma, machines differ: median   114.8; 10th-90th    84.1-   151.4; below 370.4 1.000; below 200 0.999; below 100 0.281
+    a machine whose sigma is 10% above the pooled value has limits at 3.670 of its own sigma: ARL 4,127 against the per-chart target 18,495
+
+==============================================================================
+3. SHORT RUNS AND HIGH MIX: A HANDFUL OF UNITS AFTER A CHANGEOVER
+==============================================================================
+  fixed limits from the first m individual values after a changeover, sigma from MRbar/d2(2); 100,000 runs each:
+    m =  5, MRbar: median   120.1; 10th-90th     5.4-178185.8; below 370.4 0.609; below 200 0.551; below 100 0.480
+      share of runs whose conditional false-alarm probability exceeds 1%: 0.480; probability of at least one false alarm in the next 50 units 0.453 (known limits 0.126)
+    m = 10, MRbar: median   202.9; 10th-90th    14.5- 19534.8; below 370.4 0.584; below 200 0.498; below 100 0.390
+      share of runs whose conditional false-alarm probability exceeds 1%: 0.390; probability of at least one false alarm in the next 50 units 0.364 (known limits 0.126)
+    m = 20, MRbar: median   265.6; 10th-90th    33.5-  5702.2; below 370.4 0.565; below 200 0.441; below 100 0.294
+      share of runs whose conditional false-alarm probability exceeds 1%: 0.294; probability of at least one false alarm in the next 50 units 0.285 (known limits 0.126)
+    m = 30, MRbar: median   296.2; 10th-90th    50.2-  3327.4; below 370.4 0.554; below 200 0.400; below 100 0.231
+      share of runs whose conditional false-alarm probability exceeds 1%: 0.231; probability of at least one false alarm in the next 50 units 0.244 (known limits 0.126)
+  self-starting (Q) chart: unconditionally the Q statistics are independent standard normals, so the in-control ARL
+  is exactly 370.4. Conditionally on the first m values, nested simulation: 300 starting samples x 2,000 continuations each:
+    m =  5: self-starting conditional ARL mean 376.4, median 377.5, 10th-90th 314.9-445.2; SD across starts 54.9 of which simulation noise 8.3 (noise-corrected SD 54.3); share below 370.4 0.450
+            fixed MRbar limits from the same 5 values: median 168.2, 10th-90th 6.6-290006.0
+    m = 10: self-starting conditional ARL mean 369.9, median 375.2, 10th-90th 282.9-448.3; SD across starts 64.0 of which simulation noise 8.2 (noise-corrected SD 63.4); share below 370.4 0.470
+            fixed MRbar limits from the same 10 values: median 187.7, 10th-90th 15.3-22124.9
+    m = 20: self-starting conditional ARL mean 364.6, median 372.4, 10th-90th 265.7-454.7; SD across starts 77.2 of which simulation noise 8.0 (noise-corrected SD 76.7); share below 370.4 0.493
+            fixed MRbar limits from the same 20 values: median 227.2, 10th-90th 29.1-4497.9
+  a shift the self-starting chart does not catch at once is absorbed into its estimates. Shift of delta (in sigma)
+  from unit 21 onwards; 20,000 runs; counted only for runs with no signal before the shift:
+    delta = 1: self-starting, P(signal within 50 units of the shift) 0.149; P(no signal within 200 units) 0.660; P(no signal within 380 units) 0.457 (19,022 runs without a signal before the shift)
+               fixed limits from the 20 in-control units (exact given each of 20,000 Phase I samples): P(signal within 50) 0.624; P(no signal within 200) 0.166
+    delta = 2: self-starting, P(signal within 50 units of the shift) 0.254; P(no signal within 200 units) 0.699; P(no signal within 380 units) 0.589 (19,099 runs without a signal before the shift)
+               fixed limits from the 20 in-control units (exact given each of 20,000 Phase I samples): P(signal within 50) 0.941; P(no signal within 200) 0.013
+  why: after k shifted points the running estimates (from 20 in-control points plus k shifted ones) have expected
+  mean delta k/(20+k) and variance about 1 + delta^2 * 20 k/(20+k)^2, so the shift is absorbed:
+    delta = 1: k =  10: mean 0.33, SD 1.11, next shifted point 0.60 SD from the mean; upper limit 3.02 true SD above the shifted mean, signal probability 0.00127; k =  50: mean 0.71, SD 1.10, next shifted point 0.26 SD from the mean; upper limit 3.15 true SD above the shifted mean, signal probability 0.00090; k = 100: mean 0.83, SD 1.07, next shifted point 0.16 SD from the mean; upper limit 3.12 true SD above the shifted mean, signal probability 0.00119
+    delta = 2: k =  10: mean 0.67, SD 1.37, next shifted point 0.97 SD from the mean; upper limit 3.25 true SD above the shifted mean, signal probability 0.00058; k =  50: mean 1.43, SD 1.35, next shifted point 0.42 SD from the mean; upper limit 3.65 true SD above the shifted mean, signal probability 0.00013; k = 100: mean 1.67, SD 1.25, next shifted point 0.27 SD from the mean; upper limit 3.50 true SD above the shifted mean, signal probability 0.00024
+  high mix: P products, m = 5 units each, sigma pooled across products (nu = P(m - 1)), product means own:
+    P =  1 products (nu =   4): median   161.1; 10th-90th     7.3- 43805.3; below 370.4 0.595; below 200 0.526; below 100 0.441
+    P =  4 products (nu =  16): median   196.0; 10th-90th    28.8-  2387.0; below 370.4 0.643; below 200 0.504; below 100 0.339
+    P = 10 products (nu =  40): median   205.1; 10th-90th    48.9-  1013.0; below 370.4 0.689; below 200 0.491; below 100 0.264
+    P = 40 products (nu = 160): median   221.1; 10th-90th    72.7-   541.0; below 370.4 0.766; below 200 0.447; below 100 0.171
+    a product whose sigma is 0.8 times the pooled value (estimates exact): limits at 3.75 of its own sigma, ARL 5,655.0
+    a product whose sigma is 0.9 times the pooled value (estimates exact): limits at 3.33 of its own sigma, ARL 1,165.3
+    a product whose sigma is 1.1 times the pooled value (estimates exact): limits at 2.73 of its own sigma, ARL 156.6
+    a product whose sigma is 1.2 times the pooled value (estimates exact): limits at 2.50 of its own sigma, ARL 80.5
+
+==============================================================================
+4. STATIONS IN SERIES: THE CAUSE-SELECTING CHART WITH AN ESTIMATED REGRESSION
+==============================================================================
+  stage 1: Y1 ~ N(0, 1); stage 2: Y2 = 0.8 Y1 + e, e ~ N(0, 0.6^2), so Y2 has standard deviation 1.00; correlation 0.80
+  a fault at stage 1 shifts the mean of Y1 by delta1; stage 2 is unchanged.
+  known parameters:
+    delta1 = 0: chart of Y2 itself ARL   370.40; cause-selecting chart of the residual ARL 370.40
+    delta1 = 1: chart of Y2 itself ARL    71.55; cause-selecting chart of the residual ARL 370.40
+    delta1 = 2: chart of Y2 itself ARL    12.38; cause-selecting chart of the residual ARL 370.40
+    delta1 = 3: chart of Y2 itself ARL     3.65; cause-selecting chart of the residual ARL 370.40
+  estimated regression from m = 25 Phase I pairs; residual chart limits at +-3 sigma_e_hat; 100,000 charts:
+    slope error beta_hat - beta: SD 0.1278; sigma_e_hat/sigma_e SD 0.1466
+    delta1 = 0: median   225.8; 10th-90th    47.3-  1642.0; below 370.4 0.636; below 200 0.465; below 100 0.265
+    delta1 = 1: median   201.0; 10th-90th    40.6-  1499.3; below 370.4 0.663; below 200 0.499; below 100 0.300
+      share of charts that blame stage 2 at least twice as often as when stage 1 is in control (per-point rate ratio >= 2): 0.042
+    delta1 = 2: median   155.0; 10th-90th    27.8-  1236.0; below 370.4 0.715; below 200 0.569; below 100 0.380
+      share of charts that blame stage 2 at least twice as often as when stage 1 is in control (per-point rate ratio >= 2): 0.257
+    delta1 = 3: median   114.0; 10th-90th    17.2-   999.7; below 370.4 0.764; below 200 0.636; below 100 0.466
+      share of charts that blame stage 2 at least twice as often as when stage 1 is in control (per-point rate ratio >= 2): 0.432
+    for comparison, individuals chart of Y1, m = 25, S/c4: median   303.1; 10th-90th    61.1-  2269.5; below 370.4 0.556; below 200 0.380; below 100 0.197
+  estimated regression from m = 50 Phase I pairs; residual chart limits at +-3 sigma_e_hat; 100,000 charts:
+    slope error beta_hat - beta: SD 0.0872; sigma_e_hat/sigma_e SD 0.1019
+    delta1 = 0: median   287.5; 10th-90th    90.1-  1120.6; below 370.4 0.600; below 200 0.352; below 100 0.123
+    delta1 = 1: median   267.8; 10th-90th    82.0-  1064.1; below 370.4 0.625; below 200 0.382; below 100 0.146
+      share of charts that blame stage 2 at least twice as often as when stage 1 is in control (per-point rate ratio >= 2): 0.006
+    delta1 = 2: median   226.3; 10th-90th    63.8-   938.4; below 370.4 0.677; below 200 0.452; below 100 0.206
+      share of charts that blame stage 2 at least twice as often as when stage 1 is in control (per-point rate ratio >= 2): 0.128
+    delta1 = 3: median   184.5; 10th-90th    45.0-   815.6; below 370.4 0.729; below 200 0.529; below 100 0.289
+      share of charts that blame stage 2 at least twice as often as when stage 1 is in control (per-point rate ratio >= 2): 0.292
+  estimated regression from m = 100 Phase I pairs; residual chart limits at +-3 sigma_e_hat; 100,000 charts:
+    slope error beta_hat - beta: SD 0.0611; sigma_e_hat/sigma_e SD 0.0715
+    delta1 = 0: median   324.8; 10th-90th   139.3-   834.4; below 370.4 0.574; below 200 0.236; below 100 0.034
+    delta1 = 1: median   311.8; 10th-90th   132.2-   808.4; below 370.4 0.596; below 200 0.259; below 100 0.041
+      share of charts that blame stage 2 at least twice as often as when stage 1 is in control (per-point rate ratio >= 2): 0.000
+    delta1 = 2: median   281.5; 10th-90th   114.2-   748.7; below 370.4 0.645; below 200 0.318; below 100 0.070
+      share of charts that blame stage 2 at least twice as often as when stage 1 is in control (per-point rate ratio >= 2): 0.038
+    delta1 = 3: median   246.8; 10th-90th    90.4-   683.9; below 370.4 0.698; below 200 0.394; below 100 0.124
+      share of charts that blame stage 2 at least twice as often as when stage 1 is in control (per-point rate ratio >= 2): 0.152
+
+==============================================================================
+5. MANY SENSORS: HOTELLING'S T^2 WITH AN ESTIMATED MEAN VECTOR AND COVARIANCE MATRIX
+==============================================================================
+  individual observations in p dimensions; Phase I of m observations gives x_bar and S; Phase II statistic
+  (x - x_bar)' S^-1 (x - x_bar). Limits: the known-parameter chi-square limit, or the F-based limit
+  p(m+1)(m-1)/(m(m-p)) F(p, m-p) that is right on average over Phase I samples. Conditional false-alarm
+  probability of each chart by Imhof's method; 400 Phase I samples per cell (invariance: Sigma = I wlog).
+  check: Imhof's method with known parameters, p = 10, gives 0.0026998 (exact 0.0026998)
+    p =  2, m =   50: chi-square limit  11.83 -> median   231.3 (10th-90th    82.0-  633.2, below 370.4 289/400); F limit  13.97 -> median   586.6 (10th-90th   176.3-  2002.0, below 370.4 124/400)
+    p =  2, m =  100: chi-square limit  11.83 -> median   271.3 (10th-90th   134.1-  537.2, below 370.4 283/400); F limit  12.83 -> median   430.2 (10th-90th   198.9-   887.1, below 370.4 165/400)
+    p =  2, m =  250: chi-square limit  11.83 -> median   335.6 (10th-90th   202.1-  546.9, below 370.4 241/400); F limit  12.21 -> median   404.9 (10th-90th   239.5-   670.8, below 370.4 167/400)
+    p =  2, m = 1000: chi-square limit  11.83 -> median   360.0 (10th-90th   288.1-  461.1, below 370.4 220/400); F limit  11.92 -> median   377.2 (10th-90th   301.3-   484.0, below 370.4 186/400)
+    p =  5, m =   50: chi-square limit  18.21 -> median    96.6 (10th-90th    44.0-  231.8, below 370.4 382/400); F limit  23.99 -> median   578.1 (10th-90th   186.6-  1986.1, below 370.4 127/400)
+    p =  5, m =  100: chi-square limit  18.21 -> median   177.7 (10th-90th    98.5-  328.1, below 370.4 375/400); F limit  20.77 -> median   448.5 (10th-90th   225.6-   896.3, below 370.4 152/400)
+    p =  5, m =  250: chi-square limit  18.21 -> median   265.2 (10th-90th   168.4-  390.2, below 370.4 343/400); F limit  19.16 -> median   387.4 (10th-90th   239.9-   581.5, below 370.4 179/400)
+    p =  5, m = 1000: chi-square limit  18.21 -> median   342.6 (10th-90th   277.0-  415.8, below 370.4 289/400); F limit  18.44 -> median   377.4 (10th-90th   304.3-   459.4, below 370.4 180/400)
+    p = 10, m =   50: chi-square limit  26.90 -> median    26.5 (10th-90th    15.5-   49.0, below 370.4 400/400); F limit  42.51 -> median   543.5 (10th-90th   193.9-  1727.3, below 370.4 119/400)
+    p = 10, m =  100: chi-square limit  26.90 -> median    78.6 (10th-90th    48.4-  131.4, below 370.4 400/400); F limit  33.19 -> median   411.3 (10th-90th   213.4-   835.9, below 370.4 175/400)
+    p = 10, m =  250: chi-square limit  26.90 -> median   184.9 (10th-90th   133.4-  270.4, below 370.4 396/400); F limit  29.15 -> median   377.6 (10th-90th   262.4-   575.1, below 370.4 186/400)
+    p = 10, m = 1000: chi-square limit  26.90 -> median   307.5 (10th-90th   259.4-  370.1, below 370.4 360/400); F limit  27.43 -> median   370.7 (10th-90th   311.3-   448.6, below 370.4 198/400)
+    p = 20, m =   50: chi-square limit  42.08 -> median     3.7 (10th-90th     2.7-    5.3, below 370.4 400/400); F limit 102.41 -> median   635.3 (10th-90th   172.3-  2724.4, below 370.4 115/400)
+    p = 20, m =  100: chi-square limit  42.08 -> median    19.2 (10th-90th    13.6-   28.3, below 370.4 400/400); F limit  60.91 -> median   422.5 (10th-90th   217.2-   866.3, below 370.4 162/400)
+    p = 20, m =  250: chi-square limit  42.08 -> median    90.8 (10th-90th    66.8-  123.1, below 370.4 400/400); F limit  48.17 -> median   380.1 (10th-90th   258.8-   555.2, below 370.4 178/400)
+    p = 20, m = 1000: chi-square limit  42.08 -> median   252.5 (10th-90th   212.5-  294.1, below 370.4 399/400); F limit  43.47 -> median   374.3 (10th-90th   312.1-   439.1, below 370.4 188/400)
+    p = 50, m =  100: chi-square limit  82.32 -> median     1.3 (10th-90th     1.3-    1.4, below 370.4 400/400); F limit 222.79 -> median   487.0 (10th-90th   190.8-  1237.6, below 370.4 136/400)
+    p = 50, m =  250: chi-square limit  82.32 -> median    10.4 (10th-90th     8.9-   12.6, below 370.4 400/400); F limit 111.74 -> median   379.3 (10th-90th   265.1-   556.0, below 370.4 190/400)
+    p = 50, m = 1000: chi-square limit  82.32 -> median   118.2 (10th-90th   103.9-  138.2, below 370.4 400/400); F limit  88.22 -> median   365.6 (10th-90th   315.1-   439.1, below 370.4 213/400)
+  Imhof evaluations on which QUADPACK warned and the value was recomputed: 1; largest disagreement between split points 1.5e-10
