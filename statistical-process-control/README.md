@@ -17,7 +17,7 @@ cd part1
 python history_numbers.py > output.txt   # about a minute; no downloads
 python figures.py
 cd ../part2
-python mechanism_numbers.py > output.txt  # about four minutes; no downloads; writes figure_data.json
+python mechanism_numbers.py > output.txt  # about five minutes; no downloads; writes figure_data.json
 python figures.py
 ```
 

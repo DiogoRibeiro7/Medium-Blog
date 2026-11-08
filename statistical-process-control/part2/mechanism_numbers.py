@@ -134,7 +134,9 @@ def aarl_truncated(m: int, nu: int, s_max: float, k: float = 3.0) -> float:
     dens = lambda s: stats.chi2.pdf(nu * (s / scale) ** 2, nu) * 2 * nu * s / scale ** 2  # noqa: E731
 
     def g(s: float) -> float:
-        inv_p = sum(w / float(p_cond(sd_z * x, s, k)) for x, w in zip(nodes, weights)) / math.sqrt(2 * math.pi)
+        # E_z[1/p(z, s)] by adaptive quadrature over z ~ N(0, 1/m); 1/p is sharply peaked at z = 0 when s is large
+        inner = lambda z: stats.norm.pdf(z, scale=sd_z) / float(p_cond(z, s, k))  # noqa: E731
+        inv_p, _ = integrate.quad(inner, -12 * sd_z, 12 * sd_z, points=[0.0], limit=400, epsrel=1e-10)
         return inv_p * dens(s)
 
     val, _ = integrate.quad(g, 0, s_max, limit=500, epsrel=1e-10)
@@ -191,7 +193,14 @@ def section_one_chart() -> None:
     print("  divergence condition: 1/p grows like exp(4.5 s^2) while the density of s falls like exp(-nu c4^2 s^2 / 2);"
           " the mean is finite only if nu > 9 / c4(nu+1)^2:")
     for nu_i in (8, 9, 10, 11):
-        print(f"    nu = {nu_i:2d}: 9 / c4^2 = {9 / c4(nu_i + 1) ** 2:.3f} -> {'finite' if nu_i > 9 / c4(nu_i + 1) ** 2 else 'infinite'}")
+        print(f"    nu = {nu_i:2d}: nu c4^2 = {nu_i * c4(nu_i + 1) ** 2:.3f}, 9 / c4^2 = {9 / c4(nu_i + 1) ** 2:.3f} ->"
+              f" {'finite' if nu_i * c4(nu_i + 1) ** 2 > 9 else 'infinite'}")
+    print("  moving-range estimate MRbar/d2(2) of m individual values: the sum of the m - 1 absolute moving ranges is at least")
+    print("  |L| for the alternating-sign sum L ~ N(0, (4m - 6) sigma^2), and at most the largest of 2^(m-1) such sums, so s")
+    print("  has a normal-type tail with variance v = (4m - 6)/((m - 1)^2 d2(2)^2); the mean ARL is finite iff 4.5 v < 1/2:")
+    for m_i in (25, 28, 29, 30):
+        v = (4 * m_i - 6) / ((m_i - 1) ** 2 * d2(2) ** 2)
+        print(f"    m = {m_i}: v = {v:.4f} against 1/9 = {1 / 9:.4f} -> {'finite' if v < 1 / 9 else 'infinite'}")
 
 
 # ---------------------------------------------------------------------------------------------------
@@ -239,10 +248,24 @@ def section_parallel() -> None:
         ntop = max(1, K // 10)
         top10 = np.sort(pk, axis=1)[:, -ntop:].sum(axis=1) / pk.sum(axis=1)
         summary[K] = describe(f"K = {K:3d} ({L:,} simulated lines)", carl, with_mean=False)
+        if K in (1, 50):
+            pk_sig = p_cond(np.zeros_like(sig), sig, k)
+            pk_mu = p_cond(math.sqrt(5) * mu, np.ones_like(mu), k)
+            print(f"      mean per-chart false-alarm ratio to nominal with sigma_hat error only {pk_sig.mean() / ep_nominal:.2f};"
+                  f" with centre-line error only {pk_mu.mean() / ep_nominal:.2f}")
+        lines_2x = np.mean((carl <= ARL0 / 2) & (carl >= ARL0 / 3.5))
+        print(f"      share of lines with a false-alarm rate between 2 and 3.5 times the design: {lines_2x:.3f};"
+              f" at least 2 times: {np.mean(carl <= ARL0 / 2):.3f}; above the design rate: {np.mean(carl < ARL0):.3f}")
         FIG.setdefault("parallel", {})[str(K)] = np.percentile(carl, QGRID).tolist()
         print(f"      mean per-chart false-alarm probability {pk.mean():.2e} against nominal {ep_nominal:.2e} (ratio {pk.mean() / ep_nominal:.2f});"
               f" the narrowest chart carries a median {np.median(top1):.1%} of the line's false-alarm probability"
               + (f", the narrowest 10% of charts {np.median(top10):.1%}" if K >= 10 else ""))
+    print("  K = 50 machines, Sidak limits, each machine's own Phase I of m subgroups (400 simulated lines per m):")
+    rng_m = RNG["spare1"]
+    for m_ph in (25, 100, 400, 1000):
+        mu_m, sig_m = phase1_xbar(rng_m, 400 * 50, m_ph, 5)
+        pk_m = p_cond(math.sqrt(5) * mu_m, sig_m, sidak_k(50)).reshape(400, 50)
+        describe(f"m = {m_ph:4d} subgroups per machine", 1 / (1 - np.prod(1 - pk_m, axis=1)), with_mean=False)
     print("  pooled Phase I when the K = 50 machines are identical: sigma from all 50 x 25 subgroups, machine means own:")
     rng = RNG["parallel_pool"]
     K, L = 50, 2_000
@@ -374,7 +397,7 @@ def section_short_runs() -> None:
         print(f"    delta = {delta:.0f}: self-starting, P(signal within 50 units of the shift) {np.mean(after < 50):.3f};"
               f" P(no signal within 200 units) {np.mean(after >= 200):.3f}; P(no signal within 380 units) {np.mean(after >= 380):.3f}"
               f" ({ok.sum():,} runs without a signal before the shift)")
-        print(f"               fixed limits from the 20 in-control units: P(signal within 50) {p50.mean():.3f};"
+        print(f"               fixed limits from the 20 in-control units (exact given each of 20,000 Phase I samples): P(signal within 50) {p50.mean():.3f};"
               f" P(no signal within 200) {(1 - p200).mean():.3f}")
     print("  why: after k shifted points the running estimates (from 20 in-control points plus k shifted ones) have expected")
     print("  mean delta k/(20+k) and variance about 1 + delta^2 * 20 k/(20+k)^2, so the shift is absorbed:")
@@ -384,7 +407,12 @@ def section_short_runs() -> None:
             mean_k = delta * kk / (20 + kk)
             var_k = 1 + delta ** 2 * 20 * kk / (20 + kk) ** 2
             z_next = (delta - mean_k) / math.sqrt(var_k)
-            cells.append(f"k = {kk:3d}: mean {mean_k:.2f}, SD {math.sqrt(var_k):.2f}, next shifted point sits {z_next:.2f} SD from the mean")
+            r = 20 + kk + 1
+            half = q_threshold(r) * math.sqrt(var_k) * math.sqrt(r / (r - 1))
+            up, lo = mean_k + half - delta, mean_k - half - delta
+            p_sig = PHIBAR(up) + PHI(lo)
+            cells.append(f"k = {kk:3d}: mean {mean_k:.2f}, SD {math.sqrt(var_k):.2f}, next shifted point {z_next:.2f} SD from the"
+                         f" mean; upper limit {up:.2f} true SD above the shifted mean, signal probability {p_sig:.5f}")
         print(f"    delta = {delta:.0f}: " + "; ".join(cells))
     print("  high mix: P products, m = 5 units each, sigma pooled across products (nu = P(m - 1)), product means own:")
     rng = RNG["short_pool"]
@@ -527,8 +555,8 @@ def section_t2() -> None:
             results[(p, m)] = (qc, qf, float(np.mean(carl_c < ARL0)), float(np.mean(carl_f < ARL0)))
             FIG.setdefault("t2", []).append({"p": p, "m": m, "chi": qc, "f": qf})
             print(f"    p = {p:2d}, m = {m:4d}: chi-square limit {chi:6.2f} -> median {qc[1]:7.1f} (10th-90th {qc[0]:7.1f}-{qc[2]:7.1f},"
-                  f" below 370.4 {np.mean(carl_c < ARL0):.2f}); F limit {flim:6.2f} -> median {qf[1]:7.1f}"
-                  f" (10th-90th {qf[0]:7.1f}-{qf[2]:8.1f}, below 370.4 {np.mean(carl_f < ARL0):.2f})")
+                  f" below 370.4 {int(np.sum(carl_c < ARL0))}/400); F limit {flim:6.2f} -> median {qf[1]:7.1f}"
+                  f" (10th-90th {qf[0]:7.1f}-{qf[2]:8.1f}, below 370.4 {int(np.sum(carl_f < ARL0))}/400)")
     print(f"  Imhof evaluations on which QUADPACK warned and the value was recomputed: {IMHOF_FALLBACKS[0]};"
           f" largest disagreement between split points {IMHOF_FALLBACKS[1]:.1e}")
     return results

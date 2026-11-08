@@ -77,7 +77,7 @@ def log_axis(ax, which="x"):
 def figure_one_chart() -> None:
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(11.6, 5.2), gridspec_kw={"width_ratios": [1.15, 1]})
     ts = np.exp(np.linspace(math.log(10), math.log(1e5), 70))
-    cases = [("X-bar, 25 subgroups of 5, pooled S", 25, 5, 100, BLUE),
+    cases = [("X̄ chart, 25 subgroups of 5, pooled S", 25, 5, 100, BLUE),
              ("individuals, 10 values, S", 10, 1, 9, ORANGE),
              ("individuals, 50 values, S", 50, 1, 49, AQUA)]
     for name, m, n, nu, col in cases:
@@ -98,9 +98,9 @@ def figure_one_chart() -> None:
         vals = [aarl_truncated(m, m - 1, s) for s in smax]
         ax2.plot(smax, vals, color=col, lw=2.2, label=f"{m} values ({m - 1} degrees of freedom)")
     ax2.set_yscale("log")
-    ax2.set_xlabel("upper limit s_max of sigma_hat / sigma in the integral")
+    ax2.set_xlabel("upper limit s_max of σ̂/σ in the integral")
     ax2.set_ylabel("partial mean of the conditional ARL (log scale)")
-    ax2.set_title("The mean exists only above 9 degrees of freedom")
+    ax2.set_title("The mean exists only from 10 degrees of freedom")
     ax2.legend(loc="upper left", fontsize=8.5, title="individuals chart, sigma from S", title_fontsize=8.5,
                alignment="left")
     fig.suptitle("One chart: a median below 370, and a mean that can be infinite",
@@ -119,7 +119,7 @@ def figure_parallel() -> None:
         ax.plot(xs, q, color=col, lw=2.4 if K != "1" else 1.8,
                 label=f"{K} machine{'s' if K != '1' else ''}: median {np.interp(0.5, q, xs):.0f}")
     ax.axvline(ARL0, color=INK, lw=0.9, alpha=0.6)
-    ax.annotate("370.4: the line's target", (ARL0, 0.03), xytext=(6, 0), textcoords="offset points",
+    ax.annotate("370.4: the line's target", (ARL0, 0.55), xytext=(6, 0), textcoords="offset points",
                 fontsize=9, color=INK2)
     ax.set_xscale("log")
     log_axis(ax, "x")
@@ -128,7 +128,7 @@ def figure_parallel() -> None:
     ax.set_xlabel("conditional in-control ARL of the whole line (log scale)")
     ax.set_ylabel("share of simulated lines with a smaller ARL")
     ax.set_title("Each machine's limits from its own 25 subgroups, widened for K")
-    ax.legend(loc="lower right", title="line of K machines, X-bar charts with Sidak limits", title_fontsize=9,
+    ax.legend(loc="lower right", title="line of K machines, X̄ charts with Šidák limits", title_fontsize=9,
               alignment="left", fontsize=9)
     fig.subplots_adjust(bottom=0.13)
     credit(fig)
@@ -167,7 +167,7 @@ def figure_short_runs() -> None:
         ax2.plot(u, d["q"], color=BLUE, lw=2.2, ls=ls, label=f"self-starting, shift of {delta} sigma")
     ax2.set_xlim(0, 380)
     ax2.set_ylim(0, 1)
-    ax2.set_xlabel("units since a sustained shift that starts at unit 21")
+    ax2.set_xlabel("units since a sustained shift that starts at unit 21 (runs with no earlier signal)")
     ax2.set_ylabel("share of runs that have signalled")
     ax2.set_title("After a shift it does not catch at once")
     ax2.legend(loc="upper right", bbox_to_anchor=(1.0, 0.8), fontsize=8.5)
@@ -234,7 +234,7 @@ def figure_t2() -> None:
         ax.set_title(title)
     ax1.set_ylabel("conditional in-control ARL (log scale)")
     ax1.legend(loc="lower right", fontsize=8.5)
-    fig.suptitle("Hotelling's T^2: every sensor added needs more Phase I data (median and 10th-90th percentile)",
+    fig.suptitle("Hotelling's T²: every sensor added needs more Phase I data (median and 10th–90th percentile)",
                  x=0.01, ha="left", fontsize=12, fontweight="bold", color=INK)
     fig.subplots_adjust(top=0.86, bottom=0.14, wspace=0.08)
     credit(fig)
