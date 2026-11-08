@@ -1,0 +1,361 @@
+geo,cf,eur_bn,pct_gdp_years,method,rho_variant
+AT,no_fragmentation,-11.2259,-3.1527,market_effect,pooled
+AT,safe_asset,3.0333,0.8962,market_effect,pooled
+BE,no_fragmentation,-8.2062,-1.8629,market_effect,pooled
+BE,safe_asset,14.0568,3.2910,market_effect,pooled
+CY,no_fragmentation,1.6038,7.7850,market_effect,pooled
+CY,safe_asset,2.5569,12.4774,market_effect,pooled
+DE,no_fragmentation,-139.2955,-4.4010,market_effect,pooled
+DE,safe_asset,-27.5694,-0.8401,market_effect,pooled
+EL,no_fragmentation,143.1884,77.6654,market_effect,pooled
+EL,safe_asset,159.7345,86.6311,market_effect,pooled
+ES,no_fragmentation,63.3451,5.5433,market_effect,pooled
+ES,safe_asset,117.1947,10.2873,market_effect,pooled
+FI,no_fragmentation,-6.9271,-3.1367,market_effect,pooled
+FI,safe_asset,-0.0140,0.0112,market_effect,pooled
+FR,no_fragmentation,-76.4161,-3.3661,market_effect,pooled
+FR,safe_asset,32.2490,1.4398,market_effect,pooled
+IE,no_fragmentation,20.8938,8.8840,market_effect,pooled
+IE,safe_asset,31.0697,13.1128,market_effect,pooled
+IT,no_fragmentation,98.5008,5.7118,market_effect,pooled
+IT,safe_asset,211.1538,12.2818,market_effect,pooled
+NL,no_fragmentation,-20.9868,-2.8661,market_effect,pooled
+NL,safe_asset,0.7475,0.1218,market_effect,pooled
+PT,no_fragmentation,41.4493,21.8910,market_effect,pooled
+PT,safe_asset,53.0237,28.0301,market_effect,pooled
+AT,no_fragmentation,-4.2299,-1.6703,actual_effect,pooled
+AT,safe_asset,10.0294,2.3786,actual_effect,pooled
+BE,no_fragmentation,4.7156,0.2222,actual_effect,pooled
+BE,safe_asset,26.9786,5.3761,actual_effect,pooled
+CY,no_fragmentation,-3.2796,-14.7501,actual_effect,pooled
+CY,safe_asset,-2.3264,-10.0577,actual_effect,pooled
+DE,no_fragmentation,-115.9259,-4.2243,actual_effect,pooled
+DE,safe_asset,-4.1998,-0.6633,actual_effect,pooled
+EL,no_fragmentation,-107.6979,-57.8004,actual_effect,pooled
+EL,safe_asset,-91.1518,-48.8347,actual_effect,pooled
+ES,no_fragmentation,31.3297,2.3303,actual_effect,pooled
+ES,safe_asset,85.1794,7.0743,actual_effect,pooled
+FI,no_fragmentation,-8.6650,-4.1202,actual_effect,pooled
+FI,safe_asset,-1.7519,-0.9723,actual_effect,pooled
+FR,no_fragmentation,-60.0703,-3.0767,actual_effect,pooled
+FR,safe_asset,48.5948,1.7293,actual_effect,pooled
+IE,no_fragmentation,5.1300,1.7750,actual_effect,pooled
+IE,safe_asset,15.3058,6.0038,actual_effect,pooled
+IT,no_fragmentation,18.5421,0.8126,actual_effect,pooled
+IT,safe_asset,131.1952,7.3825,actual_effect,pooled
+NL,no_fragmentation,-23.0547,-3.5177,actual_effect,pooled
+NL,safe_asset,-1.3204,-0.5298,actual_effect,pooled
+PT,no_fragmentation,-1.2794,-0.3320,actual_effect,pooled
+PT,safe_asset,10.2949,5.8071,actual_effect,pooled
+AT,no_fragmentation,-4.5563,-1.4226,market_effect_to_2014,pooled
+AT,safe_asset,1.9242,0.6084,market_effect_to_2014,pooled
+BE,no_fragmentation,-2.9638,-0.7499,market_effect_to_2014,pooled
+BE,safe_asset,6.9915,1.7909,market_effect_to_2014,pooled
+CY,no_fragmentation,0.4902,2.7208,market_effect_to_2014,pooled
+CY,safe_asset,0.9000,4.9420,market_effect_to_2014,pooled
+DE,no_fragmentation,-62.3622,-2.1829,market_effect_to_2014,pooled
+DE,safe_asset,-8.1182,-0.2793,market_effect_to_2014,pooled
+EL,no_fragmentation,65.5533,35.5177,market_effect_to_2014,pooled
+EL,safe_asset,73.5836,39.8602,market_effect_to_2014,pooled
+ES,no_fragmentation,23.4342,2.2582,market_effect_to_2014,pooled
+ES,safe_asset,45.6943,4.4021,market_effect_to_2014,pooled
+FI,no_fragmentation,-2.6064,-1.2883,market_effect_to_2014,pooled
+FI,safe_asset,0.2274,0.1145,market_effect_to_2014,pooled
+FR,no_fragmentation,-31.1922,-1.4790,market_effect_to_2014,pooled
+FR,safe_asset,16.1998,0.7701,market_effect_to_2014,pooled
+IE,no_fragmentation,10.6728,5.8655,market_effect_to_2014,pooled
+IE,safe_asset,15.5663,8.5343,market_effect_to_2014,pooled
+IT,no_fragmentation,38.4439,2.3585,market_effect_to_2014,pooled
+IT,safe_asset,89.4310,5.4852,market_effect_to_2014,pooled
+NL,no_fragmentation,-9.4835,-1.4251,market_effect_to_2014,pooled
+NL,safe_asset,1.0564,0.1605,market_effect_to_2014,pooled
+PT,no_fragmentation,17.8199,10.3711,market_effect_to_2014,pooled
+PT,safe_asset,23.0605,13.4223,market_effect_to_2014,pooled
+AT,no_fragmentation,-10.4747,-2.8712,market_effect,country
+AT,safe_asset,2.8968,0.8312,market_effect,country
+BE,no_fragmentation,-8.2062,-1.8629,market_effect,country
+BE,safe_asset,14.0568,3.2910,market_effect,country
+CY,no_fragmentation,1.6038,7.7850,market_effect,country
+CY,safe_asset,2.5569,12.4774,market_effect,country
+DE,no_fragmentation,-142.7823,-4.5718,market_effect,country
+DE,safe_asset,-28.4069,-0.8762,market_effect,country
+EL,no_fragmentation,143.1884,77.6654,market_effect,country
+EL,safe_asset,159.7345,86.6311,market_effect,country
+ES,no_fragmentation,63.3451,5.5433,market_effect,country
+ES,safe_asset,117.1947,10.2873,market_effect,country
+FI,no_fragmentation,-6.9376,-3.2229,market_effect,country
+FI,safe_asset,-0.0524,-0.0047,market_effect,country
+FR,no_fragmentation,-76.0202,-3.3394,market_effect,country
+FR,safe_asset,32.1289,1.4302,market_effect,country
+IE,no_fragmentation,20.8938,8.8840,market_effect,country
+IE,safe_asset,31.0697,13.1128,market_effect,country
+IT,no_fragmentation,98.5008,5.7118,market_effect,country
+IT,safe_asset,211.1538,12.2818,market_effect,country
+NL,no_fragmentation,-19.7471,-2.6425,market_effect,country
+NL,safe_asset,0.7538,0.1185,market_effect,country
+PT,no_fragmentation,41.4493,21.8910,market_effect,country
+PT,safe_asset,53.0237,28.0301,market_effect,country
+AT,no_fragmentation,-16.6934,-4.8261,actual_effect,country
+AT,safe_asset,-3.3219,-1.1237,actual_effect,country
+BE,no_fragmentation,4.7156,0.2222,actual_effect,country
+BE,safe_asset,26.9786,5.3761,actual_effect,country
+CY,no_fragmentation,-3.2796,-14.7501,actual_effect,country
+CY,safe_asset,-2.3264,-10.0577,actual_effect,country
+DE,no_fragmentation,-75.9536,-3.0898,actual_effect,country
+DE,safe_asset,38.4217,0.6058,actual_effect,country
+EL,no_fragmentation,-107.6979,-57.8004,actual_effect,country
+EL,safe_asset,-91.1518,-48.8347,actual_effect,country
+ES,no_fragmentation,31.3297,2.3303,actual_effect,country
+ES,safe_asset,85.1794,7.0743,actual_effect,country
+FI,no_fragmentation,-4.5189,-2.3479,actual_effect,country
+FI,safe_asset,2.3663,0.8703,actual_effect,country
+FR,no_fragmentation,-68.7908,-3.4346,actual_effect,country
+FR,safe_asset,39.3582,1.3349,actual_effect,country
+IE,no_fragmentation,5.1300,1.7750,actual_effect,country
+IE,safe_asset,15.3058,6.0038,actual_effect,country
+IT,no_fragmentation,18.5421,0.8126,actual_effect,country
+IT,safe_asset,131.1952,7.3825,actual_effect,country
+NL,no_fragmentation,-35.0010,-4.9387,actual_effect,country
+NL,safe_asset,-14.5001,-2.1776,actual_effect,country
+PT,no_fragmentation,-1.2794,-0.3320,actual_effect,country
+PT,safe_asset,10.2949,5.8071,actual_effect,country
+AT,no_fragmentation,-3.5537,-1.1087,market_effect_to_2014,country
+AT,safe_asset,1.5330,0.4839,market_effect_to_2014,country
+BE,no_fragmentation,-2.9638,-0.7499,market_effect_to_2014,country
+BE,safe_asset,6.9915,1.7909,market_effect_to_2014,country
+CY,no_fragmentation,0.4902,2.7208,market_effect_to_2014,country
+CY,safe_asset,0.9000,4.9420,market_effect_to_2014,country
+DE,no_fragmentation,-70.0208,-2.4526,market_effect_to_2014,country
+DE,safe_asset,-9.2491,-0.3182,market_effect_to_2014,country
+EL,no_fragmentation,65.5533,35.5177,market_effect_to_2014,country
+EL,safe_asset,73.5836,39.8602,market_effect_to_2014,country
+ES,no_fragmentation,23.4342,2.2582,market_effect_to_2014,country
+ES,safe_asset,45.6943,4.4021,market_effect_to_2014,country
+FI,no_fragmentation,-3.3246,-1.6446,market_effect_to_2014,country
+FI,safe_asset,0.2639,0.1335,market_effect_to_2014,country
+FR,no_fragmentation,-30.1626,-1.4300,market_effect_to_2014,country
+FR,safe_asset,15.6852,0.7456,market_effect_to_2014,country
+IE,no_fragmentation,10.6728,5.8655,market_effect_to_2014,country
+IE,safe_asset,15.5663,8.5343,market_effect_to_2014,country
+IT,no_fragmentation,38.4439,2.3585,market_effect_to_2014,country
+IT,safe_asset,89.4310,5.4852,market_effect_to_2014,country
+NL,no_fragmentation,-7.8398,-1.1776,market_effect_to_2014,country
+NL,safe_asset,0.8983,0.1363,market_effect_to_2014,country
+PT,no_fragmentation,17.8199,10.3711,market_effect_to_2014,country
+PT,safe_asset,23.0605,13.4223,market_effect_to_2014,country
+AT,no_fragmentation,-11.5585,-3.4150,market_effect,pre-crisis
+AT,safe_asset,3.0194,0.9442,market_effect,pre-crisis
+BE,no_fragmentation,-8.4022,-2.0093,market_effect,pre-crisis
+BE,safe_asset,14.0935,3.4825,market_effect,pre-crisis
+CY,no_fragmentation,1.6653,8.6340,market_effect,pre-crisis
+CY,safe_asset,2.6143,13.5680,market_effect,pre-crisis
+DE,no_fragmentation,-146.9959,-4.8815,market_effect,pre-crisis
+DE,safe_asset,-29.5267,-0.9426,market_effect,pre-crisis
+EL,no_fragmentation,151.2030,82.4977,market_effect,pre-crisis
+EL,safe_asset,168.6418,91.9850,market_effect,pre-crisis
+ES,no_fragmentation,62.6592,5.7352,market_effect,pre-crisis
+ES,safe_asset,115.1698,10.5728,market_effect,pre-crisis
+FI,no_fragmentation,-6.7961,-3.2122,market_effect,pre-crisis
+FI,safe_asset,-0.0726,-0.0143,market_effect,pre-crisis
+FR,no_fragmentation,-76.5615,-3.5025,market_effect,pre-crisis
+FR,safe_asset,31.8323,1.4782,market_effect,pre-crisis
+IE,no_fragmentation,21.5531,10.4236,market_effect,pre-crisis
+IE,safe_asset,32.1923,15.4582,market_effect,pre-crisis
+IT,no_fragmentation,101.3143,6.0442,market_effect,pre-crisis
+IT,safe_asset,216.0716,12.9240,market_effect,pre-crisis
+NL,no_fragmentation,-22.2317,-3.1912,market_effect,pre-crisis
+NL,safe_asset,0.6713,0.1176,market_effect,pre-crisis
+PT,no_fragmentation,42.5384,23.5902,market_effect,pre-crisis
+PT,safe_asset,54.3670,30.1780,market_effect,pre-crisis
+AT,no_fragmentation,13.4049,3.1263,actual_effect,pre-crisis
+AT,safe_asset,27.9829,7.4856,actual_effect,pre-crisis
+BE,no_fragmentation,30.2682,5.9129,actual_effect,pre-crisis
+BE,safe_asset,52.7639,11.4046,actual_effect,pre-crisis
+CY,no_fragmentation,-2.4015,-11.0738,actual_effect,pre-crisis
+CY,safe_asset,-1.4525,-6.1397,actual_effect,pre-crisis
+DE,no_fragmentation,10.7048,-0.5103,actual_effect,pre-crisis
+DE,safe_asset,128.1740,3.4286,actual_effect,pre-crisis
+EL,no_fragmentation,-103.1637,-55.8959,actual_effect,pre-crisis
+EL,safe_asset,-85.7249,-46.4087,actual_effect,pre-crisis
+ES,no_fragmentation,75.6788,6.2020,actual_effect,pre-crisis
+ES,safe_asset,128.1894,11.0397,actual_effect,pre-crisis
+FI,no_fragmentation,-2.5305,-1.4405,actual_effect,pre-crisis
+FI,safe_asset,4.1931,1.7574,actual_effect,pre-crisis
+FR,no_fragmentation,28.0883,0.7419,actual_effect,pre-crisis
+FR,safe_asset,136.4821,5.7226,actual_effect,pre-crisis
+IE,no_fragmentation,15.0028,4.7707,actual_effect,pre-crisis
+IE,safe_asset,25.6419,9.8053,actual_effect,pre-crisis
+IT,no_fragmentation,83.8285,4.7424,actual_effect,pre-crisis
+IT,safe_asset,198.5858,11.6222,actual_effect,pre-crisis
+NL,no_fragmentation,-0.1886,-0.5829,actual_effect,pre-crisis
+NL,safe_asset,22.7144,2.7259,actual_effect,pre-crisis
+PT,no_fragmentation,6.7879,3.5570,actual_effect,pre-crisis
+PT,safe_asset,18.6165,10.1448,actual_effect,pre-crisis
+AT,no_fragmentation,-6.7743,-2.1196,market_effect_to_2014,pre-crisis
+AT,safe_asset,2.6878,0.8544,market_effect_to_2014,pre-crisis
+BE,no_fragmentation,-4.5102,-1.1428,market_effect_to_2014,pre-crisis
+BE,safe_asset,10.0075,2.5729,market_effect_to_2014,pre-crisis
+CY,no_fragmentation,0.7618,4.2220,market_effect_to_2014,pre-crisis
+CY,safe_asset,1.3520,7.4036,market_effect_to_2014,pre-crisis
+DE,no_fragmentation,-92.1384,-3.2348,market_effect_to_2014,pre-crisis
+DE,safe_asset,-12.8198,-0.4411,market_effect_to_2014,pre-crisis
+EL,no_fragmentation,96.8479,52.2165,market_effect_to_2014,pre-crisis
+EL,safe_asset,108.6366,58.5561,market_effect_to_2014,pre-crisis
+ES,no_fragmentation,34.4961,3.3229,market_effect_to_2014,pre-crisis
+ES,safe_asset,66.5840,6.4112,market_effect_to_2014,pre-crisis
+FI,no_fragmentation,-3.8295,-1.8957,market_effect_to_2014,pre-crisis
+FI,safe_asset,0.2774,0.1410,market_effect_to_2014,pre-crisis
+FR,no_fragmentation,-45.8182,-2.1761,market_effect_to_2014,pre-crisis
+FR,safe_asset,23.2235,1.1068,market_effect_to_2014,pre-crisis
+IE,no_fragmentation,15.0739,8.3414,market_effect_to_2014,pre-crisis
+IE,safe_asset,22.1824,12.2413,market_effect_to_2014,pre-crisis
+IT,no_fragmentation,57.4883,3.5264,market_effect_to_2014,pre-crisis
+IT,safe_asset,131.8497,8.0855,market_effect_to_2014,pre-crisis
+NL,no_fragmentation,-13.9602,-2.1005,market_effect_to_2014,pre-crisis
+NL,safe_asset,1.3915,0.2126,market_effect_to_2014,pre-crisis
+PT,no_fragmentation,26.0969,15.1870,market_effect_to_2014,pre-crisis
+PT,safe_asset,33.7214,19.6261,market_effect_to_2014,pre-crisis
+AT,no_fragmentation,-9.6076,-2.5918,market_effect,low 0.10
+AT,safe_asset,2.7039,0.7608,market_effect,low 0.10
+BE,no_fragmentation,-7.0311,-1.5319,market_effect,low 0.10
+BE,safe_asset,12.3709,2.7682,market_effect,low 0.10
+CY,no_fragmentation,1.3451,6.1935,market_effect,low 0.10
+CY,safe_asset,2.1748,10.0773,market_effect,low 0.10
+DE,no_fragmentation,-117.4019,-3.5655,market_effect,low 0.10
+DE,safe_asset,-22.7546,-0.6696,market_effect,low 0.10
+EL,no_fragmentation,120.5296,64.5683,market_effect,low 0.10
+EL,safe_asset,134.5052,72.0539,market_effect,low 0.10
+ES,no_fragmentation,55.5143,4.6858,market_effect,low 0.10
+ES,safe_asset,103.3092,8.7438,market_effect,low 0.10
+FI,no_fragmentation,-6.1267,-2.6854,market_effect,low 0.10
+FI,safe_asset,0.0416,0.0306,market_effect,low 0.10
+FR,no_fragmentation,-66.8296,-2.8560,market_effect,low 0.10
+FR,safe_asset,28.7176,1.2410,market_effect,low 0.10
+IE,no_fragmentation,17.8626,6.8467,market_effect,low 0.10
+IE,safe_asset,26.4675,10.0750,market_effect,low 0.10
+IT,no_fragmentation,84.1377,4.7624,market_effect,low 0.10
+IT,safe_asset,181.5090,10.3036,market_effect,low 0.10
+NL,no_fragmentation,-17.5864,-2.3010,market_effect,low 0.10
+NL,safe_asset,0.7259,0.1096,market_effect,low 0.10
+PT,no_fragmentation,35.4313,17.9606,market_effect,low 0.10
+PT,safe_asset,45.3692,23.0174,market_effect,low 0.10
+AT,no_fragmentation,-26.9082,-7.3451,actual_effect,low 0.10
+AT,safe_asset,-14.5967,-3.9924,actual_effect,low 0.10
+BE,no_fragmentation,-28.6506,-6.5509,actual_effect,low 0.10
+BE,safe_asset,-9.2486,-2.2508,actual_effect,low 0.10
+CY,no_fragmentation,-4.1935,-18.2382,actual_effect,low 0.10
+CY,safe_asset,-3.3638,-14.3545,actual_effect,low 0.10
+DE,no_fragmentation,-270.1974,-8.4497,actual_effect,low 0.10
+DE,safe_asset,-175.5502,-5.5539,actual_effect,low 0.10
+EL,no_fragmentation,-109.6894,-58.3728,actual_effect,low 0.10
+EL,safe_asset,-95.7138,-50.8872,actual_effect,low 0.10
+ES,no_fragmentation,-25.8269,-2.2082,actual_effect,low 0.10
+ES,safe_asset,21.9679,1.8498,actual_effect,low 0.10
+FI,no_fragmentation,-16.7304,-7.4046,actual_effect,low 0.10
+FI,safe_asset,-10.5621,-4.6886,actual_effect,low 0.10
+FR,no_fragmentation,-175.3357,-7.6937,actual_effect,low 0.10
+FR,safe_asset,-79.7885,-3.5967,actual_effect,low 0.10
+IE,no_fragmentation,-6.5845,-1.3051,actual_effect,low 0.10
+IE,safe_asset,2.0203,1.9233,actual_effect,low 0.10
+IT,no_fragmentation,-69.9567,-4.0771,actual_effect,low 0.10
+IT,safe_asset,27.4147,1.4641,actual_effect,low 0.10
+NL,no_fragmentation,-50.6059,-6.7375,actual_effect,low 0.10
+NL,safe_asset,-32.2937,-4.3269,actual_effect,low 0.10
+PT,no_fragmentation,-10.1925,-4.2974,actual_effect,low 0.10
+PT,safe_asset,-0.2546,0.7593,actual_effect,low 0.10
+AT,no_fragmentation,-2.8861,-0.9000,market_effect_to_2014,low 0.10
+AT,safe_asset,1.2607,0.3975,market_effect_to_2014,low 0.10
+BE,no_fragmentation,-1.8511,-0.4680,market_effect_to_2014,low 0.10
+BE,safe_asset,4.5233,1.1564,market_effect_to_2014,low 0.10
+CY,no_fragmentation,0.3025,1.6804,market_effect_to_2014,low 0.10
+CY,safe_asset,0.5667,3.1165,market_effect_to_2014,low 0.10
+DE,no_fragmentation,-39.6588,-1.3858,market_effect_to_2014,low 0.10
+DE,safe_asset,-4.9787,-0.1713,market_effect_to_2014,low 0.10
+EL,no_fragmentation,41.6870,22.6472,market_effect_to_2014,low 0.10
+EL,safe_asset,46.8102,25.4259,market_effect_to_2014,low 0.10
+ES,no_fragmentation,14.9332,1.4393,market_effect_to_2014,low 0.10
+ES,safe_asset,29.2754,2.8211,market_effect_to_2014,low 0.10
+FI,no_fragmentation,-1.6623,-0.8209,market_effect_to_2014,low 0.10
+FI,safe_asset,0.1584,0.0794,market_effect_to_2014,low 0.10
+FR,no_fragmentation,-19.9005,-0.9427,market_effect_to_2014,low 0.10
+FR,safe_asset,10.4615,0.4967,market_effect_to_2014,low 0.10
+IE,no_fragmentation,6.9624,3.8115,market_effect_to_2014,low 0.10
+IE,safe_asset,10.1019,5.5181,market_effect_to_2014,low 0.10
+IT,no_fragmentation,24.2720,1.4891,market_effect_to_2014,low 0.10
+IT,safe_asset,56.9180,3.4913,market_effect_to_2014,low 0.10
+NL,no_fragmentation,-6.0423,-0.9073,market_effect_to_2014,low 0.10
+NL,safe_asset,0.7108,0.1077,market_effect_to_2014,low 0.10
+PT,no_fragmentation,11.3850,6.6260,market_effect_to_2014,low 0.10
+PT,safe_asset,14.7447,8.5820,market_effect_to_2014,low 0.10
+AT,no_fragmentation,-11.5537,-3.4186,market_effect,high 0.30
+AT,safe_asset,3.0162,0.9446,market_effect,high 0.30
+BE,no_fragmentation,-8.3970,-2.0110,market_effect,high 0.30
+BE,safe_asset,14.0792,3.4841,market_effect,high 0.30
+CY,no_fragmentation,1.6645,8.6457,market_effect,high 0.30
+CY,safe_asset,2.6119,13.5777,market_effect,high 0.30
+DE,no_fragmentation,-147.0559,-4.8905,market_effect,high 0.30
+DE,safe_asset,-29.5461,-0.9445,market_effect,high 0.30
+EL,no_fragmentation,151.2687,82.5280,market_effect,high 0.30
+EL,safe_asset,168.7149,92.0180,market_effect,high 0.30
+ES,no_fragmentation,62.5452,5.7320,market_effect,high 0.30
+ES,safe_asset,114.9392,10.5648,market_effect,high 0.30
+FI,no_fragmentation,-6.7827,-3.2099,market_effect,high 0.30
+FI,safe_asset,-0.0738,-0.0149,market_effect,high 0.30
+FR,no_fragmentation,-76.4707,-3.5020,market_effect,high 0.30
+FR,safe_asset,31.7858,1.4776,market_effect,high 0.30
+IE,no_fragmentation,21.5437,10.4576,market_effect,high 0.30
+IE,safe_asset,32.1827,15.5114,market_effect,high 0.30
+IT,no_fragmentation,101.2632,6.0458,market_effect,high 0.30
+IT,safe_asset,215.9412,12.9257,market_effect,high 0.30
+NL,no_fragmentation,-22.2408,-3.1968,market_effect,high 0.30
+NL,safe_asset,0.6685,0.1173,market_effect,high 0.30
+PT,no_fragmentation,42.5114,23.6068,market_effect,high 0.30
+PT,safe_asset,54.3314,30.1985,market_effect,high 0.30
+AT,no_fragmentation,13.7810,3.2379,actual_effect,high 0.30
+AT,safe_asset,28.3509,7.6011,actual_effect,high 0.30
+BE,no_fragmentation,30.7989,6.0436,actual_effect,high 0.30
+BE,safe_asset,53.2751,11.5387,actual_effect,high 0.30
+CY,no_fragmentation,-2.3795,-10.9739,actual_effect,high 0.30
+CY,safe_asset,-1.4321,-6.0418,actual_effect,high 0.30
+DE,no_fragmentation,13.5291,-0.4215,actual_effect,high 0.30
+DE,safe_asset,131.0390,3.5244,actual_effect,high 0.30
+EL,no_fragmentation,-103.0036,-55.8214,actual_effect,high 0.30
+EL,safe_asset,-85.5574,-46.3315,actual_effect,high 0.30
+ES,no_fragmentation,76.5899,6.2907,actual_effect,high 0.30
+ES,safe_asset,128.9838,11.1234,actual_effect,high 0.30
+FI,no_fragmentation,-2.4096,-1.3827,actual_effect,high 0.30
+FI,safe_asset,4.2993,1.8122,actual_effect,high 0.30
+FR,no_fragmentation,29.8234,0.8249,actual_effect,high 0.30
+FR,safe_asset,138.0799,5.8045,actual_effect,high 0.30
+IE,no_fragmentation,15.2277,4.8489,actual_effect,high 0.30
+IE,safe_asset,25.8668,9.9026,actual_effect,high 0.30
+IT,no_fragmentation,85.1087,4.8279,actual_effect,high 0.30
+IT,safe_asset,199.7867,11.7078,actual_effect,high 0.30
+NL,no_fragmentation,0.3264,-0.5105,actual_effect,high 0.30
+NL,safe_asset,23.2357,2.8036,actual_effect,high 0.30
+PT,no_fragmentation,6.9802,3.6571,actual_effect,high 0.30
+PT,safe_asset,18.8002,10.2488,actual_effect,high 0.30
+AT,no_fragmentation,-6.8446,-2.1418,market_effect_to_2014,high 0.30
+AT,safe_asset,2.7090,0.8613,market_effect_to_2014,high 0.30
+BE,no_fragmentation,-4.5609,-1.1557,market_effect_to_2014,high 0.30
+BE,safe_asset,10.0964,2.5961,market_effect_to_2014,high 0.30
+CY,no_fragmentation,0.7710,4.2726,market_effect_to_2014,high 0.30
+CY,safe_asset,1.3665,7.4825,market_effect_to_2014,high 0.30
+DE,no_fragmentation,-93.0735,-3.2680,market_effect_to_2014,high 0.30
+DE,safe_asset,-12.9839,-0.4467,market_effect_to_2014,high 0.30
+EL,no_fragmentation,97.8304,52.7360,market_effect_to_2014,high 0.30
+EL,safe_asset,109.7356,59.1368,market_effect_to_2014,high 0.30
+ES,no_fragmentation,34.8411,3.3561,market_effect_to_2014,high 0.30
+ES,safe_asset,67.2225,6.4726,market_effect_to_2014,high 0.30
+FI,no_fragmentation,-3.8674,-1.9146,market_effect_to_2014,high 0.30
+FI,safe_asset,0.2779,0.1414,market_effect_to_2014,high 0.30
+FR,no_fragmentation,-46.2727,-2.1978,market_effect_to_2014,high 0.30
+FR,safe_asset,23.4300,1.1167,market_effect_to_2014,high 0.30
+IE,no_fragmentation,15.2005,8.4137,market_effect_to_2014,high 0.30
+IE,safe_asset,22.3762,12.3514,market_effect_to_2014,high 0.30
+IT,no_fragmentation,58.0977,3.5638,market_effect_to_2014,high 0.30
+IT,safe_asset,133.1743,8.1667,market_effect_to_2014,high 0.30
+NL,no_fragmentation,-14.0997,-2.1216,market_effect_to_2014,high 0.30
+NL,safe_asset,1.3988,0.2138,market_effect_to_2014,high 0.30
+PT,no_fragmentation,26.3524,15.3356,market_effect_to_2014,high 0.30
+PT,safe_asset,34.0495,19.8169,market_effect_to_2014,high 0.30
