@@ -59,6 +59,11 @@ EUROSTAT_REQUESTS: dict[str, tuple[str, list[Filters], tuple[str, ...] | None]] 
         GEOS,
     ),
     "gdp": ("nama_10_gdp", [[("unit", "CP_MEUR"), ("na_item", "B1GQ")]], GEOS),
+    "debt_quarterly": (
+        "gov_10q_ggdebt",
+        [[("unit", "MIO_EUR"), ("sector", "S13"), ("na_item", "GD"), ("na_item", "F3"), ("na_item", "F4"), ("na_item", "F2")], [("unit", "MIO_EUR"), ("sector", "S13")]],
+        ("EL", "IE", "PT", "CY", "ES", "DE", "FR", "NL", "FI", "AT", "IT"),
+    ),
     "debt_structure": ("gov_10dd_ggd", [[("unit", "MIO_EUR"), ("sector", "S13")], []], ("EL", "IE", "PT", "CY", "ES", "DE", "FR", "NL", "FI", "AT", "IT")),
 }
 # filled in from the table of contents if these codes exist; tried as given otherwise
