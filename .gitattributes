@@ -64,3 +64,5 @@ europe-deindustrialisation/**/*.csv -filter -diff -merge text
 dependency-screen-design/**/*.csv -filter -diff -merge text
 dependency-early-warning/**/*.csv -filter -diff -merge text
 dependency-early-warning/**/*.gz -filter -diff -merge binary
+euro-crisis-ledger/**/*.csv -filter -diff -merge text
+euro-crisis-ledger/**/*.gz -filter -diff -merge binary
