@@ -187,6 +187,13 @@ def main() -> int:
     me = main_r[main_r["cf"] == "no_fragmentation"].groupby("geo")["model_error"].sum() / 1e3
     lines += ["", "Model check: actual interest minus interest simulated from actual yields, cumulative 2010-2025, EUR bn (official lending, restructuring and model error):"]
     lines.append("  " + ", ".join(f"{c} {me[c]:+.1f}" for c in COUNTRIES))
+    lines += ["", "Share of the market-repricing total accrued after 2014 (no-fragmentation / safe-asset):"]
+    for c in ("DE", "FR", "EL", "ES"):
+        parts = []
+        for cf in CFS:
+            s = main_r[(main_r["geo"] == c) & (main_r["cf"] == cf)]
+            parts.append(f"{s[s.year > WINDOW[1]].market_effect.sum() / s.market_effect.sum():.2f}")
+        lines.append(f"  {c}: " + " / ".join(parts))
     for grp, members in (("core", CORE), ("programme", PROGRAMME)):
         for cf in CFS:
             for method in ("market_effect", "actual_effect", "actual_effect_full"):

@@ -144,6 +144,12 @@ def main() -> int:
         lines.append(f"  {c}: {s['gap_no_fragmentation'].mean():+.3f} / {s['gap_safe_asset'].mean():+.3f}")
     peak = cf.loc[cf.groupby("geo")["actual"].idxmax(), ["geo", "time", "actual"]].set_index("geo").reindex(LEDGER)
     lines += ["", "Peak monthly yield (percent): " + ", ".join(f"{c} {r.actual:.2f} ({r.time})" for c, r in peak.iterrows())]
+    lines += ["", "Synthetic Germany, robustness (mean gap 2010-2014 / 2010-2012, pp):"]
+    for label, donors in (("all donors", DONORS), ("non-European donors (US, CA, AU, NZ, JP)", ("US", "CA", "AU", "NZ", "JP")), ("without Switzerland", tuple(d for d in DONORS if d != "CH"))):
+        for fit in (PRE_FIT, ("2002-01", "2009-12"), ("1999-01", "2007-12")):
+            path, wv, rm = synthetic(y["DE"], y[list(donors)], fit)
+            gap = y["DE"] - path
+            lines.append(f"  {label}, fit {fit[0]}-{fit[1]}: {gap.loc[WINDOW[0]:WINDOW[1]].mean():+.3f} / {gap.loc['2010-01':'2012-12'].mean():+.3f} (pre-fit RMSE {rm:.3f})")
     de = pl[pl["unit"] == "DE"].iloc[0]
     rank = int((pl["ratio"] >= de["ratio"]).sum())
     lines += [

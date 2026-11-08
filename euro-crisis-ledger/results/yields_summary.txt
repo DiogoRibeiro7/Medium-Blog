@@ -73,6 +73,17 @@ Gaps after the window, 2015-2026 (pp), not attributed to the crisis: no-fragment
 
 Peak monthly yield (percent): EL 29.24 (2012-02), IE 12.45 (2011-07), PT 13.85 (2012-01), CY 7.71 (2001-05), ES 12.26 (1995-03), DE 7.60 (1995-01), FR 8.23 (1995-01), NL 7.71 (1995-01), FI 10.24 (1995-01), AT 7.72 (1995-01), IT 13.45 (1995-03), BE 8.45 (1995-01)
 
+Synthetic Germany, robustness (mean gap 2010-2014 / 2010-2012, pp):
+  all donors, fit 1999-01-2009-12: -0.271 / -0.066 (pre-fit RMSE 0.073)
+  all donors, fit 2002-01-2009-12: -0.260 / -0.059 (pre-fit RMSE 0.062)
+  all donors, fit 1999-01-2007-12: -0.316 / -0.124 (pre-fit RMSE 0.068)
+  non-European donors (US, CA, AU, NZ, JP), fit 1999-01-2009-12: -0.437 / -0.288 (pre-fit RMSE 0.243)
+  non-European donors (US, CA, AU, NZ, JP), fit 2002-01-2009-12: -0.447 / -0.328 (pre-fit RMSE 0.235)
+  non-European donors (US, CA, AU, NZ, JP), fit 1999-01-2007-12: -0.304 / -0.136 (pre-fit RMSE 0.210)
+  without Switzerland, fit 1999-01-2009-12: -0.307 / -0.115 (pre-fit RMSE 0.117)
+  without Switzerland, fit 2002-01-2009-12: -0.353 / -0.164 (pre-fit RMSE 0.081)
+  without Switzerland, fit 1999-01-2007-12: -0.215 / -0.013 (pre-fit RMSE 0.111)
+
 Placebo, synthetic control for Germany and each donor, window 2010-01 to 2014-12:
   DE: pre-fit RMSE 0.073, mean window gap -0.271, window RMSE / pre RMSE 5.42
   JP: pre-fit RMSE 0.431, mean window gap +1.089, window RMSE / pre RMSE 2.88
