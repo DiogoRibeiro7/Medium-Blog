@@ -1,0 +1,98 @@
+Euro-area average: GDP-weighted (2009 GDP) over AT, BE, DE, EL, ES, FI, FR, IE, IT, LU, NL, PT; pre-crisis spreads averaged 2003-01 to 2007-12
+Synthetic Germany, fitted 1999-01 to 2009-12 on demeaned yields, pre-fit RMSE 0.073 pp; weights: CH 0.372, GB 0.223, NO 0.219, SE 0.140, US 0.045, AU 0.002
+
+Pre-crisis spreads (pp), 2003-2007, to the euro-area average and to Germany:
+  EL: +0.172 / +0.248
+  IE: -0.042 / +0.034
+  PT: +0.056 / +0.132
+  CY: +0.899 / +0.974
+  ES: -0.022 / +0.054
+  DE: -0.075 / +0.000
+  FR: -0.016 / +0.060
+  NL: -0.031 / +0.044
+  FI: -0.029 / +0.046
+  AT: -0.011 / +0.065
+  IT: +0.156 / +0.231
+  BE: +0.018 / +0.093
+
+Mean yield gap, actual minus counterfactual (pp), main 2010-2014 (2010-01 to 2014-12): no-fragmentation / safe-asset
+  EL: +9.353 / +10.430
+  IE: +2.236 / +3.313
+  PT: +3.851 / +4.928
+  CY: +1.739 / +2.816
+  ES: +1.247 / +2.324
+  DE: -1.348 / -0.271
+  FR: -0.755 / +0.322
+  NL: -1.042 / +0.035
+  FI: -1.068 / +0.009
+  AT: -0.846 / +0.231
+  IT: +0.937 / +2.014
+  BE: -0.393 / +0.684
+
+Mean yield gap, actual minus counterfactual (pp), acute 2010-2012 (2010-01 to 2012-12): no-fragmentation / safe-asset
+  EL: +11.705 / +13.184
+  IE: +3.310 / +4.788
+  PT: +4.769 / +6.248
+  CY: +0.994 / +2.473
+  ES: +1.298 / +2.777
+  DE: -1.545 / -0.066
+  FR: -0.896 / +0.583
+  NL: -1.234 / +0.245
+  FI: -1.240 / +0.239
+  AT: -0.920 / +0.559
+  IT: +0.926 / +2.405
+  BE: -0.355 / +1.124
+
+Mean yield gap, actual minus counterfactual (pp), to QE 2010-2015 (2010-01 to 2015-12): no-fragmentation / safe-asset
+  EL: +9.185 / +10.107
+  IE: +1.862 / +2.772
+  PT: +3.398 / +4.307
+  CY: +1.851 / +2.760
+  ES: +1.127 / +2.036
+  DE: -1.233 / -0.324
+  FR: -0.691 / +0.218
+  NL: -0.953 / -0.044
+  FI: -0.970 / -0.061
+  AT: -0.784 / +0.125
+  IT: +0.836 / +1.745
+  BE: -0.396 / +0.513
+
+Gaps after the window, 2015-2026 (pp), not attributed to the crisis: no-fragmentation / safe-asset
+  EL: +2.449 / +2.468
+  IE: -0.129 / -0.110
+  PT: +0.565 / +0.583
+  CY: +0.147 / +0.165
+  ES: +0.317 / +0.335
+  DE: -0.582 / -0.563
+  FR: -0.146 / -0.128
+  NL: -0.428 / -0.410
+  FI: -0.267 / -0.249
+  AT: -0.281 / -0.262
+  IT: +0.762 / +0.780
+  BE: -0.202 / -0.184
+
+Peak monthly yield (percent): EL 29.24 (2012-02), IE 12.45 (2011-07), PT 13.85 (2012-01), CY 7.71 (2001-05), ES 12.26 (1995-03), DE 7.60 (1995-01), FR 8.23 (1995-01), NL 7.71 (1995-01), FI 10.24 (1995-01), AT 7.72 (1995-01), IT 13.45 (1995-03), BE 8.45 (1995-01)
+
+Synthetic Germany, robustness (mean gap 2010-2014 / 2010-2012, pp):
+  all donors, fit 1999-01-2009-12: -0.271 / -0.066 (pre-fit RMSE 0.073)
+  all donors, fit 2002-01-2009-12: -0.260 / -0.059 (pre-fit RMSE 0.062)
+  all donors, fit 1999-01-2007-12: -0.316 / -0.124 (pre-fit RMSE 0.068)
+  non-European donors (US, CA, AU, NZ, JP), fit 1999-01-2009-12: -0.437 / -0.288 (pre-fit RMSE 0.243)
+  non-European donors (US, CA, AU, NZ, JP), fit 2002-01-2009-12: -0.447 / -0.328 (pre-fit RMSE 0.235)
+  non-European donors (US, CA, AU, NZ, JP), fit 1999-01-2007-12: -0.304 / -0.136 (pre-fit RMSE 0.210)
+  without Switzerland, fit 1999-01-2009-12: -0.307 / -0.115 (pre-fit RMSE 0.117)
+  without Switzerland, fit 2002-01-2009-12: -0.353 / -0.164 (pre-fit RMSE 0.081)
+  without Switzerland, fit 1999-01-2007-12: -0.215 / -0.013 (pre-fit RMSE 0.111)
+
+Placebo, synthetic control for Germany and each donor, window 2010-01 to 2014-12:
+  DE: pre-fit RMSE 0.073, mean window gap -0.271, window RMSE / pre RMSE 5.42
+  JP: pre-fit RMSE 0.431, mean window gap +1.089, window RMSE / pre RMSE 2.88
+  GB: pre-fit RMSE 0.204, mean window gap -0.472, window RMSE / pre RMSE 2.54
+  AU: pre-fit RMSE 0.205, mean window gap +0.021, window RMSE / pre RMSE 1.33
+  CH: pre-fit RMSE 0.227, mean window gap -0.235, window RMSE / pre RMSE 1.17
+  NZ: pre-fit RMSE 0.161, mean window gap -0.011, window RMSE / pre RMSE 1.16
+  SE: pre-fit RMSE 0.200, mean window gap -0.104, window RMSE / pre RMSE 1.05
+  US: pre-fit RMSE 0.381, mean window gap -0.210, window RMSE / pre RMSE 0.81
+  CA: pre-fit RMSE 0.240, mean window gap -0.030, window RMSE / pre RMSE 0.55
+  NO: pre-fit RMSE 0.371, mean window gap -0.016, window RMSE / pre RMSE 0.39
+  Germany ranks 1 of 10 by the ratio (permutation p = 0.10)

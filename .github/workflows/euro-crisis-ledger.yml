@@ -1,0 +1,61 @@
+name: Reproduce euro-crisis-ledger
+
+on:
+  pull_request:
+    paths:
+      - 'euro-crisis-ledger/**'
+      - '.github/workflows/euro-crisis-ledger.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'euro-crisis-ledger/**'
+      - '.github/workflows/euro-crisis-ledger.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: euro-crisis-ledger
+    env:
+      MPLBACKEND: Agg
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: euro-crisis-ledger/requirements.txt
+
+      - name: Install pinned dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Tests
+        run: python -m pytest -q tests
+
+      - name: Counterfactual yields
+        run: python yields.py > /dev/null
+
+      - name: Interest account
+        run: python interest.py > /dev/null
+
+      - name: Ledger
+        run: python ledger.py > /dev/null
+
+      - name: Figures
+        run: python figures.py
+
+      - name: Summaries unchanged within tolerance
+        run: |
+          S="results/yields_summary.txt results/interest_summary.txt results/ledger_summary.txt"
+          git diff --stat -- $S || true
+          python check_results.py $S
