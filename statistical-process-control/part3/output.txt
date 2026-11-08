@@ -1,0 +1,330 @@
+Statistical process control, Part 3: two public production lines, audited
+seed 20261108; numpy 2.5.3
+
+==============================================================================
+1. The data
+==============================================================================
+continuous_factory_process.csv: 8495105 bytes, sha256 5d1358bc03b3bc68... verified
+secom.data: 5388416 bytes, sha256 4503bdb42e63687d... verified
+secom_labels.data: 39071 bytes, sha256 2fb2e8b5dfe77ba9... verified
+
+Continuous-flow line (Liveline Technologies, 2019)
+rows 14088, columns 116 (time stamp + 115)
+first 2019-03-06 10:52:33, last 2019-03-06 14:47:20, span 3.913 h, minutes indexed 235
+   interval 0 s: 14
+   interval 1 s: 14059
+   interval 2 s: 14
+rows with stage-1 setpoints at 0: 56; all 15 stage-1 setpoints 0 on those rows: True; constant otherwise: True
+   setpoint change after row 3716: 2019-03-06 11:54:26 -> 2019-03-06 11:54:27
+   setpoint change after row 3751: 2019-03-06 11:55:01 -> 2019-03-06 11:55:02
+   setpoint change after row 4220: 2019-03-06 12:02:49 -> 2019-03-06 12:02:50
+   setpoint change after row 4241: 2019-03-06 12:03:10 -> 2019-03-06 12:03:11
+stage-2 setpoints constant over the record: True
+
+share of readings exactly 0 (sensor dropouts), by measurement location 0..14
+   stage 1: 0.005 0.419 0.006 0.010 0.012 0.951 0.334 0.622 0.055 0.051 0.019 0.743 0.226 0.024 0.355
+   stage 2: 0.087 0.048 0.043 0.055 0.905 0.013 0.013 0.025 0.069 0.298 0.045 0.045 0.018 0.014 0.065
+usable (dropout share < 0.10): stage 1 locations [0, 2, 3, 4, 8, 9, 10, 13] (8), stage 2 locations [0, 1, 2, 3, 5, 6, 7, 8, 10, 11, 12, 13, 14] (13)
+Machine4.Pressure.C.Actual identical to Machine4.Temperature4.C.Actual: True
+
+SECOM semiconductor line (McCann and Johnston, 2008)
+runs 1567, sensors 590, fail 104, pass 1463
+first 2008-07-19 11:55:00, last 2008-10-17 06:07:00, in time order: True
+hours between runs, 10/50/90%: 0.0500 / 0.6167 / 3.0917; longest 48.63
+   2008-07: runs 63, fail share 0.222
+   2008-08: runs 555, fail share 0.092
+   2008-09: runs 590, fail share 0.029
+   2008-10: runs 359, fail share 0.061
+missing share per sensor, 50/90/99%: 0.0038 / 0.0325 / 0.8558; sensors >50% missing 28
+sensors constant over all runs: 116
+
+==============================================================================
+2. Which sigma? Time scales on the continuous line
+==============================================================================
+held reading = consecutive 1 Hz readings that are identical; r1 = lag-1 autocorrelation at 1 Hz
+semivariogram gamma(h)/variance at lags (s): 1 2 5 10 30 60 120 300 600 1200 1800 3600
+S1M0  held 0.613 r1 0.900 | 0.100 0.198 0.394 0.652 0.723 0.735 0.778 0.852 0.874 0.910 1.001 1.178 | MRsigma/SD 0.059 | within-minute sigma/sqrt(n) over SD of minute means 0.161
+S1M2  held 0.568 r1 0.934 | 0.062 0.204 0.228 0.246 0.300 0.372 0.505 0.900 0.978 0.847 0.980 0.855 | MRsigma/SD 0.067 | within-minute sigma/sqrt(n) over SD of minute means 0.079
+S1M3  held 0.600 r1 0.830 | 0.077 0.140 0.834 0.751 0.805 0.505 0.858 0.916 0.922 0.958 0.984 1.141 | MRsigma/SD 0.080 | within-minute sigma/sqrt(n) over SD of minute means 0.317
+S1M4  held 0.568 r1 0.995 | 0.004 0.095 0.231 0.241 0.272 0.320 0.370 0.460 0.559 0.633 0.579 0.660 | MRsigma/SD 0.027 | within-minute sigma/sqrt(n) over SD of minute means 0.082
+S1M8  held 0.614 r1 0.820 | 0.011 0.019 0.136 0.359 0.239 0.252 0.231 0.647 1.088 1.157 1.221 1.450 | MRsigma/SD 0.030 | within-minute sigma/sqrt(n) over SD of minute means 0.333
+S1M9  held 0.566 r1 0.931 | 0.030 0.059 0.073 0.297 0.244 0.339 0.315 0.687 0.900 0.978 1.038 1.028 | MRsigma/SD 0.097 | within-minute sigma/sqrt(n) over SD of minute means 0.104
+S1M10 held 0.579 r1 0.870 | 0.107 0.183 0.376 0.493 0.398 0.467 0.505 0.545 0.574 0.587 0.719 0.930 | MRsigma/SD 0.108 | within-minute sigma/sqrt(n) over SD of minute means 0.123
+S1M13 held 0.594 r1 0.960 | 0.039 0.081 0.100 0.099 0.158 0.201 0.302 0.633 0.897 0.907 0.737 0.788 | MRsigma/SD 0.042 | within-minute sigma/sqrt(n) over SD of minute means 0.048
+S2M0  held 0.193 r1 0.711 | 0.185 0.216 0.272 0.257 0.321 0.292 0.349 0.371 0.517 0.557 0.608 0.786 | MRsigma/SD 0.279 | within-minute sigma/sqrt(n) over SD of minute means 0.105
+S2M1  held 0.188 r1 0.938 | 0.061 0.081 0.102 0.130 0.205 0.299 0.414 0.723 0.790 0.948 1.084 0.741 | MRsigma/SD 0.153 | within-minute sigma/sqrt(n) over SD of minute means 0.059
+S2M2  held 0.201 r1 0.826 | 0.141 0.187 0.200 0.210 0.232 0.259 0.264 0.386 0.597 0.632 0.518 0.769 | MRsigma/SD 0.139 | within-minute sigma/sqrt(n) over SD of minute means 0.062
+S2M3  held 0.216 r1 0.949 | 0.038 0.047 0.060 0.065 0.081 0.131 0.145 0.347 0.232 0.393 0.439 0.759 | MRsigma/SD 0.101 | within-minute sigma/sqrt(n) over SD of minute means 0.045
+S2M5  held 0.215 r1 0.802 | 0.176 0.244 0.240 0.276 0.303 0.313 0.319 0.383 0.408 0.422 0.473 0.674 | MRsigma/SD 0.227 | within-minute sigma/sqrt(n) over SD of minute means 0.084
+S2M6  held 0.192 r1 0.589 | 0.408 0.498 0.516 0.498 0.571 0.601 0.625 0.723 0.835 0.927 0.852 0.911 | MRsigma/SD 0.472 | within-minute sigma/sqrt(n) over SD of minute means 0.137
+S2M7  held 0.266 r1 0.433 | 0.514 0.571 0.628 0.677 0.695 0.708 0.738 0.801 0.897 0.816 0.808 0.920 | MRsigma/SD 0.225 | within-minute sigma/sqrt(n) over SD of minute means 0.185
+S2M8  held 0.179 r1 0.478 | 0.331 0.423 0.434 0.442 0.445 0.457 0.461 0.531 0.560 0.737 0.841 0.890 | MRsigma/SD 0.483 | within-minute sigma/sqrt(n) over SD of minute means 0.226
+S2M10 held 0.209 r1 0.815 | 0.108 0.130 0.145 0.146 0.171 0.181 0.231 0.295 0.445 0.596 0.618 0.731 | MRsigma/SD 0.270 | within-minute sigma/sqrt(n) over SD of minute means 0.068
+S2M11 held 0.219 r1 0.926 | 0.057 0.066 0.079 0.086 0.105 0.113 0.149 0.203 0.327 0.455 0.524 0.798 | MRsigma/SD 0.209 | within-minute sigma/sqrt(n) over SD of minute means 0.046
+S2M12 held 0.237 r1 0.917 | 0.079 0.102 0.105 0.102 0.135 0.146 0.184 0.379 0.541 0.587 0.601 0.707 | MRsigma/SD 0.111 | within-minute sigma/sqrt(n) over SD of minute means 0.046
+S2M13 held 0.217 r1 0.842 | 0.147 0.219 0.271 0.265 0.343 0.326 0.355 0.439 0.342 0.409 0.476 0.724 | MRsigma/SD 0.209 | within-minute sigma/sqrt(n) over SD of minute means 0.092
+S2M14 held 0.188 r1 0.917 | 0.078 0.127 0.139 0.170 0.247 0.328 0.450 0.746 0.845 0.892 0.999 0.757 | MRsigma/SD 0.184 | within-minute sigma/sqrt(n) over SD of minute means 0.069
+stage 1: median held share 0.586; r1 range 0.820 to 0.995
+   median normalized semivariogram by lag: 0.050 0.118 0.230 0.328 0.286 0.356 0.437 0.667 0.899 0.908 0.982 0.979
+   median MRsigma/SD 0.063; median within-minute ratio 0.114
+stage 2: median held share 0.209; r1 range 0.433 to 0.949
+   median normalized semivariogram by lag: 0.141 0.187 0.200 0.210 0.247 0.299 0.349 0.386 0.541 0.596 0.608 0.759
+   median MRsigma/SD 0.209; median within-minute ratio 0.069
+all 21: gamma(1)/var range 0.004 to 0.514, median 0.079; gamma(3600)/var median 0.788
+limits from MR at 1 Hz are narrower than 3 SD by a median factor 0.139; 3 x that factor = 0.417 SD, normal tail beyond it 0.677
+
+Four designs, Phase I = first 30 minutes, evaluated on every later point
+D1 individuals at 1 Hz, sigma from the moving range; D2 X-bar of one-minute subgroups, sigma pooled
+within minutes; D3 individuals on minute means, sigma from their moving range; D4 individuals on
+minute means, sigma = SD of the Phase I minute means. Nominal rate for each: 0.0027
+S1M0  D1 0.974 D2 0.995 D3 0.980 D4 0.629 | SD of minute means, first 30 min / median later 30-min block 0.91
+S1M2  D1 0.973 D2 0.951 D3 0.951 D4 0.210 | SD of minute means, first 30 min / median later 30-min block 2.16
+S1M3  D1 0.556 D2 0.283 D3 0.024 D4 0.000 | SD of minute means, first 30 min / median later 30-min block 3.91
+S1M4  D1 0.973 D2 0.961 D3 0.937 D4 0.351 | SD of minute means, first 30 min / median later 30-min block 1.55
+S1M8  D1 0.660 D2 0.738 D3 0.123 D4 0.005 | SD of minute means, first 30 min / median later 30-min block 4.69
+S1M9  D1 0.892 D2 0.969 D3 0.303 D4 0.000 | SD of minute means, first 30 min / median later 30-min block 5.81
+S1M10 D1 0.688 D2 0.623 D3 0.544 D4 0.270 | SD of minute means, first 30 min / median later 30-min block 1.54
+S1M13 D1 0.687 D2 0.985 D3 0.083 D4 0.000 | SD of minute means, first 30 min / median later 30-min block 16.89
+S2M0  D1 0.493 D2 0.980 D3 0.859 D4 0.000 | SD of minute means, first 30 min / median later 30-min block 8.62
+S2M1  D1 0.086 D2 0.678 D3 0.132 D4 0.020 | SD of minute means, first 30 min / median later 30-min block 3.93
+S2M2  D1 0.875 D2 0.956 D3 0.946 D4 0.000 | SD of minute means, first 30 min / median later 30-min block 22.16
+S2M3  D1 0.341 D2 0.692 D3 0.388 D4 0.000 | SD of minute means, first 30 min / median later 30-min block 4.73
+S2M5  D1 0.410 D2 0.498 D3 0.283 D4 0.000 | SD of minute means, first 30 min / median later 30-min block 14.20
+S2M6  D1 0.018 D2 0.288 D3 0.176 D4 0.000 | SD of minute means, first 30 min / median later 30-min block 4.61
+S2M7  D1 0.011 D2 0.893 D3 0.015 D4 0.000 | SD of minute means, first 30 min / median later 30-min block 10.55
+S2M8  D1 0.046 D2 0.727 D3 0.166 D4 0.000 | SD of minute means, first 30 min / median later 30-min block 3.54
+S2M10 D1 0.163 D2 0.980 D3 0.268 D4 0.000 | SD of minute means, first 30 min / median later 30-min block 20.99
+S2M11 D1 0.390 D2 0.639 D3 0.307 D4 0.000 | SD of minute means, first 30 min / median later 30-min block 18.58
+S2M12 D1 0.999 D2 1.000 D3 1.000 D4 0.000 | SD of minute means, first 30 min / median later 30-min block 72.23
+S2M13 D1 0.269 D2 0.434 D3 0.385 D4 0.000 | SD of minute means, first 30 min / median later 30-min block 8.72
+S2M14 D1 0.047 D2 0.888 D3 0.649 D4 0.034 | SD of minute means, first 30 min / median later 30-min block 2.52
+first-30-minute spread ratio, median: stage 1 3.03, stage 2 8.72
+D1: median 0.4933, min 0.0111, max 0.9992, median / nominal 183, measurements above 10x nominal 19 of 21
+D2: median 0.8878, min 0.2829, max 1.0000, median / nominal 329, measurements above 10x nominal 21 of 21
+D3: median 0.3073, min 0.0146, max 1.0000, median / nominal 114, measurements above 10x nominal 19 of 21
+D4: median 0.0000, min 0.0000, max 0.6293, median / nominal 0, measurements above 10x nominal 5 of 21
+
+==============================================================================
+3. Which half hour? The Phase I window lottery on minute means
+==============================================================================
+Phase I = m consecutive minutes (window start every 5 minutes, at least 90% of minutes present);
+the chart is evaluated on every other minute of the record. References: independent normal
+minute means (SD and MR designs) and an AR(1) with phi = 0.7 (residual design), with the same m
+and 235 - m evaluated minutes.
+
+m = 30 minutes: 852 window x measurement pairs; fitted AR(1) phi median 0.614, 10/90% 0.030 / 0.893
+   conditional false-alarm probability, independent normal, sigma from SD: 0.0006 / 0.0035 / 0.0149
+   SD  real:      10/50/90% 0.0103 / 0.2693 / 0.7059; zero 0.063; >1% 0.903; >10% 0.731
+   SD  reference: 10/50/90% 0.0000 / 0.0049 / 0.0195; zero 0.479; >1% 0.164; >10% 0.000
+   MR  real:      10/50/90% 0.1591 / 0.5363 / 0.8926; zero 0.004; >1% 0.996; >10% 0.947
+   MR  reference: 10/50/90% 0.0000 / 0.0049 / 0.0195; zero 0.486; >1% 0.200; >10% 0.001
+   AR1 real:      10/50/90% 0.0099 / 0.1152 / 0.5403; zero 0.060; >1% 0.891; >10% 0.531
+   AR1 reference: 10/50/90% 0.0000 / 0.0049 / 0.0294; zero 0.401; >1% 0.269; >10% 0.009
+
+m = 60 minutes: 724 window x measurement pairs; fitted AR(1) phi median 0.741, 10/90% 0.226 / 0.934
+   conditional false-alarm probability, independent normal, sigma from SD: 0.0009 / 0.0031 / 0.0089
+   SD  real:      10/50/90% 0.0057 / 0.1810 / 0.6404; zero 0.087; >1% 0.865; >10% 0.626
+   SD  reference: 10/50/90% 0.0000 / 0.0000 / 0.0114; zero 0.553; >1% 0.178; >10% 0.000
+   MR  real:      10/50/90% 0.1895 / 0.5500 / 0.9413; zero 0.000; >1% 0.999; >10% 0.970
+   MR  reference: 10/50/90% 0.0000 / 0.0000 / 0.0114; zero 0.553; >1% 0.203; >10% 0.000
+   AR1 real:      10/50/90% 0.0058 / 0.0751 / 0.4551; zero 0.094; >1% 0.866; >10% 0.385
+   AR1 reference: 10/50/90% 0.0000 / 0.0000 / 0.0115; zero 0.508; >1% 0.224; >10% 0.000
+
+m = 120 minutes: 504 window x measurement pairs; fitted AR(1) phi median 0.803, 10/90% 0.482 / 0.977
+   conditional false-alarm probability, independent normal, sigma from SD: 0.0012 / 0.0029 / 0.0062
+   SD  real:      10/50/90% 0.0000 / 0.0885 / 0.4490; zero 0.105; >1% 0.831; >10% 0.476
+   SD  reference: 10/50/90% 0.0000 / 0.0000 / 0.0087; zero 0.695; >1% 0.069; >10% 0.000
+   MR  real:      10/50/90% 0.2545 / 0.6300 / 0.9739; zero 0.000; >1% 1.000; >10% 0.986
+   MR  reference: 10/50/90% 0.0000 / 0.0000 / 0.0087; zero 0.695; >1% 0.081; >10% 0.000
+   AR1 real:      10/50/90% 0.0000 / 0.0714 / 0.1813; zero 0.129; >1% 0.821; >10% 0.341
+   AR1 reference: 10/50/90% 0.0000 / 0.0000 / 0.0088; zero 0.678; >1% 0.080; >10% 0.000
+
+==============================================================================
+4. Machines in parallel: one variable, three machines
+==============================================================================
+per machine: SD over the record, sigma from the 1 Hz moving range, share of held readings, lag-1
+autocorrelation, and the realized alarm rate of a 1 Hz individuals chart (MR sigma, Phase I = first 30 min)
+Zone1Temperature.C.Actual
+   M1: SD 0.0633 MRsig 0.0004676 held 0.994 r1 0.993 alarm 0.965
+   M2: SD 0.05712 MRsig 0.01493 held 0.202 r1 0.923 alarm 0.018
+   M3: SD 0.07694 MRsig 0.0009059 held 0.989 r1 0.991 alarm 1.000
+   max/min across machines: SD 1.35, MR sigma 31.9
+Zone2Temperature.C.Actual
+   M1: SD 0.406 MRsig 0.01118 held 0.869 r1 0.996 alarm 1.000
+   M2: SD 0.1093 MRsig 0.02142 held 0.203 r1 0.901 alarm 0.098
+   M3: SD 0.1148 MRsig 0.008139 held 0.902 r1 0.965 alarm 1.000
+   max/min across machines: SD 3.71, MR sigma 2.6
+MotorAmperage.U.Actual
+   M1: SD 5.534 MRsig 0.4499 held 0.076 r1 0.994 alarm 0.345
+   M2: SD 0.3966 MRsig 0.1881 held 0.091 r1 0.782 alarm 0.766
+   M3: SD 9.057 MRsig 3.047 held 0.001 r1 0.880 alarm 0.221
+   max/min across machines: SD 22.84, MR sigma 16.2
+MotorRPM.C.Actual
+   M1: SD 0.6354 MRsig 0.02535 held 0.334 r1 0.998 alarm 0.691
+   M2: SD 0.02917 MRsig 0.02792 held 0.108 r1 0.118 alarm 0.000
+   M3: SD 0.4346 MRsig 0.06768 held 0.045 r1 0.974 alarm 0.653
+   max/min across machines: SD 21.78, MR sigma 2.7
+MaterialPressure.U.Actual
+   M1: SD 20.51 MRsig 4.245 held 0.003 r1 0.961 alarm 0.314
+   M2: SD 3.11 MRsig 2.118 held 0.005 r1 0.578 alarm 0.287
+   M3: SD 6.106 MRsig 0.3054 held 0.039 r1 0.997 alarm 0.999
+   max/min across machines: SD 6.60, MR sigma 13.9
+MaterialTemperature.U.Actual
+   M1: SD 0.9319 MRsig 0.0024 held 0.970 r1 1.000 alarm 1.000
+   M2: SD 0.8566 MRsig 0.1031 held 0.275 r1 0.986 alarm 1.000
+   M3: SD 2.062 MRsig 0.001421 held 0.983 r1 1.000 alarm 1.000
+   max/min across machines: SD 2.41, MR sigma 72.6
+ExitZoneTemperature.C.Actual
+   M1: SD 2.062 MRsig 0.004062 held 0.952 r1 1.000 alarm 1.000
+   M2: SD 0.1613 MRsig 0.01874 held 0.784 r1 0.959 alarm 0.294
+   M3: SD 0.06246 MRsig 0.001241 held 0.984 r1 0.982 alarm 1.000
+   max/min across machines: SD 33.02, MR sigma 15.1
+RawMaterialFeederParameter.U.Actual
+   M1: SD 96.03 MRsig 17.26 held 0.001 r1 0.845 alarm 0.109
+   M2: SD 15.12 MRsig 13.02 held 0.001 r1 0.116 alarm 0.017
+   M3: SD 15.65 MRsig 13.29 held 0.001 r1 0.113 alarm 0.019
+   max/min across machines: SD 6.35, MR sigma 1.3
+
+raw material property lots (distinct values over the record)
+   machine 1: properties 1-4 distinct values [4, 4, 5, 4]
+   machine 2: properties 1-4 distinct values [2, 2, 2, 2]
+   machine 3: properties 1-4 distinct values [3, 3, 3, 3]
+
+==============================================================================
+5. Stations in series: adjusting stage 2 for stage 1 with an estimated regression
+==============================================================================
+locations usable at both stages: [0, 2, 3, 8, 10, 13]
+minute means, lag 0: matched corr 0.303 -0.258 0.098 0.208 0.141 0.290
+   median |corr| matched 0.233; unmatched pairs (98) median |corr| 0.173, 90% 0.437, max 0.657
+   location 0: lag (min) with largest |corr| over 0..60 = 40 (corr 0.539)
+   location 2: lag (min) with largest |corr| over 0..60 = 15 (corr -0.332)
+   location 3: lag (min) with largest |corr| over 0..60 = 38 (corr 0.356)
+   location 8: lag (min) with largest |corr| over 0..60 = 43 (corr -0.652)
+   location 10: lag (min) with largest |corr| over 0..60 = 13 (corr 0.586)
+   location 13: lag (min) with largest |corr| over 0..60 = 3 (corr 0.471)
+
+regression of the stage-2 minute mean on stage-1 minute means (lagged), fitted on a window of m
+minutes (start every 10 min), used on every other minute. 'worse' = out-of-window RMS residual larger
+than out-of-window RMS deviation from the window mean (no adjustment). Alarm = |residual| > 3 x in-window
+residual SD (adjusted) or |deviation| > 3 x in-window SD (unadjusted).
+matched    lag  0 min, m  60, predictors 1: pairs 82; in-window R^2 median 0.06; worse 0.66; alarm median adjusted 0.295 vs unadjusted 0.260
+matched    lag  0 min, m 120, predictors 1: pairs 53; in-window R^2 median 0.03; worse 0.53; alarm median adjusted 0.207 vs unadjusted 0.171
+matched    lag  5 min, m  60, predictors 1: pairs 78; in-window R^2 median 0.05; worse 0.55; alarm median adjusted 0.320 vs unadjusted 0.254
+matched    lag  5 min, m 120, predictors 1: pairs 48; in-window R^2 median 0.03; worse 0.38; alarm median adjusted 0.142 vs unadjusted 0.170
+matched    lag 15 min, m  60, predictors 1: pairs 72; in-window R^2 median 0.06; worse 0.53; alarm median adjusted 0.374 vs unadjusted 0.244
+matched    lag 15 min, m 120, predictors 1: pairs 42; in-window R^2 median 0.03; worse 0.62; alarm median adjusted 0.140 vs unadjusted 0.130
+stage1_all lag  0 min, m  60, predictors 8: pairs 111; in-window R^2 median 0.56; worse 0.81; alarm median adjusted 0.526 vs unadjusted 0.212
+stage1_all lag  0 min, m 120, predictors 8: pairs 105; in-window R^2 median 0.56; worse 0.72; alarm median adjusted 0.441 vs unadjusted 0.137
+stage1_all lag  5 min, m  60, predictors 8: pairs 104; in-window R^2 median 0.71; worse 0.80; alarm median adjusted 0.635 vs unadjusted 0.204
+stage1_all lag  5 min, m 120, predictors 8: pairs 96; in-window R^2 median 0.67; worse 0.56; alarm median adjusted 0.503 vs unadjusted 0.105
+stage1_all lag 15 min, m  60, predictors 8: pairs 91; in-window R^2 median 0.49; worse 0.82; alarm median adjusted 0.570 vs unadjusted 0.176
+stage1_all lag 15 min, m 120, predictors 8: pairs 87; in-window R^2 median 0.49; worse 0.70; alarm median adjusted 0.347 vs unadjusted 0.051
+
+independent-normal reference for the out-of-sample inflation of the residual SD: sqrt(1 + (p + 1)/m)
+   p 1, m 60: 1.017
+   p 1, m 120: 1.008
+   p 8, m 60: 1.072
+   p 8, m 120: 1.037
+
+==============================================================================
+6. Many sensors, one chart each: SECOM
+==============================================================================
+Phase I = the first m passing runs; Phase II = every run after the last Phase I run. A sensor is
+charted if it is present in at least 80% of Phase I runs and not constant there. Limits = Phase I
+mean +/- 3 Phase I SD. Missing readings raise no alarm.
+
+m = 50: Phase I ends 2008-08-01 02:02:00; charted sensors K = 432; constant in Phase I 122, of which vary later 6; Phase II passing 1413, failing 90
+   per-sensor realized rate on passing runs, 10/25/50/75/90%: 0.0000 / 0.0028 / 0.0100 / 0.0372 / 0.0885; mean 0.0322
+   sensors above nominal 0.752; above 10x nominal 0.315
+   runs with at least one alarm: passing 0.995, failing 0.989; nominal with known parameters 1-(1-p0)^K = 0.689
+   alarms per run, mean: passing 13.77, failing 13.42; median passing 13; nominal K x p0 = 1.17
+   Sidak limits k = 4.517 (line nominal 0.0027): runs with an alarm, passing 0.933, failing 0.867; per-sensor median rate 0.0035 vs nominal per sensor 6.26e-06
+   Sidak alarms: failing 78/90, passing 1319/1413; Fisher exact two-sided p = 0.0299
+
+m = 100: Phase I ends 2008-08-05 08:50:00; charted sensors K = 428; constant in Phase I 122, of which vary later 6; Phase II passing 1363, failing 86
+   per-sensor realized rate on passing runs, 10/25/50/75/90%: 0.0000 / 0.0022 / 0.0088 / 0.0265 / 0.0608; mean 0.0263
+   sensors above nominal 0.743; above 10x nominal 0.248
+   runs with at least one alarm: passing 0.982, failing 0.965; nominal with known parameters 1-(1-p0)^K = 0.686
+   alarms per run, mean: passing 11.18, failing 10.66; median passing 11; nominal K x p0 = 1.16
+   Sidak limits k = 4.516 (line nominal 0.0027): runs with an alarm, passing 0.842, failing 0.744; per-sensor median rate 0.0029 vs nominal per sensor 6.32e-06
+   Sidak alarms: failing 64/86, passing 1147/1363; Fisher exact two-sided p = 0.0238
+
+m = 200: Phase I ends 2008-08-17 05:21:00; charted sensors K = 428; constant in Phase I 122, of which vary later 6; Phase II passing 1263, failing 73
+   per-sensor realized rate on passing runs, 10/25/50/75/90%: 0.0000 / 0.0024 / 0.0103 / 0.0262 / 0.0478; mean 0.0250
+   sensors above nominal 0.724; above 10x nominal 0.245
+   runs with at least one alarm: passing 0.980, failing 0.973; nominal with known parameters 1-(1-p0)^K = 0.686
+   alarms per run, mean: passing 10.63, failing 10.48; median passing 10; nominal K x p0 = 1.16
+   Sidak limits k = 4.516 (line nominal 0.0027): runs with an alarm, passing 0.850, failing 0.767; per-sensor median rate 0.0024 vs nominal per sensor 6.32e-06
+   Sidak alarms: failing 56/73, passing 1074/1263; Fisher exact two-sided p = 0.0657
+
+m = 400: Phase I ends 2008-08-27 22:58:00; charted sensors K = 420; constant in Phase I 122, of which vary later 6; Phase II passing 1063, failing 46
+   per-sensor realized rate on passing runs, 10/25/50/75/90%: 0.0000 / 0.0019 / 0.0053 / 0.0165 / 0.0473; mean 0.0214
+   sensors above nominal 0.693; above 10x nominal 0.181
+   runs with at least one alarm: passing 0.967, failing 0.978; nominal with known parameters 1-(1-p0)^K = 0.679
+   alarms per run, mean: passing 8.94, failing 11.33; median passing 9; nominal K x p0 = 1.13
+   Sidak limits k = 4.512 (line nominal 0.0027): runs with an alarm, passing 0.849, failing 0.957; per-sensor median rate 0.0019 vs nominal per sensor 6.44e-06
+   Sidak alarms: failing 44/46, passing 903/1063; Fisher exact two-sided p = 0.0519
+
+Decomposition at m = 100: where does the excess come from?
+   (a) independent normal sensors, same m, K = 428, 1363 evaluated runs (20 replicates):
+       per-sensor 10/50/90% 0.0007 / 0.0029 / 0.0073; runs with an alarm 0.776
+   (b) oracle: limits from all 1463 passing runs, evaluated on the same runs, K = 442:
+       per-sensor 10/50/90% 0.0007 / 0.0048 / 0.0198; runs with an alarm 0.803
+   (c) Phase I = 100 passing runs drawn at random from the whole period (100 draws), evaluated on the
+       other passing runs: per-sensor 10/50/90% 0.0007 / 0.0095 / 0.0289; runs with an alarm, median over draws 0.902
+   (d) Phase I = the first 100 passing runs: per-sensor 10/50/90% 0.0000 / 0.0088 / 0.0608; runs with an alarm 0.982
+
+excess kurtosis of charted sensors over all passing runs, 25/50/75/90%: 1.4538 / 14.9432 / 170.2506 / 581.3232
+matching Var(S^2) to a chi-square: effective degrees of freedom at m = 100, nu = 2/(2/(m-1) + kurtosis/m)
+   10/50/90%: 0.3429 / 11.7903 / 108.3522; share with nu <= 9: 0.446; share with nu <= 2: 0.296
+   (negative excess kurtosis gives nu above m - 1: share 0.122)
+
+limit width k against the share of passing runs with an alarm (first-100 limits):
+   3.00:0.982 3.25:0.962 3.50:0.943 3.75:0.906 4.00:0.883 4.25:0.864 4.50:0.844 4.75:0.822 5.00:0.798 5.25:0.781 5.50:0.767 5.75:0.755 6.00:0.746 6.25:0.731 6.50:0.718 6.75:0.707 7.00:0.690 7.25:0.678 7.50:0.667 7.75:0.660 8.00:0.646
+
+==============================================================================
+7. Many sensors at once: PCA-based T^2 and SPE on SECOM
+==============================================================================
+Phase I = first m passing runs, standardized by their own means and SDs (missing set to the Phase I
+mean), PCA on the Phase I correlation matrix, k components. T^2 limit: the Phase II F limit for k
+variables with estimated mean and covariance; SPE limit: g chi^2_h with g = theta2/theta1 and
+h = theta1^2/theta2 from the discarded Phase I eigenvalues (Box 1954). Both at alpha = 0.0027.
+Rates: share of runs above the limit. h0 is the exponent of the Jackson-Mudholkar (1979)
+approximation, which is undefined or unstable when h0 is near or below zero.
+normal reference: Gaussian rows with the correlation matrix of all 1463 passing runs (p = 442), same m and number of evaluated rows, 10 replicates
+
+m = 100, p = 428 (Phase I rank at most 99); Phase II passing 1363, failing 86
+   k  2: T2 phase I 0.000 pass 0.008 fail 0.023 | SPE phase I 0.090 pass 0.647 fail 0.535 | explained 0.12 | h0 0.049
+   k  5: T2 phase I 0.000 pass 0.031 fail 0.047 | SPE phase I 0.080 pass 0.695 fail 0.570 | explained 0.25 | h0 0.123
+   k 10: T2 phase I 0.010 pass 0.111 fail 0.093 | SPE phase I 0.070 pass 0.759 fail 0.628 | explained 0.39 | h0 0.133
+   k 20: T2 phase I 0.050 pass 0.241 fail 0.163 | SPE phase I 0.010 pass 0.921 fail 0.872 | explained 0.59 | h0 0.148
+   k 50: T2 phase I 0.000 pass 0.236 fail 0.174 | SPE phase I 0.000 pass 1.000 fail 1.000 | explained 0.89 | h0 0.217
+   robust out-of-sample variance / Phase I eigenvalue, PCs 1 2 5 10 20 50: 0.21 0.46 0.89 1.21 2.99 8.40
+   k 5: median SPE phase I 274.8, Phase II passing 1049.6, ratio 3.82
+   k 20: median SPE phase I 167.5, Phase II passing 906.4, ratio 5.41
+   normal reference (median of 10): k 2: T2 0.000 SPE 0.002 k 5: T2 0.000 SPE 0.007 k 10: T2 0.000 SPE 0.049 k 20: T2 0.000 SPE 0.511 k 50: T2 0.000 SPE 1.000
+   normal reference, robust out-of-sample variance / eigenvalue, PCs 1 2 5 10 20 50: 0.68 0.63 0.53 0.46 0.54 0.88
+
+m = 200, p = 428 (Phase I rank at most 199); Phase II passing 1263, failing 73
+   k  2: T2 phase I 0.010 pass 0.011 fail 0.027 | SPE phase I 0.080 pass 0.643 fail 0.548 | explained 0.10 | h0 0.005
+   k  5: T2 phase I 0.005 pass 0.015 fail 0.055 | SPE phase I 0.085 pass 0.686 fail 0.671 | explained 0.21 | h0 0.073
+   k 10: T2 phase I 0.025 pass 0.026 fail 0.055 | SPE phase I 0.080 pass 0.739 fail 0.671 | explained 0.32 | h0 0.098
+   k 20: T2 phase I 0.045 pass 0.046 fail 0.068 | SPE phase I 0.055 pass 0.837 fail 0.726 | explained 0.49 | h0 0.114
+   k 50: T2 phase I 0.050 pass 0.136 fail 0.164 | SPE phase I 0.015 pass 0.998 fail 1.000 | explained 0.78 | h0 0.143
+   robust out-of-sample variance / Phase I eigenvalue, PCs 1 2 5 10 20 50: 0.59 0.42 0.60 0.44 0.84 1.04
+   k 5: median SPE phase I 288.9, Phase II passing 717.7, ratio 2.48
+   k 20: median SPE phase I 192.7, Phase II passing 637.4, ratio 3.31
+   normal reference (median of 10): k 2: T2 0.000 SPE 0.003 k 5: T2 0.000 SPE 0.004 k 10: T2 0.000 SPE 0.021 k 20: T2 0.000 SPE 0.159 k 50: T2 0.000 SPE 0.969
+   normal reference, robust out-of-sample variance / eigenvalue, PCs 1 2 5 10 20 50: 0.83 0.73 0.63 0.58 0.67 0.88
+
+m = 400, p = 420 (Phase I rank at most 399); Phase II passing 1063, failing 46
+   k  2: T2 phase I 0.028 pass 0.009 fail 0.022 | SPE phase I 0.077 pass 0.717 fail 0.826 | explained 0.13 | h0 -0.029
+   k  5: T2 phase I 0.028 pass 0.011 fail 0.022 | SPE phase I 0.070 pass 0.737 fail 0.913 | explained 0.21 | h0 0.040
+   k 10: T2 phase I 0.035 pass 0.020 fail 0.043 | SPE phase I 0.083 pass 0.758 fail 0.913 | explained 0.32 | h0 0.073
+   k 20: T2 phase I 0.040 pass 0.027 fail 0.043 | SPE phase I 0.062 pass 0.788 fail 0.935 | explained 0.47 | h0 0.110
+   k 50: T2 phase I 0.060 pass 0.281 fail 0.261 | SPE phase I 0.033 pass 0.898 fail 0.957 | explained 0.72 | h0 0.139
+   robust out-of-sample variance / Phase I eigenvalue, PCs 1 2 5 10 20 50: 0.04 0.16 0.66 1.27 1.16 2.38
+   k 5: median SPE phase I 271.6, Phase II passing 896.6, ratio 3.30
+   k 20: median SPE phase I 193.9, Phase II passing 811.2, ratio 4.18
+   normal reference (median of 10): k 2: T2 0.001 SPE 0.003 k 5: T2 0.000 SPE 0.005 k 10: T2 0.000 SPE 0.008 k 20: T2 0.000 SPE 0.048 k 50: T2 0.000 SPE 0.497
+   normal reference, robust out-of-sample variance / eigenvalue, PCs 1 2 5 10 20 50: 0.89 0.80 0.77 0.78 0.81 0.99
