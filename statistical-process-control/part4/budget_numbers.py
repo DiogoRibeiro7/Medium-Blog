@@ -596,6 +596,7 @@ def section_secom() -> None:
     le01 = np.sum(PV <= aL, axis=1)
     print(f"   design F: sensors at the minimum p-value in one test run: median {np.median(at_min):.0f}, maximum "
           f"{at_min.max()}; sensors with p <= {aL}: median {np.median(le01):.0f}, maximum {le01.max()} (BH needs {need})")
+    print(f"   Benjamini-Yekutieli factor for arbitrary dependence across {K} sensors: sum 1/i = {np.sum(1 / np.arange(1, K + 1)):.3f}")
     cols = np.flatnonzero(use)
     j = int(np.nanargmax(Zabs[cal[np.argmax(score[cal])]]))
     c = cols[j]

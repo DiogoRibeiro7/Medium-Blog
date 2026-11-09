@@ -154,6 +154,7 @@ E adaptive threshold: passing runs alarmed 12/1133 = 0.011; failing 1/51 = 0.020
 F BH on per-sensor conformal p-values: passing runs alarmed 0/1133 = 0.000; failing 0/51 = 0.000; Fisher p 1
    design F: smallest p-value in a test run: minimum 0.004329, maximum 0.030303
    design F: sensors at the minimum p-value in one test run: median 5, maximum 35; sensors with p <= 0.01: median 12, maximum 50 (BH needs 186)
+   Benjamini-Yekutieli factor for arbitrary dependence across 428 sensors: sum 1/i = 6.638
    design C threshold comes from sensor column 340 (0-based) in calibration run 275 (2008-08-18 17:37:00): value 5043.83; Phase I mean 0.0640, SD 0.0427, distinct Phase I values 98
    runs where that sensor is more than 1,000 Phase I SDs from its Phase I mean: 275 (2008-08-18, 5043.83), 457 (2008-08-27, 4669.11), 466 (2008-08-28, 5043.88), 634 (2008-09-01, 5043.63), 1458 (2008-10-11, 3014.51)
    design C alarms: runs [466]
