@@ -82,7 +82,12 @@ OECD_REQUESTS: dict[str, tuple[str, str, bool]] = {
     "oecd_union_density": ("OECD.ELS.SAE", "DSD_TUD_CBC@DF_TUD", True),
     "oecd_bargaining_coverage": ("OECD.ELS.SAE", "DSD_TUD_CBC@DF_CBC", True),
     "oecd_employment_protection": ("OECD.ELS.JAI", "DSD_EPL@DF_EPL", False),
-    "oecd_replacement_rates": ("OECD.ELS.JAI", "DSD_TAXBEN_NRR@DF_NRR", False),
+}
+
+# EU member states in ISO3 (the OECD code), plus two outside comparators
+OECD_AREAS = {
+    "AUT", "BEL", "BGR", "HRV", "CYP", "CZE", "DNK", "EST", "FIN", "FRA", "DEU", "GRC", "HUN", "IRL",
+    "ITA", "LVA", "LTU", "LUX", "MLT", "NLD", "POL", "PRT", "ROU", "SVK", "SVN", "ESP", "SWE", "GBR", "USA",
 }
 
 
@@ -207,7 +212,7 @@ def fetch_oecd(out: Path, log: list[str], only: list[str] | None) -> int:
             continue
         ok = False
         for version in ("1.0", ""):
-            url = f"{OECD}/{agency},{dataflow},{version}/all?dimensionAtObservation=AllDimensions&format=csvfilewithlabels"
+            url = f"{OECD}/{agency},{dataflow},{version}/all?dimensionAtObservation=AllDimensions&format=csvfile"
             try:
                 status, body = get(url)
             except RuntimeError as e:
@@ -217,6 +222,7 @@ def fetch_oecd(out: Path, log: list[str], only: list[str] | None) -> int:
             if status != 200 or len(body) < 200:
                 continue
             df = pd.read_csv(io.BytesIO(body), low_memory=False)
+            df = df[df["REF_AREA"].isin(OECD_AREAS)]
             df.insert(0, "source", f"OECD {agency} {dataflow}")
             df.to_csv(out / f"{name}.csv", index=False)
             ok = True
@@ -224,6 +230,7 @@ def fetch_oecd(out: Path, log: list[str], only: list[str] | None) -> int:
         if not ok:
             df = dbnomics_series(dataflow, log, name)
             if df is not None:
+                df = df[df["REF_AREA"].isin(OECD_AREAS)] if "REF_AREA" in df else df
                 df.insert(0, "source", f"DBnomics mirror of OECD {dataflow}")
                 df.to_csv(out / f"{name}.csv", index=False)
                 ok = True
