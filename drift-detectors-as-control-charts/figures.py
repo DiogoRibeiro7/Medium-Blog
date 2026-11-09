@@ -3,8 +3,8 @@
 fig1_stream_nulls.png   river's stream detectors on simulated in-control data: scale and autocorrelation
 fig2_batch_nulls.png    batch scores on simulated in-control windows, and NannyML's threshold
 fig3_bike.png           Bike Sharing: the daily mean residual, two versions of sigma, and the signals
-fig4_elec2.png          Elec2: the daily error rate, and stream detectors with the order inside days shuffled
-fig5_price.png          what the budget costs in detection delay on Bike Sharing
+fig4_price.png          what the budget costs in detection delay on Bike Sharing
+fig5_elec2.png          Elec2: the daily error rate, and stream detectors with the order inside days shuffled
 
 Run after drift_numbers.py (which writes figure_data.json):  python figures.py
 """
@@ -187,7 +187,7 @@ def fig3():
 
 
 # ---------------------------------------------------------------------------------------------------
-def fig4():
+def fig5():  # Elec2
     e = D["elec"]
     y = np.asarray(e["daily"])
     days = np.arange(1, len(y) + 1)
@@ -237,12 +237,12 @@ def fig4():
     title(fig, "Elec2: monitoring a classifier's errors")
     credit(fig, ELEC)
     fig.subplots_adjust(left=0.07, right=0.98, top=0.86, bottom=0.18)
-    fig.savefig(OUT / "fig4_elec2.png")
+    fig.savefig(OUT / "fig5_elec2.png")
     plt.close(fig)
 
 
 # ---------------------------------------------------------------------------------------------------
-def fig5():
+def fig4():  # price
     dl, rates = D["delays"], D["rates"]
     shifts = sorted(float(s) for s in next(iter(dl.values())).keys())
     fig, ax = plt.subplots(figsize=(12, 5.0))
@@ -271,7 +271,7 @@ def fig5():
     title(fig, "The price of the budget: detection delay when the target is one false alarm a year\n(0.08 signals per 30 days)")
     credit(fig, BIKE + " Each quarter of 2011 held out in turn; 28 steps per size.")
     fig.subplots_adjust(left=0.07, right=0.6, top=0.88, bottom=0.2)
-    fig.savefig(OUT / "fig5_price.png")
+    fig.savefig(OUT / "fig4_price.png")
     plt.close(fig)
 
 

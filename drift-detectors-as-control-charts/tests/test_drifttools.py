@@ -13,7 +13,7 @@ import drifttools as dt  # noqa: E402
 
 class CusumARL(unittest.TestCase):
     def test_textbook_values(self):
-        # Two-sided CUSUM, k = 0.5: in-control ARL 168 at h = 4 and 465 at h = 5 (Montgomery, Table 9.3).
+        # Two-sided CUSUM, k = 0.5: in-control ARL 168 at h = 4 and 465 at h = 5 (Montgomery, Introduction to Statistical Quality Control).
         self.assertAlmostEqual(dt.cusum_arl(0.5, 4.0), 168, delta=2)
         self.assertAlmostEqual(dt.cusum_arl(0.5, 5.0), 465, delta=4)
         # Out of control, one-sigma shift: about 8.4 at h = 4 and 10.4 at h = 5.
