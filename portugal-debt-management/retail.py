@@ -18,7 +18,9 @@ have cost in the market:
 - fixed at the five-year Portuguese yield of the month of subscription (BPstat).
 
 A savings certificate is closer to the first: the holder can redeem it at any time after three
-months. A counterfactual also prices the series F vintages at the series E formula, to measure
+months. Interest on savings certificates is taxed at source at 28%, which the State collects back;
+a net-of-tax line applies that to the certificates only (market debt held by non-residents pays no
+Portuguese tax, so this is the most favourable case for the certificates). A counterfactual also prices the series F vintages at the series E formula, to measure
 what closing series E saved, before any change in demand.
 
 Writes ``results/retail_*.csv`` and ``results/retail_summary.txt``.
@@ -32,6 +34,7 @@ import pandas as pd
 from common import RESULTS, bp_series, euribor, pt_curve, write
 
 E_START, E_END, F_START = pd.Period("2022-01", "M"), pd.Period("2023-05", "M"), pd.Period("2023-06", "M")
+WITHHOLDING = 0.28  # personal income tax withheld at source on savings-certificate interest
 
 
 def e_rate(e3m: float, age: int) -> float:
@@ -101,6 +104,9 @@ def run() -> str:
             continue
         lines.append(f"  {y}: paid {f.cost.sum():,.0f}; against 12-month Euribor {f.cost.sum() - f.cost_short.sum():+,.0f}; "
                      f"against the 5-year yield {f.cost.sum() - f.cost_fixed.sum():+,.0f}; average rate paid {f.cost.sum() * 1200 / f.amount.sum():.2f}% (12-month Euribor {f.cost_short.sum() * 1200 / f.amount.sum():.2f}%)")
+    lines.append("Net of the 28% tax withheld on certificate interest (market alternatives untaxed): " + "; ".join(
+        f"series {s_}: {f.cost.sum() * (1 - WITHHOLDING):,.0f} against 12-month Euribor {f.cost.sum() * (1 - WITHHOLDING) - f.cost_short.sum():+,.0f}, "
+        f"against the 5-year yield {f.cost.sum() * (1 - WITHHOLDING) - f.cost_fixed.sum():+,.0f}" for s_, f in m.groupby("series")))
     fv = m[m.series == "F"]
     lines += ["", f"Closing series E: the series F vintages priced at the series E formula would have cost {fv.cost_if_e.sum():,.0f} instead of {fv.cost.sum():,.0f} "
                   f"(EUR {fv.cost_if_e.sum() - fv.cost.sum():,.0f} m less, before any change in demand)"]
