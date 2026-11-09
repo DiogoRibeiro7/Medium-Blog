@@ -152,7 +152,10 @@ class ReferenceInfluenceTests(unittest.TestCase):
             self.assertIn(f"{year}–25", heat)
             self.assertIn(f"{year}–25", bars)
         with self.assertRaisesRegex(ValueError, "16 x 4"):
-            heatmap_svg(self.pairs[:-1])
+            heatmap_svg([r for r in self.pairs if not (
+                r["exposure_mode"] == PRIMARY_MODE
+                and int(r["window_start_year"]) == 2020
+                and r["alternative_reference"] == "Arouca")])
         with self.assertRaisesRegex(ValueError, "all four"):
             stability_svg(self.summaries[:-1])
 
