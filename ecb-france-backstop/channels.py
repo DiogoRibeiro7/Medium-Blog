@@ -8,8 +8,8 @@
    France's own shock and on the first component of the countries other than France and j. The
    slope is the basis-point response of j to a one-basis-point France-specific move. Intervals
    are from a moving-block bootstrap (blocks of 3 months, 2,000 draws).
-2. Banks. EBA 2025 transparency exercise, June 2025: banks' direct exposures to the French
-   central government (carrying amount net of short positions, all maturities), by the home
+2. Banks. EBA 2025 transparency exercise, June 2025: banks' direct exposures to French general
+   government (carrying amount net of short positions, all maturities), by the home
    country of the bank, against the banks' CET1 capital. A mark-to-market loss from a uniform
    rise in French yields is computed on the fair-valued part only (held for trading, designated
    at fair value, fair value through other comprehensive income, less short positions), with the
@@ -173,7 +173,7 @@ def banks() -> tuple[pd.DataFrame, list[str]]:
     nonfr = tot - fr[["cet1", "exposure", "fair_value", "amortised_cost", "loss_100bp"]]
     top = by.drop(index="FR").head(6)
     lines = [
-        f"  {int(by['banks'].sum()) - int('OT' in by.index)} banks plus the EBA's aggregate of other banks, {len(by) - int('OT' in by.index)} countries, June 2025. Direct exposure to the French central government (net of short positions): EUR {tot.exposure:.0f} bn, of which French banks {fr.exposure:.0f} bn ({fr.exposure / tot.exposure:.0%})",
+        f"  {int(by['banks'].sum()) - int('OT' in by.index)} banks plus the EBA's aggregate of other banks, {len(by) - int('OT' in by.index)} countries, June 2025. Direct exposure to French general government (net of short positions): EUR {tot.exposure:.0f} bn, of which French banks {fr.exposure:.0f} bn ({fr.exposure / tot.exposure:.0%})",
         f"  French banks: exposure {fr.exposure:.0f} bn = {fr.exp_pct_cet1:.0f}% of their CET1 ({fr.cet1:.0f} bn); fair-valued {fr.fair_value:.0f} bn; loss on a {SHOCK_BP} bp rise {fr.loss_100bp:.1f} bn = {fr.loss_pct_cet1:.1f}% of CET1",
         f"  Banks outside France: exposure {nonfr.exposure:.0f} bn = {100 * nonfr.exposure / nonfr.cet1:.1f}% of their CET1 ({nonfr.cet1:.0f} bn); fair-valued {nonfr.fair_value:.0f} bn; loss on a {SHOCK_BP} bp rise {nonfr.loss_100bp:.1f} bn = {100 * nonfr.loss_100bp / nonfr.cet1:.2f}% of CET1",
         "  Largest holders outside France (exposure EUR bn; % of CET1; 100 bp loss % of CET1): " + "; ".join(f"{NAMES.get(c, c)} {r.exposure:.1f}, {r.exp_pct_cet1:.1f}%, {r.loss_pct_cet1:.2f}%" for c, r in top.iterrows()),
