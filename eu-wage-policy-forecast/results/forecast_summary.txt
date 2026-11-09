@@ -1,0 +1,103 @@
+# Forecasts (forecast.py)
+
+4000 draws; quantiles reported as median [5th, 95th percentile].
+
+## 1. Portugal: the minimum wage against the median, 2026-2029
+- Central wage growth (average of published projections, %): 2026 4.53, 2027 4.07, 2028 3.40, 2029 2.80
+- Spillover theta 0.298 [0.145, 0.425]; drift -0.67 [-1.96, 0.54] pt a year
+- Indexed to the median from 2027: minimum wage 2029 990 [882, 1108]; SES Kaitz 2026 0.661 [0.629, 0.697], 2029 0.661 [0.629, 0.697]; base-wage Kaitz 2026 0.923 [0.912, 0.937], 2029 0.923 [0.912, 0.937]; P(base-wage Kaitz 2029 >= 0.95) 0.01; median base wage minus minimum wage, 2029 (euro) 82 [62, 103]
+- Agreement, then +50 in 2029: minimum wage 2029 1070 [1070, 1070]; SES Kaitz 2026 0.661 [0.629, 0.697], 2029 0.698 [0.624, 0.788]; base-wage Kaitz 2026 0.923 [0.912, 0.937], 2029 0.975 [0.896, 1.067]; P(base-wage Kaitz 2029 >= 0.95) 0.70; median base wage minus minimum wage, 2029 (euro) 27 [-67, 124]
+- Agreement, then 1,100 in 2029: minimum wage 2029 1100 [1100, 1100]; SES Kaitz 2026 0.661 [0.629, 0.697], 2029 0.712 [0.637, 0.803]; base-wage Kaitz 2026 0.923 [0.912, 0.937], 2029 0.995 [0.912, 1.089]; P(base-wage Kaitz 2029 >= 0.95) 0.81; median base wage minus minimum wage, 2029 (euro) 6 [-90, 106]
+- 1,000 in 2027, 1,100 in 2029: minimum wage 2029 1100 [1100, 1100]; SES Kaitz 2026 0.661 [0.629, 0.697], 2029 0.712 [0.637, 0.803]; base-wage Kaitz 2026 0.923 [0.912, 0.937], 2029 0.995 [0.912, 1.089]; P(base-wage Kaitz 2029 >= 0.95) 0.81; median base wage minus minimum wage, 2029 (euro) 6 [-90, 106]
+- 1,100 in 2027, then indexed: minimum wage 2029 1148 [1053, 1251]; SES Kaitz 2026 0.661 [0.629, 0.697], 2029 0.734 [0.684, 0.792]; base-wage Kaitz 2026 0.923 [0.912, 0.937], 2029 1.024 [0.984, 1.073]; P(base-wage Kaitz 2029 >= 0.95) 1.00; median base wage minus minimum wage, 2029 (euro) -27 [-75, 19]
+- Agreement, then +50 in 2029 against the indexed path, 2029: log Kaitz +0.054 [-0.025, +0.136]; P(SES Kaitz 2029 above the sample maximum 0.650) 0.87; P(base-wage Kaitz 2029 >= 1) 0.32
+- Agreement, then 1,100 in 2029 against the indexed path, 2029: log Kaitz +0.074 [-0.005, +0.156]; P(SES Kaitz 2029 above the sample maximum 0.650) 0.92; P(base-wage Kaitz 2029 >= 1) 0.46
+- 1,000 in 2027, 1,100 in 2029 against the indexed path, 2029: log Kaitz +0.074 [-0.005, +0.156]; P(SES Kaitz 2029 above the sample maximum 0.650) 0.92; P(base-wage Kaitz 2029 >= 1) 0.46
+- 1,100 in 2027, then indexed against the indexed path, 2029: log Kaitz +0.103 [+0.071, +0.142]; P(SES Kaitz 2029 above the sample maximum 0.650) 0.99; P(base-wage Kaitz 2029 >= 1) 0.84
+- Extra gross pay 2027-2029 for a full-time minimum-wage worker against the agreement path (14 payments): Agreement, then 1,100 in 2029 420 [420, 420] euro; 1,000 in 2027, 1,100 in 2029 1260 [1260, 1260] euro; 1,100 in 2027, then indexed 4405 [2376, 6546] euro
+- Risk curve (2027-2028 on the agreement): lowest 2029 minimum wage with P(base-wage Kaitz >= 0.95) >= 20%: 1020
+- Risk curve (2027-2028 on the agreement): lowest 2029 minimum wage with P(base-wage Kaitz >= 0.95) >= 50%: 1035
+- Risk curve: lowest 2029 minimum wage with P(base-wage Kaitz >= 1) >= 20%: 1045
+- Risk curve: lowest 2029 minimum wage with P(base-wage Kaitz >= 1) >= 50%: 1110
+- 2029 minimum wage 1070: P(base Kaitz >= 0.95) 0.70, P(>= 1) 0.32, median gap to the median base wage 27 euro
+- 2029 minimum wage 1100: P(base Kaitz >= 0.95) 0.81, P(>= 1) 0.46, median gap to the median base wage 6 euro
+- Cross-check: Eurostat's 12-month ratio to the median, PT, 70.5% (2022) and 71.2% (2026), which scales the SES 2022 index 0.642 to 0.649 in 2026
+- Base-wage Kaitz 2026 nowcast vs the 91% of 2025: 0.923 [0.912, 0.937]; median base wage 2026 (euro) 996 [982, 1009]
+
+## 2. Portugal: P10/median (SES October earnings) in 2029, by elasticity
+- 2022 observed: P10/median 0.741, minimum wage/P10 0.867
+- Indexed to the median from 2027, EU linear: P10/median 0.751 [0.734, 0.773], minimum wage/P10 0.879 [0.858, 0.904]; P(minimum wage/P10 >= 0.95) 0.00
+- Indexed to the median from 2027, EU bite-dependent: P10/median 0.754 [0.731, 0.793], minimum wage/P10 0.872 [0.857, 0.903]; P(minimum wage/P10 >= 0.95) 0.00
+- Indexed to the median from 2027, Portugal's own: P10/median 0.761 [0.727, 0.800], minimum wage/P10 0.868 [0.863, 0.877]; P(minimum wage/P10 >= 0.95) 0.00
+- Agreement, then +50 in 2029, EU linear: P10/median 0.772 [0.731, 0.823], minimum wage/P10 0.903 [0.855, 0.962]; P(minimum wage/P10 >= 0.95) 0.08
+- Agreement, then +50 in 2029, EU bite-dependent: P10/median 0.779 [0.722, 0.887], minimum wage/P10 0.879 [0.840, 0.967]; P(minimum wage/P10 >= 0.95) 0.08
+- Agreement, then +50 in 2029, Portugal's own: P10/median 0.799 [0.722, 0.898], minimum wage/P10 0.871 [0.859, 0.892]; P(minimum wage/P10 >= 0.95) 0.00
+- Agreement, then 1,100 in 2029, EU linear: P10/median 0.779 [0.738, 0.831], minimum wage/P10 0.912 [0.863, 0.973]; P(minimum wage/P10 >= 0.95) 0.12
+- Agreement, then 1,100 in 2029, EU bite-dependent: P10/median 0.789 [0.727, 0.908], minimum wage/P10 0.883 [0.838, 0.983]; P(minimum wage/P10 >= 0.95) 0.11
+- Agreement, then 1,100 in 2029, Portugal's own: P10/median 0.814 [0.735, 0.915], minimum wage/P10 0.872 [0.858, 0.896]; P(minimum wage/P10 >= 0.95) 0.00
+- 1,000 in 2027, 1,100 in 2029, EU linear: P10/median 0.779 [0.738, 0.831], minimum wage/P10 0.912 [0.863, 0.973]; P(minimum wage/P10 >= 0.95) 0.12
+- 1,000 in 2027, 1,100 in 2029, EU bite-dependent: P10/median 0.789 [0.727, 0.908], minimum wage/P10 0.883 [0.838, 0.983]; P(minimum wage/P10 >= 0.95) 0.11
+- 1,000 in 2027, 1,100 in 2029, Portugal's own: P10/median 0.814 [0.735, 0.915], minimum wage/P10 0.872 [0.858, 0.896]; P(minimum wage/P10 >= 0.95) 0.00
+- 1,100 in 2027, then indexed, EU linear: P10/median 0.791 [0.762, 0.828], minimum wage/P10 0.926 [0.893, 0.968]; P(minimum wage/P10 >= 0.95) 0.14
+- 1,100 in 2027, then indexed, EU bite-dependent: P10/median 0.811 [0.740, 0.910], minimum wage/P10 0.894 [0.835, 0.998]; P(minimum wage/P10 >= 0.95) 0.14
+- 1,100 in 2027, then indexed, Portugal's own: P10/median 0.837 [0.783, 0.906], minimum wage/P10 0.875 [0.855, 0.900]; P(minimum wage/P10 >= 0.95) 0.00
+- Agreement, then +50 in 2029 against the indexed path, EU linear: log P10/median +0.027 [-0.012, +0.070]
+- Agreement, then +50 in 2029 against the indexed path, EU bite-dependent: log P10/median +0.032 [-0.019, +0.127]
+- Agreement, then +50 in 2029 against the indexed path, Portugal's own: log P10/median +0.050 [-0.023, +0.128]
+- Agreement, then 1,100 in 2029 against the indexed path, EU linear: log P10/median +0.036 [-0.002, +0.082]
+- Agreement, then 1,100 in 2029 against the indexed path, EU bite-dependent: log P10/median +0.045 [-0.012, +0.150]
+- Agreement, then 1,100 in 2029 against the indexed path, Portugal's own: log P10/median +0.067 [-0.004, +0.147]
+- 1,000 in 2027, 1,100 in 2029 against the indexed path, EU linear: log P10/median +0.036 [-0.002, +0.082]
+- 1,000 in 2027, 1,100 in 2029 against the indexed path, EU bite-dependent: log P10/median +0.045 [-0.012, +0.150]
+- 1,000 in 2027, 1,100 in 2029 against the indexed path, Portugal's own: log P10/median +0.067 [-0.004, +0.147]
+- 1,100 in 2027, then indexed against the indexed path, EU linear: log P10/median +0.051 [+0.031, +0.077]
+- 1,100 in 2027, then indexed against the indexed path, EU bite-dependent: log P10/median +0.074 [+0.000, +0.149]
+- 1,100 in 2027, then indexed against the indexed path, Portugal's own: log P10/median +0.096 [+0.061, +0.137]
+
+## 3. Portugal: model outcomes (steady state at the 2029 Kaitz index, seeds drawn), change from 2026
+- Indexed to the median from 2027: employment_rate +0.00 [+0.00, +0.00] pt; share_at_floor +0.00 [-0.00, +0.00] pt; p25_p50 +0.00 [-0.00, +0.00] pt; job_to_job_per_year +0.00 [-0.00, +0.00] pt; log_gain_at_move +0.00 [-0.00, +0.00]; counter_raises_per_year +0.00 [-0.00, +0.00] pt; labour_share +0.00 [+0.00, +0.00] pt; mean_output +0.00 [-0.00, +0.00]%
+- Agreement, then +50 in 2029: employment_rate -0.78 [-2.92, +0.24] pt; share_at_floor +2.56 [-1.11, +6.96] pt; p25_p50 +1.48 [-0.28, +9.09] pt; job_to_job_per_year -0.52 [-1.56, +0.18] pt; log_gain_at_move -1.38 [-3.44, +0.54]; counter_raises_per_year -0.44 [-1.42, +0.13] pt; labour_share +0.49 [-0.15, +1.38] pt; mean_output +1.03 [-0.31, +3.46]%
+- Agreement, then 1,100 in 2029: employment_rate -1.09 [-3.60, +0.04] pt; share_at_floor +3.49 [-0.22, +8.15] pt; p25_p50 +2.85 [-0.22, +10.69] pt; job_to_job_per_year -0.72 [-1.84, +0.03] pt; log_gain_at_move -1.85 [-4.01, +0.11]; counter_raises_per_year -0.63 [-1.68, +0.02] pt; labour_share +0.65 [-0.03, +1.61] pt; mean_output +1.44 [-0.05, +4.14]%
+- 1,000 in 2027, 1,100 in 2029: employment_rate -1.09 [-3.60, +0.04] pt; share_at_floor +3.49 [-0.22, +8.15] pt; p25_p50 +2.85 [-0.22, +10.69] pt; job_to_job_per_year -0.72 [-1.84, +0.03] pt; log_gain_at_move -1.85 [-4.01, +0.11]; counter_raises_per_year -0.63 [-1.68, +0.02] pt; labour_share +0.65 [-0.03, +1.61] pt; mean_output +1.44 [-0.05, +4.14]%
+- 1,100 in 2027, then indexed: employment_rate -1.65 [-3.09, -0.89] pt; share_at_floor +4.94 [+3.31, +7.22] pt; p25_p50 +5.03 [+0.44, +9.59] pt; job_to_job_per_year -1.03 [-1.63, -0.62] pt; log_gain_at_move -2.58 [-3.61, -1.71]; counter_raises_per_year -0.93 [-1.49, -0.48] pt; labour_share +0.91 [+0.56, +1.44] pt; mean_output +2.12 [+1.14, +3.68]%
+- Model levels at the 2026 nowcast: employment_rate 0.919, share_at_floor 0.239, p25_p50 0.685, job_to_job_per_year 0.139, log_gain_at_move 0.287, counter_raises_per_year 0.128, labour_share 0.745, mean_output 1.544
+
+## 4. Portugal: employment against the indexed path, 2029
+- Agreement, then +50 in 2029: bottom-quarter wage gain +7.40 [-3.26, +18.51]%; OWE -0.04 (broad groups since 2010): -3.4 [-8.4, +1.5] thousand jobs; OWE -0.14 (all 88 studies): -11.8 [-29.6, +5.2] thousand jobs; model match destruction: -38.5 [-146.1, +11.9] thousand jobs (-0.84 [-3.20, +0.26]%); implied model OWE -0.46 [-0.83, -0.25]
+- Agreement, then 1,100 in 2029: bottom-quarter wage gain +9.95 [-0.63, +21.19]%; OWE -0.04 (broad groups since 2010): -4.5 [-9.7, +0.3] thousand jobs; OWE -0.14 (all 88 studies): -15.9 [-33.8, +1.0] thousand jobs; model match destruction: -54.0 [-179.5, +2.2] thousand jobs (-1.18 [-3.93, +0.05]%); implied model OWE -0.48 [-0.88, -0.27]
+- 1,000 in 2027, 1,100 in 2029: bottom-quarter wage gain +9.95 [-0.63, +21.19]%; OWE -0.04 (broad groups since 2010): -4.5 [-9.7, +0.3] thousand jobs; OWE -0.14 (all 88 studies): -15.9 [-33.8, +1.0] thousand jobs; model match destruction: -54.0 [-179.5, +2.2] thousand jobs (-1.18 [-3.93, +0.05]%); implied model OWE -0.48 [-0.88, -0.27]
+- 1,100 in 2027, then indexed: bottom-quarter wage gain +14.01 [+9.70, +18.61]%; OWE -0.04 (broad groups since 2010): -6.4 [-8.5, -4.4] thousand jobs; OWE -0.14 (all 88 studies): -22.4 [-29.7, -15.5] thousand jobs; model match destruction: -81.9 [-154.1, -43.9] thousand jobs (-1.80 [-3.38, -0.96]%); implied model OWE -0.52 [-0.86, -0.33]
+- Employees (national accounts, 2025): 4.561 million
+
+## 5. Portugal: pay transparency
+- Employees covered by the reporting duty (business economy): from 2027 (>= 150) 34.8%, from 2031 (>= 50) 49.8%
+- Gender gap on total earnings (15.4% in 2023) if covered firms close 13% (Denmark) to 19% (UK) of it, coverage from 2027: 14.38% to 14.70% (-1.02 to -0.70 pt)
+- Gender gap on base pay (12.5% in 2023) if covered firms close 13% (Denmark) to 19% (UK) of it, coverage from 2027: 11.67% to 11.93% (-0.83 to -0.57 pt)
+- Male wages in covered firms -1.7% (Denmark) to -3% (UK): economy-wide male mean -0.59% to -1.05% (coverage from 2027)
+- Gender gap on total earnings (15.4% in 2023) if covered firms close 13% (Denmark) to 19% (UK) of it, coverage from 2031: 13.94% to 14.40% (-1.46 to -1.00 pt)
+- Gender gap on base pay (12.5% in 2023) if covered firms close 13% (Denmark) to 19% (UK) of it, coverage from 2031: 11.32% to 11.69% (-1.18 to -0.81 pt)
+- Male wages in covered firms -1.7% (Denmark) to -3% (UK): economy-wide male mean -0.85% to -1.49% (coverage from 2031)
+- Model, coverage 2027 duty (34.8%), year 5: mean +0.17% (sd 0.22), P25 +2.68%, P50 +1.15%, P90 -0.73%, counter raises -0.83 pt/yr, job-to-job -0.14 pt/yr, employment -0.09 pt
+- Model, coverage 2031 duty (49.8%), year 5: mean -0.32% (sd 0.34), P25 +3.31%, P50 +1.29%, P90 -1.98%, counter raises -1.26 pt/yr, job-to-job -0.30 pt/yr, employment +0.03 pt
+- Model, coverage all employers (100.0%), year 5: mean -2.41% (sd 0.28), P25 +5.16%, P50 -1.52%, P90 -4.96%, counter raises -2.36 pt/yr, job-to-job -0.34 pt/yr, employment -0.04 pt
+
+## 6. EU: moving each minimum wage to 60% of the median (median unchanged)
+- EE: Kaitz 42.7 -> 60 (+34.0 log pt); SES Kaitz 0.416 -> 0.585; log P10/median +18.2 [+12.9, +22.9] pt; low-pay share 18.7% -> 12.5% [8.3, 16.8]
+- LV: Kaitz 44.8 -> 60 (+29.1 log pt); SES Kaitz 0.417 -> 0.557; log P10/median +15.1 [+11.1, +18.8] pt; low-pay share 22.2% -> 15.7% [11.1, 20.2]
+- CZ: Kaitz 46.9 -> 60 (+24.6 log pt); SES Kaitz 0.460 -> 0.588; log P10/median +14.1 [+8.3, +18.2] pt; low-pay share 13.5% -> 10.1% [7.5, 12.5]
+- BE: Kaitz 47.5 -> 60 (+23.4 log pt); SES Kaitz 0.479 -> 0.606; log P10/median +14.0 [+7.2, +18.8] pt; low-pay share 14.0% -> 10.6% [8.0, 13.0]
+- HU: Kaitz 47.6 -> 60 (+23.1 log pt); SES Kaitz 0.501 -> 0.632; log P10/median +14.5 [+6.0, +20.1] pt; low-pay share 12.0% -> 9.1% [6.9, 11.2]
+- NL: Kaitz 48.3 -> 60 (+21.7 log pt); SES Kaitz 0.479 -> 0.595; log P10/median +12.8 [+6.8, +17.0] pt; low-pay share 6.2% -> 4.8% [3.7, 5.8]
+- DE: Kaitz 49.6 -> 60 (+19.1 log pt); SES Kaitz 0.501 -> 0.607; log P10/median +11.8 [+5.4, +16.0] pt; low-pay share 13.8% -> 11.0% [8.8, 13.0]
+- EL: Kaitz 50.1 -> 60 (+18.0 log pt); SES Kaitz 0.560 -> 0.670 (beyond the sample); log P10/median +12.4 [+2.7, +18.4] pt; low-pay share 9.9% -> 8.0% [6.5, 9.4]
+- LT: Kaitz 50.1 -> 60 (+18.0 log pt); SES Kaitz 0.490 -> 0.586; log P10/median +10.7 [+5.6, +14.2] pt; low-pay share 16.7% -> 13.5% [10.9, 15.8]
+- IE: Kaitz 51.1 -> 60 (+16.0 log pt); SES Kaitz 0.495 -> 0.581; log P10/median +9.5 [+5.0, +12.7] pt; low-pay share 14.7% -> 12.1% [10.0, 14.0]
+- SK: Kaitz 51.5 -> 60 (+15.3 log pt); SES Kaitz 0.504 -> 0.587; log P10/median +9.2 [+4.5, +12.5] pt; low-pay share 12.6% -> 10.5% [8.8, 12.0]
+- BG: Kaitz 53.2 -> 60 (+12.0 log pt); SES Kaitz 0.515 -> 0.581; log P10/median +7.3 [+3.5, +9.9] pt; low-pay share 25.7% -> 22.3% [19.3, 24.7]
+- HR: Kaitz 53.9 -> 60 (+10.8 log pt); SES Kaitz 0.531 -> 0.591; log P10/median +6.8 [+2.9, +9.3] pt; low-pay share 18.6% -> 16.4% [14.4, 18.0]
+- ES: Kaitz 55.3 -> 60 (+8.2 log pt); SES Kaitz 0.500 -> 0.543; log P10/median +4.7 [+2.7, +6.1] pt; low-pay share 8.8% -> 8.0% [7.3, 8.6]
+- LU: Kaitz 56.4 -> 60 (+6.3 log pt); SES Kaitz 0.559 -> 0.596; log P10/median +4.1 [+1.4, +5.7] pt; low-pay share 13.7% -> 12.7% [11.8, 13.4]
+- SI: Kaitz 58.5 -> 60 (+2.5 log pt); SES Kaitz 0.612 -> 0.628; log P10/median +1.7 [+0.3, +2.6] pt; low-pay share 11.1% -> 10.8% [10.5, 11.0]
+- PT: Kaitz 58.9 -> 60 (+1.9 log pt); SES Kaitz 0.642 -> 0.654 (beyond the sample); log P10/median +1.4 [+0.1, +2.1] pt; low-pay share 2.0% -> 2.0% [2.0, 2.0]
+- PL: Kaitz 59.2 -> 60 (+1.3 log pt); SES Kaitz 0.558 -> 0.565; log P10/median +0.8 [+0.3, +1.1] pt; low-pay share 16.5% -> 16.2% [16.0, 16.4]
+- Countries whose move to 60% would take the SES Kaitz index beyond the sample maximum (0.650): EL, PT

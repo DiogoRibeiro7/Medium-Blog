@@ -1,0 +1,59 @@
+name: Reproduce eu-wage-policy-forecast
+
+on:
+  pull_request:
+    paths:
+      - 'eu-wage-policy-forecast/**'
+      - '.github/workflows/eu-wage-policy-forecast.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'eu-wage-policy-forecast/**'
+      - '.github/workflows/eu-wage-policy-forecast.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    defaults:
+      run:
+        working-directory: eu-wage-policy-forecast
+    env:
+      MPLBACKEND: Agg
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: eu-wage-policy-forecast/requirements.txt
+
+      - name: Install pinned dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Run the tests
+        run: python -m pytest -q tests
+
+      - name: Rerun the estimates, the model experiments and the forecast
+        run: |
+          python empirics.py > /dev/null
+          python experiments.py > /dev/null
+          python forecast.py > /dev/null
+
+      - name: Check the numbers match the committed run
+        run: git diff --exit-code -- results/empirics_summary.txt results/model_summary.txt results/forecast_summary.txt
+
+      - name: Draw the figures
+        run: |
+          python figures.py
+          for f in fig1_bite_paths fig2_decision_2029 fig3_model_along_bite fig4_transparency fig5_eu_reference; do
+            test -s "figures/$f.png"
+          done
