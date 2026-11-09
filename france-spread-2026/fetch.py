@@ -4,14 +4,17 @@
 
 Sources:
 
-1. Eurostat (JSON-stat API): daily and monthly long-term government bond yields (EMU
+1. Eurostat (JSON-stat API): monthly long-term government bond yields (EMU
    convergence criterion), annual and quarterly government interest payable, net lending and
    debt, and annual and quarterly GDP at current prices. Each request carries filter sets tried
    in order, narrowest first. (Eurostat's daily yield table, irt_lt_mcby_d, is not disseminated
    through the API.)
 2. ECB Data Portal: monthly convergence-criterion yields (dataset IRS), usually published before
    Eurostat's copy, and a probe of the daily financial-market series (dataset FM) for France.
-3. Stooq: daily 10-year benchmark government bond yields (free CSV downloads).
+3. Daily probes (kept when they answer, never required): Bundesbank daily German 10-year
+   yields, the Banque de France's daily French 10-year constant-maturity rate, and the ECB's
+   business-daily financial-market series. Stooq's free CSV downloads (``--only stooq``) now
+   answer 404 to scripted requests.
 
 Every response is logged with URL, HTTP status and SHA-256 in ``data/fetch_log.txt``.
 """
@@ -221,6 +224,32 @@ def stooq(out: Path, log: list[str]) -> bool:
     return len(parts) >= 4
 
 
+DAILY_PROBES = {
+    # Bundesbank: yields on listed Federal securities, residual maturity 10 years, daily
+    "bbk_de10": "https://api.statistiken.bundesbank.de/rest/data/BBSIS/D.I.ZST.ZI.EUR.S1311.B.A604.R10XX.R.A.A._Z._Z.A?format=csv&lang=en",
+    # Banque de France Webstat: French 10-year constant-maturity rate (TEC10), daily
+    "bdf_fr10": "https://webstat.banque-france.fr/api/explore/v2.1/catalog/datasets/observations/exports/csv?where=series_key%3D%22FM.D.FR.EUR.FR2.BB.FRMOYTEC10.HSTA%22",
+    # ECB financial-market data, business-daily frequency, 10-year benchmark yields if published
+    "ecb_fm_b": "https://data-api.ecb.europa.eu/service/data/FM/B.DE+FR+IT+ES.EUR....YLD?lastNObservations=3&format=csvdata",
+}
+
+
+def daily_probes(out: Path, log: list[str]) -> None:
+    """Try the daily sources; keep whatever answers, never fail the run on them."""
+    for name, url in DAILY_PROBES.items():
+        try:
+            status, body = get(url, tries=1, timeout=90)
+        except RuntimeError as e:
+            log.append(f"probe {name}\tERROR\t{e}")
+            continue
+        log_response(log, f"probe {name}", url, status, body)
+        if status == 200 and len(body) > 300:
+            (out / f"probe_{name}.csv.gz").write_bytes(__import__("gzip").compress(body, mtime=0))
+            log.append(f"probe {name}\tKEPT\t{body[:160]!r}")
+        else:
+            log.append(f"probe {name}\tBODY\t{body[:200]!r}")
+
+
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--out", default="data")
@@ -239,8 +268,10 @@ def main(argv: list[str] | None = None) -> int:
     if not want or "ecb" in want:
         ok &= ecb_monthly(out, log)
         ecb_probe(out, log)
-    if not want or "stooq" in want:
+    if want and "stooq" in want:
         ok &= stooq(out, log)
+    if not want or "probes" in want:
+        daily_probes(out, log)
     with open(out / "fetch_log.txt", "a", encoding="utf-8") as f:
         f.write("\n".join(log) + "\n")
     print("\n".join(log))
