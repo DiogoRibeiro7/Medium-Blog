@@ -1,0 +1,3223 @@
+[ {
+  "IndicadorCod" : "0008466",
+  "IndicadorDsg" : "Empresas (N.º) por Localização geográfica (NUTS - 2013) e Atividade económica (Subclasse - CAE Rev. 3); Anual - INE, Sistema de contas integradas das empresas",
+  "MetaInfUrl" : "https://www.ine.pt/bddXplorer/htdocs/minfo.jsp?var_cd=0008466&lingua=PT",
+  "DataExtracao" : "2026-11-09T23:30:52.412Z",
+  "DataUltimoAtualizacao" : "2025-02-28",
+  "UltimoPref" : "2023",
+  "Dados" : {
+    "2008" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43910",
+      "dim_3_t" : "Atividades de colocação de coberturas",
+      "sinal_conv" : "┴",
+      "sinal_conv_desc" : "Quebra de série/comparabilidade",
+      "ind_string" : "181 ┴",
+      "valor" : "181"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43991",
+      "dim_3_t" : "Aluguer de equipamento de construção e de demolição, com operador",
+      "sinal_conv" : "┴",
+      "sinal_conv_desc" : "Quebra de série/comparabilidade",
+      "ind_string" : "284 ┴",
+      "valor" : "284"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43110",
+      "dim_3_t" : "Demolição",
+      "sinal_conv" : "┴",
+      "sinal_conv_desc" : "Quebra de série/comparabilidade",
+      "ind_string" : "416 ┴",
+      "valor" : "416"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43222",
+      "dim_3_t" : "Instalação de climatização",
+      "sinal_conv" : "┴",
+      "sinal_conv_desc" : "Quebra de série/comparabilidade",
+      "ind_string" : "1 083 ┴",
+      "valor" : "1083"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43120",
+      "dim_3_t" : "Preparação dos locais de construção",
+      "sinal_conv" : "┴",
+      "sinal_conv_desc" : "Quebra de série/comparabilidade",
+      "ind_string" : "1 210 ┴",
+      "valor" : "1210"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68312",
+      "dim_3_t" : "Atividades de angariação imobiliária",
+      "sinal_conv" : "┴",
+      "sinal_conv_desc" : "Quebra de série/comparabilidade",
+      "ind_string" : "1 386 ┴",
+      "valor" : "1386"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68313",
+      "dim_3_t" : "Atividades de avaliação imobiliária",
+      "sinal_conv" : "┴",
+      "sinal_conv_desc" : "Quebra de série/comparabilidade",
+      "ind_string" : "1 456 ┴",
+      "valor" : "1456"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43310",
+      "dim_3_t" : "Estucagem",
+      "sinal_conv" : "┴",
+      "sinal_conv_desc" : "Quebra de série/comparabilidade",
+      "ind_string" : "2 621 ┴",
+      "valor" : "2621"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68200",
+      "dim_3_t" : "Arrendamento de bens imobiliários",
+      "sinal_conv" : "┴",
+      "sinal_conv_desc" : "Quebra de série/comparabilidade",
+      "ind_string" : "2 953 ┴",
+      "valor" : "2953"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43992",
+      "dim_3_t" : "Outras atividades especializadas de construção diversas, n.e.",
+      "sinal_conv" : "┴",
+      "sinal_conv_desc" : "Quebra de série/comparabilidade",
+      "ind_string" : "3 139 ┴",
+      "valor" : "3139"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "41100",
+      "dim_3_t" : "Promoção imobiliária (desenvolvimento de projetos de edifícios)",
+      "sinal_conv" : "┴",
+      "sinal_conv_desc" : "Quebra de série/comparabilidade",
+      "ind_string" : "3 225 ┴",
+      "valor" : "3225"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43290",
+      "dim_3_t" : "Outras instalações em construções",
+      "sinal_conv" : "┴",
+      "sinal_conv_desc" : "Quebra de série/comparabilidade",
+      "ind_string" : "3 400 ┴",
+      "valor" : "3400"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43330",
+      "dim_3_t" : "Revestimento de pavimentos e de paredes",
+      "sinal_conv" : "┴",
+      "sinal_conv_desc" : "Quebra de série/comparabilidade",
+      "ind_string" : "5 091 ┴",
+      "valor" : "5091"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68311",
+      "dim_3_t" : "Atividades de mediação imobiliária",
+      "sinal_conv" : "┴",
+      "sinal_conv_desc" : "Quebra de série/comparabilidade",
+      "ind_string" : "5 557 ┴",
+      "valor" : "5557"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43221",
+      "dim_3_t" : "Instalação de canalizações",
+      "sinal_conv" : "┴",
+      "sinal_conv_desc" : "Quebra de série/comparabilidade",
+      "ind_string" : "5 867 ┴",
+      "valor" : "5867"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43390",
+      "dim_3_t" : "Outras atividades de acabamento em edifícios",
+      "sinal_conv" : "┴",
+      "sinal_conv_desc" : "Quebra de série/comparabilidade",
+      "ind_string" : "6 876 ┴",
+      "valor" : "6876"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43320",
+      "dim_3_t" : "Montagem de trabalhos de carpintaria e de caixilharia",
+      "sinal_conv" : "┴",
+      "sinal_conv_desc" : "Quebra de série/comparabilidade",
+      "ind_string" : "7 286 ┴",
+      "valor" : "7286"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43340",
+      "dim_3_t" : "Pintura e colocação de vidros",
+      "sinal_conv" : "┴",
+      "sinal_conv_desc" : "Quebra de série/comparabilidade",
+      "ind_string" : "7 689 ┴",
+      "valor" : "7689"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "71110",
+      "dim_3_t" : "Atividades de arquitetura",
+      "sinal_conv" : "┴",
+      "sinal_conv_desc" : "Quebra de série/comparabilidade",
+      "ind_string" : "10 567 ┴",
+      "valor" : "10567"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43210",
+      "dim_3_t" : "Instalação elétrica",
+      "sinal_conv" : "┴",
+      "sinal_conv_desc" : "Quebra de série/comparabilidade",
+      "ind_string" : "12 527 ┴",
+      "valor" : "12527"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68100",
+      "dim_3_t" : "Compra e venda de bens imobiliários",
+      "sinal_conv" : "┴",
+      "sinal_conv_desc" : "Quebra de série/comparabilidade",
+      "ind_string" : "16 338 ┴",
+      "valor" : "16338"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "71120",
+      "dim_3_t" : "Atividades de engenharia e técnicas afins",
+      "sinal_conv" : "┴",
+      "sinal_conv_desc" : "Quebra de série/comparabilidade",
+      "ind_string" : "24 789 ┴",
+      "valor" : "24789"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68",
+      "dim_3_t" : "Atividades imobiliárias",
+      "sinal_conv" : "┴",
+      "sinal_conv_desc" : "Quebra de série/comparabilidade",
+      "ind_string" : "30 068 ┴",
+      "valor" : "30068"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "L",
+      "dim_3_t" : "Atividades imobiliárias",
+      "sinal_conv" : "┴",
+      "sinal_conv_desc" : "Quebra de série/comparabilidade",
+      "ind_string" : "30 068 ┴",
+      "valor" : "30068"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43",
+      "dim_3_t" : "Atividades especializadas de construção",
+      "sinal_conv" : "┴",
+      "sinal_conv_desc" : "Quebra de série/comparabilidade",
+      "ind_string" : "57 827 ┴",
+      "valor" : "57827"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "41200",
+      "dim_3_t" : "Construção de edifícios (residenciais e não residenciais)",
+      "sinal_conv" : "┴",
+      "sinal_conv_desc" : "Quebra de série/comparabilidade",
+      "ind_string" : "59 916 ┴",
+      "valor" : "59916"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "41",
+      "dim_3_t" : "Promoção imobiliária (desenvolvimento de projetos de edifícios); construção de edifícios",
+      "sinal_conv" : "┴",
+      "sinal_conv_desc" : "Quebra de série/comparabilidade",
+      "ind_string" : "63 141 ┴",
+      "valor" : "63141"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "F",
+      "dim_3_t" : "Construção",
+      "sinal_conv" : "┴",
+      "sinal_conv_desc" : "Quebra de série/comparabilidade",
+      "ind_string" : "125 045 ┴",
+      "valor" : "125045"
+    } ],
+    "2009" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43910",
+      "dim_3_t" : "Atividades de colocação de coberturas",
+      "ind_string" : "187",
+      "valor" : "187"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43991",
+      "dim_3_t" : "Aluguer de equipamento de construção e de demolição, com operador",
+      "ind_string" : "280",
+      "valor" : "280"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43110",
+      "dim_3_t" : "Demolição",
+      "ind_string" : "419",
+      "valor" : "419"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43120",
+      "dim_3_t" : "Preparação dos locais de construção",
+      "ind_string" : "1 126",
+      "valor" : "1126"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43222",
+      "dim_3_t" : "Instalação de climatização",
+      "ind_string" : "1 179",
+      "valor" : "1179"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68313",
+      "dim_3_t" : "Atividades de avaliação imobiliária",
+      "ind_string" : "1 475",
+      "valor" : "1475"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68312",
+      "dim_3_t" : "Atividades de angariação imobiliária",
+      "ind_string" : "1 614",
+      "valor" : "1614"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43310",
+      "dim_3_t" : "Estucagem",
+      "ind_string" : "2 347",
+      "valor" : "2347"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68200",
+      "dim_3_t" : "Arrendamento de bens imobiliários",
+      "ind_string" : "2 978",
+      "valor" : "2978"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "41100",
+      "dim_3_t" : "Promoção imobiliária (desenvolvimento de projetos de edifícios)",
+      "ind_string" : "3 065",
+      "valor" : "3065"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43290",
+      "dim_3_t" : "Outras instalações em construções",
+      "ind_string" : "3 112",
+      "valor" : "3112"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43992",
+      "dim_3_t" : "Outras atividades especializadas de construção diversas, n.e.",
+      "ind_string" : "3 226",
+      "valor" : "3226"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43330",
+      "dim_3_t" : "Revestimento de pavimentos e de paredes",
+      "ind_string" : "4 676",
+      "valor" : "4676"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68311",
+      "dim_3_t" : "Atividades de mediação imobiliária",
+      "ind_string" : "5 154",
+      "valor" : "5154"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43221",
+      "dim_3_t" : "Instalação de canalizações",
+      "ind_string" : "5 562",
+      "valor" : "5562"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43390",
+      "dim_3_t" : "Outras atividades de acabamento em edifícios",
+      "ind_string" : "6 467",
+      "valor" : "6467"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43320",
+      "dim_3_t" : "Montagem de trabalhos de carpintaria e de caixilharia",
+      "ind_string" : "6 722",
+      "valor" : "6722"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43340",
+      "dim_3_t" : "Pintura e colocação de vidros",
+      "ind_string" : "6 975",
+      "valor" : "6975"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "71110",
+      "dim_3_t" : "Atividades de arquitetura",
+      "ind_string" : "10 104",
+      "valor" : "10104"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43210",
+      "dim_3_t" : "Instalação elétrica",
+      "ind_string" : "12 082",
+      "valor" : "12082"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68100",
+      "dim_3_t" : "Compra e venda de bens imobiliários",
+      "ind_string" : "16 458",
+      "valor" : "16458"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "71120",
+      "dim_3_t" : "Atividades de engenharia e técnicas afins",
+      "ind_string" : "23 319",
+      "valor" : "23319"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68",
+      "dim_3_t" : "Atividades imobiliárias",
+      "ind_string" : "30 010",
+      "valor" : "30010"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "L",
+      "dim_3_t" : "Atividades imobiliárias",
+      "ind_string" : "30 010",
+      "valor" : "30010"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43",
+      "dim_3_t" : "Atividades especializadas de construção",
+      "ind_string" : "54 509",
+      "valor" : "54509"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "41200",
+      "dim_3_t" : "Construção de edifícios (residenciais e não residenciais)",
+      "ind_string" : "55 214",
+      "valor" : "55214"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "41",
+      "dim_3_t" : "Promoção imobiliária (desenvolvimento de projetos de edifícios); construção de edifícios",
+      "ind_string" : "58 279",
+      "valor" : "58279"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "F",
+      "dim_3_t" : "Construção",
+      "ind_string" : "116 686",
+      "valor" : "116686"
+    } ],
+    "2010" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43910",
+      "dim_3_t" : "Atividades de colocação de coberturas",
+      "ind_string" : "191",
+      "valor" : "191"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43991",
+      "dim_3_t" : "Aluguer de equipamento de construção e de demolição, com operador",
+      "ind_string" : "263",
+      "valor" : "263"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43110",
+      "dim_3_t" : "Demolição",
+      "ind_string" : "404",
+      "valor" : "404"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43120",
+      "dim_3_t" : "Preparação dos locais de construção",
+      "ind_string" : "1 020",
+      "valor" : "1020"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43222",
+      "dim_3_t" : "Instalação de climatização",
+      "ind_string" : "1 259",
+      "valor" : "1259"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68313",
+      "dim_3_t" : "Atividades de avaliação imobiliária",
+      "ind_string" : "1 470",
+      "valor" : "1470"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68312",
+      "dim_3_t" : "Atividades de angariação imobiliária",
+      "ind_string" : "1 797",
+      "valor" : "1797"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43310",
+      "dim_3_t" : "Estucagem",
+      "ind_string" : "1 992",
+      "valor" : "1992"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43290",
+      "dim_3_t" : "Outras instalações em construções",
+      "ind_string" : "2 631",
+      "valor" : "2631"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "41100",
+      "dim_3_t" : "Promoção imobiliária (desenvolvimento de projetos de edifícios)",
+      "ind_string" : "2 906",
+      "valor" : "2906"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68200",
+      "dim_3_t" : "Arrendamento de bens imobiliários",
+      "ind_string" : "2 933",
+      "valor" : "2933"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43992",
+      "dim_3_t" : "Outras atividades especializadas de construção diversas, n.e.",
+      "ind_string" : "3 069",
+      "valor" : "3069"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43330",
+      "dim_3_t" : "Revestimento de pavimentos e de paredes",
+      "ind_string" : "4 098",
+      "valor" : "4098"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68311",
+      "dim_3_t" : "Atividades de mediação imobiliária",
+      "ind_string" : "4 757",
+      "valor" : "4757"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43221",
+      "dim_3_t" : "Instalação de canalizações",
+      "ind_string" : "5 137",
+      "valor" : "5137"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43390",
+      "dim_3_t" : "Outras atividades de acabamento em edifícios",
+      "ind_string" : "5 844",
+      "valor" : "5844"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43320",
+      "dim_3_t" : "Montagem de trabalhos de carpintaria e de caixilharia",
+      "ind_string" : "5 953",
+      "valor" : "5953"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43340",
+      "dim_3_t" : "Pintura e colocação de vidros",
+      "ind_string" : "5 976",
+      "valor" : "5976"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "71110",
+      "dim_3_t" : "Atividades de arquitetura",
+      "ind_string" : "9 703",
+      "valor" : "9703"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43210",
+      "dim_3_t" : "Instalação elétrica",
+      "ind_string" : "11 338",
+      "valor" : "11338"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68100",
+      "dim_3_t" : "Compra e venda de bens imobiliários",
+      "ind_string" : "16 327",
+      "valor" : "16327"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "71120",
+      "dim_3_t" : "Atividades de engenharia e técnicas afins",
+      "ind_string" : "21 956",
+      "valor" : "21956"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68",
+      "dim_3_t" : "Atividades imobiliárias",
+      "ind_string" : "29 566",
+      "valor" : "29566"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "L",
+      "dim_3_t" : "Atividades imobiliárias",
+      "ind_string" : "29 566",
+      "valor" : "29566"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43",
+      "dim_3_t" : "Atividades especializadas de construção",
+      "ind_string" : "49 315",
+      "valor" : "49315"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "41200",
+      "dim_3_t" : "Construção de edifícios (residenciais e não residenciais)",
+      "ind_string" : "49 633",
+      "valor" : "49633"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "41",
+      "dim_3_t" : "Promoção imobiliária (desenvolvimento de projetos de edifícios); construção de edifícios",
+      "ind_string" : "52 539",
+      "valor" : "52539"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "F",
+      "dim_3_t" : "Construção",
+      "ind_string" : "105 463",
+      "valor" : "105463"
+    } ],
+    "2011" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43910",
+      "dim_3_t" : "Atividades de colocação de coberturas",
+      "ind_string" : "198",
+      "valor" : "198"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43991",
+      "dim_3_t" : "Aluguer de equipamento de construção e de demolição, com operador",
+      "ind_string" : "263",
+      "valor" : "263"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43110",
+      "dim_3_t" : "Demolição",
+      "ind_string" : "410",
+      "valor" : "410"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43120",
+      "dim_3_t" : "Preparação dos locais de construção",
+      "ind_string" : "937",
+      "valor" : "937"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43222",
+      "dim_3_t" : "Instalação de climatização",
+      "ind_string" : "1 278",
+      "valor" : "1278"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68313",
+      "dim_3_t" : "Atividades de avaliação imobiliária",
+      "ind_string" : "1 315",
+      "valor" : "1315"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43310",
+      "dim_3_t" : "Estucagem",
+      "ind_string" : "1 734",
+      "valor" : "1734"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68312",
+      "dim_3_t" : "Atividades de angariação imobiliária",
+      "ind_string" : "1 786",
+      "valor" : "1786"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43290",
+      "dim_3_t" : "Outras instalações em construções",
+      "ind_string" : "2 351",
+      "valor" : "2351"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "41100",
+      "dim_3_t" : "Promoção imobiliária (desenvolvimento de projetos de edifícios)",
+      "ind_string" : "2 727",
+      "valor" : "2727"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43992",
+      "dim_3_t" : "Outras atividades especializadas de construção diversas, n.e.",
+      "ind_string" : "2 946",
+      "valor" : "2946"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68200",
+      "dim_3_t" : "Arrendamento de bens imobiliários",
+      "ind_string" : "2 948",
+      "valor" : "2948"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43330",
+      "dim_3_t" : "Revestimento de pavimentos e de paredes",
+      "ind_string" : "3 728",
+      "valor" : "3728"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68311",
+      "dim_3_t" : "Atividades de mediação imobiliária",
+      "ind_string" : "4 408",
+      "valor" : "4408"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43221",
+      "dim_3_t" : "Instalação de canalizações",
+      "ind_string" : "4 814",
+      "valor" : "4814"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43340",
+      "dim_3_t" : "Pintura e colocação de vidros",
+      "ind_string" : "5 369",
+      "valor" : "5369"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43320",
+      "dim_3_t" : "Montagem de trabalhos de carpintaria e de caixilharia",
+      "ind_string" : "5 488",
+      "valor" : "5488"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43390",
+      "dim_3_t" : "Outras atividades de acabamento em edifícios",
+      "ind_string" : "5 488",
+      "valor" : "5488"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "71110",
+      "dim_3_t" : "Atividades de arquitetura",
+      "ind_string" : "8 990",
+      "valor" : "8990"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43210",
+      "dim_3_t" : "Instalação elétrica",
+      "ind_string" : "10 940",
+      "valor" : "10940"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68100",
+      "dim_3_t" : "Compra e venda de bens imobiliários",
+      "ind_string" : "16 275",
+      "valor" : "16275"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "71120",
+      "dim_3_t" : "Atividades de engenharia e técnicas afins",
+      "ind_string" : "19 972",
+      "valor" : "19972"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68",
+      "dim_3_t" : "Atividades imobiliárias",
+      "ind_string" : "28 983",
+      "valor" : "28983"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "L",
+      "dim_3_t" : "Atividades imobiliárias",
+      "ind_string" : "28 983",
+      "valor" : "28983"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "41200",
+      "dim_3_t" : "Construção de edifícios (residenciais e não residenciais)",
+      "ind_string" : "45 753",
+      "valor" : "45753"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43",
+      "dim_3_t" : "Atividades especializadas de construção",
+      "ind_string" : "46 083",
+      "valor" : "46083"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "41",
+      "dim_3_t" : "Promoção imobiliária (desenvolvimento de projetos de edifícios); construção de edifícios",
+      "ind_string" : "48 480",
+      "valor" : "48480"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "F",
+      "dim_3_t" : "Construção",
+      "ind_string" : "97 980",
+      "valor" : "97980"
+    } ],
+    "2012" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43910",
+      "dim_3_t" : "Atividades de colocação de coberturas",
+      "ind_string" : "193",
+      "valor" : "193"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43991",
+      "dim_3_t" : "Aluguer de equipamento de construção e de demolição, com operador",
+      "ind_string" : "248",
+      "valor" : "248"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43110",
+      "dim_3_t" : "Demolição",
+      "ind_string" : "398",
+      "valor" : "398"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43120",
+      "dim_3_t" : "Preparação dos locais de construção",
+      "ind_string" : "841",
+      "valor" : "841"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43222",
+      "dim_3_t" : "Instalação de climatização",
+      "ind_string" : "1 246",
+      "valor" : "1246"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68313",
+      "dim_3_t" : "Atividades de avaliação imobiliária",
+      "ind_string" : "1 347",
+      "valor" : "1347"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43310",
+      "dim_3_t" : "Estucagem",
+      "ind_string" : "1 468",
+      "valor" : "1468"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68312",
+      "dim_3_t" : "Atividades de angariação imobiliária",
+      "ind_string" : "1 641",
+      "valor" : "1641"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43290",
+      "dim_3_t" : "Outras instalações em construções",
+      "ind_string" : "1 843",
+      "valor" : "1843"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "41100",
+      "dim_3_t" : "Promoção imobiliária (desenvolvimento de projetos de edifícios)",
+      "ind_string" : "2 542",
+      "valor" : "2542"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43992",
+      "dim_3_t" : "Outras atividades especializadas de construção diversas, n.e.",
+      "ind_string" : "2 791",
+      "valor" : "2791"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68200",
+      "dim_3_t" : "Arrendamento de bens imobiliários",
+      "ind_string" : "2 989",
+      "valor" : "2989"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43330",
+      "dim_3_t" : "Revestimento de pavimentos e de paredes",
+      "ind_string" : "3 156",
+      "valor" : "3156"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68311",
+      "dim_3_t" : "Atividades de mediação imobiliária",
+      "ind_string" : "3 934",
+      "valor" : "3934"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43221",
+      "dim_3_t" : "Instalação de canalizações",
+      "ind_string" : "4 425",
+      "valor" : "4425"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43340",
+      "dim_3_t" : "Pintura e colocação de vidros",
+      "ind_string" : "4 510",
+      "valor" : "4510"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43320",
+      "dim_3_t" : "Montagem de trabalhos de carpintaria e de caixilharia",
+      "ind_string" : "4 831",
+      "valor" : "4831"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43390",
+      "dim_3_t" : "Outras atividades de acabamento em edifícios",
+      "ind_string" : "4 865",
+      "valor" : "4865"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "71110",
+      "dim_3_t" : "Atividades de arquitetura",
+      "ind_string" : "8 314",
+      "valor" : "8314"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43210",
+      "dim_3_t" : "Instalação elétrica",
+      "ind_string" : "10 188",
+      "valor" : "10188"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68100",
+      "dim_3_t" : "Compra e venda de bens imobiliários",
+      "ind_string" : "16 259",
+      "valor" : "16259"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "71120",
+      "dim_3_t" : "Atividades de engenharia e técnicas afins",
+      "ind_string" : "18 100",
+      "valor" : "18100"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68",
+      "dim_3_t" : "Atividades imobiliárias",
+      "ind_string" : "28 435",
+      "valor" : "28435"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "L",
+      "dim_3_t" : "Atividades imobiliárias",
+      "ind_string" : "28 435",
+      "valor" : "28435"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "41200",
+      "dim_3_t" : "Construção de edifícios (residenciais e não residenciais)",
+      "ind_string" : "40 769",
+      "valor" : "40769"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43",
+      "dim_3_t" : "Atividades especializadas de construção",
+      "ind_string" : "41 131",
+      "valor" : "41131"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "41",
+      "dim_3_t" : "Promoção imobiliária (desenvolvimento de projetos de edifícios); construção de edifícios",
+      "ind_string" : "43 311",
+      "valor" : "43311"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "F",
+      "dim_3_t" : "Construção",
+      "ind_string" : "87 592",
+      "valor" : "87592"
+    } ],
+    "2013" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43910",
+      "dim_3_t" : "Atividades de colocação de coberturas",
+      "ind_string" : "191",
+      "valor" : "191"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43991",
+      "dim_3_t" : "Aluguer de equipamento de construção e de demolição, com operador",
+      "ind_string" : "233",
+      "valor" : "233"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43110",
+      "dim_3_t" : "Demolição",
+      "ind_string" : "408",
+      "valor" : "408"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43120",
+      "dim_3_t" : "Preparação dos locais de construção",
+      "ind_string" : "748",
+      "valor" : "748"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43310",
+      "dim_3_t" : "Estucagem",
+      "ind_string" : "1 256",
+      "valor" : "1256"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43222",
+      "dim_3_t" : "Instalação de climatização",
+      "ind_string" : "1 276",
+      "valor" : "1276"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68313",
+      "dim_3_t" : "Atividades de avaliação imobiliária",
+      "ind_string" : "1 329",
+      "valor" : "1329"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43290",
+      "dim_3_t" : "Outras instalações em construções",
+      "ind_string" : "1 581",
+      "valor" : "1581"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68312",
+      "dim_3_t" : "Atividades de angariação imobiliária",
+      "ind_string" : "1 594",
+      "valor" : "1594"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "41100",
+      "dim_3_t" : "Promoção imobiliária (desenvolvimento de projetos de edifícios)",
+      "ind_string" : "2 346",
+      "valor" : "2346"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43992",
+      "dim_3_t" : "Outras atividades especializadas de construção diversas, n.e.",
+      "ind_string" : "2 729",
+      "valor" : "2729"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43330",
+      "dim_3_t" : "Revestimento de pavimentos e de paredes",
+      "ind_string" : "2 810",
+      "valor" : "2810"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68200",
+      "dim_3_t" : "Arrendamento de bens imobiliários",
+      "ind_string" : "3 033",
+      "valor" : "3033"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68311",
+      "dim_3_t" : "Atividades de mediação imobiliária",
+      "ind_string" : "3 685",
+      "valor" : "3685"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43340",
+      "dim_3_t" : "Pintura e colocação de vidros",
+      "ind_string" : "4 046",
+      "valor" : "4046"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43221",
+      "dim_3_t" : "Instalação de canalizações",
+      "ind_string" : "4 075",
+      "valor" : "4075"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43320",
+      "dim_3_t" : "Montagem de trabalhos de carpintaria e de caixilharia",
+      "ind_string" : "4 307",
+      "valor" : "4307"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43390",
+      "dim_3_t" : "Outras atividades de acabamento em edifícios",
+      "ind_string" : "4 558",
+      "valor" : "4558"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "71110",
+      "dim_3_t" : "Atividades de arquitetura",
+      "ind_string" : "7 690",
+      "valor" : "7690"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43210",
+      "dim_3_t" : "Instalação elétrica",
+      "ind_string" : "9 662",
+      "valor" : "9662"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68100",
+      "dim_3_t" : "Compra e venda de bens imobiliários",
+      "ind_string" : "16 381",
+      "valor" : "16381"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "71120",
+      "dim_3_t" : "Atividades de engenharia e técnicas afins",
+      "ind_string" : "16 938",
+      "valor" : "16938"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68",
+      "dim_3_t" : "Atividades imobiliárias",
+      "ind_string" : "28 298",
+      "valor" : "28298"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "L",
+      "dim_3_t" : "Atividades imobiliárias",
+      "ind_string" : "28 298",
+      "valor" : "28298"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "41200",
+      "dim_3_t" : "Construção de edifícios (residenciais e não residenciais)",
+      "ind_string" : "37 965",
+      "valor" : "37965"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43",
+      "dim_3_t" : "Atividades especializadas de construção",
+      "ind_string" : "38 004",
+      "valor" : "38004"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "41",
+      "dim_3_t" : "Promoção imobiliária (desenvolvimento de projetos de edifícios); construção de edifícios",
+      "ind_string" : "40 311",
+      "valor" : "40311"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "F",
+      "dim_3_t" : "Construção",
+      "ind_string" : "81 335",
+      "valor" : "81335"
+    } ],
+    "2014" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43910",
+      "dim_3_t" : "Atividades de colocação de coberturas",
+      "ind_string" : "191",
+      "valor" : "191"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43991",
+      "dim_3_t" : "Aluguer de equipamento de construção e de demolição, com operador",
+      "ind_string" : "236",
+      "valor" : "236"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43110",
+      "dim_3_t" : "Demolição",
+      "ind_string" : "357",
+      "valor" : "357"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43120",
+      "dim_3_t" : "Preparação dos locais de construção",
+      "ind_string" : "731",
+      "valor" : "731"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43310",
+      "dim_3_t" : "Estucagem",
+      "ind_string" : "1 131",
+      "valor" : "1131"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68313",
+      "dim_3_t" : "Atividades de avaliação imobiliária",
+      "ind_string" : "1 249",
+      "valor" : "1249"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43222",
+      "dim_3_t" : "Instalação de climatização",
+      "ind_string" : "1 297",
+      "valor" : "1297"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43290",
+      "dim_3_t" : "Outras instalações em construções",
+      "ind_string" : "1 421",
+      "valor" : "1421"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68312",
+      "dim_3_t" : "Atividades de angariação imobiliária",
+      "ind_string" : "1 890",
+      "valor" : "1890"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "41100",
+      "dim_3_t" : "Promoção imobiliária (desenvolvimento de projetos de edifícios)",
+      "ind_string" : "2 217",
+      "valor" : "2217"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43330",
+      "dim_3_t" : "Revestimento de pavimentos e de paredes",
+      "ind_string" : "2 699",
+      "valor" : "2699"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43992",
+      "dim_3_t" : "Outras atividades especializadas de construção diversas, n.e.",
+      "ind_string" : "2 844",
+      "valor" : "2844"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68200",
+      "dim_3_t" : "Arrendamento de bens imobiliários",
+      "ind_string" : "3 206",
+      "valor" : "3206"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68311",
+      "dim_3_t" : "Atividades de mediação imobiliária",
+      "ind_string" : "3 866",
+      "valor" : "3866"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43221",
+      "dim_3_t" : "Instalação de canalizações",
+      "ind_string" : "3 902",
+      "valor" : "3902"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43340",
+      "dim_3_t" : "Pintura e colocação de vidros",
+      "ind_string" : "3 912",
+      "valor" : "3912"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43320",
+      "dim_3_t" : "Montagem de trabalhos de carpintaria e de caixilharia",
+      "ind_string" : "4 079",
+      "valor" : "4079"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43390",
+      "dim_3_t" : "Outras atividades de acabamento em edifícios",
+      "ind_string" : "4 483",
+      "valor" : "4483"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "71110",
+      "dim_3_t" : "Atividades de arquitetura",
+      "ind_string" : "7 696",
+      "valor" : "7696"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43210",
+      "dim_3_t" : "Instalação elétrica",
+      "ind_string" : "9 265",
+      "valor" : "9265"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "71120",
+      "dim_3_t" : "Atividades de engenharia e técnicas afins",
+      "ind_string" : "16 974",
+      "valor" : "16974"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68100",
+      "dim_3_t" : "Compra e venda de bens imobiliários",
+      "ind_string" : "17 023",
+      "valor" : "17023"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68",
+      "dim_3_t" : "Atividades imobiliárias",
+      "ind_string" : "29 561",
+      "valor" : "29561"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "L",
+      "dim_3_t" : "Atividades imobiliárias",
+      "ind_string" : "29 561",
+      "valor" : "29561"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "41200",
+      "dim_3_t" : "Construção de edifícios (residenciais e não residenciais)",
+      "ind_string" : "36 046",
+      "valor" : "36046"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43",
+      "dim_3_t" : "Atividades especializadas de construção",
+      "ind_string" : "36 670",
+      "valor" : "36670"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "41",
+      "dim_3_t" : "Promoção imobiliária (desenvolvimento de projetos de edifícios); construção de edifícios",
+      "ind_string" : "38 263",
+      "valor" : "38263"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "F",
+      "dim_3_t" : "Construção",
+      "ind_string" : "77 844",
+      "valor" : "77844"
+    } ],
+    "2015" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43910",
+      "dim_3_t" : "Atividades de colocação de coberturas",
+      "ind_string" : "190",
+      "valor" : "190"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43991",
+      "dim_3_t" : "Aluguer de equipamento de construção e de demolição, com operador",
+      "ind_string" : "225",
+      "valor" : "225"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43110",
+      "dim_3_t" : "Demolição",
+      "ind_string" : "329",
+      "valor" : "329"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43120",
+      "dim_3_t" : "Preparação dos locais de construção",
+      "ind_string" : "737",
+      "valor" : "737"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68313",
+      "dim_3_t" : "Atividades de avaliação imobiliária",
+      "ind_string" : "1 174",
+      "valor" : "1174"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43310",
+      "dim_3_t" : "Estucagem",
+      "ind_string" : "1 178",
+      "valor" : "1178"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43222",
+      "dim_3_t" : "Instalação de climatização",
+      "ind_string" : "1 335",
+      "valor" : "1335"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43290",
+      "dim_3_t" : "Outras instalações em construções",
+      "ind_string" : "1 356",
+      "valor" : "1356"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "41100",
+      "dim_3_t" : "Promoção imobiliária (desenvolvimento de projetos de edifícios)",
+      "ind_string" : "2 201",
+      "valor" : "2201"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68312",
+      "dim_3_t" : "Atividades de angariação imobiliária",
+      "ind_string" : "2 437",
+      "valor" : "2437"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43330",
+      "dim_3_t" : "Revestimento de pavimentos e de paredes",
+      "ind_string" : "2 755",
+      "valor" : "2755"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43992",
+      "dim_3_t" : "Outras atividades especializadas de construção diversas, n.e.",
+      "ind_string" : "3 142",
+      "valor" : "3142"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68200",
+      "dim_3_t" : "Arrendamento de bens imobiliários",
+      "ind_string" : "3 731",
+      "valor" : "3731"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43221",
+      "dim_3_t" : "Instalação de canalizações",
+      "ind_string" : "3 930",
+      "valor" : "3930"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43340",
+      "dim_3_t" : "Pintura e colocação de vidros",
+      "ind_string" : "4 013",
+      "valor" : "4013"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43320",
+      "dim_3_t" : "Montagem de trabalhos de carpintaria e de caixilharia",
+      "ind_string" : "4 137",
+      "valor" : "4137"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68311",
+      "dim_3_t" : "Atividades de mediação imobiliária",
+      "ind_string" : "4 407",
+      "valor" : "4407"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43390",
+      "dim_3_t" : "Outras atividades de acabamento em edifícios",
+      "ind_string" : "4 739",
+      "valor" : "4739"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "71110",
+      "dim_3_t" : "Atividades de arquitetura",
+      "ind_string" : "8 110",
+      "valor" : "8110"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43210",
+      "dim_3_t" : "Instalação elétrica",
+      "ind_string" : "9 139",
+      "valor" : "9139"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "71120",
+      "dim_3_t" : "Atividades de engenharia e técnicas afins",
+      "ind_string" : "17 218",
+      "valor" : "17218"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68100",
+      "dim_3_t" : "Compra e venda de bens imobiliários",
+      "ind_string" : "17 998",
+      "valor" : "17998"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68",
+      "dim_3_t" : "Atividades imobiliárias",
+      "ind_string" : "32 154",
+      "valor" : "32154"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "L",
+      "dim_3_t" : "Atividades imobiliárias",
+      "ind_string" : "32 154",
+      "valor" : "32154"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "41200",
+      "dim_3_t" : "Construção de edifícios (residenciais e não residenciais)",
+      "ind_string" : "35 503",
+      "valor" : "35503"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43",
+      "dim_3_t" : "Atividades especializadas de construção",
+      "ind_string" : "37 317",
+      "valor" : "37317"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "41",
+      "dim_3_t" : "Promoção imobiliária (desenvolvimento de projetos de edifícios); construção de edifícios",
+      "ind_string" : "37 704",
+      "valor" : "37704"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "F",
+      "dim_3_t" : "Construção",
+      "ind_string" : "77 906",
+      "valor" : "77906"
+    } ],
+    "2016" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43910",
+      "dim_3_t" : "Atividades de colocação de coberturas",
+      "ind_string" : "199",
+      "valor" : "199"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43991",
+      "dim_3_t" : "Aluguer de equipamento de construção e de demolição, com operador",
+      "ind_string" : "232",
+      "valor" : "232"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43110",
+      "dim_3_t" : "Demolição",
+      "ind_string" : "320",
+      "valor" : "320"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43120",
+      "dim_3_t" : "Preparação dos locais de construção",
+      "ind_string" : "758",
+      "valor" : "758"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68313",
+      "dim_3_t" : "Atividades de avaliação imobiliária",
+      "ind_string" : "1 168",
+      "valor" : "1168"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43310",
+      "dim_3_t" : "Estucagem",
+      "ind_string" : "1 209",
+      "valor" : "1209"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43290",
+      "dim_3_t" : "Outras instalações em construções",
+      "ind_string" : "1 357",
+      "valor" : "1357"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43222",
+      "dim_3_t" : "Instalação de climatização",
+      "ind_string" : "1 360",
+      "valor" : "1360"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "41100",
+      "dim_3_t" : "Promoção imobiliária (desenvolvimento de projetos de edifícios)",
+      "ind_string" : "2 212",
+      "valor" : "2212"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43330",
+      "dim_3_t" : "Revestimento de pavimentos e de paredes",
+      "ind_string" : "2 806",
+      "valor" : "2806"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68312",
+      "dim_3_t" : "Atividades de angariação imobiliária",
+      "ind_string" : "3 208",
+      "valor" : "3208"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43992",
+      "dim_3_t" : "Outras atividades especializadas de construção diversas, n.e.",
+      "ind_string" : "3 383",
+      "valor" : "3383"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43221",
+      "dim_3_t" : "Instalação de canalizações",
+      "ind_string" : "3 907",
+      "valor" : "3907"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68200",
+      "dim_3_t" : "Arrendamento de bens imobiliários",
+      "ind_string" : "4 044",
+      "valor" : "4044"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43320",
+      "dim_3_t" : "Montagem de trabalhos de carpintaria e de caixilharia",
+      "ind_string" : "4 212",
+      "valor" : "4212"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43340",
+      "dim_3_t" : "Pintura e colocação de vidros",
+      "ind_string" : "4 231",
+      "valor" : "4231"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43390",
+      "dim_3_t" : "Outras atividades de acabamento em edifícios",
+      "ind_string" : "4 917",
+      "valor" : "4917"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68311",
+      "dim_3_t" : "Atividades de mediação imobiliária",
+      "ind_string" : "5 244",
+      "valor" : "5244"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "71110",
+      "dim_3_t" : "Atividades de arquitetura",
+      "ind_string" : "8 568",
+      "valor" : "8568"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43210",
+      "dim_3_t" : "Instalação elétrica",
+      "ind_string" : "9 134",
+      "valor" : "9134"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "71120",
+      "dim_3_t" : "Atividades de engenharia e técnicas afins",
+      "ind_string" : "17 372",
+      "valor" : "17372"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68100",
+      "dim_3_t" : "Compra e venda de bens imobiliários",
+      "ind_string" : "19 634",
+      "valor" : "19634"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "41200",
+      "dim_3_t" : "Construção de edifícios (residenciais e não residenciais)",
+      "ind_string" : "35 662",
+      "valor" : "35662"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68",
+      "dim_3_t" : "Atividades imobiliárias",
+      "ind_string" : "35 787",
+      "valor" : "35787"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "L",
+      "dim_3_t" : "Atividades imobiliárias",
+      "ind_string" : "35 787",
+      "valor" : "35787"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "41",
+      "dim_3_t" : "Promoção imobiliária (desenvolvimento de projetos de edifícios); construção de edifícios",
+      "ind_string" : "37 874",
+      "valor" : "37874"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43",
+      "dim_3_t" : "Atividades especializadas de construção",
+      "ind_string" : "38 142",
+      "valor" : "38142"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "F",
+      "dim_3_t" : "Construção",
+      "ind_string" : "78 866",
+      "valor" : "78866"
+    } ],
+    "2017" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43910",
+      "dim_3_t" : "Atividades de colocação de coberturas",
+      "ind_string" : "215",
+      "valor" : "215"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43991",
+      "dim_3_t" : "Aluguer de equipamento de construção e de demolição, com operador",
+      "ind_string" : "232",
+      "valor" : "232"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43110",
+      "dim_3_t" : "Demolição",
+      "ind_string" : "331",
+      "valor" : "331"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43120",
+      "dim_3_t" : "Preparação dos locais de construção",
+      "ind_string" : "755",
+      "valor" : "755"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68313",
+      "dim_3_t" : "Atividades de avaliação imobiliária",
+      "ind_string" : "1 104",
+      "valor" : "1104"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43310",
+      "dim_3_t" : "Estucagem",
+      "ind_string" : "1 299",
+      "valor" : "1299"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43290",
+      "dim_3_t" : "Outras instalações em construções",
+      "ind_string" : "1 362",
+      "valor" : "1362"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43222",
+      "dim_3_t" : "Instalação de climatização",
+      "ind_string" : "1 450",
+      "valor" : "1450"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "41100",
+      "dim_3_t" : "Promoção imobiliária (desenvolvimento de projetos de edifícios)",
+      "ind_string" : "2 280",
+      "valor" : "2280"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43330",
+      "dim_3_t" : "Revestimento de pavimentos e de paredes",
+      "ind_string" : "3 039",
+      "valor" : "3039"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43992",
+      "dim_3_t" : "Outras atividades especializadas de construção diversas, n.e.",
+      "ind_string" : "3 617",
+      "valor" : "3617"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43221",
+      "dim_3_t" : "Instalação de canalizações",
+      "ind_string" : "3 957",
+      "valor" : "3957"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68312",
+      "dim_3_t" : "Atividades de angariação imobiliária",
+      "ind_string" : "4 270",
+      "valor" : "4270"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68200",
+      "dim_3_t" : "Arrendamento de bens imobiliários",
+      "ind_string" : "4 339",
+      "valor" : "4339"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43320",
+      "dim_3_t" : "Montagem de trabalhos de carpintaria e de caixilharia",
+      "ind_string" : "4 381",
+      "valor" : "4381"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43340",
+      "dim_3_t" : "Pintura e colocação de vidros",
+      "ind_string" : "4 567",
+      "valor" : "4567"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43390",
+      "dim_3_t" : "Outras atividades de acabamento em edifícios",
+      "ind_string" : "5 246",
+      "valor" : "5246"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68311",
+      "dim_3_t" : "Atividades de mediação imobiliária",
+      "ind_string" : "6 418",
+      "valor" : "6418"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43210",
+      "dim_3_t" : "Instalação elétrica",
+      "ind_string" : "9 189",
+      "valor" : "9189"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "71110",
+      "dim_3_t" : "Atividades de arquitetura",
+      "ind_string" : "9 230",
+      "valor" : "9230"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "71120",
+      "dim_3_t" : "Atividades de engenharia e técnicas afins",
+      "ind_string" : "17 815",
+      "valor" : "17815"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68100",
+      "dim_3_t" : "Compra e venda de bens imobiliários",
+      "ind_string" : "22 077",
+      "valor" : "22077"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "41200",
+      "dim_3_t" : "Construção de edifícios (residenciais e não residenciais)",
+      "ind_string" : "36 704",
+      "valor" : "36704"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "41",
+      "dim_3_t" : "Promoção imobiliária (desenvolvimento de projetos de edifícios); construção de edifícios",
+      "ind_string" : "38 984",
+      "valor" : "38984"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43",
+      "dim_3_t" : "Atividades especializadas de construção",
+      "ind_string" : "39 752",
+      "valor" : "39752"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68",
+      "dim_3_t" : "Atividades imobiliárias",
+      "ind_string" : "40 792",
+      "valor" : "40792"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "L",
+      "dim_3_t" : "Atividades imobiliárias",
+      "ind_string" : "40 792",
+      "valor" : "40792"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "F",
+      "dim_3_t" : "Construção",
+      "ind_string" : "81 629",
+      "valor" : "81629"
+    } ],
+    "2018" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43910",
+      "dim_3_t" : "Atividades de colocação de coberturas",
+      "ind_string" : "230",
+      "valor" : "230"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43991",
+      "dim_3_t" : "Aluguer de equipamento de construção e de demolição, com operador",
+      "ind_string" : "253",
+      "valor" : "253"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43110",
+      "dim_3_t" : "Demolição",
+      "ind_string" : "337",
+      "valor" : "337"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43120",
+      "dim_3_t" : "Preparação dos locais de construção",
+      "ind_string" : "817",
+      "valor" : "817"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68313",
+      "dim_3_t" : "Atividades de avaliação imobiliária",
+      "ind_string" : "1 081",
+      "valor" : "1081"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43290",
+      "dim_3_t" : "Outras instalações em construções",
+      "ind_string" : "1 378",
+      "valor" : "1378"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43310",
+      "dim_3_t" : "Estucagem",
+      "ind_string" : "1 394",
+      "valor" : "1394"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43222",
+      "dim_3_t" : "Instalação de climatização",
+      "ind_string" : "1 572",
+      "valor" : "1572"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "41100",
+      "dim_3_t" : "Promoção imobiliária (desenvolvimento de projetos de edifícios)",
+      "ind_string" : "2 348",
+      "valor" : "2348"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43330",
+      "dim_3_t" : "Revestimento de pavimentos e de paredes",
+      "ind_string" : "3 295",
+      "valor" : "3295"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43992",
+      "dim_3_t" : "Outras atividades especializadas de construção diversas, n.e.",
+      "ind_string" : "3 864",
+      "valor" : "3864"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43221",
+      "dim_3_t" : "Instalação de canalizações",
+      "ind_string" : "4 081",
+      "valor" : "4081"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43320",
+      "dim_3_t" : "Montagem de trabalhos de carpintaria e de caixilharia",
+      "ind_string" : "4 555",
+      "valor" : "4555"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68200",
+      "dim_3_t" : "Arrendamento de bens imobiliários",
+      "ind_string" : "4 684",
+      "valor" : "4684"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43340",
+      "dim_3_t" : "Pintura e colocação de vidros",
+      "ind_string" : "4 922",
+      "valor" : "4922"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68312",
+      "dim_3_t" : "Atividades de angariação imobiliária",
+      "ind_string" : "4 957",
+      "valor" : "4957"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43390",
+      "dim_3_t" : "Outras atividades de acabamento em edifícios",
+      "ind_string" : "5 635",
+      "valor" : "5635"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68311",
+      "dim_3_t" : "Atividades de mediação imobiliária",
+      "ind_string" : "7 473",
+      "valor" : "7473"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "71110",
+      "dim_3_t" : "Atividades de arquitetura",
+      "ind_string" : "9 339",
+      "valor" : "9339"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43210",
+      "dim_3_t" : "Instalação elétrica",
+      "ind_string" : "9 421",
+      "valor" : "9421"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "71120",
+      "dim_3_t" : "Atividades de engenharia e técnicas afins",
+      "ind_string" : "17 432",
+      "valor" : "17432"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68100",
+      "dim_3_t" : "Compra e venda de bens imobiliários",
+      "ind_string" : "24 651",
+      "valor" : "24651"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "41200",
+      "dim_3_t" : "Construção de edifícios (residenciais e não residenciais)",
+      "ind_string" : "38 217",
+      "valor" : "38217"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "41",
+      "dim_3_t" : "Promoção imobiliária (desenvolvimento de projetos de edifícios); construção de edifícios",
+      "ind_string" : "40 565",
+      "valor" : "40565"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43",
+      "dim_3_t" : "Atividades especializadas de construção",
+      "ind_string" : "41 865",
+      "valor" : "41865"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68",
+      "dim_3_t" : "Atividades imobiliárias",
+      "ind_string" : "45 510",
+      "valor" : "45510"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "L",
+      "dim_3_t" : "Atividades imobiliárias",
+      "ind_string" : "45 510",
+      "valor" : "45510"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "F",
+      "dim_3_t" : "Construção",
+      "ind_string" : "85 311",
+      "valor" : "85311"
+    } ],
+    "2019" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43991",
+      "dim_3_t" : "Aluguer de equipamento de construção e de demolição, com operador",
+      "ind_string" : "253",
+      "valor" : "253"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43910",
+      "dim_3_t" : "Atividades de colocação de coberturas",
+      "ind_string" : "258",
+      "valor" : "258"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43110",
+      "dim_3_t" : "Demolição",
+      "ind_string" : "349",
+      "valor" : "349"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43120",
+      "dim_3_t" : "Preparação dos locais de construção",
+      "ind_string" : "847",
+      "valor" : "847"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68313",
+      "dim_3_t" : "Atividades de avaliação imobiliária",
+      "ind_string" : "1 046",
+      "valor" : "1046"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43290",
+      "dim_3_t" : "Outras instalações em construções",
+      "ind_string" : "1 435",
+      "valor" : "1435"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43310",
+      "dim_3_t" : "Estucagem",
+      "ind_string" : "1 561",
+      "valor" : "1561"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43222",
+      "dim_3_t" : "Instalação de climatização",
+      "ind_string" : "1 658",
+      "valor" : "1658"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "41100",
+      "dim_3_t" : "Promoção imobiliária (desenvolvimento de projetos de edifícios)",
+      "ind_string" : "2 488",
+      "valor" : "2488"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43330",
+      "dim_3_t" : "Revestimento de pavimentos e de paredes",
+      "ind_string" : "3 556",
+      "valor" : "3556"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43221",
+      "dim_3_t" : "Instalação de canalizações",
+      "ind_string" : "4 174",
+      "valor" : "4174"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43992",
+      "dim_3_t" : "Outras atividades especializadas de construção diversas, n.e.",
+      "ind_string" : "4 256",
+      "valor" : "4256"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43320",
+      "dim_3_t" : "Montagem de trabalhos de carpintaria e de caixilharia",
+      "ind_string" : "4 832",
+      "valor" : "4832"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68200",
+      "dim_3_t" : "Arrendamento de bens imobiliários",
+      "ind_string" : "5 032",
+      "valor" : "5032"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43340",
+      "dim_3_t" : "Pintura e colocação de vidros",
+      "ind_string" : "5 380",
+      "valor" : "5380"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68312",
+      "dim_3_t" : "Atividades de angariação imobiliária",
+      "ind_string" : "5 427",
+      "valor" : "5427"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43390",
+      "dim_3_t" : "Outras atividades de acabamento em edifícios",
+      "ind_string" : "6 087",
+      "valor" : "6087"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68311",
+      "dim_3_t" : "Atividades de mediação imobiliária",
+      "ind_string" : "8 496",
+      "valor" : "8496"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "71110",
+      "dim_3_t" : "Atividades de arquitetura",
+      "ind_string" : "9 599",
+      "valor" : "9599"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43210",
+      "dim_3_t" : "Instalação elétrica",
+      "ind_string" : "9 675",
+      "valor" : "9675"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "71120",
+      "dim_3_t" : "Atividades de engenharia e técnicas afins",
+      "ind_string" : "17 571",
+      "valor" : "17571"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68100",
+      "dim_3_t" : "Compra e venda de bens imobiliários",
+      "ind_string" : "27 013",
+      "valor" : "27013"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "41200",
+      "dim_3_t" : "Construção de edifícios (residenciais e não residenciais)",
+      "ind_string" : "40 514",
+      "valor" : "40514"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "41",
+      "dim_3_t" : "Promoção imobiliária (desenvolvimento de projetos de edifícios); construção de edifícios",
+      "ind_string" : "43 002",
+      "valor" : "43002"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43",
+      "dim_3_t" : "Atividades especializadas de construção",
+      "ind_string" : "44 438",
+      "valor" : "44438"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68",
+      "dim_3_t" : "Atividades imobiliárias",
+      "ind_string" : "49 830",
+      "valor" : "49830"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "L",
+      "dim_3_t" : "Atividades imobiliárias",
+      "ind_string" : "49 830",
+      "valor" : "49830"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "F",
+      "dim_3_t" : "Construção",
+      "ind_string" : "90 430",
+      "valor" : "90430"
+    } ],
+    "2020" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43991",
+      "dim_3_t" : "Aluguer de equipamento de construção e de demolição, com operador",
+      "ind_string" : "258",
+      "valor" : "258"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43910",
+      "dim_3_t" : "Atividades de colocação de coberturas",
+      "ind_string" : "273",
+      "valor" : "273"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43110",
+      "dim_3_t" : "Demolição",
+      "ind_string" : "341",
+      "valor" : "341"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43120",
+      "dim_3_t" : "Preparação dos locais de construção",
+      "ind_string" : "843",
+      "valor" : "843"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68313",
+      "dim_3_t" : "Atividades de avaliação imobiliária",
+      "ind_string" : "1 042",
+      "valor" : "1042"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43290",
+      "dim_3_t" : "Outras instalações em construções",
+      "ind_string" : "1 430",
+      "valor" : "1430"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43310",
+      "dim_3_t" : "Estucagem",
+      "ind_string" : "1 594",
+      "valor" : "1594"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43222",
+      "dim_3_t" : "Instalação de climatização",
+      "ind_string" : "1 727",
+      "valor" : "1727"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "41100",
+      "dim_3_t" : "Promoção imobiliária (desenvolvimento de projetos de edifícios)",
+      "ind_string" : "2 566",
+      "valor" : "2566"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43330",
+      "dim_3_t" : "Revestimento de pavimentos e de paredes",
+      "ind_string" : "3 696",
+      "valor" : "3696"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43221",
+      "dim_3_t" : "Instalação de canalizações",
+      "ind_string" : "4 196",
+      "valor" : "4196"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43992",
+      "dim_3_t" : "Outras atividades especializadas de construção diversas, n.e.",
+      "ind_string" : "4 608",
+      "valor" : "4608"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43320",
+      "dim_3_t" : "Montagem de trabalhos de carpintaria e de caixilharia",
+      "ind_string" : "4 938",
+      "valor" : "4938"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68200",
+      "dim_3_t" : "Arrendamento de bens imobiliários",
+      "ind_string" : "5 252",
+      "valor" : "5252"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43340",
+      "dim_3_t" : "Pintura e colocação de vidros",
+      "ind_string" : "5 455",
+      "valor" : "5455"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68312",
+      "dim_3_t" : "Atividades de angariação imobiliária",
+      "ind_string" : "5 536",
+      "valor" : "5536"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43390",
+      "dim_3_t" : "Outras atividades de acabamento em edifícios",
+      "ind_string" : "6 189",
+      "valor" : "6189"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68311",
+      "dim_3_t" : "Atividades de mediação imobiliária",
+      "ind_string" : "8 990",
+      "valor" : "8990"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "71110",
+      "dim_3_t" : "Atividades de arquitetura",
+      "ind_string" : "9 573",
+      "valor" : "9573"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43210",
+      "dim_3_t" : "Instalação elétrica",
+      "ind_string" : "9 592",
+      "valor" : "9592"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "71120",
+      "dim_3_t" : "Atividades de engenharia e técnicas afins",
+      "ind_string" : "17 487",
+      "valor" : "17487"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68100",
+      "dim_3_t" : "Compra e venda de bens imobiliários",
+      "ind_string" : "28 338",
+      "valor" : "28338"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "41200",
+      "dim_3_t" : "Construção de edifícios (residenciais e não residenciais)",
+      "ind_string" : "41 476",
+      "valor" : "41476"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "41",
+      "dim_3_t" : "Promoção imobiliária (desenvolvimento de projetos de edifícios); construção de edifícios",
+      "ind_string" : "44 042",
+      "valor" : "44042"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43",
+      "dim_3_t" : "Atividades especializadas de construção",
+      "ind_string" : "45 255",
+      "valor" : "45255"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68",
+      "dim_3_t" : "Atividades imobiliárias",
+      "ind_string" : "51 940",
+      "valor" : "51940"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "L",
+      "dim_3_t" : "Atividades imobiliárias",
+      "ind_string" : "51 940",
+      "valor" : "51940"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "F",
+      "dim_3_t" : "Construção",
+      "ind_string" : "92 328",
+      "valor" : "92328"
+    } ],
+    "2021" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43991",
+      "dim_3_t" : "Aluguer de equipamento de construção e de demolição, com operador",
+      "ind_string" : "272",
+      "valor" : "272"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43910",
+      "dim_3_t" : "Atividades de colocação de coberturas",
+      "ind_string" : "291",
+      "valor" : "291"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43110",
+      "dim_3_t" : "Demolição",
+      "ind_string" : "354",
+      "valor" : "354"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43120",
+      "dim_3_t" : "Preparação dos locais de construção",
+      "ind_string" : "933",
+      "valor" : "933"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68313",
+      "dim_3_t" : "Atividades de avaliação imobiliária",
+      "ind_string" : "1 024",
+      "valor" : "1024"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43290",
+      "dim_3_t" : "Outras instalações em construções",
+      "ind_string" : "1 470",
+      "valor" : "1470"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43310",
+      "dim_3_t" : "Estucagem",
+      "ind_string" : "1 718",
+      "valor" : "1718"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43222",
+      "dim_3_t" : "Instalação de climatização",
+      "ind_string" : "1 858",
+      "valor" : "1858"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "41100",
+      "dim_3_t" : "Promoção imobiliária (desenvolvimento de projetos de edifícios)",
+      "ind_string" : "2 651",
+      "valor" : "2651"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43330",
+      "dim_3_t" : "Revestimento de pavimentos e de paredes",
+      "ind_string" : "3 938",
+      "valor" : "3938"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43221",
+      "dim_3_t" : "Instalação de canalizações",
+      "ind_string" : "4 295",
+      "valor" : "4295"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43992",
+      "dim_3_t" : "Outras atividades especializadas de construção diversas, n.e.",
+      "ind_string" : "5 140",
+      "valor" : "5140"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43320",
+      "dim_3_t" : "Montagem de trabalhos de carpintaria e de caixilharia",
+      "ind_string" : "5 263",
+      "valor" : "5263"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68200",
+      "dim_3_t" : "Arrendamento de bens imobiliários",
+      "ind_string" : "5 643",
+      "valor" : "5643"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43340",
+      "dim_3_t" : "Pintura e colocação de vidros",
+      "ind_string" : "5 788",
+      "valor" : "5788"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68312",
+      "dim_3_t" : "Atividades de angariação imobiliária",
+      "ind_string" : "6 240",
+      "valor" : "6240"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43390",
+      "dim_3_t" : "Outras atividades de acabamento em edifícios",
+      "ind_string" : "6 606",
+      "valor" : "6606"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43210",
+      "dim_3_t" : "Instalação elétrica",
+      "ind_string" : "9 845",
+      "valor" : "9845"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "71110",
+      "dim_3_t" : "Atividades de arquitetura",
+      "ind_string" : "10 047",
+      "valor" : "10047"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68311",
+      "dim_3_t" : "Atividades de mediação imobiliária",
+      "ind_string" : "10 083",
+      "valor" : "10083"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "71120",
+      "dim_3_t" : "Atividades de engenharia e técnicas afins",
+      "ind_string" : "18 206",
+      "valor" : "18206"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68100",
+      "dim_3_t" : "Compra e venda de bens imobiliários",
+      "ind_string" : "30 905",
+      "valor" : "30905"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "41200",
+      "dim_3_t" : "Construção de edifícios (residenciais e não residenciais)",
+      "ind_string" : "43 704",
+      "valor" : "43704"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "41",
+      "dim_3_t" : "Promoção imobiliária (desenvolvimento de projetos de edifícios); construção de edifícios",
+      "ind_string" : "46 355",
+      "valor" : "46355"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43",
+      "dim_3_t" : "Atividades especializadas de construção",
+      "ind_string" : "47 887",
+      "valor" : "47887"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68",
+      "dim_3_t" : "Atividades imobiliárias",
+      "ind_string" : "56 739",
+      "valor" : "56739"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "L",
+      "dim_3_t" : "Atividades imobiliárias",
+      "ind_string" : "56 739",
+      "valor" : "56739"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "F",
+      "dim_3_t" : "Construção",
+      "ind_string" : "97 355",
+      "valor" : "97355"
+    } ],
+    "2022" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43991",
+      "dim_3_t" : "Aluguer de equipamento de construção e de demolição, com operador",
+      "ind_string" : "275",
+      "valor" : "275"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43910",
+      "dim_3_t" : "Atividades de colocação de coberturas",
+      "ind_string" : "299",
+      "valor" : "299"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43110",
+      "dim_3_t" : "Demolição",
+      "ind_string" : "362",
+      "valor" : "362"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43120",
+      "dim_3_t" : "Preparação dos locais de construção",
+      "ind_string" : "985",
+      "valor" : "985"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68313",
+      "dim_3_t" : "Atividades de avaliação imobiliária",
+      "ind_string" : "1 040",
+      "valor" : "1040"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43290",
+      "dim_3_t" : "Outras instalações em construções",
+      "ind_string" : "1 502",
+      "valor" : "1502"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43310",
+      "dim_3_t" : "Estucagem",
+      "ind_string" : "1 838",
+      "valor" : "1838"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43222",
+      "dim_3_t" : "Instalação de climatização",
+      "ind_string" : "1 993",
+      "valor" : "1993"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "41100",
+      "dim_3_t" : "Promoção imobiliária (desenvolvimento de projetos de edifícios)",
+      "ind_string" : "2 789",
+      "valor" : "2789"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43330",
+      "dim_3_t" : "Revestimento de pavimentos e de paredes",
+      "ind_string" : "4 239",
+      "valor" : "4239"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43221",
+      "dim_3_t" : "Instalação de canalizações",
+      "ind_string" : "4 390",
+      "valor" : "4390"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43992",
+      "dim_3_t" : "Outras atividades especializadas de construção diversas, n.e.",
+      "ind_string" : "5 540",
+      "valor" : "5540"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43320",
+      "dim_3_t" : "Montagem de trabalhos de carpintaria e de caixilharia",
+      "ind_string" : "5 577",
+      "valor" : "5577"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68200",
+      "dim_3_t" : "Arrendamento de bens imobiliários",
+      "ind_string" : "6 120",
+      "valor" : "6120"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43340",
+      "dim_3_t" : "Pintura e colocação de vidros",
+      "ind_string" : "6 264",
+      "valor" : "6264"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68312",
+      "dim_3_t" : "Atividades de angariação imobiliária",
+      "ind_string" : "6 943",
+      "valor" : "6943"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43390",
+      "dim_3_t" : "Outras atividades de acabamento em edifícios",
+      "ind_string" : "7 182",
+      "valor" : "7182"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43210",
+      "dim_3_t" : "Instalação elétrica",
+      "ind_string" : "10 133",
+      "valor" : "10133"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "71110",
+      "dim_3_t" : "Atividades de arquitetura",
+      "ind_string" : "10 330",
+      "valor" : "10330"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68311",
+      "dim_3_t" : "Atividades de mediação imobiliária",
+      "ind_string" : "11 274",
+      "valor" : "11274"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "71120",
+      "dim_3_t" : "Atividades de engenharia e técnicas afins",
+      "ind_string" : "18 754",
+      "valor" : "18754"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68100",
+      "dim_3_t" : "Compra e venda de bens imobiliários",
+      "ind_string" : "33 246",
+      "valor" : "33246"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "41200",
+      "dim_3_t" : "Construção de edifícios (residenciais e não residenciais)",
+      "ind_string" : "45 851",
+      "valor" : "45851"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "41",
+      "dim_3_t" : "Promoção imobiliária (desenvolvimento de projetos de edifícios); construção de edifícios",
+      "ind_string" : "48 640",
+      "valor" : "48640"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43",
+      "dim_3_t" : "Atividades especializadas de construção",
+      "ind_string" : "50 694",
+      "valor" : "50694"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68",
+      "dim_3_t" : "Atividades imobiliárias",
+      "ind_string" : "61 548",
+      "valor" : "61548"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "L",
+      "dim_3_t" : "Atividades imobiliárias",
+      "ind_string" : "61 548",
+      "valor" : "61548"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "F",
+      "dim_3_t" : "Construção",
+      "ind_string" : "102 471",
+      "valor" : "102471"
+    } ],
+    "2023" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43991",
+      "dim_3_t" : "Aluguer de equipamento de construção e de demolição, com operador",
+      "ind_string" : "282",
+      "valor" : "282"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43910",
+      "dim_3_t" : "Atividades de colocação de coberturas",
+      "ind_string" : "316",
+      "valor" : "316"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43110",
+      "dim_3_t" : "Demolição",
+      "ind_string" : "349",
+      "valor" : "349"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68313",
+      "dim_3_t" : "Atividades de avaliação imobiliária",
+      "ind_string" : "1 026",
+      "valor" : "1026"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43120",
+      "dim_3_t" : "Preparação dos locais de construção",
+      "ind_string" : "1 056",
+      "valor" : "1056"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43290",
+      "dim_3_t" : "Outras instalações em construções",
+      "ind_string" : "1 578",
+      "valor" : "1578"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43310",
+      "dim_3_t" : "Estucagem",
+      "ind_string" : "1 946",
+      "valor" : "1946"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43222",
+      "dim_3_t" : "Instalação de climatização",
+      "ind_string" : "2 143",
+      "valor" : "2143"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "41100",
+      "dim_3_t" : "Promoção imobiliária (desenvolvimento de projetos de edifícios)",
+      "ind_string" : "2 944",
+      "valor" : "2944"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43221",
+      "dim_3_t" : "Instalação de canalizações",
+      "ind_string" : "4 446",
+      "valor" : "4446"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43330",
+      "dim_3_t" : "Revestimento de pavimentos e de paredes",
+      "ind_string" : "4 530",
+      "valor" : "4530"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43320",
+      "dim_3_t" : "Montagem de trabalhos de carpintaria e de caixilharia",
+      "ind_string" : "5 816",
+      "valor" : "5816"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43992",
+      "dim_3_t" : "Outras atividades especializadas de construção diversas, n.e.",
+      "ind_string" : "6 091",
+      "valor" : "6091"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43340",
+      "dim_3_t" : "Pintura e colocação de vidros",
+      "ind_string" : "6 570",
+      "valor" : "6570"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68200",
+      "dim_3_t" : "Arrendamento de bens imobiliários",
+      "ind_string" : "6 598",
+      "valor" : "6598"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68312",
+      "dim_3_t" : "Atividades de angariação imobiliária",
+      "ind_string" : "7 041",
+      "valor" : "7041"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43390",
+      "dim_3_t" : "Outras atividades de acabamento em edifícios",
+      "ind_string" : "7 581",
+      "valor" : "7581"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "71110",
+      "dim_3_t" : "Atividades de arquitetura",
+      "ind_string" : "10 514",
+      "valor" : "10514"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43210",
+      "dim_3_t" : "Instalação elétrica",
+      "ind_string" : "10 554",
+      "valor" : "10554"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68311",
+      "dim_3_t" : "Atividades de mediação imobiliária",
+      "ind_string" : "11 909",
+      "valor" : "11909"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "71120",
+      "dim_3_t" : "Atividades de engenharia e técnicas afins",
+      "ind_string" : "19 274",
+      "valor" : "19274"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68100",
+      "dim_3_t" : "Compra e venda de bens imobiliários",
+      "ind_string" : "35 099",
+      "valor" : "35099"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "41200",
+      "dim_3_t" : "Construção de edifícios (residenciais e não residenciais)",
+      "ind_string" : "48 273",
+      "valor" : "48273"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "41",
+      "dim_3_t" : "Promoção imobiliária (desenvolvimento de projetos de edifícios); construção de edifícios",
+      "ind_string" : "51 217",
+      "valor" : "51217"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "43",
+      "dim_3_t" : "Atividades especializadas de construção",
+      "ind_string" : "53 376",
+      "valor" : "53376"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "68",
+      "dim_3_t" : "Atividades imobiliárias",
+      "ind_string" : "64 796",
+      "valor" : "64796"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "L",
+      "dim_3_t" : "Atividades imobiliárias",
+      "ind_string" : "64 796",
+      "valor" : "64796"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "F",
+      "dim_3_t" : "Construção",
+      "ind_string" : "107 857",
+      "valor" : "107857"
+    } ]
+  },
+  "Sucesso" : {
+    "Verdadeiro" : [ {
+      "Msg" : "OK"
+    } ]
+  }
+} ]
