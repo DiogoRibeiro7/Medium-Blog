@@ -84,3 +84,5 @@ portugal-debt-management/**/*.json -filter -diff -merge text
 portugal-debt-management/**/*.html -filter -diff -merge text
 backward-evaluation/**/*.csv -filter -diff -merge text
 backward-evaluation/**/*.gz -filter -diff -merge binary
+backward-evaluation-pooling/**/*.csv -filter -diff -merge text
+backward-evaluation-pooling/**/*.gz -filter -diff -merge binary

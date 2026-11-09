@@ -1,0 +1,79 @@
+Regimes versus episodes: AR(1), 720 rows, change at row 480, forecasts for rows 480-719, 300 replications per scenario; blocks 60, gap 6, z_crit 2.498
+Gain = mean log loss of the expanding window minus that of the scheme (nats per forecast; positive = better than expanding), mean over replications (standard error).
+
+[stationary] No change
+  gain, rows 0-59 after the change: E +0.0000 (0.0000); B -0.0006 (0.0003); EWP -0.0003 (0.0001); P0.25 -0.0001 (0.0000); P0.5 -0.0002 (0.0001); P0.75 -0.0003 (0.0001); AveW -0.0016 (0.0004)
+  gain, rows 60-239 after the change: E +0.0000 (0.0000); B -0.0005 (0.0002); EWP -0.0002 (0.0001); P0.25 -0.0000 (0.0000); P0.5 -0.0001 (0.0001); P0.75 -0.0003 (0.0001); AveW -0.0015 (0.0002)
+  gain, rows all after the change: E +0.0000 (0.0000); B -0.0005 (0.0002); EWP -0.0002 (0.0001); P0.25 -0.0000 (0.0000); P0.5 -0.0001 (0.0001); P0.75 -0.0003 (0.0001); AveW -0.0015 (0.0002)
+  90% coverage: E 0.901; B 0.901; EWP 0.901; P0.25 0.901; P0.5 0.901; P0.75 0.901; AveW 0.901
+  walk stopped in 3.2% of selections; when it stopped: median z* 2.77, median EWP weight 0.608, share of weights above 0.9 0.026
+  first 60 rows after the change: stopped in 2.9% of selections, median EWP weight when stopped 0.593
+
+[variance_up] Regime: volatility rises (sd 1 to 2)
+  gain, rows 0-59 after the change: E +0.0000 (0.0000); B +0.2135 (0.0080); EWP +0.1993 (0.0077); P0.25 +0.1277 (0.0055); P0.5 +0.1720 (0.0068); P0.75 +0.1982 (0.0076); AveW +0.2047 (0.0054)
+  gain, rows 60-239 after the change: E +0.0000 (0.0000); B +0.2433 (0.0035); EWP +0.2353 (0.0035); P0.25 +0.1507 (0.0025); P0.5 +0.2041 (0.0030); P0.75 +0.2317 (0.0033); AveW +0.1977 (0.0026)
+  gain, rows all after the change: E +0.0000 (0.0000); B +0.2359 (0.0031); EWP +0.2263 (0.0031); P0.25 +0.1450 (0.0024); P0.5 +0.1961 (0.0028); P0.75 +0.2233 (0.0030); AveW +0.1995 (0.0024)
+  90% coverage: E 0.691; B 0.828; EWP 0.816; P0.25 0.737; P0.5 0.776; P0.75 0.806; AveW 0.769
+  walk stopped in 89.5% of selections; when it stopped: median z* 3.95, median EWP weight 0.926, share of weights above 0.9 0.546
+  first 60 rows after the change: stopped in 58.7% of selections, median EWP weight when stopped 0.796
+
+[variance_down] Regime: volatility falls (sd 2 to 1)
+  gain, rows 0-59 after the change: E +0.0000 (0.0000); B +0.0325 (0.0022); EWP +0.0236 (0.0017); P0.25 +0.0099 (0.0007); P0.5 +0.0186 (0.0013); P0.75 +0.0262 (0.0018); AveW +0.0274 (0.0011)
+  gain, rows 60-239 after the change: E +0.0000 (0.0000); B +0.2026 (0.0028); EWP +0.1681 (0.0027); P0.25 +0.0673 (0.0010); P0.5 +0.1238 (0.0017); P0.75 +0.1701 (0.0023); AveW +0.1095 (0.0011)
+  gain, rows all after the change: E +0.0000 (0.0000); B +0.1601 (0.0023); EWP +0.1320 (0.0022); P0.25 +0.0530 (0.0008); P0.5 +0.0975 (0.0014); P0.75 +0.1341 (0.0019); AveW +0.0890 (0.0010)
+  90% coverage: E 0.998; B 0.950; EWP 0.975; P0.25 0.996; P0.5 0.991; P0.75 0.977; AveW 0.991
+  walk stopped in 81.0% of selections; when it stopped: median z* 3.14, median EWP weight 0.741, share of weights above 0.9 0.177
+  first 60 rows after the change: stopped in 25.2% of selections, median EWP weight when stopped 0.632
+
+[mean_shift] Regime: level shifts (mean 0 to 1.5)
+  gain, rows 0-59 after the change: E +0.0000 (0.0000); B +0.0214 (0.0018); EWP +0.0174 (0.0015); P0.25 +0.0084 (0.0007); P0.5 +0.0144 (0.0012); P0.75 +0.0187 (0.0016); AveW +0.0507 (0.0018)
+  gain, rows 60-239 after the change: E +0.0000 (0.0000); B +0.0718 (0.0018); EWP +0.0636 (0.0016); P0.25 +0.0300 (0.0007); P0.5 +0.0513 (0.0012); P0.75 +0.0656 (0.0016); AveW +0.0598 (0.0008)
+  gain, rows all after the change: E +0.0000 (0.0000); B +0.0592 (0.0015); EWP +0.0520 (0.0013); P0.25 +0.0246 (0.0006); P0.5 +0.0421 (0.0010); P0.75 +0.0538 (0.0013); AveW +0.0576 (0.0008)
+  90% coverage: E 0.864; B 0.881; EWP 0.882; P0.25 0.875; P0.5 0.881; P0.75 0.883; AveW 0.887
+  walk stopped in 74.2% of selections; when it stopped: median z* 3.10, median EWP weight 0.728, share of weights above 0.9 0.197
+  first 60 rows after the change: stopped in 24.4% of selections, median EWP weight when stopped 0.650
+
+[persistence_up] Regime: persistence rises (phi 0.2 to 0.8)
+  gain, rows 0-59 after the change: E +0.0000 (0.0000); B +0.0475 (0.0046); EWP +0.0387 (0.0039); P0.25 +0.0209 (0.0023); P0.5 +0.0332 (0.0033); P0.75 +0.0418 (0.0041); AveW +0.1031 (0.0045)
+  gain, rows 60-239 after the change: E +0.0000 (0.0000); B +0.0777 (0.0029); EWP +0.0644 (0.0025); P0.25 +0.0326 (0.0013); P0.5 +0.0539 (0.0021); P0.75 +0.0688 (0.0026); AveW +0.0951 (0.0020)
+  gain, rows all after the change: E +0.0000 (0.0000); B +0.0701 (0.0025); EWP +0.0579 (0.0021); P0.25 +0.0297 (0.0012); P0.5 +0.0487 (0.0018); P0.75 +0.0620 (0.0022); AveW +0.0971 (0.0016)
+  90% coverage: E 0.850; B 0.870; EWP 0.870; P0.25 0.862; P0.5 0.868; P0.75 0.871; AveW 0.885
+  walk stopped in 62.3% of selections; when it stopped: median z* 2.87, median EWP weight 0.646, share of weights above 0.9 0.071
+  first 60 rows after the change: stopped in 29.0% of selections, median EWP weight when stopped 0.638
+
+[burst] Episode: volatility burst (sd 3 for 24 rows)
+  gain, rows 0-59 after the change: E +0.0000 (0.0000); B +0.0456 (0.0086); EWP +0.0551 (0.0082); P0.25 +0.1118 (0.0081); P0.5 +0.1068 (0.0087); P0.75 +0.0831 (0.0088); AveW +0.2671 (0.0092)
+  gain, rows 60-239 after the change: E +0.0000 (0.0000); B -0.0252 (0.0008); EWP -0.0210 (0.0008); P0.25 -0.0046 (0.0002); P0.5 -0.0103 (0.0004); P0.75 -0.0171 (0.0006); AveW -0.0248 (0.0006)
+  gain, rows all after the change: E +0.0000 (0.0000); B -0.0075 (0.0019); EWP -0.0020 (0.0019); P0.25 +0.0245 (0.0020); P0.5 +0.0190 (0.0020); P0.75 +0.0080 (0.0020); AveW +0.0482 (0.0019)
+  90% coverage: E 0.891; B 0.907; EWP 0.906; P0.25 0.899; P0.5 0.903; P0.75 0.906; AveW 0.911
+  walk stopped in 30.5% of selections; when it stopped: median z* 3.73, median EWP weight 0.892, share of weights above 0.9 0.487
+  first 60 rows after the change: stopped in 77.3% of selections, median EWP weight when stopped 0.917
+
+[level_episode] Episode: level jump (mean 3 for 24 rows)
+  gain, rows 0-59 after the change: E +0.0000 (0.0000); B -0.0026 (0.0022); EWP +0.0011 (0.0017); P0.25 +0.0032 (0.0009); P0.5 +0.0033 (0.0014); P0.75 +0.0015 (0.0018); AveW +0.0678 (0.0022)
+  gain, rows 60-239 after the change: E +0.0000 (0.0000); B -0.0032 (0.0005); EWP -0.0009 (0.0003); P0.25 +0.0001 (0.0001); P0.5 -0.0003 (0.0002); P0.75 -0.0013 (0.0003); AveW -0.0083 (0.0002)
+  gain, rows all after the change: E +0.0000 (0.0000); B -0.0031 (0.0007); EWP -0.0004 (0.0005); P0.25 +0.0009 (0.0002); P0.5 +0.0006 (0.0004); P0.75 -0.0006 (0.0005); AveW +0.0107 (0.0005)
+  90% coverage: E 0.880; B 0.881; EWP 0.882; P0.25 0.881; P0.5 0.881; P0.75 0.881; AveW 0.891
+  walk stopped in 21.6% of selections; when it stopped: median z* 2.81, median EWP weight 0.623, share of weights above 0.9 0.092
+  first 60 rows after the change: stopped in 39.7% of selections, median EWP weight when stopped 0.678
+
+[crash] Episode: crash and rebound (shocks of -12 and +6 sd)
+  gain, rows 0-59 after the change: E +0.0000 (0.0000); B -0.1939 (0.0037); EWP -0.1621 (0.0034); P0.25 -0.0328 (0.0021); P0.5 -0.0773 (0.0025); P0.75 -0.1298 (0.0028); AveW +0.1039 (0.0056)
+  gain, rows 60-239 after the change: E +0.0000 (0.0000); B -0.0181 (0.0005); EWP -0.0149 (0.0004); P0.25 -0.0034 (0.0001); P0.5 -0.0076 (0.0002); P0.75 -0.0124 (0.0003); AveW -0.0190 (0.0003)
+  gain, rows all after the change: E +0.0000 (0.0000); B -0.0621 (0.0010); EWP -0.0517 (0.0010); P0.25 -0.0107 (0.0005); P0.5 -0.0250 (0.0006); P0.75 -0.0418 (0.0008); AveW +0.0117 (0.0013)
+  90% coverage: E 0.929; B 0.942; EWP 0.941; P0.25 0.935; P0.5 0.939; P0.75 0.941; AveW 0.945
+  walk stopped in 27.3% of selections; when it stopped: median z* 3.97, median EWP weight 0.930, share of weights above 0.9 0.552
+  first 60 rows after the change: stopped in 80.7% of selections, median EWP weight when stopped 0.945
+
+Criteria across regimes and episodes: B gains in ['variance_up', 'variance_down', 'mean_shift', 'persistence_up'], loses in ['burst', 'level_episode', 'crash']
+  C1 gains kept: sum G(B) +0.5253, sum G(EWP) +0.4683 -> True
+  C2 losses removed: sum G(B) -0.0727, sum G(EWP) -0.0541 -> False
+  C3 weighting matters: mean G(EWP) +0.0592; fixed pools P0.25 +0.0381, P0.5 +0.0541, P0.75 +0.0627; best P0.75 -> False
+Criteria across regimes only: B gains in ['variance_up', 'variance_down', 'mean_shift', 'persistence_up'], loses in []
+  C1 gains kept: sum G(B) +0.5253, sum G(EWP) +0.4683 -> True
+  C2 losses removed: sum G(B) +0.0000, sum G(EWP) +0.0000 -> None
+  C3 weighting matters: mean G(EWP) +0.1171; fixed pools P0.25 +0.0631, P0.5 +0.0961, P0.75 +0.1183; best P0.75 -> False
+Criteria across episodes only: B gains in [], loses in ['burst', 'level_episode', 'crash']
+  C1 gains kept: sum G(B) +0.0000, sum G(EWP) +0.0000 -> None
+  C2 losses removed: sum G(B) -0.0727, sum G(EWP) -0.0541 -> False
+  C3 weighting matters: mean G(EWP) -0.0180; fixed pools P0.25 +0.0049, P0.5 -0.0018, P0.75 -0.0115; best P0.25 -> False
