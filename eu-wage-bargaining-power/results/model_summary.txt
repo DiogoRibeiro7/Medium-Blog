@@ -1,0 +1,61 @@
+# Model experiments (model.py, experiments.py)
+
+Baseline: Params(n_workers=30000, n_firms=300, sigma_e=0.3, sigma_p=0.35, b0=0.45, beta=0.1, lambda0=0.2, lambda1=0.05, delta=0.015, m=0.45, transparency=False, n_bands=5, burn_in=480, measure_every=12, n_measure=8, seed=0)
+Seeds: levers 10, floor grid 6
+
+Baseline levels (mean over seeds): p10=0.472, p25=0.657, p50=0.988, p75=1.390, p90=1.817, mean_wage=1.089, employment_rate=0.939, labour_share=0.734, job_to_job_per_year=0.158, mean_output=1.484, share_at_floor=0.085, kaitz=0.456, passthrough_firm=0.887, counter_raises_per_year=0.160, counters_refused_per_year=0.000
+
+## Lever fingerprints: change against baseline (mean over seeds, sd in brackets)
+- minimum wage 0.45 -> 0.60: p10 +27.246% (1.246); p25 +3.994% (0.517); p50 +1.518% (0.360); p75 +0.533% (0.282); p90 +0.214% (0.451); mean_wage +2.946% (0.322); employment_rate -1.092 pt (0.152); labour_share +1.021 pt (0.129); job_to_job_per_year -1.041 pt (0.099); mean_output +1.535% (0.213); share_at_floor +10.240 pt (0.202); kaitz +0.143 (0.003); passthrough_firm -0.072 (0.004); counter_raises_per_year -0.676 pt (0.091); counters_refused_per_year +0.000 pt (0.000)
+- bargaining weight 0.10 -> 0.25: p10 +13.674% (0.536); p25 +11.204% (0.509); p50 +6.276% (0.375); p75 +4.463% (0.383); p90 +4.048% (0.404); mean_wage +5.813% (0.311); employment_rate +0.000 pt (0.000); labour_share +4.266 pt (0.173); job_to_job_per_year +0.000 pt (0.000); mean_output +0.000% (0.000); share_at_floor -3.706 pt (0.066); kaitz -0.027 (0.001); passthrough_firm +0.041 (0.007); counter_raises_per_year +0.140 pt (0.022); counters_refused_per_year +0.000 pt (0.000)
+- rival offers halved (non-competes): p10 -4.566% (0.935); p25 -16.812% (0.616); p50 -19.910% (0.826); p75 -16.185% (0.713); p90 -13.663% (0.795); mean_wage -15.390% (0.635); employment_rate +0.010 pt (0.096); labour_share -5.621 pt (0.304); job_to_job_per_year -5.929 pt (0.101); mean_output -8.376% (0.505); share_at_floor +5.002 pt (0.110); kaitz +0.113 (0.003); passthrough_firm -0.115 (0.010); counter_raises_per_year -5.981 pt (0.101); counters_refused_per_year +0.000 pt (0.000)
+- rival offers +50% (mobility): p10 +9.507% (0.325); p25 +14.303% (0.662); p50 +12.168% (0.539); p75 +9.387% (0.569); p90 +8.166% (0.511); mean_wage +9.946% (0.443); employment_rate +0.014 pt (0.097); labour_share +2.873 pt (0.188); job_to_job_per_year +4.306 pt (0.119); mean_output +5.808% (0.408); share_at_floor -2.298 pt (0.108); kaitz -0.049 (0.001); passthrough_firm +0.042 (0.008); counter_raises_per_year +4.383 pt (0.089); counters_refused_per_year +0.000 pt (0.000)
+- outside option 0.45 -> 0.55: p10 +13.232% (0.305); p25 +7.562% (0.407); p50 +1.580% (0.418); p75 +0.345% (0.309); p90 +0.165% (0.241); mean_wage +1.986% (0.233); employment_rate -0.152 pt (0.074); labour_share +1.150 pt (0.140); job_to_job_per_year -0.236 pt (0.072); mean_output +0.415% (0.220); share_at_floor -4.046 pt (0.133); kaitz -0.007 (0.002); passthrough_firm -0.067 (0.004); counter_raises_per_year -0.212 pt (0.125); counters_refused_per_year +0.000 pt (0.000)
+- equal pay, broad job bands (5): p10 +29.110% (1.368); p25 -0.259% (0.865); p50 -16.513% (1.302); p75 -28.637% (1.680); p90 -22.375% (1.936); mean_wage -19.110% (1.502); employment_rate -0.681 pt (0.099); labour_share -13.469 pt (0.939); job_to_job_per_year -2.383 pt (0.152); mean_output -0.923% (0.298); share_at_floor -8.216 pt (0.328); kaitz +0.090 (0.006); passthrough_firm -0.605 (0.012); counter_raises_per_year -15.186 pt (0.142); counters_refused_per_year +0.565 pt (0.081)
+- equal pay, narrow job bands (20): p10 +21.485% (0.906); p25 +14.525% (0.818); p50 +0.322% (0.480); p75 -9.165% (0.516); p90 -14.088% (1.261); mean_wage -4.227% (0.578); employment_rate -0.132 pt (0.075); labour_share -2.861 pt (0.327); job_to_job_per_year -0.594 pt (0.086); mean_output -0.339% (0.175); share_at_floor -6.723 pt (0.299); kaitz -0.001 (0.002); passthrough_firm -0.171 (0.012); counter_raises_per_year -13.249 pt (0.077); counters_refused_per_year +0.250 pt (0.013)
+
+## Floor grid: effect of each lever on quantiles, by minimum wage
+- beta 0.10 -> 0.20 | m=0.30 kaitz=0.301 at_floor=1.0% emp=94.3% | dP10 +9.52% dP25 +8.03% dP50 +4.08% dP75 +2.96% dP90 +2.58% dmean +4.10%
+- beta 0.10 -> 0.20 | m=0.35 kaitz=0.350 at_floor=2.6% emp=94.2% | dP10 +9.46% dP25 +7.95% dP50 +4.16% dP75 +3.02% dP90 +2.57% dmean +4.06%
+- beta 0.10 -> 0.20 | m=0.40 kaitz=0.401 at_floor=5.1% emp=94.2% | dP10 +9.55% dP25 +7.93% dP50 +4.12% dP75 +2.96% dP90 +2.59% dmean +3.98%
+- beta 0.10 -> 0.20 | m=0.45 kaitz=0.450 at_floor=8.3% emp=94.0% | dP10 +9.52% dP25 +7.77% dP50 +4.15% dP75 +2.90% dP90 +2.59% dmean +3.86%
+- beta 0.10 -> 0.20 | m=0.50 kaitz=0.498 at_floor=11.8% emp=93.7% | dP10 +4.77% dP25 +7.68% dP50 +4.04% dP75 +2.95% dP90 +2.61% dmean +3.70%
+- beta 0.10 -> 0.20 | m=0.55 kaitz=0.545 at_floor=15.2% emp=93.4% | dP10 +0.00% dP25 +7.55% dP50 +4.03% dP75 +2.98% dP90 +2.54% dmean +3.54%
+- beta 0.10 -> 0.20 | m=0.60 kaitz=0.592 at_floor=18.5% emp=92.9% | dP10 +0.00% dP25 +7.26% dP50 +4.04% dP75 +2.88% dP90 +2.57% dmean +3.33%
+- beta 0.10 -> 0.20 | m=0.65 kaitz=0.635 at_floor=21.4% emp=92.4% | dP10 +0.00% dP25 +6.87% dP50 +3.90% dP75 +2.99% dP90 +2.61% dmean +3.14%
+- beta 0.10 -> 0.20 | m=0.70 kaitz=0.677 at_floor=24.2% emp=91.6% | dP10 +0.00% dP25 +6.88% dP50 +3.87% dP75 +2.90% dP90 +2.60% dmean +2.93%
+- beta 0.10 -> 0.20 | m=0.75 kaitz=0.716 at_floor=26.7% emp=90.7% | dP10 +0.00% dP25 +3.71% dP50 +3.79% dP75 +2.89% dP90 +2.54% dmean +2.75%
+- beta 0.10 -> 0.20 | m=0.80 kaitz=0.752 at_floor=29.1% emp=89.6% | dP10 +0.00% dP25 +0.04% dP50 +3.67% dP75 +2.89% dP90 +2.53% dmean +2.58%
+- beta 0.10 -> 0.20 | m=0.85 kaitz=0.785 at_floor=31.2% emp=88.3% | dP10 +0.00% dP25 +0.00% dP50 +3.57% dP75 +2.80% dP90 +2.57% dmean +2.43%
+- beta 0.10 -> 0.20 | m=0.90 kaitz=0.817 at_floor=33.5% emp=86.8% | dP10 +0.00% dP25 +0.00% dP50 +3.48% dP75 +2.84% dP90 +2.53% dmean +2.29%
+- beta 0.10 -> 0.20 | m=0.95 kaitz=0.846 at_floor=35.6% emp=85.2% | dP10 +0.00% dP25 +0.00% dP50 +3.33% dP75 +2.78% dP90 +2.54% dmean +2.15%
+- lambda1 0.05 -> 0.075 | m=0.30 kaitz=0.301 at_floor=1.0% emp=94.3% | dP10 +9.69% dP25 +14.91% dP50 +12.61% dP75 +9.74% dP90 +8.16% dmean +10.37%
+- lambda1 0.05 -> 0.075 | m=0.35 kaitz=0.350 at_floor=2.6% emp=94.2% | dP10 +9.64% dP25 +14.83% dP50 +12.25% dP75 +9.75% dP90 +8.19% dmean +10.34%
+- lambda1 0.05 -> 0.075 | m=0.40 kaitz=0.401 at_floor=5.1% emp=94.2% | dP10 +9.44% dP25 +14.78% dP50 +12.49% dP75 +9.68% dP90 +8.52% dmean +10.32%
+- lambda1 0.05 -> 0.075 | m=0.45 kaitz=0.450 at_floor=8.3% emp=94.0% | dP10 +9.54% dP25 +14.55% dP50 +12.33% dP75 +9.38% dP90 +8.10% dmean +9.97%
+- lambda1 0.05 -> 0.075 | m=0.50 kaitz=0.498 at_floor=11.8% emp=93.7% | dP10 +5.09% dP25 +14.59% dP50 +12.20% dP75 +9.45% dP90 +8.07% dmean +9.88%
+- lambda1 0.05 -> 0.075 | m=0.55 kaitz=0.545 at_floor=15.2% emp=93.4% | dP10 +0.00% dP25 +14.14% dP50 +12.06% dP75 +9.58% dP90 +8.31% dmean +9.65%
+- lambda1 0.05 -> 0.075 | m=0.60 kaitz=0.592 at_floor=18.5% emp=92.9% | dP10 +0.00% dP25 +13.80% dP50 +12.01% dP75 +9.60% dP90 +8.44% dmean +9.38%
+- lambda1 0.05 -> 0.075 | m=0.65 kaitz=0.635 at_floor=21.4% emp=92.4% | dP10 +0.00% dP25 +13.52% dP50 +11.66% dP75 +9.56% dP90 +8.37% dmean +9.13%
+- lambda1 0.05 -> 0.075 | m=0.70 kaitz=0.677 at_floor=24.2% emp=91.6% | dP10 +0.00% dP25 +13.66% dP50 +11.52% dP75 +9.40% dP90 +8.17% dmean +8.70%
+- lambda1 0.05 -> 0.075 | m=0.75 kaitz=0.716 at_floor=26.7% emp=90.7% | dP10 +0.00% dP25 +10.62% dP50 +11.06% dP75 +9.26% dP90 +8.23% dmean +8.23%
+- lambda1 0.05 -> 0.075 | m=0.80 kaitz=0.752 at_floor=29.1% emp=89.6% | dP10 +0.00% dP25 +6.30% dP50 +10.43% dP75 +9.25% dP90 +8.40% dmean +7.89%
+- lambda1 0.05 -> 0.075 | m=0.85 kaitz=0.785 at_floor=31.2% emp=88.3% | dP10 +0.00% dP25 +2.64% dP50 +10.03% dP75 +8.86% dP90 +7.93% dmean +7.28%
+- lambda1 0.05 -> 0.075 | m=0.90 kaitz=0.817 at_floor=33.5% emp=86.8% | dP10 +0.00% dP25 +0.26% dP50 +9.83% dP75 +9.05% dP90 +8.06% dmean +7.10%
+- lambda1 0.05 -> 0.075 | m=0.95 kaitz=0.846 at_floor=35.6% emp=85.2% | dP10 +0.00% dP25 +0.00% dP50 +9.38% dP75 +8.65% dP90 +7.82% dmean +6.67%
+
+## Floor grid: base levels
+- m=0.30: kaitz=0.301 share_at_floor=1.0% employment=94.3% p50/p10=2.139 mean_output=1.497 labour_share=73.0%
+- m=0.35: kaitz=0.350 share_at_floor=2.6% employment=94.2% p50/p10=2.139 mean_output=1.499 labour_share=73.1%
+- m=0.40: kaitz=0.401 share_at_floor=5.1% employment=94.2% p50/p10=2.128 mean_output=1.500 labour_share=73.2%
+- m=0.45: kaitz=0.450 share_at_floor=8.3% employment=94.0% p50/p10=2.112 mean_output=1.504 labour_share=73.4%
+- m=0.50: kaitz=0.498 share_at_floor=11.8% employment=93.7% p50/p10=2.010 mean_output=1.511 labour_share=73.6%
+- m=0.55: kaitz=0.545 share_at_floor=15.2% employment=93.4% p50/p10=1.836 mean_output=1.518 labour_share=73.9%
+- m=0.60: kaitz=0.592 share_at_floor=18.5% employment=92.9% p50/p10=1.690 mean_output=1.526 labour_share=74.4%
+- m=0.65: kaitz=0.635 share_at_floor=21.4% employment=92.4% p50/p10=1.575 mean_output=1.537 labour_share=74.8%
+- m=0.70: kaitz=0.677 share_at_floor=24.2% employment=91.6% p50/p10=1.478 mean_output=1.553 labour_share=75.3%
+- m=0.75: kaitz=0.716 share_at_floor=26.7% employment=90.7% p50/p10=1.397 mean_output=1.570 labour_share=75.8%
+- m=0.80: kaitz=0.752 share_at_floor=29.1% employment=89.6% p50/p10=1.330 mean_output=1.588 labour_share=76.3%
+- m=0.85: kaitz=0.785 share_at_floor=31.2% employment=88.3% p50/p10=1.274 mean_output=1.611 labour_share=76.8%
+- m=0.90: kaitz=0.817 share_at_floor=33.5% employment=86.8% p50/p10=1.224 mean_output=1.636 labour_share=77.3%
+- m=0.95: kaitz=0.846 share_at_floor=35.6% employment=85.2% p50/p10=1.182 mean_output=1.661 labour_share=77.8%

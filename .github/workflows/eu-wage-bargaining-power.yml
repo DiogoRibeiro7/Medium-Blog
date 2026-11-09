@@ -1,0 +1,59 @@
+name: Reproduce eu-wage-bargaining-power
+
+on:
+  pull_request:
+    paths:
+      - 'eu-wage-bargaining-power/**'
+      - '.github/workflows/eu-wage-bargaining-power.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'eu-wage-bargaining-power/**'
+      - '.github/workflows/eu-wage-bargaining-power.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: eu-wage-bargaining-power
+    env:
+      MPLBACKEND: Agg
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: eu-wage-bargaining-power/requirements.txt
+
+      - name: Install pinned dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Run the tests
+        run: python -m pytest -q tests
+
+      - name: Rerun the model experiments and the empirical analysis
+        run: |
+          python experiments.py > /dev/null
+          python analysis.py > /dev/null
+
+      - name: Check the numbers match the committed run
+        run: git diff --exit-code -- results/model_summary.txt results/analysis_summary.txt
+
+      - name: Draw the figures
+        run: |
+          python figures.py
+          for f in fig1_lever_fingerprints fig2_floor_censoring fig3_floor_in_ses fig4_agreements \
+                   fig5_portugal_floor fig6_portugal_distribution; do
+            test -s "figures/$f.png"
+          done
