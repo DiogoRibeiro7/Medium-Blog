@@ -1,0 +1,225 @@
+duckdb 2.0.0, sqlglot 30.30.0, sqlfluff 4.5.0
+
+==============================================================================
+1. The data and the raw layer
+==============================================================================
+raw_flights: 336,776 rows
+raw_planes: 3,322 rows
+raw_weather: 26,115 rows
+raw_airports: 1,458 rows
+raw_airlines: 16 rows
+raw_flights: columns typed VARCHAR because they contain the text 'NA': dep_time (8,255 'NA'), dep_delay (8,255 'NA'), arr_time (8,713 'NA'), arr_delay (9,430 'NA'), tailnum (2,512 'NA'), air_time (9,430 'NA')
+raw_planes: columns typed VARCHAR because they contain the text 'NA': year (70 'NA'), speed (3,299 'NA')
+raw_weather: columns typed VARCHAR because they contain the text 'NA': temp (1 'NA'), dewp (1 'NA'), humid (1 'NA'), wind_dir (460 'NA'), wind_speed (4 'NA'), wind_gust (20,778 'NA'), pressure (2,729 'NA')
+flights: 336,776; cancelled (no departure time): 8,255 (2.5%); no arrival delay: 9,430, of which departed but not arrived: 1,175
+departed flights: 328,521
+flights with tail number 'NA': 2,512 (all cancelled: True)
+flights to destinations missing from airports: 7,602 (BQN=896, PSE=365, SJU=5819, STT=522)
+flights by tail numbers absent from the registry: 50,094 (14.9%), 721 distinct tails
+  largest carriers among them: MQ 25,395 (50.7%), AA 22,474 (44.9%), UA 1,007 (2.0%)
+planes with no manufacture year: 70; built in 2013: 92
+weather: local (origin, year, month, day, hour) keys repeated: 3; (origin, time_hour) keys repeated: 0
+
+==============================================================================
+2. Linters and formatters
+==============================================================================
+sqlfluff 4.5.0, dialect duckdb, all rules
+before: 109 violations in 7 files (48 lines); by rule group: AL 9, AM 3, CP 54, LT 43
+after: 0 violations in 11 files (150 lines); by rule group: 
+before, by rule: CP01 44, LT02 23, CP03 10, AL01 9, LT09 8, LT05 8, AM05 3, LT14 2, LT07 1, LT08 1
+before: layout and capitalisation rules account for 97 of 109 (89.0%)
+
+Rules that fired on the line holding each defect:
+  text comparison                          monthly_long_delays.sql:3   LT02
+  session time zone                        daily_carrier_performance.sql:2   CP01, CP03, LT02, LT09
+  clock arithmetic                         departure_slot_delays.sql:3   CP01, LT02
+  inner join to incomplete dimension       route_summary.sql:4   AL01, AM05
+  join on a column with another meaning    plane_age_delays.sql:4   AL01, AM05, LT02, LT05
+  join at the wrong grain                  weather_delays.sql:6   AL01, AM05, LT05
+  nulls coalesced to zero                  daily_carrier_performance.sql:6   CP01, CP03, LT02, LT05
+  not in over a nullable column            idle_aircraft.sql:4   AL01, LT14
+sqruff before: 114 violations; AL01 9, AM05 3, CP01 44, CP03 10, LT02 24, LT05 8, LT07 1, LT08 1, LT09 8, LT14 2, RF04 4
+sqruff after: 0 violations; 
+sqlfluff fix on the shipped project: 108 diff lines (added + removed); violations left after fixing: 0
+
+==============================================================================
+3. What each defect does to the real data
+==============================================================================
+
+[text comparison] departures delayed more than 60 minutes
+numeric: 26,581; text comparison: 31,264 (+17.6%)
+text comparison counts 8,255 cancellations ('NA' > '60'), 9,963 delays of 7-9 minutes, 13,011 delays of 61-99 minutes, and 35 of the 13,570 delays of 100+ minutes
+engine response to the unquoted comparison dep_delay > 60: BinderException: Binder Error: Cannot compare values of type VARCHAR and type INTEGER_LITERAL - an explicit cast is required
+carrier-months: correlation of the two shares 0.802; largest gap 50.0 points; rows where the text version is higher: 119 of 185
+largest gap: OO month 6: text 0.000 vs numeric 0.500
+
+[session time zone] local flight date from CAST(time_hour AS DATE)
+session UTC              : 38,444 flights (11.4%) on the wrong date; range 2013-01-01 to 2014-01-01
+session Europe/Lisbon    : 51,083 flights (15.2%) on the wrong date; range 2013-01-01 to 2014-01-01
+session America/New_York : 0 flights (0.0%) on the wrong date; range 2013-01-01 to 2013-12-31
+daily mart built in UTC vs New York: 4,030 of 5,432 carrier-days differ (only here 10, only in New York 0, changed 4020)
+daily mart built in Europe/Lisbon vs New York: 4,043 of 5,432 carrier-days differ (only here 10, only in New York 5, changed 4028)
+flights scheduled at or after 19:00 local: 52,813
+
+[clock arithmetic] dep_time - sched_dep_time on HHMM clock readings
+departures: 328,521; HHMM difference disagrees with dep_delay: 99,777 (30.4%); of which crossed into the next hour: 39,331; departed after midnight from an evening slot: 1,183
+largest slot gaps (hour: HHMM vs minutes): 23: -884.6 vs 14.0; 22: -181.2 vs 18.8; 21: -29.1 vs 24.2
+slots where the HHMM version has the opposite sign: 6 of 19
+
+[inner join to incomplete dimension] route summary
+routes: 217 vs 224; flights: 329,174 vs 336,776 (dropped 7,602, 2.3%)
+dropped routes: JFK-SJU 4,752, EWR-SJU 1,067, JFK-BQN 599, JFK-PSE 365, JFK-STT 333, EWR-BQN 297, EWR-STT 189
+
+[join on a column with another meaning] plane age
+shipped: 00-04 4621 -> 4,621 of 328,521 departures (1.4%)
+fixed  : 00-04 28213 (11.0), 05-09 75497 (14.5), 10-19 133963 (13.5), 20+ 37123 (10.9), unknown 53725 (9.9)
+
+[join at the wrong grain] weather by day instead of by hour
+rows counted as flights: 7,838,543 vs 328,521 departures (x23.86)
+  dry          : shipped 7,331,853 rows, mean delay 11.8 min; fixed 305,907 flights, 11.4 min
+  precipitation: shipped 506,690 rows, mean delay 25.2 min; fixed 21,086 flights, 30.9 min
+  departures with no weather observation for their hour (fixed model): 1,528
+  precipitation minus dry: shipped 13.4 min, fixed 19.6 min
+
+[nulls coalesced to zero] daily on-time rate (pooled over the year)
+on-time rate: shipped 76.9% vs fixed 76.3%; mean arrival delay: shipped 6.70 vs fixed 6.90 min
+carrier-days changed by this defect alone: 1,935 of 5,432; largest: YV on 2013-07-23: 66.7% shipped vs 0.0% fixed (2 flights not completed)
+
+[not in over a nullable column] idle aircraft after the loader is fixed
+typed loader: 6 of 7 shipped models fail to build: daily_carrier_performance (ConversionException), departure_slot_delays (ConversionException), monthly_long_delays (ConversionException), plane_age_delays (ConversionException), route_summary (ConversionException), weather_delays (ConversionException)
+  builds: idle_aircraft: 0 rows (was 12)
+  NULL tail numbers after the fix: 2,512
+
+[integer division] the same rate expression in two engines
+DuckDB: UA 0.7821; SQLite, same text: UA 0 (carriers at zero: 16 of 16)
+sqlglot transpiled to SQLite: SELECT carrier, CAST(COUNT(*) FILTER(WHERE arr_delay_min <= 15) AS REAL) / COUNT(arr_delay_min) AS on_time_rate FROM stg_flights GROUP BY carrier ORDER BY carrier NULLS LAST
+transpiled query agrees with DuckDB for 16 of 16 carriers
+
+==============================================================================
+4. Tests: which layer catches which defect, and mutation testing
+==============================================================================
+test suite: 51 tests (reconciliation 8, schema 31, unit 12); fixed project: 0 errors, 2 warnings
+  warning: stg_flights:relationships(dest->stg_airports.airport_code): 7,602 rows
+  warning: stg_flights:relationships(tailnum->stg_planes.tailnum): 50,094 rows
+
+Detection by layer (session time zone UTC; 'x' = at least one failing test):
+  model                              build  schema  recon  unit 
+  daily_carrier_performance          ok     x       x      x    
+      schema: accepted_range(flight_date); expression(on_time_arrivals > flights_completed)
+      reconciliation: daily_totals_tie_out
+  daily (time zone only)             ok     x       x      x    
+      schema: accepted_range(flight_date)
+      reconciliation: daily_totals_tie_out
+  daily (coalesce only)              ok     x       .      x    
+      schema: expression(on_time_arrivals > flights_completed)
+  route_summary                      ok     .       x      x    
+      reconciliation: route_totals_tie_out
+  plane_age_delays                   ok     .       x      x    
+      reconciliation: plane_age_totals_tie_out
+  weather_delays                     ok     .       x      x    
+      reconciliation: weather_totals_tie_out
+  monthly_long_delays                ok     .       .      x    
+  departure_slot_delays              ok     x       x      x    
+      schema: accepted_range(avg_dep_delay_min)
+      reconciliation: slot_delay_minutes_tie_out
+  idle_aircraft                      ok     .       .      .    
+  idle (not in, on staging)          ok     x       x      x    
+      schema: row_count=12
+      reconciliation: idle_aircraft_partition
+time-zone defect in a New York session: 0 data tests and 0 unit tests fail
+fixture (7, 61, 100, 150, one cancellation) against the text comparison: passed=True (two errors cancel: 'NA' > '60' adds one, '100' and '150' < '60' remove two, '7' > '60' adds one)
+
+Mutation testing on the fixed project
+round-tripped SQL reproduces every mart: True
+mutants: 112 across 9 models; by operator: relational operator 22, column swapped 16, boundary literal 16, null handling 8, filter dropped 7, aggregate 6, predicate dropped 6, case branch dropped 6, negation dropped 5, null check 3, count argument 3, arithmetic 3, join type 3, cast dropped 2, logical connector 2, join key dropped 2, not exists -> not in 1, distinct dropped 1
+  build only         killed   5 of 112 = 4.5% (95% CI 1.9% to 10.0%)
+  + schema tests     killed  27 of 112 = 24.1% (95% CI 17.1% to 32.8%)
+  + reconciliation   killed  48 of 112 = 42.9% (95% CI 34.1% to 52.1%)
+  + unit tests       killed  87 of 112 = 77.7% (95% CI 69.1% to 84.4%)
+  + boundary fixtures killed 107 of 112 = 95.5% (95% CI 90.0% to 98.1%)
+  killed by each level on its own: build 5, schema 22, reconciliation 30, unit 80
+  killed by that level and no other (first suite): build 0, schema 1, reconciliation 5, unit 39
+  survivors, first suite: 25; identical output on the real data: 3; different output on the real data: 22; score excluding identical-output mutants: 79.8%
+    [output differs] stg_flights: null handling: nullif(x, y) -> x
+    [same output] daily_carrier_performance: cast dropped: cast(x as double) -> x
+    [same output] monthly_long_delays: cast dropped: cast(x as double) -> x
+    [same output] monthly_long_delays: null handling: nullif(x, y) -> x
+    [output differs] monthly_long_delays: relational operator: gt -> gte
+    [output differs] monthly_long_delays: boundary literal: 60 -> 59
+    [output differs] monthly_long_delays: relational operator: gt -> gte
+    [output differs] monthly_long_delays: boundary literal: 60 -> 59
+    [output differs] plane_age_delays: case branch dropped: drop when age_years < 5
+    [output differs] plane_age_delays: case branch dropped: drop when age_years < 20
+    [output differs] plane_age_delays: aggregate: avg -> median
+    [output differs] plane_age_delays: relational operator: lt -> lte
+    [output differs] plane_age_delays: relational operator: lt -> lte
+    [output differs] plane_age_delays: relational operator: lt -> lte
+    [output differs] plane_age_delays: boundary literal: 5 -> 4
+    [output differs] plane_age_delays: boundary literal: 5 -> 6
+    [output differs] plane_age_delays: boundary literal: 10 -> 9
+    [output differs] plane_age_delays: boundary literal: 10 -> 11
+    [output differs] plane_age_delays: boundary literal: 20 -> 19
+    [output differs] plane_age_delays: boundary literal: 20 -> 21
+    [output differs] route_summary: count argument: count(flights.arr_delay_min) -> count(*)
+    [output differs] route_summary: aggregate: avg -> median
+    [output differs] route_summary: aggregate: max -> min
+    [output differs] route_summary: column swapped: arr_delay_min -> dep_delay_min
+    [output differs] weather_delays: aggregate: avg -> median
+  survivors, with boundary fixtures: 5; identical output on the real data: 3; different output on the real data: 2; score excluding identical-output mutants: 98.2%
+    [same output] daily_carrier_performance: cast dropped: cast(x as double) -> x
+    [same output] monthly_long_delays: cast dropped: cast(x as double) -> x
+    [same output] monthly_long_delays: null handling: nullif(x, y) -> x
+    [output differs] monthly_long_delays: relational operator: gt -> gte
+    [output differs] monthly_long_delays: boundary literal: 60 -> 59
+  by operator, first suite (killed/total): aggregate 2/6, arithmetic 3/3, boundary literal 8/16, case branch dropped 4/6, cast dropped 0/2, column swapped 15/16, count argument 2/3, distinct dropped 1/1, filter dropped 7/7, join key dropped 2/2, join type 3/3, logical connector 2/2, negation dropped 5/5, not exists -> not in 1/1, null check 3/3, null handling 6/8, predicate dropped 6/6, relational operator 17/22
+  operators killed only by unit tests: relational operator 11, column swapped 9, boundary literal 8, case branch dropped 4, null check 2, aggregate 1, count argument 1, negation dropped 1, filter dropped 1, arithmetic 1
+
+==============================================================================
+5. Review: the code diff and the data diff
+==============================================================================
+daily_carrier_performance   SQL diff lines  24; output rows: 5,442 -> 5,432; only before 10, only after 0, changed 4,082, unchanged 1,350 (75.2% touched)
+route_summary               SQL diff lines  20; output rows: 217 -> 224; only before 0, only after 7, changed 0, unchanged 217 (3.1% touched)
+plane_age_delays            SQL diff lines  31; output rows: 1 -> 5; only before 0, only after 4, changed 1, unchanged 0 (100.0% touched)
+weather_delays              SQL diff lines  23; output rows: 2 -> 3; only before 0, only after 1, changed 2, unchanged 0 (100.0% touched)
+monthly_long_delays         SQL diff lines  16; output rows: 185 -> 185; only before 0, only after 0, changed 168, unchanged 17 (90.8% touched)
+departure_slot_delays       SQL diff lines  14; output rows: 19 -> 19; only before 0, only after 0, changed 19, unchanged 0 (100.0% touched)
+idle_aircraft               SQL diff lines  25; output rows: 12 -> 12; only before 0, only after 0, changed 0, unchanged 12 (0.0% touched)
+after sqlfluff fix (formatting only), output rows that differ from the shipped models: 0
+typed-loader PR: idle_aircraft 12 rows before, 0 after; idle aircraft summed over months before: 8,235
+
+==============================================================================
+6. Security: injection through a carrier filter
+==============================================================================
+
+connection: default
+  f-string         benign: 12 rows/1 carriers | tautology: 185 rows/16 carriers | union, other table: users leaked | union, local file: file read | stacked drop: table dropped
+  concatenation    benign: 12 rows/1 carriers | tautology: 185 rows/16 carriers | union, other table: users leaked | union, local file: file read | stacked drop: table dropped
+  str.format       benign: 12 rows/1 carriers | tautology: 185 rows/16 carriers | union, other table: users leaked | union, local file: file read | stacked drop: table dropped
+  helper function  benign: 12 rows/1 carriers | tautology: 185 rows/16 carriers | union, other table: users leaked | union, local file: file read | stacked drop: table dropped
+  bound parameter  benign: 12 rows/1 carriers | tautology: 0 rows/0 carriers | union, other table: 0 rows/0 carriers | union, local file: 0 rows/0 carriers | stacked drop: 0 rows/0 carriers
+
+connection: read-only
+  f-string         benign: 12 rows/1 carriers | tautology: 185 rows/16 carriers | union, other table: users leaked | union, local file: file read | stacked drop: InvalidInput
+  concatenation    benign: 12 rows/1 carriers | tautology: 185 rows/16 carriers | union, other table: users leaked | union, local file: file read | stacked drop: InvalidInput
+  str.format       benign: 12 rows/1 carriers | tautology: 185 rows/16 carriers | union, other table: users leaked | union, local file: file read | stacked drop: InvalidInput
+  helper function  benign: 12 rows/1 carriers | tautology: 185 rows/16 carriers | union, other table: users leaked | union, local file: file read | stacked drop: InvalidInput
+  bound parameter  benign: 12 rows/1 carriers | tautology: 0 rows/0 carriers | union, other table: 0 rows/0 carriers | union, local file: 0 rows/0 carriers | stacked drop: 0 rows/0 carriers
+
+connection: no external access
+  f-string         benign: 12 rows/1 carriers | tautology: 185 rows/16 carriers | union, other table: users leaked | union, local file: Permission | stacked drop: table dropped
+  concatenation    benign: 12 rows/1 carriers | tautology: 185 rows/16 carriers | union, other table: users leaked | union, local file: Permission | stacked drop: table dropped
+  str.format       benign: 12 rows/1 carriers | tautology: 185 rows/16 carriers | union, other table: users leaked | union, local file: Permission | stacked drop: table dropped
+  helper function  benign: 12 rows/1 carriers | tautology: 185 rows/16 carriers | union, other table: users leaked | union, local file: Permission | stacked drop: table dropped
+  bound parameter  benign: 12 rows/1 carriers | tautology: 0 rows/0 carriers | union, other table: 0 rows/0 carriers | union, local file: 0 rows/0 carriers | stacked drop: 0 rows/0 carriers
+
+connection: read-only + no external access
+  f-string         benign: 12 rows/1 carriers | tautology: 185 rows/16 carriers | union, other table: users leaked | union, local file: Permission | stacked drop: InvalidInput
+  concatenation    benign: 12 rows/1 carriers | tautology: 185 rows/16 carriers | union, other table: users leaked | union, local file: Permission | stacked drop: InvalidInput
+  str.format       benign: 12 rows/1 carriers | tautology: 185 rows/16 carriers | union, other table: users leaked | union, local file: Permission | stacked drop: InvalidInput
+  helper function  benign: 12 rows/1 carriers | tautology: 185 rows/16 carriers | union, other table: users leaked | union, local file: Permission | stacked drop: InvalidInput
+  bound parameter  benign: 12 rows/1 carriers | tautology: 0 rows/0 carriers | union, other table: 0 rows/0 carriers | union, local file: 0 rows/0 carriers | stacked drop: 0 rows/0 carriers
+
+Bandit B608 findings by function: by_fstring (medium confidence), by_concatenation (low confidence), by_format_method (low confidence), by_helper (medium confidence), sorted_unsafe (medium confidence), sorted_allowlisted (medium confidence)
+  by_parameter: not flagged
+  _where: not flagged
+  sorted_allowlisted: flagged

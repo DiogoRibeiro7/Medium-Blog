@@ -1,0 +1,60 @@
+# Column defaults for fixture rows; a fixture row only states what it is about.
+# Times are local (America/New_York); time_hour is the same hour in UTC.
+raw_flights:
+  year: 2013
+  month: 1
+  day: 1
+  dep_time: '600'
+  sched_dep_time: 600
+  dep_delay: '0'
+  arr_time: '900'
+  sched_arr_time: 900
+  arr_delay: '0'
+  carrier: AA
+  flight: 1
+  tailnum: N1
+  origin: JFK
+  dest: MIA
+  air_time: '150'
+  distance: 1089
+  hour: 6
+  minute: 0
+  time_hour: '2013-01-01T11:00:00Z'
+raw_planes:
+  tailnum: N1
+  year: '2005'
+  type: Fixed wing multi engine
+  manufacturer: AIRBUS
+  model: A320
+  engines: 2
+  seats: 180
+  speed: NA
+  engine: Turbo-fan
+raw_weather:
+  origin: JFK
+  year: 2013
+  month: 1
+  day: 1
+  hour: 6
+  temp: '40'
+  dewp: '30'
+  humid: '60'
+  wind_dir: '270'
+  wind_speed: '10'
+  wind_gust: NA
+  precip: 0.0
+  pressure: '1012'
+  visib: 10.0
+  time_hour: '2013-01-01T11:00:00Z'
+raw_airports:
+  faa: MIA
+  name: Miami Intl
+  lat: 25.8
+  lon: -80.3
+  alt: 8
+  tz: -5
+  dst: A
+  tzone: America/New_York
+raw_airlines:
+  carrier: AA
+  name: American Airlines Inc.

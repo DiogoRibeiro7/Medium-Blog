@@ -1,0 +1,45 @@
+# Generic tests, in the spirit of dbt's schema tests. Each test compiles to a
+# query that returns the offending rows; an empty result is a pass.
+# severity: warn reports a failure without failing the build.
+stg_flights:
+  - {test: not_null, columns: [carrier, origin, dest, flight_date, sched_dep_hour_ts]}
+  - {test: accepted_values, column: origin, values: [EWR, JFK, LGA]}
+  - {test: accepted_range, column: dep_delay_min, min: -120, max: 1440}
+  - {test: accepted_range, column: arr_delay_min, min: -120, max: 1440}
+  - {test: relationships, column: dest, to: stg_airports, field: airport_code, severity: warn}
+  - {test: relationships, column: tailnum, to: stg_planes, field: tailnum, severity: warn}
+stg_planes:
+  - {test: unique, columns: [tailnum]}
+  - {test: accepted_range, column: manufacture_year, min: 1950, max: 2013}
+stg_weather:
+  - {test: unique, columns: [origin, observed_hour_ts]}
+stg_airports:
+  - {test: unique, columns: [airport_code]}
+daily_carrier_performance:
+  - {test: unique, columns: [carrier, flight_date]}
+  - {test: not_null, columns: [carrier, flight_date, flights_scheduled]}
+  - {test: accepted_range, column: flight_date, min: "DATE '2013-01-01'", max: "DATE '2013-12-31'"}
+  - {test: accepted_range, column: on_time_rate, min: 0, max: 1}
+  - {test: expression, where: "flights_cancelled + flights_completed > flights_scheduled"}
+  - {test: expression, where: "on_time_arrivals > flights_completed"}
+route_summary:
+  - {test: unique, columns: [origin, dest]}
+  - {test: not_null, columns: [origin, dest, dest_name, flights]}
+plane_age_delays:
+  - {test: unique, columns: [age_band]}
+  - {test: accepted_values, column: age_band, values: ['00-04', '05-09', '10-19', '20+', unknown]}
+weather_delays:
+  - {test: unique, columns: [weather_at_departure]}
+  - {test: accepted_values, column: weather_at_departure, values: [dry, precipitation, no observation]}
+monthly_long_delays:
+  - {test: unique, columns: [carrier, flight_month]}
+  - {test: accepted_range, column: share_over_60_min, min: 0, max: 1}
+  - {test: expression, where: "departures_over_60_min > departures"}
+departure_slot_delays:
+  - {test: unique, columns: [sched_dep_hour]}
+  - {test: accepted_range, column: sched_dep_hour, min: 0, max: 23}
+  - {test: accepted_range, column: avg_dep_delay_min, min: -120, max: 1440}
+idle_aircraft:
+  - {test: unique, columns: [flight_month]}
+  - {test: row_count, equals: 12}
+  - {test: accepted_range, column: idle_aircraft, min: 0, max: 3322}

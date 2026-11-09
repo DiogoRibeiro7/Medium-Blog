@@ -1,0 +1,856 @@
+{
+ "detection": [
+  [
+   "daily_carrier_performance",
+   "ok",
+   {
+    "schema": true,
+    "reconciliation": true,
+    "unit": true
+   }
+  ],
+  [
+   "daily (time zone only)",
+   "ok",
+   {
+    "schema": true,
+    "reconciliation": true,
+    "unit": true
+   }
+  ],
+  [
+   "daily (coalesce only)",
+   "ok",
+   {
+    "schema": true,
+    "reconciliation": false,
+    "unit": true
+   }
+  ],
+  [
+   "route_summary",
+   "ok",
+   {
+    "schema": false,
+    "reconciliation": true,
+    "unit": true
+   }
+  ],
+  [
+   "plane_age_delays",
+   "ok",
+   {
+    "schema": false,
+    "reconciliation": true,
+    "unit": true
+   }
+  ],
+  [
+   "weather_delays",
+   "ok",
+   {
+    "schema": false,
+    "reconciliation": true,
+    "unit": true
+   }
+  ],
+  [
+   "monthly_long_delays",
+   "ok",
+   {
+    "schema": false,
+    "reconciliation": false,
+    "unit": true
+   }
+  ],
+  [
+   "departure_slot_delays",
+   "ok",
+   {
+    "schema": true,
+    "reconciliation": true,
+    "unit": true
+   }
+  ],
+  [
+   "idle_aircraft",
+   "ok",
+   {
+    "schema": false,
+    "reconciliation": false,
+    "unit": false
+   }
+  ],
+  [
+   "idle (not in, on staging)",
+   "ok",
+   {
+    "schema": true,
+    "reconciliation": true,
+    "unit": true
+   }
+  ]
+ ],
+ "scores": [
+  [
+   "build only",
+   5,
+   112,
+   0.019217257804981562,
+   0.10026896944876437
+  ],
+  [
+   "+ schema tests",
+   27,
+   112,
+   0.17129463081979324,
+   0.32802106703037603
+  ],
+  [
+   "+ reconciliation",
+   48,
+   112,
+   0.34079156919600984,
+   0.5210886233143815
+  ],
+  [
+   "+ unit tests",
+   87,
+   112,
+   0.6912259675370077,
+   0.8439882864852252
+  ],
+  [
+   "+ boundary fixtures",
+   107,
+   112,
+   0.8997310305512356,
+   0.9807827421950184
+  ]
+ ],
+ "operators": [
+  [
+   "null handling",
+   false,
+   true,
+   false
+  ],
+  [
+   "null check",
+   true,
+   true,
+   false
+  ],
+  [
+   "null handling",
+   true,
+   true,
+   false
+  ],
+  [
+   "null handling",
+   true,
+   true,
+   false
+  ],
+  [
+   "null handling",
+   true,
+   true,
+   false
+  ],
+  [
+   "null handling",
+   true,
+   true,
+   false
+  ],
+  [
+   "filter dropped",
+   true,
+   true,
+   false
+  ],
+  [
+   "count argument",
+   true,
+   true,
+   false
+  ],
+  [
+   "filter dropped",
+   true,
+   true,
+   false
+  ],
+  [
+   "arithmetic",
+   true,
+   true,
+   false
+  ],
+  [
+   "aggregate",
+   true,
+   true,
+   true
+  ],
+  [
+   "column swapped",
+   true,
+   true,
+   false
+  ],
+  [
+   "cast dropped",
+   false,
+   false,
+   false
+  ],
+  [
+   "null handling",
+   true,
+   true,
+   false
+  ],
+  [
+   "column swapped",
+   true,
+   true,
+   true
+  ],
+  [
+   "relational operator",
+   true,
+   true,
+   true
+  ],
+  [
+   "relational operator",
+   true,
+   true,
+   true
+  ],
+  [
+   "filter dropped",
+   true,
+   true,
+   false
+  ],
+  [
+   "count argument",
+   true,
+   true,
+   true
+  ],
+  [
+   "column swapped",
+   true,
+   true,
+   false
+  ],
+  [
+   "boundary literal",
+   true,
+   true,
+   true
+  ],
+  [
+   "boundary literal",
+   true,
+   true,
+   true
+  ],
+  [
+   "column swapped",
+   true,
+   true,
+   true
+  ],
+  [
+   "relational operator",
+   true,
+   true,
+   true
+  ],
+  [
+   "relational operator",
+   true,
+   true,
+   true
+  ],
+  [
+   "column swapped",
+   true,
+   true,
+   false
+  ],
+  [
+   "boundary literal",
+   true,
+   true,
+   true
+  ],
+  [
+   "boundary literal",
+   true,
+   true,
+   true
+  ],
+  [
+   "predicate dropped",
+   true,
+   true,
+   false
+  ],
+  [
+   "aggregate",
+   true,
+   true,
+   false
+  ],
+  [
+   "negation dropped",
+   true,
+   true,
+   true
+  ],
+  [
+   "column swapped",
+   true,
+   true,
+   false
+  ],
+  [
+   "filter dropped",
+   true,
+   true,
+   false
+  ],
+  [
+   "filter dropped",
+   true,
+   true,
+   false
+  ],
+  [
+   "arithmetic",
+   true,
+   true,
+   false
+  ],
+  [
+   "cast dropped",
+   false,
+   false,
+   false
+  ],
+  [
+   "null handling",
+   false,
+   false,
+   false
+  ],
+  [
+   "negation dropped",
+   true,
+   true,
+   false
+  ],
+  [
+   "relational operator",
+   false,
+   true,
+   false
+  ],
+  [
+   "relational operator",
+   true,
+   true,
+   true
+  ],
+  [
+   "filter dropped",
+   true,
+   true,
+   false
+  ],
+  [
+   "filter dropped",
+   true,
+   true,
+   true
+  ],
+  [
+   "column swapped",
+   true,
+   true,
+   true
+  ],
+  [
+   "boundary literal",
+   false,
+   true,
+   false
+  ],
+  [
+   "boundary literal",
+   true,
+   true,
+   true
+  ],
+  [
+   "relational operator",
+   false,
+   false,
+   false
+  ],
+  [
+   "relational operator",
+   true,
+   true,
+   true
+  ],
+  [
+   "negation dropped",
+   true,
+   true,
+   false
+  ],
+  [
+   "column swapped",
+   true,
+   true,
+   true
+  ],
+  [
+   "boundary literal",
+   false,
+   false,
+   false
+  ],
+  [
+   "boundary literal",
+   true,
+   true,
+   true
+  ],
+  [
+   "predicate dropped",
+   true,
+   true,
+   false
+  ],
+  [
+   "not exists -> not in",
+   true,
+   true,
+   false
+  ],
+  [
+   "distinct dropped",
+   true,
+   true,
+   false
+  ],
+  [
+   "predicate dropped",
+   true,
+   true,
+   false
+  ],
+  [
+   "predicate dropped",
+   true,
+   true,
+   false
+  ],
+  [
+   "logical connector",
+   true,
+   true,
+   false
+  ],
+  [
+   "relational operator",
+   true,
+   true,
+   false
+  ],
+  [
+   "relational operator",
+   true,
+   true,
+   false
+  ],
+  [
+   "case branch dropped",
+   true,
+   true,
+   true
+  ],
+  [
+   "case branch dropped",
+   false,
+   true,
+   false
+  ],
+  [
+   "case branch dropped",
+   true,
+   true,
+   true
+  ],
+  [
+   "case branch dropped",
+   false,
+   true,
+   false
+  ],
+  [
+   "aggregate",
+   false,
+   true,
+   false
+  ],
+  [
+   "column swapped",
+   true,
+   true,
+   false
+  ],
+  [
+   "null check",
+   true,
+   true,
+   true
+  ],
+  [
+   "relational operator",
+   false,
+   true,
+   false
+  ],
+  [
+   "relational operator",
+   true,
+   true,
+   true
+  ],
+  [
+   "relational operator",
+   false,
+   true,
+   false
+  ],
+  [
+   "relational operator",
+   true,
+   true,
+   true
+  ],
+  [
+   "relational operator",
+   false,
+   true,
+   false
+  ],
+  [
+   "relational operator",
+   true,
+   true,
+   true
+  ],
+  [
+   "join type",
+   true,
+   true,
+   false
+  ],
+  [
+   "predicate dropped",
+   true,
+   true,
+   false
+  ],
+  [
+   "boundary literal",
+   false,
+   true,
+   false
+  ],
+  [
+   "boundary literal",
+   false,
+   true,
+   false
+  ],
+  [
+   "boundary literal",
+   false,
+   true,
+   false
+  ],
+  [
+   "boundary literal",
+   false,
+   true,
+   false
+  ],
+  [
+   "boundary literal",
+   false,
+   true,
+   false
+  ],
+  [
+   "boundary literal",
+   false,
+   true,
+   false
+  ],
+  [
+   "arithmetic",
+   true,
+   true,
+   true
+  ],
+  [
+   "relational operator",
+   true,
+   true,
+   false
+  ],
+  [
+   "negation dropped",
+   true,
+   true,
+   false
+  ],
+  [
+   "join type",
+   true,
+   true,
+   false
+  ],
+  [
+   "null handling",
+   true,
+   true,
+   false
+  ],
+  [
+   "count argument",
+   false,
+   true,
+   false
+  ],
+  [
+   "aggregate",
+   false,
+   true,
+   false
+  ],
+  [
+   "aggregate",
+   false,
+   true,
+   false
+  ],
+  [
+   "relational operator",
+   true,
+   true,
+   false
+  ],
+  [
+   "column swapped",
+   false,
+   true,
+   false
+  ],
+  [
+   "column swapped",
+   true,
+   true,
+   true
+  ],
+  [
+   "column swapped",
+   true,
+   true,
+   true
+  ],
+  [
+   "column swapped",
+   true,
+   true,
+   true
+  ],
+  [
+   "join type",
+   true,
+   true,
+   false
+  ],
+  [
+   "join key dropped",
+   true,
+   true,
+   false
+  ],
+  [
+   "join key dropped",
+   true,
+   true,
+   false
+  ],
+  [
+   "predicate dropped",
+   true,
+   true,
+   false
+  ],
+  [
+   "case branch dropped",
+   true,
+   true,
+   true
+  ],
+  [
+   "case branch dropped",
+   true,
+   true,
+   true
+  ],
+  [
+   "aggregate",
+   false,
+   true,
+   false
+  ],
+  [
+   "logical connector",
+   true,
+   true,
+   false
+  ],
+  [
+   "negation dropped",
+   true,
+   true,
+   false
+  ],
+  [
+   "column swapped",
+   true,
+   true,
+   true
+  ],
+  [
+   "relational operator",
+   true,
+   true,
+   false
+  ],
+  [
+   "relational operator",
+   true,
+   true,
+   false
+  ],
+  [
+   "null check",
+   true,
+   true,
+   true
+  ],
+  [
+   "relational operator",
+   true,
+   true,
+   true
+  ],
+  [
+   "relational operator",
+   true,
+   true,
+   true
+  ],
+  [
+   "column swapped",
+   true,
+   true,
+   true
+  ],
+  [
+   "column swapped",
+   true,
+   true,
+   false
+  ],
+  [
+   "boundary literal",
+   true,
+   true,
+   true
+  ],
+  [
+   "boundary literal",
+   true,
+   true,
+   true
+  ]
+ ],
+ "review": [
+  [
+   "daily_carrier_performance",
+   24,
+   0.7519294377067255,
+   5442,
+   5432
+  ],
+  [
+   "route_summary",
+   20,
+   0.03125,
+   217,
+   224
+  ],
+  [
+   "plane_age_delays",
+   31,
+   1.0,
+   1,
+   5
+  ],
+  [
+   "weather_delays",
+   23,
+   1.0,
+   2,
+   3
+  ],
+  [
+   "monthly_long_delays",
+   16,
+   0.9081081081081082,
+   185,
+   185
+  ],
+  [
+   "departure_slot_delays",
+   14,
+   1.0,
+   19,
+   19
+  ],
+  [
+   "idle_aircraft",
+   25,
+   0.0,
+   12,
+   12
+  ]
+ ]
+}

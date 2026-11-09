@@ -1,0 +1,14 @@
+[sqlfluff]
+dialect = duckdb
+templater = raw
+max_line_length = 88
+
+[sqlfluff:indentation]
+indent_unit = space
+tab_space_size = 4
+
+[sqlfluff:rules:capitalisation.keywords]
+capitalisation_policy = lower
+
+[sqlfluff:rules:capitalisation.functions]
+extended_capitalisation_policy = lower

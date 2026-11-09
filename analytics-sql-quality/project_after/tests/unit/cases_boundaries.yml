@@ -1,0 +1,71 @@
+# Added after the first mutation run. Each case targets a group of surviving
+# mutants: values on both sides of every threshold, groups of three rows whose
+# mean and median differ, and columns the first cases never looked at.
+- name: the 60-minute threshold is strict
+  model: monthly_long_delays
+  given:
+    raw_flights:
+      - {carrier: UA, dep_delay: '59'}
+      - {carrier: UA, dep_delay: '60'}
+      - {carrier: UA, dep_delay: '61'}
+  expect:
+    - {carrier: UA, flight_month: 1, departures: 3, departures_over_60_min: 1}
+
+- name: age bands split at 5, 10 and 20 years, and report means
+  model: plane_age_delays
+  given:
+    raw_planes:
+      - {tailnum: A4, year: '2009'}
+      - {tailnum: A5, year: '2008'}
+      - {tailnum: A9, year: '2004'}
+      - {tailnum: A10, year: '2003'}
+      - {tailnum: A19, year: '1994'}
+      - {tailnum: A20, year: '1993'}
+    raw_flights:
+      - {tailnum: A4, dep_delay: '0'}
+      - {tailnum: A4, dep_delay: '0'}
+      - {tailnum: A4, dep_delay: '30'}
+      - {tailnum: A5, dep_delay: '5'}
+      - {tailnum: A9, dep_delay: '9'}
+      - {tailnum: A10, dep_delay: '10'}
+      - {tailnum: A19, dep_delay: '19'}
+      - {tailnum: A20, dep_delay: '20'}
+  expect:
+    - {age_band: 00-04, flights: 3, avg_dep_delay_min: 10.0}
+    - {age_band: 05-09, flights: 2, avg_dep_delay_min: 7.0}
+    - {age_band: 10-19, flights: 2, avg_dep_delay_min: 14.5}
+    - {age_band: 20+, flights: 1, avg_dep_delay_min: 20.0}
+
+- name: route counts completed flights and reports the longest distance and the mean delay
+  model: route_summary
+  given:
+    raw_airports:
+      - {faa: EGE, name: Eagle Co Rgnl}
+    raw_flights:
+      - {dest: EGE, distance: 1746, arr_delay: '10', dep_delay: '0'}
+      - {dest: EGE, distance: 1747, arr_delay: '20', dep_delay: '0'}
+      - {dest: EGE, distance: 1747, arr_delay: '60', dep_delay: '0'}
+      - {dest: EGE, distance: 1747, dep_delay: '45', arr_time: NA, arr_delay: NA, air_time: NA}
+  expect:
+    - {origin: JFK, dest: EGE, dest_name: Eagle Co Rgnl, flights: 4, flights_completed: 3,
+       avg_arr_delay_min: 30.0, distance_miles: 1747}
+
+- name: weather buckets report means
+  model: weather_delays
+  given:
+    raw_weather:
+      - {origin: LGA, time_hour: '2013-01-01T11:00:00Z', precip: 0.2}
+    raw_flights:
+      - {origin: LGA, dep_delay: '0'}
+      - {origin: LGA, dep_delay: '0'}
+      - {origin: LGA, dep_delay: '60'}
+  expect:
+    - {weather_at_departure: precipitation, flights: 3, avg_dep_delay_min: 20.0}
+
+- name: staging turns the text NA into NULL
+  model: stg_flights
+  given:
+    raw_flights:
+      - {tailnum: NA, dep_time: NA, dep_delay: NA, arr_time: NA, arr_delay: NA, air_time: NA}
+  expect:
+    - {tailnum: null, dep_delay_min: null, arr_delay_min: null, is_cancelled: true}

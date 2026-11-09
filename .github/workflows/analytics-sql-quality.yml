@@ -1,0 +1,78 @@
+name: Reproduce analytics-sql-quality
+
+on:
+  pull_request:
+    paths:
+      - 'analytics-sql-quality/**'
+      - '.github/workflows/analytics-sql-quality.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'analytics-sql-quality/**'
+      - '.github/workflows/analytics-sql-quality.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: analytics-sql-quality
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: analytics-sql-quality/requirements.txt
+
+      - name: Install pinned dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: The reviewed SQL project lints clean with SQLFluff
+        run: sqlfluff lint project_after/models
+
+      - name: The reviewed SQL project lints clean with sqruff
+        run: sqruff lint project_after/models
+
+  reproduce:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: analytics-sql-quality
+    env:
+      MPLBACKEND: Agg
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: analytics-sql-quality/requirements.txt
+
+      - name: Install pinned dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Rerun the analysis (tests, mutants, diffs, injection matrix)
+        run: python analysis.py > results/output.txt
+
+      - name: Check the numbers match the committed run
+        run: git diff --exit-code -- results/output.txt
+
+      - name: Redraw the figures
+        run: python figures.py
+
+      - name: Check every figure was drawn
+        run: |
+          for f in fig1_detection fig2_mutation fig3_performance; do
+            test -s "figures/$f.png"
+          done
