@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="pt-pt" dir="ltr">
+  <head>
+    
+<link rel="preload" href="/themes/custom/igcp_theme/assets/fonts/noto-sans/NotoSans-VariableFont_wdth,wght.ttf" as="font" crossorigin>
+<link rel="preload" href="/themes/custom/igcp_theme/assets/fonts/noto-sans/NotoSans-Italic-VariableFont_wdth,wght.ttf" as="font" crossorigin>    <meta charset="utf-8" />
+<style id="gutenberg-palette">:root {   .has-white-color{ color:#fff }  .has-white-background-color{ background-color:#fff }  .has-white-border-color{ border-color:#fff }  .has-black-color{ color:#000 }  .has-black-background-color{ background-color:#000 }  .has-black-border-color{ border-color:#000 }  .has-light-color{ color:#9CA6B8 }  .has-light-background-color{ background-color:#9CA6B8 }  .has-light-border-color{ border-color:#9CA6B8 }  .has-medium-color{ color:#64718B }  .has-medium-background-color{ background-color:#64718B }  .has-medium-border-color{ border-color:#64718B }  .has-dark-color{ color:#2b363c }  .has-dark-background-color{ background-color:#2b363c }  .has-dark-border-color{ border-color:#2b363c }  .has-primary-main-color{ color:#034AD8 }  .has-primary-main-background-color{ background-color:#034AD8 }  .has-primary-main-border-color{ border-color:#034AD8 }  .has-primary-dark-color{ color:#021C51 }  .has-primary-dark-background-color{ background-color:#021C51 }  .has-primary-dark-border-color{ border-color:#021C51 }  .has-white-color{ color:#fff }  .has-white-background-color{ background-color:#fff }  .has-white-border-color{ border-color:#fff }  .has-black-color{ color:#000 }  .has-black-background-color{ background-color:#000 }  .has-black-border-color{ border-color:#000 }  .has-light-color{ color:#9CA6B8 }  .has-light-background-color{ background-color:#9CA6B8 }  .has-light-border-color{ border-color:#9CA6B8 }  .has-medium-color{ color:#64718B }  .has-medium-background-color{ background-color:#64718B }  .has-medium-border-color{ border-color:#64718B }  .has-dark-color{ color:#2b363c }  .has-dark-background-color{ background-color:#2b363c }  .has-dark-border-color{ border-color:#2b363c }  .has-primary-main-color{ color:#034AD8 }  .has-primary-main-background-color{ background-color:#034AD8 }  .has-primary-main-border-color{ border-color:#034AD8 }  .has-primary-dark-color{ color:#021C51 }  .has-primary-dark-background-color{ background-color:#021C51 }  .has-primary-dark-border-color{ border-color:#021C51 } }</style>
+<style id="gutenberg-gradients">:root {   .has-vivid-cyan-blue-to-vivid-purple-gradient-background{ background:linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%) }  .has-light-green-cyan-to-vivid-green-cyan-gradient-background{ background:linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%) }  .has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{ background:linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%) }  .has-luminous-vivid-orange-to-vivid-red-gradient-background{ background:linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%) }  .has-very-light-gray-to-cyan-bluish-gray-gradient-background{ background:linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%) }  .has-cool-to-warm-spectrum-gradient-background{ background:linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%) }  .has-blush-light-purple-gradient-background{ background:linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%) }  .has-blush-bordeaux-gradient-background{ background:linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%) }  .has-luminous-dusk-gradient-background{ background:linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%) }  .has-pale-ocean-gradient-background{ background:linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%) }  .has-electric-grass-gradient-background{ background:linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%) }  .has-midnight-gradient-background{ background:linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%) } }</style>
+<style id="gutenberg-font-sizes">:root {   .has-very-small-font-size{ font-size:12px }  .has-extra-small-font-size{ font-size:14px }  .has-small-font-size{ font-size:16px }  .has-normal-font-size{ font-size:18px }  .has-medium-font-size{ font-size:24px }  .has-medium-large-font-size{ font-size:26px }  .has-large-font-size{ font-size:32px }  .has-extra-large-font-size{ font-size:40px } }</style>
+<link rel="canonical" href="https://www.igcp.pt/pt" />
+<link rel="shortlink" href="https://www.igcp.pt/pt" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<style>div#sliding-popup, div#sliding-popup .eu-cookie-withdraw-banner, .eu-cookie-withdraw-tab {background: #021C51} div#sliding-popup.eu-cookie-withdraw-wrapper { background: transparent; } #sliding-popup h1, #sliding-popup h2, #sliding-popup h3, #sliding-popup p, #sliding-popup label, #sliding-popup div, .eu-cookie-compliance-more-button, .eu-cookie-compliance-secondary-button, .eu-cookie-withdraw-tab { color: #FFFFFF;} .eu-cookie-withdraw-tab { border-color: #FFFFFF;}</style>
+<link rel="icon" href="/themes/custom/igcp_theme/favicon.ico" type="image/vnd.microsoft.icon" />
+<link rel="alternate" hreflang="pt-pt" href="https://www.igcp.pt/pt" />
+<link rel="alternate" hreflang="en" href="https://www.igcp.pt/en" />
+
+    <title>Página Inicial | IGCP</title>
+    <link rel="stylesheet" media="all" href="/sites/default/files/css/css_Pas3wapkgQ4QGt_CF0KT1F5TkG0_JI3__5CVXqizPA4.css?delta=0&amp;language=pt-pt&amp;theme=igcp_theme&amp;include=eJxtjusOwiAMhV-IjUcipXRYVyjhos6nl2iyGOOvnn7JuXiB52FFIXCOBncK3LU6QNQaWLM91bpVzZ1yMBOQDXUUkBWu8DA0HKruTPOkIgwZyf6DLtAGQ7qJYyZ5qtF6UdyXT-0vbsuN6W44YnH9Qomsh0bf_2kwaUaA3Vg61RWh9DnZtKN1Sm_XC6ZHWr8" />
+<link rel="stylesheet" media="all" href="/modules/contrib/gutenberg/js/vendor/gutenberg/components/style.css?thyt9y" id="wp-components-css" />
+<link rel="stylesheet" media="all" href="/sites/default/files/css/css_yzgE42L8ZHDSG-h2sc5wlLCdtlVJhwagayW4yyH5R0I.css?delta=2&amp;language=pt-pt&amp;theme=igcp_theme&amp;include=eJxtjusOwiAMhV-IjUcipXRYVyjhos6nl2iyGOOvnn7JuXiB52FFIXCOBncK3LU6QNQaWLM91bpVzZ1yMBOQDXUUkBWu8DA0HKruTPOkIgwZyf6DLtAGQ7qJYyZ5qtF6UdyXT-0vbsuN6W44YnH9Qomsh0bf_2kwaUaA3Vg61RWh9DnZtKN1Sm_XC6ZHWr8" />
+<link rel="stylesheet" media="all" href="/modules/contrib/gutenberg/js/vendor/gutenberg/block-editor/content.css?thyt9y" id="wp-block-editor-content-css" />
+<link rel="stylesheet" media="all" href="/sites/default/files/css/css_wvghSc6BFJU9EUkY4p-cFTT9_N7Txmb9oNKBnyfyDa4.css?delta=4&amp;language=pt-pt&amp;theme=igcp_theme&amp;include=eJxtjusOwiAMhV-IjUcipXRYVyjhos6nl2iyGOOvnn7JuXiB52FFIXCOBncK3LU6QNQaWLM91bpVzZ1yMBOQDXUUkBWu8DA0HKruTPOkIgwZyf6DLtAGQ7qJYyZ5qtF6UdyXT-0vbsuN6W44YnH9Qomsh0bf_2kwaUaA3Vg61RWh9DnZtKN1Sm_XC6ZHWr8" />
+<link rel="stylesheet" media="all" href="/modules/contrib/gutenberg/js/vendor/gutenberg/block-editor/style.css?thyt9y" id="wp-block-editor-css" />
+<link rel="stylesheet" media="all" href="/sites/default/files/css/css_wzDfpXu-Qej8E9AiDlCGCatfXLaeR1Npuvg2jbZ5FoI.css?delta=6&amp;language=pt-pt&amp;theme=igcp_theme&amp;include=eJxtjusOwiAMhV-IjUcipXRYVyjhos6nl2iyGOOvnn7JuXiB52FFIXCOBncK3LU6QNQaWLM91bpVzZ1yMBOQDXUUkBWu8DA0HKruTPOkIgwZyf6DLtAGQ7qJYyZ5qtF6UdyXT-0vbsuN6W44YnH9Qomsh0bf_2kwaUaA3Vg61RWh9DnZtKN1Sm_XC6ZHWr8" />
+<link rel="stylesheet" media="all" href="/sites/default/files/css/css_oDrY1B7JKWhSUXKHwizWnLp9V7LKhzKOIb6JO04wxIY.css?delta=7&amp;language=pt-pt&amp;theme=igcp_theme&amp;include=eJxtjusOwiAMhV-IjUcipXRYVyjhos6nl2iyGOOvnn7JuXiB52FFIXCOBncK3LU6QNQaWLM91bpVzZ1yMBOQDXUUkBWu8DA0HKruTPOkIgwZyf6DLtAGQ7qJYyZ5qtF6UdyXT-0vbsuN6W44YnH9Qomsh0bf_2kwaUaA3Vg61RWh9DnZtKN1Sm_XC6ZHWr8" />
+
+    
+  </head>
+  <body class="path-frontpage page-node-type-landing-page">
+        <a href="#main-content" class="visually-hidden focusable skip-link">
+      Passar para o conteúdo principal
+    </a>
+    
+      <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+    <div class="layout-container drupal-container">
+			<header role="banner">
+			<div class="header-wrapper alignwide">
+				<div class="header-left">
+					  <div class="region region-header-left">
+    <div id="block-igcp-theme-site-branding" class="block block-system block-system-branding-block">
+  
+    
+  			<a href="/pt"  rel="home">
+			<img src="/themes/custom/igcp_theme/logo.svg" alt="Agência de Gestão da Tesouraria e da Dívida Pública IGCP" fetchpriority="high"/>
+		</a>
+			
+</div>
+
+  </div>
+
+				</div>
+				<div class="header-right">
+					<div class="header-top">
+						  <div class="region region-header-top">
+    
+
+
+	<div class="horizontal-menu global-search-menu">
+		<button class="horizontal-menu-btn" aria-expanded="false">
+			<div class="icon"></div>
+			<span>
+            <div class="field field--name-body field--type-text-with-summary field--label-hidden field__item"><p>Pesquisa</p>
+<div class="title visually-hidden">Diga-nos o que procura</div>
+</div>
+      </span>
+		</button>
+		<div class="horizontal-menu-content global-search-content">
+			<div class="close_container">
+				<button class="close_button" title="Fechar" aria-label="Fechar"></button>
+			</div>
+			<div class="content"></div>
+			<div class="backdrop"></div>
+		</div>
+	</div>
+<div id="block-igcp-theme-header-top-link" class="block block-block-content block-block-contente97d089b-98fb-413a-b9c4-7322acac3c89">
+  
+    
+      <div class="content">
+      
+            <div class="field field--name-body field--type-text-with-summary field--label-hidden field__item"><p><a href="https://aforronet.igcp.pt/" target="_blank" rel="noopener noreferrer">AforroNet</a></p>
+</div>
+      
+    </div>
+  </div>
+<div id="block-igcp-theme-headerrecruitmentlink" class="block block-block-content block-block-content8062ecc1-5b7e-4977-a0a6-991529780751">
+  
+    
+      <div class="content">
+      
+            <div class="field field--name-body field--type-text-with-summary field--label-hidden field__item"><p><a style="color:var(--neutral-900);display:block;font-family:var(--font);font-size:var(--scale-16);font-weight:400;line-height:var(--scale-28);min-width:44px;padding:16px 0;text-align:center;" href="/pt/contactos" data-entity-type="node" data-entity-uuid="892a43df-2261-4de6-b644-8b554d3235fe" data-entity-substitution="canonical" title="Formulário de Contacto">Fale Connosco</a></p></div>
+      
+    </div>
+  </div>
+<div class="language-switcher-language-url block block-language block-language-blocklanguage-interface" id="block-igcp-theme-languageswitcher" role="navigation">
+  
+    
+      <div class="content">
+      <ul class="links"><li hreflang="pt-pt" data-drupal-link-system-path="&lt;front&gt;" class="is-active" aria-current="page"><a href="/pt" class="language-link is-active" hreflang="pt-pt" data-drupal-link-system-path="&lt;front&gt;">PT</a></li><li hreflang="en" data-drupal-link-system-path="&lt;front&gt;"><a href="/en" class="language-link" hreflang="en" data-drupal-link-system-path="&lt;front&gt;">EN</a></li></ul>
+    </div>
+  </div>
+
+  </div>
+
+					</div>
+					<div class="header-bottom">
+						
+					</div>
+				</div>
+			</div>
+		</header>
+		<main role="main">
+		<a id="main-content" tabindex="-1"></a>
+				<div class="layout-content">
+												  <div class="region region-highlighted">
+    <div data-drupal-messages-fallback class="hidden"></div>
+
+  </div>
+
+																							
+					
+					  <div class="region region-content">
+    <div id="block-igcp-theme-content" class="block block-system block-system-main-block">
+  
+    
+      <div class="content">
+      <article data-history-node-id="59" class="node node--type-landing-page node--view-mode-full clearfix">
+
+  
+    
+
+      <div>
+          
+<div class="wp-block-columns alignfull">
+<div class="wp-block-column">
+<div class="wp-block-cover is-layout-constrained wp-block-cover-is-layout-constrained" style="min-height:400px"><span aria-hidden="true" class="wp-block-cover__background has-dark-background-color has-background-dim-80 has-background-dim"></span><img class="wp-block-cover__image-background wp-image-12" alt="ponte" src="/sites/default/files/2024-10/423.png" style="object-position:54% 45%" data-object-fit="cover" data-object-position="54% 45%" data-entity-type="file" data-entity-uuid="97623ffc-4e68-4e6e-9565-38dd4a398db8" data-image-style="original"/><div class="wp-block-cover__inner-container">
+<div class="wp-block-columns alignwide">
+<div class="wp-block-column" style="flex-basis:66.66%">
+<h1 class="wp-block-heading has-white-color has-text-color has-link-color">Bem-vindo ao IGCP, E.P.E.</h1>
+
+
+
+<p class="has-white-color has-text-color has-link-color">A Agência de Gestão da Tesouraria e da Dívida Pública – IGCP, E.P.E. é a entidade pública a quem compete gerir a tesouraria, o financiamento e a dívida pública direta do Estado Português.</p>
+</div>
+
+
+
+<div class="wp-block-column" style="flex-basis:33.33%"></div>
+</div>
+</div></div>
+</div>
+</div>
+
+
+
+<div class="wp-block-group alignwide is-content-justification-center is-layout-constrained wp-block-group-is-layout-constrained"><div class="wp-block-group__inner-container">
+<div class="wp-block-columns alignfull">
+<div class="wp-block-column"><div class="wp-block-igcp-blocks-card-article">
+      <img alt="Atualização de Dados Pessoais e Conversão dos Certificados de Aforro A, B, e D" src="/sites/default/files/2026-03/atualizacaoCertificados.png" />
+    <div class="card-content">
+    <h2><a href="/pt/node/66" data-type="[PT-PT] page" data-id="66">Informação</a></h2>
+    <p>Procedimentos para a Atualização de Dados Pessoais e Conversão dos Certificados de Aforro — Séries A,B e D</p>
+  </div>
+</div>
+</div>
+
+
+
+<div class="wp-block-column"><div class="wp-block-igcp-blocks-card-article">
+      <img alt="Investidores" src="/sites/default/files/styles/large/public/2024-10/2f7e550c16f6f3dd014fc056aa349548.png.webp?itok=AgkXEnlg" width="480" height="320" loading="lazy" />
+
+    <div class="card-content">
+    <h2><a href="/pt/investidores" data-type="[EN] landing_page" data-id="5">Investidores</a></h2>
+    <p>Informação útil para os Investidores em dívida pública portuguesa.</p>
+  </div>
+</div>
+</div>
+
+
+
+<div class="wp-block-column"><div class="wp-block-igcp-blocks-card-article">
+      <img alt="savings" src="/sites/default/files/styles/large/public/2024-11/micheile-henderson-ZVprbBmT8QA-unsplash.jpg.webp?itok=VA6zyMLQ" width="480" height="320" loading="lazy" />
+
+    <div class="card-content">
+    <h2><a href="/pt/aforristas">Aforristas</a></h2>
+    <p>Informações sobre produtos de aforro e onde subscrever.<br></p>
+  </div>
+</div>
+</div>
+</div>
+
+
+
+<div class="wp-block-columns alignfull">
+<div class="wp-block-column"><div class="wp-block-igcp-blocks-card-article">
+      <img alt="Pilar IGCP" src="/sites/default/files/styles/large/public/2024-11/pilar-igcp.jpg.webp?itok=BV0kkemp" width="480" height="258" loading="lazy" />
+
+    <div class="card-content">
+    <h2><a href="/pt/igcp" data-type="[PT-PT] landing_page" data-id="1">IGCP</a></h2>
+    <p>História, missão e organização da Agência, e os seus princípios de sustentabilidade e responsabilidade social.<br></p>
+  </div>
+</div>
+</div>
+
+
+
+<div class="wp-block-column"><div class="wp-block-igcp-blocks-card-article">
+      <img alt="monumento" src="/sites/default/files/styles/large/public/2024-10/Image%20%283%29.png.webp?itok=tYa4_Fqf" width="384" height="208" loading="lazy" />
+
+    <div class="card-content">
+    <h2><a href="/pt/institucional" data-type="[PT-PT] landing_page" data-id="1">Transparência Administrativa</a></h2>
+    <p>Informação sobre gestão e contas, de contratação pública, certificação de qualidade e conformidade legal e regulatória.<br><br></p>
+  </div>
+</div>
+</div>
+
+
+
+<div class="wp-block-column"><div class="wp-block-igcp-blocks-card-article">
+      <img alt="monumento" src="/sites/default/files/styles/large/public/2024-10/Image%20%284%29.png.webp?itok=nw7ucKmf" width="384" height="208" loading="lazy" />
+
+    <div class="card-content">
+    <h2><a href="/pt/entidades-publicas">Entidades Públicas</a></h2>
+    <p>Serviços bancários disponibilizados às entidades públicas da administração central, regional e local do Estado.</p>
+  </div>
+</div>
+</div>
+</div>
+</div></div>
+
+
+<div class="wp-block-igcp-blocks-banner-links">
+  <div class="banner-wrapper">
+    <div class="banner-container alignwide">
+      <div class="grid">
+        <div class="banner-image">
+                  <img loading="lazy" src="/sites/default/files/2024-11/Estatisticas%20IGCP_0.png" alt="estatisticas" />
+                </div>
+        <div class="banner-content">
+          <h2>Estatísticas</h2>
+          <p>Principais estatísticas relativas à dívida direta do Estado Português.</p>
+        </div>
+        <div class="banner-buttons">
+          
+
+<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="/pt/boletim-mensal">Boletim Mensal</a></div>
+
+
+
+<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="https://www.igcp.pt/sites/default/files/2026-10/Indicadores_divida_slonga_Debt_indicators_historical_series.xlsx" target="_blank" rel="noreferrer noopener">Indicadores da dívida</a></div>
+
+
+
+<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="/sites/default/files/2026-10/Stock_divida_valores_mensais_Debt_stock_monthly_figures.xlsx" target="_blank" rel="noreferrer noopener">Stock da dívida direta do Estado</a></div>
+
+
+
+<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="/pt/node/78">Consultar estatísticas</a></div>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="wp-block-igcp-blocks-call-to-action is-style-light">
+  <div class="content">
+    <div class="alignwide">
+      <h2>Notícias</h2>
+    </div>
+   <div class="wp-block-columns alignwide">
+    <div class="wp-block-column content-text">
+      <p>Últimas notícias e informações sobre as atividades do IGCP e comunicados.<br><br><strong>Destaque</strong><br><br><br><a href="/pt/noticias/taxas-de-juro-dos-certificados-de-aforro-das-series-b-d-e-e-f-em-novembro-de-2026" data-type="[PT-PT] news" data-id="428">Taxas de Juro dos Certificados de Aforro das Séries A, B, D, E e F em novembro de 2026</a><br><a href="/pt/noticias/premio-de-remuneracao-dos-certificados-do-tesouro-poupanca-valor-19" data-type="[PT-PT] news" data-id="428">Prémio de remuneração dos Certificados do Tesouro Poupança Valor</a><br><a href="/pt/noticias/premio-de-remuneracao-dos-certificados-do-tesouro-poupanca-crescimento-19">Prémio de remuneração dos Certificados do Tesouro Poupança Crescimento</a><br><a href="/pt/noticias/resultado-do-leilao-de-obrigacoes-do-tesouro-ot-do-dia-14-de-outubro-de-2026">Resultado do leilão de Obrigações do Tesouro (OT) do dia 14 de outubro de 2026</a><br><a href="/pt/noticias/audicao-anual-do-igcp-na-assembleia-da-republica">Audição  anual do  IGCP na Assembleia da República</a></p>
+    </div>
+    <div class="wp-block-column content-button">
+      
+
+<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="/pt/noticias">Notícias</a></div>
+
+
+    </div>
+   </div>
+  </div>
+</div>
+
+
+
+<p></p>
+
+      </div>
+  </div>
+
+</article>
+
+    </div>
+  </div>
+
+  </div>
+
+									</div>
+			</main>
+			<footer role="contentinfo">
+			<div class="alignwide">
+				<div class="footer_top">
+					<div class="footer_top_left">
+						  <div class="region region-footer-top-left">
+    <div id="block-igcp-theme-sitebranding-2" class="block block-system block-system-branding-block">
+  
+    
+  			<a href="/pt"  rel="home">
+			<img src="/themes/custom/igcp_theme/logo.svg" alt="Agência de Gestão da Tesouraria e da Dívida Pública IGCP" fetchpriority="high"/>
+		</a>
+			
+</div>
+<div id="block-igcp-theme-footercontactos" class="block block-block-content block-block-contentf4232039-26ce-4b85-aa07-f28ade7c8735">
+  
+    
+      <div class="content">
+      
+            <div class="field field--name-body field--type-text-with-summary field--label-hidden field__item"><p><strong>Contactos Preferenciais para Aforristas</strong><br>Para questões relacionadas com aforro (aforristas), os contactos preferenciais são:</p><ul><li><strong>Telefone:</strong> +351 21 792 33 00</li><li><a href="https://www.igcp.pt/pt/contactos"><strong>Formulário de contacto</strong></a><strong>&nbsp;</strong></li></ul><p>&nbsp;</p><p><strong>Atendimento Presencial</strong></p><ul><li>Pode ser realizado <a href="https://appserver2.ctt.pt/feapl_2/app/open/stationSearch/stationSearch.jspx?request_locale=pt"><strong>em qualquer balcão dos CTT</strong></a><strong>&nbsp;</strong>ou nos <a href="https://www.igcp.pt/sites/default/files/2026-03/PROPOSTA_Aviso_Moradas_Horarios_AMA_On_line_SET2024_LINKS.pdf"><strong>Espaços do Cidadão autorizados</strong>.</a></li><li>Atendimento presencial no <strong>IGCP</strong> <strong>com marcação prévia - </strong><a href="/pt/aforristas/agendamento" data-entity-type="node" data-entity-uuid="630c1b5e-c4dd-474d-aa40-5068f568bb20" data-entity-substitution="canonical" title="Agendamento"><strong>agende aqui</strong></a></li></ul><p class="text-align-justify">&nbsp;</p><p class="text-align-justify"><strong>IGCP, E.P.E.</strong><br>Av. da República, 57 - 1º<br>1050 - 189 Lisboa Portugal<br>Tel.: +351 21 792 33 00<br>(O custo das comunicações depende do tarifário acordado com o seu operador)</p><p class="text-align-justify">Número de contribuinte: 503756237<br>Página Eikon: IGCP01<br>Página Bloomberg: IGCP</p><p class="text-align-justify">&nbsp;</p><div style="bottom:0;left:0;position:sticky;"><p class="d-flex gap-2 mb-0"><a style="display:-webkit-inline-box;height:32px;width:32px;" href="https://pt.linkedin.com/company/igcp" target="_blank" rel="noopener noreferrer"><svg class="bi bi-linkedin" width="32" height="32" fill="white" viewBox="0 0 16 16"><title>LinkedIn</title> <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z" /></svg>&nbsp;&nbsp;&nbsp;</a><a style="display:-webkit-inline-box;height:32px;margin-left:8px;width:32px;" href="https://www.instagram.com/igcp.epe/" target="_blank" rel="noopener noreferrer"><svg class="bi bi-instagram" width="32" height="32" fill="white" viewBox="0 0 16 16"><title>Instagram</title> <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334" /></svg>&nbsp;</a></p></div></div>
+      
+    </div>
+  </div>
+
+  </div>
+
+					</div>
+					<div class="footer_top_right">
+						  <div class="region region-footer-top-right">
+    <nav
+	role="navigation" aria-labelledby="block-igcp-theme-footer-menu"  id="block-igcp-theme-footer">
+			
+	<span id="block-igcp-theme-footer-menu">Mais para descobrir no portal</span>
+	
+
+				
+              <ul>
+              <li>
+        <a href="/pt/legislacao" data-drupal-link-system-path="node/69">Legislação</a>
+              </li>
+          <li>
+        <a href="/pt/aforristas/rede-de-colocacao-de-produtos-de-aforro" data-drupal-link-system-path="node/73">Rede de Colocação de Produtos de Aforro</a>
+              </li>
+          <li>
+        <a href="/sites/default/files/2026-10/IGCP_Investor_Presentation_0.pdf">Apresentação a Investidores</a>
+              </li>
+          <li>
+        <a href="/pt/aforristas/atualizacao-de-dados" data-drupal-link-system-path="node/66">Atualização de Dados Pessoais</a>
+              </li>
+        </ul>
+  
+
+
+	</nav>
+  </div>
+
+					</div>
+				</div>
+				<div class="footer_bottom">
+					  <div class="region region-footer-bottom">
+    <nav
+	role="navigation" aria-labelledby="block-igcp-theme-footerbottom-menu"  id="block-igcp-theme-footerbottom">
+						
+	<span class="visually-hidden" id="block-igcp-theme-footerbottom-menu">Institutional menu</span>
+	
+
+				
+              <ul>
+              <li>
+        <a href="/pt/politica-de-privacidade" data-drupal-link-system-path="node/36">Política de Privacidade</a>
+              </li>
+          <li>
+        <a href="/pt/acessibilidade" data-drupal-link-system-path="node/214">Acessibilidade</a>
+              </li>
+          <li>
+        <a href="/pt/links-uteis" data-drupal-link-system-path="node/77">Links Úteis</a>
+              </li>
+          <li>
+        <a href="/perguntas-frequentes-0">Perguntas Frequentes</a>
+              </li>
+          <li>
+        <a href="/pt/glossario" data-drupal-link-system-path="node/166">Glossário</a>
+              </li>
+          <li>
+        <a href="/pt/recrutamento" data-drupal-link-system-path="node/241">Recrutamento</a>
+              </li>
+        </ul>
+  
+
+
+	</nav><div id="block-igcp-theme-logos-2" class="block block-block-content block-block-contentaefd7308-008e-4664-a9b4-047f01fdc57c">
+  
+    
+      <div class="content">
+      
+            <div class="field field--name-body field--type-text-with-summary field--label-hidden field__item"><div>
+  
+  
+            <div class="blazy blazy--field blazy--field-media-image blazy--field-media-image--default field field--name-field-media-image field--type-image field--label-hidden field__item" data-blazy>    <div data-b-token="b-0ef731523a3" class="media media--blazy media--image media--responsive is-b-loading">  <img decoding="async" class="media__element b-lazy b-responsive" loading="lazy" data-src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%201%201'%2F%3E" srcset sizes="(min-width: 1290px) 2580px, 100vw" width="165" height="50" data-srcset="/sites/default/files/styles/wide/public/2024-10/Logotipo_Republica_Portuguesa_branco_xl%201.png.webp?itok=eakkZNuW 165w" src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%201%201'%2F%3E" alt="republica portuguesa">
+        </div>
+  </div>
+      
+</div>
+<div>
+  
+  
+            <div class="blazy blazy--field blazy--field-media-image blazy--field-media-image--default field field--name-field-media-image field--type-image field--label-hidden field__item" data-blazy>    <div data-b-token="b-d1f18bf5ac6" class="media media--blazy media--image media--responsive is-b-loading">  <img decoding="async" class="media__element b-lazy b-responsive" loading="lazy" data-src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%201%201'%2F%3E" srcset sizes="(min-width: 1290px) 2580px, 100vw" width="133" height="44" data-srcset="/sites/default/files/styles/wide/public/2024-10/selo%202.png.webp?itok=KhcebtVT 133w" src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%201%201'%2F%3E" alt="iso 9001">
+        </div>
+  </div>
+      
+</div>
+</div>
+      
+    </div>
+  </div>
+<div id="block-igcp-theme-footercopyright" class="block block-block-content block-block-contentc17b1ac1-7ccc-43a0-8ca7-bf990ed95f2b">
+  
+    
+      <div class="content">
+      
+            <div class="field field--name-body field--type-text-with-summary field--label-hidden field__item"><p>© 2024 República Portuguesa. Todos os direitos reservados.</p>
+</div>
+      
+    </div>
+  </div>
+
+  </div>
+
+				</div>
+			</div>
+		</footer>
+	</div>
+
+
+  </div>
+
+    
+    <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","pathPrefix":"pt\/","currentPath":"node\/59","currentPathIsAdmin":false,"isFront":true,"currentLanguage":"pt-pt"},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"ajaxPageState":{"libraries":"eJxtT9sOwiAM_SGUTyKldFuzshLoXObXi4rGB1_ac0lPTqPA_fTxOd1rehRoTbjZ4KKQBiwq58QiH1o1c6PBKkwDHRSLw5USm9YAiFoT6-a_6DpV3Yy25GgPqLoy9ZWLMGxI_p8YEk2wi7l574eR6txLK67tcmM6HM9YAu7NNIe3Puy3Ywtl8hF62R_-jfoVF4JE1eXeHnx_1qheEYr12q6dzSi_ch6H0Hml","theme":"igcp_theme","theme_token":null},"ajaxTrustedUrl":[],"clientside_validation_jquery":{"validate_all_ajax_forms":1,"force_validate_on_blur":true,"force_html5_validation":false,"messages":{"required":"Este campo \u00e9 obrigat\u00f3rio.","remote":"Please fix this field.","email":"Por favor, insira um endere\u00e7o de email v\u00e1lido.","url":"Please enter a valid URL.","date":"Please enter a valid date.","dateISO":"Please enter a valid date (ISO).","number":"Please enter a valid number.","digits":"Please enter only digits.","equalTo":"Please enter the same value again.","maxlength":"Please enter no more than {0} characters.","minlength":"Please enter at least {0} characters.","rangelength":"Please enter a value between {0} and {1} characters long.","range":"Please enter a value between {0} and {1}.","max":"Please enter a value less than or equal to {0}.","min":"Please enter a value greater than or equal to {0}.","step":"Please enter a multiple of {0}."}},"eu_cookie_compliance":{"cookie_policy_version":"1.0.0","popup_enabled":true,"popup_agreed_enabled":false,"popup_hide_agreed":false,"popup_clicking_confirmation":false,"popup_scrolling_confirmation":false,"popup_html_info":"\u003Cdiv class=\u0022eu-cookie-compliance-banner eu-cookie-compliance-banner-info eu-cookie-compliance-banner--opt-in\u0022\u003E\n  \u003Cdiv class=\u0022popup-content info eu-cookie-compliance-content\u0022\u003E\n        \u003Cdiv id=\u0022popup-text\u0022 class=\u0022eu-cookie-compliance-message\u0022 role=\u0022document\u0022\u003E\n      \u003Cdiv class=\u0022cookie-img\u0022\u003E\u0026nbsp;\u003C\/div\u003E\n\u003Cdiv class=\u0022cookie-text\u0022\u003E\n\u003Cp\u003EO portal utiliza apenas cookies necess\u00e1rios para a presta\u00e7\u00e3o de servi\u00e7os. Estes cookies s\u00e3o essenciais para o bom funcionamento da plataforma e, por isso, a recolha destes cookies n\u00e3o deve ser desativada.\u003C\/p\u003E\n\u003Cp\u003E\u003Ca href=\u0022\/pt\/politica-de-privacidade\u0022 data-entity-type=\u0022node\u0022 data-entity-uuid=\u002229eea841-a2bb-40f4-b955-b7993cdc1fc0\u0022 data-entity-substitution=\u0022canonical\u0022 title=\u0022Pol\u00edtica de Privacidade\u0022\u003EPara mais informa\u00e7\u00f5es sobre os cookies e os dados recolhidos, consulte a nossa Pol\u00edtica de Privacidade.\u003C\/a\u003E\u003C\/p\u003E\n\u003C\/div\u003E\n\n          \u003C\/div\u003E\n\n    \n    \u003Cdiv id=\u0022popup-buttons\u0022 class=\u0022eu-cookie-compliance-buttons\u0022\u003E\n            \u003Cbutton type=\u0022button\u0022 class=\u0022agree-button eu-cookie-compliance-secondary-button button button--small\u0022\u003EAceitar e fechar\u003C\/button\u003E\n              \u003Cbutton type=\u0022button\u0022 class=\u0022decline-button eu-cookie-compliance-default-button button button--small button--primary\u0022\u003ENo, thanks\u003C\/button\u003E\n          \u003C\/div\u003E\n  \u003C\/div\u003E\n\u003C\/div\u003E","use_mobile_message":false,"mobile_popup_html_info":"\u003Cdiv class=\u0022eu-cookie-compliance-banner eu-cookie-compliance-banner-info eu-cookie-compliance-banner--opt-in\u0022\u003E\n  \u003Cdiv class=\u0022popup-content info eu-cookie-compliance-content\u0022\u003E\n        \u003Cdiv id=\u0022popup-text\u0022 class=\u0022eu-cookie-compliance-message\u0022 role=\u0022document\u0022\u003E\n      \n          \u003C\/div\u003E\n\n    \n    \u003Cdiv id=\u0022popup-buttons\u0022 class=\u0022eu-cookie-compliance-buttons\u0022\u003E\n            \u003Cbutton type=\u0022button\u0022 class=\u0022agree-button eu-cookie-compliance-secondary-button button button--small\u0022\u003EAceitar e fechar\u003C\/button\u003E\n              \u003Cbutton type=\u0022button\u0022 class=\u0022decline-button eu-cookie-compliance-default-button button button--small button--primary\u0022\u003ENo, thanks\u003C\/button\u003E\n          \u003C\/div\u003E\n  \u003C\/div\u003E\n\u003C\/div\u003E","mobile_breakpoint":768,"popup_html_agreed":false,"popup_use_bare_css":false,"popup_height":"auto","popup_width":"100%","popup_delay":1000,"popup_link":"\/pt","popup_link_new_window":true,"popup_position":false,"fixed_top_position":true,"popup_language":"pt-pt","store_consent":false,"better_support_for_screen_readers":false,"cookie_name":"","reload_page":false,"domain":"","domain_all_sites":false,"popup_eu_only":false,"popup_eu_only_js":false,"cookie_lifetime":100,"cookie_session":0,"set_cookie_session_zero_on_disagree":0,"disagree_do_not_show_popup":false,"method":"opt_in","automatic_cookies_removal":true,"allowed_cookies":"","withdraw_markup":"\u003Cbutton type=\u0022button\u0022 class=\u0022eu-cookie-withdraw-tab\u0022\u003EPrivacy settings\u003C\/button\u003E\n\u003Cdiv class=\u0022eu-cookie-withdraw-banner\u0022\u003E\n  \u003Cdiv class=\u0022popup-content info eu-cookie-compliance-content\u0022\u003E\n    \u003Cdiv id=\u0022popup-text\u0022 class=\u0022eu-cookie-compliance-message\u0022 role=\u0022document\u0022\u003E\n      \u003Ch2\u003EWe use cookies on this site to enhance your user experience\u003C\/h2\u003E\n\u003Cp\u003EYou have given your consent for us to set cookies.\u003C\/p\u003E\n\n    \u003C\/div\u003E\n    \u003Cdiv id=\u0022popup-buttons\u0022 class=\u0022eu-cookie-compliance-buttons\u0022\u003E\n      \u003Cbutton type=\u0022button\u0022 class=\u0022eu-cookie-withdraw-button  button button--small button--primary\u0022\u003EWithdraw consent\u003C\/button\u003E\n    \u003C\/div\u003E\n  \u003C\/div\u003E\n\u003C\/div\u003E","withdraw_enabled":false,"reload_options":0,"reload_routes_list":"","withdraw_button_on_info_popup":false,"cookie_categories":[],"cookie_categories_details":[],"enable_save_preferences_button":true,"cookie_value_disagreed":"0","cookie_value_agreed_show_thank_you":"1","cookie_value_agreed":"2","containing_element":"body","settings_tab_enabled":false,"olivero_primary_button_classes":" button button--small button--primary","olivero_secondary_button_classes":" button button--small","close_button_action":"close_banner","open_by_default":true,"modules_allow_popup":true,"hide_the_banner":false,"geoip_match":true,"unverified_scripts":[]},"ckeditorAccordion":{"accordionStyle":{"collapseAll":1,"keepRowsOpen":0,"animateAccordionOpenAndClose":0,"openTabsWithHash":0,"allowHtmlInTitles":0}},"blazy":{"loadInvisible":false,"offset":100,"saveViewportOffsetDelay":50,"validateDelay":25,"container":"","loader":true,"unblazy":false,"visibleClass":false},"blazyIo":{"disconnect":false,"rootMargin":"0px","threshold":[0,0.25,0.5,0.75,1]},"user":{"uid":0,"permissionsHash":"fa49f4593184b237176c57779e67a6b46e447fec989ac80e77b3453199d4238e"}}</script>
+<script src="/sites/default/files/js/js_Rq7pEBE5_OiooAZBCNvPiLo9xkpQhEwMjitu28DICRM.js?scope=footer&amp;delta=0&amp;language=pt-pt&amp;theme=igcp_theme&amp;include=eJxtiUsOwyAMRC-EypGQMaaxMBhhoio9fT-hVRfdzLw3EwXuh4-vdO_0KGAmbHO5KKSFXeXILPLRoZWNlg3Ii24Uu8NCiaeOAIg6EmvzX7rkoW1SS472gKqF6Vm1C0ND8v9Gx1fsAXebWkMUxWL-rPOZG1XyEYx-fSNINB7TBlkS"></script>
+<script src="/modules/contrib/ckeditor_accordion/js/accordion.frontend.min.js?thyt9y"></script>
+<script src="/sites/default/files/js/js_02OEuN3EYVv_JKklb2T2b45bFx_DAfUJfnz_lOmdisA.js?scope=footer&amp;delta=2&amp;language=pt-pt&amp;theme=igcp_theme&amp;include=eJxtiUsOwyAMRC-EypGQMaaxMBhhoio9fT-hVRfdzLw3EwXuh4-vdO_0KGAmbHO5KKSFXeXILPLRoZWNlg3Ii24Uu8NCiaeOAIg6EmvzX7rkoW1SS472gKqF6Vm1C0ND8v9Gx1fsAXebWkMUxWL-rPOZG1XyEYx-fSNINB7TBlkS"></script>
+<script src="/modules/contrib/gutenberg/js/vendor/react.min.js?v=16.8.4"></script>
+<script src="/modules/contrib/gutenberg/js/vendor/react-dom.min.js?v=16.8.4"></script>
+<script src="/modules/contrib/gutenberg/js/vendor/regenerator-runtime.js?v=1.0.0"></script>
+<script src="/modules/contrib/gutenberg/js/vendor/gutenberg/dom-ready/index.js?thyt9y"></script>
+<script src="/modules/contrib/gutenberg/js/vendor/gutenberg/hooks/index.js?thyt9y"></script>
+<script src="/modules/contrib/gutenberg/js/vendor/sprintf.min.js?v=1.1.2"></script>
+<script src="/modules/contrib/gutenberg/js/i18n.js?thyt9y"></script>
+<script src="/modules/contrib/gutenberg/js/drupal-gutenberg-translations.js?thyt9y"></script>
+<script src="/modules/contrib/gutenberg/js/vendor/gutenberg/a11y/index.js?thyt9y"></script>
+<script src="/modules/contrib/gutenberg/js/vendor/gutenberg/url/index.js?thyt9y"></script>
+<script src="/modules/contrib/gutenberg/js/vendor/gutenberg/api-fetch/index.js?thyt9y"></script>
+<script src="/modules/contrib/gutenberg/js/vendor/gutenberg/blob/index.js?thyt9y"></script>
+<script src="/modules/contrib/gutenberg/js/vendor/gutenberg/autop/index.js?thyt9y"></script>
+<script src="/modules/contrib/gutenberg/js/vendor/gutenberg/block-serialization-default-parser/index.js?thyt9y"></script>
+<script src="/modules/contrib/gutenberg/js/vendor/gutenberg/deprecated/index.js?thyt9y"></script>
+<script src="/modules/contrib/gutenberg/js/vendor/gutenberg/dom/index.js?thyt9y"></script>
+<script src="/modules/contrib/gutenberg/js/vendor/gutenberg/escape-html/index.js?thyt9y"></script>
+<script src="/modules/contrib/gutenberg/js/vendor/gutenberg/element/index.js?thyt9y"></script>
+<script src="/modules/contrib/gutenberg/js/vendor/gutenberg/is-shallow-equal/index.js?thyt9y"></script>
+<script src="/modules/contrib/gutenberg/js/vendor/gutenberg/keycodes/index.js?thyt9y"></script>
+<script src="/modules/contrib/gutenberg/js/vendor/gutenberg/priority-queue/index.js?thyt9y"></script>
+<script src="/modules/contrib/gutenberg/js/vendor/gutenberg/compose/index.js?thyt9y"></script>
+<script src="/modules/contrib/gutenberg/js/vendor/gutenberg/private-apis/index.js?thyt9y"></script>
+<script src="/modules/contrib/gutenberg/js/vendor/gutenberg/redux-routine/index.js?thyt9y"></script>
+<script src="/modules/contrib/gutenberg/js/vendor/gutenberg/data/index.js?thyt9y"></script>
+<script src="/modules/contrib/gutenberg/js/vendor/gutenberg/html-entities/index.js?thyt9y"></script>
+<script src="/modules/contrib/gutenberg/js/vendor/gutenberg/shortcode/index.js?thyt9y"></script>
+<script src="/modules/contrib/gutenberg/js/vendor/gutenberg/blocks/index.js?thyt9y"></script>
+<script src="/modules/contrib/gutenberg/js/vendor/moment.min.js?v=2.29.4"></script>
+<script src="/modules/contrib/gutenberg/js/vendor/gutenberg/date/index.js?thyt9y"></script>
+<script src="/modules/contrib/gutenberg/js/vendor/gutenberg/primitives/index.js?thyt9y"></script>
+<script src="/modules/contrib/gutenberg/js/vendor/gutenberg/rich-text/index.js?thyt9y"></script>
+<script src="/modules/contrib/gutenberg/js/vendor/gutenberg/warning/index.js?thyt9y"></script>
+<script src="/modules/contrib/gutenberg/js/vendor/gutenberg/components/index.js?thyt9y"></script>
+<script src="/modules/contrib/gutenberg/js/vendor/gutenberg/keyboard-shortcuts/index.js?thyt9y"></script>
+<script src="/modules/contrib/gutenberg/js/vendor/gutenberg/commands/index.js?thyt9y"></script>
+<script src="/modules/contrib/gutenberg/js/vendor/gutenberg/notices/index.js?thyt9y"></script>
+<script src="/modules/contrib/gutenberg/js/vendor/gutenberg/preferences/index.js?thyt9y"></script>
+<script src="/modules/contrib/gutenberg/js/vendor/gutenberg/style-engine/index.js?thyt9y"></script>
+<script src="/modules/contrib/gutenberg/js/vendor/gutenberg/token-list/index.js?thyt9y"></script>
+<script src="/modules/contrib/gutenberg/js/vendor/gutenberg/wordcount/index.js?thyt9y"></script>
+<script src="/modules/contrib/gutenberg/js/vendor/gutenberg/block-editor/index.js?thyt9y"></script>
+<script src="/sites/default/files/js/js_LeQIY3foBDrN74IduqsU1CCXK2oO3sTVOJtCDFtArT4.js?scope=footer&amp;delta=45&amp;language=pt-pt&amp;theme=igcp_theme&amp;include=eJxtiUsOwyAMRC-EypGQMaaxMBhhoio9fT-hVRfdzLw3EwXuh4-vdO_0KGAmbHO5KKSFXeXILPLRoZWNlg3Ii24Uu8NCiaeOAIg6EmvzX7rkoW1SS472gKqF6Vm1C0ND8v9Gx1fsAXebWkMUxWL-rPOZG1XyEYx-fSNINB7TBlkS"></script>
+
+  </body>
+</html>
