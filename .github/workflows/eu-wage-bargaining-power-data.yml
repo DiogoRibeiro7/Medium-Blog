@@ -1,0 +1,61 @@
+name: Refresh eu-wage-bargaining-power data
+
+on:
+  push:
+    branches:
+      - eu-wage-bargaining-power
+    paths:
+      - 'eu-wage-bargaining-power/fetch.py'
+      - '.github/workflows/eu-wage-bargaining-power-data.yml'
+      - '.gitattributes'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    defaults:
+      run:
+        working-directory: eu-wage-bargaining-power
+    steps:
+      - name: Check out the branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: eu-wage-bargaining-power/requirements.txt
+
+      - name: Install pinned dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Download the Eurostat and OECD series
+        id: fetch
+        continue-on-error: true
+        run: python fetch.py --out data
+
+      - name: Commit the snapshot and its log if they changed
+        if: always()
+        run: |
+          git config user.name "Diogo Ribeiro"
+          git config user.email "diogo_dj@hotmail.com"
+          git add data
+          if git diff --cached --quiet; then
+            echo "Snapshot unchanged."
+          else
+            git commit -m "Refresh data snapshot for eu-wage-bargaining-power ($(date -u +%Y-%m-%d))"
+            git push
+          fi
+
+      - name: Fail if a required request failed
+        if: steps.fetch.outcome == 'failure'
+        run: |
+          cat data/fetch_log.txt
+          exit 1
