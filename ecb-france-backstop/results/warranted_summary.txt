@@ -24,6 +24,10 @@ France, by quarter (headline models): actual spread; warranted; residual; share 
     window normal_times: warranted median 1.03, residual median -0.17, flagged 0%
     window post_omt: warranted median 1.15, residual median -0.29, flagged 17%
     window real_time: warranted median 0.95, residual median -0.10, flagged 0%
+    country effects fe: warranted median 0.51, residual median +0.34, flagged 4 of 48
+    country effects pooled: warranted median 1.12, residual median -0.27, flagged 0 of 48
+    German yield bund: warranted median 1.05, residual median -0.20, flagged 0 of 48
+    German yield nobund: warranted median 0.97, residual median -0.12, flagged 4 of 48
     window pre_crisis (excluded from headline): warranted median 0.20, residual median +0.66, flagged 100%
   October 2026 daily peak 1.78 (22 Oct, documented) against the latest warranted median 1.00: excess +0.78; share of headline models whose threshold it would cross (residual > threshold): 39%
   Excess over warranted needed to be flagged by half of the headline models: 1.12 above warranted, i.e. a spread near 2.12

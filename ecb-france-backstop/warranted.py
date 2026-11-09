@@ -213,6 +213,10 @@ def run() -> str:
     lines.append(f"  latest ({last_q}) residual: {dist(f, 'residual')}")
     for w, g in f.groupby("window"):
         lines.append(f"    window {w}: warranted median {g.warranted.median():.2f}, residual median {g.residual.median():+.2f}, flagged {g.flag.mean():.0%}")
+    f = f.assign(fe=f["spec"].str.split("|").str[2], bund=f["spec"].str.split("|").str[1])
+    for col, label in (("fe", "country effects"), ("bund", "German yield")):
+        for k, g in f.groupby(col):
+            lines.append(f"    {label} {k}: warranted median {g.warranted.median():.2f}, residual median {g.residual.median():+.2f}, flagged {g.flag.sum()} of {len(g)}")
     pre = panel[(panel["geo"] == "FR") & (panel["quarter"] == last_q) & (panel["window"] == "pre_crisis")]
     lines.append(f"    window pre_crisis (excluded from headline): warranted median {pre.warranted.median():.2f}, residual median {pre.residual.median():+.2f}, flagged {pre.flag.mean():.0%}")
     lines.append(f"  October 2026 daily peak 1.78 (22 Oct, documented) against the latest warranted median {f.warranted.median():.2f}: excess {1.78 - f.warranted.median():+.2f}; "
