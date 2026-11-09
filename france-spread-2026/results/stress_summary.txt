@@ -1,0 +1,48 @@
+Start 2025: debt 115.7% of GDP, implicit rate 1.94%, interest 2.20% of GDP (EUR 65.7 bn)
+Pass-through: France rho 0.165; pooled 0.168; alternatives 0.10 and 0.30
+Yields: latest month 2026-09 France 4.44, Germany 3.47; 2026 average 3.94 (9 months observed, latest carried forward); 2025 average 3.37; French spread 2025 +0.76
+Italy's spread to Germany, rise over its 2010 level in 2011-2014 (pp): +1.52, +2.70, +1.45, +0.44
+Nominal growth: 2026 2.01% (2 quarters against the same quarters of 2025); 2.5% from 2027 (alternatives 1.5, 3.5)
+Primary balance: 2026 from a deficit of 5.4% of GDP; 'plan' = deficit 5.0% in 2027 then +0.5 pp a year up to +1.0%; 'held' = 2026 level
+Check, 2026: modelled interest EUR 80.5 bn (2.64% of GDP), debt 118.8% of GDP; 2025 interest scaled by the growth of first-half interest, 2026 over 2025 (1.217): EUR 80.0 bn
+
+Interest % of GDP (EUR bn) and debt % of GDP, France rho, base growth: 2027 / 2030 / 2036
+  yields hold, primary plan: 3.11 (97) / 4.19 (141) / 5.30 (207); debt 126.2 / 132.1; implicit rate 2030 3.38, 2036 4.08
+  yields hold, primary held: 3.12 (98) / 4.38 (147) / 6.42 (251); debt 132.8 / 161.9; implicit rate 2030 3.38, 2036 4.08
+  yields back_to_2025, primary plan: 2.90 (91) / 3.49 (117) / 3.95 (154); debt 125.2 / 125.4; implicit rate 2030 2.83, 2036 3.18
+  yields back_to_2025, primary held: 2.91 (91) / 3.62 (122) / 4.75 (185); debt 130.9 / 152.8; implicit rate 2030 2.83, 2036 3.18
+  yields spread_back, primary plan: 3.07 (96) / 4.06 (137) / 5.03 (196); debt 126.0 / 130.8; implicit rate 2030 3.28, 2036 3.91
+  yields spread_back, primary held: 3.08 (96) / 4.23 (142) / 6.08 (238); debt 132.5 / 160.1; implicit rate 2030 3.28, 2036 3.91
+  yields italy_2011, primary plan: 3.41 (107) / 5.16 (174) / 5.82 (227); debt 128.0 / 136.9; implicit rate 2030 4.11, 2036 4.33
+  yields italy_2011, primary held: 3.43 (107) / 5.42 (183) / 7.11 (278); debt 136.0 / 169.1; implicit rate 2030 4.11, 2036 4.33
+Overall balance % of GDP (negative = deficit), base growth, France rho: 2027 / 2030 / 2033 / 2036
+  yields hold, primary plan: -5.00 / -4.58 / -3.87 / -4.30; primary balance 2030 -0.39, 2033 +1.00
+  yields hold, primary held: -5.89 / -7.14 / -8.20 / -9.18; primary balance 2030 -2.76, 2033 -2.76
+  yields back_to_2025, primary plan: -5.00 / -4.09 / -2.90 / -2.95; primary balance 2030 -0.60, 2033 +0.90
+  yields back_to_2025, primary held: -5.67 / -6.38 / -6.98 / -7.51; primary balance 2030 -2.76, 2033 -2.76
+  yields spread_back, primary plan: -5.00 / -4.48 / -3.65 / -4.03; primary balance 2030 -0.43, 2033 +1.00
+  yields spread_back, primary held: -5.85 / -6.99 / -7.96 / -8.84; primary balance 2030 -2.76, 2033 -2.76
+  yields italy_2011, primary plan: -5.00 / -5.25 / -4.53 / -4.82; primary balance 2030 -0.09, 2033 +1.00
+  yields italy_2011, primary held: -6.19 / -8.19 / -9.02 / -9.87; primary balance 2030 -2.76, 2033 -2.76
+
+Decomposition of the change in interest % of GDP, 2025 to 2030 (plan, base growth, France rho):
+  already locked in by 2025 yields (yields back to 2025): +1.29
+  rise in German yields since 2025 (French spread back to 2025): +0.57
+  wider French spread (yields held): +0.14
+  total with yields held: +2.00 (to 4.19)
+  levers, yields held: no adjustment instead of plan +0.18; growth 1.5% instead of 2.5% +0.16; growth 3.5% -0.15; an Italian 2011 spread shock in 2027-2030 +0.96
+  pass-through sensitivity, yields held: pooled 4.22, rho 0.10 3.62, rho 0.30 4.95
+
+Decomposition of the change in interest % of GDP, 2025 to 2036 (plan, base growth, France rho):
+  already locked in by 2025 yields (yields back to 2025): +1.75
+  rise in German yields since 2025 (French spread back to 2025): +1.08
+  wider French spread (yields held): +0.27
+  total with yields held: +3.11 (to 5.30)
+  levers, yields held: no adjustment instead of plan +1.11; growth 1.5% instead of 2.5% +0.55; growth 3.5% -0.49; an Italian 2011 spread shock in 2027-2030 +0.51
+  pass-through sensitivity, yields held: pooled 5.33, rho 0.10 4.61, rho 0.30 5.82
+
+Monte Carlo (20000 paths, seed 20261109): yield shocks sd 0.63 pp a year (random walk from the latest level), growth sd 1.77 pp around 2.5%
+  primary plan, 2030: interest % GDP median 4.20, 50% band 3.78-4.62, 90% band 3.19-5.23; debt median 126.2 (90% 119.4-133.7); P(interest > 4% of GDP) 0.62; P(interest > Italy 2012, 5.13%) 0.07
+  primary plan, 2036: interest % GDP median 5.33, 50% band 4.08-6.64, 90% band 2.45-8.73; debt median 132.3 (90% 115.6-151.5); P(interest > 4% of GDP) 0.77; P(interest > Italy 2012, 5.13%) 0.54
+  primary held, 2030: interest % GDP median 4.37, 50% band 3.93-4.83, 90% band 3.30-5.49; debt median 132.9 (90% 125.5-140.7); P(interest > 4% of GDP) 0.72; P(interest > Italy 2012, 5.13%) 0.13
+  primary held, 2036: interest % GDP median 6.41, 50% band 4.93-8.06, 90% band 2.96-10.55; debt median 162.1 (90% 142.9-184.3); P(interest > 4% of GDP) 0.87; P(interest > Italy 2012, 5.13%) 0.72

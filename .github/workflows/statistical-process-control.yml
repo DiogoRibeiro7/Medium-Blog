@@ -38,6 +38,9 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
+      - name: Test the spcbudget module
+        run: python -m unittest discover -s tests -v
+
       - name: Rerun each part and compare with the committed output
         run: |
           status=0

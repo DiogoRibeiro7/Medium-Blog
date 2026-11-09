@@ -1,0 +1,61 @@
+name: Reproduce france-spread-2026
+
+on:
+  pull_request:
+    paths:
+      - 'france-spread-2026/**'
+      - '.github/workflows/france-spread-2026.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'france-spread-2026/**'
+      - '.github/workflows/france-spread-2026.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: france-spread-2026
+    env:
+      MPLBACKEND: Agg
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: france-spread-2026/requirements.txt
+
+      - name: Install pinned dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Tests
+        run: python -m pytest -q tests
+
+      - name: Levels and pass-through
+        run: python fiscal.py > /dev/null
+
+      - name: Co-movement of spreads
+        run: python contagion.py > /dev/null
+
+      - name: Stress test
+        run: python stress.py > /dev/null
+
+      - name: Figures
+        run: python figures.py
+
+      - name: Summaries unchanged within tolerance
+        run: |
+          S="results/fiscal_summary.txt results/contagion_summary.txt results/stress_summary.txt"
+          git diff --stat -- $S || true
+          python check_results.py $S

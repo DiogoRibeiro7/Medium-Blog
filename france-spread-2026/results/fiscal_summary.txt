@@ -1,0 +1,26 @@
+Latest monthly 10-year yields (2026-09): FR 4.44, DE 3.47, IT 4.36, ES 3.93
+Spreads to Germany (2026-09): FR +0.97, IT +0.89, ES +0.45
+
+Levels: debt % GDP / interest % GDP / implicit rate / market yield / gap / primary balance % GDP / overall balance / nominal growth / debt-stabilising primary balance at the implicit rate | at the market yield
+  FR 2025: 115.7 / 2.20 / 1.94 / 3.37 / +1.42 / -2.87 / -5.07 / +1.90 / +0.05 | +1.66
+  IT 2011: 119.3 / 4.63 / 3.93 / 5.42 / +1.49 / +1.10 / -3.53 / +2.46 / +1.72 | +3.46
+  ES 2011: 69.5 / 2.49 / 3.82 / 5.44 / +1.62 / -7.21 / -9.69 / -0.78 / +3.22 | +4.36
+  FR 2011: 88.7 / 2.72 / 3.15 / 3.32 / +0.17 / -2.59 / -5.30 / +3.31 / -0.14 | +0.01
+  IT 2025: 136.7 / 3.85 / 2.87 / 3.59 / +0.71 / +0.77 / -3.08 / +2.46 / +0.55 | +1.51
+  ES 2025: 100.5 / 2.39 / 2.44 / 3.22 / +0.78 / -0.01 / -2.40 / +5.72 / -3.12 | -2.38
+  FR 2025 at 2026-09 yield: 115.7 / 2.20 / 1.94 / 4.44 / +2.50 / -2.87 / -5.07 / +1.90 / +0.05 | +2.88
+
+Pass-through rho, pooled FR, IT, ES, DE, NL, AT, FI, BE with country intercepts, 1999-2025: 0.168 (SE 0.015)
+  by country: FR 0.165 (0.057), IT 0.210 (0.060), ES 0.158 (0.037), DE 0.200 (0.036), NL 0.136 (0.041), AT 0.127 (0.033), FI 0.239 (0.052), BE 0.123 (0.029)
+Structural check, France 2025: 1 / average maturity (8.50 years) = 0.118; deficit / debt = 0.044; sum 0.161 against estimated rho 0.165
+Half-life of a gap between market yield and implicit rate at France's rho: 3.9 years; share of today's gap still open after 5 and 10 years: 0.41, 0.17
+France: gap between the 2026-09 yield and the 2025 implicit rate +2.50 pp, of which German yield level +1.53 and French spread +0.97
+
+Backtests: rho fitted before the test period, implicit rate simulated with actual yields; error = predicted - actual (pp)
+  IT 2011-2019: rho 0.522; mean error +0.01, RMSE 0.67, max abs 0.97; actual/predicted 2011 3.93/4.58, 2012 4.15/5.06, 2013 3.70/4.67, 2014 3.43/3.74, 2015 3.06/2.68, 2016 2.92/2.06, 2017 2.83/2.09, 2018 2.73/2.36, 2019 2.51/2.15
+    if yields had stayed at their 2012 level from 2013 (full-sample rho 0.210): implicit rate 2019 5.27 (actual 2.51); interest % GDP 7.03 (actual 3.34)
+  ES 2011-2019: rho 0.296; mean error +0.16, RMSE 0.49, max abs 0.79; actual/predicted 2011 3.82/3.97, 2012 3.75/4.53, 2013 3.74/4.54, 2014 3.48/4.00, 2015 3.03/3.33, 2016 2.76/2.76, 2017 2.54/2.40, 2018 2.47/2.11, 2019 2.32/1.68
+    if yields had stayed at their 2012 level from 2013 (full-sample rho 0.158): implicit rate 2019 5.30 (actual 2.32); interest % GDP 5.15 (actual 2.25)
+  FR 2020-2025: rho 0.187; mean error -0.18, RMSE 0.30, max abs 0.62; actual/predicted 2020 1.18/1.25, 2021 1.27/1.01, 2022 1.76/1.14, 2023 1.76/1.49, 2024 1.88/1.77, 2025 1.94/2.07
+  IT: implicit rate 2010 3.66, peak 4.15 in 2012; market yield peak annual 5.49 in 2012; interest % GDP 2010 4.26, peak 5.13 in 2012
+  ES: implicit rate 2010 3.35, peak 3.82 in 2011; market yield peak annual 5.85 in 2012; interest % GDP 2010 1.90, peak 3.56 in 2013
