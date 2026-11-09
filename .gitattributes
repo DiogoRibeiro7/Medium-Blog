@@ -66,3 +66,5 @@ dependency-early-warning/**/*.csv -filter -diff -merge text
 dependency-early-warning/**/*.gz -filter -diff -merge binary
 euro-crisis-ledger/**/*.csv -filter -diff -merge text
 euro-crisis-ledger/**/*.gz -filter -diff -merge binary
+france-spread-2026/**/*.csv -filter -diff -merge text
+france-spread-2026/**/*.gz -filter -diff -merge binary
