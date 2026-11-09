@@ -7,14 +7,15 @@ Sources:
 1. Eurostat (JSON-stat API): monthly long-term government bond yields (EMU
    convergence criterion), annual and quarterly government interest payable, net lending and
    debt, and annual and quarterly GDP at current prices. Each request carries filter sets tried
-   in order, narrowest first. (Eurostat's daily yield table, irt_lt_mcby_d, is not disseminated
-   through the API.)
+   in order, narrowest first.
 2. ECB Data Portal: monthly convergence-criterion yields (dataset IRS), usually published before
-   Eurostat's copy, and a probe of the daily financial-market series (dataset FM) for France.
-3. Daily probes (kept when they answer, never required): Bundesbank daily German 10-year
-   yields and the Banque de France's daily French 10-year constant-maturity rate (TEC10), with
-   a search of the Webstat catalogue. Stooq's free CSV downloads (``--only stooq``) now
-   answer 404 to scripted requests.
+   Eurostat's copy.
+
+No open daily source of euro-area 10-year yields answered a scripted request on 9 November
+2026: Eurostat's daily table (irt_lt_mcby_d) is not disseminated through the API, the ECB's
+daily benchmark yields (dataset FM) return no series, Stooq answers 404, and the Banque de
+France's daily constant-maturity rate (TEC10) needs a Webstat API key. The analysis is
+therefore monthly; the fetch log of that day records the attempts.
 
 Every response is logged with URL, HTTP status and SHA-256 in ``data/fetch_log.txt``.
 """
@@ -150,8 +151,6 @@ def eurostat(name: str, dataset: str, filter_sets: list[Filters], geos: tuple[st
 
 
 ECB_CODES = {"EL": "GR"}
-STOOQ = "https://stooq.com/q/d/l/?s={sym}&i=d"
-STOOQ_SYMBOLS = {c: f"10{ECB_CODES.get(c, c).lower()}y.b" for c in SPREAD}
 
 
 def ecb_monthly(out: Path, log: list[str]) -> bool:
@@ -175,81 +174,6 @@ def ecb_monthly(out: Path, log: list[str]) -> bool:
     return True
 
 
-def ecb_probe(out: Path, log: list[str]) -> None:
-    """Record which daily FM series exist for France, to find a daily 10-year yield if one is published."""
-    lines = []
-    for key in ("D.FR.....", "B.FR.....", "D.U2.EUR.4F.BB.."):
-        url = f"https://data-api.ecb.europa.eu/service/data/FM/{key}?lastNObservations=1&format=csvdata"
-        try:
-            status, body = get(url, tries=2, timeout=300)
-        except RuntimeError as e:
-            log.append(f"ecb probe {key}\tERROR\t{e}")
-            continue
-        log_response(log, f"ecb probe {key}", url, status, body)
-        if status == 200 and len(body) > 100:
-            p = pd.read_csv(io.BytesIO(body), dtype=str)
-            cols = [c for c in ("KEY", "TITLE", "TIME_PERIOD") if c in p]
-            lines += [" | ".join(str(r[c]) for c in cols) for _, r in p.iterrows()]
-    (out / "ecb_keys.txt").write_text("\n".join(lines) + "\n", encoding="utf-8")
-    log.append(f"ecb probe\tSERIES\t{len(lines)}")
-
-
-def stooq(out: Path, log: list[str]) -> bool:
-    """Daily 10-year benchmark yields from Stooq's free CSV downloads."""
-    parts = []
-    for c, sym in STOOQ_SYMBOLS.items():
-        url = STOOQ.format(sym=sym)
-        try:
-            status, body = get(url, tries=2, timeout=120)
-        except RuntimeError as e:
-            log.append(f"stooq {sym}\tERROR\t{e}")
-            continue
-        log_response(log, f"stooq {sym}", url, status, body)
-        head = body[:80].decode("utf-8", errors="replace")
-        if status != 200 or not head.lower().startswith("date"):
-            log.append(f"stooq {sym}\tBODY\t{head!r}")
-            continue
-        d = pd.read_csv(io.BytesIO(body))
-        d.columns = [x.lower() for x in d.columns]
-        d = d[["date", "close"]].rename(columns={"close": "value"})
-        d["geo"] = c
-        parts.append(d)
-        time.sleep(2)
-    if not parts:
-        log.append("stooq\tFAILED")
-        return False
-    d = pd.concat(parts, ignore_index=True)
-    d.to_csv(out / "yields_daily.csv.gz", index=False, compression={"method": "gzip", "mtime": 0})
-    log.append(f"stooq\tROWS\t{len(d)}\tcountries {sorted(d.geo.unique())}\tlast {d.date.max()}")
-    return len(parts) >= 4
-
-
-DAILY_PROBES = {
-    # Bundesbank: yields on listed Federal securities, residual maturity 10 years, daily
-    "bbk_de10": "https://api.statistiken.bundesbank.de/rest/data/BBSIS/D.I.ZST.ZI.EUR.S1311.B.A604.R10XX.R.A.A._Z._Z.A?format=csv&lang=en",
-    # Banque de France Webstat (dataset id = series key, lower case, dots as dashes): French
-    # 10-year constant-maturity rate (TEC10), daily, and the list of daily financial-market series
-    "bdf_fr10": "https://webstat.banque-france.fr/api/explore/v2.1/catalog/datasets/fm-d-fr-eur-fr2-bb-frmoytec10-hsta/exports/csv?delimiter=%2C",
-    "bdf_fm_daily": "https://webstat.banque-france.fr/api/explore/v2.1/catalog/datasets?limit=100&select=dataset_id%2Cdefault.title&where=startswith(dataset_id%2C%22fm-d%22)",
-}
-
-
-def daily_probes(out: Path, log: list[str]) -> None:
-    """Try the daily sources; keep whatever answers, never fail the run on them."""
-    for name, url in DAILY_PROBES.items():
-        try:
-            status, body = get(url, tries=1, timeout=90)
-        except RuntimeError as e:
-            log.append(f"probe {name}\tERROR\t{e}")
-            continue
-        log_response(log, f"probe {name}", url, status, body)
-        if status == 200 and len(body) > 300:
-            (out / f"probe_{name}.csv.gz").write_bytes(__import__("gzip").compress(body, mtime=0))
-            log.append(f"probe {name}\tKEPT\t{body[:160]!r}")
-        else:
-            log.append(f"probe {name}\tBODY\t{body[:200]!r}")
-
-
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--out", default="data")
@@ -267,11 +191,6 @@ def main(argv: list[str] | None = None) -> int:
         time.sleep(1)
     if not want or "ecb" in want:
         ok &= ecb_monthly(out, log)
-        ecb_probe(out, log)
-    if want and "stooq" in want:
-        ok &= stooq(out, log)
-    if not want or "probes" in want:
-        daily_probes(out, log)
     with open(out / "fetch_log.txt", "a", encoding="utf-8") as f:
         f.write("\n".join(log) + "\n")
     print("\n".join(log))
