@@ -1,0 +1,93 @@
+Models: 160 (8 feature sets x German yield yes/no x fixed effects yes/no x 5 windows); headline uses the 128 models outside the 2000-2007 window
+Estimation panel: FR, IT, ES, BE, AT, NL, FI, PT, IE; Greece predicted out of sample; quarterly 2000Q1-2026Q3; fundamentals lagged one quarter
+
+Fit in the estimation window (fixed windows): R2 median; debt-gap slope median (pp of spread per 10 pp of debt gap); external-debt slope median (pp per 10 pp of NIIP gap, external sets):
+  pre_crisis: R2 0.67 [0.26, 0.81]; debt slope x10 0.026
+  normal_times: R2 0.58 [0.29, 0.70]; debt slope x10 0.121
+  post_omt: R2 0.68 [0.41, 0.82]; debt slope x10 0.062
+  long: R2 0.46 [0.12, 0.54]; debt slope x10 0.049
+  NIIP-gap slope x10 (external sets, fixed windows other than 2000-2007): median -0.043, range [-0.068, +0.077] (negative: a more negative position raises the spread)
+
+Portugal, Greece and Ireland by quarter (headline models): actual; warranted median [10-90%]; residual median; share flagged
+  Portugal:
+    2009Q4: actual 0.66; warranted 1.41 [0.73, 3.01]; residual -0.74; flagged 3%
+    2010Q2: actual 2.34; warranted 1.29 [0.78, 3.09]; residual +1.05; flagged 53%
+    2010Q4: actual 3.90; warranted 1.37 [0.81, 2.86]; residual +2.53; flagged 97%
+    2011Q1: actual 4.22; warranted 1.48 [0.83, 3.35]; residual +2.74; flagged 93%
+    2011Q2: actual 6.80; warranted 1.65 [0.98, 3.46]; residual +5.15; flagged 100%
+    2011Q3: actual 9.21; warranted 1.85 [1.31, 3.44]; residual +7.36; flagged 100%
+    2011Q4: actual 10.30; warranted 2.29 [1.47, 3.56]; residual +8.00; flagged 100%
+    2012Q1: actual 11.39; warranted 2.09 [1.33, 3.19]; residual +9.30; flagged 100%
+    2012Q2: actual 9.97; warranted 2.18 [1.42, 3.35]; residual +7.79; flagged 100%
+    2012Q4: actual 6.54; warranted 2.39 [1.54, 5.07]; residual +4.15; flagged 96%
+    2013Q2: actual 4.63; warranted 2.52 [1.56, 6.05]; residual +2.11; flagged 79%
+  Greece:
+    2009Q4: actual 1.78; warranted 2.48 [1.35, 3.26]; residual -0.70; flagged 3%
+    2010Q2: actual 5.52; warranted 2.44 [1.11, 3.21]; residual +3.09; flagged 99%
+    2010Q4: actual 8.44; warranted 2.46 [1.30, 3.49]; residual +5.97; flagged 100%
+    2011Q1: actual 8.71; warranted 2.30 [1.12, 3.32]; residual +6.42; flagged 100%
+    2011Q2: actual 12.40; warranted 2.37 [1.17, 3.58]; residual +10.03; flagged 100%
+    2011Q3: actual 14.35; warranted 2.56 [1.54, 3.59]; residual +11.79; flagged 100%
+    2011Q4: actual 17.10; warranted 3.06 [1.80, 4.49]; residual +14.04; flagged 100%
+    2012Q1: actual 22.91; warranted 3.33 [1.95, 5.16]; residual +19.58; flagged 100%
+    2012Q2: actual 23.98; warranted 2.74 [1.85, 4.49]; residual +21.24; flagged 100%
+    2012Q4: actual 14.79; warranted 3.07 [1.98, 8.02]; residual +11.73; flagged 100%
+    2013Q2: actual 8.90; warranted 3.10 [2.11, 9.18]; residual +5.80; flagged 84%
+  Ireland:
+    2009Q4: actual 1.63; warranted 1.75 [0.57, 2.88]; residual -0.11; flagged 7%
+    2010Q2: actual 2.20; warranted 2.77 [1.26, 4.23]; residual -0.57; flagged 19%
+    2010Q4: actual 5.10; warranted 2.98 [1.41, 4.70]; residual +2.12; flagged 71%
+    2011Q1: actual 6.03; warranted 3.48 [1.31, 6.23]; residual +2.55; flagged 64%
+    2011Q2: actual 7.52; warranted 3.07 [1.51, 5.15]; residual +4.46; flagged 100%
+    2011Q3: actual 7.92; warranted 3.21 [1.56, 4.84]; residual +4.71; flagged 100%
+    2011Q4: actual 6.50; warranted 3.66 [1.81, 4.88]; residual +2.84; flagged 100%
+    2012Q1: actual 5.38; warranted 2.69 [1.76, 3.99]; residual +2.68; flagged 100%
+    2012Q2: actual 5.61; warranted 2.89 [1.78, 5.00]; residual +2.72; flagged 90%
+    2012Q4: actual 3.31; warranted 2.30 [1.55, 6.64]; residual +1.01; flagged 45%
+    2013Q2: actual 2.42; warranted 2.10 [1.50, 7.09]; residual +0.32; flagged 3%
+
+Peak residual, 2010-2012 (median model) and first quarter flagged by at least half of the headline models:
+  Portugal: peak residual +9.30 in 2012Q1; first quarter flagged by half: 2010Q2; quarters flagged by half in 2010-2012: 11 of 12
+  Greece: peak residual +21.24 in 2012Q2; first quarter flagged by half: 2010Q2; quarters flagged by half in 2010-2012: 11 of 12
+  Ireland: peak residual +4.71 in 2011Q3; first quarter flagged by half: 2010Q3; quarters flagged by half in 2010-2012: 9 of 12
+
+Ranking (1 = highest spread) by actual and by median warranted spread, Portugal / Greece / Ireland:
+  2009Q4: actual Portugal 3, Greece 1, Ireland 2; warranted Portugal 3, Greece 1, Ireland 2
+  2010Q2: actual Portugal 2, Greece 1, Ireland 3; warranted Portugal 3, Greece 2, Ireland 1
+  2010Q4: actual Portugal 3, Greece 1, Ireland 2; warranted Portugal 3, Greece 2, Ireland 1
+  2011Q1: actual Portugal 3, Greece 1, Ireland 2; warranted Portugal 3, Greece 2, Ireland 1
+  2011Q2: actual Portugal 3, Greece 1, Ireland 2; warranted Portugal 3, Greece 2, Ireland 1
+  2011Q3: actual Portugal 2, Greece 1, Ireland 3; warranted Portugal 3, Greece 2, Ireland 1
+  2011Q4: actual Portugal 2, Greece 1, Ireland 3; warranted Portugal 3, Greece 2, Ireland 1
+  2012Q1: actual Portugal 2, Greece 1, Ireland 3; warranted Portugal 3, Greece 1, Ireland 2
+  2012Q2: actual Portugal 2, Greece 1, Ireland 3; warranted Portugal 3, Greece 2, Ireland 1
+  2012Q4: actual Portugal 2, Greece 1, Ireland 3; warranted Portugal 2, Greece 1, Ireland 3
+  2013Q2: actual Portugal 2, Greece 1, Ireland 3; warranted Portugal 2, Greece 1, Ireland 3
+  Quarters of 2010-2012 in which Portugal's actual spread exceeded Ireland's: 8 of 12; in which Portugal's warranted spread exceeded Ireland's: 1 of 12
+
+Does external debt explain Portugal's excess? Residual median in 2011Q4 and 2012Q1 by feature set (headline windows):
+  debt: 2011Q4 +8.84 (flagged 100%); 2012Q1 +9.95 (flagged 100%)
+  debt_balance: 2011Q4 +8.16 (flagged 100%); 2012Q1 +9.48 (flagged 100%)
+  fiscal_growth: 2011Q4 +8.00 (flagged 100%); 2012Q1 +9.28 (flagged 100%)
+  plus_current_account: 2011Q4 +8.03 (flagged 100%); 2012Q1 +9.34 (flagged 100%)
+  nonlinear_debt: 2011Q4 +7.95 (flagged 100%); 2012Q1 +9.37 (flagged 100%)
+  rate_dependent_debt: 2011Q4 +7.75 (flagged 100%); 2012Q1 +9.17 (flagged 100%)
+  plus_external_debt: 2011Q4 +7.82 (flagged 100%); 2012Q1 +8.91 (flagged 100%)
+  external_and_current_account: 2011Q4 +7.87 (flagged 100%); 2012Q1 +8.98 (flagged 100%)
+
+Real-time check: 2009 debt and balance (% of GDP) published in April 2010 against today's vintage, and the effect on the warranted spread (median slopes of the headline fixed-window linear models)
+  slopes: debt +0.0101 pp of spread per pp of GDP; balance -0.1617
+  Portugal: debt 76.8 then, 87.6 now (+10.8); balance -9.4 then, -9.9 now (-0.5); warranted spread with the April 2010 figures lower by about 0.19 pp
+  Greece: debt 115.1 then, 128.5 now (+13.4); balance -13.6 then, -15.4 now (-1.8); warranted spread with the April 2010 figures lower by about 0.43 pp
+  Ireland: debt 64.0 then, 61.8 now (-2.2); balance -14.3 then, -13.9 now (+0.4); warranted spread with the April 2010 figures lower by about -0.09 pp
+
+The OMT episode (headline models), 2012Q2 -> 2013Q2: actual, warranted median, residual median, share flagged
+  Italy: actual 4.37 -> 2.87; warranted 1.40 -> 1.50; residual +2.97 -> +1.37 (-1.60); flagged 100% -> 66%
+  Spain: actual 4.75 -> 3.16; warranted 1.99 -> 2.61; residual +2.76 -> +0.55 (-2.21); flagged 100% -> 36%
+  Portugal: actual 9.97 -> 4.63; warranted 2.18 -> 2.52; residual +7.79 -> +2.11 (-5.68); flagged 100% -> 79%
+  Ireland: actual 5.61 -> 2.42; warranted 2.89 -> 2.10; residual +2.72 -> +0.32 (-2.40); flagged 90% -> 3%
+  Greece: actual 23.98 -> 8.90; warranted 2.74 -> 3.10; residual +21.24 -> +5.80 (-15.44); flagged 100% -> 84%
+
+Mean reversion (estimation panel): slope of the next four quarters' spread change on the residual; median [10-90%] across headline models
+  all: residual slope -0.36 [-0.48, -0.08]; warranted slope +0.69
+  crisis_2010_2012: residual slope -0.52 [-0.73, +0.01]; warranted slope +1.55
