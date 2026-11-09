@@ -244,7 +244,7 @@ def fig4_transparency() -> None:
                 label=f"firms {lab}, {100 * share:.0f}% of employees" if share < 1 else "every employer")
     d = mr[(mr.m == 0.45) & np.isclose(mr.cover_share, 1.0) & np.isclose(mr.visibility, pi) & (mr.year == 5)].iloc[0]
     ax.plot(x, [100 * d[f"d_{q}_mean"] for q in qs], color=INK2, lw=1.6, ls="--", marker="s", ms=5,
-            label="every employer, low floor (8% at the minimum)")
+            label="every employer, low floor (9% at the minimum)")
     ax.axhline(0, color=INK2, lw=1)
     ax.set_xticks(x)
     ax.set_xticklabels(["P10", "P25", "median", "P75", "P90"])
