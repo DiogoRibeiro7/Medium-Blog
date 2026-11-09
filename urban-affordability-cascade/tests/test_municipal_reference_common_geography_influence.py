@@ -108,7 +108,10 @@ class ReferenceInfluenceTests(unittest.TestCase):
         self.assertFalse(np.array_equal(actual, precomputed_subsample))
         np.testing.assert_array_equal(actual, np.arange(1, 15, dtype=float))
         y = np.array([1, 5, 3, 7, 9, 6, 11, 8, 13, 10, 12, 14, 4, 15, 2.], dtype=float)
-        z = np.column_stack((np.arange(15.) ** 2, np.arange(15.)[::-1] ** 2))
+        z = np.column_stack((
+            np.array([6, 1, 10, 3, 8, 2, 15, 5, 13, 7, 12, 4, 14, 9, 11], dtype=float),
+            np.array([9, 3, 1, 12, 4, 10, 2, 15, 7, 13, 5, 11, 8, 14, 6], dtype=float),
+        ))
         result = rank_residual_correlation(x[keep], y[keep], z[keep, :])
         self.assertTrue(math.isfinite(result[0]))
 
