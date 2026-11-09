@@ -202,6 +202,10 @@ def run() -> str:
         f = f.set_index("year")
         lines.append(f"  yields {yk}, primary {pk}: " + " / ".join(f"{f.loc[y, 'int_gdp']:.2f} ({f.loc[y, 'interest_bn']:.0f})" for y in (2027, 2030, 2036))
                      + f"; debt {f.loc[2030, 'debt_gdp']:.1f} / {f.loc[2036, 'debt_gdp']:.1f}; implicit rate 2030 {f.loc[2030, 'implicit']:.2f}, 2036 {f.loc[2036, 'implicit']:.2f}")
+    lines.append("Overall balance % of GDP (negative = deficit), base growth, France rho: 2027 / 2030 / 2033 / 2036")
+    for (yk, pk), f in base.groupby(["yields", "primary_path"], sort=False):
+        f = f.set_index("year")
+        lines.append(f"  yields {yk}, primary {pk}: " + " / ".join(f"{f.loc[y, 'balance']:+.2f}" for y in (2027, 2030, 2033, 2036)) + f"; primary balance 2030 {f.loc[2030, 'primary']:+.2f}, 2033 {f.loc[2033, 'primary']:+.2f}")
     # decomposition of the rise in interest/GDP to 2030 and 2036, plan, base growth
     def v(yk, pk="plan", gk="base", rk="france", year=2030):
         return float(P[(P.yields == yk) & (P.primary_path == pk) & (P.growth_path == gk) & (P.rho_case == rk) & (P.year == year)]["int_gdp"].iloc[0])

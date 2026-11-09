@@ -144,7 +144,7 @@ def run() -> str:
     for name, p in peaks.items():
         before = p - 12
         lv = s.loc[p, list(PANEL)].sort_values(ascending=False)
-        lines.append(f"Spreads at {name} reference month {p} (pp, widest first): " + ", ".join(f"{c} {v:.2f}" for c, v in lv.items()) + f"; France ranks {list(lv.index).index('FR') + 1} of {len(lv)}")
+        lines.append(f"Spreads at {name} reference month {p} (pp, widest first): " + ", ".join(f"{c} {v:.2f}" for c, v in lv.items()) + f"; France ranks {list(lv.index).index('FR') + 1} of {len(lv)}; Greece (not in the panel) {s.loc[p, 'EL']:.2f}")
         dd = (s.loc[p, list(PANEL)] - s.loc[before, list(PANEL)]).sort_values(ascending=False)
         lines.append(f"  change over the 12 months from {before}: " + ", ".join(f"{c} {v:+.2f}" for c, v in dd.items()) + f"; countries widening by more than 0.10 pp: {int((dd > 0.10).sum())} of {len(dd)}")
         for c in PANEL:
