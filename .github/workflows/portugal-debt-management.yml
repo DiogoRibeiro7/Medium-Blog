@@ -1,0 +1,64 @@
+name: Reproduce portugal-debt-management
+
+on:
+  pull_request:
+    paths:
+      - 'portugal-debt-management/**'
+      - '.github/workflows/portugal-debt-management.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'portugal-debt-management/**'
+      - '.github/workflows/portugal-debt-management.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: portugal-debt-management
+    env:
+      MPLBACKEND: Agg
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: portugal-debt-management/requirements.txt
+
+      - name: Install pinned dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Tests
+        run: python -m pytest -q tests
+
+      - name: IMF early repayment
+        run: python imf.py > /dev/null
+
+      - name: European loans
+        run: python european.py > /dev/null
+
+      - name: Exchanges and buybacks
+        run: python exchanges.py > /dev/null
+
+      - name: Savings certificates
+        run: python retail.py > /dev/null
+
+      - name: Figures
+        run: python figures.py
+
+      - name: Summaries unchanged within tolerance
+        run: |
+          S="results/imf_summary.txt results/european_summary.txt results/exchanges_summary.txt results/retail_summary.txt"
+          git diff --stat -- $S || true
+          python check_results.py $S
