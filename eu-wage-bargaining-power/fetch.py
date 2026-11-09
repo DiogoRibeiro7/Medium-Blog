@@ -73,6 +73,19 @@ EUROSTAT_REQUESTS: dict[str, tuple[str, list[Filters], bool]] = {
         False,
     ),
     "low_wage_earners": ("earn_ses_pub1s", [[]], False),
+    # Structure of Earnings Survey: monthly earnings by decile, one table per wave
+    "ses_deciles_2006": ("earn_ses_mdeci", [[]], True),
+    "ses_deciles_2010": ("earn_ses10_mdeci", [[]], True),
+    "ses_deciles_2014": ("earn_ses14_mdeci", [[]], True),
+    "ses_deciles_2018": ("earn_ses18_mdeci", [[]], True),
+    "ses_deciles_2022": ("earn_ses22_mdeci", [[]], True),
+    # Structure of Earnings Survey: employees and earnings by type of collective pay agreement
+    "ses_agreement_employees_2010": ("earn_ses10_01", [[("sex", "T")], []], False),
+    "ses_agreement_employees_2014": ("earn_ses14_01", [[("sex", "T")], []], False),
+    "ses_agreement_employees_2018": ("earn_ses18_01", [[("sex", "T")], []], False),
+    "ses_agreement_employees_2022": ("earn_ses22_01", [[("sex", "T")], []], False),
+    "ses_agreement_earnings_2018": ("earn_ses18_19", [[("sex", "T")], []], False),
+    "ses_agreement_earnings_2022": ("earn_ses22_19", [[("sex", "T")], []], False),
 }
 
 # name -> (agency, dataflow, required)
