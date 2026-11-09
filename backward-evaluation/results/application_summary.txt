@@ -1,0 +1,90 @@
+Real-data application: train-period x test-period matrices and forward comparison
+
+[ip_growth] Industrial production growth (% per month): 801 months 1960-01 to 2026-09; AR(3); 13 blocks of 60 months; gap 12
+  blocks: 1961-10..1966-09, 1966-10..1971-09, 1971-10..1976-09, 1976-10..1981-09, 1981-10..1986-09, 1986-10..1991-09, 1991-10..1996-09, 1996-10..2001-09, 2001-10..2006-09, 2006-10..2011-09, 2011-10..2016-09, 2016-10..2021-09, 2021-10..2026-09
+  last row, today's model on past blocks (excess NLPD / 90% coverage / z), oldest first:
+    1961-10..1966-09: +1.225 / 0.52 / +4.5   (without Mar-Dec 2020: +1.225)
+    1966-10..1971-09: +0.277 / 0.70 / +1.7   (without Mar-Dec 2020: +0.277)
+    1971-10..1976-09: +2.778 / 0.55 / +2.2   (without Mar-Dec 2020: +2.778)
+    1976-10..1981-09: +1.283 / 0.63 / +2.2   (without Mar-Dec 2020: +1.283)
+    1981-10..1986-09: +0.729 / 0.60 / +1.9   (without Mar-Dec 2020: +0.729)
+    1986-10..1991-09: +0.272 / 0.78 / +1.7   (without Mar-Dec 2020: +0.272)
+    1991-10..1996-09: +0.211 / 0.80 / +1.4   (without Mar-Dec 2020: +0.211)
+    1996-10..2001-09: +0.404 / 0.75 / +1.6   (without Mar-Dec 2020: +0.404)
+    2001-10..2006-09: -0.060 / 0.90 / -0.4   (without Mar-Dec 2020: -0.060)
+    2006-10..2011-09: +1.458 / 0.68 / +1.8   (without Mar-Dec 2020: +1.458)
+    2011-10..2016-09: +0.151 / 0.90 / +2.0   (without Mar-Dec 2020: +0.151)
+    2016-10..2021-09: +9.288 / 0.77 / +1.1   (without Mar-Dec 2020: -1.045)
+  largest asymmetries |E[i,j] - E[j,i]| (train block -> test block, excess both ways):
+    2011-10 model on 2016-10: +16.741; 2016-10 model on 2011-10: +1.142
+    1996-10 model on 2016-10: +12.716; 2016-10 model on 1996-10: +0.931
+    1986-10 model on 2016-10: +10.236; 2016-10 model on 1986-10: +0.905
+    1991-10 model on 2016-10: +10.227; 2016-10 model on 1991-10: +0.948
+    2016-10 model on 2021-10: +0.914; 2021-10 model on 2016-10: +9.288
+  native one-step RMSE by block: 0.75 0.89 0.86 0.81 0.79 0.54 0.52 0.50 0.55 1.04 0.42 3.07 0.54
+  backward rule at the last origin, z > 2.50: window 798 months (from 1960-04); stopped at block None; per block back: +9.42 (z +1.1), +0.08 (z +1.1), +1.72 (z +1.8), -0.04 (z -0.3), +0.25 (z +0.8), +0.27 (z +2.0), +0.28 (z +1.8), +0.57 (z +1.5)
+  backward rule at the last origin, z > 1.65: window 180 months (from 2011-10); stopped at block 3; per block back: +9.42 (z +1.1), +0.08 (z +1.1), +1.72 (z +1.8)
+  Student-t(5) errors, last row (excess NLPD / 90% coverage / z), oldest first: 1961-10 +1.191/0.47/+4.8; 1966-10 +0.294/0.65/+2.2; 1971-10 +1.490/0.53/+3.9; 1976-10 +0.731/0.63/+2.2; 1981-10 +0.717/0.57/+2.3; 1986-10 +0.335/0.75/+1.8; 1991-10 +0.271/0.77/+1.6; 1996-10 +0.666/0.70/+3.0; 2001-10 +0.061/0.88/+0.6; 2006-10 +0.741/0.68/+2.2; 2011-10 +0.172/0.87/+1.4; 2016-10 -0.168/0.71/-0.4
+  rule at 2010-01, Gaussian: window 60 months; per block back: +0.37 (z +5.8)
+  rule at 2010-01, Student-t: window 597 months; per block back: -0.00 (z -0.1), +0.04 (z +0.6), -0.02 (z -0.4), +0.05 (z +0.6), -0.02 (z -0.2), -0.01 (z -0.1), +0.02 (z +0.2), -0.06 (z -1.0)
+  rule at 2022-01, Gaussian: window 60 months; per block back: +1.09 (z +9.1)
+  rule at 2022-01, Student-t: window 60 months; per block back: +0.35 (z +3.2)
+  forward comparison, origins 1985-01 to 2026-09 (501 forecasts); mean NLPD minus expanding (Newey-West s.e.); MSE; coverage
+    1985-2007: backward_z1 -0.087 (0.038) mse 0.245 cov 0.93; roc -0.081 (0.034) mse 0.249 cov 0.94; rolling_120 -0.071 (0.038) mse 0.257 cov 0.94; forward_cv -0.064 (0.036) mse 0.257 cov 0.92; avew -0.061 (0.010) mse 0.251 cov 0.97; backward_z1.645 -0.060 (0.034) mse 0.247 cov 0.94; rolling_60 -0.046 (0.057) mse 0.266 cov 0.91; rolling_240 -0.045 (0.026) mse 0.252 cov 0.96; backward_z2 -0.022 (0.028) mse 0.246 cov 0.95; rolling_360 -0.012 (0.007) mse 0.257 cov 0.97; backward -0.006 (0.011) mse 0.252 cov 0.97; expanding +0.000 (0.000) mse 0.258 cov 0.98; backward_z3 +0.000 (0.000) mse 0.258 cov 0.98
+    2008-2019: expanding +0.000 (0.000) mse 0.468 cov 0.94; avew +0.001 (0.025) mse 0.488 cov 0.94; rolling_360 +0.014 (0.070) mse 0.477 cov 0.93; backward +0.029 (0.019) mse 0.475 cov 0.94; backward_z3 +0.030 (0.018) mse 0.473 cov 0.94; forward_cv +0.125 (0.148) mse 0.471 cov 0.93; rolling_240 +0.144 (0.159) mse 0.493 cov 0.93; roc +0.157 (0.186) mse 0.490 cov 0.91; backward_z1.645 +0.177 (0.143) mse 0.517 cov 0.94; backward_z2 +0.190 (0.142) mse 0.522 cov 0.93; backward_z1 +0.204 (0.150) mse 0.542 cov 0.91; rolling_60 +0.246 (0.138) mse 0.604 cov 0.85; rolling_120 +0.247 (0.193) mse 0.537 cov 0.93
+    2020-2026: avew -0.645 (0.584) mse 5.816 cov 0.93; expanding +0.000 (0.000) mse 4.868 cov 0.91; backward_z3 +0.352 (0.150) mse 4.909 cov 0.93; rolling_240 +0.502 (0.427) mse 5.965 cov 0.91; backward +0.804 (0.461) mse 5.976 cov 0.93; forward_cv +1.053 (0.925) mse 5.652 cov 0.91; rolling_360 +1.081 (0.925) mse 5.641 cov 0.91; rolling_60 +1.770 (1.363) mse 15.263 cov 0.91; backward_z1 +1.835 (1.292) mse 14.430 cov 0.91; backward_z1.645 +1.835 (1.292) mse 14.430 cov 0.91; backward_z2 +1.835 (1.292) mse 14.430 cov 0.91; roc +1.864 (1.265) mse 5.519 cov 0.91; rolling_120 +2.872 (2.295) mse 10.359 cov 0.91
+    2020-2026 without Mar-Dec 2020: forward_cv -0.004 (0.004) mse 0.772 cov 0.97; expanding +0.000 (0.000) mse 0.774 cov 0.97; avew +0.004 (0.091) mse 0.769 cov 0.97; rolling_360 +0.027 (0.050) mse 0.760 cov 0.97; rolling_240 +0.094 (0.090) mse 0.781 cov 0.97; rolling_120 +0.220 (0.133) mse 0.800 cov 0.97; rolling_60 +0.238 (0.178) mse 0.795 cov 0.99; backward_z1 +0.395 (0.169) mse 0.818 cov 0.99; backward_z1.645 +0.395 (0.169) mse 0.818 cov 0.99; backward_z2 +0.395 (0.169) mse 0.818 cov 0.99; backward +0.397 (0.169) mse 0.818 cov 0.99; backward_z3 +0.401 (0.168) mse 0.820 cov 0.99; roc +0.439 (0.094) mse 0.777 cov 0.97
+    1985-2026: avew -0.138 (0.100) mse 1.219 cov 0.95; expanding +0.000 (0.000) mse 1.063 cov 0.96; backward_z3 +0.066 (0.029) mse 1.072 cov 0.96; rolling_240 +0.098 (0.085) mse 1.245 cov 0.94; backward +0.135 (0.079) mse 1.242 cov 0.95; forward_cv +0.171 (0.165) mse 1.190 cov 0.92; rolling_360 +0.172 (0.160) mse 1.191 cov 0.95; roc +0.302 (0.229) mse 1.171 cov 0.93; backward_z1 +0.308 (0.229) mse 2.623 cov 0.92; backward_z1.645 +0.315 (0.228) mse 2.618 cov 0.94; rolling_60 +0.332 (0.239) mse 2.788 cov 0.89; backward_z2 +0.339 (0.227) mse 2.618 cov 0.94; rolling_120 +0.496 (0.401) mse 1.971 cov 0.93
+    1985-2026 without Mar-Dec 2020: avew -0.034 (0.017) mse 0.395 cov 0.96; expanding +0.000 (0.000) mse 0.394 cov 0.97; forward_cv +0.000 (0.049) mse 0.394 cov 0.93; rolling_360 +0.001 (0.023) mse 0.394 cov 0.96; rolling_240 +0.031 (0.053) mse 0.399 cov 0.95; backward +0.062 (0.031) mse 0.399 cov 0.96; roc +0.064 (0.065) mse 0.396 cov 0.94; rolling_120 +0.064 (0.067) mse 0.418 cov 0.94; backward_z3 +0.067 (0.030) mse 0.402 cov 0.97; backward_z1 +0.068 (0.060) mse 0.415 cov 0.93; backward_z1.645 +0.075 (0.057) mse 0.409 cov 0.95; rolling_60 +0.081 (0.061) mse 0.442 cov 0.90; backward_z2 +0.101 (0.055) mse 0.410 cov 0.95
+    Student-t(5), 1985-2007: avew -0.032 (0.008) cov 0.96; rolling_120 -0.027 (0.022) cov 0.94; forward_cv -0.016 (0.019) cov 0.95; backward -0.007 (0.006) cov 0.95; expanding +0.000 (0.000) cov 0.96
+    Student-t(5), 2008-2019: avew -0.017 (0.015) cov 0.90; expanding +0.000 (0.000) cov 0.94; backward +0.025 (0.012) cov 0.92; forward_cv +0.029 (0.028) cov 0.92; rolling_120 +0.030 (0.043) cov 0.88
+    Student-t(5), 2020-2026: avew -0.053 (0.034) cov 0.84; backward -0.038 (0.050) cov 0.88; expanding +0.000 (0.000) cov 0.80; rolling_120 +0.045 (0.106) cov 0.81; forward_cv +0.105 (0.100) cov 0.79
+    Student-t(5), 2020-2026 without Mar-Dec 2020: rolling_120 -0.079 (0.031) cov 0.90; avew -0.056 (0.017) cov 0.90; backward -0.043 (0.057) cov 0.96; forward_cv -0.010 (0.011) cov 0.87; expanding +0.000 (0.000) cov 0.87
+    Student-t(5), 1985-2026: avew -0.031 (0.008) cov 0.92; backward -0.003 (0.009) cov 0.93; expanding +0.000 (0.000) cov 0.93; rolling_120 +0.001 (0.025) cov 0.90; forward_cv +0.017 (0.022) cov 0.91
+    Student-t(5), 1985-2026 without Mar-Dec 2020: avew -0.031 (0.007) cov 0.93; rolling_120 -0.018 (0.019) cov 0.92; backward -0.003 (0.009) cov 0.94; forward_cv -0.002 (0.014) cov 0.93; expanding +0.000 (0.000) cov 0.95
+    backward rule window (months) at each January: 1986:309 1989:345 1992:381 1995:417 1998:180 2001:489 2004:240 2007:480 2010:60 2013:180 2016:669 2019:705 2022:60 2025:60
+
+[cpi_inflation] CPI inflation (% per year, monthly changes annualised): 799 months 1960-01 to 2026-09; AR(3); 13 blocks of 60 months; gap 12
+  blocks: 1961-08..1966-07, 1966-08..1971-07, 1971-08..1976-07, 1976-08..1981-07, 1981-08..1986-07, 1986-08..1991-07, 1991-08..1996-07, 1996-08..2001-07, 2001-08..2006-07, 2006-08..2011-07, 2011-08..2016-07, 2016-08..2021-07, 2021-08..2026-09
+  last row, today's model on past blocks (excess NLPD / 90% coverage / z), oldest first:
+    1961-08..1966-07: +0.314 / 0.97 / +2.2   (without Mar-Dec 2020: +0.314)
+    1966-08..1971-07: +0.160 / 0.97 / +3.2   (without Mar-Dec 2020: +0.160)
+    1971-08..1976-07: +0.216 / 0.82 / +1.2   (without Mar-Dec 2020: +0.216)
+    1976-08..1981-07: +0.335 / 0.82 / +1.5   (without Mar-Dec 2020: +0.335)
+    1981-08..1986-07: -0.166 / 0.88 / -2.0   (without Mar-Dec 2020: -0.166)
+    1986-08..1991-07: +0.103 / 0.97 / +1.3   (without Mar-Dec 2020: +0.103)
+    1991-08..1996-07: +0.500 / 1.00 / +5.1   (without Mar-Dec 2020: +0.500)
+    1996-08..2001-07: +0.169 / 0.98 / +2.0   (without Mar-Dec 2020: +0.169)
+    2001-08..2006-07: -0.106 / 0.92 / -0.6   (without Mar-Dec 2020: -0.106)
+    2006-08..2011-07: -0.045 / 0.87 / -0.5   (without Mar-Dec 2020: -0.045)
+    2011-08..2016-07: +0.085 / 0.93 / +0.7   (without Mar-Dec 2020: +0.085)
+    2016-08..2021-07: +0.034 / 0.96 / +0.0   (without Mar-Dec 2020: +0.082)
+  largest asymmetries |E[i,j] - E[j,i]| (train block -> test block, excess both ways):
+    1976-08 model on 1991-08: +0.585; 1991-08 model on 1976-08: +24.837
+    1971-08 model on 1991-08: +0.638; 1991-08 model on 1971-08: +13.644
+    1961-08 model on 1976-08: +11.282; 1976-08 model on 1961-08: +0.471
+    1991-08 model on 2006-08: +8.838; 2006-08 model on 1991-08: +0.735
+    1961-08 model on 1971-08: +6.254; 1971-08 model on 1961-08: +0.420
+  native one-step RMSE by block: 1.78 2.13 3.68 2.72 3.33 2.18 1.27 2.05 3.28 4.63 2.49 2.59 3.48
+  backward rule at the last origin, z > 2.50: window 60 months (from 2021-08); stopped at block 1; per block back: +0.14 (z +3.1)
+  backward rule at the last origin, z > 1.65: window 60 months (from 2021-08); stopped at block 1; per block back: +0.14 (z +3.1)
+  Student-t(5) errors, last row (excess NLPD / 90% coverage / z), oldest first: 1961-08 +0.255/0.95/+2.6; 1966-08 +0.067/0.95/+1.1; 1971-08 +0.253/0.78/+1.3; 1976-08 +0.358/0.82/+2.2; 1981-08 -0.182/0.85/-2.7; 1986-08 +0.039/0.95/+0.5; 1991-08 +0.320/1.00/+3.5; 1996-08 +0.088/0.95/+1.2; 2001-08 +0.114/0.87/+1.0; 2006-08 -0.005/0.83/-0.1; 2011-08 +0.032/0.87/+0.3; 2016-08 -0.003/0.96/+0.3
+  rule at 2010-01, Gaussian: window 180 months; per block back: +0.12 (z +0.8), +0.54 (z +2.4), +0.38 (z +2.7)
+  rule at 2010-01, Student-t: window 120 months; per block back: -0.05 (z -0.4), +0.44 (z +2.8)
+  rule at 2022-01, Gaussian: window 300 months; per block back: +0.08 (z +1.2), -0.00 (z -0.0), +0.00 (z +0.0), +0.13 (z +1.5), +0.41 (z +5.7)
+  rule at 2022-01, Student-t: window 300 months; per block back: +0.07 (z +1.2), -0.06 (z -0.4), +0.13 (z +1.3), +0.11 (z +1.4), +0.33 (z +4.7)
+  forward comparison, origins 1985-01 to 2026-09 (499 forecasts); mean NLPD minus expanding (Newey-West s.e.); MSE; coverage
+    1985-2007: rolling_60 -0.111 (0.061) mse 6.124 cov 0.87; avew -0.109 (0.042) mse 6.597 cov 0.92; backward -0.106 (0.044) mse 6.551 cov 0.89; backward_z1.645 -0.097 (0.059) mse 6.114 cov 0.87; backward_z1 -0.091 (0.060) mse 6.102 cov 0.86; backward_z3 -0.082 (0.030) mse 6.790 cov 0.91; backward_z2 -0.082 (0.056) mse 6.490 cov 0.88; rolling_120 -0.078 (0.052) mse 6.152 cov 0.89; forward_cv -0.054 (0.057) mse 6.305 cov 0.86; rolling_240 -0.028 (0.029) mse 6.599 cov 0.91; rolling_360 -0.004 (0.014) mse 7.394 cov 0.92; roc -0.003 (0.034) mse 6.557 cov 0.90; expanding +0.000 (0.000) mse 7.642 cov 0.91
+    2008-2019: avew -0.090 (0.062) mse 10.072 cov 0.93; rolling_360 -0.067 (0.043) mse 10.024 cov 0.91; rolling_60 -0.063 (0.093) mse 11.348 cov 0.93; forward_cv -0.057 (0.084) mse 11.232 cov 0.94; backward_z3 -0.026 (0.048) mse 10.868 cov 0.94; rolling_120 -0.014 (0.056) mse 10.794 cov 0.94; backward -0.007 (0.050) mse 10.885 cov 0.94; expanding +0.000 (0.000) mse 10.975 cov 0.90; backward_z1.645 +0.005 (0.058) mse 10.877 cov 0.94; rolling_240 +0.015 (0.064) mse 10.157 cov 0.93; backward_z2 +0.024 (0.058) mse 10.891 cov 0.94; backward_z1 +0.025 (0.062) mse 10.902 cov 0.94; roc +0.100 (0.079) mse 10.012 cov 0.93
+    2020-2026: avew -0.038 (0.048) mse 10.948 cov 0.87; roc -0.021 (0.042) mse 10.643 cov 0.86; expanding +0.000 (0.000) mse 11.196 cov 0.86; rolling_240 +0.028 (0.078) mse 11.875 cov 0.87; backward +0.032 (0.073) mse 11.989 cov 0.87; backward_z3 +0.041 (0.073) mse 11.958 cov 0.87; rolling_360 +0.043 (0.086) mse 11.615 cov 0.87; forward_cv +0.067 (0.081) mse 12.047 cov 0.87; backward_z2 +0.076 (0.073) mse 12.346 cov 0.86; backward_z1.645 +0.089 (0.071) mse 12.324 cov 0.86; backward_z1 +0.125 (0.087) mse 12.572 cov 0.84; rolling_120 +0.177 (0.104) mse 12.349 cov 0.81; rolling_60 +0.231 (0.109) mse 12.557 cov 0.84
+    2020-2026 without Mar-Dec 2020: roc -0.009 (0.046) mse 9.473 cov 0.88; avew -0.003 (0.043) mse 10.386 cov 0.88; expanding +0.000 (0.000) mse 10.001 cov 0.88; backward +0.074 (0.073) mse 11.664 cov 0.88; backward_z3 +0.079 (0.077) mse 11.452 cov 0.88; rolling_360 +0.089 (0.089) mse 11.252 cov 0.88; rolling_240 +0.091 (0.070) mse 11.681 cov 0.88; forward_cv +0.117 (0.081) mse 11.747 cov 0.88; backward_z2 +0.124 (0.072) mse 12.073 cov 0.87; backward_z1 +0.136 (0.087) mse 12.370 cov 0.84; backward_z1.645 +0.139 (0.068) mse 12.047 cov 0.87; rolling_60 +0.195 (0.084) mse 12.119 cov 0.84; rolling_120 +0.198 (0.108) mse 12.123 cov 0.81
+    1985-2026: avew -0.092 (0.031) mse 8.289 cov 0.91; backward -0.056 (0.032) mse 8.663 cov 0.90; backward_z3 -0.047 (0.026) mse 8.785 cov 0.91; rolling_60 -0.043 (0.049) mse 8.650 cov 0.88; backward_z1.645 -0.038 (0.040) mse 8.472 cov 0.89; forward_cv -0.035 (0.043) mse 8.636 cov 0.88; backward_z2 -0.026 (0.038) mse 8.688 cov 0.89; backward_z1 -0.023 (0.042) mse 8.512 cov 0.88; rolling_120 -0.019 (0.039) mse 8.472 cov 0.89; rolling_360 -0.015 (0.021) mse 8.821 cov 0.91; rolling_240 -0.007 (0.028) mse 8.461 cov 0.91; expanding +0.000 (0.000) mse 9.166 cov 0.90; roc +0.024 (0.030) mse 8.201 cov 0.90
+    1985-2026 without Mar-Dec 2020: avew -0.088 (0.032) mse 8.155 cov 0.92; rolling_60 -0.053 (0.048) mse 8.508 cov 0.88; backward -0.051 (0.032) mse 8.549 cov 0.90; backward_z3 -0.043 (0.026) mse 8.649 cov 0.92; backward_z1.645 -0.033 (0.040) mse 8.354 cov 0.89; forward_cv -0.030 (0.044) mse 8.524 cov 0.89; backward_z1 -0.025 (0.042) mse 8.400 cov 0.88; backward_z2 -0.022 (0.039) mse 8.574 cov 0.89; rolling_120 -0.020 (0.040) mse 8.361 cov 0.89; rolling_360 -0.009 (0.021) mse 8.713 cov 0.91; expanding +0.000 (0.000) mse 8.956 cov 0.91; rolling_240 +0.001 (0.027) mse 8.364 cov 0.91; roc +0.026 (0.031) mse 7.986 cov 0.91
+    Student-t(5), 1985-2007: backward -0.102 (0.047) cov 0.85; rolling_120 -0.098 (0.040) cov 0.87; avew -0.090 (0.028) cov 0.90; forward_cv -0.065 (0.040) cov 0.87; expanding +0.000 (0.000) cov 0.89
+    Student-t(5), 2008-2019: avew -0.079 (0.047) cov 0.91; rolling_120 -0.019 (0.047) cov 0.92; backward -0.010 (0.054) cov 0.89; expanding +0.000 (0.000) cov 0.89; forward_cv +0.011 (0.040) cov 0.89
+    Student-t(5), 2020-2026: avew -0.047 (0.059) cov 0.84; backward -0.009 (0.081) cov 0.85; expanding +0.000 (0.000) cov 0.85; forward_cv +0.064 (0.094) cov 0.81; rolling_120 +0.089 (0.106) cov 0.80
+    Student-t(5), 2020-2026 without Mar-Dec 2020: expanding +0.000 (0.000) cov 0.87; avew +0.004 (0.046) cov 0.84; backward +0.052 (0.073) cov 0.86; forward_cv +0.131 (0.085) cov 0.81; rolling_120 +0.160 (0.100) cov 0.80
+    Student-t(5), 1985-2026: avew -0.080 (0.023) cov 0.89; backward -0.061 (0.034) cov 0.86; rolling_120 -0.046 (0.033) cov 0.87; forward_cv -0.023 (0.031) cov 0.87; expanding +0.000 (0.000) cov 0.88
+    Student-t(5), 1985-2026 without Mar-Dec 2020: avew -0.073 (0.023) cov 0.89; backward -0.053 (0.034) cov 0.86; rolling_120 -0.039 (0.033) cov 0.87; forward_cv -0.015 (0.030) cov 0.87; expanding +0.000 (0.000) cov 0.89
+    backward rule window (months) at each January: 1986:240 1989:60 1992:120 1995:180 1998:180 2001:240 2004:240 2007:60 2010:120 2013:120 2016:240 2019:420 2022:240 2025:777
+

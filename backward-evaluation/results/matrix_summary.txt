@@ -1,0 +1,68 @@
+Train-period x test-period matrices, AR(1), 600 rows, 10 blocks of 60, gap 6, break at row 300, 500 replications
+Excess log loss = mean NLPD of block i's model on block j minus the within-block cross-validated NLPD on block j (nats per forecast).
+
+[stationary] Stationary
+  mean off-diagonal excess NLPD: -0.004 (population 0.000)
+  within regime (both blocks before or both after): -0.004
+  early model on late blocks (forward across the break): -0.004 (population 0.000)
+  late model on early blocks (backward across the break): -0.005 (population 0.000)
+  squared-error ratio, forward across: 1.002; backward across: 1.000
+  90% coverage, forward across: 0.887; backward across: 0.888; within regime: 0.888; native diagonal: 0.886
+  last row (today's model on past blocks, oldest first): -0.006 -0.007 -0.005 -0.008 -0.003 0.001 -0.004 0.001 -0.007
+  mean z statistic on the last row, oldest first: -0.5 -0.6 -0.5 -0.6 -0.5 -0.4 -0.4 -0.4 -0.4
+
+[mean_shift] Mean shift
+  mean off-diagonal excess NLPD: 0.201 (population 0.156)
+  within regime (both blocks before or both after): -0.003
+  early model on late blocks (forward across the break): 0.367 (population 0.281)
+  late model on early blocks (backward across the break): 0.362 (population 0.281)
+  squared-error ratio, forward across: 1.698; backward across: 1.706
+  90% coverage, forward across: 0.772; backward across: 0.775; within regime: 0.888; native diagonal: 0.886
+  last row (today's model on past blocks, oldest first): 0.385 0.375 0.377 0.366 0.380 -0.005 -0.003 -0.004 -0.001
+  mean z statistic on the last row, oldest first: 2.8 2.8 2.8 2.8 2.8 -0.5 -0.5 -0.5 -0.4
+
+[variance_down] Volatility falls
+  mean off-diagonal excess NLPD: 0.336 (population 0.312)
+  within regime (both blocks before or both after): -0.002
+  early model on late blocks (forward across the break): 0.299 (population 0.318)
+  late model on early blocks (backward across the break): 0.913 (population 0.807)
+  squared-error ratio, forward across: 1.069; backward across: 0.988
+  90% coverage, forward across: 0.997; backward across: 0.577; within regime: 0.887; native diagonal: 0.886
+  last row (today's model on past blocks, oldest first): 0.901 0.905 0.916 0.892 0.885 -0.002 -0.006 0.000 0.001
+  mean z statistic on the last row, oldest first: 3.1 3.1 3.1 3.1 3.1 -0.4 -0.5 -0.4 -0.3
+
+[variance_up] Volatility rises
+  mean off-diagonal excess NLPD: 0.328 (population 0.312)
+  within regime (both blocks before or both after): -0.003
+  early model on late blocks (forward across the break): 0.892 (population 0.807)
+  late model on early blocks (backward across the break): 0.295 (population 0.318)
+  squared-error ratio, forward across: 0.985; backward across: 1.062
+  90% coverage, forward across: 0.581; backward across: 0.997; within regime: 0.888; native diagonal: 0.886
+  last row (today's model on past blocks, oldest first): 0.301 0.297 0.294 0.296 0.293 -0.007 -0.004 -0.009 -0.008
+  mean z statistic on the last row, oldest first: 4.1 4.1 4.1 4.0 4.0 -0.5 -0.4 -0.6 -0.5
+
+[persistence_up] Persistence rises
+  mean off-diagonal excess NLPD: 0.205 (population 0.191)
+  within regime (both blocks before or both after): 0.001
+  early model on late blocks (forward across the break): 0.581 (population 0.500)
+  late model on early blocks (backward across the break): 0.153 (population 0.187)
+  squared-error ratio, forward across: 2.092; backward across: 1.296
+  90% coverage, forward across: 0.737; backward across: 0.838; within regime: 0.886; native diagonal: 0.886
+  last row (today's model on past blocks, oldest first): 0.148 0.153 0.158 0.158 0.154 0.018 0.013 0.012 0.019
+  mean z statistic on the last row, oldest first: 1.9 1.9 1.9 1.9 1.9 -0.3 -0.3 -0.3 -0.2
+
+[drift] Gradual drift in persistence
+  mean off-diagonal excess NLPD: 0.090 (population 0.085)
+  within regime (both blocks before or both after): 0.024
+  early model on late blocks (forward across the break): 0.222 (population 0.183)
+  late model on early blocks (backward across the break): 0.065 (population 0.088)
+  squared-error ratio, forward across: 1.417; backward across: 1.131
+  90% coverage, forward across: 0.825; backward across: 0.866; within regime: 0.879; native diagonal: 0.886
+  last row (today's model on past blocks, oldest first): 0.199 0.155 0.124 0.088 0.057 0.036 0.022 0.007 0.007
+  mean z statistic on the last row, oldest first: 2.2 1.9 1.7 1.3 0.8 0.5 0.2 -0.2 -0.3
+
+Closed form for a pure variance change (right mean, wrong variance), excess = (r - 1 - log r)/2, r = test variance / training variance:
+  r = 4: 0.807
+  r = 0.25: 0.318
+  r = 2: 0.153
+  r = 0.5: 0.097
