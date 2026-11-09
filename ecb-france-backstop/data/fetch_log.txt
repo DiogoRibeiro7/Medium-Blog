@@ -88,3 +88,95 @@ eba file	200	8110aea2ed614bc86cb5e00058787e8fe2b5e1ce816a5ec1f9346647668eb5df	27
 eba file	SAVED	eba_TR_Metadata.xlsx.gz	1183506 bytes
 eba file	200	33e85cba051fac4d42c76272fb00b830cf26d9cab26398db32cc100135a0956c	91038353 bytes	https://www.eba.europa.eu/assets/TE2025/Full_database/883401/tr_sov.csv
 eba file	SAVED	eba_tr_sov.csv.gz	3300724 bytes
+# fetch.py run 2026-11-09T10:36:18+00:00
+eurostat yields_monthly	200	7bbff260ec9ae1b1f23e73006d61457646045402e18e08a0b4715820722281ff	105829 bytes	https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/irt_lt_mcby_m?format=JSON&lang=EN&geo=DE&geo=FR&geo=IT&geo=ES&geo=BE&geo=AT&geo=NL&geo=FI&geo=PT&geo=IE&geo=EL
+eurostat yields_monthly	ROWS	5614	columns ['freq', 'int_rt', 'geo', 'time', 'value']	last period 2026-09	filters []
+eurostat gov_main	200	bf47f5803e492587d2315194b6f146fd73f96697ad0a7b11be3ed5b28e5f5b93	25986 bytes	https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/gov_10a_main?format=JSON&lang=EN&unit=MIO_EUR&sector=S13&na_item=D41PAY&na_item=B9&na_item=TE&na_item=TR&geo=DE&geo=FR&geo=IT&geo=ES&geo=BE&geo=AT&geo=NL&geo=FI&geo=PT&geo=IE&geo=EL
+eurostat gov_main	ROWS	1440	columns ['freq', 'unit', 'sector', 'na_item', 'geo', 'time', 'value']	last period 2025	filters [('unit', 'MIO_EUR'), ('sector', 'S13'), ('na_item', 'D41PAY'), ('na_item', 'B9'), ('na_item', 'TE'), ('na_item', 'TR')]
+eurostat debt	200	6a05cbd6c4bcf49659f0e3fefdd2dd131c36923a4e5a52b9b91bcfad3c13ecc7	8724 bytes	https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/gov_10dd_edpt1?format=JSON&lang=EN&unit=MIO_EUR&sector=S13&na_item=GD&geo=DE&geo=FR&geo=IT&geo=ES&geo=BE&geo=AT&geo=NL&geo=FI&geo=PT&geo=IE&geo=EL
+eurostat debt	ROWS	341	columns ['freq', 'unit', 'sector', 'na_item', 'geo', 'time', 'value']	last period 2025	filters [('unit', 'MIO_EUR'), ('sector', 'S13'), ('na_item', 'GD')]
+eurostat gdp	200	d09ae13494c2d4bea560b0eddbadf4004381c01935f83e55844acbfb3a8bfd67	10256 bytes	https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/nama_10_gdp?format=JSON&lang=EN&unit=CP_MEUR&na_item=B1GQ&geo=DE&geo=FR&geo=IT&geo=ES&geo=BE&geo=AT&geo=NL&geo=FI&geo=PT&geo=IE&geo=EL
+eurostat gdp	ROWS	380	columns ['freq', 'unit', 'na_item', 'geo', 'time', 'value']	last period 2025	filters [('unit', 'CP_MEUR'), ('na_item', 'B1GQ')]
+eurostat gov_quarterly	200	b3b54066749132653cf40466e2e6df68c824bb574b4e3a834c8ef862c4c68aca	40771 bytes	https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/gov_10q_ggnfa?format=JSON&lang=EN&unit=MIO_EUR&sector=S13&s_adj=NSA&na_item=D41PAY&na_item=B9&sinceTimePeriod=1999-Q1&geo=DE&geo=FR&geo=IT&geo=ES&geo=BE&geo=AT&geo=NL&geo=FI&geo=PT&geo=IE&geo=EL
+eurostat gov_quarterly	ROWS	2356	columns ['freq', 'unit', 's_adj', 'sector', 'na_item', 'geo', 'time', 'value']	last period 2026-Q2	filters [('unit', 'MIO_EUR'), ('sector', 'S13'), ('s_adj', 'NSA'), ('na_item', 'D41PAY'), ('na_item', 'B9')]
+eurostat debt_quarterly	200	0c3712d4f9c60f5e80c78219adec3ce7f62ce3829f9d8455853bc9208be9278a	25158 bytes	https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/gov_10q_ggdebt?format=JSON&lang=EN&unit=MIO_EUR&sector=S13&na_item=GD&sinceTimePeriod=1999-Q1&geo=DE&geo=FR&geo=IT&geo=ES&geo=BE&geo=AT&geo=NL&geo=FI&geo=PT&geo=IE&geo=EL
+eurostat debt_quarterly	ROWS	1174	columns ['freq', 'na_item', 'sector', 'unit', 'geo', 'time', 'value']	last period 2026-Q2	filters [('unit', 'MIO_EUR'), ('sector', 'S13'), ('na_item', 'GD')]
+eurostat gdp_quarterly	200	ac9bda30b44c51ce7b95488f5d5057fa1dcff33f44b3d33242bcd6c15883b44c	25449 bytes	https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/namq_10_gdp?format=JSON&lang=EN&unit=CP_MEUR&s_adj=NSA&na_item=B1GQ&sinceTimePeriod=1999-Q1&geo=DE&geo=FR&geo=IT&geo=ES&geo=BE&geo=AT&geo=NL&geo=FI&geo=PT&geo=IE&geo=EL
+eurostat gdp_quarterly	ROWS	1214	columns ['freq', 'unit', 's_adj', 'na_item', 'geo', 'time', 'value']	last period 2026-Q3	filters [('unit', 'CP_MEUR'), ('s_adj', 'NSA'), ('na_item', 'B1GQ')]
+eurostat real_growth_quarterly	200	f21d94bf16b2c20cf7e069bbaa1557706c0da92bedd81d9116123aac66558697	20408 bytes	https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/namq_10_gdp?format=JSON&lang=EN&unit=CLV_PCH_SM&s_adj=SCA&na_item=B1GQ&sinceTimePeriod=1999-Q1&geo=DE&geo=FR&geo=IT&geo=ES&geo=BE&geo=AT&geo=NL&geo=FI&geo=PT&geo=IE&geo=EL
+eurostat real_growth_quarterly	ROWS	1220	columns ['freq', 'unit', 's_adj', 'na_item', 'geo', 'time', 'value']	last period 2026-Q3	filters [('unit', 'CLV_PCH_SM'), ('s_adj', 'SCA'), ('na_item', 'B1GQ')]
+eurostat current_account	200	c649c637b7dfe6ea2fc65239c1161c139f511a15ce32d9f2af963d4bdc463730	23382 bytes	https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/bop_gdp6_q?format=JSON&lang=EN&unit=PC_GDP&bop_item=CA&stk_flow=BAL&partner=WRL_REST&s_adj=NSA&sinceTimePeriod=1999-Q1&geo=DE&geo=FR&geo=IT&geo=ES&geo=BE&geo=AT&geo=NL&geo=FI&geo=PT&geo=IE&geo=EL
+eurostat current_account	ROWS	1438	columns ['freq', 'unit', 's_adj', 'bop_item', 'stk_flow', 'partner', 'geo', 'time', 'value']	last period 2026-Q2	filters [('unit', 'PC_GDP'), ('bop_item', 'CA'), ('stk_flow', 'BAL'), ('partner', 'WRL_REST'), ('s_adj', 'NSA')]
+eurostat gni	200	a26ad9ffcd6ead3efe183b9be6d5436a77212c103ebed06a6db65efd33dcf4e6	8292 bytes	https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/nasa_10_nf_tr?format=JSON&lang=EN&unit=CP_MEUR&na_item=B5GQ&sector=S1&direct=PAID&sinceTimePeriod=2015&geo=AT&geo=BE&geo=BG&geo=CY&geo=CZ&geo=DE&geo=DK&geo=EE&geo=EL&geo=ES&geo=FI&geo=FR&geo=HR&geo=HU&geo=IE&geo=IT&geo=LT&geo=LU&geo
+eurostat gni	ROWS	305	columns ['freq', 'unit', 'direct', 'na_item', 'sector', 'geo', 'time', 'value']	last period 2025	filters [('unit', 'CP_MEUR'), ('na_item', 'B5GQ'), ('sector', 'S1'), ('direct', 'PAID')]
+eurostat gdp_eu27	200	9c3ad56121765696e2bb3e1d10dd798127058fe3b91cd09fd9a25ce6b0866dfe	8493 bytes	https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/nama_10_gdp?format=JSON&lang=EN&unit=CP_MEUR&na_item=B1GQ&sinceTimePeriod=2015&geo=AT&geo=BE&geo=BG&geo=CY&geo=CZ&geo=DE&geo=DK&geo=EE&geo=EL&geo=ES&geo=FI&geo=FR&geo=HR&geo=HU&geo=IE&geo=IT&geo=LT&geo=LU&geo=LV&geo=MT&geo=NL&geo=PL
+eurostat gdp_eu27	ROWS	308	columns ['freq', 'unit', 'na_item', 'geo', 'time', 'value']	last period 2025	filters [('unit', 'CP_MEUR'), ('na_item', 'B1GQ')]
+ecb ecb_yields_monthly	200	1e53084ee3558d032b4d8598a34243f0d8cd96a4314afc33aff7eb795a5aa5b7	1511368 bytes	https://data-api.ecb.europa.eu/service/data/IRS/M.DE+FR+IT+ES+BE+AT+NL+FI+PT+IE+GR.L.L40.CI.0000.EUR.N.Z?startPeriod=1995-01&format=csvdata
+ecb ecb_yields_monthly	ROWS	4191	series 11	last period 2026-09
+ecb target_balances	200	be8bacf11a102304cd65fab70f1bbe2c31e4dc1bc2c19d4dbdb5ed5fd6893dbc	417784 bytes	https://data-api.ecb.europa.eu/service/data/TGB/M.DE+FR+IT+ES+BE+AT+NL+FI+PT+IE+GR.N.A094T.U2.EUR.E?startPeriod=2008-01&format=csvdata
+ecb target_balances	ROWS	2431	series 11	last period 2026-09
+ecb gfs_debt_holders	200	fbfd29626b4b3c08ef8de77038bfec4d6d2c11f09274103be056c8b7d854c5e6	234606 bytes	https://data-api.ecb.europa.eu/service/data/GFS/Q.N.FR+IT+ES+DE+BE..S13..C.L.LE.GD.T._Z.XDC._T.F.V.N._T?startPeriod=2008-Q1&format=csvdata
+ecb gfs_debt_holders	ROWS	370	series 5	last period 2026-Q2
+ecb pepp page	200	89c675f1c695f254391afc018c08b9a50df8e24325aed8baa1e7d0ac1626eb90	142633 bytes	https://www.ecb.europa.eu/mopo/implement/pepp/html/index.en.html
+ecb pepp link	https://www.ecb.europa.eu/mopo/pdf/PEPP_breakdown_history.csv?64adb487c071631e753ad6eeca050ead
+ecb pepp link	https://www.ecb.europa.eu/mopo/pdf/PEPP_private_sector_primary_secondary_market_breakdown_history.csv?20bd974c43369eccb1c24faaf76beeb5
+ecb pepp link	https://www.ecb.europa.eu/mopo/pdf/PEPP_public_sector_securities_breakdown_history.csv
+ecb pepp link	https://www.ecb.europa.eu/mopo/pdf/PEPP_public_sector_securities_breakdown_history.csv?8766bf6333f7449a96714744b18f0ec2
+ecb pepp link	https://www.ecb.europa.eu/mopo/pdf/PEPP_purchase_history.csv?3ee3a947f57f464d1c2c7f1842706448
+ecb pepp link	https://www.ecb.europa.eu/mopo/pdf/PEPP_redemptions_history.csv?03b52700de490197dced5dc494089488
+ecb pepp file	200	5fa99e766ad6ade23fcd72a1bb7eea3e81d32a406fb8a0b1ff6890d1ea53d341	27022 bytes	https://www.ecb.europa.eu/mopo/pdf/PEPP_public_sector_securities_breakdown_history.csv
+ecb pepp file	SAVED	ecb_PEPP_public_sector_securities_breakdown_history.csv	27022 bytes
+ecb pepp file	200	5fa99e766ad6ade23fcd72a1bb7eea3e81d32a406fb8a0b1ff6890d1ea53d341	27022 bytes	https://www.ecb.europa.eu/mopo/pdf/PEPP_public_sector_securities_breakdown_history.csv?8766bf6333f7449a96714744b18f0ec2
+ecb pepp file	SAVED	ecb_PEPP_public_sector_securities_breakdown_history.csv	27022 bytes
+ecb app page	200	6376404a70eb8878d7f2a14ece59c243307328f2fb4e7f10f82e39a544a5070f	169439 bytes	https://www.ecb.europa.eu/mopo/implement/app/html/index.en.html
+ecb app link	https://www.ecb.europa.eu/mopo/pdf/ABSPP_breakdown_by_rating_country_collateral.xlsx
+ecb app link	https://www.ecb.europa.eu/mopo/pdf/ABSPP_breakdown_by_rating_country_collateral.xlsx?beefdc8694ad25555ff3a70ae6ede5d4
+ecb app link	https://www.ecb.europa.eu/mopo/pdf/ABSPP_breakdown_history.csv
+ecb app link	https://www.ecb.europa.eu/mopo/pdf/ABSPP_breakdown_history.csv?e4f5cfab5ee3d7c996a4fb98631237fa
+ecb app link	https://www.ecb.europa.eu/mopo/pdf/APP_breakdown_history.csv
+ecb app link	https://www.ecb.europa.eu/mopo/pdf/APP_breakdown_history.csv?abd85c2e01501c27f1937ae831165443
+ecb app link	https://www.ecb.europa.eu/mopo/pdf/APP_redemptions_history.csv
+ecb app link	https://www.ecb.europa.eu/mopo/pdf/APP_redemptions_history.csv?5dea2878dfbe07c60374b1c3eb9cdafb
+ecb app link	https://www.ecb.europa.eu/mopo/pdf/CBPP2_breakdown_history.csv
+ecb app link	https://www.ecb.europa.eu/mopo/pdf/CBPP3_breakdown_by_rating_country.xlsx
+ecb app link	https://www.ecb.europa.eu/mopo/pdf/CBPP3_breakdown_by_rating_country.xlsx?fa3c2d54730282ee26a1743ff00461ed
+ecb app link	https://www.ecb.europa.eu/mopo/pdf/CBPP3_breakdown_history.csv
+ecb app link	https://www.ecb.europa.eu/mopo/pdf/CBPP3_breakdown_history.csv?159127aab01a1eaa4cbdc42ff7158ab5
+ecb app link	https://www.ecb.europa.eu/mopo/pdf/CSPP_PEPP_corporate_bond_holdings_20261030.csv?e68bcf3c3e47dc0dab39faa7f31fad07
+ecb app link	https://www.ecb.europa.eu/mopo/pdf/CSPP_breakdown_by_sector_rating_country.xlsx
+ecb app link	https://www.ecb.europa.eu/mopo/pdf/CSPP_breakdown_by_sector_rating_country.xlsx?dbee4ec5b14aa11845da75405d2560a0
+ecb app link	https://www.ecb.europa.eu/mopo/pdf/CSPP_breakdown_history.csv
+ecb app link	https://www.ecb.europa.eu/mopo/pdf/CSPP_breakdown_history.csv?2722fdc7eb4e2af685cb2a60c68f2801
+ecb app link	https://www.ecb.europa.eu/mopo/pdf/PSPP_breakdown_history.csv
+ecb app link	https://www.ecb.europa.eu/mopo/pdf/PSPP_breakdown_history.csv?ea0c85abdf45a2ccdb8bf7ce8432959a
+ecb app link	https://www.ecb.europa.eu/mopo/pdf/PSPP_weighted_average_maturity.xlsx
+ecb app link	https://www.ecb.europa.eu/mopo/pdf/PSPP_weighted_average_maturity.xlsx?43476d5bd44265a302aee20dac7ddd5a
+ecb app link	https://www.ecb.europa.eu/mopo/pdf/SMP_breakdown_history.csv?daf22d3fdf1045a4566fcd9b1135535a
+ecb app file	200	e17a2b8b0d1300f38f1576abbc3c1c065e72be19a4f625bd758b9cb12c3085c7	40718 bytes	https://www.ecb.europa.eu/mopo/pdf/PSPP_breakdown_history.csv
+ecb app file	SAVED	ecb_PSPP_breakdown_history.csv	40718 bytes
+ecb app file	200	e17a2b8b0d1300f38f1576abbc3c1c065e72be19a4f625bd758b9cb12c3085c7	40718 bytes	https://www.ecb.europa.eu/mopo/pdf/PSPP_breakdown_history.csv?ea0c85abdf45a2ccdb8bf7ce8432959a
+ecb app file	SAVED	ecb_PSPP_breakdown_history.csv	40718 bytes
+eba page	200	bf9034874fe8bb1939c5b31cb1d217864ec573e9c8c5d99084764f41fce035bb	117549 bytes	https://www.eba.europa.eu/risk-and-data-analysis/risk-analysis/eu-wide-transparency-exercise
+eba link	https://www.eba.europa.eu/sites/default/files/2025-12/cba1e223-3b80-474d-be95-9acf7b8624fb/Statistical_annex_Autumn2025RAQ.xlsx
+eba link	https://www.eba.europa.eu/assets/TE2025/Full_database/883401/2025_EU-wide_Transparency_exercise_Mapped_templates.xlsx
+eba link	https://www.eba.europa.eu/assets/TE2025/Full_database/883401/SDD.xlsx
+eba link	https://www.eba.europa.eu/assets/TE2025/Full_database/883401/TR_Metadata.xlsx
+eba link	https://www.eba.europa.eu/assets/TE2025/Full_database/883401/tr_cre.csv
+eba link	https://www.eba.europa.eu/assets/TE2025/Full_database/883401/tr_mrk.csv
+eba link	https://www.eba.europa.eu/assets/TE2025/Full_database/883401/tr_oth.csv
+eba link	https://www.eba.europa.eu/assets/TE2025/Full_database/883401/tr_sov.csv
+eba_node page	200	bf9034874fe8bb1939c5b31cb1d217864ec573e9c8c5d99084764f41fce035bb	117549 bytes	https://www.eba.europa.eu/node/18852
+eba_node link	https://www.eba.europa.eu/sites/default/files/2025-12/cba1e223-3b80-474d-be95-9acf7b8624fb/Statistical_annex_Autumn2025RAQ.xlsx
+eba_node link	https://www.eba.europa.eu/assets/TE2025/Full_database/883401/2025_EU-wide_Transparency_exercise_Mapped_templates.xlsx
+eba_node link	https://www.eba.europa.eu/assets/TE2025/Full_database/883401/SDD.xlsx
+eba_node link	https://www.eba.europa.eu/assets/TE2025/Full_database/883401/TR_Metadata.xlsx
+eba_node link	https://www.eba.europa.eu/assets/TE2025/Full_database/883401/tr_cre.csv
+eba_node link	https://www.eba.europa.eu/assets/TE2025/Full_database/883401/tr_mrk.csv
+eba_node link	https://www.eba.europa.eu/assets/TE2025/Full_database/883401/tr_oth.csv
+eba_node link	https://www.eba.europa.eu/assets/TE2025/Full_database/883401/tr_sov.csv
+eba file	200	8110aea2ed614bc86cb5e00058787e8fe2b5e1ce816a5ec1f9346647668eb5df	2782361 bytes	https://www.eba.europa.eu/assets/TE2025/Full_database/883401/TR_Metadata.xlsx
+eba file	SAVED	eba_TR_Metadata.xlsx.gz	1183506 bytes
+eba file	200	1785417e172907b3a49623eb13e2cc6c7af26a02ae982bfe2ba3a70f782e4104	15110064 bytes	https://www.eba.europa.eu/assets/TE2025/Full_database/883401/tr_oth.csv
+eba file	SAVED	eba_tr_oth.csv.gz	1902447 bytes
+eba file	200	33e85cba051fac4d42c76272fb00b830cf26d9cab26398db32cc100135a0956c	91038353 bytes	https://www.eba.europa.eu/assets/TE2025/Full_database/883401/tr_sov.csv
+eba file	SAVED	eba_tr_sov.csv.gz	3300724 bytes
