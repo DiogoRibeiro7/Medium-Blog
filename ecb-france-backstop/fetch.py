@@ -12,7 +12,7 @@ Sources:
    central banks (TGB) and government debt by holding sector (GFS).
 3. ECB website: the history of public-sector holdings by jurisdiction under the PEPP and the PSPP
    (CSV files linked from the programme pages; links are read from the pages, not hard-coded).
-4. EBA: the 2025 EU-wide transparency exercise, sovereign exposures bank by bank (the files are
+4. EBA: the 2025 EU-wide transparency exercise, sovereign exposures and capital bank by bank (the files are
    located from links on the exercise page; the exercise was discontinued after June 2025, so
    June 2025 is the last reference date).
 
@@ -266,7 +266,7 @@ def ecb_programmes(out: Path, log: list[str]) -> bool:
 
 
 def eba_sovereign(out: Path, log: list[str]) -> bool:
-    """EBA 2025 transparency exercise, sovereign exposures (bank by bank), located from page links."""
+    """EBA 2025 transparency exercise: sovereign exposures and capital (bank by bank), located from page links."""
     seen: list[str] = []
     for tag in ("eba", "eba_node"):
         seen += links(PAGES[tag], log, tag)
@@ -274,7 +274,7 @@ def eba_sovereign(out: Path, log: list[str]) -> bool:
     for u in dict.fromkeys(seen):
         fname = Path(urllib.parse.urlparse(u).path).name
         low = fname.lower()
-        if ("sov" in low or "metadata" in low or "dictionary" in low) and low.endswith((".csv", ".xlsx", ".zip")):
+        if ("sov" in low or "oth" in low or "metadata" in low) and low.endswith((".csv", ".xlsx", ".zip")):
             ok |= download(u, out / f"eba_{fname}", log, "eba file")
     return ok
 
