@@ -78,7 +78,7 @@ def f(x, d=3):
 
 SOURCES = {
     "hour.csv": {
-        "sha256": "e03de4ee4ef4dc376ac6e04bf829673c6269e8eba5c60fa121640fa2f829504f",
+        "sha256": "b03a2d02e8c10f435c43c7f0b358b7e34a003afea53dbc37f0183f2763295133",
         "urls": [
             "https://raw.githubusercontent.com/udacity/deep-learning-v2-pytorch/"
             "83d69f31047c0daa0d24c500eb3ba850c3380f89/project-bikesharing/Bike-Sharing-Dataset/hour.csv",
@@ -109,7 +109,7 @@ def fetch(name: str) -> bytes | None:
     spec = SOURCES[name]
     path = DATA / name
     if path.exists():
-        raw = path.read_bytes()
+        raw = path.read_bytes().replace(b"\r\n", b"\n")
         if hashlib.sha256(raw).hexdigest() == spec["sha256"]:
             return raw
     for url in spec["urls"]:
