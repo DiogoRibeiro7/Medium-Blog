@@ -1,0 +1,57 @@
+Descriptive summaries derived from forward_scores.csv.gz and forward_decisions.csv.
+
+Decisions on the test series (yearly re-selections, 1990 onwards)
+  t: 366 decisions; walk stopped in 182; check switched in 6; median z_end when stopped -2.11; z_end > 0 in 21
+  gaussian: 366 decisions; walk stopped in 177; check switched in 16; median z_end when stopped -2.01; z_end > 0 in 33
+  development set, t: 420 decisions; walk stopped in 274; check switched in 15
+  development set, gaussian: 420 decisions; walk stopped in 288; check switched in 45
+
+After COVID-19: gain over E of B and C for forecasts from 2021-01 (nats per month, Newey-West se)
+  [test, t] mean over series: B -0.0098, C +0.0005
+    Japan unemployment B -0.0105 (0.0105) C -0.0105 (0.0105) n 68
+    Canada unemployment B -0.1129 (0.0954) C -0.0571 (0.0906) n 68
+    UK production B -0.0191 (0.0287) C +0.0214 (0.0185) n 68
+    Germany production B -0.1026 (0.0427) C -0.1026 (0.0427) n 39
+    Japan production B +0.3252 (0.1334) C +0.3252 (0.1334) n 39
+    UK 10-year yield B -0.0751 (0.0750) C -0.0751 (0.0750) n 69
+    Germany 10-year yield B -0.0227 (0.0221) C -0.0227 (0.0221) n 69
+    Canada 10-year yield B -0.0430 (0.0196) C -0.0430 (0.0196) n 69
+    Yen per dollar B -0.0362 (0.0249) C -0.0299 (0.0248) n 70
+    Swiss franc per dollar B -0.0012 (0.0603) C -0.0012 (0.0603) n 70
+  [test, gaussian] mean over series: B -0.1390, C -0.0684
+    Japan unemployment B -0.0133 (0.0110) C -0.0133 (0.0110) n 68
+    Canada unemployment B -0.4792 (0.1127) C -0.1755 (0.1095) n 68
+    UK production B -0.4109 (0.0415) C -0.0678 (0.0387) n 68
+    Germany production B -0.4069 (0.0762) C -0.3548 (0.0774) n 39
+    Japan production B +0.3264 (0.2045) C +0.3264 (0.2045) n 39
+    UK 10-year yield B -0.3380 (0.3323) C -0.3311 (0.3304) n 69
+    Germany 10-year yield B -0.1083 (0.0701) C -0.1083 (0.0701) n 69
+    Canada 10-year yield B +0.0057 (0.0367) C +0.0057 (0.0367) n 69
+    Yen per dollar B -0.0313 (0.0360) C -0.0313 (0.0360) n 70
+    Swiss franc per dollar B +0.0656 (0.0406) C +0.0656 (0.0406) n 70
+  [dev, t] mean over series: B -0.1118, C -0.0846
+    US unemployment B -0.1526 (0.0370) C -0.0995 (0.0312) n 69
+    US payrolls B -0.7231 (0.2587) C -0.5227 (0.2705) n 70
+    US housing starts B +0.0044 (0.0073) C +0.0044 (0.0073) n 69
+    US real income B -0.0185 (0.0158) C -0.0185 (0.0158) n 69
+    US real spending B -0.2464 (0.0815) C -0.1802 (0.0854) n 69
+    US industrial production B +0.0441 (0.0592) C +0.0450 (0.0585) n 69
+    US PPI inflation B +0.1880 (0.1032) C +0.0643 (0.0729) n 69
+    US 10-year yield B -0.0153 (0.0110) C -0.0153 (0.0110) n 70
+    US M2 growth B -0.1374 (0.0550) C -0.0626 (0.0468) n 69
+    US CPI inflation B -0.0611 (0.0735) C -0.0611 (0.0735) n 68
+  [dev, gaussian] mean over series: B -0.3544, C -0.1617
+    US unemployment B -0.9563 (0.0848) C -0.3630 (0.1168) n 69
+    US payrolls B -1.1019 (0.0256) C -0.7000 (0.1184) n 70
+    US housing starts B -0.0143 (0.0104) C -0.0143 (0.0104) n 69
+    US real income B -0.3093 (0.0343) C -0.1086 (0.0362) n 69
+    US real spending B -0.6643 (0.1800) C -0.1913 (0.1759) n 69
+    US industrial production B -0.4128 (0.1691) C -0.0284 (0.1597) n 69
+    US PPI inflation B +0.2027 (0.1491) C -0.0079 (0.0566) n 69
+    US 10-year yield B +0.0181 (0.0299) C +0.0181 (0.0299) n 70
+    US M2 growth B -0.2250 (0.1241) C -0.1114 (0.1162) n 69
+    US CPI inflation B -0.0808 (0.0740) C -0.1105 (0.0651) n 68
+
+Attribution on the test series (scoring without Mar-Dec 2020): total gain of B and C over E on the series where B loses under each error distribution
+  gaussian: B loses on 5 series, total -0.2236; C total there -0.1209 (removed 46%); mean over all ten: B +0.0078, C +0.0181, AveW +0.0523
+  t: B loses on 5 series, total -0.0523; C total there -0.0425 (removed 19%); mean over all ten: B +0.0090, C +0.0101, AveW +0.0177

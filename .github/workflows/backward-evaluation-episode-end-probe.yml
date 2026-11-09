@@ -1,0 +1,51 @@
+name: Probe backward-evaluation-episode-end series availability
+
+on:
+  push:
+    branches:
+      - backward-evaluation-episode-end
+    paths:
+      - 'backward-evaluation-episode-end/probe/probe.py'
+      - '.github/workflows/backward-evaluation-episode-end-probe.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: backward-evaluation-episode-end
+    steps:
+      - name: Check out the branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: backward-evaluation-episode-end/requirements.txt
+
+      - name: Install pinned dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Record availability metadata only (no values)
+        run: python probe/probe.py --out probe
+
+      - name: Commit the probe log
+        run: |
+          git config user.name "Diogo Ribeiro"
+          git config user.email "diogo_dj@hotmail.com"
+          git add probe/probe_log.tsv
+          if git diff --cached --quiet; then
+            echo "Probe log unchanged."
+          else
+            git commit -m "backward-evaluation-episode-end: availability probe log (metadata only, $(date -u +%Y-%m-%d))"
+            git push
+          fi
