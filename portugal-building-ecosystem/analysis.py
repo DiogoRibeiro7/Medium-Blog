@@ -276,7 +276,7 @@ def section_a(rep: Report, ratios: list[dict]) -> dict:
         rep(f"{y}: labour {annual.loc[y, 'labour']:.1f}; materials {annual.loc[y, 'materials']:.1f}; total {annual.loc[y, 'total']:.1f}")
     last_m = monthly.index[-1]
     rep(f"latest month {last_m[0]}-{last_m[1]:02d}: labour {monthly.iloc[-1]['labour']:.1f}; materials {monthly.iloc[-1]['materials']:.1f}")
-    for a, b in ((2008, 2025), (2019, 2025), (2000, 2008)):
+    for a, b in ((2008, 2025), (2019, 2025), (2000, 2008), (2008, 2019)):
         rep(f"{a}->{b}: labour {annual.loc[b, 'labour'] / annual.loc[a, 'labour'] - 1:+.1%}; materials {annual.loc[b, 'materials'] / annual.loc[a, 'materials'] - 1:+.1%}")
     for y in (2019, 2022, 2023, 2024, 2025):
         yoy_l = annual.loc[y, "labour"] / annual.loc[y - 1, "labour"] - 1
