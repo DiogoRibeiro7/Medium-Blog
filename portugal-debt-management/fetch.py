@@ -212,7 +212,7 @@ def bpstat_datasets(out: Path, log: list[str]) -> None:
             xid = item.get("extension", {}).get("id")
             if not xid:
                 continue
-            u: str | None = f"{BPSTAT}/domains/{did}/datasets/{xid}/?lang=EN&page_size=100"
+            u: str | None = f"{BPSTAT}/domains/{did}/datasets/{xid}/?lang=EN&page_size=20"
             page = 1
             while u:
                 try:
@@ -225,7 +225,7 @@ def bpstat_datasets(out: Path, log: list[str]) -> None:
                     break
                 (bp / f"{did}_{xid}_p{page}.json").write_bytes(body)
                 nxt = json.loads(body).get("extension", {}).get("next_page")
-                u = (nxt + ("&page_size=100" if "page_size" not in nxt else "")) if nxt else None
+                u = (nxt + ("&page_size=20" if "page_size" not in nxt else "")) if nxt else None
                 page += 1
                 time.sleep(0.5)
 
