@@ -160,7 +160,8 @@ def q(a: np.ndarray) -> list[float]:
 
 
 def fmt(a: np.ndarray, scale: float = 1.0, nd: int = 3, sign: bool = False) -> str:
-    lo, mid, hi = np.percentile(a * scale, [5, 50, 95])
+    # rounding first and adding 0.0 turns -0.0 into 0.0, so last-bit noise cannot flip a printed sign
+    lo, mid, hi = np.round(np.percentile(a * scale, [5, 50, 95]), nd) + 0.0
     f = f"{{:{'+' if sign else ''}.{nd}f}}"
     return f"{f.format(mid)} [{f.format(lo)}, {f.format(hi)}]"
 
