@@ -67,6 +67,16 @@ jobs:
         run: python municipal_reference_geography_controls.py --output /tmp/porto-reference-geo
       - name: Reproduce matched reference contrasts under identical geographic controls
         run: python municipal_reference_common_geography.py --output /tmp/porto-common-geography
+      - name: Reproduce common-geography matched municipality influence audit
+        run: python municipal_reference_common_geography_influence.py --output /tmp/porto-matched-influence
+      - name: Publish full deletion-level evidence and vector figures
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: porto-matched-reference-deletion-influence
+          path: /tmp/porto-matched-influence/
+          if-no-files-found: warn
+          retention-days: 30
       - name: Verify private-manuscript notice and public figure archive
         run: |
           python - <<'PY'
