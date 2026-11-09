@@ -55,12 +55,17 @@ def run() -> str:
                 rows.append(dict(period=label, measure=name, geo=c, value=float(v)))
     P = pd.DataFrame(rows)
     P.to_csv(RESULTS / "investment_periods.csv", index=False)
-    for measure in ("net", "gross", "net_plus_grants"):
+    for measure in ("net", "gross", "grants", "net_plus_grants"):
         lines.append("")
         lines.append(f"{measure.replace('_', ' ')} investment, period averages:")
         for label in PERIODS:
             f = P[(P.period == label) & (P.measure == measure)].set_index("geo")["value"]
             lines.append(f"  {label}: " + ", ".join(f"{c} {f[c]:+.2f}" for c in SHOW) + f"; peer mean {f[list(PEERS)].mean():+.2f}; Germany minus peers {f['DE'] - f[list(PEERS)].mean():+.2f}")
+
+    lines.append("")
+    d = net["DE"].loc[1995:2025]
+    lines.append(f"Germany, net investment: 2024 {d[2024]:+.2f}, 2025 {d[2025]:+.2f} (highest in 1995-2025: {d.idxmax()}, {d.max():+.2f}); peer mean 2024 {peer_mean(net).loc[2024]:+.2f}, 2025 {peer_mean(net).loc[2025]:+.2f}")
+    lines.append(f"Germany, gross investment: 2019 {gross.loc[2019, 'DE']:.2f}, 2024 {gross.loc[2024, 'DE']:.2f}, 2025 {gross.loc[2025, 'DE']:.2f}; peer mean 2019 {peer_mean(gross).loc[2019]:.2f}, 2024 {peer_mean(gross).loc[2024]:.2f}, 2025 {peer_mean(gross).loc[2025]:.2f}")
 
     # difference-in-differences on net investment, before the brake vs brake in force
     pre, post = PERIODS["before the brake, 1995-2008"], PERIODS["brake in force, 2011-2019"]
