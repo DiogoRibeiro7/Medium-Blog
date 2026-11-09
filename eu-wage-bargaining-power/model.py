@@ -76,8 +76,10 @@ class State:
 def draw_population(prm: Params) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
     """Ability, firm productivity and ability band. The same seed gives the same population."""
     rng = np.random.default_rng(10_000 + prm.seed)
-    e = np.exp(rng.normal(0.0, prm.sigma_e, prm.n_workers))
-    p = np.exp(rng.normal(0.0, prm.sigma_p, prm.n_firms))
+    # Generator.lognormal exponentiates with the C library, not numpy's SIMD exp, so the draws are
+    # bit-identical across CPUs; the equal-pay engine is path-dependent and amplifies last-digit differences
+    e = rng.lognormal(0.0, prm.sigma_e, prm.n_workers)
+    p = rng.lognormal(0.0, prm.sigma_p, prm.n_firms)
     edges = np.quantile(e, np.linspace(0, 1, prm.n_bands + 1)[1:-1])
     band = np.searchsorted(edges, e)
     return e, p, band
