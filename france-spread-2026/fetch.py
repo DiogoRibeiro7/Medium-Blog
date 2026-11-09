@@ -12,8 +12,8 @@ Sources:
 2. ECB Data Portal: monthly convergence-criterion yields (dataset IRS), usually published before
    Eurostat's copy, and a probe of the daily financial-market series (dataset FM) for France.
 3. Daily probes (kept when they answer, never required): Bundesbank daily German 10-year
-   yields, the Banque de France's daily French 10-year constant-maturity rate, and the ECB's
-   business-daily financial-market series. Stooq's free CSV downloads (``--only stooq``) now
+   yields and the Banque de France's daily French 10-year constant-maturity rate (TEC10), with
+   a search of the Webstat catalogue. Stooq's free CSV downloads (``--only stooq``) now
    answer 404 to scripted requests.
 
 Every response is logged with URL, HTTP status and SHA-256 in ``data/fetch_log.txt``.
@@ -229,8 +229,9 @@ DAILY_PROBES = {
     "bbk_de10": "https://api.statistiken.bundesbank.de/rest/data/BBSIS/D.I.ZST.ZI.EUR.S1311.B.A604.R10XX.R.A.A._Z._Z.A?format=csv&lang=en",
     # Banque de France Webstat: French 10-year constant-maturity rate (TEC10), daily
     "bdf_fr10": "https://webstat.banque-france.fr/api/explore/v2.1/catalog/datasets/observations/exports/csv?where=series_key%3D%22FM.D.FR.EUR.FR2.BB.FRMOYTEC10.HSTA%22",
-    # ECB financial-market data, business-daily frequency, 10-year benchmark yields if published
-    "ecb_fm_b": "https://data-api.ecb.europa.eu/service/data/FM/B.DE+FR+IT+ES.EUR....YLD?lastNObservations=3&format=csvdata",
+    # Banque de France Webstat catalogue, searched for the 10-year constant-maturity rate
+    "bdf_catalog": "https://webstat.banque-france.fr/api/explore/v2.1/catalog/datasets?limit=100&where=search(%22TEC%22)",
+    "bdf_catalog_all": "https://webstat.banque-france.fr/api/explore/v2.1/catalog/datasets?limit=100&select=dataset_id",
 }
 
 
