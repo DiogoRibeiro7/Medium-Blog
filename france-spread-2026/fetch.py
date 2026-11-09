@@ -227,11 +227,10 @@ def stooq(out: Path, log: list[str]) -> bool:
 DAILY_PROBES = {
     # Bundesbank: yields on listed Federal securities, residual maturity 10 years, daily
     "bbk_de10": "https://api.statistiken.bundesbank.de/rest/data/BBSIS/D.I.ZST.ZI.EUR.S1311.B.A604.R10XX.R.A.A._Z._Z.A?format=csv&lang=en",
-    # Banque de France Webstat: French 10-year constant-maturity rate (TEC10), daily
-    "bdf_fr10": "https://webstat.banque-france.fr/api/explore/v2.1/catalog/datasets/observations/exports/csv?where=series_key%3D%22FM.D.FR.EUR.FR2.BB.FRMOYTEC10.HSTA%22",
-    # Banque de France Webstat catalogue, searched for the 10-year constant-maturity rate
-    "bdf_catalog": "https://webstat.banque-france.fr/api/explore/v2.1/catalog/datasets?limit=100&where=search(%22TEC%22)",
-    "bdf_catalog_all": "https://webstat.banque-france.fr/api/explore/v2.1/catalog/datasets?limit=100&select=dataset_id",
+    # Banque de France Webstat (dataset id = series key, lower case, dots as dashes): French
+    # 10-year constant-maturity rate (TEC10), daily, and the list of daily financial-market series
+    "bdf_fr10": "https://webstat.banque-france.fr/api/explore/v2.1/catalog/datasets/fm-d-fr-eur-fr2-bb-frmoytec10-hsta/exports/csv?delimiter=%2C",
+    "bdf_fm_daily": "https://webstat.banque-france.fr/api/explore/v2.1/catalog/datasets?limit=100&select=dataset_id%2Cdefault.title&where=startswith(dataset_id%2C%22fm-d%22)",
 }
 
 
