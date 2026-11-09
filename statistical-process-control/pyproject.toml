@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "spcbudget"
+version = "0.1.0"
+description = "Control-chart limits and thresholds designed around a false-alarm budget (companion to the statistical-process-control series)."
+readme = "README.md"
+license = "Apache-2.0"
+authors = [{ name = "Diogo Ribeiro", email = "dfr@esmad.ipp.pt" }]
+requires-python = ">=3.10"
+dependencies = ["numpy>=1.24", "scipy>=1.10"]
+
+[tool.setuptools]
+packages = ["spcbudget"]

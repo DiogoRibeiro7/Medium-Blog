@@ -1,0 +1,149 @@
+Statistical process control, Part 4: designing a line's charts around a false-alarm budget
+seed 20261109; numpy 2.5.3
+data files verified: continuous_factory_process.csv sha256 5d1358bc03b3, secom.data sha256 4503bdb42e63, secom_labels.data sha256 2fb2e8b5dfe7
+
+==============================================================================
+1. One chart, guaranteed
+==============================================================================
+Individuals chart with limits xbar +/- k S from m in-control normal values. Target: conditional
+false-alarm probability <= p0 = 0.002700, i.e. conditional in-control ARL >= 370.4, with probability 1 - eps.
+m    25: k(eps 0.10) 3.7866, k(eps 0.05) 4.0288; k = 3 meets the target with probability 0.415
+m    50: k(eps 0.10) 3.4963, k(eps 0.05) 3.6430; k = 3 meets the target with probability 0.437
+m   100: k(eps 0.10) 3.3246, k(eps 0.05) 3.4187; k = 3 meets the target with probability 0.454
+m   250: k(eps 0.10) 3.1920, k(eps 0.05) 3.2469; k = 3 meets the target with probability 0.471
+m  1000: k(eps 0.10) 3.0907, k(eps 0.05) 3.1166; k = 3 meets the target with probability 0.485
+X-bar chart, 25 subgroups of 5, pooled S (nu = 100): k(eps 0.10) 3.3779; k = 3 meets the target with probability 0.392
+simulation check, m 50, 400,000 Phase I samples: share meeting the target 0.9004 (designed 0.9000)
+simulation check, m 100, 400,000 Phase I samples: share meeting the target 0.9003 (designed 0.9000)
+
+price in detection: conditional ARL after a mean shift of delta sigma, median and 10/90% over
+200,000 Phase I samples; known parameters: delta 0: 370.4, delta 1: 43.9, delta 2: 6.3, delta 3: 2.0
+m   50, k = 3                 k 3.000: delta 0: 317.3 (99.1-1227.4); delta 1: 41.9 (16.7-127.2); delta 2: 6.1 (3.5-12.8); delta 3: 2.0 (1.5-3.0)
+m   50, guaranteed, eps 0.10  k 3.496: delta 0: 1729.4 (369.4-10494.2); delta 1: 149.4 (43.2-668.9); delta 2: 14.2 (6.2-40.9); delta 3: 3.1 (2.0-6.0)
+m   50, guaranteed, eps 0.05  k 3.643: delta 0: 2981.3 (563.0-20943.6); delta 1: 226.7 (59.0-1153.3); delta 2: 19.0 (7.6-60.7); delta 3: 3.7 (2.2-7.8)
+m  100, k = 3                 k 3.000: delta 0: 343.4 (147.3-877.5); delta 1: 43.0 (22.0-92.2); delta 2: 6.2 (4.1-10.3); delta 3: 2.0 (1.6-2.6)
+m  100, guaranteed, eps 0.10  k 3.325: delta 0: 1031.1 (370.6-3213.6); delta 1: 96.9 (42.8-246.3); delta 2: 10.6 (6.2-20.1); delta 3: 2.7 (2.0-3.9)
+m  100, guaranteed, eps 0.05  k 3.419: delta 0: 1444.0 (491.4-4784.6); delta 1: 124.9 (52.6-334.6); delta 2: 12.6 (7.1-24.9); delta 3: 2.9 (2.1-4.4)
+m  250, k = 3                 k 3.000: delta 0: 358.3 (208.5-641.2); delta 1: 43.5 (28.3-69.6); delta 2: 6.3 (4.8-8.5); delta 3: 2.0 (1.7-2.3)
+m  250, guaranteed, eps 0.10  k 3.192: delta 0: 681.8 (371.5-1310.2); delta 1: 69.6 (42.9-118.3); delta 2: 8.5 (6.2-12.1); delta 3: 2.3 (2.0-2.9)
+m  250, guaranteed, eps 0.05  k 3.247: delta 0: 824.8 (440.7-1619.0); delta 1: 80.2 (48.6-138.7); delta 2: 9.3 (6.7-13.5); delta 3: 2.5 (2.1-3.1)
+
+parametric bootstrap (Gandy and Kvaloy 2013) on simulated normal Phase I samples, m = 100, eps 0.10:
+   300 samples, B = 4,000: k 10/50/90% 3.316 / 3.324 / 3.333; share meeting the target 0.873; exact k 3.3246
+
+==============================================================================
+2. When the data are not normal
+==============================================================================
+Each distribution is standardized to mean 0 and variance 1. 'share' = share of Phase I samples whose
+limits have a conditional false-alarm probability <= p0 under the true distribution (target 0.90).
+Tail probability beyond 3 SD with known parameters: normal 0.00270, Student t5 0.01172, Laplace 0.01437, lognormal 0.01538
+m 100, normal-theory guaranteed k 3.3246, 20,000 samples: normal: k=3 0.455, guaranteed 0.900 (median p 0.00098); Student t5: k=3 0.005, guaranteed 0.020 (median p 0.00856); Laplace: k=3 0.001, guaranteed 0.013 (median p 0.00969); lognormal: k=3 0.002, guaranteed 0.010 (median p 0.01188)
+m 250, normal-theory guaranteed k 3.1920, 20,000 samples: normal: k=3 0.473, guaranteed 0.899 (median p 0.00146); Student t5: k=3 0.002, guaranteed 0.003 (median p 0.00962); Laplace: k=3 0.000, guaranteed 0.000 (median p 0.01121); lognormal: k=3 0.000, guaranteed 0.000 (median p 0.01306)
+m 1000, normal-theory guaranteed k 3.0907, 20,000 samples: normal: k=3 0.486, guaranteed 0.896 (median p 0.00201); Student t5: k=3 0.000, guaranteed 0.000 (median p 0.01060); Laplace: k=3 0.000, guaranteed 0.000 (median p 0.01273); lognormal: k=3 0.000, guaranteed 0.000 (median p 0.01413)
+
+nonparametric bootstrap (resampling the Phase I values), m = 100, eps 0.10, B = 1,000, 300 samples:
+   normal: k 10/50/90% 2.628 / 2.966 / 3.579; share meeting the target 0.480
+   Student t5: k 10/50/90% 3.163 / 4.07 / 6.161; share meeting the target 0.397
+   Laplace: k 10/50/90% 3.292 / 4.136 / 5.403; share meeting the target 0.487
+   lognormal: k 10/50/90% 3.593 / 4.719 / 6.631; share meeting the target 0.473
+
+distribution-free two-sided limits: the smallest and largest of n in-control values. The probability
+outside them is Beta(2, n - 1) for any continuous distribution; the smallest n meeting the target is 1440.
+   normal: share meeting the target 0.899 (20,000 samples of 1440)
+   Student t5: share meeting the target 0.901 (20,000 samples of 1440)
+   Laplace: share meeting the target 0.900 (20,000 samples of 1440)
+   lognormal: share meeting the target 0.903 (20,000 samples of 1440)
+
+==============================================================================
+3. A line of charts
+==============================================================================
+K independent individuals charts, each with its own Phase I of m = 100; line budget: false-alarm
+probability of the line per time point <= 0.002700 (line ARL >= 370.4) with probability 0.90.
+Designs: Sidak limits with known-parameter widths; a guarantee for every chart at the Sidak rate with
+eps_chart = 1 - (1 - eps)^(1/K); and a single joint guarantee for the line (Monte Carlo, 4,000 lines).
+K    1:
+   Sidak k 3.000: share meeting 0.473, mean line rate / budget 1.30, median ARL of a chart after a 2-sigma shift 6.21
+   every chart k 3.325: share meeting 0.902, mean line rate / budget 0.48, median ARL of a chart after a 2-sigma shift 10.59
+   joint line k 3.320: share meeting 0.899, mean line rate / budget 0.48, median ARL of a chart after a 2-sigma shift 10.51
+K   10:
+   Sidak k 3.642: share meeting 0.082, mean line rate / budget 1.70, median ARL of a chart after a 2-sigma shift 19.43
+   every chart k 4.373: share meeting 1.000, mean line rate / budget 0.12, median ARL of a chart after a 2-sigma shift 109.13
+   joint line k 3.917: share meeting 0.896, mean line rate / budget 0.66, median ARL of a chart after a 2-sigma shift 35.18
+K   50:
+   Sidak k 4.037: share meeting 0.000, mean line rate / budget 2.11, median ARL of a chart after a 2-sigma shift 46.63
+   every chart k 5.069: share meeting 1.000, mean line rate / budget 0.04, median ARL of a chart after a 2-sigma shift 882.78
+   joint line k 4.314: share meeting 0.901, mean line rate / budget 0.76, median ARL of a chart after a 2-sigma shift 93.26
+K  100:
+   Sidak k 4.197: share meeting 0.000, mean line rate / budget 2.35, median ARL of a chart after a 2-sigma shift 69.04
+   every chart k 5.363: share meeting 1.000, mean line rate / budget 0.02, median ARL of a chart after a 2-sigma shift 2440.62
+   joint line k 4.485: share meeting 0.903, mean line rate / budget 0.79, median ARL of a chart after a 2-sigma shift 148.37
+K  500:
+   Sidak k 4.548: share meeting 0.000, mean line rate / budget 3.09, median ARL of a chart after a 2-sigma shift 177.38
+   every chart k 6.037: share meeting 1.000, mean line rate / budget 0.01, median ARL of a chart after a 2-sigma shift 33966.07
+   joint line k 4.867: share meeting 0.888, mean line rate / budget 0.88, median ARL of a chart after a 2-sigma shift 459.75
+
+==============================================================================
+4. In-control data needed for a distribution-free guarantee
+==============================================================================
+Threshold = the largest of n exchangeable in-control scores (one-sided). Its exceedance probability is
+Beta(1, n), so it is <= alpha with probability 1 - eps once n >= log(eps) / log(1 - alpha) (Wilks 1941).
+   one 3-sigma-equivalent chart, p0: alpha 0.0027; n for eps 0.10: 852, eps 0.05: 1109; with the second largest as threshold (eps 0.10): 1440
+   a line budget of 1 alarm in 100 runs: alpha 0.01; n for eps 0.10: 230, eps 0.05: 299; with the second largest as threshold (eps 0.10): 388
+   one of 428 sensors under a 1-in-100 line budget (Sidak): alpha 2.348e-05; n for eps 0.10: 98058, eps 0.05: 127576; with the second largest as threshold (eps 0.10): 165647
+   a line budget of 1 alarm per hour, scored once a minute: alpha 0.01667; n for eps 0.10: 138, eps 0.05: 179; with the second largest as threshold (eps 0.10): 232
+   one of 21 series under a 1-per-hour line budget, once a minute (Sidak): alpha 0.0008; n for eps 0.10: 2878, eps 0.05: 3744; with the second largest as threshold (eps 0.10): 4861
+
+==============================================================================
+5. The continuous-flow line: one false alarm per hour for 21 measurement series
+==============================================================================
+21 series of minute means; Phase I = minutes 30-89 (60 minutes, after the start-up); evaluation = minutes 90-234 (145 minutes, 2.42 h)
+budget: one false alarm per hour for the line = 0.01667 per minute; Sidak share per series 8.000e-04
+design A, Sidak limits, known-parameter width: k = 3.353
+design B, joint line guarantee for normal data (m = 60, eps 0.10): k = 3.680
+distribution-free: per series needs 2878 in-control minutes (48.0 h); a single line score needs 138 minutes beyond the Phase I hour; the record has 145
+design C, adaptive threshold on the line score max_j |z_j| (alpha 0.01667, gamma 0.005), history seeded with the 60 Phase I scores
+   Gibbs-Candes bound on |alarm frequency - alpha| over T steps: T = 145: 1.363; one week of minutes (10,080): 0.0196; four weeks: 0.0049
+design A: minutes with a line alarm 137 of 145 (56.7 per hour; budget 1); series alarming at least once 11 of 21; alarms per series-minute 0.1596 vs Sidak share 8.00e-04
+design B: minutes with a line alarm 137 of 145 (56.7 per hour; budget 1); series alarming at least once 10 of 21; alarms per series-minute 0.1544 vs Sidak share 8.00e-04
+design C: minutes with a line alarm 6 of 145 (2.48 per hour; budget 1); alarm minutes [95, 114, 149, 152, 153, 193]
+
+injected faults: a shift added to one series from minute t0 (every 5 minutes from 90 to 215), in units of
+that series' SD of minute means from minute 30 on; a step, or a ramp reaching the size after 60 minutes.
+detection = an alarm attributed to that series within 15 minutes (step) or 60 minutes (ramp) of t0;
+excess = detection with the fault minus the same count on the unaltered data.
+step of 0.5 SD (546 injections): A: detected 0.262, without fault 0.240, excess 0.022; B: detected 0.253, without fault 0.225, excess 0.027; C: detected 0.024, without fault 0.026, excess -0.002
+step of 1.0 SD (546 injections): A: detected 0.273, without fault 0.240, excess 0.033; B: detected 0.258, without fault 0.225, excess 0.033; C: detected 0.044, without fault 0.026, excess 0.018
+step of 2.0 SD (546 injections): A: detected 0.388, without fault 0.240, excess 0.148; B: detected 0.322, without fault 0.225, excess 0.097; C: detected 0.068, without fault 0.026, excess 0.042
+step of 4.0 SD (546 injections): A: detected 0.760, without fault 0.240, excess 0.520; B: detected 0.690, without fault 0.225, excess 0.465; C: detected 0.137, without fault 0.026, excess 0.112
+ramp of 0.5 SD (546 injections): A: detected 0.392, without fault 0.394, excess -0.002; B: detected 0.363, without fault 0.363, excess 0.000; C: detected 0.046, without fault 0.062, excess -0.016
+ramp of 1.0 SD (546 injections): A: detected 0.388, without fault 0.394, excess -0.005; B: detected 0.370, without fault 0.363, excess 0.007; C: detected 0.049, without fault 0.062, excess -0.013
+ramp of 2.0 SD (546 injections): A: detected 0.456, without fault 0.394, excess 0.062; B: detected 0.394, without fault 0.363, excess 0.031; C: detected 0.057, without fault 0.062, excess -0.005
+ramp of 4.0 SD (546 injections): A: detected 0.626, without fault 0.394, excess 0.233; B: detected 0.573, without fault 0.363, excess 0.211; C: detected 0.082, without fault 0.062, excess 0.020
+
+==============================================================================
+6. The SECOM line: one false alarm per 100 runs for 428 sensors
+==============================================================================
+1567 runs over 89.8 days: 17.5 runs per day
+Phase I = first 100 passing runs (to 2008-08-05 08:50:00); calibration = next 230 passing runs (to 2008-08-21 21:32:00); test = the 1184 runs after that (1133 passing, 51 failing); charted sensors K = 428
+budget: at most 1% of in-control runs with an alarm; line score = max_j |z_j| over the K sensors
+distribution-free per sensor (Sidak share 2.348e-05) needs 98058 in-control runs, 15.4 years at this rate; the line score needs 230
+design A k = 4.229; design B k = 4.493; design C threshold = 118016.030 (the 1st largest of 230, guarantee 0.901)
+design D recalibrates on the 230 passing runs before each test run (labels assumed known by then); design E: gamma 0.005, window 230, updated on every test run
+design F: smallest possible conformal p-value 1/231 = 0.0043; with 428 sensors BH at q = 0.01 needs at least 186 sensors at that p-value in the same run to reject anything
+A Sidak, known-parameter width: passing runs alarmed 1043/1133 = 0.921; failing 47/51 = 0.922; Fisher p 1
+B joint line guarantee, normal theory: passing runs alarmed 1026/1133 = 0.906; failing 46/51 = 0.902; Fisher p 0.81
+C calibrated threshold, fixed: passing runs alarmed 1/1133 = 0.001; failing 0/51 = 0.000; Fisher p 1
+D calibrated threshold, rolling: passing runs alarmed 7/1133 = 0.006; failing 0/51 = 0.000; Fisher p 1
+E adaptive threshold: passing runs alarmed 12/1133 = 0.011; failing 1/51 = 0.020; Fisher p 0.438
+F BH on per-sensor conformal p-values: passing runs alarmed 0/1133 = 0.000; failing 0/51 = 0.000; Fisher p 1
+   design F: smallest p-value in a test run, 10/50/90% 0.004329 / 0.004329 / 0.004329
+   2008-08: passing test runs 223; alarmed by C 0.004, by D 0.004, by E 0.009
+   2008-09: passing test runs 573; alarmed by C 0.000, by D 0.005, by E 0.012
+   2008-10: passing test runs 337; alarmed by C 0.000, by D 0.009, by E 0.009
+
+other line scores, same Phase I, calibration and test runs. AUC = probability that a failing test run
+scores above a passing one (0.5 = no information about failure).
+   max |z|: rolling calibrated, passing 0.006 failing 0.000 (0/51); adaptive, passing 0.011 failing 0.020 (1/51); AUC 0.491
+   number of sensors with |z| > 3: rolling calibrated, passing 0.005 failing 0.020 (1/51); adaptive, passing 0.011 failing 0.020 (1/51); AUC 0.563
+   number of sensors with robust |z| > 3.5 (417 with MAD > 0): rolling calibrated, passing 0.005 failing 0.020 (1/51); adaptive, passing 0.011 failing 0.020 (1/51); AUC 0.578
+   Hotelling T^2 on 5 principal components: rolling calibrated, passing 0.007 failing 0.020 (1/51); adaptive, passing 0.010 failing 0.039 (2/51); AUC 0.528
