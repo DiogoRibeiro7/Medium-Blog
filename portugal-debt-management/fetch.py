@@ -65,7 +65,7 @@ FRED_SERIES = {
 
 # BPstat domains whose datasets are downloaded in full (JSON-stat): budget outturn, interest
 # rates, money market, secondary market, general government financing and debt
-BPSTAT_DOMAINS = (10, 21, 22, 26, 27, 28)
+BPSTAT_DOMAINS = (10, 22, 26, 27, 28)
 
 
 
@@ -195,7 +195,7 @@ def fred(name: str, ids: tuple[str, ...], out: Path, log: list[str]) -> bool:
 
 
 def bpstat_datasets(out: Path, log: list[str]) -> None:
-    """Every dataset of the chosen BPstat domains, raw JSON-stat plus a long CSV with series labels."""
+    """Every dataset of the chosen BPstat domains, raw JSON-stat, one file per page of series."""
     bp = out / "bpstat"
     bp.mkdir(exist_ok=True)
     for did in BPSTAT_DOMAINS:
@@ -212,17 +212,22 @@ def bpstat_datasets(out: Path, log: list[str]) -> None:
             xid = item.get("extension", {}).get("id")
             if not xid:
                 continue
-            u = f"{BPSTAT}/domains/{did}/datasets/{xid}/?lang=EN"
-            try:
-                status, body = get(u, tries=3, timeout=300)
-            except RuntimeError as e:
-                log.append(f"bpstat dataset {did}/{xid}\tERROR\t{e}")
-                continue
-            log_response(log, f"bpstat dataset {did}/{xid}", u, status, body)
-            if status != 200:
-                continue
-            (bp / f"{did}_{xid}.json").write_bytes(body)
-            time.sleep(0.5)
+            u: str | None = f"{BPSTAT}/domains/{did}/datasets/{xid}/?lang=EN&page_size=100"
+            page = 1
+            while u:
+                try:
+                    status, body = get(u, tries=3, timeout=300)
+                except RuntimeError as e:
+                    log.append(f"bpstat dataset {did}/{xid} p{page}\tERROR\t{e}")
+                    break
+                log_response(log, f"bpstat dataset {did}/{xid} p{page}", u, status, body)
+                if status != 200:
+                    break
+                (bp / f"{did}_{xid}_p{page}.json").write_bytes(body)
+                nxt = json.loads(body).get("extension", {}).get("next_page")
+                u = (nxt + ("&page_size=100" if "page_size" not in nxt else "")) if nxt else None
+                page += 1
+                time.sleep(0.5)
 
 
 def main(argv: list[str] | None = None) -> int:
