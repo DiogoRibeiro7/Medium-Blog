@@ -160,7 +160,9 @@ class ReferenceInfluenceTests(unittest.TestCase):
                 and int(r["window_start_year"]) == 2020
                 and r["alternative_reference"] == "Arouca")])
         with self.assertRaisesRegex(ValueError, "all four"):
-            stability_svg(self.summaries[:-1])
+            stability_svg([r for r in self.summaries if not (
+                r["exposure_mode"] == PRIMARY_MODE
+                and int(r["window_start_year"]) == 2020)])
 
     def test_output_provenance_and_tables_regenerate(self) -> None:
         with tempfile.TemporaryDirectory() as temp:
