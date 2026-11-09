@@ -25,7 +25,6 @@ Writes ``results/investment_*.csv`` and ``results/investment_summary.txt``.
 
 from __future__ import annotations
 
-import numpy as np
 import pandas as pd
 
 from common import NAMES, PEERS, PERIODS, RESULTS, SUBSECTORS, cofog, fixed_assets, gdp, gov, peer_mean, share, write
@@ -93,7 +92,7 @@ def run() -> str:
         for c in ("DE",) + PEERS:
             lines.append(f"  {c}: " + " / ".join(f"{f.loc[yr, c]:.1f}" for yr in f.index) + f"; change 1995-{last} {f.loc[last, c] - f.loc[1995, c]:+.1f}")
         pm = peer_mean(k)
-        lines.append(f"  peer mean: " + " / ".join(f"{pm.loc[yr]:.1f}" for yr in f.index) + f"; Germany minus peer mean in {last}: {k.loc[last, 'DE'] - pm.loc[last]:+.1f}")
+        lines.append("  peer mean: " + " / ".join(f"{pm.loc[yr]:.1f}" for yr in f.index) + f"; Germany minus peer mean in {last}: {k.loc[last, 'DE'] - pm.loc[last]:+.1f}")
     pd.DataFrame(stock_rows).to_csv(RESULTS / "investment_stock.csv", index=False)
 
     # cumulative shortfalls, EUR bn
@@ -117,7 +116,7 @@ def run() -> str:
     lines.append("Germany, net investment by subsector, % of GDP, period averages:")
     for label, (a, b) in PERIODS.items():
         lines.append(f"  {label}: " + ", ".join(f"{SUBSECTORS[s]} {S.loc[a:b, s].mean():+.2f}" for s in SUBSECTORS))
-    lines.append(f"  2025: " + ", ".join(f"{SUBSECTORS[s]} {S.loc[2025, s]:+.2f}" for s in SUBSECTORS))
+    lines.append("  2025: " + ", ".join(f"{SUBSECTORS[s]} {S.loc[2025, s]:+.2f}" for s in SUBSECTORS))
     mun = (gov("P51G", "S1313") - gov("P51C", "S1313"))["DE"] / 1000
     neg = mun[mun < 0]
     lines.append(f"Municipal net investment negative in {len(neg)} of {mun.loc[1995:2025].notna().sum()} years 1995-2025 ({min(neg.index)}-{max(neg.index)}); cumulative 2003-2019 EUR {mun.loc[2003:2019].sum():.1f} bn; cumulative 1995-2025 EUR {mun.loc[1995:2025].sum():.1f} bn")
