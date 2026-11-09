@@ -254,13 +254,13 @@ def fig4():  # price
     for m, (col, ls) in style.items():
         med = []
         for s in shifts:
-            v = np.asarray([math.inf if z is None else z for z in dl[m][str(s)]], float)
-            q = np.quantile(np.sort(v), 0.5, method="inverted_cdf")
-            med.append(never if math.isinf(q) else q)
+            v = np.asarray([1e9 if z is None else z for z in dl[m][str(s)]], float)
+            q = float(np.median(v))
+            med.append(never if q > 1e3 else q)
         ax.plot(shifts, med, color=col, ls=ls, lw=2, marker="o", ms=5,
                 label=f"{names.get(m, m)}  ({rates[m]:.2f} in-control signals per 30 days)")
     ax.axhline(never, color=MUTED, lw=0.8)
-    ax.annotate("not detected within the quarter (median)", (shifts[0], never), xytext=(0, 4),
+    ax.annotate("median not reached: half the steps or more undetected within the quarter", (shifts[0], never), xytext=(0, 4),
                 textcoords="offset points", fontsize=8.3, color=INK2)
     ax.set_xticks(shifts, [f"+{s:g}\n({(math.exp(s) - 1) * 100:.0f}% more rentals)" for s in shifts])
     ax.set_xlabel("step added to the log residual")

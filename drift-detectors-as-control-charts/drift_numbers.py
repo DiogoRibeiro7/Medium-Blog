@@ -218,6 +218,10 @@ dd = binary.DDM()
 print(f"river DDM: warm_start={dd.warm_start}, warning_threshold={dd.warning_threshold}, "
       f"drift_threshold={dd.drift_threshold}")
 
+print(f"reference points: a 3-sigma Shewhart chart with known parameters has in-control ARL "
+      f"{1 / (2 * stats.norm.sf(3)):.1f}; a two-sided CUSUM with k=0.5 has in-control ARL {dt.cusum_arl(0.5, 4):.0f} "
+      f"at h=4 and {dt.cusum_arl(0.5, 5):.0f} at h=5 (Markov chain, Brook and Evans 1972)")
+
 # Check: river's upper Page-Hinkley signal times equal those of the CUSUM written in drifttools.
 x = 1.0 * RNG["ph_scale"].standard_normal(3000) + np.r_[np.zeros(1500), 0.8 * np.ones(1500)]
 stat = dt.page_hinkley_statistic(x)
@@ -425,6 +429,11 @@ print(f"  daily mean residual, 2011: sd {d11.std(ddof=1):.3f} against {r.std(ddo
       f"lag-1 autocorrelation {acf(d11.values, 1):.3f}; skewness {stats.skew(d11.values):.2f}, excess kurtosis "
       f"{stats.kurtosis(d11.values):.2f}")
 print("  most negative days:", ", ".join(f"{k.date()} {v:+.2f}" for k, v in d11.sort_values().head(6).items()))
+for day in ["2011-01-01", "2011-01-27", "2011-03-10", "2011-03-21", "2011-10-29", "2011-11-24", "2011-12-07",
+            "2011-12-25", "2011-11-27"]:
+    g = y11[y11.dteday == day]
+    print(f"    {day} ({pd.Timestamp(day).day_name()}): {len(g)} hours recorded, light rain or snow or worse "
+          f"(weather category 3-4) in {int((g.weathersit >= 3).sum())}, holiday flag {int(g.holiday.iloc[0])}")
 
 # Inputs: each 2011 day against the 2011 reference, Evidently's default for > 1,000 reference rows.
 flag = {c: [] for c in WEATHER}
@@ -439,15 +448,20 @@ for _, g in y11.groupby((y11.dteday - y11.dteday.min()).dt.days // 7):
     for c in WEATHER:
         wk[c].append(dt.wasserstein_normed(y11[c].values, g[c].values) >= 0.1)
 print("  the same with weeks as the current window: " + ", ".join(f"{c} {np.mean(wk[c]):.3f}" for c in WEATHER))
-mm_w = []
+ks_cols, ref_rows = [], []
 for m_ in range(1, 13):
     a_ = y11[y11.month == m_]
     b_ = y12[y12.month == m_]
-    mm_w.append(np.mean([dt.wasserstein_normed(a_[c].values, b_[c].values) for c in WEATHER]))
-print("  each 2012 month against the same 2011 month, mean normed Wasserstein over the four inputs:",
-      " ".join(f"{v:.2f}" for v in mm_w))
-print(f"  months of 2012 whose inputs pass against the same month of 2011 (mean score < 0.1): "
-      f"{sum(v < 0.1 for v in mm_w)} of 12")
+    ref_rows.append(len(a_))
+    ks_cols.append(sum(stats.ks_2samp(a_[c].values, b_[c].values).pvalue <= 0.05 for c in WEATHER))
+print(f"  each 2012 month against the same 2011 month ({min(ref_rows)}-{max(ref_rows)} reference rows, so "
+      f"Evidently's default is KS at p <= 0.05): columns flagged of 4, January to December: "
+      + " ".join(str(v) for v in ks_cols))
+print(f"  months with dataset drift (at least half the columns flagged): {sum(v >= 2 for v in ks_cols)} of 12")
+tC = y11.groupby("month").temp.mean() * 47 - 8
+tC12 = y12.groupby("month").temp.mean() * 47 - 8
+print(f"  mean temperature in March (dataset scaling -8 to 39 C): 2011 {tC[3]:.1f} C, 2012 {tC12[3]:.1f} C; "
+      f"July 2011 {tC[7]:.1f} C, 2012 {tC12[7]:.1f} C")
 
 # Stream detectors with their defaults on the 2011 hourly residual stream.
 days11 = y11.dteday.nunique()
@@ -518,14 +532,16 @@ def budgeted_design(d_phase1: np.ndarray, consecutive: np.ndarray, rng, B: int =
             "h_p": h_p, "h_np": h_np}
 
 
-def monitor(design, d_prev: float, d_new: np.ndarray, which: str):
-    """Indices of the monitored days that signal, on the standardized one-step residuals of the AR(1)."""
+def monitor(design, d_prev: float, d_new: np.ndarray, which: str, sides: bool = False):
+    """Indices of the monitored days that signal, on the standardized one-step residuals of the AR(1);
+    with sides=True, (index, +1 or -1) pairs."""
     full = np.r_[d_prev, d_new]
     e = (full[1:] - design["mu"]) - design["phi"] * (full[:-1] - design["mu"])
     z = (e - design["em"]) / design["es"]
     if which == "shewhart":
-        return [i for i, v in enumerate(z) if abs(v) > design["k"]]
-    return dt.cusum_alarms(z, 0.5, design["h_np" if which == "cusum_np" else "h_p"])
+        out = [(i, 1 if v > 0 else -1) for i, v in enumerate(z) if abs(v) > design["k"]]
+        return out if sides else [i for i, _ in out]
+    return dt.cusum_alarms(z, 0.5, design["h_np" if which == "cusum_np" else "h_p"], sides=sides)
 
 
 ADWIN_GRID = [2e-3, 2e-4, 2e-5, 2e-6, 2e-8, 2e-10, 2e-12, 2e-15]
@@ -561,7 +577,15 @@ print(f"  Phase I all of 2011 ({des11['m']} one-step residuals of an AR(1) on th
       f"{des11['h_p']:.2f}, nonparametric {des11['h_np']:.2f} (known-parameter value "
       f"{dt.cusum_h_for_arl(0.5, 1 / DAY_BUDGET):.2f})")
 _, _, e11 = whiten(dvals, consec_all)
-print(f"  one-step residuals: skewness {stats.skew(e11):.2f}, excess kurtosis {stats.kurtosis(e11):.2f}")
+print(f"  one-step residuals: skewness {stats.skew(e11):.2f}, excess kurtosis {stats.kurtosis(e11):.2f}; "
+      f"standard error of phi about {math.sqrt((1 - des11['phi'] ** 2) / des11['m']):.3f}")
+print(f"  a two-sided distribution-free threshold (the minimum and maximum of the reference) needs "
+      f"{sb.min_calibration_size(DAY_BUDGET, EPS, rank=2)} in-control days for the same budget")
+for dlt in [0.1, 0.2, 0.3, float(mres12.values[0])]:
+    w_ = (1 - des11["phi"]) * dlt / des11["es"]
+    print(f"  a sustained step of {dlt:.2f} in the daily mean is {w_:.2f} sd of the one-step residual after its first "
+          f"day; the Shewhart chart then signals on a given day with probability "
+          f"{stats.norm.sf(des11['k'] - w_):.3f}; a CUSUM aimed at it would use k = {w_ / 2:.2f}")
 cal11 = {k: calibrate(k, days_list, rng) for k in ["ADWIN", "Page-Hinkley"]}
 print(f"  stream detectors calibrated to the budget on block surrogates of all of 2011: ADWIN delta "
       f"{cal11['ADWIN'][0]:g} (surrogate rate {cal11['ADWIN'][1]:.5f} a day), Page-Hinkley threshold "
@@ -576,6 +600,7 @@ starts = [14, 21, 28, 35, 42, 49, 56]
 METHODS = ["ADWIN, default", "Page-Hinkley, default", "ADWIN, calibrated", "Page-Hinkley, calibrated",
            "Shewhart", "CUSUM"]
 delays = {m: {s: [] for s in shifts} for m in METHODS}
+low_first = {m: {s: [] for s in shifts} for m in METHODS}
 incontrol = {m: [] for m in METHODS}
 qinfo = []
 for q_ in range(4):
@@ -597,25 +622,27 @@ for q_ in range(4):
         return pd.Series(xs).groupby(hq.dteday.values).mean().values
 
     def signals(name, xs):
-        """Signal times in hours from the start of the quarter (daily charts: end of the day)."""
+        """(signal time in hours from the start of the quarter, side) pairs; daily charts signal at the end
+        of the day and report the side (+1 high, -1 low); stream detectors do not report it (0)."""
         if name in makers:
-            return [i + 1 for i in dt.run_detector(makers[name](), xs)]
+            return [(i + 1, 0) for i in dt.run_detector(makers[name](), xs)]
         which = "shewhart" if name == "Shewhart" else "cusum_np"
         hours_end = np.cumsum(pd.Series(xs).groupby(hq.dteday.values).size().values)
-        return [int(hours_end[i]) for i in monitor(des, prev, daily_of(xs), which)]
+        return [(int(hours_end[i]), sd_) for i, sd_ in monitor(des, prev, daily_of(xs), which, sides=True)]
 
     base = hq.r.values
     for name in METHODS:
         sig = signals(name, base)
-        incontrol[name] += [str(pd.Timestamp(hq.dteday.values[min(t, len(base)) - 1]).date()) for t in sig]
+        incontrol[name] += [str(pd.Timestamp(hq.dteday.values[min(t, len(base)) - 1]).date()) for t, _ in sig]
     for s_day in starts:
         t0 = int(np.argmax(hq.dteday.values == qdays[s_day]))
         for dlt in shifts:
             xs = base.copy()
             xs[t0:] += dlt
             for name in METHODS:
-                after_ = [t for t in signals(name, xs) if t > t0]
-                delays[name][dlt].append((after_[0] - t0) / 24 if after_ else math.inf)
+                after_ = [(t, sd_) for t, sd_ in signals(name, xs) if t > t0]
+                delays[name][dlt].append((after_[0][0] - t0) / 24 if after_ else math.inf)
+                low_first[name][dlt].append(bool(after_) and after_[0][1] < 0)
 print("Leave one quarter out: Phase I the other three quarters of 2011 for the daily charts and for the "
       "calibration of the stream detectors; Shewhart k " + ", ".join(f"{q[0]:.3f}" for q in qinfo)
       + "; CUSUM h (nonparametric) " + ", ".join(f"{q[1]:.2f}" for q in qinfo)
@@ -627,21 +654,27 @@ for name in METHODS:
     lst = ", ".join(incontrol[name]) if len(incontrol[name]) <= 12 else f"{len(incontrol[name])} days"
     print(f"    {name}: {len(incontrol[name])} signals, {real_rate[name]:.2f} per 30 days ({lst})")
 print("  injected shifts: a step of delta log units added to the held-out quarter's hourly residuals from day 14, "
-      "21, ..., 56 (28 runs per delta); days from the start of the step to the first signal after it; daily "
-      "charts signal at the end of a day; median [quartiles], 'never' when the quarter ends first")
+      "21, ..., 56 (28 runs per delta); days from the start of the step to the first signal after it, of either "
+      "sign; daily charts signal at the end of a day; median [quartiles], 'never' when more of the runs than "
+      "the quantile reached the end of the quarter without a signal")
 
 
 def qfmt(v):
-    v = np.sort(np.asarray(v, float))
+    v = np.asarray(v, float)
+    big = np.where(np.isinf(v), 1e9, v)
     out = []
     for q in (0.25, 0.5, 0.75):
-        x_ = np.quantile(v, q, method="inverted_cdf")
-        out.append("never" if math.isinf(x_) else f"{x_:.1f}")
+        x_ = float(np.quantile(big, q))
+        out.append("never" if x_ > 1e3 else f"{x_:.1f}")
     return f"{out[1]} [{out[0]}, {out[2]}]"
 
 
 for name in METHODS:
     print(f"    {name}: " + "; ".join(f"delta {dlt}: {qfmt(delays[name][dlt])}" for dlt in shifts))
+    if name in ("Shewhart", "CUSUM"):
+        print("      undetected, and first signals after the step that were low-side (opposite to the step): "
+              + "; ".join(f"delta {dlt}: {int(np.sum(np.isinf(delays[name][dlt])))} and "
+                          f"{int(np.sum(low_first[name][dlt]))} of 28" for dlt in shifts))
 FIG["delays"] = {m: {str(s): [None if math.isinf(x) else x for x in v] for s, v in d.items()}
                  for m, d in delays.items()}
 FIG["rates"] = {m: real_rate[m] for m in METHODS}
@@ -738,7 +771,8 @@ print(f"  p-chart with binomial sigma (the independence DDM assumes): Phase I me
       f"{pchart_ph1} of {ref_days} Phase I days already outside; {pchart} signals while monitoring "
       f"({pchart / yrs2:.0f} a year)")
 des_el = budgeted_design(ph1, np.ones(ref_days - 1, dtype=bool), rng)
-print(f"  between-day design: phi {des_el['phi']:.3f}, one-step sd {des_el['es']:.3f}, Shewhart k {des_el['k']:.3f}, "
+print(f"  between-day design: phi {des_el['phi']:.3f} (standard error about "
+      f"{math.sqrt((1 - des_el['phi'] ** 2) / des_el['m']):.2f}), one-step sd {des_el['es']:.3f}, Shewhart k {des_el['k']:.3f}, "
       f"CUSUM h parametric {des_el['h_p']:.2f}, nonparametric {des_el['h_np']:.2f}")
 el_alarm = {}
 for which in ["shewhart", "cusum_p", "cusum_np"]:

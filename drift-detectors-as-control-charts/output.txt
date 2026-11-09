@@ -20,6 +20,7 @@ river PageHinkley: min_instances=30, delta=0.005, threshold=50.0, alpha=0.9999, 
 river ADWIN: delta=0.002, clock=32, max_buckets=5, min_window_length=5, grace_period=10
 river KSWIN: alpha=0.005, window_size=100, stat_size=30
 river DDM: warm_start=30, warning_threshold=2.0, drift_threshold=3.0
+reference points: a 3-sigma Shewhart chart with known parameters has in-control ARL 370.4; a two-sided CUSUM with k=0.5 has in-control ARL 168 at h=4 and 465 at h=5 (Markov chain, Brook and Evans 1972)
 upper Page-Hinkley on a stream with a +0.8 sigma step at t=1500: first signal by river at t=1519, by the CUSUM of deviations from the running mean at t=1519
 
 ==============================================================================
@@ -105,10 +106,20 @@ Model: gradient boosting on log(1 + rentals) with hour, weekday, working day, ho
   2011 hourly residual: sd 0.363; autocorrelation lag 1 0.528, lag 2 0.393, lag 24 0.159; on the count scale sd 40.7 rentals
   daily mean residual, 2011: sd 0.192 against 0.074 if the 24 hours of a day were independent (ratio 2.59); lag-1 autocorrelation 0.399; skewness -1.13, excess kurtosis 4.06
   most negative days: 2011-03-10 -0.96, 2011-11-24 -0.92, 2011-12-25 -0.81, 2011-01-27 -0.60, 2011-01-01 -0.58, 2011-01-02 -0.58
+    2011-01-01 (Saturday): 24 hours recorded, light rain or snow or worse (weather category 3-4) in 2, holiday flag 0
+    2011-01-27 (Thursday): 8 hours recorded, light rain or snow or worse (weather category 3-4) in 0, holiday flag 0
+    2011-03-10 (Thursday): 22 hours recorded, light rain or snow or worse (weather category 3-4) in 20, holiday flag 0
+    2011-03-21 (Monday): 23 hours recorded, light rain or snow or worse (weather category 3-4) in 3, holiday flag 0
+    2011-10-29 (Saturday): 24 hours recorded, light rain or snow or worse (weather category 3-4) in 19, holiday flag 0
+    2011-11-24 (Thursday): 24 hours recorded, light rain or snow or worse (weather category 3-4) in 0, holiday flag 1
+    2011-12-07 (Wednesday): 24 hours recorded, light rain or snow or worse (weather category 3-4) in 21, holiday flag 0
+    2011-12-25 (Sunday): 23 hours recorded, light rain or snow or worse (weather category 3-4) in 0, holiday flag 0
+    2011-11-27 (Sunday): 24 hours recorded, light rain or snow or worse (weather category 3-4) in 0, holiday flag 0
 Inputs, each 2011 day (24 hours) against all of 2011, normed Wasserstein >= 0.1: share of days flagged temp 1.000, atemp 1.000, hum 1.000, windspeed 1.000; dataset drift (half the columns) 1.000
   the same with weeks as the current window: temp 1.000, atemp 1.000, hum 1.000, windspeed 0.981
-  each 2012 month against the same 2011 month, mean normed Wasserstein over the four inputs: 0.57 0.26 0.73 0.30 0.26 0.24 0.14 0.21 0.47 0.25 0.53 0.15
-  months of 2012 whose inputs pass against the same month of 2011 (mean score < 0.1): 0 of 12
+  each 2012 month against the same 2011 month (649-744 reference rows, so Evidently's default is KS at p <= 0.05): columns flagged of 4, January to December: 3 4 4 2 3 3 2 3 4 3 3 2
+  months with dataset drift (at least half the columns flagged): 12 of 12
+  mean temperature in March (dataset scaling -8 to 39 C): 2011 7.6 C, 2012 13.1 C; July 2011 27.7 C, 2012 27.4 C
   hourly temperature: lag-1 autocorrelation 0.993, lag 24 0.917
 Stream detectors with default settings on the 2011 hourly residuals (out of fold), replayed in order
   ADWIN: 12 signals, 0.99 per 30 days
@@ -123,7 +134,12 @@ Stream detectors with default settings on the 2011 hourly residuals (out of fold
 Budget: an in-control ARL of 365 days (alarm probability 0.00274 a day); for the daily charts guaranteed with probability 0.9 over the Phase I data
   a distribution-free (Wilks) threshold for that budget needs 840 in-control days; with 365 the smallest guaranteeable daily rate is 0.00629 (one alarm per 159 days)
   Phase I all of 2011 (364 one-step residuals of an AR(1) on the daily mean residual): phi 0.394, sd 0.174; Shewhart k 3.151 (known-parameter value 2.996); two-sided CUSUM with k=0.5, h by parametric bootstrap 5.27, nonparametric 6.74 (known-parameter value 4.76)
-  one-step residuals: skewness -1.29, excess kurtosis 5.61
+  one-step residuals: skewness -1.29, excess kurtosis 5.61; standard error of phi about 0.048
+  a two-sided distribution-free threshold (the minimum and maximum of the reference) needs 1419 in-control days for the same budget
+  a sustained step of 0.10 in the daily mean is 0.35 sd of the one-step residual after its first day; the Shewhart chart then signals on a given day with probability 0.003; a CUSUM aimed at it would use k = 0.17
+  a sustained step of 0.20 in the daily mean is 0.70 sd of the one-step residual after its first day; the Shewhart chart then signals on a given day with probability 0.007; a CUSUM aimed at it would use k = 0.35
+  a sustained step of 0.30 in the daily mean is 1.04 sd of the one-step residual after its first day; the Shewhart chart then signals on a given day with probability 0.018; a CUSUM aimed at it would use k = 0.52
+  a sustained step of 0.61 in the daily mean is 2.14 sd of the one-step residual after its first day; the Shewhart chart then signals on a given day with probability 0.155; a CUSUM aimed at it would use k = 1.07
   stream detectors calibrated to the budget on block surrogates of all of 2011: ADWIN delta 2e-12 (surrogate rate 0.00206 a day), Page-Hinkley threshold 150 (0.00110)
 Leave one quarter out: Phase I the other three quarters of 2011 for the daily charts and for the calibration of the stream detectors; Shewhart k 3.178, 3.178, 3.179, 3.178; CUSUM h (nonparametric) 7.17, 7.25, 6.94, 6.88; ADWIN delta 2e-15, 2e-12, 2e-12, 2e-12; Page-Hinkley threshold 150, 150, 150, 150
   in-control replay of each held-out quarter, signals per 30 days (budget 0.082):
@@ -133,13 +149,15 @@ Leave one quarter out: Phase I the other three quarters of 2011 for the daily ch
     Page-Hinkley, calibrated: 2 signals, 0.16 per 30 days (2011-02-26, 2011-05-20)
     Shewhart: 8 signals, 0.66 per 30 days (2011-01-01, 2011-01-27, 2011-03-10, 2011-03-21, 2011-10-29, 2011-11-24, 2011-12-07, 2011-12-25)
     CUSUM: 1 signals, 0.08 per 30 days (2011-11-27)
-  injected shifts: a step of delta log units added to the held-out quarter's hourly residuals from day 14, 21, ..., 56 (28 runs per delta); days from the start of the step to the first signal after it; daily charts signal at the end of a day; median [quartiles], 'never' when the quarter ends first
-    ADWIN, default: delta 0.1: 14.7 [5.4, 39.3]; delta 0.2: 5.4 [3.3, 9.0]; delta 0.3: 3.7 [2.1, 4.4]
-    Page-Hinkley, default: delta 0.1: 27.3 [7.2, 46.1]; delta 0.2: 14.0 [5.4, 25.7]; delta 0.3: 8.2 [4.2, 10.5]
-    ADWIN, calibrated: delta 0.1: 30.7 [14.2, never]; delta 0.2: 22.7 [8.6, 47.7]; delta 0.3: 11.7 [6.1, 20.4]
-    Page-Hinkley, calibrated: delta 0.1: never [9.9, never]; delta 0.2: 31.6 [8.2, never]; delta 0.3: 23.4 [7.2, 44.5]
-    Shewhart: delta 0.1: 41.0 [12.7, never]; delta 0.2: 41.0 [13.6, never]; delta 0.3: 41.0 [13.6, never]
-    CUSUM: delta 0.1: never [never, never]; delta 0.2: 17.5 [11.8, 30.0]; delta 0.3: 10.0 [7.0, 17.0]
+  injected shifts: a step of delta log units added to the held-out quarter's hourly residuals from day 14, 21, ..., 56 (28 runs per delta); days from the start of the step to the first signal after it, of either sign; daily charts signal at the end of a day; median [quartiles], 'never' when more of the runs than the quantile reached the end of the quarter without a signal
+    ADWIN, default: delta 0.1: 17.9 [6.3, 40.0]; delta 0.2: 5.6 [3.5, 9.1]; delta 0.3: 3.8 [2.2, 4.5]
+    Page-Hinkley, default: delta 0.1: 28.4 [8.2, 46.5]; delta 0.2: 14.5 [6.1, 26.2]; delta 0.3: 8.6 [4.6, 10.5]
+    ADWIN, calibrated: delta 0.1: 34.2 [14.8, never]; delta 0.2: 24.9 [9.4, 50.4]; delta 0.3: 12.4 [6.8, 20.7]
+    Page-Hinkley, calibrated: delta 0.1: never [12.7, never]; delta 0.2: 33.5 [10.1, never]; delta 0.3: 24.9 [7.7, 45.7]
+    Shewhart: delta 0.1: never [12.9, never]; delta 0.2: never [14.2, never]; delta 0.3: never [14.2, never]
+      undetected, and first signals after the step that were low-side (opposite to the step): delta 0.1: 14 and 12 of 28; delta 0.2: 14 and 7 of 28; delta 0.3: 14 and 6 of 28
+    CUSUM: delta 0.1: never [never, never]; delta 0.2: 19.3 [13.4, 31.6]; delta 0.3: 10.0 [7.0, 17.5]
+      undetected, and first signals after the step that were low-side (opposite to the step): delta 0.1: 23 and 0 of 28; delta 0.2: 0 and 0 of 28; delta 0.3: 0 and 0 of 28
 2012, with all of 2011 as Phase I (stream detectors continue from the 2011 stream):
   Shewhart: first signal at the end of day 15 (2012-01-15)
   CUSUM: first signal at the end of day 6 (2012-01-06)
@@ -164,7 +182,7 @@ Stream detectors with default settings on the error stream (days 29-944, 2.51 ye
   DDM's first signal on day 33; after each signal it restarts and learns a new reference from the next 30 observations onwards
 Daily error rate, Phase I days 29-84 (m=56), monitoring days 85-944 (2.36 years)
   p-chart with binomial sigma (the independence DDM assumes): Phase I mean 0.181, sigma 0.0556; 8 of 56 Phase I days already outside; 357 signals while monitoring (152 a year)
-  between-day design: phi 0.245, one-step sd 0.144, Shewhart k 3.462, CUSUM h parametric 7.39, nonparametric 8.30
+  between-day design: phi 0.245 (standard error about 0.13), one-step sd 0.144, Shewhart k 3.462, CUSUM h parametric 7.39, nonparametric 8.30
   shewhart: 24 signals (10.2 a year); first on day 112
   cusum_p: 33 signals (14.0 a year); first on day 148
   cusum_np: 29 signals (12.3 a year); first on day 150

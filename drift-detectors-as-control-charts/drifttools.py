@@ -199,15 +199,15 @@ def guaranteed_cusum_h(x, k: float, arl: float, eps: float, rng: np.random.Gener
     return float(np.quantile(need, 1.0 - eps))
 
 
-def cusum_alarms(z, k: float, h: float) -> list[int]:
+def cusum_alarms(z, k: float, h: float, sides: bool = False) -> list:
     """Indices at which a two-sided CUSUM on standardized z signals; both sums restart at zero after a
-    signal."""
+    signal. With sides=True, (index, +1 or -1) pairs, -1 when only the lower sum crossed."""
     up = dn = 0.0
     out = []
     for i, v in enumerate(z):
         up = max(0.0, up + v - k)
         dn = max(0.0, dn - v - k)
         if up > h or dn > h:
-            out.append(i)
+            out.append((i, 1 if up > h else -1) if sides else i)
             up = dn = 0.0
     return out
