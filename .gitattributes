@@ -68,3 +68,5 @@ euro-crisis-ledger/**/*.csv -filter -diff -merge text
 euro-crisis-ledger/**/*.gz -filter -diff -merge binary
 france-spread-2026/**/*.csv -filter -diff -merge text
 france-spread-2026/**/*.gz -filter -diff -merge binary
+german-public-investment/**/*.csv -filter -diff -merge text
+german-public-investment/**/*.gz -filter -diff -merge binary
