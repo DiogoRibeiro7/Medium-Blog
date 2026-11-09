@@ -1,0 +1,70 @@
+# Model experiments (model.py, experiments.py)
+
+Baseline: Params(n_workers=30000, n_firms=300, sigma_e=0.3, sigma_p=0.35, b0=0.45, beta=0.1, lambda0=0.2, lambda1=0.05, delta=0.015, m=0.0, cover_share=0.0, n_bands=10, visibility=1.0, burn_in=480, measure_every=12, n_measure=8, seed=0)
+Portugal's floor in model units: m = 0.65
+
+## 1. Floor grid: steady states, 8 seeds, mean over seeds
+- m=0.40: kaitz 0.403, at floor 5.3%, employment 94.17%, P10/P50 0.471, P25/P50 0.659, bottom-quarter mean/P50 0.507, job-to-job 15.81%/yr, log gain at move 0.366, counter raises 14.41%/yr, labour share 72.8%, mean output 1.5015
+- m=0.45: kaitz 0.452, at floor 8.6%, employment 93.98%, P10/P50 0.473, P25/P50 0.661, bottom-quarter mean/P50 0.522, job-to-job 15.66%/yr, log gain at move 0.355, counter raises 14.23%/yr, labour share 72.9%, mean output 1.5060
+- m=0.50: kaitz 0.501, at floor 12.2%, employment 93.76%, P10/P50 0.501, P25/P50 0.666, bottom-quarter mean/P50 0.544, job-to-job 15.41%/yr, log gain at move 0.341, counter raises 14.05%/yr, labour share 73.2%, mean output 1.5093
+- m=0.55: kaitz 0.549, at floor 15.8%, employment 93.42%, P10/P50 0.549, P25/P50 0.671, bottom-quarter mean/P50 0.572, job-to-job 15.06%/yr, log gain at move 0.326, counter raises 13.75%/yr, labour share 73.6%, mean output 1.5169
+- m=0.60: kaitz 0.594, at floor 19.2%, employment 92.90%, P10/P50 0.594, P25/P50 0.678, bottom-quarter mean/P50 0.605, job-to-job 14.63%/yr, log gain at move 0.311, counter raises 13.45%/yr, labour share 74.0%, mean output 1.5279
+- m=0.65: kaitz 0.638, at floor 22.4%, employment 92.35%, P10/P50 0.638, P25/P50 0.684, bottom-quarter mean/P50 0.641, job-to-job 14.22%/yr, log gain at move 0.295, counter raises 12.97%/yr, labour share 74.4%, mean output 1.5384
+- m=0.70: kaitz 0.680, at floor 25.3%, employment 91.56%, P10/P50 0.680, P25/P50 0.682, bottom-quarter mean/P50 0.680, job-to-job 13.64%/yr, log gain at move 0.279, counter raises 12.60%/yr, labour share 74.9%, mean output 1.5552
+- m=0.75: kaitz 0.719, at floor 27.9%, employment 90.65%, P10/P50 0.719, P25/P50 0.719, bottom-quarter mean/P50 0.719, job-to-job 13.10%/yr, log gain at move 0.265, counter raises 12.09%/yr, labour share 75.4%, mean output 1.5728
+- m=0.80: kaitz 0.756, at floor 30.4%, employment 89.57%, P10/P50 0.756, P25/P50 0.756, bottom-quarter mean/P50 0.755, job-to-job 12.56%/yr, log gain at move 0.252, counter raises 11.54%/yr, labour share 76.0%, mean output 1.5913
+- m=0.85: kaitz 0.790, at floor 32.9%, employment 88.27%, P10/P50 0.790, P25/P50 0.790, bottom-quarter mean/P50 0.790, job-to-job 11.94%/yr, log gain at move 0.242, counter raises 11.04%/yr, labour share 76.4%, mean output 1.6132
+- m=0.90: kaitz 0.820, at floor 35.1%, employment 86.83%, P10/P50 0.820, P25/P50 0.820, bottom-quarter mean/P50 0.820, job-to-job 11.37%/yr, log gain at move 0.230, counter raises 10.50%/yr, labour share 76.9%, mean output 1.6374
+- m=0.95: kaitz 0.849, at floor 37.4%, employment 85.15%, P10/P50 0.849, P25/P50 0.849, bottom-quarter mean/P50 0.849, job-to-job 10.75%/yr, log gain at move 0.221, counter raises 10.05%/yr, labour share 77.4%, mean output 1.6639
+- m=1.00: kaitz 0.874, at floor 39.6%, employment 83.36%, P10/P50 0.874, P25/P50 0.874, bottom-quarter mean/P50 0.874, job-to-job 10.24%/yr, log gain at move 0.212, counter raises 9.44%/yr, labour share 77.8%, mean output 1.6945
+- m=1.05: kaitz 0.900, at floor 41.8%, employment 81.31%, P10/P50 0.900, P25/P50 0.900, bottom-quarter mean/P50 0.900, job-to-job 9.69%/yr, log gain at move 0.204, counter raises 8.95%/yr, labour share 78.3%, mean output 1.7241
+- m=1.10: kaitz 0.923, at floor 44.1%, employment 79.17%, P10/P50 0.923, P25/P50 0.923, bottom-quarter mean/P50 0.923, job-to-job 9.16%/yr, log gain at move 0.198, counter raises 8.46%/yr, labour share 78.7%, mean output 1.7564
+
+## 2. Visibility calibrated at m = 0.65, full coverage, mean wage effect averaged over years 3-5 (6 seeds)
+- target -1%: visibility 0.0232 (achieved -0.94%)
+- target -2%: visibility 0.0474 (achieved -2.05%)
+- target -3%: visibility 0.0828 (achieved -3.08%)
+
+## 3. Equal-pay rule switched on, effects against the same economy without it (mean over 10 seeds, sd in brackets)
+### m=0.45, coverage all employees, visibility 0.0474, covered share of employment 100.0% in year 1
+- year 1: mean -0.64% (0.20); P10 +2.13%; P25 +1.54%; P50 -0.42%; P75 -1.31%; P90 -1.27% (0.29); employment -0.00 pt (0.20); job-to-job -0.51 pt; counter raises -2.58 pt; refused counters +0.63 pt; log gain at move -0.061; labour share -0.42 pt
+- year 2: mean -1.30% (0.20); P10 +2.68%; P25 +1.86%; P50 -0.72%; P75 -2.25%; P90 -2.64% (0.22); employment -0.09 pt (0.23); job-to-job -0.38 pt; counter raises -2.69 pt; refused counters +0.66 pt; log gain at move -0.065; labour share -0.83 pt
+- year 3: mean -1.88% (0.24); P10 +3.22%; P25 +2.35%; P50 -1.24%; P75 -3.03%; P90 -3.67% (0.59); employment +0.04 pt (0.16); job-to-job -0.28 pt; counter raises -2.74 pt; refused counters +0.69 pt; log gain at move -0.062; labour share -1.20 pt
+- year 4: mean -2.36% (0.23); P10 +3.03%; P25 +2.42%; P50 -1.31%; P75 -3.80%; P90 -4.48% (0.50); employment -0.00 pt (0.11); job-to-job -0.11 pt; counter raises -2.71 pt; refused counters +0.73 pt; log gain at move -0.070; labour share -1.56 pt
+- year 5: mean -2.58% (0.26); P10 +3.56%; P25 +2.47%; P50 -1.54%; P75 -3.92%; P90 -4.83% (0.61); employment +0.13 pt (0.17); job-to-job -0.16 pt; counter raises -2.52 pt; refused counters +0.73 pt; log gain at move -0.071; labour share -1.77 pt
+- year 8: mean -3.34% (0.32); P10 +3.50%; P25 +2.37%; P50 -2.17%; P75 -4.59%; P90 -5.97% (0.60); employment -0.04 pt (0.17); job-to-job -0.22 pt; counter raises -2.77 pt; refused counters +0.75 pt; log gain at move -0.068; labour share -2.19 pt
+### m=0.65, coverage employees in firms >= 150 (34.8%), visibility 0.0474, covered share of employment 34.3% in year 1
+- year 1: mean +0.20% (0.16); P10 +0.00%; P25 +1.45%; P50 +0.81%; P75 +0.18%; P90 -0.23% (0.35); employment -0.03 pt (0.22); job-to-job -0.06 pt; counter raises -0.50 pt; refused counters +0.56 pt; log gain at move -0.019; labour share +0.25 pt
+- year 2: mean +0.11% (0.23); P10 +0.00%; P25 +1.69%; P50 +0.72%; P75 +0.23%; P90 -0.48% (0.54); employment +0.00 pt (0.16); job-to-job -0.19 pt; counter raises -0.56 pt; refused counters +0.52 pt; log gain at move -0.019; labour share +0.34 pt
+- year 3: mean +0.14% (0.27); P10 +0.00%; P25 +2.13%; P50 +0.96%; P75 +0.10%; P90 -0.57% (0.55); employment +0.08 pt (0.22); job-to-job -0.05 pt; counter raises -0.84 pt; refused counters +0.51 pt; log gain at move -0.019; labour share +0.41 pt
+- year 4: mean +0.04% (0.31); P10 +0.00%; P25 +2.29%; P50 +1.08%; P75 +0.19%; P90 -0.96% (0.49); employment +0.10 pt (0.15); job-to-job -0.05 pt; counter raises -0.84 pt; refused counters +0.48 pt; log gain at move -0.019; labour share +0.36 pt
+- year 5: mean +0.17% (0.22); P10 +0.00%; P25 +2.68%; P50 +1.15%; P75 +0.39%; P90 -0.73% (0.44); employment -0.09 pt (0.16); job-to-job -0.14 pt; counter raises -0.83 pt; refused counters +0.50 pt; log gain at move -0.021; labour share +0.34 pt
+- year 8: mean -0.18% (0.37); P10 +0.00%; P25 +2.05%; P50 +0.90%; P75 +0.02%; P90 -1.49% (0.60); employment +0.01 pt (0.12); job-to-job -0.01 pt; counter raises -0.93 pt; refused counters +0.50 pt; log gain at move -0.020; labour share +0.25 pt
+### m=0.65, coverage employees in firms >= 50 (49.8%), visibility 0.0232, covered share of employment 49.6% in year 1
+- year 1: mean +0.17% (0.19); P10 +0.00%; P25 +1.41%; P50 +0.67%; P75 +0.17%; P90 -0.38% (0.48); employment -0.03 pt (0.22); job-to-job -0.03 pt; counter raises -0.55 pt; refused counters +0.29 pt; log gain at move -0.019; labour share +0.11 pt
+- year 2: mean +0.09% (0.21); P10 +0.00%; P25 +1.68%; P50 +0.80%; P75 +0.01%; P90 -0.57% (0.38); employment +0.01 pt (0.21); job-to-job -0.08 pt; counter raises -0.69 pt; refused counters +0.33 pt; log gain at move -0.020; labour share +0.13 pt
+- year 3: mean +0.09% (0.22); P10 +0.00%; P25 +1.88%; P50 +0.93%; P75 -0.01%; P90 -0.70% (0.48); employment +0.12 pt (0.26); job-to-job -0.13 pt; counter raises -0.81 pt; refused counters +0.30 pt; log gain at move -0.017; labour share +0.08 pt
+- year 4: mean -0.03% (0.15); P10 +0.00%; P25 +1.70%; P50 +0.91%; P75 +0.07%; P90 -0.98% (0.70); employment +0.05 pt (0.21); job-to-job -0.07 pt; counter raises -0.90 pt; refused counters +0.31 pt; log gain at move -0.019; labour share +0.03 pt
+- year 5: mean -0.06% (0.26); P10 +0.00%; P25 +2.24%; P50 +0.85%; P75 +0.08%; P90 -1.25% (0.63); employment +0.08 pt (0.19); job-to-job -0.16 pt; counter raises -0.76 pt; refused counters +0.31 pt; log gain at move -0.022; labour share -0.05 pt
+- year 8: mean -0.19% (0.37); P10 +0.00%; P25 +2.34%; P50 +1.03%; P75 -0.14%; P90 -1.64% (0.66); employment -0.16 pt (0.15); job-to-job -0.00 pt; counter raises -0.93 pt; refused counters +0.31 pt; log gain at move -0.020; labour share -0.13 pt
+### m=0.65, coverage employees in firms >= 50 (49.8%), visibility 0.0474, covered share of employment 49.1% in year 1
+- year 1: mean +0.19% (0.18); P10 +0.00%; P25 +2.04%; P50 +1.02%; P75 -0.03%; P90 -0.63% (0.45); employment +0.02 pt (0.23); job-to-job -0.18 pt; counter raises -1.03 pt; refused counters +0.61 pt; log gain at move -0.025; labour share +0.20 pt
+- year 2: mean +0.08% (0.26); P10 +0.00%; P25 +2.76%; P50 +1.17%; P75 -0.02%; P90 -1.16% (0.61); employment -0.02 pt (0.19); job-to-job -0.34 pt; counter raises -1.02 pt; refused counters +0.63 pt; log gain at move -0.028; labour share +0.22 pt
+- year 3: mean -0.05% (0.19); P10 +0.00%; P25 +3.05%; P50 +1.35%; P75 -0.25%; P90 -1.56% (0.55); employment +0.10 pt (0.15); job-to-job -0.09 pt; counter raises -1.39 pt; refused counters +0.61 pt; log gain at move -0.027; labour share +0.12 pt
+- year 4: mean -0.16% (0.18); P10 +0.00%; P25 +3.33%; P50 +1.44%; P75 -0.30%; P90 -1.65% (0.49); employment +0.08 pt (0.16); job-to-job -0.09 pt; counter raises -1.44 pt; refused counters +0.64 pt; log gain at move -0.027; labour share +0.02 pt
+- year 5: mean -0.32% (0.34); P10 +0.00%; P25 +3.31%; P50 +1.29%; P75 -0.56%; P90 -1.98% (0.69); employment +0.03 pt (0.23); job-to-job -0.30 pt; counter raises -1.26 pt; refused counters +0.61 pt; log gain at move -0.027; labour share -0.02 pt
+- year 8: mean -0.72% (0.47); P10 +0.00%; P25 +3.06%; P50 +0.96%; P75 -1.02%; P90 -2.58% (1.23); employment -0.01 pt (0.18); job-to-job +0.05 pt; counter raises -1.48 pt; refused counters +0.60 pt; log gain at move -0.029; labour share -0.24 pt
+### m=0.65, coverage employees in firms >= 50 (49.8%), visibility 0.0828, covered share of employment 48.4% in year 1
+- year 1: mean +0.17% (0.15); P10 +0.00%; P25 +2.76%; P50 +1.25%; P75 +0.01%; P90 -0.85% (0.40); employment -0.04 pt (0.21); job-to-job -0.30 pt; counter raises -1.38 pt; refused counters +1.05 pt; log gain at move -0.032; labour share +0.27 pt
+- year 2: mean -0.11% (0.30); P10 +0.00%; P25 +3.43%; P50 +1.19%; P75 -0.41%; P90 -1.43% (0.53); employment +0.03 pt (0.19); job-to-job -0.50 pt; counter raises -1.53 pt; refused counters +0.98 pt; log gain at move -0.036; labour share +0.29 pt
+- year 3: mean -0.36% (0.36); P10 +0.00%; P25 +3.78%; P50 +1.17%; P75 -0.88%; P90 -1.88% (0.71); employment +0.01 pt (0.18); job-to-job -0.21 pt; counter raises -1.74 pt; refused counters +0.98 pt; log gain at move -0.033; labour share +0.20 pt
+- year 4: mean -0.72% (0.24); P10 +0.00%; P25 +3.77%; P50 +1.15%; P75 -1.12%; P90 -2.81% (0.74); employment +0.05 pt (0.16); job-to-job -0.24 pt; counter raises -1.71 pt; refused counters +0.96 pt; log gain at move -0.035; labour share +0.01 pt
+- year 5: mean -0.77% (0.15); P10 +0.00%; P25 +4.26%; P50 +1.28%; P75 -1.19%; P90 -3.05% (0.37); employment +0.04 pt (0.29); job-to-job -0.37 pt; counter raises -1.49 pt; refused counters +0.95 pt; log gain at move -0.038; labour share -0.05 pt
+- year 8: mean -1.26% (0.36); P10 +0.00%; P25 +3.83%; P50 +0.94%; P75 -1.82%; P90 -3.89% (0.63); employment -0.04 pt (0.25); job-to-job -0.06 pt; counter raises -1.76 pt; refused counters +0.95 pt; log gain at move -0.036; labour share -0.29 pt
+### m=0.65, coverage all employees, visibility 0.0474, covered share of employment 100.0% in year 1
+- year 1: mean -0.62% (0.24); P10 +0.00%; P25 +3.45%; P50 -0.18%; P75 -1.25%; P90 -1.74% (0.40); employment -0.00 pt (0.23); job-to-job -0.31 pt; counter raises -2.28 pt; refused counters +0.55 pt; log gain at move -0.061; labour share -0.34 pt
+- year 2: mean -1.09% (0.21); P10 +0.00%; P25 +4.36%; P50 -0.51%; P75 -2.09%; P90 -2.71% (0.64); employment -0.02 pt (0.22); job-to-job -0.52 pt; counter raises -2.45 pt; refused counters +0.56 pt; log gain at move -0.062; labour share -0.62 pt
+- year 3: mean -1.57% (0.24); P10 +0.00%; P25 +4.86%; P50 -0.82%; P75 -2.85%; P90 -3.52% (0.49); employment -0.03 pt (0.20); job-to-job -0.19 pt; counter raises -2.47 pt; refused counters +0.61 pt; log gain at move -0.063; labour share -0.96 pt
+- year 4: mean -2.07% (0.27); P10 +0.00%; P25 +5.04%; P50 -1.12%; P75 -3.31%; P90 -4.45% (0.39); employment +0.02 pt (0.18); job-to-job -0.15 pt; counter raises -2.45 pt; refused counters +0.61 pt; log gain at move -0.063; labour share -1.40 pt
+- year 5: mean -2.41% (0.28); P10 +0.00%; P25 +5.16%; P50 -1.52%; P75 -3.53%; P90 -4.96% (0.32); employment -0.04 pt (0.21); job-to-job -0.34 pt; counter raises -2.36 pt; refused counters +0.61 pt; log gain at move -0.066; labour share -1.68 pt
+- year 8: mean -2.95% (0.44); P10 +0.00%; P25 +5.20%; P50 -1.59%; P75 -4.48%; P90 -5.95% (0.75); employment -0.07 pt (0.23); job-to-job -0.04 pt; counter raises -2.39 pt; refused counters +0.64 pt; log gain at move -0.065; labour share -2.09 pt

@@ -1,0 +1,36 @@
+# Empirical inputs to the forecast (empirics.py)
+
+## Portugal minimum wage as paid (January, 14 payments): 2022 705, 2023 760, 2024 820, 2025 870, 2026 920
+
+## 1. The bottom: P10/median against the Kaitz index (SES, country and wave fixed effects)
+- Linear elasticity 0.498 [0.366, 0.633], 101 obs, 21 countries; Kaitz range in the sample 0.360-0.650
+- Quadratic in log Kaitz: b1 1.034, b2 0.353; local elasticity at Kaitz 0.45: 0.471 [0.322, 0.610], 0.50: 0.545 [0.370, 0.690], 0.55: 0.612 [0.286, 0.834], 0.60: 0.674 [0.177, 0.987], 0.65: 0.730 [0.075, 1.140], 0.70: 0.783 [-0.010, 1.283]
+- Portugal's own slope over five waves: 0.926 (s.e. 0.074) [0.755, 1.105]
+- Low-pay share elasticity: -1.187 [-2.376, -0.322], 101 obs
+
+## 2. The median: growth between SES waves against compensation per employee and the minimum wage
+- Spillover theta 0.301 [0.153, 0.425], 80 four-year intervals
+- Portugal's drift of the median against compensation per employee, net of the spillover: -0.65 pt a year (s.e. 0.50)
+- Portugal intervals (wave, dlog median, dlog compensation per employee, dlog minimum wage): 2010: 0.097/0.108/0.208; 2014: 0.015/-0.033/0.021; 2018: 0.047/0.076/0.179; 2022: 0.152/0.180/0.195
+- Backtest, SES Kaitz 2022 from 2018 (estimates from 2006-2018 only, theta 0.273, drift -0.53 pt): predicted 0.635, actual 0.642, median growing like compensation per employee 0.624
+- Backtest, Banco de Portugal base-wage Kaitz 2025 from 2019: predicted 0.921, actual 0.910, median growing like compensation per employee 0.892
+
+## 3. Wage-growth noise: AR(1) of log growth of compensation per employee, Portugal
+- 1996-2025: rho 0.564, innovation sd 2.24 pt
+- Observed log growth: 2019 5.10, 2020 1.81, 2021 5.72, 2022 5.42, 2023 8.96, 2024 8.02, 2025 4.70
+
+## 4. Employees in enterprises above the transparency thresholds (business economy, B-S excl. O and S94)
+- PT 2023: 3.58 m employees; >=250 29.5%, >=150 34.8% (interpolated), >=50 49.8%
+- EU27_2020 2023: 136.68 m employees; >=250 43.3%, >=150 48.3% (interpolated), >=50 61.4%
+- ES 2024: 13.87 m employees; >=250 41.6%, >=150 46.2% (interpolated), >=50 57.8%
+- DE 2024: 36.25 m employees; >=250 48.2%, >=150 53.2% (interpolated), >=50 65.8%
+- FR 2024: 17.90 m employees; >=250 54.0%, >=150 58.2% (interpolated), >=50 68.4%
+- IT 2024: 14.14 m employees; >=250 34.6%, >=150 39.7% (interpolated), >=50 53.2%
+- PL 2024: 8.92 m employees; >=250 42.5%, >=150 47.5% (interpolated), >=50 60.4%
+
+## 5. Kaitz index against the 60% reference value (OECD, median, full-time)
+- EE 42.7 (2025); LV 44.8 (2025); CZ 46.9 (2025); BE 47.5 (2025); HU 47.6 (2025); NL 48.3 (2025); DE 49.6 (2025); EL 50.1 (2025); LT 50.1 (2025); IE 51.1 (2025); SK 51.5 (2025); BG 53.2 (2025); HR 53.9 (2025); ES 55.3 (2025); LU 56.4 (2025); SI 58.5 (2025); PT 58.9 (2025); PL 59.2 (2025); RO 60.5 (2025); FR 62.5 (2025)
+- 18 of 20 countries below the reference; median gap 17.0 log points
+
+## 6. Unadjusted gender pay gap (Eurostat, hourly, B-S excl. O)
+- EU27_2020 11.1% (2024); PT 7.0% (2024)
