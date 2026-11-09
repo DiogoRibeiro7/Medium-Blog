@@ -77,3 +77,7 @@ ecb-france-backstop/**/*.xlsx -filter -diff -merge binary
 ecb-france-backstop/**/*.zip -filter -diff -merge binary
 portugal-2010-contagion/**/*.csv -filter -diff -merge text
 portugal-2010-contagion/**/*.gz -filter -diff -merge binary
+portugal-debt-management/**/*.csv -filter -diff -merge text
+portugal-debt-management/**/*.gz -filter -diff -merge binary
+portugal-debt-management/**/*.json -filter -diff -merge text
+portugal-debt-management/**/*.html -filter -diff -merge text
