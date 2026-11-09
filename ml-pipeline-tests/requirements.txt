@@ -1,0 +1,14 @@
+duckdb==2.0.0
+hypothesis==6.170.15
+joblib==1.6.0
+matplotlib==3.11.2
+numpy==2.5.4
+nycflights13==0.0.3
+pandas==3.1.1
+pandera==0.35.0
+pytest==9.2.0
+pytz==2026.6
+ruff==0.17.4
+scikit-learn==1.9.1
+scipy==1.18.1
+threadpoolctl==3.8.0

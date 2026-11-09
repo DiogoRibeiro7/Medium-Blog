@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite it as below."
+title: "Testing a machine learning pipeline end to end: leakage, splits and train-serve skew in a flight-disruption model"
+authors:
+  - family-names: Ribeiro
+    given-names: Diogo
+    email: dfr@esmad.ipp.pt
+    orcid: "https://orcid.org/0009-0001-2022-7072"
+version: 0.1.0
+date-released: 2026-11-09
+license: Apache-2.0
+repository-code: "https://github.com/DiogoRibeiro7/Medium-Blog/tree/main/ml-pipeline-tests"
+references:
+  - type: data
+    title: "nycflights13: Flights that Departed NYC in 2013"
+    authors:
+      - family-names: Wickham
+        given-names: Hadley
+    license: CC0-1.0
+    url: "https://CRAN.R-project.org/package=nycflights13"
