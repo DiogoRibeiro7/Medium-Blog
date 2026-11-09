@@ -1275,3 +1275,40 @@ See the article's cited source list. The theoretical starting points include
 Guerrieri, Hartley and Hurst (2010/2013), Couture et al. (2019), Asquith,
 Mast and Reed (2019), the OECD's geography-of-demand analysis, and official
 INE, AMP and IHRU statistical sources.
+
+
+## Matched shared-geography reference influence: leave-one-municipality-out audit
+
+The matched Porto-versus-alternative comparisons use only 15 municipality
+outcomes for any given reference pair. The new
+[\`municipal_reference_common_geography_influence.py\`](municipal_reference_common_geography_influence.py)
+diagnostic checks whether deleting a *single* comparator changes the sign or
+passes the predeclared −0.05 **descriptive** contrast margin. On every deletion,
+the exposure ranks, shared geographic-control ranks and own-rent-outcome
+ranks are recomputed on the **same 14 remaining municipalities**. The symmetric
+two-distance control is used throughout; the parent 15-unit coefficient must
+reproduce independently within numerical tolerance.
+
+The exhaustive grid contains **4 overlapping rent windows × 16 alternative
+references × 3 network exposure normalisations × 15 deleted municipalities =
+2,880** rows, **192** reference/window/mode summaries and **12** window/mode
+summaries. For the primary links-per-1,000-residents measure, the numbers of
+alternative references with *at least one sign reversal* are **4, 5, 1 and 4**
+for 2020/2021/2022/2023 → 2025. The corresponding numbers with at least one
+crossing of the descriptive −0.05 screen are **4, 6, 1 and 4**. On some
+deletions, geographic residualisation leaves under **5%** of the independent
+network rank variation.
+
+Run locally with the repository's pinned dependencies and offline source
+snapshots:
+
+    python municipal_reference_common_geography_influence.py --output /tmp/porto-matched-influence
+
+The script generates three CSVs, a provenance JSON and two SVG diagrams
+(\`fig42_*\`, \`fig43_*\`). The housing-study workflow runs the full unit
+suite, regenerates these outputs, and publishes them as a
+\`porto-matched-reference-deletion-influence\` Actions artifact for 30 days.
+These outputs are generated evidence, not the full private editorial manuscript.
+The deletion extrema and margins are **not jackknife confidence intervals,
+statistical significance, independent replications, observed residential
+movements or causal estimates**.
