@@ -5,6 +5,7 @@
 Eurostat (JSON-stat API), annual unless stated:
 
 - gov_10a_main: gross fixed capital formation (P.51G), consumption of fixed capital (P.51C),
+  investment grants paid (D.92),
   interest payable (D.41), net lending (B.9), total expenditure and revenue, for general
   government and its subsectors (central, state, local, social security);
 - gov_10dd_edpt1: Maastricht debt; nama_10_gdp: GDP at current prices and chain-linked volumes;
@@ -38,7 +39,7 @@ AGENT = "german-public-investment/1.0 (research; python urllib)"
 GEOS = ("DE", "NL", "AT", "FI", "DK", "SE", "BE", "FR", "IT", "ES", "PT", "IE", "EL")
 Filters = list[tuple[str, str]]
 SECTORS = [("sector", s) for s in ("S13", "S1311", "S1312", "S1313", "S1314")]
-ITEMS = [("na_item", i) for i in ("P51G", "P51C", "D41PAY", "B9", "TE", "TR")]
+ITEMS = [("na_item", i) for i in ("P51G", "P51C", "D92PAY", "D41PAY", "B9", "TE", "TR")]
 
 # name -> (dataset, filter sets, extra query parameters)
 EUROSTAT_REQUESTS: dict[str, tuple[str, list[Filters], Filters]] = {
