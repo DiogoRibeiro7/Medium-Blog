@@ -1,0 +1,98 @@
+- name: daily on-time rate counts completed flights on their local date
+  model: daily_carrier_performance
+  given:
+    raw_flights:
+      - {arr_delay: '-5'}
+      - {hour: 21, sched_dep_time: 2130, dep_time: '2130', arr_delay: '15', time_hour: '2013-01-02T02:00:00Z'}
+      - {arr_delay: '16'}
+      - {dep_time: NA, dep_delay: NA, arr_time: NA, arr_delay: NA, air_time: NA}
+      - {dep_time: '700', arr_time: NA, arr_delay: NA, air_time: NA}
+  expect:
+    - {carrier: AA, flight_date: '2013-01-01', flights_scheduled: 5, flights_cancelled: 1,
+       flights_completed: 3, on_time_arrivals: 2, on_time_rate: 0.6666667, avg_arr_delay_min: 8.6666667}
+
+- name: routes to airports missing from the dimension are kept
+  model: route_summary
+  given:
+    raw_flights:
+      - {dest: SJU, arr_delay: '10'}
+      - {dest: SJU, arr_delay: '20'}
+      - {dest: MIA, arr_delay: '30'}
+    raw_airports:
+      - {faa: MIA, name: Miami Intl}
+  expect:
+    - {origin: JFK, dest: SJU, dest_name: Unknown (SJU), flights: 2, avg_arr_delay_min: 15.0}
+    - {origin: JFK, dest: MIA, dest_name: Miami Intl, flights: 1, avg_arr_delay_min: 30.0}
+
+- name: aircraft age uses the manufacture year and keeps unknown aircraft
+  model: plane_age_delays
+  given:
+    raw_planes:
+      - {tailnum: N1, year: '2005'}
+      - {tailnum: N2, year: NA}
+      - {tailnum: N3, year: '1990'}
+    raw_flights:
+      - {tailnum: N1, dep_delay: '10'}
+      - {tailnum: N2, dep_delay: '20'}
+      - {tailnum: N3, dep_delay: '30'}
+      - {tailnum: N4, dep_delay: '40'}
+      - {tailnum: N1, dep_time: NA, dep_delay: NA, arr_time: NA, arr_delay: NA, air_time: NA}
+      - {tailnum: NA, dep_time: NA, dep_delay: NA, arr_time: NA, arr_delay: NA, air_time: NA}
+  expect:
+    - {age_band: 05-09, flights: 1, avg_dep_delay_min: 10.0}
+    - {age_band: 20+, flights: 1, avg_dep_delay_min: 30.0}
+    - {age_band: unknown, flights: 2, avg_dep_delay_min: 30.0}
+
+- name: weather is matched to the departure hour, not the day
+  model: weather_delays
+  given:
+    raw_weather:
+      - {origin: EWR, hour: 6, time_hour: '2013-01-01T11:00:00Z', precip: 0.0}
+      - {origin: EWR, hour: 7, time_hour: '2013-01-01T12:00:00Z', precip: 0.1}
+      - {origin: EWR, hour: 8, time_hour: '2013-01-01T13:00:00Z', precip: 0.0}
+    raw_flights:
+      - {origin: EWR, hour: 6, time_hour: '2013-01-01T11:00:00Z', dep_delay: '5'}
+      - {origin: EWR, hour: 7, time_hour: '2013-01-01T12:00:00Z', dep_delay: '30'}
+      - {origin: EWR, hour: 10, time_hour: '2013-01-01T15:00:00Z', dep_delay: '0'}
+  expect:
+    - {weather_at_departure: dry, flights: 1, avg_dep_delay_min: 5.0}
+    - {weather_at_departure: precipitation, flights: 1, avg_dep_delay_min: 30.0}
+    - {weather_at_departure: no observation, flights: 1, avg_dep_delay_min: 0.0}
+
+- name: long delays are compared as numbers
+  model: monthly_long_delays
+  given:
+    raw_flights:
+      - {carrier: UA, dep_delay: '7'}
+      - {carrier: UA, dep_delay: '61'}
+      - {carrier: UA, dep_delay: '100'}
+      - {carrier: UA, dep_delay: '150'}
+      - {carrier: UA, dep_delay: '250'}
+      - {carrier: UA, dep_time: NA, dep_delay: NA, arr_time: NA, arr_delay: NA, air_time: NA}
+  expect:
+    - {carrier: UA, flight_month: 1, departures: 5, departures_over_60_min: 4, share_over_60_min: 0.8}
+
+- name: delays by slot come from minutes, not from subtracting HHMM clocks
+  model: departure_slot_delays
+  given:
+    raw_flights:
+      - {hour: 12, minute: 59, sched_dep_time: 1259, dep_time: '1301', dep_delay: '2', time_hour: '2013-01-01T17:00:00Z'}
+      - {hour: 12, minute: 30, sched_dep_time: 1230, dep_time: '1230', dep_delay: '0', time_hour: '2013-01-01T17:00:00Z'}
+      - {hour: 23, minute: 59, sched_dep_time: 2359, dep_time: '5', dep_delay: '6', time_hour: '2013-01-02T04:00:00Z'}
+  expect:
+    - {sched_dep_hour: 12, departures: 2, avg_dep_delay_min: 1.0}
+    - {sched_dep_hour: 23, departures: 1, avg_dep_delay_min: 6.0}
+
+- name: idle aircraft survive flights with no tail number
+  model: idle_aircraft
+  given:
+    raw_planes:
+      - {tailnum: N1}
+      - {tailnum: N2}
+    raw_flights:
+      - {tailnum: N1}
+      - {tailnum: NA, dep_time: NA, dep_delay: NA, arr_time: NA, arr_delay: NA, air_time: NA}
+      - {tailnum: N2, month: 2, time_hour: '2013-02-01T11:00:00Z'}
+  expect:
+    - {flight_month: 1, idle_aircraft: 1}
+    - {flight_month: 2, idle_aircraft: 1}

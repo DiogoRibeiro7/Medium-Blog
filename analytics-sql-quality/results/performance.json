@@ -1,0 +1,102 @@
+[
+ {
+  "key": "star_fetch",
+  "slow": "select *",
+  "fast": "three columns",
+  "ratio": 3.567778514913705,
+  "lo": 3.448415250087759,
+  "hi": 3.786045871564513,
+  "median_slow_ms": 1135.648139000068,
+  "median_fast_ms": 318.3067934999144
+ },
+ {
+  "key": "star_inner",
+  "slow": "star subquery",
+  "fast": "named columns",
+  "ratio": 0.9895787834649507,
+  "lo": 0.9396472906390821,
+  "hi": 1.038667600112229,
+  "median_slow_ms": 43.21153199998662,
+  "median_fast_ms": 43.66659100014658
+ },
+ {
+  "key": "duck_wrapped",
+  "slow": "cast(time_hour as date) = day",
+  "fast": "time_hour range",
+  "ratio": 1.9903770231925364,
+  "lo": 1.9093086497599911,
+  "hi": 2.621229159281187,
+  "median_slow_ms": 13.150833000054263,
+  "median_fast_ms": 6.607206999888149
+ },
+ {
+  "key": "duck_corr",
+  "slow": "correlated subquery",
+  "fast": "pre-aggregated join",
+  "ratio": 1.0113909421966218,
+  "lo": 0.9112500751483007,
+  "hi": 1.088378850476396,
+  "median_slow_ms": 432.6137719997405,
+  "median_fast_ms": 427.7413944998898
+ },
+ {
+  "key": "duck_win",
+  "slow": "window function",
+  "fast": "pre-aggregated join",
+  "ratio": 1.0325844802003266,
+  "lo": 0.8900562089165992,
+  "hi": 1.101103104878811,
+  "median_slow_ms": 441.67912549983157,
+  "median_fast_ms": 427.7413944998898
+ },
+ {
+  "key": "lite_corr",
+  "slow": "correlated subquery",
+  "fast": "pre-aggregated join",
+  "ratio": 147.21142880889536,
+  "lo": 131.89527171374553,
+  "hi": 151.79016970694752,
+  "median_slow_ms": 1867.9204790000767,
+  "median_fast_ms": 12.688691999755974
+ },
+ {
+  "key": "lite_win",
+  "slow": "window function",
+  "fast": "pre-aggregated join",
+  "ratio": 1.2051930963487676,
+  "lo": 1.149241412691149,
+  "hi": 1.6597514542949474,
+  "median_slow_ms": 15.292323999801738,
+  "median_fast_ms": 12.688691999755974
+ },
+ {
+  "key": "lite_wrapped",
+  "slow": "date(time_hour) = day",
+  "fast": "time_hour range",
+  "ratio": 1529.6804126893464,
+  "lo": 1502.1605868344243,
+  "hi": 1589.6279925434121,
+  "median_slow_ms": 26.97591400010424,
+  "median_fast_ms": 0.01763499994922313
+ },
+ {
+  "key": "distinct_fanout",
+  "slow": "join by day, then DISTINCT",
+  "fast": "join to distinct days",
+  "ratio": 9.24571325203031,
+  "lo": 8.804553766996865,
+  "hi": 9.468132794602338,
+  "median_slow_ms": 104.20344600015596,
+  "median_fast_ms": 11.27046049987257
+ },
+ {
+  "key": "lint",
+  "slow": "sqlfluff (1 process)",
+  "fast": "sqruff",
+  "ratio": 17.966614200646802,
+  "lo": 17.375247459351215,
+  "hi": 19.08954328040649,
+  "median_slow_ms": 18109.472750999885,
+  "median_fast_ms": 1007.9513339996993
+ }
+]

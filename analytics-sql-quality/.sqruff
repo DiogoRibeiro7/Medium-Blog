@@ -1,0 +1,14 @@
+[sqruff]
+dialect = duckdb
+rules = all
+max_line_length = 88
+
+[sqruff:indentation]
+indent_unit = space
+tab_space_size = 4
+
+[sqruff:rules:capitalisation.keywords]
+capitalisation_policy = lower
+
+[sqruff:rules:capitalisation.functions]
+extended_capitalisation_policy = lower

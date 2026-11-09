@@ -1,0 +1,54 @@
+machine: Linux-6.18.44-fc-v310-x86_64-with-glibc2.39, 2 logical CPUs, Python 3.13.18
+duckdb 2.0.0, sqlite 3.53.1; 25 timed runs after 2 warm-ups
+duckdb threads: 2
+scaled table: 10,103,280 rows; Parquet file 205 MB in 83 row groups, sorted by time_hour
+
+[1] SELECT * versus named columns, fetched into pandas (one carrier, all years)
+  select *: median 1135.648 ms
+  three columns: median 318.307 ms
+  ratio 3.57 (95% bootstrap CI 3.45 to 3.79)
+  the same aggregate inside one query, star subquery against named columns:
+  star subquery: median 43.212 ms
+  named columns: median 43.667 ms
+  ratio 0.99 (95% bootstrap CI 0.94 to 1.04)
+
+[2] Filtering one local day: function on the column versus a range on it
+  both return 754 flights: True
+  cast(time_hour as date) = day: median 13.151 ms
+  time_hour range: median 6.607 ms
+  ratio 1.99 (95% bootstrap CI 1.91 to 2.62)
+
+[3] Flights later than their route average: correlated subquery, window, join
+  DuckDB, 10,103,280 rows; the three queries agree: True (3,189,660)
+  correlated subquery: median 432.614 ms
+  pre-aggregated join: median 427.741 ms
+  ratio 1.01 (95% bootstrap CI 0.91 to 1.09)
+  window function: median 441.679 ms
+  pre-aggregated join: median 427.741 ms
+  ratio 1.03 (95% bootstrap CI 0.89 to 1.10)
+  SQLite, January only (27,004 rows), index on (origin, dest); answers agree: True
+  correlated subquery: median 1867.920 ms
+  pre-aggregated join: median 12.689 ms
+  ratio 147.21 (95% bootstrap CI 131.90 to 151.79)
+  window function: median 15.292 ms
+  pre-aggregated join: median 12.689 ms
+  ratio 1.21 (95% bootstrap CI 1.15 to 1.66)
+
+[4] SQLite: a function on an indexed column
+  plan with date(): SCAN flights USING COVERING INDEX ix_time
+  plan with range : SEARCH flights USING COVERING INDEX ix_time (time_hour>? AND time_hour<?)
+  same count: True (754 flights)
+  date(time_hour) = day: median 26.976 ms
+  time_hour range: median 0.018 ms
+  ratio 1529.68 (95% bootstrap CI 1502.16 to 1589.63)
+
+[5] DISTINCT over a fanned-out join, against the join at the right grain
+  answers agree: True
+  join by day, then DISTINCT: median 104.203 ms
+  join to distinct days: median 11.270 ms
+  ratio 9.25 (95% bootstrap CI 8.80 to 9.47)
+
+[6] Linting speed: 350 files (the seven shipped models, 50 copies each)
+  sqlfluff (1 process): median 18109.473 ms
+  sqruff: median 1007.951 ms
+  ratio 17.97 (95% bootstrap CI 17.38 to 19.09)
