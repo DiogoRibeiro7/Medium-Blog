@@ -592,6 +592,22 @@ def section_secom() -> None:
               f" = {a_f / tf.sum():.3f}; Fisher p {pf:.3g}")
         fig[name] = {"pass": a_p / float(tp.sum()), "fail": a_f / float(tf.sum())}
     print(f"   design F: smallest p-value in a test run: minimum {min(min_p):.6f}, maximum {max(min_p):.6f}")
+    at_min = np.sum(np.isclose(PV, pv_min), axis=1)
+    le01 = np.sum(PV <= aL, axis=1)
+    print(f"   design F: sensors at the minimum p-value in one test run: median {np.median(at_min):.0f}, maximum "
+          f"{at_min.max()}; sensors with p <= {aL}: median {np.median(le01):.0f}, maximum {le01.max()} (BH needs {need})")
+    cols = np.flatnonzero(use)
+    j = int(np.nanargmax(Zabs[cal[np.argmax(score[cal])]]))
+    c = cols[j]
+    i_max = cal[np.argmax(score[cal])]
+    v = X[:, c]
+    print(f"   design C threshold comes from sensor column {c} (0-based) in calibration run {i_max} ({stamps[i_max]}): "
+          f"value {v[i_max]:.2f}; Phase I mean {mu[c]:.4f}, SD {sd[c]:.4f}, distinct Phase I values "
+          f"{len(np.unique(v[p1][~np.isnan(v[p1])]))}")
+    big = np.flatnonzero(np.abs(v - mu[c]) > 1000 * sd[c])
+    print(f"   runs where that sensor is more than 1,000 Phase I SDs from its Phase I mean: "
+          + ", ".join(f"{i} ({stamps[i].date()}, {v[i]:.2f})" for i in big))
+    print(f"   design C alarms: runs {[int(i) for i in np.flatnonzero(designs['C calibrated threshold, fixed'] & test)]}")
     late = test & ~fail
     months = np.array([s.strftime("%Y-%m") for s in stamps])
     for mo in np.unique(months[test]):

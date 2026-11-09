@@ -245,7 +245,7 @@ def figure_secom() -> None:
             names[4]: "E: max |z|, adaptive threshold", names[5]: "F: BH on per-sensor conformal p-values"}
     fig, ax = plt.subplots(figsize=(10.6, 5.4))
     y = np.arange(len(names))[::-1]
-    floor = 1e-3
+    floor = 2e-4
     for off, key, col, label in ((0.13, "pass", BLUE, "later passing runs"), (-0.13, "fail", ORANGE, "later failing runs")):
         v = np.maximum([des[n][key] for n in names], floor)
         ax.scatter(v, y + off, s=60, color=col, edgecolor="white", linewidth=1.0, zorder=3, label=label)
@@ -254,8 +254,8 @@ def figure_secom() -> None:
                 color=INK2, va="center")
     ax.set_xscale("log")
     ax.set_xlim(floor * 0.7, 1.3)
-    ax.set_xticks([1e-3, 1e-2, 1e-1, 1])
-    ax.set_xticklabels(["0", "1%", "10%", "100%"])
+    ax.set_xticks([floor, 1e-3, 1e-2, 1e-1, 1])
+    ax.set_xticklabels(["0", "0.1%", "1%", "10%", "100%"])
     ax.xaxis.set_minor_formatter(matplotlib.ticker.NullFormatter())
     ax.set_yticks(y)
     ax.set_yticklabels([nice[n] for n in names], fontsize=8.8)
