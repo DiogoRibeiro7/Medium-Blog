@@ -7,9 +7,11 @@ Sources:
 1. Eurostat (JSON-stat API): daily and monthly long-term government bond yields (EMU
    convergence criterion), annual and quarterly government interest payable, net lending and
    debt, and annual and quarterly GDP at current prices. Each request carries filter sets tried
-   in order, narrowest first.
-2. ECB Data Portal: daily 10-year benchmark yields, requested only as a fallback and as a probe
-   of the available keys if the Eurostat daily table is missing.
+   in order, narrowest first. (Eurostat's daily yield table, irt_lt_mcby_d, is not disseminated
+   through the API.)
+2. ECB Data Portal: monthly convergence-criterion yields (dataset IRS), usually published before
+   Eurostat's copy, and a probe of the daily financial-market series (dataset FM) for France.
+3. Stooq: daily 10-year benchmark government bond yields (free CSV downloads).
 
 Every response is logged with URL, HTTP status and SHA-256 in ``data/fetch_log.txt``.
 """
@@ -31,7 +33,6 @@ from pathlib import Path
 import pandas as pd
 
 EUROSTAT = "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data"
-ECB = "https://data-api.ecb.europa.eu/service/data/FM/{key}?startPeriod={start}&format=csvdata"
 AGENT = "france-spread-2026/1.0 (research; python urllib)"
 
 SPREAD = ("DE", "FR", "IT", "ES", "BE", "AT", "NL", "FI", "PT", "IE", "EL")
@@ -40,7 +41,6 @@ Filters = list[tuple[str, str]]
 
 # name -> (dataset, filter sets, geographies, extra query parameters)
 EUROSTAT_REQUESTS: dict[str, tuple[str, list[Filters], tuple[str, ...], Filters]] = {
-    "yields_daily": ("irt_lt_mcby_d", [[], [("int_rt", "MCBY")]], SPREAD, [("sinceTimePeriod", "2007-01-01")]),
     "yields_monthly": ("irt_lt_mcby_m", [[], [("int_rt", "MCBY")]], SPREAD, []),
     "gov_main": (
         "gov_10a_main",
@@ -146,43 +146,79 @@ def eurostat(name: str, dataset: str, filter_sets: list[Filters], geos: tuple[st
     return False
 
 
-def ecb_daily(out: Path, log: list[str]) -> bool:
-    """Fallback: ECB benchmark yields. First probe which daily yield keys exist, then fetch them."""
-    url = ECB.format(key="D......YLD", start="2026-09-01")
+ECB_CODES = {"EL": "GR"}
+STOOQ = "https://stooq.com/q/d/l/?s={sym}&i=d"
+STOOQ_SYMBOLS = {c: f"10{ECB_CODES.get(c, c).lower()}y.b" for c in SPREAD}
+
+
+def ecb_monthly(out: Path, log: list[str]) -> bool:
+    """ECB convergence-criterion yields (dataset IRS), often published before Eurostat's copy."""
+    areas = "+".join(ECB_CODES.get(c, c) for c in SPREAD)
+    url = f"https://data-api.ecb.europa.eu/service/data/IRS/M.{areas}.L.L40.CI.0000.EUR.N.Z?startPeriod=1995-01&format=csvdata"
     try:
         status, body = get(url, timeout=600)
     except RuntimeError as e:
-        log.append(f"ecb probe\tERROR\t{e}")
+        log.append(f"ecb irs\tERROR\t{e}")
         return False
-    log_response(log, "ecb probe", url, status, body)
+    log_response(log, "ecb irs", url, status, body)
     if status != 200 or len(body) < 200:
-        log.append(f"ecb probe\tBODY\t{body[:300]!r}")
+        log.append(f"ecb irs\tBODY\t{body[:300]!r}")
         return False
-    probe = pd.read_csv(io.BytesIO(body), dtype=str)
-    keys = sorted(probe["KEY"].unique()) if "KEY" in probe else []
-    (out / "ecb_keys.txt").write_text("\n".join(keys) + "\n", encoding="utf-8")
-    want = [k for k in keys if "10Y" in k and any(f".{c}." in k for c in SPREAD)]
-    log.append(f"ecb probe\tKEYS\t{len(keys)}\t10-year keys {want[:20]}")
-    if not want:
-        return False
-    parts = []
-    for k in want:
-        short = k.split(".", 1)[1]
-        u = ECB.format(key=short, start="2007-01-01")
+    d = pd.read_csv(io.BytesIO(body), dtype=str)
+    keep = [c for c in ("KEY", "REF_AREA", "TIME_PERIOD", "OBS_VALUE") if c in d]
+    d = d[keep]
+    d.to_csv(out / "ecb_yields_monthly.csv", index=False)
+    log.append(f"ecb irs\tROWS\t{len(d)}\tlast period {d['TIME_PERIOD'].max() if 'TIME_PERIOD' in d else '?'}")
+    return True
+
+
+def ecb_probe(out: Path, log: list[str]) -> None:
+    """Record which daily FM series exist for France, to find a daily 10-year yield if one is published."""
+    lines = []
+    for key in ("D.FR.....", "B.FR.....", "D.U2.EUR.4F.BB.."):
+        url = f"https://data-api.ecb.europa.eu/service/data/FM/{key}?lastNObservations=1&format=csvdata"
         try:
-            st, b = get(u, timeout=600)
+            status, body = get(url, tries=2, timeout=300)
         except RuntimeError as e:
-            log.append(f"ecb {short}\tERROR\t{e}")
+            log.append(f"ecb probe {key}\tERROR\t{e}")
             continue
-        log_response(log, f"ecb {short}", u, st, b)
-        if st == 200 and len(b) > 200:
-            parts.append(pd.read_csv(io.BytesIO(b), dtype=str)[["KEY", "TIME_PERIOD", "OBS_VALUE"]])
+        log_response(log, f"ecb probe {key}", url, status, body)
+        if status == 200 and len(body) > 100:
+            p = pd.read_csv(io.BytesIO(body), dtype=str)
+            cols = [c for c in ("KEY", "TITLE", "TIME_PERIOD") if c in p]
+            lines += [" | ".join(str(r[c]) for c in cols) for _, r in p.iterrows()]
+    (out / "ecb_keys.txt").write_text("\n".join(lines) + "\n", encoding="utf-8")
+    log.append(f"ecb probe\tSERIES\t{len(lines)}")
+
+
+def stooq(out: Path, log: list[str]) -> bool:
+    """Daily 10-year benchmark yields from Stooq's free CSV downloads."""
+    parts = []
+    for c, sym in STOOQ_SYMBOLS.items():
+        url = STOOQ.format(sym=sym)
+        try:
+            status, body = get(url, tries=2, timeout=120)
+        except RuntimeError as e:
+            log.append(f"stooq {sym}\tERROR\t{e}")
+            continue
+        log_response(log, f"stooq {sym}", url, status, body)
+        head = body[:80].decode("utf-8", errors="replace")
+        if status != 200 or not head.lower().startswith("date"):
+            log.append(f"stooq {sym}\tBODY\t{head!r}")
+            continue
+        d = pd.read_csv(io.BytesIO(body))
+        d.columns = [x.lower() for x in d.columns]
+        d = d[["date", "close"]].rename(columns={"close": "value"})
+        d["geo"] = c
+        parts.append(d)
+        time.sleep(2)
     if not parts:
+        log.append("stooq\tFAILED")
         return False
     d = pd.concat(parts, ignore_index=True)
-    d.to_csv(out / "ecb_yields_daily.csv.gz", index=False, compression={"method": "gzip", "mtime": 0})
-    log.append(f"ecb daily\tROWS\t{len(d)}")
-    return True
+    d.to_csv(out / "yields_daily.csv.gz", index=False, compression={"method": "gzip", "mtime": 0})
+    log.append(f"stooq\tROWS\t{len(d)}\tcountries {sorted(d.geo.unique())}\tlast {d.date.max()}")
+    return len(parts) >= 4
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -195,20 +231,16 @@ def main(argv: list[str] | None = None) -> int:
     log = [f"# fetch.py run {datetime.now(timezone.utc).isoformat(timespec='seconds')}"]
     want = set(args.only) if args.only else None
     ok = True
-    daily_ok = None
     for name, (ds, fs, geos, extra) in EUROSTAT_REQUESTS.items():
         if want and name not in want:
             continue
-        r = eurostat(name, ds, fs, geos, extra, out, log)
-        if name == "yields_daily":
-            daily_ok = r
-        else:
-            ok &= r
+        ok &= eurostat(name, ds, fs, geos, extra, out, log)
         time.sleep(1)
-    if (want and "ecb" in want) or daily_ok is False:
-        daily_ok = ecb_daily(out, log) or bool(daily_ok)
-    if daily_ok is False:
-        ok = False
+    if not want or "ecb" in want:
+        ok &= ecb_monthly(out, log)
+        ecb_probe(out, log)
+    if not want or "stooq" in want:
+        ok &= stooq(out, log)
     with open(out / "fetch_log.txt", "a", encoding="utf-8") as f:
         f.write("\n".join(log) + "\n")
     print("\n".join(log))
