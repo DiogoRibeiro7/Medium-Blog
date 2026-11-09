@@ -136,3 +136,60 @@ bpstat dataset 204/348f0a09f36f47c5eef24187b4b4afaa?lang=EN	400	6a46b865353fa03d
 bpstat datasets 207	200	37242b1cf052b5acebd8982a742f5c9c26dbf9238462db1065304c25cbec7116	666 bytes	https://bpstat.bportugal.pt/data/v1/domains/207/datasets/?lang=EN
 bpstat series 207/551ffd50a03df1e822e8841a83130e46?lang=EN	400	40559dfda236bd1843aaec05f5d6cc4e304af279ceb7bf115c283a18a7ac26d1	42 bytes	https://bpstat.bportugal.pt/data/v1/series/?lang=EN&domain_id=207&dataset_id=551ffd50a03df1e822e8841a83130e46?lang=EN&page_size=500
 bpstat dataset 207/551ffd50a03df1e822e8841a83130e46?lang=EN	400	6a46b865353fa03db52b2c08574902ac38995a4f2b31ac5a59ab21abd21e600a	51 bytes	https://bpstat.bportugal.pt/data/v1/domains/207/datasets/551ffd50a03df1e822e8841a83130e46?lang=EN/?lang=EN&last_n=1
+# fetch.py run 2026-11-09T13:46:55+00:00
+eurostat yields_monthly	200	87f0398494c824dadb37a387b14454182f51e1ec662b06f63d5d68f0e93ff84b	36316 bytes	https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/irt_lt_mcby_m?format=JSON&lang=EN&geo=PT&geo=DE
+eurostat yields_monthly	ROWS	1050	columns ['freq', 'int_rt', 'geo', 'time', 'value']	last period 2026-09	filters []
+eurostat gov_quarterly	200	e192fdb092034c0c76ca1670283f0f5b59f5fc592a0f622a5aa54d9455812472	6825 bytes	https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/gov_10q_ggnfa?format=JSON&lang=EN&unit=MIO_EUR&sector=S13&s_adj=NSA&na_item=D41PAY&sinceTimePeriod=2005-Q1&geo=PT
+eurostat gov_quarterly	ROWS	86	columns ['freq', 'unit', 's_adj', 'sector', 'na_item', 'geo', 'time', 'value']	last period 2026-Q2	filters [('unit', 'MIO_EUR'), ('sector', 'S13'), ('s_adj', 'NSA'), ('na_item', 'D41PAY')]
+eurostat debt_quarterly	200	6874ece4dbfed407b66f9cbb0f7ce9ac39ad37e4c8df0139e41715056efa8384	28194 bytes	https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/gov_10q_ggdebt?format=JSON&lang=EN&unit=MIO_EUR&sector=S13&sinceTimePeriod=2005-Q1&geo=PT
+eurostat debt_quarterly	ROWS	1526	columns ['freq', 'na_item', 'sector', 'unit', 'geo', 'time', 'value']	last period 2026-Q2	filters [('unit', 'MIO_EUR'), ('sector', 'S13')]
+ecb euribor_3m	200	93d96c1fa05e6243e605d290c7e6b8f15ea5735e7d90f242f611f34f202cda78	97578 bytes	https://data-api.ecb.europa.eu/service/data/FM/M.U2.EUR.RT.MM.EURIBOR3MD_.HSTA?startPeriod=2005-01&format=csvdata
+ecb euribor_3m	ROWS	262	series 1	last period 2026-10
+ecb euribor_12m	200	486e4c71eab05c2991d3a103da47731d2b650853e224a595595ab4b7cbda84ed	96996 bytes	https://data-api.ecb.europa.eu/service/data/FM/M.U2.EUR.RT.MM.EURIBOR1YD_.HSTA?startPeriod=2005-01&format=csvdata
+ecb euribor_12m	ROWS	262	series 1	last period 2026-10
+ecb aaa_curve_daily	200	3b02096b72df7e74bf160923b0b4af477aa4b50e8ee6415f54bff9de1d3c9ff2	9622424 bytes	https://data-api.ecb.europa.eu/service/data/YC/B.U2.EUR.4F.G_N_A.SV_C_YM.SR_3M+SR_1Y+SR_5Y+SR_10Y?startPeriod=2010-01-01&format=csvdata
+ecb aaa_curve_daily	ROWS	17220	series 4	last period 2026-11-06
+ecb exr_monthly	200	eea3b39034489f7be33d4ca00fefb2861ebacc856acb5f4c2812da80dbcac778	180151 bytes	https://data-api.ecb.europa.eu/service/data/EXR/M.USD+JPY+GBP+CNY.EUR.SP00.A?startPeriod=2010-01&format=csvdata
+ecb exr_monthly	ROWS	808	series 4	last period 2026-10
+fred TB3MS	200	33fae406051a658c316580f8e8b5e461157e6663bc03b35648cc7cd3e89ee26b	17881 bytes	https://fred.stlouisfed.org/graph/fredgraph.csv?id=TB3MS
+fred IR3TIB01JPM156N	200	7d7336c147e74b18a02b6cb8628918d339bd53126c89e5f712609e04d95f6d11	5640 bytes	https://fred.stlouisfed.org/graph/fredgraph.csv?id=IR3TIB01JPM156N
+fred IR3TTS01GBM156N	200	62c3e66f1485befdf5add5e9b922c7802b9d198d4a0bb2441115f3a4d716b8e1	12599 bytes	https://fred.stlouisfed.org/graph/fredgraph.csv?id=IR3TTS01GBM156N
+fred IR3TIB01CNM156N	200	80d3413335c089e6ace928af7b1f07c2315c946c6ad052f31675d7f15bc07d1f	6346 bytes	https://fred.stlouisfed.org/graph/fredgraph.csv?id=IR3TIB01CNM156N
+fred INTGSTJPM193N	200	f068a59109a996b265b64a48062b5201ce3202b4076e6a08c44dc69fea1d341d	17220 bytes	https://fred.stlouisfed.org/graph/fredgraph.csv?id=INTGSTJPM193N
+fred IR3TIB01GBM156N	200	40c23cc654a1380ed278a2b0be691f368d5cc1648493cadbbf1a2a2f654d33d4	15956 bytes	https://fred.stlouisfed.org/graph/fredgraph.csv?id=IR3TIB01GBM156N
+fred fred_rates	ROWS	4024	series 6
+bpstat datasets 10	200	f45063705a0b1c66104bf99f9f77895ba3e9d9331a505374a18d3d4b96d31107	563 bytes	https://bpstat.bportugal.pt/data/v1/domains/10/datasets/?lang=EN
+bpstat dataset 10/9a04dd6b16441184dd993a5015490e72	200	b7d80674a73d5e616bf9db2b35a2f0714d1c587c7e0377f36153d1e034dc9cf9	64751 bytes	https://bpstat.bportugal.pt/data/v1/domains/10/datasets/9a04dd6b16441184dd993a5015490e72/?lang=EN
+bpstat datasets 21	200	3ce3216cd15ce3f1010e5cf8feb17f203414cbd7481d48b4220a8376e22079da	4680 bytes	https://bpstat.bportugal.pt/data/v1/domains/21/datasets/?lang=EN
+bpstat dataset 21/07d36f662cea4b19f4b2c2cf5435771d	200	66d9bbdaf30c889ea592cb0a84446b365fcfd0e2a544500fa4ca568f24d8679e	88782 bytes	https://bpstat.bportugal.pt/data/v1/domains/21/datasets/07d36f662cea4b19f4b2c2cf5435771d/?lang=EN
+bpstat dataset 21/0a8ba3498e4bdef200b80595dcc3fd8c	200	e4b5e14e3c934248e0172063f01d7db2c4759ceb25c006e79c689c5e99a6f2a7	13153 bytes	https://bpstat.bportugal.pt/data/v1/domains/21/datasets/0a8ba3498e4bdef200b80595dcc3fd8c/?lang=EN
+bpstat dataset 21/5e42e78146bb44759188678266b04c4e	200	fb265bc17de91ce182bae79af95ba7befbeafe64ee811ae56ddfe1801df445c2	30097 bytes	https://bpstat.bportugal.pt/data/v1/domains/21/datasets/5e42e78146bb44759188678266b04c4e/?lang=EN
+bpstat dataset 21/6eaa8db94523f54733dddc22479c11a4	200	b91ea5422718287843e4450715697cf664d8c4af0f3fe8cd42a4bd2543a28ec2	84545 bytes	https://bpstat.bportugal.pt/data/v1/domains/21/datasets/6eaa8db94523f54733dddc22479c11a4/?lang=EN
+bpstat dataset 21/851facff504532e95cf096ca9c6a8b9a	200	5c97d7159ae28f8d9eb13378618bdd06ca724427eebfacd75b5c8650c8e6d21c	84497 bytes	https://bpstat.bportugal.pt/data/v1/domains/21/datasets/851facff504532e95cf096ca9c6a8b9a/?lang=EN
+bpstat dataset 21/9744c7a78f7417d4a91cf1a1b55fac1d	200	bfa2bd7ff7b0cc4cf62cfc88739e2ae4ead08da0b11466f944846e329f71342e	59880 bytes	https://bpstat.bportugal.pt/data/v1/domains/21/datasets/9744c7a78f7417d4a91cf1a1b55fac1d/?lang=EN
+bpstat dataset 21/9ab0b6dd481ff9d0a79aeca89363b9ec	200	3a28f5b0eb0f52a4d13e251af25eca3f233a5a6bf6e3fb71b283c72fe2c147da	73222 bytes	https://bpstat.bportugal.pt/data/v1/domains/21/datasets/9ab0b6dd481ff9d0a79aeca89363b9ec/?lang=EN
+bpstat dataset 21/c4db40b75370917aaf045d1cff74c142	200	84c410b0f3d401dd752c6618fbfef39f824f3304c4af8da4a6dfc9774c542c3d	52098 bytes	https://bpstat.bportugal.pt/data/v1/domains/21/datasets/c4db40b75370917aaf045d1cff74c142/?lang=EN
+bpstat dataset 21/ec7b2a0f066656833f1013b3a2f9f189	200	ea4b9082d36955bb826ad1b2d62a263bbd2141193e223dab48870e435a6149fb	82761 bytes	https://bpstat.bportugal.pt/data/v1/domains/21/datasets/ec7b2a0f066656833f1013b3a2f9f189/?lang=EN
+bpstat dataset 21/f648a7e7dec2e61dd4bdd6ba56ac519b	200	fd2586b6de9c9ca5e3b94a2bf0f66cfc7aecc85528d324cd8ee3e630ce0c2bd1	48330 bytes	https://bpstat.bportugal.pt/data/v1/domains/21/datasets/f648a7e7dec2e61dd4bdd6ba56ac519b/?lang=EN
+bpstat datasets 22	200	0e27ceda1304991e7a5b385e5974693b241f5808eecb9919f3571ba0a60e61ff	1339 bytes	https://bpstat.bportugal.pt/data/v1/domains/22/datasets/?lang=EN
+bpstat dataset 22/2829cb9155cb4f6ba6906db6b204c4bc	200	2986210017ac457cdb4082c2c25b4df3aae43847827e18a41280ca568e9620cb	214359 bytes	https://bpstat.bportugal.pt/data/v1/domains/22/datasets/2829cb9155cb4f6ba6906db6b204c4bc/?lang=EN
+bpstat dataset 22/471186a839daf97d9280419fc06c8579	200	6aee3e92455e4a31dd2f7848d4aba7d194db331882b4556537889ca536977e2f	1007895 bytes	https://bpstat.bportugal.pt/data/v1/domains/22/datasets/471186a839daf97d9280419fc06c8579/?lang=EN
+bpstat dataset 22/d1233ebaef3cab6961245ed034ace30f	200	5da648fc8d6f8445a34f36580cf6e7e437d38b645e30a8ccd5006b436cb2e711	347652 bytes	https://bpstat.bportugal.pt/data/v1/domains/22/datasets/d1233ebaef3cab6961245ed034ace30f/?lang=EN
+bpstat datasets 26	200	1b717af296c0e79ee8380f5dedb1dd1d3b5b5d7d101d4f7b5814d8e79038109a	1219 bytes	https://bpstat.bportugal.pt/data/v1/domains/26/datasets/?lang=EN
+bpstat dataset 26/690b7b36fd36c0dbe249c48cbbc39524	200	3b964ce8bf58917fe59e60b59f89e0ec2a180026e8734c6331d81b1b3c7cb26f	1349694 bytes	https://bpstat.bportugal.pt/data/v1/domains/26/datasets/690b7b36fd36c0dbe249c48cbbc39524/?lang=EN
+bpstat dataset 26/93441ab6408be15acced35b8ed98cd97	200	e5e0d285dea54bd562702055e12938ae9dc94530d10fc4327a8df4533206fda5	12965 bytes	https://bpstat.bportugal.pt/data/v1/domains/26/datasets/93441ab6408be15acced35b8ed98cd97/?lang=EN
+bpstat dataset 26/f773d814da50caa6a60bb5c4ec672077	200	ebebaaf4b65cae29134e1d526c74b9103964d3d280bf4652a055b77d97ca2ff9	30021 bytes	https://bpstat.bportugal.pt/data/v1/domains/26/datasets/f773d814da50caa6a60bb5c4ec672077/?lang=EN
+bpstat datasets 27	200	16fa35ca4e5d56208aa0d4e161c9e4eaf0bdcfee9505f2a63b8ca5b2d94e72f6	2064 bytes	https://bpstat.bportugal.pt/data/v1/domains/27/datasets/?lang=EN
+bpstat dataset 27/61f3b38efb7ed30c5595f0211fb10344	200	3e944e95ca326b661269b2a5049164a3d44ecdb1a7cbd6b67a11cc364076c4e3	102389 bytes	https://bpstat.bportugal.pt/data/v1/domains/27/datasets/61f3b38efb7ed30c5595f0211fb10344/?lang=EN
+bpstat dataset 27/932d2d9ee44b584407c3294484d26420	200	87b9d04b7814e8cc79ee5795760af78596427f780f78126f7b1a024b28d6b063	30133 bytes	https://bpstat.bportugal.pt/data/v1/domains/27/datasets/932d2d9ee44b584407c3294484d26420/?lang=EN
+bpstat dataset 27/d783a87bce2d7f1c05dd9c052d6d2588	200	2e58cce1a14c9c3b24620d06ec7dc65b3fe794c1fa02f07087021c7c0519ca3d	50351 bytes	https://bpstat.bportugal.pt/data/v1/domains/27/datasets/d783a87bce2d7f1c05dd9c052d6d2588/?lang=EN
+bpstat dataset 27/eb8297d3228914244941876881cf5d97	200	6abfc741e2b4d6288faffa5ff690ba0a6c9cc7977293f7f4bf52c31b9323e77c	39159 bytes	https://bpstat.bportugal.pt/data/v1/domains/27/datasets/eb8297d3228914244941876881cf5d97/?lang=EN
+bpstat datasets 28	200	5abb203bc7b1cb2fbd60f5d4adeb3df2c5690159421d3b8399aa7beaa43eac58	4309 bytes	https://bpstat.bportugal.pt/data/v1/domains/28/datasets/?lang=EN
+bpstat dataset 28/10470e6b60c710218dd2a0e6a20fb040	200	a1844c34d59b7e2b722e2df5435ebc244e908ba8562a0d5423bc51891f440736	15003 bytes	https://bpstat.bportugal.pt/data/v1/domains/28/datasets/10470e6b60c710218dd2a0e6a20fb040/?lang=EN
+bpstat dataset 28/4d73fa9f4befd82d7aa1d75debd79bd2	200	215056968c9f93eb241d914869de1e71d28920c569d44409fc434bed46c8c045	12654 bytes	https://bpstat.bportugal.pt/data/v1/domains/28/datasets/4d73fa9f4befd82d7aa1d75debd79bd2/?lang=EN
+bpstat dataset 28/83489eb2e300881d87b13ff5187e5654	200	457ead9273b72b8aa99889996660208b541f466575108a8e42fe6b2726479969	33804 bytes	https://bpstat.bportugal.pt/data/v1/domains/28/datasets/83489eb2e300881d87b13ff5187e5654/?lang=EN
+bpstat dataset 28/a654b37e97983a826eb9f4f399c0bb14	200	fddf270a7b12241567adfff73cdf0633a51fba3b71358eb18e73ead157b22c9d	7507 bytes	https://bpstat.bportugal.pt/data/v1/domains/28/datasets/a654b37e97983a826eb9f4f399c0bb14/?lang=EN
+bpstat dataset 28/d0b1b2758e974a808f5e424d151b13df	200	8998ee8fe7d2da0cc096c5c573de3f43e5a1e8dea98582fa9437503c9d49b72f	33469 bytes	https://bpstat.bportugal.pt/data/v1/domains/28/datasets/d0b1b2758e974a808f5e424d151b13df/?lang=EN
+bpstat dataset 28/d64e4ec9e100e1eb22e7eeb21a298d09	200	6c8deec182a17ab406721dc92b47787a071f0adf2871162c7444d22bbd89bf18	17101 bytes	https://bpstat.bportugal.pt/data/v1/domains/28/datasets/d64e4ec9e100e1eb22e7eeb21a298d09/?lang=EN
+bpstat dataset 28/e2bc3b33d169f2d0885cffb9183fb48e	200	d9e3cdf9f6371dd4ed3e716b36165137b39a63e3d17eef97883ca4b95ddbef09	107778 bytes	https://bpstat.bportugal.pt/data/v1/domains/28/datasets/e2bc3b33d169f2d0885cffb9183fb48e/?lang=EN
+bpstat dataset 28/f4eb37c104671b320d17e4a31477844a	200	1ef4b9ae0f7df563ba38ed6e41108feaeb40be44dbd08c5f700c460df249c073	19228 bytes	https://bpstat.bportugal.pt/data/v1/domains/28/datasets/f4eb37c104671b320d17e4a31477844a/?lang=EN
