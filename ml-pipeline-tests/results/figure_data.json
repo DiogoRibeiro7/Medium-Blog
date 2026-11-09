@@ -1,0 +1,718 @@
+{
+ "results": {
+  "reviewed": {
+   "reported": 0.6879728801268629,
+   "realized": 0.7088928080432217
+  },
+  "leak_dep_delay": {
+   "reported": 0.8838438162054119,
+   "realized": 0.5346759451573133
+  },
+  "unlagged_congestion": {
+   "reported": 0.7403899497218033,
+   "realized": 0.6104949407389857
+  },
+  "global_encoding": {
+   "reported": 0.7017930505654202,
+   "realized": 0.6971653410851528
+  },
+  "random_split": {
+   "reported": 0.771763999645814,
+   "realized": 0.7072583616923804
+  },
+  "drop_incomplete": {
+   "reported": 0.6800299671670377,
+   "realized": 0.7023389590968577
+  },
+  "utc_hour": {
+   "reported": 0.6874893078976834,
+   "realized": 0.7012344810909885
+  },
+  "leak_dep_delay+unlagged_congestion+global_encoding+random_split+drop_incomplete+utc_hour": {
+   "reported": 0.9242946381702806,
+   "realized": 0.6150655193401446
+  }
+ },
+ "detection": [
+  [
+   "reviewed",
+   [
+    [
+     "data validation",
+     "feature schema",
+     true
+    ],
+    [
+     "unit tests",
+     "congestion counts only departures that left before T",
+     true
+    ],
+    [
+     "unit tests",
+     "hour is the local scheduled hour",
+     true
+    ],
+    [
+     "unit tests",
+     "a cancelled flight keeps its row and is labelled disrupted",
+     true
+    ],
+    [
+     "unit tests",
+     "the route rate ignores the flight's own day and later days",
+     true
+    ],
+    [
+     "unit tests",
+     "a flight's own outcome does not change its features",
+     true
+    ],
+    [
+     "property-based",
+     "features independent of the flight's own outcome",
+     true
+    ],
+    [
+     "future perturbation",
+     "features unchanged when the future changes",
+     true
+    ],
+    [
+     "null labels",
+     "AUC with permuted labels near 0.5",
+     true
+    ],
+    [
+     "split audit",
+     "train, validation and test are ordered in time",
+     true
+    ],
+    [
+     "split audit",
+     "test set is every scheduled flight of the test months",
+     true
+    ],
+    [
+     "split audit",
+     "threshold chosen on data disjoint from the test set",
+     true
+    ],
+    [
+     "train/serve parity",
+     "batch features equal serving features",
+     true
+    ],
+    [
+     "metric gate",
+     "reported test AUC at least 0.67",
+     true
+    ]
+   ]
+  ],
+  [
+   "leak_dep_delay",
+   [
+    [
+     "data validation",
+     "feature schema",
+     true
+    ],
+    [
+     "unit tests",
+     "congestion counts only departures that left before T",
+     true
+    ],
+    [
+     "unit tests",
+     "hour is the local scheduled hour",
+     true
+    ],
+    [
+     "unit tests",
+     "a cancelled flight keeps its row and is labelled disrupted",
+     true
+    ],
+    [
+     "unit tests",
+     "the route rate ignores the flight's own day and later days",
+     true
+    ],
+    [
+     "unit tests",
+     "a flight's own outcome does not change its features",
+     false
+    ],
+    [
+     "property-based",
+     "features independent of the flight's own outcome",
+     false
+    ],
+    [
+     "future perturbation",
+     "features unchanged when the future changes",
+     false
+    ],
+    [
+     "null labels",
+     "AUC with permuted labels near 0.5",
+     true
+    ],
+    [
+     "split audit",
+     "train, validation and test are ordered in time",
+     true
+    ],
+    [
+     "split audit",
+     "test set is every scheduled flight of the test months",
+     true
+    ],
+    [
+     "split audit",
+     "threshold chosen on data disjoint from the test set",
+     true
+    ],
+    [
+     "train/serve parity",
+     "batch features equal serving features",
+     false
+    ],
+    [
+     "metric gate",
+     "reported test AUC at least 0.67",
+     true
+    ]
+   ]
+  ],
+  [
+   "unlagged_congestion",
+   [
+    [
+     "data validation",
+     "feature schema",
+     true
+    ],
+    [
+     "unit tests",
+     "congestion counts only departures that left before T",
+     false
+    ],
+    [
+     "unit tests",
+     "hour is the local scheduled hour",
+     true
+    ],
+    [
+     "unit tests",
+     "a cancelled flight keeps its row and is labelled disrupted",
+     true
+    ],
+    [
+     "unit tests",
+     "the route rate ignores the flight's own day and later days",
+     true
+    ],
+    [
+     "unit tests",
+     "a flight's own outcome does not change its features",
+     false
+    ],
+    [
+     "property-based",
+     "features independent of the flight's own outcome",
+     false
+    ],
+    [
+     "future perturbation",
+     "features unchanged when the future changes",
+     false
+    ],
+    [
+     "null labels",
+     "AUC with permuted labels near 0.5",
+     true
+    ],
+    [
+     "split audit",
+     "train, validation and test are ordered in time",
+     true
+    ],
+    [
+     "split audit",
+     "test set is every scheduled flight of the test months",
+     true
+    ],
+    [
+     "split audit",
+     "threshold chosen on data disjoint from the test set",
+     true
+    ],
+    [
+     "train/serve parity",
+     "batch features equal serving features",
+     false
+    ],
+    [
+     "metric gate",
+     "reported test AUC at least 0.67",
+     true
+    ]
+   ]
+  ],
+  [
+   "global_encoding",
+   [
+    [
+     "data validation",
+     "feature schema",
+     true
+    ],
+    [
+     "unit tests",
+     "congestion counts only departures that left before T",
+     true
+    ],
+    [
+     "unit tests",
+     "hour is the local scheduled hour",
+     true
+    ],
+    [
+     "unit tests",
+     "a cancelled flight keeps its row and is labelled disrupted",
+     true
+    ],
+    [
+     "unit tests",
+     "the route rate ignores the flight's own day and later days",
+     false
+    ],
+    [
+     "unit tests",
+     "a flight's own outcome does not change its features",
+     false
+    ],
+    [
+     "property-based",
+     "features independent of the flight's own outcome",
+     false
+    ],
+    [
+     "future perturbation",
+     "features unchanged when the future changes",
+     false
+    ],
+    [
+     "null labels",
+     "AUC with permuted labels near 0.5",
+     false
+    ],
+    [
+     "split audit",
+     "train, validation and test are ordered in time",
+     true
+    ],
+    [
+     "split audit",
+     "test set is every scheduled flight of the test months",
+     true
+    ],
+    [
+     "split audit",
+     "threshold chosen on data disjoint from the test set",
+     true
+    ],
+    [
+     "train/serve parity",
+     "batch features equal serving features",
+     false
+    ],
+    [
+     "metric gate",
+     "reported test AUC at least 0.67",
+     true
+    ]
+   ]
+  ],
+  [
+   "random_split",
+   [
+    [
+     "data validation",
+     "feature schema",
+     true
+    ],
+    [
+     "unit tests",
+     "congestion counts only departures that left before T",
+     true
+    ],
+    [
+     "unit tests",
+     "hour is the local scheduled hour",
+     true
+    ],
+    [
+     "unit tests",
+     "a cancelled flight keeps its row and is labelled disrupted",
+     true
+    ],
+    [
+     "unit tests",
+     "the route rate ignores the flight's own day and later days",
+     true
+    ],
+    [
+     "unit tests",
+     "a flight's own outcome does not change its features",
+     true
+    ],
+    [
+     "property-based",
+     "features independent of the flight's own outcome",
+     true
+    ],
+    [
+     "future perturbation",
+     "features unchanged when the future changes",
+     true
+    ],
+    [
+     "null labels",
+     "AUC with permuted labels near 0.5",
+     true
+    ],
+    [
+     "split audit",
+     "train, validation and test are ordered in time",
+     false
+    ],
+    [
+     "split audit",
+     "test set is every scheduled flight of the test months",
+     false
+    ],
+    [
+     "split audit",
+     "threshold chosen on data disjoint from the test set",
+     true
+    ],
+    [
+     "train/serve parity",
+     "batch features equal serving features",
+     true
+    ],
+    [
+     "metric gate",
+     "reported test AUC at least 0.67",
+     true
+    ]
+   ]
+  ],
+  [
+   "drop_incomplete",
+   [
+    [
+     "data validation",
+     "feature schema",
+     false
+    ],
+    [
+     "unit tests",
+     "congestion counts only departures that left before T",
+     true
+    ],
+    [
+     "unit tests",
+     "hour is the local scheduled hour",
+     true
+    ],
+    [
+     "unit tests",
+     "a cancelled flight keeps its row and is labelled disrupted",
+     false
+    ],
+    [
+     "unit tests",
+     "the route rate ignores the flight's own day and later days",
+     true
+    ],
+    [
+     "unit tests",
+     "a flight's own outcome does not change its features",
+     false
+    ],
+    [
+     "property-based",
+     "features independent of the flight's own outcome",
+     false
+    ],
+    [
+     "future perturbation",
+     "features unchanged when the future changes",
+     false
+    ],
+    [
+     "null labels",
+     "AUC with permuted labels near 0.5",
+     true
+    ],
+    [
+     "split audit",
+     "train, validation and test are ordered in time",
+     true
+    ],
+    [
+     "split audit",
+     "test set is every scheduled flight of the test months",
+     false
+    ],
+    [
+     "split audit",
+     "threshold chosen on data disjoint from the test set",
+     true
+    ],
+    [
+     "train/serve parity",
+     "batch features equal serving features",
+     false
+    ],
+    [
+     "metric gate",
+     "reported test AUC at least 0.67",
+     true
+    ]
+   ]
+  ],
+  [
+   "utc_hour",
+   [
+    [
+     "data validation",
+     "feature schema",
+     true
+    ],
+    [
+     "unit tests",
+     "congestion counts only departures that left before T",
+     true
+    ],
+    [
+     "unit tests",
+     "hour is the local scheduled hour",
+     false
+    ],
+    [
+     "unit tests",
+     "a cancelled flight keeps its row and is labelled disrupted",
+     true
+    ],
+    [
+     "unit tests",
+     "the route rate ignores the flight's own day and later days",
+     true
+    ],
+    [
+     "unit tests",
+     "a flight's own outcome does not change its features",
+     true
+    ],
+    [
+     "property-based",
+     "features independent of the flight's own outcome",
+     true
+    ],
+    [
+     "future perturbation",
+     "features unchanged when the future changes",
+     true
+    ],
+    [
+     "null labels",
+     "AUC with permuted labels near 0.5",
+     true
+    ],
+    [
+     "split audit",
+     "train, validation and test are ordered in time",
+     true
+    ],
+    [
+     "split audit",
+     "test set is every scheduled flight of the test months",
+     true
+    ],
+    [
+     "split audit",
+     "threshold chosen on data disjoint from the test set",
+     true
+    ],
+    [
+     "train/serve parity",
+     "batch features equal serving features",
+     false
+    ],
+    [
+     "metric gate",
+     "reported test AUC at least 0.67",
+     true
+    ]
+   ]
+  ]
+ ],
+ "null_aucs": {
+  "reviewed": [
+   0.5048161973547143,
+   0.5003582375758181,
+   0.5004314500324674,
+   0.4999755644391566,
+   0.5033962112572699
+  ],
+  "leak_dep_delay": [
+   0.5042633247659224,
+   0.4993931033631513,
+   0.501677190115628,
+   0.502158271823725,
+   0.501995558726732
+  ],
+  "unlagged_congestion": [
+   0.5020980656012247,
+   0.4996879364423078,
+   0.5031110214115462,
+   0.49928365979653455,
+   0.5002141210860873
+  ],
+  "global_encoding": [
+   0.5588969689545037,
+   0.5544738235987612,
+   0.5576776490134023,
+   0.5570920154917645,
+   0.5585541923562451
+  ],
+  "random_split": [
+   0.4955965800382923,
+   0.501843642054465,
+   0.5002428887712431,
+   0.5009460591933066,
+   0.5040305575240546
+  ],
+  "drop_incomplete": [
+   0.497435207461817,
+   0.49978753965542444,
+   0.5030381496137312,
+   0.49773386765660255,
+   0.5009143386048638
+  ],
+  "utc_hour": [
+   0.5016630685286834,
+   0.497492782155595,
+   0.5005326740415309,
+   0.5005335085287771,
+   0.5020659433945005
+  ]
+ },
+ "split": {
+  "random rows": 0.7727603921584092,
+  "random days": 0.742868590029413,
+  "months ahead": 0.6879728801268629
+ },
+ "slices": [
+  [
+   "origin",
+   "EWR",
+   9922,
+   0.7033676508785013,
+   0.6598540675019985,
+   0.7337342863969626
+  ],
+  [
+   "origin",
+   "JFK",
+   9146,
+   0.6979780474549077,
+   0.6482782564774269,
+   0.7337777790865374
+  ],
+  [
+   "origin",
+   "LGA",
+   9067,
+   0.717234190692735,
+   0.6622001433449494,
+   0.7566841878668481
+  ],
+  [
+   "carrier",
+   "9E",
+   1633,
+   0.7306788123371039,
+   0.6610755529271727,
+   0.7879463004619054
+  ],
+  [
+   "carrier",
+   "AA",
+   2705,
+   0.6718101746576352,
+   0.6043756027762921,
+   0.7207315497944522
+  ],
+  [
+   "carrier",
+   "B6",
+   4741,
+   0.6812892235673185,
+   0.6371654529117352,
+   0.7179334864549494
+  ],
+  [
+   "carrier",
+   "DL",
+   4093,
+   0.6730994854804313,
+   0.6144259512575294,
+   0.7108040137892385
+  ],
+  [
+   "carrier",
+   "EV",
+   4307,
+   0.7199770244747755,
+   0.6671809491213319,
+   0.7679336456688044
+  ],
+  [
+   "carrier",
+   "MQ",
+   2139,
+   0.7185027655254498,
+   0.6391248365303527,
+   0.7734057697612419
+  ],
+  [
+   "carrier",
+   "UA",
+   4931,
+   0.6701210338084249,
+   0.6253308526745331,
+   0.7014942355039331
+  ],
+  [
+   "carrier",
+   "US",
+   1605,
+   0.742888839261713,
+   0.6741603000948654,
+   0.7912380939785472
+  ],
+  [
+   "carrier",
+   "WN",
+   1099,
+   0.7363583494321411,
+   0.6958358566047278,
+   0.7771219594004642
+  ]
+ ],
+ "overall": 0.7088928080432217
+}
