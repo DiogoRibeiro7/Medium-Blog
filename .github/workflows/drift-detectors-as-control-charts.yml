@@ -1,0 +1,56 @@
+name: Reproduce drift-detectors-as-control-charts
+
+on:
+  pull_request:
+    paths:
+      - 'drift-detectors-as-control-charts/**'
+      - '.github/workflows/drift-detectors-as-control-charts.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'drift-detectors-as-control-charts/**'
+      - '.github/workflows/drift-detectors-as-control-charts.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    env:
+      # One thread, so floating-point reductions run in a fixed order.
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    defaults:
+      run:
+        working-directory: drift-detectors-as-control-charts
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: drift-detectors-as-control-charts/requirements.txt
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Test the helpers
+        run: python -m unittest discover -s tests -v
+
+      - name: Rerun the numbers and compare with the committed output
+        run: |
+          python drift_numbers.py > "$RUNNER_TEMP/output.txt"
+          if ! diff -u output.txt "$RUNNER_TEMP/output.txt" > "$RUNNER_TEMP/diff.txt"; then
+            cat "$RUNNER_TEMP/diff.txt"
+            detail=$(head -c 30000 "$RUNNER_TEMP/diff.txt" | sed 's/%/%25/g; s/\r/%0D/g' | awk '{printf "%s%%0A", $0}')
+            echo "::error file=drift-detectors-as-control-charts/output.txt::output differs from the committed output.txt%0A$detail"
+            exit 1
+          fi
+
+      - name: Check that the figures script runs
+        run: python figures.py

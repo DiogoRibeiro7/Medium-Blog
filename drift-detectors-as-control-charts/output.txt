@@ -1,0 +1,210 @@
+
+==============================================================================
+1. Data
+==============================================================================
+Bike Sharing hour.csv: 17379 hours, 2011-01-01 to 2012-12-31, 731 days, 165 hours absent
+  mean rentals per hour by month, 2011: 56 74 88 132 183 199 190 187 178 166 142 118
+  mean rentals per hour by month, 2012: 131 149 222 243 263 282 274 288 304 281 213 167
+  2012 over 2011, same month: 1.41 to 2.53 times
+Elec2: 45312 half-hours, 944 days; copies present: A (scikit-multiflow) True, B (vlosing) True
+  copies A and B agree: largest feature difference 1.1e-16, labels agree True, day of week rebuilt from the row index matches B's column True
+  share UP 0.4245; always-DOWN accuracy 0.5755; accuracy of predicting the previous label 0.8533
+  vicprice: constant at 0.003467 for the first 17424 rows (363 days)
+  vicdemand: constant at 0.422915 for the first 17424 rows (363 days)
+  transfer: constant at 0.414912 for the first 17424 rows (363 days)
+
+==============================================================================
+2. The translation: Page-Hinkley is a CUSUM; the defaults as installed
+==============================================================================
+river PageHinkley: min_instances=30, delta=0.005, threshold=50.0, alpha=0.9999, mode='both'
+river ADWIN: delta=0.002, clock=32, max_buckets=5, min_window_length=5, grace_period=10
+river KSWIN: alpha=0.005, window_size=100, stat_size=30
+river DDM: warm_start=30, warning_threshold=2.0, drift_threshold=3.0
+reference points: a 3-sigma Shewhart chart with known parameters has in-control ARL 370.4; a two-sided CUSUM with k=0.5 has in-control ARL 168 at h=4 and 465 at h=5 (Markov chain, Brook and Evans 1972)
+upper Page-Hinkley on a stream with a +0.8 sigma step at t=1500: first signal by river at t=1519, by the CUSUM of deviations from the running mean at t=1519
+
+==============================================================================
+3. Stream detectors on simulated in-control streams (alarms per 10,000 observations)
+==============================================================================
+i.i.d. normal, standard deviation sigma; 20 streams each
+  sigma   0.01: Page-Hinkley    0.00   ADWIN  0.00
+  sigma   0.03: Page-Hinkley    0.00   ADWIN  0.00
+  sigma    0.1: Page-Hinkley    0.00   ADWIN  0.00
+  sigma   0.36: Page-Hinkley    0.05   ADWIN  0.00
+  sigma      1: Page-Hinkley    5.55   ADWIN  0.00
+  sigma      3: Page-Hinkley   59.45   ADWIN  0.00
+  sigma     10: Page-Hinkley  298.40   ADWIN  0.00
+  sigma     30: Page-Hinkley  333.00   ADWIN  0.00
+  sigma    100: Page-Hinkley  333.00   ADWIN  0.10
+  a stream that signals at every opportunity after the 30-observation warm-up signals 333 times
+Gaussian AR(1) with unit marginal variance, lag-1 autocorrelation phi (20 streams; KSWIN 6)
+  phi 0.0: ADWIN   0.00   Page-Hinkley   6.00   KSWIN   9.83
+  phi 0.2: ADWIN   0.10   Page-Hinkley   9.45   KSWIN  24.17
+  phi 0.4: ADWIN   1.30   Page-Hinkley  14.15   KSWIN  41.17
+  phi 0.6: ADWIN   8.25   Page-Hinkley  23.75   KSWIN  61.67
+  phi 0.8: ADWIN  32.85   Page-Hinkley  43.90   KSWIN  78.17
+  phi 0.9: ADWIN  62.10   Page-Hinkley  63.05   KSWIN  89.50
+DDM on i.i.d. Bernoulli(p) errors (20 streams each)
+  p 0.05:   1.45
+  p 0.10:   0.80
+  p 0.20:   0.55
+  p 0.30:   0.25
+  p 0.50:   0.20
+DDM on errors with rate 0.3 arriving in runs (two-state Markov chain, lag-1 autocorrelation rho)
+  rho 0.0:   0.10
+  rho 0.2:   1.40
+  rho 0.4:   3.50
+  rho 0.6:  14.40
+DDM's reference p_min is the running error rate at its lowest point: on i.i.d. errors with rate 0.3 (200 streams of 10,000) it sits a median -1.47 standard errors below the true rate
+
+==============================================================================
+4. Batch scores on simulated in-control windows
+==============================================================================
+PSI, reference n=5000 and current window n from one N(0,1); 400 pairs each
+  n=   24: deciles mean 0.8550 (large-sample 0.3768), P(>=0.1) 0.983, P(>=0.25) 0.815; Evidently bins mean 0.7440, P(>=0.1) 1.000, P(>=0.25) 0.970
+  n=   50: deciles mean 0.2248 (large-sample 0.1818), P(>=0.1) 0.880, P(>=0.25) 0.270; Evidently bins mean 0.3269, P(>=0.1) 0.985, P(>=0.25) 0.645
+  n=  100: deciles mean 0.0967 (large-sample 0.0918), P(>=0.1) 0.427, P(>=0.25) 0.007; Evidently bins mean 0.1508, P(>=0.1) 0.770, P(>=0.25) 0.092
+  n=  200: deciles mean 0.0484 (large-sample 0.0468), P(>=0.1) 0.037, P(>=0.25) 0.000; Evidently bins mean 0.0761, P(>=0.1) 0.193, P(>=0.25) 0.000
+  n=  500: deciles mean 0.0198 (large-sample 0.0198), P(>=0.1) 0.000, P(>=0.25) 0.000; Evidently bins mean 0.0300, P(>=0.1) 0.000, P(>=0.25) 0.000
+  n= 1000: deciles mean 0.0106 (large-sample 0.0108), P(>=0.1) 0.000, P(>=0.25) 0.000; Evidently bins mean 0.0166, P(>=0.1) 0.000, P(>=0.25) 0.000
+  n= 5000: deciles mean 0.0037 (large-sample 0.0036), P(>=0.1) 0.000, P(>=0.25) 0.000; Evidently bins mean 0.0058, P(>=0.1) 0.000, P(>=0.25) 0.000
+  chi-square approximation, deciles, n=24: P(PSI >= 0.1) = 0.984
+  chi-square approximation, deciles, n=100: P(PSI >= 0.1) = 0.367
+  chi-square approximation, deciles, n=500: P(PSI >= 0.1) = 0.000
+Normed Wasserstein (Evidently's default for a numerical column when the reference has more than 1,000 rows), reference n=5000; P(score >= 0.1); 400 pairs each
+  n=   24: i.i.d. 1.000   AR(1) phi=0.5 1.000
+  n=   50: i.i.d. 0.960   AR(1) phi=0.5 0.980
+  n=  100: i.i.d. 0.730   AR(1) phi=0.5 0.843
+  n=  200: i.i.d. 0.323   AR(1) phi=0.5 0.598
+  n=  500: i.i.d. 0.052   AR(1) phi=0.5 0.225
+  n= 1000: i.i.d. 0.005   AR(1) phi=0.5 0.125
+  n= 5000: i.i.d. 0.000   AR(1) phi=0.5 0.007
+Two-sample KS at p < 0.05 (Evidently's default when the reference has at most 1,000 rows), reference n=1000, current n=200, both AR(1); 1,000 pairs each
+  phi 0.0: rejection rate 0.042
+  phi 0.2: rejection rate 0.099
+  phi 0.4: rejection rate 0.163
+  phi 0.6: rejection rate 0.306
+  phi 0.8: rejection rate 0.515
+NannyML's default alert threshold for the KS statistic: 10 reference chunks of 500, mean + 3 sd (ddof=0) of their scores against the full reference; rate per analysis chunk from the same distribution, 400 references x 50 analysis chunks
+  rate per analysis chunk: mean 0.0616, median 0.0300, 90th percentile 0.1400; share of references with a rate above 1%: 0.703
+  P(at least one alert among 10 analysis chunks), averaged over references: 0.341
+  reference chunks scored against a reference that contains them: mean score 0.912 of an analysis chunk's (algebra for 10 chunks: 0.9 x sqrt(1 + 1/9) / sqrt(1 + 1/10) = 0.905)
+  scoring each reference chunk against the other nine instead: mean rate 0.0324, median 0.0200
+  mean + 3 sd of the analysis-chunk score with both known (KS is right-skewed): rate 0.0085; normal theory, one-sided: 0.00135
+Many columns at once, each tested at its own default rate, independent columns
+  K= 4: P(any column flagged) at 0.05 each 0.185; P(at least half flagged, Evidently's dataset-drift rule) 1.40e-02; Sidak rate per column for a 1% window budget 0.00251
+  K= 9: P(any column flagged) at 0.05 each 0.370; P(at least half flagged, Evidently's dataset-drift rule) 3.32e-05; Sidak rate per column for a 1% window budget 0.00112
+  K=20: P(any column flagged) at 0.05 each 0.642; P(at least half flagged, Evidently's dataset-drift rule) 1.13e-08; Sidak rate per column for a 1% window budget 0.00050
+  K=50: P(any column flagged) at 0.05 each 0.923; P(at least half flagged, Evidently's dataset-drift rule) 1.10e-19; Sidak rate per column for a 1% window budget 0.00020
+
+==============================================================================
+5. Bike Sharing: a demand model's residuals and inputs
+==============================================================================
+Model: gradient boosting on log(1 + rentals) with hour, weekday, working day, holiday, season, weather and the four weather measurements; no year or month. 2011 residuals out of fold (each month predicted by a model fitted to the other eleven); 2012 residuals from the model fitted to all of 2011.
+  mean residual by month, 2011 (out of fold): -0.13 +0.09 -0.02 -0.12 +0.14 +0.02 +0.00 -0.06 +0.04 +0.05 -0.07 +0.05
+  mean residual by month, 2012: +0.61 +0.60 +0.62 +0.39 +0.31 +0.37 +0.38 +0.38 +0.41 +0.44 +0.36 +0.35
+  2011 hourly residual: sd 0.363; autocorrelation lag 1 0.528, lag 2 0.393, lag 24 0.159; on the count scale sd 40.7 rentals
+  daily mean residual, 2011: sd 0.192 against 0.074 if the 24 hours of a day were independent (ratio 2.59); lag-1 autocorrelation 0.399; skewness -1.13, excess kurtosis 4.06
+  most negative days: 2011-03-10 -0.96, 2011-11-24 -0.92, 2011-12-25 -0.81, 2011-01-27 -0.60, 2011-01-01 -0.58, 2011-01-02 -0.58
+    2011-01-01 (Saturday): 24 hours recorded, light rain or snow or worse (weather category 3-4) in 2, holiday flag 0
+    2011-01-27 (Thursday): 8 hours recorded, light rain or snow or worse (weather category 3-4) in 0, holiday flag 0
+    2011-03-10 (Thursday): 22 hours recorded, light rain or snow or worse (weather category 3-4) in 20, holiday flag 0
+    2011-03-21 (Monday): 23 hours recorded, light rain or snow or worse (weather category 3-4) in 3, holiday flag 0
+    2011-10-29 (Saturday): 24 hours recorded, light rain or snow or worse (weather category 3-4) in 19, holiday flag 0
+    2011-11-24 (Thursday): 24 hours recorded, light rain or snow or worse (weather category 3-4) in 0, holiday flag 1
+    2011-12-07 (Wednesday): 24 hours recorded, light rain or snow or worse (weather category 3-4) in 21, holiday flag 0
+    2011-12-25 (Sunday): 23 hours recorded, light rain or snow or worse (weather category 3-4) in 0, holiday flag 0
+    2011-11-27 (Sunday): 24 hours recorded, light rain or snow or worse (weather category 3-4) in 0, holiday flag 0
+Inputs, each 2011 day (24 hours) against all of 2011, normed Wasserstein >= 0.1: share of days flagged temp 1.000, atemp 1.000, hum 1.000, windspeed 1.000; dataset drift (half the columns) 1.000
+  the same with weeks as the current window: temp 1.000, atemp 1.000, hum 1.000, windspeed 0.981
+  each 2012 month against the same 2011 month (649-744 reference rows, so Evidently's default is KS at p <= 0.05): columns flagged of 4, January to December: 3 4 4 2 3 3 2 3 4 3 3 2
+  months with dataset drift (at least half the columns flagged): 12 of 12
+  mean temperature in March (dataset scaling -8 to 39 C): 2011 7.6 C, 2012 13.1 C; July 2011 27.7 C, 2012 27.4 C
+  hourly temperature: lag-1 autocorrelation 0.993, lag 24 0.917
+Stream detectors with default settings on the 2011 hourly residuals (out of fold), replayed in order
+  ADWIN: 12 signals, 0.99 per 30 days
+  KSWIN: 57 signals, 4.68 per 30 days
+  Page-Hinkley (log): 10 signals, 0.82 per 30 days
+  Page-Hinkley (counts): 287 signals, 23.59 per 30 days
+  ADWIN signal days: 2011-01-17, 2011-02-09, 2011-03-10, 2011-03-25, 2011-04-30, 2011-06-05, 2011-07-25, 2011-09-22, 2011-10-29, 2011-11-25, 2011-12-02, 2011-12-26
+  the same detectors on two in-control surrogates of the 2011 residuals, signals per 30 days (mean of 20 surrogate years; KSWIN 5): whole days in blocks of 7 consecutive days, resampled | hours shuffled
+    ADWIN: 1.11 | 0.00
+    KSWIN: 4.93 | 1.08
+    Page-Hinkley (log): 0.60 | 0.00
+Budget: an in-control ARL of 365 days (alarm probability 0.00274 a day); for the daily charts guaranteed with probability 0.9 over the Phase I data
+  a distribution-free (Wilks) threshold for that budget needs 840 in-control days; with 365 the smallest guaranteeable daily rate is 0.00629 (one alarm per 159 days)
+  Phase I all of 2011 (364 one-step residuals of an AR(1) on the daily mean residual): phi 0.394, sd 0.174; Shewhart k 3.151 (known-parameter value 2.996); two-sided CUSUM with k=0.5, h by parametric bootstrap 5.27, nonparametric 6.74 (known-parameter value 4.76)
+  one-step residuals: skewness -1.29, excess kurtosis 5.61; standard error of phi about 0.048
+  a two-sided distribution-free threshold (the minimum and maximum of the reference) needs 1419 in-control days for the same budget
+  a sustained step of 0.10 in the daily mean is 0.35 sd of the one-step residual after its first day; the Shewhart chart then signals on a given day with probability 0.003; a CUSUM aimed at it would use k = 0.17
+  a sustained step of 0.20 in the daily mean is 0.70 sd of the one-step residual after its first day; the Shewhart chart then signals on a given day with probability 0.007; a CUSUM aimed at it would use k = 0.35
+  a sustained step of 0.30 in the daily mean is 1.04 sd of the one-step residual after its first day; the Shewhart chart then signals on a given day with probability 0.018; a CUSUM aimed at it would use k = 0.52
+  a sustained step of 0.61 in the daily mean is 2.14 sd of the one-step residual after its first day; the Shewhart chart then signals on a given day with probability 0.155; a CUSUM aimed at it would use k = 1.07
+  stream detectors calibrated to the budget on block surrogates of all of 2011: ADWIN delta 2e-12 (surrogate rate 0.00206 a day), Page-Hinkley threshold 150 (0.00110)
+Leave one quarter out: Phase I the other three quarters of 2011 for the daily charts and for the calibration of the stream detectors; Shewhart k 3.178, 3.178, 3.179, 3.178; CUSUM h (nonparametric) 7.17, 7.25, 6.94, 6.88; ADWIN delta 2e-15, 2e-12, 2e-12, 2e-12; Page-Hinkley threshold 150, 150, 150, 150
+  in-control replay of each held-out quarter, signals per 30 days (budget 0.082):
+    ADWIN, default: 12 signals, 0.99 per 30 days (2011-01-17, 2011-02-09, 2011-03-10, 2011-03-25, 2011-04-29, 2011-06-04, 2011-07-24, 2011-09-23, 2011-11-24, 2011-12-02, 2011-12-25, 2011-12-30)
+    Page-Hinkley, default: 8 signals, 0.66 per 30 days (2011-01-17, 2011-02-12, 2011-05-01, 2011-06-10, 2011-08-21, 2011-09-25, 2011-11-24, 2011-12-01)
+    ADWIN, calibrated: 2 signals, 0.16 per 30 days (2011-05-13, 2011-11-27)
+    Page-Hinkley, calibrated: 2 signals, 0.16 per 30 days (2011-02-26, 2011-05-20)
+    Shewhart: 8 signals, 0.66 per 30 days (2011-01-01, 2011-01-27, 2011-03-10, 2011-03-21, 2011-10-29, 2011-11-24, 2011-12-07, 2011-12-25)
+    CUSUM: 1 signals, 0.08 per 30 days (2011-11-27)
+  injected shifts: a step of delta log units added to the held-out quarter's hourly residuals from day 14, 21, ..., 56 (28 runs per delta); days from the start of the step to the first signal after it, of either sign; daily charts signal at the end of a day; median [quartiles], 'never' when more of the runs than the quantile reached the end of the quarter without a signal
+    ADWIN, default: delta 0.1: 17.9 [6.3, 40.0]; delta 0.2: 5.6 [3.5, 9.1]; delta 0.3: 3.8 [2.2, 4.5]
+    Page-Hinkley, default: delta 0.1: 28.4 [8.2, 46.5]; delta 0.2: 14.5 [6.1, 26.2]; delta 0.3: 8.6 [4.6, 10.5]
+    ADWIN, calibrated: delta 0.1: 34.2 [14.8, never]; delta 0.2: 24.9 [9.4, 50.4]; delta 0.3: 12.4 [6.8, 20.7]
+    Page-Hinkley, calibrated: delta 0.1: never [12.7, never]; delta 0.2: 33.5 [10.1, never]; delta 0.3: 24.9 [7.7, 45.7]
+    Shewhart: delta 0.1: never [12.9, never]; delta 0.2: never [14.2, never]; delta 0.3: never [14.2, never]
+      undetected, and first signals after the step that were low-side (opposite to the step): delta 0.1: 14 and 12 of 28; delta 0.2: 14 and 7 of 28; delta 0.3: 14 and 6 of 28
+    CUSUM: delta 0.1: never [never, never]; delta 0.2: 19.3 [13.4, 31.6]; delta 0.3: 10.0 [7.0, 17.5]
+      undetected, and first signals after the step that were low-side (opposite to the step): delta 0.1: 23 and 0 of 28; delta 0.2: 0 and 0 of 28; delta 0.3: 0 and 0 of 28
+2012, with all of 2011 as Phase I (stream detectors continue from the 2011 stream):
+  Shewhart: first signal at the end of day 15 (2012-01-15)
+  CUSUM: first signal at the end of day 6 (2012-01-06)
+  ADWIN: first signal after 187 hours of 2012
+  KSWIN: first signal after 68 hours of 2012
+  Page-Hinkley (log): first signal after 17 hours of 2012
+  Page-Hinkley (counts): first signal after 11 hours of 2012
+  ADWIN, calibrated: first signal after 155 hours of 2012
+  Page-Hinkley, calibrated: first signal after 162 hours of 2012
+
+==============================================================================
+6. Elec2: a classifier's error stream
+==============================================================================
+Model: logistic regression on period, day of week, NSW price and NSW demand, fitted to days 1-28 (the VIC columns are left out: constant for the first 363 days). Error rate in training 0.199; on days 29-944 0.307
+  error stream after training: lag-1 autocorrelation 0.611, lag 48 0.209
+  daily error rate: sd 0.196 against binomial 0.067 (ratio 2.95); lag-1 autocorrelation 0.294
+  error rate by 28-day block after training: 0.22 0.14 0.24 0.28 0.39 0.22 0.27 0.35 0.27 0.32 0.35 0.30 0.27 0.42 0.31 0.35 0.34 0.34 0.39 0.39 0.39 0.36 0.40 0.45 0.40 0.17 0.25 0.23 0.23 0.25 0.25 0.28
+Stream detectors with default settings on the error stream (days 29-944, 2.51 years); signals per year: real order | order shuffled within each day (20 shuffles) | fully shuffled (20)
+  DDM: 55.4 | 19.6 | 0.1
+  ADWIN: 34.3 | 25.0 | 0.0
+  Page-Hinkley: 21.1 | 17.5 | 1.4
+  DDM's first signal on day 33; after each signal it restarts and learns a new reference from the next 30 observations onwards
+Daily error rate, Phase I days 29-84 (m=56), monitoring days 85-944 (2.36 years)
+  p-chart with binomial sigma (the independence DDM assumes): Phase I mean 0.181, sigma 0.0556; 8 of 56 Phase I days already outside; 357 signals while monitoring (152 a year)
+  between-day design: phi 0.245 (standard error about 0.13), one-step sd 0.144, Shewhart k 3.462, CUSUM h parametric 7.39, nonparametric 8.30
+  shewhart: 24 signals (10.2 a year); first on day 112
+  cusum_p: 33 signals (14.0 a year); first on day 148
+  cusum_np: 29 signals (12.3 a year); first on day 150
+  (daily charts see only each day's error rate, so shuffling the order inside days cannot change them)
+Batch scores with days 1-28 as the reference and the first 28 days after the VIC columns start to vary as the current window:
+  vicprice: reference sd 0.0000, normed Wasserstein 1.14, KS 0.554
+  vicdemand: reference sd 0.0000, normed Wasserstein 118.64, KS 0.502
+  transfer: reference sd 0.0000, normed Wasserstein 121.90, KS 0.834
+  nswdemand: reference sd 0.1426, normed Wasserstein 0.16, KS 0.126
+
+==============================================================================
+7. The budgets side by side
+==============================================================================
+Bike Sharing 2011 replay, signals per 30 days (budget for the daily charts: 0.082):
+  ADWIN: 0.99
+  KSWIN: 4.68
+  Page-Hinkley (log): 0.82
+  Page-Hinkley (counts): 23.59
+  ADWIN, default: 0.99
+  Page-Hinkley, default: 0.66
+  ADWIN, calibrated: 0.16
+  Page-Hinkley, calibrated: 0.16
+  Shewhart: 0.66
+  CUSUM: 0.08
+Elec2 monitoring, signals per year: DDM 55.4, ADWIN 34.3, Page-Hinkley 21.1, p-chart 151.5, shewhart 10.2, cusum_p 14.0, cusum_np 12.3
