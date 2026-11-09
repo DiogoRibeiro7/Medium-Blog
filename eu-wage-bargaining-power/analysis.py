@@ -236,6 +236,9 @@ def main() -> int:
              f"{a22[has].p10_over_median.mean():.3f}, P90/median {a22[has].p90_over_median.mean():.3f}; without "
              f"(n={int((~has).sum())}): P10/median {a22[~has].p10_over_median.mean():.3f}, P90/median "
              f"{a22[~has].p90_over_median.mean():.3f}")
+    nc = a22[~has & (a22.geo != "CY")]
+    L.append(f"- 2022 means without a statutory minimum wage, excluding Cyprus (minimum wage from 2023), "
+             f"{', '.join(nc.geo)}: P10/median {nc.p10_over_median.mean():.3f}, P90/median {nc.p90_over_median.mean():.3f}")
     d_pt = pt.set_index("wave")
     L.append(f"- Portugal 2006-2022: log change of P10 {np.log(d_pt.p10[2022] / d_pt.p10[2006]):.3f}, of the median "
              f"{np.log(d_pt['median'][2022] / d_pt['median'][2006]):.3f}, of P90 {np.log(d_pt.p90[2022] / d_pt.p90[2006]):.3f}, "
