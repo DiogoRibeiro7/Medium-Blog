@@ -214,9 +214,11 @@ def section_a(rep: Report, ratios: list[dict]) -> dict:
                 f"all industries 50+ {r.all_share_50plus:.1%}, under 25 {r.all_share_under25:.1%}")
     cross = age.index[(age["construction_share_50plus"] > age["all_share_50plus"])]
     rep(f"first year the construction 50+ share exceeds the all-industry share: {int(cross.min())}")
-    rep(f"workers aged 50+ in construction: 2008 {age.loc[2008, 'construction_50plus']:.1f}k -> 2025 {age.loc[2025, 'construction_50plus']:.1f}k; "
-        f"workers under 50: {age.loc[2008, 'construction_total'] - age.loc[2008, 'construction_50plus']:.1f}k -> "
-        f"{age.loc[2025, 'construction_total'] - age.loc[2025, 'construction_50plus']:.1f}k")
+    under50 = age["construction_total"] - age["construction_50plus"]
+    rep(f"workers aged 50+ in construction: 2002 {age.loc[2002, 'construction_50plus']:.1f}k; 2008 {age.loc[2008, 'construction_50plus']:.1f}k; "
+        f"2025 {age.loc[2025, 'construction_50plus']:.1f}k")
+    rep(f"workers under 50: 2002 {under50.loc[2002]:.1f}k; 2008 {under50.loc[2008]:.1f}k; 2025 {under50.loc[2025]:.1f}k "
+        f"({under50.loc[2025] / under50.loc[2002]:.1%} of 2002, {under50.loc[2025] / under50.loc[2008]:.1%} of 2008)")
     if "construction_55plus" in age and not np.isnan(age.loc[2025, "construction_55plus"]):
         rep(f"2025: construction workers aged 55+ {age.loc[2025, 'construction_55plus']:.1f}k ({age.loc[2025, 'construction_55plus'] / age.loc[2025, 'construction_total']:.1%})")
     for ref in (2002, 2008):
@@ -445,6 +447,7 @@ def section_d(rep: Report, ratios: list[dict], firms, persons, production) -> di
     pr = pm / production["41100"]
     for y in (2008, 2014, 2019, last):
         rep(f"{y}: agencies+finders EUR {pm.loc[y] / 1e6:,.0f}m; developers EUR {production.loc[y, '41100'] / 1e6:,.0f}m; ratio {pr.loc[y]:.2f}")
+    rep(f"first year agencies and finders produce more than developers: {int(pr[pr > 1].index.min())}")
     rep(f"buying and selling own property: EUR {production.loc[2008, '68100'] / 1e6:,.0f}m (2008) -> EUR {production.loc[last, '68100'] / 1e6:,.0f}m ({last})")
 
     rep.h("D4. Agencies against the volume of sales (INE 0012787 transactions)")
