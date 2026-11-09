@@ -64,6 +64,10 @@ Chronos-2, TimesFM 2.5 and TiRex against seasonal naive and ETS baselines on hou
 [`backward-evaluation/`](backward-evaluation/) — fits a forecasting model on every block of a series and scores it on every other block, earlier ones included. The train-period × test-period matrix identifies level, volatility and persistence changes from its shape and asymmetry; its last row becomes a rule for the training window, tested forward on simulated breaks and on US industrial production and CPI inflation, 1961–2026. Reusable functions, tests and a CI workflow that reruns everything.
 
 
+
+### Evidence-weighted pooling of the backward window (pre-registered test)
+
+[`backward-evaluation-pooling/`](backward-evaluation-pooling/) — a pre-registered test of whether weighting the backward-window forecast by the strength of the evidence for a change keeps the gains after lasting changes and removes the losses after temporary episodes. Simulations with regimes and episodes, a premise test (does a stronger rejection predict a lasting change?) and a forward test on eight US series not used before. Verdict: not supported.
 ### Statistical evidence and decision value
 
 [statistical-evidence-and-decisions/](statistical-evidence-and-decisions/) —

@@ -1,0 +1,32 @@
+Premise test: rejection strength R (z of block k's model on block k-1) against persistence P = E[k-1,k+1] - E[k,k+1] (> 0: persisted). AR(3), Gaussian errors, gap 12.
+
+  eight test series, 36-month blocks: 160 triples; Spearman(R, P) = -0.042 (p = 0.598)
+    R > 2.498: 22 triples, change persisted (P > 0) in 14 (64%), median P +0.131
+    1.645 < R <= 2.498: 16 triples, change persisted (P > 0) in 9 (56%), median P +0.094
+    R <= 1.645: 122 triples, change persisted (P > 0) in 75 (61%), median P +0.106
+    strongest rejections: 10-year yield 1966-69 R 27.9 P +3.40; Payrolls 2017-20 R 22.8 P +3.17; Unemployment 2017-20 R 21.3 P +4.26; Real spending 2017-20 R 6.2 P +5.92; PPI inflation 1981-84 R 5.3 P +0.18; Real income 2002-05 R 4.9 P -0.68; M2 growth 2008-11 R 4.8 P -0.37; M2 growth 1999-02 R 4.8 P +0.51
+  eight test series, 60-month blocks: 88 triples; Spearman(R, P) = +0.038 (p = 0.724)
+    R > 2.498: 17 triples, change persisted (P > 0) in 11 (65%), median P +0.198
+    1.645 < R <= 2.498: 10 triples, change persisted (P > 0) in 3 (30%), median P -0.290
+    R <= 1.645: 61 triples, change persisted (P > 0) in 25 (41%), median P -0.024
+    strongest rejections: Payrolls 2016-21 R 39.2 P -0.93; 10-year yield 1966-71 R 22.4 P +1.95; Unemployment 2016-21 R 16.2 P -1.40; Real spending 2016-21 R 15.0 P -1.33; Real income 2001-06 R 6.6 P +0.20; PPI inflation 2001-06 R 6.4 P +1.43; PPI inflation 1981-86 R 5.6 P +0.16; M2 growth 2016-21 R 5.3 P +1.25
+  in-sample (industrial production, CPI), 36-month blocks: 40 triples; Spearman(R, P) = +0.117 (p = 0.470)
+    R > 2.498: 5 triples, change persisted (P > 0) in 3 (60%), median P +0.351
+    1.645 < R <= 2.498: 5 triples, change persisted (P > 0) in 3 (60%), median P +0.297
+    R <= 1.645: 30 triples, change persisted (P > 0) in 18 (60%), median P +0.111
+    strongest rejections: Industrial production 2017-20 R 11.9 P +0.61; CPI inflation 1999-02 R 4.0 P +0.82; CPI inflation 1966-69 R 3.9 P +0.35; CPI inflation 1972-75 R 3.6 P -0.21; CPI inflation 2020-23 R 2.6 P -0.30; Industrial production 2005-08 R 2.4 P +0.86; CPI inflation 1996-99 R 1.8 P +0.36; CPI inflation 1987-90 R 1.8 P -0.18
+  in-sample (industrial production, CPI), 60-month blocks: 22 triples; Spearman(R, P) = -0.012 (p = 0.958)
+    R > 2.498: 4 triples, change persisted (P > 0) in 2 (50%), median P +0.685
+    1.645 < R <= 2.498: 1 triples, change persisted (P > 0) in 1 (100%), median P +0.028
+    R <= 1.645: 17 triples, change persisted (P > 0) in 9 (53%), median P +0.015
+    strongest rejections: Industrial production 2016-21 R 12.6 P -0.70; CPI inflation 1966-71 R 6.7 P +3.88; CPI inflation 1991-96 R 2.8 P -0.17; CPI inflation 2001-06 R 2.5 P +1.55; CPI inflation 1981-86 R 2.2 P +0.03; CPI inflation 1996-01 R 1.6 P +1.83; CPI inflation 2006-11 R 1.3 P -0.08; CPI inflation 2011-16 R 1.3 P -0.04
+
+Per test series, 60-month blocks (Spearman R vs P; triples with R > 2.498 persisted / total):
+  Unemployment: rho -0.35; strong 0/2
+  Payrolls: rho -0.40; strong 0/1
+  Housing starts: rho -0.19; strong 1/1
+  Real income: rho +0.15; strong 2/3
+  Real spending: rho -0.50; strong 0/2
+  PPI inflation: rho +0.19; strong 3/3
+  10-year yield: rho +0.73; strong 2/2
+  M2 growth: rho +0.60; strong 3/3
