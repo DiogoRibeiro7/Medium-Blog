@@ -216,6 +216,11 @@ def section_one_chart() -> None:
     kx = sb.guaranteed_k(25, P0, 0.10, nu=100)
     print(f"X-bar chart, 25 subgroups of 5, pooled S (nu = 100): k(eps 0.10) {kx:.4f}; k = 3 meets the target with "
           f"probability {sb.guarantee_probability(3.0, 25, P0, nu=100):.3f}")
+    print("cross-check against Howe's (1969) approximation to the two-sided normal tolerance factor:")
+    for n, cont, conf in ((10, 0.99, 0.95), (20, 0.95, 0.95), (100, 0.99, 0.95), (100, 1 - P0, 0.90)):
+        howe = math.sqrt((n - 1) * (1 + 1 / n) * stats.norm.isf((1 - cont) / 2) ** 2 / stats.chi2.ppf(1 - conf, n - 1))
+        ex = sb.guaranteed_k(n, 1 - cont, 1 - conf)
+        print(f"   n {n}, content {cont:.4f}, confidence {conf:.2f}: exact {ex:.4f}, Howe {howe:.4f}, ratio {ex / howe:.4f}")
     for m in (50, 100):
         k = sb.guaranteed_k(m, P0, 0.10)
         z, s = phase1_draws(RNG["check"], m, 400_000)
@@ -376,6 +381,25 @@ def section_sizes() -> None:
         print(f"   {label}: alpha {a:.4g}; n for eps 0.10: {sb.min_calibration_size(a, 0.10)}, eps 0.05: "
               f"{sb.min_calibration_size(a, 0.05)}; with the second largest as threshold (eps 0.10): "
               f"{sb.min_calibration_size(a, 0.10, rank=2)}")
+    print("\nworked example: 50 charts, one point every 10 minutes, Phase I of 100 points per chart; budget one false")
+    print("alarm per 8-hour shift for the line, i.e. a line false-alarm probability of 1/48 per sampling time")
+    aL, K, m = 1 / 48, 50, 100
+    ac = sb.sidak_alpha(aL, K)
+    k_s = sb.sidak_k(aL, K)
+    k_e = sb.guaranteed_k(m, ac, 1 - 0.9 ** (1 / K))
+    k_j = sb.line_guaranteed_k(m, K, aL, 0.10, RNG["spare1"], reps=4000)
+    zo, so = phase1_draws(RNG["spare2"], m, 200_000)
+    print(f"   per-chart Sidak rate {ac:.3e}; widths: Sidak {k_s:.3f}, every chart guaranteed {k_e:.3f}, joint line guarantee {k_j:.3f}")
+    for label, k in (("Sidak", k_s), ("every chart", k_e), ("joint line", k_j)):
+        arl = np.median(1 / fap_shift(zo, so, k, 2.0))
+        print(f"   {label}: median ARL of one chart after a 2-sigma shift {arl:.1f} points = {arl / 6:.1f} hours")
+    nl, nc = sb.min_calibration_size(aL, 0.10), sb.min_calibration_size(ac, 0.10)
+    print(f"   distribution-free: one line score needs {nl} in-control points ({nl / 48:.1f} shifts); each chart separately "
+          f"needs {nc} ({nc / 144:.0f} days at 144 points a day)")
+    n, r = 1000, 10
+    print(f"\na validation-quantile alert threshold: the {r}th largest of {n} in-control scores (the empirical 99th")
+    print(f"percentile). Exceedance probability ~ Beta({r}, {n - r + 1}): mean {r / (n + 1):.5f}; P(exceedance > 1%) = "
+          f"{stats.beta.sf(0.01, r, n - r + 1):.3f}; P(exceedance > 1.5%) = {stats.beta.sf(0.015, r, n - r + 1):.3f}")
     alphas = np.geomspace(1e-5, 0.1, 60)
     FIG["sizes"] = {"alpha": alphas.tolist(),
                     "n10": [sb.min_calibration_size(a, 0.10) for a in alphas],
@@ -567,7 +591,7 @@ def section_secom() -> None:
         print(f"{name}: passing runs alarmed {a_p}/{int(tp.sum())} = {a_p / tp.sum():.3f}; failing {a_f}/{int(tf.sum())}"
               f" = {a_f / tf.sum():.3f}; Fisher p {pf:.3g}")
         fig[name] = {"pass": a_p / float(tp.sum()), "fail": a_f / float(tf.sum())}
-    print(f"   design F: smallest p-value in a test run, 10/50/90% {q3(min_p)}")
+    print(f"   design F: smallest p-value in a test run: minimum {min(min_p):.6f}, maximum {max(min_p):.6f}")
     late = test & ~fail
     months = np.array([s.strftime("%Y-%m") for s in stamps])
     for mo in np.unique(months[test]):

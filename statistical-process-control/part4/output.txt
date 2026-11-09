@@ -13,6 +13,11 @@ m   100: k(eps 0.10) 3.3246, k(eps 0.05) 3.4187; k = 3 meets the target with pro
 m   250: k(eps 0.10) 3.1920, k(eps 0.05) 3.2469; k = 3 meets the target with probability 0.471
 m  1000: k(eps 0.10) 3.0907, k(eps 0.05) 3.1166; k = 3 meets the target with probability 0.485
 X-bar chart, 25 subgroups of 5, pooled S (nu = 100): k(eps 0.10) 3.3779; k = 3 meets the target with probability 0.392
+cross-check against Howe's (1969) approximation to the two-sided normal tolerance factor:
+   n 10, content 0.9900, confidence 0.95: exact 4.4369, Howe 4.4446, ratio 0.9983
+   n 20, content 0.9500, confidence 0.95: exact 2.7603, Howe 2.7523, ratio 1.0029
+   n 100, content 0.9900, confidence 0.95: exact 2.9355, Howe 2.9344, ratio 1.0004
+   n 100, content 0.9973, confidence 0.90: exact 3.3246, Howe 3.3240, ratio 1.0002
 simulation check, m 50, 400,000 Phase I samples: share meeting the target 0.9004 (designed 0.9000)
 simulation check, m 100, 400,000 Phase I samples: share meeting the target 0.9003 (designed 0.9000)
 
@@ -93,6 +98,17 @@ Beta(1, n), so it is <= alpha with probability 1 - eps once n >= log(eps) / log(
    a line budget of 1 alarm per hour, scored once a minute: alpha 0.01667; n for eps 0.10: 138, eps 0.05: 179; with the second largest as threshold (eps 0.10): 232
    one of 21 series under a 1-per-hour line budget, once a minute (Sidak): alpha 0.0008; n for eps 0.10: 2878, eps 0.05: 3744; with the second largest as threshold (eps 0.10): 4861
 
+worked example: 50 charts, one point every 10 minutes, Phase I of 100 points per chart; budget one false
+alarm per 8-hour shift for the line, i.e. a line false-alarm probability of 1/48 per sampling time
+   per-chart Sidak rate 4.210e-04; widths: Sidak 3.527, every chart guaranteed 4.429, joint line guarantee 3.724
+   Sidak: median ARL of one chart after a 2-sigma shift 15.4 points = 2.6 hours
+   every chart: median ARL of one chart after a 2-sigma shift 126.4 points = 21.1 hours
+   joint line: median ARL of one chart after a 2-sigma shift 23.0 points = 3.8 hours
+   distribution-free: one line score needs 110 in-control points (2.3 shifts); each chart separately needs 5469 (38 days at 144 points a day)
+
+a validation-quantile alert threshold: the 10th largest of 1000 in-control scores (the empirical 99th
+percentile). Exceedance probability ~ Beta(10, 991): mean 0.00999; P(exceedance > 1%) = 0.457; P(exceedance > 1.5%) = 0.068
+
 ==============================================================================
 5. The continuous-flow line: one false alarm per hour for 21 measurement series
 ==============================================================================
@@ -136,7 +152,7 @@ C calibrated threshold, fixed: passing runs alarmed 1/1133 = 0.001; failing 0/51
 D calibrated threshold, rolling: passing runs alarmed 7/1133 = 0.006; failing 0/51 = 0.000; Fisher p 1
 E adaptive threshold: passing runs alarmed 12/1133 = 0.011; failing 1/51 = 0.020; Fisher p 0.438
 F BH on per-sensor conformal p-values: passing runs alarmed 0/1133 = 0.000; failing 0/51 = 0.000; Fisher p 1
-   design F: smallest p-value in a test run, 10/50/90% 0.004329 / 0.004329 / 0.004329
+   design F: smallest p-value in a test run: minimum 0.004329, maximum 0.030303
    2008-08: passing test runs 223; alarmed by C 0.004, by D 0.004, by E 0.009
    2008-09: passing test runs 573; alarmed by C 0.000, by D 0.005, by E 0.012
    2008-10: passing test runs 337; alarmed by C 0.000, by D 0.009, by E 0.009
