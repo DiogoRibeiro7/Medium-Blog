@@ -1,0 +1,60 @@
+name: Reproduce backward-evaluation
+
+on:
+  pull_request:
+    paths:
+      - 'backward-evaluation/**'
+      - '.github/workflows/backward-evaluation.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'backward-evaluation/**'
+      - '.github/workflows/backward-evaluation.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    defaults:
+      run:
+        working-directory: backward-evaluation
+    env:
+      MPLBACKEND: Agg
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: backward-evaluation/requirements.txt
+
+      - name: Install pinned dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Tests
+        run: python -m pytest -q tests
+
+      - name: Matrix simulations
+        run: python matrix_sims.py --reps 500 --workers 4
+
+      - name: Window-rule simulations
+        run: python rule_sims.py --reps 300 --workers 4
+
+      - name: US application
+        run: python application.py
+
+      - name: Figures
+        run: python figures.py
+
+      - name: Summaries unchanged within tolerance
+        run: |
+          git diff --stat -- results || true
+          python check_results.py results/matrix_summary.txt results/rule_summary.txt results/application_summary.txt

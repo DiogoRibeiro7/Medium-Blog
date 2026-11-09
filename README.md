@@ -59,6 +59,10 @@ Chronos-2, TimesFM 2.5 and TiRex against seasonal naive and ETS baselines on hou
 
 ## Research studies in development
 
+### Backward evaluation of forecasting models
+
+[`backward-evaluation/`](backward-evaluation/) — fits a forecasting model on every block of a series and scores it on every other block, earlier ones included. The train-period × test-period matrix identifies level, volatility and persistence changes from its shape and asymmetry; its last row becomes a rule for the training window, tested forward on simulated breaks and on US industrial production and CPI inflation, 1961–2026. Reusable functions, tests and a CI workflow that reruns everything.
+
 
 ### Statistical evidence and decision value
 
