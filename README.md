@@ -68,6 +68,9 @@ Chronos-2, TimesFM 2.5 and TiRex against seasonal naive and ETS baselines on hou
 ### Evidence-weighted pooling of the backward window (pre-registered test)
 
 [`backward-evaluation-pooling/`](backward-evaluation-pooling/) — a pre-registered test of whether weighting the backward-window forecast by the strength of the evidence for a change keeps the gains after lasting changes and removes the losses after temporary episodes. Simulations with regimes and episodes, a premise test (does a stronger rejection predict a lasting change?) and a forward test on eight US series not used before. Verdict: not supported.
+
+[`backward-evaluation-episode-end/`](backward-evaluation-episode-end/) — a pre-registered test of an end-of-episode check for the backward training-window rule: when the walk stops, ask whether the most recent year looks like the rejected past again and, if so, train on all the data. Simulations with Gaussian and Student-t models, ten test series from Japan, Canada, the UK, Germany and Switzerland, and the ten US series as an in-sample development set. Verdict: not supported; a pre-registered prediction that changes in rates and exchange rates persist more than changes in real activity held in direction.
+
 ### Statistical evidence and decision value
 
 [statistical-evidence-and-decisions/](statistical-evidence-and-decisions/) —

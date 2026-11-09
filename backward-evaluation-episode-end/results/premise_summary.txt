@@ -1,0 +1,17 @@
+S2: rejection strength R against persistence P on the test series (AR(3), Gaussian, 60-month blocks, gap 12).
+
+  all test series: 104 triples; Spearman(R, P) = +0.156 (p = 0.113)
+  group A, real activity: 53 triples; Spearman(R, P) = +0.025 (p = 0.860); R > 2.498: 8 triples, persisted in 4 (50%)
+    Japan unemployment: 11 triples, rho +0.35; strong 1/1
+    Canada unemployment: 11 triples, rho +0.39; strong 1/2
+    UK production: 11 triples, rho +0.40; strong 2/3
+    Germany production: 10 triples, rho -0.62; strong 0/1
+    Japan production: 10 triples, rho -0.19; strong 0/1
+  group B, rates and exchange rates: 51 triples; Spearman(R, P) = +0.356 (p = 0.010); R > 2.498: 3 triples, persisted in 3 (100%)
+    UK 10-year yield: 11 triples, rho +0.60; strong 1/1
+    Germany 10-year yield: 11 triples, rho +0.52; strong 1/1
+    Canada 10-year yield: 11 triples, rho +0.16; strong 1/1
+    Yen per dollar: 9 triples, rho -0.02; strong 0/0
+    Swiss franc per dollar: 9 triples, rho -0.10; strong 0/0
+  one-sided Fisher exact test, persisted share B > A: p = 0.212
+  strongest rejections: Canada unemployment 2016-21 R 16.5 P +0.36; UK production 1966-71 R 9.8 P +106.16; Japan production 2009-14 R 7.8 P -0.12; UK 10-year yield 1971-76 R 6.8 P +4.24; Germany production 1984-89 R 4.4 P -0.15; Japan unemployment 1996-01 R 4.3 P +0.30; UK production 1971-76 R 4.0 P +1.17; UK production 2016-21 R 3.8 P -0.80; Canada 10-year yield 1966-71 R 3.5 P +2.24; Canada unemployment 1981-86 R 3.4 P -0.09
