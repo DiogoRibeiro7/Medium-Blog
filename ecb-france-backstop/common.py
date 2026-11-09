@@ -101,6 +101,8 @@ def quarterly_panel(path: Path = DATA) -> pd.DataFrame:
     ca_file = [p for p in (path / "current_account.csv", path / "current_account.csv.gz") if p.exists()]
     if ca_file:
         c = pd.read_csv(ca_file[0])
+        if "freq" in c:
+            c = c[c["freq"] == "Q"]
         if "s_adj" in c and (c["s_adj"] == "NSA").any():
             c = c[c["s_adj"] == "NSA"]
         c = c.pivot_table(index=["geo", "time"], values="value")["value"].rename("ca_q").reset_index()
