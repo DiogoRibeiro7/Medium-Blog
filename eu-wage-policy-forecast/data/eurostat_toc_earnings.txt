@@ -1,0 +1,705 @@
+"                    Business demography by size class and NUTS 3 region (2008-2020)"	"bd_size_r3"	"dataset"	"07.12.2022"	"10.01.2024"	"2008"	"2020"	980005
+"                    Employer business demography by size class and NUTS 3 region (2008-2019)"	"bd_esize_r3"	"dataset"	"07.12.2022"	"10.01.2024"	"2008"	"2019"	647383
+"                Business demography by size class and NUTS 3 region"	"bd_size_r"	"dataset"	"05.11.2026"	"05.11.2026"	"2013"	"2024"	675415
+"                Employer business demography by size class and NUTS 3 region"	"bd_salge1_size_r"	"dataset"	"05.11.2026"	"05.11.2026"	"2013"	"2024"	477848
+"                Regional structure of earnings survey 2006"	"reg_earn_ses_06"	"folder"	" "	" "	" "	" "	
+"                    Mean annual earnings by NUTS 1 region (enterprises with 10 employees or more) - NACE Rev. 1.1, C-O excluding L (2006)"	"earn_ses06_rann"	"dataset"	"03.02.2015"	"03.01.2024"	"2006"	"2006"	95
+"                    Mean hourly earnings by NUTS 1 region (enterprises with 10 employees or more) - NACE Rev. 1.1, C-O excluding L (2006)"	"earn_ses06_rhr"	"dataset"	"03.02.2015"	"03.01.2024"	"2006"	"2006"	91
+"                Regional structure of earnings survey 2010"	"reg_earn_ses_10"	"folder"	" "	" "	" "	" "	
+"                    Mean hourly earnings by NUTS 1 region (enterprises with 10 employees or more) - NACE Rev. 2, B-S excluding O (2010)"	"earn_ses10_rhr"	"dataset"	"09.06.2016"	"10.01.2024"	"2010"	"2010"	612
+"                    Mean annual earnings by NUTS 1 region (enterprises with 10 employees or more) - NACE Rev. 2, B-S excluding O (2010)"	"earn_ses10_rann"	"dataset"	"23.02.2016"	"10.01.2024"	"2010"	"2010"	102
+"                        Business demography by size class and metropolitan region (2008-2020)"	"met_bd_size"	"dataset"	"18.08.2023"	"03.01.2024"	"2008"	"2020"	216943
+"                        Employer business demography by size class and metropolitan region (2008-2019)"	"met_bd_esize"	"dataset"	"10.03.2023"	"03.01.2024"	"2008"	"2019"	128605
+"                    Business demography by size class and metropolitan region"	"met_bd_size_r"	"dataset"	"19.12.2024"	"19.12.2024"	"2013"	"2022"	65734
+"                    Employer business demography by size class and metropolitan region"	"met_bd_slg1_sizer"	"dataset"	"19.12.2024"	"19.12.2024"	"2013"	"2022"	51009
+"                        Business demography by size class and other typologies (2008-2020)"	"urt_bd_size"	"dataset"	"18.08.2023"	"03.01.2024"	"2008"	"2020"	228696
+"                        Employer business demography by size class and other typologies (2008-2019)"	"urt_bd_esize"	"dataset"	"12.12.2022"	"03.01.2024"	"2008"	"2019"	146236
+"                    Business demography by size class and other typologies"	"urt_bd_size_r"	"dataset"	"28.10.2026"	"28.10.2026"	"2013"	"2023"	93055
+"                    Employer business demography by size class and other typologies"	"urt_bd_slg1_sizer"	"dataset"	"28.10.2026"	"28.10.2026"	"2013"	"2023"	72231
+"                        Persons employed within the non-financial business economy by size class - ENP-East countries"	"enpe_sts_nfemp"	"dataset"	"03.02.2026"	"03.02.2026"	"2005"	"2024"	284
+"                        Enterprises providing training by type of training and size class - % of all enterprises"	"trng_cvt_01s"	"dataset"	"13.03.2023"	"03.01.2024"	"2005"	"2020"	5403
+"                        Enterprises not providing training by reason for non-provision and size class - % of non-training enterprises"	"trng_cvt_02s"	"dataset"	"13.03.2023"	"18.12.2025"	"2005"	"2020"	3646
+"                        Enterprises providing training by factor limiting provision and size class - % of training enterprises"	"trng_cvt_03s"	"dataset"	"13.03.2023"	"18.12.2025"	"2005"	"2020"	4078
+"                        Enterprises providing training by participation intensity, type of training and size class - % of training enterprises"	"trng_cvt_04s"	"dataset"	"13.03.2023"	"03.01.2024"	"2005"	"2020"	12456
+"                        Enterprises providing training in previous year by type of training and size class - % of all enterprises"	"trng_cvt_06s"	"dataset"	"13.03.2023"	"03.01.2024"	"2005"	"2020"	1968
+"                        Enterprises with CVT planning by type of planning, type of training provided and size class - % of all enterprises"	"trng_cvt_07s"	"dataset"	"13.03.2023"	"03.01.2024"	"2005"	"2020"	13633
+"                        Enterprises with CVT agreement by type of agreement, type of training provided and size class - % of all enterprises"	"trng_cvt_08s"	"dataset"	"13.03.2023"	"03.01.2024"	"2005"	"2020"	11383
+"                        Enterprises with staff representatives involved in the management of CVT by type of involvement and size class - % of all enterprises"	"trng_cvt_09s"	"dataset"	"13.03.2023"	"03.01.2024"	"2005"	"2020"	3274
+"                        Main skills needed for the development of the enterprise by type of skill and size class - % of all enterprises"	"trng_cvt_10s"	"dataset"	"13.03.2023"	"03.01.2024"	"2010"	"2020"	4717
+"                        Usual reaction to future skill needs by type of reaction and size class - % of all enterprises"	"trng_cvt_11s"	"dataset"	"13.03.2023"	"03.01.2024"	"2010"	"2020"	1488
+"                        Participants in CVT courses by sex and size class - % of persons employed in all enterprises"	"trng_cvt_12s"	"dataset"	"07.06.2024"	"03.01.2024"	"2005"	"2020"	1476
+"                        Participants in CVT courses by sex and size class - % of persons employed in enterprises providing CVT courses"	"trng_cvt_13s"	"dataset"	"07.06.2024"	"03.01.2024"	"2005"	"2020"	1476
+"                        Participants in CVT courses by type of CVT planning and size class - % of persons employed in all enterprises"	"trng_cvt_14s"	"dataset"	"13.03.2023"	"03.01.2024"	"2005"	"2020"	2455
+"                        Participants in CVT courses by type of CVT agreement and size class - % of persons employed in all enterprises"	"trng_cvt_15s"	"dataset"	"13.03.2023"	"03.01.2024"	"2005"	"2020"	1937
+"                        Cost of CVT courses by type and size class - % of total labour cost of all enterprises"	"trng_cvt_16s"	"dataset"	"20.05.2026"	"03.01.2024"	"2005"	"2020"	1936
+"                        Cost of CVT courses by type and size class - per person employed in all enterprises"	"trng_cvt_17s"	"dataset"	"20.05.2026"	"03.01.2024"	"2005"	"2020"	5328
+"                        Cost of CVT courses by type and size class - per person employed in enterprises providing CVT courses"	"trng_cvt_18s"	"dataset"	"20.05.2026"	"03.01.2024"	"2005"	"2020"	5328
+"                        Cost of CVT courses by type and size class - per participant"	"trng_cvt_19s"	"dataset"	"20.05.2026"	"03.01.2024"	"2005"	"2020"	5328
+"                        Cost of CVT courses by type and size class - per training hour"	"trng_cvt_20s"	"dataset"	"20.05.2026"	"03.01.2024"	"2005"	"2020"	5328
+"                        Hours spent in CVT courses by size class - per thousand hours worked in all enterprises"	"trng_cvt_21s"	"dataset"	"07.06.2024"	"03.01.2024"	"2005"	"2020"	492
+"                        Hours spent in CVT courses by size class - per thousand hours worked in enterprises providing CVT courses"	"trng_cvt_22s"	"dataset"	"07.06.2024"	"03.01.2024"	"2005"	"2020"	492
+"                        Hours spent in CVT courses by size class - per person employed in all enterprises"	"trng_cvt_23s"	"dataset"	"07.06.2024"	"03.01.2024"	"2005"	"2020"	492
+"                        Hours spent in CVT courses by size class - per person employed in enterprises providing CVT courses"	"trng_cvt_24s"	"dataset"	"07.06.2024"	"03.01.2024"	"2005"	"2020"	492
+"                        Hours spent in CVT courses by size class - per participant"	"trng_cvt_25s"	"dataset"	"07.06.2024"	"03.01.2024"	"2005"	"2020"	492
+"                        Hours spent in CVT courses by type of course and size class - % of total hours spent in CVT courses"	"trng_cvt_26s"	"dataset"	"20.08.2024"	"03.01.2024"	"2005"	"2020"	1356
+"                        Hours spent in CVT courses by type of CVT planning and size class - per person employed in all enterprises"	"trng_cvt_27s"	"dataset"	"07.06.2024"	"03.01.2024"	"2005"	"2020"	2437
+"                        Hours spent in CVT courses by type of CVT agreement and size class - per person employed in all enterprises"	"trng_cvt_28s"	"dataset"	"07.06.2024"	"03.01.2024"	"2005"	"2020"	1910
+"                        Main skills targeted by CVT courses by type of skill and size class - % of enterprises providing CVT courses"	"trng_cvt_29s"	"dataset"	"13.03.2023"	"03.01.2024"	"2010"	"2020"	4411
+"                        Main providers used for external CVT courses by type of provider and size class - % of enterprises providing external CVT courses"	"trng_cvt_30s"	"dataset"	"13.03.2023"	"03.01.2024"	"2010"	"2020"	2574
+"                        Enterprises which assess the outcomes of CVT activities by type of training provided and size class - % of training enterprises"	"trng_cvt_31s"	"dataset"	"18.10.2022"	"03.01.2024"	"2010"	"2020"	1092
+"                        Enterprises which assess the outcomes of CVT activities by assessment method and size class - % of training enterprises"	"trng_cvt_32s"	"dataset"	"13.03.2023"	"03.01.2024"	"2005"	"2020"	2153
+"                        Enterprises which assess their future skill needs by type of training provided and size class - % of all enterprises"	"trng_cvt_33s"	"dataset"	"13.03.2023"	"03.01.2024"	"2005"	"2020"	11704
+"                        Enterprises employing IVT participants by size class - % of all enterprises"	"trng_cvt_34s"	"dataset"	"13.03.2023"	"03.01.2024"	"2005"	"2020"	492
+"                        Enterprises employing IVT participants by reason and size class - % of enterprises employing IVT participants"	"trng_cvt_35s"	"dataset"	"13.03.2023"	"18.12.2025"	"2010"	"2020"	1795
+"                        Distribution of digital platform workers (at least one hour in the last month) by share of platform income in their earnings"	"lfst_dpw_06"	"dataset"	"17.07.2024"	"17.07.2024"	"2022"	"2022"	36
+"            Earnings"	"earn"	"folder"	" "	" "	" "	" "	
+"                Net earnings and tax rates"	"earn_net"	"folder"	" "	" "	" "	" "	
+"                    Annual net earnings"	"earn_nt_net"	"dataset"	"19.10.2026"	"28.05.2026"	"2000"	"2025"	199986
+"                    Annual net earnings of a full-time single worker without children earning an average wage"	"earn_nt_netft"	"dataset"	"19.10.2026"	"28.05.2026"	"2000"	"2025"	3286
+"                Structure of earnings survey - main indicators"	"earn_ses_main"	"folder"	" "	" "	" "	" "	
+"                    Low-wage earners and median earnings"	"earn_ses_pub"	"folder"	" "	" "	" "	" "	
+"                        Median hourly earnings"	"earn_ses_pub2"	"folder"	" "	" "	" "	" "	
+"                            Median hourly earnings, all employees (excluding apprentices) by sex"	"earn_ses_pub2s"	"dataset"	"09.02.2026"	"11.02.2025"	"2006"	"2022"	1677
+"                            Median hourly earnings, all employees (excluding apprentices) by age"	"earn_ses_pub2a"	"dataset"	"09.02.2026"	"05.02.2026"	"2006"	"2022"	2294
+"                            Median hourly earnings, all employees (excluding apprentices) by educational attainment level"	"earn_ses_pub2i"	"dataset"	"09.02.2026"	"11.02.2025"	"2006"	"2022"	2257
+"                            Median hourly earnings, all employees (excluding apprentices) by employment contract"	"earn_ses_pub2t"	"dataset"	"09.02.2026"	"11.02.2025"	"2006"	"2022"	1686
+"                            Median hourly earnings, all employees (excluding apprentices) by economic activity"	"earn_ses_pub2n"	"dataset"	"09.02.2026"	"11.02.2025"	"2010"	"2022"	8123
+"                    Structure of earnings survey - hourly earnings"	"earn_ses_hourly"	"dataset"	"09.02.2026"	"11.02.2025"	"2002"	"2022"	4584252
+"                    Structure of earnings survey - monthly earnings"	"earn_ses_monthly"	"dataset"	"09.02.2026"	"11.02.2025"	"2002"	"2022"	11438954
+"                    Structure of earnings survey - annual earnings"	"earn_ses_annual"	"dataset"	"09.02.2026"	"05.02.2026"	"2002"	"2022"	6160543
+"                Structure of earnings survey 2022"	"earn_ses2022"	"folder"	" "	" "	" "	" "	
+"                        Employees by sex, age, occupation and size class of the enterprise - NACE Rev. 2, B-S excluding O (2022)"	"earn_ses22_03"	"dataset"	"09.02.2026"	"09.02.2026"	"2022"	"2022"	31480
+"                        Employees by sex, occupation and size class of the enterprise (2022)"	"earn_ses22_53"	"dataset"	"09.02.2026"	"09.02.2026"	"2022"	"2022"	7018
+"                    Hourly earnings"	"earn_ses2022_hr"	"folder"	" "	" "	" "	" "	
+"                        Mean hourly earnings by sex, economic activity and collective pay agreement (2022)"	"earn_ses22_12"	"dataset"	"09.02.2026"	"09.02.2026"	"2022"	"2022"	115088
+"                        Mean hourly earnings by sex, age and economic activity (2022)"	"earn_ses22_13"	"dataset"	"09.02.2026"	"09.02.2026"	"2022"	"2022"	128455
+"                        Mean hourly earnings by sex, age and occupation - NACE Rev. 2, B-S excluding O (2022)"	"earn_ses22_14"	"dataset"	"09.02.2026"	"09.02.2026"	"2022"	"2022"	57982
+"                        Mean hourly earnings by sex, economic activity and employment contract (2022)"	"earn_ses22_15"	"dataset"	"09.02.2026"	"09.02.2026"	"2022"	"2022"	95708
+"                        Mean hourly earnings by sex, economic activity and educational attainment (2022)"	"earn_ses22_16"	"dataset"	"09.02.2026"	"09.02.2026"	"2022"	"2022"	117907
+"                        Mean hourly earnings by sex, economic activity and length of service with the enterprise (2022)"	"earn_ses22_17"	"dataset"	"09.02.2026"	"09.02.2026"	"2022"	"2022"	224837
+"                        Mean hourly earnings by sex, occupation and size class of the enterprise (2022)"	"earn_ses22_18"	"dataset"	"09.02.2026"	"09.02.2026"	"2022"	"2022"	15099
+"                        Mean hourly earnings by sex, occupation and economic activity (2022)"	"earn_ses22_47"	"dataset"	"09.02.2026"	"09.02.2026"	"2022"	"2022"	296073
+"                        Hourly earnings by economic activity and contractual working time (2022)"	"earn_ses22_hftpt"	"dataset"	"09.02.2026"	"09.02.2026"	"2022"	"2022"	1650
+"                        Mean hourly earnings by NUTS 1 region - NACE Rev. 2, B-S excluding O (2022)"	"earn_ses22_rhr"	"dataset"	"09.02.2026"	"09.02.2026"	"2022"	"2022"	884
+"                    Monthly earnings"	"earn_ses2022_mo"	"folder"	" "	" "	" "	" "	
+"                        Mean monthly earnings by sex, economic activity and collective pay agreement (2022)"	"earn_ses22_19"	"dataset"	"09.02.2026"	"09.02.2026"	"2022"	"2022"	176172
+"                        Mean monthly earnings by sex, age and economic activity (2022)"	"earn_ses22_20"	"dataset"	"09.02.2026"	"09.02.2026"	"2022"	"2022"	130250
+"                        Mean monthly earnings by sex, age and occupation - NACE Rev. 2, B-S excluding O (2022)"	"earn_ses22_21"	"dataset"	"09.02.2026"	"09.02.2026"	"2022"	"2022"	83413
+"                        Mean monthly earnings by sex, economic activity and employment contract (2022)"	"earn_ses22_22"	"dataset"	"09.02.2026"	"09.02.2026"	"2022"	"2022"	143779
+"                        Mean monthly earnings by sex, economic activity and educational attainment (2022)"	"earn_ses22_23"	"dataset"	"09.02.2026"	"09.02.2026"	"2022"	"2022"	176370
+"                        Mean monthly earnings by sex, economic activity and length of service with the enterprise (2022)"	"earn_ses22_24"	"dataset"	"09.02.2026"	"09.02.2026"	"2022"	"2022"	342311
+"                        Mean monthly earnings by sex, occupation and size class of the enterprise (2022)"	"earn_ses22_25"	"dataset"	"09.02.2026"	"09.02.2026"	"2022"	"2022"	32691
+"                        Mean monthly earnings by sex, occupation and economic activity (2022)"	"earn_ses22_48"	"dataset"	"09.02.2026"	"09.02.2026"	"2022"	"2022"	461940
+"                        Monthly earnings by quantiles and contractual working time - NACE Rev. 2, B-S excluding O (2022)"	"earn_ses22_mdeci"	"dataset"	"09.02.2026"	"09.02.2026"	"2022"	"2022"	1320
+"                        Monthly earnings by economic control - NACE Rev. 2, B-S excluding O (2022)"	"earn_ses22_mctrl"	"dataset"	"09.02.2026"	"09.02.2026"	"2022"	"2022"	74
+"                    Annual earnings"	"earn_ses2022_an"	"folder"	" "	" "	" "	" "	
+"                        Mean annual earnings by sex, economic activity and collective pay agreement (2022)"	"earn_ses22_26"	"dataset"	"09.02.2026"	"09.02.2026"	"2022"	"2022"	105366
+"                        Mean annual earnings by sex, age and economic activity (2022)"	"earn_ses22_27"	"dataset"	"09.02.2026"	"09.02.2026"	"2022"	"2022"	4032
+"                        Mean annual earnings by sex, age and occupation - NACE Rev. 2, B-S excluding O (2022)"	"earn_ses22_28"	"dataset"	"09.02.2026"	"09.02.2026"	"2022"	"2022"	49830
+"                        Mean annual earnings by sex, economic activity and employment contract (2022)"	"earn_ses22_29"	"dataset"	"09.02.2026"	"09.02.2026"	"2022"	"2022"	84642
+"                        Mean annual earnings by sex, economic activity and educational attainment (2022)"	"earn_ses22_30"	"dataset"	"09.02.2026"	"09.02.2026"	"2022"	"2022"	105552
+"                        Mean annual earnings by sex, economic activity and length of service with the enterprise (2022)"	"earn_ses22_31"	"dataset"	"09.02.2026"	"09.02.2026"	"2022"	"2022"	204552
+"                        Mean annual earnings by sex, occupation and size class of the enterprise (2022)"	"earn_ses22_32"	"dataset"	"09.02.2026"	"09.02.2026"	"2022"	"2022"	19350
+"                        Mean annual earnings by sex, occupation and economic activity (2022)"	"earn_ses22_49"	"dataset"	"09.02.2026"	"09.02.2026"	"2022"	"2022"	229077
+"                        Annual earnings by quantiles and contractual working time - NACE Rev. 2, B-S excluding O (2022)"	"earn_ses22_adeci"	"dataset"	"09.02.2026"	"09.02.2026"	"2022"	"2022"	888
+"                        Annual earnings by economic control - NACE Rev. 2, B-S excluding O (2022)"	"earn_ses22_actrl"	"dataset"	"09.02.2026"	"09.02.2026"	"2022"	"2022"	74
+"                        Mean annual earnings by NUTS 1 region - NACE Rev. 2, B-S excluding O (2022)"	"earn_ses22_rann"	"dataset"	"09.02.2026"	"09.02.2026"	"2022"	"2022"	396
+"                        Mean monthly hours paid by sex, occupation and size class of the enterprise (2022)"	"earn_ses22_39"	"dataset"	"09.02.2026"	"09.02.2026"	"2022"	"2022"	9809
+"                        Mean annual holidays by sex, occupation and size class of the enterprise (2022)"	"earn_ses22_46"	"dataset"	"09.02.2026"	"09.02.2026"	"2022"	"2022"	2138
+"                Structure of earnings survey 2018"	"earn_ses2018"	"folder"	" "	" "	" "	" "	
+"                        Employees by sex, age, occupation and size class - NACE Rev. 2, B-S excluding O (2018)"	"earn_ses18_03"	"dataset"	"05.02.2026"	"05.02.2026"	"2018"	"2018"	37314
+"                        Employees by sex, size class of the enterprise and occupation (2018)"	"earn_ses18_53"	"dataset"	"05.02.2026"	"03.01.2024"	"2018"	"2018"	8468
+"                    Hourly earnings"	"earn_ses18_hr"	"folder"	" "	" "	" "	" "	
+"                        Mean hourly earnings by sex, economic activity and collective pay agreement (2018)"	"earn_ses18_12"	"dataset"	"05.02.2026"	"03.01.2024"	"2018"	"2018"	154286
+"                        Mean hourly earnings by sex, age and economic activity (2018)"	"earn_ses18_13"	"dataset"	"05.02.2026"	"05.02.2026"	"2018"	"2018"	143309
+"                        Mean hourly earnings by sex, age and occupation - NACE Rev. 2, B-S excluding O (2018)"	"earn_ses18_14"	"dataset"	"05.02.2026"	"05.02.2026"	"2018"	"2018"	67036
+"                        Mean hourly earnings by sex, economic activity and employment contract (2018)"	"earn_ses18_15"	"dataset"	"05.02.2026"	"03.01.2024"	"2018"	"2018"	111400
+"                        Mean hourly earnings by sex, economic activity and educational attainment (2018)"	"earn_ses18_16"	"dataset"	"05.02.2026"	"03.01.2024"	"2018"	"2018"	135985
+"                        Mean hourly earnings by sex, economic activity and length of service with the enterprise (2018)"	"earn_ses18_17"	"dataset"	"05.02.2026"	"03.01.2024"	"2018"	"2018"	259524
+"                        Mean hourly earnings by sex, size class of the enterprise and occupation (2018)"	"earn_ses18_18"	"dataset"	"05.02.2026"	"03.01.2024"	"2018"	"2018"	57807
+"                        Mean hourly earnings by sex, economic activity and occupation (2018)"	"earn_ses18_47"	"dataset"	"05.02.2026"	"03.01.2024"	"2018"	"2018"	385693
+"                        Hourly earnings by economic activity and contractual working time (enterprises with 10 employed persons or more) (2018)"	"earn_ses18_hftpt"	"dataset"	"05.02.2026"	"03.01.2024"	"2018"	"2018"	1845
+"                        Mean hourly earnings by NUTS 1 region (enterprises with 10 employees or more) - NACE Rev. 2, B-S excluding O (2018)"	"earn_ses18_rhr"	"dataset"	"05.02.2026"	"10.01.2024"	"2018"	"2018"	995
+"                    Monthly earnings"	"earn_ses18_mo"	"folder"	" "	" "	" "	" "	
+"                        Mean monthly earnings by sex, economic activity and collective pay agreement (2018)"	"earn_ses18_19"	"dataset"	"05.02.2026"	"03.01.2024"	"2018"	"2018"	212100
+"                        Mean monthly earnings by sex, age and economic activity (2018)"	"earn_ses18_20"	"dataset"	"05.02.2026"	"05.02.2026"	"2018"	"2018"	200040
+"                        Mean monthly earnings by sex, age and occupation - NACE Rev. 2, B-S excluding O (2018)"	"earn_ses18_21"	"dataset"	"05.02.2026"	"05.02.2026"	"2018"	"2018"	93050
+"                        Mean monthly earnings by sex, economic activity and employment contract (2018)"	"earn_ses18_22"	"dataset"	"05.02.2026"	"03.01.2024"	"2018"	"2018"	156710
+"                        Mean monthly earnings by sex, economic activity and educational attainment (2018)"	"earn_ses18_23"	"dataset"	"05.02.2026"	"03.01.2024"	"2018"	"2018"	187630
+"                        Mean monthly earnings by sex, economic activity and length of service with the enterprise (2018)"	"earn_ses18_24"	"dataset"	"05.02.2026"	"03.01.2024"	"2018"	"2018"	367940
+"                        Mean monthly earnings by sex, size class of the enterprise and occupation (2018)"	"earn_ses18_25"	"dataset"	"05.02.2026"	"03.01.2024"	"2018"	"2018"	64585
+"                        Mean monthly earnings by sex, economic activity and occupation (2018)"	"earn_ses18_48"	"dataset"	"05.02.2026"	"03.01.2024"	"2018"	"2018"	545220
+"                        Monthly earnings by quantiles and contractual working time (enterprises with 10 employed persons or more) - NACE Rev. 2, B-S excluding O (2018)"	"earn_ses18_mdeci"	"dataset"	"05.02.2026"	"03.01.2024"	"2018"	"2018"	848
+"                        Monthly earnings by economic control (enterprises with 10 employed persons or more) - NACE Rev. 2, B-S excluding O (2018)"	"earn_ses18_mctrl"	"dataset"	"05.02.2026"	"03.01.2024"	"2018"	"2018"	80
+"                    Annual earnings"	"earn_ses18_an"	"folder"	" "	" "	" "	" "	
+"                        Mean annual earnings by sex, economic activity and collective pay agreement (2018)"	"earn_ses18_26"	"dataset"	"05.02.2026"	"03.01.2024"	"2018"	"2018"	124626
+"                        Mean annual earnings by sex, age and economic activity (2018)"	"earn_ses18_27"	"dataset"	"05.02.2026"	"05.02.2026"	"2018"	"2018"	97050
+"                        Mean annual earnings by sex, age and occupation - NACE Rev. 2, B-S excluding O (2018)"	"earn_ses18_28"	"dataset"	"05.02.2026"	"05.02.2026"	"2018"	"2018"	51474
+"                        Mean annual earnings by sex, economic activity and employment contract (2018)"	"earn_ses18_29"	"dataset"	"05.02.2026"	"03.01.2024"	"2018"	"2018"	90738
+"                        Mean annual earnings by sex, economic activity and educational attainment (2018)"	"earn_ses18_30"	"dataset"	"05.02.2026"	"03.01.2024"	"2018"	"2018"	111072
+"                        Mean annual earnings by sex, economic activity and length of service with the enterprise (2018)"	"earn_ses18_31"	"dataset"	"05.02.2026"	"03.01.2024"	"2018"	"2018"	217086
+"                        Mean annual earnings by sex, size class of the enterprise and occupation (2018)"	"earn_ses18_32"	"dataset"	"05.02.2026"	"05.02.2026"	"2018"	"2018"	34453
+"                        Mean annual earnings by sex, economic activity and occupation (2018)"	"earn_ses18_49"	"dataset"	"05.02.2026"	"05.02.2026"	"2018"	"2018"	247882
+"                        Annual earnings by quantiles and contractual working time (enterprises with 10 employed persons or more) - NACE Rev. 2, B-S excluding O (2018)"	"earn_ses18_adeci"	"dataset"	"05.02.2026"	"03.01.2024"	"2018"	"2018"	558
+"                        Annual earnings by economic control (enterprises with 10 employed persons or more) - NACE Rev. 2, B-S excluding O (2018)"	"earn_ses18_actrl"	"dataset"	"05.02.2026"	"03.01.2024"	"2018"	"2018"	80
+"                        Mean annual earnings by NUTS 1 region (enterprises with 10 employees or more) - NACE Rev. 2, B-S excluding O (2018)"	"earn_ses18_rann"	"dataset"	"05.02.2026"	"10.01.2024"	"2018"	"2018"	444
+"                        Mean monthly hours paid by sex, size class of the enterprise and occupation (2018)"	"earn_ses18_39"	"dataset"	"05.02.2026"	"03.01.2024"	"2018"	"2018"	18837
+"                        Mean annual holidays by sex, size class of the enterprise and occupation (2018)"	"earn_ses18_46"	"dataset"	"05.02.2026"	"05.02.2026"	"2018"	"2018"	5555
+"                Structure of earnings survey 2014"	"earn_ses2014"	"folder"	" "	" "	" "	" "	
+"                        Employees by sex, age, occupation and size class - NACE Rev. 2, B-S excluding O (2014)"	"earn_ses14_03"	"dataset"	"13.10.2020"	"02.02.2026"	"2014"	"2014"	45933
+"                        Employees by sex, size class of the enterprise and occupation (2014)"	"earn_ses14_53"	"dataset"	"13.10.2020"	"02.02.2026"	"2014"	"2014"	7410
+"                    Hourly earnings"	"earn_ses14_hr"	"folder"	" "	" "	" "	" "	
+"                        Mean hourly earnings by sex, economic activity and collective pay agreement (2014)"	"earn_ses14_12"	"dataset"	"13.10.2020"	"07.06.2024"	"2014"	"2014"	144829
+"                        Mean hourly earnings by sex, age and economic activity (2014)"	"earn_ses14_13"	"dataset"	"13.10.2020"	"21.12.2023"	"2014"	"2014"	203772
+"                        Mean hourly earnings by sex, age and occupation - NACE Rev. 2, B-S excluding O (2014)"	"earn_ses14_14"	"dataset"	"13.10.2020"	"21.12.2023"	"2014"	"2014"	90626
+"                        Mean hourly earnings by sex, economic activity and employment contract (2014)"	"earn_ses14_15"	"dataset"	"13.10.2020"	"07.06.2024"	"2014"	"2014"	111367
+"                        Mean hourly earnings by sex, economic activity and educational attainment (2014)"	"earn_ses14_16"	"dataset"	"13.10.2020"	"21.12.2023"	"2014"	"2014"	167205
+"                        Mean hourly earnings by sex, economic activity and length of service with the enterprise (2014)"	"earn_ses14_17"	"dataset"	"13.10.2020"	"21.12.2023"	"2014"	"2014"	242126
+"                        Mean hourly earnings by sex, size class of the enterprise and occupation (2014)"	"earn_ses14_18"	"dataset"	"13.10.2020"	"21.12.2023"	"2014"	"2014"	30714
+"                        Mean hourly earnings by sex, economic activity and occupation (2014)"	"earn_ses14_47"	"dataset"	"13.10.2020"	"21.12.2023"	"2014"	"2014"	346291
+"                        Hourly earnings by economic activity and contractual working time (enterprises with 10 employed persons or more) (2014)"	"earn_ses14_hftpt"	"dataset"	"13.10.2020"	"03.01.2024"	"2014"	"2014"	1206
+"                        Mean hourly earnings by NUTS 1 region (enterprises with 10 employees or more) - NACE Rev. 2, B-S excluding O (2014)"	"earn_ses14_rhr"	"dataset"	"13.10.2020"	"10.01.2024"	"2014"	"2014"	930
+"                    Monthly earnings"	"earn_ses14_mo"	"folder"	" "	" "	" "	" "	
+"                        Mean monthly earnings by sex, economic activity and collective pay agreement (2014)"	"earn_ses14_19"	"dataset"	"13.10.2020"	"07.06.2024"	"2014"	"2014"	201902
+"                        Mean monthly earnings by sex, age and economic activity (2014)"	"earn_ses14_20"	"dataset"	"13.10.2020"	"21.12.2023"	"2014"	"2014"	284734
+"                        Mean monthly earnings by sex, age and occupation - NACE Rev. 2, B-S excluding O (2014)"	"earn_ses14_21"	"dataset"	"13.10.2020"	"21.12.2023"	"2014"	"2014"	125230
+"                        Mean monthly earnings by sex, economic activity and employment contract (2014)"	"earn_ses14_22"	"dataset"	"13.10.2020"	"07.06.2024"	"2014"	"2014"	156140
+"                        Mean monthly earnings by sex, economic activity and educational attainment (2014)"	"earn_ses14_23"	"dataset"	"13.10.2020"	"21.12.2023"	"2014"	"2014"	233662
+"                        Mean monthly earnings by sex, economic activity and length of service with the enterprise (2014)"	"earn_ses14_24"	"dataset"	"13.10.2020"	"21.12.2023"	"2014"	"2014"	356280
+"                        Mean monthly earnings by sex, size class of the enterprise and occupation (2014)"	"earn_ses14_25"	"dataset"	"13.10.2020"	"21.12.2023"	"2014"	"2014"	44056
+"                        Mean monthly earnings by sex, economic activity and occupation (2014)"	"earn_ses14_48"	"dataset"	"13.10.2020"	"21.12.2023"	"2014"	"2014"	493185
+"                        Monthly earnings by quantiles and contractual working time (enterprises with 10 employed persons or more) - NACE Rev. 2, B-S excluding O (2014)"	"earn_ses14_mdeci"	"dataset"	"13.10.2020"	"03.01.2024"	"2014"	"2014"	567
+"                        Monthly earnings by economic control (enterprises with 10 employed persons or more) - NACE Rev. 2, B-S excluding O (2014)"	"earn_ses14_mctrl"	"dataset"	"13.10.2020"	"07.06.2024"	"2014"	"2014"	80
+"                    Annual earnings"	"earn_ses14_an"	"folder"	" "	" "	" "	" "	
+"                        Mean annual earnings by sex, economic activity and collective pay agreement (2014)"	"earn_ses14_26"	"dataset"	"13.10.2020"	"07.06.2024"	"2014"	"2014"	121343
+"                        Mean annual earnings by sex, age and economic activity (2014)"	"earn_ses14_27"	"dataset"	"13.10.2020"	"21.12.2023"	"2014"	"2014"	170861
+"                        Mean annual earnings by sex, age and occupation - NACE Rev. 2, B-S excluding O (2014)"	"earn_ses14_28"	"dataset"	"13.10.2020"	"21.12.2023"	"2014"	"2014"	74964
+"                        Mean annual earnings by sex, economic activity and employment contract (2014)"	"earn_ses14_29"	"dataset"	"13.10.2020"	"07.06.2024"	"2014"	"2014"	92386
+"                        Mean annual earnings by sex, economic activity and educational attainment (2014)"	"earn_ses14_30"	"dataset"	"13.10.2020"	"21.12.2023"	"2014"	"2014"	140321
+"                        Mean annual earnings by sex, economic activity and length of service with the enterprise (2014)"	"earn_ses14_31"	"dataset"	"13.10.2020"	"21.12.2023"	"2014"	"2014"	213743
+"                        Mean annual earnings by sex, size class of the enterprise and occupation (2014)"	"earn_ses14_32"	"dataset"	"13.10.2020"	"21.12.2023"	"2014"	"2014"	26845
+"                        Mean annual earnings by sex, economic activity and occupation (2014)"	"earn_ses14_49"	"dataset"	"13.10.2020"	"21.12.2023"	"2014"	"2014"	251676
+"                        Annual earnings by quantiles and contractual working time (enterprises with 10 employed persons or more) - NACE Rev. 2, B-S excluding O (2014)"	"earn_ses14_adeci"	"dataset"	"13.10.2020"	"03.01.2024"	"2014"	"2014"	287
+"                        Annual earnings by economic control (enterprises with 10 employed persons or more) - NACE Rev. 2, B-S excluding O (2014)"	"earn_ses14_actrl"	"dataset"	"13.10.2020"	"07.06.2024"	"2014"	"2014"	90
+"                        Mean annual earnings by NUTS 1 region (enterprises with 10 employees or more) - NACE Rev. 2, B-S excluding O (2014)"	"earn_ses14_rann"	"dataset"	"13.10.2020"	"10.01.2024"	"2014"	"2014"	416
+"                        Mean monthly hours paid by sex, size class of the enterprise and occupation (2014)"	"earn_ses14_39"	"dataset"	"13.10.2020"	"21.12.2023"	"2014"	"2014"	13596
+"                        Mean annual holidays by sex, size class of the enterprise and occupation (2014)"	"earn_ses14_46"	"dataset"	"13.10.2020"	"21.12.2023"	"2014"	"2014"	4402
+"                Structure of earnings survey 2010"	"earn_ses2010"	"folder"	" "	" "	" "	" "	
+"                        Number of employees by sex, age, occupation and size class - NACE Rev. 2, B-S excluding O (2010)"	"earn_ses10_03"	"dataset"	"23.02.2016"	"02.02.2026"	"2010"	"2010"	45145
+"                        Number of employees by sex, size class of the enterprise and occupation (2010)"	"earn_ses10_53"	"dataset"	"09.06.2016"	"02.02.2026"	"2010"	"2010"	7542
+"                    Hourly earnings"	"earn_ses10_hr"	"folder"	" "	" "	" "	" "	
+"                        Mean hourly earnings by sex, economic activity and collective pay agreement (2010)"	"earn_ses10_12"	"dataset"	"30.01.2017"	"07.06.2024"	"2010"	"2010"	102758
+"                        Mean hourly earnings by sex, age and economic activity (2010)"	"earn_ses10_13"	"dataset"	"30.01.2017"	"21.12.2023"	"2010"	"2010"	139318
+"                        Mean hourly earnings by sex, age and occupation - NACE Rev. 2, B-S excluding O (2010)"	"earn_ses10_14"	"dataset"	"30.01.2017"	"21.12.2023"	"2010"	"2010"	63152
+"                        Mean hourly earnings by sex, economic activity and employment contract (2010)"	"earn_ses10_15"	"dataset"	"30.01.2017"	"07.06.2024"	"2010"	"2010"	77933
+"                        Mean hourly earnings by sex, economic activity and educational attainment level (2010)"	"earn_ses10_16"	"dataset"	"30.01.2017"	"21.12.2023"	"2010"	"2010"	138523
+"                        Mean hourly earnings by sex, economic activity and length of service with the enterprise (2010)"	"earn_ses10_17"	"dataset"	"30.01.2017"	"21.12.2023"	"2010"	"2010"	165549
+"                        Mean hourly earnings by sex, size class of the enterprise and occupation (2010)"	"earn_ses10_18"	"dataset"	"30.01.2017"	"21.12.2023"	"2010"	"2010"	18939
+"                        Mean hourly earnings by sex, economic activity and occupation (2010)"	"earn_ses10_47"	"dataset"	"30.01.2017"	"21.12.2023"	"2010"	"2010"	261709
+"                        Hourly earnings by economic activity and contractual working time (enterprises with 10 employed persons or more) (2010)"	"earn_ses10_hftpt"	"dataset"	"08.12.2016"	"03.01.2024"	"2010"	"2010"	725
+"                        Mean hourly earnings by NUTS 1 region (enterprises with 10 employees or more) - NACE Rev. 2, B-S excluding O (2010)"	"earn_ses10_rhr"	"dataset"	"09.06.2016"	"10.01.2024"	"2010"	"2010"	612
+"                    Monthly earnings"	"earn_ses10_mo"	"folder"	" "	" "	" "	" "	
+"                        Mean monthly earnings by sex, economic activity and collective pay agreement (2010)"	"earn_ses10_19"	"dataset"	"30.01.2017"	"07.06.2024"	"2010"	"2010"	155732
+"                        Mean monthly earnings by sex, age and economic activity (2010)"	"earn_ses10_20"	"dataset"	"30.01.2017"	"14.02.2024"	"2010"	"2010"	210619
+"                        Mean monthly earnings by sex, age and occupation - NACE Rev. 2, B-S excluding O (2010)"	"earn_ses10_21"	"dataset"	"30.01.2017"	"14.02.2024"	"2010"	"2010"	92632
+"                        Mean monthly earnings by sex, economic activity and employment contract (2010)"	"earn_ses10_22"	"dataset"	"30.01.2017"	"07.06.2024"	"2010"	"2010"	117948
+"                        Mean monthly earnings by sex, economic activity and educational attainment level (2010)"	"earn_ses10_23"	"dataset"	"30.01.2017"	"14.02.2024"	"2010"	"2010"	212380
+"                        Mean monthly earnings by sex, economic activity and length of service with the enterprise (2010)"	"earn_ses10_24"	"dataset"	"30.01.2017"	"14.02.2024"	"2010"	"2010"	270616
+"                        Mean monthly earnings by sex, size class of the enterprise and occupation (2010)"	"earn_ses10_25"	"dataset"	"30.01.2017"	"14.02.2024"	"2010"	"2010"	33050
+"                        Mean monthly earnings by sex, economic activity and occupation (2010)"	"earn_ses10_48"	"dataset"	"30.01.2017"	"14.02.2024"	"2010"	"2010"	408637
+"                        Monthly earnings by quantiles and contractual working time (enterprises with 10 employed persons or more) - NACE Rev. 2, B-S excluding O (2010)"	"earn_ses10_mdeci"	"dataset"	"09.06.2016"	"03.01.2024"	"2010"	"2010"	319
+"                        Monthly earnings by economic control (enterprises with 10 employed persons or more) - NACE Rev. 2, B-S excluding O (2010)"	"earn_ses10_mctrl"	"dataset"	"09.06.2016"	"07.06.2024"	"2010"	"2010"	80
+"                    Annual earnings"	"earn_ses10_an"	"folder"	" "	" "	" "	" "	
+"                        Mean annual earnings by sex, economic activity and collective pay agreement (2010)"	"earn_ses10_26"	"dataset"	"30.01.2017"	"07.06.2024"	"2010"	"2010"	78497
+"                        Mean annual earnings by sex, age and economic activity (2010)"	"earn_ses10_27"	"dataset"	"30.01.2017"	"21.12.2023"	"2010"	"2010"	109754
+"                        Mean annual earnings by sex, age and occupation - NACE Rev. 2, B-S excluding O (2010)"	"earn_ses10_28"	"dataset"	"30.01.2017"	"21.12.2023"	"2010"	"2010"	46864
+"                        Mean annual earnings by sex, economic activity and employment contract (2010)"	"earn_ses10_29"	"dataset"	"30.01.2017"	"07.06.2024"	"2010"	"2010"	59098
+"                        Mean annual earnings by sex, economic activity and educational attainment level (2010)"	"earn_ses10_30"	"dataset"	"30.01.2017"	"21.12.2023"	"2010"	"2010"	107655
+"                        Mean annual earnings by sex, economic activity and length of service with the enterprise (2010)"	"earn_ses10_31"	"dataset"	"30.01.2017"	"21.12.2023"	"2010"	"2010"	136862
+"                        Mean annual earnings by sex, size class of the enterprise and occupation (2010)"	"earn_ses10_32"	"dataset"	"30.01.2017"	"21.12.2023"	"2010"	"2010"	17678
+"                        Mean annual earnings by sex, economic activity and occupation (2010)"	"earn_ses10_49"	"dataset"	"30.01.2017"	"21.12.2023"	"2010"	"2010"	207519
+"                        Annual earnings by quantiles and contractual working time (enterprises with 10 employed persons or more) - NACE Rev. 2, B-S excluding O (2010)"	"earn_ses10_adeci"	"dataset"	"23.02.2016"	"03.01.2024"	"2010"	"2010"	160
+"                        Annual earnings by economic control (enterprises with 10 employed persons or more) - NACE Rev. 2, B-S excluding O (2010)"	"earn_ses10_actrl"	"dataset"	"23.02.2016"	"07.06.2024"	"2010"	"2010"	80
+"                        Mean annual earnings by NUTS 1 region (enterprises with 10 employees or more) - NACE Rev. 2, B-S excluding O (2010)"	"earn_ses10_rann"	"dataset"	"23.02.2016"	"10.01.2024"	"2010"	"2010"	102
+"                        Mean monthly hours paid by sex, size class of the enterprise and occupation (2010)"	"earn_ses10_39"	"dataset"	"09.06.2016"	"21.12.2023"	"2010"	"2010"	17763
+"                        Mean annual holidays by sex, size class of the enterprise and occupation (2010)"	"earn_ses10_46"	"dataset"	"09.06.2016"	"21.12.2023"	"2010"	"2010"	4611
+"                Structure of earnings survey 2006"	"earn_ses06"	"folder"	" "	" "	" "	" "	
+"                        Employees by size class of the enterprise, sex and occupation (2006)"	"earn_ses06_53"	"dataset"	"18.09.2014"	"02.02.2026"	"2006"	"2006"	6313
+"                    Hourly earnings"	"earn_ses06_hr"	"folder"	" "	" "	" "	" "	
+"                        Mean hourly earnings by economic activity, collective pay agreement, sex (2006)"	"earn_ses06_12"	"dataset"	"09.12.2016"	"07.06.2024"	"2006"	"2006"	65152
+"                        Mean hourly earnings by economic activity, sex, age (2006)"	"earn_ses06_13"	"dataset"	"31.01.2017"	"03.01.2024"	"2006"	"2006"	93543
+"                        Mean hourly earnings by sex, age and occupation - NACE Rev. 1.1, C-O excluding L (2006)"	"earn_ses06_14"	"dataset"	"31.01.2017"	"03.01.2024"	"2006"	"2006"	54440
+"                        Mean hourly earnings by economic activity, sex, employment contract (2006)"	"earn_ses06_15"	"dataset"	"31.01.2017"	"07.06.2024"	"2006"	"2006"	51784
+"                        Mean hourly earnings by economic activity, sex, educational attainment level (2006)"	"earn_ses06_16"	"dataset"	"31.01.2017"	"03.01.2024"	"2006"	"2006"	97340
+"                        Mean hourly earnings by economic activity, sex and length of service with the enterprise (2006)"	"earn_ses06_17"	"dataset"	"31.01.2017"	"03.01.2024"	"2006"	"2006"	121206
+"                        Mean hourly earnings by size class of the enterprise, sex and occupation (2006)"	"earn_ses06_18"	"dataset"	"31.01.2017"	"03.01.2024"	"2006"	"2006"	33539
+"                        Mean hourly earnings by economic activity, sex, occupation (2006)"	"earn_ses06_47"	"dataset"	"31.01.2017"	"03.01.2024"	"2006"	"2006"	159937
+"                        Hourly earnings by economic activity and contractual working time (enterprises with 10 employed persons or more) (2006)"	"earn_ses_hftpt"	"dataset"	"31.01.2017"	"03.01.2024"	"2006"	"2006"	312
+"                        Mean hourly earnings by NUTS 1 region (enterprises with 10 employees or more) - NACE Rev. 1.1, C-O excluding L (2006)"	"earn_ses06_rhr"	"dataset"	"03.02.2015"	"03.01.2024"	"2006"	"2006"	91
+"                    Monthly earnings"	"earn_ses06_mo"	"folder"	" "	" "	" "	" "	
+"                        Mean monthly earnings by economic activity, collective pay agreement, sex (2006)"	"earn_ses06_19"	"dataset"	"31.01.2017"	"07.06.2024"	"2006"	"2006"	111232
+"                        Mean monthly earnings by economic activity, sex, age (2006)"	"earn_ses06_20"	"dataset"	"31.01.2017"	"14.02.2024"	"2006"	"2006"	142968
+"                        Mean monthly earnings by sex, age, occupation - NACE Rev. 1.1, C-O excluding L (2006)"	"earn_ses06_21"	"dataset"	"31.01.2017"	"14.02.2024"	"2006"	"2006"	81284
+"                        Mean monthly earnings by economic activity, sex, employment contract (2006)"	"earn_ses06_22"	"dataset"	"31.01.2017"	"07.06.2024"	"2006"	"2006"	79958
+"                        Mean monthly earnings by economic activity, sex, educational attainment level (2006)"	"earn_ses06_23"	"dataset"	"31.01.2017"	"14.02.2024"	"2006"	"2006"	154026
+"                        Mean monthly earnings by economic activity, sex, length of service with the enterprise (2006)"	"earn_ses06_24"	"dataset"	"31.01.2017"	"14.02.2024"	"2006"	"2006"	186976
+"                        Mean monthly earnings by size class of the enterprise, sex, occupation (2006)"	"earn_ses06_25"	"dataset"	"31.01.2017"	"14.02.2024"	"2006"	"2006"	50532
+"                        Mean monthly earnings by economic activity, sex, occupation (2006)"	"earn_ses06_48"	"dataset"	"31.01.2017"	"14.02.2024"	"2006"	"2006"	253686
+"                        Monthly earnings by quantiles and contractual working time (enterprises with 10 employed persons or more) - NACE Rev. 1.1, C-O excluding L (2006)"	"earn_ses_mdeci"	"dataset"	"31.01.2017"	"03.01.2024"	"2006"	"2006"	243
+"                        Monthly earnings by economic control (enterprises with 10 employed persons or more) - NACE Rev. 1.1, C-O excluding L (2006)"	"earn_ses_mctrl"	"dataset"	"25.08.2014"	"07.06.2024"	"2006"	"2006"	66
+"                    Annual earnings"	"earn_ses06_an"	"folder"	" "	" "	" "	" "	
+"                        Mean annual earnings by economic activity, collective pay agreement, sex (2006)"	"earn_ses06_26"	"dataset"	"31.01.2017"	"07.06.2024"	"2006"	"2006"	69350
+"                        Mean annual earnings by economic activity, sex, age (2006)"	"earn_ses06_27"	"dataset"	"31.01.2017"	"03.01.2024"	"2006"	"2006"	90248
+"                        Mean annual earnings by sex, age, occupation - NACE Rev. 1.1, C-O excluding L (2006)"	"earn_ses06_28"	"dataset"	"31.01.2017"	"03.01.2024"	"2006"	"2006"	51339
+"                        Mean annual earnings by economic activity, sex, employment contract (2006)"	"earn_ses06_29"	"dataset"	"31.01.2017"	"07.06.2024"	"2006"	"2006"	50012
+"                        Mean annual earnings by economic activity, sex, educational attainment level (2006)"	"earn_ses06_30"	"dataset"	"31.01.2017"	"03.01.2024"	"2006"	"2006"	96810
+"                        Mean annual earnings by economic activity, sex, length of service with the enterprise (2006)"	"earn_ses06_31"	"dataset"	"31.01.2017"	"03.01.2024"	"2006"	"2006"	117691
+"                        Mean annual earnings by size class of the enterprise, sex, occupation (2006)"	"earn_ses06_32"	"dataset"	"31.01.2017"	"03.01.2024"	"2006"	"2006"	31805
+"                        Mean annual earnings by economic activity, sex, occupation (2006)"	"earn_ses06_49"	"dataset"	"31.01.2017"	"03.01.2024"	"2006"	"2006"	159761
+"                        Annual earnings by quantiles and contractual working time (enterprises with 10 employed persons or more) - NACE Rev. 1.1, C-O excluding L (2006)"	"earn_ses_adeci"	"dataset"	"31.01.2017"	"03.01.2024"	"2006"	"2006"	136
+"                        Annual earnings by economic control (enterprises with 10 employed persons or more) - NACE Rev. 1.1, C-O excluding L"	"earn_ses_actrl"	"dataset"	"25.08.2014"	"07.06.2024"	"2006"	"2006"	64
+"                        Mean annual earnings by NUTS 1 region (enterprises with 10 employees or more) - NACE Rev. 1.1, C-O excluding L (2006)"	"earn_ses06_rann"	"dataset"	"03.02.2015"	"03.01.2024"	"2006"	"2006"	95
+"                        Mean monthly hours paid by size class of the enterprise, sex, occupation (2006)"	"earn_ses06_39"	"dataset"	"18.09.2014"	"21.12.2023"	"2006"	"2006"	18939
+"                        Mean annual holidays by size class of the enterprise, sex, occupation (2006)"	"earn_ses06_46"	"dataset"	"30.03.2015"	"03.01.2024"	"2006"	"2006"	5284
+"                Structure of earnings survey 2002"	"earn_ses"	"folder"	" "	" "	" "	" "	
+"                    Hourly earnings"	"earn_ses_hr"	"folder"	" "	" "	" "	" "	
+"                        Mean hourly earnings by economic activity, collective pay agreement, sex (2002)"	"earn_ses_agt12"	"dataset"	"31.01.2017"	"07.06.2024"	"2002"	"2002"	38971
+"                        Mean hourly earnings by economic activity, sex, age (2002)"	"earn_ses_agt13"	"dataset"	"09.12.2016"	"03.01.2024"	"2002"	"2002"	51285
+"                        Mean hourly earnings by sex, age, occupation (2002)"	"earn_ses_agt14"	"dataset"	"31.01.2017"	"03.01.2024"	"2002"	"2002"	36286
+"                        Mean hourly earnings by economic activity, sex, employment contract (2002)"	"earn_ses_agt15"	"dataset"	"31.01.2017"	"07.06.2024"	"2002"	"2002"	33173
+"                        Mean hourly earnings by economic activity, sex, educational attainment level (2002)"	"earn_ses_agt16"	"dataset"	"31.01.2017"	"03.01.2024"	"2002"	"2002"	44857
+"                        Mean hourly earnings by economic activity, sex, length of service in the enterprise (2002)"	"earn_ses_agt17"	"dataset"	"31.01.2017"	"03.01.2024"	"2002"	"2002"	60872
+"                        Mean hourly earnings by size of the enterprise, sex, occupation (2002)"	"earn_ses_agt18"	"dataset"	"31.01.2017"	"03.01.2024"	"2002"	"2002"	38899
+"                    Monthly earnings"	"earn_ses_mo"	"folder"	" "	" "	" "	" "	
+"                        Mean monthly earnings by economic activity, collective pay agreement, sex (2002)"	"earn_ses_agt19"	"dataset"	"31.01.2017"	"07.06.2024"	"2002"	"2002"	60774
+"                        Mean monthly earnings by economic activity, sex, age (2002)"	"earn_ses_agt20"	"dataset"	"31.01.2017"	"14.02.2024"	"2002"	"2002"	82352
+"                        Mean monthly earnings by sex, age, occupation (2002)"	"earn_ses_agt21"	"dataset"	"31.01.2017"	"14.02.2024"	"2002"	"2002"	54917
+"                        Mean monthly earnings by economic activity, sex, employment contract (2002)"	"earn_ses_agt22"	"dataset"	"31.01.2017"	"07.06.2024"	"2002"	"2002"	52361
+"                        Mean monthly earnings by economic activity, sex, educational attainment level (2002)"	"earn_ses_agt23"	"dataset"	"31.01.2017"	"14.02.2024"	"2002"	"2002"	68641
+"                        Mean monthly earnings by economic activity, sex, length of service in the enterprise (2002)"	"earn_ses_agt24"	"dataset"	"31.01.2017"	"14.02.2024"	"2002"	"2002"	94798
+"                        Mean monthly earnings by size of the enterprise, sex, occupation (2002)"	"earn_ses_agt25"	"dataset"	"31.01.2017"	"14.02.2024"	"2002"	"2002"	58498
+"                    Annual earnings"	"earn_ses_an"	"folder"	" "	" "	" "	" "	
+"                        Mean annual earnings by economic activity, collective pay agreement, sex (2002)"	"earn_ses_agt26"	"dataset"	"31.01.2017"	"03.01.2024"	"2002"	"2002"	37945
+"                        Mean annual earnings by economic activity, sex, age (2002)"	"earn_ses_agt27"	"dataset"	"31.01.2017"	"03.01.2024"	"2002"	"2002"	51864
+"                        Mean annual earnings by sex, age, occupation (2002)"	"earn_ses_agt28"	"dataset"	"31.01.2017"	"03.01.2024"	"2002"	"2002"	34525
+"                        Mean annual earnings by economic activity, sex, employment contract (2002)"	"earn_ses_agt29"	"dataset"	"31.01.2017"	"07.06.2024"	"2002"	"2002"	32471
+"                        Mean annual earnings by economic activity, sex, educational attainment level (2002)"	"earn_ses_agt30"	"dataset"	"31.01.2017"	"03.01.2024"	"2002"	"2002"	42863
+"                        Mean annual earnings by economic activity, sex, length of service in the enterprise (2002)"	"earn_ses_agt31"	"dataset"	"31.01.2017"	"03.01.2024"	"2002"	"2002"	59692
+"                        Mean annual earnings by size of the enterprise, sex,occupation (2002)"	"earn_ses_agt32"	"dataset"	"31.01.2017"	"03.01.2024"	"2002"	"2002"	37005
+"                Gender pay and earnings gaps"	"earn_grgpg"	"folder"	" "	" "	" "	" "	
+"                    Gender pay gap in unadjusted form - NACE Rev. 2 activity"	"earn_grgpg2"	"folder"	" "	" "	" "	" "	
+"                        Gender pay gap in unadjusted form by NACE Rev. 2 activity - structure of earnings survey methodology"	"earn_gr_gpgr2"	"dataset"	"27.10.2026"	"27.10.2026"	"2007"	"2024"	10289
+"                        Gender pay gap in unadjusted form by age and NACE Rev. 2 activity (B-S except O) - structure of earnings survey methodology"	"earn_gr_gpgr2ag"	"dataset"	"02.03.2026"	"11.02.2026"	"2007"	"2024"	2791
+"                        Gender pay gap in unadjusted form by type of ownership and NACE Rev. 2 activity (B-S except O) - structure of earnings survey methodology"	"earn_gr_gpgr2ct"	"dataset"	"24.02.2026"	"11.02.2026"	"2007"	"2024"	902
+"                        Gender pay gap in unadjusted form by working time and NACE Rev. 2 activity (B-S except O) - structure of earnings survey methodology"	"earn_gr_gpgr2wt"	"dataset"	"24.02.2026"	"11.02.2026"	"2007"	"2024"	805
+"                    Gender pay gap in unadjusted form - NACE Rev. 1.1 activity"	"earn_grgpg1"	"folder"	" "	" "	" "	" "	
+"                        Gender pay gap in unadjusted form by NACE Rev. 1.1 activity - structure of earnings survey methodology (2002-2007)"	"earn_gr_gpg"	"dataset"	"01.07.2010"	"03.01.2024"	"2002"	"2007"	1503
+"                        Gender pay gap in unadjusted form (1994 - 2006)"	"earn_gr_hgpg"	"dataset"	"06.08.2013"	"03.01.2024"	"1994"	"2006"	412
+"                    Gender overall earnings gap"	"earn_gr_goeg"	"dataset"	"05.06.2024"	"03.06.2024"	"2010"	"2018"	93
+"                Minimum wages"	"earn_minw"	"folder"	" "	" "	" "	" "	
+"                    Monthly minimum wages - bi-annual data"	"earn_mw_cur"	"dataset"	"31.07.2026"	"31.07.2026"	"1999-S1"	"2026-S2"	4573
+"                        Minimum wages"	"tps00155"	"table"	"31.07.2026"	"31.07.2026"	"2021-S1"	"2026-S2"	356
+"                    Monthly minimum wage as a proportion of average monthly earnings (%) - NACE Rev. 2 (from 2008 onwards)"	"earn_mw_avgr2"	"dataset"	"31.07.2026"	"30.01.2026"	"2008"	"2026"	1202
+"                    Monthly minimum wage as a proportion of average monthly earnings (%) - NACE Rev. 1.1 (1999-2009)"	"earn_mw_avgr1"	"dataset"	"20.07.2011"	"07.06.2024"	"1999"	"2009"	525
+"                Gross earnings - historical data"	"earn_gr_hist"	"folder"	" "	" "	" "	" "	
+"                    Average annual gross earnings by sex and NACE Rev. 2 activity (2005-2011)"	"earn_gr_nace2"	"dataset"	"24.03.2014"	"21.12.2023"	"2005"	"2011"	86553
+"                    Average annual gross earnings by sex and NACE Rev. 1.1 activity (1995-2008)"	"earn_gr_nace"	"dataset"	"22.07.2011"	"21.12.2023"	"1995"	"2008"	77979
+"                    Average annual gross earnings by sex and occupation (1995-2008)"	"earn_gr_isco"	"dataset"	"18.11.2013"	"21.12.2023"	"1995"	"2008"	26349
+"                    Industry by employment size class (NACE Rev. 2, B-E) (2005-2020)"	"sbs_sc_ind_r2"	"dataset"	"01.03.2024"	"21.12.2023"	"2005"	"2020"	7231781
+"                    Services by employment size class (NACE Rev. 2, H-N, S95) (2005-2020)"	"sbs_sc_1b_se_r2"	"dataset"	"01.03.2024"	"23.09.2023"	"2005"	"2020"	2484479
+"                    Annual enterprise statistics by size class for special aggregates of NACE Rev.2 activities (2005-2020)"	"sbs_sc_sca_r2"	"dataset"	"01.03.2024"	"21.12.2023"	"2005"	"2020"	2237236
+"                    Business demography by size class and NACE Rev. 2 activity (2004-2020)"	"bd_9bd_sz_cl_r2"	"dataset"	"10.01.2024"	"10.01.2024"	"2004"	"2020"	16244809
+"                Enterprise statistics by size class and NACE Rev. 2 activity (from 2021 onwards)"	"sbs_sc_ovw"	"dataset"	"30.09.2026"	"30.09.2026"	"2021"	"2024"	4373287
+"                Business demography by size class and NACE Rev. 2 activity"	"bd_size"	"dataset"	"23.10.2026"	"01.10.2026"	"2009"	"2024"	6168118
+"                Business demography by size class and NACE Rev. 2 activity"	"bd_size"	"dataset"	"23.10.2026"	"01.10.2026"	"2009"	"2024"	6168118
+"                    Enterprise statistics by size class and NACE Rev. 2 activity (from 2021 onwards)"	"sbs_sc_ovw"	"dataset"	"30.09.2026"	"30.09.2026"	"2021"	"2024"	4373287
+"                    Enterprises by extended size classes (including Small Mid Caps) and NACE Rev. 2 activity"	"sbs_ovw_smc"	"dataset"	"30.09.2026"	"30.09.2026"	"2023"	"2024"	22335
+"                    Enterprises in wholesale trade, repair of vehicles and motorcycles (NACE Rev.2, G) by size class of turnover"	"sbs_part_wtsct"	"dataset"	"30.09.2026"	"30.09.2026"	"2021"	"2024"	170983
+"                        Annual enterprise statistics by size class for special aggregates of NACE Rev.2 activities (2005-2020)"	"sbs_sc_sca_r2"	"dataset"	"01.03.2024"	"21.12.2023"	"2005"	"2020"	2237236
+"                        SMEs - annual enterprise statistics by size class - industry and construction"	"sbs_sc_ind"	"folder"	" "	" "	" "	" "	
+"                            Industry by employment size class (NACE Rev. 2, B-E) (2005-2020)"	"sbs_sc_ind_r2"	"dataset"	"01.03.2024"	"21.12.2023"	"2005"	"2020"	7231781
+"                            Construction by employment size class (NACE Rev. 2, F) (2005-2020)"	"sbs_sc_con_r2"	"dataset"	"01.03.2024"	"21.12.2023"	"2005"	"2020"	842766
+"                            Mining and quarrying by employment size class (NACE Rev. 1.1, C) (1995-2001)"	"sbs_sc_2d_mi95"	"dataset"	"24.05.2016"	"21.12.2023"	"1995"	"2001"	597135
+"                            Mining and quarrying by employment size class (NACE Rev. 1.1, C) (2002-2007)"	"sbs_sc_2d_mi02"	"dataset"	"24.05.2016"	"21.12.2023"	"2002"	"2007"	324567
+"                            Manufacturing, subsections DA-DE and total (NACE Rev. 1.1, D) by employment size class (1995-2001)"	"sbs_sc_2d_dade95"	"dataset"	"24.05.2016"	"21.12.2023"	"1995"	"2001"	1903899
+"                            Manufacturing, subsections DA-DE and total (NACE Rev. 1.1, D) by employment size class (from 2002 onwards)"	"sbs_sc_2d_dade02"	"dataset"	"24.05.2016"	"21.12.2023"	"2002"	"2007"	1957715
+"                            Manufacturing, subsections DF-DN and total (NACE Rev. 1.1, D) by employment size class (1995-1997)"	"sbs_sc_2d_dfdn95"	"dataset"	"27.03.2009"	"21.12.2023"	"1995"	"1997"	1153450
+"                            Manufacturing, subsections DF-DN and total (NACE Rev. 1.1, D) by employment size class (1998-2001)"	"sbs_sc_2d_dfdn98"	"dataset"	"24.05.2016"	"21.12.2023"	"1998"	"2001"	2694046
+"                            Manufacturing subsections DF-DN and total (NACE Rev. 1.1, D) by employment size class (2002-2007)"	"sbs_sc_2d_dfdn02"	"dataset"	"24.05.2016"	"21.12.2023"	"2002"	"2007"	3945468
+"                            Electricity, gas and water by employment size class (NACE Rev. 1.1, E) (1995-2001)"	"sbs_sc_2d_el95"	"dataset"	"24.05.2016"	"21.12.2023"	"1995"	"2001"	192682
+"                            Electricity, gas and water by employment size class (NACE Rev. 1.1, E) (2002-2007)"	"sbs_sc_2d_el02"	"dataset"	"24.05.2016"	"21.12.2023"	"2002"	"2007"	216092
+"                            Construction by employment size class (NACE Rev. 1.1, F) (1995-2001)"	"sbs_sc_4d_co95"	"dataset"	"24.05.2016"	"21.12.2023"	"1995"	"2001"	200899
+"                            Construction by employment size class (NACE Rev. 1.1, F) (2002-2007)"	"sbs_sc_4d_co02"	"dataset"	"24.05.2016"	"21.12.2023"	"2002"	"2007"	224345
+"                            Multi-yearly enterprise statistics - subcontracting by size class for construction (NACE Rev. 2, F) (2008-2020)"	"sbs_is_sc_r2"	"dataset"	"27.10.2022"	"23.09.2023"	"2008"	"2020"	17623
+"                            Multi-yearly enterprise statistics - subcontracting by size class (NACE Rev. 1.1, C-F) (1999-2001)"	"sbs_is_2k_sub99"	"dataset"	"27.03.2009"	"21.12.2023"	"1999"	"2001"	4452
+"                            Multi-yearly enterprise statistics - subcontracting by size class (NACE Rev. 1.1, C-F) (2002-2007)"	"sbs_is_2k_sub02"	"dataset"	"20.08.2012"	"21.12.2023"	"2002"	"2007"	28501
+"                            Environmental protection expenditure by size class (NACE Rev. 2, B-E) (2008-2018)"	"sbs_env_sc_r2"	"dataset"	"08.03.2021"	"21.12.2023"	"2008"	"2018"	56730
+"                            Multiannual enterprises statistics on environmental protection expenditure by size class for industry (NACE Rev. 2 B-E) (2010-2016)"	"sbs_mlenv_sc_r2"	"dataset"	"02.09.2019"	"21.12.2023"	"2010"	"2016"	8151
+"                            Environmental protection expenditure by size class (NACE Rev. 1.1, C-E) (2001-2007)"	"sbs_env_2o_sc01"	"dataset"	"20.08.2012"	"21.12.2023"	"2001"	"2007"	60650
+"                        SMEs - annual enterprise statistics by size class - trade"	"sbs_sc_dt"	"folder"	" "	" "	" "	" "	
+"                            Distributive trades by employment size class (NACE Rev. 2, G) (2005-2020)"	"sbs_sc_dt_r2"	"dataset"	"01.03.2024"	"21.12.2023"	"2005"	"2020"	490982
+"                            Distributive trades by size class of turnover (NACE Rev. 2, G) (2008-2018)"	"sbs_sctrn_dt_r2"	"dataset"	"08.03.2021"	"21.12.2023"	"2008"	"2018"	431073
+"                            Distributive trades by employment size class (NACE Rev. 1, G) (1995-2007)"	"sbs_sc_3ce_tr95"	"dataset"	"24.05.2016"	"21.12.2023"	"1995"	"2007"	239006
+"                            Distributive trades by employment size class (NACE Rev. 1.1, G) (2002-2007)"	"sbs_sc_3ce_tr02"	"dataset"	"24.05.2016"	"21.12.2023"	"2002"	"2007"	237710
+"                            Distributive trades by size class of turnover (NACE Rev. 1.1, G) (1995-2007)"	"sbs_sc_3ctrn_tr"	"dataset"	"20.08.2012"	"21.12.2023"	"1995"	"2007"	373414
+"                        SMEs - annual enterprise statistics by size class - services"	"sbs_sc_sc"	"folder"	" "	" "	" "	" "	
+"                            Services by employment size class (NACE Rev. 2, H-N, S95) (2005-2020)"	"sbs_sc_1b_se_r2"	"dataset"	"01.03.2024"	"23.09.2023"	"2005"	"2020"	2484479
+"                            Services by employment size class (NACE Rev. 1.1, H-K) (1995-2001)"	"sbs_sc_1b_se95"	"dataset"	"24.05.2016"	"07.06.2024"	"1995"	"2001"	366737
+"                            Services by employment size class (NACE Rev. 1.1, H-K) (2002-2007)"	"sbs_sc_1b_se02"	"dataset"	"24.05.2016"	"07.06.2024"	"2002"	"2007"	322869
+"                                Number of enterprises by size class of balance sheet total (1997-2012)"	"sbs_cre_esc"	"dataset"	"04.09.2014"	"21.12.2023"	"1997"	"2012"	5147
+"                                Annual enterprise statistics by size class of gross premium written (1995-2012)"	"sbs_ins_5d1"	"dataset"	"14.01.2015"	"21.12.2023"	"1995"	"2012"	7095
+"                                Annual enterprise statistics by size class of technical provisions (1995-2012)"	"sbs_ins_5d2"	"dataset"	"14.01.2015"	"21.12.2023"	"1995"	"2012"	2645
+"                                Autonomous pension funds - number of enterprises by size class of investments (1997-2012)"	"sbs_pen_7b1"	"dataset"	"02.12.2014"	"21.12.2023"	"1997"	"2012"	1408
+"                                Autonomous pension funds - number of enterprises by size class of members (1997-2012)"	"sbs_pen_7b2"	"dataset"	"15.07.2014"	"21.12.2023"	"1997"	"2012"	1727
+"                                Main economic variables by employment size class (2004)"	"bs_bs1_04"	"dataset"	"15.07.2009"	"21.12.2023"	"2004"	"2004"	8770
+"                                Turnover by residence of client, employment size class and economic activity (2004)"	"bs_bs4_04"	"dataset"	"15.07.2009"	"21.12.2023"	"2004"	"2004"	5117
+"                                Number of enterprises carrying out cross border trade by employment size class (2004)"	"bs_bs5_04"	"dataset"	"27.03.2009"	"21.12.2023"	"2004"	"2004"	135
+"                                Number of enterprises carrying out cross border trade by type of cross border trade and employment size class (2004)"	"bs_bs6_04"	"dataset"	"27.03.2009"	"21.12.2023"	"2004"	"2004"	270
+"                                Number of enterprises carrying out cross border trade by reasons for cross border trade and employment size class (2004)"	"bs_bs7_04"	"dataset"	"27.03.2009"	"21.12.2023"	"2004"	"2004"	270
+"                                Number of enterprises by importance of barriers met in cross border trade and employment size class (2004)"	"bs_bs8_04"	"dataset"	"27.03.2009"	"14.10.2024"	"2004"	"2004"	5670
+"                                SBS variables by employment size class for div 72 and 74 (2003)"	"bs_bs1_03"	"dataset"	"27.03.2009"	"21.12.2023"	"2003"	"2003"	4025
+"                                Turnover by type of client and by employment size class for div 72 and 74 (2003)"	"bs_bs3_03"	"dataset"	"27.03.2009"	"21.12.2023"	"2003"	"2003"	5783
+"                                Turnover by residence of client and by employment size class for div 72 and 74 (2003)"	"bs_bs4_03"	"dataset"	"27.03.2009"	"21.12.2023"	"2003"	"2003"	5806
+"                                SBS variables by product specialisation and by employment size class for div 72 and 74 (2001)"	"bs_bs1_01"	"dataset"	"27.03.2009"	"30.07.2024"	"1999"	"2001"	8190
+"                                Turnover by type of client and by employment size class for div 72 and 74 (2001)"	"bs_bs3_01"	"dataset"	"27.03.2009"	"21.12.2023"	"1999"	"2001"	2532
+"                                Turnover by residence of client and by employment size class for div 72 and 74 (2001)"	"bs_bs4_01"	"dataset"	"27.03.2009"	"21.12.2023"	"1999"	"2001"	1899
+"                                SBS variables by client specialisation and by employment size class for div 72 and 74 (2001)"	"bs_bs5_01"	"dataset"	"27.03.2009"	"21.12.2023"	"1999"	"2001"	8536
+"                                Turnover by product specialisation and employment size class for group 72.2 (2000)"	"bs_bs2_00"	"dataset"	"27.03.2009"	"30.07.2024"	"1999"	"2000"	117
+"                                Turnover by type of client and employment size class (2000)"	"bs_bs6_00"	"dataset"	"27.03.2009"	"21.12.2023"	"1999"	"2000"	152
+"                                Turnover by nationality of client and employment size class (2000)"	"bs_bs8_00"	"dataset"	"27.03.2009"	"21.12.2023"	"1999"	"2000"	117
+"                                Turnover by client specialisation and employment size class (2000)"	"bs_bs10_00"	"dataset"	"27.03.2009"	"21.12.2023"	"2000"	"2000"	96
+"                        Enterprises managed by the founder, by birth size class (number of employees) (2005)"	"fobs_isc"	"dataset"	"27.03.2009"	"21.12.2023"	"2005"	"2005"	83568
+"                        Enterprises managed by the founder, by survival size class (number of employees) (2005)"	"fobs_ssc"	"dataset"	"27.03.2009"	"21.12.2023"	"2005"	"2005"	83560
+"                    Business demography by size class and NUTS 3 region"	"bd_size_r"	"dataset"	"05.11.2026"	"05.11.2026"	"2013"	"2024"	675415
+"                    Employer business demography by size class and NUTS 3 region"	"bd_salge1_size_r"	"dataset"	"05.11.2026"	"05.11.2026"	"2013"	"2024"	477848
+"                        Business demography by size class (until 2007, NACE Rev. 1.1)"	"bd_9b_size_cl"	"dataset"	"27.06.2012"	"21.12.2023"	"1997"	"2007"	4890871
+"                        Employer business demography by size class (until 2007, NACE Rev. 1.1)"	"bd_9f_size_cl"	"dataset"	"02.03.2015"	"21.12.2023"	"2002"	"2007"	936999
+"                        Preliminary results on enterprise deaths presented by size class (until 2007, NACE Rev. 1.1)"	"bd_9d_size_cl"	"dataset"	"27.05.2011"	"21.12.2023"	"2004"	"2007"	125937
+"                        Preliminary results on employer enterprise deaths presented by size class (until 2007, NACE Rev. 1.1)"	"bd_9h_size_cl"	"dataset"	"08.08.2011"	"21.12.2023"	"2006"	"2007"	57057
+"                    Business demography by size class and NACE Rev. 2 activity (2004-2020)"	"bd_9bd_sz_cl_r2"	"dataset"	"10.01.2024"	"10.01.2024"	"2004"	"2020"	16244809
+"                    Employer business demography by size class and NACE Rev. 2 activity (2004-2020)"	"bd_9fh_sz_cl_r2"	"dataset"	"10.01.2024"	"21.12.2023"	"2004"	"2020"	10466514
+"                    Business demography by size class and NUTS 3 region (2008-2020)"	"bd_size_r3"	"dataset"	"07.12.2022"	"10.01.2024"	"2008"	"2020"	980005
+"                    Employer business demography by size class and NUTS 3 region (2008-2019)"	"bd_esize_r3"	"dataset"	"07.12.2022"	"10.01.2024"	"2008"	"2019"	647383
+"                Business demography by size class and NACE Rev. 2 activity"	"bd_size"	"dataset"	"23.10.2026"	"01.10.2026"	"2009"	"2024"	6168118
+"                Employer business demography by size class and NACE Rev. 2 activity"	"bd_salge1_size"	"dataset"	"23.10.2026"	"09.10.2026"	"2009"	"2024"	4996976
+"                            Employees and self-employed persons by business function, NACE Rev.2 activity aggregate and size class"	"iss_21embf"	"dataset"	"14.10.2022"	"18.09.2026"	"2021"	"2021"	2597
+"                Multinational enterprise groups in EU-EFTA countries by controlling country, size class and NACE Rev. 2 activity - experimental statistics"	"egr_mne_n2sc"	"dataset"	"20.04.2026"	"20.04.2026"	"2018"	"2024"	2248
+"                Persons employed in multinational enterprise groups by size class - experimental statistics"	"egr_emp"	"dataset"	"20.04.2026"	"20.04.2026"	"2018"	"2024"	1376
+"                Multinational enterprise groups employment by controlling country group size class, NACE Rev. 2 activity and country of work - experimental statistics"	"egr_mne_empw"	"dataset"	"20.04.2026"	"20.04.2026"	"2018"	"2024"	3458
+"                Enterprises importing critical raw materials (CRM) by partner and size class"	"gloe_crm_ps"	"dataset"	"21.10.2026"	"21.10.2026"	"2021"	"2023"	205935
+"                Enterprises importing net-zero industry goods (NZIG) by partner and size class"	"gloe_nzig_ps"	"dataset"	"21.10.2026"	"21.10.2026"	"2021"	"2023"	158513
+"                Enterprises importing goods from certain partner countries and areas by size class and enterprise group status"	"gloe_gd_segr"	"dataset"	"21.10.2026"	"21.10.2026"	"2021"	"2023"	482829
+"                Enterprises by their import and export intensity, partner and size class"	"gloe_int_ps"	"dataset"	"21.10.2026"	"21.10.2026"	"2021"	"2023"	174809
+"                Enterprises by trader type and size class"	"gloe_trd_s"	"dataset"	"21.10.2026"	"21.10.2026"	"2021"	"2023"	81308
+"                Enterprises by their enterprise group status, size class and NACE Rev. 2 activity"	"gloe_egrsn2"	"dataset"	"26.10.2026"	"21.10.2026"	"2021"	"2023"	2119688
+"                        Nights spent at hotels and similar accommodation (NACE Rev.2 activity I55.1) by size class"	"tour_occ_ninats"	"dataset"	"12.10.2026"	"12.10.2026"	"2012"	"2025"	9824
+"                        Net occupancy rate of bed-places and bedrooms in hotels and similar accommodation (NACE Rev. 2 activity I55.1) by size class"	"tour_occ_anor"	"dataset"	"20.10.2026"	"12.10.2026"	"2012"	"2025"	3635
+"                    Establishments, bedrooms and bed-places in hotels and similar accommodation by size class"	"tour_cap_nats"	"dataset"	"12.10.2026"	"12.10.2026"	"2012"	"2026"	10030
+"                    Enterprise statistics by size class and NACE Rev. 2 activity (from 2021 onwards)"	"sbs_sc_ovw"	"dataset"	"30.09.2026"	"30.09.2026"	"2021"	"2024"	4373287
+"                    Guest nights spent at short-stay accommodation offered via online platforms by size class of accommodation"	"tour_ce_oasc"	"dataset"	"22.09.2026"	"02.07.2026"	"2018"	"2025"	766
+"                    Share of holdings by economic size classes and NUTS 2 region"	"ef_m_so_sh"	"dataset"	"17.06.2026"	"17.06.2026"	"2020"	"2020"	1734
+"                                Holdings, cultivated area under vines (CAV) and agricultural area in use broken down by type of production, size class and region"	"vit_bs1"	"dataset"	"04.12.2013"	"21.12.2023"	"1999"	"2009"	168520
+"                                Holdings, cultivated area under vines (CAV) and utilised agricultural area (AA) by AV/AA ratio, size class and region"	"vit_bs2"	"dataset"	"26.11.2013"	"21.12.2023"	"1999"	"2009"	573412
+"                                Holdings and areas under wine-grape vine varieties, broken down by vine area size class and classes of % of area producing quality wines produced in specific region (quality wines psr) in the total area under wine-grape vines"	"vit_bs3"	"dataset"	"25.11.2013"	"21.12.2023"	"1999"	"2009"	154778
+"                            Wine-grower holdings by size class"	"vit_t2"	"dataset"	"29.04.2022"	"03.01.2024"	"1999"	"2020"	5852
+"                    Manure storage facilities by utilised agricultural area, size class of livestock, farm type and NUTS 2 region"	"ef_mp_ms"	"dataset"	"17.06.2026"	"17.06.2026"	"2010"	"2020"	3253016
+"                    Machinery for livestock management by age and training of manager, size classes of livestock and NUTS 2 region"	"ef_mp_digilsk"	"dataset"	"17.06.2026"	"17.06.2026"	"2023"	"2023"	747123
+"                    Animal housing by type of bovine, utilised agricultural area, size classes of livestock units and NUTS 2 region"	"ef_ah_bovine"	"dataset"	"17.06.2026"	"17.06.2026"	"2010"	"2020"	3636842
+"                    Animal housing by type of pigs, utilised agricultural area, size classes of livestock units and NUTS 2 region"	"ef_ah_pigs"	"dataset"	"17.06.2026"	"17.06.2026"	"2010"	"2020"	3255075
+"                    Animal housing by type of poultry, utilised agricultural area, size classes of livestock units and NUTS 2 region"	"ef_ah_poultry"	"dataset"	"17.06.2026"	"17.06.2026"	"2010"	"2020"	2212344
+"                    Outdoor access of bovine by type of animal housing, size classes of livestock units, farm type and NUTS 2 region"	"ef_ah_bovt"	"dataset"	"17.06.2026"	"17.06.2026"	"2020"	"2020"	1145267
+"                    Outdoor access of poultry by type of animal housing, size classes of livestock units, farm type and NUTS 2 region"	"ef_ah_poult"	"dataset"	"17.06.2026"	"17.06.2026"	"2020"	"2020"	173224
+"                    Outdoor access of pigs by type of animal housing, size classes of livestock units, farm type and NUTS 2 region"	"ef_ah_pigt"	"dataset"	"17.06.2026"	"17.06.2026"	"2020"	"2020"	830931
+"                    Livestock units by animal groups and size classes of livestock units"	"ef_fsi_lsk"	"dataset"	"14.08.2026"	"14.08.2026"	"2005"	"2023"	924658
+"                Trade by NACE Rev. 2 activity and enterprise size class"	"ext_tec01"	"dataset"	"03.11.2026"	"30.04.2026"	"2012"	"2024"	997346
+"                Trade by partner country and enterprise size class"	"ext_tec10"	"dataset"	"03.11.2026"	"18.12.2025"	"2012"	"2024"	460434
+"                Services trade by enterprise characteristics (STEC) by NACE Rev. 2 activities and enterprise size class"	"ext_stec01"	"dataset"	"10.07.2026"	"10.07.2026"	"2013"	"2024"	48365
+"                    Goods road transport enterprises by employment size classes (1988-2012)"	"road_ec_entemp"	"dataset"	"02.03.2015"	"29.09.2025"	"1988"	"2012"	1983
+"                    Persons employed in goods road transport enterprises by employment size classes (1988-2012)"	"road_ec_empl"	"dataset"	"02.03.2015"	"29.09.2025"	"1980"	"2012"	1872
+"                    BERD by size class and source of funds"	"rd_e_berdsize"	"dataset"	"29.09.2026"	"29.09.2026"	"1980"	"2024"	238627
+"                    R&D personnel and researchers in business enterprise sector by size class and sex"	"rd_p_perssize"	"dataset"	"29.09.2026"	"29.09.2026"	"1980"	"2024"	16757
+"                        Enterprises, employed persons and turnover by innovation status, NACE Rev. 2 activity and size class (CIS2024)"	"inn_cis14_bas"	"dataset"	"29.06.2026"	"26.06.2026"	"2024"	"2024"	4368
+"                        Enterprises that co-operated on business activities with other entities by innovation status, NACE Rev. 2 activity and size class (CIS2024)"	"inn_cis14_co"	"dataset"	"29.06.2026"	"04.11.2026"	"2024"	"2024"	552
+"                        Innovation-active enterprises' expenditure on research and development (R&D) and innovation by type, NACE Rev. 2 activity and size class (CIS2024)"	"inn_cis14_exp"	"dataset"	"29.06.2026"	"26.06.2026"	"2024"	"2024"	544
+"                        Enterprises, employed persons and turnover by innovation status, NACE Rev. 2 activity and size class (CIS2022)"	"inn_cis13_bas"	"dataset"	"06.12.2024"	"29.04.2026"	"2022"	"2022"	60076
+"                        Enterprises by age and innovation status, NACE Rev.2 activity and size class (CIS2022)"	"inn_cis13_yreg"	"dataset"	"06.12.2024"	"28.11.2024"	"2022"	"2022"	58760
+"                        Enterprises by their belonging to an enterprise group, NACE Rev. 2 activity and size class (CIS2022)"	"inn_cis13_gen"	"dataset"	"25.06.2025"	"05.03.2025"	"2022"	"2022"	20559
+"                        Enterprises by percentage of employees with university education, NACE Rev. 2 activity and size class (CIS2022)"	"inn_cis13_educ"	"dataset"	"01.07.2025"	"05.03.2025"	"2022"	"2022"	29862
+"                        Enterprises by market place, NACE Rev. 2 activity and size class (CIS2022)"	"inn_cis13_mrk"	"dataset"	"01.07.2025"	"05.03.2025"	"2022"	"2022"	26721
+"                        Turnover of enterprises by market place, NACE Rev. 2 activity and size class (CIS2022)"	"inn_cis13_mrkt"	"dataset"	"01.07.2025"	"05.03.2025"	"2022"	"2022"	24814
+"                        Enterprises by type and importance of market conditions, NACE Rev.2 activity and size class (CIS2022)"	"inn_cis13_cond"	"dataset"	"01.07.2025"	"05.03.2025"	"2022"	"2022"	134378
+"                        Innovation active enterprises without implemented innovation by NACE Rev. 2 activity and size class (CIS2022)"	"inn_cis13_inact"	"dataset"	"26.06.2026"	"26.06.2026"	"2022"	"2022"	15602
+"                        Innovation active enterprise with research and development (R&D) activities by NACE Rev. 2 activity and size class (CIS2022)"	"inn_cis13_inrd"	"dataset"	"06.12.2024"	"04.11.2026"	"2022"	"2022"	24970
+"                        Enterprises that introduced new or improved business processes by type of innovation, NACE Rev. 2 activity and size class (CIS2022)"	"inn_cis13_spec"	"dataset"	"06.12.2024"	"28.11.2024"	"2022"	"2022"	38461
+"                        Enterprises that introduced an innovation by type of innovation, developer, NACE Rev.2 activity and size class (CIS2022)"	"inn_cis13_prod"	"dataset"	"06.12.2024"	"28.11.2024"	"2022"	"2022"	21755
+"                        Turnover from new or significantly improved products by NACE Rev. 2 activity and size class (CIS2022)"	"inn_cis13_prodt"	"dataset"	"11.12.2024"	"11.12.2024"	"2022"	"2022"	14229
+"                        Enterprises that introduced new or significantly improved products by type of innovation, NACE Rev. 2 activity and size class (CIS2022)"	"inn_cis13_prodn"	"dataset"	"06.12.2024"	"28.11.2024"	"2022"	"2022"	29817
+"                        Enterprises that co-operated on business activities with other entities by innovation status, NACE Rev. 2 activity and size class (CIS2022)"	"inn_cis13_co"	"dataset"	"06.12.2024"	"04.11.2026"	"2022"	"2022"	64621
+"                        Innovation active enterprises that co-operated with other entities, by kind and location of co-operation partner, NACE Rev. 2 and size class (CIS2022)"	"inn_cis13_coop"	"dataset"	"06.12.2024"	"06.12.2024"	"2022"	"2022"	212474
+"                        Enterprises that acquiesce or transfer resources and business activities within the enterprise group, by NACE Rev. 2 activity and size class (CIS2022)"	"inn_cis13_src"	"dataset"	"01.07.2025"	"04.11.2026"	"2022"	"2022"	53601
+"                        Innovation active enterprises' expenditure on R&D and innovation by type, NACE Rev. 2 activity and size class (CIS2022)"	"inn_cis13_exp"	"dataset"	"06.12.2024"	"28.11.2024"	"2022"	"2022"	57084
+"                        Enterprises' expenditure by area, innovations status, NACE Rev. 2 activity and size class (CIS2022)"	"inn_cis13_expt"	"dataset"	"06.12.2024"	"28.11.2024"	"2022"	"2022"	31754
+"                        Enterprises by access to public funding, type of public funding and effect, NACE Rev. 2 activity and size class (CIS2022)"	"inn_cis13_pub"	"dataset"	"06.12.2024"	"28.11.2024"	"2022"	"2022"	121153
+"                        Enterprises that use tax incentives or allowances for innovative activities and research and development (R&D) by NACE Rev. 2 activity and size class (CIS2022)"	"inn_cis13_txal"	"dataset"	"01.07.2025"	"04.11.2026"	"2022"	"2022"	8643
+"                        Enterprises by access to private funding, type of private funding and effect, NACE Rev. 2 activity and size class (CIS2022)"	"inn_cis13_fin"	"dataset"	"06.12.2024"	"28.11.2024"	"2022"	"2022"	58196
+"                        Enterprises that obtained private funding by usage for R&D or other innovation activities, type of private funding, NACE Rev. 2 activity and size class (CIS2022)"	"inn_cis13_finrd"	"dataset"	"06.12.2024"	"28.11.2024"	"2022"	"2022"	50461
+"                        Enterprises that tried to obtain intra-group loans within the enterprise group by outcome, NACE Rev. 2 activity and size class (CIS2022)"	"inn_cis13_igl"	"dataset"	"01.07.2025"	"05.03.2025"	"2022"	"2022"	3543
+"                        Enterprises that obtained intra-group loans for R&D or other innovation activities within the enterprise group by NACE Rev. 2 activity and size class (CIS2022)"	"inn_cis13_iglrd"	"dataset"	"01.07.2025"	"05.03.2025"	"2022"	"2022"	2085
+"                        Enterprises, employed persons and turnover by innovation profile, NACE Rev. 2 activity and size class (CIS2022)"	"inn_cis13_bas_ip"	"dataset"	"09.04.2025"	"29.04.2026"	"2022"	"2022"	21436
+"                        Enterprises by age and innovation profile, NACE Rev. 2 activity and size class (CIS2022)"	"inn_cis13_yreg_ip"	"dataset"	"14.04.2025"	"16.01.2025"	"2022"	"2022"	25098
+"                        Turnover from new or significantly improved products, by innovation profile, NACE Rev. 2 activity and size class (CIS2022)"	"inn_cis13_prodt_ip"	"dataset"	"16.01.2025"	"16.01.2025"	"2022"	"2022"	14435
+"                        Enterprises that co-operated on business activities with other entities, by innovation profile, NACE Rev. 2 activity and size class (CIS2022)"	"inn_cis13_co_ip"	"dataset"	"16.01.2025"	"04.11.2026"	"2022"	"2022"	30415
+"                        Innovation-active enterprises that co-operated with other entities, by innovation profile, kind and location of co-operation partner, NACE Rev. 2 and size class (CIS2022)"	"inn_cis13_coop_ip"	"dataset"	"16.01.2025"	"16.01.2025"	"2022"	"2022"	202732
+"                        Enterprises by access to public funding, innovation profile, type of public funding and effect, NACE Rev. 2 activity and size class (CIS2022)"	"inn_cis13_pub_ip"	"dataset"	"16.01.2025"	"16.01.2025"	"2022"	"2022"	59153
+"                        Enterprises by access to private funding, innovation profile, type of private funding and effect, NACE Rev. 2 activity and size class (CIS2022)"	"inn_cis13_fin_ip"	"dataset"	"16.01.2025"	"16.01.2025"	"2022"	"2022"	25243
+"                        Enterprises that obtained private funding by usage for R&D or other innovation activities, by innovation profile, type of private funding, NACE Rev. 2 activity and size class (CIS2022)"	"inn_cis13_finrd_ip"	"dataset"	"16.01.2025"	"16.01.2025"	"2022"	"2022"	24293
+"                        Innovation-active enterprises that introduced innovations with environmental benefits within the enterprise, by innovation profile, type of contribution and effect, NACE Rev. 2 activity and size class (CIS2022)"	"inn_cis13_eco_ip"	"dataset"	"01.07.2026"	"15.01.2026"	"2022"	"2022"	179148
+"                        Innovation-active enterprise by type and importance of environmental benefits obtained during the consumption or use of a good or service by the end user, by innovation profile, NACE Rev. 2 activity and size class (CIS2022)"	"inn_cis13_env_ip"	"dataset"	"01.07.2026"	"15.01.2026"	"2022"	"2022"	126667
+"                        Enterprises by reason why they did not have any (or not more) innovation activities, by innovation profile, NACE Rev. 2 activity and size class (CIS2022)"	"inn_cis13_reas_ip"	"dataset"	"16.01.2025"	"16.01.2025"	"2022"	"2022"	22565
+"                        Enterprises by type of business strategy applied, importance of the strategy, NACE Rev.2 activity and size class (CIS2022)"	"inn_cis13_strat"	"dataset"	"06.12.2024"	"28.11.2024"	"2022"	"2022"	428253
+"                        Enterprises that applied for a patent, registered an industrial design, trade mark or used trade secrets, by NACE Rev. 2 activity and size class (CIS2022)"	"inn_cis13_ipr"	"dataset"	"01.07.2025"	"05.03.2025"	"2022"	"2022"	24912
+"                        Enterprises that licenced out, sold, exchanged intellectual property rights by type of transaction, NACE Rev. 2 activity and size class (CIS2022)"	"inn_cis13_iprout"	"dataset"	"01.07.2025"	"05.03.2025"	"2022"	"2022"	13581
+"                        Enterprises that purchased machinery, equipment or software by NACE Rev. 2 activity and size class (CIS2022)"	"inn_cis13_purmes"	"dataset"	"01.07.2025"	"05.03.2025"	"2022"	"2022"	9971
+"                        Enterprises that offered standardised, customised or co-created goods or services by type of goods and services, NACE Rev. 2 activity and size class (CIS2022)"	"inn_cis13_gs"	"dataset"	"01.07.2025"	"05.03.2025"	"2022"	"2022"	13577
+"                        Enterprises by reason why they did not have any (or not more) innovation activities, by NACE Rev. 2 activity and size class (CIS2022)"	"inn_cis13_reas"	"dataset"	"06.12.2024"	"28.11.2024"	"2022"	"2022"	31863
+"                        Enterprises that implemented fundamental changes to their business model, by NACE Rev. 2 activity and size class (CIS2022)"	"inn_cis13_bmod"	"dataset"	"01.07.2025"	"05.03.2025"	"2022"	"2022"	16632
+"                        Innovation active enterprise by type and importance of environmental benefits obtained during the consumption or use of a good or service by the end user, by NACE Rev. 2 activity and size class (CIS2022)"	"inn_cis13_env"	"dataset"	"29.06.2026"	"06.12.2024"	"2022"	"2022"	76122
+"                        Innovation active enterprises that introduced innovations with environmental benefits within the enterprise, by type of contribution and effect, NACE Rev. 2 activity and size class (CIS2022)"	"inn_cis13_eco"	"dataset"	"01.07.2026"	"06.12.2024"	"2022"	"2022"	107402
+"                        Enterprises by type and importance of factors related to climate change, NACE Rev. 2 activity and size class (CIS2022)"	"inn_cis13_clim"	"dataset"	"01.07.2025"	"05.03.2025"	"2022"	"2022"	76782
+"                        Innovation active enterprises by type and importance of factors driving environmental innovations, NACE Rev. 2 activity and size class (CIS2022)"	"inn_cis13_envf"	"dataset"	"25.08.2026"	"25.08.2026"	"2022"	"2022"	57012
+"                        Enterprises, employed persons and turnover by type of enterprise, NACE Rev. 2 activity and size class (2020)"	"inn_cis12_bas"	"dataset"	"12.07.2023"	"29.04.2026"	"2020"	"2020"	181912
+"                        Enterprises by year of registration and by type of enterprise, NACE Rev.2 activity and size class (2020)"	"inn_cis12_yreg"	"dataset"	"12.07.2023"	"12.07.2023"	"2020"	"2020"	48252
+"                        Enterprises by their belonging to an enterprise group, NACE Rev. 2 activity and size class (2020)"	"inn_cis12_gen"	"dataset"	"12.07.2023"	"12.07.2023"	"2020"	"2020"	44426
+"                        Enterprises by percentage of employees with university education, NACE Rev. 2 activity and size class (2020)"	"inn_cis12_educ"	"dataset"	"12.07.2023"	"12.07.2023"	"2020"	"2020"	72657
+"                        Enterprises by market place, NACE Rev. 2 activity and size class (2020)"	"inn_cis12_mrk"	"dataset"	"12.07.2023"	"12.07.2023"	"2020"	"2020"	66501
+"                        Turnover of enterprises by market place, NACE Rev. 2 activity and size class (2020)"	"inn_cis12_mrkt"	"dataset"	"12.07.2023"	"12.07.2023"	"2020"	"2020"	59776
+"                        Enterprises by type and importance of market conditions, NACE Rev.2 activity and size class (2020)"	"inn_cis12_cond"	"dataset"	"17.11.2022"	"17.11.2022"	"2020"	"2020"	333894
+"                        Enterprises with innovation activities during 2018 and 2020 by NACE Rev. 2 activity and size class (2020)"	"inn_cis12_inact"	"dataset"	"12.07.2023"	"12.07.2023"	"2020"	"2020"	30315
+"                        Enterprises with research and development (R&D) activities during 2018 and 2020 by NACE Rev. 2 activity and size class (2020)"	"inn_cis12_inrd"	"dataset"	"09.04.2024"	"04.11.2026"	"2020"	"2020"	36823
+"                        Enterprises that introduced new or improved processes by type of innovation, NACE Rev. 2 activity and size class (2020)"	"inn_cis12_spec"	"dataset"	"12.07.2023"	"12.07.2023"	"2020"	"2020"	51977
+"                        Enterprises by hampering factor for innovation activities, level of importance of the hampering factor, NACE Rev. 2 activity and size class (2020)"	"inn_cis12_ham"	"dataset"	"12.07.2023"	"12.07.2023"	"2020"	"2020"	576573
+"                        Enterprises that introduced an innovation by type of innovation, developer, NACE Rev.2 activity and size class (2020)"	"inn_cis12_prod"	"dataset"	"12.07.2023"	"12.07.2023"	"2020"	"2020"	72025
+"                        Product innovative enterprises that have introduced at least one new or significantly improved product by type of innovation, NACE Rev. 2 activity and size class (2020)"	"inn_cis12_prodn"	"dataset"	"12.07.2023"	"12.07.2023"	"2020"	"2020"	38424
+"                        Turnover of enterprises from new or significantly improved products, by NACE Rev. 2 activity and size class (2020)"	"inn_cis12_prodt"	"dataset"	"12.07.2023"	"12.07.2023"	"2020"	"2020"	17015
+"                        Enterprises that co-operated on business activities with other enterprises or organisations by field of activities, NACE Rev. 2 activity and size class (2020)"	"inn_cis12_co"	"dataset"	"12.07.2023"	"04.11.2026"	"2020"	"2020"	83915
+"                        Innovative enterprises that co-operated on R&D and other innovation activities with other enterprises or organisations, by kind and location of co-operation partner, NACE Rev. 2 activity and size class (2020)"	"inn_cis12_coop"	"dataset"	"12.07.2023"	"12.07.2023"	"2020"	"2020"	266899
+"                        Enterprises that acquiesce or transfer resources and business activities within the enterprise group, NACE Rev. 2 activity and size class (2020)"	"inn_cis12_src"	"dataset"	"17.11.2022"	"04.11.2026"	"2020"	"2020"	55228
+"                        Enterprises and expenditure of enterprises on innovation activities by area of expenditure, NACE Rev. 2 activity and size class (2020)"	"inn_cis12_exp"	"dataset"	"17.11.2022"	"29.04.2026"	"2020"	"2020"	66144
+"                        Enterprises and total expenditure of enterprises by area of expenditure, NACE Rev. 2 activity and size class (2020)"	"inn_cis12_expt"	"dataset"	"17.11.2022"	"29.04.2026"	"2020"	"2020"	99580
+"                        Enterprises that received public funding for research and development (R&D) or other innovation activities, by source of funding, NACE Rev. 2 activity and size class (2020)"	"inn_cis12_pub"	"dataset"	"12.07.2023"	"12.07.2023"	"2020"	"2020"	124381
+"                        Enterprises that use tax incentives or allowances for innovative activities and research and development (R&D) by NACE Rev. 2 activity and size class (2020)"	"inn_cis12_txal"	"dataset"	"17.11.2022"	"04.11.2026"	"2020"	"2020"	19011
+"                        Enterprises that tried to obtain funding for research and development (R&D) or other innovation activities, by type of finance and effect, NACE Rev. 2 activity and size class (2020)"	"inn_cis12_fin"	"dataset"	"17.11.2022"	"17.11.2022"	"2020"	"2020"	45808
+"                        Enterprises that obtained debt or equity finance for R&D or other innovation activities by NACE Rev. 2 activity and size class (2020)"	"inn_cis12_finrd"	"dataset"	"17.11.2022"	"17.11.2022"	"2020"	"2020"	23514
+"                        Enterprises that tried to obtain intra-group loans within the enterprise group by outcome, NACE Rev. 2 activity and size class (2020)"	"inn_cis12_igl"	"dataset"	"17.11.2022"	"17.11.2022"	"2020"	"2020"	4039
+"                        Enterprises that obtained intra-group loans for R&D or other innovation activities within the enterprise group by NACE Rev. 2 activity and size class (2020)"	"inn_cis12_iglrd"	"dataset"	"17.11.2022"	"17.11.2022"	"2020"	"2020"	2043
+"                        Enterprises whose innovation activities have been affected by legislation or regulations by subject of the regulation/legislation, effect, NACE Rev. 2 activity and size class (2020)"	"inn_cis12_legist"	"dataset"	"17.11.2022"	"17.11.2022"	"2020"	"2020"	147459
+"                        Enterprises by type of business strategy applied, importance of the strategy, NACE Rev. 2 activity and size class (2020)"	"inn_cis12_strat"	"dataset"	"17.11.2022"	"17.11.2022"	"2020"	"2020"	574074
+"                        Enterprises that applied for a patent, registered an industrial design, trade mark or used trade secrets, by NACE Rev. 2 activity and size class (2020)"	"inn_cis12_ipr"	"dataset"	"12.07.2023"	"12.07.2023"	"2020"	"2020"	59740
+"                        Enterprises that licenced out, sold, exchanged intellectual property rights by type of transaction, NACE Rev. 2 activity and size class (2020)"	"inn_cis12_iprout"	"dataset"	"17.11.2022"	"17.11.2022"	"2020"	"2020"	31731
+"                        Enterprises that purchased or licensed in intellectual property rights by type of issuing organisation, NACE Rev. 2 activity and size class (2020)"	"inn_cis12_iprin"	"dataset"	"17.11.2022"	"17.11.2022"	"2020"	"2020"	29579
+"                        Enterprises that purchased machinery, equipment or software by NACE Rev. 2 activity and size class (2020)"	"inn_cis12_purmes"	"dataset"	"17.11.2022"	"17.11.2022"	"2020"	"2020"	23975
+"                        Enterprises that offered standardised, customised or co-created goods or services by type of goods and services, NACE Rev. 2 activity and size class (2020)"	"inn_cis12_gs"	"dataset"	"17.11.2022"	"17.11.2022"	"2020"	"2020"	43070
+"                        Enterprises by type and importance of factors related to climate change, NACE Rev.2 activity and size class (2020)"	"inn_cis12_clim"	"dataset"	"17.11.2022"	"17.11.2022"	"2020"	"2020"	208235
+"                        Enterprises by type and importance of environmental benefits obtained within the enterprise by introducing business process innovation, by NACE Rev.2 activity and size class (2020)"	"inn_cis12_enve"	"dataset"	"17.11.2022"	"17.11.2022"	"2020"	"2020"	55619
+"                        Enterprises by type and importance of factors driving environmental innovations, NACE Rev.2 activity and size class (2020)"	"inn_cis12_envf"	"dataset"	"17.11.2022"	"17.11.2022"	"2020"	"2020"	141344
+"                        Enterprises by type and importance of environmental benefits obtained during the consumption or use of an innovative product of the enterprise, by NACE Rev.2 activity and size class (2020)"	"inn_cis12_envu"	"dataset"	"17.11.2022"	"17.11.2022"	"2020"	"2020"	36829
+"                        Enterprises, employed persons and turnover by innovation profile, NACE Rev. 2 activity and size class (2020)"	"inn_cis12_pf_bas"	"dataset"	"06.02.2023"	"29.04.2026"	"2020"	"2020"	26958
+"                        Turnover of enterprises by innovation profile, market place, NACE Rev. 2 activity and size class (2020)"	"inn_cis12_pf_mrkt"	"dataset"	"06.02.2023"	"06.02.2023"	"2020"	"2020"	30496
+"                        Turnover of enterprises from new or significantly improved products, by innovation profile, NACE Rev. 2 activity and size class (2020)"	"inn_cis12_pf_prodt"	"dataset"	"06.02.2023"	"06.02.2023"	"2020"	"2020"	23648
+"                        Enterprises attaching high importance to business strategies by innovation profile, NACE Rev. 2 activity and size class (2020)"	"inn_cis12_pf_strat"	"dataset"	"06.02.2023"	"06.02.2023"	"2020"	"2020"	76814
+"                        Enterprises that applied for a patent, registered an industrial design, trade mark or used trade secrets, by innovation profile, NACE Rev. 2 activity and size class (2020)"	"inn_cis12_pf_ipr"	"dataset"	"06.02.2023"	"06.02.2023"	"2020"	"2020"	38080
+"                        Enterprises that purchased machinery, equipment or software by innovation profile, NACE Rev. 2 activity and size class (2020)"	"inn_cis12_pf_purmes"	"dataset"	"06.02.2023"	"06.02.2023"	"2020"	"2020"	14014
+"                        Enterprises that tried to obtain funding for research and development (R&D) or other innovation activities by innovation profile, type of finance and effect, NACE Rev. 2 activity and size class (2020)"	"inn_cis12_pf_fin"	"dataset"	"06.02.2023"	"06.02.2023"	"2020"	"2020"	25684
+"                        Enterprises that received public funding for research and development (R&D) or other innovation activities, by innovation profile, NACE Rev. 2 activity and size class (2020)"	"inn_cis12_pf_pub"	"dataset"	"06.02.2023"	"06.02.2023"	"2020"	"2020"	8440
+"                        Enterprises that co-operated on R&D and other innovation activities by innovation profile, NACE Rev. 2 activity and size class (2020)"	"inn_cis12_pf_co"	"dataset"	"06.02.2023"	"04.11.2026"	"2020"	"2020"	8484
+"                        Enterprises, employed persons and turnover by type of enterprise, NACE Rev. 2 activity and size class (2018)"	"inn_cis11_bas"	"dataset"	"11.07.2023"	"29.04.2026"	"2018"	"2018"	181623
+"                        Enterprises by year of registration and by type of enterprise, NACE Rev. 2 activity and size class (2018)"	"inn_cis11_yreg"	"dataset"	"11.07.2023"	"03.01.2024"	"2018"	"2018"	50573
+"                        Enterprises by their belonging to an enterprise group, NACE Rev. 2 activity and size class (2018)"	"inn_cis11_gen"	"dataset"	"11.07.2023"	"03.01.2024"	"2018"	"2018"	46875
+"                        Enterprises by percentage of persons employed with university education, NACE Rev. 2 activity and size class (2018)"	"inn_cis11_educ"	"dataset"	"11.07.2023"	"03.01.2024"	"2018"	"2018"	72799
+"                        Enterprises by market place, NACE Rev. 2 activity and size class (2018)"	"inn_cis11_mrk"	"dataset"	"11.07.2023"	"28.04.2026"	"2018"	"2018"	67396
+"                        Turnover of enterprises by market place, NACE Rev. 2 activity and size class (2018)"	"inn_cis11_mrkt"	"dataset"	"11.07.2023"	"28.04.2026"	"2018"	"2018"	47101
+"                        Enterprises with innovation activities during 2016 and 2018 by NACE Rev. 2 activity and size class (2018)"	"inn_cis11_inact"	"dataset"	"11.07.2023"	"03.01.2024"	"2018"	"2018"	25955
+"                        Enterprises with research and development (R&D) activities during 2016 and 2018 by NACE Rev. 2 activity and size class (2018)"	"inn_cis11_inrd"	"dataset"	"11.07.2023"	"04.11.2026"	"2018"	"2018"	37800
+"                        Enterprises that introduced new or improved processes by type of innovation, NACE Rev. 2 activity and size class (2018)"	"inn_cis11_spec"	"dataset"	"11.07.2023"	"03.01.2024"	"2018"	"2018"	52485
+"                        Innovative enterprises by level of meeting expectations towards innovation, NACE Rev. 2 activity and size class (2018)"	"inn_cis11_inex"	"dataset"	"05.05.2021"	"03.01.2024"	"2018"	"2018"	38109
+"                        Enterprises by hampering factor for innovation activities, level of importance of the hampering factor, NACE Rev. 2 activity and size class (2018)"	"inn_cis11_ham"	"dataset"	"11.07.2023"	"03.01.2024"	"2018"	"2018"	609769
+"                        Enterprises that introduced an innovation by type of innovation, developer, NACE Rev.2 activity and size class (2018)"	"inn_cis11_prod"	"dataset"	"11.07.2023"	"03.01.2024"	"2018"	"2018"	74503
+"                        Product innovative enterprises that have introduced at least one new or significantly improved product by type of innovation, NACE Rev. 2 activity and size class (2018)"	"inn_cis11_prodn"	"dataset"	"11.07.2023"	"03.01.2024"	"2018"	"2018"	39404
+"                        Turnover of enterprises from new or significantly improved products, by NACE Rev. 2 activity and size class (2018)"	"inn_cis11_prodt"	"dataset"	"11.07.2023"	"03.01.2024"	"2018"	"2018"	17628
+"                        Enterprises that co-operated on business activities with other enterprises or organisations by field of activities, NACE Rev. 2 activity and size class (2018)"	"inn_cis11_co"	"dataset"	"11.07.2023"	"04.11.2026"	"2018"	"2018"	85655
+"                        Enterprises that co-operated on R&D and other innovation activities with other enterprises or organisations, by kind and location of co-operation partner, NACE Rev. 2 activity and size class (2018)"	"inn_cis11_coop"	"dataset"	"11.07.2023"	"03.01.2024"	"2018"	"2018"	718266
+"                        Enterprises that acquiesce or transfer resources and business activities within the enterprise group, NACE Rev. 2 activity and size class (2018)"	"inn_cis11_src"	"dataset"	"05.05.2021"	"04.11.2026"	"2018"	"2018"	62434
+"                        Expenditures of enterprises by area of expenditure, NACE Rev. 2 activity and size class (2018)"	"inn_cis11_exp"	"dataset"	"11.07.2023"	"03.01.2024"	"2018"	"2018"	96764
+"                        Enterprises that received public funding for research and development (R&D) or other innovation activities, by source of funding, NACE Rev. 2 activity and size class (2018)"	"inn_cis11_pub"	"dataset"	"11.07.2023"	"03.01.2024"	"2018"	"2018"	126878
+"                        Enterprises that use tax incentives or allowances for innovative activities and research and development (R&D) by NACE Rev. 2 activity and size class (2018)"	"inn_cis11_txal"	"dataset"	"11.07.2023"	"04.11.2026"	"2018"	"2018"	19587
+"                        Enterprises that tried to obtain funding for research and development (R&D) or other innovation activities, by type of finance and effect, NACE Rev. 2 activity and size class (2018)"	"inn_cis11_fin"	"dataset"	"11.07.2023"	"03.01.2024"	"2018"	"2018"	51323
+"                        Enterprises that obtained debt or equity finance for R&D or other innovation activities by NACE Rev. 2 activity and size class (2018)"	"inn_cis11_finrd"	"dataset"	"05.05.2021"	"03.01.2024"	"2018"	"2018"	9525
+"                        Enterprises that tried to obtain intra-group loans within the enterprise group by outcome, NACE Rev. 2 activity and size class (2018)"	"inn_cis11_igl"	"dataset"	"05.05.2021"	"03.01.2024"	"2018"	"2018"	4920
+"                        Enterprises that obtained intra-group loans for R&D or other innovation activities within the enterprise group by NACE Rev. 2 activity and size class (2018)"	"inn_cis11_iglrd"	"dataset"	"05.05.2021"	"03.01.2024"	"2018"	"2018"	2453
+"                        Enterprises whose innovation activities have been affected by legislation or regulations by subject of the regulation/legislation, effect, NACE Rev. 2 activity and size class (2018)"	"inn_cis11_legist"	"dataset"	"11.07.2023"	"03.01.2024"	"2018"	"2018"	166479
+"                        Enterprises by type of business strategy applied, importance of the strategy, NACE Rev. 2 activity and size class (2018)"	"inn_cis11_strat"	"dataset"	"11.07.2023"	"03.01.2024"	"2018"	"2018"	594439
+"                        Enterprises by level of importance of work organization methods, NACE Rev. 2 activity and size class (2018)"	"inn_cis11_worg"	"dataset"	"11.07.2023"	"03.01.2024"	"2018"	"2018"	105598
+"                        Enterprises by kind of channels to acquire information relevant for innovation, NACE Rev. 2 activity and size class (2018)"	"inn_cis11_sou"	"dataset"	"11.07.2023"	"03.01.2024"	"2018"	"2018"	85193
+"                        Enterprises that applied for a patent, registered an industrial design, trade mark or used trade secrets, by NACE Rev. 2 activity and size class (2018)"	"inn_cis11_ipr"	"dataset"	"11.07.2023"	"03.01.2024"	"2018"	"2018"	66519
+"                        Enterprises that licenced out, sold, exchanged intellectual property rights by type of transaction, NACE Rev. 2 activity and size class (2018)"	"inn_cis11_iprout"	"dataset"	"11.07.2023"	"03.01.2024"	"2018"	"2018"	41294
+"                        Enterprises that purchased or licensed in intellectual property rights by type of issuing organisation, NACE Rev. 2 activity and size class (2018)"	"inn_cis11_iprin"	"dataset"	"11.07.2023"	"03.01.2024"	"2018"	"2018"	39580
+"                        Enterprises that purchased machinery, equipment or software by NACE Rev. 2 activity and size class (2018)"	"inn_cis11_purmes"	"dataset"	"11.07.2023"	"03.01.2024"	"2018"	"2018"	26278
+"                        Enterprises that purchased technical services by cooperation partner, NACE Rev. 2 activity and size class (2018)"	"inn_cis11_purts"	"dataset"	"11.07.2023"	"03.01.2024"	"2018"	"2018"	28539
+"                        Enterprises that offered standardised, customised or co-created goods or services by type of goods and services, NACE Rev. 2 activity and size class (2018)"	"inn_cis11_gs"	"dataset"	"11.07.2023"	"03.01.2024"	"2018"	"2018"	48923
+"                        Enterprises that offered co-created or customised goods or services by type of cooperation partner, NACE Rev. 2 activity and size class (2018)"	"inn_cis11_gsco"	"dataset"	"11.07.2023"	"03.01.2024"	"2018"	"2018"	44566
+"                        Enterprises by percentage of turnover from customised or co-created goods or services, NACE Rev. 2 activity and size class (2018)"	"inn_cis11_gscot"	"dataset"	"11.07.2023"	"03.01.2024"	"2018"	"2018"	11963
+"                        Enterprises, employed persons and turnover by innovation profile, NACE Rev. 2 activity and size class (2018)"	"inn_cis11_pf_bas"	"dataset"	"13.02.2023"	"29.04.2026"	"2018"	"2018"	29332
+"                        Turnover of enterprises by innovation profile, market place, NACE Rev. 2 activity and size class (2018)"	"inn_cis11_pf_mrkt"	"dataset"	"13.02.2023"	"03.01.2024"	"2018"	"2018"	31744
+"                        Turnover of enterprises from new or significantly improved products, by innovation profile, NACE Rev. 2 activity and size class (2018)"	"inn_cis11_pf_prodt"	"dataset"	"13.02.2023"	"03.01.2024"	"2018"	"2018"	25810
+"                        Enterprises attaching high importance to business strategies by innovation profile, NACE Rev. 2 activity and size class (2018)"	"inn_cis11_pf_strat"	"dataset"	"13.02.2023"	"03.01.2024"	"2018"	"2018"	87456
+"                        Enterprises that applied for a patent, registered an industrial design, trade mark or used trade secrets, by innovation profile, NACE Rev. 2 activity and size class (2018)"	"inn_cis11_pf_ipr"	"dataset"	"13.02.2023"	"03.01.2024"	"2018"	"2018"	46652
+"                        Enterprises that purchased machinery, equipment or software by innovation profile, NACE Rev. 2 activity and size class (2018)"	"inn_cis11_pf_purmes"	"dataset"	"13.02.2023"	"03.01.2024"	"2018"	"2018"	15950
+"                        Enterprises that tried to obtain funding for research and development (R&D) or other innovation activities by innovation profile, type of finance and effect, NACE Rev. 2 activity and size class (2018)"	"inn_cis11_pf_fin"	"dataset"	"13.02.2023"	"03.01.2024"	"2018"	"2018"	32574
+"                        Enterprises that received public funding for research and development (R&D) or other innovation activities, by innovation profile, NACE Rev. 2 activity and size class (2018)"	"inn_cis11_pf_pub"	"dataset"	"13.02.2023"	"03.01.2024"	"2018"	"2018"	9012
+"                        Enterprises that co-operated on R&D and other innovation activities by innovation profile, NACE Rev. 2 activity and size class (2018)"	"inn_cis11_pf_co"	"dataset"	"13.02.2023"	"04.11.2026"	"2018"	"2018"	9478
+"                        Product and/or process innovative enterprises engaged in co-operation by co-operation partner, NACE Rev. 2 activity and size class (2016)"	"inn_cis10_coop"	"dataset"	"03.07.2019"	"03.01.2024"	"2016"	"2016"	83084
+"                        Product and/or process innovative enterprises which used information for their innovation activities, by source of information, level of importance of the source, NACE Rev. 2 activity and size class (2016)"	"inn_cis10_sou"	"dataset"	"03.07.2019"	"03.01.2024"	"2016"	"2016"	101264
+"                        Product and/or process innovative enterprises that received public funding for innovation activities by source of funding, NACE Rev. 2 activity and size class (2016)"	"inn_cis10_pub"	"dataset"	"03.07.2019"	"03.01.2024"	"2016"	"2016"	24014
+"                        Innovative and non-innovative enterprises by type of business strategy applied, importance of the strategy, NACE Rev. 2 activity and size class (2016)"	"inn_cis10_strat"	"dataset"	"03.07.2019"	"03.01.2024"	"2016"	"2016"	72583
+"                        Enterprises that introduced innovation of specific types by type of the innovation, NACE Rev. 2 activity and size class (2016)"	"inn_cis10_spec"	"dataset"	"03.07.2019"	"03.01.2024"	"2016"	"2016"	73820
+"                        Product and process innovative enterprises which introduced innovation by type of innovation, innovation developer, NACE Rev.2 activity and size class (2016)"	"inn_cis10_prod"	"dataset"	"03.07.2019"	"03.01.2024"	"2016"	"2016"	100784
+"                        Product innovative enterprises that have introduced new or significantly improved products by NACE Rev. 2 activity and size class (2016)"	"inn_cis10_prodn"	"dataset"	"03.07.2019"	"03.01.2024"	"2016"	"2016"	23032
+"                        Turnover of product innovative enterprises from new or significantly improved products, by NACE Rev. 2 activity and size class (2016)"	"inn_cis10_prodt"	"dataset"	"03.07.2019"	"03.01.2024"	"2016"	"2016"	16092
+"                        Product and/or process innovative enterprises that have introduced organisational and/or marketing innovation by type of innovation, NACE Rev. 2 activity and size class (2016)"	"inn_cis10_mo"	"dataset"	"03.07.2019"	"03.01.2024"	"2016"	"2016"	39343
+"                        Innovative enterprises by hampering factor for innovation activities, level of importance of the hampering factor, NACE Rev. 2 activity and size class (2016)"	"inn_cis10_ham"	"dataset"	"03.07.2019"	"03.01.2024"	"2016"	"2016"	75044
+"                        Non- innovative enterprises by barrier against innovation activities, level of importance of the barrier, NACE Rev. 2 activity and size class (2016)"	"inn_cis10_noin"	"dataset"	"03.07.2019"	"03.01.2024"	"2016"	"2016"	119156
+"                        Innovative enterprises whose innovation activities have been affected by legislation or regulations by subject of the regulation/legislation, type of effect, NACE Rev. 2 activity and size class (2016)"	"inn_cis10_legist"	"dataset"	"11.02.2019"	"03.01.2024"	"2016"	"2016"	104232
+"                        Innovative enterprises whose innovation activities have been affected, or not affected, by legislation or regulations, by type of effect, NACE Rev.2 activity and size class (2016)"	"inn_cis10_legis"	"dataset"	"12.02.2019"	"03.01.2024"	"2016"	"2016"	23043
+"                        Enterprise that introduced innovation in logistics by type of innovation, NACE Rev. 2 activity and size class (2016)"	"inn_cis10_login"	"dataset"	"15.02.2019"	"03.01.2024"	"2016"	"2016"	31712
+"                        Enterprises with expenditures for innovation in logistics by size classes of expenditure, NACE Rev. 2 activity and size class (2016)"	"inn_cis10_logexp"	"dataset"	"30.01.2019"	"06.09.2024"	"2016"	"2016"	39513
+"                        Enterprises that did not introduce innovation in logistics by barrier, NACE Rev. 2 activity and size class (2016)"	"inn_cis10_lognoin"	"dataset"	"30.01.2019"	"03.01.2024"	"2016"	"2016"	21493
+"                        Enterprises which introduced innovations in logistics by reason of the introduction, level of importance of the reason, NACE Rev. 2 activity and size class (2016)"	"inn_cis10_loginr"	"dataset"	"12.02.2019"	"03.01.2024"	"2016"	"2016"	33818
+"                    Basic economic information on the enterprises by NACE Rev. 2 activity and size class (2016)"	"inn_cis10_bas"	"dataset"	"03.07.2019"	"03.01.2024"	"2016"	"2016"	192952
+"                    Enterprise by administrative state of the enterprise, NACE Rev. 2 activity and size class (2016)"	"inn_cis10_gen"	"dataset"	"03.07.2019"	"03.01.2024"	"2016"	"2016"	72405
+"                    Enterprises by NACE Rev. 2 activity and size class (2016)"	"inn_cis10_type"	"dataset"	"03.07.2019"	"03.01.2024"	"2016"	"2016"	139645
+"                    Enterprises by percentage of employees with university education, by NACE Rev. 2 activity and size class (2016)"	"inn_cis10_educ"	"dataset"	"03.07.2019"	"03.01.2024"	"2016"	"2016"	58165
+"                    Enterprise by place where goods and/or services are sold, and place of largest market in terms of turnover, by NACE Rev. 2 activity and size class (2016)"	"inn_cis10_mrk"	"dataset"	"03.07.2019"	"03.01.2024"	"2016"	"2016"	150221
+"                    Product and/or process innovative enterprises by type of innovation activity, NACE Rev. 2 activity and size class (2016)"	"inn_cis10_iact"	"dataset"	"22.04.2021"	"04.11.2026"	"2016"	"2016"	71563
+"                    Expenditures in product and/or process innovative enterprises by area of expenditure, NACE Rev. 2 activity and size class (2016)"	"inn_cis10_exp"	"dataset"	"22.04.2021"	"03.01.2024"	"2016"	"2016"	33242
+"                    Enterprises by intellectual property rights (IPRs) and licensing in the enterprise, NACE Rev. 2 activity and size class (2016)"	"inn_cis10_ipr"	"dataset"	"08.04.2019"	"03.01.2024"	"2016"	"2016"	84232
+"                    Basic economic information on the enterprises by NACE Rev. 2 activity and size class (2014)"	"inn_cis9_bas"	"dataset"	"23.04.2021"	"03.01.2024"	"2014"	"2014"	270302
+"                    General information on the enterprises by NACE Rev. 2 activity and size class (2014)"	"inn_cis9_gen"	"dataset"	"23.04.2021"	"03.01.2024"	"2014"	"2014"	225623
+"                    Enterprises by main types of innovation, NACE Rev. 2 activity and size class (2014)"	"inn_cis9_type"	"dataset"	"23.04.2021"	"03.01.2024"	"2014"	"2014"	130093
+"                    Enterprises by specific types of innovation, NACE Rev. 2 activity and size class (2014)"	"inn_cis9_spec"	"dataset"	"23.04.2021"	"03.01.2024"	"2014"	"2014"	70933
+"                    Product and process innovative enterprises by NACE Rev. 2 activity and size class (2014)"	"inn_cis9_prod"	"dataset"	"23.04.2021"	"03.01.2024"	"2014"	"2014"	189464
+"                    Innovation activities and expenditures in the enterprises by NACE Rev. 2 activity and size class (2014)"	"inn_cis9_exp"	"dataset"	"23.04.2021"	"03.01.2024"	"2014"	"2014"	69619
+"                    Public funding in the enterprises by NACE Rev. 2 activity and size class (2014)"	"inn_cis9_pub"	"dataset"	"23.04.2021"	"03.01.2024"	"2014"	"2014"	24084
+"                    Types of co-operation of the enterprises by NACE Rev. 2 activity and size class (2014)"	"inn_cis9_coop"	"dataset"	"23.04.2021"	"03.01.2024"	"2014"	"2014"	131757
+"                    Organisational and marketing innovation in product and process innovative enterprises by NACE Rev. 2 activity and size class (2014)"	"inn_cis9_mo"	"dataset"	"23.04.2021"	"03.01.2024"	"2014"	"2014"	38335
+"                    Public sector procurement and innovation in the enterprises by NACE Rev. 2 activity and size class (2014)"	"inn_cis9_proc"	"dataset"	"11.12.2017"	"03.01.2024"	"2014"	"2014"	50929
+"                    Intellectual property rights and licensing in the enterprises by NACE Rev. 2 activity and size class (2014)"	"inn_cis9_ipr"	"dataset"	"23.04.2021"	"03.01.2024"	"2014"	"2014"	101106
+"                    Importance of the reasons to not innovate and of the barriers to innovation in the enterprises by NACE Rev. 2 activity and size class (2014)"	"inn_cis9_noin"	"dataset"	"23.04.2021"	"03.01.2024"	"2014"	"2014"	88966
+"                    Environmental benefits due to innovation in the enterprises by NACE Rev. 2 activity and size class (2014)"	"inn_cis9_env"	"dataset"	"23.04.2021"	"03.01.2024"	"2014"	"2014"	74676
+"                    Importance of the drivers to introduce innovations with environmental benefits and procedures to reduce environmental impacts in the enterprises, by NACE Rev. 2 activity and size class (2014)"	"inn_cis9_ecodr"	"dataset"	"23.04.2021"	"03.01.2024"	"2014"	"2014"	106870
+"                    Basic economic information on the enterprises by NACE Rev. 2 activity and size class (2012)"	"inn_cis8_bas"	"dataset"	"08.01.2020"	"03.01.2024"	"2012"	"2012"	181053
+"                    General information on the enterprises by NACE Rev. 2 activity and size class (2012)"	"inn_cis8_gen"	"dataset"	"07.07.2017"	"03.01.2024"	"2012"	"2012"	239541
+"                    Enterprises by main types of innovation, NACE Rev. 2 activity and size class (2012)"	"inn_cis8_type"	"dataset"	"19.03.2019"	"03.01.2024"	"2012"	"2012"	115344
+"                    Enterprises by specific types of innovation, NACE Rev. 2 activity and size class (2012)"	"inn_cis8_spec"	"dataset"	"07.07.2017"	"03.01.2024"	"2012"	"2012"	66766
+"                    Product and process innovative enterprises by NACE Rev. 2 activity and size class (2012)"	"inn_cis8_prod"	"dataset"	"08.01.2020"	"03.01.2024"	"2012"	"2012"	168912
+"                    Innovation activities and expenditures in 2012 in the enterprises by NACE Rev. 2 activity and size class (2012)"	"inn_cis8_exp"	"dataset"	"08.01.2020"	"03.01.2024"	"2012"	"2012"	68132
+"                    Public funding in the enterprises by NACE Rev. 2 activity and size class (2012)"	"inn_cis8_pub"	"dataset"	"07.07.2017"	"03.01.2024"	"2012"	"2012"	20257
+"                    Sources of information for enterprises - as highly important and not used - by NACE Rev. 2 activity and size class (2012)"	"inn_cis8_sou"	"dataset"	"07.07.2017"	"03.01.2024"	"2012"	"2012"	77254
+"                    Types of co-operation of the enterprises by NACE Rev. 2 activity and size class (2012)"	"inn_cis8_coop"	"dataset"	"19.03.2019"	"03.01.2024"	"2012"	"2012"	94463
+"                    Methods for maintaining or increasing the competitiveness in the enterprises - as highly important and not used - by NACE Rev. 2 activity and size class (2012)"	"inn_cis8_comp"	"dataset"	"07.07.2017"	"03.01.2024"	"2012"	"2012"	61950
+"                    Organisational and marketing innovation in product and process innovative enterprises by NACE Rev. 2 activity and size class (2012)"	"inn_cis8_mo"	"dataset"	"07.07.2017"	"03.01.2024"	"2012"	"2012"	17691
+"                    Public sector procurement and innovation in the enterprises by NACE Rev. 2 activity and size class (2012)"	"inn_cis8_proc"	"dataset"	"07.07.2017"	"03.01.2024"	"2012"	"2012"	49388
+"                    Goals of innovative and non-innovative enterprises - as highly important and not relevant - by NACE Rev. 2 activity and size class (2012)"	"inn_cis8_goals"	"dataset"	"07.07.2017"	"03.01.2024"	"2012"	"2012"	61618
+"                    Strategies of innovative and non-innovative enterprises - as highly important and not relevant - by NACE Rev. 2 activity and size class (2012)"	"inn_cis8_strat"	"dataset"	"07.07.2017"	"03.01.2024"	"2012"	"2012"	62443
+"                    Obstacles of innovative and non-innovative enterprises - as highly important and not relevant - by NACE Rev. 2 activity and size class (2012)"	"inn_cis8_obst"	"dataset"	"07.07.2017"	"03.01.2024"	"2012"	"2012"	132756
+"                            Enterprises in the population and realised sample, by size class (1996)"	"inn_c12"	"dataset"	"27.03.2009"	"03.01.2024"	"1996"	"1996"	512
+"                            Number of enterprises with innovation activity, by size class (1996)"	"inn_c212"	"dataset"	"27.03.2009"	"15.03.2024"	"1996"	"1996"	2464
+"                            Innovating firms' level of export intensity, by size class (1996)"	"inn_c214"	"dataset"	"27.03.2009"	"15.03.2024"	"1996"	"1996"	3082
+"                            Innovating firms' type (independent or non-independent), by size class (1996)"	"inn_c215"	"dataset"	"27.03.2009"	"15.03.2024"	"1996"	"1996"	1792
+"                            Who developed the innovation activity by size class (1996)"	"inn_c222"	"dataset"	"27.03.2009"	"03.01.2024"	"1996"	"1996"	2252
+"                            Turnover due to innovating products, by size class (1996)"	"inn_c32"	"dataset"	"27.03.2009"	"03.01.2024"	"1996"	"1996"	1792
+"                            Innovation intensity, by size class (1996)"	"inn_c412"	"dataset"	"27.03.2009"	"03.01.2024"	"1996"	"1996"	960
+"                            Innovation expenditures, by size class (1996)"	"inn_c422"	"dataset"	"27.03.2009"	"15.03.2024"	"1996"	"1996"	1915
+"                            Type of innovating firms' engagement in R&D, by size class (1996)"	"inn_c512"	"dataset"	"27.03.2009"	"03.01.2024"	"1996"	"1996"	1660
+"                            Innovating firms' level of R&D intensity, by size class (1996)"	"inn_c521"	"dataset"	"27.03.2009"	"03.01.2024"	"1996"	"1996"	2007
+"                            Number of innovating enterprises considering the following objectives as very important, by size class (1996)"	"inn_c612"	"dataset"	"27.03.2009"	"03.01.2024"	"1996"	"1996"	5207
+"                            Number of innovating enterprises considering the different listed objectives as not relevant, by size class (1996)"	"inn_c622"	"dataset"	"27.03.2009"	"03.01.2024"	"1996"	"1996"	5158
+"                            Number of innovating enterprises considering the listed sources of information as very important, by size class (1996)"	"inn_c712"	"dataset"	"27.03.2009"	"15.03.2024"	"1996"	"1996"	5952
+"                            Number of innovating enterprises considering the listed sources of information as not relevant, by size class (1996)"	"inn_c722"	"dataset"	"27.03.2009"	"15.03.2024"	"1996"	"1996"	6143
+"                            Number of innovating enterprises with innovation cooperation, by size class (1996)"	"inn_c812"	"dataset"	"27.03.2009"	"15.03.2024"	"1996"	"1996"	640
+"                            Type of partner chosen, by size class (1996)"	"inn_c822"	"dataset"	"27.03.2009"	"03.01.2024"	"1996"	"1996"	3788
+"                            Location of partner, by size class (1996)"	"inn_c832"	"dataset"	"27.03.2009"	"03.01.2024"	"1996"	"1996"	2723
+"                            Number of innovating enterprises with progress problems, by size class (1996)"	"inn_c912"	"dataset"	"27.03.2009"	"15.03.2024"	"1996"	"1996"	1724
+"                            Hampering factors for innovating enterprises with seriously delayed projects, by size class (1996)"	"inn_c922"	"dataset"	"27.03.2009"	"03.01.2024"	"1996"	"1996"	4484
+"                            Hampering factors for innovating enterprises with abolished projects, by size class (1996)"	"inn_c932"	"dataset"	"27.03.2009"	"03.01.2024"	"1996"	"1996"	4007
+"                            Hampering factors for innovating enterprises with not even started projects, by size class (1996)"	"inn_c942"	"dataset"	"27.03.2009"	"03.01.2024"	"1996"	"1996"	4162
+"                            Number of innovating enterprises supported by government, by size class (1996)"	"inn_c1012"	"dataset"	"27.03.2009"	"15.03.2024"	"1996"	"1996"	632
+"                            Number of innovating enterprises having applied for a patent, by size class (1996)"	"inn_c1022"	"dataset"	"27.03.2009"	"03.01.2024"	"1996"	"1996"	608
+"                    Internet access by size class of enterprise"	"isoc_ci_in_es"	"dataset"	"15.06.2026"	"11.12.2025"	"2010"	"2025"	23872
+"                    Use of computers and the internet by employees by size class of enterprise"	"isoc_ci_cm_ps"	"dataset"	"15.06.2026"	"11.12.2025"	"2010"	"2025"	8269
+"                    Type of connections to the internet by size class of enterprise"	"isoc_ci_it_es"	"dataset"	"15.06.2026"	"11.12.2025"	"2010"	"2025"	42011
+"                    Use of mobile connections to the internet by size class of enterprise"	"isoc_cimobe_use"	"dataset"	"17.07.2025"	"17.07.2025"	"2012"	"2024"	9972
+"                    Use of mobile connections to the internet by employees by size class of enterprise"	"isoc_cimobp_use"	"dataset"	"17.07.2025"	"17.07.2025"	"2012"	"2024"	3002
+"                    Meetings via the internet by size class of enterprise"	"isoc_ci_mvis"	"dataset"	"15.06.2026"	"17.07.2025"	"2022"	"2024"	1812
+"                    Remote access by size class of enterprise"	"isoc_ci_ras"	"dataset"	"15.06.2026"	"17.07.2025"	"2012"	"2024"	11947
+"                    E-commerce sales of enterprises by size class of enterprise"	"isoc_ec_esels"	"dataset"	"15.06.2026"	"11.12.2025"	"2010"	"2025"	104306
+"                    Value of e-commerce sales by size class of enterprise"	"isoc_ec_evals"	"dataset"	"27.02.2026"	"11.12.2025"	"2010"	"2025"	49638
+"                    Obstacles for web sales by size class of enterprise"	"isoc_ec_wsobs"	"dataset"	"27.02.2026"	"11.12.2025"	"2017"	"2025"	19163
+"                    E-commerce purchases by size class of enterprise"	"isoc_ec_ebuys"	"dataset"	"17.07.2025"	"17.07.2025"	"2010"	"2018"	6908
+"                    Monetary value of e-commerce sales by size class of enterprise"	"isoc_ec_evalsm"	"dataset"	"08.07.2026"	"08.07.2026"	"2017"	"2025"	7307
+"                    Websites and functionalities by size class of enterprise"	"isoc_ciweb"	"dataset"	"27.02.2026"	"11.12.2025"	"2010"	"2025"	77371
+"                    Social media use by type, internet advertising and size class of enterprise"	"isoc_cismt"	"dataset"	"27.02.2026"	"11.12.2025"	"2014"	"2025"	41511
+"                    Social media use by purpose and size class of enterprise"	"isoc_cismp"	"dataset"	"17.07.2025"	"17.07.2025"	"2013"	"2023"	40376
+"                    Integration of internal processes by size class of enterprise"	"isoc_eb_iip"	"dataset"	"27.02.2026"	"11.12.2025"	"2010"	"2025"	23797
+"                    Integration with customers/suppliers, supply chain management by size class of enterprise"	"isoc_eb_ics"	"dataset"	"17.07.2025"	"17.07.2025"	"2010"	"2023"	10087
+"                    Cloud computing services by size class of enterprise"	"isoc_cicce_use"	"dataset"	"27.02.2026"	"11.12.2025"	"2014"	"2025"	86033
+"                    Big data analysis by size class of enterprise"	"isoc_eb_bd"	"dataset"	"12.12.2024"	"25.05.2023"	"2016"	"2020"	15093
+"                    3D printing and robotics by size class of enterprise"	"isoc_eb_p3d"	"dataset"	"17.07.2025"	"17.07.2025"	"2018"	"2022"	18222
+"                    Internet of Things by size class of enterprise"	"isoc_eb_iot"	"dataset"	"17.07.2025"	"17.07.2025"	"2020"	"2021"	9198
+"                    Artificial intelligence by size class of enterprise"	"isoc_eb_ai"	"dataset"	"15.06.2026"	"11.12.2025"	"2021"	"2025"	70756
+"                    Data analytics by size class of enterprise"	"isoc_eb_das"	"dataset"	"27.02.2026"	"26.01.2026"	"2023"	"2025"	19051
+"                    Security policy, measures, risks and staff awareness by size class of enterprise"	"isoc_cisce_ra"	"dataset"	"15.06.2026"	"17.07.2025"	"2015"	"2024"	33320
+"                    Security incidents and consequences by size class of enterprise"	"isoc_cisce_ic"	"dataset"	"15.06.2026"	"17.07.2025"	"2019"	"2024"	8834
+"                Digital Intensity by size class of enterprise"	"isoc_e_dii"	"dataset"	"27.02.2026"	"11.12.2025"	"2015"	"2025"	9494
+"                Covid-19 Impact on ICT usage by size class of enterprise"	"isoc_e_cvd"	"dataset"	"12.12.2024"	"25.05.2023"	"2021"	"2021"	5739
+"                ICT and environment by size class of enterprise"	"isoc_e_envs"	"dataset"	"27.02.2026"	"11.12.2025"	"2022"	"2025"	2504
+"                        Enterprises that employ ICT specialists by size class of enterprise"	"isoc_ske_itspe"	"dataset"	"15.06.2026"	"12.12.2024"	"2012"	"2024"	3241
+"                        Enterprises that recruited or tried to recruit ICT specialists by size class of enterprise"	"isoc_ske_itrcrs"	"dataset"	"15.06.2026"	"12.12.2024"	"2012"	"2024"	22689
+"                        Enterprises - ICT functions performed by size class of enterprise"	"isoc_ske_fct"	"dataset"	"15.06.2026"	"17.07.2025"	"2015"	"2024"	26053
+"                    Enterprises that provided training to develop/upgrade ICT skills of their personnel by size class of enterprise"	"isoc_ske_itts"	"dataset"	"15.06.2026"	"12.12.2024"	"2012"	"2024"	13595
+"                    Employer business demography by size class and NACE Rev. 2 activity (2004-2020)"	"bd_9fh_sz_cl_r2"	"dataset"	"10.01.2024"	"21.12.2023"	"2004"	"2020"	10466514
+"                    Business demography by size class and NACE Rev. 2 activity (2004-2020)"	"bd_9bd_sz_cl_r2"	"dataset"	"10.01.2024"	"10.01.2024"	"2004"	"2020"	16244809
+"                Enterprise statistics by size class and NACE Rev. 2 activity (from 2021 onwards)"	"sbs_sc_ovw"	"dataset"	"30.09.2026"	"30.09.2026"	"2021"	"2024"	4373287
+"                Business demography by size class and NACE Rev. 2 activity"	"bd_size"	"dataset"	"23.10.2026"	"01.10.2026"	"2009"	"2024"	6168118
+"                Employer business demography by size class and NACE Rev. 2 activity"	"bd_salge1_size"	"dataset"	"23.10.2026"	"09.10.2026"	"2009"	"2024"	4996976
+"                Gender pay gap in unadjusted form"	"sdg_05_20"	"table"	"27.10.2026"	"27.10.2026"	"2002"	"2024"	635
+"                Gender pay gap in unadjusted form"	"tesem180"	"table"	"27.10.2026"	"27.10.2026"	"2007"	"2024"	590
+"                    Gender pay gap in unadjusted form"	"sdg_05_20"	"table"	"27.10.2026"	"27.10.2026"	"2002"	"2024"	635
+"                    Gender pay gap in unadjusted form by NACE Rev. 2 activity - structure of earnings survey methodology"	"earn_gr_gpgr2"	"dataset"	"27.10.2026"	"27.10.2026"	"2007"	"2024"	10289
+"                        Gender pay gap in unadjusted form"	"tesem180"	"table"	"27.10.2026"	"27.10.2026"	"2007"	"2024"	590
+"                        Gender pay gap in unadjusted form"	"sdg_05_20"	"table"	"27.10.2026"	"27.10.2026"	"2002"	"2024"	635
+"            Labour market and earnings"	"eq_labour_earn"	"folder"	" "	" "	" "	" "	
+"                Earnings"	"eq_gpgr"	"folder"	" "	" "	" "	" "	
+"                    Gender pay gap in unadjusted form"	"sdg_05_20"	"table"	"27.10.2026"	"27.10.2026"	"2002"	"2024"	635
+"                    Gender pay gap in unadjusted form by NACE Rev. 2 activity - structure of earnings survey methodology"	"earn_gr_gpgr2"	"dataset"	"27.10.2026"	"27.10.2026"	"2007"	"2024"	10289
+"                        Gender pay gap in unadjusted form"	"tesem180"	"table"	"27.10.2026"	"27.10.2026"	"2007"	"2024"	590
+"                        Gender pay gap in unadjusted form"	"sdg_05_20"	"table"	"27.10.2026"	"27.10.2026"	"2002"	"2024"	635
+"                    Gender overall earnings gap"	"earn_gr_goeg"	"dataset"	"05.06.2024"	"03.06.2024"	"2010"	"2018"	93
+"                    Median hourly earnings, all employees (excluding apprentices) by sex"	"earn_ses_pub2s"	"dataset"	"09.02.2026"	"11.02.2025"	"2006"	"2022"	1677
+"                    Median hourly earnings, all employees (excluding apprentices) by age"	"earn_ses_pub2a"	"dataset"	"09.02.2026"	"05.02.2026"	"2006"	"2022"	2294
+"                    Gender pay gap in unadjusted form by NACE Rev. 2 activity - structure of earnings survey methodology"	"earn_gr_gpgr2"	"dataset"	"27.10.2026"	"27.10.2026"	"2007"	"2024"	10289
+"                        Gender pay gap in unadjusted form"	"tesem180"	"table"	"27.10.2026"	"27.10.2026"	"2007"	"2024"	590
+"                        Gender pay gap in unadjusted form"	"sdg_05_20"	"table"	"27.10.2026"	"27.10.2026"	"2002"	"2024"	635
+"                    Structure of earnings survey - monthly earnings"	"earn_ses_monthly"	"dataset"	"09.02.2026"	"11.02.2025"	"2002"	"2022"	11438954
+"                    R&D personnel and researchers in business enterprise sector by size class and sex"	"rd_p_perssize"	"dataset"	"29.09.2026"	"29.09.2026"	"1980"	"2024"	16757
+"                    Main skills targeted by CVT courses by type of skill and size class - % of enterprises providing CVT courses"	"trng_cvt_29s"	"dataset"	"13.03.2023"	"03.01.2024"	"2010"	"2020"	4411
+"                    Enterprises that employ ICT specialists by size class of enterprise"	"isoc_ske_itspe"	"dataset"	"15.06.2026"	"12.12.2024"	"2012"	"2024"	3241
+"                    Enterprises that recruited or tried to recruit ICT specialists by size class of enterprise"	"isoc_ske_itrcrs"	"dataset"	"15.06.2026"	"12.12.2024"	"2012"	"2024"	22689
+"                    Enterprises - ICT functions performed by size class of enterprise"	"isoc_ske_fct"	"dataset"	"15.06.2026"	"17.07.2025"	"2015"	"2024"	26053
+"                    Main skills needed for the development of the enterprise by type of skill and size class - % of all enterprises"	"trng_cvt_10s"	"dataset"	"13.03.2023"	"03.01.2024"	"2010"	"2020"	4717
+"                    Usual reaction to future skill needs by type of reaction and size class - % of all enterprises"	"trng_cvt_11s"	"dataset"	"13.03.2023"	"03.01.2024"	"2010"	"2020"	1488
+"                    Enterprises providing training by type of training and size class - % of all enterprises"	"trng_cvt_01s"	"dataset"	"13.03.2023"	"03.01.2024"	"2005"	"2020"	5403
+"                    Participants in CVT courses by sex and size class - % of persons employed in all enterprises"	"trng_cvt_12s"	"dataset"	"07.06.2024"	"03.01.2024"	"2005"	"2020"	1476
+"                    Main skills targeted by CVT courses by type of skill and size class - % of enterprises providing CVT courses"	"trng_cvt_29s"	"dataset"	"13.03.2023"	"03.01.2024"	"2010"	"2020"	4411
+"                    Enterprises that provided training to develop/upgrade ICT skills of their personnel by size class of enterprise"	"isoc_ske_itts"	"dataset"	"15.06.2026"	"12.12.2024"	"2012"	"2024"	13595
+"                    Enterprise statistics by size class and NACE Rev. 2 activity (from 2021 onwards)"	"sbs_sc_ovw"	"dataset"	"30.09.2026"	"30.09.2026"	"2021"	"2024"	4373287
+"                    Business demography by size class and NACE Rev. 2 activity"	"bd_size"	"dataset"	"23.10.2026"	"01.10.2026"	"2009"	"2024"	6168118
