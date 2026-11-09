@@ -70,3 +70,7 @@ france-spread-2026/**/*.csv -filter -diff -merge text
 france-spread-2026/**/*.gz -filter -diff -merge binary
 german-public-investment/**/*.csv -filter -diff -merge text
 german-public-investment/**/*.gz -filter -diff -merge binary
+ecb-france-backstop/**/*.csv -filter -diff -merge text
+ecb-france-backstop/**/*.gz -filter -diff -merge binary
+ecb-france-backstop/**/*.xlsx -filter -diff -merge binary
+ecb-france-backstop/**/*.zip -filter -diff -merge binary
