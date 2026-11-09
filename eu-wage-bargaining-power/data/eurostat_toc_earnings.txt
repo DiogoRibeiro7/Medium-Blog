@@ -1,0 +1,348 @@
+"                Labour cost index, nominal value - quarterly data"	"ei_lmlc_q"	"table"	"16.09.2026"	"19.08.2026"	"1996-Q1"	"2026-Q2"	2287022
+"                Occupancy in collective accommodation establishments: domestic and inbound tourism"	"reg_tour_occ"	"folder"	" "	" "	" "	" "	
+"                Capacity of collective tourist accommodation: establishments, bedrooms and bed-places"	"reg_tour_cap"	"folder"	" "	" "	" "	" "	
+"                Regional structure of earnings survey 2006"	"reg_earn_ses_06"	"folder"	" "	" "	" "	" "	
+"                    Mean annual earnings by NUTS 1 region (enterprises with 10 employees or more) - NACE Rev. 1.1, C-O excluding L (2006)"	"earn_ses06_rann"	"dataset"	"03.02.2015"	"03.01.2024"	"2006"	"2006"	95
+"                    Mean hourly earnings by NUTS 1 region (enterprises with 10 employees or more) - NACE Rev. 1.1, C-O excluding L (2006)"	"earn_ses06_rhr"	"dataset"	"03.02.2015"	"03.01.2024"	"2006"	"2006"	91
+"                Regional structure of earnings survey 2010"	"reg_earn_ses_10"	"folder"	" "	" "	" "	" "	
+"                    Mean hourly earnings by NUTS 1 region (enterprises with 10 employees or more) - NACE Rev. 2, B-S excluding O (2010)"	"earn_ses10_rhr"	"dataset"	"09.06.2016"	"10.01.2024"	"2010"	"2010"	612
+"                    Mean annual earnings by NUTS 1 region (enterprises with 10 employees or more) - NACE Rev. 2, B-S excluding O (2010)"	"earn_ses10_rann"	"dataset"	"23.02.2016"	"10.01.2024"	"2010"	"2010"	102
+"            Regional labour costs statistics"	"reg_lcs"	"folder"	" "	" "	" "	" "	
+"                Labour costs survey 2008 and 2012 - regional data, NACE Rev. 2 activity"	"reg_lcs_r2"	"folder"	" "	" "	" "	" "	
+"                    Labour cost, wages and salaries, direct remuneration by NACE Rev. 2 activity and NUTS 1 region"	"lc_rcost_r2"	"dataset"	"15.09.2026"	"14.09.2026"	"2008"	"2024"	1024535
+"                    Structure of labour cost by NACE Rev. 2 activity and NUTS 1 region - % of total cost"	"lc_rstruc_r2"	"dataset"	"15.09.2026"	"14.09.2026"	"2008"	"2024"	593201
+"                Labour costs survey 2004 - regional data"	"reg_lcs04"	"folder"	" "	" "	" "	" "	
+"                    Labour cost, wages and salaries, direct remuneration by NACE Rev. 1.1 activity and NUTS 1 region - LCS survey 2004"	"lc_r04cost"	"dataset"	"09.03.2011"	"07.06.2024"	"2004"	"2004"	156476
+"                    Structure of labour cost by NACE Rev. 1.1 activity and NUTS 1 region - % of total cost, LCS survey 2004"	"lc_r04struc"	"dataset"	"09.03.2011"	"07.06.2024"	"2004"	"2004"	65541
+"                Labour costs survey 2000 - regional data"	"reg_lcs00"	"folder"	" "	" "	" "	" "	
+"                    Labour cost, wages and salaries, direct remuneration by NACE Rev. 1.1 activity and NUTS 1 region - LCS survey 2000"	"lc_r00cost"	"dataset"	"27.03.2009"	"14.10.2024"	"2000"	"2000"	128781
+"                    Structure of labour cost by NACE Rev. 1.1 activity and NUTS 1 region - % of total cost, LCS survey 2000"	"lc_r00struc"	"dataset"	"27.03.2009"	"14.10.2024"	"2000"	"2000"	94321
+"                            Nominal unit labour cost growth - ENP-East countries"	"enpe_nama_10_ulc"	"dataset"	"03.02.2026"	"03.02.2026"	"2005"	"2024"	93
+"                        Labour productivity and unit labour costs - annual data"	"nama_10_lp_ulc"	"dataset"	"05.11.2026"	"21.10.2026"	"1975"	"2025"	67385
+"                            Nominal unit labour cost per hour worked"	"tipslm10"	"table"	"05.11.2026"	"21.10.2026"	"1995"	"2025"	1735
+"                            Nominal unit labour cost growth"	"tesem170"	"table"	"05.11.2026"	"21.10.2026"	"2005"	"2025"	769
+"                            Nominal unit labour cost per hour worked - annual data, percentage change and index (2015 = 100)"	"tipslm20"	"table"	"05.11.2026"	"21.10.2026"	"1995"	"2025"	4087
+"                        Labour productivity and unit labour costs by industry (NACE Rev.2)"	"nama_10_lp_a21"	"dataset"	"06.11.2026"	"21.10.2026"	"1975"	"2025"	551926
+"                    Labour productivity and unit labour costs - quarterly data"	"namq_10_lp_ulc"	"dataset"	"03.11.2026"	"29.10.2026"	"1980-Q1"	"2026-Q3"	173492
+"                        Nominal unit labour cost (NULC) per hour worked - quarterly data"	"tipslm40"	"table"	"03.11.2026"	"29.10.2026"	"1995-Q1"	"2026-Q3"	7350
+"                        Cost of CVT courses by type and size class - % of total labour cost of all enterprises"	"trng_cvt_16s"	"dataset"	"20.05.2026"	"03.01.2024"	"2005"	"2020"	1936
+"                        Cost of CVT courses by type and NACE Rev. 2 activity - % of total labour cost of all enterprises"	"trng_cvt_16n2"	"dataset"	"20.05.2026"	"03.01.2024"	"2010"	"2020"	2208
+"                        Cost of CVT courses by type and NACE Rev. 1.1 activity - % of total labour cost of all enterprises (2005)"	"trng_cvt_16n1"	"dataset"	"26.02.2019"	"03.01.2024"	"2005"	"2005"	696
+"                        Distribution of digital platform workers (at least one hour in the last month) by share of platform income in their earnings"	"lfst_dpw_06"	"dataset"	"17.07.2024"	"17.07.2024"	"2022"	"2022"	36
+"            Earnings"	"earn"	"folder"	" "	" "	" "	" "	
+"                Net earnings and tax rates"	"earn_net"	"folder"	" "	" "	" "	" "	
+"                    Annual net earnings"	"earn_nt_net"	"dataset"	"19.10.2026"	"28.05.2026"	"2000"	"2025"	199986
+"                    Annual net earnings of a full-time single worker without children earning an average wage"	"earn_nt_netft"	"dataset"	"19.10.2026"	"28.05.2026"	"2000"	"2025"	3286
+"                    Tax rate on low wage earners - tax wedge on labour costs"	"earn_nt_taxwedge"	"dataset"	"04.09.2026"	"14.07.2026"	"2000"	"2025"	899
+"                Structure of earnings survey - main indicators"	"earn_ses_main"	"folder"	" "	" "	" "	" "	
+"                    Low-wage earners and median earnings"	"earn_ses_pub"	"folder"	" "	" "	" "	" "	
+"                        Median hourly earnings"	"earn_ses_pub2"	"folder"	" "	" "	" "	" "	
+"                            Median hourly earnings, all employees (excluding apprentices) by sex"	"earn_ses_pub2s"	"dataset"	"09.02.2026"	"11.02.2025"	"2006"	"2022"	1677
+"                            Median hourly earnings, all employees (excluding apprentices) by age"	"earn_ses_pub2a"	"dataset"	"09.02.2026"	"05.02.2026"	"2006"	"2022"	2294
+"                            Median hourly earnings, all employees (excluding apprentices) by educational attainment level"	"earn_ses_pub2i"	"dataset"	"09.02.2026"	"11.02.2025"	"2006"	"2022"	2257
+"                            Median hourly earnings, all employees (excluding apprentices) by employment contract"	"earn_ses_pub2t"	"dataset"	"09.02.2026"	"11.02.2025"	"2006"	"2022"	1686
+"                            Median hourly earnings, all employees (excluding apprentices) by economic activity"	"earn_ses_pub2n"	"dataset"	"09.02.2026"	"11.02.2025"	"2010"	"2022"	8123
+"                    Structure of earnings survey - hourly earnings"	"earn_ses_hourly"	"dataset"	"09.02.2026"	"11.02.2025"	"2002"	"2022"	4584252
+"                    Structure of earnings survey - monthly earnings"	"earn_ses_monthly"	"dataset"	"09.02.2026"	"11.02.2025"	"2002"	"2022"	11438954
+"                    Structure of earnings survey - annual earnings"	"earn_ses_annual"	"dataset"	"09.02.2026"	"05.02.2026"	"2002"	"2022"	6160543
+"                Structure of earnings survey 2022"	"earn_ses2022"	"folder"	" "	" "	" "	" "	
+"                        Employees by sex, economic activity and collective pay agreement (2022)"	"earn_ses22_01"	"dataset"	"09.02.2026"	"09.02.2026"	"2022"	"2022"	17604
+"                    Hourly earnings"	"earn_ses2022_hr"	"folder"	" "	" "	" "	" "	
+"                        Mean hourly earnings by sex, economic activity and collective pay agreement (2022)"	"earn_ses22_12"	"dataset"	"09.02.2026"	"09.02.2026"	"2022"	"2022"	115088
+"                        Mean hourly earnings by sex, age and economic activity (2022)"	"earn_ses22_13"	"dataset"	"09.02.2026"	"09.02.2026"	"2022"	"2022"	128455
+"                        Mean hourly earnings by sex, age and occupation - NACE Rev. 2, B-S excluding O (2022)"	"earn_ses22_14"	"dataset"	"09.02.2026"	"09.02.2026"	"2022"	"2022"	57982
+"                        Mean hourly earnings by sex, economic activity and employment contract (2022)"	"earn_ses22_15"	"dataset"	"09.02.2026"	"09.02.2026"	"2022"	"2022"	95708
+"                        Mean hourly earnings by sex, economic activity and educational attainment (2022)"	"earn_ses22_16"	"dataset"	"09.02.2026"	"09.02.2026"	"2022"	"2022"	117907
+"                        Mean hourly earnings by sex, economic activity and length of service with the enterprise (2022)"	"earn_ses22_17"	"dataset"	"09.02.2026"	"09.02.2026"	"2022"	"2022"	224837
+"                        Mean hourly earnings by sex, occupation and size class of the enterprise (2022)"	"earn_ses22_18"	"dataset"	"09.02.2026"	"09.02.2026"	"2022"	"2022"	15099
+"                        Mean hourly earnings by sex, occupation and economic activity (2022)"	"earn_ses22_47"	"dataset"	"09.02.2026"	"09.02.2026"	"2022"	"2022"	296073
+"                        Hourly earnings by economic activity and contractual working time (2022)"	"earn_ses22_hftpt"	"dataset"	"09.02.2026"	"09.02.2026"	"2022"	"2022"	1650
+"                        Mean hourly earnings by NUTS 1 region - NACE Rev. 2, B-S excluding O (2022)"	"earn_ses22_rhr"	"dataset"	"09.02.2026"	"09.02.2026"	"2022"	"2022"	884
+"                    Monthly earnings"	"earn_ses2022_mo"	"folder"	" "	" "	" "	" "	
+"                        Mean monthly earnings by sex, economic activity and collective pay agreement (2022)"	"earn_ses22_19"	"dataset"	"09.02.2026"	"09.02.2026"	"2022"	"2022"	176172
+"                        Mean monthly earnings by sex, age and economic activity (2022)"	"earn_ses22_20"	"dataset"	"09.02.2026"	"09.02.2026"	"2022"	"2022"	130250
+"                        Mean monthly earnings by sex, age and occupation - NACE Rev. 2, B-S excluding O (2022)"	"earn_ses22_21"	"dataset"	"09.02.2026"	"09.02.2026"	"2022"	"2022"	83413
+"                        Mean monthly earnings by sex, economic activity and employment contract (2022)"	"earn_ses22_22"	"dataset"	"09.02.2026"	"09.02.2026"	"2022"	"2022"	143779
+"                        Mean monthly earnings by sex, economic activity and educational attainment (2022)"	"earn_ses22_23"	"dataset"	"09.02.2026"	"09.02.2026"	"2022"	"2022"	176370
+"                        Mean monthly earnings by sex, economic activity and length of service with the enterprise (2022)"	"earn_ses22_24"	"dataset"	"09.02.2026"	"09.02.2026"	"2022"	"2022"	342311
+"                        Mean monthly earnings by sex, occupation and size class of the enterprise (2022)"	"earn_ses22_25"	"dataset"	"09.02.2026"	"09.02.2026"	"2022"	"2022"	32691
+"                        Mean monthly earnings by sex, occupation and economic activity (2022)"	"earn_ses22_48"	"dataset"	"09.02.2026"	"09.02.2026"	"2022"	"2022"	461940
+"                        Monthly earnings by quantiles and contractual working time - NACE Rev. 2, B-S excluding O (2022)"	"earn_ses22_mdeci"	"dataset"	"09.02.2026"	"09.02.2026"	"2022"	"2022"	1320
+"                        Monthly earnings by economic control - NACE Rev. 2, B-S excluding O (2022)"	"earn_ses22_mctrl"	"dataset"	"09.02.2026"	"09.02.2026"	"2022"	"2022"	74
+"                    Annual earnings"	"earn_ses2022_an"	"folder"	" "	" "	" "	" "	
+"                        Mean annual earnings by sex, economic activity and collective pay agreement (2022)"	"earn_ses22_26"	"dataset"	"09.02.2026"	"09.02.2026"	"2022"	"2022"	105366
+"                        Mean annual earnings by sex, age and economic activity (2022)"	"earn_ses22_27"	"dataset"	"09.02.2026"	"09.02.2026"	"2022"	"2022"	4032
+"                        Mean annual earnings by sex, age and occupation - NACE Rev. 2, B-S excluding O (2022)"	"earn_ses22_28"	"dataset"	"09.02.2026"	"09.02.2026"	"2022"	"2022"	49830
+"                        Mean annual earnings by sex, economic activity and employment contract (2022)"	"earn_ses22_29"	"dataset"	"09.02.2026"	"09.02.2026"	"2022"	"2022"	84642
+"                        Mean annual earnings by sex, economic activity and educational attainment (2022)"	"earn_ses22_30"	"dataset"	"09.02.2026"	"09.02.2026"	"2022"	"2022"	105552
+"                        Mean annual earnings by sex, economic activity and length of service with the enterprise (2022)"	"earn_ses22_31"	"dataset"	"09.02.2026"	"09.02.2026"	"2022"	"2022"	204552
+"                        Mean annual earnings by sex, occupation and size class of the enterprise (2022)"	"earn_ses22_32"	"dataset"	"09.02.2026"	"09.02.2026"	"2022"	"2022"	19350
+"                        Mean annual earnings by sex, occupation and economic activity (2022)"	"earn_ses22_49"	"dataset"	"09.02.2026"	"09.02.2026"	"2022"	"2022"	229077
+"                        Annual earnings by quantiles and contractual working time - NACE Rev. 2, B-S excluding O (2022)"	"earn_ses22_adeci"	"dataset"	"09.02.2026"	"09.02.2026"	"2022"	"2022"	888
+"                        Annual earnings by economic control - NACE Rev. 2, B-S excluding O (2022)"	"earn_ses22_actrl"	"dataset"	"09.02.2026"	"09.02.2026"	"2022"	"2022"	74
+"                        Mean annual earnings by NUTS 1 region - NACE Rev. 2, B-S excluding O (2022)"	"earn_ses22_rann"	"dataset"	"09.02.2026"	"09.02.2026"	"2022"	"2022"	396
+"                        Mean monthly hours paid by sex, economic activity and collective pay agreement (2022)"	"earn_ses22_33"	"dataset"	"09.02.2026"	"09.02.2026"	"2022"	"2022"	52848
+"                        Mean annual holidays by sex, economic activity and collective pay agreement (2022)"	"earn_ses22_40"	"dataset"	"09.02.2026"	"09.02.2026"	"2022"	"2022"	17555
+"                Structure of earnings survey 2018"	"earn_ses2018"	"folder"	" "	" "	" "	" "	
+"                        Employees by sex, economic activity and collective pay agreement (2018)"	"earn_ses18_01"	"dataset"	"05.02.2026"	"03.01.2024"	"2018"	"2018"	22526
+"                    Hourly earnings"	"earn_ses18_hr"	"folder"	" "	" "	" "	" "	
+"                        Mean hourly earnings by sex, economic activity and collective pay agreement (2018)"	"earn_ses18_12"	"dataset"	"05.02.2026"	"03.01.2024"	"2018"	"2018"	154286
+"                        Mean hourly earnings by sex, age and economic activity (2018)"	"earn_ses18_13"	"dataset"	"05.02.2026"	"05.02.2026"	"2018"	"2018"	143309
+"                        Mean hourly earnings by sex, age and occupation - NACE Rev. 2, B-S excluding O (2018)"	"earn_ses18_14"	"dataset"	"05.02.2026"	"05.02.2026"	"2018"	"2018"	67036
+"                        Mean hourly earnings by sex, economic activity and employment contract (2018)"	"earn_ses18_15"	"dataset"	"05.02.2026"	"03.01.2024"	"2018"	"2018"	111400
+"                        Mean hourly earnings by sex, economic activity and educational attainment (2018)"	"earn_ses18_16"	"dataset"	"05.02.2026"	"03.01.2024"	"2018"	"2018"	135985
+"                        Mean hourly earnings by sex, economic activity and length of service with the enterprise (2018)"	"earn_ses18_17"	"dataset"	"05.02.2026"	"03.01.2024"	"2018"	"2018"	259524
+"                        Mean hourly earnings by sex, size class of the enterprise and occupation (2018)"	"earn_ses18_18"	"dataset"	"05.02.2026"	"03.01.2024"	"2018"	"2018"	57807
+"                        Mean hourly earnings by sex, economic activity and occupation (2018)"	"earn_ses18_47"	"dataset"	"05.02.2026"	"03.01.2024"	"2018"	"2018"	385693
+"                        Hourly earnings by economic activity and contractual working time (enterprises with 10 employed persons or more) (2018)"	"earn_ses18_hftpt"	"dataset"	"05.02.2026"	"03.01.2024"	"2018"	"2018"	1845
+"                        Mean hourly earnings by NUTS 1 region (enterprises with 10 employees or more) - NACE Rev. 2, B-S excluding O (2018)"	"earn_ses18_rhr"	"dataset"	"05.02.2026"	"10.01.2024"	"2018"	"2018"	995
+"                    Monthly earnings"	"earn_ses18_mo"	"folder"	" "	" "	" "	" "	
+"                        Mean monthly earnings by sex, economic activity and collective pay agreement (2018)"	"earn_ses18_19"	"dataset"	"05.02.2026"	"03.01.2024"	"2018"	"2018"	212100
+"                        Mean monthly earnings by sex, age and economic activity (2018)"	"earn_ses18_20"	"dataset"	"05.02.2026"	"05.02.2026"	"2018"	"2018"	200040
+"                        Mean monthly earnings by sex, age and occupation - NACE Rev. 2, B-S excluding O (2018)"	"earn_ses18_21"	"dataset"	"05.02.2026"	"05.02.2026"	"2018"	"2018"	93050
+"                        Mean monthly earnings by sex, economic activity and employment contract (2018)"	"earn_ses18_22"	"dataset"	"05.02.2026"	"03.01.2024"	"2018"	"2018"	156710
+"                        Mean monthly earnings by sex, economic activity and educational attainment (2018)"	"earn_ses18_23"	"dataset"	"05.02.2026"	"03.01.2024"	"2018"	"2018"	187630
+"                        Mean monthly earnings by sex, economic activity and length of service with the enterprise (2018)"	"earn_ses18_24"	"dataset"	"05.02.2026"	"03.01.2024"	"2018"	"2018"	367940
+"                        Mean monthly earnings by sex, size class of the enterprise and occupation (2018)"	"earn_ses18_25"	"dataset"	"05.02.2026"	"03.01.2024"	"2018"	"2018"	64585
+"                        Mean monthly earnings by sex, economic activity and occupation (2018)"	"earn_ses18_48"	"dataset"	"05.02.2026"	"03.01.2024"	"2018"	"2018"	545220
+"                        Monthly earnings by quantiles and contractual working time (enterprises with 10 employed persons or more) - NACE Rev. 2, B-S excluding O (2018)"	"earn_ses18_mdeci"	"dataset"	"05.02.2026"	"03.01.2024"	"2018"	"2018"	848
+"                        Monthly earnings by economic control (enterprises with 10 employed persons or more) - NACE Rev. 2, B-S excluding O (2018)"	"earn_ses18_mctrl"	"dataset"	"05.02.2026"	"03.01.2024"	"2018"	"2018"	80
+"                    Annual earnings"	"earn_ses18_an"	"folder"	" "	" "	" "	" "	
+"                        Mean annual earnings by sex, economic activity and collective pay agreement (2018)"	"earn_ses18_26"	"dataset"	"05.02.2026"	"03.01.2024"	"2018"	"2018"	124626
+"                        Mean annual earnings by sex, age and economic activity (2018)"	"earn_ses18_27"	"dataset"	"05.02.2026"	"05.02.2026"	"2018"	"2018"	97050
+"                        Mean annual earnings by sex, age and occupation - NACE Rev. 2, B-S excluding O (2018)"	"earn_ses18_28"	"dataset"	"05.02.2026"	"05.02.2026"	"2018"	"2018"	51474
+"                        Mean annual earnings by sex, economic activity and employment contract (2018)"	"earn_ses18_29"	"dataset"	"05.02.2026"	"03.01.2024"	"2018"	"2018"	90738
+"                        Mean annual earnings by sex, economic activity and educational attainment (2018)"	"earn_ses18_30"	"dataset"	"05.02.2026"	"03.01.2024"	"2018"	"2018"	111072
+"                        Mean annual earnings by sex, economic activity and length of service with the enterprise (2018)"	"earn_ses18_31"	"dataset"	"05.02.2026"	"03.01.2024"	"2018"	"2018"	217086
+"                        Mean annual earnings by sex, size class of the enterprise and occupation (2018)"	"earn_ses18_32"	"dataset"	"05.02.2026"	"05.02.2026"	"2018"	"2018"	34453
+"                        Mean annual earnings by sex, economic activity and occupation (2018)"	"earn_ses18_49"	"dataset"	"05.02.2026"	"05.02.2026"	"2018"	"2018"	247882
+"                        Annual earnings by quantiles and contractual working time (enterprises with 10 employed persons or more) - NACE Rev. 2, B-S excluding O (2018)"	"earn_ses18_adeci"	"dataset"	"05.02.2026"	"03.01.2024"	"2018"	"2018"	558
+"                        Annual earnings by economic control (enterprises with 10 employed persons or more) - NACE Rev. 2, B-S excluding O (2018)"	"earn_ses18_actrl"	"dataset"	"05.02.2026"	"03.01.2024"	"2018"	"2018"	80
+"                        Mean annual earnings by NUTS 1 region (enterprises with 10 employees or more) - NACE Rev. 2, B-S excluding O (2018)"	"earn_ses18_rann"	"dataset"	"05.02.2026"	"10.01.2024"	"2018"	"2018"	444
+"                        Mean monthly hours paid by sex, economic activity and collective pay agreement (2018)"	"earn_ses18_33"	"dataset"	"05.02.2026"	"03.01.2024"	"2018"	"2018"	63642
+"                        Mean annual holidays by sex, economic activity and collective pay agreement (2018)"	"earn_ses18_40"	"dataset"	"05.02.2026"	"03.01.2024"	"2018"	"2018"	21166
+"                Structure of earnings survey 2014"	"earn_ses2014"	"folder"	" "	" "	" "	" "	
+"                        Employees by sex, economic activity and collective pay agreement (2014)"	"earn_ses14_01"	"dataset"	"13.10.2020"	"02.02.2026"	"2014"	"2014"	20289
+"                    Hourly earnings"	"earn_ses14_hr"	"folder"	" "	" "	" "	" "	
+"                        Mean hourly earnings by sex, economic activity and collective pay agreement (2014)"	"earn_ses14_12"	"dataset"	"13.10.2020"	"07.06.2024"	"2014"	"2014"	144829
+"                        Mean hourly earnings by sex, age and economic activity (2014)"	"earn_ses14_13"	"dataset"	"13.10.2020"	"21.12.2023"	"2014"	"2014"	203772
+"                        Mean hourly earnings by sex, age and occupation - NACE Rev. 2, B-S excluding O (2014)"	"earn_ses14_14"	"dataset"	"13.10.2020"	"21.12.2023"	"2014"	"2014"	90626
+"                        Mean hourly earnings by sex, economic activity and employment contract (2014)"	"earn_ses14_15"	"dataset"	"13.10.2020"	"07.06.2024"	"2014"	"2014"	111367
+"                        Mean hourly earnings by sex, economic activity and educational attainment (2014)"	"earn_ses14_16"	"dataset"	"13.10.2020"	"21.12.2023"	"2014"	"2014"	167205
+"                        Mean hourly earnings by sex, economic activity and length of service with the enterprise (2014)"	"earn_ses14_17"	"dataset"	"13.10.2020"	"21.12.2023"	"2014"	"2014"	242126
+"                        Mean hourly earnings by sex, size class of the enterprise and occupation (2014)"	"earn_ses14_18"	"dataset"	"13.10.2020"	"21.12.2023"	"2014"	"2014"	30714
+"                        Mean hourly earnings by sex, economic activity and occupation (2014)"	"earn_ses14_47"	"dataset"	"13.10.2020"	"21.12.2023"	"2014"	"2014"	346291
+"                        Hourly earnings by economic activity and contractual working time (enterprises with 10 employed persons or more) (2014)"	"earn_ses14_hftpt"	"dataset"	"13.10.2020"	"03.01.2024"	"2014"	"2014"	1206
+"                        Mean hourly earnings by NUTS 1 region (enterprises with 10 employees or more) - NACE Rev. 2, B-S excluding O (2014)"	"earn_ses14_rhr"	"dataset"	"13.10.2020"	"10.01.2024"	"2014"	"2014"	930
+"                    Monthly earnings"	"earn_ses14_mo"	"folder"	" "	" "	" "	" "	
+"                        Mean monthly earnings by sex, economic activity and collective pay agreement (2014)"	"earn_ses14_19"	"dataset"	"13.10.2020"	"07.06.2024"	"2014"	"2014"	201902
+"                        Mean monthly earnings by sex, age and economic activity (2014)"	"earn_ses14_20"	"dataset"	"13.10.2020"	"21.12.2023"	"2014"	"2014"	284734
+"                        Mean monthly earnings by sex, age and occupation - NACE Rev. 2, B-S excluding O (2014)"	"earn_ses14_21"	"dataset"	"13.10.2020"	"21.12.2023"	"2014"	"2014"	125230
+"                        Mean monthly earnings by sex, economic activity and employment contract (2014)"	"earn_ses14_22"	"dataset"	"13.10.2020"	"07.06.2024"	"2014"	"2014"	156140
+"                        Mean monthly earnings by sex, economic activity and educational attainment (2014)"	"earn_ses14_23"	"dataset"	"13.10.2020"	"21.12.2023"	"2014"	"2014"	233662
+"                        Mean monthly earnings by sex, economic activity and length of service with the enterprise (2014)"	"earn_ses14_24"	"dataset"	"13.10.2020"	"21.12.2023"	"2014"	"2014"	356280
+"                        Mean monthly earnings by sex, size class of the enterprise and occupation (2014)"	"earn_ses14_25"	"dataset"	"13.10.2020"	"21.12.2023"	"2014"	"2014"	44056
+"                        Mean monthly earnings by sex, economic activity and occupation (2014)"	"earn_ses14_48"	"dataset"	"13.10.2020"	"21.12.2023"	"2014"	"2014"	493185
+"                        Monthly earnings by quantiles and contractual working time (enterprises with 10 employed persons or more) - NACE Rev. 2, B-S excluding O (2014)"	"earn_ses14_mdeci"	"dataset"	"13.10.2020"	"03.01.2024"	"2014"	"2014"	567
+"                        Monthly earnings by economic control (enterprises with 10 employed persons or more) - NACE Rev. 2, B-S excluding O (2014)"	"earn_ses14_mctrl"	"dataset"	"13.10.2020"	"07.06.2024"	"2014"	"2014"	80
+"                    Annual earnings"	"earn_ses14_an"	"folder"	" "	" "	" "	" "	
+"                        Mean annual earnings by sex, economic activity and collective pay agreement (2014)"	"earn_ses14_26"	"dataset"	"13.10.2020"	"07.06.2024"	"2014"	"2014"	121343
+"                        Mean annual earnings by sex, age and economic activity (2014)"	"earn_ses14_27"	"dataset"	"13.10.2020"	"21.12.2023"	"2014"	"2014"	170861
+"                        Mean annual earnings by sex, age and occupation - NACE Rev. 2, B-S excluding O (2014)"	"earn_ses14_28"	"dataset"	"13.10.2020"	"21.12.2023"	"2014"	"2014"	74964
+"                        Mean annual earnings by sex, economic activity and employment contract (2014)"	"earn_ses14_29"	"dataset"	"13.10.2020"	"07.06.2024"	"2014"	"2014"	92386
+"                        Mean annual earnings by sex, economic activity and educational attainment (2014)"	"earn_ses14_30"	"dataset"	"13.10.2020"	"21.12.2023"	"2014"	"2014"	140321
+"                        Mean annual earnings by sex, economic activity and length of service with the enterprise (2014)"	"earn_ses14_31"	"dataset"	"13.10.2020"	"21.12.2023"	"2014"	"2014"	213743
+"                        Mean annual earnings by sex, size class of the enterprise and occupation (2014)"	"earn_ses14_32"	"dataset"	"13.10.2020"	"21.12.2023"	"2014"	"2014"	26845
+"                        Mean annual earnings by sex, economic activity and occupation (2014)"	"earn_ses14_49"	"dataset"	"13.10.2020"	"21.12.2023"	"2014"	"2014"	251676
+"                        Annual earnings by quantiles and contractual working time (enterprises with 10 employed persons or more) - NACE Rev. 2, B-S excluding O (2014)"	"earn_ses14_adeci"	"dataset"	"13.10.2020"	"03.01.2024"	"2014"	"2014"	287
+"                        Annual earnings by economic control (enterprises with 10 employed persons or more) - NACE Rev. 2, B-S excluding O (2014)"	"earn_ses14_actrl"	"dataset"	"13.10.2020"	"07.06.2024"	"2014"	"2014"	90
+"                        Mean annual earnings by NUTS 1 region (enterprises with 10 employees or more) - NACE Rev. 2, B-S excluding O (2014)"	"earn_ses14_rann"	"dataset"	"13.10.2020"	"10.01.2024"	"2014"	"2014"	416
+"                        Mean monthly hours paid by sex, economic activity and collective pay agreement (2014)"	"earn_ses14_33"	"dataset"	"13.10.2020"	"07.06.2024"	"2014"	"2014"	59968
+"                        Mean annual holidays by sex, economic activity and collective pay agreement (2014)"	"earn_ses14_40"	"dataset"	"13.10.2020"	"07.06.2024"	"2014"	"2014"	19956
+"                Structure of earnings survey 2010"	"earn_ses2010"	"folder"	" "	" "	" "	" "	
+"                        Employees by sex, economic activity and collective pay agreement (2010)"	"earn_ses10_01"	"dataset"	"23.02.2016"	"02.02.2026"	"2010"	"2010"	19686
+"                    Hourly earnings"	"earn_ses10_hr"	"folder"	" "	" "	" "	" "	
+"                        Mean hourly earnings by sex, economic activity and collective pay agreement (2010)"	"earn_ses10_12"	"dataset"	"30.01.2017"	"07.06.2024"	"2010"	"2010"	102758
+"                        Mean hourly earnings by sex, age and economic activity (2010)"	"earn_ses10_13"	"dataset"	"30.01.2017"	"21.12.2023"	"2010"	"2010"	139318
+"                        Mean hourly earnings by sex, age and occupation - NACE Rev. 2, B-S excluding O (2010)"	"earn_ses10_14"	"dataset"	"30.01.2017"	"21.12.2023"	"2010"	"2010"	63152
+"                        Mean hourly earnings by sex, economic activity and employment contract (2010)"	"earn_ses10_15"	"dataset"	"30.01.2017"	"07.06.2024"	"2010"	"2010"	77933
+"                        Mean hourly earnings by sex, economic activity and educational attainment level (2010)"	"earn_ses10_16"	"dataset"	"30.01.2017"	"21.12.2023"	"2010"	"2010"	138523
+"                        Mean hourly earnings by sex, economic activity and length of service with the enterprise (2010)"	"earn_ses10_17"	"dataset"	"30.01.2017"	"21.12.2023"	"2010"	"2010"	165549
+"                        Mean hourly earnings by sex, size class of the enterprise and occupation (2010)"	"earn_ses10_18"	"dataset"	"30.01.2017"	"21.12.2023"	"2010"	"2010"	18939
+"                        Mean hourly earnings by sex, economic activity and occupation (2010)"	"earn_ses10_47"	"dataset"	"30.01.2017"	"21.12.2023"	"2010"	"2010"	261709
+"                        Hourly earnings by economic activity and contractual working time (enterprises with 10 employed persons or more) (2010)"	"earn_ses10_hftpt"	"dataset"	"08.12.2016"	"03.01.2024"	"2010"	"2010"	725
+"                        Mean hourly earnings by NUTS 1 region (enterprises with 10 employees or more) - NACE Rev. 2, B-S excluding O (2010)"	"earn_ses10_rhr"	"dataset"	"09.06.2016"	"10.01.2024"	"2010"	"2010"	612
+"                    Monthly earnings"	"earn_ses10_mo"	"folder"	" "	" "	" "	" "	
+"                        Mean monthly earnings by sex, economic activity and collective pay agreement (2010)"	"earn_ses10_19"	"dataset"	"30.01.2017"	"07.06.2024"	"2010"	"2010"	155732
+"                        Mean monthly earnings by sex, age and economic activity (2010)"	"earn_ses10_20"	"dataset"	"30.01.2017"	"14.02.2024"	"2010"	"2010"	210619
+"                        Mean monthly earnings by sex, age and occupation - NACE Rev. 2, B-S excluding O (2010)"	"earn_ses10_21"	"dataset"	"30.01.2017"	"14.02.2024"	"2010"	"2010"	92632
+"                        Mean monthly earnings by sex, economic activity and employment contract (2010)"	"earn_ses10_22"	"dataset"	"30.01.2017"	"07.06.2024"	"2010"	"2010"	117948
+"                        Mean monthly earnings by sex, economic activity and educational attainment level (2010)"	"earn_ses10_23"	"dataset"	"30.01.2017"	"14.02.2024"	"2010"	"2010"	212380
+"                        Mean monthly earnings by sex, economic activity and length of service with the enterprise (2010)"	"earn_ses10_24"	"dataset"	"30.01.2017"	"14.02.2024"	"2010"	"2010"	270616
+"                        Mean monthly earnings by sex, size class of the enterprise and occupation (2010)"	"earn_ses10_25"	"dataset"	"30.01.2017"	"14.02.2024"	"2010"	"2010"	33050
+"                        Mean monthly earnings by sex, economic activity and occupation (2010)"	"earn_ses10_48"	"dataset"	"30.01.2017"	"14.02.2024"	"2010"	"2010"	408637
+"                        Monthly earnings by quantiles and contractual working time (enterprises with 10 employed persons or more) - NACE Rev. 2, B-S excluding O (2010)"	"earn_ses10_mdeci"	"dataset"	"09.06.2016"	"03.01.2024"	"2010"	"2010"	319
+"                        Monthly earnings by economic control (enterprises with 10 employed persons or more) - NACE Rev. 2, B-S excluding O (2010)"	"earn_ses10_mctrl"	"dataset"	"09.06.2016"	"07.06.2024"	"2010"	"2010"	80
+"                    Annual earnings"	"earn_ses10_an"	"folder"	" "	" "	" "	" "	
+"                        Mean annual earnings by sex, economic activity and collective pay agreement (2010)"	"earn_ses10_26"	"dataset"	"30.01.2017"	"07.06.2024"	"2010"	"2010"	78497
+"                        Mean annual earnings by sex, age and economic activity (2010)"	"earn_ses10_27"	"dataset"	"30.01.2017"	"21.12.2023"	"2010"	"2010"	109754
+"                        Mean annual earnings by sex, age and occupation - NACE Rev. 2, B-S excluding O (2010)"	"earn_ses10_28"	"dataset"	"30.01.2017"	"21.12.2023"	"2010"	"2010"	46864
+"                        Mean annual earnings by sex, economic activity and employment contract (2010)"	"earn_ses10_29"	"dataset"	"30.01.2017"	"07.06.2024"	"2010"	"2010"	59098
+"                        Mean annual earnings by sex, economic activity and educational attainment level (2010)"	"earn_ses10_30"	"dataset"	"30.01.2017"	"21.12.2023"	"2010"	"2010"	107655
+"                        Mean annual earnings by sex, economic activity and length of service with the enterprise (2010)"	"earn_ses10_31"	"dataset"	"30.01.2017"	"21.12.2023"	"2010"	"2010"	136862
+"                        Mean annual earnings by sex, size class of the enterprise and occupation (2010)"	"earn_ses10_32"	"dataset"	"30.01.2017"	"21.12.2023"	"2010"	"2010"	17678
+"                        Mean annual earnings by sex, economic activity and occupation (2010)"	"earn_ses10_49"	"dataset"	"30.01.2017"	"21.12.2023"	"2010"	"2010"	207519
+"                        Annual earnings by quantiles and contractual working time (enterprises with 10 employed persons or more) - NACE Rev. 2, B-S excluding O (2010)"	"earn_ses10_adeci"	"dataset"	"23.02.2016"	"03.01.2024"	"2010"	"2010"	160
+"                        Annual earnings by economic control (enterprises with 10 employed persons or more) - NACE Rev. 2, B-S excluding O (2010)"	"earn_ses10_actrl"	"dataset"	"23.02.2016"	"07.06.2024"	"2010"	"2010"	80
+"                        Mean annual earnings by NUTS 1 region (enterprises with 10 employees or more) - NACE Rev. 2, B-S excluding O (2010)"	"earn_ses10_rann"	"dataset"	"23.02.2016"	"10.01.2024"	"2010"	"2010"	102
+"                        Mean monthly hours paid by sex, economic activity and collective pay agreement (2010)"	"earn_ses10_33"	"dataset"	"23.02.2016"	"07.06.2024"	"2010"	"2010"	58274
+"                        Mean annual holidays by sex, economic activity and collective pay agreement (2010)"	"earn_ses10_40"	"dataset"	"23.02.2016"	"07.06.2024"	"2010"	"2010"	18766
+"                Structure of earnings survey 2006"	"earn_ses06"	"folder"	" "	" "	" "	" "	
+"                        Employees by economic activity, collective pay agreement and sex (2006)"	"earn_ses06_01"	"dataset"	"10.06.2015"	"02.02.2026"	"2006"	"2006"	16364
+"                    Hourly earnings"	"earn_ses06_hr"	"folder"	" "	" "	" "	" "	
+"                        Mean hourly earnings by economic activity, collective pay agreement, sex (2006)"	"earn_ses06_12"	"dataset"	"09.12.2016"	"07.06.2024"	"2006"	"2006"	65152
+"                        Mean hourly earnings by economic activity, sex, age (2006)"	"earn_ses06_13"	"dataset"	"31.01.2017"	"03.01.2024"	"2006"	"2006"	93543
+"                        Mean hourly earnings by sex, age and occupation - NACE Rev. 1.1, C-O excluding L (2006)"	"earn_ses06_14"	"dataset"	"31.01.2017"	"03.01.2024"	"2006"	"2006"	54440
+"                        Mean hourly earnings by economic activity, sex, employment contract (2006)"	"earn_ses06_15"	"dataset"	"31.01.2017"	"07.06.2024"	"2006"	"2006"	51784
+"                        Mean hourly earnings by economic activity, sex, educational attainment level (2006)"	"earn_ses06_16"	"dataset"	"31.01.2017"	"03.01.2024"	"2006"	"2006"	97340
+"                        Mean hourly earnings by economic activity, sex and length of service with the enterprise (2006)"	"earn_ses06_17"	"dataset"	"31.01.2017"	"03.01.2024"	"2006"	"2006"	121206
+"                        Mean hourly earnings by size class of the enterprise, sex and occupation (2006)"	"earn_ses06_18"	"dataset"	"31.01.2017"	"03.01.2024"	"2006"	"2006"	33539
+"                        Mean hourly earnings by economic activity, sex, occupation (2006)"	"earn_ses06_47"	"dataset"	"31.01.2017"	"03.01.2024"	"2006"	"2006"	159937
+"                        Hourly earnings by economic activity and contractual working time (enterprises with 10 employed persons or more) (2006)"	"earn_ses_hftpt"	"dataset"	"31.01.2017"	"03.01.2024"	"2006"	"2006"	312
+"                        Mean hourly earnings by NUTS 1 region (enterprises with 10 employees or more) - NACE Rev. 1.1, C-O excluding L (2006)"	"earn_ses06_rhr"	"dataset"	"03.02.2015"	"03.01.2024"	"2006"	"2006"	91
+"                    Monthly earnings"	"earn_ses06_mo"	"folder"	" "	" "	" "	" "	
+"                        Mean monthly earnings by economic activity, collective pay agreement, sex (2006)"	"earn_ses06_19"	"dataset"	"31.01.2017"	"07.06.2024"	"2006"	"2006"	111232
+"                        Mean monthly earnings by economic activity, sex, age (2006)"	"earn_ses06_20"	"dataset"	"31.01.2017"	"14.02.2024"	"2006"	"2006"	142968
+"                        Mean monthly earnings by sex, age, occupation - NACE Rev. 1.1, C-O excluding L (2006)"	"earn_ses06_21"	"dataset"	"31.01.2017"	"14.02.2024"	"2006"	"2006"	81284
+"                        Mean monthly earnings by economic activity, sex, employment contract (2006)"	"earn_ses06_22"	"dataset"	"31.01.2017"	"07.06.2024"	"2006"	"2006"	79958
+"                        Mean monthly earnings by economic activity, sex, educational attainment level (2006)"	"earn_ses06_23"	"dataset"	"31.01.2017"	"14.02.2024"	"2006"	"2006"	154026
+"                        Mean monthly earnings by economic activity, sex, length of service with the enterprise (2006)"	"earn_ses06_24"	"dataset"	"31.01.2017"	"14.02.2024"	"2006"	"2006"	186976
+"                        Mean monthly earnings by size class of the enterprise, sex, occupation (2006)"	"earn_ses06_25"	"dataset"	"31.01.2017"	"14.02.2024"	"2006"	"2006"	50532
+"                        Mean monthly earnings by economic activity, sex, occupation (2006)"	"earn_ses06_48"	"dataset"	"31.01.2017"	"14.02.2024"	"2006"	"2006"	253686
+"                        Monthly earnings by quantiles and contractual working time (enterprises with 10 employed persons or more) - NACE Rev. 1.1, C-O excluding L (2006)"	"earn_ses_mdeci"	"dataset"	"31.01.2017"	"03.01.2024"	"2006"	"2006"	243
+"                        Monthly earnings by economic control (enterprises with 10 employed persons or more) - NACE Rev. 1.1, C-O excluding L (2006)"	"earn_ses_mctrl"	"dataset"	"25.08.2014"	"07.06.2024"	"2006"	"2006"	66
+"                    Annual earnings"	"earn_ses06_an"	"folder"	" "	" "	" "	" "	
+"                        Mean annual earnings by economic activity, collective pay agreement, sex (2006)"	"earn_ses06_26"	"dataset"	"31.01.2017"	"07.06.2024"	"2006"	"2006"	69350
+"                        Mean annual earnings by economic activity, sex, age (2006)"	"earn_ses06_27"	"dataset"	"31.01.2017"	"03.01.2024"	"2006"	"2006"	90248
+"                        Mean annual earnings by sex, age, occupation - NACE Rev. 1.1, C-O excluding L (2006)"	"earn_ses06_28"	"dataset"	"31.01.2017"	"03.01.2024"	"2006"	"2006"	51339
+"                        Mean annual earnings by economic activity, sex, employment contract (2006)"	"earn_ses06_29"	"dataset"	"31.01.2017"	"07.06.2024"	"2006"	"2006"	50012
+"                        Mean annual earnings by economic activity, sex, educational attainment level (2006)"	"earn_ses06_30"	"dataset"	"31.01.2017"	"03.01.2024"	"2006"	"2006"	96810
+"                        Mean annual earnings by economic activity, sex, length of service with the enterprise (2006)"	"earn_ses06_31"	"dataset"	"31.01.2017"	"03.01.2024"	"2006"	"2006"	117691
+"                        Mean annual earnings by size class of the enterprise, sex, occupation (2006)"	"earn_ses06_32"	"dataset"	"31.01.2017"	"03.01.2024"	"2006"	"2006"	31805
+"                        Mean annual earnings by economic activity, sex, occupation (2006)"	"earn_ses06_49"	"dataset"	"31.01.2017"	"03.01.2024"	"2006"	"2006"	159761
+"                        Annual earnings by quantiles and contractual working time (enterprises with 10 employed persons or more) - NACE Rev. 1.1, C-O excluding L (2006)"	"earn_ses_adeci"	"dataset"	"31.01.2017"	"03.01.2024"	"2006"	"2006"	136
+"                        Annual earnings by economic control (enterprises with 10 employed persons or more) - NACE Rev. 1.1, C-O excluding L"	"earn_ses_actrl"	"dataset"	"25.08.2014"	"07.06.2024"	"2006"	"2006"	64
+"                        Mean annual earnings by NUTS 1 region (enterprises with 10 employees or more) - NACE Rev. 1.1, C-O excluding L (2006)"	"earn_ses06_rann"	"dataset"	"03.02.2015"	"03.01.2024"	"2006"	"2006"	95
+"                        Mean monthly hours paid by economic activity, collective pay agreement, sex (2006)"	"earn_ses06_33"	"dataset"	"18.09.2014"	"07.06.2024"	"2006"	"2006"	41316
+"                        Mean annual holidays by economic activity, collective pay agreement, sex (2006)"	"earn_ses06_40"	"dataset"	"30.03.2015"	"07.06.2024"	"2006"	"2006"	13730
+"                Structure of earnings survey 2002"	"earn_ses"	"folder"	" "	" "	" "	" "	
+"                        Employees by economic activity, collective pay agreement, sex, employment contract (2002)"	"earn_ses_agt01"	"dataset"	"16.06.2015"	"02.02.2026"	"2002"	"2002"	41556
+"                    Hourly earnings"	"earn_ses_hr"	"folder"	" "	" "	" "	" "	
+"                        Mean hourly earnings by economic activity, collective pay agreement, sex (2002)"	"earn_ses_agt12"	"dataset"	"31.01.2017"	"07.06.2024"	"2002"	"2002"	38971
+"                        Mean hourly earnings by economic activity, sex, age (2002)"	"earn_ses_agt13"	"dataset"	"09.12.2016"	"03.01.2024"	"2002"	"2002"	51285
+"                        Mean hourly earnings by sex, age, occupation (2002)"	"earn_ses_agt14"	"dataset"	"31.01.2017"	"03.01.2024"	"2002"	"2002"	36286
+"                        Mean hourly earnings by economic activity, sex, employment contract (2002)"	"earn_ses_agt15"	"dataset"	"31.01.2017"	"07.06.2024"	"2002"	"2002"	33173
+"                        Mean hourly earnings by economic activity, sex, educational attainment level (2002)"	"earn_ses_agt16"	"dataset"	"31.01.2017"	"03.01.2024"	"2002"	"2002"	44857
+"                        Mean hourly earnings by economic activity, sex, length of service in the enterprise (2002)"	"earn_ses_agt17"	"dataset"	"31.01.2017"	"03.01.2024"	"2002"	"2002"	60872
+"                        Mean hourly earnings by size of the enterprise, sex, occupation (2002)"	"earn_ses_agt18"	"dataset"	"31.01.2017"	"03.01.2024"	"2002"	"2002"	38899
+"                    Monthly earnings"	"earn_ses_mo"	"folder"	" "	" "	" "	" "	
+"                        Mean monthly earnings by economic activity, collective pay agreement, sex (2002)"	"earn_ses_agt19"	"dataset"	"31.01.2017"	"07.06.2024"	"2002"	"2002"	60774
+"                        Mean monthly earnings by economic activity, sex, age (2002)"	"earn_ses_agt20"	"dataset"	"31.01.2017"	"14.02.2024"	"2002"	"2002"	82352
+"                        Mean monthly earnings by sex, age, occupation (2002)"	"earn_ses_agt21"	"dataset"	"31.01.2017"	"14.02.2024"	"2002"	"2002"	54917
+"                        Mean monthly earnings by economic activity, sex, employment contract (2002)"	"earn_ses_agt22"	"dataset"	"31.01.2017"	"07.06.2024"	"2002"	"2002"	52361
+"                        Mean monthly earnings by economic activity, sex, educational attainment level (2002)"	"earn_ses_agt23"	"dataset"	"31.01.2017"	"14.02.2024"	"2002"	"2002"	68641
+"                        Mean monthly earnings by economic activity, sex, length of service in the enterprise (2002)"	"earn_ses_agt24"	"dataset"	"31.01.2017"	"14.02.2024"	"2002"	"2002"	94798
+"                        Mean monthly earnings by size of the enterprise, sex, occupation (2002)"	"earn_ses_agt25"	"dataset"	"31.01.2017"	"14.02.2024"	"2002"	"2002"	58498
+"                    Annual earnings"	"earn_ses_an"	"folder"	" "	" "	" "	" "	
+"                        Mean annual earnings by economic activity, collective pay agreement, sex (2002)"	"earn_ses_agt26"	"dataset"	"31.01.2017"	"03.01.2024"	"2002"	"2002"	37945
+"                        Mean annual earnings by economic activity, sex, age (2002)"	"earn_ses_agt27"	"dataset"	"31.01.2017"	"03.01.2024"	"2002"	"2002"	51864
+"                        Mean annual earnings by sex, age, occupation (2002)"	"earn_ses_agt28"	"dataset"	"31.01.2017"	"03.01.2024"	"2002"	"2002"	34525
+"                        Mean annual earnings by economic activity, sex, employment contract (2002)"	"earn_ses_agt29"	"dataset"	"31.01.2017"	"07.06.2024"	"2002"	"2002"	32471
+"                        Mean annual earnings by economic activity, sex, educational attainment level (2002)"	"earn_ses_agt30"	"dataset"	"31.01.2017"	"03.01.2024"	"2002"	"2002"	42863
+"                        Mean annual earnings by economic activity, sex, length of service in the enterprise (2002)"	"earn_ses_agt31"	"dataset"	"31.01.2017"	"03.01.2024"	"2002"	"2002"	59692
+"                        Mean annual earnings by size of the enterprise, sex,occupation (2002)"	"earn_ses_agt32"	"dataset"	"31.01.2017"	"03.01.2024"	"2002"	"2002"	37005
+"                        Mean monthly hours paid by economic activity, collective pay agreement, sex (2002)"	"earn_ses_agt33"	"dataset"	"31.01.2017"	"07.06.2024"	"2002"	"2002"	25101
+"                        Mean annual holidays by economic activity, collective pay agreement, sex (2002)"	"earn_ses_agt40"	"dataset"	"31.01.2017"	"07.06.2024"	"2002"	"2002"	8521
+"                Gender pay and earnings gaps"	"earn_grgpg"	"folder"	" "	" "	" "	" "	
+"                        Gender pay gap in unadjusted form by NACE Rev. 2 activity - structure of earnings survey methodology"	"earn_gr_gpgr2"	"dataset"	"27.10.2026"	"27.10.2026"	"2007"	"2024"	10289
+"                        Gender pay gap in unadjusted form by age and NACE Rev. 2 activity (B-S except O) - structure of earnings survey methodology"	"earn_gr_gpgr2ag"	"dataset"	"02.03.2026"	"11.02.2026"	"2007"	"2024"	2791
+"                        Gender pay gap in unadjusted form by type of ownership and NACE Rev. 2 activity (B-S except O) - structure of earnings survey methodology"	"earn_gr_gpgr2ct"	"dataset"	"24.02.2026"	"11.02.2026"	"2007"	"2024"	902
+"                        Gender pay gap in unadjusted form by working time and NACE Rev. 2 activity (B-S except O) - structure of earnings survey methodology"	"earn_gr_gpgr2wt"	"dataset"	"24.02.2026"	"11.02.2026"	"2007"	"2024"	805
+"                        Gender pay gap in unadjusted form by NACE Rev. 1.1 activity - structure of earnings survey methodology (2002-2007)"	"earn_gr_gpg"	"dataset"	"01.07.2010"	"03.01.2024"	"2002"	"2007"	1503
+"                    Gender overall earnings gap"	"earn_gr_goeg"	"dataset"	"05.06.2024"	"03.06.2024"	"2010"	"2018"	93
+"                Minimum wages"	"earn_minw"	"folder"	" "	" "	" "	" "	
+"                    Monthly minimum wages - bi-annual data"	"earn_mw_cur"	"dataset"	"31.07.2026"	"31.07.2026"	"1999-S1"	"2026-S2"	4573
+"                        Minimum wages"	"tps00155"	"table"	"31.07.2026"	"31.07.2026"	"2021-S1"	"2026-S2"	356
+"                    Monthly minimum wage as a proportion of average monthly earnings (%) - NACE Rev. 2 (from 2008 onwards)"	"earn_mw_avgr2"	"dataset"	"31.07.2026"	"30.01.2026"	"2008"	"2026"	1202
+"                    Monthly minimum wage as a proportion of average monthly earnings (%) - NACE Rev. 1.1 (1999-2009)"	"earn_mw_avgr1"	"dataset"	"20.07.2011"	"07.06.2024"	"1999"	"2009"	525
+"                Gross earnings - historical data"	"earn_gr_hist"	"folder"	" "	" "	" "	" "	
+"                    Average annual gross earnings by sex and NACE Rev. 2 activity (2005-2011)"	"earn_gr_nace2"	"dataset"	"24.03.2014"	"21.12.2023"	"2005"	"2011"	86553
+"                    Average annual gross earnings by sex and NACE Rev. 1.1 activity (1995-2008)"	"earn_gr_nace"	"dataset"	"22.07.2011"	"21.12.2023"	"1995"	"2008"	77979
+"                    Average annual gross earnings by sex and occupation (1995-2008)"	"earn_gr_isco"	"dataset"	"18.11.2013"	"21.12.2023"	"1995"	"2008"	26349
+"            Labour costs"	"lc"	"folder"	" "	" "	" "	" "	
+"                Labour cost index"	"lci"	"folder"	" "	" "	" "	" "	
+"                    Labour costs index - historical data"	"lci_hist"	"folder"	" "	" "	" "	" "	
+"                        Labour cost index by NACE Rev. 1.1 activity - nominal value, quarterly data"	"lc_lci_r1_q"	"dataset"	"17.06.2009"	"14.10.2024"	"1996-Q1"	"2008-Q4"	617566
+"                        Labour cost index by NACE Rev. 1.1 activity - nominal value, annual data"	"lc_lci_r1_a"	"dataset"	"17.06.2009"	"14.10.2024"	"1996"	"2008"	52505
+"                        Labour cost index by NACE Rev. 1.1 activity - country weights"	"lc_lci_r1_cow"	"dataset"	"17.06.2009"	"21.12.2023"	"1996"	"2007"	2725
+"                        Labour cost index by NACE Rev. 1.1 activity - item weights"	"lc_lci_r1_itw"	"dataset"	"17.06.2009"	"14.10.2024"	"1996"	"2008"	19784
+"                    Labour cost index by NACE Rev. 2 activity - nominal value, quarterly data"	"lc_lci_r2_q"	"dataset"	"16.09.2026"	"19.08.2026"	"1996-Q1"	"2026-Q2"	2879438
+"                    Labour cost index by NACE Rev. 2 activity - nominal value, annual data"	"lc_lci_r2_a"	"dataset"	"16.09.2026"	"16.06.2026"	"1996"	"2025"	166958
+"                    Labour cost index by NACE Rev. 2 activity - country weights"	"lc_lci_r2_cow"	"dataset"	"16.09.2026"	"19.03.2026"	"2008"	"2024"	2262
+"                    Labour cost index by NACE Rev. 2 activity - item weights"	"lc_lci_r2_itw"	"dataset"	"16.09.2026"	"19.03.2026"	"1996"	"2025"	25167
+"                Labour costs annual data"	"lcan"	"folder"	" "	" "	" "	" "	
+"                    Labour costs - historical data"	"lcan_hist"	"folder"	" "	" "	" "	" "	
+"                        Labour costs by NACE Rev. 2 activity"	"lc_an_cost_r2"	"dataset"	"14.11.2013"	"21.12.2023"	"1996"	"2011"	27642
+"                        Structure of labour cost by NACE Rev. 2 activity"	"lc_an_struc_r2"	"dataset"	"13.05.2013"	"03.01.2024"	"1996"	"2011"	9194
+"                        Hourly labour costs by NACE Rev. 1.1 activity"	"lc_an_costh"	"dataset"	"02.09.2011"	"21.12.2023"	"1995"	"2008"	16614
+"                        Monthly labour costs by NACE Rev. 1.1 activity"	"lc_an_costm"	"dataset"	"02.09.2011"	"21.12.2023"	"1995"	"2008"	15954
+"                        Structure of labour cost by NACE Rev. 1.1 activity"	"lc_an_struc"	"dataset"	"02.09.2011"	"03.01.2024"	"1995"	"2008"	20469
+"                    Labour cost levels by NACE Rev. 2 activity"	"lc_lci_lev"	"dataset"	"23.04.2026"	"14.04.2026"	"2008"	"2025"	85271
+"                        Labour costs annual data - NACE Rev. 2"	"tps00173"	"table"	"23.04.2026"	"14.04.2026"	"2008"	"2025"	1272
+"                Labour cost surveys"	"lcs"	"folder"	" "	" "	" "	" "	
+"                    Labour costs survey - NACE Rev. 2 activity"	"lcs_r2"	"folder"	" "	" "	" "	" "	
+"                        Labour cost, wages and salaries, direct remuneration (excluding apprentices) by NACE Rev. 2 activity"	"lc_ncost_r2"	"dataset"	"15.09.2026"	"15.09.2026"	"2008"	"2024"	4082428
+"                        Labour cost, wages and salaries (including apprentices) by NACE Rev. 2 activity"	"lc_ncostot_r2"	"dataset"	"15.09.2026"	"15.09.2026"	"2008"	"2024"	769572
+"                        Structure of labour cost by NACE Rev. 2 activity - % of total cost"	"lc_nstruc_r2"	"dataset"	"15.09.2026"	"15.09.2026"	"2008"	"2024"	1818968
+"                        Labour cost, wages and salaries, direct remuneration by NACE Rev. 2 activity and NUTS 1 region"	"lc_rcost_r2"	"dataset"	"15.09.2026"	"14.09.2026"	"2008"	"2024"	1024535
+"                        Structure of labour cost by NACE Rev. 2 activity and NUTS 1 region - % of total cost"	"lc_rstruc_r2"	"dataset"	"15.09.2026"	"14.09.2026"	"2008"	"2024"	593201
+"                    Labour costs survey 2008 - NACE Rev. 1.1 activity"	"lcs2008_r1"	"folder"	" "	" "	" "	" "	
+"                        Labour cost, wages and salaries, direct remuneration by NACE Rev. 1.1 activity - LCS survey 2008"	"lc_n08cost_r1"	"dataset"	"21.03.2019"	"07.06.2024"	"2008"	"2008"	58379
+"                        Structure of labour cost by NACE Rev. 1.1 activity - % of total cost, LCS survey 2008"	"lc_n08struc_r1"	"dataset"	"21.03.2019"	"07.06.2024"	"2008"	"2008"	34739
+"                    Labour costs survey 2004"	"lcs2004"	"folder"	" "	" "	" "	" "	
+"                        Labour cost, wages and salaries, direct remuneration by NACE Rev. 1.1 activity - LCS survey 2004"	"lc_n04cost"	"dataset"	"21.03.2019"	"07.06.2024"	"2004"	"2004"	422003
+"                        Structure of labour cost by NACE Rev. 1.1 activity - % of total cost, LCS survey 2004"	"lc_n04struc"	"dataset"	"21.03.2019"	"07.06.2024"	"2004"	"2004"	111510
+"                        Labour cost, wages and salaries, direct remuneration by NACE Rev. 1.1 activity and NUTS 1 region - LCS survey 2004"	"lc_r04cost"	"dataset"	"09.03.2011"	"07.06.2024"	"2004"	"2004"	156476
+"                        Structure of labour cost by NACE Rev. 1.1 activity and NUTS 1 region - % of total cost, LCS survey 2004"	"lc_r04struc"	"dataset"	"09.03.2011"	"07.06.2024"	"2004"	"2004"	65541
+"                    Labour costs survey 2000"	"lcs2000"	"folder"	" "	" "	" "	" "	
+"                        Labour cost, wages and salaries, direct remuneration by NACE Rev. 1.1 activity - LCS survey 2000"	"lc_n00cost"	"dataset"	"27.03.2009"	"14.10.2024"	"2000"	"2000"	272377
+"                        Structure of labour cost by NACE Rev. 1.1 activity - % of total cost, LCS survey 2000"	"lc_n00struc"	"dataset"	"27.03.2009"	"14.10.2024"	"2000"	"2000"	43607
+"                        Temporary staff: labour cost, number of employees and number of hours worked by NACE Rev. 1.1 activity - LCS survey 2000"	"lc_n00temp"	"dataset"	"27.03.2009"	"14.10.2024"	"2000"	"2000"	1243
+"                        Labour cost, wages and salaries, direct remuneration by NACE Rev. 1.1 activity and NUTS 1 region - LCS survey 2000"	"lc_r00cost"	"dataset"	"27.03.2009"	"14.10.2024"	"2000"	"2000"	128781
+"                        Structure of labour cost by NACE Rev. 1.1 activity and NUTS 1 region - % of total cost, LCS survey 2000"	"lc_r00struc"	"dataset"	"27.03.2009"	"14.10.2024"	"2000"	"2000"	94321
+"                Nominal unit labour cost per hour worked"	"tipslm10"	"table"	"05.11.2026"	"21.10.2026"	"1995"	"2025"	1735
+"                    Unit labour cost performance related to the euro area - annual data"	"tipslm50"	"table"	"14.10.2026"	"14.10.2026"	"1995"	"2025"	1431
+"            Unit labour cost"	"tipslc"	"folder"	" "	" "	" "	" "	
+"                    Nominal unit labour cost per hour worked - annual data, percentage change and index (2015 = 100)"	"tipslm20"	"table"	"05.11.2026"	"21.10.2026"	"1995"	"2025"	4087
+"                    Unit labour cost performance related to the euro area - annual data"	"tipslm50"	"table"	"14.10.2026"	"14.10.2026"	"1995"	"2025"	1431
+"                    Nominal unit labour cost (NULC) per hour worked - quarterly data"	"tipslm40"	"table"	"03.11.2026"	"29.10.2026"	"1995-Q1"	"2026-Q3"	7350
+"                Labour cost index - quarterly data"	"teilm_lc"	"folder"	" "	" "	" "	" "	
+"                    Labour cost index by NACE Rev. 2"	"teilm100"	"table"	"16.09.2026"	"19.08.2026"	"2023-Q3"	"2026-Q2"	832
+"                    Labour cost index by NACE Rev. 2 - percentage change Q/Q-1"	"teilm120"	"table"	"16.09.2026"	"19.08.2026"	"2023-Q3"	"2026-Q2"	9201
+"                    Labour cost index by NACE Rev. 2 - percentage change Q/Q-4"	"teilm130"	"table"	"16.09.2026"	"19.08.2026"	"2023-Q3"	"2026-Q2"	9201
+"                    Labour cost index by NACE Rev. 2 - Index (2020=100)"	"teilm140"	"table"	"16.09.2026"	"19.08.2026"	"2023-Q3"	"2026-Q2"	9201
+"                Nominal unit labour cost growth"	"tesem170"	"table"	"05.11.2026"	"21.10.2026"	"2005"	"2025"	769
+"                    Gender pay gap in unadjusted form by NACE Rev. 2 activity - structure of earnings survey methodology"	"earn_gr_gpgr2"	"dataset"	"27.10.2026"	"27.10.2026"	"2007"	"2024"	10289
+"            Labour market and earnings"	"eq_labour_earn"	"folder"	" "	" "	" "	" "	
+"                Earnings"	"eq_gpgr"	"folder"	" "	" "	" "	" "	
+"                    Gender pay gap in unadjusted form by NACE Rev. 2 activity - structure of earnings survey methodology"	"earn_gr_gpgr2"	"dataset"	"27.10.2026"	"27.10.2026"	"2007"	"2024"	10289
+"                    Gender overall earnings gap"	"earn_gr_goeg"	"dataset"	"05.06.2024"	"03.06.2024"	"2010"	"2018"	93
+"                    Median hourly earnings, all employees (excluding apprentices) by sex"	"earn_ses_pub2s"	"dataset"	"09.02.2026"	"11.02.2025"	"2006"	"2022"	1677
+"                    Median hourly earnings, all employees (excluding apprentices) by age"	"earn_ses_pub2a"	"dataset"	"09.02.2026"	"05.02.2026"	"2006"	"2022"	2294
+"                    Gender pay gap in unadjusted form by NACE Rev. 2 activity - structure of earnings survey methodology"	"earn_gr_gpgr2"	"dataset"	"27.10.2026"	"27.10.2026"	"2007"	"2024"	10289
+"                    Structure of earnings survey - monthly earnings"	"earn_ses_monthly"	"dataset"	"09.02.2026"	"11.02.2025"	"2002"	"2022"	11438954
+"                Employees by sex, economic activity and collective pay agreement (2018)"	"earn_ses18_01"	"dataset"	"05.02.2026"	"03.01.2024"	"2018"	"2018"	22526
+"                Employees by sex, economic activity and collective pay agreement (2014)"	"earn_ses14_01"	"dataset"	"13.10.2020"	"02.02.2026"	"2014"	"2014"	20289
+"                Employees by sex, economic activity and collective pay agreement (2010)"	"earn_ses10_01"	"dataset"	"23.02.2016"	"02.02.2026"	"2010"	"2010"	19686
+"                Employees by economic activity, collective pay agreement and sex (2006)"	"earn_ses06_01"	"dataset"	"10.06.2015"	"02.02.2026"	"2006"	"2006"	16364
+"                Employees by economic activity, collective pay agreement, sex, employment contract (2002)"	"earn_ses_agt01"	"dataset"	"16.06.2015"	"02.02.2026"	"2002"	"2002"	41556
