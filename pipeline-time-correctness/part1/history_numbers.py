@@ -124,6 +124,16 @@ def streaming() -> None:
         print(f"  pane window {p.window} {p.kind:7s} {when}: discarding {p.discarding}; accumulating {p.accumulating}; "
               f"accumulating & retracting {retract}{p.accumulating}")
     print("  dropped as too late: " + ", ".join(f"{v} (event {et} s, arrival {at} s)" for v, et, at in dropped))
+    path = dict(h.watermark_path())
+    for v, et, at in dropped:
+        before = max(w for a, w in path.items() if a < at)
+        end = (h.window_of(et) + 1) * h.WINDOW
+        print(f"  watermark when the {v} arrived: {before} s; its window ends at {end} s and stops accepting "
+              f"late data at {end + h.ALLOWED_LATENESS} s")
+    on_time0 = panes[(panes["window"] == 0) & (panes["kind"] == "on time")]["accumulating"].iloc[0]
+    accepted0 = panes[panes["window"] == 0]["discarding"].sum()
+    print(f"  window 0 on-time pane {on_time0}: {on_time0 / h.true_window_sums()[0]:.0%} of the window's true sum, "
+          f"{on_time0 / accepted0:.0%} of what is eventually accepted")
     sums = {}
     for mode in ("discarding", "accumulating"):
         sums[mode] = panes.groupby("window")[mode].sum().to_dict()

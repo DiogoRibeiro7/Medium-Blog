@@ -73,5 +73,7 @@ Part 1 numbers: a history of late data in four fields
   pane window 2 on time at 400 s: discarding 5; accumulating 5; accumulating & retracting 5
   pane window 3 final   at end of input: discarding 13; accumulating 13; accumulating & retracting 13
   dropped as too late: 9 (event 100 s, arrival 380 s)
+  watermark when the 9 arrived: 305 s; its window ends at 120 s and stops accepting late data at 240 s
+  window 0 on-time pane 5: 25% of the window's true sum, 45% of what is eventually accepted
   downstream sum of panes per window: discarding {0: 11, 1: 22, 2: 5, 3: 13}; accumulating {0: 16, 1: 22, 2: 5, 3: 13}; accumulating & retracting {0: 11.0, 1: 22.0, 2: 5.0, 3: 13.0}
   speed layer (on-time panes only) {0: 5, 1: 22, 2: 5, 3: 13}; batch layer recomputed from the full log {0: 20, 1: 22, 2: 5, 3: 13}
