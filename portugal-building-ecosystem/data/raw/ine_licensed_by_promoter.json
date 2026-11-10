@@ -1,0 +1,879 @@
+[ {
+  "IndicadorCod" : "0013236",
+  "IndicadorDsg" : "Fogos licenciados (N.º) em construções novas para habitação familiar por Localização geográfica (NUTS - 2024) e Entidade promotora; Anual - INE, Inquérito aos projetos de obras de edificação e de demolição de edifícios",
+  "MetaInfUrl" : "https://www.ine.pt/bddXplorer/htdocs/minfo.jsp?var_cd=0013236&lingua=PT",
+  "DataExtracao" : "2026-11-09T23:31:45.627Z",
+  "DataUltimoAtualizacao" : "2026-07-17",
+  "UltimoPref" : "2025",
+  "Dados" : {
+    "2002" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "4",
+      "dim_3_t" : "Outros",
+      "ind_string" : "1 359,0",
+      "valor" : "1359"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "2",
+      "dim_3_t" : "Organismo público",
+      "ind_string" : "2 998,0",
+      "valor" : "2998"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "1",
+      "dim_3_t" : "Pessoa singular",
+      "ind_string" : "44 569,0",
+      "valor" : "44569"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "3",
+      "dim_3_t" : "Empresa privada",
+      "ind_string" : "46 747,0",
+      "valor" : "46747"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "T",
+      "dim_3_t" : "Total",
+      "ind_string" : "95 673,0",
+      "valor" : "95673"
+    } ],
+    "2003" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "2",
+      "dim_3_t" : "Organismo público",
+      "ind_string" : "1 373,0",
+      "valor" : "1373"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "4",
+      "dim_3_t" : "Outros",
+      "ind_string" : "2 093,0",
+      "valor" : "2093"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "1",
+      "dim_3_t" : "Pessoa singular",
+      "ind_string" : "37 293,0",
+      "valor" : "37293"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "3",
+      "dim_3_t" : "Empresa privada",
+      "ind_string" : "40 787,0",
+      "valor" : "40787"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "T",
+      "dim_3_t" : "Total",
+      "ind_string" : "81 546,0",
+      "valor" : "81546"
+    } ],
+    "2004" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "4",
+      "dim_3_t" : "Outros",
+      "ind_string" : "654,0",
+      "valor" : "654"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "2",
+      "dim_3_t" : "Organismo público",
+      "ind_string" : "1 773,0",
+      "valor" : "1773"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "1",
+      "dim_3_t" : "Pessoa singular",
+      "ind_string" : "33 291,0",
+      "valor" : "33291"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "3",
+      "dim_3_t" : "Empresa privada",
+      "ind_string" : "41 397,0",
+      "valor" : "41397"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "T",
+      "dim_3_t" : "Total",
+      "ind_string" : "77 115,0",
+      "valor" : "77115"
+    } ],
+    "2005" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "4",
+      "dim_3_t" : "Outros",
+      "ind_string" : "1 104,0",
+      "valor" : "1104"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "2",
+      "dim_3_t" : "Organismo público",
+      "ind_string" : "1 640,0",
+      "valor" : "1640"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "1",
+      "dim_3_t" : "Pessoa singular",
+      "ind_string" : "32 281,0",
+      "valor" : "32281"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "3",
+      "dim_3_t" : "Empresa privada",
+      "ind_string" : "38 897,0",
+      "valor" : "38897"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "T",
+      "dim_3_t" : "Total",
+      "ind_string" : "73 922,0",
+      "valor" : "73922"
+    } ],
+    "2006" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "4",
+      "dim_3_t" : "Outros",
+      "ind_string" : "642,0",
+      "valor" : "642"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "2",
+      "dim_3_t" : "Organismo público",
+      "ind_string" : "1 312,0",
+      "valor" : "1312"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "1",
+      "dim_3_t" : "Pessoa singular",
+      "ind_string" : "29 795,0",
+      "valor" : "29795"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "3",
+      "dim_3_t" : "Empresa privada",
+      "ind_string" : "40 172,0",
+      "valor" : "40172"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "T",
+      "dim_3_t" : "Total",
+      "ind_string" : "71 921,0",
+      "valor" : "71921"
+    } ],
+    "2007" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "4",
+      "dim_3_t" : "Outros",
+      "ind_string" : "605,0",
+      "valor" : "605"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "2",
+      "dim_3_t" : "Organismo público",
+      "ind_string" : "1 567,0",
+      "valor" : "1567"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "1",
+      "dim_3_t" : "Pessoa singular",
+      "ind_string" : "26 972,0",
+      "valor" : "26972"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "3",
+      "dim_3_t" : "Empresa privada",
+      "ind_string" : "36 684,0",
+      "valor" : "36684"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "T",
+      "dim_3_t" : "Total",
+      "ind_string" : "65 828,0",
+      "valor" : "65828"
+    } ],
+    "2008" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "4",
+      "dim_3_t" : "Outros",
+      "ind_string" : "399,0",
+      "valor" : "399"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "2",
+      "dim_3_t" : "Organismo público",
+      "ind_string" : "687,0",
+      "valor" : "687"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "1",
+      "dim_3_t" : "Pessoa singular",
+      "ind_string" : "20 855,0",
+      "valor" : "20855"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "3",
+      "dim_3_t" : "Empresa privada",
+      "ind_string" : "24 040,0",
+      "valor" : "24040"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "T",
+      "dim_3_t" : "Total",
+      "ind_string" : "45 981,0",
+      "valor" : "45981"
+    } ],
+    "2009" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "2",
+      "dim_3_t" : "Organismo público",
+      "ind_string" : "254,0",
+      "valor" : "254"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "4",
+      "dim_3_t" : "Outros",
+      "ind_string" : "336,0",
+      "valor" : "336"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "3",
+      "dim_3_t" : "Empresa privada",
+      "ind_string" : "11 243,0",
+      "valor" : "11243"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "1",
+      "dim_3_t" : "Pessoa singular",
+      "ind_string" : "15 465,0",
+      "valor" : "15465"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "T",
+      "dim_3_t" : "Total",
+      "ind_string" : "27 298,0",
+      "valor" : "27298"
+    } ],
+    "2010" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "4",
+      "dim_3_t" : "Outros",
+      "ind_string" : "76,0",
+      "valor" : "76"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "2",
+      "dim_3_t" : "Organismo público",
+      "ind_string" : "293,0",
+      "valor" : "293"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "3",
+      "dim_3_t" : "Empresa privada",
+      "ind_string" : "9 817,0",
+      "valor" : "9817"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "1",
+      "dim_3_t" : "Pessoa singular",
+      "ind_string" : "14 816,0",
+      "valor" : "14816"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "T",
+      "dim_3_t" : "Total",
+      "ind_string" : "25 002,0",
+      "valor" : "25002"
+    } ],
+    "2011" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "4",
+      "dim_3_t" : "Outros",
+      "ind_string" : "21,0",
+      "valor" : "21"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "2",
+      "dim_3_t" : "Organismo público",
+      "ind_string" : "231,0",
+      "valor" : "231"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "3",
+      "dim_3_t" : "Empresa privada",
+      "ind_string" : "6 064,0",
+      "valor" : "6064"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "1",
+      "dim_3_t" : "Pessoa singular",
+      "ind_string" : "11 299,0",
+      "valor" : "11299"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "T",
+      "dim_3_t" : "Total",
+      "ind_string" : "17 615,0",
+      "valor" : "17615"
+    } ],
+    "2012" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "4",
+      "dim_3_t" : "Outros",
+      "ind_string" : "11,0",
+      "valor" : "11"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "2",
+      "dim_3_t" : "Organismo público",
+      "ind_string" : "206,0",
+      "valor" : "206"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "3",
+      "dim_3_t" : "Empresa privada",
+      "ind_string" : "2 501,0",
+      "valor" : "2501"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "1",
+      "dim_3_t" : "Pessoa singular",
+      "ind_string" : "8 794,0",
+      "valor" : "8794"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "T",
+      "dim_3_t" : "Total",
+      "ind_string" : "11 512,0",
+      "valor" : "11512"
+    } ],
+    "2013" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "4",
+      "dim_3_t" : "Outros",
+      "ind_string" : "52,0",
+      "valor" : "52"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "2",
+      "dim_3_t" : "Organismo público",
+      "ind_string" : "62,0",
+      "valor" : "62"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "3",
+      "dim_3_t" : "Empresa privada",
+      "ind_string" : "1 611,0",
+      "valor" : "1611"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "1",
+      "dim_3_t" : "Pessoa singular",
+      "ind_string" : "5 769,0",
+      "valor" : "5769"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "T",
+      "dim_3_t" : "Total",
+      "ind_string" : "7 494,0",
+      "valor" : "7494"
+    } ],
+    "2014" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "4",
+      "dim_3_t" : "Outros",
+      "ind_string" : "18,0",
+      "valor" : "18"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "2",
+      "dim_3_t" : "Organismo público",
+      "ind_string" : "24,0",
+      "valor" : "24"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "3",
+      "dim_3_t" : "Empresa privada",
+      "ind_string" : "1 896,0",
+      "valor" : "1896"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "1",
+      "dim_3_t" : "Pessoa singular",
+      "ind_string" : "5 058,0",
+      "valor" : "5058"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "T",
+      "dim_3_t" : "Total",
+      "ind_string" : "6 996,0",
+      "valor" : "6996"
+    } ],
+    "2015" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "4",
+      "dim_3_t" : "Outros",
+      "ind_string" : "9,0",
+      "valor" : "9"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "2",
+      "dim_3_t" : "Organismo público",
+      "ind_string" : "26,0",
+      "valor" : "26"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "3",
+      "dim_3_t" : "Empresa privada",
+      "ind_string" : "2 793,0",
+      "valor" : "2793"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "1",
+      "dim_3_t" : "Pessoa singular",
+      "ind_string" : "5 858,0",
+      "valor" : "5858"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "T",
+      "dim_3_t" : "Total",
+      "ind_string" : "8 686,0",
+      "valor" : "8686"
+    } ],
+    "2016" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "2",
+      "dim_3_t" : "Organismo público",
+      "ind_string" : "17,0",
+      "valor" : "17"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "4",
+      "dim_3_t" : "Outros",
+      "ind_string" : "205,0",
+      "valor" : "205"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "3",
+      "dim_3_t" : "Empresa privada",
+      "ind_string" : "4 820,0",
+      "valor" : "4820"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "1",
+      "dim_3_t" : "Pessoa singular",
+      "ind_string" : "6 775,0",
+      "valor" : "6775"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "T",
+      "dim_3_t" : "Total",
+      "ind_string" : "11 817,0",
+      "valor" : "11817"
+    } ],
+    "2017" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "4",
+      "dim_3_t" : "Outros",
+      "ind_string" : "28,0",
+      "valor" : "28"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "2",
+      "dim_3_t" : "Organismo público",
+      "ind_string" : "103,0",
+      "valor" : "103"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "3",
+      "dim_3_t" : "Empresa privada",
+      "ind_string" : "6 746,0",
+      "valor" : "6746"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "1",
+      "dim_3_t" : "Pessoa singular",
+      "ind_string" : "8 090,0",
+      "valor" : "8090"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "T",
+      "dim_3_t" : "Total",
+      "ind_string" : "14 967,0",
+      "valor" : "14967"
+    } ],
+    "2018" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "4",
+      "dim_3_t" : "Outros",
+      "ind_string" : "39,0",
+      "valor" : "39"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "2",
+      "dim_3_t" : "Organismo público",
+      "ind_string" : "45,0",
+      "valor" : "45"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "1",
+      "dim_3_t" : "Pessoa singular",
+      "ind_string" : "10 618,0",
+      "valor" : "10618"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "3",
+      "dim_3_t" : "Empresa privada",
+      "ind_string" : "11 194,0",
+      "valor" : "11194"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "T",
+      "dim_3_t" : "Total",
+      "ind_string" : "21 896,0",
+      "valor" : "21896"
+    } ],
+    "2019" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "4",
+      "dim_3_t" : "Outros",
+      "ind_string" : "36,0",
+      "valor" : "36"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "2",
+      "dim_3_t" : "Organismo público",
+      "ind_string" : "241,0",
+      "valor" : "241"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "1",
+      "dim_3_t" : "Pessoa singular",
+      "ind_string" : "11 827,0",
+      "valor" : "11827"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "3",
+      "dim_3_t" : "Empresa privada",
+      "ind_string" : "13 720,0",
+      "valor" : "13720"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "T",
+      "dim_3_t" : "Total",
+      "ind_string" : "25 824,0",
+      "valor" : "25824"
+    } ],
+    "2020" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "4",
+      "dim_3_t" : "Outros",
+      "ind_string" : "65,0",
+      "valor" : "65"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "2",
+      "dim_3_t" : "Organismo público",
+      "ind_string" : "83,0",
+      "valor" : "83"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "1",
+      "dim_3_t" : "Pessoa singular",
+      "ind_string" : "12 155,0",
+      "valor" : "12155"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "3",
+      "dim_3_t" : "Empresa privada",
+      "ind_string" : "13 865,0",
+      "valor" : "13865"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "T",
+      "dim_3_t" : "Total",
+      "ind_string" : "26 168,0",
+      "valor" : "26168"
+    } ],
+    "2021" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "2",
+      "dim_3_t" : "Organismo público",
+      "ind_string" : "35,0",
+      "valor" : "35"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "4",
+      "dim_3_t" : "Outros",
+      "ind_string" : "71,0",
+      "valor" : "71"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "1",
+      "dim_3_t" : "Pessoa singular",
+      "ind_string" : "13 613,0",
+      "valor" : "13613"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "3",
+      "dim_3_t" : "Empresa privada",
+      "ind_string" : "16 375,0",
+      "valor" : "16375"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "T",
+      "dim_3_t" : "Total",
+      "ind_string" : "30 094,0",
+      "valor" : "30094"
+    } ],
+    "2022" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "4",
+      "dim_3_t" : "Outros",
+      "ind_string" : "61,0",
+      "valor" : "61"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "2",
+      "dim_3_t" : "Organismo público",
+      "ind_string" : "73,0",
+      "valor" : "73"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "1",
+      "dim_3_t" : "Pessoa singular",
+      "ind_string" : "13 352,0",
+      "valor" : "13352"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "3",
+      "dim_3_t" : "Empresa privada",
+      "ind_string" : "18 746,0",
+      "valor" : "18746"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "T",
+      "dim_3_t" : "Total",
+      "ind_string" : "32 232,0",
+      "valor" : "32232"
+    } ],
+    "2023" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "2",
+      "dim_3_t" : "Organismo público",
+      "ind_string" : "41,0",
+      "valor" : "41"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "4",
+      "dim_3_t" : "Outros",
+      "ind_string" : "121,0",
+      "valor" : "121"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "1",
+      "dim_3_t" : "Pessoa singular",
+      "ind_string" : "12 614,0",
+      "valor" : "12614"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "3",
+      "dim_3_t" : "Empresa privada",
+      "ind_string" : "20 784,0",
+      "valor" : "20784"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "T",
+      "dim_3_t" : "Total",
+      "ind_string" : "33 560,0",
+      "valor" : "33560"
+    } ],
+    "2024" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "4",
+      "dim_3_t" : "Outros",
+      "ind_string" : "83,0",
+      "valor" : "83"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "2",
+      "dim_3_t" : "Organismo público",
+      "ind_string" : "135,0",
+      "valor" : "135"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "1",
+      "dim_3_t" : "Pessoa singular",
+      "ind_string" : "13 875,0",
+      "valor" : "13875"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "3",
+      "dim_3_t" : "Empresa privada",
+      "ind_string" : "21 278,0",
+      "valor" : "21278"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "T",
+      "dim_3_t" : "Total",
+      "ind_string" : "35 371,0",
+      "valor" : "35371"
+    } ],
+    "2025" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "2",
+      "dim_3_t" : "Organismo público",
+      "ind_string" : "52,0",
+      "valor" : "52"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "4",
+      "dim_3_t" : "Outros",
+      "ind_string" : "161,0",
+      "valor" : "161"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "1",
+      "dim_3_t" : "Pessoa singular",
+      "ind_string" : "14 591,0",
+      "valor" : "14591"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "3",
+      "dim_3_t" : "Empresa privada",
+      "ind_string" : "27 262,0",
+      "valor" : "27262"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "T",
+      "dim_3_t" : "Total",
+      "ind_string" : "42 066,0",
+      "valor" : "42066"
+    } ]
+  },
+  "Sucesso" : {
+    "Verdadeiro" : [ {
+      "Msg" : "OK"
+    } ]
+  }
+} ]

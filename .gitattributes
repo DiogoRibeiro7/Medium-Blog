@@ -89,3 +89,4 @@ backward-evaluation-pooling/**/*.gz -filter -diff -merge binary
 backward-evaluation-episode-end/**/*.csv -filter -diff -merge text
 backward-evaluation-episode-end/**/*.gz -filter -diff -merge binary
 backward-evaluation-episode-end/**/*.tsv -filter -diff -merge text
+portugal-building-ecosystem/**/*.csv -filter -diff -merge text
