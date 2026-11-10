@@ -1,7 +1,7 @@
 # A Dataset Is Not a Population — public research companion
 
 This directory contains the reproducible synthetic experiments supporting
-**A Dataset Is Not a Population**. The full [editorial manuscript](https://github.com/DiogoRibeiro7/research-articles-medium/blob/main/a-dataset-is-not-a-population/article.md)
+**A Dataset Is Not a Population**. The full [editorial manuscript](https://github.com/DiogoRibeiro7/research-articles-medium/blob/main/themes/statistics-for-data-scientists/a-dataset-is-not-a-population/article.md)
 is maintained privately, while [`article.md`](article.md) preserves the
 historical public path as a compatibility notice.
 

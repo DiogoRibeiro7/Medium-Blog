@@ -83,7 +83,7 @@ jobs:
           from pathlib import Path
 
           notice: str = Path("article.md").read_text(encoding="utf-8")
-          private_path: str = "research-articles-medium/blob/main/urban-affordability-cascade/article.md"
+          private_path: str = "research-articles-medium/blob/main/themes/housing/urban-affordability-cascade/article.md"
           assert private_path in notice, "Missing link to private manuscript"
           assert "not** the manuscript" in notice.lower(), "Missing compatibility-notice warning"
           assert len(notice.split()) < 200, "Public manuscript body was not removed"

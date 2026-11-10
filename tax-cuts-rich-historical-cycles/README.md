@@ -1,6 +1,6 @@
 # Tax Cuts at the Top — research companion
 
-This folder is the reproducible companion to **[Tax Cuts at the Top, Federal Finances and Inequality: U.S. Tax Reforms from 1964 to 2017](https://github.com/DiogoRibeiro7/research-articles-medium/blob/main/us-political-economy/09-tax-cuts-historical-cycles.md)**, a cross-era political-economy essay about top-income and corporate tax changes, the mechanisms through which private incentives may affect growth, and the fiscal and distributional consequences.
+This folder is the reproducible companion to **[Tax Cuts at the Top, Federal Finances and Inequality: U.S. Tax Reforms from 1964 to 2017](https://github.com/DiogoRibeiro7/research-articles-medium/blob/main/series/us-political-economy/09-tax-cuts-historical-cycles.md)**, a cross-era political-economy essay about top-income and corporate tax changes, the mechanisms through which private incentives may affect growth, and the fiscal and distributional consequences.
 
 ## Current state
 

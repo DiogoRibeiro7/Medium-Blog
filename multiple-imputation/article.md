@@ -1,5 +1,5 @@
 # Missing Data and Multiple Imputation: Thirteen Methods Compared on Census Wages and NHANES Blood Pressure
 
-> The full editorial manuscript is now maintained in the [private Medium article repository](https://github.com/DiogoRibeiro7/research-articles-medium/blob/main/multiple-imputation/article.md). Access requires permission from the repository owner.
+> The full editorial manuscript is now maintained in the [private Medium article repository](https://github.com/DiogoRibeiro7/research-articles-medium/blob/main/series/overcoming-data-challenges/part-02-multiple-imputation/article.md). Access requires permission from the repository owner.
 
 This public directory retains its research code, notebooks, figures, data and reproducibility materials where available. This short notice preserves the historical `article.md` path for existing links. It is **not** the manuscript.

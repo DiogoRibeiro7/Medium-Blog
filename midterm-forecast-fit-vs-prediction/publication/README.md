@@ -2,7 +2,7 @@
 
 The full manuscript for *The Forecast Is Not the Fit: Rebuilding an 89% Midterm
 Election Model* and its Medium-ready edition are maintained in the private
-[research-articles-medium repository](https://github.com/DiogoRibeiro7/research-articles-medium/tree/main/midterm-forecast-fit-vs-prediction).
+[research-articles-medium repository](https://github.com/DiogoRibeiro7/research-articles-medium/tree/main/series/midterm-2026-forecast).
 The editorial copies were verified before public [PR #563](https://github.com/DiogoRibeiro7/Medium-Blog/pull/563)
 replaced them with short archive notices.
 

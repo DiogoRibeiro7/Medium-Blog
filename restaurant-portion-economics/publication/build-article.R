@@ -10,7 +10,7 @@ if (length(args) != 1L || !nzchar(args[[1L]])) {
 }
 private_root <- normalizePath(args[[1L]], mustWork = TRUE)
 publication_root <- file.path(
-  private_root, "restaurant-portion-economics", "publication"
+  private_root, "themes", "operations-and-decisions", "restaurant-portion-economics"
 )
 section_names <- c(
   "00-question.md", "01-food-system.md", "02-evidence.md",
@@ -28,7 +28,7 @@ read_section <- function(path) {
 }
 article_text <- paste(vapply(sources, read_section, character(1L)),
                       collapse = "\n\n")
-output_path <- file.path(publication_root, "medium", "article.md")
+output_path <- file.path(publication_root, "article.md")
 dir.create(dirname(output_path), showWarnings = FALSE, recursive = TRUE)
 writeLines(enc2utf8(paste0(article_text, "\n")),
            output_path, useBytes = TRUE)

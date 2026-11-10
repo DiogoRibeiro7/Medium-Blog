@@ -2,7 +2,7 @@
 
 Article #33 of the Medium-Blog long-form series studies the gap between an
 evaluation number and a defensible generalization claim. The complete
-[editorial manuscript](https://github.com/DiogoRibeiro7/research-articles-medium/blob/main/the-test-set-is-not-an-oracle/article.md)
+[editorial manuscript](https://github.com/DiogoRibeiro7/research-articles-medium/blob/main/themes/statistics-for-data-scientists/the-test-set-is-not-an-oracle/article.md)
 is maintained privately; this public computational companion retains nine
 original seeded experiments, nine original figures, and eighteen CSV evidence
 tables. **Every observation, target, prediction, and experiment is synthetic.**
@@ -132,7 +132,7 @@ Finally, the adaptive experiment uses a **hypothetical oracle exposing exact
 accuracy after each query**. It does not access or attack a real benchmark,
 and coarsened, restricted, or private feedback behaves differently.
 
-The complete [private manuscript](https://github.com/DiogoRibeiro7/research-articles-medium/blob/main/the-test-set-is-not-an-oracle/article.md)
+The complete [private manuscript](https://github.com/DiogoRibeiro7/research-articles-medium/blob/main/themes/statistics-for-data-scientists/the-test-set-is-not-an-oracle/article.md)
 provides the extended derivations, historical source audit, and publication
 text. This public repository retains the code, original figures, evidence
 tables, notebook, and tests needed to reproduce the scientific findings.

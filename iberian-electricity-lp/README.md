@@ -26,7 +26,7 @@ iberian-lp publication --check-values  # verify scientific values, no article/te
 ```
 
 The full Medium article and former parameterized template are maintained in the private
-[research-articles-medium](https://github.com/DiogoRibeiro7/research-articles-medium/tree/main/iberian-electricity-lp/publication)
+[research-articles-medium](https://github.com/DiogoRibeiro7/research-articles-medium/tree/main/themes/operations-and-decisions/iberian-electricity-lp)
 repository. The [public notice](publication/article.md) preserves historical links. The
 publication command regenerates only numerical values and research figures, never the
 editorial text. Public tests validate the numerical claims, source provenance and generated

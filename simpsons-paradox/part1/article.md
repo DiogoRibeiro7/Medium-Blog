@@ -1,5 +1,5 @@
 # What the Classic Examples of Simpson's Paradox Actually Show: Yule, Simpson, Berkeley and the Kidney Stones, Recomputed With Their Uncertainty
 
-> The full editorial manuscript is now maintained in the [private Medium article repository](https://github.com/DiogoRibeiro7/research-articles-medium/blob/main/simpsons-paradox/part1/article.md). Access requires permission from the repository owner.
+> The full editorial manuscript is now maintained in the [private Medium article repository](https://github.com/DiogoRibeiro7/research-articles-medium/blob/main/series/simpsons-paradox/part-01-classic-tables/article.md). Access requires permission from the repository owner.
 
 This public directory retains its research code, notebooks, figures, data and reproducibility materials where available. This short notice preserves the historical `article.md` path for existing links. It is **not** the manuscript.

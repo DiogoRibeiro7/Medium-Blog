@@ -1,6 +1,6 @@
 # Stagflation, Disinflation and the Distribution of Adjustment Costs
 
-Reproducible companion for **[Stagflation, Disinflation and the Distribution of Adjustment Costs in the United States, 1970–1990](https://github.com/DiogoRibeiro7/research-articles-medium/blob/main/us-political-economy/05-stagflation-market-turn.md)**. This long-form Medium-ready essay follows [the civil-rights and Great Society article](../civil-rights-great-society/article.md) in the political-economic history series.
+Reproducible companion for **[Stagflation, Disinflation and the Distribution of Adjustment Costs in the United States, 1970–1990](https://github.com/DiogoRibeiro7/research-articles-medium/blob/main/series/us-political-economy/05-stagflation-market-turn.md)**. This long-form Medium-ready essay follows [the civil-rights and Great Society article](../civil-rights-great-society/article.md) in the political-economic history series.
 
 The complete editorial manuscript is maintained in the private `research-articles-medium` repository. The public code, source transcriptions, results, figures, and tests remain here for independent verification.
 

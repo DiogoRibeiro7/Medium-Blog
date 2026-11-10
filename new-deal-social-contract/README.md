@@ -1,6 +1,6 @@
 # The New Deal as Risk Insurance
 
-Reproducible companion for **[The New Deal as Risk Insurance: Banking, Work Relief, Social Security and Unequal Coverage, 1933–1938](https://github.com/DiogoRibeiro7/research-articles-medium/blob/main/us-political-economy/03-new-deal.md)**, a Medium-ready essay linking the Gilded Age and Progressive Era histories to the U.S. Great Depression and the New Deal.
+Reproducible companion for **[The New Deal as Risk Insurance: Banking, Work Relief, Social Security and Unequal Coverage, 1933–1938](https://github.com/DiogoRibeiro7/research-articles-medium/blob/main/series/us-political-economy/03-new-deal.md)**, a Medium-ready essay linking the Gilded Age and Progressive Era histories to the U.S. Great Depression and the New Deal.
 
 The complete editorial manuscript is maintained in the private `research-articles-medium` repository. The public code, source transcriptions, results, figures, and tests remain here for independent verification.
 

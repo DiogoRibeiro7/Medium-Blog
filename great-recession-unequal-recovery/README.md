@@ -1,6 +1,6 @@
 # Rescue and Recovery After 2008
 
-Public reproducibility companion for **[Rescue and Recovery After 2008: Financial Stabilisation, Unemployment, Housing and Wealth in the United States, 2007–2019](https://github.com/DiogoRibeiro7/research-articles-medium/blob/main/us-political-economy/07-great-recession.md)** in the [Medium-Blog research series](../ARTICLES.md). The complete editorial manuscript is maintained in the private `DiogoRibeiro7/research-articles-medium` repository; [article.md](article.md) is a migration notice. This companion follows [the pre-2008 globalization and credit study](../financialization-before-2008/).
+Public reproducibility companion for **[Rescue and Recovery After 2008: Financial Stabilisation, Unemployment, Housing and Wealth in the United States, 2007–2019](https://github.com/DiogoRibeiro7/research-articles-medium/blob/main/series/us-political-economy/07-great-recession.md)** in the [Medium-Blog research series](../ARTICLES.md). The complete editorial manuscript is maintained in the private `DiogoRibeiro7/research-articles-medium` repository; [article.md](article.md) is a migration notice. This companion follows [the pre-2008 globalization and credit study](../financialization-before-2008/).
 
 The analytical interval ends **31 December 2019**, before COVID-19. The first **seven publication figures** use original public institutional observations. The **eighth** is a clearly labeled hypothetical bank-capital identity. None estimates a causal policy effect, default probability, or bank-specific solvency.
 
