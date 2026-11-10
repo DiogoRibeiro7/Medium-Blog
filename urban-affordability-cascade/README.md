@@ -1312,3 +1312,23 @@ These outputs are generated evidence, not the full private editorial manuscript.
 The deletion extrema and margins are **not jackknife confidence intervals,
 statistical significance, independent replications, observed residential
 movements or causal estimates**.
+
+## Independent INE commuting-source audit (source verification pending)
+
+The pinned 2021 work/study interaction matrix remains a **third-party
+Census-derived extract**; independent re-fetching from INE has not yet been
+completed. The [INE source reconciliation protocol](INE_COMMUTING_RECONCILIATION.md)
+identifies the cited Census indicator **0012340** and documents the operator
+review needed to independently verify the 17-municipality matrix.
+
+The offline validator `ine_commuting_reconciliation.py` checks the SHA-256
+of an operator-provided official response, declared indicator and geography,
+one-to-one mapping of source territorial codes to the fixed 17 DICO
+municipalities, all 289 local pair views (including 17 diagonals),
+symmetry and nonnegative unsuppressed counts. It compares the resulting
+136 undirected municipal pairs with the checksummed source derivative
+and reports any differences without replacing original study inputs.
+
+Unit tests use **synthetic INE-shaped fixtures**, not a live INE fetch.
+No source match has been independently established, and these interactions
+are **not directed residential mobility observations**.
