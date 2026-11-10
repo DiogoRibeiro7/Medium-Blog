@@ -1,0 +1,77 @@
+Part 1 numbers: a history of late data in four fields
+
+== A. Insurance: Taylor-Ashe run-off triangle, chain ladder in SQL, Mack (1993) standard errors
+  cells observed 55 of 100; accident years 1-10
+  development factors f_k (k = 1..9): 3.4906, 1.7473, 1.4574, 1.1739, 1.1038, 1.0863, 1.0539, 1.0766, 1.0177
+  accident year  1: latest    3,901,463 at development year 10; ultimate    3,901,463; reserve           0; Mack s.e.          0 (    -)
+  accident year  2: latest    5,339,085 at development year  9; ultimate    5,433,719; reserve      94,634; Mack s.e.     75,535 (79.8%)
+  accident year  3: latest    4,909,315 at development year  8; ultimate    5,378,826; reserve     469,511; Mack s.e.    121,699 (25.9%)
+  accident year  4: latest    4,588,268 at development year  7; ultimate    5,297,906; reserve     709,638; Mack s.e.    133,549 (18.8%)
+  accident year  5: latest    3,873,311 at development year  6; ultimate    4,858,200; reserve     984,889; Mack s.e.    261,406 (26.5%)
+  accident year  6: latest    3,691,712 at development year  5; ultimate    5,111,171; reserve   1,419,459; Mack s.e.    411,010 (29.0%)
+  accident year  7: latest    3,483,130 at development year  4; ultimate    5,660,771; reserve   2,177,641; Mack s.e.    558,317 (25.6%)
+  accident year  8: latest    2,864,498 at development year  3; ultimate    6,784,799; reserve   3,920,301; Mack s.e.    875,328 (22.3%)
+  accident year  9: latest    1,363,294 at development year  2; ultimate    5,642,266; reserve   4,278,972; Mack s.e.    971,258 (22.7%)
+  accident year 10: latest      344,014 at development year  1; ultimate    4,969,825; reserve   4,625,811; Mack s.e.  1,363,155 (29.5%)
+  total: latest 34,358,090; ultimate 53,038,946; reserve 18,680,856 (35.2% of the ultimate still to come)
+  total reserve Mack s.e. 2,447,095 (13.1% of the reserve)
+  latest accident year: known 344,014 is 6.9% of its projected ultimate
+  Mack (1993), Tables 2-3: total reserve 18,681 (in 1000s), s.e. 13%; by year 95, 470, 710, 985, 1,419, 2,178, 3,920, 4,279, 4,626 with s.e. 80%, 26%, 19%, 27%, 29%, 26%, 22%, 23%, 29%
+
+== B. Epidemiology: HUS cases of the STEC O104:H4 outbreak, Germany 2011
+  cases 630; hospitalized 2011-05-07 to 2011-07-04; reported 2011-05-18 to 2011-07-05
+  delay hospitalization -> report (days): mean 7.4; quartiles 4, 7, 10; at the 15-day cap 71 (11.3%); within 3 days 17.8%
+  hospitalized in week 2011-05-09 to 2011-05-15:  18 cases, median delay 11.5 days
+  hospitalized in week 2011-05-16 to 2011-05-22: 220 cases, median delay 7.0 days
+  hospitalized in week 2011-05-23 to 2011-05-29: 253 cases, median delay 6.0 days
+  hospitalized in week 2011-05-30 to 2011-06-05:  86 cases, median delay 5.0 days
+  hospitalized in week 2011-06-06 to 2011-06-12:  22 cases, median delay 4.5 days
+  hospitalized in week 2011-06-13 to 2011-06-19:  15 cases, median delay 6.0 days
+  final epidemic curve: peak 2011-05-21 with 66 cases
+  as known on 2011-05-24: highest day 2011-05-19 with 6; last 7 days 17 known against 286 eventually (6%)
+  as known on 2011-05-28: highest day 2011-05-21 with 41; last 7 days 73 known against 276 eventually (26%)
+  as known on 2011-05-31: highest day 2011-05-21 with 52; last 7 days 71 known against 201 eventually (35%)
+  as known on 2011-06-04: highest day 2011-05-21 with 56; last 7 days 37 known against 99 eventually (37%)
+  chain-ladder nowcast (time-homogeneous delays), split at estimated completeness 50%:
+    2011-05-28: 7 latest days at >= 50%: known 40, nowcast 65, final 47; 11 newest days below 50%: known 170, nowcast 1886, final 425
+    2011-05-31: 7 latest days at >= 50%: known 184, nowcast 296, final 220; 9 newest days below 50%: known 125, nowcast 894, final 296
+    2011-06-02: 7 latest days at >= 50%: known 232, nowcast 318, final 316; 8 newest days below 50%: known 61, nowcast 207, final 174
+    2011-06-05: 7 latest days at >= 50%: known 184, nowcast 252, final 253; 7 newest days below 50%: known 25, nowcast 79, final 86
+    2011-06-08: 7 latest days at >= 50%: known 134, nowcast 187, final 168; 7 newest days below 50%: known 21, nowcast 131, final 41
+
+== C. Temporal databases: one bitemporal price table
+  rows 5; orders 6
+  price on 20 Feb, as known on 20 Feb: 10.00
+  price on 20 Feb, as known on 1 Apr: 11.50
+  price on 5 Mar, as known on 5 Mar: 12.00
+  price on 5 Mar, as known on 1 Apr: 11.50
+  order 1 (2026-01-20, 100 units): billed 10.00, due 10.00, restatement +0.00
+  order 2 (2026-02-10, 80 units): billed 10.00, due 10.00, restatement +0.00
+  order 3 (2026-02-20, 120 units): billed 10.00, due 11.50, restatement +180.00
+  order 4 (2026-03-05, 90 units): billed 12.00, due 11.50, restatement -45.00
+  order 5 (2026-03-18, 60 units): billed 12.00, due 11.50, restatement -30.00
+  order 6 (2026-03-25, 110 units): billed 11.50, due 11.50, restatement +0.00
+  total billed 6,065.00; total due on 1 Apr knowledge 6,170.00; difference +105.00
+
+== D. Data warehouses: Type 1 against Type 2 dimensions, 2024 revenue by region
+  customers 2000; dimension rows 2515; customers who moved at least once 446 (22.3%); sales 24118
+  East : Type 2  146,075.00; Type 1 run 2025-01-05  147,103.58 (+0.7%); Type 1 rerun 2026-01-05  154,125.13 (+5.5%); change between the two Type 1 runs +7,021.55
+  North: Type 2  171,160.29; Type 1 run 2025-01-05  168,826.85 (-1.4%); Type 1 rerun 2026-01-05  170,926.26 (-0.1%); change between the two Type 1 runs +2,099.41
+  South: Type 2  152,125.77; Type 1 run 2025-01-05  150,525.34 (-1.1%); Type 1 rerun 2026-01-05  147,785.29 (-2.9%); change between the two Type 1 runs -2,740.05
+  West : Type 2  173,046.52; Type 1 run 2025-01-05  175,951.81 (+1.7%); Type 1 rerun 2026-01-05  169,570.90 (-2.0%); change between the two Type 1 runs -6,380.91
+  total 2024 revenue 642,407.58 under all three (Type 1 moves revenue between regions, not in or out)
+  revenue attributed to a different region by the 2026 Type 1 rerun: 8,050.13 (1.3% of the total)
+
+== E. Stream processing: event time, processing time, watermark, triggers
+  12 elements, total 60; two-minute event-time windows; watermark = largest event time seen - 30 s; allowed lateness 120 s
+  out of order by more than a minute: 6 (event 70 s, arrival 250 s), 9 (event 100 s, arrival 380 s)
+  true sums by event-time window: {0: 20, 1: 22, 2: 5, 3: 13}
+  sums by processing-time window (arrival): {0: 5, 1: 14, 2: 19, 3: 18, 4: 4}
+  pane window 0 on time at 170 s: discarding 5; accumulating 5; accumulating & retracting 5
+  pane window 0 late    at 250 s: discarding 6; accumulating 11; accumulating & retracting retract -5 then 11
+  pane window 1 on time at 300 s: discarding 22; accumulating 22; accumulating & retracting 22
+  pane window 2 on time at 400 s: discarding 5; accumulating 5; accumulating & retracting 5
+  pane window 3 final   at end of input: discarding 13; accumulating 13; accumulating & retracting 13
+  dropped as too late: 9 (event 100 s, arrival 380 s)
+  downstream sum of panes per window: discarding {0: 11, 1: 22, 2: 5, 3: 13}; accumulating {0: 16, 1: 22, 2: 5, 3: 13}; accumulating & retracting {0: 11.0, 1: 22.0, 2: 5.0, 3: 13.0}
+  speed layer (on-time panes only) {0: 5, 1: 22, 2: 5, 3: 13}; batch layer recomputed from the full log {0: 20, 1: 22, 2: 5, 3: 13}
