@@ -90,20 +90,26 @@ def fig1():
 def fig2():
     g = gains()
     e = g[g.scheme == "E"].groupby(["domain", "family", "dist"]).ll.mean()
-    fig, axes = plt.subplots(1, 2, figsize=(12, 4.2))
+    fig, axes = plt.subplots(1, 2, figsize=(12, 3.8))
     for ax, dom in zip(axes, common.DOMAINS):
-        x = np.arange(len(FAMILIES))
-        for k, (dist, col, lab) in enumerate((("gauss", ORANGE, "Gaussian"), ("t", BLUE, "Student-t(5)"))):
+        y = np.arange(len(FAMILIES))[::-1]
+        for dist, col, mk, lab in (("gauss", ORANGE, "o", "Gaussian"), ("t", BLUE, "D", "Student-t(5)")):
             v = [e[(dom, f, dist)] for f in FAMILIES]
-            ax.bar(x + (k - 0.5) * 0.36, v, width=0.34, color=col, label=lab)
-        ax.set_xticks(x, [FAM_LABEL[f] for f in FAMILIES])
+            ax.scatter(v, y, color=col, marker=mk, s=60, label=lab, zorder=3)
+            for xi, yi in zip(v, y):
+                ax.text(xi, yi + 0.22, f"{xi:.2f}", ha="center", fontsize=8, color=col)
+        for yi, f in zip(y, FAMILIES):
+            ax.plot([e[(dom, f, "gauss")], e[(dom, f, "t")]], [yi, yi], color=GRID, lw=2, zorder=1)
+        ax.set_yticks(y, [FAM_LABEL[f] for f in FAMILIES])
+        ax.set_ylim(-0.6, len(FAMILIES) - 0.3)
         ax.set_title(DOM_LABEL[dom], loc="left")
-        ax.set_ylabel("mean log loss, expanding window\n(nats per day; lower is better)")
-        ax.grid(axis="y", color=GRID, lw=0.6)
-        ax.legend(frameon=False, fontsize=8)
+        ax.set_xlabel("mean log loss, expanding window (nats per day; left is better)")
+        ax.grid(axis="x", color=GRID, lw=0.6)
+    h, lab = axes[0].get_legend_handles_labels()
+    fig.legend(h, lab, frameon=False, fontsize=8, loc="lower center", ncol=2)
     fig.suptitle("Which model family forecasts best, before any window rule", x=0.01, ha="left", fontsize=11, fontweight="bold")
     credit(fig)
-    fig.tight_layout(rect=(0, 0.02, 1, 0.94))
+    fig.tight_layout(rect=(0, 0.07, 1, 0.93))
     save(fig, "fig2_model_families.png")
 
 
@@ -123,7 +129,7 @@ def fig3():
         ax.axvline(0, color=INK, lw=0.8)
         ax.set_yticks(y, [FAM_LABEL[f] for f in FAMILIES])
         ax.set_title(DOM_LABEL[dom], loc="left")
-        ax.set_xlabel("mean gain over the expanding window (nats per day, ±1.96 se across series)")
+        ax.set_xlabel("mean gain over the expanding window (nats per day, ±1.96 se)")
         ax.grid(axis="x", color=GRID, lw=0.6)
     axes[0].legend(frameon=False, fontsize=8, loc="best")
     fig.suptitle("Window rules against the expanding window, Student-t distributions", x=0.01, ha="left",
@@ -153,16 +159,19 @@ def fig4():
             ax.scatter(np.full(len(d), p) + np.random.default_rng(0).uniform(-0.18, 0.18, len(d)), d, s=4, color=c, alpha=0.5)
             ax.scatter([p], [d.mean()], marker="D", color=INK, s=22, zorder=4)
         ax.axhline(0, color=INK, lw=0.8)
-        ax.set_xticks(pos, [FAM_LABEL[f].replace(" ", "\n") for _ in common.DOMAINS for f in FAMILIES], fontsize=8)
+        short = {"AR": "AR", "SLM": "seasonal", "ETS": "ETS", "GBM": "boosting"}
+        ax.set_xticks(pos, [short[f] for _ in common.DOMAINS for f in FAMILIES], fontsize=8)
         ax.set_title(lab, loc="left")
         ax.grid(axis="y", color=GRID, lw=0.6)
-        ax.text(1.5, 1.0, "electricity", transform=ax.get_xaxis_transform(), ha="center", va="bottom", fontsize=9, color=BLUE)
-        ax.text(6.5, 1.0, "page views", transform=ax.get_xaxis_transform(), ha="center", va="bottom", fontsize=9, color=ORANGE)
+        ax.text(1.5, -0.13, "electricity, 25 countries", transform=ax.get_xaxis_transform(), ha="center", va="top",
+                fontsize=9, color=BLUE)
+        ax.text(6.5, -0.13, "page views, 304 articles", transform=ax.get_xaxis_transform(), ha="center", va="top",
+                fontsize=9, color=ORANGE)
     axes[0].set_ylabel("difference in gain, series by series\n(nats per day; > 0: pooling better; diamond = mean)")
     fig.suptitle("F1: pooling over window lengths against the backward rules, Student-t distributions", x=0.01, ha="left",
                  fontsize=11, fontweight="bold")
     credit(fig)
-    fig.tight_layout(rect=(0, 0.02, 1, 0.92))
+    fig.tight_layout(rect=(0, 0.04, 1, 0.94))
     save(fig, "fig4_f1_pooling.png")
 
 
@@ -184,17 +193,18 @@ def fig5():
         ax.bar(xx - 0.2, removed, width=0.38, color=VIOLET, label="share of the plain rule's losses removed")
         ax.bar(xx + 0.2, kept, width=0.38, color=AQUA, label="share of the plain rule's gains kept")
         ax.axhline(50, color=INK, lw=0.8, ls=(0, (3, 2)))
-        ax.text(len(labels) - 0.5, 52, "pre-registered bar: 50%", ha="right", fontsize=8, color=INK2)
+        ax.text(-0.6, 54, "pre-registered bar: 50%", ha="left", fontsize=8, color=INK2)
         ax.set_xticks(xx, labels, rotation=0, fontsize=8)
         ax.set_title(title, loc="left")
         ax.grid(axis="y", color=GRID, lw=0.6)
     axes[0].set_ylabel("percent")
-    axes[0].legend(frameon=False, fontsize=8, loc="upper left")
+    h, lab = axes[0].get_legend_handles_labels()
+    fig.legend(h, lab, frameon=False, fontsize=8, loc="lower center", ncol=2)
     _ = c
     fig.suptitle("F2: what the end-of-episode check (c = 0) does to the plain rule's losses and gains", x=0.01, ha="left",
                  fontsize=11, fontweight="bold")
     credit(fig)
-    fig.tight_layout(rect=(0, 0.02, 1, 0.93))
+    fig.tight_layout(rect=(0, 0.07, 1, 0.93))
     save(fig, "fig5_f2_check.png")
 
 

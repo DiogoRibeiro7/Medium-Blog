@@ -1,0 +1,40 @@
+Descriptive summaries derived from series_gains.csv, decisions.csv and periods_mean.csv.
+
+Share of series (Student-t / Gaussian): AveW > B; AveW > C0; C0 > B; series with B = E (walk never stopped)
+  elec AR: t: 80%, 84%, 20%, 2 of 25 | gauss: 92%, 92%, 12%, 14 of 25
+  elec SLM: t: 80%, 80%, 56%, 2 of 25 | gauss: 88%, 88%, 12%, 14 of 25
+  elec ETS: t: 76%, 72%, 44%, 2 of 25 | gauss: 88%, 88%, 12%, 14 of 25
+  elec GBM: t: 72%, 64%, 52%, 2 of 25 | gauss: 68%, 68%, 12%, 14 of 25
+  web AR: t: 84%, 93%, 49%, 0 of 304 | gauss: 97%, 99%, 58%, 0 of 304
+  web SLM: t: 100%, 100%, 86%, 0 of 304 | gauss: 99%, 100%, 77%, 0 of 304
+  web ETS: t: 90%, 96%, 69%, 0 of 304 | gauss: 98%, 98%, 64%, 0 of 304
+  web GBM: t: 100%, 100%, 99%, 0 of 304 | gauss: 100%, 100%, 91%, 0 of 304
+
+The check (c = 0) under each distribution: series where B loses / gains, share of losses removed, share of gains kept
+  elec AR: gauss: 7/4, -133% removed, 102% kept | t: 8/15, 29% removed, 64% kept
+  elec SLM: gauss: 9/2, 49% removed, 100% kept | t: 18/5, 83% removed, 74% kept
+  elec ETS: gauss: 8/3, -50% removed, 103% kept | t: 18/5, 42% removed, 81% kept
+  elec GBM: gauss: 9/2, 13% removed, -127% kept | t: 20/3, 31% removed, 57% kept
+  web AR: gauss: 186/118, 30% removed, 89% kept | t: 105/199, 60% removed, 78% kept
+  web SLM: gauss: 242/62, 41% removed, 86% kept | t: 253/51, 48% removed, 85% kept
+  web ETS: gauss: 213/91, 33% removed, 90% kept | t: 194/110, 44% removed, 72% kept
+  web GBM: gauss: 284/20, 41% removed, 70% kept | t: 304/0, 42% removed, nan% kept
+
+Decisions by year: share of series-decisions where the walk stopped / where the check (c = 0) switched
+  elec t: 2017 25/12; 2018 26/3; 2019 59/14; 2020 64/11
+  elec gauss: 2017 6/3; 2018 7/4; 2019 16/3; 2020 27/1
+  web t: 2017 25/14; 2018 27/12; 2019 54/19; 2020 68/19; 2021 99/37; 2022 99/32; 2023 100/37; 2024 100/38; 2025 100/28; 2026 100/39
+  web gauss: 2017 9/5; 2018 13/6; 2019 26/10; 2020 42/13; 2021 82/29; 2022 84/23; 2023 92/22; 2024 94/26; 2025 90/22; 2026 93/19
+
+Blocks back at which the walk stopped (share of stopped decisions), Student-t
+  elec: 1 block 44%; 2 blocks 25%; 3 blocks 27%; 4 blocks 4%
+  web: 1 block 64%; 2 blocks 23%; 3 blocks 8%; 4 blocks 3%; 5 blocks 2%; 6 blocks 0%; 7 blocks 0%; 8 blocks 0%
+
+Electricity, seasonal linear model, Student-t: gain over E by 91-day period (mean across series), from 2019
+  2019-02-21: B -0.0008; C0 +0.0105; P0.25 +0.0048; AveW +0.0173
+  2019-05-23: B -0.0270; C0 -0.0031; P0.25 +0.0080; AveW +0.0107
+  2019-08-22: B +0.0083; C0 +0.0071; P0.25 +0.0060; AveW +0.0135
+  2019-11-21: B -0.0819; C0 +0.0119; P0.25 +0.0151; AveW +0.0208
+  2020-02-20: B -0.1321; C0 -0.0387; P0.25 -0.0034; AveW -0.0375
+  2020-05-21: B -0.0018; C0 +0.0032; P0.25 +0.0083; AveW +0.0093
+  2020-08-20: B +0.0088; C0 +0.0092; P0.25 +0.0135; AveW +0.0192
