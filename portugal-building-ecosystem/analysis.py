@@ -341,13 +341,72 @@ def section_b(rep: Report, ratios: list[dict], firms: pd.DataFrame, persons: pd.
     rep("note: 2020 and 2021 come from different SBS regulations; the 2021 totals match the INE counts for the same year")
     size = pd.DataFrame(rows)
     size.to_csv(RESULTS / "firm_size.csv", index=False)
+
+    rep.h("B3. Paid employees and unpaid persons (Eurostat SBS; employees V16130 to 2020, SAL_NR from 2021)")
+    tot_old = old[old.size_emp == "TOTAL"].pivot_table(index="year", columns=["nace_r2", "indic_sb"], values="value")
+    tot_new = eurostat("sbs_size_construction_2021")
+    tot_new = tot_new[tot_new.size_emp == "TOTAL"].pivot_table(index="year", columns=["nace_r2", "indic_sbs"], values="value")
+    emp_rows = []
+    for nace, label in (("F411", "developers"), ("F412", "building contractors"), ("F43", "specialised trades")):
+        employees = pd.concat([tot_old[(nace, "V16130")].loc[:2020], tot_new[(nace, "SAL_NR")]])
+        persons = pd.concat([tot_old[(nace, "V16110")].loc[:2020], tot_new[(nace, "EMP_NR")]])
+        unpaid_share = 1 - employees / persons
+        d = recovered_share(employees, 2008)
+        rep.r(f"{nace} {label}, paid employees", d)
+        rep(f"{nace} {label}: share of persons employed who are not paid employees (owners, family) 2008 {unpaid_share.loc[2008]:.1%}; "
+            f"2020 {unpaid_share.loc[2020]:.1%}; {int(unpaid_share.index.max())} {unpaid_share.iloc[-1]:.1%}")
+        if nace in ("F412", "F43"):
+            ratios.append({"layer": "B firms", "series": f"{label}, paid employees", **d})
+        for y in employees.index:
+            emp_rows.append({"nace": nace, "year": y, "persons_employed": persons.loc[y], "employees": employees.loc[y]})
+    pd.DataFrame(emp_rows).to_csv(RESULTS / "firm_employees.csv", index=False)
+
+    rep.h("B4. One-person firms (Eurostat sbs_sc_ovw, enterprises with 0 or 1 person employed; no comparable class before 2021)")
+    ovw = eurostat("sbs_size_construction_2021")
+    ent = ovw[ovw.indic_sbs == "ENT_NR"].pivot_table(index=["nace_r2", "year"], columns="size_emp", values="value")
+    for nace in ("F411", "F412", "F43"):
+        e = ent.loc[nace]
+        rep(f"{nace}: enterprises with 0-1 persons " + "; ".join(
+            f"{y} {e.loc[y, '0_1']:,.0f} of {e.loc[y, 'TOTAL']:,.0f} ({e.loc[y, '0_1'] / e.loc[y, 'TOTAL']:.1%})" for y in e.index))
+        rep(f"{nace}: growth in enterprises 2021-{int(e.index.max())}: total {e.iloc[-1]['TOTAL'] - e.iloc[0]['TOTAL']:+,.0f}, "
+            f"of which 0-1 persons {e.iloc[-1]['0_1'] - e.iloc[0]['0_1']:+,.0f} "
+            f"({(e.iloc[-1]['0_1'] - e.iloc[0]['0_1']) / (e.iloc[-1]['TOTAL'] - e.iloc[0]['TOTAL']):.0%})")
     return {"size": size}
 
 
 def section_c(rep: Report, ratios: list[dict], firms, persons, production, cost_a) -> dict:
     out: dict = {}
-    rep.h("C1. Developers (CAE 41.10, INE SCIE)")
     deflator = cost_a["total"] / cost_a.loc[2008, "total"]
+    rep.h("B5. Production of contractors and trades, nominal and at 2008 construction costs (INE SCIE, deflated by INE 0011748)")
+    for code, label in (("41200", "building contractors"), ("43", "specialised trades")):
+        nominal = production[code] / 1e6
+        real = nominal / deflator.reindex(production.index)
+        dn = recovered_share(nominal, 2008)
+        dr = recovered_share(real, 2008)
+        rep.r(f"{label} production, EUR million (nominal)", dn)
+        rep.r(f"{label} production, EUR million at 2008 construction costs", dr)
+        ratios.append({"layer": "B firms", "series": f"{label}, production (real)", **dr})
+        pr = real / (persons[code] / 1000)
+        vol_code = {"41200": "F41", "43": "F43"}[code]
+        vol = eurostat("construction_volume")
+        vol = vol[vol.nace_r2 == vol_code].set_index("year")["value"].sort_index()
+        dv = recovered_share(vol, 2008, int(production.index.max()))
+        rep.r(f"{label}: Eurostat volume index of production in construction, {vol_code} (2021 = 100)", dv, 1)
+        rep(f"{label}: ratio of the two real measures in {int(production.index.max())}, deflated accounts / volume index: "
+            f"{dr['last_over_ref'] / dv['last_over_ref']:.2f}")
+        rep(f"{label}: real production per person employed, EUR thousand at 2008 costs: 2008 {pr.loc[2008]:.1f}; "
+            f"{int(pr.index.max())} {pr.iloc[-1]:.1f} ({pr.iloc[-1] / pr.loc[2008] - 1:+.1%})")
+
+    rep.h("B6. Real value added in construction, national accounts (chain-linked volumes, EUR million at 2020 prices)")
+    gva = eurostat("na_value_added_volume").set_index("year")["value"].sort_index()
+    for ref in (2002, 2008):
+        d = recovered_share(gva, ref)
+        rep.r(f"construction value added (volume), ref {ref}", d)
+        ratios.append({"layer": "B firms", "series": "construction value added (national accounts, volume)", **d})
+    rep("the short-term volume index (B5) and the national accounts disagree: the index puts building construction far lower; "
+        "the national accounts are the reference measure of real output")
+
+    rep.h("C1. Developers (CAE 41.10, INE SCIE)")
     real = production["41100"] / deflator.reindex(production.index)
     for label, s in (("enterprises", firms["41100"]), ("persons employed", persons["41100"]),
                      ("production, EUR million (nominal)", production["41100"] / 1e6),
@@ -515,6 +574,26 @@ def main() -> None:
     section_b(rep, ratios, firms, persons)
     section_c(rep, ratios, firms, persons, production, a["cost_a"])
     section_d(rep, ratios, firms, persons, production)
+
+    rep.h("P. Workers posted abroad by Portuguese employers (PD A1 certificates; figures transcribed from published reports)")
+    post = pd.read_csv(DATA / "posting_pd_a1_portugal.csv")
+    pv = post.set_index(["year", "measure"])["value"]
+    total23 = pv.loc[(2023, "pd_a1_issued_by_portugal_total")]
+    share_c = pv.loc[(2023, "article12_share_construction")]
+    days = pv.loc[(2023, "eu_mean_duration_article12_days")]
+    rep(f"PDs A1 issued by Portugal: 2022 {pv.loc[(2022, 'pd_a1_issued_by_portugal_total')]:,.0f}; 2023 {total23:,.0f} (all articles)")
+    rep(f"share of Portugal's Article 12 certificates for construction, 2023: {share_c:.0%}; for industry: {pv.loc[(2023, 'article12_share_industry')]:.0%}; "
+        f"to France, Belgium and Spain: {pv.loc[(2023, 'article12_share_france_belgium_spain')]:.0%}")
+    rep(f"Brazilian workers posted from Portugal to Belgium, 2023: {pv.loc[(2023, 'brazilians_posted_from_portugal_to_belgium')]:,.0f}")
+    upper_docs = total23 * share_c
+    rep(f"upper bound on construction posting certificates, 2023 (all certificates treated as Article 12): {upper_docs:,.0f}")
+    rep(f"  as full-year workers if every certificate lasted a full year (upper bound): {upper_docs:,.0f}")
+    rep(f"  as full-year workers at the EU mean duration of {days:.0f} days: {upper_docs * days / 365:,.0f}")
+    gap24 = tri.loc[2024, "business_statistics"] - tri.loc[2024, "labour_force_survey"]
+    rep(f"against the 2024 gap between business statistics and the LFS ({gap24 * 1000:,.0f}): at most {upper_docs / (gap24 * 1000):.0%}; "
+        f"at the EU mean duration {upper_docs * days / 365 / (gap24 * 1000):.0%}")
+    rep("caveats: certificates count postings, not people; the duration is the EU mean, not Portugal's; postings outside the EU/EFTA "
+        "(for example to Angola or Mozambique) need no certificate and are not counted")
 
     rep.h("E. Recovered share of the loss, every layer on one scale (R = (last - trough) / (ref - trough))")
     rt = pd.DataFrame(ratios)

@@ -29,13 +29,19 @@ Labour Force Survey is consistent, and that `analysis.py` reproduces the pinned 
 | Layer | Series | Source |
 |---|---|---|
 | Skills | employment in construction (1995–2025); age structure against all industries (1993–2025); occupations (ISCO-08); education of employees; graduates in architecture and construction; labour and materials cost of new housing; pay relative to the economy | Eurostat `nama_10_a64_e`, `nama_10_a64`, `lfsa_egana2d`, `lfsa_egana`, `lfsa_egan2`, `lfsa_eisn2`, `edat_lfs_9910`, `educ_uoe_grad02`, `lc_lci_r2_a`; INE 0011748 |
-| Firms | enterprises, persons employed and production by CAE Rev. 3 subclass (2008–2024); enterprises by employment size class (2008–2024) | INE 0008466, 0008467, 0008475, 0013838, 0013839, 0013847; Eurostat `sbs_sc_con_r2`, `sbs_sc_ovw` |
+| Firms | enterprises, persons employed and production by CAE Rev. 3 subclass (2008–2024); enterprises, paid employees and unpaid persons by employment size class, including one-person firms from 2021; production at 2008 construction costs; real value added in construction (1995–2025); the short-term volume index of construction | INE 0008466, 0008467, 0008475, 0013838, 0013839, 0013847; Eurostat `sbs_sc_con_r2`, `sbs_sc_ovw`, `nama_10_a64`, `sts_copr_a` |
+| Posting | A1 certificates issued by Portugal (2022–2023), the share of postings in construction and their destinations, transcribed from published reports into `data/posting_pd_a1_portugal.csv` with source and page | European Labour Authority (2025); De Wispelaere, De Smedt and Pacolet (2025) |
 | Promoters | developers (CAE 41.10); dwellings licensed by promoter (2002–2025) and completed by promoter (2011–2025); houses and apartment buildings licensed; completions (2004–2025) | INE 0008466-0013847 (41.10), 0013236, 0013249, 0013235, 0013244, 0013245, 0012778 |
 | Sellers | agencies (68.31.1), finders (68.31.2), buying and selling own property (68.10), renting (68.20); housing transactions (2009–2025) | INE SCIE indicators above, 0012787 |
 
 Section M of the summary compares three counts of the same workforce (national accounts, Labour
 Force Survey, firms' accounts). They agree in 2008 and diverge by about 100,000 people by 2024,
 which matters for anything said about who is building.
+
+Section P bounds how much of that gap could be workers posted abroad by Portuguese employers: they
+stay on Portuguese payrolls, so firms' accounts count them and their output, while the household survey
+counts only people living in Portugal. The bound uses certificates, not people, and the EU-wide mean
+posting duration, so it is a range, not an estimate.
 
 Section E puts every layer on one scale, the share of the 2008 (and, where available, 2002) level
 that exists in the latest year, and the recovered share of the loss
@@ -54,7 +60,16 @@ that exists in the latest year, and the recovered share of the loss
 - The Labour Force Survey has breaks in 2011 and 2021 and small samples for workers under 25
   after 2012. It counts households, and recent migrants are hard to reach in household surveys.
 - Production is deflated with INE's construction cost index for new housing; nominal values are
-  also reported.
+  also reported. The national accounts' value added in chain-linked volumes is the reference measure
+  of real output for the sector as a whole. Eurostat's short-term volume index of construction puts
+  building construction far lower (37% of its 2008 level in 2024) and disagrees with the national
+  accounts; it is reported in the summary but not used.
+- Firms' accounts include workers posted abroad and the work they do there. Persons employed and
+  production in the business statistics therefore measure the capacity of Portuguese firms, not the
+  capacity available to build in Portugal.
+- From 2021 the size classes separate firms with 0 or 1 person employed. In 2024 they were 59% of
+  building contractors and 72% of trade firms, and most of the growth in the number of firms since 2021.
+  No comparable class exists before 2021.
 
 ## Data
 

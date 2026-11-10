@@ -16,15 +16,18 @@ Raw responses go to ``data/raw/`` unchanged, tidy long tables to ``data/<name>.c
 Eurostat datasets:
 
 - ``nama_10_a64_e``  employment in construction, national accounts (persons, employees, self-employed)
-- ``nama_10_a64``    compensation of employees, construction and all industries
+- ``nama_10_a64``    compensation of employees, construction and all industries; value added in
+                     construction in chain-linked volumes
 - ``lfsa_egan2``     employed persons by age, construction (section F) and all industries (2008-)
 - ``lfsa_egana2d``   employed persons by age, NACE Rev. 1.1 division 45 (1992-2008)
 - ``lfsa_eisn2``     employed persons in construction by occupation (ISCO-08)
 - ``edat_lfs_9910``  employees in construction by educational attainment
 - ``educ_uoe_grad02`` graduates in architecture and construction (ISCED-F 073) by level
 - ``lc_lci_r2_a``    labour cost index, construction and the business economy
-- ``sbs_sc_con_r2``  construction enterprises by employment size class, NACE classes (2008-2020)
-- ``sbs_sc_ovw``     the same from 2021 onwards (new SBS regulation)
+- ``sts_copr_a``     volume index of production in construction (buildings, specialised trades)
+- ``sbs_sc_con_r2``  construction enterprises, persons employed, employees and unpaid persons by
+                     employment size class, NACE classes (2008-2020)
+- ``sbs_sc_ovw``     the same from 2021 onwards (new SBS regulation), including one-person firms
 - ``lfsa_egana``     employed persons by age, all industries (1992-2008), the benchmark before 2008
 
 INE indicators:
@@ -86,6 +89,10 @@ EUROSTAT_REQUESTS: dict[str, tuple[str, list[dict[str, str]]]] = {
         "nama_10_a64",
         [{"nace_r2": "F,TOTAL", "unit": "CP_MEUR", "na_item": "D1"}, {"nace_r2": "F,TOTAL", "na_item": "D1"}],
     ),
+    "na_value_added_volume": (
+        "nama_10_a64",
+        [{"nace_r2": "F", "unit": "CLV20_MEUR", "na_item": "B1G"}, {"nace_r2": "F", "na_item": "B1G"}],
+    ),
     "na_employees_total": (
         "nama_10_a64_e",
         [{"nace_r2": "TOTAL", "unit": "THS_PER", "na_item": "SAL_DC"}],
@@ -116,11 +123,16 @@ EUROSTAT_REQUESTS: dict[str, tuple[str, list[dict[str, str]]]] = {
     ),
     "sbs_size_construction": (
         "sbs_sc_con_r2",
-        [{"nace_r2": "F411,F412,F43", "indic_sb": "V11110,V16110"}, {"nace_r2": "F411,F412,F43"}],
+        [{"nace_r2": "F411,F412,F43", "indic_sb": "V11110,V16110,V16120,V16130"}, {"nace_r2": "F411,F412,F43"}],
     ),
     "sbs_size_construction_2021": (
         "sbs_sc_ovw",
-        [{"nace_r2": "F411,F412,F43", "indic_sbs": "ENT_NR,EMP_NR"}, {"nace_r2": "F412,F43", "indic_sbs": "ENT_NR,EMP_NR"}],
+        [{"nace_r2": "F411,F412,F43", "indic_sbs": "ENT_NR,EMP_NR,SAL_NR"}, {"nace_r2": "F412,F43", "indic_sbs": "ENT_NR,EMP_NR,SAL_NR"}],
+    ),
+    "construction_volume": (
+        "sts_copr_a",
+        [{"nace_r2": "F,F41,F43", "indic_bt": "PRD", "unit": "I21", "s_adj": "CA"},
+         {"nace_r2": "F,F41,F43", "indic_bt": "PRD", "unit": "I21"}],
     ),
     "lfs_age_total_nace1": (
         "lfsa_egana",

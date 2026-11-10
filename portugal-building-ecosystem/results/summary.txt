@@ -150,6 +150,39 @@ F43 enterprises with 0-9 persons: 2008 55,013; trough 2014 35,082; 2024 53,961; 
 F43 share of enterprises with 0-9 persons: 2008 95.1%; 2024 95.0%
 note: 2020 and 2021 come from different SBS regulations; the 2021 totals match the INE counts for the same year
 
+== B3. Paid employees and unpaid persons (Eurostat SBS; employees V16130 to 2020, SAL_NR from 2021)
+F411 developers, paid employees: 2008 4,691; trough 2015 2,200; 2024 3,219; last/ref 0.686; recovered share R 0.41
+F411 developers: share of persons employed who are not paid employees (owners, family) 2008 33.4%; 2020 45.2%; 2024 41.5%
+F412 building contractors, paid employees: 2008 225,532; trough 2014 111,601; 2024 193,486; last/ref 0.858; recovered share R 0.72
+F412 building contractors: share of persons employed who are not paid employees (owners, family) 2008 14.0%; 2020 12.5%; 2024 11.7%
+F43 specialised trades, paid employees: 2008 129,869; trough 2014 84,051; 2024 135,344; last/ref 1.042; recovered share R 1.12
+F43 specialised trades: share of persons employed who are not paid employees (owners, family) 2008 23.6%; 2020 20.8%; 2024 21.4%
+
+== B4. One-person firms (Eurostat sbs_sc_ovw, enterprises with 0 or 1 person employed; no comparable class before 2021)
+F411: enterprises with 0-1 persons 2021 2,155 of 2,649 (81.4%); 2022 2,256 of 2,787 (80.9%); 2023 2,351 of 2,942 (79.9%); 2024 2,464 of 3,075 (80.1%)
+F411: growth in enterprises 2021-2024: total +426, of which 0-1 persons +309 (73%)
+F412: enterprises with 0-1 persons 2021 25,681 of 43,704 (58.8%); 2022 26,962 of 45,851 (58.8%); 2023 28,480 of 48,273 (59.0%); 2024 30,320 of 51,249 (59.2%)
+F412: growth in enterprises 2021-2024: total +7,545, of which 0-1 persons +4,639 (61%)
+F43: enterprises with 0-1 persons 2021 34,249 of 47,887 (71.5%); 2022 36,147 of 50,694 (71.3%); 2023 38,299 of 53,376 (71.8%); 2024 41,039 of 56,793 (72.3%)
+F43: growth in enterprises 2021-2024: total +8,906, of which 0-1 persons +6,790 (76%)
+
+== B5. Production of contractors and trades, nominal and at 2008 construction costs (INE SCIE, deflated by INE 0011748)
+building contractors production, EUR million (nominal): 2008 16,359; trough 2014 5,801; 2024 17,948; last/ref 1.097; recovered share R 1.15
+building contractors production, EUR million at 2008 construction costs: 2008 16,359; trough 2014 5,607; 2024 12,142; last/ref 0.742; recovered share R 0.61
+building contractors: Eurostat volume index of production in construction, F41 (2021 = 100): 2008 295.5; trough 2021 100.0; 2024 108.1; last/ref 0.366; recovered share R 0.04
+building contractors: ratio of the two real measures in 2024, deflated accounts / volume index: 2.03
+building contractors: real production per person employed, EUR thousand at 2008 costs: 2008 62.4; 2024 55.4 (-11.2%)
+specialised trades production, EUR million (nominal): 2008 7,670; trough 2013 4,450; 2024 10,367; last/ref 1.352; recovered share R 1.84
+specialised trades production, EUR million at 2008 construction costs: 2008 7,670; trough 2014 4,323; 2024 7,013; last/ref 0.914; recovered share R 0.80
+specialised trades: Eurostat volume index of production in construction, F43 (2021 = 100): 2008 188.1; trough 2016 88.3; 2024 116.5; last/ref 0.619; recovered share R 0.28
+specialised trades: ratio of the two real measures in 2024, deflated accounts / volume index: 1.48
+specialised trades: real production per person employed, EUR thousand at 2008 costs: 2008 45.1; 2024 40.7 (-9.7%)
+
+== B6. Real value added in construction, national accounts (chain-linked volumes, EUR million at 2020 prices)
+construction value added (volume), ref 2002: 2002 15,118; trough 2015 7,121; 2025 10,638; last/ref 0.704; recovered share R 0.44
+construction value added (volume), ref 2008: 2008 12,626; trough 2015 7,121; 2025 10,638; last/ref 0.843; recovered share R 0.64
+the short-term volume index (B5) and the national accounts disagree: the index puts building construction far lower; the national accounts are the reference measure of real output
+
 == C1. Developers (CAE 41.10, INE SCIE)
 developers enterprises: 2008 3,225; trough 2015 2,201; 2024 3,077; last/ref 0.954; recovered share R 0.86
 developers persons employed: 2008 7,047; trough 2015 3,973; 2024 5,508; last/ref 0.782; recovered share R 0.50
@@ -238,6 +271,16 @@ buying and selling own property: EUR 3,758m (2008) -> EUR 7,228m (2024)
 2024: agency and finder workers per 1,000 transactions 194
 2009->2024: transactions x1.56; agency and finder workers x2.51; existing-dwelling sales x2.11; new-dwelling sales x0.77
 
+== P. Workers posted abroad by Portuguese employers (PD A1 certificates; figures transcribed from published reports)
+PDs A1 issued by Portugal: 2022 88,274; 2023 93,972 (all articles)
+share of Portugal's Article 12 certificates for construction, 2023: 49%; for industry: 80%; to France, Belgium and Spain: 82%
+Brazilian workers posted from Portugal to Belgium, 2023: 6,965
+upper bound on construction posting certificates, 2023 (all certificates treated as Article 12): 46,046
+  as full-year workers if every certificate lasted a full year (upper bound): 46,046
+  as full-year workers at the EU mean duration of 65 days: 8,200
+against the 2024 gap between business statistics and the LFS (100,916): at most 46%; at the EU mean duration 8%
+caveats: certificates count postings, not people; the duration is the EU mean, not Portugal's; postings outside the EU/EFTA (for example to Angola or Mozambique) need no certificate and are not counted
+
 == E. Recovered share of the loss, every layer on one scale (R = (last - trough) / (ref - trough))
 A skills | construction workers under 25 (LFS) | ref 2002 | trough 2015 | last 2025 | last/ref 0.17 | R 0.11
 A skills | construction employment (national accounts) | ref 2002 | trough 2014 | last 2025 | last/ref 0.69 | R 0.43
@@ -246,10 +289,16 @@ A skills | construction workers under 25 (LFS) | ref 2008 | trough 2015 | last 2
 A skills | construction employment (national accounts) | ref 2008 | trough 2014 | last 2025 | last/ref 0.82 | R 0.60
 A skills | engineering firms, persons employed | ref 2008 | trough 2013 | last 2024 | last/ref 1.13 | R 1.51
 A skills | architects firms, persons employed | ref 2008 | trough 2013 | last 2024 | last/ref 1.20 | R 1.72
+B firms | construction value added (national accounts, volume) | ref 2002 | trough 2015 | last 2025 | last/ref 0.70 | R 0.44
+B firms | building contractors, production (real) | ref 2008 | trough 2014 | last 2024 | last/ref 0.74 | R 0.61
 B firms | building contractors with 10-249 persons | ref 2008 | trough 2014 | last 2024 | last/ref 0.77 | R 0.61
+B firms | construction value added (national accounts, volume) | ref 2008 | trough 2015 | last 2025 | last/ref 0.84 | R 0.64
 B firms | building contractors (41.20), persons employed | ref 2008 | trough 2014 | last 2024 | last/ref 0.84 | R 0.67
+B firms | building contractors, paid employees | ref 2008 | trough 2014 | last 2024 | last/ref 0.86 | R 0.72
+B firms | specialised trades, production (real) | ref 2008 | trough 2014 | last 2024 | last/ref 0.91 | R 0.80
 B firms | specialised trades with 10-249 persons | ref 2008 | trough 2014 | last 2024 | last/ref 1.01 | R 1.01
 B firms | specialised trades (43), persons employed | ref 2008 | trough 2014 | last 2024 | last/ref 1.01 | R 1.03
+B firms | specialised trades, paid employees | ref 2008 | trough 2014 | last 2024 | last/ref 1.04 | R 1.12
 C promoters | dwellings licensed by private individuals | ref 2002 | trough 2014 | last 2025 | last/ref 0.33 | R 0.24
 C promoters | dwellings licensed by private companies | ref 2002 | trough 2013 | last 2025 | last/ref 0.58 | R 0.57
 C promoters | developers, production (real) | ref 2008 | trough 2016 | last 2024 | last/ref 0.54 | R 0.41
