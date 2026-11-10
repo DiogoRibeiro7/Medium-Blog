@@ -1,0 +1,555 @@
+[ {
+  "IndicadorCod" : "0012778",
+  "IndicadorDsg" : "Fogos concluídos (N.º) em construções novas para habitação familiar por Localização geográfica (NUTS - 2024); Trimestral - INE, Estatísticas das obras concluídas",
+  "MetaInfUrl" : "https://www.ine.pt/bddXplorer/htdocs/minfo.jsp?var_cd=0012778&lingua=PT",
+  "DataExtracao" : "2026-11-09T23:33:19.817Z",
+  "DataUltimoAtualizacao" : "2026-09-11",
+  "UltimoPref" : "2.º Trimestre de 2026",
+  "Dados" : {
+    "1.º Trimestre de 2004" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "17 136",
+      "valor" : "17136"
+    } ],
+    "2.º Trimestre de 2004" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "19 039",
+      "valor" : "19039"
+    } ],
+    "3.º Trimestre de 2004" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "17 933",
+      "valor" : "17933"
+    } ],
+    "4.º Trimestre de 2004" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "20 153",
+      "valor" : "20153"
+    } ],
+    "1.º Trimestre de 2005" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "19 881",
+      "valor" : "19881"
+    } ],
+    "2.º Trimestre de 2005" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "18 840",
+      "valor" : "18840"
+    } ],
+    "3.º Trimestre de 2005" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "19 450",
+      "valor" : "19450"
+    } ],
+    "4.º Trimestre de 2005" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "17 952",
+      "valor" : "17952"
+    } ],
+    "1.º Trimestre de 2006" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "15 815",
+      "valor" : "15815"
+    } ],
+    "2.º Trimestre de 2006" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "17 147",
+      "valor" : "17147"
+    } ],
+    "3.º Trimestre de 2006" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "17 792",
+      "valor" : "17792"
+    } ],
+    "4.º Trimestre de 2006" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "18 010",
+      "valor" : "18010"
+    } ],
+    "1.º Trimestre de 2007" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "16 974",
+      "valor" : "16974"
+    } ],
+    "2.º Trimestre de 2007" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "16 917",
+      "valor" : "16917"
+    } ],
+    "3.º Trimestre de 2007" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "17 342",
+      "valor" : "17342"
+    } ],
+    "4.º Trimestre de 2007" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "16 230",
+      "valor" : "16230"
+    } ],
+    "1.º Trimestre de 2008" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "13 863",
+      "valor" : "13863"
+    } ],
+    "2.º Trimestre de 2008" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "15 916",
+      "valor" : "15916"
+    } ],
+    "3.º Trimestre de 2008" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "15 516",
+      "valor" : "15516"
+    } ],
+    "4.º Trimestre de 2008" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "13 961",
+      "valor" : "13961"
+    } ],
+    "1.º Trimestre de 2009" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "11 784",
+      "valor" : "11784"
+    } ],
+    "2.º Trimestre de 2009" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "12 021",
+      "valor" : "12021"
+    } ],
+    "3.º Trimestre de 2009" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "12 573",
+      "valor" : "12573"
+    } ],
+    "4.º Trimestre de 2009" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "11 537",
+      "valor" : "11537"
+    } ],
+    "1.º Trimestre de 2010" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "8 994",
+      "valor" : "8994"
+    } ],
+    "2.º Trimestre de 2010" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "8 247",
+      "valor" : "8247"
+    } ],
+    "3.º Trimestre de 2010" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "9 981",
+      "valor" : "9981"
+    } ],
+    "4.º Trimestre de 2010" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "8 220",
+      "valor" : "8220"
+    } ],
+    "1.º Trimestre de 2011" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "6 839",
+      "valor" : "6839"
+    } ],
+    "2.º Trimestre de 2011" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "6 693",
+      "valor" : "6693"
+    } ],
+    "3.º Trimestre de 2011" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "6 717",
+      "valor" : "6717"
+    } ],
+    "4.º Trimestre de 2011" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "6 133",
+      "valor" : "6133"
+    } ],
+    "1.º Trimestre de 2012" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "5 349",
+      "valor" : "5349"
+    } ],
+    "2.º Trimestre de 2012" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "4 761",
+      "valor" : "4761"
+    } ],
+    "3.º Trimestre de 2012" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "5 023",
+      "valor" : "5023"
+    } ],
+    "4.º Trimestre de 2012" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "4 551",
+      "valor" : "4551"
+    } ],
+    "1.º Trimestre de 2013" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "3 824",
+      "valor" : "3824"
+    } ],
+    "2.º Trimestre de 2013" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "3 119",
+      "valor" : "3119"
+    } ],
+    "3.º Trimestre de 2013" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "3 089",
+      "valor" : "3089"
+    } ],
+    "4.º Trimestre de 2013" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "2 719",
+      "valor" : "2719"
+    } ],
+    "1.º Trimestre de 2014" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "2 160",
+      "valor" : "2160"
+    } ],
+    "2.º Trimestre de 2014" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "2 046",
+      "valor" : "2046"
+    } ],
+    "3.º Trimestre de 2014" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "2 031",
+      "valor" : "2031"
+    } ],
+    "4.º Trimestre de 2014" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "2 076",
+      "valor" : "2076"
+    } ],
+    "1.º Trimestre de 2015" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "1 941",
+      "valor" : "1941"
+    } ],
+    "2.º Trimestre de 2015" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "1 897",
+      "valor" : "1897"
+    } ],
+    "3.º Trimestre de 2015" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "1 627",
+      "valor" : "1627"
+    } ],
+    "4.º Trimestre de 2015" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "1 683",
+      "valor" : "1683"
+    } ],
+    "1.º Trimestre de 2016" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "1 785",
+      "valor" : "1785"
+    } ],
+    "2.º Trimestre de 2016" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "1 792",
+      "valor" : "1792"
+    } ],
+    "3.º Trimestre de 2016" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "2 006",
+      "valor" : "2006"
+    } ],
+    "4.º Trimestre de 2016" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "2 326",
+      "valor" : "2326"
+    } ],
+    "1.º Trimestre de 2017" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "2 144",
+      "valor" : "2144"
+    } ],
+    "2.º Trimestre de 2017" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "2 094",
+      "valor" : "2094"
+    } ],
+    "3.º Trimestre de 2017" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "1 816",
+      "valor" : "1816"
+    } ],
+    "4.º Trimestre de 2017" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "2 159",
+      "valor" : "2159"
+    } ],
+    "1.º Trimestre de 2018" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "2 412",
+      "valor" : "2412"
+    } ],
+    "2.º Trimestre de 2018" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "2 608",
+      "valor" : "2608"
+    } ],
+    "3.º Trimestre de 2018" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "3 025",
+      "valor" : "3025"
+    } ],
+    "4.º Trimestre de 2018" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "2 706",
+      "valor" : "2706"
+    } ],
+    "1.º Trimestre de 2019" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "2 987",
+      "valor" : "2987"
+    } ],
+    "2.º Trimestre de 2019" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "3 092",
+      "valor" : "3092"
+    } ],
+    "3.º Trimestre de 2019" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "3 399",
+      "valor" : "3399"
+    } ],
+    "4.º Trimestre de 2019" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "3 476",
+      "valor" : "3476"
+    } ],
+    "1.º Trimestre de 2020" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "3 848",
+      "valor" : "3848"
+    } ],
+    "2.º Trimestre de 2020" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "4 344",
+      "valor" : "4344"
+    } ],
+    "3.º Trimestre de 2020" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "4 281",
+      "valor" : "4281"
+    } ],
+    "4.º Trimestre de 2020" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "4 450",
+      "valor" : "4450"
+    } ],
+    "1.º Trimestre de 2021" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "4 840",
+      "valor" : "4840"
+    } ],
+    "2.º Trimestre de 2021" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "4 509",
+      "valor" : "4509"
+    } ],
+    "3.º Trimestre de 2021" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "5 397",
+      "valor" : "5397"
+    } ],
+    "4.º Trimestre de 2021" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "5 180",
+      "valor" : "5180"
+    } ],
+    "1.º Trimestre de 2022" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "5 368",
+      "valor" : "5368"
+    } ],
+    "2.º Trimestre de 2022" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "5 176",
+      "valor" : "5176"
+    } ],
+    "3.º Trimestre de 2022" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "5 020",
+      "valor" : "5020"
+    } ],
+    "4.º Trimestre de 2022" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "5 483",
+      "valor" : "5483"
+    } ],
+    "1.º Trimestre de 2023" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "5 873",
+      "valor" : "5873"
+    } ],
+    "2.º Trimestre de 2023" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "5 711",
+      "valor" : "5711"
+    } ],
+    "3.º Trimestre de 2023" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "5 636",
+      "valor" : "5636"
+    } ],
+    "4.º Trimestre de 2023" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "5 060",
+      "valor" : "5060"
+    } ],
+    "1.º Trimestre de 2024" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "5 669",
+      "valor" : "5669"
+    } ],
+    "2.º Trimestre de 2024" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "6 825",
+      "valor" : "6825"
+    } ],
+    "3.º Trimestre de 2024" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "5 994",
+      "valor" : "5994"
+    } ],
+    "4.º Trimestre de 2024" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "6 178",
+      "valor" : "6178"
+    } ],
+    "1.º Trimestre de 2025" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "7 037",
+      "valor" : "7037"
+    } ],
+    "2.º Trimestre de 2025" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "6 664",
+      "valor" : "6664"
+    } ],
+    "3.º Trimestre de 2025" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "6 488",
+      "valor" : "6488"
+    } ],
+    "4.º Trimestre de 2025" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "7 112",
+      "valor" : "7112"
+    } ],
+    "1.º Trimestre de 2026" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "6 931",
+      "valor" : "6931"
+    } ],
+    "2.º Trimestre de 2026" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "7 437",
+      "valor" : "7437"
+    } ]
+  },
+  "Sucesso" : {
+    "Verdadeiro" : [ {
+      "Msg" : "OK"
+    } ]
+  }
+} ]
