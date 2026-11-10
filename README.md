@@ -71,6 +71,8 @@ Chronos-2, TimesFM 2.5 and TiRex against seasonal naive and ETS baselines on hou
 
 [`backward-evaluation-episode-end/`](backward-evaluation-episode-end/) — a pre-registered test of an end-of-episode check for the backward training-window rule: when the walk stops, ask whether the most recent year looks like the rejected past again and, if so, train on all the data. Simulations with Gaussian and Student-t models, ten test series from Japan, Canada, the UK, Germany and Switzerland, and the ten US series as an in-sample development set. Verdict: not supported; a pre-registered prediction that changes in rates and exchange rates persist more than changes in real activity held in direction.
 
+[`backward-evaluation-generality/`](backward-evaluation-generality/) — a pre-registered test of whether three findings about backward training windows, developed on monthly macroeconomic series, hold on daily data from other domains: 25 countries' electricity load (Open Power System Data) and 304 Wikipedia articles' page views, forecast one day ahead by an autoregression, a seasonal linear model, Holt–Winters and LightGBM with Gaussian and Student-t distributions. Sharded computation in GitHub Actions. Pooling over window lengths beats the backward rules in all 8 domain × model cells; the end-of-episode check and the heavy-tail findings do not travel.
+
 ### Statistical evidence and decision value
 
 [statistical-evidence-and-decisions/](statistical-evidence-and-decisions/) —
