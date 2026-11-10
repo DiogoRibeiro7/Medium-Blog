@@ -1281,7 +1281,7 @@ INE, AMP and IHRU statistical sources.
 
 The matched Porto-versus-alternative comparisons use only 15 municipality
 outcomes for any given reference pair. The new
-[\`municipal_reference_common_geography_influence.py\`](municipal_reference_common_geography_influence.py)
+[`municipal_reference_common_geography_influence.py`](municipal_reference_common_geography_influence.py)
 diagnostic checks whether deleting a *single* comparator changes the sign or
 passes the predeclared −0.05 **descriptive** contrast margin. On every deletion,
 the exposure ranks, shared geographic-control ranks and own-rent-outcome
@@ -1305,9 +1305,9 @@ snapshots:
     python municipal_reference_common_geography_influence.py --output /tmp/porto-matched-influence
 
 The script generates three CSVs, a provenance JSON and two SVG diagrams
-(\`fig42_*\`, \`fig43_*\`). The housing-study workflow runs the full unit
+(`fig42_*`, `fig43_*`). The housing-study workflow runs the full unit
 suite, regenerates these outputs, and publishes them as a
-\`porto-matched-reference-deletion-influence\` Actions artifact for 30 days.
+`porto-matched-reference-deletion-influence` Actions artifact for 30 days.
 These outputs are generated evidence, not the full private editorial manuscript.
 The deletion extrema and margins are **not jackknife confidence intervals,
 statistical significance, independent replications, observed residential
