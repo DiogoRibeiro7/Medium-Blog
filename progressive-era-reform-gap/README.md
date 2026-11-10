@@ -1,6 +1,6 @@
 # From Statute to Enforcement: Reproducible companion
 
-Companion to **[From Statute to Enforcement: What the Progressive Era Changed in American Government](https://github.com/DiogoRibeiro7/research-articles-medium/blob/main/us-political-economy/02-progressive-era.md)**, a Medium-ready historical essay on American political reform, economic power, administrative capacity, organized labor, suffrage, and exclusion between roughly 1890 and 1920.
+Companion to **[From Statute to Enforcement: What the Progressive Era Changed in American Government](https://github.com/DiogoRibeiro7/research-articles-medium/blob/main/series/us-political-economy/02-progressive-era.md)**, a Medium-ready historical essay on American political reform, economic power, administrative capacity, organized labor, suffrage, and exclusion between roughly 1890 and 1920.
 
 The complete editorial manuscript is maintained in the private `research-articles-medium` repository. The public code, source transcriptions, results, figures, and tests remain here for independent verification.
 

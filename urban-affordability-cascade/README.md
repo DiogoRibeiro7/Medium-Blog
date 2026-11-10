@@ -2,7 +2,7 @@
 
 Public computational companion for the long-form Medium manuscript
 *The Suburb Is Not an Escape: How Housing Unaffordability Can Spread Across a Metropolitan Area*.
-The complete editorial manuscript is maintained in the [private research-articles-medium repository](https://github.com/DiogoRibeiro7/research-articles-medium/blob/main/urban-affordability-cascade/article.md). The public [article.md](article.md) is only a historical-path notice; source data, code, figures, results and tests remain public.
+The complete editorial manuscript is maintained in the [private research-articles-medium repository](https://github.com/DiogoRibeiro7/research-articles-medium/blob/main/themes/housing/urban-affordability-cascade/article.md). The public [article.md](article.md) is only a historical-path notice; source data, code, figures, results and tests remain public.
 
 This is a **descriptive study and methodological foundation**, not a causal
 estimate of residential displacement. It combines a fixed official-data-derived

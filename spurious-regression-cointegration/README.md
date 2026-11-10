@@ -1,7 +1,7 @@
 # Spurious regression, unit roots, and cointegration
 
 This is the self-contained, reproducible companion to the long-form Medium essay
-**A High R² Is Not a Long-Run Relationship**. The [full manuscript](https://github.com/DiogoRibeiro7/research-articles-medium/blob/main/spurious-regression-cointegration/article.md)
+**A High R² Is Not a Long-Run Relationship**. The [full manuscript](https://github.com/DiogoRibeiro7/research-articles-medium/blob/main/themes/statistics-for-data-scientists/spurious-regression-cointegration/article.md)
 is maintained privately; [`article.md`](article.md) now preserves the historical
 public path as a compatibility notice.
 

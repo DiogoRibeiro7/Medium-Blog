@@ -1,6 +1,6 @@
 # Trade, Household Debt and Housing Collateral
 
-Public reproducibility companion for **[Trade, Household Debt and Housing Collateral in the U.S. Expansion, 1990–2007](https://github.com/DiogoRibeiro7/research-articles-medium/blob/main/us-political-economy/06-financialization-before-2008.md)**. The full editorial manuscript is maintained in the private `DiogoRibeiro7/research-articles-medium` repository; [article.md](article.md) is now a short migration notice. This study belongs to the [political-economic history series](../ARTICLES.md) and follows [the stagflation and market turn study](../stagflation-market-turn/).
+Public reproducibility companion for **[Trade, Household Debt and Housing Collateral in the U.S. Expansion, 1990–2007](https://github.com/DiogoRibeiro7/research-articles-medium/blob/main/series/us-political-economy/06-financialization-before-2008.md)**. The full editorial manuscript is maintained in the private `DiogoRibeiro7/research-articles-medium` repository; [article.md](article.md) is now a short migration notice. This study belongs to the [political-economic history series](../ARTICLES.md) and follows [the stagflation and market turn study](../stagflation-market-turn/).
 
 The period is **1990–2007**. Seven figures summarize original government economic time series. A separate eighth figure illustrates a **hypothetical** collateral and household-equity identity. No regression, graph, or scenario identifies the effect of a historical policy on any economic outcome.
 

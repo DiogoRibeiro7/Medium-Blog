@@ -1,7 +1,9 @@
 """Read causal-series manuscripts without mistaking public notices for articles.
 
 After editorial migration, point ``--manuscript-root`` at a private checkout's
-``causal_inference_statistics`` directory. Never load network credentials here.
+``series/causal-inference-in-statistics`` directory (``part-01-*`` to
+``part-20-*``). The pre-November-2026 layout (``part1`` to ``part20``) is still
+accepted. Never load network credentials here.
 """
 
 from __future__ import annotations
@@ -19,7 +21,8 @@ def read_manuscript(root: Path, part: int) -> str:
     """Read a complete manuscript, rejecting missing and migrated notice paths.
 
     Args:
-        root: Directory containing the ``part1`` through ``part20`` folders.
+        root: Directory containing ``part-01-*`` through ``part-20-*`` folders
+            (or the older ``part1`` through ``part20``).
         part: One-based article part number.
 
     Raises:
@@ -29,6 +32,10 @@ def read_manuscript(root: Path, part: int) -> str:
     if type(part) is not int or not 1 <= part <= 20:
         raise ValueError("part must be an integer in 1..20")
     path = root / f"part{part}" / "article.md"
+    if not path.exists():
+        matches = sorted(root.glob(f"part-{part:02d}-*/article.md"))
+        if len(matches) == 1:
+            path = matches[0]
     content = path.read_text(encoding="utf-8")
     if any(marker in content for marker in NOTICE_MARKERS):
         raise ValueError(

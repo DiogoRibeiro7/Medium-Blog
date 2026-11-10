@@ -20,6 +20,14 @@ class ManuscriptSourceTests(unittest.TestCase):
             (path / "article.md").write_text(article, encoding="utf-8")
             self.assertEqual(read_manuscript(Path(name), 1), article)
 
+    def test_reads_series_layout(self) -> None:
+        with tempfile.TemporaryDirectory() as name:
+            path = Path(name) / "part-01-regression-wrong-effect"
+            path.mkdir()
+            article = "# Example\n\n" + "A" * 1100 + "\n\n## References\n\nAuthor (2020)."
+            (path / "article.md").write_text(article, encoding="utf-8")
+            self.assertEqual(read_manuscript(Path(name), 1), article)
+
     def test_rejects_public_compatibility_notice(self) -> None:
         with tempfile.TemporaryDirectory() as name:
             path = Path(name) / "part1"

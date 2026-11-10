@@ -1,7 +1,7 @@
 # Publication companion: the economics of the uneaten meal
 
 The article manuscript and its seven editorial sections are maintained in
-[the private research-articles-medium repository](https://github.com/DiogoRibeiro7/research-articles-medium/tree/main/restaurant-portion-economics/publication).
+[the private research-articles-medium repository](https://github.com/DiogoRibeiro7/research-articles-medium/tree/main/themes/operations-and-decisions/restaurant-portion-economics).
 Access requires permission from the repository owner.
 
 This public project retains the reproducible scientific analysis and publication
@@ -35,8 +35,9 @@ private repository with appropriate access:
 Rscript publication/build-article.R /path/to/research-articles-medium
 ```
 
-This command reads the seven private `publication/sections/*.md` files and
-writes the private `publication/medium/article.md`. It does **not** modify
+This command reads the seven private sections in
+`themes/operations-and-decisions/restaurant-portion-economics/sections/` and
+writes `article.md` in the same private folder. It does **not** modify
 the public compatibility notice or publish to Medium.
 
 ## Figures and evidence

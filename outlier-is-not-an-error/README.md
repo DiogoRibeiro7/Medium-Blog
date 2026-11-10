@@ -1,6 +1,6 @@
 # An Outlier Is Not an Error — reproducible companion
 
-Article #31 in the `Medium-Blog` long-form collection. The 11,000+ word [editorial manuscript is maintained privately](https://github.com/DiogoRibeiro7/research-articles-medium/blob/main/outlier-is-not-an-error/article.md). This public companion develops reproducible experiments covering robust location, heavy tails, interval coverage, regression contamination, leverage, multivariate masking, minority-group alerts, tail-risk deletion, and distribution-shift calibration.
+Article #31 in the `Medium-Blog` long-form collection. The 11,000+ word [editorial manuscript is maintained privately](https://github.com/DiogoRibeiro7/research-articles-medium/blob/main/themes/statistics-for-data-scientists/outlier-is-not-an-error/article.md). This public companion develops reproducible experiments covering robust location, heavy tails, interval coverage, regression contamination, leverage, multivariate masking, minority-group alerts, tail-risk deletion, and distribution-shift calibration.
 
 **Everything here is synthetic.** No proprietary files or real-world error labels are used. The deliberately shifted population in a simulation is *not* asserted to consist of bad records. Figures and statistics are original experimental outputs.
 
