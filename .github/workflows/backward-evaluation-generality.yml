@@ -100,7 +100,7 @@ jobs:
       - name: Aggregate
         run: python aggregate.py
       - name: Figures
-        run: if [ -f figures.py ]; then python figures.py; fi
+        run: if [ -f figures.py ]; then python figures.py || echo "figures failed"; fi
       - name: Compare with the committed summary (pull requests)
         if: github.event_name == 'pull_request'
         run: python ../backward-evaluation-pooling/check_results.py results/summary.txt
@@ -109,11 +109,11 @@ jobs:
         run: |
           git config user.name "Diogo Ribeiro"
           git config user.email "diogo_dj@hotmail.com"
-          git add results figures 2>/dev/null || git add results
+          git add results/summary.txt results/series_gains.csv results/cells.csv results/periods_mean.csv results/decisions.csv
+          if [ -d figures ]; then git add figures; fi
           if git diff --cached --quiet; then
             echo "Results unchanged."
           else
             git commit -m "backward-evaluation-generality: results from the compute workflow ($(date -u +%Y-%m-%d))"
-            git pull --rebase
-            git push
+            git push || (git pull --rebase --autostash && git push)
           fi
