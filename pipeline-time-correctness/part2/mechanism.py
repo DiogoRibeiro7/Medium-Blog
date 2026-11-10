@@ -214,14 +214,27 @@ def compare_policies(n: np.ndarray, T_range: range, waits: np.ndarray, window: i
     """
     C = n.cumsum(axis=1)
     final = C[:, -1].astype(float)
-    raw_err, now_err = [], []
+    raw_err, now_err, now_bias = [], [], []
     for T in T_range:
         t = T - waits
         raw = C[t, waits]
         now = nowcast_by_age(C, T, waits, window)
         raw_err.append(np.abs(raw - final[t]) / final[t])
         now_err.append(np.abs(now - final[t]) / final[t])
-    return pd.DataFrame({"wait": waits, "raw": np.mean(raw_err, axis=0), "nowcast": np.mean(now_err, axis=0)})
+        now_bias.append((now - final[t]) / final[t])
+    return pd.DataFrame({"wait": waits, "raw": np.mean(raw_err, axis=0), "nowcast": np.mean(now_err, axis=0),
+                         "nowcast_bias": np.mean(now_bias, axis=0)})
+
+
+def thinning_noise_floor(delay: Delay, base: float, wait: int) -> float:
+    """Mean absolute percentage error of a nowcast that knows the delay distribution exactly.
+
+    With F = F(wait), the reports in hand are a binomial sample of the final count, so
+    known / F - final has standard deviation sqrt(final * (1 - F) / F). For a normal error
+    the mean absolute value is sqrt(2 / pi) times the standard deviation.
+    """
+    F = delay.F()[wait]
+    return math.sqrt(2.0 / math.pi) * math.sqrt((1.0 - F) / (F * base))
 
 
 def first_wait_below(errors: pd.Series, waits: np.ndarray, level: float) -> int | None:

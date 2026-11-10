@@ -83,6 +83,7 @@ Publishing day t after waiting w days: mean absolute percentage error against th
 14           2.2%               0.4%                        4.0%                            1.8%                         0.7%
 First wait with error below 5%: raw 10 days, nowcast 0 days (stable delays)
 First wait with error below 2%: raw more than 14 days, nowcast 2 days (stable delays)
+Mean signed error of the nowcast, 30 days after the shift, waits 0, 1, 3, 7: -28.7%, -21.2%, -12.5%, -5.4%; stable delays: -0.0%, -0.1%, -0.0%, +0.0%
 
 After the shift (30 days), nowcast error at waits 0, 1, 3, 7 by estimation window:
   window  7 days: after shift 15.3%, 10.5%, 6.6%, 3.4%; stable 4.7%, 2.6%, 1.4%, 0.8%
@@ -92,6 +93,9 @@ After the shift (30 days), nowcast error at waits 0, 1, 3, 7 by estimation windo
 
 About 50 events a day, stable medium delays, waits 0, 1, 3, 7:
   raw 75.8%, 49.7%, 24.4%, 8.3%; nowcast 21.5%, 11.9%, 6.3%, 3.7%
+Error of a nowcast that knew the delays exactly (binomial thinning alone), waits 0, 1, 3, 7:
+  50 a day: 19.9%, 11.3%, 6.4%, 3.4%
+  1000 a day: 4.4%, 2.5%, 1.4%, 0.8%
 
 ==============================================================================
 The simulated shop (M3 and M5)

@@ -99,6 +99,10 @@ for level in (0.05, 0.02):
     print(f"First wait with error below {pct(level, 0)}: raw {wait_text(m.first_wait_below(r_stable.raw, waits, level))}, "
           f"nowcast {wait_text(m.first_wait_below(r_stable.nowcast, waits, level))} (stable delays)")
 
+print("Mean signed error of the nowcast, 30 days after the shift, waits 0, 1, 3, 7: "
+      + ", ".join(f"{r_shift.nowcast_bias[w] * 100:+.1f}%" for w in (0, 1, 3, 7))
+      + "; stable delays: " + ", ".join(f"{r_stable.nowcast_bias[w] * 100:+.1f}%" for w in (0, 1, 3, 7)))
+
 print("\nAfter the shift (30 days), nowcast error at waits 0, 1, 3, 7 by estimation window:")
 for win in (7, 14, 28, 56):
     r = m.compare_policies(shifted, range(240, 270), waits, window=win)
@@ -111,6 +115,9 @@ r_low = m.compare_policies(low, range(100, 400), waits)
 print("\nAbout 50 events a day, stable medium delays, waits 0, 1, 3, 7:")
 print("  raw " + ", ".join(pct(r_low.raw[w]) for w in (0, 1, 3, 7))
       + "; nowcast " + ", ".join(pct(r_low.nowcast[w]) for w in (0, 1, 3, 7)))
+print("Error of a nowcast that knew the delays exactly (binomial thinning alone), waits 0, 1, 3, 7:")
+for base in (50, 1000):
+    print(f"  {base} a day: " + ", ".join(pct(m.thinning_noise_floor(m.MEDIUM, base, w)) for w in (0, 1, 3, 7)))
 
 # ---------------------------------------------------------------------------
 section("The simulated shop (M3 and M5)")
