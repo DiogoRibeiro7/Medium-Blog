@@ -642,3 +642,29 @@ The article and code must be updated together. Do not turn a diagnostic
 correlation, model illustration or hypothetical displacement count into a
 Portuguese fact. Preserve the exact source commit and dataset SHA-256 for
 reproducing the published version.
+
+
+## Added sensitivity diagnostic: matched reference deletion influence
+
+In the common-geography reference comparison, use the same 15 municipalities
+and identically ranked geographic covariates for Porto and each alternative.
+As an influence audit, delete each of those 15 municipalities in turn;
+**recompute all average ranks and both geographic residualisations from scratch
+on the remaining 14 observations**. Never drop rows from ranks computed on
+the original 15 municipalities.
+
+Predeclare all four overlapping rent baseline windows, 16 alternatives and
+three network normalisations. Summarise each full matched contrast, the range
+of deletion contrasts, any sign reversal, any crossing of the descriptive
+−0.05 alternative-minus-Porto margin, the most influential omitted municipality
+and the minimum remaining exposure-rank variance fraction. Do not select only
+stable specifications or favourable references.
+
+The complete sample remains small, the leave-one-out samples are highly
+overlapping and their rank projections can be nearly collinear with geometry.
+Treat all results strictly as deterministic sample-influence diagnostics. The
+observations do not measure directed residential origin/destination relocations;
+therefore neither deletion stability nor instability identifies a migration
+channel or a causal housing-price spillover. Source pinning, generation and
+provenance are implemented in
+`municipal_reference_common_geography_influence.py`.
