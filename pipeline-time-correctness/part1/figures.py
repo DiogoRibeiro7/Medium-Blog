@@ -106,7 +106,7 @@ def fig2_vintages() -> None:
         ax.annotate(f"{D:%d %b}", (D, 64), color=INK2, fontsize=8.5, ha="center",
                     bbox=dict(boxstyle="round,pad=0.15", facecolor=SURFACE, edgecolor="none"))
     ax.set_ylabel("HUS cases by date of hospitalization")
-    ax.set_title("STEC O104:H4, Germany 2011: each day's view of the epidemic curve ended in a decline that was not there")
+    ax.set_title("STEC O104:H4, Germany 2011: each day's view of the epidemic curve ended in a fall far steeper than the real one")
     ax.xaxis.set_major_formatter(mdates.DateFormatter("%d %b"))
     ax.legend(loc="upper right", bbox_to_anchor=(1.0, 0.9))
     ax.set_ylim(0, 70)
