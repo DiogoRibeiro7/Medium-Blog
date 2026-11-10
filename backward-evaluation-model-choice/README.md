@@ -1,7 +1,7 @@
 # Choosing a forecasting model by backward evaluation: a pre-registered test
 
-Companion code for the article *Does Scoring on the Past Pick Better Forecasting Models? A
-Pre-Registered Test on 245 Wikipedia Articles*.
+Companion code for the article *Backward Evaluation as a Model-Selection Rule: A Pre-Registered Test
+Against the Forward Backtest on Daily Web Traffic*.
 
 The earlier folders in this repository (`../backward-evaluation`, `../backward-evaluation-pooling`,
 `../backward-evaluation-episode-end`, `../backward-evaluation-generality`) used backward evaluation,
@@ -38,6 +38,7 @@ set: the 25 electricity-load series and 304 Wikipedia articles of `../backward-e
 | `f4f78d1` | test data, downloaded by the data workflow with the pre-registered inclusion rules applied |
 | `1714511` | analysis code and the compute workflow, committed before any test value was read |
 | `a96d047` | results, committed by the compute workflow |
+| `3a479ab` | figures, exploratory follow-up (`post.py`) and this README |
 
 ## Files
 
