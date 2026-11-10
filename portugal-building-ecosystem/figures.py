@@ -207,9 +207,13 @@ def fig6_levels() -> None:
         ("A skills", "craft and trades workers (LFS)", "craft and trades workers"),
         ("A skills", "construction employment (national accounts)", "all construction employment"),
         ("A skills", "engineering firms, persons employed", "engineering firms (persons)"),
+        ("B firms", "construction value added (national accounts, volume)", "construction value added (volume)"),
         ("B firms", "building contractors with 10-249 persons", "contractors with 10-249 persons"),
         ("B firms", "building contractors (41.20), persons employed", "building contractors (persons)"),
+        ("B firms", "building contractors, paid employees", "building contractors (paid employees)"),
+        ("B firms", "building contractors, production (real)", "building contractors' real production"),
         ("B firms", "specialised trades (43), persons employed", "specialised trades (persons)"),
+        ("B firms", "specialised trades, production (real)", "specialised trades' real production"),
         ("C promoters", "dwellings licensed by private individuals", "dwellings licensed by individuals"),
         ("C promoters", "developers, production (real)", "developers' real production"),
         ("C promoters", "developers, persons employed", "developers (persons)"),
@@ -225,7 +229,7 @@ def fig6_levels() -> None:
         r02 = sub[sub.ref_year == 2002]
         rows.append((layer_names[layer], lab, float(r08.last_over_ref.iloc[0]),
                      float(r02.last_over_ref.iloc[0]) if len(r02) else np.nan))
-    fig, ax = plt.subplots(figsize=(9.5, 6.4))
+    fig, ax = plt.subplots(figsize=(9.5, 7.6))
     y = np.arange(len(rows))[::-1]
     for yi, (layer, lab, v08, v02) in zip(y, rows):
         ax.plot([v08], [yi], marker="o", ms=8, color=BLUE, mec="white", mew=1.2, zorder=4)
