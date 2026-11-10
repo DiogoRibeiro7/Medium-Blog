@@ -1,0 +1,135 @@
+Generality study: pre-registered findings F1-F3 (PREREGISTRATION.md).
+G = mean log loss of the expanding window minus that of the scheme (nats per day; positive = better than E).
+Means are across series; se = standard error across series; p = one-sided paired t-test p-value.
+
+Series: elec 25, web 304
+
+=== Findings, checked rule primary (C0); F1 and F3a/F3b with Student-t, F2 with Gaussian; all days scored ===
+[elec / AR] 25 series
+  F1 True: AveW - B +0.0013 (se 0.0005, p 0.00618); AveW - C0 +0.0021 (se 0.0005, p 0.000301)
+  F2 False: B loses on 7 series (sum -0.0299, C0 -0.0696, -133% removed); B gains on 4 (sum +0.0279, C0 +0.0283, 102% kept)
+  F3 False: G_t(B) - G_g(B) +0.0022 (se 0.0012, p 0.0354); check gain Gaussian minus Student-t -0.0008 (se 0.0020, p 0.647)
+[elec / SLM] 25 series
+  F1 True: AveW - B +0.0284 (se 0.0071, p 0.000269); AveW - C0 +0.0111 (se 0.0031, p 0.00079)
+  F2 False: B loses on 9 series (sum -0.2512, C0 -0.1274, 49% removed); B gains on 2 (sum +0.0161, C0 +0.0161, 100% kept)
+  F3 False: G_t(B) - G_g(B) -0.0108 (se 0.0047, p 0.984); check gain Gaussian minus Student-t -0.0123 (se 0.0046, p 0.993)
+[elec / ETS] 25 series
+  F1 True: AveW - B +0.0127 (se 0.0034, p 0.000549); AveW - C0 +0.0097 (se 0.0036, p 0.00641)
+  F2 False: B loses on 8 series (sum -0.0750, C0 -0.1123, -50% removed); B gains on 3 (sum +0.0323, C0 +0.0334, 103% kept)
+  F3 False: G_t(B) - G_g(B) -0.0043 (se 0.0025, p 0.955); check gain Gaussian minus Student-t -0.0045 (se 0.0029, p 0.934)
+[elec / GBM] 25 series
+  F1 True: AveW - B +0.0371 (se 0.0101, p 0.000601); AveW - C0 +0.0222 (se 0.0093, p 0.0126)
+  F2 False: B loses on 9 series (sum -0.4642, C0 -0.4055, 13% removed); B gains on 2 (sum +0.0392, C0 -0.0498, -127% kept)
+  F3 False: G_t(B) - G_g(B) -0.0313 (se 0.0080, p 1); check gain Gaussian minus Student-t -0.0161 (se 0.0052, p 0.998)
+[web / AR] 304 series
+  F1 True: AveW - B +0.0124 (se 0.0008, p 4.61e-40); AveW - C0 +0.0123 (se 0.0006, p 6.43e-59)
+  F2 False: B loses on 186 series (sum -7.6073, C0 -5.3018, 30% removed); B gains on 118 (sum +2.7190, C0 +2.4082, 89% kept)
+  F3 True: G_t(B) - G_g(B) +0.0231 (se 0.0028, p 3.87e-15); check gain Gaussian minus Student-t +0.0065 (se 0.0015, p 6.56e-06)
+[web / SLM] 304 series
+  F1 True: AveW - B +0.0943 (se 0.0036, p 8.26e-80); AveW - C0 +0.0606 (se 0.0023, p 6.04e-80)
+  F2 False: B loses on 242 series (sum -17.5476, C0 -10.4215, 41% removed); B gains on 62 (sum +1.6782, C0 +1.4399, 86% kept)
+  F3 False: G_t(B) - G_g(B) -0.0146 (se 0.0042, p 1); check gain Gaussian minus Student-t -0.0110 (se 0.0026, p 1)
+[web / ETS] 304 series
+  F1 True: AveW - B +0.0319 (se 0.0014, p 4.93e-69); AveW - C0 +0.0258 (se 0.0010, p 7.08e-78)
+  F2 False: B loses on 213 series (sum -9.3709, C0 -6.3049, 33% removed); B gains on 91 (sum +2.3519, C0 +2.1279, 90% kept)
+  F3 True: G_t(B) - G_g(B) +0.0111 (se 0.0034, p 0.000546); check gain Gaussian minus Student-t +0.0032 (se 0.0019, p 0.046)
+[web / GBM] 304 series
+  F1 True: AveW - B +0.1660 (se 0.0041, p 1.45e-123); AveW - C0 +0.1033 (se 0.0032, p 5.49e-100)
+  F2 False: B loses on 284 series (sum -30.4956, C0 -18.0804, 41% removed); B gains on 20 (sum +1.6351, C0 +1.1502, 70% kept)
+  F3 False: G_t(B) - G_g(B) -0.0553 (se 0.0062, p 1); check gain Gaussian minus Student-t -0.0234 (se 0.0043, p 1)
+
+  VERDICT F1 [primary (C0)]: TRAVELS (8 of 8 cells)
+  VERDICT F2 [primary (C0)]: DOES NOT TRAVEL (0 of 8 cells)
+  VERDICT F3 [primary (C0)]: DOES NOT TRAVEL (2 of 8 cells)
+
+=== Findings, checked rule secondary (C1645); F1 and F3a/F3b with Student-t, F2 with Gaussian; all days scored ===
+[elec / AR] 25 series
+  F1 True: AveW - B +0.0013 (se 0.0005, p 0.00618); AveW - C1645 +0.0017 (se 0.0005, p 0.000705)
+  F2 False: B loses on 7 series (sum -0.0299, C1645 -0.0736, -146% removed); B gains on 4 (sum +0.0279, C1645 +0.0272, 97% kept)
+  F3 False: G_t(B) - G_g(B) +0.0022 (se 0.0012, p 0.0354); check gain Gaussian minus Student-t -0.0014 (se 0.0019, p 0.772)
+[elec / SLM] 25 series
+  F1 True: AveW - B +0.0284 (se 0.0071, p 0.000269); AveW - C1645 +0.0217 (se 0.0066, p 0.00156)
+  F2 False: B loses on 9 series (sum -0.2512, C1645 -0.3024, -20% removed); B gains on 2 (sum +0.0161, C1645 +0.0161, 100% kept)
+  F3 False: G_t(B) - G_g(B) -0.0108 (se 0.0047, p 0.984); check gain Gaussian minus Student-t -0.0087 (se 0.0036, p 0.989)
+[elec / ETS] 25 series
+  F1 True: AveW - B +0.0127 (se 0.0034, p 0.000549); AveW - C1645 +0.0125 (se 0.0034, p 0.000579)
+  F2 False: B loses on 8 series (sum -0.0750, C1645 -0.1219, -63% removed); B gains on 3 (sum +0.0323, C1645 +0.0323, 100% kept)
+  F3 False: G_t(B) - G_g(B) -0.0043 (se 0.0025, p 0.955); check gain Gaussian minus Student-t -0.0021 (se 0.0017, p 0.88)
+[elec / GBM] 25 series
+  F1 True: AveW - B +0.0371 (se 0.0101, p 0.000601); AveW - C1645 +0.0321 (se 0.0099, p 0.00178)
+  F2 False: B loses on 9 series (sum -0.4642, C1645 -0.5072, -9% removed); B gains on 2 (sum +0.0392, C1645 +0.0392, 100% kept)
+  F3 False: G_t(B) - G_g(B) -0.0313 (se 0.0080, p 1); check gain Gaussian minus Student-t -0.0068 (se 0.0048, p 0.914)
+[web / AR] 304 series
+  F1 True: AveW - B +0.0124 (se 0.0008, p 4.61e-40); AveW - C1645 +0.0124 (se 0.0007, p 1.71e-47)
+  F2 False: B loses on 186 series (sum -7.6073, C1645 -6.6404, 13% removed); B gains on 118 (sum +2.7190, C1645 +2.5840, 95% kept)
+  F3 True: G_t(B) - G_g(B) +0.0231 (se 0.0028, p 3.87e-15); check gain Gaussian minus Student-t +0.0027 (se 0.0010, p 0.00248)
+[web / SLM] 304 series
+  F1 True: AveW - B +0.0943 (se 0.0036, p 8.26e-80); AveW - C1645 +0.0759 (se 0.0029, p 5.63e-79)
+  F2 False: B loses on 242 series (sum -17.5476, C1645 -14.6273, 17% removed); B gains on 62 (sum +1.6782, C1645 +1.6310, 97% kept)
+  F3 False: G_t(B) - G_g(B) -0.0146 (se 0.0042, p 1); check gain Gaussian minus Student-t -0.0090 (se 0.0017, p 1)
+[web / ETS] 304 series
+  F1 True: AveW - B +0.0319 (se 0.0014, p 4.93e-69); AveW - C1645 +0.0286 (se 0.0012, p 3.52e-73)
+  F2 False: B loses on 213 series (sum -9.3709, C1645 -8.0509, 14% removed); B gains on 91 (sum +2.3519, C1645 +2.2311, 95% kept)
+  F3 True: G_t(B) - G_g(B) +0.0111 (se 0.0034, p 0.000546); check gain Gaussian minus Student-t +0.0006 (se 0.0010, p 0.277)
+[web / GBM] 304 series
+  F1 True: AveW - B +0.1660 (se 0.0041, p 1.45e-123); AveW - C1645 +0.1316 (se 0.0037, p 6.05e-111)
+  F2 False: B loses on 284 series (sum -30.4956, C1645 -24.9513, 18% removed); B gains on 20 (sum +1.6351, C1645 +1.4065, 86% kept)
+  F3 False: G_t(B) - G_g(B) -0.0553 (se 0.0062, p 1); check gain Gaussian minus Student-t -0.0169 (se 0.0023, p 1)
+
+  VERDICT F1 [secondary (C1645)]: TRAVELS (8 of 8 cells)
+  VERDICT F2 [secondary (C1645)]: DOES NOT TRAVEL (0 of 8 cells)
+  VERDICT F3 [secondary (C1645)]: DOES NOT TRAVEL (2 of 8 cells)
+
+=== Mean gain over E by domain, family and distribution (all days; share of series with G > 0) ===
+  elec t     AR : B +0.0021 (60%); C0 +0.0013 (48%); C1645 +0.0018 (60%); P0.25 +0.0014 (76%); AveW +0.0035 (96%)
+  elec t     SLM: B -0.0202 (20%); C0 -0.0029 (28%); C1645 -0.0135 (24%); P0.25 +0.0044 (64%); AveW +0.0082 (64%)
+  elec t     ETS: B -0.0060 (20%); C0 -0.0030 (20%); C1645 -0.0058 (20%); P0.25 +0.0043 (56%); AveW +0.0067 (56%)
+  elec t     GBM: B -0.0483 (12%); C0 -0.0333 (12%); C1645 -0.0432 (12%); P0.25 +0.0060 (48%); AveW -0.0111 (36%)
+  elec gauss AR : B -0.0001 (16%); C0 -0.0017 (16%); C1645 -0.0019 (16%); P0.25 +0.0030 (28%); AveW +0.0243 (96%)
+  elec gauss SLM: B -0.0094 (8%); C0 -0.0045 (12%); C1645 -0.0115 (8%); P0.25 +0.0037 (28%); AveW +0.0281 (80%)
+  elec gauss ETS: B -0.0017 (12%); C0 -0.0032 (12%); C1645 -0.0036 (12%); P0.25 +0.0038 (32%); AveW +0.0322 (84%)
+  elec gauss GBM: B -0.0170 (8%); C0 -0.0182 (4%); C1645 -0.0187 (8%); P0.25 +0.0041 (20%); AveW +0.0110 (48%)
+  web t     AR : B +0.0070 (65%); C0 +0.0071 (72%); C1645 +0.0070 (68%); P0.25 +0.0139 (100%); AveW +0.0194 (100%)
+  web t     SLM: B -0.0668 (17%); C0 -0.0331 (23%); C1645 -0.0483 (20%); P0.25 +0.0134 (84%); AveW +0.0275 (96%)
+  web t     ETS: B -0.0120 (36%); C0 -0.0059 (40%); C1645 -0.0087 (36%); P0.25 +0.0107 (97%); AveW +0.0199 (96%)
+  web t     GBM: B -0.1502 (0%); C0 -0.0875 (1%); C1645 -0.1158 (1%); P0.25 +0.0083 (64%); AveW +0.0158 (66%)
+  web gauss AR : B -0.0161 (39%); C0 -0.0095 (42%); C1645 -0.0133 (40%); P0.25 +0.0225 (99%); AveW +0.0521 (100%)
+  web gauss SLM: B -0.0522 (20%); C0 -0.0295 (27%); C1645 -0.0428 (22%); P0.25 +0.0240 (96%); AveW +0.0580 (100%)
+  web gauss ETS: B -0.0231 (30%); C0 -0.0137 (35%); C1645 -0.0191 (33%); P0.25 +0.0245 (99%); AveW +0.0579 (100%)
+  web gauss GBM: B -0.0949 (7%); C0 -0.0557 (13%); C1645 -0.0775 (10%); P0.25 +0.0312 (87%); AveW +0.0780 (97%)
+
+=== F1 with Gaussian distributions (secondary): mean of AveW - B and AveW - C0 ===
+  elec AR: AveW - B +0.0244 (se 0.0115, p 0.0218); AveW - C0 +0.0260 (se 0.0130, p 0.0282)
+  elec SLM: AveW - B +0.0375 (se 0.0122, p 0.00261); AveW - C0 +0.0326 (se 0.0117, p 0.00507)
+  elec ETS: AveW - B +0.0339 (se 0.0113, p 0.00303); AveW - C0 +0.0353 (se 0.0124, p 0.00443)
+  elec GBM: AveW - B +0.0280 (se 0.0115, p 0.0112); AveW - C0 +0.0292 (se 0.0134, p 0.0199)
+  web AR: AveW - B +0.0682 (se 0.0036, p 7.46e-53); AveW - C0 +0.0616 (se 0.0032, p 1.7e-54)
+  web SLM: AveW - B +0.1102 (se 0.0051, p 1.23e-63); AveW - C0 +0.0875 (se 0.0041, p 1.68e-62)
+  web ETS: AveW - B +0.0810 (se 0.0042, p 1.05e-54); AveW - C0 +0.0716 (se 0.0037, p 8.26e-56)
+  web GBM: AveW - B +0.1729 (se 0.0080, p 6.38e-64); AveW - C0 +0.1337 (se 0.0065, p 6.09e-60)
+
+=== Electricity without March-June 2020 in the scoring (secondary), Student-t ===
+  AR: B +0.0022; C0 +0.0014; C1645 +0.0020; P0.25 +0.0014; AveW +0.0038; AveW - B +0.0016 (se 0.0005, p 0.00239)
+  SLM: B -0.0116; C0 +0.0000; C1645 -0.0078; P0.25 +0.0050; AveW +0.0121; AveW - B +0.0237 (se 0.0067, p 0.0009)
+  ETS: B -0.0044; C0 -0.0028; C1645 -0.0039; P0.25 +0.0040; AveW +0.0059; AveW - B +0.0103 (se 0.0036, p 0.00419)
+  GBM: B -0.0440; C0 -0.0266; C1645 -0.0365; P0.25 +0.0035; AveW -0.0187; AveW - B +0.0254 (se 0.0101, p 0.00947)
+
+=== Wikipedia by group (secondary), Student-t: mean gain over E ===
+  country AR (190): B -0.0011; C0 +0.0025; C1645 +0.0006; P0.25 +0.0143; AveW +0.0179
+  country SLM (190): B -0.1034; C0 -0.0557; C1645 -0.0779; P0.25 +0.0059; AveW +0.0150
+  country ETS (190): B -0.0252; C0 -0.0139; C1645 -0.0192; P0.25 +0.0114; AveW +0.0206
+  country GBM (190): B -0.1776; C0 -0.1068; C1645 -0.1396; P0.25 +0.0132; AveW +0.0242
+  element AR (114): B +0.0206; C0 +0.0149; C1645 +0.0178; P0.25 +0.0132; AveW +0.0219
+  element SLM (114): B -0.0058; C0 +0.0046; C1645 +0.0010; P0.25 +0.0259; AveW +0.0483
+  element ETS (114): B +0.0100; C0 +0.0074; C1645 +0.0088; P0.25 +0.0095; AveW +0.0188
+  element GBM (114): B -0.1045; C0 -0.0554; C1645 -0.0760; P0.25 +0.0001; AveW +0.0018
+
+=== Absolute: mean log loss of the expanding window by family and distribution (nats per day) ===
+  elec: AR gauss -1.4622; AR t -1.6209; SLM gauss -1.8184; SLM t -2.1315; ETS gauss -1.7621; ETS t -2.0110; GBM gauss -1.8108; GBM t -1.9910
+  web: AR gauss -0.3902; AR t -0.6824; SLM gauss -0.4346; SLM t -0.7624; ETS gauss -0.4061; ETS t -0.6995; GBM gauss -0.3191; GBM t -0.6541
+
+=== Decisions (every 91 days) ===
+  elec t: 375 decisions; walk stopped in 158 (42%); check switched c=0 37, c=1.645 16; median z_end when stopped -1.52
+  elec gauss: 375 decisions; walk stopped in 49 (13%); check switched c=0 11, c=1.645 2; median z_end when stopped -1.36
+  web t: 11248 decisions; walk stopped in 8927 (79%); check switched c=0 3143, c=1.645 1599; median z_end when stopped -1.14
+  web gauss: 11248 decisions; walk stopped in 7251 (64%); check switched c=0 2043, c=1.645 957; median z_end when stopped -1.29

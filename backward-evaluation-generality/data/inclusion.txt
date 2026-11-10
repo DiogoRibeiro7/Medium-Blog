@@ -1,0 +1,343 @@
+domain	series	decision	reason
+elec	AT	included	first hour ok True; missing days 0 (0.0%); longest missing run 0
+elec	BE	included	first hour ok True; missing days 0 (0.0%); longest missing run 0
+elec	BG	included	first hour ok True; missing days 3 (0.1%); longest missing run 2
+elec	CH	included	first hour ok True; missing days 0 (0.0%); longest missing run 0
+elec	CY	excluded	first hour ok False; missing days 740 (35.2%); longest missing run 630
+elec	CZ	included	first hour ok True; missing days 5 (0.2%); longest missing run 5
+elec	DE	included	first hour ok True; missing days 0 (0.0%); longest missing run 0
+elec	DK	included	first hour ok True; missing days 0 (0.0%); longest missing run 0
+elec	EE	included	first hour ok True; missing days 6 (0.3%); longest missing run 2
+elec	ES	included	first hour ok True; missing days 2 (0.1%); longest missing run 1
+elec	FI	included	first hour ok True; missing days 0 (0.0%); longest missing run 0
+elec	FR	included	first hour ok True; missing days 5 (0.2%); longest missing run 2
+elec	GR	included	first hour ok True; missing days 4 (0.2%); longest missing run 1
+elec	HR	included	first hour ok True; missing days 0 (0.0%); longest missing run 0
+elec	HU	included	first hour ok True; missing days 0 (0.0%); longest missing run 0
+elec	IE	excluded	first hour ok True; missing days 31 (1.5%); longest missing run 17
+elec	IT	included	first hour ok True; missing days 0 (0.0%); longest missing run 0
+elec	LT	included	first hour ok True; missing days 11 (0.5%); longest missing run 5
+elec	LU	excluded	first hour ok True; missing days 47 (2.2%); longest missing run 9
+elec	LV	included	first hour ok True; missing days 1 (0.0%); longest missing run 1
+elec	ME	excluded	first hour ok True; missing days 33 (1.6%); longest missing run 21
+elec	NL	included	first hour ok True; missing days 0 (0.0%); longest missing run 0
+elec	NO	included	first hour ok True; missing days 5 (0.2%); longest missing run 4
+elec	PL	included	first hour ok True; missing days 0 (0.0%); longest missing run 0
+elec	PT	included	first hour ok True; missing days 2 (0.1%); longest missing run 2
+elec	RO	included	first hour ok True; missing days 6 (0.3%); longest missing run 5
+elec	RS	excluded	first hour ok True; missing days 33 (1.6%); longest missing run 29
+elec	SE	included	first hour ok True; missing days 6 (0.3%); longest missing run 2
+elec	SI	included	first hour ok True; missing days 3 (0.1%); longest missing run 3
+elec	SK	included	first hour ok True; missing days 2 (0.1%); longest missing run 1
+elec	UA	excluded	first hour ok False; missing days 1038 (49.4%); longest missing run 997
+web	Afghanistan	included	country; days returned 4141 of 4141
+web	Albania	included	country; days returned 4141 of 4141
+web	Algeria	included	country; days returned 4141 of 4141
+web	Andorra	included	country; days returned 4141 of 4141
+web	Angola	included	country; days returned 4141 of 4141
+web	Antigua and Barbuda	included	country; days returned 4141 of 4141
+web	Argentina	included	country; days returned 4141 of 4141
+web	Armenia	included	country; days returned 4141 of 4141
+web	Australia	included	country; days returned 4141 of 4141
+web	Austria	included	country; days returned 4141 of 4141
+web	Azerbaijan	included	country; days returned 4141 of 4141
+web	The Bahamas	included	country; days returned 4141 of 4141
+web	Bahrain	included	country; days returned 4141 of 4141
+web	Bangladesh	included	country; days returned 4141 of 4141
+web	Barbados	included	country; days returned 4141 of 4141
+web	Belarus	included	country; days returned 4141 of 4141
+web	Belgium	included	country; days returned 4141 of 4141
+web	Belize	included	country; days returned 4141 of 4141
+web	Benin	included	country; days returned 4141 of 4141
+web	Bhutan	included	country; days returned 4141 of 4141
+web	Bolivia	included	country; days returned 4141 of 4141
+web	Bosnia and Herzegovina	included	country; days returned 4141 of 4141
+web	Botswana	included	country; days returned 4141 of 4141
+web	Brazil	included	country; days returned 4141 of 4141
+web	Brunei	included	country; days returned 4141 of 4141
+web	Bulgaria	included	country; days returned 4141 of 4141
+web	Burkina Faso	included	country; days returned 4141 of 4141
+web	Burundi	included	country; days returned 4141 of 4141
+web	Cambodia	included	country; days returned 4141 of 4141
+web	Cameroon	included	country; days returned 4141 of 4141
+web	Canada	included	country; days returned 4141 of 4141
+web	Cape Verde	included	country; days returned 4141 of 4141
+web	Central African Republic	included	country; days returned 4141 of 4141
+web	Chad	included	country; days returned 4141 of 4141
+web	Chile	included	country; days returned 4141 of 4141
+web	China	included	country; days returned 4141 of 4141
+web	Colombia	included	country; days returned 4141 of 4141
+web	Comoros	included	country; days returned 4141 of 4141
+web	Republic of the Congo	included	country; days returned 4141 of 4141
+web	Costa Rica	included	country; days returned 4141 of 4141
+web	Ivory Coast	included	country; days returned 4141 of 4141
+web	Croatia	included	country; days returned 4141 of 4141
+web	Cuba	included	country; days returned 4141 of 4141
+web	Cyprus	included	country; days returned 4141 of 4141
+web	Czech Republic	included	country; days returned 4141 of 4141
+web	Democratic Republic of the Congo	included	country; days returned 4141 of 4141
+web	Denmark	included	country; days returned 4141 of 4141
+web	Djibouti	included	country; days returned 4141 of 4141
+web	Dominica	included	country; days returned 4141 of 4141
+web	Dominican Republic	included	country; days returned 4141 of 4141
+web	East Timor	excluded	country; canonical title 'Timor-Leste' (renamed or missing)
+web	Ecuador	included	country; days returned 4141 of 4141
+web	Egypt	included	country; days returned 4141 of 4141
+web	El Salvador	included	country; days returned 4141 of 4141
+web	Equatorial Guinea	included	country; days returned 4141 of 4141
+web	Eritrea	included	country; days returned 4141 of 4141
+web	Estonia	included	country; days returned 4141 of 4141
+web	Eswatini	excluded	country; days returned 3188 of 4141
+web	Ethiopia	included	country; days returned 4141 of 4141
+web	Fiji	included	country; days returned 4141 of 4141
+web	Finland	included	country; days returned 4141 of 4141
+web	France	included	country; days returned 4141 of 4141
+web	Gabon	included	country; days returned 4141 of 4141
+web	The Gambia	included	country; days returned 4141 of 4141
+web	Georgia (country)	included	country; days returned 4141 of 4141
+web	Germany	included	country; days returned 4141 of 4141
+web	Ghana	included	country; days returned 4141 of 4141
+web	Greece	included	country; days returned 4141 of 4141
+web	Grenada	included	country; days returned 4141 of 4141
+web	Guatemala	included	country; days returned 4141 of 4141
+web	Guinea	included	country; days returned 4141 of 4141
+web	Guinea-Bissau	included	country; days returned 4141 of 4141
+web	Guyana	included	country; days returned 4141 of 4141
+web	Haiti	included	country; days returned 4141 of 4141
+web	Honduras	included	country; days returned 4141 of 4141
+web	Hungary	included	country; days returned 4141 of 4141
+web	Iceland	included	country; days returned 4141 of 4141
+web	India	included	country; days returned 4141 of 4141
+web	Indonesia	included	country; days returned 4141 of 4141
+web	Iran	included	country; days returned 4141 of 4141
+web	Iraq	included	country; days returned 4141 of 4141
+web	Republic of Ireland	included	country; days returned 4141 of 4141
+web	Israel	included	country; days returned 4141 of 4141
+web	Italy	included	country; days returned 4141 of 4141
+web	Jamaica	included	country; days returned 4141 of 4141
+web	Japan	included	country; days returned 4141 of 4141
+web	Jordan	included	country; days returned 4141 of 4141
+web	Kazakhstan	included	country; days returned 4141 of 4141
+web	Kenya	included	country; days returned 4141 of 4141
+web	Kiribati	included	country; days returned 4141 of 4141
+web	North Korea	included	country; days returned 4141 of 4141
+web	South Korea	included	country; days returned 4141 of 4141
+web	Kuwait	included	country; days returned 4141 of 4141
+web	Kyrgyzstan	included	country; days returned 4141 of 4141
+web	Laos	included	country; days returned 4141 of 4141
+web	Latvia	included	country; days returned 4141 of 4141
+web	Lebanon	included	country; days returned 4141 of 4141
+web	Lesotho	included	country; days returned 4141 of 4141
+web	Liberia	included	country; days returned 4141 of 4141
+web	Libya	included	country; days returned 4141 of 4141
+web	Liechtenstein	included	country; days returned 4141 of 4141
+web	Lithuania	included	country; days returned 4141 of 4141
+web	Luxembourg	included	country; days returned 4141 of 4141
+web	Madagascar	included	country; days returned 4141 of 4141
+web	Malawi	included	country; days returned 4141 of 4141
+web	Malaysia	included	country; days returned 4141 of 4141
+web	Maldives	included	country; days returned 4141 of 4141
+web	Mali	included	country; days returned 4141 of 4141
+web	Malta	included	country; days returned 4141 of 4141
+web	Marshall Islands	included	country; days returned 4141 of 4141
+web	Mauritania	included	country; days returned 4141 of 4141
+web	Mauritius	included	country; days returned 4141 of 4141
+web	Mexico	included	country; days returned 4141 of 4141
+web	Federated States of Micronesia	included	country; days returned 4141 of 4141
+web	Moldova	included	country; days returned 4141 of 4141
+web	Monaco	included	country; days returned 4141 of 4141
+web	Mongolia	included	country; days returned 4141 of 4141
+web	Montenegro	included	country; days returned 4141 of 4141
+web	Morocco	included	country; days returned 4141 of 4141
+web	Mozambique	included	country; days returned 4141 of 4141
+web	Myanmar	included	country; days returned 4141 of 4141
+web	Namibia	included	country; days returned 4141 of 4141
+web	Nauru	included	country; days returned 4141 of 4141
+web	Nepal	included	country; days returned 4141 of 4141
+web	Netherlands	included	country; days returned 4141 of 4141
+web	New Zealand	included	country; days returned 4141 of 4141
+web	Nicaragua	included	country; days returned 4141 of 4141
+web	Niger	included	country; days returned 4141 of 4141
+web	Nigeria	included	country; days returned 4141 of 4141
+web	North Macedonia	excluded	country; days returned 3400 of 4141
+web	Norway	included	country; days returned 4141 of 4141
+web	Oman	included	country; days returned 4141 of 4141
+web	Pakistan	included	country; days returned 4141 of 4141
+web	Palau	included	country; days returned 4141 of 4141
+web	Panama	included	country; days returned 4141 of 4141
+web	Papua New Guinea	included	country; days returned 4141 of 4141
+web	Paraguay	included	country; days returned 4141 of 4141
+web	Peru	included	country; days returned 4141 of 4141
+web	Philippines	included	country; days returned 4141 of 4141
+web	Poland	included	country; days returned 4141 of 4141
+web	Portugal	included	country; days returned 4141 of 4141
+web	Qatar	included	country; days returned 4141 of 4141
+web	Romania	included	country; days returned 4141 of 4141
+web	Russia	included	country; days returned 4141 of 4141
+web	Rwanda	included	country; days returned 4141 of 4141
+web	Saint Kitts and Nevis	included	country; days returned 4141 of 4141
+web	Saint Lucia	included	country; days returned 4141 of 4141
+web	Saint Vincent and the Grenadines	included	country; days returned 4141 of 4141
+web	Samoa	included	country; days returned 4141 of 4141
+web	San Marino	included	country; days returned 4141 of 4141
+web	São Tomé and Príncipe	included	country; days returned 4141 of 4141
+web	Saudi Arabia	included	country; days returned 4141 of 4141
+web	Senegal	included	country; days returned 4141 of 4141
+web	Serbia	included	country; days returned 4141 of 4141
+web	Seychelles	included	country; days returned 4141 of 4141
+web	Sierra Leone	included	country; days returned 4141 of 4141
+web	Singapore	included	country; days returned 4141 of 4141
+web	Slovakia	included	country; days returned 4141 of 4141
+web	Slovenia	included	country; days returned 4141 of 4141
+web	Solomon Islands	included	country; days returned 4141 of 4141
+web	Somalia	included	country; days returned 4141 of 4141
+web	South Africa	included	country; days returned 4141 of 4141
+web	South Sudan	included	country; days returned 4141 of 4141
+web	Spain	included	country; days returned 4141 of 4141
+web	Sri Lanka	included	country; days returned 4141 of 4141
+web	Sudan	included	country; days returned 4141 of 4141
+web	Suriname	included	country; days returned 4141 of 4141
+web	Sweden	included	country; days returned 4141 of 4141
+web	Switzerland	included	country; days returned 4141 of 4141
+web	Syria	included	country; days returned 4141 of 4141
+web	Tajikistan	included	country; days returned 4141 of 4141
+web	Tanzania	included	country; days returned 4141 of 4141
+web	Thailand	included	country; days returned 4141 of 4141
+web	Togo	included	country; days returned 4141 of 4141
+web	Tonga	included	country; days returned 4141 of 4141
+web	Trinidad and Tobago	included	country; days returned 4141 of 4141
+web	Tunisia	included	country; days returned 4141 of 4141
+web	Turkey	included	country; days returned 4141 of 4141
+web	Turkmenistan	included	country; days returned 4141 of 4141
+web	Tuvalu	included	country; days returned 4141 of 4141
+web	Uganda	included	country; days returned 4141 of 4141
+web	Ukraine	included	country; days returned 4141 of 4141
+web	United Arab Emirates	included	country; days returned 4141 of 4141
+web	United Kingdom	included	country; days returned 4141 of 4141
+web	United States	included	country; days returned 4141 of 4141
+web	Uruguay	included	country; days returned 4141 of 4141
+web	Uzbekistan	included	country; days returned 4141 of 4141
+web	Vanuatu	included	country; days returned 4141 of 4141
+web	Venezuela	included	country; days returned 4141 of 4141
+web	Vietnam	included	country; days returned 4141 of 4141
+web	Yemen	included	country; days returned 4141 of 4141
+web	Zambia	included	country; days returned 4141 of 4141
+web	Zimbabwe	included	country; days returned 4141 of 4141
+web	Hydrogen	included	element; days returned 4141 of 4141
+web	Helium	included	element; days returned 4141 of 4141
+web	Lithium	included	element; days returned 4141 of 4141
+web	Beryllium	included	element; days returned 4141 of 4141
+web	Boron	included	element; days returned 4141 of 4141
+web	Carbon	included	element; days returned 4141 of 4141
+web	Nitrogen	included	element; days returned 4141 of 4141
+web	Oxygen	included	element; days returned 4141 of 4141
+web	Fluorine	included	element; days returned 4141 of 4141
+web	Neon	included	element; days returned 4141 of 4141
+web	Sodium	included	element; days returned 4141 of 4141
+web	Magnesium	included	element; days returned 4141 of 4141
+web	Aluminium	included	element; days returned 4141 of 4141
+web	Silicon	included	element; days returned 4141 of 4141
+web	Phosphorus	included	element; days returned 4141 of 4141
+web	Sulfur	included	element; days returned 4141 of 4141
+web	Chlorine	included	element; days returned 4141 of 4141
+web	Argon	included	element; days returned 4141 of 4141
+web	Potassium	included	element; days returned 4141 of 4141
+web	Calcium	included	element; days returned 4141 of 4141
+web	Scandium	included	element; days returned 4141 of 4141
+web	Titanium	included	element; days returned 4141 of 4141
+web	Vanadium	included	element; days returned 4141 of 4141
+web	Chromium	included	element; days returned 4141 of 4141
+web	Manganese	included	element; days returned 4141 of 4141
+web	Iron	included	element; days returned 4141 of 4141
+web	Cobalt	included	element; days returned 4141 of 4141
+web	Nickel	included	element; days returned 4141 of 4141
+web	Copper	included	element; days returned 4141 of 4141
+web	Zinc	included	element; days returned 4141 of 4141
+web	Gallium	included	element; days returned 4141 of 4141
+web	Germanium	included	element; days returned 4141 of 4141
+web	Arsenic	included	element; days returned 4141 of 4141
+web	Selenium	included	element; days returned 4141 of 4141
+web	Bromine	included	element; days returned 4141 of 4141
+web	Krypton	included	element; days returned 4141 of 4141
+web	Rubidium	included	element; days returned 4141 of 4141
+web	Strontium	included	element; days returned 4141 of 4141
+web	Yttrium	included	element; days returned 4141 of 4141
+web	Zirconium	included	element; days returned 4141 of 4141
+web	Niobium	included	element; days returned 4141 of 4141
+web	Molybdenum	included	element; days returned 4141 of 4141
+web	Technetium	included	element; days returned 4141 of 4141
+web	Ruthenium	included	element; days returned 4141 of 4141
+web	Rhodium	included	element; days returned 4141 of 4141
+web	Palladium	included	element; days returned 4141 of 4141
+web	Silver	included	element; days returned 4141 of 4141
+web	Cadmium	included	element; days returned 4141 of 4141
+web	Indium	included	element; days returned 4141 of 4141
+web	Tin	included	element; days returned 4141 of 4141
+web	Antimony	included	element; days returned 4141 of 4141
+web	Tellurium	included	element; days returned 4141 of 4141
+web	Iodine	included	element; days returned 4141 of 4141
+web	Xenon	included	element; days returned 4141 of 4141
+web	Caesium	included	element; days returned 4141 of 4141
+web	Barium	included	element; days returned 4141 of 4141
+web	Lanthanum	included	element; days returned 4141 of 4141
+web	Cerium	included	element; days returned 4141 of 4141
+web	Praseodymium	included	element; days returned 4141 of 4141
+web	Neodymium	included	element; days returned 4141 of 4141
+web	Promethium	included	element; days returned 4141 of 4141
+web	Samarium	included	element; days returned 4141 of 4141
+web	Europium	included	element; days returned 4141 of 4141
+web	Gadolinium	included	element; days returned 4141 of 4141
+web	Terbium	included	element; days returned 4141 of 4141
+web	Dysprosium	included	element; days returned 4141 of 4141
+web	Holmium	included	element; days returned 4141 of 4141
+web	Erbium	included	element; days returned 4141 of 4141
+web	Thulium	included	element; days returned 4141 of 4141
+web	Ytterbium	included	element; days returned 4141 of 4141
+web	Lutetium	included	element; days returned 4141 of 4141
+web	Hafnium	included	element; days returned 4141 of 4141
+web	Tantalum	included	element; days returned 4141 of 4141
+web	Tungsten	included	element; days returned 4141 of 4141
+web	Rhenium	included	element; days returned 4141 of 4141
+web	Osmium	included	element; days returned 4141 of 4141
+web	Iridium	included	element; days returned 4141 of 4141
+web	Platinum	included	element; days returned 4141 of 4141
+web	Gold	included	element; days returned 4141 of 4141
+web	Mercury (element)	included	element; days returned 4141 of 4141
+web	Thallium	included	element; days returned 4141 of 4141
+web	Lead	included	element; days returned 4141 of 4141
+web	Bismuth	included	element; days returned 4141 of 4141
+web	Polonium	included	element; days returned 4141 of 4141
+web	Astatine	included	element; days returned 4141 of 4141
+web	Radon	included	element; days returned 4141 of 4141
+web	Francium	included	element; days returned 4141 of 4141
+web	Radium	included	element; days returned 4141 of 4141
+web	Actinium	included	element; days returned 4141 of 4141
+web	Thorium	included	element; days returned 4141 of 4141
+web	Protactinium	included	element; days returned 4141 of 4141
+web	Uranium	included	element; days returned 4141 of 4141
+web	Neptunium	included	element; days returned 4141 of 4141
+web	Plutonium	included	element; days returned 4141 of 4141
+web	Americium	included	element; days returned 4141 of 4141
+web	Curium	included	element; days returned 4141 of 4141
+web	Berkelium	included	element; days returned 4141 of 4141
+web	Californium	included	element; days returned 4141 of 4141
+web	Einsteinium	included	element; days returned 4141 of 4141
+web	Fermium	included	element; days returned 4141 of 4141
+web	Mendelevium	included	element; days returned 4141 of 4141
+web	Nobelium	included	element; days returned 4141 of 4141
+web	Lawrencium	included	element; days returned 4141 of 4141
+web	Rutherfordium	included	element; days returned 4141 of 4141
+web	Dubnium	included	element; days returned 4141 of 4141
+web	Seaborgium	included	element; days returned 4141 of 4141
+web	Bohrium	included	element; days returned 4141 of 4141
+web	Hassium	included	element; days returned 4141 of 4141
+web	Meitnerium	included	element; days returned 4141 of 4141
+web	Darmstadtium	included	element; days returned 4141 of 4141
+web	Roentgenium	included	element; days returned 4141 of 4141
+web	Copernicium	included	element; days returned 4141 of 4141
+web	Nihonium	excluded	element; days returned 3798 of 4141
+web	Flerovium	included	element; days returned 4141 of 4141
+web	Moscovium	excluded	element; days returned 3977 of 4141
+web	Livermorium	included	element; days returned 4141 of 4141
+web	Tennessine	excluded	element; days returned 3798 of 4141
+web	Oganesson	excluded	element; days returned 3798 of 4141
