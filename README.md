@@ -73,6 +73,8 @@ Chronos-2, TimesFM 2.5 and TiRex against seasonal naive and ETS baselines on hou
 
 [`backward-evaluation-generality/`](backward-evaluation-generality/) — a pre-registered test of whether three findings about backward training windows, developed on monthly macroeconomic series, hold on daily data from other domains: 25 countries' electricity load (Open Power System Data) and 304 Wikipedia articles' page views, forecast one day ahead by an autoregression, a seasonal linear model, Holt–Winters and LightGBM with Gaussian and Student-t distributions. Sharded computation in GitHub Actions. Pooling over window lengths beats the backward rules in all 8 domain × model cells; the end-of-episode check and the heavy-tail findings do not travel.
 
+[`backward-evaluation-model-choice/`](backward-evaluation-model-choice/) — a pre-registered test of backward evaluation as a way to choose which forecasting model to deploy, against the usual forward backtest: every 91 days, four candidates (autoregression, seasonal linear model, Holt–Winters, LightGBM) are scored on the recent past or fitted on the recent year and scored on older data, and the best is deployed. Test set of 245 Wikipedia articles from seven lists fixed before the data were downloaded; development set of 25 electricity-load series and 304 articles. Verdict: the backward choice is worse than the forward one in all seven lists; pooling the candidates beats both.
+
 ### Statistical evidence and decision value
 
 [statistical-evidence-and-decisions/](statistical-evidence-and-decisions/) —
