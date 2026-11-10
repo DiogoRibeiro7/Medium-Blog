@@ -94,3 +94,6 @@ backward-evaluation-generality/**/*.gz -filter -diff -merge binary
 backward-evaluation-generality/**/*.tsv -filter -diff -merge text
 backward-evaluation-generality/**/*.parquet -filter -diff -merge binary
 portugal-building-ecosystem/**/*.csv -filter -diff -merge text
+backward-evaluation-model-choice/**/*.csv -filter -diff -merge text
+backward-evaluation-model-choice/**/*.gz -filter -diff -merge binary
+backward-evaluation-model-choice/**/*.tsv -filter -diff -merge text
