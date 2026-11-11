@@ -1,11 +1,12 @@
 # Correctness Over Time in Data Pipelines
 
-Public companion to a four-part series on where correct pipelines give wrong numbers because of time. Every record has three dates: when the event happened, when the pipeline received it, and when it was corrected. A pipeline that keeps only one of them cannot reproduce what it reported yesterday, and cannot say how wrong today's number is.
+Public companion to a five-part series on where correct pipelines give wrong numbers because of time. Every record has three dates: when the event happened, when the pipeline received it, and when it was corrected. A pipeline that keeps only one of them cannot reproduce what it reported yesterday, and cannot say how wrong today's number is.
 
 1. **History** (`part1/`): how four fields met the same problem. Insurance run-off triangles and the chain ladder, epidemic reporting delays and nowcasting, valid time and transaction time in temporal databases, slowly changing dimensions in warehouses, and event time, watermarks and triggers in stream processing. Each idea is rebuilt in code, and the published numbers are recomputed where they exist.
 2. **Mechanism** (`part2/`): five mechanisms simulated where the right answer is known. How much of the latest periods is missing for a given delay distribution; what a watermark's slack and allowed lateness trade, and what a nowcast does instead of waiting; what an incremental load loses with a high-water mark on event time, and what insert-only, upsert and an append-only version log keep when records are corrected; what training on final values and joining the current version of a dimension do to a model; and what a backfill does to values already sent.
 3. **Real data** (`part3/`): three public sources that kept every version. The Robert Koch Institute's daily COVID-19 case files (1,034 files, 15.7 GB), the German COVID-19 Hospitalization Nowcast Hub's reporting triangle and the nowcasts ten models published from November 2021 to April 2022, and quarterly real-GDP vintages for the US, the euro area, Japan and Switzerland. It measures the delay distributions, the shortfall in the latest periods, the errors of real nowcasts and the size of the restatements.
 4. **Practice** (`part4/`): a small daily pipeline in DuckDB that lands the RKI files of Part 3 in an append-only table with their publication date and load time, loads them incrementally on arrival, publishes each 7-day count with a nowcast, its estimated completeness and an interval from its own past errors, compares weeks at equal maturity, and builds training rows on both time axes. It is replayed day by day from June 2021 to August 2023, and every one of its 822 runs is then recomputed and compared with what it stored.
+5. **Fixes** (`part5/`): three changes to the Part 4 pipeline, tested by replaying all 822 mornings with each change alone and in every combination: a content check that counts each date's age from the latest file that brought anything new, a calendar of Germany's nationwide public holidays, and a fallback that uses the same weekday a week earlier instead of a level four to eight weeks old.
 
 The manuscripts are kept elsewhere; this repository holds the code, data, outputs and figures.
 
@@ -14,7 +15,7 @@ The manuscripts are kept elsewhere; this repository holds the code, data, output
 ```
 cd pipeline-time-correctness
 pip install -r requirements.txt
-python -m unittest discover -s tests -v       # 54 tests (11 for Part 1, 19 for Part 2, 15 for Part 3, 9 for Part 4)
+python -m unittest discover -s tests -v       # 60 tests (11 for Part 1, 19 for Part 2, 15 for Part 3, 9 for Part 4, 6 for Part 5)
 cd part1
 python history_numbers.py > output.txt         # every number in the article
 python figures.py                              # figures/*.png
@@ -100,3 +101,19 @@ The input is `part3/data/rki_state.csv.gz`: for each RKI publication from 2 Apri
   - `TRAINING_ROWS_SQL`: rows for a model that predicts next week's cases in a state from this week's, with the feature both as published on the run day and as it stood 28 days later.
 - `practice_numbers.py` prints every number in the article: the replay, the error of the published count and of the nowcast against the file of 10 November 2026, the coverage of the interval, week-over-week changes, the reproduction of every run, the late file, a rerun of the last day, the training rows, and the files that added no case. `output.txt` is its committed output.
 - `figures.py` draws the four figures.
+
+## Part 5
+
+```
+cd pipeline-time-correctness/part5
+python fixes_numbers.py > output.txt   # about ten minutes on two cores: eight variants x 822 runs, each recomputed
+python figures.py                      # figures/*.png (replays four of the variants)
+```
+
+The three changes are options of the Part 4 pipeline, in `part4/pipeline.py` (`Pipeline(content_check=..., holidays=..., fallback=...)`). With all of them off the SQL is exactly the SQL of Part 4 and the code version is the same (`9adf5e8d8533`), so Part 4's output does not change.
+
+- `content_check`: the report finds the latest file that changed anything against the file before it (the data cut), counts each reporting date's age from that file, and stores the cut in a new column, `data_cut`. Dates the cut does not cover are treated as unknown, not as zero.
+- `holidays`: Germany's nine nationwide public holidays (New Year, Good Friday, Easter Monday, 1 May, Ascension, Whit Monday, 3 October, 25 and 26 December) are treated as Sundays, in the delay profile and in the report.
+- `fallback="last_week"`: for a date with less than a fifth of its count expected in hand, the estimate for the latest earlier date of the same weekday that is at least seven days old, instead of the mean 28-day count of the profile's dates (28 to 55 days old).
+- `fixes_numbers.py` replays the eight combinations in parallel, recomputes every run of each, and prints the errors against the final counts: overall and weighted by size, on the ten mornings that used a file with nothing new, by weekday and year, run by run against Part 4, the estimated completeness, the interval's coverage, the week-over-week change, and four runs date by date. `output.txt` is its committed output.
+- `figures.py` draws the three figures.
