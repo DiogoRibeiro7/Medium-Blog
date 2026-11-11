@@ -334,6 +334,8 @@ def residence(base: pd.DataFrame, wide: pd.DataFrame, citizenship: pd.DataFrame,
         out["moves"][f.loc[i, "iso3"]] = {"country": f.loc[i, "country"], "cit": int(f.loc[i, "n_cit"]),
                                           "res": int(f.loc[i, "n_res"]), "log10_shift": float(shift[i])}
     gdp_r2 = r2(sub, "poverty_pct", [G])
+    out["loo_gdp_only"] = {"ols": loo_rmse_ols(sub, "poverty_pct", [G]),
+                           "frac": loo_rmse_fractional(sub, "poverty_pct", [G])}
     for k in ("sec", "cit", "res"):
         col = f"B_{k}"
         raw = ols_hc3(sub, "poverty_pct", [col])
@@ -354,6 +356,8 @@ def residence(base: pd.DataFrame, wide: pd.DataFrame, citizenship: pd.DataFrame,
             "pc_mean": pcorr(sub, col, MEAN, [G, "consumption"]),
             "pc_wT1": pcorr(sub, col, "wT1", [G]),
             "half_joint_coef": jh["coef"][half], "half_joint_p": jh["p"][half],
+            "loo_ols": loo_rmse_ols(sub, "poverty_pct", [G, col]),
+            "loo_frac": loo_rmse_fractional(sub, "poverty_pct", [G, col]),
         }
     return out
 
@@ -657,7 +661,9 @@ def summary_lines(n: dict[str, Any]) -> list[str]:
                    f"p {v['joint_p']:.3f} [{fmt(v['joint_ci95'][0], 1)}, {fmt(v['joint_ci95'][1], 1)}] incR2 {v['incremental_r2']:.4f} | "
                    f"+type {fmt(v['type_coef'], 2)} p {v['type_p']:.3f} | AME|GDP {fmt(v['frac_gdp']['ame'], 2)} "
                    f"AME|mean {fmt(v['frac_mean_gdp']['ame'], 2)} | corr GDP {v['corr_gdp']:.3f} | pc mean {_pc(v['pc_mean'])} | "
-                   f"pc wT1 {_pc(v['pc_wT1'])} | +0.5 on 54: {fmt(v['half_joint_coef'], 2)} p {v['half_joint_p']:.3f}")
+                   f"pc wT1 {_pc(v['pc_wT1'])} | +0.5 on 54: {fmt(v['half_joint_coef'], 2)} p {v['half_joint_p']:.3f} | "
+                   f"LOO {v['loo_ols']:.2f} fracLOO {v['loo_frac']:.2f} (GDP only {rs['loo_gdp_only']['ols']:.2f} / "
+                   f"{rs['loo_gdp_only']['frac']:.2f})")
     for k in ("wT1_sy", "wT1_lo"):
         v = tm[k]
         out.append(f"{k}: corr 2024 {v['corr_2024']:.3f}, mean |diff| {v['mean_abs_diff']:.2f}; B raw {fmt(v['b_raw'], 3)} "
