@@ -171,6 +171,11 @@ def minimum_bias(y0: np.ndarray, iterations: int) -> list[tuple[np.ndarray, np.n
     return out
 
 
+def tiny(x: float, bound: float = 1e-12) -> str:
+    """Report a rounding-level discrepancy as a bound: its exact size depends on the processor and the BLAS."""
+    return f"below {bound:.0e}" if x < bound else f"{x:.1e}"
+
+
 def poisson_irls(y: np.ndarray, exposure: np.ndarray, X: np.ndarray, tol: float = 1e-14) -> np.ndarray:
     """Poisson (quasi-)likelihood with log link and offset log(exposure), by iteratively reweighted least squares."""
     b = np.zeros(X.shape[1])
@@ -354,7 +359,7 @@ def report_canadian(res: dict) -> None:
     print("Largest gap to Berquist's fitted values (Table 2):", f"{np.max(np.abs(res['Fmb'] - BERQUIST_FITTED)):.4f}")
     print("Balance at the fixed point, by class:", np.round(c["class"], 6), " by merit:", np.round(c["merit"], 6))
     print(f"Largest relative gap between the minimum-bias fit and the Poisson log-link fit: "
-          f"{np.max(np.abs(res['Fmb'] / res['Fglm'] - 1)):.2e}")
+          f"{tiny(np.max(np.abs(res['Fmb'] / res['Fglm'] - 1)))}")
     print(f"Minimum bias against Method 2: chi-square {criteria(res['Fmb'])['chi2']:.2f} vs {criteria(res['F2'])['chi2']:.2f};"
           f" largest cell gap {np.max(np.abs(res['Fmb'] - res['F2'])):.4f}")
 
@@ -490,10 +495,10 @@ def report_swedish(res: dict) -> None:
     print(f"Claim frequency: {C.sum() / E.sum():.4f} per policy-year; mean payment per claim: {P.sum() / C.sum():,.0f} kronor")
     print(f"Cells with no claims: {(C == 0).sum()}; median exposure per cell: {np.median(E):.1f} policy-years")
     print(f"Marginal-totals iteration (Bailey 1963, Jung 1968), four factors: converged in {res['iterations']} sweeps.")
-    print(f"Largest relative gap to the Poisson GLM fitted by IRLS: {np.max(np.abs(res['mu'] / res['mu_irls'] - 1)):.1e}")
+    print(f"Largest relative gap to the Poisson GLM fitted by IRLS: {tiny(np.max(np.abs(res['mu'] / res['mu_irls'] - 1)))}")
     for f in FACTORS:
         b = balance_by(codes[f], res["mu"], C)
-        print(f"  {f:<10} relativities {np.round(res['rel'][f], 3)}  balance max |1 - ratio| {np.max(np.abs(b - 1)):.1e}")
+        print(f"  {f:<10} relativities {np.round(res['rel'][f], 3)}  balance max |1 - ratio| {tiny(np.max(np.abs(b - 1)))}")
     print(f"  base frequency (Kilometres 1, Zone 1, Bonus 1, Make 1): {res['base']:.4f}")
     print(f"Range of the four-factor frequency tariff: {res['rate'].min():.4f} to {res['rate'].max():.4f} "
           f"(ratio {res['rate'].max() / res['rate'].min():.1f})")
