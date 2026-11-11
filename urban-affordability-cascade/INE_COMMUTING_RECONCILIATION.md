@@ -101,3 +101,35 @@ A Census commuting network measures work/study relationships, not previous
 residence, reasons for moving or direction of a residential displacement.
 Even a perfect 136-pair match cannot validate the latter causal mechanism.
 For directed relocation, see [OD_DATA_ACCESS.md](OD_DATA_ACCESS.md).
+
+## Manually capture the official INE JSON before reconciliation
+
+The [manual INE capture workflow](https://github.com/DiogoRibeiro7/Medium-Blog/blob/main/.github/workflows/ine-0012340-source-capture.yml)
+requests indicator `0012340` metadata and a **candidate** 2021 data slice.
+The candidate period selector `S7A2021` and payload schema are **unverified**
+until the downloaded metadata and records are inspected.
+
+Only `workflow_dispatch` can run the capture; no pull-request or push job
+contacts INE. In GitHub, select **Actions → Capture INE Census 2021 commuting
+source (manual) → Run workflow**. The capture runner calls
+`ine_commuting_capture.py`, saving exact valid JSON response bytes, each
+SHA-256 checksum, effective response URL, timestamp, schema hints and any
+failure reason in `capture_manifest.json`. An unsuccessful source request
+causes a failed job, while any other successful capture and the manifest are
+still uploaded as a 30-day workflow artifact.
+
+The script uses HTTPS GET to fixed `www.ine.pt` endpoints, rejects changed
+redirects, enforces bounded response sizes and refuses malformed JSON. The
+operator must inspect the actual period, dimensions, municipality codes,
+measure, privacy flags and meaning. A captured JSON object does **not**
+mean an independently verified municipal matrix. Every generated manifest
+explicitly marks `semantics_verified=false` and
+`frozen_pairs_reconciled=false`. If official dimensions differ from the
+previously proposed intake format, update the parser only with reviewed
+official examples, then use `ine_commuting_reconciliation.py` to compare all
+136 undirected AMP pairs.
+
+The new unit tests are offline and use only synthetic HTTP responses; they
+cannot authenticate the source. The capture workflow does **not** overwrite
+the pinned commuting dataset or its provenance. It is a first evidence-gathering
+step toward that separate reconciliation.

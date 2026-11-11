@@ -1,0 +1,61 @@
+name: Billionaire-poverty follow-ups — fetch WID wealth shares
+
+on:
+  push:
+    branches: [billionaires-poverty-wealth-shares]
+    paths:
+      - ".github/workflows/billionaires-poverty-followups-wid.yml"
+      - "billionaires-poverty-followups/fetch_wid.py"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fetch-wid:
+    name: Extract WID wealth and income shares
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: python -m pip install -r billionaires-poverty-followups/requirements.txt
+      - name: Offline contract tests
+        working-directory: billionaires-poverty-followups
+        run: python -m unittest discover -s tests -p "test_fetch_wid.py" -v
+      - name: Download the WID bulk archive
+        id: download
+        run: |
+          echo "retrieved=$(date -u +%Y-%m-%dT%H:%M:%SZ)" >> "$GITHUB_OUTPUT"
+          curl -fsSL --retry 5 --retry-delay 20 --retry-all-errors \
+               -D headers.txt -o wid_all_data.zip https://wid.world/bulk_download/wid_all_data.zip
+          lm=$(grep -i '^last-modified:' headers.txt | tail -1 | cut -d' ' -f2- | tr -d '\r')
+          echo "last_modified=${lm}" >> "$GITHUB_OUTPUT"
+          ls -l wid_all_data.zip
+      - name: Report the archive layout
+        if: always()
+        run: |
+          echo "::notice title=WID members::$(unzip -l wid_all_data.zip | head -8 | tail -6 | tr '\n' '|')"
+          echo "::notice title=WID_data_US head::$(unzip -p wid_all_data.zip WID_data_US.csv | head -3 | tr '\n' '|')"
+          echo "::notice title=WID_metadata_US head::$(unzip -p wid_all_data.zip WID_metadata_US.csv | head -2 | cut -c1-900 | tr '\n' '|')"
+          echo "::notice title=US wealth codes::$(unzip -p wid_all_data.zip WID_data_US.csv | cut -d';' -f2 | grep -E '^(s|a|g)hweal' | sort -u | head -20 | tr '\n' ' ')"
+      - name: Extract the selected series
+        working-directory: billionaires-poverty-followups
+        run: |
+          python fetch_wid.py --zip ../wid_all_data.zip --output-dir data \
+            --retrieved-utc "${{ steps.download.outputs.retrieved }}" \
+            --last-modified "${{ steps.download.outputs.last_modified }}" | tee -a "$GITHUB_STEP_SUMMARY"
+          echo "::notice title=WID manifest::$(python -c "import json;m=json.load(open('data/wid_manifest.json'));print({k:m[k] for k in ['archive_bytes','n_rows','n_countries','latest_year_by_variable','metadata_columns','last_modified']})")"
+      - name: Commit the extracted tables to the branch
+        if: github.event_name == 'push'
+        run: |
+          git config user.name "Diogo Ribeiro"
+          git config user.email "diogo_dj@hotmail.com"
+          git add billionaires-poverty-followups/data/wid_series.csv.gz \
+                  billionaires-poverty-followups/data/wid_metadata.csv.gz \
+                  billionaires-poverty-followups/data/wid_manifest.json
+          git commit -m "Billionaire-poverty follow-ups: WID data snapshot" || echo "no changes"
+          git push origin HEAD:${GITHUB_REF_NAME}

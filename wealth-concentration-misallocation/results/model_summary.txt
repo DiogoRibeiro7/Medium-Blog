@@ -1,0 +1,82 @@
+# Simulation results (every number quoted in the article)
+
+Baseline parameters: Params(n=10000, alpha=0.3333333333333333, eta=0.75, lam=1.25, delta=0.06, s_w=0.05, s_k=0.5, sigma_z=0.5, psi=0.98, death=0.025, rho_g=0.3, tau_k=0.0, tau_a=0.0, tau_e=0.0)
+Reduced-form capital exponent at a given wage gamma = 0.5000; dispersion of reduced-form productivity = 1.0000
+Top-1% share of capital in the first-best allocation (analytic) = 0.3721
+
+## E1 static allocation (lam = baseline)
+rho=0.00: efficiency at top1=0.04 0.6255; at top1=0.20 0.4994; at top1=0.30 0.4402; at top1=0.50 0.3390; max 0.6255 at top1=0.04
+rho=0.50: efficiency at top1=0.04 0.7317; at top1=0.20 0.7296; at top1=0.30 0.6967; at top1=0.50 0.6139; max 0.7482 at top1=0.10
+rho=0.90: efficiency at top1=0.04 0.8176; at top1=0.20 0.9455; at top1=0.30 0.9540; at top1=0.50 0.9304; max 0.9540 at top1=0.30
+rho=1.00: efficiency at top1=0.04 0.8348; at top1=0.20 0.9889; at top1=0.30 0.9998; at top1=0.50 0.9975; max 1.0000 at top1=0.34
+Efficiency at top1 ~ 0.25, rho from -0.20 to 1.00: 0.3941 -> 0.9961
+  slope d(eff)/d(top1) over 0.10-0.40 at rho=-0.20: -0.6490 per unit share
+  slope d(eff)/d(top1) over 0.10-0.40 at rho=-0.15: -0.6407 per unit share
+  slope d(eff)/d(top1) over 0.10-0.40 at rho=-0.10: -0.6306 per unit share
+  slope d(eff)/d(top1) over 0.10-0.40 at rho=-0.05: -0.6186 per unit share
+  slope d(eff)/d(top1) over 0.10-0.40 at rho=-0.00: -0.6046 per unit share
+  slope d(eff)/d(top1) over 0.10-0.40 at rho=0.05: -0.5882 per unit share
+  slope d(eff)/d(top1) over 0.10-0.40 at rho=0.10: -0.5693 per unit share
+  slope d(eff)/d(top1) over 0.10-0.40 at rho=0.15: -0.5477 per unit share
+  slope d(eff)/d(top1) over 0.10-0.40 at rho=0.20: -0.5234 per unit share
+  slope d(eff)/d(top1) over 0.10-0.40 at rho=0.25: -0.4961 per unit share
+  slope d(eff)/d(top1) over 0.10-0.40 at rho=0.30: -0.4658 per unit share
+  slope d(eff)/d(top1) over 0.10-0.40 at rho=0.35: -0.4324 per unit share
+  slope d(eff)/d(top1) over 0.10-0.40 at rho=0.40: -0.3958 per unit share
+  slope d(eff)/d(top1) over 0.10-0.40 at rho=0.45: -0.3558 per unit share
+  slope d(eff)/d(top1) over 0.10-0.40 at rho=0.50: -0.3125 per unit share
+  slope d(eff)/d(top1) over 0.10-0.40 at rho=0.55: -0.2659 per unit share
+  slope d(eff)/d(top1) over 0.10-0.40 at rho=0.60: -0.2160 per unit share
+  slope d(eff)/d(top1) over 0.10-0.40 at rho=0.65: -0.1630 per unit share
+  slope d(eff)/d(top1) over 0.10-0.40 at rho=0.70: -0.1073 per unit share
+  slope d(eff)/d(top1) over 0.10-0.40 at rho=0.75: -0.0493 per unit share
+  slope d(eff)/d(top1) over 0.10-0.40 at rho=0.80: +0.0098 per unit share
+  slope d(eff)/d(top1) over 0.10-0.40 at rho=0.85: +0.0684 per unit share
+  slope d(eff)/d(top1) over 0.10-0.40 at rho=0.90: +0.1235 per unit share
+  slope d(eff)/d(top1) over 0.10-0.40 at rho=0.95: +0.1680 per unit share
+  slope d(eff)/d(top1) over 0.10-0.40 at rho=1.00: +0.1720 per unit share
+
+## E1 slices for looser credit (rho -> efficiency at top1 = 0.04 / 0.30 / 0.50)
+lam=1.25 rho=0.0: 0.6255 / 0.4402 / 0.3390
+lam=1.25 rho=0.5: 0.7317 / 0.6967 / 0.6139
+lam=1.25 rho=0.9: 0.8176 / 0.9540 / 0.9304
+lam=1.25 rho=1.0: 0.8348 / 0.9998 / 0.9975
+lam=2 rho=0.0: 0.7162 / 0.5237 / 0.4099
+lam=2 rho=0.5: 0.8178 / 0.7848 / 0.7040
+lam=2 rho=0.9: 0.8924 / 0.9848 / 0.9709
+lam=2 rho=1.0: 0.9054 / 1.0000 / 0.9999
+lam=4 rho=0.0: 0.8146 / 0.6337 / 0.5127
+lam=4 rho=0.5: 0.8995 / 0.8738 / 0.8061
+lam=4 rho=0.9: 0.9527 / 0.9975 / 0.9928
+lam=4 rho=1.0: 0.9604 / 1.0000 / 1.0000
+lam=10 rho=0.0: 0.8986 / 0.7511 / 0.6357
+lam=10 rho=0.5: 0.9586 / 0.9422 / 0.8963
+lam=10 rho=0.9: 0.9869 / 0.9999 / 0.9993
+lam=10 rho=1.0: 0.9899 / 1.0000 / 1.0000
+
+## E2 dynamic steady states by rho_g (means over seeds)
+rho_g=0.0: efficiency 0.9115, coupling 0.5888, capital coupling 0.8707, top1 0.1712, top10 0.4854, output 28492.1, wage 1.4246, R 0.0228, K/Y 4.588, constrained 0.6416
+rho_g=0.2: efficiency 0.9151, coupling 0.6162, capital coupling 0.8831, top1 0.1721, top10 0.4926, output 28626.5, wage 1.4313, R 0.0238, K/Y 4.589, constrained 0.6235
+rho_g=0.4: efficiency 0.9197, coupling 0.6465, capital coupling 0.8971, top1 0.1745, top10 0.5018, output 28793.7, wage 1.4397, R 0.0250, K/Y 4.590, constrained 0.6022
+rho_g=0.6: efficiency 0.9254, coupling 0.6802, capital coupling 0.9126, top1 0.1792, top10 0.5136, output 28996.4, wage 1.4498, R 0.0264, K/Y 4.591, constrained 0.5762
+rho_g=0.8: efficiency 0.9328, coupling 0.7181, capital coupling 0.9290, top1 0.1880, top10 0.5284, output 29260.2, wage 1.4630, R 0.0281, K/Y 4.594, constrained 0.5457
+rho_g=1.0: efficiency 0.9420, coupling 0.7598, capital coupling 0.9468, top1 0.2025, top10 0.5490, output 29762.0, wage 1.4881, R 0.0302, K/Y 4.588, constrained 0.5073
+efficiency range across seeds: 0.0: 0.9111-0.9120; 0.2: 0.9147-0.9154; 0.4: 0.9192-0.9202; 0.6: 0.9249-0.9262; 0.8: 0.9325-0.9330; 1.0: 0.9412-0.9432
+
+## E3 taxes, steady state (means over seeds)
+capital income tax tau_k = 0.250; revenue-neutral wealth tax tau_a = 0.03524 (target revenue/output 0.12500, achieved 0.12501)
+none: efficiency 0.9173, coupling 0.6309, top1 0.1731, top10 0.4969, output 28706.0 (+0.00% vs none), K 131738, wage 1.4353 (+0.00%), revenue/output 0.00000
+capital_income: efficiency 0.9166, coupling 0.6362, top1 0.1650, top10 0.4788, output 26315.8 (-8.33% vs none), K 93320, wage 1.3158 (-8.33%), revenue/output 0.12500
+wealth: efficiency 0.9288, coupling 0.6801, top1 0.1903, top10 0.5227, output 26786.3 (-6.69% vs none), K 95011, wage 1.3393 (-6.69%), revenue/output 0.12501
+wealth tax vs capital income tax: output +1.79%, efficiency +0.0122, coupling +0.0439, top1 +0.0252, wage +1.79%, K +1.81%
+
+## E4 re-ranking shock at t = 0 (means over seeds)
+none: coupling t=0 -0.0073, t=10 0.4417, t=25 0.5857, t=50 0.6277, end 0.6325; years to half of pre-shock coupling 6; efficiency t=0 0.7596, t=25 0.9150, end 0.9125; top1 t=0 0.1730, t=25 0.1439
+capital_income: coupling t=0 -0.0073, t=10 0.4483, t=25 0.5914, t=50 0.6331, end 0.6376; years to half of pre-shock coupling 6; efficiency t=0 0.7655, t=25 0.9139, end 0.9118; top1 t=0 0.1649, t=25 0.1373
+wealth: coupling t=0 -0.0072, t=10 0.5099, t=25 0.6424, t=50 0.6796, end 0.6808; years to half of pre-shock coupling 5; efficiency t=0 0.7531, t=25 0.9284, end 0.9242; top1 t=0 0.1884, t=25 0.1663
+
+## E5 persistence of productivity x inheritance of ability (means over seeds)
+psi=0.80: rho_g=0 efficiency 0.8361, coupling 0.2597, top1 0.0572; rho_g=1 efficiency 0.8395, coupling 0.2834, top1 0.0611; gap efficiency +0.0035, output +0.44%
+psi=0.90: rho_g=0 efficiency 0.8576, coupling 0.3725, top1 0.0880; rho_g=1 efficiency 0.8662, coupling 0.4227, top1 0.0960; gap efficiency +0.0086, output +1.11%
+psi=0.95: rho_g=0 efficiency 0.8821, coupling 0.4800, top1 0.1247; rho_g=1 efficiency 0.8999, coupling 0.5748, top1 0.1399; gap efficiency +0.0178, output +2.30%
+psi=0.98: rho_g=0 efficiency 0.9115, coupling 0.5888, top1 0.1712; rho_g=1 efficiency 0.9420, coupling 0.7598, top1 0.2025; gap efficiency +0.0305, output +4.46%

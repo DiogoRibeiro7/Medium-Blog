@@ -1,0 +1,37 @@
+name: Billionaire-poverty follow-ups — reproduce
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/billionaires-poverty-followups.yml"
+      - "billionaires-poverty-followups/**"
+      - "billionaires-poverty-audit/observed_figures.py"
+      - "billionaires-poverty-audit/data/observed_citizenship_54_2026.csv"
+      - "billionaires-poverty-audit/evidence/forbes-2026-run-42099896845/**"
+
+permissions:
+  contents: read
+
+jobs:
+  reproduce:
+    name: Tests and number-by-number reproduction
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      OPENBLAS_NUM_THREADS: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: python -m pip install -r billionaires-poverty-followups/requirements.txt
+      - name: Unit and contract tests
+        working-directory: billionaires-poverty-followups
+        run: python -m unittest discover -s tests -v
+      - name: Reproduce every number in Part 1
+        working-directory: billionaires-poverty-followups
+        run: python part1_poverty_lines.py --check --figures figures/check | tee -a "$GITHUB_STEP_SUMMARY"
+      - name: Reproduce every number in Part 2
+        working-directory: billionaires-poverty-followups
+        run: python part2_wealth_shares.py --check --figures figures/check2 | tee -a "$GITHUB_STEP_SUMMARY"

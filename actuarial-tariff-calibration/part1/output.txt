@@ -68,7 +68,7 @@ calculation 3 Berquist       0.868   1.143   1.290   1.345   2.090   0.919   1.1
 Fixed point:                              0.869   1.144   1.291   1.346   2.092   0.918   1.127   1.231   1.480
 Largest gap to Berquist's fitted values (Table 2): 0.0017
 Balance at the fixed point, by class: [1. 1. 1. 1. 1.]  by merit: [1. 1. 1. 1.]
-Largest relative gap between the minimum-bias fit and the Poisson log-link fit: below 1e-12
+Largest relative gap between the minimum-bias fit and the Poisson log-link fit: 2.22e-16
 Minimum bias against Method 2: chi-square 34.08 vs 34.05; largest cell gap 0.0101
 
 ==============================================================================
@@ -115,11 +115,11 @@ Cells: 2,182; policy-years: 2,383,170; claims: 113,171; payments: 560,790,681 kr
 Claim frequency: 0.0475 per policy-year; mean payment per claim: 4,955 kronor
 Cells with no claims: 385; median exposure per cell: 81.5 policy-years
 Marginal-totals iteration (Bailey 1963, Jung 1968), four factors: converged in 13 sweeps.
-Largest relative gap to the Poisson GLM fitted by IRLS: below 1e-12
-  Kilometres relativities [1.    1.237 1.377 1.499 1.779]  balance max |1 - ratio| below 1e-12
-  Zone       relativities [1.    0.788 0.68  0.559 0.722 0.591 0.481]  balance max |1 - ratio| below 1e-12
-  Bonus      relativities [1.    0.619 0.5   0.437 0.396 0.37  0.265]  balance max |1 - ratio| below 1e-12
-  Make       relativities [1.    1.079 0.781 0.52  1.168 0.715 0.946 0.957 0.934]  balance max |1 - ratio| below 1e-12
+Largest relative gap to the Poisson GLM fitted by IRLS: below 1e-13
+  Kilometres relativities [1.    1.237 1.377 1.499 1.779]  balance max |1 - ratio| below 1e-14
+  Zone       relativities [1.    0.788 0.68  0.559 0.722 0.591 0.481]  balance max |1 - ratio| below 1e-14
+  Bonus      relativities [1.    0.619 0.5   0.437 0.396 0.37  0.265]  balance max |1 - ratio| below 1e-14
+  Make       relativities [1.    1.079 0.781 0.52  1.168 0.715 0.946 0.957 0.934]  balance max |1 - ratio| below 1e-14
   base frequency (Kilometres 1, Zone 1, Bonus 1, Make 1): 0.1632
 Range of the four-factor frequency tariff: 0.0108 to 0.3389 (ratio 31.3)
 

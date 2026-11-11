@@ -1,0 +1,20 @@
+Simulated checks: AR(1) with Student-t(5) shocks, 10 blocks of 120 rows, 100 replicates per scenario.
+Mean over cells of the excess log loss and its parts (nats per row); 'share' = part / excess.
+
+      none cells across the change: excess -0.002 = level 0.009 + spread 0.009 + structure -0.021  (4800 cells)
+      none cells within a regime : excess -0.002 = level 0.010 + spread 0.009 + structure -0.021  (4200 cells)
+     level cells across the change: excess +0.621 = level 0.634 + spread 0.009 + structure -0.021  shares 1.02 / 0.01 / -0.03  (4800 cells)
+     level cells within a regime : excess -0.003 = level 0.009 + spread 0.009 + structure -0.021  (4200 cells)
+    spread cells across the change: excess +0.298 = level 0.011 + spread 0.306 + structure -0.020  shares 0.04 / 1.03 / -0.07  (4800 cells)
+    spread cells within a regime : excess -0.002 = level 0.010 + spread 0.008 + structure -0.020  (4200 cells)
+  dynamics cells across the change: excess +0.448 = level 0.020 + spread 0.193 + structure +0.235  shares 0.04 / 0.43 / 0.52  (4800 cells)
+  dynamics cells within a regime : excess -0.002 = level 0.010 + spread 0.009 + structure -0.020  (4200 cells)
+   episode cells across the change: excess +0.922 = level 0.192 + spread 0.749 + structure -0.020  shares 0.21 / 0.81 / -0.02  (1800 cells)
+   episode cells within a regime : excess -0.002 = level 0.009 + spread 0.009 + structure -0.020  (7200 cells)
+
+Replicate 0: best split into 2 regimes (3 for the episode; inclusive block ranges, 0-based; the change is at block 6, the episode is block 4) and the cost of the best split into 1-4 regimes. A split is always returned; whether it means anything shows in how far the cost falls:
+      none: [(0, 5), (6, 9)]; cost of 1-4 regimes: 0.4, 0.0, -0.2, -0.2
+     level: [(0, 5), (6, 9)]; cost of 1-4 regimes: 11.2, -0.4, -0.4, -0.3
+    spread: [(0, 5), (6, 9)]; cost of 1-4 regimes: 9.8, 0.1, -0.1, -0.1
+  dynamics: [(0, 5), (6, 9)]; cost of 1-4 regimes: 10.9, 0.3, 0.1, -0.0
+   episode: [(0, 3), (4, 4), (5, 9)]; cost of 1-4 regimes: 7.4, 3.5, -0.2, -0.2

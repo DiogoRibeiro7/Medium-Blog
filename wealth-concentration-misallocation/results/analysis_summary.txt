@@ -1,0 +1,111 @@
+# Cross-country results (every number quoted in the article)
+
+## Data coverage
+WID wealth top-1% series: 211 countries matched, 9495 country-years, 562 with data_quality > 0 (5.9%), in 37 countries
+imputation diagnostic corr_imputed: 0.8158
+imputation diagnostic within_r2_imputed: 0.3440
+imputation diagnostic n_imputed: 4818
+imputation diagnostic countries_imputed: 209
+imputation diagnostic corr_observed: 0.6494
+imputation diagnostic within_r2_observed: 0.1575
+imputation diagnostic n_observed: 457
+imputation diagnostic countries_observed: 37
+5-year panel: 1400 country-windows with wealth top-1% and growth; 142 with a source-based start value in 36 countries
+10-year panel: 699 country-windows with wealth top-1% and growth; 67 with a source-based start value in 30 countries
+
+## Part A, multiverse
+specifications estimated: 540
+all: n=540, point estimate < 0 in 67.8%, significant negative 156 (28.9%), significant positive 36 (6.7%), median -0.134, range [-0.923, +2.683]
+wealth measures: n=324, point estimate < 0 in 61.1%, significant negative 59 (18.2%), significant positive 17 (5.2%), median -0.062, range [-0.642, +1.227]
+income measures: n=216, point estimate < 0 in 77.8%, significant negative 97 (44.9%), significant positive 19 (8.8%), median -0.296, range [-0.923, +2.683]
+by estimator:
+  between: n=180, median -0.298, share<0 84.4%, sig- 82, sig+ 0, median n_obs 67
+  pooled: n=180, median -0.210, share<0 82.2%, sig- 67, sig+ 0, median n_obs 424
+  within: n=180, median +0.155, share<0 36.7%, sig- 7, sig+ 36, median n_obs 424
+by sample:
+  all: n=180, median -0.235, share<0 81.1%, sig- 80, sig+ 8, median n_obs 507
+  high_income: n=180, median -0.112, share<0 66.1%, sig- 41, sig+ 12, median n_obs 202
+  observed: n=180, median -0.039, share<0 56.1%, sig- 35, sig+ 16, median n_obs 136
+by measure:
+  income_top1: n=108, median -0.249, share<0 79.6%, sig- 42, sig+ 3, median n_obs 397
+  income_top10: n=108, median -0.348, share<0 75.9%, sig- 55, sig+ 16, median n_obs 397
+  wealth_bottom50: n=108, median -0.071, share<0 69.4%, sig- 11, sig+ 4, median n_obs 144
+  wealth_top1: n=108, median -0.059, share<0 55.6%, sig- 30, sig+ 7, median n_obs 144
+  wealth_top10: n=108, median -0.043, share<0 58.3%, sig- 18, sig+ 6, median n_obs 144
+by outcome:
+  g_gdppc: n=270, median -0.078, share<0 59.6%, sig- 38, sig+ 34, median n_obs 212
+  g_tfp: n=270, median -0.216, share<0 75.9%, sig- 118, sig+ 2, median n_obs 192
+by controls:
+  full: n=180, median -0.106, share<0 64.4%, sig- 41, sig+ 9, median n_obs 192
+  income: n=180, median -0.158, share<0 71.1%, sig- 63, sig+ 14, median n_obs 192
+  none: n=180, median -0.155, share<0 67.8%, sig- 52, sig+ 13, median n_obs 192
+by window:
+  5: n=270, median -0.112, share<0 63.7%, sig- 78, sig+ 27, median n_obs 392
+  10: n=270, median -0.149, share<0 71.9%, sig- 78, sig+ 9, median n_obs 192
+by estimator x sample (wealth measures, median beta / share<0 / sig- / sig+):
+  between / all: -0.320 / 100% / 25 / 0 (n=36)
+  between / high_income: -0.133 / 81% / 4 / 0 (n=36)
+  between / observed: +0.051 / 42% / 0 / 0 (n=36)
+  pooled / all: -0.251 / 100% / 21 / 0 (n=36)
+  pooled / high_income: -0.059 / 69% / 6 / 0 (n=36)
+  pooled / observed: +0.009 / 44% / 0 / 0 (n=36)
+  within / all: +0.089 / 42% / 0 / 2 (n=36)
+  within / high_income: +0.036 / 42% / 0 / 4 (n=36)
+  within / observed: +0.213 / 31% / 3 / 11 (n=36)
+
+## Part B, billionaire wealth by origin (5-year growth after 1996, 2001, 2014)
+panel: 394 country-waves, 133 countries, 138 country-waves with at least one billionaire
+  inherited_pct among countries with billionaires: median 2.117, mean 3.203, max 25.90
+  self_made_pct among countries with billionaires: median 1.393, mean 3.553, max 86.35
+  resources_pct among countries with billionaires: median 0.000, mean 0.917, max 16.17
+  total_pct among countries with billionaires: median 4.596, mean 7.672, max 86.35
+h=5 g_gdppc log1p all total (n=394, countries=133): total -0.2429 [-0.5929, +0.0925]
+h=5 g_gdppc log1p all composition (n=394, countries=133): inherited -0.4184 [-1.0918, +0.2007], self-made -0.0058 [-0.5167, +0.4234], resources -0.0345 [-0.5032, +0.6053]; inherited - self-made -0.4126 [-1.3630, +0.5857], P(diff >= 0) 0.204
+h=5 g_gdppc log1p with_billionaires total (n=138, countries=61): total -0.2101 [-0.7090, +0.2581]
+h=5 g_gdppc log1p with_billionaires composition (n=138, countries=61): inherited -0.3406 [-1.0508, +0.2531], self-made -0.0660 [-0.6618, +0.4858], resources -0.0060 [-0.5330, +0.8182]; inherited - self-made -0.2746 [-1.3433, +0.6781], P(diff >= 0) 0.335
+h=5 g_gdppc log1p no_offshore total (n=382, countries=129): total -0.2892 [-0.6641, +0.0372]
+h=5 g_gdppc log1p no_offshore composition (n=382, countries=129): inherited -0.5466 [-1.2974, +0.0601], self-made -0.0114 [-0.4953, +0.4149], resources -0.0841 [-0.5902, +0.4443]; inherited - self-made -0.5352 [-1.5682, +0.3561], P(diff >= 0) 0.129
+h=5 g_gdppc raw all total (n=394, countries=133): total -0.0063 [-0.0753, +0.0179]
+h=5 g_gdppc raw all composition (n=394, countries=133): inherited -0.0538 [-0.2337, +0.0700], self-made +0.0160 [-0.1083, +0.0614], resources -0.0722 [-0.1719, +0.0606]; inherited - self-made -0.0698 [-0.2600, +0.1456], P(diff >= 0) 0.210
+h=5 g_gdppc raw with_billionaires total (n=138, countries=61): total +0.0022 [-0.0789, +0.0357]
+h=5 g_gdppc raw with_billionaires composition (n=138, countries=61): inherited -0.0301 [-0.2104, +0.0997], self-made +0.0141 [-0.1036, +0.0639], resources -0.0364 [-0.1643, +0.1458]; inherited - self-made -0.0442 [-0.2501, +0.1683], P(diff >= 0) 0.348
+h=5 g_gdppc raw no_offshore total (n=382, countries=129): total -0.0091 [-0.1077, +0.0229]
+h=5 g_gdppc raw no_offshore composition (n=382, countries=129): inherited -0.0831 [-0.3103, +0.0912], self-made +0.0124 [-0.1400, +0.0372], resources -0.0783 [-0.1822, +0.0461]; inherited - self-made -0.0955 [-0.3302, +0.1730], P(diff >= 0) 0.255
+h=5 g_tfp log1p all total (n=331, countries=112): total -0.0071 [-0.2971, +0.2458]
+h=5 g_tfp log1p all composition (n=331, countries=112): inherited -0.2285 [-0.8064, +0.2803], self-made +0.1560 [-0.2752, +0.5597], resources -0.0169 [-0.4039, +0.4936]; inherited - self-made -0.3845 [-1.2860, +0.4821], P(diff >= 0) 0.202
+h=5 g_tfp log1p with_billionaires total (n=132, countries=56): total +0.0628 [-0.3851, +0.5321]
+h=5 g_tfp log1p with_billionaires composition (n=132, countries=56): inherited -0.2747 [-0.8212, +0.1992], self-made +0.0983 [-0.3757, +0.5633], resources +0.0146 [-0.4941, +0.8526]; inherited - self-made -0.3730 [-1.2711, +0.4181], P(diff >= 0) 0.221
+h=5 g_tfp log1p no_offshore total (n=319, countries=108): total -0.0349 [-0.3250, +0.2541]
+h=5 g_tfp log1p no_offshore composition (n=319, countries=108): inherited -0.2913 [-0.8895, +0.2640], self-made +0.1337 [-0.3077, +0.5267], resources -0.0227 [-0.4443, +0.4618]; inherited - self-made -0.4250 [-1.3135, +0.4983], P(diff >= 0) 0.184
+h=5 g_tfp raw all total (n=331, countries=112): total +0.0162 [-0.0306, +0.0376]
+h=5 g_tfp raw all composition (n=331, countries=112): inherited -0.0070 [-0.1258, +0.1061], self-made +0.0273 [-0.0684, +0.0633], resources -0.0203 [-0.1410, +0.0900]; inherited - self-made -0.0343 [-0.1748, +0.1517], P(diff >= 0) 0.351
+h=5 g_tfp raw with_billionaires total (n=132, countries=56): total +0.0172 [-0.0313, +0.0532]
+h=5 g_tfp raw with_billionaires composition (n=132, countries=56): inherited -0.0204 [-0.1265, +0.0994], self-made +0.0289 [-0.0758, +0.0654], resources +0.0018 [-0.1823, +0.1927]; inherited - self-made -0.0493 [-0.1726, +0.1372], P(diff >= 0) 0.312
+h=5 g_tfp raw no_offshore total (n=319, countries=108): total +0.0189 [-0.0483, +0.0453]
+h=5 g_tfp raw no_offshore composition (n=319, countries=108): inherited +0.0023 [-0.2012, +0.1352], self-made +0.0269 [-0.0981, +0.0521], resources -0.0217 [-0.1450, +0.0938]; inherited - self-made -0.0246 [-0.2337, +0.1964], P(diff >= 0) 0.462
+h=9 g_gdppc log1p all total (n=394, countries=133): total -0.1212 [-0.3756, +0.1063]
+h=9 g_gdppc log1p all composition (n=394, countries=133): inherited -0.2553 [-0.7733, +0.1836], self-made +0.0856 [-0.3012, +0.4253], resources -0.1110 [-0.5196, +0.3870]; inherited - self-made -0.3409 [-1.0952, +0.3909], P(diff >= 0) 0.176
+h=9 g_gdppc log1p with_billionaires total (n=138, countries=61): total -0.0682 [-0.5178, +0.2930]
+h=9 g_gdppc log1p with_billionaires composition (n=138, countries=61): inherited -0.0888 [-0.5393, +0.3428], self-made -0.0028 [-0.5230, +0.4100], resources -0.0880 [-0.5700, +0.4913]; inherited - self-made -0.0860 [-0.7884, +0.6809], P(diff >= 0) 0.462
+h=9 g_gdppc log1p no_offshore total (n=382, countries=129): total -0.1806 [-0.4504, +0.0592]
+h=9 g_gdppc log1p no_offshore composition (n=382, countries=129): inherited -0.3773 [-0.9079, +0.0569], self-made +0.0749 [-0.2880, +0.4069], resources -0.1558 [-0.5616, +0.2709]; inherited - self-made -0.4522 [-1.1904, +0.2288], P(diff >= 0) 0.101
+h=9 g_gdppc raw all total (n=394, countries=133): total +0.0034 [-0.0550, +0.0187]
+h=9 g_gdppc raw all composition (n=394, countries=133): inherited -0.0228 [-0.1476, +0.0534], self-made +0.0186 [-0.0639, +0.0432], resources -0.0663 [-0.1599, +0.0435]; inherited - self-made -0.0415 [-0.1693, +0.0876], P(diff >= 0) 0.227
+h=9 g_gdppc raw with_billionaires total (n=138, countries=61): total +0.0093 [-0.0512, +0.0302]
+h=9 g_gdppc raw with_billionaires composition (n=138, countries=61): inherited +0.0058 [-0.0977, +0.0815], self-made +0.0137 [-0.0878, +0.0427], resources -0.0428 [-0.1597, +0.1005]; inherited - self-made -0.0079 [-0.1194, +0.1333], P(diff >= 0) 0.468
+h=9 g_gdppc raw no_offshore total (n=382, countries=129): total -0.0026 [-0.0693, +0.0186]
+h=9 g_gdppc raw no_offshore composition (n=382, countries=129): inherited -0.0603 [-0.2078, +0.0438], self-made +0.0164 [-0.0756, +0.0343], resources -0.0733 [-0.1608, +0.0259]; inherited - self-made -0.0767 [-0.2333, +0.0896], P(diff >= 0) 0.179
+h=9 g_tfp log1p all total (n=331, countries=112): total -0.0090 [-0.2280, +0.2011]
+h=9 g_tfp log1p all composition (n=331, countries=112): inherited -0.1007 [-0.4729, +0.2665], self-made +0.1777 [-0.1856, +0.4509], resources -0.3123 [-0.7243, +0.1815]; inherited - self-made -0.2784 [-0.8433, +0.3492], P(diff >= 0) 0.206
+h=9 g_tfp log1p with_billionaires total (n=132, countries=56): total -0.0332 [-0.3908, +0.2950]
+h=9 g_tfp log1p with_billionaires composition (n=132, countries=56): inherited -0.1482 [-0.4608, +0.1630], self-made +0.0915 [-0.2999, +0.3706], resources -0.3135 [-0.8158, +0.3263]; inherited - self-made -0.2396 [-0.7376, +0.3687], P(diff >= 0) 0.243
+h=9 g_tfp log1p no_offshore total (n=319, countries=108): total -0.0682 [-0.2756, +0.1471]
+h=9 g_tfp log1p no_offshore composition (n=319, countries=108): inherited -0.1900 [-0.5664, +0.1780], self-made +0.1600 [-0.1621, +0.4389], resources -0.3397 [-0.7404, +0.1297]; inherited - self-made -0.3500 [-0.9283, +0.2414], P(diff >= 0) 0.131
+h=9 g_tfp raw all total (n=331, countries=112): total +0.0137 [-0.0378, +0.0281]
+h=9 g_tfp raw all composition (n=331, countries=112): inherited +0.0004 [-0.0708, +0.0657], self-made +0.0275 [-0.0434, +0.0533], resources -0.0939 [-0.2133, +0.0468]; inherited - self-made -0.0271 [-0.1084, +0.0914], P(diff >= 0) 0.281
+h=9 g_tfp raw with_billionaires total (n=132, countries=56): total +0.0127 [-0.0511, +0.0302]
+h=9 g_tfp raw with_billionaires composition (n=132, countries=56): inherited -0.0168 [-0.0714, +0.0292], self-made +0.0271 [-0.0496, +0.0471], resources -0.0828 [-0.2504, +0.0742]; inherited - self-made -0.0440 [-0.1053, +0.0572], P(diff >= 0) 0.158
+h=9 g_tfp raw no_offshore total (n=319, countries=108): total +0.0081 [-0.0533, +0.0291]
+h=9 g_tfp raw no_offshore composition (n=319, countries=108): inherited -0.0180 [-0.1217, +0.0552], self-made +0.0261 [-0.0596, +0.0703], resources -0.0974 [-0.2190, +0.0375]; inherited - self-made -0.0441 [-0.1506, +0.0867], P(diff >= 0) 0.245
+composition specs: 24; inherited - self-made < 0 in 24; 95% interval excludes 0 in 0; inherited coefficient < 0 in 21; self-made coefficient > 0 in 20; resources coefficient < 0 in 22; P(diff >= 0) range [0.101, 0.468]
+total specs: 24; total coefficient < 0 in 14; 95% interval excludes 0 in 0
