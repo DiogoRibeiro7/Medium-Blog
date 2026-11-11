@@ -706,7 +706,7 @@ dev_web,country:Saint Lucia,GBMn,0.02771,0.01162,0.01164,0.00445
 dev_web,country:Saint Lucia,SLM,0.56699,0.49963,0.01591,0.05145
 dev_web,country:Saint Vincent and the Grenadines,AR,0.02709,0.03025,0.00998,-0.01314
 dev_web,country:Saint Vincent and the Grenadines,ETS,0.03865,0.00675,0.04112,-0.00923
-dev_web,country:Saint Vincent and the Grenadines,GBM,0.43675,0.23237,0.02227,0.18211
+dev_web,country:Saint Vincent and the Grenadines,GBM,0.43671,0.23237,0.02227,0.18206
 dev_web,country:Saint Vincent and the Grenadines,GBMn,0.18613,0.02498,0.01267,0.14849
 dev_web,country:Saint Vincent and the Grenadines,SLM,0.25424,0.10843,0.02758,0.11822
 dev_web,country:Samoa,AR,0.16960,0.11646,0.05355,-0.00040
@@ -1037,7 +1037,7 @@ dev_web,element:Calcium,SLM,1.17153,0.93387,0.11434,0.12332
 dev_web,element:Californium,AR,0.10060,0.05033,0.02995,0.02032
 dev_web,element:Californium,ETS,-0.01072,0.00666,0.02066,-0.03805
 dev_web,element:Californium,GBM,0.47710,0.28064,0.04667,0.14978
-dev_web,element:Californium,GBMn,0.09512,0.01755,0.02941,0.04816
+dev_web,element:Californium,GBMn,0.09510,0.01755,0.02941,0.04813
 dev_web,element:Californium,SLM,0.66380,0.49430,0.05551,0.11400
 dev_web,element:Carbon,AR,0.26530,0.20554,0.07226,-0.01250
 dev_web,element:Carbon,ETS,0.07200,0.00086,0.04661,0.02453
@@ -1046,8 +1046,8 @@ dev_web,element:Carbon,GBMn,0.22081,0.00502,0.10937,0.10642
 dev_web,element:Carbon,SLM,1.34833,1.10330,0.13714,0.10789
 dev_web,element:Cerium,AR,0.06738,0.02373,0.01177,0.03187
 dev_web,element:Cerium,ETS,0.01544,0.00152,0.01728,-0.00336
-dev_web,element:Cerium,GBM,0.61165,0.14990,0.07457,0.38718
-dev_web,element:Cerium,GBMn,0.13121,0.00162,0.03172,0.09787
+dev_web,element:Cerium,GBM,0.61170,0.14990,0.07457,0.38723
+dev_web,element:Cerium,GBMn,0.13329,0.00147,0.03199,0.09983
 dev_web,element:Cerium,SLM,0.29367,0.16929,0.02303,0.10136
 dev_web,element:Chlorine,AR,0.42270,0.36182,0.06758,-0.00671
 dev_web,element:Chlorine,ETS,0.06132,0.00238,0.04654,0.01241
@@ -1062,11 +1062,11 @@ dev_web,element:Chromium,SLM,1.71304,1.39695,0.14286,0.17324
 dev_web,element:Cobalt,AR,0.37597,0.24316,0.09940,0.03341
 dev_web,element:Cobalt,ETS,0.05871,0.01047,0.04164,0.00660
 dev_web,element:Cobalt,GBM,2.30104,1.24563,0.48819,0.56723
-dev_web,element:Cobalt,GBMn,0.27270,0.00555,0.09102,0.17613
+dev_web,element:Cobalt,GBMn,0.27256,0.00555,0.09088,0.17613
 dev_web,element:Cobalt,SLM,1.57510,1.20313,0.17524,0.19673
 dev_web,element:Copernicium,AR,0.08459,0.02620,0.03169,0.02669
 dev_web,element:Copernicium,ETS,-0.00223,0.00361,0.01083,-0.01668
-dev_web,element:Copernicium,GBM,0.43473,0.02676,0.18219,0.22578
+dev_web,element:Copernicium,GBM,0.43469,0.02676,0.18219,0.22575
 dev_web,element:Copernicium,GBMn,0.11000,0.00189,0.02233,0.08577
 dev_web,element:Copernicium,SLM,0.35911,0.21052,0.04863,0.09996
 dev_web,element:Copper,AR,0.10944,0.07792,0.04157,-0.01005
@@ -1096,7 +1096,7 @@ dev_web,element:Dysprosium,GBMn,0.05438,0.00343,0.01745,0.03350
 dev_web,element:Dysprosium,SLM,0.25240,0.22419,0.01638,0.01183
 dev_web,element:Einsteinium,AR,0.10670,0.06301,0.04298,0.00071
 dev_web,element:Einsteinium,ETS,0.01012,0.00414,0.01679,-0.01081
-dev_web,element:Einsteinium,GBM,1.45993,0.96667,0.19930,0.29396
+dev_web,element:Einsteinium,GBM,1.45966,0.96667,0.19930,0.29369
 dev_web,element:Einsteinium,GBMn,0.12041,0.01100,0.02602,0.08339
 dev_web,element:Einsteinium,SLM,0.89080,0.68138,0.09623,0.11319
 dev_web,element:Erbium,AR,0.02302,0.02386,0.00804,-0.00888
@@ -1106,7 +1106,7 @@ dev_web,element:Erbium,GBMn,0.03096,0.00057,0.01216,0.01823
 dev_web,element:Erbium,SLM,0.15332,0.12306,0.01037,0.01988
 dev_web,element:Europium,AR,0.06449,0.00551,0.02826,0.03071
 dev_web,element:Europium,ETS,0.03500,0.00280,0.01398,0.01822
-dev_web,element:Europium,GBM,0.52423,0.06803,0.23700,0.21920
+dev_web,element:Europium,GBM,0.52452,0.06803,0.23700,0.21949
 dev_web,element:Europium,GBMn,0.03967,0.00859,0.02461,0.00648
 dev_web,element:Europium,SLM,0.12312,0.00458,0.03380,0.08474
 dev_web,element:Fermium,AR,0.04018,0.00764,0.01395,0.01860
@@ -1121,7 +1121,7 @@ dev_web,element:Flerovium,GBMn,0.30515,0.00910,0.07223,0.22382
 dev_web,element:Flerovium,SLM,1.15089,0.95339,0.05358,0.14391
 dev_web,element:Fluorine,AR,0.34097,0.21893,0.10720,0.01484
 dev_web,element:Fluorine,ETS,0.08943,0.00191,0.06370,0.02382
-dev_web,element:Fluorine,GBM,3.43230,2.04571,0.75643,0.63016
+dev_web,element:Fluorine,GBM,3.43235,2.04571,0.75643,0.63021
 dev_web,element:Fluorine,GBMn,0.34707,0.00866,0.18065,0.15776
 dev_web,element:Fluorine,SLM,1.64820,1.21245,0.27702,0.15873
 dev_web,element:Francium,AR,0.47746,0.32627,0.03687,0.11432
@@ -1156,7 +1156,7 @@ dev_web,element:Hafnium,GBMn,0.13792,0.00292,0.01987,0.11513
 dev_web,element:Hafnium,SLM,1.43825,1.20891,0.08442,0.14491
 dev_web,element:Hassium,AR,0.19286,0.15266,0.03470,0.00550
 dev_web,element:Hassium,ETS,0.04116,0.00463,0.01330,0.02323
-dev_web,element:Hassium,GBM,2.10111,1.61174,0.19896,0.29040
+dev_web,element:Hassium,GBM,2.10152,1.61174,0.19896,0.29082
 dev_web,element:Hassium,GBMn,0.07200,0.00676,0.02489,0.04035
 dev_web,element:Hassium,SLM,1.63301,1.47329,0.06492,0.09480
 dev_web,element:Helium,AR,0.19955,0.09698,0.07820,0.02437
@@ -1166,7 +1166,7 @@ dev_web,element:Helium,GBMn,0.24089,0.00218,0.08333,0.15539
 dev_web,element:Helium,SLM,1.16001,0.87865,0.15544,0.12593
 dev_web,element:Holmium,AR,0.07149,0.01406,0.02656,0.03088
 dev_web,element:Holmium,ETS,0.01345,0.00123,0.00256,0.00965
-dev_web,element:Holmium,GBM,0.53331,0.03023,0.41586,0.08723
+dev_web,element:Holmium,GBM,0.53326,0.03023,0.41586,0.08717
 dev_web,element:Holmium,GBMn,0.07946,0.00153,0.00512,0.07281
 dev_web,element:Holmium,SLM,0.08487,0.01545,0.02183,0.04759
 dev_web,element:Hydrogen,AR,0.31332,0.24802,0.07402,-0.00872
@@ -1186,7 +1186,7 @@ dev_web,element:Iodine,GBMn,0.19682,0.00526,0.04626,0.14530
 dev_web,element:Iodine,SLM,0.54363,0.36851,0.05214,0.12298
 dev_web,element:Iridium,AR,0.27244,0.17695,0.04394,0.05156
 dev_web,element:Iridium,ETS,-0.00012,0.00620,0.00880,-0.01512
-dev_web,element:Iridium,GBM,1.52263,1.05121,0.07699,0.39444
+dev_web,element:Iridium,GBM,1.52268,1.05121,0.07699,0.39448
 dev_web,element:Iridium,GBMn,0.11728,0.00056,0.01565,0.10106
 dev_web,element:Iridium,SLM,0.28794,0.16738,0.04305,0.07751
 dev_web,element:Iron,AR,0.19765,0.15498,0.04915,-0.00648
@@ -1241,7 +1241,7 @@ dev_web,element:Manganese,GBMn,0.20768,0.00995,0.06456,0.13317
 dev_web,element:Manganese,SLM,2.23641,1.92954,0.12288,0.18399
 dev_web,element:Meitnerium,AR,0.23431,0.14058,0.06277,0.03096
 dev_web,element:Meitnerium,ETS,0.02058,0.00480,0.00925,0.00653
-dev_web,element:Meitnerium,GBM,0.72137,0.32973,0.10667,0.28498
+dev_web,element:Meitnerium,GBM,0.72142,0.32973,0.10667,0.28503
 dev_web,element:Meitnerium,GBMn,0.22162,0.00643,0.07594,0.13925
 dev_web,element:Meitnerium,SLM,0.88785,0.69338,0.09791,0.09656
 dev_web,element:Mendelevium,AR,0.18763,0.10404,0.05773,0.02587
@@ -1336,7 +1336,7 @@ dev_web,element:Potassium,GBMn,0.16411,0.00192,0.05601,0.10619
 dev_web,element:Potassium,SLM,0.42946,0.27485,0.08104,0.07357
 dev_web,element:Praseodymium,AR,0.05233,0.03371,0.02185,-0.00323
 dev_web,element:Praseodymium,ETS,0.00471,0.00216,0.00783,-0.00528
-dev_web,element:Praseodymium,GBM,0.62270,0.37486,0.07663,0.17122
+dev_web,element:Praseodymium,GBM,0.62261,0.37486,0.07663,0.17112
 dev_web,element:Praseodymium,GBMn,0.06049,0.00148,0.01059,0.04841
 dev_web,element:Praseodymium,SLM,0.35569,0.24822,0.04614,0.06133
 dev_web,element:Promethium,AR,0.04643,0.01371,0.02502,0.00771
@@ -1366,7 +1366,7 @@ dev_web,element:Rhenium,GBMn,0.19727,0.00100,0.03676,0.15951
 dev_web,element:Rhenium,SLM,0.57530,0.31760,0.10364,0.15406
 dev_web,element:Rhodium,AR,0.14624,0.10549,0.01211,0.02864
 dev_web,element:Rhodium,ETS,0.02026,0.00408,0.00385,0.01233
-dev_web,element:Rhodium,GBM,2.68011,1.86484,0.31169,0.50359
+dev_web,element:Rhodium,GBM,2.68013,1.86484,0.31169,0.50361
 dev_web,element:Rhodium,GBMn,0.08210,0.00328,0.01040,0.06842
 dev_web,element:Rhodium,SLM,1.25994,1.14759,0.03191,0.08044
 dev_web,element:Roentgenium,AR,0.18191,0.10320,0.04171,0.03699
@@ -1486,7 +1486,7 @@ dev_web,element:Tungsten,GBMn,0.22404,0.01550,0.10857,0.09997
 dev_web,element:Tungsten,SLM,1.93032,1.76677,0.02440,0.13915
 dev_web,element:Uranium,AR,0.03864,0.02016,0.01953,-0.00105
 dev_web,element:Uranium,ETS,0.02902,0.00270,0.01547,0.01085
-dev_web,element:Uranium,GBM,0.92707,0.46168,0.09817,0.36722
+dev_web,element:Uranium,GBM,0.92738,0.46168,0.09817,0.36752
 dev_web,element:Uranium,GBMn,0.07346,0.00196,0.02604,0.04546
 dev_web,element:Uranium,SLM,0.37013,0.29736,0.03641,0.03636
 dev_web,element:Vanadium,AR,0.19936,0.09201,0.05863,0.04872
@@ -1851,12 +1851,12 @@ test_web,instrument:Bagpipes,GBMn,0.06066,0.00978,0.00483,0.04605
 test_web,instrument:Bagpipes,SLM,0.77216,0.66336,0.01570,0.09309
 test_web,instrument:Banjo,AR,0.14363,0.13389,0.01268,-0.00295
 test_web,instrument:Banjo,ETS,0.05878,0.00797,0.03860,0.01221
-test_web,instrument:Banjo,GBM,0.74666,0.16729,0.07231,0.50706
+test_web,instrument:Banjo,GBM,0.74703,0.16729,0.07231,0.50743
 test_web,instrument:Banjo,GBMn,0.10999,0.00626,0.01607,0.08766
 test_web,instrument:Banjo,SLM,0.15328,0.12610,0.00844,0.01874
 test_web,instrument:Bass guitar,AR,1.07380,1.04908,0.01041,0.01432
 test_web,instrument:Bass guitar,ETS,0.02758,0.00376,0.01619,0.00763
-test_web,instrument:Bass guitar,GBM,6.74746,6.21187,0.11035,0.42525
+test_web,instrument:Bass guitar,GBM,6.74743,6.21187,0.11035,0.42522
 test_web,instrument:Bass guitar,GBMn,0.09905,0.00208,0.00661,0.09036
 test_web,instrument:Bass guitar,SLM,4.53433,4.38325,0.02811,0.12297
 test_web,instrument:Bassoon,AR,0.29807,0.27510,0.00958,0.01339
@@ -1906,7 +1906,7 @@ test_web,instrument:Guitar,GBMn,0.28734,0.01418,0.01831,0.25485
 test_web,instrument:Guitar,SLM,2.47763,2.36313,0.01348,0.10102
 test_web,instrument:Harmonica,AR,0.18134,0.16158,0.01304,0.00671
 test_web,instrument:Harmonica,ETS,0.00839,0.00240,0.02000,-0.01401
-test_web,instrument:Harmonica,GBM,2.37195,2.01099,0.04090,0.32006
+test_web,instrument:Harmonica,GBM,2.37197,2.01099,0.04090,0.32008
 test_web,instrument:Harmonica,GBMn,0.12050,0.00897,0.00500,0.10653
 test_web,instrument:Harmonica,SLM,0.09913,0.04491,0.00571,0.04850
 test_web,instrument:Harp,AR,0.26104,0.20734,0.01375,0.03995
@@ -1926,7 +1926,7 @@ test_web,instrument:Mandolin,GBMn,0.13228,0.00163,0.00986,0.12079
 test_web,instrument:Mandolin,SLM,0.60782,0.57346,0.00560,0.02876
 test_web,instrument:Oboe,AR,0.21796,0.21164,0.01046,-0.00414
 test_web,instrument:Oboe,ETS,0.06392,0.00776,0.02051,0.03564
-test_web,instrument:Oboe,GBM,1.25420,0.97782,0.01767,0.25870
+test_web,instrument:Oboe,GBM,1.25414,0.97782,0.01767,0.25865
 test_web,instrument:Oboe,GBMn,0.08244,0.00375,0.01034,0.06835
 test_web,instrument:Oboe,SLM,1.35099,1.29789,0.01297,0.04014
 test_web,instrument:Piano,AR,0.62327,0.52649,0.00902,0.08776
@@ -1941,7 +1941,7 @@ test_web,instrument:Pipe organ,GBMn,0.00495,0.01003,0.00381,-0.00889
 test_web,instrument:Pipe organ,SLM,0.89251,0.74605,0.02365,0.12281
 test_web,instrument:Saxophone,AR,0.66913,0.63086,0.01546,0.02282
 test_web,instrument:Saxophone,ETS,0.10527,0.00730,0.01725,0.08072
-test_web,instrument:Saxophone,GBM,2.47725,1.86310,0.03981,0.57434
+test_web,instrument:Saxophone,GBM,2.47733,1.86310,0.03981,0.57442
 test_web,instrument:Saxophone,GBMn,0.14306,0.00401,0.01343,0.12562
 test_web,instrument:Saxophone,SLM,1.16888,1.08454,0.02124,0.06311
 test_web,instrument:Sitar,AR,0.87565,0.86260,0.00372,0.00934
@@ -1951,7 +1951,7 @@ test_web,instrument:Sitar,GBMn,0.34134,0.00271,0.05989,0.27874
 test_web,instrument:Sitar,SLM,2.87010,2.71312,0.01235,0.14463
 test_web,instrument:Synthesizer,AR,0.44163,0.41618,0.01068,0.01476
 test_web,instrument:Synthesizer,ETS,-0.00432,0.00840,0.00739,-0.02011
-test_web,instrument:Synthesizer,GBM,5.14312,4.67942,0.10124,0.36246
+test_web,instrument:Synthesizer,GBM,5.14287,4.67942,0.10124,0.36220
 test_web,instrument:Synthesizer,GBMn,0.06127,0.00322,0.01078,0.04727
 test_web,instrument:Synthesizer,SLM,1.00385,0.92499,0.00696,0.07189
 test_web,instrument:Trombone,AR,0.05593,0.02416,0.00306,0.02871
@@ -2006,7 +2006,7 @@ test_web,mammal:Brown bear,GBMn,0.10728,0.00059,0.01383,0.09287
 test_web,mammal:Brown bear,SLM,2.00598,1.82082,0.04808,0.13709
 test_web,mammal:Brown rat,AR,0.17677,0.16733,0.01041,-0.00097
 test_web,mammal:Brown rat,ETS,0.03635,0.00190,0.01261,0.02185
-test_web,mammal:Brown rat,GBM,0.16023,0.04927,0.00764,0.10332
+test_web,mammal:Brown rat,GBM,0.16062,0.04927,0.00764,0.10371
 test_web,mammal:Brown rat,GBMn,0.04023,0.00219,0.01278,0.02527
 test_web,mammal:Brown rat,SLM,0.45988,0.39584,0.01037,0.05366
 test_web,mammal:Camel,AR,0.60056,0.53662,0.01967,0.04426
@@ -2206,7 +2206,7 @@ test_web,programming_language:C Sharp (programming language),GBMn,0.12373,0.0045
 test_web,programming_language:C Sharp (programming language),SLM,0.94888,0.77921,0.02591,0.14376
 test_web,programming_language:COBOL,AR,0.14843,0.09371,0.00781,0.04691
 test_web,programming_language:COBOL,ETS,0.08743,0.00143,0.01000,0.07600
-test_web,programming_language:COBOL,GBM,0.60810,0.00979,0.01736,0.58094
+test_web,programming_language:COBOL,GBM,0.60772,0.00979,0.01736,0.58056
 test_web,programming_language:COBOL,GBMn,0.18442,0.00770,0.10149,0.07523
 test_web,programming_language:COBOL,SLM,0.44272,0.39483,0.01027,0.03762
 test_web,programming_language:Dart (programming language),AR,0.32284,0.29794,0.02740,-0.00250
@@ -2326,7 +2326,7 @@ test_web,programming_language:TypeScript,GBMn,0.33346,0.01535,0.05494,0.26317
 test_web,programming_language:TypeScript,SLM,0.61614,0.31339,0.05022,0.25253
 test_web,solar_system:Callisto (moon),AR,0.20674,0.00128,0.13176,0.07370
 test_web,solar_system:Callisto (moon),ETS,0.06230,0.00869,0.03619,0.01743
-test_web,solar_system:Callisto (moon),GBM,0.28563,0.01971,0.04690,0.21902
+test_web,solar_system:Callisto (moon),GBM,0.28649,0.01971,0.04690,0.21988
 test_web,solar_system:Callisto (moon),GBMn,0.26476,0.00890,0.08507,0.17079
 test_web,solar_system:Callisto (moon),SLM,0.35432,0.02665,0.14943,0.17825
 test_web,solar_system:Ceres (dwarf planet),AR,0.12119,0.01383,0.09089,0.01646
@@ -2551,7 +2551,7 @@ test_web,sport:Karate,GBMn,0.19418,0.00795,0.02328,0.16294
 test_web,sport:Karate,SLM,1.38518,1.30225,0.01182,0.07112
 test_web,sport:Rowing (sport),AR,1.86134,1.84869,0.00553,0.00712
 test_web,sport:Rowing (sport),ETS,0.06056,0.00528,0.03078,0.02449
-test_web,sport:Rowing (sport),GBM,2.57418,2.35570,0.03371,0.18477
+test_web,sport:Rowing (sport),GBM,2.55773,2.33771,0.03525,0.18477
 test_web,sport:Rowing (sport),GBMn,0.10369,0.00494,0.02134,0.07742
 test_web,sport:Rowing (sport),SLM,2.07107,2.02150,0.00474,0.04482
 test_web,sport:Rugby union,AR,0.07002,0.03113,0.04876,-0.00987
@@ -2701,7 +2701,7 @@ test_web,us_state:Kansas,GBMn,0.15237,0.03007,0.02046,0.10185
 test_web,us_state:Kansas,SLM,0.67508,0.54364,0.00752,0.12392
 test_web,us_state:Kentucky,AR,0.51519,0.49968,0.01350,0.00201
 test_web,us_state:Kentucky,ETS,0.10273,0.00330,0.01245,0.08699
-test_web,us_state:Kentucky,GBM,0.54850,0.10197,0.08426,0.36228
+test_web,us_state:Kentucky,GBM,0.54889,0.10197,0.08426,0.36267
 test_web,us_state:Kentucky,GBMn,-0.02611,0.00607,0.01550,-0.04768
 test_web,us_state:Kentucky,SLM,1.17008,1.08989,0.02268,0.05751
 test_web,us_state:Louisiana,AR,0.20992,0.15040,0.04783,0.01169
@@ -2841,7 +2841,7 @@ test_web,us_state:Utah,GBMn,0.01785,0.00742,0.00924,0.00119
 test_web,us_state:Utah,SLM,0.32786,0.22063,0.04879,0.05845
 test_web,us_state:Vermont,AR,0.15107,0.06389,0.06883,0.01835
 test_web,us_state:Vermont,ETS,0.10573,0.01686,0.05312,0.03575
-test_web,us_state:Vermont,GBM,0.56097,0.32816,0.10024,0.13257
+test_web,us_state:Vermont,GBM,0.56185,0.32816,0.10024,0.13345
 test_web,us_state:Vermont,GBMn,0.05519,0.01872,0.04978,-0.01332
 test_web,us_state:Vermont,SLM,0.52641,0.41444,0.08292,0.02905
 test_web,us_state:Virginia,AR,0.67800,0.65805,0.03014,-0.01018

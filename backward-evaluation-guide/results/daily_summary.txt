@@ -38,11 +38,11 @@ monitoring, and the forward check of PLAN.md. Log loss in nats per day; parts su
 [electricity, 25 countries] mean L: GBM -1.9924, GBMn -2.0827, SLM -2.1165; GBM - GBMn +0.0903 (se 0.0118; p>0 <1e-6; p<0 1); GBMn better in 25 of 25
   SLM - GBMn -0.0338 (se 0.0105; p>0 0.998; p<0 0.00187); GBMn better than SLM in 7 of 25
   exploratory: Spearman(GBM's excess on the past, forward gain of GBMn) +0.41 (p 0.039)
-[Wikipedia, 304 development articles] mean L: GBM -0.6592, GBMn -0.7281, SLM -0.7652; GBM - GBMn +0.0690 (se 0.0035; p>0 <1e-6; p<0 1); GBMn better in 282 of 304
+[Wikipedia, 304 development articles] mean L: GBM -0.6592, GBMn -0.7282, SLM -0.7652; GBM - GBMn +0.0690 (se 0.0035; p>0 <1e-6; p<0 1); GBMn better in 282 of 304
   by list: 2 of 2 positive (country +0.0535, element +0.0948)
   SLM - GBMn -0.0370 (se 0.0049; p>0 1; p<0 <1e-6); GBMn better than SLM in 90 of 304
   exploratory: Spearman(GBM's excess on the past, forward gain of GBMn) +0.61 (p <1e-6)
 [Wikipedia, 245 test articles] mean L: GBM -0.7894, GBMn -0.8970, SLM -0.9404; GBM - GBMn +0.1076 (se 0.0082; p>0 <1e-6; p<0 1); GBMn better in 239 of 245 -> SUPPORTED
-  by list: 7 of 7 positive (city +0.0816, instrument +0.1456, mammal +0.1312, programming_language +0.1905, solar_system +0.0545, sport +0.0969, us_state +0.0751)
+  by list: 7 of 7 positive (city +0.0816, instrument +0.1455, mammal +0.1313, programming_language +0.1906, solar_system +0.0545, sport +0.0969, us_state +0.0751)
   SLM - GBMn -0.0434 (se 0.0037; p>0 1; p<0 <1e-6); GBMn better than SLM in 34 of 245
   exploratory: Spearman(GBM's excess on the past, forward gain of GBMn) +0.64 (p <1e-6)
