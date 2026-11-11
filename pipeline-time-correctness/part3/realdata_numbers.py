@@ -210,6 +210,8 @@ print("  months with the largest mean absolute error (28-day window, 7 days afte
 
 # ---------------------------------------------------------------------------
 section("H1. The hospitalisation triangle")
+hub_log = (r.DATA / "hub_fetch_log.txt").read_text().splitlines()
+print(f"nowcast files read: {sum(1 for l in hub_log if l.startswith('data-processed/'))}")
 tri = r.load_hub_triangle()
 i0, i1 = tri.index(r.HUB_FIRST - pd.Timedelta(days=28)), tri.index(r.HUB_LAST)
 sel = slice(i0, i1 + 1)
