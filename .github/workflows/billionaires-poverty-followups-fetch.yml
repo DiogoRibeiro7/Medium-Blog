@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   fetch-pip:
@@ -36,3 +36,13 @@ jobs:
           path: billionaires-poverty-followups/data/
           if-no-files-found: error
           retention-days: 30
+      - name: Commit the fetched tables to the branch
+        if: github.event_name == 'push'
+        run: |
+          git config user.name "Diogo Ribeiro"
+          git config user.email "diogo_dj@hotmail.com"
+          git add billionaires-poverty-followups/data/pip_surveys.csv.gz \
+                  billionaires-poverty-followups/data/pip_headcounts.csv.gz \
+                  billionaires-poverty-followups/data/pip_manifest.json
+          git commit -m "Billionaire-poverty follow-ups: PIP data snapshot" || echo "no changes"
+          git push origin HEAD:${GITHUB_REF_NAME}
