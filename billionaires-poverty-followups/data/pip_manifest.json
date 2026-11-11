@@ -1,0 +1,373 @@
+{
+  "retrieved_utc": "2026-11-11T08:30:27+00:00",
+  "api": "https://api.worldbank.org/pip/v1",
+  "ppp_version": "2021",
+  "fill_gaps": false,
+  "responses": [
+    {
+      "poverty_line": 2.0,
+      "url": "https://api.worldbank.org/pip/v1/pip?country=all&year=all&povline=2&fill_gaps=false&ppp_version=2021&format=csv",
+      "bytes": 1297507,
+      "sha256": "19b87dbe7c34c5fb54a834da3dc73a998b4fbb2827da55903cfa67f58306034c",
+      "rows": 2588
+    },
+    {
+      "poverty_line": 3.0,
+      "url": "https://api.worldbank.org/pip/v1/pip?country=all&year=all&povline=3&fill_gaps=false&ppp_version=2021&format=csv",
+      "bytes": 1305619,
+      "sha256": "d1147750f873731ebc157595337758de6941c102d27a3c541b9209256c0e4339",
+      "rows": 2588
+    },
+    {
+      "poverty_line": 4.2,
+      "url": "https://api.worldbank.org/pip/v1/pip?country=all&year=all&povline=4.2&fill_gaps=false&ppp_version=2021&format=csv",
+      "bytes": 1315011,
+      "sha256": "fbb9f1c7cff51cffab131e63bb2fe682ab4c5321a526db72916df9021a90d2f6",
+      "rows": 2588
+    },
+    {
+      "poverty_line": 5.0,
+      "url": "https://api.worldbank.org/pip/v1/pip?country=all&year=all&povline=5&fill_gaps=false&ppp_version=2021&format=csv",
+      "bytes": 1311126,
+      "sha256": "3c33208af0f0935530c272ee826a521f4a91dd57fea35dd02f4a538dbfdb7390",
+      "rows": 2588
+    },
+    {
+      "poverty_line": 6.0,
+      "url": "https://api.worldbank.org/pip/v1/pip?country=all&year=all&povline=6&fill_gaps=false&ppp_version=2021&format=csv",
+      "bytes": 1311657,
+      "sha256": "5e13c8c7f3df265927da903b65e64a6a6f742a098cb9332098ed0a4a54294eca",
+      "rows": 2588
+    },
+    {
+      "poverty_line": 8.3,
+      "url": "https://api.worldbank.org/pip/v1/pip?country=all&year=all&povline=8.3&fill_gaps=false&ppp_version=2021&format=csv",
+      "bytes": 1317704,
+      "sha256": "28390480af2fbd4fea2a7b5e678c9878103c3d92696d6b7a1240588d35a73701",
+      "rows": 2588
+    },
+    {
+      "poverty_line": 10.0,
+      "url": "https://api.worldbank.org/pip/v1/pip?country=all&year=all&povline=10&fill_gaps=false&ppp_version=2021&format=csv",
+      "bytes": 1315557,
+      "sha256": "2f05b5d0ec687853e6e8d9d7c031b87393f4bd284b17ff3a9519ad07749ccd45",
+      "rows": 2588
+    },
+    {
+      "poverty_line": 12.0,
+      "url": "https://api.worldbank.org/pip/v1/pip?country=all&year=all&povline=12&fill_gaps=false&ppp_version=2021&format=csv",
+      "bytes": 1315906,
+      "sha256": "e468b08cf0ccfbe5f0bd03cb44d09e65b5f901a3582d753c4755039ae9c99bb0",
+      "rows": 2588
+    },
+    {
+      "poverty_line": 15.0,
+      "url": "https://api.worldbank.org/pip/v1/pip?country=all&year=all&povline=15&fill_gaps=false&ppp_version=2021&format=csv",
+      "bytes": 1316079,
+      "sha256": "f451073aa9a142bcde255f9758c36f0b1034a602101fb0fd40a2cb5e5e034731",
+      "rows": 2588
+    },
+    {
+      "poverty_line": 17.5,
+      "url": "https://api.worldbank.org/pip/v1/pip?country=all&year=all&povline=17.5&fill_gaps=false&ppp_version=2021&format=csv",
+      "bytes": 1321255,
+      "sha256": "eed22e4068be879141985bfbc06047bf2638a68474232ea02958c57505446788",
+      "rows": 2588
+    },
+    {
+      "poverty_line": 20.0,
+      "url": "https://api.worldbank.org/pip/v1/pip?country=all&year=all&povline=20&fill_gaps=false&ppp_version=2021&format=csv",
+      "bytes": 1316096,
+      "sha256": "ecd673ae418915947c2b03de737f92b49256c41bfdc12dc9f0cd805571205e2f",
+      "rows": 2588
+    },
+    {
+      "poverty_line": 25.0,
+      "url": "https://api.worldbank.org/pip/v1/pip?country=all&year=all&povline=25&fill_gaps=false&ppp_version=2021&format=csv",
+      "bytes": 1316010,
+      "sha256": "3cffd3439ab89820342ca495a774e4e9058fe38dc4a2c596009ebc2a5f266544",
+      "rows": 2588
+    },
+    {
+      "poverty_line": 30.0,
+      "url": "https://api.worldbank.org/pip/v1/pip?country=all&year=all&povline=30&fill_gaps=false&ppp_version=2021&format=csv",
+      "bytes": 1315960,
+      "sha256": "c5ce6f5b068084a99ae4136a5556024bab4308c21c0da46b9d5c83010f752868",
+      "rows": 2588
+    },
+    {
+      "poverty_line": 35.0,
+      "url": "https://api.worldbank.org/pip/v1/pip?country=all&year=all&povline=35&fill_gaps=false&ppp_version=2021&format=csv",
+      "bytes": 1315750,
+      "sha256": "90312cf1ca99b7c89608015bc850b3ed557f0c4ec82069da14da05582c83b8a9",
+      "rows": 2588
+    },
+    {
+      "poverty_line": 40.0,
+      "url": "https://api.worldbank.org/pip/v1/pip?country=all&year=all&povline=40&fill_gaps=false&ppp_version=2021&format=csv",
+      "bytes": 1315681,
+      "sha256": "effdd78dcf835fe60926c97ffa8dc10113ef27a9700a4bdd1aacfce7495838f5",
+      "rows": 2588
+    },
+    {
+      "poverty_line": 50.0,
+      "url": "https://api.worldbank.org/pip/v1/pip?country=all&year=all&povline=50&fill_gaps=false&ppp_version=2021&format=csv",
+      "bytes": 1315436,
+      "sha256": "07e988ce5326ebdec497f10a762b537994af453a0b92e97ee1740d222a6ab5ab",
+      "rows": 2588
+    },
+    {
+      "poverty_line": 60.0,
+      "url": "https://api.worldbank.org/pip/v1/pip?country=all&year=all&povline=60&fill_gaps=false&ppp_version=2021&format=csv",
+      "bytes": 1315254,
+      "sha256": "66980b75a5ccd8b9a126eb5a7c7aed0ea8c819384c7ca735dd9963a16f420a77",
+      "rows": 2588
+    },
+    {
+      "poverty_line": 70.0,
+      "url": "https://api.worldbank.org/pip/v1/pip?country=all&year=all&povline=70&fill_gaps=false&ppp_version=2021&format=csv",
+      "bytes": 1314868,
+      "sha256": "24a0b2e1d6aa7857407485a327d942331d71f8ba1c2cbea53210b39856505f55",
+      "rows": 2588
+    },
+    {
+      "poverty_line": 85.0,
+      "url": "https://api.worldbank.org/pip/v1/pip?country=all&year=all&povline=85&fill_gaps=false&ppp_version=2021&format=csv",
+      "bytes": 1314292,
+      "sha256": "38b72d975be58cc6e3a27debe45440d500bde1cf64000593d0d73073fdf6421a",
+      "rows": 2588
+    },
+    {
+      "poverty_line": 100.0,
+      "url": "https://api.worldbank.org/pip/v1/pip?country=all&year=all&povline=100&fill_gaps=false&ppp_version=2021&format=csv",
+      "bytes": 1316079,
+      "sha256": "efca1ffb1bd4190b098da866413395caf8e200dcecdae4cab37c0987b5fa2c4f",
+      "rows": 2588
+    }
+  ],
+  "versions": [
+    {
+      "version": "20260922_2021_01_02_PROD",
+      "release_version": "20260922",
+      "ppp_version": "2021",
+      "identity": "PROD"
+    },
+    {
+      "version": "20260922_2017_01_02_PROD",
+      "release_version": "20260922",
+      "ppp_version": "2017",
+      "identity": "PROD"
+    },
+    {
+      "version": "20260324_2021_01_02_PROD",
+      "release_version": "20260324",
+      "ppp_version": "2021",
+      "identity": "PROD"
+    },
+    {
+      "version": "20260324_2017_01_02_PROD",
+      "release_version": "20260324",
+      "ppp_version": "2017",
+      "identity": "PROD"
+    },
+    {
+      "version": "20250930_2021_01_02_PROD",
+      "release_version": "20250930",
+      "ppp_version": "2021",
+      "identity": "PROD"
+    },
+    {
+      "version": "20250930_2017_01_02_PROD",
+      "release_version": "20250930",
+      "ppp_version": "2017",
+      "identity": "PROD"
+    },
+    {
+      "version": "20250401_2021_01_02_PROD",
+      "release_version": "20250401",
+      "ppp_version": "2021",
+      "identity": "PROD"
+    },
+    {
+      "version": "20250401_2017_01_02_PROD",
+      "release_version": "20250401",
+      "ppp_version": "2017",
+      "identity": "PROD"
+    },
+    {
+      "version": "20240627_2017_01_02_PROD",
+      "release_version": "20240627",
+      "ppp_version": "2017",
+      "identity": "PROD"
+    },
+    {
+      "version": "20240627_2011_02_02_PROD",
+      "release_version": "20240627",
+      "ppp_version": "2011",
+      "identity": "PROD"
+    },
+    {
+      "version": "20240326_2017_01_02_PROD",
+      "release_version": "20240326",
+      "ppp_version": "2017",
+      "identity": "PROD"
+    },
+    {
+      "version": "20240326_2011_02_02_PROD",
+      "release_version": "20240326",
+      "ppp_version": "2011",
+      "identity": "PROD"
+    },
+    {
+      "version": "20230919_2017_01_02_PROD",
+      "release_version": "20230919",
+      "ppp_version": "2017",
+      "identity": "PROD"
+    },
+    {
+      "version": "20230919_2011_02_02_PROD",
+      "release_version": "20230919",
+      "ppp_version": "2011",
+      "identity": "PROD"
+    },
+    {
+      "version": "20230328_2017_01_02_PROD",
+      "release_version": "20230328",
+      "ppp_version": "2017",
+      "identity": "PROD"
+    },
+    {
+      "version": "20230328_2011_02_02_PROD",
+      "release_version": "20230328",
+      "ppp_version": "2011",
+      "identity": "PROD"
+    },
+    {
+      "version": "20220909_2017_01_02_PROD",
+      "release_version": "20220909",
+      "ppp_version": "2017",
+      "identity": "PROD"
+    },
+    {
+      "version": "20220909_2011_02_02_PROD",
+      "release_version": "20220909",
+      "ppp_version": "2011",
+      "identity": "PROD"
+    }
+  ],
+  "pip_info": {
+    "available_data_versions": [
+      "20260922_2021_01_02_PROD",
+      "20260922_2017_01_02_PROD",
+      "20260324_2021_01_02_PROD",
+      "20260324_2017_01_02_PROD",
+      "20250930_2021_01_02_PROD",
+      "20250930_2017_01_02_PROD",
+      "20250401_2021_01_02_PROD",
+      "20250401_2017_01_02_PROD",
+      "20240627_2017_01_02_PROD",
+      "20240627_2011_02_02_PROD",
+      "20240326_2017_01_02_PROD",
+      "20240326_2011_02_02_PROD",
+      "20230919_2017_01_02_PROD",
+      "20230919_2011_02_02_PROD",
+      "20230328_2017_01_02_PROD",
+      "20230328_2011_02_02_PROD",
+      "20220909_2017_01_02_PROD",
+      "20220909_2011_02_02_PROD"
+    ],
+    "pip_packages": {
+      "pipapi": {
+        "pkg_version": [
+          "1.5.15"
+        ],
+        "pkg_hash": [
+          "280af151d05902a550d5dea18cd4bf1a3d013239"
+        ]
+      },
+      "wbpip": {
+        "pkg_version": [
+          "0.1.6"
+        ],
+        "pkg_hash": [
+          "fd2c687ed527ebe33d0a7addf9859f72f71ff39f"
+        ]
+      }
+    },
+    "other_packages": [
+      "arrow_25.0.1",
+      "assertthat_0.2.1",
+      "bit_4.6.0",
+      "bit64_4.8.6",
+      "cli_3.6.6",
+      "codetools_0.2-20",
+      "collapse_2.1.8",
+      "compiler_4.5.2",
+      "crayon_1.5.3",
+      "data.table_1.18.6.1",
+      "DBI_1.3.0",
+      "digest_0.6.39",
+      "dplyr_1.2.1",
+      "duckdb_1.5.5",
+      "filelock_1.0.3",
+      "fs_2.1.0",
+      "fst_0.9.8",
+      "generics_0.1.4",
+      "glue_1.8.1",
+      "hms_1.1.4",
+      "httpuv_1.6.17",
+      "joyn_0.3.0",
+      "jsonlite_2.0.0",
+      "later_1.4.8",
+      "lifecycle_1.0.5",
+      "magrittr_2.0.5",
+      "MASS_7.3-65",
+      "otel_0.2.0",
+      "parallel_4.5.2",
+      "pillar_1.11.1",
+      "pkgconfig_2.0.3",
+      "promises_1.5.0",
+      "ps_1.9.3",
+      "purrr_1.2.2",
+      "qs2_0.3.1",
+      "R.methodsS3_1.8.2",
+      "R.oo_1.27.1",
+      "R.utils_2.13.0",
+      "R6_2.6.1",
+      "Rcpp_1.1.2",
+      "RcppParallel_6.2.1",
+      "readr_2.2.0",
+      "rlang_1.3.0",
+      "stringfish_0.19.2",
+      "stringi_1.8.9",
+      "swagger_5.32.1",
+      "tibble_3.3.1",
+      "tidyselect_1.2.1",
+      "tools_4.5.2",
+      "triebeard_0.4.1",
+      "tzdb_0.5.0",
+      "urltools_1.7.3.1",
+      "vctrs_0.7.3",
+      "vroom_1.7.1",
+      "webutils_1.2.3",
+      "yaml_2.3.12"
+    ],
+    "r_version": [
+      "R version 4.5.2 (2025-10-31)"
+    ],
+    "server_os": [
+      "Red Hat Enterprise Linux 8.10 (Ootpa)"
+    ],
+    "server_time": [
+      "2026-11-11 08:30:28"
+    ]
+  },
+  "pip_surveys_sha256": "e383164745eb59c84b314c4220c460df697c9c68c934e08f25fb018bf131d156",
+  "pip_headcounts_sha256": "64d6dc53e0e4e475557bd401fdea656a54f3cc55c61cf2e8296d500ab40d7b98",
+  "n_survey_estimates": 2588,
+  "n_countries": 172,
+  "welfare_type_counts": {
+    "income": 1588,
+    "consumption": 1000
+  }
+}

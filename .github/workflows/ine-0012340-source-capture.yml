@@ -1,0 +1,32 @@
+name: Capture INE Census 2021 commuting source (manual)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    defaults:
+      run:
+        working-directory: urban-affordability-cascade
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate capture boundaries with offline tests
+        run: python -m unittest discover -s tests -p 'test_ine_commuting_capture.py' -v
+      - name: Request original INE metadata and candidate 2021 JSON slice
+        run: python ine_commuting_capture.py --output "${{ runner.temp }}/ine-0012340"
+      - name: Archive responses, content hashes and failures for independent review
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ine-0012340-2021-unreconciled-source-capture
+          path: ${{ runner.temp }}/ine-0012340/
+          if-no-files-found: warn
+          retention-days: 30
