@@ -1,0 +1,179 @@
+Part 1: how motor tariffs were judged, from minimum bias to the Gini index.
+NumPy 2.5.3
+
+==============================================================================
+1. Bailey and Simon (1960): the Canadian experience, policy years 1957 and 1958
+==============================================================================
+Cells: 20 (5 classes x 4 merit groups). Car-years: 4,153,000 (Table A total 4,153 thousand; Table 1 total 4,150,075).
+Share of car-years in class 1: 0.801; in merit group A: 0.808.
+Cell with most car-years: class 1, merit A, 0.664 of the total.
+
+Effectiveness as Bailey and Simon measured it (their Section A), from the published loss ratios:
+  lowest merit group A below average:       10.5%
+  lowest class 1 below average:              13.7%
+  cell 1A (both plans) below average:        21.4%
+  merit rating as a fraction of class rating: 0.768 (their 77%)
+
+Spread of the relative loss ratios: lowest cell 1A = 0.786, highest cell 4B = 2.853, ratio 3.63.
+
+==============================================================================
+2. The four methods of Bailey and Simon, recomputed, against their Tables C and E
+==============================================================================
+Relativities (classes 1, 5, 3, 2, 4 | merit A, X, Y, B). 'pub' = as printed; 'rec' = recomputed.
+Multiplicative relativities are identified only up to x*c, y/c (additive: x+c, y-c); recomputed
+relativities are put on the published scale by the c that matches the published class relativities.
+Method 1 pub                 0.863   1.154   1.313   1.372   2.269   0.895   1.174   1.277   1.610
+Method 1 from car-years      0.858   1.155   1.310   1.370   2.271   0.901   1.191   1.294   1.651
+  (Bailey and Simon weighted the customary relativities by premium at 1B rates; car-years are
+   the only weights that can be transcribed, so the article uses their printed Method 1.)
+Method 2 pub                 0.881   1.161   1.309   1.367   2.125   0.906   1.113   1.215   1.462
+Method 2 rec                 0.881   1.161   1.310   1.367   2.125   0.906   1.113   1.215   1.462
+Method 3 pub                 0.869   1.145   1.291   1.352   2.172  -0.083   0.135   0.237   0.512
+Method 3 rec                 0.869   1.145   1.292   1.352   2.172  -0.083   0.135   0.237   0.512
+Method 4 pub                 0.958   1.049   1.099   1.118   1.384   0.971   1.040   1.076   1.167
+Method 4 rec                 0.957   1.050   1.099   1.119   1.384   0.971   1.044   1.078   1.168
+
+Method 2: largest gap between recomputed and printed fitted cell values: 0.0014
+Method 3: largest gap between recomputed and printed fitted cell values: 0.0009
+Method 4: largest gap between recomputed and printed fitted cell values: 0.0137
+
+Tests (balance = fitted / actual relative losses; departure = sum n|r - F| / sum n r;
+chi-square = K sum n (r - F)^2 / F with n in car-years and K = 1/200; 12 df, 11 for Method 4):
+                             total bal  worst bal  departure    chi2        p   printed (bal, dep, chi2)
+Method 1 (customary)            1.0106     1.1124     0.0398    97.8   0.0000   1.0103, 0.0401, 98
+Method 2 (min chi2, x*y)        1.0008     1.0026     0.0316    34.0   0.0007   1.0011, 0.0317, 34
+Method 3 (min chi2, x+y)        1.0002     1.0080     0.0101     9.8   0.6306   1.0006, 0.0098, 10
+Method 4 (min chi2, 3xy-2)      1.0001     1.0074     0.0090     7.6   0.7528   0.9983, 0.0111, 8
+Minimum bias (Bailey 1963)      1.0000     1.0000     0.0317    34.1   0.0007
+
+Method 1 balance by class (1, 5, 3, 2, 4):  rec [0.989  1.0097 1.0196 1.023  1.1066]  pub [0.9886 1.0099 1.0195 1.023  1.1067]
+Method 1 balance by merit (A, X, Y, B):     rec [0.981  1.059  1.0536 1.1124]  pub [0.9806 1.0589 1.0536 1.1122]
+Method 2 balance by class: [1.0004 1.001  1.0009 1.0021 1.0025]  by merit: [1.0003 1.0026 1.0016 1.0021]
+Method 3 balance by class: [1.0007 1.0022 0.9996 1.0026 0.9972]  by merit: [1.0011 1.008  1.0022 0.993 ]
+
+==============================================================================
+3. Bailey (1963): minimum bias, and why its answer is the Poisson fit
+==============================================================================
+Iterations started from the customary merit relativities (as in Berquist's discussion, Table 1):
+calculation 1 rec            0.873   1.143   1.288   1.341   2.050   0.918   1.129   1.232   1.485
+calculation 1 Berquist       0.872   1.143   1.288   1.341   2.050   0.918   1.129   1.232   1.486
+calculation 2 rec            0.869   1.144   1.291   1.346   2.090   0.918   1.127   1.231   1.480
+calculation 2 Berquist       0.868   1.144   1.290   1.345   2.089   0.919   1.128   1.232   1.481
+calculation 3 rec            0.869   1.144   1.291   1.346   2.092   0.918   1.127   1.231   1.480
+calculation 3 Berquist       0.868   1.143   1.290   1.345   2.090   0.919   1.127   1.232   1.481
+
+Fixed point:                              0.869   1.144   1.291   1.346   2.092   0.918   1.127   1.231   1.480
+Largest gap to Berquist's fitted values (Table 2): 0.0017
+Balance at the fixed point, by class: [1. 1. 1. 1. 1.]  by merit: [1. 1. 1. 1.]
+Largest relative gap between the minimum-bias fit and the Poisson log-link fit: 2.22e-16
+Minimum bias against Method 2: chi-square 34.08 vs 34.05; largest cell gap 0.0101
+
+==============================================================================
+4. The same Canadian tariffs scored by an exposure-weighted Gini index
+==============================================================================
+  Method 1 (customary)         Gini 0.1699
+  Method 2 (min chi2, x*y)     Gini 0.1699
+  Method 3 (min chi2, x+y)     Gini 0.1701
+  Method 4 (min chi2, 3xy-2)   Gini 0.1701
+  Minimum bias                 Gini 0.1699
+  Class only (customary x)     Gini 0.1263
+  Merit only (customary y)     Gini 0.0886
+  Flat rate                    Gini 0.0000
+  Cells' own experience        Gini 0.1702
+Ceiling for a tariff on these 20 cells (cells ranked by their own experience): 0.1702
+  Method 1 (customary) as a share of the ceiling: 0.9982
+  Method 3 (min chi2, x+y) as a share of the ceiling: 0.9995
+  Minimum bias as a share of the ceiling: 0.9987
+Merit-only Gini as a fraction of class-only Gini: 0.701
+
+Cell orderings: number of the 190 pairs of cells ranked in opposite order:
+  M1 vs M2: 2
+  M1 vs M3: 2
+  M1 vs M4: 2
+  M1 vs MB: 2
+  M2 vs M3: 2
+  M2 vs M4: 2
+  M2 vs MB: 0
+  M3 vs M4: 0
+  M3 vs MB: 2
+  M4 vs MB: 2
+
+The minimum-bias tariff raised to a power and rescaled to balance in total:
+  power 0.5: Gini 0.1699, total balance 1.0000, class 1 1.096, class 4 0.672, merit B 0.780, chi-square 829
+  power 2.0: Gini 0.1699, total balance 1.0000, class 1 0.753, class 4 2.026, merit B 1.615, chi-square 3408
+  power 3.0: Gini 0.1699, total balance 1.0000, class 1 0.472, class 4 3.461, merit B 2.442, chi-square 17477
+
+==============================================================================
+5. Sweden 1977: the marginal-totals tariff is the Poisson GLM
+==============================================================================
+Cells: 2,182; policy-years: 2,383,170; claims: 113,171; payments: 560,790,681 kronor
+Claim frequency: 0.0475 per policy-year; mean payment per claim: 4,955 kronor
+Cells with no claims: 385; median exposure per cell: 81.5 policy-years
+Marginal-totals iteration (Bailey 1963, Jung 1968), four factors: converged in 13 sweeps.
+Largest relative gap to the Poisson GLM fitted by IRLS: 1.2e-14
+  Kilometres relativities [1.    1.237 1.377 1.499 1.779]  balance max |1 - ratio| 2.0e-15
+  Zone       relativities [1.    0.788 0.68  0.559 0.722 0.591 0.481]  balance max |1 - ratio| 1.3e-15
+  Bonus      relativities [1.    0.619 0.5   0.437 0.396 0.37  0.265]  balance max |1 - ratio| 1.6e-15
+  Make       relativities [1.    1.079 0.781 0.52  1.168 0.715 0.946 0.957 0.934]  balance max |1 - ratio| 1.8e-15
+  base frequency (Kilometres 1, Zone 1, Bonus 1, Make 1): 0.1632
+Range of the four-factor frequency tariff: 0.0108 to 0.3389 (ratio 31.3)
+
+Nested tariffs (each fitted by marginal totals), Gini of claims and Poisson deviance:
+  flat rate                                Gini 0.0000   deviance    34070.6
+  Bonus                                    Gini 0.2076   deviance    12886.2
+  Bonus + Zone                             Gini 0.2513   deviance     7885.3
+  Bonus + Zone + Kilometres                Gini 0.2708   deviance     4456.8
+  Bonus + Zone + Kilometres + Make         Gini 0.2768   deviance     2966.1
+  Ceiling: cells ranked by their own observed frequency, Gini 0.2878
+  Four-factor tariff as a share of the ceiling (a 'normalised' Gini): 0.962
+
+Customary tariff (product of the four one-way relativities, as in Method 1):
+  total balance 0.9969; Gini 0.2732; deviance 3636.2
+  Kilometres balance by level [1.06  1.017 0.938 0.899 0.92 ]
+  Zone       balance by level [1.028 1.009 0.99  0.973 0.996 0.989 0.983]
+  Bonus      balance by level [0.964 0.979 0.995 1.014 1.026 1.038 0.997]
+  Make       balance by level [0.936 0.947 0.922 1.18  0.953 0.983 0.911 0.886 1.01 ]
+
+==============================================================================
+6. Sweden 1977: the same ranking at a different price
+==============================================================================
+Premium rate proportional to (GLM frequency)^gamma, rescaled so that total premium = total claims.
+Gini is computed to 9 decimals; deviance is Poisson; balance = premium / claims.
+ gamma         Gini   deviance    Bonus 1 Bonus 7  Zone 1  Zone 7  low dec  top dec
+  0.25  0.276824181    20896.3      0.510   1.305   0.742   1.335    1.790    0.522
+  0.50  0.276824181    11127.4      0.645   1.208   0.821   1.216    1.484    0.655
+  0.75  0.276824181     5053.6      0.808   1.106   0.907   1.105    1.211    0.812
+  1.00  0.276824181     2966.1      1.000   1.000   1.000   1.000    0.972    0.993
+  1.25  0.276824181     5141.4      1.222   0.892   1.099   0.902    0.767    1.197
+  1.50  0.276824181    11822.1      1.473   0.784   1.205   0.811    0.593    1.422
+  2.00  0.276824181    39386.2      2.047   0.577   1.435   0.647    0.334    1.913
+  3.00  0.276824181   151725.5      3.292   0.259   1.944   0.393    0.083    2.875
+
+gamma 1.0: balance by premium decile [0.972 0.982 0.978 0.984 1.017 1.017 1.021 1.021 0.996 0.993]
+  Kilometres [1. 1. 1. 1. 1.]
+  Zone       [1. 1. 1. 1. 1. 1. 1.]
+  Bonus      [1. 1. 1. 1. 1. 1. 1.]
+  Make       [1. 1. 1. 1. 1. 1. 1. 1. 1.]
+gamma 2.0: balance by premium decile [0.334 0.418 0.462 0.507 0.598 0.657 0.751 0.876 1.079 1.913]
+  Kilometres [0.9   1.029 1.002 1.015 1.262]
+  Zone       [1.435 1.091 0.922 0.746 0.979 0.804 0.647]
+  Bonus      [2.047 1.305 1.077 0.964 0.889 0.842 0.577]
+  Make       [0.979 1.075 0.759 0.665 1.192 0.755 0.884 0.864 1.025]
+
+Grid of 57 exponents from 0.2 to 3.0: deviance smallest at gamma = 1.0
+Distinct Gini values over the grid: 1
+Smallest exponent on the grid above 1 whose deviance exceeds the flat rate's: 1.95
+Exact exponent above 1 at which the deviance equals the flat rate's: 1.926
+Exponents below 1 whose deviance exceeds the flat rate's: none on the grid
+
+Level errors: the GLM tariff multiplied by a constant.
+  level 0.8: Gini 0.276824181; deviance 8204.5; total premium / claims 0.800
+  level 0.9: Gini 0.276824181; deviance 4179.4; total premium / claims 0.900
+  level 1.1: Gini 0.276824181; deviance 4027.6; total premium / claims 1.100
+
+Pure premium (payments) tariff by marginal totals, four factors:
+  Gini of payments 0.2485; the frequency tariff ranks payments with Gini 0.2453; ceiling 0.2763
+  Kilometres pure-premium relativities [1.    1.263 1.404 1.567 1.847]
+  Zone       pure-premium relativities [1.    0.808 0.714 0.638 0.763 0.685 0.492]
+  Bonus      pure-premium relativities [1.    0.649 0.537 0.462 0.411 0.398 0.298]
+  Make       pure-premium relativities [1.    1.039 0.848 0.441 1.067 0.691 0.845 1.182 0.886]
