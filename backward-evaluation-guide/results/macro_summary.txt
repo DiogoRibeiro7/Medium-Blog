@@ -1,0 +1,86 @@
+US monthly series: train-period x test-period matrices of an AR(3), blocks of 60 months, 12-month gap. Excess log loss (nats per month) = level + spread + structure.
+
+[CPI inflation, t] 1960-04 to 2026-09, 13 blocks starting 1961-08, 1966-08, 1971-08, 1976-08, 1981-08, 1986-08, 1991-08, 1996-08, 2001-08, 2006-08, 2011-08, 2016-08, 2021-08
+model of block 2021-08 on the other blocks (excess log loss = level + spread + structure, nats per row):
+         1961-08: +0.255 = 0.085 + 0.065 + +0.105   (60 rows)
+         1966-08: +0.067 = 0.002 + 0.004 + +0.061   (60 rows)
+         1971-08: +0.253 = 0.025 + 0.080 + +0.149   (60 rows)
+         1976-08: +0.358 = 0.401 + 0.002 + -0.046   (60 rows)
+         1981-08: -0.182 = 0.011 + 0.000 + -0.193   (60 rows)
+         1986-08: +0.039 = 0.000 + 0.024 + +0.015   (60 rows)
+         1991-08: +0.320 = 0.030 + 0.207 + +0.083   (60 rows)
+         1996-08: +0.088 = 0.049 + 0.036 + +0.003   (60 rows)
+         2001-08: +0.114 = 0.007 + 0.004 + +0.103   (60 rows)
+         2006-08: -0.005 = 0.016 + 0.056 + -0.077   (60 rows)
+         2011-08: +0.032 = 0.106 + 0.015 + -0.089   (60 rows)
+         2016-08: +0.016 = 0.037 + 0.006 + -0.027   (48 rows)
+  mean over the past blocks: excess +0.113, level +0.064, spread +0.042, structure +0.007
+  cost of the best split into 1..6 regimes: 38.1, 14.0, 8.0, 3.4, 1.9, 1.1
+  2 regimes: 1961-08 to 1981-07; 1981-08 to 2026-09
+  3 regimes: 1961-08 to 1966-07; 1966-08 to 1991-07; 1991-08 to 2026-09
+  4 regimes: 1961-08 to 1966-07; 1966-08 to 1981-07; 1981-08 to 2001-07; 2001-08 to 2026-09
+  every other block's model on the block 2016-08 to 2021-07 (mean): excess +0.143, level +0.075, spread +0.078, structure -0.010
+
+[CPI inflation, gaussian] 1960-04 to 2026-09, 13 blocks starting 1961-08, 1966-08, 1971-08, 1976-08, 1981-08, 1986-08, 1991-08, 1996-08, 2001-08, 2006-08, 2011-08, 2016-08, 2021-08
+model of block 2021-08 on the other blocks (excess log loss = level + spread + structure, nats per row):
+         1961-08: +0.292 = 0.093 + 0.184 + +0.015   (60 rows)
+         1966-08: +0.143 = 0.002 + 0.078 + +0.063   (60 rows)
+         1971-08: +0.234 = 0.100 + 0.124 + +0.010   (60 rows)
+         1976-08: +0.335 = 0.414 + 0.020 + -0.099   (60 rows)
+         1981-08: -0.191 = 0.009 + 0.006 + -0.206   (60 rows)
+         1986-08: +0.079 = 0.001 + 0.097 + -0.018   (60 rows)
+         1991-08: +0.463 = 0.026 + 0.443 + -0.006   (60 rows)
+         1996-08: +0.142 = 0.045 + 0.138 + -0.041   (60 rows)
+         2001-08: -0.123 = 0.027 + 0.000 + -0.150   (60 rows)
+         2006-08: -0.035 = 0.064 + 0.137 + -0.237   (60 rows)
+         2011-08: +0.066 = 0.126 + 0.045 + -0.105   (60 rows)
+         2016-08: -0.025 = 0.072 + 0.044 + -0.141   (48 rows)
+  mean over the past blocks: excess +0.115, level +0.082, spread +0.110, structure -0.076
+  cost of the best split into 1..6 regimes: 83.2, 32.2, 16.6, 4.5, 2.5, 1.3
+  2 regimes: 1961-08 to 1991-07; 1991-08 to 2026-09
+  3 regimes: 1961-08 to 1986-07; 1986-08 to 2001-07; 2001-08 to 2026-09
+  4 regimes: 1961-08 to 1971-07; 1971-08 to 1991-07; 1991-08 to 2001-07; 2001-08 to 2026-09
+  every other block's model on the block 2016-08 to 2021-07 (mean): excess +0.366, level +0.094, spread +0.307, structure -0.035
+
+[Industrial production growth, t] 1960-04 to 2026-09, 13 blocks starting 1961-10, 1966-10, 1971-10, 1976-10, 1981-10, 1986-10, 1991-10, 1996-10, 2001-10, 2006-10, 2011-10, 2016-10, 2021-10
+model of block 2021-10 on the other blocks (excess log loss = level + spread + structure, nats per row):
+         1961-10: +1.191 = 1.251 + 0.040 + -0.100   (60 rows)
+         1966-10: +0.294 = 0.041 + 0.251 + +0.002   (60 rows)
+         1971-10: +1.490 = 0.421 + 0.514 + +0.555   (60 rows)
+         1976-10: +0.731 = 0.115 + 0.373 + +0.242   (60 rows)
+         1981-10: +0.717 = 0.001 + 0.411 + +0.305   (60 rows)
+         1986-10: +0.335 = 0.108 + 0.052 + +0.176   (60 rows)
+         1991-10: +0.271 = 0.368 + 0.000 + -0.097   (60 rows)
+         1996-10: +0.666 = 0.182 + 0.098 + +0.387   (60 rows)
+         2001-10: +0.061 = 0.080 + 0.000 + -0.020   (60 rows)
+         2006-10: +0.741 = 0.018 + 0.396 + +0.327   (60 rows)
+         2011-10: +0.172 = 0.000 + 0.003 + +0.169   (60 rows)
+         2016-10: -0.067 = 0.003 + 0.290 + -0.360   (48 rows)
+  mean over the past blocks: excess +0.550, level +0.216, spread +0.202, structure +0.132
+  cost of the best split into 1..6 regimes: 9.8, 2.9, 0.9, 0.4, 0.0, -0.0
+  2 regimes: 1961-10 to 1986-09; 1986-10 to 2026-09
+  3 regimes: 1961-10 to 1981-09; 1981-10 to 2016-09; 2016-10 to 2026-09
+  4 regimes: 1961-10 to 1966-09; 1966-10 to 1986-09; 1986-10 to 2016-09; 2016-10 to 2026-09
+  every other block's model on the block 2016-10 to 2021-09 (mean): excess -0.206, level +0.044, spread +0.250, structure -0.500
+
+[Industrial production growth, gaussian] 1960-04 to 2026-09, 13 blocks starting 1961-10, 1966-10, 1971-10, 1976-10, 1981-10, 1986-10, 1991-10, 1996-10, 2001-10, 2006-10, 2011-10, 2016-10, 2021-10
+model of block 2021-10 on the other blocks (excess log loss = level + spread + structure, nats per row):
+         1961-10: +1.324 = 1.479 + 0.068 + -0.224   (60 rows)
+         1966-10: +0.320 = 0.028 + 0.408 + -0.117   (60 rows)
+         1971-10: +3.000 = 0.166 + 2.398 + +0.436   (60 rows)
+         1976-10: +1.403 = 0.135 + 1.023 + +0.244   (60 rows)
+         1981-10: +0.802 = 0.009 + 0.674 + +0.119   (60 rows)
+         1986-10: +0.286 = 0.069 + 0.071 + +0.147   (60 rows)
+         1991-10: +0.212 = 0.337 + 0.005 + -0.129   (60 rows)
+         1996-10: +0.423 = 0.166 + 0.079 + +0.178   (60 rows)
+         2001-10: -0.070 = 0.058 + 0.000 + -0.129   (60 rows)
+         2006-10: +1.586 = 0.097 + 1.675 + -0.186   (60 rows)
+         2011-10: +0.144 = 0.000 + 0.001 + +0.143   (60 rows)
+         2016-10: +9.708 = 0.090 + 11.268 + -1.651   (48 rows)
+  mean over the past blocks: excess +1.595, level +0.220, spread +1.473, structure -0.097
+  cost of the best split into 1..6 regimes: 63.0, 16.3, 8.0, 2.7, 1.1, -0.3
+  2 regimes: 1961-10 to 2016-09; 2016-10 to 2026-09
+  3 regimes: 1961-10 to 1986-09; 1986-10 to 2016-09; 2016-10 to 2026-09
+  4 regimes: 1961-10 to 1986-09; 1986-10 to 2016-09; 2016-10 to 2021-09; 2021-10 to 2026-09
+  every other block's model on the block 2016-10 to 2021-09 (mean): excess +7.052, level +0.116, spread +8.409, structure -1.472
+

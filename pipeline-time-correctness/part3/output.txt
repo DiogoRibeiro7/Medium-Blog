@@ -1,0 +1,233 @@
+
+==============================================================================
+R0. The RKI case files
+==============================================================================
+daily publications read: 998 of 1004 days from 2021-04-02 to 2023-12-31; missing: ['2021-04-07', '2021-04-08', '2021-04-09', '2021-04-10', '2021-04-11', '2023-01-08']
+monthly snapshots after that: 36, the last on 2026-11-10
+files read: 1034, 15.7 GB compressed; smallest 4.3 MB, largest 23.0 MB
+daily publications with no new case at all: 142, the first on 2022-06-05; by weekday: Mon 64, Tue 6, Wed 2, Fri 1, Sat 1, Sun 68
+  from July 2022: Sunday publications with no new case 66 of 78, Monday 64 of 78
+cases with Meldedatum 1 April 2021 to 30 December 2023 in the last file: 35,932,395
+largest day: 307,840 on 2022-03-23
+cases with a known onset date (onset counts at 120 days / Meldedatum counts at 120 days, dates 12 Apr 2021 - 31 Aug 2023): 19.1%
+
+==============================================================================
+R1. How long the case counts took to arrive
+==============================================================================
+By reporting date (Meldedatum), share of the count in the last file, dates 2021-04-12 to 2023-08-31:
+  published   0 days after: median 0.0% (10th percentile 0.0%, 90th 0.0%); n = 871
+  published   1 days after: median 67.9% (10th percentile 0.0%, 90th 74.7%); n = 871
+  published   2 days after: median 90.7% (10th percentile 54.5%, 90th 96.3%); n = 871
+  published   3 days after: median 95.5% (10th percentile 69.7%, 90th 98.6%); n = 871
+  published   4 days after: median 97.3% (10th percentile 91.9%, 90th 99.3%); n = 871
+  published   7 days after: median 99.2% (10th percentile 97.2%, 90th 100.0%); n = 871
+  published  14 days after: median 99.7% (10th percentile 98.5%, 90th 100.1%); n = 871
+  published  28 days after: median 99.9% (10th percentile 99.1%, 90th 100.1%); n = 871
+  published 120 days after: median 100.0% (10th percentile 99.6%, 90th 100.1%); n = 871
+  arriving more than 120 days after the reporting date: median 0.00%, mean 0.06%; dates with more than 1%: 12, with less than -1%: 1
+  share published the next day, by weekday of the reporting date: Monday 63.4%, Tuesday 70.2%, Wednesday 71.4%, Thursday 71.1%, Friday 68.3%, Saturday 0.0%, Sunday 2.8%
+  share published the next day, by year: 2021 71.5%, 2022 67.9%, 2023 58.8%
+  share published within two days, by year: 2021 93.1%, 2022 89.3%, 2023 86.0%
+
+By onset date (cases with a known onset), share of the count published 120 days after:
+  published   1 days after onset: median 0.9% (10th percentile 0.1%, 90th 3.6%)
+  published   2 days after onset: median 6.8% (10th percentile 0.7%, 90th 17.7%)
+  published   3 days after onset: median 17.8% (10th percentile 5.1%, 90th 36.0%)
+  published   5 days after onset: median 43.2% (10th percentile 27.8%, 90th 59.8%)
+  published   7 days after onset: median 61.6% (10th percentile 46.3%, 90th 71.8%)
+  published  10 days after onset: median 75.2% (10th percentile 62.0%, 90th 83.0%)
+  published  14 days after onset: median 83.3% (10th percentile 72.9%, 90th 89.1%)
+  published  21 days after onset: median 89.4% (10th percentile 81.4%, 90th 94.3%)
+  published  28 days after onset: median 91.7% (10th percentile 84.7%, 90th 96.6%)
+
+==============================================================================
+R2. What the latest periods were missing: the 7-day count
+==============================================================================
+7-day count as published each day / final, publications 2021-04-12 to 2023-08-31: median 92.0% (10th percentile 86.9%, 90th 94.8%)
+  lowest 49.0% on 2023-08-28; highest 98.7% on 2021-05-24
+  days on which the published count was more than 5% short: 791 of 871
+  the same 7-day totals by SQL (calendar of dates, left joins): 871 publications, equal to pandas: True
+  week-over-week change as published (each week from its own day) against final: same sign on 840 of 864 days; mean absolute difference 2.0 points
+  week-over-week change read from one day's file for both weeks: same sign as final on 742 of 864 days; mean error -8.6 points; falling while the final rose: 120 days
+
+The 7-day count nowcast each day (dates p-7 .. p-1; publications 1 May 2021 - 31 Aug 2023), error against final:
+  as published                         mean -8.8%, mean absolute 8.8%, days more than 5% off 781 of 853, Monday publications mean absolute 9.8%
+  chain ladder, 28-day window          mean -0.5%, mean absolute 3.9%, days more than 5% off 215 of 853, Monday publications mean absolute 7.0%
+  same-weekday factors, last 4 weeks   mean -0.4%, mean absolute 2.8%, days more than 5% off 108 of 853, Monday publications mean absolute 3.9%
+
+==============================================================================
+R3. Restatements in the case files
+==============================================================================
+removed rows (NeuerFall = -1) summed over the daily publications, dates within 120 days: 259,417 cases; new (NeuerFall = 1): 36,074,885
+  largest one-day removal: 1,929 cases in the publication of 2022-02-23
+  publications with more than 1,000 cases removed: 72
+  consecutive daily files compared: 995; pairs where, for at least one of the 100 dates before, the change between the files differs from the flagged change: 790
+  absolute difference between flagged and actual change: median 57 cases a day, total 200,417 against a total absolute change of 35,863,813 (0.56%); largest 7,182 on 2023-12-20
+  example: reporting date 2021-03-16, count in the file of 2021-04-03 15,818, in the file of 2021-04-04 15,818; flagged in the second file: new 3, removed 1
+  change between 120 days after the reporting date and the last file: total +0.054%; dates changed by more than 1%: 13 of 871
+  cases with Meldedatum April 2021 - November 2023 in the file of 2024-01-01: 35,822,204; in the file of 2026-11-10: 35,824,980
+
+==============================================================================
+R4. States
+==============================================================================
+Share of the 28-day count published the next day, median over dates, by state:
+  Hamburg                  11.9%
+  Saxony                   46.7%
+  Rhineland-Palatinate     62.9%
+  Lower Saxony             65.7%
+  North Rhine-Westphalia   67.0%
+  Baden-Wurttemberg        71.9%
+  Saxony-Anhalt            72.9%
+  Berlin                   75.1%
+  Bavaria                  76.0%
+  Hesse                    77.9%
+  Brandenburg              79.1%
+  Schleswig-Holstein       82.6%
+  Thuringia                82.7%
+  Bremen                   90.7%
+  Mecklenburg-Vorpommern   92.8%
+  Saarland                 100.0%
+
+==============================================================================
+R5. A nowcast on the onset-date counts, delays as they really changed
+==============================================================================
+  onset counts 7 days after onset, monthly median share of the 60-day count: from 43.1% (2022-03) to 73.4% (2023-01)
+  onset 3 days before: raw count error mean -80.1%, mean absolute 80.1%; chain ladder (7-day window) mean -1.8%, mean absolute 45.1%, worst 142.8%; chain ladder (28-day window) mean -2.4%, mean absolute 44.9%, worst 174.0%
+  onset 7 days before: raw count error mean -37.7%, mean absolute 37.7%; chain ladder (7-day window) mean 1.0%, mean absolute 10.1%, worst 59.2%; chain ladder (28-day window) mean 1.2%, mean absolute 10.2%, worst 50.6%
+  months with the largest mean absolute error (28-day window, 7 days after onset): 2022-05 20.2%, 2021-11 17.3%, 2022-03 16.4%
+
+==============================================================================
+H1. The hospitalisation triangle
+==============================================================================
+nowcast files read: 1555
+dates 2021-04-06 to 2024-12-20; evaluation dates 2021-10-25 to 2022-04-29
+  share of the latest count known  0 days after the reporting date: median 21.3% (10th 11.2%, 90th 26.5%)
+  share of the latest count known  1 days after the reporting date: median 36.8% (10th 20.3%, 90th 48.3%)
+  share of the latest count known  3 days after the reporting date: median 52.0% (10th 42.3%, 90th 63.3%)
+  share of the latest count known  7 days after the reporting date: median 69.4% (10th 64.2%, 90th 75.0%)
+  share of the latest count known 14 days after the reporting date: median 82.8% (10th 79.4%, 90th 87.0%)
+  share of the latest count known 28 days after the reporting date: median 90.8% (10th 87.7%, 90th 94.2%)
+  share of the latest count known 56 days after the reporting date: median 94.2% (10th 92.2%, 90th 97.2%)
+  share of the latest count known 80 days after the reporting date: median 95.7% (10th 93.6%, 90th 98.3%)
+  share arriving more than 80 days after: median 4.3%
+  negative daily changes (corrections) in the national triangle: 1351 cells, 1,895 cases
+7-day hospitalisation count as first published / latest, 187 days: median 49.0% (10th percentile 44.2%, 90th 53.7%); a week later: median 76.6% (10th percentile 73.5%, 90th 80.3%)
+  the 159 days of the hub's evaluation period: first published median 49.2% (10th percentile 44.1%, 90th 54.1%); a week later median 76.2% (10th percentile 73.3%, 90th 79.5%); highest first-published share 61.1%
+  week-over-week change, 180 days: as published (each week on its own day) same sign as final on 158; both weeks from one day's data: 93, mean error -37.0 points, falling while the final rose 87
+
+==============================================================================
+H2. Ten nowcasts against the truth, 22 Nov 2021 - 29 Apr 2022
+==============================================================================
+horizon 0 days:
+  ILM-prop                         n=134 against latest: bias +3.7%, MAE 6.5%, 95% interval covered the latest value 77%; against 80 days: bias +8.9%, MAE 9.9%
+  RIVM-KEW                         n=157 against latest: bias -5.3%, MAE 7.1%, 95% interval covered the latest value 49%; against 80 days: bias -0.8%, MAE 5.5%
+  NowcastHub-MeanEnsemble          n=158 against latest: bias -4.6%, MAE 7.2%, 95% interval covered the latest value 88%; against 80 days: bias -0.0%, MAE 6.1%
+  NowcastHub-MedianEnsemble        n=158 against latest: bias -5.2%, MAE 7.2%, 95% interval covered the latest value 75%; against 80 days: bias -0.7%, MAE 5.8%
+  LMU_StaBLab-GAM_nowcast          n=159 against latest: bias -6.7%, MAE 8.5%, 95% interval covered the latest value 16%; against 80 days: bias -2.3%, MAE 6.5%
+  SZ-hosp_nowcast                  n=159 against latest: bias -6.0%, MAE 9.1%, 95% interval covered the latest value 62%; against 80 days: bias -1.5%, MAE 7.6%
+  chain ladder (56-day window)     n=159 against latest: bias -2.0%, MAE 9.2%; against 80 days: bias +2.7%, MAE 9.9%
+  chain ladder (28-day window)     n=159 against latest: bias -3.0%, MAE 9.6%; against 80 days: bias +1.5%, MAE 9.7%
+  SU-hier_bayes                    n=156 against latest: bias -6.6%, MAE 10.0%, 95% interval covered the latest value 79%; against 80 days: bias -2.2%, MAE 8.6%
+  KIT-simple_nowcast               n=159 against latest: bias -4.6%, MAE 10.2%, 95% interval covered the latest value 96%; against 80 days: bias -0.1%, MAE 10.1%
+  RKI-weekly_report                n=  1 against latest: bias -10.8%, MAE 10.8%, 95% interval covered the latest value 0%; against 80 days: bias -9.1%, MAE 9.1%
+  Epiforecasts-independent         n=157 against latest: bias -6.4%, MAE 10.8%, 95% interval covered the latest value 66%; against 80 days: bias -2.0%, MAE 9.2%
+  value known on the day           n=159 against latest: bias -50.7%, MAE 50.7%; against 80 days: bias -48.3%, MAE 48.3%
+horizon -3 days:
+  ILM-prop                         n=140 against latest: bias +1.2%, MAE 4.4%, 95% interval covered the latest value 80%; against 80 days: bias +6.0%, MAE 6.9%
+  RKI-weekly_report                n=150 against latest: bias -3.1%, MAE 5.8%, 95% interval covered the latest value 20%; against 80 days: bias +1.6%, MAE 5.4%
+  chain ladder (56-day window)     n=159 against latest: bias -3.5%, MAE 6.0%; against 80 days: bias +1.0%, MAE 5.6%
+  RIVM-KEW                         n=157 against latest: bias -5.5%, MAE 6.2%, 95% interval covered the latest value 24%; against 80 days: bias -1.1%, MAE 4.0%
+  NowcastHub-MeanEnsemble          n=159 against latest: bias -6.0%, MAE 6.6%, 95% interval covered the latest value 65%; against 80 days: bias -1.6%, MAE 4.3%
+  chain ladder (28-day window)     n=159 against latest: bias -4.2%, MAE 6.7%; against 80 days: bias +0.2%, MAE 5.9%
+  NowcastHub-MedianEnsemble        n=159 against latest: bias -6.7%, MAE 7.1%, 95% interval covered the latest value 45%; against 80 days: bias -2.3%, MAE 4.5%
+  KIT-simple_nowcast               n=159 against latest: bias -5.8%, MAE 7.6%, 95% interval covered the latest value 98%; against 80 days: bias -1.4%, MAE 6.3%
+  SU-hier_bayes                    n=156 against latest: bias -7.5%, MAE 8.3%, 95% interval covered the latest value 51%; against 80 days: bias -3.2%, MAE 5.5%
+  LMU_StaBLab-GAM_nowcast          n=159 against latest: bias -8.3%, MAE 8.5%, 95% interval covered the latest value 11%; against 80 days: bias -3.9%, MAE 5.4%
+  SZ-hosp_nowcast                  n=159 against latest: bias -7.3%, MAE 8.6%, 95% interval covered the latest value 45%; against 80 days: bias -2.9%, MAE 6.3%
+  Epiforecasts-independent         n=157 against latest: bias -8.7%, MAE 9.6%, 95% interval covered the latest value 32%; against 80 days: bias -4.5%, MAE 6.4%
+  value known on the day           n=159 against latest: bias -35.1%, MAE 35.1%; against 80 days: bias -32.0%, MAE 32.0%
+horizon -7 days:
+  ILM-prop                         n=140 against latest: bias -0.6%, MAE 3.0%, 95% interval covered the latest value 89%; against 80 days: bias +4.1%, MAE 4.8%
+  chain ladder (56-day window)     n=159 against latest: bias -4.8%, MAE 5.2%; against 80 days: bias -0.4%, MAE 3.1%
+  chain ladder (28-day window)     n=159 against latest: bias -5.1%, MAE 5.5%; against 80 days: bias -0.7%, MAE 3.6%
+  RKI-weekly_report                n=150 against latest: bias -5.4%, MAE 5.8%, 95% interval covered the latest value 19%; against 80 days: bias -0.9%, MAE 3.4%
+  RIVM-KEW                         n=157 against latest: bias -5.9%, MAE 5.9%, 95% interval covered the latest value 13%; against 80 days: bias -1.6%, MAE 2.7%
+  NowcastHub-MeanEnsemble          n=159 against latest: bias -6.3%, MAE 6.3%, 95% interval covered the latest value 37%; against 80 days: bias -1.9%, MAE 2.9%
+  NowcastHub-MedianEnsemble        n=159 against latest: bias -6.6%, MAE 6.7%, 95% interval covered the latest value 25%; against 80 days: bias -2.3%, MAE 3.3%
+  KIT-simple_nowcast               n=159 against latest: bias -6.7%, MAE 6.9%, 95% interval covered the latest value 86%; against 80 days: bias -2.4%, MAE 4.1%
+  LMU_StaBLab-GAM_nowcast          n=159 against latest: bias -7.6%, MAE 7.6%, 95% interval covered the latest value 4%; against 80 days: bias -3.4%, MAE 3.9%
+  Epiforecasts-independent         n=157 against latest: bias -7.6%, MAE 8.0%, 95% interval covered the latest value 15%; against 80 days: bias -3.3%, MAE 4.6%
+  SU-hier_bayes                    n=156 against latest: bias -7.8%, MAE 8.4%, 95% interval covered the latest value 21%; against 80 days: bias -3.5%, MAE 4.9%
+  SZ-hosp_nowcast                  n=159 against latest: bias -8.2%, MAE 8.7%, 95% interval covered the latest value 21%; against 80 days: bias -3.9%, MAE 5.7%
+  value known on the day           n=159 against latest: bias -24.1%, MAE 24.1%; against 80 days: bias -20.6%, MAE 20.6%
+horizon -14 days:
+  ILM-prop                         n=140 against latest: bias -1.8%, MAE 2.3%, 95% interval covered the latest value 91%; against 80 days: bias +2.6%, MAE 3.1%
+  chain ladder (56-day window)     n=159 against latest: bias -5.2%, MAE 5.2%; against 80 days: bias -1.0%, MAE 1.6%
+  chain ladder (28-day window)     n=159 against latest: bias -5.3%, MAE 5.3%; against 80 days: bias -1.1%, MAE 1.8%
+  RIVM-KEW                         n=157 against latest: bias -5.8%, MAE 5.8%, 95% interval covered the latest value 8%; against 80 days: bias -1.6%, MAE 2.0%
+  NowcastHub-MeanEnsemble          n=159 against latest: bias -6.1%, MAE 6.1%, 95% interval covered the latest value 15%; against 80 days: bias -1.9%, MAE 2.2%
+  NowcastHub-MedianEnsemble        n=159 against latest: bias -6.3%, MAE 6.3%, 95% interval covered the latest value 8%; against 80 days: bias -2.2%, MAE 2.4%
+  RKI-weekly_report                n=150 against latest: bias -6.8%, MAE 6.8%, 95% interval covered the latest value 1%; against 80 days: bias -2.5%, MAE 2.6%
+  Epiforecasts-independent         n=157 against latest: bias -6.8%, MAE 6.8%, 95% interval covered the latest value 9%; against 80 days: bias -2.6%, MAE 3.1%
+  KIT-simple_nowcast               n=159 against latest: bias -6.9%, MAE 6.9%, 95% interval covered the latest value 55%; against 80 days: bias -2.7%, MAE 3.0%
+  LMU_StaBLab-GAM_nowcast          n=159 against latest: bias -7.0%, MAE 7.0%, 95% interval covered the latest value 0%; against 80 days: bias -2.8%, MAE 2.8%
+  SU-hier_bayes                    n=156 against latest: bias -7.1%, MAE 7.4%, 95% interval covered the latest value 10%; against 80 days: bias -2.9%, MAE 3.6%
+  SZ-hosp_nowcast                  n=159 against latest: bias -8.6%, MAE 8.7%, 95% interval covered the latest value 4%; against 80 days: bias -4.5%, MAE 5.1%
+  value known on the day           n=159 against latest: bias -14.7%, MAE 14.7%; against 80 days: bias -10.9%, MAE 10.9%
+horizon -28 days:
+  ILM-prop                         n=134 against latest: bias -2.5%, MAE 2.5%, 95% interval covered the latest value 64%; against 80 days: bias +1.7%, MAE 1.9%
+  chain ladder (56-day window)     n=159 against latest: bias -4.6%, MAE 4.6%; against 80 days: bias -0.6%, MAE 1.0%
+  chain ladder (28-day window)     n=159 against latest: bias -4.7%, MAE 4.7%; against 80 days: bias -0.8%, MAE 0.9%
+  RIVM-KEW                         n=157 against latest: bias -4.8%, MAE 4.9%, 95% interval covered the latest value 9%; against 80 days: bias -0.8%, MAE 1.5%
+  NowcastHub-MeanEnsemble          n=159 against latest: bias -5.8%, MAE 5.8%, 95% interval covered the latest value 0%; against 80 days: bias -1.9%, MAE 1.9%
+  KIT-simple_nowcast               n=159 against latest: bias -6.1%, MAE 6.1%, 95% interval covered the latest value 3%; against 80 days: bias -2.2%, MAE 2.2%
+  NowcastHub-MedianEnsemble        n=159 against latest: bias -6.3%, MAE 6.3%, 95% interval covered the latest value 1%; against 80 days: bias -2.4%, MAE 2.4%
+  SU-hier_bayes                    n=156 against latest: bias -6.4%, MAE 6.4%, 95% interval covered the latest value 3%; against 80 days: bias -2.5%, MAE 2.5%
+  RKI-weekly_report                n=150 against latest: bias -6.9%, MAE 6.9%, 95% interval covered the latest value 0%; against 80 days: bias -2.9%, MAE 2.9%
+  LMU_StaBLab-GAM_nowcast          n=159 against latest: bias -6.9%, MAE 6.9%, 95% interval covered the latest value 0%; against 80 days: bias -3.1%, MAE 3.1%
+  Epiforecasts-independent         n=157 against latest: bias -7.0%, MAE 7.0%, 95% interval covered the latest value 0%; against 80 days: bias -3.1%, MAE 3.1%
+  value known on the day           n=159 against latest: bias -8.2%, MAE 8.2%; against 80 days: bias -4.4%, MAE 4.4%
+  SZ-hosp_nowcast                  n=156 against latest: bias -8.2%, MAE 8.3%, 95% interval covered the latest value 0%; against 80 days: bias -4.4%, MAE 4.6%
+
+==============================================================================
+G. GDP vintages, quarter-on-quarter growth (100 x log difference)
+==============================================================================
+quarters 2002-07-01 to 2021-10-01, vintages 2002 Q4 to 2024 Q4
+United States (78 quarters):
+  mean absolute revision, first release to latest: 0.30 points (mean -0.01); annualised about 1.2 points
+  mean absolute revision after 1, 4, 8, 12 vintages: 0.07, 0.14, 0.21, 0.27; still to come after 4 and 12: 0.25, 0.15
+  sign of growth changed: 5 quarters; negative quarters first release 7, latest 10
+  largest revision: 2020 Q2, first -9.53, latest -8.24 (1.29 points)
+  2008 Q4: first -1.61, latest -2.21
+  2020 Q2: first -9.53, latest -8.24
+  quarters in two-quarter declines: first release 6, latest 6; only in first 0, only in latest 0
+  level of 2000 Q1 changed by more than 2% between consecutive vintages at: 2003 Q4 +6.6%, 2009 Q3 +13.9%, 2013 Q3 +12.1%, 2018 Q3 +4.6%, 2023 Q4 +7.3%; first vintage 2,274,350, latest 3,469,537 (+53%)
+euro area (78 quarters):
+  mean absolute revision, first release to latest: 0.22 points (mean +0.09); annualised about 0.9 points
+  mean absolute revision after 1, 4, 8, 12 vintages: 0.05, 0.10, 0.13, 0.18; still to come after 4 and 12: 0.18, 0.10
+  sign of growth changed: 4 quarters; negative quarters first release 15, latest 15
+  largest revision: 2020 Q4, first -0.66, latest +0.33 (0.99 points)
+  2008 Q4: first -1.51, latest -1.70
+  2020 Q2: first -12.52, latest -11.80
+  quarters in two-quarter declines: first release 15, latest 13; only in first 2, only in latest 0
+  level of 2000 Q1 changed by more than 2% between consecutive vintages at: 2012 Q1 +11.5%, 2014 Q4 +12.0%; first vintage 1,664,700, latest 2,109,062 (+27%)
+Japan (78 quarters):
+  mean absolute revision, first release to latest: 0.44 points (mean -0.05); annualised about 1.8 points
+  mean absolute revision after 1, 4, 8, 12 vintages: 0.20, 0.32, 0.39, 0.38; still to come after 4 and 12: 0.40, 0.26
+  sign of growth changed: 14 quarters; negative quarters first release 21, latest 25
+  largest revision: 2021 Q1, first -1.01, latest +0.32 (1.32 points)
+  2008 Q4: first -3.40, latest -2.50
+  2020 Q2: first -8.25, latest -7.89
+  quarters in two-quarter declines: first release 14, latest 12; only in first 5, only in latest 3
+  level of 2000 Q1 changed by more than 2% between consecutive vintages at: 2005 Q1 -3.4%, 2012 Q1 -5.5%, 2016 Q4 -3.0%, 2020 Q4 +4.4%; first vintage 133,133,250, latest 119,993,025 (-10%)
+Switzerland (78 quarters):
+  mean absolute revision, first release to latest: 0.41 points (mean +0.17); annualised about 1.6 points
+  mean absolute revision after 1, 4, 8, 12 vintages: 0.12, 0.23, 0.25, 0.33; still to come after 4 and 12: 0.36, 0.24
+  sign of growth changed: 11 quarters; negative quarters first release 12, latest 13
+  largest revision: 2008 Q4, first -0.31, latest -3.12 (2.81 points)
+  2008 Q4: first -0.31, latest -3.12
+  2020 Q2: first -7.55, latest -6.73
+  quarters in two-quarter declines: first release 5, latest 8; only in first 1, only in latest 4
+  level of 2000 Q1 changed by more than 2% between consecutive vintages at: 2004 Q1 +20.0%, 2012 Q3 +6.4%, 2014 Q3 +12.1%; first vintage 85,812, latest 126,062 (+47%)
+US real GDP for 2008 Q3 as known on 1 Jan 2009 (as-of SQL): 2,928,100
+first-release SQL against the pandas version, US levels: 179 quarters, equal: True

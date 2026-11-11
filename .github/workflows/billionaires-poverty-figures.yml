@@ -8,6 +8,10 @@ on:
       - "billionaires-poverty-audit/survey_vintage_audit.py"
       - "billionaires-poverty-audit/tests/test_survey_vintage_audit.py"
       - "billionaires-poverty-audit/data/observed_citizenship_54_2026.csv"
+      - "billionaires-poverty-audit/publication_analysis.py"
+      - "billionaires-poverty-audit/tests/test_publication_analysis.py"
+      - "billionaires-poverty-audit/results/publication/**"
+      - "billionaires-poverty-audit/publication_figures/**"
       - "billionaires-poverty-audit/requirements.txt"
       - ".github/workflows/billionaires-poverty-figures.yml"
   workflow_dispatch:
@@ -34,13 +38,23 @@ jobs:
             billionaires-poverty-audit/observed_figures.py \
             billionaires-poverty-audit/tests/test_observed_figures.py \
             billionaires-poverty-audit/survey_vintage_audit.py \
-            billionaires-poverty-audit/tests/test_survey_vintage_audit.py
+            billionaires-poverty-audit/tests/test_survey_vintage_audit.py \
+            billionaires-poverty-audit/publication_analysis.py \
+            billionaires-poverty-audit/tests/test_publication_analysis.py
       - name: Validate original CI panel and statistical models
         working-directory: billionaires-poverty-audit
         run: python -m unittest discover -s tests -p "test_observed_figures.py" -v
       - name: Validate survey-vintage sensitivity contracts
         working-directory: billionaires-poverty-audit
         run: python -m unittest discover -s tests -p "test_survey_vintage_audit.py" -v
+      - name: Validate revised-article analysis contracts
+        working-directory: billionaires-poverty-audit
+        run: python -m unittest discover -s tests -p "test_publication_analysis.py" -v
+      - name: Reproduce every number in the revised article
+        working-directory: billionaires-poverty-audit
+        run: |
+          python publication_analysis.py --check --figures figures/publication_check \
+            | tee -a "$GITHUB_STEP_SUMMARY"
       - name: Reproduce poverty survey-vintage sensitivity
         working-directory: billionaires-poverty-audit
         run: python survey_vintage_audit.py --output results/survey_vintage_sensitivity
@@ -121,6 +135,8 @@ jobs:
           name: billionaire-poverty-citizenship-figures-${{ github.run_id }}
           path: |
             billionaires-poverty-audit/figures/citizenship_exploratory/
+            billionaires-poverty-audit/figures/publication_check/
+            billionaires-poverty-audit/results/publication/
             billionaires-poverty-audit/data/observed_citizenship_54_2026.csv
             billionaires-poverty-audit/OBSERVED_FIGURES.md
             billionaires-poverty-audit/results/survey_vintage_sensitivity/

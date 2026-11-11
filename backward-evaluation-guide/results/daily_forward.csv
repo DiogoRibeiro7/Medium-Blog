@@ -1,0 +1,575 @@
+domain,series,GBM,GBMn,SLM,group
+dev_web,country:Afghanistan,-0.362796,-0.683897,-0.871886,country
+dev_web,country:Albania,-0.736804,-0.817064,-0.885149,country
+dev_web,country:Algeria,-0.940173,-0.952225,-1.032403,country
+dev_web,country:Andorra,-0.522608,-0.550216,-0.647239,country
+dev_web,country:Angola,-0.793602,-0.831203,-0.890650,country
+dev_web,country:Antigua and Barbuda,-0.725553,-0.714901,-0.857214,country
+dev_web,country:Argentina,-0.584313,-0.565100,-0.700792,country
+dev_web,country:Armenia,-0.602570,-0.661550,-0.780875,country
+dev_web,country:Australia,-1.033571,-1.098198,-1.170089,country
+dev_web,country:Austria,-1.052582,-1.107794,-1.122628,country
+dev_web,country:Azerbaijan,-0.316645,-0.404248,-0.431374,country
+dev_web,country:Bahrain,-0.527988,-0.585860,-0.612713,country
+dev_web,country:Bangladesh,-0.795349,-0.852671,-0.959118,country
+dev_web,country:Barbados,-0.628830,-0.652217,-0.779854,country
+dev_web,country:Belarus,-0.252420,-0.346753,-0.469901,country
+dev_web,country:Belgium,-0.899142,-1.012249,-1.070278,country
+dev_web,country:Belize,-0.800906,-0.849227,-0.892240,country
+dev_web,country:Benin,-0.232117,-0.235843,-0.320632,country
+dev_web,country:Bhutan,-0.663847,-0.690080,-0.766953,country
+dev_web,country:Bolivia,-0.656057,-0.707295,-0.819039,country
+dev_web,country:Bosnia and Herzegovina,-0.775941,-0.792407,-0.875643,country
+dev_web,country:Botswana,-0.729374,-0.715227,-0.813725,country
+dev_web,country:Brazil,-0.800297,-0.844646,-0.904033,country
+dev_web,country:Brunei,-0.658158,-0.678772,-0.821641,country
+dev_web,country:Bulgaria,-0.867570,-0.937398,-0.992680,country
+dev_web,country:Burkina Faso,-0.266142,-0.269030,-0.350708,country
+dev_web,country:Burundi,-0.565327,-0.562188,-0.628672,country
+dev_web,country:Cambodia,-0.950235,-1.046520,-1.098267,country
+dev_web,country:Cameroon,-0.457581,-0.471613,-0.553860,country
+dev_web,country:Canada,-1.009733,-1.085546,-1.168055,country
+dev_web,country:Cape Verde,-0.360677,-0.403301,-0.572445,country
+dev_web,country:Central African Republic,-0.499720,-0.534082,-0.598085,country
+dev_web,country:Chad,-0.630913,-0.690846,-0.774784,country
+dev_web,country:Chile,-0.837927,-0.907111,-0.940919,country
+dev_web,country:China,-1.064358,-1.159307,-1.239196,country
+dev_web,country:Colombia,-0.833936,-0.912774,-0.956735,country
+dev_web,country:Comoros,-0.348067,-0.330326,-0.460828,country
+dev_web,country:Costa Rica,-0.823587,-0.962532,-0.984252,country
+dev_web,country:Croatia,-0.727528,-0.764447,-0.923629,country
+dev_web,country:Cuba,-0.808089,-0.849225,-0.958341,country
+dev_web,country:Cyprus,-0.816735,-0.894284,-0.966432,country
+dev_web,country:Czech Republic,-0.819794,-0.857344,-0.929781,country
+dev_web,country:Democratic Republic of the Congo,-0.713782,-0.743360,-0.831970,country
+dev_web,country:Denmark,-0.906782,-0.961359,-1.042806,country
+dev_web,country:Djibouti,-0.683890,-0.715671,-0.767401,country
+dev_web,country:Dominica,-0.607779,-0.615738,-0.716367,country
+dev_web,country:Dominican Republic,-0.892671,-0.908681,-0.970376,country
+dev_web,country:Ecuador,-0.508707,-0.505562,-0.598764,country
+dev_web,country:Egypt,-1.057933,-1.116601,-1.200401,country
+dev_web,country:El Salvador,-0.496380,-0.511575,-0.618508,country
+dev_web,country:Equatorial Guinea,-0.370327,-0.392497,-0.510888,country
+dev_web,country:Eritrea,-0.377684,-0.375595,-0.548252,country
+dev_web,country:Estonia,-0.755386,-0.817921,-0.894964,country
+dev_web,country:Ethiopia,-0.876303,-0.911314,-1.003708,country
+dev_web,country:Federated States of Micronesia,-0.714434,-0.756744,-0.802391,country
+dev_web,country:Fiji,-0.630081,-0.704668,-0.740905,country
+dev_web,country:Finland,-0.878248,-0.951838,-1.042716,country
+dev_web,country:France,-0.957661,-0.991410,-1.051514,country
+dev_web,country:Gabon,-0.433335,-0.411952,-0.525250,country
+dev_web,country:Georgia (country),-0.501069,-0.609512,-0.680232,country
+dev_web,country:Germany,-1.211785,-1.344677,-1.363316,country
+dev_web,country:Ghana,-0.827528,-0.796351,-0.869931,country
+dev_web,country:Greece,-1.184558,-1.231680,-1.257937,country
+dev_web,country:Grenada,-0.534102,-0.552732,-0.679508,country
+dev_web,country:Guatemala,-0.758698,-0.787459,-0.840453,country
+dev_web,country:Guinea,-0.520709,-0.537905,-0.626960,country
+dev_web,country:Guinea-Bissau,-0.259520,-0.301757,-0.399016,country
+dev_web,country:Guyana,-0.625406,-0.649896,-0.711831,country
+dev_web,country:Haiti,-0.357204,-0.388761,-0.555184,country
+dev_web,country:Honduras,-0.624015,-0.668653,-0.747818,country
+dev_web,country:Hungary,-0.868474,-0.922877,-0.997370,country
+dev_web,country:Iceland,-0.800983,-0.874739,-0.976903,country
+dev_web,country:India,-0.984900,-1.202813,-1.276196,country
+dev_web,country:Indonesia,-0.968811,-1.014434,-1.091667,country
+dev_web,country:Iran,-0.468054,-0.521273,-0.742936,country
+dev_web,country:Iraq,-0.757086,-0.762320,-0.933718,country
+dev_web,country:Israel,-0.531098,-0.592765,-0.799611,country
+dev_web,country:Italy,-1.013701,-1.089230,-1.215785,country
+dev_web,country:Ivory Coast,-0.597560,-0.618516,-0.744830,country
+dev_web,country:Jamaica,-0.784681,-0.909347,-0.992789,country
+dev_web,country:Japan,-1.033407,-1.184134,-1.286648,country
+dev_web,country:Jordan,-0.603208,-0.708103,-0.830395,country
+dev_web,country:Kazakhstan,-0.613722,-0.669067,-0.755075,country
+dev_web,country:Kenya,-0.941455,-1.025212,-1.038859,country
+dev_web,country:Kiribati,-0.196249,-0.220876,-0.299512,country
+dev_web,country:Kuwait,-0.749247,-0.831278,-0.930585,country
+dev_web,country:Kyrgyzstan,-0.527901,-0.567285,-0.661330,country
+dev_web,country:Laos,-0.837483,-0.910109,-0.960456,country
+dev_web,country:Latvia,-0.738005,-0.788753,-0.829379,country
+dev_web,country:Lebanon,-0.506612,-0.555259,-0.811798,country
+dev_web,country:Lesotho,-0.528498,-0.564394,-0.652723,country
+dev_web,country:Liberia,-0.601975,-0.615918,-0.684564,country
+dev_web,country:Libya,-0.795056,-0.823845,-0.910484,country
+dev_web,country:Liechtenstein,-0.585916,-0.593449,-0.682901,country
+dev_web,country:Lithuania,-0.860915,-0.896673,-0.981635,country
+dev_web,country:Luxembourg,-0.911565,-0.969600,-1.027296,country
+dev_web,country:Madagascar,-0.672472,-0.662074,-0.750906,country
+dev_web,country:Malawi,-0.592039,-0.602473,-0.688811,country
+dev_web,country:Malaysia,-1.077427,-1.171533,-1.212532,country
+dev_web,country:Maldives,-0.697233,-0.766741,-0.845381,country
+dev_web,country:Mali,-0.468725,-0.451499,-0.600407,country
+dev_web,country:Malta,-0.796977,-0.847051,-0.946409,country
+dev_web,country:Marshall Islands,-0.384818,-0.452600,-0.579496,country
+dev_web,country:Mauritania,-0.550781,-0.593728,-0.633823,country
+dev_web,country:Mauritius,-0.770338,-0.826498,-0.912430,country
+dev_web,country:Mexico,-0.925832,-0.955304,-0.999444,country
+dev_web,country:Moldova,-0.240756,-0.317852,-0.407191,country
+dev_web,country:Monaco,-0.610028,-0.640413,-0.674406,country
+dev_web,country:Mongolia,-0.977924,-1.028629,-1.087939,country
+dev_web,country:Montenegro,-0.561502,-0.579502,-0.699558,country
+dev_web,country:Morocco,-0.727460,-0.797030,-0.945219,country
+dev_web,country:Mozambique,-0.677068,-0.721461,-0.808637,country
+dev_web,country:Myanmar,-0.312325,-0.680401,-0.797518,country
+dev_web,country:Namibia,-0.473995,-0.437927,-0.628114,country
+dev_web,country:Nauru,-0.197669,-0.205020,-0.305748,country
+dev_web,country:Nepal,-0.770207,-0.856647,-0.991100,country
+dev_web,country:Netherlands,-0.980071,-1.058024,-1.067886,country
+dev_web,country:New Zealand,-0.728320,-0.785571,-0.912042,country
+dev_web,country:Nicaragua,-0.726126,-0.728077,-0.793083,country
+dev_web,country:Niger,-0.547896,-0.699936,-0.768892,country
+dev_web,country:Nigeria,-0.870714,-0.961165,-1.019073,country
+dev_web,country:North Korea,-0.635301,-0.695636,-0.850249,country
+dev_web,country:Norway,-0.994895,-1.022528,-1.143446,country
+dev_web,country:Oman,-0.591803,-0.618040,-0.723606,country
+dev_web,country:Pakistan,-0.722272,-0.846421,-0.973619,country
+dev_web,country:Palau,-0.521187,-0.548563,-0.620289,country
+dev_web,country:Panama,-0.762708,-0.811821,-0.878942,country
+dev_web,country:Papua New Guinea,-0.613567,-0.638094,-0.711766,country
+dev_web,country:Paraguay,-0.627141,-0.621964,-0.723524,country
+dev_web,country:Peru,-0.831038,-0.873045,-0.938342,country
+dev_web,country:Philippines,-1.061486,-1.133420,-1.207390,country
+dev_web,country:Poland,-0.992085,-1.132622,-1.214898,country
+dev_web,country:Portugal,-0.720470,-0.839314,-0.901245,country
+dev_web,country:Qatar,-0.387535,-0.481369,-0.624026,country
+dev_web,country:Republic of Ireland,-1.040826,-1.074111,-1.128836,country
+dev_web,country:Republic of the Congo,-0.700606,-0.717476,-0.772160,country
+dev_web,country:Romania,-0.964278,-1.090554,-1.161146,country
+dev_web,country:Russia,-0.907302,-1.085373,-1.228293,country
+dev_web,country:Rwanda,-0.440806,-0.459053,-0.537898,country
+dev_web,country:Saint Kitts and Nevis,-0.439556,-0.414704,-0.585659,country
+dev_web,country:Saint Lucia,-0.599078,-0.635229,-0.748428,country
+dev_web,country:Saint Vincent and the Grenadines,-0.532196,-0.594221,-0.663587,country
+dev_web,country:Samoa,-0.381177,-0.417006,-0.457335,country
+dev_web,country:San Marino,-0.215613,-0.210800,-0.337277,country
+dev_web,country:Saudi Arabia,-0.719654,-0.763996,-0.842149,country
+dev_web,country:Senegal,-0.476793,-0.517854,-0.595821,country
+dev_web,country:Serbia,-0.524038,-0.585611,-0.642453,country
+dev_web,country:Seychelles,-0.646013,-0.663633,-0.749503,country
+dev_web,country:Sierra Leone,-0.596137,-0.623848,-0.682642,country
+dev_web,country:Singapore,-0.860895,-0.995714,-1.112756,country
+dev_web,country:Slovakia,-0.736901,-0.832432,-0.899175,country
+dev_web,country:Slovenia,-0.647269,-0.659929,-0.763802,country
+dev_web,country:Solomon Islands,-0.297735,-0.301572,-0.418328,country
+dev_web,country:Somalia,-0.733523,-0.776197,-0.880780,country
+dev_web,country:South Africa,-0.952310,-1.024462,-1.031775,country
+dev_web,country:South Korea,-0.889222,-0.942305,-1.007802,country
+dev_web,country:South Sudan,-0.604325,-0.638907,-0.751540,country
+dev_web,country:Spain,-1.014555,-1.073301,-1.117602,country
+dev_web,country:Sri Lanka,-0.654988,-0.703282,-0.869920,country
+dev_web,country:Sudan,-0.554379,-0.552886,-0.725610,country
+dev_web,country:Suriname,-0.336967,-0.411563,-0.457350,country
+dev_web,country:Sweden,-1.111365,-1.188933,-1.229077,country
+dev_web,country:Switzerland,-0.956477,-1.128883,-1.145034,country
+dev_web,country:Syria,-0.635177,-0.699886,-0.876655,country
+dev_web,country:São Tomé and Príncipe,-0.399370,-0.459358,-0.503790,country
+dev_web,country:Tajikistan,-0.565352,-0.638239,-0.745614,country
+dev_web,country:Tanzania,-0.804360,-0.876233,-0.928927,country
+dev_web,country:Thailand,-0.947235,-1.063635,-1.106054,country
+dev_web,country:The Bahamas,-0.706751,-0.700364,-0.911122,country
+dev_web,country:The Gambia,-0.431557,-0.422068,-0.534756,country
+dev_web,country:Togo,-0.511417,-0.502926,-0.525851,country
+dev_web,country:Tonga,-0.299642,-0.274081,-0.423398,country
+dev_web,country:Trinidad and Tobago,-0.783210,-0.816313,-0.867986,country
+dev_web,country:Tunisia,-0.575350,-0.608979,-0.694417,country
+dev_web,country:Turkey,-0.816410,-0.907696,-1.011659,country
+dev_web,country:Turkmenistan,-0.454868,-0.494213,-0.608731,country
+dev_web,country:Tuvalu,-0.359489,-0.372008,-0.427992,country
+dev_web,country:Uganda,-0.747813,-0.739954,-0.808022,country
+dev_web,country:Ukraine,-0.259270,-0.609479,-0.788741,country
+dev_web,country:United Arab Emirates,-0.779291,-0.816202,-0.956595,country
+dev_web,country:United Kingdom,-1.168239,-1.275259,-1.377156,country
+dev_web,country:United States,-1.272635,-1.355709,-1.349892,country
+dev_web,country:Uruguay,-0.625412,-0.601887,-0.738448,country
+dev_web,country:Uzbekistan,-0.613164,-0.726040,-0.780065,country
+dev_web,country:Vanuatu,-0.255260,-0.326747,-0.420349,country
+dev_web,country:Venezuela,-0.498447,-0.559012,-0.726386,country
+dev_web,country:Vietnam,-1.021788,-1.095897,-1.145358,country
+dev_web,country:Yemen,-0.351740,-0.373144,-0.496289,country
+dev_web,country:Zambia,-0.764345,-0.806490,-0.868189,country
+dev_web,country:Zimbabwe,-0.632752,-0.653392,-0.771290,country
+dev_web,element:Actinium,-0.451201,-0.478194,-0.441907,element
+dev_web,element:Aluminium,-0.923096,-1.088761,-0.975484,element
+dev_web,element:Americium,-0.528668,-0.569606,-0.512645,element
+dev_web,element:Antimony,-0.610756,-0.631025,-0.640999,element
+dev_web,element:Argon,-0.803796,-0.926708,-0.784721,element
+dev_web,element:Arsenic,-0.792190,-0.922732,-0.857191,element
+dev_web,element:Astatine,-0.394865,-0.439871,-0.450133,element
+dev_web,element:Barium,-0.720787,-0.833664,-0.748821,element
+dev_web,element:Berkelium,-0.266104,-0.303345,-0.308352,element
+dev_web,element:Beryllium,-0.752413,-0.874085,-0.734544,element
+dev_web,element:Bismuth,-0.697369,-0.796380,-0.820275,element
+dev_web,element:Bohrium,-0.344154,-0.366737,-0.327578,element
+dev_web,element:Boron,-0.820243,-0.948275,-0.763611,element
+dev_web,element:Bromine,-0.492153,-0.611020,-0.559396,element
+dev_web,element:Cadmium,-0.696845,-0.771468,-0.715578,element
+dev_web,element:Caesium,-0.699268,-0.778986,-0.758853,element
+dev_web,element:Calcium,-0.871430,-1.098881,-0.906510,element
+dev_web,element:Californium,-0.155674,-0.179160,-0.237429,element
+dev_web,element:Carbon,-0.958472,-1.158202,-0.941747,element
+dev_web,element:Cerium,-0.598001,-0.656959,-0.601212,element
+dev_web,element:Chlorine,-0.830148,-1.009701,-0.853825,element
+dev_web,element:Chromium,-0.887321,-1.032346,-0.884206,element
+dev_web,element:Cobalt,-0.734000,-0.783454,-0.745316,element
+dev_web,element:Copernicium,-0.393948,-0.467558,-0.414493,element
+dev_web,element:Copper,-1.019994,-1.160858,-1.058269,element
+dev_web,element:Curium,-0.388482,-0.406502,-0.413128,element
+dev_web,element:Darmstadtium,-0.329765,-0.368824,-0.329652,element
+dev_web,element:Dubnium,-0.310985,-0.318950,-0.315242,element
+dev_web,element:Dysprosium,-0.366789,-0.404339,-0.405646,element
+dev_web,element:Einsteinium,-0.450855,-0.488077,-0.456919,element
+dev_web,element:Erbium,-0.395449,-0.457279,-0.458296,element
+dev_web,element:Europium,-0.355155,-0.392675,-0.407793,element
+dev_web,element:Fermium,-0.357638,-0.396218,-0.378256,element
+dev_web,element:Flerovium,-0.375916,-0.456352,-0.417570,element
+dev_web,element:Fluorine,-0.607082,-0.730857,-0.579015,element
+dev_web,element:Francium,-0.398262,-0.477942,-0.424706,element
+dev_web,element:Gadolinium,-0.640223,-0.744719,-0.712833,element
+dev_web,element:Gallium,-0.383173,-0.495300,-0.498832,element
+dev_web,element:Germanium,-0.584480,-0.703893,-0.632545,element
+dev_web,element:Gold,-0.964190,-1.102016,-1.084164,element
+dev_web,element:Hafnium,-0.441134,-0.491970,-0.485566,element
+dev_web,element:Hassium,-0.355205,-0.383372,-0.394995,element
+dev_web,element:Helium,-0.701442,-0.816338,-0.725182,element
+dev_web,element:Holmium,-0.325577,-0.385814,-0.382103,element
+dev_web,element:Hydrogen,-0.899216,-1.174499,-1.034457,element
+dev_web,element:Indium,-0.526280,-0.622979,-0.623481,element
+dev_web,element:Iodine,-0.917269,-1.061631,-0.963873,element
+dev_web,element:Iridium,-0.711690,-0.799359,-0.815025,element
+dev_web,element:Iron,-1.020879,-1.213613,-1.094858,element
+dev_web,element:Krypton,-0.619062,-0.730944,-0.588085,element
+dev_web,element:Lanthanum,-0.555263,-0.627453,-0.562685,element
+dev_web,element:Lawrencium,-0.408465,-0.444644,-0.391899,element
+dev_web,element:Lead,-0.715745,-0.932661,-0.917382,element
+dev_web,element:Lithium,-0.638623,-0.855258,-0.758316,element
+dev_web,element:Livermorium,-0.391824,-0.431746,-0.416471,element
+dev_web,element:Lutetium,-0.393737,-0.406643,-0.410174,element
+dev_web,element:Magnesium,-1.002231,-1.202801,-1.026062,element
+dev_web,element:Manganese,-0.945361,-1.095232,-0.988556,element
+dev_web,element:Meitnerium,-0.254412,-0.299053,-0.256982,element
+dev_web,element:Mendelevium,-0.331198,-0.339498,-0.322587,element
+dev_web,element:Mercury (element),-0.874510,-1.024074,-0.964060,element
+dev_web,element:Molybdenum,-0.833028,-0.991379,-0.921932,element
+dev_web,element:Neodymium,-0.627158,-0.692741,-0.693958,element
+dev_web,element:Neon,-0.621285,-0.709245,-0.529441,element
+dev_web,element:Neptunium,-0.512284,-0.521022,-0.483018,element
+dev_web,element:Nickel,-0.805400,-0.957171,-0.879192,element
+dev_web,element:Niobium,-0.464244,-0.605504,-0.597942,element
+dev_web,element:Nitrogen,-0.928630,-1.088397,-0.931366,element
+dev_web,element:Nobelium,-0.356957,-0.379774,-0.355511,element
+dev_web,element:Osmium,-0.625900,-0.663968,-0.676266,element
+dev_web,element:Oxygen,-0.775686,-0.972837,-0.859359,element
+dev_web,element:Palladium,-0.832058,-0.941415,-0.979193,element
+dev_web,element:Phosphorus,-0.829860,-0.987995,-0.884500,element
+dev_web,element:Platinum,-1.001281,-1.105773,-1.075593,element
+dev_web,element:Plutonium,-0.555101,-0.693934,-0.709447,element
+dev_web,element:Polonium,-0.472773,-0.552695,-0.586834,element
+dev_web,element:Potassium,-1.055542,-1.224306,-1.090067,element
+dev_web,element:Praseodymium,-0.471222,-0.505842,-0.466473,element
+dev_web,element:Promethium,-0.497553,-0.506898,-0.523419,element
+dev_web,element:Protactinium,-0.372306,-0.382143,-0.369071,element
+dev_web,element:Radium,-0.578789,-0.660031,-0.660502,element
+dev_web,element:Radon,-0.798101,-0.892002,-0.850726,element
+dev_web,element:Rhenium,-0.517567,-0.560685,-0.496758,element
+dev_web,element:Rhodium,-0.734663,-0.815178,-0.839777,element
+dev_web,element:Roentgenium,-0.511740,-0.518188,-0.477029,element
+dev_web,element:Rubidium,-0.653428,-0.735919,-0.615592,element
+dev_web,element:Ruthenium,-0.637749,-0.710232,-0.645731,element
+dev_web,element:Rutherfordium,-0.411002,-0.446887,-0.386371,element
+dev_web,element:Samarium,-0.382217,-0.428090,-0.435220,element
+dev_web,element:Scandium,-0.507792,-0.613551,-0.533276,element
+dev_web,element:Seaborgium,-0.346713,-0.428366,-0.399068,element
+dev_web,element:Selenium,-0.842051,-0.938185,-0.890490,element
+dev_web,element:Silicon,-1.013551,-1.147558,-1.007781,element
+dev_web,element:Silver,-0.902968,-1.058553,-0.980884,element
+dev_web,element:Sodium,-0.985818,-1.125706,-0.932579,element
+dev_web,element:Strontium,-0.666059,-0.756431,-0.655170,element
+dev_web,element:Sulfur,-0.929743,-1.101285,-0.958207,element
+dev_web,element:Tantalum,-0.553951,-0.680418,-0.662082,element
+dev_web,element:Technetium,-0.546014,-0.601548,-0.594529,element
+dev_web,element:Tellurium,-0.640056,-0.694752,-0.659800,element
+dev_web,element:Terbium,-0.342437,-0.379230,-0.364441,element
+dev_web,element:Thallium,-0.234453,-0.347565,-0.408807,element
+dev_web,element:Thorium,-0.558749,-0.595472,-0.671027,element
+dev_web,element:Thulium,-0.402924,-0.443274,-0.427518,element
+dev_web,element:Tin,-1.053967,-1.162411,-1.080638,element
+dev_web,element:Titanium,-0.871641,-1.040685,-0.986395,element
+dev_web,element:Tungsten,-0.840071,-0.936969,-0.923805,element
+dev_web,element:Uranium,-0.774693,-0.870491,-0.858875,element
+dev_web,element:Vanadium,-0.697507,-0.816740,-0.741113,element
+dev_web,element:Xenon,-0.530571,-0.604092,-0.554876,element
+dev_web,element:Ytterbium,-0.431472,-0.479382,-0.461516,element
+dev_web,element:Yttrium,-0.458998,-0.536803,-0.507792,element
+dev_web,element:Zinc,-0.830616,-1.062968,-0.998119,element
+dev_web,element:Zirconium,-0.712175,-0.882764,-0.823392,element
+elec,AT,-1.850618,-1.914992,-1.950667,country
+elec,BE,-1.983693,-2.143601,-2.118146,country
+elec,BG,-2.027191,-2.059125,-2.148534,country
+elec,CH,-1.746531,-1.755714,-1.851857,country
+elec,CZ,-2.138979,-2.184014,-2.259253,country
+elec,DE,-1.987871,-2.136583,-2.066875,country
+elec,DK,-2.106215,-2.199093,-2.171935,country
+elec,EE,-1.995538,-2.109652,-2.106568,country
+elec,ES,-2.035580,-2.260787,-2.314666,country
+elec,FI,-2.176817,-2.217491,-2.261565,country
+elec,FR,-1.882967,-1.966333,-2.024220,country
+elec,GR,-1.832527,-1.857342,-1.945315,country
+elec,HR,-1.967147,-2.066315,-2.118482,country
+elec,HU,-1.984064,-2.026238,-2.035749,country
+elec,IT,-1.686750,-1.850036,-1.923000,country
+elec,LT,-2.158725,-2.282909,-2.363368,country
+elec,LV,-2.208265,-2.329045,-2.317656,country
+elec,NL,-1.967126,-2.089932,-1.996438,country
+elec,NO,-2.086491,-2.152829,-2.243331,country
+elec,PL,-2.076115,-2.103734,-2.157484,country
+elec,PT,-2.023296,-2.238114,-2.212581,country
+elec,RO,-2.170524,-2.233506,-2.313422,country
+elec,SE,-1.942660,-1.999700,-2.070047,country
+elec,SI,-1.708738,-1.804276,-1.808661,country
+elec,SK,-2.064848,-2.086648,-2.133614,country
+test_web,city:Bangkok,-0.869976,-1.056045,-1.125436,city
+test_web,city:Beijing,-1.087043,-1.146324,-1.222403,city
+test_web,city:Bogotá,-1.021726,-1.088292,-1.145968,city
+test_web,city:Buenos Aires,-0.826483,-0.793418,-0.918000,city
+test_web,city:Cairo,-1.074135,-1.090562,-1.142056,city
+test_web,city:Chengdu,-0.778497,-0.839365,-0.891330,city
+test_web,city:Chennai,-0.778643,-0.871012,-0.927707,city
+test_web,city:Chicago,-0.986914,-1.178286,-1.248954,city
+test_web,city:Chongqing,-0.695912,-0.835988,-0.925756,city
+test_web,city:Delhi,-0.916308,-1.037528,-1.142556,city
+test_web,city:Dhaka,-0.699182,-0.778887,-0.861272,city
+test_web,city:Guangzhou,-1.075752,-1.212458,-1.259163,city
+test_web,city:Hyderabad,-0.929548,-1.031177,-1.107189,city
+test_web,city:Istanbul,-0.995945,-1.077253,-1.160307,city
+test_web,city:Jakarta,-0.622963,-0.666529,-0.871341,city
+test_web,city:Karachi,-0.817515,-0.855398,-0.955957,city
+test_web,city:Kinshasa,-0.694062,-0.703572,-0.747490,city
+test_web,city:Kolkata,-0.888138,-1.017900,-1.067058,city
+test_web,city:Lagos,-0.882587,-0.946570,-0.989934,city
+test_web,city:Lahore,-0.904576,-0.947044,-1.022351,city
+test_web,city:Lima,-0.757585,-0.833175,-0.857594,city
+test_web,city:London,-1.317116,-1.424946,-1.494782,city
+test_web,city:Los Angeles,-1.213447,-1.299832,-1.395208,city
+test_web,city:Manila,-0.852800,-1.047250,-1.067654,city
+test_web,city:Mexico City,-0.967764,-1.020203,-1.083040,city
+test_web,city:Moscow,-1.071806,-1.165997,-1.274150,city
+test_web,city:Mumbai,-0.935813,-1.094277,-1.241525,city
+test_web,city:Nagoya,-0.899684,-0.972516,-0.976333,city
+test_web,city:New York City,-1.142930,-1.339968,-1.405197,city
+test_web,city:Osaka,-0.891609,-0.972447,-1.015239,city
+test_web,city:Paris,-1.038105,-1.111974,-1.237996,city
+test_web,city:Rio de Janeiro,-0.866155,-0.868423,-1.000601,city
+test_web,city:Seoul,-0.708516,-0.782036,-1.043024,city
+test_web,city:Shanghai,-1.151876,-1.265307,-1.303501,city
+test_web,city:Shenzhen,-1.010422,-1.024087,-1.115196,city
+test_web,city:São Paulo,-0.965610,-0.986140,-1.004095,city
+test_web,city:Tehran,-0.567650,-0.590625,-0.809900,city
+test_web,city:Tianjin,-0.862052,-0.893770,-0.962831,city
+test_web,city:Tokyo,-1.092654,-1.174484,-1.276654,city
+test_web,instrument:Accordion,-0.881953,-0.926408,-1.011658,instrument
+test_web,instrument:Bagpipes,-0.582810,-0.660598,-0.660840,instrument
+test_web,instrument:Banjo,-0.767571,-0.899238,-0.917258,instrument
+test_web,instrument:Bass guitar,-0.990021,-1.197555,-1.251387,instrument
+test_web,instrument:Bassoon,-0.643053,-0.713184,-0.723113,instrument
+test_web,instrument:Cello,-0.965379,-1.054791,-1.056115,instrument
+test_web,instrument:Clarinet,-0.844750,-0.966116,-0.948191,instrument
+test_web,instrument:Double bass,-1.179930,-1.302335,-1.310283,instrument
+test_web,instrument:Drum kit,-0.669330,-0.924387,-0.965552,instrument
+test_web,instrument:Electric guitar,-0.969852,-1.069935,-1.100689,instrument
+test_web,instrument:Flute,-0.843844,-1.026729,-1.009206,instrument
+test_web,instrument:French horn,-0.763798,-0.924105,-0.946424,instrument
+test_web,instrument:Guitar,-0.971024,-1.176418,-1.232009,instrument
+test_web,instrument:Harmonica,-0.979297,-1.093377,-1.118609,instrument
+test_web,instrument:Harp,-0.816325,-0.914921,-0.894074,instrument
+test_web,instrument:Harpsichord,-0.933193,-0.998917,-1.049175,instrument
+test_web,instrument:Mandolin,-1.026220,-1.093722,-1.108518,instrument
+test_web,instrument:Oboe,-0.706610,-0.796131,-0.796411,instrument
+test_web,instrument:Piano,-1.055028,-1.234182,-1.222931,instrument
+test_web,instrument:Pipe organ,-0.702071,-0.739879,-0.790805,instrument
+test_web,instrument:Saxophone,-0.756940,-0.977794,-0.991575,instrument
+test_web,instrument:Sitar,-0.613239,-0.791095,-0.828618,instrument
+test_web,instrument:Synthesizer,-0.881246,-1.080531,-1.085286,instrument
+test_web,instrument:Trombone,-0.852604,-0.955638,-0.924667,instrument
+test_web,instrument:Trumpet,-0.916092,-1.097042,-1.057645,instrument
+test_web,instrument:Tuba,-0.695601,-0.760559,-0.766467,instrument
+test_web,instrument:Ukulele,-0.452723,-1.044389,-1.052637,instrument
+test_web,instrument:Viola,-0.882779,-0.972046,-0.958419,instrument
+test_web,instrument:Violin,-0.948496,-1.153158,-1.129431,instrument
+test_web,instrument:Xylophone,-0.777502,-0.889952,-0.887802,instrument
+test_web,mammal:Bat,-0.697550,-0.835173,-0.905886,mammal
+test_web,mammal:Blue whale,-0.643957,-0.702493,-0.786977,mammal
+test_web,mammal:Brown bear,-0.912642,-1.128452,-1.170126,mammal
+test_web,mammal:Brown rat,-0.903974,-0.934875,-0.955352,mammal
+test_web,mammal:Camel,-0.837730,-0.840433,-0.980658,mammal
+test_web,mammal:Cat,-0.296173,-0.460204,-0.536791,mammal
+test_web,mammal:Cattle,-1.038313,-1.210164,-1.227458,mammal
+test_web,mammal:Cheetah,-0.825539,-0.885225,-0.910292,mammal
+test_web,mammal:Chimpanzee,-0.763599,-0.890981,-0.942763,mammal
+test_web,mammal:Deer,-1.211246,-1.305486,-1.328457,mammal
+test_web,mammal:Dog,-0.962337,-1.059485,-1.079010,mammal
+test_web,mammal:Dolphin,-0.821459,-0.949055,-1.001716,mammal
+test_web,mammal:Elephant,-0.914557,-0.991819,-1.080584,mammal
+test_web,mammal:Giant panda,-0.604714,-0.660537,-0.737249,mammal
+test_web,mammal:Giraffe,-0.828809,-0.892768,-0.989900,mammal
+test_web,mammal:Goat,-0.981686,-1.074578,-1.134922,mammal
+test_web,mammal:Gorilla,-0.797123,-0.931094,-1.005137,mammal
+test_web,mammal:Hedgehog,-0.878819,-1.078182,-1.146108,mammal
+test_web,mammal:Hippopotamus,-0.767523,-0.815840,-0.920509,mammal
+test_web,mammal:Horse,-1.006980,-1.107819,-1.128608,mammal
+test_web,mammal:House mouse,-1.031822,-1.108489,-1.142140,mammal
+test_web,mammal:Kangaroo,-0.552502,-0.649111,-0.732869,mammal
+test_web,mammal:Koala,-0.679915,-0.778209,-0.869688,mammal
+test_web,mammal:Leopard,-1.118941,-1.199583,-1.223601,mammal
+test_web,mammal:Lion,-1.098664,-1.148402,-1.286518,mammal
+test_web,mammal:Moose,-0.766876,-0.811755,-0.917820,mammal
+test_web,mammal:Orangutan,-0.817584,-0.890573,-0.947803,mammal
+test_web,mammal:Orca,0.123864,-0.582951,-0.680138,mammal
+test_web,mammal:Pig,-1.077434,-1.139769,-1.146212,mammal
+test_web,mammal:Platypus,-0.649536,-0.693331,-0.753314,mammal
+test_web,mammal:Polar bear,-0.836659,-0.912544,-0.920968,mammal
+test_web,mammal:Rabbit,-1.107076,-1.230920,-1.228267,mammal
+test_web,mammal:Raccoon,-1.107233,-1.190434,-1.273474,mammal
+test_web,mammal:Red fox,-1.127410,-1.162717,-1.172225,mammal
+test_web,mammal:Rhinoceros,-0.878700,-0.930371,-0.974612,mammal
+test_web,mammal:Sheep,-1.106050,-1.171768,-1.171642,mammal
+test_web,mammal:Squirrel,-0.697471,-0.963996,-1.039146,mammal
+test_web,mammal:Tiger,-0.873774,-0.979092,-1.085802,mammal
+test_web,mammal:Wolf,-0.086969,-1.049469,-1.140332,mammal
+test_web,mammal:Zebra,-0.754538,-0.841937,-0.860563,mammal
+test_web,programming_language:Assembly language,-1.093689,-1.247834,-1.213612,programming_language
+test_web,programming_language:C (programming language),-0.967570,-1.194959,-1.275359,programming_language
+test_web,programming_language:C Sharp (programming language),-0.999291,-1.218786,-1.131028,programming_language
+test_web,programming_language:COBOL,-0.381044,-0.459630,-0.548836,programming_language
+test_web,programming_language:Dart (programming language),-0.664825,-0.779906,-0.853378,programming_language
+test_web,programming_language:Elixir (programming language),-0.217871,-0.360488,-0.454772,programming_language
+test_web,programming_language:Erlang (programming language),-0.493540,-0.581323,-0.640159,programming_language
+test_web,programming_language:Fortran,-0.758471,-0.875865,-0.914216,programming_language
+test_web,programming_language:Go (programming language),-0.703145,-1.003421,-1.012324,programming_language
+test_web,programming_language:Haskell,0.239344,-0.356806,-0.395559,programming_language
+test_web,programming_language:Java (programming language),-0.308402,-0.747722,-0.935459,programming_language
+test_web,programming_language:JavaScript,-0.294872,-0.687165,-0.807791,programming_language
+test_web,programming_language:Julia (programming language),-0.534180,-0.640159,-0.739384,programming_language
+test_web,programming_language:Lisp (programming language),-0.933339,-1.026509,-1.026737,programming_language
+test_web,programming_language:MATLAB,-0.865111,-1.076498,-1.049215,programming_language
+test_web,programming_language:PHP,-0.239365,-0.491772,-0.558408,programming_language
+test_web,programming_language:Pascal (programming language),-0.870102,-0.969820,-0.969559,programming_language
+test_web,programming_language:Perl,-0.581056,-0.696171,-0.736716,programming_language
+test_web,programming_language:Prolog,-0.538033,-0.681913,-0.671444,programming_language
+test_web,programming_language:Python (programming language),-0.906689,-1.042514,-1.046903,programming_language
+test_web,programming_language:R (programming language),-0.865261,-1.104234,-0.999275,programming_language
+test_web,programming_language:Ruby (programming language),-0.625130,-0.718503,-0.841016,programming_language
+test_web,programming_language:Rust (programming language),-0.587911,-0.769331,-0.868355,programming_language
+test_web,programming_language:SQL,-0.958183,-1.176991,-1.088099,programming_language
+test_web,programming_language:Scala (programming language),-0.523934,-0.701023,-0.718421,programming_language
+test_web,programming_language:Swift (programming language),-0.662508,-0.800207,-0.836467,programming_language
+test_web,programming_language:TypeScript,-0.520743,-0.590649,-0.607242,programming_language
+test_web,solar_system:Callisto (moon),-0.645206,-0.731138,-0.736209,solar_system
+test_web,solar_system:Ceres (dwarf planet),-0.554449,-0.560586,-0.659323,solar_system
+test_web,solar_system:Charon (moon),-0.521578,-0.497100,-0.599974,solar_system
+test_web,solar_system:Deimos (moon),-0.544352,-0.568473,-0.639904,solar_system
+test_web,solar_system:Earth,-0.707382,-1.191984,-1.261770,solar_system
+test_web,solar_system:Enceladus,-0.361052,-0.375694,-0.512106,solar_system
+test_web,solar_system:Eris (dwarf planet),-0.498195,-0.504890,-0.591086,solar_system
+test_web,solar_system:Europa (moon),-0.613497,-0.644893,-0.749638,solar_system
+test_web,solar_system:Ganymede (moon),-0.562984,-0.578390,-0.681060,solar_system
+test_web,solar_system:Haumea,-0.494998,-0.511001,-0.578712,solar_system
+test_web,solar_system:Io (moon),-0.694063,-0.724823,-0.766819,solar_system
+test_web,solar_system:Jupiter,-0.932511,-0.973711,-1.023965,solar_system
+test_web,solar_system:Makemake,-0.571043,-0.592172,-0.672609,solar_system
+test_web,solar_system:Mars,-0.844554,-0.919103,-0.995986,solar_system
+test_web,solar_system:Mercury (planet),-1.020455,-1.099107,-1.104132,solar_system
+test_web,solar_system:Moon,-0.688512,-0.750170,-0.809259,solar_system
+test_web,solar_system:Neptune,-0.809175,-0.857341,-0.844603,solar_system
+test_web,solar_system:Phobos (moon),-0.458956,-0.457838,-0.537489,solar_system
+test_web,solar_system:Pluto,-0.716330,-0.788007,-0.852447,solar_system
+test_web,solar_system:Saturn,-0.993105,-1.033701,-1.031724,solar_system
+test_web,solar_system:Sun,-0.989582,-1.072668,-1.114371,solar_system
+test_web,solar_system:Titan (moon),-0.630420,-0.650854,-0.748695,solar_system
+test_web,solar_system:Triton (moon),-0.501793,-0.496417,-0.562265,solar_system
+test_web,solar_system:Uranus,-0.825370,-0.888980,-0.864792,solar_system
+test_web,solar_system:Venus,-0.821002,-0.893793,-0.958914,solar_system
+test_web,sport:American football,-0.677617,-0.780032,-0.613863,sport
+test_web,sport:Archery,-0.641935,-0.735410,-0.751112,sport
+test_web,sport:Association football,-0.689242,-0.724715,-0.751827,sport
+test_web,sport:Badminton,-0.768532,-0.961065,-0.938067,sport
+test_web,sport:Baseball,-0.655116,-0.694725,-0.695503,sport
+test_web,sport:Basketball,-0.726734,-0.945622,-0.892781,sport
+test_web,sport:Boxing,-0.801791,-0.920781,-0.961803,sport
+test_web,sport:Chess,-0.940004,-1.123836,-1.189200,sport
+test_web,sport:Cricket,-0.248231,-0.294479,-0.278831,sport
+test_web,sport:Cycling,-0.506851,-0.559348,-0.569504,sport
+test_web,sport:Fencing,-0.655893,-0.723943,-0.771762,sport
+test_web,sport:Field hockey,-0.483120,-0.568003,-0.591663,sport
+test_web,sport:Figure skating,-0.536673,-0.582268,-0.563909,sport
+test_web,sport:Formula One,-0.316631,-0.463615,-0.100642,sport
+test_web,sport:Golf,-0.677392,-0.789063,-0.737057,sport
+test_web,sport:Gymnastics,-0.613029,-0.755665,-0.787325,sport
+test_web,sport:Handball,-0.554622,-0.648479,-0.582541,sport
+test_web,sport:Ice hockey,-0.514088,-0.596909,-0.567386,sport
+test_web,sport:Judo,-0.848167,-0.888428,-0.976228,sport
+test_web,sport:Karate,-0.984296,-1.123339,-1.201505,sport
+test_web,sport:Rowing (sport),-0.543759,-0.623781,-0.643395,sport
+test_web,sport:Rugby union,-0.402726,-0.430659,-0.422450,sport
+test_web,sport:Sailing,-0.596573,-0.681966,-0.690252,sport
+test_web,sport:Skateboarding,-0.547675,-0.610917,-0.618123,sport
+test_web,sport:Skiing,-0.595062,-0.676600,-0.698532,sport
+test_web,sport:Snowboarding,-0.438131,-0.495789,-0.492162,sport
+test_web,sport:Surfing,-0.671200,-0.724299,-0.752146,sport
+test_web,sport:Table tennis,-0.718294,-0.838966,-0.868524,sport
+test_web,sport:Taekwondo,-0.998316,-1.142647,-1.214491,sport
+test_web,sport:Tennis,-0.519826,-0.614565,-0.514937,sport
+test_web,sport:Track and field,-0.594787,-0.692307,-0.694168,sport
+test_web,sport:Triathlon,-0.791110,-0.847443,-0.860105,sport
+test_web,sport:Volleyball,-0.771733,-0.970439,-0.941797,sport
+test_web,sport:Wrestling,-0.775425,-0.867402,-0.885806,sport
+test_web,us_state:Alabama,-0.742422,-0.767396,-0.849350,us_state
+test_web,us_state:Alaska,-0.886420,-0.903789,-1.017791,us_state
+test_web,us_state:Arizona,-0.983377,-1.016964,-1.051932,us_state
+test_web,us_state:Arkansas,-0.893019,-0.943004,-0.965701,us_state
+test_web,us_state:California,-1.057117,-1.181751,-1.225657,us_state
+test_web,us_state:Colorado,-1.069650,-1.115491,-1.171041,us_state
+test_web,us_state:Connecticut,-1.075646,-1.126538,-1.134133,us_state
+test_web,us_state:Delaware,-0.800374,-0.831406,-0.898512,us_state
+test_web,us_state:Florida,-0.943539,-1.011608,-1.071412,us_state
+test_web,us_state:Georgia (U.S. state),-0.902612,-1.021922,-1.082592,us_state
+test_web,us_state:Hawaii,-1.065292,-1.066607,-1.163459,us_state
+test_web,us_state:Idaho,-0.857733,-0.878271,-0.920803,us_state
+test_web,us_state:Illinois,-1.062798,-1.172787,-1.205380,us_state
+test_web,us_state:Indiana,-0.904185,-0.954085,-0.986133,us_state
+test_web,us_state:Iowa,-0.691805,-0.763542,-0.790778,us_state
+test_web,us_state:Kansas,-0.803691,-0.835222,-0.866870,us_state
+test_web,us_state:Kentucky,-0.866360,-0.891823,-0.962939,us_state
+test_web,us_state:Louisiana,-0.937978,-1.026808,-1.067258,us_state
+test_web,us_state:Maine,-0.926124,-0.955283,-1.023599,us_state
+test_web,us_state:Maryland,-0.330793,-0.539386,-0.559966,us_state
+test_web,us_state:Massachusetts,-1.129650,-1.216416,-1.223988,us_state
+test_web,us_state:Michigan,-0.968234,-1.014045,-1.056591,us_state
+test_web,us_state:Minnesota,-0.735989,-0.734955,-0.886379,us_state
+test_web,us_state:Mississippi,-0.757493,-0.818782,-0.861631,us_state
+test_web,us_state:Missouri,-0.842114,-0.878677,-0.935141,us_state
+test_web,us_state:Montana,-0.852596,-0.909467,-0.958862,us_state
+test_web,us_state:Nebraska,-0.867860,-0.881398,-0.921694,us_state
+test_web,us_state:Nevada,-0.957156,-1.002117,-1.022969,us_state
+test_web,us_state:New Hampshire,-0.958807,-0.975271,-0.983876,us_state
+test_web,us_state:New Jersey,-1.092102,-1.174595,-1.225888,us_state
+test_web,us_state:New Mexico,-1.000912,-1.074970,-1.088608,us_state
+test_web,us_state:New York (state),0.178023,-1.010747,-1.187475,us_state
+test_web,us_state:North Carolina,-0.975023,-0.996376,-1.064161,us_state
+test_web,us_state:North Dakota,-0.856188,-0.900518,-0.926306,us_state
+test_web,us_state:Ohio,-0.956038,-1.082577,-1.126754,us_state
+test_web,us_state:Oklahoma,-0.781609,-0.781349,-0.828416,us_state
+test_web,us_state:Oregon,-0.902538,-0.930001,-0.974452,us_state
+test_web,us_state:Pennsylvania,-0.959933,-1.022067,-1.065290,us_state
+test_web,us_state:Rhode Island,-0.837829,-0.866076,-0.966326,us_state
+test_web,us_state:South Carolina,-0.823946,-0.867997,-0.914145,us_state
+test_web,us_state:South Dakota,-0.667366,-0.720438,-0.753281,us_state
+test_web,us_state:Tennessee,-0.992104,-1.040148,-1.048632,us_state
+test_web,us_state:Texas,-1.014410,-1.085305,-1.145818,us_state
+test_web,us_state:Utah,-0.822810,-0.830428,-0.882981,us_state
+test_web,us_state:Vermont,-0.918051,-0.935168,-0.989691,us_state
+test_web,us_state:Virginia,-0.948454,-1.005681,-1.030594,us_state
+test_web,us_state:Washington (state),-1.012636,-1.095292,-1.116851,us_state
+test_web,us_state:West Virginia,-0.849025,-0.897345,-0.974538,us_state
+test_web,us_state:Wisconsin,-0.832963,-0.882082,-0.911000,us_state
+test_web,us_state:Wyoming,-0.948331,-1.005038,-1.030933,us_state

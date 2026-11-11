@@ -99,3 +99,5 @@ backward-evaluation-model-choice/**/*.gz -filter -diff -merge binary
 backward-evaluation-model-choice/**/*.tsv -filter -diff -merge text
 pipeline-time-correctness/**/*.csv -filter -diff -merge text
 billionaires-poverty-followups/**/*.csv -filter -diff -merge text
+backward-evaluation-guide/**/*.csv -filter -diff -merge text
+backward-evaluation-guide/**/*.gz -filter -diff -merge binary
