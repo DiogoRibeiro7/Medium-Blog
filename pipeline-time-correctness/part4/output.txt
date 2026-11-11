@@ -1,0 +1,62 @@
+
+==============================================================================
+P0. The replay
+==============================================================================
+code version 9adf5e8d8533
+daily runs: 822, 2021-06-01 to 2023-08-31, each at 08:00:00
+files landed: 876; landing rows: 377,157; delay-profile rows: 166,866; report rows: 822
+files written for 2021-04-02 to 2023-12-31: 998, of which 876 had arrived by the last run; the file of 2022-03-15 arrives two days late
+stale runs (latest publication older than the run date): 2022-03-15 (used 2022-03-14), 2023-01-08 (used 2023-01-07)
+
+==============================================================================
+P1. The report against the final counts (file of 10 November 2026)
+==============================================================================
+published 7-day count: mean -9.0%, mean absolute 9.0%, more than 5% off on 776 of 822 runs
+nowcast: mean -0.4%, mean absolute 2.9%, more than 5% off on 119, more than 10% off on 27
+mean absolute error by weekday of the run, published / nowcast: Mon 10.2% / 5.2%, Tue 9.4% / 2.6%, Wed 9.6% / 2.3%, Thu 8.6% / 2.1%, Fri 8.0% / 2.1%, Sat 7.6% / 1.9%, Sun 9.4% / 3.9%
+  2021: published 6.6%, nowcast 1.4%
+  2022: published 9.1%, nowcast 2.9%
+  2023: published 10.9%, nowcast 4.2%
+largest nowcast error: -48.5% on 2023-08-28
+estimated completeness against actual: mean absolute difference 2.6 points; estimated 91.5% on average, actual 91.0%
+90% interval from the pipeline's own past errors, runs from 2021-08-01: 761 runs, contained the final count on 561 (73.7%); final below 74, above 126; median width 10.3% of the nowcast
+
+==============================================================================
+P2. Week-over-week change against the final counts
+==============================================================================
+  published, each week from its own run    same sign as final on 792 of 815; mean absolute difference 2.0 points
+  nowcast, each week from its own run      same sign as final on 786 of 815; mean absolute difference 2.4 points
+  both weeks from the run day file         same sign as final on 700 of 815; mean absolute difference 8.9 points; falling while final rose 113
+
+==============================================================================
+P3. Reproducing every run
+==============================================================================
+runs recomputed from landing and earlier mart rows: 822; identical to what was stored (profile and report, every value): 822; different: 0
+
+==============================================================================
+P4. The late file
+==============================================================================
+run of 2022-03-15: latest publication loaded 2022-03-14, published 7-day count 1,283,100, nowcast 1,414,509, stale True
+the file of 2022-03-15 was loaded at 2022-03-17 08:00:00; a rebuild that filters by publication date instead of load time would report 1,318,326 for that run
+
+==============================================================================
+P5. Idempotence
+==============================================================================
+rerunning the last day: report identical True, profile identical True; files landed again: 0
+
+==============================================================================
+P6. Training rows on both time axes (states, built at the end of the replay)
+==============================================================================
+rows: 13,072 (817 run days x 16 states), run days 2021-05-01 to 2023-07-27
+feature as published / feature 28 days later, median by weekday of the run day: Mon 93.4%, Tue 93.7%, Wed 93.0%, Thu 94.1%, Fri 94.6%, Sat 94.9%, Sun 93.6%
+  rows where the feature as published was more than 10% below its 28-day value: 3,086 (23.6%); more than 25% below: 230
+  lowest median by state: 0.837 (state 2), highest 1.000 (state 10)
+
+==============================================================================
+P7. Files that added nothing
+==============================================================================
+files compared with the file of the day before: 873; identical on every reporting date they share: 107
+  by weekday of the file: Mon 47, Tue 4, Wed 0, Thu 0, Fri 2, Sat 2, Sun 52
+  identical files dated Tuesday to Saturday: 2022-10-04, 2023-04-08, 2023-04-11, 2023-05-02, 2023-05-19, 2023-05-30, 2023-08-25, 2023-08-26
+  nowcast error on the runs that used them: 2022-10-04 -19.9%, 2023-04-08 -7.2%, 2023-04-11 -20.0%, 2023-05-02 -14.1%, 2023-05-19 -10.8%, 2023-05-30 -9.1%, 2023-08-25 -29.4%, 2023-08-26 -46.0%
+  mean absolute nowcast error on the other runs: 2.7%
