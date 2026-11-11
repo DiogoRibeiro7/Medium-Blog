@@ -41,6 +41,15 @@ class RkiVintages(unittest.TestCase):
         self.assertEqual(sd.at[p, "published"], self.melde.V.loc[p, dates].fillna(0).sum())
         self.assertEqual(sd.at[p, "final"], self.final.reindex(dates).sum())
 
+    def test_seven_day_sql_matches_pandas(self):
+        con = r.rki_connection()
+        sql = con.execute(r.SEVEN_DAY_SQL, {"last": r.RKI_LAST.date()}).df().set_index("publication")
+        pdf = r.seven_day_sums(self.melde, self.final)
+        for p in ["2021-06-01", "2022-01-10", "2023-05-15"]:
+            p = pd.Timestamp(p)
+            self.assertEqual(sql.at[p, "published"], pdf.at[p, "published"])
+            self.assertEqual(sql.at[p, "final"], pdf.at[p, "final"])
+
     def test_snapshot_of_last_day_matches_recent_vintage(self):
         snap = r.load_snapshots()
         last = r.RKI_LAST
@@ -77,6 +86,21 @@ class ChainLadder(unittest.TestCase):
             Cm[t, T - t + 1:] = np.nan
         est = r.chain_ladder_daily(Cm, T, 14, 4)
         np.testing.assert_allclose(est[T - 4:T + 1], np.full(5, 1000.0), rtol=1e-12)
+
+
+    def test_weekday_factors_recover_a_weekly_pattern(self):
+        # two delay patterns that alternate by weekday: a pooled chain ladder is biased, the weekday one is not
+        fast, slow = np.array([0.6, 0.3, 0.1, 0, 0]), np.array([0.1, 0.2, 0.3, 0.2, 0.2])
+        rows = [fast if t % 7 < 5 else slow for t in range(120)]
+        C = np.vstack([1000.0 * p for p in rows]).cumsum(axis=1)
+        T = 110
+        Cm = C[:T + 1].copy()
+        for t in range(T - 4, T + 1):
+            Cm[t, T - t + 1:] = np.nan
+        est = r.chain_ladder_weekday(Cm, T, 4, 4, min_share=0.05)
+        np.testing.assert_allclose(est[T - 4:T + 1], np.full(5, 1000.0), rtol=1e-12)
+        pooled = r.chain_ladder_daily(Cm, T, 28, 4)
+        self.assertGreater(np.max(np.abs(pooled[T - 4:T + 1] - 1000.0)), 10.0)
 
 
 class Gdp(unittest.TestCase):

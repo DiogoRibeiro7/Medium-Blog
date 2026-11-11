@@ -14,7 +14,7 @@ The manuscripts are kept elsewhere; this repository holds the code, data, output
 ```
 cd pipeline-time-correctness
 pip install -r requirements.txt
-python -m unittest discover -s tests -v       # 43 tests (11 for Part 1, 19 for Part 2, 13 for Part 3)
+python -m unittest discover -s tests -v       # 45 tests (11 for Part 1, 19 for Part 2, 15 for Part 3)
 cd part1
 python history_numbers.py > output.txt         # every number in the article
 python figures.py                              # figures/*.png
@@ -76,7 +76,7 @@ The fetch scripts are pinned to a commit of each source repository and log the g
 - `data/hub_triangle.csv.gz`: the Nowcast Hub's triangle of hospitalised cases (all ages, Germany and the 16 states), with the change at each delay from 0 to 80 days and after.
 - `data/hub_nowcasts.csv.gz`: each model's nowcast for Germany, all ages, forecast dates 22 November 2021 to 29 April 2022.
 - `data/gdp_vintages.csv`: real GDP by vintage (2002 Q4 to 2024 Q4) for the US, the euro area, Japan and Switzerland, from the rOpenSci package reviser (real-time database of Indergand and Leist, 2014).
-- `realdata.py`: the functions (completeness by age, the 7-day sums, the check of the change flags against the files, the chain ladder on real triangles, the hub evaluation, GDP revision statistics, and as-of and first-release queries in SQL).
+- `realdata.py`: the functions (completeness by age, the 7-day sums in pandas and in SQL, the check of the change flags against the files, the chain ladder (pooled and by weekday) on real triangles, the hub evaluation, GDP revision statistics, and as-of and first-release queries in SQL).
 - `realdata_numbers.py` prints every number in the article; `output.txt` is its committed output.
 - `figures.py` draws the seven figures.
 

@@ -99,6 +99,10 @@ wk = pd.DataFrame({
     "final": sd.final / sd.final.shift(7) - 1,
 }).dropna()
 same = int((np.sign(wk.published) == np.sign(wk.final)).sum())
+con_rki = r.rki_connection()
+sql7 = con_rki.execute(r.SEVEN_DAY_SQL, {"last": r.RKI_LAST.date()}).df().set_index("publication").loc[FIRST:LAST]
+print(f"  the same 7-day totals by SQL (calendar of dates, left joins): {len(sql7)} publications, equal to pandas: "
+      f"{bool((sql7.published == sd.published).all() and (sql7.final == sd.final).all())}")
 print(f"  week-over-week change as published (each week from its own day) against final: same sign on {same} of {len(wk)} days; "
       f"mean absolute difference {100 * (wk.published - wk.final).abs().mean():.1f} points")
 
@@ -115,6 +119,15 @@ print(f"  week-over-week change read from one day's file for both weeks: same si
       f"{100 * (wk2.live - wk2.final).mean():+.1f} points; falling while the final rose: "
       f"{int(((wk2.live < 0) & (wk2.final > 0)).sum())} days")
 
+print("\nThe 7-day count nowcast each day (dates p-7 .. p-1; publications 1 May 2021 - 31 Aug 2023), error against final:")
+nc = r.nowcast_seven_day(melde, final, "2021-05-01", LAST)
+for k, label in (("raw", "as published"), ("chain", "chain ladder, 28-day window"),
+                 ("weekday", "same-weekday factors, last 4 weeks")):
+    e = nc[k]
+    print(f"  {label:36s} mean {e.mean() * 100:+.1f}%, mean absolute {pct(e.abs().mean())}, "
+          f"days more than 5% off {int((e.abs() > 0.05).sum())} of {len(e)}, Monday publications mean absolute "
+          f"{pct(e[e.index.dayofweek == 0].abs().mean())}")
+
 # ---------------------------------------------------------------------------
 section("R3. Restatements in the case files")
 rem = melde.removed.loc[daily].sum().sum()
@@ -130,6 +143,10 @@ print(f"  consecutive daily files compared: {len(rec)}; pairs where, for at leas
 print(f"  absolute difference between flagged and actual change: median {rec.abs_mismatch.median():.0f} cases a day, "
       f"total {rec.abs_mismatch.sum():,.0f} against a total absolute change of {rec.abs_change.sum():,.0f} "
       f"({pct(rec.abs_mismatch.sum() / rec.abs_change.sum(), 2)}); largest {rec.abs_mismatch.max():,.0f} on {rec.abs_mismatch.idxmax().date()}")
+d0, p1, p2 = pd.Timestamp("2021-03-16"), pd.Timestamp("2021-04-03"), pd.Timestamp("2021-04-04")
+print(f"  example: reporting date {d0.date()}, count in the file of {p1.date()} {int(melde.V.at[p1, d0]):,}, in the file of "
+      f"{p2.date()} {int(melde.V.at[p2, d0]):,}; flagged in the second file: new {int(melde.new.at[p2, d0])}, "
+      f"removed {int(-melde.removed.at[p2, d0])}")
 a120 = melde.at_age(r.MAX_AGE).loc[FIRST:LAST]
 chg = final.reindex(a120.index) / a120 - 1
 print(f"  change between 120 days after the reporting date and the last file: total "
@@ -211,7 +228,10 @@ seven = []
 for t in range(i0, i1 + 1):
     seven.append((tri.dates[t], tri.known7(t, t) / tri.final7(t), tri.known7(t, t + 7) / tri.final7(t)))
 seven = pd.DataFrame(seven, columns=["date", "published", "week_later"]).set_index("date")
-print(f"7-day hospitalisation count as first published / latest: {q3(seven.published)}; a week later: {q3(seven.week_later)}")
+print(f"7-day hospitalisation count as first published / latest, {len(seven)} days: {q3(seven.published)}; a week later: {q3(seven.week_later)}")
+hub_days = seven.loc[r.HUB_FIRST:r.HUB_LAST]
+print(f"  the {len(hub_days)} days of the hub's evaluation period: first published {q3(hub_days.published)}; "
+      f"a week later {q3(hub_days.week_later)}; highest first-published share {pct(hub_days.published.max())}")
 wow = []
 for t in range(i0 + 7, i1 + 1):
     pub = tri.known7(t, t) / tri.known7(t - 7, t - 7) - 1

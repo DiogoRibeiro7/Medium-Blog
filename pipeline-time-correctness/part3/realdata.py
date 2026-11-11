@@ -123,6 +123,34 @@ def seven_day_sums(vin: Vintages, final: pd.Series) -> pd.DataFrame:
     return pd.DataFrame(out, columns=["publication", "published", "final"]).set_index("publication")
 
 
+SEVEN_DAY_SQL = """
+-- the 7-day count as published on each day, and the same seven dates in the last file;
+-- a date absent from a file had no case yet, so the seven dates come from a calendar, not from the file
+with win as (
+    select publication,
+           unnest(generate_series(publication - interval 7 day, publication - interval 1 day,
+                                  interval 1 day))::date as date
+    from (select distinct publication from melde)
+)
+select w.publication,
+       coalesce(sum(v.cases), 0) as published,
+       coalesce(sum(f.cases), 0) as final
+from win w
+left join melde v on v.publication = w.publication and v.date = w.date
+left join snapshots f on f.publication = $last and f.date = w.date
+group by w.publication
+order by w.publication
+"""
+
+
+def rki_connection() -> duckdb.DuckDBPyConnection:
+    con = duckdb.connect()
+    con.execute("set threads = 1")
+    for name, path in (("melde", "rki_melde.csv.gz"), ("snapshots", "rki_snapshots.csv.gz")):
+        con.execute(f"create table {name} as select * from read_csv('{DATA / path}', header = true)")
+    return con
+
+
 def chain_ladder_daily(C: np.ndarray, T: int, window: int, dmax: int) -> np.ndarray:
     """Nowcast of the value at delay dmax for every row t <= T of a cumulative triangle C[t, d].
 
@@ -142,6 +170,52 @@ def chain_ladder_daily(C: np.ndarray, T: int, window: int, dmax: int) -> np.ndar
         a = T - t
         est[t] = C[t, a] * tail[a]
     return est
+
+
+def chain_ladder_weekday(C: np.ndarray, T: int, weeks: int, dmax: int, min_share: float = 0.2) -> np.ndarray:
+    """Nowcast of the value at delay dmax, with factors from rows of the same weekday.
+
+    For row t with a = T - t delays observed, the expected share known at delay a is estimated
+    from the `weeks` latest rows of the same weekday that are complete (T - j >= dmax). When
+    that share is below `min_share` (almost nothing is known yet, as for weekend dates on a
+    Monday), the estimate is the mean final count of those rows instead.
+    """
+    est = np.full(T + 1, np.nan)
+    for t in range(max(0, T - dmax), T + 1):
+        a = T - t
+        rows = np.array([j for j in range(t - 7 * weeks, t, 7) if j >= 0 and T - j >= dmax])
+        if rows.size == 0:
+            continue
+        full = np.nansum(C[rows, dmax])
+        share = np.nansum(C[rows, a]) / full if full > 0 else np.nan
+        if np.isnan(share) or share < min_share:
+            est[t] = full / rows.size
+        else:
+            est[t] = C[t, a] / share
+    return est
+
+
+def nowcast_seven_day(vin: Vintages, final: pd.Series, first: str, last: str, dmax: int = 28,
+                      window: int = 28, weeks: int = 4) -> pd.DataFrame:
+    """For each publication p, the 7-day count (dates p-7 .. p-1) three ways, as a share of final - 1.
+
+    raw: as published. chain: chain ladder with factors from the latest `window` days.
+    weekday: factors from the same weekday's latest `weeks` complete rows.
+    """
+    dates = pd.date_range(pd.Timestamp(first) - pd.Timedelta(days=70), last)
+    C = cumulative_triangle(vin, dates, dmax)
+    fin = final.reindex(dates).to_numpy()
+    rows = []
+    for T in range(70, len(dates)):
+        Cm = C[:T + 1].copy()
+        for j in range(max(0, T - dmax), T + 1):
+            Cm[j, T - j + 1:] = np.nan
+        cl = chain_ladder_daily(Cm, T, window, dmax)
+        wd = chain_ladder_weekday(Cm, T, weeks, dmax)
+        f = fin[T - 7:T].sum()
+        raw = sum(Cm[t, T - t] for t in range(T - 7, T))
+        rows.append((dates[T], raw / f - 1, np.nansum(cl[T - 7:T]) / f - 1, np.nansum(wd[T - 7:T]) / f - 1))
+    return pd.DataFrame(rows, columns=["publication", "raw", "chain", "weekday"]).set_index("publication")
 
 
 def cumulative_triangle(vin: Vintages, dates: pd.DatetimeIndex, dmax: int) -> np.ndarray:
