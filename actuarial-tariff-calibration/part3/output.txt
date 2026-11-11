@@ -1,0 +1,144 @@
+Part 3: a calibration audit of GLM and boosted frequency models on freMTPL2.
+
+==============================================================================
+1. The data
+==============================================================================
+Policies: 677,991; claims: 26,444; claim amounts: 26,444 totalling 59,909,216 euros.
+Share of policies whose number of claim amounts equals their claim count: 1.000000
+Exposure above one year: 1,224 policies (maximum 2.01); total exposure 358,482.8 raw, 358,343.5 capped at one year; full-year policies 0.2498
+Claim counts per policy: {0: 653047, 1: 23571, 2: 1298, 3: 62, 4: 5, 5: 2, 6: 1, 8: 1, 9: 1, 11: 2, 16: 1}
+Policies with five or more claims: 8, of which 7 share bonus-malus 50, area D and density 824 (driver ages [52, 53], vehicle ages [12, 13]); claims removed by capping counts at four: 39
+Claim frequency after cleaning: 0.0737 claims per policy-year (26,405 claims, 358,343.5 policy-years)
+Most frequent claim amounts (fixed amounts of the IRSA-IDA convention): 1,204.00 (4,792), 1,128.12 (3,056), 1,172.00 (2,071); together 0.3751 of all claims
+Claim amounts: median 1,172, 90th percentile 2,768, 99th percentile 16,451, largest 4,075,401
+Claims above 100,000: 41, 0.2455 of all payments; the largest claim alone 0.0680
+
+==============================================================================
+2. Three frequency models on a 60/20/20 split
+==============================================================================
+  training     406,794 policies, 214,732.1 policy-years, 15,862 claims, frequency 0.0739
+  calibration  135,598 policies, 71,796.8 policy-years, 5,276 claims, frequency 0.0735
+  test         135,599 policies, 71,814.7 policy-years, 5,267 claims, frequency 0.0733
+  test frequency / training frequency 0.9929; calibration / training 0.9948
+GLM-A (bonus-malus linear): 49 parameters, IRLS iterations 8
+GLM-B (bonus-malus in bands): 57 parameters, IRLS iterations 10
+GBM (Poisson boosting): 123 iterations at early stopping
+Training balance (premium / claims): GLM-A 1.000000, GLM-B 1.000000, GBM 0.997636
+
+==============================================================================
+3. The test-sample verdict (per 1,000 policy-years)
+==============================================================================
+model      Gini        D      UNC     DSC     MCB  MCB shape  balance  prem Gini
+GLM-A    0.2767   455.98   476.38   21.47   1.073      1.070   1.0073     0.2689
+GLM-B    0.2924   453.10   476.38   24.35   1.072      1.069   1.0059     0.2949
+GBM      0.3218   446.44   476.38   31.17   1.229      1.227   1.0050     0.3215
+(MCB shape: miscalibration left after rescaling the rate to the test total; the rest is the level)
+Isotonic steps on the test sample: GLM-A 52, GLM-B 49, GBM 47
+
+==============================================================================
+4. Balance by segment, relative to each model's own level (test sample, 95% Poisson intervals)
+==============================================================================
+(With 57 segments and 95% intervals, about 2.9 would exclude 1 by chance for a perfectly calibrated tariff.)
+GLM-A: 9 of 57 segments with an interval excluding 1:
+    driver age     31-40                        0.912
+    driver age     41-50                        1.063
+    bonus-malus    50                           1.126
+    bonus-malus    51-60                        0.795
+    bonus-malus    61-70                        0.680
+    bonus-malus    81-100                       1.142
+    bonus-malus    126+                         1.593
+    region         Languedoc-Roussillon         1.188
+    region         Lorraine                     0.800
+GLM-B: 5 of 57 segments with an interval excluding 1:
+    driver age     31-40                        0.915
+    driver age     41-50                        1.061
+    region         Languedoc-Roussillon         1.187
+    region         Lorraine                     0.805
+    region         Poitou-Charentes             1.185
+GBM: 4 of 57 segments with an interval excluding 1:
+    driver age     31-40                        0.915
+    region         Languedoc-Roussillon         1.223
+    region         Lorraine                     0.801
+    region         Poitou-Charentes             1.183
+bonus-malus ratios:
+  GLM-A  50 1.126  51-60 0.795  61-70 0.680  71-80 0.922  81-100 1.142  101-125 0.876  126+ 1.593
+  GLM-B  50 1.020  51-60 0.943  61-70 1.002  71-80 0.961  81-100 1.013  101-125 1.025  126+ 1.070
+  GBM    50 1.034  51-60 0.932  61-70 1.003  71-80 0.964  81-100 0.988  101-125 1.018  126+ 0.966
+driver age ratios:
+  GLM-A  18-20 0.926  21-25 0.993  26-30 1.048  31-40 0.912  41-50 1.063  51-70 1.022  71+ 0.962
+  GLM-B  18-20 0.927  21-25 0.995  26-30 1.048  31-40 0.915  41-50 1.061  51-70 1.021  71+ 0.960
+  GBM    18-20 0.869  21-25 1.020  26-30 1.079  31-40 0.915  41-50 1.044  51-70 1.027  71+ 0.954
+bonus-malus: claims per band in the test sample: 50 2273, 51-60 736, 61-70 623, 71-80 582, 81-100 800, 101-125 216, 126+ 37
+
+==============================================================================
+5. Balance by premium decile, relative to each model's own level (auto-calibration)
+==============================================================================
+  GLM-A  [0.995 0.991 1.103 1.046 1.022 1.018 0.974 0.988 0.881 1.042]
+  GLM-B  [0.905 0.914 1.119 0.98  1.016 1.093 1.02  1.042 0.916 1.013]
+  GBM    [0.839 0.943 1.089 1.046 1.03  1.001 1.096 1.031 0.961 0.98 ]
+  GLM-A  claims per decile: 259 316 317 366 407 445 514 576 800 1267; decile 1 interval [0.881, 1.128]; decile 10 interval [0.986, 1.102]; deciles with an interval excluding 1: [9]
+  GLM-B  claims per decile: 260 319 294 370 391 402 487 569 841 1334; decile 1 interval [0.802, 1.026]; decile 10 interval [0.960, 1.070]; deciles with an interval excluding 1: [9]
+  GBM    claims per decile: 241 282 286 338 386 446 461 569 773 1485; decile 1 interval [0.740, 0.956]; decile 10 interval [0.931, 1.032]; deciles with an interval excluding 1: [1, 7]
+
+==============================================================================
+6. Uncertainty: a paired bootstrap of the test sample (500 resamples) and 10 repeated splits
+==============================================================================
+  GLM-A  Gini 0.2767, bootstrap sd 0.0082, 95% interval [0.2606, 0.2923]
+  GLM-B  Gini 0.2924, bootstrap sd 0.0081, 95% interval [0.2763, 0.3076]
+  GBM    Gini 0.3218, bootstrap sd 0.0078, 95% interval [0.3074, 0.3370]
+  GBM - GLM-A: Gini +0.0451 (sd 0.0049, positive in 1.000); deviance -9.54 (sd 0.82, negative in 1.000)
+  GLM-B - GLM-A: Gini +0.0157 (sd 0.0030, positive in 1.000); deviance -2.88 (sd 0.45, negative in 1.000)
+  GBM - GLM-B: Gini +0.0294 (sd 0.0042, positive in 1.000); deviance -6.66 (sd 0.68, negative in 1.000)
+
+Repeated random 60/20/20 splits, models refitted on each training sample (test-sample values):
+  split  1: test/train frequency 0.9966; GBM iterations 124; GLM-A Gini 0.2870 D 455.11 bal 1.0065; GLM-B Gini 0.3025 D 452.20 bal 1.0065; GBM Gini 0.3273 D 445.73 bal 1.0094
+  split  2: test/train frequency 0.9962; GBM iterations 131; GLM-A Gini 0.2802 D 455.88 bal 1.0060; GLM-B Gini 0.2977 D 453.02 bal 1.0076; GBM Gini 0.3263 D 446.70 bal 1.0060
+  split  3: test/train frequency 0.9989; GBM iterations 114; GLM-A Gini 0.2715 D 455.11 bal 1.0026; GLM-B Gini 0.2873 D 452.67 bal 1.0001; GBM Gini 0.3153 D 446.82 bal 0.9937
+  split  4: test/train frequency 0.9975; GBM iterations 116; GLM-A Gini 0.2843 D 452.41 bal 1.0003; GLM-B Gini 0.3002 D 449.28 bal 0.9995; GBM Gini 0.3259 D 442.99 bal 1.0041
+  split  5: test/train frequency 0.9955; GBM iterations 207; GLM-A Gini 0.2761 D 456.52 bal 1.0019; GLM-B Gini 0.2860 D 454.25 bal 1.0034; GBM Gini 0.3102 D 449.18 bal 1.0021
+  split  6: test/train frequency 0.9859; GBM iterations 120; GLM-A Gini 0.2896 D 455.04 bal 1.0173; GLM-B Gini 0.3082 D 451.94 bal 1.0173; GBM Gini 0.3327 D 445.74 bal 1.0164
+  split  7: test/train frequency 1.0289; GBM iterations 152; GLM-A Gini 0.2891 D 464.39 bal 0.9704; GLM-B Gini 0.3033 D 461.60 bal 0.9710; GBM Gini 0.3263 D 455.19 bal 0.9729
+  split  8: test/train frequency 1.0206; GBM iterations 165; GLM-A Gini 0.2784 D 461.81 bal 0.9796; GLM-B Gini 0.2936 D 459.35 bal 0.9813; GBM Gini 0.3220 D 452.22 bal 0.9808
+  split  9: test/train frequency 1.0309; GBM iterations 114; GLM-A Gini 0.2794 D 465.37 bal 0.9695; GLM-B Gini 0.2931 D 463.04 bal 0.9701; GBM Gini 0.3171 D 456.64 bal 0.9661
+  split 10: test/train frequency 0.9933; GBM iterations 187; GLM-A Gini 0.2691 D 461.72 bal 1.0069; GLM-B Gini 0.2869 D 458.85 bal 1.0073; GBM Gini 0.3170 D 451.62 bal 1.0133
+  GLM-A  Gini mean 0.2805 sd 0.0071 range [0.2691, 0.2896]; balance range [0.9695, 1.0173]; premium Gini below concentration Gini in 8 of 10 splits (gap mean 0.0129); Gini on total losses range [0.2346, 0.4986]
+  GLM-B  Gini mean 0.2959 sd 0.0077 range [0.2860, 0.3082]; balance range [0.9701, 1.0173]; premium Gini below concentration Gini in 5 of 10 splits (gap mean 0.0008); Gini on total losses range [0.2493, 0.5083]
+  GBM    Gini mean 0.3220 sd 0.0069 range [0.3102, 0.3327]; balance range [0.9661, 1.0164]; premium Gini below concentration Gini in 5 of 10 splits (gap mean -0.0009); Gini on total losses range [0.2874, 0.5348]
+  GLM-A  cheapest decile ratio mean 1.072 range [0.986, 1.209], below 1 in 2 of 10; dearest decile mean 1.049 range [1.014, 1.122]; MCB mean 1.396 range [1.131, 1.776], after rescaling to the test total mean 1.375
+  GLM-B  cheapest decile ratio mean 0.974 range [0.878, 1.087], below 1 in 7 of 10; dearest decile mean 1.006 range [0.957, 1.043]; MCB mean 1.077 range [0.859, 1.263], after rescaling to the test total mean 1.057
+  GBM    cheapest decile ratio mean 0.983 range [0.802, 1.185], below 1 in 5 of 10; dearest decile mean 0.983 range [0.934, 1.025]; MCB mean 1.219 range [1.030, 1.438], after rescaling to the test total mean 1.197
+  best by Gini: GBM 10 of 10; best by deviance: GBM 10 of 10; best by Gini on total losses: GLM-B 3, GBM 7 of 10
+  test/train frequency ratio across splits: range [0.9859, 1.0309], sd 0.0160
+  GLM-A  Gini on total losses by split: 0.3451 0.3060 0.3098 0.3368 0.3162 0.4986 0.4576 0.2346 0.3802 0.2886
+  GLM-B  Gini on total losses by split: 0.3561 0.3337 0.3237 0.3434 0.3227 0.5083 0.4771 0.2493 0.3768 0.3200
+  GBM    Gini on total losses by split: 0.3525 0.3726 0.3528 0.4216 0.3345 0.5348 0.4533 0.2874 0.4032 0.3187
+  GBM - GLM-A across splits: Gini on total losses higher for GBM in 9 of 10; deviance -9.05 (range -10.10 to -7.35)
+  GLM-B - GLM-A across splits: Gini +0.0154 (range +0.0100 to +0.0186); deviance -2.72 (range -3.12 to -2.27)
+
+==============================================================================
+7. The target: one ranking, three things to rank (test sample)
+==============================================================================
+Test sample payments: 16,474,989 euros; largest policy total 4,075,401 (0.2474 of the test payments); policies with a claim above 100,000: 12
+  GLM-A  counts 0.2767 (sd 0.0082); capped losses 0.3222 (sd 0.0309); total losses 0.5221 (sd 0.1245)
+  GLM-B  counts 0.2924 (sd 0.0081); capped losses 0.3396 (sd 0.0308); total losses 0.5292 (sd 0.1220)
+  GBM    counts 0.3218 (sd 0.0078); capped losses 0.3752 (sd 0.0266); total losses 0.5714 (sd 0.1144)
+  GLM-A  Gini on total losses without the single largest policy total: 0.3783 (with it 0.5221); that policy's rate is at percentile 0.973 of the test sample
+  GLM-B  Gini on total losses without the single largest policy total: 0.3886 (with it 0.5292); that policy's rate is at percentile 0.973 of the test sample
+  GBM    Gini on total losses without the single largest policy total: 0.4339 (with it 0.5714); that policy's rate is at percentile 0.994 of the test sample
+  GLM-B - GLM-A on total losses: positive in 0.898 of resamples (sd 0.0066); on counts: positive in 1.000
+  GBM - GLM-A on total losses: positive in 1.000 of resamples (sd 0.0196); on counts: positive in 1.000
+
+==============================================================================
+8. Recalibration on the calibration sample, judged on the test sample (per 1,000 policy-years)
+==============================================================================
+model / method               steps    Gini  balance        D     DSC     MCB  MCB shape
+GLM-A, as fitted                 -  0.2767   1.0073   455.98   21.47   1.073      1.070
+GLM-A, global factor             -  0.2767   0.9993   455.98   21.47   1.070      1.070
+GLM-A, spline on log score       -  0.2767   0.9986   455.82   21.47   0.914      0.914
+GLM-A, isotonic, >= 1,000 py    20  0.2753   0.9988   456.58   20.15   0.344      0.344
+   cross-validated deviance by minimum step exposure: 100: inf, 250: 456.48, 500: 456.49, 1,000: 456.45, 2,000: 457.74, 4,000: 459.69
+GBM, as fitted                   -  0.3218   1.0050   446.44   31.17   1.229      1.227
+GBM, global factor               -  0.3218   1.0020   446.44   31.17   1.227      1.227
+GBM, spline on log score         -  0.3218   1.0022   446.43   31.17   1.213      1.212
+GBM, isotonic, >= 250 py        32  0.3205   1.0022   446.56   30.30   0.480      0.480
+   cross-validated deviance by minimum step exposure: 100: inf, 250: 447.34, 500: 447.37, 1,000: 447.92, 2,000: 448.37, 4,000: 450.33

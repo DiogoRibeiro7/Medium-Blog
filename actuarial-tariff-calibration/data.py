@@ -4,8 +4,9 @@ Every file is downloaded once from a pinned commit of the CASdatasets repository
 checked against its SHA-256 digest and kept in ``.cache/`` next to this file. Nothing is redistributed
 from this repository; CASdatasets is distributed under the GPL (>= 2).
 
-    from data import swedish_1977
+    from data import swedish_1977, french_mtpl2
     cells = swedish_1977()        # dict of NumPy arrays, one entry per column
+    policies, claims = french_mtpl2()
 """
 
 from __future__ import annotations
@@ -22,6 +23,8 @@ CAS_RAW = f"https://raw.githubusercontent.com/dutangc/CASdatasets/{CAS_COMMIT}/"
 FILES = {
     # name: (path in CASdatasets, SHA-256 of the file)
     "swautoins": ("data/swautoins.rda", "057594a03af696dff034363f1c5af751c51e01669a751b170e491ca4650d9ba7"),
+    "freMTPL2freq": ("data/freMTPL2freq.rda", "82c8598513d9fa78226b6c7d271a9940eca4b8083e9e32320a75d377bdfe15a3"),
+    "freMTPL2sev": ("data/freMTPL2sev.rda", "78e6e5016ae046603b37e88ff8ad8ca327f5d59f827c1f75d140388de09b14b3"),
 }
 
 CACHE = Path(__file__).resolve().parent / ".cache"
@@ -65,3 +68,15 @@ def swedish_1977() -> dict[str, np.ndarray]:
     out["Claims"] = df["Claims"].to_numpy(dtype=float)
     out["Payment"] = df["Payment"].to_numpy(dtype=float)
     return out
+
+
+def french_mtpl2():
+    """French motor third-party liability, freMTPL2freq and freMTPL2sev (CASdatasets; 677,991 policies).
+
+    Returns the policy table and the claim table as pandas DataFrames, exactly as stored. In the pinned version
+    the two tables reconcile: every policy with claims has as many claim amounts as claims. Cleaning (exposure
+    capped at one year, claim counts capped at four) is left to the caller and documented there.
+    """
+    freq = _read_rda(fetch("freMTPL2freq"), "freMTPL2freq")
+    sev = _read_rda(fetch("freMTPL2sev"), "freMTPL2sev")
+    return freq, sev
