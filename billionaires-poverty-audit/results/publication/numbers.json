@@ -1,0 +1,518 @@
+{
+  "billionaires_total": 3113,
+  "correlations": {
+    "billionaire_gdp": 0.7675542229649,
+    "poverty_billionaire": -0.7396673420815618,
+    "poverty_gdp": -0.8971684500493521
+  },
+  "density_per_10m_max": 72.95255020229742,
+  "density_per_10m_min": 0.1684013535730317,
+  "gdp_bands": [
+    {
+      "band": "lowest",
+      "gdp_max": 25135.7822457412,
+      "gdp_min": 5276.92387725538,
+      "hc3_p": 0.45625395646423583,
+      "iso3": [
+        "ALB",
+        "ARM",
+        "BRA",
+        "CHN",
+        "COL",
+        "EGY",
+        "GEO",
+        "IDN",
+        "IND",
+        "LBN",
+        "MEX",
+        "NGA",
+        "NPL",
+        "PHL",
+        "THA",
+        "UKR",
+        "VNM",
+        "ZAF"
+      ],
+      "n": 18,
+      "poverty_max": 99.92128610610962,
+      "poverty_min": 75.5646824836731,
+      "r_squared": 0.03581442392223044,
+      "slope": -2.9954311971508325
+    },
+    {
+      "band": "middle",
+      "gdp_max": 53606.0789571011,
+      "gdp_min": 30863.4223155169,
+      "hc3_p": 0.3476074696625231,
+      "iso3": [
+        "BGR",
+        "CHL",
+        "CZE",
+        "ESP",
+        "EST",
+        "GRC",
+        "HRV",
+        "ISR",
+        "ITA",
+        "JPN",
+        "KAZ",
+        "MYS",
+        "POL",
+        "PRT",
+        "ROU",
+        "RUS",
+        "SVK",
+        "TUR"
+      ],
+      "n": 18,
+      "poverty_max": 93.90518069267272,
+      "poverty_min": 22.26286232471466,
+      "r_squared": 0.03901133085002606,
+      "slope": -9.797386532006964
+    },
+    {
+      "band": "highest",
+      "gdp_max": 131338.444745041,
+      "gdp_min": 53993.1172607885,
+      "hc3_p": 0.984551920675698,
+      "iso3": [
+        "AUS",
+        "AUT",
+        "BEL",
+        "CAN",
+        "CHE",
+        "CYP",
+        "DEU",
+        "DNK",
+        "FIN",
+        "FRA",
+        "GBR",
+        "IRL",
+        "KOR",
+        "LUX",
+        "NLD",
+        "NOR",
+        "SWE",
+        "USA"
+      ],
+      "n": 18,
+      "poverty_max": 16.300000250339508,
+      "poverty_min": 3.7711992859840393,
+      "r_squared": 3.134498632795246e-05,
+      "slope": -0.07004767180639071
+    }
+  ],
+  "gdp_year_counts": {
+    "2024": 1,
+    "2025": 53
+  },
+  "implied_proxy_r2": 0.4742049863495155,
+  "incremental_r2": 0.006341024350376312,
+  "influence": [
+    {
+      "cooks_distance": 0.4536725074051379,
+      "iso3": "NPL"
+    },
+    {
+      "cooks_distance": 0.14134841218368163,
+      "iso3": "NGA"
+    },
+    {
+      "cooks_distance": 0.08529615701572116,
+      "iso3": "KAZ"
+    },
+    {
+      "cooks_distance": 0.060972418163924964,
+      "iso3": "IRL"
+    },
+    {
+      "cooks_distance": 0.04192063466036245,
+      "iso3": "GEO"
+    }
+  ],
+  "lag_counts": {
+    "0": 1,
+    "1": 8,
+    "2": 26,
+    "3": 8,
+    "4": 6,
+    "5": 5
+  },
+  "lag_restrictions": {
+    "2": {
+      "coef": -9.496916660705839,
+      "hc3_ci95": [
+        -17.95694381984766,
+        -1.0368895015640192
+      ],
+      "hc3_p": 0.027793857906592095,
+      "n": 35
+    },
+    "3": {
+      "coef": -7.406090391120632,
+      "hc3_ci95": [
+        -16.50792027963628,
+        1.6957394973950155
+      ],
+      "hc3_p": 0.11075519444742896,
+      "n": 43
+    },
+    "4": {
+      "coef": -9.788847941942272,
+      "hc3_ci95": [
+        -19.73894840783001,
+        0.1612525239454623
+      ],
+      "hc3_p": 0.05383018300984158,
+      "n": 49
+    },
+    "5": {
+      "coef": -7.911883429116204,
+      "hc3_ci95": [
+        -17.86680909434781,
+        2.0430422361154017
+      ],
+      "hc3_p": 0.1192991664915454,
+      "n": 54
+    }
+  },
+  "leave_one_out": {
+    "all_negative": true,
+    "max": -5.955004075761211,
+    "max_excluded": "KAZ",
+    "min": -10.104709657608005,
+    "min_excluded": "NGA"
+  },
+  "loo_cv": {
+    "billionaire_only": {
+      "mae": 20.90537295188349,
+      "rmse": 25.084093902127183
+    },
+    "fractional_logit_gdp": {
+      "mae": 7.02782250260268,
+      "rmse": 10.576788367647552
+    },
+    "fractional_logit_joint": {
+      "mae": 7.256202231521951,
+      "rmse": 10.773213273046972
+    },
+    "gdp_only": {
+      "mae": 13.115392726578909,
+      "rmse": 16.804967429459996
+    },
+    "intercept_only": {
+      "mae": 33.65280319039094,
+      "rmse": 36.84972652053413
+    },
+    "joint": {
+      "mae": 12.957072922650038,
+      "rmse": 16.719033261351374
+    }
+  },
+  "models": {
+    "fractional_logit_gdp": {
+      "coef": {
+        "const": 37.911372787403536,
+        "log10_gdp_ppp_per_capita": -8.26713963472904
+      },
+      "fitted_max_pct": 99.92062363230337,
+      "fitted_min_pct": 1.2091498265297373,
+      "n": 54,
+      "robust_p": {
+        "const": 5.583415279140543e-40,
+        "log10_gdp_ppp_per_capita": 3.0493014912522483e-41
+      }
+    },
+    "fractional_logit_joint": {
+      "ame_billionaire_pp_per_tenfold": -1.3131540127111982,
+      "ame_ci95": [
+        -7.508329220923086,
+        4.882021195500689
+      ],
+      "ame_se": 3.1608617592357002,
+      "coef": {
+        "const": 37.19654836212493,
+        "log10_billionaires_per_10m": -0.09834163994449041,
+        "log10_gdp_ppp_per_capita": -8.09534631643486
+      },
+      "fitted_max_pct": 99.91583937910944,
+      "fitted_min_pct": 1.2534293582521592,
+      "n": 54,
+      "robust_p": {
+        "const": 2.084146034207528e-27,
+        "log10_billionaires_per_10m": 0.6772926856427177,
+        "log10_gdp_ppp_per_capita": 2.6449428402921627e-26
+      }
+    },
+    "fractional_logit_raw": {
+      "ame_billionaire_pp_per_tenfold": -46.024852380809264,
+      "ame_ci95": [
+        -52.91209191517685,
+        -39.13761284644168
+      ],
+      "ame_se": 3.5139622914978315,
+      "coef": {
+        "const": 1.9207496958660673,
+        "log10_billionaires_per_10m": -2.616440930031002
+      },
+      "fitted_max_pct": 98.10156003565979,
+      "fitted_min_pct": 4.9557895118992725,
+      "n": 54,
+      "robust_p": {
+        "const": 4.047048473248818e-08,
+        "log10_billionaires_per_10m": 1.597623312458126e-11
+      }
+    },
+    "gdp": {
+      "coef": {
+        "const": 539.3693076937283,
+        "log10_gdp_ppp_per_capita": -107.56078467275566
+      },
+      "countries_fitted_above_100": [
+        "IND",
+        "LBN",
+        "NGA",
+        "NPL",
+        "PHL"
+      ],
+      "fitted_above_100": 5,
+      "fitted_below_0": 2,
+      "fitted_max": 138.98710484685847,
+      "fitted_min": -11.168938025273405,
+      "hc3_ci95": {
+        "const": [
+          448.9563672946323,
+          629.7822480928243
+        ],
+        "log10_gdp_ppp_per_capita": [
+          -127.14203659379459,
+          -87.97953275171673
+        ]
+      },
+      "hc3_p": {
+        "const": 1.393882726617172e-31,
+        "log10_gdp_ppp_per_capita": 4.972099403273443e-27
+      },
+      "n": 54,
+      "r_squared": 0.8049112277639567
+    },
+    "joint": {
+      "coef": {
+        "const": 493.073961766258,
+        "log10_billionaires_per_10m": -7.911883429116204,
+        "log10_gdp_ppp_per_capita": -96.12880240826638
+      },
+      "countries_fitted_above_100": [
+        "IND",
+        "NGA",
+        "NPL",
+        "PHL"
+      ],
+      "fitted_above_100": 4,
+      "fitted_below_0": 2,
+      "fitted_max": 136.59514395295162,
+      "fitted_min": -9.254297060388353,
+      "hc3_ci95": {
+        "const": [
+          376.35618989346773,
+          609.7917336390483
+        ],
+        "log10_billionaires_per_10m": [
+          -17.86680909434781,
+          2.0430422361154017
+        ],
+        "log10_gdp_ppp_per_capita": [
+          -122.67503287986527,
+          -69.58257193666749
+        ]
+      },
+      "hc3_p": {
+        "const": 1.2331666102840405e-16,
+        "log10_billionaires_per_10m": 0.1192991664915454,
+        "log10_gdp_ppp_per_capita": 1.2713353946087216e-12
+      },
+      "n": 54,
+      "r_squared": 0.811252252114333
+    },
+    "joint_gdp_squared": {
+      "coef": {
+        "const": -420.6078880216421,
+        "gdp_sq": -46.535531719954456,
+        "log10_billionaires_per_10m": -6.63397228527305,
+        "log10_gdp_ppp_per_capita": 317.14757805967463
+      },
+      "countries_fitted_above_100": [
+        "IND",
+        "NGA",
+        "NPL",
+        "PHL"
+      ],
+      "fitted_above_100": 4,
+      "fitted_below_0": 3,
+      "fitted_max": 116.26558404933415,
+      "fitted_min": -25.096351265657066,
+      "hc3_ci95": {
+        "const": [
+          -1834.6840261474763,
+          993.4682501041921
+        ],
+        "gdp_sq": [
+          -120.17640598684028,
+          27.10534254693136
+        ],
+        "log10_billionaires_per_10m": [
+          -17.4097965711439,
+          4.141852000597801
+        ],
+        "log10_gdp_ppp_per_capita": [
+          -328.57659206740595,
+          962.8717481867552
+        ]
+      },
+      "hc3_p": {
+        "const": 0.559907618466827,
+        "gdp_sq": 0.21551188582299896,
+        "log10_billionaires_per_10m": 0.22757774662830166,
+        "log10_gdp_ppp_per_capita": 0.3357298371011834
+      },
+      "n": 54,
+      "r_squared": 0.8324095864179922
+    },
+    "joint_log_population": {
+      "coef": {
+        "const": 516.4865228707356,
+        "log10_billionaires_per_10m": -8.723681710562264,
+        "log10_gdp_ppp_per_capita": -97.29465782070567,
+        "log_population": -2.36118380961712
+      },
+      "countries_fitted_above_100": [
+        "IND",
+        "LBN",
+        "NGA",
+        "NPL",
+        "PHL"
+      ],
+      "fitted_above_100": 5,
+      "fitted_below_0": 2,
+      "fitted_max": 138.16466061726487,
+      "fitted_min": -8.778534667432163,
+      "hc3_ci95": {
+        "const": [
+          352.4091287941616,
+          680.5639169473096
+        ],
+        "log10_billionaires_per_10m": [
+          -19.151102520948655,
+          1.7037390998241264
+        ],
+        "log10_gdp_ppp_per_capita": [
+          -126.27107779380395,
+          -68.31823784760738
+        ],
+        "log_population": [
+          -10.62149705620725,
+          5.899129436973009
+        ]
+      },
+      "hc3_p": {
+        "const": 6.845480535814911e-10,
+        "log10_billionaires_per_10m": 0.10106237087417946,
+        "log10_gdp_ppp_per_capita": 4.672723070096581e-11,
+        "log_population": 0.575309361739017
+      },
+      "n": 54,
+      "r_squared": 0.8130178059774896
+    },
+    "joint_population_weighted": {
+      "coef": {
+        "const": 461.49181953162287,
+        "log10_billionaires_per_10m": -2.76199513247092,
+        "log10_gdp_ppp_per_capita": -88.5415058708565
+      },
+      "countries_fitted_above_100": [
+        "IND",
+        "LBN",
+        "NGA",
+        "NPL",
+        "PHL"
+      ],
+      "fitted_above_100": 5,
+      "fitted_below_0": 0,
+      "fitted_max": 132.37761150724123,
+      "fitted_min": 4.704842951444846,
+      "hc3_ci95": {
+        "const": [
+          27.971219068944322,
+          895.0124199943014
+        ],
+        "log10_billionaires_per_10m": [
+          -47.48652280274174,
+          41.962532537799895
+        ],
+        "log10_gdp_ppp_per_capita": [
+          -190.48903350989804,
+          13.406021768185056
+        ]
+      },
+      "hc3_p": {
+        "const": 0.036940324701143425,
+        "log10_billionaires_per_10m": 0.9036601645611156,
+        "log10_gdp_ppp_per_capita": 0.08871221938882554
+      },
+      "n": 54,
+      "r_squared": 0.777056681562301
+    },
+    "raw": {
+      "coef": {
+        "const": 83.96566784088625,
+        "log10_billionaires_per_10m": -47.10682312611553
+      },
+      "countries_fitted_above_100": [
+        "EGY",
+        "NGA"
+      ],
+      "fitted_above_100": 2,
+      "fitted_below_0": 1,
+      "fitted_max": 120.41006986154915,
+      "fitted_min": -3.7962504390375784,
+      "hc3_ci95": {
+        "const": [
+          74.39379440625174,
+          93.53754127552077
+        ],
+        "log10_billionaires_per_10m": [
+          -56.340348041822956,
+          -37.8732982104081
+        ]
+      },
+      "hc3_p": {
+        "const": 2.9936854079273115e-66,
+        "log10_billionaires_per_10m": 1.53664316014413e-23
+      },
+      "n": 54,
+      "r_squared": 0.5471077769420016
+    }
+  },
+  "n": 54,
+  "placebo": {
+    "corr_billionaire_gdp": 0.7675542229649,
+    "n_draws": 20000,
+    "r2_max": 0.6949068035222848,
+    "r2_mean": 0.4750876472734291,
+    "r2_median": 0.47339491418938895,
+    "r2_p05": 0.38955116421055236,
+    "r2_p95": 0.5659807570397455,
+    "seed": 20261111,
+    "share_abs_adjusted_coef_at_least_observed": 0.19275,
+    "share_adjusted_coef_at_most_observed": 0.0945,
+    "share_r2_at_least_observed": 0.0945
+  },
+  "poverty_year_counts": {
+    "2020": 5,
+    "2021": 6,
+    "2022": 9,
+    "2023": 25,
+    "2024": 8,
+    "2025": 1
+  }
+}
