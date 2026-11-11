@@ -132,7 +132,7 @@ def fig1():
         ax.set_xticks(ticks)
         ax.set_xticklabels([f"{dates[c + i]:%Y}" for i in ticks])
         grid(ax)
-    axes[0].set_ylabel("CPI inflation, % per year (monthly, annualised)")
+    axes[0].set_ylabel("CPI inflation, % per year")
     axes[0].legend(frameon=False, fontsize=8, loc="upper left")
     fig.suptitle(f"One cell taken apart: the model of {dates[a]:%Y}–{dates[b - 1]:%Y} forecasting "
                  f"{dates[c]:%b %Y}–{dates[d - 1]:%b %Y}, one month ahead", x=0.01, ha="left", fontweight="bold",

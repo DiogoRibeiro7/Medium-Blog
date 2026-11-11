@@ -75,6 +75,8 @@ Chronos-2, TimesFM 2.5 and TiRex against seasonal naive and ETS baselines on hou
 
 [`backward-evaluation-model-choice/`](backward-evaluation-model-choice/) — a pre-registered test of backward evaluation as a way to choose which forecasting model to deploy, against the usual forward backtest: every 91 days, four candidates (autoregression, seasonal linear model, Holt–Winters, LightGBM) are scored on the recent past or fitted on the recent year and scored on older data, and the best is deployed. Test set of 245 Wikipedia articles from seven lists fixed before the data were downloaded; development set of 25 electricity-load series and 304 articles. Verdict: the backward choice is worse than the forward one in all seven lists; pooling the candidates beats both.
 
+[`backward-evaluation-guide/`](backward-evaluation-guide/) — the last part of the backward-evaluation series: `bwdiag.py`, a single-file module that computes the train-period × test-period matrix of any forecasting model and splits every cell into level (removed by a constant shift), spread (removed by a rescaling) and structure (what neither removes), with regime splits and real-time monitoring. Worked readings on simulated changes, US inflation and industrial production, electricity load and 549 Wikipedia articles, and one forward check fixed in advance: a level-normalised LightGBM, suggested by the matrix, beats LightGBM on 239 of 245 test articles.
+
 ### Statistical evidence and decision value
 
 [statistical-evidence-and-decisions/](statistical-evidence-and-decisions/) —
