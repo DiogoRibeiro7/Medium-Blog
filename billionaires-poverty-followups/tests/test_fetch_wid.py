@@ -53,6 +53,13 @@ class ParseTests(unittest.TestCase):
         self.assertEqual(set(out.variable), {"shweal992j", "anninc992i"})
         self.assertTrue((out.year >= fetch_wid.MIN_YEAR).all())
 
+    def test_keeps_quality_grade(self) -> None:
+        raw = (HEADER.strip() + ";data_quality\n"
+               "US;shweal992j;p99p100;2022;0.348;992;j;4\n").encode()
+        out = fetch_wid.parse_data_member(raw, "US")
+        self.assertEqual(list(out.columns)[-1], "data_quality")
+        self.assertEqual(out.data_quality.iloc[0], "4")
+
     def test_split_codes_are_joined(self) -> None:
         out = fetch_wid.parse_data_member(_data("US", US_ROWS, split=True), "US")
         self.assertEqual(sorted(out.variable.unique()), ["anninc992i", "shweal992j"])

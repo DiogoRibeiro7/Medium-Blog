@@ -8,7 +8,8 @@ and writes:
 
 ``data/wid_series.csv.gz``
     Long table: country (WID two-letter code), variable (full WID code, e.g.
-    ``shweal992j``), percentile, year, value. Only the variables in
+    ``shweal992j``), percentile, year, value and, when the export has it,
+    WID's per-observation ``data_quality`` grade. Only the variables in
     ``VARIABLES`` and percentiles in ``PERCENTILES``, years from ``MIN_YEAR``.
 
 ``data/wid_metadata.csv.gz``
@@ -87,7 +88,10 @@ def parse_data_member(raw: bytes, country: str) -> pd.DataFrame:
         raise ValueError(f"WID_data_{country}.csv lacks columns {sorted(missing)}")
     frame = frame.assign(variable=full_codes(frame))
     keep = frame["variable"].isin(VARIABLES) & frame["percentile"].isin(PERCENTILES)
-    out = frame.loc[keep, ["country", "variable", "percentile", "year", "value"]].copy()
+    columns = ["country", "variable", "percentile", "year", "value"]
+    if "data_quality" in frame.columns:  # WID quality grade, when the export carries it
+        columns.append("data_quality")
+    out = frame.loc[keep, columns].copy()
     out["year"] = pd.to_numeric(out["year"], errors="raise").astype(int)
     out = out[out["year"] >= MIN_YEAR]
     out["value"] = pd.to_numeric(out["value"].replace("", pd.NA), errors="coerce")
@@ -161,6 +165,7 @@ def extract(zip_path: Path, output_dir: Path) -> dict[str, Any]:
         "n_countries": int(table.country.nunique()),
         "latest_year_by_variable": {v: int(g.year.max()) for v, g in table.groupby("variable")},
         "metadata_columns": list(meta.columns),
+        "series_columns": list(table.columns),
         "wid_series_sha256": _write_gz(table, output_dir / "wid_series.csv.gz"),
         "wid_metadata_sha256": _write_gz(meta, output_dir / "wid_metadata.csv.gz"),
     }
