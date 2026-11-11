@@ -3,7 +3,7 @@
 Public companion to a four-part series on where correct pipelines give wrong numbers because of time. Every record has three dates: when the event happened, when the pipeline received it, and when it was corrected. A pipeline that keeps only one of them cannot reproduce what it reported yesterday, and cannot say how wrong today's number is.
 
 1. **History** (`part1/`): how four fields met the same problem. Insurance run-off triangles and the chain ladder, epidemic reporting delays and nowcasting, valid time and transaction time in temporal databases, slowly changing dimensions in warehouses, and event time, watermarks and triggers in stream processing. Each idea is rebuilt in code, and the published numbers are recomputed where they exist.
-2. Mechanism (simulation with known truth) — to come.
+2. **Mechanism** (`part2/`): five mechanisms simulated where the right answer is known. How much of the latest periods is missing for a given delay distribution; what a watermark's slack and allowed lateness trade, and what a nowcast does instead of waiting; what an incremental load loses with a high-water mark on event time, and what insert-only, upsert and an append-only version log keep when records are corrected; what training on final values and joining the current version of a dimension do to a model; and what a backfill does to values already sent.
 3. Real data (the Robert Koch Institute's daily COVID-19 case files; the Philadelphia Fed's real-time macroeconomic data) — to come.
 4. Practice (a pipeline that keeps time correct, measured on the Part 3 data) — to come.
 
@@ -14,7 +14,7 @@ The manuscripts are kept elsewhere; this repository holds the code, data, output
 ```
 cd pipeline-time-correctness
 pip install -r requirements.txt
-python -m unittest discover -s tests -v       # 11 tests
+python -m unittest discover -s tests -v       # 30 tests (11 for Part 1, 19 for Part 2)
 cd part1
 python history_numbers.py > output.txt         # every number in the article
 python figures.py                              # figures/*.png
@@ -36,3 +36,23 @@ python figures.py                              # figures/*.png
 - `data/hus_o104_2011.csv`: hospitalization date and date the hospitalization reached the Robert Koch Institute, 630 HUS cases. Delays above 15 days are set to 15 in the source. Source: `husO104Hosp` in the R package surveillance (GPL-2), [cran/surveillance@8e07579](https://github.com/cran/surveillance/tree/8e07579097e463f828b48ff7fb34b2945d1fb374), the reporting triangle of Höhle and an der Heiden (2014), *Biometrics* 70(4), 993–1002.
 
 Sections C–E use small constructed examples, fixed in the code; section D's simulation uses a fixed seed.
+
+## Part 2
+
+```
+cd pipeline-time-correctness/part2
+python mechanism_numbers.py > output.txt       # every number in the article
+python figures.py                              # figures/*.png
+```
+
+- `mechanism.py`: the functions, one section per mechanism.
+  - Delays: three log-normal reporting delays (fast, medium and slow; medians 0.6, 2 and 6 days), counted in whole days from event date to report date and capped at 30 days, plus a "backlog" version of the medium delays (median 3 days).
+  - M1. Right truncation: the share of the latest days still missing, the week-over-week change seen on the last day against the true change, and the growth rate at which the last week looks flat.
+  - M2. Waiting against estimating: the share of a window in its on-time pane for a given watermark slack, the share dropped for a given allowed lateness, and a chain-ladder nowcast against publishing raw counts, with delays that stay the same and delays that lengthen.
+  - M3. Loads, on a simulated shop (about 169,000 orders over 90 days, 10% taken offline, 8% later refunded or cancelled): a high-water mark on event time against one on arrival time, written once as a vectorized rule and once as SQL; and insert-only, upsert and append-only version-log loads run every morning in DuckDB.
+  - M4. Features: a model trained on final counts and served on counts as known on the day; a churn model whose plan is joined from the current (Type 1) dimension or as of the snapshot (`ASOF JOIN`).
+  - M5. Backfills: a daily aggregate rerun by appending and by replacing partitions; how much the restated values differ from what was sent; and a week-over-week alert read live, from the daily table, and across the backfill boundary.
+- `mechanism_numbers.py` prints every number; `output.txt` is its committed output, and CI reruns it and compares.
+- `figures.py` draws the six figures from the same functions.
+
+Everything is simulated with fixed seeds and money is kept in integer cents, so the output is the same on every machine. No data is downloaded.

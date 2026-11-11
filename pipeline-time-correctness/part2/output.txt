@@ -1,0 +1,183 @@
+
+==============================================================================
+Delay distributions (whole days from event date to report date)
+==============================================================================
+fast     log-normal median 0.6 days, log-sd 1.0
+  reported by day 0, 1, 3, 7, 14: 69.5%, 88.6%, 97.1%, 99.5%, 99.9%
+  days until 50%, 90%, 99% reported: 0, 2, 6
+  mean delay (days, capped at 30): 0.56
+medium   log-normal median 2.0 days, log-sd 1.0
+  reported by day 0, 1, 3, 7, 14: 24.4%, 50.0%, 75.6%, 91.7%, 97.8%
+  days until 50%, 90%, 99% reported: 1, 7, 20
+  mean delay (days, capped at 30): 2.76
+slow     log-normal median 6.0 days, log-sd 0.8
+  reported by day 0, 1, 3, 7, 14: 1.3%, 8.5%, 30.6%, 64.0%, 87.4%
+  days until 50%, 90%, 99% reported: 5, 16, 30
+  mean delay (days, capped at 30): 7.51
+backlog  log-normal median 3.0 days, log-sd 1.0
+  reported by day 0, 1, 3, 7, 14: 13.6%, 34.3%, 61.3%, 83.7%, 94.6%
+  days until 50%, 90%, 99% reported: 2, 10, 30
+  mean delay (days, capped at 30): 4.29
+
+==============================================================================
+M1. Right truncation
+==============================================================================
+Share still missing at the end of the last day, constant incidence:
+  fast   last day 30.5%, last 7 days 7.7%, last 28 days 2.0%
+  medium last day 75.6%, last 7 days 32.3%, last 28 days 9.8%
+  slow   last day 98.7%, last 7 days 70.2%, last 28 days 26.6%
+
+Last-7-day total, 1000 events a day, 2000 Monte Carlo runs:
+  fast   final 7000, known 6464, shortfall 536, sd of the final total 83, shortfall / sd = 6.5
+  medium final 7000, known 4736, shortfall 2264, sd of the final total 83, shortfall / sd = 27.3
+  slow   final 7000, known 2081, shortfall 4919, sd of the final total 83, shortfall / sd = 59.3
+
+Week-over-week change of the last two weeks, as known on the last day:
+  flat                     true +0.0%; seen: fast -7.5%, medium -28.9%, slow -61.0%
+  doubling every 14 days   true +41.4%; seen: fast +29.7%, medium -2.3%, slow -48.0%
+  doubling every 7 days    true +100.0%; seen: fast +81.8%, medium +34.1%, slow -30.8%
+
+Growth at which the last week, as known, looks the same as the week before:
+  fast   1.14% a day = +8% a week, doubling every 61.1 days
+  medium 5.31% a day = +45% a week, doubling every 13.1 days
+  slow   16.41% a day = +215% a week, doubling every 4.2 days
+
+Figure 1 series: 56 days, doubling every 14 days, 1000 a day on the last day.
+  fast   last 7 days final 6087, known 5580 (91.7%); highest known day is day 54 of 55
+  medium last 7 days final 6087, known 3921 (64.4%); highest known day is day 50 of 55
+  slow   last 7 days final 6087, known 1679 (27.6%); highest known day is day 45 of 55
+
+==============================================================================
+M2. Waiting against estimating
+==============================================================================
+Watermark with fixed slack, windows of one day: share of a window in its on-time pane
+  fast   0d 38.6%, 0.5d 67.2%, 1d 81.1%, 2d 92.1%, 3d 96.0%, 7d 99.4%, 14d 99.9%
+  medium 0d 9.5%, 0.5d 24.1%, 1d 38.2%, 2d 58.5%, 3d 71.0%, 7d 90.7%, 14d 97.6%
+  slow   0d 0.3%, 0.5d 1.6%, 1d 4.4%, 2d 13.8%, 3d 25.0%, 7d 60.9%, 14d 86.5%
+Slack needed for 50%, 90%, 99% in the on-time pane (days):
+  fast   0.2, 1.7, 5.7
+  medium 1.5, 6.7, 20.0
+  slow   5.5, 16.2, 38.1
+Share dropped for good, medium delays, slack 1 day, allowed lateness 0, 3, 7, 14 days:
+  L=0d 61.82%, L=3d 20.98%, L=7d 7.42%, L=14d 2.03%
+Share dropped for good, slow delays, slack 1 day, allowed lateness 0, 3, 7, 14 days:
+  L=0d 95.61%, L=3d 64.10%, L=7d 33.20%, L=14d 11.78%
+
+Publishing day t after waiting w days: mean absolute percentage error against the final count
+420 simulated days, about 1000 events a day, medium delays; chain-ladder factors from the latest 28 days
+ w   raw (stable)   nowcast (stable)   raw (30 days after shift)   nowcast (30 days after shift)   nowcast (days 31-90 after)
+ 0          75.6%               4.5%                       86.3%                           28.7%                         5.9%
+ 1          50.1%               2.4%                       65.7%                           21.7%                         3.1%
+ 2          34.2%               1.7%                       49.3%                           16.2%                         2.7%
+ 3          24.4%               1.4%                       37.7%                           12.5%                         2.4%
+ 4          17.9%               1.1%                       28.9%                           10.1%                         2.0%
+ 5          13.6%               1.0%                       22.7%                            8.0%                         1.5%
+ 6          10.5%               0.9%                       18.1%                            6.7%                         1.4%
+ 7           8.3%               0.8%                       14.6%                            5.6%                         1.3%
+ 8           6.6%               0.7%                       11.9%                            4.6%                         1.3%
+ 9           5.4%               0.6%                        9.6%                            3.9%                         1.2%
+10           4.5%               0.6%                        7.9%                            3.3%                         1.1%
+11           3.7%               0.6%                        6.5%                            2.7%                         0.9%
+12           3.1%               0.5%                        5.5%                            2.4%                         0.9%
+13           2.6%               0.5%                        4.7%                            2.1%                         0.8%
+14           2.2%               0.4%                        4.0%                            1.8%                         0.7%
+First wait with error below 5%: raw 10 days, nowcast 0 days (stable delays)
+First wait with error below 2%: raw more than 14 days, nowcast 2 days (stable delays)
+Mean signed error of the nowcast, 30 days after the shift, waits 0, 1, 3, 7: -28.7%, -21.2%, -12.5%, -5.4%; stable delays: -0.0%, -0.1%, -0.0%, +0.0%
+
+After the shift (30 days), nowcast error at waits 0, 1, 3, 7 by estimation window:
+  window  7 days: after shift 15.3%, 10.5%, 6.6%, 3.4%; stable 4.7%, 2.6%, 1.4%, 0.8%
+  window 14 days: after shift 19.9%, 14.5%, 8.8%, 4.3%; stable 4.7%, 2.5%, 1.4%, 0.8%
+  window 28 days: after shift 28.7%, 21.7%, 12.5%, 5.6%; stable 4.5%, 2.4%, 1.4%, 0.8%
+  window 56 days: after shift 37.8%, 27.7%, 15.4%, 6.2%; stable 4.5%, 2.4%, 1.4%, 0.8%
+
+About 50 events a day, stable medium delays, waits 0, 1, 3, 7:
+  raw 75.8%, 49.7%, 24.4%, 8.3%; nowcast 21.5%, 11.9%, 6.3%, 3.7%
+Error of a nowcast that knew the delays exactly (binomial thinning alone), waits 0, 1, 3, 7:
+  50 a day: 19.9%, 11.3%, 6.4%, 3.4%
+  1000 a day: 4.4%, 2.5%, 1.4%, 0.8%
+
+==============================================================================
+The simulated shop (M3 and M5)
+==============================================================================
+orders 168908 over 90 days; offline 10.0%; versions 182392
+lag from order to arrival: median 1.2 min, 90% 23 min, 95% 8.1 h, 99% 37.7 h, 99.9% 130 h
+offline orders: median lag 8.1 h, 90% 37.7 h
+corrected orders 13484 (8.0%), of which cancelled 3378; median correction 4.1 days after the order
+versions not yet visible at the last run (day 150): 0
+
+==============================================================================
+M3a. Incremental loads with a high-water mark
+==============================================================================
+  every 5 minutes      rows lost 20.23%, revenue lost 20.31%; offline orders lost 100.0%, online 11.37%
+  every 15 minutes     rows lost 13.87%, revenue lost 13.97%; offline orders lost 99.9%, online 4.31%
+  every 1 hour         rows lost 10.87%, revenue lost 10.89%; offline orders lost 98.5%, online 1.14%
+  every 6 hours        rows lost 8.21%, revenue lost 8.23%; offline orders lost 80.2%, online 0.21%
+  every 1 day (06:00)  rows lost 4.49%, revenue lost 4.46%; offline orders lost 44.4%, online 0.06%
+  daily load as SQL in DuckDB: 161323 rows loaded; vectorized: 161323; equal: True
+  a high-water mark on arrival time loses no rows here, by construction (each row is read by the first run after it arrives)
+
+==============================================================================
+M3b. Corrections under three load patterns
+==============================================================================
+  insert_only  orders 168908, revenue 9,314,361.15 (+4.46% against the final truth)
+  upsert       orders 168908, revenue 8,917,099.01 (+0.00% against the final truth)
+  version_log  orders 168908, revenue 8,917,099.01 (+0.00% against the final truth)
+  truth        orders 168908, revenue 8,917,099.01
+
+The 06:00 report for yesterday, rerun on day 150 from each table (90 reports):
+  insert_only  reproduced exactly 0 of 90
+  upsert       reproduced exactly 0 of 90
+  version_log  reproduced exactly 90 of 90
+
+What the 06:00 report said against the final value of the same day (upsert table):
+  orders   mean -2.82%, range -3.67% to -2.02%, days off by more than 1%: 90 of 90, more than 2%: 90
+  revenue  mean +1.54%, range -0.17% to +3.33%, days off by more than 1%: 71 of 90, more than 2%: 25
+
+==============================================================================
+M5. Backfills
+==============================================================================
+Backfill on day 60 of days 0..58 (59 days)
+  orders   appended backfill: total 2.03 times what was sent; replaced: +2.89%
+           restated days changed by more than 1%: 59, more than 2%: 59, range +2.06% to +3.81%
+           daily table / final truth: days 52..58 0.9971, days 59..65 0.9721
+  revenue  appended backfill: total 1.99 times what was sent; replaced: -1.20%
+           restated days changed by more than 1%: 36, more than 2%: 10, range -3.19% to +1.32%
+           daily table / final truth: days 52..58 1.0184, days 59..65 1.0163
+
+Week-over-week rule: alert when a day is more than 10% below the same weekday a week earlier.
+Real falls in demand on days [25, 47, 63] (factor 0.65)
+  orders:
+    truth   alerts on days [25, 47, 63]; mean relative error of the ratio +0.00%
+    frozen  alerts on days [25, 47, 63]; mean relative error of the ratio +0.03%
+    stored  alerts on days [25, 47, 63]; mean relative error of the ratio -0.16%
+    live    alerts on days [25, 33, 47, 63]; mean relative error of the ratio -2.74%
+    stored, the 6 days (days 60-65) compared with a restated week: mean relative error -2.47%; other days +0.02%
+  revenue:
+    truth   alerts on days [25, 47, 63]; mean relative error of the ratio +0.00%
+    frozen  alerts on days [25, 47, 63]; mean relative error of the ratio +0.04%
+    stored  alerts on days [25, 47, 63]; mean relative error of the ratio +0.02%
+    live    alerts on days [25, 47, 63]; mean relative error of the ratio +0.68%
+    stored, the 6 days (days 60-65) compared with a restated week: mean relative error -0.38%; other days +0.05%
+
+Mean completeness of the orders count in the 06:00 report: 0.9718
+Chance a week-over-week rule fires on noise alone (Poisson; 1,000,000 draws):
+  2000 orders a day: both days complete 0.044% (0.2 a year); latest at 0.972 0.799% (2.9 a year); ratio 18
+  1600 orders a day: both days complete 0.142% (0.5 a year); latest at 0.972 1.554% (5.7 a year); ratio 11
+
+==============================================================================
+M4. Features
+==============================================================================
+(a) Next week's event count from this week's count, medium delays, 10,000 customers
+  this week's count as known on the day / final: 0.677
+  fast   trained on final values: mean prediction / mean outcome 0.927, MAE 9.8, slope 0.97; trained as of the day: 1.002, MAE 9.0, slope 1.05
+  medium trained on final values: mean prediction / mean outcome 0.686, MAE 22.3, slope 0.97; trained as of the day: 1.000, MAE 9.7, slope 1.41
+  slow   trained on final values: mean prediction / mean outcome 0.317, MAE 47.7, slope 0.97; trained as of the day: 1.000, MAE 12.8, slope 3.04
+
+(b) Churn in the next 90 days from usage and plan, 20,000 customers per cohort
+  churn rate: training cohort 15.6%, production cohort 15.4%
+  training rows whose plan differs between the two joins: 1670 of 20000 (8.3%)
+  basic plan share: Type 1 join 39.3%, as of the snapshot 31.0%
+  churn rate, basic against pro: Type 1 join 27.4% against 7.9%; as of the snapshot 18.1% against 14.4%
+  Type 1 join        offline AUC 0.750, production AUC 0.617, mean predicted churn in production 13.8%, coefficient on basic 1.38, on usage -0.43
+  point-in-time join offline AUC 0.662, production AUC 0.648, mean predicted churn in production 15.2%, coefficient on basic 0.18, on usage -0.46
