@@ -309,6 +309,8 @@ def main() -> None:
         print(f"{LABELS[k]:<34}{gini(r, e, N):8.4f}{(e * r).sum() / N.sum():9.4f}{m['D'] / per:9.2f}"
               f"{m['MCB'] / per:8.3f}{m['DSC'] / per:8.2f}{m['blocks']:8d}{premium_gini(r, e):11.4f}")
     print(f"UNC (flat rate) on the test sample: {murphy(mu, e, N)['UNC'] / per:.2f}")
+    print("Gap between the concentration Gini and the premium's own Gini on the test sample: " + "; ".join(
+        f"{k} {gini(test_rates[k], e, N) - premium_gini(test_rates[k], e):.4f}" for k in ("truth", "glm", "gbm", "nooffset", "clf")))
     print()
     pool_rates = {"truth": pm, "glm": raw_pool["glm"], "gbm": raw_pool["gbm"],
                   "clf": raw_pool["clf"], "nooffset": raw_pool["nooffset"]}
@@ -395,6 +397,10 @@ def main() -> None:
               f" deviance difference {dd.mean():+.3f} (sd {dd.std(ddof=1):.3f})")
     for k in needed:
         print(f"  {k:<17} Gini across samples: mean {g_rep[k].mean():.4f}, sd {g_rep[k].std(ddof=1):.4f}")
+    sd_single = [g_rep[k].std(ddof=1) for k in needed]
+    sd_pair = [(g_rep[a] - g_rep[b]).std(ddof=1) for a, b in pairs]
+    print(f"Ratio of a single model's Gini sd to a paired difference's sd: {min(sd_single) / max(sd_pair):.1f}"
+          f" to {max(sd_single) / min(sd_pair):.1f}")
     small = slice(0, 3000)
     corp = {}
     for k in ("clf", "gbm", "nooffset"):

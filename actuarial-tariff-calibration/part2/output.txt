@@ -49,6 +49,7 @@ Poisson boosting                    0.2727   0.9936   504.68   0.461   35.69    
 claim classifier, rebalanced        0.2718   0.9960   506.50   2.108   35.52      93     0.2279
 boosting without exposure offset    0.2728   0.7846   510.99   6.530   35.45      92     0.2541
 UNC (flat rate) on the test sample: 539.91
+Gap between the concentration Gini and the premium's own Gini on the test sample: truth 0.0015; glm 0.0035; gbm 0.0075; nooffset 0.0187; clf 0.0439
 
 Population (per 1,000 policy-years; excess = expected deviance above the truth = MCB + lost):
 model                                 Gini  prem Gini  balance   excess     MCB     DSC   lost
@@ -109,3 +110,4 @@ A = gbm        B = truth^1.25 recal  pop Gini 0.2706 vs 0.2746; pop excess 1.189
   nooffset          Gini across samples: mean 0.2703, sd 0.0052
   truth^1.25        Gini across samples: mean 0.2756, sd 0.0052
   truth^1.25 recal  Gini across samples: mean 0.2749, sd 0.0052
+Ratio of a single model's Gini sd to a paired difference's sd: 3.6 to 8.2
