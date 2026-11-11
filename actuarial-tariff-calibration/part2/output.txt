@@ -1,0 +1,129 @@
+Part 2: rank invariance, auto-calibration and the Murphy decomposition, in a simulation with known truth.
+Seed 19600523; train 500,000, calibration 200,000, test 500,000 policies; population pool 2,000,000.
+
+==============================================================================
+1. The portfolio and its true frequency
+==============================================================================
+Test sample: 500,000 policies, 398,848 policy-years, 42,873 claims, frequency 0.1075 per policy-year.
+Policies with no claim: 0.9223; with two or more: 0.0069.
+Drivers under 26: 0.070 of policies; full-year policies among them 0.349, among the others 0.601; mean exposure 0.684 vs 0.806.
+True frequency in the pool: 1st percentile 0.0477, median 0.0852, 99th percentile 0.4500; mean (exposure-weighted) 0.1073.
+Unobserved heterogeneity: Gamma with mean 1 and variance 0.50.
+Population Gini of the true frequency (the ceiling for any rate on these covariates): 0.2753
+Population discrimination (DSC) of the true frequency: 35.092 per 1,000 policy-years
+Test sample, true frequency: Gini 0.2773; deviance per 1,000 policy-years 503.46; UNC 539.91; DSC 36.85; MCB 0.403; balance 0.9992
+  (the truth's MCB on a sample is not zero: the isotonic fit also follows the sample's noise)
+
+==============================================================================
+2. One ranking, many prices: powers and levels of the true frequency (population)
+==============================================================================
+rate                      Gini  prem Gini  balance   excess     MCB     DSC   lost
+truth^0.5               0.2753     0.1258   1.0000    9.833   9.833  35.092  0.000
+truth^0.8               0.2753     0.2126   1.0000    1.691   1.691  35.092  0.000
+truth^1.0               0.2753     0.2753   1.0000    0.000   0.000  35.092  0.000
+truth^1.25              0.2753     0.3586   1.0000    2.954   2.954  35.092  0.000
+truth^2.0               0.2753     0.6235   1.0000   56.458  56.458  35.092  0.000
+truth, level 0.9        0.2753     0.2753   0.9000    1.151   1.151  35.092  0.000
+truth, level 1.1        0.2753     0.2753   1.1000    1.007   1.007  35.092  0.000
+(per 1,000 policy-years; excess = MCB + lost; DSC of the truth is the most any rate can reach)
+
+==============================================================================
+3. The geometry of isotonic recalibration (test sample, in-sample fit)
+==============================================================================
+clf      Gini 0.2718 -> recalibrated 0.2728; isotonic blocks 93; Lorenz of recalibration vs convex minorant: max gap 4.4e-14; DSC 14168.20 vs 2 x claims x KL 14168.20
+truth^2  Gini 0.2773 -> recalibrated 0.2784; isotonic blocks 92; Lorenz of recalibration vs convex minorant: max gap 7.9e-14; DSC 14699.41 vs 2 x claims x KL 14699.41
+glm      Gini 0.2722 -> recalibrated 0.2732; isotonic blocks 91; Lorenz of recalibration vs convex minorant: max gap 4.6e-14; DSC 13968.19 vs 2 x claims x KL 13968.19
+
+==============================================================================
+4. Four fitted models: test sample and population
+==============================================================================
+Total balance on the training sample (premium / claims): GLM 1.000000, boosting 0.997045, no offset 0.7878
+Boosting iterations at early stopping: Poisson 101, classifier 97, no offset 106
+Claim classifier: level factor set on training data 1.3909; mean predicted probability 0.0777; share of test policies with a claim 0.0777
+
+Test sample (per 1,000 policy-years; D = UNC - DSC + MCB):
+model                                 Gini  balance        D     MCB     DSC  blocks  prem Gini
+true frequency                      0.2773   0.9992   503.46   0.403   36.85      92     0.2758
+Poisson GLM, banded main effects    0.2722   0.9966   505.42   0.528   35.02      91     0.2688
+Poisson boosting                    0.2727   0.9936   504.68   0.461   35.69      98     0.2652
+claim classifier, rebalanced        0.2718   0.9960   506.50   2.108   35.52      93     0.2279
+boosting without exposure offset    0.2728   0.7846   510.99   6.530   35.45      92     0.2541
+UNC (flat rate) on the test sample: 539.91
+Gap between the concentration Gini and the premium's own Gini on the test sample: truth 0.0015; glm 0.0035; gbm 0.0075; nooffset 0.0187; clf 0.0439
+
+Population (per 1,000 policy-years; excess = expected deviance above the truth = MCB + lost):
+model                                 Gini  prem Gini  balance   excess     MCB     DSC   lost
+true frequency                      0.2753     0.2753   1.0000    0.000   0.000  35.092  0.000
+Poisson GLM, banded main effects    0.2708     0.2684   0.9976    2.043   0.054  33.111  1.982
+Poisson boosting                    0.2706     0.2649   0.9946    1.189   0.039  33.946  1.147
+claim classifier, rebalanced        0.2695     0.2277   0.9973    2.787   1.429  33.736  1.356
+boosting without exposure offset    0.2700     0.2539   0.7855    7.399   5.971  33.668  1.424
+Order of the fitted models by population Gini:    glm > gbm > nooffset > clf
+Order of the fitted models by population deviance: gbm > glm > clf > nooffset
+Order of the fitted models by population DSC:      gbm > clf > nooffset > glm
+
+Where the discrimination and the Gini come from: the most expensive 10% of exposure against the rest
+  true frequency                     DSC top 25.123 + rest 9.970; Gini top 0.0221 + rest 0.2532
+  Poisson GLM, banded main effects   DSC top 23.420 + rest 9.691; Gini top 0.0215 + rest 0.2494
+  Poisson boosting                   DSC top 24.350 + rest 9.596; Gini top 0.0218 + rest 0.2488
+  boosting minus GLM: DSC top +0.930, rest -0.095; Gini top +0.0003, rest -0.0005
+  Poisson GLM, banded main effects: premium / expected claims for drivers under 30 with power class 8 or more (0.033 of exposure): 0.883
+  Poisson boosting: premium / expected claims for drivers under 30 with power class 8 or more (0.033 of exposure): 0.914
+Mean exposure of drivers under 26 relative to the others: 0.849
+
+For comparison, truth^1.25: Gini 0.2753, excess 2.954, MCB 2.954
+  boosting without exposure offset: premium / expected claims for drivers under 26 0.663, others 0.806
+  claim classifier, rebalanced: premium / expected claims for drivers under 26 0.771, others 1.035
+  Poisson boosting: premium / expected claims for drivers under 26 0.954, others 1.001
+  Poisson GLM, banded main effects: premium / expected claims for drivers under 26 0.976, others 1.001
+
+==============================================================================
+5. Isotonic recalibration on a separate calibration sample (fitted on calibration, judged in population)
+==============================================================================
+Calibration sample: 200,000 policies, 159,574 policy-years, 17,139 claims.
+
+Plain isotonic (pool-adjacent-violators) step tariff:
+  Poisson GLM, banded main effects   steps  67; smallest step      1.0 policy-years; lowest rate 0.0000; population exposure charged nothing 0.0001
+  Poisson boosting                   steps  76; smallest step      3.5 policy-years; lowest rate 0.0000; population exposure charged nothing 0.0004
+  claim classifier, rebalanced       steps  71; smallest step      2.7 policy-years; lowest rate 0.0000; population exposure charged nothing 0.0000
+  boosting without exposure offset   steps  66; smallest step      1.2 policy-years; lowest rate 0.0000; population exposure charged nothing 0.0001
+  truth^1.25                         steps  64; smallest step      1.0 policy-years; lowest rate 0.0000; population exposure charged nothing 0.0000
+
+Steps merged to at least 1,000 policy-years each (per 1,000 policy-years in population):
+model                              steps    Gini  balance   excess     MCB     DSC   before: Gini, excess, MCB
+Poisson GLM, banded main effects      38  0.2702   1.0021    2.479   0.092  32.705   0.2708, 2.043, 0.054
+Poisson boosting                      33  0.2689   1.0029    1.796   0.094  33.391   0.2706, 1.189, 0.039
+claim classifier, rebalanced          35  0.2688   1.0031    2.095   0.124  33.121   0.2695, 2.787, 1.429
+boosting without exposure offset      29  0.2689   1.0033    2.308   0.150  32.934   0.2700, 7.399, 5.971
+truth^1.25                            32  0.2746   1.0026    0.777   0.126  34.442   0.2753, 2.954, 2.954
+
+Minimum exposure per step against population excess deviance (steps in brackets):
+  Poisson boosting                  250: 1.506 (44); 500: 1.768 (39); 1,000: 1.796 (33); 2,000: 2.313 (21); 4,000: 3.952 (15); 8,000: 6.721 (9)
+  claim classifier, rebalanced      250: 1.663 (47); 500: 1.806 (40); 1,000: 2.095 (35); 2,000: 3.134 (28); 4,000: 3.225 (17); 8,000: 5.293 (11)
+  truth^1.25                        250: 0.419 (42); 500: 0.741 (39); 1,000: 0.777 (32); 2,000: 1.265 (27); 4,000: 2.851 (15); 8,000: 7.595 (11)
+
+Order of the recalibrated fitted models by population Gini:    glm > gbm > nooffset > clf
+Order of the recalibrated fitted models by population deviance: gbm > clf > nooffset > glm
+
+==============================================================================
+6. Choosing between two models on 400 test samples of 170,000 policies
+==============================================================================
+For each pair (A, B): population Gini and excess deviance of each, and the share of test samples in which
+each criterion prefers A; mean and standard deviation of the paired differences A - B.
+A = gbm        B = truth^1.25        pop Gini 0.2706 vs 0.2753; pop excess 1.189 vs 2.954
+    Gini prefers A in 0.000; deviance prefers A in 1.000; Gini difference -0.0047 (sd 0.0010); deviance difference -1.738 (sd 0.419)
+A = gbm        B = glm               pop Gini 0.2706 vs 0.2708; pop excess 1.189 vs 2.043
+    Gini prefers A in 0.420; deviance prefers A in 1.000; Gini difference -0.0002 (sd 0.0012); deviance difference -0.877 (sd 0.303)
+A = glm        B = clf               pop Gini 0.2708 vs 0.2695; pop excess 2.043 vs 2.787
+    Gini prefers A in 0.835; deviance prefers A in 0.988; Gini difference +0.0014 (sd 0.0015); deviance difference -0.764 (sd 0.317)
+A = gbm        B = nooffset          pop Gini 0.2706 vs 0.2700; pop excess 1.189 vs 7.399
+    Gini prefers A in 0.823; deviance prefers A in 1.000; Gini difference +0.0006 (sd 0.0006); deviance difference -6.250 (sd 0.490)
+A = gbm        B = truth^1.25 recal  pop Gini 0.2706 vs 0.2746; pop excess 1.189 vs 0.777
+    Gini prefers A in 0.000; deviance prefers A in 0.050; Gini difference -0.0040 (sd 0.0011); deviance difference +0.397 (sd 0.240)
+  clf               Gini across samples: mean 0.2697, sd 0.0053
+  gbm               Gini across samples: mean 0.2709, sd 0.0052
+  glm               Gini across samples: mean 0.2711, sd 0.0053
+  nooffset          Gini across samples: mean 0.2703, sd 0.0052
+  truth^1.25        Gini across samples: mean 0.2756, sd 0.0052
+  truth^1.25 recal  Gini across samples: mean 0.2749, sd 0.0052
+Ratio of a single model's Gini sd to a paired difference's sd: 3.6 to 8.2

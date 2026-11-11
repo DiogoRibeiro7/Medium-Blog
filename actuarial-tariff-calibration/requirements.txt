@@ -5,3 +5,6 @@ matplotlib==3.11.2
 pandas==3.0.5
 xarray==2026.9.0
 rdata==1.1.0
+scikit-learn==1.9.1
+joblib==1.6.0
+threadpoolctl==3.7.0
