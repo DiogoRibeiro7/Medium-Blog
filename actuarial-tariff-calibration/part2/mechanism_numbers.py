@@ -136,6 +136,31 @@ def population(rate: np.ndarray, pool: dict) -> dict:
     }
 
 
+def where_it_counts(rate: np.ndarray, pool: dict, top: float = 0.1) -> dict:
+    """Share of the population DSC and of the Gini area contributed by the top `top` share of exposure (by rate).
+
+    DSC contributions are per-policy Bregman divergences of the recalibrated rate from the flat rate; the Gini
+    contribution is twice the area between the diagonal and the concentration curve over the last `top` of the
+    horizontal axis.
+    """
+    e, mu = pool["e"], pool["mu"]
+    rc = isotonic_recalibration(rate, e, e * mu).predict(rate)
+    c = (e * mu).sum() / e.sum()
+    contrib = 2.0 * e * (rc * np.log(rc / c) - (rc - c))
+    order = np.argsort(rate, kind="stable")
+    cum = np.cumsum(e[order]) / e.sum()
+    in_top = np.zeros(rate.size, bool)
+    in_top[order[cum > 1 - top]] = True
+    cw, cc = lorenz(rate, e, e * mu)
+    grid = np.linspace(0.0, 1.0, 200_001)
+    gap = grid - np.interp(grid, cw, cc)
+    total_area = np.trapezoid(gap, grid)
+    top_area = np.trapezoid(gap[grid >= 1 - top], grid[grid >= 1 - top])
+    per = e.sum() / 1000.0
+    return {"dsc_top": contrib[in_top].sum() / per, "dsc_rest": contrib[~in_top].sum() / per,
+            "gini_top": 2 * top_area, "gini_rest": 2 * (total_area - top_area)}
+
+
 def rebalance(rate: np.ndarray, e: np.ndarray, target: float) -> np.ndarray:
     """Scale a rate so that its total premium on exposure e equals target."""
     return rate * target / (e * rate).sum()
@@ -325,6 +350,25 @@ def main() -> None:
     print("Order of the fitted models by population Gini:   ", " > ".join(sorted(fitted, key=lambda k: -pops[k]["gini"])))
     print("Order of the fitted models by population deviance:", " > ".join(sorted(fitted, key=lambda k: pops[k]["excess"])))
     print("Order of the fitted models by population DSC:     ", " > ".join(sorted(fitted, key=lambda k: -pops[k]["DSC"])))
+    print()
+    print("Where the discrimination and the Gini come from: the most expensive 10% of exposure against the rest")
+    wc = {}
+    for k in ("truth", "glm", "gbm"):
+        w = wc[k] = where_it_counts(pool_rates[k], pool)
+        print(f"  {LABELS[k]:<34} DSC top {w['dsc_top']:.3f} + rest {w['dsc_rest']:.3f};"
+              f" Gini top {w['gini_top']:.4f} + rest {w['gini_rest']:.4f}")
+    print(f"  boosting minus GLM: DSC top {wc['gbm']['dsc_top'] - wc['glm']['dsc_top']:+.3f},"
+          f" rest {wc['gbm']['dsc_rest'] - wc['glm']['dsc_rest']:+.3f};"
+          f" Gini top {wc['gbm']['gini_top'] - wc['glm']['gini_top']:+.4f}, rest {wc['gbm']['gini_rest'] - wc['glm']['gini_rest']:+.4f}")
+    yo = Xp[:, 0] < 30
+    hp = Xp[:, 2] >= 8
+    for k in ("glm", "gbm"):
+        r = pool_rates[k]
+        m = yo & hp
+        print(f"  {LABELS[k]}: premium / expected claims for drivers under 30 with power class 8 or more"
+              f" ({ep[m].sum() / ep.sum():.3f} of exposure): {(ep[m] * r[m]).sum() / (ep[m] * pm[m]).sum():.3f}")
+    print(f"Mean exposure of drivers under 26 relative to the others: {ep[Xp[:, 0] < 26].mean() / ep[Xp[:, 0] >= 26].mean():.3f}")
+    print()
     p125 = population(rebalance(pm ** 1.25, ep, total), pool)
     print(f"For comparison, truth^1.25: Gini {p125['gini']:.4f}, excess {p125['excess']:.3f}, MCB {p125['MCB']:.3f}")
     young_p = Xp[:, 0] < 26
@@ -361,6 +405,15 @@ def main() -> None:
         before = pops[k] if k in pops else p125
         print(f"{LABELS.get(k, k):<34}{st.steps:6d}{p['gini']:8.4f}{p['balance']:9.4f}{p['excess']:9.3f}{p['MCB']:8.3f}"
               f"{p['DSC']:8.3f}   {before['gini']:.4f}, {before['excess']:.3f}, {before['MCB']:.3f}")
+    print()
+    print("Minimum exposure per step against population excess deviance (steps in brackets):")
+    for k in ("gbm", "clf", "truth^1.25"):
+        cells = []
+        for mx in (250, 500, 1000, 2000, 4000, 8000):
+            st = StepRecalibration(mx).fit(cal_rates[k], ec, Nc)
+            cells.append(f"{mx:,}: {population(st.predict(pool_raw[k]), pool)['excess']:.3f} ({st.steps})")
+        print(f"  {LABELS.get(k, k):<34}" + "; ".join(cells))
+    print()
     print("Order of the recalibrated fitted models by population Gini:   ",
           " > ".join(sorted(fitted, key=lambda k: -recal_pop[k]["gini"])))
     print("Order of the recalibrated fitted models by population deviance:",

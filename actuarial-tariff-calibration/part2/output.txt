@@ -61,6 +61,16 @@ boosting without exposure offset    0.2700     0.2539   0.7855    7.399   5.971 
 Order of the fitted models by population Gini:    glm > gbm > nooffset > clf
 Order of the fitted models by population deviance: gbm > glm > clf > nooffset
 Order of the fitted models by population DSC:      gbm > clf > nooffset > glm
+
+Where the discrimination and the Gini come from: the most expensive 10% of exposure against the rest
+  true frequency                     DSC top 25.123 + rest 9.970; Gini top 0.0221 + rest 0.2532
+  Poisson GLM, banded main effects   DSC top 23.420 + rest 9.691; Gini top 0.0215 + rest 0.2494
+  Poisson boosting                   DSC top 24.350 + rest 9.596; Gini top 0.0218 + rest 0.2488
+  boosting minus GLM: DSC top +0.930, rest -0.095; Gini top +0.0003, rest -0.0005
+  Poisson GLM, banded main effects: premium / expected claims for drivers under 30 with power class 8 or more (0.033 of exposure): 0.883
+  Poisson boosting: premium / expected claims for drivers under 30 with power class 8 or more (0.033 of exposure): 0.914
+Mean exposure of drivers under 26 relative to the others: 0.849
+
 For comparison, truth^1.25: Gini 0.2753, excess 2.954, MCB 2.954
   boosting without exposure offset: premium / expected claims for drivers under 26 0.663, others 0.806
   claim classifier, rebalanced: premium / expected claims for drivers under 26 0.771, others 1.035
@@ -86,6 +96,12 @@ Poisson boosting                      33  0.2689   1.0029    1.796   0.094  33.3
 claim classifier, rebalanced          35  0.2688   1.0031    2.095   0.124  33.121   0.2695, 2.787, 1.429
 boosting without exposure offset      29  0.2689   1.0033    2.308   0.150  32.934   0.2700, 7.399, 5.971
 truth^1.25                            32  0.2746   1.0026    0.777   0.126  34.442   0.2753, 2.954, 2.954
+
+Minimum exposure per step against population excess deviance (steps in brackets):
+  Poisson boosting                  250: 1.506 (44); 500: 1.768 (39); 1,000: 1.796 (33); 2,000: 2.313 (21); 4,000: 3.952 (15); 8,000: 6.721 (9)
+  claim classifier, rebalanced      250: 1.663 (47); 500: 1.806 (40); 1,000: 2.095 (35); 2,000: 3.134 (28); 4,000: 3.225 (17); 8,000: 5.293 (11)
+  truth^1.25                        250: 0.419 (42); 500: 0.741 (39); 1,000: 0.777 (32); 2,000: 1.265 (27); 4,000: 2.851 (15); 8,000: 7.595 (11)
+
 Order of the recalibrated fitted models by population Gini:    glm > gbm > nooffset > clf
 Order of the recalibrated fitted models by population deviance: gbm > clf > nooffset > glm
 
