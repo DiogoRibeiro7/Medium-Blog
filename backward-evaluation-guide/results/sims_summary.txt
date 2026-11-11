@@ -12,7 +12,7 @@ Mean over cells of the excess log loss and its parts (nats per row); 'share' = p
    episode cells across the change: excess +0.922 = level 0.192 + spread 0.749 + structure -0.020  shares 0.21 / 0.81 / -0.02  (1800 cells)
    episode cells within a regime : excess -0.002 = level 0.009 + spread 0.009 + structure -0.020  (7200 cells)
 
-Regimes found in replicate 0 (inclusive block ranges, 0-based; the change is at block 6, the episode is block 4):
+Replicate 0: best split into 2 regimes (3 for the episode; inclusive block ranges, 0-based; the change is at block 6, the episode is block 4) and the cost of the best split into 1-4 regimes. A split is always returned; whether it means anything shows in how far the cost falls:
       none: [(0, 5), (6, 9)]; cost of 1-4 regimes: 0.4, 0.0, -0.2, -0.2
      level: [(0, 5), (6, 9)]; cost of 1-4 regimes: 11.2, -0.4, -0.4, -0.3
     spread: [(0, 5), (6, 9)]; cost of 1-4 regimes: 9.8, 0.1, -0.1, -0.1

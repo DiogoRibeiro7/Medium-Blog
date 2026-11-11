@@ -212,7 +212,7 @@ dev_web,element:Cerium,-0.597904,-0.656959,-0.601212,element
 dev_web,element:Chlorine,-0.830148,-1.009701,-0.853825,element
 dev_web,element:Chromium,-0.887321,-1.032346,-0.884206,element
 dev_web,element:Cobalt,-0.734000,-0.783454,-0.745316,element
-dev_web,element:Copernicium,-0.393948,-0.467558,-0.414493,element
+dev_web,element:Copernicium,-0.393947,-0.467558,-0.414493,element
 dev_web,element:Copper,-1.019994,-1.160858,-1.058269,element
 dev_web,element:Curium,-0.388482,-0.406502,-0.413128,element
 dev_web,element:Darmstadtium,-0.329765,-0.368824,-0.329652,element
@@ -272,7 +272,7 @@ dev_web,element:Protactinium,-0.372306,-0.382143,-0.369071,element
 dev_web,element:Radium,-0.578789,-0.660031,-0.660502,element
 dev_web,element:Radon,-0.798101,-0.892002,-0.850726,element
 dev_web,element:Rhenium,-0.517567,-0.560685,-0.496758,element
-dev_web,element:Rhodium,-0.734663,-0.815178,-0.839777,element
+dev_web,element:Rhodium,-0.734673,-0.815178,-0.839777,element
 dev_web,element:Roentgenium,-0.511740,-0.518188,-0.477029,element
 dev_web,element:Rubidium,-0.653428,-0.735919,-0.615592,element
 dev_web,element:Ruthenium,-0.637749,-0.710232,-0.645731,element
@@ -338,7 +338,7 @@ test_web,city:Chennai,-0.778643,-0.871012,-0.927707,city
 test_web,city:Chicago,-0.986914,-1.178286,-1.248954,city
 test_web,city:Chongqing,-0.695912,-0.835988,-0.925756,city
 test_web,city:Delhi,-0.916308,-1.037528,-1.142556,city
-test_web,city:Dhaka,-0.699182,-0.778887,-0.861272,city
+test_web,city:Dhaka,-0.699188,-0.778887,-0.861272,city
 test_web,city:Guangzhou,-1.075752,-1.212458,-1.259163,city
 test_web,city:Hyderabad,-0.929548,-1.031177,-1.107189,city
 test_web,city:Istanbul,-0.995945,-1.077253,-1.160307,city
@@ -369,9 +369,9 @@ test_web,city:Tianjin,-0.862052,-0.893770,-0.962831,city
 test_web,city:Tokyo,-1.092654,-1.174484,-1.276654,city
 test_web,instrument:Accordion,-0.881953,-0.926408,-1.011658,instrument
 test_web,instrument:Bagpipes,-0.582810,-0.660598,-0.660840,instrument
-test_web,instrument:Banjo,-0.767571,-0.899238,-0.917258,instrument
+test_web,instrument:Banjo,-0.766002,-0.899238,-0.917258,instrument
 test_web,instrument:Bass guitar,-0.990021,-1.197555,-1.251387,instrument
-test_web,instrument:Bassoon,-0.642959,-0.713184,-0.723113,instrument
+test_web,instrument:Bassoon,-0.643053,-0.713184,-0.723113,instrument
 test_web,instrument:Cello,-0.965379,-1.054791,-1.056115,instrument
 test_web,instrument:Clarinet,-0.844750,-0.966116,-0.948191,instrument
 test_web,instrument:Double bass,-1.179930,-1.302335,-1.310283,instrument
@@ -380,27 +380,27 @@ test_web,instrument:Electric guitar,-0.969852,-1.069935,-1.100689,instrument
 test_web,instrument:Flute,-0.843844,-1.026729,-1.009206,instrument
 test_web,instrument:French horn,-0.763798,-0.924105,-0.946424,instrument
 test_web,instrument:Guitar,-0.971024,-1.176418,-1.232009,instrument
-test_web,instrument:Harmonica,-0.979297,-1.093377,-1.118609,instrument
+test_web,instrument:Harmonica,-0.978614,-1.093377,-1.118609,instrument
 test_web,instrument:Harp,-0.816325,-0.914921,-0.894074,instrument
 test_web,instrument:Harpsichord,-0.933193,-0.998917,-1.049175,instrument
 test_web,instrument:Mandolin,-1.026220,-1.093722,-1.108518,instrument
 test_web,instrument:Oboe,-0.706721,-0.796131,-0.796411,instrument
 test_web,instrument:Piano,-1.055028,-1.234182,-1.222931,instrument
 test_web,instrument:Pipe organ,-0.702071,-0.739879,-0.790805,instrument
-test_web,instrument:Saxophone,-0.756940,-0.977794,-0.991575,instrument
+test_web,instrument:Saxophone,-0.757513,-0.977794,-0.991575,instrument
 test_web,instrument:Sitar,-0.613239,-0.791095,-0.828618,instrument
-test_web,instrument:Synthesizer,-0.881246,-1.080531,-1.085286,instrument
+test_web,instrument:Synthesizer,-0.881229,-1.080531,-1.085286,instrument
 test_web,instrument:Trombone,-0.852604,-0.955638,-0.924667,instrument
 test_web,instrument:Trumpet,-0.916092,-1.097042,-1.057645,instrument
 test_web,instrument:Tuba,-0.695601,-0.760559,-0.766467,instrument
 test_web,instrument:Ukulele,-0.452723,-1.044389,-1.052637,instrument
 test_web,instrument:Viola,-0.882779,-0.972046,-0.958419,instrument
 test_web,instrument:Violin,-0.948496,-1.153158,-1.129431,instrument
-test_web,instrument:Xylophone,-0.776726,-0.889952,-0.887802,instrument
+test_web,instrument:Xylophone,-0.777502,-0.889952,-0.887802,instrument
 test_web,mammal:Bat,-0.697550,-0.835173,-0.905886,mammal
 test_web,mammal:Blue whale,-0.643957,-0.702493,-0.786977,mammal
 test_web,mammal:Brown bear,-0.912642,-1.128452,-1.170126,mammal
-test_web,mammal:Brown rat,-0.903974,-0.934875,-0.955352,mammal
+test_web,mammal:Brown rat,-0.904868,-0.934875,-0.955352,mammal
 test_web,mammal:Camel,-0.837730,-0.840433,-0.980658,mammal
 test_web,mammal:Cat,-0.296173,-0.460204,-0.536791,mammal
 test_web,mammal:Cattle,-1.038313,-1.210164,-1.227458,mammal
@@ -440,13 +440,13 @@ test_web,mammal:Zebra,-0.754538,-0.841937,-0.860563,mammal
 test_web,programming_language:Assembly language,-1.093689,-1.247834,-1.213612,programming_language
 test_web,programming_language:C (programming language),-0.967570,-1.194959,-1.275359,programming_language
 test_web,programming_language:C Sharp (programming language),-0.999291,-1.218786,-1.131028,programming_language
-test_web,programming_language:COBOL,-0.381044,-0.459630,-0.548836,programming_language
-test_web,programming_language:Dart (programming language),-0.664625,-0.779906,-0.853378,programming_language
+test_web,programming_language:COBOL,-0.381692,-0.459630,-0.548836,programming_language
+test_web,programming_language:Dart (programming language),-0.664825,-0.779906,-0.853378,programming_language
 test_web,programming_language:Elixir (programming language),-0.217871,-0.360488,-0.454772,programming_language
 test_web,programming_language:Erlang (programming language),-0.493540,-0.581323,-0.640159,programming_language
 test_web,programming_language:Fortran,-0.758471,-0.875865,-0.914216,programming_language
 test_web,programming_language:Go (programming language),-0.703145,-1.003421,-1.012324,programming_language
-test_web,programming_language:Haskell,0.239041,-0.356806,-0.395559,programming_language
+test_web,programming_language:Haskell,0.239344,-0.356806,-0.395559,programming_language
 test_web,programming_language:Java (programming language),-0.308402,-0.747722,-0.935459,programming_language
 test_web,programming_language:JavaScript,-0.294872,-0.687165,-0.807791,programming_language
 test_web,programming_language:Julia (programming language),-0.534180,-0.640159,-0.739384,programming_language
@@ -465,7 +465,7 @@ test_web,programming_language:Scala (programming language),-0.523934,-0.701023,-
 test_web,programming_language:Swift (programming language),-0.662508,-0.800207,-0.836467,programming_language
 test_web,programming_language:TypeScript,-0.520743,-0.590649,-0.607242,programming_language
 test_web,solar_system:Callisto (moon),-0.645262,-0.731138,-0.736209,solar_system
-test_web,solar_system:Ceres (dwarf planet),-0.554470,-0.560586,-0.659323,solar_system
+test_web,solar_system:Ceres (dwarf planet),-0.554449,-0.560586,-0.659323,solar_system
 test_web,solar_system:Charon (moon),-0.521578,-0.497100,-0.599974,solar_system
 test_web,solar_system:Deimos (moon),-0.544352,-0.568473,-0.639904,solar_system
 test_web,solar_system:Earth,-0.707382,-1.191984,-1.261770,solar_system
@@ -485,7 +485,7 @@ test_web,solar_system:Phobos (moon),-0.458956,-0.457838,-0.537489,solar_system
 test_web,solar_system:Pluto,-0.716330,-0.788007,-0.852447,solar_system
 test_web,solar_system:Saturn,-0.993105,-1.033701,-1.031724,solar_system
 test_web,solar_system:Sun,-0.989582,-1.072668,-1.114371,solar_system
-test_web,solar_system:Titan (moon),-0.632176,-0.650854,-0.748695,solar_system
+test_web,solar_system:Titan (moon),-0.630420,-0.650854,-0.748695,solar_system
 test_web,solar_system:Triton (moon),-0.501793,-0.496417,-0.562265,solar_system
 test_web,solar_system:Uranus,-0.825370,-0.888980,-0.864792,solar_system
 test_web,solar_system:Venus,-0.821002,-0.893793,-0.958914,solar_system
@@ -509,7 +509,7 @@ test_web,sport:Handball,-0.554622,-0.648479,-0.582541,sport
 test_web,sport:Ice hockey,-0.514088,-0.596909,-0.567386,sport
 test_web,sport:Judo,-0.848167,-0.888428,-0.976228,sport
 test_web,sport:Karate,-0.984296,-1.123339,-1.201505,sport
-test_web,sport:Rowing (sport),-0.543759,-0.623781,-0.643395,sport
+test_web,sport:Rowing (sport),-0.543756,-0.623781,-0.643395,sport
 test_web,sport:Rugby union,-0.402726,-0.430659,-0.422450,sport
 test_web,sport:Sailing,-0.596573,-0.681966,-0.690252,sport
 test_web,sport:Skateboarding,-0.547675,-0.610917,-0.618123,sport
@@ -539,7 +539,7 @@ test_web,us_state:Illinois,-1.062798,-1.172787,-1.205380,us_state
 test_web,us_state:Indiana,-0.904185,-0.954085,-0.986133,us_state
 test_web,us_state:Iowa,-0.691805,-0.763542,-0.790778,us_state
 test_web,us_state:Kansas,-0.803691,-0.835222,-0.866870,us_state
-test_web,us_state:Kentucky,-0.866360,-0.891823,-0.962939,us_state
+test_web,us_state:Kentucky,-0.865992,-0.891823,-0.962939,us_state
 test_web,us_state:Louisiana,-0.937978,-1.026808,-1.067258,us_state
 test_web,us_state:Maine,-0.926124,-0.955283,-1.023599,us_state
 test_web,us_state:Maryland,-0.330793,-0.539386,-0.559966,us_state
@@ -567,9 +567,9 @@ test_web,us_state:South Dakota,-0.667366,-0.720438,-0.753281,us_state
 test_web,us_state:Tennessee,-0.992104,-1.040148,-1.048632,us_state
 test_web,us_state:Texas,-1.014410,-1.085305,-1.145818,us_state
 test_web,us_state:Utah,-0.822810,-0.830428,-0.882981,us_state
-test_web,us_state:Vermont,-0.918051,-0.935168,-0.989691,us_state
+test_web,us_state:Vermont,-0.918059,-0.935168,-0.989691,us_state
 test_web,us_state:Virginia,-0.948454,-1.005681,-1.030594,us_state
 test_web,us_state:Washington (state),-1.012636,-1.095292,-1.116851,us_state
-test_web,us_state:West Virginia,-0.849025,-0.897345,-0.974538,us_state
+test_web,us_state:West Virginia,-0.849886,-0.897345,-0.974538,us_state
 test_web,us_state:Wisconsin,-0.832963,-0.882082,-0.911000,us_state
 test_web,us_state:Wyoming,-0.948331,-1.005038,-1.030933,us_state
