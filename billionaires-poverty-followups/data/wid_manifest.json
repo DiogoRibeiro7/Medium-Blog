@@ -1,6 +1,6 @@
 {
   "source_url": "https://wid.world/bulk_download/wid_all_data.zip",
-  "processed_utc": "2026-11-11T10:29:02+00:00",
+  "processed_utc": "2026-11-11T10:32:28+00:00",
   "archive_bytes": 902718230,
   "archive_sha256": "24942a5c24973aba855364f134519563cdc2800cb6fe809d7ca6db430a261a1c",
   "n_data_members": 291,
@@ -109,8 +109,16 @@
     "method",
     "avg_quality"
   ],
-  "wid_series_sha256": "c9f0ca839923139f47cce211ccd5193c650d076f41c686f16322307b4562eb96",
+  "series_columns": [
+    "country",
+    "variable",
+    "percentile",
+    "year",
+    "value",
+    "data_quality"
+  ],
+  "wid_series_sha256": "0be7f6fa804eb8f6d44bc457febd04b26cbeab479760d5f0b1146978338c2a0d",
   "wid_metadata_sha256": "2fc86e87605a6a86186290ef8c8f23b1efe1b362424547efbd33ece6e6d5c36c",
-  "retrieved_utc": "2026-11-11T10:26:07Z",
+  "retrieved_utc": "2026-11-11T10:30:13Z",
   "last_modified": "Fri, 06 Nov 2026 17:20:08 GMT"
 }
