@@ -482,6 +482,16 @@ def distorted_premium(res, gam, level=1.0):
     return level * E * s * C.sum() / (E * s).sum()
 
 
+def under_bound(value: float, bound: float) -> str:
+    """State a machine-precision check as a bound.
+
+    The last digits of a gap near 1e-14 change with the CPU's BLAS code path, so
+    printing them makes the committed output irreproducible across runners. A gap
+    at or above the bound is printed in full, so a real regression still shows.
+    """
+    return f"below {bound:.0e}" if value < bound else f"{value:.1e} (NOT below {bound:.0e})"
+
+
 def report_swedish(res: dict) -> None:
     E, C, P, codes = res["E"], res["C"], res["P"], res["codes"]
     header("5. Sweden 1977: the marginal-totals tariff is the Poisson GLM")
@@ -490,10 +500,10 @@ def report_swedish(res: dict) -> None:
     print(f"Claim frequency: {C.sum() / E.sum():.4f} per policy-year; mean payment per claim: {P.sum() / C.sum():,.0f} kronor")
     print(f"Cells with no claims: {(C == 0).sum()}; median exposure per cell: {np.median(E):.1f} policy-years")
     print(f"Marginal-totals iteration (Bailey 1963, Jung 1968), four factors: converged in {res['iterations']} sweeps.")
-    print(f"Largest relative gap to the Poisson GLM fitted by IRLS: {np.max(np.abs(res['mu'] / res['mu_irls'] - 1)):.1e}")
+    print(f"Largest relative gap to the Poisson GLM fitted by IRLS: {under_bound(np.max(np.abs(res['mu'] / res['mu_irls'] - 1)), 1e-13)}")
     for f in FACTORS:
         b = balance_by(codes[f], res["mu"], C)
-        print(f"  {f:<10} relativities {np.round(res['rel'][f], 3)}  balance max |1 - ratio| {np.max(np.abs(b - 1)):.1e}")
+        print(f"  {f:<10} relativities {np.round(res['rel'][f], 3)}  balance max |1 - ratio| {under_bound(np.max(np.abs(b - 1)), 1e-14)}")
     print(f"  base frequency (Kilometres 1, Zone 1, Bonus 1, Make 1): {res['base']:.4f}")
     print(f"Range of the four-factor frequency tariff: {res['rate'].min():.4f} to {res['rate'].max():.4f} "
           f"(ratio {res['rate'].max() / res['rate'].min():.1f})")

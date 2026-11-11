@@ -1,0 +1,240 @@
+Part 4: two insurers pricing the same freMTPL2 portfolio.
+
+==============================================================================
+1. The tariffs (test sample)
+==============================================================================
+Same split and models as Part 3: training 406,794 policies, calibration 135,598, test 135,599.
+tariff         Gini  premium Gini  balance  P90/P10 of rate
+GLM-A        0.2767        0.2689   1.0073             3.19
+GLM-B        0.2924        0.2949   1.0059             3.59
+GBM          0.3218        0.3215   1.0050             3.79
+GBM^0.5      0.3218        0.1539   1.0068             1.95
+GBM^0.8      0.3218        0.2531   1.0070             2.90
+GBM^1.25     0.3218        0.4084   1.0084             5.28
+GBM^2        0.3218        0.6576   1.0159            14.34
+GBM x0.97    0.3218        0.3215   0.9749             3.79
+GBM x1.03    0.3218        0.3215   1.0352             3.79
+(Every power and level of the boosted rate ranks the policies exactly as the boosted model does.)
+
+==============================================================================
+2. Double lift charts and the ordered Lorenz curve with relativities (test sample)
+==============================================================================
+GLM-A against GLM-B: deciles of GLM-A / GLM-B (equal exposure); actual, GLM-A and GLM-B relative to their averages
+   1  ratio 0.504-0.790  claims   919  actual 1.745  GLM-A 1.132  GLM-B 1.652
+   2  ratio 0.790-0.898  claims   582  actual 1.105  GLM-A 1.029  GLM-B 1.227
+   3  ratio 0.898-1.049  claims   684  actual 1.299  GLM-A 1.249  GLM-B 1.290
+   4  ratio 1.049-1.070  claims   329  actual 0.625  GLM-A 0.772  GLM-B 0.728
+   5  ratio 1.070-1.081  claims   352  actual 0.668  GLM-A 0.803  GLM-B 0.747
+   6  ratio 1.081-1.092  claims   377  actual 0.716  GLM-A 0.813  GLM-B 0.749
+   7  ratio 1.092-1.103  claims   364  actual 0.691  GLM-A 0.884  GLM-B 0.807
+   8  ratio 1.103-1.122  claims   516  actual 0.980  GLM-A 1.001  GLM-B 0.901
+   9  ratio 1.122-1.191  claims   525  actual 0.997  GLM-A 1.030  GLM-B 0.893
+  10  ratio 1.191-2.021  claims   619  actual 1.175  GLM-A 1.288  GLM-B 1.006
+  mean absolute percent error over the deciles: GLM-A 14.6, GLM-B 10.0
+GBM^2 against GLM-B: deciles of GBM^2 / GLM-B (equal exposure); actual, GBM^2 and GLM-B relative to their averages
+   1  ratio 0.021-0.233  claims   254  actual 0.482  GBM^2 0.108  GLM-B 0.605
+   2  ratio 0.233-0.301  claims   267  actual 0.507  GBM^2 0.180  GLM-B 0.680
+   3  ratio 0.301-0.369  claims   324  actual 0.615  GBM^2 0.251  GLM-B 0.756
+   4  ratio 0.369-0.437  claims   331  actual 0.628  GBM^2 0.322  GLM-B 0.808
+   5  ratio 0.437-0.505  claims   439  actual 0.834  GBM^2 0.407  GLM-B 0.872
+   6  ratio 0.505-0.586  claims   472  actual 0.896  GBM^2 0.501  GLM-B 0.930
+   7  ratio 0.586-0.684  claims   519  actual 0.985  GBM^2 0.612  GLM-B 0.976
+   8  ratio 0.684-0.839  claims   519  actual 0.985  GBM^2 0.794  GLM-B 1.061
+   9  ratio 0.839-1.200  claims   684  actual 1.299  GBM^2 1.252  GLM-B 1.270
+  10  ratio 1.200-29.739  claims  1458  actual 2.768  GBM^2 5.574  GLM-B 2.043
+  mean absolute percent error over the deciles: GBM^2 50.8, GLM-B 15.6
+  base GLM-A, competitor GLM-B at level 0.97: competitor takes 71.7% of the base premium and 64.6% of the claims; base keeps loss ratio 1.2386 (from the curve 1.2386)
+  base GLM-A, competitor GLM-B at level 1.00: competitor takes 70.0% of the base premium and 63.0% of the claims; base keeps loss ratio 1.2228 (from the curve 1.2228)
+  base GLM-A, competitor GLM-B at level 1.03: competitor takes 68.2% of the base premium and 61.0% of the claims; base keeps loss ratio 1.2178 (from the curve 1.2178)
+  relativity Gini, base GLM-A, score GLM-B: 0.0784
+  base GLM-B, competitor GLM-A at level 0.97: competitor takes 39.6% of the base premium and 39.1% of the claims; base keeps loss ratio 1.0018 (from the curve 1.0018)
+  base GLM-B, competitor GLM-A at level 1.00: competitor takes 37.7% of the base premium and 37.0% of the claims; base keeps loss ratio 1.0059 (from the curve 1.0059)
+  base GLM-B, competitor GLM-A at level 1.03: competitor takes 36.1% of the base premium and 35.4% of the claims; base keeps loss ratio 1.0044 (from the curve 1.0044)
+  relativity Gini, base GLM-B, score GLM-A: 0.0201
+  base GLM-B, competitor GBM at level 0.97: competitor takes 61.7% of the base premium and 51.2% of the claims; base keeps loss ratio 1.2669 (from the curve 1.2669)
+  base GLM-B, competitor GBM at level 1.00: competitor takes 57.2% of the base premium and 47.0% of the claims; base keeps loss ratio 1.2322 (from the curve 1.2322)
+  base GLM-B, competitor GBM at level 1.03: competitor takes 52.7% of the base premium and 42.2% of the claims; base keeps loss ratio 1.2143 (from the curve 1.2143)
+  relativity Gini, base GLM-B, score GBM: 0.1542
+  base GBM, competitor GLM-B at level 0.97: competitor takes 58.9% of the base premium and 57.9% of the claims; base keeps loss ratio 1.0176 (from the curve 1.0176)
+  base GBM, competitor GLM-B at level 1.00: competitor takes 54.2% of the base premium and 53.0% of the claims; base keeps loss ratio 1.0212 (from the curve 1.0212)
+  base GBM, competitor GLM-B at level 1.03: competitor takes 49.8% of the base premium and 48.9% of the claims; base keeps loss ratio 1.0119 (from the curve 1.0119)
+  relativity Gini, base GBM, score GLM-B: 0.0095
+
+==============================================================================
+3. The relativity Gini matrix (rows: base premium; columns: competing score) and the mini-max choice
+==============================================================================
+                 GLM-A      GLM-B        GBM    GBM^0.5      GBM^2  GBM x0.97      max
+GLM-A           0.0000     0.0784     0.1704     0.0951     0.1307     0.1704   0.1704
+GLM-B           0.0201     0.0000     0.1542     0.0709     0.1100     0.1542   0.1542
+GBM             0.0065     0.0095     0.0000    -0.0054     0.0054    -0.0000   0.0095
+GBM^0.5         0.0704     0.1121     0.1779     0.0000     0.1779     0.1779   0.1779
+GBM^2           0.3791     0.3821     0.3977     0.3977     0.0000     0.3977   0.3977
+GBM x0.97       0.0065     0.0095    -0.0000    -0.0054     0.0054     0.0000   0.0095
+mini-max choice (smallest maximal Gini): GBM
+Row GBM x0.97 equals row GBM: the relativity Gini does not change when a premium is multiplied by a constant.
+
+==============================================================================
+4. One-period markets, cheapest quote wins (test sample)
+==============================================================================
+         A vs B          share A    LR A    LR B  market LR  Gini A  Gini B  rel Gini A|B  rel Gini B|A
+     GLM-A vs GLM-B        0.265   1.223   1.006      1.077  0.2767  0.2924        0.0784        0.0201
+     GLM-B vs GBM          0.447   1.232   1.021      1.123  0.2924  0.3218        0.1542        0.0095
+     GLM-A vs GBM          0.384   1.295   1.010      1.134  0.2767  0.3218        0.1704        0.0065
+   GBM^0.5 vs GLM-B        0.292   1.236   1.077      1.142  0.3218  0.2924        0.1121        0.0709
+  GBM^1.25 vs GLM-B        0.674   1.109   1.253      1.174  0.3218  0.2924        0.0760        0.1461
+     GBM^2 vs GLM-B        0.858   1.715   1.282      1.539  0.3218  0.2924        0.3821        0.1100
+ GBM x0.97 vs GLM-B        0.600   1.044   1.267      1.142  0.3218  0.2924        0.0095        0.1542
+ GBM x1.03 vs GLM-B        0.505   0.987   1.214      1.107  0.3218  0.2924        0.0095        0.1542
+  GBM^1.25 vs GBM          0.818   1.095   1.031      1.068  0.3218  0.3218        0.0910        0.0054
+   GBM^0.8 vs GBM          0.218   1.153   0.977      1.049  0.3218  0.3218        0.0779       -0.0054
+       GBM vs GBM          0.500   0.995   0.995      0.995  0.3218  0.3218        0.0000        0.0000
+(share A: share of exposure won by A; rel Gini A|B: base A, competing score B, i.e. how much B can take from A.)
+Of 10 pairs, the insurer with the higher loss ratio is the one with the larger relativity Gini against it in 10; the one with the lower stand-alone Gini in 6 of the 8 pairs whose Gini indices differ (2 pairs have identical Gini indices).
+
+==============================================================================
+5. Where the business goes: GLM-A against GLM-B by bonus-malus band (test sample, cheapest wins)
+==============================================================================
+  50       exposure share won by GLM-A 0.000; loss ratio of GLM-A's book 0.000, of GLM-B's book 0.975; claims 2273
+  51-60    exposure share won by GLM-A 0.976; loss ratio of GLM-A's book 1.240, of GLM-B's book 1.651; claims 736
+  61-70    exposure share won by GLM-A 1.000; loss ratio of GLM-A's book 1.460, of GLM-B's book nan; claims 623
+  71-80    exposure share won by GLM-A 0.559; loss ratio of GLM-A's book 1.145, of GLM-B's book 1.090; claims 582
+  81-100   exposure share won by GLM-A 0.162; loss ratio of GLM-A's book 0.802, of GLM-B's book 1.048; claims 800
+  101-125  exposure share won by GLM-A 0.716; loss ratio of GLM-A's book 1.117, of GLM-B's book 1.329; claims 216
+  126+     exposure share won by GLM-A 0.060; loss ratio of GLM-A's book 0.402, of GLM-B's book 0.970; claims 37
+  GLM-A's share of exposure 0.265, of claims 0.370
+
+==============================================================================
+6. Price sensitivity: shares and loss ratios as beta varies (test sample)
+==============================================================================
+      GLM-A vs GLM-B  beta    0: share A 0.500, LR A 0.993, LR B 0.994, market 0.993
+      GLM-A vs GLM-B  beta    2: share A 0.489, LR A 1.029, LR B 0.995, market 1.012
+      GLM-A vs GLM-B  beta    5: share A 0.466, LR A 1.068, LR B 1.000, market 1.033
+      GLM-A vs GLM-B  beta   10: share A 0.420, LR A 1.106, LR B 1.007, market 1.052
+      GLM-A vs GLM-B  beta   20: share A 0.347, LR A 1.157, LR B 1.008, market 1.067
+      GLM-A vs GLM-B  beta  inf: share A 0.265, LR A 1.223, LR B 1.006, market 1.077
+      GLM-B vs GBM    beta    0: share A 0.500, LR A 0.994, LR B 0.995, market 0.995
+      GLM-B vs GBM    beta    2: share A 0.486, LR A 1.078, LR B 0.998, market 1.038
+      GLM-B vs GBM    beta    5: share A 0.471, LR A 1.151, LR B 1.004, market 1.077
+      GLM-B vs GBM    beta   10: share A 0.459, LR A 1.199, LR B 1.011, market 1.102
+      GLM-B vs GBM    beta   20: share A 0.452, LR A 1.224, LR B 1.015, market 1.116
+      GLM-B vs GBM    beta  inf: share A 0.447, LR A 1.232, LR B 1.021, market 1.123
+      GBM^2 vs GLM-B  beta    0: share A 0.500, LR A 0.984, LR B 0.994, market 0.989
+      GBM^2 vs GLM-B  beta    2: share A 0.734, LR A 1.527, LR B 1.152, market 1.347
+      GBM^2 vs GLM-B  beta    5: share A 0.823, LR A 1.679, LR B 1.236, market 1.487
+      GBM^2 vs GLM-B  beta   10: share A 0.849, LR A 1.708, LR B 1.266, market 1.525
+      GBM^2 vs GLM-B  beta   20: share A 0.856, LR A 1.714, LR B 1.276, market 1.536
+      GBM^2 vs GLM-B  beta  inf: share A 0.858, LR A 1.715, LR B 1.282, market 1.539
+  GBM x0.97 vs GLM-B  beta    0: share A 0.500, LR A 1.026, LR B 0.994, market 1.010
+  GBM x0.97 vs GLM-B  beta    2: share A 0.528, LR A 1.028, LR B 1.081, market 1.054
+  GBM x0.97 vs GLM-B  beta    5: share A 0.558, LR A 1.034, LR B 1.162, market 1.094
+  GBM x0.97 vs GLM-B  beta   10: share A 0.581, LR A 1.039, LR B 1.219, market 1.121
+  GBM x0.97 vs GLM-B  beta   20: share A 0.594, LR A 1.043, LR B 1.250, market 1.135
+  GBM x0.97 vs GLM-B  beta  inf: share A 0.600, LR A 1.044, LR B 1.267, market 1.142
+
+==============================================================================
+7. Twins: the same specification fitted on two random halves of the training sample
+==============================================================================
+  GLM-B: Gini 0.2916 and 0.2903; balance 1.0161 and 0.9955; ratio of the twins' rates: 10th percentile 0.899, median 1.022, 90th 1.164
+    beta    0: share A 0.500, LR A 0.984, LR B 1.005, market 0.994, premium collected / claims 1.006
+    beta    2: share A 0.489, LR A 0.988, LR B 1.011, market 1.000, premium collected / claims 1.000
+    beta    5: share A 0.473, LR A 0.994, LR B 1.019, market 1.007, premium collected / claims 0.993
+    beta   10: share A 0.453, LR A 1.002, LR B 1.029, market 1.017, premium collected / claims 0.984
+    beta   20: share A 0.430, LR A 1.012, LR B 1.038, market 1.027, premium collected / claims 0.974
+    beta  inf: share A 0.404, LR A 1.034, LR B 1.039, market 1.037, premium collected / claims 0.965
+  GBM: Gini 0.3170 and 0.3069; balance 1.0198 and 0.9980; ratio of the twins' rates: 10th percentile 0.689, median 1.017, 90th 1.533
+    beta    0: share A 0.500, LR A 0.981, LR B 1.002, market 0.991, premium collected / claims 1.009
+    beta    2: share A 0.492, LR A 1.026, LR B 1.064, market 1.045, premium collected / claims 0.957
+    beta    5: share A 0.486, LR A 1.066, LR B 1.117, market 1.092, premium collected / claims 0.916
+    beta   10: share A 0.484, LR A 1.091, LR B 1.148, market 1.120, premium collected / claims 0.893
+    beta   20: share A 0.484, LR A 1.102, LR B 1.164, market 1.134, premium collected / claims 0.882
+    beta  inf: share A 0.484, LR A 1.105, LR B 1.173, market 1.140, premium collected / claims 0.877
+  The winner's curse in one formula: if the two quotes for a policy are unbiased with a relative difference whose logarithm is roughly normal with standard deviation s, the cheaper quote is on average below their mean by about s / sqrt(2 pi), so under cheapest-wins the market collects about 1 - 0.399 s of the claims.
+    twins GLM-B     s = 0.104; formula 1 - 0.399 s = 0.959; premium collected / claims 0.965
+    twins GBM       s = 0.326; formula 1 - 0.399 s = 0.870; premium collected / claims 0.877
+    GLM-A vs GLM-B  s = 0.169; formula 1 - 0.399 s = 0.933; premium collected / claims 0.929
+    GLM-B vs GBM    s = 0.273; formula 1 - 0.399 s = 0.891; premium collected / claims 0.890
+
+==============================================================================
+8. Rate reviews on the calibration sample (up to 40 rounds), final levels applied to the test sample
+==============================================================================
+      GLM-A vs GLM-B  beta  inf: rounds 5; round 1 share A 0.265 LR A 1.203 LR B 1.013; final levels A 2.034 B 0.982, share A 0.000; one side below 1% share from round 5; test: share A 0.000, market LR 1.013
+      GLM-B vs GBM    beta  inf: rounds 5; round 1 share A 0.449 LR A 1.243 LR B 1.009; final levels A 3.262 B 0.990, share A 0.001; one side below 1% share from round 4; test: share A 0.001, market LR 1.005
+   GBM^1.25 vs GBM    beta  inf: rounds 7; round 1 share A 0.818 LR A 1.088 LR B 1.046; final levels A 1.998 B 0.996, share A 0.000; one side below 1% share from round 6; test: share A 0.000, market LR 0.999
+        GBM vs GBM    beta  inf: rounds 40; round 1 share A 0.500 LR A 0.997 LR B 0.997; final levels A 0.997 B 0.997, share A 0.500; one side below 1% share from round None; test: share A 0.500, market LR 0.998
+  twins GLM-B  beta  inf: rounds 40; final levels A 0.991 B 1.125, share A 0.852; test: share A 0.852, LR A 1.003, LR B 0.992, market LR 1.001, average level weighted by share 1.011
+  twins GBM    beta  inf: rounds 40; final levels A 1.008 B 1.543, share A 0.905; test: share A 0.905, LR A 1.005, LR B 0.948, market LR 0.998, average level weighted by share 1.059
+      GLM-A vs GLM-B  beta   10: rounds 40; round 1 share A 0.420 LR A 1.095 LR B 1.013; final levels A 1.363 B 0.992, share A 0.095; one side below 1% share from round None; test: share A 0.095, market LR 1.002
+      GLM-B vs GBM    beta   10: rounds 9; round 1 share A 0.458 LR A 1.204 LR B 1.005; final levels A 3.492 B 0.995, share A 0.001; one side below 1% share from round 7; test: share A 0.001, market LR 1.000
+   GBM^1.25 vs GBM    beta   10: rounds 40; round 1 share A 0.696 LR A 1.079 LR B 1.014; final levels A 1.106 B 1.004, share A 0.523; one side below 1% share from round None; test: share A 0.524, market LR 0.998
+        GBM vs GBM    beta   10: rounds 40; round 1 share A 0.500 LR A 0.997 LR B 0.997; final levels A 0.997 B 0.997, share A 0.500; one side below 1% share from round None; test: share A 0.500, market LR 0.998
+  twins GLM-B  beta   10: rounds 40; final levels A 0.997 B 1.034, share A 0.528; test: share A 0.528, LR A 1.003, LR B 0.999, market LR 1.001, average level weighted by share 1.014
+  twins GBM    beta   10: rounds 40; final levels A 1.037 B 1.263, share A 0.701; test: share A 0.701, LR A 1.010, LR B 0.978, market LR 0.999, average level weighted by share 1.105
+
+==============================================================================
+9. Same ranking, different dispersion: powers of the boosted rate (Gini 0.3218) against GLM-B (0.2924)
+==============================================================================
+  power 0.5   relativity Gini with base GBM^0.5 and score GLM-B 0.1121; base GLM-B and score GBM^0.5 0.0709
+  power 0.5   premium Gini 0.1539 beta  inf: one period share 0.292, LR 1.236 against GLM-B 1.077; after review: levels 1.435 and 1.044, test share 0.085
+  power 0.5   premium Gini 0.1539 beta   10: one period share 0.344, LR 1.178 against GLM-B 1.077; after review: levels 1.275 and 1.058, test share 0.180
+  power 0.7   relativity Gini with base GBM^0.7 and score GLM-B 0.0340; base GLM-B and score GBM^0.7 0.1191
+  power 0.7   premium Gini 0.2195 beta  inf: one period share 0.361, LR 1.083 against GLM-B 1.140; after review: levels 0.992 and 3.520, test share 1.000
+  power 0.7   premium Gini 0.2195 beta   10: one period share 0.400, LR 1.047 against GLM-B 1.135; after review: levels 1.003 and 1.285, test share 0.732
+  power 0.8   relativity Gini with base GBM^0.8 and score GLM-B 0.0098; base GLM-B and score GBM^0.8 0.1384
+  power 0.8   premium Gini 0.2531 beta  inf: one period share 0.422, LR 1.023 against GLM-B 1.187; after review: levels 0.986 and 2.755, test share 1.000
+  power 0.8   premium Gini 0.2531 beta   10: one period share 0.442, LR 1.012 against GLM-B 1.161; after review: levels 0.992 and 3.020, test share 0.999
+  power 0.9   relativity Gini with base GBM^0.9 and score GLM-B 0.0017; base GLM-B and score GBM^0.9 0.1501
+  power 0.9   premium Gini 0.2871 beta  inf: one period share 0.487, LR 1.001 against GLM-B 1.222; after review: levels 0.991 and 3.185, test share 1.000
+  power 0.9   premium Gini 0.2871 beta   10: one period share 0.489, LR 1.000 against GLM-B 1.182; after review: levels 0.991 and 3.284, test share 0.999
+  power 1     relativity Gini with base GBM^1 and score GLM-B 0.0095; base GLM-B and score GBM^1 0.1542
+  power 1     premium Gini 0.3215 beta  inf: one period share 0.553, LR 1.021 against GLM-B 1.232; after review: levels 0.990 and 3.262, test share 0.999
+  power 1     premium Gini 0.3215 beta   10: one period share 0.541, LR 1.011 against GLM-B 1.199; after review: levels 0.995 and 3.492, test share 0.999
+  power 1.1   relativity Gini with base GBM^1.1 and score GLM-B 0.0299; base GLM-B and score GBM^1.1 0.1531
+  power 1.1   premium Gini 0.3561 beta  inf: one period share 0.602, LR 1.041 against GLM-B 1.246; after review: levels 0.994 and 4.361, test share 1.000
+  power 1.1   premium Gini 0.3561 beta   10: one period share 0.586, LR 1.035 against GLM-B 1.208; after review: levels 0.994 and 3.828, test share 0.999
+  power 1.25  relativity Gini with base GBM^1.25 and score GLM-B 0.0760; base GLM-B and score GBM^1.25 0.1461
+  power 1.25  premium Gini 0.4084 beta  inf: one period share 0.674, LR 1.109 against GLM-B 1.253; after review: levels 0.997 and 3.617, test share 0.998
+  power 1.25  premium Gini 0.4084 beta   10: one period share 0.652, LR 1.099 against GLM-B 1.219; after review: levels 1.008 and 2.204, test share 0.982
+  power 1.5   relativity Gini with base GBM^1.5 and score GLM-B 0.1728; base GLM-B and score GBM^1.5 0.1313
+  power 1.5   premium Gini 0.4950 beta  inf: one period share 0.765, LR 1.270 against GLM-B 1.248; after review: levels 1.255 and 1.263, test share 0.770
+  power 1.5   premium Gini 0.4950 beta   10: one period share 0.741, LR 1.252 against GLM-B 1.233; after review: levels 1.245 and 1.234, test share 0.734
+  power 1.75  relativity Gini with base GBM^1.75 and score GLM-B 0.2777; base GLM-B and score GBM^1.75 0.1191
+  power 1.75  premium Gini 0.5790 beta  inf: one period share 0.822, LR 1.457 against GLM-B 1.271; after review: levels 1.799 and 1.106, test share 0.483
+  power 1.75  premium Gini 0.5790 beta   10: one period share 0.805, LR 1.451 against GLM-B 1.248; after review: levels 1.705 and 1.114, test share 0.531
+  power 2     relativity Gini with base GBM^2 and score GLM-B 0.3821; base GLM-B and score GBM^2 0.1100
+  power 2     premium Gini 0.6576 beta  inf: one period share 0.858, LR 1.715 against GLM-B 1.282; after review: levels 2.996 and 1.043, test share 0.269
+  power 2     premium Gini 0.6576 beta   10: one period share 0.849, LR 1.708 against GLM-B 1.266; after review: levels 2.731 and 1.050, test share 0.332
+
+==============================================================================
+10. Uncertainty: paired bootstrap of the test sample (500 resamples) and 10 refitted splits
+==============================================================================
+      GLM-A vs GLM-B : LR A sd 0.029, LR B sd 0.018, LR A - LR B +0.217 (sd 0.034, positive in 1.000); LR A above 1 in 1.000, LR B above 1 in 0.640
+      GLM-B vs GBM   : LR A sd 0.023, LR B sd 0.021, LR A - LR B +0.211 (sd 0.032, positive in 1.000); LR A above 1 in 1.000, LR B above 1 in 0.830
+    GBM^0.5 vs GLM-B : LR A sd 0.027, LR B sd 0.020, LR A - LR B +0.159 (sd 0.035, positive in 1.000); LR A above 1 in 1.000, LR B above 1 in 1.000
+   GBM^1.25 vs GLM-B : LR A sd 0.021, LR B sd 0.025, LR A - LR B -0.144 (sd 0.033, positive in 0.000); LR A above 1 in 1.000, LR B above 1 in 1.000
+      GBM^2 vs GLM-B : LR A sd 0.029, LR B sd 0.031, LR A - LR B +0.434 (sd 0.043, positive in 1.000); LR A above 1 in 1.000, LR B above 1 in 1.000
+   GBM^1.25 vs GBM   : LR A sd 0.020, LR B sd 0.023, LR A - LR B +0.064 (sd 0.031, positive in 0.976); LR A above 1 in 1.000, LR B above 1 in 0.914
+  Capped losses: average capped cost per claim in the training sample 1,855 euros; test balance of each tariff in money: GLM-A 0.9468, GLM-B 0.9455, GBM 0.9447
+        GLM-A vs GLM-B : money LR A 1.274, LR B 1.083, difference +0.191 (sd 0.120, positive in 0.964)
+        GLM-B vs GBM   : money LR A 1.410, LR B 0.994, difference +0.416 (sd 0.118, positive in 1.000)
+      GBM^0.5 vs GLM-B : money LR A 1.491, LR B 1.024, difference +0.467 (sd 0.130, positive in 1.000)
+     GBM^1.25 vs GLM-B : money LR A 1.116, LR B 1.409, difference -0.292 (sd 0.123, positive in 0.006)
+        GBM^2 vs GLM-B : money LR A 1.739, LR B 1.488, difference +0.251 (sd 0.166, positive in 0.950)
+     GBM^1.25 vs GBM   : money LR A 1.094, LR B 1.194, difference -0.100 (sd 0.114, positive in 0.182)
+
+Refitted splits (cheapest wins; one-period market on each test sample; rate review on each calibration sample):
+  split  1: GLM-A vs GLM-B share 0.269 LR 1.239/0.994 end 0.000; GLM-B vs GBM share 0.451 LR 1.242/1.010 end 0.001; GBM^0.5 vs GLM-B share 0.300 LR 1.255/1.066 end 0.098; GBM^1.25 vs GLM-B share 0.688 LR 1.120/1.249 end 0.977; GBM^2 vs GLM-B share 0.867 LR 1.713/1.297 end 0.386; GBM^1.25 vs GBM share 0.830 LR 1.090/1.038 end 0.354
+  split  2: GLM-A vs GLM-B share 0.267 LR 1.221/1.004 end 0.000; GLM-B vs GBM share 0.448 LR 1.236/1.030 end 0.000; GBM^0.5 vs GLM-B share 0.299 LR 1.227/1.088 end 0.102; GBM^1.25 vs GLM-B share 0.687 LR 1.105/1.284 end 0.974; GBM^2 vs GLM-B share 0.866 LR 1.756/1.291 end 0.365; GBM^1.25 vs GBM share 0.825 LR 1.114/1.010 end 0.174
+  split  3: GLM-A vs GLM-B share 0.272 LR 1.196/1.027 end 0.000; GLM-B vs GBM share 0.434 LR 1.259/1.034 end 0.001; GBM^0.5 vs GLM-B share 0.295 LR 1.220/1.110 end 0.157; GBM^1.25 vs GLM-B share 0.687 LR 1.126/1.275 end 0.970; GBM^2 vs GLM-B share 0.869 LR 1.796/1.248 end 0.154; GBM^1.25 vs GBM share 0.825 LR 1.141/1.003 end 1.000
+  split  4: GLM-A vs GLM-B share 0.266 LR 1.221/1.012 end 0.000; GLM-B vs GBM share 0.450 LR 1.250/1.023 end 0.000; GBM^0.5 vs GLM-B share 0.293 LR 1.218/1.106 end 0.101; GBM^1.25 vs GLM-B share 0.679 LR 1.129/1.270 end 0.980; GBM^2 vs GLM-B share 0.865 LR 1.771/1.303 end 0.293; GBM^1.25 vs GBM share 0.832 LR 1.120/1.012 end 0.000
+  split  5: GLM-A vs GLM-B share 0.257 LR 1.226/1.012 end 0.000; GLM-B vs GBM share 0.424 LR 1.247/1.049 end 0.001; GBM^0.5 vs GLM-B share 0.296 LR 1.199/1.111 end 0.144; GBM^1.25 vs GLM-B share 0.693 LR 1.165/1.254 end 0.900; GBM^2 vs GLM-B share 0.864 LR 1.873/1.275 end 0.264; GBM^1.25 vs GBM share 0.826 LR 1.159/0.967 end 0.000
+  split  6: GLM-A vs GLM-B share 0.261 LR 1.241/0.976 end 0.000; GLM-B vs GBM share 0.457 LR 1.231/0.999 end 0.001; GBM^0.5 vs GLM-B share 0.300 LR 1.260/1.044 end 0.130; GBM^1.25 vs GLM-B share 0.680 LR 1.085/1.259 end 0.973; GBM^2 vs GLM-B share 0.862 LR 1.676/1.286 end 0.466; GBM^1.25 vs GBM share 0.824 LR 1.078/1.029 end 0.718
+  split  7: GLM-A vs GLM-B share 0.267 LR 1.254/1.052 end 0.000; GLM-B vs GBM share 0.449 LR 1.287/1.057 end 0.000; GBM^0.5 vs GLM-B share 0.304 LR 1.304/1.096 end 0.058; GBM^1.25 vs GLM-B share 0.677 LR 1.157/1.319 end 0.980; GBM^2 vs GLM-B share 0.857 LR 1.811/1.347 end 0.214; GBM^1.25 vs GBM share 0.830 LR 1.149/1.052 end 0.050
+  split  8: GLM-A vs GLM-B share 0.277 LR 1.223/1.043 end 0.000; GLM-B vs GBM share 0.433 LR 1.273/1.059 end 0.001; GBM^0.5 vs GLM-B share 0.298 LR 1.244/1.126 end 0.135; GBM^1.25 vs GLM-B share 0.692 LR 1.165/1.294 end 0.925; GBM^2 vs GLM-B share 0.868 LR 1.852/1.319 end 0.312; GBM^1.25 vs GBM share 0.826 LR 1.164/1.014 end 0.001
+  split  9: GLM-A vs GLM-B share 0.267 LR 1.245/1.059 end 0.000; GLM-B vs GBM share 0.432 LR 1.279/1.080 end 0.006; GBM^0.5 vs GLM-B share 0.295 LR 1.282/1.122 end 0.107; GBM^1.25 vs GLM-B share 0.686 LR 1.188/1.282 end 0.878; GBM^2 vs GLM-B share 0.865 LR 1.854/1.303 end 0.158; GBM^1.25 vs GBM share 0.819 LR 1.172/1.034 end 0.000
+  split 10: GLM-A vs GLM-B share 0.273 LR 1.212/1.012 end 0.000; GLM-B vs GBM share 0.446 LR 1.246/1.019 end 0.001; GBM^0.5 vs GLM-B share 0.296 LR 1.205/1.106 end 0.110; GBM^1.25 vs GLM-B share 0.692 LR 1.134/1.268 end 0.907; GBM^2 vs GLM-B share 0.868 LR 1.846/1.286 end 0.331; GBM^1.25 vs GBM share 0.843 LR 1.129/0.984 end 0.000
+      GLM-A vs GLM-B : share A mean 0.268 [0.257, 0.277]; LR A mean 1.228 [1.196, 1.254]; LR B mean 1.019 [0.976, 1.059]; LR A > LR B in 10 of 10; market LR mean 1.088; share of A after review below 0.5 in 10 of 10 (range [0.000, 0.000]); Gini A - Gini B mean -0.0154
+      GLM-B vs GBM   : share A mean 0.443 [0.424, 0.457]; LR A mean 1.255 [1.231, 1.287]; LR B mean 1.036 [0.999, 1.080]; LR A > LR B in 10 of 10; market LR mean 1.140; share of A after review below 0.5 in 10 of 10 (range [0.000, 0.006]); Gini A - Gini B mean -0.0261
+    GBM^0.5 vs GLM-B : share A mean 0.297 [0.293, 0.304]; LR A mean 1.241 [1.199, 1.304]; LR B mean 1.098 [1.044, 1.126]; LR A > LR B in 10 of 10; market LR mean 1.157; share of A after review below 0.5 in 10 of 10 (range [0.058, 0.157]); Gini A - Gini B mean +0.0261
+   GBM^1.25 vs GLM-B : share A mean 0.686 [0.677, 0.693]; LR A mean 1.137 [1.085, 1.188]; LR B mean 1.275 [1.249, 1.319]; LR A > LR B in 0 of 10; market LR mean 1.198; share of A after review below 0.5 in 0 of 10 (range [0.878, 0.980]); Gini A - Gini B mean +0.0261
+      GBM^2 vs GLM-B : share A mean 0.865 [0.857, 0.869]; LR A mean 1.795 [1.676, 1.873]; LR B mean 1.295 [1.248, 1.347]; LR A > LR B in 10 of 10; market LR mean 1.596; share of A after review below 0.5 in 10 of 10 (range [0.154, 0.466]); Gini A - Gini B mean +0.0261
+   GBM^1.25 vs GBM   : share A mean 0.828 [0.819, 0.843]; LR A mean 1.132 [1.078, 1.172]; LR B mean 1.014 [0.967, 1.052]; LR A > LR B in 10 of 10; market LR mean 1.082; share of A after review below 0.5 in 8 of 10 (range [0.000, 1.000]); Gini A - Gini B mean +0.0000
