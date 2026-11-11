@@ -1,0 +1,21 @@
+Countries: 54; billionaires in panel: 3113
+Density range per 10m: 0.168 to 72.95
+Poverty observation years: {'2020': 5, '2021': 6, '2022': 9, '2023': 25, '2024': 8, '2025': 1}
+GDP years: {'2024': 1, '2025': 53}; poverty-to-GDP gap (years): {'0': 1, '1': 8, '2': 26, '3': 8, '4': 6, '5': 5}
+corr(log B, log GDP) = 0.7676; corr(P, log GDP) = -0.8972; corr(P, log B) = -0.7397
+Raw OLS: slope -47.107, intercept 83.966, R2 0.5471, HC3 95% CI -56.34 to -37.87
+GDP-only OLS: slope -107.561, R2 0.8049
+Joint OLS: B -7.912 (HC3 p 0.119, CI -17.87 to 2.04); GDP -96.129; R2 0.8113
+Incremental R2: 0.0063; implied proxy R2 (R2_gdp x r^2): 0.4742
+Fitted outside 0-100: raw 2 above (max 120.4), 1 below (min -3.8); GDP-only 5 above ['IND', 'LBN', 'NGA', 'NPL', 'PHL'] (max 139.0), 2 below (min -11.2); joint 4 above (max 136.6), 2 below
++GDP squared: B -6.634 (p 0.228), R2 0.8324
++log population: B -8.724 (p 0.101)
+Population-weighted: B -2.762 (p 0.904, CI -47.5 to 42.0)
+Fractional logit raw: AME -46.02 pp/tenfold
+Fractional logit joint: B coef -0.0983 (robust p 0.677); AME -1.31 pp/tenfold, 95% CI -7.51 to 4.88; fitted range 1.3% to 99.9%
+LOO-CV RMSE (MAE): intercept_only 36.85 (33.65); billionaire_only 25.08 (20.91); gdp_only 16.80 (13.12); joint 16.72 (12.96); fractional_logit_gdp 10.58 (7.03); fractional_logit_joint 10.77 (7.26)
+Lag restrictions: <= 2y n=35 B -9.497 p 0.028 CI -17.96 to -1.04; <= 3y n=43 B -7.406 p 0.111 CI -16.51 to 1.70; <= 4y n=49 B -9.789 p 0.054 CI -19.74 to 0.16; <= 5y n=54 B -7.912 p 0.119 CI -17.87 to 2.04
+GDP thirds: lowest n=18 GDP $5,277-$25,136 poverty 75.6-99.9% slope -3.00 p 0.456 R2 0.036; middle n=18 GDP $30,863-$53,606 poverty 22.3-93.9% slope -9.80 p 0.348 R2 0.039; highest n=18 GDP $53,993-$131,338 poverty 3.8-16.3% slope -0.07 p 0.985 R2 0.000
+Leave-one-out: -10.10 (without NGA) to -5.96 (without KAZ); all negative: True
+Most influential (Cook's D): NPL 0.454, NGA 0.141, KAZ 0.085, IRL 0.061, GEO 0.042
+Placebo (20000 draws, seed 20261111): R2 mean 0.4751, median 0.4734, 5-95% 0.3896-0.5660, max 0.6949; share >= observed 0.0945; share |adjusted coef| >= observed 0.1928; share adjusted coef <= observed 0.0945

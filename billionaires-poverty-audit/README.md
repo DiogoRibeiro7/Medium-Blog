@@ -1,10 +1,31 @@
-# A Billionaire Is Not a Poverty Policy — research companion
+# Billionaire Density and Poverty Across 54 Countries — research companion
 
-This project supports [the Medium manuscript](article.md) on billionaires per capita, poverty below US$30/day in 2021 PPP, economic development, and causal inference.
+This project supports [the Medium manuscript](article.md) on billionaires per person, poverty below US$30/day in 2021 PPP, economic development, and causal inference.
 
-## Status and evidence classification
+## Publication analysis (current)
 
-**Research draft — not publication-ready.** The original figure reports a 64-country slope of −43.3 and R² of 0.581. A preceding independent reconstruction reported a 63-country residence-based R² of 0.567, and R² 0.784 for GDP-only versus 0.791 for GDP plus billionaire density. Its original 2026 country-level snapshots, provenance ledger, model code and figures have **not** been recovered during this retry. Accordingly these reconstruction statistics remain **reported but unverified**, not claims produced by the program in this PR.
+[`publication_analysis.py`](publication_analysis.py) reproduces every number and all seven figures in the revised manuscript from the SHA-256-locked 54-country citizenship panel [`data/observed_citizenship_54_2026.csv`](data/observed_citizenship_54_2026.csv). It makes no network requests.
+
+```bash
+cd billionaires-poverty-audit
+python -m pip install -r requirements.txt
+python publication_analysis.py            # recompute, print, write results and figures
+python publication_analysis.py --check    # fail if any number differs from the committed results
+python -m unittest discover -s tests -p "test_publication_analysis.py" -v
+```
+
+- [`results/publication/numbers.json`](results/publication/numbers.json): every quoted number at full precision; [`summary.txt`](results/publication/summary.txt) is the readable version.
+- [`publication_figures/`](publication_figures/): the seven article figures, `fig1_…` to `fig7_…`.
+- Analyses: OLS with HC3 errors (raw, GDP-only, joint, GDP squared, log population, population-weighted); survey-timing subsets; leave-one-country-out coefficients and prediction error; within-GDP-third slopes; Papke–Wooldridge fractional logit with delta-method average marginal effects; 20,000 placebo development proxies (seed 20261111).
+- Headline results: raw R² 0.547, GDP-only 0.805, joint 0.811; GDP-adjusted coefficient −7.9 (HC3 p 0.119); leave-one-out RMSE 16.80 (GDP) vs 16.72 (GDP + billionaires), and 10.58 vs 10.77 under the fractional logit; fractional-logit average marginal effect −1.3 (95% interval −7.5 to +4.9). All descriptive, not causal, and not a replication of the 64-country residence chart.
+
+The CI workflow [`billionaires-poverty-figures.yml`](../.github/workflows/billionaires-poverty-figures.yml) runs the tests and `--check` on every pull request that touches these files.
+
+## Status and evidence classification (history)
+
+*The notes below describe the earlier reconstruction attempt and remain for provenance.*
+
+**Earlier research draft.** The original figure reports a 64-country slope of −43.3 and R² of 0.581. A preceding independent reconstruction reported a 63-country residence-based R² of 0.567, and R² 0.784 for GDP-only versus 0.791 for GDP plus billionaire density. Its original 2026 country-level snapshots, provenance ledger, model code and figures have **not** been recovered during this retry. Accordingly these reconstruction statistics remain **reported but unverified**, not claims produced by the program in this PR.
 
 The earlier research notes also recorded significant sensitivity to Forbes residence-versus-citizenship counts and to regional controls. Reproducing that sensitivity with frozen country-level input is a gate before publishing. No fabricated data or fitted coefficients are substituted for missing observations.
 

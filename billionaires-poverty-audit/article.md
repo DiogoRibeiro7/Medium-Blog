@@ -1,4 +1,4 @@
-# A Billionaire Is Not a Poverty Policy: What a Global Correlation Really Tells Us
+# Billionaire Density and Poverty Across 54 Countries: What Remains After Accounting for GDP
 
 > The full editorial manuscript is now maintained in the [private Medium article repository](https://github.com/DiogoRibeiro7/research-articles-medium/blob/main/themes/economics-and-society/billionaires-poverty-audit/article.md). Access requires permission from the repository owner.
 
