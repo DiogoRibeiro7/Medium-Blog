@@ -337,7 +337,7 @@ class Matrix:
         out, e = [], k
         for m in range(n, 0, -1):
             s = arg[m, e]
-            out.append((s, e - 1))
+            out.append((int(s), int(e - 1)))
             e = s
         return out[::-1], float(best[n, k])
 

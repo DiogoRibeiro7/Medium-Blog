@@ -111,8 +111,9 @@ def summarise(cells: pd.DataFrame, reps: int) -> list[str]:
             lines.append(f"  {s:>8} {tag}: excess {m.excess:+.3f} = level {m.level:.3f} + spread {m.spread:.3f} "
                          f"+ structure {m.structure:+.3f}{share}  ({len(x)} cells)")
     lines.append("")
-    lines.append("Regimes found in replicate 0 (inclusive block ranges, 0-based; the change is at block "
-                 f"{BREAK}, the episode is block {EPISODE}):")
+    lines.append("Replicate 0: best split into 2 regimes (3 for the episode; inclusive block ranges, 0-based; the change "
+                 f"is at block {BREAK}, the episode is block {EPISODE}) and the cost of the best split into 1-4 regimes. "
+                 "A split is always returned; whether it means anything shows in how far the cost falls:")
     for s in SCENARIOS:
         r = cells[(cells.scenario == s) & cells.get("regimes", pd.Series(dtype=object)).notna()]
         if len(r):
