@@ -1,0 +1,65 @@
+WID bulk file Fri, 06 Nov 2026 17:20:08 GMT (902718230 bytes), shares for 2024; 54 countries
+Raw correlations with billionaire density: wT1 −0.108; wT10 −0.093; wT01 −0.113; wT001 −0.051; wB50 −0.144; iT10 −0.432; iT1 −0.273; log10_gdp_ppp_per_capita 0.768; log10_mean 0.761
+Top 1% wealth share: median 27.2, range 14.0 (NLD) to 54.9 (ZAF)
+Partial corr B with wT10 | GDP: all +0.192 [−0.08, 0.44] n=54; observed +0.305 [−0.07, 0.60] n=30; imputed +0.036 [−0.38, 0.44] n=24
+Partial corr B with wT1 | GDP: all +0.213 [−0.06, 0.46] n=54; observed +0.309 [−0.06, 0.61] n=30; imputed +0.097 [−0.33, 0.49] n=24
+Partial corr B with wT01 | GDP: all +0.215 [−0.06, 0.46] n=54; observed +0.257 [−0.12, 0.57] n=30; imputed +0.188 [−0.24, 0.56] n=24
+Partial corr B with wT001 | GDP: all +0.305 [0.04, 0.53] n=54; observed +0.323 [−0.05, 0.62] n=30; imputed +0.320 [−0.11, 0.65] n=24
+Partial corr B with wB50 | GDP: all −0.139 [−0.39, 0.14] n=54; observed −0.194 [−0.52, 0.19] n=30; imputed +0.020 [−0.40, 0.43] n=24
+Partial corr B with iT10 | GDP: all −0.009 [−0.28, 0.26] n=54; observed +0.067 [−0.31, 0.42] n=30; imputed −0.027 [−0.43, 0.39] n=24
+log10_billionaires_per_10m | GDP, type: mean +0.331 [0.06, 0.55] n=54; gini −0.011 [−0.28, 0.26] n=54; bottom40 −0.031 [−0.30, 0.24] n=54
+wT1 | GDP, type: mean +0.055 [−0.22, 0.32] n=54; gini +0.667 [0.48, 0.80] n=54; bottom40 −0.643 [−0.78, −0.45] n=54
+wT10 | GDP, type: mean +0.013 [−0.26, 0.28] n=54; gini +0.715 [0.55, 0.83] n=54; bottom40 −0.694 [−0.81, −0.52] n=54
+iT10 | GDP, type: mean −0.108 [−0.37, 0.17] n=54; gini +0.717 [0.55, 0.83] n=54; bottom40 −0.688 [−0.81, −0.51] n=54
+Raw corr with PIP Gini: {'wT1': 0.6430773308536156, 'wT10': 0.6897600556917461, 'iT10': 0.6904750202661966}
+WID status: 30 observed (last observed 2012-2022, median 2017.0), 24 imputed: ALB, ARM, AUS, BGR, BRA, CHL, COL, CZE, EGY, GEO, ISR, JPN, KAZ, LBN, MEX, MYS, NGA, NPL, PHL, ROU, THA, TUR, UKR, VNM
+R2 wT10~iT10 observed 0.515 imputed 0.854; wT1~iT10 observed 0.587 imputed 0.799; LatAm {'wT10_min': 71.9, 'wT10_max': 72.05, 'wT1_min': 39.23, 'wT1_max': 39.800000000000004, 'wB50_min': 1.9900000000000002, 'wB50_max': 2.03, 'iT10_min': 56.220000000000006, 'iT10_max': 60.41000000000001}; grades {'1': 4, '2': 1, '3': 12, '4': 10, '5': 3}
+$30 Given GDP: baseline R2 0.805 LOO 16.80 fracLOO 10.58
+   + log10_billionaires_per_10m: coef −7.91 p 0.119 R2 0.811 LOO 16.72 fracLOO 10.77 AME −1.313 [−7.508, 4.882] p 0.677 per SD −0.75
+   + wT1: coef 0.39 p 0.297 R2 0.811 LOO 16.94 fracLOO 11.74 AME 0.055 [−0.567, 0.678] p 0.861 per SD 0.43
+   + wT10: coef 0.47 p 0.239 R2 0.812 LOO 16.85 fracLOO 11.44 AME −0.007 [−0.680, 0.666] p 0.984 per SD −0.05
+   + wB50: coef −0.32 p 0.677 R2 0.806 LOO 17.12 fracLOO 10.74 AME 0.031 [−0.624, 0.686] p 0.926 per SD 0.10
+   + iT10: coef 0.58 p 0.075 R2 0.820 LOO 16.44 fracLOO 10.97 AME 0.028 [−0.398, 0.453] p 0.899 per SD 0.26
+   + gini: coef 14.12 p 0.631 R2 0.806 LOO 16.99 fracLOO 10.26 AME −54.707 [−102.329, −7.084] p 0.027 per SD −3.66
+$30 Given survey mean and GDP: baseline R2 0.919 LOO 11.20 fracLOO 3.91
+   + log10_billionaires_per_10m: coef −0.76 p 0.855 R2 0.919 LOO 11.41 fracLOO 3.96 AME 1.197 [−1.005, 3.399] p 0.285 per SD 0.69
+   + wT1: coef 0.45 p 0.043 R2 0.927 LOO 10.86 fracLOO 3.79 AME 0.112 [−0.042, 0.266] p 0.158 per SD 0.86
+   + wT10: coef 0.49 p 0.056 R2 0.926 LOO 10.93 fracLOO 3.83 AME 0.117 [−0.063, 0.297] p 0.206 per SD 0.81
+   + wB50: coef −0.06 p 0.889 R2 0.919 LOO 11.40 fracLOO 3.95 AME 0.029 [−0.195, 0.253] p 0.799 per SD 0.10
+   + iT10: coef 0.53 p 0.021 R2 0.931 LOO 10.61 fracLOO 3.54 AME 0.160 [0.032, 0.288] p 0.015 per SD 1.50
+   + gini: coef 76.32 p 0.001 R2 0.936 LOO 10.25 fracLOO 3.30 AME 26.662 [3.198, 50.127] p 0.028 per SD 1.79
+GDP + B + wT1: {'coef_b': -10.035610748770813, 'p_b': 0.06367399357245096, 'coef_t1': 0.5016108772106513, 'p_t1': 0.2138643013336058}; consumption given mean+GDP: {'coef': 4.763163888673631, 'p': 0.5959446660781962}
+Observed only (30) gdp: R2 0.792 LOO 15.04
+   + log10_billionaires_per_10m: coef −7.47 p 0.202 LOO 15.00
+   + wT1: coef 0.30 p 0.578 LOO 16.07
+Observed only (30) mean_gdp: R2 0.942 LOO 9.80
+   + log10_billionaires_per_10m: coef 0.21 p 0.957 LOO 10.00
+   + wT1: coef 0.31 p 0.171 LOO 9.88
+   + gini: coef 67.96 p 0.252 LOO 10.18
+$2: log10_billionaires_per_10m|mean_gdp −0.80 p 0.002; log10_billionaires_per_10m|gdp −0.90 p 0.007; wT1|mean_gdp 0.27 p 0.069; wT1|gdp 0.26 p 0.100; iT10|mean_gdp 0.16 p 0.603; iT10|gdp 0.17 p 0.549
+$3: log10_billionaires_per_10m|mean_gdp −1.18 p 0.048; log10_billionaires_per_10m|gdp −1.78 p 0.036; wT1|mean_gdp 0.70 p 0.025; wT1|gdp 0.68 p 0.046; iT10|mean_gdp 0.57 p 0.374; iT10|gdp 0.59 p 0.345
+$4.2: log10_billionaires_per_10m|mean_gdp −1.07 p 0.190; log10_billionaires_per_10m|gdp −2.28 p 0.084; wT1|mean_gdp 1.22 p 0.006; wT1|gdp 1.17 p 0.041; iT10|mean_gdp 1.39 p 0.091; iT10|gdp 1.36 p 0.144
+$5: log10_billionaires_per_10m|mean_gdp −0.89 p 0.289; log10_billionaires_per_10m|gdp −2.32 p 0.088; wT1|mean_gdp 1.48 p 0.001; wT1|gdp 1.37 p 0.062; iT10|mean_gdp 1.91 p 0.011; iT10|gdp 1.81 p 0.084
+$6: log10_billionaires_per_10m|mean_gdp −0.84 p 0.300; log10_billionaires_per_10m|gdp −2.39 p 0.065; wT1|mean_gdp 1.74 p 0.000; wT1|gdp 1.49 p 0.114; iT10|mean_gdp 2.49 p 0.000; iT10|gdp 2.24 p 0.061
+$8.3: log10_billionaires_per_10m|mean_gdp −1.21 p 0.131; log10_billionaires_per_10m|gdp −2.58 p 0.093; wT1|mean_gdp 1.90 p 0.000; wT1|gdp 1.23 p 0.293; iT10|mean_gdp 2.92 p 0.000; iT10|gdp 2.30 p 0.104
+$10: log10_billionaires_per_10m|mean_gdp −1.16 p 0.173; log10_billionaires_per_10m|gdp −2.30 p 0.232; wT1|mean_gdp 1.80 p 0.000; wT1|gdp 0.88 p 0.477; iT10|mean_gdp 2.84 p 0.000; iT10|gdp 1.94 p 0.194
+$12: log10_billionaires_per_10m|mean_gdp −0.99 p 0.285; log10_billionaires_per_10m|gdp −1.86 p 0.422; wT1|mean_gdp 1.59 p 0.003; wT1|gdp 0.48 p 0.709; iT10|mean_gdp 2.56 p 0.000; iT10|gdp 1.35 p 0.359
+$15: log10_billionaires_per_10m|mean_gdp −0.55 p 0.603; log10_billionaires_per_10m|gdp −1.20 p 0.643; wT1|mean_gdp 1.46 p 0.007; wT1|gdp 0.29 p 0.846; iT10|mean_gdp 2.37 p 0.000; iT10|gdp 0.82 p 0.565
+$17.5: log10_billionaires_per_10m|mean_gdp −0.00 p 0.998; log10_billionaires_per_10m|gdp −0.66 p 0.794; wT1|mean_gdp 1.38 p 0.012; wT1|gdp 0.28 p 0.874; iT10|mean_gdp 2.26 p 0.000; iT10|gdp 0.59 p 0.685
+$20: log10_billionaires_per_10m|mean_gdp 0.45 p 0.654; log10_billionaires_per_10m|gdp −0.32 p 0.893; wT1|mean_gdp 1.29 p 0.016; wT1|gdp 0.31 p 0.875; iT10|mean_gdp 2.18 p 0.000; iT10|gdp 0.47 p 0.752
+$25: log10_billionaires_per_10m|mean_gdp 0.72 p 0.351; log10_billionaires_per_10m|gdp −0.38 p 0.854; wT1|mean_gdp 1.05 p 0.063; wT1|gdp 0.36 p 0.879; iT10|mean_gdp 1.90 p 0.001; iT10|gdp 0.31 p 0.858
+$30: log10_billionaires_per_10m|mean_gdp 0.69 p 0.285; log10_billionaires_per_10m|gdp −0.75 p 0.677; wT1|mean_gdp 0.86 p 0.158; wT1|gdp 0.43 p 0.861; iT10|mean_gdp 1.50 p 0.015; iT10|gdp 0.26 p 0.899
+$35: log10_billionaires_per_10m|mean_gdp 0.40 p 0.462; log10_billionaires_per_10m|gdp −1.49 p 0.385; wT1|mean_gdp 0.82 p 0.257; wT1|gdp 0.59 p 0.805; iT10|mean_gdp 1.10 p 0.125; iT10|gdp 0.42 p 0.854
+$40: log10_billionaires_per_10m|mean_gdp 0.28 p 0.603; log10_billionaires_per_10m|gdp −2.15 p 0.222; wT1|mean_gdp 0.82 p 0.310; wT1|gdp 0.73 p 0.741; iT10|mean_gdp 0.70 p 0.394; iT10|gdp 0.73 p 0.767
+$50: log10_billionaires_per_10m|mean_gdp 0.33 p 0.588; log10_billionaires_per_10m|gdp −2.99 p 0.128; wT1|mean_gdp 0.78 p 0.355; wT1|gdp 0.82 p 0.657; iT10|mean_gdp 0.11 p 0.916; iT10|gdp 1.47 p 0.570
+$60: log10_billionaires_per_10m|mean_gdp 0.25 p 0.651; log10_billionaires_per_10m|gdp −3.45 p 0.075; wT1|mean_gdp 0.44 p 0.539; wT1|gdp 0.47 p 0.758; iT10|mean_gdp −0.30 p 0.771; iT10|gdp 1.76 p 0.474
+$70: log10_billionaires_per_10m|mean_gdp 0.21 p 0.709; log10_billionaires_per_10m|gdp −3.39 p 0.045; wT1|mean_gdp −0.02 p 0.967; wT1|gdp −0.05 p 0.968; iT10|mean_gdp −0.70 p 0.456; iT10|gdp 1.49 p 0.502
+$85: log10_billionaires_per_10m|mean_gdp 0.07 p 0.844; log10_billionaires_per_10m|gdp −2.88 p 0.022; wT1|mean_gdp −0.66 p 0.056; wT1|gdp −0.75 p 0.442; iT10|mean_gdp −1.12 p 0.088; iT10|gdp 0.74 p 0.677
+$100: log10_billionaires_per_10m|mean_gdp 0.22 p 0.505; log10_billionaires_per_10m|gdp −2.06 p 0.031; wT1|mean_gdp −0.86 p 0.000; wT1|gdp −0.98 p 0.199; iT10|mean_gdp −1.32 p 0.004; iT10|gdp 0.09 p 0.950
+Forbes: 3428 by citizenship (80 labels), 3407 with a country field (79); gains {'Switzerland': 48, 'United Kingdom': 35, 'Monaco': 22, 'China': 21, 'United States': 17, 'United Arab Emirates': 16, 'Singapore': 14, 'Hong Kong': 11}; losses {'Canada': -32, 'Russia': -25, 'Germany': -16, 'Italy': -16, 'Sweden': -14, 'India': -13, 'Brazil': -9, 'Greece': -8}
+Panel sums {'sec': 3113, 'cit': 3178, 'res': 3092}; 42 differ; zero residence ['BGR', 'EST', 'HRV']; corr cit/res 0.9685; sec/cit 0.9923
+sec (n=51): raw R2 0.560 slope −48.0 | joint −8.33 p 0.121 [−18.9, 2.2] incR2 0.0067 | +type −9.66 p 0.048 | AME|GDP −1.41 AME|mean 1.20 | corr GDP 0.776 | pc mean +0.331 [0.05, 0.56] n=51 | pc wT1 +0.182 [−0.10, 0.44] n=51 | +0.5 on 54: −6.83 p 0.224
+cit (n=51): raw R2 0.566 slope −47.8 | joint −6.46 p 0.195 [−16.2, 3.3] incR2 0.0038 | +type −8.37 p 0.081 | AME|GDP −1.27 AME|mean 1.27 | corr GDP 0.797 | pc mean +0.293 [0.01, 0.53] n=51 | pc wT1 +0.188 [−0.10, 0.44] n=51 | +0.5 on 54: −5.38 p 0.307
+res (n=51): raw R2 0.571 slope −47.0 | joint −7.50 p 0.101 [−16.5, 1.5] incR2 0.0054 | +type −10.66 p 0.027 | AME|GDP −0.64 AME|mean 1.89 | corr GDP 0.792 | pc mean +0.375 [0.10, 0.59] n=51 | pc wT1 +0.139 [−0.14, 0.40] n=51 | +0.5 on 54: −4.49 p 0.322
+wT1_sy: corr 2024 0.992, mean |diff| 0.46; B raw −0.104 B|GDP +0.183 [−0.09, 0.43] n=54; gini +0.686 [0.51, 0.81] n=54; given GDP 0.42 p 0.242; given mean 0.51 p 0.026 LOO 10.69
+wT1_lo: corr 2024 0.991, mean |diff| 0.50; B raw −0.110 B|GDP +0.205 [−0.07, 0.45] n=54; gini +0.674 [0.49, 0.80] n=54; given GDP 0.37 p 0.300; given mean 0.45 p 0.044 LOO 10.88
