@@ -1,0 +1,117 @@
+name: Compute backward-evaluation-model-choice
+
+on:
+  push:
+    branches:
+      - backward-evaluation-model-choice
+    paths:
+      - 'backward-evaluation-model-choice/common.py'
+      - 'backward-evaluation-model-choice/choice.py'
+      - 'backward-evaluation-model-choice/aggregate.py'
+      - '.github/workflows/backward-evaluation-model-choice.yml'
+  pull_request:
+    paths:
+      - 'backward-evaluation-model-choice/**'
+      - 'backward-evaluation-generality/models.py'
+      - '.github/workflows/backward-evaluation-model-choice.yml'
+
+concurrency:
+  group: model-choice-compute-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  shard:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    strategy:
+      fail-fast: true
+      matrix:
+        include:
+          - {domain: dev_elec, shard: 0, of: 1}
+          - {domain: dev_web, shard: 0, of: 8}
+          - {domain: dev_web, shard: 1, of: 8}
+          - {domain: dev_web, shard: 2, of: 8}
+          - {domain: dev_web, shard: 3, of: 8}
+          - {domain: dev_web, shard: 4, of: 8}
+          - {domain: dev_web, shard: 5, of: 8}
+          - {domain: dev_web, shard: 6, of: 8}
+          - {domain: dev_web, shard: 7, of: 8}
+          - {domain: test_web, shard: 0, of: 8}
+          - {domain: test_web, shard: 1, of: 8}
+          - {domain: test_web, shard: 2, of: 8}
+          - {domain: test_web, shard: 3, of: 8}
+          - {domain: test_web, shard: 4, of: 8}
+          - {domain: test_web, shard: 5, of: 8}
+          - {domain: test_web, shard: 6, of: 8}
+          - {domain: test_web, shard: 7, of: 8}
+    defaults:
+      run:
+        working-directory: backward-evaluation-model-choice
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: backward-evaluation-model-choice/requirements.txt
+      - name: Install pinned dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Tests
+        if: matrix.domain == 'dev_elec'
+        run: python -m pytest -q tests
+      - name: Run the shard
+        run: python choice.py --domain ${{ matrix.domain }} --shard ${{ matrix.shard }} --of ${{ matrix.of }} --workers 4
+      - uses: actions/upload-artifact@v4
+        with:
+          name: shard-${{ matrix.domain }}-${{ matrix.shard }}
+          path: backward-evaluation-model-choice/results/shards/
+          retention-days: 7
+
+  aggregate:
+    needs: shard
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: backward-evaluation-model-choice
+    env:
+      MPLBACKEND: Agg
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event_name == 'push' && github.ref || '' }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: backward-evaluation-model-choice/requirements.txt
+      - name: Install pinned dependencies
+        run: python -m pip install -r requirements.txt
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: shard-*
+          path: backward-evaluation-model-choice/results/shards
+          merge-multiple: true
+      - name: Aggregate
+        run: python aggregate.py
+      - name: Figures
+        run: if [ -f figures.py ]; then python figures.py || echo "figures failed"; fi
+      - name: Compare with the committed summary (pull requests)
+        if: github.event_name == 'pull_request'
+        run: python ../backward-evaluation-pooling/check_results.py results/summary.txt
+      - name: Commit the results (pushes to the branch)
+        if: github.event_name == 'push'
+        run: |
+          git config user.name "Diogo Ribeiro"
+          git config user.email "diogo_dj@hotmail.com"
+          git add results/summary.txt results/series_losses.csv results/decision_quality.csv results/choices.csv results/decisions.csv.gz
+          if [ -d figures ]; then git add figures; fi
+          if git diff --cached --quiet; then
+            echo "Results unchanged."
+          else
+            git commit -m "backward-evaluation-model-choice: results from the compute workflow ($(date -u +%Y-%m-%d))"
+            git push || (git pull --rebase --autostash && git push)
+          fi

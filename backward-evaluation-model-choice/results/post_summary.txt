@@ -1,0 +1,32 @@
+Exploratory follow-up (not pre-registered).
+
+1. Decisions where FWD and BWD pick different candidates (set A, B)
+   dev_elec set A: disagree in 24% of 275 decisions; BWD's pick better next quarter in 30% of those; mean next-quarter loss of BWD's pick minus FWD's +0.0113 nats/day (median +0.0896)
+   dev_elec set B: disagree in 4% of 275 decisions; BWD's pick better next quarter in 18% of those; mean next-quarter loss of BWD's pick minus FWD's +0.0932 nats/day (median +0.0430)
+   dev_web set A: disagree in 62% of 10032 decisions; BWD's pick better next quarter in 29% of those; mean next-quarter loss of BWD's pick minus FWD's +0.0420 nats/day (median +0.0480)
+   dev_web set B: disagree in 45% of 10032 decisions; BWD's pick better next quarter in 35% of those; mean next-quarter loss of BWD's pick minus FWD's +0.0123 nats/day (median +0.0139)
+   test_web set A: disagree in 70% of 8085 decisions; BWD's pick better next quarter in 28% of those; mean next-quarter loss of BWD's pick minus FWD's +0.0356 nats/day (median +0.0378)
+   test_web set B: disagree in 51% of 8085 decisions; BWD's pick better next quarter in 32% of those; mean next-quarter loss of BWD's pick minus FWD's +0.0155 nats/day (median +0.0176)
+
+2. Level drift between years and the gap L(FWD) - L(BWD), set A
+   dev_web: Spearman(drift, gap) +0.30 (p 6.7e-08); median drift 0.73
+     gap by drift quartile: lowest -0.0301 (76); second -0.0364 (76); third -0.0253 (76); highest -0.0121 (76)
+     share of articles where BWD did better, by quartile: lowest 4%; second 9%; third 14%; highest 39%
+   test_web: Spearman(drift, gap) +0.13 (p 0.039); median drift 0.88
+     gap by drift quartile: lowest -0.0264 (62); second -0.0304 (61); third -0.0244 (61); highest -0.0184 (61)
+     share of articles where BWD did better, by quartile: lowest 6%; second 10%; third 15%; highest 26%
+
+3. Next-quarter loss of BWD's pick minus FWD's pick, by decision year (set A)
+   dev_elec: 2018 +0.0152; 2019 +0.0268; 2020 -0.0460
+   dev_web: 2018 +0.0207; 2019 +0.0257; 2020 -0.0182; 2021 +0.0338; 2022 +0.0206; 2023 +0.0357; 2024 +0.0548; 2025 +0.0266; 2026 +0.0339
+   test_web: 2018 +0.0267; 2019 +0.0327; 2020 -0.0092; 2021 +0.0277; 2022 +0.0397; 2023 +0.0331; 2024 +0.0322; 2025 +0.0225; 2026 +0.0175
+
+4. When FWD picks SLM_t: what BWD picks instead (set A, share of those decisions)
+   dev_elec: SLM_t 79%; ETS_t 21%; GBM_t 1%
+   dev_web: ETS_t 47%; SLM_t 30%; AR7_t 21%; GBM_t 2%
+   test_web: ETS_t 63%; SLM_t 21%; AR7_t 15%; GBM_t 1%
+
+5. Mean backward score minus mean forward score of each candidate (set A; how much worse each looks on the past)
+   dev_elec: AR7_t +0.012; SLM_t +0.111; ETS_t +0.027; GBM_t +0.330
+   dev_web: AR7_t +0.177; SLM_t +0.446; ETS_t +0.107; GBM_t +0.663
+   test_web: AR7_t +0.195; SLM_t +0.528; ETS_t +0.116; GBM_t +0.753
