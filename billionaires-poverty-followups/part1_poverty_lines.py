@@ -141,6 +141,43 @@ def sweep(base: pd.DataFrame, wide: pd.DataFrame) -> list[dict[str, Any]]:
     return rows
 
 
+def poverty_gap(base: pd.DataFrame, heads: pd.DataFrame) -> dict[str, Any]:
+    """Depth of poverty: the poverty-gap index at three lines."""
+    keys = base[["iso3", "reporting_year", "welfare_type", "reporting_level"]].rename(columns={"iso3": "country_code"})
+    gaps = heads.merge(keys, on=KEY)
+    out: dict[str, Any] = {}
+    for line in (3.0, 8.3, 30.0):
+        g = gaps[gaps.poverty_line == line].set_index("country_code").poverty_gap.mul(100)
+        f = base.copy()
+        f["gap_pct"] = g.loc[f.iso3].to_numpy()
+        fg = fractional_logit(f, "gap_pct", [B, G, "consumption"], B)
+        fm = fractional_logit(f, "gap_pct", [B, "log10_mean"], B)
+        out[f"{line:g}"] = {
+            "mean_gap": float(f.gap_pct.mean()), "max_gap": float(f.gap_pct.max()),
+            "frac_gdp_type_ame": fg["ame"], "frac_gdp_type_ci95": fg["ci95"],
+            "frac_mean_ame": fm["ame"], "frac_mean_ci95": fm["ci95"],
+            "loo_gdp_type": loo_rmse_fractional(f, "gap_pct", [G, "consumption"]),
+            "loo_gdp_type_b": loo_rmse_fractional(f, "gap_pct", [B, G, "consumption"]),
+        }
+    return out
+
+
+def level_influence(base: pd.DataFrame) -> dict[str, Any]:
+    """Leave-one-country-out range of the billionaire coefficient on log survey mean."""
+    import statsmodels.api as sm
+    cols = [B, G, "consumption"]
+    coefs = {}
+    for iso in base.iso3:
+        d = base.loc[base.iso3 != iso]
+        coefs[iso] = float(sm.OLS(d.log10_mean, sm.add_constant(d[cols])).fit().params[B])
+    fit = sm.OLS(base.log10_mean, sm.add_constant(base[cols])).fit()
+    cooks = pd.Series(fit.get_influence().cooks_distance[0], index=base.iso3).sort_values(ascending=False)
+    lo, hi = min(coefs, key=coefs.get), max(coefs, key=coefs.get)
+    return {"min": coefs[lo], "min_excluded": lo, "max": coefs[hi], "max_excluded": hi,
+            "all_positive": bool(all(v > 0 for v in coefs.values())),
+            "top_cooks": [{"iso3": k, "cooks_distance": float(v)} for k, v in cooks.head(3).items()]}
+
+
 def welfare_pairs(surveys: pd.DataFrame, heads: pd.DataFrame) -> dict[str, Any]:
     """Country-years in which PIP reports both an income and a consumption survey."""
     nat = surveys[surveys.reporting_level == "national"]
@@ -251,6 +288,8 @@ def compute(panel: pd.DataFrame, surveys: pd.DataFrame, heads: pd.DataFrame, man
         "at_thirty": at_thirty(base, wide),
         "income_alternative": income_alternative(panel, surveys, heads),
         "distribution": distribution(base),
+        "level_influence": level_influence(base),
+        "poverty_gap": poverty_gap(base, heads),
         "given_survey_mean": given_survey_mean(base, wide),
         "welfare_pairs": welfare_pairs(surveys, heads),
     }
@@ -538,6 +577,13 @@ def summary_lines(n: dict[str, Any]) -> list[str]:
             for k, v in d.items() if isinstance(v, dict) and "coef" in v),
         "Deciles (log10): " + "; ".join(f"{x['decile']}: {x['coef']:.4f} [{x['ci95'][0]:.4f}, {x['ci95'][1]:.4f}] p {x['p']:.3f}" for x in d["deciles"]),
         f"Survey mean / daily GDP, median by type: {d['mean_ratio_by_type']}",
+        f"Level coefficient leave-one-out: {n['level_influence']['min']:.4f} (without {n['level_influence']['min_excluded']}) to "
+        f"{n['level_influence']['max']:.4f} (without {n['level_influence']['max_excluded']}); all positive {n['level_influence']['all_positive']}; "
+        f"Cook's {n['level_influence']['top_cooks']}",
+        "Poverty gap: " + "; ".join(
+            f"${k}: mean {v['mean_gap']:.2f} max {v['max_gap']:.2f} AME|G,type {v['frac_gdp_type_ame']:.3f} [{v['frac_gdp_type_ci95'][0]:.3f}, "
+            f"{v['frac_gdp_type_ci95'][1]:.3f}] AME|mean {v['frac_mean_ame']:.3f} [{v['frac_mean_ci95'][0]:.3f}, {v['frac_mean_ci95'][1]:.3f}] "
+            f"LOO {v['loo_gdp_type']:.3f} -> {v['loo_gdp_type_b']:.3f}" for k, v in n["poverty_gap"].items()),
         f"Given survey mean at $30: R2 mean only {g['r2_survey_mean_only']:.3f}, with B {g['r2_with_billionaires']:.3f}; OLS B {g['ols_coef']:.2f} "
         f"(p {g['ols_p']:.3f}, CI {g['ols_ci95'][0]:.2f} to {g['ols_ci95'][1]:.2f}); frac AME {g['frac_ame']:.2f} [{g['frac_ci95'][0]:.2f}, "
         f"{g['frac_ci95'][1]:.2f}]; LOO frac {g['loo_frac_mean']:.3f} -> {g['loo_frac_mean_b']:.3f}",

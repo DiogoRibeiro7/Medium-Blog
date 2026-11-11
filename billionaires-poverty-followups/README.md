@@ -4,7 +4,7 @@ Three follow-ups to the reanalysis of the "Where billionaires are common, povert
 
 | Part | Question | Status |
 | --- | --- | --- |
-| 1 | Does the association depend on the poverty line and on income versus consumption surveys? Is it about the level of welfare or its distribution? | Analysis and figures done |
+| 1 | Does the association depend on the poverty line and on income versus consumption surveys? Is it about the level of welfare or its distribution? | Article drafted (manuscript #130) |
 | 2 | Does billionaire density measure wealth concentration? Billionaire counts against top wealth shares | Planned |
 | 3 | Within countries over time: when billionaire density rises, does poverty fall faster than the country's own trend? | Planned |
 
