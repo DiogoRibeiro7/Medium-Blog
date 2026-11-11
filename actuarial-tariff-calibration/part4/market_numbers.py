@@ -308,6 +308,19 @@ def main() -> None:
             print(f"    beta {bstr(beta):>4}: share A {mm['share']:.3f}, LR A {mm['lrA']:.3f}, LR B {mm['lrB']:.3f},"
                   f" market {mm['mkt']:.3f}, premium collected / claims {1 / mm['mkt']:.3f}")
 
+    print("  The winner's curse in one formula: if the two quotes for a policy are unbiased with a relative difference whose"
+          " logarithm is roughly normal with standard deviation s, the cheaper quote is on average below their mean by"
+          " about s / sqrt(2 pi), so under cheapest-wins the market collects about 1 - 0.399 s of the claims.")
+    pairs_s = [("twins GLM-B", twins["GLM-B"]["a"]["te"], twins["GLM-B"]["b"]["te"]),
+               ("twins GBM", twins["GBM"]["a"]["te"], twins["GBM"]["b"]["te"]),
+               ("GLM-A vs GLM-B", T["GLM-A"]["te"], T["GLM-B"]["te"]),
+               ("GLM-B vs GBM", T["GLM-B"]["te"], T["GBM"]["te"])]
+    for lab, ra, rb_ in pairs_s:
+        s_ = np.sqrt(np.average((np.log(ra / rb_) - np.average(np.log(ra / rb_), weights=e)) ** 2, weights=e))
+        mm = market(ra, rb_, e, N, INF)
+        print(f"    {lab:<15} s = {s_:.3f}; formula 1 - 0.399 s = {1 - s_ / np.sqrt(2 * np.pi):.3f};"
+              f" premium collected / claims {1 / mm['mkt']:.3f}")
+
     # -----------------------------------------------------------------------------------------------
     header(f"8. Rate reviews on the calibration sample (up to {ROUNDS} rounds), final levels applied to the test sample")
     reviews = {}

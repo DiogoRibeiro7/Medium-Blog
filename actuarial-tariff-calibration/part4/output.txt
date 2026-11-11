@@ -148,6 +148,11 @@ Of 10 pairs, the insurer with the higher loss ratio is the one with the larger r
     beta   10: share A 0.484, LR A 1.091, LR B 1.148, market 1.120, premium collected / claims 0.893
     beta   20: share A 0.484, LR A 1.102, LR B 1.164, market 1.134, premium collected / claims 0.882
     beta  inf: share A 0.484, LR A 1.105, LR B 1.173, market 1.140, premium collected / claims 0.877
+  The winner's curse in one formula: if the two quotes for a policy are unbiased with a relative difference whose logarithm is roughly normal with standard deviation s, the cheaper quote is on average below their mean by about s / sqrt(2 pi), so under cheapest-wins the market collects about 1 - 0.399 s of the claims.
+    twins GLM-B     s = 0.104; formula 1 - 0.399 s = 0.959; premium collected / claims 0.965
+    twins GBM       s = 0.326; formula 1 - 0.399 s = 0.870; premium collected / claims 0.877
+    GLM-A vs GLM-B  s = 0.169; formula 1 - 0.399 s = 0.933; premium collected / claims 0.929
+    GLM-B vs GBM    s = 0.273; formula 1 - 0.399 s = 0.891; premium collected / claims 0.890
 
 ==============================================================================
 8. Rate reviews on the calibration sample (up to 40 rounds), final levels applied to the test sample
