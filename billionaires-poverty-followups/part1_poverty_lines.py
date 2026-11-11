@@ -347,7 +347,7 @@ def fig_r2(n: dict[str, Any], out: Path) -> None:
         _line_axis(a)
     ax.set_xlim(1.85, 200)
     ax2.set_xlabel("Poverty line, 2021 PPP dollars per day (log scale)")
-    _frame(fig, "GDP explains more than billionaire density at every poverty line",
+    _frame(fig, "From $3 upward, GDP explains more of poverty than billionaire density",
            "Top: R² of the poverty share on one variable. Bottom: how many countries sit at the floor or the ceiling.",
            top=0.87, right=0.83)
     fig.savefig(out, dpi=250)
