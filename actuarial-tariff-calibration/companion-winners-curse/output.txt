@@ -1,6 +1,17 @@
 Companion: testing the winner's-curse conjecture of Part 4 with many insurers and two portfolios.
 
 ==============================================================================
+The lognormal prediction: what a market of K unbiased insurers collects per unit of claims, by sigma
+==============================================================================
+  sigma 0.05: K=2 0.972, K=3 0.958, K=5 0.943, K=10 0.925
+  sigma 0.10: K=2 0.944, K=3 0.917, K=5 0.888, K=10 0.855
+  sigma 0.15: K=2 0.916, K=3 0.876, K=5 0.835, K=10 0.788
+  sigma 0.20: K=2 0.888, K=3 0.837, K=5 0.784, K=10 0.725
+  sigma 0.30: K=2 0.832, K=3 0.760, K=5 0.688, K=10 0.612
+  sigma 0.40: K=2 0.777, K=3 0.688, K=5 0.600, K=10 0.512
+  For comparison, the expected Poisson deviance of a single tariff whose log rate errs by sigma rises by about sigma^2 times the expected claims (second order), while the shortfall of the cheapest of K such tariffs is about sigma times c_K of the premium (first order).
+
+==============================================================================
 freMTPL2: data and design
 ==============================================================================
 Policies 677,991; claims 26,405; exposure 358,343.5 policy-years; frequency 0.0737
@@ -38,6 +49,13 @@ freMTPL2: homogeneous markets, cheapest wins (test sample; mean [min, max] over 
   linear 1 - sigma c_K minus actual, K = 5, 10 (36 markets): mean -0.0459, largest absolute 0.0905
   lognormal minus actual, K = 2, 3 (36 markets): mean +0.0043, largest absolute 0.0232
   lognormal minus actual, K = 5, 10 (36 markets): mean +0.0002, largest absolute 0.0154
+  Where the disagreement lives (K=10, cheapest wins): by decile of the policy's average log rate across the ten insurers, cheapest first, mean over partitions
+    GLM sigma by decile: 0.196 0.185 0.182 0.178 0.179 0.182 0.188 0.197 0.204 0.211
+    GLM collected / claims by decile: 0.690 0.693 0.845 0.761 0.786 0.838 0.765 0.740 0.677 0.716
+    GBM sigma by decile: 0.284 0.284 0.298 0.309 0.319 0.326 0.336 0.353 0.377 0.390
+    GBM collected / claims by decile: 0.697 0.647 0.703 0.683 0.652 0.645 0.633 0.567 0.538 0.473
+    BAG sigma by decile: 0.246 0.255 0.267 0.277 0.283 0.290 0.298 0.308 0.323 0.325
+    BAG collected / claims by decile: 0.748 0.685 0.754 0.704 0.688 0.716 0.672 0.609 0.578 0.525
 
 ==============================================================================
 freMTPL2: rate reviews in homogeneous markets: average level paid once every insurer has reviewed 40 times
@@ -70,6 +88,8 @@ freMTPL2: one boosting insurer against one GLM insurer as the books grow (cheape
   books of  50,000: twins sigma GLM 0.160, GBM 0.312; twins collect GLM 0.915, GBM 0.821 | boosting against GLM: share 0.542 [0.428, 0.636], LR 1.186 against 1.200, boosting higher in 5 of 12; after reviews boosting share 0.543 [0.311, 0.724], below 0.5 in 5 of 12 (settled 12); the head-to-head market collects 0.838
   books of 100,000: twins sigma GLM 0.108, GBM 0.248; twins collect GLM 0.943, GBM 0.860 | boosting against GLM: share 0.543 [0.524, 0.563], LR 1.105 against 1.211, boosting higher in 0 of 12; after reviews boosting share 0.775 [0.000, 1.000], below 0.5 in 1 of 12 (settled 8); the head-to-head market collects 0.865
   books of 200,000: twins sigma GLM 0.080, GBM 0.200; twins collect GLM 0.961, GBM 0.892 | boosting against GLM: share 0.550 [0.506, 0.589], LR 1.051 against 1.227, boosting higher in 0 of 12; after reviews boosting share 0.999 [0.994, 1.000], below 0.5 in 0 of 12 (settled 5); the head-to-head market collects 0.881
+  GLM: twins' sigma falls like n to the power -0.48 as the book size n grows (least-squares slope on the log scale over the four sizes; -0.5 is the parametric rate)
+  GBM: twins' sigma falls like n to the power -0.30 as the book size n grows (least-squares slope on the log scale over the four sizes; -0.5 is the parametric rate)
 
 ==============================================================================
 beMTPL97: data and design
@@ -109,6 +129,13 @@ beMTPL97: homogeneous markets, cheapest wins (test sample; mean [min, max] over 
   linear 1 - sigma c_K minus actual, K = 5, 10 (36 markets): mean -0.0456, largest absolute 0.0961
   lognormal minus actual, K = 2, 3 (36 markets): mean -0.0022, largest absolute 0.0200
   lognormal minus actual, K = 5, 10 (36 markets): mean -0.0077, largest absolute 0.0186
+  Where the disagreement lives (K=10, cheapest wins): by decile of the policy's average log rate across the ten insurers, cheapest first, mean over partitions
+    GLM sigma by decile: 0.187 0.176 0.171 0.168 0.166 0.166 0.167 0.169 0.172 0.175
+    GLM collected / claims by decile: 0.712 0.807 0.811 0.752 0.778 0.779 0.764 0.740 0.835 0.741
+    GBM sigma by decile: 0.328 0.327 0.323 0.320 0.315 0.314 0.308 0.303 0.301 0.290
+    GBM collected / claims by decile: 0.589 0.623 0.610 0.663 0.591 0.580 0.572 0.630 0.655 0.579
+    BAG sigma by decile: 0.245 0.242 0.241 0.239 0.238 0.236 0.233 0.230 0.228 0.216
+    BAG collected / claims by decile: 0.720 0.743 0.736 0.740 0.707 0.667 0.645 0.705 0.748 0.640
 
 ==============================================================================
 beMTPL97: rate reviews in homogeneous markets: average level paid once every insurer has reviewed 40 times
@@ -141,3 +168,5 @@ beMTPL97: one boosting insurer against one GLM insurer as the books grow (cheape
   books of  12,000: twins sigma GLM 0.158, GBM 0.277; twins collect GLM 0.921, GBM 0.852 | boosting against GLM: share 0.521 [0.422, 0.601], LR 1.185 against 1.099, boosting higher in 12 of 12; after reviews boosting share 0.260 [0.089, 0.441], below 0.5 in 12 of 12 (settled 11); the head-to-head market collects 0.875
   books of  24,000: twins sigma GLM 0.114, GBM 0.228; twins collect GLM 0.948, GBM 0.880 | boosting against GLM: share 0.522 [0.396, 0.618], LR 1.146 against 1.079, boosting higher in 12 of 12; after reviews boosting share 0.319 [0.193, 0.499], below 0.5 in 12 of 12 (settled 11); the head-to-head market collects 0.898
   books of  48,000: twins sigma GLM 0.084, GBM 0.184; twins collect GLM 0.963, GBM 0.903 | boosting against GLM: share 0.520 [0.479, 0.571], LR 1.105 against 1.081, boosting higher in 9 of 12; after reviews boosting share 0.546 [0.379, 0.780], below 0.5 in 6 of 12 (settled 12); the head-to-head market collects 0.914
+  GLM: twins' sigma falls like n to the power -0.45 as the book size n grows (least-squares slope on the log scale over the four sizes; -0.5 is the parametric rate)
+  GBM: twins' sigma falls like n to the power -0.25 as the book size n grows (least-squares slope on the log scale over the four sizes; -0.5 is the parametric rate)

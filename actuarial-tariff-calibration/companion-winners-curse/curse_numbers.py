@@ -79,7 +79,7 @@ def lognormal_collect(k: int, sigma: float) -> float:
     times exp(-sigma M_k - sigma^2/2), with M_k the maximum of k independent standard normals.
     """
     f = lambda x: np.exp(-sigma * x) * k * stats.norm.pdf(x) * stats.norm.cdf(x) ** (k - 1)  # noqa: E731
-    return float(integrate.quad(f, -np.inf, np.inf)[0] * np.exp(-sigma ** 2 / 2))
+    return float(integrate.quad(f, -12.0, 12.0, limit=200)[0] * np.exp(-sigma ** 2 / 2))   # mass outside is below 1e-30
 
 
 def c_k(k: int) -> float:
@@ -261,7 +261,7 @@ def run(P: dict, cfg: dict, CK: dict) -> dict:
     rng = np.random.default_rng(SEED + (0 if name == "freMTPL2" else 100))
 
     homo = {c: {K: {"coll": [], "coll10": [], "sig": [], "formula": [], "lognormal": [], "lrmax": [], "level_inf": [],
-                    "level_10": [], "conv_inf": [], "conv_10": []}
+                    "level_10": [], "conv_inf": [], "conv_10": [], "sig_dec": [], "coll_dec": []}
                 for K in KS} for c in CLASSES}
     single = {c: {"gini": [], "dev": []} for c in CLASSES}
     mixed = {K: {b: {"shareG": [], "lrG": [], "lrL": [], "lvG": [], "lvL": [], "endG": [], "conv": []}
@@ -290,6 +290,17 @@ def run(P: dict, cfg: dict, CK: dict) -> dict:
                 h["coll"].append(m["collected"])
                 h["coll10"].append(m10["collected"])
                 h["sig"].append(s_)
+                if K == 10:
+                    q = np.log(Rt)
+                    mq = q.mean(axis=0)
+                    vq = ((q - mq) ** 2).sum(axis=0) / (K - 1)
+                    order = np.argsort(mq, kind="stable")
+                    cum = np.cumsum(et[order]) - 0.5 * et[order]
+                    dec = np.empty(et.size, dtype=int)
+                    dec[order] = np.minimum((10 * cum / et.sum()).astype(int), 9)
+                    cheapest = (et * Rt).min(axis=0)
+                    h["sig_dec"].append([float(np.sqrt(np.average(vq[dec == j], weights=et[dec == j]))) for j in range(10)])
+                    h["coll_dec"].append([float(cheapest[dec == j].sum() / Nt[dec == j].sum()) for j in range(10)])
                 h["formula"].append(1 - s_ * CK[K])
                 h["lognormal"].append(lognormal_collect(K, s_))
                 h["lrmax"].append(np.nanmax(m["lr"]))
@@ -372,6 +383,14 @@ def run(P: dict, cfg: dict, CK: dict) -> dict:
             print(f"  {lab} minus actual, {kl} ({allf.size} markets): mean {allf.mean():+.4f},"
                   f" largest absolute {np.abs(allf).max():.4f}")
 
+    print("  Where the disagreement lives (K=10, cheapest wins): by decile of the policy's average log rate across the ten"
+          " insurers, cheapest first, mean over partitions")
+    for c in CLASSES:
+        sd = np.mean(homo[c][10]["sig_dec"], axis=0)
+        cd = np.mean(homo[c][10]["coll_dec"], axis=0)
+        print(f"    {c} sigma by decile: " + " ".join(f"{x:.3f}" for x in sd))
+        print(f"    {c} collected / claims by decile: " + " ".join(f"{x:.3f}" for x in cd))
+
     header(f"{name}: rate reviews in homogeneous markets: average level paid once every insurer has reviewed {ROUNDS} times")
     for c in CLASSES:
         print(f"  {c}: " + "; ".join(f"K={K} cheapest wins {np.mean(homo[c][K]['level_inf']):.3f}"
@@ -407,7 +426,14 @@ def run(P: dict, cfg: dict, CK: dict) -> dict:
               f" below 0.5 in {np.sum(np.array(z['endG']) < 0.5)} of {lrg.size} (settled {np.sum(z['conv'])});"
               f" the head-to-head market collects {np.mean(z['coll']):.3f}")
 
-    return {"homo": {c: {str(K): {k: [round(float(x), 6) for x in v] for k, v in homo[c][K].items()} for K in KS}
+    for c in ("GLM", "GBM"):
+        ln_n = np.log(np.array(cfg["sizes"], dtype=float))
+        ln_s = np.log([np.mean(sizes[n]["twin_sig"][c]) for n in cfg["sizes"]])
+        slope = np.polyfit(ln_n, ln_s, 1)[0]
+        print(f"  {c}: twins' sigma falls like n to the power {slope:.2f} as the book size n grows"
+              f" (least-squares slope on the log scale over the four sizes; -0.5 is the parametric rate)")
+
+    return {"homo": {c: {str(K): {k: [round(float(x), 6) for x in np.ravel(v)] for k, v in homo[c][K].items()} for K in KS}
                      for c in CLASSES},
             "sizes": {str(n): {"shareG": [round(float(x), 6) for x in sizes[n]["shareG"]],
                                "endG": [round(float(x), 6) for x in sizes[n]["endG"]],
@@ -424,6 +450,12 @@ def run(P: dict, cfg: dict, CK: dict) -> dict:
 def main() -> None:
     print("Companion: testing the winner's-curse conjecture of Part 4 with many insurers and two portfolios.")
     CK = {K: c_k(K) for K in KS}
+    header("The lognormal prediction: what a market of K unbiased insurers collects per unit of claims, by sigma")
+    for sg in (0.05, 0.10, 0.15, 0.20, 0.30, 0.40):
+        print(f"  sigma {sg:.2f}: " + ", ".join(f"K={K} {lognormal_collect(K, sg):.3f}" for K in KS))
+    print("  For comparison, the expected Poisson deviance of a single tariff whose log rate errs by sigma rises by about"
+          " sigma^2 times the expected claims (second order), while the shortfall of the cheapest of K such tariffs is"
+          " about sigma times c_K of the premium (first order).")
     out = {}
     out["freMTPL2"] = run(french(), PORTFOLIOS["freMTPL2"], CK)
     out["beMTPL97"] = run(belgian(), PORTFOLIOS["beMTPL97"], CK)
