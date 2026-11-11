@@ -271,7 +271,9 @@ def lines(base: pd.DataFrame, wide: pd.DataFrame) -> list[dict[str, Any]]:
     rows = []
     for line in wide.columns:
         f = at_line(base, wide, float(line))
-        row: dict[str, Any] = {"line": float(line)}
+        row: dict[str, Any] = {"line": float(line), "n_below_1pct": int((f.poverty_pct < 1).sum()),
+                               "n_above_99pct": int((f.poverty_pct > 99).sum()),
+                               "mean_headcount": float(f.poverty_pct.mean())}
         for x in (B, "wT1", "iT10"):
             sd = float(f[x].std())
             for key, baseline in (("mean_gdp", [MEAN, G]), ("gdp", [G])):
@@ -280,6 +282,25 @@ def lines(base: pd.DataFrame, wide: pd.DataFrame) -> list[dict[str, Any]]:
                                      "p": frac["coef_p"]}
         rows.append(row)
     return rows
+
+
+def lines_summary(rows: list[dict[str, Any]], base: pd.DataFrame) -> dict[str, Any]:
+    """Where each measure is distinguishable from zero, and where a lognormal says spread changes sign."""
+    out: dict[str, Any] = {}
+    for x in (B, "wT1", "iT10"):
+        for key in ("mean_gdp", "gdp"):
+            sig = [r["line"] for r in rows if r[f"{x}|{key}"]["p"] < 0.05]
+            out[f"{x}|{key}"] = {"lines_p05": sig, "n_p05": len(sig),
+                                 "max_ame_sd": max(r[f"{x}|{key}"]["ame_sd"] for r in rows),
+                                 "max_line": max(rows, key=lambda r: r[f"{x}|{key}"]["ame_sd"])["line"]}
+    # Lognormal with the survey's mean and Gini: a wider spread raises the headcount below
+    # z* = mean * exp(sigma^2 / 2) and lowers it above, where Gini = 2 Phi(sigma / sqrt 2) - 1.
+    from scipy.stats import norm
+    sigma = np.sqrt(2) * norm.ppf((base.gini + 1) / 2)
+    zstar = base["mean"] * np.exp(sigma ** 2 / 2)
+    out["lognormal_crossing"] = {"median": float(zstar.median()), "q25": float(zstar.quantile(0.25)),
+                                 "q75": float(zstar.quantile(0.75)), "median_survey_mean": float(base["mean"].median())}
+    return out
 
 
 def residence(base: pd.DataFrame, wide: pd.DataFrame, citizenship: pd.DataFrame,
@@ -369,7 +390,8 @@ def compute(panel: pd.DataFrame, surveys: pd.DataFrame, heads: pd.DataFrame, ser
         "dissociation": dissociation(base),
         "imputation": imputation(base, meta),
         "poverty": poverty(base, wide),
-        "lines": lines(base, wide),
+        "lines": (rows := lines(base, wide)),
+        "lines_summary": lines_summary(rows, base),
         "residence": residence(base, wide, citizenship, api),
         "timing": timing(base, wide),
     }
@@ -622,8 +644,10 @@ def summary_lines(n: dict[str, Any]) -> list[str]:
             else:
                 out.append(f"   + {x}: coef {fmt(r['coef'], 2)} p {r['p']:.3f} LOO {r['loo_ols']:.2f}")
     for row in n["lines"]:
-        out.append(f"${row['line']:g}: " + "; ".join(
-            f"{k} {fmt(v['ame_sd'], 2)} p {v['p']:.3f}" for k, v in row.items() if k != "line"))
+        out.append(f"${row['line']:g} (floor {row['n_below_1pct']}, ceiling {row['n_above_99pct']}, mean "
+                   f"{row['mean_headcount']:.1f}): " + "; ".join(
+            f"{k} {fmt(v['ame_sd'], 2)} p {v['p']:.3f}" for k, v in row.items() if isinstance(v, dict)))
+    out.append(f"Lines summary: {n['lines_summary']}")
     out.append(f"Forbes: {rs['forbes_total']} by citizenship ({rs['labels_citizenship']} labels), {rs['residence_assigned']} with a "
                f"country field ({rs['labels_residence']}); gains {rs['gains']}; losses {rs['losses']}")
     out.append(f"Panel sums {rs['panel_sum']}; {rs['panel_n_differ']} differ; zero residence {rs['panel_zero_residence']}; "
