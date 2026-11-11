@@ -35,6 +35,12 @@ def ttest(d) -> tuple[float, float, float, float]:
     return m, se, float(student_t.sf(tt, len(d) - 1)), float(student_t.cdf(tt, len(d) - 1))
 
 
+def fp(p: float, digits: int = 3) -> str:
+    """A p-value for the summary. Values below 1e-6 are reported as such: their mantissa moves
+    between runs (LightGBM differs across machines in the fourth decimal) and means nothing."""
+    return "<1e-6" if p < 1e-6 else f"{p:.{digits}g}"
+
+
 def group(domain: str, key: str) -> str:
     return "country" if domain == "elec" else key.split(":", 1)[0] if ":" in key else "earlier"
 
@@ -113,20 +119,20 @@ def main() -> None:
             verdict = (" -> SUPPORTED" if r[0] > 0 and r[2] < 0.05 else " -> REVERSED" if r[0] < 0 and r[3] < 0.05
                        else " -> NOT SUPPORTED")
         lines.append(f"[{DOM[dom]}] mean L: GBM {x.GBM.mean():.4f}, GBMn {x.GBMn.mean():.4f}, SLM {x.SLM.mean():.4f}; "
-                     f"GBM - GBMn {r[0]:+.4f} (se {r[1]:.4f}; p>0 {r[2]:.3g}; p<0 {r[3]:.3g}); GBMn better in "
+                     f"GBM - GBMn {r[0]:+.4f} (se {r[1]:.4f}; p>0 {fp(r[2])}; p<0 {fp(r[3])}); GBMn better in "
                      f"{int((x.GBM > x.GBMn).sum())} of {len(x)}{verdict}")
         if dom != "elec":
             g = (x.GBM - x.GBMn).groupby(x.group).mean()
             lines.append(f"  by list: {int((g > 0).sum())} of {len(g)} positive (" + ", ".join(
                 f"{k} {v:+.4f}" for k, v in g.items()) + ")")
         s = ttest(x.SLM - x.GBMn)
-        lines.append(f"  SLM - GBMn {s[0]:+.4f} (se {s[1]:.4f}; p>0 {s[2]:.3g}; p<0 {s[3]:.3g}); GBMn better than SLM in "
+        lines.append(f"  SLM - GBMn {s[0]:+.4f} (se {s[1]:.4f}; p>0 {fp(s[2])}; p<0 {fp(s[3])}); GBMn better than SLM in "
                      f"{int((x.SLM > x.GBMn).sum())} of {len(x)}")
         # does the reading say in advance who gains? (exploratory)
         lr = per[(per.domain == dom) & (per.family == "GBM")].set_index("series").excess
         gain = (x.set_index("series").GBM - x.set_index("series").GBMn).reindex(lr.index)
         rho, p = spearmanr(lr, gain)
-        lines.append(f"  exploratory: Spearman(GBM's excess on the past, forward gain of GBMn) {rho:+.2f} (p {p:.2g})")
+        lines.append(f"  exploratory: Spearman(GBM's excess on the past, forward gain of GBMn) {rho:+.2f} (p {fp(p, 2)})")
     (RES / "daily_summary.txt").write_text("\n".join(lines) + "\n", encoding="utf-8")
     print("\n".join(lines))
 
