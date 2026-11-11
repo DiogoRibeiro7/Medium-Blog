@@ -49,10 +49,10 @@ jobs:
       - name: Test the shared tools
         run: python -m unittest discover -s tests -v
 
-      - name: Rerun each part and compare with the committed output
+      - name: Rerun each part and companion and compare with the committed output
         run: |
           status=0
-          for part in part*/; do
+          for part in part*/ companion*/; do
             main=$(ls "$part"*.py | grep -v figures.py)
             echo "== $main"
             (cd "$part" && python "$(basename "$main")" > "$RUNNER_TEMP/output.txt")
@@ -67,6 +67,6 @@ jobs:
 
       - name: Check that the figures script runs
         run: |
-          for part in part*/; do
+          for part in part*/ companion*/; do
             (cd "$part" && python figures.py)
           done
