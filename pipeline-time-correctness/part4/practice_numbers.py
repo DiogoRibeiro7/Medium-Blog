@@ -85,6 +85,12 @@ below = iv.final_7d < iv.lower_7d
 print(f"90% interval from the pipeline's own past errors, runs from {INTERVAL_FROM.date()}: {len(iv)} runs, "
       f"contained the final count on {int(inside.sum())} ({pct(inside.mean())}); final below {int(below.sum())}, "
       f"above {int((iv.final_7d > iv.upper_7d).sum())}; median width {pct(((iv.upper_7d - iv.lower_7d) / iv.nowcast_7d).median())} of the nowcast")
+for y in (2021, 2022, 2023):
+    m = iv.run_date.dt.year == y
+    print(f"  {y}: {int(m.sum())} runs, coverage {pct(inside[m].mean())}")
+cov = inside.groupby(iv.run_date.dt.to_period("M")).mean()
+print("  months with coverage below 60%: " + ", ".join(f"{k} {pct(v, 0)}" for k, v in cov.items() if v < 0.6)
+      + f"; months at or above 90%: {int((cov >= 0.9).sum())} of {len(cov)}")
 
 section("P2. Week-over-week change against the final counts")
 fin_wow = rep.set_index("run_date").final_7d / rep.set_index("run_date").final_7d.shift(7) - 1
@@ -119,12 +125,15 @@ for d in rep.run_date:
         mismatch.append(d)
 print(f"runs recomputed from landing and earlier mart rows: {len(rep)}; identical to what was stored "
       f"(profile and report, every value): {len(rep) - len(mismatch)}; different: {len(mismatch)}", )
+n_values = len(rep) * (rep.shape[1] - 1) + con.execute("select count(*) from core.delay_profile").fetchone()[0] * 6
+print(f"values compared: {n_values:,} (12 per report row, 6 per delay-profile row)")
 print(f"reproduction took {time.time() - t0:.0f} s", file=sys.stderr)
 
 section("P4. The late file")
 r15 = rep.set_index("run_date").loc[pd.Timestamp("2022-03-15")]
 print(f"run of 2022-03-15: latest publication loaded {r15.as_of_publication.date()}, published 7-day count "
-      f"{int(r15.published_7d):,}, nowcast {r15.nowcast_7d:,.0f}, stale {bool(r15.stale)}")
+      f"{int(r15.published_7d):,}, nowcast {r15.nowcast_7d:,.0f}, stale {bool(r15.stale)}; "
+      f"final for its seven dates {int(r15.final_7d):,}")
 by_pub = con.execute("""
     select sum(cases) from landing.cases
     where publication_date = date '2022-03-15'
@@ -179,3 +188,6 @@ print("  nowcast error on the runs that used them: " + ", ".join(
     f"{d.date()} {100 * err[d]:+.1f}%" for d in other.p if d in err.index))
 rest = err[~err.index.isin(other.p)]
 print(f"  mean absolute nowcast error on the other runs: {pct(rest.abs().mean())}")
+r = rep.set_index("run_date").loc[pd.Timestamp("2023-08-28")]
+print(f"run of 2023-08-28 (file {r.as_of_publication.date()}): published {int(r.published_7d):,}, nowcast {r.nowcast_7d:,.0f}, "
+      f"interval {r.lower_7d:,.0f} to {r.upper_7d:,.0f}, estimated completeness {pct(r.completeness)}, final {int(r.final_7d):,}")

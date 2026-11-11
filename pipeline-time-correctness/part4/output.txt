@@ -20,6 +20,10 @@ mean absolute error by weekday of the run, published / nowcast: Mon 10.2% / 5.2%
 largest nowcast error: -48.5% on 2023-08-28
 estimated completeness against actual: mean absolute difference 2.6 points; estimated 91.5% on average, actual 91.0%
 90% interval from the pipeline's own past errors, runs from 2021-08-01: 761 runs, contained the final count on 561 (73.7%); final below 74, above 126; median width 10.3% of the nowcast
+  2021: 153 runs, coverage 65.4%
+  2022: 365 runs, coverage 71.2%
+  2023: 243 runs, coverage 82.7%
+  months with coverage below 60%: 2021-11 33%, 2022-01 52%, 2022-10 26%, 2023-02 57%; months at or above 90%: 7 of 25
 
 ==============================================================================
 P2. Week-over-week change against the final counts
@@ -32,11 +36,12 @@ P2. Week-over-week change against the final counts
 P3. Reproducing every run
 ==============================================================================
 runs recomputed from landing and earlier mart rows: 822; identical to what was stored (profile and report, every value): 822; different: 0
+values compared: 1,011,060 (12 per report row, 6 per delay-profile row)
 
 ==============================================================================
 P4. The late file
 ==============================================================================
-run of 2022-03-15: latest publication loaded 2022-03-14, published 7-day count 1,283,100, nowcast 1,414,509, stale True
+run of 2022-03-15: latest publication loaded 2022-03-14, published 7-day count 1,283,100, nowcast 1,414,509, stale True; final for its seven dates 1,413,951
 the file of 2022-03-15 was loaded at 2022-03-17 08:00:00; a rebuild that filters by publication date instead of load time would report 1,318,326 for that run
 
 ==============================================================================
@@ -60,3 +65,4 @@ files compared with the file of the day before: 873; identical on every reportin
   identical files dated Tuesday to Saturday: 2022-10-04, 2023-04-08, 2023-04-11, 2023-05-02, 2023-05-19, 2023-05-30, 2023-08-25, 2023-08-26
   nowcast error on the runs that used them: 2022-10-04 -19.9%, 2023-04-08 -7.2%, 2023-04-11 -20.0%, 2023-05-02 -14.1%, 2023-05-19 -10.8%, 2023-05-30 -9.1%, 2023-08-25 -29.4%, 2023-08-26 -46.0%
   mean absolute nowcast error on the other runs: 2.7%
+run of 2023-08-28 (file 2023-08-28): published 2,482, nowcast 2,609, interval 2,414 to 2,762, estimated completeness 95.1%, final 5,064
