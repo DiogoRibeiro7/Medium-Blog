@@ -1,0 +1,40 @@
+name: Billionaire-poverty follow-ups — Forbes lists by year
+
+on:
+  push:
+    branches: [billionaires-poverty-within-country]
+    paths:
+      - ".github/workflows/billionaires-poverty-followups-forbes-history.yml"
+      - "billionaires-poverty-followups/fetch_forbes_history.py"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fetch-forbes-history:
+    name: Country totals of the Forbes lists, 1997-2026
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: python -m pip install -r billionaires-poverty-followups/requirements.txt
+      - name: Fetch country totals (no person-level records kept)
+        working-directory: billionaires-poverty-followups
+        run: |
+          python fetch_forbes_history.py --first 1997 --last 2026 --output-dir data | tee forbes_log.txt
+          echo "::notice title=Forbes years::$(python -c "import json;m=json.load(open('data/forbes_history_manifest.json'));print({y:(e.get('n_persons'),round(e['overlap_with_latest'],3) if e.get('overlap_with_latest') is not None else None,e.get('citizenship_labels'),(e.get('error') or '')[:60]) for y,e in sorted(m['years'].items())})")"
+          echo "::notice title=Forbes keys::$(python -c "import json;m=json.load(open('data/forbes_history_manifest.json'));print({y:(e.get('record_keys') or [])[:40] for y,e in sorted(m['years'].items()) if y in ('2026','2015','2005','1997')})" | cut -c1-3000)"
+      - name: Commit the country totals to the branch
+        if: github.event_name == 'push'
+        run: |
+          git config user.name "Diogo Ribeiro"
+          git config user.email "diogo_dj@hotmail.com"
+          git add billionaires-poverty-followups/data/forbes_history_counts.csv.gz \
+                  billionaires-poverty-followups/data/forbes_history_manifest.json
+          git commit -m "Billionaire-poverty follow-ups: Forbes country totals by year" || echo "no changes"
+          git push origin HEAD:${GITHUB_REF_NAME}
