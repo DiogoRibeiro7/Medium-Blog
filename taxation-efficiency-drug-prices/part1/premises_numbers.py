@@ -62,7 +62,7 @@ ROUNDS = 50
 TARGET_ROUND1 = 0.50   # Ledyard (1995): first-round contributions "between 40% and 60%" of the optimum
 TARGET_ROUND10 = 0.20  # Andreoni (1995), citing Isaac and Walker (1988): "about 15-25 percent" by round 10
 TARGET_FULL10 = 0.825  # Fehr and Gaechter (2000): 82.5 % give the whole endowment in the final period
-TARGET_RATIO10 = 1.00  # Fehr and Gaechter (2000): punishment costs about as large as the gains
+TARGET_RATIO10 = 1.00  # Fehr and Williams (2017, fn. 3) on Fehr and Gaechter (2000): cost as large as the gains
 
 # Marginal cost of public funds: Browning (1976), 9-16 cents per marginal dollar of labour-tax
 # revenue; Ballard, Shoven and Whalley (1985), 17-56 cents, centring around 33 cents.
@@ -185,7 +185,8 @@ def main() -> None:
     print("target 3. Points received raise the target's contribution floor; floors do not relax (decay 1.0).")
     print(f"Targets: in round 10, {TARGET_FULL10:.1%} give the whole endowment (Fehr and Gaechter 2000, final")
     print("period of the partner treatment with punishment); welfare over 10 rounds equal to the voluntary")
-    print("regime's (Fehr and Gaechter 2000: punishment cost about as large as the gain from cooperation).")
+    print("regime's (Fehr and Williams 2017, on Fehr and Gaechter 2000: the total cost of punishment was on")
+    print("average as large as the benefit from the extra cooperation).")
     sbase = Sanctions(floor_decay=1.0)
     sanctions, sloss = calibrate_sanctions(behaviour, sbase, draws, w10)
     print(f"Calibrated: gamma = {sanctions.gamma:.2f} points per unit of shortfall, eta = {sanctions.eta:.4f}"

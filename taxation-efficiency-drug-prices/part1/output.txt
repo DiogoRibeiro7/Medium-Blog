@@ -46,7 +46,8 @@ to that member's shortfall below the rest of the group. A point costs the punish
 target 3. Points received raise the target's contribution floor; floors do not relax (decay 1.0).
 Targets: in round 10, 82.5% give the whole endowment (Fehr and Gaechter 2000, final
 period of the partner treatment with punishment); welfare over 10 rounds equal to the voluntary
-regime's (Fehr and Gaechter 2000: punishment cost about as large as the gain from cooperation).
+regime's (Fehr and Williams 2017, on Fehr and Gaechter 2000: the total cost of punishment was on
+average as large as the benefit from the extra cooperation).
 Calibrated: gamma = 11.65 points per unit of shortfall, eta = 0.0772 (squared error below 1e-8).
 Mean contribution share by round (1-10): [0.5   0.537 0.616 0.722 0.808 0.87  0.911 0.937 0.953 0.964]
 Share giving the whole endowment by round (1-10): [0.015 0.07  0.102 0.2   0.346 0.494 0.619 0.71  0.778 0.825]
