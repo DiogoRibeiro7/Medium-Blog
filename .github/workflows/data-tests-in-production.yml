@@ -1,0 +1,137 @@
+name: Profile data-tests-in-production
+
+# Downloads the monthly NYC yellow-taxi files (2019-01 to 2026-09), reduces each to a profile,
+# profiles fourteen faulted copies of every month from 2023-01, runs every check on all of them,
+# and commits the profiles, the results and the figures (pushes) or compares them with the
+# committed summary (pull requests).
+
+on:
+  push:
+    branches:
+      - data-tests-in-production
+    paths:
+      - 'data-tests-in-production/feed/**'
+      - 'data-tests-in-production/evaluate.py'
+      - 'data-tests-in-production/requirements.txt'
+      - '.github/workflows/data-tests-in-production.yml'
+  pull_request:
+    paths:
+      - 'data-tests-in-production/**'
+      - '.github/workflows/data-tests-in-production.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: data-tests-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: data-tests-in-production
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: data-tests-in-production/requirements.txt
+      - name: Install pinned dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Lint with Ruff
+        run: ruff check .
+      - name: Unit tests on synthetic months
+        run: python -m pytest -q
+
+  profile:
+    needs: tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    strategy:
+      fail-fast: true
+      matrix:
+        months:
+          - '2019-01:2019-12'
+          - '2020-01:2020-12'
+          - '2021-01:2021-12'
+          - '2022-01:2022-12'
+          - '2023-01:2023-06'
+          - '2023-07:2023-12'
+          - '2024-01:2024-06'
+          - '2024-07:2024-12'
+          - '2025-01:2025-06'
+          - '2025-07:2025-12'
+          - '2026-01:2026-09'
+    defaults:
+      run:
+        working-directory: data-tests-in-production
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: data-tests-in-production/requirements.txt
+      - name: Install pinned dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Download and profile
+        run: python -m feed.run --months ${{ matrix.months }} --faults-from 2023-01 --out profiles --cache /tmp/tlc
+      - uses: actions/upload-artifact@v4
+        with:
+          name: profiles-${{ strategy.job-index }}
+          path: data-tests-in-production/profiles
+          retention-days: 7
+
+  evaluate:
+    needs: profile
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: data-tests-in-production
+    env:
+      MPLBACKEND: Agg
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event_name == 'push' && github.ref || '' }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: data-tests-in-production/requirements.txt
+      - name: Install pinned dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Keep the committed profiles for comparison
+        run: if [ -d profiles ]; then mv profiles /tmp/committed-profiles; fi
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: profiles-*
+          path: data-tests-in-production/profiles
+          merge-multiple: true
+      - name: Bundle the profiles
+        run: python -m feed.bundle profiles
+      - name: Run every check
+        run: python evaluate.py --profiles profiles --out results
+      - name: Figures
+        run: if [ -f figures.py ]; then python figures.py || echo "figures failed"; fi
+      - name: Compare with the committed summary (pull requests)
+        if: github.event_name == 'pull_request'
+        run: python ../backward-evaluation-pooling/check_results.py results/summary.txt
+      - name: Commit the profiles and results (pushes to the branch)
+        if: github.event_name == 'push'
+        run: |
+          git config user.name "Diogo Ribeiro"
+          git config user.email "diogo_dj@hotmail.com"
+          git add profiles results
+          if [ -d figures ]; then git add figures; fi
+          if git diff --cached --quiet; then
+            echo "Results unchanged."
+          else
+            git commit -m "data-tests-in-production: profiles and results from the workflow ($(date -u +%Y-%m-%d))"
+            git push || (git pull --rebase --autostash && git push)
+          fi
