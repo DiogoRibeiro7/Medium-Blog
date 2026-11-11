@@ -1,0 +1,59 @@
+name: Reproduce wealth-concentration-misallocation
+
+on:
+  pull_request:
+    paths:
+      - 'wealth-concentration-misallocation/**'
+      - '.github/workflows/wealth-concentration-misallocation.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'wealth-concentration-misallocation/**'
+      - '.github/workflows/wealth-concentration-misallocation.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    defaults:
+      run:
+        working-directory: wealth-concentration-misallocation
+    env:
+      MPLBACKEND: Agg
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: wealth-concentration-misallocation/requirements.txt
+
+      - name: Install pinned dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Run the tests
+        run: python -m pytest -q tests
+
+      - name: Rerun the simulations and the cross-country analysis
+        run: |
+          python experiments.py > /dev/null
+          python analysis.py > /dev/null
+
+      - name: Check the numbers match the committed run
+        run: git diff --exit-code -- results/model_summary.txt results/analysis_summary.txt
+
+      - name: Draw the figures
+        run: |
+          python figures.py
+          for f in fig1_static_surface fig2_steady_states fig3_reranking fig4_coverage \
+                   fig5_spec_curve fig6_billionaires; do
+            test -s "figures/$f.png"
+          done
