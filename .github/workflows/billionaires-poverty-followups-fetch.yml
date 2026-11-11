@@ -1,0 +1,48 @@
+name: Billionaire-poverty follow-ups — fetch PIP poverty lines
+
+on:
+  push:
+    branches: [billionaires-poverty-lines]
+    paths:
+      - ".github/workflows/billionaires-poverty-followups-fetch.yml"
+      - "billionaires-poverty-followups/fetch_pip.py"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fetch-pip:
+    name: Download PIP survey estimates across poverty lines
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: python -m pip install -r billionaires-poverty-followups/requirements.txt
+      - name: Offline contract tests
+        working-directory: billionaires-poverty-followups
+        run: python -m unittest discover -s tests -p "test_fetch_pip.py" -v
+      - name: Fetch PIP estimates (2021 PPP, survey years, no gap filling)
+        working-directory: billionaires-poverty-followups
+        run: python fetch_pip.py --output-dir data | tee -a "$GITHUB_STEP_SUMMARY"
+      - name: Upload exact data and manifest
+        uses: actions/upload-artifact@v4
+        with:
+          name: pip-poverty-lines
+          path: billionaires-poverty-followups/data/
+          if-no-files-found: error
+          retention-days: 30
+      - name: Commit the fetched tables to the branch
+        if: github.event_name == 'push'
+        run: |
+          git config user.name "Diogo Ribeiro"
+          git config user.email "diogo_dj@hotmail.com"
+          git add billionaires-poverty-followups/data/pip_surveys.csv.gz \
+                  billionaires-poverty-followups/data/pip_headcounts.csv.gz \
+                  billionaires-poverty-followups/data/pip_manifest.json
+          git commit -m "Billionaire-poverty follow-ups: PIP data snapshot" || echo "no changes"
+          git push origin HEAD:${GITHUB_REF_NAME}
