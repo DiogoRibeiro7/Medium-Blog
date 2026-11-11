@@ -98,3 +98,4 @@ backward-evaluation-model-choice/**/*.csv -filter -diff -merge text
 backward-evaluation-model-choice/**/*.gz -filter -diff -merge binary
 backward-evaluation-model-choice/**/*.tsv -filter -diff -merge text
 pipeline-time-correctness/**/*.csv -filter -diff -merge text
+wealth-concentration-misallocation/**/*.csv -filter -diff -merge text
