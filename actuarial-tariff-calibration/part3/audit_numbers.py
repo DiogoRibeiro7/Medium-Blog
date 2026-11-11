@@ -422,9 +422,17 @@ def main() -> None:
     best_g = [max(MODELS, key=lambda k: r[k]["gini"]) for r in reps]
     best_d = [min(MODELS, key=lambda k: r[k]["D"]) for r in reps]
     tally = lambda xs: ", ".join(f"{m} {xs.count(m)}" for m in MODELS if m in xs)
-    print(f"  best by Gini: {tally(best_g)} of {N_SPLITS}; best by deviance: {tally(best_d)} of {N_SPLITS}")
+    best_l = [max(MODELS, key=lambda k: r[k]["gini_L"]) for r in reps]
+    print(f"  best by Gini: {tally(best_g)} of {N_SPLITS}; best by deviance: {tally(best_d)} of {N_SPLITS};"
+          f" best by Gini on total losses: {tally(best_l)} of {N_SPLITS}")
     fr_all = np.array([r["freq_ratio"] for r in reps])
     print(f"  test/train frequency ratio across splits: range [{fr_all.min():.4f}, {fr_all.max():.4f}], sd {fr_all.std(ddof=1):.4f}")
+    for k in MODELS:
+        print(f"  {k:<6} Gini on total losses by split: " + " ".join(f"{r[k]['gini_L']:.4f}" for r in reps))
+    gL = np.array([r["GBM"]["gini_L"] - r["GLM-A"]["gini_L"] for r in reps])
+    dG = np.array([r["GBM"]["D"] - r["GLM-A"]["D"] for r in reps])
+    print(f"  GBM - GLM-A across splits: Gini on total losses higher for GBM in {np.sum(gL > 0)} of {N_SPLITS};"
+          f" deviance {dG.mean():+.2f} (range {dG.min():+.2f} to {dG.max():+.2f})")
     dAB = np.array([r["GLM-B"]["D"] - r["GLM-A"]["D"] for r in reps])
     gAB = np.array([r["GLM-B"]["gini"] - r["GLM-A"]["gini"] for r in reps])
     print(f"  GLM-B - GLM-A across splits: Gini {gAB.mean():+.4f} (range {gAB.min():+.4f} to {gAB.max():+.4f});"

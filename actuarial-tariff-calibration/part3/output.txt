@@ -107,8 +107,12 @@ Repeated random 60/20/20 splits, models refitted on each training sample (test-s
   GLM-A  cheapest decile ratio mean 1.072 range [0.986, 1.209], below 1 in 2 of 10; dearest decile mean 1.049 range [1.014, 1.122]; MCB mean 1.396 range [1.131, 1.776], after rescaling to the test total mean 1.375
   GLM-B  cheapest decile ratio mean 0.974 range [0.878, 1.087], below 1 in 7 of 10; dearest decile mean 1.006 range [0.957, 1.043]; MCB mean 1.077 range [0.859, 1.263], after rescaling to the test total mean 1.057
   GBM    cheapest decile ratio mean 0.983 range [0.802, 1.185], below 1 in 5 of 10; dearest decile mean 0.983 range [0.934, 1.025]; MCB mean 1.219 range [1.030, 1.438], after rescaling to the test total mean 1.197
-  best by Gini: GBM 10 of 10; best by deviance: GBM 10 of 10
+  best by Gini: GBM 10 of 10; best by deviance: GBM 10 of 10; best by Gini on total losses: GLM-B 3, GBM 7 of 10
   test/train frequency ratio across splits: range [0.9859, 1.0309], sd 0.0160
+  GLM-A  Gini on total losses by split: 0.3451 0.3060 0.3098 0.3368 0.3162 0.4986 0.4576 0.2346 0.3802 0.2886
+  GLM-B  Gini on total losses by split: 0.3561 0.3337 0.3237 0.3434 0.3227 0.5083 0.4771 0.2493 0.3768 0.3200
+  GBM    Gini on total losses by split: 0.3525 0.3726 0.3528 0.4216 0.3345 0.5348 0.4533 0.2874 0.4032 0.3187
+  GBM - GLM-A across splits: Gini on total losses higher for GBM in 9 of 10; deviance -9.05 (range -10.10 to -7.35)
   GLM-B - GLM-A across splits: Gini +0.0154 (range +0.0100 to +0.0186); deviance -2.72 (range -3.12 to -2.27)
 
 ==============================================================================
