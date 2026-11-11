@@ -1,0 +1,93 @@
+Yellow-taxi monthly files: 93 real deliveries profiled (2019-01 to 2026-09); checks evaluated from 2020-01 (81 deliveries); 630 faulted deliveries (14 faults).
+Change checks: trailing 12 deliveries, robust |z| > 5. Tolerant table checks: 1% of rows. Volume floor: 1,000,000 rows.
+
+=== Real deliveries: share of deliveries on which each check fired ===
+[table] month window (strict) 100%; not null (strict) 100%; ranges (strict) 100%; schema (strict) 100%; reconciliation (strict) 100%; reconciliation (1%) 100%; not null (1%) 99%; ranges (1%) 38%; code lists (strict) 36%; unique rows (strict) 11%; schema (tolerant) 10%; volume floor 5%; month window (1%) 0%; code lists (1%) 0%; unique rows (1%) 0%
+[change] value distributions 44%; rule-violation rates 28%; mix: passenger_count 20%; null shares 17%; mix: ratecodeid 12%; mix: payment_type 11%; pickup zones 10%; daily completeness 9%; hour of day 9%; schema change 7%; volume 7%; mix: vendorid 2%; duplicate rows 1%; reconciliation 0%
+Mean alarms per delivery: table 8.0, change 1.8; deliveries with no table alarm: 0, with no change alarm: 28 of 81
+
+=== Real deliveries: every change alarm (month: check, |z|, metric) ===
+  2020-01: value distributions 5.3 (fare_amount q0.5); duplicate rows 202.2 (duplicate share); mix: passenger_count 5.3 (TV 0.017)
+  2020-02: value distributions 5.3 (fare_amount q0.5); mix: passenger_count 6.4 (TV 0.019)
+  2020-03: volume 7.2 (log rows); daily completeness 84.0 (highest day / median day); value distributions 5.3 (fare_amount q0.5); mix: passenger_count 16.1 (TV 0.038); hour of day 11.3 (TV 0.040)
+  2020-04: volume 35.2 (log rows); null shares 46.5 (congestion_surcharge); rule-violation rates 14.8 (zero distance); value distributions 48.7 (tip_amount q0.5); mix: payment_type 15.8 (TV 0.167); mix: ratecodeid 36.5 (TV 0.076); mix: passenger_count 32.9 (TV 0.133); hour of day 42.3 (TV 0.167); pickup zones 42.9 (TV 0.324)
+  2020-05: volume 31.0 (log rows); null shares 78.0 (passenger_count); rule-violation rates 22.5 (zero distance); value distributions 99.5 (tip_amount q0.5); mix: payment_type 14.5 (TV 0.217); mix: ratecodeid 79.5 (TV 0.162); mix: passenger_count 28.3 (TV 0.170); hour of day 22.6 (TV 0.137); pickup zones 30.0 (TV 0.318)
+  2020-06: volume 20.6 (log rows); null shares 30.8 (passenger_count); rule-violation rates 18.2 (zero distance); value distributions 11.7 (tip_amount q0.5); mix: payment_type 6.5 (TV 0.129); mix: ratecodeid 31.5 (TV 0.085); mix: passenger_count 13.7 (TV 0.096); hour of day 20.9 (TV 0.139); pickup zones 18.6 (TV 0.222)
+  2020-07: volume 15.8 (log rows); null shares 20.9 (congestion_surcharge); rule-violation rates 17.1 (zero distance); mix: ratecodeid 27.3 (TV 0.070); mix: passenger_count 7.3 (TV 0.079); hour of day 20.8 (TV 0.124); pickup zones 7.5 (TV 0.184)
+  2020-08: volume 9.3 (log rows); null shares 11.8 (passenger_count); rule-violation rates 11.6 (zero distance); mix: ratecodeid 18.6 (TV 0.060); hour of day 8.6 (TV 0.111); pickup zones 7.0 (TV 0.153); schema change inf (airport_fee:"null"; airport_fee:float)
+  2020-09: null shares 6.8 (congestion_surcharge); rule-violation rates 13.1 (dropoff<pickup); mix: ratecodeid 7.3 (TV 0.054)
+  2020-10: rule-violation rates 16.0 (dropoff<pickup); schema change inf (airport_fee:"null"; airport_fee:float)
+  2020-11: rule-violation rates 17.5 (dropoff<pickup); schema change inf (airport_fee:"null"; airport_fee:float)
+  2020-12: rule-violation rates 18.8 (dropoff<pickup)
+  2021-01: rule-violation rates 20.4 (dropoff<pickup); value distributions 5.6 (fare_amount q0.5)
+  2021-02: daily completeness 12.2 (lowest day / median day); rule-violation rates 22.7 (dropoff<pickup)
+  2021-04: null shares 18.8 (airport_fee); value distributions 9.1 (tip_amount q0.95)
+  2021-05: null shares 19.0 (airport_fee); value distributions 22.7 (tip_amount q0.95)
+  2021-06: null shares 19.1 (airport_fee); value distributions 23.2 (tip_amount q0.95); mix: passenger_count 6.9 (TV 0.035); pickup zones 7.7 (TV 0.082)
+  2021-07: null shares 19.1 (airport_fee); value distributions 29.9 (tip_amount q0.95); mix: passenger_count 8.6 (TV 0.043); pickup zones 8.7 (TV 0.116)
+  2021-08: null shares 19.0 (airport_fee); rule-violation rates 6.7 (zero passengers); value distributions 34.1 (tip_amount q0.95); mix: passenger_count 6.7 (TV 0.038); pickup zones 6.3 (TV 0.117)
+  2021-09: null shares 13.1 (airport_fee); rule-violation rates 5.2 (zero passengers); value distributions 16.3 (tip_amount q0.95)
+  2021-10: rule-violation rates 5.5 (zero passengers)
+  2022-01: value distributions 5.5 (trip_distance q0.25)
+  2022-09: daily completeness 7.4 (lowest day / median day); value distributions 10.0 (fare_amount q0.5)
+  2022-11: mix: vendorid 8.8 (TV 0.066)
+  2022-12: value distributions 7.8 (fare per mile q0.5)
+  2023-01: value distributions 25.6 (fare_amount q0.95)
+  2023-02: value distributions 16.2 (fare_amount q0.95); schema change inf (Airport_fee:float; RatecodeID:float; RatecodeID:integer; airport_fee:float; passenger_count:float; passenger_count:integer)
+  2023-03: value distributions 31.0 (fare_amount q0.95)
+  2023-04: value distributions 34.6 (fare_amount q0.95)
+  2023-05: value distributions 34.6 (fare_amount q0.95)
+  2023-06: value distributions 34.6 (fare_amount q0.95)
+  2023-09: daily completeness 5.2 (lowest day / median day); rule-violation rates 8.5 (zero distance)
+  2023-10: rule-violation rates 5.9 (zero distance)
+  2023-12: daily completeness 5.4 (highest day / median day); mix: passenger_count 6.3 (TV 0.041)
+  2024-01: value distributions 11.7 (fare_amount q0.95)
+  2024-02: value distributions 18.7 (fare_amount q0.95)
+  2024-03: null shares 6.9 (passenger_count); value distributions 13.7 (fare_amount q0.95); mix: payment_type 10.6 (TV 0.086); mix: ratecodeid 10.9 (TV 0.088); mix: passenger_count 7.2 (TV 0.082)
+  2024-04: value distributions 11.7 (fare_amount q0.95); mix: payment_type 8.4 (TV 0.078); mix: ratecodeid 14.5 (TV 0.081); mix: passenger_count 5.6 (TV 0.074)
+  2025-01: rule-violation rates 8.4 (fare_amount<0); value distributions 5.2 (trip_distance q0.5); mix: payment_type 7.9 (TV 0.053); schema change inf (cbd_congestion_fee:float)
+  2025-02: null shares 5.7 (passenger_count); rule-violation rates 10.8 (fare_amount<0); value distributions 7.3 (tip_amount q0.5); mix: payment_type 13.0 (TV 0.119); mix: ratecodeid 9.7 (TV 0.119); mix: passenger_count 10.2 (TV 0.118)
+  2025-03: rule-violation rates 10.5 (fare_amount<0); mix: payment_type 7.1 (TV 0.111); mix: ratecodeid 6.7 (TV 0.109); mix: passenger_count 6.8 (TV 0.107); hour of day 5.0 (TV 0.039)
+  2025-04: rule-violation rates 9.3 (fare_amount<0)
+  2025-05: rule-violation rates 17.4 (fare_amount<0); mix: payment_type 5.9 (TV 0.146); mix: passenger_count 5.9 (TV 0.145)
+  2025-06: rule-violation rates 11.6 (fare_amount<0); value distributions 5.4 (trip_distance q0.5)
+  2025-09: value distributions 5.1 (fare_amount q0.5)
+  2025-11: rule-violation rates 5.4 (total_amount<0)
+  2025-12: value distributions 7.0 (fare per mile q0.5)
+  2026-01: daily completeness 5.5 (lowest day / median day)
+  2026-02: daily completeness 5.9 (lowest day / median day); value distributions 5.7 (fare per mile q0.5)
+  2026-03: value distributions 5.5 (tip_amount q0.5)
+  2026-04: value distributions 18.0 (tip_amount q0.5)
+  2026-05: value distributions 12.0 (tip_amount q0.5)
+  2026-06: value distributions 12.0 (tip_amount q0.5); mix: vendorid 7.2 (TV 0.033); schema change inf (request_source:string)
+
+=== Faults: share of faulted deliveries detected (fired on the fault and not on the clean month) ===
+         late_days (silent): table 0%, change 76%  | checks that caught it (months): daily completeness 31, volume 4, value distributions 3, mix: vendorid 1
+    vendor_missing (silent): table 13%, change 100%  | checks that caught it (months): mix: vendorid 44, rule-violation rates 29, reconciliation 27, value distributions 8
+     duplicate_day (silent): table 100%, change 100%  | checks that caught it (months): duplicate rows 45, unique rows (1%) 45, daily completeness 41, unique rows (strict) 39
+      partial_rows (silent): table 0%, change 4%  | checks that caught it (months): volume 2
+       km_distance (silent): table 0%, change 56%  | checks that caught it (months): value distributions 25
+      payment_swap (silent): table 0%, change 91%  | checks that caught it (months): mix: payment_type 39, value distributions 25
+         utc_shift (silent): table 31%, change 98%  | checks that caught it (months): hour of day 44, rule-violation rates 36, month window (1%) 14
+      tips_dropped (silent): table 0%, change 100%  | checks that caught it (months): reconciliation 45, value distributions 25
+   null_passengers (silent): table 0%, change 96%  | checks that caught it (months): null shares 43, mix: passenger_count 39
+        zone_shift (silent): table 0%, change 96%  | checks that caught it (months): pickup zones 43
+             cents (loud): table 0%, change 100%  | checks that caught it (months): reconciliation 45, value distributions 25
+        stale_copy (loud): table 100%, change 100%  | checks that caught it (months): month window (1%) 45, daily completeness 41, hour of day 38, rule-violation rates 36
+   airport_fee_int (schema): table 0%, change 93%  | checks that caught it (months): schema change 42, reconciliation 7
+    renamed_column (schema): table 100%, change 100%  | checks that caught it (months): reconciliation 45, schema (tolerant) 45, schema change 42
+  (45 base deliveries per fault)
+  all silent faults: table 14%, change 82%
+  all loud faults: table 50%, change 100%
+  all schema faults: table 50%, change 97%
+
+=== Change checks at other thresholds (real deliveries / faulted deliveries) ===
+  k    3: deliveries with an alarm 88%, mean alarms 3.02, worst check 72%; silent faults detected 77%, all faults 82%
+  k    4: deliveries with an alarm 79%, mean alarms 2.23, worst check 58%; silent faults detected 81%, all faults 86%
+  k    5: deliveries with an alarm 65%, mean alarms 1.79, worst check 44%; silent faults detected 82%, all faults 86%
+  k    6: deliveries with an alarm 56%, mean alarms 1.49, worst check 32%; silent faults detected 80%, all faults 85%
+  k    8: deliveries with an alarm 51%, mean alarms 1.19, worst check 28%; silent faults detected 76%, all faults 83%
+  k   10: deliveries with an alarm 46%, mean alarms 1.04, worst check 26%; silent faults detected 74%, all faults 81%
+  k   15: deliveries with an alarm 36%, mean alarms 0.75, worst check 19%; silent faults detected 71%, all faults 79%
+  k   20: deliveries with an alarm 28%, mean alarms 0.51, worst check 14%; silent faults detected 68%, all faults 77%
+  k   30: deliveries with an alarm 20%, mean alarms 0.32, worst check 9%; silent faults detected 60%, all faults 71%
