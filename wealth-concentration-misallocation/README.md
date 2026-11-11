@@ -7,8 +7,8 @@ Computational companion to a Medium article. Question: is concentrated wealth ec
 ```bash
 python -m pip install -r requirements.txt
 python fetch.py --out data   # WID, PWT 11.0, WDI and the billionaire database (run by the data workflow; see below)
-python experiments.py        # simulations: results/sim_*.csv, model_summary.txt (about 4 minutes on two cores)
-python analysis.py           # cross-country: results/panel_*.csv, billionaire_*.csv, analysis_summary.txt
+python experiments.py        # simulations: results/sim_*.csv, model_summary.txt (about 6 minutes on two cores)
+python analysis.py           # cross-country: results/panel_*.csv, spec_curve_test.csv, billionaire_*.csv, analysis_summary.txt (about 3 minutes)
 python figures.py            # figures/fig1_*.png ... fig6_*.png
 python -m pytest -q tests
 ```
@@ -25,6 +25,7 @@ python -m pytest -q tests
 - E3: 25% tax on capital income (profits plus rent) against a flat wealth tax that raises the same revenue in steady state (3.52%). Both are deducted from disposable capital income before saving, so the regimes differ only in their base. This is the comparison in Guvenen, Kambourov, Kuruscu, Ocampo and Chen (2023), in a much simpler model.
 - E4: at t = 0 every dynasty's productivity is redrawn independently of its wealth (a technology shock that re-ranks firms); paths of coupling and efficiency for 120 years under each tax regime.
 - E5: ψ ∈ {0.80, 0.90, 0.95, 0.98} × ρ_g ∈ {0, 1}.
+- E6: sensitivity of the E4 transition (no tax) to the saving rate out of capital income (s_k ∈ {0.3, 0.4, 0.5}) and the persistence of productivity (ψ ∈ {0.90, 0.95, 0.98}): years until coupling recovers half and 90% of its pre-shock level, and cumulative output lost over 120 years in years of pre-shock output.
 
 Burn-in 350 years, averages over the next 100, three seeds.
 
@@ -40,6 +41,8 @@ The workspace where the analysis was written cannot reach WID, DataverseNL or th
 ## Cross-country analysis (`analysis.py`)
 
 **Multiverse.** Annualised growth of real GDP per capita or TFP over the following window, regressed on a top share at the start of the window, for every combination of measure (wealth top 1%, top 10%, bottom 50% with sign flipped; income top 1%, top 10%), outcome (GDP per capita, TFP), window (5 or 10 years, 1980–2019), controls (none; initial income; initial income, human capital and investment share), estimator (pooled with period effects; country and period fixed effects; between) and sample (all WID areas matched to PWT; only window starts with a source-based WID value within two years, `data_quality > 0`; World Bank high-income countries): 540 specifications. Coefficients are percentage points of annual growth per one standard deviation more concentration in the estimation sample; 95% intervals are country-clustered (CR1) for pooled and fixed-effects fits and HC1 for between fits.
+
+**Joint test.** Following Simonsohn, Simmons and Nelson (2020), the estimated effect is removed from the outcome in every specification (y − b̂x), countries are resampled with replacement (one draw shared by all 540 specifications, so their dependence is kept), and the whole curve is re-estimated, 1,000 times. The observed median estimate, the numbers of significantly negative and positive specifications, and Stouffer's Z are compared with their null distributions, for the full curve and for subsets (wealth or income measures; wealth by sample; each estimator). Results in `results/spec_curve_test.csv`.
 
 **Composition.** Billionaire wealth in 1996, 2001 and 2014 split into inherited, self-made (founders, finance, executives) and privatisation/resources, as a share of GDP in current dollars; growth of GDP per capita or TFP over the next 5 or 9 years; controls for initial income, human capital, investment share and wave; countries with at least one million people. 24 variants (outcome × horizon × log(1 + share) or raw share × all countries / only countries with billionaires / without financial centres). 95% intervals from 2,000 country-cluster bootstrap draws.
 

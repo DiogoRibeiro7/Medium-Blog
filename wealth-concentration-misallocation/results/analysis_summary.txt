@@ -52,6 +52,16 @@ by estimator x sample (wealth measures, median beta / share<0 / sig- / sig+):
   within / all: +0.089 / 42% / 0 / 2 (n=36)
   within / high_income: +0.036 / 42% / 0 / 4 (n=36)
   within / observed: +0.213 / 31% / 3 / 11 (n=36)
+joint test (null imposed, countries resampled jointly; one-sided p-values in the observed direction):
+  all: 540 specs, median -0.134 (p=0.021); sig- 156 (null 95th pct 65, p=0.001); sig+ 36 (null 95th pct 79, p=0.231); Stouffer Z -24.20 (p=0.008); draws 1000
+  wealth: 324 specs, median -0.062 (p=0.178); sig- 59 (null 95th pct 47, p=0.026); sig+ 17 (null 95th pct 55, p=0.368); Stouffer Z -10.62 (p=0.088); draws 1000
+  income: 216 specs, median -0.296 (p=0.001); sig- 97 (null 95th pct 29, p=0.000); sig+ 19 (null 95th pct 35, p=0.130); Stouffer Z -25.26 (p=0.001); draws 1000
+  wealth_all_areas: 108 specs, median -0.220 (p=0.002); sig- 46 (null 95th pct 17, p=0.000); sig+ 2 (null 95th pct 25, p=0.392); Stouffer Z -16.75 (p=0.000); draws 1000
+  wealth_observed: 108 specs, median +0.048 (p=0.380); sig- 3 (null 95th pct 31, p=0.532); sig+ 11 (null 95th pct 38, p=0.284); Stouffer Z +3.02 (p=0.374); draws 1000
+  wealth_high_income: 108 specs, median -0.063 (p=0.238); sig- 10 (null 95th pct 17, p=0.178); sig+ 4 (null 95th pct 15, p=0.261); Stouffer Z -4.67 (p=0.222); draws 1000
+  between: 180 specs, median -0.298 (p=0.000); sig- 82 (null 95th pct 25, p=0.000); sig+ 0 (null 95th pct 34, p=1.000); Stouffer Z -25.44 (p=0.000); draws 1000
+  pooled: 180 specs, median -0.210 (p=0.000); sig- 67 (null 95th pct 24, p=0.001); sig+ 0 (null 95th pct 37, p=1.000); Stouffer Z -24.35 (p=0.000); draws 1000
+  within: 180 specs, median +0.155 (p=0.106); sig- 7 (null 95th pct 30, p=0.488); sig+ 36 (null 95th pct 20, p=0.007); Stouffer Z +7.87 (p=0.081); draws 1000
 
 ## Part B, billionaire wealth by origin (5-year growth after 1996, 2001, 2014)
 panel: 394 country-waves, 133 countries, 138 country-waves with at least one billionaire

@@ -158,7 +158,9 @@ def build_panel(pwt: pd.DataFrame, wid: pd.DataFrame, countries: pd.DataFrame,
     return panel
 
 
-def fit_spec(df: pd.DataFrame, x: str, y: str, controls: list[str], estimator: str) -> dict | None:
+def spec_design(df: pd.DataFrame, x: str, y: str, controls: list[str], estimator: str) -> dict | None:
+    """Outcome vector, design matrix and clusters of one specification, after the estimator's
+    transformation (country means for between, within-country demeaning for within)."""
     d = df.dropna(subset=[x, y] + controls).copy()
     if estimator == "within":
         counts = d.groupby("iso3")["start"].transform("size")
@@ -173,27 +175,36 @@ def fit_spec(df: pd.DataFrame, x: str, y: str, controls: list[str], estimator: s
         if len(m) < 8:
             return None
         X = np.column_stack([np.ones(len(m)), m[x].to_numpy()] + [m[c].to_numpy() for c in controls])
-        b, se = ols(m[y].to_numpy(), X)
-        n_obs, n_c = len(m), len(m)
+        return dict(y=m[y].to_numpy(), X=X, j=1, groups=m.index.to_numpy(), clustered=False,
+                    sd=sd, n_obs=len(m), n_countries=len(m))
+    periods = pd.get_dummies(d["start"], prefix="p", drop_first=True, dtype=float)
+    cols = [x] + controls + list(periods.columns)
+    d = pd.concat([d, periods], axis=1)
+    if estimator == "within":
+        d = demean(d, cols + [y], "iso3")
+        X, j = d[cols].to_numpy(), 0
     else:
-        periods = pd.get_dummies(d["start"], prefix="p", drop_first=True, dtype=float)
-        cols = [x] + controls + list(periods.columns)
-        d = pd.concat([d, periods], axis=1)
-        if estimator == "within":
-            d = demean(d, cols + [y], "iso3")
-            X = d[cols].to_numpy()
-        else:
-            X = np.column_stack([np.ones(len(d)), d[cols].to_numpy()])
-        b, se = ols(d[y].to_numpy(), X, d["iso3"].to_numpy())
-        if estimator == "within":
-            b, se = np.r_[0.0, b], np.r_[0.0, se]
-        n_obs, n_c = len(d), d["iso3"].nunique()
-    beta, s = b[1] * sd, se[1] * sd
-    return dict(beta=beta, se=s, lo=beta - 1.96 * s, hi=beta + 1.96 * s, n_obs=n_obs,
-                n_countries=n_c, sd_x=sd)
+        X, j = np.column_stack([np.ones(len(d)), d[cols].to_numpy()]), 1
+    return dict(y=d[y].to_numpy(), X=X, j=j, groups=d["iso3"].to_numpy(), clustered=True,
+                sd=sd, n_obs=len(d), n_countries=d["iso3"].nunique())
 
 
-def multiverse(panels: dict[int, pd.DataFrame]) -> pd.DataFrame:
+def fit_spec(df: pd.DataFrame, x: str, y: str, controls: list[str], estimator: str,
+             keep: list | None = None) -> dict | None:
+    des = spec_design(df, x, y, controls, estimator)
+    if des is None:
+        return None
+    b, se = ols(des["y"], des["X"], des["groups"] if des["clustered"] else None)
+    sd = des["sd"]
+    beta, s = b[des["j"]] * sd, se[des["j"]] * sd
+    if keep is not None:
+        des["b"] = b[des["j"]]
+        keep.append(des)
+    return dict(beta=beta, se=s, lo=beta - 1.96 * s, hi=beta + 1.96 * s, n_obs=des["n_obs"],
+                n_countries=des["n_countries"], sd_x=sd)
+
+
+def multiverse(panels: dict[int, pd.DataFrame], designs: list | None = None) -> pd.DataFrame:
     rows = []
     control_sets = {"none": [], "income": ["ln_y0"], "full": ["ln_y0", "hc0", "inv"]}
     for (length, panel), measure, outcome, (cname, controls), est, sample in itertools.product(
@@ -207,7 +218,7 @@ def multiverse(panels: dict[int, pd.DataFrame]) -> pd.DataFrame:
             df = df[df["high_income"]]
         if measure == "wealth_bottom50":  # more concentration = lower bottom-50 share
             df[x] = -df[x]
-        r = fit_spec(df, x, outcome, controls, est)
+        r = fit_spec(df, x, outcome, controls, est, keep=designs)
         if r is None:
             continue
         r.update(window=length, measure=measure, outcome=outcome, controls=cname,
@@ -216,6 +227,105 @@ def multiverse(panels: dict[int, pd.DataFrame]) -> pd.DataFrame:
     out = pd.DataFrame(rows)
     out["sign"] = np.where(out["lo"] > 0, "positive", np.where(out["hi"] < 0, "negative", "n.s."))
     return out
+
+
+def _fit_fast(y: np.ndarray, X: np.ndarray, j: int, codes: np.ndarray | None) -> tuple[float, float]:
+    """Coefficient j and its CR1 (codes given) or HC1 standard error."""
+    n, k = X.shape
+    XtX_inv = np.linalg.pinv(X.T @ X)
+    b = XtX_inv @ (X.T @ y)
+    u = y - X @ b
+    sc = X * u[:, None]
+    if codes is None:
+        meat = sc.T @ sc * n / (n - k)
+    else:
+        G = int(codes.max()) + 1
+        S = np.zeros((G, k))
+        np.add.at(S, codes, sc)
+        meat = S.T @ S * G / (G - 1) * (n - 1) / (n - k)
+    v = XtX_inv[j] @ meat @ XtX_inv[:, j]
+    return float(b[j]), float(np.sqrt(max(v, 0.0)))
+
+
+SUBSETS = {
+    "all": lambda s: np.ones(len(s), bool),
+    "wealth": lambda s: s["measure"].str.startswith("wealth").to_numpy(),
+    "income": lambda s: s["measure"].str.startswith("income").to_numpy(),
+    "wealth_all_areas": lambda s: (s["measure"].str.startswith("wealth") & (s["sample"] == "all")).to_numpy(),
+    "wealth_observed": lambda s: (s["measure"].str.startswith("wealth") & (s["sample"] == "observed")).to_numpy(),
+    "wealth_high_income": lambda s: (s["measure"].str.startswith("wealth") & (s["sample"] == "high_income")).to_numpy(),
+    "between": lambda s: (s["estimator"] == "between").to_numpy(),
+    "pooled": lambda s: (s["estimator"] == "pooled").to_numpy(),
+    "within": lambda s: (s["estimator"] == "within").to_numpy(),
+}
+
+
+def _curve_stats(beta: np.ndarray, se: np.ndarray) -> dict[str, float]:
+    z = beta / se
+    return {"median": float(np.median(beta)), "n_neg": int(np.sum(beta + 1.96 * se < 0)),
+            "n_pos": int(np.sum(beta - 1.96 * se > 0)), "stouffer": float(np.sum(z) / np.sqrt(len(z)))}
+
+
+def spec_curve_test(specs: pd.DataFrame, designs: list[dict], draws: int = 1000,
+                    seed: int = 20261112) -> pd.DataFrame:
+    """Joint inference for the specification curve (Simonsohn, Simmons and Nelson 2020).
+
+    In every specification the estimated effect is removed from the outcome (y - b x), which
+    imposes the null of no association while keeping everything else in the data. Countries
+    are then resampled with replacement, the same draw for all specifications so that their
+    dependence is preserved, and the whole curve is re-estimated. Each summary of the observed
+    curve is compared with its distribution across draws: the median estimate, the number of
+    specifications significantly negative and significantly positive, and Stouffer's Z.
+    """
+    nulls = []
+    rows_by_country = []
+    for d in designs:
+        y0 = d["y"] - d["b"] * d["X"][:, d["j"]]
+        nulls.append(y0)
+        g = pd.Series(np.arange(len(d["groups"]))).groupby(d["groups"]).apply(np.array).to_dict()
+        rows_by_country.append(g)
+    countries = np.array(sorted(set().union(*[set(g) for g in rows_by_country])))
+    rng = np.random.default_rng(seed)
+    masks = {name: f(specs) for name, f in SUBSETS.items()}
+    obs = {name: _curve_stats(specs["beta"].to_numpy()[m], specs["se"].to_numpy()[m]) for name, m in masks.items()}
+    null_stats = {name: [] for name in masks}
+    for _ in range(draws):
+        pick = rng.choice(countries, size=len(countries), replace=True)
+        beta = np.full(len(designs), np.nan)
+        se = np.full(len(designs), np.nan)
+        for s, (d, y0, g) in enumerate(zip(designs, nulls, rows_by_country)):
+            parts = [(g[c], i) for i, c in enumerate(pick) if c in g]
+            if len(parts) < 3:
+                continue
+            rows = np.concatenate([p[0] for p in parts])
+            X, k = d["X"][rows], d["X"].shape[1]
+            if len(rows) <= k + 1:
+                continue
+            codes = np.concatenate([np.full(len(p[0]), i) for i, p in enumerate(parts)]) if d["clustered"] else None
+            b, e = _fit_fast(y0[rows], X, d["j"], codes)
+            beta[s], se[s] = b * d["sd"], e * d["sd"]
+        ok = np.isfinite(beta) & np.isfinite(se) & (se > 0)
+        for name, m in masks.items():
+            mm = m & ok
+            null_stats[name].append(_curve_stats(beta[mm], se[mm]))
+    out = []
+    for name in masks:
+        ns = pd.DataFrame(null_stats[name])
+        o = obs[name]
+        lower = o["median"] < 0
+        out.append({
+            "subset": name, "n_specs": int(masks[name].sum()), "draws": draws,
+            "median": o["median"],
+            "p_median": float(np.mean(ns["median"] <= o["median"]) if lower else np.mean(ns["median"] >= o["median"])),
+            "n_neg": o["n_neg"], "null_n_neg_p95": float(np.percentile(ns["n_neg"], 95)),
+            "p_n_neg": float(np.mean(ns["n_neg"] >= o["n_neg"])),
+            "n_pos": o["n_pos"], "null_n_pos_p95": float(np.percentile(ns["n_pos"], 95)),
+            "p_n_pos": float(np.mean(ns["n_pos"] >= o["n_pos"])),
+            "stouffer": o["stouffer"],
+            "p_stouffer": float(np.mean(ns["stouffer"] <= o["stouffer"]) if o["stouffer"] < 0
+                                else np.mean(ns["stouffer"] >= o["stouffer"])),
+        })
+    return pd.DataFrame(out)
 
 
 def imputation_diagnostic(panel: pd.DataFrame, wid: pd.DataFrame) -> dict[str, float]:
@@ -357,8 +467,11 @@ def main() -> None:
     wid = load_wid(countries)
     panels = {L: build_panel(pwt, wid, countries, L) for L in (5, 10)}
     pd.concat(panels.values()).to_csv(OUT / "panel_data.csv", index=False, float_format="%.6f")
-    specs = multiverse(panels)
+    designs: list[dict] = []
+    specs = multiverse(panels, designs)
     specs.to_csv(OUT / "panel_specs.csv", index=False, float_format="%.6f")
+    joint = spec_curve_test(specs, designs)
+    joint.to_csv(OUT / "spec_curve_test.csv", index=False, float_format="%.6f")
     diag = imputation_diagnostic(panels[5], wid)
     bspecs, bpanel = billionaire_specs(pwt, countries)
     bspecs.to_csv(OUT / "billionaire_specs.csv", index=False, float_format="%.6f")
@@ -402,6 +515,12 @@ def main() -> None:
         c = sub["sign"].value_counts()
         w(f"  {e} / {s}: {sub.beta.median():+.3f} / {100 * (sub.beta < 0).mean():.0f}% / "
           f"{c.get('negative', 0)} / {c.get('positive', 0)} (n={len(sub)})")
+    w("joint test (null imposed, countries resampled jointly; one-sided p-values in the observed direction):")
+    for _, r in joint.iterrows():
+        w(f"  {r['subset']}: {r['n_specs']} specs, median {r['median']:+.3f} (p={r['p_median']:.3f}); "
+          f"sig- {r['n_neg']} (null 95th pct {r['null_n_neg_p95']:.0f}, p={r['p_n_neg']:.3f}); "
+          f"sig+ {r['n_pos']} (null 95th pct {r['null_n_pos_p95']:.0f}, p={r['p_n_pos']:.3f}); "
+          f"Stouffer Z {r['stouffer']:+.2f} (p={r['p_stouffer']:.3f}); draws {r['draws']}")
     w("")
     w("## Part B, billionaire wealth by origin (5-year growth after 1996, 2001, 2014)")
     bp = bpanel
