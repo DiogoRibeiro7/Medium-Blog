@@ -5,7 +5,7 @@ Public companion to a four-part series on where correct pipelines give wrong num
 1. **History** (`part1/`): how four fields met the same problem. Insurance run-off triangles and the chain ladder, epidemic reporting delays and nowcasting, valid time and transaction time in temporal databases, slowly changing dimensions in warehouses, and event time, watermarks and triggers in stream processing. Each idea is rebuilt in code, and the published numbers are recomputed where they exist.
 2. **Mechanism** (`part2/`): five mechanisms simulated where the right answer is known. How much of the latest periods is missing for a given delay distribution; what a watermark's slack and allowed lateness trade, and what a nowcast does instead of waiting; what an incremental load loses with a high-water mark on event time, and what insert-only, upsert and an append-only version log keep when records are corrected; what training on final values and joining the current version of a dimension do to a model; and what a backfill does to values already sent.
 3. **Real data** (`part3/`): three public sources that kept every version. The Robert Koch Institute's daily COVID-19 case files (1,034 files, 15.7 GB), the German COVID-19 Hospitalization Nowcast Hub's reporting triangle and the nowcasts ten models published from November 2021 to April 2022, and quarterly real-GDP vintages for the US, the euro area, Japan and Switzerland. It measures the delay distributions, the shortfall in the latest periods, the errors of real nowcasts and the size of the restatements.
-4. Practice (a pipeline that keeps time correct, measured on the Part 3 data) — to come.
+4. **Practice** (`part4/`): a small daily pipeline in DuckDB that lands the RKI files of Part 3 in an append-only table with their publication date and load time, loads them incrementally on arrival, publishes each 7-day count with a nowcast, its estimated completeness and an interval from its own past errors, compares weeks at equal maturity, and builds training rows on both time axes. It is replayed day by day from June 2021 to August 2023, and every one of its 822 runs is then recomputed and compared with what it stored.
 
 The manuscripts are kept elsewhere; this repository holds the code, data, outputs and figures.
 
@@ -14,7 +14,7 @@ The manuscripts are kept elsewhere; this repository holds the code, data, output
 ```
 cd pipeline-time-correctness
 pip install -r requirements.txt
-python -m unittest discover -s tests -v       # 45 tests (11 for Part 1, 19 for Part 2, 15 for Part 3)
+python -m unittest discover -s tests -v       # 54 tests (11 for Part 1, 19 for Part 2, 15 for Part 3, 9 for Part 4)
 cd part1
 python history_numbers.py > output.txt         # every number in the article
 python figures.py                              # figures/*.png
@@ -81,3 +81,22 @@ The fetch scripts are pinned to a commit of each source repository and log the g
 - `figures.py` draws the seven figures.
 
 Sources and terms: the RKI case files are published by the Robert Koch Institute under CC BY 4.0; the hub's triangle and nowcasts come from the public repository KITmetricslab/hospitalization-nowcast-hub (Wolffram et al., 2023; a stable release is on Zenodo, record 7828604), whose triangle is built from RKI data; reviser is MIT-licensed. Check each source's terms before reusing the extracted files.
+
+## Part 4
+
+```
+cd pipeline-time-correctness/part4
+python practice_numbers.py > output.txt   # about four minutes: replays 822 daily runs, then recomputes each one
+python figures.py                         # figures/*.png (replays the pipeline again)
+```
+
+The input is `part3/data/rki_state.csv.gz`: for each RKI publication from 2 April 2021 to 31 December 2023, the cases by federal state and reporting date for the 28 days before the publication. `write_incoming` writes it out as one CSV per publication, as a source would deliver it, and gives each file an arrival time (07:00 on its date; the file of 15 March 2022 arrives two days late). Nothing is downloaded.
+
+- `pipeline.py`: the pipeline, in three schemas.
+  - `landing`: `files` (one row per file name and SHA-256, with the publication date and the load time) and `cases` (the rows of each file, copied unchanged). Insert-only. A file whose content is already landed is skipped; a file republished under the same name with new content is landed as a new version.
+  - `core`: the table macro `known_at(as_of)`, which returns, for each publication, the latest version loaded by `as_of`; and `delay_profile`, the share of the 28-day count known at each age (0 to 28 days) for each weekday, estimated at each run from the four latest complete dates of that weekday.
+  - `mart.daily_report`: one row per run date (the partition a run replaces): the 7-day count as published, a nowcast (known count divided by the expected share; the mean 28-day level where less than a fifth is expected), a 90% interval from the ratios of matured counts to nowcasts over the latest 56 runs whose dates are 28 days old, the estimated completeness, the week-over-week change against the run seven days earlier, the time of the run and a hash of the SQL (`code_version`).
+  - `Pipeline.run(day)` loads what has arrived by 08:00, rebuilds the profile and the report row for that time, and replaces only that day's rows. `Pipeline.reproduce(day)` recomputes a stored run from landing rows loaded by its time and mart rows of earlier runs.
+  - `TRAINING_ROWS_SQL`: rows for a model that predicts next week's cases in a state from this week's, with the feature both as published on the run day and as it stood 28 days later.
+- `practice_numbers.py` prints every number in the article: the replay, the error of the published count and of the nowcast against the file of 10 November 2026, the coverage of the interval, week-over-week changes, the reproduction of every run, the late file, a rerun of the last day, the training rows, and the files that added no case. `output.txt` is its committed output.
+- `figures.py` draws the four figures.
