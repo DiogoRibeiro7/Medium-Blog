@@ -668,3 +668,19 @@ therefore neither deletion stability nor instability identifies a migration
 channel or a causal housing-price spillover. Source pinning, generation and
 provenance are implemented in
 `municipal_reference_common_geography_influence.py`.
+
+## Source verification gate: 2021 municipal work/study interactions
+
+Before upgrading the third-party workbook provenance to an independently
+reconciled INE source, obtain an official indicator **0012340** export together
+with metadata that establish its geographic coding, period, universe,
+measure and pair-direction semantics. Compare the complete 17 × 17 AMP
+matrix against the pinned derivative using the non-destructive
+`ine_commuting_reconciliation.py` workflow and reviewed one-to-one source
+geography mapping, as specified in
+`INE_COMMUTING_RECONCILIATION.md`.
+
+**Do not interpret successful synthetic-test runs as independent source
+authentication.** A successful official pairwise audit would only validate
+the reported undirected work/study link counts. It would not identify
+residential displacement or causal housing effects.
