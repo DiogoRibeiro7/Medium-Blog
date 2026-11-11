@@ -219,6 +219,16 @@ def gini(score: np.ndarray, exposure: np.ndarray, loss: np.ndarray) -> float:
     return float(1.0 - 2.0 * np.trapezoid(cl, cw))
 
 
+def kaggle_gini(actual: np.ndarray, pred: np.ndarray) -> float:
+    """The Gini of the Kaggle insurance competitions: rows sorted by prediction, largest first, each row
+    counting once whatever its exposure; normalised by the Gini of a perfect ordering of the rows."""
+    def raw(a, p):
+        order = np.lexsort((np.arange(len(p)), -p))
+        c = np.cumsum(a[order])
+        return (c.sum() / c[-1] - (len(a) + 1) / 2.0) / len(a)
+    return float(raw(actual, pred) / raw(actual, actual))
+
+
 def discordant_pairs(a: np.ndarray, b: np.ndarray) -> int:
     a, b = a.ravel(), b.ravel()
     return sum(1 for i, j in combinations(range(a.size), 2) if np.sign(a[i] - a[j]) != np.sign(b[i] - b[j]))
@@ -285,6 +295,10 @@ def report_canadian(res: dict) -> None:
     print(f"  cell 1A (both plans) below average:       {100 * both_red:5.1f}%")
     print(f"  merit rating as a fraction of class rating: {merit_red / class_red:.3f} (their 77%)")
     print()
+    print(f"Share of each class's car-years in merit group B (1, 5, 3, 2, 4): {np.round(N[:, 3] / N.sum(1), 3)}")
+    print(f"Merit B over merit A within each class (1, 5, 3, 2, 4): {np.round(R[:, 3] / R[:, 0], 3)}")
+    print(f"Customary rate of cell 1A: {PUBLISHED['Method 1'][0][0]:.3f} x {PUBLISHED['Method 1'][1][0]:.3f}"
+          f" = {PUBLISHED['Method 1'][0][0] * PUBLISHED['Method 1'][1][0]:.3f}")
     print("Spread of the relative loss ratios: lowest cell 1A = "
           f"{R.min():.3f}, highest cell 4B = {R.max():.3f}, ratio {R.max() / R.min():.2f}.")
 
@@ -356,6 +370,10 @@ def report_canadian(res: dict) -> None:
     for name, F in cases:
         g[name] = gini(F.ravel(), N.ravel(), LOSS.ravel())
         print(f"  {name:<28} Gini {g[name]:.4f}")
+    share_n, share_l = N / N.sum(), LOSS / LOSS.sum()
+    print(f"Cell 1A: {share_n[0, 0]:.3f} of the car-years and {share_l[0, 0]:.3f} of the relative losses "
+          f"(first point of every tariff's Lorenz curve); cell 4B: {share_n[4, 3]:.4f} of the car-years and "
+          f"{share_l[4, 3]:.4f} of the losses; the other 18 cells: {1 - share_n[0, 0] - share_n[4, 3]:.3f} of the car-years.")
     ceiling = g["Cells' own experience"]
     print(f"Ceiling for a tariff on these 20 cells (cells ranked by their own experience): {ceiling:.4f}")
     for name in ("Method 1 (customary)", "Method 3 (min chi2, x+y)", "Minimum bias"):
@@ -467,6 +485,7 @@ def distorted_premium(res, gam, level=1.0):
 def report_swedish(res: dict) -> None:
     E, C, P, codes = res["E"], res["C"], res["P"], res["codes"]
     header("5. Sweden 1977: the marginal-totals tariff is the Poisson GLM")
+    print(f"Possible cells 5 x 7 x 7 x 9 = {5 * 7 * 7 * 9:,}; cells present: {E.size:,}")
     print(f"Cells: {E.size:,}; policy-years: {E.sum():,.0f}; claims: {C.sum():,.0f}; payments: {P.sum():,.0f} kronor")
     print(f"Claim frequency: {C.sum() / E.sum():.4f} per policy-year; mean payment per claim: {P.sum() / C.sum():,.0f} kronor")
     print(f"Cells with no claims: {(C == 0).sum()}; median exposure per cell: {np.median(E):.1f} policy-years")
@@ -485,6 +504,18 @@ def report_swedish(res: dict) -> None:
         print(f"  {' + '.join(fs):<40} Gini {g:.4f}   deviance {dv:10.1f}")
     print(f"  Ceiling: cells ranked by their own observed frequency, Gini {res['ceiling']:.4f}")
     print(f"  Four-factor tariff as a share of the ceiling (a 'normalised' Gini): {res['nested'][-1][1] / res['ceiling']:.3f}")
+    print()
+    print("Kaggle-style normalised Gini over the 2,182 cells as rows (each cell counts once, exposure ignored):")
+    print(f"  claims ranked by the GLM frequency rate:       {kaggle_gini(C, res['rate']):.4f}")
+    print(f"  claims ranked by the GLM expected claim count: {kaggle_gini(C, res['mu']):.4f}")
+    print(f"  claims ranked by exposure alone (no tariff):   {kaggle_gini(C, E):.4f}")
+    rate, top = res["rate"], res["rate"] >= np.quantile(res["rate"], 0.9)
+    rho = stats.spearmanr(rate, E).statistic
+    print(f"  Spearman correlation between a cell's GLM rate and its exposure: {rho:.3f}")
+    print(f"  median exposure of the 10% of cells with the highest rates: {np.median(E[top]):.1f} policy-years;"
+          f" of the other cells: {np.median(E[~top]):.1f}")
+    print(f"  share of the highest-rate 10% of cells in Bonus 1: {np.mean(codes['Bonus'][top] == 0):.3f};"
+          f" in Zones 1-2: {np.mean(codes['Zone'][top] <= 1):.3f}")
     print()
     cust = res["customary"]
     print("Customary tariff (product of the four one-way relativities, as in Method 1):")

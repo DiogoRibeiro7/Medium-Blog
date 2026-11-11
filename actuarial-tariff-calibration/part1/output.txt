@@ -14,6 +14,9 @@ Effectiveness as Bailey and Simon measured it (their Section A), from the publis
   cell 1A (both plans) below average:        21.4%
   merit rating as a fraction of class rating: 0.768 (their 77%)
 
+Share of each class's car-years in merit group B (1, 5, 3, 2, 4): [0.082 0.11  0.118 0.129 0.225]
+Merit B over merit A within each class (1, 5, 3, 2, 4): [1.728 1.533 1.555 1.406 1.392]
+Customary rate of cell 1A: 0.863 x 0.895 = 0.772
 Spread of the relative loss ratios: lowest cell 1A = 0.786, highest cell 4B = 2.853, ratio 3.63.
 
 ==============================================================================
@@ -80,6 +83,7 @@ Minimum bias against Method 2: chi-square 34.08 vs 34.05; largest cell gap 0.010
   Merit only (customary y)     Gini 0.0886
   Flat rate                    Gini 0.0000
   Cells' own experience        Gini 0.1702
+Cell 1A: 0.664 of the car-years and 0.519 of the relative losses (first point of every tariff's Lorenz curve); cell 4B: 0.0137 of the car-years and 0.0389 of the losses; the other 18 cells: 0.322 of the car-years.
 Ceiling for a tariff on these 20 cells (cells ranked by their own experience): 0.1702
   Method 1 (customary) as a share of the ceiling: 0.9982
   Method 3 (min chi2, x+y) as a share of the ceiling: 0.9995
@@ -106,6 +110,7 @@ The minimum-bias tariff raised to a power and rescaled to balance in total:
 ==============================================================================
 5. Sweden 1977: the marginal-totals tariff is the Poisson GLM
 ==============================================================================
+Possible cells 5 x 7 x 7 x 9 = 2,205; cells present: 2,182
 Cells: 2,182; policy-years: 2,383,170; claims: 113,171; payments: 560,790,681 kronor
 Claim frequency: 0.0475 per policy-year; mean payment per claim: 4,955 kronor
 Cells with no claims: 385; median exposure per cell: 81.5 policy-years
@@ -126,6 +131,14 @@ Nested tariffs (each fitted by marginal totals), Gini of claims and Poisson devi
   Bonus + Zone + Kilometres + Make         Gini 0.2768   deviance     2966.1
   Ceiling: cells ranked by their own observed frequency, Gini 0.2878
   Four-factor tariff as a share of the ceiling (a 'normalised' Gini): 0.962
+
+Kaggle-style normalised Gini over the 2,182 cells as rows (each cell counts once, exposure ignored):
+  claims ranked by the GLM frequency rate:       -0.1679
+  claims ranked by the GLM expected claim count: 0.9966
+  claims ranked by exposure alone (no tariff):   0.9835
+  Spearman correlation between a cell's GLM rate and its exposure: -0.234
+  median exposure of the 10% of cells with the highest rates: 26.4 policy-years; of the other cells: 93.5
+  share of the highest-rate 10% of cells in Bonus 1: 0.772; in Zones 1-2: 0.534
 
 Customary tariff (product of the four one-way relativities, as in Method 1):
   total balance 0.9969; Gini 0.2732; deviance 3636.2
