@@ -337,6 +337,31 @@ def oecd_query(agency: str, fid: str, ver: str, filters: dict[str, str]) -> pd.D
     return pd.read_csv(io.StringIO(r.text), low_memory=False)
 
 
+def oecd_query_by_name(agency: str, fid: str, ver: str, filters: dict[str, str], by_name: dict[str, str]) -> pd.DataFrame:
+    """Like oecd_query, but some dimensions are filtered by code names (regular expressions), looked up in
+    the codelists of the data structure."""
+    js = get(URLS["oecd_structure"].format(agency=agency, fid=fid, ver=ver).replace("datastructure", "all"),
+             headers={**UA, "Accept": "application/vnd.sdmx.structure+json;version=1.0"}).json()["data"]
+    dims = js["dataStructures"][0]["dataStructureComponents"]["dimensionList"]["dimensions"]
+    lists = {cl["id"]: cl.get("codes", []) for cl in js.get("codelists", [])}
+    order, key = [], []
+    for d in sorted(dims, key=lambda d: d.get("position", 0)):
+        order.append(d["id"])
+        val = filters.get(d["id"], "")
+        enum = d.get("localRepresentation", {}).get("enumeration", "")
+        cl_id = re.sub(r"\(.*\)$", "", enum).split(".")[-1].split(":")[-1]
+        for pat_dim, pat_name in by_name.items():
+            if re.fullmatch(pat_dim, d["id"]):
+                codes = [c["id"] for c in lists.get(cl_id, [])
+                         if re.fullmatch(pat_name, c.get("name") or c.get("names", {}).get("en", ""))]
+                val = "+".join(codes)
+                log(f"[oecd] {fid}: {d['id']} codes {codes}")
+        key.append(val)
+    log(f"[oecd] {fid}: dimensions {order}; key {'.'.join(key)}")
+    r = get(URLS["oecd_data"].format(agency=agency, fid=fid, ver=ver, key=".".join(key)), timeout=600, tries=3, wait=30)
+    return pd.read_csv(io.StringIO(r.text), low_memory=False)
+
+
 def fetch_oecd(out: Path) -> None:
     gbard = ("OECD.STI.STP", "DSD_RDS_GOV@DF_GBARD_NABS07", "1.0")
     df = oecd_query(*gbard, {"FREQ": "A", "SEO": "NABS07+_T"})
@@ -344,6 +369,16 @@ def fetch_oecd(out: Path) -> None:
                                            "UNIT_MEASURE", "Unit of measure", "PRICE_BASE", "TIME_PERIOD", "OBS_VALUE",
                                            "UNIT_MULT")]
     save(df[keep], out, "oecd_gbard")
+    try:
+        ford = oecd_flow(r"DSD_RDS_GERD@DF_GERD_FORD")
+        df = oecd_query_by_name(*ford, {"FREQ": "A"},
+                                {r"FORD|FIELD.*": r"(Medical and health sciences|Total.*)",
+                                 r"SECT_PERF": r"(Total|Higher education.*|Government.*|Business enterprise.*)",
+                                 r"UNIT_MEASURE": r"(US dollars, PPP converted|Percentage of GDP)"})
+        keep = [c for c in df.columns if not c.startswith("Unnamed")]
+        save(df[keep], out, "oecd_gerd_field")
+    except Exception as exc:  # noqa: BLE001
+        log(f"[oecd] GERD by field failed: {exc}")
     msti = oecd_flow(r"DSD_MSTI@DF_MSTI")
     log(f"[oecd] MSTI flow: {msti}")
     if msti:
