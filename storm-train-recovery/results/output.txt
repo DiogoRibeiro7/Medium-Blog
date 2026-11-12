@@ -1,0 +1,137 @@
+Recovery capacity under clustered storms: printed results
+=========================================================
+
+1. The Portuguese storm train (E-Redes customers without power)
+---------------------------------------------------------------
+Storm onsets used for the gaps (local time = UTC in winter):
+  Ingrid    22 Jan 15:00
+  Joseph    26 Jan 00:00
+  Kristin   27 Jan 22:00
+  Leonardo  03 Feb 18:00
+  Marta     07 Feb 00:00
+  gap Ingrid -> Joseph: 3.4 days
+  gap Joseph -> Kristin: 1.9 days
+  gap Kristin -> Leonardo: 6.8 days
+  gap Leonardo -> Marta: 3.2 days
+Five named storms with onsets spread over 15.4 days; mean gap 3.8 days
+Peak: about 1,000,000 customers at 06:00 on 28 January, 15.2% of the 6,595,634 low-voltage customers in mainland Portugal
+Published counts used: 53 (32 for the whole mainland, 21 for the Kristin-affected areas)
+  28 Jan 06:00: 1,000,000 out (0% of the peak restored)
+  28 Jan 07:00: 855,000 out (15% of the peak restored)
+  28 Jan 12:00: 550,000 out (45% of the peak restored)
+  28 Jan 13:00: 529,000 out (47% of the peak restored)
+  28 Jan 15:00: 485,000 out (52% of the peak restored)
+
+Two-phase fit to the 28 reports that measure the Kristin backlog alone:
+  fast (switching) share a = 0.529  [90% bootstrap 0.486-0.567]
+  fast time constant tau1 = 3.7 h  [2.0-6.2 h]
+  slow time constant tau2 = 4.96 days  [4.82-5.11]; slow half-life 3.44 days [3.34-3.54]
+  RMS error in logs: 0.142 (a single exponential: tau = 4.07 days, RMS 0.457)
+  fitted curve reaches   50% of the peak after 0.34 days
+  fitted curve reaches   25% of the peak after 3.15 days
+  fitted curve reaches   10% of the peak after 7.69 days
+  fitted curve reaches    5% of the peak after 11.13 days
+  fitted curve reaches    1% of the peak after 19.11 days
+  fitted Kristin backlog at the onset of Leonardo (day 6.5): 127,147 customers
+  fitted Kristin backlog at the onset of Marta (day 9.8): 66,038 customers
+
+Drain rate of the Kristin-attributed backlog, window by window:
+  30 Jan 15:00 -> 04 Feb 12:00 (4.9 d): 266,000 -> 81,000, rate 0.244/day, half-life 2.8 days  [new faults on 2 Feb]
+  04 Feb 12:00 -> 09 Feb 08:00 (4.8 d): 81,000 -> 48,000, rate 0.108/day, half-life 6.4 days  [Leonardo and Marta]
+  09 Feb 08:00 -> 12 Feb 08:00 (3.0 d): 48,000 -> 25,000, rate 0.217/day, half-life 3.2 days  [no new storm]
+  12 Feb 08:00 -> 16 Feb 08:00 (4.0 d): 25,000 -> 11,000, rate 0.205/day, half-life 3.4 days  [new faults and flooding on 13 Feb]
+  16 Feb 08:00 -> 22 Feb 17:00 (6.4 d): 11,000 -> 1,800, rate 0.284/day, half-life 2.4 days  [no new storm]
+  mean rate in the windows without a new storm: 0.251/day; during Leonardo and Marta: 0.108/day (43% of it)
+
+Customer-days without power, 28 Jan 06:00 to 13 Feb 17:30 (whole mainland, log-linear between reports):
+  observed 2.52 million; Kristin-only fitted curve 2.34 million; excess 8%
+  from 2 February on: observed 0.98 million vs 0.81 million (1.21 times the Kristin-only curve)
+  the Kristin backlog first reported at or below 1% of the peak on day 19.3; the fitted curve gets there on day 19.1
+
+E-Redes operational staff in the field:
+  27 Jan: 400
+  29 Jan: 1,200
+  05 Feb: 2,400
+
+2. Restoration curves and repair capacity: Portugal, Florida, Louisiana
+-----------------------------------------------------------------------
+Share of affected customers still without power (log-linear between reports; '-' where the reports do not bracket the value):
+  utility  event           affected   day 3   day 5   day 7  to 10%  to 1%        last report
+  FPL      Charley 2004     874,000     25%     18%       -       -      -        0 on day 13
+  FPL      Frances 2004   2,786,300     35%     16%      8%     6.4      -        0 on day 12
+  FPL      Jeanne 2004    1,737,400     29%     12%      2%     5.3    7.7         0 on day 8
+  FPL      Wilma 2005     3,241,000     66%     50%     23%       -      -        0 on day 18
+  FPL      Ian 2022       2,100,000     29%     13%      7%     5.7      -   1.48% on day 9.0
+  FPL      Milton 2024    2,000,000       -       -       -       -      -         0 on day 6
+  Entergy  Katrina 2005   1,100,000     79%     68%     58%       -      -        0 on day 42
+  E-Redes  Kristin 2026   1,000,000     23%     14%      9%     6.4   19.3  0.18% on day 25.5
+
+Restoration workforce against the size of the damage:
+  E-Redes  Kristin 2026 (day 2)   1,200 workers for 1,000,000 customers: 1.2 per 1,000
+  E-Redes  Kristin 2026 (day 9)   2,400 workers for 1,000,000 customers: 2.4 per 1,000, 0.45 per damaged pole (5,300 poles)
+  FPL      Charley 2004          13,500 workers for   874,000 customers: 15.4 per 1,000, restored in 13 days
+  FPL      Frances 2004          16,700 workers for 2,786,300 customers: 6.0 per 1,000, restored in 12 days
+  FPL      Jeanne 2004           16,500 workers for 1,737,400 customers: 9.5 per 1,000, restored in 8 days
+  FPL      Wilma 2005            18,600 workers for 3,241,000 customers: 5.7 per 1,000, 1.50 per damaged pole (12,400 poles), restored in 18 days
+  FPL      Irma 2017             28,000 workers for 4,400,000 customers: 6.4 per 1,000, 7.00 per damaged pole (4,000 poles), restored in 10 days
+  FPL      Ian 2022              21,000 workers for 2,100,000 customers: 10.0 per 1,000, restored in 8 days
+  Entergy  Katrina 2005          13,700 workers for 1,100,000 customers: 12.5 per 1,000, restored in 42 days
+  Entergy  Rita 2005             17,500 workers for   800,000 customers: 21.9 per 1,000
+  FPL range 5.7-15.4 per 1,000 customers affected; E-Redes 1.2-2.4 (FPL minimum is 2.4 times the E-Redes maximum)
+  Entergy's largest outage before 2005 was 270,000 customers (Tropical Storm Cindy); Katrina's 1.1 million was 4.1 times that.
+  REN lost 101 very-high-voltage towers to Kristin against 25 in its previous worst storm (2009): 4.0 times.
+
+3. Storm seasons: independent storms against trains
+---------------------------------------------------
+Season 120 days, mean 2 damaging storms; storm damage lognormal with mean 1 (one 'storm-unit' of repair work) and log-sd 1.0; 20,000 seasons per case.
+  Poisson            branching n = 0.000: mean storms 1.995, simulated dispersion -0.01, seasons with 3 or more storms 32.3%, with 4 or more 14.2%
+  Hawkes, psi = 0.5  branching n = 0.184: mean storms 2.016, simulated dispersion 0.48, seasons with 3 or more storms 32.5%, with 4 or more 17.5%
+  Hawkes, psi = 1    branching n = 0.293: mean storms 2.006, simulated dispersion 0.94, seasons with 3 or more storms 31.2%, with 4 or more 18.6%
+  damage: median 0.61, 95th percentile 3.14 storm-units
+
+Chance of another storm within h days of a storm:
+  Poisson            3 d 0.048, 7 d 0.109, 14 d 0.207
+  Hawkes, psi = 0.5  3 d 0.164, 7 d 0.253, 14 d 0.333
+  Hawkes, psi = 1    3 d 0.236, 7 d 0.339, 14 d 0.408
+  Poisson formula 1 - exp(-lambda h), h =  3: 0.049
+  Poisson formula 1 - exp(-lambda h), h =  7: 0.110
+  Poisson formula 1 - exp(-lambda h), h = 14: 0.208
+  Hawkes (psi = 1): a storm adds n/theta = 0.098 storms per day to the rate, against a mean rate of 0.0167; right after a storm the rate is 6.9 times the mean
+
+Repair system: own crews clear 0.1 storm-units a day; outside surge up to 0.1 more, requested to clear the backlog in 3 days, arriving with a 4-day lag and sent home with a 1-day lag as the backlog shrinks; compounding kappa = 0.5.
+Backlog-days per season (storm-unit-days; proportional to customer-days if outages scale with the backlog):
+  Poisson          kappa 0.0: mean 16.23, 95th pct 65.11, 99th pct 185.79, P(peak backlog > 2) 0.216, storms arriving on a backlog > 0.25: 7.7%
+  Poisson          kappa 0.5: mean 17.85, 95th pct 70.98, 99th pct 212.83, P(peak backlog > 2) 0.222, storms arriving on a backlog > 0.25: 7.9%
+  Hawkes, psi = 1  kappa 0.0: mean 19.55, 95th pct 86.35, 99th pct 244.27, P(peak backlog > 2) 0.242, storms arriving on a backlog > 0.25: 25.8%
+  Hawkes, psi = 1  kappa 0.5: mean 26.06, 95th pct 114.65, 99th pct 365.94, P(peak backlog > 2) 0.260, storms arriving on a backlog > 0.25: 26.5%
+  trains instead of independent storms (kappa 0.5): mean +46%, 95th pct +62%, 99th pct +72%
+  compounding (kappa 0 -> 0.5): Poisson mean +10%, trains mean +33%; Poisson 99th +15%, trains 99th +50%
+
+Preparedness levers, relative to the base system (kappa 0.5):
+  Poisson:
+    Base system                                      mean 17.85 (0% less), 95th 70.98 (0% less), crew-days 12.6 (+0.00)
+    Hardening: 30% less damage per storm             mean 9.14 (49% less), 95th 35.36 (50% less), crew-days 12.3 (-0.24)
+    50% more own crews                               mean 14.09 (21% less), 95th 55.20 (22% less), crew-days 18.4 (+5.80), 0.65 backlog-days saved per extra crew-day
+    Surge arrives in 1 day instead of 4              mean 16.09 (10% less), 95th 62.84 (11% less), crew-days 12.7 (+0.11), 15.91 backlog-days saved per extra crew-day
+    Keep surge crews 10 days after each storm        mean 17.67 (1% less), 95th 70.51 (1% less), crew-days 12.8 (+0.22), 0.81 backlog-days saved per extra crew-day
+    Sturdier temporary repairs: compounding halved   mean 17.00 (5% less), 95th 67.92 (4% less), crew-days 12.6 (-0.01)
+  Hawkes, psi = 1:
+    Base system                                      mean 26.06 (0% less), 95th 114.65 (0% less), crew-days 12.7 (+0.00)
+    Hardening: 30% less damage per storm             mean 12.84 (51% less), 95th 54.75 (52% less), crew-days 12.4 (-0.27)
+    50% more own crews                               mean 20.44 (22% less), 95th 88.50 (23% less), crew-days 18.5 (+5.79), 0.97 backlog-days saved per extra crew-day
+    Surge arrives in 1 day instead of 4              mean 23.86 (8% less), 95th 103.49 (10% less), crew-days 12.8 (+0.10), 22.34 backlog-days saved per extra crew-day
+    Keep surge crews 10 days after each storm        mean 25.83 (1% less), 95th 113.47 (1% less), crew-days 12.9 (+0.17), 1.37 backlog-days saved per extra crew-day
+    Sturdier temporary repairs: compounding halved   mean 22.61 (13% less), 95th 99.21 (13% less), crew-days 12.6 (-0.04)
+
+Sensitivity: the same levers with a deeper outside surge (up to 0.4 storm-units a day, four times own crews):
+  Poisson: base mean 10.55; Hardening 44%; 50% more own crews 12%; Surge arrives in 1 day 20%; Keep surge crews 10 days 3%; Sturdier temporary repairs 3%
+  Hawkes, psi = 1: base mean 13.80; Hardening 47%; 50% more own crews 12%; Surge arrives in 1 day 20%; Keep surge crews 10 days 3%; Sturdier temporary repairs 11%
+
+Square law for one storm drained at a fixed capacity c = 0.2: backlog-days = D^2 / (2c); D = 1 gives 2.50, D = 0.7 gives 1.22 (51% less)
+  Hardening: 30% less damage per storm: mean backlog-days 49% lower with independent storms, 51% lower with trains; absolute saving 8.71 vs 13.22
+  50% more own crews: mean backlog-days 21% lower with independent storms, 22% lower with trains; absolute saving 3.76 vs 5.62
+  Surge arrives in 1 day instead of 4: mean backlog-days 10% lower with independent storms, 8% lower with trains; absolute saving 1.76 vs 2.20
+  Keep surge crews 10 days after each storm: mean backlog-days 1% lower with independent storms, 1% lower with trains; absolute saving 0.18 vs 0.23
+  Sturdier temporary repairs: compounding halved: mean backlog-days 5% lower with independent storms, 13% lower with trains; absolute saving 0.85 vs 3.45
+
+Figures written to figures/ and equations to figures/equations/
