@@ -123,3 +123,4 @@ eu-capital-exports/**/*.gz -filter -diff -merge binary
 wealth-origin-pandemic/**/*.csv -filter -diff -merge text
 eu-us-surplus-by-industry/**/*.csv -filter -diff -merge text
 eu-us-surplus-by-industry/**/*.gz -filter -diff -merge binary
+wealth-origin-successions/**/*.csv -filter -diff -merge text

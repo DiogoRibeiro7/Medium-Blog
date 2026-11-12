@@ -1,0 +1,19 @@
+Files in this folder and where they come from.
+
+Copied unchanged from the wealth-origin-pandemic snapshot (Medium-Blog commit
+ad85db5ab056b7be20b3e203a9b4b465f4d22dfb), which copied them from wealth-origin-sectors
+(Medium-Blog commit 84428b4ea8c427fe1db6e95438d0cb14a2dd6fc2, fetched on GitHub's runners on
+12 November 2026; URLs, statuses and response hashes are in
+../../wealth-origin-sectors/data/fetch_log.txt):
+
+  forbes_country_industry_year.csv  sha256 345be44e4cc2c7cfb56f74da787257ee69162b61ee4d1bda52cf7e9054bbeb18
+  pwt110_panel.csv                  sha256 65f7df2b1294940b23c4a599a89ac5cb04200521148b5ac6ed6af3d8a806ea6d
+  wdi_countries.csv                 sha256 5983fbf86bc0bad05533acd898d5021add1e7658be7bc068dca4328c38ef2e2c
+  wdi_gdp_usd.csv                   sha256 de2d97477bb08f71f95162ea00888988c5e4096328042f8a8b51299e22b00f62
+
+The composition table holds aggregates only (citizenship x year x industry x self-made flag:
+number of people and summed net worth); it keeps the composition variables identical to the
+previous articles'.
+
+Fetched by fetch.py in this folder (see fetch_log.txt): the succession aggregates and matching
+diagnostics, computed in memory from the Forbes person lists; no person-level data are stored.
