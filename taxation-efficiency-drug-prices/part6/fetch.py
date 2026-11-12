@@ -61,7 +61,11 @@ IPRD = ["ResearchAndDevelopmentInProcess", "ResearchAndDevelopmentAssetAcquiredO
         "AcquiredInProcessResearchAndDevelopment", "AssetAcquisitionInProcessResearchAndDevelopment"]
 COST = ["CostOfGoodsAndServicesSold", "CostOfRevenue", "CostOfGoodsSold", "CostOfSales"]
 PROFIT = ["NetIncomeLoss", "ProfitLoss", "ProfitLossAttributableToOwnersOfParent"]
-CONCEPTS = set(REVENUE + RD + IPRD + COST + PROFIT)
+SGA = ["SellingGeneralAndAdministrativeExpense"]
+SELLING = ["SellingAndMarketingExpense", "SellingExpense", "DistributionCosts", "SalesAndDistributionCosts",
+           "SellingGeneralAndMarketingExpense"]
+ADMIN = ["GeneralAndAdministrativeExpense", "AdministrativeExpense"]
+CONCEPTS = set(REVENUE + RD + IPRD + COST + PROFIT + SGA + SELLING + ADMIN)
 
 URLS = {
     "ecb": "https://data-api.ecb.europa.eu/service/data/EXR/A.USD+GBP+DKK+JPY+CHF.EUR.SP00.A?format=csvdata&startPeriod=2015",
@@ -261,6 +265,14 @@ def fetch_sec(out: Path) -> None:
                         rec[key] = totals[c]["value"]
                         rec[key + "_concept"] = c
                         break
+            # selling, general and administrative costs: one line, or selling plus administrative
+            if any(c in totals for c in SGA):
+                rec["sga"] = next(totals[c]["value"] for c in SGA if c in totals)
+            else:
+                sell = next((totals[c]["value"] for c in SELLING if c in totals), None)
+                adm = next((totals[c]["value"] for c in ADMIN if c in totals), None)
+                if sell is not None and adm is not None:
+                    rec["sga"] = sell + adm
             if "ResearchAndDevelopmentExpenseExcludingAcquiredInProcessCost" in totals:
                 rec["rd_ex_iprd"] = totals["ResearchAndDevelopmentExpenseExcludingAcquiredInProcessCost"]["value"]
             # geographic revenue: one dimension, on a geographic axis
