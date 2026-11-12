@@ -204,6 +204,23 @@ def main() -> None:
     for _, r in pd.concat([x.nlargest(4, "ratio"), x.nsmallest(3, "ratio")]).iterrows():
         print(f"    {r['molecule']:28s} ratio {r['ratio']:7.1f}  US units {r['q_us'] / 1e3:9.0f} k  FR units {r['q_fr'] / 1e3:9.0f} k")
 
+    print("  Per unit and per day of treatment, tafamidis (20 mg capsules are taken four a day, 61 mg one a day):")
+    tu = u[u["molecule"] == "tafamidis"].set_index("Brnd_Name")
+    us20, us61 = tu.loc["Vyndaqel"], tu.loc["Vyndamax"]
+    tf = f[f["molecule"] == "tafamidis"].assign(q=lambda d: d["boites"] * d["units"])
+    f61 = tf[tf["denomination"].str.contains("61 mg")]
+    f20 = tf[tf["denomination"].str.contains("20 mg")]
+    share20_us = us20["Tot_Dsg_Unts_2024"] / (us20["Tot_Dsg_Unts_2024"] + us61["Tot_Dsg_Unts_2024"])
+    share20_fr = f20["q"].sum() / tf["q"].sum()
+    days_us = us20["Tot_Dsg_Unts_2024"] / 4 + us61["Tot_Dsg_Unts_2024"]
+    days_fr = f20["q"].sum() / 4 + f61["q"].sum()
+    fee = (tf["fee_box"] * tf["boites"]).sum()
+    per_day_us = (us20["Tot_Spndng_2024"] + us61["Tot_Spndng_2024"]) / days_us
+    per_day_fr = (tf["bse"].sum() + fee) / days_fr * usd24
+    print(f"    share of capsules that are 20 mg: US {share20_us:.3f}, France {share20_fr:.3f}")
+    print(f"    per day: US ${per_day_us:.2f}, France ${per_day_fr:.2f}, ratio {per_day_us / per_day_fr:.2f} "
+          f"(per capsule: {m.loc[m['molecule'] == 'tafamidis', 'ratio'].iloc[0]:.2f})")
+
     print()
     print("The US basket at French prices (2024 Part D volumes, gross prices on both sides):")
     figure["counterfactual"] = {}
