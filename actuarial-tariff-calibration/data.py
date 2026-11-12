@@ -4,9 +4,10 @@ Every file is downloaded once from a pinned commit of the CASdatasets repository
 checked against its SHA-256 digest and kept in ``.cache/`` next to this file. Nothing is redistributed
 from this repository; CASdatasets is distributed under the GPL (>= 2).
 
-    from data import swedish_1977, french_mtpl2
+    from data import swedish_1977, french_mtpl2, belgian_mtpl97
     cells = swedish_1977()        # dict of NumPy arrays, one entry per column
     policies, claims = french_mtpl2()
+    belgian = belgian_mtpl97()
 """
 
 from __future__ import annotations
@@ -25,6 +26,7 @@ FILES = {
     "swautoins": ("data/swautoins.rda", "057594a03af696dff034363f1c5af751c51e01669a751b170e491ca4650d9ba7"),
     "freMTPL2freq": ("data/freMTPL2freq.rda", "82c8598513d9fa78226b6c7d271a9940eca4b8083e9e32320a75d377bdfe15a3"),
     "freMTPL2sev": ("data/freMTPL2sev.rda", "78e6e5016ae046603b37e88ff8ad8ca327f5d59f827c1f75d140388de09b14b3"),
+    "beMTPL97": ("data/beMTPL97.rda", "955a821a7a693bf18076c425e4d5a5a99889f3c89e1fbd99eca6239c11e963a6"),
 }
 
 CACHE = Path(__file__).resolve().parent / ".cache"
@@ -80,3 +82,14 @@ def french_mtpl2():
     freq = _read_rda(fetch("freMTPL2freq"), "freMTPL2freq")
     sev = _read_rda(fetch("freMTPL2sev"), "freMTPL2sev")
     return freq, sev
+
+
+def belgian_mtpl97():
+    """Belgian motor third-party liability, 1997 (CASdatasets ``beMTPL97``; 163,212 policies).
+
+    One row per policy with its exposure (at most one year), its number of claims and the rating factors: the
+    policyholder's age and sex, the bonus-malus level (0 to 22 on the Belgian scale), the vehicle's power in kW and
+    age, fuel, use, fleet membership, the type of cover, the postcode and its longitude and latitude. Returned as a
+    pandas DataFrame, exactly as stored.
+    """
+    return _read_rda(fetch("beMTPL97"), "beMTPL97")

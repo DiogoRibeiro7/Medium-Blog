@@ -13,6 +13,8 @@ E4  Dynamic economy: a technology shock re-ranks productivity at t = 0; paths of
     efficiency and concentration under no tax, the capital income tax and the wealth tax.
 E5  Dynamic economy: persistence of productivity within a life (psi) crossed with rho_g = 0
     and rho_g = 1, i.e. when does inheritance of wealth without inheritance of ability bite?
+E6  Sensitivity of the E4 transition (no tax) to the two settings that drive self-financing:
+    the saving rate out of capital income (s_k) and the persistence of productivity (psi).
 """
 
 from __future__ import annotations
@@ -162,6 +164,41 @@ def e5(pool, quick: bool) -> pd.DataFrame:
     return pd.DataFrame(res)
 
 
+def _transition_metrics(args):
+    params, seed, burn, horizon, pre = args
+    eco = Economy(params, np.random.default_rng(seed))
+    st, hist = eco.run(burn)
+    tail = hist[-pre:]
+    c0 = float(np.mean([h.coupling for h in tail]))
+    e0 = float(np.mean([h.efficiency for h in tail]))
+    y0 = float(np.mean([h.output for h in tail]))
+    st.logz = params.sigma_z * eco.rng.standard_normal(params.n)
+    path = [eco.step(st) for _ in range(horizon)]
+    c = np.array([h.coupling for h in path])
+    eff = np.array([h.efficiency for h in path])
+    y = np.array([h.output for h in path])
+
+    def first(cond: np.ndarray) -> float:
+        return float(np.argmax(cond)) if cond.any() else float("nan")
+
+    return dict(s_k=params.s_k, psi=params.psi, seed=seed, pre_coupling=c0, pre_efficiency=e0,
+                pre_top1=float(np.mean([h.top1_wealth for h in tail])),
+                t_half=first(c >= 0.5 * c0), t_90=first(c >= 0.9 * c0),
+                eff_drop=e0 - eff[0], eff_gap_10=e0 - eff[10], eff_gap_25=e0 - eff[25],
+                output_years_lost=float(np.sum((y0 - y) / y0)))
+
+
+def e6(pool, quick: bool) -> pd.DataFrame:
+    n = 3_000 if quick else BASE.n
+    burn, horizon, pre = (150, 40, 20) if quick else (BURN, 120, 50)
+    seeds = range(1 if quick else 3)
+    sks = (0.3, 0.5) if quick else (0.3, 0.4, 0.5)
+    psis = (0.90, 0.98) if quick else (0.90, 0.95, 0.98)
+    jobs = [(replace(BASE, n=n, s_k=sk, psi=psi), s, burn, horizon, pre)
+            for sk in sks for psi in psis for s in seeds]
+    return pd.DataFrame(list(pool.map(_transition_metrics, jobs)))
+
+
 # ---------------------------------------------------------------------------------------
 # summary
 
@@ -170,7 +207,7 @@ def regime_name(tk: float, ta: float) -> str:
     return "none" if tk == 0 and ta == 0 else ("capital_income" if tk > 0 else "wealth")
 
 
-def summary(s1, s2, s3, s4, s5, tau_k, tau_a, target, achieved) -> str:
+def summary(s1, s2, s3, s4, s5, s6, tau_k, tau_a, target, achieved) -> str:
     L = []
     w = L.append
     w("# Simulation results (every number quoted in the article)")
@@ -263,6 +300,17 @@ def summary(s1, s2, s3, s4, s5, tau_k, tau_a, target, achieved) -> str:
         w(f"psi={psi:.2f}: rho_g=0 efficiency {r0.efficiency:.4f}, coupling {r0.coupling:.4f}, top1 {r0.top1_wealth:.4f}; "
           f"rho_g=1 efficiency {r1.efficiency:.4f}, coupling {r1.coupling:.4f}, top1 {r1.top1_wealth:.4f}; "
           f"gap efficiency {r1.efficiency - r0.efficiency:+.4f}, output {100 * (r1.output / r0.output - 1):+.2f}%")
+    w("")
+    w("## E6 transition after re-ranking, no tax: sensitivity to s_k and psi (means over seeds)")
+    g6 = s6.groupby(["s_k", "psi"]).mean(numeric_only=True)
+    for (sk, psi), r in g6.iterrows():
+        w(f"s_k={sk:.1f} psi={psi:.2f}: pre-shock coupling {r.pre_coupling:.4f}, efficiency {r.pre_efficiency:.4f}, "
+          f"top1 {r.pre_top1:.4f}; years to half coupling {r.t_half:.1f}, to 90% {r.t_90:.1f}; "
+          f"efficiency drop at t=0 {r.eff_drop:.4f}, gap at t=10 {r.eff_gap_10:.4f}, at t=25 {r.eff_gap_25:.4f}; "
+          f"cumulative output lost over 120 years {r.output_years_lost:.3f} years of pre-shock output")
+    w(f"range of years to half coupling across the grid: {g6.t_half.min():.1f} to {g6.t_half.max():.1f}; "
+      f"to 90%: {g6.t_90.min():.1f} to {g6.t_90.max():.1f}; output-years lost: "
+      f"{g6.output_years_lost.min():.3f} to {g6.output_years_lost.max():.3f}")
     return "\n".join(L) + "\n"
 
 
@@ -281,12 +329,14 @@ def main() -> None:
         s3 = e3(pool, args.quick, tau_k, tau_a)
         s4 = e4(pool, args.quick, tau_k, tau_a)
         s5 = e5(pool, args.quick)
+        s6 = e6(pool, args.quick)
     s1.to_csv(args.out / "sim_static_surface.csv", index=False, float_format="%.6f")
     s2.to_csv(args.out / "sim_inheritance.csv", index=False, float_format="%.6f")
     s3.to_csv(args.out / "sim_taxes.csv", index=False, float_format="%.6f")
     s4.to_csv(args.out / "sim_reranking.csv", index=False, float_format="%.6f")
     s5.to_csv(args.out / "sim_persistence.csv", index=False, float_format="%.6f")
-    text = summary(s1, s2, s3, s4, s5, tau_k, tau_a, target, achieved)
+    s6.to_csv(args.out / "sim_transition_sensitivity.csv", index=False, float_format="%.6f")
+    text = summary(s1, s2, s3, s4, s5, s6, tau_k, tau_a, target, achieved)
     (args.out / "model_summary.txt").write_text(text)
     print(text)
 

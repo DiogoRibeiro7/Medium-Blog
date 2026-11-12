@@ -309,7 +309,7 @@ def main() -> None:
         nz = cb > 0
         kl = np.sum((cb[nz] / N.sum()) * np.log((cb[nz] / N.sum()) / (eb[nz] / e.sum())))
         print(f"{k:<8} Gini {gini(r, e, N):.4f} -> recalibrated {gini(m['rc'], e, N):.4f}; isotonic blocks {m['blocks']};"
-              f" Lorenz of recalibration vs convex minorant: max gap {max(gap, gap2):.1e};"
+              f" Lorenz of recalibration vs convex minorant: max gap {'below 1e-12' if max(gap, gap2) < 1e-12 else f'{max(gap, gap2):.1e}'};"
               f" DSC {m['DSC']:.2f} vs 2 x claims x KL {2 * N.sum() * kl:.2f}")
 
     # -----------------------------------------------------------------------------------------------

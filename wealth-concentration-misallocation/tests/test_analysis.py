@@ -32,3 +32,18 @@ def test_cluster_se_with_one_obs_per_cluster_equals_hc1():
     _, se_cr1 = ols(y, X, np.arange(n))
     # with G = n clusters, CR1's factor G/(G-1)*(n-1)/(n-k) equals HC1's n/(n-k)
     assert np.allclose(se_cr1, se_hc1, rtol=1e-12)
+
+
+def test_fast_fit_matches_reference_ols():
+    from analysis import _fit_fast
+    rng = np.random.default_rng(2)
+    n = 400
+    X = np.column_stack([np.ones(n), rng.standard_normal((n, 2))])
+    groups = rng.integers(0, 40, n)
+    y = X @ np.array([1.0, 0.3, -0.2]) + rng.standard_normal(n)
+    b_ref, se_ref = ols(y, X, groups)
+    b, se = _fit_fast(y, X, 1, groups)
+    assert b == pytest.approx(b_ref[1]) and se == pytest.approx(se_ref[1])
+    b, se = _fit_fast(y, X, 2, None)
+    b_ref, se_ref = ols(y, X)
+    assert b == pytest.approx(b_ref[2]) and se == pytest.approx(se_ref[2])

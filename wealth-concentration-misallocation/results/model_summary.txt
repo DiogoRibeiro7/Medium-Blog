@@ -80,3 +80,15 @@ psi=0.80: rho_g=0 efficiency 0.8361, coupling 0.2597, top1 0.0572; rho_g=1 effic
 psi=0.90: rho_g=0 efficiency 0.8576, coupling 0.3725, top1 0.0880; rho_g=1 efficiency 0.8662, coupling 0.4227, top1 0.0960; gap efficiency +0.0086, output +1.11%
 psi=0.95: rho_g=0 efficiency 0.8821, coupling 0.4800, top1 0.1247; rho_g=1 efficiency 0.8999, coupling 0.5748, top1 0.1399; gap efficiency +0.0178, output +2.30%
 psi=0.98: rho_g=0 efficiency 0.9115, coupling 0.5888, top1 0.1712; rho_g=1 efficiency 0.9420, coupling 0.7598, top1 0.2025; gap efficiency +0.0305, output +4.46%
+
+## E6 transition after re-ranking, no tax: sensitivity to s_k and psi (means over seeds)
+s_k=0.3 psi=0.90: pre-shock coupling 0.3971, efficiency 0.8588, top1 0.0850; years to half coupling 3.7, to 90% 12.3; efficiency drop at t=0 0.0638, gap at t=10 0.0020, at t=25 -0.0033; cumulative output lost over 120 years 0.590 years of pre-shock output
+s_k=0.3 psi=0.95: pre-shock coupling 0.5170, efficiency 0.8835, top1 0.1203; years to half coupling 5.0, to 90% 16.7; efficiency drop at t=0 0.1003, gap at t=10 0.0156, at t=25 -0.0032; cumulative output lost over 120 years 1.026 years of pre-shock output
+s_k=0.3 psi=0.98: pre-shock coupling 0.6428, efficiency 0.9142, top1 0.1632; years to half coupling 6.0, to 90% 21.7; efficiency drop at t=0 0.1438, gap at t=10 0.0368, at t=25 0.0015; cumulative output lost over 120 years 1.636 years of pre-shock output
+s_k=0.4 psi=0.90: pre-shock coupling 0.3921, efficiency 0.8589, top1 0.0897; years to half coupling 3.7, to 90% 12.3; efficiency drop at t=0 0.0670, gap at t=10 0.0020, at t=25 -0.0035; cumulative output lost over 120 years 0.597 years of pre-shock output
+s_k=0.4 psi=0.95: pre-shock coupling 0.5113, efficiency 0.8840, top1 0.1272; years to half coupling 5.0, to 90% 16.7; efficiency drop at t=0 0.1054, gap at t=10 0.0161, at t=25 -0.0035; cumulative output lost over 120 years 1.042 years of pre-shock output
+s_k=0.4 psi=0.98: pre-shock coupling 0.6370, efficiency 0.9153, top1 0.1728; years to half coupling 6.0, to 90% 21.7; efficiency drop at t=0 0.1511, gap at t=10 0.0379, at t=25 0.0011; cumulative output lost over 120 years 1.663 years of pre-shock output
+s_k=0.5 psi=0.90: pre-shock coupling 0.3886, efficiency 0.8588, top1 0.0927; years to half coupling 4.0, to 90% 12.3; efficiency drop at t=0 0.0692, gap at t=10 0.0021, at t=25 -0.0036; cumulative output lost over 120 years 0.601 years of pre-shock output
+s_k=0.5 psi=0.95: pre-shock coupling 0.5072, efficiency 0.8842, top1 0.1318; years to half coupling 5.0, to 90% 17.0; efficiency drop at t=0 0.1088, gap at t=10 0.0164, at t=25 -0.0038; cumulative output lost over 120 years 1.052 years of pre-shock output
+s_k=0.5 psi=0.98: pre-shock coupling 0.6329, efficiency 0.9157, top1 0.1792; years to half coupling 6.0, to 90% 22.0; efficiency drop at t=0 0.1561, gap at t=10 0.0387, at t=25 0.0008; cumulative output lost over 120 years 1.680 years of pre-shock output
+range of years to half coupling across the grid: 3.7 to 6.0; to 90%: 12.3 to 22.0; output-years lost: 0.590 to 1.680

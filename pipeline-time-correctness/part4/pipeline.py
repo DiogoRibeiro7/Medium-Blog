@@ -237,6 +237,119 @@ CODE_VERSION = hashlib.sha256((SCHEMA_SQL + PROFILE_SQL + REPORT_SQL).encode()).
 RUN_TIME = dt.time(8, 0)  # the daily run, after the source publishes in the morning
 
 
+# ---------------------------------------------------------------------------
+# Two optional changes, added after Part 4 (the follow-up). With both off, the SQL is exactly the
+# Part 4 SQL above and the code version is the same.
+#   content_check  find the latest file that brought anything new (the "data cut") and count the
+#                  age of each reporting date from that file, not from the latest publication. Dates
+#                  after the cut are then treated as unknown (the level is used), not as zero. The
+#                  report gains a column, data_cut.
+#   holidays       treat Germany's nationwide public holidays as Sundays, in the delay profile and in
+#                  the report.
+#   fallback       what to use for a date with less than a fifth of its count expected in hand:
+#                  "level" (Part 4), the mean 28-day count of the four dates in the profile, 28 to 55
+#                  days old; or "last_week", the estimate for the latest earlier date of the same
+#                  weekday that is at least seven days old.
+# ---------------------------------------------------------------------------
+def easter(year: int) -> dt.date:
+    """Gregorian Easter Sunday (anonymous Gregorian algorithm)."""
+    a, b, c = year % 19, year // 100, year % 100
+    d, e = b // 4, b % 4
+    f = (b + 8) // 25
+    g = (b - f + 1) // 3
+    h = (19 * a + b - d - g + 15) % 30
+    i, k = c // 4, c % 4
+    l = (32 + 2 * e + 2 * i - h - k) % 7
+    m = (a + 11 * h + 22 * l) // 451
+    month = (h + l - 7 * m + 114) // 31
+    day = (h + l - 7 * m + 114) % 31 + 1
+    return dt.date(year, month, day)
+
+
+def german_holidays(first_year: int = 2020, last_year: int = 2024) -> list[dt.date]:
+    """The nine public holidays observed in every German state."""
+    out = []
+    for y in range(first_year, last_year + 1):
+        e = easter(y)
+        out += [dt.date(y, 1, 1), e - dt.timedelta(days=2), e + dt.timedelta(days=1), dt.date(y, 5, 1),
+                e + dt.timedelta(days=39), e + dt.timedelta(days=50), dt.date(y, 10, 3),
+                dt.date(y, 12, 25), dt.date(y, 12, 26)]
+    return sorted(out)
+
+
+def holiday_sql() -> str:
+    values = ", ".join(f"(date '{d.isoformat()}')" for d in german_holidays())
+    return f"""
+create table if not exists core.holidays (d date primary key);
+insert or ignore into core.holidays values {values};
+-- the weekday used by the profile and the report: a holiday counts as a Sunday (7)
+create or replace macro core.daytype(x) as case when x in (select d from core.holidays) then 7 else isodow(x) end;
+"""
+
+
+def _replace_once(text: str, old: str, new: str) -> str:
+    assert text.count(old) == 1, old
+    return text.replace(old, new)
+
+
+def variant_sql(content_check: bool = False, holidays: bool = False, fallback: str = "level"
+                ) -> tuple[str, str, str, str]:
+    """(schema, extra, profile, report) SQL for a variant. The defaults give the Part 4 SQL."""
+    assert fallback in ("level", "last_week")
+    schema, extra, profile, report = SCHEMA_SQL, "", PROFILE_SQL, REPORT_SQL
+    if holidays:
+        extra = holiday_sql()
+        profile = profile.replace("isodow(d)", "core.daytype(d)")
+        report = _replace_once(report, "isodow(win.d)", "core.daytype(win.d)")
+    if content_check:
+        schema = _replace_once(schema, "    code_version       varchar   not null\n);",
+                               "    code_version       varchar   not null,\n    data_cut           date\n);")
+        report = _replace_once(report, "win as (", """pubs as (select publication_date as q, lag(publication_date) over (order by publication_date) as prev
+         from (select distinct publication_date from k)),
+changes as (                                         -- what each file changed against the file before it
+    select a.publication_date as q, sum(abs(a.cases - coalesce(b.cases, 0))) as change
+    from k a
+    join pubs on pubs.q = a.publication_date and pubs.prev is not null
+    left join k b on b.publication_date = pubs.prev and b.reporting_date = a.reporting_date
+    group by a.publication_date
+),
+cut as (                                             -- the latest file that brought anything new
+    select coalesce(max(changes.q), max(latest.p)) as e
+    from latest left join changes on changes.q <= latest.p and changes.change > 0
+),
+win as (""")
+        report = _replace_once(report, """coalesce(k.cases, 0) as known
+    from win left join k""", """coalesce(k.cases, 0) as known,
+           greatest(cut.e - win.d, 0)::integer as age_eff  -- age counted from the data cut
+    from win cross join cut left join k""")
+        report = _replace_once(report, "pr.weekday = cur.weekday and pr.age = cur.age",
+                               "pr.weekday = cur.weekday and pr.age = cur.age_eff")
+        report = _replace_once(report, """       $code_version as code_version
+from est cross join band left join prev on true""", """       $code_version as code_version,
+       max(cut.e) as data_cut
+from est cross join band cross join cut left join prev on true""")
+    if fallback == "last_week":
+        daytype = "core.daytype" if holidays else "isodow"
+        ref, cutjoin = ("cut.e", "cross join cut") if content_check else ("latest.p", "")
+        report = _replace_once(report, "\nest as (", f"""\nhist as (                                            -- the 35 dates before, each with its share
+    select h.d, h.weekday, h.age, h.known, pr.share
+    from (
+        select latest.p - i.i::integer as d, {daytype}(latest.p - i.i::integer) as weekday,
+               ({ref} - (latest.p - i.i::integer))::integer as age, coalesce(k.cases, 0) as known
+        from latest {cutjoin} cross join (select unnest(range(1, 36)) as i) i
+        left join k on k.publication_date = latest.p and k.reporting_date = latest.p - i.i::integer
+    ) h
+    join profile pr on pr.weekday = h.weekday and pr.age = least(greatest(h.age, 0), 28)
+),
+est as (""")
+        report = _replace_once(report, "case when pr.share >= 0.2 then cur.known / pr.share else pr.mean_full end as nowcast",
+                               """case when pr.share >= 0.2 then cur.known / pr.share
+                else coalesce((select hs.known / hs.share from hist hs       -- same weekday, a week or more old
+                               where hs.weekday = cur.weekday and hs.d < cur.d and hs.age >= 7 and hs.share >= 0.2
+                               order by hs.d desc limit 1), pr.mean_full) end as nowcast""")
+    return schema, extra, profile, report
+
+
 def run_ts(day: dt.date) -> dt.datetime:
     return dt.datetime.combine(day, RUN_TIME)
 
@@ -249,11 +362,16 @@ class Incoming:
 
 
 class Pipeline:
-    def __init__(self, database: str = ":memory:"):
+    def __init__(self, database: str = ":memory:", content_check: bool = False, holidays: bool = False,
+                 fallback: str = "level"):
         self.con = duckdb.connect(database)
         self.con.execute("set threads = 1")
-        self.con.execute(SCHEMA_SQL)
+        schema, extra, self.profile_sql, self.report_sql = variant_sql(content_check, holidays, fallback)
+        self.code_version = hashlib.sha256((schema + extra + self.profile_sql + self.report_sql).encode()).hexdigest()[:12]
+        self.con.execute(schema)
         self.con.execute(STATE_MACRO_SQL)
+        if extra:
+            self.con.execute(extra)
 
     # -- landing ---------------------------------------------------------------------------
     def land(self, item: Incoming, loaded_at: dt.datetime) -> bool:
@@ -302,12 +420,12 @@ class Pipeline:
     def build_profile(self, as_of: dt.datetime) -> None:
         self.con.execute("begin transaction")
         self.con.execute("delete from core.delay_profile where computed_at = ?", [as_of])
-        self.con.execute("insert into core.delay_profile " + PROFILE_SQL, {"as_of": as_of})
+        self.con.execute("insert into core.delay_profile " + self.profile_sql, {"as_of": as_of})
         self.con.execute("commit")
 
     def report_row(self, day: dt.date, as_of: dt.datetime) -> pd.DataFrame:
-        return self.con.execute(REPORT_SQL, {"as_of": as_of, "run_date": day,
-                                             "code_version": CODE_VERSION}).df()
+        return self.con.execute(self.report_sql, {"as_of": as_of, "run_date": day,
+                                                  "code_version": self.code_version}).df()
 
     def build_report(self, day: dt.date, as_of: dt.datetime) -> None:
         row = self.report_row(day, as_of)
@@ -331,7 +449,7 @@ class Pipeline:
         Returns (profile, report row) as they come out now, to compare with the stored ones.
         """
         as_of = self.con.execute("select computed_at from mart.daily_report where run_date = ?", [day]).fetchone()[0]
-        profile = self.con.execute(PROFILE_SQL, {"as_of": as_of}).df()
+        profile = self.con.execute(self.profile_sql, {"as_of": as_of}).df()
         return profile, self.report_row(day, as_of)
 
     def stored(self, day: dt.date) -> tuple[pd.DataFrame, pd.DataFrame]:
@@ -385,9 +503,9 @@ def write_incoming(directory: Path, first: dt.date, last: dt.date, delays: dict[
     return out
 
 
-def replay(first_run: dt.date, last_run: dt.date, incoming: list[Incoming], database: str = ":memory:"
-           ) -> Pipeline:
-    p = Pipeline(database)
+def replay(first_run: dt.date, last_run: dt.date, incoming: list[Incoming], database: str = ":memory:",
+           content_check: bool = False, holidays: bool = False, fallback: str = "level") -> Pipeline:
+    p = Pipeline(database, content_check=content_check, holidays=holidays, fallback=fallback)
     day = first_run
     while day <= last_run:
         p.run(day, incoming)

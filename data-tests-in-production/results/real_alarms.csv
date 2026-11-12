@@ -1,0 +1,2350 @@
+month,family,check,fired,value,detail,source
+2020-01,table,schema (strict),True,3,"RatecodeID, airport_fee, passenger_count",real
+2020-01,table,schema (tolerant),True,1,airport_fee,real
+2020-01,table,not null (strict),True,0.0102172,passenger_count,real
+2020-01,table,not null (1%),True,0.0102172,passenger_count,real
+2020-01,table,ranges (strict),True,0.00304527,fare_amount<0,real
+2020-01,table,ranges (1%),False,0.00304527,fare_amount<0,real
+2020-01,table,code lists (strict),True,7.80639e-07,vendorid,real
+2020-01,table,code lists (1%),False,7.80639e-07,vendorid,real
+2020-01,table,month window (strict),True,3.30991e-05,,real
+2020-01,table,month window (1%),False,3.30991e-05,,real
+2020-01,table,unique rows (strict),True,0.0020217,,real
+2020-01,table,unique rows (1%),False,0.0020217,,real
+2020-01,table,reconciliation (strict),True,0.304615,,real
+2020-01,table,reconciliation (1%),True,0.304615,,real
+2020-01,table,volume floor,False,6.40501e+06,,real
+2020-01,change,volume,False,0.940628,log rows,real
+2020-01,change,daily completeness,False,0.640952,highest day / median day,real
+2020-01,change,null shares,False,3.31975,passenger_count,real
+2020-01,change,rule-violation rates,False,1.82513,trip_distance<0,real
+2020-01,change,value distributions,True,5.26316,fare_amount q0.5,real
+2020-01,change,duplicate rows,True,202.163,duplicate share,real
+2020-01,change,reconciliation,False,1.23289,mismatch share,real
+2020-01,change,mix: payment_type,False,1.60672,TV 0.022,real
+2020-01,change,mix: vendorid,False,1.26627,TV 0.034,real
+2020-01,change,mix: ratecodeid,False,1.20885,TV 0.005,real
+2020-01,change,mix: passenger_count,True,5.3358,TV 0.017,real
+2020-01,change,hour of day,False,3.52178,TV 0.020,real
+2020-01,change,pickup zones,False,0.296794,TV 0.025,real
+2020-01,change,schema change,False,0,,real
+2020-02,table,schema (strict),True,3,"RatecodeID, airport_fee, passenger_count",real
+2020-02,table,schema (tolerant),True,1,airport_fee,real
+2020-02,table,not null (strict),True,0.00775221,passenger_count,real
+2020-02,table,not null (1%),False,0.00775221,passenger_count,real
+2020-02,table,ranges (strict),True,0.00317603,fare_amount<0,real
+2020-02,table,ranges (1%),False,0.00317603,fare_amount<0,real
+2020-02,table,code lists (strict),True,9.52477e-07,vendorid,real
+2020-02,table,code lists (1%),False,9.52477e-07,vendorid,real
+2020-02,table,month window (strict),True,4.81001e-05,,real
+2020-02,table,month window (1%),False,4.81001e-05,,real
+2020-02,table,unique rows (strict),False,0,,real
+2020-02,table,unique rows (1%),False,0,,real
+2020-02,table,reconciliation (strict),True,0.306037,,real
+2020-02,table,reconciliation (1%),True,0.306037,,real
+2020-02,table,volume floor,False,6.29937e+06,,real
+2020-02,change,volume,False,0.999535,log rows,real
+2020-02,change,daily completeness,False,0.673986,highest day / median day,real
+2020-02,change,null shares,False,1.4451,passenger_count,real
+2020-02,change,rule-violation rates,False,1.4122,zero passengers,real
+2020-02,change,value distributions,True,5.26316,fare_amount q0.5,real
+2020-02,change,duplicate rows,False,0.0135114,duplicate share,real
+2020-02,change,reconciliation,False,1.14527,mismatch share,real
+2020-02,change,mix: payment_type,False,2.82845,TV 0.031,real
+2020-02,change,mix: vendorid,False,0.973759,TV 0.028,real
+2020-02,change,mix: ratecodeid,False,1.43671,TV 0.006,real
+2020-02,change,mix: passenger_count,True,6.4217,TV 0.019,real
+2020-02,change,hour of day,False,1.35549,TV 0.015,real
+2020-02,change,pickup zones,False,0.232691,TV 0.023,real
+2020-02,change,schema change,False,0,,real
+2020-03,table,schema (strict),True,3,"RatecodeID, airport_fee, passenger_count",real
+2020-03,table,schema (tolerant),True,1,airport_fee,real
+2020-03,table,not null (strict),True,0.0125705,passenger_count,real
+2020-03,table,not null (1%),True,0.0125705,passenger_count,real
+2020-03,table,ranges (strict),True,0.0036686,fare_amount<0,real
+2020-03,table,ranges (1%),False,0.0036686,fare_amount<0,real
+2020-03,table,code lists (strict),True,2.99233e-06,vendorid,real
+2020-03,table,code lists (1%),False,2.99233e-06,vendorid,real
+2020-03,table,month window (strict),True,0.000141637,,real
+2020-03,table,month window (1%),False,0.000141637,,real
+2020-03,table,unique rows (strict),False,0,,real
+2020-03,table,unique rows (1%),False,0,,real
+2020-03,table,reconciliation (strict),True,0.304511,,real
+2020-03,table,reconciliation (1%),True,0.304511,,real
+2020-03,table,volume floor,False,3.00769e+06,,real
+2020-03,change,volume,True,7.22862,log rows,real
+2020-03,change,daily completeness,True,84.022,highest day / median day,real
+2020-03,change,null shares,False,3.85952,passenger_count,real
+2020-03,change,rule-violation rates,False,2.96832,zero passengers,real
+2020-03,change,value distributions,True,5.26316,fare_amount q0.5,real
+2020-03,change,duplicate rows,False,0.00658029,duplicate share,real
+2020-03,change,reconciliation,False,0.972134,mismatch share,real
+2020-03,change,mix: payment_type,False,2.00139,TV 0.025,real
+2020-03,change,mix: vendorid,False,0.334988,TV 0.023,real
+2020-03,change,mix: ratecodeid,False,2.78891,TV 0.008,real
+2020-03,change,mix: passenger_count,True,16.066,TV 0.038,real
+2020-03,change,hour of day,True,11.2823,TV 0.040,real
+2020-03,change,pickup zones,False,3.90925,TV 0.043,real
+2020-03,change,schema change,False,0,,real
+2020-04,table,schema (strict),True,3,"RatecodeID, airport_fee, passenger_count",real
+2020-04,table,schema (tolerant),True,1,airport_fee,real
+2020-04,table,not null (strict),True,0.0822437,passenger_count,real
+2020-04,table,not null (1%),True,0.0822437,passenger_count,real
+2020-04,table,ranges (strict),True,0.00543951,fare_amount<0,real
+2020-04,table,ranges (1%),False,0.00543951,fare_amount<0,real
+2020-04,table,code lists (strict),False,0,vendorid,real
+2020-04,table,code lists (1%),False,0,vendorid,real
+2020-04,table,month window (strict),True,0.000554452,,real
+2020-04,table,month window (1%),False,0.000554452,,real
+2020-04,table,unique rows (strict),False,0,,real
+2020-04,table,unique rows (1%),False,0,,real
+2020-04,table,reconciliation (strict),True,0.367131,,real
+2020-04,table,reconciliation (1%),True,0.367131,,real
+2020-04,table,volume floor,True,238073,,real
+2020-04,change,volume,True,35.2404,log rows,real
+2020-04,change,daily completeness,False,1.98661,highest day / median day,real
+2020-04,change,null shares,True,46.5467,congestion_surcharge,real
+2020-04,change,rule-violation rates,True,14.8152,zero distance,real
+2020-04,change,value distributions,True,48.7179,tip_amount q0.5,real
+2020-04,change,duplicate rows,False,0.00658029,duplicate share,real
+2020-04,change,reconciliation,False,2.3834,mismatch share,real
+2020-04,change,mix: payment_type,True,15.7623,TV 0.167,real
+2020-04,change,mix: vendorid,False,4.22935,TV 0.063,real
+2020-04,change,mix: ratecodeid,True,36.4646,TV 0.076,real
+2020-04,change,mix: passenger_count,True,32.9262,TV 0.133,real
+2020-04,change,hour of day,True,42.2966,TV 0.167,real
+2020-04,change,pickup zones,True,42.8946,TV 0.324,real
+2020-04,change,schema change,False,0,,real
+2020-05,table,schema (strict),True,3,"RatecodeID, airport_fee, passenger_count",real
+2020-05,table,schema (tolerant),True,1,airport_fee,real
+2020-05,table,not null (strict),True,0.169054,passenger_count,real
+2020-05,table,not null (1%),True,0.169054,passenger_count,real
+2020-05,table,ranges (strict),True,0.00438844,fare_amount<0,real
+2020-05,table,ranges (1%),False,0.00438844,fare_amount<0,real
+2020-05,table,code lists (strict),True,0.000106195,vendorid,real
+2020-05,table,code lists (1%),False,0.000106195,vendorid,real
+2020-05,table,month window (strict),True,6.60132e-05,,real
+2020-05,table,month window (1%),False,6.60132e-05,,real
+2020-05,table,unique rows (strict),False,0,,real
+2020-05,table,unique rows (1%),False,0,,real
+2020-05,table,reconciliation (strict),True,0.367788,,real
+2020-05,table,reconciliation (1%),True,0.367788,,real
+2020-05,table,volume floor,True,348415,,real
+2020-05,change,volume,True,31.0398,log rows,real
+2020-05,change,daily completeness,False,1.42303,highest day / median day,real
+2020-05,change,null shares,True,77.9528,passenger_count,real
+2020-05,change,rule-violation rates,True,22.4642,zero distance,real
+2020-05,change,value distributions,True,99.4872,tip_amount q0.5,real
+2020-05,change,duplicate rows,False,0.00658029,duplicate share,real
+2020-05,change,reconciliation,False,2.41762,mismatch share,real
+2020-05,change,mix: payment_type,True,14.5153,TV 0.217,real
+2020-05,change,mix: vendorid,False,0.429582,TV 0.024,real
+2020-05,change,mix: ratecodeid,True,79.4514,TV 0.162,real
+2020-05,change,mix: passenger_count,True,28.2994,TV 0.170,real
+2020-05,change,hour of day,True,22.6383,TV 0.137,real
+2020-05,change,pickup zones,True,29.9643,TV 0.318,real
+2020-05,change,schema change,False,0,,real
+2020-06,table,schema (strict),True,3,"RatecodeID, airport_fee, passenger_count",real
+2020-06,table,schema (tolerant),True,1,airport_fee,real
+2020-06,table,not null (strict),True,0.0922486,passenger_count,real
+2020-06,table,not null (1%),True,0.0922486,passenger_count,real
+2020-06,table,ranges (strict),True,0.00462716,fare_amount<0,real
+2020-06,table,ranges (1%),False,0.00462716,fare_amount<0,real
+2020-06,table,code lists (strict),True,5.45656e-05,vendorid,real
+2020-06,table,code lists (1%),False,5.45656e-05,vendorid,real
+2020-06,table,month window (strict),True,1.63697e-05,,real
+2020-06,table,month window (1%),False,1.63697e-05,,real
+2020-06,table,unique rows (strict),True,1.81885e-06,,real
+2020-06,table,unique rows (1%),False,1.81885e-06,,real
+2020-06,table,reconciliation (strict),True,0.33408,,real
+2020-06,table,reconciliation (1%),True,0.33408,,real
+2020-06,table,volume floor,True,549797,,real
+2020-06,change,volume,True,20.6318,log rows,real
+2020-06,change,daily completeness,False,4.18904,highest day / median day,real
+2020-06,change,null shares,True,30.7697,passenger_count,real
+2020-06,change,rule-violation rates,True,18.1621,zero distance,real
+2020-06,change,value distributions,True,11.7361,tip_amount q0.5,real
+2020-06,change,duplicate rows,False,0.181885,duplicate share,real
+2020-06,change,reconciliation,False,0.662582,mismatch share,real
+2020-06,change,mix: payment_type,True,6.53852,TV 0.129,real
+2020-06,change,mix: vendorid,False,0.647151,TV 0.027,real
+2020-06,change,mix: ratecodeid,True,31.5011,TV 0.085,real
+2020-06,change,mix: passenger_count,True,13.6912,TV 0.096,real
+2020-06,change,hour of day,True,20.9226,TV 0.139,real
+2020-06,change,pickup zones,True,18.5697,TV 0.222,real
+2020-06,change,schema change,False,0,,real
+2020-07,table,schema (strict),True,3,"RatecodeID, airport_fee, passenger_count",real
+2020-07,table,schema (tolerant),True,1,airport_fee,real
+2020-07,table,not null (strict),True,0.0785183,passenger_count,real
+2020-07,table,not null (1%),True,0.0785183,passenger_count,real
+2020-07,table,ranges (strict),True,0.00463511,fare_amount<0,real
+2020-07,table,ranges (1%),False,0.00463511,fare_amount<0,real
+2020-07,table,code lists (strict),True,3.74807e-06,vendorid,real
+2020-07,table,code lists (1%),False,3.74807e-06,vendorid,real
+2020-07,table,month window (strict),True,1.24936e-05,,real
+2020-07,table,month window (1%),False,1.24936e-05,,real
+2020-07,table,unique rows (strict),False,0,,real
+2020-07,table,unique rows (1%),False,0,,real
+2020-07,table,reconciliation (strict),True,0.309416,,real
+2020-07,table,reconciliation (1%),True,0.309416,,real
+2020-07,table,volume floor,True,800412,,real
+2020-07,change,volume,True,15.7586,log rows,real
+2020-07,change,daily completeness,False,1.28844,highest day / median day,real
+2020-07,change,null shares,True,20.9038,congestion_surcharge,real
+2020-07,change,rule-violation rates,True,17.1186,zero distance,real
+2020-07,change,value distributions,False,4.73688,card trips tipped,real
+2020-07,change,duplicate rows,False,0,,real
+2020-07,change,reconciliation,False,0.614283,mismatch share,real
+2020-07,change,mix: payment_type,False,3.98215,TV 0.099,real
+2020-07,change,mix: vendorid,False,0.944867,TV 0.008,real
+2020-07,change,mix: ratecodeid,True,27.3187,TV 0.070,real
+2020-07,change,mix: passenger_count,True,7.29369,TV 0.079,real
+2020-07,change,hour of day,True,20.7791,TV 0.124,real
+2020-07,change,pickup zones,True,7.46359,TV 0.184,real
+2020-07,change,schema change,False,0,,real
+2020-08,table,schema (strict),True,2,"RatecodeID, passenger_count",real
+2020-08,table,schema (tolerant),False,0,,real
+2020-08,table,not null (strict),True,0.0707237,passenger_count,real
+2020-08,table,not null (1%),True,0.0707237,passenger_count,real
+2020-08,table,ranges (strict),True,0.00487746,fare_amount<0,real
+2020-08,table,ranges (1%),False,0.00487746,fare_amount<0,real
+2020-08,table,code lists (strict),True,1.98553e-05,vendorid,real
+2020-08,table,code lists (1%),False,1.98553e-05,vendorid,real
+2020-08,table,month window (strict),True,1.58843e-05,,real
+2020-08,table,month window (1%),False,1.58843e-05,,real
+2020-08,table,unique rows (strict),False,0,,real
+2020-08,table,unique rows (1%),False,0,,real
+2020-08,table,reconciliation (strict),True,0.279835,,real
+2020-08,table,reconciliation (1%),True,0.279835,,real
+2020-08,table,volume floor,False,1.00729e+06,,real
+2020-08,change,volume,True,9.32203,log rows,real
+2020-08,change,daily completeness,False,0.810097,highest day / median day,real
+2020-08,change,null shares,True,11.7567,passenger_count,real
+2020-08,change,rule-violation rates,True,11.6028,zero distance,real
+2020-08,change,value distributions,False,3.71759,card trips tipped,real
+2020-08,change,duplicate rows,False,0,,real
+2020-08,change,reconciliation,False,2.36404,mismatch share,real
+2020-08,change,mix: payment_type,False,2.1206,TV 0.079,real
+2020-08,change,mix: vendorid,False,0.565586,TV 0.026,real
+2020-08,change,mix: ratecodeid,True,18.5554,TV 0.060,real
+2020-08,change,mix: passenger_count,False,2.33142,TV 0.060,real
+2020-08,change,hour of day,True,8.56528,TV 0.111,real
+2020-08,change,pickup zones,True,6.96818,TV 0.153,real
+2020-08,change,schema change,True,inf,"airport_fee:""null""; airport_fee:float",real
+2020-09,table,schema (strict),True,2,"RatecodeID, passenger_count",real
+2020-09,table,schema (tolerant),False,0,,real
+2020-09,table,not null (strict),True,0.0672482,passenger_count,real
+2020-09,table,not null (1%),True,0.0672482,passenger_count,real
+2020-09,table,ranges (strict),True,0.00445334,fare_amount<0,real
+2020-09,table,ranges (1%),False,0.00445334,fare_amount<0,real
+2020-09,table,code lists (strict),True,9.69414e-06,vendorid,real
+2020-09,table,code lists (1%),False,9.69414e-06,vendorid,real
+2020-09,table,month window (strict),True,9.99242e-05,,real
+2020-09,table,month window (1%),False,9.99242e-05,,real
+2020-09,table,unique rows (strict),False,0,,real
+2020-09,table,unique rows (1%),False,0,,real
+2020-09,table,reconciliation (strict),True,0.28313,,real
+2020-09,table,reconciliation (1%),True,0.28313,,real
+2020-09,table,volume floor,False,1.34102e+06,,real
+2020-09,change,volume,False,1.64523,log rows,real
+2020-09,change,daily completeness,False,0.922725,highest day / median day,real
+2020-09,change,null shares,True,6.77557,congestion_surcharge,real
+2020-09,change,rule-violation rates,True,13.0515,dropoff<pickup,real
+2020-09,change,value distributions,False,2.25651,fare_amount q0.95,real
+2020-09,change,duplicate rows,False,0,,real
+2020-09,change,reconciliation,False,1.84598,mismatch share,real
+2020-09,change,mix: payment_type,False,0.667715,TV 0.060,real
+2020-09,change,mix: vendorid,False,1.65282,TV 0.032,real
+2020-09,change,mix: ratecodeid,True,7.34423,TV 0.054,real
+2020-09,change,mix: passenger_count,False,1.2851,TV 0.049,real
+2020-09,change,hour of day,False,2.94913,TV 0.105,real
+2020-09,change,pickup zones,False,3.5112,TV 0.132,real
+2020-09,change,schema change,False,0,,real
+2020-10,table,schema (strict),True,3,"RatecodeID, airport_fee, passenger_count",real
+2020-10,table,schema (tolerant),True,1,airport_fee,real
+2020-10,table,not null (strict),True,0.063001,passenger_count,real
+2020-10,table,not null (1%),True,0.063001,passenger_count,real
+2020-10,table,ranges (strict),True,0.0043786,fare_amount<0,real
+2020-10,table,ranges (1%),False,0.0043786,fare_amount<0,real
+2020-10,table,code lists (strict),True,5.94837e-07,vendorid,real
+2020-10,table,code lists (1%),False,5.94837e-07,vendorid,real
+2020-10,table,month window (strict),True,1.90348e-05,,real
+2020-10,table,month window (1%),False,1.90348e-05,,real
+2020-10,table,unique rows (strict),False,0,,real
+2020-10,table,unique rows (1%),False,0,,real
+2020-10,table,reconciliation (strict),True,0.283517,,real
+2020-10,table,reconciliation (1%),True,0.283517,,real
+2020-10,table,volume floor,False,1.68113e+06,,real
+2020-10,change,volume,False,0.100339,log rows,real
+2020-10,change,daily completeness,False,1.38231,lowest day / median day,real
+2020-10,change,null shares,False,0.475461,congestion_surcharge,real
+2020-10,change,rule-violation rates,True,15.9708,dropoff<pickup,real
+2020-10,change,value distributions,False,2.75417,trip_distance q0.95,real
+2020-10,change,duplicate rows,False,0,,real
+2020-10,change,reconciliation,False,1.62794,mismatch share,real
+2020-10,change,mix: payment_type,False,1.98037,TV 0.033,real
+2020-10,change,mix: vendorid,False,1.18245,TV 0.030,real
+2020-10,change,mix: ratecodeid,False,2.41899,TV 0.023,real
+2020-10,change,mix: passenger_count,False,2.78064,TV 0.019,real
+2020-10,change,hour of day,False,1.29496,TV 0.065,real
+2020-10,change,pickup zones,False,1.8973,TV 0.069,real
+2020-10,change,schema change,True,inf,"airport_fee:""null""; airport_fee:float",real
+2020-11,table,schema (strict),True,2,"RatecodeID, passenger_count",real
+2020-11,table,schema (tolerant),False,0,,real
+2020-11,table,not null (strict),True,0.0656388,passenger_count,real
+2020-11,table,not null (1%),True,0.0656388,passenger_count,real
+2020-11,table,ranges (strict),True,0.00479192,fare_amount<0,real
+2020-11,table,ranges (1%),False,0.00479192,fare_amount<0,real
+2020-11,table,code lists (strict),True,1.98807e-06,vendorid,real
+2020-11,table,code lists (1%),False,1.98807e-06,vendorid,real
+2020-11,table,month window (strict),True,7.42213e-05,,real
+2020-11,table,month window (1%),False,7.42213e-05,,real
+2020-11,table,unique rows (strict),False,0,,real
+2020-11,table,unique rows (1%),False,0,,real
+2020-11,table,reconciliation (strict),True,0.285558,,real
+2020-11,table,reconciliation (1%),True,0.285558,,real
+2020-11,table,volume floor,False,1.509e+06,,real
+2020-11,change,volume,False,0.00276547,log rows,real
+2020-11,change,daily completeness,False,1.92725,lowest day / median day,real
+2020-11,change,null shares,False,0.00870603,passenger_count,real
+2020-11,change,rule-violation rates,True,17.4813,dropoff<pickup,real
+2020-11,change,value distributions,False,1.892,trip_distance q0.95,real
+2020-11,change,duplicate rows,False,0,,real
+2020-11,change,reconciliation,False,0.933719,mismatch share,real
+2020-11,change,mix: payment_type,False,1.60643,TV 0.025,real
+2020-11,change,mix: vendorid,False,0.479387,TV 0.025,real
+2020-11,change,mix: ratecodeid,False,1.44319,TV 0.002,real
+2020-11,change,mix: passenger_count,False,2.10208,TV 0.004,real
+2020-11,change,hour of day,False,0.321339,TV 0.055,real
+2020-11,change,pickup zones,False,1.79806,TV 0.045,real
+2020-11,change,schema change,True,inf,"airport_fee:""null""; airport_fee:float",real
+2020-12,table,schema (strict),True,2,"RatecodeID, passenger_count",real
+2020-12,table,schema (tolerant),False,0,,real
+2020-12,table,not null (strict),True,0.0680321,passenger_count,real
+2020-12,table,not null (1%),True,0.0680321,passenger_count,real
+2020-12,table,ranges (strict),True,0.00528901,fare_amount<0,real
+2020-12,table,ranges (1%),False,0.00528901,fare_amount<0,real
+2020-12,table,code lists (strict),True,6.84042e-07,vendorid,real
+2020-12,table,code lists (1%),False,6.84042e-07,vendorid,real
+2020-12,table,month window (strict),True,2.39415e-05,,real
+2020-12,table,month window (1%),False,2.39415e-05,,real
+2020-12,table,unique rows (strict),False,0,,real
+2020-12,table,unique rows (1%),False,0,,real
+2020-12,table,reconciliation (strict),True,0.280542,,real
+2020-12,table,reconciliation (1%),True,0.280542,,real
+2020-12,table,volume floor,False,1.4619e+06,,real
+2020-12,change,volume,False,0.0216693,log rows,real
+2020-12,change,daily completeness,False,2.73775,lowest day / median day,real
+2020-12,change,null shares,False,0.0515072,passenger_count,real
+2020-12,change,rule-violation rates,True,18.8043,dropoff<pickup,real
+2020-12,change,value distributions,False,2.1679,card tip share,real
+2020-12,change,duplicate rows,False,0,,real
+2020-12,change,reconciliation,False,0.804126,mismatch share,real
+2020-12,change,mix: payment_type,False,1.72657,TV 0.013,real
+2020-12,change,mix: vendorid,False,0.142722,TV 0.026,real
+2020-12,change,mix: ratecodeid,False,0.700767,TV 0.003,real
+2020-12,change,mix: passenger_count,False,0.966768,TV 0.006,real
+2020-12,change,hour of day,False,0.444833,TV 0.073,real
+2020-12,change,pickup zones,False,0.857638,TV 0.049,real
+2020-12,change,schema change,False,0,,real
+2021-01,table,schema (strict),True,2,"RatecodeID, passenger_count",real
+2021-01,table,schema (tolerant),False,0,,real
+2021-01,table,not null (strict),True,0.0718019,passenger_count,real
+2021-01,table,not null (1%),True,0.0718019,passenger_count,real
+2021-01,table,ranges (strict),True,0.00494171,fare_amount<0,real
+2021-01,table,ranges (1%),False,0.00494171,fare_amount<0,real
+2021-01,table,code lists (strict),False,0,vendorid,real
+2021-01,table,code lists (1%),False,0,vendorid,real
+2021-01,table,month window (strict),True,1.75212e-05,,real
+2021-01,table,month window (1%),False,1.75212e-05,,real
+2021-01,table,unique rows (strict),False,0,,real
+2021-01,table,unique rows (1%),False,0,,real
+2021-01,table,reconciliation (strict),True,0.282599,,real
+2021-01,table,reconciliation (1%),True,0.282599,,real
+2021-01,table,volume floor,False,1.36977e+06,,real
+2021-01,change,volume,False,0.0223572,log rows,real
+2021-01,change,daily completeness,False,0.424127,highest day / median day,real
+2021-01,change,null shares,False,0.220319,passenger_count,real
+2021-01,change,rule-violation rates,True,20.3989,dropoff<pickup,real
+2021-01,change,value distributions,True,5.55556,fare_amount q0.5,real
+2021-01,change,duplicate rows,False,0,,real
+2021-01,change,reconciliation,False,0.697487,mismatch share,real
+2021-01,change,mix: payment_type,False,1.08189,TV 0.016,real
+2021-01,change,mix: vendorid,False,0.15163,TV 0.018,real
+2021-01,change,mix: ratecodeid,False,0.34689,TV 0.008,real
+2021-01,change,mix: passenger_count,False,0.605839,TV 0.007,real
+2021-01,change,hour of day,False,0.340889,TV 0.065,real
+2021-01,change,pickup zones,False,0.741521,TV 0.044,real
+2021-01,change,schema change,False,0,,real
+2021-02,table,schema (strict),True,2,"RatecodeID, passenger_count",real
+2021-02,table,schema (tolerant),False,0,,real
+2021-02,table,not null (strict),True,0.0716231,passenger_count,real
+2021-02,table,not null (1%),True,0.0716231,passenger_count,real
+2021-02,table,ranges (strict),True,0.00495076,fare_amount<0,real
+2021-02,table,ranges (1%),False,0.00495076,fare_amount<0,real
+2021-02,table,code lists (strict),True,2.91607e-06,vendorid,real
+2021-02,table,code lists (1%),False,2.91607e-06,vendorid,real
+2021-02,table,month window (strict),True,2.25995e-05,,real
+2021-02,table,month window (1%),False,2.25995e-05,,real
+2021-02,table,unique rows (strict),False,0,,real
+2021-02,table,unique rows (1%),False,0,,real
+2021-02,table,reconciliation (strict),True,0.293821,,real
+2021-02,table,reconciliation (1%),True,0.293821,,real
+2021-02,table,volume floor,False,1.37171e+06,,real
+2021-02,change,volume,False,0.0196951,log rows,real
+2021-02,change,daily completeness,True,12.2172,lowest day / median day,real
+2021-02,change,null shares,False,0.19518,passenger_count,real
+2021-02,change,rule-violation rates,True,22.7446,dropoff<pickup,real
+2021-02,change,value distributions,False,0.94115,tip_amount q0.95,real
+2021-02,change,duplicate rows,False,0,,real
+2021-02,change,reconciliation,False,0.0610347,mismatch share,real
+2021-02,change,mix: payment_type,False,0.667628,TV 0.024,real
+2021-02,change,mix: vendorid,False,0.462179,TV 0.013,real
+2021-02,change,mix: ratecodeid,False,1.06663,TV 0.002,real
+2021-02,change,mix: passenger_count,False,0.63175,TV 0.005,real
+2021-02,change,hour of day,False,0.550352,TV 0.036,real
+2021-02,change,pickup zones,False,0.781632,TV 0.037,real
+2021-02,change,schema change,False,0,,real
+2021-03,table,schema (strict),True,2,"RatecodeID, passenger_count",real
+2021-03,table,schema (tolerant),False,0,,real
+2021-03,table,not null (strict),True,0.0664467,passenger_count,real
+2021-03,table,not null (1%),True,0.0664467,passenger_count,real
+2021-03,table,ranges (strict),True,0.00475651,fare_amount<0,real
+2021-03,table,ranges (1%),False,0.00475651,fare_amount<0,real
+2021-03,table,code lists (strict),True,1.03888e-06,vendorid,real
+2021-03,table,code lists (1%),False,1.03888e-06,vendorid,real
+2021-03,table,month window (strict),True,1.71415e-05,,real
+2021-03,table,month window (1%),False,1.71415e-05,,real
+2021-03,table,unique rows (strict),False,0,,real
+2021-03,table,unique rows (1%),False,0,,real
+2021-03,table,reconciliation (strict),True,0.294209,,real
+2021-03,table,reconciliation (1%),True,0.294209,,real
+2021-03,table,volume floor,False,1.92515e+06,,real
+2021-03,change,volume,False,0.924335,log rows,real
+2021-03,change,daily completeness,False,2.23096,lowest day / median day,real
+2021-03,change,null shares,False,1.86485,airport_fee,real
+2021-03,change,rule-violation rates,False,0.974761,dropoff<pickup,real
+2021-03,change,value distributions,False,2.50973,tip_amount q0.95,real
+2021-03,change,duplicate rows,False,0,,real
+2021-03,change,reconciliation,False,0.31202,mismatch share,real
+2021-03,change,mix: payment_type,False,0.227822,TV 0.029,real
+2021-03,change,mix: vendorid,False,1.55026,TV 0.003,real
+2021-03,change,mix: ratecodeid,False,0.438956,TV 0.006,real
+2021-03,change,mix: passenger_count,False,0.595336,TV 0.006,real
+2021-03,change,hour of day,False,0.503928,TV 0.029,real
+2021-03,change,pickup zones,False,0.58919,TV 0.037,real
+2021-03,change,schema change,False,0,,real
+2021-04,table,schema (strict),True,2,"RatecodeID, passenger_count",real
+2021-04,table,schema (tolerant),False,0,,real
+2021-04,table,not null (strict),True,0.0589631,passenger_count,real
+2021-04,table,not null (1%),True,0.0589631,passenger_count,real
+2021-04,table,ranges (strict),True,0.00453393,fare_amount<0,real
+2021-04,table,ranges (1%),False,0.00453393,fare_amount<0,real
+2021-04,table,code lists (strict),True,9.21155e-07,vendorid,real
+2021-04,table,code lists (1%),False,9.21155e-07,vendorid,real
+2021-04,table,month window (strict),True,1.93443e-05,,real
+2021-04,table,month window (1%),False,1.93443e-05,,real
+2021-04,table,unique rows (strict),False,0,,real
+2021-04,table,unique rows (1%),False,0,,real
+2021-04,table,reconciliation (strict),True,0.296314,,real
+2021-04,table,reconciliation (1%),True,0.296314,,real
+2021-04,table,volume floor,False,2.17119e+06,,real
+2021-04,change,volume,False,1.24108,log rows,real
+2021-04,change,daily completeness,False,2.62067,lowest day / median day,real
+2021-04,change,null shares,True,18.82,airport_fee,real
+2021-04,change,rule-violation rates,False,1.054,total_amount<0,real
+2021-04,change,value distributions,True,9.09778,tip_amount q0.95,real
+2021-04,change,duplicate rows,False,0,,real
+2021-04,change,reconciliation,False,0.457347,mismatch share,real
+2021-04,change,mix: payment_type,False,0.515001,TV 0.045,real
+2021-04,change,mix: vendorid,False,0.375658,TV 0.006,real
+2021-04,change,mix: ratecodeid,False,1.07991,TV 0.013,real
+2021-04,change,mix: passenger_count,False,1.04559,TV 0.015,real
+2021-04,change,hour of day,False,0.685531,TV 0.038,real
+2021-04,change,pickup zones,False,0.682114,TV 0.048,real
+2021-04,change,schema change,False,0,,real
+2021-05,table,schema (strict),True,2,"RatecodeID, passenger_count",real
+2021-05,table,schema (tolerant),False,0,,real
+2021-05,table,not null (strict),True,0.050774,passenger_count,real
+2021-05,table,not null (1%),True,0.050774,passenger_count,real
+2021-05,table,ranges (strict),True,0.0043947,fare_amount<0,real
+2021-05,table,ranges (1%),False,0.0043947,fare_amount<0,real
+2021-05,table,code lists (strict),True,3.98866e-07,vendorid,real
+2021-05,table,code lists (1%),False,3.98866e-07,vendorid,real
+2021-05,table,month window (strict),True,3.74934e-05,,real
+2021-05,table,month window (1%),False,3.74934e-05,,real
+2021-05,table,unique rows (strict),False,0,,real
+2021-05,table,unique rows (1%),False,0,,real
+2021-05,table,reconciliation (strict),True,0.29859,,real
+2021-05,table,reconciliation (1%),True,0.29859,,real
+2021-05,table,volume floor,False,2.50711e+06,,real
+2021-05,change,volume,False,1.59015,log rows,real
+2021-05,change,daily completeness,False,1.87763,lowest day / median day,real
+2021-05,change,null shares,True,18.9843,airport_fee,real
+2021-05,change,rule-violation rates,False,1.00667,total_amount<0,real
+2021-05,change,value distributions,True,22.7092,tip_amount q0.95,real
+2021-05,change,duplicate rows,False,0,,real
+2021-05,change,reconciliation,False,0.614493,mismatch share,real
+2021-05,change,mix: payment_type,False,1.41972,TV 0.049,real
+2021-05,change,mix: vendorid,False,0.664951,TV 0.011,real
+2021-05,change,mix: ratecodeid,False,2.8333,TV 0.019,real
+2021-05,change,mix: passenger_count,False,4.10681,TV 0.025,real
+2021-05,change,hour of day,False,2.64343,TV 0.061,real
+2021-05,change,pickup zones,False,3.49835,TV 0.065,real
+2021-05,change,schema change,False,0,,real
+2021-06,table,schema (strict),True,2,"RatecodeID, passenger_count",real
+2021-06,table,schema (tolerant),False,0,,real
+2021-06,table,not null (strict),True,0.0435873,passenger_count,real
+2021-06,table,not null (1%),True,0.0435873,passenger_count,real
+2021-06,table,ranges (strict),True,0.00443254,fare_amount<0,real
+2021-06,table,ranges (1%),False,0.00443254,fare_amount<0,real
+2021-06,table,code lists (strict),False,0,vendorid,real
+2021-06,table,code lists (1%),False,0,vendorid,real
+2021-06,table,month window (strict),True,4.33975e-05,,real
+2021-06,table,month window (1%),False,4.33975e-05,,real
+2021-06,table,unique rows (strict),False,0,,real
+2021-06,table,unique rows (1%),False,0,,real
+2021-06,table,reconciliation (strict),True,0.299302,,real
+2021-06,table,reconciliation (1%),True,0.299302,,real
+2021-06,table,volume floor,False,2.83426e+06,,real
+2021-06,change,volume,False,1.95546,log rows,real
+2021-06,change,daily completeness,False,2.47235,lowest day / median day,real
+2021-06,change,null shares,True,19.1283,airport_fee,real
+2021-06,change,rule-violation rates,False,3.97645,zero passengers,real
+2021-06,change,value distributions,True,23.2025,tip_amount q0.95,real
+2021-06,change,duplicate rows,False,0,,real
+2021-06,change,reconciliation,False,0.663618,mismatch share,real
+2021-06,change,mix: payment_type,False,1.58591,TV 0.046,real
+2021-06,change,mix: vendorid,False,1.95389,TV 0.014,real
+2021-06,change,mix: ratecodeid,False,3.30717,TV 0.024,real
+2021-06,change,mix: passenger_count,True,6.90331,TV 0.035,real
+2021-06,change,hour of day,False,3.01883,TV 0.079,real
+2021-06,change,pickup zones,True,7.68533,TV 0.082,real
+2021-06,change,schema change,False,0,,real
+2021-07,table,schema (strict),True,2,"RatecodeID, passenger_count",real
+2021-07,table,schema (tolerant),False,0,,real
+2021-07,table,not null (strict),True,0.0463032,passenger_count,real
+2021-07,table,not null (1%),True,0.0463032,passenger_count,real
+2021-07,table,ranges (strict),True,0.00469851,fare_amount<0,real
+2021-07,table,ranges (1%),False,0.00469851,fare_amount<0,real
+2021-07,table,code lists (strict),True,3.54391e-07,vendorid,real
+2021-07,table,code lists (1%),False,3.54391e-07,vendorid,real
+2021-07,table,month window (strict),True,4.60708e-05,,real
+2021-07,table,month window (1%),False,4.60708e-05,,real
+2021-07,table,unique rows (strict),False,0,,real
+2021-07,table,unique rows (1%),False,0,,real
+2021-07,table,reconciliation (strict),True,0.299178,,real
+2021-07,table,reconciliation (1%),True,0.299178,,real
+2021-07,table,volume floor,False,2.82175e+06,,real
+2021-07,change,volume,False,2.25868,log rows,real
+2021-07,change,daily completeness,False,0.960482,lowest day / median day,real
+2021-07,change,null shares,True,19.0739,airport_fee,real
+2021-07,change,rule-violation rates,False,4.19666,zero passengers,real
+2021-07,change,value distributions,True,29.9474,tip_amount q0.95,real
+2021-07,change,duplicate rows,False,0,,real
+2021-07,change,reconciliation,False,0.655046,mismatch share,real
+2021-07,change,mix: payment_type,False,0.41468,TV 0.028,real
+2021-07,change,mix: vendorid,False,2.51606,TV 0.018,real
+2021-07,change,mix: ratecodeid,False,2.66126,TV 0.020,real
+2021-07,change,mix: passenger_count,True,8.57441,TV 0.043,real
+2021-07,change,hour of day,False,3.13859,TV 0.094,real
+2021-07,change,pickup zones,True,8.68121,TV 0.116,real
+2021-07,change,schema change,False,0,,real
+2021-08,table,schema (strict),True,2,"RatecodeID, passenger_count",real
+2021-08,table,schema (tolerant),False,0,,real
+2021-08,table,not null (strict),True,0.0486202,passenger_count,real
+2021-08,table,not null (1%),True,0.0486202,passenger_count,real
+2021-08,table,ranges (strict),True,0.00462679,total_amount<0,real
+2021-08,table,ranges (1%),False,0.00462679,total_amount<0,real
+2021-08,table,code lists (strict),False,0,vendorid,real
+2021-08,table,code lists (1%),False,0,vendorid,real
+2021-08,table,month window (strict),True,0.000188614,,real
+2021-08,table,month window (1%),False,0.000188614,,real
+2021-08,table,unique rows (strict),False,0,,real
+2021-08,table,unique rows (1%),False,0,,real
+2021-08,table,reconciliation (strict),True,0.298722,,real
+2021-08,table,reconciliation (1%),True,0.298722,,real
+2021-08,table,volume floor,False,2.78876e+06,,real
+2021-08,change,volume,False,2.08978,log rows,real
+2021-08,change,daily completeness,False,1.83795,highest day / median day,real
+2021-08,change,null shares,True,19.0274,airport_fee,real
+2021-08,change,rule-violation rates,True,6.65395,zero passengers,real
+2021-08,change,value distributions,True,34.1292,tip_amount q0.95,real
+2021-08,change,duplicate rows,False,0,,real
+2021-08,change,reconciliation,False,0.623595,mismatch share,real
+2021-08,change,mix: payment_type,False,0.201033,TV 0.025,real
+2021-08,change,mix: vendorid,False,2.99787,TV 0.021,real
+2021-08,change,mix: ratecodeid,False,2.97039,TV 0.022,real
+2021-08,change,mix: passenger_count,True,6.74055,TV 0.038,real
+2021-08,change,hour of day,False,2.0429,TV 0.090,real
+2021-08,change,pickup zones,True,6.32813,TV 0.117,real
+2021-08,change,schema change,False,0,,real
+2021-09,table,schema (strict),True,2,"RatecodeID, passenger_count",real
+2021-09,table,schema (tolerant),False,0,,real
+2021-09,table,not null (strict),True,0.0481997,passenger_count,real
+2021-09,table,not null (1%),True,0.0481997,passenger_count,real
+2021-09,table,ranges (strict),True,0.00418315,total_amount<0,real
+2021-09,table,ranges (1%),False,0.00418315,total_amount<0,real
+2021-09,table,code lists (strict),True,4.72368e-06,vendorid,real
+2021-09,table,code lists (1%),False,4.72368e-06,vendorid,real
+2021-09,table,month window (strict),True,3.54276e-05,,real
+2021-09,table,month window (1%),False,3.54276e-05,,real
+2021-09,table,unique rows (strict),False,0,,real
+2021-09,table,unique rows (1%),False,0,,real
+2021-09,table,reconciliation (strict),True,0.308365,,real
+2021-09,table,reconciliation (1%),True,0.308365,,real
+2021-09,table,volume floor,False,2.96379e+06,,real
+2021-09,change,volume,False,1.23849,log rows,real
+2021-09,change,daily completeness,False,1.35676,lowest day / median day,real
+2021-09,change,null shares,True,13.0942,airport_fee,real
+2021-09,change,rule-violation rates,True,5.19819,zero passengers,real
+2021-09,change,value distributions,True,16.3104,tip_amount q0.95,real
+2021-09,change,duplicate rows,False,0,,real
+2021-09,change,reconciliation,False,0.976161,mismatch share,real
+2021-09,change,mix: payment_type,False,0.883737,TV 0.037,real
+2021-09,change,mix: vendorid,False,1.01636,TV 0.011,real
+2021-09,change,mix: ratecodeid,False,2.44766,TV 0.019,real
+2021-09,change,mix: passenger_count,False,2.9159,TV 0.031,real
+2021-09,change,hour of day,False,1.31133,TV 0.092,real
+2021-09,change,pickup zones,False,3.49556,TV 0.097,real
+2021-09,change,schema change,False,0,,real
+2021-10,table,schema (strict),True,2,"RatecodeID, passenger_count",real
+2021-10,table,schema (tolerant),False,0,,real
+2021-10,table,not null (strict),True,0.039406,passenger_count,real
+2021-10,table,not null (1%),True,0.039406,passenger_count,real
+2021-10,table,ranges (strict),True,0.00411,total_amount<0,real
+2021-10,table,ranges (1%),False,0.00411,total_amount<0,real
+2021-10,table,code lists (strict),True,2.59852e-06,vendorid,real
+2021-10,table,code lists (1%),False,2.59852e-06,vendorid,real
+2021-10,table,month window (strict),True,3.20485e-05,,real
+2021-10,table,month window (1%),False,3.20485e-05,,real
+2021-10,table,unique rows (strict),False,0,,real
+2021-10,table,unique rows (1%),False,0,,real
+2021-10,table,reconciliation (strict),True,0.313631,,real
+2021-10,table,reconciliation (1%),True,0.313631,,real
+2021-10,table,volume floor,False,3.4635e+06,,real
+2021-10,change,volume,False,1.12397,log rows,real
+2021-10,change,daily completeness,False,1.5901,lowest day / median day,real
+2021-10,change,null shares,False,1.39602,passenger_count,real
+2021-10,change,rule-violation rates,True,5.4522,zero passengers,real
+2021-10,change,value distributions,False,4.24747,tip_amount q0.95,real
+2021-10,change,duplicate rows,False,0,,real
+2021-10,change,reconciliation,False,1.24429,mismatch share,real
+2021-10,change,mix: payment_type,False,3.45778,TV 0.047,real
+2021-10,change,mix: vendorid,False,0.841867,TV 0.004,real
+2021-10,change,mix: ratecodeid,False,1.56615,TV 0.023,real
+2021-10,change,mix: passenger_count,False,1.46915,TV 0.033,real
+2021-10,change,hour of day,False,1.1038,TV 0.094,real
+2021-10,change,pickup zones,False,2.13533,TV 0.095,real
+2021-10,change,schema change,False,0,,real
+2021-11,table,schema (strict),True,2,"RatecodeID, passenger_count",real
+2021-11,table,schema (tolerant),False,0,,real
+2021-11,table,not null (strict),True,0.0366746,passenger_count,real
+2021-11,table,not null (1%),True,0.0366746,passenger_count,real
+2021-11,table,ranges (strict),True,0.00435912,total_amount<0,real
+2021-11,table,ranges (1%),False,0.00435912,total_amount<0,real
+2021-11,table,code lists (strict),True,1.4397e-06,vendorid,real
+2021-11,table,code lists (1%),False,1.4397e-06,vendorid,real
+2021-11,table,month window (strict),True,3.65683e-05,,real
+2021-11,table,month window (1%),False,3.65683e-05,,real
+2021-11,table,unique rows (strict),False,0,,real
+2021-11,table,unique rows (1%),False,0,,real
+2021-11,table,reconciliation (strict),True,0.313536,,real
+2021-11,table,reconciliation (1%),True,0.313536,,real
+2021-11,table,volume floor,False,3.47295e+06,,real
+2021-11,change,volume,False,1.2369,log rows,real
+2021-11,change,daily completeness,False,0.278523,highest day / median day,real
+2021-11,change,null shares,False,1.113,passenger_count,real
+2021-11,change,rule-violation rates,False,2.88146,zero distance,real
+2021-11,change,value distributions,False,4.34783,fare per mile q0.5,real
+2021-11,change,duplicate rows,False,0,,real
+2021-11,change,reconciliation,False,1.08144,mismatch share,real
+2021-11,change,mix: payment_type,False,1.07148,TV 0.037,real
+2021-11,change,mix: vendorid,False,0.696181,TV 0.003,real
+2021-11,change,mix: ratecodeid,False,1.40672,TV 0.020,real
+2021-11,change,mix: passenger_count,False,0.019807,TV 0.025,real
+2021-11,change,hour of day,False,0.28459,TV 0.066,real
+2021-11,change,pickup zones,False,0.820454,TV 0.088,real
+2021-11,change,schema change,False,0,,real
+2021-12,table,schema (strict),True,2,"RatecodeID, passenger_count",real
+2021-12,table,schema (tolerant),False,0,,real
+2021-12,table,not null (strict),True,0.0318479,passenger_count,real
+2021-12,table,not null (1%),True,0.0318479,passenger_count,real
+2021-12,table,ranges (strict),True,0.00504578,total_amount<0,real
+2021-12,table,ranges (1%),False,0.00504578,total_amount<0,real
+2021-12,table,code lists (strict),True,2.17772e-06,vendorid,real
+2021-12,table,code lists (1%),False,2.17772e-06,vendorid,real
+2021-12,table,month window (strict),True,3.35991e-05,,real
+2021-12,table,month window (1%),False,3.35991e-05,,real
+2021-12,table,unique rows (strict),False,0,,real
+2021-12,table,unique rows (1%),False,0,,real
+2021-12,table,reconciliation (strict),True,0.30856,,real
+2021-12,table,reconciliation (1%),True,0.30856,,real
+2021-12,table,volume floor,False,3.21437e+06,,real
+2021-12,change,volume,False,0.564045,log rows,real
+2021-12,change,daily completeness,False,2.41131,lowest day / median day,real
+2021-12,change,null shares,False,1.23118,passenger_count,real
+2021-12,change,rule-violation rates,False,1.65917,total_amount<0,real
+2021-12,change,value distributions,False,1.55437,fare_amount q0.95,real
+2021-12,change,duplicate rows,False,0,,real
+2021-12,change,reconciliation,False,0.66322,mismatch share,real
+2021-12,change,mix: payment_type,False,0.0718623,TV 0.019,real
+2021-12,change,mix: vendorid,False,0.758395,TV 0.003,real
+2021-12,change,mix: ratecodeid,False,1.13201,TV 0.020,real
+2021-12,change,mix: passenger_count,False,0.691794,TV 0.027,real
+2021-12,change,hour of day,False,0.943571,TV 0.031,real
+2021-12,change,pickup zones,False,0.181043,TV 0.071,real
+2021-12,change,schema change,False,0,,real
+2022-01,table,schema (strict),True,2,"RatecodeID, passenger_count",real
+2022-01,table,schema (tolerant),False,0,,real
+2022-01,table,not null (strict),True,0.0290199,passenger_count,real
+2022-01,table,not null (1%),True,0.0290199,passenger_count,real
+2022-01,table,ranges (strict),True,0.00524934,total_amount<0,real
+2022-01,table,ranges (1%),False,0.00524934,total_amount<0,real
+2022-01,table,code lists (strict),True,1.46108e-05,vendorid,real
+2022-01,table,code lists (1%),False,1.46108e-05,vendorid,real
+2022-01,table,month window (strict),True,2.11045e-05,,real
+2022-01,table,month window (1%),False,2.11045e-05,,real
+2022-01,table,unique rows (strict),False,0,,real
+2022-01,table,unique rows (1%),False,0,,real
+2022-01,table,reconciliation (strict),True,0.302756,,real
+2022-01,table,reconciliation (1%),True,0.302756,,real
+2022-01,table,volume floor,False,2.46393e+06,,real
+2022-01,change,volume,False,0.504343,log rows,real
+2022-01,change,daily completeness,False,1.97946,highest day / median day,real
+2022-01,change,null shares,False,1.33746,passenger_count,real
+2022-01,change,rule-violation rates,False,2.35323,total_amount<0,real
+2022-01,change,value distributions,True,5.45455,trip_distance q0.25,real
+2022-01,change,duplicate rows,False,0,,real
+2022-01,change,reconciliation,False,0.254644,mismatch share,real
+2022-01,change,mix: payment_type,False,1.5881,TV 0.038,real
+2022-01,change,mix: vendorid,False,0.333391,TV 0.004,real
+2022-01,change,mix: ratecodeid,False,0.965244,TV 0.020,real
+2022-01,change,mix: passenger_count,False,1.46383,TV 0.033,real
+2022-01,change,hour of day,False,0.748682,TV 0.019,real
+2022-01,change,pickup zones,False,0.770524,TV 0.042,real
+2022-01,change,schema change,False,0,,real
+2022-02,table,schema (strict),True,2,"RatecodeID, passenger_count",real
+2022-02,table,schema (tolerant),False,0,,real
+2022-02,table,not null (strict),True,0.0341468,passenger_count,real
+2022-02,table,not null (1%),True,0.0341468,passenger_count,real
+2022-02,table,ranges (strict),True,0.00524563,total_amount<0,real
+2022-02,table,ranges (1%),False,0.00524563,total_amount<0,real
+2022-02,table,code lists (strict),True,8.7265e-06,vendorid,real
+2022-02,table,code lists (1%),False,8.7265e-06,vendorid,real
+2022-02,table,month window (strict),True,2.14806e-05,,real
+2022-02,table,month window (1%),False,2.14806e-05,,real
+2022-02,table,unique rows (strict),False,0,,real
+2022-02,table,unique rows (1%),False,0,,real
+2022-02,table,reconciliation (strict),True,0.306993,,real
+2022-02,table,reconciliation (1%),True,0.306993,,real
+2022-02,table,volume floor,False,2.97943e+06,,real
+2022-02,change,volume,False,0.305728,log rows,real
+2022-02,change,daily completeness,False,1.57056,lowest day / median day,real
+2022-02,change,null shares,False,0.959596,passenger_count,real
+2022-02,change,rule-violation rates,False,2.34061,total_amount<0,real
+2022-02,change,value distributions,False,2.27273,fare per mile q0.5,real
+2022-02,change,duplicate rows,False,0,,real
+2022-02,change,reconciliation,False,0.518196,mismatch share,real
+2022-02,change,mix: payment_type,False,1.91807,TV 0.041,real
+2022-02,change,mix: vendorid,False,0.126267,TV 0.006,real
+2022-02,change,mix: ratecodeid,False,0.370233,TV 0.012,real
+2022-02,change,mix: passenger_count,False,0.894803,TV 0.026,real
+2022-02,change,hour of day,False,0.340999,TV 0.027,real
+2022-02,change,pickup zones,False,0.817013,TV 0.034,real
+2022-02,change,schema change,False,0,,real
+2022-03,table,schema (strict),True,2,"RatecodeID, passenger_count",real
+2022-03,table,schema (tolerant),False,0,,real
+2022-03,table,not null (strict),True,0.0324746,passenger_count,real
+2022-03,table,not null (1%),True,0.0324746,passenger_count,real
+2022-03,table,ranges (strict),True,0.00551975,total_amount<0,real
+2022-03,table,ranges (1%),False,0.00551975,total_amount<0,real
+2022-03,table,code lists (strict),True,3.30772e-06,vendorid,real
+2022-03,table,code lists (1%),False,3.30772e-06,vendorid,real
+2022-03,table,month window (strict),True,2.45322e-05,,real
+2022-03,table,month window (1%),False,2.45322e-05,,real
+2022-03,table,unique rows (strict),False,0,,real
+2022-03,table,unique rows (1%),False,0,,real
+2022-03,table,reconciliation (strict),True,0.300705,,real
+2022-03,table,reconciliation (1%),True,0.300705,,real
+2022-03,table,volume floor,False,3.62788e+06,,real
+2022-03,change,volume,False,1.35213,log rows,real
+2022-03,change,daily completeness,False,1.60564,lowest day / median day,real
+2022-03,change,null shares,False,1.19315,passenger_count,real
+2022-03,change,rule-violation rates,False,3.27526,total_amount<0,real
+2022-03,change,value distributions,False,1.83952,tip_amount q0.5,real
+2022-03,change,duplicate rows,False,0,,real
+2022-03,change,reconciliation,False,0.021522,mismatch share,real
+2022-03,change,mix: payment_type,False,1.65725,TV 0.034,real
+2022-03,change,mix: vendorid,False,1.42969,TV 0.009,real
+2022-03,change,mix: ratecodeid,False,1.22327,TV 0.014,real
+2022-03,change,mix: passenger_count,False,0.962937,TV 0.027,real
+2022-03,change,hour of day,False,0.676734,TV 0.024,real
+2022-03,change,pickup zones,False,0.637542,TV 0.042,real
+2022-03,change,schema change,False,0,,real
+2022-04,table,schema (strict),True,2,"RatecodeID, passenger_count",real
+2022-04,table,schema (tolerant),False,0,,real
+2022-04,table,not null (strict),True,0.0330213,passenger_count,real
+2022-04,table,not null (1%),True,0.0330213,passenger_count,real
+2022-04,table,ranges (strict),True,0.00540679,total_amount<0,real
+2022-04,table,ranges (1%),False,0.00540679,total_amount<0,real
+2022-04,table,code lists (strict),True,6.38903e-06,vendorid,real
+2022-04,table,code lists (1%),False,6.38903e-06,vendorid,real
+2022-04,table,month window (strict),True,4.38899e-05,,real
+2022-04,table,month window (1%),False,4.38899e-05,,real
+2022-04,table,unique rows (strict),False,0,,real
+2022-04,table,unique rows (1%),False,0,,real
+2022-04,table,reconciliation (strict),True,0.303258,,real
+2022-04,table,reconciliation (1%),True,0.303258,,real
+2022-04,table,volume floor,False,3.59992e+06,,real
+2022-04,change,volume,False,1.17682,log rows,real
+2022-04,change,daily completeness,False,1.02233,lowest day / median day,real
+2022-04,change,null shares,False,0.789941,passenger_count,real
+2022-04,change,rule-violation rates,False,1.98485,total_amount<0,real
+2022-04,change,value distributions,False,2.92279,tip_amount q0.5,real
+2022-04,change,duplicate rows,False,0,,real
+2022-04,change,reconciliation,False,0.10124,mismatch share,real
+2022-04,change,mix: payment_type,False,0.348371,TV 0.022,real
+2022-04,change,mix: vendorid,False,1.3786,TV 0.010,real
+2022-04,change,mix: ratecodeid,False,1.88118,TV 0.016,real
+2022-04,change,mix: passenger_count,False,0.0440115,TV 0.019,real
+2022-04,change,hour of day,False,0.170012,TV 0.020,real
+2022-04,change,pickup zones,False,0.0068094,TV 0.036,real
+2022-04,change,schema change,False,0,,real
+2022-05,table,schema (strict),True,2,"RatecodeID, passenger_count",real
+2022-05,table,schema (tolerant),False,0,,real
+2022-05,table,not null (strict),True,0.0360963,passenger_count,real
+2022-05,table,not null (1%),True,0.0360963,passenger_count,real
+2022-05,table,ranges (strict),True,0.00577126,total_amount<0,real
+2022-05,table,ranges (1%),False,0.00577126,total_amount<0,real
+2022-05,table,code lists (strict),True,3.90157e-06,vendorid,real
+2022-05,table,code lists (1%),False,3.90157e-06,vendorid,real
+2022-05,table,month window (strict),True,3.98518e-05,,real
+2022-05,table,month window (1%),False,3.98518e-05,,real
+2022-05,table,unique rows (strict),False,0,,real
+2022-05,table,unique rows (1%),False,0,,real
+2022-05,table,reconciliation (strict),True,0.311714,,real
+2022-05,table,reconciliation (1%),True,0.311714,,real
+2022-05,table,volume floor,False,3.5883e+06,,real
+2022-05,change,volume,False,1.09786,log rows,real
+2022-05,change,daily completeness,False,1.06039,highest day / median day,real
+2022-05,change,null shares,False,0.223039,passenger_count,real
+2022-05,change,rule-violation rates,False,1.74391,total_amount<0,real
+2022-05,change,value distributions,False,4.54545,trip_distance q0.25,real
+2022-05,change,duplicate rows,False,0,,real
+2022-05,change,reconciliation,False,0.574695,mismatch share,real
+2022-05,change,mix: payment_type,False,0.977509,TV 0.013,real
+2022-05,change,mix: vendorid,False,0.0380818,TV 0.006,real
+2022-05,change,mix: ratecodeid,False,3.58054,TV 0.019,real
+2022-05,change,mix: passenger_count,False,0.483065,TV 0.015,real
+2022-05,change,hour of day,False,0.130006,TV 0.019,real
+2022-05,change,pickup zones,False,0.306574,TV 0.035,real
+2022-05,change,schema change,False,0,,real
+2022-06,table,schema (strict),True,2,"RatecodeID, passenger_count",real
+2022-06,table,schema (tolerant),False,0,,real
+2022-06,table,not null (strict),True,0.0372241,passenger_count,real
+2022-06,table,not null (1%),True,0.0372241,passenger_count,real
+2022-06,table,ranges (strict),True,0.00638342,total_amount<0,real
+2022-06,table,ranges (1%),False,0.00638342,total_amount<0,real
+2022-06,table,code lists (strict),True,1.96733e-06,vendorid,real
+2022-06,table,code lists (1%),False,1.96733e-06,vendorid,real
+2022-06,table,month window (strict),True,0.000143896,,real
+2022-06,table,month window (1%),False,0.000143896,,real
+2022-06,table,unique rows (strict),False,0,,real
+2022-06,table,unique rows (1%),False,0,,real
+2022-06,table,reconciliation (strict),True,0.307096,,real
+2022-06,table,reconciliation (1%),True,0.307096,,real
+2022-06,table,volume floor,False,3.55812e+06,,real
+2022-06,change,volume,False,0.868786,log rows,real
+2022-06,change,daily completeness,False,1.22657,highest day / median day,real
+2022-06,change,null shares,False,0.133917,passenger_count,real
+2022-06,change,rule-violation rates,False,2.32615,zero distance,real
+2022-06,change,value distributions,False,3.63636,trip_distance q0.25,real
+2022-06,change,duplicate rows,False,0,,real
+2022-06,change,reconciliation,False,0.129177,mismatch share,real
+2022-06,change,mix: payment_type,False,0.870825,TV 0.007,real
+2022-06,change,mix: vendorid,False,0.224327,TV 0.006,real
+2022-06,change,mix: ratecodeid,False,2.319,TV 0.018,real
+2022-06,change,mix: passenger_count,False,0.298971,TV 0.014,real
+2022-06,change,hour of day,False,2.14552,TV 0.022,real
+2022-06,change,pickup zones,False,0.394087,TV 0.030,real
+2022-06,change,schema change,False,0,,real
+2022-07,table,schema (strict),True,2,"RatecodeID, passenger_count",real
+2022-07,table,schema (tolerant),False,0,,real
+2022-07,table,not null (strict),True,0.0331383,passenger_count,real
+2022-07,table,not null (1%),True,0.0331383,passenger_count,real
+2022-07,table,ranges (strict),True,0.0067909,total_amount<0,real
+2022-07,table,ranges (1%),False,0.0067909,total_amount<0,real
+2022-07,table,code lists (strict),True,2.83519e-06,vendorid,real
+2022-07,table,code lists (1%),False,2.83519e-06,vendorid,real
+2022-07,table,month window (strict),True,2.58317e-05,,real
+2022-07,table,month window (1%),False,2.58317e-05,,real
+2022-07,table,unique rows (strict),False,0,,real
+2022-07,table,unique rows (1%),False,0,,real
+2022-07,table,reconciliation (strict),True,0.298648,,real
+2022-07,table,reconciliation (1%),True,0.298648,,real
+2022-07,table,volume floor,False,3.17439e+06,,real
+2022-07,change,volume,False,0.421125,log rows,real
+2022-07,change,daily completeness,False,0.622377,highest day / median day,real
+2022-07,change,null shares,False,0.602109,passenger_count,real
+2022-07,change,rule-violation rates,False,2.45583,fare_amount<0,real
+2022-07,change,value distributions,False,3.63636,trip_distance q0.25,real
+2022-07,change,duplicate rows,False,0,,real
+2022-07,change,reconciliation,False,0.546931,mismatch share,real
+2022-07,change,mix: payment_type,False,0.136777,TV 0.013,real
+2022-07,change,mix: vendorid,False,1.14747,TV 0.010,real
+2022-07,change,mix: ratecodeid,False,1.93131,TV 0.016,real
+2022-07,change,mix: passenger_count,False,0.538545,TV 0.015,real
+2022-07,change,hour of day,False,0.724948,TV 0.018,real
+2022-07,change,pickup zones,False,2.86378,TV 0.047,real
+2022-07,change,schema change,False,0,,real
+2022-08,table,schema (strict),True,2,"RatecodeID, passenger_count",real
+2022-08,table,schema (tolerant),False,0,,real
+2022-08,table,not null (strict),True,0.0295539,passenger_count,real
+2022-08,table,not null (1%),True,0.0295539,passenger_count,real
+2022-08,table,ranges (strict),True,0.00717866,total_amount<0,real
+2022-08,table,ranges (1%),False,0.00717866,total_amount<0,real
+2022-08,table,code lists (strict),True,4.75786e-06,vendorid,real
+2022-08,table,code lists (1%),False,4.75786e-06,vendorid,real
+2022-08,table,month window (strict),True,1.68111e-05,,real
+2022-08,table,month window (1%),False,1.68111e-05,,real
+2022-08,table,unique rows (strict),False,0,,real
+2022-08,table,unique rows (1%),False,0,,real
+2022-08,table,reconciliation (strict),True,0.2879,,real
+2022-08,table,reconciliation (1%),True,0.2879,,real
+2022-08,table,volume floor,False,3.15268e+06,,real
+2022-08,change,volume,False,0.514489,log rows,real
+2022-08,change,daily completeness,False,1.29272,highest day / median day,real
+2022-08,change,null shares,False,1.58134,passenger_count,real
+2022-08,change,rule-violation rates,False,2.27627,total_amount<0,real
+2022-08,change,value distributions,False,2.23711,card tip share,real
+2022-08,change,duplicate rows,False,0,,real
+2022-08,change,reconciliation,False,1.24703,mismatch share,real
+2022-08,change,mix: payment_type,False,0.446652,TV 0.015,real
+2022-08,change,mix: vendorid,False,2.48167,TV 0.017,real
+2022-08,change,mix: ratecodeid,False,0.307208,TV 0.013,real
+2022-08,change,mix: passenger_count,False,0.721866,TV 0.014,real
+2022-08,change,hour of day,False,0.472585,TV 0.011,real
+2022-08,change,pickup zones,False,2.88587,TV 0.051,real
+2022-08,change,schema change,False,0,,real
+2022-09,table,schema (strict),True,2,"RatecodeID, passenger_count",real
+2022-09,table,schema (tolerant),False,0,,real
+2022-09,table,not null (strict),True,0.0366208,passenger_count,real
+2022-09,table,not null (1%),True,0.0366208,passenger_count,real
+2022-09,table,ranges (strict),True,0.00676557,total_amount<0,real
+2022-09,table,ranges (1%),False,0.00676557,total_amount<0,real
+2022-09,table,code lists (strict),True,3.14093e-07,vendorid,real
+2022-09,table,code lists (1%),False,3.14093e-07,vendorid,real
+2022-09,table,month window (strict),True,2.41852e-05,,real
+2022-09,table,month window (1%),False,2.41852e-05,,real
+2022-09,table,unique rows (strict),False,0,,real
+2022-09,table,unique rows (1%),False,0,,real
+2022-09,table,reconciliation (strict),True,0.300904,,real
+2022-09,table,reconciliation (1%),True,0.300904,,real
+2022-09,table,volume floor,False,3.18377e+06,,real
+2022-09,change,volume,False,0.461719,log rows,real
+2022-09,change,daily completeness,True,7.40934,lowest day / median day,real
+2022-09,change,null shares,False,0.732364,passenger_count,real
+2022-09,change,rule-violation rates,False,2.8013,zero distance,real
+2022-09,change,value distributions,True,10,fare_amount q0.5,real
+2022-09,change,duplicate rows,False,0,,real
+2022-09,change,reconciliation,False,0.399957,mismatch share,real
+2022-09,change,mix: payment_type,False,0.208763,TV 0.009,real
+2022-09,change,mix: vendorid,False,1.34715,TV 0.013,real
+2022-09,change,mix: ratecodeid,False,1.1106,TV 0.017,real
+2022-09,change,mix: passenger_count,False,0.789981,TV 0.011,real
+2022-09,change,hour of day,False,2.2648,TV 0.020,real
+2022-09,change,pickup zones,False,0.721643,TV 0.033,real
+2022-09,change,schema change,False,0,,real
+2022-10,table,schema (strict),True,2,"RatecodeID, passenger_count",real
+2022-10,table,schema (tolerant),False,0,,real
+2022-10,table,not null (strict),True,0.0361921,passenger_count,real
+2022-10,table,not null (1%),True,0.0361921,passenger_count,real
+2022-10,table,ranges (strict),True,0.00714287,total_amount<0,real
+2022-10,table,ranges (1%),False,0.00714287,total_amount<0,real
+2022-10,table,code lists (strict),False,0,vendorid,real
+2022-10,table,code lists (1%),False,0,vendorid,real
+2022-10,table,month window (strict),True,2.47591e-05,,real
+2022-10,table,month window (1%),False,2.47591e-05,,real
+2022-10,table,unique rows (strict),True,2.72078e-07,,real
+2022-10,table,unique rows (1%),False,2.72078e-07,,real
+2022-10,table,reconciliation (strict),True,0.301199,,real
+2022-10,table,reconciliation (1%),True,0.301199,,real
+2022-10,table,volume floor,False,3.67541e+06,,real
+2022-10,change,volume,False,1.07834,log rows,real
+2022-10,change,daily completeness,False,1.18842,highest day / median day,real
+2022-10,change,null shares,False,0.633174,passenger_count,real
+2022-10,change,rule-violation rates,False,3.18337,zero distance,real
+2022-10,change,value distributions,False,5,fare_amount q0.5,real
+2022-10,change,duplicate rows,False,0.0272078,duplicate share,real
+2022-10,change,reconciliation,False,0.25738,mismatch share,real
+2022-10,change,mix: payment_type,False,1.08331,TV 0.015,real
+2022-10,change,mix: vendorid,False,0.196062,TV 0.009,real
+2022-10,change,mix: ratecodeid,False,0.268173,TV 0.014,real
+2022-10,change,mix: passenger_count,False,0.961059,TV 0.009,real
+2022-10,change,hour of day,False,0.901678,TV 0.017,real
+2022-10,change,pickup zones,False,0.554195,TV 0.020,real
+2022-10,change,schema change,False,0,,real
+2022-11,table,schema (strict),True,2,"RatecodeID, passenger_count",real
+2022-11,table,schema (tolerant),False,0,,real
+2022-11,table,not null (strict),True,0.0374942,passenger_count,real
+2022-11,table,not null (1%),True,0.0374942,passenger_count,real
+2022-11,table,ranges (strict),True,0.00763546,total_amount<0,real
+2022-11,table,ranges (1%),False,0.00763546,total_amount<0,real
+2022-11,table,code lists (strict),False,0,vendorid,real
+2022-11,table,code lists (1%),False,0,vendorid,real
+2022-11,table,month window (strict),True,2.98212e-05,,real
+2022-11,table,month window (1%),False,2.98212e-05,,real
+2022-11,table,unique rows (strict),False,0,,real
+2022-11,table,unique rows (1%),False,0,,real
+2022-11,table,reconciliation (strict),True,0.243679,,real
+2022-11,table,reconciliation (1%),True,0.243679,,real
+2022-11,table,volume floor,False,3.25272e+06,,real
+2022-11,change,volume,False,0.269513,log rows,real
+2022-11,change,daily completeness,False,2.41561,highest day / median day,real
+2022-11,change,null shares,False,1.03847,passenger_count,real
+2022-11,change,rule-violation rates,False,4.24532,zero passengers,real
+2022-11,change,value distributions,False,1.76367,fare per mile q0.5,real
+2022-11,change,duplicate rows,False,0,,real
+2022-11,change,reconciliation,False,3.91596,mismatch share,real
+2022-11,change,mix: payment_type,False,0.654568,TV 0.015,real
+2022-11,change,mix: vendorid,True,8.80625,TV 0.066,real
+2022-11,change,mix: ratecodeid,False,0.442166,TV 0.009,real
+2022-11,change,mix: passenger_count,False,0.113714,TV 0.012,real
+2022-11,change,hour of day,False,0.607966,TV 0.010,real
+2022-11,change,pickup zones,False,0.0371274,TV 0.024,real
+2022-11,change,schema change,False,0,,real
+2022-12,table,schema (strict),True,2,"RatecodeID, passenger_count",real
+2022-12,table,schema (tolerant),False,0,,real
+2022-12,table,not null (strict),True,0.0371999,passenger_count,real
+2022-12,table,not null (1%),True,0.0371999,passenger_count,real
+2022-12,table,ranges (strict),True,0.00806401,total_amount<0,real
+2022-12,table,ranges (1%),False,0.00806401,total_amount<0,real
+2022-12,table,code lists (strict),False,0,vendorid,real
+2022-12,table,code lists (1%),False,0,vendorid,real
+2022-12,table,month window (strict),True,1.35312e-05,,real
+2022-12,table,month window (1%),False,1.35312e-05,,real
+2022-12,table,unique rows (strict),False,0,,real
+2022-12,table,unique rows (1%),False,0,,real
+2022-12,table,reconciliation (strict),True,0.288004,,real
+2022-12,table,reconciliation (1%),True,0.288004,,real
+2022-12,table,volume floor,False,3.39955e+06,,real
+2022-12,change,volume,False,0.380615,log rows,real
+2022-12,change,daily completeness,False,2.45526,lowest day / median day,real
+2022-12,change,null shares,False,0.959136,passenger_count,real
+2022-12,change,rule-violation rates,False,1.84114,zero passengers,real
+2022-12,change,value distributions,True,7.82289,fare per mile q0.5,real
+2022-12,change,duplicate rows,False,0,,real
+2022-12,change,reconciliation,False,0.925452,mismatch share,real
+2022-12,change,mix: payment_type,False,0.0862682,TV 0.011,real
+2022-12,change,mix: vendorid,False,1.16486,TV 0.016,real
+2022-12,change,mix: ratecodeid,False,0.470887,TV 0.006,real
+2022-12,change,mix: passenger_count,False,1.61131,TV 0.022,real
+2022-12,change,hour of day,False,1.14821,TV 0.019,real
+2022-12,change,pickup zones,False,0.235495,TV 0.022,real
+2022-12,change,schema change,False,0,,real
+2023-01,table,schema (strict),True,2,"RatecodeID, passenger_count",real
+2023-01,table,schema (tolerant),False,0,,real
+2023-01,table,not null (strict),True,0.0233937,passenger_count,real
+2023-01,table,not null (1%),True,0.0233937,passenger_count,real
+2023-01,table,ranges (strict),True,0.00821843,total_amount<0,real
+2023-01,table,ranges (1%),False,0.00821843,total_amount<0,real
+2023-01,table,code lists (strict),False,0,vendorid,real
+2023-01,table,code lists (1%),False,0,vendorid,real
+2023-01,table,month window (strict),True,1.56517e-05,,real
+2023-01,table,month window (1%),False,1.56517e-05,,real
+2023-01,table,unique rows (strict),False,0,,real
+2023-01,table,unique rows (1%),False,0,,real
+2023-01,table,reconciliation (strict),True,0.271139,,real
+2023-01,table,reconciliation (1%),True,0.271139,,real
+2023-01,table,volume floor,False,3.06677e+06,,real
+2023-01,change,volume,False,0.759444,log rows,real
+2023-01,change,daily completeness,False,0.656897,lowest day / median day,real
+2023-01,change,null shares,False,3.78606,passenger_count,real
+2023-01,change,rule-violation rates,False,2.32507,zero passengers,real
+2023-01,change,value distributions,True,25.5769,fare_amount q0.95,real
+2023-01,change,duplicate rows,False,0,,real
+2023-01,change,reconciliation,False,1.9872,mismatch share,real
+2023-01,change,mix: payment_type,False,4.02289,TV 0.034,real
+2023-01,change,mix: vendorid,False,2.4212,TV 0.021,real
+2023-01,change,mix: ratecodeid,False,3.2052,TV 0.018,real
+2023-01,change,mix: passenger_count,False,1.76153,TV 0.025,real
+2023-01,change,hour of day,False,0.0448824,TV 0.013,real
+2023-01,change,pickup zones,False,0.650302,TV 0.030,real
+2023-01,change,schema change,False,0,,real
+2023-02,table,schema (strict),True,2,"Airport_fee, airport_fee",real
+2023-02,table,schema (tolerant),False,0,,real
+2023-02,table,not null (strict),True,0.0263618,passenger_count,real
+2023-02,table,not null (1%),True,0.0263618,passenger_count,real
+2023-02,table,ranges (strict),True,0.00854509,total_amount<0,real
+2023-02,table,ranges (1%),False,0.00854509,total_amount<0,real
+2023-02,table,code lists (strict),False,0,vendorid,real
+2023-02,table,code lists (1%),False,0,vendorid,real
+2023-02,table,month window (strict),True,1.88747e-05,,real
+2023-02,table,month window (1%),False,1.88747e-05,,real
+2023-02,table,unique rows (strict),False,0,,real
+2023-02,table,unique rows (1%),False,0,,real
+2023-02,table,reconciliation (strict),True,0.27494,,real
+2023-02,table,reconciliation (1%),True,0.27494,,real
+2023-02,table,volume floor,False,2.91396e+06,,real
+2023-02,change,volume,False,1.239,log rows,real
+2023-02,change,daily completeness,False,1.22723,highest day / median day,real
+2023-02,change,null shares,False,2.82789,passenger_count,real
+2023-02,change,rule-violation rates,False,1.90599,zero passengers,real
+2023-02,change,value distributions,True,16.1538,fare_amount q0.95,real
+2023-02,change,duplicate rows,False,0,,real
+2023-02,change,reconciliation,False,1.71967,mismatch share,real
+2023-02,change,mix: payment_type,False,3.67248,TV 0.040,real
+2023-02,change,mix: vendorid,False,1.61929,TV 0.017,real
+2023-02,change,mix: ratecodeid,False,3.37084,TV 0.019,real
+2023-02,change,mix: passenger_count,False,2.38128,TV 0.030,real
+2023-02,change,hour of day,False,0.483597,TV 0.010,real
+2023-02,change,pickup zones,False,1.26692,TV 0.033,real
+2023-02,change,schema change,True,inf,Airport_fee:float; RatecodeID:float; RatecodeID:integer; airport_fee:float; passenger_count:float; passenger_count:integer,real
+2023-03,table,schema (strict),True,2,"Airport_fee, airport_fee",real
+2023-03,table,schema (tolerant),False,0,,real
+2023-03,table,not null (strict),True,0.0257418,passenger_count,real
+2023-03,table,not null (1%),True,0.0257418,passenger_count,real
+2023-03,table,ranges (strict),True,0.00874414,total_amount<0,real
+2023-03,table,ranges (1%),False,0.00874414,total_amount<0,real
+2023-03,table,code lists (strict),False,0,vendorid,real
+2023-03,table,code lists (1%),False,0,vendorid,real
+2023-03,table,month window (strict),True,5.55267e-05,,real
+2023-03,table,month window (1%),False,5.55267e-05,,real
+2023-03,table,unique rows (strict),False,0,,real
+2023-03,table,unique rows (1%),False,0,,real
+2023-03,table,reconciliation (strict),True,0.279377,,real
+2023-03,table,reconciliation (1%),True,0.279377,,real
+2023-03,table,volume floor,False,3.40377e+06,,real
+2023-03,change,volume,False,0.218759,log rows,real
+2023-03,change,daily completeness,False,0.852261,lowest day / median day,real
+2023-03,change,null shares,False,2.53376,passenger_count,real
+2023-03,change,rule-violation rates,False,1.35781,total_amount<0,real
+2023-03,change,value distributions,True,30.9615,fare_amount q0.95,real
+2023-03,change,duplicate rows,False,0,,real
+2023-03,change,reconciliation,False,1.35475,mismatch share,real
+2023-03,change,mix: payment_type,False,3.57981,TV 0.037,real
+2023-03,change,mix: vendorid,False,0.0981696,TV 0.009,real
+2023-03,change,mix: ratecodeid,False,2.63314,TV 0.015,real
+2023-03,change,mix: passenger_count,False,2.4583,TV 0.029,real
+2023-03,change,hour of day,False,0.554977,TV 0.014,real
+2023-03,change,pickup zones,False,1.44336,TV 0.033,real
+2023-03,change,schema change,False,0,,real
+2023-04,table,schema (strict),True,2,"Airport_fee, airport_fee",real
+2023-04,table,schema (tolerant),False,0,,real
+2023-04,table,not null (strict),True,0.02758,passenger_count,real
+2023-04,table,not null (1%),True,0.02758,passenger_count,real
+2023-04,table,ranges (strict),True,0.00911974,fare_amount<0,real
+2023-04,table,ranges (1%),False,0.00911974,fare_amount<0,real
+2023-04,table,code lists (strict),False,0,vendorid,real
+2023-04,table,code lists (1%),False,0,vendorid,real
+2023-04,table,month window (strict),True,2.88907e-05,,real
+2023-04,table,month window (1%),False,2.88907e-05,,real
+2023-04,table,unique rows (strict),False,0,,real
+2023-04,table,unique rows (1%),False,0,,real
+2023-04,table,reconciliation (strict),True,0.274497,,real
+2023-04,table,reconciliation (1%),True,0.274497,,real
+2023-04,table,volume floor,False,3.28825e+06,,real
+2023-04,change,volume,False,0.125008,log rows,real
+2023-04,change,daily completeness,False,0.672836,lowest day / median day,real
+2023-04,change,null shares,False,1.82929,passenger_count,real
+2023-04,change,rule-violation rates,False,1.61415,fare_amount<0,real
+2023-04,change,value distributions,True,34.6154,fare_amount q0.95,real
+2023-04,change,duplicate rows,False,0,,real
+2023-04,change,reconciliation,False,1.07162,mismatch share,real
+2023-04,change,mix: payment_type,False,2.21217,TV 0.027,real
+2023-04,change,mix: vendorid,False,0.697573,TV 0.014,real
+2023-04,change,mix: ratecodeid,False,1.1344,TV 0.010,real
+2023-04,change,mix: passenger_count,False,0.454791,TV 0.016,real
+2023-04,change,hour of day,False,0.0970007,TV 0.012,real
+2023-04,change,pickup zones,False,0.552236,TV 0.027,real
+2023-04,change,schema change,False,0,,real
+2023-05,table,schema (strict),True,2,"Airport_fee, airport_fee",real
+2023-05,table,schema (tolerant),False,0,,real
+2023-05,table,not null (strict),True,0.0289716,passenger_count,real
+2023-05,table,not null (1%),True,0.0289716,passenger_count,real
+2023-05,table,ranges (strict),True,0.0091358,fare_amount<0,real
+2023-05,table,ranges (1%),False,0.0091358,fare_amount<0,real
+2023-05,table,code lists (strict),False,0,vendorid,real
+2023-05,table,code lists (1%),False,0,vendorid,real
+2023-05,table,month window (strict),True,1.42302e-05,,real
+2023-05,table,month window (1%),False,1.42302e-05,,real
+2023-05,table,unique rows (strict),False,0,,real
+2023-05,table,unique rows (1%),False,0,,real
+2023-05,table,reconciliation (strict),True,0.270818,,real
+2023-05,table,reconciliation (1%),True,0.270818,,real
+2023-05,table,volume floor,False,3.51365e+06,,real
+2023-05,change,volume,False,1.22987,log rows,real
+2023-05,change,daily completeness,False,1.13947,highest day / median day,real
+2023-05,change,null shares,False,1.38881,passenger_count,real
+2023-05,change,rule-violation rates,False,1.59424,fare_amount<0,real
+2023-05,change,value distributions,True,34.6154,fare_amount q0.95,real
+2023-05,change,duplicate rows,False,0,,real
+2023-05,change,reconciliation,False,0.880237,mismatch share,real
+2023-05,change,mix: payment_type,False,0.447345,TV 0.026,real
+2023-05,change,mix: vendorid,False,0.564029,TV 0.014,real
+2023-05,change,mix: ratecodeid,False,0.979149,TV 0.009,real
+2023-05,change,mix: passenger_count,False,0.0512985,TV 0.016,real
+2023-05,change,hour of day,False,0.3449,TV 0.012,real
+2023-05,change,pickup zones,False,0.300331,TV 0.027,real
+2023-05,change,schema change,False,0,,real
+2023-06,table,schema (strict),True,2,"Airport_fee, airport_fee",real
+2023-06,table,schema (tolerant),False,0,,real
+2023-06,table,not null (strict),True,0.0302026,passenger_count,real
+2023-06,table,not null (1%),True,0.0302026,passenger_count,real
+2023-06,table,ranges (strict),True,0.00950553,fare_amount<0,real
+2023-06,table,ranges (1%),False,0.00950553,fare_amount<0,real
+2023-06,table,code lists (strict),False,0,vendorid,real
+2023-06,table,code lists (1%),False,0,vendorid,real
+2023-06,table,month window (strict),True,1.23971e-05,,real
+2023-06,table,month window (1%),False,1.23971e-05,,real
+2023-06,table,unique rows (strict),False,0,,real
+2023-06,table,unique rows (1%),False,0,,real
+2023-06,table,reconciliation (strict),True,0.271322,,real
+2023-06,table,reconciliation (1%),True,0.271322,,real
+2023-06,table,volume floor,False,3.30723e+06,,real
+2023-06,change,volume,False,0.191841,log rows,real
+2023-06,change,daily completeness,False,0.805014,lowest day / median day,real
+2023-06,change,null shares,False,0.150366,passenger_count,real
+2023-06,change,rule-violation rates,False,1.35769,fare_amount<0,real
+2023-06,change,value distributions,True,34.6154,fare_amount q0.95,real
+2023-06,change,duplicate rows,False,0,,real
+2023-06,change,reconciliation,False,0.65621,mismatch share,real
+2023-06,change,mix: payment_type,False,0.018034,TV 0.021,real
+2023-06,change,mix: vendorid,False,0.868952,TV 0.013,real
+2023-06,change,mix: ratecodeid,False,2.2318,TV 0.004,real
+2023-06,change,mix: passenger_count,False,0.305932,TV 0.012,real
+2023-06,change,hour of day,False,1.28758,TV 0.016,real
+2023-06,change,pickup zones,False,0.0531786,TV 0.026,real
+2023-06,change,schema change,False,0,,real
+2023-07,table,schema (strict),True,2,"Airport_fee, airport_fee",real
+2023-07,table,schema (tolerant),False,0,,real
+2023-07,table,not null (strict),True,0.0292683,passenger_count,real
+2023-07,table,not null (1%),True,0.0292683,passenger_count,real
+2023-07,table,ranges (strict),True,0.0107189,fare_amount<0,real
+2023-07,table,ranges (1%),True,0.0107189,fare_amount<0,real
+2023-07,table,code lists (strict),False,0,vendorid,real
+2023-07,table,code lists (1%),False,0,vendorid,real
+2023-07,table,month window (strict),True,2.02951e-05,,real
+2023-07,table,month window (1%),False,2.02951e-05,,real
+2023-07,table,unique rows (strict),False,0,,real
+2023-07,table,unique rows (1%),False,0,,real
+2023-07,table,reconciliation (strict),True,0.259896,,real
+2023-07,table,reconciliation (1%),True,0.259896,,real
+2023-07,table,volume floor,False,2.90711e+06,,real
+2023-07,change,volume,False,2.10718,log rows,real
+2023-07,change,daily completeness,False,1.46371,highest day / median day,real
+2023-07,change,null shares,False,0.107523,passenger_count,real
+2023-07,change,rule-violation rates,False,1.82452,total_amount<0,real
+2023-07,change,value distributions,False,2.21618,fare_amount q0.95,real
+2023-07,change,duplicate rows,False,0,,real
+2023-07,change,reconciliation,False,1.24571,mismatch share,real
+2023-07,change,mix: payment_type,False,2.5956,TV 0.008,real
+2023-07,change,mix: vendorid,False,1.19528,TV 0.019,real
+2023-07,change,mix: ratecodeid,False,1.51376,TV 0.003,real
+2023-07,change,mix: passenger_count,False,0.250434,TV 0.013,real
+2023-07,change,hour of day,False,0.508933,TV 0.014,real
+2023-07,change,pickup zones,False,3.41044,TV 0.046,real
+2023-07,change,schema change,False,0,,real
+2023-08,table,schema (strict),True,2,"Airport_fee, airport_fee",real
+2023-08,table,schema (tolerant),False,0,,real
+2023-08,table,not null (strict),True,0.0311188,passenger_count,real
+2023-08,table,not null (1%),True,0.0311188,passenger_count,real
+2023-08,table,ranges (strict),True,0.0110856,fare_amount<0,real
+2023-08,table,ranges (1%),True,0.0110856,fare_amount<0,real
+2023-08,table,code lists (strict),False,0,vendorid,real
+2023-08,table,code lists (1%),False,0,vendorid,real
+2023-08,table,month window (strict),True,1.20388e-05,,real
+2023-08,table,month window (1%),False,1.20388e-05,,real
+2023-08,table,unique rows (strict),False,0,,real
+2023-08,table,unique rows (1%),False,0,,real
+2023-08,table,reconciliation (strict),True,0.255659,,real
+2023-08,table,reconciliation (1%),True,0.255659,,real
+2023-08,table,volume floor,False,2.82421e+06,,real
+2023-08,change,volume,False,2.51513,log rows,real
+2023-08,change,daily completeness,False,1.24612,lowest day / median day,real
+2023-08,change,null shares,False,0.342876,passenger_count,real
+2023-08,change,rule-violation rates,False,2.44117,total_amount<0,real
+2023-08,change,value distributions,False,1.27153,card trips tipped,real
+2023-08,change,duplicate rows,False,0,,real
+2023-08,change,reconciliation,False,1.3876,mismatch share,real
+2023-08,change,mix: payment_type,False,1.0235,TV 0.012,real
+2023-08,change,mix: vendorid,False,0.950353,TV 0.016,real
+2023-08,change,mix: ratecodeid,False,1.21577,TV 0.005,real
+2023-08,change,mix: passenger_count,False,0.643019,TV 0.010,real
+2023-08,change,hour of day,False,1.06091,TV 0.009,real
+2023-08,change,pickup zones,False,4.42424,TV 0.049,real
+2023-08,change,schema change,False,0,,real
+2023-09,table,schema (strict),True,2,"Airport_fee, airport_fee",real
+2023-09,table,schema (tolerant),False,0,,real
+2023-09,table,not null (strict),True,0.0492584,passenger_count,real
+2023-09,table,not null (1%),True,0.0492584,passenger_count,real
+2023-09,table,ranges (strict),True,0.010386,fare_amount<0,real
+2023-09,table,ranges (1%),True,0.010386,fare_amount<0,real
+2023-09,table,code lists (strict),False,0,vendorid,real
+2023-09,table,code lists (1%),False,0,vendorid,real
+2023-09,table,month window (strict),True,1.1241e-05,,real
+2023-09,table,month window (1%),False,1.1241e-05,,real
+2023-09,table,unique rows (strict),False,0,,real
+2023-09,table,unique rows (1%),False,0,,real
+2023-09,table,reconciliation (strict),True,0.262494,,real
+2023-09,table,reconciliation (1%),True,0.262494,,real
+2023-09,table,volume floor,False,2.84672e+06,,real
+2023-09,change,volume,False,1.79532,log rows,real
+2023-09,change,daily completeness,True,5.16418,lowest day / median day,real
+2023-09,change,null shares,False,3.57474,passenger_count,real
+2023-09,change,rule-violation rates,True,8.46316,zero distance,real
+2023-09,change,value distributions,False,2.69796,trip_distance q0.25,real
+2023-09,change,duplicate rows,False,0,,real
+2023-09,change,reconciliation,False,0.721231,mismatch share,real
+2023-09,change,mix: payment_type,False,0.561532,TV 0.022,real
+2023-09,change,mix: vendorid,False,0.352841,TV 0.012,real
+2023-09,change,mix: ratecodeid,False,2.59515,TV 0.021,real
+2023-09,change,mix: passenger_count,False,0.818425,TV 0.018,real
+2023-09,change,hour of day,False,0.385826,TV 0.012,real
+2023-09,change,pickup zones,False,0.277907,TV 0.029,real
+2023-09,change,schema change,False,0,,real
+2023-10,table,schema (strict),True,2,"Airport_fee, airport_fee",real
+2023-10,table,schema (tolerant),False,0,,real
+2023-10,table,not null (strict),True,0.0439854,passenger_count,real
+2023-10,table,not null (1%),True,0.0439854,passenger_count,real
+2023-10,table,ranges (strict),True,0.0105329,fare_amount<0,real
+2023-10,table,ranges (1%),True,0.0105329,fare_amount<0,real
+2023-10,table,code lists (strict),False,0,vendorid,real
+2023-10,table,code lists (1%),False,0,vendorid,real
+2023-10,table,month window (strict),True,1.50471e-05,,real
+2023-10,table,month window (1%),False,1.50471e-05,,real
+2023-10,table,unique rows (strict),False,0,,real
+2023-10,table,unique rows (1%),False,0,,real
+2023-10,table,reconciliation (strict),True,0.258281,,real
+2023-10,table,reconciliation (1%),True,0.258281,,real
+2023-10,table,volume floor,False,3.52228e+06,,real
+2023-10,change,volume,False,0.735688,log rows,real
+2023-10,change,daily completeness,False,0.340951,lowest day / median day,real
+2023-10,change,null shares,False,2.60922,passenger_count,real
+2023-10,change,rule-violation rates,True,5.94178,zero distance,real
+2023-10,change,value distributions,False,3.37245,trip_distance q0.25,real
+2023-10,change,duplicate rows,False,0,,real
+2023-10,change,reconciliation,False,0.954885,mismatch share,real
+2023-10,change,mix: payment_type,False,0.515817,TV 0.020,real
+2023-10,change,mix: vendorid,False,0.185199,TV 0.010,real
+2023-10,change,mix: ratecodeid,False,0.885536,TV 0.016,real
+2023-10,change,mix: passenger_count,False,0.28845,TV 0.016,real
+2023-10,change,hour of day,False,0.786386,TV 0.010,real
+2023-10,change,pickup zones,False,0.588082,TV 0.020,real
+2023-10,change,schema change,False,0,,real
+2023-11,table,schema (strict),True,2,"Airport_fee, airport_fee",real
+2023-11,table,schema (tolerant),False,0,,real
+2023-11,table,not null (strict),True,0.0397264,passenger_count,real
+2023-11,table,not null (1%),True,0.0397264,passenger_count,real
+2023-11,table,ranges (strict),True,0.0110363,fare_amount<0,real
+2023-11,table,ranges (1%),True,0.0110363,fare_amount<0,real
+2023-11,table,code lists (strict),False,0,vendorid,real
+2023-11,table,code lists (1%),False,0,vendorid,real
+2023-11,table,month window (strict),True,9.28223e-06,,real
+2023-11,table,month window (1%),False,9.28223e-06,,real
+2023-11,table,unique rows (strict),True,5.98853e-07,,real
+2023-11,table,unique rows (1%),False,5.98853e-07,,real
+2023-11,table,reconciliation (strict),True,0.255034,,real
+2023-11,table,reconciliation (1%),True,0.255034,,real
+2023-11,table,volume floor,False,3.33972e+06,,real
+2023-11,change,volume,False,0.207877,log rows,real
+2023-11,change,daily completeness,False,1.09557,lowest day / median day,real
+2023-11,change,null shares,False,1.8294,passenger_count,real
+2023-11,change,rule-violation rates,False,4.24242,zero distance,real
+2023-11,change,value distributions,False,3.87832,trip_distance q0.5,real
+2023-11,change,duplicate rows,False,0.0598853,duplicate share,real
+2023-11,change,reconciliation,False,1.1768,mismatch share,real
+2023-11,change,mix: payment_type,False,0.400168,TV 0.019,real
+2023-11,change,mix: vendorid,False,0.363444,TV 0.010,real
+2023-11,change,mix: ratecodeid,False,0.115167,TV 0.011,real
+2023-11,change,mix: passenger_count,False,0.183212,TV 0.014,real
+2023-11,change,hour of day,False,0.581189,TV 0.013,real
+2023-11,change,pickup zones,False,0.1802,TV 0.023,real
+2023-11,change,schema change,False,0,,real
+2023-12,table,schema (strict),True,2,"Airport_fee, airport_fee",real
+2023-12,table,schema (tolerant),False,0,,real
+2023-12,table,not null (strict),True,0.0533095,passenger_count,real
+2023-12,table,not null (1%),True,0.0533095,passenger_count,real
+2023-12,table,ranges (strict),True,0.0126288,fare_amount<0,real
+2023-12,table,ranges (1%),True,0.0126288,fare_amount<0,real
+2023-12,table,code lists (strict),False,0,vendorid,real
+2023-12,table,code lists (1%),False,0,vendorid,real
+2023-12,table,month window (strict),True,1.27348e-05,,real
+2023-12,table,month window (1%),False,1.27348e-05,,real
+2023-12,table,unique rows (strict),False,0,,real
+2023-12,table,unique rows (1%),False,0,,real
+2023-12,table,reconciliation (strict),True,0.26826,,real
+2023-12,table,reconciliation (1%),True,0.26826,,real
+2023-12,table,volume floor,False,3.37657e+06,,real
+2023-12,change,volume,False,0.246491,log rows,real
+2023-12,change,daily completeness,True,5.43216,highest day / median day,real
+2023-12,change,null shares,False,4.3165,passenger_count,real
+2023-12,change,rule-violation rates,False,2.21603,zero passengers,real
+2023-12,change,value distributions,False,3.71429,fare_amount q0.95,real
+2023-12,change,duplicate rows,False,0,,real
+2023-12,change,reconciliation,False,0.20066,mismatch share,real
+2023-12,change,mix: payment_type,False,1.41358,TV 0.026,real
+2023-12,change,mix: vendorid,False,1.54356,TV 0.014,real
+2023-12,change,mix: ratecodeid,False,1.93273,TV 0.026,real
+2023-12,change,mix: passenger_count,True,6.30153,TV 0.041,real
+2023-12,change,hour of day,False,1.55974,TV 0.017,real
+2023-12,change,pickup zones,False,0.287735,TV 0.027,real
+2023-12,change,schema change,False,0,,real
+2024-01,table,schema (strict),True,2,"Airport_fee, airport_fee",real
+2024-01,table,schema (tolerant),False,0,,real
+2024-01,table,not null (strict),True,0.0472782,passenger_count,real
+2024-01,table,not null (1%),True,0.0472782,passenger_count,real
+2024-01,table,ranges (strict),True,0.0126316,fare_amount<0,real
+2024-01,table,ranges (1%),True,0.0126316,fare_amount<0,real
+2024-01,table,code lists (strict),False,0,vendorid,real
+2024-01,table,code lists (1%),False,0,vendorid,real
+2024-01,table,month window (strict),True,6.0716e-06,,real
+2024-01,table,month window (1%),False,6.0716e-06,,real
+2024-01,table,unique rows (strict),False,0,,real
+2024-01,table,unique rows (1%),False,0,,real
+2024-01,table,reconciliation (strict),True,0.256976,,real
+2024-01,table,reconciliation (1%),True,0.256976,,real
+2024-01,table,volume floor,False,2.96462e+06,,real
+2024-01,change,volume,False,1.11096,log rows,real
+2024-01,change,daily completeness,False,0.0130519,lowest day / median day,real
+2024-01,change,null shares,False,3.21215,passenger_count,real
+2024-01,change,rule-violation rates,False,2.35334,zero passengers,real
+2024-01,change,value distributions,True,11.7143,fare_amount q0.95,real
+2024-01,change,duplicate rows,False,0,,real
+2024-01,change,reconciliation,False,0.932152,mismatch share,real
+2024-01,change,mix: payment_type,False,0.711485,TV 0.020,real
+2024-01,change,mix: vendorid,False,1.28019,TV 0.015,real
+2024-01,change,mix: ratecodeid,False,1.43993,TV 0.022,real
+2024-01,change,mix: passenger_count,False,2.43413,TV 0.026,real
+2024-01,change,hour of day,False,0.920413,TV 0.016,real
+2024-01,change,pickup zones,False,1.1174,TV 0.033,real
+2024-01,change,schema change,False,0,,real
+2024-02,table,schema (strict),True,2,"Airport_fee, airport_fee",real
+2024-02,table,schema (tolerant),False,0,,real
+2024-02,table,not null (strict),True,0.0617152,passenger_count,real
+2024-02,table,not null (1%),True,0.0617152,passenger_count,real
+2024-02,table,ranges (strict),True,0.0135178,fare_amount<0,real
+2024-02,table,ranges (1%),True,0.0135178,fare_amount<0,real
+2024-02,table,code lists (strict),False,0,vendorid,real
+2024-02,table,code lists (1%),False,0,vendorid,real
+2024-02,table,month window (strict),True,4.98749e-06,,real
+2024-02,table,month window (1%),False,4.98749e-06,,real
+2024-02,table,unique rows (strict),True,3.32499e-07,,real
+2024-02,table,unique rows (1%),False,3.32499e-07,,real
+2024-02,table,reconciliation (strict),True,0.266633,,real
+2024-02,table,reconciliation (1%),True,0.266633,,real
+2024-02,table,volume floor,False,3.00753e+06,,real
+2024-02,change,volume,False,0.961063,log rows,real
+2024-02,change,daily completeness,False,3.42414,highest day / median day,real
+2024-02,change,null shares,False,4.54466,passenger_count,real
+2024-02,change,rule-violation rates,False,1.81138,fare_amount<0,real
+2024-02,change,value distributions,True,18.7143,fare_amount q0.95,real
+2024-02,change,duplicate rows,False,0.0332499,duplicate share,real
+2024-02,change,reconciliation,False,0.0946563,mismatch share,real
+2024-02,change,mix: payment_type,False,2.41768,TV 0.032,real
+2024-02,change,mix: vendorid,False,0.725552,TV 0.012,real
+2024-02,change,mix: ratecodeid,False,2.72758,TV 0.034,real
+2024-02,change,mix: passenger_count,False,3.07798,TV 0.031,real
+2024-02,change,hour of day,False,0.300894,TV 0.014,real
+2024-02,change,pickup zones,False,1.05004,TV 0.032,real
+2024-02,change,schema change,False,0,,real
+2024-03,table,schema (strict),True,2,"Airport_fee, airport_fee",real
+2024-03,table,schema (tolerant),False,0,,real
+2024-03,table,not null (strict),True,0.11896,passenger_count,real
+2024-03,table,not null (1%),True,0.11896,passenger_count,real
+2024-03,table,ranges (strict),True,0.0163187,fare_amount<0,real
+2024-03,table,ranges (1%),True,0.0163187,fare_amount<0,real
+2024-03,table,code lists (strict),False,0,vendorid,real
+2024-03,table,code lists (1%),False,0,vendorid,real
+2024-03,table,month window (strict),True,6.41987e-06,,real
+2024-03,table,month window (1%),False,6.41987e-06,,real
+2024-03,table,unique rows (strict),False,0,,real
+2024-03,table,unique rows (1%),False,0,,real
+2024-03,table,reconciliation (strict),True,0.305883,,real
+2024-03,table,reconciliation (1%),True,0.305883,,real
+2024-03,table,volume floor,False,3.58263e+06,,real
+2024-03,change,volume,False,0.864522,log rows,real
+2024-03,change,daily completeness,False,1.49061,highest day / median day,real
+2024-03,change,null shares,True,6.86914,passenger_count,real
+2024-03,change,rule-violation rates,False,2.94177,fare_amount<0,real
+2024-03,change,value distributions,True,13.7143,fare_amount q0.95,real
+2024-03,change,duplicate rows,False,0,,real
+2024-03,change,reconciliation,False,3.12361,mismatch share,real
+2024-03,change,mix: payment_type,True,10.5751,TV 0.086,real
+2024-03,change,mix: vendorid,False,0.740162,TV 0.014,real
+2024-03,change,mix: ratecodeid,True,10.8933,TV 0.088,real
+2024-03,change,mix: passenger_count,True,7.21938,TV 0.082,real
+2024-03,change,hour of day,False,1.90305,TV 0.021,real
+2024-03,change,pickup zones,False,1.03107,TV 0.034,real
+2024-03,change,schema change,False,0,,real
+2024-04,table,schema (strict),True,2,"Airport_fee, airport_fee",real
+2024-04,table,schema (tolerant),False,0,,real
+2024-04,table,not null (strict),True,0.116261,passenger_count,real
+2024-04,table,not null (1%),True,0.116261,passenger_count,real
+2024-04,table,ranges (strict),True,0.0163811,fare_amount<0,real
+2024-04,table,ranges (1%),True,0.0163811,fare_amount<0,real
+2024-04,table,code lists (strict),False,0,vendorid,real
+2024-04,table,code lists (1%),False,0,vendorid,real
+2024-04,table,month window (strict),True,2.56097e-06,,real
+2024-04,table,month window (1%),False,2.56097e-06,,real
+2024-04,table,unique rows (strict),False,0,,real
+2024-04,table,unique rows (1%),False,0,,real
+2024-04,table,reconciliation (strict),True,0.305731,,real
+2024-04,table,reconciliation (1%),True,0.305731,,real
+2024-04,table,volume floor,False,3.51429e+06,,real
+2024-04,change,volume,False,0.576849,log rows,real
+2024-04,change,daily completeness,False,1.01233,highest day / median day,real
+2024-04,change,null shares,False,4.34379,passenger_count,real
+2024-04,change,rule-violation rates,False,2.38425,fare_amount<0,real
+2024-04,change,value distributions,True,11.7143,fare_amount q0.95,real
+2024-04,change,duplicate rows,False,0,,real
+2024-04,change,reconciliation,False,3.11214,mismatch share,real
+2024-04,change,mix: payment_type,True,8.40293,TV 0.078,real
+2024-04,change,mix: vendorid,False,0.855602,TV 0.013,real
+2024-04,change,mix: ratecodeid,True,14.4996,TV 0.081,real
+2024-04,change,mix: passenger_count,True,5.60388,TV 0.074,real
+2024-04,change,hour of day,False,1.00121,TV 0.018,real
+2024-04,change,pickup zones,False,0.137322,TV 0.026,real
+2024-04,change,schema change,False,0,,real
+2024-05,table,schema (strict),True,2,"Airport_fee, airport_fee",real
+2024-05,table,schema (tolerant),False,0,,real
+2024-05,table,not null (strict),True,0.108669,passenger_count,real
+2024-05,table,not null (1%),True,0.108669,passenger_count,real
+2024-05,table,ranges (strict),True,0.0160982,fare_amount<0,real
+2024-05,table,ranges (1%),True,0.0160982,fare_amount<0,real
+2024-05,table,code lists (strict),False,0,vendorid,real
+2024-05,table,code lists (1%),False,0,vendorid,real
+2024-05,table,month window (strict),True,8.86184e-06,,real
+2024-05,table,month window (1%),False,8.86184e-06,,real
+2024-05,table,unique rows (strict),False,0,,real
+2024-05,table,unique rows (1%),False,0,,real
+2024-05,table,reconciliation (strict),True,0.298346,,real
+2024-05,table,reconciliation (1%),True,0.298346,,real
+2024-05,table,volume floor,False,3.72383e+06,,real
+2024-05,change,volume,False,1.15197,log rows,real
+2024-05,change,daily completeness,False,0.554167,lowest day / median day,real
+2024-05,change,null shares,False,2.84002,passenger_count,real
+2024-05,change,rule-violation rates,False,2.17566,fare_amount<0,real
+2024-05,change,value distributions,False,4.47761,trip_distance q0.25,real
+2024-05,change,duplicate rows,False,0,,real
+2024-05,change,reconciliation,False,2.55383,mismatch share,real
+2024-05,change,mix: payment_type,False,3.65166,TV 0.065,real
+2024-05,change,mix: vendorid,False,1.15944,TV 0.014,real
+2024-05,change,mix: ratecodeid,False,4.41682,TV 0.068,real
+2024-05,change,mix: passenger_count,False,3.11276,TV 0.063,real
+2024-05,change,hour of day,False,0.0898168,TV 0.014,real
+2024-05,change,pickup zones,False,0.196613,TV 0.027,real
+2024-05,change,schema change,False,0,,real
+2024-06,table,schema (strict),True,2,"Airport_fee, airport_fee",real
+2024-06,table,schema (tolerant),False,0,,real
+2024-06,table,not null (strict),True,0.116066,passenger_count,real
+2024-06,table,not null (1%),True,0.116066,passenger_count,real
+2024-06,table,ranges (strict),True,0.0174235,fare_amount<0,real
+2024-06,table,ranges (1%),True,0.0174235,fare_amount<0,real
+2024-06,table,code lists (strict),False,0,vendorid,real
+2024-06,table,code lists (1%),False,0,vendorid,real
+2024-06,table,month window (strict),True,1.44101e-05,,real
+2024-06,table,month window (1%),False,1.44101e-05,,real
+2024-06,table,unique rows (strict),False,0,,real
+2024-06,table,unique rows (1%),False,0,,real
+2024-06,table,reconciliation (strict),True,0.301401,,real
+2024-06,table,reconciliation (1%),True,0.301401,,real
+2024-06,table,volume floor,False,3.53919e+06,,real
+2024-06,change,volume,False,0.484921,log rows,real
+2024-06,change,daily completeness,False,0.63745,lowest day / median day,real
+2024-06,change,null shares,False,2.98919,passenger_count,real
+2024-06,change,rule-violation rates,False,2.68606,fare_amount<0,real
+2024-06,change,value distributions,False,4.47761,trip_distance q0.25,real
+2024-06,change,duplicate rows,False,0,,real
+2024-06,change,reconciliation,False,2.78476,mismatch share,real
+2024-06,change,mix: payment_type,False,2.2686,TV 0.067,real
+2024-06,change,mix: vendorid,False,1.60413,TV 0.015,real
+2024-06,change,mix: ratecodeid,False,3.17852,TV 0.072,real
+2024-06,change,mix: passenger_count,False,3.26071,TV 0.067,real
+2024-06,change,hour of day,False,0.0588363,TV 0.015,real
+2024-06,change,pickup zones,False,0.385211,TV 0.029,real
+2024-06,change,schema change,False,0,,real
+2024-07,table,schema (strict),True,2,"Airport_fee, airport_fee",real
+2024-07,table,schema (tolerant),False,0,,real
+2024-07,table,not null (strict),True,0.090672,passenger_count,real
+2024-07,table,not null (1%),True,0.090672,passenger_count,real
+2024-07,table,ranges (strict),True,0.0190614,fare_amount<0,real
+2024-07,table,ranges (1%),True,0.0190614,fare_amount<0,real
+2024-07,table,code lists (strict),False,0,vendorid,real
+2024-07,table,code lists (1%),False,0,vendorid,real
+2024-07,table,month window (strict),True,1.52751e-05,,real
+2024-07,table,month window (1%),False,1.52751e-05,,real
+2024-07,table,unique rows (strict),True,3.25002e-07,,real
+2024-07,table,unique rows (1%),False,3.25002e-07,,real
+2024-07,table,reconciliation (strict),True,0.276772,,real
+2024-07,table,reconciliation (1%),True,0.276772,,real
+2024-07,table,volume floor,False,3.0769e+06,,real
+2024-07,change,volume,False,0.701745,log rows,real
+2024-07,change,daily completeness,False,1.65246,highest day / median day,real
+2024-07,change,null shares,False,1.67495,passenger_count,real
+2024-07,change,rule-violation rates,False,3.66867,tolls_amount<0,real
+2024-07,change,value distributions,False,3.48259,trip_distance q0.25,real
+2024-07,change,duplicate rows,False,0.0325002,duplicate share,real
+2024-07,change,reconciliation,False,0.922941,mismatch share,real
+2024-07,change,mix: payment_type,False,0.677622,TV 0.041,real
+2024-07,change,mix: vendorid,False,2.64528,TV 0.015,real
+2024-07,change,mix: ratecodeid,False,1.69254,TV 0.052,real
+2024-07,change,mix: passenger_count,False,0.73335,TV 0.045,real
+2024-07,change,hour of day,False,1.15,TV 0.011,real
+2024-07,change,pickup zones,False,2.25035,TV 0.042,real
+2024-07,change,schema change,False,0,,real
+2024-08,table,schema (strict),True,2,"Airport_fee, airport_fee",real
+2024-08,table,schema (tolerant),False,0,,real
+2024-08,table,not null (strict),True,0.0868248,passenger_count,real
+2024-08,table,not null (1%),True,0.0868248,passenger_count,real
+2024-08,table,ranges (strict),True,0.019553,fare_amount<0,real
+2024-08,table,ranges (1%),True,0.019553,fare_amount<0,real
+2024-08,table,code lists (strict),False,0,vendorid,real
+2024-08,table,code lists (1%),False,0,vendorid,real
+2024-08,table,month window (strict),True,1.71188e-05,,real
+2024-08,table,month window (1%),False,1.71188e-05,,real
+2024-08,table,unique rows (strict),False,0,,real
+2024-08,table,unique rows (1%),False,0,,real
+2024-08,table,reconciliation (strict),True,0.268104,,real
+2024-08,table,reconciliation (1%),True,0.268104,,real
+2024-08,table,volume floor,False,2.97918e+06,,real
+2024-08,change,volume,False,1.06132,log rows,real
+2024-08,change,daily completeness,False,1.35434,lowest day / median day,real
+2024-08,change,null shares,False,0.895033,passenger_count,real
+2024-08,change,rule-violation rates,False,4.23014,tolls_amount<0,real
+2024-08,change,value distributions,False,2.48756,trip_distance q0.25,real
+2024-08,change,duplicate rows,False,0,,real
+2024-08,change,reconciliation,False,0.0398669,mismatch share,real
+2024-08,change,mix: payment_type,False,0.286618,TV 0.037,real
+2024-08,change,mix: vendorid,False,1.7693,TV 0.017,real
+2024-08,change,mix: ratecodeid,False,0.704146,TV 0.046,real
+2024-08,change,mix: passenger_count,False,0.596862,TV 0.032,real
+2024-08,change,hour of day,False,0.140926,TV 0.014,real
+2024-08,change,pickup zones,False,3.21287,TV 0.046,real
+2024-08,change,schema change,False,0,,real
+2024-09,table,schema (strict),True,2,"Airport_fee, airport_fee",real
+2024-09,table,schema (tolerant),False,0,,real
+2024-09,table,not null (strict),True,0.133148,passenger_count,real
+2024-09,table,not null (1%),True,0.133148,passenger_count,real
+2024-09,table,ranges (strict),True,0.0201165,fare_amount<0,real
+2024-09,table,ranges (1%),True,0.0201165,fare_amount<0,real
+2024-09,table,code lists (strict),False,0,vendorid,real
+2024-09,table,code lists (1%),False,0,vendorid,real
+2024-09,table,month window (strict),True,1.34874e-05,,real
+2024-09,table,month window (1%),False,1.34874e-05,,real
+2024-09,table,unique rows (strict),False,0,,real
+2024-09,table,unique rows (1%),False,0,,real
+2024-09,table,reconciliation (strict),True,0.30577,,real
+2024-09,table,reconciliation (1%),True,0.30577,,real
+2024-09,table,volume floor,False,3.63303e+06,,real
+2024-09,change,volume,False,0.69761,log rows,real
+2024-09,change,daily completeness,False,0.535446,highest day / median day,real
+2024-09,change,null shares,False,1.3867,passenger_count,real
+2024-09,change,rule-violation rates,False,2.37038,tolls_amount<0,real
+2024-09,change,value distributions,False,2.48756,trip_distance q0.25,real
+2024-09,change,duplicate rows,False,0,,real
+2024-09,change,reconciliation,False,2.4023,mismatch share,real
+2024-09,change,mix: payment_type,False,1.22941,TV 0.060,real
+2024-09,change,mix: vendorid,False,1.06016,TV 0.016,real
+2024-09,change,mix: ratecodeid,False,0.847669,TV 0.061,real
+2024-09,change,mix: passenger_count,False,0.908934,TV 0.050,real
+2024-09,change,hour of day,False,1.49456,TV 0.021,real
+2024-09,change,pickup zones,False,2.05722,TV 0.039,real
+2024-09,change,schema change,False,0,,real
+2024-10,table,schema (strict),True,2,"Airport_fee, airport_fee",real
+2024-10,table,schema (tolerant),False,0,,real
+2024-10,table,not null (strict),True,0.102743,passenger_count,real
+2024-10,table,not null (1%),True,0.102743,passenger_count,real
+2024-10,table,ranges (strict),True,0.0196613,fare_amount<0,real
+2024-10,table,ranges (1%),True,0.0196613,fare_amount<0,real
+2024-10,table,code lists (strict),False,0,vendorid,real
+2024-10,table,code lists (1%),False,0,vendorid,real
+2024-10,table,month window (strict),True,1.04336e-05,,real
+2024-10,table,month window (1%),False,1.04336e-05,,real
+2024-10,table,unique rows (strict),True,5.2168e-07,,real
+2024-10,table,unique rows (1%),False,5.2168e-07,,real
+2024-10,table,reconciliation (strict),True,0.287716,,real
+2024-10,table,reconciliation (1%),True,0.287716,,real
+2024-10,table,volume floor,False,3.83377e+06,,real
+2024-10,change,volume,False,1.56101,log rows,real
+2024-10,change,daily completeness,False,1.00615,lowest day / median day,real
+2024-10,change,null shares,False,0.327054,passenger_count,real
+2024-10,change,rule-violation rates,False,2.29278,total_amount<0,real
+2024-10,change,value distributions,False,1.57061,fare per mile q0.5,real
+2024-10,change,duplicate rows,False,0.052168,duplicate share,real
+2024-10,change,reconciliation,False,0.620964,mismatch share,real
+2024-10,change,mix: payment_type,False,0.49554,TV 0.025,real
+2024-10,change,mix: vendorid,False,0.338882,TV 0.010,real
+2024-10,change,mix: ratecodeid,False,0.886029,TV 0.013,real
+2024-10,change,mix: passenger_count,False,1.00743,TV 0.016,real
+2024-10,change,hour of day,False,0.859524,TV 0.020,real
+2024-10,change,pickup zones,False,0.957617,TV 0.019,real
+2024-10,change,schema change,False,0,,real
+2024-11,table,schema (strict),True,2,"Airport_fee, airport_fee",real
+2024-11,table,schema (tolerant),False,0,,real
+2024-11,table,not null (strict),True,0.102478,passenger_count,real
+2024-11,table,not null (1%),True,0.102478,passenger_count,real
+2024-11,table,ranges (strict),True,0.0196003,fare_amount<0,real
+2024-11,table,ranges (1%),True,0.0196003,fare_amount<0,real
+2024-11,table,code lists (strict),False,0,vendorid,real
+2024-11,table,code lists (1%),False,0,vendorid,real
+2024-11,table,month window (strict),True,1.37123e-05,,real
+2024-11,table,month window (1%),False,1.37123e-05,,real
+2024-11,table,unique rows (strict),False,0,,real
+2024-11,table,unique rows (1%),False,0,,real
+2024-11,table,reconciliation (strict),True,0.282493,,real
+2024-11,table,reconciliation (1%),True,0.282493,,real
+2024-11,table,volume floor,False,3.64637e+06,,real
+2024-11,change,volume,False,0.585209,log rows,real
+2024-11,change,daily completeness,False,0.75068,highest day / median day,real
+2024-11,change,null shares,False,0.186205,passenger_count,real
+2024-11,change,rule-violation rates,False,2.57022,total_amount<0,real
+2024-11,change,value distributions,False,2.92279,trip_distance q0.5,real
+2024-11,change,duplicate rows,False,0,,real
+2024-11,change,reconciliation,False,0.00949762,mismatch share,real
+2024-11,change,mix: payment_type,False,0.242384,TV 0.019,real
+2024-11,change,mix: vendorid,False,0.323869,TV 0.009,real
+2024-11,change,mix: ratecodeid,False,1.152,TV 0.006,real
+2024-11,change,mix: passenger_count,False,0.861136,TV 0.011,real
+2024-11,change,hour of day,False,1.76963,TV 0.010,real
+2024-11,change,pickup zones,False,0.618661,TV 0.019,real
+2024-11,change,schema change,False,0,,real
+2024-12,table,schema (strict),True,2,"Airport_fee, airport_fee",real
+2024-12,table,schema (tolerant),False,0,,real
+2024-12,table,not null (strict),True,0.0889471,passenger_count,real
+2024-12,table,not null (1%),True,0.0889471,passenger_count,real
+2024-12,table,ranges (strict),True,0.0213839,fare_amount<0,real
+2024-12,table,ranges (1%),True,0.0213839,fare_amount<0,real
+2024-12,table,code lists (strict),False,0,vendorid,real
+2024-12,table,code lists (1%),False,0,vendorid,real
+2024-12,table,month window (strict),True,9.26842e-06,,real
+2024-12,table,month window (1%),False,9.26842e-06,,real
+2024-12,table,unique rows (strict),False,0,,real
+2024-12,table,unique rows (1%),False,0,,real
+2024-12,table,reconciliation (strict),True,0.267461,,real
+2024-12,table,reconciliation (1%),True,0.267461,,real
+2024-12,table,volume floor,False,3.66837e+06,,real
+2024-12,change,volume,False,0.542653,log rows,real
+2024-12,change,daily completeness,False,1.93679,lowest day / median day,real
+2024-12,change,null shares,False,0.626169,passenger_count,real
+2024-12,change,rule-violation rates,False,2.43862,total_amount<0,real
+2024-12,change,value distributions,False,4.72144,trip_distance q0.5,real
+2024-12,change,duplicate rows,False,0,,real
+2024-12,change,reconciliation,False,0.703204,mismatch share,real
+2024-12,change,mix: payment_type,False,0.260065,TV 0.017,real
+2024-12,change,mix: vendorid,False,1.39715,TV 0.013,real
+2024-12,change,mix: ratecodeid,False,0.0978266,TV 0.017,real
+2024-12,change,mix: passenger_count,False,0.290499,TV 0.023,real
+2024-12,change,hour of day,False,0.475698,TV 0.015,real
+2024-12,change,pickup zones,False,0.256883,TV 0.021,real
+2024-12,change,schema change,False,0,,real
+2025-01,table,schema (strict),True,2,"Airport_fee, airport_fee",real
+2025-01,table,schema (tolerant),False,0,,real
+2025-01,table,not null (strict),True,0.155428,passenger_count,real
+2025-01,table,not null (1%),True,0.155428,passenger_count,real
+2025-01,table,ranges (strict),True,0.0414701,fare_amount<0,real
+2025-01,table,ranges (1%),True,0.0414701,fare_amount<0,real
+2025-01,table,code lists (strict),False,0,vendorid,real
+2025-01,table,code lists (1%),False,0,vendorid,real
+2025-01,table,month window (strict),True,6.33052e-06,,real
+2025-01,table,month window (1%),False,6.33052e-06,,real
+2025-01,table,unique rows (strict),False,0,,real
+2025-01,table,unique rows (1%),False,0,,real
+2025-01,table,reconciliation (strict),True,0.319924,,real
+2025-01,table,reconciliation (1%),True,0.319924,,real
+2025-01,table,volume floor,False,3.47523e+06,,real
+2025-01,change,volume,False,0.44066,log rows,real
+2025-01,change,daily completeness,False,0.389625,highest day / median day,real
+2025-01,change,null shares,False,2.60852,passenger_count,real
+2025-01,change,rule-violation rates,True,8.38828,fare_amount<0,real
+2025-01,change,value distributions,True,5.1711,trip_distance q0.5,real
+2025-01,change,duplicate rows,False,0,,real
+2025-01,change,reconciliation,False,1.35582,mismatch share,real
+2025-01,change,mix: payment_type,True,7.92698,TV 0.053,real
+2025-01,change,mix: vendorid,False,2.74606,TV 0.018,real
+2025-01,change,mix: ratecodeid,False,4.6016,TV 0.053,real
+2025-01,change,mix: passenger_count,False,3.09158,TV 0.051,real
+2025-01,change,hour of day,False,0.137594,TV 0.017,real
+2025-01,change,pickup zones,False,0.789795,TV 0.028,real
+2025-01,change,schema change,True,inf,cbd_congestion_fee:float,real
+2025-02,table,schema (strict),True,2,"Airport_fee, airport_fee",real
+2025-02,table,schema (tolerant),False,0,,real
+2025-02,table,not null (strict),True,0.225556,passenger_count,real
+2025-02,table,not null (1%),True,0.225556,passenger_count,real
+2025-02,table,ranges (strict),True,0.051056,fare_amount<0,real
+2025-02,table,ranges (1%),True,0.051056,fare_amount<0,real
+2025-02,table,code lists (strict),False,0,vendorid,real
+2025-02,table,code lists (1%),False,0,vendorid,real
+2025-02,table,month window (strict),True,8.66516e-06,,real
+2025-02,table,month window (1%),False,8.66516e-06,,real
+2025-02,table,unique rows (strict),False,0,,real
+2025-02,table,unique rows (1%),False,0,,real
+2025-02,table,reconciliation (strict),True,0.357394,,real
+2025-02,table,reconciliation (1%),True,0.357394,,real
+2025-02,table,volume floor,False,3.57754e+06,,real
+2025-02,change,volume,False,0.116686,log rows,real
+2025-02,change,daily completeness,False,1.04646,highest day / median day,real
+2025-02,change,null shares,True,5.7153,passenger_count,real
+2025-02,change,rule-violation rates,True,10.8142,fare_amount<0,real
+2025-02,change,value distributions,True,7.25078,tip_amount q0.5,real
+2025-02,change,duplicate rows,False,0,,real
+2025-02,change,reconciliation,False,3.39287,mismatch share,real
+2025-02,change,mix: payment_type,True,13.0365,TV 0.119,real
+2025-02,change,mix: vendorid,False,3.3302,TV 0.022,real
+2025-02,change,mix: ratecodeid,True,9.73083,TV 0.119,real
+2025-02,change,mix: passenger_count,True,10.2206,TV 0.118,real
+2025-02,change,hour of day,False,2.49384,TV 0.027,real
+2025-02,change,pickup zones,False,3.6451,TV 0.051,real
+2025-02,change,schema change,False,0,,real
+2025-03,table,schema (strict),True,2,"Airport_fee, airport_fee",real
+2025-03,table,schema (tolerant),False,0,,real
+2025-03,table,not null (strict),True,0.221135,passenger_count,real
+2025-03,table,not null (1%),True,0.221135,passenger_count,real
+2025-03,table,ranges (strict),True,0.0503525,fare_amount<0,real
+2025-03,table,ranges (1%),True,0.0503525,fare_amount<0,real
+2025-03,table,code lists (strict),False,0,vendorid,real
+2025-03,table,code lists (1%),False,0,vendorid,real
+2025-03,table,month window (strict),True,7.96091e-06,,real
+2025-03,table,month window (1%),False,7.96091e-06,,real
+2025-03,table,unique rows (strict),False,0,,real
+2025-03,table,unique rows (1%),False,0,,real
+2025-03,table,reconciliation (strict),True,0.333886,,real
+2025-03,table,reconciliation (1%),True,0.333886,,real
+2025-03,table,volume floor,False,4.14526e+06,,real
+2025-03,change,volume,False,4.608,log rows,real
+2025-03,change,daily completeness,False,0.557134,lowest day / median day,real
+2025-03,change,null shares,False,4.78405,passenger_count,real
+2025-03,change,rule-violation rates,True,10.4827,fare_amount<0,real
+2025-03,change,value distributions,False,4.29221,tip_amount q0.5,real
+2025-03,change,duplicate rows,False,0,,real
+2025-03,change,reconciliation,False,1.55336,mismatch share,real
+2025-03,change,mix: payment_type,True,7.14937,TV 0.111,real
+2025-03,change,mix: vendorid,False,4.01948,TV 0.031,real
+2025-03,change,mix: ratecodeid,True,6.66476,TV 0.109,real
+2025-03,change,mix: passenger_count,True,6.78122,TV 0.107,real
+2025-03,change,hour of day,True,5.01315,TV 0.039,real
+2025-03,change,pickup zones,False,3.32002,TV 0.056,real
+2025-03,change,schema change,False,0,,real
+2025-04,table,schema (strict),True,2,"Airport_fee, airport_fee",real
+2025-04,table,schema (tolerant),False,0,,real
+2025-04,table,not null (strict),True,0.187815,passenger_count,real
+2025-04,table,not null (1%),True,0.187815,passenger_count,real
+2025-04,table,ranges (strict),True,0.0470262,fare_amount<0,real
+2025-04,table,ranges (1%),True,0.0470262,fare_amount<0,real
+2025-04,table,code lists (strict),False,0,vendorid,real
+2025-04,table,code lists (1%),False,0,vendorid,real
+2025-04,table,month window (strict),True,1.76298e-06,,real
+2025-04,table,month window (1%),False,1.76298e-06,,real
+2025-04,table,unique rows (strict),False,0,,real
+2025-04,table,unique rows (1%),False,0,,real
+2025-04,table,reconciliation (strict),True,0.311158,,real
+2025-04,table,reconciliation (1%),True,0.311158,,real
+2025-04,table,volume floor,False,3.97055e+06,,real
+2025-04,change,volume,False,2.24846,log rows,real
+2025-04,change,daily completeness,False,0.678032,highest day / median day,real
+2025-04,change,null shares,False,2.39611,passenger_count,real
+2025-04,change,rule-violation rates,True,9.33131,fare_amount<0,real
+2025-04,change,value distributions,False,3.18312,tip_amount q0.95,real
+2025-04,change,duplicate rows,False,0,,real
+2025-04,change,reconciliation,False,0.406698,mismatch share,real
+2025-04,change,mix: payment_type,False,3.72201,TV 0.078,real
+2025-04,change,mix: vendorid,False,3.99367,TV 0.029,real
+2025-04,change,mix: ratecodeid,False,2.11629,TV 0.077,real
+2025-04,change,mix: passenger_count,False,3.20099,TV 0.075,real
+2025-04,change,hour of day,False,1.31823,TV 0.012,real
+2025-04,change,pickup zones,False,0.90063,TV 0.039,real
+2025-04,change,schema change,False,0,,real
+2025-05,table,schema (strict),True,2,"Airport_fee, airport_fee",real
+2025-05,table,schema (tolerant),False,0,,real
+2025-05,table,not null (strict),True,0.2605,passenger_count,real
+2025-05,table,not null (1%),True,0.2605,passenger_count,real
+2025-05,table,ranges (strict),True,0.0708356,fare_amount<0,real
+2025-05,table,ranges (1%),True,0.0708356,fare_amount<0,real
+2025-05,table,code lists (strict),False,0,vendorid,real
+2025-05,table,code lists (1%),False,0,vendorid,real
+2025-05,table,month window (strict),True,5.22666e-06,,real
+2025-05,table,month window (1%),False,5.22666e-06,,real
+2025-05,table,unique rows (strict),False,0,,real
+2025-05,table,unique rows (1%),False,0,,real
+2025-05,table,reconciliation (strict),True,0.362486,,real
+2025-05,table,reconciliation (1%),True,0.362486,,real
+2025-05,table,volume floor,False,4.59184e+06,,real
+2025-05,change,volume,False,4.22248,log rows,real
+2025-05,change,daily completeness,False,0.410105,lowest day / median day,real
+2025-05,change,null shares,False,4.42916,passenger_count,real
+2025-05,change,rule-violation rates,True,17.3533,fare_amount<0,real
+2025-05,change,value distributions,False,5,trip_distance q0.5,real
+2025-05,change,duplicate rows,False,0,,real
+2025-05,change,reconciliation,False,2.2565,mismatch share,real
+2025-05,change,mix: payment_type,True,5.85151,TV 0.146,real
+2025-05,change,mix: vendorid,False,3.31135,TV 0.034,real
+2025-05,change,mix: ratecodeid,False,4.67274,TV 0.149,real
+2025-05,change,mix: passenger_count,True,5.88763,TV 0.145,real
+2025-05,change,hour of day,False,0.0987496,TV 0.018,real
+2025-05,change,pickup zones,False,2.39967,TV 0.060,real
+2025-05,change,schema change,False,0,,real
+2025-06,table,schema (strict),True,2,"Airport_fee, airport_fee",real
+2025-06,table,schema (tolerant),False,0,,real
+2025-06,table,not null (strict),True,0.280582,passenger_count,real
+2025-06,table,not null (1%),True,0.280582,passenger_count,real
+2025-06,table,ranges (strict),True,0.0637445,fare_amount<0,real
+2025-06,table,ranges (1%),True,0.0637445,fare_amount<0,real
+2025-06,table,code lists (strict),False,0,vendorid,real
+2025-06,table,code lists (1%),False,0,vendorid,real
+2025-06,table,month window (strict),True,4.62646e-06,,real
+2025-06,table,month window (1%),False,4.62646e-06,,real
+2025-06,table,unique rows (strict),False,0,,real
+2025-06,table,unique rows (1%),False,0,,real
+2025-06,table,reconciliation (strict),True,0.375496,,real
+2025-06,table,reconciliation (1%),True,0.375496,,real
+2025-06,table,volume floor,False,4.32296e+06,,real
+2025-06,change,volume,False,2.3636,log rows,real
+2025-06,change,daily completeness,False,0.84528,lowest day / median day,real
+2025-06,change,null shares,False,3.0233,passenger_count,real
+2025-06,change,rule-violation rates,True,11.5637,fare_amount<0,real
+2025-06,change,value distributions,True,5.39593,trip_distance q0.5,real
+2025-06,change,duplicate rows,False,0,,real
+2025-06,change,reconciliation,False,2.02495,mismatch share,real
+2025-06,change,mix: payment_type,False,4.36584,TV 0.156,real
+2025-06,change,mix: vendorid,False,2.45588,TV 0.035,real
+2025-06,change,mix: ratecodeid,False,4.08034,TV 0.156,real
+2025-06,change,mix: passenger_count,False,3.93098,TV 0.155,real
+2025-06,change,hour of day,False,0.495521,TV 0.022,real
+2025-06,change,pickup zones,False,2.06112,TV 0.064,real
+2025-06,change,schema change,False,0,,real
+2025-07,table,schema (strict),True,2,"Airport_fee, airport_fee",real
+2025-07,table,schema (tolerant),False,0,,real
+2025-07,table,not null (strict),True,0.266418,passenger_count,real
+2025-07,table,not null (1%),True,0.266418,passenger_count,real
+2025-07,table,ranges (strict),True,0.0633727,fare_amount<0,real
+2025-07,table,ranges (1%),True,0.0633727,fare_amount<0,real
+2025-07,table,code lists (strict),False,0,vendorid,real
+2025-07,table,code lists (1%),False,0,vendorid,real
+2025-07,table,month window (strict),True,1.79535e-06,,real
+2025-07,table,month window (1%),False,1.79535e-06,,real
+2025-07,table,unique rows (strict),True,2.56478e-07,,real
+2025-07,table,unique rows (1%),False,2.56478e-07,,real
+2025-07,table,reconciliation (strict),True,0.354236,,real
+2025-07,table,reconciliation (1%),True,0.354236,,real
+2025-07,table,volume floor,False,3.89896e+06,,real
+2025-07,change,volume,False,0.647641,log rows,real
+2025-07,change,daily completeness,False,1.46932,highest day / median day,real
+2025-07,change,null shares,False,1.51207,passenger_count,real
+2025-07,change,rule-violation rates,False,1.87349,tolls_amount<0,real
+2025-07,change,value distributions,False,2.40926,fare per mile q0.5,real
+2025-07,change,duplicate rows,False,0.0256478,duplicate share,real
+2025-07,change,reconciliation,False,1.0708,mismatch share,real
+2025-07,change,mix: payment_type,False,2.35527,TV 0.128,real
+2025-07,change,mix: vendorid,False,2.36908,TV 0.036,real
+2025-07,change,mix: ratecodeid,False,2.4169,TV 0.126,real
+2025-07,change,mix: passenger_count,False,2.22908,TV 0.126,real
+2025-07,change,hour of day,False,1.10696,TV 0.012,real
+2025-07,change,pickup zones,False,1.68613,TV 0.063,real
+2025-07,change,schema change,False,0,,real
+2025-08,table,schema (strict),True,2,"Airport_fee, airport_fee",real
+2025-08,table,schema (tolerant),False,0,,real
+2025-08,table,not null (strict),True,0.247961,passenger_count,real
+2025-08,table,not null (1%),True,0.247961,passenger_count,real
+2025-08,table,ranges (strict),True,0.073079,fare_amount<0,real
+2025-08,table,ranges (1%),True,0.073079,fare_amount<0,real
+2025-08,table,code lists (strict),False,0,vendorid,real
+2025-08,table,code lists (1%),False,0,vendorid,real
+2025-08,table,month window (strict),True,4.75645e-06,,real
+2025-08,table,month window (1%),False,4.75645e-06,,real
+2025-08,table,unique rows (strict),False,0,,real
+2025-08,table,unique rows (1%),False,0,,real
+2025-08,table,reconciliation (strict),True,0.340089,,real
+2025-08,table,reconciliation (1%),True,0.340089,,real
+2025-08,table,volume floor,False,3.57409e+06,,real
+2025-08,change,volume,False,0.62237,log rows,real
+2025-08,change,daily completeness,False,1.21975,lowest day / median day,real
+2025-08,change,null shares,False,0.746112,passenger_count,real
+2025-08,change,rule-violation rates,False,4.08452,total_amount<0,real
+2025-08,change,value distributions,False,4.7619,fare_amount q0.5,real
+2025-08,change,duplicate rows,False,0,,real
+2025-08,change,reconciliation,False,0.461581,mismatch share,real
+2025-08,change,mix: payment_type,False,0.126658,TV 0.084,real
+2025-08,change,mix: vendorid,False,1.97673,TV 0.030,real
+2025-08,change,mix: ratecodeid,False,0.19204,TV 0.091,real
+2025-08,change,mix: passenger_count,False,0.113394,TV 0.083,real
+2025-08,change,hour of day,False,0.16136,TV 0.019,real
+2025-08,change,pickup zones,False,3.23852,TV 0.072,real
+2025-08,change,schema change,False,0,,real
+2025-09,table,schema (strict),True,2,"Airport_fee, airport_fee",real
+2025-09,table,schema (tolerant),False,0,,real
+2025-09,table,not null (strict),True,0.251045,passenger_count,real
+2025-09,table,not null (1%),True,0.251045,passenger_count,real
+2025-09,table,ranges (strict),True,0.0594489,fare_amount<0,real
+2025-09,table,ranges (1%),True,0.0594489,fare_amount<0,real
+2025-09,table,code lists (strict),False,0,vendorid,real
+2025-09,table,code lists (1%),False,0,vendorid,real
+2025-09,table,month window (strict),True,1.64667e-06,,real
+2025-09,table,month window (1%),False,1.64667e-06,,real
+2025-09,table,unique rows (strict),False,0,,real
+2025-09,table,unique rows (1%),False,0,,real
+2025-09,table,reconciliation (strict),True,0.360647,,real
+2025-09,table,reconciliation (1%),True,0.360647,,real
+2025-09,table,volume floor,False,4.25102e+06,,real
+2025-09,change,volume,False,1.77616,log rows,real
+2025-09,change,daily completeness,False,0.896625,highest day / median day,real
+2025-09,change,null shares,False,0.53253,passenger_count,real
+2025-09,change,rule-violation rates,False,1.12939,tolls_amount<0,real
+2025-09,change,value distributions,True,5.11464,fare_amount q0.5,real
+2025-09,change,duplicate rows,False,0,,real
+2025-09,change,reconciliation,False,0.787226,mismatch share,real
+2025-09,change,mix: payment_type,False,0.660417,TV 0.051,real
+2025-09,change,mix: vendorid,False,0.577219,TV 0.015,real
+2025-09,change,mix: ratecodeid,False,0.51158,TV 0.060,real
+2025-09,change,mix: passenger_count,False,0.70919,TV 0.048,real
+2025-09,change,hour of day,False,0.269541,TV 0.016,real
+2025-09,change,pickup zones,False,0.72883,TV 0.035,real
+2025-09,change,schema change,False,0,,real
+2025-10,table,schema (strict),True,2,"Airport_fee, airport_fee",real
+2025-10,table,schema (tolerant),False,0,,real
+2025-10,table,not null (strict),True,0.223742,passenger_count,real
+2025-10,table,not null (1%),True,0.223742,passenger_count,real
+2025-10,table,ranges (strict),True,0.0725511,fare_amount<0,real
+2025-10,table,ranges (1%),True,0.0725511,fare_amount<0,real
+2025-10,table,code lists (strict),False,0,vendorid,real
+2025-10,table,code lists (1%),False,0,vendorid,real
+2025-10,table,month window (strict),True,2.9354e-06,,real
+2025-10,table,month window (1%),False,2.9354e-06,,real
+2025-10,table,unique rows (strict),False,0,,real
+2025-10,table,unique rows (1%),False,0,,real
+2025-10,table,reconciliation (strict),True,0.34394,,real
+2025-10,table,reconciliation (1%),True,0.34394,,real
+2025-10,table,volume floor,False,4.4287e+06,,real
+2025-10,change,volume,False,1.244,log rows,real
+2025-10,change,daily completeness,False,0.737467,lowest day / median day,real
+2025-10,change,null shares,False,0.00666599,passenger_count,real
+2025-10,change,rule-violation rates,False,2.85071,total_amount<0,real
+2025-10,change,value distributions,False,1.98848,card trips tipped,real
+2025-10,change,duplicate rows,False,0,,real
+2025-10,change,reconciliation,False,0.190779,mismatch share,real
+2025-10,change,mix: payment_type,False,1.46425,TV 0.010,real
+2025-10,change,mix: vendorid,False,0.700035,TV 0.009,real
+2025-10,change,mix: ratecodeid,False,1.18195,TV 0.018,real
+2025-10,change,mix: passenger_count,False,1.68426,TV 0.006,real
+2025-10,change,hour of day,False,0.867635,TV 0.015,real
+2025-10,change,pickup zones,False,1.44259,TV 0.021,real
+2025-10,change,schema change,False,0,,real
+2025-11,table,schema (strict),True,2,"Airport_fee, airport_fee",real
+2025-11,table,schema (tolerant),False,0,,real
+2025-11,table,not null (strict),True,0.242677,passenger_count,real
+2025-11,table,not null (1%),True,0.242677,passenger_count,real
+2025-11,table,ranges (strict),True,0.0944872,fare_amount<0,real
+2025-11,table,ranges (1%),True,0.0944872,fare_amount<0,real
+2025-11,table,code lists (strict),False,0,vendorid,real
+2025-11,table,code lists (1%),False,0,vendorid,real
+2025-11,table,month window (strict),True,5.73964e-06,,real
+2025-11,table,month window (1%),False,5.73964e-06,,real
+2025-11,table,unique rows (strict),False,0,,real
+2025-11,table,unique rows (1%),False,0,,real
+2025-11,table,reconciliation (strict),True,0.351144,,real
+2025-11,table,reconciliation (1%),True,0.351144,,real
+2025-11,table,volume floor,False,4.18144e+06,,real
+2025-11,change,volume,False,0.478672,log rows,real
+2025-11,change,daily completeness,False,1.84277,highest day / median day,real
+2025-11,change,null shares,False,0.334582,passenger_count,real
+2025-11,change,rule-violation rates,True,5.3859,total_amount<0,real
+2025-11,change,value distributions,False,2.51973,card trips tipped,real
+2025-11,change,duplicate rows,False,0,,real
+2025-11,change,reconciliation,False,0.314961,mismatch share,real
+2025-11,change,mix: payment_type,False,0.532092,TV 0.021,real
+2025-11,change,mix: vendorid,False,1.09966,TV 0.005,real
+2025-11,change,mix: ratecodeid,False,0.348301,TV 0.032,real
+2025-11,change,mix: passenger_count,False,0.516912,TV 0.021,real
+2025-11,change,hour of day,False,0.531441,TV 0.015,real
+2025-11,change,pickup zones,False,0.756444,TV 0.022,real
+2025-11,change,schema change,False,0,,real
+2025-12,table,schema (strict),True,2,"Airport_fee, airport_fee",real
+2025-12,table,schema (tolerant),False,0,,real
+2025-12,table,not null (strict),True,0.277696,passenger_count,real
+2025-12,table,not null (1%),True,0.277696,passenger_count,real
+2025-12,table,ranges (strict),True,0.0113517,total_amount<0,real
+2025-12,table,ranges (1%),True,0.0113517,total_amount<0,real
+2025-12,table,code lists (strict),False,0,vendorid,real
+2025-12,table,code lists (1%),False,0,vendorid,real
+2025-12,table,month window (strict),True,2.09059e-06,,real
+2025-12,table,month window (1%),False,2.09059e-06,,real
+2025-12,table,unique rows (strict),False,0,,real
+2025-12,table,unique rows (1%),False,0,,real
+2025-12,table,reconciliation (strict),True,0.381532,,real
+2025-12,table,reconciliation (1%),True,0.381532,,real
+2025-12,table,volume floor,False,4.30501e+06,,real
+2025-12,change,volume,False,0.529536,log rows,real
+2025-12,change,daily completeness,False,4.1166,lowest day / median day,real
+2025-12,change,null shares,False,1.35731,passenger_count,real
+2025-12,change,rule-violation rates,False,3.05183,fare_amount<0,real
+2025-12,change,value distributions,True,7.01673,fare per mile q0.5,real
+2025-12,change,duplicate rows,False,0,,real
+2025-12,change,reconciliation,False,1.71338,mismatch share,real
+2025-12,change,mix: payment_type,False,0.338065,TV 0.048,real
+2025-12,change,mix: vendorid,False,0.499639,TV 0.005,real
+2025-12,change,mix: ratecodeid,False,2.37405,TV 0.054,real
+2025-12,change,mix: passenger_count,False,0.593501,TV 0.051,real
+2025-12,change,hour of day,False,1.08369,TV 0.010,real
+2025-12,change,pickup zones,False,0.091226,TV 0.028,real
+2025-12,change,schema change,False,0,,real
+2026-01,table,schema (strict),True,2,"Airport_fee, airport_fee",real
+2026-01,table,schema (tolerant),False,0,,real
+2026-01,table,not null (strict),True,0.292105,passenger_count,real
+2026-01,table,not null (1%),True,0.292105,passenger_count,real
+2026-01,table,ranges (strict),True,0.0107343,total_amount<0,real
+2026-01,table,ranges (1%),True,0.0107343,total_amount<0,real
+2026-01,table,code lists (strict),False,0,vendorid,real
+2026-01,table,code lists (1%),False,0,vendorid,real
+2026-01,table,month window (strict),True,1.87925e-06,,real
+2026-01,table,month window (1%),False,1.87925e-06,,real
+2026-01,table,unique rows (strict),False,0,,real
+2026-01,table,unique rows (1%),False,0,,real
+2026-01,table,reconciliation (strict),True,0.384646,,real
+2026-01,table,reconciliation (1%),True,0.384646,,real
+2026-01,table,volume floor,False,3.72489e+06,,real
+2026-01,change,volume,False,1.37459,log rows,real
+2026-01,change,daily completeness,True,5.53208,lowest day / median day,real
+2026-01,change,null shares,False,1.4789,passenger_count,real
+2026-01,change,rule-violation rates,False,3.08805,fare_amount<0,real
+2026-01,change,value distributions,False,3.18855,fare per mile q0.5,real
+2026-01,change,duplicate rows,False,0,,real
+2026-01,change,reconciliation,False,1.81211,mismatch share,real
+2026-01,change,mix: payment_type,False,1.25085,TV 0.050,real
+2026-01,change,mix: vendorid,False,0.421683,TV 0.005,real
+2026-01,change,mix: ratecodeid,False,1.13394,TV 0.058,real
+2026-01,change,mix: passenger_count,False,1.58329,TV 0.049,real
+2026-01,change,hour of day,False,0.00212289,TV 0.014,real
+2026-01,change,pickup zones,False,1.10822,TV 0.038,real
+2026-01,change,schema change,False,0,,real
+2026-02,table,schema (strict),True,2,"Airport_fee, airport_fee",real
+2026-02,table,schema (tolerant),False,0,,real
+2026-02,table,not null (strict),True,0.300987,passenger_count,real
+2026-02,table,not null (1%),True,0.300987,passenger_count,real
+2026-02,table,ranges (strict),True,0.00802708,total_amount<0,real
+2026-02,table,ranges (1%),False,0.00802708,total_amount<0,real
+2026-02,table,code lists (strict),False,0,vendorid,real
+2026-02,table,code lists (1%),False,0,vendorid,real
+2026-02,table,month window (strict),True,4.70607e-06,,real
+2026-02,table,month window (1%),False,4.70607e-06,,real
+2026-02,table,unique rows (strict),False,0,,real
+2026-02,table,unique rows (1%),False,0,,real
+2026-02,table,reconciliation (strict),True,0.388004,,real
+2026-02,table,reconciliation (1%),True,0.388004,,real
+2026-02,table,volume floor,False,3.39987e+06,,real
+2026-02,change,volume,False,2.50246,log rows,real
+2026-02,change,daily completeness,True,5.92927,lowest day / median day,real
+2026-02,change,null shares,False,1.39723,passenger_count,real
+2026-02,change,rule-violation rates,False,3.25425,fare_amount<0,real
+2026-02,change,value distributions,True,5.69856,fare per mile q0.5,real
+2026-02,change,duplicate rows,False,0,,real
+2026-02,change,reconciliation,False,1.57324,mismatch share,real
+2026-02,change,mix: payment_type,False,1.87808,TV 0.049,real
+2026-02,change,mix: vendorid,False,0.0922573,TV 0.007,real
+2026-02,change,mix: ratecodeid,False,1.34554,TV 0.061,real
+2026-02,change,mix: passenger_count,False,1.06898,TV 0.050,real
+2026-02,change,hour of day,False,2.87996,TV 0.025,real
+2026-02,change,pickup zones,False,1.0957,TV 0.039,real
+2026-02,change,schema change,False,0,,real
+2026-03,table,schema (strict),True,2,"Airport_fee, airport_fee",real
+2026-03,table,schema (tolerant),False,0,,real
+2026-03,table,not null (strict),True,0.239281,passenger_count,real
+2026-03,table,not null (1%),True,0.239281,passenger_count,real
+2026-03,table,ranges (strict),True,0.00539033,total_amount<0,real
+2026-03,table,ranges (1%),False,0.00539033,total_amount<0,real
+2026-03,table,code lists (strict),False,0,vendorid,real
+2026-03,table,code lists (1%),False,0,vendorid,real
+2026-03,table,month window (strict),True,4.80714e-06,,real
+2026-03,table,month window (1%),False,4.80714e-06,,real
+2026-03,table,unique rows (strict),False,0,,real
+2026-03,table,unique rows (1%),False,0,,real
+2026-03,table,reconciliation (strict),True,0.3413,,real
+2026-03,table,reconciliation (1%),True,0.3413,,real
+2026-03,table,volume floor,False,3.95245e+06,,real
+2026-03,change,volume,False,0.642058,log rows,real
+2026-03,change,daily completeness,False,1.09379,highest day / median day,real
+2026-03,change,null shares,False,0.476023,passenger_count,real
+2026-03,change,rule-violation rates,False,3.8509,zero passengers,real
+2026-03,change,value distributions,True,5.5,tip_amount q0.5,real
+2026-03,change,duplicate rows,False,0,,real
+2026-03,change,reconciliation,False,0.614967,mismatch share,real
+2026-03,change,mix: payment_type,False,0.835922,TV 0.040,real
+2026-03,change,mix: vendorid,False,0.717041,TV 0.003,real
+2026-03,change,mix: ratecodeid,False,0.452959,TV 0.020,real
+2026-03,change,mix: passenger_count,False,1.2641,TV 0.046,real
+2026-03,change,hour of day,False,2.51695,TV 0.023,real
+2026-03,change,pickup zones,False,0.651057,TV 0.021,real
+2026-03,change,schema change,False,0,,real
+2026-04,table,schema (strict),True,2,"Airport_fee, airport_fee",real
+2026-04,table,schema (tolerant),False,0,,real
+2026-04,table,not null (strict),True,0.208754,passenger_count,real
+2026-04,table,not null (1%),True,0.208754,passenger_count,real
+2026-04,table,ranges (strict),True,0.00388229,total_amount<0,real
+2026-04,table,ranges (1%),False,0.00388229,total_amount<0,real
+2026-04,table,code lists (strict),False,0,vendorid,real
+2026-04,table,code lists (1%),False,0,vendorid,real
+2026-04,table,month window (strict),True,3.13215e-06,,real
+2026-04,table,month window (1%),False,3.13215e-06,,real
+2026-04,table,unique rows (strict),False,0,,real
+2026-04,table,unique rows (1%),False,0,,real
+2026-04,table,reconciliation (strict),True,0.323599,,real
+2026-04,table,reconciliation (1%),True,0.323599,,real
+2026-04,table,volume floor,False,3.83124e+06,,real
+2026-04,change,volume,False,0.727833,log rows,real
+2026-04,change,daily completeness,False,1.33119,highest day / median day,real
+2026-04,change,null shares,False,1.65113,passenger_count,real
+2026-04,change,rule-violation rates,False,3.78612,zero passengers,real
+2026-04,change,value distributions,True,18,tip_amount q0.5,real
+2026-04,change,duplicate rows,False,0,,real
+2026-04,change,reconciliation,False,1.36305,mismatch share,real
+2026-04,change,mix: payment_type,False,3.24891,TV 0.072,real
+2026-04,change,mix: vendorid,False,0.91775,TV 0.008,real
+2026-04,change,mix: ratecodeid,False,1.34613,TV 0.049,real
+2026-04,change,mix: passenger_count,False,2.83179,TV 0.064,real
+2026-04,change,hour of day,False,0.643231,TV 0.017,real
+2026-04,change,pickup zones,False,0.0622092,TV 0.024,real
+2026-04,change,schema change,False,0,,real
+2026-05,table,schema (strict),True,2,"Airport_fee, airport_fee",real
+2026-05,table,schema (tolerant),False,0,,real
+2026-05,table,not null (strict),True,0.233539,passenger_count,real
+2026-05,table,not null (1%),True,0.233539,passenger_count,real
+2026-05,table,ranges (strict),True,0.00363666,total_amount<0,real
+2026-05,table,ranges (1%),False,0.00363666,total_amount<0,real
+2026-05,table,code lists (strict),False,0,vendorid,real
+2026-05,table,code lists (1%),False,0,vendorid,real
+2026-05,table,month window (strict),True,3.42228e-06,,real
+2026-05,table,month window (1%),False,3.42228e-06,,real
+2026-05,table,unique rows (strict),False,0,,real
+2026-05,table,unique rows (1%),False,0,,real
+2026-05,table,reconciliation (strict),True,0.344232,,real
+2026-05,table,reconciliation (1%),True,0.344232,,real
+2026-05,table,volume floor,False,4.09084e+06,,real
+2026-05,change,volume,False,0.0698564,log rows,real
+2026-05,change,daily completeness,False,0.589826,lowest day / median day,real
+2026-05,change,null shares,False,0.780751,passenger_count,real
+2026-05,change,rule-violation rates,False,2.61598,zero passengers,real
+2026-05,change,value distributions,True,12,tip_amount q0.5,real
+2026-05,change,duplicate rows,False,0,,real
+2026-05,change,reconciliation,False,0.532033,mismatch share,real
+2026-05,change,mix: payment_type,False,1.48538,TV 0.046,real
+2026-05,change,mix: vendorid,False,0.230173,TV 0.005,real
+2026-05,change,mix: ratecodeid,False,0.237856,TV 0.023,real
+2026-05,change,mix: passenger_count,False,1.20361,TV 0.040,real
+2026-05,change,hour of day,False,1.38373,TV 0.010,real
+2026-05,change,pickup zones,False,0.489863,TV 0.029,real
+2026-05,change,schema change,False,0,,real
+2026-06,table,schema (strict),True,3,"Airport_fee, airport_fee, request_source",real
+2026-06,table,schema (tolerant),False,0,,real
+2026-06,table,not null (strict),True,0.264122,passenger_count,real
+2026-06,table,not null (1%),True,0.264122,passenger_count,real
+2026-06,table,ranges (strict),True,0.00372976,total_amount<0,real
+2026-06,table,ranges (1%),False,0.00372976,total_amount<0,real
+2026-06,table,code lists (strict),False,0,vendorid,real
+2026-06,table,code lists (1%),False,0,vendorid,real
+2026-06,table,month window (strict),True,4.43026e-06,,real
+2026-06,table,month window (1%),False,4.43026e-06,,real
+2026-06,table,unique rows (strict),False,0,,real
+2026-06,table,unique rows (1%),False,0,,real
+2026-06,table,reconciliation (strict),True,0.370353,,real
+2026-06,table,reconciliation (1%),True,0.370353,,real
+2026-06,table,volume floor,False,3.83725e+06,,real
+2026-06,change,volume,False,0.509604,log rows,real
+2026-06,change,daily completeness,False,1.1835,highest day / median day,real
+2026-06,change,null shares,False,0.4621,passenger_count,real
+2026-06,change,rule-violation rates,False,1.86139,zero passengers,real
+2026-06,change,value distributions,True,12,tip_amount q0.5,real
+2026-06,change,duplicate rows,False,0,,real
+2026-06,change,reconciliation,False,0.993174,mismatch share,real
+2026-06,change,mix: payment_type,False,1.11535,TV 0.022,real
+2026-06,change,mix: vendorid,True,7.24158,TV 0.033,real
+2026-06,change,mix: ratecodeid,False,0.00980114,TV 0.026,real
+2026-06,change,mix: passenger_count,False,1.98527,TV 0.017,real
+2026-06,change,hour of day,False,0.136592,TV 0.015,real
+2026-06,change,pickup zones,False,0.691711,TV 0.033,real
+2026-06,change,schema change,True,inf,request_source:string,real
+2026-07,table,schema (strict),True,3,"Airport_fee, airport_fee, request_source",real
+2026-07,table,schema (tolerant),False,0,,real
+2026-07,table,not null (strict),True,0.274702,passenger_count,real
+2026-07,table,not null (1%),True,0.274702,passenger_count,real
+2026-07,table,ranges (strict),True,0.00416389,total_amount<0,real
+2026-07,table,ranges (1%),False,0.00416389,total_amount<0,real
+2026-07,table,code lists (strict),False,0,vendorid,real
+2026-07,table,code lists (1%),False,0,vendorid,real
+2026-07,table,month window (strict),True,1.30308e-05,,real
+2026-07,table,month window (1%),False,1.30308e-05,,real
+2026-07,table,unique rows (strict),False,0,,real
+2026-07,table,unique rows (1%),False,0,,real
+2026-07,table,reconciliation (strict),True,0.394061,,real
+2026-07,table,reconciliation (1%),True,0.394061,,real
+2026-07,table,volume floor,False,3.53011e+06,,real
+2026-07,change,volume,False,1.23902,log rows,real
+2026-07,change,daily completeness,False,0.607005,highest day / median day,real
+2026-07,change,null shares,False,1.03388,passenger_count,real
+2026-07,change,rule-violation rates,False,1.4774,zero distance,real
+2026-07,change,value distributions,False,1.18036,trip_distance q0.75,real
+2026-07,change,duplicate rows,False,0,,real
+2026-07,change,reconciliation,False,2.32625,mismatch share,real
+2026-07,change,mix: payment_type,False,0.232432,TV 0.029,real
+2026-07,change,mix: vendorid,False,4.50411,TV 0.024,real
+2026-07,change,mix: ratecodeid,False,0.0782012,TV 0.027,real
+2026-07,change,mix: passenger_count,False,0.40816,TV 0.025,real
+2026-07,change,hour of day,False,1.19273,TV 0.010,real
+2026-07,change,pickup zones,False,1.82782,TV 0.044,real
+2026-07,change,schema change,False,0,,real
+2026-08,table,schema (strict),True,3,"Airport_fee, airport_fee, request_source",real
+2026-08,table,schema (tolerant),False,0,,real
+2026-08,table,not null (strict),True,0.276074,passenger_count,real
+2026-08,table,not null (1%),True,0.276074,passenger_count,real
+2026-08,table,ranges (strict),True,0.00434349,total_amount<0,real
+2026-08,table,ranges (1%),False,0.00434349,total_amount<0,real
+2026-08,table,code lists (strict),False,0,vendorid,real
+2026-08,table,code lists (1%),False,0,vendorid,real
+2026-08,table,month window (strict),True,4.49544e-06,,real
+2026-08,table,month window (1%),False,4.49544e-06,,real
+2026-08,table,unique rows (strict),True,2.09787e-06,,real
+2026-08,table,unique rows (1%),False,2.09787e-06,,real
+2026-08,table,reconciliation (strict),True,0.39991,,real
+2026-08,table,reconciliation (1%),True,0.39991,,real
+2026-08,table,volume floor,False,3.33672e+06,,real
+2026-08,change,volume,False,1.32846,log rows,real
+2026-08,change,daily completeness,False,1.24954,highest day / median day,real
+2026-08,change,null shares,False,0.870803,passenger_count,real
+2026-08,change,rule-violation rates,False,1.28703,zero passengers,real
+2026-08,change,value distributions,False,3.45677,trip_distance q0.75,real
+2026-08,change,duplicate rows,False,0.209787,duplicate share,real
+2026-08,change,reconciliation,False,1.95297,mismatch share,real
+2026-08,change,mix: payment_type,False,0.192964,TV 0.029,real
+2026-08,change,mix: vendorid,False,2.73003,TV 0.019,real
+2026-08,change,mix: ratecodeid,False,0.0135,TV 0.029,real
+2026-08,change,mix: passenger_count,False,0.113124,TV 0.026,real
+2026-08,change,hour of day,False,0.93655,TV 0.018,real
+2026-08,change,pickup zones,False,2.14598,TV 0.047,real
+2026-08,change,schema change,False,0,,real
+2026-09,table,schema (strict),True,3,"Airport_fee, airport_fee, request_source",real
+2026-09,table,schema (tolerant),False,0,,real
+2026-09,table,not null (strict),True,0.307121,passenger_count,real
+2026-09,table,not null (1%),True,0.307121,passenger_count,real
+2026-09,table,ranges (strict),True,0.00378943,total_amount<0,real
+2026-09,table,ranges (1%),False,0.00378943,total_amount<0,real
+2026-09,table,code lists (strict),False,0,vendorid,real
+2026-09,table,code lists (1%),False,0,vendorid,real
+2026-09,table,month window (strict),True,5.67589e-06,,real
+2026-09,table,month window (1%),False,5.67589e-06,,real
+2026-09,table,unique rows (strict),False,0,,real
+2026-09,table,unique rows (1%),False,0,,real
+2026-09,table,reconciliation (strict),True,0.434666,,real
+2026-09,table,reconciliation (1%),True,0.434666,,real
+2026-09,table,volume floor,False,3.87604e+06,,real
+2026-09,change,volume,False,0.0402054,log rows,real
+2026-09,change,daily completeness,False,0.330053,lowest day / median day,real
+2026-09,change,null shares,False,1.73106,passenger_count,real
+2026-09,change,rule-violation rates,False,1.09449,zero distance,real
+2026-09,change,value distributions,False,3.91915,fare_amount q0.95,real
+2026-09,change,duplicate rows,False,0,,real
+2026-09,change,reconciliation,False,2.17854,mismatch share,real
+2026-09,change,mix: payment_type,False,1.1671,TV 0.046,real
+2026-09,change,mix: vendorid,False,1.46025,TV 0.013,real
+2026-09,change,mix: ratecodeid,False,2.05584,TV 0.054,real
+2026-09,change,mix: passenger_count,False,0.911701,TV 0.048,real
+2026-09,change,hour of day,False,1.24322,TV 0.021,real
+2026-09,change,pickup zones,False,0.487179,TV 0.031,real
+2026-09,change,schema change,False,0,,real
