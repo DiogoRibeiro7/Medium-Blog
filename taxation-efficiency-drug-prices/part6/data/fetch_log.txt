@@ -1,0 +1,205 @@
+[ecb_fx] wrote ecb_fx.csv.gz: 55 rows, columns ['currency', 'time_period', 'obs_value']
+== ecb done in 2 s
+[efpia_2026] wrote efpia_2026.txt.gz: 99972 characters
+== efpia done in 2 s
+[worldbank] wrote worldbank.csv.gz: 7899 rows, columns ['indicator', 'iso3', 'country', 'year', 'value']
+== worldbank done in 0 s
+[eurostat_gbard_health] wrote eurostat_gbard_health.csv.gz: 6907 rows, columns ['freq', 'nabs07', 'unit', 'geo', 'time', 'value']
+[eurostat_berd_pharma] wrote eurostat_berd_pharma.csv.gz: 4768 rows, columns ['freq', 'nace_r2', 'unit', 'geo', 'time', 'value']
+[eurostat_gdp] wrote eurostat_gdp.csv.gz: 504 rows, columns ['freq', 'unit', 'na_item', 'geo', 'time', 'value']
+== eurostat done in 4 s
+[oecd] DSD_RDS_GOV@DF_GBARD_NABS07: dimensions ['REF_AREA', 'FREQ', 'MEASURE', 'SEO', 'FUNDMODE', 'TRANSCOORD', 'UNIT_MEASURE', 'PRICE_BASE']; key .A..NABS07+_T....
+[oecd_gbard] wrote oecd_gbard.csv.gz: 2598 rows, columns ['REF_AREA', 'Reference area', 'MEASURE', 'SEO', 'FUNDMODE', 'TRANSCOORD', 'UNIT_MEASURE', 'Unit of measure', 'PRICE_BASE', 'TIME_PERIOD', 'OBS_VALUE', 'UNIT_MULT']
+[oecd] MSTI flow: ('OECD.STI.STP', 'DSD_MSTI@DF_MSTI', '1.3')
+[oecd] DSD_MSTI@DF_MSTI: dimensions ['REF_AREA', 'FREQ', 'MEASURE', 'UNIT_MEASURE', 'PRICE_BASE', 'TRANSFORMATION']; key ..B_DRUG+B+GDP...
+[oecd_msti] wrote oecd_msti.csv.gz: 4838 rows, columns ['REF_AREA', 'Reference area', 'MEASURE', 'Measure', 'UNIT_MEASURE', 'Unit of measure', 'PRICE_BASE', 'TIME_PERIOD', 'OBS_VALUE', 'UNIT_MULT']
+== oecd done in 8 s
+[sec] Pfizer FY2015 10-K: revenue 48851000000.0 USD, US 21704000000.0 (country:US), R&D 7690000000.0
+[sec] Pfizer FY2016 10-K: revenue 52824000000.0 USD, US 26369000000.0 (country:US), R&D 7872000000.0
+[sec] Pfizer FY2017 10-K: revenue 52546000000.0 USD, US 26026000000.0 (country:US), R&D 7657000000.0
+[sec] Pfizer FY2018 10-K: revenue 53647000000.0 USD, US 25329000000.0 (country:US), R&D 8006000000.0
+[sec] Pfizer FY2019 10-K: revenue 51750000000.0 USD, US 23852000000.0 (country:US), R&D 8650000000.0
+[sec] Pfizer FY2020 10-K: revenue 41908000000.0 USD, US 21712000000.0 (country:US), R&D 9405000000.0
+[sec] Pfizer FY2021 10-K: revenue 81288000000.0 USD, US 29746000000.0 (country:US), R&D 13829000000.0
+[sec] Pfizer FY2022 10-K: revenue 100330000000.0 USD, US 42473000000.0 (country:US), R&D 11428000000.0
+[sec] Pfizer FY2023 10-K: revenue 58496000000.0 USD, US 27088000000.0 (country:US), R&D 10679000000.0
+[sec] Pfizer FY2024 10-K: revenue 63627000000.0 USD, US 38691000000.0 (country:US), R&D 10822000000.0
+[sec] Pfizer FY2025 10-K: revenue 62579000000.0 USD, US 37078000000.0 (country:US), R&D 10437000000.0
+[sec] Merck & Co FY2015 10-K: revenue 39498000000.0 USD, US 17519000000.0 (country:US), R&D 6704000000.0
+[sec] Merck & Co FY2016 10-K: revenue 39807000000.0 USD, US 18478000000.0 (country:US), R&D 10124000000.0
+[sec] Merck & Co FY2017 10-K: revenue 40122000000.0 USD, US 17424000000.0 (country:US), R&D 10208000000.0
+[sec] Merck & Co FY2018 10-K: revenue 42294000000.0 USD, US 18212000000.0 (country:US), R&D 9752000000.0
+[sec] Merck & Co FY2019 10-K: revenue 46840000000.0 USD, US 20325000000.0 (country:US), R&D 9872000000.0
+[sec] Merck & Co FY2020 10-K: revenue 47994000000.0 USD, US 21027000000.0 (country:US), R&D 13558000000.0
+[sec] Merck & Co FY2021 10-K: revenue 48704000000.0 USD, US 22425000000.0 (country:US), R&D 12245000000.0
+[sec] Merck & Co FY2022 10-K: revenue 59283000000.0 USD, US 27206000000.0 (country:US), R&D 13548000000.0
+[sec] Merck & Co FY2023 10-K: revenue 60115000000.0 USD, US 28480000000.0 (country:US), R&D 30531000000.0
+[sec] Merck & Co FY2024 10-K: revenue 64168000000.0 USD, US 32277000000.0 (country:US), R&D 17938000000.0
+[sec] Merck & Co FY2025 10-K: revenue 65011000000.0 USD, US 36510000000.0 (country:US), R&D 15789000000.0
+[sec] Johnson & Johnson FY2015 10-K: revenue 70074000000.0 USD, US None (None), R&D 9046000000.0
+[sec] Johnson & Johnson FY2016 10-K: revenue 71890000000.0 USD, US None (None), R&D 9095000000.0
+[sec] Johnson & Johnson FY2017 10-K: revenue 76450000000.0 USD, US None (None), R&D 10554000000.0
+[sec] Johnson & Johnson FY2018 10-K: revenue 81581000000.0 USD, US 41884000000.0 (country:US), R&D 10775000000.0
+[sec] Johnson & Johnson FY2019 10-K: revenue 82059000000.0 USD, US 42097000000.0 (country:US), R&D 11355000000.0
+[sec] Johnson & Johnson FY2020 10-K: revenue 82584000000.0 USD, US 43133000000.0 (country:US), R&D 12159000000.0
+[sec] Johnson & Johnson FY2021 10-K: revenue 93775000000.0 USD, US 47156000000.0 (country:US), R&D 14714000000.0
+[sec] Johnson & Johnson FY2022 10-K: revenue 94943000000.0 USD, US 48580000000.0 (country:US), R&D 14603000000.0
+[sec] Johnson & Johnson FY2023 10-K: revenue 85159000000.0 USD, US 46444000000.0 (country:US), R&D 15085000000.0
+[sec] Johnson & Johnson FY2024 10-K: revenue 88821000000.0 USD, US 50302000000.0 (country:US), R&D 17232000000.0
+[sec] Johnson & Johnson FY2025 10-K: revenue 94193000000.0 USD, US 53752000000.0 (country:US), R&D 14665000000.0
+[sec] AbbVie FY2015 10-K: revenue 22859000000.0 USD, US 13561000000.0 (country:US), R&D 4285000000.0
+[sec] AbbVie FY2016 10-K: revenue 25638000000.0 USD, US 15947000000.0 (country:US), R&D 4366000000.0
+[sec] AbbVie FY2017 10-K: revenue 28216000000.0 USD, US 18251000000.0 (country:US), R&D 4982000000.0
+[sec] AbbVie FY2018 10-K: revenue 32753000000.0 USD, US 21524000000.0 (country:US), R&D 10329000000.0
+[sec] AbbVie FY2019 10-K: revenue 33266000000.0 USD, US 23907000000.0 (country:US), R&D 6407000000.0
+[sec] AbbVie FY2020 10-K: revenue 45804000000.0 USD, US 34879000000.0 (country:US), R&D 6557000000.0
+[sec] AbbVie FY2021 10-K: revenue 56197000000.0 USD, US 43510000000.0 (country:US), R&D 7084000000.0
+[sec] AbbVie FY2022 10-K: revenue 58054000000.0 USD, US 45713000000.0 (country:US), R&D 6510000000.0
+[sec] AbbVie FY2023 10-K: revenue 54318000000.0 USD, US 41883000000.0 (country:US), R&D 7675000000.0
+[sec] AbbVie FY2024 10-K: revenue 56334000000.0 USD, US 43029000000.0 (country:US), R&D 12791000000.0
+[sec] AbbVie FY2025 10-K: revenue 61160000000.0 USD, US 46603000000.0 (country:US), R&D 9096000000.0
+[sec] Bristol-Myers Squibb FY2015 10-K: revenue 16560000000.0 USD, US 8188000000.0 (country:US), R&D 5920000000.0
+[sec] Bristol-Myers Squibb FY2016 10-K: revenue 19427000000.0 USD, US 10720000000.0 (country:US), R&D 4940000000.0
+[sec] Bristol-Myers Squibb FY2017 10-K: revenue 20776000000.0 USD, US 11358000000.0 (country:US), R&D 6411000000.0
+[sec] Bristol-Myers Squibb FY2018 10-K: revenue 22561000000.0 USD, US 12586000000.0 (country:US), R&D 6345000000.0
+[sec] Bristol-Myers Squibb FY2019 10-K: revenue 26145000000.0 USD, US 15342000000.0 (country:US), R&D 6148000000.0
+[sec] Bristol-Myers Squibb FY2020 10-K: revenue 42518000000.0 USD, US 26577000000.0 (country:US), R&D 11143000000.0
+[sec] Bristol-Myers Squibb FY2021 10-K: revenue 46385000000.0 USD, US 29214000000.0 (country:US), R&D 11354000000.0
+[sec] Bristol-Myers Squibb FY2022 10-K: revenue 46159000000.0 USD, US 31828000000.0 (country:US), R&D 9509000000.0
+[sec] Bristol-Myers Squibb FY2023 10-K: revenue 45006000000.0 USD, US 31555000000.0 (country:US), R&D 9299000000.0
+[sec] Bristol-Myers Squibb FY2024 10-K: revenue 48300000000.0 USD, US 34105000000.0 (country:US), R&D 11159000000.0
+[sec] Bristol-Myers Squibb FY2025 10-K: revenue 48194000000.0 USD, US 33279000000.0 (country:US), R&D 9951000000.0
+[sec] Eli Lilly FY2015 10-K: revenue 19958700000.0 USD, US 10097400000.0 (country:US), R&D 4796400000.0
+[sec] Eli Lilly FY2016 10-K: revenue 21222100000.0 USD, US 11506200000.0 (country:US), R&D 5243900000.0
+[sec] Eli Lilly FY2017 10-K: revenue 22871300000.0 USD, US 12785100000.0 (country:US), R&D 5281800000.0
+[sec] Eli Lilly FY2018 10-K: revenue 24555700000.0 USD, US 13875200000.0 (country:US), R&D 5307100000.0
+[sec] Eli Lilly FY2019 10-K: revenue 22319500000.0 USD, US 12722600000.0 (country:US), R&D 5595000000.0
+[sec] Eli Lilly FY2020 10-K: revenue 24539800000.0 USD, US 14229300000.0 (country:US), R&D 6085700000.0
+[sec] Eli Lilly FY2021 10-K: revenue 28318400000.0 USD, US 16811000000.0 (country:US), R&D 7025900000.0
+[sec] Eli Lilly FY2022 10-K: revenue 28541400000.0 USD, US 18190000000.0 (country:US), R&D 7190800000.0
+[sec] Eli Lilly FY2023 10-K: revenue 34124100000.0 USD, US 21791000000.0 (country:US), R&D 9313400000.0
+[sec] Eli Lilly FY2024 10-K: revenue 45042700000.0 USD, US 30375200000.0 (country:US), R&D 10990600000.0
+[sec] Eli Lilly FY2025 10-K: revenue 65179000000.0 USD, US 43481000000.0 (country:US), R&D 13337000000.0
+[sec] Amgen FY2015 10-K: revenue 21662000000.0 USD, US 17167000000.0 (country:US), R&D 4070000000.0
+[sec] Amgen FY2016 10-K: revenue 22991000000.0 USD, US 18326000000.0 (country:US), R&D 3840000000.0
+[sec] Amgen FY2017 10-K: revenue 22849000000.0 USD, US 18029000000.0 (country:US), R&D 3562000000.0
+[sec] Amgen FY2018 10-K: revenue 23747000000.0 USD, US 18358000000.0 (country:US), R&D 3737000000.0
+[sec] Amgen FY2019 10-K: revenue 23362000000.0 USD, US 17224000000.0 (country:US), R&D 4116000000.0
+[sec] Amgen FY2020 10-K: revenue 25424000000.0 USD, US 18496000000.0 (country:US), R&D 4207000000.0
+[sec] Amgen FY2021 10-K: revenue 25979000000.0 USD, US 18194000000.0 (country:US), R&D 4819000000.0
+[sec] Amgen FY2022 10-K: revenue 26323000000.0 USD, US 18595000000.0 (country:US), R&D 4434000000.0
+[sec] Amgen FY2023 10-K: revenue 28190000000.0 USD, US 19806000000.0 (country:US), R&D 4784000000.0
+[sec] Amgen FY2024 10-K: revenue 33424000000.0 USD, US 23863000000.0 (country:US), R&D 5964000000.0
+[sec] Amgen FY2025 10-K: revenue 36751000000.0 USD, US 26419000000.0 (country:US), R&D 7272000000.0
+[sec] Gilead FY2015 10-K: revenue 32639000000.0 USD, US 21234000000.0 (country:US), R&D 3014000000.0
+[sec] Gilead FY2016 10-K: revenue 30390000000.0 USD, US 19354000000.0 (country:US), R&D 5098000000.0
+[sec] Gilead FY2017 10-K: revenue 26107000000.0 USD, US 18194000000.0 (country:US), R&D 3734000000.0
+[sec] Gilead FY2018 10-K: revenue 22127000000.0 USD, US 16269000000.0 (country:US), R&D 5018000000.0
+[sec] Gilead FY2019 10-K: revenue 22449000000.0 USD, US 16645000000.0 (country:US), R&D 9106000000.0
+[sec] Gilead FY2020 10-K: revenue 24689000000.0 USD, US 18217000000.0 (country:US), R&D 5039000000.0
+[sec] Gilead FY2021 10-K: revenue 27305000000.0 USD, US 19267000000.0 (country:US), R&D 5363000000.0
+[sec] Gilead FY2022 10-K: revenue 27281000000.0 USD, US 18884000000.0 (country:US), R&D 4977000000.0
+[sec] Gilead FY2023 10-K: revenue 27116000000.0 USD, US 19438000000.0 (country:US), R&D 5718000000.0
+[sec] Gilead FY2024 10-K: revenue 28754000000.0 USD, US 20591000000.0 (country:US), R&D 5907000000.0
+[sec] Gilead FY2025 10-K: revenue 29443000000.0 USD, US 20876000000.0 (country:US), R&D 5799000000.0
+[sec] Regeneron FY2015 10-K: revenue 4103728000.0 USD, US None (None), R&D 1620577000.0
+[sec] Regeneron FY2016 10-K: revenue 4860427000.0 USD, US None (None), R&D 2052295000.0
+[sec] Regeneron FY2017 10-K: revenue 5872227000.0 USD, US None (None), R&D 2075142000.0
+[sec] Regeneron FY2018 10-K: revenue 6710800000.0 USD, US None (None), R&D 2186100000.0
+[sec] Regeneron FY2019 10-K: revenue 7863400000.0 USD, US None (None), R&D 3036600000.0
+[sec] Regeneron FY2020 10-K: revenue 8497100000.0 USD, US None (None), R&D 2735000000.0
+[sec] Regeneron FY2021 10-K: revenue 16071700000.0 USD, US 12117200000.0 (country:US), R&D 2908100000.0
+[sec] Regeneron FY2022 10-K: revenue 12172900000.0 USD, US 6893700000.0 (country:US), R&D 3592500000.0
+[sec] Regeneron FY2023 10-K: revenue 13117200000.0 USD, US None (None), R&D 4439000000.0
+[sec] Regeneron FY2024 10-K: revenue 14202000000.0 USD, US None (None), R&D 5132000000.0
+[sec] Regeneron FY2025 10-K: revenue 14342900000.0 USD, US None (None), R&D 5850200000.0
+[sec] Vertex FY2015 10-K: revenue 1032336000.0 USD, US 763316000.0 (country:US), R&D 995922000.0
+[sec] Vertex FY2016 10-K: revenue 1702177000.0 USD, US 1321807000.0 (country:US), R&D 1047690000.0
+[sec] Vertex FY2017 10-K: revenue 2488652000.0 USD, US 1986786000.0 (country:US), R&D 1324625000.0
+[sec] Vertex FY2018 10-K: revenue 3047597000.0 USD, US 2365079000.0 (country:US), R&D 1416476000.0
+[sec] Vertex FY2019 10-K: revenue 4162821000.0 USD, US 3062555000.0 (country:US), R&D 1754540000.0
+[sec] Vertex FY2020 10-K: revenue 6205683000.0 USD, US 4829282000.0 (country:US), R&D 1829537000.0
+[sec] Vertex FY2021 10-K: revenue 7574400000.0 USD, US None (None), R&D 3051100000.0
+[sec] Vertex FY2022 10-K: revenue 8930700000.0 USD, US None (None), R&D 2540300000.0
+[sec] Vertex FY2023 10-K: revenue 9869200000.0 USD, US None (None), R&D 3162900000.0
+[sec] Vertex FY2024 10-K: revenue 11020100000.0 USD, US 6684900000.0 (country:US), R&D 3630300000.0
+[sec] Vertex FY2025 10-K: revenue 12001300000.0 USD, US 7548600000.0 (country:US), R&D 3909500000.0
+[sec] Biogen FY2015 10-K: revenue 10763800000.0 USD, US 6545800000.0 (country:US), R&D 2012800000.0
+[sec] Biogen FY2016 10-K: revenue 11448800000.0 USD, US 7050400000.0 (country:US), R&D 1973300000.0
+[sec] Biogen FY2017 10-K: revenue 12273900000.0 USD, US 7017100000.0 (country:US), R&D 2253600000.0
+[sec] Biogen FY2018 10-K: revenue 13452900000.0 USD, US None (None), R&D 2597200000.0
+[sec] Biogen FY2019 10-K: revenue 14377900000.0 USD, US None (None), R&D 2280600000.0
+[sec] Biogen FY2020 10-K: revenue 13444600000.0 USD, US None (None), R&D 3990900000.0
+[sec] Biogen FY2021 10-K: revenue 10981700000.0 USD, US None (None), R&D 2501200000.0
+[sec] Biogen FY2022 10-K: revenue 10173400000.0 USD, US None (None), R&D 2231100000.0
+[sec] Biogen FY2023 10-K: revenue 9835600000.0 USD, US None (None), R&D 2462000000.0
+[sec] Biogen FY2024 10-K: revenue 9675900000.0 USD, US None (None), R&D 2041800000.0
+[sec] Biogen FY2025 10-K: revenue 9890600000.0 USD, US None (None), R&D 1778600000.0
+[sec] Novartis FY2015 20-F: no XBRL instance (47 files)
+[sec] Novartis FY2016 20-F: no XBRL instance (13 files)
+[sec] Novartis FY2017 20-F: no XBRL instance (16 files)
+[sec] Novartis FY2018 20-F: revenue 51900000000.0 USD, US None (None), R&D 9074000000.0
+[sec] Novartis FY2019 20-F: revenue 47498000000.0 USD, US None (None), R&D 9402000000.0
+[sec] Novartis FY2020 20-F: revenue 48659000000.0 USD, US None (None), R&D 8980000000.0
+[sec] Novartis FY2021 20-F: revenue 51626000000.0 USD, US None (None), R&D 9540000000.0
+[sec] Novartis FY2022 20-F: revenue 50545000000.0 USD, US None (None), R&D 9996000000.0
+[sec] Novartis FY2023 20-F: revenue 45440000000.0 USD, US 17959000000.0 (country:US), R&D 11371000000.0
+[sec] Novartis FY2024 20-F: revenue 50317000000.0 USD, US 21146000000.0 (country:US), R&D 10022000000.0
+[sec] Novartis FY2025 20-F: revenue 54532000000.0 USD, US 23331000000.0 (country:US), R&D 11200000000.0
+[sec] AstraZeneca FY2015 20-F: no XBRL instance (194 files)
+[sec] AstraZeneca FY2016 20-F: no XBRL instance (320 files)
+[sec] AstraZeneca FY2017 20-F: revenue 22465000000.0 USD, US None (None), R&D 5757000000.0
+[sec] AstraZeneca FY2018 20-F: revenue 22090000000.0 USD, US None (None), R&D 5932000000.0
+[sec] AstraZeneca FY2019 20-F: revenue 24384000000.0 USD, US None (None), R&D 6059000000.0
+[sec] AstraZeneca FY2020 20-F: revenue 26617000000.0 USD, US None (None), R&D 5991000000.0
+[sec] AstraZeneca FY2021 20-F: revenue 37417000000.0 USD, US None (None), R&D 9736000000.0
+[sec] AstraZeneca FY2022 20-F: revenue 44351000000.0 USD, US None (None), R&D 9762000000.0
+[sec] AstraZeneca FY2023 20-F: revenue 45811000000.0 USD, US None (None), R&D 10935000000.0
+[sec] AstraZeneca FY2024 20-F: revenue 54073000000.0 USD, US 21806000000.0 (country:US), R&D 13583000000.0
+[sec] AstraZeneca FY2025 20-F: revenue 58739000000.0 USD, US 23970000000.0 (country:US), R&D 14232000000.0
+[sec] GSK FY2015 20-F: no XBRL instance (275 files)
+[sec] GSK FY2016 20-F: no XBRL instance (238 files)
+[sec] GSK FY2017 20-F: no XBRL instance (222 files)
+[sec] GSK FY2018 20-F: revenue 30821000000.0 GBP, US None (None), R&D 3893000000.0
+[sec] GSK FY2019 20-F: revenue 33754000000.0 GBP, US None (None), R&D 4568000000.0
+[sec] GSK FY2020 20-F: revenue 34099000000.0 GBP, US None (None), R&D 5098000000.0
+[sec] GSK FY2021 20-F: revenue 34114000000.0 GBP, US None (None), R&D 5278000000.0
+[sec] GSK FY2022 20-F: revenue 29324000000.0 GBP, US None (None), R&D 5488000000.0
+[sec] GSK FY2023 20-F: revenue 30328000000.0 GBP, US None (None), R&D 6223000000.0
+[sec] GSK FY2024 20-F: revenue 31376000000.0 GBP, US None (None), R&D 6401000000.0
+[sec] GSK FY2025 20-F: revenue 32667000000.0 GBP, US 16859000000.0 (country:US), R&D 7525000000.0
+[sec] Sanofi FY2015 20-F: no XBRL instance (30 files)
+[sec] Sanofi FY2016 20-F: no XBRL instance (28 files)
+[sec] Sanofi FY2017 20-F: no XBRL instance (30 files)
+[sec] Sanofi FY2018 20-F: revenue 34463000000.0 EUR, US 11540000000.0 (country:US), R&D 5894000000.0
+[sec] Sanofi FY2019 20-F: revenue 36126000000.0 EUR, US 12756000000.0 (country:US), R&D 6018000000.0
+[sec] Sanofi FY2020 20-F: revenue 36041000000.0 EUR, US 13465000000.0 (country:US), R&D 5529000000.0
+[sec] Sanofi FY2021 20-F: revenue 37761000000.0 EUR, US 14385000000.0 (country:US), R&D 5692000000.0
+[sec] Sanofi FY2022 20-F: revenue 42997000000.0 EUR, US 18275000000.0 (country:US), R&D 6706000000.0
+[sec] Sanofi FY2023 20-F: revenue 43070000000.0 EUR, US 18512000000.0 (country:US), R&D 6728000000.0
+[sec] Sanofi FY2024 20-F: revenue 41081000000.0 EUR, US 19986000000.0 (country:US), R&D 7394000000.0
+[sec] Sanofi FY2025 20-F: revenue 43626000000.0 EUR, US 22176000000.0 (country:US), R&D 7842000000.0
+[sec] Novo Nordisk FY2015 20-F: no XBRL instance (8 files)
+[sec] Novo Nordisk FY2016 20-F: no XBRL instance (22 files)
+[sec] Novo Nordisk FY2017 20-F: no XBRL instance (8 files)
+[sec] Novo Nordisk FY2018 20-F: no XBRL instance (8 files)
+[sec] Novo Nordisk FY2019 20-F: no XBRL instance (21 files)
+[sec] Novo Nordisk FY2020 20-F: no XBRL instance (9 files)
+[sec] Novo Nordisk FY2021 20-F: revenue 140800000000.0 DKK, US 63009000000.0 (country:US), R&D 17772000000.0
+[sec] Novo Nordisk FY2022 20-F: revenue 176954000000.0 DKK, US 84656000000.0 (country:US), R&D 24047000000.0
+[sec] Novo Nordisk FY2023 20-F: revenue 232261000000.0 DKK, US 127534000000.0 (country:US), R&D 32443000000.0
+[sec] Novo Nordisk FY2024 20-F: revenue 290403000000.0 DKK, US 167402000000.0 (country:US), R&D 48062000000.0
+[sec] Novo Nordisk FY2025 20-F: revenue 309064000000.0 DKK, US 173166000000.0 (country:US), R&D 52039000000.0
+[sec] Takeda FY2018 20-F: revenue 2097224000000.0 JPY, US None (None), R&D 368298000000.0
+[sec] Takeda FY2019 20-F: revenue 3291188000000.0 JPY, US None (None), R&D 492381000000.0
+[sec] Takeda FY2020 20-F: revenue 3197812000000.0 JPY, US None (None), R&D 455833000000.0
+[sec] Takeda FY2021 20-F: revenue 3569006000000.0 JPY, US None (None), R&D 526087000000.0
+[sec] Takeda FY2022 20-F: revenue 4027478000000.0 JPY, US None (None), R&D 633325000000.0
+[sec] Takeda FY2023 20-F: revenue 4263762000000.0 JPY, US None (None), R&D 729924000000.0
+[sec] Takeda FY2024 20-F: revenue 4581551000000.0 JPY, US None (None), R&D 730227000000.0
+[sec] Takeda FY2025 20-F: revenue 4505720000000.0 JPY, US None (None), R&D 675924000000.0
+[sec_panel] wrote sec_panel.csv.gz: 167 rows, columns ['company', 'hq', 'fiscal_year', 'period_end', 'form', 'revenue', 'revenue_concept', 'currency', 'rd', 'rd_concept', 'cost_of_sales', 'cost_of_sales_concept', 'net_income', 'net_income_concept', 'rd_ex_iprd', 'us_revenue', 'us_concept', 'us_member', 'us_concept_total', 'iprd', 'iprd_concept']
+[sec_geography] wrote sec_geography.csv.gz: 707 rows, columns ['company', 'fiscal_year', 'concept', 'axis', 'member', 'value', 'concept_total', 'currency']
+[sec_filings] wrote sec_filings.csv.gz: 167 rows, columns ['company', 'fiscal_year', 'form', 'period_end', 'accession', 'instance']
+== sec done in 150 s
+failed: []
