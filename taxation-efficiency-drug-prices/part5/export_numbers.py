@@ -370,7 +370,10 @@ def main() -> None:
     section("6. Why medicines run short: reasons reported by companies")
     seg = r21[r21.find("Motivos das ruturas"):][:700]
     c21 = {k: int(v) for k, v in re.findall(r"(Fabrico da substância ativa|Aumento da procura|Inesperado ou desastres naturais|Regulamentar|Qualidade|Logístico|Comercial|Preço|Fabrico) (\d+)", seg)}
-    print(f"2021 (shortages notified, counts): {c21}; manufacturing share {(c21.get('Fabrico', 0) + c21.get('Fabrico da substância ativa', 0)) / sum(c21.values()):.0%}")
+    n21s = sum(c21.values())
+    print(f"2021 (shortages notified, counts): {c21}; total {n21s}; manufacturing share "
+          f"{(c21.get('Fabrico', 0) + c21.get('Fabrico da substância ativa', 0)) / n21s:.0%}")
+    print("  2021 as shares: " + ", ".join(f"{k} {100 * v / n21s:.1f}%" for k, v in c21.items()))
     # 2024 and 2025: pie charts; shares read off the charts, checked against the percentages printed.
     reasons = {2024: (r24, {"Fabrico": 57.44, "Aumento da procura": 21.17, "Logístico": 6.01, "Comercial": 4.94,
                             "Qualidade": 4.15, "Fabrico da substância ativa": 3.07, "Regulamentar": 2.47, "Preço": 0.47,
