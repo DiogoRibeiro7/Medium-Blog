@@ -20,8 +20,9 @@ Sources
                         the charts of the published PDF by the position of each label.
     euripid_pli_2017    EURIPID / Eurostat study (2018): price level indices of pharmaceutical products
                         by country, all medicines and by ATC group, 2015-2017.
-    eurostat_*          Eurostat: population on 1 January and GDP per head in purchasing power
-                        standards (EU27 = 100).
+    eurostat_*          Eurostat: population on 1 January, GDP per head and actual individual
+                        consumption per head in purchasing power standards (EU27 = 100), and the price
+                        level index of actual individual consumption.
 
     python fetch.py --out data
 """
@@ -298,23 +299,39 @@ def fetch_euripid(out: Path) -> None:
 
 # -------------------------------------------------------------------------------------------- Eurostat
 def jsonstat(js: dict) -> pd.DataFrame:
-    geo = js["dimension"]["geo"]["category"]
-    tim = js["dimension"]["time"]["category"]["index"]
-    ng, nt = len(geo["index"]), len(tim)
+    """JSON-stat 2.0 (Eurostat) to a long table with one column per dimension of size > 1."""
+    ids, sizes = js["id"], js["size"]
+    cats = [js["dimension"][k]["category"] for k in ids]
+    codes = [sorted(c["index"], key=c["index"].get) for c in cats]
+    strides = [1] * len(ids)
+    for i in range(len(ids) - 2, -1, -1):
+        strides[i] = strides[i + 1] * sizes[i + 1]
     rows = []
-    for g, gi in geo["index"].items():
-        for t, ti in tim.items():
-            v = js["value"].get(str(gi * nt + ti))
-            if v is not None:
-                rows.append({"geo": g, "name": geo["label"][g], "time": t, "value": v})
-    return pd.DataFrame(rows)
+    for flat, v in js["value"].items():
+        flat = int(flat)
+        rec = {}
+        for k, cs, st, n in zip(ids, codes, strides, sizes):
+            code = cs[(flat // st) % n]
+            if n > 1 or k in ("geo", "time"):
+                rec[k] = code
+        rec["value"] = v
+        rows.append(rec)
+    df = pd.DataFrame(rows)
+    df["name"] = df["geo"].map(js["dimension"]["geo"]["category"]["label"])
+    return df.sort_values(list(df.columns.drop(["value", "name"]))).reset_index(drop=True)
 
 
 def fetch_eurostat(out: Path) -> None:
-    for name, code, query in (("eurostat_population", "tps00001", "sinceTimePeriod=2023"),
-                              ("eurostat_gdp_pps", "tec00114", "sinceTimePeriod=2022&na_item=VI_PPS_EU27_2020_HAB")):
-        js = get(URLS["eurostat"].format(code=code, query=query)).json()
-        df = jsonstat(js)
+    # Population on 1 January; GDP per head in PPS (EU27 = 100); actual individual consumption (AIC) per
+    # head in PPS and the AIC price level index (both EU27 = 100). AIC per head is less distorted than
+    # GDP per head by multinational accounting in Ireland and Luxembourg.
+    for name, code, query in (
+            ("eurostat_population", "tps00001", "sinceTimePeriod=2023"),
+            ("eurostat_gdp_pps", "tec00114", "sinceTimePeriod=2022"),
+            ("eurostat_aic_pps", "prc_ppp_ind",
+             "sinceTimePeriod=2023&ppp_cat=A01&na_item=VI_PPS_EU27_2020_HAB&na_item=PLI_EU27_2020")):
+        df = jsonstat(get(URLS["eurostat"].format(code=code, query=query)).json())
+        log(f"[{name}] {len(df)} rows; {df.drop(columns=['value', 'name']).nunique().to_dict()}")
         save(df, out, name)
 
 
