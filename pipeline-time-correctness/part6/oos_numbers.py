@@ -38,6 +38,7 @@ P5 = [dict(content_check=c, holidays=h, fallback=f)
       for c, h, f in itertools.product((False, True), (False, True), ("level", "last_week"))]
 GRADED = [dict(holidays=True, fallback="last_week", graded=t) for t in TAUS]
 WEEKDAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+BREAKDOWN = ["2024-02-06", "2025-12-27"]   # out-of-sample mornings shown date by date in O10
 
 
 def name(v: dict) -> str:
@@ -75,6 +76,22 @@ def run_job(job):
             pr, rr = pipe.reproduce(d.date())
             ps, rs = pipe.stored(d.date())
             mismatch += not (P.same(pr, ps) and P.same(rr, rs))
+    parts = {}
+    if period == "out":                         # the mornings shown date by date
+        for d in BREAKDOWN:
+            run = pd.Timestamp(d).date()
+            as_of = P.run_ts(run)
+            head = pipe.report_sql.split("past_runs as (")[0].rstrip().rstrip(",")
+            est = pipe.con.execute(head + "\nselect * from est order by d", {"as_of": as_of}).df()
+            gw = None
+            if v.get("graded") is not None:
+                gw = pipe.con.execute(head + "\nselect gfile.q, gfile.observed, gfile.expected, gfile.r, gw.w "
+                                      "from gfile join gw on gw.q = gfile.q order by gfile.q", {"as_of": as_of}).df()
+            pick = pipe.con.execute(pipe.profile_sql.split("grid as (")[0].rstrip().rstrip(",")
+                                    + "\nselect d, weekday from pick order by weekday, d", {"as_of": as_of}).df()
+            prof = pipe.con.execute("select weekday, age, share from core.delay_profile where computed_at = ?",
+                                    [as_of]).df()
+            parts[d] = (est, gw, pick, prof)
     extra = None
     if period == "out" and v == P5[0]:          # the source itself, from the landing table
         extra = pipe.con.execute("""
@@ -85,7 +102,7 @@ def run_job(job):
                 left join n b on b.p = a.p - 1 and b.d = a.d
                 group by a.p)
             select p, isodow(p) as weekday, change from pairs order by p""").df()
-    return period, tuple(sorted(v.items())), pipe.code_version, rep, mismatch, t1 - t0, time.time() - t1, extra
+    return period, tuple(sorted(v.items())), pipe.code_version, rep, mismatch, t1 - t0, time.time() - t1, extra, parts
 
 
 def evaluate(rep: pd.DataFrame, final: pd.Series, start: pd.Timestamp) -> pd.DataFrame:
@@ -114,7 +131,7 @@ def main() -> None:
     with ProcessPoolExecutor(max_workers=os.cpu_count() or 1) as ex:
         results = {(r[0], r[1]): r[2:] for r in ex.map(run_job, jobs)}
     key = lambda v: tuple(sorted(v.items()))  # noqa: E731
-    for (period, k), (code, rep, mm, t_run, t_rep, _) in results.items():
+    for (period, k), (code, rep, mm, t_run, t_rep, _, _) in results.items():
         print(f"{period} {name(dict(k))}: replay {t_run:.0f} s, reproduction {t_rep:.0f} s", file=sys.stderr)
     ev = {(per, key(v)): evaluate(results[(per, key(v))][1], final, (IS if per == "in" else OOS)["eval_from"])
           for per in ("in", "out") for v in P5 + GRADED}
@@ -234,6 +251,26 @@ def main() -> None:
             print(f"    {row.run_date.date()} {WEEKDAYS[row.run_date.dayofweek]} {100 * row.err:+.1f}% "
                   f"(nowcast {row.nowcast_7d:,.0f}, final {int(row.final_7d):,}){' - ' + ', '.join(tags) if tags else ''}")
 
+
+    section("O10. Two out-of-sample mornings date by date")
+    for d in BREAKDOWN:
+        print(f"run of {d}:")
+        for v in (P5[0], P5[7], GRADED[TAUS.index(best_tau)]):
+            est, gw, pick, prof = results[("out", key(v))][6][d]
+            age = est.age_eff if "age_eff" in est else est.age
+            fin = [int(final.get(pd.Timestamp(x), 0)) for x in est.d]
+            ms = est.missing_share if "missing_share" in est else pd.Series([0.0] * len(est))
+            print(f"  {name(v)}: nowcast {est.nowcast.sum():,.0f}, final {sum(fin):,}")
+            for x, wdy, a, k, n, f, m_ in zip(est.d, est.weekday, age, est.known, est.nowcast, fin, ms):
+                print(f"    {pd.Timestamp(x):%a %d %b} (type {int(wdy)}, age {int(a)}): in hand {int(k):,}, "
+                      f"nowcast {n:,.0f}, final {f:,}" + (f", share taken off {m_:.2f}" if m_ else ""))
+            mondays = ", ".join(f"{pd.Timestamp(x).date()}" for x in pick[pick.weekday == 1].d)
+            s1 = prof[(prof.weekday == 1) & (prof.age == 1)].share.iloc[0]
+            print(f"    profile: Monday-type dates used {mondays}; expected share of a Monday one day old {s1:.3f}")
+            if gw is not None:
+                last = gw[pd.to_datetime(gw.q) >= pd.Timestamp(d) - pd.Timedelta(days=6)]
+                print("    files: " + ", ".join(f"{pd.Timestamp(q):%d %b} added {o:,.0f} of {e:,.0f} expected (w {w:.2f})"
+                                               for q, o, e, w in zip(last.q, last.observed, last.expected, last.w)))
 
     # the two small tables figures.py draws from
     out = Path(__file__).resolve().parent / "results"

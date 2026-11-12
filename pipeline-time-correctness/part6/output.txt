@@ -155,3 +155,65 @@ O9. The ten worst out-of-sample mornings of the two best Part 5-style versions
     2026-09-11 Fri +36.6% (nowcast 372, final 272)
     2024-01-30 Tue +36.4% (nowcast 7,888, final 5,783)
     2025-12-25 Thu +36.2% (nowcast 8,396, final 6,165)
+
+==============================================================================
+O10. Two out-of-sample mornings date by date
+==============================================================================
+run of 2024-02-06:
+  Part 4: nowcast 8,215, final 4,802
+    Tue 30 Jan (type 2, age 7): in hand 945, nowcast 960, final 948
+    Wed 31 Jan (type 3, age 6): in hand 917, nowcast 951, final 939
+    Thu 01 Feb (type 4, age 5): in hand 818, nowcast 876, final 846
+    Fri 02 Feb (type 5, age 4): in hand 619, nowcast 929, final 672
+    Sat 03 Feb (type 6, age 3): in hand 45, nowcast 406, final 74
+    Sun 04 Feb (type 7, age 2): in hand 43, nowcast 275, final 61
+    Mon 05 Feb (type 1, age 1): in hand 781, nowcast 3,818, final 1,262
+    profile: Monday-type dates used 2023-12-18, 2023-12-25, 2024-01-01, 2024-01-08; expected share of a Monday one day old 0.205
+  content check + holidays, last-week fallback: nowcast 7,498, final 4,802
+    Tue 30 Jan (type 2, age 7): in hand 945, nowcast 959, final 948
+    Wed 31 Jan (type 3, age 6): in hand 917, nowcast 951, final 939
+    Thu 01 Feb (type 4, age 5): in hand 818, nowcast 876, final 846
+    Fri 02 Feb (type 5, age 4): in hand 619, nowcast 929, final 672
+    Sat 03 Feb (type 6, age 3): in hand 45, nowcast 98, final 74
+    Sun 04 Feb (type 7, age 2): in hand 43, nowcast 85, final 61
+    Mon 05 Feb (type 1, age 1): in hand 781, nowcast 3,601, final 1,262
+    profile: Monday-type dates used 2023-12-18, 2024-01-08; expected share of a Monday one day old 0.217
+  graded check (tau 0.1) + holidays + last-week: nowcast 7,498, final 4,802
+    Tue 30 Jan (type 2, age 7): in hand 945, nowcast 959, final 948
+    Wed 31 Jan (type 3, age 6): in hand 917, nowcast 951, final 939
+    Thu 01 Feb (type 4, age 5): in hand 818, nowcast 876, final 846
+    Fri 02 Feb (type 5, age 4): in hand 619, nowcast 929, final 672
+    Sat 03 Feb (type 6, age 3): in hand 45, nowcast 98, final 74
+    Sun 04 Feb (type 7, age 2): in hand 43, nowcast 85, final 61
+    Mon 05 Feb (type 1, age 1): in hand 781, nowcast 3,601, final 1,262
+    profile: Monday-type dates used 2023-12-18, 2024-01-08; expected share of a Monday one day old 0.217
+    files: 31 Jan added 1,162 of 1,943 expected (w 1.00), 01 Feb added 989 of 1,209 expected (w 1.00), 02 Feb added 845 of 1,027 expected (w 1.00), 03 Feb added 797 of 1,001 expected (w 1.00), 04 Feb added 0 of 0 expected (w 0.00), 05 Feb added 0 of 1 expected (w 0.00), 06 Feb added 1,160 of 445 expected (w 1.00)
+run of 2025-12-27:
+  Part 4: nowcast 3,043, final 3,796
+    Sat 20 Dec (type 6, age 7): in hand 117, nowcast 118, final 120
+    Sun 21 Dec (type 7, age 6): in hand 49, nowcast 50, final 50
+    Mon 22 Dec (type 1, age 5): in hand 1,930, nowcast 1,962, final 2,021
+    Tue 23 Dec (type 2, age 4): in hand 895, nowcast 913, final 1,337
+    Wed 24 Dec (type 3, age 3): in hand 0, nowcast 0, final 89
+    Thu 25 Dec (type 4, age 2): in hand 0, nowcast 0, final 102
+    Fri 26 Dec (type 5, age 1): in hand 0, nowcast 0, final 77
+    profile: Monday-type dates used 2025-11-03, 2025-11-10, 2025-11-17, 2025-11-24; expected share of a Monday one day old 0.567
+  content check + holidays, last-week fallback: nowcast 3,357, final 3,796
+    Sat 20 Dec (type 6, age 5): in hand 117, nowcast 118, final 120
+    Sun 21 Dec (type 7, age 4): in hand 49, nowcast 52, final 50
+    Mon 22 Dec (type 1, age 3): in hand 1,930, nowcast 2,002, final 2,021
+    Tue 23 Dec (type 2, age 2): in hand 895, nowcast 1,035, final 1,337
+    Wed 24 Dec (type 3, age 1): in hand 0, nowcast 0, final 89
+    Thu 25 Dec (type 7, age 0): in hand 0, nowcast 75, final 102
+    Fri 26 Dec (type 7, age 0): in hand 0, nowcast 75, final 77
+    profile: Monday-type dates used 2025-11-03, 2025-11-10, 2025-11-17, 2025-11-24; expected share of a Monday one day old 0.567
+  graded check (tau 0.1) + holidays + last-week: nowcast 5,993, final 3,796
+    Sat 20 Dec (type 6, age 7): in hand 117, nowcast 125, final 120, share taken off 0.06
+    Sun 21 Dec (type 7, age 6): in hand 49, nowcast 59, final 50, share taken off 0.14
+    Mon 22 Dec (type 1, age 5): in hand 1,930, nowcast 2,108, final 2,021, share taken off 0.07
+    Tue 23 Dec (type 2, age 4): in hand 895, nowcast 1,958, final 1,337, share taken off 0.52
+    Wed 24 Dec (type 3, age 3): in hand 0, nowcast 1,594, final 89, share taken off 0.95
+    Thu 25 Dec (type 7, age 2): in hand 0, nowcast 75, final 102, share taken off 0.43
+    Fri 26 Dec (type 7, age 1): in hand 0, nowcast 75, final 77
+    profile: Monday-type dates used 2025-11-03, 2025-11-10, 2025-11-17, 2025-11-24; expected share of a Monday one day old 0.567
+    files: 21 Dec added 0 of 0 expected (w 1.00), 22 Dec added 0 of 0 expected (w 1.00), 23 Dec added 1,793 of 2,024 expected (w 1.00), 24 Dec added 1,730 of 1,900 expected (w 1.00), 25 Dec added 39 of 1,789 expected (w 0.02), 26 Dec added 0 of 821 expected (w 0.00), 27 Dec added 0 of 236 expected (w 0.00)
