@@ -199,7 +199,9 @@ def main() -> None:
     df["rank_out"] = df["out"].rank().astype(int)
     for _, r in df.sort_values("rank_out").iterrows():
         print(f"  out {r.rank_out:2d} (in {r.rank_in:2d})  {r.version:48s} in {pct(r['in'])}, out {pct(r['out'])}")
-    print(f"Spearman correlation of the two rankings: {df['rank_in'].corr(df['rank_out'], method='spearman'):.2f}")
+    # Spearman's correlation is Pearson's on the ranks; computed this way it needs no scipy.
+    spearman = df["rank_in"].rank().corr(df["rank_out"].rank())
+    print(f"Spearman correlation of the two rankings: {spearman:.2f}")
 
     section("O5. By year and by weekday, out of sample (mean absolute error)")
     shown = [P5[0], P5[1], P5[7]] + [GRADED[TAUS.index(best_tau)]]
