@@ -5,6 +5,7 @@ Public reproducibility companion for a series on Medium by Diogo Ribeiro. The ed
 - **Part 1 — the premises of "taxation is theft", and the one that data can test** ([`part1/`](part1)). A linear public-goods economy. Voluntary contributions with imperfect conditional cooperation (Fischbacher and Gächter 2010), calibrated to the first-round and tenth-round contribution levels summarised by Ledyard (1995) and by Andreoni (1995) from Isaac and Walker (1988), with a sensitivity analysis over the parts the calibration does not identify; costly peer punishment calibrated to two results of Fehr and Gächter (2000) and checked out of sample against the 50-round result of Gächter, Renner and Sefton (2008); antisocial punishment (Herrmann, Thöni and Gächter 2008); a tax with a marginal cost of public funds from Browning (1976) and Ballard, Shoven and Whalley (1985) and a share of revenue that never reaches the good; the break-even frontier between voluntary provision and the tax; and a map of the group sizes and returns that laboratory studies have covered against a national public good.
 - **Part 2 — how much more the US pays for medicines, and how the answer depends on the method** ([`part2/`](part2)). Medicare Part D against the French Assurance Maladie in 2024, for tablets and capsules dispensed by retail pharmacies, molecule by molecule: 432 molecules covering $121.9 bn of Part D spending. The molecules are sorted into single-source (no generic competition in either country), multi-source (generics in both) and mixed baskets, and compared with Laspeyres, Paasche, Fisher and Jevons indices, with a bootstrap over molecules. The script shows why a brand-against-brand comparison misleads, how an all-drug index moves with the generic share of units alone, and how the single-source gap responds to the French dispensing fee, the exchange rate, the basket threshold, the oral-solid classification, outliers, the largest molecules, pharmacy acquisition prices (NADAC) and confidential rebates on both sides. It then sets the Medicare negotiated prices of the oral drugs selected for 2026 and 2027 against 2024 acquisition prices and current French prices.
 - **Part 3 — how a small single buyer sets the price of a medicine** ([`part3/`](part3)). Portugal does not publish its prices presentation by presentation, so the script rebuilds the rule that sets them: Infarmed's external reference pricing formula (average ex-factory price in Spain, France, Italy and Belgium, adjusted for strength and pack size, then the regulated margins), as implemented in Infarmed's own 2026 calculation form. It feeds the rule the public price lists of the four countries (France's manufacturer price is backed out of the retail price; 99 percent of original brands invert to a whole-cent price), applies it to the centrally authorised brands with no generic competition in France (French 2024 volumes as weights), measures how far the Portuguese ceiling sits from each reference country and how much the choice of rule and countries moves it, and checks the rebuilt rule against the only Portuguese prices published by presentation, the original brands in Infarmed's list of homogeneous groups. It also reads Infarmed's tables of exceptional price revisions and the SNS ambulatory aggregates.
+- **Part 4 — what Portugal's wait for new medicines is made of** ([`part4/`](part4)). Tests whether the time from EU authorisation to availability in Portugal is explained by market size, distance from the centre of Europe or price, using European comparisons only. Across 29 European countries (W.A.I.T. 2025), the time to availability is set against population, the distance from each capital to Brussels, actual individual consumption per head and the EURIPID price level of medicines, with bootstrap intervals, leave-one-out fits, Portugal's out-of-sample prediction and groups of countries that resemble Portugal on one dimension at a time. Portugal's own pipeline is then split into the time before the company files and the time after, from Infarmed's 2020–2025 access report against the European averages of the CRA Access Hurdles Portal, and the time after filing is decomposed process by process from Infarmed's public process tracker (SIATS) into days attributed to Infarmed, to the company and to price negotiation, set against the legal deadlines and split by company size, orphan status and oncology.
 
 ## Running
 
@@ -21,6 +22,9 @@ python figures.py
 cd ../part3
 python reference_numbers.py > output.txt  # about twenty seconds; reads data/ and ../part2/data
 python figures.py
+cd ../part4
+python access_numbers.py > output.txt     # a few seconds; reads data/, writes figure_data.json
+python figures.py
 cd ..
 python -m unittest discover -s tests      # tests of the shared tools
 ```
@@ -31,7 +35,7 @@ python -m unittest discover -s tests      # tests of the shared tools
 
 `erp.py` holds Portugal's reference pricing rule and the conversions it needs: the pack-size factor and the strength and pack adjustment of Infarmed's form, the average (ambulatory) and lowest (hospital) rules, the six retail-price tiers and their inverse, the factors that turn Spanish and Italian retail prices into ex-factory prices, the French margins and their inverse, a molecule-name key that works across five languages, a strength parser, and the choice of the most similar reference presentation. `part3/countries.py` turns each country's file into the same table.
 
-Parts 2 and 3 read public files that `partN/fetch.py` downloads and reduces. A second workflow (`.github/workflows/taxation-efficiency-drug-prices-data.yml`) runs it on a part branch, or on demand, and commits the reduced files to `partN/data` with a log of what each download returned, so the analysis runs from a fixed snapshot.
+Parts 2 to 4 read public files that `partN/fetch.py` downloads and reduces. A second workflow (`.github/workflows/taxation-efficiency-drug-prices-data.yml`) runs it on a part branch, or on demand, and commits the reduced files to `partN/data` with a log of what each download returned, so the analysis runs from a fixed snapshot.
 
 Set `OMP_NUM_THREADS=1` and `OPENBLAS_NUM_THREADS=1` to reproduce the committed output exactly.
 
@@ -63,6 +67,17 @@ A GitHub Actions workflow (`.github/workflows/taxation-efficiency-drug-prices.ym
 
   The rule itself comes from Decreto-Lei 97/2015, Portaria 195-C/2015 and, for 2026, Portaria 394/2025/1 (reference countries; retail prices up to 30 euros exempt from the annual revision; cuts above that capped at 20 percent).
 
+- **Part 4** uses the snapshot in `part4/data`, taken on 12 November 2026:
+  - Infarmed, *Tracker de Processos* (SIATS public process search): every reimbursement and hospital prior-evaluation process for a new active substance and for a new indication that was open on 1 January 2026 or was submitted or concluded after it, with the dates of authorisation, submission, start of assessment, conclusion and access, and the days the tracker attributes to Infarmed, to the company and to negotiation. Tracker updated 12 November 2026.
+  - Infarmed, *Acesso a novos medicamentos 2020-2025* (May 2026), kept as layout text: filing rates and mean times for the 282 new active substances authorised centrally in 2020–2025.
+  - Charles River Associates for EFPIA, *European Access Hurdles Portal: results from the fourth year of data collection* (May 2026), kept as layout text: European averages of the time to file and the time to a reimbursement decision.
+  - EFPIA / IQVIA, *Patients W.A.I.T. Indicator 2025 survey* (medicines authorised 2021–2024, availability on 5 January 2026) and the 2024 survey: number of medicines available, mean and median time to availability by country for all medicines, oncology and orphans, read off the charts of the PDF by the position of each country label. The EU27 means of the values read this way equal the averages printed in the report (597, 655 and 614 days).
+  - EMA, list of centrally authorised medicines (authorisation date, orphan status, ATC code), joined to the tracker by brand name.
+  - EURIPID / Gesundheit Österreich, *Purchasing power parities of pharmaceutical products* (2018): price level indices of medicines by country, 2015–2017, all medicines and by ATC main group.
+  - Eurostat: population on 1 January (`tps00001`), GDP per head in PPS (`tec00114`), and actual individual consumption per head in PPS with its price level index (`prc_ppp_ind`).
+
+  The legal deadlines are those of Portaria 195-A/2015 (decision within 75 days, the clock stopping while the company answers; contract negotiation within 30 working days), which still govern processes opened before Decreto-Lei 118/2026 came into force on 1 July 2026.
+
 ## References
 
 Andreoni, J. (1995). Cooperation in public-goods experiments: kindness or confusion? *American Economic Review*, 85(4), 891–904.
@@ -75,17 +90,29 @@ Centers for Medicare & Medicaid Services (2024). Negotiating lower drug prices w
 
 Centers for Medicare & Medicaid Services (2026). Medicare Part D Spending by Drug: methodology, data years 2020–2024.
 
+Charles River Associates (2026). *European Access Hurdles Portal: results from the fourth year of data collection*. Final report for EFPIA, May 2026.
+
+Cockburn, I. M., Lanjouw, J. O., & Schankerman, M. (2016). Patents and the global diffusion of new drugs. *American Economic Review*, 106(1), 136–164.
+
 Congressional Budget Office (2018). Options for Reducing the Deficit: 2019 to 2028. Option 54735: require manufacturers to pay a minimum rebate on drugs covered under Part D.
 
 Congressional Budget Office (2022). *Prescription Drugs: Spending, Use, and Prices*. Publication 57050.
 
 Danzon, P. M., & Chao, L.-W. (2000). Cross-national price differences for pharmaceuticals: how large, and why? *Journal of Health Economics*, 19(2), 159–195.
 
+Danzon, P. M., Wang, Y. R., & Wang, L. (2005). The impact of price regulation on the launch delay of new drugs: evidence from twenty-five major markets in the 1990s. *Health Economics*, 14(3), 269–292.
+
+Decreto-Lei n.º 97/2015, de 1 de junho. *Diário da República*, 1.ª série, n.º 105.
+
+Decreto-Lei n.º 118/2026, de 17 de junho. *Diário da República*, 1.ª série.
+
 Diewert, W. E. (1976). Exact and superlative index numbers. *Journal of Econometrics*, 4(2), 115–145.
 
 DREES (2026). Innovation thérapeutique et régulation des prix : les déterminants de la hausse des dépenses de médicaments en France (2016-2024). M. Cadillac & É. Maugendre, *Les Dossiers de la DREES*, 139.
 
-Decreto-Lei n.º 97/2015, de 1 de junho. *Diário da República*, 1.ª série, n.º 105.
+EFPIA & IQVIA (2026). *EFPIA Patients W.A.I.T. Indicator 2025 survey*. May 2026.
+
+EURIPID & Gesundheit Österreich (2018). *Purchasing power parities of pharmaceutical products: final report*. Vienna.
 
 Fehr, E., & Gächter, S. (2000). Cooperation and punishment in public goods experiments. *American Economic Review*, 90(4), 980–994.
 
@@ -97,17 +124,27 @@ Gächter, S., Renner, E., & Sefton, M. (2008). The long-run benefits of punishme
 
 Herrmann, B., Thöni, C., & Gächter, S. (2008). Antisocial punishment across societies. *Science*, 319(5868), 1362–1367.
 
+Infarmed (2025). Circular Informativa n.º 132/CD/100.20.200, de 17 de novembro de 2025: revisão anual de preços 2026. Formulário de cálculo e informações para cálculo de PVP de medicamentos (margens e fatores).
+
+Infarmed (2026). *Acesso a novos medicamentos 2020-2025*. Relatório, maio de 2026.
+
+Infarmed (2026). Circular Informativa n.º 044/CD/100.20.200, de 30 de abril de 2026: monitorização de tempos de avaliação de financiamento de medicamentos (Tracker de Processos).
+
 Isaac, R. M., & Walker, J. M. (1988). Group size effects in public goods provision: the voluntary contributions mechanism. *Quarterly Journal of Economics*, 103(1), 179–199.
 
 Isaac, R. M., Walker, J. M., & Williams, A. W. (1994). Group size and the voluntary provision of public goods: experimental evidence utilizing large groups. *Journal of Public Economics*, 54(1), 1–36.
 
+Kyle, M. K. (2007). Pharmaceutical price controls and entry strategies. *Review of Economics and Statistics*, 89(1), 88–99.
+
 Ledyard, J. O. (1995). Public goods: a survey of experimental research. In J. H. Kagel & A. E. Roth (Eds.), *The Handbook of Experimental Economics* (pp. 111–194). Princeton University Press.
+
+Maini, L., & Pammolli, F. (2023). Reference pricing as a deterrent to entry: evidence from the European pharmaceutical market. *American Economic Journal: Microeconomics*, 15(2), 345–383.
 
 Milliman (2026). Medicare drug price negotiation: navigating the next wave of maximum fair prices. 12 January 2026.
 
-Infarmed (2025). Circular Informativa n.º 132/CD/100.20.200, de 17 de novembro de 2025: revisão anual de preços 2026. Formulário de cálculo e informações para cálculo de PVP de medicamentos (margens e fatores).
-
 Mulcahy, A. W., Schwam, D., & Lovejoy, S. L. (2024). *International Prescription Drug Price Comparisons: Estimates Using 2022 Data*. RAND Corporation, RR-A788-3.
+
+Portaria n.º 195-A/2015, de 30 de junho. *Diário da República*, 1.ª série, n.º 125.
 
 Portaria n.º 195-C/2015, de 30 de junho. *Diário da República*, 1.ª série, n.º 125.
 

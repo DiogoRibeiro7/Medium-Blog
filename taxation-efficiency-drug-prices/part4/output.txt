@@ -1,0 +1,244 @@
+
+==============================================================================================
+1. Data and coverage
+==============================================================================================
+W.A.I.T. 2025: 168 medicines authorised centrally in 2021-2024, availability on 5 January 2026.
+  countries with a mean time to availability: 29 of the 30 EU/EEA/Swiss countries kept
+EURIPID price level indices 2017 (all medicines): 24 of them; ATC group L: 20
+Eurostat: population 1 January 2025, AIC and GDP per head in PPS 2024 for 30 of them
+Infarmed process tracker (SIATS), last updated 12/11/2026: 319 processes, 162 for a new active substance and 157 for a new indication
+  new active substances: 151 medicines; centrally authorised (found in the EMA list): 143 processes, 132 medicines
+  conclusion year of concluded processes (new active substances):
+    {2021.0: 1, 2024.0: 3, 2025.0: 11, 2026.0: 65}
+
+==============================================================================================
+2. Portugal in the European ranking (W.A.I.T. 2025)
+==============================================================================================
+EU27 averages printed by the report: time to availability 597 days (oncology 655, orphans 614); rate of availability 45% (oncology 51%, orphans 43%)
+  the same averages from the values read off the charts: 597, 655, 614
+Portugal: mean 839 days, median 784; available 89 of 168 (53%); dates submitted 47
+  rank by mean time among the 26 EU countries with a mean: 25 (1 = fastest); slower: Romania
+  gap to the EU27 average: 242 days
+  medicines available: Portugal 89, EU27 mean 76.3; rank 9 of 27
+  oncology: Portugal 926 days against EU27 655; orphans: 910 against 614
+  W.A.I.T. 2024 (medicines of 2020-2023): Portugal 840 days
+Fastest and slowest EU countries (mean days):
+    Germany         158   available  156
+    Austria         363   available  143
+    Denmark         369   available   93
+    Italy           441   available  133
+    Finland         448   available   74
+    Sweden          459   available   82
+    Netherlands     493   available   91
+    Luxembourg      507   available  112
+    Hungary         514   available   35
+    Cyprus          528   available   66
+    Spain           537   available  116
+    Belgium         552   available   82
+    Slovenia        596   available   85
+    Latvia          619   available   25
+    France          633   available  100
+    Greece          641   available   69
+    Bulgaria        650   available   77
+    Czechia         659   available   84
+    Ireland         685   available   53
+    Estonia         707   available   38
+    Poland          714   available   77
+    Croatia         734   available   58
+    Slovakia        751   available   35
+    Lithuania       821   available   37
+    Portugal        839   available   89
+    Romania        1110   available   28
+
+==============================================================================================
+3. Size, distance, income and price across countries
+==============================================================================================
+Countries with a mean time: 29 (EU27 without Malta, plus Iceland, Norway and Switzerland)
+Variables: population 2025 (log10), distance from the capital to Brussels (km), actual individual consumption per head in PPS 2024 (EU27 = 100), GDP per head in PPS 2024, EURIPID price level of medicines 2017 (EURIPID 20 = 100), all medicines and ATC group L (cancer and immune medicines).
+Portugal: population 11.4 million, 1713 km from Brussels, AIC per head 85, GDP per head 82, price level 96.9 (ATC L 84.7)
+  sample means: price level 107.1 (n=24), ATC L 109.3 (n=20), AIC 97, distance 1154 km, mean time 582 days
+  ATC L price level, lowest first: SK 77, EL 82, LV 84, PT 85, HU 89, LT 95
+
+Correlation with the mean time to availability and with the number of medicines available
+  (Pearson r with a 95% bootstrap interval over countries; Spearman rank correlation)
+  size (log population)        n=29  time r=-0.12 [-0.48, +0.23]  rho=-0.12   available r=+0.49
+  distance to Brussels         n=29  time r=+0.31 [+0.05, +0.55]  rho=+0.34   available r=-0.42
+  AIC per head                 n=29  time r=-0.56 [-0.74, -0.41]  rho=-0.61   available r=+0.54
+  GDP per head                 n=29  time r=-0.35 [-0.69, -0.11]  rho=-0.60   available r=+0.29
+  price level, all medicines   n=24  time r=-0.70 [-0.85, -0.52]  rho=-0.69   available r=+0.43
+  price level, ATC L           n=20  time r=-0.73 [-0.86, -0.56]  rho=-0.75   available r=+0.55
+  partial correlation, price level with time holding AIC per head fixed: -0.53 (n=24); AIC with time holding price fixed: -0.15
+  correlation of the price level with AIC per head: +0.67
+
+Regressions of the mean time (days) on each set of variables; Portugal's fitted value, residual,
+the rank of its residual (1 = most delayed relative to the model) and its prediction when the model
+is fitted without Portugal.
+  size                               n=29  R2 0.02  [lpop -39.38]
+                                     Portugal fitted   575, residual  +264, rank  2 of 29; predicted without Portugal   565 (actual 839); sample mean 582
+  distance                           n=29  R2 0.10  [dist_km +0.09]
+                                     Portugal fitted   631, residual  +208, rank  3 of 29; predicted without Portugal   618 (actual 839); sample mean 582
+  size + distance                    n=29  R2 0.10  [lpop -5.82, dist_km +0.09]
+                                     Portugal fitted   629, residual  +210, rank  2 of 29; predicted without Portugal   612 (actual 839); sample mean 582
+  size + distance + AIC              n=29  R2 0.33  [lpop -40.00, dist_km +0.01, aic -5.69]
+                                     Portugal fitted   646, residual  +193, rank  2 of 29; predicted without Portugal   630 (actual 839); sample mean 582
+  price + AIC                        n=24  R2 0.50  [pli -3.54, aic -1.57]
+                                     Portugal fitted   644, residual  +195, rank  2 of 24; predicted without Portugal   632 (actual 839); sample mean 592
+  size + distance + AIC + price      n=24  R2 0.56  [lpop -27.59, dist_km +0.06, aic +0.36, pli -4.32]
+                                     Portugal fitted   656, residual  +183, rank  2 of 24; predicted without Portugal   637 (actual 839); sample mean 592
+  size + distance + AIC + price L    n=20  R2 0.62  [lpop -40.46, dist_km +0.01, aic -2.19, pli_L -3.60]
+                                     Portugal fitted   666, residual  +173, rank  2 of 20; predicted without Portugal   630 (actual 839); sample mean 555
+
+Price slope: days per point of the price level, in 'price + AIC' and in the full model; 95% bootstrap
+interval over countries; range when each country is left out in turn.
+  pli + aic                    slope -3.54 [-6.80, -1.53]  leave-one-out -4.30 to -2.61
+  lpop + dist_km + aic + pli   slope -4.32 [-8.08, -2.31]  leave-one-out -5.10 to -3.40
+
+Other checks of the price correlation (Pearson r of the price level with the time):
+  median time instead of mean                n=23  r=-0.65  rho=-0.72
+  W.A.I.T. 2024 (2020-2023 medicines)        n=24  r=-0.75  rho=-0.77
+  oncology time, price level ATC L           n=20  r=-0.64  rho=-0.70
+  orphan time, price level all               n=23  r=-0.71  rho=-0.69
+  EU members only                            n=21  r=-0.68  rho=-0.67
+  without Romania                            n=23  r=-0.72  rho=-0.66
+  without Switzerland, Denmark and Iceland   n=21  r=-0.63  rho=-0.63
+  without Portugal                           n=23  r=-0.71  rho=-0.72
+  size against time, EU members only: r=-0.17
+
+Countries like Portugal on one dimension (mean days; price level all / ATC L):
+  size: population 7.5 to 15 million
+    Switzerland    285 days  pop   9.1 m    489 km  AIC  115  price   182 /   149
+    Austria        363 days  pop   9.2 m    915 km  AIC  112  price   116 /   113
+    Sweden         459 days  pop  10.6 m   1280 km  AIC  105  price   115 /   102
+    Hungary        514 days  pop   9.5 m   1129 km  AIC   72  price    78 /    89
+    Belgium        552 days  pop  11.9 m      0 km  AIC  112  price   124 /    99
+    Greece         641 days  pop  10.4 m   2090 km  AIC   81  price    84 /    82
+    Czechia        659 days  pop  10.9 m    719 km  AIC   82  price   103 /   107
+    Portugal       839 days  pop  11.4 m   1713 km  AIC   85  price    97 /    85
+    price level against time within the group: r=-0.66 (n=8)
+  distance: capital 1,400 km or more from Brussels
+    Finland        448 days  pop   5.6 m   1648 km  AIC  104  price   129 /   121
+    Cyprus         528 days  pop   1.0 m   2902 km  AIC   96  price   132 /   127
+    Iceland        535 days  pop   0.4 m   2129 km  AIC  116  price   160 /   126
+    Latvia         619 days  pop   1.9 m   1454 km  AIC   76  price    91 /    84
+    Greece         641 days  pop  10.4 m   2090 km  AIC   81  price    84 /    82
+    Bulgaria       650 days  pop   6.4 m   1698 km  AIC   74  price    81 /   n/a
+    Estonia        707 days  pop   1.4 m   1600 km  AIC   74  price    92 /    97
+    Lithuania      821 days  pop   2.9 m   1465 km  AIC   89  price    86 /    95
+    Portugal       839 days  pop  11.4 m   1713 km  AIC   85  price    97 /    85
+    Romania       1110 days  pop  19.0 m   1771 km  AIC   88  price    72 /   n/a
+    price level against time within the group: r=-0.68 (n=10)
+  income: AIC per head within 10 points of Portugal
+    Spain          537 days  pop  49.1 m   1316 km  AIC   92  price   101 /    98
+    Slovenia       596 days  pop   2.1 m    918 km  AIC   85  price   n/a /   n/a
+    Latvia         619 days  pop   1.9 m   1454 km  AIC   76  price    91 /    84
+    Greece         641 days  pop  10.4 m   2090 km  AIC   81  price    84 /    82
+    Czechia        659 days  pop  10.9 m    719 km  AIC   82  price   103 /   107
+    Poland         714 days  pop  36.5 m   1160 km  AIC   84  price    64 /   n/a
+    Croatia        734 days  pop   3.9 m   1024 km  AIC   78  price   n/a /   n/a
+    Slovakia       751 days  pop   5.4 m    968 km  AIC   78  price    75 /    77
+    Lithuania      821 days  pop   2.9 m   1465 km  AIC   89  price    86 /    95
+    Portugal       839 days  pop  11.4 m   1713 km  AIC   85  price    97 /    85
+    Romania       1110 days  pop  19.0 m   1771 km  AIC   88  price    72 /   n/a
+    price level against time within the group: r=-0.46 (n=9)
+
+==============================================================================================
+4. Portugal's pipeline in Infarmed's report, against the European averages
+==============================================================================================
+Medicines (new active substances) authorised centrally in 2020-2025: 282
+  not submitted to Infarmed by 31 December 2025: 94 (33%); submitted 188 (67%)
+  mean time from authorisation to submission: 272 days
+  concluded: 102 (approved 77, withdrawn by the company 17, refused 8)
+  mean time from submission to conclusion: 650 days = Infarmed and Ministry 332 + company and negotiation 319
+  mean authorisation to conclusion (filing + assessment): 922 days
+  early access programmes while the assessment ran: 93 of 282
+  oncology: 77 medicines, 20 (26%) not submitted; filing 215 days; 35 concluded in 704 days on average, of which Infarmed and Ministry 355
+  orphans: 98 medicines, 35 (36%) not submitted; filing 313 days; 30 concluded in 732 days on average, of which Infarmed 326
+  PRIME (EMA priority) medicines: 33, 9 (27%) not submitted; filing 236 days; 16 concluded in 774 days
+
+CRA Access Hurdles Portal 2026 (91 medicines authorised January 2022 to June 2025; reimbursed medicines):
+  European average from authorisation to reimbursement 522 days: filing 189 (36%), decision after filing 333 (64%)
+  filing: Nordic 124 days, Central and Eastern 258; decision: CEE 355, EU4+UK 321, Nordic 311, Western 321 (Western = Austria, Belgium, Ireland, Luxembourg, Netherlands, Portugal)
+  share of medicines filed, average across countries: 61% (Portugal, Infarmed report: 67%)
+  reasons for not filing, Health system infrastructure: 152
+  reasons for not filing, Economic viability: 366
+  reasons for not filing, P&R process: 114
+  reasons for not filing, Value assessment process: 220
+Portugal minus the European average: filing +83 days, after filing +317 days; share of the excess after filing 79%
+  (Portugal's figures are means over all concluded processes, approvals, refusals and withdrawals,
+   for medicines of 2020-2025; the CRA figures cover reimbursed medicines of 2022-2025.)
+
+==============================================================================================
+5. Inside the time after filing: the process tracker
+==============================================================================================
+New active substances, all processes in the tracker:
+   {'Concluído - Deferido': 50, 'Pedido de elementos - Titular de AIM': 30, 'Concluído - Arquivado': 16, 'Negociação contratual': 16, 'Avaliação farmacoterapêutica - Infarmed': 14, 'Avaliação farmacoeconómica - Infarmed': 12, 'Concluído - Indeferido': 10, 'Avaliação farmacoterapêutica - Titular de AIM': 6, 'Avaliação farmacoeconómica - Titular de AIM': 4, 'Decisão - Infarmed': 4}
+  setting: {'hospital': 131, 'ambulatory': 31}
+All approved processes, including 8 medicines new to Portugal but not authorised centrally (mostly fixed-dose combinations): n=50; means Infarmed 294, company 180, negotiation 253; medians 223 / 119 / 196; shares 40% / 25% / 35%
+From here on, centrally authorised medicines only (the population of W.A.I.T. and of Infarmed's report):
+   {'Concluído - Deferido': 42, 'Pedido de elementos - Titular de AIM': 27, 'Negociação contratual': 16, 'Concluído - Arquivado': 13, 'Avaliação farmacoterapêutica - Infarmed': 12, 'Concluído - Indeferido': 10, 'Avaliação farmacoeconómica - Infarmed': 10, 'Avaliação farmacoterapêutica - Titular de AIM': 6, 'Avaliação farmacoeconómica - Titular de AIM': 4, 'Decisão - Infarmed': 3}
+Approved processes: 42 ({'hospital': 37, 'ambulatory': 5}), 40 medicines
+  conclusion year: {2021: 1, 2025: 6, 2026: 35}
+  days attributed to Infarmed  n= 42  mean    337  median    251  p25   191  p75   378
+  days attributed to company   n= 42  mean    196  median    130  p25    95  p75   282
+  days of negotiation          n= 42  mean    292  median    216  p25   129  p75   448
+  sum of the three             n= 42  mean    825  median    720  p25   468  p75  1009
+  submission to conclusion     n= 42  mean    808  median    723  p25   468  p75  1012
+  submission-to-conclusion minus the sum of the three: median 1, within 5 days for 64%
+  shares of all days: Infarmed 41%, company 24%, negotiation 35%
+  processes with some negotiation: 100%
+  authorisation to submission    n= 41  mean    208  median     63  p25    28  p75   200
+  authorisation to conclusion    n= 41  mean   1025  median    952  p25   601  p75  1211
+  access date before the conclusion date: 5 processes
+  ambulatory: n=5  median Infarmed 384, company 114, negotiation 538, submission to conclusion 1048; means 410 / 216 / 453 / 1074
+  hospital: n=37  median Infarmed 234, company 138, negotiation 206, submission to conclusion 661; means 327 / 193 / 271 / 773
+Against the legal deadlines (Portaria 195-A/2015): decision in 75 days of Infarmed time, negotiation
+in 30 working days (about 42 calendar days):
+  Infarmed days above 75: 100% of approved processes; median 3.3 times the deadline
+  negotiation above 42 days: 98% of processes that negotiated; median 5.2 times the deadline
+  mean days beyond the deadlines per approved process: Infarmed 262, negotiation 251
+Arquivado (withdrawn by the company): n=13; median Infarmed 354, company 220, negotiation 0; with negotiation 4
+Indeferido (refused): n=10; median Infarmed 420, company 422, negotiation 0; with negotiation 4
+Open processes: 78; days since submission n= 78  mean    572  median    421  p25   204  p75   836
+  open for more than one year: 44, more than two years: 25
+  Avaliação farmacoeconómica - Infarmed          n= 10  median so far: Infarmed  346, company  249, negotiation    0
+  Avaliação farmacoeconómica - Titular de AIM    n=  4  median so far: Infarmed  234, company  384, negotiation    0
+  Avaliação farmacoterapêutica - Infarmed        n= 12  median so far: Infarmed  109, company  132, negotiation    0
+  Avaliação farmacoterapêutica - Titular de AIM  n=  6  median so far: Infarmed  154, company   82, negotiation    0
+  Decisão - Infarmed                             n=  3  median so far: Infarmed  445, company  421, negotiation  595
+  Negociação contratual                          n= 16  median so far: Infarmed  306, company  190, negotiation  109
+  Pedido de elementos - Titular de AIM           n= 27  median so far: Infarmed  136, company  115, negotiation    0
+New indications, approved: n=64; medians Infarmed 184, company 104, negotiation 156; shares 40% / 23% / 38%
+
+==============================================================================================
+6. Size inside Portugal: company size, orphan and oncology medicines (tracker)
+==============================================================================================
+Centrally authorised new active substances: 143 processes; large groups 69, others 74
+  groups present: AbbVie, Amgen, Astellas, AstraZeneca, Bayer, Boehringer Ingelheim, Bristol Myers Squibb, Daiichi Sankyo, Eli Lilly, GSK, Gilead, Johnson & Johnson, Merck & Co (MSD), Merck KGaA, Novartis, Novo Nordisk, Pfizer, Roche, Sanofi
+  of which authorised in 2020 or later: 123
+  large groups     filing lag n= 67  mean    528  median     85  p25    30  p75   224
+                   authorised 2020 or later: filing lag n= 60  mean    189  median     66  p25    26  p75   144
+                   approved n=28: submission to conclusion median 892 (mean 900); medians Infarmed 278, company 136, negotiation 344 (mean 358)
+                   withdrawn 2, refused 5, open 34
+  other companies  filing lag n= 74  mean    893  median    496  p25   137  p75  1097
+                   authorised 2020 or later: filing lag n= 63  mean    497  median    255  p25   116  p75   784
+                   approved n=14: submission to conclusion median 560 (mean 626); medians Infarmed 220, company 106, negotiation 122 (mean 161)
+                   withdrawn 11, refused 5, open 44
+  permutation tests (difference of medians, two-sided):
+    filing lag, authorised 2020 or later: p=0.0002
+    negotiation days, approved: p=0.021
+    submission to conclusion, approved: p=0.057
+    Infarmed days, approved: p=0.349
+  orphan           filing lag n= 47  mean    585  median    179  p25    77  p75   828; approved n=9, submission to conclusion median 517, negotiation median 126
+  not orphan       filing lag n= 94  mean    786  median    172  p25    57  p75   851; approved n=33, submission to conclusion median 861, negotiation median 245
+  oncology         filing lag n= 43  mean    316  median    108  p25    51  p75   195; approved n=15, submission to conclusion median 941, negotiation median 247
+  not oncology     filing lag n= 98  mean    896  median    268  p25    88  p75  1098; approved n=27, submission to conclusion median 714, negotiation median 204
+
+==============================================================================================
+7. The arithmetic the article uses
+==============================================================================================
+Portugal's gap to the EU27 average: 242 days
+  size, distance and AIC put Portugal at 646 days (+64 against their sample mean 582)
+  adding the price level puts it at 656 days (+64 against the sample mean 592); unexplained +183
+Approved new active substances (tracker), mean days: filing 208, Infarmed 337, company 196, negotiation 292
+  if negotiation took the legal 42 days: 250 days less on average
+  if Infarmed's time were 75 days: 262 days less on average
