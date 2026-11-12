@@ -1,3 +1,6 @@
+===== reports
+[pt_access_report_2020_2025] wrote pt_access_report_2020_2025.txt.gz: 13509 characters
+[cra_portal_2026] wrote cra_portal_2026.txt.gz: 71810 characters
 ===== eurostat
 [eurostat_population] 186 rows; {'geo': 48, 'time': 4}
 [eurostat_population] wrote eurostat_population.csv.gz: 186 rows, columns ['geo', 'time', 'value', 'name']
@@ -34,6 +37,7 @@
 24  UK    103.84        3  108.61
 [euripid_pli_2017] wrote euripid_pli_2017.csv.gz: 25 rows, columns ['geo', 'pli_last', 'n_years', 'pli_L']
 ===== wait
+[wait_2025_report] wrote wait_2025_report.txt.gz: 825942 characters
 [wait_2025] pages 72; charts found ['mean_days', 'median_days']
         country  mean_days  median_days  available  dates_submitted
 0       Austria      363.0        259.0        143              143
