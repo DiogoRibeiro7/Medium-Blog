@@ -33,6 +33,16 @@ LVA GDP/hour rel US; GNI/hour rel US; GNI/GDP; per capita rel US; hours/worker: 
 HRV GDP/hour rel US; GNI/hour rel US; GNI/GDP; per capita rel US; hours/worker: 55.4; 54.6; 0.974; 57.4; 1955
 BGR GDP/hour rel US; GNI/hour rel US; GNI/GDP; per capita rel US; hours/worker: 47.2; 45.1; 0.946; 48.7; 1625
 GRC GDP/hour rel US; GNI/hour rel US; GNI/GDP; per capita rel US; hours/worker: 46.6; 45.7; 0.971; 50.7; 1900
+DNK per-capita gap in log points = productivity + hours + employment: -4.2 = 11.5 + -26.2 + 10.4
+NLD per-capita gap in log points = productivity + hours + employment: -1.6 = 1.9 + -20.0 + 16.4
+DEU per-capita gap in log points = productivity + hours + employment: -15.3 = -0.2 + -27.7 + 12.7
+FRA per-capita gap in log points = productivity + hours + employment: -31.9 = -7.3 + -16.0 + -8.6
+ITA per-capita gap in log points = productivity + hours + employment: -32.4 = -21.6 + -3.4 + -7.4
+ESP per-capita gap in log points = productivity + hours + employment: -39.5 = -24.4 + -7.7 + -7.4
+CZE per-capita gap in log points = productivity + hours + employment: -40.0 = -44.7 + 1.5 + 3.2
+PRT per-capita gap in log points = productivity + hours + employment: -49.5 = -47.8 + -3.4 + 1.7
+POL per-capita gap in log points = productivity + hours + employment: -54.1 = -50.3 + 0.6 + -4.4
+GRC per-capita gap in log points = productivity + hours + employment: -68.0 = -76.4 + 6.8 + 1.5
 Max abs error of the per-capita log decomposition (log points): 0.0000
 
 == Groups, 2024 ==
@@ -216,30 +226,35 @@ United States: rest/hour = depreciation + net remainder (USD PPP); depreciation 
 United States: GDP/hour = labour comp + net production taxes + rest (USD PPP); labour share; tax share: 100.1 = 55.6 + 6.4 + 38.1; 0.555; 0.064
 EU25: rest/hour = depreciation + net remainder (USD PPP); depreciation share of GDP: 27.2 = 14.8 + 12.4; 0.178
 EU25: GDP/hour = labour comp + net production taxes + rest (USD PPP); labour share; tax share: 83.1 = 46.7 + 9.3 + 27.2; 0.562; 0.112
-EU25: gap to US in GDP/hour = labour comp + taxes + rest: 17.0 = 8.9 + -2.9 + 11.0
+EU25: gap to US in GDP/hour = labour comp + taxes + depreciation + net remainder: 17.0 = 8.9 + -2.9 + 1.6 + 9.4
+EU25: labour share minus US labour share (points): 0.6
 North-West: rest/hour = depreciation + net remainder (USD PPP); depreciation share of GDP: 28.5 = 18.8 + 9.7; 0.191
 North-West: GDP/hour = labour comp + net production taxes + rest (USD PPP); labour share; tax share: 98.6 = 59.1 + 11.0 + 28.5; 0.600; 0.111
-North-West: gap to US in GDP/hour = labour comp + taxes + rest: 1.5 = -3.5 + -4.6 + 9.7
+North-West: gap to US in GDP/hour = labour comp + taxes + depreciation + net remainder: 1.5 = -3.5 + -4.6 + -2.4 + 12.1
+North-West: labour share minus US labour share (points): 4.4
 Ireland and Luxembourg: rest/hour = depreciation + net remainder (USD PPP); depreciation share of GDP: 94.8 = 38.0 + 56.7; 0.233
 Ireland and Luxembourg: GDP/hour = labour comp + net production taxes + rest (USD PPP); labour share; tax share: 163.1 = 58.3 + 10.1 + 94.8; 0.357; 0.062
-Ireland and Luxembourg: gap to US in GDP/hour = labour comp + taxes + rest: -63.0 = -2.6 + -3.7 + -56.6
+Ireland and Luxembourg: gap to US in GDP/hour = labour comp + taxes + depreciation + net remainder: -63.0 = -2.6 + -3.7 + -21.6 + -35.0
+Ireland and Luxembourg: labour share minus US labour share (points): -19.8
 South: rest/hour = depreciation + net remainder (USD PPP); depreciation share of GDP: 25.2 = 12.4 + 12.8; 0.166
 South: GDP/hour = labour comp + net production taxes + rest (USD PPP); labour share; tax share: 74.9 = 41.0 + 8.6 + 25.2; 0.548; 0.115
-South: gap to US in GDP/hour = labour comp + taxes + rest: 25.3 = 14.6 + -2.3 + 12.9
+South: gap to US in GDP/hour = labour comp + taxes + depreciation + net remainder: 25.3 = 14.6 + -2.3 + 4.0 + 9.0
+South: labour share minus US labour share (points): -0.8
 Centre-East: rest/hour = depreciation + net remainder (USD PPP); depreciation share of GDP: 22.8 = 8.8 + 14.0; 0.148
 Centre-East: GDP/hour = labour comp + net production taxes + rest (USD PPP); labour share; tax share: 59.8 = 30.1 + 6.9 + 22.8; 0.503; 0.115
-Centre-East: gap to US in GDP/hour = labour comp + taxes + rest: 40.3 = 25.5 + -0.5 + 15.3
-DEU: labour share; labour comp/hour; net taxes/hour; rest/hour (USD PPP): 0.608; 60.8; 9.0; 30.2
-FRA: labour share; labour comp/hour; net taxes/hour; rest/hour (USD PPP): 0.620; 57.7; 12.5; 22.9
-NLD: labour share; labour comp/hour; net taxes/hour; rest/hour (USD PPP): 0.603; 61.5; 10.3; 30.2
-BEL: labour share; labour comp/hour; net taxes/hour; rest/hour (USD PPP): 0.648; 70.6; 9.2; 29.1
-DNK: labour share; labour comp/hour; net taxes/hour; rest/hour (USD PPP): 0.539; 60.5; 13.6; 38.2
-AUT: labour share; labour comp/hour; net taxes/hour; rest/hour (USD PPP): 0.569; 58.2; 12.0; 32.2
-SWE: labour share; labour comp/hour; net taxes/hour; rest/hour (USD PPP): 0.452; 44.0; 19.0; 34.4
-ITA: labour share; labour comp/hour; net taxes/hour; rest/hour (USD PPP): 0.539; 43.4; 9.9; 27.3
-ESP: labour share; labour comp/hour; net taxes/hour; rest/hour (USD PPP): 0.581; 45.6; 7.7; 25.2
-PRT: labour share; labour comp/hour; net taxes/hour; rest/hour (USD PPP): 0.495; 30.7; 8.1; 23.3
-GRC: labour share; labour comp/hour; net taxes/hour; rest/hour (USD PPP): 0.484; 22.6; 6.8; 17.2
-POL: labour share; labour comp/hour; net taxes/hour; rest/hour (USD PPP): 0.464; 28.1; 7.6; 24.9
-IRL: labour share; labour comp/hour; net taxes/hour; rest/hour (USD PPP): 0.333; 55.7; 9.5; 101.9
-LUX: labour share; labour comp/hour; net taxes/hour; rest/hour (USD PPP): 0.528; 73.7; 13.9; 52.0
+Centre-East: gap to US in GDP/hour = labour comp + taxes + depreciation + net remainder: 40.3 = 25.5 + -0.5 + 7.6 + 7.8
+Centre-East: labour share minus US labour share (points): -5.3
+DEU: labour share; tax share; labour comp/hour (rel US); net taxes/hour; depreciation/hour; net remainder/hour (USD PPP): 0.608; 0.090; 60.8 (109); 9.0; 20.2; 10.0
+FRA: labour share; tax share; labour comp/hour (rel US); net taxes/hour; depreciation/hour; net remainder/hour (USD PPP): 0.620; 0.134; 57.7 (104); 12.5; 17.1; 5.8
+NLD: labour share; tax share; labour comp/hour (rel US); net taxes/hour; depreciation/hour; net remainder/hour (USD PPP): 0.603; 0.101; 61.5 (111); 10.3; 16.3; 14.0
+BEL: labour share; tax share; labour comp/hour (rel US); net taxes/hour; depreciation/hour; net remainder/hour (USD PPP): 0.648; 0.084; 70.6 (127); 9.2; 21.1; 8.0
+DNK: labour share; tax share; labour comp/hour (rel US); net taxes/hour; depreciation/hour; net remainder/hour (USD PPP): 0.539; 0.121; 60.5 (109); 13.6; 19.5; 18.7
+AUT: labour share; tax share; labour comp/hour (rel US); net taxes/hour; depreciation/hour; net remainder/hour (USD PPP): 0.569; 0.117; 58.2 (105); 12.0; 21.4; 10.9
+SWE: labour share; tax share; labour comp/hour (rel US); net taxes/hour; depreciation/hour; net remainder/hour (USD PPP): 0.452; 0.195; 44.0 (79); 19.0; 17.9; 16.5
+ITA: labour share; tax share; labour comp/hour (rel US); net taxes/hour; depreciation/hour; net remainder/hour (USD PPP): 0.539; 0.123; 43.4 (78); 9.9; 14.3; 13.0
+ESP: labour share; tax share; labour comp/hour (rel US); net taxes/hour; depreciation/hour; net remainder/hour (USD PPP): 0.581; 0.098; 45.6 (82); 7.7; 12.1; 13.1
+PRT: labour share; tax share; labour comp/hour (rel US); net taxes/hour; depreciation/hour; net remainder/hour (USD PPP): 0.495; 0.130; 30.7 (55); 8.1; 11.0; 12.3
+GRC: labour share; tax share; labour comp/hour (rel US); net taxes/hour; depreciation/hour; net remainder/hour (USD PPP): 0.484; 0.146; 22.6 (41); 6.8; 6.3; 11.0
+POL: labour share; tax share; labour comp/hour (rel US); net taxes/hour; depreciation/hour; net remainder/hour (USD PPP): 0.464; 0.126; 28.1 (50); 7.6; 6.5; 18.3
+IRL: labour share; tax share; labour comp/hour (rel US); net taxes/hour; depreciation/hour; net remainder/hour (USD PPP): 0.333; 0.057; 55.7 (100); 9.5; 41.3; 60.6
+LUX: labour share; tax share; labour comp/hour (rel US); net taxes/hour; depreciation/hour; net remainder/hour (USD PPP): 0.528; 0.100; 73.7 (133); 13.9; 18.4; 33.6

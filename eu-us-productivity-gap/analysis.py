@@ -176,6 +176,9 @@ def main() -> None:
     for r in countries.itertuples():
         say(f"{r.country} GDP/hour rel US; GNI/hour rel US; GNI/GDP; per capita rel US; hours/worker",
             f"{r.gdp_hour_rel:.1f}; {r.gni_hour_rel:.1f}; {r.gni_gdp_ratio:.3f}; {r.gdp_capita_rel:.1f}; {r.hours_worker:.0f}")
+    for r in countries[countries.country.isin(["DEU", "NLD", "DNK", "FRA", "ITA", "ESP", "PRT", "GRC", "POL", "CZE"])].itertuples():
+        say(f"{r.country} per-capita gap in log points = productivity + hours + employment",
+            f"{r.lp_total:.1f} = {r.lp_productivity:.1f} + {r.lp_hours:.1f} + {r.lp_employment:.1f}")
     check = (countries.lp_productivity + countries.lp_hours + countries.lp_employment - countries.lp_total).abs().max()
     say("Max abs error of the per-capita log decomposition (log points)", float(check))
 
@@ -399,12 +402,14 @@ def main() -> None:
         say(f"{r.group}: GDP/hour = labour comp + net production taxes + rest (USD PPP); labour share; tax share",
             f"{r.gdp_hour:.1f} = {r.lc_hour:.1f} + {r.tax_hour:.1f} + {r.rest_hour:.1f}; {r.labour_share:.3f}; {r.tax_share:.3f}")
         if r.group != "United States":
-            say(f"{r.group}: gap to US in GDP/hour = labour comp + taxes + rest",
-                f"{r.gap_gdp_hour:.1f} = {r.gap_lc_hour:.1f} + {r.gap_tax_hour:.1f} + {r.gap_rest_hour:.1f}")
+            say(f"{r.group}: gap to US in GDP/hour = labour comp + taxes + depreciation + net remainder",
+                f"{r.gap_gdp_hour:.1f} = {r.gap_lc_hour:.1f} + {r.gap_tax_hour:.1f} + {r.gap_cfc_hour:.1f} + {r.gap_net_rest_hour:.1f}")
+            say(f"{r.group}: labour share minus US labour share (points)", f"{100 * (r.labour_share - usr.labour_share):.1f}")
     for c in ["DEU", "FRA", "NLD", "BEL", "DNK", "AUT", "SWE", "ITA", "ESP", "PRT", "GRC", "POL", "IRL", "LUX"]:
         g = agg(YEAR, [c])
-        say(f"{c}: labour share; labour comp/hour; net taxes/hour; rest/hour (USD PPP)",
-            f"{g['labour_share']:.3f}; {g['lc_hour']:.1f}; {g['tax_hour']:.1f}; {g['rest_hour']:.1f}")
+        say(f"{c}: labour share; tax share; labour comp/hour (rel US); net taxes/hour; depreciation/hour; net remainder/hour (USD PPP)",
+            f"{g['labour_share']:.3f}; {g['tax_share']:.3f}; {g['lc_hour']:.1f} ({100 * g['lc_hour'] / usr.lc_hour:.0f}); "
+            f"{g['tax_hour']:.1f}; {g['cfc_hour']:.1f}; {g['rest_hour'] - g['cfc_hour']:.1f}")
 
     (RES / "analysis_summary.txt").write_text("\n".join(LINES).strip() + "\n", encoding="utf-8")
     print("\n".join(LINES))
