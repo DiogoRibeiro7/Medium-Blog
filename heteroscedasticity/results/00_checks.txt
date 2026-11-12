@@ -1,0 +1,9 @@
+classical and HC0-HC3 standard errors equal statsmodels: OK
+HC0 [ 460.89 1243.04  829.99] and HC4 [3008.01 8183.19 5488.93] equal sandwich 3.1-3; HC4 p-value of Income^2 0.7725 (printed 0.7725), without Alaska 0.8923303 (printed 0.8923303): OK
+Koenker Breusch-Pagan and White tests equal statsmodels: OK
+WLS coefficients and classical/HC0-HC3 standard errors equal statsmodels WLS: OK
+vectorised wild bootstrap equals a plain loop: OK
+n = 10, exact wild-bootstrap p-value over all 1,024 sign vectors 0.6113; Monte Carlo with 20,000 draws 0.6168: OK
+restricted Rademacher wild bootstrap, n = 40, lognormal x, sd proportional to x: rejection rate 0.077 at 5% in 400 samples
+linear quantile regression equals statsmodels QuantReg (and its check loss is no larger): OK
+FGLS exponential variance slope 1.497 (truth 1.5; the intercept absorbs E log chi2_1): OK

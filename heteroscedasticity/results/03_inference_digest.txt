@@ -1,0 +1,27 @@
+Digest of 60 cells. A rejection rate within 5% +/- 0.0096 (1.96 Monte Carlo SE) counts as 'at level'.
+   Classical                    at level in 20 of 60 cells; range 0.0425-0.7805; uniform 0.0425-0.1075; lognormal 0.0455-0.7805; income 0.0475-0.4970
+   HC0                          at level in 12 of 60 cells; range 0.0425-0.3970; uniform 0.0425-0.1145; lognormal 0.0675-0.3970; income 0.0555-0.2660
+   HC1                          at level in 16 of 60 cells; range 0.0425-0.3820; uniform 0.0425-0.0980; lognormal 0.0675-0.3820; income 0.0540-0.2510
+   HC2                          at level in 18 of 60 cells; range 0.0425-0.2570; uniform 0.0425-0.0945; lognormal 0.0610-0.2570; income 0.0535-0.1750
+   HC3                          at level in 22 of 60 cells; range 0.0400-0.1250; uniform 0.0400-0.0705; lognormal 0.0555-0.1250; income 0.0495-0.1065
+   HC4                          at level in 48 of 60 cells; range 0.0350-0.0775; uniform 0.0405-0.0775; lognormal 0.0350-0.0660; income 0.0390-0.0675
+   HC4m                         at level in 30 of 60 cells; range 0.0395-0.0980; uniform 0.0395-0.0650; lognormal 0.0535-0.0980; income 0.0480-0.0925
+   HC5                          at level in 27 of 60 cells; range 0.0125-0.1185; uniform 0.0425-0.0985; lognormal 0.0125-0.1005; income 0.0455-0.1185
+   Pretest BP -> HC3            at level in 28 of 60 cells; range 0.0380-0.2235; uniform 0.0380-0.0665; lognormal 0.0440-0.2235; income 0.0460-0.1495
+   Pretest White -> HC3         at level in 27 of 60 cells; range 0.0400-0.1790; uniform 0.0400-0.0740; lognormal 0.0440-0.1790; income 0.0470-0.1585
+   Wild restricted Rademacher   at level in 45 of 60 cells; range 0.0380-0.1175; uniform 0.0410-0.0680; lognormal 0.0380-0.1175; income 0.0440-0.0905
+   Wild restricted Webb         at level in 47 of 60 cells; range 0.0355-0.0850; uniform 0.0415-0.0660; lognormal 0.0355-0.0850; income 0.0480-0.0780
+   Wild unrestricted Rademacher at level in 26 of 60 cells; range 0.0410-0.2495; uniform 0.0410-0.0655; lognormal 0.0600-0.2495; income 0.0455-0.1520
+Pretest BP -> HC3 minus always-HC3 in the 45 heteroscedastic cells: higher in 18, equal in 20, lower in 7; largest excess 0.0985
+Pretest White -> HC3 minus always-HC3 in the 45 heteroscedastic cells: higher in 18, equal in 23, lower in 4; largest excess 0.0640
+   uniform, n <= 50: BP pretest minus always-HC3 -0.0060 to +0.0000 (0 of 6 cells higher)
+   uniform, n >= 200: BP pretest minus always-HC3 +0.0000 to +0.0000 (0 of 6 cells higher)
+   lognormal, n <= 50: BP pretest minus always-HC3 +0.0130 to +0.0985 (6 of 6 cells higher)
+   lognormal, n >= 200: BP pretest minus always-HC3 +0.0000 to +0.0005 (2 of 6 cells higher)
+   income, n <= 50: BP pretest minus always-HC3 +0.0005 to +0.0440 (6 of 6 cells higher)
+   income, n >= 200: BP pretest minus always-HC3 +0.0000 to +0.0000 (0 of 6 cells higher)
+Classical test in the samples where Breusch-Pagan accepts (cells with at least 100 such samples, 18 of 45): rejection 0.0483-0.7239; higher than the unconditional classical rate in 14 of 18
+Power when the variance is constant (classical exact), relative to the classical test, mean over n: uniform: HC1 1.013, HC3 0.979, HC4 0.989, HC5 1.011, Wild restricted Rademacher 0.974; lognormal: HC1 1.110, HC3 0.899, HC4 0.660, HC5 0.530, Wild restricted Rademacher 0.753; income: HC1 1.039, HC3 0.945, HC4 0.847, HC5 0.912, Wild restricted Rademacher 0.881
+Median of n max(h) / p, uniform design (HC4 caps its exponent at 4; HC5 at max(4, 0.7 n max(h) / p)): n 25: 2.1; n 50: 2.1; n 100: 2.1; n 200: 2.1; n 500: 2.0
+Median of n max(h) / p, lognormal design (HC4 caps its exponent at 4; HC5 at max(4, 0.7 n max(h) / p)): n 25: 5.8; n 50: 9.6; n 100: 14.8; n 200: 22.8; n 500: 39.8
+Median of n max(h) / p, income design (HC4 caps its exponent at 4; HC5 at max(4, 0.7 n max(h) / p)): n 25: 4.6; n 50: 6.8; n 100: 8.6; n 200: 10.0; n 500: 11.0

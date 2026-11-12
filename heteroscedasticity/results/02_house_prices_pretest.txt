@@ -1,0 +1,9 @@
+hprice1: n = 88
+-- levels: price ~ lotsize + sqrft + bdrms; Koenker BP LM 14.09 (p 0.0028); White LM 33.73 (p 0.0001); largest leverage 0.843 (mean 0.045)
+  lotsize   coef 0.0021; SE classical 0.0006; HC0 0.0012 (x1.90); HC1 0.0013 (x1.95); HC2 0.0029 (x4.48); HC3 0.0071 (x11.13); HC4 0.0453 (x70.59); HC4m 0.0113 (x17.65); HC5 0.4531 (x705.59)
+  sqrft     coef 0.1228; SE classical 0.0132; HC0 0.0173 (x1.31); HC1 0.0177 (x1.34); HC2 0.0226 (x1.70); HC3 0.0407 (x3.08); HC4 0.2316 (x17.49); HC4m 0.0607 (x4.58); HC5 2.3066 (x174.25)
+  bdrms     coef 13.8525; SE classical 9.0101; HC0 8.2837 (x0.92); HC1 8.4786 (x0.94); HC2 9.1866 (x1.02); HC3 11.5618 (x1.28); HC4 43.5227 (x4.83); HC4m 14.3808 (x1.60); HC5 421.5362 (x46.78)
+-- logs: lprice ~ llotsize + lsqrft + bdrms; Koenker BP LM 4.22 (p 0.2383); White LM 9.55 (p 0.3882); largest leverage 0.319 (mean 0.045)
+  llotsize  coef 0.1680; SE classical 0.0383; HC0 0.0405 (x1.06); HC1 0.0415 (x1.08); HC2 0.0463 (x1.21); HC3 0.0533 (x1.39); HC4 0.0715 (x1.87); HC4m 0.0573 (x1.50); HC5 0.0563 (x1.47)
+  lsqrft    coef 0.7002; SE classical 0.0929; HC0 0.1014 (x1.09); HC1 0.1038 (x1.12); HC2 0.1105 (x1.19); HC3 0.1214 (x1.31); HC4 0.1473 (x1.59); HC4m 0.1271 (x1.37); HC5 0.1249 (x1.34)
+  bdrms     coef 0.0370; SE classical 0.0275; HC0 0.0299 (x1.09); HC1 0.0306 (x1.11); HC2 0.0325 (x1.18); HC3 0.0356 (x1.29); HC4 0.0427 (x1.55); HC4m 0.0371 (x1.35); HC5 0.0366 (x1.33)

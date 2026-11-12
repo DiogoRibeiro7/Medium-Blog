@@ -1,0 +1,241 @@
+Rejection rates of a true null at 5% (2000 samples per cell; Monte Carlo SE at 5% ~ 0.0049)
+-- uniform, gamma 0.0, n 25: BP rejects 0.051, White rejects 0.049; median SE ratio HC3/classical 1.042, HC4 1.016, HC5 0.970
+   size: Classical 0.0580; HC0 0.0830; HC1 0.0705; HC2 0.0685; HC3 0.0560; HC4 0.0620; HC4m 0.0520; HC5 0.0710; Pretest BP -> HC3 0.0570; Pretest White -> HC3 0.0570; Wild restricted Rademacher 0.0570; Wild restricted Webb 0.0615; Wild unrestricted Rademacher 0.0630
+   power: Classical 0.6410; HC0 0.6845; HC1 0.6585; HC2 0.6430; HC3 0.5970; HC4 0.6150; HC4m 0.5770; HC5 0.6555; Pretest BP -> HC3 0.6345; Pretest White -> HC3 0.6340; Wild restricted Rademacher 0.5985
+   classical test rejects 0.0585 when BP accepts (1899 samples) and 0.0495 when BP rejects; HC3 0.0574 and 0.0297
+-- uniform, gamma 0.0, n 50: BP rejects 0.050, White rejects 0.045; median SE ratio HC3/classical 1.026, HC4 1.013, HC5 0.990
+   size: Classical 0.0500; HC0 0.0625; HC1 0.0565; HC2 0.0545; HC3 0.0505; HC4 0.0520; HC4m 0.0485; HC5 0.0565; Pretest BP -> HC3 0.0485; Pretest White -> HC3 0.0500; Wild restricted Rademacher 0.0525; Wild restricted Webb 0.0530; Wild unrestricted Rademacher 0.0540
+   power: Classical 0.6975; HC0 0.7135; HC1 0.7030; HC2 0.6970; HC3 0.6710; HC4 0.6810; HC4m 0.6660; HC5 0.7005; Pretest BP -> HC3 0.6925; Pretest White -> HC3 0.6920; Wild restricted Rademacher 0.6680
+   classical test rejects 0.0479 when BP accepts (1901 samples) and 0.0909 when BP rejects; HC3 0.0500 and 0.0606
+-- uniform, gamma 0.0, n 100: BP rejects 0.049, White rejects 0.044; median SE ratio HC3/classical 1.013, HC4 1.007, HC5 0.996
+   size: Classical 0.0425; HC0 0.0455; HC1 0.0430; HC2 0.0425; HC3 0.0400; HC4 0.0405; HC4m 0.0395; HC5 0.0430; Pretest BP -> HC3 0.0415; Pretest White -> HC3 0.0405; Wild restricted Rademacher 0.0425; Wild restricted Webb 0.0425; Wild unrestricted Rademacher 0.0425
+   power: Classical 0.7025; HC0 0.7180; HC1 0.7090; HC2 0.7055; HC3 0.6960; HC4 0.6985; HC4m 0.6915; HC5 0.7090; Pretest BP -> HC3 0.7025; Pretest White -> HC3 0.7015; Wild restricted Rademacher 0.6960
+   classical test rejects 0.0426 when BP accepts (1902 samples) and 0.0408 when BP rejects; HC3 0.0410 and 0.0204
+-- uniform, gamma 0.0, n 200: BP rejects 0.053, White rejects 0.045; median SE ratio HC3/classical 1.006, HC4 1.002, HC5 0.997
+   size: Classical 0.0445; HC0 0.0475; HC1 0.0465; HC2 0.0460; HC3 0.0440; HC4 0.0445; HC4m 0.0440; HC5 0.0465; Pretest BP -> HC3 0.0450; Pretest White -> HC3 0.0440; Wild restricted Rademacher 0.0440; Wild restricted Webb 0.0455; Wild unrestricted Rademacher 0.0425
+   power: Classical 0.6850; HC0 0.6995; HC1 0.6970; HC2 0.6960; HC3 0.6920; HC4 0.6940; HC4m 0.6885; HC5 0.6965; Pretest BP -> HC3 0.6850; Pretest White -> HC3 0.6855; Wild restricted Rademacher 0.6850
+   classical test rejects 0.0470 when BP accepts (1894 samples) and 0.0000 when BP rejects; HC3 0.0459 and 0.0094
+-- uniform, gamma 0.0, n 500: BP rejects 0.045, White rejects 0.049; median SE ratio HC3/classical 1.003, HC4 1.001, HC5 0.999
+   size: Classical 0.0535; HC0 0.0565; HC1 0.0550; HC2 0.0540; HC3 0.0535; HC4 0.0535; HC4m 0.0535; HC5 0.0550; Pretest BP -> HC3 0.0535; Pretest White -> HC3 0.0540; Wild restricted Rademacher 0.0545; Wild restricted Webb 0.0520; Wild unrestricted Rademacher 0.0540
+   power: Classical 0.6965; HC0 0.6985; HC1 0.6975; HC2 0.6975; HC3 0.6965; HC4 0.6970; HC4m 0.6965; HC5 0.6975; Pretest BP -> HC3 0.6965; Pretest White -> HC3 0.6965; Wild restricted Rademacher 0.6885
+   classical test rejects 0.0513 when BP accepts (1910 samples) and 0.1000 when BP rejects; HC3 0.0513 and 0.1000
+-- uniform, gamma 0.5, n 25: BP rejects 0.266, White rejects 0.161; median SE ratio HC3/classical 1.032, HC4 1.003, HC5 0.959
+   size: Classical 0.0495; HC0 0.0795; HC1 0.0630; HC2 0.0600; HC3 0.0470; HC4 0.0535; HC4m 0.0440; HC5 0.0635; Pretest BP -> HC3 0.0425; Pretest White -> HC3 0.0450; Wild restricted Rademacher 0.0495; Wild restricted Webb 0.0510; Wild unrestricted Rademacher 0.0565
+   power: Classical 0.6260; HC0 0.6800; HC1 0.6515; HC2 0.6415; HC3 0.5945; HC4 0.6135; HC4m 0.5810; HC5 0.6445; Pretest BP -> HC3 0.5910; Pretest White -> HC3 0.5990; Wild restricted Rademacher 0.5925
+   classical test rejects 0.0483 when BP accepts (1469 samples) and 0.0527 when BP rejects; HC3 0.0545 and 0.0264
+-- uniform, gamma 0.5, n 50: BP rejects 0.555, White rejects 0.397; median SE ratio HC3/classical 1.016, HC4 1.002, HC5 0.980
+   size: Classical 0.0485; HC0 0.0580; HC1 0.0530; HC2 0.0515; HC3 0.0440; HC4 0.0480; HC4m 0.0420; HC5 0.0525; Pretest BP -> HC3 0.0380; Pretest White -> HC3 0.0400; Wild restricted Rademacher 0.0455; Wild restricted Webb 0.0480; Wild unrestricted Rademacher 0.0440
+   power: Classical 0.6940; HC0 0.7020; HC1 0.6920; HC2 0.6865; HC3 0.6680; HC4 0.6790; HC4m 0.6615; HC5 0.6915; Pretest BP -> HC3 0.6575; Pretest White -> HC3 0.6615; Wild restricted Rademacher 0.6610
+   classical test rejects 0.0529 when BP accepts (889 samples) and 0.0450 when BP rejects; HC3 0.0664 and 0.0261
+-- uniform, gamma 0.5, n 100: BP rejects 0.893, White rejects 0.839; median SE ratio HC3/classical 1.007, HC4 1.000, HC5 0.989
+   size: Classical 0.0495; HC0 0.0555; HC1 0.0540; HC2 0.0530; HC3 0.0495; HC4 0.0515; HC4m 0.0490; HC5 0.0535; Pretest BP -> HC3 0.0465; Pretest White -> HC3 0.0485; Wild restricted Rademacher 0.0500; Wild restricted Webb 0.0515; Wild unrestricted Rademacher 0.0485
+   power: Classical 0.6780; HC0 0.6860; HC1 0.6780; HC2 0.6755; HC3 0.6680; HC4 0.6730; HC4m 0.6615; HC5 0.6770; Pretest BP -> HC3 0.6630; Pretest White -> HC3 0.6655; Wild restricted Rademacher 0.6655
+   classical test rejects 0.0607 when BP accepts (214 samples) and 0.0482 when BP rejects; HC3 0.0888 and 0.0448
+-- uniform, gamma 0.5, n 200: BP rejects 0.998, White rejects 0.998; median SE ratio HC3/classical 1.005, HC4 1.002, HC5 0.996
+   size: Classical 0.0515; HC0 0.0570; HC1 0.0555; HC2 0.0555; HC3 0.0535; HC4 0.0540; HC4m 0.0525; HC5 0.0555; Pretest BP -> HC3 0.0535; Pretest White -> HC3 0.0535; Wild restricted Rademacher 0.0535; Wild restricted Webb 0.0530; Wild unrestricted Rademacher 0.0510
+   power: Classical 0.7020; HC0 0.7050; HC1 0.7030; HC2 0.7010; HC3 0.7000; HC4 0.7000; HC4m 0.6995; HC5 0.7015; Pretest BP -> HC3 0.7000; Pretest White -> HC3 0.7000; Wild restricted Rademacher 0.6930
+   classical test rejects 0.0000 when BP accepts (4 samples) and 0.0516 when BP rejects; HC3 0.0000 and 0.0536
+-- uniform, gamma 0.5, n 500: BP rejects 1.000, White rejects 1.000; median SE ratio HC3/classical 1.001, HC4 1.000, HC5 0.998
+   size: Classical 0.0485; HC0 0.0515; HC1 0.0505; HC2 0.0505; HC3 0.0500; HC4 0.0500; HC4m 0.0490; HC5 0.0505; Pretest BP -> HC3 0.0500; Pretest White -> HC3 0.0500; Wild restricted Rademacher 0.0500; Wild restricted Webb 0.0500; Wild unrestricted Rademacher 0.0490
+   power: Classical 0.7045; HC0 0.7070; HC1 0.7050; HC2 0.7040; HC3 0.7025; HC4 0.7030; HC4m 0.7025; HC5 0.7050; Pretest BP -> HC3 0.7025; Pretest White -> HC3 0.7025; Wild restricted Rademacher 0.6910
+   classical test rejects nan when BP accepts (0 samples) and 0.0485 when BP rejects; HC3 nan and 0.0500
+-- uniform, gamma 1.0, n 25: BP rejects 0.579, White rejects 0.388; median SE ratio HC3/classical 1.092, HC4 1.063, HC5 1.015
+   size: Classical 0.0765; HC0 0.0930; HC1 0.0800; HC2 0.0760; HC3 0.0635; HC4 0.0665; HC4m 0.0600; HC5 0.0780; Pretest BP -> HC3 0.0585; Pretest White -> HC3 0.0645; Wild restricted Rademacher 0.0590; Wild restricted Webb 0.0615; Wild unrestricted Rademacher 0.0645
+   power: Classical 0.6475; HC0 0.6525; HC1 0.6310; HC2 0.6195; HC3 0.5740; HC4 0.5870; HC4m 0.5595; HC5 0.6240; Pretest BP -> HC3 0.5705; Pretest White -> HC3 0.5815; Wild restricted Rademacher 0.5545
+   classical test rejects 0.0974 when BP accepts (842 samples) and 0.0613 when BP rejects; HC3 0.1093 and 0.0302
+-- uniform, gamma 1.0, n 50: BP rejects 0.933, White rejects 0.833; median SE ratio HC3/classical 1.079, HC4 1.065, HC5 1.041
+   size: Classical 0.0665; HC0 0.0640; HC1 0.0590; HC2 0.0560; HC3 0.0490; HC4 0.0515; HC4m 0.0480; HC5 0.0575; Pretest BP -> HC3 0.0450; Pretest White -> HC3 0.0465; Wild restricted Rademacher 0.0465; Wild restricted Webb 0.0475; Wild unrestricted Rademacher 0.0450
+   power: Classical 0.6425; HC0 0.6325; HC1 0.6185; HC2 0.6135; HC3 0.5850; HC4 0.5975; HC4m 0.5805; HC5 0.6180; Pretest BP -> HC3 0.5805; Pretest White -> HC3 0.5820; Wild restricted Rademacher 0.5770
+   classical test rejects 0.0970 when BP accepts (134 samples) and 0.0643 when BP rejects; HC3 0.1567 and 0.0413
+-- uniform, gamma 1.0, n 100: BP rejects 1.000, White rejects 1.000; median SE ratio HC3/classical 1.072, HC4 1.065, HC5 1.053
+   size: Classical 0.0755; HC0 0.0620; HC1 0.0595; HC2 0.0595; HC3 0.0560; HC4 0.0575; HC4m 0.0545; HC5 0.0595; Pretest BP -> HC3 0.0560; Pretest White -> HC3 0.0560; Wild restricted Rademacher 0.0545; Wild restricted Webb 0.0510; Wild unrestricted Rademacher 0.0525
+   power: Classical 0.6730; HC0 0.6360; HC1 0.6285; HC2 0.6245; HC3 0.6125; HC4 0.6195; HC4m 0.6075; HC5 0.6265; Pretest BP -> HC3 0.6125; Pretest White -> HC3 0.6120; Wild restricted Rademacher 0.6005
+   classical test rejects 0.0000 when BP accepts (1 samples) and 0.0755 when BP rejects; HC3 0.0000 and 0.0560
+-- uniform, gamma 1.0, n 200: BP rejects 1.000, White rejects 1.000; median SE ratio HC3/classical 1.072, HC4 1.068, HC5 1.062
+   size: Classical 0.0700; HC0 0.0565; HC1 0.0555; HC2 0.0550; HC3 0.0525; HC4 0.0545; HC4m 0.0520; HC5 0.0550; Pretest BP -> HC3 0.0525; Pretest White -> HC3 0.0525; Wild restricted Rademacher 0.0515; Wild restricted Webb 0.0485; Wild unrestricted Rademacher 0.0475
+   power: Classical 0.6840; HC0 0.6435; HC1 0.6400; HC2 0.6385; HC3 0.6350; HC4 0.6365; HC4m 0.6340; HC5 0.6395; Pretest BP -> HC3 0.6350; Pretest White -> HC3 0.6350; Wild restricted Rademacher 0.6265
+   classical test rejects nan when BP accepts (0 samples) and 0.0700 when BP rejects; HC3 nan and 0.0525
+-- uniform, gamma 1.0, n 500: BP rejects 1.000, White rejects 1.000; median SE ratio HC3/classical 1.072, HC4 1.071, HC5 1.068
+   size: Classical 0.0715; HC0 0.0575; HC1 0.0570; HC2 0.0565; HC3 0.0560; HC4 0.0565; HC4m 0.0560; HC5 0.0565; Pretest BP -> HC3 0.0560; Pretest White -> HC3 0.0560; Wild restricted Rademacher 0.0535; Wild restricted Webb 0.0530; Wild unrestricted Rademacher 0.0565
+   power: Classical 0.6835; HC0 0.6460; HC1 0.6445; HC2 0.6445; HC3 0.6425; HC4 0.6430; HC4m 0.6415; HC5 0.6445; Pretest BP -> HC3 0.6425; Pretest White -> HC3 0.6425; Wild restricted Rademacher 0.6380
+   classical test rejects nan when BP accepts (0 samples) and 0.0715 when BP rejects; HC3 nan and 0.0560
+-- uniform, gamma 1.5, n 25: BP rejects 0.763, White rejects 0.559; median SE ratio HC3/classical 1.157, HC4 1.125, HC5 1.073
+   size: Classical 0.1075; HC0 0.1145; HC1 0.0980; HC2 0.0945; HC3 0.0705; HC4 0.0775; HC4m 0.0650; HC5 0.0985; Pretest BP -> HC3 0.0665; Pretest White -> HC3 0.0740; Wild restricted Rademacher 0.0680; Wild restricted Webb 0.0660; Wild unrestricted Rademacher 0.0655
+   power: Classical 0.6335; HC0 0.6085; HC1 0.5825; HC2 0.5710; HC3 0.5310; HC4 0.5450; HC4m 0.5145; HC5 0.5785; Pretest BP -> HC3 0.5225; Pretest White -> HC3 0.5300; Wild restricted Rademacher 0.4995
+   classical test rejects 0.1287 when BP accepts (474 samples) and 0.1009 when BP rejects; HC3 0.1456 and 0.0472
+-- uniform, gamma 1.5, n 50: BP rejects 0.989, White rejects 0.945; median SE ratio HC3/classical 1.146, HC4 1.131, HC5 1.105
+   size: Classical 0.0885; HC0 0.0645; HC1 0.0580; HC2 0.0565; HC3 0.0495; HC4 0.0525; HC4m 0.0465; HC5 0.0575; Pretest BP -> HC3 0.0495; Pretest White -> HC3 0.0500; Wild restricted Rademacher 0.0490; Wild restricted Webb 0.0480; Wild unrestricted Rademacher 0.0460
+   power: Classical 0.6615; HC0 0.6045; HC1 0.5920; HC2 0.5860; HC3 0.5670; HC4 0.5750; HC4m 0.5580; HC5 0.5895; Pretest BP -> HC3 0.5670; Pretest White -> HC3 0.5670; Wild restricted Rademacher 0.5510
+   classical test rejects 0.0435 when BP accepts (23 samples) and 0.0890 when BP rejects; HC3 0.0435 and 0.0496
+-- uniform, gamma 1.5, n 100: BP rejects 1.000, White rejects 1.000; median SE ratio HC3/classical 1.151, HC4 1.144, HC5 1.130
+   size: Classical 0.1020; HC0 0.0690; HC1 0.0645; HC2 0.0645; HC3 0.0605; HC4 0.0620; HC4m 0.0600; HC5 0.0645; Pretest BP -> HC3 0.0605; Pretest White -> HC3 0.0605; Wild restricted Rademacher 0.0590; Wild restricted Webb 0.0550; Wild unrestricted Rademacher 0.0570
+   power: Classical 0.6855; HC0 0.6105; HC1 0.6050; HC2 0.6020; HC3 0.5915; HC4 0.5960; HC4m 0.5900; HC5 0.6035; Pretest BP -> HC3 0.5915; Pretest White -> HC3 0.5915; Wild restricted Rademacher 0.5720
+   classical test rejects nan when BP accepts (0 samples) and 0.1020 when BP rejects; HC3 nan and 0.0605
+-- uniform, gamma 1.5, n 200: BP rejects 1.000, White rejects 1.000; median SE ratio HC3/classical 1.153, HC4 1.149, HC5 1.142
+   size: Classical 0.0920; HC0 0.0535; HC1 0.0520; HC2 0.0515; HC3 0.0495; HC4 0.0505; HC4m 0.0485; HC5 0.0520; Pretest BP -> HC3 0.0495; Pretest White -> HC3 0.0495; Wild restricted Rademacher 0.0475; Wild restricted Webb 0.0465; Wild unrestricted Rademacher 0.0465
+   power: Classical 0.6905; HC0 0.5955; HC1 0.5920; HC2 0.5890; HC3 0.5820; HC4 0.5855; HC4m 0.5795; HC5 0.5905; Pretest BP -> HC3 0.5820; Pretest White -> HC3 0.5820; Wild restricted Rademacher 0.5710
+   classical test rejects nan when BP accepts (0 samples) and 0.0920 when BP rejects; HC3 nan and 0.0495
+-- uniform, gamma 1.5, n 500: BP rejects 1.000, White rejects 1.000; median SE ratio HC3/classical 1.148, HC4 1.147, HC5 1.144
+   size: Classical 0.0765; HC0 0.0425; HC1 0.0425; HC2 0.0425; HC3 0.0425; HC4 0.0425; HC4m 0.0420; HC5 0.0425; Pretest BP -> HC3 0.0425; Pretest White -> HC3 0.0425; Wild restricted Rademacher 0.0410; Wild restricted Webb 0.0415; Wild unrestricted Rademacher 0.0410
+   power: Classical 0.6865; HC0 0.5930; HC1 0.5915; HC2 0.5915; HC3 0.5895; HC4 0.5915; HC4m 0.5890; HC5 0.5915; Pretest BP -> HC3 0.5895; Pretest White -> HC3 0.5895; Wild restricted Rademacher 0.5825
+   classical test rejects nan when BP accepts (0 samples) and 0.0765 when BP rejects; HC3 nan and 0.0425
+-- lognormal, gamma 0.0, n 25: BP rejects 0.025, White rejects 0.029; median SE ratio HC3/classical 1.052, HC4 1.472, HC5 1.098
+   size: Classical 0.0540; HC0 0.1595; HC1 0.1465; HC2 0.1095; HC3 0.0690; HC4 0.0350; HC4m 0.0560; HC5 0.0600; Pretest BP -> HC3 0.0540; Pretest White -> HC3 0.0525; Wild restricted Rademacher 0.0380; Wild restricted Webb 0.0355; Wild unrestricted Rademacher 0.1620
+   power: Classical 0.4960; HC0 0.6170; HC1 0.5945; HC2 0.5335; HC3 0.3990; HC4 0.2310; HC4m 0.3390; HC5 0.3430; Pretest BP -> HC3 0.4860; Pretest White -> HC3 0.4860; Wild restricted Rademacher 0.2975
+   classical test rejects 0.0544 when BP accepts (1949 samples) and 0.0392 when BP rejects; HC3 0.0698 and 0.0392
+-- lognormal, gamma 0.0, n 50: BP rejects 0.026, White rejects 0.029; median SE ratio HC3/classical 1.025, HC4 1.290, HC5 1.198
+   size: Classical 0.0520; HC0 0.1310; HC1 0.1245; HC2 0.0930; HC3 0.0625; HC4 0.0390; HC4m 0.0545; HC5 0.0420; Pretest BP -> HC3 0.0510; Pretest White -> HC3 0.0500; Wild restricted Rademacher 0.0385; Wild restricted Webb 0.0415; Wild unrestricted Rademacher 0.1270
+   power: Classical 0.5325; HC0 0.6360; HC1 0.6245; HC2 0.5680; HC3 0.4670; HC4 0.2890; HC4m 0.4185; HC5 0.3075; Pretest BP -> HC3 0.5265; Pretest White -> HC3 0.5260; Wild restricted Rademacher 0.3755
+   classical test rejects 0.0514 when BP accepts (1947 samples) and 0.0755 when BP rejects; HC3 0.0632 and 0.0377
+-- lognormal, gamma 0.0, n 100: BP rejects 0.029, White rejects 0.034; median SE ratio HC3/classical 1.002, HC4 1.173, HC5 1.309
+   size: Classical 0.0495; HC0 0.0995; HC1 0.0975; HC2 0.0785; HC3 0.0610; HC4 0.0390; HC4m 0.0565; HC5 0.0270; Pretest BP -> HC3 0.0485; Pretest White -> HC3 0.0480; Wild restricted Rademacher 0.0450; Wild restricted Webb 0.0450; Wild unrestricted Rademacher 0.0975
+   power: Classical 0.5980; HC0 0.6640; HC1 0.6585; HC2 0.6180; HC3 0.5485; HC4 0.3985; HC4m 0.5110; HC5 0.3105; Pretest BP -> HC3 0.5920; Pretest White -> HC3 0.5920; Wild restricted Rademacher 0.4430
+   classical test rejects 0.0489 when BP accepts (1942 samples) and 0.0690 when BP rejects; HC3 0.0618 and 0.0345
+-- lognormal, gamma 0.0, n 200: BP rejects 0.035, White rejects 0.035; median SE ratio HC3/classical 1.003, HC4 1.116, HC5 1.423
+   size: Classical 0.0570; HC0 0.0990; HC1 0.0960; HC2 0.0815; HC3 0.0670; HC4 0.0445; HC4m 0.0600; HC5 0.0260; Pretest BP -> HC3 0.0580; Pretest White -> HC3 0.0575; Wild restricted Rademacher 0.0580; Wild restricted Webb 0.0560; Wild unrestricted Rademacher 0.0880
+   power: Classical 0.6455; HC0 0.6770; HC1 0.6745; HC2 0.6450; HC3 0.6040; HC4 0.4865; HC4m 0.5755; HC5 0.2855; Pretest BP -> HC3 0.6390; Pretest White -> HC3 0.6370; Wild restricted Rademacher 0.5325
+   classical test rejects 0.0570 when BP accepts (1929 samples) and 0.0563 when BP rejects; HC3 0.0664 and 0.0845
+-- lognormal, gamma 0.0, n 500: BP rejects 0.038, White rejects 0.050; median SE ratio HC3/classical 1.000, HC4 1.060, HC5 1.502
+   size: Classical 0.0455; HC0 0.0675; HC1 0.0675; HC2 0.0610; HC3 0.0555; HC4 0.0430; HC4m 0.0535; HC5 0.0185; Pretest BP -> HC3 0.0440; Pretest White -> HC3 0.0440; Wild restricted Rademacher 0.0535; Wild restricted Webb 0.0510; Wild unrestricted Rademacher 0.0665
+   power: Classical 0.6585; HC0 0.6805; HC1 0.6795; HC2 0.6550; HC3 0.6315; HC4 0.5755; HC4m 0.6190; HC5 0.2765; Pretest BP -> HC3 0.6530; Pretest White -> HC3 0.6485; Wild restricted Rademacher 0.5905
+   classical test rejects 0.0452 when BP accepts (1924 samples) and 0.0526 when BP rejects; HC3 0.0572 and 0.0132
+-- lognormal, gamma 0.5, n 25: BP rejects 0.398, White rejects 0.506; median SE ratio HC3/classical 1.655, HC4 2.654, HC5 1.761
+   size: Classical 0.2790; HC0 0.2695; HC1 0.2575; HC2 0.1825; HC3 0.1085; HC4 0.0595; HC4m 0.0855; HC5 0.0945; Pretest BP -> HC3 0.1965; Pretest White -> HC3 0.1725; Wild restricted Rademacher 0.0960; Wild restricted Webb 0.0745; Wild unrestricted Rademacher 0.2200
+   power: Classical 0.5170; HC0 0.4805; HC1 0.4570; HC2 0.3805; HC3 0.2540; HC4 0.1290; HC4m 0.2095; HC5 0.2215; Pretest BP -> HC3 0.3660; Pretest White -> HC3 0.3455; Wild restricted Rademacher 0.2455
+   classical test rejects 0.3090 when BP accepts (1204 samples) and 0.2337 when BP rejects; HC3 0.1628 and 0.0264
+-- lognormal, gamma 0.5, n 50: BP rejects 0.685, White rejects 0.859; median SE ratio HC3/classical 1.786, HC4 2.520, HC5 2.227
+   size: Classical 0.3465; HC0 0.2320; HC1 0.2260; HC2 0.1660; HC3 0.1135; HC4 0.0585; HC4m 0.0935; HC5 0.0660; Pretest BP -> HC3 0.1530; Pretest White -> HC3 0.1355; Wild restricted Rademacher 0.0630; Wild restricted Webb 0.0600; Wild unrestricted Rademacher 0.1785
+   power: Classical 0.5665; HC0 0.4425; HC1 0.4335; HC2 0.3655; HC3 0.2725; HC4 0.1490; HC4m 0.2360; HC5 0.1750; Pretest BP -> HC3 0.3190; Pretest White -> HC3 0.2940; Wild restricted Rademacher 0.2285
+   classical test rejects 0.3847 when BP accepts (629 samples) and 0.3290 when BP rejects; HC3 0.2591 and 0.0467
+-- lognormal, gamma 0.5, n 100: BP rejects 0.928, White rejects 0.986; median SE ratio HC3/classical 1.912, HC4 2.375, HC5 2.760
+   size: Classical 0.3905; HC0 0.2015; HC1 0.1970; HC2 0.1540; HC3 0.1100; HC4 0.0660; HC4m 0.0945; HC5 0.0495; Pretest BP -> HC3 0.1205; Pretest White -> HC3 0.1120; Wild restricted Rademacher 0.0655; Wild restricted Webb 0.0650; Wild unrestricted Rademacher 0.1370
+   power: Classical 0.5855; HC0 0.3835; HC1 0.3790; HC2 0.3195; HC3 0.2585; HC4 0.1725; HC4m 0.2365; HC5 0.1395; Pretest BP -> HC3 0.2685; Pretest White -> HC3 0.2600; Wild restricted Rademacher 0.2005
+   classical test rejects 0.5385 when BP accepts (143 samples) and 0.3791 when BP rejects; HC3 0.3916 and 0.0883
+-- lognormal, gamma 0.5, n 200: BP rejects 0.995, White rejects 1.000; median SE ratio HC3/classical 2.093, HC4 2.467, HC5 3.549
+   size: Classical 0.3990; HC0 0.1515; HC1 0.1495; HC2 0.1255; HC3 0.0945; HC4 0.0520; HC4m 0.0790; HC5 0.0275; Pretest BP -> HC3 0.0950; Pretest White -> HC3 0.0945; Wild restricted Rademacher 0.0565; Wild restricted Webb 0.0585; Wild unrestricted Rademacher 0.1015
+   power: Classical 0.6045; HC0 0.3255; HC1 0.3230; HC2 0.2785; HC3 0.2285; HC4 0.1535; HC4m 0.2125; HC5 0.0850; Pretest BP -> HC3 0.2280; Pretest White -> HC3 0.2285; Wild restricted Rademacher 0.1730
+   classical test rejects 0.7273 when BP accepts (11 samples) and 0.3972 when BP rejects; HC3 0.6364 and 0.0915
+-- lognormal, gamma 0.5, n 500: BP rejects 1.000, White rejects 1.000; median SE ratio HC3/classical 2.249, HC4 2.468, HC5 4.164
+   size: Classical 0.4180; HC0 0.0935; HC1 0.0925; HC2 0.0770; HC3 0.0610; HC4 0.0410; HC4m 0.0555; HC5 0.0125; Pretest BP -> HC3 0.0610; Pretest White -> HC3 0.0610; Wild restricted Rademacher 0.0445; Wild restricted Webb 0.0445; Wild unrestricted Rademacher 0.0600
+   power: Classical 0.6165; HC0 0.2660; HC1 0.2650; HC2 0.2360; HC3 0.2040; HC4 0.1590; HC4m 0.1920; HC5 0.0570; Pretest BP -> HC3 0.2040; Pretest White -> HC3 0.2040; Wild restricted Rademacher 0.1660
+   classical test rejects 1.0000 when BP accepts (1 samples) and 0.4177 when BP rejects; HC3 1.0000 and 0.0605
+-- lognormal, gamma 1.0, n 25: BP rejects 0.670, White rejects 0.806; median SE ratio HC3/classical 2.342, HC4 3.861, HC5 2.495
+   size: Classical 0.4820; HC0 0.3400; HC1 0.3215; HC2 0.2275; HC3 0.1250; HC4 0.0560; HC4m 0.0970; HC5 0.1005; Pretest BP -> HC3 0.2235; Pretest White -> HC3 0.1790; Wild restricted Rademacher 0.1060; Wild restricted Webb 0.0785; Wild unrestricted Rademacher 0.2360
+   power: Classical 0.6420; HC0 0.5045; HC1 0.4845; HC2 0.3905; HC3 0.2520; HC4 0.1315; HC4m 0.2050; HC5 0.2165; Pretest BP -> HC3 0.3530; Pretest White -> HC3 0.2975; Wild restricted Rademacher 0.2680
+   classical test rejects 0.5758 when BP accepts (660 samples) and 0.4358 when BP rejects; HC3 0.2773 and 0.0500
+-- lognormal, gamma 1.0, n 50: BP rejects 0.929, White rejects 0.988; median SE ratio HC3/classical 2.628, HC4 3.643, HC5 3.213
+   size: Classical 0.5505; HC0 0.2790; HC1 0.2720; HC2 0.1880; HC3 0.1210; HC4 0.0560; HC4m 0.0980; HC5 0.0670; Pretest BP -> HC3 0.1420; Pretest White -> HC3 0.1265; Wild restricted Rademacher 0.0655; Wild restricted Webb 0.0570; Wild unrestricted Rademacher 0.1735
+   power: Classical 0.6750; HC0 0.4080; HC1 0.4005; HC2 0.3290; HC3 0.2410; HC4 0.1335; HC4m 0.2090; HC5 0.1645; Pretest BP -> HC3 0.2595; Pretest White -> HC3 0.2435; Wild restricted Rademacher 0.1805
+   classical test rejects 0.6831 when BP accepts (142 samples) and 0.5404 when BP rejects; HC3 0.3873 and 0.1006
+-- lognormal, gamma 1.0, n 100: BP rejects 0.993, White rejects 1.000; median SE ratio HC3/classical 3.041, HC4 3.978, HC5 4.698
+   size: Classical 0.6165; HC0 0.2300; HC1 0.2250; HC2 0.1630; HC3 0.1095; HC4 0.0490; HC4m 0.0870; HC5 0.0355; Pretest BP -> HC3 0.1130; Pretest White -> HC3 0.1095; Wild restricted Rademacher 0.0675; Wild restricted Webb 0.0560; Wild unrestricted Rademacher 0.1275
+   power: Classical 0.6915; HC0 0.3380; HC1 0.3300; HC2 0.2720; HC3 0.1995; HC4 0.1100; HC4m 0.1680; HC5 0.0945; Pretest BP -> HC3 0.2020; Pretest White -> HC3 0.1995; Wild restricted Rademacher 0.1495
+   classical test rejects 0.8571 when BP accepts (14 samples) and 0.6148 when BP rejects; HC3 0.3571 and 0.1078
+-- lognormal, gamma 1.0, n 200: BP rejects 1.000, White rejects 1.000; median SE ratio HC3/classical 3.437, HC4 4.116, HC5 6.161
+   size: Classical 0.6525; HC0 0.1880; HC1 0.1850; HC2 0.1355; HC3 0.0960; HC4 0.0490; HC4m 0.0800; HC5 0.0240; Pretest BP -> HC3 0.0960; Pretest White -> HC3 0.0960; Wild restricted Rademacher 0.0485; Wild restricted Webb 0.0485; Wild unrestricted Rademacher 0.0950
+   power: Classical 0.6975; HC0 0.2615; HC1 0.2595; HC2 0.2055; HC3 0.1620; HC4 0.1010; HC4m 0.1475; HC5 0.0565; Pretest BP -> HC3 0.1620; Pretest White -> HC3 0.1620; Wild restricted Rademacher 0.1175
+   classical test rejects nan when BP accepts (0 samples) and 0.6525 when BP rejects; HC3 nan and 0.0960
+-- lognormal, gamma 1.0, n 500: BP rejects 1.000, White rejects 1.000; median SE ratio HC3/classical 4.040, HC4 4.506, HC5 8.651
+   size: Classical 0.6805; HC0 0.1420; HC1 0.1415; HC2 0.1060; HC3 0.0835; HC4 0.0565; HC4m 0.0770; HC5 0.0145; Pretest BP -> HC3 0.0835; Pretest White -> HC3 0.0835; Wild restricted Rademacher 0.0565; Wild restricted Webb 0.0540; Wild unrestricted Rademacher 0.0740
+   power: Classical 0.7360; HC0 0.2030; HC1 0.2025; HC2 0.1650; HC3 0.1345; HC4 0.0930; HC4m 0.1235; HC5 0.0335; Pretest BP -> HC3 0.1345; Pretest White -> HC3 0.1345; Wild restricted Rademacher 0.1030
+   classical test rejects nan when BP accepts (0 samples) and 0.6805 when BP rejects; HC3 nan and 0.0835
+-- lognormal, gamma 1.5, n 25: BP rejects 0.799, White rejects 0.890; median SE ratio HC3/classical 2.911, HC4 4.829, HC5 3.003
+   size: Classical 0.5955; HC0 0.3970; HC1 0.3820; HC2 0.2570; HC3 0.1135; HC4 0.0515; HC4m 0.0885; HC5 0.0960; Pretest BP -> HC3 0.1980; Pretest White -> HC3 0.1545; Wild restricted Rademacher 0.1175; Wild restricted Webb 0.0850; Wild unrestricted Rademacher 0.2495
+   power: Classical 0.8235; HC0 0.6855; HC1 0.6680; HC2 0.5805; HC3 0.4185; HC4 0.2390; HC4m 0.3480; HC5 0.3650; Pretest BP -> HC3 0.4760; Pretest White -> HC3 0.4370; Wild restricted Rademacher 0.5135
+   classical test rejects 0.7239 when BP accepts (402 samples) and 0.5632 when BP rejects; HC3 0.3035 and 0.0657
+-- lognormal, gamma 1.5, n 50: BP rejects 0.971, White rejects 0.997; median SE ratio HC3/classical 3.366, HC4 4.961, HC5 4.297
+   size: Classical 0.6475; HC0 0.3200; HC1 0.3150; HC2 0.2165; HC3 0.1115; HC4 0.0470; HC4m 0.0850; HC5 0.0615; Pretest BP -> HC3 0.1245; Pretest White -> HC3 0.1125; Wild restricted Rademacher 0.0745; Wild restricted Webb 0.0570; Wild unrestricted Rademacher 0.1605
+   power: Classical 0.8275; HC0 0.5440; HC1 0.5330; HC2 0.4425; HC3 0.3340; HC4 0.2065; HC4m 0.2920; HC5 0.2430; Pretest BP -> HC3 0.3440; Pretest White -> HC3 0.3345; Wild restricted Rademacher 0.3490
+   classical test rejects 0.8103 when BP accepts (58 samples) and 0.6426 when BP rejects; HC3 0.3621 and 0.1040
+-- lognormal, gamma 1.5, n 100: BP rejects 0.997, White rejects 1.000; median SE ratio HC3/classical 4.039, HC4 5.308, HC5 6.144
+   size: Classical 0.6950; HC0 0.2455; HC1 0.2410; HC2 0.1630; HC3 0.0900; HC4 0.0425; HC4m 0.0740; HC5 0.0320; Pretest BP -> HC3 0.0915; Pretest White -> HC3 0.0900; Wild restricted Rademacher 0.0540; Wild restricted Webb 0.0445; Wild unrestricted Rademacher 0.1030
+   power: Classical 0.7955; HC0 0.4175; HC1 0.4125; HC2 0.3270; HC3 0.2425; HC4 0.1440; HC4m 0.2145; HC5 0.1280; Pretest BP -> HC3 0.2445; Pretest White -> HC3 0.2425; Wild restricted Rademacher 0.2370
+   classical test rejects 1.0000 when BP accepts (6 samples) and 0.6941 when BP rejects; HC3 0.5000 and 0.0888
+-- lognormal, gamma 1.5, n 200: BP rejects 1.000, White rejects 1.000; median SE ratio HC3/classical 4.712, HC4 5.761, HC5 8.901
+   size: Classical 0.7355; HC0 0.2080; HC1 0.2060; HC2 0.1425; HC3 0.0945; HC4 0.0405; HC4m 0.0765; HC5 0.0230; Pretest BP -> HC3 0.0950; Pretest White -> HC3 0.0945; Wild restricted Rademacher 0.0530; Wild restricted Webb 0.0555; Wild unrestricted Rademacher 0.0735
+   power: Classical 0.7970; HC0 0.3075; HC1 0.3015; HC2 0.2290; HC3 0.1750; HC4 0.1130; HC4m 0.1580; HC5 0.0710; Pretest BP -> HC3 0.1755; Pretest White -> HC3 0.1750; Wild restricted Rademacher 0.1555
+   classical test rejects 1.0000 when BP accepts (1 samples) and 0.7354 when BP rejects; HC3 0.0000 and 0.0945
+-- lognormal, gamma 1.5, n 500: BP rejects 1.000, White rejects 1.000; median SE ratio HC3/classical 5.644, HC4 6.382, HC5 12.455
+   size: Classical 0.7805; HC0 0.1260; HC1 0.1250; HC2 0.0840; HC3 0.0635; HC4 0.0445; HC4m 0.0580; HC5 0.0160; Pretest BP -> HC3 0.0635; Pretest White -> HC3 0.0635; Wild restricted Rademacher 0.0495; Wild restricted Webb 0.0525; Wild unrestricted Rademacher 0.0630
+   power: Classical 0.8120; HC0 0.2080; HC1 0.2080; HC2 0.1660; HC3 0.1335; HC4 0.0985; HC4m 0.1255; HC5 0.0450; Pretest BP -> HC3 0.1335; Pretest White -> HC3 0.1335; Wild restricted Rademacher 0.1220
+   classical test rejects nan when BP accepts (0 samples) and 0.7805 when BP rejects; HC3 nan and 0.0635
+-- income, gamma 0.0, n 25: BP rejects 0.036, White rejects 0.028; median SE ratio HC3/classical 1.031, HC4 1.191, HC5 0.994
+   size: Classical 0.0510; HC0 0.1155; HC1 0.1015; HC2 0.0840; HC3 0.0590; HC4 0.0390; HC4m 0.0525; HC5 0.0675; Pretest BP -> HC3 0.0510; Pretest White -> HC3 0.0510; Wild restricted Rademacher 0.0440; Wild restricted Webb 0.0480; Wild unrestricted Rademacher 0.1040
+   power: Classical 0.6015; HC0 0.6880; HC1 0.6645; HC2 0.6155; HC3 0.5270; HC4 0.4045; HC4m 0.4920; HC5 0.5285; Pretest BP -> HC3 0.5920; Pretest White -> HC3 0.5940; Wild restricted Rademacher 0.4710
+   classical test rejects 0.0524 when BP accepts (1928 samples) and 0.0139 when BP rejects; HC3 0.0607 and 0.0139
+-- income, gamma 0.0, n 50: BP rejects 0.043, White rejects 0.039; median SE ratio HC3/classical 1.010, HC4 1.119, HC5 1.024
+   size: Classical 0.0520; HC0 0.0975; HC1 0.0915; HC2 0.0810; HC3 0.0610; HC4 0.0465; HC4m 0.0535; HC5 0.0605; Pretest BP -> HC3 0.0505; Pretest White -> HC3 0.0500; Wild restricted Rademacher 0.0465; Wild restricted Webb 0.0510; Wild unrestricted Rademacher 0.0795
+   power: Classical 0.6480; HC0 0.7050; HC1 0.6870; HC2 0.6560; HC3 0.6075; HC4 0.5070; HC4m 0.5800; HC5 0.5700; Pretest BP -> HC3 0.6395; Pretest White -> HC3 0.6395; Wild restricted Rademacher 0.5430
+   classical test rejects 0.0502 when BP accepts (1913 samples) and 0.0920 when BP rejects; HC3 0.0612 and 0.0575
+-- income, gamma 0.0, n 100: BP rejects 0.040, White rejects 0.048; median SE ratio HC3/classical 1.009, HC4 1.068, HC5 1.029
+   size: Classical 0.0475; HC0 0.0650; HC1 0.0640; HC2 0.0585; HC3 0.0545; HC4 0.0420; HC4m 0.0510; HC5 0.0500; Pretest BP -> HC3 0.0460; Pretest White -> HC3 0.0470; Wild restricted Rademacher 0.0480; Wild restricted Webb 0.0505; Wild unrestricted Rademacher 0.0560
+   power: Classical 0.6760; HC0 0.6945; HC1 0.6885; HC2 0.6685; HC3 0.6415; HC4 0.5885; HC4m 0.6280; HC5 0.5980; Pretest BP -> HC3 0.6705; Pretest White -> HC3 0.6690; Wild restricted Rademacher 0.5935
+   classical test rejects 0.0469 when BP accepts (1921 samples) and 0.0633 when BP rejects; HC3 0.0557 and 0.0253
+-- income, gamma 0.0, n 200: BP rejects 0.048, White rejects 0.046; median SE ratio HC3/classical 1.002, HC4 1.035, HC5 1.022
+   size: Classical 0.0565; HC0 0.0670; HC1 0.0650; HC2 0.0615; HC3 0.0555; HC4 0.0505; HC4m 0.0555; HC5 0.0515; Pretest BP -> HC3 0.0560; Pretest White -> HC3 0.0560; Wild restricted Rademacher 0.0555; Wild restricted Webb 0.0560; Wild unrestricted Rademacher 0.0555
+   power: Classical 0.6950; HC0 0.7100; HC1 0.7040; HC2 0.6960; HC3 0.6780; HC4 0.6505; HC4m 0.6710; HC5 0.6540; Pretest BP -> HC3 0.6895; Pretest White -> HC3 0.6880; Wild restricted Rademacher 0.6510
+   classical test rejects 0.0567 when BP accepts (1905 samples) and 0.0526 when BP rejects; HC3 0.0562 and 0.0421
+-- income, gamma 0.0, n 500: BP rejects 0.048, White rejects 0.045; median SE ratio HC3/classical 1.000, HC4 1.014, HC5 1.011
+   size: Classical 0.0495; HC0 0.0555; HC1 0.0540; HC2 0.0535; HC3 0.0495; HC4 0.0460; HC4m 0.0480; HC5 0.0455; Pretest BP -> HC3 0.0495; Pretest White -> HC3 0.0490; Wild restricted Rademacher 0.0485; Wild restricted Webb 0.0480; Wild unrestricted Rademacher 0.0455
+   power: Classical 0.7055; HC0 0.7065; HC1 0.7055; HC2 0.7020; HC3 0.6975; HC4 0.6865; HC4m 0.6930; HC5 0.6875; Pretest BP -> HC3 0.7040; Pretest White -> HC3 0.7020; Wild restricted Rademacher 0.6830
+   classical test rejects 0.0488 when BP accepts (1905 samples) and 0.0632 when BP rejects; HC3 0.0488 and 0.0632
+-- income, gamma 0.5, n 25: BP rejects 0.216, White rejects 0.184; median SE ratio HC3/classical 1.257, HC4 1.583, HC5 1.217
+   size: Classical 0.1395; HC0 0.1610; HC1 0.1465; HC2 0.1165; HC3 0.0855; HC4 0.0500; HC4m 0.0680; HC5 0.0845; Pretest BP -> HC3 0.1135; Pretest White -> HC3 0.1205; Wild restricted Rademacher 0.0670; Wild restricted Webb 0.0630; Wild unrestricted Rademacher 0.1325
+   power: Classical 0.5805; HC0 0.5945; HC1 0.5705; HC2 0.5170; HC3 0.4210; HC4 0.2855; HC4m 0.3720; HC5 0.4200; Pretest BP -> HC3 0.4955; Pretest White -> HC3 0.5115; Wild restricted Rademacher 0.3930
+   classical test rejects 0.1441 when BP accepts (1568 samples) and 0.1227 when BP rejects; HC3 0.1084 and 0.0023
+-- income, gamma 0.5, n 50: BP rejects 0.462, White rejects 0.467; median SE ratio HC3/classical 1.315, HC4 1.556, HC5 1.358
+   size: Classical 0.1445; HC0 0.1245; HC1 0.1210; HC2 0.1010; HC3 0.0790; HC4 0.0535; HC4m 0.0720; HC5 0.0720; Pretest BP -> HC3 0.0955; Pretest White -> HC3 0.1045; Wild restricted Rademacher 0.0550; Wild restricted Webb 0.0565; Wild unrestricted Rademacher 0.0920
+   power: Classical 0.6175; HC0 0.5420; HC1 0.5310; HC2 0.4860; HC3 0.4310; HC4 0.3425; HC4m 0.4045; HC5 0.4010; Pretest BP -> HC3 0.4610; Pretest White -> HC3 0.4770; Wild restricted Rademacher 0.3845
+   classical test rejects 0.1616 when BP accepts (1077 samples) and 0.1246 when BP rejects; HC3 0.1309 and 0.0184
+-- income, gamma 0.5, n 100: BP rejects 0.782, White rejects 0.798; median SE ratio HC3/classical 1.353, HC4 1.491, HC5 1.419
+   size: Classical 0.1575; HC0 0.0935; HC1 0.0920; HC2 0.0825; HC3 0.0675; HC4 0.0495; HC4m 0.0620; HC5 0.0580; Pretest BP -> HC3 0.0705; Pretest White -> HC3 0.0755; Wild restricted Rademacher 0.0500; Wild restricted Webb 0.0550; Wild unrestricted Rademacher 0.0630
+   power: Classical 0.6425; HC0 0.5075; HC1 0.4995; HC2 0.4775; HC3 0.4365; HC4 0.3695; HC4m 0.4155; HC5 0.3960; Pretest BP -> HC3 0.4450; Pretest White -> HC3 0.4495; Wild restricted Rademacher 0.3855
+   classical test rejects 0.1468 when BP accepts (436 samples) and 0.1605 when BP rejects; HC3 0.1330 and 0.0492
+-- income, gamma 0.5, n 200: BP rejects 0.976, White rejects 0.988; median SE ratio HC3/classical 1.385, HC4 1.456, HC5 1.429
+   size: Classical 0.1640; HC0 0.0805; HC1 0.0800; HC2 0.0745; HC3 0.0660; HC4 0.0525; HC4m 0.0625; HC5 0.0600; Pretest BP -> HC3 0.0660; Pretest White -> HC3 0.0665; Wild restricted Rademacher 0.0540; Wild restricted Webb 0.0510; Wild unrestricted Rademacher 0.0600
+   power: Classical 0.6330; HC0 0.4590; HC1 0.4555; HC2 0.4330; HC3 0.4150; HC4 0.3730; HC4m 0.4025; HC5 0.3815; Pretest BP -> HC3 0.4155; Pretest White -> HC3 0.4150; Wild restricted Rademacher 0.3765
+   classical test rejects 0.1633 when BP accepts (49 samples) and 0.1640 when BP rejects; HC3 0.1633 and 0.0636
+-- income, gamma 0.5, n 500: BP rejects 1.000, White rejects 1.000; median SE ratio HC3/classical 1.414, HC4 1.447, HC5 1.441
+   size: Classical 0.1685; HC0 0.0610; HC1 0.0610; HC2 0.0585; HC3 0.0565; HC4 0.0540; HC4m 0.0565; HC5 0.0520; Pretest BP -> HC3 0.0565; Pretest White -> HC3 0.0565; Wild restricted Rademacher 0.0510; Wild restricted Webb 0.0550; Wild unrestricted Rademacher 0.0535
+   power: Classical 0.6330; HC0 0.4220; HC1 0.4205; HC2 0.4130; HC3 0.4080; HC4 0.3950; HC4m 0.4045; HC5 0.3935; Pretest BP -> HC3 0.4080; Pretest White -> HC3 0.4080; Wild restricted Rademacher 0.3930
+   classical test rejects nan when BP accepts (0 samples) and 0.1685 when BP rejects; HC3 nan and 0.0565
+-- income, gamma 1.0, n 25: BP rejects 0.525, White rejects 0.503; median SE ratio HC3/classical 1.550, HC4 2.005, HC5 1.514
+   size: Classical 0.2725; HC0 0.2245; HC1 0.2105; HC2 0.1665; HC3 0.1055; HC4 0.0675; HC4m 0.0910; HC5 0.1185; Pretest BP -> HC3 0.1495; Pretest White -> HC3 0.1585; Wild restricted Rademacher 0.0810; Wild restricted Webb 0.0740; Wild unrestricted Rademacher 0.1520
+   power: Classical 0.6225; HC0 0.5350; HC1 0.5140; HC2 0.4525; HC3 0.3620; HC4 0.2635; HC4m 0.3225; HC5 0.3615; Pretest BP -> HC3 0.4200; Pretest White -> HC3 0.4395; Wild restricted Rademacher 0.3760
+   classical test rejects 0.2824 when BP accepts (949 samples) and 0.2636 when BP rejects; HC3 0.1897 and 0.0295
+-- income, gamma 1.0, n 50: BP rejects 0.866, White rejects 0.896; median SE ratio HC3/classical 1.713, HC4 2.090, HC5 1.791
+   size: Classical 0.3035; HC0 0.1530; HC1 0.1440; HC2 0.1140; HC3 0.0905; HC4 0.0605; HC4m 0.0830; HC5 0.0820; Pretest BP -> HC3 0.0935; Pretest White -> HC3 0.0980; Wild restricted Rademacher 0.0530; Wild restricted Webb 0.0555; Wild unrestricted Rademacher 0.0910
+   power: Classical 0.6060; HC0 0.4485; HC1 0.4365; HC2 0.3900; HC3 0.3255; HC4 0.2390; HC4m 0.3020; HC5 0.2995; Pretest BP -> HC3 0.3310; Pretest White -> HC3 0.3335; Wild restricted Rademacher 0.2895
+   classical test rejects 0.2761 when BP accepts (268 samples) and 0.3077 when BP rejects; HC3 0.2537 and 0.0652
+-- income, gamma 1.0, n 100: BP rejects 0.996, White rejects 0.998; median SE ratio HC3/classical 1.853, HC4 2.078, HC5 1.962
+   size: Classical 0.3180; HC0 0.1015; HC1 0.0980; HC2 0.0825; HC3 0.0670; HC4 0.0445; HC4m 0.0605; HC5 0.0545; Pretest BP -> HC3 0.0665; Pretest White -> HC3 0.0670; Wild restricted Rademacher 0.0475; Wild restricted Webb 0.0490; Wild unrestricted Rademacher 0.0555
+   power: Classical 0.6165; HC0 0.3585; HC1 0.3535; HC2 0.3315; HC3 0.3080; HC4 0.2410; HC4m 0.2905; HC5 0.2695; Pretest BP -> HC3 0.3080; Pretest White -> HC3 0.3090; Wild restricted Rademacher 0.2650
+   classical test rejects 0.1250 when BP accepts (8 samples) and 0.3188 when BP rejects; HC3 0.2500 and 0.0663
+-- income, gamma 1.0, n 200: BP rejects 1.000, White rejects 1.000; median SE ratio HC3/classical 1.932, HC4 2.054, HC5 2.012
+   size: Classical 0.3360; HC0 0.0870; HC1 0.0865; HC2 0.0780; HC3 0.0675; HC4 0.0540; HC4m 0.0655; HC5 0.0560; Pretest BP -> HC3 0.0675; Pretest White -> HC3 0.0675; Wild restricted Rademacher 0.0515; Wild restricted Webb 0.0515; Wild unrestricted Rademacher 0.0575
+   power: Classical 0.6100; HC0 0.3145; HC1 0.3100; HC2 0.2935; HC3 0.2715; HC4 0.2410; HC4m 0.2645; HC5 0.2435; Pretest BP -> HC3 0.2715; Pretest White -> HC3 0.2715; Wild restricted Rademacher 0.2395
+   classical test rejects nan when BP accepts (0 samples) and 0.3360 when BP rejects; HC3 nan and 0.0675
+-- income, gamma 1.0, n 500: BP rejects 1.000, White rejects 1.000; median SE ratio HC3/classical 1.995, HC4 2.050, HC5 2.047
+   size: Classical 0.3320; HC0 0.0645; HC1 0.0640; HC2 0.0625; HC3 0.0600; HC4 0.0535; HC4m 0.0580; HC5 0.0535; Pretest BP -> HC3 0.0600; Pretest White -> HC3 0.0600; Wild restricted Rademacher 0.0525; Wild restricted Webb 0.0525; Wild unrestricted Rademacher 0.0550
+   power: Classical 0.6140; HC0 0.2710; HC1 0.2705; HC2 0.2600; HC3 0.2525; HC4 0.2380; HC4m 0.2500; HC5 0.2385; Pretest BP -> HC3 0.2525; Pretest White -> HC3 0.2525; Wild restricted Rademacher 0.2360
+   classical test rejects nan when BP accepts (0 samples) and 0.3320 when BP rejects; HC3 nan and 0.0600
+-- income, gamma 1.5, n 25: BP rejects 0.718, White rejects 0.708; median SE ratio HC3/classical 1.887, HC4 2.530, HC5 1.826
+   size: Classical 0.3940; HC0 0.2660; HC1 0.2510; HC2 0.1750; HC3 0.1065; HC4 0.0660; HC4m 0.0925; HC5 0.1065; Pretest BP -> HC3 0.1425; Pretest White -> HC3 0.1575; Wild restricted Rademacher 0.0905; Wild restricted Webb 0.0780; Wild unrestricted Rademacher 0.1405
+   power: Classical 0.6350; HC0 0.5100; HC1 0.4950; HC2 0.4280; HC3 0.3395; HC4 0.2265; HC4m 0.2985; HC5 0.3370; Pretest BP -> HC3 0.3605; Pretest White -> HC3 0.3755; Wild restricted Rademacher 0.3580
+   classical test rejects 0.3936 when BP accepts (564 samples) and 0.3942 when BP rejects; HC3 0.2660 and 0.0439
+-- income, gamma 1.5, n 50: BP rejects 0.974, White rejects 0.981; median SE ratio HC3/classical 2.158, HC4 2.699, HC5 2.256
+   size: Classical 0.4325; HC0 0.1785; HC1 0.1695; HC2 0.1315; HC3 0.0955; HC4 0.0555; HC4m 0.0805; HC5 0.0820; Pretest BP -> HC3 0.0960; Pretest White -> HC3 0.0985; Wild restricted Rademacher 0.0670; Wild restricted Webb 0.0690; Wild unrestricted Rademacher 0.0870
+   power: Classical 0.6240; HC0 0.3885; HC1 0.3775; HC2 0.3355; HC3 0.2825; HC4 0.1965; HC4m 0.2575; HC5 0.2560; Pretest BP -> HC3 0.2820; Pretest White -> HC3 0.2845; Wild restricted Rademacher 0.2530
+   classical test rejects 0.3208 when BP accepts (53 samples) and 0.4355 when BP rejects; HC3 0.3019 and 0.0899
+-- income, gamma 1.5, n 100: BP rejects 1.000, White rejects 1.000; median SE ratio HC3/classical 2.353, HC4 2.680, HC5 2.509
+   size: Classical 0.4295; HC0 0.1190; HC1 0.1170; HC2 0.0980; HC3 0.0815; HC4 0.0550; HC4m 0.0735; HC5 0.0650; Pretest BP -> HC3 0.0815; Pretest White -> HC3 0.0815; Wild restricted Rademacher 0.0535; Wild restricted Webb 0.0585; Wild unrestricted Rademacher 0.0670
+   power: Classical 0.6495; HC0 0.3085; HC1 0.3035; HC2 0.2765; HC3 0.2520; HC4 0.1960; HC4m 0.2400; HC5 0.2215; Pretest BP -> HC3 0.2520; Pretest White -> HC3 0.2520; Wild restricted Rademacher 0.2180
+   classical test rejects nan when BP accepts (0 samples) and 0.4295 when BP rejects; HC3 nan and 0.0815
+-- income, gamma 1.5, n 200: BP rejects 1.000, White rejects 1.000; median SE ratio HC3/classical 2.517, HC4 2.692, HC5 2.626
+   size: Classical 0.4645; HC0 0.0850; HC1 0.0830; HC2 0.0750; HC3 0.0650; HC4 0.0490; HC4m 0.0595; HC5 0.0520; Pretest BP -> HC3 0.0650; Pretest White -> HC3 0.0650; Wild restricted Rademacher 0.0505; Wild restricted Webb 0.0505; Wild unrestricted Rademacher 0.0530
+   power: Classical 0.6340; HC0 0.2435; HC1 0.2405; HC2 0.2265; HC3 0.2130; HC4 0.1830; HC4m 0.2080; HC5 0.1930; Pretest BP -> HC3 0.2130; Pretest White -> HC3 0.2130; Wild restricted Rademacher 0.1860
+   classical test rejects nan when BP accepts (0 samples) and 0.4645 when BP rejects; HC3 nan and 0.0650
+-- income, gamma 1.5, n 500: BP rejects 1.000, White rejects 1.000; median SE ratio HC3/classical 2.579, HC4 2.659, HC5 2.651
+   size: Classical 0.4970; HC0 0.0720; HC1 0.0720; HC2 0.0680; HC3 0.0620; HC4 0.0550; HC4m 0.0605; HC5 0.0555; Pretest BP -> HC3 0.0620; Pretest White -> HC3 0.0620; Wild restricted Rademacher 0.0525; Wild restricted Webb 0.0530; Wild unrestricted Rademacher 0.0550
+   power: Classical 0.6270; HC0 0.2040; HC1 0.2035; HC2 0.1965; HC3 0.1910; HC4 0.1765; HC4m 0.1870; HC5 0.1765; Pretest BP -> HC3 0.1910; Pretest White -> HC3 0.1910; Wild restricted Rademacher 0.1755
+   classical test rejects nan when BP accepts (0 samples) and 0.4970 when BP rejects; HC3 nan and 0.0620
