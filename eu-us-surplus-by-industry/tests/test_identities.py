@@ -54,3 +54,18 @@ def test_subindustries_add_up_for_services() -> None:
 def test_country_contributions_add_up() -> None:
     c = pd.read_csv(RES / "countries_2021.csv", index_col=0)
     assert np.allclose(c[["L", "K", "J_M_N", "C", "other"]].sum(axis=1), c.gap, atol=1e-4)
+
+
+def test_four_accountings_reconcile() -> None:
+    for y in analysis.YEARS:
+        v = pd.read_csv(RES / f"variants_{y}.csv", index_col=0)
+        hn = sum(analysis.total_hours(c, y) for c in analysis.NW)
+        hu = analysis.total_hours("USA", y)
+        nw, us = analysis.group(y, analysis.SECTIONS)
+        imp_gap = nw["IMP"] / hn - us["IMP"] / hu
+        cfc_gap = nw["CFC"].fillna(0) / hn - us["CFC"].fillna(0) / hu
+        assert np.allclose(v.net_unimputed - v.net_imputed, imp_gap.reindex(v.index), atol=1e-3)
+        assert np.allclose(v.gross_imputed - v.net_imputed, cfc_gap.reindex(v.index), atol=0.02)
+        assert np.allclose(v.gross_unimputed - v.gross_imputed, imp_gap.reindex(v.index), atol=1e-3)
+        t = pd.read_csv(RES / f"contributions_{y}.csv", index_col=0)
+        assert np.allclose(v.net_imputed, t.contribution, atol=1e-3)

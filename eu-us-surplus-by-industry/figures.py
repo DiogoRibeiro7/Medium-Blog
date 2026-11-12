@@ -55,27 +55,32 @@ def finish(fig, name: str, title: str, subtitle: str, source: str = SOURCE) -> N
 
 
 def fig1() -> None:
-    t = pd.read_csv(RES / "contributions_2021.csv", index_col=0)
-    g = pd.read_csv(RES / "gross_contributions_2021.csv", index_col=0)["gross_contribution"]
+    t = pd.read_csv(RES / "variants_2021.csv", index_col=0)
+    keys = ["net_imputed", "gross_imputed", "net_unimputed"]
+    totals = t[keys].sum()
     t = t.drop(index=[s for s in ("T",) if s in t.index])
-    t["gross"] = g.reindex(t.index)
-    t = t.sort_values("contribution", ascending=False).reset_index()
-    fig, ax = plt.subplots(figsize=(10, 6.6))
-    fig.subplots_adjust(left=0.3, right=0.96, top=0.86, bottom=0.12)
+    t = t.sort_values("net_imputed", ascending=False).reset_index()
+    fig, ax = plt.subplots(figsize=(10, 6.9))
+    fig.subplots_adjust(left=0.3, right=0.96, top=0.86, bottom=0.15)
     y = np.arange(len(t))
     for i, r in t.iterrows():
-        ax.hlines(i, min(r.contribution, r.gross), max(r.contribution, r.gross), color=BASE, linewidth=2)
-    ax.scatter(t.contribution, y, s=58, color=SLOTS[0], edgecolor=SURFACE, linewidth=2, zorder=3,
-               label="Net of depreciation")
-    ax.scatter(t.gross, y, s=60, facecolor="none", edgecolor=SLOTS[1], linewidth=2, zorder=4,
-               label="Gross of depreciation")
+        ax.hlines(i, min(r[k] for k in keys), max(r[k] for k in keys), color=BASE, linewidth=2)
+    ax.scatter(t.net_unimputed, y, s=46, marker="D", color=SLOTS[2], edgecolor=SURFACE, linewidth=1.5, zorder=3,
+               label="Net, no self-employed imputation")
+    ax.scatter(t.gross_imputed, y, s=60, facecolor="none", edgecolor=SLOTS[1], linewidth=2, zorder=4,
+               label="Gross of depreciation, imputed")
+    ax.scatter(t.net_imputed, y, s=58, color=SLOTS[0], edgecolor=SURFACE, linewidth=2, zorder=5,
+               label="Baseline: net of depreciation, imputed")
     ax.axvline(0, color=INK2, linewidth=1)
     ax.set_yticks(y, t.name, fontsize=9)
     ax.set_xlabel("Contribution to the gap in operating surplus per hour, North-West minus US, USD at GDP PPP")
-    ax.legend(loc="lower left", fontsize=8.5)
+    handles, labels = ax.get_legend_handles_labels()
+    ax.legend(handles[::-1], labels[::-1], loc="lower center", bbox_to_anchor=(0.5, 1.0), ncol=3, fontsize=8.5,
+              frameon=False, handletextpad=0.3, columnspacing=1.2)
     tidy(ax, "x")
     finish(fig, "fig1_gap_by_industry_2021", "Where North-West Europe's lower operating surplus per hour sits, 2021",
-           "Net gap 8.89 USD per hour; real estate is the largest net contributor and shrinks once depreciation is left in")
+           f"Total gap {totals.net_imputed:.2f} (baseline), {totals.gross_imputed:.2f} gross, "
+           f"{totals.net_unimputed:.2f} without the imputation, USD per hour; finance and information lower in all three")
 
 
 def fig2() -> None:

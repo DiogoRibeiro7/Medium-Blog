@@ -59,12 +59,13 @@ def col(frame: pd.DataFrame, name: str) -> pd.Series:
     return frame[name] if name in frame.columns else pd.Series(np.nan, index=frame.index)
 
 
-def accounts(c: str, y: int, acts: list[str], gross: bool = False) -> pd.DataFrame:
+def accounts(c: str, y: int, acts: list[str], gross: bool = False, impute: bool = True) -> pd.DataFrame:
     """Income-side accounts by activity, converted to US dollars at GDP PPP (millions; hours in millions).
 
     LC  = compensation of employees + imputed labour income of the self-employed (employee pay per hour)
     CFC = consumption of fixed capital
-    NR  = net operating surplus and mixed income minus the imputation (gross variant: before CFC)
+    NR  = net operating surplus and mixed income minus the imputation (gross variant: before CFC;
+          impute=False: mixed income left whole in the remainder)
     FCVA = value added at factor cost = compensation of employees + gross operating surplus and mixed income
     """
     X = P.loc[(c, y)].reindex(acts)
@@ -81,6 +82,8 @@ def accounts(c: str, y: int, acts: list[str], gross: bool = False) -> pd.DataFra
     nos = nos.where(gos.notna() | d1.isna(), 0.0)
     gos = gos.where(gos.notna() | d1.isna(), 0.0)
     imp = (d1 / sal_h * self_h).fillna(0)
+    if not impute:
+        imp = imp * 0.0
     out = pd.DataFrame({"LC": d1 + imp, "CFC": cfc, "NR": (gos if gross else nos) - imp, "FCVA": d1 + gos,
                         "H": sal_h + self_h.fillna(0), "IMP": imp, "D1": d1, "GOS": gos})
     money = ["LC", "CFC", "NR", "FCVA", "IMP", "D1", "GOS"]
@@ -88,10 +91,18 @@ def accounts(c: str, y: int, acts: list[str], gross: bool = False) -> pd.DataFra
     return out
 
 
-def group(y: int, acts: list[str], gross: bool = False) -> tuple[pd.DataFrame, pd.DataFrame]:
-    us = accounts("USA", y, acts, gross)
-    nw = sum(accounts(c, y, acts, gross).fillna(0) for c in NW)
+def group(y: int, acts: list[str], gross: bool = False, impute: bool = True) -> tuple[pd.DataFrame, pd.DataFrame]:
+    us = accounts("USA", y, acts, gross, impute)
+    nw = sum(accounts(c, y, acts, gross, impute).fillna(0) for c in NW)
     return nw, us
+
+
+def self_employed_hours(c: str, y: int, acts: list[str]) -> tuple[pd.Series, pd.Series]:
+    """Hours of the self-employed and of employees by activity (millions)."""
+    X = P.loc[(c, y)].reindex(acts)
+    sal_h, sal_ps = col(X, "SAL_H"), col(X, "SAL_PS")
+    self_h = col(X, "SELF_PS") * sal_h / sal_ps if c == "USA" else col(X, "EMP_H") - sal_h
+    return self_h.clip(lower=0).fillna(0), sal_h.fillna(0)
 
 
 def total_hours(c: str, y: int) -> float:
@@ -120,6 +131,12 @@ def main() -> None:
     say("Total hours worked, millions, 2021: NW (8 countries); US", f"{sum(total_hours(c, 2021) for c in NW):,.0f}; "
         f"{total_hours('USA', 2021):,.0f}")
     say("GDP PPP 2021, national currency per USD: " + "; ".join(NW), "; ".join(f"{PPP.loc[2021, c]:.3f}" for c in NW))
+    parts = []
+    for c in NW + ["USA"]:
+        X = P.loc[(c, 2021, "_T")]
+        parts.append(f"{c} {1000 * (X['EMP_H'] - X['SAL_H']) / (X['EMP_PS'] - X['SAL_PS']):,.0f}; "
+                     f"{1000 * X['SAL_H'] / X['SAL_PS']:,.0f}")
+    say("Hours per person per year, total economy 2021, self-employed; employees", " | ".join(parts))
 
     # ------------------------------------------------------------------ per-hour accounts
     section("Income side of an hour of factor-cost value added, USD at GDP PPP (sum of 19 sections / total hours)")
@@ -269,10 +286,50 @@ def main() -> None:
         say(f"{y} gross remainder per hour: NW; US; gap", f"{nw['NR'].sum() / hn:.1f}; {us['NR'].sum() / hu:.1f}; {g.sum():.2f}")
         say(f"{y} shares of the gross gap: J+K+M+N; real estate L; manufacturing C",
             f"{g[GROUP_JKMN].sum() / g.sum():.2f}; {g['L'] / g.sum():.2f}; {g['C'] / g.sum():.2f}")
-        pd.DataFrame({"gross_contribution": g}).to_csv(RES / f"gross_contributions_{y}.csv", float_format="%.4f")
         cf = nw["CFC"] / hn - us["CFC"] / hu
-        say(f"{y} depreciation per hour, gap NW - US: total; real estate L; manufacturing C",
-            f"{cf.sum():.2f}; {cf['L']:.2f}; {cf['C']:.2f}")
+        say(f"{y} depreciation per hour, gap NW - US: total; real estate L; manufacturing C; public administration O; J; K",
+            f"{cf.sum():.2f}; {cf['L']:.2f}; {cf['C']:.2f}; {cf['O']:.2f}; {cf['J']:.2f}; {cf['K']:.2f}")
+
+    # ------------------------------------------------------------------ four accountings
+    section("Four accountings of the gap: net or gross of depreciation, with or without the self-employment imputation")
+    for y in YEARS:
+        hn, hu = sum(total_hours(c, y) for c in NW), total_hours("USA", y)
+        nw, us = group(y, SECTIONS)
+        s_nw = sum(self_employed_hours(c, y, SECTIONS)[0] for c in NW)
+        e_nw = sum(self_employed_hours(c, y, SECTIONS)[1] for c in NW)
+        s_us, e_us = self_employed_hours("USA", y, SECTIONS)
+        say(f"{y} self-employed share of hours: NW; US | professional services M: NW; US",
+            f"{s_nw.sum() / (s_nw.sum() + e_nw.sum()):.3f}; {s_us.sum() / (s_us.sum() + e_us.sum()):.3f} | "
+            f"{s_nw['M'] / (s_nw['M'] + e_nw['M']):.3f}; {s_us['M'] / (s_us['M'] + e_us['M']):.3f}")
+        say(f"{y} imputed labour income of the self-employed per hour, USD: NW; US; gap",
+            f"{nw['IMP'].sum() / hn:.2f}; {us['IMP'].sum() / hu:.2f}; {nw['IMP'].sum() / hn - us['IMP'].sum() / hu:.2f}")
+        cols = {}
+        for gross in (False, True):
+            for impute in (True, False):
+                a_n, a_u = group(y, SECTIONS, gross, impute)
+                key = f"{'gross' if gross else 'net'}_{'imputed' if impute else 'unimputed'}"
+                cols[key] = a_n["NR"] / hn - a_u["NR"] / hu
+        v = pd.DataFrame(cols)
+        v.insert(0, "name", [NAMES[x] for x in SECTIONS])
+        v.to_csv(RES / f"variants_{y}.csv", float_format="%.4f")
+        for key in ["net_imputed", "net_unimputed", "gross_imputed", "gross_unimputed"]:
+            g = v[key]
+            G = g.sum()
+            say(f"{y} {key}: gap; shares J+K+M+N; J+K; L; C; all other | USD per hour J; K; M; N; L; C",
+                f"{G:.2f}; {g[GROUP_JKMN].sum() / G:.2f}; {g[['J', 'K']].sum() / G:.2f}; {g['L'] / G:.2f}; "
+                f"{g['C'] / G:.2f}; {1 - g[GROUP_JKMN + ['L', 'C']].sum() / G:.2f} | {g['J']:.2f}; {g['K']:.2f}; "
+                f"{g['M']:.2f}; {g['N']:.2f}; {g['L']:.2f}; {g['C']:.2f}")
+    for c in NW:
+        s_c, e_c = self_employed_hours(c, 2021, SECTIONS)
+        LINES.append(f"2021 self-employed share of hours {c}: {s_c.sum() / (s_c.sum() + e_c.sum()):.3f}")
+    nw0, us0 = group(2021, SECTIONS, impute=False)
+    ps_n, ps_u = nw0["NR"] / nw0["FCVA"], us0["NR"] / us0["FCVA"]
+    market = [x for x in SECTIONS if x not in ("O", "P", "Q", "T")]
+    say("2021 profit share without the imputation: aggregate NW; US",
+        f"{nw0['NR'].sum() / nw0['FCVA'].sum():.3f}; {us0['NR'].sum() / us0['FCVA'].sum():.3f}")
+    say("2021 market sections where the NW profit share without the imputation is lower than the US",
+        f"{sum(ps_n[market] < ps_u[market])} of 15 ({', '.join(x for x in market if ps_n[x] < ps_u[x])})")
+    say("2021 profit share without the imputation, M: NW; US", f"{ps_n['M']:.3f}; {ps_u['M']:.3f}")
 
     (RES / "analysis_summary.txt").write_text("\n".join(LINES).strip() + "\n", encoding="utf-8")
     print("\n".join(LINES))
