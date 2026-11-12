@@ -202,6 +202,8 @@ def main() -> None:
     for k, label in (("N1132G", "ICT equipment (investment)"), ("N1173G", "Software and databases (investment)")):
         r = dr.relative_price_change(d["gf_V"][k], d["gf_LR"][k], d["V"]["GDP"], d["LR"]["GDP"], d["PPP"]["GDP"], G, a, b)
         gaps.append({"item": label, "code": k, **{x: r[x] for x in ("us", "eu", "share_us", "share_eu", "n")}})
+        pc = r["per_country"].reindex(G).dropna()
+        say(f"{k}: EU members whose relative price fell faster than in the US", f"{int((pc < r['us']).sum())} of {len(pc)}")
     gaps = pd.DataFrame(gaps)
     gaps.to_csv(RES / "ict_price_gaps.csv", index=False, float_format="%.5f")
     for _, g in gaps.iterrows():
