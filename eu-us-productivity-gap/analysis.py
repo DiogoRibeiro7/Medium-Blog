@@ -308,6 +308,29 @@ def main() -> None:
         say(f"Annual growth of GDP per hour (constant PPPs) {a}-{b}: US, EU (same members), North-West",
             f"{100 * us_g:.2f}%, {100 * eu_g:.2f}%, {100 * nw_g:.2f}% ({len(codes)} members)")
 
+    # ------------------------------------------------------------------ 2019-2024: output, hours and employment
+    section("2019-2024: growth of output volume, hours and employment")
+    rg = []
+    for name, codes in [("United States", ["USA"]), ("EU25", EU25), *GROUPS.items()]:
+        c = needs(2019, codes, GDP_CON, HOURS, EMP)
+        g = GDP_CON.loc[YEAR, c].sum() / GDP_CON.loc[2019, c].sum()
+        h = HOURS.loc[YEAR, c].sum() / HOURS.loc[2019, c].sum()
+        e = EMP.loc[YEAR, c].sum() / EMP.loc[2019, c].sum()
+        rg.append({"group": name, "gdp_volume": 100 * (g - 1), "hours": 100 * (h - 1), "employment": 100 * (e - 1),
+                   "gdp_per_hour": 100 * (g / h - 1), "hours_per_worker": 100 * (h / e - 1)})
+        say(f"{name} 2019-{YEAR} (%): GDP volume; hours; employment; GDP per hour; hours per worker",
+            f"{rg[-1]['gdp_volume']:.1f}; {rg[-1]['hours']:.1f}; {rg[-1]['employment']:.1f}; "
+            f"{rg[-1]['gdp_per_hour']:.1f}; {rg[-1]['hours_per_worker']:.1f}")
+    pd.DataFrame(rg).to_csv(RES / "growth_2019_2024.csv", index=False, float_format="%.4f")
+
+    # ------------------------------------------------------------------ sensitivity to the hours denominator
+    section("Sensitivity to measured hours")
+    nw = groups.set_index("group").loc["North-West"]
+    usg = groups.set_index("group").loc["United States"]
+    say("Understatement of North-West hours per worker needed to reach the US level (%)",
+        f"{100 * (usg.hours_worker / nw.hours_worker - 1):.1f}")
+    say("North-West GDP per hour rel US if its hours were understated by 5% (US = 100)", f"{nw.gdp_hour_rel / 1.05:.1f}")
+
     # ------------------------------------------------------------------ growth accounting
     section("Growth accounting: average annual contributions to labour productivity growth (pp)")
     ga_rows = []
