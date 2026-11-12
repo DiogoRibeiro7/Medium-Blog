@@ -1,0 +1,65 @@
+Check against Part 3: {'country_years': 1108, 'count_mismatches': 0, 'max_worth_diff': 0.0}; fetch failed ['2026']; links {'uri': 26779, 'natural': 0, 'name': 8}
+Stock alpha range {'min': 0.899, 'max': 1.097}; share below 1.5bn range [0.222, 0.296]; 2010 {'1500': 0.288, '2000': 0.471, '3000': 0.663} alpha 1.092; 2025 {'1500': 0.222, '2000': 0.389, '3000': 0.583} alpha 0.899
+Gross: entries 4724 exits 2708 switches 75 person-years 29493; exit rate near 0.239 far 0.028
+  exit rate by band: 1000 0.385; 1100 0.285; 1200 0.221; 1300 0.170; 1400 0.125; 1500 0.079; 1750 0.057; 2000 0.045; 2500 0.031; 3000 0.031; 4000 0.028; 5000 0.028; 7500 0.024; 10000 0.025; 20000 0.021
+  near shares: <1100: entries 0.143 exits 0.201 stock 0.048; <1200: entries 0.298 exits 0.380 stock 0.106; <1300: entries 0.419 exits 0.511 stock 0.160; <1400: entries 0.510 exits 0.604 stock 0.210; <1500: entries 0.577 exits 0.667 stock 0.256; <1750: entries 0.704 exits 0.766 stock 0.371; <2000: entries 0.757 exits 0.803 stock 0.431; <2500: entries 0.841 exits 0.862 stock 0.552; <3000: entries 0.886 exits 0.891 stock 0.637
+Global by year (near<1.5bn): var share near 0.574 far 0.427; sums near 923 far 1093 net 2017; wide var share near 0.788
+  2010->2011: {'entries_near': 152, 'entries_far': 102, 'exits_near': 42, 'exits_far': 15, 'net_switch': -1, 'net': 196, 'net_near': 110, 'net_far': 87}
+  2011->2012: {'entries_near': 76, 'entries_far': 70, 'exits_near': 96, 'exits_far': 33, 'net_switch': 2, 'net': 19, 'net_near': -20, 'net_far': 37}
+  2012->2013: {'entries_near': 171, 'entries_far': 99, 'exits_near': 41, 'exits_far': 29, 'net_switch': 0, 'net': 200, 'net_near': 130, 'net_far': 70}
+  2013->2014: {'entries_near': 180, 'entries_far': 155, 'exits_near': 80, 'exits_far': 36, 'net_switch': 0, 'net': 219, 'net_near': 100, 'net_far': 119}
+  2014->2015: {'entries_near': 214, 'entries_far': 123, 'exits_near': 112, 'exits_far': 44, 'net_switch': 0, 'net': 181, 'net_near': 102, 'net_far': 79}
+  2015->2016: {'entries_near': 149, 'entries_far': 88, 'exits_near': 182, 'exits_far': 70, 'net_switch': 0, 'net': -15, 'net_near': -33, 'net_far': 18}
+  2016->2017: {'entries_near': 230, 'entries_far': 101, 'exits_near': 64, 'exits_far': 35, 'net_switch': 0, 'net': 232, 'net_near': 166, 'net_far': 66}
+  2017->2018: {'entries_near': 199, 'entries_far': 113, 'exits_near': 91, 'exits_far': 56, 'net_switch': 0, 'net': 165, 'net_near': 108, 'net_far': 57}
+  2018->2019: {'entries_near': 124, 'entries_far': 98, 'exits_near': 190, 'exits_far': 87, 'net_switch': 0, 'net': -55, 'net_near': -66, 'net_far': 11}
+  2019->2020: {'entries_near': 150, 'entries_far': 83, 'exits_near': 198, 'exits_far': 94, 'net_switch': 0, 'net': -59, 'net_near': -48, 'net_far': -11}
+  2020->2021: {'entries_near': 381, 'entries_far': 365, 'exits_near': 55, 'exits_far': 31, 'net_switch': 0, 'net': 660, 'net_near': 326, 'net_far': 334}
+  2021->2022: {'entries_near': 136, 'entries_far': 138, 'exits_near': 211, 'exits_far': 149, 'net_switch': 0, 'net': -86, 'net_near': -75, 'net_far': -11}
+  2022->2023: {'entries_near': 139, 'entries_far': 140, 'exits_near': 193, 'exits_far': 114, 'net_switch': 0, 'net': -28, 'net_near': -54, 'net_far': 26}
+  2023->2024: {'entries_near': 209, 'entries_far': 153, 'exits_near': 150, 'exits_far': 71, 'net_switch': 0, 'net': 141, 'net_near': 59, 'net_far': 82}
+  2024->2025: {'entries_near': 218, 'entries_far': 168, 'exits_near': 100, 'exits_far': 39, 'net_switch': 0, 'net': 247, 'net_near': 118, 'net_far': 129}
+Country variance shares by cut (abs / rel / rel demeaned, near): <1100 0.087/0.164/0.160; <1200 0.246/0.292/0.286; <1300 0.382/0.384/0.374; <1400 0.475/0.448/0.437; <1500 0.550/0.507/0.496; <1750 0.705/0.619/0.608; <2000 0.777/0.655/0.643; <2500 0.863/0.737/0.724; <3000 0.908/0.769/0.757
+Cut 1500: 1075 country-years, 91 countries, nonzero 687, near dominates 0.549, far zero 0.352; abs {'near': 0.55, 'far': 0.441, 'switch': 0.01}; abs dm {'near': 0.548, 'far': 0.441, 'switch': 0.01}; rel {'near': 0.507, 'far': 0.34, 'switch': 0.153}; rel dm {'near': 0.496, 'far': 0.337, 'switch': 0.167}
+  persistence: near −0.204 [−0.311, −0.098] p 0.000; far −0.096 [−0.191, 0.000] p 0.051; d −0.204 [−0.315, −0.093] p 0.000
+  horizons: k1 n 1075 abs 0.550 rel 0.507 far rel 0.340; k2 n 1027 abs 0.534 rel 0.478 far rel 0.343; k3 n 971 abs 0.520 rel 0.475 far rel 0.370; k5 n 841 abs 0.464 rel 0.472 far rel 0.399; k10 n 480 abs 0.452 rel 0.435 far rel 0.426
+  big countries: United States 0.48 (max 902, sd 33.8); China 0.58 (max 626, sd 80.3); India 0.77 (max 205, sd 16.1); Germany 0.34 (max 171, sd 15.2); Russia 0.63 (max 139, sd 19.8); Canada 0.64 (max 76, sd 6.1); Italy 0.35 (max 74, sd 6.0); Hong Kong 0.71 (max 71, sd 4.6); Brazil 0.56 (max 69, sd 14.2); United Kingdom 0.47 (max 56, sd 5.1)
+Cut 2000: 1075 country-years, 91 countries, nonzero 687, near dominates 0.726, far zero 0.508; abs {'near': 0.777, 'far': 0.213, 'switch': 0.01}; abs dm {'near': 0.777, 'far': 0.213, 'switch': 0.01}; rel {'near': 0.655, 'far': 0.192, 'switch': 0.153}; rel dm {'near': 0.643, 'far': 0.19, 'switch': 0.167}
+  persistence: near −0.254 [−0.396, −0.111] p 0.000; far +0.015 [−0.067, 0.097] p 0.722; d −0.204 [−0.315, −0.093] p 0.000
+  horizons: k1 n 1075 abs 0.777 rel 0.655 far rel 0.192; k2 n 1027 abs 0.772 rel 0.613 far rel 0.208; k3 n 971 abs 0.762 rel 0.618 far rel 0.227; k5 n 841 abs 0.729 rel 0.616 far rel 0.255; k10 n 480 abs 0.728 rel 0.611 far rel 0.251
+  big countries: United States 0.69 (max 902, sd 33.8); China 0.81 (max 626, sd 80.3); India 0.90 (max 205, sd 16.1); Germany 0.56 (max 171, sd 15.2); Russia 0.83 (max 139, sd 19.8); Canada 0.83 (max 76, sd 6.1); Italy 0.62 (max 74, sd 6.0); Hong Kong 0.87 (max 71, sd 4.6); Brazil 0.82 (max 69, sd 14.2); United Kingdom 0.74 (max 56, sd 5.1)
+Churn: entries returning {'share': 0.205, 'near_share': 0.243, 'far_share': 0.153} (n 4470, years [2011, 2024]); exits returning {'share': 0.396, 'near_share': 0.468, 'far_share': 0.25} (n 2041, years [2010, 2021])
+Model: exits obs 2707 pred 1673; near obs 1804 pred 1334; entries obs 4724 pred 4368; near obs 2728 pred 3762; corr exits 0.961 near 0.961 entries 0.957 near 0.908; rates near obs 0.239 pred 0.176; far obs 0.0277 pred 0.0016
+  by band (obs/pred rate): 1000 0.385/0.320; 1100 0.285/0.220; 1200 0.221/0.152; 1300 0.170/0.105; 1400 0.125/0.079; 1500 0.079/0.054; 1750 0.057/0.032; 2000 0.045/0.017; 2500 0.031/0.008; 3000 0.031/0.004; 4000 0.028/0.002; 5000 0.028/0.000; 7500 0.024/0.000; 10000 0.025/0.000; 20000 0.021/0.000
+  2010: exits_obs 57, exits_pred 24.328, exits_near_obs 42, exits_near_pred 21.153, entries_obs 254, entries_near_obs 152, entries_pred 247.449, entries_near_pred 215.414, median_change 0.051
+  2011: exits_obs 129, exits_pred 82.476, exits_near_obs 96, exits_near_pred 68.753, entries_obs 146, entries_near_obs 76, entries_pred 103.084, entries_near_pred 96.972, median_change 0.003
+  2012: exits_obs 70, exits_pred 51.734, exits_near_obs 41, exits_near_pred 39.285, entries_obs 270, entries_near_obs 171, entries_pred 188.440, entries_near_pred 178.176, median_change 0.034
+  2013: exits_obs 116, exits_pred 54.995, exits_near_obs 80, exits_near_pred 46.918, entries_obs 335, entries_near_obs 180, entries_pred 224.527, entries_near_pred 207.300, median_change 0.035
+  2014: exits_obs 156, exits_pred 84.246, exits_near_obs 112, exits_near_pred 71.783, entries_obs 337, entries_near_obs 214, entries_pred 185.274, entries_near_pred 168.990, median_change 0.013
+  2015: exits_obs 252, exits_pred 204.263, exits_near_obs 182, exits_near_pred 172.154, entries_obs 237, entries_near_obs 149, entries_pred 85.226, entries_near_pred 81.664, median_change -0.037
+  2016: exits_obs 99, exits_pred 45.560, exits_near_obs 64, exits_near_pred 42.484, entries_obs 331, entries_near_obs 230, entries_pred 329.033, entries_near_pred 304.354, median_change 0.040
+  2017: exits_obs 146, exits_pred 50.551, exits_near_obs 90, exits_near_pred 41.933, entries_obs 312, entries_near_obs 199, entries_pred 366.319, entries_near_pred 340.175, median_change 0.043
+  2018: exits_obs 277, exits_pred 163.386, exits_near_obs 190, exits_near_pred 135.063, entries_obs 222, entries_near_obs 124, entries_pred 126.603, entries_near_pred 116.749, median_change -0.017
+  2019: exits_obs 292, exits_pred 225.353, exits_near_obs 198, exits_near_pred 184.228, entries_obs 233, entries_near_obs 150, entries_pred 135.757, entries_near_pred 118.810, median_change -0.045
+  2020: exits_obs 86, exits_pred 32.204, exits_near_obs 55, exits_near_pred 26.315, entries_obs 746, entries_near_obs 381, entries_pred 1071.603, entries_near_pred 800.361, median_change 0.124
+  2021: exits_obs 360, exits_pred 265.833, exits_near_obs 211, exits_near_pred 176.109, entries_obs 274, entries_near_obs 136, entries_pred 268.868, entries_near_pred 234.843, median_change -0.007
+  2022: exits_obs 307, exits_pred 204.821, exits_near_obs 193, exits_near_pred 156.068, entries_obs 279, entries_near_obs 139, entries_pred 224.169, entries_near_pred 194.311, median_change -0.021
+  2023: exits_obs 221, exits_pred 102.928, exits_near_obs 150, exits_near_pred 84.395, entries_obs 362, entries_near_obs 209, entries_pred 440.062, entries_near_pred 379.750, median_change 0.031
+  2024: exits_obs 139, exits_pred 80.245, exits_near_obs 100, exits_near_pred 66.947, entries_obs 386, entries_near_obs 218, entries_pred 371.870, entries_near_pred 323.853, median_change 0.026
+  change q10 {'2010': -0.05, '2011': -0.131, '2012': -0.094, '2013': -0.075, '2014': -0.101, '2015': -0.191, '2016': -0.055, '2017': -0.051, '2018': -0.158, '2019': -0.205, '2020': -0.013, '2021': -0.26, '2022': -0.185, '2023': -0.112, '2024': -0.087}
+  change q90 {'2010': 0.177, '2011': 0.1, '2012': 0.136, '2013': 0.135, '2014': 0.11, '2015': 0.059, '2016': 0.149, '2017': 0.149, '2018': 0.072, '2019': 0.075, '2020': 0.317, '2021': 0.113, '2022': 0.104, '2023': 0.159, '2024': 0.145}
+Age: far exit rate under 70 0.0128; 85+ 0.1095; far exits aged 85+ 0.348; near {'-1': 0.337, '0': 0.277, '50': 0.259, '60': 0.211, '70': 0.209, '80': 0.177, '85': 0.25, '90': 0.232}; far {'-1': 0.124, '0': 0.027, '50': 0.009, '60': 0.01, '70': 0.021, '80': 0.035, '85': 0.082, '90': 0.159}
+Self-made entrants: {'far': {'self_made_share': 0.6472945891783567, 'n': 1996}, 'near': {'self_made_share': 0.7519237816049835, 'n': 2729}}
+Global growth 2010->2025 (all countries): fixed_1000 1011->3028 x3.00; fixed_1500 720->2355 x3.27; fixed_2000 535->1849 x3.46; fixed_3000 341->1264 x3.71; fixed_5000 165->733 x4.44; indexed 1011->1965 x1.94; rank 1011->1011 x1.00
+Thresholds 2025: fixed_1000 1000; fixed_1500 1500; fixed_2000 2000; fixed_3000 3000; fixed_5000 5000; indexed 1873; rank 3702
+Indicator fixed_1000: n 1326 countries 83 levels G +0.95 [0.19, 1.70] p 0.014; dB lag −0.215 [−0.322, −0.108] p 0.000; noise share 0.431; sd dB 0.158; R2 year 0.063 +growth 0.065; zero 0.220; median n 7.0; global 990->2958
+Indicator fixed_1500: n 1326 countries 83 levels G +0.82 [0.12, 1.52] p 0.021; dB lag −0.199 [−0.266, −0.132] p 0.000; noise share 0.398; sd dB 0.153; R2 year 0.081 +growth 0.082; zero 0.278; median n 6.0; global 706->2300
+Indicator fixed_2000: n 1326 countries 83 levels G +0.83 [0.25, 1.42] p 0.005; dB lag −0.218 [−0.277, −0.158] p 0.000; noise share 0.435; sd dB 0.145; R2 year 0.077 +growth 0.081; zero 0.325; median n 6.0; global 526->1805
+Indicator fixed_3000: n 1326 countries 83 levels G +0.79 [0.27, 1.32] p 0.003; dB lag −0.267 [−0.337, −0.196] p 0.000; noise share 0.533; sd dB 0.156; R2 year 0.077 +growth 0.079; zero 0.387; median n 4.0; global 336->1238
+Indicator fixed_5000: n 1326 countries 83 levels G +0.75 [0.21, 1.29] p 0.006; dB lag −0.274 [−0.366, −0.183] p 0.000; noise share 0.548; sd dB 0.149; R2 year 0.080 +growth 0.082; zero 0.498; median n 3.0; global 164->718
+Indicator indexed: n 1326 countries 83 levels G +0.82 [0.07, 1.57] p 0.032; dB lag −0.106 [−0.171, −0.041] p 0.001; noise share 0.212; sd dB 0.146; R2 year 0.028 +growth 0.030; zero 0.283; median n 6.0; global 990->1921
+Indicator rank: n 1326 countries 83 levels G +0.83 [0.19, 1.46] p 0.011; dB lag −0.181 [−0.257, −0.105] p 0.000; noise share 0.362; sd dB 0.133; R2 year 0.017 +growth 0.023; zero 0.345; median n 5.0; global 990->990
+Poverty fixed_1000: within +2.76 [−2.25, 7.76] p 0.280 pooled −8.43 [−18.82, 1.95] p 0.112 long +2.88 [−5.90, 11.66] p 0.520 corr 1.000
+Poverty fixed_2000: within +1.83 [−3.86, 7.52] p 0.528 pooled −9.37 [−20.88, 2.13] p 0.110 long +2.75 [−6.57, 12.07] p 0.563 corr 0.699
+Poverty indexed: within +1.44 [−3.96, 6.83] p 0.601 pooled −9.89 [−21.01, 1.24] p 0.082 long +5.20 [−4.36, 14.76] p 0.287 corr 0.797
+Poverty rank: within +2.80 [−2.08, 7.68] p 0.260 pooled −9.11 [−20.60, 2.38] p 0.120 long +7.12 [−1.62, 15.85] p 0.110 corr 0.431
