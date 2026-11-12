@@ -14,6 +14,11 @@ Annual (1326 country-years, 83 countries): levels B~G +0.95 [0.19, 1.70] p 0.014
   within_hhc: +2.70 [−2.72, 8.12] p 0.329 n 745 n_countries 70
   within_plr: +2.68 [−1.59, 6.94] p 0.218 n 764 n_countries 73
   within_mean: +1.62 [−1.77, 5.01] p 0.348 n 767
+  within_income: +1.82 [−2.44, 6.08] p 0.403 n 565 n_countries 49
+  within_consumption: −0.18 [−2.74, 2.38] p 0.891 n 202 n_countries 32
+  within_outside_eca: +0.12 [−2.70, 2.94] p 0.934 n 268 n_countries 39
+  within_country_weighted: +2.34 [−2.57, 7.24] p 0.351 n 767
+  drop one country: min +1.39 (LTU), max +3.95 (ROU)
   within_positive_only: +0.59 [−6.06, 7.23] p 0.863 n 608 n_countries 65
   own_trends: +1.07 [−2.48, 4.62] p 0.555 n 711 n_countries 60 n_spells 82
   within_fractional: AME +0.90 [−1.87, 3.67] p 0.524
@@ -22,6 +27,7 @@ Long differences: n 69 countries 63 median gap 10.0 corr dB,dG 0.149 share dB>0 
   dp: +2.880 [−5.897, 11.657] p 0.520
   dp_dG: −73.088 [−123.452, −22.725] p 0.004
   dM: −0.012 [−0.067, 0.042] p 0.656
+  dM_dG: +0.841 [0.567, 1.114] p 0.000
   dgini: −0.004 [−0.031, 0.023] p 0.789
   dp8: +0.416 [−4.603, 5.436] p 0.871
 Level/spread pooled_mean: +0.0473 [−0.0285, 0.1230] p 0.221
@@ -35,4 +41,6 @@ Timing levels (common 542, 72 countries, [2013, 2022]): k-3 +6.13 [1.64, 10.61] 
   around (B t+3 - B t-3): −5.06 [−8.31, −1.82] p 0.002
 Timing changes (643 pairs, 65 countries, median gap 1.0): same +0.11 [−1.45, 1.67] p 0.891; before −0.16 [−1.41, 1.10] p 0.807; after (dB_after on dp) +0.0021 [−0.0023, 0.0065] p 0.353
 LOCO within RMSE: GDP 4.045; GDP+B 4.051
+Regions: surveys {'EAS': 90, 'ECS': 499, 'LCN': 91, 'MEA': 32, 'NAC': 28, 'SAS': 8, 'SSF': 19}; countries {'EAS': 9, 'ECS': 35, 'LCN': 10, 'MEA': 8, 'NAC': 2, 'SAS': 3, 'SSF': 7}; surveys per country {'median': 13.0, 'max': 24}
+Per doubling: {'within': {'coef': 0.8298375252728604, 'ci95': [-0.67672040377222, 2.3363954543179406]}, 'pooled_gdp_year': {'coef': -2.5382074038088382, 'ci95': [-5.664817178226742, 0.5884023706090656]}, 'first_article': -2.3811472657020913}
 WID observed (240 country-years, 37 countries, [2010, 2022]): t1 across +2.99 [−3.73, 9.71] p 0.384 within −1.60 [−6.72, 3.53] p 0.541; t10 across +3.78 [−4.22, 11.79] p 0.355 within −1.10 [−6.25, 4.05] p 0.677; t001 across +3.83 [0.78, 6.87] p 0.014 within +0.44 [−3.44, 4.33] p 0.823

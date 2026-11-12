@@ -212,6 +212,10 @@ def describe(panel: pd.DataFrame, cit: pd.DataFrame, w: pd.DataFrame, manifests:
         "years": [int(panel.year.min()), int(panel.year.max())],
         "obs_by_year": {str(int(k)): int(v) for k, v in panel.groupby("year").size().items()},
         "n_welfare": {k: int(v) for k, v in panel.groupby("welfare_type").size().items()},
+        "n_region": {k: int(v) for k, v in panel.groupby("region_code").size().items()},
+        "countries_region": {k: int(v) for k, v in panel.groupby("region_code").country_code.nunique().items()},
+        "surveys_per_country": {"median": float(panel.groupby("country_code").size().median()),
+                                "max": int(panel.groupby("country_code").size().max())},
         "zero_billionaire_obs": int((panel.n_cit == 0).sum()),
         "sd_total": {v: float(panel[v].std()) for v in ("B", "G", "p_30", "M")},
         "sd_within": {v: float((panel[v] - dm[v]).std()) for v in ("B", "G", "p_30", "M")},
@@ -277,6 +281,22 @@ def estimators(panel: pd.DataFrame) -> dict[str, Any]:
         fit = cl(f"p_30 ~ B + {ctrl} + C(spell) + C(year)", sub)
         out[key] = coef(fit, "B") | {"n_countries": int(sub.country_code.nunique())}
     out["within_mean"] = coef(cl("p_30 ~ B + M + G + C(spell) + C(year)", d), "B")
+    for wt in ("income", "consumption"):
+        sub = d[d.welfare_type == wt]
+        out[f"within_{wt}"] = coef(cl("p_30 ~ B + G + C(spell) + C(year)", sub), "B") | {
+            "n_countries": int(sub.country_code.nunique())}
+    out_eca = d[d.region_code != "ECS"]
+    out["within_outside_eca"] = coef(cl("p_30 ~ B + G + C(spell) + C(year)", out_eca), "B") | {
+        "n_countries": int(out_eca.country_code.nunique())}
+    wts = 1.0 / d.groupby("country_code").year.transform("size")
+    wls = smf.wls("p_30 ~ B + G + C(spell) + C(year)", d, weights=wts).fit(
+        cov_type="cluster", cov_kwds={"groups": pd.factorize(d.country_code)[0]})
+    out["within_country_weighted"] = coef(wls, "B")
+    drops = {}
+    for c in sorted(d.country_code.unique()):
+        drops[c] = float(cl("p_30 ~ B + G + C(spell) + C(year)", d[d.country_code != c]).params["B"])
+    lo_c, hi_c = min(drops, key=drops.get), max(drops, key=drops.get)
+    out["drop_one"] = {"min": drops[lo_c], "min_country": lo_c, "max": drops[hi_c], "max_country": hi_c}
     pos = d[d.n_cit > 0]
     out["within_positive_only"] = coef(cl("p_30 ~ B + G + C(spell) + C(year)", pos), "B") | {
         "n_countries": int(pos.country_code.nunique())}
@@ -323,6 +343,7 @@ def long_differences(panel: pd.DataFrame) -> tuple[dict[str, Any], pd.DataFrame]
     out["dp"] = coef(fit("dp ~ dB + dG"), "dB")
     out["dp_dG"] = coef(fit("dp ~ dB + dG"), "dG")
     out["dM"] = coef(fit("dM ~ dB + dG"), "dB")
+    out["dM_dG"] = coef(fit("dM ~ dB + dG"), "dG")
     out["dgini"] = coef(fit("dgini ~ dB + dG"), "dB")
     out["dp8"] = coef(fit("dp8 ~ dB + dG"), "dB")
     resid = smf.ols("dp ~ dG", ld).fit().resid
@@ -467,6 +488,9 @@ def compute(inp: dict[str, Any]) -> dict[str, Any]:
         "loco": loco(panel),
         "wid_observed": wid_observed(inp, cit, w),
         "first_article_coef": FIRST_ARTICLE_COEF,
+        "per_doubling": {k: {"coef": v["coef"] * np.log10(2), "ci95": [c * np.log10(2) for c in v["ci95"]]}
+                         for k, v in (("within", est["within"]), ("pooled_gdp_year", est["pooled_gdp_year"]))}
+        | {"first_article": FIRST_ARTICLE_COEF * np.log10(2)},
     }
 
 
@@ -652,6 +676,9 @@ def summary_lines(n: dict[str, Any]) -> list[str]:
            f"dB~dB lag {_c(a['dB_on_dB_lag'])}; R2 year {a['r2_year']:.3f} +growth+price {a['r2_year_growth_price']:.3f}; "
            f"SD dB {a['sd_dB']:.3f}; share falling {a['share_years_falling']:.3f}"]
     for k, v in e.items():
+        if k == "drop_one":
+            out.append(f"  drop one country: min {v['min']:+.2f} ({v['min_country']}), max {v['max']:+.2f} ({v['max_country']})")
+            continue
         if k == "between":
             out.append(f"  {k}: {fmt(v['coef'], 2, sign=True)} [{fmt(v['ci95'][0], 2)}, {fmt(v['ci95'][1], 2)}] "
                        f"(p difference from within {v['p_difference']:.3f})")
@@ -661,7 +688,7 @@ def summary_lines(n: dict[str, Any]) -> list[str]:
             out.append(f"  {k}: {_c(v)} n {v['n']}" + "".join(f" {x} {v[x]}" for x in ("n_countries", "n_spells") if x in v))
     out.append(f"Long differences: n {ld['n']} countries {ld['n_countries']} median gap {ld['median_gap']} corr dB,dG "
                f"{ld['corr_dB_dG']:.3f} share dB>0 {ld['share_dB_positive']:.3f}")
-    for k in ("dp_raw", "dp", "dp_dG", "dM", "dgini", "dp8"):
+    for k in ("dp_raw", "dp", "dp_dG", "dM", "dM_dG", "dgini", "dp8"):
         out.append(f"  {k}: {_c(ld[k], 3)}")
     for k, v in ls.items():
         out.append(f"Level/spread {k}: " + (_c(v, 4) if "coef" in v else str({x: round(y, 4) for x, y in v.items()})))
@@ -674,6 +701,8 @@ def summary_lines(n: dict[str, Any]) -> list[str]:
     out.append(f"Timing changes ({c['n']} pairs, {c['n_countries']} countries, median gap {c['median_gap']}): same {_c(c['same'])}; "
                f"before {_c(c['before'])}; after (dB_after on dp) {_c(c['after'], 4)}")
     out.append(f"LOCO within RMSE: GDP {lo['gdp']:.3f}; GDP+B {lo['gdp_b']:.3f}")
+    out.append(f"Regions: surveys {d['n_region']}; countries {d['countries_region']}; surveys per country {d['surveys_per_country']}")
+    out.append(f"Per doubling: {n['per_doubling']}")
     out.append(f"WID observed ({wo['n']} country-years, {wo['n_countries']} countries, {wo['years']}): " +
                "; ".join(f"{y} across {_c(wo[y]['across'])} within {_c(wo[y]['within'])}" for y in ("t1", "t10", "t001")))
     return out
