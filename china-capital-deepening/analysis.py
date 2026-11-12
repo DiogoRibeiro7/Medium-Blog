@@ -138,6 +138,12 @@ def icor() -> pd.DataFrame:
                        for c in ["CHN", "USA", "JPN", "KOR", "DEU", "FRA", "ITA", "ESP", "POL", "IND", "IDN", "MEX"]))
     say("China investment rate, % of GDP: 2007; 2013; 2019; 2023; 2024",
         "; ".join(f"{inv['CHN'].loc[y]:.1f}" for y in (2007, 2013, 2019, 2023, 2024)))
+    say("China investment rate: peak year since 1980; peak value (% of GDP)",
+        f"{int(inv['CHN'].loc[1980:].idxmax())}; {inv['CHN'].loc[1980:].max():.1f}")
+    say("China gross fixed capital formation, trillion yuan: 2013; 2017",
+        f"{v['P51G']['CHN'].loc[2013] / 1e6:.1f}; {v['P51G']['CHN'].loc[2017] / 1e6:.1f}")
+    say("Highest investment rate 2020-2023 among the 14 economies; next highest",
+        "; ".join(f"{c} {t.loc[c, 'inv_2020_2023']:.1f}" for c in t["inv_2020_2023"].sort_values(ascending=False).index[:2]))
     return t
 
 

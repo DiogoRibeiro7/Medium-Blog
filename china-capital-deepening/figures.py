@@ -1,4 +1,4 @@
-"""Draw the three figures for the article from ``results/``.
+"""Draw the three figures for the article from ``results/``; numbered in the order the article shows them.
 
     python figures.py
 
@@ -122,7 +122,7 @@ def fig2() -> None:
     ax.set_ylabel("Output per unit of capital, average annual growth 2013-2017, %")
     ax.legend(loc="lower left", fontsize=8.5)
     tidy(ax, "both")
-    finish(fig, "fig2_break_even_investment_share",
+    finish(fig, "fig3_break_even_investment_share",
            "The manufacturing result turns on one allocation: break-even near 18% of China's investment",
            "Chinese manufacturing's output per unit of capital, 2013-2017, if it had received a different share of national investment")
 
@@ -176,7 +176,7 @@ def fig3() -> None:
         side.set_linewidth(0.8)
     ins.grid(color=GRID, linewidth=0.6)
     ins.set_axisbelow(True)
-    finish(fig, "fig3_manufacturing_capital_and_output_per_worker",
+    finish(fig, "fig2_manufacturing_capital_and_output_per_worker",
            "Manufacturing: capital per worker against output per worker",
            "Above the diagonal output per unit of capital rose: China was close to it in 2007-2013, "
            "well above it in 2013-2017, as was all of Europe")

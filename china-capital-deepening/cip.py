@@ -223,6 +223,11 @@ def analyse(say, section, res: Path) -> None:
     fai = nbs_fai_shares()
     say("Manufacturing share of NBS fixed-asset investment (excluding rural households): 2013; 2017",
         f"{fai[2013]:.3f}; {fai[2017]:.3f}")
+    n = pd.read_csv(DATA / "nbs_published.csv").pivot_table(index="year", columns="indicator", values="value",
+                                                            aggfunc="first")
+    say("NBS fixed-asset investment, trillion yuan: total 2013; 2017 | manufacturing 2013; 2017",
+        f"{n.loc[2013, 'fai_total'] / 1e4:.1f}; {n.loc[2017, 'fai_total'] / 1e4:.1f} | "
+        f"{n.loc[2013, 'fai_manufacturing'] / 1e4:.1f}; {n.loc[2017, 'fai_manufacturing'] / 1e4:.1f}")
     say("Ratio 2017/2013 of manufacturing's investment share: CIP (GFCF allocation); NBS fixed-asset investment",
         f"{shares_cip[2017] / shares_cip[2013]:.2f}; {fai[2017] / fai[2013]:.2f}")
     for delta in DELTAS:

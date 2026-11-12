@@ -54,7 +54,7 @@ jobs:
       - name: Draw the figures
         run: |
           python figures.py
-          for f in fig1_output_per_capital_and_where_investment_went fig2_break_even_investment_share \
-                   fig3_manufacturing_capital_and_output_per_worker; do
+          for f in fig1_output_per_capital_and_where_investment_went fig2_manufacturing_capital_and_output_per_worker \
+                   fig3_break_even_investment_share; do
             test -s "figures/$f.png"
           done
