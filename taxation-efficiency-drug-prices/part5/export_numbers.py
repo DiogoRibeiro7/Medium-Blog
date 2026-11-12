@@ -159,6 +159,11 @@ def main() -> None:
         items = re.findall(r"(\d{7}) ([A-Za-zÀ-ÿ\-\. ]+?) (\d{1,3}(?: \d{3}(?!\d))+|\d{2,3})(?!\d)", seg)[:10]
         print(f"  top exported LNP medicines {year} (packs): " +
               "; ".join(f"{n.strip()} {int(q.replace(' ', '')):,}" for _, n, q in items))
+        top10 = sum(int(q.replace(" ", "")) for _, _, q in items)
+        packs = float(re.search(rf"{year}: retail value [\d.]+ bn euros, (\d+) million packs",
+                                (HERE.parent / "part3" / "output.txt").read_text(encoding="utf-8")).group(1)) * 1e6
+        print(f"    the ten together: {top10:,} packs, {top10 / packs:.1%} of the {packs / 1e6:.0f} million packs of SNS-reimbursed "
+              f"medicines dispensed by community pharmacies that year (Part 3, SNS transparency portal)")
     # Destinations as printed in the reports (2021 as a table; 2024 and 2025 as charts).
     dest21 = dict((c, int(p)) for c, p in re.findall(r"(Alemanha|Reino Unido|França|Holanda|República Checa|Irlanda|Angola|Dinamarca|Hungria|Cabo Verde) (\d+)%",
                                                       r21[r21.find("Top 10 – países de destino"):]))
@@ -301,6 +306,9 @@ def main() -> None:
           f"on one only for {(k == 1).mean():.0%}, on five or more for {(k >= 5).mean():.0%}")
     mot = lists[(lists["type"] == "lnp") & lists["motive"].notna()]
     if len(mot):
+        print("  LNP reasons by list: " + "; ".join(
+            f"{d:%Y-%m}: " + ", ".join(f"{k} {v}" for k, v in g["motive"].value_counts().items())
+            + f" (export {g['motive'].str.startswith('Export').mean():.0%})" for d, g in mot.groupby("effective")))
         last_lnp = mot[mot["effective"] == mot["effective"].max()]
         print(f"  latest LNP with reasons ({last_lnp['effective'].max():%Y-%m-%d}): {last_lnp['motive'].value_counts().to_dict()}")
         print("   export-motive presentations: " + ", ".join(sorted(set(last_lnp.loc[last_lnp['motive'].str.startswith('Export'), 'name']))))

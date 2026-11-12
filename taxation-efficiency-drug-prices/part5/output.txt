@@ -18,7 +18,9 @@ Requests to export medicines on the prior-notification list (Infarmed, SIEXP):
   2025: 8753 prohibited, 8035 authorised (52% prohibited); Infarmed reports a 38% fall in export intentions, which it attributes possibly to its meetings and thematic inspections with the sector
   total requests 2024 27045, 2025 16788 (-38%)
   top exported LNP medicines 2024 (packs): Epione 1,616,778; Aranka 595,493; Diprogenta 553,709; Diprogenta 404,996; Jardiance 396,464; Celestone 315,870; Lantus 275,505; Atrovent Unidose 266,910; Duphaston 213,694; Betaserc 191,692
+    the ten together: 4,831,111 packs, 2.5% of the 194 million packs of SNS-reimbursed medicines dispensed by community pharmacies that year (Part 3, SNS transparency portal)
   top exported LNP medicines 2025 (packs): Forxiga 140,367; Edistride 97,884; Celestone 94,612; Jardiance 64,542; Gutron 58,920; Jardiance 55,126; Ferro-Tardyferon Fol 52,977; Eliquis 43,913; Lixiana 38,524; Haldol Decanoato 31,333
+    the ten together: 678,198 packs, 0.3% of the 204 million packs of SNS-reimbursed medicines dispensed by community pharmacies that year (Part 3, SNS transparency portal)
   destinations 2021 (share of export intentions): {'Alemanha': 31, 'Reino Unido': 20, 'França': 13, 'Holanda': 12, 'República Checa': 9, 'Irlanda': 5, 'Angola': 4, 'Dinamarca': 2, 'Hungria': 1, 'Cabo Verde': 1}
   destinations 2024 (share of exports, Infarmed's chart): {'Alemanha': 39, 'Reino Unido': 12, 'República Checa': 10, 'Holanda': 8, 'Angola': 7, 'Outros': 7, 'Itália': 4, 'França': 4, 'Dinamarca': 4, 'Polónia': 3, 'Hungria': 2}
   destinations 2025 (share of exports, Infarmed's chart): {'Alemanha': 35, 'Chéquia': 15, 'Reino Unido': 14, 'Dinamarca': 8, 'Polónia': 7, 'Outros': 21}
@@ -102,6 +104,7 @@ Distinct presentations ever listed: LNP 456, suspended 1196, prohibited (2026) 1
   lnp: sold under a substance name (generic-style) 15%; most frequent substances: Metilfenidato 39, Paracetamol 15, Insulina lispro 14, Messalazina 13, Atomoxetina 12, Ibuprofeno 11, Amoxicilina 9, Insulina humana 8
   suspended: sold under a substance name (generic-style) 48%; most frequent substances: Quetiapina 296, Metilfenidato 38, Galantamina 17, Estradiol 15, Diazepam 15, Ibuprofeno 11, Cefuroxima 11, Atomoxetina 11
   suspended lists observed: 30; a presentation appears on a median of 2 of them, on one only for 42%, on five or more for 10%
+  LNP reasons by list: 2024-12: Exportação 58, Escassez 35, Criticidade 31 (export 47%); 2025-03: Exportação 59, Escassez 23, Criticidade 15 (export 61%); 2025-07: Exportação 56, Escassez 18, Criticidade 12 (export 65%); 2025-10: Exportação 59, Escassez 13, Criticidade 11 (export 71%); 2026-01: Exportação 58, Criticidade 11, Escassez 11 (export 72%); 2026-04: Criticidade 50, Exportação 38, Escassez 11 (export 38%); 2026-10: Criticidade 47, Exportação 38, Escassez 12 (export 39%)
   latest LNP with reasons (2026-10-17): {'Criticidade': 47, 'Exportação': 38, 'Escassez': 12}
    export-motive presentations: Betmiga, Bevespi Aerosphere, Brintellix, Celestone, Edistride, Eliquis, Ferro-Tardyferon, Ferro-Tardyferon Fol, Forxiga, Jardiance, Lixiana, Mestinon, Metex PEN, Microginon, Nocdurna, Pentasa, Priadel, Rotarix, Salofalk enemas, Spiriva Respimat, Testoviron Depot, Timogel, Tobradex, Tobrex, Trivastal 50 Retard, Trixeo Aerosphere, Vipidia, Zentel
 
