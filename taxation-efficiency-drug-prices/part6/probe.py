@@ -32,9 +32,14 @@ COMPANIES = {  # name: CIK
 }
 
 
+REPORT_PATH: Path | None = None
+
+
 def say(msg: str) -> None:
     print(msg, flush=True)
     REPORT.append(msg)
+    if REPORT_PATH is not None:
+        REPORT_PATH.write_text("\n".join(REPORT) + "\n", encoding="utf-8")
 
 
 def get(url: str, headers=None, tries: int = 3, timeout: int = 120) -> requests.Response:
@@ -114,100 +119,76 @@ RND = re.compile(r"ResearchAndDevelopment\w*", re.I)
 
 
 def probe_sec(out: Path) -> None:
-    say("== SEC EDGAR")
-    filings = {}
-    for name, cik in COMPANIES.items():
+    say("== SEC EDGAR: older filings and submission pages")
+    for name in ("Pfizer", "Novartis", "GSK", "Takeda", "AbbVie", "Merck"):
+        cik = COMPANIES[name]
         try:
             sub = sec(f"https://data.sec.gov/submissions/CIK{cik:010d}.json").json()
+            pages = [f["name"] for f in sub["filings"].get("files", [])]
             rec = sub["filings"]["recent"]
             rows = [dict(zip(rec.keys(), vals)) for vals in zip(*rec.values())]
-            ann = [r for r in rows if r["form"] in ("10-K", "20-F")]
-            say(f"{name}: {sub.get('name')} annual filings in recent list {len(ann)}; "
-                + ", ".join(f"{r['form']} {r['reportDate']} {r['accessionNumber']} {r['primaryDocument']}" for r in ann[:3]))
-            filings[name] = (cik, ann)
-        except Exception as exc:  # noqa: BLE001
-            say(f"{name}: submissions failed {exc}")
-    (out / "sec_filings.json").write_text(json.dumps({k: [cik, v[:12]] for k, (cik, v) in filings.items()}, indent=1))
-
-    for name in ("Pfizer", "Novartis", "AstraZeneca", "Johnson & Johnson", "Novo Nordisk", "Sanofi"):
-        if name not in filings or not filings[name][1]:
-            continue
-        cik, ann = filings[name]
-        for f in ann[:1] + ann[8:9]:
-            acc = f["accessionNumber"].replace("-", "")
-            try:
+            for pg in pages:
+                more = sec(f"https://data.sec.gov/submissions/{pg}").json()
+                rows += [dict(zip(more.keys(), vals)) for vals in zip(*more.values())]
+            ann = sorted([r for r in rows if r["form"] in ("10-K", "20-F")], key=lambda r: r["reportDate"])
+            say(f"{name}: pages {pages}; annual filings {len(ann)}: " + ", ".join(f"{r['form']} {r['reportDate']}" for r in ann[-14:]))
+            for f in [r for r in ann if r["reportDate"][:4] in ("2015", "2018")]:
+                acc = f["accessionNumber"].replace("-", "")
                 idx = sec(f"https://www.sec.gov/Archives/edgar/data/{cik}/{acc}/index.json").json()
                 files = [i["name"] for i in idx["directory"]["item"]]
                 inst = [x for x in files if x.endswith("_htm.xml")] or \
                        [x for x in files if x.endswith(".xml") and not re.search(r"(_cal|_def|_lab|_pre|FilingSummary|MetaLinks)", x)]
-                say(f"  {name} {f['form']} {f['reportDate']}: {len(files)} files; instance candidates {inst[:4]}")
+                say(f"  {f['form']} {f['reportDate']}: instance candidates {inst[:4]} of {len(files)} files")
                 if not inst:
                     continue
                 xml = sec(f"https://www.sec.gov/Archives/edgar/data/{cik}/{acc}/{inst[0]}").content
-                gz(out / f"sec_{re.sub(r'[^a-z]', '', name.lower())}_{f['reportDate']}.xml.gz", xml)
                 ctx, facts = parse_instance(xml)
-                yr_end = f["reportDate"]
+                end = f["reportDate"]
                 axes = {}
                 for fa in facts:
-                    if not (REV.match(fa["name"]) or RND.match(fa["name"])):
+                    if not (REV.match(fa["name"]) or RND.match(fa["name"])) or len(fa["value"]) > 30:
                         continue
                     c = ctx.get(fa["ctx"], {})
-                    if c.get("end") != yr_end or not c.get("start"):
+                    if c.get("end") != end or not c.get("start") or c["start"][:4] not in (end[:4], str(int(end[:4]) - 1)):
                         continue
-                    key = (fa["ns"].split("/")[-2] if "/" in fa["ns"] else fa["ns"], fa["name"],
-                           tuple(d for d, _ in c["dims"]))
-                    axes.setdefault(key, []).append(((tuple(m for _, m in c["dims"])), fa["value"], c["start"]))
-                for (ns, nm, dims), vals in sorted(axes.items(), key=lambda kv: (kv[0][1], len(kv[0][2]))):
-                    if len(dims) > 1:
+                    dims = tuple(d for d, _ in c["dims"])
+                    if len(dims) > 1 or (dims and not re.search("Geograph|Area", dims[0])):
                         continue
-                    shown = "; ".join(f"{'/'.join(m) or 'total'}={v}" for m, v, _ in vals[:12])
-                    say(f"    {ns}:{nm} dims={dims}: {shown}")
-            except Exception as exc:  # noqa: BLE001
-                say(f"  {name}: instance failed {exc}")
-
-    for name in ("Pfizer", "Novartis"):
-        cik = COMPANIES[name]
-        try:
-            cf = sec(f"https://data.sec.gov/api/xbrl/companyfacts/CIK{cik:010d}.json").json()
-            for tax, concepts in cf["facts"].items():
-                hits = [c for c in concepts if REV.match(c) or RND.match(c)]
-                say(f"  companyfacts {name} {tax}: {hits[:12]}")
+                    axes.setdefault((fa["name"], dims, fa["unit"]), []).append(("/".join(m for _, m in c["dims"]) or "total", fa["value"]))
+                for (nm, dims, unit), vals in sorted(axes.items()):
+                    say(f"    {nm} {dims} {unit}: " + "; ".join(f"{m}={v}" for m, v in vals[:12]))
         except Exception as exc:  # noqa: BLE001
-            say(f"  companyfacts {name} failed {exc}")
+            say(f"{name}: failed {exc}")
 
 
 def probe_oecd(out: Path) -> None:
-    say("== OECD SDMX")
-    try:
-        r = get("https://sdmx.oecd.org/public/rest/dataflow/all", headers={**UA, "Accept": "application/vnd.sdmx.structure+json;version=1.0"})
-        js = r.json()
-        flows = js["data"]["dataflows"]
-        keep = []
-        for f in flows:
-            nm = f.get("name") or (f.get("names") or {}).get("en", "")
-            if re.search(r"BERD|ANBERD|GBARD|budget allocations|health expenditure|SHA|pharmaceutical|R&D", f["id"] + " " + str(nm), re.I):
-                keep.append(f"{f['agencyID']},{f['id']},{f['version']} | {nm}")
-        say(f"dataflows {len(flows)}; matching {len(keep)}")
-        for k in keep[:80]:
-            say("  " + k)
-        (out / "oecd_flows.txt").write_text("\n".join(keep))
-    except Exception as exc:  # noqa: BLE001
-        say(f"dataflow list failed {exc}")
-    tests = {
-        "anberd": "https://sdmx.oecd.org/public/rest/data/OECD.STI.STP,DSD_ANBERD@DF_ANBERD,/all?startPeriod=2019&dimensionAtObservation=AllDimensions&format=csvfilewithlabels",
-        "sha": "https://sdmx.oecd.org/public/rest/data/OECD.ELS.HD,DSD_SHA@DF_SHA,/all?startPeriod=2021&format=csvfilewithlabels",
-    }
-    for k, u in tests.items():
+    say("== OECD SDMX structures")
+    flows = ["OECD.ELS.HD,HEALTH_PHMC@DF_PHMC_SALES,1.1", "OECD.ELS.HD,HEALTH_PHMC@DF_KEY_INDIC,1.1",
+             "OECD.ELS.HD,DSD_SHA@DF_SHA,1.1", "OECD.STI.STP,DSD_RDS_BERD@DF_BERD_INDU,1.0",
+             "OECD.STI.STP,DSD_ANBERD@DF_ANBERDi4,1.0", "OECD.STI.STP,DSD_RDS_GOV@DF_GBARD_NABS07,1.0",
+             "OECD.STI.STP,DSD_RDS_BERD@DF_BERD_MA_SOF,1.0"]
+    for fl in flows:
+        agency, fid, ver = fl.split(",")
         try:
-            r = get(u, timeout=300)
-            txt = r.text
-            gz(out / f"oecd_{k}_sample.csv.gz", txt[:3_000_000].encode())
-            lines = txt.splitlines()
-            say(f"{k}: {len(lines)} lines; header {lines[0][:600]}")
-            for ln in lines[1:4]:
-                say("   " + ln[:400])
+            r = get(f"https://sdmx.oecd.org/public/rest/dataflow/{agency}/{fid}/{ver}?references=all",
+                    headers={**UA, "Accept": "application/vnd.sdmx.structure+json;version=1.0"}, timeout=120)
+            js = r.json()["data"]
+            dsd = js["dataStructures"][0]
+            dims = dsd["dataStructureComponents"]["dimensionList"]["dimensions"]
+            cls = {c["id"]: c for c in js.get("codelists", [])}
+            say(f"{fl}: dimensions in order:")
+            for d in dims:
+                ref = d.get("localRepresentation", {}).get("enumeration", "")
+                clid = ref.split("(")[0].split(".")[-1].split(":")[-1] if ref else ""
+                codes = []
+                for cid, cl in cls.items():
+                    if cid == clid or (clid and clid in cid):
+                        codes = [(c["id"], c.get("name") or c.get("names", {}).get("en", "")) for c in cl.get("codes", [])]
+                        break
+                show = codes if len(codes) <= 40 else [c for c in codes if re.search(r"PRT|USA|DEU|_T|C21|PHARM|HC51|HEALTH|NABS07|EUR|USD|PPP|GDP|CAP|SALES|TOTAL|^R|^S", c[0] + str(c[1]), re.I)][:60]
+                say(f"   {d['id']} ({len(codes)} codes): " + "; ".join(f"{a}={b}" for a, b in show))
         except Exception as exc:  # noqa: BLE001
-            say(f"{k}: failed {exc}")
+            say(f"{fl}: failed {exc}")
 
 
 def probe_eurostat(out: Path) -> None:
@@ -232,6 +213,16 @@ def probe_worldbank(out: Path) -> None:
             say(f"{ind}: failed {exc}")
 
 
+def probe_ecb(out: Path) -> None:
+    say("== ECB exchange rates")
+    try:
+        r = get("https://data-api.ecb.europa.eu/service/data/EXR/A.USD+GBP+DKK+JPY+CHF.EUR.SP00.A?format=csvdata&startPeriod=2015")
+        lines = r.text.splitlines()
+        say(f"rows {len(lines)}; header {lines[0][:300]}; first {lines[1][:300]}")
+    except Exception as exc:  # noqa: BLE001
+        say(f"ECB failed {exc}")
+
+
 def probe_reports(out: Path) -> None:
     say("== Reports")
     urls = {
@@ -253,9 +244,11 @@ def probe_reports(out: Path) -> None:
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--out", default="data")
+    global REPORT_PATH
     out = Path(ap.parse_args().out) / "probe"
     out.mkdir(parents=True, exist_ok=True)
-    for fn in (probe_sec, probe_oecd, probe_eurostat, probe_worldbank, probe_reports):
+    REPORT_PATH = out.parent / "probe_report.txt"
+    for fn in (probe_oecd, probe_eurostat, probe_worldbank, probe_ecb, probe_reports, probe_sec):
         try:
             fn(out)
         except Exception:  # noqa: BLE001
