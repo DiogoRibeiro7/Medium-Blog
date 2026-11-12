@@ -1,0 +1,77 @@
+# One-off PR evidence collection, not a recurring INE ingestion pipeline.
+# The branch gate prevents this workflow from running for ordinary PRs.
+name: INE 0012340 source discovery — one-time PR probe
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/ine-0012340-pr-source-probe.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  capture:
+    if: >-
+      github.event.pull_request.head.ref == 'research/ine-0012340-one-shot-pr-probe' &&
+      github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    defaults:
+      run:
+        working-directory: urban-affordability-cascade
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Exercise capture and review without network calls
+        run: |
+          python -m unittest discover -s tests -p 'test_ine_commuting_capture.py' -v
+          python -m unittest discover -s tests -p 'test_ine_commuting_capture_review.py' -v
+      - name: Capture real INE responses, preserving failures
+        id: capture
+        shell: bash
+        run: |
+          set +e
+          python ine_commuting_capture.py --output "${{ runner.temp }}/ine-0012340"
+          rc=$?
+          echo "capture_exit_code=$rc" >> "$GITHUB_OUTPUT"
+          exit 0
+      - name: Validate captured files and create review
+        id: review
+        shell: bash
+        run: |
+          set +e
+          if [ -f "${{ runner.temp }}/ine-0012340/capture_manifest.json" ]; then
+            python ine_commuting_capture_review.py \
+              --capture-dir "${{ runner.temp }}/ine-0012340" \
+              --output-json "${{ runner.temp }}/ine-0012340/integrity_review.json"
+            rc=$?
+          else
+            rc=2
+          fi
+          echo "review_exit_code=$rc" >> "$GITHUB_OUTPUT"
+          exit 0
+      - name: Explain result and scientific boundaries
+        shell: bash
+        run: |
+          {
+            echo "## One-time INE 0012340 source probe"
+            echo ""
+            echo "Capture exit code: \`${{ steps.capture.outputs.capture_exit_code }}\`"
+            echo "Integrity review exit code: \`${{ steps.review.outputs.review_exit_code }}\`"
+            echo ""
+            echo "Inspect \`capture_manifest.json\` and \`integrity_review.json\` in the attached artifact."
+            echo "HTTP failure or malformed responses remain recorded as incomplete, not repaired."
+            echo "A successful download is **not** official source-semantic verification."
+            echo "The pinned 136-pair work/study matrix is **not** modified or reconciled."
+          } >> "$GITHUB_STEP_SUMMARY"
+      - name: Archive raw responses, source checksums, and failures
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ine-0012340-2021-one-shot-pr-source-probe
+          path: ${{ runner.temp }}/ine-0012340/
+          if-no-files-found: warn
+          retention-days: 30
