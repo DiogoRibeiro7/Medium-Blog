@@ -75,8 +75,8 @@ COMP = LAB["C"] * 1e6 / (EMP["C"] * 1e3)  # USD per person engaged per year
 VA_C = TIVA[TIVA.ACTIVITY == "C"].pivot_table(index="TIME_PERIOD", columns="REF_AREA", values="OBS_VALUE")
 
 
-def fx(transaction: str) -> pd.Series:
-    x = FX[(FX.TRANSACTION == transaction) & (FX.REF_AREA == "CHN")]
+def fx(transaction: str, area: str = "CHN") -> pd.Series:
+    x = FX[(FX.TRANSACTION == transaction) & (FX.REF_AREA == area)]
     return x.set_index("TIME_PERIOD").OBS_VALUE.sort_index()
 
 
@@ -141,6 +141,17 @@ def main() -> None:
     for y in (1995, 2005, 2015, 2022):
         say(f"China {y}: compensation per person USD; yuan; yuan per USD; at GDP PPP (international dollars)",
             f"{comp_usd.loc[y]:,.0f}; {comp_cny.loc[y]:,.0f}; {exc.loc[y]:.3f}; {comp_ppp.loc[y]:,.0f}")
+    shares = []
+    for a, b in ((1995, 2005), (2005, 2015), (2015, 2022), (1995, 2022)):
+        shares.append(-np.log(exc.loc[b] / exc.loc[a]) / np.log(comp_usd.loc[b] / comp_usd.loc[a]))
+    say("Exchange-rate share of China's log growth in USD compensation: 1995-2005; 2005-2015; 2015-2022; 1995-2022",
+        "; ".join(f"{v:.3f}" for v in shares))
+    mxn = fx("EXC_A", "MEX")
+    m_usd = COMP["MEX"]
+    g_usd = np.log(m_usd.loc[2022] / m_usd.loc[2015])
+    g_fx = -np.log(mxn.loc[2022] / mxn.loc[2015])
+    say("Mexico 2015-2022: log growth of USD compensation = peso growth + exchange rate (log points); pesos per USD 2015; 2022",
+        f"{100 * g_usd:.1f} = {100 * (g_usd - g_fx):.1f} + {100 * g_fx:.1f}; {mxn.loc[2015]:.2f}; {mxn.loc[2022]:.2f}")
     say("Yuan per USD, 2023; 2024; 2025", f"{exc.loc[2023]:.3f}; {exc.loc[2024]:.3f}; {exc.loc[2025]:.3f}")
 
     # ---------------------------------------------------------------- China's jobs and output
@@ -249,6 +260,9 @@ def main() -> None:
     say("China 2024 implied manufacturing employees (millions): stock/density before; after the revision",
         f"{stock / d_old * 1e4 / 1e6:.1f}; {stock / d_new * 1e4 / 1e6:.1f}")
     say("OECD persons engaged in China's manufacturing, 2022 (millions)", f"{EMP['C'].loc[2022, 'CHN'] / 1e3:.1f}")
+    oecd = EMP["C"].loc[2022, "CHN"] * 1e3
+    say("IFR implied employees / OECD persons engaged 2022: before; after the revision",
+        f"{stock / d_old * 1e4 / oecd:.2f}; {stock / d_new * 1e4 / oecd:.2f}")
     inst = IFR[IFR.metric == "installations"].set_index("country").value
     say("China's share of world robot installations, 2024", f"{inst['CHN'] / inst['WORLD']:.3f}")
     say("China installations / US installations, 2024", f"{inst['CHN'] / inst['USA']:.1f}")
