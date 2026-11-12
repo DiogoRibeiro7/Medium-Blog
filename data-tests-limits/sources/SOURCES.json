@@ -1,4 +1,10 @@
 {
   "retrieved": "2026-11-12",
-  "files": {}
+  "files": {
+    "data_reports_monthly.csv": {
+      "source": "https://data.cityofnewyork.us/api/views/v6kb-cqej/rows.csv?accessType=DOWNLOAD",
+      "sha256": "821ddd671b847ad5aa7fb3126ddbe8ad6fa98744f9a957992638be1c1e24c144",
+      "bytes": 38319
+    }
+  }
 }
