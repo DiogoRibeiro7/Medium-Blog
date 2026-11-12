@@ -134,7 +134,7 @@ Any change is listed here with its reason and date, and marked in the article.
 
 ## After the registered run (post hoc)
 
-Added on 13 November 2026, after the registered results were seen (workflow commit 08cc560). Nothing above
+Added late on 12 November 2026, after the registered results were seen (workflow commit 08cc560). Nothing above
 this section was changed afterwards, except the date of the last entry, which said 13 November by mistake.
 
 - **Registered result.** H1 held in all four pairs and H2 in all four (`results/summary.txt`). For the two
