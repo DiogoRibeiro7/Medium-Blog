@@ -1,0 +1,421 @@
+{
+ "academic": {
+  "ARG": 0.000317,
+  "AUT": 0.002484,
+  "BEL": 0.001789,
+  "BGR": 8.6e-05,
+  "CHL": 0.00028,
+  "CZE": 0.000682,
+  "DEU": 0.001698,
+  "DNK": 0.004123,
+  "ESP": 0.001475,
+  "EST": 0.001217,
+  "FIN": 0.001642,
+  "FRA": 0.000755,
+  "GBR": 0.001019,
+  "GRC": 0.002007,
+  "HRV": 0.000757,
+  "HUN": 0.000752,
+  "IRL": 0.000585,
+  "ISL": 0.001535,
+  "ITA": 0.000875,
+  "JPN": 0.001536,
+  "KOR": 0.001296,
+  "LTU": 0.00113,
+  "LUX": 0.000885,
+  "LVA": 0.000814,
+  "NLD": 0.001791,
+  "NOR": 0.002304,
+  "POL": 0.00099,
+  "PRT": 0.000961,
+  "ROU": 0.00012,
+  "RUS": 0.000352,
+  "SGP": 0.002217,
+  "SVK": 0.000629,
+  "SVN": 0.000756,
+  "SWE": 0.003165,
+  "TUR": 0.001569,
+  "TWN": 0.00138,
+  "ZAF": 0.000689
+ },
+ "companies_2025": [
+  {
+   "company": "AbbVie",
+   "hq": "US",
+   "us_share": 0.762
+  },
+  {
+   "company": "Amgen",
+   "hq": "US",
+   "us_share": 0.7189
+  },
+  {
+   "company": "Gilead",
+   "hq": "US",
+   "us_share": 0.709
+  },
+  {
+   "company": "Bristol-Myers Squibb",
+   "hq": "US",
+   "us_share": 0.6905
+  },
+  {
+   "company": "Eli Lilly",
+   "hq": "US",
+   "us_share": 0.6671
+  },
+  {
+   "company": "Vertex",
+   "hq": "US",
+   "us_share": 0.629
+  },
+  {
+   "company": "Pfizer",
+   "hq": "US",
+   "us_share": 0.5925
+  },
+  {
+   "company": "Johnson & Johnson",
+   "hq": "US",
+   "us_share": 0.5707
+  },
+  {
+   "company": "Merck & Co",
+   "hq": "US",
+   "us_share": 0.5616
+  },
+  {
+   "company": "Novo Nordisk",
+   "hq": "DK",
+   "us_share": 0.5603
+  },
+  {
+   "company": "GSK",
+   "hq": "GB",
+   "us_share": 0.5161
+  },
+  {
+   "company": "Sanofi",
+   "hq": "FR",
+   "us_share": 0.5083
+  },
+  {
+   "company": "Novartis",
+   "hq": "CH",
+   "us_share": 0.4278
+  },
+  {
+   "company": "AstraZeneca",
+   "hq": "GB",
+   "us_share": 0.4081
+  }
+ ],
+ "europe": [
+  {
+   "iso2": "AT",
+   "market_gdp": 0.01385,
+   "rd_gdp": 0.000848,
+   "rd_market": 0.0613
+  },
+  {
+   "iso2": "BE",
+   "market_gdp": 0.01353,
+   "rd_gdp": 0.009632,
+   "rd_market": 0.7122
+  },
+  {
+   "iso2": "BG",
+   "market_gdp": 0.02142,
+   "rd_gdp": 0.000978,
+   "rd_market": 0.0457
+  },
+  {
+   "iso2": "MT",
+   "market_gdp": 0.01196,
+   "rd_gdp": 0.00455,
+   "rd_market": 0.3804
+  },
+  {
+   "iso2": "HR",
+   "market_gdp": 0.0181,
+   "rd_gdp": 0.000458,
+   "rd_market": 0.0253
+  },
+  {
+   "iso2": "NL",
+   "market_gdp": 0.00804,
+   "rd_gdp": 0.000986,
+   "rd_market": 0.1226
+  },
+  {
+   "iso2": "CY",
+   "market_gdp": 0.01424,
+   "rd_gdp": 0.002342,
+   "rd_market": 0.1644
+  },
+  {
+   "iso2": "NO",
+   "market_gdp": 0.00897,
+   "rd_gdp": 0.000272,
+   "rd_market": 0.0304
+  },
+  {
+   "iso2": "CZ",
+   "market_gdp": 0.01193,
+   "rd_gdp": 0.000333,
+   "rd_market": 0.0279
+  },
+  {
+   "iso2": "PL",
+   "market_gdp": 0.01538,
+   "rd_gdp": 0.002436,
+   "rd_market": 0.1584
+  },
+  {
+   "iso2": "DK",
+   "market_gdp": 0.01089,
+   "rd_gdp": 0.005301,
+   "rd_market": 0.487
+  },
+  {
+   "iso2": "PT",
+   "market_gdp": 0.017,
+   "rd_gdp": 0.000398,
+   "rd_market": 0.0234
+  },
+  {
+   "iso2": "RO",
+   "market_gdp": 0.01888,
+   "rd_gdp": 0.000619,
+   "rd_market": 0.0328
+  },
+  {
+   "iso2": "FI",
+   "market_gdp": 0.01171,
+   "rd_gdp": 0.00084,
+   "rd_market": 0.0718
+  },
+  {
+   "iso2": "FR",
+   "market_gdp": 0.01338,
+   "rd_gdp": 0.00201,
+   "rd_market": 0.1502
+  },
+  {
+   "iso2": "SK",
+   "market_gdp": 0.01564,
+   "rd_gdp": 0.000265,
+   "rd_market": 0.0169
+  },
+  {
+   "iso2": "DE",
+   "market_gdp": 0.01322,
+   "rd_gdp": 0.002445,
+   "rd_market": 0.185
+  },
+  {
+   "iso2": "SI",
+   "market_gdp": 0.01538,
+   "rd_gdp": 0.004772,
+   "rd_market": 0.3102
+  },
+  {
+   "iso2": "EL",
+   "market_gdp": 0.02703,
+   "rd_gdp": 0.000639,
+   "rd_market": 0.0237
+  },
+  {
+   "iso2": "ES",
+   "market_gdp": 0.01423,
+   "rd_gdp": 0.00103,
+   "rd_market": 0.0724
+  },
+  {
+   "iso2": "HU",
+   "market_gdp": 0.01371,
+   "rd_gdp": 0.001445,
+   "rd_market": 0.1054
+  },
+  {
+   "iso2": "SE",
+   "market_gdp": 0.00973,
+   "rd_gdp": 0.002108,
+   "rd_market": 0.2167
+  },
+  {
+   "iso2": "CH",
+   "market_gdp": 0.00901,
+   "rd_gdp": 0.010656,
+   "rd_market": 1.1832
+  },
+  {
+   "iso2": "IE",
+   "market_gdp": 0.00598,
+   "rd_gdp": 0.000543,
+   "rd_market": 0.0908
+  },
+  {
+   "iso2": "TR",
+   "market_gdp": 0.008,
+   "rd_gdp": 5.7e-05,
+   "rd_market": 0.0071
+  },
+  {
+   "iso2": "IT",
+   "market_gdp": 0.01248,
+   "rd_gdp": 0.00104,
+   "rd_market": 0.0833
+  },
+  {
+   "iso2": "UK",
+   "market_gdp": 0.01123,
+   "rd_gdp": 0.003229,
+   "rd_market": 0.2876
+  }
+ ],
+ "public": [
+  {
+   "area": "USA",
+   "gbard_health_gdp": 0.001674,
+   "name": "United States"
+  },
+  {
+   "area": "CHE",
+   "gbard_health_gdp": 1.1e-05,
+   "name": "Switzerland"
+  },
+  {
+   "area": "BEL",
+   "gbard_health_gdp": 0.000109,
+   "name": "Belgium"
+  },
+  {
+   "area": "DNK",
+   "gbard_health_gdp": 0.001407,
+   "name": "Denmark"
+  },
+  {
+   "area": "GBR",
+   "gbard_health_gdp": 0.001286,
+   "name": "United Kingdom"
+  },
+  {
+   "area": "DEU",
+   "gbard_health_gdp": 0.000487,
+   "name": "Germany"
+  },
+  {
+   "area": "SWE",
+   "gbard_health_gdp": 0.000505,
+   "name": "Sweden"
+  },
+  {
+   "area": "FRA",
+   "gbard_health_gdp": 0.0003,
+   "name": "France"
+  },
+  {
+   "area": "NLD",
+   "gbard_health_gdp": 0.000671,
+   "name": "Netherlands"
+  },
+  {
+   "area": "ITA",
+   "gbard_health_gdp": 0.000693,
+   "name": "Italy"
+  },
+  {
+   "area": "ESP",
+   "gbard_health_gdp": 0.000568,
+   "name": "Spain"
+  },
+  {
+   "area": "PRT",
+   "gbard_health_gdp": 0.000276,
+   "name": "Portugal"
+  },
+  {
+   "area": "JPN",
+   "gbard_health_gdp": 0.000641,
+   "name": "Japan"
+  },
+  {
+   "area": "KOR",
+   "gbard_health_gdp": 0.00088,
+   "name": "Korea"
+  },
+  {
+   "area": "CAN",
+   "gbard_health_gdp": 0.000724,
+   "name": "Canada"
+  },
+  {
+   "area": "POL",
+   "gbard_health_gdp": 9.4e-05,
+   "name": "Poland"
+  },
+  {
+   "area": "GRC",
+   "gbard_health_gdp": 0.000568,
+   "name": "Greece"
+  }
+ ],
+ "public_eu": 0.000461,
+ "rents": {
+  "1.0": 0.5865,
+  "2.0": 0.6454,
+  "3.08": 0.6795,
+  "4.22": 0.7014
+ },
+ "trend": {
+  "firms": [
+   "AbbVie",
+   "Amgen",
+   "Bristol-Myers Squibb",
+   "Eli Lilly",
+   "Gilead",
+   "Merck & Co",
+   "Pfizer"
+  ],
+  "us_share": [
+   0.5419,
+   0.5685,
+   0.5718,
+   0.5691,
+   0.575,
+   0.6135,
+   0.5703,
+   0.5864,
+   0.6183,
+   0.6564,
+   0.6631
+  ],
+  "years": [
+   2015,
+   2016,
+   2017,
+   2018,
+   2019,
+   2020,
+   2021,
+   2022,
+   2023,
+   2024,
+   2025
+  ]
+ },
+ "us_gdp_share": {
+  "2015": 0.2412,
+  "2016": 0.244,
+  "2017": 0.2389,
+  "2018": 0.2366,
+  "2019": 0.2426,
+  "2020": 0.2474,
+  "2021": 0.2402,
+  "2022": 0.2533,
+  "2023": 0.2591,
+  "2024": 0.2624,
+  "2025": 0.26
+ }
+}

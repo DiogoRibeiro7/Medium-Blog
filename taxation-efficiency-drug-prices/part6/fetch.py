@@ -8,13 +8,15 @@ Sources
   sec        SEC EDGAR: the annual reports (10-K, 20-F) of seventeen large research-based drug companies,
              fiscal years 2015-2025, read from the XBRL instance of each filing: total revenue, revenue in
              the United States and in the other geographic areas each company reports, research and
-             development expense, acquired in-process R&D, cost of sales and net income.
+             development expense, acquired in-process R&D, cost of sales, selling, general and
+             administrative costs, and net income.
   ecb        ECB reference exchange rates, annual averages (USD, GBP, DKK, JPY, CHF per euro).
   efpia      EFPIA, The Pharmaceutical Industry in Figures, Key Data 2026, kept as layout text (country
              tables of market value, R&D, production; world market shares; origin of new molecules).
   worldbank  World Bank: GDP in current US dollars and population, 2015-2025.
   oecd       OECD: government budget allocations for R&D by socio-economic objective (health and total),
-             and business R&D performed in the pharmaceutical industry, all reporting countries.
+             R&D in medical and health sciences by sector of performance (GERD by field), and business R&D
+             performed in the pharmaceutical industry with GDP in PPP dollars (MSTI), all reporting countries.
   eurostat   Eurostat: GBARD for health (gba_nabsfin07) and business R&D in pharmaceuticals
              (rd_e_berdindr2, NACE C21), EU and EFTA countries.
 
