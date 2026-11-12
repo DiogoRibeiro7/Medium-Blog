@@ -33,12 +33,15 @@ The workspace where the analysis was written cannot reach these hosts, so `.gith
 
 **Placebo.** The same fixed-effects regression with past growth (t − h to t) as the outcome, and a country bootstrap of forward minus backward coefficients. If composition only tracked growth that had already happened, the two would look alike.
 
+**Influence and timing.** The fixed-effects difference (log transform, income control) re-estimated leaving out each billionaire country in turn, and separately for windows that end by 2019 and windows that include 2020 or later.
+
 **WID check.** Conjecture 1 of the first article in its literal form: in country-years with a source-based WID top-1% wealth share (`data_quality > 0`), does the association between that share and subsequent growth depend on the inherited share of the country's billionaire wealth? 147 country-years in 26 countries, mostly 2011–2017.
 
 ## Caveats
 
 - Billionaire wealth is a measure of the extreme top tail, valued at market prices, and moves with stock markets. Country and year effects absorb level differences and global cycles, not country-specific booms.
 - Only about 7.5% of the variance of log(1 + inherited % of GDP) is within countries; the fixed-effects estimates rest on that.
+- The TFP association is robust to dropping any single country but not to splitting the period: neither the windows ending by 2019 nor those including 2020 show it on their own, so the full-sample estimate rests largely on change between the two halves of the decade.
 - Growth windows overlap for h > 1; clustering by country accounts for the resulting serial correlation, not for everything else.
 - Every result is an association. The placebo is a check on one alternative explanation, not an identification strategy.
 

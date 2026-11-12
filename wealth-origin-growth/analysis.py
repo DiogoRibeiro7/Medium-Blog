@@ -352,6 +352,34 @@ def pre_post_test(panel: pd.DataFrame, draws: int = 1000, seed: int = 20261113) 
     return pd.DataFrame(rows)
 
 
+def influence_and_covid(panel: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
+    """Leave-one-country-out and pre-2020 windows for the fixed-effects difference (log1p, income control)."""
+    loo_rows, cov_rows = [], []
+    for var, smp, h in itertools.product(("gdppc", "tfp"), ("all", "billionaire_countries"), (3, 5)):
+        d = prep(sample(panel, smp), "log1p")
+        y = f"g_{var}_{h}"
+        full = design(d, y, ["x_inh", "x_sum"], ["ln_y"], "fe")
+        b0, s0 = ols(full["y"], full["X"], full["groups"])
+        with_b = sorted(d.loc[d["n"] > 0, "iso3"].unique())
+        for c in with_b:
+            dd = design(d[d["iso3"] != c], y, ["x_inh", "x_sum"], ["ln_y"], "fe")
+            b, s = ols(dd["y"], dd["X"], dd["groups"])
+            loo_rows.append(dict(outcome=var, sample=smp, horizon=h, dropped=c, diff=b[0], se=s[0],
+                                 full_diff=b0[0], full_se=s0[0]))
+        for label, part in (("ends by 2019", d[d["year"] + h <= 2019]), ("includes 2020", d[d["year"] + h >= 2020])):
+            dd = design(part, y, ["x_inh", "x_sum"], ["ln_y"], "fe")
+            b, s = ols(dd["y"], dd["X"], dd["groups"])
+            yrs = part.dropna(subset=[y])["year"]
+            cov_rows.append(dict(outcome=var, sample=smp, horizon=h, windows=label,
+                                 list_years=f"{int(yrs.min())}-{int(yrs.max())}", diff=b[0], se=s[0],
+                                 n_obs=dd["n_obs"], full_diff=b0[0], full_se=s0[0]))
+    loo = pd.DataFrame(loo_rows)
+    loo["lo"], loo["hi"] = loo["diff"] - 1.96 * loo["se"], loo["diff"] + 1.96 * loo["se"]
+    cov = pd.DataFrame(cov_rows)
+    cov["lo"], cov["hi"] = cov["diff"] - 1.96 * cov["se"], cov["diff"] + 1.96 * cov["se"]
+    return loo, cov
+
+
 def wid_check(panel: pd.DataFrame, countries: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
     s = pd.read_csv(DATA / "wid_shares.csv", keep_default_na=False)
     iso = dict(zip(countries["iso2"], countries["iso3"]))
@@ -400,6 +428,9 @@ def main() -> None:
     plc.to_csv(OUT / "placebo.csv", index=False, float_format="%.6f")
     prepost = pre_post_test(panel)
     prepost.to_csv(OUT / "pre_post_test.csv", index=False, float_format="%.6f")
+    loo, covid = influence_and_covid(panel)
+    loo.to_csv(OUT / "leave_one_out.csv", index=False, float_format="%.6f")
+    covid.to_csv(OUT / "pre_covid.csv", index=False, float_format="%.6f")
     wid, wid_sample = wid_check(panel, countries)
     wid.to_csv(OUT / "wid_check.csv", index=False, float_format="%.6f")
 
@@ -488,6 +519,22 @@ def main() -> None:
         w(f"  {r['outcome']} / {r['transform']} / {r['sample']} / h={r['horizon']}: forward {r['forward']:+.4f}, "
           f"backward {r['backward']:+.4f}, difference {r['forward_minus_backward']:+.4f} [{r['lo']:+.4f}, {r['hi']:+.4f}], "
           f"P(>=0) {r['p_ge_0']:.3f}")
+    w("")
+    w("## Influence: leave one billionaire country out (fixed effects, log1p, income control)")
+    for (o, smp, h), sub in loo.groupby(["outcome", "sample", "horizon"]):
+        r0 = sub.iloc[0]
+        shift = (sub["diff"] - r0["full_diff"]).abs()
+        top = sub.loc[shift.sort_values(ascending=False).index[:3]]
+        w(f"{o} / {smp} / h={h}: full {r0['full_diff']:+.4f} [{r0['full_diff'] - 1.96 * r0['full_se']:+.4f}, "
+          f"{r0['full_diff'] + 1.96 * r0['full_se']:+.4f}]; leave-one-out range [{sub['diff'].min():+.4f}, "
+          f"{sub['diff'].max():+.4f}] over {len(sub)} drops; negative in {(sub['diff'] < 0).sum()}; "
+          f"interval excludes zero in {(sub['hi'] < 0).sum()}; most influential: "
+          + ", ".join(f"{r['dropped']} ({r['diff']:+.3f})" for _, r in top.iterrows()))
+    w("")
+    w("## Windows that end by 2019 vs windows that include 2020 or later (fixed effects, log1p, income control)")
+    for _, r in covid.iterrows():
+        w(f"{r['outcome']} / {r['sample']} / h={r['horizon']} / {r['windows']} (list years {r['list_years']}, "
+          f"n={r['n_obs']}): {r['diff']:+.4f} [{r['lo']:+.4f}, {r['hi']:+.4f}] vs full sample {r['full_diff']:+.4f}")
     w("")
     w("## WID check (source-based top-1% wealth share x inherited share of billionaire wealth)")
     w(f"country-years: {len(wid_sample)}, countries {wid_sample['iso3'].nunique()}, years "

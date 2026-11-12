@@ -117,6 +117,34 @@ forward minus backward (country bootstrap, 1,000 draws):
   tfp / raw / billionaire_countries / h=3: forward -0.1296, backward -0.0245, difference -0.1051 [-0.3526, +0.0352], P(>=0) 0.069
   tfp / raw / billionaire_countries / h=5: forward -0.0959, backward +0.0335, difference -0.1294 [-0.3669, +0.0648], P(>=0) 0.130
 
+## Influence: leave one billionaire country out (fixed effects, log1p, income control)
+gdppc / all / h=3: full +0.3863 [-0.3867, +1.1593]; leave-one-out range [+0.1325, +0.6344] over 75 drops; negative in 0; interval excludes zero in 0; most influential: VEN (+0.133), AGO (+0.634), MAR (+0.472)
+gdppc / all / h=5: full +0.3737 [-0.2044, +0.9517]; leave-one-out range [+0.0864, +0.5440] over 75 drops; negative in 0; interval excludes zero in 0; most influential: VEN (+0.086), AGO (+0.544), SWZ (+0.450)
+gdppc / billionaire_countries / h=3: full -0.3340 [-1.1673, +0.4992]; leave-one-out range [-0.4300, -0.0889] over 63 drops; negative in 63; interval excludes zero in 0; most influential: VEN (-0.089), AGO (-0.117), SWZ (-0.430)
+gdppc / billionaire_countries / h=5: full -0.1510 [-0.6333, +0.3314]; leave-one-out range [-0.2201, -0.0122] over 63 drops; negative in 63; interval excludes zero in 0; most influential: AGO (-0.012), VEN (-0.060), NPL (-0.220)
+tfp / all / h=3: full -0.7805 [-1.6003, +0.0392]; leave-one-out range [-0.9332, -0.6473] over 75 drops; negative in 75; interval excludes zero in 2; most influential: KWT (-0.933), AGO (-0.647), PHL (-0.647)
+tfp / all / h=5: full -0.4160 [-0.8697, +0.0377]; leave-one-out range [-0.4898, -0.1790] over 75 drops; negative in 75; interval excludes zero in 4; most influential: SWZ (-0.179), KWT (-0.490), ZWE (-0.479)
+tfp / billionaire_countries / h=3: full -1.1669 [-2.0318, -0.3020]; leave-one-out range [-1.3527, -0.8859] over 63 drops; negative in 63; interval excludes zero in 63; most influential: VEN (-0.886), KWT (-1.353), PHL (-1.046)
+tfp / billionaire_countries / h=5: full -0.6471 [-1.0617, -0.2324]; leave-one-out range [-0.7389, -0.4837] over 63 drops; negative in 63; interval excludes zero in 62; most influential: SWZ (-0.484), KWT (-0.739), IND (-0.731)
+
+## Windows that end by 2019 vs windows that include 2020 or later (fixed effects, log1p, income control)
+gdppc / all / h=3 / ends by 2019 (list years 2011-2016, n=894): +0.7134 [-0.2437, +1.6705] vs full sample +0.3863
+gdppc / all / h=3 / includes 2020 (list years 2017-2020, n=591): -1.1137 [-3.6727, +1.4452] vs full sample +0.3863
+gdppc / all / h=5 / ends by 2019 (list years 2011-2014, n=596): +0.0779 [-0.6911, +0.8470] vs full sample +0.3737
+gdppc / all / h=5 / includes 2020 (list years 2015-2018, n=594): +0.2942 [-0.5010, +1.0894] vs full sample +0.3737
+gdppc / billionaire_countries / h=3 / ends by 2019 (list years 2011-2016, n=378): -0.0099 [-0.8781, +0.8584] vs full sample -0.3340
+gdppc / billionaire_countries / h=3 / includes 2020 (list years 2017-2020, n=252): -0.2682 [-2.2255, +1.6891] vs full sample -0.3340
+gdppc / billionaire_countries / h=5 / ends by 2019 (list years 2011-2014, n=252): -0.1291 [-0.8026, +0.5444] vs full sample -0.1510
+gdppc / billionaire_countries / h=5 / includes 2020 (list years 2015-2018, n=252): +0.1915 [-0.6830, +1.0661] vs full sample -0.1510
+tfp / all / h=3 / ends by 2019 (list years 2011-2016, n=672): +0.1416 [-0.7125, +0.9958] vs full sample -0.7805
+tfp / all / h=3 / includes 2020 (list years 2017-2020, n=448): -2.6160 [-5.4912, +0.2592] vs full sample -0.7805
+tfp / all / h=5 / ends by 2019 (list years 2011-2014, n=448): -0.1928 [-0.8756, +0.4900] vs full sample -0.4160
+tfp / all / h=5 / includes 2020 (list years 2015-2018, n=448): +0.5764 [-0.7045, +1.8572] vs full sample -0.4160
+tfp / billionaire_countries / h=3 / ends by 2019 (list years 2011-2016, n=336): -0.2692 [-0.9714, +0.4329] vs full sample -1.1669
+tfp / billionaire_countries / h=3 / includes 2020 (list years 2017-2020, n=224): -1.6836 [-3.7232, +0.3560] vs full sample -1.1669
+tfp / billionaire_countries / h=5 / ends by 2019 (list years 2011-2014, n=224): -0.3495 [-1.0164, +0.3174] vs full sample -0.6471
+tfp / billionaire_countries / h=5 / includes 2020 (list years 2015-2018, n=224): +0.4831 [-0.7960, +1.7622] vs full sample -0.6471
+
 ## WID check (source-based top-1% wealth share x inherited share of billionaire wealth)
 country-years: 147, countries 26, years 2011-2022
 fe gdppc h=1 (n=146, countries=25, years 2011-2022): interaction +0.6237 [+0.2858, +0.9617]; top1 +0.0962 (se 0.1235)
