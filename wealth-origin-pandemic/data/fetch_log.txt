@@ -1,0 +1,4 @@
+2026-11-12T13:08:03Z	200	43837034	fa5c95fa8f5e386517698cdc17581f7e3333348907c57ad8459c877580d0fe79	https://raw.githubusercontent.com/OxCGRT/covid-policy-dataset/main/data/OxCGRT_compact_national_v1.csv
+2026-11-12T13:08:09Z	200	3739927	2009f3868be6cbaffbcb57520718a5abb8c0b6d52b8cdbb169ac918e23f48383	https://rplumber.ilo.org/data/indicator/?id=EMP_TEMP_SEX_ECO_NB_A&lang=en&type=code&format=.csv.gz&channel=ilostat
+2026-11-12T13:09:00Z	failed: HTTP Error 502: Bad Gateway	None	None	https://api.worldbank.org/v2/country/all/indicator/ST.INT.RCPT.CD?format=json&per_page=20000&date=2010:2023
+# wdi failed: https://api.worldbank.org/v2/country/all/indicator/ST.INT.RCPT.CD?format=json&per_page=20000&date=2010:2023: HTTP Error 502: Bad Gateway
