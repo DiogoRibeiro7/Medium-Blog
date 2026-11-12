@@ -16,6 +16,9 @@ Annual (1326 country-years, 83 countries): levels B~G +0.95 [0.19, 1.70] p 0.014
   within_mean: +1.62 [−1.77, 5.01] p 0.348 n 767
   within_income: +1.82 [−2.44, 6.08] p 0.403 n 565 n_countries 49
   within_consumption: −0.18 [−2.74, 2.38] p 0.891 n 202 n_countries 32
+  within_wealth: +2.38 [−2.13, 6.89] p 0.301 n 767
+  pooled_wealth: −8.61 [−15.76, −1.46] p 0.018 n 767
+  corr_within_B_W: 0.922
   within_outside_eca: +0.12 [−2.70, 2.94] p 0.934 n 268 n_countries 39
   within_country_weighted: +2.34 [−2.57, 7.24] p 0.351 n 767
   drop one country: min +1.39 (LTU), max +3.95 (ROU)

@@ -161,6 +161,9 @@ def build_panel(inp: dict[str, Any]) -> tuple[pd.DataFrame, pd.DataFrame, pd.Dat
     nat["year"] = nat.reporting_year.astype(int)
     nat = nat.join(w, on=["country_code", "year"])
     nat["n_cit"] = [float(cit.n.get((c, y), 0)) for c, y in zip(nat.country_code, nat.year)]
+    nat["worth"] = [float(cit.worth_musd.get((c, y), 0.0)) for c, y in zip(nat.country_code, nat.year)]
+    # log10 billionaire net worth per person in US dollars, with half a billion added for years without billionaires
+    nat["W"] = np.log10((nat.worth + 500.0) * 1e6 / nat["pop"])
     nat["B"] = density(nat.n_cit, nat["pop"])
     nat["G"] = np.log10(nat.gdp)
     nat["GNI"] = np.log10(nat.gni)
@@ -285,6 +288,10 @@ def estimators(panel: pd.DataFrame) -> dict[str, Any]:
         sub = d[d.welfare_type == wt]
         out[f"within_{wt}"] = coef(cl("p_30 ~ B + G + C(spell) + C(year)", sub), "B") | {
             "n_countries": int(sub.country_code.nunique())}
+    out["within_wealth"] = coef(cl("p_30 ~ W + G + C(spell) + C(year)", d), "W")
+    out["pooled_wealth"] = coef(cl("p_30 ~ W + G + C(year)", d), "W")
+    out["corr_within_B_W"] = float(np.corrcoef(d.B - d.groupby("spell").B.transform("mean"),
+                                               d.W - d.groupby("spell").W.transform("mean"))[0, 1])
     out_eca = d[d.region_code != "ECS"]
     out["within_outside_eca"] = coef(cl("p_30 ~ B + G + C(spell) + C(year)", out_eca), "B") | {
         "n_countries": int(out_eca.country_code.nunique())}
@@ -676,6 +683,9 @@ def summary_lines(n: dict[str, Any]) -> list[str]:
            f"dB~dB lag {_c(a['dB_on_dB_lag'])}; R2 year {a['r2_year']:.3f} +growth+price {a['r2_year_growth_price']:.3f}; "
            f"SD dB {a['sd_dB']:.3f}; share falling {a['share_years_falling']:.3f}"]
     for k, v in e.items():
+        if k == "corr_within_B_W":
+            out.append(f"  {k}: {v:.3f}")
+            continue
         if k == "drop_one":
             out.append(f"  drop one country: min {v['min']:+.2f} ({v['min_country']}), max {v['max']:+.2f} ({v['max_country']})")
             continue
