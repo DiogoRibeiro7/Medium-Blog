@@ -1,0 +1,157 @@
+
+==============================================================================
+O0. The data
+==============================================================================
+daily files fetched for Part 6: 1043, 2024-01-01 to 2026-11-10; rows 341,858
+the file of 2024-01-01, read by Part 3 and again by Part 6: 389 and 389 rows, identical: True
+national counts against the sum of the states, ages 1 to 28: 28,102 pairs, differing 0
+out-of-sample mornings: 1017, 2024-01-01 to 2026-10-13; replay from 2023-10-01 (files from 2023-08-01)
+  2024: 366 mornings, final 7-day count median 4,653, min 526, max 19,878
+  2025: 365 mornings, final 7-day count median 1,582, min 340, max 10,800
+  2026: 286 mornings, final 7-day count median 217, min 47, max 5,630
+in-sample mornings: 822; final 7-day count median 170,560
+holidays in the calendar, 2024 to 2026: 2024-01-01, 2024-03-29, 2024-04-01, 2024-05-01, 2024-05-09, 2024-05-20, 2024-10-03, 2024-12-25, 2024-12-26, 2025-01-01, 2025-04-18, 2025-04-21, 2025-05-01, 2025-05-29, 2025-06-09, 2025-10-03, 2025-12-25, 2025-12-26, 2026-01-01, 2026-04-03, 2026-04-06, 2026-05-01, 2026-05-14, 2026-05-25, 2026-10-03, 2026-12-25, 2026-12-26
+
+==============================================================================
+O1. Files that added nothing, out of sample
+==============================================================================
+files compared with the file of the day before: 1013; identical: 304
+  by weekday: Mon 140, Tue 5, Wed 2, Thu 4, Fri 9, Sat 6, Sun 138
+  dated Tuesday to Saturday: 26; of them the day after a nationwide holiday: 21
+  2024-03-09, 2024-03-30 (after holiday), 2024-04-02 (after holiday), 2024-05-02 (after holiday), 2024-05-10 (after holiday), 2024-05-21 (after holiday), 2024-10-04 (after holiday), 2024-12-25, 2024-12-26 (after holiday), 2024-12-27 (after holiday), 2025-01-01, 2025-01-02 (after holiday), 2025-04-19 (after holiday), 2025-04-22 (after holiday), 2025-05-02 (after holiday), 2025-05-09, 2025-05-30 (after holiday), 2025-06-10 (after holiday), 2025-10-04 (after holiday), 2025-12-26 (after holiday), 2025-12-27 (after holiday), 2026-01-01, 2026-01-02 (after holiday), 2026-04-04 (after holiday), 2026-04-07 (after holiday), 2026-05-15 (after holiday)
+out-of-sample mornings using such a file: 26; mornings the day after a holiday: 25
+
+==============================================================================
+O2. Tuning the graded check in sample (mean absolute error and more, 822 mornings)
+==============================================================================
+  tau 0.1: mean absolute 2.0%, mean -0.6%, weighted 2.3%, >5% 49, >10% 4, >20% 0, worst -14.4% on 2022-04-19
+  tau 0.25: mean absolute 2.1%, mean -0.3%, weighted 2.5%, >5% 57, >10% 10, >20% 2, worst +32.3% on 2021-06-01
+  tau 0.5: mean absolute 3.3%, mean +1.1%, weighted 2.7%, >5% 98, >10% 41, >20% 22, worst +86.8% on 2023-03-08
+  tau 0.75: mean absolute 8.9%, mean +7.1%, weighted 5.4%, >5% 250, >10% 183, >20% 128, worst +113.9% on 2023-03-09
+  tau 0.9: mean absolute 12.1%, mean +10.4%, weighted 8.2%, >5% 382, >10% 293, >20% 191, worst +113.9% on 2023-03-09
+chosen tau (lowest in-sample mean absolute error): 0.1
+  for comparison, Part 4: mean absolute 2.9%, mean -0.4%, weighted 2.6%, >5% 119, >10% 27, >20% 5, worst -48.5% on 2023-08-28
+  for comparison, content check + holidays, last-week fallback: mean absolute 2.1%, mean -0.7%, weighted 2.3%, >5% 60, >10% 10, >20% 0, worst -16.6% on 2022-06-07
+
+==============================================================================
+O3. Out of sample, every version
+==============================================================================
+  Part 4                                           code 9adf5e8d8533; recomputed identically 1109 of 1109
+                                                   mean absolute 5.0%, mean +0.7%, weighted 3.6%, >5% 316, >10% 150, >20% 38, worst +71.1% on 2024-02-06
+  Part 4, last-week fallback                       code 4b25818af673; recomputed identically 1109 of 1109
+                                                   mean absolute 4.7%, mean +0.2%, weighted 3.2%, >5% 271, >10% 140, >20% 36, worst +60.5% on 2024-02-06
+  holidays                                         code 8fea8d957720; recomputed identically 1109 of 1109
+                                                   mean absolute 4.9%, mean +0.6%, weighted 3.5%, >5% 307, >10% 139, >20% 36, worst +62.6% on 2024-02-06
+  holidays, last-week fallback                     code ffd40628398c; recomputed identically 1109 of 1109
+                                                   mean absolute 4.6%, mean +0.2%, weighted 3.2%, >5% 264, >10% 134, >20% 34, worst +56.1% on 2024-02-06
+  content check                                    code f9a7b1b6aa1d; recomputed identically 1109 of 1109
+                                                   mean absolute 6.4%, mean +3.2%, weighted 4.1%, >5% 315, >10% 154, >20% 58, worst +258.4% on 2026-04-07
+  content check, last-week fallback                code fa2957699aad; recomputed identically 1109 of 1109
+                                                   mean absolute 5.2%, mean +1.9%, weighted 3.5%, >5% 270, >10% 137, >20% 41, worst +127.7% on 2024-12-27
+  content check + holidays                         code 3934aa77e783; recomputed identically 1109 of 1109
+                                                   mean absolute 4.9%, mean +1.7%, weighted 3.5%, >5% 286, >10% 131, >20% 40, worst +62.6% on 2024-02-06
+  content check + holidays, last-week fallback     code 9e98b675605e; recomputed identically 1109 of 1109
+                                                   mean absolute 4.3%, mean +0.9%, weighted 3.0%, >5% 242, >10% 110, >20% 31, worst +56.1% on 2024-02-06
+  graded check (tau 0.1) + holidays + last-week    code e91130a0de23; recomputed identically 1109 of 1109
+                                                   mean absolute 4.6%, mean +1.4%, weighted 3.3%, >5% 250, >10% 118, >20% 37, worst +57.9% on 2025-12-27
+  graded check (tau 0.25) + holidays + last-week   code 6ac49cc357dd; recomputed identically 1109 of 1109
+                                                   mean absolute 4.8%, mean +1.8%, weighted 3.6%, >5% 258, >10% 125, >20% 43, worst +57.9% on 2025-12-27
+  graded check (tau 0.5) + holidays + last-week    code 516a7efd158e; recomputed identically 1109 of 1109
+                                                   mean absolute 6.3%, mean +4.1%, weighted 5.0%, >5% 309, >10% 178, >20% 81, worst +73.1% on 2026-03-27
+  graded check (tau 0.75) + holidays + last-week   code c70a72c6c3ce; recomputed identically 1109 of 1109
+                                                   mean absolute 10.3%, mean +8.8%, weighted 9.0%, >5% 471, >10% 312, >20% 170, worst +100.1% on 2024-01-13
+  graded check (tau 0.9) + holidays + last-week    code 1efea145f967; recomputed identically 1109 of 1109
+                                                   mean absolute 12.5%, mean +11.4%, weighted 11.4%, >5% 577, >10% 409, >20% 214, worst +100.1% on 2024-01-13
+
+==============================================================================
+O4. Ranking: in sample against out of sample (by mean absolute error)
+==============================================================================
+  out  1 (in  2)  content check + holidays, last-week fallback     in 2.1%, out 4.3%
+  out  2 (in  1)  graded check (tau 0.1) + holidays + last-week    in 2.0%, out 4.6%
+  out  3 (in  4)  holidays, last-week fallback                     in 2.3%, out 4.6%
+  out  4 (in  5)  Part 4, last-week fallback                       in 2.3%, out 4.7%
+  out  5 (in  3)  graded check (tau 0.25) + holidays + last-week   in 2.1%, out 4.8%
+  out  6 (in  7)  holidays                                         in 2.8%, out 4.9%
+  out  7 (in  8)  content check + holidays                         in 2.8%, out 4.9%
+  out  8 (in  9)  Part 4                                           in 2.9%, out 5.0%
+  out  9 (in  6)  content check, last-week fallback                in 2.4%, out 5.2%
+  out 10 (in 10)  graded check (tau 0.5) + holidays + last-week    in 3.3%, out 6.3%
+  out 11 (in 11)  content check                                    in 3.6%, out 6.4%
+  out 12 (in 12)  graded check (tau 0.75) + holidays + last-week   in 8.9%, out 10.3%
+  out 13 (in 13)  graded check (tau 0.9) + holidays + last-week    in 12.1%, out 12.5%
+Spearman correlation of the two rankings: 0.95
+
+==============================================================================
+O5. By year and by weekday, out of sample (mean absolute error)
+==============================================================================
+  Part 4                                           2024 4.2%, 2025 3.5%, 2026 8.0%; Mon 5.0%, Tue 6.0%, Wed 5.4%, Thu 5.3%, Fri 5.4%, Sat 3.7%, Sun 4.3%
+  Part 4, last-week fallback                       2024 3.8%, 2025 3.4%, 2026 7.7%; Mon 3.9%, Tue 5.7%, Wed 5.4%, Thu 5.3%, Fri 5.4%, Sat 3.7%, Sun 3.7%
+  content check + holidays, last-week fallback     2024 3.3%, 2025 2.9%, 2026 7.4%; Mon 3.6%, Tue 5.1%, Wed 5.2%, Thu 5.0%, Fri 4.8%, Sat 3.1%, Sun 3.3%
+  graded check (tau 0.1) + holidays + last-week    2024 3.4%, 2025 3.6%, 2026 7.4%; Mon 3.9%, Tue 5.4%, Wed 5.3%, Thu 5.2%, Fri 5.0%, Sat 3.6%, Sun 3.7%
+
+==============================================================================
+O6. The mornings the changes were made for, out of sample
+==============================================================================
+  Part 4                                           files with nothing new (Tue-Sat) 18.6%; day after a holiday 16.4%; other mornings 4.7%
+  Part 4, last-week fallback                       files with nothing new (Tue-Sat) 18.6%; day after a holiday 16.2%; other mornings 4.4%
+  holidays                                         files with nothing new (Tue-Sat) 16.6%; day after a holiday 14.1%; other mornings 4.6%
+  holidays, last-week fallback                     files with nothing new (Tue-Sat) 17.3%; day after a holiday 14.8%; other mornings 4.3%
+  content check                                    files with nothing new (Tue-Sat) 58.5%; day after a holiday 55.1%; other mornings 5.0%
+  content check, last-week fallback                files with nothing new (Tue-Sat) 32.9%; day after a holiday 33.0%; other mornings 4.4%
+  content check + holidays                         files with nothing new (Tue-Sat) 17.2%; day after a holiday 11.9%; other mornings 4.6%
+  content check + holidays, last-week fallback     files with nothing new (Tue-Sat) 8.2%; day after a holiday 7.3%; other mornings 4.2%
+  graded check (tau 0.1) + holidays + last-week    files with nothing new (Tue-Sat) 10.9%; day after a holiday 9.9%; other mornings 4.4%
+  graded check (tau 0.25) + holidays + last-week   files with nothing new (Tue-Sat) 10.8%; day after a holiday 9.7%; other mornings 4.7%
+  graded check (tau 0.5) + holidays + last-week    files with nothing new (Tue-Sat) 11.6%; day after a holiday 10.5%; other mornings 6.2%
+  graded check (tau 0.75) + holidays + last-week   files with nothing new (Tue-Sat) 14.7%; day after a holiday 13.8%; other mornings 10.2%
+  graded check (tau 0.9) + holidays + last-week    files with nothing new (Tue-Sat) 17.7%; day after a holiday 17.5%; other mornings 12.4%
+
+==============================================================================
+O7. Run by run against Part 4, out of sample
+==============================================================================
+  Part 4, last-week fallback                       better by >1 point 117, worse by >1 point 36; largest worsening +7.8 points on 2024-03-11
+  holidays                                         better by >1 point 49, worse by >1 point 6; largest worsening +2.2 points on 2026-04-08
+  holidays, last-week fallback                     better by >1 point 149, worse by >1 point 39; largest worsening +7.8 points on 2024-03-11
+  content check                                    better by >1 point 8, worse by >1 point 46; largest worsening +230.2 points on 2026-04-07
+  content check, last-week fallback                better by >1 point 122, worse by >1 point 63; largest worsening +87.9 points on 2024-12-27
+  content check + holidays                         better by >1 point 61, worse by >1 point 33; largest worsening +37.7 points on 2024-03-11
+  content check + holidays, last-week fallback     better by >1 point 169, worse by >1 point 42; largest worsening +5.6 points on 2026-03-16
+  graded check (tau 0.1) + holidays + last-week    better by >1 point 164, worse by >1 point 65; largest worsening +38.0 points on 2025-12-27
+  graded check (tau 0.25) + holidays + last-week   better by >1 point 164, worse by >1 point 75; largest worsening +41.8 points on 2024-02-08
+  graded check (tau 0.5) + holidays + last-week    better by >1 point 155, worse by >1 point 158; largest worsening +72.0 points on 2026-03-28
+  graded check (tau 0.75) + holidays + last-week   better by >1 point 123, worse by >1 point 365; largest worsening +98.7 points on 2024-01-13
+  graded check (tau 0.9) + holidays + last-week    better by >1 point 102, worse by >1 point 511; largest worsening +98.7 points on 2024-01-13
+
+==============================================================================
+O8. Interval, completeness and week over week, out of sample
+==============================================================================
+  Part 4                                           interval coverage 79.6% of 1017, median width 17.6%; completeness off by 4.3 points; week-over-week sign right 920 of 1010
+  Part 4, last-week fallback                       interval coverage 81.4% of 1017, median width 16.8%; completeness off by 4.1 points; week-over-week sign right 919 of 1010
+  content check + holidays, last-week fallback     interval coverage 79.8% of 1017, median width 11.6%; completeness off by 3.6 points; week-over-week sign right 927 of 1010
+  graded check (tau 0.1) + holidays + last-week    interval coverage 78.9% of 1017, median width 13.3%; completeness off by 3.7 points; week-over-week sign right 922 of 1010
+
+==============================================================================
+O9. The ten worst out-of-sample mornings of the two best Part 5-style versions
+==============================================================================
+  content check + holidays, last-week fallback:
+    2024-02-06 Tue +56.1% (nowcast 7,498, final 4,802)
+    2026-04-09 Thu +43.3% (nowcast 341, final 238)
+    2024-12-27 Fri +39.5% (nowcast 3,491, final 2,502) - file with nothing new, after holiday
+    2026-09-11 Fri +36.6% (nowcast 372, final 272)
+    2024-01-30 Tue +36.4% (nowcast 7,888, final 5,783)
+    2026-03-06 Fri -31.0% (nowcast 563, final 816)
+    2024-12-26 Thu +29.1% (nowcast 4,454, final 3,451) - file with nothing new, after holiday
+    2024-04-03 Wed +28.3% (nowcast 880, final 686)
+    2024-03-27 Wed +27.9% (nowcast 1,193, final 933)
+    2026-09-04 Fri +27.7% (nowcast 204, final 160)
+  graded check (tau 0.1) + holidays + last-week:
+    2025-12-27 Sat +57.9% (nowcast 5,993, final 3,796) - file with nothing new, after holiday
+    2025-12-28 Sun +57.2% (nowcast 5,935, final 3,776)
+    2024-02-06 Tue +56.1% (nowcast 7,498, final 4,802)
+    2025-12-29 Mon +54.6% (nowcast 5,883, final 3,806)
+    2025-12-26 Fri +45.2% (nowcast 7,021, final 4,834) - file with nothing new, after holiday
+    2026-04-09 Thu +43.3% (nowcast 341, final 238)
+    2024-12-27 Fri +39.0% (nowcast 3,479, final 2,502) - file with nothing new, after holiday
+    2026-09-11 Fri +36.6% (nowcast 372, final 272)
+    2024-01-30 Tue +36.4% (nowcast 7,888, final 5,783)
+    2025-12-25 Thu +36.2% (nowcast 8,396, final 6,165)

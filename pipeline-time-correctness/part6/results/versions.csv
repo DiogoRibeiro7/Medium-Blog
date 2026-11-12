@@ -1,0 +1,14 @@
+version,in,out,rank_in,rank_out
+Part 4,0.028713,0.050272,9,8
+"Part 4, last-week fallback",0.023243,0.047401,5,4
+holidays,0.027888,0.048772,7,6
+"holidays, last-week fallback",0.022765,0.046350,4,3
+content check,0.036378,0.063964,11,11
+"content check, last-week fallback",0.023765,0.051825,6,9
+content check + holidays,0.028135,0.049428,8,7
+"content check + holidays, last-week fallback",0.020678,0.043222,2,1
+graded check (tau 0.1) + holidays + last-week,0.019647,0.046017,1,2
+graded check (tau 0.25) + holidays + last-week,0.021332,0.048171,3,5
+graded check (tau 0.5) + holidays + last-week,0.033354,0.063312,10,10
+graded check (tau 0.75) + holidays + last-week,0.089047,0.102741,12,12
+graded check (tau 0.9) + holidays + last-week,0.120556,0.125082,13,13
