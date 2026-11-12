@@ -1,0 +1,144 @@
+
+==============================================================================
+F0. The variants
+==============================================================================
+runs per variant: 822, 2021-06-01 to 2023-08-31; files from 2021-04-02; one late file (2022-03-15, two days)
+nationwide public holidays in the calendar, 2021 to 2023: 2021-01-01, 2021-04-02, 2021-04-05, 2021-05-01, 2021-05-13, 2021-05-24, 2021-10-03, 2021-12-25, 2021-12-26, 2022-01-01, 2022-04-15, 2022-04-18, 2022-05-01, 2022-05-26, 2022-06-06, 2022-10-03, 2022-12-25, 2022-12-26, 2023-01-01, 2023-04-07, 2023-04-10, 2023-05-01, 2023-05-18, 2023-05-29, 2023-10-03, 2023-12-25, 2023-12-26
+  Part 4                                             code version 9adf5e8d8533; runs recomputed identically 822 of 822
+  Part 4, last-week fallback                         code version 4b25818af673; runs recomputed identically 822 of 822
+  holidays                                           code version 68736d72ccbe; runs recomputed identically 822 of 822
+  holidays, last-week fallback                       code version 364faca191d7; runs recomputed identically 822 of 822
+  content check                                      code version f9a7b1b6aa1d; runs recomputed identically 822 of 822
+  content check, last-week fallback                  code version fa2957699aad; runs recomputed identically 822 of 822
+  content check + holidays                           code version 9b1d9244bd1e; runs recomputed identically 822 of 822
+  content check + holidays, last-week fallback       code version 55f281d88110; runs recomputed identically 822 of 822
+
+==============================================================================
+F1. Nowcast error against the final counts, every variant
+==============================================================================
+  Part 4                                             mean -0.4%, mean absolute 2.9%, >5% off 119, >10% off 27, >20% off 5, worst -48.5% on 2023-08-28
+  Part 4, last-week fallback                         mean -1.0%, mean absolute 2.3%, >5% off 67, >10% off 15, >20% off 5, worst -46.4% on 2023-08-28
+  holidays                                           mean -0.4%, mean absolute 2.8%, >5% off 116, >10% off 22, >20% off 4, worst -48.5% on 2023-08-28
+  holidays, last-week fallback                       mean -1.0%, mean absolute 2.3%, >5% off 66, >10% off 13, >20% off 4, worst -46.4% on 2023-08-28
+  content check                                      mean +0.7%, mean absolute 3.6%, >5% off 117, >10% off 30, >20% off 10, worst +297.9% on 2023-04-11
+  content check, last-week fallback                  mean -0.4%, mean absolute 2.4%, >5% off 64, >10% off 17, >20% off 5, worst +90.6% on 2023-04-11
+  content check + holidays                           mean -0.1%, mean absolute 2.8%, >5% off 117, >10% off 26, >20% off 6, worst +51.6% on 2023-04-11
+  content check + holidays, last-week fallback       mean -0.7%, mean absolute 2.1%, >5% off 60, >10% off 10, >20% off 0, worst -16.6% on 2022-06-07
+
+==============================================================================
+F1b. Error weighted by size: absolute errors in cases, summed, over the final counts, summed
+==============================================================================
+  Part 4                                             all runs 2.6%; 2021 1.7%, 2022 2.7%, 2023 2.8%; absolute error summed over all runs 6,335,972 cases
+  Part 4, last-week fallback                         all runs 2.4%; 2021 1.7%, 2022 2.5%, 2023 1.8%; absolute error summed over all runs 5,798,050 cases
+  holidays                                           all runs 2.6%; 2021 1.7%, 2022 2.7%, 2023 2.7%; absolute error summed over all runs 6,282,110 cases
+  holidays, last-week fallback                       all runs 2.4%; 2021 1.7%, 2022 2.5%, 2023 1.8%; absolute error summed over all runs 5,729,618 cases
+  content check                                      all runs 2.6%; 2021 1.7%, 2022 2.7%, 2023 3.7%; absolute error summed over all runs 6,325,876 cases
+  content check, last-week fallback                  all runs 2.4%; 2021 1.7%, 2022 2.4%, 2023 2.0%; absolute error summed over all runs 5,736,029 cases
+  content check + holidays                           all runs 2.6%; 2021 1.7%, 2022 2.7%, 2023 2.8%; absolute error summed over all runs 6,237,089 cases
+  content check + holidays, last-week fallback       all runs 2.3%; 2021 1.7%, 2022 2.4%, 2023 1.7%; absolute error summed over all runs 5,673,690 cases
+final 7-day counts summed over all runs: 243,533,910; by year 2021 23,761,769, 2022 211,665,980, 2023 8,106,161
+
+==============================================================================
+F2. The ten mornings of Part 4 that used a file with nothing new (eight weekday files, then 27 and 28 August 2023)
+==============================================================================
+  Part 4                                             10-04 -19.9%, 04-08 -7.2%, 04-11 -20.0%, 05-02 -14.1%, 05-19 -10.8%, 05-30 -9.1%, 08-25 -29.4%, 08-26 -46.0%, 08-27 -47.8%, 08-28 -48.5%
+  Part 4, last-week fallback                         10-04 -19.9%, 04-08 -7.2%, 04-11 -20.0%, 05-02 -14.1%, 05-19 -10.8%, 05-30 -9.1%, 08-25 -29.4%, 08-26 -46.0%, 08-27 -46.4%, 08-28 -46.4%
+  holidays                                           10-04 -18.5%, 04-08 +3.6%, 04-11 -7.0%, 05-02 -6.2%, 05-19 -4.9%, 05-30 -3.8%, 08-25 -29.4%, 08-26 -46.0%, 08-27 -47.8%, 08-28 -48.5%
+  holidays, last-week fallback                       10-04 -17.8%, 04-08 -3.8%, 04-11 -16.6%, 05-02 -11.3%, 05-19 -8.1%, 05-30 -7.3%, 08-25 -29.4%, 08-26 -46.0%, 08-27 -46.4%, 08-28 -46.4%
+  content check                                      10-04 +1.8%, 04-08 +78.6%, 04-11 +297.9%, 05-02 +119.2%, 05-19 +51.5%, 05-30 +61.3%, 08-25 -15.1%, 08-26 -26.5%, 08-27 -28.5%, 08-28 -29.0%
+  content check, last-week fallback                  10-04 +4.5%, 04-08 +18.4%, 04-11 +90.6%, 05-02 +43.3%, 05-19 +17.8%, 05-30 +48.6%, 08-25 -3.7%, 08-26 -10.7%, 08-27 -11.8%, 08-28 -11.7%
+  content check + holidays                           10-04 -9.2%, 04-08 +9.8%, 04-11 +51.6%, 05-02 +19.6%, 05-19 +1.1%, 05-30 +15.1%, 08-25 -15.1%, 08-26 -26.5%, 08-27 -28.5%, 08-28 -29.0%
+  content check + holidays, last-week fallback       10-04 -8.2%, 04-08 +2.4%, 04-11 +10.4%, 05-02 +1.1%, 05-19 -2.1%, 05-30 +3.5%, 08-25 -3.7%, 08-26 -10.7%, 08-27 -11.8%, 08-28 -11.7%
+mean absolute error on those ten mornings / on the other runs:
+  Part 4                                             25.3% / 2.6%
+  Part 4, last-week fallback                         24.9% / 2.0%
+  holidays                                           21.6% / 2.6%
+  holidays, last-week fallback                       23.3% / 2.0%
+  content check                                      70.9% / 2.8%
+  content check, last-week fallback                  26.1% / 2.1%
+  content check + holidays                           20.5% / 2.6%
+  content check + holidays, last-week fallback       6.6% / 2.0%
+
+==============================================================================
+F3. By weekday of the run and by year (mean absolute error)
+==============================================================================
+  Part 4                                             Mon 5.2%, Tue 2.6%, Wed 2.3%, Thu 2.1%, Fri 2.1%, Sat 1.9%, Sun 3.9%; 2021 1.4%, 2022 2.9%, 2023 4.2%
+  Part 4, last-week fallback                         Mon 2.7%, Tue 2.6%, Wed 2.3%, Thu 2.1%, Fri 2.1%, Sat 1.9%, Sun 2.5%; 2021 1.4%, 2022 2.4%, 2023 3.0%
+  holidays                                           Mon 5.2%, Tue 2.3%, Wed 2.3%, Thu 2.0%, Fri 2.0%, Sat 1.8%, Sun 3.9%; 2021 1.4%, 2022 2.8%, 2023 4.0%
+  holidays, last-week fallback                       Mon 2.8%, Tue 2.4%, Wed 2.3%, Thu 2.0%, Fri 2.0%, Sat 1.8%, Sun 2.6%; 2021 1.4%, 2022 2.4%, 2023 2.9%
+  content check                                      Mon 5.8%, Tue 6.2%, Wed 2.3%, Thu 2.1%, Fri 2.3%, Sat 2.4%, Sun 4.5%; 2021 1.4%, 2022 2.8%, 2023 6.8%
+  content check, last-week fallback                  Mon 2.7%, Tue 3.7%, Wed 2.3%, Thu 2.1%, Fri 1.9%, Sat 1.7%, Sun 2.3%; 2021 1.4%, 2022 2.3%, 2023 3.3%
+  content check + holidays                           Mon 5.2%, Tue 2.8%, Wed 2.3%, Thu 2.0%, Fri 1.8%, Sat 1.7%, Sun 3.9%; 2021 1.4%, 2022 2.8%, 2023 4.1%
+  content check + holidays, last-week fallback       Mon 2.5%, Tue 2.1%, Wed 2.3%, Thu 2.0%, Fri 1.8%, Sat 1.5%, Sun 2.2%; 2021 1.4%, 2022 2.3%, 2023 2.3%
+
+==============================================================================
+F4. Where the changes help and where they hurt (against Part 4, run by run)
+==============================================================================
+  Part 4, last-week fallback                         runs better by more than 1 point 86, worse by more than 1 point 9, unchanged (within 0.001 points) 697; largest worsening +4.1 points on 2023-07-17
+  holidays                                           runs better by more than 1 point 22, worse by more than 1 point 2, unchanged (within 0.001 points) 492; largest worsening +1.4 points on 2023-05-23
+  holidays, last-week fallback                       runs better by more than 1 point 103, worse by more than 1 point 11, unchanged (within 0.001 points) 422; largest worsening +4.1 points on 2023-07-17
+  content check                                      runs better by more than 1 point 6, worse by more than 1 point 8, unchanged (within 0.001 points) 798; largest worsening +277.9 points on 2023-04-11
+  content check, last-week fallback                  runs better by more than 1 point 89, worse by more than 1 point 17, unchanged (within 0.001 points) 687; largest worsening +70.6 points on 2023-04-11
+  content check + holidays                           runs better by more than 1 point 22, worse by more than 1 point 9, unchanged (within 0.001 points) 480; largest worsening +31.6 points on 2023-04-11
+  content check + holidays, last-week fallback       runs better by more than 1 point 107, worse by more than 1 point 12, unchanged (within 0.001 points) 420; largest worsening +4.0 points on 2023-07-17
+
+==============================================================================
+F5. The data cut (content-check variants)
+==============================================================================
+  content check                                      runs whose latest file brought nothing new: 108 (Sun 52, Mon 48, other days 8); longest gap 4 days, on 2023-04-11
+  content check, last-week fallback                  runs whose latest file brought nothing new: 108 (Sun 52, Mon 48, other days 8); longest gap 4 days, on 2023-04-11
+  content check + holidays                           runs whose latest file brought nothing new: 108 (Sun 52, Mon 48, other days 8); longest gap 4 days, on 2023-04-11
+  content check + holidays, last-week fallback       runs whose latest file brought nothing new: 108 (Sun 52, Mon 48, other days 8); longest gap 4 days, on 2023-04-11
+
+==============================================================================
+F6. Estimated completeness and the 90% interval
+==============================================================================
+  Part 4                                             completeness off by 2.6 points on average (28 Aug 2023: estimated 95.1%, actual 49.0%); interval coverage 73.7% of 761 (2021 65.4%, 2022 71.2%, 2023 82.7%), median width 10.3%
+  Part 4, last-week fallback                         completeness off by 2.1 points on average (28 Aug 2023: estimated 91.5%, actual 49.0%); interval coverage 74.2% of 761 (2021 65.4%, 2022 71.8%, 2023 83.5%), median width 7.5%
+  holidays                                           completeness off by 2.5 points on average (28 Aug 2023: estimated 95.1%, actual 49.0%); interval coverage 71.9% of 761 (2021 64.7%, 2022 70.1%, 2023 79.0%), median width 10.2%
+  holidays, last-week fallback                       completeness off by 2.1 points on average (28 Aug 2023: estimated 91.5%, actual 49.0%); interval coverage 72.5% of 761 (2021 64.7%, 2022 69.3%, 2023 82.3%), median width 7.0%
+  content check                                      completeness off by 2.7 points on average (28 Aug 2023: estimated 69.0%, actual 49.0%); interval coverage 73.1% of 761 (2021 65.4%, 2022 72.1%, 2023 79.4%), median width 10.1%
+  content check, last-week fallback                  completeness off by 2.1 points on average (28 Aug 2023: estimated 55.5%, actual 49.0%); interval coverage 72.3% of 761 (2021 65.4%, 2022 72.1%, 2023 77.0%), median width 7.4%
+  content check + holidays                           completeness off by 2.5 points on average (28 Aug 2023: estimated 69.0%, actual 49.0%); interval coverage 72.3% of 761 (2021 64.7%, 2022 71.2%, 2023 78.6%), median width 10.2%
+  content check + holidays, last-week fallback       completeness off by 1.9 points on average (28 Aug 2023: estimated 55.5%, actual 49.0%); interval coverage 71.2% of 761 (2021 64.7%, 2022 69.9%, 2023 77.4%), median width 6.9%
+
+==============================================================================
+F7. Week-over-week change of the nowcast against the final counts
+==============================================================================
+  Part 4                                             same sign as final on 786 of 815; mean absolute difference 2.4 points
+  Part 4, last-week fallback                         same sign as final on 788 of 815; mean absolute difference 2.3 points
+  holidays                                           same sign as final on 787 of 815; mean absolute difference 2.3 points
+  holidays, last-week fallback                       same sign as final on 789 of 815; mean absolute difference 2.2 points
+  content check                                      same sign as final on 779 of 815; mean absolute difference 3.1 points
+  content check, last-week fallback                  same sign as final on 790 of 815; mean absolute difference 2.3 points
+  content check + holidays                           same sign as final on 789 of 815; mean absolute difference 2.3 points
+  content check + holidays, last-week fallback       same sign as final on 796 of 815; mean absolute difference 1.9 points
+
+==============================================================================
+F8. The run of 28 August 2023, with all three changes
+==============================================================================
+data cut 2023-08-24; published 2,482, nowcast 4,471, interval 4,424 to 4,735, estimated completeness 55.5%, final 5,064
+
+==============================================================================
+F9. Four runs date by date: count in hand, age used, nowcast, final
+==============================================================================
+run of 2022-06-07:
+  Part 4                                             total 174,063 / 207,589 (-16.2%): Tue 31 May 51,076 (age 7) -> 51,436 / 51,519, Wed 01 Jun 44,050 (age 6) -> 44,679 / 44,945, Thu 02 Jun 40,106 (age 5) -> 42,684 / 42,405, Fri 03 Jun 27,339 (age 4) -> 30,478 / 39,433, Sat 04 Jun 2,066 (age 3) -> 2,498 / 12,777, Sun 05 Jun 716 (age 2) -> 1,001 / 7,122, Mon 06 Jun 840 (age 1) -> 1,288 / 9,388
+  content check                                      total 174,063 / 207,589 (-16.2%): Tue 31 May 51,076 (age 7) -> 51,436 / 51,519, Wed 01 Jun 44,050 (age 6) -> 44,679 / 44,945, Thu 02 Jun 40,106 (age 5) -> 42,684 / 42,405, Fri 03 Jun 27,339 (age 4) -> 30,478 / 39,433, Sat 04 Jun 2,066 (age 3) -> 2,498 / 12,777, Sun 05 Jun 716 (age 2) -> 1,001 / 7,122, Mon 06 Jun 840 (age 1) -> 1,288 / 9,388
+  content check + holidays                           total 173,216 / 207,589 (-16.6%): Tue 31 May 51,076 (age 7) -> 51,436 / 51,519, Wed 01 Jun 44,050 (age 6) -> 44,679 / 44,945, Thu 02 Jun 40,106 (age 5) -> 42,684 / 42,405, Fri 03 Jun 27,339 (age 4) -> 28,306 / 39,433, Sat 04 Jun 2,066 (age 3) -> 2,498 / 12,777, Sun 05 Jun 716 (age 2) -> 840 / 7,122, Mon 06 Jun 840 (age 1) -> 2,773 / 9,388
+  content check + holidays, last-week fallback       total 173,216 / 207,589 (-16.6%): Tue 31 May 51,076 (age 7) -> 51,436 / 51,519, Wed 01 Jun 44,050 (age 6) -> 44,679 / 44,945, Thu 02 Jun 40,106 (age 5) -> 42,684 / 42,405, Fri 03 Jun 27,339 (age 4) -> 28,306 / 39,433, Sat 04 Jun 2,066 (age 3) -> 2,498 / 12,777, Sun 05 Jun 716 (age 2) -> 840 / 7,122, Mon 06 Jun 840 (age 1) -> 2,773 / 9,388
+run of 2023-05-02:
+  Part 4                                             total 5,893 / 6,858 (-14.1%): Tue 25 Apr 2,050 (age 7) -> 2,062 / 2,059, Wed 26 Apr 1,667 (age 6) -> 1,673 / 1,687, Thu 27 Apr 1,352 (age 5) -> 1,368 / 1,393, Fri 28 Apr 763 (age 4) -> 790 / 1,183, Sat 29 Apr 0 (age 3) -> 0 / 202, Sun 30 Apr 0 (age 2) -> 0 / 148, Mon 01 May 0 (age 1) -> 0 / 186
+  content check                                      total 15,030 / 6,858 (+119.2%): Tue 25 Apr 2,050 (age 4) -> 2,066 / 2,059, Wed 26 Apr 1,667 (age 3) -> 1,684 / 1,687, Thu 27 Apr 1,352 (age 2) -> 1,405 / 1,393, Fri 28 Apr 763 (age 1) -> 1,107 / 1,183, Sat 29 Apr 0 (age 0) -> 866 / 202, Sun 30 Apr 0 (age 0) -> 539 / 148, Mon 01 May 0 (age 0) -> 7,364 / 186
+  content check + holidays                           total 8,205 / 6,858 (+19.6%): Tue 25 Apr 2,050 (age 4) -> 2,066 / 2,059, Wed 26 Apr 1,667 (age 3) -> 1,684 / 1,687, Thu 27 Apr 1,352 (age 2) -> 1,405 / 1,393, Fri 28 Apr 763 (age 1) -> 1,107 / 1,183, Sat 29 Apr 0 (age 0) -> 866 / 202, Sun 30 Apr 0 (age 0) -> 539 / 148, Mon 01 May 0 (age 0) -> 539 / 186
+  content check + holidays, last-week fallback       total 6,933 / 6,858 (+1.1%): Tue 25 Apr 2,050 (age 4) -> 2,066 / 2,059, Wed 26 Apr 1,667 (age 3) -> 1,684 / 1,687, Thu 27 Apr 1,352 (age 2) -> 1,405 / 1,393, Fri 28 Apr 763 (age 1) -> 1,107 / 1,183, Sat 29 Apr 0 (age 0) -> 246 / 202, Sun 30 Apr 0 (age 0) -> 212 / 148, Mon 01 May 0 (age 0) -> 212 / 186
+run of 2023-07-17:
+  Part 4                                             total 1,248 / 1,251 (-0.2%): Mon 10 Jul 296 (age 7) -> 301 / 298, Tue 11 Jul 244 (age 6) -> 249 / 255, Wed 12 Jul 210 (age 5) -> 218 / 226, Thu 13 Jul 202 (age 4) -> 222 / 233, Fri 14 Jul 113 (age 3) -> 181 / 202, Sat 15 Jul 0 (age 2) -> 43 / 27, Sun 16 Jul 0 (age 1) -> 35 / 10
+  content check                                      total 1,248 / 1,251 (-0.2%): Mon 10 Jul 296 (age 5) -> 301 / 298, Tue 11 Jul 244 (age 4) -> 249 / 255, Wed 12 Jul 210 (age 3) -> 218 / 226, Thu 13 Jul 202 (age 2) -> 222 / 233, Fri 14 Jul 113 (age 1) -> 181 / 202, Sat 15 Jul 0 (age 0) -> 43 / 27, Sun 16 Jul 0 (age 0) -> 35 / 10
+  content check + holidays                           total 1,253 / 1,251 (+0.1%): Mon 10 Jul 296 (age 5) -> 301 / 298, Tue 11 Jul 244 (age 4) -> 249 / 255, Wed 12 Jul 210 (age 3) -> 218 / 226, Thu 13 Jul 202 (age 2) -> 222 / 233, Fri 14 Jul 113 (age 1) -> 181 / 202, Sat 15 Jul 0 (age 0) -> 43 / 27, Sun 16 Jul 0 (age 0) -> 39 / 10
+  content check + holidays, last-week fallback       total 1,198 / 1,251 (-4.2%): Mon 10 Jul 296 (age 5) -> 301 / 298, Tue 11 Jul 244 (age 4) -> 249 / 255, Wed 12 Jul 210 (age 3) -> 218 / 226, Thu 13 Jul 202 (age 2) -> 222 / 233, Fri 14 Jul 113 (age 1) -> 181 / 202, Sat 15 Jul 0 (age 0) -> 19 / 27, Sun 16 Jul 0 (age 0) -> 9 / 10
+run of 2023-08-28:
+  Part 4                                             total 2,609 / 5,064 (-48.5%): Mon 21 Aug 1,128 (age 7) -> 1,152 / 1,218, Tue 22 Aug 940 (age 6) -> 967 / 1,110, Wed 23 Aug 414 (age 5) -> 445 / 897, Thu 24 Aug 0 (age 4) -> 0 / 887, Fri 25 Aug 0 (age 3) -> 0 / 766, Sat 26 Aug 0 (age 2) -> 28 / 141, Sun 27 Aug 0 (age 1) -> 17 / 45
+  content check                                      total 3,596 / 5,064 (-29.0%): Mon 21 Aug 1,128 (age 3) -> 1,189 / 1,218, Tue 22 Aug 940 (age 2) -> 1,100 / 1,110, Wed 23 Aug 414 (age 1) -> 797 / 897, Thu 24 Aug 0 (age 0) -> 262 / 887, Fri 25 Aug 0 (age 0) -> 204 / 766, Sat 26 Aug 0 (age 0) -> 28 / 141, Sun 27 Aug 0 (age 0) -> 17 / 45
+  content check + holidays                           total 3,596 / 5,064 (-29.0%): Mon 21 Aug 1,128 (age 3) -> 1,189 / 1,218, Tue 22 Aug 940 (age 2) -> 1,100 / 1,110, Wed 23 Aug 414 (age 1) -> 797 / 897, Thu 24 Aug 0 (age 0) -> 262 / 887, Fri 25 Aug 0 (age 0) -> 204 / 766, Sat 26 Aug 0 (age 0) -> 28 / 141, Sun 27 Aug 0 (age 0) -> 17 / 45
+  content check + holidays, last-week fallback       total 4,471 / 5,064 (-11.7%): Mon 21 Aug 1,128 (age 3) -> 1,189 / 1,218, Tue 22 Aug 940 (age 2) -> 1,100 / 1,110, Wed 23 Aug 414 (age 1) -> 797 / 897, Thu 24 Aug 0 (age 0) -> 835 / 887, Fri 25 Aug 0 (age 0) -> 427 / 766, Sat 26 Aug 0 (age 0) -> 78 / 141, Sun 27 Aug 0 (age 0) -> 44 / 45
