@@ -87,45 +87,52 @@ def profits(lp, x, cost, beta) -> np.ndarray:
     return (s * (np.exp(x[:, None] + lp) - cost)).sum(axis=1)
 
 
+def newton_step(lp, cost, beta, x, who) -> np.ndarray:
+    """One damped Newton step on the first-order conditions of the insurers in `who`; the others stay put."""
+    s = shares(lp, x, beta)
+    P = np.exp(x[:, None] + lp)
+    M = P - cost
+    q = s * (1 - s)
+    g = (s * P - beta * q * M).sum(axis=1)
+    h = (s * P * (1 - beta * (1 - s)) + beta ** 2 * q * (1 - 2 * s) * M - beta * q * P).sum(axis=1)
+    step = np.where(h < 0, -g / np.where(h < 0, h, -1.0), np.sign(g) * 0.05)
+    step = np.clip(step, -0.1, 0.1)
+    new = x.copy()
+    new[who] = np.clip(x[who] + step[who], -1.0, 3.0)   # an insurer at the upper bound has left the market
+    return new
+
+
+def turn_sweep(lp, cost, beta, x) -> np.ndarray:
+    """Each insurer in turn moves to its best reply to the current levels of the others."""
+    for i in range(lp.shape[0]):
+        for _ in range(100):
+            new = newton_step(lp, cost, beta, x, np.array([i]))
+            moved = abs(new[i] - x[i])
+            x = new
+            if moved < 1e-12:
+                break
+    return x
+
+
 def nash(lp: np.ndarray, cost: np.ndarray, beta: float, iters: int = 400) -> tuple[np.ndarray, bool]:
     """Nash equilibrium in log levels x_i under logit demand.
 
     lp is the log of each insurer's base premium per policy (K x n); cost is the cost each insurer counts per policy
-    (n, or K x n). Simultaneous damped Newton steps on every insurer's first-order condition; returns x and whether
-    every step has fallen below 1e-10.
+    (n, or K x n). Simultaneous damped Newton steps on every insurer's first-order condition, then, if they have not
+    settled, insurers replying in turn; returns x and whether the levels have stopped moving (by less than 1e-10).
     """
     K = lp.shape[0]
     x = np.full(K, np.log(1 + 1 / (beta * (1 - 1 / K))))
-
-    def newton_step(x, who):
-        s = shares(lp, x, beta)
-        P = np.exp(x[:, None] + lp)
-        M = P - cost
-        q = s * (1 - s)
-        g = (s * P - beta * q * M).sum(axis=1)
-        h = (s * P * (1 - beta * (1 - s)) + beta ** 2 * q * (1 - 2 * s) * M - beta * q * P).sum(axis=1)
-        step = np.where(h < 0, -g / np.where(h < 0, h, -1.0), np.sign(g) * 0.05)
-        step = np.clip(step, -0.1, 0.1)
-        new = x.copy()
-        new[who] = np.clip(x[who] + step[who], -1.0, 3.0)   # an insurer at the upper bound has left the market
-        return new
-
     everyone = np.arange(K)
     for _ in range(iters):                                  # all insurers move at once
-        new = newton_step(x, everyone)
+        new = newton_step(lp, cost, beta, x, everyone)
         moved = np.max(np.abs(new - x))
         x = new
         if moved < 1e-10:
             return x, True
     for _ in range(200):                                    # fallback: each insurer replies in turn
         start = x.copy()
-        for i in range(K):
-            for _ in range(100):
-                new = newton_step(x, np.array([i]))
-                moved = abs(new[i] - x[i])
-                x = new
-                if moved < 1e-12:
-                    break
+        x = turn_sweep(lp, cost, beta, x)
         if np.max(np.abs(x - start)) < 1e-10:
             return x, True
     return x, False
@@ -158,11 +165,21 @@ def stage2(Rc, Rt, P, beta, how, check=False) -> dict:
         if check:
             gain = deviation_gain(lpc, x, cost, beta) / Nc.sum() * 100
     lpt = np.log(et * Rt)
+    cycle = None
+    if not ok and how != "review":
+        # The levels cycle. Take two more rounds of replies in turn, and report the largest gain any insurer could make
+        # by moving its own level at each state, and how far each insurer's test-sample profit moves between states.
+        states = [x]
+        for _ in range(2):
+            states.append(turn_sweep(lpc, cost, beta, states[-1]))
+        prof = np.array([profits(lpt, st, Nt, beta) / Nt.sum() * 100 for st in states])
+        dev = max(deviation_gain(lpc, st, cost, beta, points=241) for st in states) / Nc.sum() * 100
+        cycle = (dev, float((prof.max(axis=0) - prof.min(axis=0)).max()))
     s = shares(lpt, x, beta)
     prem = (s * np.exp(x[:, None] + lpt)).sum(axis=1)
     clm = (s * Nt).sum(axis=1)
     return {"profit": (prem - clm) / Nt.sum() * 100, "level": float(prem.sum() / Nt.sum()),
-            "share": (s * et).sum(axis=1) / et.sum(), "L": np.exp(x), "ok": ok, "gain": gain}
+            "share": (s * et).sum(axis=1) / et.sum(), "L": np.exp(x), "ok": ok, "gain": gain, "cycle": cycle}
 
 
 # ---------------------------------------------------------------------------------------------------
@@ -196,6 +213,14 @@ def k_equilibria(pg: np.ndarray, pl: np.ndarray, K: int) -> list[int]:
         if stay_g and stay_l:
             out.append(j)
     return out
+
+
+def cyc(out) -> str:
+    if out["cycle"] is None:
+        return ""
+    dev, spread = out["cycle"]
+    return (f"; over three successive states of the cycle, largest gain from moving one's own level {dev:.4f} percent of"
+            f" claims, largest change in one insurer's test profit {spread:.2f} points")
 
 
 def fmt(x) -> str:
@@ -260,7 +285,7 @@ def run(P: dict, cfg: dict) -> dict:
                     if not out["ok"]:
                         unsettled.append(f"{how}, beta {beta:.0f}, two insurers, books of {n:,}, {s} on book 1 against"
                                          f" {t} on book 2, partition {r + 1}: levels {np.round(out['L'], 3).tolist()},"
-                                         f" shares {np.round(out['share'], 3).tolist()}")
+                                         f" shares {np.round(out['share'], 3).tolist()}" + cyc(out))
                     if how != "review" and not np.isnan(out["gain"]):
                         gains[how].append(out["gain"])
                     cell = two[n].setdefault((how, beta), {}).setdefault((s, t), [])
@@ -284,7 +309,7 @@ def run(P: dict, cfg: dict) -> dict:
                         if not out["ok"]:
                             unsettled.append(f"{how}, beta {beta:.0f}, four insurers, books of {n:,}, classes"
                                              f" {'/'.join(cls)}, partition {r + 1}: levels"
-                                             f" {np.round(out['L'], 3).tolist()}, shares {np.round(out['share'], 3).tolist()}")
+                                             f" {np.round(out['L'], 3).tolist()}, shares {np.round(out['share'], 3).tolist()}" + cyc(out))
                         if not np.isnan(out["gain"]):
                             gains4[how].append(out["gain"])
                         z = four[n][(how, beta)][r][sum(G)]

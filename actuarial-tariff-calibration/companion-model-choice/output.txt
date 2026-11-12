@@ -192,7 +192,7 @@ freMTPL2: checks
   naive: settled in 792 of 792 plays
   review: settled in 213 of 216 plays
   plays that did not settle: 
-    aware, beta 20, four insurers, books of 20,000, classes GBM/GBM/GBM/GBM, partition 1: levels [1.935, 1.771, 1.9, 2.054], shares [0.228, 0.298, 0.199, 0.276]
+    aware, beta 20, four insurers, books of 20,000, classes GBM/GBM/GBM/GBM, partition 1: levels [1.935, 1.771, 1.9, 2.054], shares [0.228, 0.298, 0.199, 0.276]; over three successive states of the cycle, largest gain from moving one's own level 0.0008 percent of claims, largest change in one insurer's test profit 0.26 points
     review, beta 10, two insurers, books of 100,000, BAG on book 1 against GLM on book 2, partition 1: levels [0.969, 3.598], shares [0.999, 0.001]
     review, beta 10, two insurers, books of 200,000, GLM on book 1 against GBM on book 2, partition 3: levels [1.948, 1.0], shares [0.024, 0.976]
     review, beta 10, two insurers, books of 200,000, GLM on book 1 against BAG on book 2, partition 3: levels [3.666, 1.001], shares [0.0, 1.0]
@@ -393,8 +393,8 @@ beMTPL97: checks
   naive: settled in 792 of 792 plays
   review: settled in 216 of 216 plays
   plays that did not settle: 
-    aware, beta 20, four insurers, books of 12,000, classes GLM/GBM/GLM/GBM, partition 3: levels [1.416, 1.703, 1.333, 1.991], shares [0.308, 0.214, 0.349, 0.129]
-    aware, beta 20, four insurers, books of 12,000, classes GLM/GBM/GLM/GBM, partition 5: levels [1.31, 1.502, 1.347, 1.655], shares [0.33, 0.192, 0.259, 0.219]
+    aware, beta 20, four insurers, books of 12,000, classes GLM/GBM/GLM/GBM, partition 3: levels [1.416, 1.703, 1.333, 1.991], shares [0.308, 0.214, 0.349, 0.129]; over three successive states of the cycle, largest gain from moving one's own level 0.0427 percent of claims, largest change in one insurer's test profit 1.79 points
+    aware, beta 20, four insurers, books of 12,000, classes GLM/GBM/GLM/GBM, partition 5: levels [1.31, 1.502, 1.347, 1.655], shares [0.33, 0.192, 0.259, 0.219]; over three successive states of the cycle, largest gain from moving one's own level 0.0076 percent of claims, largest change in one insurer's test profit 0.34 points
   aware, partition 1, beta 10, two insurers (36 plays): largest gain any insurer could make by moving its own level on a grid of +-0.5 around the equilibrium, in percent of the claims: below 1e-6
   aware, partition 1, beta 10, four insurers (48 plays): largest gain any insurer could make by moving its own level on a grid of +-0.5 around the equilibrium, in percent of the claims: below 1e-6
   naive, partition 1, beta 10, two insurers (36 plays): largest gain any insurer could make by moving its own level on a grid of +-0.5 around the equilibrium, in percent of the claims: below 1e-6
