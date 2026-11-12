@@ -969,15 +969,15 @@ def fig_collapse(n: dict[str, Any], out: Path) -> None:
     plt.close(fig)
 
 
-FIGURE_FILES = ("fig1_persistence.png", "fig2_distance_volatility.png", "fig3_out_of_sample.png", "fig4_one_index.png")
+FIGURE_FILES = ("fig1_persistence.png", "fig2_out_of_sample.png", "fig3_distance_volatility.png", "fig4_one_index.png")
 
 
 def render(n: dict[str, Any], outdir: Path) -> None:
     _style()
     outdir.mkdir(parents=True, exist_ok=True)
     fig_persistence(n, outdir / FIGURE_FILES[0])
-    fig_grid(n, outdir / FIGURE_FILES[1])
-    fig_models(n, outdir / FIGURE_FILES[2])
+    fig_models(n, outdir / FIGURE_FILES[1])
+    fig_grid(n, outdir / FIGURE_FILES[2])
     fig_collapse(n, outdir / FIGURE_FILES[3])
 
 
