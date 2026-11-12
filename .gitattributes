@@ -126,3 +126,5 @@ eu-us-surplus-by-industry/**/*.gz -filter -diff -merge binary
 china-capital-deepening/**/*.csv -filter -diff -merge text
 china-capital-deepening/**/*.gz -filter -diff -merge binary
 china-capital-deepening/**/*.xlsx -filter -diff -merge binary
+eu-us-ppp-drift/**/*.csv -filter -diff -merge text
+eu-us-ppp-drift/**/*.gz -filter -diff -merge binary
