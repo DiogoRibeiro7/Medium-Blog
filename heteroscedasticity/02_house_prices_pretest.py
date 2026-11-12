@@ -1,9 +1,10 @@
-"""Case 2 - a pretest that passes: house prices in Wooldridge's textbook example.
+"""Case 2 - a pretest that passes: house prices from Wooldridge's textbook data.
 
 wooldridge::hprice1: 88 house sales (Boston area, 1990), price on lot size,
 square footage and bedrooms. In levels the Breusch-Pagan test rejects; in logs
-it does not, and the textbook takes that as a reason to keep the usual
-standard errors. The robust standard errors tell a different story.
+it does not, and the usual routine (test, then robust only if the test
+rejects) would keep the classical standard errors. The robust standard errors
+tell a different story.
 
 Run:  python 02_house_prices_pretest.py
 """

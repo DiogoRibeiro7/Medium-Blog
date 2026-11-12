@@ -7,7 +7,7 @@ gamma in {-0.5, 0, 0.5, 1}, scaled so that E sigma^2 = 1:
   gamma = -0.5  the variance falls with income (every weighting scheme below
                 points the wrong way)
   gamma =  0    constant variance (weighting is pure noise)
-  gamma =  0.5  variance proportional to income (Wooldridge's 1/inc weights are exact)
+  gamma =  0.5  variance proportional to income (1/inc weights are exact)
   gamma =  1    standard deviation proportional to income (1/inc^2 weights are exact)
 n in {50, 200, 1000}; 2,000 samples per cell.
 

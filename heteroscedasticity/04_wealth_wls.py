@@ -2,8 +2,8 @@
 
 wooldridge::k401ksubs, single-person households (fsize == 1, n = 2,017):
 net total financial assets (nettfa, $1,000s) on income, (age - 25)^2, sex and
-eligibility for a 401(k) plan. Wooldridge's textbook assumes var(u | x)
-proportional to income and fits WLS with weights 1/inc. Here the variance
+eligibility for a 401(k) plan. The simplest variance assumption, var(u | x)
+proportional to income, gives WLS with weights 1/inc. Here the variance
 function is also estimated (FGLS, power and exponential forms), and every
 weighted fit is reported with classical and HC3 standard errors; a pairs
 bootstrap gives the sampling spread of each estimator without relying on any
@@ -106,7 +106,7 @@ ax = axes[0]
 ax.scatter(inc, f_ols.resid, s=5, color="#9a9993", alpha=0.45, lw=0, rasterized=True)
 gx = np.linspace(inc.min(), inc.max(), 200)
 s2_lin = np.mean(f_ols.resid ** 2 / inc)                      # sigma^2 * inc, sigma^2 by moments
-for curve, col, lab in ((np.sqrt(s2_lin * gx), ORANGE, "SD ∝ √income (Wooldridge's weights)"),
+for curve, col, lab in ((np.sqrt(s2_lin * gx), ORANGE, "SD ∝ √income (1/income weights)"),
                         (np.sqrt(np.exp(gp[0] + gp[1] * np.log(gx)) * np.exp(1.2704)), BLUE,
                          f"SD from fitted power function (var ∝ inc^{gp[1]:.2f})")):
     ax.plot(gx, 2 * curve, color=col, lw=2, label=lab)
