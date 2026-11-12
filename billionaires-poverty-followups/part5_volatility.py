@@ -537,7 +537,17 @@ def compute(inp: dict[str, Any]) -> dict[str, Any]:
                   "global_2023_entries_near": p4["global"]["by_year"]["2023"]["entries_near"],
                   "china_2023_change": (p4["country"]["1500"]["showcase"]["China"]["2023"]["n1"]
                                         - p4["country"]["1500"]["showcase"]["China"]["2023"]["n0"])}
+    tn = by_tenure(tenure, dists, m100, floor)
+    near_bands = [b for b in BANDS if b < NEAR]
+    counts = dict(zip(near_bands, (10, 8, 6, 4, 2)))      # a hypothetical country, a third newcomers in each band
+    inc = {b: tn["within_band"][str(b)]["incumbent"] for b in near_bands}
+    new = {b: tn["within_band"][str(b)]["new"] for b in near_bands}
+    example = {"people": sum(counts.values()),
+               "mixed": sum(k * (2 / 3 * inc[b] + 1 / 3 * new[b]) for b, k in counts.items()),
+               "all_incumbents": sum(k * inc[b] for b, k in counts.items()),
+               "all_newcomers": sum(k * new[b] for b, k in counts.items())}
     return {
+        "rule_of_thumb_example": example,
         "part4_refs": part4_refs,
         "yearly_fit": fit,
         "check_part4": check,
@@ -549,7 +559,7 @@ def compute(inp: dict[str, Any]) -> dict[str, Any]:
         "scale_far_self": scale_far_self, "scale_far_naive": scale_far_naive,
         "upper_tail_by_band": tails, "upper_tail_near": upper_tail(near_cells, dists, UPPER_X),
         "floor": floor, "decomposition": dec, "gap": gap_out,
-        "tenure": by_tenure(tenure, dists, m100, floor),
+        "tenure": tn,
         "cohorts": newcomer_cohorts(tenure, dists),
         "previous": by_previous(tenure),
         "bootstrap": bootstrap(tenure, dists, years, m100, floor),
@@ -718,6 +728,7 @@ def summary_lines(n: dict[str, Any]) -> list[str]:
                f"{c['excess_top3_new_share']:.3f} vs other {c['excess_other_years']:.3f}")
     yf = n["yearly_fit"]
     out.append(f"Part 4 refs: {n['part4_refs']}")
+    out.append(f"Rule-of-thumb example: {r3(n['rule_of_thumb_example'])}")
     out.append("Yearly by year (obs/part4/model): " + "; ".join(f"{y} {v['obs']:.3f}/{v['part4']:.3f}/{v['model']:.3f}"
                                                               for y, v in yf["by_year"].items()))
     out.append(f"Yearly near-line fit: MAE Part 4 {yf['mae_part4_points']:.2f} pts, model {yf['mae_model_points']:.2f} pts; "
