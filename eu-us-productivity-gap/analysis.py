@@ -394,8 +394,8 @@ def main() -> None:
     incs["share_gap_rest"] = incs.gap_rest_hour / incs.gap_gdp_hour
     incs.to_csv(RES / "income_split_2024.csv", index=False, float_format="%.4f")
     for r in incs.itertuples():
-        say(f"{r.group}: rest/hour = depreciation + net remainder (USD PPP)",
-            f"{r.rest_hour:.1f} = {r.cfc_hour:.1f} + {r.net_rest_hour:.1f}")
+        say(f"{r.group}: rest/hour = depreciation + net remainder (USD PPP); depreciation share of GDP",
+            f"{r.rest_hour:.1f} = {r.cfc_hour:.1f} + {r.net_rest_hour:.1f}; {r.cfc_hour / r.gdp_hour:.3f}")
         say(f"{r.group}: GDP/hour = labour comp + net production taxes + rest (USD PPP); labour share; tax share",
             f"{r.gdp_hour:.1f} = {r.lc_hour:.1f} + {r.tax_hour:.1f} + {r.rest_hour:.1f}; {r.labour_share:.3f}; {r.tax_share:.3f}")
         if r.group != "United States":
