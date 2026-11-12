@@ -142,3 +142,9 @@ def test_read_report(tmp_path):
     )
     r = C.read_report(p)
     assert r["yellow"]["2024-02"] == 100_000 * 29 and r["fhv"]["2024-02"] == 31 * 29
+
+
+def test_green_is_profiled_for_rows_and_schema_only(tmp_path):
+    p = run(clean_frame("yellow", n=321), tmp_path, "green")
+    assert p["n_rows"] == 321 and p["counts"] == {} and len(p["schema"]) == 20
+    assert C.rows_from_profiles({"green": {"2024-03": p}}) == {"green": {"2024-03": 321}}

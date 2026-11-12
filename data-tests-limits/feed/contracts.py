@@ -160,6 +160,8 @@ FHVHV = Contract(
 GREEN_REPORT = ("Green",)  # green enters the outside-count test only; its dictionary was not available here
 
 CONTRACTS = {c.feed: c for c in (YELLOW, FHV, FHVHV)}
+FEEDS = ("yellow", "green", "fhv", "fhvhv")  # green is profiled for its row count and schema only
+FIRST_MONTH = {"yellow": "2019-01", "green": "2019-01", "fhv": "2019-01", "fhvhv": "2019-02"}
 ZONES = (1, 265)
 TOLERANCE = 0.01
 DICTIONARY_DATE = "2025-03"

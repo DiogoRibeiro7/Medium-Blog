@@ -74,3 +74,10 @@ from outside the delivery does.
 Window 12 deliveries; line |z| > 5; scale floor 0.005 (log units); tolerance 1% for tolerant rules and for the
 fixed outside-count check; budget 5% of clean deliveries; losses 1, 2, 5, 10, 15, 20%; evaluation from 2021-05;
 dictionary date 2025-03. Anything added after the results are seen is labelled as a follow-up in the article.
+
+## Changes after registration
+
+- 2026-11-12, before any result was computed: the CDN refused the Parquet-footer reads after about 190 files,
+  so the delivered count of a month is taken from the profile of its file (count of rows over the whole file,
+  the same number the footer holds). Green, which has no contract here, is profiled for its row count and
+  schema only. No setting of either experiment changed.

@@ -13,20 +13,20 @@ import json
 import urllib.error
 from pathlib import Path
 
-from feed.contracts import CONTRACTS
+from feed.contracts import FEEDS, FIRST_MONTH
 from feed.profile import download, profile_file
 from feed.sources import months
 
 
 def main() -> None:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--feed", required=True, choices=sorted(CONTRACTS))
+    ap.add_argument("--feed", required=True, choices=FEEDS)
     ap.add_argument("--months", required=True, help="YYYY-MM:YYYY-MM")
     ap.add_argument("--out", default="profiles")
     ap.add_argument("--cache", default="/tmp/tlc")
     a = ap.parse_args()
     first, last = a.months.split(":")
-    first = max(first, CONTRACTS[a.feed].first_month)
+    first = max(first, FIRST_MONTH[a.feed])
     out = Path(a.out) / a.feed
     out.mkdir(parents=True, exist_ok=True)
     for m in months(first, last):

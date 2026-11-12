@@ -1,10 +1,10 @@
 name: Profile data-tests-limits
 
 # Part 4 of Code Quality for Data Work (settings in data-tests-limits/PLAN.md).
-# - sources (pushes only): the data dictionaries, the TLC monthly report from NYC Open Data and the Parquet
-#   footers of every monthly file of the four TLC feeds;
+# - sources (pushes only): the data dictionaries (where nyc.gov serves them to the runner) and the TLC monthly
+#   report from NYC Open Data;
 # - profile: every monthly file of yellow, FHV and high-volume FHV, 2019 to 2026-09, reduced to the counts
-#   the dictionary rules need (one job per feed and year);
+#   the dictionary rules need, and of green to its row count and schema (one job per feed and year);
 # - evaluate: both experiments; commits sources, profiles, results and figures on pushes, and on pull
 #   requests compares the regenerated summary with the committed one (using the committed sources).
 # Until PLAN.md exists, only the dictionaries and the report's columns are fetched.
@@ -91,7 +91,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        feed: [yellow, fhv, fhvhv]
+        feed: [yellow, green, fhv, fhvhv]
         months: ['2019-01:2019-12', '2020-01:2020-12', '2021-01:2021-12', '2022-01:2022-12',
                  '2023-01:2023-12', '2024-01:2024-12', '2025-01:2025-12', '2026-01:2026-09']
     defaults:

@@ -151,8 +151,8 @@ def e1(profiles: dict[str, dict[str, dict]], out: Path, L: list[str]) -> None:
         w.writerows(rows)
 
 
-def e2(sources: Path, out: Path, L: list[str]) -> None:
-    rows = C.read_footers(sources / "footers.jsonl")
+def e2(profiles: dict[str, dict[str, dict]], sources: Path, out: Path, L: list[str]) -> None:
+    rows = C.rows_from_profiles(profiles)
     report = C.read_report(sources / "data_reports_monthly.csv")
     L += ["E2. Random losses of rows: the delivery's own history against a count from outside it", ""]
     res, sc = [], []
@@ -234,8 +234,9 @@ def main() -> None:
     if a.bundle:
         bundle(Path(a.profiles))
     L = ["Part 4 of Code Quality for Data Work: what a delivery cannot vouch for. Settings: PLAN.md.", ""]
-    e1(read_profiles(Path(a.profiles)), out, L)
-    e2(Path(a.sources), out, L)
+    profiles = read_profiles(Path(a.profiles))
+    e1(profiles, out, L)
+    e2(profiles, Path(a.sources), out, L)
     (out / "summary.txt").write_text("\n".join(L) + "\n", encoding="utf-8")
     print("\n".join(L))
 

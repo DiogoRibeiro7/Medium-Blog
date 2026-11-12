@@ -1,6 +1,7 @@
 """Random losses of rows, and what can see them: the delivery's own history, or a count from outside it.
 
-The delivered count of a month is the row count in the Parquet footer of its file. The outside count is the
+The delivered count of a month is the number of rows in its file (the profile's count, which is the
+row count in the file's Parquet footer). The outside count is the
 TLC monthly data report's average trips per day, for the licence classes of the feed, times the days of the
 month. A random loss of a fraction p of the rows multiplies the delivered count by (1 - p) and leaves every
 share, mix and quantile unchanged in expectation, so counts are all that carry it; the binomial noise of the
@@ -22,7 +23,6 @@ from __future__ import annotations
 import calendar
 import csv
 import io
-import json
 import math
 from pathlib import Path
 
@@ -43,12 +43,9 @@ def days(month: str) -> int:
     return calendar.monthrange(y, m)[1]
 
 
-def read_footers(path: Path) -> dict[str, dict[str, int]]:
-    out: dict[str, dict[str, int]] = {}
-    for line in path.read_text(encoding="utf-8").splitlines():
-        r = json.loads(line)
-        out.setdefault(r["feed"], {})[r["month"]] = int(r["rows"])
-    return out
+def rows_from_profiles(profiles: dict[str, dict[str, dict]]) -> dict[str, dict[str, int]]:
+    """Delivered rows by feed and month: count(*) over the file, the same number as its Parquet footer."""
+    return {feed: {m: int(p["n_rows"]) for m, p in ps.items()} for feed, ps in profiles.items()}
 
 
 def num(x: str) -> float:

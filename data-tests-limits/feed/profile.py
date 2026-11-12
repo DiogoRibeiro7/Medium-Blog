@@ -22,7 +22,7 @@ from pathlib import Path
 
 import duckdb
 
-from feed.contracts import CONTRACTS, ZONES, Contract
+from feed.contracts import CONTRACTS, FEEDS, ZONES, Contract
 from feed.sources import UA, url
 
 
@@ -161,14 +161,19 @@ def profile_file(path: Path, month: str, feed: str) -> dict:
     con.execute("SET TimeZone = 'UTC'")
     con.execute("SET preserve_insertion_order = false")
     con.execute(f"CREATE VIEW t AS SELECT * FROM read_parquet('{path}')")
-    p = profile(con, "t", month, CONTRACTS[feed])
+    if feed in CONTRACTS:
+        p = profile(con, "t", month, CONTRACTS[feed])
+    else:  # no contract: the row count and the schema only
+        schema = [[r[0], r[1]] for r in con.execute("DESCRIBE t").fetchall()]
+        n = int(con.execute("SELECT count(*) FROM t").fetchone()[0])
+        p = {"feed": feed, "month": month, "schema": schema, "n_rows": n, "counts": {}, "offending": {}}
     p["source"] = {"url": url(feed, month), "bytes": path.stat().st_size, "sha256": sha256(path)}
     return p
 
 
 def main() -> None:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--feed", required=True, choices=sorted(CONTRACTS))
+    ap.add_argument("--feed", required=True, choices=FEEDS)
     ap.add_argument("--month", required=True)
     ap.add_argument("--cache", default="/tmp/tlc")
     a = ap.parse_args()

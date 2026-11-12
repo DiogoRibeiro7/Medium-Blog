@@ -2,10 +2,11 @@
 
     python -m feed.sources --out sources
 
-- the Parquet footer of every monthly file of the four TLC feeds (yellow, green, FHV, high-volume FHV):
-  row count and schema, read with HTTP range requests (a few kilobytes per file);
 - the TLC monthly data report (average trips per day by licence class), the outside count;
-- the text of the four data dictionaries.
+- the text of the four data dictionaries, where the site serves them to the runner;
+- with ``--footers``, the Parquet footer of every monthly file of the four feeds (row count and schema, read
+  with HTTP range requests). Off by default: the CDN refuses them after a couple of hundred files, and the
+  profiles carry the same row counts.
 
 Everything is written under ``--out`` with the retrieval date and a SHA-256, so a later revision of a source
 shows up as a changed hash.
@@ -199,7 +200,12 @@ def main() -> None:
         (out / "SOURCES.json").write_text(json.dumps(log, indent=2), encoding="utf-8")
         return
 
-    # footers
+    if not a.footers:
+        (out / "SOURCES.json").write_text(json.dumps(log, indent=2), encoding="utf-8")
+        return
+
+    # footers (off by default: the CDN refuses range requests after a couple of hundred files; the profiles
+    # carry the same row counts)
     footers = []
     for feed in PREFIX:
         for m in months(a.first, a.last):
