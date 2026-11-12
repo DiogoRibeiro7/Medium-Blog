@@ -726,11 +726,18 @@ def main() -> None:
     cm = bc.set_index("iso3")[list(EXPOSURES)].corr(method="spearman")
     w("Spearman correlations between exposure measures (billionaire countries): " + "; ".join(
         f"{a}-{b} {cm.loc[a, b]:+.2f}" for a, b in itertools.combinations(EXPOSURES, 2)))
+    inh_mean = panel[panel["n"] > 0].groupby("iso3")["inh_share"].mean()
     for i in ("USA", "CHN", "DEU", "FRA", "ITA", "ESP", "GBR", "IND", "THA", "RUS", "SWE", "KOR", "JPN"):
         if i in expo.index:
             r = expo.loc[i]
             w(f"  {i}: stringency {r['stringency']:.1f}, deaths per million {r['deaths_pm']:.0f}, tourism {r['tourism_gdp']:.2f}% of GDP, "
-              f"contact-intensive employment {r['contact_emp']:.1f}%")
+              f"contact-intensive employment {r['contact_emp']:.1f}%; inherited share of billionaire wealth (mean of lists) {inh_mean.get(i, np.nan):.3f}")
+    alt = expo.loc[expo.index.isin(bci)]
+    w(f"alternative sources among the 63 billionaire countries: UN Tourism receipts for 2015-2019 available for "
+      f"{int(alt['tourism_unwto'].notna().sum())} (missing: {', '.join(sorted(alt.index[alt['tourism_unwto'].isna()]))}); "
+      f"survey-based contact-intensive employment for 2014-2019 available for {int(alt['contact_survey'].notna().sum())} "
+      f"(missing: {', '.join(sorted(alt.index[alt['contact_survey'].isna()]))}); both available for "
+      f"{int((alt['tourism_unwto'].notna() & alt['contact_survey'].notna()).sum())}")
     w("")
     w("## How exposure relates to billionaire composition (country level, billionaire countries; Spearman)")
     for _, r in corr.iterrows():

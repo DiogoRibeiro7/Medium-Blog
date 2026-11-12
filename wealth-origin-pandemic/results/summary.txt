@@ -10,19 +10,20 @@ tourism source among billionaire countries: balance of payments 61, UNWTO receip
 BoP travel vs UNWTO receipts where both exist (n=56): Spearman 0.981
 modelled vs survey contact-intensive employment where both exist (n=54): Spearman 0.798; median difference +4.72 pp
 Spearman correlations between exposure measures (billionaire countries): stringency-deaths_pm +0.06; stringency-tourism_gdp -0.16; stringency-contact_emp +0.27; deaths_pm-tourism_gdp +0.04; deaths_pm-contact_emp +0.08; tourism_gdp-contact_emp -0.05
-  USA: stringency 56.8, deaths per million 2444, tourism 1.00% of GDP, contact-intensive employment 34.9%
-  CHN: stringency 71.2, deaths per million 3, tourism 0.33% of GDP, contact-intensive employment 27.9%
-  DEU: stringency 56.5, deaths per million 1336, tourism 1.06% of GDP, contact-intensive employment 30.5%
-  FRA: stringency 53.5, deaths per million 1785, tourism 2.27% of GDP, contact-intensive employment 31.1%
-  ITA: stringency 64.7, deaths per million 2285, tourism 2.27% of GDP, contact-intensive employment 35.8%
-  ESP: stringency 55.9, deaths per million 1885, tourism 5.53% of GDP, contact-intensive employment 39.9%
-  GBR: stringency 57.4, deaths per million 2643, tourism 2.05% of GDP, contact-intensive employment 32.7%
-  IND: stringency 65.9, deaths per million 347, tourism 1.03% of GDP, contact-intensive employment 23.7%
-  THA: stringency 50.9, deaths per million 303, tourism 10.94% of GDP, contact-intensive employment 32.3%
-  RUS: stringency 47.1, deaths per million 2066, tourism 0.63% of GDP, contact-intensive employment 33.1%
-  SWE: stringency 47.6, deaths per million 1489, tourism 1.77% of GDP, contact-intensive employment 29.5%
-  KOR: stringency 50.4, deaths per million 109, tourism 1.00% of GDP, contact-intensive employment 37.3%
-  JPN: stringency 40.7, deaths per million 145, tourism 0.70% of GDP, contact-intensive employment 37.2%
+  USA: stringency 56.8, deaths per million 2444, tourism 1.00% of GDP, contact-intensive employment 34.9%; inherited share of billionaire wealth (mean of lists) 0.309
+  CHN: stringency 71.2, deaths per million 3, tourism 0.33% of GDP, contact-intensive employment 27.9%; inherited share of billionaire wealth (mean of lists) 0.025
+  DEU: stringency 56.5, deaths per million 1336, tourism 1.06% of GDP, contact-intensive employment 30.5%; inherited share of billionaire wealth (mean of lists) 0.704
+  FRA: stringency 53.5, deaths per million 1785, tourism 2.27% of GDP, contact-intensive employment 31.1%; inherited share of billionaire wealth (mean of lists) 0.763
+  ITA: stringency 64.7, deaths per million 2285, tourism 2.27% of GDP, contact-intensive employment 35.8%; inherited share of billionaire wealth (mean of lists) 0.531
+  ESP: stringency 55.9, deaths per million 1885, tourism 5.53% of GDP, contact-intensive employment 39.9%; inherited share of billionaire wealth (mean of lists) 0.271
+  GBR: stringency 57.4, deaths per million 2643, tourism 2.05% of GDP, contact-intensive employment 32.7%; inherited share of billionaire wealth (mean of lists) 0.205
+  IND: stringency 65.9, deaths per million 347, tourism 1.03% of GDP, contact-intensive employment 23.7%; inherited share of billionaire wealth (mean of lists) 0.611
+  THA: stringency 50.9, deaths per million 303, tourism 10.94% of GDP, contact-intensive employment 32.3%; inherited share of billionaire wealth (mean of lists) 0.466
+  RUS: stringency 47.1, deaths per million 2066, tourism 0.63% of GDP, contact-intensive employment 33.1%; inherited share of billionaire wealth (mean of lists) 0.001
+  SWE: stringency 47.6, deaths per million 1489, tourism 1.77% of GDP, contact-intensive employment 29.5%; inherited share of billionaire wealth (mean of lists) 0.744
+  KOR: stringency 50.4, deaths per million 109, tourism 1.00% of GDP, contact-intensive employment 37.3%; inherited share of billionaire wealth (mean of lists) 0.694
+  JPN: stringency 40.7, deaths per million 145, tourism 0.70% of GDP, contact-intensive employment 37.2%; inherited share of billionaire wealth (mean of lists) 0.156
+alternative sources among the 63 billionaire countries: UN Tourism receipts for 2015-2019 available for 58 (missing: CAN, CHN, ESP, GBR, SWE); survey-based contact-intensive employment for 2014-2019 available for 54 (missing: CAN, CHN, COL, HKG, MAR, OMN, SAU, VEN, ZAF); both available for 51
 
 ## How exposure relates to billionaire composition (country level, billionaire countries; Spearman)
 stringency vs inh_share: -0.001 (n=63)
