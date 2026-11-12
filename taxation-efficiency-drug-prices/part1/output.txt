@@ -1,0 +1,140 @@
+Part 1: the premises of 'taxation is theft', and the one that data can test.
+NumPy 2.5.3
+
+==============================================================================================
+1. The economy
+==============================================================================================
+Endowment E = 20 tokens per person and round; groups of n = 4; MPCR = 0.4.
+Marginal group return G = n x MPCR = 1.6: a token given creates 1.6 tokens of value,
+of which the giver gets back 0.4. Keeping the token is privately better whatever the others do;
+giving everything is collectively best.
+Welfare per person and round, in units of E: none given = 1.00; everything given = 1.60.
+Voluntary provision share s gives 1 + (G - 1) s; a tax raising the whole endowment, with marginal
+cost of public funds lam and a share w of revenue lost before it reaches the good, gives
+1 - lam + G (1 - w). Compulsion is better exactly when s < s* = (G (1 - w) - lam) / (G - 1).
+
+==============================================================================================
+2. Voluntary contributions: calibration and path
+==============================================================================================
+Model: person i gives beta_i x (belief about the others' average) + error, clipped to [0, E];
+beliefs move towards what the others gave: b <- theta b + (1 - theta) observed.
+beta_i ~ Beta with mean beta_mean and concentration 4; first-round beliefs ~ N(belief0, 0.2);
+decision error sd 0.1 of E; theta = 0.3. Calibrated: beta_mean and belief0.
+Targets: round 1 = 0.50 (Ledyard 1995: 40-60 %); round 10 = 0.20 (Andreoni 1995 / Isaac and Walker 1988: 15-25 %).
+Calibrated: beta_mean = 0.829, belief0 = 0.602 (squared error below 1e-8).
+Mean contribution share by round (1-10): [0.5   0.44  0.39  0.348 0.312 0.282 0.256 0.234 0.215 0.2  ]
+Rounds 20, 30, 40, 50: [0.129 0.108 0.103 0.101]
+Average share over 10 rounds: 0.318; over 50 rounds: 0.158; in round 50: 0.101.
+Welfare per person, sum over rounds (units of E): 10 rounds 11.907; 50 rounds 54.751.
+Efficiency (welfare / welfare at full provision): 10 rounds 0.744; 50 rounds 0.684.
+Mean share given by someone who plans to give nothing, from decision error alone: 0.040.
+
+Sensitivity: recalibrated under other values of the fixed parts (theta, concentration).
+  theta 0.0, conc  4.0: beta_mean 0.867, belief0 0.576; mean share 10 rounds 0.312, 50 rounds 0.171, round 50 0.121
+  theta 0.0, conc 10.0: beta_mean 0.884, belief0 0.565; mean share 10 rounds 0.318, 50 rounds 0.167, round 50 0.117
+  theta 0.3, conc  4.0: beta_mean 0.829, belief0 0.602; mean share 10 rounds 0.318, 50 rounds 0.158, round 50 0.101
+  theta 0.3, conc 10.0: beta_mean 0.845, belief0 0.591; mean share 10 rounds 0.323, 50 rounds 0.155, round 50 0.098
+  theta 0.6, conc  4.0: beta_mean 0.728, belief0 0.689; mean share 10 rounds 0.323, 50 rounds 0.144, round 50 0.077
+  theta 0.6, conc 10.0: beta_mean 0.743, belief0 0.674; mean share 10 rounds 0.326, 50 rounds 0.141, round 50 0.076
+  Range of beta_mean: 0.728-0.884; of the 50-round mean share: 0.141-0.171; of the round-50 share: 0.076-0.121.
+
+==============================================================================================
+3. Peer punishment
+==============================================================================================
+After contributions are seen, people with slope beta_i >= 0.5 punish each member in proportion
+to that member's shortfall below the rest of the group. A point costs the punisher 1 token and the
+target 3. Points received raise the target's contribution floor; floors do not relax (decay 1.0).
+Targets: in round 10, 82.5% give the whole endowment (Fehr and Gaechter 2000, final
+period of the partner treatment with punishment); welfare over 10 rounds equal to the voluntary
+regime's (Fehr and Williams 2017, on Fehr and Gaechter 2000: the total cost of punishment was on
+average as large as the benefit from the extra cooperation).
+Calibrated: gamma = 11.65 points per unit of shortfall, eta = 0.0772 (squared error below 1e-8).
+Mean contribution share by round (1-10): [0.5   0.537 0.616 0.722 0.808 0.87  0.911 0.937 0.953 0.964]
+Share giving the whole endowment by round (1-10): [0.015 0.07  0.102 0.2   0.346 0.494 0.619 0.71  0.778 0.825]
+Punishment cost per person by round (1-10), share of E: [0.673 0.569 0.537 0.383 0.248 0.156 0.096 0.06  0.038 0.025]
+Rounds 20, 30, 40, 50: contribution [0.99  0.995 0.996 0.997] cost [0.002 0.001 0.    0.   ]
+Welfare, sum over rounds: 10 rounds 11.907 (ratio to voluntary 1.000); 50 rounds 75.634 (ratio 1.381).
+Cumulative welfare gap (punishment minus voluntary): lowest after round 4 (-1.744 E per person); positive for good from round 11.
+Per-round welfare with punishment, rounds 1-10: [0.627 0.753 0.833 1.05  1.237 1.366 1.451 1.502 1.534 1.553]
+Out-of-sample check: Gaechter, Renner and Sefton (2008) found that over 50 rounds punishment
+raised both cooperation and earnings. The model calibrated on 10 rounds gives a 50-round welfare
+ratio of 1.381. (Their 50-round groups also show an end-game drop, which this model lacks.)
+Voluntary share with the same welfare: 10 rounds 0.318; 50 rounds 0.854.
+
+With floors that relax by 10 % a round (decay 0.9), the two targets cannot both be met:
+  best fit gamma 13.00, eta 1.000: full givers in round 10 0.548, 10-round welfare ratio 0.978 (squared error 7.7e-02).
+
+Antisocial punishment (Herrmann, Thoeni and Gaechter 2008): a share of punishers also punishes
+those who gave more than they did; antisocial points lower the target's slope and floor.
+  antisocial share 0.0: welfare ratio 10 rounds 1.000, 50 rounds 1.381; contribution share round 10 0.964, round 50 0.997
+  antisocial share 0.1: welfare ratio 10 rounds 0.918, 50 rounds 1.346; contribution share round 10 0.944, round 50 0.992
+  antisocial share 0.2: welfare ratio 10 rounds 0.793, 50 rounds 1.247; contribution share round 10 0.917, round 50 0.978
+  antisocial share 0.3: welfare ratio 10 rounds 0.616, 50 rounds 1.067; contribution share round 10 0.883, round 50 0.954
+  antisocial share 0.5: welfare ratio 10 rounds 0.148, 50 rounds 0.423; contribution share round 10 0.791, round 50 0.865
+
+==============================================================================================
+4. Compulsion at the laboratory's marginal group return (G = 1.6)
+==============================================================================================
+A tax raises the whole endowment and pays for the good. Welfare per round = 1 - lam + G (1 - w).
+Marginal cost of public funds lam from Browning (1976) and Ballard, Shoven and Whalley (1985).
+  w = 0.0: Browning low 1.09: 1.510; Browning high 1.16: 1.440; BSW low 1.17: 1.430; BSW centre 1.33: 1.270; BSW high 1.56: 1.040
+  w = 0.1: Browning low 1.09: 1.350; Browning high 1.16: 1.280; BSW low 1.17: 1.270; BSW centre 1.33: 1.110; BSW high 1.56: 0.880
+  w = 0.3: Browning low 1.09: 1.030; Browning high 1.16: 0.960; BSW low 1.17: 0.950; BSW centre 1.33: 0.790; BSW high 1.56: 0.560
+Voluntary, mean welfare per round: 10 rounds 1.191; 50 rounds 1.095; round 50 1.060.
+Peer punishment, mean welfare per round: 10 rounds 1.191; 50 rounds 1.513; round 50 1.598.
+Reference case lam = 1.33, w = 0.1: compulsion 1.110 per round, which is below the voluntary 10-round mean (1.191), above the voluntary 50-round mean (1.095)
+and below peer punishment over 50 rounds (1.513).
+Break-even voluntary share at G = 1.6: s* = 0.183 (lam 1.33, w 0.1); with w = 0: 0.450; with lam 1.09, w 0: 0.850.
+
+==============================================================================================
+5. The break-even frontier
+==============================================================================================
+Compulsion yields more welfare than voluntary provision with share s when G > G*(s, lam, w),
+G* = (lam - s) / ((1 - w) - s). Shares s from the simulations above:
+  voluntary, 10-round mean: s = 0.318
+  voluntary, 50-round mean: s = 0.158
+  voluntary, round 50: s = 0.101
+  peer punishment, 50-round equivalent: s = 0.854
+  G* for voluntary, 10-round mean (s 0.318), w 0.0, lam [1.09, 1.16, 1.17, 1.33, 1.56]: 1.13, 1.23, 1.25, 1.48, 1.82
+  G* for voluntary, 10-round mean (s 0.318), w 0.1, lam [1.09, 1.16, 1.17, 1.33, 1.56]: 1.33, 1.45, 1.46, 1.74, 2.13
+  G* for voluntary, 10-round mean (s 0.318), w 0.3, lam [1.09, 1.16, 1.17, 1.33, 1.56]: 2.02, 2.20, 2.23, 2.65, 3.25
+  G* for voluntary, 50-round mean (s 0.158), w 0.0, lam [1.09, 1.16, 1.17, 1.33, 1.56]: 1.11, 1.19, 1.20, 1.39, 1.67
+  G* for voluntary, 50-round mean (s 0.158), w 0.1, lam [1.09, 1.16, 1.17, 1.33, 1.56]: 1.26, 1.35, 1.36, 1.58, 1.89
+  G* for voluntary, 50-round mean (s 0.158), w 0.3, lam [1.09, 1.16, 1.17, 1.33, 1.56]: 1.72, 1.85, 1.87, 2.16, 2.59
+  G* for voluntary, round 50 (s 0.101), w 0.0, lam [1.09, 1.16, 1.17, 1.33, 1.56]: 1.10, 1.18, 1.19, 1.37, 1.62
+  G* for voluntary, round 50 (s 0.101), w 0.1, lam [1.09, 1.16, 1.17, 1.33, 1.56]: 1.24, 1.33, 1.34, 1.54, 1.83
+  G* for voluntary, round 50 (s 0.101), w 0.3, lam [1.09, 1.16, 1.17, 1.33, 1.56]: 1.65, 1.77, 1.78, 2.05, 2.43
+  G* for peer punishment, 50-round equivalent (s 0.854), w 0.0, lam [1.09, 1.16, 1.17, 1.33, 1.56]: 1.62, 2.10, 2.17, 3.27, 4.85
+  G* for peer punishment, 50-round equivalent (s 0.854), w 0.1, lam [1.09, 1.16, 1.17, 1.33, 1.56]: 5.17, 6.71, 6.93, 10.44, 15.50
+  G* for peer punishment, 50-round equivalent (s 0.854), w 0.3, lam [1.09, 1.16, 1.17, 1.33, 1.56]: never, never, never, never, never
+
+Reading the frontier the other way: the voluntary share needed to beat compulsion, s*(G).
+A negative value means that compulsion loses to voluntary provision even if nobody gives anything.
+  G  1.2, w 0.1, lam 1.09 / 1.33 / 1.56: -0.050 / -1.250 / -2.400
+  G  1.6, w 0.1, lam 1.09 / 1.33 / 1.56: 0.583 / 0.183 / -0.200
+  G  2.0, w 0.1, lam 1.09 / 1.33 / 1.56: 0.710 / 0.470 / 0.240
+  G  3.0, w 0.1, lam 1.09 / 1.33 / 1.56: 0.805 / 0.685 / 0.570
+  G  5.0, w 0.1, lam 1.09 / 1.33 / 1.56: 0.853 / 0.792 / 0.735
+  G 10.0, w 0.1, lam 1.09 / 1.33 / 1.56: 0.879 / 0.852 / 0.827
+
+==============================================================================================
+6. Where the evidence lives
+==============================================================================================
+Laboratory designs (group size n, MPCR, marginal group return G = n MPCR):
+  Isaac, Walker and Williams (1994)    n    4  MPCR 0.30  G  1.20
+  Isaac, Walker and Williams (1994)    n    4  MPCR 0.75  G  3.00
+  Isaac, Walker and Williams (1994)    n   10  MPCR 0.30  G  3.00
+  Isaac, Walker and Williams (1994)    n   10  MPCR 0.75  G  7.50
+  Isaac, Walker and Williams (1994)    n   40  MPCR 0.30  G 12.00
+  Isaac, Walker and Williams (1994)    n   40  MPCR 0.75  G 30.00
+  Isaac, Walker and Williams (1994)    n   40  MPCR 0.03  G  1.20
+  Isaac, Walker and Williams (1994)    n  100  MPCR 0.30  G 30.00
+  Isaac, Walker and Williams (1994)    n  100  MPCR 0.75  G 75.00
+  Fehr and Gaechter (2000)             n    4  MPCR 0.40  G  1.60
+  Weimann et al. (2019)                n   60  MPCR 0.02  G  1.20
+  Weimann et al. (2019)                n   60  MPCR 0.04  G  2.40
+  Weimann et al. (2019)                n  100  MPCR 0.02  G  2.00
+  Weimann et al. (2019)                n  100  MPCR 0.04  G  4.00
+Largest group: 100; smallest MPCR: 0.02. A good shared by n = 1e7 people (the order of
+magnitude of Portugal's population) with G between 1.5 and 10 has MPCR between 1.5e-07 and 1.0e-06.
+Distance from the largest design: n is 5 orders of magnitude larger; MPCR is 4.3 to 5.1 orders of magnitude smaller.
