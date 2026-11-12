@@ -4,13 +4,15 @@
 
 For every New York key of the year in the public bucket (yearly archives and monthly files; Jersey City keys
 start with "JC-" and are left out), the file is downloaded, every CSV in it, and in zips inside it, is read
-with DuckDB, and the rows are counted by the month of their start time. The counts are kept per key, so that
-evaluate.py can apply the rule of PLAN.md when a month is covered by more than one key.
+with DuckDB, and the rows are counted by the month of their start time. Every CSV is kept with its path,
+SHA-256 and counts (``counts/citibike_files/``); evaluate.py applies the rule registered in PLAN.md and the
+corrected one (``feed.layout``) to decide which files make up each month.
 """
 
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import re
 import shutil
@@ -80,11 +82,19 @@ def count_csv(con: duckdb.DuckDBPyConnection, path: Path) -> dict:
     return {"months": months, "rows": sum(months.values()) + unparsed, "unparsed": unparsed, "lines": lines}
 
 
-def walk_zip(con: duckdb.DuckDBPyConnection, zpath: Path, work: Path, seen: set, out: dict) -> None:
-    """Count every CSV in a zip, descending into zips inside it.
+def sha256_file(path: Path) -> str:
+    h = hashlib.sha256()
+    with open(path, "rb") as fh:
+        for chunk in iter(lambda: fh.read(1 << 24), b""):
+            h.update(chunk)
+    return h.hexdigest()
 
-    A CSV is left out as a copy if its base name was already counted in the same key, or if it has the same
-    number of rows in every month as a CSV already counted (PLAN.md); both are listed in duplicate_names.
+
+def walk_zip(con: duckdb.DuckDBPyConnection, zpath: Path, work: Path, files: list[dict]) -> None:
+    """Count every CSV in a zip, descending into zips inside it, in the order the archive lists them.
+
+    Nothing is left out here: every CSV is recorded with its path, SHA-256, rows and rows by month, and the
+    rules that decide which files make up a month's delivery are applied in evaluate.py (``feed.layout``).
     """
     with zipfile.ZipFile(zpath) as zf:
         for info in zf.infolist():
@@ -94,47 +104,25 @@ def walk_zip(con: duckdb.DuckDBPyConnection, zpath: Path, work: Path, seen: set,
                 continue
             if base.lower().endswith(".zip"):
                 inner = Path(zf.extract(info, work))
-                walk_zip(con, inner, work, seen, out)
+                walk_zip(con, inner, work, files)
                 inner.unlink()
             elif base.lower().endswith(".csv"):
-                if base in seen:
-                    out["duplicate_names"].append(name)
-                    continue
-                seen.add(base)
                 p = Path(zf.extract(info, work))
                 r = count_csv(con, p)
+                r["sha256"] = sha256_file(p)
                 p.unlink()
-                signature = (r["rows"], tuple(sorted(r["months"].items())))
-                if r["rows"] > 0 and signature in seen:
-                    out["duplicate_names"].append(name)
-                    continue
-                seen.add(signature)
-                out["inner"][name] = {k: v for k, v in r.items() if k != "months"}
-                for m, n in r["months"].items():
-                    out["months"][m] = out["months"].get(m, 0) + n
-                out["rows"] += r["rows"]
-                out["unparsed"] += r["unparsed"]
+                files.append({"path": name, **r})
 
 
 def count_key(con: duckdb.DuckDBPyConnection, key: dict, cache: Path) -> dict:
     zpath = download(f"{BUCKET}/{key['key']}", cache / key["key"])
-    out = {
-        "size": key["size"],
-        "monthly": key["monthly"],
-        "file_month": key["file_month"],
-        "months": {},
-        "rows": 0,
-        "unparsed": 0,
-        "inner": {},
-        "duplicate_names": [],
-    }
+    out = {"size": key["size"], "monthly": key["monthly"], "file_month": key["file_month"], "files": []}
     work = Path(tempfile.mkdtemp(dir=cache))
     try:
-        walk_zip(con, zpath, work, set(), out)
+        walk_zip(con, zpath, work, out["files"])
     finally:
         shutil.rmtree(work, ignore_errors=True)
         zpath.unlink(missing_ok=True)
-    out["months"] = dict(sorted(out["months"].items()))
     return out
 
 
@@ -146,7 +134,7 @@ def main() -> None:
     ap.add_argument("--cache", type=Path, default=Path("/tmp/citibike"))
     a = ap.parse_args()
     bucket = json.loads(a.bucket.read_text(encoding="utf-8"))
-    dest = a.out / "citibike" / f"{a.year}.json"
+    dest = a.out / "citibike_files" / f"{a.year}.json"
     done = json.loads(dest.read_text(encoding="utf-8")) if dest.exists() else {"year": a.year, "keys": {}}
     a.cache.mkdir(parents=True, exist_ok=True)
     con = duckdb.connect()

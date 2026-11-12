@@ -89,3 +89,10 @@ def test_chicago_trips_takes_the_grouped_answer_for_missing_months(tmp_path, mon
     prog.write_text('{"a 2018-11": 7}')
     out = S.chicago_trips("2026-11", prog)
     assert {m: v["trips"] for m, v in out.items()} == {"2018-11": 7, "2018-12": 5, "2019-01": 6}
+
+
+def test_diagnose_contexts_show_the_matched_sentence():
+    from diagnose import contexts
+
+    out = contexts("Ridership\nThere were 30,827,926 trips in July, with an average of 99,445 per day", width=20)
+    assert out and "30,827,926 trips in" in out[0] and out[0].startswith("pattern 0")

@@ -126,8 +126,35 @@ Any change is listed here with its reason and date, and marked in the article.
   counted at a time, every answer is kept so that a rerun resumes, and the months still missing are tried in
   up to three passes. A month with no answer after the last pass is left out and listed. What is counted is
   unchanged.
-- 13 November 2026 (UTC), third Chicago run: the second run reached the five-hour limit of a GitHub job with
+- 12 November 2026, evening, third Chicago run: the second run reached the five-hour limit of a GitHub job with
   about half of the months counted (the counts it got are kept and reused). The portal scans the whole table
   for every monthly count, so the months still missing are first asked for with one grouped query per
   dataset, allowed an hour, and only then one month at a time. Nothing had been looked at: the run had
   written no output except the saved counts, which were not opened. What is counted is unchanged.
+
+## After the registered run (post hoc)
+
+Added on 13 November 2026, after the registered results were seen (workflow commit 08cc560). Nothing above
+this section was changed afterwards, except the date of the last entry, which said 13 November by mistake.
+
+- **Registered result.** H1 held in all four pairs and H2 in all four (`results/summary.txt`). For the two
+  Citi Bike pairs, though, the 95th percentile of the deviation came out near 70%, the target was never
+  reached, and H1 held only through its "not reached" clause.
+- **Why.** The months behind those percentiles are counting errors of this companion, not of the sources. The
+  rule registered above for duplicate CSVs fails in two ways on the real archives. The 2013 and 2018 yearly
+  archives hold some months twice, as one file and again as numbered parts in a month folder; neither clause
+  recognises that, so those months were counted twice (about +80% to +100% against both outside counts). And
+  parts of equal size (1,000,000 rows each, or the four parts of April 2026) have the same rows in every
+  month, so the second clause dropped all but one of them (about -19% to -51% in months of 2019 and 2024 to
+  2026). The two outside counts are what showed it.
+- **What is added.** The registered result stays as it is. A post hoc analysis recounts every CSV and keeps
+  all of them, each with its SHA-256 (`counts/citibike_files/`), and builds each month with a corrected rule
+  (`feed/layout.py`): files with identical content are counted once, and a month held both as one file and as
+  parts is counted once when the copies agree month by month (copies that disagree are kept and flagged). The
+  registered rule is recomputed from the same records as a check. Everything else is unchanged: the outside
+  counts (frozen, `sources/FROZEN`), the detector, the two prediction rules, the grid and the hypotheses. Its
+  results are in `results/corrected/` and are reported as post hoc.
+- **One outside value.** The operator report for July 2021 was read as 30,827,926 trips, about ten times the
+  other two counts. `diagnose.py` prints the sentence it was read from. The value stays in both analyses, as
+  the registered rule read it.
+

@@ -24,13 +24,14 @@ def test_year_keys_new_york_only_with_monthly_flag():
     assert all(k["monthly"] and k["file_month"] == "2024-01" for k in ks)
 
 
-def test_walk_zip_counts_nested_csvs_by_start_month_and_both_date_styles(tmp_path):
+def test_walk_zip_records_every_csv_with_months_and_hash(tmp_path):
     old = csv_bytes(
         '"tripduration","starttime","stoptime"',
         ['"300","2013-06-30 23:59:00","2013-07-01 00:04:00"', '"200","2013-07-01 00:01:00","2013-07-01 00:04:00"'],
     )
     us = csv_bytes(
-        "tripduration,starttime,stoptime", ["300,7/31/2015 23:50,8/1/2015 0:10", "10,8/1/2015 00:01:02,x", "5,,x"]
+        "tripduration,starttime,stoptime",
+        ["300,7/31/2015 23:50,8/1/2015 0:10", "10,8/1/2015 00:01:02,x", "5,,x"],
     )
     new = csv_bytes(
         "ride_id,rideable_type,started_at,ended_at",
@@ -46,9 +47,14 @@ def test_walk_zip_counts_nested_csvs_by_start_month_and_both_date_styles(tmp_pat
         z.writestr("2015.zip", inner.getvalue())
         z.writestr("202402-citibike-tripdata_1.csv", new)
         z.writestr("copy/201307-citibike-tripdata.csv", old)
-        z.writestr("201307-citibike-tripdata (1).csv", old)
-    out = {"months": {}, "rows": 0, "unparsed": 0, "inner": {}, "duplicate_names": []}
-    C.walk_zip(duckdb.connect(), outer, tmp_path, set(), out)
-    assert out["months"] == {"2013-06": 1, "2013-07": 1, "2015-07": 1, "2015-08": 1, "2024-01": 1, "2024-02": 1}
-    assert out["unparsed"] == 1 and out["rows"] == 7
-    assert out["duplicate_names"] == ["copy/201307-citibike-tripdata.csv", "201307-citibike-tripdata (1).csv"]
+    files = []
+    C.walk_zip(duckdb.connect(), outer, tmp_path, files)
+    assert [x["path"] for x in files] == [
+        "201307-citibike-tripdata.csv",
+        "2015/201508-citibike-tripdata.csv",
+        "202402-citibike-tripdata_1.csv",
+        "copy/201307-citibike-tripdata.csv",
+    ]
+    assert files[0]["months"] == {"2013-06": 1, "2013-07": 1} and files[0]["sha256"] == files[3]["sha256"]
+    assert files[1]["months"] == {"2015-07": 1, "2015-08": 1} and files[1]["unparsed"] == 1
+    assert files[2]["months"] == {"2024-01": 1, "2024-02": 1}

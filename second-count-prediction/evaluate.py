@@ -20,6 +20,7 @@ import math
 from pathlib import Path
 
 from feed import detect as D
+from feed import layout
 
 NEW = ("citibike / operator reports", "citibike / DOT table", "chicago / vehicles", "chicago / drivers")
 TLC_CLASSES = {
@@ -108,27 +109,35 @@ def pct(x: float | None) -> str:
     return "not reached by 50%" if x is None else f"{100 * x:.2f}%"
 
 
-def main() -> None:
-    ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
-    ap.add_argument("--counts", type=Path, default=Path("counts"))
-    ap.add_argument("--sources", type=Path, default=Path("sources"))
-    ap.add_argument("--part4", type=Path, default=Path("../data-tests-limits"))
-    ap.add_argument("--out", type=Path, default=Path("results"))
-    a = ap.parse_args()
-    a.out.mkdir(parents=True, exist_ok=True)
+def citibike_by_rule(counts: Path) -> tuple[dict[str, int], dict[str, int], list[str]]:
+    """Rows by month from every recorded CSV, with the registered rule and with the corrected one.
 
-    cb, cb_info = citibike_delivered(a.counts)
-    ops = read_csv(a.sources / "citibike_operator_reports.csv")
-    chi = {r["month"]: int(r["trips"]) for r in read_csv(a.sources / "chicago_trips.csv")}
-    pairs: dict[str, tuple[dict[str, int], dict[str, float], str | None]] = {
-        "citibike / operator reports": (cb, outside_from(ops), None),
-        "citibike / DOT table": (cb, outside_from(read_csv(a.sources / "citibike_dot.csv")), None),
-        "chicago / vehicles": (chi, outside_from(read_csv(a.sources / "chicago_vehicles.csv")), None),
-        "chicago / drivers": (chi, outside_from(read_csv(a.sources / "chicago_drivers.csv")), None),
-    }
-    for name, (d, o) in tlc_pairs(a.part4).items():
-        pairs[name] = (d, o, TLC_FIRST_EVAL)
+    The choice between a year's archive and its monthly archives is the registered one in both."""
+    reg: dict[str, int] = {}
+    cor: dict[str, int] = {}
+    notes = []
+    for f in sorted((counts / "citibike_files").glob("*.json")):
+        y = json.loads(f.read_text(encoding="utf-8"))
+        keys = y["keys"]
+        monthly = {k: v for k, v in keys.items() if v["monthly"]}
+        for k, v in sorted((monthly or keys).items()):
+            r, r_drop = layout.registered(v["files"])
+            c, c_drop, c_flag = layout.corrected(v["files"])
+            layout.add(reg, r)
+            layout.add(cor, c)
+            notes.append(
+                f"{k}: {len(v['files'])} CSVs; registered rule leaves out {len(r_drop)}; corrected rule "
+                f"leaves out {len(c_drop)} as copies, flags {len(c_flag)}"
+            )
+            notes += [f"    copy left out: {p}" for p in c_drop] + [f"    flagged: {p}" for p in c_flag]
+    first = CITIBIKE_FIRST
+    return ({m: n for m, n in reg.items() if m >= first}, {m: n for m, n in cor.items() if m >= first}, notes)
 
+
+def run(pairs: dict, out: Path, header: list[str]) -> dict:
+    """Analyse every pair and write summary.txt, pairs.json, curves.csv and ratios.csv under ``out``."""
+    out.mkdir(parents=True, exist_ok=True)
+    a = argparse.Namespace(out=out)
     res, ratio_rows, curve_rows = {}, [], []
     for name, (d, o, first) in pairs.items():
         r = D.ratio_series(d, o)
@@ -139,15 +148,7 @@ def main() -> None:
         for p, v in x["curve"].items():
             curve_rows.append([name, p, f"{v:.4f}"])
 
-    L = [
-        "Does the agreement of two counts on clean months predict the smallest random loss they can catch?",
-        "Settings and hypotheses: PLAN.md.",
-        "",
-    ]
-    L.append(f"Citi Bike rows whose start time has no recognisable date (left out): {cb_info['unparsed']:,}")
-    failed = [r["month"] for r in ops if not r.get("trips")]
-    L.append(f"Operator reports without a usable total (left out): {len(failed)} {' '.join(failed)}")
-    L.append("")
+    L = list(header)
     for name, x in res.items():
         tag = "TEST" if name in NEW else "calibration (Part 4, already seen)"
         L.append(f"{name}  [{tag}]")
@@ -190,7 +191,6 @@ def main() -> None:
         w = csv.writer(fh)
         w.writerow(["pair", "loss", "detected"])
         w.writerows(curve_rows)
-    (a.out / "citibike_keys_used.json").write_text(json.dumps(cb_info, indent=1), encoding="utf-8")
     pairs_out = {
         n: {
             "test": n in NEW,
@@ -212,6 +212,72 @@ def main() -> None:
     print(text)
     if not math.isfinite(sum(x["p95_dev"] for x in res.values())):
         raise SystemExit("a pair has no evaluated months")
+    return res
+
+
+def main() -> None:
+    ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    ap.add_argument("--counts", type=Path, default=Path("counts"))
+    ap.add_argument("--sources", type=Path, default=Path("sources"))
+    ap.add_argument("--part4", type=Path, default=Path("../data-tests-limits"))
+    ap.add_argument("--out", type=Path, default=Path("results"))
+    a = ap.parse_args()
+
+    ops = read_csv(a.sources / "citibike_operator_reports.csv")
+    chi = {r["month"]: int(r["trips"]) for r in read_csv(a.sources / "chicago_trips.csv")}
+    outside = {
+        "citibike / operator reports": outside_from(ops),
+        "citibike / DOT table": outside_from(read_csv(a.sources / "citibike_dot.csv")),
+        "chicago / vehicles": outside_from(read_csv(a.sources / "chicago_vehicles.csv")),
+        "chicago / drivers": outside_from(read_csv(a.sources / "chicago_drivers.csv")),
+    }
+    failed = [r["month"] for r in ops if not r.get("trips")]
+    tlc = {name: (d, o, TLC_FIRST_EVAL) for name, (d, o) in tlc_pairs(a.part4).items()}
+
+    def pairs_with(cb: dict[str, int]) -> dict:
+        return {
+            "citibike / operator reports": (cb, outside["citibike / operator reports"], None),
+            "citibike / DOT table": (cb, outside["citibike / DOT table"], None),
+            "chicago / vehicles": (chi, outside["chicago / vehicles"], None),
+            "chicago / drivers": (chi, outside["chicago / drivers"], None),
+            **tlc,
+        }
+
+    title = "Does the agreement of two counts on clean months predict the smallest random loss they can catch?"
+    reports = f"Operator reports without a usable total (left out): {len(failed)} {' '.join(failed)}"
+
+    # As registered: the counts written by the registered run (counts/citibike), with the rule of PLAN.md.
+    if (a.counts / "citibike").exists():
+        cb, cb_info = citibike_delivered(a.counts)
+        head = [
+            title,
+            "As registered (PLAN.md).",
+            "",
+            f"Citi Bike rows whose start time has no recognisable date (left out): {cb_info['unparsed']:,}",
+            reports,
+            "",
+        ]
+        run(pairs_with(cb), a.out, head)
+        (a.out / "citibike_keys_used.json").write_text(json.dumps(cb_info, indent=1), encoding="utf-8")
+
+    # Post hoc: every CSV recorded (counts/citibike_files); the registered rule recomputed as a check, and the
+    # corrected rule of feed/layout.py.
+    if (a.counts / "citibike_files").exists():
+        reg, cor, notes = citibike_by_rule(a.counts)
+        frozen = citibike_delivered(a.counts)[0] if (a.counts / "citibike").exists() else {}
+        mismatch = sorted(m for m in set(reg) | set(frozen) if reg.get(m) != frozen.get(m))
+        head = [
+            title,
+            "Post hoc, after the registered run: Citi Bike months built with the corrected rule",
+            "(feed/layout.py, PLAN.md 'After the registered run'). Everything else as registered.",
+            "",
+            f"Registered rule recomputed from every recorded CSV: {len(mismatch)} months differ from the "
+            f"registered counts{(' (' + ' '.join(mismatch) + ')') if mismatch else ''}",
+            reports,
+            "",
+        ]
+        run(pairs_with(cor), a.out / "corrected", head)
+        (a.out / "corrected" / "layout.txt").write_text("\n".join(notes) + "\n", encoding="utf-8")
 
 
 if __name__ == "__main__":
