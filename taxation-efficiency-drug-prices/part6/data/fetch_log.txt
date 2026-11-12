@@ -1,13 +1,13 @@
 [ecb_fx] wrote ecb_fx.csv.gz: 55 rows, columns ['currency', 'time_period', 'obs_value']
-== ecb done in 1 s
+== ecb done in 2 s
 [efpia_2026] wrote efpia_2026.txt.gz: 99972 characters
-== efpia done in 3 s
+== efpia done in 2 s
 [worldbank] wrote worldbank.csv.gz: 7899 rows, columns ['indicator', 'iso3', 'country', 'year', 'value']
 == worldbank done in 1 s
 [eurostat_gbard_health] wrote eurostat_gbard_health.csv.gz: 6907 rows, columns ['freq', 'nabs07', 'unit', 'geo', 'time', 'value']
 [eurostat_berd_pharma] wrote eurostat_berd_pharma.csv.gz: 4768 rows, columns ['freq', 'nace_r2', 'unit', 'geo', 'time', 'value']
 [eurostat_gdp] wrote eurostat_gdp.csv.gz: 504 rows, columns ['freq', 'unit', 'na_item', 'geo', 'time', 'value']
-== eurostat done in 3 s
+== eurostat done in 2 s
 [oecd] DSD_RDS_GOV@DF_GBARD_NABS07: dimensions ['REF_AREA', 'FREQ', 'MEASURE', 'SEO', 'FUNDMODE', 'TRANSCOORD', 'UNIT_MEASURE', 'PRICE_BASE']; key .A..NABS07+_T....
 [oecd_gbard] wrote oecd_gbard.csv.gz: 2598 rows, columns ['REF_AREA', 'Reference area', 'MEASURE', 'SEO', 'FUNDMODE', 'TRANSCOORD', 'UNIT_MEASURE', 'Unit of measure', 'PRICE_BASE', 'TIME_PERIOD', 'OBS_VALUE', 'UNIT_MULT']
 [oecd] DSD_RDS_GERD@DF_GERD_FORD: SECT_PERF codes ['_T', 'BES', 'ROW_BES', 'GOV', 'GOV_GUF', 'GOV_DIR', 'HES', 'HES_PNP']
@@ -18,7 +18,7 @@
 [oecd] MSTI flow: ('OECD.STI.STP', 'DSD_MSTI@DF_MSTI', '1.3')
 [oecd] DSD_MSTI@DF_MSTI: dimensions ['REF_AREA', 'FREQ', 'MEASURE', 'UNIT_MEASURE', 'PRICE_BASE', 'TRANSFORMATION']; key ..B_DRUG+B+GDP...
 [oecd_msti] wrote oecd_msti.csv.gz: 4838 rows, columns ['REF_AREA', 'Reference area', 'MEASURE', 'Measure', 'UNIT_MEASURE', 'Unit of measure', 'PRICE_BASE', 'TIME_PERIOD', 'OBS_VALUE', 'UNIT_MULT']
-== oecd done in 7 s
+== oecd done in 4 s
 [sec] Pfizer FY2015 10-K: revenue 48851000000.0 USD, US 21704000000.0 (country:US), R&D 7690000000.0
 [sec] Pfizer FY2016 10-K: revenue 52824000000.0 USD, US 26369000000.0 (country:US), R&D 7872000000.0
 [sec] Pfizer FY2017 10-K: revenue 52546000000.0 USD, US 26026000000.0 (country:US), R&D 7657000000.0
@@ -251,8 +251,8 @@
 [sec] Takeda FY2024 20-F: revenue 4581551000000.0 JPY, US None (None), R&D 730227000000.0
 [sec] Takeda FY2025: no US revenue; revenue axes []
 [sec] Takeda FY2025 20-F: revenue 4505720000000.0 JPY, US None (None), R&D 675924000000.0
-[sec_panel] wrote sec_panel.csv.gz: 167 rows, columns ['company', 'hq', 'fiscal_year', 'period_end', 'form', 'revenue', 'revenue_concept', 'currency', 'rd', 'rd_concept', 'cost_of_sales', 'cost_of_sales_concept', 'net_income', 'net_income_concept', 'rd_ex_iprd', 'us_revenue', 'us_concept', 'us_member', 'us_concept_total', 'iprd', 'iprd_concept']
+[sec_panel] wrote sec_panel.csv.gz: 167 rows, columns ['company', 'hq', 'fiscal_year', 'period_end', 'form', 'revenue', 'revenue_concept', 'currency', 'rd', 'rd_concept', 'cost_of_sales', 'cost_of_sales_concept', 'net_income', 'net_income_concept', 'sga', 'rd_ex_iprd', 'us_revenue', 'us_concept', 'us_member', 'us_concept_total', 'iprd', 'iprd_concept']
 [sec_geography] wrote sec_geography.csv.gz: 735 rows, columns ['company', 'fiscal_year', 'concept', 'axis', 'member', 'value', 'concept_total', 'currency']
 [sec_filings] wrote sec_filings.csv.gz: 167 rows, columns ['company', 'fiscal_year', 'form', 'period_end', 'accession', 'instance']
-== sec done in 191 s
+== sec done in 139 s
 failed: []
