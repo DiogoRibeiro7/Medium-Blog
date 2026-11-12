@@ -8,7 +8,7 @@ Five follow-ups to the reanalysis of the "Where billionaires are common, poverty
 | 2 | Does billionaire density measure wealth concentration? Billionaire counts against WID top wealth shares, and citizenship against residence counts | Article drafted (manuscript #134) |
 | 3 | Within countries over time: when billionaire density rises, does poverty fall faster than the country's own trend? | Article drafted (manuscript #145) |
 | 4 | Are a country's year-to-year changes in billionaires mostly fortunes crossing the $1 billion line? Entries and exits by net worth, a crossing model, and what it means for the count as an indicator | Article drafted (manuscript #150) |
-| 5 | Are fortunes near $1 billion more volatile, and is that why they leave the list? Rounding, volatility estimated from rises, an age-adjusted floor of deaths and reassessments, and newcomers | Article drafted |
+| 5 | Are fortunes near $1 billion more volatile, and is that why they leave the list? Rounding, volatility estimated from rises, an age-adjusted floor of deaths and reassessments, and newcomers | Article drafted (manuscript #157) |
 
 ## Data
 
