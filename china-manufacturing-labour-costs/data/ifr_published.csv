@@ -1,0 +1,45 @@
+country,year,metric,value,source_id,note
+CHN,2013,robot_density,25,ifr_2018,"robots per 10,000 manufacturing employees"
+CHN,2015,robot_density,49,ifr_2021,
+CHN,2016,robot_density,68,ifr_2018,
+CHN,2020,robot_density,246,ifr_2021,
+CHN,2022,robot_density,402,ifr_2024,
+CHN,2023,robot_density,470,ifr_2024,
+CHN,2024,robot_density,567,wr_2025_foreword,"World Robotics 2025 foreword, before the employment revision"
+CHN,2024,robot_density_revised,166,ifr_2025_density,"same robots, NBS employment data updated by IFR"
+DEU,2016,robot_density,309,ifr_2018,
+DEU,2019,robot_density,346,ifr_2020,
+DEU,2020,robot_density,371,ifr_2021,
+DEU,2023,robot_density,429,ifr_2024,
+DEU,2024,robot_density,449,ifr_2025_density,
+JPN,2016,robot_density,303,ifr_2018,
+JPN,2019,robot_density,364,ifr_2020,
+JPN,2020,robot_density,390,ifr_2021,
+JPN,2023,robot_density,419,ifr_2024,
+JPN,2024,robot_density,446,ifr_2025_density,
+KOR,2016,robot_density,631,caixin_2018,"Caixin chart citing IFR"
+KOR,2019,robot_density,868,ifr_2020,
+KOR,2020,robot_density,932,ifr_2021,
+KOR,2023,robot_density,1012,ifr_2024,
+KOR,2024,robot_density,1220,ifr_2025_density,
+USA,2015,robot_density,176,ifr_2021,
+USA,2019,robot_density,228,ifr_2020,
+USA,2020,robot_density,255,ifr_2021,
+USA,2023,robot_density,295,ifr_2024,
+USA,2024,robot_density,307,ifr_2025_density,
+MEX,2024,robot_density,62,ifr_2025_density,
+WORLD,2015,robot_density,66,ifr_2018,global average
+WORLD,2016,robot_density,74,ifr_2018,global average
+WORLD,2019,robot_density,113,ifr_2020,global average
+WORLD,2020,robot_density,126,ifr_2021,global average
+WORLD,2023,robot_density,162,ifr_2024,global average
+WORLD,2024,robot_density,177,wr_2025_foreword,"global average, before the China employment revision"
+WORLD,2024,robot_density_revised,132,ifr_2025_density,"global average, after the China employment revision"
+CHN,2024,installations,295000,ifr_2025_installs,units installed in 2024
+WORLD,2024,installations,542076,ifr_2025_installs,units installed in 2024
+USA,2024,installations,34200,ifr_2025_installs,
+IND,2024,installations,9100,ifr_2025_installs,
+MEX,2024,installations,5600,ifr_2025_installs,
+CHN,2024,operational_stock,2027000,xinhua_2025,"Xinhua report on World Robotics 2025"
+CHN,2024,share_of_world_stock_pct,43.5,wr_2025_foreword,
+CHN,2024,domestic_supplier_share_pct,57,evertiq_2025,"share of robots installed in China made by Chinese suppliers"
