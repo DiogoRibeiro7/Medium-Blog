@@ -115,3 +115,5 @@ eu-us-productivity-gap/**/*.gz -filter -diff -merge binary
 china-manufacturing-labour-costs/**/*.csv -filter -diff -merge text
 china-manufacturing-labour-costs/**/*.gz -filter -diff -merge binary
 wealth-origin-sectors/**/*.csv -filter -diff -merge text
+minimum-wage-in-work-poverty/**/*.csv -filter -diff -merge text
+minimum-wage-in-work-poverty/**/*.gz -filter -diff -merge binary
