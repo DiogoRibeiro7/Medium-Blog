@@ -275,7 +275,7 @@ def estimators(panel: pd.DataFrame) -> dict[str, Any]:
     cov = mund.cov_params()
     se_b = float(np.sqrt(cov.loc["B", "B"] + cov.loc["B_m", "B_m"] + 2 * cov.loc["B", "B_m"]))
     out["between"] = {"coef": float(between), "ci95": [float(between - 1.96 * se_b), float(between + 1.96 * se_b)],
-                      "p_difference": float(mund.pvalues["B_m"])}
+                      "p_difference": float(mund.pvalues["B_m"]), "within_mundlak": float(mund.params["B"])}
     out["within"] = coef(cl("p_30 ~ B + G + C(spell) + C(year)", d), "B")
     out["within_gdp_coef"] = coef(cl("p_30 ~ B + G + C(spell) + C(year)", d), "G")
     out["within_no_gdp"] = coef(cl("p_30 ~ B + C(spell) + C(year)", d), "B")
