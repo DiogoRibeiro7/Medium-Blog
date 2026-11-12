@@ -25,11 +25,9 @@ import hashlib
 import io
 import json
 import sys
-import tempfile
 import time
 import urllib.error
 import urllib.request
-import zipfile
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -51,11 +49,6 @@ WDI_GDP = (
     "?format=json&per_page=20000&date=1990:2024"
 )
 WDI_COUNTRIES = "https://api.worldbank.org/v2/country?format=json&per_page=400"
-
-BILLIONAIRES = (
-    "https://raw.githubusercontent.com/corgis-edu/corgis/master/website/datasets/csv/"
-    "billionaires/billionaires.csv"
-)
 
 LOG: list[str] = []
 
@@ -89,28 +82,6 @@ def get(url: str, tries: int = 4) -> tuple[int, bytes]:
         except (urllib.error.URLError, TimeoutError, ConnectionError) as e:
             last = e
         time.sleep(5 * (attempt + 1))
-    log(url, f"failed: {last}")
-    raise RuntimeError(f"{url}: {last}")
-
-
-def stream_to_file(url: str, dest: Path, tries: int = 3) -> None:
-    """Download a large file to disk, logging its size and SHA-256."""
-    last: Exception | None = None
-    for attempt in range(tries):
-        try:
-            h = hashlib.sha256()
-            size = 0
-            req = urllib.request.Request(url, headers=UA)
-            with urllib.request.urlopen(req, timeout=600) as r, open(dest, "wb") as f:
-                while chunk := r.read(1 << 20):
-                    f.write(chunk)
-                    h.update(chunk)
-                    size += len(chunk)
-                log(url, r.status, size=size, sha=h.hexdigest())
-            return
-        except (urllib.error.URLError, TimeoutError, ConnectionError) as e:
-            last = e
-            time.sleep(10 * (attempt + 1))
     log(url, f"failed: {last}")
     raise RuntimeError(f"{url}: {last}")
 
