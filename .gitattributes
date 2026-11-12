@@ -105,3 +105,6 @@ backward-evaluation-guide/**/*.gz -filter -diff -merge binary
 data-tests-in-production/**/*.csv -filter -diff -merge text
 data-tests-in-production/**/*.gz -filter -diff -merge binary
 data-tests-in-production/**/*.json -filter -diff -merge text
+data-tests-limits/**/*.csv -filter -diff -merge
+data-tests-limits/**/*.gz -filter -diff -merge
+data-tests-limits/**/*.jsonl -filter -diff -merge

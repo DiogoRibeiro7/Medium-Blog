@@ -1,0 +1,85 @@
+name: Profile data-tests-limits
+
+# Part 4 of Code Quality for Data Work. Snapshots the sources (data dictionaries, the TLC monthly
+# report, the Parquet footers of every monthly file of the four TLC feeds) and commits them.
+# Until data-tests-limits/PLAN.md exists, only the dictionaries and the report's columns are
+# fetched: the plan is written before any row count or report value is seen.
+
+on:
+  push:
+    branches:
+      - data-tests-limits
+    paths:
+      - 'data-tests-limits/feed/**'
+      - 'data-tests-limits/PLAN.md'
+      - 'data-tests-limits/requirements.txt'
+      - '.github/workflows/data-tests-limits.yml'
+  pull_request:
+    paths:
+      - 'data-tests-limits/**'
+      - '.github/workflows/data-tests-limits.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: data-tests-limits-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: data-tests-limits
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: data-tests-limits/requirements.txt
+      - name: Install pinned dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Lint
+        run: ruff check . && ruff format --check .
+      - name: Unit tests
+        run: python -m pytest -q
+
+  sources:
+    needs: tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    defaults:
+      run:
+        working-directory: data-tests-limits
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: data-tests-limits/requirements.txt
+      - name: Install pinned dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Snapshot the sources
+        run: |
+          if [ -f PLAN.md ]; then
+            python -m feed.sources --out sources
+          else
+            echo "No PLAN.md yet: dictionaries and report columns only."
+            python -m feed.sources --out sources --metadata-only
+          fi
+      - name: Commit the sources (pushes to the branch)
+        if: github.event_name == 'push'
+        run: |
+          git config user.name "Diogo Ribeiro"
+          git config user.email "diogo_dj@hotmail.com"
+          git add sources
+          if git diff --cached --quiet; then
+            echo "Sources unchanged."
+          else
+            git commit -m "data-tests-limits: sources snapshot from the workflow ($(date -u +%Y-%m-%d))"
+            git push || (git pull --rebase --autostash && git push)
+          fi
