@@ -1,0 +1,5 @@
+# fetched 2026-11-12T11:04:13+00:00
+# name	status	bytes	sha256	url
+oecd_pdb	200	23732446	a0a15d0b448d5d7355318ea9d8b62732a71d86608945f4a20be41b8740cab51d	https://sdmx.oecd.org/public/rest/data/OECD.SDD.TPS,DSD_PDB@DF_PDB,/.A.GDP+GDPHRS+GDPPOP+GDPEMP+HRSAV+HRSPOP+HRSTO+EMP+POP+GVA+GVAHRS+LCTOT+MFPH+KSERHRS+MFP_PCCONLP+KSERHRS_PCCONLP._T......?startPeriod=1990&dimensionAtObservation=AllDimensions&format=csvfilewithlabels
+oecd_gni	200	3186032	2dca894faebc3ccc9fabc8d5ddb5729c6cc1ca70d79d6ed78ac137dc1a64e5b7	https://sdmx.oecd.org/public/rest/data/OECD.SDD.NAD,DSD_NAMAIN10@DF_TABLE2,/A..S1.S1.B5G+B5N+P51C+B1GQ....XDC.V..?startPeriod=1990&dimensionAtObservation=AllDimensions&format=csvfilewithlabels
+oecd_income	200	3239250	4b30e8f3703ba6df764d0f6ba52c74d82cddbf19d94d9269000f33602d757840	https://sdmx.oecd.org/public/rest/data/OECD.SDD.NAD,DSD_NAMAIN10@DF_TABLE1_INCOME,/A..S1.S1.D1+D2X3+B2A3G+B1GQ.._T+_Z..XDC.V..?startPeriod=1995&dimensionAtObservation=AllDimensions&format=csvfilewithlabels
