@@ -224,41 +224,75 @@ def fetch_bdpm(out: Path) -> None:
         save(df, out, name)
 
 
+def _follow_links(url: str, depth: int = 0) -> tuple[str, bytes]:
+    """Download url; if it is an HTML listing, follow the first data-file link it contains."""
+    import re
+    from urllib.parse import urljoin
+
+    raw = get(url, timeout=1800)
+    head = raw[:4000].lower()
+    is_html = b"<html" in head or b"<!doctype" in head or b"<a " in head
+    if not is_html or depth > 2:
+        return url, raw
+    text = raw.decode("latin-1", errors="replace")
+    log(f"[open_medic] {url} is an HTML page ({len(raw)} bytes); first 1500 chars:\n{text[:1500]}")
+    links = re.findall(r'href=["\']([^"\']+)["\']', text, flags=re.I)
+    links = [urljoin(url, h) for h in links]
+    log(f"[open_medic] links found: {links[:60]}")
+    data_links = [h for h in links if re.search(r"\.(zip|csv|gz|txt)(\?|$)", h, flags=re.I)
+                  or "download" in h.lower() and h != url]
+    data_links = [h for h in data_links if "2024" in h] or data_links
+    if not data_links:
+        raise RuntimeError(f"no data link on {url}")
+    return _follow_links(data_links[0], depth + 1)
+
+
+def _read_table(raw: bytes) -> pd.DataFrame:
+    if raw[:2] == b"PK":
+        zf = zipfile.ZipFile(io.BytesIO(raw))
+        log(f"[open_medic] zip members {zf.namelist()}")
+        member = [m for m in zf.namelist() if m.lower().endswith((".csv", ".txt"))][0]
+        raw = zf.read(member)
+    if raw[:2] == b"\x1f\x8b":
+        raw = gzip.decompress(raw)
+    head = raw[:3000].decode("latin-1")
+    log(f"[open_medic] table head:\n{head[:800]}")
+    sep = ";" if head.count(";") > head.count(",") else ","
+    return pd.read_csv(io.BytesIO(raw), sep=sep, dtype=str, encoding="latin-1")
+
+
 def fetch_open_medic(out: Path) -> None:
     meta = json.loads(get(URLS["open_medic_dataset"]))
     res = meta.get("resources", [])
-    for r in res:
-        log(f"[open_medic] resource: {r.get('title')} | {r.get('format')} | {r.get('url')}")
-    cands = [r for r in res if "2024" in (r.get("title") or "") and "medic" in (r.get("title") or "").lower()
-             and "nb" not in (r.get("title") or "").lower()]
-    if not cands:
-        raise RuntimeError("no Open Medic 2024 resource found")
-    cands.sort(key=lambda r: (r.get("format") or "") != "zip")
-    url = cands[0]["url"]
-    log(f"[open_medic] using {cands[0].get('title')} -> {url}")
-    raw = get(url, timeout=1800)
-    log(f"[open_medic] downloaded {len(raw) / 1e6:.1f} MB")
-    if raw[:2] == b"PK":
-        zf = zipfile.ZipFile(io.BytesIO(raw))
-        member = [m for m in zf.namelist() if m.lower().endswith((".csv", ".txt"))][0]
-        log(f"[open_medic] member {member}")
-        data = zf.read(member)
-    else:
-        data = raw
-    if data[:2] == b"\x1f\x8b":
-        data = gzip.decompress(data)
-    head = data[:2000].decode("latin-1")
-    sep = ";" if head.count(";") > head.count(",") else ","
-    df = pd.read_csv(io.BytesIO(data), sep=sep, dtype=str, encoding="latin-1")
-    describe("open_medic_2024_raw", df)
-    cols = {c.upper(): c for c in df.columns}
-    cip = cols.get("CIP13")
-    keys = [cip] + [cols[k] for k in ("L_CIP13", "TOP_GEN", "GEN_NUM", "ATC5", "L_ATC5") if k in cols]
-    for k in ("BOITES", "REM", "BSE"):
-        df[cols[k]] = num(df[cols[k]])
-    agg = df.groupby(keys, dropna=False)[[cols["BOITES"], cols["REM"], cols["BSE"]]].sum().reset_index()
-    agg.columns = [c.lower() for c in agg.columns]
-    save(agg, out, "open_medic_2024")
+    by_title = {(r.get("title") or "").strip(): r.get("url") for r in res}
+    # Prefer the file already aggregated by CIP13 presentation; fall back on the complete base.
+    order = ["2024 CIP13", "Open Medic 2024"]
+    last_err = None
+    for title in order:
+        url = by_title.get(title)
+        if not url:
+            continue
+        try:
+            final_url, raw = _follow_links(url)
+            log(f"[open_medic] '{title}' -> {final_url}, {len(raw) / 1e6:.1f} MB")
+            df = _read_table(raw)
+            describe(f"open_medic_2024[{title}]", df)
+            cols = {c.upper().strip(): c for c in df.columns}
+            need = [k for k in ("BOITES", "REM", "BSE") if k in cols]
+            cip = cols.get("CIP13")
+            if cip is None or "BOITES" not in need:
+                raise RuntimeError(f"unexpected columns {list(df.columns)}")
+            for k in need:
+                df[cols[k]] = num(df[cols[k]])
+            keys = [cip] + [cols[k] for k in ("L_CIP13", "TOP_GEN", "GEN_NUM", "ATC5", "L_ATC5") if k in cols]
+            agg = df.groupby(keys, dropna=False)[[cols[k] for k in need]].sum().reset_index()
+            agg.columns = [c.lower().strip() for c in agg.columns]
+            save(agg, out, "open_medic_2024")
+            return
+        except Exception as exc:  # noqa: BLE001
+            last_err = exc
+            log(f"[open_medic] '{title}' failed: {exc}")
+    raise RuntimeError(f"Open Medic 2024 not obtained: {last_err}")
 
 
 # ------------------------------------------------------------------------------------- exchange rate
