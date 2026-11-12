@@ -83,7 +83,10 @@ def describe(name: str, df: pd.DataFrame) -> None:
 
 def save(df: pd.DataFrame, out: Path, name: str) -> None:
     path = out / f"{name}.csv.gz"
-    with gzip.open(path, "wt", encoding="utf-8", newline="") as fh:
+    # mtime=0 keeps the gzip header free of a timestamp, so an unchanged table gives identical bytes and
+    # a refresh only commits what actually changed.
+    with open(path, "wb") as raw, gzip.GzipFile(filename="", mode="wb", fileobj=raw, mtime=0) as gz, \
+            io.TextIOWrapper(gz, encoding="utf-8", newline="") as fh:
         df.to_csv(fh, index=False)
     log(f"[{name}] wrote {path.name}: {len(df)} rows, {path.stat().st_size / 1e6:.2f} MB")
 
