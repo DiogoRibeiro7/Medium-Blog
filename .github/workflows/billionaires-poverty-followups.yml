@@ -35,3 +35,6 @@ jobs:
       - name: Reproduce every number in Part 2
         working-directory: billionaires-poverty-followups
         run: python part2_wealth_shares.py --check --figures figures/check2 | tee -a "$GITHUB_STEP_SUMMARY"
+      - name: Reproduce every number in Part 3
+        working-directory: billionaires-poverty-followups
+        run: python part3_within_country.py --check --figures figures/check3 | tee -a "$GITHUB_STEP_SUMMARY"

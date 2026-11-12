@@ -1,0 +1,57 @@
+name: Reproduce china-manufacturing-labour-costs
+
+on:
+  pull_request:
+    paths:
+      - 'china-manufacturing-labour-costs/**'
+      - '.github/workflows/china-manufacturing-labour-costs.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'china-manufacturing-labour-costs/**'
+      - '.github/workflows/china-manufacturing-labour-costs.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: china-manufacturing-labour-costs
+    env:
+      MPLBACKEND: Agg
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: china-manufacturing-labour-costs/requirements.txt
+
+      - name: Install pinned dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Run the tests
+        run: python -m pytest -q tests
+
+      - name: Rerun the analysis
+        run: python analysis.py > /dev/null
+
+      - name: Check the numbers match the committed run
+        run: git diff --exit-code -- results/analysis_summary.txt
+
+      - name: Draw the figures
+        run: |
+          python figures.py
+          for f in fig1_manufacturing_ladder_2022 fig2_china_relative_pay fig3_china_jobs_and_world_share \
+                   fig4_labour_share fig5_robot_density; do
+            test -s "figures/$f.png"
+          done

@@ -1,0 +1,155 @@
+Part 4 of Code Quality for Data Work: what a delivery cannot vouch for. Settings: PLAN.md.
+
+E1. Rules written from the dictionaries of 18 March 2025, on every delivery
+
+yellow: 93 deliveries, 2019-01 to 2026-09, 7 rules x 2 variants
+  strict: fire on every delivery 5 of 7 (71%); never fire 0
+    schema (strict)              fired on 100.0% of deliveries
+    not null (strict)            fired on 100.0% of deliveries
+    ranges (strict)              fired on 100.0% of deliveries
+    code lists (strict)          fired on  44.1% of deliveries
+    month window (strict)        fired on 100.0% of deliveries
+    unique rows (strict)         fired on  16.1% of deliveries
+    reconciliation (strict)      fired on 100.0% of deliveries
+  tolerant: fire on every delivery 1 of 7 (14%); never fire 3
+    schema (tolerant)            fired on  52.7% of deliveries
+    not null (tolerant)          fired on 100.0% of deliveries
+    ranges (tolerant)            fired on  33.3% of deliveries
+    code lists (tolerant)        fired on   0.0% of deliveries
+    month window (tolerant)      fired on   0.0% of deliveries
+    unique rows (tolerant)       fired on   0.0% of deliveries
+    reconciliation (tolerant)    fired on  98.9% of deliveries
+  alarms per delivery (both variants): mean 8.45; after the dictionary (18 deliveries) 7.67
+  Spearman rho, months from 2025-03 vs alarms: +0.640 (one-sided permutation p 0.0001)
+
+fhv: 92 deliveries, 2019-01 to 2026-08, 6 rules x 2 variants
+  strict: fire on every delivery 2 of 6 (33%); never fire 0
+    schema (strict)              fired on  53.3% of deliveries
+    not null (strict)            fired on 100.0% of deliveries
+    ranges (strict)              fired on   9.8% of deliveries
+    code lists (strict)          fired on   2.2% of deliveries
+    month window (strict)        fired on   3.3% of deliveries
+    unique rows (strict)         fired on 100.0% of deliveries
+  tolerant: fire on every delivery 0 of 6 (0%); never fire 3
+    schema (tolerant)            fired on  53.3% of deliveries
+    not null (tolerant)          fired on  85.9% of deliveries
+    ranges (tolerant)            fired on   0.0% of deliveries
+    code lists (tolerant)        fired on   1.1% of deliveries
+    month window (tolerant)      fired on   0.0% of deliveries
+    unique rows (tolerant)       fired on   0.0% of deliveries
+  alarms per delivery (both variants): mean 4.09; after the dictionary (17 deliveries) 3.06
+  Spearman rho, months from 2025-03 vs alarms: +0.789 (one-sided permutation p 0.0001)
+
+fhvhv: 92 deliveries, 2019-02 to 2026-09, 6 rules x 2 variants
+  strict: fire on every delivery 2 of 6 (33%); never fire 1
+    schema (strict)              fired on   7.6% of deliveries
+    not null (strict)            fired on 100.0% of deliveries
+    ranges (strict)              fired on 100.0% of deliveries
+    code lists (strict)          fired on  97.8% of deliveries
+    month window (strict)        fired on   0.0% of deliveries
+    unique rows (strict)         fired on  23.9% of deliveries
+  tolerant: fire on every delivery 1 of 6 (17%); never fire 2
+    schema (tolerant)            fired on   7.6% of deliveries
+    not null (tolerant)          fired on 100.0% of deliveries
+    ranges (tolerant)            fired on  47.8% of deliveries
+    code lists (tolerant)        fired on  67.4% of deliveries
+    month window (tolerant)      fired on   0.0% of deliveries
+    unique rows (tolerant)       fired on   0.0% of deliveries
+  alarms per delivery (both variants): mean 5.52; after the dictionary (18 deliveries) 5.61
+  Spearman rho, months from 2025-03 vs alarms: +0.414 (one-sided permutation p 0.0001)
+
+H1a (more than half of the strict rules fire on every delivery, in each of the three feeds): not supported (yellow 71%, fhv 33%, fhvhv 33%)
+H1b (alarms grow with distance from the dictionary date, rho > 0 at p < 0.05 in at least two feeds): supported
+
+E2. Random losses of rows: the delivery's own history against a count from outside it
+
+yellow: deliveries evaluated {'volume': 65, 'seasonal': 65, 'outside count': 65, 'outside count, fixed 1%': 65}
+  file rows / report count - 1: median +0.6117%, 5th-95th percentile -0.0146% to +3.3996%, max |.| 12.0500%
+  volume                     clean alarms at the fixed line   0.0%; matched threshold 2.50
+  seasonal                   clean alarms at the fixed line   0.0%; matched threshold 2.56
+  outside count              clean alarms at the fixed line   4.6%; matched threshold 3.48
+  outside count, fixed 1%    clean alarms at the fixed line  43.1%; matched threshold 3.87
+  loss   1%, matched budget: volume 2%; seasonal 0%; outside count 5%; outside count, fixed 1% 0%
+  loss   2%, matched budget: volume 2%; seasonal 2%; outside count 60%; outside count, fixed 1% 0%
+  loss   5%, matched budget: volume 3%; seasonal 5%; outside count 92%; outside count, fixed 1% 75%
+  loss  10%, matched budget: volume 8%; seasonal 15%; outside count 95%; outside count, fixed 1% 95%
+  loss  15%, matched budget: volume 23%; seasonal 37%; outside count 95%; outside count, fixed 1% 95%
+  loss  20%, matched budget: volume 38%; seasonal 49%; outside count 95%; outside count, fixed 1% 95%
+
+green: deliveries evaluated {'volume': 65, 'seasonal': 65, 'outside count': 65, 'outside count, fixed 1%': 65}
+  file rows / report count - 1: median +0.0087%, 5th-95th percentile -0.0788% to +1.0325%, max |.| 4.7017%
+  volume                     clean alarms at the fixed line   4.6%; matched threshold 4.88
+  seasonal                   clean alarms at the fixed line   1.5%; matched threshold 4.14
+  outside count              clean alarms at the fixed line   3.1%; matched threshold 2.21
+  outside count, fixed 1%    clean alarms at the fixed line   9.2%; matched threshold 1.15
+  loss   1%, matched budget: volume 3%; seasonal 2%; outside count 14%; outside count, fixed 1% 0%
+  loss   2%, matched budget: volume 5%; seasonal 3%; outside count 89%; outside count, fixed 1% 89%
+  loss   5%, matched budget: volume 5%; seasonal 3%; outside count 95%; outside count, fixed 1% 95%
+  loss  10%, matched budget: volume 5%; seasonal 9%; outside count 95%; outside count, fixed 1% 95%
+  loss  15%, matched budget: volume 15%; seasonal 23%; outside count 95%; outside count, fixed 1% 95%
+  loss  20%, matched budget: volume 28%; seasonal 35%; outside count 95%; outside count, fixed 1% 95%
+
+fhv: deliveries evaluated {'volume': 64, 'seasonal': 64, 'outside count': 64, 'outside count, fixed 1%': 64}
+  file rows / report count - 1: median -12.8013%, 5th-95th percentile -24.2534% to +2.0718%, max |.| 31.9638%
+  volume                     clean alarms at the fixed line   1.6%; matched threshold 2.72
+  seasonal                   clean alarms at the fixed line   0.0%; matched threshold 2.33
+  outside count              clean alarms at the fixed line   3.1%; matched threshold 4.29
+  outside count, fixed 1%    clean alarms at the fixed line  93.8%; matched threshold 27.97
+  loss   1%, matched budget: volume 0%; seasonal 0%; outside count 8%; outside count, fixed 1% 3%
+  loss   2%, matched budget: volume 2%; seasonal 0%; outside count 16%; outside count, fixed 1% 5%
+  loss   5%, matched budget: volume 8%; seasonal 0%; outside count 22%; outside count, fixed 1% 9%
+  loss  10%, matched budget: volume 19%; seasonal 8%; outside count 31%; outside count, fixed 1% 25%
+  loss  15%, matched budget: volume 30%; seasonal 16%; outside count 48%; outside count, fixed 1% 53%
+  loss  20%, matched budget: volume 42%; seasonal 31%; outside count 59%; outside count, fixed 1% 77%
+
+fhvhv: deliveries evaluated {'volume': 65, 'seasonal': 65, 'outside count': 64, 'outside count, fixed 1%': 64}
+  file rows / report count - 1: median +0.0002%, 5th-95th percentile -0.0043% to +0.0148%, max |.| 2.1510%
+  volume                     clean alarms at the fixed line   0.0%; matched threshold 2.49
+  seasonal                   clean alarms at the fixed line   0.0%; matched threshold 2.48
+  outside count              clean alarms at the fixed line   0.0%; matched threshold 0.04
+  outside count, fixed 1%    clean alarms at the fixed line   1.6%; matched threshold 0.02
+  loss   1%, matched budget: volume 0%; seasonal 2%; outside count 95%; outside count, fixed 1% 95%
+  loss   2%, matched budget: volume 0%; seasonal 2%; outside count 95%; outside count, fixed 1% 95%
+  loss   5%, matched budget: volume 0%; seasonal 14%; outside count 95%; outside count, fixed 1% 95%
+  loss  10%, matched budget: volume 23%; seasonal 49%; outside count 95%; outside count, fixed 1% 95%
+  loss  15%, matched budget: volume 48%; seasonal 69%; outside count 95%; outside count, fixed 1% 95%
+  loss  20%, matched budget: volume 71%; seasonal 74%; outside count 95%; outside count, fixed 1% 95%
+
+H2a (best delivery-only detector catches under 82% of 5%, 10% and 20% losses at the matched budget, every feed): supported
+    yellow 5%: best delivery-only 5%
+    yellow 10%: best delivery-only 15%
+    yellow 20%: best delivery-only 49%
+    green 5%: best delivery-only 5%
+    green 10%: best delivery-only 9%
+    green 20%: best delivery-only 35%
+    fhv 5%: best delivery-only 8%
+    fhv 10%: best delivery-only 19%
+    fhv 20%: best delivery-only 42%
+    fhvhv 5%: best delivery-only 14%
+    fhvhv 10%: best delivery-only 49%
+    fhvhv 20%: best delivery-only 74%
+H2b (outside count at least as good at every loss, and at least 90% at 5%, every feed): not supported
+    yellow 1%: outside count 5% vs best delivery-only 2%
+    yellow 2%: outside count 60% vs best delivery-only 2%
+    yellow 5%: outside count 92% vs best delivery-only 5%
+    yellow 10%: outside count 95% vs best delivery-only 15%
+    yellow 15%: outside count 95% vs best delivery-only 37%
+    yellow 20%: outside count 95% vs best delivery-only 49%
+    green 1%: outside count 14% vs best delivery-only 3%
+    green 2%: outside count 89% vs best delivery-only 5%
+    green 5%: outside count 95% vs best delivery-only 5%
+    green 10%: outside count 95% vs best delivery-only 9%
+    green 15%: outside count 95% vs best delivery-only 23%
+    green 20%: outside count 95% vs best delivery-only 35%
+    fhv 1%: outside count 8% vs best delivery-only 0%
+    fhv 2%: outside count 16% vs best delivery-only 2%
+    fhv 5%: outside count 22% vs best delivery-only 8%
+    fhv 10%: outside count 31% vs best delivery-only 19%
+    fhv 15%: outside count 48% vs best delivery-only 30%
+    fhv 20%: outside count 59% vs best delivery-only 42%
+    fhvhv 1%: outside count 95% vs best delivery-only 2%
+    fhvhv 2%: outside count 95% vs best delivery-only 2%
+    fhvhv 5%: outside count 95% vs best delivery-only 14%
+    fhvhv 10%: outside count 95% vs best delivery-only 49%
+    fhvhv 15%: outside count 95% vs best delivery-only 69%
+    fhvhv 20%: outside count 95% vs best delivery-only 74%

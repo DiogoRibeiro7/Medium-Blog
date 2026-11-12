@@ -133,3 +133,37 @@ The new unit tests are offline and use only synthetic HTTP responses; they
 cannot authenticate the source. The capture workflow does **not** overwrite
 the pinned commuting dataset or its provenance. It is a first evidence-gathering
 step toward that separate reconciliation.
+
+
+## Offline integrity review of a captured workflow artifact
+
+After running the manual capture workflow, download its
+`ine-0012340-2021-unreconciled-source-capture` ZIP from GitHub Actions
+and extract it to a local directory. Review the captured evidence without
+reaching the network:
+
+```bash
+python ine_commuting_capture_review.py \
+  --capture-dir /path/to/extracted/ine-0012340 \
+  --output-json /tmp/ine-0012340-integrity-review.json
+```
+
+The reviewer checks that the declared response URLs still match the fixed
+INE endpoints, the raw JSON bytes match their original SHA-256 checksums,
+source sizes and structural descriptions are consistent, UTC capture
+metadata is present, the expected two entries are accounted for, and
+failed downloads are never mistaken for successful source files. It
+reports missing or tampered inputs rather than repairing them.
+
+The manual GitHub workflow also runs this review immediately after each
+capture attempt and includes `integrity_review.json` in its artifact.
+An incomplete capture retains explicit missing-source status. Automated
+unit tests use synthetic fixtures only; they never contact INE.
+
+**Integrity is not authenticity or statistical validity.** The report
+sets `source_semantics_verified=false`,
+`INE_publisher_authenticated_independently=false` and
+`frozen_pairs_reconciled=false`. Matching the frozen 136-pair commuting
+matrix remains a later step requiring official indicator metadata and
+a reviewed geographic-code mapping. The current pinned matrix must not
+be upgraded merely because this integrity review succeeds.

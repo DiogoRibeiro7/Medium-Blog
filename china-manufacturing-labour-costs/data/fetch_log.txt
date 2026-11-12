@@ -1,0 +1,5 @@
+# fetched 2026-11-12T11:39:10+00:00
+# name	status	bytes	sha256	url
+oecd_tim	200	49054731	e629bd772680ac2e80d850a2b9592d75e22fbdc6d66fd355193d759c1b22eeca	https://sdmx.oecd.org/public/rest/data/OECD.STI.PIE,DSD_TIM_2025@DF_TIM_2025,/EMPN+LABR+VALU_EMPN..C+C10T12+C13T15+C16+C17_18+C19+C20+C21+C22+C23+C24+C25+C26+C27+C28+C29+C30+C31T33+_T.W..A?dimensionAtObservation=AllDimensions&format=csvfilewithlabels
+oecd_tiva	200	3747003	ee265a57cf42612a8061788acbf4479031eb79b9a8e541b1ca76728f394c9e48	https://sdmx.oecd.org/sti-public/rest/data/OECD.STI.PIE,DSD_TIVA_MAINLV@DF_MAINLV,1.1/VALU..C+C13T15+C26+C29+_T.W.USD.A?dimensionAtObservation=AllDimensions&format=csvfilewithlabels
+oecd_fx	200	1342774	1f283b85b7995747b7f286ee884a243bce946d8aff5b678bf1699ac3125e2682	https://sdmx.oecd.org/public/rest/data/OECD.SDD.NAD,DSD_NAMAIN10@DF_TABLE4,/A.CHN+USA+MEX+IND+DEU+PRT+POL+ROU+BGR+HUN+CZE+ESP+ITA+FRA+JPN+KOR+IDN+TUR+BRA..........?startPeriod=1995&dimensionAtObservation=AllDimensions&format=csvfilewithlabels
