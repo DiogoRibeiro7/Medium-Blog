@@ -1,0 +1,49 @@
+k401ksubs: 9275 households, 2017 with one person
+k401ksubs, single-person households: n = 2017; nettfa mean 13.59, SD 47.59, min -143.5, max 1134.1; income mean 29.45, range 10.01-143.07
+OLS residuals: Koenker BP on all regressors LM 15.71 (p 3.43e-03); on income alone LM 8.07 (p 4.50e-03)
+Residual SD by income quintile (median income): 13.6: 17.16; 19.4: 13.25; 25.2: 27.33; 33.0: 60.94; 50.0: 70.37
+Power variance function fitted to log e^2: var proportional to inc^1.75
+OLS residuals outside the plotted range -200 to 330 (figure 5): 3; largest residual 1111
+FGLS power: log var = -1.366 + 1.754 log inc; FGLS exponential: log var on regressors, coefficients [ 1.9453  0.0539  0.0023 -0.0285  0.2196]
+-- OLS
+   const        -20.9850  SE classical 2.4720  HC3 3.5202
+   inc            0.7706  SE classical 0.0615  HC3 0.1004
+   (age-25)^2     0.0251  SE classical 0.0026  HC3 0.0044
+   male           2.4779  SE classical 2.0478  HC3 2.0652
+   e401k          6.8862  SE classical 2.1233  HC3 2.2923
+-- WLS, var proportional to income
+   const        -16.7025  SE classical 1.9580  HC3 2.2482
+   inc            0.7404  SE classical 0.0643  HC3 0.0752
+   (age-25)^2     0.0175  SE classical 0.0019  HC3 0.0026
+   male           1.8405  SE classical 1.5636  HC3 1.3132
+   e401k          5.1883  SE classical 1.7034  HC3 1.5743
+   weighted residuals: Koenker BP on income LM 2.85 (p 0.0916)
+-- FGLS, power in income
+   const        -13.9415  SE classical 1.6681  HC3 1.8104
+   inc            0.6920  SE classical 0.0657  HC3 0.0710
+   (age-25)^2     0.0135  SE classical 0.0015  HC3 0.0019
+   male           1.5997  SE classical 1.2645  HC3 1.0257
+   e401k          4.5600  SE classical 1.4279  HC3 1.2827
+   weighted residuals: Koenker BP on income LM 1.03 (p 0.3113)
+-- FGLS, exponential in all regressors
+   const         -9.2659  SE classical 1.4233  HC3 1.5496
+   inc            0.4435  SE classical 0.0567  HC3 0.0608
+   (age-25)^2     0.0149  SE classical 0.0025  HC3 0.0017
+   male           1.4297  SE classical 1.0101  HC3 0.8006
+   e401k          4.1709  SE classical 1.1955  HC3 1.1172
+   weighted residuals: Koenker BP on income LM 0.44 (p 0.5091)
+Pairs bootstrap (2,000 resamples): SD of each coefficient
+   OLS                                    const 3.4293; inc 0.1000; (age-25)^2 0.0041; male 2.0085; e401k 2.2522
+   WLS, var proportional to income        const 2.1958; inc 0.0741; (age-25)^2 0.0025; male 1.3022; e401k 1.5689
+   FGLS, power in income                  const 2.0175; inc 0.0714; (age-25)^2 0.0025; male 1.0546; e401k 1.3086
+   FGLS, exponential in all regressors    const 1.4389; inc 0.0567; (age-25)^2 0.0020; male 0.7850; e401k 1.2754
+   inc: bootstrap SD relative to OLS: OLS 1.000; WLS, var proportional to income 0.741; FGLS, power in income 0.714; FGLS, exponential in all regressors 0.567
+   e401k: bootstrap SD relative to OLS: OLS 1.000; WLS, var proportional to income 0.697; FGLS, power in income 0.581; FGLS, exponential in all regressors 0.566
+Standard error divided by the pairs-bootstrap SD (1 = agrees with the formula-free spread)
+   OLS                                    const classical 0.72, HC3 1.03; inc classical 0.61, HC3 1.00; (age-25)^2 classical 0.63, HC3 1.06; male classical 1.02, HC3 1.03; e401k classical 0.94, HC3 1.02
+   WLS, var proportional to income        const classical 0.89, HC3 1.02; inc classical 0.87, HC3 1.02; (age-25)^2 classical 0.77, HC3 1.03; male classical 1.20, HC3 1.01; e401k classical 1.09, HC3 1.00
+   FGLS, power in income                  const classical 0.83, HC3 0.90; inc classical 0.92, HC3 0.99; (age-25)^2 classical 0.62, HC3 0.77; male classical 1.20, HC3 0.97; e401k classical 1.09, HC3 0.98
+   FGLS, exponential in all regressors    const classical 0.99, HC3 1.08; inc classical 1.00, HC3 1.07; (age-25)^2 classical 1.29, HC3 0.87; male classical 1.29, HC3 1.02; e401k classical 0.94, HC3 0.88
+   WLS, var proportional to income: shift from OLS in OLS HC3 standard errors: const +1.22; inc -0.30; (age-25)^2 -1.74; male -0.31; e401k -0.74
+   FGLS, power in income: shift from OLS in OLS HC3 standard errors: const +2.00; inc -0.78; (age-25)^2 -2.66; male -0.43; e401k -1.01
+   FGLS, exponential in all regressors: shift from OLS in OLS HC3 standard errors: const +3.33; inc -3.26; (age-25)^2 -2.33; male -0.51; e401k -1.18

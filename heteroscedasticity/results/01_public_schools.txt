@@ -1,0 +1,34 @@
+PublicSchools: 51 rows, dropped for missing spending: Wisconsin; n = 50
+-- all states: n = 50; coefficients [  832.91 -1834.2   1587.04]; residual SD 56.68
+  largest leverages: Alaska 0.651; Washington DC 0.208; Mississippi 0.200 (mean leverage p/n = 0.060)
+  Koenker Breusch-Pagan LM 15.83 (p 0.0004); White LM 21.16 (p 0.0003)
+  const SE of Income^2    519.08 (x1.00 classical); z p-value 0.0022; SE of Income    828.99
+  HC0   SE of Income^2    829.99 (x1.60 classical); z p-value 0.0559; SE of Income   1243.04
+  HC1   SE of Income^2    856.07 (x1.65 classical); z p-value 0.0638; SE of Income   1282.10
+  HC2   SE of Income^2   1250.15 (x2.41 classical); z p-value 0.2043; SE of Income   1866.41
+  HC3   SE of Income^2   1995.24 (x3.84 classical); z p-value 0.4264; SE of Income   2975.41
+  HC4   SE of Income^2   5488.93 (x10.57 classical); z p-value 0.7725; SE of Income   8183.19
+  HC4m  SE of Income^2   2553.33 (x4.92 classical); z p-value 0.5342; SE of Income   3806.70
+  HC5   SE of Income^2   4926.38 (x9.49 classical); z p-value 0.7473; SE of Income   7345.54
+  wild bootstrap, restricted, rademacher (t with HC1, B = 9999): p 0.5106
+  wild bootstrap, restricted, mammen     (t with HC1, B = 9999): p 0.4513
+  wild bootstrap, restricted, webb       (t with HC1, B = 9999): p 0.5233
+  wild bootstrap, unrestricted, rademacher (t with HC1, B = 9999): p 0.4471
+-- without Alaska: n = 49; coefficients [-209.03 1000.53 -314.14]; residual SD 50.33
+  largest leverages: Washington DC 0.562; Mississippi 0.250; Wyoming 0.100 (mean leverage p/n = 0.061)
+  Koenker Breusch-Pagan LM 0.80 (p 0.6692); White LM 3.05 (p 0.5501)
+  const SE of Income^2    691.32 (x1.00 classical); z p-value 0.6495; SE of Income   1063.98
+  HC0   SE of Income^2    626.68 (x0.91 classical); z p-value 0.6162; SE of Income    936.92
+  HC1   SE of Income^2    646.80 (x0.94 classical); z p-value 0.6272; SE of Income    966.99
+  HC2   SE of Income^2    804.78 (x1.16 classical); z p-value 0.6963; SE of Income   1195.25
+  HC3   SE of Income^2   1103.03 (x1.60 classical); z p-value 0.7758; SE of Income   1630.15
+  HC4   SE of Income^2   2320.83 (x3.36 classical); z p-value 0.8923; SE of Income   3414.20
+  HC4m  SE of Income^2   1312.08 (x1.90 classical); z p-value 0.8108; SE of Income   1935.29
+  HC5   SE of Income^2   1705.87 (x2.47 classical); z p-value 0.8539; SE of Income   2512.28
+  wild bootstrap, restricted, rademacher (t with HC1, B = 9999): p 0.7344
+  wild bootstrap, restricted, mammen     (t with HC1, B = 9999): p 0.7194
+  wild bootstrap, restricted, webb       (t with HC1, B = 9999): p 0.7297
+  wild bootstrap, unrestricted, rademacher (t with HC1, B = 9999): p 0.6763
+Alaska: per-capita income 10,851 (rank 1 of 50), spending 821 (rank 1 of 50)
+Alaska: residual 109.73, leverage 0.651; its squared residual is 12040; HC3 inflates it by 1/(1-h)^2 = 8.20, HC4 by 67.25
+HC3 with Alaska's factor replaced by HC4's: SE of Income^2 5478.01, z p-value 0.7720 (HC3 0.4264, HC4 0.7725)

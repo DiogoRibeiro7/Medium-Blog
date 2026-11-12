@@ -1,0 +1,40 @@
+ames: 2930 sales, 2413 normal sales; 21 neighbourhood groups (110 sales pooled as Other); 34 coefficients; sale price median 159,000, range 35,000-755,000
+Whole sample, OLS residual SD by quintile of the fitted value: log scale 0.128, 0.094, 0.103, 0.103, 0.125; dollar scale 15,780, 14,372, 16,827, 22,446, 48,270
+Whole sample, log-scale residual SD by year built: before 1940 0.136 (n 410), 1940-1979 0.104 (n 1056), 1980 or later 0.108 (n 947)
+Whole sample, log-scale residuals: excess kurtosis 2.63; share of valuations exp(yhat) off by more than 20%: 0.073
+Variance model, log sigma^2 = g0 + g1 yhat + g2 yhat^2 + g3 (year built - 1970)/10 + g4 log h; median over splits: [ 1.55411e+02 -2.69850e+01  1.14200e+00 -8.10000e-02  4.51000e-01]; g4 positive in 100% of splits
+200 splits (fit 1206, calibrate 603, test 604); 90% intervals; means over splits:
+-- Dollars, constant: coverage 0.898; mean width 0.629 log points, 80,071 dollars; interval score 0.8258
+   coverage by predicted-price quintile 0.956, 0.986, 0.957, 0.907, 0.684; by year built before 1940 0.940, 1940-1979 0.946, 1980 or later 0.827; by sigma(x) quintile 0.994, 0.969, 0.907, 0.855, 0.775
+   mean width in dollars by predicted-price quintile 79,559, 80,114, 80,114, 80,114, 80,114
+   worst group coverage 0.684
+-- Log, normal theory: coverage 0.912; mean width 0.376 log points, 66,037 dollars; interval score 0.5048
+   coverage by predicted-price quintile 0.887, 0.947, 0.923, 0.934, 0.868; by year built before 1940 0.865, 1940-1979 0.927, 1980 or later 0.914; by sigma(x) quintile 0.979, 0.962, 0.911, 0.875, 0.837
+   mean width in dollars by predicted-price quintile 39,102, 50,790, 60,731, 74,398, 105,268
+   worst group coverage 0.837
+-- Log, conformal: coverage 0.899; mean width 0.361 log points, 63,285 dollars; interval score 0.5060
+   coverage by predicted-price quintile 0.867, 0.938, 0.915, 0.924, 0.853; by year built before 1940 0.846, 1940-1979 0.917, 1980 or later 0.903; by sigma(x) quintile 0.975, 0.953, 0.899, 0.860, 0.816
+   mean width in dollars by predicted-price quintile 37,439, 48,748, 58,287, 71,435, 100,635
+   worst group coverage 0.816
+-- Log, location-scale: coverage 0.890; mean width 0.345 log points, 61,783 dollars; interval score 0.4831
+   coverage by predicted-price quintile 0.865, 0.917, 0.886, 0.897, 0.887; by year built before 1940 0.880, 1940-1979 0.895, 1980 or later 0.889; by sigma(x) quintile 0.913, 0.903, 0.870, 0.862, 0.905
+   mean width in dollars by predicted-price quintile 38,492, 43,432, 50,239, 60,667, 116,294
+   worst group coverage 0.862
+-- Log, scaled conformal: coverage 0.900; mean width 0.356 log points, 63,767 dollars; interval score 0.4831
+   coverage by predicted-price quintile 0.877, 0.925, 0.895, 0.906, 0.898; by year built before 1940 0.892, 1940-1979 0.904, 1980 or later 0.899; by sigma(x) quintile 0.923, 0.911, 0.880, 0.875, 0.912
+   mean width in dollars by predicted-price quintile 39,724, 44,816, 51,840, 62,598, 120,080
+   worst group coverage 0.875
+-- Log, quantile reg.: coverage 0.872; mean width 0.348 log points, 61,704 dollars; interval score 0.5071
+   coverage by predicted-price quintile 0.837, 0.911, 0.884, 0.877, 0.854; by year built before 1940 0.870, 1940-1979 0.882, 1980 or later 0.863; by sigma(x) quintile 0.906, 0.891, 0.866, 0.857, 0.846
+   mean width in dollars by predicted-price quintile 37,802, 46,706, 53,456, 62,521, 108,307
+   worst group coverage 0.837
+-- Log, CQR: coverage 0.900; mean width 0.378 log points, 66,956 dollars; interval score 0.5039
+   coverage by predicted-price quintile 0.869, 0.931, 0.910, 0.907, 0.884; by year built before 1940 0.893, 1940-1979 0.907, 1980 or later 0.896; by sigma(x) quintile 0.935, 0.920, 0.894, 0.884, 0.870
+   mean width in dollars by predicted-price quintile 40,918, 50,739, 58,281, 68,441, 116,705
+   worst group coverage 0.869
+Interval score relative to log conformal: Dollars, constant 1.632; Log, normal theory 0.998; Log, conformal 1.000; Log, location-scale 0.955; Log, scaled conformal 0.955; Log, quantile reg. 1.002; Log, CQR 0.996
+Review budget: valuations off by more than 20%: 0.077 of test houses on average
+   review 5% of houses: share of off valuations caught: Chance 0.050; Leverage, sqrt(1 + h) 0.080; Variance model, sigma(x) 0.140; Quantile-regression width 0.134
+   review 10% of houses: share of off valuations caught: Chance 0.100; Leverage, sqrt(1 + h) 0.157; Variance model, sigma(x) 0.217; Quantile-regression width 0.229
+   review 20% of houses: share of off valuations caught: Chance 0.200; Leverage, sqrt(1 + h) 0.380; Variance model, sigma(x) 0.378; Quantile-regression width 0.389
+   review 30% of houses: share of off valuations caught: Chance 0.300; Leverage, sqrt(1 + h) 0.558; Variance model, sigma(x) 0.520; Quantile-regression width 0.529

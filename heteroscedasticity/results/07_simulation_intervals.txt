@@ -1,0 +1,57 @@
+90% prediction intervals, exact conditional coverage on known truth (300 replications per cell; fitting n, calibration n/2)
+-- A: constant variance, n 100
+   OLS normal theory    coverage 0.900; worst x-decile 0.900; width / oracle 1.020; by decile of x 0.900 0.900 0.900 0.900 0.901 0.901 0.901 0.901 0.901 0.900
+   Split conformal      coverage 0.902; worst x-decile 0.893; width / oracle 1.042; by decile of x 0.902 0.902 0.903 0.903 0.904 0.904 0.904 0.904 0.903 0.893
+   Location-scale       coverage 0.889; worst x-decile 0.864; width / oracle 1.009; by decile of x 0.889 0.892 0.893 0.894 0.894 0.893 0.892 0.890 0.885 0.864
+   Scaled conformal     coverage 0.903; worst x-decile 0.879; width / oracle 1.063; by decile of x 0.903 0.907 0.908 0.909 0.909 0.908 0.906 0.904 0.899 0.879
+   Quantile regression  coverage 0.883; worst x-decile 0.838; width / oracle 0.996; by decile of x 0.884 0.887 0.889 0.890 0.891 0.892 0.891 0.889 0.883 0.838
+   CQR                  coverage 0.900; worst x-decile 0.856; width / oracle 1.060; by decile of x 0.902 0.904 0.906 0.907 0.907 0.907 0.907 0.905 0.899 0.856
+-- A: constant variance, n 1000
+   OLS normal theory    coverage 0.900; worst x-decile 0.900; width / oracle 1.003; by decile of x 0.900 0.900 0.900 0.900 0.900 0.900 0.900 0.900 0.900 0.900
+   Split conformal      coverage 0.899; worst x-decile 0.898; width / oracle 1.001; by decile of x 0.899 0.899 0.899 0.899 0.899 0.899 0.899 0.899 0.899 0.898
+   Location-scale       coverage 0.899; worst x-decile 0.895; width / oracle 1.003; by decile of x 0.900 0.900 0.900 0.900 0.900 0.900 0.899 0.899 0.898 0.895
+   Scaled conformal     coverage 0.899; worst x-decile 0.895; width / oracle 1.003; by decile of x 0.900 0.900 0.900 0.900 0.900 0.900 0.899 0.899 0.898 0.895
+   Quantile regression  coverage 0.899; worst x-decile 0.893; width / oracle 1.001; by decile of x 0.899 0.899 0.899 0.899 0.899 0.899 0.899 0.899 0.898 0.893
+   CQR                  coverage 0.899; worst x-decile 0.894; width / oracle 1.003; by decile of x 0.899 0.900 0.900 0.900 0.900 0.900 0.900 0.900 0.899 0.894
+-- B: SD proportional to x, n 100
+   OLS normal theory    coverage 0.906; worst x-decile 0.596; width / oracle 1.139; by decile of x 1.000 0.999 0.995 0.987 0.974 0.952 0.916 0.864 0.778 0.596
+   Split conformal      coverage 0.900; worst x-decile 0.583; width / oracle 1.146; by decile of x 1.000 0.998 0.992 0.983 0.968 0.945 0.909 0.858 0.773 0.583
+   Location-scale       coverage 0.895; worst x-decile 0.868; width / oracle 1.011; by decile of x 0.899 0.903 0.904 0.902 0.901 0.898 0.895 0.891 0.884 0.868
+   Scaled conformal     coverage 0.903; worst x-decile 0.878; width / oracle 1.045; by decile of x 0.907 0.911 0.911 0.911 0.909 0.907 0.904 0.900 0.894 0.878
+   Quantile regression  coverage 0.883; worst x-decile 0.851; width / oracle 0.984; by decile of x 0.883 0.896 0.898 0.896 0.893 0.888 0.883 0.876 0.867 0.851
+   CQR                  coverage 0.902; worst x-decile 0.864; width / oracle 1.051; by decile of x 0.908 0.918 0.919 0.916 0.913 0.908 0.902 0.894 0.884 0.864
+-- B: SD proportional to x, n 1000
+   OLS normal theory    coverage 0.913; worst x-decile 0.602; width / oracle 1.146; by decile of x 1.000 1.000 0.998 0.991 0.980 0.960 0.927 0.876 0.792 0.602
+   Split conformal      coverage 0.901; worst x-decile 0.576; width / oracle 1.085; by decile of x 1.000 0.999 0.996 0.987 0.972 0.947 0.909 0.854 0.767 0.576
+   Location-scale       coverage 0.899; worst x-decile 0.897; width / oracle 1.001; by decile of x 0.899 0.900 0.900 0.900 0.900 0.900 0.899 0.899 0.899 0.897
+   Scaled conformal     coverage 0.900; worst x-decile 0.898; width / oracle 1.004; by decile of x 0.900 0.901 0.901 0.901 0.901 0.900 0.900 0.900 0.899 0.898
+   Quantile regression  coverage 0.898; worst x-decile 0.895; width / oracle 0.997; by decile of x 0.897 0.899 0.899 0.899 0.899 0.898 0.898 0.897 0.896 0.895
+   CQR                  coverage 0.901; worst x-decile 0.896; width / oracle 1.005; by decile of x 0.900 0.902 0.903 0.902 0.902 0.901 0.900 0.900 0.898 0.896
+-- C: SD proportional to x, t(4) errors, n 100
+   OLS normal theory    coverage 0.915; worst x-decile 0.671; width / oracle 1.238; by decile of x 0.996 0.991 0.983 0.973 0.962 0.945 0.921 0.886 0.827 0.671
+   Split conformal      coverage 0.902; worst x-decile 0.634; width / oracle 1.175; by decile of x 0.994 0.987 0.978 0.966 0.952 0.933 0.905 0.867 0.802 0.634
+   Location-scale       coverage 0.867; worst x-decile 0.837; width / oracle 0.913; by decile of x 0.872 0.876 0.876 0.875 0.873 0.871 0.867 0.863 0.856 0.837
+   Scaled conformal     coverage 0.900; worst x-decile 0.875; width / oracle 1.071; by decile of x 0.905 0.908 0.908 0.908 0.906 0.904 0.901 0.898 0.892 0.875
+   Quantile regression  coverage 0.886; worst x-decile 0.859; width / oracle 1.036; by decile of x 0.859 0.891 0.898 0.899 0.898 0.896 0.892 0.886 0.878 0.859
+   CQR                  coverage 0.901; worst x-decile 0.872; width / oracle 1.124; by decile of x 0.872 0.904 0.913 0.915 0.914 0.912 0.908 0.902 0.894 0.873
+-- C: SD proportional to x, t(4) errors, n 1000
+   OLS normal theory    coverage 0.927; worst x-decile 0.696; width / oracle 1.255; by decile of x 0.997 0.993 0.987 0.980 0.970 0.956 0.935 0.904 0.849 0.696
+   Split conformal      coverage 0.899; worst x-decile 0.626; width / oracle 1.059; by decile of x 0.995 0.988 0.978 0.966 0.951 0.930 0.901 0.860 0.793 0.626
+   Location-scale       coverage 0.868; worst x-decile 0.864; width / oracle 0.886; by decile of x 0.869 0.869 0.869 0.869 0.868 0.868 0.868 0.867 0.866 0.864
+   Scaled conformal     coverage 0.900; worst x-decile 0.896; width / oracle 1.003; by decile of x 0.901 0.901 0.901 0.900 0.900 0.900 0.899 0.899 0.898 0.896
+   Quantile regression  coverage 0.898; worst x-decile 0.895; width / oracle 1.001; by decile of x 0.895 0.899 0.900 0.900 0.900 0.899 0.899 0.898 0.897 0.895
+   CQR                  coverage 0.900; worst x-decile 0.896; width / oracle 1.010; by decile of x 0.896 0.901 0.902 0.902 0.902 0.901 0.901 0.900 0.899 0.897
+-- D: SD peaks at incomes near 40, n 100
+   OLS normal theory    coverage 0.907; worst x-decile 0.669; width / oracle 1.166; by decile of x 0.999 0.998 0.998 0.995 0.984 0.942 0.823 0.669 0.680 0.975
+   Split conformal      coverage 0.900; worst x-decile 0.664; width / oracle 1.171; by decile of x 0.996 0.996 0.994 0.990 0.976 0.930 0.813 0.664 0.673 0.965
+   Location-scale       coverage 0.858; worst x-decile 0.633; width / oracle 0.941; by decile of x 0.890 0.931 0.948 0.949 0.929 0.870 0.752 0.633 0.693 0.981
+   Scaled conformal     coverage 0.901; worst x-decile 0.712; width / oracle 1.124; by decile of x 0.929 0.960 0.973 0.973 0.961 0.920 0.823 0.712 0.765 0.990
+   Quantile regression  coverage 0.883; worst x-decile 0.724; width / oracle 1.115; by decile of x 0.832 0.913 0.947 0.956 0.946 0.905 0.817 0.724 0.798 0.992
+   CQR                  coverage 0.903; worst x-decile 0.758; width / oracle 1.214; by decile of x 0.859 0.929 0.959 0.968 0.961 0.928 0.848 0.758 0.825 0.995
+-- D: SD peaks at incomes near 40, n 1000
+   OLS normal theory    coverage 0.906; worst x-decile 0.664; width / oracle 1.138; by decile of x 0.999 0.999 0.999 0.996 0.987 0.945 0.822 0.664 0.675 0.978
+   Split conformal      coverage 0.900; worst x-decile 0.649; width / oracle 1.104; by decile of x 0.999 0.999 0.998 0.995 0.983 0.936 0.808 0.649 0.660 0.974
+   Location-scale       coverage 0.862; worst x-decile 0.626; width / oracle 0.914; by decile of x 0.913 0.945 0.957 0.955 0.934 0.872 0.749 0.626 0.687 0.987
+   Scaled conformal     coverage 0.901; worst x-decile 0.692; width / oracle 1.051; by decile of x 0.949 0.972 0.980 0.978 0.965 0.919 0.812 0.692 0.751 0.993
+   Quantile regression  coverage 0.898; worst x-decile 0.736; width / oracle 1.110; by decile of x 0.876 0.933 0.958 0.965 0.955 0.916 0.828 0.736 0.819 0.998
+   CQR                  coverage 0.901; worst x-decile 0.740; width / oracle 1.122; by decile of x 0.881 0.936 0.960 0.966 0.957 0.919 0.832 0.740 0.822 0.998
