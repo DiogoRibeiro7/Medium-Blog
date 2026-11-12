@@ -1,0 +1,38 @@
+Forbes totals {'2025': 3028, '2024': 2781, '2023': 2640, '2022': 2668, '2021': 2754, '2020': 2094, '2019': 2153, '2018': 2208, '2017': 2043, '2016': 1811, '2015': 1826, '2014': 1645, '2013': 1426, '2012': 1226, '2011': 1209, '2010': 1011}; partial earlier years {'2009': 738, '2008': 908, '2007': 761, '2006': 628, '2005': 530}; latest fetched 2025
+Panel: 767 surveys, 74 countries, 124 spells (96 with 2+), years [2010, 2024], by welfare {'consumption': 202, 'income': 565}, zero-billionaire obs 159, dropped (no GDP) ['TWN']
+SD total {'B': 0.586, 'G': 0.304, 'p_30': 35.042, 'M': 0.345}; within {'B': 0.161, 'G': 0.037, 'p_30': 5.421, 'M': 0.045}; within corr B,G 0.432
+Showcase: China 64->450 (max 626 in 2021); India 49->205 (max 205 in 2025); Russia 62->139 (max 139 in 2025); Brazil 18->55 (max 69 in 2024); United States 403->902 (max 902 in 2025); Germany 53->171 (max 171 in 2025)
+Annual (1326 country-years, 83 countries): levels B~G +0.95 [0.19, 1.70] p 0.014; PLR −0.01 [−0.16, 0.14] p 0.917; dB~dG +0.44 [0.11, 0.77] p 0.009; lag +0.23 [−0.31, 0.76] p 0.410; lead −0.02 [−0.32, 0.28] p 0.898; dG~dB lag −0.0000 [−0.0055, 0.0055] p 0.996; dB~dB lag −0.22 [−0.32, −0.11] p 0.000; R2 year 0.065 +growth+price 0.067; SD dB 0.158; share falling 0.510
+  pooled_raw: −43.30 [−50.36, −36.23] p 0.000 n 767
+  pooled_gdp: −7.99 [−18.24, 2.25] p 0.126 n 767
+  pooled_gdp_year: −8.43 [−18.82, 1.95] p 0.112 n 767
+  between: −10.06 [−22.12, 2.00] (p difference from within 0.063)
+  within: +2.76 [−2.25, 7.76] p 0.280 n 767
+  within_gdp_coef: −98.81 [−153.50, −44.11] p 0.000 n 767
+  within_no_gdp: +1.44 [−3.96, 6.83] p 0.602 n 767
+  within_gni: +1.49 [−3.85, 6.83] p 0.584 n 712 n_countries 71
+  within_hhc: +2.70 [−2.72, 8.12] p 0.329 n 745 n_countries 70
+  within_plr: +2.68 [−1.59, 6.94] p 0.218 n 764 n_countries 73
+  within_mean: +1.62 [−1.77, 5.01] p 0.348 n 767
+  within_positive_only: +0.59 [−6.06, 7.23] p 0.863 n 608 n_countries 65
+  own_trends: +1.07 [−2.48, 4.62] p 0.555 n 711 n_countries 60 n_spells 82
+  within_fractional: AME +0.90 [−1.87, 3.67] p 0.524
+Long differences: n 69 countries 63 median gap 10.0 corr dB,dG 0.149 share dB>0 0.797
+  dp_raw: +0.263 [−7.712, 8.239] p 0.948
+  dp: +2.880 [−5.897, 11.657] p 0.520
+  dp_dG: −73.088 [−123.452, −22.725] p 0.004
+  dM: −0.012 [−0.067, 0.042] p 0.656
+  dgini: −0.004 [−0.031, 0.023] p 0.789
+  dp8: +0.416 [−4.603, 5.436] p 0.871
+Level/spread pooled_mean: +0.0473 [−0.0285, 0.1230] p 0.221
+Level/spread within_mean: −0.0098 [−0.0347, 0.0151] p 0.441
+Level/spread within_mean_no_gdp: +0.0030 [−0.0375, 0.0435] p 0.884
+Level/spread within_gini: −0.0022 [−0.0128, 0.0083] p 0.680
+Level/spread pooled_gini: +0.0134 [−0.0179, 0.0446] p 0.402
+Level/spread mundlak_mean: {'within': -0.0081, 'between': 0.0554, 'p_difference': 0.1788}
+By line (within): $2 −0.10 p 0.75; $3 −0.10 p 0.87; $4.2 −0.29 p 0.72; $5 −0.57 p 0.53; $6 −0.68 p 0.49; $8.3 −0.20 p 0.87; $10 +0.53 p 0.69; $12 +1.13 p 0.39; $15 +1.92 p 0.12; $17.5 +2.49 p 0.09; $20 +2.92 p 0.13; $25 +3.31 p 0.19; $30 +2.76 p 0.28; $35 +2.11 p 0.38; $40 +1.33 p 0.56; $50 +0.07 p 0.97; $60 −0.68 p 0.69; $70 −0.77 p 0.56; $85 −0.61 p 0.49; $100 −0.37 p 0.54
+Timing levels (common 542, 72 countries, [2013, 2022]): k-3 +6.13 [1.64, 10.61] p 0.007 | same-year GDP +7.69 p 0.002; k-2 +5.22 [0.72, 9.73] p 0.023 | same-year GDP +6.26 p 0.007; k-1 +4.78 [−1.19, 10.74] p 0.116 | same-year GDP +5.19 p 0.085; k+0 +2.61 [−4.19, 9.40] p 0.452 | same-year GDP +2.61 p 0.452; k+1 +0.76 [−8.11, 9.63] p 0.867 | same-year GDP −0.36 p 0.940; k+2 −3.51 [−10.31, 3.28] p 0.311 | same-year GDP −5.37 p 0.184; k+3 −5.07 [−10.62, 0.48] p 0.073 | same-year GDP −7.39 p 0.044
+  around (B t+3 - B t-3): −5.06 [−8.31, −1.82] p 0.002
+Timing changes (643 pairs, 65 countries, median gap 1.0): same +0.11 [−1.45, 1.67] p 0.891; before −0.16 [−1.41, 1.10] p 0.807; after (dB_after on dp) +0.0021 [−0.0023, 0.0065] p 0.353
+LOCO within RMSE: GDP 4.045; GDP+B 4.051
+WID observed (240 country-years, 37 countries, [2010, 2022]): t1 across +2.99 [−3.73, 9.71] p 0.384 within −1.60 [−6.72, 3.53] p 0.541; t10 across +3.78 [−4.22, 11.79] p 0.355 within −1.10 [−6.25, 4.05] p 0.677; t001 across +3.83 [0.78, 6.87] p 0.014 within +0.44 [−3.44, 4.33] p 0.823
