@@ -1,0 +1,75 @@
+{
+  "retrieved_utc": "2026-11-12T10:23:47+00:00",
+  "first": 1995,
+  "last": 2025,
+  "pages": [
+    {
+      "indicator": "NY.GDP.PCAP.PP.KD",
+      "page": 1,
+      "url": "https://api.worldbank.org/v2/country/all/indicator/NY.GDP.PCAP.PP.KD?format=json&per_page=20000&date=1995:2025&page=1",
+      "bytes": 2049047,
+      "sha256": "2c7b047b92ab4d292c98cfbe7cc3d49eaf8fc3534d886b21bf681ec01bdf5cb5",
+      "rows": 7411
+    },
+    {
+      "indicator": "NY.GNP.PCAP.PP.KD",
+      "page": 1,
+      "url": "https://api.worldbank.org/v2/country/all/indicator/NY.GNP.PCAP.PP.KD?format=json&per_page=20000&date=1995:2025&page=1",
+      "bytes": 2018204,
+      "sha256": "437765281a3bab32cd89916dafbb02aba401ed6c3954c7600e7c6da23178b17c",
+      "rows": 4872
+    },
+    {
+      "indicator": "NE.CON.PRVT.PP.KD",
+      "page": 1,
+      "url": "https://api.worldbank.org/v2/country/all/indicator/NE.CON.PRVT.PP.KD?format=json&per_page=20000&date=1995:2025&page=1",
+      "bytes": 2334746,
+      "sha256": "954fffff9555d83bf8b2da7e856faa244259c13dfa431f8bb7246345629fbb9f",
+      "rows": 5764
+    },
+    {
+      "indicator": "SP.POP.TOTL",
+      "page": 1,
+      "url": "https://api.worldbank.org/v2/country/all/indicator/SP.POP.TOTL?format=json&per_page=20000&date=1995:2025&page=1",
+      "bytes": 1658382,
+      "sha256": "61d3495f71bad62aa65dd8b8a2ac006b2078737639a8bee49f172ff2bdd4c818",
+      "rows": 8091
+    },
+    {
+      "indicator": "PA.NUS.PPP",
+      "page": 1,
+      "url": "https://api.worldbank.org/v2/country/all/indicator/PA.NUS.PPP?format=json&per_page=20000&date=1995:2025&page=1",
+      "bytes": 1975342,
+      "sha256": "02cc0d1f9806fc523e927b64332c1fba1da44bc261214f7e08900ae7b6106379",
+      "rows": 6109
+    },
+    {
+      "indicator": "PA.NUS.FCRF",
+      "page": 1,
+      "url": "https://api.worldbank.org/v2/country/all/indicator/PA.NUS.FCRF?format=json&per_page=20000&date=1995:2025&page=1",
+      "bytes": 1973199,
+      "sha256": "ced51dc6ef75359d4625faef9ad0dbaa0f42564f54ddc4876499063e0e98c2ae",
+      "rows": 6407
+    },
+    {
+      "indicator": "CM.MKT.LCAP.GD.ZS",
+      "page": 1,
+      "url": "https://api.worldbank.org/v2/country/all/indicator/CM.MKT.LCAP.GD.ZS?format=json&per_page=20000&date=1995:2025&page=1",
+      "bytes": 2078386,
+      "sha256": "9504410b8b993ea6c9aebd8289d6209961649ed8a355aea74141bbcf3d627a12",
+      "rows": 2959
+    }
+  ],
+  "skipped": {},
+  "wdi_series_sha256": "59519d8c1e4a4ff4d9a3712a893ac7bd8cf90faceae476a0417cfd756a00bec9",
+  "n_rows": 41613,
+  "by_indicator": {
+    "CM.MKT.LCAP.GD.ZS": 2959,
+    "NE.CON.PRVT.PP.KD": 5764,
+    "NY.GDP.PCAP.PP.KD": 7411,
+    "NY.GNP.PCAP.PP.KD": 4872,
+    "PA.NUS.FCRF": 6407,
+    "PA.NUS.PPP": 6109,
+    "SP.POP.TOTL": 8091
+  }
+}
