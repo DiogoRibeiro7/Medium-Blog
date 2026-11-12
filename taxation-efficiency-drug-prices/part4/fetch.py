@@ -17,7 +17,8 @@ Sources
                         ATC code, holder, conditional approval, PRIME, advanced therapy).
     wait_2025, 2024     EFPIA / IQVIA, Patients W.A.I.T. Indicator 2025 and 2024: number of medicines
                         available and time from authorisation to availability by country, read from
-                        the charts of the published PDF by the position of each label.
+                        the charts of the published PDF by the position of each label; for 2025 also
+                        the oncology, orphan and non-oncology orphan charts (wait_2025_groups).
     euripid_pli_2017    EURIPID / Eurostat study (2018): price level indices of pharmaceutical products
                         by country, all medicines and by ATC group, 2015-2017.
     reports             The text of two reports whose published figures the analysis quotes and checks
@@ -230,33 +231,72 @@ COUNTRIES = ["Germany", "Switzerland", "Macedonia", "Serbia", "England", "Scotla
              "Albania", "Montenegro", "Kosovo"]
 
 
-def chart_values(words: list[tuple], ylo: float, yhi: float) -> dict:
-    """Country label (rotated, under the bar) -> the number printed above the bar, matched by x position;
-    plus the 'Available medicines' and 'Dates submitted' rows printed under the labels."""
-    labels = [w for w in words if w[4].lstrip("*") in COUNTRIES]
+def chart_values(words: list[tuple], ylo: float, yhi: float, tol: float = 12.0) -> dict:
+    """Country label (rotated, under the bar) -> the number printed above the bar; plus the 'Available
+    medicines' and 'Dates submitted' rows printed under the labels. Each number goes to the nearest
+    label (labels are about 20 points apart), and a label keeps the closest of the numbers it receives.
+    On the 2025 report the EU27 means of the values read this way equal the averages the report prints
+    (597 days for all products, 655 for oncology, 614 for orphans)."""
+    labels = {w[4].lstrip("*"): (w[0] + w[2]) / 2 for w in words if w[4].lstrip("*") in COUNTRIES}
+    if not labels:
+        return {}
+
+    def assign(cands: list[tuple]) -> dict:
+        best: dict = {}
+        for n in cands:
+            x = (n[0] + n[2]) / 2
+            name, cx = min(labels.items(), key=lambda kv: abs(kv[1] - x))
+            d = abs(cx - x)
+            if d < tol and (name not in best or d < best[name][1]):
+                best[name] = (n[4], d)
+        return {k: v[0] for k, v in best.items()}
+
+    out: dict = {name: {} for name in labels}
     nums = [w for w in words if re.fullmatch(r"\d{1,2},\d{3}|\d{2,3}", w[4]) and ylo < w[1] < yhi]
-    rows = {}
+    for name, v in assign(nums).items():
+        out[name]["days"] = float(v.replace(",", ""))
     for key in ("Available", "Dates"):
         anchor = next((w for w in words if w[4] == key), None)
         if anchor:
-            rows[key] = [w for w in words if re.fullmatch(r"\d+", w[4]) and abs(w[1] - anchor[1]) < 3
-                         and w[0] > anchor[2] + 10]
-    out = {}
-    for lab in labels:
-        cx = (lab[0] + lab[2]) / 2
-        name = lab[4].lstrip("*")
-        rec = {}
-        if nums:
-            n = min(nums, key=lambda w: abs((w[0] + w[2]) / 2 - cx))
-            if abs((n[0] + n[2]) / 2 - cx) < 8:
-                rec["days"] = float(n[4].replace(",", ""))
-        for key, ws in rows.items():
-            if ws:
-                n = min(ws, key=lambda w: abs((w[0] + w[2]) / 2 - cx))
-                if abs((n[0] + n[2]) / 2 - cx) < 8:
-                    rec[key] = int(n[4])
-        out[name] = rec
+            row = [w for w in words if re.fullmatch(r"\d+", w[4]) and abs(w[1] - anchor[1]) < 3
+                   and w[0] > anchor[2] + 10]
+            for name, v in assign(row).items():
+                out[name][key] = int(v)
     return out
+
+
+WAIT_GROUPS = (("oncology", "Oncology time to availability", "Oncology median time to availability"),
+               ("orphan", "Orphan time to availability", "Orphan median time to availability"),
+               ("non_oncology_orphan", "Non-oncology orphan time to availability",
+                "Non-oncology orphan median time to availability"))
+
+
+def chart_page(pages: list, title: str) -> list | None:
+    """The page whose heading (within its first words) is exactly `title`; case matters, so 'Time to
+    availability' does not match 'Oncology time to availability' or 'Median time to availability'."""
+    for pg in pages:
+        text = " " + " ".join(w[4] for w in pg[:60])
+        k = text.find(" " + title)
+        if 0 <= k < 200:
+            return pg
+    return None
+
+
+def wait_table(pages: list, mean_title: str, median_title: str) -> pd.DataFrame:
+    frames = {}
+    for title, key in ((mean_title, "mean_days"), (median_title, "median_days")):
+        pg = chart_page(pages, title)
+        if pg is not None:
+            frames[key] = chart_values(pg, 150, 420)
+    rows = []
+    for c in sorted(set().union(*[set(v) for v in frames.values()])):
+        mean = frames.get("mean_days", {}).get(c, {})
+        med = frames.get("median_days", {}).get(c, {})
+        rows.append({"country": c.replace("Luxemburg", "Luxembourg"), "mean_days": mean.get("days"),
+                     "median_days": med.get("days"), "available": mean.get("Available", med.get("Available")),
+                     "dates_submitted": mean.get("Dates")})
+    log(f"  {mean_title}: charts found {list(frames)}")
+    return pd.DataFrame(rows)
 
 
 def fetch_wait(out: Path) -> None:
@@ -265,28 +305,19 @@ def fetch_wait(out: Path) -> None:
         if name == "wait_2025":
             save_text(pdf_text(content), out, "wait_2025_report")
         pages = pdf_words(content)
-        frames = {}
-        for title, key in ((f"Time to availability ({cohort})", "mean_days"),
-                           (f"Median time to availability ({cohort})", "median_days")):
-            for pg in pages:
-                text = " ".join(w[4] for w in pg[:60])
-                if text.startswith(title) or (" " + title) in text[:200]:
-                    if key == "mean_days" and "Median" in text[:40]:
-                        continue
-                    vals = chart_values(pg, 150, 420)
-                    frames[key] = vals
-                    break
-        rows = []
-        for c in sorted(set().union(*[set(v) for v in frames.values()])):
-            mean = frames.get("mean_days", {}).get(c, {})
-            med = frames.get("median_days", {}).get(c, {})
-            rows.append({"country": c.replace("Luxemburg", "Luxembourg"), "mean_days": mean.get("days"),
-                         "median_days": med.get("days"), "available": mean.get("Available", med.get("Available")),
-                         "dates_submitted": mean.get("Dates")})
-        df = pd.DataFrame(rows)
-        log(f"[{name}] pages {len(pages)}; charts found {list(frames)}")
+        log(f"[{name}] pages {len(pages)}")
+        df = wait_table(pages, f"Time to availability ({cohort})", f"Median time to availability ({cohort})")
         log(df.to_string())
         save(df, out, name)
+        if name == "wait_2025":
+            groups = []
+            for group, mean_title, median_title in WAIT_GROUPS:
+                g = wait_table(pages, f"{mean_title} ({cohort})", f"{median_title} ({cohort})")
+                g.insert(0, "group", group)
+                groups.append(g)
+            g = pd.concat(groups, ignore_index=True)
+            log(g.to_string())
+            save(g, out, "wait_2025_groups")
 
 
 # -------------------------------------------------------------------------------------------- EURIPID
