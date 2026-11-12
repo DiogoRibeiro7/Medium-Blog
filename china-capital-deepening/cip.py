@@ -189,6 +189,12 @@ def analyse(say, section, res: Path) -> None:
     pd.DataFrame({"china_manufacturing_cip": m.Y / m.K, "china_outside_manufacturing_cip": s.Y / s.K,
                   "china_total_cip": tot.Y / tot.K}).rename_axis("year").to_csv(res / "cip_output_per_capital.csv",
                                                                                 float_format="%.6f")
+    ret = {"Manufacturing": (m.KC / m.VA) * (m.Y / m.K), "Outside manufacturing": (s.KC / s.VA) * (s.Y / s.K)}
+    say("Capital income per unit of capital (capital share x output per unit of capital), index 2007 = 100, 2013; 2017: "
+        "manufacturing | outside manufacturing",
+        " | ".join(f"{100 * r[2013] / r[2007]:.1f}; {100 * r[2017] / r[2007]:.1f}" for r in ret.values()))
+    say("Capital share of value added outside manufacturing: 2007; 2013; 2017",
+        "; ".join(f"{s.KC[y] / s.VA[y]:.3f}" for y in (2007, 2013, 2017)))
     say("Economy outside manufacturing: output per unit of capital growth 2007-2013; 2013-2017",
         f"{f2(g(s.Y / s.K, 2007, 2013))}; {f2(g(s.Y / s.K, 2013, 2017))}")
     infra = GROUPS["Utilities"] + GROUPS["Transport"] + GROUPS["Real estate"] + GROUPS["Public administration and services"]
