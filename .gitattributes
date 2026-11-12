@@ -119,3 +119,5 @@ minimum-wage-in-work-poverty/**/*.csv -filter -diff -merge text
 minimum-wage-in-work-poverty/**/*.gz -filter -diff -merge binary
 eu-capital-exports/**/*.csv -filter -diff -merge text
 eu-capital-exports/**/*.gz -filter -diff -merge binary
+eu-us-surplus-by-industry/**/*.csv -filter -diff -merge text
+eu-us-surplus-by-industry/**/*.gz -filter -diff -merge binary
