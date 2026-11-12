@@ -13,9 +13,9 @@ No network access is used by the accompanying offline tests.
 from __future__ import annotations
 
 import argparse
-import csv
 import hashlib
 import json
+import math
 import re
 from datetime import datetime, timezone
 from pathlib import Path
@@ -29,7 +29,6 @@ from ine_commuting_capture import (
     CapturedJSON,
     MAX_BYTES,
     META_URL,
-    DEFAULT_TIMEOUT_SECONDS,
     _parse_json,
     _schema_outline,
     download_json,
@@ -42,7 +41,6 @@ EXPECTED_METADATA_SHA256 = (
 )
 MAX_SLICES_PER_RUN = 3
 DEFAULT_TIMEOUT_SECONDS = 35.0
-DIGEST_PATTERN = re.compile(r"[0-9a-f]{64}\Z")
 
 
 def candidate_slice_url(dico: str, *, dimension: str = "Dim2") -> str:
@@ -64,7 +62,8 @@ def require_slice_url(url: str, *, dico: str, dimension: str) -> None:
         raise ValueError("Source URL must be a string")
     parts = urlsplit(url)
     if (parts.scheme != "https" or parts.netloc != "www.ine.pt"
-            or parts.path != "/ine/json_indicador/pindica.jsp" or parts.fragment):
+            or parts.path != "/ine/json_indicador/pindica.jsp" or parts.fragment
+            or parts.username or parts.password):
         raise ValueError("Unexpected INE municipality slice URL")
     actual = parse_qs(parts.query, strict_parsing=True)
     expected = parse_qs(urlsplit(candidate_slice_url(dico, dimension=dimension)).query)
@@ -98,7 +97,8 @@ def download_slice(
         raise ValueError("Missing exactly one municipality filter")
     code = parsed[dimension][0]
     require_slice_url(url, dico=code, dimension=dimension)
-    if not isinstance(timeout_seconds, (int, float)) or isinstance(timeout_seconds, bool) or not 0 < timeout_seconds <= 120:
+    if (not isinstance(timeout_seconds, (int, float)) or isinstance(timeout_seconds, bool)
+            or not math.isfinite(timeout_seconds) or not 0 < timeout_seconds <= 120):
         raise ValueError("Invalid finite timeout")
     if not isinstance(max_bytes, int) or isinstance(max_bytes, bool) or not 0 < max_bytes <= MAX_BYTES:
         raise ValueError("Invalid maximum response bytes")
@@ -124,18 +124,18 @@ def download_slice(
 
 
 def download_pinned_metadata() -> bytes:
-    """Retrieve the original source metadata and require the archived SHA-256."""
+    """Retrieve candidate official metadata; validate its substantive definitions."""
     response = download_json(META_URL)
-    raw = response.payload
-    if hashlib.sha256(raw).hexdigest() != EXPECTED_METADATA_SHA256:
-        raise ValueError("INE metadata changed; explicit re-review required")
-    return raw
+    validate_metadata(response.payload, municipality_codes_from_panel())
+    return response.payload
 
 def validate_metadata(raw: bytes, codes: dict[str, str]) -> dict[str, Any]:
-    """Check the exact previously archived INE metadata and all 17 AMP codes."""
+    """Check declared indicator definitions and all 17 municipality codes.
+
+    INE records a volatile DataExtracao timestamp; raw byte hashes are retained
+    for provenance but are not stable identifiers of indicator definitions.
+    """
     digest = hashlib.sha256(raw).hexdigest()
-    if digest != EXPECTED_METADATA_SHA256:
-        raise ValueError("INE metadata SHA-256 changed: review official source before use")
     parsed = _parse_json(raw)
     if not isinstance(parsed, list) or len(parsed) != 1 or not isinstance(parsed[0], dict):
         raise ValueError("INE metadata must contain exactly one indicator object")
@@ -260,7 +260,10 @@ def capture_partition(
         "dimension": dimension,
         "source_metadata": source,
         "source_metadata_sha256": hashlib.sha256(metadata_bytes).hexdigest(),
-        "official_metadata_verified_against_archived_bytes": True,
+        "metadata_dimensions_checked_against_panel": True,
+        "metadata_matches_archived_2026_11_12_sha256": (
+            hashlib.sha256(metadata_bytes).hexdigest() == EXPECTED_METADATA_SHA256
+        ),
         "candidate_slice_semantics_verified": False,
         "all_136_pairs_reconciled": False,
         "source_data_is_residential_migration": False,
@@ -276,7 +279,8 @@ def capture_partition(
 def main(argv: Sequence[str] | None = None) -> None:
     """Run one manually selected small geographic slice batch."""
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--metadata-json", type=Path, default=None,\n                        help="Optional previously captured exact metadata; otherwise fetch pinned official metadata")
+    parser.add_argument("--metadata-json", type=Path, default=None,
+                        help="Optional downloaded metadata JSON; otherwise fetch and validate official metadata")
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--start-index", type=int, default=0)
     parser.add_argument("--count", type=int, default=2)
