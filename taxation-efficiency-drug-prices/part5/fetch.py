@@ -276,6 +276,12 @@ def fetch_lists(out: Path) -> None:
         typ, kind = classify(url, meta["label"])
         if url == REPORTS["pt_regulation_2021"]:
             typ, kind = "regulation", "deliberation"
+        elif kind == "deliberation":
+            # The deliberations approve the lists but do not reproduce them; keep them as metadata only.
+            meta_rows.append({"url": url, "label": meta["label"], "first_seen": meta["source"], "type": typ, "kind": kind,
+                              "effective": effective_date(url, meta["label"], meta["source"] if meta["source"][:2] == "20" else ""),
+                              "format": "", "n_rows": 0, "error": "not downloaded"})
+            continue
         eff = effective_date(url, meta["label"], meta["source"] if meta["source"][:2] == "20" else "")
         rec = {"url": url, "label": meta["label"], "first_seen": meta["source"], "type": typ, "kind": kind,
                "effective": eff, "format": "", "n_rows": 0, "error": ""}
@@ -414,7 +420,7 @@ def main() -> None:
     args = ap.parse_args()
     out = Path(args.out)
     out.mkdir(parents=True, exist_ok=True)
-    jobs = {"reports": fetch_reports, "comext": fetch_comext, "ema_pd": fetch_ema_pd, "lists": fetch_lists}
+    jobs = {"lists": fetch_lists, "reports": fetch_reports, "comext": fetch_comext, "ema_pd": fetch_ema_pd}
     failed = []
     for name, fn in jobs.items():
         if args.only and name not in args.only:
