@@ -1,17 +1,10 @@
 ===== eurostat
-[eurostat_population] wrote eurostat_population.csv.gz: 186 rows, columns ['geo', 'name', 'time', 'value']
-[eurostat] FAILED
-Traceback (most recent call last):
-  File "/home/runner/work/Medium-Blog/Medium-Blog/taxation-efficiency-drug-prices/part4/fetch.py", line 336, in main
-    fn(out)
-    ~~^^^^^
-  File "/home/runner/work/Medium-Blog/Medium-Blog/taxation-efficiency-drug-prices/part4/fetch.py", line 316, in fetch_eurostat
-    js = get(URLS["eurostat"].format(code=code, query=query)).json()
-         ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/runner/work/Medium-Blog/Medium-Blog/taxation-efficiency-drug-prices/part4/fetch.py", line 79, in get
-    raise RuntimeError(f"GET {url} failed: {last}")
-RuntimeError: GET https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/tec00114?format=JSON&lang=EN&sinceTimePeriod=2022&na_item=VI_PPS_EU27_2020_HAB failed: 400 Client Error: Bad Request for url: https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/tec00114?format=JSON&lang=EN&sinceTimePeriod=2022&na_item=VI_PPS_EU27_2020_HAB
-
+[eurostat_population] 186 rows; {'geo': 48, 'time': 4}
+[eurostat_population] wrote eurostat_population.csv.gz: 186 rows, columns ['geo', 'time', 'value', 'name']
+[eurostat_gdp_pps] 172 rows; {'geo': 43, 'time': 4}
+[eurostat_gdp_pps] wrote eurostat_gdp_pps.csv.gz: 172 rows, columns ['geo', 'time', 'value', 'name']
+[eurostat_aic_pps] 198 rows; {'na_item': 2, 'geo': 50, 'time': 2}
+[eurostat_aic_pps] wrote eurostat_aic_pps.csv.gz: 198 rows, columns ['na_item', 'geo', 'time', 'value', 'name']
 ===== euripid
    geo  pli_last  n_years   pli_L
 0   AT    115.94        3  112.56
@@ -128,4 +121,4 @@ RuntimeError: GET https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0
 [siats new indication] 157 records over 32 pages; columns ['name', 'Substância Ativa/DCI', 'Titular de AIM', 'Tipo de Processo', 'Tipo de Medicamento', 'Áreas Terapêuticas', 'Indicações Terapêuticas', 'Estado Atual do Processo', 'Autorização de Introdução no Mercado/Indicações Terapêuticas', 'Submissão do Processo pelo Titular de AIM', 'Início da Avaliação', 'Data de Acesso SNS', 'Conclusão da Avaliação', 'Nº dias Infarmed', 'Nº dias Titular de AIM', 'Nº dias Negociação', 'page', 'search']
 [siats] tracker last updated: 12/11/2026 às 07:00
 [pt_siats_processes] wrote pt_siats_processes.csv.gz: 319 rows, columns ['name', 'Substância Ativa/DCI', 'Titular de AIM', 'Tipo de Processo', 'Tipo de Medicamento', 'Áreas Terapêuticas', 'Indicações Terapêuticas', 'Estado Atual do Processo', 'Autorização de Introdução no Mercado/Indicações Terapêuticas', 'Submissão do Processo pelo Titular de AIM', 'Início da Avaliação', 'Data de Acesso SNS', 'Conclusão da Avaliação', 'Nº dias Infarmed', 'Nº dias Titular de AIM', 'Nº dias Negociação', 'page', 'search']
-failed: ['eurostat']
+failed: []
