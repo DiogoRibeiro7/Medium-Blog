@@ -77,6 +77,12 @@ Largest molecules in the basket by French value (most sold presentation; ex-fact
   selincro     18 mg              x14   FR    35.12  ES    42.00  IT      n/a  BE    35.12   ceiling    37.41  ceiling/FR 1.065
   sunosi       75 mg              x28   FR   210.01  ES      n/a  IT   217.37  BE      n/a   ceiling   213.69  ceiling/FR 1.018
 
+The whole basket by French ex-factory price per tablet (reference country over France, French quantities;
+95% interval resampling molecules):
+  under 2 euros a tablet presentations  85, molecules  32: Spain 0.780 [0.56, 1.18] n 53; Italy 1.221 [1.14, 1.29] n 57; Belgium 1.161 [1.12, 1.35] n 65
+  2 to 10 euros          presentations  51, molecules  31: Spain 0.866 [0.73, 1.28] n 17; Italy 1.856 [1.43, 2.19] n 23; Belgium 1.058 [0.88, 1.38] n 45
+  10 euros or more       presentations  49, molecules  33: Spain n/a (n 0); Italy 1.766 [1.42, 1.83] n 10; Belgium 1.356 [1.18, 1.52] n 46
+
 ==============================================================================================
 3. The choice of countries
 ==============================================================================================

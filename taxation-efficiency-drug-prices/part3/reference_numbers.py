@@ -237,6 +237,23 @@ def main() -> None:
         .assign(mv=lambda d: d["molecule"].map(four.groupby("molecule")["v"].sum()))
         .sort_values("mv", ascending=False).iterrows()]
 
+    # Part 2 put forward, untested, that French prices of new drugs in classes full of cheap older drugs
+    # (anticoagulants, diabetes) are pulled down by those comparators. If so, France should sit lower
+    # against its neighbours for cheap-per-tablet brands than for expensive specialty brands.
+    print("\nThe whole basket by French ex-factory price per tablet (reference country over France, French quantities;")
+    print("95% interval resampling molecules):")
+    r["unit"] = r["FR"] / r["units"]
+    for lo_, hi_, name in ((0, 2, "under 2 euros a tablet"), (2, 10, "2 to 10 euros"), (10, np.inf, "10 euros or more")):
+        s_ = r[(r["unit"] >= lo_) & (r["unit"] < hi_)]
+        parts = []
+        for col in ("ES", "IT", "BE"):
+            if s_[col].notna().sum() < 5:
+                parts.append(f"{NAMES[col]} n/a (n {int(s_[col].notna().sum())})")
+                continue
+            a, b = boot(s_, col, rng)
+            parts.append(f"{NAMES[col]} {index(s_, col):5.3f} [{a:4.2f}, {b:4.2f}] n {int(s_[col].notna().sum())}")
+        print(f"  {name:22s} presentations {len(s_):3d}, molecules {s_['molecule'].nunique():3d}: " + "; ".join(parts))
+
     # ---------------------------------------------------------------------------------------- 3
     section("3. The choice of countries")
     print(f"All-four presentations (n {len(four)}), French quantities. Ceiling under other rules, relative to France")
