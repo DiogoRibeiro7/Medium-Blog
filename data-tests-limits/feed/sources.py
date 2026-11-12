@@ -140,6 +140,7 @@ def main() -> None:
     ap.add_argument("--out", default="sources")
     ap.add_argument("--first", default="2019-01")
     ap.add_argument("--last", default="2026-09")
+    ap.add_argument("--footers", action="store_true", help="also read the Parquet footers of every file")
     ap.add_argument(
         "--metadata-only",
         action="store_true",

@@ -30,3 +30,14 @@ def test_footer_reads_rows_and_schema_through_ranges(tmp_path, monkeypatch):
 
 def test_months():
     assert sources.months("2019-11", "2020-02") == ["2019-11", "2019-12", "2020-01", "2020-02"]
+
+
+def test_cli_parses_every_flag(monkeypatch, tmp_path):
+    seen = {}
+    monkeypatch.setattr(sources, "get", lambda *a, **k: (_ for _ in ()).throw(RuntimeError("offline")))
+    monkeypatch.setattr(
+        "sys.argv", ["sources", "--out", str(tmp_path), "--footers", "--first", "2024-01", "--last", "2023-12"]
+    )
+    sources.main()  # no dictionary, no report, no months: writes the log only
+    seen["log"] = (tmp_path / "SOURCES.json").exists()
+    assert seen["log"]
