@@ -20,8 +20,18 @@ jobs:
           python-version: "3.12"
       - name: Validate capture boundaries with offline tests
         run: python -m unittest discover -s tests -p 'test_ine_commuting_capture.py' -v
+      - name: Validate captured artifact review with offline tests
+        run: python -m unittest discover -s tests -p 'test_ine_commuting_capture_review.py' -v
       - name: Request original INE metadata and candidate 2021 JSON slice
         run: python ine_commuting_capture.py --output "${{ runner.temp }}/ine-0012340"
+      - name: Verify captured source-file integrity and generate review report
+        if: always()
+        run: |
+          if [ -f "${{ runner.temp }}/ine-0012340/capture_manifest.json" ]; then
+            python ine_commuting_capture_review.py \
+              --capture-dir "${{ runner.temp }}/ine-0012340" \
+              --output-json "${{ runner.temp }}/ine-0012340/integrity_review.json"
+          fi
       - name: Archive responses, content hashes and failures for independent review
         if: always()
         uses: actions/upload-artifact@v4
