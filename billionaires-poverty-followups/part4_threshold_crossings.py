@@ -287,6 +287,9 @@ def country_decomposition(flows: pd.DataFrame, bands: pd.DataFrame) -> dict[str,
             "persistence": persistence(c),
             "big_countries": big_countries(c),
             "horizons": horizons(flows, bands, cut),
+            "showcase": {k: {str(int(y)): {c: int(r[c]) for c in ("near", "far", "switch", "n0", "n1")}
+                             for y, r in c.xs(k, level="country_label").iterrows()}
+                         for k in ("China", "United States", "India", "Russia", "Germany")},
         }
     return out
 
@@ -579,6 +582,8 @@ def indicators(inp: dict[str, Any], model: dict[str, Any]) -> tuple[dict[str, An
     out["global_counts"] = glob_n
     out["global_growth"] = {k: {"2010": v[str(FIRST)], "2025": v[str(LAST)], "factor": v[str(LAST)] / v[str(FIRST)]}
                             for k, v in glob_n.items()}
+    out["log_share_of_growth_from_fixed_line"] = float(
+        1 - np.log(out["global_growth"]["indexed"]["factor"]) / np.log(out["global_growth"]["fixed_1000"]["factor"]))
     out["global_n"] = {str(int(y)): int(v) for y, v in world.items()}
     return out, counts
 
@@ -877,6 +882,7 @@ def summary_lines(n: dict[str, Any]) -> list[str]:
     out.append(f"Self-made entrants: {n['self_made']}")
     out.append("Global growth 2010->2025 (all countries): " + "; ".join(f"{k} {v['2010']:.0f}->{v['2025']:.0f} x{v['factor']:.2f}"
                                                                       for k, v in ind["global_growth"].items()))
+    out.append(f"Share of log growth of the global count from the fixed line: {ind['log_share_of_growth_from_fixed_line']:.3f}")
     out.append("Thresholds 2025: " + "; ".join(f"{k} {v['2025']:.0f}" for k, v in ind["paths"].items()))
     for k in ind["paths"]:
         v = ind[k]

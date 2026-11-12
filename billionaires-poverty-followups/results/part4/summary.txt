@@ -51,6 +51,7 @@ Model: exits obs 2707 pred 1673; near obs 1804 pred 1334; entries obs 4724 pred 
 Age: far exit rate under 70 0.0128; 85+ 0.1095; far exits aged 85+ 0.348; near {'-1': 0.337, '0': 0.277, '50': 0.259, '60': 0.211, '70': 0.209, '80': 0.177, '85': 0.25, '90': 0.232}; far {'-1': 0.124, '0': 0.027, '50': 0.009, '60': 0.01, '70': 0.021, '80': 0.035, '85': 0.082, '90': 0.159}
 Self-made entrants: {'far': {'self_made_share': 0.6472945891783567, 'n': 1996}, 'near': {'self_made_share': 0.7519237816049835, 'n': 2729}}
 Global growth 2010->2025 (all countries): fixed_1000 1011->3028 x3.00; fixed_1500 720->2355 x3.27; fixed_2000 535->1849 x3.46; fixed_3000 341->1264 x3.71; fixed_5000 165->733 x4.44; indexed 1011->1965 x1.94; rank 1011->1011 x1.00
+Share of log growth of the global count from the fixed line: 0.394
 Thresholds 2025: fixed_1000 1000; fixed_1500 1500; fixed_2000 2000; fixed_3000 3000; fixed_5000 5000; indexed 1873; rank 3702
 Indicator fixed_1000: n 1326 countries 83 levels G +0.95 [0.19, 1.70] p 0.014; dB lag −0.215 [−0.322, −0.108] p 0.000; noise share 0.431; sd dB 0.158; R2 year 0.063 +growth 0.065; zero 0.220; median n 7.0; global 990->2958
 Indicator fixed_1500: n 1326 countries 83 levels G +0.82 [0.12, 1.52] p 0.021; dB lag −0.199 [−0.266, −0.132] p 0.000; noise share 0.398; sd dB 0.153; R2 year 0.081 +growth 0.082; zero 0.278; median n 6.0; global 706->2300
