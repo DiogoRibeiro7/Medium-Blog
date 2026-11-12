@@ -1,64 +1,9 @@
-===== pt_siats_publico
-URL https://extranet.infarmed.pt/siats/Publico/
-status 403  final https://extranet.infarmed.pt/siats/Publico/  type text/html  bytes 1233
-title 403 - Forbidden: Access is denied.
-  no file links; first 1500 characters of text:
- 403 - Forbidden: Access is denied. Server Error 403 - Forbidden: Access is denied. You do not have permission to view this directory or page using the credentials that you supplied. 
-  raw matches (0):
-===== pt_siats_processos
-URL https://extranet.infarmed.pt/siats/Publico/Processos/
-status 403  final https://extranet.infarmed.pt/siats/Publico/Processos/  type text/html  bytes 1233
-title 403 - Forbidden: Access is denied.
-  no file links; first 1500 characters of text:
- 403 - Forbidden: Access is denied. Server Error 403 - Forbidden: Access is denied. You do not have permission to view this directory or page using the credentials that you supplied. 
-  raw matches (0):
-===== pt_siats_detalhes
-URL https://extranet.infarmed.pt/siats/Publico/Processos/InfoDetalhesProcesso.aspx
-status 200  final https://extranet.infarmed.pt/siats/Publico/Processos/InfoDetalhesProcesso.aspx  type text/html; charset=utf-8  bytes 25602
-title SIATS
-  no file links; first 1500 characters of text:
- --> --> SIATS body { margin: 0px; padding: 0px; font-family: sans-serif; font-size: 14px; background-repeat: repeat-x; width: 100%; text-align: justify; color: #333; } tr.pager-class td table { margin-left: 100px; } .linha { display: flex; flex-flow: row wrap; } .colunatitulo { width: 95%; } .colunabandeira { width: 5%; top: 8px; } .header .tools #flags { float: right; text-align: center; margin: 15px 5px; width: 25px; } .dci { width: 100px; } .nomemedicamento { width: 200px; } .titularaim { width: 200px; } .espaco { width: 10px; } .data { width: 60px } .ui-fluid .ui-button.search-button { text-shadow: none } .grid-2col { display: grid; grid-template-columns: max-content 1fr; /*grid-template-columns: auto auto;*/ /* // // function CleanForm(param) { $(param).closest('form').find("input[type=text], textarea, select").val(""); } function GetDciID(sender, args) { var id = args.get_value(); var text = args.get_text(); var hidden = document.getElementById('ctl00_ContentPlaceHolder1_hfDciId'); var carrinho = document.getElementById('dciCarrinho'); // Evitar duplicados if (hidden.value.split(',').includes(id)) { sender.get_element().value = ''; return; } // Criar item visual var item = document.createElement('span'); item.className = 'dci-item'; item.setAttribute('dataDCI-id', id); item.innerHTML = text + ' ✖ '; carrinho.appendChild(item); // Guardar IDs hidden.value = hidden.value ? hidden.value + ',' + id : id; // Limpar textbox sender.get_element().value = ''; } function removeD
-  raw matches (21):
-    https://fonts.googleapis.com/css?family=Open+Sans
-    https://fonts.googleapis.com/css?family=Montserrat
-    <form name="aspnetForm" method="post" action="./InfoDetalhesProcesso.aspx" id="aspnetForm">
-    <input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
-    <input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
-    <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="AbigbUcnWuJXhPyQPELGx3u07Z4DQbuMI10RZ2nsfrbFtWHlbFCPeHyOqwEG3McmDZsAkye5aTOUe3AXDXoZbPxI4O1xTNjX13GrVGhrGbonzOmA3Jq+VyjVsKNmcmBSAgtGtB0R1BUV9wg0xMwmmkaJqYIGjAUJtms3olXHI3mrEyBomM+kf8x6Zto3ncQ/lwyGH8sfoZatLoiMXPiMyOk3DSPc3ljYTlyWcmLvo8qJ
-    <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="D757315B" />
-    <input type="hidden" name="__VIEWSTATEENCRYPTED" id="__VIEWSTATEENCRYPTED" value="" />
-    <input type="image" name="ctl00$ImageButton1" id="ctl00_ImageButton1" class="cancel" src="../../Images/ptFlag.png" style="border-width:0px;height: 22px" />
-    <input type="image" name="ctl00$ImageButton2" id="ctl00_ImageButton2" class="cancel" src="../../Images/enFlag.png" style="border-width:0px;" />
-    <table width="100%" cellpadding="0" cellspacing="0">
-    <input name="ctl00$ContentPlaceHolder1$txtNomeMedicamentoProcesso" type="text" id="ctl00_ContentPlaceHolder1_txtNomeMedicamentoProcesso" class="input input-text td tdsb" placeholder="Nome do medicamento" style="width:263px;" />
-    <input type="hidden" name="ctl00$ContentPlaceHolder1$hfMedId" id="ctl00_ContentPlaceHolder1_hfMedId" />
-    <select name="ctl00$ContentPlaceHolder1$ddlTipoMedicamento" id="ctl00_ContentPlaceHolder1_ddlTipoMedicamento" class="input input-text td tdsb ddl-placeholder" style="width:263px;">
-    <select name="ctl00$ContentPlaceHolder1$ddlTipoProcesso" id="ctl00_ContentPlaceHolder1_ddlTipoProcesso" class="input input-text td tdsb ddl-placeholder" style="width:263px;">
-    <input name="ctl00$ContentPlaceHolder1$txtDciProcesso" type="text" id="ctl00_ContentPlaceHolder1_txtDciProcesso" class="input input-text td tdsb" placeholder="Substância ativa/DCI" style="width:263px;" />
-    <input type="hidden" name="ctl00$ContentPlaceHolder1$hfDciId" id="ctl00_ContentPlaceHolder1_hfDciId" />
-    <input name="ctl00$ContentPlaceHolder1$txtAreaTerapProcesso" type="text" id="ctl00_ContentPlaceHolder1_txtAreaTerapProcesso" class="input input-text td tdsb" placeholder="Área Terapêutica" style="width:263px;" />
-    <input type="hidden" name="ctl00$ContentPlaceHolder1$hfAreaTerapId" id="ctl00_ContentPlaceHolder1_hfAreaTerapId" />
-    <input type="submit" name="ctl00$ContentPlaceHolder1$btnPesquisarProcessos" value="Pesquisar" id="ctl00_ContentPlaceHolder1_btnPesquisarProcessos" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only search-button" />
-    <input type="submit" name="ctl00$ContentPlaceHolder1$btnLimparProcessos" value="Limpar" onclick="CleanForm(this);" id="ctl00_ContentPlaceHolder1_btnLimparProcessos" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only reset-button" />
-===== save wait_2025_copy
-URL https://via.tt.se/files/3237315/4386931/339076/sv
-status 200  final https://via.tt.se/files/3237315/4386931/339076/sv  type application/pdf  bytes 1919564
-saved raw/wait_2025_copy.txt.gz (73 pages)
-===== save wait_2024
-URL https://www.iqvia.com/-/media/iqvia/pdfs/library/publications/efpia-patients-wait-indicator-2024.pdf
-status 200  final https://www.iqvia.com/-/media/iqvia/pdfs/library/publications/efpia-patients-wait-indicator-2024.pdf  type application/pdf  bytes 1906649
-saved raw/wait_2024.txt.gz (71 pages)
-===== save euripid_ppp_2022
-URL https://jasmin.goeg.at/id/eprint/2539/1/04_PPP_Medicines_Habl_070622.pdf
-status 404  final https://jasmin.goeg.at/id/eprint/2539/1/04_PPP_Medicines_Habl_070622.pdf  type text/html; charset=utf-8  bytes 6713
-===== save euripid_ppp_2017
-URL https://jasmin.goeg.at/755/1/report_PPPsPharmaceuticalProducts.pdf
-status 200  final https://jasmin.goeg.at/id/eprint/755/1/report_PPPsPharmaceuticalProducts.pdf  type application/pdf  bytes 2047313
-saved raw/euripid_ppp_2017.txt.gz (43 pages)
-===== api eurostat_ppp_ind_1
-URL https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/prc_ppp_ind_1?format=JSON&lang=EN&geo=PT&time=2023&na_item=PLI_EU27_2020
-status 400 bytes 164
-  values: {}
-===== kept pt_tracker: status 200 bytes 330627
-===== kept pt_tracker_print: status 200 bytes 41563
-===== kept pt_siats_detalhes: status 200 bytes 25602
+===== SIATS search
+POST search: status 200 bytes 76938
+  ROW Tipo de Medicamento Nova DCI Nova Indicação Biossimilar Genérico Nova Dosagem, Forma Farmacêutica, Apresentação Outros | Tipo de Processo Processo de Comparticipação Processo de Avaliação Prévia em Meio Hospitalar
+  ROW 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | ...
+  ROW Última atualização: 12/11/2026 às 07:00
+  pager targets []
+  links []
+  onclick samples ['CleanForm(this);', 'removeAreaTerap(this)', 'removeDci(this)']
+  count mentions []
