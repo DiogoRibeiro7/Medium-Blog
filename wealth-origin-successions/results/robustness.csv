@@ -1,0 +1,17 @@
+shock,variant,n_obs,post,se_post,pre,se_pre,k_m1,se_k_m1,loo_closest,loo_closest_se,loo_closest_country,loo_furthest,loo_furthest_country,loo_ci_excl_zero
+strict,baseline,504,-2.785280,1.109283,0.185295,0.644194,1.301251,0.779313,,,,,,
+strict,previous year's growth as a control,504,-2.872297,1.113691,0.111399,0.523216,1.141058,0.847903,,,,,,
+strict,"change in billionaire wealth, same leads and lags, as controls",392,-2.232440,1.805963,-0.078439,1.028057,0.550829,1.674792,,,,,,
+strict,growth years 2020 and 2021 left out,392,0.529305,1.304417,0.808690,0.925503,0.558465,0.607161,,,,,,
+strict,United States left out,495,-2.732396,1.109951,0.203468,0.645211,1.281069,0.778483,,,,,,
+strict,pandemic exposure x year as controls,504,-1.686199,2.257672,1.719098,1.131663,2.075896,0.787716,,,,,,
+strict,indicator: successions above 0.1% of GDP,504,-2.336545,1.284424,0.816834,0.655911,1.203280,0.606397,,,,,,
+strict,leave one country with a succession out,19,-2.785280,1.109283,,,,,-2.286968,1.075418,BRA,-4.186316,PHL,18.000000
+old founders,baseline,504,-3.110335,1.127947,0.254741,0.537643,1.381793,0.860438,,,,,,
+old founders,previous year's growth as a control,504,-3.217724,1.208693,0.042278,0.510200,1.235335,0.931474,,,,,,
+old founders,"change in billionaire wealth, same leads and lags, as controls",392,-2.924818,1.373518,0.350202,1.128269,0.653299,1.934544,,,,,,
+old founders,growth years 2020 and 2021 left out,392,-0.332105,1.430636,0.699270,0.724356,0.690213,0.609863,,,,,,
+old founders,United States left out,495,-3.054288,1.129514,0.271673,0.536838,1.361054,0.857950,,,,,,
+old founders,pandemic exposure x year as controls,504,-1.778008,2.844590,2.026958,1.231373,2.230762,0.896459,,,,,,
+old founders,indicator: successions above 0.1% of GDP,504,-3.226509,1.324556,1.174118,0.811596,1.568643,0.690304,,,,,,
+old founders,leave one country with a succession out,15,-3.110335,1.127947,,,,,-2.505450,0.958273,BRA,-5.966466,PHL,15.000000
