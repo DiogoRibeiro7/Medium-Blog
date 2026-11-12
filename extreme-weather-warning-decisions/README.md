@@ -13,7 +13,7 @@ python -m pip install -r requirements.txt
 python warning_decisions.py > results/output.txt
 ```
 
-The script is deterministic and downloads nothing. It prints every number quoted in the article to `results/output.txt` and writes five figures to `figures/`. The CI workflow reruns it and fails if the printed numbers change.
+The script is deterministic and downloads nothing. It prints every number quoted in the article to `results/output.txt`, writes five figures to `figures/`, and renders the nine displayed equations to `figures/equations/` (Medium does not render LaTeX, so the article shows them as images). The CI workflow reruns it and fails if the printed numbers change.
 
 ## What the model is
 
