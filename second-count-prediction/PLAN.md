@@ -83,14 +83,16 @@ published detection rates with this code.
 
 ## Observed
 
-Losses on a grid of 28 values from 0.1% to 50.1%, each 10^0.1 times the one before. Detection at each loss as
+Losses on a grid of 38 values from 0.01% to 50.1%, each 10^0.1 times the one before. Detection at each loss as
 above. L90 = the smallest grid loss from which detection is at least 90% at it and at every larger grid
-loss; if there is none, L90 is "not reached".
+loss; if there is none, L90 is "not reached"; if it is the bottom of the grid, the true value is at or below
+0.01%.
 
 ## Hypotheses
 
 - **H1 (primary).** In each of the four test pairs, L/2 <= L90 <= 2L. If L90 is not reached, H1 holds for
-  that pair only if 2L > 50.1%. H1 is supported if it holds in all four.
+  that pair only if 2L > 50.1%; if L90 is the bottom of the grid, H1 holds for that pair only if L/2 <= 0.01%.
+H1 is supported if it holds in all four.
 - **H2.** In at least three of the four test pairs, |log(L90 / L)| < |log(L90 / L_g)| (a tie counts against
   H2; an L90 not reached is taken as 50.1%).
 
@@ -104,4 +106,12 @@ the matched threshold, with no loss planted; D, S, L, L_g and L90 for the calibr
 
 ## Changes after registration
 
-None yet. Any change will be listed here with its reason and date, and marked in the article.
+Any change is listed here with its reason and date, and marked in the article.
+
+- 12 November 2026, about 15 minutes after registration, while the workflow was still fetching the outside
+  counts and before any count or result had been looked at: the loss grid was extended down from 0.1% to
+  0.01% (38 values instead of 28), with the rule for an L90 at the bottom of the grid added to H1. Reason: run
+  on Part 4's calibration pairs, the evaluation gave high-volume FHV a predicted loss of 0.04%, below the
+  bottom of the registered grid, so its observed value could only be 0.1% and the factor-of-two test would
+  have failed for a reason that has nothing to do with the prediction. The same could happen to a test pair
+  whose two counts agree closely.

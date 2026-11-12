@@ -6,7 +6,7 @@ New pairs (the test): Citi Bike trip files against the operator's monthly report
 monthly table; Chicago rideshare trips against the trips summed over the vehicle records and over the driver
 records. Part 4's pairs (calibration, already seen): the four NYC TLC feeds against the TLC monthly report.
 
-Writes results/summary.txt, results/curves.csv and results/ratios.csv.
+Writes results/summary.txt, results/pairs.json, results/curves.csv and results/ratios.csv.
 """
 
 from __future__ import annotations
@@ -191,6 +191,24 @@ def main() -> None:
         w.writerow(["pair", "loss", "detected"])
         w.writerows(curve_rows)
     (a.out / "citibike_keys_used.json").write_text(json.dumps(cb_info, indent=1), encoding="utf-8")
+    pairs_out = {
+        n: {
+            "test": n in NEW,
+            "months": x["months"],
+            "first": x["first"],
+            "last": x["last"],
+            "p95_dev": x["p95_dev"],
+            "median_scale": x["median_scale"],
+            "predicted_p95_rule": x["pred"]["p95_rule"],
+            "predicted_gaussian_rule": x["pred"]["gaussian_rule"],
+            "observed_l90": x["obs"],
+            "h1": x["h1"],
+            "threshold": x["threshold"],
+            "flagged": {m: [z, v] for m, (z, v) in x["flagged"].items()},
+        }
+        for n, x in res.items()
+    }
+    (a.out / "pairs.json").write_text(json.dumps(pairs_out, indent=1), encoding="utf-8")
     print(text)
     if not math.isfinite(sum(x["p95_dev"] for x in res.values())):
         raise SystemExit("a pair has no evaluated months")

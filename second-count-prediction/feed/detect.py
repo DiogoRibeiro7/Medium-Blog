@@ -19,7 +19,7 @@ import math
 import numpy as np
 
 WINDOW, FLOOR, BUDGET, TARGET = 12, 0.005, 0.05, 0.90
-GRID = tuple(round(10 ** (k / 10) / 1000, 6) for k in range(0, 28))  # 0.1% to 50.1%, ratio 10^(1/10)
+GRID = tuple(round(10 ** (k / 10) / 1000, 7) for k in range(-10, 28))  # 0.01% to 50.1%, ratio 10^(1/10)
 
 
 def ratio_series(delivered: dict[str, int], outside: dict[str, float]) -> dict[str, float]:
@@ -101,9 +101,12 @@ def predicted(r: dict[str, float], first: str | None = None) -> dict[str, float]
 
 
 def within_factor_two(pred: float, obs: float | None, top: float = GRID[-1]) -> bool:
-    """PLAN.md: obs within [pred / 2, 2 pred]; if the target is never reached, it holds when 2 pred > top."""
+    """PLAN.md: obs within [pred / 2, 2 pred]; if the target is never reached, it holds when 2 pred > top; if it
+    is reached at the bottom of the grid, the true value is at or below it, and it holds when pred / 2 <= bottom."""
     if obs is None:
         return 2 * pred > top
+    if obs <= GRID[0]:
+        return pred / 2 <= GRID[0]
     return pred / 2 <= obs <= 2 * pred
 
 

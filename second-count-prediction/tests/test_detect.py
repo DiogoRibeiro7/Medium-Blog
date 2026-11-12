@@ -14,7 +14,7 @@ def series(n=80, sd=0.01, seed=1):
 
 
 def test_grid_spans_tenth_of_a_percent_to_half():
-    assert D.GRID[0] == pytest.approx(0.001) and D.GRID[-1] == pytest.approx(0.501, rel=1e-3)
+    assert D.GRID[0] == pytest.approx(0.0001) and D.GRID[-1] == pytest.approx(0.501, rel=1e-3)
     assert all(b / a == pytest.approx(10**0.1, rel=1e-3) for a, b in zip(D.GRID, D.GRID[1:], strict=False))
 
 
@@ -42,6 +42,7 @@ def test_factor_two_rule():
     assert D.within_factor_two(0.04, 0.05) and D.within_factor_two(0.04, 0.02) and D.within_factor_two(0.04, 0.08)
     assert not D.within_factor_two(0.04, 0.0199) and not D.within_factor_two(0.04, 0.081)
     assert D.within_factor_two(0.3, None) and not D.within_factor_two(0.2, None)
+    assert D.within_factor_two(0.0002, D.GRID[0]) and not D.within_factor_two(0.00021, D.GRID[0])
     assert D.log_error(0.04, 0.08) == pytest.approx(math.log(2))
 
 
