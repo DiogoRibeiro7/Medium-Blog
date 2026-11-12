@@ -1,0 +1,129 @@
+# Results (every number quoted in the article)
+
+## Forbes list quality
+2002: 333 people, published list size 497; self-made flag filled 0.165, flag true 0.006; self-made score filled 0.000; total net worth $1114bn
+2003: 332 people; self-made flag filled 0.157, flag true 0.003; self-made score filled 0.000; total net worth $1028bn
+2004: 432 people; self-made flag filled 0.178, flag true 0.005; self-made score filled 0.000; total net worth $1473bn
+2005: 530 people; self-made flag filled 0.157, flag true 0.004; self-made score filled 0.000; total net worth $1818bn
+2006: 628 people; self-made flag filled 0.159, flag true 0.006; self-made score filled 0.000; total net worth $2228bn
+2007: 761 people; self-made flag filled 0.173, flag true 0.017; self-made score filled 0.001; total net worth $3017bn
+2008: 908 people, published list size 1125; self-made flag filled 0.445, flag true 0.034; self-made score filled 0.001; total net worth $3926bn
+2009: 738 people; self-made flag filled 0.474, flag true 0.005; self-made score filled 0.000; total net worth $2291bn
+2010: 1011 people; self-made flag filled 1.000, flag true 0.022; self-made score filled 0.000; total net worth $3568bn
+2011: 1209 people; self-made flag filled 1.000, flag true 0.686; self-made score filled 0.000; total net worth $4495bn
+2012: 1226 people; self-made flag filled 1.000, flag true 0.685; self-made score filled 0.001; total net worth $4574bn
+2013: 1426 people; self-made flag filled 1.000, flag true 0.673; self-made score filled 0.001; total net worth $5432bn
+2014: 1645 people; self-made flag filled 1.000, flag true 0.660; self-made score filled 0.024; total net worth $6446bn
+2015: 1826 people; self-made flag filled 1.000, flag true 0.647; self-made score filled 0.235; total net worth $7053bn
+2016: 1811 people; self-made flag filled 1.000, flag true 0.652; self-made score filled 0.239; total net worth $6485bn
+2017: 2043 people; self-made flag filled 1.000, flag true 0.672; self-made score filled 0.220; total net worth $7666bn
+2018: 2208 people; self-made flag filled 1.000, flag true 0.677; self-made score filled 0.218; total net worth $9060bn
+2019: 2153 people; self-made flag filled 1.000, flag true 0.672; self-made score filled 0.232; total net worth $8669bn
+2020: 2094 people; self-made flag filled 1.000, flag true 0.698; self-made score filled 0.243; total net worth $8036bn
+2021: 2754 people; self-made flag filled 1.000, flag true 0.717; self-made score filled 0.203; total net worth $13082bn
+2022: 2668 people; self-made flag filled 1.000, flag true 0.709; self-made score filled 0.213; total net worth $12706bn
+2023: 2640 people; self-made flag filled 1.000, flag true 0.686; self-made score filled 0.217; total net worth $12207bn
+2024: 2781 people; self-made flag filled 1.000, flag true 0.665; self-made score filled 0.217; total net worth $14210bn
+2025: 3028 people; self-made flag filled 1.000, flag true 0.672; self-made score filled 0.208; total net worth $16089bn
+2026: 3428 people; self-made flag filled 1.000, flag true 0.667; self-made score filled 0.191; total net worth $20050bn
+unmapped Forbes citizenship labels (dropped): none
+billionaire citizenships outside the panel (no PWT or WDI data, or under one million people): BLZ, BRB, CYP, GGY, ISL, KNA, LIE, MAC, MCO, TWN; their share of listed wealth 2011-2023: 0.0150
+
+## Panel
+country-years 1926, countries 149, years 2011-2023
+country-years with at least one billionaire 802 in 75 countries; 'billionaire countries' (>= 7 of 13 years): 63
+inherited share of billionaire wealth, all country-years pooled: 0.3420; wealth with no flag: 0.0 million
+  2011: inherited share 0.3508, billionaire countries 51
+  2017: inherited share 0.3549, billionaire countries 63
+  2023: inherited share 0.3370, billionaire countries 68
+country means (>= 7 years): inherited share median 0.432, 10th-90th pct 0.000-0.785; billionaire wealth/GDP median 6.59%
+  USA: years 13, inherited share 0.303, mean billionaire wealth 14.65% of GDP
+  CHN: years 13, inherited share 0.024, mean billionaire wealth 7.03% of GDP
+  IND: years 13, inherited share 0.593, mean billionaire wealth 15.08% of GDP
+  DEU: years 13, inherited share 0.708, mean billionaire wealth 11.76% of GDP
+  FRA: years 13, inherited share 0.776, mean billionaire wealth 11.10% of GDP
+  ITA: years 13, inherited share 0.548, mean billionaire wealth 7.22% of GDP
+  ESP: years 13, inherited share 0.279, mean billionaire wealth 8.22% of GDP
+  SWE: years 13, inherited share 0.727, mean billionaire wealth 21.51% of GDP
+  RUS: years 13, inherited share 0.001, mean billionaire wealth 23.19% of GDP
+  BRA: years 13, inherited share 0.389, mean billionaire wealth 8.50% of GDP
+  MEX: years 13, inherited share 0.406, mean billionaire wealth 10.76% of GDP
+  KOR: years 13, inherited share 0.650, mean billionaire wealth 4.99% of GDP
+  JPN: years 13, inherited share 0.146, mean billionaire wealth 2.27% of GDP
+  GBR: years 13, inherited share 0.195, mean billionaire wealth 5.70% of GDP
+  HKG: years 13, inherited share 0.292, mean billionaire wealth 87.58% of GDP
+  CHE: years 13, inherited share 0.510, mean billionaire wealth 13.96% of GDP
+within-country sd of the inherited share (billionaire countries), median over countries: 0.0639
+share of variance of log(1+inherited %) that is within-country: 0.0747
+
+## Specifications (diff = inherited minus self-made coefficient, pp of annual growth per unit of the transform)
+fits: 144; diff < 0 in 125 (86.8%); significantly negative 20, significantly positive 0; median diff -0.1232
+by estimator:
+  fe: n=72, median diff -0.1007, share<0 75%, sig- 16, sig+ 0; median b_inh -0.1026, median b_self -0.0099, median b_total -0.0223
+  pooled: n=72, median diff -0.2992, share<0 99%, sig- 4, sig+ 0; median b_inh -0.0930, median b_self +0.0946, median b_total +0.0088
+by horizon:
+  1: n=48, median diff -0.1007, share<0 81%, sig- 0, sig+ 0; median b_inh -0.0866, median b_self +0.0076, median b_total -0.0134
+  3: n=48, median diff -0.1638, share<0 92%, sig- 11, sig+ 0; median b_inh -0.1118, median b_self +0.0270, median b_total -0.0069
+  5: n=48, median diff -0.1109, share<0 88%, sig- 9, sig+ 0; median b_inh -0.0966, median b_self +0.0232, median b_total -0.0017
+by outcome:
+  gdppc: n=72, median diff -0.0637, share<0 75%, sig- 0, sig+ 0; median b_inh -0.0669, median b_self +0.0078, median b_total -0.0115
+  tfp: n=72, median diff -0.1450, share<0 99%, sig- 20, sig+ 0; median b_inh -0.1124, median b_self +0.0260, median b_total +0.0042
+by transform:
+  log1p: n=72, median diff -0.5703, share<0 92%, sig- 12, sig+ 0; median b_inh -0.3276, median b_self +0.1709, median b_total -0.0597
+  raw: n=72, median diff -0.0467, share<0 82%, sig- 8, sig+ 0; median b_inh -0.0358, median b_self +0.0103, median b_total -0.0005
+by sample:
+  all: n=48, median diff -0.0738, share<0 83%, sig- 6, sig+ 0; median b_inh -0.0758, median b_self +0.0111, median b_total -0.0059
+  billionaire_countries: n=48, median diff -0.1340, share<0 94%, sig- 10, sig+ 0; median b_inh -0.1081, median b_self +0.0138, median b_total +0.0033
+  no_offshore: n=48, median diff -0.1337, share<0 83%, sig- 4, sig+ 0; median b_inh -0.1094, median b_self +0.0387, median b_total -0.0128
+by controls:
+  income: n=72, median diff -0.0953, share<0 82%, sig- 5, sig+ 0; median b_inh -0.0800, median b_self +0.0122, median b_total -0.0068
+  none: n=72, median diff -0.1469, share<0 92%, sig- 15, sig+ 0; median b_inh -0.1102, median b_self +0.0219, median b_total -0.0062
+baseline (fe, h=3, GDP pc, log1p, all, income control; n=1485, countries=149): inherited +0.1301 (se 0.3669), self-made -0.2562 (se 0.2116), difference +0.3863 [-0.3867, +1.1593], total -0.0946 (se 0.1745)
+baseline (pooled, h=3, GDP pc, log1p, all, income control; n=1485, countries=149): inherited -0.3258 (se 0.3257), self-made +0.1673 (se 0.2201), difference -0.4931 [-1.3337, +0.3474], total -0.0720 (se 0.2332)
+joint test (null imposed on the difference, countries resampled jointly; one-sided p in the observed direction):
+  all: 144 fits, median -0.1232 (p=0.096); sig- 20 (null 95th pct 24, p=0.073); sig+ 0 (null 95th pct 33, p=1.000); Stouffer Z -12.73 (p=0.063)
+  fixed_effects: 72 fits, median -0.1007 (p=0.208); sig- 16 (null 95th pct 14, p=0.044); sig+ 0 (null 95th pct 17, p=1.000); Stouffer Z -7.11 (p=0.156)
+  year_effects_only: 72 fits, median -0.2992 (p=0.023); sig- 4 (null 95th pct 13, p=0.129); sig+ 0 (null 95th pct 20, p=1.000); Stouffer Z -10.90 (p=0.064)
+  horizon_1: 48 fits, median -0.1007 (p=0.171); sig- 0 (null 95th pct 10, p=1.000); sig+ 0 (null 95th pct 11, p=1.000); Stouffer Z -4.90 (p=0.174)
+  horizon_3: 48 fits, median -0.1638 (p=0.070); sig- 11 (null 95th pct 8, p=0.034); sig+ 0 (null 95th pct 12, p=1.000); Stouffer Z -8.82 (p=0.032)
+  horizon_5: 48 fits, median -0.1109 (p=0.102); sig- 9 (null 95th pct 7, p=0.036); sig+ 0 (null 95th pct 13, p=1.000); Stouffer Z -8.33 (p=0.032)
+  gdp_per_capita: 72 fits, median -0.0637 (p=0.279); sig- 0 (null 95th pct 14, p=1.000); sig+ 0 (null 95th pct 17, p=1.000); Stouffer Z -4.87 (p=0.235)
+  tfp: 72 fits, median -0.1450 (p=0.092); sig- 20 (null 95th pct 10, p=0.014); sig+ 0 (null 95th pct 22, p=1.000); Stouffer Z -13.13 (p=0.008)
+
+## Placebo: difference coefficient for past and future growth (fixed effects, start-of-window income control)
+gdppc / log1p / all: t-5 to t: +1.4794 [-0.3468, +3.3056]; t-3 to t: +1.2492 [-0.2416, +2.7400]; t-1 to t: +0.9484 [-0.0388, +1.9356]; t to t+1: +0.6683 [-0.5386, +1.8751]; t to t+3: +0.3863 [-0.3867, +1.1593]; t to t+5: +0.3737 [-0.2044, +0.9517]
+gdppc / log1p / billionaire_countries: t-5 to t: +0.9211 [-0.5692, +2.4115]; t-3 to t: +0.4272 [-0.6174, +1.4717]; t-1 to t: +0.0898 [-0.7272, +0.9068]; t to t+1: -0.1384 [-1.4626, +1.1859]; t to t+3: -0.3340 [-1.1673, +0.4992]; t to t+5: -0.1510 [-0.6333, +0.3314]
+gdppc / raw / all: t-5 to t: +0.1322 [-0.0143, +0.2786]; t-3 to t: +0.1165 [-0.0116, +0.2446]; t-1 to t: +0.1925 [+0.0907, +0.2942]; t to t+1: +0.0604 [-0.0707, +0.1916]; t to t+3: +0.0338 [-0.0710, +0.1386]; t to t+5: +0.0323 [-0.0473, +0.1119]
+gdppc / raw / billionaire_countries: t-5 to t: +0.0714 [-0.0546, +0.1973]; t-3 to t: +0.0457 [-0.0587, +0.1500]; t-1 to t: +0.1321 [+0.0303, +0.2338]; t to t+1: +0.0049 [-0.1457, +0.1556]; t to t+3: -0.0343 [-0.1418, +0.0733]; t to t+5: -0.0227 [-0.1134, +0.0680]
+tfp / log1p / all: t-5 to t: +1.0860 [-0.6069, +2.7789]; t-3 to t: +0.5961 [-0.7263, +1.9185]; t-1 to t: +0.2675 [-0.5160, +1.0509]; t to t+1: -0.1422 [-1.5114, +1.2269]; t to t+3: -0.7805 [-1.6003, +0.0392]; t to t+5: -0.4160 [-0.8697, +0.0377]
+tfp / log1p / billionaire_countries: t-5 to t: +0.5534 [-1.0056, +2.1124]; t-3 to t: -0.0019 [-1.0652, +1.0614]; t-1 to t: -0.4049 [-1.1056, +0.2957]; t to t+1: -0.6417 [-2.1247, +0.8413]; t to t+3: -1.1669 [-2.0318, -0.3020]; t to t+5: -0.6471 [-1.0617, -0.2324]
+tfp / raw / all: t-5 to t: +0.0767 [-0.0450, +0.1984]; t-3 to t: +0.0193 [-0.0796, +0.1183]; t-1 to t: +0.0350 [-0.0564, +0.1265]; t to t+1: -0.0442 [-0.1773, +0.0888]; t to t+3: -0.0948 [-0.2012, +0.0117]; t to t+5: -0.0709 [-0.1449, +0.0031]
+tfp / raw / billionaire_countries: t-5 to t: +0.0335 [-0.0814, +0.1484]; t-3 to t: -0.0245 [-0.1157, +0.0667]; t-1 to t: +0.0158 [-0.0772, +0.1088]; t to t+1: -0.0790 [-0.2210, +0.0630]; t to t+3: -0.1296 [-0.2295, -0.0298]; t to t+5: -0.0959 [-0.1682, -0.0237]
+forward minus backward (country bootstrap, 1,000 draws):
+  gdppc / log1p / all / h=3: forward +0.3863, backward +1.2492, difference -0.8629 [-2.6915, +0.6090], P(>=0) 0.169
+  gdppc / log1p / all / h=5: forward +0.3737, backward +1.4794, difference -1.1057 [-3.0179, +0.2952], P(>=0) 0.075
+  gdppc / log1p / billionaire_countries / h=3: forward -0.3340, backward +0.4272, difference -0.7612 [-2.5725, +0.5102], P(>=0) 0.166
+  gdppc / log1p / billionaire_countries / h=5: forward -0.1510, backward +0.9211, difference -1.0721 [-3.1554, +0.2187], P(>=0) 0.075
+  gdppc / raw / all / h=3: forward +0.0338, backward +0.1165, difference -0.0827 [-0.2972, +0.1167], P(>=0) 0.208
+  gdppc / raw / all / h=5: forward +0.0323, backward +0.1322, difference -0.0999 [-0.3812, +0.0853], P(>=0) 0.147
+  gdppc / raw / billionaire_countries / h=3: forward -0.0343, backward +0.0457, difference -0.0799 [-0.2729, +0.1128], P(>=0) 0.198
+  gdppc / raw / billionaire_countries / h=5: forward -0.0227, backward +0.0714, difference -0.0941 [-0.3550, +0.0891], P(>=0) 0.177
+  tfp / log1p / all / h=3: forward -0.7805, backward +0.5961, difference -1.3766 [-3.3166, +0.1623], P(>=0) 0.050
+  tfp / log1p / all / h=5: forward -0.4160, backward +1.0860, difference -1.5020 [-3.4390, +0.0459], P(>=0) 0.033
+  tfp / log1p / billionaire_countries / h=3: forward -1.1669, backward -0.0019, difference -1.1650 [-3.4425, +0.2247], P(>=0) 0.065
+  tfp / log1p / billionaire_countries / h=5: forward -0.6471, backward +0.5534, difference -1.2005 [-3.3772, +0.1637], P(>=0) 0.050
+  tfp / raw / all / h=3: forward -0.0948, backward +0.0193, difference -0.1141 [-0.4021, +0.0221], P(>=0) 0.048
+  tfp / raw / all / h=5: forward -0.0709, backward +0.0767, difference -0.1476 [-0.4068, +0.0633], P(>=0) 0.068
+  tfp / raw / billionaire_countries / h=3: forward -0.1296, backward -0.0245, difference -0.1051 [-0.3526, +0.0352], P(>=0) 0.069
+  tfp / raw / billionaire_countries / h=5: forward -0.0959, backward +0.0335, difference -0.1294 [-0.3669, +0.0648], P(>=0) 0.130
+
+## WID check (source-based top-1% wealth share x inherited share of billionaire wealth)
+country-years: 147, countries 26, years 2011-2022
+fe gdppc h=1 (n=146, countries=25, years 2011-2022): interaction +0.6237 [+0.2858, +0.9617]; top1 +0.0962 (se 0.1235)
+pooled gdppc h=1 (n=147, countries=26, years 2011-2022): interaction +0.0527 [-0.2303, +0.3358]; top1 -0.0322 (se 0.0440)
+fe gdppc h=3 (n=142, countries=25, years 2011-2020): interaction +0.2956 [+0.1365, +0.4547]; top1 -0.0524 (se 0.0934)
+pooled gdppc h=3 (n=143, countries=26, years 2011-2020): interaction +0.0107 [-0.2375, +0.2590]; top1 -0.0479 (se 0.0387)
+fe tfp h=1 (n=146, countries=25, years 2011-2022): interaction +0.4638 [+0.1781, +0.7496]; top1 +0.0789 (se 0.1266)
+pooled tfp h=1 (n=147, countries=26, years 2011-2022): interaction -0.0241 [-0.1641, +0.1160]; top1 -0.0136 (se 0.0235)
+fe tfp h=3 (n=142, countries=25, years 2011-2020): interaction +0.1184 [-0.0325, +0.2693]; top1 -0.1019 (se 0.1223)
+pooled tfp h=3 (n=143, countries=26, years 2011-2020): interaction -0.0618 [-0.1709, +0.0472]; top1 -0.0191 (se 0.0155)
