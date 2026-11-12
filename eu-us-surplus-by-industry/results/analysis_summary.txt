@@ -17,6 +17,8 @@ Hours per person per year, total economy 2021, self-employed; employees: AUT 2,0
 2019 contributions to the gap, USD per hour (share of gap), largest first: L -2.21 (0.28); K -1.48 (0.19); M -0.96 (0.12); J -0.84 (0.11); C -0.64 (0.08); G -0.42 (0.05); N -0.41 (0.05); I -0.33 (0.04); R -0.17 (0.02); F -0.13 (0.02)
 2019 sections with a positive contribution (NW higher): B 0.02, D_E 0.20
 2019 share of the gap: J+K+M+N; J+K+M; real estate L; manufacturing C; all other sections: 0.47; 0.42; 0.28; 0.08; 0.16
+2019 hours share of J+K+M; J+K+M+N: NW; US: 0.138, 0.158; 0.213, 0.214
+2019 gap excluding real estate L, USD per hour; share of it in J+K+M+N; J+K+M; C: -5.58; 0.66; 0.59; 0.11
 2019 structure and margin parts of the gap (sum over sections), USD per hour: -0.44; -7.35
 2019 L: contribution = structure + margin (USD/h); hours share NW, US; NR per hour in industry NW, US: -2.21 = -0.76 + -1.45; 0.011, 0.014; 267.0, 383.8
 2019 K: contribution = structure + margin (USD/h); hours share NW, US; NR per hour in industry NW, US: -1.48 = -0.60 + -0.88; 0.025, 0.044; 21.0, 46.6
@@ -34,6 +36,8 @@ Hours per person per year, total economy 2021, self-employed; employees: AUT 2,0
 2021 contributions to the gap, USD per hour (share of gap), largest first: L -2.50 (0.28); K -1.65 (0.19); M -0.93 (0.10); J -0.87 (0.10); C -0.79 (0.09); I -0.63 (0.07); G -0.39 (0.04); N -0.37 (0.04); B -0.24 (0.03); R -0.18 (0.02)
 2021 sections with a positive contribution (NW higher): D_E 0.01, H 0.30, P 0.01
 2021 share of the gap: J+K+M+N; J+K+M; real estate L; manufacturing C; all other sections: 0.43; 0.39; 0.28; 0.09; 0.20
+2021 hours share of J+K+M; J+K+M+N: NW; US: 0.144, 0.164; 0.217, 0.221
+2021 gap excluding real estate L, USD per hour; share of it in J+K+M+N; J+K+M; C: -6.40; 0.60; 0.54; 0.12
 2021 structure and margin parts of the gap (sum over sections), USD per hour: -0.81; -8.08
 2021 L: contribution = structure + margin (USD/h); hours share NW, US; NR per hour in industry NW, US: -2.50 = -0.90 + -1.60; 0.012, 0.015; 242.7, 363.3
 2021 K: contribution = structure + margin (USD/h); hours share NW, US; NR per hour in industry NW, US: -1.65 = -0.71 + -0.94; 0.026, 0.045; 24.4, 50.8
@@ -102,7 +106,11 @@ FRA: NR per hour; LC per hour; gap; contributions L; K; J+M+N; C; other: 5.9; 50
 DEU: NR per hour; LC per hour; gap; contributions L; K; J+M+N; C; other: 10.8; 51.7; -7.46; -3.13; -1.62; -1.54; -0.36; -0.81
 NLD: NR per hour; LC per hour; gap; contributions L; K; J+M+N; C; other: 12.7; 51.5; -5.52; -4.70; -0.10; -0.38; 0.48; -0.82
 SWE: NR per hour; LC per hour; gap; contributions L; K; J+M+N; C; other: 10.5; 39.3; -7.78; -2.97; -1.33; -0.76; -0.47; -2.25
+2021 share of the group's hours; share of the group's manufacturing hours, by country: AUT 0.047, 0.054; BEL 0.052, 0.039; DNK 0.028, 0.022; FIN 0.028, 0.026; FRA 0.290, 0.213; DEU 0.406, 0.535; NLD 0.094, 0.060; SWE 0.056, 0.049
+2021 contributions of J, M, N by country, USD per hour: AUT -1.09, -0.93, -0.54; BEL -0.62, -5.71, -0.33; DNK -1.24, 0.16, -0.85; FIN -0.39, -1.01, -0.61; FRA -1.40, -1.33, -0.35; DEU -0.67, -0.44, -0.43; NLD -0.85, 0.19, 0.28; SWE 0.26, -0.42, -0.60
 Countries where manufacturing contributes positively (NW country higher than US): AUT, DNK, FIN, NLD
+2019 transport (H) contribution by country, USD per hour: AUT 0.09; BEL 0.00; DNK 0.05; FIN -0.14; FRA -0.29; DEU -0.13; NLD 0.21; SWE -0.20
+2021 transport (H) contribution by country, USD per hour: AUT -0.16; BEL -0.02; DNK 3.01; FIN -0.33; FRA 0.32; DEU 0.30; NLD 0.35; SWE -0.19
 
 == Gross basis (before depreciation): the same decomposition with consumption of fixed capital left in ==
 Latest year with US income components by industry in STAN 2025: 2021 (total economy only for 2022-2024)

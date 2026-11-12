@@ -173,6 +173,13 @@ def main() -> None:
             f"{t.loc[GROUP_JKMN, 'share_of_gap'].sum():.2f}; {t.loc[['J', 'K', 'M'], 'share_of_gap'].sum():.2f}; "
             f"{t.loc['L', 'share_of_gap']:.2f}; {t.loc['C', 'share_of_gap']:.2f}; "
             f"{1 - t.loc[GROUP_JKMN + ['L', 'C'], 'share_of_gap'].sum():.2f}")
+        say(f"{y} hours share of J+K+M; J+K+M+N: NW; US",
+            f"{t.loc[['J', 'K', 'M'], 'hours_share_nw'].sum():.3f}, {t.loc[['J', 'K', 'M'], 'hours_share_us'].sum():.3f}; "
+            f"{t.loc[GROUP_JKMN, 'hours_share_nw'].sum():.3f}, {t.loc[GROUP_JKMN, 'hours_share_us'].sum():.3f}")
+        ex_l = tot - t.loc["L", "contribution"]
+        say(f"{y} gap excluding real estate L, USD per hour; share of it in J+K+M+N; J+K+M; C",
+            f"{ex_l:.2f}; {t.loc[GROUP_JKMN, 'contribution'].sum() / ex_l:.2f}; "
+            f"{t.loc[['J', 'K', 'M'], 'contribution'].sum() / ex_l:.2f}; {t.loc['C', 'contribution'] / ex_l:.2f}")
         say(f"{y} structure and margin parts of the gap (sum over sections), USD per hour",
             f"{t.structure.sum():.2f}; {t.margin.sum():.2f}")
         for s in ["L", "K", "M", "J", "C", "N", "I", "G"]:
@@ -273,8 +280,22 @@ def main() -> None:
         r = ct.loc[c]
         say(f"{c}: NR per hour; LC per hour; gap; contributions L; K; J+M+N; C; other",
             f"{r.nr_per_hour:.1f}; {r.lc_per_hour:.1f}; {r.gap:.2f}; {r.L:.2f}; {r.K:.2f}; {r.J_M_N:.2f}; {r.C:.2f}; {r.other:.2f}")
+    hrs = {c: total_hours(c, 2021) for c in NW}
+    c_hrs = {c: float(accounts(c, 2021, ["C"]).loc["C", "H"]) for c in NW}
+    say("2021 share of the group's hours; share of the group's manufacturing hours, by country",
+        "; ".join(f"{c} {hrs[c] / sum(hrs.values()):.3f}, {c_hrs[c] / sum(c_hrs.values()):.3f}" for c in NW))
+    parts = []
+    for c in NW:
+        g = accounts(c, 2021, SECTIONS).fillna(0)["NR"] / hrs[c] - us["NR"] / hu
+        parts.append(f"{c} {g['J']:.2f}, {g['M']:.2f}, {g['N']:.2f}")
+    say("2021 contributions of J, M, N by country, USD per hour", "; ".join(parts))
     say("Countries where manufacturing contributes positively (NW country higher than US)",
         ", ".join(c for c in NW if ct.loc[c, "C"] > 0) or "none")
+    for y in YEARS:
+        us_y, hu_y = accounts("USA", y, SECTIONS), total_hours("USA", y)
+        say(f"{y} transport (H) contribution by country, USD per hour",
+            "; ".join(f"{c} {round(accounts(c, y, SECTIONS).fillna(0).loc['H', 'NR'] / total_hours(c, y) - us_y.loc['H', 'NR'] / hu_y, 2) + 0.0:.2f}"
+                      for c in NW))
 
     # ------------------------------------------------------------------ gross basis
     section("Gross basis (before depreciation): the same decomposition with consumption of fixed capital left in")
