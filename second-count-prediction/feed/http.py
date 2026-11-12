@@ -11,7 +11,7 @@ UA = {"User-Agent": "second-count-prediction/0.1 (research; github.com/DiogoRibe
 PAUSE = 1.0  # seconds between requests to the same kind of source
 
 
-def get(url: str, tries: int = 5, timeout: int = 300) -> bytes:
+def get(url: str, tries: int = 5, timeout: int = 300, backoff: int = 30) -> bytes:
     for i in range(tries):
         try:
             with urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=timeout) as r:
@@ -21,9 +21,9 @@ def get(url: str, tries: int = 5, timeout: int = 300) -> bytes:
         except urllib.error.HTTPError as e:
             if e.code in (403, 404, 410):
                 raise
-            time.sleep(min(30 * 2**i, 300))
+            time.sleep(min(backoff * 2**i, 300))
         except (urllib.error.URLError, TimeoutError, ConnectionError):
-            time.sleep(min(30 * 2**i, 300))
+            time.sleep(min(backoff * 2**i, 300))
     raise RuntimeError(f"failed after {tries} tries: {url}")
 
 

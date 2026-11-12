@@ -160,9 +160,13 @@ def dot_months_from_xlsx(data: bytes) -> dict[str, int]:
 # --- Chicago ---------------------------------------------------------------------------------------------
 
 
-def soql(dataset: str, **params: str) -> list[dict]:
+def soql(dataset: str, tries: int = 3, timeout: int = 180, **params: str) -> list[dict]:
     q = urllib.parse.urlencode({f"${k}": v for k, v in params.items()})
-    return json.loads(get(f"{PORTAL}/resource/{dataset}.json?{q}", timeout=600))
+    return json.loads(get(f"{PORTAL}/resource/{dataset}.json?{q}", tries=tries, timeout=timeout, backoff=10))
+
+
+def log(msg: str) -> None:
+    print(f"{dt.datetime.now(dt.UTC):%H:%M:%S} {msg}", flush=True)
 
 
 def month_range(first: str, last: str) -> list[str]:
@@ -180,21 +184,22 @@ def next_month(month: str) -> str:
 
 
 def chicago_trips(today: str) -> dict[str, dict]:
-    """Trips by month of trip start, per dataset: one grouped query, or one count per month if that fails."""
+    """Trips by month of trip start: one count(*) per month and dataset (PLAN.md, change of 12 November)."""
     out: dict[str, dict] = {}
     for ds, (first, last) in TRIPS.items():
-        try:
-            rows = soql(
-                ds, select="date_trunc_ym(trip_start_timestamp) AS m, count(*) AS n", group="m", order="m", limit="5000"
-            )
-            got = {r["m"][:7]: int(r["n"]) for r in rows if r.get("m")}
-        except (RuntimeError, ValueError, KeyError):
-            got = {}
-            for m in month_range(first, last or today):
-                lo, hi = f"{m}-01T00:00:00", f"{next_month(m)}-01T00:00:00"
-                where = f"trip_start_timestamp >= '{lo}' AND trip_start_timestamp < '{hi}'"
+        got = {}
+        for m in month_range(first, last or today):
+            lo, hi = f"{m}-01T00:00:00", f"{next_month(m)}-01T00:00:00"
+            where = f"trip_start_timestamp >= '{lo}' AND trip_start_timestamp < '{hi}'"
+            try:
                 rows = soql(ds, select="count(*) AS n", where=where)
-                got[m] = int(rows[0]["n"]) if rows else 0
+            except RuntimeError:
+                log(f"chicago {ds} {m}: no answer, month left out")
+                continue
+            n = int(rows[0]["n"]) if rows else 0
+            if n > 0:
+                got[m] = n
+            log(f"chicago {ds} {m} counted")
         for m, n in got.items():
             out.setdefault(m, {"trips": 0, "datasets": []})
             out[m]["trips"] += n
@@ -205,6 +210,8 @@ def chicago_trips(today: str) -> dict[str, dict]:
 def chicago_per_unit(dataset: str) -> dict[str, dict]:
     rows = soql(
         dataset,
+        tries=4,
+        timeout=600,
         select="month_reported, sum(number_of_trips) AS trips, count(*) AS records, "
         "count(number_of_trips) AS with_trips",
         group="month_reported",
@@ -243,27 +250,21 @@ def write_csv(path: Path, header: list[str], rows: list[list]) -> None:
         w.writerows(rows)
 
 
-def main() -> None:
-    ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
-    ap.add_argument("--out", type=Path, default=Path("sources"))
-    ap.add_argument("--metadata-only", action="store_true")
-    a = ap.parse_args()
-    a.out.mkdir(parents=True, exist_ok=True)
-    today = dt.date.today().isoformat()[:7]
+def snapshot_citibike(out: Path, metadata_only: bool) -> None:
     meta: dict = {"retrieved": dt.datetime.now(dt.UTC).isoformat(timespec="seconds"), "documents": {}}
-
+    log("bucket")
     keys = bucket_keys()
-    (a.out / "citibike_bucket.json").write_text(json.dumps(keys, indent=1), encoding="utf-8")
+    (out / "citibike_bucket.json").write_text(json.dumps(keys, indent=1), encoding="utf-8")
     html = get(REPORTS_PAGE).decode("utf-8", "replace")
     links = report_links(html)
     meta["documents"]["operating_reports_page"] = {"url": REPORTS_PAGE, "sha256": sha(html.encode()), "links": links}
     meta["dot_candidates"] = [status(u) for u in DOT_CANDIDATES]
-    meta["chicago"] = {ds: view_meta(ds) for ds in [*TRIPS, *PER_UNIT.values()]}
-    if a.metadata_only:
-        (a.out / "METADATA.json").write_text(json.dumps(meta, indent=1), encoding="utf-8")
-        print(f"metadata only: {len(keys)} bucket keys, {len(links)} report links")
+    if metadata_only:
+        (out / "METADATA.json").write_text(json.dumps(meta, indent=1), encoding="utf-8")
+        log(f"metadata only: {len(keys)} bucket keys, {len(links)} report links")
         return
 
+    log("operator reports")
     rows = []
     for month, url in links.items():
         try:
@@ -273,8 +274,9 @@ def main() -> None:
             continue
         n, pat = report_total(pdf_text(data, pages=6))
         rows.append([month, n if n is not None else "", pat if pat is not None else "", url, sha(data), ""])
-    write_csv(a.out / "citibike_operator_reports.csv", ["month", "trips", "pattern", "url", "sha256", "note"], rows)
+    write_csv(out / "citibike_operator_reports.csv", ["month", "trips", "pattern", "url", "sha256", "note"], rows)
 
+    log("DOT table")
     for u in DOT_CANDIDATES:
         try:
             data = get(u)
@@ -283,26 +285,53 @@ def main() -> None:
         table = dot_months_from_xlsx(data) if data[:2] == b"PK" else dot_months_from_text(pdf_text(data))
         if len(table) >= 24:
             ext = "xlsx" if data[:2] == b"PK" else "pdf"
-            (a.out / f"citibike_dot_report.{ext}").write_bytes(data)
+            (out / f"citibike_dot_report.{ext}").write_bytes(data)
             meta["documents"]["dot_report"] = {"url": u, "sha256": sha(data), "months": len(table)}
-            write_csv(a.out / "citibike_dot.csv", ["month", "trips"], [[m, n] for m, n in sorted(table.items())])
+            write_csv(out / "citibike_dot.csv", ["month", "trips"], [[m, n] for m, n in sorted(table.items())])
             break
+    (out / "SOURCES.json").write_text(json.dumps(meta, indent=1), encoding="utf-8")
+    log(f"values: {len(rows)} operating reports")
 
-    trips = chicago_trips(today)
-    write_csv(
-        a.out / "chicago_trips.csv",
-        ["month", "trips", "datasets"],
-        [[m, v["trips"], " ".join(v["datasets"])] for m, v in trips.items()],
-    )
+
+def snapshot_chicago(out: Path, metadata_only: bool) -> None:
+    meta = {
+        "retrieved": dt.datetime.now(dt.UTC).isoformat(timespec="seconds"),
+        "datasets": {ds: view_meta(ds) for ds in [*TRIPS, *PER_UNIT.values()]},
+    }
+    if metadata_only:
+        (out / "METADATA_chicago.json").write_text(json.dumps(meta, indent=1), encoding="utf-8")
+        log("metadata only: Chicago datasets")
+        return
     for name, ds in PER_UNIT.items():
+        log(f"chicago {name}")
         per = chicago_per_unit(ds)
         write_csv(
-            a.out / f"chicago_{name}.csv",
+            out / f"chicago_{name}.csv",
             ["month", "trips", "records", "records_with_trips"],
             [[m, v["trips"], v["records"], v["with_trips"]] for m, v in sorted(per.items())],
         )
-    (a.out / "SOURCES.json").write_text(json.dumps(meta, indent=1), encoding="utf-8")
-    print(f"values: {len(rows)} operating reports, {len(trips)} Chicago months")
+    log("chicago trips")
+    trips = chicago_trips(dt.date.today().isoformat()[:7])
+    write_csv(
+        out / "chicago_trips.csv",
+        ["month", "trips", "datasets"],
+        [[m, v["trips"], " ".join(v["datasets"])] for m, v in trips.items()],
+    )
+    (out / "SOURCES_chicago.json").write_text(json.dumps(meta, indent=1), encoding="utf-8")
+    log(f"values: {len(trips)} Chicago months")
+
+
+def main() -> None:
+    ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    ap.add_argument("--out", type=Path, default=Path("sources"))
+    ap.add_argument("--metadata-only", action="store_true")
+    ap.add_argument("--only", choices=["citibike", "chicago"])
+    a = ap.parse_args()
+    a.out.mkdir(parents=True, exist_ok=True)
+    if a.only != "chicago":
+        snapshot_citibike(a.out, a.metadata_only)
+    if a.only != "citibike":
+        snapshot_chicago(a.out, a.metadata_only)
 
 
 if __name__ == "__main__":

@@ -115,3 +115,9 @@ Any change is listed here with its reason and date, and marked in the article.
   bottom of the registered grid, so its observed value could only be 0.1% and the factor-of-two test would
   have failed for a reason that has nothing to do with the prediction. The same could happen to a test pair
   whose two counts agree closely.
+- 12 November 2026, same window (the first full run was cancelled while it was still waiting on the City of
+  Chicago's portal, before anything had been written out): the Chicago trips are now counted with one
+  count(*) per month and dataset from the start, instead of one grouped query over each dataset, which did not
+  answer within the limits; and the Chicago counts run in their own job, in parallel with the Citi Bike
+  counting. What is counted is unchanged. A month whose count the portal does not return after three tries is
+  left out and listed.
