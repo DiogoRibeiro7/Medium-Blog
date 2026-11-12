@@ -15,8 +15,13 @@ Indicators:
 * NY.GNP.PCAP.PP.KD  GNI per person, PPP, constant 2021 international dollars
 * NE.CON.PRVT.PP.KD  household final consumption, PPP, constant 2021 international dollars
 * SP.POP.TOTL        population
-* PA.NUS.PPPC.RF     price level ratio: PPP conversion factor over the market exchange rate
-* CM.MKT.LCAP.GD.ZS  market capitalisation of listed domestic companies, % of GDP
+* PA.NUS.PPP         PPP conversion factor, GDP (local currency per international dollar)
+* PA.NUS.FCRF        official exchange rate (local currency per US dollar); the ratio
+                     PA.NUS.PPP / PA.NUS.FCRF is the price level ratio
+* CM.MKT.LCAP.GD.ZS  market capitalisation of listed domestic companies, % of GDP (optional)
+
+Optional indicators that the API reports as archived are recorded in the
+manifest and skipped; required ones fail the run.
 
 Run in GitHub Actions::
 
@@ -41,12 +46,19 @@ from resilient_fetch import fetch_bytes  # noqa: E402
 
 API = "https://api.worldbank.org/v2/country/all/indicator/{ind}?format=json&per_page=20000&date={first}:{last}&page={page}"
 INDICATORS = ("NY.GDP.PCAP.PP.KD", "NY.GNP.PCAP.PP.KD", "NE.CON.PRVT.PP.KD", "SP.POP.TOTL",
-              "PA.NUS.PPPC.RF", "CM.MKT.LCAP.GD.ZS")
+              "PA.NUS.PPP", "PA.NUS.FCRF", "CM.MKT.LCAP.GD.ZS")
+OPTIONAL = {"CM.MKT.LCAP.GD.ZS"}
+
+
+class IndicatorMissing(ValueError):
+    """The API says the indicator does not exist or was archived."""
 
 
 def parse_page(raw: bytes, indicator: str) -> tuple[list[dict[str, Any]], int]:
     """Rows and total page count from one API page; fails on unexpected shapes."""
     doc = json.loads(raw)
+    if isinstance(doc, list) and len(doc) == 1 and isinstance(doc[0], dict) and "message" in doc[0]:
+        raise IndicatorMissing(f"{indicator}: {doc[0]['message']}")
     if not isinstance(doc, list) or len(doc) != 2 or not isinstance(doc[0], dict):
         raise ValueError(f"unexpected WDI response for {indicator}: {str(doc)[:200]}")
     meta, records = doc
@@ -67,12 +79,19 @@ def fetch(output_dir: Path, first: int = 1995, last: int = 2025,
     manifest: dict[str, Any] = {"retrieved_utc": datetime.now(timezone.utc).isoformat(timespec="seconds"),
                                 "first": first, "last": last, "pages": []}
     rows: list[dict[str, Any]] = []
+    manifest["skipped"] = {}
     for ind in INDICATORS:
         page, pages = 1, 1
         while page <= pages:
             url = API.format(ind=ind, first=first, last=last, page=page)
             raw = fetcher(url, name=f"wdi_{ind}_{page}", timeout_seconds=180, max_attempts=4, wait_seconds=10)
-            part, pages = parse_page(raw, ind)
+            try:
+                part, pages = parse_page(raw, ind)
+            except IndicatorMissing as exc:
+                if ind not in OPTIONAL:
+                    raise
+                manifest["skipped"][ind] = str(exc)
+                break
             rows += part
             manifest["pages"].append({"indicator": ind, "page": page, "url": url, "bytes": len(raw),
                                       "sha256": hashlib.sha256(raw).hexdigest(), "rows": len(part)})
