@@ -20,14 +20,14 @@ python -m pytest -q tests
 
 `data/fetch_log.txt` records the URL, size and SHA-256 of every file.
 
-- **CIP 4.0** (China Industrial Productivity database, 2023 release, RIETI; Harry X. Wu and co-authors): 37 industries, 1987–2017. Files 1.2 (value added), 1.4 (capital and labour compensation), 1.6 (producer prices), 2.1 (investment, current yuan), 2.2 (net capital stock, 2000 yuan), 2.3 (capital input index), 3.1 (employment), 3.2 (hours), 4 (growth accounts, including real value-added growth by industry) and 5 (classification), kept as published in `data/raw/cip/`. The host could not be reached from the machine that built this snapshot, so the workbooks were downloaded by the author on 12 November 2026; `fetch.py --only cip` downloads the same files from RIETI.
+- **CIP 4.0** (China Industrial Productivity database, 2023 release, RIETI; Harry X. Wu and co-authors): 37 industries, 1987–2017. Files 1.2 (value added), 1.4 (capital and labour compensation), 1.6 (producer prices), 2.1 (investment, current yuan), 2.2 (net capital stock, 2000 yuan), 2.3 (capital input index), 3.1 (employment), 3.2 (hours), 4 (growth accounts, including real value-added growth by industry) and 5 (classification), read as published from `data/raw/cip/`. RIETI holds the copyright of the database, so the workbooks are not redistributed here: `python fetch.py --out data --only cip --verify` downloads them from RIETI and checks each against the SHA-256 recorded in `data/fetch_log.txt` (the snapshot used for the article was downloaded on 12 November 2026), and the workflow does the same before it reruns the analysis. Everything in `results/` is derived from them.
 - **OECD Data Explorer** (SDMX API, 12 November 2026):
   - `DSD_EO_LTB@DF_EO_LTB` (Economic Outlook long-term baseline): productive capital stock in volume (`KTPV_AV`), GDP in volume and potential employment for China and 13 comparison economies, 1990–2025;
   - `DSD_NAMAIN10@DF_TABLE1_EXPENDITURE`: GDP at current prices and in volume and gross fixed capital formation at current prices;
   - `DSD_NAMAIN10@DF_TABLE9A`, `@DF_TABLE6` and `@DF_TABLE7`: net fixed assets, value added and employment of manufacturing (ISIC Rev. 4 section C) in eleven European countries, Japan and the US.
 - **NBS published figures** (`data/nbs_published.csv`), entered by hand with the URL of each release: revenue per 100 yuan of assets, revenue per employee, total assets and the profit rate of industrial enterprises above designated size, 2018–2025, each with the NBS's change on a comparable basis; and fixed-asset investment in manufacturing and in total for 2013 and 2017.
 
-OECD data are reused under the OECD terms and conditions and CIP data under RIETI's terms; neither is relicensed by the repository's licence.
+OECD data are reused under the OECD terms and conditions; CIP data belong to RIETI and the database's authors. Neither is relicensed by the repository's licence.
 
 ## Definitions
 

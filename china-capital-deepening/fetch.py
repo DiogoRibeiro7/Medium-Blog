@@ -82,11 +82,36 @@ def get(url: str, tries: int = 4) -> tuple[int, bytes]:
     raise RuntimeError(f"{url}: {last}")
 
 
+def verify_cip(out: Path) -> int:
+    logged = {}
+    for ln in (out / "fetch_log.txt").read_text().splitlines():
+        parts = ln.split("\t")
+        if ln.startswith("cip_") and len(parts) == 5:
+            logged[parts[0]] = (parts[3], parts[4])
+    (out / "raw" / "cip").mkdir(parents=True, exist_ok=True)
+    bad = 0
+    for f in CIP_FILES:
+        sha, url = logged[f"cip_{f}"]
+        status, body = get(url)
+        got = hashlib.sha256(body).hexdigest()
+        ok = status == 200 and got == sha
+        print(f"cip_{f}\t{status}\t{'ok' if ok else 'CHANGED ' + got}")
+        if status == 200:
+            (out / "raw" / "cip" / url.rsplit("/", 1)[1]).write_bytes(body)
+        bad += not ok
+    return 1 if bad else 0
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("--out", type=Path, default=Path("data"))
     ap.add_argument("--only", choices=["oecd", "cip"], help="fetch one source only")
+    ap.add_argument("--verify", action="store_true",
+                    help="with --only cip: download the workbooks and check them against the SHA-256 in fetch_log.txt "
+                         "instead of rewriting the log (used by the workflow, as the workbooks are not redistributed)")
     args = ap.parse_args()
+    if args.verify:
+        return verify_cip(args.out)
     out: Path = args.out
     (out / "raw" / "cip").mkdir(parents=True, exist_ok=True)
     log = [f"# fetched {datetime.now(timezone.utc).isoformat(timespec='seconds')}",
