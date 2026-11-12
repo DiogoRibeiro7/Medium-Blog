@@ -1,0 +1,57 @@
+name: Reproduce minimum-wage-in-work-poverty
+
+on:
+  pull_request:
+    paths:
+      - 'minimum-wage-in-work-poverty/**'
+      - '.github/workflows/minimum-wage-in-work-poverty.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'minimum-wage-in-work-poverty/**'
+      - '.github/workflows/minimum-wage-in-work-poverty.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: minimum-wage-in-work-poverty
+    env:
+      MPLBACKEND: Agg
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: minimum-wage-in-work-poverty/requirements.txt
+
+      - name: Install pinned dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Run the tests
+        run: python -m pytest -q tests
+
+      - name: Rerun the analysis
+        run: python analysis.py > /dev/null
+
+      - name: Check the numbers match the committed run
+        run: git diff --exit-code -- results/analysis_summary.txt
+
+      - name: Draw the figures
+        run: |
+          python figures.py
+          for f in fig1_floor_and_median_real fig2_floor_line_and_in_work_poverty \
+                   fig3_net_minimum_wage_vs_poverty_line fig4_who_is_poor_in_work; do
+            test -s "figures/$f.png"
+          done
