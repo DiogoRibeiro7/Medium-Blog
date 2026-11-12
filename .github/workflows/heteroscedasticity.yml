@@ -1,0 +1,70 @@
+name: Reproduce heteroscedasticity
+
+on:
+  pull_request:
+    paths:
+      - 'heteroscedasticity/**'
+      - '.github/workflows/heteroscedasticity.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'heteroscedasticity/**'
+      - '.github/workflows/heteroscedasticity.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: heteroscedasticity-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    defaults:
+      run:
+        working-directory: heteroscedasticity
+    env:
+      MPLBACKEND: Agg
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: heteroscedasticity/requirements.txt
+
+      - name: Install pinned dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Keep the committed results
+        run: mkdir -p "$RUNNER_TEMP/committed" && cp results/*.txt "$RUNNER_TEMP/committed/"
+
+      - name: Check the estimators
+        run: python check_het.py
+
+      - name: Rerun the experiments
+        run: |
+          python 01_public_schools.py
+          python 02_house_prices_pretest.py
+          python 03_simulation_inference.py
+          python 04_wealth_wls.py
+          python 05_simulation_wls.py
+          python 06_ames_intervals.py
+          python 07_simulation_intervals.py
+
+      - name: Check the numbers match the committed run
+        run: python check_reproduction.py "$RUNNER_TEMP/committed"
+
+      - name: Check every figure was drawn
+        run: |
+          for f in fig1_public_schools fig2_hprice_multipliers fig3_pretest fig4_size_simulation fig5_wealth_wls \
+                   fig6_wls_simulation fig7_ames_coverage fig8_interval_simulation fig9_ames_review; do
+            test -s "figures/$f.png"
+          done

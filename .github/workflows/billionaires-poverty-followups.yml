@@ -41,3 +41,6 @@ jobs:
       - name: Reproduce every number in Part 4
         working-directory: billionaires-poverty-followups
         run: python part4_threshold_crossings.py --check --figures figures/check4 | tee -a "$GITHUB_STEP_SUMMARY"
+      - name: Reproduce every number in Part 5
+        working-directory: billionaires-poverty-followups
+        run: python part5_volatility.py --check --figures figures/check5 | tee -a "$GITHUB_STEP_SUMMARY"

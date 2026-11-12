@@ -246,6 +246,15 @@ RUN_TIME = dt.time(8, 0)  # the daily run, after the source publishes in the mor
 #                  report gains a column, data_cut.
 #   holidays       treat Germany's nationwide public holidays as Sundays, in the delay profile and in
 #                  the report.
+#   graded         (Part 6) a number tau, or None. Instead of asking whether a file brought anything,
+#                  ask how much of what it was expected to bring it brought: for each of the 14 latest
+#                  files, the cases it added against the cases the delay profile expected it to add
+#                  (the increase in each date's expected share, times an estimate of the date's final
+#                  count from a week or more back). A file that brought less than tau of that is short:
+#                  the share it was expected to add is taken off the dates it covers, in proportion to
+#                  what is missing, unless later files brought the missing cases. Needs
+#                  fallback="last_week" and no content_check. The report gains a column,
+#                  missing_cases.
 #   fallback       what to use for a date with less than a fifth of its count expected in hand:
 #                  "level" (Part 4), the mean 28-day count of the four dates in the profile, 28 to 55
 #                  days old; or "last_week", the estimate for the latest earlier date of the same
@@ -277,8 +286,8 @@ def german_holidays(first_year: int = 2020, last_year: int = 2024) -> list[dt.da
     return sorted(out)
 
 
-def holiday_sql() -> str:
-    values = ", ".join(f"(date '{d.isoformat()}')" for d in german_holidays())
+def holiday_sql(years: tuple[int, int] = (2020, 2024)) -> str:
+    values = ", ".join(f"(date '{d.isoformat()}')" for d in german_holidays(*years))
     return f"""
 create table if not exists core.holidays (d date primary key);
 insert or ignore into core.holidays values {values};
@@ -292,13 +301,15 @@ def _replace_once(text: str, old: str, new: str) -> str:
     return text.replace(old, new)
 
 
-def variant_sql(content_check: bool = False, holidays: bool = False, fallback: str = "level"
+def variant_sql(content_check: bool = False, holidays: bool = False, fallback: str = "level",
+                graded: float | None = None, holiday_years: tuple[int, int] = (2020, 2024)
                 ) -> tuple[str, str, str, str]:
     """(schema, extra, profile, report) SQL for a variant. The defaults give the Part 4 SQL."""
     assert fallback in ("level", "last_week")
+    assert graded is None or (fallback == "last_week" and not content_check), "graded needs last_week, no content_check"
     schema, extra, profile, report = SCHEMA_SQL, "", PROFILE_SQL, REPORT_SQL
     if holidays:
-        extra = holiday_sql()
+        extra = holiday_sql(holiday_years)   # Part 5 used 2020-2024; Part 6 extends it to 2027
         profile = profile.replace("isodow(d)", "core.daytype(d)")
         report = _replace_once(report, "isodow(win.d)", "core.daytype(win.d)")
     if content_check:
@@ -347,6 +358,92 @@ est as (""")
                 else coalesce((select hs.known / hs.share from hist hs       -- same weekday, a week or more old
                                where hs.weekday = cur.weekday and hs.d < cur.d and hs.age >= 7 and hs.share >= 0.2
                                order by hs.d desc limit 1), pr.mean_full) end as nowcast""")
+    if graded is not None:
+        daytype = "core.daytype" if holidays else "isodow"
+        tau = repr(float(graded))
+        schema = _replace_once(schema, "    code_version       varchar   not null\n);",
+                               "    code_version       varchar   not null,\n    missing_cases      double\n);")
+        report = _replace_once(report, "win as (", f"""gfiles as (                                          -- the 14 latest files, each with the file before it
+    select q, prev
+    from (select publication_date as q, lag(publication_date) over (order by publication_date) as prev
+          from (select distinct publication_date from k)) f, latest
+    where f.q > latest.p - 14 and f.prev is not null
+),
+gdates as (                                          -- what each of them added to each of the 28 dates it covers
+    select f.q, f.prev, f.q - i.i::integer as d,
+           coalesce(k1.cases, 0) - coalesce(k0.cases, 0) as added
+    from gfiles f cross join (select unnest(range(1, 29)) as i) i
+    left join k k1 on k1.publication_date = f.q and k1.reporting_date = f.q - i.i::integer
+    left join k k0 on k0.publication_date = f.prev and k0.reporting_date = f.q - i.i::integer
+),
+glevel_base as (                                     -- the 49 dates before the latest file
+    select latest.p - i.i::integer as d, {daytype}(latest.p - i.i::integer) as weekday, i.i::integer as age,
+           coalesce(k.cases, 0) as known
+    from latest cross join (select unnest(range(1, 50)) as i) i
+    left join k on k.publication_date = latest.p and k.reporting_date = latest.p - i.i::integer
+),
+glevel_known as (                                    -- dates a week or more old: known / expected share
+    select b.d, b.weekday, b.known / pr.share as level
+    from glevel_base b join profile pr on pr.weekday = b.weekday and pr.age = least(b.age, 28)
+    where b.age >= 7 and pr.share >= 0.2
+),
+glevel as (                                          -- younger dates: the latest such date of the same type
+    select b.d, coalesce((select lk.level from glevel_known lk where lk.d = b.d),
+                         (select lk.level from glevel_known lk where lk.weekday = b.weekday and lk.d < b.d
+                          order by lk.d desc limit 1), 0) as level
+    from glevel_base b
+),
+gflow as (                                           -- the share of each date each file was expected to add
+    select g.q, g.d, g.added, lv.level,
+           greatest(coalesce(p1.share, 0) - coalesce(p0.share, 0), 0) as dshare
+    from gdates g
+    join glevel lv on lv.d = g.d
+    left join profile p1 on p1.weekday = {daytype}(g.d) and p1.age = least(greatest(g.q - g.d, 0), 28)
+    left join profile p0 on p0.weekday = {daytype}(g.d) and p0.age = least(greatest(g.prev - g.d, 0), 28)
+),
+gfile as (                                           -- per file: added against expected
+    select q, sum(added) as observed, sum(dshare * level) as expected,
+           case when sum(dshare * level) > 0 then sum(added) / sum(dshare * level) else 1 end as r
+    from gflow group by q
+),
+gw as (select q, expected, r, case when r >= {tau} then 1.0 else greatest(r, 0.0) end as w from gfile),
+gseq as (                                            -- running balance: cases missing minus cases brought beyond expectation
+    select q, (1 - w) * expected as short,
+           sum((1 - w) * expected - greatest(r - 1, 0) * expected) over (order by q) as cum
+    from gw
+),
+gback as (                                           -- the backlog now; it restarts wherever the balance was lowest
+    select (select cum from gseq order by q desc limit 1) - least(0, min(cum)) as backlog, least(0, min(cum)) as m
+    from gseq
+),
+greset as (
+    select coalesce(max(gseq.q) filter (where gseq.cum <= gback.m + 1e-9), date '1900-01-01') as q0,
+           max(gback.backlog) as backlog
+    from gseq, gback
+),
+gpi as (                                             -- the part of the shortfall since then not yet made up
+    select case when sh.short > 0 then least(1.0, gr.backlog / sh.short) else 0.0 end as f, gr.backlog
+    from greset gr,
+         (select coalesce(sum(gseq.short), 0) as short from gseq, greset where gseq.q > greset.q0) sh
+),
+gmiss as (
+    select f.d, sum((1 - gw.w) * f.dshare) as missing_share
+    from gflow f join gw using (q), greset
+    where f.q > greset.q0
+    group by f.d
+),
+win as (""")
+        report = _replace_once(report, """coalesce(k.cases, 0) as known
+    from win left join k""", """coalesce(k.cases, 0) as known,
+           gpi.f * coalesce(gm.missing_share, 0) as missing_share,
+           gpi.backlog as missing_cases
+    from win cross join gpi left join gmiss gm on gm.d = win.d left join k""")
+        report = _replace_once(report, "case when pr.share >= 0.2 then cur.known / pr.share",
+                               "case when pr.share - cur.missing_share >= 0.2 then cur.known / (pr.share - cur.missing_share)")
+        report = _replace_once(report, """       $code_version as code_version
+from est""", """       $code_version as code_version,
+       max(est.missing_cases) as missing_cases
+from est""")
     return schema, extra, profile, report
 
 
@@ -363,10 +460,12 @@ class Incoming:
 
 class Pipeline:
     def __init__(self, database: str = ":memory:", content_check: bool = False, holidays: bool = False,
-                 fallback: str = "level"):
+                 fallback: str = "level", graded: float | None = None,
+                 holiday_years: tuple[int, int] = (2020, 2024)):
         self.con = duckdb.connect(database)
         self.con.execute("set threads = 1")
-        schema, extra, self.profile_sql, self.report_sql = variant_sql(content_check, holidays, fallback)
+        schema, extra, self.profile_sql, self.report_sql = variant_sql(content_check, holidays, fallback, graded,
+                                                                       holiday_years)
         self.code_version = hashlib.sha256((schema + extra + self.profile_sql + self.report_sql).encode()).hexdigest()[:12]
         self.con.execute(schema)
         self.con.execute(STATE_MACRO_SQL)
@@ -479,6 +578,8 @@ def same(a: pd.DataFrame, b: pd.DataFrame) -> bool:
 # The source: the RKI files of Part 3, one file per publication day
 # ---------------------------------------------------------------------------
 PART3_DATA = Path(__file__).resolve().parents[1] / "part3" / "data"
+PART6_DATA = Path(__file__).resolve().parents[1] / "part6" / "data"
+DAILY_LAST_PART3 = dt.date(2023, 12, 31)   # Part 3 read daily files to here, then one a month
 
 
 def write_incoming(directory: Path, first: dt.date, last: dt.date, delays: dict[dt.date, int] | None = None
@@ -491,6 +592,9 @@ def write_incoming(directory: Path, first: dt.date, last: dt.date, delays: dict[
     delays = delays or {}
     directory.mkdir(parents=True, exist_ok=True)
     st = pd.read_csv(PART3_DATA / "rki_state.csv.gz", parse_dates=["publication", "date"])
+    if last > DAILY_LAST_PART3:            # Part 6: the daily files of 2024 to 2026, fetched separately
+        st = pd.concat([st[st.publication <= pd.Timestamp(DAILY_LAST_PART3)],
+                        pd.read_csv(PART6_DATA / "rki_state_2024_2026.csv.gz", parse_dates=["publication", "date"])])
     st = st[(st.publication >= pd.Timestamp(first)) & (st.publication <= pd.Timestamp(last))]
     out = []
     for pub, g in st.groupby("publication"):
@@ -504,8 +608,10 @@ def write_incoming(directory: Path, first: dt.date, last: dt.date, delays: dict[
 
 
 def replay(first_run: dt.date, last_run: dt.date, incoming: list[Incoming], database: str = ":memory:",
-           content_check: bool = False, holidays: bool = False, fallback: str = "level") -> Pipeline:
-    p = Pipeline(database, content_check=content_check, holidays=holidays, fallback=fallback)
+           content_check: bool = False, holidays: bool = False, fallback: str = "level",
+           graded: float | None = None, holiday_years: tuple[int, int] = (2020, 2024)) -> Pipeline:
+    p = Pipeline(database, content_check=content_check, holidays=holidays, fallback=fallback, graded=graded,
+                 holiday_years=holiday_years)
     day = first_run
     while day <= last_run:
         p.run(day, incoming)

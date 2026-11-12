@@ -1,0 +1,13 @@
+horizon,sample,estimator,lam,b_inh_share,required,pred,pred_lo,pred_hi,excluded
+1,billionaire_countries,fe,0.027752,-0.376966,-13.583429,-2.416596,-7.530493,2.697300,True
+1,billionaire_countries,pooled,0.071787,-1.028372,-14.325395,-1.841718,-5.484614,1.801177,True
+1,with_billionaires,fe,0.027780,-0.414585,-14.924122,-2.449252,-7.494163,2.595659,True
+1,with_billionaires,pooled,0.070513,-1.009917,-14.322368,-1.040783,-4.158734,2.077168,True
+3,billionaire_countries,fe,0.025660,-0.804051,-31.334519,0.395599,-2.932747,3.723945,True
+3,billionaire_countries,pooled,0.065363,-1.417051,-21.679815,-2.220430,-6.496448,2.055588,True
+3,with_billionaires,fe,0.025677,-0.826034,-32.169584,0.356266,-2.928080,3.640611,True
+3,with_billionaires,pooled,0.063889,-1.436400,-22.482817,-1.829604,-5.571450,1.912242,True
+5,billionaire_countries,fe,0.038408,-0.491995,-12.809800,0.739469,-2.725284,4.204223,True
+5,billionaire_countries,pooled,0.063375,-1.882904,-29.710299,-2.426710,-7.198299,2.344879,True
+5,with_billionaires,fe,0.038405,-0.492962,-12.835769,0.740556,-2.722359,4.203471,True
+5,with_billionaires,pooled,0.061605,-1.915013,-31.085568,-2.115452,-6.575211,2.344307,True

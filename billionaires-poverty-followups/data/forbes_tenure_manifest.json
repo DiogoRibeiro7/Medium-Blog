@@ -1,0 +1,152 @@
+{
+  "retrieved_utc": "2026-11-12T13:06:09+00:00",
+  "url_pattern": "https://www.forbes.com/forbesapi/person/billionaires/{year}/position/true.json?limit=5000",
+  "flow_edges_musd": [
+    0,
+    1000,
+    1100,
+    1200,
+    1300,
+    1400,
+    1500,
+    1750,
+    2000,
+    2500,
+    3000,
+    4000,
+    5000,
+    7500,
+    10000,
+    20000
+  ],
+  "logchange_bin": 0.02,
+  "prev_edges": [
+    -0.1,
+    -0.03,
+    0.03,
+    0.1
+  ],
+  "prev_labels": [
+    "fell >0.1",
+    "fell 0.03-0.1",
+    "flat",
+    "rose 0.03-0.1",
+    "rose >0.1"
+  ],
+  "years": {
+    "2010": {
+      "url": "https://www.forbes.com/forbesapi/person/billionaires/2010/position/true.json?limit=5000",
+      "bytes": 2034688,
+      "sha256": "2463c58163e042cd7aee8cf890d52676600ea1d529b37d7d6ca9db98d0ed40d9",
+      "same_as_part4": true,
+      "n_persons": 1011
+    },
+    "2011": {
+      "url": "https://www.forbes.com/forbesapi/person/billionaires/2011/position/true.json?limit=5000",
+      "bytes": 2441602,
+      "sha256": "a9c0520e96f33273aac15ce1db6fb59b6b273d5e44918ccd0d594af47f6b4aa7",
+      "same_as_part4": true,
+      "n_persons": 1209
+    },
+    "2012": {
+      "url": "https://www.forbes.com/forbesapi/person/billionaires/2012/position/true.json?limit=5000",
+      "bytes": 2692907,
+      "sha256": "0f7b193bf104e055a04c4141b3d42f34938cea751d6f811e50f20a4dc60fe3a9",
+      "same_as_part4": true,
+      "n_persons": 1226
+    },
+    "2013": {
+      "url": "https://www.forbes.com/forbesapi/person/billionaires/2013/position/true.json?limit=5000",
+      "bytes": 3285851,
+      "sha256": "3189355f5e34c4d1773d6f129c038cfb57f3ffd826cc52d897b84cf214e62476",
+      "same_as_part4": true,
+      "n_persons": 1426
+    },
+    "2014": {
+      "url": "https://www.forbes.com/forbesapi/person/billionaires/2014/position/true.json?limit=5000",
+      "bytes": 3841326,
+      "sha256": "186e483dd5d28275931bb324126fdcc3dd4989e220a2519bc180d8e4be14caf8",
+      "same_as_part4": true,
+      "n_persons": 1645
+    },
+    "2015": {
+      "url": "https://www.forbes.com/forbesapi/person/billionaires/2015/position/true.json?limit=5000",
+      "bytes": 4284515,
+      "sha256": "732e4321ac1928e824f1dd12cff2353b30f184ef23afb79eb82db681882902a4",
+      "same_as_part4": false,
+      "n_persons": 1826
+    },
+    "2016": {
+      "url": "https://www.forbes.com/forbesapi/person/billionaires/2016/position/true.json?limit=5000",
+      "bytes": 4321686,
+      "sha256": "152669acf01ec900b997ebf9bf9e59d1f71d6a06be8da593601fa3f2f6f19df3",
+      "same_as_part4": true,
+      "n_persons": 1811
+    },
+    "2017": {
+      "url": "https://www.forbes.com/forbesapi/person/billionaires/2017/position/true.json?limit=5000",
+      "bytes": 4505361,
+      "sha256": "301fdabdedd4d3c89cd1447dddb9c65e928280b4605ac04b682c019ce0bdad41",
+      "same_as_part4": true,
+      "n_persons": 2043
+    },
+    "2018": {
+      "url": "https://www.forbes.com/forbesapi/person/billionaires/2018/position/true.json?limit=5000",
+      "bytes": 4746826,
+      "sha256": "557b5ba33a2335712d17e5f2bcb86fcbf2c0191d21313e1f9352fd9f32fb6bb0",
+      "same_as_part4": true,
+      "n_persons": 2208
+    },
+    "2019": {
+      "url": "https://www.forbes.com/forbesapi/person/billionaires/2019/position/true.json?limit=5000",
+      "bytes": 4576855,
+      "sha256": "729f21ab145d6e7be9cb709c8da9d730b7cc1c7bc02773557fc7440f77a06218",
+      "same_as_part4": true,
+      "n_persons": 2153
+    },
+    "2020": {
+      "url": "https://www.forbes.com/forbesapi/person/billionaires/2020/position/true.json?limit=5000",
+      "bytes": 4293502,
+      "sha256": "89d5abda6162e56b63c508809449696287f616c0a81649899a0ac613f80838e1",
+      "same_as_part4": true,
+      "n_persons": 2094
+    },
+    "2021": {
+      "url": "https://www.forbes.com/forbesapi/person/billionaires/2021/position/true.json?limit=5000",
+      "bytes": 5447658,
+      "sha256": "7b9d797d2207f6ccfe4f072facd1874822cb4b4b04087da253502a951a2c8c17",
+      "same_as_part4": true,
+      "n_persons": 2754
+    },
+    "2022": {
+      "url": "https://www.forbes.com/forbesapi/person/billionaires/2022/position/true.json?limit=5000",
+      "bytes": 5119091,
+      "sha256": "18ce71961ef8825e1eb3ed50fc0ed1eafef346fcbcab1356575debc5addfcf38",
+      "same_as_part4": true,
+      "n_persons": 2668
+    },
+    "2023": {
+      "url": "https://www.forbes.com/forbesapi/person/billionaires/2023/position/true.json?limit=5000",
+      "bytes": 5081220,
+      "sha256": "c6f3196647bcde24ff2570eec85e8a1aca9ab4b25100aed122ba633649d7e7b1",
+      "same_as_part4": true,
+      "n_persons": 2640
+    },
+    "2024": {
+      "url": "https://www.forbes.com/forbesapi/person/billionaires/2024/position/true.json?limit=5000",
+      "bytes": 5396261,
+      "sha256": "aa96823e9c5c381ef5ea50ec48d698ee8cc31106be840940df8a4cdaf96904d8",
+      "same_as_part4": true,
+      "n_persons": 2781
+    },
+    "2025": {
+      "url": "https://www.forbes.com/forbesapi/person/billionaires/2025/position/true.json?limit=5000",
+      "bytes": 5842057,
+      "sha256": "c830736ddd465baef2800abde0b5ea91330daa3aea38b93f414ce5776edc66f0",
+      "same_as_part4": true,
+      "n_persons": 3028
+    }
+  },
+  "tenure_sha256": "b649e575e4e833bc9f734645bf0e75e70e80122655ec88188691222b09ccd11a",
+  "n_years_ok": 16
+}
