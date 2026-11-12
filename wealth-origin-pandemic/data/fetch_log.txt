@@ -1,4 +1,7 @@
-2026-11-12T13:08:03Z	200	43837034	fa5c95fa8f5e386517698cdc17581f7e3333348907c57ad8459c877580d0fe79	https://raw.githubusercontent.com/OxCGRT/covid-policy-dataset/main/data/OxCGRT_compact_national_v1.csv
-2026-11-12T13:08:09Z	200	3739927	2009f3868be6cbaffbcb57520718a5abb8c0b6d52b8cdbb169ac918e23f48383	https://rplumber.ilo.org/data/indicator/?id=EMP_TEMP_SEX_ECO_NB_A&lang=en&type=code&format=.csv.gz&channel=ilostat
-2026-11-12T13:09:00Z	failed: HTTP Error 502: Bad Gateway	None	None	https://api.worldbank.org/v2/country/all/indicator/ST.INT.RCPT.CD?format=json&per_page=20000&date=2010:2023
-# wdi failed: https://api.worldbank.org/v2/country/all/indicator/ST.INT.RCPT.CD?format=json&per_page=20000&date=2010:2023: HTTP Error 502: Bad Gateway
+2026-11-12T13:10:27Z	200	43837034	fa5c95fa8f5e386517698cdc17581f7e3333348907c57ad8459c877580d0fe79	https://raw.githubusercontent.com/OxCGRT/covid-policy-dataset/main/data/OxCGRT_compact_national_v1.csv
+2026-11-12T13:10:34Z	200	3739927	2009f3868be6cbaffbcb57520718a5abb8c0b6d52b8cdbb169ac918e23f48383	https://rplumber.ilo.org/data/indicator/?id=EMP_TEMP_SEX_ECO_NB_A&lang=en&type=code&format=.csv.gz&channel=ilostat
+2026-11-12T13:11:49Z	200	866762	3c14c0221066ca0bcf768abb88d8be62451bafaf815f13d7f75a1d39b16285de	https://api.worldbank.org/v2/country/all/indicator/ST.INT.RCPT.CD?format=json&per_page=5000&date=2010:2023&page=1
+2026-11-12T13:12:03Z	200	913724	f5d461a24b0ee039ae970529081b0dae8cb714d6af04e2a3af530f10c1f1d03f	https://api.worldbank.org/v2/country/all/indicator/ST.INT.RCPT.XP.ZS?format=json&per_page=5000&date=2010:2023&page=1
+2026-11-12T13:14:57Z	200	844389	172f83f9d9cbdeca79024717470016d376c5c69ac59a816d2aff0b6ea71a2bdc	https://api.worldbank.org/v2/country/all/indicator/NV.SRV.TOTL.ZS?format=json&per_page=5000&date=2010:2023&page=1
+2026-11-12T13:16:54Z	200	980047	41248d00dc2a1316311efde4a0ce877aae3e107530b286e1cb49e571756bae6e	https://api.worldbank.org/v2/country/all/indicator/SL.SRV.EMPL.ZS?format=json&per_page=5000&date=2010:2023&page=1
+2026-11-12T13:19:27Z	200	749156	5bf3da8ee66985a2f4aeb9f5b15a0d7dd1691d11ed0e96b00821f2aca415e3f4	https://api.worldbank.org/v2/country/all/indicator/SP.POP.TOTL?format=json&per_page=5000&date=2010:2023&page=1
