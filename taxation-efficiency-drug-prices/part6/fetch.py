@@ -172,7 +172,9 @@ def fiscal_year(end: str) -> int:
     return d.year if d.month >= 7 else d.year - 1
 
 
-US_MEMBER = re.compile(r"(^country:US$|:US$|(Country)?U[Ss]A?Member$|UnitedStates(OfAmerica)?(Member|Segment)?$)")
+# the member's local name must be the United States and nothing else ("country:US", "IfrsCountryUsMember",
+# "UnitedStatesMember"); a brand such as OCREVUS must not match
+US_MEMBER = re.compile(r"^(country:US|[\w-]+:(Ifrs)?(Country)?(US|Us|USA|UnitedStates|UnitedStatesOfAmerica)(Member|Segment)?)$")
 NOT_US = re.compile(r"(Non|Excl|Other|And|Outside|International|Rest)", re.I)
 
 
