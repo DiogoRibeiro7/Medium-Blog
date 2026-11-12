@@ -43,15 +43,23 @@ jobs:
       - name: Commit the snapshot and its log if they changed
         if: always()
         run: |
+          set +e
+          du -sh data/* | sort -h | tail -20
           git config user.name "Diogo Ribeiro"
           git config user.email "diogo_dj@hotmail.com"
           git add data
           if git diff --cached --quiet; then
             echo "Snapshot unchanged."
-          else
-            git commit -m "Refresh drug-price data for taxation-efficiency-drug-prices part 2 ($(date -u +%Y-%m-%d))"
-            git pull --rebase
-            git push
+            exit 0
+          fi
+          git commit -q -m "Refresh drug-price data for taxation-efficiency-drug-prices part 2 ($(date -u +%Y-%m-%d))"
+          out=$(git push origin "HEAD:${GITHUB_REF_NAME}" 2>&1)
+          status=$?
+          echo "$out"
+          if [ $status -ne 0 ]; then
+            msg=$(echo "$out" | tail -c 3000 | sed 's/%/%25/g' | awk '{printf "%s%%0A", $0}')
+            echo "::error::git push failed%0A$msg"
+            exit 1
           fi
 
       - name: Fail if a download failed
