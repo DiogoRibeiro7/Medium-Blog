@@ -620,6 +620,18 @@ def main() -> None:
     sv = succ[succ["worth_succ_strict"] > 0]
     w(f"country-years with a strict succession: {len(sv)} in {sv['iso3'].nunique()} countries; successions {int(sv['n_succ_strict'].sum())}; "
       f"founders' wealth {sv['worth_succ_strict'].sum() / 1e3:.1f} bn; heirs' wealth on the next list {sv['heirs_worth_strict'].sum() / 1e3:.1f} bn")
+    tt = succ[[c for c in succ.columns if c.startswith(("n_", "worth_", "heirs_"))]].sum()
+    w(f"mean founder wealth on the last list ($ bn): matched successions, founders 70+ "
+      f"{tt['worth_succ_strict_old'] / tt['n_succ_strict_old'] / 1e3:.2f} (n={int(tt['n_succ_strict_old'])}); "
+      f"matched, younger founders {(tt['worth_succ_strict'] - tt['worth_succ_strict_old']) / (tt['n_succ_strict'] - tt['n_succ_strict_old']) / 1e3:.2f} "
+      f"(n={int(tt['n_succ_strict'] - tt['n_succ_strict_old'])}); unmatched exits, founders 70+ "
+      f"{tt['worth_exit_unmatched_old'] / tt['n_exit_unmatched_old'] / 1e3:.2f} (n={int(tt['n_exit_unmatched_old'])}); unmatched exits, "
+      f"younger {(tt['worth_exit_unmatched'] - tt['worth_exit_unmatched_old']) / (tt['n_exit_unmatched'] - tt['n_exit_unmatched_old']) / 1e3:.2f} "
+      f"(n={int(tt['n_exit_unmatched'] - tt['n_exit_unmatched_old'])})")
+    w(f"share of departing wealth of founders aged 70+ attributed to matched successions: "
+      f"{tt['worth_succ_strict_old'] / (tt['worth_succ_strict_old'] + tt['worth_exit_unmatched_old']):.3f}; "
+      f"heirs per matched succession {tt['n_heirs_strict'] / tt['n_succ_strict']:.2f}; heirs' wealth on the next list as a share of the "
+      f"founders' {tt['heirs_worth_strict'] / tt['worth_succ_strict']:.3f}")
     top = sv.groupby("iso3")["n_succ_strict"].sum().sort_values(ascending=False).head(10)
     w("successions by country (largest ten): " + ", ".join(f"{i} {int(v)}" for i, v in top.items()))
     st = shocks[(shocks["shock"] == "strict") & shocks["iso3"].isin(set(a.loc[a["billionaire_country"], "iso3"]))]
