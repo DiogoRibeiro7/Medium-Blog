@@ -479,6 +479,40 @@ def all_sector_controls(panel: pd.DataFrame, sectors: list[str]) -> pd.DataFrame
     return pd.DataFrame(rows)
 
 
+def sector_required(panel: pd.DataFrame, fits: pd.DataFrame) -> pd.DataFrame:
+    """How large would the sector-predicted coefficient have to be for sector to explain the association?
+
+    In the regression of growth on the inherited share, b = beta_pred * lambda + beta_resid * (1 - lambda),
+    where lambda is the coefficient from regressing the sector-predicted part on the inherited share with
+    the same controls and sample. If origin had no effect (beta_resid = 0), the sector part would need
+    beta_pred = b / lambda. Compare with the estimated beta_pred and its interval.
+    """
+    rows = []
+    for _, f in fits[fits["outcome"] == "tfp"].iterrows():
+        d = prep(sample(panel, f["sample"]))
+        d = d.dropna(subset=[f"g_tfp_{f['horizon']}", "inh_share", "pred_share", "resid_share", "x_tot", "ln_y"])
+        lam = fit(d, "pred_share", ["inh_share", "x_tot"], ["ln_y"], f["estimator"])["b_inh_share"]
+        rows.append(dict(horizon=f["horizon"], sample=f["sample"], estimator=f["estimator"], lam=lam,
+                         b_inh_share=f["inh_share"], required=f["inh_share"] / lam, pred=f["pred"],
+                         pred_lo=f["pred"] - 1.96 * f["se_pred"], pred_hi=f["pred"] + 1.96 * f["se_pred"]))
+    out = pd.DataFrame(rows)
+    out["excluded"] = (out["required"] < out["pred_lo"]) | (out["required"] > out["pred_hi"])
+    return out
+
+
+def magnitudes(panel: pd.DataFrame) -> dict:
+    """Within-country standard deviations of the regressors, billionaire countries, TFP h=3 sample."""
+    d = prep(sample(panel, "billionaire_countries")).dropna(subset=["g_tfp_3"])
+    dm = lambda s: s - s.groupby(d["iso3"]).transform("mean")  # noqa: E731
+    gap = d["x_inh"] - np.log1p(d["self_made_pct"])
+    w = d.dropna(subset=["inh_share"])
+    return {"sd_within_x_inh": dm(d["x_inh"]).std(), "sd_within_log_gap": dm(gap).std(),
+            "sd_within_inh_share": (w["inh_share"] - w.groupby("iso3")["inh_share"].transform("mean")).std(),
+            "sd_within_pred_share": (w["pred_share"] - w.groupby("iso3")["pred_share"].transform("mean")).std(),
+            "sd_tfp_growth_3": d["g_tfp_3"].std(),
+            "sd_within_tfp_growth_3": dm(d["g_tfp_3"]).std(), "n": len(d)}
+
+
 def variance_split(panel: pd.DataFrame) -> dict:
     d = panel[panel["n"] > 0].dropna(subset=["inh_share", "pred_share", "resid_share"])
     bc = d[d["billionaire_country"]]
@@ -530,6 +564,9 @@ def main() -> None:
     allsec = all_sector_controls(panel, meta["sectors"])
     allsec.to_csv(OUT / "all_sector_controls.csv", index=False, float_format="%.6f")
     vs = variance_split(panel)
+    req = sector_required(panel, fits)
+    req.to_csv(OUT / "sector_required.csv", index=False, float_format="%.6f")
+    mag = magnitudes(panel)
 
     sec = (f[f["origin"].isin(["inherited", "self_made"])]
            .pivot_table(index="sector", columns="origin", values="worth_m", aggfunc="sum", fill_value=0.0))
@@ -572,6 +609,21 @@ def main() -> None:
         if len(sub):
             w(f"  {i}: inherited share {sub['inh_share'].mean():.3f}, sector-predicted {sub['pred_share'].mean():.3f}, "
               f"within-sector remainder {sub['resid_share'].mean():+.3f}; tech share of billionaire wealth {sub['s_tech'].mean():.3f}")
+    pooled = panel[panel["n"] > 0].groupby("iso3")[["inherited_m", "self_made_m", "pred_inh_m"]].sum()
+    pooled["total"] = pooled["inherited_m"] + pooled["self_made_m"]
+    pooled = pooled.sort_values("total", ascending=False).head(22)
+    w("22 countries with the most billionaire wealth, pooled 2011-2023 (as in figure 2): " + "; ".join(
+        f"{i} {r['inherited_m'] / r['total']:.3f} vs predicted {r['pred_inh_m'] / r['total']:.3f}" for i, r in pooled.iterrows()))
+    known = f[f["origin"].isin(["inherited", "self_made"])]
+    w(f"overall inherited share of billionaire wealth 2011-2023: "
+      f"{known.loc[known['origin'] == 'inherited', 'worth_m'].sum() / known['worth_m'].sum():.3f}")
+    g = {k: known.loc[known["sector"].isin(v), "worth_m"].sum() / known["worth_m"].sum() for k, v in GROUPS.items()}
+    w("sector groups' share of billionaire wealth: " + ", ".join(f"{k} {v:.3f}" for k, v in g.items())
+      + f", base (rest) {1 - sum(g.values()):.3f}")
+    w(f"within-country SDs (billionaire countries, TFP h=3 sample, n={mag['n']}): log(1+inherited %GDP) "
+      f"{mag['sd_within_x_inh']:.3f}; log inherited minus log self-made {mag['sd_within_log_gap']:.3f}; inherited share "
+      f"{mag['sd_within_inh_share']:.3f}; sector-predicted share {mag['sd_within_pred_share']:.3f}; 3-year TFP growth "
+      f"{mag['sd_within_tfp_growth_3']:.3f} pp (overall SD {mag['sd_tfp_growth_3']:.3f})")
     w("")
     w("## Main fits (pp of annual growth; diff = log-point coefficient as in #144; shares in units of 1.0 = 100 pp)")
     for _, r in fits.iterrows():
@@ -597,6 +649,13 @@ def main() -> None:
     tf = fits[(fits["outcome"] == "tfp") & (fits["estimator"] == "fe")]
     w(f"fixed-effects TFP fits: median ratio diff with / without sector controls "
       f"{(tf['diff_sector_ctrl'] / tf['diff_no_sector']).median():.3f}; all fits median ratio {ratio.median():.3f}")
+    w("sector coefficient needed to explain the inherited-share coefficient with no origin effect (TFP fits):")
+    for _, r in req.iterrows():
+        w(f"  h={r['horizon']} {r['sample']} {r['estimator']}: lambda {r['lam']:.3f}; inherited-share coefficient "
+          f"{r['b_inh_share']:+.3f}; required sector coefficient {r['required']:+.2f}; estimated {r['pred']:+.2f} "
+          f"[{r['pred_lo']:+.2f}, {r['pred_hi']:+.2f}]; required value outside the interval: {bool(r['excluded'])}")
+    w(f"  required value outside the interval in {int(req['excluded'].sum())} of {len(req)}; "
+      f"median lambda {req['lam'].median():.3f} (fixed effects {req.loc[req['estimator'] == 'fe', 'lam'].median():.3f})")
     w("joint tests (null imposed, countries resampled jointly):")
     for _, r in joint.iterrows():
         w(f"  {r['coefficient']} / {r['subset']}: {r['n_fits']} fits, median {r['median']:+.4f} (p={r['p_median']:.3f}); sig- {r['n_neg']} "

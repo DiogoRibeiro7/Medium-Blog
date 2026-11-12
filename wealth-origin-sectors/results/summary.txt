@@ -43,6 +43,10 @@ billionaire countries (n=775, countries=63): var(pred)/var(inh) 0.109, var(resid
   KOR: inherited share 0.694, sector-predicted 0.362, within-sector remainder +0.331; tech share of billionaire wealth 0.231
   ITA: inherited share 0.531, sector-predicted 0.526, within-sector remainder +0.005; tech share of billionaire wealth 0.000
   BRA: inherited share 0.384, sector-predicted 0.407, within-sector remainder -0.023; tech share of billionaire wealth 0.044
+22 countries with the most billionaire wealth, pooled 2011-2023 (as in figure 2): USA 0.303 vs predicted 0.304; CHN 0.024 vs predicted 0.376; DEU 0.708 vs predicted 0.352; RUS 0.001 vs predicted 0.443; IND 0.593 vs predicted 0.346; FRA 0.776 vs predicted 0.454; HKG 0.292 vs predicted 0.319; BRA 0.389 vs predicted 0.409; GBR 0.195 vs predicted 0.367; CAN 0.401 vs predicted 0.355; ITA 0.548 vs predicted 0.522; MEX 0.406 vs predicted 0.260; SWE 0.727 vs predicted 0.440; JPN 0.146 vs predicted 0.344; ESP 0.279 vs predicted 0.522; AUS 0.366 vs predicted 0.307; CHE 0.510 vs predicted 0.333; KOR 0.650 vs predicted 0.353; IDN 0.608 vs predicted 0.359; SGP 0.465 vs predicted 0.322; THA 0.475 vs predicted 0.465; ISR 0.405 vs predicted 0.358
+overall inherited share of billionaire wealth 2011-2023: 0.342
+sector groups' share of billionaire wealth: tech 0.163, finance 0.133, consumer 0.212, property 0.086, resources 0.085, industry 0.112, base (rest) 0.208
+within-country SDs (billionaire countries, TFP h=3 sample, n=560): log(1+inherited %GDP) 0.297; log inherited minus log self-made 0.442; inherited share 0.117; sector-predicted share 0.037; 3-year TFP growth 1.770 pp (overall SD 2.594)
 
 ## Main fits (pp of annual growth; diff = log-point coefficient as in #144; shares in units of 1.0 = 100 pp)
 gdppc h=1 billionaire_countries fe (n=715, countries=63): diff no sector -0.1384 [-1.4626, +1.1859]; diff with sector shares -0.1328 [-1.4240, +1.1583]; inherited share +0.3285 [-1.2872, +1.9441]; within-sector +0.3212 [-1.2431, +1.8855]; sector-predicted +0.4853 [-4.7636, +5.7341]
@@ -85,6 +89,20 @@ tfp h=5 with_billionaires pooled (n=431, countries=60): diff no sector -0.9448 [
   inherited-share coefficient / gdppc: negative in 6 of 12, sig- 0, sig+ 0, median -0.4490
   inherited-share coefficient / all: sig- 3, sig+ 0
 fixed-effects TFP fits: median ratio diff with / without sector controls 0.900; all fits median ratio 0.965
+sector coefficient needed to explain the inherited-share coefficient with no origin effect (TFP fits):
+  h=1 billionaire_countries fe: lambda 0.028; inherited-share coefficient -0.377; required sector coefficient -13.58; estimated -2.42 [-7.53, +2.70]; required value outside the interval: True
+  h=1 billionaire_countries pooled: lambda 0.072; inherited-share coefficient -1.028; required sector coefficient -14.33; estimated -1.84 [-5.48, +1.80]; required value outside the interval: True
+  h=1 with_billionaires fe: lambda 0.028; inherited-share coefficient -0.415; required sector coefficient -14.92; estimated -2.45 [-7.49, +2.60]; required value outside the interval: True
+  h=1 with_billionaires pooled: lambda 0.071; inherited-share coefficient -1.010; required sector coefficient -14.32; estimated -1.04 [-4.16, +2.08]; required value outside the interval: True
+  h=3 billionaire_countries fe: lambda 0.026; inherited-share coefficient -0.804; required sector coefficient -31.33; estimated +0.40 [-2.93, +3.72]; required value outside the interval: True
+  h=3 billionaire_countries pooled: lambda 0.065; inherited-share coefficient -1.417; required sector coefficient -21.68; estimated -2.22 [-6.50, +2.06]; required value outside the interval: True
+  h=3 with_billionaires fe: lambda 0.026; inherited-share coefficient -0.826; required sector coefficient -32.17; estimated +0.36 [-2.93, +3.64]; required value outside the interval: True
+  h=3 with_billionaires pooled: lambda 0.064; inherited-share coefficient -1.436; required sector coefficient -22.48; estimated -1.83 [-5.57, +1.91]; required value outside the interval: True
+  h=5 billionaire_countries fe: lambda 0.038; inherited-share coefficient -0.492; required sector coefficient -12.81; estimated +0.74 [-2.73, +4.20]; required value outside the interval: True
+  h=5 billionaire_countries pooled: lambda 0.063; inherited-share coefficient -1.883; required sector coefficient -29.71; estimated -2.43 [-7.20, +2.34]; required value outside the interval: True
+  h=5 with_billionaires fe: lambda 0.038; inherited-share coefficient -0.493; required sector coefficient -12.84; estimated +0.74 [-2.72, +4.20]; required value outside the interval: True
+  h=5 with_billionaires pooled: lambda 0.062; inherited-share coefficient -1.915; required sector coefficient -31.09; estimated -2.12 [-6.58, +2.34]; required value outside the interval: True
+  required value outside the interval in 12 of 12; median lambda 0.050 (fixed effects 0.028)
 joint tests (null imposed, countries resampled jointly):
   resid / all: 24 fits, median -0.9113 (p=0.033); sig- 2 (null 95th pct 6, p=0.231); sig+ 0 (null 95th pct 7, p=1.000); Stouffer Z -5.15 (p=0.043)
   resid / tfp: 12 fits, median -0.9113 (p=0.029); sig- 2 (null 95th pct 2, p=0.177); sig+ 0 (null 95th pct 4, p=1.000); Stouffer Z -5.02 (p=0.012)
