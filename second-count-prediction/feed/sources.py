@@ -190,17 +190,55 @@ def count_month(ds: str, m: str) -> int:
     return int(rows[0]["n"]) if rows else 0
 
 
-def chicago_trips(today: str, progress: Path | None = None, passes: int = 3, workers: int = 2) -> dict[str, dict]:
-    """Trips by month of trip start: one count(*) per month and dataset (PLAN.md, changes of 12 November).
+def count_dataset(ds: str) -> dict[str, int]:
+    """All months of a dataset in one grouped query (one scan of the table instead of one per month)."""
+    rows = soql(
+        ds,
+        tries=1,
+        timeout=3600,
+        select="date_trunc_ym(trip_start_timestamp) AS m, count(*) AS n",
+        group="m",
+        order="m",
+        limit="5000",
+    )
+    return {r["m"][:7]: int(r["n"]) for r in rows if r.get("m")}
 
-    The portal answers each count in seconds to minutes and sometimes not at all, so months are counted two at
-    a time, every answer is saved to ``progress`` at once (a rerun picks up from there), and the months still
-    missing are tried again in later passes. A month still missing after the last pass is left out and logged.
+
+def chicago_trips(today: str, progress: Path | None = None, passes: int = 3, workers: int = 2) -> dict[str, dict]:
+    """Trips by month of trip start (PLAN.md, changes of 12 November).
+
+    Every answer is saved to ``progress`` at once, so a rerun picks up from there. Months not yet counted are
+    first asked for with one grouped query per dataset (one scan of the table, allowed an hour); the months a
+    grouped query does not cover are then counted one at a time, two at once, in up to ``passes`` passes. A
+    month still missing after the last pass is left out and logged.
     """
     from concurrent.futures import ThreadPoolExecutor, as_completed
 
     done: dict[str, int] = json.loads(progress.read_text(encoding="utf-8")) if progress and progress.exists() else {}
     tasks = [(ds, m) for ds, (first, last) in TRIPS.items() for m in month_range(first, last or today)]
+
+    def save() -> None:
+        if progress:
+            progress.parent.mkdir(parents=True, exist_ok=True)
+            progress.write_text(json.dumps(done, indent=1, sort_keys=True), encoding="utf-8")
+
+    pending = sorted({ds for ds, m in tasks if f"{ds} {m}" not in done})
+    if pending:
+        log(f"chicago trips, grouped queries for {' '.join(pending)}")
+        with ThreadPoolExecutor(len(pending)) as ex:
+            futures = {ex.submit(count_dataset, ds): ds for ds in pending}
+            for f in as_completed(futures):
+                ds = futures[f]
+                try:
+                    got = f.result()
+                except (RuntimeError, ValueError, KeyError):
+                    log(f"chicago {ds}: grouped query did not answer")
+                    continue
+                for ds2, m in tasks:
+                    if ds2 == ds and f"{ds} {m}" not in done:
+                        done[f"{ds} {m}"] = got.get(m, 0)
+                save()
+                log(f"chicago {ds}: grouped query answered")
     for p in range(passes):
         todo = [t for t in tasks if f"{t[0]} {t[1]}" not in done]
         if not todo:
@@ -215,9 +253,7 @@ def chicago_trips(today: str, progress: Path | None = None, passes: int = 3, wor
                 except (RuntimeError, ValueError, KeyError, IndexError):
                     log(f"chicago {ds} {m}: no answer in pass {p + 1}")
                     continue
-                if progress:
-                    progress.parent.mkdir(parents=True, exist_ok=True)
-                    progress.write_text(json.dumps(done, indent=1, sort_keys=True), encoding="utf-8")
+                save()
     out: dict[str, dict] = {}
     for ds, m in tasks:
         n = done.get(f"{ds} {m}")

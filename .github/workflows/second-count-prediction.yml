@@ -90,7 +90,7 @@ jobs:
     needs: tests
     if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
-    timeout-minutes: 300
+    timeout-minutes: 350
     defaults:
       run:
         working-directory: second-count-prediction

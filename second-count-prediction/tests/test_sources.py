@@ -67,6 +67,7 @@ def test_chicago_trips_resumes_and_retries(tmp_path, monkeypatch):
 
     monkeypatch.setattr(S, "TRIPS", {"a": ("2018-11", "2019-01")})
     monkeypatch.setattr(S, "count_month", fake)
+    monkeypatch.setattr(S, "count_dataset", lambda ds: (_ for _ in ()).throw(RuntimeError("no answer")))
     monkeypatch.setattr(S, "log", lambda msg: None)
     prog = tmp_path / "p.json"
     prog.write_text('{"a 2018-11": 7}')
@@ -77,3 +78,14 @@ def test_chicago_trips_resumes_and_retries(tmp_path, monkeypatch):
         "2019-01": {"trips": 10, "datasets": ["a"]},
     }
     assert ("a", "2018-11") not in calls and calls.count(("a", "2018-12")) == 2
+
+
+def test_chicago_trips_takes_the_grouped_answer_for_missing_months(tmp_path, monkeypatch):
+    monkeypatch.setattr(S, "TRIPS", {"a": ("2018-11", "2019-01")})
+    monkeypatch.setattr(S, "count_dataset", lambda ds: {"2018-12": 5, "2019-01": 6, "2018-11": 99})
+    monkeypatch.setattr(S, "count_month", lambda ds, m: (_ for _ in ()).throw(AssertionError("not needed")))
+    monkeypatch.setattr(S, "log", lambda msg: None)
+    prog = tmp_path / "p.json"
+    prog.write_text('{"a 2018-11": 7}')
+    out = S.chicago_trips("2026-11", prog)
+    assert {m: v["trips"] for m, v in out.items()} == {"2018-11": 7, "2018-12": 5, "2019-01": 6}

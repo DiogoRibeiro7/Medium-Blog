@@ -126,3 +126,8 @@ Any change is listed here with its reason and date, and marked in the article.
   counted at a time, every answer is kept so that a rerun resumes, and the months still missing are tried in
   up to three passes. A month with no answer after the last pass is left out and listed. What is counted is
   unchanged.
+- 13 November 2026 (UTC), third Chicago run: the second run reached the five-hour limit of a GitHub job with
+  about half of the months counted (the counts it got are kept and reused). The portal scans the whole table
+  for every monthly count, so the months still missing are first asked for with one grouped query per
+  dataset, allowed an hour, and only then one month at a time. Nothing had been looked at: the run had
+  written no output except the saved counts, which were not opened. What is counted is unchanged.
