@@ -1,0 +1,33 @@
+sample,horizon,measure,without_2020_list,n_obs,b,se,lo,hi
+billionaire_countries,3,"wealth, as in the main fits",False,560,-1.109351,0.486931,-2.063737,-0.154965
+billionaire_countries,3,"wealth, as in the main fits",True,504,-0.689123,0.382931,-1.439668,0.061422
+billionaire_countries,3,headcount per 10 million people,False,560,-1.022315,0.458977,-1.921910,-0.122719
+billionaire_countries,3,headcount per 10 million people,True,504,-0.930675,0.444735,-1.802356,-0.058993
+billionaire_countries,3,"wealth, lists 2012 onwards (same sample as the two-list average)",False,504,-1.154618,0.574072,-2.279799,-0.029438
+billionaire_countries,3,"wealth, lists 2012 onwards (same sample as the two-list average)",True,448,-0.573740,0.447872,-1.451570,0.304090
+billionaire_countries,3,wealth averaged over lists t-1 and t,False,504,-1.474604,0.601758,-2.654049,-0.295158
+billionaire_countries,3,wealth averaged over lists t-1 and t,True,448,-1.155857,0.503693,-2.143095,-0.168619
+billionaire_countries,5,"wealth, as in the main fits",False,448,-0.538083,0.244751,-1.017795,-0.058370
+billionaire_countries,5,"wealth, as in the main fits",True,448,-0.538083,0.244751,-1.017795,-0.058370
+billionaire_countries,5,headcount per 10 million people,False,448,-0.563409,0.309311,-1.169658,0.042839
+billionaire_countries,5,headcount per 10 million people,True,448,-0.563409,0.309311,-1.169658,0.042839
+billionaire_countries,5,"wealth, lists 2012 onwards (same sample as the two-list average)",False,392,-0.507999,0.247476,-0.993053,-0.022946
+billionaire_countries,5,"wealth, lists 2012 onwards (same sample as the two-list average)",True,392,-0.507999,0.247476,-0.993053,-0.022946
+billionaire_countries,5,wealth averaged over lists t-1 and t,False,392,-0.880277,0.312254,-1.492295,-0.268259
+billionaire_countries,5,wealth averaged over lists t-1 and t,True,392,-0.880277,0.312254,-1.492295,-0.268259
+with_billionaires,3,"wealth, as in the main fits",False,544,-0.918147,0.666569,-2.224622,0.388328
+with_billionaires,3,"wealth, as in the main fits",True,487,0.101540,0.572245,-1.020059,1.223140
+with_billionaires,3,headcount per 10 million people,False,544,-0.530302,0.527140,-1.563497,0.502892
+with_billionaires,3,headcount per 10 million people,True,487,0.048339,0.595395,-1.118635,1.215313
+with_billionaires,3,"wealth, lists 2012 onwards (same sample as the two-list average)",False,495,-1.047499,0.719984,-2.458669,0.363670
+with_billionaires,3,"wealth, lists 2012 onwards (same sample as the two-list average)",True,438,0.043399,0.629299,-1.190028,1.276826
+with_billionaires,3,wealth averaged over lists t-1 and t,False,495,-1.499992,0.766674,-3.002672,0.002688
+with_billionaires,3,wealth averaged over lists t-1 and t,True,438,-0.879169,0.669248,-2.190894,0.432557
+with_billionaires,5,"wealth, as in the main fits",False,428,0.313011,0.448692,-0.566426,1.192448
+with_billionaires,5,"wealth, as in the main fits",True,428,0.313011,0.448692,-0.566426,1.192448
+with_billionaires,5,headcount per 10 million people,False,428,0.326267,0.581722,-0.813909,1.466443
+with_billionaires,5,headcount per 10 million people,True,428,0.326267,0.581722,-0.813909,1.466443
+with_billionaires,5,"wealth, lists 2012 onwards (same sample as the two-list average)",False,379,0.068079,0.474326,-0.861600,0.997759
+with_billionaires,5,"wealth, lists 2012 onwards (same sample as the two-list average)",True,379,0.068079,0.474326,-0.861600,0.997759
+with_billionaires,5,wealth averaged over lists t-1 and t,False,379,-0.606848,0.456420,-1.501431,0.287735
+with_billionaires,5,wealth averaged over lists t-1 and t,True,379,-0.606848,0.456420,-1.501431,0.287735
