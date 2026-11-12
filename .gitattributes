@@ -102,3 +102,4 @@ wealth-concentration-misallocation/**/*.csv -filter -diff -merge text
 billionaires-poverty-followups/**/*.csv -filter -diff -merge text
 backward-evaluation-guide/**/*.csv -filter -diff -merge text
 backward-evaluation-guide/**/*.gz -filter -diff -merge binary
+taxation-efficiency-drug-prices/**/*.csv -filter -diff -merge text
