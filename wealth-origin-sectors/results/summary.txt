@@ -1,0 +1,218 @@
+# Results (every number quoted in the article)
+
+## Data
+Forbes lists fetched: 15 of 16 (2026 failed); industry filled: min 0.9992; several industries per person: max 0.0000; distinct raw labels per year 18-29
+raw industry labels 2011-2023 (excluding empty entries): 33; mapped to 19 sectors (unclassified labels: (none), Billionaire, Business, Celebrity, Politics; their share of wealth 0.0026)
+unmapped citizenships: none
+wealth with no self-made flag 2011-2023: 0.0 million
+
+## Inherited share by sector (pooled 2011-2023, all countries)
+  Technology: inherited share 0.056, share of billionaire wealth 0.142
+  Telecom: inherited share 0.065, share of billionaire wealth 0.021
+  Gambling & Casinos: inherited share 0.193, share of billionaire wealth 0.013
+  Finance & Investments: inherited share 0.215, share of billionaire wealth 0.133
+  Sports: inherited share 0.222, share of billionaire wealth 0.008
+  Real Estate: inherited share 0.289, share of billionaire wealth 0.071
+  Energy: inherited share 0.291, share of billionaire wealth 0.047
+  Healthcare: inherited share 0.301, share of billionaire wealth 0.046
+  Manufacturing: inherited share 0.327, share of billionaire wealth 0.068
+  Metals & Mining: inherited share 0.357, share of billionaire wealth 0.038
+  Logistics: inherited share 0.373, share of billionaire wealth 0.014
+  Service: inherited share 0.403, share of billionaire wealth 0.021
+  Automotive: inherited share 0.408, share of billionaire wealth 0.029
+  Media & Entertainment: inherited share 0.428, share of billionaire wealth 0.041
+  Construction & Engineering: inherited share 0.512, share of billionaire wealth 0.015
+  Food & Beverage: inherited share 0.557, share of billionaire wealth 0.073
+  Fashion & Retail: inherited share 0.560, share of billionaire wealth 0.139
+  Diversified: inherited share 0.579, share of billionaire wealth 0.077
+  Unclassified: inherited share 0.654, share of billionaire wealth 0.003
+
+## Panel and decomposition
+country-years 1926, countries 149; with billionaires 802 in 75 countries; billionaire countries 63
+all with billionaires (n=802, countries=75): var(pred)/var(inh) 0.118, var(resid)/var(inh) 0.985, corr(pred, inh) 0.194; within-country share of var(inh) 0.156; within: var(pred)/var(inh) 0.115, var(resid)/var(inh) 0.964
+billionaire countries (n=775, countries=63): var(pred)/var(inh) 0.109, var(resid)/var(inh) 0.975, corr(pred, inh) 0.203; within-country share of var(inh) 0.166; within: var(pred)/var(inh) 0.114, var(resid)/var(inh) 0.964
+  USA: inherited share 0.309, sector-predicted 0.306, within-sector remainder +0.003; tech share of billionaire wealth 0.241
+  CHN: inherited share 0.025, sector-predicted 0.380, within-sector remainder -0.355; tech share of billionaire wealth 0.209
+  IND: inherited share 0.611, sector-predicted 0.334, within-sector remainder +0.277; tech share of billionaire wealth 0.143
+  DEU: inherited share 0.704, sector-predicted 0.353, within-sector remainder +0.350; tech share of billionaire wealth 0.088
+  FRA: inherited share 0.763, sector-predicted 0.452, within-sector remainder +0.310; tech share of billionaire wealth 0.051
+  SWE: inherited share 0.744, sector-predicted 0.444, within-sector remainder +0.300; tech share of billionaire wealth 0.019
+  RUS: inherited share 0.001, sector-predicted 0.443, within-sector remainder -0.443; tech share of billionaire wealth 0.020
+  JPN: inherited share 0.156, sector-predicted 0.339, within-sector remainder -0.183; tech share of billionaire wealth 0.257
+  GBR: inherited share 0.205, sector-predicted 0.365, within-sector remainder -0.161; tech share of billionaire wealth 0.043
+  KOR: inherited share 0.694, sector-predicted 0.362, within-sector remainder +0.331; tech share of billionaire wealth 0.231
+  ITA: inherited share 0.531, sector-predicted 0.526, within-sector remainder +0.005; tech share of billionaire wealth 0.000
+  BRA: inherited share 0.384, sector-predicted 0.407, within-sector remainder -0.023; tech share of billionaire wealth 0.044
+22 countries with the most billionaire wealth, pooled 2011-2023 (as in figure 2): USA 0.303 vs predicted 0.304; CHN 0.024 vs predicted 0.376; DEU 0.708 vs predicted 0.352; RUS 0.001 vs predicted 0.443; IND 0.593 vs predicted 0.346; FRA 0.776 vs predicted 0.454; HKG 0.292 vs predicted 0.319; BRA 0.389 vs predicted 0.409; GBR 0.195 vs predicted 0.367; CAN 0.401 vs predicted 0.355; ITA 0.548 vs predicted 0.522; MEX 0.406 vs predicted 0.260; SWE 0.727 vs predicted 0.440; JPN 0.146 vs predicted 0.344; ESP 0.279 vs predicted 0.522; AUS 0.366 vs predicted 0.307; CHE 0.510 vs predicted 0.333; KOR 0.650 vs predicted 0.353; IDN 0.608 vs predicted 0.359; SGP 0.465 vs predicted 0.322; THA 0.475 vs predicted 0.465; ISR 0.405 vs predicted 0.358
+  USA sector mix of billionaire wealth (pooled, largest six): Technology 0.252, Finance & Investments 0.216, Fashion & Retail 0.110, Food & Beverage 0.070, Media & Entertainment 0.067, Real Estate 0.045
+  ITA sector mix of billionaire wealth (pooled, largest six): Fashion & Retail 0.489, Food & Beverage 0.259, Healthcare 0.063, Diversified 0.049, Metals & Mining 0.032, Construction & Engineering 0.021
+  RUS sector mix of billionaire wealth (pooled, largest six): Energy 0.316, Metals & Mining 0.283, Finance & Investments 0.120, Manufacturing 0.072, Diversified 0.044, Fashion & Retail 0.037
+  CHN sector mix of billionaire wealth (pooled, largest six): Technology 0.216, Manufacturing 0.167, Real Estate 0.129, Healthcare 0.091, Food & Beverage 0.087, Fashion & Retail 0.053
+overall inherited share of billionaire wealth 2011-2023: 0.342
+sector groups' share of billionaire wealth: tech 0.163, finance 0.133, consumer 0.212, property 0.086, resources 0.085, industry 0.112, base (rest) 0.208
+within-country SDs (billionaire countries, TFP h=3 sample, n=560): log(1+inherited %GDP) 0.297; log inherited minus log self-made 0.442; inherited share 0.117; sector-predicted share 0.037; 3-year TFP growth 1.770 pp (overall SD 2.594)
+
+## Main fits (pp of annual growth; diff = log-point coefficient as in #144; shares in units of 1.0 = 100 pp)
+gdppc h=1 billionaire_countries fe (n=715, countries=63): diff no sector -0.1384 [-1.4626, +1.1859]; diff with sector shares -0.1328 [-1.4240, +1.1583]; inherited share +0.3285 [-1.2872, +1.9441]; within-sector +0.3212 [-1.2431, +1.8855]; sector-predicted +0.4853 [-4.7636, +5.7341]
+gdppc h=1 billionaire_countries pooled (n=715, countries=63): diff no sector -0.4814 [-1.3327, +0.3699]; diff with sector shares -0.6591 [-1.5805, +0.2623]; inherited share -1.0990 [-2.6386, +0.4407]; within-sector -1.2159 [-2.8533, +0.4216]; sector-predicted +0.5840 [-4.9270, +6.0950]
+gdppc h=1 with_billionaires fe (n=729, countries=67): diff no sector -0.4147 [-2.0468, +1.2173]; diff with sector shares -0.6552 [-2.5173, +1.2070]; inherited share +0.2887 [-1.3219, +1.8993]; within-sector +0.2826 [-1.2780, +1.8432]; sector-predicted +0.4202 [-4.7682, +5.6086]
+gdppc h=1 with_billionaires pooled (n=734, countries=72): diff no sector -0.5321 [-1.4003, +0.3361]; diff with sector shares -0.7663 [-1.6961, +0.1636]; inherited share -1.1214 [-2.6144, +0.3716]; within-sector -1.2520 [-2.8183, +0.3143]; sector-predicted +0.7684 [-3.7264, +5.2633]
+gdppc h=3 billionaire_countries fe (n=595, countries=63): diff no sector -0.3340 [-1.1673, +0.4992]; diff with sector shares -0.3028 [-1.0549, +0.4493]; inherited share +0.4328 [-0.6994, +1.5650]; within-sector +0.3760 [-0.7808, +1.5329]; sector-predicted +2.3056 [-1.6111, +6.2222]
+gdppc h=3 billionaire_countries pooled (n=595, countries=63): diff no sector -0.5438 [-1.4842, +0.3965]; diff with sector shares -0.7800 [-1.8097, +0.2496]; inherited share -1.4416 [-3.1798, +0.2966]; within-sector -1.5612 [-3.4277, +0.3054]; sector-predicted +0.3090 [-5.1212, +5.7393]
+gdppc h=3 with_billionaires fe (n=605, countries=67): diff no sector -0.1011 [-1.0620, +0.8597]; diff with sector shares -0.1399 [-1.1975, +0.9176]; inherited share +0.4055 [-0.7197, +1.5306]; within-sector +0.3500 [-0.7985, +1.4985]; sector-predicted +2.2299 [-1.6524, +6.1123]
+gdppc h=3 with_billionaires pooled (n=606, countries=68): diff no sector -0.6132 [-1.5935, +0.3672]; diff with sector shares -0.8782 [-1.9185, +0.1621]; inherited share -1.4950 [-3.2281, +0.2380]; within-sector -1.6193 [-3.4498, +0.2112]; sector-predicted +0.3866 [-4.2986, +5.0718]
+gdppc h=5 billionaire_countries fe (n=471, countries=63): diff no sector -0.1510 [-0.6333, +0.3314]; diff with sector shares -0.0439 [-0.5233, +0.4355]; inherited share +0.2022 [-0.9337, +1.3382]; within-sector +0.0947 [-1.0494, +1.2387]; sector-predicted +2.4912 [-1.0533, +6.0358]
+gdppc h=5 billionaire_countries pooled (n=471, countries=63): diff no sector -0.6921 [-1.7506, +0.3664]; diff with sector shares -0.9263 [-2.1218, +0.2692]; inherited share -1.9467 [-4.0113, +0.1179]; within-sector -2.0768 [-4.2940, +0.1405]; sector-predicted -0.1871 [-5.2092, +4.8350]
+gdppc h=5 with_billionaires fe (n=475, countries=65): diff no sector +0.3147 [-0.4760, +1.1054]; diff with sector shares +0.3798 [-0.4828, +1.2424]; inherited share +0.2011 [-0.9348, +1.3369]; within-sector +0.0935 [-1.0503, +1.2373]; sector-predicted +2.4897 [-1.0535, +6.0328]
+gdppc h=5 with_billionaires pooled (n=478, countries=68): diff no sector -0.7729 [-1.8824, +0.3366]; diff with sector shares -1.0615 [-2.2662, +0.1432]; inherited share -2.0050 [-4.0978, +0.0877]; within-sector -2.1435 [-4.3574, +0.0704]; sector-predicted -0.0286 [-4.6379, +4.5807]
+tfp h=1 billionaire_countries fe (n=642, countries=56): diff no sector -0.6417 [-2.1247, +0.8413]; diff with sector shares -0.5788 [-1.9520, +0.7944]; inherited share -0.3770 [-1.8035, +1.0495]; within-sector -0.3187 [-1.6988, +1.0614]; sector-predicted -2.4166 [-7.5305, +2.6973]
+tfp h=1 billionaire_countries pooled (n=642, countries=56): diff no sector -0.5493 [-1.1601, +0.0615]; diff with sector shares -0.4576 [-1.0423, +0.1272]; inherited share -1.0284 [-2.1718, +0.1150]; within-sector -0.9655 [-2.1720, +0.2411]; sector-predicted -1.8417 [-5.4846, +1.8012]
+tfp h=1 with_billionaires fe (n=654, countries=59): diff no sector -1.1204 [-2.8351, +0.5942]; diff with sector shares -1.1933 [-3.0932, +0.7066]; inherited share -0.4146 [-1.8404, +1.0112]; within-sector -0.3564 [-1.7361, +1.0232]; sector-predicted -2.4493 [-7.4942, +2.5957]
+tfp h=1 with_billionaires pooled (n=659, countries=64): diff no sector -0.5946 [-1.2103, +0.0211]; diff with sector shares -0.6063 [-1.1716, -0.0410]; inherited share -1.0099 [-2.1219, +0.1020]; within-sector -1.0076 [-2.1582, +0.1430]; sector-predicted -1.0408 [-4.1587, +2.0772]
+tfp h=3 billionaire_countries fe (n=536, countries=56): diff no sector -1.1669 [-2.0318, -0.3020]; diff with sector shares -1.0479 [-1.8697, -0.2261]; inherited share -0.8041 [-1.7897, +0.1816]; within-sector -0.8356 [-1.8637, +0.1924]; sector-predicted +0.3956 [-2.9327, +3.7239]
+tfp h=3 billionaire_countries pooled (n=536, countries=56): diff no sector -0.7258 [-1.4518, +0.0002]; diff with sector shares -0.6231 [-1.2967, +0.0505]; inherited share -1.4171 [-2.8651, +0.0310]; within-sector -1.3609 [-2.8037, +0.0820]; sector-predicted -2.2204 [-6.4964, +2.0556]
+tfp h=3 with_billionaires fe (n=544, countries=59): diff no sector -1.3056 [-2.3169, -0.2943]; diff with sector shares -1.2672 [-2.3940, -0.1404]; inherited share -0.8260 [-1.8068, +0.1548]; within-sector -0.8572 [-1.8804, +0.1660]; sector-predicted +0.3563 [-2.9281, +3.6406]
+tfp h=3 with_billionaires pooled (n=545, countries=60): diff no sector -0.7788 [-1.5302, -0.0274]; diff with sector shares -0.7124 [-1.3599, -0.0648]; inherited share -1.4364 [-2.8657, -0.0071]; within-sector -1.4096 [-2.8266, +0.0074]; sector-predicted -1.8296 [-5.5714, +1.9122]
+tfp h=5 billionaire_countries fe (n=426, countries=56): diff no sector -0.6471 [-1.0617, -0.2324]; diff with sector shares -0.5716 [-1.0242, -0.1190]; inherited share -0.4920 [-1.5089, +0.5249]; within-sector -0.5412 [-1.5524, +0.4700]; sector-predicted +0.7395 [-2.7253, +4.2042]
+tfp h=5 billionaire_countries pooled (n=426, countries=56): diff no sector -0.8735 [-1.7876, +0.0406]; diff with sector shares -0.7926 [-1.6619, +0.0768]; inherited share -1.8829 [-3.7416, -0.0242]; within-sector -1.8461 [-3.6744, -0.0178]; sector-predicted -2.4267 [-7.1983, +2.3449]
+tfp h=5 with_billionaires fe (n=428, countries=57): diff no sector -0.3184 [-1.0808, +0.4440]; diff with sector shares -0.2299 [-1.1485, +0.6888]; inherited share -0.4930 [-1.5104, +0.5244]; within-sector -0.5422 [-1.5540, +0.4696]; sector-predicted +0.7406 [-2.7224, +4.2035]
+tfp h=5 with_billionaires pooled (n=431, countries=60): diff no sector -0.9448 [-1.8928, +0.0033]; diff with sector shares -0.8705 [-1.6923, -0.0488]; inherited share -1.9150 [-3.7737, -0.0563]; within-sector -1.9019 [-3.7242, -0.0795]; sector-predicted -2.1155 [-6.5752, +2.3443]
+  diff without sector controls / tfp: negative in 12 of 12, sig- 4, sig+ 0, median -0.7523
+  diff without sector controls / gdppc: negative in 11 of 12, sig- 0, sig+ 0, median -0.4481
+  diff without sector controls / all: sig- 4, sig+ 0
+  diff with sector controls / tfp: negative in 12 of 12, sig- 6, sig+ 0, median -0.6677
+  diff with sector controls / gdppc: negative in 11 of 12, sig- 0, sig+ 0, median -0.6571
+  diff with sector controls / all: sig- 6, sig+ 0
+  within-sector coefficient / tfp: negative in 12 of 12, sig- 2, sig+ 0, median -0.9113
+  within-sector coefficient / gdppc: negative in 6 of 12, sig- 0, sig+ 0, median -0.5612
+  within-sector coefficient / all: sig- 2, sig+ 0
+  sector-predicted coefficient / tfp: negative in 8 of 12, sig- 0, sig+ 0, median -1.8357
+  sector-predicted coefficient / gdppc: negative in 2 of 12, sig- 0, sig+ 0, median +0.5346
+  sector-predicted coefficient / all: sig- 0, sig+ 0
+  inherited-share coefficient / tfp: negative in 12 of 12, sig- 3, sig+ 0, median -0.9180
+  inherited-share coefficient / gdppc: negative in 6 of 12, sig- 0, sig+ 0, median -0.4490
+  inherited-share coefficient / all: sig- 3, sig+ 0
+fixed-effects TFP fits: median ratio diff with / without sector controls 0.900; all fits median ratio 0.965
+sector coefficient needed to explain the inherited-share coefficient with no origin effect (TFP fits):
+  h=1 billionaire_countries fe: lambda 0.028; inherited-share coefficient -0.377; required sector coefficient -13.58; estimated -2.42 [-7.53, +2.70]; required value outside the interval: True
+  h=1 billionaire_countries pooled: lambda 0.072; inherited-share coefficient -1.028; required sector coefficient -14.33; estimated -1.84 [-5.48, +1.80]; required value outside the interval: True
+  h=1 with_billionaires fe: lambda 0.028; inherited-share coefficient -0.415; required sector coefficient -14.92; estimated -2.45 [-7.49, +2.60]; required value outside the interval: True
+  h=1 with_billionaires pooled: lambda 0.071; inherited-share coefficient -1.010; required sector coefficient -14.32; estimated -1.04 [-4.16, +2.08]; required value outside the interval: True
+  h=3 billionaire_countries fe: lambda 0.026; inherited-share coefficient -0.804; required sector coefficient -31.33; estimated +0.40 [-2.93, +3.72]; required value outside the interval: True
+  h=3 billionaire_countries pooled: lambda 0.065; inherited-share coefficient -1.417; required sector coefficient -21.68; estimated -2.22 [-6.50, +2.06]; required value outside the interval: True
+  h=3 with_billionaires fe: lambda 0.026; inherited-share coefficient -0.826; required sector coefficient -32.17; estimated +0.36 [-2.93, +3.64]; required value outside the interval: True
+  h=3 with_billionaires pooled: lambda 0.064; inherited-share coefficient -1.436; required sector coefficient -22.48; estimated -1.83 [-5.57, +1.91]; required value outside the interval: True
+  h=5 billionaire_countries fe: lambda 0.038; inherited-share coefficient -0.492; required sector coefficient -12.81; estimated +0.74 [-2.73, +4.20]; required value outside the interval: True
+  h=5 billionaire_countries pooled: lambda 0.063; inherited-share coefficient -1.883; required sector coefficient -29.71; estimated -2.43 [-7.20, +2.34]; required value outside the interval: True
+  h=5 with_billionaires fe: lambda 0.038; inherited-share coefficient -0.493; required sector coefficient -12.84; estimated +0.74 [-2.72, +4.20]; required value outside the interval: True
+  h=5 with_billionaires pooled: lambda 0.062; inherited-share coefficient -1.915; required sector coefficient -31.09; estimated -2.12 [-6.58, +2.34]; required value outside the interval: True
+  required value outside the interval in 12 of 12; median lambda 0.050 (fixed effects 0.028)
+joint tests (null imposed, countries resampled jointly):
+  resid / all: 24 fits, median -0.9113 (p=0.033); sig- 2 (null 95th pct 6, p=0.231); sig+ 0 (null 95th pct 7, p=1.000); Stouffer Z -5.15 (p=0.043)
+  resid / tfp: 12 fits, median -0.9113 (p=0.029); sig- 2 (null 95th pct 2, p=0.177); sig+ 0 (null 95th pct 4, p=1.000); Stouffer Z -5.02 (p=0.012)
+  resid / gdp_per_capita: 12 fits, median -0.5612 (p=0.185); sig- 0 (null 95th pct 3, p=1.000); sig+ 0 (null 95th pct 4, p=1.000); Stouffer Z -2.26 (p=0.191)
+  resid / tfp_fixed_effects: 6 fits, median -0.5417 (p=0.232); sig- 0 (null 95th pct 2, p=1.000); sig+ 0 (null 95th pct 0, p=1.000); Stouffer Z -2.57 (p=0.216)
+  resid / tfp_pooled: 6 fits, median -1.3852 (p=0.036); sig- 2 (null 95th pct 0, p=0.015); sig+ 0 (null 95th pct 4, p=1.000); Stouffer Z -4.53 (p=0.011)
+  diff_sector_ctrl / all: 24 fits, median -0.6571 (p=0.049); sig- 6 (null 95th pct 4, p=0.030); sig+ 0 (null 95th pct 8, p=1.000); Stouffer Z -6.50 (p=0.019)
+  diff_sector_ctrl / tfp: 12 fits, median -0.6677 (p=0.038); sig- 6 (null 95th pct 2, p=0.004); sig+ 0 (null 95th pct 4, p=1.000); Stouffer Z -6.12 (p=0.003)
+  diff_sector_ctrl / gdp_per_capita: 12 fits, median -0.6571 (p=0.086); sig- 0 (null 95th pct 2, p=1.000); sig+ 0 (null 95th pct 6, p=1.000); Stouffer Z -3.08 (p=0.122)
+  diff_sector_ctrl / tfp_fixed_effects: 6 fits, median -0.8133 (p=0.068); sig- 3 (null 95th pct 2, p=0.008); sig+ 0 (null 95th pct 1, p=1.000); Stouffer Z -3.97 (p=0.015)
+  diff_sector_ctrl / tfp_pooled: 6 fits, median -0.6677 (p=0.048); sig- 3 (null 95th pct 0, p=0.016); sig+ 0 (null 95th pct 4, p=1.000); Stouffer Z -4.68 (p=0.013)
+
+## Placebo: within-sector and sector-predicted coefficients for past and future growth (fixed effects)
+gdppc / billionaire_countries: within-sector t-5 to t +2.255 [-1.283, +5.793]; t-3 to t +1.803 [-0.850, +4.456]; t-1 to t +0.671 [-1.226, +2.567]; t to t+1 +0.321 [-1.243, +1.886]; t to t+3 +0.376 [-0.781, +1.533]; t to t+5 +0.095 [-1.049, +1.239]
+gdppc / billionaire_countries: sector-predicted t-5 to t +5.091 [-7.296, +17.479]; t-3 to t +4.338 [-5.672, +14.348]; t-1 to t +2.738 [-5.396, +10.871]; t to t+1 +0.485 [-4.764, +5.734]; t to t+3 +2.306 [-1.611, +6.222]; t to t+5 +2.491 [-1.053, +6.036]
+gdppc / with_billionaires: within-sector t-5 to t +2.254 [-1.283, +5.791]; t-3 to t +1.790 [-0.861, +4.441]; t-1 to t +0.601 [-1.306, +2.507]; t to t+1 +0.283 [-1.278, +1.843]; t to t+3 +0.350 [-0.798, +1.499]; t to t+5 +0.093 [-1.050, +1.237]
+gdppc / with_billionaires: sector-predicted t-5 to t +5.147 [-7.224, +17.517]; t-3 to t +4.425 [-5.585, +14.435]; t-1 to t +2.923 [-5.217, +11.063]; t to t+1 +0.420 [-4.768, +5.609]; t to t+3 +2.230 [-1.652, +6.112]; t to t+5 +2.490 [-1.053, +6.033]
+tfp / billionaire_countries: within-sector t-5 to t +2.087 [-1.097, +5.271]; t-3 to t +1.549 [-0.969, +4.067]; t-1 to t +0.910 [-1.080, +2.901]; t to t+1 -0.319 [-1.699, +1.061]; t to t+3 -0.836 [-1.864, +0.192]; t to t+5 -0.541 [-1.552, +0.470]
+tfp / billionaire_countries: sector-predicted t-5 to t +2.875 [-10.232, +15.982]; t-3 to t +1.715 [-9.623, +13.053]; t-1 to t +2.033 [-8.063, +12.130]; t to t+1 -2.417 [-7.530, +2.697]; t to t+3 +0.396 [-2.933, +3.724]; t to t+5 +0.739 [-2.725, +4.204]
+tfp / with_billionaires: within-sector t-5 to t +2.082 [-1.099, +5.262]; t-3 to t +1.533 [-0.981, +4.048]; t-1 to t +0.836 [-1.158, +2.829]; t to t+1 -0.356 [-1.736, +1.023]; t to t+3 -0.857 [-1.880, +0.166]; t to t+5 -0.542 [-1.554, +0.470]
+tfp / with_billionaires: sector-predicted t-5 to t +2.873 [-10.190, +15.936]; t-3 to t +1.689 [-9.629, +13.007]; t-1 to t +2.029 [-8.047, +12.105]; t to t+1 -2.449 [-7.494, +2.596]; t to t+3 +0.356 [-2.928, +3.641]; t to t+5 +0.741 [-2.722, +4.203]
+
+## Period split (fixed effects)
+gdppc / billionaire_countries / h=1 / ends by 2019 (list years 2011-2018, n=471): within-sector +1.654 [-0.702, +4.010]; sector-predicted +3.604 [-3.119, +10.326]; #144 diff +0.623 [-0.676, +1.922]; with sector shares +0.571 [-0.615, +1.757]
+gdppc / billionaire_countries / h=1 / includes 2020 (list years 2019-2022, n=244): within-sector -1.436 [-6.348, +3.476]; sector-predicted -16.168 [-36.476, +4.140]; #144 diff -0.417 [-4.358, +3.524]; with sector shares -1.303 [-5.936, +3.329]
+gdppc / billionaire_countries / h=3 / ends by 2019 (list years 2011-2016, n=345): within-sector +0.815 [-0.933, +2.563]; sector-predicted +4.959 [-1.306, +11.224]; #144 diff -0.010 [-0.878, +0.858]; with sector shares +0.020 [-0.694, +0.734]
+gdppc / billionaire_countries / h=3 / includes 2020 (list years 2017-2020, n=248): within-sector -0.009 [-2.227, +2.209]; sector-predicted -10.009 [-21.890, +1.871]; #144 diff -0.268 [-2.225, +1.689]; with sector shares -0.198 [-2.376, +1.981]
+gdppc / billionaire_countries / h=5 / ends by 2019 (list years 2011-2014, n=221): within-sector +0.474 [-2.434, +3.382]; sector-predicted +4.453 [-2.802, +11.708]; #144 diff -0.129 [-0.803, +0.544]; with sector shares -0.016 [-0.615, +0.583]
+gdppc / billionaire_countries / h=5 / includes 2020 (list years 2015-2018, n=247): within-sector -0.861 [-2.760, +1.038]; sector-predicted -1.967 [-5.394, +1.460]; #144 diff +0.192 [-0.683, +1.066]; with sector shares +0.357 [-0.506, +1.220]
+gdppc / with_billionaires / h=1 / ends by 2019 (list years 2011-2018, n=475): within-sector +1.647 [-0.701, +3.994]; sector-predicted +3.563 [-3.142, +10.268]; #144 diff +0.983 [-0.478, +2.443]; with sector shares +0.899 [-0.666, +2.464]
+gdppc / with_billionaires / h=1 / includes 2020 (list years 2019-2022, n=252): within-sector -1.530 [-6.413, +3.353]; sector-predicted -16.429 [-36.578, +3.720]; #144 diff -0.628 [-4.584, +3.327]; with sector shares -1.205 [-5.804, +3.393]
+gdppc / with_billionaires / h=3 / ends by 2019 (list years 2011-2016, n=349): within-sector +0.815 [-0.934, +2.563]; sector-predicted +4.961 [-1.304, +11.225]; #144 diff +1.131 [-0.372, +2.634]; with sector shares +1.244 [-0.402, +2.890]
+gdppc / with_billionaires / h=3 / includes 2020 (list years 2017-2020, n=254): within-sector -0.063 [-2.434, +2.307]; sector-predicted -8.191 [-21.119, +4.736]; #144 diff -0.457 [-2.750, +1.837]; with sector shares -0.830 [-3.426, +1.765]
+gdppc / with_billionaires / h=5 / ends by 2019 (list years 2011-2014, n=221): within-sector +0.474 [-2.434, +3.382]; sector-predicted +4.453 [-2.802, +11.708]; #144 diff +0.218 [-1.033, +1.468]; with sector shares +0.498 [-1.024, +2.020]
+gdppc / with_billionaires / h=5 / includes 2020 (list years 2015-2018, n=247): within-sector -0.861 [-2.760, +1.038]; sector-predicted -1.967 [-5.394, +1.460]; #144 diff +0.012 [-1.149, +1.173]; with sector shares -0.113 [-1.401, +1.175]
+tfp / billionaire_countries / h=1 / ends by 2019 (list years 2011-2018, n=426): within-sector +0.914 [-1.092, +2.920]; sector-predicted +2.175 [-3.640, +7.990]; #144 diff +0.736 [-0.711, +2.184]; with sector shares +0.801 [-0.647, +2.249]
+tfp / billionaire_countries / h=1 / includes 2020 (list years 2019-2022, n=216): within-sector -2.039 [-9.689, +5.611]; sector-predicted -22.185 [-51.938, +7.569]; #144 diff +0.493 [-4.205, +5.192]; with sector shares +0.155 [-5.531, +5.841]
+tfp / billionaire_countries / h=3 / ends by 2019 (list years 2011-2016, n=314): within-sector +0.119 [-1.534, +1.771]; sector-predicted +4.022 [-1.059, +9.102]; #144 diff -0.269 [-0.971, +0.433]; with sector shares -0.041 [-0.841, +0.760]
+tfp / billionaire_countries / h=3 / includes 2020 (list years 2017-2020, n=220): within-sector -1.559 [-4.659, +1.540]; sector-predicted -4.573 [-19.522, +10.376]; #144 diff -1.684 [-3.723, +0.356]; with sector shares -2.154 [-4.235, -0.073]
+tfp / billionaire_countries / h=5 / ends by 2019 (list years 2011-2014, n=206): within-sector -0.178 [-2.557, +2.202]; sector-predicted +4.596 [-1.082, +10.274]; #144 diff -0.349 [-1.016, +0.317]; with sector shares +0.167 [-0.607, +0.941]
+tfp / billionaire_countries / h=5 / includes 2020 (list years 2015-2018, n=219): within-sector -1.342 [-3.558, +0.874]; sector-predicted -7.086 [-13.305, -0.866]; #144 diff +0.483 [-0.796, +1.762]; with sector shares +0.254 [-1.118, +1.626]
+tfp / with_billionaires / h=1 / ends by 2019 (list years 2011-2018, n=428): within-sector +0.914 [-1.091, +2.919]; sector-predicted +2.175 [-3.639, +7.989]; #144 diff +0.674 [-0.713, +2.061]; with sector shares +0.921 [-0.640, +2.482]
+tfp / with_billionaires / h=1 / includes 2020 (list years 2019-2022, n=224): within-sector -2.185 [-9.797, +5.427]; sector-predicted -22.594 [-51.972, +6.784]; #144 diff +0.716 [-4.238, +5.670]; with sector shares +0.292 [-5.363, +5.948]
+tfp / with_billionaires / h=3 / ends by 2019 (list years 2011-2016, n=316): within-sector +0.118 [-1.535, +1.770]; sector-predicted +4.023 [-1.055, +9.100]; #144 diff +0.719 [-0.607, +2.046]; with sector shares +1.033 [-0.427, +2.493]
+tfp / with_billionaires / h=3 / includes 2020 (list years 2017-2020, n=226): within-sector -1.662 [-4.661, +1.337]; sector-predicted -3.080 [-18.769, +12.608]; #144 diff -2.250 [-4.704, +0.203]; with sector shares -2.888 [-5.504, -0.272]
+tfp / with_billionaires / h=5 / ends by 2019 (list years 2011-2014, n=206): within-sector -0.178 [-2.557, +2.202]; sector-predicted +4.596 [-1.082, +10.274]; #144 diff +0.170 [-1.035, +1.375]; with sector shares +0.574 [-0.855, +2.003]
+tfp / with_billionaires / h=5 / includes 2020 (list years 2015-2018, n=219): within-sector -1.342 [-3.558, +0.874]; sector-predicted -7.086 [-13.305, -0.866]; #144 diff +0.125 [-1.764, +2.014]; with sector shares -0.380 [-2.454, +1.694]
+
+## Forward minus backward (fixed effects, country bootstrap, 1,000 draws)
+within_sector / gdppc / billionaire_countries / h=3: forward +0.376, backward +1.803, forward-backward -1.427 [-4.520, +0.645], share of draws >= 0 0.128
+within_sector / gdppc / billionaire_countries / h=5: forward +0.095, backward +2.255, forward-backward -2.160 [-5.335, +0.706], share of draws >= 0 0.090
+within_sector / gdppc / with_billionaires / h=3: forward +0.350, backward +1.790, forward-backward -1.440 [-4.487, +0.734], share of draws >= 0 0.127
+within_sector / gdppc / with_billionaires / h=5: forward +0.093, backward +2.254, forward-backward -2.161 [-5.205, +0.701], share of draws >= 0 0.105
+within_sector / tfp / billionaire_countries / h=3: forward -0.836, backward +1.549, forward-backward -2.384 [-5.463, -0.309], share of draws >= 0 0.005
+within_sector / tfp / billionaire_countries / h=5: forward -0.541, backward +2.087, forward-backward -2.628 [-5.540, -0.274], share of draws >= 0 0.007
+within_sector / tfp / with_billionaires / h=3: forward -0.857, backward +1.533, forward-backward -2.390 [-5.005, -0.338], share of draws >= 0 0.004
+within_sector / tfp / with_billionaires / h=5: forward -0.542, backward +2.082, forward-backward -2.624 [-5.319, -0.205], share of draws >= 0 0.014
+diff_sector_ctrl / gdppc / billionaire_countries / h=3: forward -0.303, backward +0.536, forward-backward -0.839 [-2.998, +0.562], share of draws >= 0 0.160
+diff_sector_ctrl / gdppc / billionaire_countries / h=5: forward -0.044, backward +1.023, forward-backward -1.067 [-2.795, +0.435], share of draws >= 0 0.119
+diff_sector_ctrl / gdppc / with_billionaires / h=3: forward -0.140, backward +1.121, forward-backward -1.261 [-4.093, +0.751], share of draws >= 0 0.193
+diff_sector_ctrl / gdppc / with_billionaires / h=5: forward +0.380, backward +1.630, forward-backward -1.250 [-3.210, +0.821], share of draws >= 0 0.204
+diff_sector_ctrl / tfp / billionaire_countries / h=3: forward -1.048, backward +0.258, forward-backward -1.305 [-3.501, +0.218], share of draws >= 0 0.069
+diff_sector_ctrl / tfp / billionaire_countries / h=5: forward -0.572, backward +0.757, forward-backward -1.329 [-3.259, +0.310], share of draws >= 0 0.075
+diff_sector_ctrl / tfp / with_billionaires / h=3: forward -1.267, backward +0.536, forward-backward -1.803 [-4.611, +0.005], share of draws >= 0 0.027
+diff_sector_ctrl / tfp / with_billionaires / h=5: forward -0.230, backward +1.219, forward-backward -1.449 [-3.367, +0.297], share of draws >= 0 0.077
+
+## Forward coefficient holding past growth fixed (fixed effects, same sample: windows with both past and future growth)
+within_sector / gdppc / billionaire_countries / h=3 (n=595): without +0.376 [-0.781, +1.533]; with past growth +0.400 [-0.906, +1.706]; past-growth coefficient -0.270 [-0.564, +0.023]
+within_sector / gdppc / billionaire_countries / h=5 (n=471): without +0.095 [-1.049, +1.239]; with past growth +0.149 [-1.057, +1.355]; past-growth coefficient -0.083 [-0.257, +0.092]
+within_sector / gdppc / with_billionaires / h=3 (n=605): without +0.350 [-0.798, +1.499]; with past growth +0.384 [-0.926, +1.694]; past-growth coefficient -0.282 [-0.569, +0.006]
+within_sector / gdppc / with_billionaires / h=5 (n=475): without +0.093 [-1.050, +1.237]; with past growth +0.147 [-1.058, +1.352]; past-growth coefficient -0.082 [-0.256, +0.092]
+within_sector / tfp / billionaire_countries / h=3 (n=536): without -0.836 [-1.864, +0.192]; with past growth -0.601 [-1.905, +0.703]; past-growth coefficient -0.549 [-1.033, -0.065]
+within_sector / tfp / billionaire_countries / h=5 (n=426): without -0.541 [-1.552, +0.470]; with past growth -0.266 [-1.608, +1.077]; past-growth coefficient -0.428 [-0.844, -0.012]
+within_sector / tfp / with_billionaires / h=3 (n=544): without -0.857 [-1.880, +0.166]; with past growth -0.603 [-1.910, +0.703]; past-growth coefficient -0.555 [-1.019, -0.091]
+within_sector / tfp / with_billionaires / h=5 (n=428): without -0.542 [-1.554, +0.470]; with past growth -0.266 [-1.609, +1.077]; past-growth coefficient -0.428 [-0.844, -0.012]
+diff_sector_ctrl / gdppc / billionaire_countries / h=3 (n=630): without -0.303 [-1.055, +0.449]; with past growth -0.363 [-1.199, +0.472]; past-growth coefficient -0.218 [-0.483, +0.048]
+diff_sector_ctrl / gdppc / billionaire_countries / h=5 (n=504): without -0.044 [-0.523, +0.436]; with past growth -0.055 [-0.553, +0.442]; past-growth coefficient -0.101 [-0.289, +0.086]
+diff_sector_ctrl / gdppc / with_billionaires / h=3 (n=605): without -0.140 [-1.197, +0.918]; with past growth -0.137 [-1.244, +0.970]; past-growth coefficient -0.273 [-0.556, +0.009]
+diff_sector_ctrl / gdppc / with_billionaires / h=5 (n=475): without +0.380 [-0.483, +1.242]; with past growth +0.410 [-0.474, +1.293]; past-growth coefficient -0.078 [-0.249, +0.093]
+diff_sector_ctrl / tfp / billionaire_countries / h=3 (n=560): without -1.048 [-1.870, -0.226]; with past growth -1.064 [-1.923, -0.206]; past-growth coefficient -0.512 [-0.969, -0.055]
+diff_sector_ctrl / tfp / billionaire_countries / h=5 (n=448): without -0.572 [-1.024, -0.119]; with past growth -0.616 [-1.079, -0.154]; past-growth coefficient -0.396 [-0.793, +0.001]
+diff_sector_ctrl / tfp / with_billionaires / h=3 (n=544): without -1.267 [-2.394, -0.140]; with past growth -1.188 [-2.364, -0.012]; past-growth coefficient -0.545 [-1.001, -0.088]
+diff_sector_ctrl / tfp / with_billionaires / h=5 (n=428): without -0.230 [-1.149, +0.689]; with past growth -0.106 [-1.017, +0.806]; past-growth coefficient -0.423 [-0.821, -0.026]
+
+## Leave one country out (TFP, fixed effects, billionaire countries)
+diff_sector_ctrl h=3: full -1.048 [-1.870, -0.226]; 56 drops; range -1.246 (without KWT) to -0.867 (without PHL); CI excludes zero in 56 of 56; estimate negative in 56
+diff_sector_ctrl h=5: full -0.572 [-1.024, -0.119]; 56 drops; range -0.697 (without KWT) to -0.461 (without SWZ); CI excludes zero in 55 of 56; estimate negative in 56
+within_sector h=3: full -0.836 [-1.864, +0.192]; 56 drops; range -1.120 (without VEN) to -0.557 (without PHL); CI excludes zero in 1 of 56; estimate negative in 56
+within_sector h=5: full -0.541 [-1.552, +0.470]; 56 drops; range -0.992 (without VEN) to -0.275 (without TZA); CI excludes zero in 1 of 56; estimate negative in 56
+
+## Leave one list year out (sector-controlled difference, TFP, fixed effects)
+billionaire_countries h=3: full -1.048; without 2011 -1.169 [-2.015, -0.324]; without 2012 -1.217 [-2.235, -0.200]; without 2013 -1.057 [-1.922, -0.192]; without 2014 -0.996 [-1.874, -0.119]; without 2015 -0.974 [-1.856, -0.092]; without 2016 -1.292 [-2.104, -0.480]; without 2017 -1.083 [-1.836, -0.330]; without 2018 -1.143 [-2.006, -0.281]; without 2019 -0.808 [-1.753, +0.136]; without 2020 -0.650 [-1.320, +0.020]
+billionaire_countries h=5: full -0.572; without 2011 -0.651 [-1.096, -0.207]; without 2012 -0.636 [-1.174, -0.098]; without 2013 -0.580 [-1.063, -0.096]; without 2014 -0.469 [-0.957, +0.020]; without 2015 -0.548 [-0.998, -0.099]; without 2016 -0.548 [-1.034, -0.062]; without 2017 -0.591 [-1.027, -0.156]; without 2018 -0.521 [-0.979, -0.064]
+with_billionaires h=3: full -1.267; without 2011 -1.427 [-2.610, -0.244]; without 2012 -1.508 [-2.842, -0.174]; without 2013 -1.293 [-2.467, -0.119]; without 2014 -1.358 [-2.653, -0.064]; without 2015 -1.211 [-2.428, +0.006]; without 2016 -1.601 [-2.848, -0.353]; without 2017 -1.222 [-2.146, -0.298]; without 2018 -1.384 [-2.619, -0.149]; without 2019 -0.968 [-2.347, +0.411]; without 2020 -0.411 [-1.370, +0.547]
+with_billionaires h=5: full -0.230; without 2011 -0.482 [-1.312, +0.349]; without 2012 -0.342 [-1.300, +0.617]; without 2013 -0.153 [-1.135, +0.829]; without 2014 -0.043 [-1.051, +0.966]; without 2015 -0.232 [-1.137, +0.672]; without 2016 -0.371 [-1.315, +0.573]; without 2017 -0.131 [-1.008, +0.747]; without 2018 -0.062 [-1.160, +1.036]
+
+## Every sector share as a control (18 shares, Diversified omitted; fixed effects)
+gdppc h=1 billionaire_countries: none -0.138 [-1.463, +1.186]; six groups -0.133 [-1.424, +1.158]; all sectors -0.378 [-1.738, +0.983]
+gdppc h=1 with_billionaires: none -0.415 [-2.047, +1.217]; six groups -0.655 [-2.517, +1.207]; all sectors -0.633 [-2.551, +1.286]
+gdppc h=3 billionaire_countries: none -0.334 [-1.167, +0.499]; six groups -0.303 [-1.055, +0.449]; all sectors -0.481 [-1.259, +0.297]
+gdppc h=3 with_billionaires: none -0.101 [-1.062, +0.860]; six groups -0.140 [-1.197, +0.918]; all sectors -0.092 [-1.170, +0.986]
+gdppc h=5 billionaire_countries: none -0.151 [-0.633, +0.331]; six groups -0.044 [-0.523, +0.436]; all sectors -0.234 [-0.711, +0.244]
+gdppc h=5 with_billionaires: none +0.315 [-0.476, +1.105]; six groups +0.380 [-0.483, +1.242]; all sectors +0.388 [-0.485, +1.261]
+tfp h=1 billionaire_countries: none -0.642 [-2.125, +0.841]; six groups -0.579 [-1.952, +0.794]; all sectors -0.905 [-2.533, +0.723]
+tfp h=1 with_billionaires: none -1.120 [-2.835, +0.594]; six groups -1.193 [-3.093, +0.707]; all sectors -1.178 [-3.285, +0.928]
+tfp h=3 billionaire_countries: none -1.167 [-2.032, -0.302]; six groups -1.048 [-1.870, -0.226]; all sectors -1.245 [-2.190, -0.300]
+tfp h=3 with_billionaires: none -1.306 [-2.317, -0.294]; six groups -1.267 [-2.394, -0.140]; all sectors -1.319 [-2.513, -0.124]
+tfp h=5 billionaire_countries: none -0.647 [-1.062, -0.232]; six groups -0.572 [-1.024, -0.119]; all sectors -0.689 [-1.206, -0.172]
+tfp h=5 with_billionaires: none -0.318 [-1.081, +0.444]; six groups -0.230 [-1.149, +0.689]; all sectors -0.206 [-1.063, +0.651]

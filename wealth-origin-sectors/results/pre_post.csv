@@ -1,0 +1,17 @@
+model,outcome,sample,horizon,forward,backward,forward_minus_backward,lo,hi,p_ge_0
+within_sector,gdppc,billionaire_countries,3,0.376016,1.803270,-1.427254,-4.520137,0.645266,0.128000
+within_sector,gdppc,billionaire_countries,5,0.094673,2.254811,-2.160138,-5.335317,0.706226,0.090000
+within_sector,gdppc,with_billionaires,3,0.350020,1.790012,-1.439992,-4.487441,0.733543,0.127000
+within_sector,gdppc,with_billionaires,5,0.093476,2.254257,-2.160781,-5.205086,0.700942,0.105000
+within_sector,tfp,billionaire_countries,3,-0.835645,1.548605,-2.384250,-5.463475,-0.308919,0.005000
+within_sector,tfp,billionaire_countries,5,-0.541182,2.086607,-2.627788,-5.540019,-0.273642,0.007000
+within_sector,tfp,with_billionaires,3,-0.857193,1.533204,-2.390397,-5.005145,-0.337705,0.004000
+within_sector,tfp,with_billionaires,5,-0.542228,2.081602,-2.623830,-5.319384,-0.205053,0.014000
+diff_sector_ctrl,gdppc,billionaire_countries,3,-0.302813,0.536236,-0.839049,-2.997537,0.562302,0.160000
+diff_sector_ctrl,gdppc,billionaire_countries,5,-0.043906,1.023473,-1.067379,-2.795099,0.434904,0.119000
+diff_sector_ctrl,gdppc,with_billionaires,3,-0.139939,1.121382,-1.261321,-4.093099,0.750772,0.193000
+diff_sector_ctrl,gdppc,with_billionaires,5,0.379785,1.629707,-1.249921,-3.209890,0.820612,0.204000
+diff_sector_ctrl,tfp,billionaire_countries,3,-1.047877,0.257618,-1.305495,-3.500981,0.217689,0.069000
+diff_sector_ctrl,tfp,billionaire_countries,5,-0.571558,0.757152,-1.328711,-3.259213,0.310329,0.075000
+diff_sector_ctrl,tfp,with_billionaires,3,-1.267170,0.536133,-1.803303,-4.611380,0.004762,0.027000
+diff_sector_ctrl,tfp,with_billionaires,5,-0.229867,1.218856,-1.448722,-3.366880,0.297218,0.077000
