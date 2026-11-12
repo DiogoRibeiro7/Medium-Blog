@@ -172,7 +172,7 @@ def fiscal_year(end: str) -> int:
     return d.year if d.month >= 7 else d.year - 1
 
 
-US_MEMBER = re.compile(r"(^country:US$|:US$|:USMember$|UnitedStates(OfAmerica)?(Member|Segment)?$|:UsMember$)", re.I)
+US_MEMBER = re.compile(r"(^country:US$|:US$|(Country)?U[Ss]A?Member$|UnitedStates(OfAmerica)?(Member|Segment)?$)")
 NOT_US = re.compile(r"(Non|Excl|Other|And|Outside|International|Rest)", re.I)
 
 
@@ -267,7 +267,8 @@ def fetch_sec(out: Path) -> None:
                 if x["concept"] not in REVENUE or len(x["dims"]) != 1:
                     continue
                 axis, member = x["dims"][0]
-                if not re.search(r"Geograph", axis):
+                if not (re.search(r"Geograph|Area|Region|Countr|Market", axis)
+                        or (US_MEMBER.search(member) and not NOT_US.search(member.split(":")[-1]))):
                     continue
                 key = (x["concept"], member, x["value"])
                 if key in seen:
@@ -283,6 +284,10 @@ def fetch_sec(out: Path) -> None:
                 best = max(us, key=lambda g: (g["concept_total"] or 0, g["value"]))
                 rec.update(us_revenue=best["value"], us_concept=best["concept"], us_member=best["member"],
                            us_concept_total=best["concept_total"])
+            if not us:
+                axes = sorted({(x["concept"], tuple(d for d, _ in x["dims"])) for x in facts
+                               if x["concept"] in REVENUE and x["dims"]})
+                log(f"[sec] {name} FY{fy}: no US revenue; revenue axes {axes[:12]}")
             panel.append(rec)
             log(f"[sec] {name} FY{fy} {f['form']}: revenue {rec.get('revenue')} {rec.get('currency')}, "
                 f"US {rec.get('us_revenue')} ({rec.get('us_member')}), R&D {rec.get('rd')}")
