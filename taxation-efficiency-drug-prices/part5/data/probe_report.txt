@@ -1,277 +1,185 @@
-===== pt_disponibilidade
-URL https://www.infarmed.pt/web/infarmed/gestao-da-disponibilidade-do-medicamento
-status 200  final https://www.infarmed.pt/web/infarmed/gestao-da-disponibilidade-do-medicamento  type text/html;charset=UTF-8  bytes 360996
-title Gestão da disponibilidade do medicamento - INFARMED, I.P.
-  LINK Relatórios -> https://www.infarmed.pt/web/infarmed/profissionais-de-saude/utilizacao-e-despesa/relatorios
-  LINK Relatório de Portugal sobre a fiscalização -> https://www.infarmed.pt/web/infarmed/entidades/dispositivos-medicos/relatorio-de-portugal-sobre-a-fiscalizacao
-  LINK Lista de Associações de Pessoas com Doença registadas no Incluir -> https://www.infarmed.pt/web/infarmed/lista-de-associacoes-de-pessoas-com-doenca-registadas-no-incluir
-  LINK Lista de Associações de Pessoas com Doença Capacitadas -> https://www.infarmed.pt/web/infarmed/lista-associacoes-de-pessoas-com-doenca-capacitadas
-  LINK Ambulatório -> https://www.infarmed.pt/web/infarmed/profissionais-de-saude/utilizacao-e-despesa/relatorios/ambulatorio
-  LINK Hospitalar -> https://www.infarmed.pt/web/infarmed/profissionais-de-saude/utilizacao-e-despesa/relatorios/hospitalar
-  LINK MNSRM -> https://www.infarmed.pt/web/infarmed/profissionais-de-saude/utilizacao-e-despesa/relatorios/mnsrm
-  LINK Estatística anual -> https://www.infarmed.pt/web/infarmed/profissionais-de-saude/utilizacao-e-despesa/relatorios/estatistica-anual
-  LINK Lista de DCI - MNSRM-EF -> https://www.infarmed.pt/web/infarmed/entidades/medicamentos-uso-humano/autorizacao-de-introducao-no-mercado/alteracoes_transferencia_titular_aim/lista_dci
-  LINK Lista de arbitragens concluídas -> https://www.infarmed.pt/web/infarmed/lista-arbitragens-concluidas
-  LINK Listagem de PFH -> https://www.infarmed.pt/web/infarmed/entidades/medicamentos-uso-humano/autorizacao-de-introducao-no-mercado/produtos_farmaceuticos_homeopaticos/listagem_de_pfh
-  LINK Indicadores -> https://www.infarmed.pt/web/infarmed/indicadores-relativos-a-aim
-  LINK Indicadores relativos às atividades da DAM -> https://www.infarmed.pt/web/infarmed/entidades/medicamentos-uso-humano/autorizacao-de-introducao-no-mercado/indicadores-relativos-as-actividades-da-dam
-  LINK Notícias Regulamentares de Medicamentos -> https://www.infarmed.pt/web/infarmed/institucional/documentacao_e_informacao/publicacoes/lista-publicacoes/-/journal_content/56/15786/10248646?tagName=outras-campanhas&queryValues=WzEwMjU1MDE1LDI4NjQwMzQsNDA5NjAzOSwxODg1MDI1LDEwNTk1NjAyLDg2MDUzNDEsMTA0NDM2%20MjYsMTA0NjI0NzQsMTAxNTE4NTRd
-  LINK Conheça a opinião dos especialistas -> https://www.infarmed.pt/web/infarmed/entidades/medicamentos-uso-humano/genericos/conheca-opiniao-especialistas
-  LINK Relatórios de avaliação de financiamento público -> https://www.infarmed.pt/web/infarmed/relatorios-de-avaliacao-de-financiamento-publico
-  LINK Relatórios de Análise Periódica de Dados -> https://www.infarmed.pt/web/infarmed/entidades/medicamentos-uso-humano/farmacovigilancia/notificacao-de-ram/relatorios_analise_periodica_dados
-  LINK Relatórios Periódicos de Segurança - Conclusões da avaliação única -> https://www.infarmed.pt/web/infarmed/entidades/medicamentos-uso-humano/farmacovigilancia/informacao-seguranca/relat_peri_seguranca_conclusoes
-  LINK Perguntas frequentes - Declaração relativa à AIM de medicamentos (modelo OMS) - Em atualização -> https://www.infarmed.pt/web/infarmed/entidades/medicamentos-uso-humano/certificacao-de-medicamentos-de-uso-humano/perguntas-frequentes-declaracao-relativa-a-aim-de-medicamentos-modelo-oms
-  LINK Relatórios -> https://www.infarmed.pt/web/infarmed/entidades/medicamentos-uso-humano/observatorio/relatorios
-  LINK Ambulatório -> https://www.infarmed.pt/web/infarmed/entidades/medicamentos-uso-humano/observatorio/relatorios/ambulatorio
-  LINK Hospitalar -> https://www.infarmed.pt/web/infarmed/entidades/medicamentos-uso-humano/observatorio/relatorios/hospitalar
-  LINK MNSRM -> https://www.infarmed.pt/web/infarmed/entidades/medicamentos-uso-humano/observatorio/relatorios/mnsrm
-  LINK Estatística anual -> https://www.infarmed.pt/web/infarmed/entidades/medicamentos-uso-humano/observatorio/estatistica-anual/relatorios-anuais
-  LINK Lista de MNSRM -> https://www.infarmed.pt/web/infarmed/entidades/licenciamentos/locais-de-venda-mnsrm/lista_de_mnsrm
-  LINK Lista de locais de venda MNSRM -> https://www.infarmed.pt/web/infarmed/entidades/licenciamentos/locais-de-venda-mnsrm/lista-de-locais-de-venda-mnsrm
-  LINK Lista de publicações do Infarmed -> https://www.infarmed.pt/web/infarmed/institucional/documentacao_e_informacao/publicacoes/lista-publicacoes
-  LINK Notícias Regulamentares de Medicamentos -> https://www.infarmed.pt/web/infarmed/institucional/documentacao_e_informacao/publicacoes/lista-publicacoes/noticias-regulamentares-de-medicamentos1
-  LINK Relatório sobre a gestão da disponibilidade de medicamentos de 2025 -> https://www.infarmed.pt/documents/15786/10901776/Relat%C3%B3rio2025/a2d40b5d-60ea-4297-6bc8-fa146f1a5c70
-  LINK Circular Informativa n.º 045/CD/100.20.200 de 03/07/2024 - Recomendações para gestão da disponibilidade dos medicamentos agonistas do recetor da GLP-1 -> https://www.infarmed.pt/documents/15786/9677612/Recomenda%C3%A7%C3%B5es+para+gest%C3%A3o+da+disponibilidade+dos+medicamentos+agonistas+do+recetor+da+GLP-1/670963ea-0c46-b14d-24e0-c6af7a5877d3
-  LINK Orientações da Comissão Nacional de Farmácia e Terapêutica - Tratamento da diabetes mellitus tipo 2 em doentes elegíveis para o tratamento com semaglutido ou ou -> https://www.infarmed.pt/documents/15786/1816213/Orienta%C3%A7%C3%A3o+n.%C2%BA+15+Semaglutido.pdf/a138a197-33a8-69bb-7fa4-4d19a8b8f046
-  LINK Circular Informativa n.º 125/CD/100.20.200 de 24/10/2021) -> https://www.infarmed.pt/documents/15786/5261813/Indisponibilidade+de+medicamentos+contendo+semaglutido+%28Ozempic%29/874ac6a3-5161-b647-2641-a5f9a25bf06c
-  LINK Pancreatina – dificuldade de abastecimento do medicamento Kreon (Circular informativa n.º 042/CD/100.20.200 de 27/06/2024) -> https://www.infarmed.pt/documents/15786/9677612/Pancreatina+-+dificuldade+de+abastecimento+do+medicamento+Kreon/a107f9f6-f51f-bf95-d8cd-60006256d684
-  LINK EMA - Shortage of Creon (pancrelipase/pancreas powder) -> https://www.ema.europa.eu/en/documents/shortage/creon-pancrelipase-pancreas-powder-supply-shortage_en.pdf
-  LINK Indisponibilidade de medicamentos contendo Quetiapina de libertação prolongada (Circular Informativa n.º 002/CD/2026 de 08/01/2026) -> https://www.infarmed.pt/documents/15786/12277909/Indisponibilidade+de+medicamentos+contendo+Quetiapina+de+liberta%C3%A7%C3%A3o+prolongada/da144095-d30a-6251-d6fb-18177007c345?version=1.0
-  LINK Manual do SiATS -> https://www.infarmed.pt/documents/15786/1672954/Manual+do+Utilizador+SIATS/c6886716-f055-67aa-87aa-0f1ad5f64da7
-  LINK Modelo de carta aos profissionais de saúde -> https://www.infarmed.pt/documents/15786/13020002/Modelo+de+carta/c553da70-7f23-d415-4ad2-7a6ebb116f69
-  LINK Deliberação n.º 101/CD/2026, de 15 de outubro -> https://www.infarmed.pt/documents/15786/9423565/Delibera%C3%A7%C3%A3o+101+-+LETS/de083b94-ca88-0040-a955-1d49f9d046f8
-  LINK Lista em vigor a partir de 17 de outubro de 2026 -> https://www.infarmed.pt/documents/15786/9423561/LNP+-+outubro+2026+%28II%29/d9dcc03e-a5d6-d90e-0787-91a72518f57a
-  LINK Lista de proibições a partir de 17 de outubro de 2026 -> https://www.infarmed.pt/documents/15786/11927579/Lista+de+proibi%C3%A7%C3%B5es+-+17+de+outubro+de+2026/2aa0a5bb-d463-65e5-9a35-91b6d72e0e7f
-  LINK Deliberação n.º 110/CD/2026, de 10 de novembro -> https://www.infarmed.pt/documents/15786/9423565/Delibera%C3%A7%C3%A3o+110+-+exporta%C3%A7%C3%A3o+temporariamente+suspensa+-+novembro+2026/77984131-b2d5-5e3a-3f84-d8067b8c3469
-  LINK Lista em vigor a partir de 13 de novembro de 2026 -> https://www.infarmed.pt/documents/15786/9423565/Lista+de+exporta%C3%A7%C3%A3o+temporariamente+suspensa+-+Novembro+2026/90058a23-ee1d-91e0-df78-c406a5a2a60e
-  LINK Paper on the obligation of continuous supply to tackle the problem of shortages of medicines - Agreed by the Ad-hoc technical meeting under the Pharmaceutical C -> https://ec.europa.eu/health/system/files/2018-10/ev_20180525_rd01_en_0.pdf
-  LINK Orientações para pedido de AUE de lote -> https://www.infarmed.pt/documents/15786/9202519/Orienta%C3%A7%C3%B5es+para+pedido+de+AUE+de+lote/2890373e-7338-2375-2cec-67f77e1f8c92
-  LINK Formulário do pedido de AUE de lote -> https://www.infarmed.pt/documents/15786/9202519/Formul%C3%A1rio+de+pedido+de+AUE+de+lote/1d1319aa-9a00-7ed9-4888-8fdf25845bbe
-  LINK Lista de AUE de lote concedidas -> https://www.infarmed.pt/documents/15786/9202519/Lista+de+AUE+de+lote+concedidas/e4ec158f-d198-3201-0023-21d88ba06af8
-  LINK Orientações para pedido de AUE por DG/Fabricantes -> https://www.infarmed.pt/documents/15786/9202585/Orienta%C3%A7%C3%B5es+para+pedido+de+AUE+por+DG+e+Fabricantes/629861f4-3d56-0275-5bc5-7e36d633dcdb
-  LINK Lista de medicamentos para AUE por DG/Fabricantes -> https://www.infarmed.pt/documents/15786/9202585/Lista+de+medicamentos+para+AUE+por+DG+e+Fabricantes/d25d3057-43f2-c9b6-c013-b3515d1ea5f9
-  LINK Formulário do pedido de AUE por DG/Fabricantes -> https://www.infarmed.pt/documents/15786/9202585/Formul%C3%A1rio+do+pedido+de+AUE+por+DG+e+Fabricantes/11102318-e0e0-6bb7-4f31-62ffa53c50b0
-  LINK Lista de AUE concedidas a DG/Fabricantes -> https://www.infarmed.pt/documents/15786/9202585/Lista+de+AUE+concedidas+a+DG+e+fabricantes/e0a06938-9a79-4891-229f-3a5eb06e958c
-  LINK Modelo para comunicação das quantidades fornecidas -> https://www.infarmed.pt/documents/15786/9202585/Modelo+para+comunica%C3%A7%C3%A3o+das+quantidades+fornecidas/9daff8ec-6838-82ae-7166-faa3f6cd36cb
-  LINK Orientações para pedido de AUE por hospitais -> https://www.infarmed.pt/documents/15786/9203340/Orienta%C3%A7%C3%B5es+para+pedido+de+AUE+por+hospitais/238624c1-8cc7-3650-f70f-984dca7bd979
-  LINK Formulário do pedido de AUE por hospitais -> https://www.infarmed.pt/documents/15786/9203340/Formul%C3%A1rio+do+pedido+de+AUE+por+hospitais/91474795-25f9-3ec4-1326-ab5680007e1e
-  LINK Lista de medicamentos com dispensa de justificação clínica -> https://www.infarmed.pt/documents/15786/9203340/Lista+de+medicamentos+com+dispensa+de+justifica%C3%A7%C3%A3o+cl%C3%ADnica/48ed4c7c-a9f8-6ed7-9229-11c54022c6b6
-  LINK Orientações para pedido de AUE de alergenos -> https://www.infarmed.pt/documents/15786/9203340/Orienta%C3%A7%C3%B5es+Alergenos/132886b3-e66a-ca43-3f33-55ea09259e5e
-  LINK Formulário de pedido de AUE de alergenos -> https://www.infarmed.pt/documents/15786/9203340/formulario_aue_alergeno/7b2e4489-e955-361c-6a25-53d465ad7389
-  LINK Orientações para pedido de AUE por clínicas e consultórios médicos ou dentários -> https://www.infarmed.pt/documents/15786/9202693/Orienta%C3%A7%C3%B5es+para+pedido+de+AUE+por+cl%C3%ADnicas+e+consult%C3%B3rios+m%C3%A9dicos+ou+dent%C3%A1rios/8504e27b-fab4-fb82-d04f-c1d2358c75f1
-  LINK Formulário do pedido de AUE por clínicas e consultórios médicos ou dentários -> https://www.infarmed.pt/documents/15786/9202693/Formul%C3%A1rio+do+pedido+de+AUE+por+cl%C3%ADnicas+e+consult%C3%B3rios+m%C3%A9dicos+ou+dent%C3%A1rios/4638bf03-37ab-21f4-1d7f-a9907e6233ec
-  LINK Lista de medicamentos que podem ser adquiridos por clínicas e consultórios médicos -> https://www.infarmed.pt/documents/15786/9202693/Anexo+Delibera%C3%A7%C3%A3o+97+-+Consult%C3%B3rios+m%C3%A9dicos/5f58be1a-8d2e-bb2d-f7d1-c18567e9c025
-  LINK Lista de medicamentos que podem ser adquiridos por clínicas e consultórios dentários -> https://www.infarmed.pt/documents/15786/9202693/Anexo+Delibera%C3%A7%C3%A3o+98+-+Consult%C3%B3rios+dent%C3%A1rios/83bb6de0-691b-a5dc-5f9c-b3caa297b54f
-  LINK Modelo para comunicação das quantidades utilizadas -> https://www.infarmed.pt/documents/15786/9202693/Modelo+para+comunica%C3%A7%C3%A3o+das+quantidades+utilizadas/2d871ab8-7e93-ab26-7745-5c981a807b45
-  LINK Orientações para AUE por farmácia de oficina -> https://www.infarmed.pt/documents/15786/9203314/Orienta%C3%A7%C3%B5es+para+AUE+por+farm%C3%A1cia+de+oficina/0c51e172-6c8f-0a40-f9c2-9636771c5d92
-  LINK Modelo para comunicação semestral -> https://www.infarmed.pt/documents/15786/9203314/Modelo_comunica%C3%A7%C3%A3o_farm%C3%A1cia/0def553f-9152-298b-b552-1b5ff54fc170
-  LINK formulário -> https://www.infarmed.pt/documents/15786/9203340/Formul%C3%A1rio+AUE+para+doente+espec%C3%ADfico+-+pedidos+de+subst%C3%A2ncias+controladas/5cfcdd5a-2d4a-2b64-0c17-bac0c7c213c6
-  LINK Lista de CHNM dos medicamentos de AUE de grupo de doentes (junho de 2026) -> https://www.infarmed.pt/documents/15786/4854518/Lista+de+CHNM+dos+medicamentos+de+AUE+de+grupo+de+doentes/0db2b0f8-5177-046e-dfde-c043661bc058
-  LINK Requerimento de pedido de SAR -> https://www.infarmed.pt/documents/15786/7846892/Requerimento+de+pedido+de+SAR/298681a4-521f-fc07-9526-59dedfddf2ae
-  LINK Instruções aos Requerentes -> https://www.infarmed.pt/documents/15786/7846892/Instru%C3%A7%C3%B5es+aos+requerentes+de+pedido+de+SAR/4c7c42d3-9b0c-1cde-44ed-b5c68c966d2c
-  LINK Portaria n.º 235/2023, de 27 de julho, -> https://files.diariodarepublica.pt/1s/2023/07/14500/0002600028.pdf
-  LINK Orientações necessárias à operacionalização da Portaria n.º 235/2023, de 27 de julho. -> https://www.infarmed.pt/documents/15786/4326055/Orienta%C3%A7%C3%B5es+Portaria+n%C2%BA+235+2023%2C+de+27+de+julho/e68b6f21-b8a2-3450-defc-ae7c51370ceb
-  LINK Esclarecimentos - Medicamentos essenciais de natureza crítica -> https://www.infarmed.pt/documents/15786/1147401/Esclarecimentos+-+Medicamentos+essenciais+de+natureza+cr%C3%ADtica/18629959-1dd4-654d-74f1-65b4a481077d
-  LINK Estatuto do medicamento -> https://www.infarmed.pt/documents/15786/1068535/Estatuto%2bdo%2bMedicamento/1dc6ada4-f002-4a12-ab8d-ebaba772068e
-  LINK Portal CITS para titulares de AIM -> https://www.infarmed.pt/documents/15786/2897018/CITS+%C2%BF+Acesso+%C3%A0+informa%C3%A7%C3%A3o+pelos+Titulares+de+AIM/8fb016f9-d17b-de34-1589-5a5ced4d9a94?version=1.0
-  LINK Orientações europeias para implementação dos Planos de Prevenção de Ruturas -> https://www.infarmed.pt/documents/15786/12277909/Orienta%C3%A7%C3%B5es+europeias+para+implementa%C3%A7%C3%A3o+dos+Planos+de+Preven%C3%A7%C3%A3o+de+Ruturas/830e6f89-57d7-5689-34e5-7c6d77257522
-  LINK Web service - Notificação de faltas por distribuidores por grosso de medicamentos de uso humano -> https://www.infarmed.pt/documents/15786/3464134/Web+Service+Notifica%C3%A7%C3%A3o+de+Faltas/1e11c3c0-3c11-1923-f1a1-94f253ecbc54
-  LINK Infografia - Notificação de faltas pela farmácia -> https://www.infarmed.pt/documents/15786/4326055/Infografia+-+Notifica%C3%A7%C3%A3o+de+faltas+pela+farm%C3%A1cia/186b65e0-f65e-c1f5-4792-0892bc44aad8
-  LINK Web service - Notificação de faltas por farmácias -> https://www.infarmed.pt/documents/15786/3464134/Web+Service+-+Notifica%C3%A7%C3%A3o+de+Faltas/398d2f31-dcc1-a850-f664-5e8b2ee46ff8
-  LINK Disponibilidade de medicamentos | Esclarecimentos e perguntas frequentes -> https://www.infarmed.pt/documents/15786/12277909/Disponibilidade+de+medicamentos+-+esclarecimentos+e+perguntas+frequentes/1d143f08-ec75-dc05-8c0f-fa56bdb6b5af
-===== pt_ruturas
-URL https://www.infarmed.pt/web/infarmed/ruturas
-status 404  final https://www.infarmed.pt/web/infarmed/ruturas  type text/html  bytes 258
-title redirect
+===== siats_ruturas
+URL https://extranet.infarmed.pt/siats/Publico/Rupturas.aspx
+status 200  final https://extranet.infarmed.pt/siats/Publico/Rupturas.aspx  type text/html; charset=utf-8  bytes 21471
+title SIATS
   no file links; first 2000 characters of text:
- redirect 
-===== pt_exportacao
-URL https://www.infarmed.pt/web/infarmed/exportacao-de-medicamentos
-status 404  final https://www.infarmed.pt/web/infarmed/exportacao-de-medicamentos  type text/html  bytes 258
-title redirect
+ --> --> SIATS // // function CleanForm(param) { $(param).closest('form').find("input[type=text], textarea, select").val(""); } function GetDciID(source, eventArgs) { var HdnKey = eventArgs.get_value(); document.getElementById('ctl00_ContentPlaceHolder1_hfDciId').value = HdnKey; } function GetTaimID(source, eventArgs) { var HdnKey = eventArgs.get_value(); document.getElementById('ctl00_ContentPlaceHolder1_hfTaimId').value = HdnKey; } function GetMedID(source, eventArgs) { var HdnKey = eventArgs.get_value(); document.getElementById('ctl00_ContentPlaceHolder1_hfMedId').value = HdnKey; } body { margin: 0px; padding: 0px; font-family: sans-serif; font-size: 14px; background-repeat: repeat-x; width: 100%; text-align: justify; color: #333; } .dci { width: 100px; } .nomemedicamento { width: 200px; } .titularaim { width: 200px; } .data{ width:60px } .espaco { width: 10px; } .linha { display: flex; flex-flow: row wrap; } .colunatitulo { width: 95%; } .colunabandeira { width: 5%; top: 8px; } .header .tools #flags { float: right; text-align: center; margin: 15px 5px; width: 25px; } .ui-fluid .ui-button.search-button { text-shadow:none } .ui-widget-content a{ color: #1E92A3; } Pesquisa de Medicamentos em Rutura Para efetuar a pesquisa, preencha o campo Substância ativa/DCI, Nome do medicamento, Titular de AIM, Número de registo, CNPEM ou CHNM. function PopupDocumentos(id, apg, tipo) { var w = 1050; var h = 500; var left = (screen.width / 2) - (w / 2); var top = (screen.height / 2) - (h / 2); window.open('/siats/Publico/ComercializacaoDocumentosPublico.aspx?id=' + id + "&apg=" + apg + "&t=" + tipo, '_blank', 'menubar=0,resizable=1,width=' + w + ',height=' + h + ',top=' + top + ', left=' + left); } function SeleccionarCheckbox(p1, p2, p3) { var id = p1.id; if (p1.checked) { var elemCkb = document.getElementById(id.replace(p2, p3)); elemCkb.checked = false; } } // 
+===== siats_cessacoes
+URL https://extranet.infarmed.pt/siats/Publico/CessaoComerc.aspx
+status 200  final https://extranet.infarmed.pt/siats/Publico/CessaoComerc.aspx  type text/html; charset=utf-8  bytes 21648
+title SIATS
   no file links; first 2000 characters of text:
- redirect 
-===== ema_pd
-URL https://www.ema.europa.eu/en/human-regulatory-overview/post-authorisation/parallel-distribution
-status 200  final https://www.ema.europa.eu/en/human-regulatory-overview/post-authorisation/parallel-distribution  type text/html; charset=utf-8  bytes 66871
-title Parallel distribution | European Medicines Agency (EMA)
-  LINK Download medicine data -> https://www.ema.europa.eu/en/medicines/download-medicine-data
-  LINK One substance - one assessment -> https://www.ema.europa.eu/en/partners-networks/one-substance-one-assessment-osoa-eu-collaboration-chemicals-related-data
-  LINK Related content -> https://www.ema.europa.eu/en/human-regulatory-overview/post-authorisation/parallel-distribution#related-content-18766
-  LINK View -> https://www.ema.europa.eu/en/documents/regulatory-procedural-guideline/iris-guide-applicants-how-create-submit-scientific-applications-industry-individual-applicants_en.pdf
-===== iris_pd
-URL https://iris.ema.europa.eu/registerpd/
-status 200  final https://iris.ema.europa.eu/registerpd/  type text/html; charset=utf-8  bytes 180051
-title Register of Parallel Distribution Notices
-		 · IRIS
+ --> --> SIATS body { margin: 0px; padding: 0px; font-family: sans-serif; font-size: 14px; background-repeat: repeat-x; width: 100%; text-align: justify; color: #333; } tr.pager-class td table { margin-left: 100px; } .linha { display: flex; flex-flow: row wrap; } .colunatitulo { width: 95%; } .colunabandeira { width: 5%; top: 8px; } .header .tools #flags { float: right; text-align: center; margin: 15px 5px; width: 25px; } .dci { width: 100px; } .nomemedicamento { width: 200px; } .titularaim { width: 200px; } .espaco { width: 10px; } .data{ width:60px } .ui-fluid .ui-button.search-button { text-shadow:none } // // function CleanForm(param) { $(param).closest('form').find("input[type=text], textarea, select").val(""); } function GetDciID(source, eventArgs) { var HdnKey = eventArgs.get_value(); document.getElementById('ctl00_ContentPlaceHolder1_hfDciId').value = HdnKey; } function GetTaimID(source, eventArgs) { var HdnKey = eventArgs.get_value(); document.getElementById('ctl00_ContentPlaceHolder1_hfTaimId').value = HdnKey; } function GetMedID(source, eventArgs) { var HdnKey = eventArgs.get_value(); document.getElementById('ctl00_ContentPlaceHolder1_hfMedId').value = HdnKey; } Pesquisa de Cessações de Comercialização Para efetuar a pesquisa das cessações de comercialização dos últimos 6 meses, preencha o campo Substância ativa/DCI, Nome do medicamento, Titular de AIM, Número de registo, CNPEM ou CHNM. function PopupDocumentos(id, apg, tipo) { var w = 1050; var h = 500; var left = (screen.width / 2) - (w / 2); var top = (screen.height / 2) - (h / 2); window.open('/siats/Publico/ComercializacaoDocumentosPublico.aspx?id=' + id + "&apg=" + apg + "&t=" + tipo, '_blank', 'menubar=0,resizable=1,width=' + w + ',height=' + h + ',top=' + top + ', left=' + left); } function SeleccionarCheckbox(p1, p2, p3) { var id = p1.id; if (p1.checked) { var elemCkb = document.getElementById(id.replace(p2, p3)); elemCkb.checked = false; } } // 
+===== dr_regulamento_2025
+URL https://diariodarepublica.pt/dr/detalhe/deliberacao/234-2025-907742765
+status 200  final https://diariodarepublica.pt/dr/detalhe/deliberacao/234-2025-907742765  type text/html; charset=utf-8  bytes 2346
+title 
   no file links; first 2000 characters of text:
- Register of Parallel Distribution Notices · IRIS // Refresh all powerBI Iframes on Login in one Iframe window.addEventListener('message', function (event) { if (event && event.data && event.data == 'refreshPowerBI') { $("iframe.powerbi").each(function () { this.src = this.src; }); } }); // Fix for incorrect viewport width setting in IE 10 on Windows Phone 8. if (navigator.userAgent.match(/IEMobile\/10\.0/)) { var msViewportStyle = document.createElement("style"); msViewportStyle.appendChild(document.createTextNode("@-ms-viewport{width:auto!important}")); document.getElementsByTagName("head")[0].appendChild(msViewportStyle); } You’re offline. This is a read only version of the page. window.DisableCkEditor = window.DisableCkEditor || {}; DisableCkEditor.Value = 'False'; var enableOmniChannelWidgetWithSiteCopilot = 'False'; if (enableOmniChannelWidgetWithSiteCopilot === "True" || enableOmniChannelWidgetWithSiteCopilot === "true") { const authUrl = window.location.origin + "/_services/auth/portalusertoken"; const fetchWithRetries = async (url, options, retries) => { try { const authResponse = await fetch(url, options); const token = await authResponse.text(); sessionStorage['c2Token'] = token; } catch (err) { if (retries === 1) throw err; return await fetchWithRetries(url, options, retries - 1); } }; fetchWithRetries(authUrl, { method: "POST" }, 4); // Enable/disable Omnichannel session refresh on auth state change // When enabled, closeChat() is called when user logs in/out to start a fresh session var enableOmniChannelSessionRefreshSetting = 'True'; window.enableOmniChannelSessionRefresh = enableOmniChannelSessionRefreshSetting === 'True' || enableOmniChannelSessionRefreshSetting === 'true'; } var isPvaBotAuthenticated = sessionStorage['isPvaBotAuthenticated']; var isPortalUserLoggedIn = 'False'; if ((isPvaBotAuthenticated != null || isPvaBotAuthenticated != undefined) && isPvaBotAuthenticated != isPortalUserLoggedIn) { sessionStorage['triggerPvaBotSignOut'] = true; 
-===== save pt_disponibilidade_2024
-URL https://www.infarmed.pt/documents/15786/10901776/Relat%C3%B3rio+2024/2f02f60e-ef04-a5b1-7962-be7d5ef353a2
-status 200  final https://www.infarmed.pt/documents/15786/10901776/Relat%C3%B3rio+2024/2f02f60e-ef04-a5b1-7962-be7d5ef353a2  type application/pdf  bytes 611228
-saved raw/pt_disponibilidade_2024.txt.gz (26 pages)
-  first lines: RELATÓRIO ANUAL 2024 Gestão da Disponibilidade de Medicamentos 2024 | Comissão de Acompanhamento da Gestão da Disponibilidade de Medicamentos 0 Índice Introdução ........................................................................................................................................................................... 2 Responsabilidades dos intervenientes do setor .................................................................................................................. 3 O mercado farmacêutico ..........................................................
-===== save pt_disponibilidade_2021
-URL https://www.infarmed.pt/documents/15786/4326055/Relat%C3%B3rio+anual+sobre+a+gest%C3%A3o+da+disponibilidade+de+medicamentos+de+2021/d6729605-96aa-7b0c-e702-d59e0e7e863e
-status 200  final https://www.infarmed.pt/documents/15786/4326055/Relat%C3%B3rio+anual+sobre+a+gest%C3%A3o+da+disponibilidade+de+medicamentos+de+2021/d6729605-96aa-7b0c-e702-d59e0e7e863e  type application/pdf  bytes 2225527
-saved raw/pt_disponibilidade_2021.txt.gz (36 pages)
-  first lines: RELATÓRIO ANUAL 2021 2021 GESTÃO DA DISPONIBILIDADE DE MEDICAMENTOS Fevereiro 2022 0 Índice Introdução ..................................................................................... 2 Enquadramento legal ................................................................. 3 Atividade desenvolvida ............................................................. 5 Disponibilidade de medicamentos ........................................... 7 Evolução das ruturas ................................................................. 10 Evolução das faltas ............................
-===== save pt_lnp_aug_2026
-URL https://www.infarmed.pt/documents/15786/9423561/Delibera%C3%A7%C3%A3o+86+-+LNP+%28agosto+2026%29/087086db-c4d1-2a15-3c45-0cea642169e3
-status 200  final https://www.infarmed.pt/documents/15786/9423561/Delibera%C3%A7%C3%A3o+86+-+LNP+%28agosto+2026%29/087086db-c4d1-2a15-3c45-0cea642169e3  type application/pdf  bytes 365667
-saved raw/pt_lnp_aug_2026.txt.gz (8 pages)
-  first lines:  Deliberação n.º 086/CD/2026 A alínea b) do n.º 2 do artigo 100.º do Decreto-Lei n.º 176/2006, de 30 de agosto, na sua redação atual prevê a possibilidade de o INFARMED, I.P. definir a lista de medicamentos cuja exportação, ou distribuição para outros Estados-membros da União Europeia, e respetivas quantidades dependem de prévia notificação pelo distribuidor por grosso ao INFARMED, I.P. Através da Deliberação n.º 234/2025, de 18 de fevereiro, o Conselho Diretivo do INFARMED, I.P. aprovou o Regulamento sobre o controlo de transações de medicamentos para o exterior d
-===== save pt_circ_oct_2025
-URL https://www.infarmed.pt/documents/15786/10773025/Atualiza%C3%A7%C3%A3o+das+listas+previstas+no+Regulamento+sobre+o+controlo+de+transa%C3%A7%C3%B5es+de+medicamentos+para+o+exterior+do+pa%C3%ADs/db92c49c-92b6-13c7-364d-c9758a3b70e6
-status 200  final https://www.infarmed.pt/documents/15786/10773025/Atualiza%C3%A7%C3%A3o+das+listas+previstas+no+Regulamento+sobre+o+controlo+de+transa%C3%A7%C3%B5es+de+medicamentos+para+o+exterior+do+pa%C3%ADs/db92c49c-92b6-13c7-364d-c9758a3b70e6  type application/pdf  bytes 191371
-saved raw/pt_circ_oct_2025.txt.gz (2 pages)
-  first lines:  Circular Informativa N.º 113/CD/100.20.200 Data: 07/10/2025 Assunto: Atualização das listas previstas no Regulamento sobre o controlo de transações de medicamentos para o exterior do país Para: Divulgação geral Contacto: Centro 
-===== save pt_circ_jun_2026
-URL https://www.infarmed.pt/documents/15786/12277909/Atualiza%C3%A7%C3%A3o+da+lista+de+medicamentos+cuja+exporta%C3%A7%C3%A3o+%C3%A9+temporariamente+suspensa+-+junho+2026/5c4742ff-efec-47b6-fdf0-99dc4db20498
-status 200  final https://www.infarmed.pt/documents/15786/12277909/Atualiza%C3%A7%C3%A3o+da+lista+de+medicamentos+cuja+exporta%C3%A7%C3%A3o+%C3%A9+temporariamente+suspensa+-+junho+2026/5c4742ff-efec-47b6-fdf0-99dc4db20498  type application/pdf  bytes 476064
-saved raw/pt_circ_jun_2026.txt.gz (2 pages)
-  first lines:  Circular Informativa N.º 057/CD/100.20.200 Data: 05/06/2026 Assunto: Atualização da lista de medicamentos cuja exportação é temporariamente suspensa Para: Divulgação geral Contacto: Centro de Informação do Medica
-===== save pt_regulamento_2021
-URL https://files.diariodarepublica.pt/2s/2021/04/078000000/0020900218.pdf
-status 200  final https://files.diariodarepublica.pt/2s/2021/04/078000000/0020900218.pdf  type application/pdf  bytes 1085494
-saved raw/pt_regulamento_2021.txt.gz (11 pages)
-  first lines:  Diário da República, 2.ª série PARTE C N.º 78 22 de abril de 2021 Pág. 209 SAÚDE INFARMED — Autoridade Nacional do Medicamento e Produtos de Saúde, I. P. Deliberação n.º 391/2021 Sumário: Aprova o regulamento sobre a notificação prévia de transacções de medicamentos 
+ window.OutSystemsApp = { basePath: '/dr/' }; (function () { function appendMetaTagAttributes(metaTag, attribute, values) { var elem = document.querySelector("meta[name=" + metaTag + "]"); if (elem) { var attrContent = elem.getAttribute(attribute); elem.setAttribute(attribute, (attrContent ? attrContent + "," : "") + values.join(",")); } } if (navigator && /OutSystemsApp/i.test(navigator.userAgent)) { // If this app is running on the native shell, we want to disable the zoom appendMetaTagAttributes("viewport", "content", ["user-scalable=no", "minimum-scale=1.0"]); } })(); OSManifestLoader.indexVersionToken = "zTvTmNSjyYQ7kIsgtWJlUQ"; JavaScript is required 
+===== save pt_disponibilidade_2025
+URL https://www.infarmed.pt/documents/15786/10901776/Relat%C3%B3rio2025/a2d40b5d-60ea-4297-6bc8-fa146f1a5c70
+status 200  final https://www.infarmed.pt/documents/15786/10901776/Relat%C3%B3rio2025/a2d40b5d-60ea-4297-6bc8-fa146f1a5c70  type application/pdf  bytes 852778
+saved raw/pt_disponibilidade_2025.txt.gz (27 pages)
+  first lines: RELATÓRIO ANUAL 2025 Gestão da Disponibilidade de Medicamentos 2025 | Unidade de Gestão da Disponibilidade e para o Sistema de Saúde 0 Índice Índice .................................................................................................................................................................................... i Introdução ........................................................................................................................................................................... 2 Responsabilidades dos intervenientes do setor ...................
+===== save pt_lnp_oct_2026
+URL https://www.infarmed.pt/documents/15786/9423561/LNP+-+outubro+2026+%28II%29/d9dcc03e-a5d6-d90e-0787-91a72518f57a
+status 200  final https://www.infarmed.pt/documents/15786/9423561/LNP+-+outubro+2026+%28II%29/d9dcc03e-a5d6-d90e-0787-91a72518f57a  type application/vnd.openxmlformats-officedocument.spreadsheetml.sheet  bytes 24473
+saved raw/pt_lnp_oct_2026.xlsx
+===== save pt_proibicoes_oct_2026
+URL https://www.infarmed.pt/documents/15786/11927579/Lista+de+proibi%C3%A7%C3%B5es+-+17+de+outubro+de+2026/2aa0a5bb-d463-65e5-9a35-91b6d72e0e7f
+status 200  final https://www.infarmed.pt/documents/15786/11927579/Lista+de+proibi%C3%A7%C3%B5es+-+17+de+outubro+de+2026/2aa0a5bb-d463-65e5-9a35-91b6d72e0e7f  type application/vnd.openxmlformats-officedocument.spreadsheetml.sheet  bytes 25169
+saved raw/pt_proibicoes_oct_2026.xlsx
+===== save pt_suspensa_nov_2026
+URL https://www.infarmed.pt/documents/15786/9423565/Lista+de+exporta%C3%A7%C3%A3o+temporariamente+suspensa+-+Novembro+2026/90058a23-ee1d-91e0-df78-c406a5a2a60e
+status 200  final https://www.infarmed.pt/documents/15786/9423565/Lista+de+exporta%C3%A7%C3%A3o+temporariamente+suspensa+-+Novembro+2026/90058a23-ee1d-91e0-df78-c406a5a2a60e  type application/vnd.openxmlformats-officedocument.spreadsheetml.sheet  bytes 29318
+saved raw/pt_suspensa_nov_2026.xlsx
+===== save pt_delib_110_2026
+URL https://www.infarmed.pt/documents/15786/9423565/Delibera%C3%A7%C3%A3o+110+-+exporta%C3%A7%C3%A3o+temporariamente+suspensa+-+novembro+2026/77984131-b2d5-5e3a-3f84-d8067b8c3469
+status 200  final https://www.infarmed.pt/documents/15786/9423565/Delibera%C3%A7%C3%A3o+110+-+exporta%C3%A7%C3%A3o+temporariamente+suspensa+-+novembro+2026/77984131-b2d5-5e3a-3f84-d8067b8c3469  type application/pdf  bytes 101240
+saved raw/pt_delib_110_2026.txt.gz (5 pages)
+  first lines:  
 ===== iris register (entity grid)
-status 200 bytes 180048
-  data-view-layouts=\"([^\"]+)\": 1
-    W3siQ29uZmlndXJhdGlvbiI6eyJQYXJ0aWFsVmlld0NvbmZpZyI6ZmFsc2UsIkVudGl0eU5hbWUiOiJlbWFfcmVndWxhdG9yeXNlcnZpY2UiLCJQcmltYXJ5S2V5TmFtZSI6ImVtYV9yZWd1bGF0b3J5c2VydmljZWlkIiwiVmlld0lkIjoiMzAxNjJhMDQtYmUxNS1lOTExLWE4NTYtMDAwZDNhMmEzNDNlIiwiSWQiOiIzMDE2MmEwNC1iZTE1LWU5MTEtYTg1Ni0wMDBkM2EyYTM0M2UiLCJQYWdlU2l6ZSI6MjYsIkNzc0NsYXNzIjoiIiwiR3JpZENzc0NsYXNzIjoidGFibGUtc3RyaXBlZCIsIkdyaWRDb2x1bW5XaWR0aFN0eWxlIjox
-  data-get-url=\"([^\"]+)\": 1
-    /_services/entity-grid-data.json/7b138792-1090-45b6-9241-8f8d96d8c372
-  entity-grid[^\"']{0,80}: 4
-    entity-grid
-    entity-grid&#32;entitylist
-    entity-grid-data.json/7b138792-1090-45b6-9241-8f8d96d8c372
-    entity-grid-update-entity/7b138792-1090-45b6-9241-8f8d96d8c372
-  _services/[^\"'<>\s]+: 5
-    _services/search/7b138792-1090-45b6-9241-8f8d96d8c372
-    _services/auth/portalusertoken
-    _services/entity-grid-data.json/7b138792-1090-45b6-9241-8f8d96d8c372
-    _services/entity-grid-update-entity/7b138792-1090-45b6-9241-8f8d96d8c372
-    _services/copilot/TrackUsage
-  data-[a-z-]+=\"[^\"]{0,120}\": 31
-    data-lang="en-US"
-    data-sitemap-state="/registerpd/:/"
-    data-dateformat="dd/MM/yyyy"
-    data-timeformat="h:mm tt"
-    data-datetimeformat="dd/MM/yyyy h:mm tt"
-    data-app-path="/"
-    data-ckeditor-basepath="/js/BaseHtmlContentDesigner/Libs/msdyncrm_/libs/ckeditor/"
-    data-case-deflection-url="/_services/search/7b138792-1090-45b6-9241-8f8d96d8c372"
-    data-toggle="collapse"
-    data-target="#navbar"
-    data-weblinks-maxdepth="2"
-    data-url="/_layout/tokenhtml"
-    data-pagesize="6"
-    data-collapsed="true"
-    data-serialized-query="mf"
-    data-target="#EntityListFilterControl"
-    data-column-width-style="Percent"
-    data-defer-loading="false"
-    data-enable-actions="true"
-    data-get-url="/_services/entity-grid-data.json/7b138792-1090-45b6-9241-8f8d96d8c372"
-    data-grid-class="table-striped"
-    data-mobile-view-enabled="true"
-    data-select-mode="None"
-    data-selected-view="30162a04-be15-e911-a856-000d3a2a343e"
-    data-update-url="/_services/entity-grid-update-entity/7b138792-1090-45b6-9241-8f8d96d8c372"
-    data-current-page="1"
-    data-pages="1"
-    data-pagesize=""
-    data-backdrop="static"
-    data-dismiss="modal"
-    data-page="/_portal/modal-form-template-path/7b138792-1090-45b6-9241-8f8d96d8c372"
-  /_api/[^\"'<>\s]+: 0
-  <script[^>]+src=\"([^\"]+)\": 22
-    /_portal/7b138792-1090-45b6-9241-8f8d96d8c372/Resources/ResourceManager?lang=en-US
-    /EMA_Core.js?ver=2026-11-12T12:40:49Z
-    /EMA_Submission_Marketed.js?ver=2026-11-12T12:40:49Z
-    /EMA_Submissions_Withdraw.js?ver=2026-11-12T12:40:49Z
-    https://content.powerapps.com/resource/powerappsportal/dist/client-telemetry.bundle-2bb0ef927d.js
-    https://content.powerapps.com/resource/powerappsportal/dist/client-telemetry-wrapper.bundle-633e70f51b.js
-    https://content.powerapps.com/resource/powerappsportal/dist/preform.moment_2_29_4.bundle-750b699ecd.js
-    https://content.powerapps.com/resource/powerappsportal/dist/pcf-dependency.bundle-805a1661b7.js
-    https://content.powerapps.com/resource/powerappsportal/dist/pcf.bundle-60440c37cb.js
-    https://content.powerapps.com/resource/powerappsportal/dist/pcf-extended.bundle-b0e01b5622.js
-    /WebResource.axd?d=pynGkmcFUV13He1Qd6_TZIs-OwZzcWRL-bCOgs4vsj-tfsXH-38uzcVXxpcAHYfluDtmAQj0Nul0sgpYCFDH0w2&amp;t=639256397503738887
-    /ScriptResource.axd?d=NJmAwtEo3Ipnlaxl6CMhvs7uat2VRJITpwdQdTwETzWIQl5OzmNIB-yQAR2xoGM1SngrKwwA7zSEGNdP07IQQ1Z-iJn6UHBfsPpn4_KfJP8bmOrc0ky7ekxCPrj2TWrpVKsYx4WE5dMyFOg5X3iEUQm31MGcc1SriTQMvnVCmpU1&amp;t=ffffffffa1bf0f7b
-    /ScriptResource.axd?d=dwY9oWetJoJoVpgL6Zq8OP__AmZIbdlcScPWUfJ4Q3pvL7bXFZvnHK5QjOXDVmy5L5rOwBpNFeW_UigJ0AEqo5cLa75gVHU9uKzOn00wv-ds4GtR3rmNmyQaHuqqdtWc2AtI6-DG8A0ZD3EzXjt1YY12pwVwj2PtVQLuZrosUP41&amp;t=ffffffffa1bf0f7b
-    ../js/jquery.blockUI.js
-    /xrm-adx/js/webform.js
-    /xrm-adx/js/radcaptcha.js
-    https://content.powerapps.com/resource/powerappsportal/dist/pcf-loader.bundle-f4a0e619b8.js
-    https://content.powerapps.com/resource/powerappsportal/controls/host/main.8512520686.chunk.js
-    https://content.powerapps.com/resource/powerappsportal/dist/bootstrap.bundle-105a4995b8.js
-    https://content.powerapps.com/resource/powerappsportal/dist/postpreform.bundle-4687dda8df.js
-    https://content.powerapps.com/resource/powerappsportal/dist/app.bundle-0641939489.js
-    https://content.powerapps.com/resource/powerappsportal/dist/default-1033.moment_2_29_4.bundle-eda4e638fd.js
-  token found
-  layout keys: [{"Configuration": {"PartialViewConfig": false, "EntityName": "ema_regulatoryservice", "PrimaryKeyName": "ema_regulatoryserviceid", "ViewId": "30162a04-be15-e911-a856-000d3a2a343e", "Id": "30162a04-be15-e911-a856-000d3a2a343e", "PageSize": 26, "CssClass": "", "GridCssClass": "table-striped", "GridColumnWidthStyle": 1, "LoadingMessage": "", "ErrorMessage": "", "AccessDeniedMessage": "", "ColumnOverrides": [{"AttributeLogicalName": "ema_name", "DisplayName": "Notice Number"}, {"AttributeLogicalName": "ema_relatedproductname", "DisplayName": "Product Name"}, {"AttributeLogicalName": "ema_relatedproductpacksize", "DisplayName": "Pack Size"}, {"AttributeLogicalName": "ema_relatedproductstrength", "DisplayName": "Strength"}, {"AttributeLogicalName": "ema_relatedmarketingauthorisationholder", "DisplayName": "Mark. Auth. Holder"}, {"AttributeLogicalName": "ema_relatedsponsorname", "DisplayName": "Parallel Distributor"}, {"AttributeLogicalName": "ema_entitlementstatus", "DisplayName": "Status"}, {"AttributeLogicalName": "ema_relatedproducteunumber", "DisplayName": "EU Number"}, {"AttributeLogicalName": "ema_dateofnotification", "DisplayName": "Date of Notice"}], "EnableEntityPermissions": true, "Search": {"Enabled": false, "SearchQueryStringParameterName": "query", "PlaceholderText": "Search", "NlplaceholderText": "Search list in your own words", "TooltipText": "To search on partial text, use the asterisk (*) wildcard character. ", "ButtonLabel": "<span class='sr-only'>Search</span><s
-  POST https://iris.ema.europa.eu/_services/entity-grid-data.json/7b138792-1090-45b6-9241-8f8d96d8c372 -> 200 bytes 46696
-  
-
-
-<!DOCTYPE html>
-<html lang="en-US" data-lang="en-US" crm-lang="en-US" dir="ltr" crm-lcid="1033"
-	same-site-mode="None">
-<head>
-		
-		<meta charset="utf-8" /><meta name="viewport" content="width=device-width,&#32;initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<script type="text/javascript" >
-				
-        </script>
-	<title>
-	
-		Home
-		&nbsp;· IRIS
-</title>
-		
-		<script src="/_portal/7b138792-1090-45b6-9241-8f8d96d8c372/Resources/ResourceManager?lang=en-US"></script>
-	
-	<script type="text/javascript">
-        // Refresh all powerBI Iframes on Login in one Iframe
-        window.addEventListener('message', function (event) {
-            if (event && event.data && event.data == 'refreshPowerBI') {
-                $("iframe.powerbi").each(function () {
-                    this.src = this.src;
-                });
-            }
-        });
-
-        // Fix for incorrect viewport width setting in IE 10 on Windows Phone 8.
-        if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
-            var msViewportStyle = document.createElement("style");
-            msViewportStyle.appendChild(document.createTextNode("@-ms-viewport{width:auto!important}"));
-            document.getElementsByTagName("head")[0].appendChild(msViewportStyle);
-        }
-    </script>
-		
-	
-		
-		<link href="/bootstrap.min.css?1793064066000" rel="stylesheet" />
-
-		<link href="https://content.powerapps.com/resource/powerappsportal/dist/font-awesome.bundle-3d8a58a48f.css" onerror="javascript:&#32;var&#32;target&#32;=&#32;event.target;&#32;var&#32;link&#32;=&#32;document.createElement(&#39;link&#39;);&#32;link.crossOrigin&#32;=&#32;target.crossOrigin;&#32;link.href&#32;=&#32;&#39;/dist/font-awesome.bundle-3d8a58a48f.css&#39;;&#32;link.rel&#32;=&#32;&#39;stylesheet&#39;;&#32;target.insertAdjacentElement(&#39;afterend&#39;,link);" rel="stylesheet" />
-
-				<link href="https://content.powerapps.com/resource/powerappsportal/dist/preform.bundle-b72a6ea21d.css" onerror="javascript:&#32;var&#32;target&#32;=&#32;event.target;&#32;var&#32;link&#32;=&#32;document.createElement(&#39;link&#39;);&#32;link.crossOrigin&#32;=&#32;target.crossOrigin;&#32;link.href&#32;=&#32;&#39;/dist/preform.bundle-b72a6ea21d.css&#39;;&#32;link.rel&#32;=&#32;&#39;stylesheet&#39;;&#32;target.insertAdjacentElement(&#39;afterend&#39;,link);" rel="stylesheet" />
-
-
-		
-		<link href="https://content.powerapps.com/resource/powerappsportal/dist/privatemode.bundle-049b12b66e.css" onerror="javascript:&#32;var&#32;target&#32;=&#32;event.target;&#32;var&#32;link&#32;=&#32;document.createElement(&#39;link&#39;);&#32;link.crossOrigin&#32;=&#32;target.crossOrigin;&#32;link.href&#32;=&#32;&#39;/dist/privatemode.bundle-049b12b66e.css&#39;;&#32;link.rel&#32;=&#32;&#39;stylesheet&#39;;&#32;target.insertAdjacentElement(&#39;afterend&#39;,link);" rel="stylesheet" />
-
-
-		
-			
-
-
-		
-	
-		<link rel="stylesheet" href="/Areas/Account/css/account.css">
-	
-
-		<link hr
-  GET /_api/ema_paralleldistributionnotices?$top=3 -> 400 {"error":{"code":"9004010A","message":"An unexpected error occurred while processing the request","innererror":{"code":"9004010A","message":"An unexpected error occurred while processing the request","type":"UnexpectedError"}}}
-  GET /_api/$metadata -> 404 {"error":{"code":"9004010C","message":"Resource not found for the segment $metadata.","innererror":{"code":"9004010C","message":"Resource not found for the segment $metadata.","type":"ResourceDoesNotExists"}}}
+  token found; cookies ['Dynamics365PortalAnalytics', '__RequestVerificationToken', 'ARRAffinity', 'ARRAffinitySameSite']
+  checkbox options 62; labelled 62; sample [('{4dd982e1-79f8-e811-a876-000d3a265efb}', 'Filter Member State(s) of Origin: '), ('{4fd982e1-79f8-e811-a876-000d3a265efb}', 'Filter Member State(s) of Origin: '), ('{51d982e1-79f8-e811-a876-000d3a265efb}', 'Filter Member State(s) of Origin: '), ('{53d982e1-79f8-e811-a876-000d3a265efb}', 'Filter Member State(s) of Origin: '), ('{55d982e1-79f8-e811-a876-000d3a265efb}', 'Filter Member State(s) of Origin: ')]
+  origin filter html: Member State(s) of Origin</label><ul class="list-unstyled" role="presentation" data-pagesize="6"><li class="entitylist-filter-option"><div class="checkbox"><label><input type="checkbox" name="13" value="{4dd982e1-79f8-e811-a876-000d3a265efb}" /><span class='sr-only'>Filter Member State(s) of Origin: </span>Austria</label></div></li><li class="entitylist-filter-option"><div class="checkbox"><label><input type="checkbox" name="13" value="{4fd982e1-79f8-e811-a876-000d3a265efb}" /><span class='sr-only'>Filter Member State(s) of Origin: </span>Belgium</label></div></li><li class="entitylist-filter-option"><div class="checkbox"><label><input type="checkbox" name="13" value="{51d982e1-79f8-e811-a876-000d3a265efb}" /><span class='sr-only'>Filter Member State(s) of Origin: </span>Bulgaria</label></div></li><li class="entitylist-filter-option"><div class="checkbox"><label><input type="checkbox" name="13" value="{53d982e1-79f8-e811-a876-000d3a265efb}" /><span class='sr-only'>Filter Member State(s) of Origin: </span>Croatia</label></div></li><li class="entitylist-filter-option"><div class="checkbox"><label><input type="checkbox" name="13" value="{55d982e1-79f8-e811-a876-000d3a265efb}" /><span class='sr-only'>Filter Member State(s) of Origin: </span>Cyprus</label></div></li><li class="entitylist-filter-option"><div class="checkbox"><label><input type="checkbox" name="13" value="{57d982e1-79f8-e811-a876-000d3a265efb}" /><span class='sr-only'>Filter Member State(s) of Origin: </span>Czech R
+  xhr/26: 200 application/json; charset=utf-8 bytes 1722327 loc None
+    keys ['MoreRecords', 'Records', 'ItemCount', 'PageCount', 'PageNumber', 'PageSize', 'NextPagePagingCookie', 'ViewConfiguration', 'CompleteViewLayout', 'CreateActionMetadata', 'DisabledItemActionLinks']
+    ItemCount 5000 PageCount 193 MoreRecords True
+    first record {"Id": "5cdbf96b-24dc-f111-84e8-70a8a557de20", "EntityName": "ema_regulatoryservice", "Attributes": [{"Name": "ema_relatedsponsorname", "Type": "System.String", "Value": "Euro Registratie Collectief B.V.", "FormattedValue": "", "DateTimeFormat": "DateAndTime", "DisplayValue": "Euro Registratie Collectief B.V.", "AttributeMetadata": {"Format": 1, "FormatName": {"Value": "Text", "ExtensionData": {}}, "ImeMode": 0, "MaxLength": 2000, "YomiOf": null, "IsLocalizable": false, "DatabaseLength": 4000, "FormulaDefinition": "", "SourceTypeMask": 0, "AttributeOf": null, "AttributeType": 14, "AttributeTypeName": {"Value": "StringType", "ExtensionData": {}}, "ColumnNumber": 94, "Description": {"LocalizedLabels": [{"Label": "", "LanguageCode": 1033, "IsManaged": true, "MetadataId": "692a1ac2-b696-4e01-b27d-becb74c6b5dc", "HasChanged": null, "ExtensionData": {}}], "UserLocalizedLabel": {"Label": "", "LanguageCode": 1033, "IsManaged": true, "MetadataId": "692a1ac2-b696-4e01-b27d-becb74c6b5dc", "HasChanged": null, "ExtensionData": {}}, "ExtensionData": {}}, "DisplayName": {"LocalizedLabels": [{"Label": "Related Sponsor Name", "LanguageCode": 1033, "IsManaged": true, "MetadataId": "9e1bff89-21c3-4f43-80cd-55dd5b0bb4fd", "HasChanged": null, "ExtensionData": {}}], "UserLocalizedLabel": {"Label": "Related Sponsor Name", "LanguageCode": 1033, "IsManaged": true, "MetadataId": "9e1bff89-21c3-4f43-80cd-55dd5b0bb4fd", "HasChanged": null, "ExtensionData": {}}, "ExtensionData": {}}, "DeprecatedVersion": null, "IntroducedVersion": "1.0.0.0", "EntityLogicalName": "ema_regulatoryservice", "IsAuditEnabled": {"Value": true, "CanBeChanged": true, "ManagedPropertyLogicalName": "canmodifyauditsettings", "ExtensionData": {}}, "IsCustomAttribute": true, "IsPrimaryId": false, "IsValidODataAttribute": true, "IsPrimaryName": false, "IsValidForCreate": true, "IsValidForRead": true, "IsValidForUpdate": true, "CanBeSecuredForRead": true, "CanBeSecuredForCreate": true, "CanBeSecuredForUpdate": true, "IsSecured": false, "IsRetrievable": false, "IsFilterable": false, "IsSearchable": false, "IsManaged": true, "IsGlobalFilterEnabled": {"Value": false, "CanBeChanged": true, "ManagedPropertyLogicalName": "canmodifyglobalfiltersettings", "ExtensionData": {}}, "IsSortableEnabled": {"Value": false, "CanBeChanged": true, "ManagedPropertyLogicalName": "canmodifyissortablesettings", "ExtensionData": {}}, "LinkedAttributeId": null, "LogicalName": "ema_relatedsponsorname", "IsCustomizable": {"Value": true, "CanBeC
+===== wayback snapshots of the availability page
+  snapshots (one per month): 43
+  20191120095150: 0 new links []
+  20191227050108: 0 new links []
+  20200325141755: 0 new links []
+  20200625230623: 0 new links []
+  20200923195337: 0 new links []
+  20201223091720: 0 new links []
+  20210116062319: 0 new links []
+  20210326012553: 0 new links []
+  20210401232138: 0 new links []
+  20210630011534: 4 new links ['Lista em vigor a partir de 1 de maio de 2021', 'Lista em vigor a partir de 2 de junho 2021', 'Web service - Notificação de faltas por distribuidores por grosso de medicamentos de uso humano', 'Web service - Notificação de faltas por farmácias']
+  20210806040051: 2 new links ['Lista em vigor a partir de 2 de agosto de 2021', 'Lista em vigor a partir de 2 de agosto 2021']
+  20211010223808: 1 new links ['Lista em vigor a partir de 11 de outubro de 2021']
+  20211104135951: 0 new links []
+  20211201191124: 1 new links ['Lista em vigor a partir de 8 de novembro de 2021']
+  20220322103025: 6 new links ['Lista de medicamentos identificados pelo Infarmed', 'Deliberação n.º 004/CD/2022, de 27 de janeiro', 'Lista em vigor a partir de 1 de fevereiro de 2022', 'Deliberação n.º 013/CD/2022, de 4 de março', '.', 'Lista em vigor a partir de 10 de março de 2022']
+  20220405020624: 2 new links ['Deliberação n.º 023/CD/2022, de 29 de março.', 'Lista em vigor a partir de 1 de abril de 2022']
+  20220528233812: 3 new links ['Deliberação n.º 046/CD/2022, de 12 de maio', 'Lista em vigor a partir de 19 de maio de 2022', 'Lista em vigor a partir de 19 de maio de 2022']
+  20220601145756: 0 new links []
+  20220930101217: 6 new links ['Lista de CHNM dos medicamentos de AUE de benefício clínico (junho 2022)', 'Lista de medicamentos utilizados por AUE', 'Deliberação n.º 096/CD/2022, de 23 de setembro.', 'Lista em vigor a partir de 28 de setembro de 2022', 'Deliberação n.º 092/CD/2022, de 8 de setembro', 'Lista em vigor a partir de 19 de setembro de 2022']
+  20230129194102 ERROR HTTPSConnectionPool(host='web.archive.org', port=443): Max retries exceeded with url: /web/20230129194102id_/https://www.infarmed.pt/web/infarmed/gestao-da-disponibilidade-do-medicamento (Caused by NewConnectionError("HTTPSConnection(host='web.archive.org', port=443): Failed to establish a new connection: [Errno 111] Connection refused"))
+  20230315094909 ERROR HTTPSConnectionPool(host='web.archive.org', port=443): Max retries exceeded with url: /web/20230315094909id_/https://www.infarmed.pt/web/infarmed/gestao-da-disponibilidade-do-medicamento (Caused by NewConnectionError("HTTPSConnection(host='web.archive.org', port=443): Failed to establish a new connection: [Errno 111] Connection refused"))
+  20230601025718: 4 new links ['Deliberação n.º 28/CD/2023, de 5 de abril', 'Lista em vigor a partir de 11 de abril de 2023', 'Deliberação n.º 34/CD/2023, de 3 de maio', 'Lista em vigor a partir de 15 de maio de 2023']
+  20231209153114 ERROR HTTPSConnectionPool(host='web.archive.org', port=443): Max retries exceeded with url: /web/20231209153114id_/https://www.infarmed.pt/web/infarmed/gestao-da-disponibilidade-do-medicamento (Caused by NewConnectionError("HTTPSConnection(host='web.archive.org', port=443): Failed to establish a new connection: [Errno 111] Connection refused"))
+  20240118031555 ERROR HTTPSConnectionPool(host='web.archive.org', port=443): Max retries exceeded with url: /web/20240118031555id_/https://www.infarmed.pt/web/infarmed/gestao-da-disponibilidade-do-medicamento (Caused by NewConnectionError("HTTPSConnection(host='web.archive.org', port=443): Failed to establish a new connection: [Errno 111] Connection refused"))
+  20240201145711: 12 new links ['Deliberação n.º 003/CD/2024, de 9 de janeiro', 'Lista em vigor a partir de 11 de janeiro de 2024', 'Deliberação n.º 004/CD/2024, de 9 de janeiro', 'Lista em vigor a partir de 11 de janeiro de 2024', 'Lista de AUE de lote concedidas', 'Lista de medicamentos para AUE por DG/Fabricantes']
+  20240519084251: 4 new links ['Deliberação n.º 034/CD/2024, de 4 de abril', 'Lista em vigor a partir de 9 de abril de 2024', 'Deliberação n.º 043/CD/2024, de 2 de maio', 'Lista em vigor a partir de 4 de maio de 2024']
+  20240715182415: 2 new links ['Deliberação n.º 061/CD/2024, de 6 de junho', 'Lista em vigor a partir de 12 de junho de 2024']
+  20240822215604: 1 new links ['Lista em vigor a partir de 14 de agosto de 2024']
+  20240909144904: 2 new links ['Deliberação n.º 093/CD/2024, de 29 de agosto', 'Lista em vigor a partir de 2 de setembro de 2024']
+  20241101202706: 2 new links ['Deliberação n.º 106/CD/2024, de 11 de outubro', 'Lista em vigor a partir de 16 de outubro de 2024']
+  20241217215559: 4 new links ['Deliberação n.º 121/CD/2024, de 10 de dezembro', 'Lista em vigor a partir de 17 de dezembro de 2024', 'Deliberação n.º 117/CD/2024, de 29 de novembro', 'Lista em vigor a partir de 17 de dezembro de 2024']
+  20250120131224: 2 new links ['Deliberação n.º 124/CD/2024, de 27 de dezembro', 'Lista em vigor a partir de 31 de dezembro de 2024']
+  20250211050402: 2 new links ['Deliberação n.º 009/CD/2025, de 31 de janeiro', 'Lista em vigor a partir de 5 de fevereiro de 2025']
+  20250418071128: 4 new links ['Deliberação n.º 027/CD/2025, de 6 de março', 'Lista em vigor a partir de 12 de março de 2025', 'Deliberação n.º 048/CD/2025, de 1 de abril', 'Lista em vigor a partir de 9 de abril de 2025']
+  20250624044447: 3 new links ['Deliberação n.º 055/CD/2025, de 30 de abril', 'Lista em vigor a partir de 14 de maio de 2025', 'Lista de CHNM dos medicamentos de AUE de grupo de doentes (maio de 2025)']
+  20250828043954: 4 new links ['Deliberação n.º 075/CD/2025, de 3 de julho', 'Lista em vigor a partir de 10 de julho de 2025', 'Deliberação n.º 074/CD/2025, de 3 de julho', 'Lista em vigor a partir de 10 de julho de 2025']
+  20251013155749: 4 new links ['Deliberação n.º 099/CD/2025, de 7 de outubro', 'Lista em vigor a partir de 10 de outubro de 2025', 'Deliberação n.º 100/CD/2025, de 7 de outubro', 'Lista em vigor a partir de 10 de outubro de 2025']
+  20260123083007: 5 new links ['04/CD/2026', 'Lista em vigor a partir de 14 de janeiro de 2026', 'Lista de proibições a partir de 14 de janeiro de 2026', 'Deliberação n.º 005/CD/2026, de 7 de janeiro', 'Lista em vigor a partir de 14 de janeiro de 2026']
+  20260222123251: 3 new links ['Lista de proibições a partir de 10 de fevereiro de 2026', 'Deliberação n.º 008/CD/2026, de 5 de fevereiro', 'Lista em vigor a partir de 10 de fevereiro de 2026']
+  20260309064235: 0 new links []
+  20260410124609: 0 new links []
+  20260611073326: 5 new links ['Deliberação n.º 033/CD2026', 'Lista em vigor a partir de 15 de abril de 2026', 'Lista de proibições a partir de 9 de junho de 2026', 'Deliberação n.º 062/CD/2026, de 3 junho', 'Lista em vigor a partir de 9 de junho de 2026']
+  20261104205236: 3 new links ['Lista em vigor a partir de 17 de outubro de 2026', 'Lista de proibições a partir de 17 de outubro de 2026', 'Lista em vigor a partir de 17 de outubro de 2026']
+  distinct list documents: 91
+  DOC 20210630011534 Lista em vigor a partir de 1 de maio de 2021 -> https://www.infarmed.pt/documents/15786/4326055/Lista+de+notifica%C3%A7%C3%A3o+pr%C3%A9via+-+20210501/94f164b7-ba92-c05c-200b-cc5d14997495
+  DOC 20210630011534 Lista em vigor a partir de 2 de junho 2021 -> https://www.infarmed.pt/documents/15786/4326055/Lista+de+exporta%C3%A7%C3%A3o+temporariamente+suspensa+-+20210602/29758861-898d-f6e1-10a3-12fac622840e
+  DOC 20210630011534 Web service - Notificação de faltas por distribuidores por grosso de medicamentos de uso humano -> https://www.infarmed.pt/documents/15786/3464134/Web+Service+Notifica%C3%A7%C3%A3o+de+Faltas/1e11c3c0-3c11-1923-f1a1-94f253ecbc54
+  DOC 20210630011534 Web service - Notificação de faltas por farmácias -> https://www.infarmed.pt/documents/15786/3464134/Web+Service+-+Notifica%C3%A7%C3%A3o+de+Faltas/398d2f31-dcc1-a850-f664-5e8b2ee46ff8
+  DOC 20210806040051 Lista em vigor a partir de 2 de agosto de 2021 -> https://www.infarmed.pt/documents/15786/4326055/Lista+de+notifica%C3%A7%C3%A3o+pr%C3%A9via+-+20210730/9574b68c-b826-876c-1d7f-0fb6b522ac5c
+  DOC 20210806040051 Lista em vigor a partir de 2 de agosto 2021 -> https://www.infarmed.pt/documents/15786/4326055/Lista+de+exporta%C3%A7%C3%A3o+temporariamente+suspensa+-+20210730/f70d4e64-a352-b0ba-4bbe-ce154c6e1211
+  DOC 20211010223808 Lista em vigor a partir de 11 de outubro de 2021 -> https://www.infarmed.pt/documents/15786/4326055/Lista+de+exporta%C3%A7%C3%A3o+temporariamente+suspensa+-+20211008/458deee5-2680-23a5-e8dd-dc202a278d84
+  DOC 20211201191124 Lista em vigor a partir de 8 de novembro de 2021 -> https://www.infarmed.pt/documents/15786/4326055/Lista+de+exporta%C3%A7%C3%A3o+temporariamente+suspensa+-+20211105/41a77250-2a09-4637-d9e5-f4eb92bf0143
+  DOC 20220322103025 Lista de medicamentos identificados pelo Infarmed -> https://www.infarmed.pt/documents/15786/5261813/Lista+de+medicamentos+identificados+pelo+Infarmed+%C2%BF+AUE+de+benef%C3%ADcio+cl%C3%ADnico+bem+reconhecido/74525694-78d4-1d2c-a19d-ebd326ca522f
+  DOC 20220322103025 Deliberação n.º 004/CD/2022, de 27 de janeiro -> https://www.infarmed.pt/documents/15786/4326055/Delibera%C3%A7%C3%A3o+004+-+Lista+de+notifica%C3%A7%C3%A3o+pr%C3%A9via+-+jan2022/c072cfa8-abcf-e016-4c71-f2e34af3c397
+  DOC 20220322103025 Lista em vigor a partir de 1 de fevereiro de 2022 -> https://www.infarmed.pt/documents/15786/4326055/Lista+de+notifica%C3%A7%C3%A3o+pr%C3%A9via+-+20220131/1aba96ec-e4f6-1f2c-de7a-fafcd988e94f
+  DOC 20220322103025 Deliberação n.º 013/CD/2022, de 4 de março -> https://www.infarmed.pt/documents/15786/4326055/Delibera%C3%A7%C3%A3o+n%C2%BA+013+suspens%C3%A3o+mar%C3%A7o/f56bd5c2-e8ef-d46a-617c-09c173280b2d
+  DOC 20220322103025 . -> https://www.infarmed.pt/documents/15786/4326055/Delibera%C3%A7%C3%A3o+003+-+suspens%C3%A3o+de+exporta%C3%A7%C3%A3o+-+jan2022/1cb51995-dd2c-1293-e0e6-6e1af694ecba
+  DOC 20220322103025 Lista em vigor a partir de 10 de março de 2022 -> https://www.infarmed.pt/documents/15786/4326055/Lista+de+exporta%C3%A7%C3%A3o+temporariamente+suspensa+-+20220309/2d822a4a-bf35-e446-2172-61a3467d3714
+  DOC 20220405020624 Deliberação n.º 023/CD/2022, de 29 de março. -> https://www.infarmed.pt/documents/15786/4326055/Delibera%C3%A7%C3%A3o+n%C2%BA+23+-+lista+temporariamente+suspensa+%28mar%C3%A7o+2022%29/e7c2221c-4dea-ef0b-f32c-b0d2e5a97f51
+  DOC 20220405020624 Lista em vigor a partir de 1 de abril de 2022 -> https://www.infarmed.pt/documents/15786/4326055/Lista+de+exporta%C3%A7%C3%A3o+temporariamente+suspensa+-+20220331/aab79552-cd46-66a9-af6f-706c9e9ba909
+  DOC 20220528233812 Deliberação n.º 046/CD/2022, de 12 de maio -> https://www.infarmed.pt/documents/15786/4326055/Delibera%C3%A7%C3%A3o+046CD2022+-+Lista+de+notifica%C3%A7%C3%A3o+pr%C3%A9via+-+abril+2022/d334b62c-85e2-d877-e1ff-24701e845051
+  DOC 20220528233812 Lista em vigor a partir de 19 de maio de 2022 -> https://www.infarmed.pt/documents/15786/4326055/Lista+de+notifica%C3%A7%C3%A3o+pr%C3%A9via+-+abril+2022/926a2151-2ba5-d7c3-caf7-0d8d85d8ec18
+  DOC 20220528233812 Lista em vigor a partir de 19 de maio de 2022 -> https://www.infarmed.pt/documents/15786/4326055/Lista+de+exporta%C3%A7%C3%A3o+temporariamente+suspensa+-+abril+2022/9dd23f77-7341-d524-2069-55e5c84239b4
+  DOC 20220930101217 Lista de CHNM dos medicamentos de AUE de benefício clínico (junho 2022) -> https://www.infarmed.pt/documents/15786/4854518/Lista+de+CHNM+dos+medicamentos+de+AUE+de+benef%C3%ADcio+cl%C3%ADnico+%28junho+2022%29/0db2b0f8-5177-046e-dfde-c043661bc058
+  DOC 20220930101217 Lista de medicamentos utilizados por AUE -> https://www.infarmed.pt/documents/15786/4854518/Lista+de+medicamentos+utilizados+por+AUE+%28junho+2022%29/46048ca3-84a2-1380-605e-42f0203fad44
+  DOC 20220930101217 Deliberação n.º 096/CD/2022, de 23 de setembro. -> https://www.infarmed.pt/documents/15786/4326055/Delibera%C3%A7%C3%A3o+096+-+Atualiza%C3%A7%C3%A3o+LNP+-+setembro+2022/46d6a086-f3df-3b0d-4b89-2d98989eb5e7
+  DOC 20220930101217 Lista em vigor a partir de 28 de setembro de 2022 -> https://www.infarmed.pt/documents/15786/4326055/Lista+de+notifica%C3%A7%C3%A3o+pr%C3%A9via+-+27+setembro+2022/c8d3282d-05e0-c099-3fc0-f74b61bd4e0b
+  DOC 20220930101217 Deliberação n.º 092/CD/2022, de 8 de setembro -> https://www.infarmed.pt/documents/15786/4326055/Delibera%C3%A7%C3%A3o+092+-+suspens%C3%A3o+de+exporta%C3%A7%C3%A3o+-+setembro2022/029016f0-0df2-20eb-0e71-14575fcd02cc
+  DOC 20220930101217 Lista em vigor a partir de 19 de setembro de 2022 -> https://www.infarmed.pt/documents/15786/4326055/Lista+de+exporta%C3%A7%C3%A3o+temporariamente+suspensa+-+setembro+2022/c4346fd9-75cd-6282-3611-72d56851545f
+  DOC 20230601025718 Deliberação n.º 28/CD/2023, de 5 de abril -> https://www.infarmed.pt/documents/15786/4326055/Delibera%C3%A7%C3%A3o+28+-+Lista+de+notifica%C3%A7%C3%A3o+pr%C3%A9via+-+abril+2023/063721a0-6bd1-193b-4a0c-04cc3743c8f2
+  DOC 20230601025718 Lista em vigor a partir de 11 de abril de 2023 -> https://www.infarmed.pt/documents/15786/4326055/Lista+de+notifica%C3%A7%C3%A3o+pr%C3%A9via+-+abril+2023/e798645f-5db9-97e9-a262-9d986a080188
+  DOC 20230601025718 Deliberação n.º 34/CD/2023, de 3 de maio -> https://www.infarmed.pt/documents/15786/4326055/Delibera%C3%A7%C3%A3o+34+-+exporta%C3%A7%C3%A3o+suspensa+-+maio+2023/f2de69a4-3074-fa5f-8096-bb8bb5e9b525
+  DOC 20230601025718 Lista em vigor a partir de 15 de maio de 2023 -> https://www.infarmed.pt/documents/15786/4326055/Lista+de+exporta%C3%A7%C3%A3o+temporariamente+suspensa+-+maio+2023/d1c540bc-ec23-7350-aab2-5f3c698d5d95
+  DOC 20240201145711 Deliberação n.º 003/CD/2024, de 9 de janeiro -> https://www.infarmed.pt/documents/15786/9423561/Delibera%C3%A7%C3%A3o+003+-+LNP+-+janeiro+de+2024/0d6eecc9-0441-c470-3c2e-0e8d386a0a57
+  DOC 20240201145711 Lista em vigor a partir de 11 de janeiro de 2024 -> https://www.infarmed.pt/documents/15786/9423561/LNP+-+janeiro+2024/152b1a58-7b69-4d4e-b44a-0f187e0f1d8b
+  DOC 20240201145711 Deliberação n.º 004/CD/2024, de 9 de janeiro -> https://www.infarmed.pt/documents/15786/9423565/Delibera%C3%A7%C3%A3o+004+-+exporta%C3%A7%C3%A3o+temporariamente+suspensa+-+janeiro+2024/511fb5e6-edba-cb2e-fea9-395676a2d3fe
+  DOC 20240201145711 Lista em vigor a partir de 11 de janeiro de 2024 -> https://www.infarmed.pt/documents/15786/9423565/Lista+de+exporta%C3%A7%C3%A3o+temporariamente+suspensa+-+janeiro+de+2024/b01677b2-c0c0-19b1-1a77-9df760b6a8ba
+  DOC 20240201145711 Lista de AUE de lote concedidas -> https://www.infarmed.pt/documents/15786/9202519/Lista+de+AUE+de+lote+concedidas/e4ec158f-d198-3201-0023-21d88ba06af8
+  DOC 20240201145711 Lista de medicamentos para AUE por DG/Fabricantes -> https://www.infarmed.pt/documents/15786/9202585/Lista+de+medicamentos+para+AUE+por+DG+e+Fabricantes/d25d3057-43f2-c9b6-c013-b3515d1ea5f9
+  DOC 20240201145711 Lista de AUE concedidas a DG/Fabricantes -> https://www.infarmed.pt/documents/15786/9202585/Lista+de+AUE+concedidas+a+DG+e+fabricantes/e0a06938-9a79-4891-229f-3a5eb06e958c
+  DOC 20240201145711 Lista de medicamentos com dispensa de justificação clínica -> https://www.infarmed.pt/documents/15786/9203340/Lista+de+medicamentos+com+dispensa+de+justifica%C3%A7%C3%A3o+cl%C3%ADnica/48ed4c7c-a9f8-6ed7-9229-11c54022c6b6
+  DOC 20240201145711 Lista de medicamentos que podem ser adquiridos por clínicas e consultórios médicos -> https://www.infarmed.pt/documents/15786/9202693/Anexo+Delibera%C3%A7%C3%A3o+97+-+Consult%C3%B3rios+m%C3%A9dicos/5f58be1a-8d2e-bb2d-f7d1-c18567e9c025
+  DOC 20240201145711 Lista de medicamentos que podem ser adquiridos por clínicas e consultórios dentários -> https://www.infarmed.pt/documents/15786/9202693/Anexo+Delibera%C3%A7%C3%A3o+98+-+Consult%C3%B3rios+dent%C3%A1rios/83bb6de0-691b-a5dc-5f9c-b3caa297b54f
+  DOC 20240201145711 Lista de CHNM dos medicamentos de AUE de grupo de doentes (novembro 2023) -> https://www.infarmed.pt/documents/15786/4854518/Lista+de+CHNM+dos+medicamentos+de+AUE+de+grupo+de+doentes/0db2b0f8-5177-046e-dfde-c043661bc058
+  DOC 20240201145711 Infografia - Notificação de faltas pela farmácia -> https://www.infarmed.pt/documents/15786/4326055/Infografia+-+Notifica%C3%A7%C3%A3o+de+faltas+pela+farm%C3%A1cia/186b65e0-f65e-c1f5-4792-0892bc44aad8
+  DOC 20240519084251 Deliberação n.º 034/CD/2024, de 4 de abril -> https://www.infarmed.pt/documents/15786/9423561/Delibera%C3%A7%C3%A3o+034+-+LNP+-+abril+2024/b8c91e8b-6b27-bb4c-b03b-08c2cd62011c
+  DOC 20240519084251 Lista em vigor a partir de 9 de abril de 2024 -> https://www.infarmed.pt/documents/15786/9423561/LNP+-+abril+2024/e5d302a6-975a-3740-dea7-1484e1b3049c
+  DOC 20240519084251 Deliberação n.º 043/CD/2024, de 2 de maio -> https://www.infarmed.pt/documents/15786/9423565/Delibera%C3%A7%C3%A3o+043+-+Lista+de+exporta%C3%A7%C3%A3o+temporiamente+suspensa+-+maio+2024/6f91217a-8db6-8a39-440d-86bbc4c4b638
+  DOC 20240519084251 Lista em vigor a partir de 4 de maio de 2024 -> https://www.infarmed.pt/documents/15786/9423565/Lista+de+exporta%C3%A7%C3%A3o+temporariamente+suspensa+-+maio+2024/ddb9a2b6-d3af-c00a-7954-7e6ab4b4cbc3
+  DOC 20240715182415 Deliberação n.º 061/CD/2024, de 6 de junho -> https://www.infarmed.pt/documents/15786/9423565/Delibera%C3%A7%C3%A3o+061+-+Lista+de+exporta%C3%A7%C3%A3o+temporiamente+suspensa+-+junho+2024/d15b5688-7cb0-3bfa-6487-d71ea23e5645
+  DOC 20240715182415 Lista em vigor a partir de 12 de junho de 2024 -> https://www.infarmed.pt/documents/15786/9423565/Lista+de+exporta%C3%A7%C3%A3o+temporariamente+suspensa+-+junho+2024/309cd8b3-3392-ae14-f419-a33c4ae41a5a
+  DOC 20240822215604 Lista em vigor a partir de 14 de agosto de 2024 -> https://www.infarmed.pt/documents/15786/9423561/LNP+Agosto+2024/0967abd8-7dca-0502-827c-a58e7ba9a7cc
+  DOC 20240909144904 Deliberação n.º 093/CD/2024, de 29 de agosto -> https://www.infarmed.pt/documents/15786/9423565/Delibera%C3%A7%C3%A3o+93+-+exporta%C3%A7%C3%A3o+temporarimente+suspensa+-+setembro+2024/ca9f7dbd-0b51-9bad-a43d-24b7e43f1547
+  DOC 20240909144904 Lista em vigor a partir de 2 de setembro de 2024 -> https://www.infarmed.pt/documents/15786/9423565/Lista+de+exporta%C3%A7%C3%A3o+temporariamente+suspensa+-+setembro+2024/bb7eb3cb-892e-dd1f-f46c-096772431b5b
+  DOC 20241101202706 Deliberação n.º 106/CD/2024, de 11 de outubro -> https://www.infarmed.pt/documents/15786/9423565/Delibera%C3%A7%C3%A3o+106+-+Exporta%C3%A7%C3%A3o+temporariamente+suspensa+-+outubro+2024/2d593281-89b5-f91e-f577-e623295ad256
+  DOC 20241101202706 Lista em vigor a partir de 16 de outubro de 2024 -> https://www.infarmed.pt/documents/15786/9423565/Lista+de+exporta%C3%A7%C3%A3o+temporariamente+suspensa+-+outubro+2024/68960c91-e151-a64c-4ac1-a1926fec3f17
+  DOC 20241217215559 Deliberação n.º 121/CD/2024, de 10 de dezembro -> https://www.infarmed.pt/documents/15786/9423561/Delibera%C3%A7%C3%A3o+121+-+LNP+-+dezembro+2024/3513d7a0-ca42-56c8-3f9c-0b562344fc46
+  DOC 20241217215559 Lista em vigor a partir de 17 de dezembro de 2024 -> https://www.infarmed.pt/documents/15786/9423561/LNP+-+dezembro+2024/d45ddcc4-a513-d13f-6481-12c1dffeefea
+  DOC 20241217215559 Deliberação n.º 117/CD/2024, de 29 de novembro -> https://www.infarmed.pt/documents/15786/9423565/Delibera%C3%A7%C3%A3o+117+-+Lista+de+exporta%C3%A7%C3%A3o+temporariamente+suspensa+-+dezembro+2024/983fc6ef-6e8e-dfff-7ba0-4c6578f4a19c
+  DOC 20241217215559 Lista em vigor a partir de 17 de dezembro de 2024 -> https://www.infarmed.pt/documents/15786/9423565/Lista+de+exporta%C3%A7%C3%A3o+temporariamente+suspensa+-+dezembro+2024/e2b770b5-03ea-ddb6-a64e-54c4f9612c82
+  DOC 20250120131224 Deliberação n.º 124/CD/2024, de 27 de dezembro -> https://www.infarmed.pt/documents/15786/9423565/Delibera%C3%A7%C3%A3o+124+-+Lista+de+exporta%C3%A7%C3%A3o+temporariamente+suspensa+-+janeiro+2025/2eabd89b-19c5-b334-fd15-c33d0ce1d664
+  DOC 20250120131224 Lista em vigor a partir de 31 de dezembro de 2024 -> https://www.infarmed.pt/documents/15786/9423565/Lista+de+exporta%C3%A7%C3%A3o+temporariamente+suspensa+-+janeiro+2025/cc1894e6-7388-7923-fc64-547359c8fa26
+  DOC 20250211050402 Deliberação n.º 009/CD/2025, de 31 de janeiro -> https://www.infarmed.pt/documents/15786/9423565/Delibera%C3%A7%C3%A3o+009+-+Lista+de+exporta%C3%A7%C3%A3o+temporariamente+suspensa+-+fevereiro+2025/b10a9a26-4a55-749e-a5b9-cdc43b2a4430
+  DOC 20250211050402 Lista em vigor a partir de 5 de fevereiro de 2025 -> https://www.infarmed.pt/documents/15786/9423565/Lista+de+exporta%C3%A7%C3%A3o+temporariamente+suspensa+-+fevereiro+2025/c6c7013b-7dee-14f0-ab8e-f6a78dae5f70
+  DOC 20250418071128 Deliberação n.º 027/CD/2025, de 6 de março -> https://www.infarmed.pt/documents/15786/9423561/Delibera%C3%A7%C3%A3o+027+-+LNP+-+mar%C3%A7o+2025/b5347a56-263d-f431-5aae-fd3dbca7bb54
+  DOC 20250418071128 Lista em vigor a partir de 12 de março de 2025 -> https://www.infarmed.pt/documents/15786/9423561/LNP+-+mar%C3%A7o+2025/a5bfaef2-6514-0c7a-2ad1-8eed78e0b145
+  DOC 20250418071128 Deliberação n.º 048/CD/2025, de 1 de abril -> https://www.infarmed.pt/documents/15786/9423565/Delibera%C3%A7%C3%A3o+48+-+Exporta%C3%A7%C3%A3o+temporariamente+suspensa+-+abril+2025/054877a9-4a50-bf86-aedf-a7bb27bf4738
+  DOC 20250418071128 Lista em vigor a partir de 9 de abril de 2025 -> https://www.infarmed.pt/documents/15786/9423565/Lista+de+exporta%C3%A7%C3%A3o+temporariamente+suspensa+-+abril+2025/19c20c39-80e1-22ad-2f7f-23bd6c4f2a9c
+  DOC 20250624044447 Deliberação n.º 055/CD/2025, de 30 de abril -> https://www.infarmed.pt/documents/15786/9423565/Delibera%C3%A7%C3%A3o+055+-+Exporta%C3%A7%C3%A3o+temporariamente+suspensa+-+maio+2025/cb082376-d658-3b5a-2bca-24f54e1e39bb
+  DOC 20250624044447 Lista em vigor a partir de 14 de maio de 2025 -> https://www.infarmed.pt/documents/15786/9423565/Lista+de+exporta%C3%A7%C3%A3o+temporariamente+suspensa+-+maio+2025/f3d33406-90e4-8df1-4925-fc32924d5c9c
+  DOC 20250624044447 Lista de CHNM dos medicamentos de AUE de grupo de doentes (maio de 2025) -> https://www.infarmed.pt/documents/15786/4854518/Lista+de+CHNM+dos+medicamentos+de+AUE+de+grupo+de+doentes+%28maio+2025%29/86497d5d-5e2e-b720-f034-ed9b43ce5633
+  DOC 20250828043954 Deliberação n.º 075/CD/2025, de 3 de julho -> https://www.infarmed.pt/documents/15786/9423561/Delibera%C3%A7%C3%A3o+075+-+Lista+de+notifica%C3%A7%C3%A3o+pr%C3%A9via+-+julho+2025/2d2f0334-72f9-56a8-ec71-18fa971c5a5b
+  DOC 20250828043954 Lista em vigor a partir de 10 de julho de 2025 -> https://www.infarmed.pt/documents/15786/9423561/LNP+-+julho+2025/65149b6a-d0b6-07a0-ec95-70df5dc3156a
+  DOC 20250828043954 Deliberação n.º 074/CD/2025, de 3 de julho -> https://www.infarmed.pt/documents/15786/9423565/Delibera%C3%A7%C3%A3o+074+-+temporariamente+suspensa+-+julho+2025/7f6bd921-9d79-9e03-8d35-e77b9aff5170
+  DOC 20250828043954 Lista em vigor a partir de 10 de julho de 2025 -> https://www.infarmed.pt/documents/15786/9423565/Lista+de+exporta%C3%A7%C3%A3o+temporariamente+suspensa+-+julho+2025/2edcf03b-75a3-4d1a-9f56-4feb172e7a8c
+  DOC 20251013155749 Deliberação n.º 099/CD/2025, de 7 de outubro -> https://www.infarmed.pt/documents/15786/9423561/Delibera%C3%A7%C3%A3o+099+-+Lista+de+notifica%C3%A7%C3%A3o+pr%C3%A9via+-+outubro+2025/5b29847e-5baa-93d1-5903-1acb5ee75ee5
+  DOC 20251013155749 Lista em vigor a partir de 10 de outubro de 2025 -> https://www.infarmed.pt/documents/15786/9423561/LNP+-+outubro+de+2025/3261f95d-d302-0395-93eb-f3d21de45f0c
+  DOC 20251013155749 Deliberação n.º 100/CD/2025, de 7 de outubro -> https://www.infarmed.pt/documents/15786/9423565/Delibera%C3%A7%C3%A3o+100+-+temporariamente+suspensa+-+outubro+2025/b458a5b1-10a2-9a76-f9cd-81442621d7b8
+  DOC 20251013155749 Lista em vigor a partir de 10 de outubro de 2025 -> https://www.infarmed.pt/documents/15786/9423565/Lista+de+exporta%C3%A7%C3%A3o+temporariamente+suspensa+-+outubro+2025/c866da63-1c1d-5e47-fbce-92fd3bc91176
+  DOC 20260123083007 04/CD/2026 -> https://www.infarmed.pt/documents/15786/9423561/Delibera%C3%A7%C3%A3o+004+-+LNP+-+janeiro+2026/184b1d29-ec2f-3258-8849-2c0e036083aa
+  DOC 20260123083007 Lista em vigor a partir de 14 de janeiro de 2026 -> https://www.infarmed.pt/documents/15786/9423561/LNP+-+janeiro+2026/af606cfd-843e-b980-4b15-2c84d546425b
+  DOC 20260123083007 Lista de proibições a partir de 14 de janeiro de 2026 -> https://www.infarmed.pt/documents/15786/11927579/Lista+de+proibi%C3%A7%C3%B5es+-+14+de+janeiro+de+2026/3340c676-8336-68a5-679f-037d0f70f0ba
+  DOC 20260123083007 Deliberação n.º 005/CD/2026, de 7 de janeiro -> https://www.infarmed.pt/documents/15786/9423565/Delibera%C3%A7%C3%A3o+05+-+Exporta%C3%A7%C3%A3o+temporariamente+suspensa+-+janeiro+2026/e704d109-4ead-8fe9-7149-64561ac54269
+  DOC 20260123083007 Lista em vigor a partir de 14 de janeiro de 2026 -> https://www.infarmed.pt/documents/15786/9423565/Lista+de+exporta%C3%A7%C3%A3o+temporariamente+suspensa+-+janeiro+de+2026/068ac08d-819c-dc3c-05a7-b9eb614c92a5
+  DOC 20260222123251 Lista de proibições a partir de 10 de fevereiro de 2026 -> https://www.infarmed.pt/documents/15786/11927579/Lista+de+proibi%C3%A7%C3%B5es+-+10+de+fevereiro+2026/c2501167-2932-9f61-5ce8-eda2db64d3b9
+  DOC 20260222123251 Deliberação n.º 008/CD/2026, de 5 de fevereiro -> https://www.infarmed.pt/documents/15786/9423565/Delibera%C3%A7%C3%A3o+08+-+Exporta%C3%A7%C3%A3o+temporariamente+suspensa+-+fevereiro+2026/181d9e50-79db-f834-4d2d-24ad82558461
+  DOC 20260222123251 Lista em vigor a partir de 10 de fevereiro de 2026 -> https://www.infarmed.pt/documents/15786/9423565/Lista+de+exporta%C3%A7%C3%A3o+temporariamente+suspensa+-+fevereiro+2026/1658ddcd-aa36-6905-d91c-5c6f12660cc4
+  DOC 20260611073326 Deliberação n.º 033/CD2026 -> https://www.infarmed.pt/documents/15786/9423561/Delibera%C3%A7%C3%A3o+033+-+LNP+-+abril+2026/1099b78a-492a-ad49-800b-af2e8ec4f9cd
+  DOC 20260611073326 Lista em vigor a partir de 15 de abril de 2026 -> https://www.infarmed.pt/documents/15786/9423561/LNP+-+abril+2026/62bc1839-322a-ca6a-8c71-032283eb5da6
+  DOC 20260611073326 Lista de proibições a partir de 9 de junho de 2026 -> https://www.infarmed.pt/documents/15786/11927579/Lista+de+proibi%C3%A7%C3%B5es+-+9+de+junho+de+2026/eaca1508-05e3-8f4a-da1c-46281ffdf4ca
+  DOC 20260611073326 Deliberação n.º 062/CD/2026, de 3 junho -> https://www.infarmed.pt/documents/15786/9423565/Delibera%C3%A7%C3%A3o+062+-+Lista+de+Exporta%C3%A7%C3%A3o+Temporariamente+Suspensa+-+junho+2026/6a664217-7697-dae2-7885-5d0b6ece55f4
+  DOC 20260611073326 Lista em vigor a partir de 9 de junho de 2026 -> https://www.infarmed.pt/documents/15786/9423565/Lista+de+Exporta%C3%A7%C3%A3o+Temporariamente+Suspensa+-+junho+2026/73846dd4-7191-ed1c-34cb-c1e93b29863b
+  DOC 20261104205236 Lista em vigor a partir de 17 de outubro de 2026 -> https://www.infarmed.pt/documents/15786/9423561/LNP+-+outubro+2026+%28II%29/d9dcc03e-a5d6-d90e-0787-91a72518f57a
+  DOC 20261104205236 Lista de proibições a partir de 17 de outubro de 2026 -> https://www.infarmed.pt/documents/15786/11927579/Lista+de+proibi%C3%A7%C3%B5es+-+17+de+outubro+de+2026/2aa0a5bb-d463-65e5-9a35-91b6d72e0e7f
+  DOC 20261104205236 Lista em vigor a partir de 17 de outubro de 2026 -> https://www.infarmed.pt/documents/15786/9423565/Lista+de+exporta%C3%A7%C3%A3o+temporiamente+suspensa+-+Outubro+2026+%28II%29/d53493ec-60bd-2849-beb0-717d8a060c8f
