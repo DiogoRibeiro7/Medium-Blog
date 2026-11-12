@@ -8,10 +8,12 @@ Sources
   OxCGRT/covid-policy-dataset repository: daily stringency, containment and economic-support
   indices and cumulative confirmed deaths, averaged (indices) or taken at year end (deaths) to
   country x year for 2020-2022.
-- International Labour Organization (ILOSTAT): employment by economic activity (ISIC Rev. 4
-  sections), total for both sexes, 2014-2019. Several published endpoints are tried in turn;
-  the log records which one answered.
-- World Bank WDI: international tourism receipts (current US$ and % of exports), services
+- International Labour Organization (ILOSTAT): employment by economic activity, total for both
+  sexes, 2014-2019: survey-based counts by ISIC Rev. 4 section and the ILO modelled estimates by
+  detailed activity. Several published endpoints are tried in turn; the log records which one
+  answered.
+- World Bank WDI: international tourism receipts (current US$ and % of exports), travel credits
+  in the balance of payments (% of service exports) and service exports (current US$), services
   value added (% of GDP), services employment (% of employment), population.
 
 The Forbes, Penn World Table and WDI GDP tables are copied from the wealth-origin-sectors
@@ -45,14 +47,17 @@ OXCGRT = ("https://raw.githubusercontent.com/OxCGRT/covid-policy-dataset/main/da
           "OxCGRT_compact_national_v1.csv")
 OX_INDICES = ["StringencyIndex_Average", "ContainmentHealthIndex_Average", "EconomicSupportIndex"]
 
-ILO_ID = "EMP_TEMP_SEX_ECO_NB_A"
-ILO_URLS = [
-    f"https://rplumber.ilo.org/data/indicator/?id={ILO_ID}&lang=en&type=code&format=.csv.gz&channel=ilostat",
-    f"https://rplumber.ilo.org/data/indicator/?id={ILO_ID}&type=code&format=.csv",
-    f"https://www.ilo.org/ilostat-files/WEB_bulk_download/indicator/{ILO_ID}.csv.gz",
+ILO_BASE = [
+    "https://rplumber.ilo.org/data/indicator/?id={id}&lang=en&type=code&format=.csv.gz&channel=ilostat",
+    "https://rplumber.ilo.org/data/indicator/?id={id}&type=code&format=.csv",
+    "https://www.ilo.org/ilostat-files/WEB_bulk_download/indicator/{id}.csv.gz",
 ]
-CONTACT = {"ECO_ISIC4_G": "trade", "ECO_ISIC4_H": "transport", "ECO_ISIC4_I": "accommodation_food",
-           "ECO_ISIC4_R": "arts_recreation", "ECO_ISIC4_S": "other_services", "ECO_ISIC4_TOTAL": "total"}
+# survey-based employment by ISIC Rev. 4 section, and ILO modelled estimates by detailed activity
+ILO_SERIES = {
+    "EMP_TEMP_SEX_ECO_NB_A": ("ilostat_emp_isic4.csv",
+                              {"ECO_ISIC4_G", "ECO_ISIC4_H", "ECO_ISIC4_I", "ECO_ISIC4_R", "ECO_ISIC4_S", "ECO_ISIC4_TOTAL"}),
+    "EMP_2EMP_SEX_ECO_NB_A": ("ilostat_emp_modelled.csv", None),
+}
 
 WDI = "https://api.worldbank.org/v2/country/all/indicator/{code}?format=json&per_page=5000&date=2010:2023"
 WDI_CODES = {
@@ -61,6 +66,8 @@ WDI_CODES = {
     "NV.SRV.TOTL.ZS": "services_va_pct_gdp",
     "SL.SRV.EMPL.ZS": "services_emp_pct",
     "SP.POP.TOTL": "population",
+    "BX.GSR.TRVL.ZS": "travel_pct_service_exports",
+    "BX.GSR.NFSV.CD": "service_exports_usd",
 }
 
 LOG: list[str] = []
@@ -124,32 +131,38 @@ def _read_any(body: bytes) -> pd.DataFrame:
 
 
 def fetch_ilostat(out: Path) -> None:
-    errors = []
-    for url in ILO_URLS:
-        try:
-            status, body = get(url, tries=2)
-        except RuntimeError as e:
-            errors.append(str(e))
-            continue
-        if status != 200 or len(body) < 1000:
-            errors.append(f"{url}: status {status}, {len(body)} bytes")
-            continue
-        try:
-            d = _read_any(body)
-        except Exception as e:  # noqa: BLE001 - try the next endpoint
-            errors.append(f"{url}: unreadable ({e})")
-            continue
-        need = {"ref_area", "sex", "classif1", "time", "obs_value"}
-        if not need <= set(d.columns):
-            errors.append(f"{url}: columns {list(d.columns)[:12]}")
-            continue
-        d = d[(d["sex"] == "SEX_T") & d["classif1"].isin(CONTACT) & d["time"].between(2014, 2019)]
-        keep = ["ref_area", "source", "classif1", "time", "obs_value"]
-        keep = [c for c in keep if c in d.columns]
-        d[keep].rename(columns={"ref_area": "iso3"}).to_csv(out / "ilostat_emp_isic4.csv", index=False)
-        print(f"ILOSTAT: {d['ref_area'].nunique()} countries from {url}", flush=True)
-        return
-    raise RuntimeError("no ILOSTAT endpoint worked: " + " | ".join(errors))
+    failed = []
+    for ilo_id, (fname, keep_classes) in ILO_SERIES.items():
+        errors = []
+        for base in ILO_BASE:
+            url = base.format(id=ilo_id)
+            try:
+                status, body = get(url, tries=2)
+            except RuntimeError as e:
+                errors.append(str(e))
+                continue
+            if status != 200 or len(body) < 1000:
+                errors.append(f"{url}: status {status}, {len(body)} bytes")
+                continue
+            try:
+                d = _read_any(body)
+            except Exception as e:  # noqa: BLE001 - try the next endpoint
+                errors.append(f"{url}: unreadable ({e})")
+                continue
+            need = {"ref_area", "sex", "classif1", "time", "obs_value"}
+            if not need <= set(d.columns):
+                errors.append(f"{url}: columns {list(d.columns)[:12]}")
+                continue
+            d = d[(d["sex"] == "SEX_T") & d["time"].between(2014, 2019)]
+            d = d[d["classif1"].isin(keep_classes)] if keep_classes else d[d["classif1"].str.startswith("ECO_")]
+            keep = [c for c in ["ref_area", "source", "classif1", "time", "obs_value"] if c in d.columns]
+            d[keep].rename(columns={"ref_area": "iso3"}).to_csv(out / fname, index=False)
+            print(f"ILOSTAT {ilo_id}: {d['ref_area'].nunique()} areas from {url}", flush=True)
+            break
+        else:
+            failed.append(f"{ilo_id}: " + " | ".join(errors))
+    if failed:
+        raise RuntimeError("; ".join(failed))
 
 
 def fetch_wdi(out: Path) -> None:
