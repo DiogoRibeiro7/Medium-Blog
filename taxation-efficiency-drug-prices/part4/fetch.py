@@ -20,6 +20,10 @@ Sources
                         the charts of the published PDF by the position of each label.
     euripid_pli_2017    EURIPID / Eurostat study (2018): price level indices of pharmaceutical products
                         by country, all medicines and by ATC group, 2015-2017.
+    reports             The text of two reports whose published figures the analysis quotes and checks
+                        against the process data: Infarmed, "Acesso a novos medicamentos 2020-2025" (May
+                        2026), and CRA for EFPIA, "European Access Hurdles Portal" (May 2026), and of the
+                        W.A.I.T. 2025 report.
     eurostat_*          Eurostat: population on 1 January, GDP per head and actual individual
                         consumption per head in purchasing power standards (EU27 = 100), and the price
                         level index of actual individual consumption.
@@ -56,6 +60,9 @@ URLS = {
     "wait_2024": "https://www.iqvia.com/-/media/iqvia/pdfs/library/publications/efpia-patients-wait-indicator-2024.pdf",
     "euripid_2017": "https://jasmin.goeg.at/755/1/report_PPPsPharmaceuticalProducts.pdf",
     "eurostat": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/{code}?format=JSON&lang=EN&{query}",
+    "pt_access_report": "https://www.infarmed.pt/documents/15786/2219894/Tempos+de+Acesso+a+Novos+Medicamentos+2020-2025"
+                        "/317e0859-83a8-5a1c-5539-9aef786f869c",
+    "cra_portal_2026": "https://efpia.eu/media/1xrdznyn/cra-efpia-european-access-hurdles-portal-2026.pdf",
 }
 SIATS_TYPES = {"66": "new active substance", "67": "new indication"}
 
@@ -78,6 +85,22 @@ def get(url: str, tries: int = 4, timeout: int = 300, session=None) -> requests.
             last = exc
             time.sleep(5 * (k + 1))
     raise RuntimeError(f"GET {url} failed: {last}")
+
+
+def save_text(text: str, out: Path, name: str) -> None:
+    path = out / f"{name}.txt.gz"
+    with open(path, "wb") as raw, gzip.GzipFile(filename="", mode="wb", fileobj=raw, mtime=0) as gz:
+        gz.write(text.encode("utf-8"))
+    log(f"[{name}] wrote {path.name}: {len(text)} characters")
+
+
+def pdf_text(data: bytes) -> str:
+    """Text of a PDF in reading layout, from poppler's pdftotext -layout."""
+    with tempfile.TemporaryDirectory() as tmp:
+        pdf = Path(tmp) / "in.pdf"
+        pdf.write_bytes(data)
+        subprocess.run(["pdftotext", "-layout", str(pdf), str(pdf.with_suffix(".txt"))], check=True)
+        return pdf.with_suffix(".txt").read_text(encoding="utf-8", errors="replace")
 
 
 def save(df: pd.DataFrame, out: Path, name: str) -> None:
@@ -238,7 +261,10 @@ def chart_values(words: list[tuple], ylo: float, yhi: float) -> dict:
 
 def fetch_wait(out: Path) -> None:
     for name, cohort in (("wait_2025", "2021-2024"), ("wait_2024", "2020-2023")):
-        pages = pdf_words(get(URLS[name]).content)
+        content = get(URLS[name]).content
+        if name == "wait_2025":
+            save_text(pdf_text(content), out, "wait_2025_report")
+        pages = pdf_words(content)
         frames = {}
         for title, key in ((f"Time to availability ({cohort})", "mean_days"),
                            (f"Median time to availability ({cohort})", "median_days")):
@@ -265,11 +291,7 @@ def fetch_wait(out: Path) -> None:
 
 # -------------------------------------------------------------------------------------------- EURIPID
 def fetch_euripid(out: Path) -> None:
-    with tempfile.TemporaryDirectory() as tmp:
-        pdf = Path(tmp) / "in.pdf"
-        pdf.write_bytes(get(URLS["euripid_2017"]).content)
-        subprocess.run(["pdftotext", "-layout", str(pdf), str(pdf.with_suffix(".txt"))], check=True)
-        text = pdf.with_suffix(".txt").read_text(encoding="utf-8", errors="replace")
+    text = pdf_text(get(URLS["euripid_2017"]).content)
     # Table 7 (all pharmaceutical products, 2015-2017) and Table 8 (2017 by ATC main group).
     t7 = text.split("Table 7: PLIs for pharmaceutical products")[-1].split("Data source")[0]
     rows = []
@@ -295,6 +317,15 @@ def fetch_euripid(out: Path) -> None:
     df["pli_L"] = df["geo"].map(lambda g: atc.get(g, {}).get("L"))
     log(df.to_string())
     save(df, out, "euripid_pli_2017")
+
+
+# -------------------------------------------------------------------------------------------- reports
+def fetch_reports(out: Path) -> None:
+    for name, key in (("pt_access_report_2020_2025", "pt_access_report"), ("cra_portal_2026", "cra_portal_2026")):
+        r = get(URLS[key])
+        if not r.content.startswith(b"%PDF"):
+            raise RuntimeError(f"{name}: not a PDF ({r.headers.get('content-type')})")
+        save_text(pdf_text(r.content), out, name)
 
 
 # -------------------------------------------------------------------------------------------- Eurostat
@@ -342,7 +373,7 @@ def main() -> None:
     args = ap.parse_args()
     out = Path(args.out)
     out.mkdir(parents=True, exist_ok=True)
-    jobs = {"eurostat": fetch_eurostat, "euripid": fetch_euripid, "wait": fetch_wait, "ema": fetch_ema,
+    jobs = {"reports": fetch_reports, "eurostat": fetch_eurostat, "euripid": fetch_euripid, "wait": fetch_wait, "ema": fetch_ema,
             "siats": fetch_siats}
     failed = []
     for name, fn in jobs.items():
