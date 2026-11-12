@@ -26,7 +26,17 @@ from feed.contracts import CONTRACTS, FEEDS, ZONES, Contract
 from feed.sources import UA, url
 
 
-def download(feed: str, month: str, dest: Path, tries: int = 5) -> Path:
+def is_parquet(path: Path) -> bool:
+    size = path.stat().st_size
+    if size < 12:
+        return False
+    with open(path, "rb") as fh:
+        head = fh.read(4)
+        fh.seek(size - 4)
+        return head == b"PAR1" and fh.read(4) == b"PAR1"
+
+
+def download(feed: str, month: str, dest: Path, tries: int = 6) -> Path:
     dest.mkdir(parents=True, exist_ok=True)
     path = dest / f"{feed}_{month}.parquet"
     if path.exists():
@@ -40,10 +50,16 @@ def download(feed: str, month: str, dest: Path, tries: int = 5) -> Path:
                 while chunk := r.read(1 << 20):
                     fh.write(chunk)
             got = part.stat().st_size
-            if expected >= 0 and got != expected:  # the connection closed early: try again
-                print(f"{feed} {month}: got {got:,} of {expected:,} bytes, retrying", flush=True)
+            if (expected >= 0 and got != expected) or not is_parquet(part):
+                # the connection closed early, or the server sent something else: wait, then try again
+                head = part.read_bytes()[:160] if got < 4096 else b""
+                print(
+                    f"{feed} {month}: got {got:,} bytes (expected {expected:,}), not a Parquet file {head!r}; "
+                    f"waiting {min(30 * 2**i, 300)} s",
+                    flush=True,
+                )
                 part.unlink()
-                time.sleep(2**i)
+                time.sleep(min(30 * 2**i, 300))
                 continue
             part.rename(path)
             return path

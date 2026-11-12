@@ -29,18 +29,29 @@ def main() -> None:
     first = max(first, FIRST_MONTH[a.feed])
     out = Path(a.out) / a.feed
     out.mkdir(parents=True, exist_ok=True)
+    failed = []
+    (out / "missing.txt").unlink(missing_ok=True)  # missing months are checked again on every run
     for m in months(first, last):
+        if (out / f"{m}.json").exists():  # profiled by an earlier run (restored from the cache)
+            print(f"{a.feed} {m}: cached", flush=True)
+            continue
         try:
             path = download(a.feed, m, Path(a.cache))
-        except (urllib.error.HTTPError, RuntimeError) as e:
+        except urllib.error.HTTPError as e:
             print(f"{a.feed} {m}: not available ({e})", flush=True)
             with (out / "missing.txt").open("a", encoding="utf-8") as fh:
                 fh.write(f"{m}\n")
+            continue
+        except RuntimeError as e:
+            print(f"{a.feed} {m}: {e}", flush=True)
+            failed.append(m)
             continue
         p = profile_file(path, m, a.feed)
         (out / f"{m}.json").write_text(json.dumps(p), encoding="utf-8")
         path.unlink()
         print(f"{a.feed} {m}: {p['n_rows']:,} rows", flush=True)
+    if failed:
+        raise SystemExit(f"{a.feed}: no valid file after retries for {', '.join(failed)}; rerun to resume")
 
 
 if __name__ == "__main__":

@@ -90,6 +90,7 @@ jobs:
     timeout-minutes: 120
     strategy:
       fail-fast: false
+      max-parallel: 8
       matrix:
         feed: [yellow, green, fhv, fhvhv]
         months: ['2019-01:2019-12', '2020-01:2020-12', '2021-01:2021-12', '2022-01:2022-12',
@@ -106,11 +107,23 @@ jobs:
           cache-dependency-path: data-tests-limits/requirements.txt
       - name: Install pinned dependencies
         run: python -m pip install -r requirements.txt
-      - name: Profile ${{ matrix.feed }} ${{ matrix.months }}
-        run: python -m feed.run --feed ${{ matrix.feed }} --months ${{ matrix.months }} --out profiles --cache /tmp/tlc
       - name: Name the artifact
         id: name
         run: echo "slug=$(echo '${{ matrix.feed }}-${{ matrix.months }}' | tr ':' '_')" >> "$GITHUB_OUTPUT"
+      - name: Restore profiles from earlier runs
+        uses: actions/cache/restore@v4
+        with:
+          path: data-tests-limits/profiles
+          key: profiles-${{ steps.name.outputs.slug }}-${{ hashFiles('data-tests-limits/feed/profile.py', 'data-tests-limits/feed/contracts.py') }}-${{ github.run_id }}
+          restore-keys: profiles-${{ steps.name.outputs.slug }}-${{ hashFiles('data-tests-limits/feed/profile.py', 'data-tests-limits/feed/contracts.py') }}-
+      - name: Profile ${{ matrix.feed }} ${{ matrix.months }}
+        run: python -m feed.run --feed ${{ matrix.feed }} --months ${{ matrix.months }} --out profiles --cache /tmp/tlc
+      - name: Keep what was profiled, even if some months failed
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: data-tests-limits/profiles
+          key: profiles-${{ steps.name.outputs.slug }}-${{ hashFiles('data-tests-limits/feed/profile.py', 'data-tests-limits/feed/contracts.py') }}-${{ github.run_id }}
       - uses: actions/upload-artifact@v4
         with:
           name: profiles-${{ steps.name.outputs.slug }}
