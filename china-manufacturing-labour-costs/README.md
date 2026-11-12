@@ -24,6 +24,8 @@ Three requests to the OECD Data Explorer SDMX API, made on 12 November 2026; `da
 
 `data/ifr_published.csv` holds robot densities, installations and stocks as published by the International Federation of Robotics in press releases and in the World Robotics 2025 foreword; `data/ifr_sources.csv` gives the title and URL of each source. The IFR's own databases are licensed and are not reproduced here; only the published headline figures are used, with the source of each value recorded.
 
+`data/nbs_published.csv` holds average annual wages of urban units (non-private and private, all sectors and manufacturing, 2022–2025) as published by China's National Bureau of Statistics, with the release URL for each value. They extend the picture past 2022, where the OECD tables end, and are converted to dollars at the OECD's average exchange rate. They are wages, not compensation: they exclude employer social contributions and cover urban units only, so they are not on the same basis as the OECD series.
+
 OECD data are reused under the OECD terms and conditions; they are not relicensed by the repository's licence.
 
 ## Definitions
@@ -42,8 +44,8 @@ OECD data are reused under the OECD terms and conditions; they are not relicense
 
 - Compensation of employees does not pay the self-employed, while persons engaged include them. Where self-employment in manufacturing is large (India, Indonesia, Mexico, Vietnam) compensation per person engaged understates what an employee earns; the labour share understates labour's income for the same reason.
 - Dollar values move with exchange rates. 2022 had a strong dollar and a weak euro, which lowers European pay relative to China's in that year.
-- Trade in Employment ends in 2022. National statistics for 2023–2025 (urban wages, exchange rates) are cited in the article as context and are not part of the computations, except the exchange rates, which come from the OECD.
-- The IFR's China robot density for 2024 was published as 567 and revised to 166 after the employment denominator was updated; the operational stock did not change. Densities before 2024 use the old denominator and are not comparable with the revised value.
+- Trade in Employment ends in 2022. The NBS wages for 2024–2025 are reported next to the OECD series, never combined with it.
+- The IFR's China robot density for 2024 was published as 567 and revised to 166 after the employment denominator was updated; the operational stock did not change. Densities before 2024 use the old denominator and are not comparable with the revised value; the IFR's stated 17% increase in 2024 implies about 142 for 2023 on the new basis.
 
 Contact: Diogo Ribeiro, dfr@esmad.ipp.pt
 

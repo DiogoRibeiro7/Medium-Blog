@@ -58,6 +58,7 @@ TIM = pd.read_csv(DATA / "oecd_tim.csv", low_memory=False)
 TIVA = pd.read_csv(DATA / "oecd_tiva.csv", low_memory=False)
 FX = pd.read_csv(DATA / "oecd_fx.csv", low_memory=False)
 IFR = pd.read_csv(DATA / "ifr_published.csv")
+NBS = pd.read_csv(DATA / "nbs_published.csv").set_index(["series", "year"]).value_yuan
 
 
 def tim(measure: str, unit: str, activity: str = "C") -> pd.DataFrame:
@@ -253,6 +254,25 @@ def main() -> None:
     say("China installations / US installations, 2024", f"{inst['CHN'] / inst['USA']:.1f}")
     cd = dens[dens.country == "CHN"].set_index("year").value
     say("China robot density growth 2015-2023 (multiple; annual %)", f"{cd[2023] / cd[2015]:.1f}; {100 * ((cd[2023] / cd[2015]) ** (1 / 8) - 1):.1f}%")
+
+    yoy = float(IFR[(IFR.country == "CHN") & (IFR.metric == "robot_density_revised_yoy_growth")].value.iloc[0])
+    say("China robot density on the revised basis, 2023 (implied by the stated 17% increase); 2024",
+        f"{d_new / (1 + yoy):.0f}; {d_new:.0f}")
+
+    # ---------------------------------------------------------------- NBS wages after 2022
+    section("NBS average annual wages after the OECD data end (published, yuan; USD at the OECD average exchange rate)")
+    exc = fx("EXC_A")
+    for s in ["urban_nonprivate_manufacturing", "urban_private_manufacturing", "urban_nonprivate_all", "urban_private_all"]:
+        v24, v25 = NBS[(s, 2024)], NBS[(s, 2025)]
+        say(f"{s}: 2024 yuan; 2025 yuan; nominal growth; 2025 USD", f"{v24:,.0f}; {v25:,.0f}; {100 * (v25 / v24 - 1):.1f}%; "
+            f"{v25 / exc.loc[2025]:,.0f}")
+    v = NBS[("production_workers_above_designated_size", 2025)]
+    say("Production, manufacturing and related personnel, enterprises above designated size, 2025: yuan; USD",
+        f"{v:,.0f}; {v / exc.loc[2025]:,.0f}")
+    say("Urban non-private average wage, all sectors, growth 2022-2025 (yuan, %; annual %)",
+        f"{100 * (NBS[('urban_nonprivate_all', 2025)] / NBS[('urban_nonprivate_all', 2022)] - 1):.1f}; "
+        f"{100 * ((NBS[('urban_nonprivate_all', 2025)] / NBS[('urban_nonprivate_all', 2022)]) ** (1 / 3) - 1):.1f}")
+    say("Yuan per USD change 2022-2025 (%)", f"{100 * (exc.loc[2025] / exc.loc[2022] - 1):.1f}")
 
     (RES / "analysis_summary.txt").write_text("\n".join(LINES).strip() + "\n", encoding="utf-8")
     print("\n".join(LINES))
