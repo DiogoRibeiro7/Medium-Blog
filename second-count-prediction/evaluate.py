@@ -97,6 +97,7 @@ def analyse(r: dict[str, float], first: str | None) -> dict:
         "obs": obs,
         "curve": cur,
         "threshold": D.matched_threshold(clean),
+        "flagged": {m: (z, r[m]) for m, z in clean.items() if z > D.matched_threshold(clean)},
         "h1": D.within_factor_two(pred["p95_rule"], obs),
         "err_p95": D.log_error(pred["p95_rule"], obs),
         "err_gauss": D.log_error(pred["gaussian_rule"], obs),
@@ -164,6 +165,8 @@ def main() -> None:
         )
         L.append(f"  observed: {pct(x['obs'])}; within a factor of two of the p95 rule: {'yes' if x['h1'] else 'no'}")
         L.append(f"  |log(observed / predicted)|: p95 rule {x['err_p95']:.3f}; Gaussian rule {x['err_gauss']:.3f}")
+        flagged = ", ".join(f"{m} ({100 * math.expm1(v):+.2f}%, z {z:.1f})" for m, (z, v) in x["flagged"].items())
+        L.append(f"  real months flagged at the matched threshold: {flagged or 'none'}")
         L.append("  detection: " + "; ".join(f"{100 * p:.2g}% {100 * v:.0f}" for p, v in x["curve"].items()))
         L.append("")
     h1 = all(res[n]["h1"] for n in NEW)

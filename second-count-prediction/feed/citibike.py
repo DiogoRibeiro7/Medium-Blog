@@ -80,8 +80,12 @@ def count_csv(con: duckdb.DuckDBPyConnection, path: Path) -> dict:
     return {"months": months, "rows": sum(months.values()) + unparsed, "unparsed": unparsed, "lines": lines}
 
 
-def walk_zip(con: duckdb.DuckDBPyConnection, zpath: Path, work: Path, seen: set[str], out: dict) -> None:
-    """Count every CSV in a zip, descending into zips inside it; a CSV name seen twice is counted once."""
+def walk_zip(con: duckdb.DuckDBPyConnection, zpath: Path, work: Path, seen: set, out: dict) -> None:
+    """Count every CSV in a zip, descending into zips inside it.
+
+    A CSV is left out as a copy if its base name was already counted in the same key, or if it has the same
+    number of rows in every month as a CSV already counted (PLAN.md); both are listed in duplicate_names.
+    """
     with zipfile.ZipFile(zpath) as zf:
         for info in zf.infolist():
             name = info.filename
@@ -100,6 +104,11 @@ def walk_zip(con: duckdb.DuckDBPyConnection, zpath: Path, work: Path, seen: set[
                 p = Path(zf.extract(info, work))
                 r = count_csv(con, p)
                 p.unlink()
+                signature = (r["rows"], tuple(sorted(r["months"].items())))
+                if r["rows"] > 0 and signature in seen:
+                    out["duplicate_names"].append(name)
+                    continue
+                seen.add(signature)
                 out["inner"][name] = {k: v for k, v in r.items() if k != "months"}
                 for m, n in r["months"].items():
                     out["months"][m] = out["months"].get(m, 0) + n
