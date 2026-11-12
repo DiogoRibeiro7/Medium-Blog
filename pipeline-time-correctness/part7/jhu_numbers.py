@@ -190,6 +190,10 @@ def main() -> None:
               f"among the worst 5% {pct(part.index.isin(w5.index).mean())}; mean absolute error "
               f"{pct(part.rel.abs().mean(), 2)}")
     filled = fl[~fl.still_flat]
+    for q, ww in ((0.99, w1), (0.95, w5)):
+        k = ww.index.isin(filled.index)
+        print(f"  the worst {pct(1 - q, 0)}: unchanged files filled in later {rate(pd.Series(k))}; still unchanged "
+              f"{rate(pd.Series(ww.index.isin(fl[fl.still_flat].index)))}")
     print(f"  of those filled in later, published a 7-day count of zero: {rate(filled.pub7 == 0)}; "
           f"published too low: {rate(filled.rel < 0)}")
     other = e[e.flat == 0]

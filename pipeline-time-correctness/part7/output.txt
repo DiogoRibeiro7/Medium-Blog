@@ -107,6 +107,8 @@ state-days with a final 7-day count of at least 200: 52,236; unchanged 28.2%
   unchanged files still unchanged in the final version: 90.7% (13333 of 14708)
   unchanged files filled in later: 1,375; among the worst 1% 21.0%, among the worst 5% 57.1%; mean absolute error 32.50%
   unchanged files still unchanged: 13,333; among the worst 1% 0.3%, among the worst 5% 1.0%; mean absolute error 0.61%
+  the worst 1%: unchanged files filled in later 55.3% (289 of 523); still unchanged 8.8% (46 of 523)
+  the worst 5%: unchanged files filled in later 30.1% (785 of 2612); still unchanged 5.3% (139 of 2612)
   of those filled in later, published a 7-day count of zero: 9.8% (135 of 1375); published too low: 75.8% (1042 of 1375)
   files that changed: 37,528; among the worst 1% 0.5%, among the worst 5% 4.5%; mean absolute error 3.34%
 daily regime (all days of the week): 38,073 state-days; unchanged 13.0%
