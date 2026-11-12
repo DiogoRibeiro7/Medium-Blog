@@ -1,13 +1,25 @@
 name: Refresh taxation-efficiency-drug-prices data
 
+# Each part that uses downloaded data has a fetch.py (and, while its sources are being surveyed, a
+# probe.py). A push to a part branch runs only the scripts that the push changed, so refreshing one
+# part never changes the snapshot of another. A manual run takes the part number and the script.
+
 on:
   push:
     branches:
       - 'taxation-efficiency-drug-prices-part*'
     paths:
-      - 'taxation-efficiency-drug-prices/part2/fetch.py'
-      - '.github/workflows/taxation-efficiency-drug-prices-data.yml'
+      - 'taxation-efficiency-drug-prices/part*/fetch.py'
+      - 'taxation-efficiency-drug-prices/part*/probe.py'
   workflow_dispatch:
+    inputs:
+      part:
+        description: 'Part number, for example 3'
+        required: true
+      script:
+        description: 'fetch.py or probe.py'
+        required: true
+        default: fetch.py
 
 permissions:
   contents: write
@@ -15,15 +27,16 @@ permissions:
 jobs:
   fetch:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 90
     defaults:
       run:
-        working-directory: taxation-efficiency-drug-prices/part2
+        working-directory: taxation-efficiency-drug-prices
     steps:
       - name: Check out the branch
         uses: actions/checkout@v4
         with:
           ref: ${{ github.ref }}
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -33,26 +46,60 @@ jobs:
           cache-dependency-path: taxation-efficiency-drug-prices/requirements.txt
 
       - name: Install pinned dependencies
-        run: python -m pip install -r ../requirements.txt
+        run: python -m pip install -r requirements.txt
+
+      - name: Install pdftotext
+        run: sudo apt-get update -q && sudo apt-get install -y -q poppler-utils
+
+      - name: Decide which scripts to run
+        id: which
+        env:
+          EVENT: ${{ github.event_name }}
+          BEFORE: ${{ github.event.before }}
+          IN_PART: ${{ github.event.inputs.part }}
+          IN_SCRIPT: ${{ github.event.inputs.script }}
+        run: |
+          if [ "$EVENT" = "workflow_dispatch" ]; then
+            list="part${IN_PART}/${IN_SCRIPT}"
+          else
+            if [ -z "$BEFORE" ] || [ "$BEFORE" = "0000000000000000000000000000000000000000" ]; then
+              changed=$(git diff --name-only origin/main...HEAD)
+            else
+              changed=$(git diff --name-only "$BEFORE" HEAD)
+            fi
+            list=$(echo "$changed" | grep -E '^taxation-efficiency-drug-prices/part[0-9]+/(fetch|probe)\.py$' \
+                   | sed 's|^taxation-efficiency-drug-prices/||' | sort -u | tr '\n' ' ')
+          fi
+          echo "Scripts to run: $list"
+          echo "list=$list" >> "$GITHUB_OUTPUT"
 
       - name: Download and reduce the public files
         id: fetch
         continue-on-error: true
-        run: python fetch.py --out data
+        run: |
+          status=0
+          for s in ${{ steps.which.outputs.list }}; do
+            part=$(dirname "$s"); script=$(basename "$s")
+            # A script the push deleted shows up in the diff too; there is nothing to run.
+            [ -f "$part/$script" ] || { echo "skip $s (deleted)"; continue; }
+            echo "::group::$s"
+            (cd "$part" && python "$script" --out data) || status=1
+            echo "::endgroup::"
+          done
+          exit $status
 
       - name: Commit the snapshot and its log if they changed
         if: always()
         run: |
           set +e
-          du -sh data/* | sort -h | tail -20
           git config user.name "Diogo Ribeiro"
           git config user.email "diogo_dj@hotmail.com"
-          git add data
+          git add part*/data
           if git diff --cached --quiet; then
             echo "Snapshot unchanged."
             exit 0
           fi
-          git commit -q -m "Refresh drug-price data for taxation-efficiency-drug-prices part 2 ($(date -u +%Y-%m-%d))"
+          git commit -q -m "Refresh drug-price data for taxation-efficiency-drug-prices: ${{ steps.which.outputs.list }}($(date -u +%Y-%m-%d))"
           out=$(git push origin "HEAD:${GITHUB_REF_NAME}" 2>&1)
           status=$?
           echo "$out"
@@ -65,5 +112,5 @@ jobs:
       - name: Fail if a download failed
         if: steps.fetch.outcome == 'failure'
         run: |
-          cat data/fetch_log.txt || true
+          cat part*/data/fetch_log.txt 2>/dev/null | tail -50 || true
           exit 1

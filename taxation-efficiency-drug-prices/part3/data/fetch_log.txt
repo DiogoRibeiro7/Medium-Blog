@@ -1,0 +1,230 @@
+===== es
+[es_nomenclator] https://www.sanidad.gob.es/profesionales/nomenclator.do?metodo=buscarProductos&especialidad=%25%25%25&d-4015021-e=1&6578706f7274=1
+  status 200 type text/csv; charset=UTF-8 bytes 4531357 disposition attachment; filename="20261112_Nomenclator_de_Facturacion.csv"
+  first lines:
+CÃ³digo Nacional,Nombre del producto farmacÃ©utico,Tipo de fÃ¡rmaco,Nombre genÃ©rico efecto y accesorio,CÃ³digo del laboratorio ofertante,Nombre del laboratorio ofertante,Estado,Fecha de alta en el nomenclÃ¡tor,Fecha de baja en el nomenclÃ¡tor,AportaciÃ³n del beneficiario,Principio activo o asociaciÃ³n de principios activos,Precio venta al pÃºblico con IVA,Precio de referencia,Menor precio de la agrupaciÃ³n homogÃ©nea del producto sanitario,CÃ³digo de la agrupaciÃ³n homogÃ©nea del producto sanitario,Nombre de la agrupaciÃ³n homogÃ©nea del producto sanitario,DiagnÃ³stico hospitalario,Tratamiento de larga duraciÃ³n,Especial control mÃ©dico,Medicamento huÃ©rfano
+140001,aceite salicilado 50 mg/ml solucion cutanea 100 ml 1 frasco,,,,,,,,NORMAL,SALICILICO ACIDO,,,,,,,,,NO
+140002,captopril 4 mg/ml suspension oral 100 ml 1 frasco,,,,,,,,ESPECIAL,CAPTOPRIL,,,,,,,,,NO
+140003,cobre sulfato 10 mg/ml solucion cutanea 250 ml 1 frasco,,,,,,,,NORMAL,COBRE SULFATO,,,,,,,,,NO
+140004,cromoglicato sodio 200 mg 100 capsulas,,,,,,,,ESPECIAL,CROMOGLICATO DE SODIO,,,,,,,,,NO
+140005,omeprazol 2 mg/ml jarabe 100 ml 1 frasco,,,,,,,,NORMAL,OMEPRAZOL,,,,,,,,,NO
+wrote es_nomenclator.csv.gz: 0.61 MB
+===== it
+wrote it_classe_a.csv.gz: 0.20 MB
+[it_classe_a] first lines:
+Principio attivo;Descrizione gruppo;Denominazione e Confezione;Prezzo al pubblico ;Titolare AIC;AIC;Codice Gruppo Equivalenza;X=in lista di trasparenza Aifa 15/6/2026 ;Solo in lista di Regione:;Metri cubi ossigeno 
+Abaloparatide;ABALOPARATIDE 3MG/1,5ML 1 UNITA' USO PARENTERALE;ELADYNOS*1 penna 1,5 ml 2 mg/ml;330,55;THERAMEX IRELAND LIMITED;050465018;NQO;;;
+Acamprosato;ACAMPROSATO 333MG 84 UNITA' USO ORALE;CAMPRAL*84 cpr rivestite gastroresistenti 333 mg;33,77;BRUNO FARMACEUTICI SpA;034208013;H0A;;;
+Acarbosio;ACARBOSIO 100MG 40 UNITA' USO ORALE;ACARBOSIO*40 cpr 100 mg;5,63;TECNIMEDE SOC.TECNICO-MED.S.A.;039716182;H1A;X;;
+===== pt_docs
+[pt_gh_2026q3] 2.22 MB, type pdf
+[pt_gh_2026q3] 190 pages, first lines:
+
+
+                                                                                          Anexo I
+                                                                     (a que se refere o n.º 1 da presente deliberação)
+                                                                                                                                                                                       Preço         5º PVP       Preço
+  Grupo                                                         Denominação Comum                               Via de
+            Nº registo             Nome do Medicamento                                 Forma Farmacêutica                              Dosagem      Apresentação   PVP Max   PVP     Referência   Unitário mais Referência
+Homogéneo                                                          Internacional                             Administração
+                                                                                                                                                                                      Unitário        baixo        RG
+            2546687      Aciclovir Ciclum                                           Comprimido                               200 mg              25 unidade(s)      7,44     6,68                                     6,68
+            3368289      Aciclovir Generis 200 mg Comprimidos                       Comprimido                               200 mg              25 unidade(s)      7,43     6,68                                     6,68
+            5770706      Aciclovir Aurovitas                                        Comprimido                               200 mg              25 unidade(s)      7,05     6,68                                     6,68
+ GH0001                                                               Aciclovir                                  Oral                                                                 0,2672        0,5536
+            5846332      Aciclovir toLife                                           Comprimido                               200 mg              25 unidade(s)      6,71     6,68                                     6,68
+            9745406      Cicloviral                                                 Comprimido                               200 mg              25 unidade(s)      12,25    12,25                                    6,68
+            8583906      Zovirax                                                    Comprimido                               200 mg              25 unidade(s)      13,84    13,84                                    6,68
+            5846340      Aciclovir toLife                                           Comprimido                               400 mg              25 unidade(s)      9,84     9,84                                     9,97
+ GH0003     5770714      Aciclovir Aurovitas                          Aciclovir     Comprimido                   Oral        400 mg              25 unidade(s)      10,37    9,97     0,3988        0,6636            9,97
+            2477990      Cicloviral                                                 Comprimido                               400 mg              25 unidade(s)      16,59    16,59                                    9,97
+            5846357      Aciclovir toLife                                           Comprimido                               800 mg              35 unidade(s)      18,54    18,54                                  20,74
+            5770722      Aciclovir Aurovitas                                        Comprimido                               800 mg              35 unidade(s)      19,52    19,52                                  20,74
+            4780482      Aciclovir Vitória                                          Comprimido dispersível                   800 mg              35 unidade(s)      20,55    20,55                                  20,74
+            2546984      Aciclovir Ciclum                                           Comprimido                               800 mg              35 unidade(s)      21,64    21,64                                  20,74
+            5006820      Aciclovir Generis 800 mg Comprimidos                       Comprimido                               800 mg              35 unidade(s)      21,64    21,64                                  20,74
+ GH0005     3983285      Aciclovir Ciclum                             Aciclovir     Comprimido                   Oral        800 mg              25 unidade(s)      16,77    16,77    0,5926        0,6708          14,82
+wrote pt_gh_2026q3.txt.gz: 0.15 MB
+[pt_rep_2026] 0.19 MB, type pdf
+[pt_rep_2026] 2 pages, first lines:
+                                                                        2026
+
+                            Processos de Revisão Excecional de Preço de Medicamentos com decisão Ministério da Saúde (MS)
+
+                                                                                                                            Data
+ Nº de                                       Forma                                                      Tx.    Despacho                              Novo PVP
+          Nome Comercial       DCI                        Dosagem     Apresentação    Titular de AIM                      Despacho     PVP Inicial
+Registo                                   Farmacêutica                                                 Comp.      MS                                 Aprovado
+                                                                                                                             MS
+                                          Comprimido de
+                                                                       Blíster - 30
+8617530        MST           Morfina        libertação     200 mg                     Mundipharma      37%     Deferido   26/05/2026    14,15 €       18.10 €
+                                                                        unidades
+                                           prolongada
+                                           Comprimido                  Blíster - 20
+3224185   Sevredol 10 mg     Morfina                       10 mg                      Mundipharma      37%     Deferido   26/06/2026     4,12 €       9,97 €
+                                             revestido                  unidades
+                                           Comprimido                  Blíster - 20
+3224284   Sevredol 20 mg     Morfina                       20 mg                      Mundipharma      37%     Deferido   26/06/2026     5,62 €       10,68 €
+                                             revestido                  unidades
+                                           Comprimido                  Blíster - 20
+9458513      Kelatine      Penicilamina                    300 mg                       Medinfar       37%     Deferido   07/07/2026    16,67 €       20,43 €
+                                             revestido                  unidades
+
+wrote pt_rep_2026.txt.gz: 0.00 MB
+[pt_rep_2025] 0.79 MB, type pdf
+[pt_rep_2025] 3 pages, first lines:
+                    Processos de Revisão Excecional de Preço com decisão do Ministério da Saúde - 2025
+
+
+    Nome Comercial                    DCI                     Forma Farmacêutica               Dosagem          Decisão       Data       Tempo de
+                                                                                                                                         Conclusão
+         Selexid                  Pivmecilinam               Comprimido revestido               200 mg         Deferido     09/01/2025     1059
+ Epipen 0,15 mg/0,3 ml             Adrenalina           Solução injetável em seringa pré-    0,15 mg/0,3 ml    Deferido     09/01/2025     170
+                                                                      cheia
+ Epipen 0,30 mg/0,3 ml             Adrenalina           Solução injetável em seringa pré-    0,30 mg/0,3 ml    Deferido     09/01/2025     170
+                                                                      cheia
+        Artinibsa                  Associação                   Solução injetável           40 mg/ml+5 µg/ml   Deferido     09/01/2025     293
+      Ursofak 250            Ácido Ursodesoxicólico     Comprimido revestido por película       250 mg         Deferido     09/01/2025     296
+         Urispas                   Flavoxato                 Comprimido revestido               200 mg         Deferido     09/01/2025     806
+        Octaplas                Plasma Humano                 Solução p/ perfusão             45-70 mg/ml      Deferido     06/02/2025     171
+         Kiovig              Imunogloblina Humana             Solução p/ perfusão              100 mg/ml       Deferido     19/02/2025     600
+                                    Normal
+      Octagam 10%            Imunogloblina Humana             Solução p/ perfusão              100 mg/ml       Deferido     19/02/2025     356
+                                    Normal
+      Octagam 5%             Imunogloblina Humana             Solução p/ perfusão              50 mg/ml        Deferido     19/02/2025     518
+                                    Normal
+        Panzyga              Imunogloblina Humana             Solução p/ perfusão              100 mg/ml       Deferido     19/02/2025     518
+                                    Normal
+         Ig Vena             Imunogloblina Humana             Solução p/ perfusão              50 mg/ml        Deferido     19/02/2025     359
+                                    Normal
+   Timoglau 2,5 mg/ml               Timolol                      Colírio, solução              2,5 mg/ml       Indeferido   19/02/2025     961
+wrote pt_rep_2025.txt.gz: 0.00 MB
+[pt_rap_form_2026] 0.20 MB, type zip
+wrote pt_rap_form_2026.xlsx
+[pt_margins_2026] 0.69 MB, type pdf
+[pt_margins_2026] 6 pages, first lines:
+1 - Margens de Comercialização em Portugal
+
+
+O Preço de Venda ao Público (PVP) dos medicamentos a introduzir pela primeira vez
+em Portugal, assenta, em regra, na comparação com os preços, nos estádios de
+produção ou importação (PVA), em vigor nos países de referência para o mesmo
+medicamento ou, caso este não exista, para as especialidades farmacêuticas
+idênticas ou essencialmente similares nos 4 países de referência (Espanha, França,
+Itália e Bélgica ao qual acrescem as margens máximas de comercialização
+(armazenista e farmácia), a taxa de comercialização e o IVA.
+
+O PVP é determinado através da seguinte fórmula:
+
+
+       PVPc/IVA = (PVA + MgA + feeA + MgF + feeF + Taxa Inf.) x 1,06
+
+       em que:
+
+       MgA - margem (%) do armazenista, calculada sobre o PVA
+       MgF - margem (%) da farmácia, calculada sobre o PVA
+       fee A - valor fixo que acresce à margem percentual do armazenista
+       fee F - valor fixo que acresce à margem percentual da farmácia
+       Taxa INF - taxa de comercialização (0,4%), calculada sobre o PVPs/IVA
+       1,06 – fator que reflete a aplicação do IVA (6%)
+
+wrote pt_margins_2026.txt.gz: 0.00 MB
+===== pt_transparencia
+wrote pt_transparencia_preco_medio_por_embalagem.csv.gz: 0.04 MB
+[pt_transparencia_preco_medio_por_embalagem] 935 rows, columns ['tempo', 'regiao', 'valor_pvp_ambulatorio', 'n_o_de_embalagens_ambulatorio', 'preco_medio_por_embalagem_ambulatorio', 'valor_pvp_genericos', 'n_o_de_embalagens_genericos', 'preco_medio_por_embalagem_genericos']
+wrote pt_transparencia_despesa_com_medicamentos_no_ambulatorio_sns.csv.gz: 0.03 MB
+[pt_transparencia_despesa_com_medicamentos_no_ambulatorio_sns] 935 rows, columns ['tempo', 'regiao', 'encargos_sns_ambulatorio', 'encargos_utentes_ambulatorio', 'valor_pvp_ambulatorio', 'encargos_sns_genericos']
+===== be
+[be_sam] version 12680: https://www.vas.ehealth.fgov.be/websamcivics/samcivics/download/samv2-download?type=FULL&xsd=6&version=12680
+[be_sam] downloaded 122.5 MB
+[be_sam] member RML-1794449002414.xml: 66.4 MB
+[be_sam] member RMB-1794449005132.xml: 456.8 MB
+[be_sam] member IMPP-1794449036555.xml: 1.0 MB
+[be_sam] member REF-1794449022084.xml: 7.9 MB
+[be_sam] member CHAPTERIV-1794449028046.xml: 201.1 MB
+[be_sam] member CPN-1794448802417.xml: 5.1 MB
+[be_sam] member VMP-1794448991818.xml: 206.9 MB
+[be_sam] member CMP-1794449022608.xml: 0.9 MB
+[be_sam] member NONMEDICINAL-1794449022844.xml: 106.6 MB
+[be_sam] member AMP-1794448804184.xml: 1669.0 MB
+wrote be_sam_structure.txt.gz: 0.01 MB
+[be_sam] AtcClassification: 7238 rows, 2 columns
+wrote be_sam_atcclassification.csv.gz: 0.06 MB
+[be_sam_atcclassification] 7238 rows, columns ['@code', 'Description']
+[be_sam] DeliveryModus: 43 rows, 5 columns
+[be_sam] DeliveryModusSpecification: 19 rows, 5 columns
+[be_sam] DeviceType: 80 rows, 8 columns
+wrote be_sam_devicetype.csv.gz: 0.00 MB
+[be_sam_devicetype] 80 rows, columns ['@code', 'Name.Fr', 'Name.En', 'EdqmCode', 'EdqmDefinition', 'Deprecated']
+[be_sam] PackagingClosure: 17 rows, 8 columns
+[be_sam] PackagingMaterial: 608 rows, 6 columns
+wrote be_sam_packagingmaterial.csv.gz: 0.01 MB
+[be_sam_packagingmaterial] 608 rows, columns ['@code', 'Name.Fr', 'Name.En', 'Deprecated']
+[be_sam] PackagingType: 108 rows, 8 columns
+wrote be_sam_packagingtype.csv.gz: 0.00 MB
+[be_sam_packagingtype] 108 rows, columns ['@code', 'Name.Fr', 'Name.En', 'EdqmCode', 'EdqmDefinition', 'Deprecated']
+[be_sam] PharmaceuticalForm: 814 rows, 6 columns
+wrote be_sam_pharmaceuticalform.csv.gz: 0.01 MB
+[be_sam_pharmaceuticalform] 814 rows, columns ['@code', 'Name.Fr', 'Name.En', 'Deprecated']
+[be_sam] RouteOfAdministration: 110 rows, 6 columns
+wrote be_sam_routeofadministration.csv.gz: 0.00 MB
+[be_sam_routeofadministration] 110 rows, columns ['@code', 'Name.Fr', 'Name.En', 'Deprecated']
+[be_sam] Substance: 14393 rows, 7 columns
+wrote be_sam_substance.csv.gz: 0.23 MB
+[be_sam_substance] 14393 rows, columns ['@code', 'Name.Fr', 'Name.En', 'Type', 'Deprecated']
+[be_sam] NoSwitchReason: 12 rows, 3 columns
+[be_sam] VirtualForm: 312 rows, 5 columns
+wrote be_sam_virtualform.csv.gz: 0.00 MB
+[be_sam_virtualform] 312 rows, columns ['@code', 'Abbreviation.Fr', 'Name.Fr']
+[be_sam] Wada: 16 rows, 5 columns
+[be_sam] NoGenericPrescriptionReason: 10 rows, 3 columns
+[be_sam] Indication: 557 rows, 5 columns
+wrote be_sam_indication.csv.gz: 0.01 MB
+[be_sam_indication] 557 rows, columns ['@code', 'Name.Fr', 'Name.En', 'SnomedCT']
+[be_sam] DosageParameter: 2 rows, 8 columns
+[be_sam] AdministrationUnit: 24 rows, 9 columns
+[be_sam] StandardForm: 4 rows, 3 columns
+[be_sam] StandardRoute: 69 rows, 3 columns
+wrote be_sam_standardroute.csv.gz: 0.00 MB
+[be_sam_standardroute] 69 rows, columns ['@standard', '@code', 'RouteOfAdministration@code']
+[be_sam] StandardSubstance: 4257 rows, 3 columns
+wrote be_sam_standardsubstance.csv.gz: 0.03 MB
+[be_sam_standardsubstance] 4257 rows, columns ['@standard', '@code', 'Substance@code']
+[be_sam] StandardUnit: 335 rows, 5 columns
+wrote be_sam_standardunit.csv.gz: 0.00 MB
+[be_sam_standardunit] 335 rows, columns ['@name', 'Description.Fr', 'Description.En']
+[be_sam] Appendix: 37 rows, 3 columns
+[be_sam] FormCategory: 14 rows, 3 columns
+[be_sam] Parameter: 23 rows, 6 columns
+[be_sam] ReimbursementCriterion: 674 rows, 4 columns
+wrote be_sam_reimbursementcriterion.csv.gz: 0.02 MB
+[be_sam_reimbursementcriterion] 674 rows, columns ['@category', '@code', 'Description.Fr']
+[be_sam] ProfessionalCode: 219 rows, 2 columns
+wrote be_sam_professionalcode.csv.gz: 0.00 MB
+[be_sam_professionalcode] 219 rows, columns ['@ProfessionalCV', 'NameId']
+[be_sam] AppendixType: 31 rows, 2 columns
+[be_sam] FormType: 11 rows, 2 columns
+[be_sam] NameType: 15 rows, 4 columns
+[be_sam] LegalReferencePathToParagraph: 2589 rows, 3 columns
+wrote be_sam_legalreferencepathtoparagraph.csv.gz: 0.01 MB
+[be_sam_legalreferencepathtoparagraph] 2589 rows, columns ['@LegalReferencePath', 'ChapterName', 'ParagraphName']
+[be_sam] Vtm: 1839 rows, 3 columns
+wrote be_sam_vtm.csv.gz: 0.01 MB
+[be_sam_vtm] 1839 rows, columns ['@code', 'Name.Fr']
+[be_sam] VmpGroup: 4862 rows, 59 columns
+wrote be_sam_vmpgroup.csv.gz: 0.20 MB
+[be_sam_vmpgroup] 4862 rows, columns ['@ProductId', '@code', 'Name.Fr', 'NoGenericPrescriptionReason.@code', 'NoSwitchReason.@code', 'StandardDosage.@code', 'StandardDosage.TargetGroup', 'StandardDosage.KidneyFailureClass', 'StandardDosage.LiverFailureClass', 'StandardDosage.TreatmentDurationType', 'StandardDosage.TemporalityDuration', 'StandardDosage.TemporalityDuration@unit', 'StandardDosage.TemporalityUserProvided', 'StandardDosage.Quantity', 'StandardDosage.AdministrationFrequencyQuantity', 'StandardDosage.AdministrationFrequencyIsMax', 'StandardDosage.AdministrationFrequencyTimeframe', 'StandardDosage.AdministrationFrequencyTimeframe@unit', 'StandardDosage.SupplementaryInfo.Fr', 'StandardDosage.Indication.@code', 'StandardDosage.Indication.Name.Fr', 'StandardDosage.RouteOfAdministration.@code', 'StandardDosage.RouteOfAdministration.Name.Fr', 'StandardDosage.RouteOfAdministration.Name.En', 'StandardDosage.QuantityDenominator', 'StandardDosage.TemporalityNote.Fr', 'SingleAdministrationDose', 'SingleAdministrationDose@unit', 'StandardDosage.Indication.Name.En', 'StandardDosage.Indication.SnomedCT', 'StandardDosage.ParameterBounds.DosageParameter.@code', 'StandardDosage.ParameterBounds.DosageParameter.Name.Fr', 'StandardDosage.ParameterBounds.DosageParameter.StandardUnit', 'StandardDosage.ParameterBounds.UpperBound', 'StandardDosage.ParameterBounds.LowerBound', 'StandardDosage.RouteSpecification.Fr', 'StandardDosage.QuantityRangeLower', 'StandardDosage.QuantityRangeUpper', 'StandardDosage.QuantityMultiplicator', 'StandardDosage.QuantityRangeLowerDenominator', 'StandardDosage.TextualDosage.Fr']
+[be_sam] CommentedClassification: 63 rows, 61 columns
+wrote be_sam_commentedclassification.csv.gz: 0.87 MB
+[be_sam_commentedclassification] 63 rows, columns ['@code', 'Title.Fr', 'Content.Fr', 'PosologyNote.Fr', 'CommentedClassification.@code', 'CommentedClassification.Title.Fr', 'CommentedClassification.Content.Fr', 'CommentedClassification.PosologyNote.Fr', 'CommentedClassification.CommentedClassification.@code', 'CommentedClassification.CommentedClassification.Title.Fr', 'CommentedClassification.CommentedClassification.Content.Fr', 'CommentedClassification.CommentedClassification.PosologyNote.Fr', 'CommentedClassification.CommentedClassification.CommentedClassification.@code', 'CommentedClassification.CommentedClassification.CommentedClassification.Title.Fr', 'CommentedClassification.CommentedClassification.CommentedClassification.Content.Fr', 'CommentedClassification.CommentedClassification.CommentedClassification.PosologyNote.Fr', 'CommentedClassification.CommentedClassification.CommentedClassification.CommentedClassification.@code', 'CommentedClassification.CommentedClassification.CommentedClassification.CommentedClassification.Title.Fr', 'CommentedClassification.CommentedClassification.CommentedClassification.CommentedClassification.PosologyNote.Fr', 'CommentedClassification.CommentedClassification.CommentedClassification.CommentedClassification.Content.Fr', 'CommentedClassification.CommentedClassification.CommentedClassification.CommentedClassification.CommentedClassification.@code', 'CommentedClassification.CommentedClassification.CommentedClassification.CommentedClassification.CommentedClassification.Title.Fr', 'CommentedClassification.CommentedClassification.CommentedClassification.CommentedClassification.CommentedClassification.PosologyNote.Fr', 'CommentedClassification.CommentedClassification.CommentedClassification.CommentedClassification.CommentedClassification.Content.Fr', 'CommentedClassification.CommentedClassification.CommentedClassification.CommentedClassification.CommentedClassification.CommentedClassification.@code', 'CommentedClassification.CommentedClassification.CommentedClassification.CommentedClassification.CommentedClassification.CommentedClassification.Title.Fr', 'CommentedClassification.CommentedClassification.CommentedClassification.CommentedClassification.CommentedClassification.CommentedClassification.PosologyNote.Fr']
+[be_sam] Vmp: 5327 rows, 132 columns
+wrote be_sam_vmp.csv.gz: 0.61 MB
+[be_sam_vmp] 5327 rows, columns ['@code', 'Name.Fr', 'Abbreviation.Fr', 'CommentedClassification.@code', 'CommentedClassification.Title.Fr', 'CommentedClassification.PosologyNote.Fr', 'VmpGroup.@ProductId', 'VmpGroup.@code', 'VmpGroup.Name.Fr', 'VmpGroup.NoGenericPrescriptionReason.@code', 'VmpGroup.NoSwitchReason.@code', 'VmpComponent.@code', 'VmpComponent.PhaseNumber', 'VmpComponent.Name.Fr', 'VmpComponent.VirtualForm.@code', 'VmpComponent.VirtualForm.Abbreviation.Fr', 'VmpComponent.VirtualForm.Name.Fr', 'VmpComponent.RouteOfAdministration.@code', 'VmpComponent.RouteOfAdministration.Name.Fr', 'VmpComponent.RouteOfAdministration.Name.En', 'VmpComponent.RouteOfAdministration.StandardRoute@standard', 'VmpComponent.RouteOfAdministration.StandardRoute@code', 'VmpComponent.VirtualIngredient.@rank', 'VmpComponent.VirtualIngredient.Type', 'VmpComponent.VirtualIngredient.Strength.NumeratorRange.@unit', 'VmpComponent.VirtualIngredient.Strength.NumeratorRange.Min', 'VmpComponent.VirtualIngredient.Strength.NumeratorRange.Max', 'VmpComponent.VirtualIngredient.Substance.@code', 'VmpComponent.VirtualIngredient.Substance.Name.Fr', 'VmpComponent.VirtualIngredient.Substance.Name.En', 'VmpComponent.VirtualIngredient.Substance.Type', 'VmpComponent.VirtualIngredient.Substance.StandardSubstance@standard', 'VmpComponent.VirtualIngredient.Substance.StandardSubstance@code', 'VmpGroup.SingleAdministrationDose', 'VmpGroup.SingleAdministrationDose@unit', 'VmpGroup.StandardDosage.@code', 'VmpGroup.StandardDosage.TargetGroup', 'VmpGroup.StandardDosage.KidneyFailureClass', 'VmpGroup.StandardDosage.LiverFailureClass', 'VmpGroup.StandardDosage.TreatmentDurationType', 'VmpGroup.StandardDosage.TemporalityDuration', 'VmpGroup.StandardDosage.TemporalityDuration@unit', 'VmpGroup.StandardDosage.TemporalityUserProvided', 'VmpGroup.StandardDosage.Quantity', 'VmpGroup.StandardDosage.AdministrationFrequencyQuantity', 'VmpGroup.StandardDosage.AdministrationFrequencyIsMax', 'VmpGroup.StandardDosage.AdministrationFrequencyTimeframe', 'VmpGroup.StandardDosage.AdministrationFrequencyTimeframe@unit', 'VmpGroup.StandardDosage.SupplementaryInfo.Fr', 'VmpGroup.StandardDosage.Indication.@code', 'VmpGroup.StandardDosage.Indication.Name.Fr', 'VmpGroup.StandardDosage.RouteOfAdministration.@code', 'VmpGroup.StandardDosage.RouteOfAdministration.Name.Fr', 'VmpGroup.StandardDosage.RouteOfAdministration.Name.En', 'VmpComponent.VirtualIngredient.RealVirtualIngredient.@sequenceNr', 'VmpComponent.VirtualIngredient.RealVirtualIngredient.Type', 'VmpComponent.VirtualIngredient.RealVirtualIngredient.Substance.@code', 'VmpComponent.VirtualIngredient.RealVirtualIngredient.Substance.Name.Fr', 'VmpComponent.VirtualIngredient.RealVirtualIngredient.Substance.Name.En', 'VmpComponent.VirtualIngredient.RealVirtualIngredient.Substance.Type', 'VmpComponent.VirtualIngredient.RealVirtualIngredient.Substance.StandardSubstance@standard', 'VmpComponent.VirtualIngredient.RealVirtualIngredient.Substance.StandardSubstance@code', 'Wada.@code', 'Wada.Name.Fr', 'Vtm.@code', 'Vtm.Name.Fr', 'VmpGroup.StandardDosage.ParameterBounds.DosageParameter.@code', 'VmpGroup.StandardDosage.ParameterBounds.DosageParameter.Name.Fr', 'VmpGroup.StandardDosage.ParameterBounds.DosageParameter.StandardUnit', 'VmpGroup.StandardDosage.ParameterBounds.LowerBound', 'VmpGroup.StandardDosage.TemporalityNote.Fr', 'VmpGroup.StandardDosage.QuantityDenominator', 'VmpGroup.StandardDosage.QuantityMultiplicator', 'VmpGroup.StandardDosage.ParameterBounds.UpperBound', 'VmpGroup.StandardDosage.Indication.Name.En', 'VmpGroup.StandardDosage.Indication.SnomedCT', 'VmpGroup.StandardDosage.TextualDosage.Fr', 'CommentedClassification.Content.Fr', 'VmpGroup.StandardDosage.RouteSpecification.Fr', 'VmpGroup.StandardDosage.QuantityRangeLower', 'VmpGroup.StandardDosage.QuantityRangeUpper', 'VmpComponent.VirtualIngredient.RealVirtualIngredient.Strength.NumeratorRange.@unit', 'VmpComponent.VirtualIngredient.RealVirtualIngredient.Strength.NumeratorRange.Min', 'VmpComponent.VirtualIngredient.RealVirtualIngredient.Strength.NumeratorRange.Max', 'VmpGroup.StandardDosage.QuantityRangeLowerDenominator', 'VmpComponent.VirtualForm.StandardForm@standard', 'VmpComponent.VirtualForm.StandardForm@code']
+[be_sam] StandardDosage: 2268 rows, 47 columns
+wrote be_sam_standarddosage.csv.gz: 0.03 MB
+[be_sam_standarddosage] 2268 rows, columns ['@code', 'TargetGroup', 'KidneyFailureClass', 'LiverFailureClass', 'TreatmentDurationType', 'TemporalityUserProvided', 'Quantity', 'AdministrationFrequencyQuantity', 'AdministrationFrequencyIsMax', 'AdministrationFrequencyTimeframe', 'AdministrationFrequencyTimeframe@unit', 'Indication.@code', 'Indication.Name.Fr', 'RouteOfAdministration.@code', 'RouteOfAdministration.Name.Fr', 'RouteOfAdministration.Name.En', 'TemporalityNote.Fr', 'TemporalityDuration', 'TemporalityDuration@unit', 'QuantityDenominator', 'SupplementaryInfo.Fr', 'QuantityRangeLower', 'QuantityRangeUpper', 'Indication.Name.En', 'Indication.SnomedCT', 'TextualDosage.Fr', 'RouteSpecification.Fr', 'ParameterBounds.DosageParameter.@code', 'ParameterBounds.DosageParameter.Name.Fr', 'ParameterBounds.DosageParameter.StandardUnit', 'ParameterBounds.LowerBound', 'ParameterBounds.UpperBound', 'QuantityMultiplicator', 'QuantityRangeLowerDenominator']
+[be_sam] amp: 102077 rows, 276 columns
+wrote be_sam_amp.csv.gz: 9.03 MB
+[be_sam_amp] 102077 rows, columns ['@code', 'OfficialName', 'Status', 'Name.Fr', 'Name.En', 'BlackTriangle', 'MedicineType', 'PrescriptionNameFamhp.Fr', 'PrescriptionNameFamhp.En', 'Company.@actorNr', 'Company.StreetName', 'Company.StreetNum', 'Company.City', 'Company.CountryCode', 'Company.Language', 'AmpComponent.@sequenceNr', 'AmpComponent.PharmaceuticalForm.@code', 'AmpComponent.PharmaceuticalForm.Name.Fr', 'AmpComponent.PharmaceuticalForm.Name.En', 'AmpComponent.RouteOfAdministration.@code', 'AmpComponent.RouteOfAdministration.Name.Fr', 'AmpComponent.RouteOfAdministration.Name.En', 'AmpComponent.RouteOfAdministration.StandardRoute@standard', 'AmpComponent.RouteOfAdministration.StandardRoute@code', 'AmpComponent.RealActualIngredient.@rank', 'AmpComponent.RealActualIngredient.Type', 'AmpComponent.RealActualIngredient.Strength.Operator', 'AmpComponent.RealActualIngredient.Strength.Quantity', 'AmpComponent.RealActualIngredient.Strength.Quantity@unit', 'AmpComponent.RealActualIngredient.Substance.@code', 'AmpComponent.RealActualIngredient.Substance.Name.Fr', 'AmpComponent.RealActualIngredient.Substance.Name.En', 'AmpComponent.RealActualIngredient.Substance.Type', 'ampp.@ctiExtended', 'ampp.AuthorisationNr', 'ampp.Orphan', 'ampp.ParallelCircuit', 'ampp.PackDisplayValue.Fr', 'ampp.PackDisplayValue.En', 'ampp.Status', 'ampp.PrescriptionNameFamhp.Fr', 'ampp.PrescriptionNameFamhp.En', 'ampp.LegalBasis.Fr', 'ampp.LegalBasis.En', 'ampp.ConditionalApproval', 'ampp.FMDInScope', 'ampp.AntiTemperingDevicePresent', 'ampp.OfficialExFactoryPrice', 'ampp.RealExFactoryPrice', 'ampp.PricingInformationDecisionDate', 'ampp.OfficialIndex', 'ampp.AmppComponent.@sequenceNr', 'ampp.AmppComponent.AmpcSequenceNr', 'ampp.AmppComponent.ContentType', 'ampp.AmppComponent.PackagingType.@code', 'ampp.AmppComponent.PackagingType.Name.Fr', 'ampp.AmppComponent.PackagingType.Name.En', 'ampp.AmppComponent.PackagingType.EdqmCode', 'ampp.AmppComponent.PackagingType.EdqmDefinition', 'ampp.AmppComponent.AmppComponentEquivalent.@sequenceNr', 'ampp.AmppComponent.AmppComponentEquivalent.Content', 'ampp.AmppComponent.AmppComponentEquivalent.Content@unit', 'ampp.Dmpp.@ProductId', 'ampp.Dmpp.@deliveryEnvironment', 'ampp.Dmpp.@code', 'ampp.Dmpp.@codeType', 'ampp.Dmpp.Price', 'ampp.Dmpp.Reimbursable', '@vmpCode', 'Company.LegalForm', 'Company.Postcode', 'AbbreviatedName.Fr', 'ProprietarySuffix.Fr', 'PrescriptionName.Fr', 'AmpComponent.@vmpComponentCode', 'AmpComponent.Dividable', 'AmpComponent.Scored', 'AmpComponent.SpecificDrugDevice', 'AmpComponent.Name.Fr', 'AmpComponent.RealActualIngredient.Substance.StandardSubstance@standard', 'AmpComponent.RealActualIngredient.Substance.StandardSubstance@code', 'ampp.DHPCLink.Fr', 'ampp.DHPCLink.En', 'ampp.Atc.@code', 'ampp.FMDProductCode', 'ampp.AbbreviatedName.Fr', 'ampp.PrescriptionName.Fr', 'ampp.CrmLink.Fr', 'ampp.ExFactoryPrice', 'ampp.ReimbursementCode', 'ampp.BigPackage', 'ampp.Index', 'ampp.AmppComponent.ContentMultiplier', 'ampp.Dmpp.Cheap', 'ampp.Dmpp.Cheapest', 'ampp.Dmpp.CheapestCeilingPricesStatus5', 'Company.VatNr', 'Company.VatNr@countryCode', 'ampp.PackingSizeGroup', 'ampp.EndOfCommercialization.Fr', 'ampp.EndOfCommercialization.En', 'ampp.EndOfCommercializationReason.Fr', 'ampp.EndOfCommercializationReason.En', 'ampp.EndOfCommercializationImpact.Fr', 'ampp.EndOfCommercializationImpact.En', 'AmpComponent.RealActualIngredient.Strength.SecondQuantity', 'AmpComponent.RealActualIngredient.Strength.SecondQuantity@unit', 'ampp.DistributorCompany.@actorNr', 'ampp.DistributorCompany.VatNr', 'ampp.DistributorCompany.VatNr@countryCode', 'ampp.DistributorCompany.LegalForm', 'ampp.DistributorCompany.StreetName', 'ampp.DistributorCompany.StreetNum', 'ampp.DistributorCompany.Postcode', 'ampp.DistributorCompany.City', 'ampp.DistributorCompany.CountryCode', 'ampp.DistributorCompany.Language', 'AmpComponent.RealActualIngredient.StrengthDescription', 'AmpComponent.RealActualIngredient.RealActualIngredientEquivalent.@sequenceNr', 'AmpComponent.RealActualIngredient.RealActualIngredientEquivalent.Type', 'AmpComponent.RealActualIngredient.RealActualIngredientEquivalent.Strength.Operator', 'AmpComponent.RealActualIngredient.RealActualIngredientEquivalent.Strength.Quantity', 'AmpComponent.RealActualIngredient.RealActualIngredientEquivalent.Strength.Quantity@unit', 'AmpComponent.RealActualIngredient.RealActualIngredientEquivalent.Substance.@code', 'AmpComponent.RealActualIngredient.RealActualIngredientEquivalent.Substance.Name.Fr', 'AmpComponent.RealActualIngredient.RealActualIngredientEquivalent.Substance.Name.En', 'AmpComponent.RealActualIngredient.RealActualIngredientEquivalent.Substance.Type', 'AmpComponent.RealActualIngredient.RealActualIngredientEquivalent.Substance.StandardSubstance@standard', 'AmpComponent.RealActualIngredient.RealActualIngredientEquivalent.Substance.StandardSubstance@code', 'AmpComponent.ContainsAlcohol', 'ampp.AmppComponent.PackSpecification.Fr', 'ampp.AmppComponent.PackSpecification.En', 'Company.Postbox', 'AmpComponent.RealActualIngredient.AdditionalInformation.Fr', 'AmpComponent.RealActualIngredient.AdditionalInformation.En', 'ampp.Note.Fr', 'ampp.SupplyProblem.ExpectedEndOn', 'ampp.SupplyProblem.ReportedBy', 'ampp.SupplyProblem.Reason.Fr', 'ampp.SupplyProblem.Reason.En', 'ampp.SupplyProblem.Impact.Fr', 'ampp.SupplyProblem.Impact.En', 'ampp.SupplyProblem.LimitedAvailability', 'ampp.GenericPrescriptionRequired', 'ampp.PosologyNote.Fr', 'ampp.EndOfCommercializationAdditionalInformation.Fr', 'ampp.EndOfCommercializationAdditionalInformation.En', 'AmpComponent.RealActualIngredient.RealActualIngredientEquivalent.Strength.SecondQuantity', 'AmpComponent.RealActualIngredient.RealActualIngredientEquivalent.Strength.SecondQuantity@unit', 'ampp.RmaPatientLink.Fr', 'ampp.RmaPatientLink.En', 'ampp.RmaProfessionalLink.Fr', 'ampp.RmaProfessionalLink.En', 'ampp.Dmpp.HeadOfTheCluster', 'ampp.Dmpp.HeadOfTheClusterPricingUnitQuantity', 'ampp.Dmpp.HeadOfTheClusterPricingUnitLabel.Fr', 'ampp.AmppComponent.PackagingMaterial.@code', 'ampp.AmppComponent.PackagingMaterial.Name.Fr', 'ampp.AmppComponent.PackagingMaterial.Name.En', 'ampp.PackAmount', 'ampp.PackAmount@unit', 'AmpComponent.SugarFree', 'ampp.SingleUse', 'Company.Building', 'ampp.PackMultiplier', 'AmpComponent.Note.Fr', 'ampp.SupplyProblem.AdditionalInformation.Fr', 'ampp.SupplyProblem.AdditionalInformation.En', 'ampp.UnitOfPresentation', 'ampp.UnitOfPresentation@unit', 'AmpComponent.Dimensions', 'ampp.SpeciallyRegulated', 'ampp.DistributorCompany.Postbox', 'ampp.EndOfCommercializationPresumedEndDate', 'ampp.NoGenericPrescriptionReason.@code', 'ampp.AmppComponent.PackagingClosure.@code', 'ampp.AmppComponent.PackagingClosure.Name.Fr', 'ampp.AmppComponent.PackagingClosure.Name.En', 'ampp.AmppComponent.PackagingClosure.EdqmCode', 'ampp.AmppComponent.PackagingClosure.EdqmDefinition', 'AmpComponent.RealActualIngredient.RealActualIngredientEquivalent.StrengthDescription']
+failed: []

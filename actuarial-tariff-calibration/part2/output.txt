@@ -30,9 +30,9 @@ truth, level 1.1        0.2753     0.2753   1.1000    1.007   1.007  35.092  0.0
 ==============================================================================
 3. The geometry of isotonic recalibration (test sample, in-sample fit)
 ==============================================================================
-clf      Gini 0.2718 -> recalibrated 0.2728; isotonic blocks 93; Lorenz of recalibration vs convex minorant: max gap 4.4e-14; DSC 14168.20 vs 2 x claims x KL 14168.20
-truth^2  Gini 0.2773 -> recalibrated 0.2784; isotonic blocks 92; Lorenz of recalibration vs convex minorant: max gap 7.9e-14; DSC 14699.41 vs 2 x claims x KL 14699.41
-glm      Gini 0.2722 -> recalibrated 0.2732; isotonic blocks 91; Lorenz of recalibration vs convex minorant: max gap 4.6e-14; DSC 13968.19 vs 2 x claims x KL 13968.19
+clf      Gini 0.2718 -> recalibrated 0.2728; isotonic blocks 93; Lorenz of recalibration vs convex minorant: max gap below 1e-12; DSC 14168.20 vs 2 x claims x KL 14168.20
+truth^2  Gini 0.2773 -> recalibrated 0.2784; isotonic blocks 92; Lorenz of recalibration vs convex minorant: max gap below 1e-12; DSC 14699.41 vs 2 x claims x KL 14699.41
+glm      Gini 0.2722 -> recalibrated 0.2732; isotonic blocks 91; Lorenz of recalibration vs convex minorant: max gap below 1e-12; DSC 13968.19 vs 2 x claims x KL 13968.19
 
 ==============================================================================
 4. Four fitted models: test sample and population

@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite it as below."
+title: "Testing data in production: test the change, not the table (NYC yellow-taxi monthly files)"
+authors:
+  - family-names: Ribeiro
+    given-names: Diogo
+    email: dfr@esmad.ipp.pt
+    orcid: "https://orcid.org/0009-0001-2022-7072"
+version: 0.1.0
+date-released: 2026-11-11
+license: Apache-2.0
+repository-code: "https://github.com/DiogoRibeiro7/Medium-Blog/tree/main/data-tests-in-production"
+references:
+  - type: data
+    title: "TLC Trip Record Data (yellow taxi trip records)"
+    authors:
+      - name: "New York City Taxi and Limousine Commission"
+    url: "https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page"
