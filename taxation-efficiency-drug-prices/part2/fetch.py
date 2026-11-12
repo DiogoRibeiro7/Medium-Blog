@@ -88,6 +88,13 @@ def save(df: pd.DataFrame, out: Path, name: str) -> None:
     log(f"[{name}] wrote {path.name}: {len(df)} rows, {path.stat().st_size / 1e6:.2f} MB")
 
 
+def num_fr(s: pd.Series) -> pd.Series:
+    """French number format: '.' separates thousands and ',' marks decimals ('10.414.225,89')."""
+    s = s.astype(str).str.strip().str.replace("\u00a0", "", regex=False).str.replace(" ", "", regex=False)
+    s = s.str.replace(".", "", regex=False).str.replace(",", ".", regex=False)
+    return pd.to_numeric(s, errors="coerce")
+
+
 def num(s: pd.Series) -> pd.Series:
     if s.dtype == object:
         s = s.astype(str).str.replace(" ", "", regex=False).str.replace(" ", "", regex=False)
@@ -278,12 +285,12 @@ def fetch_open_medic(out: Path) -> None:
             df = _read_table(raw)
             describe(f"open_medic_2024[{title}]", df)
             cols = {c.upper().strip(): c for c in df.columns}
-            need = [k for k in ("BOITES", "REM", "BSE") if k in cols]
+            need = [k for k in ("BOITES", "REM", "BSE", "NBC") if k in cols]
             cip = cols.get("CIP13")
             if cip is None or "BOITES" not in need:
                 raise RuntimeError(f"unexpected columns {list(df.columns)}")
             for k in need:
-                df[cols[k]] = num(df[cols[k]])
+                df[cols[k]] = num_fr(df[cols[k]])
             keys = [cip] + [cols[k] for k in ("L_CIP13", "TOP_GEN", "GEN_NUM", "ATC5", "L_ATC5") if k in cols]
             agg = df.groupby(keys, dropna=False)[[cols[k] for k in need]].sum().reset_index()
             agg.columns = [c.lower().strip() for c in agg.columns]
