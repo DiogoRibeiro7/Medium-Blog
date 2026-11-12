@@ -36,6 +36,149 @@
       "mismatches": 0
     }
   },
+  "cohorts": {
+    "by_year": {
+      "2011": {
+        "entry_median_change": 0.05095238095238096,
+        "excess_per_newcomer": 0.2046077386792161,
+        "exit_median_change": 0.00296875,
+        "inc_rate": 0.17415730337078653,
+        "new_rate": 0.42483660130718953,
+        "new_share_of_list": 0.2109181141439206,
+        "new_stock": 153.0
+      },
+      "2012": {
+        "entry_median_change": 0.00296875,
+        "excess_per_newcomer": 0.0063989065946013085,
+        "exit_median_change": 0.033653846153846145,
+        "inc_rate": 0.12605042016806722,
+        "new_rate": 0.1506849315068493,
+        "new_share_of_list": 0.11582381729200653,
+        "new_stock": 73.0
+      },
+      "2013": {
+        "entry_median_change": 0.033653846153846145,
+        "excess_per_newcomer": 0.013334750585958465,
+        "exit_median_change": 0.034583333333333334,
+        "inc_rate": 0.1724137931034483,
+        "new_rate": 0.21678321678321677,
+        "new_share_of_list": 0.16760168302945302,
+        "new_stock": 143.0
+      },
+      "2014": {
+        "entry_median_change": 0.034583333333333334,
+        "excess_per_newcomer": 0.049729687631606484,
+        "exit_median_change": 0.013411764705882352,
+        "inc_rate": 0.21673003802281368,
+        "new_rate": 0.3157894736842105,
+        "new_share_of_list": 0.1762917933130699,
+        "new_stock": 152.0
+      },
+      "2015": {
+        "entry_median_change": 0.013411764705882352,
+        "excess_per_newcomer": -0.017928576799544547,
+        "exit_median_change": -0.03690909090909091,
+        "inc_rate": 0.33554817275747506,
+        "new_rate": 0.37967914438502676,
+        "new_share_of_list": 0.16484118291347208,
+        "new_stock": 187.0
+      },
+      "2016": {
+        "entry_median_change": -0.03690909090909091,
+        "excess_per_newcomer": 0.15169403726030256,
+        "exit_median_change": 0.0403508771930585,
+        "inc_rate": 0.08010335917312661,
+        "new_rate": 0.23846153846153847,
+        "new_share_of_list": 0.11595803423522916,
+        "new_stock": 130.0
+      },
+      "2017": {
+        "entry_median_change": 0.0403508771930585,
+        "excess_per_newcomer": 0.07871770116490755,
+        "exit_median_change": 0.04291666666666666,
+        "inc_rate": 0.12138728323699421,
+        "new_rate": 0.22900763358778625,
+        "new_share_of_list": 0.09789525208027411,
+        "new_stock": 131.0
+      },
+      "2018": {
+        "entry_median_change": 0.04291666666666666,
+        "excess_per_newcomer": 0.10231556782073485,
+        "exit_median_change": -0.016842105263157894,
+        "inc_rate": 0.2972222222222222,
+        "new_rate": 0.42857142857142855,
+        "new_share_of_list": 0.11956521739130435,
+        "new_stock": 161.0
+      },
+      "2019": {
+        "entry_median_change": -0.016842105263157894,
+        "excess_per_newcomer": 0.028909676557778343,
+        "exit_median_change": -0.04507936507936507,
+        "inc_rate": 0.34823529411764703,
+        "new_rate": 0.4166666666666667,
+        "new_share_of_list": 0.09382257315373897,
+        "new_stock": 108.0
+      },
+      "2020": {
+        "entry_median_change": -0.04507936507936507,
+        "excess_per_newcomer": -0.008285125491580487,
+        "exit_median_change": 0.1243243243243243,
+        "inc_rate": 0.09722222222222222,
+        "new_rate": 0.09734513274336283,
+        "new_share_of_list": 0.08739255014326648,
+        "new_stock": 113.0
+      },
+      "2021": {
+        "entry_median_change": 0.1243243243243243,
+        "excess_per_newcomer": 0.23943818933618055,
+        "exit_median_change": -0.0065217391304350746,
+        "inc_rate": 0.18803418803418803,
+        "new_rate": 0.49794238683127573,
+        "new_share_of_list": 0.18191721132897604,
+        "new_stock": 243.0
+      },
+      "2022": {
+        "entry_median_change": -0.0065217391304350746,
+        "excess_per_newcomer": 0.16689659320221067,
+        "exit_median_change": -0.02148148148148149,
+        "inc_rate": 0.2800875273522976,
+        "new_rate": 0.49137931034482757,
+        "new_share_of_list": 0.09107946026986506,
+        "new_stock": 116.0
+      },
+      "2023": {
+        "entry_median_change": -0.02148148148148149,
+        "excess_per_newcomer": -0.09110226742515352,
+        "exit_median_change": 0.030648148148148608,
+        "inc_rate": 0.24688796680497926,
+        "new_rate": 0.18947368421052632,
+        "new_share_of_list": 0.07992424242424243,
+        "new_stock": 95.0
+      },
+      "2024": {
+        "entry_median_change": 0.030648148148148608,
+        "excess_per_newcomer": 0.01613473678146987,
+        "exit_median_change": 0.025534591194968558,
+        "inc_rate": 0.14014251781472684,
+        "new_rate": 0.1891891891891892,
+        "new_share_of_list": 0.09816612729234088,
+        "new_stock": 148.0
+      }
+    },
+    "corr_excess_entry_change": 0.5362346041153738,
+    "corr_excess_exit_change": -0.2738645225858592,
+    "corr_excess_new_share": 0.4478789781708023,
+    "corr_new_rate_exit_change": -0.8244245807858932,
+    "excess_other_years": 0.040644181841062284,
+    "excess_top3_new_share": 0.16459187188233437,
+    "n_years": 14,
+    "top3_new_share_years": [
+      "2011",
+      "2021",
+      "2014"
+    ],
+    "years_excess_positive": 11
+  },
   "decomposition": {
     "floor": {
       "obs_rate": 0.23868748346123314,
@@ -121,6 +264,16 @@
       "2500": 0.023886538718966403,
       "3000": 0.025470817437973595
     },
+    "far_age_mix": {
+      "-1": 0.02410539101186583,
+      "0": 0.11099691675231244,
+      "50": 0.21143604596842006,
+      "60": 0.2546015135943194,
+      "70": 0.23086984957488554,
+      "80": 0.08007100812856209,
+      "85": 0.05671307110156031,
+      "90": 0.03120620386807437
+    },
     "far_floor": 0.0276557974399701,
     "far_rate_by_age": {
       "-1": 0.12403100775193798,
@@ -164,6 +317,12 @@
       }
     },
     "points": 6.217766180934077
+  },
+  "part4_refs": {
+    "china_2023_change": -86,
+    "china_2023_net_near": -76,
+    "global_2023_entries_near": 209,
+    "global_2023_exits_near": 150
   },
   "previous": {
     "far": {
@@ -252,8 +411,13 @@
     "from_2000": {
       "m100": 0.9992484835471577,
       "n": 18629
-    }
+    },
+    "no_change_far": 0.13229935532093806,
+    "no_change_far_10000": 0.10431484115694642,
+    "no_change_near": 0.17756020111140514,
+    "no_change_near_1000": 0.1880766501064585
   },
+  "scale_far_naive": 1.2846016520524186,
   "scale_far_self": 0.9999137677067688,
   "scale_middle": 1.1675098145733276,
   "scale_near": 1.2630521107346153,

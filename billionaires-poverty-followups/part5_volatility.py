@@ -122,6 +122,13 @@ def rounding(tenure: pd.DataFrame) -> dict[str, Any]:
     out = {g: {"m100": float(t.loc[g, "m100"] / t.loc[g].sum()), "n": int(t.loc[g].sum())} for g in t.index}
     b = r[r.band_lo_musd == 1000].groupby("key").n.sum()
     out["band_1000_m100"] = float(b.get("m100", 0) / b.sum())
+    # Reported change of exactly nothing, or less than +0.02: what $100 million steps do to small changes.
+    lc = tenure[(tenure.table == "logchange") & tenure.year.between(FIRST, LAST)].assign(k=lambda z: z.key.astype(int))
+    st = tenure[(tenure.table == "stock") & tenure.year.between(FIRST, LAST)]
+    for name, sel in (("near_1000", lambda x: x == 1000), ("near", lambda x: (x >= 1000) & (x < NEAR)),
+                      ("far", lambda x: x >= FAR), ("far_10000", lambda x: x >= 10000)):
+        z = lc[sel(lc.band_lo_musd) & (lc.k == 0)].n.sum()
+        out[f"no_change_{name}"] = float(z / st[sel(st.band_lo_musd)].n.sum())
     return out
 
 
@@ -201,6 +208,27 @@ def fit_scale(cells: dict[int, dict[str, Any]], dists: dict[int, ChangeDist], fl
     return float(np.exp(minimize_scalar(nll, bounds=(np.log(0.4), np.log(3.0)), method="bounded").x))
 
 
+def fit_scale_naive(cells: dict[int, dict[str, Any]], dists: dict[int, ChangeDist], floor: float = 0.02) -> float:
+    """The first estimator tried, kept to document why it was replaced: every change from ``floor`` up is used and
+    everything below it (including deaths and rounding to no change) is one lump, with no allowance for departures
+    unrelated to market value. It does not return one for the large fortunes themselves."""
+    def nll(log_s: float) -> float:
+        s = np.exp(log_s)
+        ll = 0.0
+        for y, c in cells.items():
+            d, h = dists[y], c["hist"]
+            m = d.quantile(0.5)
+            up = h[h.index >= round(floor * 1000) - 1e-9]
+            lo_edges = up.index.to_numpy(float) / 1000.0
+            z_lo, z_hi = m + (lo_edges - m) / s, m + (lo_edges + d.w - m) / s
+            pr = np.clip(d.cdf(z_hi) - d.cdf(z_lo), 1e-12, 1)
+            pr = np.where(lo_edges >= 1.0 - 1e-9, np.clip(1 - d.cdf(z_lo), 1e-12, 1), pr)
+            p_lump = float(np.clip(d.cdf(m + (floor - m) / s)[0], 1e-12, 1))
+            ll += float(np.sum(up.to_numpy(float) * np.log(pr))) + (c["stock"] - up.sum()) * np.log(p_lump)
+        return -ll
+    return float(np.exp(minimize_scalar(nll, bounds=(np.log(0.4), np.log(3.0)), method="bounded").x))
+
+
 # ---------------------------------------------------------------------------
 # 3. Departures implied by position, floor and scale
 # ---------------------------------------------------------------------------
@@ -248,6 +276,8 @@ def age_floor(glob: pd.DataFrame) -> dict[str, Any]:
     out["near_floor"] = float((near * rate.reindex(near.index)).sum() / near.sum())
     out["far_floor"] = float((far.exit_age.sum()) / (far.exit_age + far.stay_age).sum())
     out["near_age_mix"] = {str(k): float(v / near.sum()) for k, v in near.items()}
+    far_mix = (far.exit_age + far.stay_age)
+    out["far_age_mix"] = {str(k): float(v / far_mix.sum()) for k, v in far_mix.items()}
     by_band = {}
     for b in BANDS:
         nb = a[a.band_lo_musd == b].groupby("age").n.sum()
@@ -383,6 +413,39 @@ def by_previous(tenure: pd.DataFrame) -> dict[str, Any]:
     return out
 
 
+def newcomer_cohorts(tenure: pd.DataFrame, dists: dict[int, ChangeDist]) -> dict[str, Any]:
+    """Each year's newcomers below $1.5bn: how many, how fast large fortunes rose as they arrived, how many leave."""
+    rows = {}
+    for y in range(FIRST + 1, LAST + 1):
+        d = tenure[(tenure.year == y)]
+        near = d[(d.band_lo_musd >= 1000) & (d.band_lo_musd < NEAR)]
+        st = lambda x: float(x[x.table == "stock"].n.sum())  # noqa: E731
+        ex = lambda x: float(x[x.table == "exit"].n.sum())  # noqa: E731
+        new, inc = near[near.tenure == "new"], near[near.tenure == "incumbent"]
+        all_new = d[(d.tenure == "new") & (d.table == "stock")].n.sum()
+        all_stock = d[d.table == "stock"].n.sum()
+        excess = 0.0
+        for b in [x for x in BANDS if x < NEAR]:
+            nb, ib = new[new.band_lo_musd == b], inc[inc.band_lo_musd == b]
+            if st(nb) and st(ib):
+                excess += ex(nb) - st(nb) * ex(ib) / st(ib)
+        rows[str(y)] = {"new_stock": st(new), "new_rate": ex(new) / st(new), "inc_rate": ex(inc) / st(inc),
+                        "excess_per_newcomer": excess / st(new), "new_share_of_list": float(all_new / all_stock),
+                        "entry_median_change": dists[y - 1].quantile(0.5), "exit_median_change": dists[y].quantile(0.5)}
+    f = pd.DataFrame(rows).T.astype(float)
+    corr = lambda a, b: float(np.corrcoef(f[a], f[b])[0, 1])  # noqa: E731
+    top = f.sort_values("new_share_of_list", ascending=False)
+    return {"by_year": rows,
+            "corr_excess_new_share": corr("excess_per_newcomer", "new_share_of_list"),
+            "corr_excess_entry_change": corr("excess_per_newcomer", "entry_median_change"),
+            "corr_excess_exit_change": corr("excess_per_newcomer", "exit_median_change"),
+            "corr_new_rate_exit_change": corr("new_rate", "exit_median_change"),
+            "years_excess_positive": int((f.excess_per_newcomer > 0).sum()), "n_years": int(len(f)),
+            "top3_new_share_years": [str(i) for i in top.index[:3]],
+            "excess_top3_new_share": float(top.excess_per_newcomer.iloc[:3].mean()),
+            "excess_other_years": float(top.excess_per_newcomer.iloc[3:].mean())}
+
+
 # ---------------------------------------------------------------------------
 # 5. Bootstrap over years
 # ---------------------------------------------------------------------------
@@ -444,6 +507,7 @@ def compute(inp: dict[str, Any]) -> dict[str, Any]:
     scale_middle = fit_scale(cell_counts(tenure, years, lambda x: (x >= NEAR) & (x < FAR)), dists,
                              float(np.mean([floor["by_band"][str(b)] for b in BANDS if NEAR <= b < FAR])))
     scale_far_self = fit_scale(cell_counts(tenure, years, lambda x: x >= FAR), dists, floor["far_floor"])
+    scale_far_naive = fit_scale_naive(cell_counts(tenure, years, lambda x: (x >= FAR) & (x < 20000)), dists)
     dec = decomposition(tenure, dists, m100, floor, scale_near, years)
     near_b = [b for b in BANDS if b < NEAR]
     stock, obs = dec["part4"]["stock"], dec["part4"]["observed"]
@@ -467,7 +531,14 @@ def compute(inp: dict[str, Any]) -> dict[str, Any]:
            "mae_model_points": float(100 * np.mean(np.abs(ob - np.array([v["model"] for v in yearly.values()])))),
            "corr_part4": float(np.corrcoef(ob, [v["part4"] for v in yearly.values()])[0, 1]),
            "corr_model": float(np.corrcoef(ob, [v["model"] for v in yearly.values()])[0, 1])}
+    p4 = json.loads((HERE / "results" / "part4" / "numbers.json").read_text(encoding="utf-8"))
+    part4_refs = {"global_2023_exits_near": p4["global"]["by_year"]["2023"]["exits_near"],
+                  "china_2023_net_near": p4["country"]["1500"]["showcase"]["China"]["2023"]["near"],
+                  "global_2023_entries_near": p4["global"]["by_year"]["2023"]["entries_near"],
+                  "china_2023_change": (p4["country"]["1500"]["showcase"]["China"]["2023"]["n1"]
+                                        - p4["country"]["1500"]["showcase"]["China"]["2023"]["n0"])}
     return {
+        "part4_refs": part4_refs,
         "yearly_fit": fit,
         "check_part4": check,
         "fetch": {"years": {y: e.get("n_persons") for y, e in inp["forbes_tenure_manifest"]["years"].items()},
@@ -475,10 +546,11 @@ def compute(inp: dict[str, Any]) -> dict[str, Any]:
         "rounding": rnd,
         "far_median_change": {str(y): dists[y].quantile(0.5) for y in years},
         "scales_by_band": scales, "scale_near": scale_near, "scale_middle": scale_middle,
-        "scale_far_self": scale_far_self,
+        "scale_far_self": scale_far_self, "scale_far_naive": scale_far_naive,
         "upper_tail_by_band": tails, "upper_tail_near": upper_tail(near_cells, dists, UPPER_X),
         "floor": floor, "decomposition": dec, "gap": gap_out,
         "tenure": by_tenure(tenure, dists, m100, floor),
+        "cohorts": newcomer_cohorts(tenure, dists),
         "previous": by_previous(tenure),
         "bootstrap": bootstrap(tenure, dists, years, m100, floor),
     }
@@ -613,7 +685,8 @@ def summary_lines(n: dict[str, Any]) -> list[str]:
     out = [f"Check against Part 4: {n['check_part4']}; fetch {n['fetch']}",
            f"Rounding: {({k: r3(v) if isinstance(v, dict) else round(v, 3) for k, v in n['rounding'].items()})}",
            f"Far median change: {r3(n['far_median_change'])}",
-           f"Scale near {n['scale_near']:.3f}; middle {n['scale_middle']:.3f}; far self-check {n['scale_far_self']:.3f}; "
+           f"Scale near {n['scale_near']:.3f}; middle {n['scale_middle']:.3f}; far self-check {n['scale_far_self']:.3f} "
+           f"(naive estimator {n['scale_far_naive']:.3f}); "
            f"by band {r3(n['scales_by_band'])}"]
     for b, v in n["upper_tail_by_band"].items():
         out.append(f"  upper tail {b}: " + "; ".join(f"x{x} {r['ratio']:.2f} [{r['ci95'][0]:.2f}, {r['ci95'][1]:.2f}] "
@@ -635,7 +708,18 @@ def summary_lines(n: dict[str, Any]) -> list[str]:
     for r, v in t["incumbent_rules"].items():
         out.append(f"  incumbents rule {r}: pred {v['pred_rate']:.3f} obs {v['obs_rate']:.3f} MAE {v['mean_abs_error_points']:.2f} pts; "
                    + "; ".join(f"{b} {x['obs']:.3f}/{x['pred']:.3f}" for b, x in v["bands"].items()))
+    c = n["cohorts"]
+    out.append("Cohorts: " + "; ".join(f"{y}: new {v['new_stock']:.0f} rate {v['new_rate']:.3f} inc {v['inc_rate']:.3f} excess "
+                                         f"{v['excess_per_newcomer']:.3f} share {v['new_share_of_list']:.3f} entry {v['entry_median_change']:.3f}"
+                                         for y, v in c["by_year"].items()))
+    out.append(f"  corr excess~new share {c['corr_excess_new_share']:.3f}; ~entry change {c['corr_excess_entry_change']:.3f}; "
+               f"~exit change {c['corr_excess_exit_change']:.3f}; new rate~exit change {c['corr_new_rate_exit_change']:.3f}; "
+               f"excess>0 in {c['years_excess_positive']}/{c['n_years']}; top3 share years {c['top3_new_share_years']} excess "
+               f"{c['excess_top3_new_share']:.3f} vs other {c['excess_other_years']:.3f}")
     yf = n["yearly_fit"]
+    out.append(f"Part 4 refs: {n['part4_refs']}")
+    out.append("Yearly by year (obs/part4/model): " + "; ".join(f"{y} {v['obs']:.3f}/{v['part4']:.3f}/{v['model']:.3f}"
+                                                              for y, v in yf["by_year"].items()))
     out.append(f"Yearly near-line fit: MAE Part 4 {yf['mae_part4_points']:.2f} pts, model {yf['mae_model_points']:.2f} pts; "
                f"corr {yf['corr_part4']:.3f} / {yf['corr_model']:.3f}")
     p = n["previous"]
