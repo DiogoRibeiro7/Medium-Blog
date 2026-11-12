@@ -615,6 +615,10 @@ def main() -> None:
     w("22 countries with the most billionaire wealth, pooled 2011-2023 (as in figure 2): " + "; ".join(
         f"{i} {r['inherited_m'] / r['total']:.3f} vs predicted {r['pred_inh_m'] / r['total']:.3f}" for i, r in pooled.iterrows()))
     known = f[f["origin"].isin(["inherited", "self_made"])]
+    for i in ("USA", "ITA", "RUS", "CHN"):
+        mix = known[known["iso3"] == i].groupby("sector")["worth_m"].sum()
+        mix = (mix / mix.sum()).sort_values(ascending=False).head(6)
+        w(f"  {i} sector mix of billionaire wealth (pooled, largest six): " + ", ".join(f"{k} {v:.3f}" for k, v in mix.items()))
     w(f"overall inherited share of billionaire wealth 2011-2023: "
       f"{known.loc[known['origin'] == 'inherited', 'worth_m'].sum() / known['worth_m'].sum():.3f}")
     g = {k: known.loc[known["sector"].isin(v), "worth_m"].sum() / known["worth_m"].sum() for k, v in GROUPS.items()}
