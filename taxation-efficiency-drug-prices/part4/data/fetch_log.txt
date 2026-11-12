@@ -38,11 +38,12 @@
 [euripid_pli_2017] wrote euripid_pli_2017.csv.gz: 25 rows, columns ['geo', 'pli_last', 'n_years', 'pli_L']
 ===== wait
 [wait_2025_report] wrote wait_2025_report.txt.gz: 825942 characters
-[wait_2025] pages 72; charts found ['mean_days', 'median_days']
+[wait_2025] pages 72
+  Time to availability (2021-2024): charts found ['mean_days', 'median_days']
         country  mean_days  median_days  available  dates_submitted
 0       Austria      363.0        259.0        143              143
 1       Belgium      552.0        476.0         82               82
-2        Bosnia        NaN        427.0          8                5
+2        Bosnia      420.0        427.0          8                5
 3      Bulgaria      650.0        627.0         77               76
 4       Croatia      734.0        666.0         58               45
 5        Cyprus      528.0          NaN         66               26
@@ -77,7 +78,121 @@
 34  Switzerland      285.0        212.0        128               84
 35       Turkey      390.0        435.0          9                9
 [wait_2025] wrote wait_2025.csv.gz: 36 rows, columns ['country', 'mean_days', 'median_days', 'available', 'dates_submitted']
-[wait_2024] pages 70; charts found ['mean_days', 'median_days']
+  Oncology time to availability (2021-2024): charts found ['mean_days', 'median_days']
+  Orphan time to availability (2021-2024): charts found ['mean_days', 'median_days']
+  Non-oncology orphan time to availability (2021-2024): charts found ['mean_days', 'median_days']
+                   group      country  mean_days  median_days available dates_submitted
+0               oncology      Austria      254.0        144.0      None            None
+1               oncology      Belgium      563.0        484.0      None            None
+2               oncology       Bosnia        NaN          NaN      None            None
+3               oncology     Bulgaria      737.0        726.0      None            None
+4               oncology      Croatia      874.0        889.0      None            None
+5               oncology       Cyprus      519.0        341.0      None            None
+6               oncology      Czechia      806.0        691.0      None            None
+7               oncology      Denmark      391.0        264.0      None            None
+8               oncology      England      342.0        299.0      None            None
+9               oncology      Estonia     1064.0       1227.0      None            None
+10              oncology      Finland      445.0        409.0      None            None
+11              oncology       France      789.0        761.0      None            None
+12              oncology      Germany      113.0         47.0      None            None
+13              oncology       Greece      609.0          NaN      None            None
+14              oncology      Hungary      513.0        438.0      None            None
+15              oncology      Iceland      574.0        495.0      None            None
+16              oncology      Ireland      730.0        732.0      None            None
+17              oncology        Italy      470.0        420.0      None            None
+18              oncology       Latvia      764.0        606.0      None            None
+19              oncology    Lithuania     1019.0       1026.0      None            None
+20              oncology   Luxembourg      433.0        429.0      None            None
+21              oncology    Macedonia        NaN          NaN      None            None
+22              oncology        Malta        NaN          NaN      None            None
+23              oncology  Netherlands      525.0        296.0      None            None
+24              oncology       Norway      573.0        594.0      None            None
+25              oncology       Poland      679.0        623.0      None            None
+26              oncology     Portugal      926.0        919.0      None            None
+27              oncology      Romania     1060.0        925.0      None            None
+28              oncology     Scotland      347.0        250.0      None            None
+29              oncology       Serbia      258.0        273.0      None            None
+30              oncology     Slovakia      890.0        816.0      None            None
+31              oncology     Slovenia      629.0        559.0      None            None
+32              oncology        Spain      627.0        617.0      None            None
+33              oncology       Sweden      609.0        532.0      None            None
+34              oncology  Switzerland      322.0        294.0      None            None
+35              oncology       Turkey      376.0        359.0      None            None
+36                orphan      Austria      356.0        175.0        53            None
+37                orphan      Belgium      589.0        486.0        31            None
+38                orphan       Bosnia        NaN          NaN         2            None
+39                orphan     Bulgaria      585.0        527.0        36            None
+40                orphan      Croatia      843.0        702.0        16            None
+41                orphan       Cyprus      436.0        250.0        26            None
+42                orphan      Czechia      776.0        753.0        29            None
+43                orphan      Denmark      387.0        281.0        12            None
+44                orphan      England      269.0        242.0        33            None
+45                orphan      Estonia      592.0        544.0        15            None
+46                orphan      Finland      497.0        425.0        24            None
+47                orphan       France      665.0        526.0        45            None
+48                orphan      Germany      124.0         44.0        64            None
+49                orphan       Greece      649.0        644.0        24            None
+50                orphan      Hungary      567.0        558.0        14            None
+51                orphan      Iceland        NaN        332.0        35            None
+52                orphan      Ireland      801.0        787.0        18            None
+53                orphan        Italy      453.0        411.0        50            None
+54                orphan       Latvia      638.0        563.0         9            None
+55                orphan    Lithuania      629.0        524.0        17            None
+56                orphan   Luxembourg      495.0        393.0        42            None
+57                orphan    Macedonia      213.0        234.0         5            None
+58                orphan        Malta        NaN          NaN         6            None
+59                orphan  Netherlands      561.0        524.0        26            None
+60                orphan       Norway      572.0        500.0        12            None
+61                orphan       Poland      722.0        631.0        35            None
+62                orphan     Portugal      910.0        859.0        37            None
+63                orphan      Romania      936.0        711.0        13            None
+64                orphan     Scotland      345.0        279.0        31            None
+65                orphan       Serbia      216.0        220.0         8            None
+66                orphan     Slovakia      911.0        766.0        10            None
+67                orphan     Slovenia      601.0        495.0        32            None
+68                orphan        Spain      579.0          NaN        44            None
+69                orphan       Sweden      651.0        553.0        23            None
+70                orphan  Switzerland      323.0        226.0        46            None
+71                orphan       Turkey      400.0        435.0         3            None
+72   non_oncology_orphan      Austria        NaN        316.0        35              35
+73   non_oncology_orphan      Belgium      565.0        474.0        16              16
+74   non_oncology_orphan       Bosnia        NaN          NaN         2               1
+75   non_oncology_orphan     Bulgaria      503.0        486.0        23              22
+76   non_oncology_orphan      Croatia      742.0        623.0        10               8
+77   non_oncology_orphan       Cyprus      496.0          NaN        14               7
+78   non_oncology_orphan      Czechia      758.0        753.0        17              17
+79   non_oncology_orphan      Denmark        NaN        376.0        30              30
+80   non_oncology_orphan      England      265.0        242.0        21              21
+81   non_oncology_orphan      Estonia        NaN        337.0        20              19
+82   non_oncology_orphan      Finland      493.0        418.0        13              13
+83   non_oncology_orphan       France      621.0        503.0        28              19
+84   non_oncology_orphan      Germany      149.0         45.0        43              43
+85   non_oncology_orphan       Greece      693.0        675.0        13              10
+86   non_oncology_orphan      Hungary      443.0        507.0         5               4
+87   non_oncology_orphan      Iceland        NaN        310.0         8               8
+88   non_oncology_orphan      Ireland      722.0        594.0         9               9
+89   non_oncology_orphan        Italy      427.0        393.0        10              10
+90   non_oncology_orphan       Latvia      714.0        682.0         6               4
+91   non_oncology_orphan    Lithuania      537.0        410.0        11              11
+92   non_oncology_orphan   Luxembourg      547.0        440.0        28              22
+93   non_oncology_orphan    Macedonia        NaN          NaN         3               2
+94   non_oncology_orphan        Malta        NaN          NaN         5               0
+95   non_oncology_orphan  Netherlands      597.0        622.0        19              19
+96   non_oncology_orphan       Norway      703.0        506.0         5               5
+97   non_oncology_orphan       Poland      738.0        637.0        20              20
+98   non_oncology_orphan     Portugal      864.0        758.0        21               7
+99   non_oncology_orphan      Romania     1017.0       1140.0         8               8
+100  non_oncology_orphan     Scotland      376.0        303.0        22              22
+101  non_oncology_orphan       Serbia      178.0        182.0         4               3
+102  non_oncology_orphan     Slovakia      863.0        722.0         7               7
+103  non_oncology_orphan     Slovenia      546.0        491.0        20              20
+104  non_oncology_orphan        Spain      520.0        488.0        28              28
+105  non_oncology_orphan       Sweden      601.0        415.0        10              10
+106  non_oncology_orphan  Switzerland      256.0        215.0        27              13
+107  non_oncology_orphan       Turkey        NaN          NaN         2               2
+[wait_2025_groups] wrote wait_2025_groups.csv.gz: 108 rows, columns ['group', 'country', 'mean_days', 'median_days', 'available', 'dates_submitted']
+[wait_2024] pages 70
+  Time to availability (2020-2023): charts found ['mean_days', 'median_days']
         country  mean_days  median_days  available  dates_submitted
 0       Austria      309.0        219.0      142.0            141.0
 1       Belgium      549.0        476.0       88.0             88.0
@@ -101,7 +216,7 @@
 19    Lithuania      819.0        859.0       28.0             26.0
 20   Luxembourg      449.0        402.0      101.0             89.0
 21    Macedonia      217.0        232.0       13.0              9.0
-22        Malta        NaN        264.0        NaN              NaN
+22        Malta        NaN          NaN        NaN              NaN
 23  Netherlands      459.0        371.0      100.0            100.0
 24       Norway      524.0        500.0       64.0             62.0
 25       Poland      723.0        737.0       68.0             65.0
