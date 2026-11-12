@@ -4,8 +4,8 @@
 
 Every Forbes annual list from 2011 to 2026 is downloaded from the Forbes person-list API and
 held in memory only. Between consecutive lists, a *succession* is a self-made billionaire who
-leaves the list and, in the same country, at least one new inherited billionaire whose source of
-wealth (Forbes' ``source`` field, normalised) is the same. Only country x year aggregates and
+leaves the list and, in the same country, at least one new inherited billionaire who shares the
+founder's last name or a fortune-specific source of wealth (Forbes' ``source`` field, normalised). Only country x year aggregates and
 per-year matching diagnostics are written; no name, identifier or person-level row is saved.
 
 Matching rules (all applied in memory):
@@ -15,6 +15,8 @@ Matching rules (all applied in memory):
 - an exit is a self-made person on list t who is absent from list t+1; exits who are back on
   list t+2 are discarded as temporary drop-offs;
 - a new heir is an inherited person on list t+1 who was not on list t;
+- a shared last name identifies a family unless more than ``COMMON_NAME`` people of that
+  citizenship carry it on the lists compared ("Li", "Kim", "Patel"); then the source must match too;
 - sources are compared after lower-casing and removing punctuation and corporate suffixes; a
   source used by people of three or more citizenships, or by more than ``GENERIC_MAX`` people across
   the lists compared ("real estate", "investments", "hedge funds"), names a sector rather than a
@@ -51,6 +53,7 @@ FORBES = "https://www.forbes.com/forbesapi/person/billionaires/{year}/position/t
 YEARS = range(2011, 2027)
 GENERIC_MAX = 30  # people sharing a source across the lists compared
 GENERIC_COUNTRIES = 3  # a source used by people of three or more citizenships is a sector, not a fortune
+COMMON_NAME = 4  # a last name carried by more people of one citizenship than this cannot identify a family alone
 OLD_AGE = 70
 
 LOG: list[str] = []
@@ -149,13 +152,16 @@ def load_year(year: int) -> tuple[list, dict]:
         worth = p.get("finalWorth")
         if not isinstance(worth, (int, float)):
             continue
+        ln = p.get("lastName")
+        ln = re.sub(r"[^a-z ]+", "", ln.lower()).strip() if isinstance(ln, str) and ln.strip() else None
         out.append((_keys(p), str(p.get("countryOfCitizenship") or "").strip(), float(worth), _bool(p.get("selfMade")),
-                    norm_source(p.get("source")), _age(p, year)))
+                    norm_source(p.get("source")), _age(p, year), ln or None))
     n = len(out)
     diag = {"year": year, "status": status, "n_persons": n,
             **{f"share_key_{k}": sum(r[0][k] is not None for r in out) / n if n else 0.0 for k in KEY_FIELDS},
             "share_source": sum(r[4] is not None for r in out) / n if n else 0.0,
             "share_age": sum(r[5] is not None for r in out) / n if n else 0.0,
+            "share_last_name": sum(r[6] is not None for r in out) / n if n else 0.0,
             "share_selfmade_flag": sum(r[3] is not None for r in out) / n if n else 0.0}
     return out, diag
 
@@ -176,7 +182,7 @@ def persistence(raw: dict[int, list]) -> dict[str, float]:
 
 
 def keyed(raw: dict[int, list], key: str) -> dict[int, dict]:
-    """key -> (country, worth, self_made, source, age); people without the key or sharing it are dropped."""
+    """key -> (country, worth, self_made, source, age, last name); people without the key or sharing it are dropped."""
     out = {}
     for t, rows in raw.items():
         seen, d = defaultdict(int), {}
@@ -191,42 +197,53 @@ def keyed(raw: dict[int, list], key: str) -> dict[int, dict]:
     return out
 
 
+def _candidates(c, src, ln, heirs: dict, generic: set, common: set) -> tuple[list, bool, bool]:
+    """New heirs in the same country who share the founder's last name or a fortune-specific source.
+
+    A last name shared by more than COMMON_NAME people of one citizenship on the lists compared
+    ("Li", "Kim", "Patel") cannot identify a family on its own, so it also needs the same source.
+    """
+    by_name, by_src = [], []
+    for k, v in heirs.items():
+        if v[0] != c:
+            continue
+        if ln and v[5] == ln and ((c, ln) not in common or (src and v[3] == src)):
+            by_name.append(k)
+        if src and src not in generic and v[3] == src:
+            by_src.append(k)
+    return sorted(set(by_name) | set(by_src)), bool(by_name), bool(by_src)
+
+
 def detect(lists: dict[int, dict]) -> tuple[list[dict], list[dict]]:
     """Aggregate successions, unmatched exits and unmatched new heirs by citizenship x event year."""
     agg: dict[tuple[str, int], dict] = defaultdict(lambda: defaultdict(float))
     diags = []
-    years = sorted(lists)
     carried: set = set()  # heirs already matched, through the window, to an exit on the previous pair
-    for t in years:
+    for t in sorted(lists):
         t1, t2 = t + 1, t + 2
         if t1 not in lists:
             continue
         L0, L1, L2 = lists[t], lists[t1], lists.get(t2)
-        counts, countries = defaultdict(int), defaultdict(set)
+        counts, countries, names = defaultdict(int), defaultdict(set), defaultdict(set)
         for L in (L0, L1) + ((L2,) if L2 else ()):
-            for v in L.values():
+            for k, v in L.items():
                 if v[3]:
                     counts[v[3]] += 1
                     countries[v[3]].add(v[0])
-        generic = {s for s in counts if len(countries[s]) >= GENERIC_COUNTRIES or counts[s] > GENERIC_MAX}
+                if v[5]:
+                    names[(v[0], v[5])].add(k)
+        generic = {x for x in counts if len(countries[x]) >= GENERIC_COUNTRIES or counts[x] > GENERIC_MAX}
+        common = {x for x, ks in names.items() if len(ks) > COMMON_NAME}
         new_heirs = {k: v for k, v in L1.items() if v[2] is False and k not in L0}
-        new_heirs2 = ({k: v for k, v in L2.items() if v[2] is False and k not in L1 and k not in L0}
-                      if L2 else {})
-        by_src1, by_src2 = defaultdict(list), defaultdict(list)
-        for k, v in new_heirs.items():
-            if v[3] and v[3] not in generic:
-                by_src1[(v[0], v[3])].append(k)
-        for k, v in new_heirs2.items():
-            if v[3] and v[3] not in generic:
-                by_src2[(v[0], v[3])].append(k)
+        new_heirs2 = ({k: v for k, v in L2.items() if v[2] is False and k not in L1 and k not in L0} if L2 else {})
         exits = {k: v for k, v in L0.items() if v[2] is True and k not in L1 and not (L2 and k in L2)}
-        matched_heirs1, matched_heirs2 = set(), set()
-        d = {"from_list": t, "to_list": t1, "exits": len(exits), "new_heirs": len(new_heirs),
-             "generic_sources": len(generic), "window_available": bool(L2)}
-        for k, (c, w, _, src, age) in exits.items():
+        matched1, matched2 = set(), set()
+        d = defaultdict(int, {"from_list": t, "to_list": t1, "exits": len(exits), "new_heirs": len(new_heirs),
+                              "generic_sources": len(generic), "common_names": len(common), "window_available": int(bool(L2))})
+        for k, (c, w, _, src, age, ln) in exits.items():
             old = age is not None and age >= OLD_AGE
-            h1 = by_src1.get((c, src), []) if src and src not in generic else []
-            h2 = by_src2.get((c, src), []) if src and src not in generic else []
+            h1, n1, s1 = _candidates(c, src, ln, new_heirs, generic, common)
+            h2, n2, s2 = _candidates(c, src, ln, new_heirs2, generic, common)
             a = agg[(c, t1)]
             if h1:
                 a["n_succ_strict"] += 1
@@ -235,35 +252,37 @@ def detect(lists: dict[int, dict]) -> tuple[list[dict], list[dict]]:
                 a["n_heirs_strict"] += len(h1)
                 a["n_succ_strict_old"] += old
                 a["worth_succ_strict_old"] += w * old
-                matched_heirs1.update(h1)
-                counts_key = "matched_strict"
+                matched1.update(h1)
+                kind = "matched_strict"
+                d["strict_by_name_only"] += n1 and not s1
+                d["strict_by_source_only"] += s1 and not n1
+                d["strict_by_both"] += n1 and s1
             elif h2:
-                counts_key = "matched_window_only"
+                kind = "matched_window_only"
             else:
                 a["n_exit_unmatched"] += 1
                 a["worth_exit_unmatched"] += w
                 a["n_exit_unmatched_old"] += old
                 a["worth_exit_unmatched_old"] += w * old
-                counts_key = "unmatched"
+                kind = "unmatched"
             if h1 or h2:
                 a["n_succ_window"] += 1
                 a["worth_succ_window"] += w
-                matched_heirs2.update(h2)
-            d[counts_key] = d.get(counts_key, 0) + 1
-            d[counts_key + "_old"] = d.get(counts_key + "_old", 0) + old
-            d["exits_old"] = d.get("exits_old", 0) + old
-            d["exits_age_known"] = d.get("exits_age_known", 0) + (age is not None)
-        for k, (c, w, _, src, age) in new_heirs.items():
-            if k not in matched_heirs1 and k not in carried:
+                matched2.update(h2)
+            d[kind] += 1
+            d[kind + "_old"] += old
+            d["exits_old"] += old
+            d["exits_age_known"] += age is not None
+        for k, (c, w, _, src, age, ln) in new_heirs.items():
+            if k not in matched1 and k not in carried:
                 a = agg[(c, t1)]
                 a["n_heir_unmatched"] += 1
                 a["worth_heir_unmatched"] += w
-        d["new_heirs_matched_strict"] = len(matched_heirs1)
-        d["new_heirs_next_list_matched"] = len(matched_heirs2)
-        carried = matched_heirs2
-        d["new_heirs_with_source"] = sum(1 for v in new_heirs.values() if v[3])
+        d["new_heirs_matched_strict"] = len(matched1)
+        d["new_heirs_next_list_matched"] = len(matched2)
         d["new_heirs_generic_source"] = sum(1 for v in new_heirs.values() if v[3] in generic)
-        diags.append(d)
+        carried = matched2
+        diags.append(dict(d))
     rows = [{"citizenship": c, "year": y, **{k: float(v) for k, v in vals.items()}} for (c, y), vals in agg.items()]
     return rows, diags
 
