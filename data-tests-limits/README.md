@@ -23,7 +23,7 @@ most 14% of 5% losses and at most 74% of 20% losses (H2a supported); the outside
 losses in yellow, green and high-volume FHV, and 95% of 1% losses in high-volume FHV, but 22% in FHV, whose
 files hold 5% to 32% fewer trips than the report from 2022 (H2b not supported). The outside count also flags
 real deliveries: yellow November 2022 (-6.8%) and September 2023 (-8.9%), green November 2022 (-3.4%) and
-high-volume FHV June 2026 (-2.2%). Full numbers: `results/summary.txt`.
+high-volume FHV June 2026 (-2.2%). Full numbers: `results/summary.txt` and `results/details.txt`.
 
 ## Files
 
@@ -36,6 +36,10 @@ high-volume FHV June 2026 (-2.2%). Full numbers: `results/summary.txt`.
 - `feed/counts.py`: delivered and outside counts, the four detectors, the matched budget.
 - `evaluate.py`: both experiments; writes `results/summary.txt`, `results/rules_by_delivery.csv.gz`,
   `results/losses.csv` and `results/scores.csv`.
+- `details.py`: the descriptive numbers the article quotes that `evaluate.py` does not print (field-level
+  shares, the file-versus-report difference month by month, the noise of each detector, the outside-count
+  alarms on the real deliveries, and two yellow-taxi checks against Part 3's profiles); writes
+  `results/details.txt`. Not part of the pre-registered analysis.
 - `figures.py`, `figures/`: the three figures of the article.
 - `tests/`: unit tests on synthetic months.
 
@@ -47,6 +51,7 @@ python -m pytest -q
 python -m feed.sources --out sources
 for feed in yellow green fhv fhvhv; do python -m feed.run --feed $feed --months 2019-01:2026-09 --out profiles; done
 python evaluate.py --bundle --profiles profiles --sources sources --out results
+python details.py --profiles profiles --sources sources --results results --out results
 python figures.py
 ```
 

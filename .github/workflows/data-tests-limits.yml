@@ -16,6 +16,7 @@ on:
     paths:
       - 'data-tests-limits/feed/**'
       - 'data-tests-limits/evaluate.py'
+      - 'data-tests-limits/details.py'
       - 'data-tests-limits/figures.py'
       - 'data-tests-limits/PLAN.md'
       - 'data-tests-limits/requirements.txt'
@@ -168,6 +169,8 @@ jobs:
           path: data-tests-limits/sources
       - name: Run both experiments
         run: python evaluate.py --bundle --profiles profiles --sources sources --out results
+      - name: Descriptive numbers quoted in the article
+        run: python details.py --profiles profiles --sources sources --results results --out results
       - name: Figures
         run: if [ -f figures.py ]; then python figures.py || echo "figures failed"; fi
       - name: Compare with the committed summary (pull requests)
