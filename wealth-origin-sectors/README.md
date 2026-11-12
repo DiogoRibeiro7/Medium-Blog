@@ -21,7 +21,7 @@ python -m pytest -q tests
 
 The workspace where the analysis was written cannot reach these hosts, so `.github/workflows/wealth-origin-sectors-data.yml` runs `fetch.py` on GitHub's runners and commits the tidy tables; `data/fetch_log.txt` holds URL, status, size and SHA-256 of every response.
 
-**Industry labels.** Forbes used 34 distinct labels across the 2011–2023 lists, drifting between spellings ("Finance & Investments", "Finance and Investments", "Investments", "Finance"; "Fashion & Retail", "Retail"; "Healthcare", "Health care", "Medicine"; and so on). `analysis.py` maps them to the 18 categories Forbes uses today. Four labels that are not industries ("Billionaire", "Business", "Celebrity", "Politics") and empty entries are left unclassified; they hold 0.26% of listed wealth.
+**Industry labels.** Forbes used 33 distinct labels across the 2011–2023 lists, and left a handful of entries empty, drifting between spellings ("Finance & Investments", "Finance and Investments", "Investments", "Finance"; "Fashion & Retail", "Retail"; "Healthcare", "Health care", "Medicine"; and so on). `analysis.py` maps them to the 18 categories Forbes uses today. Four labels that are not industries ("Billionaire", "Business", "Celebrity", "Politics") and empty entries are left unclassified; they hold 0.26% of listed wealth.
 
 ## Analysis (`analysis.py`)
 

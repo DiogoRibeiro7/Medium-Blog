@@ -585,8 +585,8 @@ def main() -> None:
     w(f"Forbes lists fetched: {len(ok)} of {len(cov)} ({', '.join(str(y) for y in cov.loc[~cov.index.isin(ok.index), 'year'])} failed); "
       f"industry filled: min {ok['share_industry'].min():.4f}; several industries per person: max {ok['share_multi_industry'].max():.4f}; "
       f"distinct raw labels per year {int(ok['n_distinct_industries'].min())}-{int(ok['n_distinct_industries'].max())}")
-    raw_labels = sorted(f["industry"].unique())
-    w(f"raw industry labels 2011-2023: {len(raw_labels)}; mapped to {f['sector'].nunique()} sectors "
+    raw_labels = sorted(set(f["industry"].unique()) - {"(none)"})
+    w(f"raw industry labels 2011-2023 (excluding empty entries): {len(raw_labels)}; mapped to {f['sector'].nunique()} sectors "
       f"(unclassified labels: {', '.join(meta['unclassified_industry'])}; their share of wealth "
       f"{f.loc[f['sector'] == 'Unclassified', 'worth_m'].sum() / f['worth_m'].sum():.4f})")
     w(f"unmapped citizenships: {', '.join(meta['unmapped_citizenship']) or 'none'}")
