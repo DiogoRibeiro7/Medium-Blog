@@ -1,0 +1,401 @@
+Second companion: model choice among competing insurers as a game, on freMTPL2 and beMTPL97.
+
+==============================================================================
+freMTPL2: the mechanism, with tariffs that differ only in noise (beta 10; cost = the GLM rate on the whole training pool; calibration sample, 135,598 policies)
+==============================================================================
+  2 insurers, aware: sigma 0.0: profit per insurer +12.50, level 1.250; sigma 0.1: profit per insurer +15.71, level 1.314; sigma 0.2: profit per insurer +23.53, level 1.471; sigma 0.3: profit per insurer +35.92, level 1.718; sigma 0.4: profit per insurer +54.95, level 2.099
+  2 insurers, naive: sigma 0.0: profit per insurer +12.50, level 1.250; sigma 0.1: profit per insurer +15.68, level 1.314; sigma 0.2: profit per insurer +23.10, level 1.462; sigma 0.3: profit per insurer +34.49, level 1.690; sigma 0.4: profit per insurer +51.58, level 2.032
+  4 insurers, aware: sigma 0.0: profit per insurer +3.85, level 1.154; sigma 0.1: profit per insurer +4.05, level 1.162; sigma 0.2: profit per insurer +4.63, level 1.185; sigma 0.3: profit per insurer +5.63, level 1.225; sigma 0.4: profit per insurer +6.97, level 1.279
+  4 insurers, naive: sigma 0.0: profit per insurer +3.85, level 1.154; sigma 0.1: profit per insurer +3.00, level 1.120; sigma 0.2: profit per insurer +1.78, level 1.071; sigma 0.3: profit per insurer +0.76, level 1.030; sigma 0.4: profit per insurer -0.15, level 0.994
+  two insurers, aware: payoff of the row insurer, by the noise in its own tariff (rows) and in its competitor's (columns):
+      sigma 0.1 against 0.1 +15.71, 0.2 +21.73, 0.3 +29.75
+      sigma 0.2 against 0.1 +17.52, 0.2 +23.53, 0.3 +31.96
+      sigma 0.3 against 0.1 +21.04, 0.2 +27.01, 0.3 +35.91
+
+==============================================================================
+freMTPL2: the models alone (test sample; books 1 and 2 of each partition, 12 fits per cell)
+==============================================================================
+Training pool 406,794; calibration 135,598; test 135,599 policies (71,814.7 policy-years, 5,267 claims); 6 partitions
+  books of  20,000: GLM Gini 0.266 deviance 458.05 twin sigma 0.251; GBM Gini 0.249 deviance 461.87 twin sigma 0.425; BAG Gini 0.266 deviance 458.37 twin sigma 0.355
+      GBM above GLM in Gini in 0 of 12, below in deviance in 0; BAG above GLM in Gini in 6, below in deviance in 7
+  books of  50,000: GLM Gini 0.282 deviance 455.07 twin sigma 0.173; GBM Gini 0.284 deviance 454.13 twin sigma 0.314; BAG Gini 0.292 deviance 452.50 twin sigma 0.269
+      GBM above GLM in Gini in 8 of 12, below in deviance in 9; BAG above GLM in Gini in 12, below in deviance in 12
+  books of 100,000: GLM Gini 0.288 deviance 453.88 twin sigma 0.117; GBM Gini 0.304 deviance 450.34 twin sigma 0.245; BAG Gini 0.309 deviance 449.33 twin sigma 0.205
+      GBM above GLM in Gini in 12 of 12, below in deviance in 12; BAG above GLM in Gini in 12, below in deviance in 12
+  books of 200,000: GLM Gini 0.291 deviance 453.39 twin sigma 0.087; GBM Gini 0.316 deviance 448.07 twin sigma 0.206; BAG Gini 0.319 deviance 447.34 twin sigma 0.171
+      GBM above GLM in Gini in 12 of 12, below in deviance in 12; BAG above GLM in Gini in 12, below in deviance in 12
+
+==============================================================================
+freMTPL2: two insurers, curse-aware price competition, beta 10: payoff of the row insurer against the column insurer, in percent of the test sample's claims (mean of 12 plays), and the price level policyholders pay
+==============================================================================
+  books of 20,000:
+      GLM against GLM +26.02 (level 1.520), GBM +46.82 (level 1.897), BAG +40.08 (level 1.800)
+      GBM against GLM +42.88 (level 1.897), GBM +59.26 (level 2.185), BAG +51.28 (level 2.057)
+      BAG against GLM +39.94 (level 1.800), GBM +54.39 (level 2.057), BAG +44.50 (level 1.890)
+    GLM or GBM only: dominant GBM; equilibria (GBM, GBM); no conflict; by partition: GBM the better reply to GLM in 6 of 6, to GBM in 6 of 6, (GLM, GLM) pays more than (GBM, GBM) in 0 of 6
+    all three classes: dominant GBM; equilibria (GBM, GBM)
+  books of 50,000:
+      GLM against GLM +17.96 (level 1.359), GBM +30.44 (level 1.619), BAG +26.64 (level 1.563)
+      GBM against GLM +31.42 (level 1.619), GBM +36.96 (level 1.739), BAG +32.71 (level 1.671)
+      BAG against GLM +29.62 (level 1.563), GBM +34.41 (level 1.671), BAG +30.95 (level 1.619)
+    GLM or GBM only: dominant GBM; equilibria (GBM, GBM); no conflict; by partition: GBM the better reply to GLM in 6 of 6, to GBM in 6 of 6, (GLM, GLM) pays more than (GBM, GBM) in 0 of 6
+    all three classes: dominant GBM; equilibria (GBM, GBM)
+  books of 100,000:
+      GLM against GLM +15.97 (level 1.319), GBM +22.91 (level 1.502), BAG +20.29 (level 1.463)
+      GBM against GLM +27.26 (level 1.502), GBM +26.83 (level 1.537), BAG +24.24 (level 1.497)
+      BAG against GLM +26.03 (level 1.463), GBM +25.47 (level 1.497), BAG +23.47 (level 1.469)
+    GLM or GBM only: dominant GBM; equilibria (GBM, GBM); no conflict; by partition: GBM the better reply to GLM in 6 of 6, to GBM in 6 of 6, (GLM, GLM) pays more than (GBM, GBM) in 0 of 6
+    all three classes: dominant GBM; equilibria (GBM, GBM)
+  books of 200,000:
+      GLM against GLM +14.28 (level 1.286), GBM +18.91 (level 1.448), BAG +16.74 (level 1.418)
+      GBM against GLM +25.89 (level 1.448), GBM +22.18 (level 1.444), BAG +20.55 (level 1.421)
+      BAG against GLM +25.05 (level 1.418), GBM +21.55 (level 1.421), BAG +19.90 (level 1.398)
+    GLM or GBM only: dominant GBM; equilibria (GBM, GBM); no conflict; by partition: GBM the better reply to GLM in 6 of 6, to GBM in 6 of 6, (GLM, GLM) pays more than (GBM, GBM) in 0 of 6
+    all three classes: dominant GBM; equilibria (GBM, GBM)
+
+==============================================================================
+freMTPL2: two insurers, curse-aware price competition, beta 5: payoff of the row insurer against the column insurer, in percent of the test sample's claims (mean of 12 plays), and the price level policyholders pay
+==============================================================================
+  books of 20,000:
+      GLM against GLM +49.40 (level 1.988), GBM +77.11 (level 2.506), BAG +68.56 (level 2.367)
+      GBM against GLM +73.47 (level 2.506), GBM +96.08 (level 2.922), BAG +84.71 (level 2.723)
+      BAG against GLM +68.15 (level 2.367), GBM +87.61 (level 2.723), BAG +74.81 (level 2.496)
+    GLM or GBM only: dominant GBM; equilibria (GBM, GBM); no conflict; by partition: GBM the better reply to GLM in 6 of 6, to GBM in 6 of 6, (GLM, GLM) pays more than (GBM, GBM) in 0 of 6
+    all three classes: dominant GBM; equilibria (GBM, GBM)
+  books of 50,000:
+      GLM against GLM +40.09 (level 1.802), GBM +56.12 (level 2.128), BAG +51.39 (level 2.050)
+      GBM against GLM +56.68 (level 2.128), GBM +64.03 (level 2.281), BAG +58.89 (level 2.193)
+      BAG against GLM +53.64 (level 2.050), GBM +60.45 (level 2.193), BAG +55.88 (level 2.118)
+    GLM or GBM only: dominant GBM; equilibria (GBM, GBM); no conflict; by partition: GBM the better reply to GLM in 6 of 6, to GBM in 6 of 6, (GLM, GLM) pays more than (GBM, GBM) in 0 of 6
+    all three classes: dominant GBM; equilibria (GBM, GBM)
+  books of 100,000:
+      GLM against GLM +37.35 (level 1.747), GBM +47.31 (level 1.979), BAG +44.29 (level 1.931)
+      GBM against GLM +50.59 (level 1.979), GBM +51.06 (level 2.021), BAG +48.08 (level 1.972)
+      BAG against GLM +48.79 (level 1.931), GBM +49.14 (level 1.972), BAG +46.44 (level 1.929)
+    GLM or GBM only: dominant GBM; equilibria (GBM, GBM); no conflict; by partition: GBM the better reply to GLM in 6 of 6, to GBM in 6 of 6, (GLM, GLM) pays more than (GBM, GBM) in 0 of 6
+    all three classes: dominant GBM; equilibria (GBM, GBM)
+  books of 200,000:
+      GLM against GLM +35.42 (level 1.708), GBM +43.21 (level 1.918), BAG +40.63 (level 1.876)
+      GBM against GLM +48.56 (level 1.918), GBM +45.08 (level 1.902), BAG +43.14 (level 1.871)
+      BAG against GLM +46.97 (level 1.876), GBM +43.99 (level 1.871), BAG +42.01 (level 1.840)
+    GLM or GBM only: dominant GBM; equilibria (GBM, GBM); no conflict; by partition: GBM the better reply to GLM in 6 of 6, to GBM in 6 of 6, (GLM, GLM) pays more than (GBM, GBM) in 0 of 6
+    all three classes: dominant GBM; equilibria (GBM, GBM)
+
+==============================================================================
+freMTPL2: two insurers, curse-aware price competition, beta 20: payoff of the row insurer against the column insurer, in percent of the test sample's claims (mean of 12 plays), and the price level policyholders pay
+==============================================================================
+  books of 20,000:
+      GLM against GLM +20.53 (level 1.411), GBM +40.50 (level 1.770), BAG +33.56 (level 1.672)
+      GBM against GLM +36.46 (level 1.770), GBM +51.85 (level 2.037), BAG +43.96 (level 1.910)
+      BAG against GLM +33.65 (level 1.672), GBM +47.06 (level 1.910), BAG +38.00 (level 1.760)
+    GLM or GBM only: dominant GBM; equilibria (GBM, GBM); no conflict; by partition: GBM the better reply to GLM in 6 of 6, to GBM in 6 of 6, (GLM, GLM) pays more than (GBM, GBM) in 0 of 6
+    all three classes: dominant GBM; equilibria (GBM, GBM)
+  books of 50,000:
+      GLM against GLM +11.56 (level 1.231), GBM +24.26 (level 1.497), BAG +20.81 (level 1.450)
+      GBM against GLM +25.44 (level 1.497), GBM +30.61 (level 1.612), BAG +26.51 (level 1.547)
+      BAG against GLM +24.17 (level 1.450), GBM +28.21 (level 1.547), BAG +24.78 (level 1.496)
+    GLM or GBM only: dominant GBM; equilibria (GBM, GBM); no conflict; by partition: GBM the better reply to GLM in 6 of 6, to GBM in 6 of 6, (GLM, GLM) pays more than (GBM, GBM) in 0 of 6
+    all three classes: dominant GBM; equilibria (GBM, GBM)
+  books of 100,000:
+      GLM against GLM +9.31 (level 1.186), GBM +16.58 (level 1.381), BAG +13.65 (level 1.336)
+      GBM against GLM +21.54 (level 1.381), GBM +20.78 (level 1.416), BAG +18.01 (level 1.373)
+      BAG against GLM +19.99 (level 1.336), GBM +19.26 (level 1.373), BAG +17.48 (level 1.350)
+    GLM or GBM only: dominant GBM; equilibria (GBM, GBM); no conflict; by partition: GBM the better reply to GLM in 6 of 6, to GBM in 6 of 6, (GLM, GLM) pays more than (GBM, GBM) in 0 of 6
+    all three classes: dominant GBM; equilibria (GBM, GBM)
+  books of 200,000:
+      GLM against GLM +7.58 (level 1.152), GBM +12.18 (level 1.323), BAG +10.32 (level 1.300)
+      GBM against GLM +20.08 (level 1.323), GBM +16.45 (level 1.329), BAG +14.59 (level 1.302)
+      BAG against GLM +19.70 (level 1.300), GBM +15.63 (level 1.302), BAG +13.85 (level 1.277)
+    GLM or GBM only: dominant GBM; equilibria (GBM, GBM); no conflict; by partition: GBM the better reply to GLM in 6 of 6, to GBM in 6 of 6, (GLM, GLM) pays more than (GBM, GBM) in 0 of 6
+    all three classes: dominant GBM; equilibria (GBM, GBM)
+
+==============================================================================
+freMTPL2: two insurers, naive price competition (own tariff taken as the cost), beta 10: payoff of the row insurer against the column insurer, in percent of the test sample's claims (mean of 12 plays), and the price level policyholders pay
+==============================================================================
+  books of 20,000:
+      GLM against GLM +27.46 (level 1.549), GBM +46.86 (level 1.901), BAG +40.54 (level 1.814)
+      GBM against GLM +43.27 (level 1.901), GBM +56.69 (level 2.134), BAG +49.55 (level 2.022)
+      BAG against GLM +40.82 (level 1.814), GBM +52.66 (level 2.022), BAG +43.59 (level 1.872)
+    GLM or GBM only: dominant GBM; equilibria (GBM, GBM); no conflict; by partition: GBM the better reply to GLM in 6 of 6, to GBM in 6 of 6, (GLM, GLM) pays more than (GBM, GBM) in 0 of 6
+    all three classes: dominant GBM; equilibria (GBM, GBM)
+  books of 50,000:
+      GLM against GLM +19.38 (level 1.388), GBM +30.91 (level 1.633), BAG +27.41 (level 1.581)
+      GBM against GLM +32.35 (level 1.633), GBM +35.53 (level 1.711), BAG +32.20 (level 1.660)
+      BAG against GLM +30.72 (level 1.581), GBM +33.76 (level 1.660), BAG +30.52 (level 1.610)
+    GLM or GBM only: dominant GBM; equilibria (GBM, GBM); no conflict; by partition: GBM the better reply to GLM in 6 of 6, to GBM in 6 of 6, (GLM, GLM) pays more than (GBM, GBM) in 0 of 6
+    all three classes: dominant GBM; equilibria (GBM, GBM)
+  books of 100,000:
+      GLM against GLM +16.81 (level 1.336), GBM +23.63 (level 1.519), BAG +21.40 (level 1.488)
+      GBM against GLM +28.31 (level 1.519), GBM +27.07 (level 1.541), BAG +24.68 (level 1.505)
+      BAG against GLM +27.38 (level 1.488), GBM +25.83 (level 1.505), BAG +23.47 (level 1.469)
+    GLM or GBM only: dominant GBM; equilibria (GBM, GBM); no conflict; by partition: GBM the better reply to GLM in 6 of 6, to GBM in 6 of 6, (GLM, GLM) pays more than (GBM, GBM) in 0 of 6
+    all three classes: dominant GBM; equilibria (GBM, GBM)
+  books of 200,000:
+      GLM against GLM +15.10 (level 1.302), GBM +19.92 (level 1.471), BAG +18.06 (level 1.447)
+      GBM against GLM +27.18 (level 1.471), GBM +22.30 (level 1.446), BAG +20.80 (level 1.425)
+      BAG against GLM +26.62 (level 1.447), GBM +21.74 (level 1.425), BAG +20.25 (level 1.405)
+    GLM or GBM only: dominant GBM; equilibria (GBM, GBM); no conflict; by partition: GBM the better reply to GLM in 6 of 6, to GBM in 6 of 6, (GLM, GLM) pays more than (GBM, GBM) in 0 of 6
+    all three classes: dominant GBM; equilibria (GBM, GBM)
+
+==============================================================================
+freMTPL2: two insurers, rate reviews to break-even (beta 10): share of the row insurer, and the price level
+==============================================================================
+  books of 20,000:
+      GLM against GLM share 0.500 profit -0.07 level 0.999, GBM share 0.647 profit -0.21 level 1.000, BAG share 0.515 profit -0.43 level 1.000
+      GBM against GLM share 0.353 profit +0.12 level 0.998, GBM share 0.500 profit -0.00 level 1.000, BAG share 0.409 profit -0.24 level 1.000
+      BAG against GLM share 0.485 profit +0.39 level 0.999, GBM share 0.591 profit +0.21 level 1.000, BAG share 0.500 profit -0.02 level 1.000
+  books of 50,000:
+      GLM against GLM share 0.500 profit -0.09 level 0.998, GBM share 0.468 profit -0.58 level 1.000, BAG share 0.379 profit -0.45 level 1.000
+      GBM against GLM share 0.532 profit +0.54 level 0.999, GBM share 0.500 profit +0.04 level 1.001, BAG share 0.443 profit +0.14 level 1.001
+      BAG against GLM share 0.621 profit +0.42 level 1.000, GBM share 0.557 profit -0.06 level 1.001, BAG share 0.500 profit +0.05 level 1.001
+  books of 100,000:
+      GLM against GLM share 0.500 profit -0.08 level 0.998, GBM share 0.284 profit -0.36 level 1.000, BAG share 0.203 profit -0.30 level 1.000
+      GBM against GLM share 0.716 profit +0.36 level 1.000, GBM share 0.500 profit +0.05 level 1.001, BAG share 0.455 profit +0.06 level 1.001
+      BAG against GLM share 0.797 profit +0.28 level 1.000, GBM share 0.545 profit +0.01 level 1.000, BAG share 0.500 profit +0.03 level 1.001
+  books of 200,000:
+      GLM against GLM share 0.500 profit -0.08 level 0.998, GBM share 0.049 profit +0.03 level 1.001, BAG share 0.001 profit -0.01 level 1.001
+      GBM against GLM share 0.951 profit +0.03 level 1.001, GBM share 0.500 profit +0.05 level 1.001, BAG share 0.481 profit -0.14 level 1.001
+      BAG against GLM share 0.999 profit +0.07 level 1.000, GBM share 0.519 profit +0.24 level 1.001, BAG share 0.500 profit +0.05 level 1.001
+
+==============================================================================
+freMTPL2: four insurers choosing between GLM and GBM: payoff of a boosting and of a GLM insurer, in percent of the test sample's claims, by the number j of boosting insurers (mean over 6 partitions)
+==============================================================================
+  books of 20,000, aware, beta 10: j=0: GLM +4.33, market +17.33, level 1.173; j=1: boosting +3.91, GLM +5.10, market +19.20, level 1.192; j=2: boosting +4.65, GLM +6.18, market +21.65, level 1.217; j=3: boosting +5.85, GLM +7.47, market +25.02, level 1.250; j=4: boosting +6.99, market +27.95, level 1.280
+      equilibria at j = 0; switching one insurer at a time from an all-GLM market: j = 0; the reverse: all GLM is an equilibrium, all boosting would pay every insurer more; by partition: the reverse in 6 of 6
+  books of 20,000, aware, beta 20: j=0: GLM +2.77, market +11.09, level 1.111; j=1: boosting +2.71, GLM +3.53, market +13.31, level 1.133; j=2: boosting +3.44, GLM +4.80, market +16.48, level 1.165; j=3: boosting +4.74, GLM +6.35, market +20.59, level 1.206; j=4: boosting +5.76, market +23.06, level 1.231
+      equilibria at j = 0; switching one insurer at a time from an all-GLM market: j = 0; the reverse: all GLM is an equilibrium, all boosting would pay every insurer more; by partition: no conflict in 4 of 6, the reverse in 2 of 6
+  books of 20,000, naive, beta 10: j=0: GLM +1.53, market +6.11, level 1.061; j=1: boosting +0.34, GLM +0.89, market +3.01, level 1.030; j=2: boosting -0.12, GLM +0.51, market +0.78, level 1.008; j=3: boosting -0.28, GLM +0.38, market -0.46, level 0.995; j=4: boosting -0.42, market -1.66, level 0.983
+      equilibria at j = 0; switching one insurer at a time from an all-GLM market: j = 0; no conflict: the equilibrium pays every insurer at least as much as the other uniform market; by partition: no conflict in 6 of 6
+  books of 20,000, naive, beta 20: j=0: GLM -0.09, market -0.36, level 0.996; j=1: boosting -0.88, GLM -0.64, market -2.80, level 0.972; j=2: boosting -1.28, GLM -0.90, market -4.38, level 0.956; j=3: boosting -1.38, GLM -0.83, market -4.96, level 0.950; j=4: boosting -1.49, market -5.94, level 0.941
+      equilibria at j = 0; switching one insurer at a time from an all-GLM market: j = 0; no conflict: the equilibrium pays every insurer at least as much as the other uniform market; by partition: no conflict in 6 of 6
+  books of 50,000, aware, beta 10: j=0: GLM +3.81, market +15.22, level 1.152; j=1: boosting +5.00, GLM +3.91, market +16.73, level 1.167; j=2: boosting +5.00, GLM +3.91, market +17.81, level 1.178; j=3: boosting +5.07, GLM +3.58, market +18.79, level 1.188; j=4: boosting +5.02, market +20.08, level 1.201
+      equilibria at j = 4; switching one insurer at a time from an all-GLM market: j = 0 -> 1 -> 2 -> 3 -> 4; no conflict: the equilibrium pays every insurer at least as much as the other uniform market; by partition: no conflict in 6 of 6
+  books of 50,000, aware, beta 20: j=0: GLM +2.07, market +8.27, level 1.083; j=1: boosting +3.79, GLM +2.18, market +10.32, level 1.103; j=2: boosting +3.55, GLM +2.11, market +11.32, level 1.113; j=3: boosting +3.69, GLM +1.92, market +12.98, level 1.130; j=4: boosting +3.69, market +14.77, level 1.148
+      equilibria at j = 4; switching one insurer at a time from an all-GLM market: j = 0 -> 1 -> 2 -> 3 -> 4; no conflict: the equilibrium pays every insurer at least as much as the other uniform market; by partition: no conflict in 6 of 6
+  books of 50,000, naive, beta 10: j=0: GLM +2.32, market +9.26, level 1.093; j=1: boosting +2.59, GLM +1.11, market +5.92, level 1.059; j=2: boosting +1.53, GLM +0.21, market +3.47, level 1.035; j=3: boosting +0.99, GLM -0.49, market +2.48, level 1.025; j=4: boosting +0.46, market +1.85, level 1.019
+      equilibria at j = 4; switching one insurer at a time from an all-GLM market: j = 0 -> 1 -> 2 -> 3 -> 4; prisoner's dilemma: all boosting is an equilibrium, all GLM would pay every insurer more; by partition: prisoner's dilemma in 6 of 6
+  books of 50,000, naive, beta 20: j=0: GLM +0.29, market +1.17, level 1.012; j=1: boosting +1.16, GLM -0.83, market -1.34, level 0.987; j=2: boosting +0.08, GLM -1.61, market -3.07, level 0.969; j=3: boosting -0.41, GLM -2.05, market -3.29, level 0.967; j=4: boosting -0.94, market -3.78, level 0.962
+      equilibria at j = 4; switching one insurer at a time from an all-GLM market: j = 0 -> 1 -> 2 -> 3 -> 4; prisoner's dilemma: all boosting is an equilibrium, all GLM would pay every insurer more; by partition: prisoner's dilemma in 6 of 6
+  books of 100,000, aware, beta 10: j=0: GLM +3.91, market +15.64, level 1.156; j=1: boosting +6.24, GLM +3.69, market +17.29, level 1.173; j=2: boosting +5.79, GLM +2.94, market +17.46, level 1.175; j=3: boosting +4.96, GLM +1.62, market +16.51, level 1.165; j=4: boosting +4.38, market +17.51, level 1.175
+      equilibria at j = 4; switching one insurer at a time from an all-GLM market: j = 0 -> 1 -> 2 -> 3 -> 4; no conflict: the equilibrium pays every insurer at least as much as the other uniform market; by partition: no conflict in 6 of 6
+  books of 100,000, aware, beta 20: j=0: GLM +1.91, market +7.62, level 1.076; j=1: boosting +4.89, GLM +1.71, market +10.01, level 1.100; j=2: boosting +4.62, GLM +0.99, market +11.22, level 1.112; j=3: boosting +3.60, GLM -0.18, market +10.62, level 1.106; j=4: boosting +2.82, market +11.29, level 1.113
+      equilibria at j = 4; switching one insurer at a time from an all-GLM market: j = 0 -> 1 -> 2 -> 3 -> 4; no conflict: the equilibrium pays every insurer at least as much as the other uniform market; by partition: no conflict in 6 of 6
+  books of 100,000, naive, beta 10: j=0: GLM +2.86, market +11.42, level 1.114; j=1: boosting +3.84, GLM +1.29, market +7.70, level 1.077; j=2: boosting +2.54, GLM -0.02, market +5.05, level 1.051; j=3: boosting +1.83, GLM -1.26, market +4.24, level 1.042; j=4: boosting +1.05, market +4.22, level 1.042
+      equilibria at j = 4; switching one insurer at a time from an all-GLM market: j = 0 -> 1 -> 2 -> 3 -> 4; prisoner's dilemma: all boosting is an equilibrium, all GLM would pay every insurer more; by partition: prisoner's dilemma in 6 of 6
+  books of 100,000, naive, beta 20: j=0: GLM +0.70, market +2.78, level 1.028; j=1: boosting +2.33, GLM -0.84, market -0.18, level 0.998; j=2: boosting +0.99, GLM -2.11, market -2.24, level 0.978; j=3: boosting +0.26, GLM -3.15, market -2.36, level 0.976; j=4: boosting -0.59, market -2.37, level 0.976
+      equilibria at j = 4; switching one insurer at a time from an all-GLM market: j = 0 -> 1 -> 2 -> 3 -> 4; prisoner's dilemma: all boosting is an equilibrium, all GLM would pay every insurer more; by partition: prisoner's dilemma in 6 of 6
+
+==============================================================================
+freMTPL2: checks
+==============================================================================
+  aware: settled in 1223 of 1224 plays
+  naive: settled in 792 of 792 plays
+  review: settled in 213 of 216 plays
+  plays that did not settle: 
+    aware, beta 20, four insurers, books of 20,000, classes GBM/GBM/GBM/GBM, partition 1: levels [1.935, 1.771, 1.9, 2.054], shares [0.228, 0.298, 0.199, 0.276]
+    review, beta 10, two insurers, books of 100,000, BAG on book 1 against GLM on book 2, partition 1: levels [0.969, 3.598], shares [0.999, 0.001]
+    review, beta 10, two insurers, books of 200,000, GLM on book 1 against GBM on book 2, partition 3: levels [1.948, 1.0], shares [0.024, 0.976]
+    review, beta 10, two insurers, books of 200,000, GLM on book 1 against BAG on book 2, partition 3: levels [3.666, 1.001], shares [0.0, 1.0]
+  aware, partition 1, beta 10, two insurers (36 plays): largest gain any insurer could make by moving its own level on a grid of +-0.5 around the equilibrium, in percent of the claims: below 1e-6
+  aware, partition 1, beta 10, four insurers (48 plays): largest gain any insurer could make by moving its own level on a grid of +-0.5 around the equilibrium, in percent of the claims: below 1e-6
+  naive, partition 1, beta 10, two insurers (36 plays): largest gain any insurer could make by moving its own level on a grid of +-0.5 around the equilibrium, in percent of the claims: below 1e-6
+  naive, partition 1, beta 10, four insurers (48 plays): largest gain any insurer could make by moving its own level on a grid of +-0.5 around the equilibrium, in percent of the claims: below 1e-6
+
+==============================================================================
+beMTPL97: the mechanism, with tariffs that differ only in noise (beta 10; cost = the GLM rate on the whole training pool; calibration sample, 32,642 policies)
+==============================================================================
+  2 insurers, aware: sigma 0.0: profit per insurer +12.50, level 1.250; sigma 0.1: profit per insurer +15.73, level 1.315; sigma 0.2: profit per insurer +23.56, level 1.471; sigma 0.3: profit per insurer +35.72, level 1.714; sigma 0.4: profit per insurer +53.85, level 2.077
+  2 insurers, naive: sigma 0.0: profit per insurer +12.50, level 1.250; sigma 0.1: profit per insurer +15.69, level 1.314; sigma 0.2: profit per insurer +23.10, level 1.462; sigma 0.3: profit per insurer +34.26, level 1.685; sigma 0.4: profit per insurer +50.46, level 2.009
+  4 insurers, aware: sigma 0.0: profit per insurer +3.85, level 1.154; sigma 0.1: profit per insurer +4.05, level 1.162; sigma 0.2: profit per insurer +4.63, level 1.185; sigma 0.3: profit per insurer +5.64, level 1.226; sigma 0.4: profit per insurer +6.98, level 1.279
+  4 insurers, naive: sigma 0.0: profit per insurer +3.85, level 1.154; sigma 0.1: profit per insurer +3.01, level 1.120; sigma 0.2: profit per insurer +1.80, level 1.072; sigma 0.3: profit per insurer +0.79, level 1.032; sigma 0.4: profit per insurer -0.11, level 0.996
+  two insurers, aware: payoff of the row insurer, by the noise in its own tariff (rows) and in its competitor's (columns):
+      sigma 0.1 against 0.1 +15.74, 0.2 +21.79, 0.3 +29.91
+      sigma 0.2 against 0.1 +17.59, 0.2 +23.57, 0.3 +31.88
+      sigma 0.3 against 0.1 +21.19, 0.2 +27.16, 0.3 +35.74
+
+==============================================================================
+beMTPL97: the models alone (test sample; books 1 and 2 of each partition, 12 fits per cell)
+==============================================================================
+Training pool 97,927; calibration 32,642; test 32,643 policies (28,984.8 policy-years, 4,004 claims); 6 partitions
+  books of   5,000: GLM Gini 0.177 deviance 602.34 twin sigma 0.221; GBM Gini 0.152 deviance 610.61 twin sigma 0.349; BAG Gini 0.170 deviance 602.51 twin sigma 0.232
+      GBM above GLM in Gini in 1 of 12, below in deviance in 1; BAG above GLM in Gini in 1, below in deviance in 6
+  books of  12,000: GLM Gini 0.194 deviance 597.88 twin sigma 0.138; GBM Gini 0.165 deviance 605.12 twin sigma 0.304; BAG Gini 0.180 deviance 599.99 twin sigma 0.219
+      GBM above GLM in Gini in 0 of 12, below in deviance in 0; BAG above GLM in Gini in 0, below in deviance in 0
+  books of  24,000: GLM Gini 0.202 deviance 596.31 twin sigma 0.116; GBM Gini 0.185 deviance 599.55 twin sigma 0.228; BAG Gini 0.191 deviance 597.95 twin sigma 0.200
+      GBM above GLM in Gini in 0 of 12, below in deviance in 0; BAG above GLM in Gini in 0, below in deviance in 1
+  books of  48,000: GLM Gini 0.207 deviance 595.33 twin sigma 0.079; GBM Gini 0.199 deviance 596.95 twin sigma 0.181; BAG Gini 0.206 deviance 595.30 twin sigma 0.152
+      GBM above GLM in Gini in 0 of 12, below in deviance in 0; BAG above GLM in Gini in 3, below in deviance in 7
+
+==============================================================================
+beMTPL97: two insurers, curse-aware price competition, beta 10: payoff of the row insurer against the column insurer, in percent of the test sample's claims (mean of 12 plays), and the price level policyholders pay
+==============================================================================
+  books of 5,000:
+      GLM against GLM +23.45 (level 1.469), GBM +39.05 (level 1.727), BAG +27.39 (level 1.543)
+      GBM against GLM +33.66 (level 1.727), GBM +40.86 (level 1.817), BAG +31.69 (level 1.687)
+      BAG against GLM +26.91 (level 1.543), GBM +36.97 (level 1.687), BAG +27.22 (level 1.544)
+    GLM or GBM only: dominant GBM; equilibria (GBM, GBM); no conflict; by partition: GBM the better reply to GLM in 6 of 6, to GBM in 5 of 6, (GLM, GLM) pays more than (GBM, GBM) in 0 of 6
+    all three classes: dominant GBM; equilibria (GBM, GBM)
+  books of 12,000:
+      GLM against GLM +18.08 (level 1.362), GBM +32.05 (level 1.586), BAG +24.92 (level 1.475)
+      GBM against GLM +26.54 (level 1.586), GBM +37.05 (level 1.741), BAG +29.20 (level 1.618)
+      BAG against GLM +22.61 (level 1.475), GBM +32.58 (level 1.618), BAG +25.44 (level 1.509)
+    GLM or GBM only: dominant GBM; equilibria (GBM, GBM); no conflict; by partition: GBM the better reply to GLM in 6 of 6, to GBM in 6 of 6, (GLM, GLM) pays more than (GBM, GBM) in 0 of 6
+    all three classes: dominant GBM; equilibria (GBM, GBM)
+  books of 24,000:
+      GLM against GLM +16.63 (level 1.333), GBM +24.48 (level 1.462), BAG +22.48 (level 1.434)
+      GBM against GLM +21.71 (level 1.462), GBM +26.16 (level 1.523), BAG +24.01 (level 1.490)
+      BAG against GLM +20.87 (level 1.434), GBM +24.98 (level 1.490), BAG +23.27 (level 1.465)
+    GLM or GBM only: dominant GBM; equilibria (GBM, GBM); no conflict; by partition: GBM the better reply to GLM in 6 of 6, to GBM in 5 of 6, (GLM, GLM) pays more than (GBM, GBM) in 0 of 6
+    all three classes: dominant GBM; equilibria (GBM, GBM)
+  books of 48,000:
+      GLM against GLM +14.74 (level 1.295), GBM +21.16 (level 1.409), BAG +19.27 (level 1.386)
+      GBM against GLM +19.73 (level 1.409), GBM +21.80 (level 1.436), BAG +19.87 (level 1.412)
+      BAG against GLM +19.35 (level 1.386), GBM +21.31 (level 1.412), BAG +19.36 (level 1.387)
+    GLM or GBM only: dominant GBM; equilibria (GBM, GBM); no conflict; by partition: GBM the better reply to GLM in 6 of 6, to GBM in 5 of 6, (GLM, GLM) pays more than (GBM, GBM) in 0 of 6
+    all three classes: dominant GBM; equilibria (GBM, GBM)
+
+==============================================================================
+beMTPL97: two insurers, curse-aware price competition, beta 5: payoff of the row insurer against the column insurer, in percent of the test sample's claims (mean of 12 plays), and the price level policyholders pay
+==============================================================================
+  books of 5,000:
+      GLM against GLM +46.43 (level 1.929), GBM +64.86 (level 2.251), BAG +50.88 (level 2.013)
+      GBM against GLM +60.27 (level 2.251), GBM +70.11 (level 2.402), BAG +57.91 (level 2.202)
+      BAG against GLM +50.46 (level 2.013), GBM +62.27 (level 2.202), BAG +50.41 (level 2.008)
+    GLM or GBM only: dominant GBM; equilibria (GBM, GBM); no conflict; by partition: GBM the better reply to GLM in 6 of 6, to GBM in 5 of 6, (GLM, GLM) pays more than (GBM, GBM) in 0 of 6
+    all three classes: dominant GBM; equilibria (GBM, GBM)
+  books of 12,000:
+      GLM against GLM +39.57 (level 1.791), GBM +55.69 (level 2.069), BAG +47.02 (level 1.923)
+      GBM against GLM +51.20 (level 2.069), GBM +63.13 (level 2.263), BAG +53.99 (level 2.108)
+      BAG against GLM +45.30 (level 1.923), GBM +56.81 (level 2.108), BAG +48.43 (level 1.969)
+    GLM or GBM only: dominant GBM; equilibria (GBM, GBM); no conflict; by partition: GBM the better reply to GLM in 6 of 6, to GBM in 6 of 6, (GLM, GLM) pays more than (GBM, GBM) in 0 of 6
+    all three classes: dominant GBM; equilibria (GBM, GBM)
+  books of 24,000:
+      GLM against GLM +37.80 (level 1.756), GBM +46.77 (level 1.913), BAG +44.50 (level 1.877)
+      GBM against GLM +44.54 (level 1.913), GBM +49.40 (level 1.988), BAG +47.11 (level 1.951)
+      BAG against GLM +43.20 (level 1.877), GBM +47.97 (level 1.951), BAG +45.85 (level 1.917)
+    GLM or GBM only: dominant GBM; equilibria (GBM, GBM); no conflict; by partition: GBM the better reply to GLM in 6 of 6, to GBM in 6 of 6, (GLM, GLM) pays more than (GBM, GBM) in 0 of 6
+    all three classes: dominant GBM; equilibria (GBM, GBM)
+  books of 48,000:
+      GLM against GLM +35.62 (level 1.712), GBM +43.13 (level 1.850), BAG +41.08 (level 1.820)
+      GBM against GLM +41.91 (level 1.850), GBM +44.13 (level 1.883), BAG +42.14 (level 1.854)
+      BAG against GLM +40.95 (level 1.820), GBM +43.22 (level 1.854), BAG +41.17 (level 1.823)
+    GLM or GBM only: dominant GBM; equilibria (GBM, GBM); no conflict; by partition: GBM the better reply to GLM in 6 of 6, to GBM in 6 of 6, (GLM, GLM) pays more than (GBM, GBM) in 0 of 6
+    all three classes: dominant GBM; equilibria (GBM, GBM)
+
+==============================================================================
+beMTPL97: two insurers, curse-aware price competition, beta 20: payoff of the row insurer against the column insurer, in percent of the test sample's claims (mean of 12 plays), and the price level policyholders pay
+==============================================================================
+  books of 5,000:
+      GLM against GLM +17.58 (level 1.352), GBM +33.26 (level 1.608), BAG +21.72 (level 1.429)
+      GBM against GLM +27.50 (level 1.608), GBM +33.30 (level 1.666), BAG +25.48 (level 1.566)
+      BAG against GLM +21.19 (level 1.429), GBM +31.08 (level 1.566), BAG +21.35 (level 1.427)
+    GLM or GBM only: dominant GBM; equilibria (GBM, GBM); no conflict; by partition: GBM the better reply to GLM in 6 of 6, to GBM in 4 of 6, (GLM, GLM) pays more than (GBM, GBM) in 0 of 6
+    all three classes: dominant GBM; equilibria (GBM, GBM)
+  books of 12,000:
+      GLM against GLM +12.00 (level 1.240), GBM +26.21 (level 1.465), BAG +19.68 (level 1.366)
+      GBM against GLM +20.25 (level 1.465), GBM +31.29 (level 1.626), BAG +23.39 (level 1.504)
+      BAG against GLM +16.91 (level 1.366), GBM +26.97 (level 1.504), BAG +19.77 (level 1.395)
+    GLM or GBM only: dominant GBM; equilibria (GBM, GBM); no conflict; by partition: GBM the better reply to GLM in 6 of 6, to GBM in 6 of 6, (GLM, GLM) pays more than (GBM, GBM) in 0 of 6
+    all three classes: dominant GBM; equilibria (GBM, GBM)
+  books of 24,000:
+      GLM against GLM +10.46 (level 1.209), GBM +18.62 (level 1.342), BAG +16.78 (level 1.318)
+      GBM against GLM +15.57 (level 1.342), GBM +20.39 (level 1.408), BAG +17.93 (level 1.368)
+      BAG against GLM +14.99 (level 1.318), GBM +18.84 (level 1.368), BAG +17.78 (level 1.356)
+    GLM or GBM only: dominant GBM; equilibria (GBM, GBM); no conflict; by partition: GBM the better reply to GLM in 6 of 6, to GBM in 5 of 6, (GLM, GLM) pays more than (GBM, GBM) in 0 of 6
+    all three classes: dominant GBM; equilibria (GBM, GBM)
+  books of 48,000:
+      GLM against GLM +8.29 (level 1.166), GBM +15.03 (level 1.286), BAG +13.00 (level 1.263)
+      GBM against GLM +13.56 (level 1.286), GBM +15.92 (level 1.318), BAG +13.62 (level 1.288)
+      BAG against GLM +13.29 (level 1.263), GBM +15.21 (level 1.288), BAG +13.20 (level 1.264)
+    GLM or GBM only: dominant GBM; equilibria (GBM, GBM); no conflict; by partition: GBM the better reply to GLM in 6 of 6, to GBM in 5 of 6, (GLM, GLM) pays more than (GBM, GBM) in 0 of 6
+    all three classes: dominant GBM; equilibria (GBM, GBM)
+
+==============================================================================
+beMTPL97: two insurers, naive price competition (own tariff taken as the cost), beta 10: payoff of the row insurer against the column insurer, in percent of the test sample's claims (mean of 12 plays), and the price level policyholders pay
+==============================================================================
+  books of 5,000:
+      GLM against GLM +22.66 (level 1.453), GBM +36.92 (level 1.684), BAG +26.07 (level 1.517)
+      GBM against GLM +31.52 (level 1.684), GBM +39.21 (level 1.784), BAG +29.77 (level 1.649)
+      BAG against GLM +25.59 (level 1.517), GBM +35.13 (level 1.649), BAG +25.51 (level 1.510)
+    GLM or GBM only: dominant GBM; equilibria (GBM, GBM); no conflict; by partition: GBM the better reply to GLM in 6 of 6, to GBM in 5 of 6, (GLM, GLM) pays more than (GBM, GBM) in 0 of 6
+    all three classes: dominant GBM; equilibria (GBM, GBM)
+  books of 12,000:
+      GLM against GLM +18.35 (level 1.367), GBM +31.96 (level 1.585), BAG +24.73 (level 1.472)
+      GBM against GLM +26.49 (level 1.585), GBM +35.98 (level 1.720), BAG +29.09 (level 1.615)
+      BAG against GLM +22.44 (level 1.472), GBM +32.38 (level 1.615), BAG +25.41 (level 1.508)
+    GLM or GBM only: dominant GBM; equilibria (GBM, GBM); no conflict; by partition: GBM the better reply to GLM in 6 of 6, to GBM in 6 of 6, (GLM, GLM) pays more than (GBM, GBM) in 0 of 6
+    all three classes: dominant GBM; equilibria (GBM, GBM)
+  books of 24,000:
+      GLM against GLM +17.24 (level 1.345), GBM +24.88 (level 1.471), BAG +22.88 (level 1.443)
+      GBM against GLM +22.22 (level 1.471), GBM +26.03 (level 1.521), BAG +24.36 (level 1.497)
+      BAG against GLM +21.39 (level 1.443), GBM +25.35 (level 1.497), BAG +23.64 (level 1.473)
+    GLM or GBM only: dominant GBM; equilibria (GBM, GBM); no conflict; by partition: GBM the better reply to GLM in 6 of 6, to GBM in 6 of 6, (GLM, GLM) pays more than (GBM, GBM) in 0 of 6
+    all three classes: dominant GBM; equilibria (GBM, GBM)
+  books of 48,000:
+      GLM against GLM +14.95 (level 1.299), GBM +21.13 (level 1.409), BAG +19.31 (level 1.388)
+      GBM against GLM +19.80 (level 1.409), GBM +21.41 (level 1.428), BAG +19.71 (level 1.408)
+      BAG against GLM +19.46 (level 1.388), GBM +21.11 (level 1.408), BAG +19.33 (level 1.387)
+    GLM or GBM only: dominant GBM; equilibria (GBM, GBM); no conflict; by partition: GBM the better reply to GLM in 6 of 6, to GBM in 4 of 6, (GLM, GLM) pays more than (GBM, GBM) in 0 of 6
+    all three classes: dominant GBM; equilibria (GBM, GBM)
+
+==============================================================================
+beMTPL97: two insurers, rate reviews to break-even (beta 10): share of the row insurer, and the price level
+==============================================================================
+  books of 5,000:
+      GLM against GLM share 0.500 profit +0.24 level 1.005, GBM share 0.646 profit +0.79 level 1.005, BAG share 0.511 profit +0.52 level 1.006
+      GBM against GLM share 0.354 profit -0.24 level 1.006, GBM share 0.500 profit +0.35 level 1.007, BAG share 0.344 profit -0.03 level 1.007
+      BAG against GLM share 0.489 profit +0.09 level 1.006, GBM share 0.656 profit +0.74 level 1.007, BAG share 0.500 profit +0.39 level 1.008
+  books of 12,000:
+      GLM against GLM share 0.500 profit +0.18 level 1.004, GBM share 0.692 profit +0.37 level 1.004, BAG share 0.571 profit +0.53 level 1.005
+      GBM against GLM share 0.308 profit +0.06 level 1.004, GBM share 0.500 profit +0.25 level 1.005, BAG share 0.370 profit +0.31 level 1.006
+      BAG against GLM share 0.429 profit -0.04 level 1.004, GBM share 0.630 profit +0.24 level 1.005, BAG share 0.500 profit +0.29 level 1.006
+  books of 24,000:
+      GLM against GLM share 0.500 profit +0.18 level 1.004, GBM share 0.568 profit +0.66 level 1.005, BAG share 0.517 profit +0.65 level 1.005
+      GBM against GLM share 0.432 profit -0.18 level 1.005, GBM share 0.500 profit +0.28 level 1.006, BAG share 0.445 profit +0.37 level 1.005
+      BAG against GLM share 0.483 profit -0.18 level 1.005, GBM share 0.555 profit +0.17 level 1.005, BAG share 0.500 profit +0.26 level 1.005
+  books of 48,000:
+      GLM against GLM share 0.500 profit +0.18 level 1.004, GBM share 0.506 profit +0.71 level 1.005, BAG share 0.449 profit +0.59 level 1.005
+      GBM against GLM share 0.494 profit -0.20 level 1.005, GBM share 0.500 profit +0.27 level 1.005, BAG share 0.447 profit +0.13 level 1.006
+      BAG against GLM share 0.551 profit -0.04 level 1.005, GBM share 0.553 profit +0.41 level 1.005, BAG share 0.500 profit +0.28 level 1.006
+
+==============================================================================
+beMTPL97: four insurers choosing between GLM and GBM: payoff of a boosting and of a GLM insurer, in percent of the test sample's claims, by the number j of boosting insurers (mean over 6 partitions)
+==============================================================================
+  books of 5,000, aware, beta 10: j=0: GLM +4.55, market +18.21, level 1.182; j=1: boosting +3.54, GLM +5.40, market +19.75, level 1.197; j=2: boosting +4.27, GLM +6.59, market +21.72, level 1.217; j=3: boosting +5.33, GLM +8.02, market +24.01, level 1.240; j=4: boosting +6.34, market +25.37, level 1.254
+      equilibria at j = 0; switching one insurer at a time from an all-GLM market: j = 0; the reverse: all GLM is an equilibrium, all boosting would pay every insurer more; by partition: the reverse in 6 of 6
+  books of 5,000, aware, beta 20: j=0: GLM +3.03, market +12.13, level 1.121; j=1: boosting +2.21, GLM +3.86, market +13.78, level 1.138; j=2: boosting +2.95, GLM +5.36, market +16.61, level 1.166; j=3: boosting +4.28, GLM +7.16, market +20.01, level 1.200; j=4: boosting +5.53, market +22.11, level 1.221
+      equilibria at j = 0; switching one insurer at a time from an all-GLM market: j = 0; the reverse: all GLM is an equilibrium, all boosting would pay every insurer more; by partition: the reverse in 6 of 6
+  books of 5,000, naive, beta 10: j=0: GLM +1.51, market +6.03, level 1.060; j=1: boosting +0.07, GLM +1.55, market +4.71, level 1.047; j=2: boosting +0.08, GLM +1.76, market +3.69, level 1.037; j=3: boosting +0.27, GLM +2.20, market +3.00, level 1.030; j=4: boosting +0.59, market +2.36, level 1.024
+      equilibria at j = 0; switching one insurer at a time from an all-GLM market: j = 0; no conflict: the equilibrium pays every insurer at least as much as the other uniform market; by partition: no conflict in 6 of 6
+  books of 5,000, naive, beta 20: j=0: GLM -0.17, market -0.68, level 0.993; j=1: boosting -1.33, GLM -0.02, market -1.39, level 0.986; j=2: boosting -1.29, GLM +0.33, market -1.91, level 0.981; j=3: boosting -1.04, GLM +0.94, market -2.17, level 0.978; j=4: boosting -0.64, market -2.54, level 0.975
+      equilibria at j = 0; switching one insurer at a time from an all-GLM market: j = 0; no conflict: the equilibrium pays every insurer at least as much as the other uniform market; by partition: no conflict in 6 of 6
+  books of 12,000, aware, beta 10: j=0: GLM +4.45, market +17.81, level 1.178; j=1: boosting +2.90, GLM +5.40, market +19.10, level 1.191; j=2: boosting +3.66, GLM +6.69, market +20.71, level 1.207; j=3: boosting +4.81, GLM +8.27, market +22.71, level 1.227; j=4: boosting +6.12, market +24.47, level 1.245
+      equilibria at j = 0; switching one insurer at a time from an all-GLM market: j = 0; the reverse: all GLM is an equilibrium, all boosting would pay every insurer more; by partition: the reverse in 6 of 6
+  books of 12,000, aware, beta 20: j=0: GLM +2.82, market +11.28, level 1.113; j=1: boosting +1.61, GLM +3.70, market +12.70, level 1.127; j=2: boosting +2.23, GLM +5.14, market +14.74, level 1.147; j=3: boosting +3.45, GLM +7.23, market +17.58, level 1.176; j=4: boosting +5.11, market +20.42, level 1.204
+      equilibria at j = 0; switching one insurer at a time from an all-GLM market: j = 0; the reverse: all GLM is an equilibrium, all boosting would pay every insurer more; by partition: the reverse in 6 of 6
+  books of 12,000, naive, beta 10: j=0: GLM +2.66, market +10.65, level 1.106; j=1: boosting +0.43, GLM +2.52, market +8.00, level 1.080; j=2: boosting +0.40, GLM +2.59, market +5.98, level 1.060; j=3: boosting +0.59, GLM +2.93, market +4.71, level 1.047; j=4: boosting +0.91, market +3.62, level 1.036
+      equilibria at j = 0; switching one insurer at a time from an all-GLM market: j = 0; no conflict: the equilibrium pays every insurer at least as much as the other uniform market; by partition: no conflict in 6 of 6
+  books of 12,000, naive, beta 20: j=0: GLM +0.68, market +2.70, level 1.027; j=1: boosting -1.18, GLM +0.68, market +0.87, level 1.009; j=2: boosting -1.14, GLM +0.94, market -0.40, level 0.996; j=3: boosting -0.83, GLM +1.57, market -0.93, level 0.991; j=4: boosting -0.41, market -1.65, level 0.983
+      equilibria at j = 0; switching one insurer at a time from an all-GLM market: j = 0; no conflict: the equilibrium pays every insurer at least as much as the other uniform market; by partition: no conflict in 6 of 6
+  books of 24,000, aware, beta 10: j=0: GLM +4.20, market +16.81, level 1.168; j=1: boosting +3.40, GLM +4.67, market +17.42, level 1.174; j=2: boosting +3.79, GLM +5.22, market +18.02, level 1.180; j=3: boosting +4.29, GLM +5.82, market +18.69, level 1.187; j=4: boosting +4.78, market +19.12, level 1.191
+      equilibria at j = 0; switching one insurer at a time from an all-GLM market: j = 0; the reverse: all GLM is an equilibrium, all boosting would pay every insurer more; by partition: the reverse in 6 of 6
+  books of 24,000, aware, beta 20: j=0: GLM +2.29, market +9.18, level 1.092; j=1: boosting +1.75, GLM +2.73, market +9.94, level 1.099; j=2: boosting +2.10, GLM +3.45, market +11.10, level 1.111; j=3: boosting +2.66, GLM +4.29, market +12.28, level 1.123; j=4: boosting +3.29, market +13.17, level 1.132
+      equilibria at j = 0; switching one insurer at a time from an all-GLM market: j = 0; the reverse: all GLM is an equilibrium, all boosting would pay every insurer more; by partition: the reverse in 6 of 6
+  books of 24,000, naive, beta 10: j=0: GLM +3.08, market +12.32, level 1.123; j=1: boosting +1.78, GLM +2.72, market +9.95, level 1.099; j=2: boosting +1.52, GLM +2.55, market +8.15, level 1.081; j=3: boosting +1.48, GLM +2.65, market +7.09, level 1.071; j=4: boosting +1.59, market +6.34, level 1.063
+      equilibria at j = 0; switching one insurer at a time from an all-GLM market: j = 0; no conflict: the equilibrium pays every insurer at least as much as the other uniform market; by partition: no conflict in 6 of 6
+  books of 24,000, naive, beta 20: j=0: GLM +0.92, market +3.67, level 1.037; j=1: boosting -0.03, GLM +0.66, market +1.94, level 1.019; j=2: boosting -0.25, GLM +0.62, market +0.74, level 1.007; j=3: boosting -0.22, GLM +0.98, market +0.31, level 1.003; j=4: boosting -0.05, market -0.19, level 0.998
+      equilibria at j = 0; switching one insurer at a time from an all-GLM market: j = 0; no conflict: the equilibrium pays every insurer at least as much as the other uniform market; by partition: no conflict in 6 of 6
+
+==============================================================================
+beMTPL97: checks
+==============================================================================
+  aware: settled in 1222 of 1224 plays
+  naive: settled in 792 of 792 plays
+  review: settled in 216 of 216 plays
+  plays that did not settle: 
+    aware, beta 20, four insurers, books of 12,000, classes GLM/GBM/GLM/GBM, partition 3: levels [1.416, 1.703, 1.333, 1.991], shares [0.308, 0.214, 0.349, 0.129]
+    aware, beta 20, four insurers, books of 12,000, classes GLM/GBM/GLM/GBM, partition 5: levels [1.31, 1.502, 1.347, 1.655], shares [0.33, 0.192, 0.259, 0.219]
+  aware, partition 1, beta 10, two insurers (36 plays): largest gain any insurer could make by moving its own level on a grid of +-0.5 around the equilibrium, in percent of the claims: below 1e-6
+  aware, partition 1, beta 10, four insurers (48 plays): largest gain any insurer could make by moving its own level on a grid of +-0.5 around the equilibrium, in percent of the claims: below 1e-6
+  naive, partition 1, beta 10, two insurers (36 plays): largest gain any insurer could make by moving its own level on a grid of +-0.5 around the equilibrium, in percent of the claims: below 1e-6
+  naive, partition 1, beta 10, four insurers (48 plays): largest gain any insurer could make by moving its own level on a grid of +-0.5 around the equilibrium, in percent of the claims: below 1e-6
