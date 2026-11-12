@@ -121,3 +121,8 @@ Any change is listed here with its reason and date, and marked in the article.
   answer within the limits; and the Chicago counts run in their own job, in parallel with the Citi Bike
   counting. What is counted is unchanged. A month whose count the portal does not return after three tries is
   left out and listed.
+- 12 November 2026, second Chicago run (cancelled again before anything was written out; its log showed only
+  which months had answered): each monthly count is now allowed 15 minutes instead of 3, two months are
+  counted at a time, every answer is kept so that a rerun resumes, and the months still missing are tried in
+  up to three passes. A month with no answer after the last pass is left out and listed. What is counted is
+  unchanged.

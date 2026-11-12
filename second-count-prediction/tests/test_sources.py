@@ -54,3 +54,26 @@ def test_dot_table_from_xlsx():
 def test_month_helpers():
     assert S.month_range("2024-11", "2025-02") == ["2024-11", "2024-12", "2025-01", "2025-02"]
     assert S.next_month("2024-12") == "2025-01"
+
+
+def test_chicago_trips_resumes_and_retries(tmp_path, monkeypatch):
+    calls = []
+
+    def fake(ds, m):
+        calls.append((ds, m))
+        if m == "2018-12" and calls.count((ds, m)) == 1:
+            raise RuntimeError("no answer")
+        return 10
+
+    monkeypatch.setattr(S, "TRIPS", {"a": ("2018-11", "2019-01")})
+    monkeypatch.setattr(S, "count_month", fake)
+    monkeypatch.setattr(S, "log", lambda msg: None)
+    prog = tmp_path / "p.json"
+    prog.write_text('{"a 2018-11": 7}')
+    out = S.chicago_trips("2026-11", prog, passes=2, workers=1)
+    assert out == {
+        "2018-11": {"trips": 7, "datasets": ["a"]},
+        "2018-12": {"trips": 10, "datasets": ["a"]},
+        "2019-01": {"trips": 10, "datasets": ["a"]},
+    }
+    assert ("a", "2018-11") not in calls and calls.count(("a", "2018-12")) == 2

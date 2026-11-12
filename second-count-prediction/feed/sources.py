@@ -183,24 +183,47 @@ def next_month(month: str) -> str:
     return f"{y + (m == 12):04d}-{m % 12 + 1:02d}"
 
 
-def chicago_trips(today: str) -> dict[str, dict]:
-    """Trips by month of trip start: one count(*) per month and dataset (PLAN.md, change of 12 November)."""
+def count_month(ds: str, m: str) -> int:
+    lo, hi = f"{m}-01T00:00:00", f"{next_month(m)}-01T00:00:00"
+    where = f"trip_start_timestamp >= '{lo}' AND trip_start_timestamp < '{hi}'"
+    rows = soql(ds, tries=1, timeout=900, select="count(*) AS n", where=where)
+    return int(rows[0]["n"]) if rows else 0
+
+
+def chicago_trips(today: str, progress: Path | None = None, passes: int = 3, workers: int = 2) -> dict[str, dict]:
+    """Trips by month of trip start: one count(*) per month and dataset (PLAN.md, changes of 12 November).
+
+    The portal answers each count in seconds to minutes and sometimes not at all, so months are counted two at
+    a time, every answer is saved to ``progress`` at once (a rerun picks up from there), and the months still
+    missing are tried again in later passes. A month still missing after the last pass is left out and logged.
+    """
+    from concurrent.futures import ThreadPoolExecutor, as_completed
+
+    done: dict[str, int] = json.loads(progress.read_text(encoding="utf-8")) if progress and progress.exists() else {}
+    tasks = [(ds, m) for ds, (first, last) in TRIPS.items() for m in month_range(first, last or today)]
+    for p in range(passes):
+        todo = [t for t in tasks if f"{t[0]} {t[1]}" not in done]
+        if not todo:
+            break
+        log(f"chicago trips, pass {p + 1}: {len(todo)} months to count")
+        with ThreadPoolExecutor(workers) as ex:
+            futures = {ex.submit(count_month, ds, m): (ds, m) for ds, m in todo}
+            for f in as_completed(futures):
+                ds, m = futures[f]
+                try:
+                    done[f"{ds} {m}"] = f.result()
+                except (RuntimeError, ValueError, KeyError, IndexError):
+                    log(f"chicago {ds} {m}: no answer in pass {p + 1}")
+                    continue
+                if progress:
+                    progress.parent.mkdir(parents=True, exist_ok=True)
+                    progress.write_text(json.dumps(done, indent=1, sort_keys=True), encoding="utf-8")
     out: dict[str, dict] = {}
-    for ds, (first, last) in TRIPS.items():
-        got = {}
-        for m in month_range(first, last or today):
-            lo, hi = f"{m}-01T00:00:00", f"{next_month(m)}-01T00:00:00"
-            where = f"trip_start_timestamp >= '{lo}' AND trip_start_timestamp < '{hi}'"
-            try:
-                rows = soql(ds, select="count(*) AS n", where=where)
-            except RuntimeError:
-                log(f"chicago {ds} {m}: no answer, month left out")
-                continue
-            n = int(rows[0]["n"]) if rows else 0
-            if n > 0:
-                got[m] = n
-            log(f"chicago {ds} {m} counted")
-        for m, n in got.items():
+    for ds, m in tasks:
+        n = done.get(f"{ds} {m}")
+        if n is None:
+            log(f"chicago {ds} {m}: left out, no answer after {passes} passes")
+        elif n > 0:
             out.setdefault(m, {"trips": 0, "datasets": []})
             out[m]["trips"] += n
             out[m]["datasets"].append(ds)
@@ -293,7 +316,7 @@ def snapshot_citibike(out: Path, metadata_only: bool) -> None:
     log(f"values: {len(rows)} operating reports")
 
 
-def snapshot_chicago(out: Path, metadata_only: bool) -> None:
+def snapshot_chicago(out: Path, metadata_only: bool, progress: Path | None = None) -> None:
     meta = {
         "retrieved": dt.datetime.now(dt.UTC).isoformat(timespec="seconds"),
         "datasets": {ds: view_meta(ds) for ds in [*TRIPS, *PER_UNIT.values()]},
@@ -311,7 +334,7 @@ def snapshot_chicago(out: Path, metadata_only: bool) -> None:
             [[m, v["trips"], v["records"], v["with_trips"]] for m, v in sorted(per.items())],
         )
     log("chicago trips")
-    trips = chicago_trips(dt.date.today().isoformat()[:7])
+    trips = chicago_trips(dt.date.today().isoformat()[:7], progress)
     write_csv(
         out / "chicago_trips.csv",
         ["month", "trips", "datasets"],
@@ -326,12 +349,13 @@ def main() -> None:
     ap.add_argument("--out", type=Path, default=Path("sources"))
     ap.add_argument("--metadata-only", action="store_true")
     ap.add_argument("--only", choices=["citibike", "chicago"])
+    ap.add_argument("--progress", type=Path, help="file of Chicago month counts already fetched (resumes)")
     a = ap.parse_args()
     a.out.mkdir(parents=True, exist_ok=True)
     if a.only != "chicago":
         snapshot_citibike(a.out, a.metadata_only)
     if a.only != "citibike":
-        snapshot_chicago(a.out, a.metadata_only)
+        snapshot_chicago(a.out, a.metadata_only, a.progress)
 
 
 if __name__ == "__main__":
