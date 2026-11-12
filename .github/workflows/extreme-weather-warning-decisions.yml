@@ -48,3 +48,4 @@ jobs:
           for f in 01_chronology 02_cost_loss 03_value_of_waiting 04_accuracy_and_delay 05_reversibility; do
             test -s "figures/$f.png"
           done
+          test "$(ls figures/equations/*.png | wc -l)" -eq 9

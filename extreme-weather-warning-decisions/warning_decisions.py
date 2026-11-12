@@ -424,14 +424,52 @@ def figure_reversibility() -> None:
     save_figure(fig, "05_reversibility.png")
 
 
+# ---------------------------------------------------------------------------
+# Equations (Medium does not render LaTeX, so the displayed equations are images)
+# ---------------------------------------------------------------------------
+
+EQUATIONS: tuple[tuple[str, str, float], ...] = (
+    ("eq01_risk", r"$R(a \mid D_t) = \mathbb{E}\left[\,L(H, E, V, a) \mid D_t\,\right]$", 0.75),
+    ("eq02_two_actions",
+     r"$R_{\mathrm{protect}} = C + p\,L_1, \qquad R_{\mathrm{no\ protection}} = p\,L_0$", 0.75),
+    ("eq03_threshold", r"$p > p^{\ast} = \dfrac{C}{L_0 - L_1}$", 1.1),
+    ("eq04_safety_constraint",
+     r"$\min_{a \in A}\ \mathbb{E}\left[\,C_{\mathrm{disruption}}(a)\,\right]\quad \mathrm{subject\ to}\quad"
+     r"\mathrm{Pr}\left(F(a) > f_{\max} \mid D_t\right) \leq \varepsilon$", 1.0),
+    ("eq05_mean_cvar",
+     r"$J(a) = \mathbb{E}\left[\,L(a)\,\right] + \lambda\,\mathrm{CVaR}_{\alpha}\left(L(a)\right)$", 0.75),
+    ("eq06_decide_now", r"$V_t = \min_{a \in A_t}\ \mathbb{E}\left[\,L(a) \mid D_t\,\right]$", 1.0),
+    ("eq07_wait",
+     r"$W_t(\Delta) = \mathbb{E}_{Z \mid D_t}\left[\,\min_{a \in A_{t+\Delta}}\ \mathbb{E}\left[\,L(a, \Delta)"
+     r" \mid D_t, Z\,\right]\right] + C_{\mathrm{delay}}(\Delta)$", 1.0),
+    ("eq08_min_accuracy",
+     r"$q_{\min} = \dfrac{p\,(1 - p^{\ast})}{p\,(1 - p^{\ast}) + p^{\ast}(1 - p)}$", 1.1),
+    ("eq09_lift_condition",
+     r"$r > \dfrac{\mathrm{Pr}(\mathrm{severe} \mid Z = -)\,(L_0 - L_1)}{C} = \dfrac{0.033 \times 80}{6} = 0.44$", 1.1),
+)
+
+
+def draw_equations() -> None:
+    """Render each displayed equation on a fixed-width canvas so they share one scale."""
+    folder = OUT / "equations"
+    folder.mkdir(parents=True, exist_ok=True)
+    with plt.rc_context({"mathtext.fontset": "cm"}):
+        for name, tex, height in EQUATIONS:
+            fig = plt.figure(figsize=(8.0, height))
+            fig.text(0.5, 0.5, tex, ha="center", va="center", fontsize=19, color=NAVY)
+            fig.savefig(folder / f"{name}.png", dpi=200, facecolor="white")
+            plt.close(fig)
+
+
 def main() -> None:
-    """Print the results and draw every figure."""
+    """Print the results and draw every figure and equation."""
     report()
     figure_chronology()
     figure_cost_loss()
     figure_waiting_delay()
     figure_accuracy()
     figure_reversibility()
+    draw_equations()
 
 
 if __name__ == "__main__":
