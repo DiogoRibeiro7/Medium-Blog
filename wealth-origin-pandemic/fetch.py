@@ -54,7 +54,7 @@ ILO_URLS = [
 CONTACT = {"ECO_ISIC4_G": "trade", "ECO_ISIC4_H": "transport", "ECO_ISIC4_I": "accommodation_food",
            "ECO_ISIC4_R": "arts_recreation", "ECO_ISIC4_S": "other_services", "ECO_ISIC4_TOTAL": "total"}
 
-WDI = "https://api.worldbank.org/v2/country/all/indicator/{code}?format=json&per_page=20000&date=2010:2023"
+WDI = "https://api.worldbank.org/v2/country/all/indicator/{code}?format=json&per_page=5000&date=2010:2023"
 WDI_CODES = {
     "ST.INT.RCPT.CD": "tourism_receipts_usd",
     "ST.INT.RCPT.XP.ZS": "tourism_receipts_pct_exports",
@@ -94,7 +94,7 @@ def get(url: str, tries: int = 4, timeout: int = 600) -> tuple[int, bytes]:
                 return e.code, body
         except (urllib.error.URLError, TimeoutError, ConnectionError) as e:
             last = e
-        time.sleep(5 * (attempt + 1))
+        time.sleep(10 * (attempt + 1))
     log(url, f"failed: {last}")
     raise RuntimeError(f"{url}: {last}")
 
@@ -153,17 +153,26 @@ def fetch_ilostat(out: Path) -> None:
 
 
 def fetch_wdi(out: Path) -> None:
-    rows = []
+    """One request per indicator and page; the API answers 502 now and then, so retry patiently."""
+    rows, failed = [], []
     for code, name in WDI_CODES.items():
-        status, body = get(WDI.format(code=code))
-        if status != 200:
-            raise RuntimeError(f"WDI {code} returned {status}")
-        meta, data = json.loads(body)
-        if meta.get("pages", 1) > 1:
-            raise RuntimeError(f"WDI {code} is paginated; raise per_page")
-        rows += [{"iso3": d["countryiso3code"], "year": int(d["date"]), "indicator": name, "value": d["value"]}
-                 for d in (data or []) if d["countryiso3code"] and d["value"] is not None]
+        page, pages = 1, 1
+        try:
+            while page <= pages:
+                status, body = get(WDI.format(code=code) + f"&page={page}", tries=8)
+                if status != 200:
+                    raise RuntimeError(f"WDI {code} returned {status}")
+                meta, data = json.loads(body)
+                pages = int(meta.get("pages", 1))
+                rows += [{"iso3": d["countryiso3code"], "year": int(d["date"]), "indicator": name, "value": d["value"]}
+                         for d in (data or []) if d["countryiso3code"] and d["value"] is not None]
+                page += 1
+        except RuntimeError as e:
+            failed.append(f"{code}: {e}")
+        time.sleep(2)
     pd.DataFrame(rows).to_csv(out / "wdi_exposure.csv", index=False)
+    if failed:
+        raise RuntimeError("; ".join(failed))
 
 
 def main() -> int:
