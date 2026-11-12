@@ -154,7 +154,11 @@ def main() -> None:
     from pypdf import PdfReader
 
     for feed, u in DICTIONARY.items():
-        b = get(u)
+        try:
+            b = get(u)
+        except Exception as e:  # noqa: BLE001
+            print(f"dictionary {feed} not available from this runner: {e}", flush=True)
+            continue
         text = "\n".join(p.extract_text() or "" for p in PdfReader(io.BytesIO(b)).pages)
         (out / "dictionaries" / f"{feed}.txt").write_text(text, encoding="utf-8")
         log["files"][f"dictionaries/{feed}.txt"] = {"source": u, "pdf_sha256": sha(b), "pdf_bytes": len(b)}
