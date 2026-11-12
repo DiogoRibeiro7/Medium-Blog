@@ -46,7 +46,9 @@ jobs:
         run: |
           status=0
           for part in part*/; do
-            main=$(ls "$part"*.py | grep -v figures.py)
+            # each part has one script that prints the numbers (*_numbers.py); fetch.py and
+            # figures.py are not compared
+            main=$(ls "$part"*_numbers.py)
             echo "== $main"
             (cd "$part" && python "$(basename "$main")" > "$RUNNER_TEMP/output.txt")
             if ! diff -u "$part/output.txt" "$RUNNER_TEMP/output.txt" > "$RUNNER_TEMP/diff.txt"; then

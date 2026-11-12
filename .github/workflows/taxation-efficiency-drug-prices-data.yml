@@ -3,7 +3,7 @@ name: Refresh taxation-efficiency-drug-prices data
 on:
   push:
     branches:
-      - taxation-efficiency-drug-prices-part2
+      - 'taxation-efficiency-drug-prices-part*'
     paths:
       - 'taxation-efficiency-drug-prices/part2/fetch.py'
       - '.github/workflows/taxation-efficiency-drug-prices-data.yml'
