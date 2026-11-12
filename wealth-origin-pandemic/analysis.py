@@ -603,6 +603,13 @@ def measures_by_year(panel: pd.DataFrame, draws: int = 1000, seed: int = 2026111
             r = fit_expo(d[d["year"] != t], y, regs, BASE_CTRL, COMMON, "fe")
             yrows.append(dict(measure=m, horizon=h, dropped_year=int(t), b=r["b_" + regs[0]], se=r["se_" + regs[0]],
                               full_b=full["b_" + regs[0]], full_se=full["se_" + regs[0]]))
+        for label, part in (("ends by 2019", d[d["year"] + h <= 2019]), ("includes 2020", d[d["year"] + h >= 2020])):
+            r = fit_expo(part, y, regs, BASE_CTRL, COMMON, "fe")
+            yrs = part.dropna(subset=[y] + regs)["year"]
+            yrows.append(dict(measure=m, horizon=h, dropped_year=-1, split=label,
+                              list_years=f"{int(yrs.min())}-{int(yrs.max())}", n_obs=r["n_obs"],
+                              b=r["b_" + regs[0]], se=r["se_" + regs[0]], full_b=full["b_" + regs[0]],
+                              full_se=full["se_" + regs[0]]))
         bwd = fit_expo(d, f"b_tfp_{h}", regs, [f"ln_y_m{h}"] + SECTOR_CTRL, COMMON, "fe")
         res = {"fwd": full, "bwd": bwd}
         idx = {k: pd.Series(np.arange(len(r["_des"]["groups"]))).groupby(r["_des"]["groups"]).apply(np.array).to_dict()
@@ -796,8 +803,11 @@ def main() -> None:
         w(f"    {r['subset']}: {r['n_fits']} fits, median {r['median']:+.4f} (p={r['p_median']:.3f}); sig- {r['n_neg']} "
           f"(null 95th pct {r['null_n_neg_p95']:.0f}, p={r['p_n_neg']:.3f}); sig+ {r['n_pos']} (p={r['p_n_pos']:.3f}); "
           f"Stouffer Z {r['stouffer']:+.2f} (p={r['p_stouffer']:.3f})")
+    w("period split, by measure (billionaire countries):")
+    for _, r in myy[myy["dropped_year"] == -1].iterrows():
+        w(f"  {r['measure']} h={r['horizon']} {r['split']} (lists {r['list_years']}, n={int(r['n_obs'])}): {ci(r['b'], r['se'])}")
     w("leave one list year out, by measure (billionaire countries):")
-    for (m, h), sub in myy.groupby(["measure", "horizon"], sort=False):
+    for (m, h), sub in myy[myy["dropped_year"] != -1].groupby(["measure", "horizon"], sort=False):
         lo, hi = sub.loc[sub["b"].idxmax()], sub.loc[sub["b"].idxmin()]
         w(f"  {m} h={h}: full {ci(sub['full_b'].iloc[0], sub['full_se'].iloc[0])}; closest to zero {lo['b']:+.3f} without {lo['dropped_year']} "
           f"[{lo['lo']:+.3f}, {lo['hi']:+.3f}]; furthest {hi['b']:+.3f} without {hi['dropped_year']}; intervals excluding zero "

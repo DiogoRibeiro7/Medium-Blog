@@ -214,6 +214,19 @@ all 24 specifications with the two-list average (sector shares controlled; base 
     gdp_per_capita: 12 fits, median -0.3014 (p=0.206); sig- 0 (null 95th pct 2, p=1.000); sig+ 0 (p=1.000); Stouffer Z -2.30 (p=0.156)
     tfp_fixed_effects: 6 fits, median -1.4243 (p=0.029); sig- 2 (null 95th pct 1, p=0.022); sig+ 0 (p=1.000); Stouffer Z -4.91 (p=0.000)
     tfp_pooled: 6 fits, median -0.4964 (p=0.068); sig- 1 (null 95th pct 0, p=0.038); sig+ 0 (p=1.000); Stouffer Z -4.00 (p=0.035)
+period split, by measure (billionaire countries):
+  wealth h=3 ends by 2019 (lists 2011-2016, n=336): -0.039 [-0.878, +0.801]
+  wealth h=3 includes 2020 (lists 2017-2020, n=224): -2.002 [-4.160, +0.156]
+  wealth h=5 ends by 2019 (lists 2011-2014, n=224): +0.032 [-0.497, +0.560]
+  wealth h=5 includes 2020 (lists 2015-2018, n=224): +0.306 [-1.015, +1.627]
+  headcount h=3 ends by 2019 (lists 2011-2016, n=336): -0.508 [-1.689, +0.672]
+  headcount h=3 includes 2020 (lists 2017-2020, n=224): -0.741 [-2.739, +1.257]
+  headcount h=5 ends by 2019 (lists 2011-2014, n=224): +0.101 [-0.972, +1.175]
+  headcount h=5 includes 2020 (lists 2015-2018, n=224): -0.005 [-0.693, +0.684]
+  two-list average h=3 ends by 2019 (lists 2012-2016, n=280): -0.431 [-1.740, +0.879]
+  two-list average h=3 includes 2020 (lists 2017-2020, n=224): -2.757 [-6.276, +0.762]
+  two-list average h=5 ends by 2019 (lists 2012-2014, n=168): -0.679 [-1.552, +0.195]
+  two-list average h=5 includes 2020 (lists 2015-2018, n=224): -0.635 [-2.312, +1.043]
 leave one list year out, by measure (billionaire countries):
   wealth h=3: full -1.109 [-2.064, -0.155]; closest to zero -0.689 without 2020 [-1.440, +0.061]; furthest -1.342 without 2012; intervals excluding zero 8 of 10; 2011 -1.155; 2012 -1.342; 2013 -1.151; 2014 -1.135; 2015 -1.089; 2016 -1.197; 2017 -1.122; 2018 -1.257; 2019 -0.836; 2020 -0.689
   wealth h=5: full -0.538 [-1.018, -0.058]; closest to zero -0.438 without 2016 [-0.940, +0.064]; furthest -0.602 without 2012; intervals excluding zero 6 of 8; 2011 -0.508; 2012 -0.602; 2013 -0.576; 2014 -0.507; 2015 -0.526; 2016 -0.438; 2017 -0.590; 2018 -0.478

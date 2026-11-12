@@ -109,7 +109,7 @@ def fig2_coefficients() -> None:
 
 def fig3_list_years() -> None:
     d = pd.read_csv(RES / "measures_leave_one_year_out.csv")
-    d = d[d["horizon"] == 3]
+    d = d[(d["horizon"] == 3) & (d["dropped_year"] > 0)]
     titles = {"wealth": "Wealth on each list", "headcount": "Headcount per 10 million people",
               "two-list average": "Wealth averaged over two lists"}
     fig, axes = plt.subplots(1, 3, figsize=(12.5, 4.6), sharey=True)
