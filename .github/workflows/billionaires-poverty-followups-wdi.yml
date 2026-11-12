@@ -35,5 +35,4 @@ jobs:
           git config user.email "diogo_dj@hotmail.com"
           git add billionaires-poverty-followups/data/wdi_series.csv.gz billionaires-poverty-followups/data/wdi_manifest.json
           git commit -m "Billionaire-poverty follow-ups: WDI snapshot" || echo "no changes"
-          git pull --rebase --autostash origin ${GITHUB_REF_NAME}
           git push origin HEAD:${GITHUB_REF_NAME}
