@@ -9,8 +9,9 @@ wealth (Forbes' ``source`` field, normalised) is the same. Only country x year a
 per-year matching diagnostics are written; no name, identifier or person-level row is saved.
 
 Matching rules (all applied in memory):
-- a person is identified across lists by ``naturalId``, falling back to ``uri`` and then to the
-  name when the others are missing;
+- a person is identified across lists by whichever of Forbes' ``uri``, ``naturalId`` or the name
+  keeps the most people from one list to the next (``data/forbes_coverage.csv`` reports the
+  persistence of each); people whose identifier is missing or shared on a list are left out;
 - an exit is a self-made person on list t who is absent from list t+1; exits who are back on
   list t+2 are discarded as temporary drop-offs;
 - a new heir is an inherited person on list t+1 who was not on list t;
@@ -42,6 +43,7 @@ from collections import defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
 
+import numpy as np
 import pandas as pd
 
 UA = {"User-Agent": "wealth-origin-successions/1.0 (research companion; dfr@esmad.ipp.pt)"}
@@ -123,39 +125,70 @@ def _age(p: dict, year: int) -> float | None:
     return None
 
 
-def _key(p: dict) -> tuple[str | None, str]:
-    for k, kind in (("naturalId", "naturalId"), ("uri", "uri")):
+KEY_FIELDS = ("uri", "naturalId", "name")
+
+
+def _keys(p: dict) -> dict:
+    out = {}
+    for k in ("uri", "naturalId"):
         v = p.get(k)
-        if isinstance(v, str) and v.strip():
-            return v.strip(), kind
+        out[k] = v.strip() if isinstance(v, str) and v.strip() else None
     n = p.get("personName") or p.get("name")
-    return (n.strip() if isinstance(n, str) and n.strip() else None), "name"
+    out["name"] = n.strip().lower() if isinstance(n, str) and n.strip() else None
+    return out
 
 
-def load_year(year: int) -> tuple[dict, dict]:
-    """Persons of one list, in memory: key -> (country, worth, self_made, source, age)."""
+def load_year(year: int) -> tuple[list, dict]:
+    """Persons of one list, in memory: (keys, country, worth, self_made, source, age)."""
     url = FORBES.format(year=year)
     status, body = get(url)
     if status != 200:
-        return {}, {"year": year, "status": status}
-    persons = _persons(json.loads(body))
-    out, kinds = {}, defaultdict(int)
-    for p in persons:
-        key, kind = _key(p)
+        return [], {"year": year, "status": status}
+    out = []
+    for p in _persons(json.loads(body)):
         worth = p.get("finalWorth")
-        if key is None or not isinstance(worth, (int, float)):
+        if not isinstance(worth, (int, float)):
             continue
-        kinds[kind] += 1
-        out[key] = (str(p.get("countryOfCitizenship") or "").strip(), float(worth), _bool(p.get("selfMade")),
-                    norm_source(p.get("source")), _age(p, year))
+        out.append((_keys(p), str(p.get("countryOfCitizenship") or "").strip(), float(worth), _bool(p.get("selfMade")),
+                    norm_source(p.get("source")), _age(p, year)))
     n = len(out)
     diag = {"year": year, "status": status, "n_persons": n,
-            "share_key_naturalId": kinds["naturalId"] / n if n else 0.0,
-            "share_key_uri": kinds["uri"] / n if n else 0.0,
-            "share_source": sum(v[3] is not None for v in out.values()) / n if n else 0.0,
-            "share_age": sum(v[4] is not None for v in out.values()) / n if n else 0.0,
-            "share_selfmade_flag": sum(v[2] is not None for v in out.values()) / n if n else 0.0}
+            **{f"share_key_{k}": sum(r[0][k] is not None for r in out) / n if n else 0.0 for k in KEY_FIELDS},
+            "share_source": sum(r[4] is not None for r in out) / n if n else 0.0,
+            "share_age": sum(r[5] is not None for r in out) / n if n else 0.0,
+            "share_selfmade_flag": sum(r[3] is not None for r in out) / n if n else 0.0}
     return out, diag
+
+
+def persistence(raw: dict[int, list]) -> dict[str, float]:
+    """Share of people on list t found again on list t+1, for each candidate identifier."""
+    res = {}
+    for k in KEY_FIELDS:
+        shares = []
+        for t in sorted(raw):
+            if t + 1 in raw:
+                a = {r[0][k] for r in raw[t] if r[0][k]}
+                b = {r[0][k] for r in raw[t + 1] if r[0][k]}
+                if a:
+                    shares.append(len(a & b) / len(a))
+        res[k] = float(np.mean(shares)) if shares else 0.0
+    return res
+
+
+def keyed(raw: dict[int, list], key: str) -> dict[int, dict]:
+    """key -> (country, worth, self_made, source, age); people without the key or sharing it are dropped."""
+    out = {}
+    for t, rows in raw.items():
+        seen, d = defaultdict(int), {}
+        for r in rows:
+            if r[0][key]:
+                seen[r[0][key]] += 1
+        for r in rows:
+            k = r[0][key]
+            if k and seen[k] == 1:
+                d[k] = r[1:]
+        out[t] = d
+    return out
 
 
 def detect(lists: dict[int, dict]) -> tuple[list[dict], list[dict]]:
@@ -240,26 +273,32 @@ def main() -> int:
     ap.add_argument("--out", type=Path, default=Path("data"))
     args = ap.parse_args()
     args.out.mkdir(parents=True, exist_ok=True)
-    lists, cov = {}, []
+    raw, cov = {}, []
     for y in YEARS:
         try:
-            L, diag = load_year(y)
+            rows, diag = load_year(y)
         except Exception as e:  # keep going so the log shows every failure
             print(f"{y} failed: {e}", file=sys.stderr, flush=True)
             cov.append({"year": y, "status": f"failed: {e}"})
             continue
         cov.append(diag)
-        if L:
-            lists[y] = L
+        if rows:
+            raw[y] = rows
         time.sleep(3)
-    rows, diags = detect(lists)
-    pd.DataFrame(cov).to_csv(args.out / "forbes_coverage.csv", index=False)
+    pers = persistence(raw)
+    key = max(pers, key=pers.get)  # the identifier under which people persist from list to list
+    rows, diags = detect(keyed(raw, key))
+    cov_df = pd.DataFrame(cov)
+    for k, v in pers.items():
+        cov_df[f"persistence_{k}"] = v
+    cov_df["key_used"] = key
+    cov_df.to_csv(args.out / "forbes_coverage.csv", index=False)
     pd.DataFrame(diags).to_csv(args.out / "succession_diagnostics.csv", index=False)
     pd.DataFrame(rows).sort_values(["year", "citizenship"]).to_csv(
         args.out / "succession_country_year.csv", index=False, float_format="%.3f")
     with open(args.out / "fetch_log.txt", "w", encoding="utf-8") as f:
         f.write("\n".join(LOG) + "\n")
-    missing = [y for y in YEARS if y not in lists]
+    missing = [y for y in YEARS if y not in raw]
     if [y for y in missing if y <= 2024]:
         print(f"lists missing: {missing}", file=sys.stderr)
         return 1
