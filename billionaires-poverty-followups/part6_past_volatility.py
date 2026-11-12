@@ -735,6 +735,19 @@ def bootstrap(c: pd.DataFrame, n_boot: int = N_BOOT, seed: int = 6) -> dict[str,
             "vol_over_distance_fit_ci95": q(lr_share), "odds_per_doubling_ci95": q(logsig)}
 
 
+def attenuation(lr: dict[str, Any], el: dict[str, Any]) -> dict[str, Any]:
+    """Back-of-envelope correction for measurement error in volatility.
+
+    If the elasticity of next year's typical move to the measured one is read as the reliability of measured log
+    volatility, classical errors in variables shrink its coefficient by that factor. Dividing by it gives the
+    coefficient a perfectly measured volatility would have, under that (strong) assumption."""
+    r = el["elasticity"]
+    two = lr["two_index_coef"]
+    one = lr["logvol_given_distance"]["coef"]
+    return {"reliability": r, "logsig_two_index_corrected": two["logsig"] / r, "logd_two_index": two["logd"],
+            "logvol_coef_corrected": one / r, "odds_per_doubling_corrected": float(2 ** (one / r))}
+
+
 def standardised_high_low(c: pd.DataFrame) -> dict[str, Any]:
     w = c.groupby("band").n.sum() / c.n.sum()
     out = {}
@@ -782,6 +795,8 @@ def compute(inp: dict[str, Any], n_boot: int = N_BOOT) -> dict[str, Any]:
                                (("constant", []), ("distance", ["band"]), ("distance_tenure", ["band", "hist"]),
                                 ("distance_volatility", ["band", "vol", "hist"])))
     per = persistence(pers, levels)
+    el = elasticity(per)
+    lr = lr_tests(main)
     out = {
         "fetch": {y: {"n": e.get("n_persons"), "same_as_part5": e.get("same_as_part5")} for y, e in man["years"].items()},
         "vol_levels": levels,
@@ -789,7 +804,7 @@ def compute(inp: dict[str, Any], n_boot: int = N_BOOT) -> dict[str, Any]:
         "check_part5": check_against_part5(pers, tenure),
         "coverage": coverage(pers),
         "persistence": per,
-        "elasticity": elasticity(per),
+        "elasticity": el,
         "persistence_full_window": persistence(pers, levels, _years(FULL_YEARS), lambda h: h == 4),
         "persistence_models": persistence_models(pers),
         "rises": rises(pers, levels),
@@ -798,7 +813,7 @@ def compute(inp: dict[str, Any], n_boot: int = N_BOOT) -> dict[str, Any]:
                    (("distance", "volatility"), ("distance_volatility", "distance"), ("distance_logvol", "distance"),
                     ("part5_volatility", "part5"), ("part5_trend_hist", "part5"), ("part5_all", "part5_trend_hist"),
                     ("distance", "one_index"))},
-        "lr": lr_tests(main),
+        "lr": lr,
         "exit_grid": exit_grid(main),
         "standardised": standardised_high_low(main),
         "collapse": collapse(main),
@@ -811,6 +826,7 @@ def compute(inp: dict[str, Any], n_boot: int = N_BOOT) -> dict[str, Any]:
         "hazard_all_bands": compare_models(allbands, [m for m in MODELS if m[0] in SHORT]),
         "composition": composition(pers, levels, ref),
         "sector": sector(pers),
+        "attenuation": attenuation(lr, el),
         "simulation": simulation(levels),
         "bootstrap": bootstrap(main, n_boot),
     }
@@ -1011,6 +1027,7 @@ def summary_lines(n: dict[str, Any]) -> list[str]:
                    + "; ".join(f"{b} {v['exit_rate']:.3f} ({v['n']})" for b, v in g[k]["bands"].items()))
     out.append(f"  high/low by band: {_r(g['high_over_low_by_band'])}")
     out.append(f"Standardised: {_r(n['standardised'])}")
+    out.append(f"Attenuation: {_r(n['attenuation'])}")
     c = n["collapse"]
     out.append(f"Collapse: cells {len(c['cells'])}, weighted R2 index {c['weighted_r2_index']:.4f}, band {c['weighted_r2_band']:.4f}")
     out.append(f"Composition: {_r(n['composition'])}")

@@ -1,4 +1,11 @@
 {
+  "attenuation": {
+    "logd_two_index": -1.0959080302014101,
+    "logsig_two_index_corrected": 0.8811998526743345,
+    "logvol_coef_corrected": 1.0032472383848101,
+    "odds_per_doubling_corrected": 2.0045066982294646,
+    "reliability": 0.20643202389132007
+  },
   "bootstrap": {
     "high_over_low_std_ci95": [
       1.0642225645384202,
