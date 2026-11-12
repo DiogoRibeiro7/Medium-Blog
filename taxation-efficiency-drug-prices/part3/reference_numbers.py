@@ -229,6 +229,14 @@ def main() -> None:
         vals = "  ".join(f"{k} {x[k]:8.2f}" if np.isfinite(x[k]) else f"{k}      n/a" for k in REF)
         print(f"  {x['brand']:12s} {strength_text(x['strengths']):18s} x{x['units']:<4d} {vals}   ceiling {x['cap']:8.2f}"
               f"  ceiling/FR {x['cap'] / x['FR']:5.3f}")
+    # Eliquis: the Spanish price of the brand is that of a molecule with generic competition.
+    es_api = tables["ES"][tables["ES"]["molecule"] == "apixaban"]
+    fr_api = fr_all[fr_all["molecule"] == "apixaban"]
+    same = es_api[(es_api["strengths"] == (5.0,)) & (es_api["units"] == 60)]
+    print(f"\nApixaban in Spain's list: {es_api['brand'].nunique()} brand names, {int(es_api['generic'].sum())} of"
+          f" {len(es_api)} presentations generics; 5 mg x60 retail prices with VAT: {', '.join(f'{x:.2f}' for x in sorted(same['pvp'].unique()))}")
+    print(f"Apixaban in France, 2024: {fr_api['boites'].sum() / 1e6:.1f} million boxes, original brand share"
+          f" {fr_api.loc[fr_api['segment'] == 'originator', 'boites'].sum() / fr_api['boites'].sum():.3f}")
     figure["molecules"] = [
         {"brand": x["brand"], "molecule": x["molecule"], "pack": f"{strength_text(x['strengths'])} x{x['units']}",
          **{k: (x[k] / x["FR"] if np.isfinite(x[k]) else None) for k in ("ES", "IT", "BE")},
@@ -294,6 +302,7 @@ def main() -> None:
           f" are cut by at most {erp.PT_RAP_MAX_CUT:.0%} (Portaria 394/2025/1)")
     print(f"  retail price at or below {erp.PT_RAP_EXEMPT_PVP:.0f} euros (left alone by the 2026 annual revision): "
           f"presentations {small.mean():.3f}, value {(m.loc[small, 'q'] * m.loc[small, 'cap']).sum() / (m['q'] * m['cap']).sum():.3f}")
+    print(f"  the retail price jumps at each band limit: ex-factory 5.00 -> {erp.pt_pvp(5.00):.2f}, 5.01 -> {erp.pt_pvp(5.01):.2f}")
     for pva in (5, 20, 50, 100, 500):
         print(f"  ex-factory {pva:4d} euros -> retail {erp.pt_pvp(pva):8.2f} (margins, fee and VAT {1 - pva / erp.pt_pvp(pva):.3f} of it)")
 
@@ -302,6 +311,8 @@ def main() -> None:
     pt = C.portugal_gh()
     print(f"Infarmed, homogeneous groups, third quarter of 2026: {len(pt)} presentations, {int(pt['oral_solid'].sum())} tablets"
           f" or capsules, {int(pt['parallel'].sum())} parallel imports")
+    for name in ("Apixab", "Eliquis", "Dapaglif", "Empaglif", "Sacubitril"):
+        print(f"  presentations whose name starts with {name}: {int(pt['name'].str.startswith(name).sum())}")
     stems = set()
     for t in (*tables.values(), fr_all):
         stems |= {x.split(" ")[0] for x in t["molecule"].dropna() if x}

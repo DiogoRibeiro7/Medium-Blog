@@ -77,6 +77,9 @@ Largest molecules in the basket by French value (most sold presentation; ex-fact
   selincro     18 mg              x14   FR    35.12  ES    42.00  IT      n/a  BE    35.12   ceiling    37.41  ceiling/FR 1.065
   sunosi       75 mg              x28   FR   210.01  ES      n/a  IT   217.37  BE      n/a   ceiling   213.69  ceiling/FR 1.018
 
+Apixaban in Spain's list: 8 brand names, 21 of 24 presentations generics; 5 mg x60 retail prices with VAT: 36.06
+Apixaban in France, 2024: 14.6 million boxes, original brand share 1.000
+
 The whole basket by French ex-factory price per tablet (reference country over France, French quantities;
 95% interval resampling molecules):
   under 2 euros a tablet presentations  85, molecules  32: Spain 0.780 [0.56, 1.18] n 53; Italy 1.221 [1.14, 1.29] n 57; Belgium 1.161 [1.12, 1.35] n 65
@@ -115,6 +118,7 @@ Portuguese retail price at the ceiling for the basket (98 presentations):
   median retail price 79.78 euros; share of the retail price that is margins, Infarmed's fee and VAT: median 0.226, value-weighted 0.228
   the 2026 annual revision: retail prices up to 30 euros are left alone and the others are cut by at most 20% (Portaria 394/2025/1)
   retail price at or below 30 euros (left alone by the 2026 annual revision): presentations 0.082, value 0.004
+  the retail price jumps at each band limit: ex-factory 5.00 -> 6.68, 5.01 -> 7.69
   ex-factory    5 euros -> retail     6.68 (margins, fee and VAT 0.251 of it)
   ex-factory   20 euros -> retail    26.96 (margins, fee and VAT 0.258 of it)
   ex-factory   50 euros -> retail    64.58 (margins, fee and VAT 0.226 of it)
@@ -125,6 +129,11 @@ Portuguese retail price at the ceiling for the basket (98 presentations):
 5. A check against Portuguese prices
 ==============================================================================================
 Infarmed, homogeneous groups, third quarter of 2026: 7057 presentations, 6689 tablets or capsules, 16 parallel imports
+  presentations whose name starts with Apixab: 0
+  presentations whose name starts with Eliquis: 0
+  presentations whose name starts with Dapaglif: 0
+  presentations whose name starts with Empaglif: 0
+  presentations whose name starts with Sacubitril: 0
 Original brands (a brand that France sells as an original, not a generic name), tablets and capsules: 287
   priced by at least three reference countries: 219 presentations, 88 brands
   Portuguese maximum ex-factory price over the rebuilt ceiling: median 1.051
