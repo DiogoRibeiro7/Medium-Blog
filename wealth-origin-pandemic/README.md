@@ -29,7 +29,7 @@ The workspace where the analysis was written cannot reach most of these hosts, s
 
 **Around 2020.** Cross-sections of TFP growth on composition for the 2020 dip (2019 list, 2019–2020), the rebound (2020 list, 2020–2023), the net change and a pre-pandemic window; exposure-by-year coefficients; period split; leave one list year out; forward minus backward with a country bootstrap.
 
-**Measurement.** The Forbes 2020 list values fortunes at stock prices of 18 March 2020, near the trough of the crash. Composition is therefore also measured by headcount (billionaires per 10 million people) and as wealth averaged over lists t − 1 and t; each is re-estimated with leave-one-list-year-out and the placebo, and the two-list average across all 24 specifications with its own joint test.
+**Measurement.** The Forbes 2020 list values fortunes at stock prices of 18 March 2020, near the trough of the crash. Composition is therefore also measured by headcount (billionaires per 10 million people) and as wealth averaged over lists t − 1 and t; each is re-estimated with leave-one-list-year-out, the period split and the placebo, and the two-list average across all 24 specifications with its own joint test.
 
 ## Caveats
 
