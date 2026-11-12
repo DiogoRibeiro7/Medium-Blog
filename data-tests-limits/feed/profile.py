@@ -34,10 +34,18 @@ def download(feed: str, month: str, dest: Path, tries: int = 5) -> Path:
     for i in range(tries):
         try:
             req = urllib.request.Request(url(feed, month), headers=UA)
-            with urllib.request.urlopen(req, timeout=600) as r, open(path.with_suffix(".part"), "wb") as fh:
+            part = path.with_suffix(".part")
+            with urllib.request.urlopen(req, timeout=600) as r, open(part, "wb") as fh:
+                expected = int(r.headers.get("Content-Length") or -1)
                 while chunk := r.read(1 << 20):
                     fh.write(chunk)
-            path.with_suffix(".part").rename(path)
+            got = part.stat().st_size
+            if expected >= 0 and got != expected:  # the connection closed early: try again
+                print(f"{feed} {month}: got {got:,} of {expected:,} bytes, retrying", flush=True)
+                part.unlink()
+                time.sleep(2**i)
+                continue
+            part.rename(path)
             return path
         except urllib.error.HTTPError as e:
             if e.code in (403, 404):
