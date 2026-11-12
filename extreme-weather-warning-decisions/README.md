@@ -1,51 +1,49 @@
 # Extreme weather warnings: decisions under uncertainty
 
-Public reproducibility companion for Diogo Ribeiro's article, *When a False Alarm Is the Right Decision: The Mathematics and Ethics of Extreme Weather Warnings* (12 November 2026).
+Public reproducibility companion for Diogo Ribeiro's article *Cost–Loss Thresholds and the Value of Waiting for the Next Forecast: Portugal's November 2026 Storm Alert*.
 
-The editorial manuscript is maintained separately in the private [`research-articles-medium`](https://github.com/DiogoRibeiro7/research-articles-medium) repository. This public folder contains **no full manuscript**.
+The manuscript is kept separately in the private [`research-articles-medium`](https://github.com/DiogoRibeiro7/research-articles-medium) repository. This folder holds the code, the printed results and the figures.
 
-## Figures
-
-| Figure | File | What it shows | Evidential status |
-| --- | --- | --- | --- |
-| 1 | [`01_event_timeline.png`](figures/01_event_timeline.png) | Selected milestones for Depression Charles (Portugal, November 2026), Storm Kristin (Portugal, January 2026), and the Valencia DANA (Spain, October 2024) | Source-grounded chronology, not a causal estimate |
-| 2 | [`02_expected_loss.png`](figures/02_expected_loss.png) | An illustrative two-action cost–loss model, with a 7.5% threshold | Hypothetical parameters |
-| 3 | [`03_vulnerability_thresholds.png`](figures/03_vulnerability_thresholds.png) | How avoidable harm changes the intervention threshold | Hypothetical parameters |
-| 4 | [`04_value_of_waiting.png`](figures/04_value_of_waiting.png) | How forecast updates lose decision value as protection is delayed | Hypothetical signal and delays |
-| 5 | [`05_warning_chain.png`](figures/05_warning_chain.png) | The operational steps between a forecast and protective action | Conceptual diagram |
-
-The parameters used for Figures 2–4 are **not estimates of the November 2026 Portuguese alert, the January 2026 storm, or the 2024 Spanish floods**. No figure claims a counterfactual number of lives saved or attributes a death to a specific official.
-
-## Regenerate the figures
+## Run
 
 Requirements: Python 3.11 or newer, NumPy and Matplotlib.
 
 ```bash
 python -m pip install -r requirements.txt
-python figure_reproduction.py
+python warning_decisions.py > results/output.txt
 ```
 
-The script saves five PNGs in `figures/`. It is deterministic and does not fetch or modify external datasets. Its time labels are annotations of selected documented institutional milestones, not a comprehensive event log.
+The script is deterministic and downloads nothing. It prints every number quoted in the article to `results/output.txt` and writes five figures to `figures/`. The CI workflow reruns it and fails if the printed numbers change.
 
-## Model logic
+## What the model is
 
-The two-action threshold is derived by comparing the expected loss of immediate protection with inaction:
+A two-action cost–loss problem with a later binary forecast signal. Protection costs `C`, the severe event costs `L0` without protection and `L1` with it, and the action threshold is `p* = C / (L0 − L1)`. The signal has equal sensitivity and specificity `q`. Each hour of delay raises the protected loss by a fixed amount, standing in for people already on the road and less time to act. After the signal arrives, each branch takes the cheaper of protecting and not protecting.
 
-\[
-p^* = \frac{C}{L_0-L_1},
-\]
+The script reports three things:
 
-where `C` is the cost of protection, `L_0` is loss if a severe event occurs without protection, and `L_1` is loss with protection. In Figure 2, the deliberately hypothetical values `C=6`, `L_0=100`, and `L_1=20` give `p*=0.075`.
+- the break-even delay: the longest wait for which the next forecast still beats deciding now;
+- the minimum useful accuracy: below it, no reading of the signal can change the decision, so the next forecast is worth nothing even if it arrives instantly;
+- the break-even recoverable share for "protect now, review when the signal arrives": the share of the protection cost that must still be avoidable for lifting the measures after a negative signal to pay.
 
-The value-of-waiting illustration assumes a severe-event prior of 12%, and a later binary signal with 80% sensitivity and 80% specificity. The residual loss after delayed protection is increased with the delay. The figure compares the resulting expected loss under that signal policy against protecting immediately, thereby separating **information gain** from **lost lead time**.
+The default parameters (`C = 6`, `L0 = 100`, `L1 = 20`, prior 12%, `q = 0.8`, 20 units per hour) are **hypothetical teaching values**. They are not estimates for the November 2026 Portuguese alert, Storm Kristin or the 2024 Valencia floods, and no figure claims a number of lives saved.
 
-## Source records for Figure 1
+## Figures
 
-- [Portugal Government: nationwide alert, 10 November 2026](https://portugal.gov.pt/pt/gc25/comunicacao/noticias/governo-declara-situacao-de-alerta-em-todo-o-territorio-continental-1)
-- [Portugal Government / ANEPC: 11 November midday situation update](https://portugal.gov.pt/gc25/comunicacao/noticias/mau-tempo-protecao-civil-apela-a-adocao-de-medidas-de-seguranca)
-- [Portugal Government: 11 November evening assessment](https://portugal.gov.pt/gc25/comunicacao/noticias/mau-tempo-prevencao-permitiu-superar-momentos-de-maior-exigencia-afirmou-o-primeiro-ministro)
-- [IPMA: extreme winds during Storm Kristin, January 2026](https://www.ipma.pt/pt/media/noticias/news.detail.jsp?f=Tempestade_kristin_portugal_continental.html&y=2026)
-- [AEMET: technical study of the October–November 2024 DANA](https://www.aemet.es/en/conocermas/recursos_en_linea/publicaciones_y_estudios/estudios/detalles/episodio_dana_oct_nov24)
-- [RTVE: chronology of the 29 October 2024 warning and mobile alert](https://www.rtve.es/noticias/20241031/cronologia-dana-12-horas-alerta-movil/16311521.shtml)
+| File | What it shows | Status |
+| --- | --- | --- |
+| `figures/01_chronology.png` | Depression Charles and the Valencia DANA on one axis, in hours from the start of the first red-warning period | Documented milestones; not a causal comparison |
+| `figures/02_cost_loss.png` | Expected loss of protecting now and of doing nothing; threshold 7.5% | Hypothetical parameters |
+| `figures/03_value_of_waiting.png` | Gain from waiting for an 80%-accurate forecast as protection degrades | Hypothetical parameters |
+| `figures/04_accuracy_and_delay.png` | Longest worthwhile delay against forecast accuracy, priors 12% and 25% | Hypothetical parameters |
+| `figures/05_reversibility.png` | Protect now and review, against the share of the cost still avoidable | Hypothetical parameters |
 
-The manuscript contains the complete twenty-one-item source list, the mathematical derivations, and the discussion of what the available evidence cannot establish.
+## Sources for Figure 1
+
+- [Portuguese Government: alert declared for mainland Portugal, 10 November 2026](https://portugal.gov.pt/pt/gc25/comunicacao/noticias/governo-declara-situacao-de-alerta-em-todo-o-territorio-continental-1)
+- [Portuguese Government / Ministry of Internal Administration: announcement and IPMA red warnings, 10 November 2026, 10:33](https://portugal.gov.pt/pt/gc25/comunicacao/noticias/mau-tempo-governo-declara-situacao-alerta-)
+- [Portuguese Government / ANEPC: update, 11 November 2026, 13:31](https://portugal.gov.pt/gc25/comunicacao/noticias/mau-tempo-protecao-civil-apela-a-adocao-de-medidas-de-seguranca)
+- [Portuguese Government: prime minister's assessment, 11 November 2026, 21:10](https://portugal.gov.pt/gc25/comunicacao/noticias/mau-tempo-prevencao-permitiu-superar-momentos-de-maior-exigencia-afirmou-o-primeiro-ministro)
+- [Maldita.es: chronology of AEMET warnings and the ES-Alert message, 29 October 2024](https://maldita.es/clima/20241030/cronologia-dana-avisos-amet-ayudas-gobierno-valencia/)
+- [Maldita.es: AEMET warnings and the civil-protection alert](https://maldita.es/clima/20241030/avisos-meteorologos-proteccion-civil-valencia/)
+
+Portugal uses WET (UTC) in November. Valencia used CET (UTC+1) on 29 October 2024: summer time had ended on 27 October.

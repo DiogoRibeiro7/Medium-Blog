@@ -1,0 +1,51 @@
+== Cost-loss baseline (hypothetical social-loss units)
+threshold p* = C/(L0-L1) = 0.0750
+protect now  = 8.400
+no action    = 12.000
+threshold with avoidable loss 160: 0.0375
+threshold with avoidable loss 80: 0.0750
+threshold with avoidable loss 40: 0.1500
+
+== Later signal, accuracy 0.80
+P(positive)          = 0.272
+P(severe | positive) = 0.3529
+P(severe | negative) = 0.0330
+wait, no degradation = 5.952
+value of information at zero delay = 2.448
+wait, protected loss 50 (1.5 h) = 8.832
+break-even delay = 1.275 h
+delayed protection stops paying after a positive signal at 3.150 h
+net value of waiting beyond that delay = -3.600
+
+== Forecast accuracy and the room to wait
+prior 0.05 (default: do nothing): minimum useful accuracy = 0.6064
+prior 0.12 (default: protect): minimum useful accuracy = 0.6271
+prior 0.25 (default: protect): minimum useful accuracy = 0.8043
+prior 0.12, accuracy 0.60: value at zero delay = 0.000, break-even delay = 0.000 h
+prior 0.12, accuracy 0.70: value at zero delay = 1.032, break-even delay = 0.614 h
+prior 0.12, accuracy 0.80: value at zero delay = 2.448, break-even delay = 1.275 h
+prior 0.12, accuracy 0.90: value at zero delay = 3.864, break-even delay = 1.789 h
+prior 0.12, accuracy 1.00: value at zero delay = 5.280, break-even delay = 2.200 h
+prior 0.25, accuracy 0.60: value at zero delay = 0.000, break-even delay = 0.000 h
+prior 0.25, accuracy 0.70: value at zero delay = 0.000, break-even delay = 0.000 h
+prior 0.25, accuracy 0.80: value at zero delay = 0.000, break-even delay = 0.000 h
+prior 0.25, accuracy 0.90: value at zero delay = 2.200, break-even delay = 0.489 h
+prior 0.25, accuracy 1.00: value at zero delay = 4.500, break-even delay = 0.900 h
+
+== Protect now, review when the signal arrives
+break-even recoverable share = 0.4396
+recoverable 0.00: expected loss = 8.400 (keep after negative)
+recoverable 0.25: expected loss = 8.400 (keep after negative)
+recoverable 0.50: expected loss = 8.136 (lift after negative)
+recoverable 0.75: expected loss = 7.044 (lift after negative)
+recoverable 1.00: expected loss = 5.952 (lift after negative)
+
+== Chronology: hours relative to the first red-warning period
+Portugal, Depression Charles, 10-11 Nov 2026 (WET = UTC): 10 Nov 10:33 Alert and measures announced -> -22.45 h
+Portugal, Depression Charles, 10-11 Nov 2026 (WET = UTC): 11 Nov 00:00 Measures in force -> -9.00 h
+Portugal, Depression Charles, 10-11 Nov 2026 (WET = UTC): 11 Nov 09:00 Red warnings begin (3 southern districts) -> +0.00 h
+Portugal, Depression Charles, 10-11 Nov 2026 (WET = UTC): 11 Nov 13:31 Update: track shifts south -> +4.52 h
+Portugal, Depression Charles, 10-11 Nov 2026 (WET = UTC): 11 Nov 21:10 Prime minister: less impact than forecast -> +12.17 h
+Spain, Valencia DANA, 29 Oct 2024 (CET = UTC+1): 07:31 First AEMET red warning in the province -> +0.00 h
+Spain, Valencia DANA, 29 Oct 2024 (CET = UTC+1): 09:41 Whole province under red -> +2.17 h
+Spain, Valencia DANA, 29 Oct 2024 (CET = UTC+1): 20:11 ES-Alert to mobile phones -> +12.67 h
