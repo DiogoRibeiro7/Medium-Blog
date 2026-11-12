@@ -1,19 +1,19 @@
 [ecb_fx] wrote ecb_fx.csv.gz: 55 rows, columns ['currency', 'time_period', 'obs_value']
-== ecb done in 2 s
+== ecb done in 1 s
 [efpia_2026] wrote efpia_2026.txt.gz: 99972 characters
 == efpia done in 2 s
 [worldbank] wrote worldbank.csv.gz: 7899 rows, columns ['indicator', 'iso3', 'country', 'year', 'value']
-== worldbank done in 0 s
+== worldbank done in 1 s
 [eurostat_gbard_health] wrote eurostat_gbard_health.csv.gz: 6907 rows, columns ['freq', 'nabs07', 'unit', 'geo', 'time', 'value']
 [eurostat_berd_pharma] wrote eurostat_berd_pharma.csv.gz: 4768 rows, columns ['freq', 'nace_r2', 'unit', 'geo', 'time', 'value']
 [eurostat_gdp] wrote eurostat_gdp.csv.gz: 504 rows, columns ['freq', 'unit', 'na_item', 'geo', 'time', 'value']
-== eurostat done in 4 s
+== eurostat done in 2 s
 [oecd] DSD_RDS_GOV@DF_GBARD_NABS07: dimensions ['REF_AREA', 'FREQ', 'MEASURE', 'SEO', 'FUNDMODE', 'TRANSCOORD', 'UNIT_MEASURE', 'PRICE_BASE']; key .A..NABS07+_T....
 [oecd_gbard] wrote oecd_gbard.csv.gz: 2598 rows, columns ['REF_AREA', 'Reference area', 'MEASURE', 'SEO', 'FUNDMODE', 'TRANSCOORD', 'UNIT_MEASURE', 'Unit of measure', 'PRICE_BASE', 'TIME_PERIOD', 'OBS_VALUE', 'UNIT_MULT']
 [oecd] MSTI flow: ('OECD.STI.STP', 'DSD_MSTI@DF_MSTI', '1.3')
 [oecd] DSD_MSTI@DF_MSTI: dimensions ['REF_AREA', 'FREQ', 'MEASURE', 'UNIT_MEASURE', 'PRICE_BASE', 'TRANSFORMATION']; key ..B_DRUG+B+GDP...
 [oecd_msti] wrote oecd_msti.csv.gz: 4838 rows, columns ['REF_AREA', 'Reference area', 'MEASURE', 'Measure', 'UNIT_MEASURE', 'Unit of measure', 'PRICE_BASE', 'TIME_PERIOD', 'OBS_VALUE', 'UNIT_MULT']
-== oecd done in 8 s
+== oecd done in 5 s
 [sec] Pfizer FY2015 10-K: revenue 48851000000.0 USD, US 21704000000.0 (country:US), R&D 7690000000.0
 [sec] Pfizer FY2016 10-K: revenue 52824000000.0 USD, US 26369000000.0 (country:US), R&D 7872000000.0
 [sec] Pfizer FY2017 10-K: revenue 52546000000.0 USD, US 26026000000.0 (country:US), R&D 7657000000.0
@@ -36,8 +36,11 @@
 [sec] Merck & Co FY2023 10-K: revenue 60115000000.0 USD, US 28480000000.0 (country:US), R&D 30531000000.0
 [sec] Merck & Co FY2024 10-K: revenue 64168000000.0 USD, US 32277000000.0 (country:US), R&D 17938000000.0
 [sec] Merck & Co FY2025 10-K: revenue 65011000000.0 USD, US 36510000000.0 (country:US), R&D 15789000000.0
+[sec] Johnson & Johnson FY2015: no US revenue; revenue axes [('Revenues', ('StatementBusinessSegmentsAxis',)), ('Revenues', ('StatementBusinessSegmentsAxis', 'StatementGeographicalAxis')), ('SalesRevenueGoodsNet', ('ConsolidationItemsAxis', 'StatementGeographicalAxis')), ('SalesRevenueGoodsNet', ('StatementGeographicalAxis',))]
 [sec] Johnson & Johnson FY2015 10-K: revenue 70074000000.0 USD, US None (None), R&D 9046000000.0
+[sec] Johnson & Johnson FY2016: no US revenue; revenue axes [('Revenues', ('ConsolidationItemsAxis', 'StatementBusinessSegmentsAxis')), ('Revenues', ('ConsolidationItemsAxis', 'StatementBusinessSegmentsAxis', 'StatementGeographicalAxis')), ('SalesRevenueGoodsNet', ('ConsolidationItemsAxis',)), ('SalesRevenueGoodsNet', ('ConsolidationItemsAxis', 'StatementGeographicalAxis')), ('SalesRevenueGoodsNet', ('StatementGeographicalAxis',))]
 [sec] Johnson & Johnson FY2016 10-K: revenue 71890000000.0 USD, US None (None), R&D 9095000000.0
+[sec] Johnson & Johnson FY2017: no US revenue; revenue axes [('Revenues', ('ConsolidationItemsAxis', 'StatementBusinessSegmentsAxis')), ('Revenues', ('ConsolidationItemsAxis', 'StatementBusinessSegmentsAxis', 'StatementGeographicalAxis')), ('SalesRevenueGoodsNet', ('ConsolidationItemsAxis',)), ('SalesRevenueGoodsNet', ('ConsolidationItemsAxis', 'StatementGeographicalAxis')), ('SalesRevenueGoodsNet', ('StatementGeographicalAxis',))]
 [sec] Johnson & Johnson FY2017 10-K: revenue 76450000000.0 USD, US None (None), R&D 10554000000.0
 [sec] Johnson & Johnson FY2018 10-K: revenue 81581000000.0 USD, US 41884000000.0 (country:US), R&D 10775000000.0
 [sec] Johnson & Johnson FY2019 10-K: revenue 82059000000.0 USD, US 42097000000.0 (country:US), R&D 11355000000.0
@@ -102,16 +105,25 @@
 [sec] Gilead FY2023 10-K: revenue 27116000000.0 USD, US 19438000000.0 (country:US), R&D 5718000000.0
 [sec] Gilead FY2024 10-K: revenue 28754000000.0 USD, US 20591000000.0 (country:US), R&D 5907000000.0
 [sec] Gilead FY2025 10-K: revenue 29443000000.0 USD, US 20876000000.0 (country:US), R&D 5799000000.0
+[sec] Regeneron FY2015: no US revenue; revenue axes [('SalesRevenueGoodsNet', ('ProductOrServiceAxis',))]
 [sec] Regeneron FY2015 10-K: revenue 4103728000.0 USD, US None (None), R&D 1620577000.0
+[sec] Regeneron FY2016: no US revenue; revenue axes [('SalesRevenueGoodsNet', ('ProductOrServiceAxis',))]
 [sec] Regeneron FY2016 10-K: revenue 4860427000.0 USD, US None (None), R&D 2052295000.0
+[sec] Regeneron FY2017: no US revenue; revenue axes [('SalesRevenueGoodsNet', ('ProductOrServiceAxis',))]
 [sec] Regeneron FY2017 10-K: revenue 5872227000.0 USD, US None (None), R&D 2075142000.0
+[sec] Regeneron FY2018: no US revenue; revenue axes [('RevenueFromContractWithCustomerExcludingAssessedTax', ('AdjustmentsForNewAccountingPronouncementsAxis', 'InitialApplicationPeriodCumulativeEffectTransitionAxis')), ('RevenueFromContractWithCustomerExcludingAssessedTax', ('CapitalizedCostsOfUnprovedPropertiesExcludedFromAmortizationByPropertyOrProjectAxis',)), ('RevenueFromContractWithCustomerExcludingAssessedTax', ('InitialApplicationPeriodCumulativeEffectTransitionAxis',)), ('RevenueFromContractWithCustomerExcludingAssessedTax', ('ProductOrServiceAxis',)), ('RevenueFromContractWithCustomerExcludingAssessedTax', ('ProductOrServiceAxis', 'AdjustmentsForNewAccountingPronouncementsAxis', 'CapitalizedCostsOfUnprovedPropertiesExcludedFromAmortizationByPropertyOrProjectAxis', 'InitialApplicationPeriodCumulativeEffectTransitionAxis')), ('RevenueFromContractWithCustomerExcludingAssessedTax', ('ProductOrServiceAxis', 'CapitalizedCostsOfUnprovedPropertiesExcludedFromAmortizationByPropertyOrProjectAxis')), ('RevenueFromContractWithCustomerExcludingAssessedTax', ('ProductOrServiceAxis', 'CapitalizedCostsOfUnprovedPropertiesExcludedFromAmortizationByPropertyOrProjectAxis', 'InitialApplicationPeriodCumulativeEffectTransitionAxis')), ('RevenueFromContractWithCustomerExcludingAssessedTax', ('ProductOrServiceAxis', 'StatementGeographicalAxis')), ('RevenueFromContractWithCustomerExcludingAssessedTax', ('ProductOrServiceAxis', 'StatementGeographicalAxis', 'CapitalizedCostsOfUnprovedPropertiesExcludedFromAmortizationByPropertyOrProjectAxis'))]
 [sec] Regeneron FY2018 10-K: revenue 6710800000.0 USD, US None (None), R&D 2186100000.0
+[sec] Regeneron FY2019: no US revenue; revenue axes [('RevenueFromContractWithCustomerExcludingAssessedTax', ('CapitalizedCostsOfUnprovedPropertiesExcludedFromAmortizationByPropertyOrProjectAxis',)), ('RevenueFromContractWithCustomerExcludingAssessedTax', ('ProductOrServiceAxis',)), ('RevenueFromContractWithCustomerExcludingAssessedTax', ('ProductOrServiceAxis', 'CapitalizedCostsOfUnprovedPropertiesExcludedFromAmortizationByPropertyOrProjectAxis')), ('RevenueFromContractWithCustomerExcludingAssessedTax', ('ProductOrServiceAxis', 'StatementGeographicalAxis')), ('RevenueFromContractWithCustomerExcludingAssessedTax', ('ProductOrServiceAxis', 'StatementGeographicalAxis', 'CapitalizedCostsOfUnprovedPropertiesExcludedFromAmortizationByPropertyOrProjectAxis'))]
 [sec] Regeneron FY2019 10-K: revenue 7863400000.0 USD, US None (None), R&D 3036600000.0
+[sec] Regeneron FY2020: no US revenue; revenue axes [('RevenueFromContractWithCustomerExcludingAssessedTax', ('ProductOrServiceAxis',)), ('RevenueFromContractWithCustomerExcludingAssessedTax', ('ProductOrServiceAxis', 'CapitalizedCostsOfUnprovedPropertiesExcludedFromAmortizationByPropertyOrProjectAxis')), ('RevenueFromContractWithCustomerExcludingAssessedTax', ('ProductOrServiceAxis', 'StatementGeographicalAxis')), ('RevenueFromContractWithCustomerExcludingAssessedTax', ('ProductOrServiceAxis', 'StatementGeographicalAxis', 'CapitalizedCostsOfUnprovedPropertiesExcludedFromAmortizationByPropertyOrProjectAxis'))]
 [sec] Regeneron FY2020 10-K: revenue 8497100000.0 USD, US None (None), R&D 2735000000.0
 [sec] Regeneron FY2021 10-K: revenue 16071700000.0 USD, US 12117200000.0 (country:US), R&D 2908100000.0
 [sec] Regeneron FY2022 10-K: revenue 12172900000.0 USD, US 6893700000.0 (country:US), R&D 3592500000.0
+[sec] Regeneron FY2023: no US revenue; revenue axes [('RevenueFromContractWithCustomerExcludingAssessedTax', ('CounterpartyNameAxis', 'CapitalizedCostsOfUnprovedPropertiesExcludedFromAmortizationByPropertyOrProjectAxis', 'MilestoneTypeAxis')), ('RevenueFromContractWithCustomerExcludingAssessedTax', ('CounterpartyNameAxis', 'CapitalizedCostsOfUnprovedPropertiesExcludedFromAmortizationByPropertyOrProjectAxis', 'SalesMilestonesAxis')), ('RevenueFromContractWithCustomerExcludingAssessedTax', ('ProductOrServiceAxis',)), ('RevenueFromContractWithCustomerExcludingAssessedTax', ('ProductOrServiceAxis', 'CapitalizedCostsOfUnprovedPropertiesExcludedFromAmortizationByPropertyOrProjectAxis', 'IncomeStatementLocationAxis')), ('RevenueFromContractWithCustomerExcludingAssessedTax', ('ProductOrServiceAxis', 'StatementGeographicalAxis')), ('RevenueFromContractWithCustomerExcludingAssessedTax', ('ProductOrServiceAxis', 'StatementGeographicalAxis', 'CapitalizedCostsOfUnprovedPropertiesExcludedFromAmortizationByPropertyOrProjectAxis', 'IncomeStatementLocationAxis'))]
 [sec] Regeneron FY2023 10-K: revenue 13117200000.0 USD, US None (None), R&D 4439000000.0
+[sec] Regeneron FY2024: no US revenue; revenue axes [('RevenueFromContractWithCustomerExcludingAssessedTax', ('ProductOrServiceAxis',)), ('RevenueFromContractWithCustomerExcludingAssessedTax', ('ProductOrServiceAxis', 'CapitalizedCostsOfUnprovedPropertiesExcludedFromAmortizationByPropertyOrProjectAxis', 'IncomeStatementLocationAxis')), ('RevenueFromContractWithCustomerExcludingAssessedTax', ('ProductOrServiceAxis', 'StatementGeographicalAxis')), ('RevenueFromContractWithCustomerExcludingAssessedTax', ('ProductOrServiceAxis', 'StatementGeographicalAxis', 'CapitalizedCostsOfUnprovedPropertiesExcludedFromAmortizationByPropertyOrProjectAxis', 'IncomeStatementLocationAxis'))]
 [sec] Regeneron FY2024 10-K: revenue 14202000000.0 USD, US None (None), R&D 5132000000.0
+[sec] Regeneron FY2025: no US revenue; revenue axes [('RevenueFromContractWithCustomerExcludingAssessedTax', ('ProductOrServiceAxis',)), ('RevenueFromContractWithCustomerExcludingAssessedTax', ('ProductOrServiceAxis', 'CapitalizedCostsOfUnprovedPropertiesExcludedFromAmortizationByPropertyOrProjectAxis', 'IncomeStatementLocationAxis')), ('RevenueFromContractWithCustomerExcludingAssessedTax', ('ProductOrServiceAxis', 'StatementGeographicalAxis')), ('RevenueFromContractWithCustomerExcludingAssessedTax', ('ProductOrServiceAxis', 'StatementGeographicalAxis', 'CapitalizedCostsOfUnprovedPropertiesExcludedFromAmortizationByPropertyOrProjectAxis', 'IncomeStatementLocationAxis'))]
 [sec] Regeneron FY2025 10-K: revenue 14342900000.0 USD, US None (None), R&D 5850200000.0
 [sec] Vertex FY2015 10-K: revenue 1032336000.0 USD, US 763316000.0 (country:US), R&D 995922000.0
 [sec] Vertex FY2016 10-K: revenue 1702177000.0 USD, US 1321807000.0 (country:US), R&D 1047690000.0
@@ -119,53 +131,77 @@
 [sec] Vertex FY2018 10-K: revenue 3047597000.0 USD, US 2365079000.0 (country:US), R&D 1416476000.0
 [sec] Vertex FY2019 10-K: revenue 4162821000.0 USD, US 3062555000.0 (country:US), R&D 1754540000.0
 [sec] Vertex FY2020 10-K: revenue 6205683000.0 USD, US 4829282000.0 (country:US), R&D 1829537000.0
+[sec] Vertex FY2021: no US revenue; revenue axes [('RevenueFromContractWithCustomerExcludingAssessedTax', ('ProductOrServiceAxis',)), ('RevenueFromContractWithCustomerExcludingAssessedTax', ('ProductOrServiceAxis', 'DerivativeInstrumentRiskAxis', 'HedgingDesignationAxis', 'ReclassificationOutOfAccumulatedOtherComprehensiveIncomeAxis', 'StatementEquityComponentsAxis')), ('RevenueFromContractWithCustomerExcludingAssessedTax', ('ProductOrServiceAxis', 'StatementGeographicalAxis'))]
 [sec] Vertex FY2021 10-K: revenue 7574400000.0 USD, US None (None), R&D 3051100000.0
+[sec] Vertex FY2022: no US revenue; revenue axes [('RevenueFromContractWithCustomerExcludingAssessedTax', ('ProductOrServiceAxis',)), ('RevenueFromContractWithCustomerExcludingAssessedTax', ('ProductOrServiceAxis', 'DerivativeInstrumentRiskAxis', 'HedgingDesignationAxis', 'ReclassificationOutOfAccumulatedOtherComprehensiveIncomeAxis', 'StatementEquityComponentsAxis')), ('RevenueFromContractWithCustomerExcludingAssessedTax', ('ProductOrServiceAxis', 'StatementGeographicalAxis'))]
 [sec] Vertex FY2022 10-K: revenue 8930700000.0 USD, US None (None), R&D 2540300000.0
+[sec] Vertex FY2023: no US revenue; revenue axes [('RevenueFromContractWithCustomerExcludingAssessedTax', ('ProductOrServiceAxis',)), ('RevenueFromContractWithCustomerExcludingAssessedTax', ('ProductOrServiceAxis', 'DerivativeInstrumentRiskAxis', 'HedgingDesignationAxis', 'ReclassificationOutOfAccumulatedOtherComprehensiveIncomeAxis', 'StatementEquityComponentsAxis')), ('RevenueFromContractWithCustomerExcludingAssessedTax', ('ProductOrServiceAxis', 'StatementGeographicalAxis'))]
 [sec] Vertex FY2023 10-K: revenue 9869200000.0 USD, US None (None), R&D 3162900000.0
 [sec] Vertex FY2024 10-K: revenue 11020100000.0 USD, US 6684900000.0 (country:US), R&D 3630300000.0
 [sec] Vertex FY2025 10-K: revenue 12001300000.0 USD, US 7548600000.0 (country:US), R&D 3909500000.0
 [sec] Biogen FY2015 10-K: revenue 10763800000.0 USD, US 6545800000.0 (country:US), R&D 2012800000.0
 [sec] Biogen FY2016 10-K: revenue 11448800000.0 USD, US 7050400000.0 (country:US), R&D 1973300000.0
 [sec] Biogen FY2017 10-K: revenue 12273900000.0 USD, US 7017100000.0 (country:US), R&D 2253600000.0
+[sec] Biogen FY2018: no US revenue; revenue axes [('Revenues', ('MajorCustomersAxis', 'StatementGeographicalAxis', 'TypeOfArrangementAxis')), ('Revenues', ('MajorCustomersAxis', 'TypeOfArrangementAxis')), ('Revenues', ('ProductOrServiceAxis',)), ('Revenues', ('ProductOrServiceAxis', 'IncomeStatementBalanceSheetAndAdditionalDisclosuresByDisposalGroupsIncludingDiscontinuedOperationsAxis')), ('Revenues', ('ProductOrServiceAxis', 'StatementGeographicalAxis')), ('Revenues', ('ProductOrServiceAxis', 'StatementGeographicalAxis', 'TypeOfArrangementAxis')), ('Revenues', ('ReclassificationOutOfAccumulatedOtherComprehensiveIncomeAxis', 'StatementEquityComponentsAxis')), ('Revenues', ('ScheduleOfEquityMethodInvestmentEquityMethodInvesteeNameAxis', 'TypeOfArrangementAxis')), ('Revenues', ('StatementGeographicalAxis', 'TypeOfArrangementAxis'))]
 [sec] Biogen FY2018 10-K: revenue 13452900000.0 USD, US None (None), R&D 2597200000.0
+[sec] Biogen FY2019: no US revenue; revenue axes [('Revenues', ('MajorCustomersAxis', 'ProductOrServiceAxis')), ('Revenues', ('MajorCustomersAxis', 'TypeOfArrangementAxis')), ('Revenues', ('ProductOrServiceAxis',)), ('Revenues', ('ProductOrServiceAxis', 'StatementGeographicalAxis')), ('Revenues', ('ProductOrServiceAxis', 'TypeOfArrangementAxis')), ('Revenues', ('ReclassificationOutOfAccumulatedOtherComprehensiveIncomeAxis', 'StatementEquityComponentsAxis')), ('Revenues', ('TypeOfArrangementAxis',))]
 [sec] Biogen FY2019 10-K: revenue 14377900000.0 USD, US None (None), R&D 2280600000.0
+[sec] Biogen FY2020: no US revenue; revenue axes [('Revenues', ('MajorCustomersAxis', 'ProductOrServiceAxis')), ('Revenues', ('MajorCustomersAxis', 'TypeOfArrangementAxis')), ('Revenues', ('ProductOrServiceAxis',)), ('Revenues', ('ProductOrServiceAxis', 'StatementGeographicalAxis')), ('Revenues', ('ReclassificationOutOfAccumulatedOtherComprehensiveIncomeAxis', 'StatementEquityComponentsAxis')), ('Revenues', ('TypeOfArrangementAxis',))]
 [sec] Biogen FY2020 10-K: revenue 13444600000.0 USD, US None (None), R&D 3990900000.0
+[sec] Biogen FY2021: no US revenue; revenue axes [('Revenues', ('MajorCustomersAxis', 'ProductOrServiceAxis')), ('Revenues', ('MajorCustomersAxis', 'TypeOfArrangementAxis')), ('Revenues', ('ProductOrServiceAxis',)), ('Revenues', ('ProductOrServiceAxis', 'StatementGeographicalAxis')), ('Revenues', ('ReclassificationOutOfAccumulatedOtherComprehensiveIncomeAxis', 'StatementEquityComponentsAxis')), ('Revenues', ('TypeOfArrangementAxis',))]
 [sec] Biogen FY2021 10-K: revenue 10981700000.0 USD, US None (None), R&D 2501200000.0
-[sec] Biogen FY2022 10-K: revenue 10173400000.0 USD, US None (None), R&D 2231100000.0
-[sec] Biogen FY2023 10-K: revenue 9835600000.0 USD, US None (None), R&D 2462000000.0
-[sec] Biogen FY2024 10-K: revenue 9675900000.0 USD, US None (None), R&D 2041800000.0
-[sec] Biogen FY2025 10-K: revenue 9890600000.0 USD, US None (None), R&D 1778600000.0
+[sec] Biogen FY2022 10-K: revenue 10173400000.0 USD, US 1136300000.0 (biib:RoyaltyAttributedToOCREVUSMember), R&D 2231100000.0
+[sec] Biogen FY2023 10-K: revenue 9835600000.0 USD, US 1266200000.0 (biib:RoyaltyAttributedToOCREVUSMember), R&D 2462000000.0
+[sec] Biogen FY2024 10-K: revenue 9675900000.0 USD, US 1339500000.0 (biib:RoyaltyAttributedToOCREVUSMember), R&D 2041800000.0
+[sec] Biogen FY2025 10-K: revenue 9890600000.0 USD, US 1414900000.0 (biib:RoyaltyAttributedToOCREVUSMember), R&D 1778600000.0
 [sec] Novartis FY2015 20-F: no XBRL instance (47 files)
 [sec] Novartis FY2016 20-F: no XBRL instance (13 files)
 [sec] Novartis FY2017 20-F: no XBRL instance (16 files)
+[sec] Novartis FY2018: no US revenue; revenue axes [('RevenueFromSaleOfGoods', ('SegmentConsolidationItemsAxis', 'SegmentsAxis'))]
 [sec] Novartis FY2018 20-F: revenue 51900000000.0 USD, US None (None), R&D 9074000000.0
+[sec] Novartis FY2019: no US revenue; revenue axes [('RevenueFromSaleOfGoods', ('ContinuingAndDiscontinuedOperationsAxis',)), ('RevenueFromSaleOfGoods', ('SegmentConsolidationItemsAxis', 'SegmentsAxis'))]
 [sec] Novartis FY2019 20-F: revenue 47498000000.0 USD, US None (None), R&D 9402000000.0
+[sec] Novartis FY2020: no US revenue; revenue axes [('RevenueFromSaleOfGoods', ('SegmentConsolidationItemsAxis', 'SegmentsAxis'))]
 [sec] Novartis FY2020 20-F: revenue 48659000000.0 USD, US None (None), R&D 8980000000.0
+[sec] Novartis FY2021: no US revenue; revenue axes [('RevenueFromSaleOfGoods', ('SegmentsAxis',))]
 [sec] Novartis FY2021 20-F: revenue 51626000000.0 USD, US None (None), R&D 9540000000.0
+[sec] Novartis FY2022: no US revenue; revenue axes [('RevenueFromSaleOfGoods', ('SegmentsAxis',))]
 [sec] Novartis FY2022 20-F: revenue 50545000000.0 USD, US None (None), R&D 9996000000.0
 [sec] Novartis FY2023 20-F: revenue 45440000000.0 USD, US 17959000000.0 (country:US), R&D 11371000000.0
 [sec] Novartis FY2024 20-F: revenue 50317000000.0 USD, US 21146000000.0 (country:US), R&D 10022000000.0
 [sec] Novartis FY2025 20-F: revenue 54532000000.0 USD, US 23331000000.0 (country:US), R&D 11200000000.0
 [sec] AstraZeneca FY2015 20-F: no XBRL instance (194 files)
 [sec] AstraZeneca FY2016 20-F: no XBRL instance (320 files)
+[sec] AstraZeneca FY2017: no US revenue; revenue axes [('Revenue', ('GeographicalAreasAxis', 'SegmentConsolidationItemsAxis')), ('Revenue', ('SegmentConsolidationItemsAxis',)), ('RevenueFromSaleOfGoods', ('GeographicalAreasAxis',)), ('RevenueFromSaleOfGoods', ('MajorCustomersAxis',)), ('RevenueFromSaleOfGoods', ('ProductsAndServicesAxis',))]
 [sec] AstraZeneca FY2017 20-F: revenue 22465000000.0 USD, US None (None), R&D 5757000000.0
+[sec] AstraZeneca FY2018: no US revenue; revenue axes [('Revenue', ('GeographicalAreasAxis',)), ('Revenue', ('GeographicalAreasAxis', 'SegmentConsolidationItemsAxis')), ('RevenueFromSaleOfGoods', ('GeographicalAreasAxis',)), ('RevenueFromSaleOfGoods', ('MajorCustomersAxis',))]
 [sec] AstraZeneca FY2018 20-F: revenue 22090000000.0 USD, US None (None), R&D 5932000000.0
+[sec] AstraZeneca FY2019: no US revenue; revenue axes [('Revenue', ('GeographicalAreasAxis',)), ('Revenue', ('GeographicalAreasAxis', 'SegmentConsolidationItemsAxis')), ('RevenueFromSaleOfGoods', ('GeographicalAreasAxis',)), ('RevenueFromSaleOfGoods', ('MajorCustomersAxis',))]
 [sec] AstraZeneca FY2019 20-F: revenue 24384000000.0 USD, US None (None), R&D 6059000000.0
+[sec] AstraZeneca FY2020: no US revenue; revenue axes [('Revenue', ('GeographicalAreasAxis',)), ('Revenue', ('GeographicalAreasAxis', 'SegmentConsolidationItemsAxis')), ('RevenueFromSaleOfGoods', ('GeographicalAreasAxis',)), ('RevenueFromSaleOfGoods', ('MajorCustomersAxis',))]
 [sec] AstraZeneca FY2020 20-F: revenue 26617000000.0 USD, US None (None), R&D 5991000000.0
+[sec] AstraZeneca FY2021: no US revenue; revenue axes [('Revenue', ('GeographicalAreasAxis',)), ('Revenue', ('GeographicalAreasAxis', 'SegmentConsolidationItemsAxis')), ('RevenueFromSaleOfGoods', ('GeographicalAreasAxis',)), ('RevenueFromSaleOfGoods', ('MajorCustomersAxis',))]
 [sec] AstraZeneca FY2021 20-F: revenue 37417000000.0 USD, US None (None), R&D 9736000000.0
-[sec] AstraZeneca FY2022 20-F: revenue 44351000000.0 USD, US None (None), R&D 9762000000.0
-[sec] AstraZeneca FY2023 20-F: revenue 45811000000.0 USD, US None (None), R&D 10935000000.0
+[sec] AstraZeneca FY2022 20-F: revenue 44351000000.0 USD, US 17278000000.0 (azn:IfrsCountryUsMember), R&D 9762000000.0
+[sec] AstraZeneca FY2023 20-F: revenue 45811000000.0 USD, US 18121000000.0 (azn:IfrsCountryUsMember), R&D 10935000000.0
 [sec] AstraZeneca FY2024 20-F: revenue 54073000000.0 USD, US 21806000000.0 (country:US), R&D 13583000000.0
 [sec] AstraZeneca FY2025 20-F: revenue 58739000000.0 USD, US 23970000000.0 (country:US), R&D 14232000000.0
 [sec] GSK FY2015 20-F: no XBRL instance (275 files)
 [sec] GSK FY2016 20-F: no XBRL instance (238 files)
 [sec] GSK FY2017 20-F: no XBRL instance (222 files)
+[sec] GSK FY2018: no US revenue; revenue axes [('Revenue', ('BusinessCombinationsAxis',)), ('Revenue', ('CategoriesOfRelatedPartiesAxis',)), ('Revenue', ('CategoriesOfRelatedPartiesAxis', 'GeographicalAreasAxis')), ('Revenue', ('GeographicalAreasAxis', 'MajorCustomersAxis', 'SegmentsAxis')), ('Revenue', ('ProductsAndServicesAxis', 'SegmentsAxis')), ('Revenue', ('SegmentConsolidationItemsAxis',)), ('Revenue', ('SegmentConsolidationItemsAxis', 'SegmentsAxis')), ('Revenue', ('SegmentsAxis',)), ('Revenue', ('SignificantInvestmentsInAssociatesAxis',))]
 [sec] GSK FY2018 20-F: revenue 30821000000.0 GBP, US None (None), R&D 3893000000.0
+[sec] GSK FY2019: no US revenue; revenue axes [('Revenue', ('AssetsAndLiabilitiesAxis', 'SegmentConsolidationItemsAxis')), ('Revenue', ('BusinessCombinationsAxis',)), ('Revenue', ('CategoriesOfRelatedPartiesAxis',)), ('Revenue', ('GeographicalAreasAxis', 'CategoriesOfRelatedPartiesAxis')), ('Revenue', ('MajorCustomersAxis', 'SegmentsAxis', 'GeographicalAreasAxis')), ('Revenue', ('ProductsAndServicesAxis', 'SegmentsAxis')), ('Revenue', ('SegmentConsolidationItemsAxis',)), ('Revenue', ('SegmentsAxis',)), ('Revenue', ('SegmentsAxis', 'SegmentConsolidationItemsAxis')), ('Revenue', ('SignificantInvestmentsInAssociatesAxis',))]
 [sec] GSK FY2019 20-F: revenue 33754000000.0 GBP, US None (None), R&D 4568000000.0
+[sec] GSK FY2020: no US revenue; revenue axes [('Revenue', ('AssetsAndLiabilitiesAxis', 'SegmentConsolidationItemsAxis')), ('Revenue', ('BusinessCombinationsAxis',)), ('Revenue', ('CategoriesOfRelatedPartiesAxis',)), ('Revenue', ('GeographicalAreasAxis', 'CategoriesOfRelatedPartiesAxis')), ('Revenue', ('MajorCustomersAxis', 'SegmentsAxis', 'GeographicalAreasAxis')), ('Revenue', ('SegmentConsolidationItemsAxis',)), ('Revenue', ('SegmentsAxis',)), ('Revenue', ('SegmentsAxis', 'ProductsAndServicesAxis')), ('Revenue', ('SegmentsAxis', 'SegmentConsolidationItemsAxis')), ('Revenue', ('SignificantInvestmentsInAssociatesAxis',))]
 [sec] GSK FY2020 20-F: revenue 34099000000.0 GBP, US None (None), R&D 5098000000.0
+[sec] GSK FY2021: no US revenue; revenue axes [('Revenue', ('BusinessCombinationsAxis',)), ('Revenue', ('CategoriesOfRelatedPartiesAxis',)), ('Revenue', ('CategoriesOfRelatedPartiesAxis', 'GeographicalAreasAxis')), ('Revenue', ('MajorCustomersAxis', 'GeographicalAreasAxis', 'SegmentsAxis')), ('Revenue', ('ProductsAndServicesAxis',)), ('Revenue', ('ProductsAndServicesAxis', 'SegmentsAxis')), ('Revenue', ('SegmentConsolidationItemAxis',)), ('Revenue', ('SegmentConsolidationItemAxis', 'AssetsAndLiabilitiesAxis')), ('Revenue', ('SegmentConsolidationItemAxis', 'SegmentsAxis')), ('Revenue', ('SegmentsAxis',)), ('Revenue', ('SignificantInvestmentsInAssociatesAxis',))]
 [sec] GSK FY2021 20-F: revenue 34114000000.0 GBP, US None (None), R&D 5278000000.0
+[sec] GSK FY2022: no US revenue; revenue axes [('Revenue', ('BusinessCombinationsAxis',)), ('Revenue', ('CategoriesOfRelatedPartiesAxis',)), ('Revenue', ('CategoriesOfRelatedPartiesAxis', 'GeographicalAreasAxis')), ('Revenue', ('ContinuingAndDiscontinuedOperationsAxis',)), ('Revenue', ('MajorCustomersAxis', 'GeographicalAreasAxis')), ('Revenue', ('ProductsAndServicesAxis',)), ('Revenue', ('ProductsAndServicesAxis', 'SegmentsAxis')), ('Revenue', ('SegmentConsolidationItemAxis', 'AssetsAndLiabilitiesAxis')), ('Revenue', ('SegmentsAxis',))]
 [sec] GSK FY2022 20-F: revenue 29324000000.0 GBP, US None (None), R&D 5488000000.0
+[sec] GSK FY2023: no US revenue; revenue axes [('Revenue', ('BusinessCombinationsAxis',)), ('Revenue', ('CategoriesOfRelatedPartiesAxis',)), ('Revenue', ('CategoriesOfRelatedPartiesAxis', 'GeographicalAreasAxis')), ('Revenue', ('MajorCustomersAxis', 'GeographicalAreasAxis')), ('Revenue', ('ProductsAndServicesAxis',)), ('Revenue', ('ProductsAndServicesAxis', 'SegmentsAxis')), ('Revenue', ('SegmentConsolidationItemAxis', 'AssetsAndLiabilitiesAxis')), ('Revenue', ('SegmentsAxis',))]
 [sec] GSK FY2023 20-F: revenue 30328000000.0 GBP, US None (None), R&D 6223000000.0
+[sec] GSK FY2024: no US revenue; revenue axes [('Revenue', ('BusinessCombinationsAxis',)), ('Revenue', ('SegmentConsolidationItemAxis', 'AssetsAndLiabilitiesAxis')), ('RevenueFromSaleOfGoods', ('CategoriesOfRelatedPartiesAxis',)), ('RevenueFromSaleOfGoods', ('CategoriesOfRelatedPartiesAxis', 'GeographicalAreasAxis')), ('RevenueFromSaleOfGoods', ('MajorCustomersAxis', 'GeographicalAreasAxis')), ('RevenueFromSaleOfGoods', ('ProductsAndServicesAxis',)), ('RevenueFromSaleOfGoods', ('ProductsAndServicesAxis', 'SegmentsAxis')), ('RevenueFromSaleOfGoods', ('SegmentsAxis',))]
 [sec] GSK FY2024 20-F: revenue 31376000000.0 GBP, US None (None), R&D 6401000000.0
 [sec] GSK FY2025 20-F: revenue 32667000000.0 GBP, US 16859000000.0 (country:US), R&D 7525000000.0
 [sec] Sanofi FY2015 20-F: no XBRL instance (30 files)
@@ -190,16 +226,24 @@
 [sec] Novo Nordisk FY2023 20-F: revenue 232261000000.0 DKK, US 127534000000.0 (country:US), R&D 32443000000.0
 [sec] Novo Nordisk FY2024 20-F: revenue 290403000000.0 DKK, US 167402000000.0 (country:US), R&D 48062000000.0
 [sec] Novo Nordisk FY2025 20-F: revenue 309064000000.0 DKK, US 173166000000.0 (country:US), R&D 52039000000.0
+[sec] Takeda FY2018: no US revenue; revenue axes [('Revenue', ('SignificantInvestmentsInAssociatesAxis',))]
 [sec] Takeda FY2018 20-F: revenue 2097224000000.0 JPY, US None (None), R&D 368298000000.0
+[sec] Takeda FY2019: no US revenue; revenue axes [('Revenue', ('SignificantInvestmentsInAssociatesAxis',))]
 [sec] Takeda FY2019 20-F: revenue 3291188000000.0 JPY, US None (None), R&D 492381000000.0
+[sec] Takeda FY2020: no US revenue; revenue axes [('Revenue', ('SignificantInvestmentsInAssociatesAxis',))]
 [sec] Takeda FY2020 20-F: revenue 3197812000000.0 JPY, US None (None), R&D 455833000000.0
+[sec] Takeda FY2021: no US revenue; revenue axes []
 [sec] Takeda FY2021 20-F: revenue 3569006000000.0 JPY, US None (None), R&D 526087000000.0
+[sec] Takeda FY2022: no US revenue; revenue axes []
 [sec] Takeda FY2022 20-F: revenue 4027478000000.0 JPY, US None (None), R&D 633325000000.0
+[sec] Takeda FY2023: no US revenue; revenue axes []
 [sec] Takeda FY2023 20-F: revenue 4263762000000.0 JPY, US None (None), R&D 729924000000.0
+[sec] Takeda FY2024: no US revenue; revenue axes [('Revenue', ('AssetsAndLiabilitiesClassifiedAsHeldForSaleAxis',))]
 [sec] Takeda FY2024 20-F: revenue 4581551000000.0 JPY, US None (None), R&D 730227000000.0
+[sec] Takeda FY2025: no US revenue; revenue axes []
 [sec] Takeda FY2025 20-F: revenue 4505720000000.0 JPY, US None (None), R&D 675924000000.0
 [sec_panel] wrote sec_panel.csv.gz: 167 rows, columns ['company', 'hq', 'fiscal_year', 'period_end', 'form', 'revenue', 'revenue_concept', 'currency', 'rd', 'rd_concept', 'cost_of_sales', 'cost_of_sales_concept', 'net_income', 'net_income_concept', 'rd_ex_iprd', 'us_revenue', 'us_concept', 'us_member', 'us_concept_total', 'iprd', 'iprd_concept']
-[sec_geography] wrote sec_geography.csv.gz: 707 rows, columns ['company', 'fiscal_year', 'concept', 'axis', 'member', 'value', 'concept_total', 'currency']
+[sec_geography] wrote sec_geography.csv.gz: 739 rows, columns ['company', 'fiscal_year', 'concept', 'axis', 'member', 'value', 'concept_total', 'currency']
 [sec_filings] wrote sec_filings.csv.gz: 167 rows, columns ['company', 'fiscal_year', 'form', 'period_end', 'accession', 'instance']
-== sec done in 150 s
+== sec done in 140 s
 failed: []
