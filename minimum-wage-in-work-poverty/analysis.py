@@ -278,6 +278,9 @@ def main() -> None:
     gap_sp = ptr.loc[2024, "single_parent_line"] - ptr.loc[2024, "single_parent_net"]
     say("Portugal 2024: shortfall of a single parent with two children, EUR per year; per month (12)",
         f"{gap_sp:,.0f}; {gap_sp / 12:,.0f}")
+    gross = GFE.loc[2024, "PT"]
+    say("Portugal 2024: gross annual minimum wage (TaxBEN), EUR; shortfalls as % of it: one-earner couple with two "
+        "children; single parent", f"{gross:,.0f}; {100 * gap / gross:.1f}%; {100 * gap_sp / gross:.1f}%")
     for g in ["ES", "EL", "FR", "DE"]:
         s = pr[pr.geo == g].set_index("year")
         yrs = [y for y in (2010, 2014, 2019, 2024) if y in s.index]
