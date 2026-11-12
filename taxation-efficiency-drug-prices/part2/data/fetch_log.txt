@@ -1,0 +1,187 @@
+===== cms_partd
+[cms_partd_2024] shape (14536, 46)
+[cms_partd_2024] columns ['Brnd_Name', 'Gnrc_Name', 'Tot_Mftr', 'Mftr_Name', 'Tot_Spndng_2020', 'Tot_Dsg_Unts_2020', 'Tot_Clms_2020', 'Tot_Benes_2020', 'Avg_Spnd_Per_Dsg_Unt_Wghtd_2020', 'Avg_Spnd_Per_Clm_2020', 'Avg_Spnd_Per_Bene_2020', 'Outlier_Flag_2020', 'Tot_Spndng_2021', 'Tot_Dsg_Unts_2021', 'Tot_Clms_2021', 'Tot_Benes_2021', 'Avg_Spnd_Per_Dsg_Unt_Wghtd_2021', 'Avg_Spnd_Per_Clm_2021', 'Avg_Spnd_Per_Bene_2021', 'Outlier_Flag_2021', 'Tot_Spndng_2022', 'Tot_Dsg_Unts_2022', 'Tot_Clms_2022', 'Tot_Benes_2022', 'Avg_Spnd_Per_Dsg_Unt_Wghtd_2022', 'Avg_Spnd_Per_Clm_2022', 'Avg_Spnd_Per_Bene_2022', 'Outlier_Flag_2022', 'Tot_Spndng_2023', 'Tot_Dsg_Unts_2023', 'Tot_Clms_2023', 'Tot_Benes_2023', 'Avg_Spnd_Per_Dsg_Unt_Wghtd_2023', 'Avg_Spnd_Per_Clm_2023', 'Avg_Spnd_Per_Bene_2023', 'Outlier_Flag_2023', 'Tot_Spndng_2024', 'Tot_Dsg_Unts_2024', 'Tot_Clms_2024', 'Tot_Benes_2024', 'Avg_Spnd_Per_Dsg_Unt_Wghtd_2024', 'Avg_Spnd_Per_Clm_2024', 'Avg_Spnd_Per_Bene_2024', 'Outlier_Flag_2024', 'Chg_Avg_Spnd_Per_Dsg_Unt_23_24', 'CAGR_Avg_Spnd_Per_Dsg_Unt_20_24']
+                       Brnd_Name             Gnrc_Name Tot_Mftr        Mftr_Name Tot_Spndng_2020 Tot_Dsg_Unts_2020 Tot_Clms_2020 Tot_Benes_2020 Avg_Spnd_Per_Dsg_Unt_Wghtd_2020 Avg_Spnd_Per_Clm_2020 Avg_Spnd_Per_Bene_2020 Outlier_Flag_2020 Tot_Spndng_2021 Tot_Dsg_Unts_2021 Tot_Clms_2021 Tot_Benes_2021 Avg_Spnd_Per_Dsg_Unt_Wghtd_2021 Avg_Spnd_Per_Clm_2021 Avg_Spnd_Per_Bene_2021 Outlier_Flag_2021 Tot_Spndng_2022 Tot_Dsg_Unts_2022 Tot_Clms_2022 Tot_Benes_2022 Avg_Spnd_Per_Dsg_Unt_Wghtd_2022 Avg_Spnd_Per_Clm_2022 Avg_Spnd_Per_Bene_2022 Outlier_Flag_2022 Tot_Spndng_2023 Tot_Dsg_Unts_2023 Tot_Clms_2023 Tot_Benes_2023 Avg_Spnd_Per_Dsg_Unt_Wghtd_2023 Avg_Spnd_Per_Clm_2023 Avg_Spnd_Per_Bene_2023 Outlier_Flag_2023 Tot_Spndng_2024 Tot_Dsg_Unts_2024 Tot_Clms_2024 Tot_Benes_2024 Avg_Spnd_Per_Dsg_Unt_Wghtd_2024 Avg_Spnd_Per_Clm_2024 Avg_Spnd_Per_Bene_2024 Outlier_Flag_2024 Chg_Avg_Spnd_Per_Dsg_Unt_23_24 CAGR_Avg_Spnd_Per_Dsg_Unt_20_24
+0       1st Tier Unifine Pentips  Pen Needle, Diabetic        1          Overall       118923.24            547006          4457           1595                     0.217701046          26.682351357           74.560025078                 0       102280.76            459384          3708           1313                    0.2230012539          27.583807983           77.898522468                 0        70039.61            310304          2501           1147                     0.225873987          28.004642143           61.063304272                 0        44355.04            195672          1613            699                    0.2271618646          27.498474892           63.454992847                 0         10454.6             50740           378            213                    0.2059251004          27.657671958           49.082629108                 0                   -0.093487366                    -0.013806371
+1       1st Tier Unifine Pentips  Pen Needle, Diabetic        1  Owen Mumford Us       118923.24            547006          4457           1595                     0.217701046          26.682351357           74.560025078                 0       102280.76            459384          3708           1313                    0.2230012539          27.583807983           77.898522468                 0        70039.61            310304          2501           1147                     0.225873987          28.004642143           61.063304272                 0        44355.04            195672          1613            699                    0.2271618646          27.498474892           63.454992847                 0         10454.6             50740           378            213                    0.2059251004          27.657671958           49.082629108                 0                   -0.093487366                    -0.013806371
+2  1st Tier Unifine Pentips Plus  Pen Needle, Diabetic        1          Overall       210217.15           1046616          8408           3905                     0.200851195          25.002039724           53.832816901                 0       131927.33            566872          4564           1766                    0.2328115409          28.906075811           74.704037373                 0       114601.54            486206          3846           1474                    0.2357078344          29.797592304           77.748670285                 0        97951.18            406617          3269           1267                    0.2409322287          29.963652493           77.309534333                 0        26074.56            116580           965            451                    0.2236895101           27.02026943           57.814988914                 0                   -0.071566676                    0.0272893827
+3  1st Tier Unifine Pentips Plus  Pen Needle, Diabetic        1  Owen Mumford Us       210217.15           1046616          8408           3905                     0.200851195          25.002039724           53.832816901                 0       131927.33            566872          4564           1766                    0.2328115409          28.906075811           74.704037373                 0       114601.54            486206          3846           1474                    0.2357078344          29.797592304           77.748670285                 0        97951.18            406617          3269           1267                    0.2409322287          29.963652493           77.309534333                 0        26074.56            116580           965            451                    0.2236895101           27.02026943           57.814988914                 0                   -0.071566676                    0.0272893827
+4                       Abacavir      Abacavir Sulfate        5          Overall       9196378.7           2959278         37102           5068                    3.4912038683          247.86746537           1814.5972178                 0      7027816.23           2498928         30488           4254                    3.1858372173          230.51089707           1652.0489492                 0      6943055.75           2034487         24294           3452                    3.8710647827          285.79302503           2011.3139484                 0      5287295.41           1648593         19632           2809                     3.594356551          269.32026335           1882.2696369                 0      3054065.87           1384651         16306           2351                    2.4243778651          187.29706059           1299.0497108                 0                   -0.325504348                    -0.087135591
+[cms_partd_2024] wrote cms_partd_2024.csv.gz: 14536 rows, 0.97 MB
+===== nadac
+[nadac_2024] downloaded 129.7 MB
+[nadac_2024] shape (1497925, 12)
+[nadac_2024] columns ['NDC Description', 'NDC', 'NADAC Per Unit', 'Effective Date', 'Pricing Unit', 'Pharmacy Type Indicator', 'OTC', 'Explanation Code', 'Classification for Rate Setting', 'Corresponding Generic Drug NADAC Per Unit', 'Corresponding Generic Drug Effective Date', 'As of Date']
+                  NDC Description          NDC NADAC Per Unit Effective Date Pricing Unit Pharmacy Type Indicator OTC Explanation Code Classification for Rate Setting Corresponding Generic Drug NADAC Per Unit Corresponding Generic Drug Effective Date  As of Date
+0  12HR NASAL DECONGEST ER 120 MG  24385005452        0.26838     12/20/2023           EA                     C/I   Y                1                               G                                       NaN                                       NaN  01/03/2024
+1  12HR NASAL DECONGEST ER 120 MG  70000047501        0.26838     12/20/2023           EA                     C/I   Y                1                               G                                       NaN                                       NaN  01/03/2024
+2  24H NASAL ALLERGY 55 MCG SPRAY  46122038576        0.76188     12/20/2023           ML                     C/I   Y             1, 5                               G                                       NaN                                       NaN  01/03/2024
+3  24HR ALLERGY(LEVOCETIRZN) 5 MG  70000036201        0.20773     12/20/2023           EA                     C/I   Y                1                               G                                       NaN                                       NaN  01/03/2024
+4  24HR ALLERGY(LEVOCETIRZN) 5 MG  70000036202        0.20773     12/20/2023           EA                     C/I   Y                1                               G                                       NaN                                       NaN  01/03/2024
+[nadac_2024] rows with an as-of date in 2024: 1497925; distinct as-of dates 52
+[nadac_2024] wrote nadac_2024.csv.gz: 32881 rows, 0.54 MB
+===== fda
+[fda_ndc] members ['package.txt', 'product.txt']
+[fda_product] shape (116660, 20)
+[fda_product] columns ['PRODUCTID', 'PRODUCTNDC', 'PRODUCTTYPENAME', 'PROPRIETARYNAME', 'PROPRIETARYNAMESUFFIX', 'NONPROPRIETARYNAME', 'DOSAGEFORMNAME', 'ROUTENAME', 'STARTMARKETINGDATE', 'ENDMARKETINGDATE', 'MARKETINGCATEGORYNAME', 'APPLICATIONNUMBER', 'LABELERNAME', 'SUBSTANCENAME', 'ACTIVE_NUMERATOR_STRENGTH', 'ACTIVE_INGRED_UNIT', 'PHARM_CLASSES', 'DEASCHEDULE', 'NDC_EXCLUDE_FLAG', 'LISTING_RECORD_CERTIFIED_THROUGH']
+                                        PRODUCTID PRODUCTNDC          PRODUCTTYPENAME  PROPRIETARYNAME PROPRIETARYNAMESUFFIX NONPROPRIETARYNAME       DOSAGEFORMNAME     ROUTENAME STARTMARKETINGDATE ENDMARKETINGDATE MARKETINGCATEGORYNAME APPLICATIONNUMBER            LABELERNAME  SUBSTANCENAME ACTIVE_NUMERATOR_STRENGTH ACTIVE_INGRED_UNIT                                                                                                                                                                                    PHARM_CLASSES DEASCHEDULE NDC_EXCLUDE_FLAG LISTING_RECORD_CERTIFIED_THROUGH
+0  0002-0152_a5dba1a3-f7f7-4b8d-b9f1-a09dcdc1b2fc  0002-0152  HUMAN PRESCRIPTION DRUG         Zepbound                   NaN        tirzepatide  INJECTION, SOLUTION  SUBCUTANEOUS           20240328              NaN                   NDA         NDA217806  Eli Lilly and Company    TIRZEPATIDE                       2.5            mg/.5mL  G-Protein-linked Receptor Interactions [MoA], GLP-1 Receptor Agonist [EPC], Glucagon-like Peptide-1 (GLP-1) Agonists [MoA], Glucose-dependent Insulinotropic Polypeptide Receptor Agonist [EPC]         NaN                N                         20271231
+1  0002-0213_0225b9f7-8112-4b71-b513-c302c8b374b0  0002-0213           HUMAN OTC DRUG          Humulin                     R      Insulin human  INJECTION, SOLUTION    PARENTERAL           19830627         20261215                   BLA         BLA018780  Eli Lilly and Company  INSULIN HUMAN                       100            [iU]/mL                                                                                                                                                                      Insulin [CS], Insulin [EPC]         NaN                N                              NaN
+2  0002-0243_a5dba1a3-f7f7-4b8d-b9f1-a09dcdc1b2fc  0002-0243  HUMAN PRESCRIPTION DRUG         Zepbound                   NaN        tirzepatide  INJECTION, SOLUTION  SUBCUTANEOUS           20240328              NaN                   NDA         NDA217806  Eli Lilly and Company    TIRZEPATIDE                         5            mg/.5mL  G-Protein-linked Receptor Interactions [MoA], GLP-1 Receptor Agonist [EPC], Glucagon-like Peptide-1 (GLP-1) Agonists [MoA], Glucose-dependent Insulinotropic Polypeptide Receptor Agonist [EPC]         NaN                N                         20271231
+3  0002-0800_03be5386-187a-420f-9021-55778a73eba0  0002-0800  HUMAN PRESCRIPTION DRUG  Sterile Diluent                   NaN            diluent  INJECTION, SOLUTION  SUBCUTANEOUS           19870710              NaN                   BLA         BLA020563  Eli Lilly and Company          WATER                         1              mL/mL                                                                                                                                                                                              NaN         NaN                N                         20271231
+4  0002-1152_8f6367b6-bf0d-46e1-ba7d-0417523474e5  0002-1152  HUMAN PRESCRIPTION DRUG         Mounjaro                   NaN        tirzepatide  INJECTION, SOLUTION  SUBCUTANEOUS           20230728              NaN                   NDA         NDA215866  Eli Lilly and Company    TIRZEPATIDE                       2.5            mg/.5mL  G-Protein-linked Receptor Interactions [MoA], GLP-1 Receptor Agonist [EPC], Glucagon-like Peptide-1 (GLP-1) Agonists [MoA], Glucose-dependent Insulinotropic Polypeptide Receptor Agonist [EPC]         NaN                N                         20271231
+[fda_package] shape (219225, 8)
+[fda_package] columns ['PRODUCTID', 'PRODUCTNDC', 'NDCPACKAGECODE', 'PACKAGEDESCRIPTION', 'STARTMARKETINGDATE', 'ENDMARKETINGDATE', 'NDC_EXCLUDE_FLAG', 'SAMPLE_PACKAGE']
+                                        PRODUCTID PRODUCTNDC NDCPACKAGECODE                                                              PACKAGEDESCRIPTION STARTMARKETINGDATE ENDMARKETINGDATE NDC_EXCLUDE_FLAG SAMPLE_PACKAGE
+0  0002-0152_a5dba1a3-f7f7-4b8d-b9f1-a09dcdc1b2fc  0002-0152   0002-0152-01  1 VIAL, SINGLE-DOSE in 1 CARTON (0002-0152-01)  / .5 mL in 1 VIAL, SINGLE-DOSE           20240328              NaN                N              N
+1  0002-0152_a5dba1a3-f7f7-4b8d-b9f1-a09dcdc1b2fc  0002-0152   0002-0152-04  4 VIAL, SINGLE-DOSE in 1 CARTON (0002-0152-04)  / .5 mL in 1 VIAL, SINGLE-DOSE           20240808              NaN                N              N
+2  0002-0152_a5dba1a3-f7f7-4b8d-b9f1-a09dcdc1b2fc  0002-0152   0002-0152-61  4 VIAL, SINGLE-DOSE in 1 CARTON (0002-0152-61)  / .5 mL in 1 VIAL, SINGLE-DOSE           20250501              NaN                N              Y
+3  0002-0213_0225b9f7-8112-4b71-b513-c302c8b374b0  0002-0213   0002-0213-01     1 VIAL, MULTI-DOSE in 1 CARTON (0002-0213-01)  / 3 mL in 1 VIAL, MULTI-DOSE           20230620         20261215                N              N
+4  0002-0243_a5dba1a3-f7f7-4b8d-b9f1-a09dcdc1b2fc  0002-0243   0002-0243-01  1 VIAL, SINGLE-DOSE in 1 CARTON (0002-0243-01)  / .5 mL in 1 VIAL, SINGLE-DOSE           20240328              NaN                N              N
+[fda_ndc] wrote fda_ndc.csv.gz: 219225 rows, 6.31 MB
+===== mfp
+[cms_mfp] members ['CMS_Negotiation_Program_Selected_Drug_List_and_Maximum_Fair_Price_Data_File_20260921.csv', 'CMS_Negotiation_Program_Selected_Drug_List_and_Maximum_Fair_Price_Data_File_20260921.xlsx']
+[cms_mfp:CMS_Negotiation_Program_Selected_Drug_List_and_Maximum_Fair_Price_Data_File_20260921.csv] shape (560, 15)
+[cms_mfp:CMS_Negotiation_Program_Selected_Drug_List_and_Maximum_Fair_Price_Data_File_20260921.csv] columns ['IPAY', 'Selected Drug Name', 'Active Ingredient Name or Active Moiety Name', 'NDC-9', 'NDC-11', 'XREF NDC-11', 'HCPCS Code', 'MFP Effective Date', 'MFP End Date', 'Single MFP per 30 DES', 'NDC-9 MFP per Unit Price', 'HCPCS Code Dosage Price', 'As of Date', 'Type of Update', 'Remarks']
+   IPAY         Selected Drug Name Active Ingredient Name or Active Moiety Name       NDC-9         NDC-11 XREF NDC-11 HCPCS Code MFP Effective Date MFP End Date Single MFP per 30 DES NDC-9 MFP per Unit Price HCPCS Code Dosage Price  As of Date Type of Update                                                                      Remarks
+0  2026  ELIQUIS; ELIQUIS SPRINKLE                                     APIXABAN  00003-0893  00003-0893-21         NaN        NaN         01/01/2026   12/31/2026                   231                 4.145072                     NaN  08/15/2024       End Date  Added for IPAY 2026 announcement. End dated to reflect inflation adjustment
+1  2026  ELIQUIS; ELIQUIS SPRINKLE                                     APIXABAN  00003-0893  00003-0893-21         NaN        NaN         01/01/2027          NaN                237.25                 4.257193                     NaN  11/25/2025      Inflation                                       Inflation adjustment for IPAY 2026 NDC
+2  2026  ELIQUIS; ELIQUIS SPRINKLE                                     APIXABAN  00003-0893  00003-0893-31         NaN        NaN         01/01/2026   12/31/2026                   231                 4.145072                     NaN  08/15/2024       End Date  Added for IPAY 2026 announcement. End dated to reflect inflation adjustment
+3  2026  ELIQUIS; ELIQUIS SPRINKLE                                     APIXABAN  00003-0893  00003-0893-31         NaN        NaN         01/01/2027          NaN                237.25                 4.257193                     NaN  11/25/2025      Inflation                                       Inflation adjustment for IPAY 2026 NDC
+4  2026  ELIQUIS; ELIQUIS SPRINKLE                                     APIXABAN  00003-0893  00003-0893-41         NaN        NaN         01/01/2026   12/31/2026                   231                 4.145072                     NaN  08/15/2024       End Date  Added for IPAY 2026 announcement. End dated to reflect inflation adjustment
+[cms_mfp_cms_negotiation_program_selected_drug_list_and_maximum_fair_] wrote cms_mfp_cms_negotiation_program_selected_drug_list_and_maximum_fair_.csv.gz: 560 rows, 0.01 MB
+[cms_mfp:CMS_Negotiation_Program_Selected_Drug_List_and_Maximum_Fair_Price_Data_File_20260921.xlsx] shape (560, 15)
+[cms_mfp:CMS_Negotiation_Program_Selected_Drug_List_and_Maximum_Fair_Price_Data_File_20260921.xlsx] columns ['IPAY', 'Selected Drug Name', 'Active Ingredient Name or Active Moiety Name', 'NDC-9', 'NDC-11', 'XREF NDC-11', 'HCPCS Code', 'MFP Effective Date', 'MFP End Date', 'Single MFP per 30 DES', 'NDC-9 MFP per Unit Price', 'HCPCS Code Dosage Price', 'As of Date', 'Type of Update', 'Remarks']
+   IPAY         Selected Drug Name Active Ingredient Name or Active Moiety Name       NDC-9         NDC-11 XREF NDC-11 HCPCS Code   MFP Effective Date         MFP End Date Single MFP per 30 DES NDC-9 MFP per Unit Price HCPCS Code Dosage Price           As of Date Type of Update                                                                      Remarks
+0  2026  ELIQUIS; ELIQUIS SPRINKLE                                     APIXABAN  00003-0893  00003-0893-21         NaN        NaN  2026-01-01 00:00:00  2026-12-31 00:00:00                   231                 4.145072                     NaN  2024-08-15 00:00:00       End Date  Added for IPAY 2026 announcement. End dated to reflect inflation adjustment
+1  2026  ELIQUIS; ELIQUIS SPRINKLE                                     APIXABAN  00003-0893  00003-0893-21         NaN        NaN  2027-01-01 00:00:00                  NaN                237.25                 4.257193                     NaN  2025-11-25 00:00:00      Inflation                                       Inflation adjustment for IPAY 2026 NDC
+2  2026  ELIQUIS; ELIQUIS SPRINKLE                                     APIXABAN  00003-0893  00003-0893-31         NaN        NaN  2026-01-01 00:00:00  2026-12-31 00:00:00                   231                 4.145072                     NaN  2024-08-15 00:00:00       End Date  Added for IPAY 2026 announcement. End dated to reflect inflation adjustment
+3  2026  ELIQUIS; ELIQUIS SPRINKLE                                     APIXABAN  00003-0893  00003-0893-31         NaN        NaN  2027-01-01 00:00:00                  NaN                237.25                 4.257193                     NaN  2025-11-25 00:00:00      Inflation                                       Inflation adjustment for IPAY 2026 NDC
+4  2026  ELIQUIS; ELIQUIS SPRINKLE                                     APIXABAN  00003-0893  00003-0893-41         NaN        NaN  2026-01-01 00:00:00  2026-12-31 00:00:00                   231                 4.145072                     NaN  2024-08-15 00:00:00       End Date  Added for IPAY 2026 announcement. End dated to reflect inflation adjustment
+[cms_mfp_cms_negotiation_program_selected_drug_list_and_maximum_fair_] wrote cms_mfp_cms_negotiation_program_selected_drug_list_and_maximum_fair_.csv.gz: 560 rows, 0.01 MB
+===== bdpm
+[bdpm_cis] shape (15799, 12)
+[bdpm_cis] columns ['cis', 'denomination', 'forme', 'voies', 'statut_amm', 'type_procedure', 'etat_commercialisation', 'date_amm', 'statut_bdm', 'autorisation_europeenne', 'titulaires', 'surveillance']
+        cis                                                                     denomination                                                      forme                      voies           statut_amm            type_procedure etat_commercialisation    date_amm statut_bdm autorisation_europeenne             titulaires surveillance
+0  61266250                                              A 313 200 000 UI POUR CENT, pommade                                                    pommade                    cutanée  Autorisation active       Procédure nationale         Commercialisée  12/03/1998                                      PHARMA DEVELOPPEMENT          Non
+1  62869109                                                 A 313 50 000 U.I., capsule molle                                              capsule molle                      orale  Autorisation active       Procédure nationale         Commercialisée  07/07/1997                                      PHARMA DEVELOPPEMENT          Non
+2  69103878  A.D.N. BOIRON, degré de dilution compris entre 4CH et 30CH ou entre 8DH et 60DH   comprimé et solution(s) et granules et poudre et pommade  cutanée;orale;sublinguale  Autorisation active  Enreg homéo (Proc. Nat.)         Commercialisée  14/10/2021                                                    BOIRON          Non
+3  61876780                                ABACAVIR ARROW 300 mg, comprimé pelliculé sécable                                 comprimé pelliculé sécable                      orale  Autorisation active   Procédure décentralisée         Commercialisée  22/10/2019                                          ARROW GENERIQUES          Non
+4  63797011                               ABACAVIR SANDOZ 300 mg, comprimé pelliculé sécable                                 comprimé pelliculé sécable                      orale  Autorisation active   Procédure décentralisée         Commercialisée  30/12/2016                                                    SANDOZ          Non
+[bdpm_cis] wrote bdpm_cis.csv.gz: 15799 rows, 0.39 MB
+[bdpm_cis_cip] shape (20908, 13)
+[bdpm_cis_cip] columns ['cis', 'cip7', 'libelle_presentation', 'statut_admin', 'etat_commercialisation', 'date_declaration', 'cip13', 'agrement_collectivites', 'taux_remboursement', 'prix_1', 'prix_2', 'prix_3', 'indications_remboursement']
+        cis     cip7                                                                                                libelle_presentation         statut_admin            etat_commercialisation date_declaration          cip13 agrement_collectivites taux_remboursement prix_1 prix_2 prix_3                                                                                                                                                                                    indications_remboursement
+0  60002283  4949729                                                                   plaquette(s) PVC PVDC aluminium de 30 comprimé(s)  Présentation active  Déclaration de commercialisation       16/03/2011  3400949497294                    oui               100%  24,34  25,36   1,02                                                                                                                                                                                                             
+1  60002283  4949770                                                                   plaquette(s) PVC PVDC aluminium de 90 comprimé(s)  Présentation active  Déclaration de commercialisation       19/09/2011  3400949497706                    oui               100%  68,68  71,44   2,76                                                                                                                                                                                                             
+2  60003620  3696350  20 récipient(s) unidose(s) polyéthylène de 2 ml suremballée(s)/surpochée(s) par plaquette de 5 récipients unidoses  Présentation active  Déclaration de commercialisation       30/11/2006  3400936963504                    oui                65%  12,81  13,83   1,02  Ce médicament peut être pris en charge ou remboursé par l'Assurance Maladie dans les cas suivants :<br><br>- Asthme persistant sévère de l¿enfant (en traitement quotidien).  ; JOURNAL OFFICIEL ; 24/11/06
+3  60004277  3614582                                                         plaquette(s) thermoformée(s) PVC aluminium de 30  gélule(s)  Présentation active  Déclaration de commercialisation       11/06/2003  3400936145825                    oui                65%   1,54   2,56   1,02                                                                                                                                                                                                             
+4  60004487  3972519                                                              plaquette(s) opaque(s) PVC-Aluminium de 30 comprimé(s)  Présentation active  Déclaration de commercialisation       12/12/2011  3400939725192                    oui                65%   8,88   9,90   1,02                                                                                                                                                                                                             
+[bdpm_cis_cip] wrote bdpm_cis_cip.csv.gz: 20908 rows, 0.71 MB
+[bdpm_cis_compo] shape (32449, 8)
+[bdpm_cis_compo] columns ['cis', 'element_pharmaceutique', 'code_substance', 'substance', 'dosage', 'reference_dosage', 'nature_composant', 'numero_liaison']
+        cis       element_pharmaceutique code_substance                                         substance                    dosage    reference_dosage nature_composant numero_liaison
+0  60002283                     comprimé          42215                                       ANASTROZOLE                   1,00 mg         un comprimé               SA              1
+1  60002746                     granules          05319  ACTAEA RACEMOSA POUR PRÉPARATIONS HOMÉOPATHIQUES  2CH à 30CH et 4DH à 60DH         un comprimé               SA              7
+2  60002746  solution buvable en gouttes          05319  ACTAEA RACEMOSA POUR PRÉPARATIONS HOMÉOPATHIQUES  2CH à 30CH et 4DH à 60DH         un comprimé               SA              8
+3  60003620                   suspension          04179                     DIPROPIONATE DE BÉCLOMÉTASONE          800 microgrammes  2 ml de suspension               SA              1
+4  60004277                       gélule          03902                                       FÉNOFIBRATE                 100,00 mg          une gélule               SA              1
+[bdpm_cis_compo] wrote bdpm_cis_compo.csv.gz: 32449 rows, 0.55 MB
+[bdpm_cis_gener] shape (10614, 5)
+[bdpm_cis_gener] columns ['groupe_id', 'groupe_libelle', 'cis', 'type_generique', 'numero_tri']
+  groupe_id                                             groupe_libelle       cis type_generique numero_tri
+0         1     CIMETIDINE 200 mg - TAGAMET 200 mg, comprimé pelliculé  65383183              0          1
+1         1     CIMETIDINE 200 mg - TAGAMET 200 mg, comprimé pelliculé  67535309              1          2
+2         2  CIMETIDINE 200 mg - TAGAMET 200 mg, comprimé effervescent  65025026              0          1
+3         2  CIMETIDINE 200 mg - TAGAMET 200 mg, comprimé effervescent  68053454              1          2
+4         3     CIMETIDINE 400 mg - TAGAMET 400 mg, comprimé pelliculé  69472373              0          1
+[bdpm_cis_gener] wrote bdpm_cis_gener.csv.gz: 10614 rows, 0.13 MB
+===== open_medic
+[open_medic] https://open-data-assurance-maladie.ameli.fr/medicaments/download2.php?Dir_Rep=2024_CIP13 is an HTML page (3145 bytes); first 1500 chars:
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr-FR" lang="fr-FR">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>ameli.fr&nbsp;-&nbsp;Open&nbsp;Data&nbsp;-&nbsp;Download</title>
+<meta name="description" content="Open Data Assurance Maladie Download" />
+<meta name="author" content="Assurance Maladie" />
+<meta name="robots" content="noindex" />
+<meta name="googlebot" content="noindex" />
+<style type="text/css">
+/* Styles de base pour le tableau */
+.table-responsive {
+  width: 100%;
+  border-collapse: collapse;
+}
+.table-responsive th, .table-responsive td {
+  border: 10px solid #FFFFFF;
+  padding: 8px;
+  text-align: left;
+}
+/* Styles pour rendre le tableau responsive */
+@media screen and (max-width: 600px) {
+  .table-responsive thead {
+    display: none;
+  }
+  .table-responsive, .table-responsive tbody, .table-responsive tr, .table-responsive td {
+    display: block;
+    width: 100%;
+  }
+  .table-responsive tr {
+    margin-bottom: 15px;
+  }
+  .table-responsive td {
+    text-align: right;
+    padding-left: 50%;
+    position: relative;
+  }
+  .table-responsive td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 0;
+    width: 50%;
+    padding-left: 15px;
+    font-weight: bold;
+    text-align: left;
+  }
+}
+</style>
+</head>
+<body>
+<table class="table-responsive">
+<tbody>
+
+<tr><td data-label="fichier"><a href="./download_file.php?token=064429ec5f163083dd3879aabb16da70&file=Open_MEDIC_Bases_Complementaires/2024_C
+[open_medic] links found: ['https://open-data-assurance-maladie.ameli.fr/medicaments/download_file.php?token=064429ec5f163083dd3879aabb16da70&file=Open_MEDIC_Bases_Complementaires/2024_CIP13/NB_2024_cip13.CSV.gz', 'https://open-data-assurance-maladie.ameli.fr/medicaments/download_file.php?token=064429ec5f163083dd3879aabb16da70&file=Open_MEDIC_Bases_Complementaires/2024_CIP13/NB_2024_cip13_age_sexe.CSV.gz', 'https://open-data-assurance-maladie.ameli.fr/medicaments/download_file.php?token=064429ec5f163083dd3879aabb16da70&file=Open_MEDIC_Bases_Complementaires/2024_CIP13/NB_2024_cip13_age_sexe_reg.CSV.gz', 'https://open-data-assurance-maladie.ameli.fr/medicaments/download_file.php?token=064429ec5f163083dd3879aabb16da70&file=Open_MEDIC_Bases_Complementaires/2024_CIP13/NB_2024_cip13_age_sexe_reg_spe.CSV.gz', 'https://open-data-assurance-maladie.ameli.fr/medicaments/download_file.php?token=064429ec5f163083dd3879aabb16da70&file=Open_MEDIC_Bases_Complementaires/2024_CIP13/NB_2024_cip13_age_sexe_spe.CSV.gz', 'https://open-data-assurance-maladie.ameli.fr/medicaments/download_file.php?token=064429ec5f163083dd3879aabb16da70&file=Open_MEDIC_Bases_Complementaires/2024_CIP13/NB_2024_cip13_reg.CSV.gz', 'https://open-data-assurance-maladie.ameli.fr/medicaments/download_file.php?token=064429ec5f163083dd3879aabb16da70&file=Open_MEDIC_Bases_Complementaires/2024_CIP13/NB_2024_cip13_reg_spe.CSV.gz', 'https://open-data-assurance-maladie.ameli.fr/medicaments/download_file.php?token=064429ec5f163083dd3879aabb16da70&file=Open_MEDIC_Bases_Complementaires/2024_CIP13/NB_2024_cip13_spe.CSV.gz']
+[open_medic] '2024 CIP13' -> https://open-data-assurance-maladie.ameli.fr/medicaments/download_file.php?token=064429ec5f163083dd3879aabb16da70&file=Open_MEDIC_Bases_Complementaires/2024_CIP13/NB_2024_cip13.CSV.gz, 0.4 MB
+[open_medic] table head:
+CIP13;l_cip13;nbc;REM;BSE;BOITES
+3400921604696;YELLOX 0,9MG/ML COLLY FL5ML 1;53770;228.579,71;329.221,48;89221
+3400921609080;AVONEX 0,03MG/0,5ML SOL INJ STYLO 4;1914;10.414.225,89;10.497.183,25;19372
+3400921610550;POLYGYNAX VIRGO CAPSULE VAGINALE 6;14984;9.298,76;53.918,58;19891
+3400921610840;NICORANDIL SDZ 20MG CPR 30;1798;124.872,37;126.948,30;20642
+3400921611731;NICORANDIL SDZ 10MG CPR 30;7494;258.259,93;265.993,92;77776
+3400921612790;LHRH FERRING 0,1 MG SOL INJ AMP 1;127;1.793,40;2.704,80;138
+3400921617535;VALSARTAN/HCTZ CRT 80/12,5MG CPR 30;501;4.474,47;5.572,84;1531
+3400921618075;VALSARTAN/HCTZ CRT 80/12,5MG CPR 90;637;9.665,49;12.383,28;1176
+3400921619195;VALSARTAN/HCTZ CRT 160/12,5MG CPR 30;682;7.259,80;8.473,92;2328
+3400921619546;VALSARTAN/HCTZ CRT 160/12,5MG CPR 90;1160
+[open_medic_2024[2024 CIP13]] shape (12655, 6)
+[open_medic_2024[2024 CIP13]] columns ['CIP13', 'l_cip13', 'nbc', 'REM', 'BSE', 'BOITES']
+           CIP13                              l_cip13    nbc            REM            BSE BOITES
+0  3400921604696        YELLOX 0,9MG/ML COLLY FL5ML 1  53770     228.579,71     329.221,48  89221
+1  3400921609080  AVONEX 0,03MG/0,5ML SOL INJ STYLO 4   1914  10.414.225,89  10.497.183,25  19372
+2  3400921610550   POLYGYNAX VIRGO CAPSULE VAGINALE 6  14984       9.298,76      53.918,58  19891
+3  3400921610840           NICORANDIL SDZ 20MG CPR 30   1798     124.872,37     126.948,30  20642
+4  3400921611731           NICORANDIL SDZ 10MG CPR 30   7494     258.259,93     265.993,92  77776
+[open_medic_2024] wrote open_medic_2024.csv.gz: 12655 rows, 0.35 MB
+===== ecb
+[ecb_eurusd] shape (7, 32)
+[ecb_eurusd] columns ['KEY', 'FREQ', 'CURRENCY', 'CURRENCY_DENOM', 'EXR_TYPE', 'EXR_SUFFIX', 'TIME_PERIOD', 'OBS_VALUE', 'OBS_STATUS', 'OBS_CONF', 'OBS_PRE_BREAK', 'OBS_COM', 'TIME_FORMAT', 'BREAKS', 'COLLECTION', 'COMPILING_ORG', 'DISS_ORG', 'DOM_SER_IDS', 'PUBL_ECB', 'PUBL_MU', 'PUBL_PUBLIC', 'UNIT_INDEX_BASE', 'COMPILATION', 'COVERAGE', 'DECIMALS', 'NAT_TITLE', 'SOURCE_AGENCY', 'SOURCE_PUB', 'TITLE', 'TITLE_COMPL', 'UNIT', 'UNIT_MULT']
+                    KEY FREQ CURRENCY CURRENCY_DENOM EXR_TYPE EXR_SUFFIX TIME_PERIOD        OBS_VALUE OBS_STATUS OBS_CONF OBS_PRE_BREAK OBS_COM TIME_FORMAT BREAKS COLLECTION COMPILING_ORG DISS_ORG DOM_SER_IDS PUBL_ECB PUBL_MU PUBL_PUBLIC UNIT_INDEX_BASE COMPILATION COVERAGE DECIMALS NAT_TITLE SOURCE_AGENCY SOURCE_PUB                                       TITLE                                                    TITLE_COMPL UNIT UNIT_MULT
+0  EXR.A.USD.EUR.SP00.A    A      USD            EUR     SP00          A        2019  1.1194745098039          A        F           NaN     NaN         P1Y    NaN          A           NaN      NaN         NaN      NaN     NaN         NaN             NaN         NaN      NaN        4       NaN           4F0        NaN  US dollar/Euro ECB reference exchange rate  ECB reference exchange rate, US dollar/Euro, 2.15 pm (C.E.T.)  USD         0
+1  EXR.A.USD.EUR.SP00.A    A      USD            EUR     SP00          A        2020  1.1421961089494          A        F           NaN     NaN         P1Y    NaN          A           NaN      NaN         NaN      NaN     NaN         NaN             NaN         NaN      NaN        4       NaN           4F0        NaN  US dollar/Euro ECB reference exchange rate  ECB reference exchange rate, US dollar/Euro, 2.15 pm (C.E.T.)  USD         0
+2  EXR.A.USD.EUR.SP00.A    A      USD            EUR     SP00          A        2021  1.1827403100775          A        F           NaN     NaN         P1Y    NaN          A           NaN      NaN         NaN      NaN     NaN         NaN             NaN         NaN      NaN        4       NaN           4F0        NaN  US dollar/Euro ECB reference exchange rate  ECB reference exchange rate, US dollar/Euro, 2.15 pm (C.E.T.)  USD         0
+3  EXR.A.USD.EUR.SP00.A    A      USD            EUR     SP00          A        2022  1.0530486381323          A        F           NaN     NaN         P1Y    NaN          A           NaN      NaN         NaN      NaN     NaN         NaN             NaN         NaN      NaN        4       NaN           4F0        NaN  US dollar/Euro ECB reference exchange rate  ECB reference exchange rate, US dollar/Euro, 2.15 pm (C.E.T.)  USD         0
+4  EXR.A.USD.EUR.SP00.A    A      USD            EUR     SP00          A        2023   1.081268627451          A        F           NaN     NaN         P1Y    NaN          A           NaN      NaN         NaN      NaN     NaN         NaN             NaN         NaN      NaN        4       NaN           4F0        NaN  US dollar/Euro ECB reference exchange rate  ECB reference exchange rate, US dollar/Euro, 2.15 pm (C.E.T.)  USD         0
+[ecb_eurusd] wrote ecb_eurusd.csv.gz: 7 rows, 0.00 MB
+failed: []

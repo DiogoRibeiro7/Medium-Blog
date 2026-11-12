@@ -1,0 +1,219 @@
+Part 2: how much more the US pays for medicines, and how the answer depends on the method.
+pandas 3.0.5, NumPy 2.5.3
+
+==============================================================================================
+1. Data and coverage
+==============================================================================================
+Medicare Part D Spending by Drug, 2024 (CMS). Gross spending: ingredient cost, dispensing fees and
+sales tax, paid by plans and beneficiaries, before manufacturer rebates.
+  brand-name rows (manufacturer 'Overall') 3625; spending $288.7 bn; dosage units 131.2 bn; claims 1712 m
+  FDA NDC lookup, share of spending matched by brand name 0.973, by molecule 0.011, unmatched 0.016
+  originator share of units 0.073  share of spending 0.859
+  generic    share of units 0.864  share of spending 0.125
+  other      share of units 0.062  share of spending 0.016
+  (RAND, Mulcahy et al. 2024, all US channels in 2022: brand-name originators 7 percent of volume and
+   87 percent of spending; unbranded generics 90 percent of volume.)
+  oral solid rows (FDA share of tablet or capsule listings >= 0.75): spending $171.3 bn (0.593), units 0.769 of all units
+
+Open Medic 2024 (Assurance Maladie), every reimbursed presentation dispensed by retail pharmacies,
+joined to the public drug database (BDPM) for composition, form and the dispensing fee per box.
+  presentations 12655; boxes 2.368 bn; reimbursement base (BSE) EUR 29.73 bn; amount reimbursed EUR 26.04 bn
+  joined to BDPM: boxes 0.999, BSE 1.000
+  oral solid with a known unit count: boxes 0.685, BSE 0.556, EUR 16.53 bn
+  generic share of oral solid units 0.620, of BSE 0.287
+  check, presentations with more than 5000 boxes (8205): BSE per box minus current price without
+  fee, median EUR 0.059; minus the price with the fee, median EUR -0.976; the BSE excludes the fee.
+  dispensing fee per box (BDPM third price field): median EUR 1.02
+
+Exchange rate: ECB reference rate, annual average, 2024 USD 1.08238 per EUR; 2025 1.12998.
+Matched molecules (oral solid in both, after adding brands and generics): 432
+  US spending covered $121.9 bn: 0.712 of oral solid spending, 0.422 of all Part D spending
+  French spending covered EUR 14.40 bn with fees (BSE EUR 13.04 bn): 0.788 of oral solid BSE
+  generic share of matched units: US 0.939, France 0.675
+
+==============================================================================================
+2. The naive comparison: brand with brand, generic with generic
+==============================================================================================
+  originator n  261  Laspeyres  6.231  Paasche 10.363  Fisher  8.036  Jevons 13.682  median 13.073
+  generic    n  221  Laspeyres  0.907  Paasche  2.645  Fisher  1.549  Jevons  1.840  median  1.602
+  all        n  482  Laspeyres  3.524  Paasche  7.818  Fisher  5.249  Jevons  5.453  median  4.603
+  Largest contributions to the numerator of the originator Paasche index (French volumes at US prices):
+    metformin      (Glumetza  ) share 0.256  US $  68.581  FR $  0.086  ratio   793.2  US units   0.29 m  FR units   363.8 m  US generic share of the molecule 1.000
+    apixaban       (Eliquis   ) share 0.087  US $   9.635  FR $  1.086  ratio     8.9  US units 2156.24 m  FR units   874.0 m  US generic share of the molecule 0.000
+    dapagliflozin  (Farxiga   ) share 0.046  US $  18.315  FR $  1.433  ratio    12.8  US units 288.87 m  FR units   241.9 m  US generic share of the molecule 0.041
+    everolimus     (Afinitor  ) share 0.023  US $ 229.348  FR $  4.740  ratio    48.4  US units   0.10 m  FR units     9.9 m  US generic share of the molecule 0.963
+    enzalutamid    (Xtandi    ) share 0.022  US $ 136.494  FR $ 28.839  ratio     4.7  US units  24.92 m  FR units    15.5 m  US generic share of the molecule 0.000
+    tafamidis      (Vyndamax  ) share 0.021  US $ 571.864  FR $262.826  ratio     2.2  US units   5.48 m  FR units     3.6 m  US generic share of the molecule 0.000
+  A brand that lost its patent long ago sells a few units in the US at a high price, and many units
+  in France at a low one; weighting it by French volumes multiplies the old US brand price by them.
+
+==============================================================================================
+3. Molecule baskets
+==============================================================================================
+Basket by the generic share of units in each country (threshold 0.05):
+  single-source  n  113  Laspeyres  5.767  Paasche  5.873  Fisher  5.820  Jevons  5.774  median  5.326
+                 US $  89.70 bn (0.736), France EUR    7.47 bn (0.519); 95% bootstrap over molecules: L 4.22-7.25, P 4.53-7.25, F 4.41-7.20
+  multi-source   n  213  Laspeyres  1.001  Paasche  2.393  Fisher  1.547  Jevons  1.866  median  1.620
+                 US $  17.68 bn (0.145), France EUR    5.80 bn (0.403); 95% bootstrap over molecules: L 0.87-1.20, P 1.71-3.43, F 1.27-1.91
+  mixed          n  106  Laspeyres  5.105  Paasche 10.349  Fisher  7.269  Jevons  3.918  median  3.292
+                 US $  14.52 bn (0.119), France EUR    1.13 bn (0.078); 95% bootstrap over molecules: L 1.44-9.40, P 5.25-16.33, F 2.90-11.59
+  mixed, generic in US only     n   93  Laspeyres  1.348  Paasche  4.130  Fisher  2.360  Jevons  3.368  median  2.775  US $   2.92 bn
+  mixed, generic in France only n   13  Laspeyres 17.033  Paasche 16.499  Fisher 16.764  Jevons 11.569  median 11.698  US $  11.60 bn
+  all matched    n  432  Laspeyres  3.380  Paasche  4.822  Fisher  4.037  Jevons  3.008  median  2.680
+
+Largest molecules by US spending (price per tablet or capsule; France with the dispensing fee):
+  single-source
+    apixaban                     US $20.77 bn  US $   9.635  FR $   1.086  ratio   8.87  generic share US 0.00 FR 0.00
+    empagliflozin                US $11.44 bn  US $  18.928  FR $   1.432  ratio  13.22  generic share US 0.00 FR 0.00
+    dapagliflozin                US $ 5.49 bn  US $  18.229  FR $   1.433  ratio  12.72  generic share US 0.04 FR 0.00
+    sacubitril + valsartan       US $ 4.02 bn  US $  11.040  FR $   2.661  ratio   4.15  generic share US 0.00 FR 0.00
+    bictegravir + emtricitabin + tenofovir alafenamid US $ 3.46 bn  US $ 131.330  FR $  22.841  ratio   5.75  generic share US 0.00 FR 0.00
+    enzalutamid                  US $ 3.40 bn  US $ 136.494  FR $  28.839  ratio   4.73  generic share US 0.00 FR 0.00
+    tafamidis                    US $ 3.13 bn  US $ 571.864  FR $ 262.826  ratio   2.18  generic share US 0.00 FR 0.00
+    ibrutinib                    US $ 2.27 bn  US $ 411.936  FR $ 139.369  ratio   2.96  generic share US 0.00 FR 0.00
+    nintedanib                   US $ 2.09 bn  US $ 216.452  FR $  36.662  ratio   5.90  generic share US 0.00 FR 0.00
+    ruxolitinib                  US $ 2.08 bn  US $ 283.641  FR $  51.826  ratio   5.47  generic share US 0.00 FR 0.00
+    palbociclib                  US $ 2.04 bn  US $ 744.250  FR $  88.885  ratio   8.37  generic share US 0.00 FR 0.00
+    zanubrutinib                 US $ 1.72 bn  US $ 121.307  FR $  42.874  ratio   2.83  generic share US 0.00 FR 0.00
+    acalabrutinib                US $ 1.70 bn  US $ 248.662  FR $  85.777  ratio   2.90  generic share US 0.00 FR 0.00
+    osimertinib                  US $ 1.63 bn  US $ 553.431  FR $ 188.339  ratio   2.94  generic share US 0.00 FR 0.00
+    apalutamid                   US $ 1.39 bn  US $ 158.657  FR $  32.948  ratio   4.82  generic share US 0.00 FR 0.00
+  multi-source
+    atorvastatin                 US $ 0.78 bn  US $   0.147  FR $   0.177  ratio   0.83  generic share US 1.00 FR 0.98
+    abirateron                   US $ 0.71 bn  US $  17.810  FR $  19.818  ratio   0.90  generic share US 1.00 FR 0.85
+    gabapentin                   US $ 0.58 bn  US $   0.126  FR $   0.219  ratio   0.57  generic share US 1.00 FR 0.86
+    metoprolol                   US $ 0.57 bn  US $   0.130  FR $   0.158  ratio   0.82  generic share US 1.00 FR 0.58
+    dasatinib                    US $ 0.57 bn  US $ 411.533  FR $  37.693  ratio  10.92  generic share US 0.12 FR 0.77
+    oxycodon                     US $ 0.48 bn  US $   0.693  FR $   0.297  ratio   2.34  generic share US 0.96 FR 0.48
+    rosuvastatin                 US $ 0.47 bn  US $   0.199  FR $   0.218  ratio   0.91  generic share US 1.00 FR 0.96
+    metformin                    US $ 0.41 bn  US $   0.079  FR $   0.084  ratio   0.94  generic share US 1.00 FR 0.79
+    carbidopa + levodopa         US $ 0.40 bn  US $   0.465  FR $   0.110  ratio   4.23  generic share US 0.92 FR 0.48
+    omeprazol                    US $ 0.37 bn  US $   0.170  FR $   0.179  ratio   0.95  generic share US 1.00 FR 0.98
+  mixed
+    rivaroxaban                  US $ 6.23 bn  US $  17.296  FR $   1.479  ratio  11.70  generic share US 0.00 FR 0.53
+    sitagliptin                  US $ 3.81 bn  US $  17.917  FR $   0.413  ratio  43.41  generic share US 0.00 FR 0.89
+    metformin + sitagliptin      US $ 1.07 bn  US $   9.601  FR $   0.219  ratio  43.89  generic share US 0.00 FR 0.85
+    levothyroxin                 US $ 0.82 bn  US $   0.249  FR $   0.090  ratio   2.77  generic share US 0.89 FR 0.01
+    bosutinib                    US $ 0.24 bn  US $ 265.631  FR $  28.432  ratio   9.34  generic share US 0.00 FR 0.07
+    dimethyl                     US $ 0.23 bn  US $  43.950  FR $  15.318  ratio   2.87  generic share US 0.79 FR 0.02
+    amifampridin                 US $ 0.18 bn  US $ 238.309  FR $  11.889  ratio  20.04  generic share US 0.00 FR 0.71
+    everolimus                   US $ 0.17 bn  US $  64.639  FR $   6.042  ratio  10.70  generic share US 0.96 FR 0.04
+    vareniclin                   US $ 0.13 bn  US $   3.472  FR $   1.082  ratio   3.21  generic share US 1.00 FR 0.00
+    amantadin                    US $ 0.12 bn  US $   2.254  FR $   0.186  ratio  12.12  generic share US 0.97 FR 0.00
+  Most extreme ratios in the single-source basket, with US units:
+    chlorambucil                 ratio   604.4  US units        32 k  FR units       268 k
+    busulfan                     ratio   107.2  US units         1 k  FR units         5 k
+    budesonid                    ratio    91.7  US units       306 k  FR units      7400 k
+    pitolisant                   ratio    30.0  US units       528 k  FR units      1923 k
+    glecaprevir + pibrentasvir   ratio     1.1  US units      1062 k  FR units       326 k
+    cobimetinib                  ratio     1.3  US units        66 k  FR units        57 k
+    gilteritinib                 ratio     1.5  US units       350 k  FR units       155 k
+  Per unit and per day of treatment, tafamidis (20 mg capsules are taken four a day, 61 mg one a day):
+    share of capsules that are 20 mg: US 0.306, France 0.021
+    per day: US $742.02, France $266.99, ratio 2.78 (per capsule: 2.18)
+
+The US basket at French prices (2024 Part D volumes, gross prices on both sides):
+  single-source  actual $  89.70 bn, at French prices $  15.55 bn, difference $  74.15 bn
+  multi-source   actual $  17.68 bn, at French prices $  17.67 bn, difference $   0.01 bn
+  mixed          actual $  14.52 bn, at French prices $   2.84 bn, difference $  11.67 bn
+  all            actual $ 121.90 bn, at French prices $  36.07 bn, difference $  85.83 bn
+
+==============================================================================================
+4. Sensitivity
+==============================================================================================
+  main: France with fee, 2024 exchange rate    single L   5.77 P   5.87 (n 113)   multi L  1.00 P  2.39 (n 213)
+  France without the dispensing fee            single L   5.80 P   5.91 (n 113)   multi L  1.18 P  3.01 (n 213)
+  2025 exchange rate                           single L   5.52 P   5.63 (n 113)   multi L  0.96 P  2.29 (n 213)
+  basket threshold 0.02                        single L   5.57 P   5.56 (n 111)   multi L  1.01 P  2.47 (n 216)
+  basket threshold 0.10                        single L   5.77 P   5.93 (n 115)   multi L  1.00 P  2.71 (n 209)
+  basket threshold 0.20                        single L   5.77 P   5.93 (n 115)   multi L  0.96 P  2.65 (n 205)
+  US oral-solid threshold 0.50                 single L   5.73 P   5.77 (n 117)   multi L  1.01 P  2.18 (n 222)
+  US oral-solid threshold 0.95                 single L   6.06 P   6.12 (n 107)   multi L  1.02 P  3.42 (n 184)
+  molecules with no other form in the FDA file single L   6.11 P   5.91 (n  89)   multi L  1.09 P  3.07 (n 111)
+  ratios in the 2.5-97.5 percentile range      single L   5.76 P   5.75 (n 110)   multi L  1.09 P  2.35 (n 206)
+  three largest single-source molecules by US spending: apixaban, empagliflozin, dapagliflozin
+  three largest multi-source molecules by US spending: atorvastatin, abirateron, gabapentin
+  without the three largest single-source molecules single L   4.36 P   4.97 (n 110)   multi L  1.00 P  2.39 (n 213)
+
+Acquisition prices: 2024 NADAC per unit (median across package codes; brand class for the
+single-source basket, brand and generic mixed by Part D unit shares for the multi-source basket)
+against the French price without the dispensing fee.
+  single-source  molecules with a NADAC  37 of 113, US spending share 0.584
+                 Part D gross:  L   8.63  P   9.04  F   8.83
+                 NADAC:         L   8.57  P   8.67  F   8.62   NADAC over Part D gross, US-weighted 0.993
+  multi-source   molecules with a NADAC 205 of 213, US spending share 0.998
+                 Part D gross:  L   1.18  P   3.20  F   1.94
+                 NADAC:         L   0.49  P   1.56  F   0.87   NADAC over Part D gross, US-weighted 0.414
+  NADAC excludes manufacturer rebates and the dispensing fee; the French price without the fee still
+  includes the wholesale and pharmacy margins and 2.1 percent VAT, so this ratio understates the gap
+  between manufacturer prices.
+
+Confidential rebates (single-source basket, Fisher index scaled by (1 - r_US) / (1 - r_FR)):
+                                            none    DREES 2024 all drugs                    high
+  US none       r=0.000                    5.82                    7.46                    8.95
+  US CBO 2015   r=0.220                    4.54                    5.82                    6.98
+  US CBO 2018   r=0.350                    3.78                    4.85                    5.82
+  US RAND 2024  r=0.372                    3.66                    4.69                    5.62
+  (Fisher index of the single-source basket before rebates: 5.820; of the molecules with
+   generics in France only: 16.764.)
+  Rebates that would make the single-source basket cost the same in both countries, given French
+   rebates of 0.00: US rebate of 0.828
+   rebates of 0.22: US rebate of 0.866
+   rebates of 0.35: US rebate of 0.888
+
+==============================================================================================
+5. Composition: an all-drug index and the generic share of units
+==============================================================================================
+Single-source and multi-source molecules only. Multi-source share of units: US 0.9493, France 0.9368
+  single-source share of units 1.00: index with US weights within baskets  5.767, with French weights  5.873
+  single-source share of units 0.50: index with US weights within baskets  5.494, with French weights  5.700
+  single-source share of units 0.20: index with US weights within baskets  4.836, with French weights  5.270
+  single-source share of units 0.10: index with US weights within baskets  4.083, with French weights  4.757
+  single-source share of units 0.05: index with US weights within baskets  3.214, with French weights  4.136
+  single-source share of units 0.02: index with US weights within baskets  2.199, with French weights  3.368
+  single-source share of units 0.00: index with US weights within baskets  1.001, with French weights  2.393
+  at the US mix (0.0507 of units single-source): US weights  3.232, French weights  4.150
+  at the France mix (0.0632 of units single-source): US weights  3.510, French weights  4.352
+  the same molecules with their own weights: Laspeyres 3.232, Paasche 4.352
+  single-source share of spending: US 0.835, France 0.563
+  An all-drug index is an average of two very different indices, and its value is set by how many
+  units fall in each: moving the generic share moves the headline without any price changing.
+
+==============================================================================================
+6. Medicare negotiation: oral drugs with a negotiated price for 2026 or 2027
+==============================================================================================
+Per tablet or capsule. 'before': 2024 NADAC, or Part D gross where the drug has no NADAC (specialty
+drugs, marked *); France 2024: reimbursement base without the fee, originator presentations.
+'after': negotiated price (first year) against the current French price of the originator, at the
+2025 exchange rate (+: no current French price listed; 2024 reimbursement base instead).
+Negotiated price in force from 1 January of the year shown.
+  2026 Eliquis      before $    9.50  FR24 $   1.07 ratio   8.9  | negotiated $    4.15 (0.44 of NADAC) FR now $   1.11  ratio   3.7
+  2026 Entresto     before $   10.99  FR24 $   2.63 ratio   4.2  | negotiated $    5.23 (0.48 of NADAC) FR now $   2.22  ratio   2.4
+  2026 Farxiga      before $   18.62  FR24 $   1.40 ratio  13.3  | negotiated $    6.05 (0.33 of NADAC) FR now $   1.38  ratio   4.4
+  2026 Imbruvica    before $  411.94* FR24 $ 139.33 ratio   3.0  | negotiated $  353.93 (no NADAC    ) FR now $ 145.46+ ratio   2.4
+  2026 Januvia      before $   18.30  FR24 $   0.65 ratio  28.0  | negotiated $    3.91 (0.21 of NADAC) FR now $   0.58  ratio   6.8  [French generics: molecule $0.35]
+  2026 Jardiance    before $   19.54  FR24 $   1.40 ratio  14.0  | negotiated $    6.79 (0.35 of NADAC) FR now $   1.38  ratio   4.9
+  2026 Xarelto      before $   18.15  FR24 $   2.07 ratio   8.8  | negotiated $    6.88 (0.38 of NADAC) FR now $   0.94  ratio   7.3  [French generics: molecule $0.70]
+  2027 Austedo Xr   deutetrabenazin          not matched in both countries
+  2027 Calquence    before $  248.66* FR24 $  85.76 ratio   2.9  | negotiated $  154.82 (no NADAC    ) FR now $  89.53+ ratio   1.7
+  2027 Ibrance      before $  744.25* FR24 $  88.83 ratio   8.4  | negotiated $  380.56 (no NADAC    ) FR now $  92.74+ ratio   4.1
+  2027 Janumet      before $    9.16  FR24 $   0.36 ratio  25.2  | negotiated $    1.45 (0.16 of NADAC) FR now $   0.29  ratio   5.0  [French generics: molecule $0.18]
+  2027 Linzess      linaclotid               not matched in both countries
+  2027 Ofev         before $  216.45* FR24 $  36.64 ratio   5.9  | negotiated $  108.97 (no NADAC    ) FR now $  38.26+ ratio   2.8
+  2027 Otezla       before $   79.15  FR24 $   9.55 ratio   8.3  | negotiated $   28.98 (0.36 of NADAC) FR now $   7.65  ratio   3.8
+  2027 Pomalyst     pomalidomid              not matched in both countries
+  2027 Tradjenta    linagliptin              not matched in both countries
+  2027 Vraylar      cariprazin               not matched in both countries
+  2027 Wegovy       semaglutid               not matched in both countries
+  2027 Xifaxan      before $   52.18  FR24 $   3.80 ratio  13.7  | negotiated $   20.20 (0.39 of NADAC) FR now $   3.94  ratio   5.1
+  2027 Xtandi       before $  136.49* FR24 $  28.83 ratio   4.7  | negotiated $   61.93 (no NADAC    ) FR now $  30.10+ ratio   2.1
+Matched drugs 14 of 20; their 2024 Part D gross spending $66.3 bn.
+  median ratio to France: before 8.57, after 3.95
+  Part D-weighted (2024 units): before 8.03, after 3.50
+  retail drugs with a NADAC (9): Part D-weighted before 9.80, after 4.10; specialty drugs (5): median before 4.73, after 2.43
+  median negotiated price as a share of 2024 NADAC (drugs with a NADAC): 0.361
+  2026: 7 drugs, median ratio before 8.90, after 4.39
+  2027: 7 drugs, median ratio before 8.29, after 3.79
+  share of single-source basket spending in these molecules: 0.618
+  CMS: the 2026 prices would have cut net spending on the ten drugs by 22 percent in 2023; the 2027
+  prices by 44 percent in 2024 (36 percent counting the manufacturer discount programme).
