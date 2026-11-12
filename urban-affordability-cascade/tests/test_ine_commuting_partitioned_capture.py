@@ -11,7 +11,6 @@ import json
 import tempfile
 import unittest
 from pathlib import Path
-from unittest.mock import patch
 
 from extract_commuting import municipality_codes_from_panel
 from ine_commuting_capture import CapturedJSON
@@ -60,16 +59,17 @@ class PartitionedINECaptureTests(unittest.TestCase):
         self.digest = hashlib.sha256(self.source).hexdigest()
 
     def test_metadata_has_all_seventeen_dico_codes_on_two_dimensions(self) -> None:
-        with patch(
-            "ine_commuting_partitioned_capture.EXPECTED_METADATA_SHA256", self.digest
-        ):
-            report = validate_metadata(self.source, self.codes)
+        report = validate_metadata(self.source, self.codes)
         self.assertEqual(report["amp_municipalities_validated_in_both_dimensions"], 17)
         self.assertEqual(report["geographic_dimensions"], [2, 3])
 
-    def test_exact_archived_digest_is_required(self) -> None:
-        with self.assertRaisesRegex(ValueError, "SHA-256 changed"):
-            validate_metadata(self.source, self.codes)
+    def test_metadata_capture_timestamp_does_not_change_definitions(self) -> None:
+        document = json.loads(self.source)
+        document[0]["DataExtracao"] = "2026-11-12T15:00:00Z"
+        changed = json.dumps(document, ensure_ascii=False).encode("utf-8")
+        self.assertNotEqual(hashlib.sha256(changed).hexdigest(), self.digest)
+        report = validate_metadata(changed, self.codes)
+        self.assertEqual(report["amp_municipalities_validated_in_both_dimensions"], 17)
 
     def test_metadata_changed_municipality_name_rejected(self) -> None:
         document = json.loads(self.source)
@@ -77,10 +77,8 @@ class PartitionedINECaptureTests(unittest.TestCase):
             "categ_dsg"
         ] = "Wrong name"
         source = json.dumps(document, ensure_ascii=False).encode("utf-8")
-        digest = hashlib.sha256(source).hexdigest()
-        with patch("ine_commuting_partitioned_capture.EXPECTED_METADATA_SHA256", digest):
-            with self.assertRaisesRegex(ValueError, "mismatched AMP"):
-                validate_metadata(source, self.codes)
+        with self.assertRaisesRegex(ValueError, "mismatched AMP"):
+            validate_metadata(source, self.codes)
 
     def test_unknown_dico_and_changed_query_rejected(self) -> None:
         for invalid in ("AAA1", "131", "13122", "PT"):
@@ -101,11 +99,9 @@ class PartitionedINECaptureTests(unittest.TestCase):
 
     def test_bounded_batch_writes_raw_responses_and_provenance(self) -> None:
         with tempfile.TemporaryDirectory() as temp:
-            with patch("ine_commuting_partitioned_capture.EXPECTED_METADATA_SHA256",
-                       self.digest):
-                result = capture_partition(Path(temp), metadata_bytes=self.source,
-                                           start_index=0, count=2,
-                                           fetcher=fake_response)
+            result = capture_partition(Path(temp), metadata_bytes=self.source,
+                                       start_index=0, count=2,
+                                       fetcher=fake_response)
             self.assertEqual(result["capture_count"], 2)
             self.assertEqual(result["completed_json_captures"], 2)
             self.assertFalse(result["candidate_slice_semantics_verified"])
@@ -128,10 +124,8 @@ class PartitionedINECaptureTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temp:
             path = Path(temp)
             (path / "ine_0012340_dim2_0107_candidate.json").write_text("stale")
-            with patch("ine_commuting_partitioned_capture.EXPECTED_METADATA_SHA256",
-                       self.digest):
-                report = capture_partition(path, metadata_bytes=self.source,
-                                           count=2, fetcher=partial_fetch)
+            report = capture_partition(path, metadata_bytes=self.source,
+                                       count=2, fetcher=partial_fetch)
             self.assertEqual(report["completed_json_captures"], 1)
             self.assertEqual(report["items"][1]["status"], "failed")
             self.assertFalse((path / "ine_0012340_dim2_0107_candidate.json").exists())
@@ -143,10 +137,7 @@ class PartitionedINECaptureTests(unittest.TestCase):
             {"start_index": 16, "count": 2},
             {"dimension": "Dim4"}, {"start_index": True},
         ):
-            with self.subTest(args=args), patch(
-                "ine_commuting_partitioned_capture.EXPECTED_METADATA_SHA256",
-                self.digest,
-            ), tempfile.TemporaryDirectory() as temp:
+            with self.subTest(args=args), tempfile.TemporaryDirectory() as temp:
                 with self.assertRaises(ValueError):
                     capture_partition(Path(temp), metadata_bytes=self.source,
                                       fetcher=fake_response, **args)
