@@ -1,0 +1,171 @@
+
+==============================================================================================
+1. Data and coverage
+==============================================================================================
+Reference-country files, tablets and capsules with a price (one row per brand, strength and pack):
+  France   BDPM presentations sold in 2024 (Open Medic):   8602, brands  1061
+  Spain      3543 presentations, brands  1345
+  Italy      7903 presentations, brands  1721
+  Belgium    4121 presentations, brands  1266
+
+France, manufacturer price (PFHT) backed out of the retail price before the dispensing fee:
+  wholesale margin 6.93% (min 0.30, max 32.50 euros), pharmacy margin by band [(1.91, 0.1), (22.9, 0.07), (150.0, 0.055), (1930.0, 0.05)], VAT 2.1%
+  presentations whose price comes back exactly from a whole-cent PFHT: originals 0.991, all 0.954
+  the same with the older wholesale margin (6.68 percent, cap 30 euros): originals 0.920
+
+Basket: originator brands authorised by the European Commission (centralised procedure), whose
+molecule has generics on less than 5% of French boxes, tablets and capsules sold in French pharmacies in 2024.
+  presentations 185, brands 84, molecules 82
+  value at manufacturer prices 2.48 bn euros: 0.299 of French oral-solid sales, 0.742 of the protected molecules
+
+Coverage of the basket by each reference country (same brand; share of presentations and of value):
+  Spain    presentations 0.378  value 0.603   identical pack  60, other pack   8, other strength   2
+  Italy    presentations 0.486  value 0.658   identical pack  69, other pack  16, other strength   5
+  Belgium  presentations 0.843  value 0.959   identical pack 112, other pack  35, other strength   9
+  number of reference countries pricing each presentation (France included), share of value:
+    1: presentations  12, value 0.029
+    2: presentations  82, value 0.308
+    3: presentations  39, value 0.076
+    4: presentations  52, value 0.587
+  largest brands that only France prices among the four (dispensed by hospitals elsewhere, or not sold):
+    slenyto, vumerity, quviviq, elmiron, rizmoic, adrovance, telzir
+
+==============================================================================================
+2. The rule applied: the Portuguese ceiling against the reference countries
+==============================================================================================
+Pharmacy medicines (priced by France and by Spain or Italy): 98 presentations (35 molecules, 0.665 of basket value)
+  of which priced by all four: 52 (17 molecules, 0.587 of value)
+Priced by neither Spain nor Italy: 87 presentations, 0.335 of value; largest: biktarvy, dovato, triumeq, odefsey, rinvoq, paxlovid, slenyto, juluca
+
+Price level relative to France at French quantities (95% interval resampling molecules):
+  pharmacy medicines:
+    Spain                           0.783  [0.578, 1.144]  n  70
+    Italy                           1.289  [1.204, 1.523]  n  90
+    Belgium                         1.126  [1.044, 1.248]  n  81
+    Portuguese ceiling (average)    1.060  [1.002, 1.198]  n  98
+    lowest of the countries         0.736  [0.569, 0.979]  n  98
+  all four countries:
+    Spain                           0.777  [0.563, 1.157]  n  52
+    Italy                           1.228  [1.139, 1.320]  n  52
+    Belgium                         1.145  [1.098, 1.334]  n  52
+    Portuguese ceiling (average)    1.037  [0.984, 1.170]  n  52
+    lowest of the countries         0.728  [0.553, 0.997]  n  52
+
+Presentation by presentation (pharmacy medicines): median ceiling/France 1.117; ceiling above France 0.796, within half a percent 0.031, below 0.173
+Which country is cheapest and dearest, all-four presentations (share of presentations):
+  France   cheapest 0.500  dearest 0.038
+  Spain    cheapest 0.442  dearest 0.000
+  Italy    cheapest 0.038  dearest 0.731
+  Belgium  cheapest 0.019  dearest 0.231
+Highest over lowest reference price, same presentation: median 2.28, quartiles 1.47-2.50, max 4.65
+Ceiling over the lowest reference price: value-weighted 1.426
+
+Largest molecules in the basket by French value (most sold presentation; ex-factory euros per pack):
+  eliquis      5 mg               x60   FR    51.00  ES    23.10  IT    63.62  BE    55.90   ceiling    48.41  ceiling/FR 0.949
+  forxiga      10 mg              x30   FR    31.50  ES    31.55  IT    34.56  BE    37.20   ceiling    33.70  ceiling/FR 1.070
+  entresto     24 mg + 26 mg      x28   FR    47.74  ES    56.39  IT    58.13  BE    53.48   ceiling    53.94  ceiling/FR 1.130
+  jardiance    10 mg              x30   FR    31.52  ES    31.59  IT    38.40  BE    37.80   ceiling    34.83  ceiling/FR 1.105
+  advagraf     1 mg               x30   FR    34.65  ES    24.17  IT    57.20  BE    25.89   ceiling    35.48  ceiling/FR 1.024
+  tecfidera    240 mg             x56   FR   569.55  ES      n/a  IT  1040.58  BE   320.24   ceiling   643.46  ceiling/FR 1.130
+  otezla       30 mg              x56   FR   330.46  ES      n/a  IT   758.10  BE   256.56   ceiling   448.37  ceiling/FR 1.357
+  xigduo       5 mg + 1000 mg     x60   FR    31.50  ES    33.42  IT    34.56  BE    37.16   ceiling    34.16  ceiling/FR 1.084
+  brintellix   10 mg              x28   FR    18.04  ES    21.84  IT    14.00  BE    28.00   ceiling    20.47  ceiling/FR 1.135
+  brilique     90 mg              x60   FR    28.48  ES    33.18  IT    37.94  BE    41.96   ceiling    35.39  ceiling/FR 1.243
+  synjardy     5 mg + 1000 mg     x60   FR    31.52  ES      n/a  IT    38.40  BE    37.80   ceiling    35.91  ceiling/FR 1.139
+  wakix        18 mg              x30   FR   190.00  ES      n/a  IT   352.56  BE   339.94   ceiling   294.17  ceiling/FR 1.548
+  lonsurf      8.19 mg + 20 mg    x20   FR   437.70  ES      n/a  IT   661.83  BE   766.67   ceiling   622.07  ceiling/FR 1.421
+  selincro     18 mg              x14   FR    35.12  ES    42.00  IT      n/a  BE    35.12   ceiling    37.41  ceiling/FR 1.065
+  sunosi       75 mg              x28   FR   210.01  ES      n/a  IT   217.37  BE      n/a   ceiling   213.69  ceiling/FR 1.018
+
+==============================================================================================
+3. The choice of countries
+==============================================================================================
+All-four presentations (n 52), French quantities. Ceiling under other rules, relative to France
+and to the rule in force (average of the four):
+  average of the four (in force)           vs France  1.037   vs rule in force  1.000
+  median of the four                       vs France  1.076   vs rule in force  1.037
+  lowest of the four (hospital rule)       vs France  0.728   vs rule in force  0.701
+  highest of the four                      vs France  1.271   vs rule in force  1.225
+  average without France                   vs France  1.050   vs rule in force  1.012
+  average without Spain                    vs France  1.124   vs rule in force  1.084
+  average without Italy                    vs France  0.974   vs rule in force  0.939
+  average without Belgium                  vs France  1.002   vs rule in force  0.966
+  average of France and Spain              vs France  0.889   vs rule in force  0.857
+  average of France and Italy              vs France  1.114   vs rule in force  1.074
+  average of France and Belgium            vs France  1.072   vs rule in force  1.034
+  average of Spain and Italy               vs France  1.003   vs rule in force  0.966
+  average of Spain and Belgium             vs France  0.961   vs rule in force  0.926
+  average of Italy and Belgium             vs France  1.186   vs rule in force  1.143
+  France alone                             vs France  1.000   vs rule in force  0.964
+  Spain alone                              vs France  0.777   vs rule in force  0.749
+  Italy alone                              vs France  1.228   vs rule in force  1.184
+  Belgium alone                            vs France  1.145   vs rule in force  1.103
+Range across the rules and sets above: 0.728 (lowest of the four (hospital rule)) to 1.271 (highest of the four)
+
+==============================================================================================
+4. From the ceiling to the pharmacy
+==============================================================================================
+Portuguese retail price at the ceiling for the basket (98 presentations):
+  median retail price 79.78 euros; share of the retail price that is margins, Infarmed's fee and VAT: median 0.226, value-weighted 0.228
+  the 2026 annual revision: retail prices up to 30 euros are left alone and the others are cut by at most 20% (Portaria 394/2025/1)
+  retail price at or below 30 euros (left alone by the 2026 annual revision): presentations 0.082, value 0.004
+  ex-factory    5 euros -> retail     6.68 (margins, fee and VAT 0.251 of it)
+  ex-factory   20 euros -> retail    26.96 (margins, fee and VAT 0.258 of it)
+  ex-factory   50 euros -> retail    64.58 (margins, fee and VAT 0.226 of it)
+  ex-factory  100 euros -> retail   123.24 (margins, fee and VAT 0.189 of it)
+  ex-factory  500 euros -> retail   565.28 (margins, fee and VAT 0.115 of it)
+
+==============================================================================================
+5. A check against Portuguese prices
+==============================================================================================
+Infarmed, homogeneous groups, third quarter of 2026: 7057 presentations, 6689 tablets or capsules, 16 parallel imports
+Original brands (a brand that France sells as an original, not a generic name), tablets and capsules: 287
+  priced by at least three reference countries: 219 presentations, 88 brands
+  Portuguese maximum ex-factory price over the rebuilt ceiling: median 1.051
+    within half a percent of the ceiling 0.073; below 0.338; above 0.589
+    retail above 30 euros    n  59: at the ceiling 0.153, below 0.458, above 0.390, median 1.000
+    retail 30 euros or less  n 160: at the ceiling 0.044, below 0.294, above 0.662, median 1.109
+    retail above 30 euros, the same pack in every country that sells it, n 22: at the ceiling 0.318, within 2 percent 0.455
+  above the ceiling with retail above 30 euros: androcur, arimidex, azilect, brilique, champix, eucreas, exjade, janumet, keppra, pradaxa, vimpat, xarelto
+    first generic of the molecule in Spain's list, and the brand's ceiling/Portugal gap:
+      androcur   ciproteron                 first Spanish generic none        Portugal/ceiling median 1.18
+      arimidex   anastrozol                 first Spanish generic 2008-06-19  Portugal/ceiling median 1.04
+      azilect    rasagilin                  first Spanish generic 2015-12-01  Portugal/ceiling median 1.02
+      brilique   ticagrelor                 first Spanish generic 2025-06-01  Portugal/ceiling median 1.18
+      champix    vareniclin                 first Spanish generic 2024-05-01  Portugal/ceiling median 1.01
+      eucreas    metformin + vildagliptin   first Spanish generic 2022-11-01  Portugal/ceiling median 1.02
+      exjade     deferasirox                first Spanish generic 2022-03-01  Portugal/ceiling median 1.12
+      janumet    metformin + sitagliptin    first Spanish generic 2022-09-01  Portugal/ceiling median 1.40
+      keppra     levetiracetam              first Spanish generic 2011-11-01  Portugal/ceiling median 1.02
+      pradaxa    dabigatran etexilat        first Spanish generic 2023-12-01  Portugal/ceiling median 1.06
+      vimpat     lacosamid                  first Spanish generic 2022-09-01  Portugal/ceiling median 1.09
+      xarelto    rivaroxaban                first Spanish generic 2026-01-01  Portugal/ceiling median 1.62
+  below the ceiling with retail above 30 euros: abilify, arava, avodart, champix, comtan, concerta, efient, keppra, lyrica, requip, valdoxan, zebinix, zonegran, zyprexa
+  examples within half a percent of the ceiling (Portugal's maximum retail price, the ex-factory price
+  it implies, and the rebuilt ceiling):
+    Stalevo                      200 mg + 50 mg + 200 mg  x100  retail   68.97  ex-factory   50.89  ceiling   50.89
+    Femara                       2.5 mg                   x30   retail   50.55  ex-factory   37.60  ceiling   37.60
+    Eucreas                      850 mg + 50 mg           x60   retail   38.99  ex-factory   27.39  ceiling   27.39
+    Onglyza                      5 mg                     x28   retail   38.01  ex-factory   26.52  ceiling   26.62
+    Lyrica                       100 mg                   x84   retail   32.36  ex-factory   21.53  ceiling   21.51
+    Sporanox                     100 mg                   x28   retail   24.27  ex-factory   17.64  ceiling   17.64
+    Singulair                    10 mg                    x28   retail   15.89  ex-factory   10.29  ceiling   10.24
+    Dogmatil Forte               200 mg                   x60   retail   13.62  ex-factory    9.58  ceiling    9.58
+    Lioresal                     25 mg                    x60   retail   13.09  ex-factory    9.12  ceiling    9.14
+    Lamictal                     25 mg                    x56   retail   10.10  ex-factory    6.50  ceiling    6.50
+
+==============================================================================================
+6. Exceptional price revisions decided by the Ministry of Health
+==============================================================================================
+2025 table: 37 decisions, granted 35, refused 2; days from request to decision: median 417, quartiles 175-709, max 1992
+2026 ambulatory table: 4 decisions
+  MST              Morfina      Deferido  retail  14.15 ->  18.10 euros (+28%)
+  Sevredol 10 mg   Morfina      Deferido  retail   4.12 ->   9.97 euros (+142%)
+  Sevredol 20 mg   Morfina      Deferido  retail   5.62 ->  10.68 euros (+90%)
+  Kelatine         Penicilamina Deferido  retail  16.67 ->  20.43 euros (+23%)
+
+==============================================================================================
+7. The Portuguese ambulatory market (SNS transparency portal)
+==============================================================================================
+  2024: retail value 2.61 bn euros, 194 million packs, 13.46 euros per pack; generics 0.464 of packs and 0.295 of value (8.55 euros per pack, others 17.69); SNS share of retail value 0.647
+  2025: retail value 2.86 bn euros, 204 million packs, 14.03 euros per pack; generics 0.458 of packs and 0.281 of value (8.62 euros per pack, others 18.60); SNS share of retail value 0.662
