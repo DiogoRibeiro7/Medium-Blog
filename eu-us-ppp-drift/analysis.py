@@ -134,6 +134,14 @@ def main() -> None:
     eu_h = h.reindex(dr.EU).dropna()
     say("EU members with HFCE drift above 5 points / at or below 5", f"{int((eu_h > 5).sum())} / {int((eu_h <= 5).sum())}")
     say("EU members with HFCE drift below zero", ", ".join(f"{c} {v:.1f}" for c, v in eu_h[eu_h < 0].items()))
+    for agg in ("HFCE", "GDP"):
+        x = cc[(cc.measure == agg)].dropna(subset=["drift_2005_2019"])
+        tot = ((x.drift_2005_2019 - x.drift_2005_2019.mean()) ** 2).sum()
+        within = x.groupby("region").drift_2005_2019.apply(lambda s: ((s - s.mean()) ** 2).sum()).sum()
+        say(f"{agg}: share of cross-economy variance of the 2005-2019 drift explained by region (R2); "
+            f"within-region SD (EU, Other Europe, Non-European OECD)",
+            f"{1 - within / tot:.2f}; " + ", ".join(f"{x[x.region == r].drift_2005_2019.std():.1f}"
+                                                  for r in ("EU", "Other Europe", "Non-European OECD")))
     ne = h.reindex(dr.NON_EUROPE_OECD).dropna()
     say("Non-European OECD economies with HFCE drift above 5 points", ", ".join(f"{c} {v:.1f}" for c, v in ne[ne > 5].items()) or "none")
 
@@ -230,6 +238,24 @@ def main() -> None:
         f"{100 * ub:.1f}")
     say("ICT industries excluded plus the investment upper bound, as share of the 2005-2019 GDP drift",
         f"{(eff_main + ub) / base_g:.2f} ({pts(eff_main + ub)} of {pts(base_g)})")
+    # the same adjustments read as differences in volume growth
+    v, lr, ppp = d["V"]["GDP"], d["LR"]["GDP"], d["PPP"]["GDP"]
+    con = (v.loc[dr.BASE] / ppp.loc[dr.BASE]) * (lr / lr.loc[dr.BASE])
+    n = MAIN[1] - MAIN[0]
+    g_eu = np.log(con[G].sum(axis=1).loc[MAIN[1]] / con[G].sum(axis=1).loc[MAIN[0]]) / n
+    g_us = np.log(con["USA"].loc[MAIN[1]] / con["USA"].loc[MAIN[0]]) / n
+    say("GDP volume growth 2005-2019, US vs EU group (% a year); gap (points a year)",
+        f"{100 * g_us:.2f} vs {100 * g_eu:.2f}; {100 * (g_us - g_eu):.2f}")
+    for name in ("excluded", "us_like_eu", "eu_like_us"):
+        eff = (base_g - change(cfp[name], *MAIN)) / n
+        say(f"ICT industries {name}: change in the US-EU gap in GDP volume growth (points a year)", f"{100 * eff:.2f}")
+    say("Investment upper bound as a change in the growth gap (points a year)", f"{100 * ub / n:.2f}")
+    for name in ("eu_like_us", "us_like_eu"):
+        eff = (base_g - change(cfp[name], *MAIN)) / n
+        say(f"Harmonised ({name}) plus investment upper bound: change in the growth gap (points a year; share of gap)",
+            f"{100 * (eff + ub / n):.2f}; {(eff + ub / n) / (g_us - g_eu):.2f}")
+        say(f"Harmonised ({name}) plus investment upper bound: share of the 2005-2019 GDP drift",
+            f"{(n * eff + ub) / base_g:.2f}")
 
     # ------------------------------------------------------------------ cross-section inside the EU
     section("Inside the EU: does the drift line up with ICT? (2005-2019, members with data)")

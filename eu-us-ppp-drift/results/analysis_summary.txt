@@ -45,6 +45,8 @@ HFCE Non-European OECD: n, median, min, max: 8, -3.2, -9.0 (CAN), 5.1 (MEX)
 HFCE drift 2005-2019, selected (DEU, FRA, ITA, ESP, NLD, SWE, POL, GBR, CHE, NOR, JPN, KOR, CAN, AUS, MEX): DEU 13.0, FRA 4.7, ITA 17.6, ESP 12.7, NLD 6.3, SWE -1.6, POL 16.1, GBR 3.0, CHE 9.0, NOR -2.5, JPN -3.0, KOR -6.9, CAN -9.0, AUS -0.8, MEX 5.1
 EU members with HFCE drift above 5 points / at or below 5: 20 / 5
 EU members with HFCE drift below zero: IRL -5.4, SWE -1.6
+HFCE: share of cross-economy variance of the 2005-2019 drift explained by region (R2); within-region SD (EU, Other Europe, Non-European OECD): 0.42; 6.8, 7.0, 5.0
+GDP: share of cross-economy variance of the 2005-2019 drift explained by region (R2); within-region SD (EU, Other Europe, Non-European OECD): 0.33; 7.7, 4.2, 10.2
 Non-European OECD economies with HFCE drift above 5 points: MEX 5.1
 
 == ICT in household consumption (Table 5, domestic concept) ==
@@ -83,6 +85,15 @@ Largest share of the 2005-2019 GDP drift attributable to ICT industries in any v
 == ICT investment (GFCF by asset) ==
 Upper bound on the GDP drift from US-European differences in ICT investment prices, 2005-2019 (points): 1.5
 ICT industries excluded plus the investment upper bound, as share of the 2005-2019 GDP drift: 0.25 (4.3 of 17.3)
+GDP volume growth 2005-2019, US vs EU group (% a year); gap (points a year): 1.85 vs 1.43; 0.42
+ICT industries excluded: change in the US-EU gap in GDP volume growth (points a year): 0.20
+ICT industries us_like_eu: change in the US-EU gap in GDP volume growth (points a year): 0.11
+ICT industries eu_like_us: change in the US-EU gap in GDP volume growth (points a year): 0.07
+Investment upper bound as a change in the growth gap (points a year): 0.10
+Harmonised (eu_like_us) plus investment upper bound: change in the growth gap (points a year; share of gap): 0.17; 0.41
+Harmonised (eu_like_us) plus investment upper bound: share of the 2005-2019 GDP drift: 0.14
+Harmonised (us_like_eu) plus investment upper bound: change in the growth gap (points a year; share of gap): 0.22; 0.51
+Harmonised (us_like_eu) plus investment upper bound: share of the 2005-2019 GDP drift: 0.18
 
 == Inside the EU: does the drift line up with ICT? (2005-2019, members with data) ==
 Correlation across EU members: HFCE drift vs own ICT consumer-price effect relative to US (n, r): 20, 0.05
