@@ -97,122 +97,83 @@
 4         3     CIMETIDINE 400 mg - TAGAMET 400 mg, comprimé pelliculé  69472373              0          1
 [bdpm_cis_gener] wrote bdpm_cis_gener.csv.gz: 10614 rows, 0.13 MB
 ===== open_medic
-[open_medic] resource: Open Medic 2025 | csv | https://open-data-assurance-maladie.ameli.fr/medicaments/download.php?Dir_Rep=Open_MEDIC_Base_Complete&Annee=2025
-[open_medic] resource: 2025 ATC1 | csv | https://open-data-assurance-maladie.ameli.fr/medicaments/download2.php?Dir_Rep=2025_ATC1
-[open_medic] resource: 2025 ATC2 | csv | https://open-data-assurance-maladie.ameli.fr/medicaments/download2.php?Dir_Rep=2025_ATC2
-[open_medic] resource: 2025 ATC3 | csv | https://open-data-assurance-maladie.ameli.fr/medicaments/download2.php?Dir_Rep=2025_ATC3
-[open_medic] resource: 2025 ATC4 | csv | https://open-data-assurance-maladie.ameli.fr/medicaments/download2.php?Dir_Rep=2025_ATC4
-[open_medic] resource: 2025 ATC5 | csv | https://open-data-assurance-maladie.ameli.fr/medicaments/download2.php?Dir_Rep=2025_ATC5
-[open_medic] resource: 2025 CIP13 | csv | https://open-data-assurance-maladie.ameli.fr/medicaments/download2.php?Dir_Rep=2025_CIP13
-[open_medic] resource: Descriptif Open Medic | xlsx | https://www.assurance-maladie.ameli.fr/content/descriptif-des-variables-de-la-serie-open-medic
-[open_medic] resource: Open Medic 2024 | csv | https://open-data-assurance-maladie.ameli.fr/medicaments/download.php?Dir_Rep=Open_MEDIC_Base_Complete&Annee=2024
-[open_medic] resource: 2024 ATC1 | None | https://open-data-assurance-maladie.ameli.fr/medicaments/download2.php?Dir_Rep=2024_ATC1
-[open_medic] resource: 2024 ATC2 | None | https://open-data-assurance-maladie.ameli.fr/medicaments/download2.php?Dir_Rep=2024_ATC2
-[open_medic] resource: 2024 ATC3 | csv | https://open-data-assurance-maladie.ameli.fr/medicaments/download2.php?Dir_Rep=2024_ATC3
-[open_medic] resource: 2024 ATC4 | csv | https://open-data-assurance-maladie.ameli.fr/medicaments/download2.php?Dir_Rep=2024_ATC4
-[open_medic] resource: 2024 ATC5 | csv | https://open-data-assurance-maladie.ameli.fr/medicaments/download2.php?Dir_Rep=2024_ATC5
-[open_medic] resource: 2024 CIP13 | csv | https://open-data-assurance-maladie.ameli.fr/medicaments/download2.php?Dir_Rep=2024_CIP13
-[open_medic] resource: Open Medic 2023 | csv | https://open-data-assurance-maladie.ameli.fr/medicaments/download.php?Dir_Rep=Open_MEDIC_Base_Complete&Annee=2023
-[open_medic] resource: 2023 ATC1 | csv | https://open-data-assurance-maladie.ameli.fr/medicaments/download2.php?Dir_Rep=2023_ATC1
-[open_medic] resource: 2023 ATC2 | csv | https://open-data-assurance-maladie.ameli.fr/medicaments/download2.php?Dir_Rep=2023_ATC2
-[open_medic] resource: 2023 ATC3 | csv | https://open-data-assurance-maladie.ameli.fr/medicaments/download2.php?Dir_Rep=2023_ATC3
-[open_medic] resource: 2023 ATC4 | csv | https://open-data-assurance-maladie.ameli.fr/medicaments/download2.php?Dir_Rep=2023_ATC4
-[open_medic] resource: 2023 ATC5 | csv | https://open-data-assurance-maladie.ameli.fr/medicaments/download2.php?Dir_Rep=2023_ATC5
-[open_medic] resource: 2023 CIP13 | csv | https://open-data-assurance-maladie.ameli.fr/medicaments/download2.php?Dir_Rep=2023_CIP13
-[open_medic] resource: Open Medic 2022 | csv | https://open-data-assurance-maladie.ameli.fr/medicaments/download.php?Dir_Rep=Open_MEDIC_Base_Complete&Annee=2022
-[open_medic] resource: 2022 ATC1 | csv | https://open-data-assurance-maladie.ameli.fr/medicaments/download2.php?Dir_Rep=2022_ATC1
-[open_medic] resource: 2022 ATC2 | csv | https://open-data-assurance-maladie.ameli.fr/medicaments/download2.php?Dir_Rep=2022_ATC2
-[open_medic] resource: 2022 ATC3 | csv | https://open-data-assurance-maladie.ameli.fr/medicaments/download2.php?Dir_Rep=2022_ATC3
-[open_medic] resource: 2022 ATC4 | csv | https://open-data-assurance-maladie.ameli.fr/medicaments/download2.php?Dir_Rep=2022_ATC4
-[open_medic] resource: 2022 ATC5 | csv | https://open-data-assurance-maladie.ameli.fr/medicaments/download2.php?Dir_Rep=2022_ATC5
-[open_medic] resource: 2022 CIP13 | csv | https://open-data-assurance-maladie.ameli.fr/medicaments/download2.php?Dir_Rep=2022_CIP13
-[open_medic] resource: Open Medic 2021 | csv | http://open-data-assurance-maladie.ameli.fr/medicaments/download.php?Dir_Rep=Open_MEDIC_Base_Complete&Annee=2021
-[open_medic] resource: 2021 ATC1 | csv | http://open-data-assurance-maladie.ameli.fr/medicaments/download2.php?Dir_Rep=2021_ATC1
-[open_medic] resource: 2021 ATC2 | csv | http://open-data-assurance-maladie.ameli.fr/medicaments/download2.php?Dir_Rep=2021_ATC2
-[open_medic] resource: 2021 ATC3 | csv | http://open-data-assurance-maladie.ameli.fr/medicaments/download2.php?Dir_Rep=2021_ATC3
-[open_medic] resource: 2021 ATC4 | csv | http://open-data-assurance-maladie.ameli.fr/medicaments/download2.php?Dir_Rep=2021_ATC4
-[open_medic] resource: 2021 ATC5 | csv | http://open-data-assurance-maladie.ameli.fr/medicaments/download2.php?Dir_Rep=2021_ATC5
-[open_medic] resource: 2021 CIP13 | csv | http://open-data-assurance-maladie.ameli.fr/medicaments/download2.php?Dir_Rep=2021_CIP13
-[open_medic] resource: Open Medic 2020 | csv | http://open-data-assurance-maladie.ameli.fr/medicaments/download.php?Dir_Rep=Open_MEDIC_Base_Complete&Annee=2020
-[open_medic] resource: 2020 ATC1 | csv | http://open-data-assurance-maladie.ameli.fr/medicaments/download2.php?Dir_Rep=2020_ATC1
-[open_medic] resource: 2020 ATC2 | csv | http://open-data-assurance-maladie.ameli.fr/medicaments/download2.php?Dir_Rep=2020_ATC2
-[open_medic] resource: 2020 ATC3 | csv | http://open-data-assurance-maladie.ameli.fr/medicaments/download2.php?Dir_Rep=2020_ATC3
-[open_medic] resource: 2020 ATC4 | csv | http://open-data-assurance-maladie.ameli.fr/medicaments/download2.php?Dir_Rep=2020_ATC4
-[open_medic] resource: 2020 ATC5 | csv | http://open-data-assurance-maladie.ameli.fr/medicaments/download2.php?Dir_Rep=2020_ATC5
-[open_medic] resource: 2020 CIP13 | csv | http://open-data-assurance-maladie.ameli.fr/medicaments/download2.php?Dir_Rep=2020_CIP13
-[open_medic] resource: Open Medic 2019 | csv | http://open-data-assurance-maladie.ameli.fr/medicaments/download.php?Dir_Rep=Open_MEDIC_Base_Complete&Annee=2019
-[open_medic] resource: Open Medic 2018 | csv | http://open-data-assurance-maladie.ameli.fr/medicaments/download.php?Dir_Rep=Open_MEDIC_Base_Complete&Annee=2018
-[open_medic] resource: Open Medic2017 | csv | http://open-data-assurance-maladie.ameli.fr/medicaments/download.php?Dir_Rep=Open_MEDIC_Base_Complete&Annee=2017
-[open_medic] resource: Open Medic2016 | csv | http://open-data-assurance-maladie.ameli.fr/medicaments/download.php?Dir_Rep=Open_MEDIC_Base_Complete&Annee=2016
-[open_medic] resource: Open Medic 2015 | csv | https://open-data-assurance-maladie.ameli.fr/medicaments/download.php?Dir_Rep=Open_MEDIC_Base_Complete&Annee=2015
-[open_medic] resource: Open Medic 2014 | csv | https://open-data-assurance-maladie.ameli.fr/medicaments/download.php?Dir_Rep=Open_MEDIC_Base_Complete&Annee=2014
-[open_medic] resource: 2019 ATC1 | csv | http://open-data-assurance-maladie.ameli.fr/medicaments/download2.php?Dir_Rep=2019_ATC1
-[open_medic] resource: 2019 ATC2 | csv | http://open-data-assurance-maladie.ameli.fr/medicaments/download2.php?Dir_Rep=2019_ATC2
-[open_medic] resource: 2019 ATC3 | csv | http://open-data-assurance-maladie.ameli.fr/medicaments/download2.php?Dir_Rep=2019_ATC3
-[open_medic] resource: 2019 ATC4 | csv | http://open-data-assurance-maladie.ameli.fr/medicaments/download2.php?Dir_Rep=2019_ATC4
-[open_medic] resource: 2019 ATC5 | csv | http://open-data-assurance-maladie.ameli.fr/medicaments/download2.php?Dir_Rep=2019_ATC5
-[open_medic] resource: 2019 CIP13 | csv | http://open-data-assurance-maladie.ameli.fr/medicaments/download2.php?Dir_Rep=2019_CIP13
-[open_medic] resource: 2018 ATC1 | csv | http://open-data-assurance-maladie.ameli.fr/medicaments/download2.php?Dir_Rep=2018_ATC1
-[open_medic] resource: 2018 ATC2 | csv | http://open-data-assurance-maladie.ameli.fr/medicaments/download2.php?Dir_Rep=2018_ATC2
-[open_medic] resource: 2018 ATC3 | csv | http://open-data-assurance-maladie.ameli.fr/medicaments/download2.php?Dir_Rep=2018_ATC3
-[open_medic] resource: 2018 ATC4 | csv | http://open-data-assurance-maladie.ameli.fr/medicaments/download2.php?Dir_Rep=2018_ATC4
-[open_medic] resource: 2018 ATC5 | csv | http://open-data-assurance-maladie.ameli.fr/medicaments/download2.php?Dir_Rep=2018_ATC5
-[open_medic] resource: 2018 CIP13 | csv | http://open-data-assurance-maladie.ameli.fr/medicaments/download2.php?Dir_Rep=2018_CIP13
-[open_medic] resource: 2017 ATC1 | csv | http://open-data-assurance-maladie.ameli.fr/medicaments/download2.php?Dir_Rep=2017_ATC1
-[open_medic] resource: 2017 ATC2 | csv | http://open-data-assurance-maladie.ameli.fr/medicaments/download2.php?Dir_Rep=2017_ATC2
-[open_medic] resource: 2017 ATC3 | csv | http://open-data-assurance-maladie.ameli.fr/medicaments/download2.php?Dir_Rep=2017_ATC3
-[open_medic] resource: 2017 ATC4 | csv | http://open-data-assurance-maladie.ameli.fr/medicaments/download2.php?Dir_Rep=2017_ATC4
-[open_medic] resource: 2017 ATC5 | csv | http://open-data-assurance-maladie.ameli.fr/medicaments/download2.php?Dir_Rep=2017_ATC5
-[open_medic] resource: 2017 CIP13 | csv | http://open-data-assurance-maladie.ameli.fr/medicaments/download2.php?Dir_Rep=2017_CIP13
-[open_medic] resource: 2016 ATC1 | csv | http://open-data-assurance-maladie.ameli.fr/medicaments/download2.php?Dir_Rep=2016_ATC1
-[open_medic] resource: 2016 ATC2 | csv | http://open-data-assurance-maladie.ameli.fr/medicaments/download2.php?Dir_Rep=2016_ATC2
-[open_medic] resource: 2016 ATC3 | csv | http://open-data-assurance-maladie.ameli.fr/medicaments/download2.php?Dir_Rep=2016_ATC3
-[open_medic] resource: 2016 ATC4 | csv | http://open-data-assurance-maladie.ameli.fr/medicaments/download2.php?Dir_Rep=2016_ATC4
-[open_medic] resource: 2016 ATC5 | csv | http://open-data-assurance-maladie.ameli.fr/medicaments/download2.php?Dir_Rep=2016_ATC5
-[open_medic] resource: 2016 CIP13 | csv | http://open-data-assurance-maladie.ameli.fr/medicaments/download2.php?Dir_Rep=2016_CIP13
-[open_medic] resource: 2015 ATC1 | csv | http://open-data-assurance-maladie.ameli.fr/medicaments/download2.php?Dir_Rep=2015_ATC1
-[open_medic] resource: 2015 ATC2 | csv | http://open-data-assurance-maladie.ameli.fr/medicaments/download2.php?Dir_Rep=2015_ATC2
-[open_medic] resource: 2015 ATC3 | csv | http://open-data-assurance-maladie.ameli.fr/medicaments/download2.php?Dir_Rep=2015_ATC3
-[open_medic] resource: 2015 ATC4 | csv | http://open-data-assurance-maladie.ameli.fr/medicaments/download2.php?Dir_Rep=2015_ATC4
-[open_medic] resource: 2015 ATC5 | csv | http://open-data-assurance-maladie.ameli.fr/medicaments/download2.php?Dir_Rep=2015_ATC5
-[open_medic] resource: 2015 CIP13 | csv | http://open-data-assurance-maladie.ameli.fr/medicaments/download2.php?Dir_Rep=2015_CIP13
-[open_medic] resource: 2014 ATC1 | csv | http://open-data-assurance-maladie.ameli.fr/medicaments/download2.php?Dir_Rep=2014_ATC1
-[open_medic] resource: 2014 ATC2 | csv | http://open-data-assurance-maladie.ameli.fr/medicaments/download2.php?Dir_Rep=2014_ATC2
-[open_medic] resource: 2014 ATC3 | csv | http://open-data-assurance-maladie.ameli.fr/medicaments/download2.php?Dir_Rep=2014_ATC3
-[open_medic] resource: 2014 ATC4 | csv | http://open-data-assurance-maladie.ameli.fr/medicaments/download2.php?Dir_Rep=2014_ATC4
-[open_medic] resource: 2014 ATC5 | csv | http://open-data-assurance-maladie.ameli.fr/medicaments/download2.php?Dir_Rep=2014_ATC5
-[open_medic] resource: 2014 CIP13 | csv | http://open-data-assurance-maladie.ameli.fr/medicaments/download2.php?Dir_Rep=2014_CIP13
-[open_medic] using Open Medic 2024 -> https://open-data-assurance-maladie.ameli.fr/medicaments/download.php?Dir_Rep=Open_MEDIC_Base_Complete&Annee=2024
-[open_medic] downloaded 0.0 MB
-[open_medic] FAILED
-Traceback (most recent call last):
-  File "/home/runner/work/Medium-Blog/Medium-Blog/taxation-efficiency-drug-prices/part2/fetch.py", line 290, in main
-    fn(out)
-    ~~^^^^^
-  File "/home/runner/work/Medium-Blog/Medium-Blog/taxation-efficiency-drug-prices/part2/fetch.py", line 252, in fetch_open_medic
-    df = pd.read_csv(io.BytesIO(data), sep=sep, dtype=str, encoding="latin-1")
-  File "/opt/hostedtoolcache/Python/3.13.18/x64/lib/python3.13/site-packages/pandas/io/parsers/readers.py", line 873, in read_csv
-    return _read(filepath_or_buffer, kwds)
-  File "/opt/hostedtoolcache/Python/3.13.18/x64/lib/python3.13/site-packages/pandas/io/parsers/readers.py", line 306, in _read
-    return parser.read(nrows)
-           ~~~~~~~~~~~^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.13.18/x64/lib/python3.13/site-packages/pandas/io/parsers/readers.py", line 1947, in read
-    ) = self._engine.read(  # type: ignore[attr-defined]
-        ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-        nrows
-        ^^^^^
-    )
-    ^
-  File "/opt/hostedtoolcache/Python/3.13.18/x64/lib/python3.13/site-packages/pandas/io/parsers/c_parser_wrapper.py", line 215, in read
-    chunks = self._reader.read_low_memory(nrows)
-  File "pandas/_libs/parsers.pyx", line 832, in pandas._libs.parsers.TextReader.read_low_memory
-  File "pandas/_libs/parsers.pyx", line 897, in pandas._libs.parsers.TextReader._read_rows
-  File "pandas/_libs/parsers.pyx", line 868, in pandas._libs.parsers.TextReader._tokenize_rows
-  File "pandas/_libs/parsers.pyx", line 885, in pandas._libs.parsers.TextReader._check_tokenize_status
-  File "pandas/_libs/parsers.pyx", line 2084, in pandas._libs.parsers.raise_parser_error
-pandas.errors.ParserError: Error tokenizing data. C error: Expected 1 fields in line 3, saw 2
+[open_medic] https://open-data-assurance-maladie.ameli.fr/medicaments/download2.php?Dir_Rep=2024_CIP13 is an HTML page (3145 bytes); first 1500 chars:
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr-FR" lang="fr-FR">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>ameli.fr&nbsp;-&nbsp;Open&nbsp;Data&nbsp;-&nbsp;Download</title>
+<meta name="description" content="Open Data Assurance Maladie Download" />
+<meta name="author" content="Assurance Maladie" />
+<meta name="robots" content="noindex" />
+<meta name="googlebot" content="noindex" />
+<style type="text/css">
+/* Styles de base pour le tableau */
+.table-responsive {
+  width: 100%;
+  border-collapse: collapse;
+}
+.table-responsive th, .table-responsive td {
+  border: 10px solid #FFFFFF;
+  padding: 8px;
+  text-align: left;
+}
+/* Styles pour rendre le tableau responsive */
+@media screen and (max-width: 600px) {
+  .table-responsive thead {
+    display: none;
+  }
+  .table-responsive, .table-responsive tbody, .table-responsive tr, .table-responsive td {
+    display: block;
+    width: 100%;
+  }
+  .table-responsive tr {
+    margin-bottom: 15px;
+  }
+  .table-responsive td {
+    text-align: right;
+    padding-left: 50%;
+    position: relative;
+  }
+  .table-responsive td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 0;
+    width: 50%;
+    padding-left: 15px;
+    font-weight: bold;
+    text-align: left;
+  }
+}
+</style>
+</head>
+<body>
+<table class="table-responsive">
+<tbody>
 
-
+<tr><td data-label="fichier"><a href="./download_file.php?token=c1e0b5288a88181948e1c599eb4a3e07&file=Open_MEDIC_Bases_Complementaires/2024_C
+[open_medic] links found: ['https://open-data-assurance-maladie.ameli.fr/medicaments/download_file.php?token=c1e0b5288a88181948e1c599eb4a3e07&file=Open_MEDIC_Bases_Complementaires/2024_CIP13/NB_2024_cip13.CSV.gz', 'https://open-data-assurance-maladie.ameli.fr/medicaments/download_file.php?token=c1e0b5288a88181948e1c599eb4a3e07&file=Open_MEDIC_Bases_Complementaires/2024_CIP13/NB_2024_cip13_age_sexe.CSV.gz', 'https://open-data-assurance-maladie.ameli.fr/medicaments/download_file.php?token=c1e0b5288a88181948e1c599eb4a3e07&file=Open_MEDIC_Bases_Complementaires/2024_CIP13/NB_2024_cip13_age_sexe_reg.CSV.gz', 'https://open-data-assurance-maladie.ameli.fr/medicaments/download_file.php?token=c1e0b5288a88181948e1c599eb4a3e07&file=Open_MEDIC_Bases_Complementaires/2024_CIP13/NB_2024_cip13_age_sexe_reg_spe.CSV.gz', 'https://open-data-assurance-maladie.ameli.fr/medicaments/download_file.php?token=c1e0b5288a88181948e1c599eb4a3e07&file=Open_MEDIC_Bases_Complementaires/2024_CIP13/NB_2024_cip13_age_sexe_spe.CSV.gz', 'https://open-data-assurance-maladie.ameli.fr/medicaments/download_file.php?token=c1e0b5288a88181948e1c599eb4a3e07&file=Open_MEDIC_Bases_Complementaires/2024_CIP13/NB_2024_cip13_reg.CSV.gz', 'https://open-data-assurance-maladie.ameli.fr/medicaments/download_file.php?token=c1e0b5288a88181948e1c599eb4a3e07&file=Open_MEDIC_Bases_Complementaires/2024_CIP13/NB_2024_cip13_reg_spe.CSV.gz', 'https://open-data-assurance-maladie.ameli.fr/medicaments/download_file.php?token=c1e0b5288a88181948e1c599eb4a3e07&file=Open_MEDIC_Bases_Complementaires/2024_CIP13/NB_2024_cip13_spe.CSV.gz']
+[open_medic] '2024 CIP13' -> https://open-data-assurance-maladie.ameli.fr/medicaments/download_file.php?token=c1e0b5288a88181948e1c599eb4a3e07&file=Open_MEDIC_Bases_Complementaires/2024_CIP13/NB_2024_cip13.CSV.gz, 0.4 MB
+[open_medic] table head:
+CIP13;l_cip13;nbc;REM;BSE;BOITES
+3400921604696;YELLOX 0,9MG/ML COLLY FL5ML 1;53770;228.579,71;329.221,48;89221
+3400921609080;AVONEX 0,03MG/0,5ML SOL INJ STYLO 4;1914;10.414.225,89;10.497.183,25;19372
+3400921610550;POLYGYNAX VIRGO CAPSULE VAGINALE 6;14984;9.298,76;53.918,58;19891
+3400921610840;NICORANDIL SDZ 20MG CPR 30;1798;124.872,37;126.948,30;20642
+3400921611731;NICORANDIL SDZ 10MG CPR 30;7494;258.259,93;265.993,92;77776
+3400921612790;LHRH FERRING 0,1 MG SOL INJ AMP 1;127;1.793,40;2.704,80;138
+3400921617535;VALSARTAN/HCTZ CRT 80/12,5MG CPR 30;501;4.474,47;5.572,84;1531
+3400921618075;VALSARTAN/HCTZ CRT 80/12,5MG CPR 90;637;9.665,49;12.383,28;1176
+3400921619195;VALSARTAN/HCTZ CRT 160/12,5MG CPR 30;682;7.259,80;8.473,92;2328
+3400921619546;VALSARTAN/HCTZ CRT 160/12,5MG CPR 90;1160
+[open_medic_2024[2024 CIP13]] shape (12655, 6)
+[open_medic_2024[2024 CIP13]] columns ['CIP13', 'l_cip13', 'nbc', 'REM', 'BSE', 'BOITES']
+           CIP13                              l_cip13    nbc            REM            BSE BOITES
+0  3400921604696        YELLOX 0,9MG/ML COLLY FL5ML 1  53770     228.579,71     329.221,48  89221
+1  3400921609080  AVONEX 0,03MG/0,5ML SOL INJ STYLO 4   1914  10.414.225,89  10.497.183,25  19372
+2  3400921610550   POLYGYNAX VIRGO CAPSULE VAGINALE 6  14984       9.298,76      53.918,58  19891
+3  3400921610840           NICORANDIL SDZ 20MG CPR 30   1798     124.872,37     126.948,30  20642
+4  3400921611731           NICORANDIL SDZ 10MG CPR 30   7494     258.259,93     265.993,92  77776
+[open_medic_2024] wrote open_medic_2024.csv.gz: 12655 rows, 0.19 MB
 ===== ecb
 [ecb_eurusd] shape (7, 32)
 [ecb_eurusd] columns ['KEY', 'FREQ', 'CURRENCY', 'CURRENCY_DENOM', 'EXR_TYPE', 'EXR_SUFFIX', 'TIME_PERIOD', 'OBS_VALUE', 'OBS_STATUS', 'OBS_CONF', 'OBS_PRE_BREAK', 'OBS_COM', 'TIME_FORMAT', 'BREAKS', 'COLLECTION', 'COMPILING_ORG', 'DISS_ORG', 'DOM_SER_IDS', 'PUBL_ECB', 'PUBL_MU', 'PUBL_PUBLIC', 'UNIT_INDEX_BASE', 'COMPILATION', 'COVERAGE', 'DECIMALS', 'NAT_TITLE', 'SOURCE_AGENCY', 'SOURCE_PUB', 'TITLE', 'TITLE_COMPL', 'UNIT', 'UNIT_MULT']
@@ -223,4 +184,4 @@ pandas.errors.ParserError: Error tokenizing data. C error: Expected 1 fields in 
 3  EXR.A.USD.EUR.SP00.A    A      USD            EUR     SP00          A        2022  1.0530486381323          A        F           NaN     NaN         P1Y    NaN          A           NaN      NaN         NaN      NaN     NaN         NaN             NaN         NaN      NaN        4       NaN           4F0        NaN  US dollar/Euro ECB reference exchange rate  ECB reference exchange rate, US dollar/Euro, 2.15 pm (C.E.T.)  USD         0
 4  EXR.A.USD.EUR.SP00.A    A      USD            EUR     SP00          A        2023   1.081268627451          A        F           NaN     NaN         P1Y    NaN          A           NaN      NaN         NaN      NaN     NaN         NaN             NaN         NaN      NaN        4       NaN           4F0        NaN  US dollar/Euro ECB reference exchange rate  ECB reference exchange rate, US dollar/Euro, 2.15 pm (C.E.T.)  USD         0
 [ecb_eurusd] wrote ecb_eurusd.csv.gz: 7 rows, 0.00 MB
-failed: ['open_medic']
+failed: []
