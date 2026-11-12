@@ -116,3 +116,5 @@ china-manufacturing-labour-costs/**/*.csv -filter -diff -merge text
 china-manufacturing-labour-costs/**/*.gz -filter -diff -merge binary
 minimum-wage-in-work-poverty/**/*.csv -filter -diff -merge text
 minimum-wage-in-work-poverty/**/*.gz -filter -diff -merge binary
+eu-capital-exports/**/*.csv -filter -diff -merge text
+eu-capital-exports/**/*.gz -filter -diff -merge binary
