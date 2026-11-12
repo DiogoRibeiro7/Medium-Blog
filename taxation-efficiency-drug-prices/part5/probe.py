@@ -1,4 +1,6 @@
-"""Survey the public sources on parallel export and export restrictions, for Part 5.
+"""Survey the public sources on parallel export and export restrictions, for Part 5 (round 2: Infarmed's
+public lists of shortages and discontinuations, the current export-control lists, their history in the
+Wayback Machine, and EMA's parallel distribution register).
 
 Run by .github/workflows/taxation-efficiency-drug-prices-data.yml, which commits data/probe_report.txt
 and, under data/raw/, the text of the documents (PDFs as layout text, gzipped) and small spreadsheets.
@@ -27,20 +29,18 @@ UA = {"User-Agent": "Mozilla/5.0 (research script; contact dfr@esmad.ipp.pt)",
       "Accept-Language": "pt-PT,pt;q=0.9,en;q=0.8"}
 
 PAGES = {
-    "pt_disponibilidade": "https://www.infarmed.pt/web/infarmed/gestao-da-disponibilidade-do-medicamento",
-    "pt_ruturas": "https://www.infarmed.pt/web/infarmed/ruturas",
-    "pt_exportacao": "https://www.infarmed.pt/web/infarmed/exportacao-de-medicamentos",
-    "ema_pd": "https://www.ema.europa.eu/en/human-regulatory-overview/post-authorisation/parallel-distribution",
-    "iris_pd": "https://iris.ema.europa.eu/registerpd/",
+    "siats_ruturas": "https://extranet.infarmed.pt/siats/Publico/Rupturas.aspx",
+    "siats_cessacoes": "https://extranet.infarmed.pt/siats/Publico/CessaoComerc.aspx",
+    "dr_regulamento_2025": "https://diariodarepublica.pt/dr/detalhe/deliberacao/234-2025-907742765",
 }
 
+INF = "https://www.infarmed.pt"
 SAVE = {
-    "pt_disponibilidade_2024": "https://www.infarmed.pt/documents/15786/10901776/Relat%C3%B3rio+2024/2f02f60e-ef04-a5b1-7962-be7d5ef353a2",
-    "pt_disponibilidade_2021": "https://www.infarmed.pt/documents/15786/4326055/Relat%C3%B3rio+anual+sobre+a+gest%C3%A3o+da+disponibilidade+de+medicamentos+de+2021/d6729605-96aa-7b0c-e702-d59e0e7e863e",
-    "pt_lnp_aug_2026": "https://www.infarmed.pt/documents/15786/9423561/Delibera%C3%A7%C3%A3o+86+-+LNP+%28agosto+2026%29/087086db-c4d1-2a15-3c45-0cea642169e3",
-    "pt_circ_oct_2025": "https://www.infarmed.pt/documents/15786/10773025/Atualiza%C3%A7%C3%A3o+das+listas+previstas+no+Regulamento+sobre+o+controlo+de+transa%C3%A7%C3%B5es+de+medicamentos+para+o+exterior+do+pa%C3%ADs/db92c49c-92b6-13c7-364d-c9758a3b70e6",
-    "pt_circ_jun_2026": "https://www.infarmed.pt/documents/15786/12277909/Atualiza%C3%A7%C3%A3o+da+lista+de+medicamentos+cuja+exporta%C3%A7%C3%A3o+%C3%A9+temporariamente+suspensa+-+junho+2026/5c4742ff-efec-47b6-fdf0-99dc4db20498",
-    "pt_regulamento_2021": "https://files.diariodarepublica.pt/2s/2021/04/078000000/0020900218.pdf",
+    "pt_disponibilidade_2025": INF + "/documents/15786/10901776/Relat%C3%B3rio2025/a2d40b5d-60ea-4297-6bc8-fa146f1a5c70",
+    "pt_lnp_oct_2026": INF + "/documents/15786/9423561/LNP+-+outubro+2026+%28II%29/d9dcc03e-a5d6-d90e-0787-91a72518f57a",
+    "pt_proibicoes_oct_2026": INF + "/documents/15786/11927579/Lista+de+proibi%C3%A7%C3%B5es+-+17+de+outubro+de+2026/2aa0a5bb-d463-65e5-9a35-91b6d72e0e7f",
+    "pt_suspensa_nov_2026": INF + "/documents/15786/9423565/Lista+de+exporta%C3%A7%C3%A3o+temporariamente+suspensa+-+Novembro+2026/90058a23-ee1d-91e0-df78-c406a5a2a60e",
+    "pt_delib_110_2026": INF + "/documents/15786/9423565/Delibera%C3%A7%C3%A3o+110+-+exporta%C3%A7%C3%A3o+temporariamente+suspensa+-+novembro+2026/77984131-b2d5-5e3a-3f84-d8067b8c3469",
 }
 
 FILE_LINK = re.compile(r"\.(csv|xls|xlsx|zip|ods|xml|json|txt|pdf)(\?|$|#)|/documents/|download|export|lista|relat",
@@ -129,71 +129,109 @@ def save(name: str, url: str, out_dir: Path, out: list[str], session=None) -> No
     elif r.content[:2] == b"PK" and len(r.content) < 20_000_000:
         (raw / f"{name}.xlsx").write_bytes(r.content)
         out.append(f"saved raw/{name}.xlsx")
+    elif r.content[:8] == b"\xd0\xcf\x11\xe0\xa1\xb1\x1a\xe1":
+        (raw / f"{name}.xls").write_bytes(r.content)
+        out.append(f"saved raw/{name}.xls")
     else:
         out.append(r.content[:600].decode("utf-8", "replace"))
 
 
 def iris(out: list[str], out_dir: Path) -> None:
-    """EMA's register of parallel distribution notices is a Power Pages portal. Find the entity grid on the
-    page and ask its data service for the first pages of records."""
+    """EMA's register of parallel distribution notices is a Power Pages portal. Ask its grid data service
+    for records, trying the header combinations the portal's own script sends."""
     out.append("===== iris register (entity grid)")
     s = requests.Session()
-    try:
-        r = get("https://iris.ema.europa.eu/registerpd/", session=s)
-    except Exception as e:  # noqa: BLE001
-        out.append(f"ERROR {e}")
-        return
+    page = "https://iris.ema.europa.eu/registerpd/"
+    r = get(page, session=s)
     html = r.text
-    out.append(f"status {r.status_code} bytes {len(html)}")
-    for pat in (r"data-view-layouts=\"([^\"]+)\"", r"data-get-url=\"([^\"]+)\"", r"entity-grid[^\"']{0,80}",
-                r"_services/[^\"'<>\s]+", r"data-[a-z-]+=\"[^\"]{0,120}\"", r"/_api/[^\"'<>\s]+",
-                r"<script[^>]+src=\"([^\"]+)\""):
-        hits = list(dict.fromkeys(re.findall(pat, html)))[:40]
-        out.append(f"  {pat}: {len(hits)}")
-        for h in hits:
-            out.append("    " + h[:400])
     layouts = re.findall(r"data-view-layouts=\"([^\"]+)\"", html)
     get_url = re.findall(r"data-get-url=\"([^\"]+)\"", html)
-    try:
-        tok = get("https://iris.ema.europa.eu/_layout/tokenhtml", session=s).text
-        token = re.search(r"value=\"([^\"]+)\"", tok)
-        token = token.group(1) if token else ""
-        out.append(f"  token {'found' if token else 'missing'}")
-    except Exception as e:  # noqa: BLE001
-        out.append(f"  token ERROR {e}")
-        token = ""
-    if layouts and get_url:
-        try:
-            lay = json.loads(base64.b64decode(unescape(layouts[0])))
-        except Exception as e:  # noqa: BLE001
-            out.append(f"  layouts not base64 JSON: {e}")
-            lay = json.loads(unescape(layouts[0])) if layouts[0].strip().startswith("[") else []
-        out.append("  layout keys: " + json.dumps(lay)[:1500])
-        if lay:
-            conf = lay[0].get("Base64SecureConfiguration") or lay[0].get("base64SecureConfiguration")
-            body = {"base64SecureConfiguration": conf, "sortExpression": "", "search": "", "page": 1,
-                    "pageSize": 50, "pagingCookie": "", "filter": None, "metaFilter": None, "timezoneOffset": 0,
-                    "customParameters": [], "entityName": lay[0].get("EntityName"),
-                    "entityId": None}
-            url = urljoin("https://iris.ema.europa.eu/", unescape(get_url[0]))
+    lay = json.loads(base64.b64decode(unescape(layouts[0])))
+    conf = lay[0]["Base64SecureConfiguration"]
+    url = urljoin(page, unescape(get_url[0]))
+    tok_html = get("https://iris.ema.europa.eu/_layout/tokenhtml", session=s).text
+    m = re.search(r"value=\"([^\"]+)\"", tok_html)
+    token = m.group(1) if m else ""
+    out.append(f"  token {'found' if token else 'missing'}; cookies {list(s.cookies.keys())}")
+    # Member-state filter options (checkbox values) with their labels.
+    opts = re.findall(r'<input type="checkbox" name="(\d+)" value="(\{[^}]+\})"\s*/>\s*</?[^>]*>?\s*([^<]*)', html)
+    labels = re.findall(r'value="(\{[0-9a-f-]+\})"[^>]*/>[^<]*<[^>]*>([^<]+)<', html)
+    out.append(f"  checkbox options {len(opts)}; labelled {len(labels)}; sample {labels[:5]}")
+    i = html.find("Member State(s) of Origin")
+    out.append("  origin filter html: " + re.sub(r"\s+", " ", html[i:i + 1500]))
+    base = {"base64SecureConfiguration": conf, "sortExpression": "ema_dateofnotification DESC", "search": None,
+            "page": 1, "pageSize": 26, "pagingCookie": "", "filter": None, "metaFilter": None, "nlSearchFilter": None,
+            "timezoneOffset": 0, "customParameters": [], "entityName": None, "entityId": None}
+    variants = {
+        "xhr": {"X-Requested-With": "XMLHttpRequest", "Referer": page, "Origin": "https://iris.ema.europa.eu"},
+        "xhr_noorigin": {"X-Requested-With": "XMLHttpRequest", "Referer": page},
+        "plain": {},
+    }
+    raw = out_dir / "raw"
+    raw.mkdir(exist_ok=True)
+    for vname, extra in variants.items():
+        for size in (26, 500):
+            body = dict(base, pageSize=size)
+            hdr = {**UA, "Content-Type": "application/json; charset=utf-8", "Accept": "application/json, text/javascript, */*; q=0.01",
+                   "__RequestVerificationToken": token, **extra}
             try:
-                rr = s.post(url, json=body, headers={**UA, "__RequestVerificationToken": token,
-                                                     "Content-Type": "application/json"}, timeout=120)
-                out.append(f"  POST {url} -> {rr.status_code} bytes {len(rr.content)}")
-                out.append("  " + rr.text[:3000])
-                raw = out_dir / "raw"
-                raw.mkdir(exist_ok=True)
-                (raw / "iris_page1.json.gz").write_bytes(gzip.compress(rr.content, mtime=0))
+                rr = s.post(url, data=json.dumps(body), headers=hdr, timeout=120, allow_redirects=False)
             except Exception as e:  # noqa: BLE001
-                out.append(f"  POST ERROR {e}")
-    # Power Pages Web API, in case it is enabled for anonymous reads.
-    for path in ("/_api/ema_paralleldistributionnotices?$top=3", "/_api/$metadata"):
+                out.append(f"  {vname}/{size}: ERROR {e}")
+                continue
+            ct = rr.headers.get("content-type", "")
+            out.append(f"  {vname}/{size}: {rr.status_code} {ct} bytes {len(rr.content)} loc {rr.headers.get('location')}")
+            if "json" in ct:
+                js = rr.json()
+                out.append("    keys " + str(list(js.keys())))
+                out.append("    ItemCount " + str(js.get("ItemCount")) + " PageCount " + str(js.get("PageCount"))
+                           + " MoreRecords " + str(js.get("MoreRecords")))
+                recs = js.get("Records") or []
+                if recs:
+                    out.append("    first record " + json.dumps(recs[0])[:2500])
+                (raw / f"iris_{vname}_{size}.json.gz").write_bytes(gzip.compress(rr.content, mtime=0))
+                return
+            out.append("    " + re.sub(r"\s+", " ", rr.text[:300]))
+
+
+def wayback(out: list[str], out_dir: Path) -> None:
+    """Snapshots of Infarmed's availability page in the Wayback Machine, to recover the links to past
+    monthly lists of medicines whose export was suspended and past prior-notification lists."""
+    out.append("===== wayback snapshots of the availability page")
+    cdx = ("https://web.archive.org/cdx/search/cdx?url=infarmed.pt/web/infarmed/gestao-da-disponibilidade-do-medicamento"
+           "&output=json&from=2019&filter=statuscode:200&collapse=timestamp:6")
+    try:
+        r = get(cdx, timeout=180)
+        rows = r.json()
+    except Exception as e:  # noqa: BLE001
+        out.append(f"  CDX ERROR {e}")
+        return
+    out.append(f"  snapshots (one per month): {len(rows) - 1}")
+    links: dict[str, str] = {}
+    for row in rows[1:]:
+        ts = row[1]
+        snap = f"https://web.archive.org/web/{ts}id_/https://www.infarmed.pt/web/infarmed/gestao-da-disponibilidade-do-medicamento"
         try:
-            rr = s.get("https://iris.ema.europa.eu" + path, headers={**UA, "__RequestVerificationToken": token},
-                       timeout=60)
-            out.append(f"  GET {path} -> {rr.status_code} {rr.text[:600]}")
+            h = get(snap, timeout=120).text
         except Exception as e:  # noqa: BLE001
-            out.append(f"  GET {path} ERROR {e}")
+            out.append(f"  {ts} ERROR {e}")
+            continue
+        found = []
+        for href, text in HREF.findall(h):
+            label = re.sub(r"\s+", " ", unescape(TAGS.sub(" ", text))).strip()
+            href = unescape(href)
+            if "/documents/15786/" in href and re.search(r"suspens|LNP|notifica|proibi|Lista", href + label, re.I):
+                full = re.sub(r"^https?://web\.archive\.org/web/\d+[a-z_]*/", "", urljoin("https://www.infarmed.pt/", href))
+                if full not in links:
+                    links[full] = f"{ts} {label}"
+                    found.append(label)
+        out.append(f"  {ts}: {len(found)} new links {found[:6]}")
+        time.sleep(1.0)
+    out.append(f"  distinct list documents: {len(links)}")
+    for u, v in links.items():
+        out.append(f"  DOC {v} -> {u}")
+    (out_dir / "raw").mkdir(exist_ok=True)
+    (out_dir / "raw" / "wayback_links.json").write_text(json.dumps(links, indent=1, ensure_ascii=False), encoding="utf-8")
 
 
 def main() -> None:
@@ -207,7 +245,11 @@ def main() -> None:
         survey_page(name, url, out, out_dir)
     for name, url in SAVE.items():
         save(name, url, out_dir, out)
-    iris(out, out_dir)
+    try:
+        iris(out, out_dir)
+    except Exception as e:  # noqa: BLE001
+        out.append(f"iris ERROR {type(e).__name__}: {e}")
+    wayback(out, out_dir)
     (out_dir / "probe_report.txt").write_text("\n".join(out) + "\n", encoding="utf-8")
 
 
