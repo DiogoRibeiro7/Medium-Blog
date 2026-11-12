@@ -21,6 +21,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Callable, Sequence
 from urllib.error import HTTPError, URLError
+from urllib.request import HTTPRedirectHandler, Request, build_opener
 from urllib.parse import parse_qs, urlencode, urlsplit
 
 from extract_commuting import municipality_codes_from_panel
@@ -28,6 +29,7 @@ from ine_commuting_capture import (
     CapturedJSON,
     MAX_BYTES,
     META_URL,
+    DEFAULT_TIMEOUT_SECONDS,
     _parse_json,
     _schema_outline,
     download_json,
@@ -69,6 +71,65 @@ def require_slice_url(url: str, *, dico: str, dimension: str) -> None:
     if actual != expected or any(len(values) != 1 for values in actual.values()):
         raise ValueError("INE slice URL changed the candidate filter")
 
+
+
+class SliceRedirect(HTTPRedirectHandler):
+    """Reject redirects changing requested municipality, period or publisher."""
+
+    def redirect_request(
+        self, req: Request, fp: Any, code: int, msg: str,
+        headers: Any, newurl: str,
+    ) -> Request | None:
+        query = parse_qs(urlsplit(req.full_url).query)
+        dimension = "Dim2" if "Dim2" in query else "Dim3"
+        dico = query[dimension][0]
+        require_slice_url(newurl, dico=dico, dimension=dimension)
+        return super().redirect_request(req, fp, code, msg, headers, newurl)
+
+
+def download_slice(
+    url: str, *, timeout_seconds: float = DEFAULT_TIMEOUT_SECONDS,
+    max_bytes: int = MAX_BYTES,
+) -> CapturedJSON:
+    """GET a single bounded municipality slice from an exact official HTTPS URL."""
+    parsed = parse_qs(urlsplit(url).query)
+    dimension = "Dim2" if "Dim2" in parsed else "Dim3"
+    if dimension not in parsed or len(parsed[dimension]) != 1:
+        raise ValueError("Missing exactly one municipality filter")
+    code = parsed[dimension][0]
+    require_slice_url(url, dico=code, dimension=dimension)
+    if not isinstance(timeout_seconds, (int, float)) or isinstance(timeout_seconds, bool) or not 0 < timeout_seconds <= 120:
+        raise ValueError("Invalid finite timeout")
+    if not isinstance(max_bytes, int) or isinstance(max_bytes, bool) or not 0 < max_bytes <= MAX_BYTES:
+        raise ValueError("Invalid maximum response bytes")
+    opener = build_opener(SliceRedirect())
+    request = Request(url, method="GET", headers={
+        "Accept": "application/json", "User-Agent": "PortoHousingINEPartitionCapture/1.0",
+    })
+    with opener.open(request, timeout=timeout_seconds) as response:
+        if response.status != 200:
+            raise ValueError(f"INE slice HTTP {response.status}")
+        final_url = response.geturl()
+        require_slice_url(final_url, dico=code, dimension=dimension)
+        claimed = response.headers.get("Content-Length")
+        if claimed is not None:
+            if not str(claimed).isdigit() or int(claimed) > max_bytes:
+                raise ValueError("INE slice Content-Length invalid or exceeds limit")
+        raw = response.read(max_bytes + 1)
+        content_type = str(response.headers.get("Content-Type", ""))
+    if not raw or len(raw) > max_bytes:
+        raise ValueError("INE slice is empty or exceeds byte limit")
+    _parse_json(raw)
+    return CapturedJSON(raw, final_url, content_type)
+
+
+def download_pinned_metadata() -> bytes:
+    """Retrieve the original source metadata and require the archived SHA-256."""
+    response = download_json(META_URL)
+    raw = response.payload
+    if hashlib.sha256(raw).hexdigest() != EXPECTED_METADATA_SHA256:
+        raise ValueError("INE metadata changed; explicit re-review required")
+    return raw
 
 def validate_metadata(raw: bytes, codes: dict[str, str]) -> dict[str, Any]:
     """Check the exact previously archived INE metadata and all 17 AMP codes."""
@@ -142,7 +203,7 @@ def capture_partition(
     start_index: int = 0,
     count: int = 2,
     dimension: str = "Dim2",
-    fetcher: Callable[[str], CapturedJSON] = download_json,
+    fetcher: Callable[[str], CapturedJSON] = download_slice,
 ) -> dict[str, Any]:
     """Fetch a bounded DICO slice range and preserve all successes and failures."""
     codes = municipality_codes_from_panel()
@@ -215,14 +276,15 @@ def capture_partition(
 def main(argv: Sequence[str] | None = None) -> None:
     """Run one manually selected small geographic slice batch."""
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--metadata-json", type=Path, required=True)
+    parser.add_argument("--metadata-json", type=Path, default=None,\n                        help="Optional previously captured exact metadata; otherwise fetch pinned official metadata")
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--start-index", type=int, default=0)
     parser.add_argument("--count", type=int, default=2)
     parser.add_argument("--dimension", choices=["Dim2", "Dim3"], default="Dim2")
     args = parser.parse_args(argv)
+    metadata_bytes = args.metadata_json.read_bytes() if args.metadata_json is not None else download_pinned_metadata()
     result = capture_partition(
-        args.output, metadata_bytes=args.metadata_json.read_bytes(),
+        args.output, metadata_bytes=metadata_bytes,
         start_index=args.start_index, count=args.count, dimension=args.dimension,
     )
     print(f"INE 0012340: {result['completed_json_captures']}/{result['capture_count']} "
