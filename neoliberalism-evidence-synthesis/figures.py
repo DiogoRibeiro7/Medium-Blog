@@ -14,6 +14,8 @@ import matplotlib
 
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+from matplotlib.axes import Axes
+
 from analysis import (
     COUNTRIES,
     DATA_DIR,
@@ -24,7 +26,6 @@ from analysis import (
     read_us_history,
     write_or_check_results,
 )
-from matplotlib.axes import Axes
 
 FIGURES_DIR = ROOT / "figures"
 COUNTRY_NAMES: dict[str, str] = {
