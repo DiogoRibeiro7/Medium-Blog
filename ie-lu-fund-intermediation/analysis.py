@@ -131,6 +131,9 @@ def main() -> None:
     L.append(f"Hub equity and fund shares held outside the EU as a share of all EU27 equity and fund shares held "
              f"outside the EU: end-2024 {pct(sh[2024])}, range 2014-2025 {pct(sh.min())}-{pct(sh.max())}; "
              f"bounds end-2024 {pct(cp.non_eu_low[2024] / eu_l5[2024])}-{pct(cp.non_eu_high[2024] / eu_l5[2024])}")
+    other25 = eu_l5[2024] - cp.non_eu[2024]
+    L.append(f"Equity and fund shares of the other 25 members held outside the EU, end-2024 (EU27 minus hubs): "
+             f"{bn(other25)}; hubs / other 25 = {cp.non_eu[2024] / other25:.2f}")
     omega = pd.DataFrame({h: H.non_eu_ownership(d, h) for h in H.HUBS})
     omega_hi = pd.DataFrame({h: H.non_eu_ownership(d, h, "high") for h in H.HUBS})
     omega_lo = H.ownership_low_joint(d, usp)
@@ -138,6 +141,17 @@ def main() -> None:
         L.append(series_line(f"Non-EU ownership of {h} fund shares (central)", omega[h].loc[[2014] + SHOW_YEARS], pct))
         lo_h = H.non_eu_ownership(d, h, "low")
         L.append(f"  {h} end-2024 bounds (this hub alone): {pct(lo_h[2024])}-{pct(omega_hi.loc[2024, h])}")
+    non_ea_2020 = ["BG", "CZ", "DK", "HR", "HU", "PL", "RO", "SE"]
+    for h in H.HUBS:
+        held = H.holdings_of_hub(d, h)
+        non_ea = held[[g for g in non_ea_2020 if g in held.columns]].sum(axis=1)
+        r51 = H.company_share_ratio(d, h)
+        allf52 = H.fund_shares_outstanding(d, h)
+        dom = allf52 - H._get(d.fin, (h, "S2", "ASS", "F52"), H.years())
+        ea = (hp[h].eu - non_ea) * (1 - r51)
+        L.append(f"{h} end-2020 fund shares held by: other euro-area members {pct(ea[2020] / allf52[2020])}, "
+                 f"non-euro EU members {pct(non_ea[2020] * (1 - r51[2020]) / allf52[2020])}, residents of {h} "
+                 f"{pct(dom[2020] / allf52[2020])}, outside the EU {pct(omega.loc[2020, h])}")
     l51 = H.position(d, "IE", H.WRL, H.F51, "L_LE")
     eu51 = H.company_share_ratio(d, "IE") * hp["IE"].eu
     L.append(f"IE company shares held outside the EU, end-2024: {bn(l51[2024] - eu51[2024])} of {bn(l51[2024])} "
@@ -172,6 +186,9 @@ def main() -> None:
     L.append(series_line("Non-EU purchases of EU securities (EU27 portfolio liabilities)", eu_in))
     L.append(series_line("  of which equity and fund shares", eu_in5))
     L.append(series_line("Hub securities as a share of non-EU purchases of EU securities", cf.non_eu / eu_in, pct))
+    gap = (eu_in - eu_in5 - eu_in3)
+    L.append(f"EU27 liabilities: total minus equity minus debt, 2015-2025: {bn(gap.sum())} "
+             f"(all in {int(gap.abs().idxmax())}: {bn(gap.loc[gap.abs().idxmax()])})")
     L.append(f"2015-2025: non-EU purchases of EU securities {bn(eu_in.sum())} (equity and fund shares "
              f"{bn(eu_in5.sum())}, debt {bn(eu_in3.sum())}); of hub equity and fund shares {bn(s.non_eu)} "
              f"({pct(s.non_eu / eu_in.sum())}; bounds {pct(s.non_eu_low / eu_in.sum())}-{pct(s.non_eu_high / eu_in.sum())})")
@@ -212,12 +229,14 @@ def main() -> None:
              f"({pct(1 - att.sum() / eu_us.sum())})")
     for y in (2023, 2024, 2025):
         L.append(f"  {y}: EU27 {bn(eu_us[y])}, for non-EU owners {bn(att[y])} ({pct(att[y] / eu_us[y])}), "
-                 f"EU-owned {bn(eu_us[y] - att[y])}")
+                 f"EU-owned {bn(eu_us[y] - att[y])} (bounds {bn(eu_us[y] - att_hi[y])}-{bn(eu_us[y] - att_lo[y])})")
     att_p = H.attribution(usp, omega)
     att_p_lo = H.attribution(usp, omega_lo)
     att_p_hi = H.attribution(usp, omega_hi)
     L.append(series_line("Non-EU-owned share of EU holdings of US securities (central)",
                          (att_p / tot_p).loc[[2014] + SHOW_YEARS], pct))
+    rng = (att_p / tot_p).loc[H.years()]
+    L.append(f"  range 2014-2025: {pct(rng.min())}-{pct(rng.max())}")
     L.append(f"  end-2024: {bn(att_p[2024])} of {bn(tot_p[2024])}; bounds {pct(att_p_lo[2024] / tot_p[2024])}-"
              f"{pct(att_p_hi[2024] / tot_p[2024])}")
     pd.DataFrame({"eu27": eu_us, "other_members": other, "hubs_eu_owned": hub_eu, "hubs_non_eu": att,
