@@ -8,6 +8,7 @@ import tempfile
 import unittest
 from dataclasses import replace
 from pathlib import Path
+from statistics import fmean, median
 
 from causal_tax_cuts.analysis import Key, Observation
 from causal_tax_cuts.event_study import estimate_event_study, save_event_study
@@ -84,7 +85,7 @@ class EventStudyTests(unittest.TestCase):
         contrasts, summaries, audit = estimate_event_study(
             panel, lags=5, max_horizon=5, min_events=1
         )
-        self.assertEqual(audit.n_original_event_rows, 2)
+        self.assertEqual(audit.n_panel_reform_events, 2)
         self.assertEqual(audit.n_eligible_events, 1)
         self.assertEqual(audit.n_matched_events, 1)
         self.assertTrue(all(row.country == "BBB" for row in contrasts))
@@ -142,6 +143,35 @@ class EventStudyTests(unittest.TestCase):
             self.assertEqual(audit_record["baseline"], "year t-1")
             self.assertIn("no p-values", audit_record["inference"])
             self.assertEqual(audit_record["n_matched_events"], 2)
+
+    def test_frozen_empirical_summary_reconciles_to_event_level_rows(self) -> None:
+        """Check committed audit arithmetic, without claiming replication."""
+        folder = Path(__file__).resolve().parents[1] / "results"
+        with (folder / "pretrend_event_contrasts_2026-11-13.csv").open(
+            "r", encoding="utf-8", newline=""
+        ) as handle:
+            effects = list(csv.DictReader(handle))
+        with (folder / "pretrend_event_time_2026-11-13.csv").open(
+            "r", encoding="utf-8", newline=""
+        ) as handle:
+            summaries = list(csv.DictReader(handle))
+
+        self.assertEqual(len(effects), 210)
+        self.assertEqual(len(summaries), 10)
+        unique_reforms = {(row["country"], int(row["reform_year"])) for row in effects}
+        self.assertEqual(len(unique_reforms), 21)
+        for summary in summaries:
+            offset = int(summary["event_time"])
+            observations = [
+                float(row["contrast"])
+                for row in effects
+                if int(row["event_time"]) == offset
+            ]
+            self.assertEqual(len(observations), 21)
+            self.assertAlmostEqual(fmean(observations), float(summary["mean_contrast"]))
+            self.assertAlmostEqual(
+                median(observations), float(summary["median_contrast"])
+            )
 
 
 if __name__ == "__main__":

@@ -45,7 +45,7 @@ class EventTimeSummary:
 class MatchingAudit:
     """Counts and pre-period slope balance for the restricted matched sample."""
 
-    n_original_event_rows: int
+    n_panel_reform_events: int
     n_eligible_events: int
     n_matched_events: int
     n_unmatched_eligible_events: int
@@ -174,7 +174,7 @@ def estimate_event_study(
         for offset in event_times
     ]
     audit = MatchingAudit(
-        n_original_event_rows=len(reform_events),
+        n_panel_reform_events=len(reform_events),
         n_eligible_events=eligible_events,
         n_matched_events=n_matched,
         n_unmatched_eligible_events=eligible_events - n_matched,

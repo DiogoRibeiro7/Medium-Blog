@@ -141,6 +141,8 @@ python -m causal_tax_cuts.event_study \
 These are **descriptive diagnostics**, not an acceptance test for causal
 identification. Missing pre-trends do not establish parallel counterfactual
 trends, and outcome-window completeness can reduce the matched sample.
+The audited first live run and fixed-cohort event-time table are available in
+[`results/PRE_TREND_RESULTS_2026-11-13.md`](results/PRE_TREND_RESULTS_2026-11-13.md).
 
 1. Download the authors' file via the link above. Inspect the true headings:
 

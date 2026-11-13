@@ -72,6 +72,10 @@ as short-lived artifacts after downloading the *actual* WID and policy data.
 No synthetic diagnostics are presented as evidence about real neoliberal
 policy. The tested method has no reported confidence intervals or p-values.
 
+The first real-data output, including pre-event values that are **not zero**,
+is preserved with source-vintage checks in
+[`results/PRE_TREND_RESULTS_2026-11-13.md`](results/PRE_TREND_RESULTS_2026-11-13.md).
+
 Possible conclusions are deliberately modest:
 
 - Nonzero pre-event contrasts weaken confidence in untreated-trend
