@@ -1,0 +1,7 @@
+hub https://github.com/KITmetricslab/covid19-forecast-hub-de.git at commit 991c7a054246faee4abace7f5b705f044b0ffd01
+rki https://github.com/robert-koch-institut/SARS-CoV-2-Infektionen_in_Deutschland_Archiv at commit 3375bddec5f30a547d62dfb1daf24612c75789d6
+truth data-truth/RKI/truth_RKI-Incident Cases_Germany.csv
+rki Archiv/2026-11-10_Deutschland_SarsCov2_Infektionen.csv.xz blob 744aee3df44e4ee2470bc4ec6bbf7109c20676f2
+holidays python-holidays 0.108
+forecasts 60266 rows, 45 models, 2020-05-04 to 2022-10-17
+forecast files read: 2496

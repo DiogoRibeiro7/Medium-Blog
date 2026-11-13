@@ -1,10 +1,10 @@
 # INE 2021 commuting-source reconciliation: operator-controlled audit
 
-**Status (13 November 2026): independently captured official Arouca, Espinho
-and Santa Maria da Feira slices have been preserved and checked against
-45 of the 136 frozen pairs.** All 48 observed off-diagonal source views
-match the pinned third-party counts; the three reciprocal links among these
-municipalities agree in both directions. The remaining **91 pairs** and
+**Status (13 November 2026): independently captured official Arouca, Espinho,
+Santa Maria da Feira and Oliveira de Azeméis slices have been preserved and
+checked against 58 of the 136 frozen pairs.** All 64 observed off-diagonal
+source views match the pinned third-party counts; all six reciprocal links
+among these municipalities agree in both directions. The remaining **78 pairs** and
 full-matrix symmetry are **not yet verified** against
 official data. No official full commuting matrix is added; the 136 existing
 undirected pairs remain labelled a third-party extraction attributed to INE.
@@ -353,3 +353,48 @@ in offline tests, alongside the official response hash, all 16 counts,
 the two reciprocal links and total unique-pair coverage. As before, this
 is **source agreement for 2021 work/study interactions**, not residential
 mobility, commuting direction or a causal housing-spillover estimate.
+
+### Fourth successful probe: Oliveira de Azeméis
+
+The fourth bounded PR run
+[#43414048813](https://github.com/DiogoRibeiro7/Medium-Blog/actions/runs/43414048813)
+selected exactly `start_index=3`, `count=1`, `dimension=Dim2`, corresponding
+to DICO **0113 (Oliveira de Azeméis)**. Its official 2021 response succeeded.
+The complete artifact—raw 62,734-byte JSON, original manifest and separately
+reproduced audit—is archived under
+[`data/ine_0012340_pr_run_43414048813/`](data/ine_0012340_pr_run_43414048813/).
+The response's exact SHA-256 is
+`57e7b37e81e9190a2edd0aa996318aab26a97ccff0b42f409afaf2dc930ccae8`.
+
+The response includes 347 unique `dim_3` codes, all 17 AMP counterparts,
+only `geocod=0113`, a single 2021 period, successful API status and a zero
+diagonal. The offline checker verifies the original response hash and
+manifest, then matches **all 16** nonself AMP counts to the checksummed
+third-party CSV with zero differences. Its three newly observed reciprocal
+links also agree with the previously archived source directions:
+
+| Pair | Previous source | Oliveira de Azeméis source |
+| --- | ---: | ---: |
+| Arouca–Oliveira de Azeméis | 1,194 | 1,194 |
+| Espinho–Oliveira de Azeméis | 231 | 231 |
+| Santa Maria da Feira–Oliveira de Azeméis | 4,414 | 4,414 |
+
+The four municipal slices yield **64 off-diagonal source views**, covering
+`4 × 16 − 6 = 58` unique AMP pairs. The six within-sample reciprocal links
+are symmetric; **78 of 136 unique pairs remain unverified** and the complete
+official matrix is not yet known. Offline tests verify source byte integrity,
+the deterministic `audit_0113.json` report, all 16 counts, all six reciprocal
+links and the 58-pair coverage calculation.
+
+Reproduce from `urban-affordability-cascade/`:
+
+```bash
+python ine_commuting_partition_reconciliation.py \
+  --source-json data/ine_0012340_pr_run_43414048813/ine_0012340_dim2_0113_candidate.json \
+  --manifest-json data/ine_0012340_pr_run_43414048813/partition_manifest.json \
+  --municipality-code 0113 \
+  --output-json /tmp/ine-0012340-oliveira-partial-audit.json
+```
+
+This is **source agreement for work/study interactions**, not evidence of
+residential migration, involuntary displacement or causal price spillovers.
