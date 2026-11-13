@@ -467,7 +467,7 @@ def ledger_frame(est: pd.DataFrame, power: dict[str, float]) -> pd.DataFrame:
     rb = one(read("successions", "robustness.csv"), shock="strict", variant="baseline")
     km1_lo, km1_hi = ci(rb["k_m1"], rb["se_k_m1"])
     add("Not a reflection of earlier growth", "successions",
-        "growth in the year before the founder leaves the list (k=-1)",
+        "growth in the year before the first list without the founder (k=-1)",
         f"{fmt_ci(rb['k_m1'], km1_lo, km1_hi)} against a post effect of {fmt(rb['post'])}",
         verdict_pretrend(rb["k_m1"], km1_lo, km1_hi, rb["post"]), "pre-trend equivalence")
 
