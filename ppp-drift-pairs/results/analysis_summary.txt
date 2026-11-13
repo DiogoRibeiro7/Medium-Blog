@@ -28,16 +28,22 @@ HFCE: group mean (Eurostat, OECD); within-group SD (Eurostat, OECD): 10.3, -2.7;
 HFCE: permutation p-value of the gap (10,000 relabellings): 0.0001
 HFCE: with ln price level 2005 as control: gap; slope per log point of price level; R2: 12.9; -7.5; 0.53
 HFCE: correlation of drift with ln price level 2005 inside the Eurostat group (n, r): 35, -0.49
+HFCE: same correlation inside the OECD group (n, r): 9, -0.05
+HFCE: residual SD after group and price level (points): 5.8
 AIC: gap Eurostat minus OECD group (points); R2; n: 12.3; 0.31; 43
 AIC: group mean (Eurostat, OECD); within-group SD (Eurostat, OECD): 11.1, -1.2; 7.3, 6.8
 AIC: permutation p-value of the gap (10,000 relabellings): 0.0001
 AIC: with ln price level 2005 as control: gap; slope per log point of price level; R2: 11.4; -8.6; 0.45
 AIC: correlation of drift with ln price level 2005 inside the Eurostat group (n, r): 35, -0.48
+AIC: same correlation inside the OECD group (n, r): 8, -0.26
+AIC: residual SD after group and price level (points): 6.6
 GDP: gap Eurostat minus OECD group (points); R2; n: 12.2; 0.31; 46
 GDP: group mean (Eurostat, OECD); within-group SD (Eurostat, OECD): 17.4, 5.1; 7.3, 9.8
 GDP: permutation p-value of the gap (10,000 relabellings): 0.0002
 GDP: with ln price level 2005 as control: gap; slope per log point of price level; R2: 12.5; -5.2; 0.36
 GDP: correlation of drift with ln price level 2005 inside the Eurostat group (n, r): 35, -0.19
+GDP: same correlation inside the OECD group (n, r): 11, -0.46
+GDP: residual SD after group and price level (points): 7.7
 HFCE, Eurostat group: mean drift of the 8 cheapest / 8 dearest economies in 2005 (points): 13.0 / 4.5
 Eight cheapest; eight dearest (price level of household consumption, US = 100, 2005): BGR 45, MKD 49, SRB 50, ROU 56, ALB 57, LTU 59, SVK 60, LVA 61; ISL 161, NOR 154, DNK 151, CHE 143, GBR 139, FIN 133, IRL 133, SWE 128
 

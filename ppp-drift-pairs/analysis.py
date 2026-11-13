@@ -90,6 +90,11 @@ def main() -> None:
         e = sc[sc.group == "Eurostat"]
         r = e.drift.corr(pli[agg].reindex(e.index))
         say(f"{agg}: correlation of drift with ln price level 2005 inside the Eurostat group (n, r)", f"{len(e)}, {r:.2f}")
+        o = sc[sc.group == "OECD"]
+        say(f"{agg}: same correlation inside the OECD group (n, r)", f"{len(o)}, {o.drift.corr(pli[agg].reindex(o.index)):.2f}")
+        X = np.column_stack([np.ones(len(sc)), (sc.group == "Eurostat").astype(float), pli[agg].reindex(sc.index)])
+        resid = sc.drift.values - X @ mc["beta"]
+        say(f"{agg}: residual SD after group and price level (points)", f"{np.sqrt((resid ** 2).sum() / (len(sc) - 3)):.1f}")
     sc = scores["HFCE"].copy()
     sc["ln_pli_2005"] = pli["HFCE"].reindex(sc.index)
     sc["pli_2005"] = np.exp(sc["ln_pli_2005"])
