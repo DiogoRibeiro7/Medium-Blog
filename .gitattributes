@@ -135,6 +135,8 @@ eu-us-ppp-drift/**/*.gz -filter -diff -merge binary
 storm-train-recovery/**/*.csv -filter -diff -merge text
 housing-losses-inflation/**/*.csv -filter -diff -merge text
 wealth-origin-successions/**/*.csv -filter -diff -merge text
+agreement-regimes/**/*.csv -filter -diff -merge text
+agreement-regimes/**/*.json -filter -diff -merge text
 wealth-origin-synthesis/**/*.csv -filter -diff -merge text
 ppp-drift-pairs/**/*.csv -filter -diff -merge text
 ppp-drift-pairs/**/*.gz -filter -diff -merge binary
