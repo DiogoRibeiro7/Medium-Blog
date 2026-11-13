@@ -1,0 +1,1433 @@
+{
+  "against_model": {
+    "excess_over_model": 1389.4354782181808,
+    "existing_far": 1205,
+    "existing_over_excess": 0.8672586952690298,
+    "linked_far": 920,
+    "linked_over_excess": 0.662139418794612,
+    "model_far": 606.5645217818192,
+    "observed_far": 1996,
+    "selfmade_unlinked_far": 786,
+    "selfmade_unlinked_minus_model": 179.43547821818083,
+    "selfmade_unlinked_minus_model_share": 0.08989753417744531,
+    "unknown_unlinked_far": 0
+  },
+  "ages": {
+    "company": {
+      "85_plus": 0.017391304347826087,
+      "n": 230,
+      "under_50": 0.45217391304347826
+    },
+    "division": {
+      "85_plus": 0.0,
+      "n": 50,
+      "under_50": 0.36
+    },
+    "family": {
+      "85_plus": 0.0390625,
+      "n": 128,
+      "under_50": 0.234375
+    },
+    "heir": {
+      "85_plus": 0.045714285714285714,
+      "n": 175,
+      "under_50": 0.25142857142857145
+    },
+    "inherited": {
+      "85_plus": 0.038461538461538464,
+      "n": 260,
+      "under_50": 0.16153846153846155
+    },
+    "returning": {
+      "85_plus": 0.03636363636363636,
+      "n": 275,
+      "under_50": 0.2
+    },
+    "selfmade": {
+      "85_plus": 0.02656042496679947,
+      "n": 753,
+      "under_50": 0.30810092961487384
+    }
+  },
+  "bootstrap": {
+    "company_ci95": [
+      0.09864530915809104,
+      0.14090498062021922
+    ],
+    "existing_ci95": [
+      0.5604054826423943,
+      0.645928468012158
+    ],
+    "inherited_ci95": [
+      0.10361397657958951,
+      0.2084478898980932
+    ],
+    "linked_ci95": [
+      0.38823952163275816,
+      0.5228116766423322
+    ],
+    "n_boot": 400,
+    "relatives_ci95": [
+      0.15297886099835992,
+      0.2537081383983366
+    ],
+    "returning_ci95": [
+      0.08510462069856785,
+      0.20254323452900008
+    ]
+  },
+  "by_region": {
+    "China": {
+      "company": 0.10309278350515463,
+      "division": 0.020618556701030927,
+      "existing": 0.49896907216494846,
+      "family": 0.10515463917525773,
+      "family_any": 0.1958762886597938,
+      "heir": 0.07010309278350516,
+      "inherited": 0.02268041237113402,
+      "n": 485,
+      "relisted": 0.004123711340206186,
+      "returning": 0.177319587628866,
+      "selfmade": 0.49690721649484537,
+      "unknown": 0.0
+    },
+    "Europe": {
+      "company": 0.1670428893905192,
+      "division": 0.04288939051918736,
+      "existing": 0.724604966139955,
+      "family": 0.03611738148984198,
+      "family_any": 0.2144469525959368,
+      "heir": 0.13544018058690746,
+      "inherited": 0.2595936794582393,
+      "n": 443,
+      "relisted": 0.0,
+      "returning": 0.0835214446952596,
+      "selfmade": 0.27539503386004516,
+      "unknown": 0.0
+    },
+    "India": {
+      "company": 0.08108108108108109,
+      "division": 0.04504504504504504,
+      "existing": 0.8018018018018018,
+      "family": 0.07207207207207207,
+      "family_any": 0.2882882882882883,
+      "heir": 0.17117117117117117,
+      "inherited": 0.2072072072072072,
+      "n": 111,
+      "relisted": 0.0,
+      "returning": 0.22522522522522523,
+      "selfmade": 0.1981981981981982,
+      "unknown": 0.0
+    },
+    "Other": {
+      "company": 0.07428571428571429,
+      "division": 0.02095238095238095,
+      "existing": 0.6095238095238096,
+      "family": 0.05333333333333334,
+      "family_any": 0.1580952380952381,
+      "heir": 0.0838095238095238,
+      "inherited": 0.18095238095238095,
+      "n": 525,
+      "relisted": 0.005714285714285714,
+      "returning": 0.1961904761904762,
+      "selfmade": 0.38476190476190475,
+      "unknown": 0.0
+    },
+    "United States": {
+      "company": 0.16203703703703703,
+      "division": 0.03009259259259259,
+      "existing": 0.5393518518518519,
+      "family": 0.0763888888888889,
+      "family_any": 0.19212962962962965,
+      "heir": 0.08564814814814815,
+      "inherited": 0.10648148148148148,
+      "n": 432,
+      "relisted": 0.0,
+      "returning": 0.0787037037037037,
+      "selfmade": 0.46064814814814814,
+      "unknown": 0.0
+    }
+  },
+  "by_year": {
+    "2010": {
+      "company": 11,
+      "division": 0,
+      "family": 6,
+      "heir": 3,
+      "inherited": 19,
+      "n": 102,
+      "relisted": 0,
+      "returning": 0,
+      "selfmade": 63,
+      "unknown": 0
+    },
+    "2011": {
+      "company": 4,
+      "division": 2,
+      "family": 1,
+      "heir": 11,
+      "inherited": 12,
+      "n": 70,
+      "relisted": 0,
+      "returning": 1,
+      "selfmade": 39,
+      "unknown": 0
+    },
+    "2012": {
+      "company": 10,
+      "division": 3,
+      "family": 4,
+      "heir": 8,
+      "inherited": 37,
+      "n": 99,
+      "relisted": 0,
+      "returning": 3,
+      "selfmade": 34,
+      "unknown": 0
+    },
+    "2013": {
+      "company": 7,
+      "division": 3,
+      "family": 11,
+      "heir": 8,
+      "inherited": 51,
+      "n": 155,
+      "relisted": 0,
+      "returning": 17,
+      "selfmade": 58,
+      "unknown": 0
+    },
+    "2014": {
+      "company": 23,
+      "division": 7,
+      "family": 7,
+      "heir": 11,
+      "inherited": 24,
+      "n": 123,
+      "relisted": 0,
+      "returning": 9,
+      "selfmade": 42,
+      "unknown": 0
+    },
+    "2015": {
+      "company": 17,
+      "division": 5,
+      "family": 6,
+      "heir": 5,
+      "inherited": 15,
+      "n": 88,
+      "relisted": 2,
+      "returning": 6,
+      "selfmade": 32,
+      "unknown": 0
+    },
+    "2016": {
+      "company": 7,
+      "division": 0,
+      "family": 7,
+      "heir": 5,
+      "inherited": 12,
+      "n": 101,
+      "relisted": 1,
+      "returning": 31,
+      "selfmade": 38,
+      "unknown": 0
+    },
+    "2017": {
+      "company": 11,
+      "division": 4,
+      "family": 16,
+      "heir": 10,
+      "inherited": 9,
+      "n": 113,
+      "relisted": 0,
+      "returning": 10,
+      "selfmade": 53,
+      "unknown": 0
+    },
+    "2018": {
+      "company": 17,
+      "division": 3,
+      "family": 5,
+      "heir": 29,
+      "inherited": 4,
+      "n": 98,
+      "relisted": 0,
+      "returning": 4,
+      "selfmade": 36,
+      "unknown": 0
+    },
+    "2019": {
+      "company": 4,
+      "division": 6,
+      "family": 8,
+      "heir": 8,
+      "inherited": 3,
+      "n": 83,
+      "relisted": 0,
+      "returning": 13,
+      "selfmade": 41,
+      "unknown": 0
+    },
+    "2020": {
+      "company": 51,
+      "division": 1,
+      "family": 36,
+      "heir": 9,
+      "inherited": 21,
+      "n": 365,
+      "relisted": 0,
+      "returning": 107,
+      "selfmade": 140,
+      "unknown": 0
+    },
+    "2021": {
+      "company": 13,
+      "division": 2,
+      "family": 8,
+      "heir": 18,
+      "inherited": 15,
+      "n": 138,
+      "relisted": 1,
+      "returning": 11,
+      "selfmade": 70,
+      "unknown": 0
+    },
+    "2022": {
+      "company": 13,
+      "division": 11,
+      "family": 7,
+      "heir": 42,
+      "inherited": 16,
+      "n": 140,
+      "relisted": 0,
+      "returning": 24,
+      "selfmade": 27,
+      "unknown": 0
+    },
+    "2023": {
+      "company": 24,
+      "division": 6,
+      "family": 5,
+      "heir": 21,
+      "inherited": 19,
+      "n": 153,
+      "relisted": 1,
+      "returning": 27,
+      "selfmade": 50,
+      "unknown": 0
+    },
+    "2024": {
+      "company": 30,
+      "division": 5,
+      "family": 9,
+      "heir": 6,
+      "inherited": 33,
+      "n": 168,
+      "relisted": 0,
+      "returning": 22,
+      "selfmade": 63,
+      "unknown": 0
+    }
+  },
+  "check_part4": {
+    "changed_lists": [],
+    "entry": {
+      "cells": 209,
+      "known_citizenship": 4724,
+      "mismatches": 0,
+      "part4_people": 4724,
+      "people": 4725,
+      "unknown_citizenship": 1
+    },
+    "entry_far": 1996,
+    "entry_far_known": 1996,
+    "exit": {
+      "cells": 212,
+      "known_citizenship": 2708,
+      "mismatches": 0,
+      "part4_people": 2708,
+      "people": 2708,
+      "unknown_citizenship": 0
+    }
+  },
+  "co_owner": {
+    "all": {
+      "expected_one_owner": 0.23807551170239544,
+      "n": 494,
+      "observed": 0.4089068825910931,
+      "ratio": 1.7175512074599433
+    },
+    "co_inc_share_far": 0.10848819688598695,
+    "far": {
+      "expected_one_owner": 0.2603364803939771,
+      "n": 216,
+      "observed": 0.4583333333333333,
+      "ratio": 1.7605420978255528
+    },
+    "near": {
+      "expected_one_owner": 0.22077921948159812,
+      "n": 278,
+      "observed": 0.37050359712230213,
+      "ratio": 1.6781633615349543
+    },
+    "stayer_rise_share_mean": 0.19810075632348267
+  },
+  "composition": {
+    "10000_up": {
+      "company": {
+        "n": 2,
+        "share": 0.05555555555555555
+      },
+      "company_entry_only": 2,
+      "company_rise": 0,
+      "division": {
+        "n": 3,
+        "share": 0.08333333333333333
+      },
+      "existing_share": 0.8333333333333333,
+      "family": {
+        "n": 2,
+        "share": 0.05555555555555555
+      },
+      "heir": {
+        "n": 8,
+        "share": 0.2222222222222222
+      },
+      "inherited": {
+        "n": 12,
+        "share": 0.3333333333333333
+      },
+      "linked_share": 0.5,
+      "n": 36,
+      "relatives_share": 0.3611111111111111,
+      "relisted": {
+        "n": 0,
+        "share": 0.0
+      },
+      "returning": {
+        "n": 3,
+        "share": 0.08333333333333333
+      },
+      "self_made_share": 0.25,
+      "selfmade": {
+        "n": 6,
+        "share": 0.16666666666666666
+      },
+      "unknown": {
+        "n": 0,
+        "share": 0.0
+      }
+    },
+    "1500_3000": {
+      "company": {
+        "n": 173,
+        "share": 0.11865569272976681
+      },
+      "company_entry_only": 144,
+      "company_rise": 29,
+      "division": {
+        "n": 33,
+        "share": 0.02263374485596708
+      },
+      "existing_share": 0.5747599451303155,
+      "family": {
+        "n": 99,
+        "share": 0.06790123456790123
+      },
+      "heir": {
+        "n": 101,
+        "share": 0.06927297668038408
+      },
+      "inherited": {
+        "n": 186,
+        "share": 0.12757201646090535
+      },
+      "linked_share": 0.4499314128943759,
+      "n": 1458,
+      "relatives_share": 0.15980795610425239,
+      "relisted": {
+        "n": 4,
+        "share": 0.0027434842249657062
+      },
+      "returning": {
+        "n": 246,
+        "share": 0.16872427983539096
+      },
+      "self_made_share": 0.7043895747599451,
+      "selfmade": {
+        "n": 616,
+        "share": 0.4224965706447188
+      },
+      "unknown": {
+        "n": 0,
+        "share": 0.0
+      }
+    },
+    "3000_10000": {
+      "company": {
+        "n": 67,
+        "share": 0.13346613545816732
+      },
+      "company_entry_only": 52,
+      "company_rise": 15,
+      "division": {
+        "n": 22,
+        "share": 0.043824701195219126
+      },
+      "existing_share": 0.6713147410358565,
+      "family": {
+        "n": 35,
+        "share": 0.0697211155378486
+      },
+      "heir": {
+        "n": 85,
+        "share": 0.1693227091633466
+      },
+      "inherited": {
+        "n": 92,
+        "share": 0.18326693227091634
+      },
+      "linked_share": 0.4900398406374502,
+      "n": 502,
+      "relatives_share": 0.2828685258964143,
+      "relisted": {
+        "n": 1,
+        "share": 0.00199203187250996
+      },
+      "returning": {
+        "n": 36,
+        "share": 0.07171314741035857
+      },
+      "self_made_share": 0.5099601593625498,
+      "selfmade": {
+        "n": 164,
+        "share": 0.32669322709163345
+      },
+      "unknown": {
+        "n": 0,
+        "share": 0.0
+      }
+    },
+    "far": {
+      "company": {
+        "n": 242,
+        "share": 0.12124248496993988
+      },
+      "company_entry_only": 198,
+      "company_rise": 44,
+      "division": {
+        "n": 58,
+        "share": 0.02905811623246493
+      },
+      "existing_share": 0.6037074148296593,
+      "family": {
+        "n": 136,
+        "share": 0.06813627254509018
+      },
+      "heir": {
+        "n": 194,
+        "share": 0.09719438877755511
+      },
+      "inherited": {
+        "n": 290,
+        "share": 0.14529058116232466
+      },
+      "linked_share": 0.46092184368737477,
+      "n": 1996,
+      "relatives_share": 0.19438877755511022,
+      "relisted": {
+        "n": 5,
+        "share": 0.00250501002004008
+      },
+      "returning": {
+        "n": 285,
+        "share": 0.14278557114228457
+      },
+      "self_made_share": 0.6472945891783567,
+      "selfmade": {
+        "n": 786,
+        "share": 0.3937875751503006
+      },
+      "unknown": {
+        "n": 0,
+        "share": 0.0
+      }
+    },
+    "near": {
+      "company": {
+        "n": 247,
+        "share": 0.09050934408208135
+      },
+      "company_entry_only": 199,
+      "company_rise": 48,
+      "division": {
+        "n": 25,
+        "share": 0.009160864785635764
+      },
+      "existing_share": 0.5503847563209967,
+      "family": {
+        "n": 203,
+        "share": 0.0743862220593624
+      },
+      "heir": {
+        "n": 111,
+        "share": 0.04067423964822279
+      },
+      "inherited": {
+        "n": 289,
+        "share": 0.10589959692194943
+      },
+      "linked_share": 0.44521802858189813,
+      "n": 2729,
+      "relatives_share": 0.12422132649322096,
+      "relisted": {
+        "n": 2,
+        "share": 0.0007328691828508611
+      },
+      "returning": {
+        "n": 627,
+        "share": 0.22975448882374497
+      },
+      "self_made_share": 0.7519237816049835,
+      "selfmade": {
+        "n": 1225,
+        "share": 0.4488823744961524
+      },
+      "unknown": {
+        "n": 0,
+        "share": 0.0
+      }
+    },
+    "very_far": {
+      "company": {
+        "n": 69,
+        "share": 0.12825278810408922
+      },
+      "company_entry_only": 54,
+      "company_rise": 15,
+      "division": {
+        "n": 25,
+        "share": 0.046468401486988845
+      },
+      "existing_share": 0.6821561338289963,
+      "family": {
+        "n": 37,
+        "share": 0.0687732342007435
+      },
+      "heir": {
+        "n": 93,
+        "share": 0.17286245353159851
+      },
+      "inherited": {
+        "n": 104,
+        "share": 0.19330855018587362
+      },
+      "linked_share": 0.4907063197026022,
+      "n": 538,
+      "relatives_share": 0.28810408921933084,
+      "relisted": {
+        "n": 1,
+        "share": 0.0018587360594795538
+      },
+      "returning": {
+        "n": 39,
+        "share": 0.0724907063197026
+      },
+      "self_made_share": 0.49256505576208176,
+      "selfmade": {
+        "n": 170,
+        "share": 0.3159851301115242
+      },
+      "unknown": {
+        "n": 0,
+        "share": 0.0
+      }
+    }
+  },
+  "departures": {
+    "far": {
+      "age_85_plus": 0.18997668997668998,
+      "loose": {
+        "either": 0.36480186480186483,
+        "heir_entry": 0.3356643356643357,
+        "relative_rise": 0.14102564102564102
+      },
+      "main": {
+        "either": 0.21095571095571095,
+        "heir_entry": 0.18414918414918416,
+        "relative_rise": 0.03496503496503497
+      },
+      "n": 858,
+      "returns_later": 0.22144522144522144,
+      "strict": {
+        "either": 0.053613053613053616,
+        "heir_entry": 0.04895104895104895,
+        "relative_rise": 0.005827505827505828
+      }
+    },
+    "near": {
+      "age_85_plus": 0.04107981220657277,
+      "loose": {
+        "either": 0.340962441314554,
+        "heir_entry": 0.3210093896713615,
+        "relative_rise": 0.17312206572769953
+      },
+      "main": {
+        "either": 0.11795774647887323,
+        "heir_entry": 0.10328638497652583,
+        "relative_rise": 0.01995305164319249
+      },
+      "n": 1704,
+      "returns_later": 0.4231220657276995,
+      "strict": {
+        "either": 0.015258215962441314,
+        "heir_entry": 0.014084507042253521,
+        "relative_rise": 0.0011737089201877935
+      }
+    },
+    "placebo_near": {
+      "label": {
+        "ci95_observed": [
+          0.04108548706068722,
+          0.0641048243579979
+        ],
+        "excess": -0.011479677101447434,
+        "observed": 0.05259515570934256,
+        "placebo_scaled": 0.06407483281078999
+      },
+      "loose": {
+        "ci95_observed": [
+          0.3126516396977875,
+          0.3613968032087869
+        ],
+        "excess": -0.03379043903436858,
+        "observed": 0.3370242214532872,
+        "placebo_scaled": 0.37081466048765577
+      },
+      "main": {
+        "ci95_observed": [
+          0.08614354241949591,
+          0.11731666519296084
+        ],
+        "excess": -0.030209326471268824,
+        "observed": 0.10173010380622838,
+        "placebo_scaled": 0.1319394302774972
+      },
+      "n": 1445,
+      "rare": {
+        "ci95_observed": [
+          0.0688166876367804,
+          0.09727327776114347
+        ],
+        "excess": -0.019225986553101745,
+        "observed": 0.08304498269896193,
+        "placebo_scaled": 0.10227096925206368
+      },
+      "strict": {
+        "ci95_observed": [
+          0.009463860637631941,
+          0.022370049396970137
+        ],
+        "excess": -0.008070784666654625,
+        "observed": 0.01591695501730104,
+        "placebo_scaled": 0.023987739683955664
+      },
+      "years": [
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023
+      ]
+    },
+    "placebo_very_far": {
+      "label": {
+        "ci95_observed": [
+          0.2313832028445114,
+          0.34734020141080774
+        ],
+        "excess": 0.26077035383932345,
+        "observed": 0.28936170212765955,
+        "placebo_scaled": 0.028591348288336097
+      },
+      "loose": {
+        "ci95_observed": [
+          0.42969407950444427,
+          0.5575399630487472
+        ],
+        "excess": 0.34956862614179374,
+        "observed": 0.49361702127659574,
+        "placebo_scaled": 0.14404839513480194
+      },
+      "main": {
+        "ci95_observed": [
+          0.3125875185347214,
+          0.43634865167804454
+        ],
+        "excess": 0.3324511496023881,
+        "observed": 0.37446808510638296,
+        "placebo_scaled": 0.04201693550399488
+      },
+      "n": 235,
+      "rare": {
+        "ci95_observed": [
+          0.24341856585231475,
+          0.3608367532966214
+        ],
+        "excess": 0.27932575718462177,
+        "observed": 0.3021276595744681,
+        "placebo_scaled": 0.022801902389846303
+      },
+      "strict": {
+        "ci95_observed": [
+          0.07772813771906925,
+          0.1605697346213563
+        ],
+        "excess": 0.10715922375496843,
+        "observed": 0.11914893617021277,
+        "placebo_scaled": 0.011989712415244332
+      },
+      "years": [
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023
+      ]
+    },
+    "very_far": {
+      "age_85_plus": 0.33088235294117646,
+      "loose": {
+        "either": 0.5110294117647058,
+        "heir_entry": 0.48161764705882354,
+        "relative_rise": 0.1213235294117647
+      },
+      "main": {
+        "either": 0.4117647058823529,
+        "heir_entry": 0.3786764705882353,
+        "relative_rise": 0.04044117647058824
+      },
+      "n": 272,
+      "returns_later": 0.08823529411764706,
+      "strict": {
+        "either": 0.11397058823529412,
+        "heir_entry": 0.10661764705882353,
+        "relative_rise": 0.007352941176470588
+      }
+    },
+    "very_far_85": {
+      "age_85_plus": 1.0,
+      "loose": {
+        "either": 0.5111111111111111,
+        "heir_entry": 0.4666666666666667,
+        "relative_rise": 0.07777777777777778
+      },
+      "main": {
+        "either": 0.5111111111111111,
+        "heir_entry": 0.45555555555555555,
+        "relative_rise": 0.07777777777777778
+      },
+      "n": 90,
+      "returns_later": 0.0,
+      "strict": {
+        "either": 0.1111111111111111,
+        "heir_entry": 0.1,
+        "relative_rise": 0.011111111111111112
+      }
+    }
+  },
+  "fetch": {
+    "2010": {
+      "n": 1011,
+      "same_as_part6": true
+    },
+    "2011": {
+      "n": 1209,
+      "same_as_part6": true
+    },
+    "2012": {
+      "n": 1226,
+      "same_as_part6": true
+    },
+    "2013": {
+      "n": 1426,
+      "same_as_part6": true
+    },
+    "2014": {
+      "n": 1645,
+      "same_as_part6": true
+    },
+    "2015": {
+      "n": 1826,
+      "same_as_part6": false
+    },
+    "2016": {
+      "n": 1811,
+      "same_as_part6": true
+    },
+    "2017": {
+      "n": 2043,
+      "same_as_part6": true
+    },
+    "2018": {
+      "n": 2208,
+      "same_as_part6": true
+    },
+    "2019": {
+      "n": 2153,
+      "same_as_part6": true
+    },
+    "2020": {
+      "n": 2094,
+      "same_as_part6": true
+    },
+    "2021": {
+      "n": 2754,
+      "same_as_part6": true
+    },
+    "2022": {
+      "n": 2668,
+      "same_as_part6": true
+    },
+    "2023": {
+      "n": 2640,
+      "same_as_part6": true
+    },
+    "2024": {
+      "n": 2781,
+      "same_as_part6": true
+    },
+    "2025": {
+      "n": 3028,
+      "same_as_part6": true
+    }
+  },
+  "fields": {
+    "2010": {
+      "familyList_dict_keys": {},
+      "familyList_element_types": {},
+      "familyList_nonempty": 0.03066271018793274,
+      "familyList_types": {
+        "bool": 31
+      },
+      "family_entries": 0.11869436201780416,
+      "lastName_filled": 1.0,
+      "n": 1011,
+      "organization_filled": 0.14737883283877348,
+      "source_filled": 1.0
+    },
+    "2011": {
+      "familyList_dict_keys": {},
+      "familyList_element_types": {},
+      "familyList_nonempty": 0.09511993382961124,
+      "familyList_types": {
+        "bool": 115
+      },
+      "family_entries": 0.11497105045492143,
+      "lastName_filled": 1.0,
+      "n": 1209,
+      "organization_filled": 0.13316790736145576,
+      "source_filled": 1.0
+    },
+    "2012": {
+      "familyList_dict_keys": {},
+      "familyList_element_types": {},
+      "familyList_nonempty": 0.38580750407830344,
+      "familyList_types": {
+        "bool": 473
+      },
+      "family_entries": 0.11827079934747145,
+      "lastName_filled": 1.0,
+      "n": 1226,
+      "organization_filled": 0.16965742251223492,
+      "source_filled": 1.0
+    },
+    "2013": {
+      "familyList_dict_keys": {},
+      "familyList_element_types": {},
+      "familyList_nonempty": 0.593969144460028,
+      "familyList_types": {
+        "bool": 847
+      },
+      "family_entries": 0.11570827489481066,
+      "lastName_filled": 1.0,
+      "n": 1426,
+      "organization_filled": 0.18583450210378682,
+      "source_filled": 1.0
+    },
+    "2014": {
+      "familyList_dict_keys": {},
+      "familyList_element_types": {},
+      "familyList_nonempty": 0.7404255319148936,
+      "familyList_types": {
+        "bool": 1218
+      },
+      "family_entries": 0.11732522796352583,
+      "lastName_filled": 1.0,
+      "n": 1645,
+      "organization_filled": 0.18358662613981763,
+      "source_filled": 0.9993920972644377
+    },
+    "2015": {
+      "familyList_dict_keys": {},
+      "familyList_element_types": {},
+      "familyList_nonempty": 1.0,
+      "familyList_types": {
+        "bool": 1826
+      },
+      "family_entries": 0.12924424972617743,
+      "lastName_filled": 1.0,
+      "n": 1826,
+      "organization_filled": 0.1741511500547645,
+      "source_filled": 1.0
+    },
+    "2016": {
+      "familyList_dict_keys": {},
+      "familyList_element_types": {},
+      "familyList_nonempty": 1.0,
+      "familyList_types": {
+        "bool": 1811
+      },
+      "family_entries": 0.12921038100496962,
+      "lastName_filled": 1.0,
+      "n": 1811,
+      "organization_filled": 0.176697956929873,
+      "source_filled": 1.0
+    },
+    "2017": {
+      "familyList_dict_keys": {},
+      "familyList_element_types": {},
+      "familyList_nonempty": 1.0,
+      "familyList_types": {
+        "bool": 2043
+      },
+      "family_entries": 0.12383749388154675,
+      "lastName_filled": 1.0,
+      "n": 2043,
+      "organization_filled": 0.1693587860988742,
+      "source_filled": 1.0
+    },
+    "2018": {
+      "familyList_dict_keys": {},
+      "familyList_element_types": {},
+      "familyList_nonempty": 1.0,
+      "familyList_types": {
+        "bool": 2208
+      },
+      "family_entries": 0.11911231884057971,
+      "lastName_filled": 1.0,
+      "n": 2208,
+      "organization_filled": 0.15579710144927536,
+      "source_filled": 1.0
+    },
+    "2019": {
+      "familyList_dict_keys": {},
+      "familyList_element_types": {},
+      "familyList_nonempty": 1.0,
+      "familyList_types": {
+        "bool": 2153
+      },
+      "family_entries": 0.11286576869484441,
+      "lastName_filled": 1.0,
+      "n": 2153,
+      "organization_filled": 0.15977705527171387,
+      "source_filled": 1.0
+    },
+    "2020": {
+      "familyList_dict_keys": {},
+      "familyList_element_types": {},
+      "familyList_nonempty": 1.0,
+      "familyList_types": {
+        "bool": 2094
+      },
+      "family_entries": 0.1265520534861509,
+      "lastName_filled": 1.0,
+      "n": 2094,
+      "organization_filled": 0.1571155682903534,
+      "source_filled": 1.0
+    },
+    "2021": {
+      "familyList_dict_keys": {},
+      "familyList_element_types": {},
+      "familyList_nonempty": 1.0,
+      "familyList_types": {
+        "bool": 2754
+      },
+      "family_entries": 0.1270878721859114,
+      "lastName_filled": 1.0,
+      "n": 2754,
+      "organization_filled": 0.12854030501089325,
+      "source_filled": 1.0
+    },
+    "2022": {
+      "familyList_dict_keys": {},
+      "familyList_element_types": {},
+      "familyList_nonempty": 1.0,
+      "familyList_types": {
+        "bool": 2668
+      },
+      "family_entries": 0.12743628185907047,
+      "lastName_filled": 1.0,
+      "n": 2668,
+      "organization_filled": 0.12893553223388307,
+      "source_filled": 1.0
+    },
+    "2023": {
+      "familyList_dict_keys": {},
+      "familyList_element_types": {},
+      "familyList_nonempty": 1.0,
+      "familyList_types": {
+        "bool": 2640
+      },
+      "family_entries": 0.12878787878787878,
+      "lastName_filled": 1.0,
+      "n": 2640,
+      "organization_filled": 0.12272727272727273,
+      "source_filled": 1.0
+    },
+    "2024": {
+      "familyList_dict_keys": {},
+      "familyList_element_types": {},
+      "familyList_nonempty": 1.0,
+      "familyList_types": {
+        "bool": 2781
+      },
+      "family_entries": 0.13160733549083065,
+      "lastName_filled": 1.0,
+      "n": 2781,
+      "organization_filled": 0.12010068320747933,
+      "source_filled": 1.0
+    },
+    "2025": {
+      "familyList_dict_keys": {},
+      "familyList_element_types": {},
+      "familyList_nonempty": 1.0,
+      "familyList_types": {
+        "bool": 3028
+      },
+      "family_entries": 0.13110964332893,
+      "lastName_filled": 1.0,
+      "n": 3028,
+      "organization_filled": 0.09940554821664464,
+      "source_filled": 1.0
+    }
+  },
+  "generic_labels": 138,
+  "part4_refs": {
+    "model_far": 606.5645217818192,
+    "observed_far": 1996,
+    "returning_far_share_from_2012": 0.1525871172122492,
+    "returning_near_share_from_2012": 0.24340062111801242
+  },
+  "placebo": {
+    "label": {
+      "far": {
+        "ci95_observed": [
+          0.05229100927399453,
+          0.07786994244049113
+        ],
+        "excess": 0.035076425623364174,
+        "n": 1429,
+        "not_self_made_linked": 0.8494623655913979,
+        "observed": 0.06508047585724283,
+        "placebo_scaled": 0.03000405023387865,
+        "ratio": 2.169056355723539
+      },
+      "near": {
+        "ci95_observed": [
+          0.032611399814516655,
+          0.050016773405991054
+        ],
+        "excess": 0.00739562665087722,
+        "n": 2009,
+        "not_self_made_linked": 0.6024096385542169,
+        "observed": 0.041314086610253854,
+        "placebo_scaled": 0.03391845995937664,
+        "ratio": 1.2180413456193115
+      }
+    },
+    "loose": {
+      "far": {
+        "ci95_observed": [
+          0.24505425000118164,
+          0.2909849382423453
+        ],
+        "excess": 0.07582713022930196,
+        "n": 1429,
+        "not_self_made_linked": 0.3394255874673629,
+        "observed": 0.26801959412176346,
+        "placebo_scaled": 0.1921924638924615,
+        "ratio": 1.3945374792204648
+      },
+      "near": {
+        "ci95_observed": [
+          0.22366965990615464,
+          0.26114865766477613
+        ],
+        "excess": 0.01899713478804522,
+        "n": 2009,
+        "not_self_made_linked": 0.19301848049281314,
+        "observed": 0.2424091587854654,
+        "placebo_scaled": 0.2234120239974202,
+        "ratio": 1.0850318369089418
+      }
+    },
+    "main": {
+      "far": {
+        "ci95_observed": [
+          0.09038263573243656,
+          0.12235354341381956
+        ],
+        "excess": 0.05248959833576741,
+        "n": 1429,
+        "not_self_made_linked": 0.756578947368421,
+        "observed": 0.10636808957312806,
+        "placebo_scaled": 0.053878491237360646,
+        "ratio": 1.9742217558492035
+      },
+      "near": {
+        "ci95_observed": [
+          0.05901337426058166,
+          0.08135496819835313
+        ],
+        "excess": 0.0018335656435456218,
+        "n": 2009,
+        "not_self_made_linked": 0.5460992907801419,
+        "observed": 0.07018417122946739,
+        "placebo_scaled": 0.06835060558592178,
+        "ratio": 1.0268258873177165
+      }
+    },
+    "not_self_made_all_far": 0.3289013296011197,
+    "rare": {
+      "far": {
+        "ci95_observed": [
+          0.06959450000387865,
+          0.0983551151115867
+        ],
+        "excess": 0.042210394715874164,
+        "n": 1429,
+        "not_self_made_linked": 0.75,
+        "observed": 0.08397480755773268,
+        "placebo_scaled": 0.041764412841858514,
+        "ratio": 2.010678514162389
+      },
+      "near": {
+        "ci95_observed": [
+          0.0429866292165058,
+          0.0625385076675161
+        ],
+        "excess": -0.0011212528565868163,
+        "n": 2009,
+        "not_self_made_linked": 0.5943396226415094,
+        "observed": 0.05276256844201095,
+        "placebo_scaled": 0.05388382129859777,
+        "ratio": 0.9791912891557304
+      }
+    },
+    "scale_mean": 0.7840788952494261,
+    "strict": {
+      "far": {
+        "ci95_observed": [
+          0.017657903468055215,
+          0.0341265611925466
+        ],
+        "excess": 0.01286989004755194,
+        "n": 1429,
+        "not_self_made_linked": 0.8378378378378378,
+        "observed": 0.02589223233030091,
+        "placebo_scaled": 0.013022342282748971,
+        "ratio": 1.9882930250267659
+      },
+      "near": {
+        "ci95_observed": [
+          0.007596399449702439,
+          0.0172916045323782
+        ],
+        "excess": 0.005776666799542341,
+        "n": 2009,
+        "not_self_made_linked": 0.64,
+        "observed": 0.012444001991040319,
+        "placebo_scaled": 0.006667335191497977,
+        "ratio": 1.8664131371268997
+      }
+    },
+    "years": [
+      2011,
+      2012,
+      2013,
+      2014,
+      2015,
+      2016,
+      2017,
+      2018,
+      2019,
+      2020,
+      2021
+    ]
+  },
+  "relisting_2023": {
+    "main": {
+      "by_year": {
+        "2010": 3,
+        "2011": 13,
+        "2012": 11,
+        "2013": 11,
+        "2014": 18,
+        "2015": 10,
+        "2016": 5,
+        "2017": 14,
+        "2018": 32,
+        "2019": 14,
+        "2020": 10,
+        "2021": 20,
+        "2022": 53,
+        "2023": 27,
+        "2024": 11
+      },
+      "mean_other_years": 14.214285714285714,
+      "total": 252,
+      "y2022": 53,
+      "y2022_europe": 20,
+      "y2022_share": 0.21031746031746032
+    },
+    "strict": {
+      "by_year": {
+        "2013": 1,
+        "2014": 3,
+        "2016": 1,
+        "2017": 5,
+        "2018": 3,
+        "2019": 6,
+        "2020": 3,
+        "2021": 7,
+        "2022": 16,
+        "2023": 5,
+        "2024": 2
+      },
+      "mean_other_years": 3.6,
+      "total": 52,
+      "y2022": 16,
+      "y2022_europe": 13,
+      "y2022_share": 0.3076923076923077
+    }
+  },
+  "rule_sensitivity": {
+    "loose": {
+      "existing_share": 0.7069138276553106,
+      "relatives_share": 0.33016032064128253
+    },
+    "main": {
+      "existing_share": 0.6037074148296593,
+      "relatives_share": 0.19438877755511022
+    },
+    "strict": {
+      "existing_share": 0.5485971943887775,
+      "relatives_share": 0.03557114228456914
+    }
+  },
+  "self_made": {
+    "far": {
+      "company": {
+        "n": 242,
+        "self_made": 0.6446280991735537
+      },
+      "division": {
+        "n": 58,
+        "self_made": 0.27586206896551724
+      },
+      "family": {
+        "n": 136,
+        "self_made": 0.6470588235294118
+      },
+      "heir": {
+        "n": 194,
+        "self_made": 0.22164948453608246
+      },
+      "inherited": {
+        "n": 290,
+        "self_made": 0.0
+      },
+      "relisted": {
+        "n": 5,
+        "self_made": 1.0
+      },
+      "returning": {
+        "n": 285,
+        "self_made": 0.6947368421052632
+      },
+      "selfmade": {
+        "n": 786,
+        "self_made": 1.0
+      }
+    },
+    "near": {
+      "company": {
+        "n": 247,
+        "self_made": 0.6963562753036437
+      },
+      "division": {
+        "n": 25,
+        "self_made": 0.48
+      },
+      "family": {
+        "n": 203,
+        "self_made": 0.6206896551724138
+      },
+      "heir": {
+        "n": 111,
+        "self_made": 0.46846846846846846
+      },
+      "inherited": {
+        "n": 289,
+        "self_made": 0.0
+      },
+      "relisted": {
+        "n": 2,
+        "self_made": 0.5
+      },
+      "returning": {
+        "n": 627,
+        "self_made": 0.7400318979266348
+      },
+      "selfmade": {
+        "n": 1225,
+        "self_made": 1.0
+      }
+    }
+  },
+  "stock_family": {
+    "all": {
+      "label": 0.16797343418503827,
+      "loose": 0.3790855702118501,
+      "n": 32523,
+      "rare": 0.2082526212219045,
+      "strict": 0.07671494019616887
+    },
+    "far": {
+      "label": 0.16763410316578156,
+      "loose": 0.36849038738627476,
+      "n": 24291,
+      "rare": 0.20892511629821744,
+      "strict": 0.07624222963237413
+    },
+    "near": {
+      "label": 0.16897473275024297,
+      "loose": 0.4103498542274053,
+      "n": 8232,
+      "rare": 0.20626822157434402,
+      "strict": 0.07810981535471331
+    }
+  }
+}

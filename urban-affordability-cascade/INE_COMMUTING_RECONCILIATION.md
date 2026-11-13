@@ -1,9 +1,12 @@
 # INE 2021 commuting-source reconciliation: operator-controlled audit
 
-**Status (10 November 2026): official indicator identified, but an independently
-retrieved, validated official response has not been obtained.** No official
-commuting matrix is added in this change; the 136 existing undirected pairs
-remain labelled a third-party extraction attributed to INE.
+**Status (13 November 2026): independently captured official Arouca and
+Espinho slices have been preserved and checked against 31 of the 136 frozen
+pairs.** All 32 directed source views match the pinned third-party counts;
+the common Arouca–Espinho pair agrees in both directions. The remaining
+**105 pairs** and full-matrix symmetry are **not yet verified** against
+official data. No official full commuting matrix is added; the 136 existing
+undirected pairs remain labelled a third-party extraction attributed to INE.
 
 ## What is being tested
 
@@ -85,15 +88,15 @@ municipal pair and the signed difference. The CLI returns a nonzero exit code
 when at least one discrepancy is found. It never overwrites the frozen
 analysis matrix, its provenance, or the housing article.
 
-This workflow's automated tests use **explicitly synthetic INE-shaped JSON**
-constructed from the *third-party* frozen matrix to exercise validation.
-They do not verify the independent INE data. There is deliberately no
-automated live data acquisition in GitHub Actions.
+The original **full-matrix** parser tests use explicitly synthetic
+INE-shaped JSON constructed from the third-party frozen matrix; they do
+not authenticate independent INE data. A separate small PR-triggered
+source probe now exists, with an archived first real response and its
+own offline regression tests described below.
 
-The core result remains **unverified against a fresh INE API extract**
-until the full official response, territorial metadata, population universe,
-measure definition, response checksum and pair-level comparison have all
-been independently reviewed.
+The **complete 136-pair result** remains unverified against the official API
+until the remaining municipality slices, reverse views, territorial metadata,
+population universe and source definitions have all been independently reviewed.
 
 ## Scientific boundary
 
@@ -109,8 +112,9 @@ requests indicator `0012340` metadata and a **candidate** 2021 data slice.
 The candidate period selector `S7A2021` and payload schema are **unverified**
 until the downloaded metadata and records are inspected.
 
-Only `workflow_dispatch` can run the capture; no pull-request or push job
-contacts INE. In GitHub, select **Actions → Capture INE Census 2021 commuting
+Only `workflow_dispatch` can run **this manual capture workflow**; a separate
+bounded PR-triggered probe is documented below. In GitHub, select
+**Actions → Capture INE Census 2021 commuting
 source (manual) → Run workflow**. The capture runner calls
 `ine_commuting_capture.py`, saving exact valid JSON response bytes, each
 SHA-256 checksum, effective response URL, timestamp, schema hints and any
@@ -181,8 +185,9 @@ and agree with the fixed municipal panel.
 
 The [manual partition workflow](../../.github/workflows/ine-0012340-partitioned-capture.yml)
 attempts a smaller candidate API request with `Dim2=<municipality DICO>`
-or `Dim3=<municipality DICO>`. These **filter arguments remain hypotheses**
-until an actual INE data response demonstrates they work. Select
+or `Dim3=<municipality DICO>`. A real Arouca response now supports the
+effectiveness of **`Dim2=0104` for that one slice**; other values and the
+`Dim3` direction remain hypotheses until separately checked. Select
 **Actions → INE 0012340 municipality-slice capture (manual) → Run workflow**.
 Specify `start_index` (zero-based among sorted DICO codes), `count` (1–3),
 and `dimension` (`Dim2` or `Dim3`). Start with 0 and count 2.
@@ -204,3 +209,102 @@ filter behavior established should the study proceed to the full
 136-pair reconciliation. A successful transfer remains
 **unverified source-shape evidence, not residential mobility or
 causal displacement evidence**.
+
+## Archived official Arouca slice and reproducible partial reconciliation
+
+On **13 November 2026**, the bounded PR-triggered source probe in
+[PR #655](https://github.com/DiogoRibeiro7/Medium-Blog/pull/655)
+successfully retrieved an official `Dim2=0104` JSON response for Arouca;
+the next selected municipality, Espinho (`0107`), timed out. The workflow
+run produced a 30-day artifact, but the exact successful bytes and original
+provenance are now retained in Git:
+
+- [`data/ine_0012340_2021_dim2_0104_raw.json`](data/ine_0012340_2021_dim2_0104_raw.json):
+  57,793 bytes, SHA-256
+  `abbe42d2e98dd1522609da8d058663430f9b42fee99591634371379446c22635`.
+- [`data/ine_0012340_2021_dim2_first_two_manifest.json`](data/ine_0012340_2021_dim2_first_two_manifest.json):
+  the original manifest, including the failed Espinho request, source URL,
+  timestamp, raw response digest and separately checked official metadata.
+- [`data/ine_0012340_2021_dim2_0104_audit.json`](data/ine_0012340_2021_dim2_0104_audit.json):
+  the deterministic, reviewed one-row numerical comparison; regenerate it
+  with the command below.
+
+The Arouca response contains **347 distinct `dim_3` codes**, including
+geographies outside the AMP municipality set and higher-level aggregates.
+It reports `geocod=0104` on **every** record, a single `2021` period and
+an explicit successful API status. The audit uses **only the 17 exact AMP
+DICO municipality counterparts**. It requires the Arouca diagonal to be
+zero and matches each of the other **16 unique** interaction counts to the
+checksummed frozen third-party CSV: **16 matches, zero differences**.
+It never sums the 347 records as if all were municipalities.
+
+To regenerate the report offline, from `urban-affordability-cascade/`:
+
+```bash
+python ine_commuting_partition_reconciliation.py \
+  --source-json data/ine_0012340_2021_dim2_0104_raw.json \
+  --manifest-json data/ine_0012340_2021_dim2_first_two_manifest.json \
+  --municipality-code 0104 \
+  --output-json /tmp/ine-0012340-arouca-partial-audit.json
+```
+
+The script rejects source checksum/size mismatches, changed API URLs,
+incorrect indicator or period, failed filter behavior, duplicate or missing
+AMP codes, invalid integer counts, inconsistent municipality names and a
+nonzero diagonal. It reports any numerical disagreement without changing
+research inputs. Offline tests pin the captured raw hash and independently
+check all 16 pair values; mutation tests demonstrate the rejection paths.
+
+The PR source probe also distinguishes **external INE availability** from
+validation failures. A timeout or transient HTTP 429/5xx response is
+recorded in the uploaded manifest, the job summary and a workflow warning;
+it does not invalidate otherwise passing code checks. A missing/corrupt
+manifest, changed municipality scope or non-network capture failure still
+fails the job. A warning does **not** mean that a missing slice was obtained.
+
+**Scope at this first capture:** it established one-row agreement, contingent
+on the recorded GitHub Actions capture and official source metadata. The
+original manifest's `captured_unverified` status remains historically accurate;
+the separate audit is what establishes numerical reconciliation.
+
+### Second successful probe: Arouca and Espinho
+
+The subsequent GitHub Actions run
+[#43404869490](https://github.com/DiogoRibeiro7/Medium-Blog/actions/runs/43404869490)
+returned two successful 2021 `Dim2` municipality slices. Unlike the prior
+attempt, neither request timed out. Its **complete artifact** (both exact
+raw source files and its original manifest) is preserved under
+[`data/ine_0012340_pr_run_43404869490/`](data/ine_0012340_pr_run_43404869490/):
+
+| Raw response | Exact SHA-256 | AMP comparisons |
+| --- | --- | --- |
+| `ine_0012340_dim2_0104_candidate.json` (Arouca) | `4c209febabc788d01a64121121dea2eff27b792ba4c1fce527d01a471de46de7` | 16/16 match |
+| `ine_0012340_dim2_0107_candidate.json` (Espinho) | `69d06467a55030f1ccd681a055c6ef2aaa68c7f82c3bca32201b63879244e37b` | 16/16 match |
+
+Each response includes 347 unique `dim_3` categories and all 17 AMP
+municipality identities. Both report only their requested `geocod` as the
+first geography, a single 2021 period, zero municipality diagonals and
+successful API status. The same offline parser verified each source against
+the capture manifest and third-party CSV; its two machine-readable reports
+are `audit_0104.json` and `audit_0107.json` in that directory. For example:
+
+```bash
+python ine_commuting_partition_reconciliation.py \
+  --source-json data/ine_0012340_pr_run_43404869490/ine_0012340_dim2_0107_candidate.json \
+  --manifest-json data/ine_0012340_pr_run_43404869490/partition_manifest.json \
+  --municipality-code 0107 \
+  --output-json /tmp/ine-0012340-espinho-partial-audit.json
+```
+
+The two lists of 16 undirected pairs overlap only at Arouca–Espinho:
+both source directions report **34** interactions. Therefore the combined
+source coverage is **31 distinct pairs out of 136**, not 32. The unobserved
+105 pairs must not be inferred from the existing third-party workbook, and
+symmetry outside the shared Arouca–Espinho link is untested. Pinned offline
+regression tests verify both SHA-256 digests, all 32 source-to-workbook
+comparisons, both reports and the single cross-source symmetry check.
+
+Neither raw-byte integrity nor agreement with the third-party workbook
+independently authenticates the publisher. The full 136-pair source matrix
+is still unverified, and the observations are **2021 work/study interactions,
+not migration or causal housing spillovers**.

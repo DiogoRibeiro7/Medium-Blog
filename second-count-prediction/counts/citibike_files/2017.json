@@ -1,0 +1,212 @@
+{
+ "year": 2017,
+ "keys": {
+  "2017-citibike-tripdata.zip": {
+   "size": 557126574,
+   "monthly": false,
+   "file_month": null,
+   "files": [
+    {
+     "path": "2017-citibike-tripdata/4_April/201704-citibike-tripdata.csv_1.csv",
+     "months": {
+      "2017-04": 999995
+     },
+     "rows": 999995,
+     "unparsed": 0,
+     "lines": 1000001,
+     "sha256": "7fafc5bc3f99bd71e2cbcb6aa85279c15ef68a95a9a0b4e3b9c191418456091f"
+    },
+    {
+     "path": "2017-citibike-tripdata/4_April/201704-citibike-tripdata.csv_2.csv",
+     "months": {
+      "2017-04": 315404
+     },
+     "rows": 315404,
+     "unparsed": 0,
+     "lines": 315405,
+     "sha256": "610369cd57610e24a7a519c3304cb762772c25aa1708b74beb06e48bcaa66d3d"
+    },
+    {
+     "path": "2017-citibike-tripdata/12_December/201712-citibike-tripdata.csv_1.csv",
+     "months": {
+      "2017-12": 889967
+     },
+     "rows": 889967,
+     "unparsed": 0,
+     "lines": 889968,
+     "sha256": "34b96f8eafaf367d7f86f9393d188b5f6d7f8b21501abcda80410b9af8d4065a"
+    },
+    {
+     "path": "2017-citibike-tripdata/11_November/201711-citibike-tripdata.csv_2.csv",
+     "months": {
+      "2017-11": 330649
+     },
+     "rows": 330649,
+     "unparsed": 0,
+     "lines": 330650,
+     "sha256": "48f0db394a28d93b31a64c679a5a9d1c8bc6515ba4f85a0b9b3403226220bc23"
+    },
+    {
+     "path": "2017-citibike-tripdata/11_November/201711-citibike-tripdata.csv_1.csv",
+     "months": {
+      "2017-11": 1000000
+     },
+     "rows": 1000000,
+     "unparsed": 0,
+     "lines": 1000001,
+     "sha256": "03649d439c5a66d8e2b364c9a9ce232cf0044269534c47bb7d0974ce1a9b86f3"
+    },
+    {
+     "path": "2017-citibike-tripdata/7_July/201707-citibike-tripdata.csv_2.csv",
+     "months": {
+      "2017-07": 735599
+     },
+     "rows": 735599,
+     "unparsed": 0,
+     "lines": 735600,
+     "sha256": "ad2e3fc9f6e57ac3bc18dd1ad68af3d27a2cb3e7133fec6e40db40fbecf5e518"
+    },
+    {
+     "path": "2017-citibike-tripdata/7_July/201707-citibike-tripdata.csv_1.csv",
+     "months": {
+      "2017-07": 999865
+     },
+     "rows": 999865,
+     "unparsed": 0,
+     "lines": 1000001,
+     "sha256": "d38b0cde90c0fc2f0f67c780479676489d24b265f0252a52a42f3348f07252a4"
+    },
+    {
+     "path": "2017-citibike-tripdata/10_October/201710-citibike-tripdata.csv_1.csv",
+     "months": {
+      "2017-10": 1000000
+     },
+     "rows": 1000000,
+     "unparsed": 0,
+     "lines": 1000001,
+     "sha256": "d21946bf377b4fd6a255901b64477264edba61c623c16bb403f3a07e96222d09"
+    },
+    {
+     "path": "2017-citibike-tripdata/10_October/201710-citibike-tripdata.csv_2.csv",
+     "months": {
+      "2017-10": 897592
+     },
+     "rows": 897592,
+     "unparsed": 0,
+     "lines": 897593,
+     "sha256": "35611f55506b22915afff4879fdf9a47fb6b083e90da81622c1ab1c613bd439d"
+    },
+    {
+     "path": "2017-citibike-tripdata/9_September/201709-citibike-tripdata.csv_2.csv",
+     "months": {
+      "2017-09": 878098
+     },
+     "rows": 878098,
+     "unparsed": 0,
+     "lines": 878099,
+     "sha256": "a5c76ec71a14e64d0f2875938b6f04adc907314405955057b70a9a5690da398e"
+    },
+    {
+     "path": "2017-citibike-tripdata/9_September/201709-citibike-tripdata.csv_1.csv",
+     "months": {
+      "2017-09": 1000000
+     },
+     "rows": 1000000,
+     "unparsed": 0,
+     "lines": 1000001,
+     "sha256": "c321512d2bd7645b4b2abeb4b7da4ec4fd374f1b9a39e805739fc98886e8be0d"
+    },
+    {
+     "path": "2017-citibike-tripdata/8_August/201708-citibike-tripdata.csv_1.csv",
+     "months": {
+      "2017-08": 1000000
+     },
+     "rows": 1000000,
+     "unparsed": 0,
+     "lines": 1000001,
+     "sha256": "465f2ba85f8be08a2c46dbe9a28651ab7d1423adf6a4635eac085fab695d7835"
+    },
+    {
+     "path": "2017-citibike-tripdata/8_August/201708-citibike-tripdata.csv_2.csv",
+     "months": {
+      "2017-08": 816498
+     },
+     "rows": 816498,
+     "unparsed": 0,
+     "lines": 816499,
+     "sha256": "2d6ff45a80bd71a88f896c7a6be6641c538cbb74ac053efb3160435c3911bb9b"
+    },
+    {
+     "path": "2017-citibike-tripdata/6_June/201706-citibike-tripdata.csv_1.csv",
+     "months": {
+      "2017-06": 1000000
+     },
+     "rows": 1000000,
+     "unparsed": 0,
+     "lines": 1000001,
+     "sha256": "d16b539443d686fa9495acfcddaf598d235df03d979c7dab492196288040ebb5"
+    },
+    {
+     "path": "2017-citibike-tripdata/6_June/201706-citibike-tripdata.csv_2.csv",
+     "months": {
+      "2017-06": 731594
+     },
+     "rows": 731594,
+     "unparsed": 0,
+     "lines": 731595,
+     "sha256": "bedc4c9214d00da023675dc2d57353eae5cc438f38d8f3908baf6b85e1476046"
+    },
+    {
+     "path": "2017-citibike-tripdata/3_March/201703-citibike-tripdata.csv_1.csv",
+     "months": {
+      "2017-03": 727665
+     },
+     "rows": 727665,
+     "unparsed": 0,
+     "lines": 727666,
+     "sha256": "e0a5770acd63b96d10e7791a25479b8904eb9c55fe4464fa864122d81ba93886"
+    },
+    {
+     "path": "2017-citibike-tripdata/1_January/201701-citibike-tripdata.csv_1.csv",
+     "months": {
+      "2017-01": 726676
+     },
+     "rows": 726676,
+     "unparsed": 0,
+     "lines": 726677,
+     "sha256": "a0e512a9e225adeda6267553ebc16b0d6ebef11bf418ccae5945cacea2baf2cf"
+    },
+    {
+     "path": "2017-citibike-tripdata/2_February/201702-citibike-tripdata.csv_1.csv",
+     "months": {
+      "2017-02": 791647
+     },
+     "rows": 791647,
+     "unparsed": 0,
+     "lines": 791648,
+     "sha256": "4fde301f55c596c2683c7926d685d4013554d2afc3cd1e6bc8f1bd0209699bb3"
+    },
+    {
+     "path": "2017-citibike-tripdata/5_May/201705-citibike-tripdata.csv_2.csv",
+     "months": {
+      "2017-05": 523268
+     },
+     "rows": 523268,
+     "unparsed": 0,
+     "lines": 523269,
+     "sha256": "e3b92e61e2788c6d6383539cbefb1a96cf89517ec353b07b718d09c2ec75e0c4"
+    },
+    {
+     "path": "2017-citibike-tripdata/5_May/201705-citibike-tripdata.csv_1.csv",
+     "months": {
+      "2017-05": 1000000
+     },
+     "rows": 1000000,
+     "unparsed": 0,
+     "lines": 1000001,
+     "sha256": "f45cd428da008bc6c803cb865c59f3ddf3bf522e88ce16f67c247ac43ca1bd8e"
+    }
+   ]
+  }
+ }
+}

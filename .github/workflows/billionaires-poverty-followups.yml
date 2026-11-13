@@ -47,3 +47,6 @@ jobs:
       - name: Reproduce every number in Part 6
         working-directory: billionaires-poverty-followups
         run: python part6_past_volatility.py --check --figures figures/check6 | tee -a "$GITHUB_STEP_SUMMARY"
+      - name: Reproduce every number in Part 7
+        working-directory: billionaires-poverty-followups
+        run: python part7_arrivals.py --check --figures figures/check7 | tee -a "$GITHUB_STEP_SUMMARY"

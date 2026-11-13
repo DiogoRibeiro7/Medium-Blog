@@ -1,0 +1,12 @@
+[sns_despesa_com_medicamentos_nos_hospitais_do_sns] wrote sns_despesa_com_medicamentos_nos_hospitais_do_sns.csv.gz: 935 rows, columns ['tempo', 'regiao', 'encargos_sns_hospitalar']
+[sns_despesa_com_medicamentos_no_ambulatorio_sns] wrote sns_despesa_com_medicamentos_no_ambulatorio_sns.csv.gz: 935 rows, columns ['tempo', 'regiao', 'encargos_sns_ambulatorio', 'encargos_utentes_ambulatorio', 'valor_pvp_ambulatorio', 'encargos_sns_genericos']
+== sns done in 2 s
+[infarmed_note_2025] wrote infarmed_note_2025.txt.gz: 6261 characters
+[apifarma_boletim_2025_12] wrote apifarma_boletim_2025_12.txt.gz: 36553 characters
+[apifarma_agreement_2025] wrote apifarma_agreement_2025.txt.gz: 24585 characters
+== documents done in 3 s
+[oecd] SHA dimensions ['REF_AREA', 'FREQ', 'MEASURE', 'UNIT_MEASURE', 'FINANCING_SCHEME', 'FINANCING_SCHEME_REV', 'FUNCTION', 'MODE_PROVISION', 'PROVIDER', 'FACTOR_PROVISION', 'ASSET_TYPE', 'PRICE_BASE']; key .A.EXP_HEALTH.._T+HF1+HF3.._T+HC51+HC511+HC7._T._T...V
+[oecd] units: ['Euros per person, PPP converted', 'Euros, PPP converted', 'National currency', 'National currency per person', 'US dollars per person, PPP converted', 'US dollars, PPP converted']
+[oecd_sha] wrote oecd_sha.csv.gz: 29800 rows, columns ['REF_AREA', 'Reference area', 'UNIT_MEASURE', 'Unit of measure', 'FINANCING_SCHEME', 'FUNCTION', 'TIME_PERIOD', 'OBS_VALUE', 'UNIT_MULT']
+== oecd done in 3 s
+failed: []

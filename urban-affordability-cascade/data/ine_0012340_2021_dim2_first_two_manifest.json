@@ -1,0 +1,76 @@
+{
+  "all_136_pairs_reconciled": false,
+  "candidate_slice_semantics_verified": false,
+  "capture_count": 2,
+  "capture_protocol": "ine_0012340_2021_dico_partition_candidate_v1",
+  "captured_at_utc": "2026-11-13T09:24:58.938353+00:00",
+  "completed_json_captures": 1,
+  "dimension": "Dim2",
+  "items": [
+    {
+      "candidate_url": "https://www.ine.pt/ine/json_indicador/pindica.jsp?op=2&varcd=0012340&Dim1=S7A2021&Dim2=0104&lang=PT",
+      "code": "0104",
+      "filename": "ine_0012340_dim2_0104_candidate.json",
+      "filter_effect_verified": false,
+      "municipal_pair_counts_reconciled": false,
+      "municipality": "Arouca",
+      "observed_period_keys": [
+        "2021"
+      ],
+      "requested_dico": "0104",
+      "requested_dimension": "Dim2",
+      "response_url": "https://www.ine.pt/ine/json_indicador/pindica.jsp?op=2&varcd=0012340&Dim1=S7A2021&Dim2=0104&lang=PT",
+      "schema_outline": {
+        "dados_period_keys": [
+          "2021"
+        ],
+        "dados_period_sizes": {
+          "2021": 347
+        },
+        "first_item_keys": [
+          "Dados",
+          "DataExtracao",
+          "DataUltimoAtualizacao",
+          "IndicadorCod",
+          "IndicadorDsg",
+          "MetaInfUrl",
+          "Sucesso",
+          "UltimoPref"
+        ],
+        "first_item_type": "dict",
+        "root_items": 1,
+        "root_type": "array"
+      },
+      "sha256": "abbe42d2e98dd1522609da8d058663430f9b42fee99591634371379446c22635",
+      "size_bytes": 57793,
+      "status": "captured_unverified"
+    },
+    {
+      "candidate_url": "https://www.ine.pt/ine/json_indicador/pindica.jsp?op=2&varcd=0012340&Dim1=S7A2021&Dim2=0107&lang=PT",
+      "code": "0107",
+      "error": "<urlopen error timed out>",
+      "error_type": "URLError",
+      "municipality": "Espinho",
+      "status": "failed"
+    }
+  ],
+  "metadata_dimensions_checked_against_panel": true,
+  "metadata_matches_archived_2026_11_12_sha256": false,
+  "requested_codes": [
+    "0104",
+    "0107"
+  ],
+  "source_data_is_residential_migration": false,
+  "source_metadata": {
+    "amp_municipalities_validated_in_both_dimensions": 17,
+    "geographic_dimensions": [
+      2,
+      3
+    ],
+    "indicator": "0012340",
+    "metadata_sha256": "a2a72e20cb2b6d11623d146f88631ed8ce6954f3fc7cfb3a194ca2b91374bfae",
+    "metadata_unit": "Número (N.º)",
+    "period": "2021"
+  },
+  "source_metadata_sha256": "a2a72e20cb2b6d11623d146f88631ed8ce6954f3fc7cfb3a194ca2b91374bfae"
+}

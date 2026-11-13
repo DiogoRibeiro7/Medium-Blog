@@ -1,0 +1,145 @@
+
+==============================================================================================
+1. Data and coverage
+==============================================================================================
+SEC annual reports read: 167 ({'10-K': 121, '20-F': 46}), companies 17, fiscal years 2015-2025
+firms with an annual report, and with the US revenue tagged, by fiscal year:
+  2015: 11/9; 2016: 11/9; 2017: 12/9; 2018: 16/10; 2019: 16/10; 2020: 16/10; 2021: 17/11; 2022: 17/12; 2023: 17/12; 2024: 17/13; 2025: 17/14
+  never tagged: Takeda
+  US member found: country:US 117; azn:IfrsCountryUsMember 2
+
+==============================================================================================
+2. Where the revenue comes from: the US share in the companies' own reports
+==============================================================================================
+Fiscal year 2025, 14 companies with the US revenue tagged:
+  AbbVie                 HQ US  US 76.2%; revenue $   61.2 bn, R&D 14.9% of revenue
+  Amgen                  HQ US  US 71.9%; revenue $   36.8 bn, R&D 19.8% of revenue
+  Gilead                 HQ US  US 70.9%, Europe 17% (EuropeMember); revenue $   29.4 bn, R&D 19.7% of revenue
+  Bristol-Myers Squibb   HQ US  US 69.1%; revenue $   48.2 bn, R&D 20.6% of revenue
+  Eli Lilly              HQ US  US 66.7%, Europe 18% (EuropeMember); revenue $   65.2 bn, R&D 20.5% of revenue
+  Vertex                 HQ US  US 62.9%, Europe 29% (EuropeMember); revenue $   12.0 bn, R&D 32.6% of revenue
+  Pfizer                 HQ US  US 59.2%; revenue $   62.6 bn, R&D 16.7% of revenue
+  Johnson & Johnson      HQ US  US 57.1%; revenue $   94.2 bn, R&D 15.6% of revenue
+  Merck & Co             HQ US  US 56.2%; revenue $   65.0 bn, R&D 24.3% of revenue
+  Novo Nordisk           HQ DK  US 56.0%; revenue $   46.8 bn, R&D 16.8% of revenue
+  GSK                    HQ GB  US 51.6%, Europe 21% (EuropeMember); revenue $   43.1 bn, R&D 23.0% of revenue
+  Sanofi                 HQ FR  US 50.8%, Europe 21% (EuropeMember); revenue $   49.3 bn, R&D 18.0% of revenue
+  Novartis               HQ CH  US 42.8%, Europe 31% (EuropeMember); revenue $   54.5 bn, R&D 20.5% of revenue
+  AstraZeneca            HQ GB  US 40.8%, Europe 20% (IfrsEuropeMember); revenue $   58.7 bn, R&D 24.2% of revenue
+  pooled, headquartered elsewhere: US share 47.9% (n=5, revenue $ 252 bn)
+  pooled, US-headquartered: US share 64.4% (n=9, revenue $ 475 bn)
+  pooled, all 14: US share 58.6%; revenue $ 727 bn, of which US $ 426 bn; median company 58.2%
+  Europe, where reported as one area (7 companies): pooled 21.8%; Gilead 17%, Eli Lilly 18%, Vertex 29%, GSK 21%, Sanofi 21%, Novartis 31%, AstraZeneca 20%
+Pooled US share, the 7 companies tagged in all eleven years (AbbVie, Amgen, Bristol-Myers Squibb, Eli Lilly, Gilead, Merck & Co, Pfizer):
+  2015 54.2%, 2016 56.9%, 2017 57.2%, 2018 56.9%, 2019 57.5%, 2020 61.3%, 2021 57.0%, 2022 58.6%, 2023 61.8%, 2024 65.6%, 2025 66.3%
+  the 9 companies tagged in every year 2018-2025: 2018 52.8%, 2019 53.5%, 2020 56.7%, 2021 53.8%, 2022 55.7%, 2023 58.4%, 2024 62.3%, 2025 63.1%
+  the same without Pfizer (COVID-19 vaccine and antiviral sales abroad in 2021-2022): 2015 57.3%, 2016 59.2%, 2017 59.7%, 2018 60.0%, 2019 60.9%, 2020 63.2%, 2021 64.2%, 2022 65.3%, 2023 65.5%, 2024 66.7%, 2025 67.8%
+
+==============================================================================================
+3. The US weight in world income and population
+==============================================================================================
+2015: US GDP 24.1% of world GDP, 36.5% of high-income countries' GDP, 38.2% of OECD GDP; population 4.3% of world, 23.6% of high-income
+2025: US GDP 26.0% of world GDP, 40.0% of high-income countries' GDP, 42.4% of OECD GDP; population 4.2% of world, 24.0% of high-income
+Revenue per dollar of GDP, US against the rest, if the companies' non-US revenue came from the rest of the world (2025): 4.0 times; against the rest of the high-income world only: 2.1 times
+
+==============================================================================================
+4. From revenue to margins: how a revenue share becomes a profit share
+==============================================================================================
+Pooled FY2025 (14 companies with cost of sales): US share of revenue 58.6%; cost of sales 25.5% of revenue; R&D 19.6%; net income 22.3%
+Share of revenue above the cost of sales that comes from the US, if a US unit sells at k times the price of a unit elsewhere and the cost of sales follows units (RAND 2024: k = 4.22 gross, 3.08 net of US rebates):
+  k = 1.00: US share of units 58.6%; US share of revenue above cost of sales 58.6%
+  k = 2.00: US share of units 41.5%; US share of revenue above cost of sales 64.5%
+  k = 3.08: US share of units 31.5%; US share of revenue above cost of sales 68.0%
+  k = 4.22: US share of units 25.2%; US share of revenue above cost of sales 70.1%
+
+==============================================================================================
+5. Would the revenue earned outside the United States cover the companies' R&D?
+==============================================================================================
+Pooled FY2025: R&D $ 142 bn; revenue outside the US $ 301 bn (2.11 times R&D); US revenue $ 426 bn (3.00 times R&D)
+  revenue outside the US above its cost of sales (k = 1.00): $ 224 bn, 1.57 times R&D
+  revenue outside the US above its cost of sales (k = 3.08): $ 173 bn, 1.22 times R&D
+  13 companies with selling, general and administrative costs: SG&A 22.2% of revenue, cost of sales 26.0%, R&D 19.8%, US share 58.8%
+  revenue outside the US above its cost of sales and its share of SG&A (SG&A in proportion to revenue, k = 1.00): $ 145 bn, 1.08 times R&D
+    the same for US revenue: $ 207 bn, 1.54 times R&D; US share of what is left after cost of sales and SG&A 58.8%
+  revenue outside the US above its cost of sales and its share of SG&A (SG&A in proportion to revenue, k = 3.08): $ 97 bn, 0.72 times R&D
+    the same for US revenue: $ 255 bn, 1.90 times R&D; US share of what is left after cost of sales and SG&A 72.4%
+  by company, revenue outside the US divided by R&D: Vertex 1.1, Amgen 1.4, Gilead 1.5, Bristol-Myers Squibb 1.5, AbbVie 1.6, Eli Lilly 1.6, Merck & Co 1.8, GSK 2.1, AstraZeneca 2.4, Pfizer 2.4, Novo Nordisk 2.6, Sanofi 2.7, Johnson & Johnson 2.8, Novartis 2.8
+
+==============================================================================================
+6. Europe country by country: market, R&D located in the country, public health research
+==============================================================================================
+EFPIA Key Data 2026: world prescription market 2025 EUR 1,475,815 million ($ 1,667,671 million) at ex-manufacturer prices; North America 54.7%, Europe 23.7%, China 6.5%, Japan 3.5% (IQVIA MIDAS)
+  sales of new medicines launched 2020-2024: United States 74.1%, the five largest European markets 15.6%
+  new molecules first launched in 2025: 104, of which 46 from companies headquartered in China, 28 in the US, 16 in Europe
+  European tables, 2024 (EUR million): market at ex-factory prices 301,968 (34 countries), industry R&D located in Europe 56,344 (27), production 463,869
+Countries with market, R&D and GDP: 27
+  country | market % GDP | market per person (EUR) | industry R&D % GDP | R&D per euro of market
+    CH   0.90     897   1.07   1.18
+    BE   1.35     706   0.96   0.71
+    DK   1.09     729   0.53   0.49
+    MT   1.20     485   0.45   0.38
+    SI   1.54     488   0.48   0.31
+    UK   1.12     553   0.32   0.29
+    SE   0.97     519   0.21   0.22
+    DE   1.32     694   0.24   0.18
+    CY   1.42     381   0.23   0.16
+    PL   1.54     359   0.24   0.16
+    FR   1.34     573   0.20   0.15
+    NL   0.80     499   0.10   0.12
+    HU   1.37     296   0.14   0.11
+    IE   0.60     622   0.05   0.09
+    IT   1.25     468   0.10   0.08
+    ES   1.42     466   0.10   0.07
+    FI   1.17     575   0.08   0.07
+    AT   1.38     754   0.08   0.06
+    BG   2.14     350   0.10   0.05
+    RO   1.89     352   0.06   0.03
+    NO   0.90     745   0.03   0.03
+    CZ   1.19     351   0.03   0.03
+    HR   1.81     408   0.05   0.03
+    EL   2.70     617   0.06   0.02
+    PT   1.70     463   0.04   0.02
+    SK   1.56     381   0.03   0.02
+    TR   0.80     118   0.01   0.01
+  Portugal: market 1.70% of GDP (rank 5 of 27), EUR 463 per person; industry R&D 0.040% of GDP (rank 23 of 27); R&D per euro of market 0.023
+  all 27 together: market 1.23% of GDP, industry R&D 0.24% of GDP, R&D per euro of market 0.191
+  across countries, market against industry R&D (both % of GDP): Spearman -0.10 [-0.54, +0.33]
+  North America 2025: market EUR 807,271 million, 2.76% of US and Canadian GDP; per person EUR 2,105
+  Portugal's market (2024) as a share of the world market (2025): 0.34%
+OECD (MSTI and GBARD by objective), latest year with GDP:
+  area | business R&D in pharmaceuticals % GDP (year, $ PPP million) | public budget for health R&D % GDP (year) | health share of public R&D budget
+    United States   0.468 (2023, 130,057)        0.167 (2024)     25%
+    Switzerland     0.659 (2023, 5,502)          0.001 (2025)     0%
+    Belgium         0.604 (2023, 5,176)          0.011 (2025)     2%
+    Denmark         0.568 (2023, 2,615)          0.141 (2025)     16%
+    United Kingdom  0.018 (2024, 799)            0.129 (2024)     20%
+    Germany         0.134 (2023, 8,040)          0.049 (2025)     5%
+    Sweden          0.221 (2023, 1,595)          0.051 (2025)     7%
+    France          0.076 (2023, 3,146)          0.030 (2025)     5%
+    Netherlands     0.030 (2023, 431)            0.067 (2025)     9%
+    Italy           0.039 (2023, 1,401)          0.069 (2025)     12%
+    Spain           0.059 (2023, 1,591)          0.057 (2025)     11%
+    Portugal        0.041 (2023, 215)            0.028 (2025)     8%
+    Japan           0.272 (2024, 17,580)         0.064 (2024)     5%
+    Korea           0.106 (2024, 3,349)          0.088 (2024)     8%
+    Canada          0.019 (2023, 505)            0.072 (2023)     17%
+    Poland          0.030 (2023, 529)            0.009 (2025)     2%
+    Greece          0.068 (2023, 301)            0.057 (2025)     11%
+R&D in medical and health sciences performed by universities and government institutes (OECD GERD by field), % of GDP, latest year with both sectors; the US does not report this breakdown:
+  Denmark 0.412 (2023), Sweden 0.317 (2023), Austria 0.248 (2023), Norway 0.230 (2023), Greece 0.201 (2023), Netherlands 0.179 (2023), Belgium 0.179 (2023), Germany 0.170 (2023), Finland 0.164 (2023), Japan 0.154 (2023), Spain 0.147 (2023), Korea 0.130 (2023), United Kingdom 0.102 (2017), Poland 0.099 (2023), Portugal 0.096 (2023), Italy 0.087 (2023), Slovenia 0.076 (2023), France 0.075 (2023), Hungary 0.075 (2023), Czechia 0.068 (2023), Ireland 0.058 (2023)
+  Portugal 0.096% of GDP; median of the 37 reporting countries 0.102%
+  US business R&D in pharmaceuticals (2023) $ 130.1 bn PPP; public budget for health R&D (2024) $ 49.0 bn PPP
+  public budget for health R&D, % of GDP: United States 6.1 times Portugal
+  17 EU countries together: public budget for health R&D 0.046% of GDP
+
+==============================================================================================
+7. What the literature's elasticities imply for the number of new medicines
+==============================================================================================
+Baseline: 104 new molecules first launched worldwide in 2025 (EFPIA). Elasticity of the number of new medicines to the size of their potential market: 0.25 (Dubois, de Mouzon, Scott Morton and Seabright 2015) and 4 (Acemoglu and Linn 2004, new non-generic drugs). Changes in market size are taken as shares of the world market.
+  Portugal's share of the market for new medicines is taken to be its share of the whole market (an upper bound, since new medicines reach Portugal later); the five largest European markets' share is EFPIA's 15.6%.
+  Portugal spends 25% more on all medicines: market for new medicines +0.08%; new medicines +0.02% (0.02 a year) to +0.3% (0.3 a year)
+  Portugal doubles what it spends on all medicines: market for new medicines +0.34%; new medicines +0.08% (0.09 a year) to +1.3% (1.4 a year)
+  the five largest European markets pay 25% more for new medicines: market for new medicines +3.90%; new medicines +0.97% (1.01 a year) to +15.6% (16.2 a year)
+  the five largest European markets pay US net prices for new medicines (x 3.08): market for new medicines +32.45%; new medicines +8.11% (8.44 a year) to +129.8% (135.0 a year)
+  one more new medicine a year needs a world market larger by 3.8% at elasticity 0.25 and 0.24% at elasticity 4; Portugal's whole market is 0.34% of the world's
+Part 2: US against French prices, single-source molecules (n=113), Fisher index 5.820 before rebates
