@@ -137,3 +137,5 @@ wealth-origin-successions/**/*.csv -filter -diff -merge text
 wealth-origin-synthesis/**/*.csv -filter -diff -merge text
 ppp-drift-pairs/**/*.csv -filter -diff -merge text
 ppp-drift-pairs/**/*.gz -filter -diff -merge binary
+ie-lu-fund-intermediation/**/*.csv -filter -diff -merge text
+ie-lu-fund-intermediation/**/*.gz -filter -diff -merge binary
