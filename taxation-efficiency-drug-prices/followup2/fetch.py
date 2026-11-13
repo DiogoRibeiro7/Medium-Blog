@@ -54,7 +54,7 @@ REVENUE = {"Revenues", "RevenueFromContractWithCustomerExcludingAssessedTax", "S
            "SalesRevenueGoodsNet", "Revenue", "RevenueFromSaleOfGoods",
            "RevenueFromContractWithCustomerIncludingAssessedTax", "RevenueNet"}
 REV_NAME = re.compile(r"(Revenue|Sales)")
-NOT_REV = re.compile(r"(CostOf|Cost|Deferred|Receivable|Unearned|Unbilled|RemainingPerformance|Allowance|Reserve|"
+NOT_REV = re.compile(r"(DefinedBenefit|CostOf|Cost|Deferred|Receivable|Unearned|Unbilled|RemainingPerformance|Allowance|Reserve|"
                      r"Proceeds|Gain|Loss|Liabilit|Asset|Percent|Ratio|Selling|Marketing|Expense|Accrual|"
                      r"Payable|Provision|Impairment|Investment|Tax(es)?Payable|Days|Number|Count)")
 
@@ -268,30 +268,41 @@ def fetch_purple(out: Path) -> None:
         log(f"[purple] download page: {len(urls)} CSV links {urls[:5]}")
     except Exception as exc:  # noqa: BLE001
         log(f"[purple] download page failed: {exc}")
-    today = date.today()
+    def when(u: str) -> tuple[int, int]:
+        m = re.search(r"/(\d{4})/purplebook-search-([a-z]+)-data-download", u)
+        return (int(m.group(1)), MONTHS.index(m.group(2)) + 1) if m and m.group(2) in MONTHS else (0, 0)
+
     tries = [u if u.startswith("http") else "https://purplebooksearch.fda.gov" + u for u in urls]
+    today = date.today()
     for k in range(0, 14):
         y, m = today.year, today.month - k
         while m <= 0:
             y, m = y - 1, m + 12
         tries.append(URLS["purple_file"].format(y=y, m=MONTHS[m - 1]))
+    tries = sorted(set(tries), key=when, reverse=True)  # the latest monthly extract first
     for u in tries:
         try:
             r = get(u, tries=1, timeout=120)
         except Exception as exc:  # noqa: BLE001
             log(f"[purple] {u}: {exc}")
             continue
-        text = r.content.decode("utf-8", errors="replace")
-        lines = text.splitlines()
-        head = next((i for i, l in enumerate(lines[:40]) if "Proprietary Name" in l or "BLA Number" in l), None)
+        lines = r.content.decode("utf-8", errors="replace").splitlines()
+        # the extract begins with notes; the table starts at the row whose first field is N/R/U
+        head = next((i for i, l in enumerate(lines[:200]) if l.lstrip('"').startswith("N/R/U")
+                     and "Proprietary Name" in l), None)
         if head is None:
             log(f"[purple] {u}: no header row ({lines[:3]})")
             continue
         df = pd.read_csv(io.StringIO("\n".join(lines[head:])), dtype=str)
-        log(f"[purple] {u}: {len(df)} rows")
+        df = df[df["Proprietary Name"].notna() & (df["Proprietary Name"] != "Proprietary Name")]
+        centers = df["Center"].value_counts().to_dict() if "Center" in df else {}
+        log(f"[purple] {u}: {len(df)} rows, centers {centers}")
+        if "CBER" not in centers:
+            log(f"[purple] {u}: no CBER products, trying an older extract")
+            continue
         save(df, out, "fda_purplebook")
         return
-    raise RuntimeError("no Purple Book file found")
+    raise RuntimeError("no Purple Book extract with CBER products found")
 
 
 def main() -> None:
