@@ -3458,5 +3458,63 @@
    "name": "eq14",
    "tex": "y_j=\\frac{1+120(a_j-a_0)}{2}."
   }
+ ],
+ "statistics-for-data-scientists/causal-inference-is-not-a-toolbox": [
+  {
+   "name": "eq01",
+   "tex": "P(Y=1\\mid A=1)=0.8(0.70)+0.2(0.45)=0.65."
+  },
+  {
+   "name": "eq02",
+   "tex": "P(Y=1\\mid A=0)=0.2(0.70)+0.8(0.45)=0.50."
+  },
+  {
+   "name": "eq03",
+   "tex": "\\frac{0.65-0.50}{0.50}=0.30."
+  },
+  {
+   "name": "eq04",
+   "tex": "\\operatorname{ATT}=\\mathbb{E}[Y(1)-Y(0)\\mid A=1]."
+  },
+  {
+   "name": "eq05",
+   "tex": "\\begin{aligned}\n\\mathbb{E}[Y\\mid A=1]-\\mathbb{E}[Y\\mid A=0]\n={}&\\underbrace{\\mathbb{E}[Y(1)-Y(0)\\mid A=1]}_{\\text{causal effect on adopters}}\\\\\n&+\\underbrace{\\mathbb{E}[Y(0)\\mid A=1]-\\mathbb{E}[Y(0)\\mid A=0]}_{\\text{selection difference}}.\n\\end{aligned}"
+  },
+  {
+   "name": "eq06",
+   "tex": "\\operatorname{ATE}=\\mathbb{E}[Y(1)-Y(0)]."
+  },
+  {
+   "name": "eq07",
+   "tex": "\\operatorname{ITT}=P(\\text{complier})\\times\\operatorname{LATE}."
+  },
+  {
+   "name": "eq08",
+   "tex": "1\\text{ percentage point}=0.20\\times5\\text{ percentage points}."
+  },
+  {
+   "name": "eq09",
+   "tex": "\\text{Prior engagement}\\longrightarrow\\text{Adoption}\n\\qquad\n\\text{Prior engagement}\\longrightarrow\\text{Retention}."
+  },
+  {
+   "name": "eq10",
+   "tex": "\\text{Feature}\\longrightarrow\\text{Daily habit}\n\\longrightarrow\\text{Retention}."
+  },
+  {
+   "name": "eq11",
+   "tex": "\\text{Feature}\\longrightarrow\\text{Post-launch activity}\n\\longleftarrow\\text{Motivation}\\longrightarrow\\text{Retention}."
+  },
+  {
+   "name": "eq12",
+   "tex": "\\widehat{\\tau}_{\\mathrm{DiD}}\n=\n(Y_{T,\\mathrm{post}}-Y_{T,\\mathrm{pre}})\n-\n(Y_{C,\\mathrm{post}}-Y_{C,\\mathrm{pre}})."
+  },
+  {
+   "name": "eq13",
+   "tex": "(65-50)-(45-40)=10\\text{ percentage points}."
+  },
+  {
+   "name": "eq14",
+   "tex": "65-60=5\\text{ percentage points}."
+  }
  ]
 }
