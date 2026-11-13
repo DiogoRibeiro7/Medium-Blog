@@ -1,0 +1,122 @@
+# PPP drift by category inside Europe: analysis summary
+# drift over 2005-2019 against the EU27, log points x 100; regressor ln PLI 2005 (EU27=100)
+
+## Sample and the household-consumption slope
+Economies: 33 (AT, BE, BG, CY, CZ, DE, DK, EE, EL, ES, FI, FR, HR, HU, IE, IT, LT, LU, LV, MT, NL, PL, PT, RO, SE, SI, SK, CH, NO, IS, RS, AL, BA)
+2005 price level (EU27=100): min 43 (BG), max 153 (IS); range of ln PLI 1.27
+Household consumption drift: slope -9.2 (HC1 se 3.0, t -3.1), r -0.50, n 33
+Mean drift -2.2, sd 6.7
+Eight cheapest in 2005 (BG 43, RS 47, BA 52, RO 54, AL 54, LT 56, SK 57, LV 59): mean drift 1.3
+Eight dearest in 2005 (LU 114, SE 121, FI 126, IE 126, CH 136, DK 144, NO 147, IS 153): mean drift -8.1
+Parts of the household slope: deflator relative to EU27 -20.7, PPP -11.6
+Exchange-rate change against the euro, slope 1.8; price-level convergence measured by deflators -22.5, by PPPs -13.3
+Reference from follow-up Part 4 (OECD data, against the US, 35 Eurostat-group economies): slope -7.5, r -0.49
+
+## Eurostat's goods and services split
+Consumer goods: slope -6.8 (HC1 se 4.8, t -1.4), r -0.31, n 33; parts: deflator -23.2, PPP -16.4
+Non-durable goods: slope -2.0 (HC1 se 5.6, t -0.4), r -0.09, n 33; parts: deflator -22.0, PPP -20.0
+Semi-durable goods: slope 10.3 (HC1 se 11.4, t 0.9), r 0.19, n 33; parts: deflator 0.1, PPP -10.2
+Durable goods: slope -2.2 (HC1 se 11.0, t -0.2), r -0.04, n 33; parts: deflator -12.0, PPP -9.8
+Consumer services: slope -11.3 (HC1 se 6.6, t -1.7), r -0.35, n 33; parts: deflator -23.9, PPP -12.6
+Services slope / goods slope: 1.65
+
+## COICOP divisions and groups
+Food and non-alcoholic beverages [goods]: slope -5.6 (se 6.1, t -0.9), r -0.18, n 33; mean -3.1, sd 11.6; deflator -31.9, PPP -26.3
+Alcoholic beverages and tobacco [goods]: slope -8.9 (se 7.2, t -1.2), r -0.27, n 33; mean 0.7, sd 12.1; deflator -38.0, PPP -29.0
+Clothing and footwear [goods]: slope 15.0 (se 13.9, t 1.1), r 0.22, n 33; mean -10.4, sd 25.6; deflator 7.4, PPP -7.6
+Housing, water, electricity, gas [services]: slope -16.0 (se 9.1, t -1.8), r -0.34, n 33; mean -0.4, sd 17.6; deflator -26.9, PPP -10.9
+Furnishings and household equipment [goods]: slope 24.1 (se 12.4, t 1.9), r 0.38, n 33; mean -7.5, sd 23.3; deflator 6.5, PPP -17.6
+Health [public]: slope -32.3 (se 10.7, t -3.0), r -0.52, n 33; mean -3.9, sd 22.7; deflator -37.7, PPP -5.4
+Transport [mixed]: slope 2.1 (se 5.3, t 0.4), r 0.08, n 33; mean -1.9, sd 9.3; deflator -11.0, PPP -13.1
+Communication [services]: slope -51.5 (se 25.8, t -2.0), r -0.39, n 33; mean -1.1, sd 48.9; deflator -19.8, PPP 31.7
+Recreation and culture [mixed]: slope -1.5 (se 5.6, t -0.3), r -0.05, n 33; mean -0.8, sd 10.8; deflator -17.0, PPP -15.5
+Education [public]: slope 55.9 (se 14.5, t 3.9), r 0.59, n 33; mean -10.3, sd 35.0; deflator -10.2, PPP -66.1
+Restaurants and hotels [services]: slope -0.8 (se 12.1, t -0.1), r -0.01, n 33; mean -2.6, sd 19.3; deflator -12.1, PPP -11.3
+Miscellaneous goods and services [services]: slope -9.0 (se 10.3, t -0.9), r -0.20, n 33; mean -4.3, sd 16.8; deflator -22.6, PPP -13.6
+Food [goods]: slope -7.5 (se 6.6, t -1.1), r -0.22, n 32; mean -3.0, sd 12.2; deflator -31.4, PPP -26.9
+Alcoholic beverages [goods]: slope -4.2 (se 16.0, t -0.3), r -0.07, n 32; mean -0.4, sd 21.5; deflator -7.8, PPP -6.1
+Tobacco [goods]: slope 0.5 (se 7.4, t 0.1), r 0.01, n 28; mean 2.5, sd 13.8; deflator -59.4, PPP -58.9
+Clothing [goods]: slope 12.2 (se 16.5, t 0.7), r 0.15, n 32; mean -13.0, sd 28.8; deflator 8.7, PPP -6.5
+Footwear [goods]: slope 14.0 (se 12.6, t 1.1), r 0.20, n 32; mean -5.6, sd 25.3; deflator 12.5, PPP -6.0
+Electricity, gas and other fuels [goods]: slope -12.6 (se 11.8, t -1.1), r -0.19, n 32; mean 1.7, sd 24.3; deflator -27.9, PPP -16.7
+Furniture and floor coverings [goods]: slope -5.6 (se 12.5, t -0.4), r -0.09, n 32; mean -9.9, sd 21.9; deflator -12.5, PPP -11.4
+Household appliances [goods]: slope 21.0 (se 19.1, t 1.1), r 0.27, n 32; mean 5.0, sd 28.5; deflator 16.1, PPP -7.9
+Purchase of vehicles [goods]: slope 19.7 (se 9.9, t 2.0), r 0.32, n 32; mean -8.5, sd 22.7; deflator 20.9, PPP -1.2
+Audio-visual and IT equipment [goods]: slope -25.7 (se 24.9, t -1.0), r -0.22, n 32; mean 18.4, sd 42.2; deflator -27.2, PPP -5.4
+Transport services [services]: slope -14.2 (se 14.2, t -1.0), r -0.20, n 32; mean 5.1, sd 26.2; deflator -39.4, PPP -28.1
+Housing without energy [services]: slope -13.4 (se 12.8, t -1.0), r -0.21, n 32; mean -1.7, sd 23.3; deflator -24.2, PPP -10.8
+Housing without energy: average energy share 21%
+Deflator of actual rents relative to EU27: slope -14.0, n 32
+Deflator of imputed rents relative to EU27: slope -23.5, n 32
+
+## Decomposition of the household-consumption slope
+Identity check, largest absolute error: 1.5e-14
+Food and non-alcoholic beverages: -1.16 (se 1.39), 13% of -9.19
+Alcoholic beverages and tobacco: -0.46 (se 0.44), 5% of -9.19
+Clothing and footwear: 0.75 (se 0.67), -8% of -9.19
+Housing, water, electricity, gas: -2.71 (se 2.02), 30% of -9.19
+Furnishings and household equipment: 1.56 (se 0.75), -17% of -9.19
+Health: -1.51 (se 0.53), 16% of -9.19
+Transport: 0.19 (se 0.70), -2% of -9.19
+Communication: -1.40 (se 0.75), 15% of -9.19
+Recreation and culture: -0.48 (se 0.57), 5% of -9.19
+Education: 0.65 (se 0.18), -7% of -9.19
+Restaurants and hotels: -0.19 (se 0.68), 2% of -9.19
+Miscellaneous goods and services: -0.96 (se 0.81), 10% of -9.19
+A_deflator: 0.96 (se 0.63), -10% of -9.19
+B_ppp: -3.53 (se 0.99), 38% of -9.19
+C_reference: -0.89 (se 0.38), 10% of -9.19
+Economy BG (2005 price level 43): drift -0.2 = goods -5.2 + services 4.8 (housing -1.1, communication 1.1) + mixed -2.9 + health and education 2.5 + aggregation 0.6 (PPP term 2.5)
+Economy PT (2005 price level 83): drift -3.9 = goods -6.8 + services 1.0 (housing -0.6, communication 0.5) + mixed 0.4 + health and education -0.1 + aggregation 1.5 (PPP term 0.3)
+Economy DE (2005 price level 107): drift -1.2 = goods 1.5 + services -0.4 (housing 0.0, communication -0.2) + mixed -0.5 + health and education -0.5 + aggregation -1.2 (PPP term -0.3)
+Economy DK (2005 price level 144): drift 0.7 = goods 0.9 + services -1.1 (housing -2.6, communication -0.9) + mixed 0.6 + health and education 0.6 + aggregation -0.2 (PPP term -0.3)
+By kind, goods: 0.69 (se 1.20), -7%
+By kind, services: -5.26 (se 2.29), 57%
+By kind, mixed: -0.29 (se 0.90), 3%
+By kind, public: -0.86 (se 0.62), 9%
+By kind, aggregation: -3.46 (se 1.21), 38%
+Average expenditure share of the service divisions 42%, goods divisions 31%
+
+## The aggregation term and spending composition
+Composition term (share shifts x relative price levels): slope -2.2 (HC1 se 0.6, t -3.9), r -0.64, n 33
+Correlation of the PPP aggregation term with the composition term: 0.53; slope of the PPP term on the composition term 0.87 (se 0.26)
+Composition term slope as a share of the PPP aggregation slope: 62%
+PPP aggregation term, lowest: IS -6.9, LU -2.6; highest: HR 3.1, SK 4.9
+PPP aggregation slope without IS and SK: -2.40 (se 0.56, t -4.3)
+Spread of division price levels within each economy, 2005 (log points): slope -21.9 (HC1 se 3.0, t -7.2), r -0.81, n 33
+Spread: smallest ES 5.1, largest AL 40.3; median of the eight cheapest 31.7, of the eight dearest 12.8
+Median spread of the eight cheapest of 2005: 2005 31.7, 2010 29.4, 2019 29.2; of the eight dearest: 2005 12.8, 2010 15.4, 2019 15.6
+Change in the share of service and public divisions 2005-2019, percentage points: mean 3.1, slope on ln PLI 1.8 (se 1.3)
+
+## Convergence and drift across the twelve divisions
+Spearman correlation of the drift slope with convergence measured by PPPs -0.53, by deflators 0.79, by their average 0.03
+  Alcoholic beverages and tobacco: convergence by deflators -39.7, by PPPs -30.8, drift slope -8.9
+  Health: convergence by deflators -39.5, by PPPs -7.2, drift slope -32.3
+  Food and non-alcoholic beverages: convergence by deflators -33.7, by PPPs -28.1, drift slope -5.6
+  Housing, water, electricity, gas: convergence by deflators -28.7, by PPPs -12.6, drift slope -16.0
+  Miscellaneous goods and services: convergence by deflators -24.4, by PPPs -15.3, drift slope -9.0
+  Communication: convergence by deflators -21.6, by PPPs 30.0, drift slope -51.5
+  Recreation and culture: convergence by deflators -18.8, by PPPs -17.3, drift slope -1.5
+  Restaurants and hotels: convergence by deflators -13.9, by PPPs -13.1, drift slope -0.8
+  Transport: convergence by deflators -12.8, by PPPs -14.8, drift slope 2.1
+  Education: convergence by deflators -11.9, by PPPs -67.8, drift slope 55.9
+  Furnishings and household equipment: convergence by deflators 4.8, by PPPs -19.3, drift slope 24.1
+  Clothing and footwear: convergence by deflators 5.7, by PPPs -9.3, drift slope 15.0
+
+## Robustness (slope of household drift; contributions by kind; aggregate goods and services slopes)
+base 2005-2019 (n 33): household -9.2 (t -3.1); goods 0.7, services -5.3, mixed -0.3, public -0.9, aggregation -3.5 (PPP term -3.5); housing -2.7, restaurants -0.2, misc -1.0; consumer goods -6.8 (t -1.4), consumer services -11.3 (t -1.7)
+2005-2022 (n 33): household -9.7 (t -3.6); goods 1.0, services -6.4, mixed 0.4, public -1.0, aggregation -3.7 (PPP term -3.5); housing -3.7, restaurants -0.4, misc -1.0; consumer goods -7.7 (t -1.8), consumer services -13.2 (t -1.8)
+2005-2015 (n 33): household -10.2 (t -4.0); goods -0.6, services -5.7, mixed -0.2, public -0.5, aggregation -3.3 (PPP term -3.3); housing -3.6, restaurants 0.1, misc -1.1; consumer goods -7.9 (t -2.0), consumer services -11.3 (t -2.3)
+2010-2019 (n 33): household -6.4 (t -2.7); goods 0.5, services -5.3, mixed -0.4, public -0.0, aggregation -1.3 (PPP term -1.9); housing -4.0, restaurants 0.3, misc 0.3; consumer goods -3.6 (t -1.3), consumer services -4.0 (t -0.6)
+EU27 only (n 27): household -7.8 (t -1.8); goods 1.9, services -7.0, mixed 0.7, public -0.8, aggregation -2.6 (PPP term -3.2); housing -3.3, restaurants 0.2, misc -1.2; consumer goods -4.4 (t -0.6), consumer services -14.8 (t -1.8)
+without Serbia, Albania, Bosnia (n 30): household -9.3 (t -2.7); goods 1.0, services -6.6, mixed 0.7, public -1.4, aggregation -3.1 (PPP term -3.4); housing -3.0, restaurants -0.1, misc -1.4; consumer goods -4.7 (t -0.8), consumer services -17.5 (t -2.5)
+Across variants: services contribution -7.0 to -5.3; goods -0.6 to 1.9; aggregation -3.7 to -1.3
+With each aggregate's own 2005 price level as regressor: goods -10.5 (t -1.5), services -6.9 (t -1.4)
+
+## Criteria
+FAIL: consumer services slope negative with |t| > 2
+FAIL: consumer goods slope flat: |t| < 2 and under a third of the services slope
+PASS: service divisions carry more than half of the household slope
+PASS: goods divisions carry less than a sixth of it in absolute value
+FAIL: each named service division (housing, restaurants and hotels, miscellaneous) has slope < 0 with t < -1
+FAIL: drift slope rises with convergence speed across divisions (Spearman > 0.5, average of both measures)

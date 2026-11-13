@@ -1,0 +1,143 @@
+
+==============================================================================
+P0. The data
+==============================================================================
+hub https://github.com/KITmetricslab/covid19-forecast-hub-de.git at commit 991c7a054246faee4abace7f5b705f044b0ffd01
+rki https://github.com/robert-koch-institut/SARS-CoV-2-Infektionen_in_Deutschland_Archiv at commit 3375bddec5f30a547d62dfb1daf24612c75789d6
+truth data-truth/RKI/truth_RKI-Incident Cases_Germany.csv
+rki Archiv/2026-11-10_Deutschland_SarsCov2_Infektionen.csv.xz blob 744aee3df44e4ee2470bc4ec6bbf7109c20676f2
+holidays python-holidays 0.108
+forecasts 60266 rows, 45 models, 2020-05-04 to 2022-10-17
+forecast files read: 2496
+forecasts: 60,266 (model, forecast date, location, horizon), 45 models; for Germany 7,682, for the states 52,584
+  forecast dates 2020-05-04 to 2022-10-17; state forecasts 2020-05-04 to 2022-10-17
+scored (target week 2020-05-09 to 2022-11-12, all three counts positive): 59,456; Germany 7,568, states 51,888
+RKI final file: 39,209,067 cases; reported May 2020 to November 2022: 35,899,573, onset known for 24.5%
+  onset known, by half-year of the reporting date: 2020 H1 55%, 2020 H2 52%, 2021 H1 60%, 2021 H2 50%, 2022 H1 18%, 2022 H2 17%
+
+==============================================================================
+P1. Where the holiday gaps are: the day of a weekday national holiday against the same weekday a week before and after (Germany)
+==============================================================================
+publication is read on the day after the holiday, because it lags by a day
+  Fri 01 May 2020 Erster Mai                 publication   57%, reporting   64%, reference   77%, onset   88%
+  Thu 21 May 2020 Christi Himmelfahrt        publication   56%, reporting   62%, reference   76%, onset   85%
+  Mon 01 Jun 2020 Pfingstmontag              publication   54%, reporting   38%, reference   57%, onset   70%
+  Fri 25 Dec 2020 Erster Weihnachtstag       publication   66%, reporting   66%, reference   72%, onset   75%
+  Fri 01 Jan 2021 Neujahr                    publication   65%, reporting   54%, reference   77%, onset  104%
+  Fri 02 Apr 2021 Karfreitag                 publication   81%, reporting   71%, reference   81%, onset   85%
+  Mon 05 Apr 2021 Ostermontag                publication   68%, reporting   61%, reference   76%, onset   82%
+  Thu 13 May 2021 Christi Himmelfahrt        publication   83%, reporting   76%, reference   81%, onset   85%
+  Mon 24 May 2021 Pfingstmontag              publication   64%, reporting   47%, reference   67%, onset   73%
+  Fri 15 Apr 2022 Karfreitag                 publication   26%, reporting   46%, reference   50%, onset   86%
+  Mon 18 Apr 2022 Ostermontag                publication   15%, reporting   29%, reference   35%, onset   88%
+  Thu 26 May 2022 Christi Himmelfahrt        publication    4%, reporting   19%, reference   26%, onset   69%
+  Mon 06 Jun 2022 Pfingstmontag              publication    2%, reporting   14%, reference   26%, onset   94%
+  Mon 03 Oct 2022 Tag der Deutschen Einheit  publication    0%, reporting   13%, reference   25%, onset   99%
+  Mon 26 Dec 2022 Zweiter Weihnachtstag      publication    0%, reporting   11%, reference   18%, onset   74%
+  median over the holidays: publication 56%, reporting 47%, reference 67%, onset 85%
+regional weekday holidays (state-days): 52; median ratio in the observing state against the median of the other states on the same day:
+  publication  observing 9%, others 76%
+  reporting    observing 21%, others 82%
+  reference    observing 47%, others 86%
+  onset        observing 90%, others 99%
+
+==============================================================================
+P2. The daily pipeline: Johns Hopkins' morning 7-day count for Germany, scored three ways
+==============================================================================
+RKI window ending on d-1: 881 mornings, 2020-10-01 to 2023-02-28; holiday mornings (a national holiday on the day or the day before) 41, from 22 holidays
+  against Johns Hopkins' final version holiday mornings 5.88%, others 5.60%, difference +0.28 points [-1.89, +2.44]
+  against RKI by reporting date        holiday mornings 8.71%, others 4.40%, difference +4.31 points [+0.75, +8.01]
+  against RKI by reference date        holiday mornings 9.83%, others 6.32%, difference +3.50 points [+0.27, +7.17]
+  by holiday (mean of its mornings; final / reporting / reference): 03 Oct 2020 Tag der Deutschen Einheit 3.1 / 2.2 / 17.0; 25 Dec 2020 Erster Weihnachtstag 6.6 / 12.8 / 7.0; 26 Dec 2020 Zweiter Weihnachtstag 2.2 / 0.6 / 2.5; 01 Jan 2021 Neujahr 1.4 / 1.3 / 1.0; 02 Apr 2021 Karfreitag 8.1 / 7.1 / 6.1; 05 Apr 2021 Ostermontag 10.8 / 8.7 / 12.4; 01 May 2021 Erster Mai 1.6 / 1.4 / 5.8; 13 May 2021 Christi Himmelfahrt 19.2 / 17.1 / 5.5; 24 May 2021 Pfingstmontag 5.0 / 3.6 / 14.9; 03 Oct 2021 Tag der Deutschen Einheit 0.1 / 0.8 / 2.6; 25 Dec 2021 Erster Weihnachtstag 5.5 / 7.2 / 5.7; 26 Dec 2021 Zweiter Weihnachtstag 0.9 / 0.0 / 2.5; 01 Jan 2022 Neujahr 6.4 / 2.4 / 10.6; 15 Apr 2022 Karfreitag 4.7 / 9.2 / 7.3; 18 Apr 2022 Ostermontag 8.8 / 17.3 / 16.5; 01 May 2022 Erster Mai 8.9 / 1.0 / 1.5; 26 May 2022 Christi Himmelfahrt 2.4 / 7.7 / 6.8; 06 Jun 2022 Pfingstmontag 11.1 / 15.5 / 13.4; 03 Oct 2022 Tag der Deutschen Einheit 7.4 / 15.6 / 18.6; 25 Dec 2022 Erster Weihnachtstag 5.6 / 13.9 / 13.1; 26 Dec 2022 Zweiter Weihnachtstag 4.4 / 1.7 / 1.4; 01 Jan 2023 Neujahr 0.0 / 32.7 / 32.6
+  holidays whose mornings were further from the reporting date than from the final version: 10 of 22
+  leaving out the holiday with the largest difference (01 Jan 2023): holiday mornings minus others, against the final version +0.58, against the reporting date +3.08, against the reference date +2.34
+RKI window ending on d-0: 881 mornings, 2020-10-01 to 2023-02-28; holiday mornings (a national holiday on the day or the day before) 41, from 22 holidays
+  against Johns Hopkins' final version holiday mornings 5.88%, others 5.60%, difference +0.28 points [-1.89, +2.44]
+  against RKI by reporting date        holiday mornings 5.47%, others 4.64%, difference +0.83 points [-1.29, +3.38]
+  against RKI by reference date        holiday mornings 8.52%, others 8.16%, difference +0.36 points [-2.84, +4.00]
+
+==============================================================================
+P3. Weekly counts: publication against reference date in holiday weeks
+==============================================================================
+Germany, weeks with a weekday national holiday: 13; publication against reference, holiday week minus the mean of the nearest weeks without one, before and after (log points):
+  week ending 23 May 2020 (Christi Himmelfahrt): publication +2.3, reporting -1.8
+  week ending 06 Jun 2020 (Pfingstmontag): publication +2.8, reporting -0.4
+  week ending 26 Dec 2020 (Erster Weihnachtstag): publication +9.4, reporting -3.4
+  week ending 02 Jan 2021 (Neujahr): publication +0.5, reporting -7.1
+  week ending 03 Apr 2021 (Karfreitag): publication +6.9, reporting -1.8
+  week ending 10 Apr 2021 (Ostermontag): publication -11.2, reporting -5.0
+  week ending 15 May 2021 (Christi Himmelfahrt): publication -0.6, reporting -3.4
+  week ending 29 May 2021 (Pfingstmontag): publication -2.3, reporting -5.6
+  week ending 16 Apr 2022 (Karfreitag): publication -7.2, reporting -0.5
+  week ending 23 Apr 2022 (Ostermontag): publication -3.5, reporting -0.6
+  week ending 28 May 2022 (Christi Himmelfahrt): publication +0.5, reporting -0.8
+  week ending 11 Jun 2022 (Pfingstmontag): publication -5.9, reporting -0.8
+  week ending 08 Oct 2022 (Tag der Deutschen Einheit): publication -4.4, reporting -1.5
+  mean: publication -1.0, reporting -2.5
+states, weeks with a regional weekday holiday and no national one: 15: 09 May 2020 (75. Jahrestag der Befreiung vom Nationalsozialismus und der Beendigung des Zweiten Weltkriegs in Europa), 13 Jun 2020 (Fronleichnam), 21 Nov 2020 (Buß- und Bettag), 09 Jan 2021 (Heilige Drei Könige), 13 Mar 2021 (Frauentag), 05 Jun 2021 (Fronleichnam), 25 Sep 2021 (Weltkindertag), 06 Nov 2021 (Allerheiligen), 20 Nov 2021 (Buß- und Bettag), 08 Jan 2022 (Heilige Drei Könige), 12 Mar 2022 (Frauentag), 18 Jun 2022 (Fronleichnam), 20 Aug 2022 (Mariä Himmelfahrt), 24 Sep 2022 (Weltkindertag), 05 Nov 2022 (Allerheiligen, Reformationstag)
+  holiday week, log(publication/reference): observing states -1.9 (51), other states -0.8 (189); log(reporting/reference): -1.5 against +0.5
+  the week after, log(publication/reference): observing states +0.3, other states +1.8
+
+==============================================================================
+P4. The same forecasts scored against the three counts
+==============================================================================
+Germany: 7,568 forecasts; mean absolute log error of the median: publication 46.7%, reporting 49.5%, reference 52.6%
+  80% interval coverage (7,031 forecasts with quantiles): publication 54.3%, reporting 51.6%, reference 48.0%
+  by horizon (publication / reference): 1 wk 18.4% / 24.9%; 2 wk 37.4% / 43.7%; 3 wk 56.9% / 62.7%; 4 wk 78.7% / 83.9%
+states: 51,888 forecasts; mean absolute log error of the median: publication 52.6%, reporting 55.3%, reference 58.7%
+  80% interval coverage (50,790 forecasts with quantiles): publication 53.0%, reporting 50.2%, reference 46.7%
+  by horizon (publication / reference): 1 wk 22.4% / 29.0%; 2 wk 41.6% / 47.9%; 3 wk 62.3% / 68.3%; 4 wk 84.3% / 89.8%
+Germany, models with at least 50 forecasts: 35; rank correlation of their mean errors: publication-reference 0.993, publication-reporting 0.997
+  largest change of rank: 3; models whose rank changes: 23; first under each count: publication SDSC_ISG-TrendModel, reporting SDSC_ISG-TrendModel, reference SDSC_ISG-TrendModel
+states, models with at least 500 forecasts: 13; rank correlation of their mean errors: publication-reference 0.978, publication-reporting 0.995
+  largest change of rank: 2; models whose rank changes: 5; first under each count: publication KITCOVIDhub-mean_ensemble, reporting KITCOVIDhub-mean_ensemble, reference KITCOVIDhub-mean_ensemble
+
+==============================================================================
+P5. Regional holiday weeks: observing states against the others, same week, same forecasts' errors
+==============================================================================
+forecasts: observing 988, others 4,650, in 15 weeks
+  against publication observing 56.9%, others 50.1%, difference +6.9
+  against reporting   observing 60.5%, others 52.9%, difference +7.6
+  against reference   observing 64.2%, others 56.4%, difference +7.8
+  error against reference minus error against publication: observing +7.3, others +6.3; difference +1.0 points, 95% interval over weeks [-1.4, +2.0]
+  medians above the publication count: observing 54.8%, others 44.2%
+
+==============================================================================
+P6. National holiday weeks against the nearest weeks without one, same model, location and horizon (Germany and states)
+==============================================================================
+holiday weeks with forecasts for them and for both neighbours: 13: 23 May 2020 (Christi Himmelfahrt), 06 Jun 2020 (Pfingstmontag), 26 Dec 2020 (Erster Weihnachtstag), 02 Jan 2021 (Neujahr), 03 Apr 2021 (Karfreitag), 10 Apr 2021 (Ostermontag), 15 May 2021 (Christi Himmelfahrt), 29 May 2021 (Pfingstmontag), 16 Apr 2022 (Karfreitag), 23 Apr 2022 (Ostermontag), 28 May 2022 (Christi Himmelfahrt), 11 Jun 2022 (Pfingstmontag), 08 Oct 2022 (Tag der Deutschen Einheit)
+forecast triples: 5,822
+  error against publication: holiday week minus neighbours +3.8; against reference +2.1
+  (error against reference minus against publication), holiday week minus neighbours: -1.7 points, 95% interval over weeks [-3.6, +0.0]
+  horizon 1: +1.5 points [-1.5, +3.9] (1,478 triples)
+  horizon 2: -1.6 points [-4.8, +1.3] (1,428 triples)
+  horizon 3: -3.2 points [-6.2, -0.5] (1,450 triples)
+  horizon 4: -3.3 points [-5.0, -1.4] (1,466 triples)
+  by week: 23 May 2020 +2.7; 06 Jun 2020 +0.9; 26 Dec 2020 -0.6; 02 Jan 2021 -1.8; 03 Apr 2021 -2.7; 10 Apr 2021 -7.8; 15 May 2021 -0.0; 29 May 2021 -0.2; 16 Apr 2022 -2.8; 23 Apr 2022 -3.5; 28 May 2022 +1.1; 11 Jun 2022 +2.9; 08 Oct 2022 +2.8
+80% interval coverage, holiday week minus neighbours (5,603 triples with quantiles): against publication -5.6, against reference -4.1
+  horizon 1: publication -9.5, reference -10.6
+  horizon 2: publication -3.3, reference -2.1
+  horizon 3: publication -4.9, reference -1.0
+  horizon 4: publication -4.4, reference -2.4
+
+==============================================================================
+P7. National holiday weeks by kind of model
+==============================================================================
+baselines: 4 models, 1,337 triples; (error against reference minus against publication), holiday week minus neighbours -1.9 [-3.5, -0.2]
+  by horizon: 1 wk +1.2; 2 wk -2.2; 3 wk -5.0; 4 wk -1.6
+ensembles: 4 models, 829 triples; (error against reference minus against publication), holiday week minus neighbours -3.9 [-8.4, -0.8]
+  by horizon: 1 wk +1.6; 2 wk -3.9; 3 wk -6.3; 4 wk -6.7
+other models: 30 models, 3,656 triples; (error against reference minus against publication), holiday week minus neighbours -1.1 [-3.1, +0.5]
+  by horizon: 1 wk +1.6; 2 wk -0.8; 3 wk -1.8; 4 wk -3.2
+baseline models: EuroCOVIDhub-baseline, KIT-baseline, KIT-extrapolation_baseline, KIT-time_series_baseline
+
+==============================================================================
+P8. A worked example: the hub's median ensemble for Germany, week ending Saturday 10 April 2021 (Easter Monday)
+==============================================================================
+counts: publication 107,223, reporting 116,478, reference 122,997, onset only 79,655
+  2 wk ahead (made 2021-03-29): median 166,442; error against publication 44.0%, reporting 35.7%, reference 30.2%
+  3 wk ahead (made 2021-03-22): median 198,266; error against publication 61.5%, reporting 53.2%, reference 47.7%
+  4 wk ahead (made 2021-03-15): median 140,487; error against publication 27.0%, reporting 18.7%, reference 13.3%
+  neighbour week ending 2021-03-27: publication 109,442, reference 117,745, log(publication/reference) -7.3
+  neighbour week ending 2021-04-17: publication 142,664, reference 139,485, log(publication/reference) +2.3
+  holiday week log(publication/reference) -13.7
