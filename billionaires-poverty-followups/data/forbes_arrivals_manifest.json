@@ -1,0 +1,350 @@
+{
+  "retrieved_utc": "2026-11-13T09:53:03+00:00",
+  "url_pattern": "https://www.forbes.com/forbesapi/person/billionaires/{year}/position/true.json?limit=5000",
+  "flow_edges_musd": [
+    0,
+    1000,
+    1100,
+    1200,
+    1300,
+    1400,
+    1500,
+    1750,
+    2000,
+    2500,
+    3000,
+    4000,
+    5000,
+    7500,
+    10000,
+    20000
+  ],
+  "change": 0.1,
+  "generic_surnames": 8,
+  "years": {
+    "2010": {
+      "url": "https://www.forbes.com/forbesapi/person/billionaires/2010/position/true.json?limit=5000",
+      "bytes": 2034688,
+      "sha256": "2463c58163e042cd7aee8cf890d52676600ea1d529b37d7d6ca9db98d0ed40d9",
+      "same_as_part6": true,
+      "n_persons": 1011,
+      "fields": {
+        "n": 1011,
+        "familyList_nonempty": 0.03066271018793274,
+        "familyList_types": {
+          "bool": 31
+        },
+        "familyList_element_types": {},
+        "familyList_dict_keys": {},
+        "lastName_filled": 1.0,
+        "organization_filled": 0.14737883283877348,
+        "source_filled": 1.0,
+        "family_entries": 0.11869436201780416
+      }
+    },
+    "2011": {
+      "url": "https://www.forbes.com/forbesapi/person/billionaires/2011/position/true.json?limit=5000",
+      "bytes": 2441602,
+      "sha256": "a9c0520e96f33273aac15ce1db6fb59b6b273d5e44918ccd0d594af47f6b4aa7",
+      "same_as_part6": true,
+      "n_persons": 1209,
+      "fields": {
+        "n": 1209,
+        "familyList_nonempty": 0.09511993382961124,
+        "familyList_types": {
+          "bool": 115
+        },
+        "familyList_element_types": {},
+        "familyList_dict_keys": {},
+        "lastName_filled": 1.0,
+        "organization_filled": 0.13316790736145576,
+        "source_filled": 1.0,
+        "family_entries": 0.11497105045492143
+      }
+    },
+    "2012": {
+      "url": "https://www.forbes.com/forbesapi/person/billionaires/2012/position/true.json?limit=5000",
+      "bytes": 2692907,
+      "sha256": "0f7b193bf104e055a04c4141b3d42f34938cea751d6f811e50f20a4dc60fe3a9",
+      "same_as_part6": true,
+      "n_persons": 1226,
+      "fields": {
+        "n": 1226,
+        "familyList_nonempty": 0.38580750407830344,
+        "familyList_types": {
+          "bool": 473
+        },
+        "familyList_element_types": {},
+        "familyList_dict_keys": {},
+        "lastName_filled": 1.0,
+        "organization_filled": 0.16965742251223492,
+        "source_filled": 1.0,
+        "family_entries": 0.11827079934747145
+      }
+    },
+    "2013": {
+      "url": "https://www.forbes.com/forbesapi/person/billionaires/2013/position/true.json?limit=5000",
+      "bytes": 3285851,
+      "sha256": "3189355f5e34c4d1773d6f129c038cfb57f3ffd826cc52d897b84cf214e62476",
+      "same_as_part6": true,
+      "n_persons": 1426,
+      "fields": {
+        "n": 1426,
+        "familyList_nonempty": 0.593969144460028,
+        "familyList_types": {
+          "bool": 847
+        },
+        "familyList_element_types": {},
+        "familyList_dict_keys": {},
+        "lastName_filled": 1.0,
+        "organization_filled": 0.18583450210378682,
+        "source_filled": 1.0,
+        "family_entries": 0.11570827489481066
+      }
+    },
+    "2014": {
+      "url": "https://www.forbes.com/forbesapi/person/billionaires/2014/position/true.json?limit=5000",
+      "bytes": 3841326,
+      "sha256": "186e483dd5d28275931bb324126fdcc3dd4989e220a2519bc180d8e4be14caf8",
+      "same_as_part6": true,
+      "n_persons": 1645,
+      "fields": {
+        "n": 1645,
+        "familyList_nonempty": 0.7404255319148936,
+        "familyList_types": {
+          "bool": 1218
+        },
+        "familyList_element_types": {},
+        "familyList_dict_keys": {},
+        "lastName_filled": 1.0,
+        "organization_filled": 0.18358662613981763,
+        "source_filled": 0.9993920972644377,
+        "family_entries": 0.11732522796352583
+      }
+    },
+    "2015": {
+      "url": "https://www.forbes.com/forbesapi/person/billionaires/2015/position/true.json?limit=5000",
+      "bytes": 4284515,
+      "sha256": "4dde07a8ef6fcc38102b651961fc928105fd525cd74901f5ea64c6f895a98ca4",
+      "same_as_part6": false,
+      "n_persons": 1826,
+      "fields": {
+        "n": 1826,
+        "familyList_nonempty": 1.0,
+        "familyList_types": {
+          "bool": 1826
+        },
+        "familyList_element_types": {},
+        "familyList_dict_keys": {},
+        "lastName_filled": 1.0,
+        "organization_filled": 0.1741511500547645,
+        "source_filled": 1.0,
+        "family_entries": 0.12924424972617743
+      }
+    },
+    "2016": {
+      "url": "https://www.forbes.com/forbesapi/person/billionaires/2016/position/true.json?limit=5000",
+      "bytes": 4321686,
+      "sha256": "152669acf01ec900b997ebf9bf9e59d1f71d6a06be8da593601fa3f2f6f19df3",
+      "same_as_part6": true,
+      "n_persons": 1811,
+      "fields": {
+        "n": 1811,
+        "familyList_nonempty": 1.0,
+        "familyList_types": {
+          "bool": 1811
+        },
+        "familyList_element_types": {},
+        "familyList_dict_keys": {},
+        "lastName_filled": 1.0,
+        "organization_filled": 0.176697956929873,
+        "source_filled": 1.0,
+        "family_entries": 0.12921038100496962
+      }
+    },
+    "2017": {
+      "url": "https://www.forbes.com/forbesapi/person/billionaires/2017/position/true.json?limit=5000",
+      "bytes": 4505361,
+      "sha256": "301fdabdedd4d3c89cd1447dddb9c65e928280b4605ac04b682c019ce0bdad41",
+      "same_as_part6": true,
+      "n_persons": 2043,
+      "fields": {
+        "n": 2043,
+        "familyList_nonempty": 1.0,
+        "familyList_types": {
+          "bool": 2043
+        },
+        "familyList_element_types": {},
+        "familyList_dict_keys": {},
+        "lastName_filled": 1.0,
+        "organization_filled": 0.1693587860988742,
+        "source_filled": 1.0,
+        "family_entries": 0.12383749388154675
+      }
+    },
+    "2018": {
+      "url": "https://www.forbes.com/forbesapi/person/billionaires/2018/position/true.json?limit=5000",
+      "bytes": 4746826,
+      "sha256": "557b5ba33a2335712d17e5f2bcb86fcbf2c0191d21313e1f9352fd9f32fb6bb0",
+      "same_as_part6": true,
+      "n_persons": 2208,
+      "fields": {
+        "n": 2208,
+        "familyList_nonempty": 1.0,
+        "familyList_types": {
+          "bool": 2208
+        },
+        "familyList_element_types": {},
+        "familyList_dict_keys": {},
+        "lastName_filled": 1.0,
+        "organization_filled": 0.15579710144927536,
+        "source_filled": 1.0,
+        "family_entries": 0.11911231884057971
+      }
+    },
+    "2019": {
+      "url": "https://www.forbes.com/forbesapi/person/billionaires/2019/position/true.json?limit=5000",
+      "bytes": 4576855,
+      "sha256": "729f21ab145d6e7be9cb709c8da9d730b7cc1c7bc02773557fc7440f77a06218",
+      "same_as_part6": true,
+      "n_persons": 2153,
+      "fields": {
+        "n": 2153,
+        "familyList_nonempty": 1.0,
+        "familyList_types": {
+          "bool": 2153
+        },
+        "familyList_element_types": {},
+        "familyList_dict_keys": {},
+        "lastName_filled": 1.0,
+        "organization_filled": 0.15977705527171387,
+        "source_filled": 1.0,
+        "family_entries": 0.11286576869484441
+      }
+    },
+    "2020": {
+      "url": "https://www.forbes.com/forbesapi/person/billionaires/2020/position/true.json?limit=5000",
+      "bytes": 4293502,
+      "sha256": "89d5abda6162e56b63c508809449696287f616c0a81649899a0ac613f80838e1",
+      "same_as_part6": true,
+      "n_persons": 2094,
+      "fields": {
+        "n": 2094,
+        "familyList_nonempty": 1.0,
+        "familyList_types": {
+          "bool": 2094
+        },
+        "familyList_element_types": {},
+        "familyList_dict_keys": {},
+        "lastName_filled": 1.0,
+        "organization_filled": 0.1571155682903534,
+        "source_filled": 1.0,
+        "family_entries": 0.1265520534861509
+      }
+    },
+    "2021": {
+      "url": "https://www.forbes.com/forbesapi/person/billionaires/2021/position/true.json?limit=5000",
+      "bytes": 5447658,
+      "sha256": "7b9d797d2207f6ccfe4f072facd1874822cb4b4b04087da253502a951a2c8c17",
+      "same_as_part6": true,
+      "n_persons": 2754,
+      "fields": {
+        "n": 2754,
+        "familyList_nonempty": 1.0,
+        "familyList_types": {
+          "bool": 2754
+        },
+        "familyList_element_types": {},
+        "familyList_dict_keys": {},
+        "lastName_filled": 1.0,
+        "organization_filled": 0.12854030501089325,
+        "source_filled": 1.0,
+        "family_entries": 0.1270878721859114
+      }
+    },
+    "2022": {
+      "url": "https://www.forbes.com/forbesapi/person/billionaires/2022/position/true.json?limit=5000",
+      "bytes": 5119091,
+      "sha256": "18ce71961ef8825e1eb3ed50fc0ed1eafef346fcbcab1356575debc5addfcf38",
+      "same_as_part6": true,
+      "n_persons": 2668,
+      "fields": {
+        "n": 2668,
+        "familyList_nonempty": 1.0,
+        "familyList_types": {
+          "bool": 2668
+        },
+        "familyList_element_types": {},
+        "familyList_dict_keys": {},
+        "lastName_filled": 1.0,
+        "organization_filled": 0.12893553223388307,
+        "source_filled": 1.0,
+        "family_entries": 0.12743628185907047
+      }
+    },
+    "2023": {
+      "url": "https://www.forbes.com/forbesapi/person/billionaires/2023/position/true.json?limit=5000",
+      "bytes": 5081220,
+      "sha256": "c6f3196647bcde24ff2570eec85e8a1aca9ab4b25100aed122ba633649d7e7b1",
+      "same_as_part6": true,
+      "n_persons": 2640,
+      "fields": {
+        "n": 2640,
+        "familyList_nonempty": 1.0,
+        "familyList_types": {
+          "bool": 2640
+        },
+        "familyList_element_types": {},
+        "familyList_dict_keys": {},
+        "lastName_filled": 1.0,
+        "organization_filled": 0.12272727272727273,
+        "source_filled": 1.0,
+        "family_entries": 0.12878787878787878
+      }
+    },
+    "2024": {
+      "url": "https://www.forbes.com/forbesapi/person/billionaires/2024/position/true.json?limit=5000",
+      "bytes": 5396261,
+      "sha256": "aa96823e9c5c381ef5ea50ec48d698ee8cc31106be840940df8a4cdaf96904d8",
+      "same_as_part6": true,
+      "n_persons": 2781,
+      "fields": {
+        "n": 2781,
+        "familyList_nonempty": 1.0,
+        "familyList_types": {
+          "bool": 2781
+        },
+        "familyList_element_types": {},
+        "familyList_dict_keys": {},
+        "lastName_filled": 1.0,
+        "organization_filled": 0.12010068320747933,
+        "source_filled": 1.0,
+        "family_entries": 0.13160733549083065
+      }
+    },
+    "2025": {
+      "url": "https://www.forbes.com/forbesapi/person/billionaires/2025/position/true.json?limit=5000",
+      "bytes": 5842057,
+      "sha256": "c830736ddd465baef2800abde0b5ea91330daa3aea38b93f414ce5776edc66f0",
+      "same_as_part6": true,
+      "n_persons": 3028,
+      "fields": {
+        "n": 3028,
+        "familyList_nonempty": 1.0,
+        "familyList_types": {
+          "bool": 3028
+        },
+        "familyList_element_types": {},
+        "familyList_dict_keys": {},
+        "lastName_filled": 1.0,
+        "organization_filled": 0.09940554821664464,
+        "source_filled": 1.0,
+        "family_entries": 0.13110964332893
+      }
+    }
+  },
+  "generic_labels": 138,
+  "rare_surname_pairs": 3154,
+  "arrivals_sha256": "ca0035445f318671e73f3c7a773129de3ba331890b0d2be46e232e6b250ecee5",
+  "n_years_ok": 16
+}
