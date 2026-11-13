@@ -1,0 +1,411 @@
+{
+ "citibike / operator reports": {
+  "months": 152,
+  "split": {
+   "month": "2015-06",
+   "reduction": 0.19206841708762845,
+   "left": 24,
+   "right": 128,
+   "median_left": -0.086452,
+   "median_right": 1.15e-05
+  },
+  "regime_change": false,
+  "segment_evaluated": 116,
+  "pred_full": 0.14831121951064508,
+  "pred_segment": 0.05318021040228871,
+  "observed_segment": 0.1,
+  "within_segment_rule": true,
+  "within_full_rule": true,
+  "err_segment_rule": 0.6314838437634304,
+  "err_full_rule": 0.39414271444551313,
+  "windows": [
+   {
+    "start": "2018-01",
+    "n_trail": 31,
+    "n_expanding": 38,
+    "n_ahead": 24,
+    "pred_trailing": 0.17484786203971914,
+    "pred_expanding": 0.17131489895800522,
+    "observed": 0.2511886
+   },
+   {
+    "start": "2019-01",
+    "n_trail": 31,
+    "n_expanding": 50,
+    "n_ahead": 24,
+    "pred_trailing": 0.07363411667959485,
+    "pred_expanding": 0.175351339982612,
+    "observed": 0.1258925
+   },
+   {
+    "start": "2020-01",
+    "n_trail": 36,
+    "n_expanding": 62,
+    "n_ahead": 24,
+    "pred_trailing": 0.07849516038700477,
+    "pred_expanding": 0.1696860112251003,
+    "observed": 0.0398107
+   },
+   {
+    "start": "2021-01",
+    "n_trail": 36,
+    "n_expanding": 74,
+    "n_ahead": 24,
+    "pred_trailing": 0.07849516038700477,
+    "pred_expanding": 0.16836326492328768,
+    "observed": 0.3162278
+   },
+   {
+    "start": "2022-01",
+    "n_trail": 36,
+    "n_expanding": 86,
+    "n_ahead": 23,
+    "pred_trailing": 0.06209747191786441,
+    "pred_expanding": 0.16924532972019213,
+    "observed": 0.0316228
+   },
+   {
+    "start": "2023-01",
+    "n_trail": 36,
+    "n_expanding": 98,
+    "n_ahead": 23,
+    "pred_trailing": 0.11537769581433555,
+    "pred_expanding": 0.1713148989580051,
+    "observed": 0.0039811
+   },
+   {
+    "start": "2024-01",
+    "n_trail": 35,
+    "n_expanding": 109,
+    "n_ahead": 23,
+    "pred_trailing": 0.1309379914079023,
+    "pred_expanding": 0.16891466510952713,
+    "observed": 0.0251189
+   }
+  ],
+  "test": true
+ },
+ "citibike / DOT table": {
+  "months": 160,
+  "split": {
+   "month": "2015-06",
+   "reduction": 0.417278488761595,
+   "left": 24,
+   "right": 136,
+   "median_left": -0.0630005,
+   "median_right": 2.4999999999999998e-06
+  },
+  "regime_change": false,
+  "segment_evaluated": 124,
+  "pred_full": 0.10688167135267757,
+  "pred_segment": 0.007008425631848225,
+  "observed_segment": 0.0063096,
+  "within_segment_rule": true,
+  "within_full_rule": false,
+  "err_segment_rule": 0.10504080382630236,
+  "err_full_rule": 2.8296500642204645,
+  "windows": [
+   {
+    "start": "2017-01",
+    "n_trail": 31,
+    "n_expanding": 31,
+    "n_ahead": 24,
+    "pred_trailing": 0.13274523606794753,
+    "pred_expanding": 0.13274523606794753,
+    "observed": 0.0158489
+   },
+   {
+    "start": "2018-01",
+    "n_trail": 36,
+    "n_expanding": 43,
+    "n_ahead": 24,
+    "pred_trailing": 0.13157864493213467,
+    "pred_expanding": 0.13035943814894113,
+    "observed": 0.0158489
+   },
+   {
+    "start": "2019-01",
+    "n_trail": 36,
+    "n_expanding": 55,
+    "n_ahead": 24,
+    "pred_trailing": 0.020629734412811795,
+    "pred_expanding": 0.13005309679951227,
+    "observed": 0.0158489
+   },
+   {
+    "start": "2020-01",
+    "n_trail": 36,
+    "n_expanding": 67,
+    "n_ahead": 24,
+    "pred_trailing": 0.02513887107454471,
+    "pred_expanding": 0.12949388926537786,
+    "observed": 0.0050119
+   },
+   {
+    "start": "2021-01",
+    "n_trail": 36,
+    "n_expanding": 79,
+    "n_ahead": 24,
+    "pred_trailing": 0.02513887107454471,
+    "pred_expanding": 0.12868132806320554,
+    "observed": 0.0007943
+   },
+   {
+    "start": "2022-01",
+    "n_trail": 36,
+    "n_expanding": 91,
+    "n_ahead": 24,
+    "pred_trailing": 0.009150378139088255,
+    "pred_expanding": 0.12409618999042482,
+    "observed": 0.0019953
+   },
+   {
+    "start": "2023-01",
+    "n_trail": 36,
+    "n_expanding": 103,
+    "n_ahead": 24,
+    "pred_trailing": 0.004231023890715613,
+    "pred_expanding": 0.11906355917368339,
+    "observed": 0.0025119
+   },
+   {
+    "start": "2024-01",
+    "n_trail": 36,
+    "n_expanding": 115,
+    "n_ahead": 24,
+    "pred_trailing": 0.0014784060794266196,
+    "pred_expanding": 0.11569442234819394,
+    "observed": 0.0050119
+   }
+  ],
+  "test": false
+ },
+ "chicago / vehicles": {
+  "months": 84,
+  "split": {
+   "month": "2021-08",
+   "reduction": 0.0392718396905023,
+   "left": 24,
+   "right": 60,
+   "median_left": -0.059400999999999995,
+   "median_right": -0.0488935
+  },
+  "regime_change": false,
+  "segment_evaluated": 48,
+  "pred_full": 0.0356804443128419,
+  "pred_segment": 0.027626607864296604,
+  "observed_segment": 0.0316228,
+  "within_segment_rule": true,
+  "within_full_rule": true,
+  "err_segment_rule": 0.13509901803389032,
+  "err_full_rule": 0.1207243809379319,
+  "windows": [
+   {
+    "start": "2024-01",
+    "n_trail": 34,
+    "n_expanding": 41,
+    "n_ahead": 24,
+    "pred_trailing": 0.03742582417749729,
+    "pred_expanding": 0.03751904497213587,
+    "observed": 0.0199526
+   }
+  ],
+  "test": true
+ },
+ "chicago / drivers": {
+  "months": 84,
+  "split": {
+   "month": "2023-05",
+   "reduction": 0.45900528345631675,
+   "left": 45,
+   "right": 39,
+   "median_left": 0.001901,
+   "median_right": 0.007429
+  },
+  "regime_change": false,
+  "segment_evaluated": 27,
+  "pred_full": 0.007292628791493283,
+  "pred_segment": 0.006609460789700816,
+  "observed_segment": 0.0063096,
+  "within_segment_rule": true,
+  "within_full_rule": true,
+  "err_segment_rule": 0.046429792502737245,
+  "err_full_rule": 0.1447918003171306,
+  "windows": [
+   {
+    "start": "2024-01",
+    "n_trail": 34,
+    "n_expanding": 41,
+    "n_ahead": 24,
+    "pred_trailing": 0.008070209591626631,
+    "pred_expanding": 0.007112584984745873,
+    "observed": 0.0079433
+   }
+  ],
+  "test": true
+ },
+ "TLC yellow / monthly report": {
+  "months": 93,
+  "split": {
+   "month": "2023-10",
+   "reduction": 0.3013629194408659,
+   "left": 57,
+   "right": 36,
+   "median_left": 0.000176,
+   "median_right": 0.010860999999999999
+  },
+  "regime_change": false,
+  "segment_evaluated": 24,
+  "pred_full": 0.05246272269750851,
+  "pred_segment": 0.052480441478922946,
+  "observed_segment": 0.0630957,
+  "within_segment_rule": true,
+  "within_full_rule": true,
+  "err_segment_rule": 0.184212064497332,
+  "err_full_rule": 0.18454974788475145,
+  "windows": [
+   {
+    "start": "2023-01",
+    "n_trail": 36,
+    "n_expanding": 36,
+    "n_ahead": 24,
+    "pred_trailing": 0.006384531710612595,
+    "pred_expanding": 0.006384531710612595,
+    "observed": 0.0125893
+   },
+   {
+    "start": "2024-01",
+    "n_trail": 36,
+    "n_expanding": 48,
+    "n_ahead": 24,
+    "pred_trailing": 0.040943461352771715,
+    "pred_expanding": 0.00639566014153814,
+    "observed": 0.0316228
+   }
+  ],
+  "test": true
+ },
+ "TLC green / monthly report": {
+  "months": 93,
+  "split": {
+   "month": "2021-01",
+   "reduction": 0.00459224325430152,
+   "left": 24,
+   "right": 69,
+   "median_left": 0.0004075,
+   "median_right": 8.1e-05
+  },
+  "regime_change": false,
+  "segment_evaluated": 57,
+  "pred_full": 0.021796937371441394,
+  "pred_segment": 0.025294007877874503,
+  "observed_segment": 0.0316228,
+  "within_segment_rule": true,
+  "within_full_rule": true,
+  "err_segment_rule": 0.2233108545004839,
+  "err_full_rule": 0.37210890703333765,
+  "windows": [
+   {
+    "start": "2023-01",
+    "n_trail": 36,
+    "n_expanding": 36,
+    "n_ahead": 24,
+    "pred_trailing": 0.002136713969730031,
+    "pred_expanding": 0.002136713969730031,
+    "observed": 0.0251189
+   },
+   {
+    "start": "2024-01",
+    "n_trail": 36,
+    "n_expanding": 48,
+    "n_ahead": 24,
+    "pred_trailing": 0.002136713969730031,
+    "pred_expanding": 0.0018101596811728182,
+    "observed": 0.0251189
+   }
+  ],
+  "test": true
+ },
+ "TLC fhv / monthly report": {
+  "months": 91,
+  "split": {
+   "month": "2022-02",
+   "reduction": 0.5606496699220288,
+   "left": 36,
+   "right": 55,
+   "median_left": 0.0302035,
+   "median_right": -0.149251
+  },
+  "regime_change": true,
+  "segment_evaluated": 43,
+  "pred_full": 0.24586878430931347,
+  "pred_segment": 0.26473735245303054,
+  "observed_segment": 0.3981072,
+  "within_segment_rule": true,
+  "within_full_rule": true,
+  "err_segment_rule": 0.4079831040703143,
+  "err_full_rule": 0.4819233192418841,
+  "windows": [
+   {
+    "start": "2023-01",
+    "n_trail": 35,
+    "n_expanding": 35,
+    "n_ahead": 24,
+    "pred_trailing": 0.16872864739697302,
+    "pred_expanding": 0.16872864739697302,
+    "observed": 0.3162278
+   },
+   {
+    "start": "2024-01",
+    "n_trail": 36,
+    "n_expanding": 47,
+    "n_ahead": 24,
+    "pred_trailing": 0.17182993237059785,
+    "pred_expanding": 0.16960226983674387,
+    "observed": 0.3981072
+   }
+  ],
+  "test": true
+ },
+ "TLC fhvhv / monthly report": {
+  "months": 91,
+  "split": {
+   "month": "2021-02",
+   "reduction": 0.014858575008951047,
+   "left": 24,
+   "right": 67,
+   "median_left": 5.35e-05,
+   "median_right": 2e-06
+  },
+  "regime_change": false,
+  "segment_evaluated": 55,
+  "pred_full": 0.0006843657148869475,
+  "pred_segment": 0.000439703302156369,
+  "observed_segment": 0.0005012,
+  "within_segment_rule": true,
+  "within_full_rule": true,
+  "err_segment_rule": 0.13090503684204133,
+  "err_full_rule": 0.3114872226024373,
+  "windows": [
+   {
+    "start": "2023-01",
+    "n_trail": 35,
+    "n_expanding": 35,
+    "n_ahead": 24,
+    "pred_trailing": 0.0011810020674977162,
+    "pred_expanding": 0.0011810020674977162,
+    "observed": 0.0001
+   },
+   {
+    "start": "2024-01",
+    "n_trail": 36,
+    "n_expanding": 47,
+    "n_ahead": 24,
+    "pred_trailing": 0.000731732153358533,
+    "pred_expanding": 0.00087381799850339,
+    "observed": 0.0001
+   }
+  ],
+  "test": true
+ }
+}

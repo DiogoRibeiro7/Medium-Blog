@@ -1,0 +1,79 @@
+Regime split and forward-in-time test of the p95 rule. Settings and hypotheses: PLAN.md.
+
+citibike / operator reports  [test]
+  152 months; split at 2015-06 (24 before, 128 from), absolute deviation reduced by 19.2%; regime change: no
+  segment medians of r: -8.28% before, +0.00% from the split; evaluated months in the later segment 116
+  later segment: segment rule 5.32%, full-history rule 14.83%, observed 10.00%
+  within a factor of two: segment rule yes, full-history rule yes; |log(obs/pred)|: segment 0.631, full 0.394
+    window 2018-01: trailing 17.48%, expanding 17.13%, observed over the next 24 months 25.12%
+    window 2019-01: trailing 7.36%, expanding 17.54%, observed over the next 24 months 12.59%
+    window 2020-01: trailing 7.85%, expanding 16.97%, observed over the next 24 months 3.98%
+    window 2021-01: trailing 7.85%, expanding 16.84%, observed over the next 24 months 31.62%
+    window 2022-01: trailing 6.21%, expanding 16.92%, observed over the next 23 months 3.16%
+    window 2023-01: trailing 11.54%, expanding 17.13%, observed over the next 23 months 0.40%
+    window 2024-01: trailing 13.09%, expanding 16.89%, observed over the next 23 months 2.51%
+
+citibike / DOT table  [motivating pair, reported]
+  160 months; split at 2015-06 (24 before, 136 from), absolute deviation reduced by 41.7%; regime change: no
+  segment medians of r: -6.11% before, +0.00% from the split; evaluated months in the later segment 124
+  later segment: segment rule 0.70%, full-history rule 10.69%, observed 0.63%
+  within a factor of two: segment rule yes, full-history rule no; |log(obs/pred)|: segment 0.105, full 2.830
+    window 2017-01: trailing 13.27%, expanding 13.27%, observed over the next 24 months 1.58%
+    window 2018-01: trailing 13.16%, expanding 13.04%, observed over the next 24 months 1.58%
+    window 2019-01: trailing 2.06%, expanding 13.01%, observed over the next 24 months 1.58%
+    window 2020-01: trailing 2.51%, expanding 12.95%, observed over the next 24 months 0.50%
+    window 2021-01: trailing 2.51%, expanding 12.87%, observed over the next 24 months 0.08%
+    window 2022-01: trailing 0.92%, expanding 12.41%, observed over the next 24 months 0.20%
+    window 2023-01: trailing 0.42%, expanding 11.91%, observed over the next 24 months 0.25%
+    window 2024-01: trailing 0.15%, expanding 11.57%, observed over the next 24 months 0.50%
+
+chicago / vehicles  [test]
+  84 months; split at 2021-08 (24 before, 60 from), absolute deviation reduced by 3.9%; regime change: no
+  segment medians of r: -5.77% before, -4.77% from the split; evaluated months in the later segment 48
+  later segment: segment rule 2.76%, full-history rule 3.57%, observed 3.16%
+  within a factor of two: segment rule yes, full-history rule yes; |log(obs/pred)|: segment 0.135, full 0.121
+    window 2024-01: trailing 3.74%, expanding 3.75%, observed over the next 24 months 2.00%
+
+chicago / drivers  [test]
+  84 months; split at 2023-05 (45 before, 39 from), absolute deviation reduced by 45.9%; regime change: no
+  segment medians of r: +0.19% before, +0.75% from the split; evaluated months in the later segment 27
+  later segment: segment rule 0.66%, full-history rule 0.73%, observed 0.63%
+  within a factor of two: segment rule yes, full-history rule yes; |log(obs/pred)|: segment 0.046, full 0.145
+    window 2024-01: trailing 0.81%, expanding 0.71%, observed over the next 24 months 0.79%
+
+TLC yellow / monthly report  [test]
+  93 months; split at 2023-10 (57 before, 36 from), absolute deviation reduced by 30.1%; regime change: no
+  segment medians of r: +0.02% before, +1.09% from the split; evaluated months in the later segment 24
+  later segment: segment rule 5.25%, full-history rule 5.25%, observed 6.31%
+  within a factor of two: segment rule yes, full-history rule yes; |log(obs/pred)|: segment 0.184, full 0.185
+    window 2023-01: trailing 0.64%, expanding 0.64%, observed over the next 24 months 1.26%
+    window 2024-01: trailing 4.09%, expanding 0.64%, observed over the next 24 months 3.16%
+
+TLC green / monthly report  [test]
+  93 months; split at 2021-01 (24 before, 69 from), absolute deviation reduced by 0.5%; regime change: no
+  segment medians of r: +0.04% before, +0.01% from the split; evaluated months in the later segment 57
+  later segment: segment rule 2.53%, full-history rule 2.18%, observed 3.16%
+  within a factor of two: segment rule yes, full-history rule yes; |log(obs/pred)|: segment 0.223, full 0.372
+    window 2023-01: trailing 0.21%, expanding 0.21%, observed over the next 24 months 2.51%
+    window 2024-01: trailing 0.21%, expanding 0.18%, observed over the next 24 months 2.51%
+
+TLC fhv / monthly report  [test]
+  91 months; split at 2022-02 (36 before, 55 from), absolute deviation reduced by 56.1%; regime change: yes
+  segment medians of r: +3.07% before, -13.86% from the split; evaluated months in the later segment 43
+  later segment: segment rule 26.47%, full-history rule 24.59%, observed 39.81%
+  within a factor of two: segment rule yes, full-history rule yes; |log(obs/pred)|: segment 0.408, full 0.482
+    window 2023-01: trailing 16.87%, expanding 16.87%, observed over the next 24 months 31.62%
+    window 2024-01: trailing 17.18%, expanding 16.96%, observed over the next 24 months 39.81%
+
+TLC fhvhv / monthly report  [test]
+  91 months; split at 2021-02 (24 before, 67 from), absolute deviation reduced by 1.5%; regime change: no
+  segment medians of r: +0.01% before, +0.00% from the split; evaluated months in the later segment 55
+  later segment: segment rule 0.04%, full-history rule 0.07%, observed 0.05%
+  within a factor of two: segment rule yes, full-history rule yes; |log(obs/pred)|: segment 0.131, full 0.311
+    window 2023-01: trailing 0.12%, expanding 0.12%, observed over the next 24 months 0.01%
+    window 2024-01: trailing 0.07%, expanding 0.09%, observed over the next 24 months 0.01%
+
+H1 (segment rule within a factor of two on the later segment, all 7 test pairs): supported (7 of 7)
+H2 (segment rule closer than the full-history rule in every test pair with a regime change): supported (1 of 1: TLC fhv / monthly report)
+H3a (trailing rule within a factor of two in at least two thirds of the 17 forward windows of the test pairs): not supported (9 of 17; expanding rule 7 of 17)
+H3b (trailing rule closer than the expanding rule in more than half of the windows where they differ): supported (11 of 13)
