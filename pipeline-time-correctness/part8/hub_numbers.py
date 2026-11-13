@@ -246,6 +246,22 @@ def main() -> None:
         print("  by horizon: " + "; ".join(f"{int(h)} wk {pts(g3.d_gap.mean())}" for h, g3 in g2.groupby("horizon")))
     print("baseline models: " + ", ".join(sorted(J[J.kind == "baselines"].model.unique())))
 
+    section("P8. A worked example: the hub's median ensemble for Germany, week ending Saturday 10 April 2021 (Easter Monday)")
+    wk = pd.Timestamp("2021-04-10")
+    row = w[(w.location == "GM") & (w.week == wk)].iloc[0]
+    print(f"counts: publication {row.publication:,.0f}, reporting {row.reporting:,.0f}, reference {row.reference:,.0f}, "
+          f"onset only {row.onset:,.0f}")
+    ex = s[(s.location == "GM") & (s.week == wk) & (s.model == "KITCOVIDhub-median_ensemble")].sort_values("horizon")
+    for _, r in ex.iterrows():
+        print(f"  {int(r.horizon)} wk ahead (made {r.forecast_date.date()}): median {r['median']:,.0f}; error against "
+              f"publication {pct(r.e_publication)}, reporting {pct(r.e_reporting)}, reference {pct(r.e_reference)}")
+    nb = [pd.Timestamp("2021-03-27"), pd.Timestamp("2021-04-17")]
+    for n in nb:
+        rr = w[(w.location == "GM") & (w.week == n)].iloc[0]
+        print(f"  neighbour week ending {n.date()}: publication {rr.publication:,.0f}, reference {rr.reference:,.0f}, "
+              f"log(publication/reference) {pts(np.log(rr.publication / rr.reference))}")
+    print(f"  holiday week log(publication/reference) {pts(np.log(row.publication / row.reference))}")
+
 
 if __name__ == "__main__":
     main()

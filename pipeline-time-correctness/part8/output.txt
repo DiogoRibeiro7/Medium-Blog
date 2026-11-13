@@ -130,3 +130,14 @@ ensembles: 4 models, 829 triples; (error against reference minus against publica
 other models: 30 models, 3,656 triples; (error against reference minus against publication), holiday week minus neighbours -1.1 [-3.1, +0.5]
   by horizon: 1 wk +1.6; 2 wk -0.8; 3 wk -1.8; 4 wk -3.2
 baseline models: EuroCOVIDhub-baseline, KIT-baseline, KIT-extrapolation_baseline, KIT-time_series_baseline
+
+==============================================================================
+P8. A worked example: the hub's median ensemble for Germany, week ending Saturday 10 April 2021 (Easter Monday)
+==============================================================================
+counts: publication 107,223, reporting 116,478, reference 122,997, onset only 79,655
+  2 wk ahead (made 2021-03-29): median 166,442; error against publication 44.0%, reporting 35.7%, reference 30.2%
+  3 wk ahead (made 2021-03-22): median 198,266; error against publication 61.5%, reporting 53.2%, reference 47.7%
+  4 wk ahead (made 2021-03-15): median 140,487; error against publication 27.0%, reporting 18.7%, reference 13.3%
+  neighbour week ending 2021-03-27: publication 109,442, reference 117,745, log(publication/reference) -7.3
+  neighbour week ending 2021-04-17: publication 142,664, reference 139,485, log(publication/reference) +2.3
+  holiday week log(publication/reference) -13.7
