@@ -395,6 +395,15 @@ def run_split(df, name, train_last, cal_year, t0, t1, cap, qcap, rounds, qrounds
     probs = {"C2": clf.predict(_xmat(test[GAIN_FEATURES]), num_threads=0)}
     for label in ["M0", "M1", "M2"]:
         probs[f"{label}-dist"] = dist_events(r_cal - cal_preds[label], m_test + preds[label])
+    # M2 with a separate error distribution for each holding band: short holdings vary less
+    p_h = np.zeros_like(probs["M2-dist"])
+    h_cal, h_test = cal.hold.to_numpy(), test.hold.to_numpy()
+    u2 = r_cal - cal_preds["M2"]
+    for hb in pd.unique(h_test):
+        sel_t, sel_c = h_test == hb, h_cal == hb
+        u = u2[sel_c] if sel_c.sum() >= MONDRIAN_MIN else u2
+        p_h[sel_t] = dist_events(u, m_test[sel_t] + preds["M2"][sel_t])
+    probs["M2-dist-h"] = p_h
     log.append(f"{name} event models in {time.time() - t:.0f}s")
     # metrics and coverage by group
     met, cov, ev = [], [], []
