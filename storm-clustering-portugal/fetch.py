@@ -24,6 +24,8 @@ Outputs in --out:
   qc_codes.csv        how often each quality code appeared for wind speed, and whether
                       it was accepted
   nao_monthly.csv     year, month, NAO index
+  cpc_tele_index_nh.txt  CPC monthly teleconnection indices, verbatim
+  cpc_nao_daily.txt      CPC daily NAO index, verbatim (first line says which file)
   fetch_log.txt       time, HTTP status, bytes, SHA-256 and URL of every download
 """
 
@@ -47,6 +49,12 @@ BASE = "https://www.ncei.noaa.gov/oa/global-historical-climatology-network/hourl
 STATION_LISTS = [f"{BASE}/doc/ghcnh-station-list.csv", f"{BASE}/doc/ghcnh-station-list.txt"]
 POR = BASE + "/access/by-station/GHCNh_{sid}_por.psv"
 NAO = "https://www.cpc.ncep.noaa.gov/products/precip/CWlink/pna/norm.nao.monthly.b5001.current.ascii"
+# Saved verbatim and parsed by the analysis: monthly NAO, East Atlantic, Scandinavian and
+# other Northern Hemisphere teleconnection indices (rotated PCA of 500 hPa height), and
+# the daily NAO index. Either daily file name is accepted.
+TELE = "https://www.cpc.ncep.noaa.gov/data/teledoc/tele_index.nh"
+NAO_DAILY = ["https://ftp.cpc.ncep.noaa.gov/cwlinks/norm.daily.nao.cdas.z500.19500101_current.csv",
+             "https://ftp.cpc.ncep.noaa.gov/cwlinks/norm.daily.nao.index.b500101.current.ascii"]
 
 # Mainland Portugal (excludes the Azores and Madeira).
 LAT_MIN, LAT_MAX = 36.8, 42.3
@@ -340,6 +348,14 @@ def main(argv=None) -> int:
             w = csv.writer(fh)
             w.writerow(["year", "month", "nao"])
             w.writerows(parse_nao(nao.decode("ascii", errors="replace")))
+    tele = fetcher.get(TELE)
+    if tele is not None:
+        (out / "cpc_tele_index_nh.txt").write_bytes(tele)
+    for url in NAO_DAILY:
+        daily = fetcher.get(url)
+        if daily is not None:
+            (out / "cpc_nao_daily.txt").write_bytes(f"# {url}\n".encode() + daily)
+            break
     fetcher.write_log()
     failed = [l for l in fetcher.lines if l.split("\t")[1].startswith("failed")]
     print(f"{len(kept)} stations with wind data; {len(rows)} station-days; {len(failed)} downloads failed")

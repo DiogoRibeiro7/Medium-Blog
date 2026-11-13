@@ -48,7 +48,10 @@ jobs:
             echo "Snapshot unchanged."
           else
             git commit -m "Storm clustering in Portugal: NOAA station snapshot ($(date -u +%Y-%m-%d))"
-            git push origin HEAD:${GITHUB_REF_NAME}
+            for i in 1 2 3; do
+              git pull --rebase origin "${GITHUB_REF_NAME}" && git push origin HEAD:"${GITHUB_REF_NAME}" && break
+              sleep 5
+            done
           fi
 
       - name: Fail if the download failed
