@@ -68,6 +68,16 @@ jobs:
           if [ -f analysis.py ]; then python analysis.py > /dev/null; fi
           if [ -f figures.py ]; then python figures.py; fi
 
+      - name: Keep the aggregates as a run artifact (no transactions in them)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: uk-valuation-purchase-price-results
+          path: |
+            uk-valuation-purchase-price/data
+            uk-valuation-purchase-price/results
+          retention-days: 14
+
       - name: Commit the index, results and figures if they changed
         if: always()
         run: |
@@ -78,6 +88,6 @@ jobs:
             echo "Results unchanged; nothing to commit."
           else
             git commit -m "uk-valuation-purchase-price: results from the Price Paid Data ($(date -u +%Y-%m-%d))"
-            git pull --rebase
+            git pull --rebase --autostash
             git push
           fi
