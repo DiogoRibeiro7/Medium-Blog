@@ -1,10 +1,11 @@
 # INE 2021 commuting-source reconciliation: operator-controlled audit
 
-**Status (13 November 2026): independently captured official Arouca and
-Espinho slices have been preserved and checked against 31 of the 136 frozen
-pairs.** All 32 directed source views match the pinned third-party counts;
-the common Arouca–Espinho pair agrees in both directions. The remaining
-**105 pairs** and full-matrix symmetry are **not yet verified** against
+**Status (13 November 2026): independently captured official Arouca, Espinho
+and Santa Maria da Feira slices have been preserved and checked against
+45 of the 136 frozen pairs.** All 48 observed off-diagonal source views
+match the pinned third-party counts; the three reciprocal links among these
+municipalities agree in both directions. The remaining **91 pairs** and
+full-matrix symmetry are **not yet verified** against
 official data. No official full commuting matrix is added; the 136 existing
 undirected pairs remain labelled a third-party extraction attributed to INE.
 
@@ -308,3 +309,47 @@ Neither raw-byte integrity nor agreement with the third-party workbook
 independently authenticates the publisher. The full 136-pair source matrix
 is still unverified, and the observations are **2021 work/study interactions,
 not migration or causal housing spillovers**.
+
+### Third successful probe: Santa Maria da Feira
+
+The next bounded PR run
+[#43412012492](https://github.com/DiogoRibeiro7/Medium-Blog/actions/runs/43412012492)
+selected exactly `start_index=2`, `count=1`, `dimension=Dim2`, corresponding
+to DICO **0109 (Santa Maria da Feira)**. The official 2021 response succeeded.
+Its exact 62,767-byte JSON, original manifest and deterministic offline audit
+are archived together in
+[`data/ine_0012340_pr_run_43412012492/`](data/ine_0012340_pr_run_43412012492/).
+The source SHA-256 is
+`f2062a66f2a3bb9d3f5217c13ecde623c1a76f506374c2516a8b5034a4fd95df`.
+
+The response has 347 distinct `dim_3` codes, a single `2021` period,
+`geocod=0109` throughout, official API success, and all 17 AMP counterparts
+including a zero diagonal. The separate offline numerical audit matches
+**all 16** nonself AMP interactions against the checksummed frozen CSV, with
+no differences. The two previously archived reciprocal slices agree:
+
+| Pair | Arouca / Espinho source | Santa Maria da Feira source |
+| --- | ---: | ---: |
+| Arouca–Santa Maria da Feira | 826 | 826 |
+| Espinho–Santa Maria da Feira | 3,910 | 3,910 |
+
+Together with the previously matched Arouca–Espinho count of 34, the three
+reciprocal links are symmetric. Three 16-pair slices yield
+`3 × 16 − 3 = 45` distinct unordered AMP pairs; **91 of 136 remain**.
+This does not establish symmetry of any unobserved link.
+
+Reproduce the third comparison offline from `urban-affordability-cascade/`:
+
+```bash
+python ine_commuting_partition_reconciliation.py \
+  --source-json data/ine_0012340_pr_run_43412012492/ine_0012340_dim2_0109_candidate.json \
+  --manifest-json data/ine_0012340_pr_run_43412012492/partition_manifest.json \
+  --municipality-code 0109 \
+  --output-json /tmp/ine-0012340-feira-partial-audit.json
+```
+
+The committed `audit_0109.json` is checked for exact deterministic equality
+in offline tests, alongside the official response hash, all 16 counts,
+the two reciprocal links and total unique-pair coverage. As before, this
+is **source agreement for 2021 work/study interactions**, not residential
+mobility, commuting direction or a causal housing-spillover estimate.

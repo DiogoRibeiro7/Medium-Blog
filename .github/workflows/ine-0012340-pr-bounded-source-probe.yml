@@ -1,4 +1,4 @@
-name: INE 0012340 two-municipality PR source probe
+name: INE 0012340 next municipality PR source probe
 
 on:
   pull_request:
@@ -11,9 +11,14 @@ permissions:
   contents: read
 
 jobs:
-  first-two:
+  next-municipality:
     runs-on: ubuntu-latest
     timeout-minutes: 8
+    env:
+      CAPTURE_START_INDEX: "2"
+      CAPTURE_COUNT: "1"
+      CAPTURE_DIMENSION: "Dim2"
+      EXPECTED_CODES: "0109"
     defaults:
       run:
         working-directory: urban-affordability-cascade
@@ -28,16 +33,16 @@ jobs:
         run: python -m pip install -r requirements.txt
       - name: Validate geographic bounds and metadata offline
         run: python -m unittest discover -s tests -p 'test_ine_commuting_partitioned_capture.py' -v
-      - name: Capture two candidate 2021 Dim2 municipality slices
+      - name: Capture Santa Maria da Feira 2021 Dim2 municipality slice
         id: capture
         shell: bash
         run: |
           set +e
           python ine_commuting_partitioned_capture.py \
             --output candidate-capture \
-            --start-index 0 \
-            --count 2 \
-            --dimension Dim2
+            --start-index "$CAPTURE_START_INDEX" \
+            --count "$CAPTURE_COUNT" \
+            --dimension "$CAPTURE_DIMENSION"
           code=$?
           echo "capture_exit_code=$code" >> "$GITHUB_OUTPUT"
           exit 0
@@ -46,7 +51,7 @@ jobs:
         shell: bash
         run: |
           {
-            echo "## INE 0012340 first two-municipality probe"
+            echo "## INE 0012340 next municipality probe: DICO ${EXPECTED_CODES}"
             echo "Each captured municipality filter must be validated against official metadata and the frozen pairs."
             echo "No observed residential migration or causal price transmission is inferred."
             echo "Inspect the raw responses and partition_manifest.json before broader queries."
@@ -55,7 +60,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: ine-0012340-first-two-dim2-candidate
+          name: ine-0012340-dim2-0109-candidate
           path: urban-affordability-cascade/candidate-capture/
           if-no-files-found: error
           retention-days: 30
@@ -75,22 +80,26 @@ jobs:
 
           manifest = json.loads(path.read_text(encoding="utf-8"))
           rows = manifest.get("items")
+          expected_codes = os.environ["EXPECTED_CODES"].split(",")
+          expected_count = len(expected_codes)
           if (manifest.get("capture_protocol") != "ine_0012340_2021_dico_partition_candidate_v1"
-                  or manifest.get("requested_codes") != ["0104", "0107"]
-                  or manifest.get("dimension") != "Dim2"
-                  or not isinstance(rows, list) or len(rows) != 2
+                  or manifest.get("requested_codes") != expected_codes
+                  or manifest.get("capture_count") != expected_count
+                  or manifest.get("dimension") != os.environ["CAPTURE_DIMENSION"]
+                  or not isinstance(rows, list) or len(rows) != expected_count
                   or any(not isinstance(row, dict) for row in rows)):
               sys.exit("Unexpected partition manifest schema or municipality scope")
 
           captured = sum(row.get("status") == "captured_unverified" for row in rows)
           failed = [row for row in rows if row.get("status") == "failed"]
-          if (captured + len(failed) != 2
+          if (captured + len(failed) != expected_count
                   or captured != manifest.get("completed_json_captures")
                   or any(row.get("code") != code
                          for code, row in zip(manifest["requested_codes"], rows))):
               sys.exit("Partition manifest counts or requested identities are inconsistent")
 
-          summary = f"INE capture outcome: {captured}/2 candidate municipality slices saved."
+          summary = (f"INE capture outcome: {captured}/{expected_count} "
+                     "candidate municipality slices saved.")
           with Path(os.environ["GITHUB_STEP_SUMMARY"]).open("a", encoding="utf-8") as stream:
               stream.write(f"\n### {summary}\n")
               for row in failed:

@@ -196,11 +196,12 @@ The source workbook SHA-256 is
 `7d6dbb58be8356c868c9d0d548a81db27025228f662c5c09d71cd4ba1ee7dace`.
 The direct INE JSON API originally returned HTTP 503 during extraction.
 On 13 November 2026, separately captured official INE responses for
-**Arouca and Espinho** reproduced all **32** of their off-diagonal AMP
-interaction views exactly. Those cover **31 of 136** distinct pairs, since
-the common Arouca–Espinho pair agrees in both directions. The
+**Arouca, Espinho and Santa Maria da Feira** reproduced all **48** of their
+off-diagonal AMP interaction views exactly. Those cover **45 of 136**
+distinct pairs; all three reciprocal links among the three municipalities
+agree in both directions. The
 [raw sources, manifests and reproducible audits](INE_COMMUTING_RECONCILIATION.md#archived-official-arouca-slice-and-reproducible-partial-reconciliation)
-are preserved in this project. The remaining **105 of 136** independent
+are preserved in this project. The remaining **91 of 136** independent
 pairs and full-matrix symmetry have **not yet been verified directly
 against the official API**. The derived 136-pair CSV and detailed
 third-party provenance remain included for audit. Credit INE and the
