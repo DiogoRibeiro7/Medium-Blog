@@ -122,6 +122,26 @@ of the identification strategy are documented in
 [`results/README.md`](results/README.md). The matched comparison is **not**
 a replication of the published PanelMatch method or proof of causality.
 
+### Balanced pre-reform placebo diagnostics
+
+[`PRE_TREND_DIAGNOSTICS.md`](PRE_TREND_DIAGNOSTICS.md) describes a separate
+event-time audit implemented in `event_study.py`. It holds the reform cohort
+and the donor sets fixed across relative times −5 through +5, excluding the
+baseline −1. It calculates pre-event contrasts at −5 through −2 relative to
+the year before treatment, plus the matching post-event series. Run it on
+the same joined panel as above:
+
+```bash
+python -m causal_tax_cuts.event_study \
+  --panel data/tax-study/panel.csv --outcome top1_share_pct \
+  --lags 5 --horizon 5 --min-events 5 \
+  --output data/tax-study/placebo
+```
+
+These are **descriptive diagnostics**, not an acceptance test for causal
+identification. Missing pre-trends do not establish parallel counterfactual
+trends, and outcome-window completeness can reduce the matched sample.
+
 1. Download the authors' file via the link above. Inspect the true headings:
 
    ```bash
