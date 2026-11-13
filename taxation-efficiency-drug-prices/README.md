@@ -10,6 +10,10 @@ Public reproducibility companion for a series on Medium by Diogo Ribeiro. The ed
 - **Part 6 — who pays for pharmaceutical innovation** ([`part6/`](part6)). Tests the argument that countries paying low prices for medicines free-ride on the United States. Reads the annual reports (10-K and 20-F) of seventeen research-based companies from their XBRL data at the SEC, 2015–2025: total revenue, revenue in the United States and in Europe as each company tags it, R&D, cost of sales, selling and administrative costs. Compares the US share of revenue with the US share of world and high-income GDP, turns the revenue share into a share of the revenue left after cost of sales and selling costs under the US–foreign price gaps estimated by RAND (2024), and asks whether revenue earned outside the United States would cover the companies' R&D. Then sets each European country's pharmaceutical market against the industry R&D carried out in it (EFPIA country tables) and against public and academic medical research (OECD), and applies the literature's elasticities of innovation to market size to what Portugal, or the largest European markets, would add by paying more.
 - **Part 7 — a ledger of what Portugal's public buyer saves, and where the saving comes from** ([`part7/`](part7)). Puts the results of Parts 2 to 6 into one account for Portugal, in euros a year. SNS spending on medicines in hospitals and pharmacies, 2015–2025 (SNS transparency portal), and the industry's returns to the SNS (Infarmed's estimate for 2025). A log decomposition of the gap between US prices and Portugal's net price into the part carried by the reference countries' list prices, the reference rule's own premium (Part 3) and the SNS's own returns, under four US benchmarks (Part 2's index before and after US rebates, RAND 2024 gross and net). A regression of the EURIPID price level of medicines on population and consumption per head across 25 European countries, with a bootstrap, to ask what buyer size is worth. The time account from Part 4 (days beyond the EU average and beyond the legal deadlines, and the spending a delay defers), leakage and the contribution to innovation from Parts 5 and 6, and administration and the public share of pharmaceutical spending from the OECD health accounts. A simulation over the ranges of the uncertain inputs gives each account a median and an interval.
 
+Follow-ups test conjectures left open by the parts.
+
+- **Follow-up 1 — confidential returns in Portugal and the countries it references** ([`followup1/`](followup1)). Tests the conjecture of Part 7: that reference pricing turns list prices into something other payers use, so that a small country that is both referenced and referencing should bargain through confidential returns, more so over time and in hospitals, and should have a wider gap between list and net prices than the countries it references. Puts together every published piece on Portugal's returns (the State–industry agreements 2013–2025, the extraordinary contribution on the industry, Infarmed's figures for 2023–2025 and the industry's own studies, with the rounding of each figure carried through), France's rebates 2016–2024 by setting (DREES, IGAS-IGF), Belgium's compensations under article 81/111 conventions and levies 2015–2024 by setting (INAMI), and what Italy and Spain publish. Compares the share returned in 2024, turns it into net prices with Part 3's list-price ratios (with a simulation over the uncertain inputs), and computes what the referenced countries' own rebates do to Portugal's price ceiling.
+
 ## Running
 
 Python 3.13 with the pinned versions in `requirements.txt`.
@@ -37,6 +41,9 @@ python figures.py
 cd ../part7
 python ledger_numbers.py > output.txt     # a few seconds; reads data/ and the results of Parts 2 to 6
 python figures.py
+cd ../followup1
+python rebates_numbers.py > output.txt    # a few seconds; reads data/, ../part7/data and Parts 3 and 7
+python figures.py
 cd ..
 python -m unittest discover -s tests      # tests of the shared tools
 ```
@@ -47,7 +54,7 @@ python -m unittest discover -s tests      # tests of the shared tools
 
 `erp.py` holds Portugal's reference pricing rule and the conversions it needs: the pack-size factor and the strength and pack adjustment of Infarmed's form, the average (ambulatory) and lowest (hospital) rules, the six retail-price tiers and their inverse, the factors that turn Spanish and Italian retail prices into ex-factory prices, the French margins and their inverse, a molecule-name key that works across five languages, a strength parser, and the choice of the most similar reference presentation. `part3/countries.py` turns each country's file into the same table.
 
-Parts 2 to 7 read public files that `partN/fetch.py` downloads and reduces. A second workflow (`.github/workflows/taxation-efficiency-drug-prices-data.yml`) runs it on a part branch, or on demand, and commits the reduced files to `partN/data` with a log of what each download returned, so the analysis runs from a fixed snapshot.
+Parts 2 to 7 and the follow-ups read public files that `partN/fetch.py` (or `followupN/fetch.py`) downloads and reduces. A second workflow (`.github/workflows/taxation-efficiency-drug-prices-data.yml`) runs it on a part or follow-up branch, or on demand, and commits the reduced files to its `data` folder with a log of what each download returned, so the analysis runs from a fixed snapshot.
 
 Set `OMP_NUM_THREADS=1` and `OPENBLAS_NUM_THREADS=1` to reproduce the committed output exactly.
 
@@ -115,13 +122,27 @@ A GitHub Actions workflow (`.github/workflows/taxation-efficiency-drug-prices.ym
 
   The share of hospital spending on medicines without generic or biosimilar competition has no public figure; the script uses 60 to 90 percent and shows how the results move with it. The legal deadlines are those of Portaria 195-A/2015.
 
+- **Follow-up 1** uses the snapshot in `followup1/data`, taken on 13 November 2026, kept as text (each document is checked for the sentences the analysis reads), with the SNS spending series and Infarmed's note in `part7/data` and the list-price ratios of Part 3:
+  - Portugal: the agreements between the State and the pharmaceutical industry for 2013, 2014, 2015, 2016 and 2017 (English versions published by APIFARMA), 2024 and 2025; APIFARMA's *e-Pharma* newsletters of September 2024 and September 2025; the Conselho das Finanças Públicas reports *Evolução do desempenho do Serviço Nacional de Saúde* for 2020, 2022, 2023, 2024 and 2025 (revenue of the extraordinary contribution on the pharmaceutical industry); ECO's report of 29 May 2025 on Infarmed's monitoring of SNS spending in 2024, gross and net of returns.
+  - France: DREES, *Les Dossiers de la Drees* n.º 139 (July 2026), and *Les établissements de santé*, 2026 edition, sheet 23; the IGAS-IGF mission report on the regulation of medicine prices (July 2025).
+  - Belgium: INAMI-RIZIV, MORSE reports with data for 2022–2023 and for 2024 (gross and net spending, compensations under article 81/111 conventions, levies, and the cumulative table of convention turnover and compensations).
+  - Italy: AIFA, monitoring of national and regional pharmaceutical spending, January–December 2024, final report and summary.
+
+  The Spanish deductions (Real Decreto-ley 8/2010, as amended by Real Decreto-ley 9/2011) and the Italian rule that companies repay half of the overrun of the ceiling on direct purchases (Law 145/2018, art. 1, c. 580) are quoted from the law in `followup1/rebates_numbers.py`. No source splits Portugal's returns between hospitals and pharmacies, and the APIFARMA newsletter does not state the base of its 2018 and 2022 shares; the script shows both readings.
+
 ## References
 
 Acemoglu, D., & Linn, J. (2004). Market size in innovation: theory and evidence from the pharmaceutical industry. *Quarterly Journal of Economics*, 119(3), 1049–1090.
 
+AIFA (2025). *Monitoraggio della Spesa Farmaceutica Nazionale e Regionale, Gennaio-Dicembre 2024, Consuntivo*. 29 luglio 2025; and its *Sintesi*.
+
 Andreoni, J. (1995). Cooperation in public-goods experiments: kindness or confusion? *American Economic Review*, 85(4), 891–904.
 
+APIFARMA (2024). *e-Pharma*, newsletter, setembro de 2024.
+
 APIFARMA (2025). *Boletim de Conjuntura* n.º 113, dezembro de 2025. Núcleo de Estudos e Análise.
+
+APIFARMA (2025). *e-Pharma*, newsletter, setembro de 2025.
 
 Ballard, C. L., Shoven, J. B., & Whalley, J. (1985). General equilibrium computations of the marginal welfare costs of taxes in the United States. *American Economic Review*, 75(1), 128–138.
 
@@ -142,6 +163,8 @@ Cockburn, I. M., Lanjouw, J. O., & Schankerman, M. (2016). Patents and the globa
 Congressional Budget Office (2018). Options for Reducing the Deficit: 2019 to 2028. Option 54735: require manufacturers to pay a minimum rebate on drugs covered under Part D.
 
 Congressional Budget Office (2022). *Prescription Drugs: Spending, Use, and Prices*. Publication 57050.
+
+Conselho das Finanças Públicas (2021–2026). *Evolução do desempenho do Serviço Nacional de Saúde* em 2020, 2022, 2023, 2024 e 2025. Relatórios n.º 06/2021, 07/2023, 07/2024, 05/2025 e 05/2026.
 
 Costa-Font, J., & Kanavos, P. (2007). Medicines parallel trade in the European Union: a gravity specification. LSE Health Working Paper 6/2007.
 
@@ -165,9 +188,13 @@ Diewert, W. E. (1976). Exact and superlative index numbers. *Journal of Economet
 
 DREES (2026). Innovation thérapeutique et régulation des prix : les déterminants de la hausse des dépenses de médicaments en France (2016-2024). M. Cadillac & É. Maugendre, *Les Dossiers de la DREES*, 139.
 
+DREES (2026). Les médicaments et dispositifs médicaux onéreux. In *Les établissements de santé*, édition 2026, fiche 23.
+
 Dubois, P., de Mouzon, O., Scott-Morton, F., & Seabright, P. (2015). Market size and pharmaceutical innovation. *RAND Journal of Economics*, 46(4), 844–871.
 
 Duso, T., Herr, A., & Suppliet, M. (2014). The welfare impact of parallel imports: a structural approach applied to the German market for oral anti-diabetics. *Health Economics*, 23(9), 1036–1057.
+
+ECO (2025). Despesa do SNS com medicamentos subiu para 3.960 milhões de euros em 2024. Lusa, 29 de maio de 2025.
 
 EFPIA & IQVIA (2026). *EFPIA Patients W.A.I.T. Indicator 2025 survey*. May 2026.
 
@@ -192,6 +219,12 @@ Ganslandt, M., & Maskus, K. E. (2004). Parallel imports and the pricing of pharm
 Goldman, D., & Lakdawalla, D. (2018). *The Global Burden of Medical Innovation*. USC Schaeffer Center White Paper, January 2018.
 
 Herrmann, B., Thöni, C., & Gächter, S. (2008). Antisocial punishment across societies. *Science*, 319(5868), 1362–1367.
+
+IGAS & IGF (2025). *Bilan et évolution du dispositif de régulation du prix des médicaments*. Rapport IGF n.º 2025-M-015-03, IGAS n.º 2025-019, juillet 2025.
+
+INAMI-RIZIV (2024). *Monitoring Of Reimbursement Significant Expenses (MORSE)*, rapport 2024, données 2022-2023.
+
+INAMI-RIZIV (2026). *Monitoring Of Reimbursement Significant Expenses (MORSE)*, data 2024. January 2026. doi:10.5281/zenodo.18154911.
 
 Infarmed (2021). Deliberação n.º 391/2021: regulamento sobre a notificação prévia de transações de medicamentos para o exterior do país. *Diário da República*, 2.ª série, n.º 78, 22 de abril de 2021.
 
@@ -223,6 +256,8 @@ Kyle, M. K. (2007). Pharmaceutical price controls and entry strategies. *Review 
 
 Ledyard, J. O. (1995). Public goods: a survey of experimental research. In J. H. Kagel & A. E. Roth (Eds.), *The Handbook of Experimental Economics* (pp. 111–194). Princeton University Press.
 
+Legge 30 dicembre 2018, n. 145. Bilancio di previsione dello Stato per l'anno finanziario 2019 (art. 1, commi 574-584). *Gazzetta Ufficiale* n. 302.
+
 Maini, L., & Pammolli, F. (2023). Reference pricing as a deterrent to entry: evidence from the European pharmaceutical market. *American Economic Journal: Microeconomics*, 15(2), 345–383.
 
 Milliman (2026). Medicare drug price negotiation: navigating the next wave of maximum fair prices. 12 January 2026.
@@ -239,6 +274,10 @@ Portaria n.º 195-C/2015, de 30 de junho. *Diário da República*, 1.ª série, 
 
 Portaria n.º 394/2025/1, de 14 de novembro. *Diário da República*, 1.ª série.
 
+Portuguese State & Indústria Farmacêutica (2013–2024). Agreements for 2013 (amendment to the agreement of 2012), 2014, 2015 and 2016–2018, the amendment for 2017, and the renewal for 2024 (texts published by APIFARMA).
+
 Portuguese State & Indústria Farmacêutica (2025). Acordo entre o Estado Português e a Indústria Farmacêutica, 20 de março de 2025.
+
+Real Decreto-ley 8/2010, de 20 de mayo, por el que se adoptan medidas extraordinarias para la reducción del déficit público. *Boletín Oficial del Estado*; amended by Real Decreto-ley 9/2011, de 19 de agosto.
 
 Weimann, J., Brosig-Koch, J., Heinrich, T., Hennig-Schmidt, H., & Keser, C. (2019). Public good provision by large groups – the logic of collective action revisited. *European Economic Review*, 118, 348–363.

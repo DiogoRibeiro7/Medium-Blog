@@ -15,7 +15,7 @@ Documents
             report of SNS spending in 2024 (gross and net of returns).
   France    DREES, Les Dossiers de la Drees n.º 139 (reimbursable medicines and rebates, 2016-2024);
             DREES, Les établissements de santé 2026, fiche 23 (expensive hospital medicines, gross and net);
-            IGAS-IGF 2026 mission report on the regulation of medicine spending (rebates 2019 and 2023), from the
+            IGAS-IGF mission report of July 2025 on the regulation of medicine prices (rebates 2019 and 2023), from the
             vie-publique.fr copy.
   Belgium   INAMI/RIZIV, MORSE reports (data 2022-2023 and data 2024): gross and net expenditure on
             reimbursable specialties, and the compensations paid under article 81/111 conventions.
