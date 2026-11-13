@@ -52,6 +52,9 @@ def main() -> None:
     p = r[(r.reporting_date >= "2020-05-01") & (r.reporting_date <= "2022-11-12")]
     print(f"RKI final file: {r.cases.sum():,.0f} cases; reported May 2020 to November 2022: {p.cases.sum():,.0f}, "
           f"onset known for {pct(p[p.onset_known == 1].cases.sum() / p.cases.sum())}")
+    hy = p.groupby([p.reporting_date.dt.year, (p.reporting_date.dt.month > 6).map({False: "H1", True: "H2"}), "onset_known"]).cases.sum().unstack()
+    print("  onset known, by half-year of the reporting date: " + ", ".join(
+        f"{y} {h} {pct(row[1] / row.sum(), 0)}" for (y, h), row in hy.iterrows()))
 
     section("P1. Where the holiday gaps are: the day of a weekday national holiday against the same weekday a week "
             "before and after (Germany)")
@@ -104,6 +107,19 @@ def main() -> None:
                   f"{pct(e[~m.holiday].mean(), 2)}, difference {pts(diff, 2)} points {ci(lo_hi, 2)}")
         if lag == 1:
             m.to_csv(RESULTS / "jhu_mornings.csv")
+            per = m[m.holiday].groupby("which")[["e_final", "e_reporting", "e_reference"]].mean()
+            print("  by holiday (mean of its mornings; final / reporting / reference): " + "; ".join(
+                f"{k.strftime('%d %b %Y')} {hol['DE'][k.date()]} {100 * r.e_final:.1f} / {100 * r.e_reporting:.1f} / "
+                f"{100 * r.e_reference:.1f}" for k, r in per.iterrows()))
+            worse = (per.e_reporting > per.e_final).sum()
+            print(f"  holidays whose mornings were further from the reporting date than from the final version: "
+                  f"{worse} of {len(per)}")
+            top = (per.e_reporting - per.e_final).idxmax()
+            k = m[m.which != top]
+            print(f"  leaving out the holiday with the largest difference ({top.strftime('%d %b %Y')}): holiday mornings "
+                  f"minus others, against the final version {pts(k[k.holiday].e_final.mean() - k[~k.holiday].e_final.mean(), 2)}, "
+                  f"against the reporting date {pts(k[k.holiday].e_reporting.mean() - k[~k.holiday].e_reporting.mean(), 2)}, "
+                  f"against the reference date {pts(k[k.holiday].e_reference.mean() - k[~k.holiday].e_reference.mean(), 2)}")
 
     section("P3. Weekly counts: publication against reference date in holiday weeks")
     w["lr_pub"] = np.log(w.publication / w.reference)
@@ -192,12 +208,12 @@ def main() -> None:
             p_, n_ = idx.xs(nb[0], level="week"), idx.xs(nb[1], level="week")
         except KeyError:
             continue
-        j = h[["gap", "e_publication", "e_reference"]].join(p_[["gap", "e_publication", "e_reference"]], rsuffix="_p", how="inner") \
-            .join(n_[["gap", "e_publication", "e_reference"]], rsuffix="_n", how="inner")
+        cols = ["gap", "e_publication", "e_reference", "c80_publication", "c80_reference"]
+        j = h[cols].join(p_[cols], rsuffix="_p", how="inner").join(n_[cols], rsuffix="_n", how="inner")
         j["week"] = wk
         rows.append(j.reset_index())
     J = pd.concat(rows)
-    for c in ("gap", "e_publication", "e_reference"):
+    for c in ("gap", "e_publication", "e_reference", "c80_publication", "c80_reference"):
         J[f"d_{c}"] = J[c] - (J[f"{c}_p"] + J[f"{c}_n"]) / 2
     used = sorted(J.week.unique())
     print(f"holiday weeks with forecasts for them and for both neighbours: {len(used)}: " +
@@ -213,6 +229,22 @@ def main() -> None:
         print(f"  horizon {int(hz)}: {pts(g2.d_gap.mean())} points {ci(lo_hi)} ({len(g2):,} triples)")
     print("  by week: " + "; ".join(f"{pd.Timestamp(k).strftime('%d %b %Y')} {pts(g2.d_gap.mean())}" for k, g2 in J.groupby("week")))
     J.to_csv(RESULTS / "national_weeks.csv", index=False)
+    cv = J.dropna(subset=["d_c80_publication", "d_c80_reference"])
+    print(f"80% interval coverage, holiday week minus neighbours ({len(cv):,} triples with quantiles): against publication "
+          f"{pts(cv.d_c80_publication.mean())}, against reference {pts(cv.d_c80_reference.mean())}")
+    for hz, g2 in cv.groupby("horizon"):
+        print(f"  horizon {int(hz)}: publication {pts(g2.d_c80_publication.mean())}, reference {pts(g2.d_c80_reference.mean())}")
+
+    section("P7. National holiday weeks by kind of model")
+    kind = np.where(J.model.str.contains("baseline"), "baselines",
+                    np.where(J.model.str.contains("ensemble"), "ensembles", "other models"))
+    J["kind"] = kind
+    for k, g2 in J.groupby("kind"):
+        lo_hi = H.cluster_boot(g2.d_gap.reset_index(drop=True), g2.week.reset_index(drop=True), lambda z: z.mean())
+        print(f"{k}: {g2.model.nunique()} models, {len(g2):,} triples; (error against reference minus against "
+              f"publication), holiday week minus neighbours {pts(g2.d_gap.mean())} {ci(lo_hi)}")
+        print("  by horizon: " + "; ".join(f"{int(h)} wk {pts(g3.d_gap.mean())}" for h, g3 in g2.groupby("horizon")))
+    print("baseline models: " + ", ".join(sorted(J[J.kind == "baselines"].model.unique())))
 
 
 if __name__ == "__main__":

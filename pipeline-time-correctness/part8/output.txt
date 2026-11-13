@@ -13,6 +13,7 @@ forecasts: 60,266 (model, forecast date, location, horizon), 45 models; for Germ
   forecast dates 2020-05-04 to 2022-10-17; state forecasts 2020-05-04 to 2022-10-17
 scored (target week 2020-05-09 to 2022-11-12, all three counts positive): 59,456; Germany 7,568, states 51,888
 RKI final file: 39,209,067 cases; reported May 2020 to November 2022: 35,899,573, onset known for 24.5%
+  onset known, by half-year of the reporting date: 2020 H1 55%, 2020 H2 52%, 2021 H1 60%, 2021 H2 50%, 2022 H1 18%, 2022 H2 17%
 
 ==============================================================================
 P1. Where the holiday gaps are: the day of a weekday national holiday against the same weekday a week before and after (Germany)
@@ -47,6 +48,9 @@ RKI window ending on d-1: 881 mornings, 2020-10-01 to 2023-02-28; holiday mornin
   against Johns Hopkins' final version holiday mornings 5.88%, others 5.60%, difference +0.28 points [-1.89, +2.44]
   against RKI by reporting date        holiday mornings 8.71%, others 4.40%, difference +4.31 points [+0.75, +8.01]
   against RKI by reference date        holiday mornings 9.83%, others 6.32%, difference +3.50 points [+0.27, +7.17]
+  by holiday (mean of its mornings; final / reporting / reference): 03 Oct 2020 Tag der Deutschen Einheit 3.1 / 2.2 / 17.0; 25 Dec 2020 Erster Weihnachtstag 6.6 / 12.8 / 7.0; 26 Dec 2020 Zweiter Weihnachtstag 2.2 / 0.6 / 2.5; 01 Jan 2021 Neujahr 1.4 / 1.3 / 1.0; 02 Apr 2021 Karfreitag 8.1 / 7.1 / 6.1; 05 Apr 2021 Ostermontag 10.8 / 8.7 / 12.4; 01 May 2021 Erster Mai 1.6 / 1.4 / 5.8; 13 May 2021 Christi Himmelfahrt 19.2 / 17.1 / 5.5; 24 May 2021 Pfingstmontag 5.0 / 3.6 / 14.9; 03 Oct 2021 Tag der Deutschen Einheit 0.1 / 0.8 / 2.6; 25 Dec 2021 Erster Weihnachtstag 5.5 / 7.2 / 5.7; 26 Dec 2021 Zweiter Weihnachtstag 0.9 / 0.0 / 2.5; 01 Jan 2022 Neujahr 6.4 / 2.4 / 10.6; 15 Apr 2022 Karfreitag 4.7 / 9.2 / 7.3; 18 Apr 2022 Ostermontag 8.8 / 17.3 / 16.5; 01 May 2022 Erster Mai 8.9 / 1.0 / 1.5; 26 May 2022 Christi Himmelfahrt 2.4 / 7.7 / 6.8; 06 Jun 2022 Pfingstmontag 11.1 / 15.5 / 13.4; 03 Oct 2022 Tag der Deutschen Einheit 7.4 / 15.6 / 18.6; 25 Dec 2022 Erster Weihnachtstag 5.6 / 13.9 / 13.1; 26 Dec 2022 Zweiter Weihnachtstag 4.4 / 1.7 / 1.4; 01 Jan 2023 Neujahr 0.0 / 32.7 / 32.6
+  holidays whose mornings were further from the reporting date than from the final version: 10 of 22
+  leaving out the holiday with the largest difference (01 Jan 2023): holiday mornings minus others, against the final version +0.58, against the reporting date +3.08, against the reference date +2.34
 RKI window ending on d-0: 881 mornings, 2020-10-01 to 2023-02-28; holiday mornings (a national holiday on the day or the day before) 41, from 22 holidays
   against Johns Hopkins' final version holiday mornings 5.88%, others 5.60%, difference +0.28 points [-1.89, +2.44]
   against RKI by reporting date        holiday mornings 5.47%, others 4.64%, difference +0.83 points [-1.29, +3.38]
@@ -110,3 +114,19 @@ forecast triples: 5,822
   horizon 3: -3.2 points [-6.2, -0.5] (1,450 triples)
   horizon 4: -3.3 points [-5.0, -1.4] (1,466 triples)
   by week: 23 May 2020 +2.7; 06 Jun 2020 +0.9; 26 Dec 2020 -0.6; 02 Jan 2021 -1.8; 03 Apr 2021 -2.7; 10 Apr 2021 -7.8; 15 May 2021 -0.0; 29 May 2021 -0.2; 16 Apr 2022 -2.8; 23 Apr 2022 -3.5; 28 May 2022 +1.1; 11 Jun 2022 +2.9; 08 Oct 2022 +2.8
+80% interval coverage, holiday week minus neighbours (5,603 triples with quantiles): against publication -5.6, against reference -4.1
+  horizon 1: publication -9.5, reference -10.6
+  horizon 2: publication -3.3, reference -2.1
+  horizon 3: publication -4.9, reference -1.0
+  horizon 4: publication -4.4, reference -2.4
+
+==============================================================================
+P7. National holiday weeks by kind of model
+==============================================================================
+baselines: 4 models, 1,337 triples; (error against reference minus against publication), holiday week minus neighbours -1.9 [-3.5, -0.2]
+  by horizon: 1 wk +1.2; 2 wk -2.2; 3 wk -5.0; 4 wk -1.6
+ensembles: 4 models, 829 triples; (error against reference minus against publication), holiday week minus neighbours -3.9 [-8.4, -0.8]
+  by horizon: 1 wk +1.6; 2 wk -3.9; 3 wk -6.3; 4 wk -6.7
+other models: 30 models, 3,656 triples; (error against reference minus against publication), holiday week minus neighbours -1.1 [-3.1, +0.5]
+  by horizon: 1 wk +1.6; 2 wk -0.8; 3 wk -1.8; 4 wk -3.2
+baseline models: EuroCOVIDhub-baseline, KIT-baseline, KIT-extrapolation_baseline, KIT-time_series_baseline
