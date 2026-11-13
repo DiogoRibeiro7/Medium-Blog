@@ -1,6 +1,6 @@
 # Billionaire density and poverty — follow-up series
 
-Six follow-ups to the reanalysis of the "Where billionaires are common, poverty is rare" chart (companion: [`../billionaires-poverty-audit`](../billionaires-poverty-audit)). Each part runs a check the first article could not.
+Seven follow-ups to the reanalysis of the "Where billionaires are common, poverty is rare" chart (companion: [`../billionaires-poverty-audit`](../billionaires-poverty-audit)). Each part runs a check the first article could not.
 
 | Part | Question | Status |
 | --- | --- | --- |
@@ -10,6 +10,7 @@ Six follow-ups to the reanalysis of the "Where billionaires are common, poverty 
 | 4 | Are a country's year-to-year changes in billionaires mostly fortunes crossing the $1 billion line? Entries and exits by net worth, a crossing model, and what it means for the count as an indicator | Article drafted (manuscript #150) |
 | 5 | Are fortunes near $1 billion more volatile, and is that why they leave the list? Rounding, volatility estimated from rises, an age-adjusted floor of deaths and reassessments, and newcomers | Article drafted (manuscript #158) |
 | 6 | Is volatility a stable property of each fortune, and does a fortune's own past volatility predict its departure better than its distance from the line? Persistence, out-of-sample departure models, a distance-to-default index and simulated lists | Article drafted |
+| 7 | Are the large arrivals far above $1 billion heirs and revaluations of existing fortunes? Record linkage of entrants to departing relatives, relatives on the list, co-owners and earlier lists, with placebos and Forbes's self-made flag as checks | Article drafted |
 
 ## Data
 
@@ -21,6 +22,7 @@ Six follow-ups to the reanalysis of the "Where billionaires are common, poverty 
 - **Linked Forbes lists (Part 4):** the same annual lists, fetched by [`fetch_forbes_flows.py`](fetch_forbes_flows.py) in [`billionaires-poverty-followups-forbes-flows.yml`](../.github/workflows/billionaires-poverty-followups-forbes-flows.yml), linked from one year to the next in memory (by `uri`, then `naturalId`, then name and birth date). Only aggregates are written: counts and net worth by citizenship and $100 million band, entries, exits and citizenship changes by net-worth band, and global tables of annual changes in net worth and of exits by age. No person-level record is stored.
 - **Tenure and rounding (Part 5):** the same lists, fetched again by [`fetch_forbes_tenure.py`](fetch_forbes_tenure.py) in [`billionaires-poverty-followups-forbes-tenure.yml`](../.github/workflows/billionaires-poverty-followups-forbes-tenure.yml) and linked with Part 4's rules. Aggregates only: people, departures and annual changes by net-worth band and tenure (incumbent, returning, new) and by the previous year's change, and how many fortunes are reported in multiples of $100 million. The tables reproduce Part 4's exactly.
 - **Past volatility by person (Part 6):** the same lists, fetched again by [`fetch_forbes_persistence.py`](fetch_forbes_persistence.py) in [`billionaires-poverty-followups-forbes-persistence.yml`](../.github/workflows/billionaires-poverty-followups-forbes-persistence.yml) and linked with Part 4's rules. For each person on list t the links are followed back up to four lists; only counts (and sums of squared changes) are written, by net-worth band, age group, tenure, number of earlier lists, the latest change, a class of the root mean square of the earlier changes, their direction, and Forbes's industry category. Summed over the new dimensions, the tables reproduce Part 5's exactly.
+- **Arrivals and families (Part 7):** the same lists, fetched again by [`fetch_forbes_arrivals.py`](fetch_forbes_arrivals.py) in [`billionaires-poverty-followups-forbes-arrivals.yml`](../.github/workflows/billionaires-poverty-followups-forbes-arrivals.yml). Every entrant and every departure is linked in memory to relatives (same surname and country, under four rules from same company to surname only), co-owners (same company label) and earlier lists, with placebo links in other years; only counts by cell are written, never a name or a company. Entries and exits reproduce Part 4's flows exactly (Part 4 leaves out the one entrant with no recorded citizenship).
 - **WDI (Part 3):** GDP, GNI and household consumption per person (PPP, constant 2021 dollars), population, PPP factor and exchange rate, fetched by [`fetch_wdi.py`](fetch_wdi.py) in [`billionaires-poverty-followups-wdi.yml`](../.github/workflows/billionaires-poverty-followups-wdi.yml).
 - **Forbes primary counts (Part 2):** the frozen aggregate output of the 5 November 2026 Forbes person-list audit, [`../billionaires-poverty-audit/evidence/forbes-2026-run-42099896845`](../billionaires-poverty-audit/evidence/forbes-2026-run-42099896845), hash-checked against its `SHA256SUMS.txt`: `countryOfCitizenship` (citizenship) and `country` (used as residence; see the article for the evidence).
 
@@ -92,3 +94,14 @@ python part6_past_volatility.py --check    # fail if any number differs from res
 Outputs: [`results/part6/summary.txt`](results/part6/summary.txt), [`results/part6/numbers.json`](results/part6/numbers.json) and four figures in [`figures/part6/`](figures/part6/).
 
 Methods: large moves and rises by class of earlier volatility (the latest change left out), indirectly standardised by year and net-worth band; logits of large moves on earlier volatility and the latest change; departure logits below $3 billion on distance, past volatility, both, and Part 5's predictors, compared by leaving one pair of lists out at a time (log loss, Brier score and within-year AUC; a weak ridge for held-out predictions); a one-number index of distance divided by own volatility, with a likelihood-ratio test of the ratio restriction; rises near the line split by history; departure logits within Forbes's industry categories; simulated lists with and without a volatility trait run through the same aggregation and models; a bootstrap over years.
+
+## Part 7 — reproduce
+
+```bash
+python part7_arrivals.py            # print every number, write results/part7 and figures/part7
+python part7_arrivals.py --check    # fail if any number differs from results/part7/numbers.json
+```
+
+Outputs: [`results/part7/summary.txt`](results/part7/summary.txt), [`results/part7/numbers.json`](results/part7/numbers.json) and two figures in [`figures/part7/`](figures/part7/).
+
+Methods: each entrant put in one category (relisted, returned, heir of a relative who left, division from a relative whose fortune fell, joining relatives, co-owner of a revalued company, inherited with no relative listed, self-made with no link); family links under four rules, each against a placebo link to relatives who leave (or, for departures, entered) years later, scaled by the number of people in the windows; Forbes's self-made flag as an outside check on the links; co-owner rises against the share of all stayers rising that much; departures far above the line followed to the entries and rises of relatives; a bootstrap over years.
