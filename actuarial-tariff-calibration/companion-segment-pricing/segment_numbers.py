@@ -31,7 +31,9 @@ Sections, for each portfolio
 
 Equilibria in segment levels are found by safeguarded Newton steps (damped when overlapping segments make the
 insurers' levels oscillate) and then checked by a grid search over every segment level of every insurer; where a
-level has a better optimum elsewhere on the grid, the best such move is made and the iterations resume.
+level has a better optimum elsewhere on the grid, the best such move is made and the iterations resume. A play whose
+levels never settle is not an equilibrium, and where its iterations stop depends on the last bits of the arithmetic,
+so it differs from one machine to another: such plays are listed and left out of the payoffs.
 """
 
 from __future__ import annotations
@@ -231,6 +233,14 @@ def outcome(Rc, Rt, P, kind, how, beta=BETA, check=False) -> dict:
 # ---------------------------------------------------------------------------------------------------
 # Equilibria of the model-choice stage
 # ---------------------------------------------------------------------------------------------------
+def bound(g: float) -> str:
+    """A gain that differs between machines in its last digits, reported as a coarse upper bound."""
+    for b in (0.005, 0.05, 0.25, 1.0):
+        if g < b:
+            return f"below {b}"
+    return f"about {g:.0f}"
+
+
 def kind_two(A2: np.ndarray) -> str:
     eq = g2.pure_equilibria(A2, PAIR)
     if "(GBM, GBM)" in eq and A2[0, 0] > A2[1, 1]:
@@ -277,6 +287,8 @@ def run(P: dict, cfg: dict) -> dict:
     gains = {(k, h, K): [] for k, h in GAMES if k != "one level" for K in (2, K4)}
     diag = []
     unsettled = []
+    unsettled_gain = []
+    left_out = {n: {key: 0 for key in GAMES} for n in sizes}
 
     for r in range(R):
         print(f"{name}: partition {r + 1} of {R}", file=sys.stderr, flush=True)
@@ -309,8 +321,11 @@ def run(P: dict, cfg: dict) -> dict:
                     conv[(kind, how)][0] += out["ok"]
                     conv[(kind, how)][1] += 1
                     if not out["ok"]:
-                        unsettled.append(f"{kind}, {how}, two insurers, books of {n:,}, {s} against {t}, partition {r + 1}:"
-                                         f" largest remaining gain {out['gain']:.4f} percent of claims")
+                        # Not an equilibrium, and where its iterations stop depends on the last bits of the
+                        # arithmetic, so it differs between machines: reported, and left out of the payoffs.
+                        unsettled.append(f"{kind}, {how}, two insurers, books of {n:,}, {s} against {t}, partition {r + 1}")
+                        unsettled_gain.append(out["gain"])
+                        continue
                     if not np.isnan(out["gain"]):
                         gains[(kind, how, 2)].append(out["gain"])
                     two[n][(kind, how)].setdefault((s, t), []).append(
@@ -335,8 +350,10 @@ def run(P: dict, cfg: dict) -> dict:
                         conv[(kind, how)][1] += 1
                         if not out["ok"]:
                             unsettled.append(f"{kind}, {how}, four insurers, books of {n:,}, {'/'.join(cls)},"
-                                             f" partition {r + 1}: largest remaining gain {out['gain']:.4f} percent of"
-                                             f" claims")
+                                             f" partition {r + 1}")
+                            unsettled_gain.append(out["gain"])
+                            left_out[n][(kind, how)] += 1
+                            continue
                         if not np.isnan(out["gain"]):
                             gains[(kind, how, K4)].append(out["gain"])
                         z = four[n][(kind, how)][r][sum(G)]
@@ -402,7 +419,9 @@ def run(P: dict, cfg: dict) -> dict:
                 parts.append(f"j={j}: {', '.join(who)}, level {lv[j]:.3f}")
             print(f"  books of {n:,}, {kind}, {how}: " + "; ".join(parts))
             print(f"      equilibria at j = {', '.join(map(str, eq))}; path from all GLM: j = {' -> '.join(map(str, path))};"
-                  f" {kind_four(pg, pl, eq)}; by partition: " + ", ".join(f"{k} in {v} of {R}" for k, v in counts.items()))
+                  f" {kind_four(pg, pl, eq)}; by partition: " + ", ".join(f"{k} in {v} of {R}" for k, v in counts.items())
+                  + (f"; left out because they did not settle: {left_out[n][(kind, how)]} of {2 ** K4 * R} plays"
+                     if left_out[n][(kind, how)] else ""))
             res["four"][f"{kind}|{how}|{n}"] = {"pg": [None if np.isnan(v) else float(v) for v in pg],
                                                 "pl": [None if np.isnan(v) else float(v) for v in pl],
                                                 "level": lv.tolist(), "market": mkt.tolist(), "eq": eq, "path": path}
@@ -440,11 +459,14 @@ def run(P: dict, cfg: dict) -> dict:
         print(f"  {key[0]}, {key[1]}: settled in {conv[key][0]} of {conv[key][1]} plays")
     print(f"  risk band with curse-aware pricing, two insurers, books of {sizes[0]:,}, partition 1 (ten rounds of"
           f" iterations and grid moves): " + "; ".join(
-              f"{s} against {t}: {'settled' if ok else 'did not settle'}, largest remaining gain from moving one"
-              f" segment level {g:.4f} percent of claims" for s, t, ok, g in diag))
-    print("  plays that did not settle: " + ("none" if not unsettled else ""))
+              f"{s} against {t}: " + ("settled" if ok else f"did not settle, largest remaining gain from moving one"
+                                       f" segment level {bound(g)} percent of claims") for s, t, ok, g in diag))
+    print("  plays that did not settle, left out of the payoffs above: " + ("none" if not unsettled else ""))
     for u in unsettled:
         print(f"    {u}")
+    if unsettled_gain:
+        print(f"  in those plays, the largest gain an insurer could still make by moving one segment level where the"
+              f" iterations stop: {bound(max(unsettled_gain))} percent of claims")
     for (kind, how, K), gl in gains.items():
         if gl:
             gmax = max(gl)

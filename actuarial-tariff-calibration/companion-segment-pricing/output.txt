@@ -172,8 +172,8 @@ freMTPL2: four insurers choosing between GLM and GBM, beta 10: payoff of a boost
       equilibria at j = 0; path from all GLM: j = 0; the reverse: all GLM is an equilibrium, all boosting would pay every insurer more; by partition: the reverse in 6 of 6
   books of 20,000, one level, naive: j=0: GLM +1.53, level 1.061; j=1: boosting +0.34, GLM +0.89, level 1.030; j=2: boosting -0.12, GLM +0.51, level 1.008; j=3: boosting -0.28, GLM +0.38, level 0.995; j=4: boosting -0.42, level 0.983
       equilibria at j = 0; path from all GLM: j = 0; no conflict: the equilibrium pays every insurer at least as much as the other uniform market; by partition: no conflict in 6 of 6
-  books of 20,000, market position, aware: j=0: GLM +3.87, level 1.155; j=1: boosting +3.91, GLM +3.91, level 1.156; j=2: boosting +3.84, GLM +4.06, level 1.158; j=3: boosting +3.91, GLM +4.11, level 1.158; j=4: boosting +3.98, level 1.159
-      equilibria at j = 1; path from all GLM: j = 0 -> 1; mixed: every equilibrium has insurers of both classes; by partition: the reverse in 2 of 6, mixed in 2 of 6, no conflict in 2 of 6
+  books of 20,000, market position, aware: j=0: GLM +3.87, level 1.155; j=1: boosting +3.91, GLM +3.91, level 1.156; j=2: boosting +3.84, GLM +4.05, level 1.158; j=3: boosting +3.91, GLM +4.11, level 1.158; j=4: boosting +3.98, level 1.159
+      equilibria at j = 1; path from all GLM: j = 0 -> 1; mixed: every equilibrium has insurers of both classes; by partition: the reverse in 2 of 6, mixed in 2 of 6, no conflict in 2 of 6; left out because they did not settle: 1 of 96 plays
   books of 20,000, market position, naive: j=0: GLM +1.43, level 1.057; j=1: boosting +0.53, GLM +0.29, level 1.014; j=2: boosting -0.74, GLM -0.50, level 0.975; j=3: boosting -1.55, GLM -0.93, level 0.944; j=4: boosting -1.95, level 0.922
       equilibria at j = 0; path from all GLM: j = 0; no conflict: the equilibrium pays every insurer at least as much as the other uniform market; by partition: no conflict in 6 of 6
   books of 20,000, risk band, naive: j=0: GLM +1.45, level 1.058; j=1: boosting +0.16, GLM +0.66, level 1.021; j=2: boosting -0.54, GLM +0.08, level 0.991; j=3: boosting -0.94, GLM -0.29, level 0.969; j=4: boosting -1.22, level 0.951
@@ -182,8 +182,8 @@ freMTPL2: four insurers choosing between GLM and GBM, beta 10: payoff of a boost
       equilibria at j = 4; path from all GLM: j = 0 -> 1 -> 2 -> 3 -> 4; no conflict: the equilibrium pays every insurer at least as much as the other uniform market; by partition: no conflict in 6 of 6
   books of 50,000, one level, naive: j=0: GLM +2.32, level 1.093; j=1: boosting +2.59, GLM +1.11, level 1.059; j=2: boosting +1.53, GLM +0.21, level 1.035; j=3: boosting +0.99, GLM -0.49, level 1.025; j=4: boosting +0.46, level 1.019
       equilibria at j = 4; path from all GLM: j = 0 -> 1 -> 2 -> 3 -> 4; prisoner's dilemma: all boosting is an equilibrium, all GLM would pay every insurer more; by partition: prisoner's dilemma in 6 of 6
-  books of 50,000, market position, aware: j=0: GLM +3.84, level 1.153; j=1: boosting +4.41, GLM +3.70, level 1.155; j=2: boosting +3.76, GLM +4.02, level 1.156; j=3: boosting +3.94, GLM +4.04, level 1.158; j=4: boosting +3.94, level 1.157
-      equilibria at j = 2; path from all GLM: j = 0 -> 1 -> 2; mixed: every equilibrium has insurers of both classes; by partition: mixed in 5 of 6, no conflict in 1 of 6
+  books of 50,000, market position, aware: j=0: GLM +3.84, level 1.153; j=1: boosting +4.38, GLM +3.70, level 1.155; j=2: boosting +3.76, GLM +4.02, level 1.156; j=3: boosting +3.94, GLM +4.04, level 1.158; j=4: boosting +3.94, level 1.157
+      equilibria at j = 2; path from all GLM: j = 0 -> 1 -> 2; mixed: every equilibrium has insurers of both classes; by partition: mixed in 5 of 6, no conflict in 1 of 6; left out because they did not settle: 3 of 96 plays
   books of 50,000, market position, naive: j=0: GLM +2.50, level 1.100; j=1: boosting +3.12, GLM +0.99, level 1.061; j=2: boosting +1.45, GLM -0.09, level 1.027; j=3: boosting +0.46, GLM -0.72, level 1.007; j=4: boosting -0.07, level 0.997
       equilibria at j = 4; path from all GLM: j = 0 -> 1 -> 2 -> 3 -> 4; prisoner's dilemma: all boosting is an equilibrium, all GLM would pay every insurer more; by partition: prisoner's dilemma in 6 of 6
   books of 50,000, risk band, naive: j=0: GLM +2.33, level 1.093; j=1: boosting +2.55, GLM +1.08, level 1.058; j=2: boosting +1.37, GLM +0.14, level 1.030; j=3: boosting +0.74, GLM -0.54, level 1.017; j=4: boosting +0.22, level 1.009
@@ -192,8 +192,8 @@ freMTPL2: four insurers choosing between GLM and GBM, beta 10: payoff of a boost
       equilibria at j = 4; path from all GLM: j = 0 -> 1 -> 2 -> 3 -> 4; no conflict: the equilibrium pays every insurer at least as much as the other uniform market; by partition: no conflict in 6 of 6
   books of 100,000, one level, naive: j=0: GLM +2.86, level 1.114; j=1: boosting +3.84, GLM +1.29, level 1.077; j=2: boosting +2.54, GLM -0.02, level 1.051; j=3: boosting +1.83, GLM -1.26, level 1.042; j=4: boosting +1.05, level 1.042
       equilibria at j = 4; path from all GLM: j = 0 -> 1 -> 2 -> 3 -> 4; prisoner's dilemma: all boosting is an equilibrium, all GLM would pay every insurer more; by partition: prisoner's dilemma in 6 of 6
-  books of 100,000, market position, aware: j=0: GLM +3.79, level 1.152; j=1: boosting +5.13, GLM +3.57, level 1.158; j=2: boosting +3.65, GLM +4.16, level 1.156; j=3: boosting +3.78, GLM +4.16, level 1.155; j=4: boosting +3.95, level 1.158
-      equilibria at j = 2; path from all GLM: j = 0 -> 1 -> 2; mixed: every equilibrium has insurers of both classes; by partition: mixed in 6 of 6
+  books of 100,000, market position, aware: j=0: GLM +3.79, level 1.152; j=1: boosting +5.08, GLM +3.52, level 1.157; j=2: boosting +3.61, GLM +4.13, level 1.155; j=3: boosting +3.77, GLM +4.16, level 1.155; j=4: boosting +3.95, level 1.158
+      equilibria at j = 2; path from all GLM: j = 0 -> 1 -> 2; mixed: every equilibrium has insurers of both classes; by partition: mixed in 6 of 6; left out because they did not settle: 20 of 96 plays
   books of 100,000, market position, naive: j=0: GLM +3.03, level 1.121; j=1: boosting +4.54, GLM +1.25, level 1.083; j=2: boosting +2.66, GLM -0.08, level 1.052; j=3: boosting +1.54, GLM -0.90, level 1.037; j=4: boosting +0.90, level 1.036
       equilibria at j = 4; path from all GLM: j = 0 -> 1 -> 2 -> 3 -> 4; prisoner's dilemma: all boosting is an equilibrium, all GLM would pay every insurer more; by partition: prisoner's dilemma in 6 of 6
   books of 100,000, risk band, naive: j=0: GLM +2.86, level 1.115; j=1: boosting +3.92, GLM +1.26, level 1.077; j=2: boosting +2.51, GLM -0.05, level 1.049; j=3: boosting +1.73, GLM -1.15, level 1.040; j=4: boosting +0.98, level 1.039
@@ -228,34 +228,35 @@ freMTPL2: checks
   market position, aware: settled in 480 of 504 plays
   market position, naive: settled in 504 of 504 plays
   risk band, naive: settled in 504 of 504 plays
-  risk band with curse-aware pricing, two insurers, books of 20,000, partition 1 (ten rounds of iterations and grid moves): GLM against GLM: settled, largest remaining gain from moving one segment level 0.0000 percent of claims; GLM against GBM: did not settle, largest remaining gain from moving one segment level 0.0009 percent of claims; GBM against GBM: did not settle, largest remaining gain from moving one segment level 0.0070 percent of claims
-  plays that did not settle: 
-    market position, aware, four insurers, books of 50,000, GLM/GBM/GLM/GLM, partition 1: largest remaining gain 0.0070 percent of claims
-    market position, aware, four insurers, books of 100,000, GLM/GLM/GBM/GBM, partition 1: largest remaining gain 0.0039 percent of claims
-    market position, aware, four insurers, books of 100,000, GBM/GLM/GLM/GBM, partition 1: largest remaining gain 0.0049 percent of claims
-    market position, aware, four insurers, books of 100,000, GBM/GLM/GBM/GLM, partition 1: largest remaining gain 0.0197 percent of claims
-    market position, aware, four insurers, books of 100,000, GBM/GLM/GLM/GLM, partition 2: largest remaining gain 0.0061 percent of claims
-    market position, aware, four insurers, books of 100,000, GBM/GBM/GLM/GLM, partition 2: largest remaining gain 0.0058 percent of claims
-    market position, aware, four insurers, books of 50,000, GLM/GLM/GLM/GBM, partition 3: largest remaining gain 0.0430 percent of claims
-    market position, aware, four insurers, books of 100,000, GLM/GLM/GBM/GBM, partition 3: largest remaining gain 0.0003 percent of claims
-    market position, aware, four insurers, books of 100,000, GLM/GBM/GLM/GLM, partition 3: largest remaining gain 0.0637 percent of claims
-    market position, aware, four insurers, books of 100,000, GLM/GBM/GLM/GBM, partition 3: largest remaining gain 0.0001 percent of claims
-    market position, aware, four insurers, books of 100,000, GLM/GBM/GBM/GLM, partition 3: largest remaining gain 0.0000 percent of claims
-    market position, aware, four insurers, books of 100,000, GBM/GBM/GLM/GLM, partition 3: largest remaining gain 0.0003 percent of claims
-    market position, aware, four insurers, books of 100,000, GLM/GLM/GLM/GBM, partition 4: largest remaining gain 0.0523 percent of claims
-    market position, aware, four insurers, books of 100,000, GLM/GBM/GBM/GLM, partition 4: largest remaining gain 0.0082 percent of claims
-    market position, aware, four insurers, books of 100,000, GBM/GLM/GBM/GLM, partition 4: largest remaining gain 0.0506 percent of claims
-    market position, aware, four insurers, books of 100,000, GBM/GBM/GLM/GLM, partition 4: largest remaining gain 0.0231 percent of claims
-    market position, aware, four insurers, books of 20,000, GLM/GBM/GLM/GBM, partition 5: largest remaining gain 0.0000 percent of claims
-    market position, aware, four insurers, books of 50,000, GLM/GLM/GLM/GBM, partition 5: largest remaining gain 0.0145 percent of claims
-    market position, aware, four insurers, books of 100,000, GLM/GLM/GLM/GBM, partition 5: largest remaining gain 0.1091 percent of claims
-    market position, aware, four insurers, books of 100,000, GBM/GLM/GLM/GLM, partition 5: largest remaining gain 0.0043 percent of claims
-    market position, aware, four insurers, books of 100,000, GBM/GBM/GLM/GBM, partition 5: largest remaining gain 0.0000 percent of claims
-    market position, aware, four insurers, books of 100,000, GLM/GBM/GBM/GLM, partition 6: largest remaining gain 0.0197 percent of claims
-    market position, aware, four insurers, books of 100,000, GBM/GLM/GLM/GLM, partition 6: largest remaining gain 0.0448 percent of claims
-    market position, aware, four insurers, books of 100,000, GBM/GBM/GLM/GLM, partition 6: largest remaining gain 0.0000 percent of claims
+  risk band with curse-aware pricing, two insurers, books of 20,000, partition 1 (ten rounds of iterations and grid moves): GLM against GLM: settled; GLM against GBM: did not settle, largest remaining gain from moving one segment level below 0.005 percent of claims; GBM against GBM: did not settle, largest remaining gain from moving one segment level below 0.05 percent of claims
+  plays that did not settle, left out of the payoffs above: 
+    market position, aware, four insurers, books of 50,000, GLM/GBM/GLM/GLM, partition 1
+    market position, aware, four insurers, books of 100,000, GLM/GLM/GBM/GBM, partition 1
+    market position, aware, four insurers, books of 100,000, GBM/GLM/GLM/GBM, partition 1
+    market position, aware, four insurers, books of 100,000, GBM/GLM/GBM/GLM, partition 1
+    market position, aware, four insurers, books of 100,000, GBM/GLM/GLM/GLM, partition 2
+    market position, aware, four insurers, books of 100,000, GBM/GBM/GLM/GLM, partition 2
+    market position, aware, four insurers, books of 50,000, GLM/GLM/GLM/GBM, partition 3
+    market position, aware, four insurers, books of 100,000, GLM/GLM/GBM/GBM, partition 3
+    market position, aware, four insurers, books of 100,000, GLM/GBM/GLM/GLM, partition 3
+    market position, aware, four insurers, books of 100,000, GLM/GBM/GLM/GBM, partition 3
+    market position, aware, four insurers, books of 100,000, GLM/GBM/GBM/GLM, partition 3
+    market position, aware, four insurers, books of 100,000, GBM/GBM/GLM/GLM, partition 3
+    market position, aware, four insurers, books of 100,000, GLM/GLM/GLM/GBM, partition 4
+    market position, aware, four insurers, books of 100,000, GLM/GBM/GBM/GLM, partition 4
+    market position, aware, four insurers, books of 100,000, GBM/GLM/GBM/GLM, partition 4
+    market position, aware, four insurers, books of 100,000, GBM/GBM/GLM/GLM, partition 4
+    market position, aware, four insurers, books of 20,000, GLM/GBM/GLM/GBM, partition 5
+    market position, aware, four insurers, books of 50,000, GLM/GLM/GLM/GBM, partition 5
+    market position, aware, four insurers, books of 100,000, GLM/GLM/GLM/GBM, partition 5
+    market position, aware, four insurers, books of 100,000, GBM/GLM/GLM/GLM, partition 5
+    market position, aware, four insurers, books of 100,000, GBM/GBM/GLM/GBM, partition 5
+    market position, aware, four insurers, books of 100,000, GLM/GBM/GBM/GLM, partition 6
+    market position, aware, four insurers, books of 100,000, GBM/GLM/GLM/GLM, partition 6
+    market position, aware, four insurers, books of 100,000, GBM/GBM/GLM/GLM, partition 6
+  in those plays, the largest gain an insurer could still make by moving one segment level where the iterations stop: below 0.25 percent of claims
   market position, aware, 2 insurers (216 plays): largest gain any insurer could make by moving one segment level on a grid of +-0.3, in percent of claims: below 1e-6
-  market position, aware, 4 insurers (288 plays): largest gain any insurer could make by moving one segment level on a grid of +-0.3, in percent of claims: 0.109090
+  market position, aware, 4 insurers (264 plays): largest gain any insurer could make by moving one segment level on a grid of +-0.3, in percent of claims: below 1e-6
   market position, naive, 2 insurers (216 plays): largest gain any insurer could make by moving one segment level on a grid of +-0.3, in percent of claims: below 1e-6
   market position, naive, 4 insurers (288 plays): largest gain any insurer could make by moving one segment level on a grid of +-0.3, in percent of claims: below 1e-6
   risk band, naive, 2 insurers (216 plays): largest gain any insurer could make by moving one segment level on a grid of +-0.3, in percent of claims: below 1e-6
@@ -489,8 +490,8 @@ beMTPL97: checks
   market position, aware: settled in 504 of 504 plays
   market position, naive: settled in 504 of 504 plays
   risk band, naive: settled in 504 of 504 plays
-  risk band with curse-aware pricing, two insurers, books of 5,000, partition 1 (ten rounds of iterations and grid moves): GLM against GLM: settled, largest remaining gain from moving one segment level 0.0000 percent of claims; GLM against GBM: settled, largest remaining gain from moving one segment level 0.0000 percent of claims; GBM against GBM: settled, largest remaining gain from moving one segment level 0.0000 percent of claims
-  plays that did not settle: none
+  risk band with curse-aware pricing, two insurers, books of 5,000, partition 1 (ten rounds of iterations and grid moves): GLM against GLM: settled; GLM against GBM: settled; GBM against GBM: settled
+  plays that did not settle, left out of the payoffs above: none
   market position, aware, 2 insurers (216 plays): largest gain any insurer could make by moving one segment level on a grid of +-0.3, in percent of claims: below 1e-6
   market position, aware, 4 insurers (288 plays): largest gain any insurer could make by moving one segment level on a grid of +-0.3, in percent of claims: below 1e-6
   market position, naive, 2 insurers (216 plays): largest gain any insurer could make by moving one segment level on a grid of +-0.3, in percent of claims: below 1e-6
