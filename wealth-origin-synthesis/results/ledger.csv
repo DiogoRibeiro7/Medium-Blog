@@ -1,0 +1,30 @@
+objection,study,test,statistic,verdict,rule,cell
+Top-1% wealth share predicts slower growth within countries,audit,"within-country estimator, 108 wealth specifications","median +0.132; significant 3 negative, 17 positive; source-based wealth data median +0.048 (joint p=0.374)",failed,sign test,median +0.132
+Inherited control goes with slower TFP growth,audit,"pooled 5-year windows, 331 country-waves in 112 countries","-0.38 [-1.29, +0.48]",open,estimate,"-0.38 [-1.29, +0.48]"
+Inherited control goes with slower TFP growth,panel,"country and year fixed effects, 13 annual lists","-1.17 [-2.03, -0.30]",passed,estimate,"-1.17 [-2.03, -0.30]"
+Inherited control goes with slower TFP growth,successions,TFP growth over the three years after control passes to heirs,"-2.79 [-4.96, -0.61]",passed,estimate,"-2.79 [-4.96, -0.61]"
+Not a reflection of earlier growth,panel,same coefficient on growth t-3 to t; forward minus backward,"backward -0.00; forward minus backward -1.16 [-3.44, +0.22]",open,reverse timing,"-1.16 [-3.44, +0.22]"
+Not a reflection of earlier growth,sectors,"sector-controlled coefficient, forward minus backward","backward +0.26; forward minus backward -1.31 [-3.50, +0.22]",open,reverse timing,"-1.31 [-3.50, +0.22]"
+Not a reflection of earlier growth,pandemic,"two-list average, exposures controlled, forward minus backward","backward -0.36; forward minus backward -1.12 [-3.33, +0.68]",open,reverse timing,"-1.12 [-3.33, +0.68]"
+Not a reflection of earlier growth,successions,growth in the year before the first list without the founder (k=-1),"+1.30 [-0.23, +2.83] against a post effect of -2.79",open,pre-trend equivalence,"+1.30 [-0.23, +2.83]"
+Not driven by one country,panel,drop each of 56 countries,range -1.35 to -0.89; interval excludes zero in 56 of 56,passed,leave one out,56 of 56 drops
+Not driven by one country,sectors,"drop each of 56 countries, sector-controlled",range -1.25 to -0.87; interval excludes zero in 56 of 56,passed,leave one out,56 of 56 drops
+Not driven by one country,successions,drop each of 19 countries with a succession,range -4.19 to -2.29; interval excludes zero in 18 of 19,passed,leave one out,18 of 19 drops
+Not explained by the sector mix,sectors,all 18 sector shares as controls,"-1.25 [-2.19, -0.30] (six groups -1.05); required sector coefficient outside its interval in 12 of 12",passed,estimate vs reference,"-1.25 [-2.19, -0.30]"
+Not explained by pandemic exposure,pandemic,four exposures x list year,"-1.11 [-2.06, -0.15] (without exposures -1.05)",passed,estimate vs reference,"-1.11 [-2.06, -0.15]"
+Not explained by pandemic exposure,successions,exposure x year in the event study,"-1.69 [-6.05, +2.68] (baseline -2.79)",open,estimate vs reference,"-1.69 [-6.05, +2.68]"
+Survives without the 2020 list,panel,lists 2011-2016 only (windows end by 2019),"-0.27 [-0.97, +0.43] (all lists -1.17)",failed,estimate vs reference,"-0.27 [-0.97, +0.43]"
+Survives without the 2020 list,sectors,2020 list dropped,"-0.65 [-1.32, +0.02] (all lists -1.05)",open,estimate vs reference,"-0.65 [-1.32, +0.02]"
+Survives without the 2020 list,pandemic,"two-list average, 2020 list dropped","-1.16 [-2.14, -0.17] (single list without 2020: -0.69)",passed,estimate vs reference,"-1.16 [-2.14, -0.17]"
+Survives without the 2020 list,successions,growth years 2020 and 2021 left out,"+0.53 [-2.03, +3.09] (baseline -2.79)",failed,estimate vs reference,"+0.53 [-2.03, +3.09]"
+Not an artefact of one list's valuations,pandemic,average of lists t-1 and t,"-1.47 [-2.65, -0.30] (headcount measure -1.02)",passed,estimate vs reference,"-1.47 [-2.65, -0.30]"
+Also shows in GDP per capita growth,panel,joint test over 72 GDP specifications,"median -0.064, Stouffer p=0.235",failed,joint test,p = 0.235
+Also shows in GDP per capita growth,sectors,joint test over 12 GDP specifications,"median -0.657, Stouffer p=0.122",failed,joint test,p = 0.122
+Also shows in GDP per capita growth,pandemic,"joint test, two-list average, 12 GDP specifications","median -0.301, Stouffer p=0.156",failed,joint test,p = 0.156
+Also shows in GDP per capita growth,successions,event study on GDP per capita growth,"-3.96 [-7.32, -0.61]",passed,estimate,"-3.96 [-7.32, -0.61]"
+Holds across the whole specification set,panel,joint test over 72 TFP specifications,"median -0.145, Stouffer p=0.008",passed,joint test,p = 0.008
+Holds across the whole specification set,sectors,"joint test, sector-controlled, 12 TFP specifications","median -0.668, Stouffer p=0.003",passed,joint test,p = 0.003
+Holds across the whole specification set,pandemic,"joint test, two-list average, 12 TFP specifications","median -0.615, Stouffer p=0.004",passed,joint test,p = 0.004
+Beats randomly reshuffled timing,successions,"1,000 within-country reshuffles of shock years",share of draws at or below -2.79: 0.083,open,permutation,p = 0.083
+Founder exits without heirs show no drop,successions,founders aged 70+ leaving with no heir listed,"+0.84 [-1.42, +3.09] (successions -2.79)",passed,placebo events,"+0.84 [-1.42, +3.09]"
+Event study and panel agree on size,successions,"event-study effect vs panel prediction, median succession",-0.131 vs -0.035 pp a year (ratio 3.8),failed,ratio,3.8 times
