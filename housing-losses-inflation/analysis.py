@@ -504,7 +504,7 @@ def main() -> None:
     line(f"OECD quarterly set: {qc.iso.nunique()} OECD members, {len(qc)} country-quarters, "
          f"{q.dropna(subset=['HPI']).label.min()} to {q.dropna(subset=['HPI']).label.max()}")
     pd.DataFrame({"iso": gap_c.index, "years_gap_gt_2pp": gap_c.values}).to_csv(
-        RESULTS / "jst_price_series_gap.csv", index=False)
+        RESULTS / "jst_price_series_gap.csv", index=False, float_format="%.10g")
 
     # ---- [1] loss years -----------------------------------------------------------
     a = p.dropna(subset=["dlp", "dlc"]).copy()
@@ -523,7 +523,7 @@ def main() -> None:
                         "p_nominal_fall": d.nl.mean(), "p_real_fall": d.rl.mean(),
                         "hidden_share_of_real_falls": d.hid.sum() / d.rl.sum()})
     Y = pd.DataFrame(yrs)
-    Y.to_csv(RESULTS / "loss_years_jst.csv", index=False)
+    Y.to_csv(RESULTS / "loss_years_jst.csv", index=False, float_format="%.10g")
     line("")
     line("[1] Single years, JST price set")
     r0 = Y[Y.group == "all"].iloc[0]
@@ -543,7 +543,7 @@ def main() -> None:
     H3 = loss_table(wq, "lN", "lR", None, "OECD quarterly", rng,
                     {"all": None, "decade": "decade", "inflation": "ibin"})
     H = pd.concat([H1, H2, H3], ignore_index=True)
-    H.to_csv(RESULTS / "holding_periods.csv", index=False)
+    H.to_csv(RESULTS / "holding_periods.csv", index=False, float_format="%.10g")
     line("")
     line("[2] Holding periods: share of purchases showing a loss after h years")
     line("    (95% intervals: countries resampled with replacement)")
@@ -584,9 +584,9 @@ def main() -> None:
     EJcg["era"] = EJcg.peak.map(lambda y: era_of(int(y) + 1) or era_of(int(y)))
     EQ = price_episodes(q, "t", "dlp", "dlc", THRESHOLD, 4, label_col="label")
     EQ["decade"] = ((EQ.peak // 4) // 10 * 10).astype(int).astype(str) + "s"
-    EJ.to_csv(RESULTS / "episodes_jst.csv", index=False)
-    EJcg.to_csv(RESULTS / "episodes_jst_returns_series.csv", index=False)
-    EQ.to_csv(RESULTS / "episodes_oecd.csv", index=False)
+    EJ.to_csv(RESULTS / "episodes_jst.csv", index=False, float_format="%.10g")
+    EJcg.to_csv(RESULTS / "episodes_jst_returns_series.csv", index=False, float_format="%.10g")
+    EQ.to_csv(RESULTS / "episodes_oecd.csv", index=False, float_format="%.10g")
     ES = pd.concat([
         episode_summary(EJ, None).assign(sample="JST price set"),
         episode_summary(EJ, "era").assign(sample="JST price set"),
@@ -594,7 +594,7 @@ def main() -> None:
         episode_summary(EQ, None).assign(sample="OECD quarterly"),
         episode_summary(EQ, "decade").assign(sample="OECD quarterly"),
     ], ignore_index=True)
-    ES.to_csv(RESULTS / "episode_summary.csv", index=False)
+    ES.to_csv(RESULTS / "episode_summary.csv", index=False, float_format="%.10g")
     line("")
     line(f"[3] Real price drawdowns of at least {THRESHOLD:.0%} (peak to trough)")
     for _, r in ES.iterrows():
@@ -615,7 +615,7 @@ def main() -> None:
                          "spearman_hidden_vs_inflation": stats.spearmanr(
                              E_.infl_annual, E_.hidden_share, nan_policy="omit").statistic})
     SENS = pd.DataFrame(sens)
-    SENS.to_csv(RESULTS / "episode_threshold_sensitivity.csv", index=False)
+    SENS.to_csv(RESULTS / "episode_threshold_sensitivity.csv", index=False, float_format="%.10g")
     line("  Threshold sensitivity:")
     for _, r in SENS.iterrows():
         line(f"    {r['sample']:16s} >= {r.threshold:.0%}: {r.episodes:3d} episodes, median hidden share "
@@ -653,7 +653,7 @@ def main() -> None:
                  f"{pct(dd.hidden_share.median())}, median real fall per year "
                  f"{pct(dd.real_fall_per_year.median())}, median years to trough "
                  f"{dd.years_to_trough.median():.2f}")
-    pd.DataFrame(reg_rows).to_csv(RESULTS / "speed_regression.csv", index=False)
+    pd.DataFrame(reg_rows).to_csv(RESULTS / "speed_regression.csv", index=False, float_format="%.10g")
 
     # ---- [5] two busts: 2007-type vs 2021-type --------------------------------------
     line("")
@@ -693,7 +693,7 @@ def main() -> None:
                      "nominal_now_vs_real_peak": g.HPI.iloc[-1] / g.HPI[a_] - 1,
                      "latest": g.label.iloc[-1]})
     POST = pd.DataFrame(post).sort_values("real_fall", ascending=False)
-    POST.to_csv(RESULTS / "post2020_oecd.csv", index=False)
+    POST.to_csv(RESULTS / "post2020_oecd.csv", index=False, float_format="%.10g")
     line(f"  All {len(POST)} OECD members since 2020-Q1: real fall from post-2020 peak >= 10% in "
          f"{int((POST.real_fall >= 0.10).sum())}, >= 5% in {int((POST.real_fall >= 0.05).sum())}; "
          f"nominal index lower at the real trough than at the real peak in "
@@ -739,7 +739,7 @@ def main() -> None:
                          "share_of_tr_losses_with_infl_gt5": ((dh.lT < 0) & (dh.infl > 0.05)).sum()
                          / max(1, (dh.lT < 0).sum())})
     HC = pd.DataFrame(hair)
-    HC.to_csv(RESULTS / "rent_haircut.csv", index=False)
+    HC.to_csv(RESULTS / "rent_haircut.csv", index=False, float_format="%.10g")
     for _, r in HC[HC.h.isin([5, 10])].iterrows():
         line(f"  rent return cut {r.haircut:.0%}, {int(r.h):2d}y: mean real TR {pct(r.mean_annual_real_tr)}; "
              f"P(real price loss) {pct(r.p_real_price_loss)}; P(real TR loss) {pct(r.p_real_tr_loss)}; "
@@ -748,7 +748,7 @@ def main() -> None:
              f"{pct(r.share_of_tr_losses_with_infl_gt5)}")
     TE = real_tr_episodes(p, THRESHOLD)
     TE["era"] = TE.peak.map(lambda y: era_of(int(y) + 1) or era_of(int(y)))
-    TE.to_csv(RESULTS / "episodes_real_total_return.csv", index=False)
+    TE.to_csv(RESULTS / "episodes_real_total_return.csv", index=False, float_format="%.10g")
     allyrs = p.dropna(subset=["dltr", "dlc", "dlcg"])
     line(f"  Real total-return drawdowns >= {THRESHOLD:.0%}: {len(TE)} in {TE.iso.nunique()} countries "
          f"(vs {len(EJcg)} real price drawdowns on the same price series)")
@@ -771,7 +771,7 @@ def main() -> None:
 
     # ---- [7] after 2020 with rents ------------------------------------------------------
     X20 = extend_returns_after_2020(p, oa)
-    X20.to_csv(RESULTS / "returns_2021_2025.csv", index=False)
+    X20.to_csv(RESULTS / "returns_2021_2025.csv", index=False, float_format="%.10g")
     line("")
     line(f"[7] 2021-{LAST_FULL_YEAR}, JST returns countries extended with OECD annual averages")
     agg = []
@@ -785,7 +785,7 @@ def main() -> None:
                     "worst_real_price_dd": max_drawdown(lvl_p), "worst_real_tr_dd": max_drawdown(lvl_t),
                     "mean_net_yield": d.net_yield.mean()})
     AGG = pd.DataFrame(agg)
-    AGG.to_csv(RESULTS / "returns_2021_2025_summary.csv", index=False)
+    AGG.to_csv(RESULTS / "returns_2021_2025_summary.csv", index=False, float_format="%.10g")
     carried = X20[X20.price_to_rent_carried].groupby("iso").year.apply(list)
     line("  price-to-rent ratio not yet published, last value carried forward: "
          + ("; ".join(f"{k} {v}" for k, v in carried.items()) if len(carried) else "none"))
@@ -802,7 +802,7 @@ def main() -> None:
 
     # ---- [8] Portugal ---------------------------------------------------------------
     PT = portugal_series(p, oa)
-    PT.to_csv(RESULTS / "portugal_annual.csv", index=False)
+    PT.to_csv(RESULTS / "portugal_annual.csv", index=False, float_format="%.10g")
     line("")
     line(f"[8] Portugal, 1948-{LAST_FULL_YEAR} (annual)")
     gp = p[(p.iso == "PRT") & p.year.between(1989, 2013)].dropna(subset=["dlp", "dlcg"])
@@ -821,7 +821,7 @@ def main() -> None:
                              "dlp": np.log(pt.N).diff().to_numpy(),
                              "dlc": np.log(pt.C).diff().to_numpy()})
     EP = price_episodes(pt_panel, "year", "dlp", "dlc", THRESHOLD, 1)
-    EP.to_csv(RESULTS / "portugal_episodes.csv", index=False)
+    EP.to_csv(RESULTS / "portugal_episodes.csv", index=False, float_format="%.10g")
     for _, r in EP.iterrows():
         rec = "not yet" if r.recovery is None or pd.isna(r.recovery) else int(r.recovery)
         line(f"  real drawdown {int(r.peak)}-{int(r.trough)} (recovered {rec}): real {pct(-r.real_fall)}, "
@@ -866,7 +866,7 @@ def main() -> None:
     G = pd.DataFrame(gains)
     G["inflation_share"] = G.inflation_log / G.nominal_log
     G["real_annual"] = np.expm1((G.nominal_log - G.inflation_log) / (G["to"] - G["from"]))
-    G.to_csv(RESULTS / "gains_inflation_share.csv", index=False)
+    G.to_csv(RESULTS / "gains_inflation_share.csv", index=False, float_format="%.10g")
     line(f"  JST price set, whole sample per country: median inflation share {pct(G.inflation_share.median())} "
          f"(range {pct(G.inflation_share.min())} to {pct(G.inflation_share.max())}); median real price "
          f"growth {pct(G.real_annual.median(), 2)} a year")

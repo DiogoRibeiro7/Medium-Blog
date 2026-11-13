@@ -93,9 +93,12 @@ def fetch_jst(out: Path, log: list[str], local: Path | None) -> bool:
     for url in JST_URLS:
         status, body = _get(url)
         _log(log, url, status, body)
-        if status == 200 and body[:2] == b"PK":  # xlsx is a zip archive
+        # the download link is named .xlsx but has served a Stata file; accept either
+        kind = "xlsx" if body[:2] == b"PK" else "dta" if body[:11] == b"<stata_dta>" else None
+        if status == 200 and kind:
             try:
-                raw = pd.read_excel(io.BytesIO(body))
+                raw = (pd.read_excel(io.BytesIO(body)) if kind == "xlsx"
+                       else pd.read_stata(io.BytesIO(body)))
                 tidy = _tidy_jst(raw)
             except Exception as e:  # unexpected layout: keep the committed extract
                 log.append(f"# {url}: could not parse ({type(e).__name__}: {e})")
@@ -103,7 +106,7 @@ def fetch_jst(out: Path, log: list[str], local: Path | None) -> bool:
             tidy.to_csv(out / "jst_housing.csv", index=False, float_format="%.12g")
             return True
         if status == 200:
-            log.append(f"# {url}: not an xlsx archive, first bytes {body[:16]!r}")
+            log.append(f"# {url}: neither xlsx nor Stata, first bytes {body[:16]!r}")
     return False
 
 
