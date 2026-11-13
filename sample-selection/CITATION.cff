@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite it as below."
+title: "A Heckman Correction Without an Exclusion Restriction Rests on the Normal Distribution Alone"
+authors:
+  - family-names: Ribeiro
+    given-names: Diogo
+    email: dfr@esmad.ipp.pt
+    orcid: "https://orcid.org/0009-0001-2022-7072"
+version: 0.1.0
+date-released: 2026-11-12
+license: Apache-2.0
+repository-code: "https://github.com/DiogoRibeiro7/Medium-Blog/tree/main/sample-selection"
+references:
+  - type: data
+    title: "Rdatasets: sampleSelection::Mroz87, sampleSelection::RandHIE"
+    authors:
+      - family-names: Arel-Bundock
+        given-names: Vincent
+    repository-code: "https://github.com/vincentarelbundock/Rdatasets"

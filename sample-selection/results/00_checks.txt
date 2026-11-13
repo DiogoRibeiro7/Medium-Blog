@@ -1,0 +1,6 @@
+probit equals statsmodels Probit (coefficients, standard errors, log-likelihood): OK
+two-step, Wooldridge's specification: outcome [-0.578103, 0.109066, 0.043887, -0.000859], inverse Mills ratio 0.032262 (SE 0.1336), sigma 0.663629, rho 0.048614, outcome SEs [0.305006, 0.015523, 0.016261, 0.000439] equal sampleSelection 1.2-16: OK
+two-step, Greene's specification: outcome [-0.971200, 0.021061, 0.000137, 0.417017, 0.443838], SEs [2.059351, 0.062465, 0.001878, 0.100250, 0.315898], inverse Mills ratio -1.098 (SE 1.266), sigma 3.200, rho -0.343 equal sampleSelection: OK
+ML, Wooldridge's specification: outcome [-0.552696, 0.108350, 0.042837, -0.000837], sigma 0.663398, rho 0.026607, outcome SEs [0.260379, 0.014861, 0.014879, 0.000417], SE(sigma) 0.0227, SE(rho) 0.1471, log-likelihood -832.885 equal sampleSelection (printed -833): OK
+ML, Greene's specification from the two-step start: log-likelihood -1581.258, outcome [-1.963024, 0.027868, -0.000104, 0.457005, 0.446529], sigma 3.108, rho -0.132 equal sampleSelection; started at rho = 0.5 it reaches the higher maximum -1479.654 (vignette: -1479.654), with rho 0.9931, educ 0.6657: OK
+large simulated sample (n = 200,000, rho = 0.6): two-step slope 0.4958, rho 0.595; ML slope 0.4960, rho 0.595, sigma 0.995 (truth 0.5, 0.6, 1): OK

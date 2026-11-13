@@ -1,0 +1,36 @@
+Mroz87: 753 women, 428 worked; workers' mean log wage 1.1902
+Sensitivity to an assumed rho (ML, participation equation with all regressors): rho; return to education (SE); non-workers' mean log offered wage minus workers' mean; log-likelihood minus the maximum; implied median log offered wage of all women
+   rho -0.8: educ 0.0732 (0.0160); gap +0.7979; log-likelihood -18.13; median 1.5346
+   rho -0.7: educ 0.0798 (0.0153); gap +0.6021; log-likelihood -11.40; median 1.4500
+   rho -0.6: educ 0.0851 (0.0149); gap +0.4469; log-likelihood -7.72; median 1.3830
+   rho -0.5: educ 0.0896 (0.0146); gap +0.3138; log-likelihood -5.27; median 1.3256
+   rho -0.4: educ 0.0936 (0.0144); gap +0.1945; log-likelihood -3.46; median 1.2743
+   rho -0.3: educ 0.0973 (0.0143); gap +0.0845; log-likelihood -2.08; median 1.2270
+   rho -0.2: educ 0.1008 (0.0142); gap -0.0195; log-likelihood -1.04; median 1.1823
+   rho -0.1: educ 0.1042 (0.0141); gap -0.1196; log-likelihood -0.34; median 1.1394
+   rho +0.0: educ 0.1075 (0.0141); gap -0.2179; log-likelihood -0.02; median 1.0973
+   rho +0.1: educ 0.1107 (0.0141); gap -0.3161; log-likelihood -0.13; median 1.0553
+   rho +0.2: educ 0.1139 (0.0142); gap -0.4162; log-likelihood -0.79; median 1.0125
+   rho +0.3: educ 0.1172 (0.0143); gap -0.5204; log-likelihood -2.12; median 0.9680
+   rho +0.4: educ 0.1207 (0.0145); gap -0.6315; log-likelihood -4.33; median 0.9206
+   rho +0.5: educ 0.1243 (0.0148); gap -0.7536; log-likelihood -7.75; median 0.8685
+   rho +0.6: educ 0.1284 (0.0153); gap -0.8928; log-likelihood -12.96; median 0.8092
+   rho +0.7: educ 0.1331 (0.0159); gap -1.0605; log-likelihood -21.19; median 0.7377
+   rho +0.8: educ 0.1391 (0.0170); gap -1.2823; log-likelihood -35.58; median 0.6432
+   rho values within the 95% likelihood-ratio region: -0.2 to +0.2; over them educ 0.1008-0.1139 and the gap -0.4162 to -0.0195
+   in percent (100 x (1 - exp(gap))): non-workers offered 1.9% to 34.0% less than workers earn (geometric means)
+   over rho in [-0.5, 0.5]: educ 0.0896-0.1243; gap -0.7536 to +0.3138
+Point estimates: return to education; non-workers' gap; implied median log offered wage of all women; rho
+   Least squares                            educ 0.1075; gap -0.2179; median 1.0973; rho +nan
+   Heckman ML, excluded: all four           educ 0.1084; gap -0.2440; median 1.0861; rho +0.0266
+   Heckman ML, excluded: children only      educ 0.1047; gap -0.1322; median 1.1340; rho -0.0818
+   Heckman ML, excluded: other income only  educ 0.1116; gap -0.3448; median 1.0429; rho +0.1172
+   Heckman ML, excluded: age only           educ 0.1086; gap -0.2545; median 1.0816; rho +0.0344
+   Heckman ML, excluded: none               educ 0.0792; gap +0.6666; median 1.4778; rho -0.6935
+Each point against the sensitivity curve at its own rho (ML, participation equation with all regressors, rho held at the point's estimate)
+   Heckman ML, excluded: all four           gap -0.2440; curve -0.2440; point minus curve +0.0000
+   Heckman ML, excluded: children only      gap -0.1322; curve -0.1376; point minus curve +0.0053
+   Heckman ML, excluded: other income only  gap -0.3448; curve -0.3331; point minus curve -0.0118
+   Heckman ML, excluded: age only           gap -0.2545; curve -0.2516; point minus curve -0.0029
+   Heckman ML, excluded: none               gap +0.6666; curve +0.5911; point minus curve +0.0756
+Manski worst-case bounds on the median log offered wage of all women: [0.4858, 1.9420] (dollars 1.63 to 6.97); every model's implied median lies inside the bounds; the implied medians range 1.0429 to 1.4778

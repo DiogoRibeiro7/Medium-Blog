@@ -285,11 +285,21 @@ def main(argv: Sequence[str] | None = None) -> None:
     parser.add_argument("--start-index", type=int, default=0)
     parser.add_argument("--count", type=int, default=2)
     parser.add_argument("--dimension", choices=["Dim2", "Dim3"], default="Dim2")
+    parser.add_argument("--timeout-seconds", type=float, default=DEFAULT_TIMEOUT_SECONDS,
+                        help="Bounded per-slice INE read timeout, >0 and <=120 seconds")
     args = parser.parse_args(argv)
+    if not math.isfinite(args.timeout_seconds) or not 0 < args.timeout_seconds <= 120:
+        parser.error("--timeout-seconds must be finite and in (0, 120]")
+
+    def bounded_fetch(url: str) -> CapturedJSON:
+        """Apply the validated per-slice timeout without changing capture semantics."""
+        return download_slice(url, timeout_seconds=args.timeout_seconds)
+
     metadata_bytes = args.metadata_json.read_bytes() if args.metadata_json is not None else download_pinned_metadata()
     result = capture_partition(
         args.output, metadata_bytes=metadata_bytes,
         start_index=args.start_index, count=args.count, dimension=args.dimension,
+        fetcher=bounded_fetch,
     )
     print(f"INE 0012340: {result['completed_json_captures']}/{result['capture_count']} "
           "candidate geographic slices saved, all unverified.")

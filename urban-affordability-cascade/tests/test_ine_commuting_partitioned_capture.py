@@ -7,16 +7,20 @@ does not establish the effectiveness of the Dim2/Dim3 filtering parameter.
 from __future__ import annotations
 
 import hashlib
+import io
 import json
 import tempfile
 import unittest
+from contextlib import redirect_stderr, redirect_stdout
 from pathlib import Path
+from unittest.mock import patch
 
 from extract_commuting import municipality_codes_from_panel
 from ine_commuting_capture import CapturedJSON
 from ine_commuting_partitioned_capture import (
     candidate_slice_url,
     capture_partition,
+    main,
     require_slice_url,
     validate_metadata,
 )
@@ -189,6 +193,41 @@ class PartitionedINECaptureTests(unittest.TestCase):
                 with self.assertRaises(ValueError):
                     capture_partition(Path(temp), metadata_bytes=self.source,
                                       fetcher=fake_response, **args)
+
+    def test_cli_applies_a_longer_bounded_slice_timeout(self) -> None:
+        """Pass 75 seconds to the live downloader, using no real network calls."""
+        observed: list[tuple[str, float]] = []
+
+        def fake_download(url: str, *, timeout_seconds: float) -> CapturedJSON:
+            observed.append((url, timeout_seconds))
+            return fake_response(url)
+
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            metadata = root / "metadata.json"
+            metadata.write_bytes(self.source)
+            with patch(
+                "ine_commuting_partitioned_capture.download_slice",
+                side_effect=fake_download,
+            ), redirect_stdout(io.StringIO()):
+                main([
+                    "--metadata-json", str(metadata),
+                    "--output", str(root / "capture"),
+                    "--start-index", "4", "--count", "1",
+                    "--dimension", "Dim2", "--timeout-seconds", "75",
+                ])
+            self.assertEqual(observed, [(candidate_slice_url("0116"), 75.0)])
+            report = json.loads((root / "capture" / "partition_manifest.json").read_text())
+            self.assertEqual(report["requested_codes"], ["0116"])
+            self.assertEqual(report["completed_json_captures"], 1)
+
+    def test_cli_rejects_nonfinite_or_unbounded_timeouts(self) -> None:
+        """Reject invalid timeouts before metadata or network access."""
+        for timeout in ("nan", "inf", "0", "-1", "121"):
+            with self.subTest(timeout=timeout), redirect_stderr(io.StringIO()):
+                with self.assertRaises(SystemExit) as captured:
+                    main(["--output", "/tmp/unused-ine-timeout-test", "--timeout-seconds", timeout])
+                self.assertEqual(captured.exception.code, 2)
 
 
 if __name__ == "__main__":
