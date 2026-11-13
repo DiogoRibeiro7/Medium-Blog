@@ -5,10 +5,10 @@ Digest (RMSE relative to least squares on the selected, by error distribution)
    normal          Two-step without z  RMSE ratio: exclusion strength 0 0.972-2.188; strength 1 2.233-5.738; all strengths 0.972-5.738; worse than OLS in 14 of 16 cells; bias -0.0256 to +0.0198; coverage 0.954-1.000 over the 16 cells with a standard error in every sample
    normal          ML without z        RMSE ratio: exclusion strength 0 0.332-1.107; strength 1 0.916-1.577; all strengths 0.332-1.577; worse than OLS in 7 of 16 cells; bias -0.0923 to -0.0032; coverage 0.734-0.950 over the 16 cells with a standard error in every sample
    t5              Two-step with z     RMSE ratio: exclusion strength 0 0.913-1.785; strength 1 0.368-0.732; all strengths 0.313-1.785; worse than OLS in 2 of 16 cells; bias +0.0003 to +0.0254; coverage 0.944-0.988 over the 16 cells with a standard error in every sample
-   t5              ML with z           RMSE ratio: exclusion strength 0 0.358-1.052; strength 1 0.396-0.717; all strengths 0.346-1.052; worse than OLS in 1 of 16 cells; bias +0.0021 to +0.0814; coverage 0.538-0.954 over the 16 cells with a standard error in every sample
+   t5              ML with z           RMSE ratio: exclusion strength 0 0.358-1.054; strength 1 0.396-0.717; all strengths 0.346-1.054; worse than OLS in 1 of 16 cells; bias +0.0021 to +0.0814; coverage 0.538-0.954 over the 16 cells with a standard error in every sample
    t5              Series with z       RMSE ratio: exclusion strength 0 2.461-4.988; strength 1 0.371-0.735; all strengths 0.316-4.988; worse than OLS in 5 of 16 cells; bias -0.1641 to +0.0113; coverage nan-nan over the 0 cells with a standard error in every sample
    t5              Two-step without z  RMSE ratio: exclusion strength 0 1.023-2.019; strength 1 2.524-5.645; all strengths 1.023-5.645; worse than OLS in 16 of 16 cells; bias -0.0094 to +0.0978; coverage 0.962-1.000 over the 16 cells with a standard error in every sample
-   t5              ML without z        RMSE ratio: exclusion strength 0 0.347-1.033; strength 1 0.736-1.933; all strengths 0.347-1.933; worse than OLS in 6 of 16 cells; bias +0.0089 to +0.1244; coverage 0.376-0.914 over the 16 cells with a standard error in every sample
+   t5              ML without z        RMSE ratio: exclusion strength 0 0.347-1.034; strength 1 0.736-1.934; all strengths 0.347-1.934; worse than OLS in 6 of 16 cells; bias +0.0089 to +0.1244; coverage 0.376-0.914 over the 16 cells with a standard error in every sample
    skewed          Two-step with z     RMSE ratio: exclusion strength 0 0.422-1.278; strength 1 0.316-0.746; all strengths 0.236-1.278; worse than OLS in 1 of 16 cells; bias -0.1252 to +0.0055; coverage 0.922-0.976 over the 16 cells with a standard error in every sample
    skewed          ML with z           RMSE ratio: exclusion strength 0 0.702-1.827; strength 1 0.445-1.111; all strengths 0.445-1.921; worse than OLS in 7 of 16 cells; bias +0.0290 to +0.3658; coverage 0.000-0.822 over the 8 cells with a standard error in every sample
    skewed          Series with z       RMSE ratio: exclusion strength 0 0.707-4.183; strength 1 0.318-0.767; all strengths 0.244-4.183; worse than OLS in 3 of 16 cells; bias -0.0311 to +0.0297; coverage nan-nan over the 0 cells with a standard error in every sample
@@ -18,7 +18,7 @@ Digest (RMSE relative to least squares on the selected, by error distribution)
    heteroscedastic ML with z           RMSE ratio: exclusion strength 0 0.405-1.201; strength 1 1.036-1.538; all strengths 0.405-1.538; worse than OLS in 9 of 16 cells; bias -0.0012 to +0.0512; coverage 0.776-0.940 over the 16 cells with a standard error in every sample
    heteroscedastic Series with z       RMSE ratio: exclusion strength 0 4.892-16.976; strength 1 1.050-1.565; all strengths 0.570-16.976; worse than OLS in 12 of 16 cells; bias -0.1255 to +0.0518; coverage nan-nan over the 0 cells with a standard error in every sample
    heteroscedastic Two-step without z  RMSE ratio: exclusion strength 0 3.966-17.268; strength 1 11.935-21.189; all strengths 3.966-21.189; worse than OLS in 16 of 16 cells; bias -0.0504 to +0.6962; coverage 0.994-1.000 over the 11 cells with a standard error in every sample
-   heteroscedastic ML without z        RMSE ratio: exclusion strength 0 0.401-1.182; strength 1 1.414-182.400; all strengths 0.401-182.400; worse than OLS in 12 of 16 cells; bias -0.2779 to +0.0534; coverage 0.814-0.910 over the 16 cells with a standard error in every sample
+   heteroscedastic ML without z        RMSE ratio: exclusion strength 0 0.401-1.182; strength 1 1.340-2.265; all strengths 0.401-2.265; worse than OLS in 12 of 16 cells; bias -0.0148 to +0.0532; coverage 0.814-0.910 over the 16 cells with a standard error in every sample
 All 64 designs: cells in which each estimator's RMSE exceeds least squares on the selected
    Two-step with z     18 of 64; strength 0: 10 of 16; strength 0.25: 2 of 16; strength 0.5: 2 of 16; strength 1: 4 of 16
    ML with z           18 of 64; strength 0: 5 of 16; strength 0.25: 4 of 16; strength 0.5: 4 of 16; strength 1: 5 of 16
@@ -38,9 +38,9 @@ ML (t5): |rho| > 0.95 in 0.000-0.020 of samples per cell; two-step start at a lo
 ML (skewed): |rho| > 0.95 in 0.022-1.000 of samples per cell; two-step start at a lower maximum in 0.000-0.376
    ML with z: |rho| > 0.95 in 0.022-1.000; coverage 0.000-0.822; bias +0.0290 to +0.3658
    ML without z: |rho| > 0.95 in 0.926-1.000; coverage 0.000-0.096; bias +0.1280 to +0.3662
-ML (heteroscedastic): |rho| > 0.95 in 0.000-0.004 of samples per cell; two-step start at a lower maximum in 0.000-0.256
+ML (heteroscedastic): |rho| > 0.95 in 0.000-0.000 of samples per cell; two-step start at a lower maximum in 0.000-0.256
    ML with z: |rho| > 0.95 in 0.000-0.000; coverage 0.776-0.940; bias -0.0012 to +0.0512
-   ML without z: |rho| > 0.95 in 0.000-0.004; coverage 0.814-0.910; bias -0.2779 to +0.0534
+   ML without z: |rho| > 0.95 in 0.000-0.000; coverage 0.814-0.910; bias -0.0148 to +0.0532
 ML without z: |rho| > 0.95 in 0.000-1.000 of samples per cell; two-step start at a lower maximum in 0.002-0.398
 ML with z: |rho| > 0.95 in 0.000-1.000 of samples per cell; two-step start at a lower maximum in 0.000-0.318
 Least squares on the selected: bias -0.3341 to +0.0139 over the 64 designs (negative in 60); coverage 0.000-0.954

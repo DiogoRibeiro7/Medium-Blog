@@ -23,7 +23,7 @@ pip install -r requirements.txt
 python check_sel.py                   # also writes results/00_checks.txt
 python 01_mroz_exclusions.py
 python 02_randhie_two_part.py         # about 6 minutes on 2 cores
-python 03_simulation_exclusion.py     # about 20 minutes on 2 cores; --reps 50 for a quick run
+python 03_simulation_exclusion.py     # about 35 minutes on 2 cores; --reps 50 for a quick run
 python 04_mills_linearity.py
 python 05_mroz_sensitivity.py
 ```

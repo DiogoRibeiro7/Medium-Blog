@@ -20,7 +20,8 @@ Estimators of the slope: least squares on the selected; Heckman two-step,
 ML and a series control function (cubic in the inverse Mills ratio) with z in
 the selection equation; Heckman two-step and ML without z (selection on x
 only: identification by functional form). ML is started from the two-step
-estimates and from rho = -0.5 and 0.5; the highest maximum is kept.
+estimates, from rho = -0.5 and 0.5, and from the probit and least squares with
+rho = 0; the highest maximum is kept.
 Recorded: bias, SD, RMSE, median absolute error, coverage of 95% intervals
 (two-step corrected and ML standard errors), how often ML reaches |rho| > 0.95,
 how often the two-step start ends at a lower maximum, and the R^2 of the inverse
@@ -44,7 +45,7 @@ from matplotlib.ticker import FixedLocator, FuncFormatter, NullLocator
 from scipy import stats
 
 from common import AQUA, BLUE, FIG, INK, INK2, ORANGE, RES, VIOLET, YELLOW, style, write
-from sel import heckit, heckman_ml, series_cf
+from sel import heckit, heckman_ml, probit, series_cf
 
 warnings.filterwarnings("ignore")
 ap = argparse.ArgumentParser()
@@ -89,11 +90,21 @@ A = {(dd, g, s): intercept(dd, g, s) for dd in DISTS for g in GS for s in SHARES
 
 
 def best_ml(Z, d, X, y):
+    """ML from the two-step estimates, from rho = -0.5 and 0.5 (other parameters at
+    the first fit), and from the probit, least squares on the selected and rho = 0;
+    the highest maximum is kept. The last start matters when the two-step estimates
+    are far off: without an exclusion restriction they occasionally send the
+    optimiser to the boundary rho = +-1, where it stops far from any maximum."""
     f0 = heckman_ml(Z, d, X, y)
     best, lower = f0, False
+    starts = []
     for r0 in (-0.5, 0.5):
         st = f0.theta.copy()
         st[-1] = np.arctanh(r0)
+        starts.append(st)
+    b = np.linalg.lstsq(X[d], y[d], rcond=None)[0]
+    starts.append(np.concatenate([probit(Z, d).coef, b, [np.log(np.std(y[d] - X[d] @ b))], [0.0]]))
+    for st in starts:
         f = heckman_ml(Z, d, X, y, start=st)
         if np.isfinite(f.loglik) and f.loglik > best.loglik + 1e-3:
             best, lower = f, True
