@@ -1,0 +1,47 @@
+name: Historic tax-cut source availability
+
+on:
+  pull_request:
+    paths:
+      - "neoliberalism-evidence-synthesis/causal_tax_cuts/**"
+      - ".github/workflows/causal-tax-source-probe.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  fetch-official-sources:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: neoliberalism-evidence-synthesis
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Probe original Hope-Limberg public CSV
+        run: python -m causal_tax_cuts.event_source --output-dir "$RUNNER_TEMP/tax-events"
+      - name: Publish author source metadata only
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: author-event-availability
+          path: ${{ runner.temp }}/tax-events/author_event_probe.json
+          retention-days: 7
+          if-no-files-found: warn
+      - name: Fetch WID original country CSVs and verify top 1% series
+        id: wid_probe
+        continue-on-error: true
+        run: python -m causal_tax_cuts.wid --countries USA GBR FRA --output-dir "$RUNNER_TEMP/wid-source"
+      - name: Publish selected WID values and SHA-256 source manifest
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: wid-source-availability
+          path: |
+            ${{ runner.temp }}/wid-source/wid_top1_pretax.csv
+            ${{ runner.temp }}/wid-source/wid_top1_provenance.json
+          retention-days: 7
+          if-no-files-found: warn

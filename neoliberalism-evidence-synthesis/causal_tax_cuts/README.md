@@ -56,6 +56,35 @@ sensitivity checks before publication.
 
 Work from the parent `neoliberalism-evidence-synthesis/` folder.
 
+### Source retrieval now implemented
+
+The repository includes two independent, network-enabled source commands:
+
+```bash
+python -m causal_tax_cuts.event_source --output-dir /tmp/hope-limberg-events
+python -m causal_tax_cuts.wid --output-dir /tmp/wid-top1
+```
+
+The first checks whether the *original authors' public CSV* is actually
+downloadable, validates the CSV format and writes its unmodified bytes only
+to the chosen output directory. `author_event_probe.json` records the **true
+headings**, observed examples, row count and SHA-256; on a sign-in wall it
+records `status=unavailable` and never creates fictional events.
+
+The WID downloader streams the official semicolon-delimited bulk CSV for
+each of the paper's 18 countries, selects `sptinc992j` / `p99p100`
+(top 1% of pre-tax national income among equal-split adults), and multiplies
+WID's 0–1 fractions by 100. It emits `wid_top1_pretax.csv` and
+`wid_top1_provenance.json`, with each source's original SHA-256, actual
+country-year coverage and missing years. **It neither extrapolates missing
+years nor claims to reproduce the WID vintage used in the 2022 paper.**
+
+The separate [source-probe GitHub Action](../../.github/workflows/causal-tax-source-probe.yml)
+tests public access and makes a limited three-country WID extract available
+as a short-lived CI artifact. It uploads only author-source **metadata**, not
+the authors' original CSV. A failed live WID fetch is logged and must not
+be misinterpreted as successful empirical verification.
+
 1. Download the authors' file via the link above. Inspect the true headings:
 
    ```bash
@@ -63,9 +92,10 @@ Work from the parent `neoliberalism-evidence-synthesis/` folder.
    ```
 
 2. Obtain a verified CSV of annual WID **top-1% shares of pre-tax national
-   income** for the same countries and years, with a `country`, `year`,
-   `top1_share_pct` heading. For example, a share of 12.5% is `12.5`, not
-   `0.125`. Log the WID indicator, version, extraction date and transformations.
+   income** for the same countries and years, either using the downloader
+   above or a documented WID export. The result needs a `country`, `year`,
+   `top1_share_pct` heading. For example, 12.5% must be `12.5`, not `0.125`.
+   Record the WID source vintage, interpolation and series metadata.
 
 3. After inspecting the actual author headings, prepare the panel (replace
    heading placeholders; no guesses about author column names):
