@@ -1,0 +1,57 @@
+name: Reproduce eu-us-ppp-drift
+
+on:
+  pull_request:
+    paths:
+      - 'eu-us-ppp-drift/**'
+      - '.github/workflows/eu-us-ppp-drift.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'eu-us-ppp-drift/**'
+      - '.github/workflows/eu-us-ppp-drift.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: eu-us-ppp-drift
+    env:
+      MPLBACKEND: Agg
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: eu-us-ppp-drift/requirements.txt
+
+      - name: Install pinned dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Run the tests
+        run: python -m pytest -q tests
+
+      - name: Rerun the analysis
+        run: python analysis.py > /dev/null
+
+      - name: Check the numbers match the committed run
+        run: git diff --exit-code -- results/analysis_summary.txt
+
+      - name: Draw the figures
+        run: |
+          python figures.py
+          for f in fig1_drift_by_aggregate fig2_drift_by_economy fig3_ict_relative_prices \
+                   fig4_ict_counterfactuals fig5_eu_cross_section; do
+            test -s "figures/$f.png"
+          done
