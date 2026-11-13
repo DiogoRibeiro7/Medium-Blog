@@ -126,4 +126,5 @@ eu-us-surplus-by-industry/**/*.gz -filter -diff -merge binary
 china-capital-deepening/**/*.csv -filter -diff -merge text
 china-capital-deepening/**/*.gz -filter -diff -merge binary
 china-capital-deepening/**/*.xlsx -filter -diff -merge binary
+storm-train-recovery/**/*.csv -filter -diff -merge text
 wealth-origin-successions/**/*.csv -filter -diff -merge text
