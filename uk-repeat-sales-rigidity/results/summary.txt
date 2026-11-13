@@ -70,13 +70,13 @@ By holding period: 0.5-2y 1,321,449, 2-5y 3,630,942, 5-10y 3,507,646, 10-20y 2,5
   2013-2021: theta 0.983 (0.008), without exact 0.283 (0.009) = missing 24.7%, real-zero placebo 0.001 (0.007), nominal placebos -15.0% -0.031, -10.0% 0.015, -7.5% -0.027, +7.5% -0.002, +10.0% -0.019, +15.0% -0.004  [n=1,849,772]
   2022-2023: theta 1.085 (0.027), without exact 0.244 (0.030) = missing 21.7%, real-zero placebo -0.024 (0.015), nominal placebos -15.0% -0.031, -10.0% -0.009, -7.5% 0.061, +7.5% -0.033, +10.0% 0.026, +15.0% 0.011  [n=334,043]
   2024-2026: theta 1.079 (0.017), without exact 0.349 (0.019) = missing 29.5%, real-zero placebo 0.009 (0.011), nominal placebos -15.0% 0.030, -10.0% 0.012, -7.5% 0.041, +7.5% -0.053, +10.0% 0.005, +15.0% -0.019  [n=499,797]
-  London: theta 1.012 (0.016), without exact 0.281, real-zero placebo -0.010  [n=600,912]
-  South: theta 0.949 (0.008), without exact 0.274, real-zero placebo 0.002  [n=2,380,363]
-  North and Midlands: theta 1.153 (0.007), without exact 0.258, real-zero placebo -0.007  [n=2,146,789]
-  Wales: theta 1.176 (0.023), without exact 0.282, real-zero placebo 0.032  [n=225,145]
-  holding 0.5-2y: theta 1.319 (0.010), without exact 0.411, real-zero placebo -0.002  [n=1,171,598]
-  holding 2-5y: theta 1.022 (0.008), without exact 0.261, real-zero placebo -0.002  [n=2,412,342]
-  holding 5-10y: theta 0.879 (0.009), without exact 0.172, real-zero placebo -0.002  [n=1,769,269]
+  London: theta 1.012 (0.016), without exact 0.281 = missing 24.5%, real-zero placebo -0.010  [n=600,912]
+  South: theta 0.949 (0.008), without exact 0.274 = missing 24.0%, real-zero placebo 0.002  [n=2,380,363]
+  North and Midlands: theta 1.153 (0.007), without exact 0.258 = missing 22.8%, real-zero placebo -0.007  [n=2,146,789]
+  Wales: theta 1.176 (0.023), without exact 0.282 = missing 24.6%, real-zero placebo 0.032  [n=225,145]
+  holding 0.5-2y: theta 1.319 (0.010), without exact 0.411 = missing 33.7%, real-zero placebo -0.002  [n=1,171,598]
+  holding 2-5y: theta 1.022 (0.008), without exact 0.261 = missing 23.0%, real-zero placebo -0.002  [n=2,412,342]
+  holding 5-10y: theta 0.879 (0.009), without exact 0.172 = missing 15.8%, real-zero placebo -0.002  [n=1,769,269]
 
 [4] Jump at nominal zero against CPI inflation in the year of resale (complete years)
   30 years. Spearman(theta, inflation) -0.24 (p 0.198); without exact resales -0.30 (p 0.112); real-zero placebo -0.12 (p 0.575; holdings of 5-20 years, 26 years)

@@ -257,12 +257,14 @@ def main() -> None:
              + f"  [n={r['n']:,}]")
     for reg in ["London", "South", "North and Midlands", "Wales"]:
         r = jumps(sorted(h.y.unique()), [reg])
-        line(f"  {reg}: theta {r['theta']:.3f} ({r['se']:.3f}), without exact {r['theta_ex']:.3f}, "
+        line(f"  {reg}: theta {r['theta']:.3f} ({r['se']:.3f}), without exact {r['theta_ex']:.3f} "
+             f"= missing {pct(missing_share(r['theta_ex']))}, "
              f"real-zero placebo {r['theta_real']:.3f}  [n={r['n']:,}]")
     for hold in NEAR_HOLDS:
         r = jumps(sorted(h.y.unique()), None, [hold])
         line(f"  holding {hold}: theta {r['theta']:.3f} ({r['se']:.3f}), without exact "
-             f"{r['theta_ex']:.3f}, real-zero placebo {r['theta_real']:.3f}  [n={r['n']:,}]")
+             f"{r['theta_ex']:.3f} = missing {pct(missing_share(r['theta_ex']))}, real-zero placebo "
+             f"{r['theta_real']:.3f}  [n={r['n']:,}]")
 
     # ---- [4] does the jump depend on inflation? ----------------------------------------
     line("")
